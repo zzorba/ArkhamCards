@@ -6644,7 +6644,7 @@
 {
   "id": "black_stars_rise",
   "scenario_name": "黑星升起",
-  "full_name": "Scenario VII: Black Stars Rise",
+  "full_name": "冒險VII：黑星升起",
   "header": "冒險VII",
   "setup": [
     "intro",
@@ -6674,11 +6674,11 @@
         "name": "Intro"
       },
       "type": "story",
-      "text": "The island commune of Mont Saint-Michel lies off the northwestern coast of France. It is beautiful, elegant, and enigmatic—a place out of a fairy tale. Only this tale is one of horrors and madness. During low tide, you would be able to reach the island on foot by crossing the tidal causeway that emerges from the sea. However, by the time you reach the coast, the tide is much higher than you’d anticipated. Dark clouds cover the sky, and a distant crash of thunder signals the start of the oncoming storm. You find a boat whose captain is willing to take you to the island, and prepare for the ritual to come."
+      "text": "聖米歇爾山所在的島嶼就坐落在法國西北部的海岸線上。這裡風景優雅而又神秘莫測——宛若神話中的仙境。只不過，這是一個恐怖而瘋狂的神話。低潮時，你可以從海中露出的堤道步行走到島上。可惜你到達海邊時，潮水比你預期的要高出許多。空中烏雲密佈，遠處傳來的隆隆雷聲預示著暴風雨即將來臨。你找到一艘船，船長願意載你上島，而你也準備好面對即將到來的儀式。"
     },
     {
       "id": "check_ashleigh_clarke",
-      "text": "Check Campaign Log. <i>If Ashleigh Clarke is listed under VIPs Interviewed</i>:",
+      "text": "查看冒險日誌。<i>如果在“貴賓會談”下方記錄有阿什莉‧克拉克</i>：",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -6702,11 +6702,11 @@
         "name": "Ashleigh's Information"
       },
       "type": "story",
-      "text": "You recall the night where this all began, and your thoughts drift to the mesmerizing song Ashleigh sang that night. Somehow you remember the lyrics perfectly after all this time, and its haunting melody is ingrained in your mind. “Above the city the storm clouds rage, and waves crash through the gilded cage... Below the earth the salt water seeps, the shadows fall as the red sun sleeps...” Studying the island that lies before you, illuminated by flashes of lighting and assaulted by tumultuous waves, you can’t help but wonder if Ashleigh was singing about this very moment."
+      "text": "你回憶起一切開始的那個夜晚，你的思緒也飄向阿什莉那晚唱的迷人歌曲。雖然過了那麼久，你卻還能清晰地記起每一句歌詞，而那個難以忘懷的旋律也已深深植入你的腦海。“城上雷雲囂嘩，浪碎鎏金囚枷……碧水穿地湧浹，赤日西枕暗霞……”你端詳著眼前的島嶼，在閃電和巨浪的侵襲之下，你不禁好奇，阿什莉唱的是不是就是眼前的這一刻。"
     },
     {
       "id": "remove_doom_ability",
-      "text": "During this scenario, as a [fast] triggered ability, an investigator may remove 1 doom from an agenda in play. (Group limit once per game.)"
+      "text": "在本場冒險中，作為一項[fast]觸發能力，調查員可以從場上1張密謀卡牌上移除1個毀滅標記。(團隊每場遊戲限制一次。)"
     },
     {
       "id": "gather_encounter_sets",
@@ -6730,7 +6730,7 @@
         "flood",
         "vortex"
       ],
-      "text": "Be aware that some cards from the <i>Black Stars Rise</i> encounter set have multiple versions, some with <i>The Flood Below</i> encounter set icon on their reverse side, and some with <i>The Vortex Above</i> encounter set icon on their reverse side."
+      "text": "注意，<i>黑星升起</i>遭遇組中的部分卡牌有多個版本，其中部分卡牌背面有<i>地底洪流</i>遭遇組圖標，而另一部分卡牌背面有<i>空中漩渦</i>遭遇組圖標。"
     },
     {
       "id": "add_chaos_token",
@@ -6788,34 +6788,34 @@
     },
     {
       "id": "agenda_setup",
-      "text": "Sort each copy of the following cards into two separate piles, based on the encounter set icon on their reverse side: Agenda 2a—Let The Storm Rage, Agenda 2c—The Entity Above, Chapel of St. Aubert, and Abbey Tower.",
+      "text": "將以下所有卡牌根據其背面的遭遇組圖標，分類擺作兩堆：密謀2a—風暴肆虐，密謀2c—懸空之物，聖奧伯特禮拜堂，修道院塔樓。",
       "bullets": [
         {
-          "text": "You should have two piles of exactly four cards. Each pile should have one copy of each of the above listed cards. The cards in the first pile should have The Flood Below encounter set icon on their reverse side, and the cards in the second pile should have The Vortex Above encounter set icon on their reverse side."
+          "text": "擺放完畢後應為2堆各4張卡牌。每堆卡牌應有上述列出的每種卡牌各一張。一堆卡牌的背面應為<i>地底洪流</i>遭遇組圖標，而另一堆卡牌背面應為<i>空中漩渦</i>遭遇組圖標。"
         },
         {
-          "text": "Flip each pile over so that only the Black Stars Rise encounter set icon is showing. Randomize the two piles so you cannot tell which is which."
+          "text": "將每個牌堆翻面，使<i>黑星升起</i>遭遇組圖標朝上。隨機調換這兩個牌堆，使你無法辨認每個牌堆背面為哪個遭遇組圖標。"
         },
         {
-          "text": "Choose one pile at random to remove from the game and one pile at random to use throughout this scenario’s setup. <b>Do not look at the reverse sides of any of the cards in either pile</b>."
+          "text": "隨機選擇一個牌堆並且將其移出遊戲，而另一個牌堆則在冒險設置階段用到。<b>不要查看這兩個牌堆內的任何卡牌的背面</b>。"
         }
       ]
     },
     {
       "id": "no_act_deck",
-      "text": "This scenario does not have an act deck. Instead, it has two agenda decks. One agenda deck is built using agendas 1a, 2a, and 3a. The other agenda deck is built using agendas 1c, 2c, and 3c <i>(remember to use the versions of agendas 2a and 2c that were randomly chosen earlier)</i>."
+      "text": "本場冒險沒有場景牌堆，而有兩個密謀牌堆。一個密謀牌堆由密謀1a、2a和3a構成。另一個密謀牌堆由密謀1c、2c和3c構成<i>(注意密謀2a和2c要使用較早之前隨機選擇的版本)</i>。"
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Both act cards (Act 3a and Act 3c), Beast of Aldebaran, each copy of Tidal Terror, each copy of Rift Seeker, Cloister, Knight’s Hall, Abbey Tower, and Chapel of St. Aubert <i>(remember to use the versions of Abbey Tower and Chapel of St. Aubert that were randomly chosen earlier)</i>."
+      "text": "將下列卡牌放在一邊，位於遊戲場外：兩張場景卡牌(場景3a和場景3c)、畢宿五的野獸、所有的潮汐駭物、所有的裂縫探求者、迴廊、騎士大廳、修道院塔樓、聖奧伯特禮拜堂<i>(注意修道院塔樓和聖奧伯特禮拜堂要使用較早之前隨機選擇的版本)</i>。"
     },
     {
       "id": "remove_locations",
-      "text": "Choose one of the two Choeur Gothique locations, at random, and set it aside. Remove the other version of Choeur Gothique from the game."
+      "text": "從2個哥特式唱詩臺地點中隨機選擇一個地點，然後將它放在一邊。將哥特式唱詩臺地點的其他所有版本移出遊戲。"
     },
     {
       "id": "setup_locations",
-      "text": "Choose one of the two North Tower locations, one of the two Outer Wall locations, and one of the two Broken Steps locations, at random. Put the chosen locations into play. Remove the other versions of those locations from the game. Then, put the remaining locations (Porte de l’Avancée, Grand Rue, and Abbey Church) into play. Each investigator begins play at Porte de l’Avancée."
+      "text": "隨機選擇2個北部塔樓地點之一，2個外城牆地點之一，2個垮塌的台階地點之一。將所選地點放置入場。將所選地點的其他版本移出遊戲。然後，將剩餘的晉升之門、環山大道和修道院教堂放置進場。每位調查員從晉升之門開始遊戲。"
     },
     {
       "id": "location_layout",
@@ -6852,7 +6852,7 @@
     },
     {
       "id": "add_weakness",
-      "text": "Each investigator searches the collection for a random basic [[Madness]], [[Pact]], [[Cultist]], or [[Detective]] weakness and adds it to their deck.",
+      "text": "每位調查員從收藏中找出一張隨機的[[瘋狂]]、[[契約]]、[[異教徒]]或[[偵探]]基礎弱點，然後將它加入自己的牌組。",
       "effects": [
         {
           "type": "add_weakness",
@@ -6957,27 +6957,27 @@
     {
       "id": "dual_agendas_rule",
       "type": "rule_reminder",
-      "title": "Dual Agendas",
-      "text": "During this scenario, there are two agenda decks. One represents a means for you and your allies to open the path to Carcosa, and leads to one of the two set‐aside act cards. The other represents a means for Hastur to escape into our world, and spells demise for Earth.\nWhen playing this scenario, while there are two agenda decks in play, players must observe the following additional rules:",
+      "title": "雙重密謀",
+      "text": "在本場冒險中，有兩個密謀牌堆。其中一個牌堆為你和你的隊友提供一種開啟卡爾克薩之路的方法，並且引導你們到達放在一邊的兩張場景卡牌之一。而另一個牌堆則表明哈斯塔逃入我們的世界，並且施展法術毀滅地球。\n進行本場冒險時，場上有兩個密謀牌堆，玩家必須遵守以下額外規則：",
       "bullets": [
         {
-          "text": "Whenever 1 or more doom is placed on “the current agenda,” the players may decide which of the two agendas to place this doom on."
+          "text": "“當前密謀”上放置有1點或更多的毀滅標記時，玩家可以決定要將這點毀滅標記放在兩張密謀卡牌中的哪張上方。"
         },
         {
-          "text": "Doom on cards other than the two agendas (such as enemies, locations, or assets) count towards the doom threshold of <b>both</b> agendas."
+          "text": "在兩張密謀卡牌以外的卡牌上的毀滅標記(例如敵人、地點或支援)也計入<b>兩張</b>密謀卡牌的毀滅標記上限。"
         },
         {
-          "text": "When one agenda advances, <b>doom on the other agenda is not removed</b>. All other doom in play is removed."
+          "text": "在推進密謀卡牌時，<b>其他密謀卡牌上的毀滅標記不被移除</b>。場上所有其他毀滅標記被移除。"
         },
         {
-          "text": "If the doom thresholds of both agendas are satisfied during the “Check doom threshold” step of the Mythos phase, choose only one agenda to advance. Then, once you have completed advancing that agenda, check the doom threshold of the other agenda and advance it if its doom threshold is still satisfied."
+          "text": "在神秘階段的“檢查毀滅標記上限”步驟期間，如果達到了兩張密謀卡牌的毀滅上限，只選擇推進其中一張密謀卡牌。然後，當你推進該密謀卡牌後，檢查另一張密謀卡牌的毀滅標記上限，如果仍達到其毀滅標記上限，那麼推進那張密謀卡牌。"
         }
       ]
     },
     {
       "id": "set_aside_location_layout",
       "type": "location_setup",
-      "text": "Set-aside Location Layout (spoilers)",
+      "text": "放在一邊的地點卡的參考擺放位置(劇透)",
       "horizontal": "half",
       "vertical": "normal",
       "locations": [
@@ -7036,7 +7036,7 @@
                 }
               ]
             },
-            "text": "Mark Conviction or Doubt",
+            "text": "標記確信或疑惑",
             "steps": [
               "mark_conviction_or_doubt"
             ]
@@ -7046,14 +7046,14 @@
     },
     {
       "id": "mark_conviction_or_doubt",
-      "text": "Which should be marked, <b>Conviction</b> or <b>Doubt</b>?",
+      "text": "哪一個將被標記，<b>確信</b>或者<b>疑惑</b>？",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "conviction",
-            "text": "Mark one <b>Conviction</b>.",
+            "text": "記1點<b>確信</b>。",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -7071,7 +7071,7 @@
           },
           {
             "id": "doubt",
-            "text": "Mark one <b>Doubt</b>.",
+            "text": "記1點<b>疑惑</b>。",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -7109,7 +7109,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "opened_path_below",
-          "text": "you opened the path below."
+          "text": "你開啟了下方通路。"
         }
       ]
     },
@@ -7120,7 +7120,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "opened_path_above",
-          "text": "you opened the path above."
+          "text": "你開啟了上方通路。"
         }
       ]
     },
@@ -7165,7 +7165,7 @@
         "choices": [
           {
             "id": "ashleigh_killed",
-            "text": "Is Ashleigh Clarke <i>(Songs Die Unheard)</i> in the victory display?",
+            "text": "阿什莉‧克拉克<i>(歌聲漸亡)</i>位於勝利牌區嗎？",
             "steps": [
               "kill_ashleigh"
             ]
@@ -7176,7 +7176,7 @@
     {
       "id": "kill_ashleigh",
       "bullet_type": "small",
-      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Ashleigh Clarke</i>.",
+      "text": "在你的冒險日誌的“貴賓遇害”下方記錄<i>阿什莉‧克拉克</i>。",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -7187,7 +7187,7 @@
     },
     {
       "id": "add_cultists_elder_things",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [cultist] and 2 [elder_thing] tokens to the chaos bag.",
+      "text": "從混亂袋中移除所有的[cultist]、[tablet]和[elder_thing]標記。然後，將2個[cultist]標記和2個[elder_thing]標記放入混亂袋中。",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -7213,7 +7213,7 @@
     },
     {
       "id": "add_cultists_tablets",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [cultist] tokens and 2 [tablet] tokens to the chaos bag.",
+      "text": "從混亂袋中移除所有的[cultist]、[tablet]和[elder_thing]標記。然後，將2個[cultist]標記和2個[tablet]標記放入混亂袋中。",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -7239,7 +7239,7 @@
     },
     {
       "id": "terrible_fate",
-      "text": "You’ve met with a terrible fate, haven’t you?"
+      "text": "你遭遇了極其可怕的命運，不是嗎？"
     },
     {
       "id": "carcosa_merged",
@@ -7248,7 +7248,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "carcosa_merged",
-          "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+          "text": "你所在的世界與卡爾克薩融為一體並且被哈斯塔支配。"
         }
       ]
     },
@@ -7315,7 +7315,7 @@
         "physical",
         "mental"
       ],
-      "text": "You hold your breath as you swim through freezing water toward the spires below. As you get closer, you see ripples throughout the water, as though you are peering into a reflection upon the sea’s surface. You break through the surface and gasp as air fills your lungs.",
+      "text": "你屏住呼吸，跳下冰冷的海水，游向下方的尖柱。游到附近時，你可以看見海水泛起陣陣漣漪，就好像你眼前的是海平面的倒影。你衝破了這個海平面，大口把空氣吸入肺中。",
       "steps": [
         "opened_path_below",
         "add_cultists_tablets",
@@ -7337,7 +7337,7 @@
         "physical",
         "mental"
       ],
-      "text": "You marvel at the cloud-waves encircling you and fly toward the spires above. The desolate and inscrutable city of Carcosa towers before you. You suddenly realize you are falling—not floating—and a pulling force takes hold of your body.",
+      "text": "你沖上雲霄，直奔頭頂的尖柱，身邊環繞的雲浪讓你驚嘆不已。你頭頂上飄浮著荒涼而不可思議的卡爾克薩。你突然意識到你正在下墜——不是在上浮——有一股拉力牽住了你的身軀。",
       "steps": [
         "opened_path_above",
         "add_cultists_elder_things",
@@ -7359,7 +7359,7 @@
         "physical",
         "mental"
       ],
-      "text": "When you awaken, you are sitting in the choeur gothique of Mont Saint-Michel’s abbey. No rain pelts the glass of the windows above, and you hear no thunder, nor the screeching of winged horrors overhead. Somehow, you had escaped the island’s certain doom. You creep to the door of the abbey and open it with trepidation. A dazzling light sears your eyes, and you lift your hand to block the glare of two suns. You stand overlooking the Lake of Hali. Black stars hang in the heavens above. Beyond, over leagues of tossing cloud- waves, the towers of Carcosa rise behind the shattered moon.",
+      "text": "你醒來時，發現自己坐在聖米歇爾山修道院的哥特式唱詩臺上。沒有雨點打在頭頂的玻璃窗上，也聽不到雷鳴和空中飛行駭物的尖叫。你莫名其妙就躲過了小島註定的噩運。你爬向修道院的大門，顫顫巍巍推開了門。刺眼的陽光燒灼著你的雙眼，你抬起手，遮蔽雙生太陽的眩目強光。你站起身，俯瞰著哈利湖。黑星高懸在頭頂的穹窿之上。在遠方，在連綿起伏的翻騰雲浪之外，卡爾克薩的尖塔從破碎的月球後方冉冉升起。",
       "steps": [
         "terrible_fate",
         "carcosa_merged",
@@ -7724,8 +7724,8 @@
 {
   "id": "dim_carcosa",
   "scenario_name": "卡城幽影",
-  "full_name": "Scenario VIII: Dim Carcosa",
-  "header": "Scenario VIII",
+  "full_name": "冒險VIII：卡城幽影",
+  "header": "冒險VIII",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -7776,7 +7776,7 @@
         "name": "Intro 1"
       },
       "type": "story",
-      "text": "You swim to the edge of the water and throw yourself upon the rocky shore, gasping for air. You lie there for some time, utterly exhausted. Every muscle in your body aches. Before you lies a desolate expanse of plain. In the distance, the alien spires of a warped city rise into the clouds. Behind you, the dark surface of the lake from which you’d emerged reflects the glare of two suns. When you peer back into the murky depths, you see no sign of the chapel where you’d made the leap, or of Mont Saint-Michel, or even of Earth. This is Carcosa—the realm of madness in the stars, where Hastur reigns supreme."
+      "text": "你游到水邊，奮力躍上岸邊的岩石，大口喘著氣。你躺下休息了一會兒，感覺精力完全被榨乾了。身上每一塊肌肉都在酸痛。你的眼前是一望無際的荒蕪平原。遠處異界的尖柱從扭曲的城中直插雲霄。在你身後是你剛剛破水而出的湖泊，黑色的湖面倒映著兩個耀眼的太陽。你回頭望向晦暗的湖底，剛才你跳躍時立足的禮拜堂已然看不到一絲痕跡，而聖米歇爾山，甚至地球，也都見不到絲毫蹤影。這就是卡爾克薩——眾星之中的瘋狂國度，哈斯塔的至高領域。"
     },
     {
       "id": "intro_2",
@@ -7785,7 +7785,7 @@
         "name": "Intro 2"
       },
       "type": "story",
-      "text": "You land on a piece of black obsidian stone winding up a dark spire. You cough blood and feel a searing pain in your gut, as though you’d broken a rib. Before you lies a warped, alien city. Its twisting streets and aberrant architecture have no semblance of order or structure. In the distance, a murky lake reflects the glare of two suns. When you look up, the abbey of Mont Saint-Michel peeks just below the clouds, flipped upside-down. This is Carcosa—the realm of madness in the stars, where Hastur reigns supreme."
+      "text": "你掉落到一片黑色尖柱上，柱頂為蜿蜒盤旋的黑曜石。你只覺體內一陣劇痛，好像肋骨都被刺裂了一般，咳出了鮮血。你的眼前是歪折的怪異都市。那些扭曲的街道和反常的建築物毫無規則和結構可言。在遠處，一片晦暗的湖泊倒映著兩個耀眼的太陽。你抬頭望去，聖米歇爾山上的修道院在上下倒錯的雲層中若隱若現。這就是卡爾克薩——眾星之中的瘋狂國度，哈斯塔的至高領域。"
     },
     {
       "id": "gather_encounter_sets",
@@ -7897,47 +7897,47 @@
     },
     {
       "id": "act_2_v1",
-      "text": "Because you have 5 or less total <b>Doubt</b> and <b>Conviction</b>:",
+      "text": "由於你總共擁有5點或更少的<b>疑惑</b>和<b>確信</b>：",
       "bullets": [
         {
-          "text": "Use Act 2—Search For the Stranger (v. I). Remove each other version of Act 2 from the game."
+          "text": "使用場景2—搜尋陌生人(版本一)。將其他所有版本的場景2移出遊戲。"
         }
       ]
     },
     {
       "id": "act_2_v2",
-      "text": "Because you have 6 or more total <b>Doubt</b> and <b>Conviction</b>, and have more <b>Doubt</b> than <b>Conviction</b>.",
+      "text": "由於你總共擁有6點或更多的<b>疑惑</b>和<b>確信</b>，並且你擁有的<b>疑惑</b>數多於<b>確信</b>數。",
       "bullets": [
         {
-          "text": "Use Act 2—Search the Stranger (v. II). Remove each other version of Act 2 from the game."
+          "text": "使用場景2—搜尋陌生人(版本二)。將其他所有版本的場景2移出遊戲。"
         }
       ]
     },
     {
       "id": "act_2_v3",
-      "text": "Because you have 6 or more total <b>Doubt</b> and <b>Conviction</b>, and have more <b>Conviction</b> than Doubt:",
+      "text": "由於你總共擁有6點或更多的<b>疑惑</b>和<b>確信</b>，並且你擁有的<b>確信</b>數多於<b>疑惑</b>數：",
       "bullets": [
         {
-          "text": "Use Act 2—Search the Stranger (v. III). Remove each other version of Act 2 from the game."
+          "text": "使用場景2—搜尋陌生人(版本三)。將其他所有版本的場景2移出遊戲。"
         }
       ]
     },
     {
       "id": "act_2_choice",
-      "text": "Because you have 6 or more total <b>Doubt</b> and <b>Conviction</b>, and you have exactly equal <b>Doubt</b> and Conviction:",
+      "text": "由於你總共擁有6點或更多的<b>疑惑</b>和<b>確信</b>，並且你擁有的<b>疑惑</b>數等於<b>確信</b>數：",
       "bullets": [
         {
-          "text": "You may choose to use either Act 2—Search For the Stranger (v. II) or Act 2—Search For the Stranger (v. III). Remove each other version of Act 2 from the game."
+          "text": "你可以選擇使用場景2—搜尋陌生人(版本二)或場景2—搜尋陌生人(版本三)。將其他所有版本的場景2移出遊戲。"
         }
       ]
     },
     {
       "id": "setup_random_locations",
-      "text": "Randomly put 1 copy of Bleak Plains, 1 copy of Dim Streets, 1 copy of Ruins of Carcosa, and 1 copy of Depths of Demhe into play. Set each other copy of Bleak Plains, Dim Streets, Ruins of Carcosa and Depths of Demhe aside, out of play."
+      "text": "隨機將1張荒涼平原，1張幽暗街道，1張卡爾克薩廢墟，1張迪蒙深淵放置入場。將其他的荒涼平原、幽暗街道、卡爾克薩廢墟、迪蒙深淵放在一邊，位於場外。"
     },
     {
       "id": "setup_locations",
-      "text": "Put Shores of Hali, Dark Spires, and Palace of the King into play."
+      "text": "將哈利湖濱、黑色尖柱、王之宮殿放置進場。"
     },
     {
       "id": "location_layout",
@@ -7998,11 +7998,11 @@
     },
     {
       "id": "start_at_shores",
-      "text": "Because <i>you opened the path below</i>, each investigator begins play at Shores of Hali."
+      "text": "因為<i>你開啟了下方通路</i>，每位調查員從哈利湖濱開始遊戲。"
     },
     {
       "id": "start_at_spires",
-      "text": "Because <i>you opened the path above</i>, each investigator begins play at Dark Spires."
+      "text": "<i>因為你開啟了上方通路</i>，每位調查員從黑色尖柱開始遊戲。"
     },
     {
       "id": "check_for_onyx_clasp",
@@ -8090,11 +8090,11 @@
     },
     {
       "id": "set_aside_man_in_pallid_mask",
-      "text": "The bearer of The Man in the Pallid Mask weakness searches their deck for it and sets it aside, out of play."
+      "text": "蒼白面具下的男子弱點的承受者從其牌組中找出該卡牌，然後將它放在一邊，位於場外。"
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Hastur <i>(The King in Yellow)</i>, Hastur <i>(Lord of Carcosa)</i>, Hastur <i>(The Tattered King)</i>, and Beast of Aldebaran."
+      "text": "將下列卡牌放在一邊，位於場外：哈斯塔<i>(黃衣之王)</i>，哈斯塔<i>(卡爾克薩領主)</i>，哈斯塔<i>(襤褸之王)</i>，畢宿五的野獸。"
     },
     {
       "id": "add_doom",
@@ -8169,12 +8169,12 @@
     {
       "id": "add_3_doom",
       "bullet_type": "small",
-      "text": "Add 3 doom to agenda 1a."
+      "text": "在密謀1a增加3個毀滅標記。"
     },
     {
       "id": "add_2_doom",
       "bullet_type": "small",
-      "text": "Add 2 doom to agenda 1a."
+      "text": "在密謀1a增加2個毀滅標記。"
     },
     {
       "id": "add_1_doom",
@@ -8188,7 +8188,7 @@
     },
     {
       "id": "take_horror",
-      "text": "Each investigator takes direct horror equal to half their sanity, rounded down (<i>cannot be prevented</i>). This horror cannot cause you to become defeated (see “Sanity in the Realm of Carcosa,” below)."
+      "text": "每位調查員受到等同於其一半神智值的直接恐懼，向下取整(<i>不能被防止</i>)。此恐懼不會導致你被擊敗(見下方“卡爾克薩領域的神智值”)。"
     },
     {
       "id": "encounter_deck",
@@ -8197,13 +8197,13 @@
     {
       "id": "single_sided_location",
       "type": "rule_reminder",
-      "text": "Each of the locations in this scenario have no unrevealed side, and therefore enter play with their revealed side faceup. Instead of an unrevealed side, these locations have story cards on their reverse sides. Whenever a location in Dim Carcosa enters play (including during setup), place clues on that location equal to its clue value, as normal."
+      "text": "本場冒險中的每個地點均沒有未揭示面，因此其進場時以已揭示面朝上放置。這些地點背面均為劇情卡牌，取代未揭示面。當卡城幽影的地點進場(包括在冒險設置期間)，在該地點上放置等同於其線索值的線索，與正常規則相同。"
     },
     {
       "id": "sanity_in_carcosa_rule",
       "type": "rule_reminder",
-      "title": "Sanity in the Realm of Carcosa",
-      "text": "In the twisted and madness‐inducing realm of Carcosa, insanity is an inevitability. But even with your mind fractured and broken, your investigation does not end here. <b>During this scenario, investigators are not defeated when they have horror on them equal to or greater than their sanity.</b> Investigators may continue to take horror even in excess of their sanity. While an investigator has more horror on them than sanity, their “remaining sanity” is considered to be 0."
+      "title": "卡爾克薩領域的神智値",
+      "text": "身處扭曲且引人發狂的卡爾克薩之中，難以避免精神錯亂。但你即使理智支離破碎，也不會就此停止調查。<b>在本場冒險中，調查員獲得的恐懼大於或等於其神智值時不被擊敗。</b>調查員在恐懼已超出神智值的情況下仍可繼續獲得恐懼。當一位調查員的恐懼超出其神智值時，其“剩餘神智值”被視為0。"
     },
     {
       "id": "$play_scenario",
@@ -8240,13 +8240,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "prevented_hasturs_escape",
-          "text": "the investigators prevented Hastur from escaping his prison."
+          "text": "調查員阻止哈斯塔逃出牢獄。"
         }
       ]
     },
     {
       "id": "record_possessed_investigators",
-      "text": "In your Campaign Log, record the names of each investigator who ended the game with at least 1 copy of the Possession treachery in their hand.",
+      "text": "在你的冒險日誌裡記錄，哪些調查員在本局遊戲結束時手牌有至少1張惡靈附身詭計卡。",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -8255,21 +8255,21 @@
         "choices": [
           {
             "id": "possessed",
-            "text": "At least 1 Posession treachery in hand.",
+            "text": "手牌有至少1張惡靈附身詭計卡。",
             "effects": [
               {
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "possessed",
-                "text": "one or more investigators was possessed."
+                "text": "至少有一位調查員被附身。"
               },
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "possessed",
                 "cards": "$input_value",
-                "masculine_text": "#name# was possessed.",
-                "feminine_text": "#name# was possessed."
+                "masculine_text": "#name#被附身。",
+                "feminine_text": "#name#被附身。"
               }
             ]
           }
@@ -8278,7 +8278,7 @@
     },
     {
       "id": "take_mental_trauma",
-      "text": "Each investigator suffers 2 mental trauma, as they never fully recovers from their time spent in Carcosa, the realm of madness.",
+      "text": "調查員還未從瘋狂國度卡爾克薩度過的驚懼時光中平息過來，每位調查員承受2點精神創傷。",
       "effects": [
         {
           "type": "trauma",
@@ -8289,7 +8289,7 @@
     },
     {
       "id": "take_physical_trauma",
-      "text": "Each investigator suffers 2 physical trauma, as they never fully recovers from their time spent in Carcosa, the realm of madness.",
+      "text": "調查員還未從瘋狂國度卡爾克薩度過的驚懼時光中平息過來，每位調查員承受2點肉體創傷。",
       "effects": [
         {
           "type": "trauma",
@@ -8300,7 +8300,7 @@
     },
     {
       "id": "take_physical_and_mental_trauma",
-      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as they never fully recovers from their time spent in Carcosa, the realm of madness.",
+      "text": "調查員還未從瘋狂國度卡爾克薩度過的驚懼時光中平息過來，每位調查員承受2點肉體創傷和2點精神創傷。",
       "effects": [
         {
           "type": "trauma",
@@ -8317,7 +8317,7 @@
       "input": {
         "type": "counter",
         "text": "勝利牌區：",
-        "confirm_text": "Each investigator earns 5 bonus experience, as they has truimphed over their own self—the most dangerous of foes.",
+        "confirm_text": "調查員們克服了自己的難關——最為險惡的敵人，每位調查員獲得5點獎勵經驗值。",
         "effects": [
           {
             "type": "earn_xp",
@@ -8334,7 +8334,7 @@
       "input": {
         "type": "counter",
         "text": "勝利牌區：",
-        "confirm_text": "Each investigator earns 5 bonus experience, as they has learned the truth behind <u>The King in Yellow</u>.",
+        "confirm_text": "調查員得知了《黃衣之王》背後的真相，每位調查員獲得5點獎勵經驗值。",
         "effects": [
           {
             "type": "earn_xp",
@@ -8346,7 +8346,7 @@
     },
     {
       "id": "terrible_fate",
-      "text": "You’ve met with a terrible fate, haven’t you?"
+      "text": "你遭遇了極其可怕的命運，不是嗎？"
     },
     {
       "id": "carcosa_merged",
@@ -8355,13 +8355,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "carcosa_merged",
-          "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+          "text": "你所在的世界與卡爾克薩融為一體並且被哈斯塔支配。"
         }
       ]
     },
     {
       "id": "could_not_escape",
-      "text": "You didn’t really think you could escape, did you?"
+      "text": "難道你真的認為你能逃脫嗎？"
     },
     {
       "id": "hastur_has_you",
@@ -8370,7 +8370,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "hastur_has_you",
-          "text": "Hastur has you in his grasp."
+          "text": "哈斯塔已將你抓住。"
         }
       ]
     },
@@ -8483,7 +8483,7 @@
         "name": "Resolution 1"
       },
       "title": "結局1",
-      "text": "You stand atop the balcony of the abbey tower in Mont Saint-Michel, wet wind coursing through your hair. The Pallid Mask lies in your hands, devoid of warmth. You can scarcely bring yourself to look at it. You remember everything now—how it all began, how it ended, and everything in between. There is only one thing left to do. You hurl the mask into the air with all of your strength and watch as it flies into the tempest-tossed waves below.",
+      "text": "你站在聖米歇爾山修道院塔樓的陽臺高處，濕冷的寒風輕拂著你的頭髮。蒼白面具就躺在你的手中，沒有絲毫暖意。你努力強迫自己看著它。現在，你想起了每一件事——這一切是如何開始，又是如何結束，以及在它們之間的椿樁件件。現在只剩下最後一件事要做了。你用盡渾身的力氣，將面具全力一擲，看著它隨風飛入下方風暴翻卷的浪濤之中。",
       "steps": [
         "prevented_hasturs_escape",
         "record_possessed_investigators",
@@ -8500,7 +8500,7 @@
         "name": "Resolution 2"
       },
       "title": "結局2",
-      "text": "A roar of applause startles you awake. The crowd of the theatre rises to their feet, cheering endlessly. Several patrons in the front row are throwing roses to the actors on stage, who are bowing with wide smiles across their faces. A searing headache crawls through your temples. How did you get back here? Were you in the theatre all along? What about the dinner party? The asylum? The catacombs?... Carcosa? Was it all just a terrible dream?\nYou exit the auditorium before the crowd rushes to do the same. Dizziness and exhaustion harries your senses. The weight of your lengthy investigation is crushing your mind. By the time you finally reach the lobby, you are clawing your way across the ground. Just then, a man in an elegant suit reaches down and grabs you by your arm, pulling you to your feet. You are about to thank him when you realize who he is. The sight of him causes you to stagger backward in horror momentarily. The actor who plays the role of the Stranger is still wearing his pale, featureless mask. He gives you a wordless bow, then turns and leaves through the Ward Theatre’s front entrance.",
+      "text": "雷鳴般的掌聲驚醒了你。劇院的觀眾都起立駐足，他們在一個勁地喝彩。前排的幾個觀眾朝臺上的演員拋去玫瑰花，演員們的臉上綻放著會心的微笑，鞠躬致意。一陣劇烈的頭疼爬上了你的太陽穴。你怎麼會回到這裡的？難道你一直就在劇院裡？今天的晚宴怎麼了？還有瘋人院？地下墓穴？……卡爾克薩？這一切難道只是一場噩夢？\n你趕在人流退場之前，離開了觀眾席。眩暈和疲憊侵擾著你的感官。你漫長的調查經歷己經壓垮了你的精神。等你終於到達前廳時，你已經在地上匍匐爬行了。就在這時，一個身著優雅西服的男子彎下腰，挽住了你的手臂，把你拉起了身。你正準備感謝他，卻突然意識到他是誰。和他一打照面，你就驚恐地連連後退。這個扮演陌生人一角的演員還戴著他蒼白而面無表情的面具。他一語不發地向你鞠了一躬，旋即走出了沃德劇院的正門。",
       "steps": [
         "prevented_hasturs_escape",
         "record_possessed_investigators",
@@ -8517,7 +8517,7 @@
         "name": "Resolution 3"
       },
       "title": "結局3",
-      "text": "When you awaken, you are sitting in the choeur gothique of Mont Saint-Michel’s abbey. No rain pelts the glass of the windows above, and you hear no thunder, nor the screeching of winged horrors overhead. Somehow, you have escaped. You creep to the door of the abbey and open it with trepidation. A dazzling light sears your eyes, and you lift your hand to block the glare of the sun. You stand overlooking beautiful Mont Saint-Michel. Seagulls fly over the abbey under a backdrop of cloudless sky. The waters around the abbey are calm and azure-blue.\n“I’ve been looking all over for you!” You hear a voice exclaim behind you. You turn with a startle. For a moment you expect to see the Stranger and his Pallid Mask, but instead, the boat captain you’d hired to take you to Mont Saint-Michel stands at the edge of the steps, smiling at you. “Are you ready to head back?”",
+      "text": "你醒來時，發現自己坐在聖米歇爾山修道院的哥特式唱詩臺上。沒有雨點打在頭頂的玻璃窗上，也聽不到雷鳴和空中飛行駭物的尖叫。你莫名其妙就躲過一劫。你爬向修道院的大門，顫顫巍巍推開了門。刺眼的的陽光燒灼著你的雙眼，你抬起手，遮蔽太陽的光照。你站起身俯瞰著美麗的聖米歇爾山。萬里晴空之下，海鷗在修道院上方飛翔。修道院周圍的海碧藍通透，水波不驚。\n“我一直在到處找你！”你聽到身後有人在呼喚你。你驚訝地扭頭一看。恍惚之間，你還以為會看到陌生人和他的蒼白面具，但那只是你僱傭帶你來聖米歇爾山的船長，他站在臺階一邊，沖著你微笑：“你準備回去了嗎？”",
       "steps": [
         "prevented_hasturs_escape",
         "record_possessed_investigators",
@@ -8534,7 +8534,7 @@
         "name": "Resolution 4"
       },
       "title": "結局4",
-      "text": "When you awaken, you are sitting in the choeur gothique of Mont Saint-Michel’s abbey. No rain pelts the glass of the windows above, and you hear no thunder, nor the screeching of winged horrors overhead. Somehow, you have escaped the island’s certain doom. You creep to the door of the abbey and open it with trepidation. A dazzling light sears your eyes, and you lift your hand to block the glare of two suns. You stand overlooking the Lake of Hali. Black stars hang in the heavens above. Beyond, over leagues of tossing cloud-waves, the towers of Carcosa rise behind the shattered moon.",
+      "text": "你醒來時，發現自己坐在聖米歇爾山修道院的哥特式唱詩臺上。沒有雨點打在頭頂的玻璃窗上，也聽不到雷鳴和空中飛行駭物的尖叫。你莫名其妙就躲過了小島註定的噩運。你爬向修道院的大門，顫顫巍巍推開了門。刺眼的陽光燒灼著你的雙眼，你抬起手，遮蔽雙生太陽的眩目強光。你站起身，俯瞰著哈利湖。黑星高懸在頭頂的穹窿之上。在遠方，在連綿起伏的翻騰雲浪之外，卡爾克薩的尖塔從破碎的月球後方冉冉升起。",
       "steps": [
         "terrible_fate",
         "carcosa_merged",
@@ -8548,8 +8548,8 @@
         "id": "the_path_to_carcosa.dim_carcosa.resolution_5",
         "name": "Resolution 5"
       },
-      "title": "Resolution 5",
-      "text": "The outside world will never know how you tried to save them. They treat you with pity, with scorn and contempt, but you know the truth. They are resigned to their hideous fate, but still you try day after day to bring them your message. You must warn them of The King in Yellow, of Hastur and of Carcosa. “Another lost soul,” they say, but they cannot possibly fathom what you have gone through in your attempt to save them. You warn them that he is coming to claim them, but they never believe you. You write of Aldebaran and of the black stars on the wall of your cell, but the words become faded as the years go by. Your warning is never heeded.",
+      "title": "結局5",
+      "text": "外面的世界上永遠不會有人知道你曾努力拯救過他們。他們的眼中帶著憐憫、嘲弄和不屑，但只有你知道真相。他們都已屈服於自己醜惡的命運，但只有你，還在日復一日為他們帶去你的口信。你必須警告他們有關《黃衣之王》、哈斯塔和卡爾克薩。“又是個可憐人。”他們說，但他們根本想像不出你為了拯救他們經歷了怎樣的坎坷。你警告他們說，他來了，他要奪走他們，但根本沒有人相信你。你把畢宿五和黑色星辰寫在你囚室的牆壁上，但歲月流逝，字跡也日漸褪去。而你的警告始終無人聽從。",
       "steps": [
         "could_not_escape",
         "hastur_has_you",
@@ -9031,7 +9031,7 @@
     },
     {
       "id": "add_mixed_tokens",
-      "text": "從混亂袋中移除所有的[cultist]、[tablet]、[elder_thing]標記。然後將1個[cultist]標記，1個[tablet]標記和1個[elder_thing]標記加入混亂袋 。",
+      "text": "從混亂袋中移除所有的[cultist]、[tablet]和[elder_thing]標記。然後將1個[cultist]標記，1個[tablet]標記和1個[elder_thing]標記加入混亂袋 。",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -9158,7 +9158,7 @@
   "steps": [
     {
       "id": "check_epilogue",
-      "text": "Check Campaign Log. If at least one investigator was possessed, <b>only those investigators</b> read this epilogue. Do not read it out loud unless all investigators were possessed.",
+      "text": "查看冒險日誌。如果至少有一位調查員被附身，則<b>只有被附身的調查員</b>閱讀尾聲故事。請勿大聲朗讀，避免讓所有調查員遭到附身。",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -9181,7 +9181,7 @@
         "name": "Possessed"
       },
       "type": "story",
-      "text": "It has taken months of preparation, but you are finally ready to unveil your latest work to the world. Gathering financial investments was your first task, of course. That hadn’t taken too long given the connections you’d made during your stay in Paris. You have been assured that the cast assembled is the finest that money could afford, but still you strive to make everything perfect. It must be perfect. The story must be told, so that the world knows. You’ve heard the troupe whisper behind your back: the remarks about your bizarre passion, the concern about your piercing yellow eyes. It matters not to you. All you care about is the performance. The pronunciation of the words. The melody of Cassilda’s song. The design of the Stranger’s mask.\nThis would be the greatest performance of <u>The King in Yellow</u> ever."
+      "text": "準備工作花費了好幾個月，但你終於能揭開最後一道面紗，把你最新的作品呈現給世人。吸收金融投資當然是你的第一要務。得益於你在巴黎逗留期間結識的廣博人脈，這並沒有花費你很多時間。你相信重資聘來的這批演員是最出色的班底，但你仍然要竭盡全力把一切做到盡善盡美。這齣戲必須完美無瑕。必須要讓全世界都知道這個故事。雖然你也聽到戲班子在你身後的閒言碎語：說你的激情透著古怪，說你黃色的眼睛能刺透人心。但這些對你都不重要。你只關心這次演出，關心每一個字的發音，關心卡西露達歌聲的旋律，關心陌生人面具的設計。\n這一次的《黃衣之王》一定會成為史上最成功的演出。"
     }
   ]
 },
@@ -9847,7 +9847,7 @@
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "隨機從以下標記中選擇一種：([cultist], [tablet],或[elder_thing])。將2個所選標記放入混亂袋。",
+      "text": "隨機從以下標記中選擇一種：([cultist]、[tablet]或[elder_thing])。將2個所選標記放入混亂袋。",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -10146,7 +10146,7 @@
     },
     {
       "id": "adjust_chaos_tokens",
-      "text": "從混亂袋中移除所有的[cultist]、[tablet]、[elder_thing]標記。然後將1個[cultist]標記，1個[tablet]標記和1個[elder_thing]標記加入混亂袋 。",
+      "text": "從混亂袋中移除所有的[cultist]、[tablet]和[elder_thing]標記。然後將1個[cultist]標記，1個[tablet]標記和1個[elder_thing]標記加入混亂袋 。",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -10262,7 +10262,7 @@
 {
   "id": "the_pallid_mask",
   "scenario_name": "蒼白面具",
-  "full_name": "Scenario VI: The Pallid Mask",
+  "full_name": "冒險VI：蒼白面具",
   "header": "冒險VI",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -10302,7 +10302,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "text": "用以下標記組成混亂袋：+1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -10339,7 +10339,7 @@
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "隨機從以下標記中選擇一種：([cultist], [tablet],或[elder_thing])。將2個所選標記放入混亂袋。",
+      "text": "隨機從以下標記中選擇一種：([cultist]、[tablet]或[elder_thing])。將2個所選標記放入混亂袋。",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -10399,7 +10399,7 @@
     },
     {
       "id": "found_nigels_home",
-      "text": "<i>You found Nigel's home.</i>",
+      "text": "<i>你找到了奈傑爾的住宅。</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -10411,11 +10411,11 @@
     },
     {
       "id": "no_haruko",
-      "text": "<i>Ishimaru Haruko is not listed under VIPs Interviewed or VIPs Slain.</i>"
+      "text": "<i>在“貴賓會談”或“貴賓遇害”下方記錄沒有石丸春子。</i>"
     },
     {
       "id": "check_intro_condition",
-      "text": "Check Campaign Log. <i>If you did not escape the gaze of the phantom</i>, or <i>if you were unable to find Nigel</i>",
+      "text": "查看冒險日誌。如果<i>你沒能逃脫幻影的凝視</i>，或者<i>你沒能找到奈傑爾</i>",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -10467,7 +10467,7 @@
         "name": "Intro 1"
       },
       "type": "story",
-      "text": "You are stirred awake by dirty, stale air and dust in your throat. You are lying on a slab of cold stone inside a lightless underground passageway. How did you get here? And where is “here” exactly? A shiver courses up your body, and your hair stands on end. Rising to your feet, you take stock of your surroundings. Bones decorate the walls and ceiling around you, open-mouthed skulls peering back at you everywhere you look."
+      "text": "污穢霉變的空氣裡挾著灰塵，刺激著你的喉嚨，把你從夢中拽醒。你躺在一塊冰冷的石板上，四周是幽暗無光的地下通道。你怎麼會來到這裡的？“這裡”又是什麼地方？一股寒意流遍你的全身，讓你毛髮倒立。你站起身，打量著周遭的環境。你周圍的牆壁和天花板上裝飾著白骨，無論望向哪裡，都能看到張口的顱骨在盯著你。"
     },
     {
       "id": "intro_2",
@@ -10476,7 +10476,7 @@
         "name": "Intro 2"
       },
       "type": "story",
-      "text": "The contents of Nigel Engram’s home answer none of your questions about The King in Yellow, but do hint at where you should head next. The old, tattered map you found on his coffee table depicts a section of the infamous Catacombs of Paris. One particular room on the map has been circled with pen, and next to it is written: “The key to opening the Path lies here!” You swallow your fear and head immediately for the entrance to the catacombs underneath Rue de la Tombe-Issoire."
+      "text": "奈傑爾‧英格蘭姆家裡找不到任何能解答你有關《黃衣之王》疑問的東西，但你的下一步行動找到了方向。你在他咖啡桌上找到的破舊地圖描繪的是惡名昭著的巴黎地下墓穴。地圖上用鋼筆特地圈出了一個房間，旁邊寫著：“打開通路的關鍵就在這裡！”你強忍恐懼，立即出發前往伊蘇爾墓園大街的地下墓穴入口。"
     },
     {
       "id": "entered_catacombs",
@@ -10485,7 +10485,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "entered_catacombs",
-          "text": "you entered the catacombs on your own."
+          "text": "你自行進入地下墓穴。"
         }
       ]
     },
@@ -10496,13 +10496,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "awoke_inside_catacombs",
-          "text": "you awoke inside the catacombs."
+          "text": "你在地下墓穴中醒來。"
         }
       ]
     },
     {
       "id": "check_ishimaru_haruko",
-      "text": "Check Campaign Log. <i>If Ishimaru Haruko is listed under VIPs Interviewed</i>:",
+      "text": "查看冒險日誌。<i>如果在“貴賓會談”下方記錄有石丸春子</i>：",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -10526,11 +10526,11 @@
         "name": "Haruko's Information"
       },
       "type": "story",
-      "text": "Just past the archway closest to you, you see a familiar symbol etched into the skull of a sheep: rows of concentric semicircles, lined with exotic runes. Two wavy lines descend from the design, leading into the skull’s lower jawbone. You recognize it as the pattern Haruko had shown you. Wondering why it would appear here, you examine the skull in greater detail. As soon as you touch the underside of the skull’s jawbone, its mouth suddenly opens. Bones collapse to the ground as the wall slides to reveal a new path."
+      "text": "你剛經過一道拱門，看見一個綿羊的頭骨上蝕刻著一個熟悉的符號：許多同軸的半圓形成的圓環上排列著奇異的符文。圖案下方有兩條波紋狀的線條，連到頭骨的下顎。你認出了這是春子給你看過的圖案。你好奇為什麼它會出現在這裡，於是對著這顆頭骨仔細端詳起來。你剛剛觸碰到下顎骨，它的嘴突然張開了。白骨散落到地上，牆壁滑動，露出了一條新的道路。"
     },
     {
       "id": "opened_a_secret_passageway",
-      "text": "Remember that “you opened a secret passageway.”"
+      "text": "請記住“你開啟了一條秘密通道。”"
     },
     {
       "id": "gather_encounter_sets",
@@ -10545,7 +10545,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Find the Tomb of Shadows and the Blocked Passage (each one is the revealed side of a Catacombs location). Set them aside, out of play."
+      "text": "找出暗影墳墓和堵塞通道(每張均為地下墓穴地點的已揭示面)。將這些卡牌放在一邊，位於場外。"
     },
     {
       "id": "check_catacomb_entry",
@@ -10572,31 +10572,31 @@
     },
     {
       "id": "start_random_location",
-      "text": "Put a random Catacombs location (other than the set‐aside Tomb of Shadows or Blocked Passage) into play, Catacombs side faceup. For the remainder of the scenario, that location is referred to as “the starting location.” Place a resource token on this location to mark it as the starting location. <b>Do not place investigators here yet.</b>"
+      "text": "將一個隨機的地下墓穴地點放置入場(放在一邊的暗影墳墓和堵塞通道除外)，地下墓穴一面朝上。接下來的本場冒險中，將該地點作為“起始地點”。將1個資源標記放在這個地點上，表示該地點為起始地點。<b>先不要將調查員放置到此處。</b>"
     },
     {
       "id": "start_gate_to_hell",
-      "text": "Find The Gate to Hell (it is the revealed side of a Catacombs location). Put The Gate to Hell into play, Catacombs side faceup. For the remainder of the scenario, The Gate to Hell is referred to as “the starting location.” Place a resource token on The Gate to Hell to mark it as the starting location. <b>Do not place investigators here yet.</b>"
+      "text": "找出地獄之門(地下墓穴地點的已揭示面)。將地獄之門放置入場，地下墓穴一面朝上放置。接下來的本場冒險中，將地獄之門作為“起始地點”。將1個資源標記放在地獄之門上，表示該地點為起始地點。<b>先不要將調查員放置到此處。</b>"
     },
     {
       "id": "create_catacombs_deck",
-      "text": "Set all of the other locations aside as a separate “Catacombs Deck.” To do this, perform the following:",
+      "text": "將所有其他地點放在一邊，單獨放作一堆並且命名為“地下墓穴牌堆”。要創建地下墓穴牌堆時按照以下步驟執行：",
       "bullets": [
         {
-          "text": "Shuffle the set‐aside Tomb of Shadows, the set‐aside Blocked Passage, and 3 other Catacombs locations together to form the bottom 5 cards of the Catacombs Deck, Catacombs side faceup."
+          "text": "將放在一邊的暗影墳墓、堵塞通道、3張其他地下墓穴地點卡牌一同混洗，構成地下墓穴牌堆底部的5張卡牌，地下墓穴一面朝上放置。"
         },
         {
-          "text": "Then, place all of the other Catacombs locations on top, in a random order. All of the cards in the Catacombs Deck should be showing only the Catacombs side, so that the players do not know which is which."
+          "text": "隨後，將其他所有地下墓穴地點卡牌混洗後隨機擺放在牌堆頂部。地下墓穴牌堆內的所有卡牌均應以地下墓穴面朝上放置，以使得玩家無法分辨地下墓穴地點卡牌的內容。"
         }
       ]
     },
     {
       "id": "place_investigators",
-      "text": "Each investigator begins play at the starting location. <i>(Remember to trigger the <b>Forced</b> effect on that location when it is revealed.)</i> If “you opened a secret passageway,” choose a Catacombs location adjacent to the starting location and reveal it."
+      "text": "每位調查員從起始地點開始遊戲。(注意在地點翻至已揭示面時，觸發該地點上的<b>強制</b>效果。)\n如果“你開啟了一條秘密通道”，選擇一個地下墓穴地點放在起始地點的相鄰位置，翻開該地點卡牌。"
     },
     {
       "id": "set_aside_pallid_mask",
-      "text": "The bearer of The Man in the Pallid Mask weakness searches their deck for it and sets it aside, out of play."
+      "text": "蒼白面具下的男子弱點的承受者從其牌組中找出該卡牌，然後將它放在一邊，位於場外。"
     },
     {
       "id": "encounter_deck",
@@ -10689,8 +10689,8 @@
     {
       "id": "location_adjacency_rule",
       "type": "rule_reminder",
-      "title": "Location Adjacency in the Catacombs",
-      "text": "During this scenario, locations will be arranged in a set pattern, with new locations from the Catacombs Deck emerging to the left, right, above, or below existing locations, as they are revealed. A location that is put into play to the left, right, above, or below another location should be set next to that location in the manner described, with no other locations in between them.\nA location that is next to another location in this manner is considered <b>adjacent</b>. Locations are only adjacent orthogonally (left, right, above, and below), and are not adjacent diagonally. During this scenario, adjacent locations are considered to be connected to one another.\nYou cannot put a location into play where an existing location already is. If you are given the choice to place a location from the Catacombs Deck in one of multiple spots, and one of those spots is occupied by an existing location, you cannot choose that spot. You must choose a spot unoccupied by a location, if able. If all of the specified spots are occupied by existing locations, the <b>Forced</b> effect fails and no new Catacombs locations are put into play."
+      "title": "地下墓穴的地點相鄰",
+      "text": "在本場冒險中，將以特定模式擺放地點，地下墓穴牌堆新翻開的地點將出現在現有地點的左邊、右邊、上方或下方。地點放置入場時，必須依據相鄰地點所述要求放置在這一地點的左邊、右邊、上方或下方，這兩個地點之間沒有其他地點。\n以此方式將一個地點放置在另一個地點旁邊，這兩個地點視作<b>相鄰</b>。地點沿豎直和水平方向相鄰(左邊、右邊、上方和下方)，而不沿對角線方向相鄰。在本場冒險期間，相鄰地點視作彼此相連。\n放置地點入場時，不能將它放在已有地點的位置上。如果從地下墓穴牌堆放置地點時可選擇多個位置進行放置，而其中一個可選位置已有地點，那麼你不能選擇在該位置放置。你必須選擇一個未有地點的位置進行放置(如果你能夠這麼做)。如果所有的可選位置均已有地點，那麼此<b>強制</b>效果失效，新的地下墓穴地點不會放置入場。"
     },
     {
       "id": "$play_scenario",
@@ -10717,7 +10717,7 @@
                 }
               ]
             },
-            "text": "Mark Conviction or Doubt",
+            "text": "標記確信或疑惑",
             "steps": [
               "mark_conviction_or_doubt"
             ]
@@ -10727,15 +10727,15 @@
     },
     {
       "id": "mark_conviction_or_doubt",
-      "text": "How was act 2 advanced?",
+      "text": "場景2是如何推進的？",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "conviction",
-            "text": "The Man in the Pallid Mask was defeated.",
-            "description": "Mark two <b>Conviction</b>.",
+            "text": "蒼白面具下的男子被擊敗。",
+            "description": "記2點<b>確信</b>。",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -10753,8 +10753,8 @@
           },
           {
             "id": "doubt",
-            "text": "You spent clues to advance.",
-            "description": "Mark two <b>Doubt</b>.",
+            "text": "你花費了線索推進場景。",
+            "description": "記2點<b>疑惑</b>。",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -10792,19 +10792,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "know_site_of_gate",
-          "text": "you know the site of the gate."
+          "text": "你已知曉大門所在。"
         }
       ]
     },
     {
       "id": "know_site_of_gate_chasing_stranger",
-      "text": "In your Campaign Log, record that <i>you know the site of the gate</i>. Add two tally marks under “Chasing the Stranger.”",
+      "text": "在冒險日誌中，記錄<i>你已知曉大門所在</i>。在“追蹤陌生人”下方作2次記錄。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "know_site_of_gate",
-          "text": "you know the site of the gate."
+          "text": "你已知曉大門所在。"
         },
         {
           "type": "campaign_log_count",
@@ -10816,7 +10816,7 @@
     },
     {
       "id": "read_act_2_choice",
-      "text": "Each investigator must choose whether or not to read Act II of The King in Yellow. At least one investigator must read Act II.\nIn your Campaign Log, record the names of each investigator who chose to read Act II. Each investigator who read Act II searches the collection for a random basic [[Madness]] or [[Pact]] weakness, and adds it to their deck (does not count toward deck size). Each investigator who read Act II earns 2 additional experience as they gain insight into the machinations of the Tattered King.",
+      "text": "每位調查員必須選擇是否要閱讀《黃衣之王》第二幕。至少一位調查員必須閱讀第二幕。\n在冒險日誌中，記錄選擇閱讀第二幕的每位調查員的名字。閱讀第二幕的每位調查員從收藏中找出一張隨機的[[瘋狂]]或[[契約]]基礎弱點，然後將它放進自己的牌組(不計入牌組張數上限)。調查員洞察了襤褸之王的陰謀，每位閱讀第二幕的調查員獲得2點額外的經驗值。",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -10825,15 +10825,15 @@
         "choices": [
           {
             "id": "read_act_2",
-            "text": "Read Act II",
+            "text": "閱讀第二幕",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "read_act_2",
                 "cards": "$input_value",
-                "masculine_text": "#name# read Act 2 of The King in Yellow.",
-                "feminine_text": "#name# read Act 2 of The King in Yellow."
+                "masculine_text": "#name#閱讀了《黃衣之王》第二幕。",
+                "feminine_text": "#name#閱讀了《黃衣之王》第二幕。"
               },
               {
                 "type": "add_weakness",
@@ -10894,7 +10894,7 @@
         "choices": [
           {
             "id": "haruko_killed",
-            "text": "Is Ishimaru Haruko <i>(Just Skin and Bones)</i> in the victory display?",
+            "text": "石丸春子<i>(皮包骨頭)</i>位於勝利牌區嗎？",
             "steps": [
               "kill_haruko"
             ]
@@ -10905,7 +10905,7 @@
     {
       "id": "kill_haruko",
       "bullet_type": "small",
-      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Ishimaru Haruko</i>.",
+      "text": "在冒險日誌中，在“貴賓遇害”下方記錄<i>石丸春子</i>。",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -11006,7 +11006,7 @@
     },
     {
       "id": "add_two_conviction",
-      "text": "During the scenario, you were instructed to mark two <b>Conviction</b> in your Campaign Log.",
+      "text": "在此次冒險中，你曾經被指示在冒險日誌上記2點<b>確信</b>。",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -11036,7 +11036,7 @@
     },
     {
       "id": "add_two_doubt",
-      "text": "During the scenario, you were instructed to mark two <b>Doubt</b> in your Campaign Log.",
+      "text": "在此次冒險中，你曾經被指示在冒險日誌上記2點<b>疑惑</b>。",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -11088,13 +11088,13 @@
     {
       "id": "ask_conviction_or_doubt_resolution",
       "type": "input",
-      "text": "During the scenario, were you instructed to make any Campaign Log changes?",
+      "text": "在此次冒險中，你曾經被指示在冒險日誌上做任何改變嗎？",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "doubt",
-            "text": "Mark 2 <b>Doubt</b>.",
+            "text": "記2點<b>疑惑</b>。",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -11106,7 +11106,7 @@
           },
           {
             "id": "conviction",
-            "text": "Mark 2 <b>Conviction</b>.",
+            "text": "記2點<b>確信</b>。",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -11118,7 +11118,7 @@
           },
           {
             "id": "neither",
-            "text": "Scenario ended before Act 2b was resolved."
+            "text": "冒險結束時，尚未推進至場景2b。"
           }
         ]
       }
@@ -11137,7 +11137,7 @@
         "physical",
         "mental"
       ],
-      "text": "You are shaken awake by a police officer and lifted to your feet. You feel as though the weight of a train has slammed into your head. The pain is unbearable. The man shines a flashlight in your eyes and asks you several questions in French. Dazed as you are, you find it difficult to answer. He points toward the staircase nearby and pushes you away from the catacombs. You stumble onto the Rue de la Tombe-Issoire and slowly make your way to a hotel where you can stay the night.\nSeveral days of research later, the meaning of the strange diagrams you saw within the catacombs still escapes you. You feel as though you have been led on a wild goose chase. Just as you are about to give up, you see a faded yellow book on the table nearest to you. You are stunned to discover that it is the unabridged script of The King in Yellow. Drawn on the cover in black ink is the very same diagram whose meaning you have been struggling to interpret for several sleepless nights. Who had placed it here? How had it come to your hotel room? Regardless, you know what you must do. The play holds the secrets—it has all along—and yet like a fool you have avoided reading Act II out of superstition. Its words cannot harm you any more than the creatures and fanatics you have already encountered. Trembling, you open to the second part, and begin to read.",
+      "text": "警察把你搖醒，架了起來。你感覺自己的頭好像被火車撞過一樣，頭疼欲裂。眼前的男子拿著手電筒照了照你的眼睛，並用法語問了你幾個問題。你只覺頭暈眼花，根本答不上話。他指了指的附近的樓梯，把你推出了地下墓穴。你踉蹌著走到伊蘇爾墓園大街上，拖著步子回到你住宿的旅店。\n之後幾天你一直在研究地下墓穴裡的那個奇怪圖文的含義，但你一無所獲。你開始感覺這是白費力氣。就快放棄的時候，你看見桌子上一本褪了色的黃色書本就躺在你手邊。你驚訝地發現這是未刪節版的《黃衣之王》劇本。書的封面上用黑色墨水畫著同樣的圖文，就是這個圖文讓你幾宿未眠卻仍然無法解讀。是誰放在這裡的？它怎麼會到你旅店房間裡來的？但撇開這些不談，你知道現在要做什麼了。這部劇中藏著秘密——這個秘密一直就在劇中——而你卻像一個傻瓜一樣，出於迷信，始終避而不讀它的第二幕。它只是文字，它不可能像那些你遇到過的生物和瘋子那樣傷害你。戰慄之下，你翻到書本的第二部分，開始閱讀。",
       "steps": [
         "maybe_ask_conviction_or_doubt",
         "know_site_of_gate",
@@ -11155,7 +11155,7 @@
         "name": "Resolution 1"
       },
       "title": "結局1",
-      "text": "The burned skull holds the key to everything. You are sure of it. You have tried every method available to you in studying the diagram it bears, but the answer eludes you still. You have brought the skull to experts, occultists, and professors. You have even tried speaking with the skull on more than one occasion. Exasperated, you place the skull on your night table and try to get some sleep for the first time since escaping the catacombs. As you fall asleep, you cannot shake the sight of the diagram etched in the skull’s forehead.\nYou awaken with a spark of inspiration and rush to the Musée du Louvre, a famous Parisian museum housing tens of thousands of paintings, drawings, and archaeological finds. You spend days exploring the museum—every display, every collection, every single object of art that might hold a clue to the diagram’s meaning. Finally, you see it: a painting depicting a beautiful island town weathering a torrential storm. Waves crash against the stone of the outer wall, the tide threatening to swallow the island whole. Lightning flashes around the tower of the abbey above the village. A whirlwind of black clouds churns in the sky above. The diagram from the burned skull you hold in your hands is recreated perfectly in the stained glass of the abbey. The title of the piece is “The Path Is Open.”",
+      "text": "這顆燒焦的顱骨裡藏著所有的答案。你非常確定。你已經竭盡所能研究了顱骨上的圖文，但答案始終是一個謎。你把這顆顱骨帶給各界專家、密學家和教授看過。你甚至不止一次嘗試與這顆顱骨對話。惱怒之下，你把顧骨放到床頭櫃上，決定好好睡上一覺，這還是你從地下墓穴出來以後第一次躺下休息。雖然你已入眠，但顱骨前額上蝕刻的圖文卻仍然徘徊在你眼前。\n突然間，你靈光乍現，趕緊起身趕往羅浮宮，這座坐落在巴黎的著名博物館裡藏有數萬件油畫、繪畫和考古發現。你花費了數日在博物館中探索——每一件展品， 每一套收藏，每一幅藝術品中都可能藏有關於這個圖文涵義的線索。終於你看到了它：這幅油畫描繪了暴雨之下一座美麗的小島。浪濤衝撃著外城牆，潮水隨時會把整座島嶼淹沒。耀眼的閃電映襯著城鎮最高處修道院的塔樓。一道烏雲形成的旋風在上空中翻騰。而你手中燒焦顱骨上的圖文完美地重現出了修道院彩色玻璃上的圖案。這幅作品的標題就叫：“道路終現”。",
       "steps": [
         "maybe_add_conviction",
         "know_site_of_gate",
@@ -11172,7 +11172,7 @@
         "name": "Resolution 2"
       },
       "title": "結局2",
-      "text": "You fall ceaselessly through the empty abyss. No air slows your descent or courses through your hair. It is a passageway devoid of reality. Finally, you pass through an invisible gateway and enter another realm. Looming above and below you are two skylines, one a warped reflection of the other. A vortex of swirling black clouds and crashing waves lies in between them. You study both sides—the familiar city and its strange mirror. Could this be the path to Carcosa? A passageway between realities, where realms converge? If so, all that is left is to find where this gate appears on Earth. You fall into the vortex below.\nYou are shaken awake by a police officer and lifted to your feet. You feel as though the weight of a train has slammed into your head. The pain is unbearable. The man shines a flashlight in your eyes and asks you several questions in French. Your eyes widen with realization and you wrest your arm free from the confused man’s grip. “I have to go at once!”",
+      "text": "你掉進了一個無盡而空虛的深淵。在你墜落的過程中甚至沒有一絲空氣拂過你的頭髮。這是一條剝離了現實的通道。終於，你穿過一道看不見的門徑，進入了一片新的領域。在你的頭頂和腳底是兩條天際線，它們像是彼此扭曲的倒影一般。在中間，烏雲形成的旋渦和洶湧的浪潮在迴旋。你仔細研究這兩邊——看到了熟悉的城市和它奇怪的鏡像。這是不是卡爾克薩之路？這是不是世界交匯，連接不同現實的通道？如果是，剩下的就是找到這座次元門在地球上的位置。你掉入了底下的旋渦。\n警察把你搖醒，架了起來。你感覺自己的頭好像被火車撞過一樣，頭疼欲裂。眼前的男子拿著手電筒照了照你的眼睛。並用法語問了你幾個問題。你清醒過來，瞪大了雙眼，一把抽出了被這個男子抓著的手臂，留下一臉驚愕的他。“我要馬上走了！”",
       "steps": [
         "maybe_add_doubt",
         "know_site_of_gate_chasing_stranger",
@@ -11233,7 +11233,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "text": "用以下標記組成混亂袋：+1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -11270,7 +11270,7 @@
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "隨機從以下標記中選擇一種：([cultist], [tablet],或[elder_thing])。將2個所選標記放入混亂袋。",
+      "text": "隨機從以下標記中選擇一種：([cultist]、[tablet]或[elder_thing])。將2個所選標記放入混亂袋。",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -18192,7 +18192,7 @@
   "steps": [
     {
       "id": "check_epilogue",
-      "text": "Check Campaign Log. If at least one investigator was possessed, <b>only those investigators</b> read this epilogue. Do not read it out loud unless all investigators were possessed.",
+      "text": "查看冒險日誌。如果至少有一位調查員被附身，則<b>只有被附身的調查員</b>閱讀尾聲故事。請勿大聲朗讀，避免讓所有調查員遭到附身。",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -18215,7 +18215,7 @@
         "name": "Possessed"
       },
       "type": "story",
-      "text": "It has taken months of preparation, but you are finally ready to unveil your latest work to the world. Gathering financial investments was your first task, of course. That hadn’t taken too long given the connections you’d made during your stay in Paris. You have been assured that the cast assembled is the finest that money could afford, but still you strive to make everything perfect. It must be perfect. The story must be told, so that the world knows. You’ve heard the troupe whisper behind your back: the remarks about your bizarre passion, the concern about your piercing yellow eyes. It matters not to you. All you care about is the performance. The pronunciation of the words. The melody of Cassilda’s song. The design of the Stranger’s mask.\nThis would be the greatest performance of <u>The King in Yellow</u> ever."
+      "text": "準備工作花費了好幾個月，但你終於能揭開最後一道面紗，把你最新的作品呈現給世人。吸收金融投資當然是你的第一要務。得益於你在巴黎逗留期間結識的廣博人脈，這並沒有花費你很多時間。你相信重資聘來的這批演員是最出色的班底，但你仍然要竭盡全力把一切做到盡善盡美。這齣戲必須完美無瑕。必須要讓全世界都知道這個故事。雖然你也聽到戲班子在你身後的閒言碎語：說你的激情透著古怪，說你黃色的眼睛能刺透人心。但這些對你都不重要。你只關心這次演出，關心每一個字的發音，關心卡西露達歌聲的旋律，關心陌生人面具的設計。\n這一次的《黃衣之王》一定會成為史上最成功的演出。"
     }
   ]
 },
@@ -19826,11 +19826,11 @@
         "name": "Intro"
       },
       "type": "story",
-      "text": "The island commune of Mont Saint-Michel lies off the northwestern coast of France. It is beautiful, elegant, and enigmatic—a place out of a fairy tale. Only this tale is one of horrors and madness. During low tide, you would be able to reach the island on foot by crossing the tidal causeway that emerges from the sea. However, by the time you reach the coast, the tide is much higher than you’d anticipated. Dark clouds cover the sky, and a distant crash of thunder signals the start of the oncoming storm. You find a boat whose captain is willing to take you to the island, and prepare for the ritual to come."
+      "text": "聖米歇爾山所在的島嶼就坐落在法國西北部的海岸線上。這裡風景優雅而又神秘莫測——宛若神話中的仙境。只不過，這是一個恐怖而瘋狂的神話。低潮時，你可以從海中露出的堤道步行走到島上。可惜你到達海邊時，潮水比你預期的要高出許多。空中烏雲密佈，遠處傳來的隆隆雷聲預示著暴風雨即將來臨。你找到一艘船，船長願意載你上島，而你也準備好面對即將到來的儀式。"
     },
     {
       "id": "check_ashleigh_clarke",
-      "text": "Check Campaign Log. <i>If Ashleigh Clarke is listed under VIPs Interviewed</i>:",
+      "text": "查看冒險日誌。<i>如果在“貴賓會談”下方記錄有阿什莉‧克拉克</i>：",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -19854,11 +19854,11 @@
         "name": "Ashleigh's Information"
       },
       "type": "story",
-      "text": "You recall the night where this all began, and your thoughts drift to the mesmerizing song Ashleigh sang that night. Somehow you remember the lyrics perfectly after all this time, and its haunting melody is ingrained in your mind. “Above the city the storm clouds rage, and waves crash through the gilded cage... Below the earth the salt water seeps, the shadows fall as the red sun sleeps...” Studying the island that lies before you, illuminated by flashes of lighting and assaulted by tumultuous waves, you can’t help but wonder if Ashleigh was singing about this very moment."
+      "text": "你回憶起一切開始的那個夜晚，你的思緒也飄向阿什莉那晚唱的迷人歌曲。雖然過了那麼久，你卻還能清晰地記起每一句歌詞，而那個難以忘懷的旋律也已深深植入你的腦海。“城上雷雲囂嘩，浪碎鎏金囚枷……碧水穿地湧浹，赤日西枕暗霞……”你端詳著眼前的島嶼，在閃電和巨浪的侵襲之下，你不禁好奇，阿什莉唱的是不是就是眼前的這一刻。"
     },
     {
       "id": "remove_doom_ability",
-      "text": "During this scenario, as a [fast] triggered ability, an investigator may remove 1 doom from an agenda in play. (Group limit once per game.)"
+      "text": "在本場冒險中，作為一項[fast]觸發能力，調查員可以從場上1張密謀卡牌上移除1個毀滅標記。(團隊每場遊戲限制一次。)"
     },
     {
       "id": "flood_below",
@@ -19868,7 +19868,7 @@
         "flood",
         "vortex"
       ],
-      "text": "Be aware that some cards from the <i>Black Stars Rise</i> encounter set have multiple versions, some with <i>The Flood Below</i> encounter set icon on their reverse side, and some with <i>The Vortex Above</i> encounter set icon on their reverse side."
+      "text": "注意，<i>黑星升起</i>遭遇組中的部分卡牌有多個版本，其中部分卡牌背面有<i>地底洪流</i>遭遇組圖標，而另一部分卡牌背面有<i>空中漩渦</i>遭遇組圖標。"
     },
     {
       "id": "add_chaos_token",
@@ -19926,30 +19926,30 @@
     },
     {
       "id": "agenda_setup",
-      "text": "Sort each copy of the following cards into two separate piles, based on the encounter set icon on their reverse side: Agenda 2a—Let The Storm Rage, Agenda 2c—The Entity Above, Chapel of St. Aubert, and Abbey Tower.",
+      "text": "將以下所有卡牌根據其背面的遭遇組圖標，分類擺作兩堆：密謀2a—風暴肆虐，密謀2c—懸空之物，聖奧伯特禮拜堂，修道院塔樓。",
       "bullets": [
         {
-          "text": "You should have two piles of exactly four cards. Each pile should have one copy of each of the above listed cards. The cards in the first pile should have The Flood Below encounter set icon on their reverse side, and the cards in the second pile should have The Vortex Above encounter set icon on their reverse side."
+          "text": "擺放完畢後應為2堆各4張卡牌。每堆卡牌應有上述列出的每種卡牌各一張。一堆卡牌的背面應為<i>地底洪流</i>遭遇組圖標，而另一堆卡牌背面應為<i>空中漩渦</i>遭遇組圖標。"
         },
         {
-          "text": "Flip each pile over so that only the Black Stars Rise encounter set icon is showing. Randomize the two piles so you cannot tell which is which."
+          "text": "將每個牌堆翻面，使<i>黑星升起</i>遭遇組圖標朝上。隨機調換這兩個牌堆，使你無法辨認每個牌堆背面為哪個遭遇組圖標。"
         },
         {
-          "text": "Choose one pile at random to remove from the game and one pile at random to use throughout this scenario’s setup. <b>Do not look at the reverse sides of any of the cards in either pile</b>."
+          "text": "隨機選擇一個牌堆並且將其移出遊戲，而另一個牌堆則在冒險設置階段用到。<b>不要查看這兩個牌堆內的任何卡牌的背面</b>。"
         }
       ]
     },
     {
       "id": "no_act_deck",
-      "text": "This scenario does not have an act deck. Instead, it has two agenda decks. One agenda deck is built using agendas 1a, 2a, and 3a. The other agenda deck is built using agendas 1c, 2c, and 3c <i>(remember to use the versions of agendas 2a and 2c that were randomly chosen earlier)</i>."
+      "text": "本場冒險沒有場景牌堆，而有兩個密謀牌堆。一個密謀牌堆由密謀1a、2a和3a構成。另一個密謀牌堆由密謀1c、2c和3c構成<i>(注意密謀2a和2c要使用較早之前隨機選擇的版本)</i>。"
     },
     {
       "id": "remove_locations",
-      "text": "Choose one of the two Choeur Gothique locations, at random, and set it aside. Remove the other version of Choeur Gothique from the game."
+      "text": "從2個哥特式唱詩臺地點中隨機選擇一個地點，然後將它放在一邊。將哥特式唱詩臺地點的其他所有版本移出遊戲。"
     },
     {
       "id": "setup_locations",
-      "text": "Choose one of the two North Tower locations, one of the two Outer Wall locations, and one of the two Broken Steps locations, at random. Put the chosen locations into play. Remove the other versions of those locations from the game. Then, put the remaining locations (Porte de l’Avancée, Grand Rue, and Abbey Church) into play. Each investigator begins play at Porte de l’Avancée."
+      "text": "隨機選擇2個北部塔樓地點之一，2個外城牆地點之一，2個垮塌的台階地點之一。將所選地點放置入場。將所選地點的其他版本移出遊戲。然後，將剩餘的晉升之門、環山大道和修道院教堂放置進場。每位調查員從晉升之門開始遊戲。"
     },
     {
       "id": "location_layout",
@@ -19986,7 +19986,7 @@
     },
     {
       "id": "add_weakness",
-      "text": "Each investigator searches the collection for a random basic [[Madness]], [[Pact]], [[Cultist]], or [[Detective]] weakness and adds it to their deck.",
+      "text": "每位調查員從收藏中找出一張隨機的[[瘋狂]]、[[契約]]、[[異教徒]]或[[偵探]]基礎弱點，然後將它加入自己的牌組。",
       "effects": [
         {
           "type": "add_weakness",
@@ -20091,27 +20091,27 @@
     {
       "id": "dual_agendas_rule",
       "type": "rule_reminder",
-      "title": "Dual Agendas",
-      "text": "During this scenario, there are two agenda decks. One represents a means for you and your allies to open the path to Carcosa, and leads to one of the two set‐aside act cards. The other represents a means for Hastur to escape into our world, and spells demise for Earth.\nWhen playing this scenario, while there are two agenda decks in play, players must observe the following additional rules:",
+      "title": "雙重密謀",
+      "text": "在本場冒險中，有兩個密謀牌堆。其中一個牌堆為你和你的隊友提供一種開啟卡爾克薩之路的方法，並且引導你們到達放在一邊的兩張場景卡牌之一。而另一個牌堆則表明哈斯塔逃入我們的世界，並且施展法術毀滅地球。\n進行本場冒險時，場上有兩個密謀牌堆，玩家必須遵守以下額外規則：",
       "bullets": [
         {
-          "text": "Whenever 1 or more doom is placed on “the current agenda,” the players may decide which of the two agendas to place this doom on."
+          "text": "“當前密謀”上放置有1點或更多的毀滅標記時，玩家可以決定要將這點毀滅標記放在兩張密謀卡牌中的哪張上方。"
         },
         {
-          "text": "Doom on cards other than the two agendas (such as enemies, locations, or assets) count towards the doom threshold of <b>both</b> agendas."
+          "text": "在兩張密謀卡牌以外的卡牌上的毀滅標記(例如敵人、地點或支援)也計入<b>兩張</b>密謀卡牌的毀滅標記上限。"
         },
         {
-          "text": "When one agenda advances, <b>doom on the other agenda is not removed</b>. All other doom in play is removed."
+          "text": "在推進密謀卡牌時，<b>其他密謀卡牌上的毀滅標記不被移除</b>。場上所有其他毀滅標記被移除。"
         },
         {
-          "text": "If the doom thresholds of both agendas are satisfied during the “Check doom threshold” step of the Mythos phase, choose only one agenda to advance. Then, once you have completed advancing that agenda, check the doom threshold of the other agenda and advance it if its doom threshold is still satisfied."
+          "text": "在神秘階段的“檢查毀滅標記上限”步驟期間，如果達到了兩張密謀卡牌的毀滅上限，只選擇推進其中一張密謀卡牌。然後，當你推進該密謀卡牌後，檢查另一張密謀卡牌的毀滅標記上限，如果仍達到其毀滅標記上限，那麼推進那張密謀卡牌。"
         }
       ]
     },
     {
       "id": "set_aside_location_layout",
       "type": "location_setup",
-      "text": "Set-aside Location Layout (spoilers)",
+      "text": "放在一邊的地點卡的參考擺放位置(劇透)",
       "horizontal": "half",
       "vertical": "normal",
       "locations": [
@@ -20170,7 +20170,7 @@
                 }
               ]
             },
-            "text": "Mark Conviction or Doubt",
+            "text": "標記確信或疑惑",
             "steps": [
               "mark_conviction_or_doubt"
             ]
@@ -20180,14 +20180,14 @@
     },
     {
       "id": "mark_conviction_or_doubt",
-      "text": "Which should be marked, <b>Conviction</b> or <b>Doubt</b>?",
+      "text": "哪一個將被標記，<b>確信</b>或者<b>疑惑</b>？",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "conviction",
-            "text": "Mark one <b>Conviction</b>.",
+            "text": "記1點<b>確信</b>。",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -20205,7 +20205,7 @@
           },
           {
             "id": "doubt",
-            "text": "Mark one <b>Doubt</b>.",
+            "text": "記1點<b>疑惑</b>。",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -20243,7 +20243,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "opened_path_below",
-          "text": "you opened the path below."
+          "text": "你開啟了下方通路。"
         }
       ]
     },
@@ -20254,7 +20254,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "opened_path_above",
-          "text": "you opened the path above."
+          "text": "你開啟了上方通路。"
         }
       ]
     },
@@ -20299,7 +20299,7 @@
         "choices": [
           {
             "id": "ashleigh_killed",
-            "text": "Is Ashleigh Clarke <i>(Songs Die Unheard)</i> in the victory display?",
+            "text": "阿什莉‧克拉克<i>(歌聲漸亡)</i>位於勝利牌區嗎？",
             "steps": [
               "kill_ashleigh"
             ]
@@ -20310,7 +20310,7 @@
     {
       "id": "kill_ashleigh",
       "bullet_type": "small",
-      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Ashleigh Clarke</i>.",
+      "text": "在你的冒險日誌的“貴賓遇害”下方記錄<i>阿什莉‧克拉克</i>。",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -20321,7 +20321,7 @@
     },
     {
       "id": "add_cultists_elder_things",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [cultist] and 2 [elder_thing] tokens to the chaos bag.",
+      "text": "從混亂袋中移除所有的[cultist]、[tablet]和[elder_thing]標記。然後，將2個[cultist]標記和2個[elder_thing]標記放入混亂袋中。",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -20347,7 +20347,7 @@
     },
     {
       "id": "add_cultists_tablets",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [cultist] tokens and 2 [tablet] tokens to the chaos bag.",
+      "text": "從混亂袋中移除所有的[cultist]、[tablet]和[elder_thing]標記。然後，將2個[cultist]標記和2個[tablet]標記放入混亂袋中。",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -20373,7 +20373,7 @@
     },
     {
       "id": "terrible_fate",
-      "text": "You’ve met with a terrible fate, haven’t you?"
+      "text": "你遭遇了極其可怕的命運，不是嗎？"
     },
     {
       "id": "carcosa_merged",
@@ -20382,7 +20382,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "carcosa_merged",
-          "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+          "text": "你所在的世界與卡爾克薩融為一體並且被哈斯塔支配。"
         }
       ]
     },
@@ -20483,7 +20483,7 @@
         "physical",
         "mental"
       ],
-      "text": "You hold your breath as you swim through freezing water toward the spires below. As you get closer, you see ripples throughout the water, as though you are peering into a reflection upon the sea’s surface. You break through the surface and gasp as air fills your lungs.",
+      "text": "你屏住呼吸，跳下冰冷的海水，游向下方的尖柱。游到附近時，你可以看見海水泛起陣陣漣漪，就好像你眼前的是海平面的倒影。你衝破了這個海平面，大口把空氣吸入肺中。",
       "steps": [
         "opened_path_below",
         "add_cultists_tablets",
@@ -20505,7 +20505,7 @@
         "physical",
         "mental"
       ],
-      "text": "You marvel at the cloud-waves encircling you and fly toward the spires above. The desolate and inscrutable city of Carcosa towers before you. You suddenly realize you are falling—not floating—and a pulling force takes hold of your body.",
+      "text": "你沖上雲霄，直奔頭頂的尖柱，身邊環繞的雲浪讓你驚嘆不已。你頭頂上飄浮著荒涼而不可思議的卡爾克薩。你突然意識到你正在下墜——不是在上浮——有一股拉力牽住了你的身軀。",
       "steps": [
         "opened_path_above",
         "add_cultists_elder_things",
@@ -20527,7 +20527,7 @@
         "physical",
         "mental"
       ],
-      "text": "When you awaken, you are sitting in the choeur gothique of Mont Saint-Michel’s abbey. No rain pelts the glass of the windows above, and you hear no thunder, nor the screeching of winged horrors overhead. Somehow, you had escaped the island’s certain doom. You creep to the door of the abbey and open it with trepidation. A dazzling light sears your eyes, and you lift your hand to block the glare of two suns. You stand overlooking the Lake of Hali. Black stars hang in the heavens above. Beyond, over leagues of tossing cloud- waves, the towers of Carcosa rise behind the shattered moon.",
+      "text": "你醒來時，發現自己坐在聖米歇爾山修道院的哥特式唱詩臺上。沒有雨點打在頭頂的玻璃窗上，也聽不到雷鳴和空中飛行駭物的尖叫。你莫名其妙就躲過了小島註定的噩運。你爬向修道院的大門，顫顫巍巍推開了門。刺眼的陽光燒灼著你的雙眼，你抬起手，遮蔽雙生太陽的眩目強光。你站起身，俯瞰著哈利湖。黑星高懸在頭頂的穹窿之上。在遠方，在連綿起伏的翻騰雲浪之外，卡爾克薩的尖塔從破碎的月球後方冉冉升起。",
       "steps": [
         "terrible_fate",
         "carcosa_merged",
@@ -20946,7 +20946,7 @@
   "id": "return_to_dim_carcosa",
   "scenario_name": "重返卡城幽影",
   "full_name": "Scenario VIII: Return to Dim Carcosa",
-  "header": "Scenario VIII",
+  "header": "冒險VIII",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -20999,7 +20999,7 @@
         "name": "Intro 1"
       },
       "type": "story",
-      "text": "You swim to the edge of the water and throw yourself upon the rocky shore, gasping for air. You lie there for some time, utterly exhausted. Every muscle in your body aches. Before you lies a desolate expanse of plain. In the distance, the alien spires of a warped city rise into the clouds. Behind you, the dark surface of the lake from which you’d emerged reflects the glare of two suns. When you peer back into the murky depths, you see no sign of the chapel where you’d made the leap, or of Mont Saint-Michel, or even of Earth. This is Carcosa—the realm of madness in the stars, where Hastur reigns supreme."
+      "text": "你游到水邊，奮力躍上岸邊的岩石，大口喘著氣。你躺下休息了一會兒，感覺精力完全被榨乾了。身上每一塊肌肉都在酸痛。你的眼前是一望無際的荒蕪平原。遠處異界的尖柱從扭曲的城中直插雲霄。在你身後是你剛剛破水而出的湖泊，黑色的湖面倒映著兩個耀眼的太陽。你回頭望向晦暗的湖底，剛才你跳躍時立足的禮拜堂已然看不到一絲痕跡，而聖米歇爾山，甚至地球，也都見不到絲毫蹤影。這就是卡爾克薩——眾星之中的瘋狂國度，哈斯塔的至高領域。"
     },
     {
       "id": "intro_2",
@@ -21008,7 +21008,7 @@
         "name": "Intro 2"
       },
       "type": "story",
-      "text": "You land on a piece of black obsidian stone winding up a dark spire. You cough blood and feel a searing pain in your gut, as though you’d broken a rib. Before you lies a warped, alien city. Its twisting streets and aberrant architecture have no semblance of order or structure. In the distance, a murky lake reflects the glare of two suns. When you look up, the abbey of Mont Saint-Michel peeks just below the clouds, flipped upside-down. This is Carcosa—the realm of madness in the stars, where Hastur reigns supreme."
+      "text": "你掉落到一片黑色尖柱上，柱頂為蜿蜒盤旋的黑曜石。你只覺體內一陣劇痛，好像肋骨都被刺裂了一般，咳出了鮮血。你的眼前是歪折的怪異都市。那些扭曲的街道和反常的建築物毫無規則和結構可言。在遠處，一片晦暗的湖泊倒映著兩個耀眼的太陽。你抬頭望去，聖米歇爾山上的修道院在上下倒錯的雲層中若隱若現。這就是卡爾克薩——眾星之中的瘋狂國度，哈斯塔的至高領域。"
     },
     {
       "id": "select_act_2",
@@ -21107,43 +21107,43 @@
     },
     {
       "id": "act_2_v1",
-      "text": "Because you have 5 or less total <b>Doubt</b> and <b>Conviction</b>:",
+      "text": "由於你總共擁有5點或更少的<b>疑惑</b>和<b>確信</b>：",
       "bullets": [
         {
-          "text": "Use Act 2—Search For the Stranger (v. I). Remove each other version of Act 2 from the game."
+          "text": "使用場景2—搜尋陌生人(版本一)。將其他所有版本的場景2移出遊戲。"
         }
       ]
     },
     {
       "id": "act_2_v2",
-      "text": "Because you have 6 or more total <b>Doubt</b> and <b>Conviction</b>, and have more <b>Doubt</b> than <b>Conviction</b>.",
+      "text": "由於你總共擁有6點或更多的<b>疑惑</b>和<b>確信</b>，並且你擁有的<b>疑惑</b>數多於<b>確信</b>數。",
       "bullets": [
         {
-          "text": "Use Act 2—Search the Stranger (v. II). Remove each other version of Act 2 from the game."
+          "text": "使用場景2—搜尋陌生人(版本二)。將其他所有版本的場景2移出遊戲。"
         }
       ]
     },
     {
       "id": "act_2_v3",
-      "text": "Because you have 6 or more total <b>Doubt</b> and <b>Conviction</b>, and have more <b>Conviction</b> than Doubt:",
+      "text": "由於你總共擁有6點或更多的<b>疑惑</b>和<b>確信</b>，並且你擁有的<b>確信</b>數多於<b>疑惑</b>數：",
       "bullets": [
         {
-          "text": "Use Act 2—Search the Stranger (v. III). Remove each other version of Act 2 from the game."
+          "text": "使用場景2—搜尋陌生人(版本三)。將其他所有版本的場景2移出遊戲。"
         }
       ]
     },
     {
       "id": "act_2_choice",
-      "text": "Because you have 6 or more total <b>Doubt</b> and <b>Conviction</b>, and you have exactly equal <b>Doubt</b> and Conviction:",
+      "text": "由於你總共擁有6點或更多的<b>疑惑</b>和<b>確信</b>，並且你擁有的<b>疑惑</b>數等於<b>確信</b>數：",
       "bullets": [
         {
-          "text": "You may choose to use either Act 2—Search For the Stranger (v. II) or Act 2—Search For the Stranger (v. III). Remove each other version of Act 2 from the game."
+          "text": "你可以選擇使用場景2—搜尋陌生人(版本二)或場景2—搜尋陌生人(版本三)。將其他所有版本的場景2移出遊戲。"
         }
       ]
     },
     {
       "id": "setup_random_locations",
-      "text": "Randomly put 1 copy of Bleak Plains, 1 copy of Dim Streets, 1 copy of Ruins of Carcosa, and 1 copy of Depths of Demhe into play. Set each other copy of Bleak Plains, Dim Streets, Ruins of Carcosa and Depths of Demhe aside, out of play."
+      "text": "隨機將1張荒涼平原，1張幽暗街道，1張卡爾克薩廢墟，1張迪蒙深淵放置入場。將其他的荒涼平原、幽暗街道、卡爾克薩廢墟、迪蒙深淵放在一邊，位於場外。"
     },
     {
       "id": "choose_starting_location",
@@ -21170,11 +21170,11 @@
     },
     {
       "id": "start_at_shores",
-      "text": "Because <i>you opened the path below</i>, each investigator begins play at Shores of Hali."
+      "text": "因為<i>你開啟了下方通路</i>，每位調查員從哈利湖濱開始遊戲。"
     },
     {
       "id": "start_at_spires",
-      "text": "Because <i>you opened the path above</i>, each investigator begins play at Dark Spires."
+      "text": "<i>因為你開啟了上方通路</i>，每位調查員從黑色尖柱開始遊戲。"
     },
     {
       "id": "check_for_onyx_clasp",
@@ -21262,11 +21262,11 @@
     },
     {
       "id": "set_aside_man_in_pallid_mask",
-      "text": "The bearer of The Man in the Pallid Mask weakness searches their deck for it and sets it aside, out of play."
+      "text": "蒼白面具下的男子弱點的承受者從其牌組中找出該卡牌，然後將它放在一邊，位於場外。"
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Hastur <i>(The King in Yellow)</i>, Hastur <i>(Lord of Carcosa)</i>, Hastur <i>(The Tattered King)</i>, and Beast of Aldebaran."
+      "text": "將下列卡牌放在一邊，位於場外：哈斯塔<i>(黃衣之王)</i>，哈斯塔<i>(卡爾克薩領主)</i>，哈斯塔<i>(襤褸之王)</i>，畢宿五的野獸。"
     },
     {
       "id": "add_doom",
@@ -21341,12 +21341,12 @@
     {
       "id": "add_3_doom",
       "bullet_type": "small",
-      "text": "Add 3 doom to agenda 1a."
+      "text": "在密謀1a增加3個毀滅標記。"
     },
     {
       "id": "add_2_doom",
       "bullet_type": "small",
-      "text": "Add 2 doom to agenda 1a."
+      "text": "在密謀1a增加2個毀滅標記。"
     },
     {
       "id": "add_1_doom",
@@ -21360,7 +21360,7 @@
     },
     {
       "id": "take_horror",
-      "text": "Each investigator takes direct horror equal to half their sanity, rounded down (<i>cannot be prevented</i>). This horror cannot cause you to become defeated (see “Sanity in the Realm of Carcosa,” below)."
+      "text": "每位調查員受到等同於其一半神智值的直接恐懼，向下取整(<i>不能被防止</i>)。此恐懼不會導致你被擊敗(見下方“卡爾克薩領域的神智值”)。"
     },
     {
       "id": "encounter_deck",
@@ -21369,13 +21369,13 @@
     {
       "id": "single_sided_location",
       "type": "rule_reminder",
-      "text": "Each of the locations in this scenario have no unrevealed side, and therefore enter play with their revealed side faceup. Instead of an unrevealed side, these locations have story cards on their reverse sides. Whenever a location in Dim Carcosa enters play (including during setup), place clues on that location equal to its clue value, as normal."
+      "text": "本場冒險中的每個地點均沒有未揭示面，因此其進場時以已揭示面朝上放置。這些地點背面均為劇情卡牌，取代未揭示面。當卡城幽影的地點進場(包括在冒險設置期間)，在該地點上放置等同於其線索值的線索，與正常規則相同。"
     },
     {
       "id": "sanity_in_carcosa_rule",
       "type": "rule_reminder",
-      "title": "Sanity in the Realm of Carcosa",
-      "text": "In the twisted and madness‐inducing realm of Carcosa, insanity is an inevitability. But even with your mind fractured and broken, your investigation does not end here. <b>During this scenario, investigators are not defeated when they have horror on them equal to or greater than their sanity.</b> Investigators may continue to take horror even in excess of their sanity. While an investigator has more horror on them than sanity, their “remaining sanity” is considered to be 0."
+      "title": "卡爾克薩領域的神智値",
+      "text": "身處扭曲且引人發狂的卡爾克薩之中，難以避免精神錯亂。但你即使理智支離破碎，也不會就此停止調查。<b>在本場冒險中，調查員獲得的恐懼大於或等於其神智值時不被擊敗。</b>調查員在恐懼已超出神智值的情況下仍可繼續獲得恐懼。當一位調查員的恐懼超出其神智值時，其“剩餘神智值”被視為0。"
     },
     {
       "id": "$play_scenario",
@@ -21412,13 +21412,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "prevented_hasturs_escape",
-          "text": "the investigators prevented Hastur from escaping his prison."
+          "text": "調查員阻止哈斯塔逃出牢獄。"
         }
       ]
     },
     {
       "id": "record_possessed_investigators",
-      "text": "In your Campaign Log, record the names of each investigator who ended the game with at least 1 copy of the Possession treachery in their hand.",
+      "text": "在你的冒險日誌裡記錄，哪些調查員在本局遊戲結束時手牌有至少1張惡靈附身詭計卡。",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -21427,21 +21427,21 @@
         "choices": [
           {
             "id": "possessed",
-            "text": "At least 1 Posession treachery in hand.",
+            "text": "手牌有至少1張惡靈附身詭計卡。",
             "effects": [
               {
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "possessed",
-                "text": "one or more investigators was possessed."
+                "text": "至少有一位調查員被附身。"
               },
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "possessed",
                 "cards": "$input_value",
-                "masculine_text": "#name# was possessed.",
-                "feminine_text": "#name# was possessed."
+                "masculine_text": "#name#被附身。",
+                "feminine_text": "#name#被附身。"
               }
             ]
           }
@@ -21450,7 +21450,7 @@
     },
     {
       "id": "take_mental_trauma",
-      "text": "Each investigator suffers 2 mental trauma, as they never fully recovers from their time spent in Carcosa, the realm of madness.",
+      "text": "調查員還未從瘋狂國度卡爾克薩度過的驚懼時光中平息過來，每位調查員承受2點精神創傷。",
       "effects": [
         {
           "type": "trauma",
@@ -21461,7 +21461,7 @@
     },
     {
       "id": "take_physical_trauma",
-      "text": "Each investigator suffers 2 physical trauma, as they never fully recovers from their time spent in Carcosa, the realm of madness.",
+      "text": "調查員還未從瘋狂國度卡爾克薩度過的驚懼時光中平息過來，每位調查員承受2點肉體創傷。",
       "effects": [
         {
           "type": "trauma",
@@ -21472,7 +21472,7 @@
     },
     {
       "id": "take_physical_and_mental_trauma",
-      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as they never fully recovers from their time spent in Carcosa, the realm of madness.",
+      "text": "調查員還未從瘋狂國度卡爾克薩度過的驚懼時光中平息過來，每位調查員承受2點肉體創傷和2點精神創傷。",
       "effects": [
         {
           "type": "trauma",
@@ -21489,7 +21489,7 @@
       "input": {
         "type": "counter",
         "text": "勝利牌區：",
-        "confirm_text": "Each investigator earns 5 bonus experience, as they has truimphed over their own self—the most dangerous of foes.",
+        "confirm_text": "調查員們克服了自己的難關——最為險惡的敵人，每位調查員獲得5點獎勵經驗值。",
         "effects": [
           {
             "type": "earn_xp",
@@ -21506,7 +21506,7 @@
       "input": {
         "type": "counter",
         "text": "勝利牌區：",
-        "confirm_text": "Each investigator earns 5 bonus experience, as they has learned the truth behind <u>The King in Yellow</u>.",
+        "confirm_text": "調查員得知了《黃衣之王》背後的真相，每位調查員獲得5點獎勵經驗值。",
         "effects": [
           {
             "type": "earn_xp",
@@ -21518,7 +21518,7 @@
     },
     {
       "id": "terrible_fate",
-      "text": "You’ve met with a terrible fate, haven’t you?"
+      "text": "你遭遇了極其可怕的命運，不是嗎？"
     },
     {
       "id": "carcosa_merged",
@@ -21527,13 +21527,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "carcosa_merged",
-          "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+          "text": "你所在的世界與卡爾克薩融為一體並且被哈斯塔支配。"
         }
       ]
     },
     {
       "id": "could_not_escape",
-      "text": "You didn’t really think you could escape, did you?"
+      "text": "難道你真的認為你能逃脫嗎？"
     },
     {
       "id": "hastur_has_you",
@@ -21542,7 +21542,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "hastur_has_you",
-          "text": "Hastur has you in his grasp."
+          "text": "哈斯塔已將你抓住。"
         }
       ]
     },
@@ -21715,7 +21715,7 @@
         "name": "Resolution 1"
       },
       "title": "結局1",
-      "text": "You stand atop the balcony of the abbey tower in Mont Saint-Michel, wet wind coursing through your hair. The Pallid Mask lies in your hands, devoid of warmth. You can scarcely bring yourself to look at it. You remember everything now—how it all began, how it ended, and everything in between. There is only one thing left to do. You hurl the mask into the air with all of your strength and watch as it flies into the tempest-tossed waves below.",
+      "text": "你站在聖米歇爾山修道院塔樓的陽臺高處，濕冷的寒風輕拂著你的頭髮。蒼白面具就躺在你的手中，沒有絲毫暖意。你努力強迫自己看著它。現在，你想起了每一件事——這一切是如何開始，又是如何結束，以及在它們之間的椿樁件件。現在只剩下最後一件事要做了。你用盡渾身的力氣，將面具全力一擲，看著它隨風飛入下方風暴翻卷的浪濤之中。",
       "steps": [
         "prevented_hasturs_escape",
         "record_possessed_investigators",
@@ -21732,7 +21732,7 @@
         "name": "Resolution 2"
       },
       "title": "結局2",
-      "text": "A roar of applause startles you awake. The crowd of the theatre rises to their feet, cheering endlessly. Several patrons in the front row are throwing roses to the actors on stage, who are bowing with wide smiles across their faces. A searing headache crawls through your temples. How did you get back here? Were you in the theatre all along? What about the dinner party? The asylum? The catacombs?... Carcosa? Was it all just a terrible dream?\nYou exit the auditorium before the crowd rushes to do the same. Dizziness and exhaustion harries your senses. The weight of your lengthy investigation is crushing your mind. By the time you finally reach the lobby, you are clawing your way across the ground. Just then, a man in an elegant suit reaches down and grabs you by your arm, pulling you to your feet. You are about to thank him when you realize who he is. The sight of him causes you to stagger backward in horror momentarily. The actor who plays the role of the Stranger is still wearing his pale, featureless mask. He gives you a wordless bow, then turns and leaves through the Ward Theatre’s front entrance.",
+      "text": "雷鳴般的掌聲驚醒了你。劇院的觀眾都起立駐足，他們在一個勁地喝彩。前排的幾個觀眾朝臺上的演員拋去玫瑰花，演員們的臉上綻放著會心的微笑，鞠躬致意。一陣劇烈的頭疼爬上了你的太陽穴。你怎麼會回到這裡的？難道你一直就在劇院裡？今天的晚宴怎麼了？還有瘋人院？地下墓穴？……卡爾克薩？這一切難道只是一場噩夢？\n你趕在人流退場之前，離開了觀眾席。眩暈和疲憊侵擾著你的感官。你漫長的調查經歷己經壓垮了你的精神。等你終於到達前廳時，你已經在地上匍匐爬行了。就在這時，一個身著優雅西服的男子彎下腰，挽住了你的手臂，把你拉起了身。你正準備感謝他，卻突然意識到他是誰。和他一打照面，你就驚恐地連連後退。這個扮演陌生人一角的演員還戴著他蒼白而面無表情的面具。他一語不發地向你鞠了一躬，旋即走出了沃德劇院的正門。",
       "steps": [
         "prevented_hasturs_escape",
         "record_possessed_investigators",
@@ -21749,7 +21749,7 @@
         "name": "Resolution 3"
       },
       "title": "結局3",
-      "text": "When you awaken, you are sitting in the choeur gothique of Mont Saint-Michel’s abbey. No rain pelts the glass of the windows above, and you hear no thunder, nor the screeching of winged horrors overhead. Somehow, you have escaped. You creep to the door of the abbey and open it with trepidation. A dazzling light sears your eyes, and you lift your hand to block the glare of the sun. You stand overlooking beautiful Mont Saint-Michel. Seagulls fly over the abbey under a backdrop of cloudless sky. The waters around the abbey are calm and azure-blue.\n“I’ve been looking all over for you!” You hear a voice exclaim behind you. You turn with a startle. For a moment you expect to see the Stranger and his Pallid Mask, but instead, the boat captain you’d hired to take you to Mont Saint-Michel stands at the edge of the steps, smiling at you. “Are you ready to head back?”",
+      "text": "你醒來時，發現自己坐在聖米歇爾山修道院的哥特式唱詩臺上。沒有雨點打在頭頂的玻璃窗上，也聽不到雷鳴和空中飛行駭物的尖叫。你莫名其妙就躲過一劫。你爬向修道院的大門，顫顫巍巍推開了門。刺眼的的陽光燒灼著你的雙眼，你抬起手，遮蔽太陽的光照。你站起身俯瞰著美麗的聖米歇爾山。萬里晴空之下，海鷗在修道院上方飛翔。修道院周圍的海碧藍通透，水波不驚。\n“我一直在到處找你！”你聽到身後有人在呼喚你。你驚訝地扭頭一看。恍惚之間，你還以為會看到陌生人和他的蒼白面具，但那只是你僱傭帶你來聖米歇爾山的船長，他站在臺階一邊，沖著你微笑：“你準備回去了嗎？”",
       "steps": [
         "prevented_hasturs_escape",
         "record_possessed_investigators",
@@ -21766,7 +21766,7 @@
         "name": "Resolution 4"
       },
       "title": "結局4",
-      "text": "When you awaken, you are sitting in the choeur gothique of Mont Saint-Michel’s abbey. No rain pelts the glass of the windows above, and you hear no thunder, nor the screeching of winged horrors overhead. Somehow, you have escaped the island’s certain doom. You creep to the door of the abbey and open it with trepidation. A dazzling light sears your eyes, and you lift your hand to block the glare of two suns. You stand overlooking the Lake of Hali. Black stars hang in the heavens above. Beyond, over leagues of tossing cloud-waves, the towers of Carcosa rise behind the shattered moon.",
+      "text": "你醒來時，發現自己坐在聖米歇爾山修道院的哥特式唱詩臺上。沒有雨點打在頭頂的玻璃窗上，也聽不到雷鳴和空中飛行駭物的尖叫。你莫名其妙就躲過了小島註定的噩運。你爬向修道院的大門，顫顫巍巍推開了門。刺眼的陽光燒灼著你的雙眼，你抬起手，遮蔽雙生太陽的眩目強光。你站起身，俯瞰著哈利湖。黑星高懸在頭頂的穹窿之上。在遠方，在連綿起伏的翻騰雲浪之外，卡爾克薩的尖塔從破碎的月球後方冉冉升起。",
       "steps": [
         "terrible_fate",
         "carcosa_merged",
@@ -21780,8 +21780,8 @@
         "id": "the_path_to_carcosa.dim_carcosa.resolution_5",
         "name": "Resolution 5"
       },
-      "title": "Resolution 5",
-      "text": "The outside world will never know how you tried to save them. They treat you with pity, with scorn and contempt, but you know the truth. They are resigned to their hideous fate, but still you try day after day to bring them your message. You must warn them of The King in Yellow, of Hastur and of Carcosa. “Another lost soul,” they say, but they cannot possibly fathom what you have gone through in your attempt to save them. You warn them that he is coming to claim them, but they never believe you. You write of Aldebaran and of the black stars on the wall of your cell, but the words become faded as the years go by. Your warning is never heeded.",
+      "title": "結局5",
+      "text": "外面的世界上永遠不會有人知道你曾努力拯救過他們。他們的眼中帶著憐憫、嘲弄和不屑，但只有你知道真相。他們都已屈服於自己醜惡的命運，但只有你，還在日復一日為他們帶去你的口信。你必須警告他們有關《黃衣之王》、哈斯塔和卡爾克薩。“又是個可憐人。”他們說，但他們根本想像不出你為了拯救他們經歷了怎樣的坎坷。你警告他們說，他來了，他要奪走他們，但根本沒有人相信你。你把畢宿五和黑色星辰寫在你囚室的牆壁上，但歲月流逝，字跡也日漸褪去。而你的警告始終無人聽從。",
       "steps": [
         "could_not_escape",
         "hastur_has_you",
@@ -22214,7 +22214,7 @@
     },
     {
       "id": "add_mixed_tokens",
-      "text": "從混亂袋中移除所有的[cultist]、[tablet]、[elder_thing]標記。然後將1個[cultist]標記，1個[tablet]標記和1個[elder_thing]標記加入混亂袋 。",
+      "text": "從混亂袋中移除所有的[cultist]、[tablet]和[elder_thing]標記。然後將1個[cultist]標記，1個[tablet]標記和1個[elder_thing]標記加入混亂袋 。",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -22460,7 +22460,7 @@
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "隨機從以下標記中選擇一種：([cultist], [tablet],或[elder_thing])。將2個所選標記放入混亂袋。",
+      "text": "隨機從以下標記中選擇一種：([cultist]、[tablet]或[elder_thing])。將2個所選標記放入混亂袋。",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -22734,7 +22734,7 @@
     },
     {
       "id": "adjust_chaos_tokens",
-      "text": "從混亂袋中移除所有的[cultist]、[tablet]、[elder_thing]標記。然後將1個[cultist]標記，1個[tablet]標記和1個[elder_thing]標記加入混亂袋 。",
+      "text": "從混亂袋中移除所有的[cultist]、[tablet]和[elder_thing]標記。然後將1個[cultist]標記，1個[tablet]標記和1個[elder_thing]標記加入混亂袋 。",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -22921,7 +22921,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "text": "用以下標記組成混亂袋：+1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -22958,7 +22958,7 @@
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "隨機從以下標記中選擇一種：([cultist], [tablet],或[elder_thing])。將2個所選標記放入混亂袋。",
+      "text": "隨機從以下標記中選擇一種：([cultist]、[tablet]或[elder_thing])。將2個所選標記放入混亂袋。",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -23018,7 +23018,7 @@
     },
     {
       "id": "found_nigels_home",
-      "text": "<i>You found Nigel's home.</i>",
+      "text": "<i>你找到了奈傑爾的住宅。</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -23030,11 +23030,11 @@
     },
     {
       "id": "no_haruko",
-      "text": "<i>Ishimaru Haruko is not listed under VIPs Interviewed or VIPs Slain.</i>"
+      "text": "<i>在“貴賓會談”或“貴賓遇害”下方記錄沒有石丸春子。</i>"
     },
     {
       "id": "check_intro_condition",
-      "text": "Check Campaign Log. <i>If you did not escape the gaze of the phantom</i>, or <i>if you were unable to find Nigel</i>",
+      "text": "查看冒險日誌。如果<i>你沒能逃脫幻影的凝視</i>，或者<i>你沒能找到奈傑爾</i>",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -23086,7 +23086,7 @@
         "name": "Intro 1"
       },
       "type": "story",
-      "text": "You are stirred awake by dirty, stale air and dust in your throat. You are lying on a slab of cold stone inside a lightless underground passageway. How did you get here? And where is “here” exactly? A shiver courses up your body, and your hair stands on end. Rising to your feet, you take stock of your surroundings. Bones decorate the walls and ceiling around you, open-mouthed skulls peering back at you everywhere you look."
+      "text": "污穢霉變的空氣裡挾著灰塵，刺激著你的喉嚨，把你從夢中拽醒。你躺在一塊冰冷的石板上，四周是幽暗無光的地下通道。你怎麼會來到這裡的？“這裡”又是什麼地方？一股寒意流遍你的全身，讓你毛髮倒立。你站起身，打量著周遭的環境。你周圍的牆壁和天花板上裝飾著白骨，無論望向哪裡，都能看到張口的顱骨在盯著你。"
     },
     {
       "id": "intro_2",
@@ -23095,7 +23095,7 @@
         "name": "Intro 2"
       },
       "type": "story",
-      "text": "The contents of Nigel Engram’s home answer none of your questions about The King in Yellow, but do hint at where you should head next. The old, tattered map you found on his coffee table depicts a section of the infamous Catacombs of Paris. One particular room on the map has been circled with pen, and next to it is written: “The key to opening the Path lies here!” You swallow your fear and head immediately for the entrance to the catacombs underneath Rue de la Tombe-Issoire."
+      "text": "奈傑爾‧英格蘭姆家裡找不到任何能解答你有關《黃衣之王》疑問的東西，但你的下一步行動找到了方向。你在他咖啡桌上找到的破舊地圖描繪的是惡名昭著的巴黎地下墓穴。地圖上用鋼筆特地圈出了一個房間，旁邊寫著：“打開通路的關鍵就在這裡！”你強忍恐懼，立即出發前往伊蘇爾墓園大街的地下墓穴入口。"
     },
     {
       "id": "entered_catacombs",
@@ -23104,7 +23104,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "entered_catacombs",
-          "text": "you entered the catacombs on your own."
+          "text": "你自行進入地下墓穴。"
         }
       ]
     },
@@ -23115,13 +23115,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "awoke_inside_catacombs",
-          "text": "you awoke inside the catacombs."
+          "text": "你在地下墓穴中醒來。"
         }
       ]
     },
     {
       "id": "check_ishimaru_haruko",
-      "text": "Check Campaign Log. <i>If Ishimaru Haruko is listed under VIPs Interviewed</i>:",
+      "text": "查看冒險日誌。<i>如果在“貴賓會談”下方記錄有石丸春子</i>：",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -23145,15 +23145,15 @@
         "name": "Haruko's Information"
       },
       "type": "story",
-      "text": "Just past the archway closest to you, you see a familiar symbol etched into the skull of a sheep: rows of concentric semicircles, lined with exotic runes. Two wavy lines descend from the design, leading into the skull’s lower jawbone. You recognize it as the pattern Haruko had shown you. Wondering why it would appear here, you examine the skull in greater detail. As soon as you touch the underside of the skull’s jawbone, its mouth suddenly opens. Bones collapse to the ground as the wall slides to reveal a new path."
+      "text": "你剛經過一道拱門，看見一個綿羊的頭骨上蝕刻著一個熟悉的符號：許多同軸的半圓形成的圓環上排列著奇異的符文。圖案下方有兩條波紋狀的線條，連到頭骨的下顎。你認出了這是春子給你看過的圖案。你好奇為什麼它會出現在這裡，於是對著這顆頭骨仔細端詳起來。你剛剛觸碰到下顎骨，它的嘴突然張開了。白骨散落到地上，牆壁滑動，露出了一條新的道路。"
     },
     {
       "id": "opened_a_secret_passageway",
-      "text": "Remember that “you opened a secret passageway.”"
+      "text": "請記住“你開啟了一條秘密通道。”"
     },
     {
       "id": "set_aside_cards",
-      "text": "Find the Tomb of Shadows and the Blocked Passage (each one is the revealed side of a Catacombs location). Set them aside, out of play."
+      "text": "找出暗影墳墓和堵塞通道(每張均為地下墓穴地點的已揭示面)。將這些卡牌放在一邊，位於場外。"
     },
     {
       "id": "check_catacomb_entry",
@@ -23180,19 +23180,19 @@
     },
     {
       "id": "start_random_location",
-      "text": "Put a random Catacombs location (other than the set‐aside Tomb of Shadows or Blocked Passage) into play, Catacombs side faceup. For the remainder of the scenario, that location is referred to as “the starting location.” Place a resource token on this location to mark it as the starting location. <b>Do not place investigators here yet.</b>"
+      "text": "將一個隨機的地下墓穴地點放置入場(放在一邊的暗影墳墓和堵塞通道除外)，地下墓穴一面朝上。接下來的本場冒險中，將該地點作為“起始地點”。將1個資源標記放在這個地點上，表示該地點為起始地點。<b>先不要將調查員放置到此處。</b>"
     },
     {
       "id": "start_gate_to_hell",
-      "text": "Find The Gate to Hell (it is the revealed side of a Catacombs location). Put The Gate to Hell into play, Catacombs side faceup. For the remainder of the scenario, The Gate to Hell is referred to as “the starting location.” Place a resource token on The Gate to Hell to mark it as the starting location. <b>Do not place investigators here yet.</b>"
+      "text": "找出地獄之門(地下墓穴地點的已揭示面)。將地獄之門放置入場，地下墓穴一面朝上放置。接下來的本場冒險中，將地獄之門作為“起始地點”。將1個資源標記放在地獄之門上，表示該地點為起始地點。<b>先不要將調查員放置到此處。</b>"
     },
     {
       "id": "place_investigators",
-      "text": "Each investigator begins play at the starting location. <i>(Remember to trigger the <b>Forced</b> effect on that location when it is revealed.)</i> If “you opened a secret passageway,” choose a Catacombs location adjacent to the starting location and reveal it."
+      "text": "每位調查員從起始地點開始遊戲。(注意在地點翻至已揭示面時，觸發該地點上的<b>強制</b>效果。)\n如果“你開啟了一條秘密通道”，選擇一個地下墓穴地點放在起始地點的相鄰位置，翻開該地點卡牌。"
     },
     {
       "id": "set_aside_pallid_mask",
-      "text": "The bearer of The Man in the Pallid Mask weakness searches their deck for it and sets it aside, out of play."
+      "text": "蒼白面具下的男子弱點的承受者從其牌組中找出該卡牌，然後將它放在一邊，位於場外。"
     },
     {
       "id": "encounter_deck",
@@ -23285,8 +23285,8 @@
     {
       "id": "location_adjacency_rule",
       "type": "rule_reminder",
-      "title": "Location Adjacency in the Catacombs",
-      "text": "During this scenario, locations will be arranged in a set pattern, with new locations from the Catacombs Deck emerging to the left, right, above, or below existing locations, as they are revealed. A location that is put into play to the left, right, above, or below another location should be set next to that location in the manner described, with no other locations in between them.\nA location that is next to another location in this manner is considered <b>adjacent</b>. Locations are only adjacent orthogonally (left, right, above, and below), and are not adjacent diagonally. During this scenario, adjacent locations are considered to be connected to one another.\nYou cannot put a location into play where an existing location already is. If you are given the choice to place a location from the Catacombs Deck in one of multiple spots, and one of those spots is occupied by an existing location, you cannot choose that spot. You must choose a spot unoccupied by a location, if able. If all of the specified spots are occupied by existing locations, the <b>Forced</b> effect fails and no new Catacombs locations are put into play."
+      "title": "地下墓穴的地點相鄰",
+      "text": "在本場冒險中，將以特定模式擺放地點，地下墓穴牌堆新翻開的地點將出現在現有地點的左邊、右邊、上方或下方。地點放置入場時，必須依據相鄰地點所述要求放置在這一地點的左邊、右邊、上方或下方，這兩個地點之間沒有其他地點。\n以此方式將一個地點放置在另一個地點旁邊，這兩個地點視作<b>相鄰</b>。地點沿豎直和水平方向相鄰(左邊、右邊、上方和下方)，而不沿對角線方向相鄰。在本場冒險期間，相鄰地點視作彼此相連。\n放置地點入場時，不能將它放在已有地點的位置上。如果從地下墓穴牌堆放置地點時可選擇多個位置進行放置，而其中一個可選位置已有地點，那麼你不能選擇在該位置放置。你必須選擇一個未有地點的位置進行放置(如果你能夠這麼做)。如果所有的可選位置均已有地點，那麼此<b>強制</b>效果失效，新的地下墓穴地點不會放置入場。"
     },
     {
       "id": "$play_scenario",
@@ -23313,7 +23313,7 @@
                 }
               ]
             },
-            "text": "Mark Conviction or Doubt",
+            "text": "標記確信或疑惑",
             "steps": [
               "mark_conviction_or_doubt"
             ]
@@ -23323,15 +23323,15 @@
     },
     {
       "id": "mark_conviction_or_doubt",
-      "text": "How was act 2 advanced?",
+      "text": "場景2是如何推進的？",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "conviction",
-            "text": "The Man in the Pallid Mask was defeated.",
-            "description": "Mark two <b>Conviction</b>.",
+            "text": "蒼白面具下的男子被擊敗。",
+            "description": "記2點<b>確信</b>。",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -23349,8 +23349,8 @@
           },
           {
             "id": "doubt",
-            "text": "You spent clues to advance.",
-            "description": "Mark two <b>Doubt</b>.",
+            "text": "你花費了線索推進場景。",
+            "description": "記2點<b>疑惑</b>。",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -23388,19 +23388,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "know_site_of_gate",
-          "text": "you know the site of the gate."
+          "text": "你已知曉大門所在。"
         }
       ]
     },
     {
       "id": "know_site_of_gate_chasing_stranger",
-      "text": "In your Campaign Log, record that <i>you know the site of the gate</i>. Add two tally marks under “Chasing the Stranger.”",
+      "text": "在冒險日誌中，記錄<i>你已知曉大門所在</i>。在“追蹤陌生人”下方作2次記錄。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "know_site_of_gate",
-          "text": "you know the site of the gate."
+          "text": "你已知曉大門所在。"
         },
         {
           "type": "campaign_log_count",
@@ -23412,7 +23412,7 @@
     },
     {
       "id": "read_act_2_choice",
-      "text": "Each investigator must choose whether or not to read Act II of The King in Yellow. At least one investigator must read Act II.\nIn your Campaign Log, record the names of each investigator who chose to read Act II. Each investigator who read Act II searches the collection for a random basic [[Madness]] or [[Pact]] weakness, and adds it to their deck (does not count toward deck size). Each investigator who read Act II earns 2 additional experience as they gain insight into the machinations of the Tattered King.",
+      "text": "每位調查員必須選擇是否要閱讀《黃衣之王》第二幕。至少一位調查員必須閱讀第二幕。\n在冒險日誌中，記錄選擇閱讀第二幕的每位調查員的名字。閱讀第二幕的每位調查員從收藏中找出一張隨機的[[瘋狂]]或[[契約]]基礎弱點，然後將它放進自己的牌組(不計入牌組張數上限)。調查員洞察了襤褸之王的陰謀，每位閱讀第二幕的調查員獲得2點額外的經驗值。",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -23421,15 +23421,15 @@
         "choices": [
           {
             "id": "read_act_2",
-            "text": "Read Act II",
+            "text": "閱讀第二幕",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "read_act_2",
                 "cards": "$input_value",
-                "masculine_text": "#name# read Act 2 of The King in Yellow.",
-                "feminine_text": "#name# read Act 2 of The King in Yellow."
+                "masculine_text": "#name#閱讀了《黃衣之王》第二幕。",
+                "feminine_text": "#name#閱讀了《黃衣之王》第二幕。"
               },
               {
                 "type": "add_weakness",
@@ -23490,7 +23490,7 @@
         "choices": [
           {
             "id": "haruko_killed",
-            "text": "Is Ishimaru Haruko <i>(Just Skin and Bones)</i> in the victory display?",
+            "text": "石丸春子<i>(皮包骨頭)</i>位於勝利牌區嗎？",
             "steps": [
               "kill_haruko"
             ]
@@ -23501,7 +23501,7 @@
     {
       "id": "kill_haruko",
       "bullet_type": "small",
-      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Ishimaru Haruko</i>.",
+      "text": "在冒險日誌中，在“貴賓遇害”下方記錄<i>石丸春子</i>。",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -23602,7 +23602,7 @@
     },
     {
       "id": "add_two_conviction",
-      "text": "During the scenario, you were instructed to mark two <b>Conviction</b> in your Campaign Log.",
+      "text": "在此次冒險中，你曾經被指示在冒險日誌上記2點<b>確信</b>。",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -23632,7 +23632,7 @@
     },
     {
       "id": "add_two_doubt",
-      "text": "During the scenario, you were instructed to mark two <b>Doubt</b> in your Campaign Log.",
+      "text": "在此次冒險中，你曾經被指示在冒險日誌上記2點<b>疑惑</b>。",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -23684,13 +23684,13 @@
     {
       "id": "ask_conviction_or_doubt_resolution",
       "type": "input",
-      "text": "During the scenario, were you instructed to make any Campaign Log changes?",
+      "text": "在此次冒險中，你曾經被指示在冒險日誌上做任何改變嗎？",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "doubt",
-            "text": "Mark 2 <b>Doubt</b>.",
+            "text": "記2點<b>疑惑</b>。",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -23702,7 +23702,7 @@
           },
           {
             "id": "conviction",
-            "text": "Mark 2 <b>Conviction</b>.",
+            "text": "記2點<b>確信</b>。",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -23714,7 +23714,7 @@
           },
           {
             "id": "neither",
-            "text": "Scenario ended before Act 2b was resolved."
+            "text": "冒險結束時，尚未推進至場景2b。"
           }
         ]
       }
@@ -23733,16 +23733,16 @@
     },
     {
       "id": "create_catacombs_deck",
-      "text": "Set all of the other locations aside as a separate “Catacombs Deck.” To do this, perform the following:",
+      "text": "將所有其他地點放在一邊，單獨放作一堆並且命名為“地下墓穴牌堆”。要創建地下墓穴牌堆時按照以下步驟執行：",
       "bullets": [
         {
           "text": "Randomly choose 4 Catacombs locations and remove them from the game, without looking at them."
         },
         {
-          "text": "Shuffle the set‐aside Tomb of Shadows, the set‐aside Blocked Passage, and 3 other Catacombs locations together to form the bottom 5 cards of the Catacombs Deck, Catacombs side faceup."
+          "text": "將放在一邊的暗影墳墓、堵塞通道、3張其他地下墓穴地點卡牌一同混洗，構成地下墓穴牌堆底部的5張卡牌，地下墓穴一面朝上放置。"
         },
         {
-          "text": "Then, place all of the other Catacombs locations on top, in a random order. All of the cards in the Catacombs Deck should be showing only the Catacombs side, so that the players do not know which is which."
+          "text": "隨後，將其他所有地下墓穴地點卡牌混洗後隨機擺放在牌堆頂部。地下墓穴牌堆內的所有卡牌均應以地下墓穴面朝上放置，以使得玩家無法分辨地下墓穴地點卡牌的內容。"
         }
       ]
     },
@@ -23764,7 +23764,7 @@
         "physical",
         "mental"
       ],
-      "text": "You are shaken awake by a police officer and lifted to your feet. You feel as though the weight of a train has slammed into your head. The pain is unbearable. The man shines a flashlight in your eyes and asks you several questions in French. Dazed as you are, you find it difficult to answer. He points toward the staircase nearby and pushes you away from the catacombs. You stumble onto the Rue de la Tombe-Issoire and slowly make your way to a hotel where you can stay the night.\nSeveral days of research later, the meaning of the strange diagrams you saw within the catacombs still escapes you. You feel as though you have been led on a wild goose chase. Just as you are about to give up, you see a faded yellow book on the table nearest to you. You are stunned to discover that it is the unabridged script of The King in Yellow. Drawn on the cover in black ink is the very same diagram whose meaning you have been struggling to interpret for several sleepless nights. Who had placed it here? How had it come to your hotel room? Regardless, you know what you must do. The play holds the secrets—it has all along—and yet like a fool you have avoided reading Act II out of superstition. Its words cannot harm you any more than the creatures and fanatics you have already encountered. Trembling, you open to the second part, and begin to read.",
+      "text": "警察把你搖醒，架了起來。你感覺自己的頭好像被火車撞過一樣，頭疼欲裂。眼前的男子拿著手電筒照了照你的眼睛，並用法語問了你幾個問題。你只覺頭暈眼花，根本答不上話。他指了指的附近的樓梯，把你推出了地下墓穴。你踉蹌著走到伊蘇爾墓園大街上，拖著步子回到你住宿的旅店。\n之後幾天你一直在研究地下墓穴裡的那個奇怪圖文的含義，但你一無所獲。你開始感覺這是白費力氣。就快放棄的時候，你看見桌子上一本褪了色的黃色書本就躺在你手邊。你驚訝地發現這是未刪節版的《黃衣之王》劇本。書的封面上用黑色墨水畫著同樣的圖文，就是這個圖文讓你幾宿未眠卻仍然無法解讀。是誰放在這裡的？它怎麼會到你旅店房間裡來的？但撇開這些不談，你知道現在要做什麼了。這部劇中藏著秘密——這個秘密一直就在劇中——而你卻像一個傻瓜一樣，出於迷信，始終避而不讀它的第二幕。它只是文字，它不可能像那些你遇到過的生物和瘋子那樣傷害你。戰慄之下，你翻到書本的第二部分，開始閱讀。",
       "steps": [
         "maybe_ask_conviction_or_doubt",
         "know_site_of_gate",
@@ -23782,7 +23782,7 @@
         "name": "Resolution 1"
       },
       "title": "結局1",
-      "text": "The burned skull holds the key to everything. You are sure of it. You have tried every method available to you in studying the diagram it bears, but the answer eludes you still. You have brought the skull to experts, occultists, and professors. You have even tried speaking with the skull on more than one occasion. Exasperated, you place the skull on your night table and try to get some sleep for the first time since escaping the catacombs. As you fall asleep, you cannot shake the sight of the diagram etched in the skull’s forehead.\nYou awaken with a spark of inspiration and rush to the Musée du Louvre, a famous Parisian museum housing tens of thousands of paintings, drawings, and archaeological finds. You spend days exploring the museum—every display, every collection, every single object of art that might hold a clue to the diagram’s meaning. Finally, you see it: a painting depicting a beautiful island town weathering a torrential storm. Waves crash against the stone of the outer wall, the tide threatening to swallow the island whole. Lightning flashes around the tower of the abbey above the village. A whirlwind of black clouds churns in the sky above. The diagram from the burned skull you hold in your hands is recreated perfectly in the stained glass of the abbey. The title of the piece is “The Path Is Open.”",
+      "text": "這顆燒焦的顱骨裡藏著所有的答案。你非常確定。你已經竭盡所能研究了顱骨上的圖文，但答案始終是一個謎。你把這顆顱骨帶給各界專家、密學家和教授看過。你甚至不止一次嘗試與這顆顱骨對話。惱怒之下，你把顧骨放到床頭櫃上，決定好好睡上一覺，這還是你從地下墓穴出來以後第一次躺下休息。雖然你已入眠，但顱骨前額上蝕刻的圖文卻仍然徘徊在你眼前。\n突然間，你靈光乍現，趕緊起身趕往羅浮宮，這座坐落在巴黎的著名博物館裡藏有數萬件油畫、繪畫和考古發現。你花費了數日在博物館中探索——每一件展品， 每一套收藏，每一幅藝術品中都可能藏有關於這個圖文涵義的線索。終於你看到了它：這幅油畫描繪了暴雨之下一座美麗的小島。浪濤衝撃著外城牆，潮水隨時會把整座島嶼淹沒。耀眼的閃電映襯著城鎮最高處修道院的塔樓。一道烏雲形成的旋風在上空中翻騰。而你手中燒焦顱骨上的圖文完美地重現出了修道院彩色玻璃上的圖案。這幅作品的標題就叫：“道路終現”。",
       "steps": [
         "maybe_add_conviction",
         "know_site_of_gate",
@@ -23799,7 +23799,7 @@
         "name": "Resolution 2"
       },
       "title": "結局2",
-      "text": "You fall ceaselessly through the empty abyss. No air slows your descent or courses through your hair. It is a passageway devoid of reality. Finally, you pass through an invisible gateway and enter another realm. Looming above and below you are two skylines, one a warped reflection of the other. A vortex of swirling black clouds and crashing waves lies in between them. You study both sides—the familiar city and its strange mirror. Could this be the path to Carcosa? A passageway between realities, where realms converge? If so, all that is left is to find where this gate appears on Earth. You fall into the vortex below.\nYou are shaken awake by a police officer and lifted to your feet. You feel as though the weight of a train has slammed into your head. The pain is unbearable. The man shines a flashlight in your eyes and asks you several questions in French. Your eyes widen with realization and you wrest your arm free from the confused man’s grip. “I have to go at once!”",
+      "text": "你掉進了一個無盡而空虛的深淵。在你墜落的過程中甚至沒有一絲空氣拂過你的頭髮。這是一條剝離了現實的通道。終於，你穿過一道看不見的門徑，進入了一片新的領域。在你的頭頂和腳底是兩條天際線，它們像是彼此扭曲的倒影一般。在中間，烏雲形成的旋渦和洶湧的浪潮在迴旋。你仔細研究這兩邊——看到了熟悉的城市和它奇怪的鏡像。這是不是卡爾克薩之路？這是不是世界交匯，連接不同現實的通道？如果是，剩下的就是找到這座次元門在地球上的位置。你掉入了底下的旋渦。\n警察把你搖醒，架了起來。你感覺自己的頭好像被火車撞過一樣，頭疼欲裂。眼前的男子拿著手電筒照了照你的眼睛。並用法語問了你幾個問題。你清醒過來，瞪大了雙眼，一把抽出了被這個男子抓著的手臂，留下一臉驚愕的他。“我要馬上走了！”",
       "steps": [
         "maybe_add_doubt",
         "know_site_of_gate_chasing_stranger",
@@ -23860,7 +23860,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "text": "用以下標記組成混亂袋：+1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -23897,7 +23897,7 @@
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "隨機從以下標記中選擇一種：([cultist], [tablet],或[elder_thing])。將2個所選標記放入混亂袋。",
+      "text": "隨機從以下標記中選擇一種：([cultist]、[tablet]或[elder_thing])。將2個所選標記放入混亂袋。",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -27300,7 +27300,7 @@
   "id": "return_to_shattered_aeons",
   "scenario_name": "重返破碎永世",
   "full_name": "Scenario VIII: Return to Shattered Aeons",
-  "header": "Scenario VIII",
+  "header": "冒險VIII",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -27827,7 +27827,7 @@
         "id": "the_forgotten_age.shattered_aeons.resolution_5",
         "name": "Resolution 5"
       },
-      "title": "Resolution 5",
+      "title": "結局5",
       "text": "All of this was set into motion when the Eztli ruins were first intruded upon. Ichtaca’s original warning was her last vestige of humanity speaking to you. She wanted you and the other explorers to turn back, but curiosity and greed got the better of you. Until that day, balance had been kept. Alejandro sought the relic for his own devices. Ichtaca heard the call of her master and obeyed. However, humanity is the true cause of this chaos. You know now what you must do. You know now how you can save everyone.",
       "steps": [
         "turned_back_time",
@@ -31133,7 +31133,7 @@
         "id": "the_forgotten_age.the_doom_of_eztli.resolution_5",
         "name": "Resolution 5"
       },
-      "title": "Resolution 5",
+      "title": "結局5",
       "text": "(The following is scrawled below the previous journal entry.)\nWe made our decision. There was no way we were going back into that deathtrap. Thankfully, there was another way. José had brought some TNT from the trucks, and there was more than enough to level the damned place.\nThat night, we put on a hell of a fireworks show. The jungle protested. Birds scattered into the sky, the ground rumbled, and hateful snarls surrounded our camp. But the dynamite did its job. Once the dust settled, we began sifting through the debris in search of anything with historical or cultural significance we could bring back to Arkham.\nJosé was the first to notice the blue light peeking out from underneath the remains of the temple. The rays grew in intensity with each passing moment. As we started clearing the rubble in order to discover the source of the light, there was a sudden flash, and the debris at the center of the ruins scattered. A steel orb of unknown origin lay on top of the rubble, gently humming. It was attached delicately to a bronze frame, appearing almost religious in its significance. The blue glow emanating from the device dimmed as I touched it. There was no way a device like this was built by the Aztecs.\nWith the artifact in tow, we left the smoldering temple behind us. We had outstayed our welcome in this rainforest, and we knew it. Around us, the jungle hissed. The ground slithered and crawled with snakes. In the darkness, we heard shouts in a language we could not understand. There was no time to pack up camp; we ran as soon as we had the chance. Andrea was struck in her throat by a black-feathered arrow, her startled scream captured in grim perpetuity. José was grabbed by a giant boa as we fled north into the river canyon. His neck snapped before we could reach him.\nMaria was waiting for us with the trucks when we finally reached the northern edge of the jungle. We didn’t stop until we crossed into Mexico City. Even now I do not feel safe: who could, after seeing what we have seen?\nTo hell with the Eztli and to hell with this forsaken place.",
       "steps": [
         "investigators_recovered_relic",
@@ -43742,7 +43742,7 @@
     },
     {
       "id": "R5",
-      "title": "Resolution 5",
+      "title": "結局5",
       "text": "Little by little, the swarm deconstructs all matter on Earth, transforming each and every molecule to resemble their own. Your consciousness remains, trapped eternally in the awful, buzzing swarm. But all is well. You are with the queen now. A strange hunger gnaws at you. Your only desire is to assimilate. The swarm must grow!",
       "steps": [
         "all_killed",
@@ -44698,7 +44698,7 @@
   "id": "before_the_black_throne",
   "scenario_name": "黑色王座",
   "full_name": "Scenario VIII: Before the Black Throne",
-  "header": "Scenario VIII",
+  "header": "冒險VIII",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -45194,7 +45194,7 @@
         "id": "the_circle_undone.before_the_black_throne.resolution_5",
         "name": "Resolution 5"
       },
-      "title": "Resolution 5",
+      "title": "結局5",
       "text": "Pricking your arm with the quill, you sign in blood.",
       "steps": [
         "azathoth_slumbers",
@@ -51662,7 +51662,7 @@
         "id": "the_circle_undone.union_and_disillusion.resolution_5",
         "name": "Resolution 5"
       },
-      "title": "Resolution 5",
+      "title": "結局5",
       "investigator_status": [
         "resigned",
         "physical",
@@ -57863,7 +57863,7 @@
         "id": "the_dreameaters.where_the_gods_dwell.resolution_5",
         "name": "Resolution 5"
       },
-      "title": "Resolution 5",
+      "title": "結局5",
       "text": "You recall what the black cat told you about your companions’ journey. Though you have no desire to leave the surface of the Dreamlands behind, there may be a way you can help your friends. You climb back down the northernmost peaks of Leng, returning to the domed ruins where you were confronted by Nyarlathotep’s high priest. There, in the center of the room, is the gaping pit that leads into the untold depths of the Underworld. Your companions are down there, somewhere…right?",
       "steps": [
         "dreamers_traveled_beneath_the_monastery",
@@ -61774,7 +61774,7 @@
         "id": "the_dreameaters.waking_nightmare.resolution_5",
         "name": "Resolution 5"
       },
-      "title": "Resolution 5",
+      "title": "結局5",
       "text": "You depart from the hospital with the blond-haired man in tow, and he introduces himself more fully. The man, whose name is Randolph Carter, tells you that he is a “dreamer,” like Virgil Gray and your friends: one with the ability to traverse the divide between the waking world and a parallel dimension that was created by, is sustained by, and dwells within the dreams of all living organisms on Earth—a realm he calls <smallcaps>The Dreamlands</smallcaps>. “It is a place of both dreams and nightmares,” he explains. “And I’m afraid your friends are trapped there as we speak.”\nYou ask if there is anything you can do to aid them. Randolph ponders this for a moment, then replies: “Normally, dreamers can return to the real world simply by willing themselves awake, but for some reason, your friends are unable to do so. If you truly wish to help them, you too must enter the Dreamlands and find them. But forcing your way into the Dreamlands is not easy. Such paths are usually accessible only to experienced dreamers, and only in sleep. Still, there are some places where the Dreamlands touch the waking world, and in those places, with the right tools, you may enter the Dreamlands in your physical body. I know of such a place, not far from here. However—”\nBefore Randolph is able to finish his sentence, he is interrupted by a mysterious voice…",
       "steps": [
         "earn_xp",
@@ -63847,7 +63847,7 @@
         "id": "the_forgotten_age.the_doom_of_eztli.resolution_5",
         "name": "Resolution 5"
       },
-      "title": "Resolution 5",
+      "title": "結局5",
       "text": "(The following is scrawled below the previous journal entry.)\nWe made our decision. There was no way we were going back into that deathtrap. Thankfully, there was another way. José had brought some TNT from the trucks, and there was more than enough to level the damned place.\nThat night, we put on a hell of a fireworks show. The jungle protested. Birds scattered into the sky, the ground rumbled, and hateful snarls surrounded our camp. But the dynamite did its job. Once the dust settled, we began sifting through the debris in search of anything with historical or cultural significance we could bring back to Arkham.\nJosé was the first to notice the blue light peeking out from underneath the remains of the temple. The rays grew in intensity with each passing moment. As we started clearing the rubble in order to discover the source of the light, there was a sudden flash, and the debris at the center of the ruins scattered. A steel orb of unknown origin lay on top of the rubble, gently humming. It was attached delicately to a bronze frame, appearing almost religious in its significance. The blue glow emanating from the device dimmed as I touched it. There was no way a device like this was built by the Aztecs.\nWith the artifact in tow, we left the smoldering temple behind us. We had outstayed our welcome in this rainforest, and we knew it. Around us, the jungle hissed. The ground slithered and crawled with snakes. In the darkness, we heard shouts in a language we could not understand. There was no time to pack up camp; we ran as soon as we had the chance. Andrea was struck in her throat by a black-feathered arrow, her startled scream captured in grim perpetuity. José was grabbed by a giant boa as we fled north into the river canyon. His neck snapped before we could reach him.\nMaria was waiting for us with the trucks when we finally reached the northern edge of the jungle. We didn’t stop until we crossed into Mexico City. Even now I do not feel safe: who could, after seeing what we have seen?\nTo hell with the Eztli and to hell with this forsaken place.",
       "steps": [
         "investigators_recovered_relic",
@@ -65482,7 +65482,7 @@
   "id": "shattered_aeons",
   "scenario_name": "破碎永世",
   "full_name": "Scenario VIII: Shattered Aeons",
-  "header": "Scenario VIII",
+  "header": "冒險VIII",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -65998,7 +65998,7 @@
         "id": "the_forgotten_age.shattered_aeons.resolution_5",
         "name": "Resolution 5"
       },
-      "title": "Resolution 5",
+      "title": "結局5",
       "text": "All of this was set into motion when the Eztli ruins were first intruded upon. Ichtaca’s original warning was her last vestige of humanity speaking to you. She wanted you and the other explorers to turn back, but curiosity and greed got the better of you. Until that day, balance had been kept. Alejandro sought the relic for his own devices. Ichtaca heard the call of her master and obeyed. However, humanity is the true cause of this chaos. You know now what you must do. You know now how you can save everyone.",
       "steps": [
         "turned_back_time",
@@ -75730,7 +75730,7 @@
   "id": "into_the_maelstrom",
   "scenario_name": "Into the Maelstrom",
   "full_name": "Scenario VIII: Into the Maelstrom",
-  "header": "Scenario VIII",
+  "header": "冒險VIII",
   "type": "placeholder",
   "setup": [
     "intro",
@@ -77159,7 +77159,7 @@
         "physical",
         "mental"
       ],
-      "title": "Resolution 5",
+      "title": "結局5",
       "text": "There is no sign of Agent Harper anywhere. Perhaps she never made it out of the city alive. You hold out hope that she is out there, somewhere. Still, you are relieved that at the very least, nobody will ever be able to use the riches of Y'ha-nthlei to manipulate humanity ever again. Not the government, not the Deep Ones-nobody.",
       "steps": [
         "riches_of_the_deep_are_lost_forever",
@@ -80803,7 +80803,7 @@
         "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.resolution_5",
         "name": "Resolution 5"
       },
-      "title": "Resolution 5",
+      "title": "結局5",
       "text": "Barnabas spits in your face as you attempt to interrogate him. \"I ain't tellin' you a word, interloper,\" he barks, his bulging eyes unblinking as he glowers at you with unbridled hate. \"You don't belong here. All o' your kind'll be dead before the week's end.\"\nAgent Harper narrows her eyes at the strange man's remarks. \"What do you mean by that, Marsh? Our kind? What—outsiders?\"\nBarnabas scowls, his bulbous lips curling back to reveal sharp, inhuman teeth. \"Outsiders. Intruders. You're a blight on our fair town. But you'll be purged soon enough.\"\nYou are taken aback by the severity of the old man's threat and his simmering hatred, but Harper simply chortles. \"You call this place 'fair'?\" Ignoring her derision, you warn Barnabas that if he doesn't speak up, he'll be spending a long time behind bars.\n\"Not I,\" he remarks. \"You're the one who'll be locked up, 'n worse. When the Order's done with you, you'll be nothin' but fish food.\"\nYou and Harper exchange a knowing glance. She pries further: \"What Order is this, exactly?\"",
       "steps": [
         "earn_xp",
