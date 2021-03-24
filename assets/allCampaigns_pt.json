@@ -45238,6 +45238,10 @@
   "steps": [
     {
       "id": "pre_intro",
+      "narration": {
+        "id": "the_circle_undone.disappearance_at_the_twilight_estate.prologue",
+        "name": "Prologue"
+      },
       "type": "story",
       "text": "Sunday, November 22nd, 1925. Arkham, Massachusetts.\nThough All Hallows’ Eve is nearly a month past, a grim melancholy lingers throughout the town. Each morning, a thick fog permeates the streets. Nights are beginning to grow longer, and if you ask around town, you’ll hear people swear that it’s getting darker, too. But despite the gloomy mood, progress continues in the sleepy town of Arkham. The election of Nathaniel Rhodes to the United States Senate has upstanding members of the community feeling optimistic about the town’s future. And tonight, at his well-appointed estate in French Hill, a man named Josef Meiger hosts the Silver Twilight Lodge’s charity gala, an annual members-only event that will turn deadly for several attendees…"
     },
@@ -45299,8 +45303,8 @@
     {
       "id": "intro",
       "narration": {
-        "id": "the_circle_undone.disappearance_at_the_twilight_estate.prologue",
-        "name": "Prologue"
+        "id": "the_circle_undone.disappearance_at_the_twilight_estate.intro",
+        "name": "Intro"
       },
       "type": "story",
       "text": "“Ladies and gentlemen,” Josef Meiger announces, raising a glass of champagne in a toast. A hush descends on the room, until only the crackle of the fireplace and whispers of gossip can be heard. “Allow me to welcome you all into my home for this year’s charity gala. We have some very upstanding citizens here tonight, and I thank all of you for your hard work and generosity.” Cheers and murmurs of agreement fill the room. Many of the guests raise their glasses to Valentino, one of the most esteemed members of the Lodge this year, who sits at the Guest of Honor table, which is nearest to the fireplace.\nJosef ’s assistant, Jerome, blends into the wall behind Josef, discreetly checking his pocket watch. In another corner of the room, the head housekeeper, Penny, walks from table to table, filling empty glasses and collecting dirty salad plates. “Each of you has done great deeds in the name of the Silver Twilight Lodge and our historic city,” Josef continues. “Next year, we will continue to shoulder this burden and do what must be done for the sake of progress.” Jerome steps forward quietly, interrupting Josef ’s speech with the unassuming confidence that comes from years of trusted service. He taps Josef lightly on his shoulder and shows him the time. “I’m afraid I am already out of time. Thank you all very much for attending,” Josef concludes, bowing. Polite applause rises from the audience, and Josef walks briskly toward the parlor, followed closely by his assistant. Two servants collect coats as latecomers trickle into the manor, and Gavriella—Josef ’s head of security—watches over the entrance with hard eyes and a clenched jaw. “Has Mr. Sanford arrived?” Josef asks curtly, tapping his polished leather shoe on the floor.\nI’m afraid not,” Jerome replies, flipping through the last pages of the estate’s guest book. “But he should be here any minute, Mr. Meiger.”\n“Good. I want there to be no problems whatsoever when he arrives; am I understood?” Josef calls out to Gavriella: “Make sure he is well protected.” Gavriella nods, patting the handle of her .45 in her shoulder holster. Josef turns his attention back to his assistant. “And have Penny make sure the main course is kept good and hot while we wait for Mr. Sanford’s arrival. Not a single slice is to be served without his presence.”\n“Not even for Mr. Rivas, sir?” Jerome asks, glancing at Josef over the rim of his thick glasses. Josef pauses for a moment, considering.\n“Pour Mr. Rivas another glass of champagne, and I am sure he will not complain. Also, I’m still waiting on those accounts I asked you about earlier today. Don’t forget,” Josef says, clapping his assistant on the shoulder before walking back into the banquet hall. Jerome nods obediently and heads upstairs.\nSoon after, the dark mist would appear, and nothing would be the same."
@@ -75728,8 +75732,1496 @@
   "full_name": "Scenario VIII: Into the Maelstrom",
   "header": "Scenario VIII",
   "type": "placeholder",
-  "setup": [],
-  "steps": []
+  "setup": [
+    "intro",
+    "gather_encounter_sets",
+    "setup_keys",
+    "check_possess_key",
+    "check_possess_map",
+    "check_keeper_of_the_gate_defeated",
+    "check_gate_rightful_guardian",
+    "maybe_add_facedown_keys",
+    "setup_locations",
+    "location_layout",
+    "check_diving_suit",
+    "setup_act_deck",
+    "set_aside_cards",
+    "add_flood_tokens",
+    "encounter_deck",
+    "keys_rule",
+    "neighboring_locations_rule",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "Your plan is simple. Foolish, but simple. The knowledge you've gathered leads you to conclude that the Esoteric Order of Dagon is the cause of both the rising tides and the appearance of the horrific \"Deep Ones.\" Not only that, but over the course of the last few decades, the Order has transformed the townsfolk into more of the horrific creatures, using them to infiltrate Innsmouth from within. But worst of all, the entity the cult worships-Dagon-is just one of two. His mate, Hydra, still slumbers in the depths below Innsmouth, waiting to awaken and stake her claim over an endless ocean.\nThese are the conclusions that have led to your plan: Travel once more to Devil Reef, descent into the city of the Deep Ones that lies hidden at the bottom of the ocean, and put a stop to the Deep Ones' plans once and for all. Agent Harper helps you prepare, loading your possessions onto the boat you managed to steal from what remained of Innsmouth's docks. \"We only have one shot at this,\" Harper says. \"I don't think I need to remind you what might happen if we fail.\" She looks pointedly at the flooded ruins of Innsmouth. \"Are you ready?\""
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Scenario Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "into_the_maelstrom",
+        "agents_of_hydra",
+        "creatures_of_the_deep",
+        "flooded_caverns",
+        "malfunction",
+        "syzygy",
+        "ancient_evils"
+      ]
+    },
+    {
+      "id": "setup_keys",
+      "bullet_type": "none",
+      "text": "Check the Campaign Log. Place each of the following keys (blue, red, green, and yellow) as follows:"
+    },
+    {
+      "id": "check_possess_key",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "possess_the_key_to_yhanthlei",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "choose_investigator_to_take_blue_key"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "set_blue_key_aside"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_investigator_to_take_blue_key",
+      "bullet_type": "small",
+      "text": "Because <i>the investigators possess the key to Y'ha-nthlei</i>, choose an investigator to take control of the blue key."
+    },
+    {
+      "id": "set_blue_key_aside",
+      "bullet_type": "small",
+      "text": "Because the investigators do <b>not</b> <i>possess the key to Y'ha-nthlei</i>, set the blue key aside, facedown."
+    },
+    {
+      "id": "check_possess_map",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "possess_a_map_of_yhanthlei",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "choose_investigator_to_take_red_key"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "set_red_key_aside"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_investigator_to_take_red_key",
+      "bullet_type": "small",
+      "text": "Because <i>the investigators possess a map of Y'ha-nthlei</i>, choose an investigator to take control of the red key."
+    },
+    {
+      "id": "set_red_key_aside",
+      "bullet_type": "small",
+      "text": "Because the investigators do <b>not</b> <i>possess a map of Y'ha-nthlei</i>, set the red key aside, facedown."
+    },
+    {
+      "id": "check_keeper_of_the_gate_defeated",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "guardian_of_yhanthlei_is_dispatched",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "choose_investigator_to_take_green_key"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "set_green_key_aside"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_investigator_to_take_green_key",
+      "bullet_type": "small",
+      "text": "Because <i>the guardian of Y’ha-nthlei is dispatched</i>, choose an investigator to take control of the green key."
+    },
+    {
+      "id": "set_green_key_aside",
+      "bullet_type": "small",
+      "text": "Because the guardian of Y'ha-nthlei has <b>not</b> been dispatched, set the green key aside, facedown."
+    },
+    {
+      "id": "check_gate_rightful_guardian",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "choose_investigator_to_take_yellow_key"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "set_yellow_key_aside"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_investigator_to_take_yellow_key",
+      "bullet_type": "small",
+      "text": "Because <i>the gateway to Y’ha-nthlei recognizes you as its rightful keeper</i>, choose an investigator to take control of the yellow key."
+    },
+    {
+      "id": "set_yellow_key_aside",
+      "bullet_type": "small",
+      "text": "Because the gateway to Y'ha-nthlei does <b>not</b> recognize you as its rightful keeper, set the yellow key aside, facedown."
+    },
+    {
+      "id": "maybe_add_facedown_keys",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "possess_the_key_to_yhanthlei",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "possess_a_map_of_yhanthlei",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 4,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "add_all_keys"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "maybe_add_facedown_keys_3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_add_facedown_keys_3",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "possess_the_key_to_yhanthlei",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "possess_a_map_of_yhanthlei",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 3,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "add_three_keys"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "maybe_add_facedown_keys_2"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_add_facedown_keys_2",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "possess_the_key_to_yhanthlei",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "possess_a_map_of_yhanthlei",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "add_two_keys"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "maybe_add_facedown_keys_1"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_add_facedown_keys_1",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "possess_the_key_to_yhanthlei",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "possess_a_map_of_yhanthlei",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 1,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "add_one_keys"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "add_no_keys"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_all_keys",
+      "text": "Set aside the purple, white and black keys facedown. Shuffle these three set aside keys so you do not know which is which."
+    },
+    {
+      "id": "add_three_keys",
+      "text": "Combine the the purple, white and black keys with the set aside key. Turn the keys facedown and shuffle them so you do not know which is which."
+    },
+    {
+      "id": "add_two_keys",
+      "text": "Shuffle the purple, white and black keys face down. Remove one of these keys at random from the game without looking at it (it will not be used in this scenario). Combine the two remaining keys with the two set aside keys, and shuffle them so you do not know which is which."
+    },
+    {
+      "id": "add_one_keys",
+      "text": "Shuffle the purple, white and black keys face down. Remove two of these keys at random from the game without looking at it (it will not be used in this scenario). Combine the remaining key with the three set aside keys, and shuffle them so you do not know which is which."
+    },
+    {
+      "id": "add_no_keys",
+      "text": "Remove the purple, white and black key from the game (they will not be used in this scenario)."
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put Gateway to Y’ha-nthlei Gate into play. <i>(It enter play partially flooded.)</i> Put each of the 8 Tidal Tunnel locations into play surrounding it.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play at the Gateway to Y'ha-nthlei."
+        },
+        {
+          "text": "Set each other location aside, out of play."
+        }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout for Act 1",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "07052_back",
+          "07052_back",
+          "07052_back"
+        ],
+        [
+          "07052_back",
+          "gateway",
+          "07052_back"
+        ],
+        [
+          "07052_back",
+          "07052_back",
+          "07052_back"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "gateway",
+          "name": "Gateway to Y’ha-nthlei"
+        }
+      ]
+    },
+    {
+      "id": "check_diving_suit",
+      "text": "Check Campaign Log.",
+      "bullets": [
+        {
+          "text": "Each investigator who <i>possesses a diving suit</i> begins play with a Diving Suit story asset in their play area."
+        },
+        {
+          "text": "Remove each unused Diving Suit from the game."
+        }
+      ]
+    },
+    {
+      "id": "setup_act_deck",
+      "text": "When constructing the act deck, use only the City of the Deep (v.I) version of act 2a. Set City of the Deep (v.II) and City of the Deep (v.III) aside, out of play."
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the Lloigor enemy, the Aquatic Abomination enemy, the double-sided Hydra enemy, and the double-sided Dagon enemy aside, out of play."
+    },
+    {
+      "id": "add_flood_tokens",
+      "text": "Add the flood tokens to the token pool."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+    },
+    {
+      "id": "neighboring_locations_rule",
+      "type": "rule_reminder",
+      "title": "Location Adjacency in Y’ha-nthlei",
+      "text": "During this scenario, locations are arranged in a set pattern, with each location adjacent to one or more other locations.",
+      "bullets": [
+        {
+          "text": "<b>During this scenario, adjacent locations are considered to be connected to one another.</b>"
+        },
+        {
+          "text": "Locations are only adjacent orthogonally (left, right, above, or below); they are not adjacent diagonally."
+        }
+      ]
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "keys",
+            "text": "Keys",
+            "steps": [
+              "ask_keys"
+            ]
+          },
+          {
+            "id": "flashback_14",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "flashback_14",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Flashback XIV",
+            "steps": [
+              "flashback_14_story",
+              "flashback_14_effects",
+              "flashback_14_choice"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "flashback_14",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "act_2_setup",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "act_2_setup",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Act 2 Setup",
+            "steps": [
+              "act_2_locations"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "act_2_setup",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "act_2_locations",
+      "type": "branch",
+      "text": "When setting up Act 2, use the \"Location Placement for Act 2\" button to see the layout for the scenarios. <i>Note: it has been adjusted based on the number of players in the game</i>. Take care not to look at the revealed side of any location that is not used.",
+      "condition": {
+        "type": "scenario_data",
+        "scenario_data": "player_count",
+        "options": [
+          {
+            "numCondition": 1,
+            "steps": [
+              "location_layout_act_2_1P"
+            ]
+          },
+          {
+            "numCondition": 2,
+            "steps": [
+              "location_layout_act_2_2P"
+            ]
+          },
+          {
+            "numCondition": 3,
+            "steps": [
+              "location_layout_act_2_3P"
+            ]
+          },
+          {
+            "numCondition": 4,
+            "steps": [
+              "location_layout_act_2_4P"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "location_layout_act_2_4P",
+      "type": "location_setup",
+      "text": "Location Placement (Act 2)",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "blank",
+          "gateway",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "sanctum",
+          "yhanthlei",
+          "yhanthlei",
+          "yhanthlei",
+          "yhanthlei",
+          "yhanthlei",
+          "sanctum"
+        ],
+        [
+          "blank",
+          "sanctum",
+          "blank",
+          "yhanthlei",
+          "blank",
+          "sanctum",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "lair_of_hydra",
+          "yhanthlei",
+          "lair_of_dagon",
+          "blank",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "gateway",
+          "name": "Gateway to Y’ha-nthlei"
+        },
+        {
+          "code": "sanctum",
+          "name": "Y'ha-nthlei Sanctum"
+        },
+        {
+          "code": "yhanthlei",
+          "name": "Y’ha-nthlei"
+        },
+        {
+          "code": "lair_of_hydra",
+          "name": "Lair of Hydra"
+        },
+        {
+          "code": "lair_of_dagon",
+          "name": "Lair of Dagon"
+        }
+      ]
+    },
+    {
+      "id": "location_layout_act_2_3P",
+      "type": "location_setup",
+      "text": "Location Placement (Act 2)",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "blank",
+          "gateway",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "sanctum",
+          "yhanthlei",
+          "yhanthlei",
+          "yhanthlei",
+          "yhanthlei",
+          "yhanthlei",
+          "sanctum"
+        ],
+        [
+          "blank",
+          "sanctum",
+          "lair_of_hydra",
+          "yhanthlei",
+          "lair_of_dagon",
+          "sanctum",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "gateway",
+          "name": "Gateway to Y’ha-nthlei"
+        },
+        {
+          "code": "sanctum",
+          "name": "Y'ha-nthlei Sanctum"
+        },
+        {
+          "code": "yhanthlei",
+          "name": "Y’ha-nthlei"
+        },
+        {
+          "code": "lair_of_hydra",
+          "name": "Lair of Hydra"
+        },
+        {
+          "code": "lair_of_dagon",
+          "name": "Lair of Dagon"
+        }
+      ]
+    },
+    {
+      "id": "location_layout_act_2_2P",
+      "type": "location_setup",
+      "text": "Location Placement (Act 2)",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "gateway",
+          "blank",
+          "blank"
+        ],
+        [
+          "sanctum",
+          "yhanthlei",
+          "yhanthlei",
+          "yhanthlei",
+          "sanctum"
+        ],
+        [
+          "blank",
+          "sanctum",
+          "yhanthlei",
+          "sanctum",
+          "blank"
+        ],
+        [
+          "blank",
+          "lair_of_hydra",
+          "yhanthlei",
+          "lair_of_dagon",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "gateway",
+          "name": "Gateway to Y’ha-nthlei"
+        },
+        {
+          "code": "sanctum",
+          "name": "Y'ha-nthlei Sanctum"
+        },
+        {
+          "code": "yhanthlei",
+          "name": "Y’ha-nthlei"
+        },
+        {
+          "code": "lair_of_hydra",
+          "name": "Lair of Hydra"
+        },
+        {
+          "code": "lair_of_dagon",
+          "name": "Lair of Dagon"
+        }
+      ]
+    },
+    {
+      "id": "location_layout_act_2_1P",
+      "type": "location_setup",
+      "text": "Location Placement (Act 2)",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "gateway",
+          "blank",
+          "blank"
+        ],
+        [
+          "sanctum",
+          "yhanthlei",
+          "yhanthlei",
+          "yhanthlei",
+          "sanctum"
+        ],
+        [
+          "sanctum",
+          "lair_of_hydra",
+          "yhanthlei",
+          "lair_of_dagon",
+          "sanctum"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "gateway",
+          "name": "Gateway to Y’ha-nthlei"
+        },
+        {
+          "code": "sanctum",
+          "name": "Y'ha-nthlei Sanctum"
+        },
+        {
+          "code": "yhanthlei",
+          "name": "Y’ha-nthlei"
+        },
+        {
+          "code": "lair_of_hydra",
+          "name": "Lair of Hydra"
+        },
+        {
+          "code": "lair_of_dagon",
+          "name": "Lair of Dagon"
+        }
+      ]
+    },
+    {
+      "id": "keys_rule",
+      "title": "Keys",
+      "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
+    },
+    {
+      "id": "ask_keys",
+      "type": "input",
+      "text": "Which keys do you want to read the representation of:",
+      "input": {
+        "type": "checklist",
+        "text": "Read",
+        "choices": [
+          {
+            "id": "red",
+            "text": "Red",
+            "steps": [
+              "red_key"
+            ]
+          },
+          {
+            "id": "blue",
+            "text": "Blue",
+            "steps": [
+              "blue_key"
+            ]
+          },
+          {
+            "id": "green",
+            "text": "Green",
+            "steps": [
+              "green_key"
+            ]
+          },
+          {
+            "id": "yellow",
+            "text": "Yellow",
+            "steps": [
+              "yellow_key"
+            ]
+          },
+          {
+            "id": "purple",
+            "text": "Purple",
+            "steps": [
+              "purple_key"
+            ]
+          },
+          {
+            "id": "black",
+            "text": "Black",
+            "steps": [
+              "black_key"
+            ]
+          },
+          {
+            "id": "white",
+            "text": "White",
+            "steps": [
+              "white_key"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "red_key",
+      "text": "Red: Information regarding the otherworldly route to Y'ha-nthlei, and the secrets that lie within."
+    },
+    {
+      "id": "blue_key",
+      "text": "Blue: A key allowing entrance through the gateway to Y'ha-nthlei and its other thresholds."
+    },
+    {
+      "id": "green_key",
+      "text": "Green: A trophy proving one's worthiness to enter Y'ha-nthleiand commune with its deities."
+    },
+    {
+      "id": "yellow_key",
+      "text": "Yellow: A badge signifying one's allegiance to Y'ha-nthlei and its deities."
+    },
+    {
+      "id": "purple_key",
+      "text": "Purple: A key of shimmering gold for opening the vaults of the deep."
+    },
+    {
+      "id": "black_key",
+      "text": "Black: A key of obsidian used to activate the many traps within the city of the deep."
+    },
+    {
+      "id": "white_key",
+      "text": "White: A key of coral, one of many used to navigate the depths of Y'ha-nthlei."
+    },
+    {
+      "id": "flashback_14_story",
+      "title": "Flashback XIV",
+      "type": "story",
+      "text": "You are deep below the Esoteric Order of Dagon's headquarters once more, emerging from the hall where you had disrupted the Order's ritual. You follow Agent Dawson through a series of winding, flooded corridors flanked by statues of aquatic monstrosities and malformed beasts. You ask Dawson where exactly you're headed, but he doesn't reply. Finally, you enter another chamber, similar to the last. Its walls are covered in otherworldly effigies and a depiction of ocean waves swirling below an alignment of celestial bodies. Another familiar pool dominates the cavern, inside which the dark shape of somethign massive slumbers. To your surprise, Agent Harper stands in front of the pool, gazing into its dark reflection. She turns with a start when she hears you approach, relaxing only once she sees who you are. \"Is it done?\" Dawson asks.\nShe nods. \"This one isn't waking up anytime soon.\"\n\"Good. The Order is on to us. We have no time to spare. Let's get to the vault and take what we came for.\"\nYou reel. What exactly is going on here? Both of the agents notice your confusion at the same time. A moment of grim understanding dawns as you realize the truth of the situation. The agency didn't come here to investigate criminal activity in Innsmouth at all. They came here for something else. And the only vaults you've seen so far in these depths are the ones filled with archaic riches. The material wealth that has kept the town of Innsmouth afloat all these years-perhaps the very riches that persuaded so many townsfolk to follow the Order and forsake their own humanity.\nStifling your frustration, you ask how much of Dawson's briefing was a lie. \"Not all of it,\" he says calmly. \"Agent Harper was missing when I contacted you, that much was true. But she was sent here on a different mission. One we must complete this very moment or risk losing everything we've worked for. And you're going to help us.\"\nYou cross your arms in defiance. It's one thing to be kept in the dark by the two agents you've risked your life for. It's another to help them smuggle treasure on behalf of the government, especially when so much more is at stake.\n\"I don't think you understand,\" Dawson replies, his voice surprisingly level. \"You are an asset of the agency and under my authority. You will do as I command.\" As the silence between you grows more and more tense, you spot Dawson's hand twitching toward his holstered weapon. Is he truly willing to go that far…?\nJust then, you hear shouting down the hall. \"Shit. They're here.\" Dawson turns to Harper, his orders terse and quiet: \"Take the exit through Devil Reef. We'll head back the way we came. Meet up at the vault.\"\nThe next minute is a blur. Dawson and Harper split up. Despite your anger, you decide it is best to follow Agent Dawson, since you are familiar with the escape route. A torrent of footsteps and hollers follows close behind. You don't get far before you are cornered. An elderly man with wide, unblinking eyes and long robes blocks your exit. \"Take them,\" he says. The rest you recall only in flashes of horror. The interrogation. The dark, flooded pit. Dawson's fate. Harper discovering you on the beach-\n-You turn on Harper, your vision adjusting back to the present. She seems to understand what you have seen. Her hand hovers dangerously near her handgun. \"Dammit,\" she says. \"I was hoping you wouldn't remember what happened the last time we were in this room…\" She draws in a shaky breath as the two of you silently judge one another. \"So, what now?\" she asks. \"I still have a job to do. Are you going to get in my way?\""
+    },
+    {
+      "id": "flashback_14_effects",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "memories_recovered",
+          "id": "stinging_betrayal",
+          "text": "a stinging betrayal"
+        }
+      ]
+    },
+    {
+      "id": "flashback_14_choice",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "help_agent_harper",
+            "text": "Help Agent Harper complete her mission.",
+            "steps": [
+              "act_2_v2"
+            ]
+          },
+          {
+            "id": "help_agent_harper",
+            "text": "Defy Agent Harper.",
+            "steps": [
+              "remove_agent_harper",
+              "act_2_v3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "act_2_v2",
+      "bullet_type": "small",
+      "text": "Put the set-aside City of the Deep (v.II) into play next to the current act. It provides a new alternate objective."
+    },
+    {
+      "id": "remove_agent_harper",
+      "bullet_type": "small",
+      "text": "Search each player's hand, deck, discard pile, and all play areas for Elina Harper and remove her from the game."
+    },
+    {
+      "id": "act_2_v3",
+      "bullet_type": "small",
+      "text": " Put the set-aside City of the Deep (v.III) into play next to the current act. It provides a new alternate objective."
+    },
+    {
+      "id": "escaped_yhanthlei",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "escaped_yhanthlei",
+          "text": "the investigators escaped Y'ha-nthlei."
+        }
+      ]
+    },
+    {
+      "id": "flood_has_begun",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "flood_has_begun",
+          "text": "the flood has begun."
+        }
+      ]
+    },
+    {
+      "id": "plot_of_the_deep_ones_was_thwarted",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "plot_of_the_deep_ones_was_thwarted",
+          "text": "the plot of the Deep Ones was thwarted."
+        }
+      ]
+    },
+    {
+      "id": "agent_harpers_mission_is_complete",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "agent_harpers_mission_is_complete",
+          "text": "Agent Harper's mission is complete."
+        }
+      ]
+    },
+    {
+      "id": "agent_harpers_mission_is_complete_at_what_cost",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "agent_harpers_mission_is_complete_at_what_cost",
+          "text": "Agent Harper's mission is complete… but at what cost?"
+        }
+      ]
+    },
+    {
+      "id": "riches_of_the_deep_are_lost_forever",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "riches_of_the_deep_are_lost_forever",
+          "text": "the riches of the deep are lost forever."
+        }
+      ]
+    },
+    {
+      "id": "riches_of_the_deep_are_destroyed_at_what_cost",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "riches_of_the_deep_are_destroyed_at_what_cost",
+          "text": "the riches of the deep are destroyed… but at what cost?"
+        }
+      ]
+    },
+    {
+      "id": "deep_ones_have_flooded_the_earth",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "deep_ones_have_flooded_the_earth",
+          "text": "the Deep Ones have flooded the Earth."
+        }
+      ]
+    },
+    {
+      "id": "add_dagon_and_hydra_to_victory_display",
+      "type": "input",
+      "text": "Add both Dagon and Hydra to the victory display. Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "input": {
+        "type": "counter",
+        "text": "Marcador de Vitória:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "2_physical_trauma",
+      "text": "Each investigator suffers 2 physical trauma from their ordeal beneath the waves.",
+      "effects": [
+        {
+          "type": "trauma",
+          "investigator": "all",
+          "physical": 2
+        }
+      ]
+    },
+    {
+      "id": "2_mental_trauma",
+      "text": "Each investigator suffers 2 mental trauma as they realize the world will never be the same.",
+      "effects": [
+        {
+          "type": "trauma",
+          "investigator": "all",
+          "mental": 2
+        }
+      ]
+    },
+    {
+      "id": "skip_epilogue",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "tic_epilogue"
+        }
+      ]
+    },
+    {
+      "id": "win_maybe",
+      "text": "The investigators win the campaign…?",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "win"
+        }
+      ]
+    },
+    {
+      "id": "win",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "win"
+        }
+      ]
+    },
+    {
+      "id": "lose",
+      "text": "Os investigadores perderam a campanha.",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "lose"
+        }
+      ]
+    },
+    {
+      "id": "check_shattering_the_alignment",
+      "type": "input",
+      "text": "Is Act 2b—\"Shattering the Alignment\" in the victory display?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "yes",
+            "text": "Sim",
+            "steps": [
+              "resolution_2"
+            ]
+          },
+          {
+            "id": "no",
+            "text": "Não",
+            "steps": [
+              "resolution_3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
+    },
+    {
+      "id": "resolution_3",
+      "type": "resolution",
+      "resolution": "R3"
+    },
+    {
+      "id": "resolution_4",
+      "type": "resolution",
+      "resolution": "R4"
+    },
+    {
+      "id": "resolution_5",
+      "type": "resolution",
+      "resolution": "R5"
+    },
+    {
+      "id": "resolution_6",
+      "type": "resolution",
+      "resolution": "R6"
+    },
+    {
+      "id": "resolution_7",
+      "type": "resolution",
+      "resolution": "R7"
+    },
+    {
+      "id": "resolution_8",
+      "type": "resolution",
+      "resolution": "R8"
+    },
+    {
+      "id": "delayed_win",
+      "text": "Os investigadores venceram a campanha!"
+    },
+    {
+      "id": "3_bonus_xp",
+      "text": "Each investigator earns 3 bonus experience.",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 3
+        }
+      ]
+    },
+    {
+      "id": "all_killed",
+      "text": "Cada investigador está <b>morto</b>.",
+      "effects": [
+        {
+          "type": "trauma",
+          "investigator": "all",
+          "killed": true
+        }
+      ]
+    },
+    {
+      "id": "check_successful_conspiracy_4_5",
+      "type": "input",
+      "text": "Check if another act card is in the victory display:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "fulfilled",
+            "text": "Act 2b—\"Conspiracy Fulfilled\"",
+            "steps": [
+              "resolution_4"
+            ]
+          },
+          {
+            "id": "dismantled",
+            "text": "Act 2b—\"Conspiracy Dismantled\"",
+            "steps": [
+              "resolution_5"
+            ]
+          },
+          {
+            "id": "neither",
+            "text": "Neither",
+            "steps": [
+              "$upgrade_decks"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_successful_conspiracy_6_7",
+      "type": "input",
+      "text": "Check if another act card is in the victory display:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "fulfilled",
+            "text": "Act 2b—\"Conspiracy Fulfilled\"",
+            "steps": [
+              "resolution_6"
+            ]
+          },
+          {
+            "id": "dismantled",
+            "text": "Act 2b—\"Conspiracy Dismantled\"",
+            "steps": [
+              "resolution_7"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "text": "The chanting of the Deep Ones rises to a crescendo. The alien walls of Y'ha-nthlei twist and contort before your eyes, like lungs desperately clawing for breath. The air becomes thin. Water seeps through the walls. Nothing can stop the pull of the tide now. Nothing can stop the great flood. A triumphant roar sounds throughout the city, and the citizens of the deep rise to meet the cry in their jubilance. You collapse in exhaustion and resignation. Your part is over, now. The part of humanity will be soon to follow.",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": [
+        "resolution_8"
+      ]
+    },
+    {
+      "id": "R1",
+      "investigator_status": [
+        "alive",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Resolução 1",
+      "text": "You frantically make your way back to the entrance to the undersea city, hoping desperately to escape alive. You feel the familiar tugging of the currents all around you as you emerge on the other side of the otherworldly threshold. Your heart does not stop racing until you finally break the surface of the water and collapse on an outcropping of rock.",
+      "steps": [
+        "escaped_yhanthlei",
+        "add_dagon_and_hydra_to_victory_display",
+        "2_physical_trauma",
+        "check_shattering_the_alignment"
+      ]
+    },
+    {
+      "id": "R2",
+      "investigator_status": [
+        "alive",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Resolução 2",
+      "text": "As you emerge from the caverns of Devil Reef and look up into the sky, you are relieved to see the sun and moon no longer in alignment. The tide appears to be retreating, as well. The seas seem to have finally calmed.",
+      "steps": [
+        "plot_of_the_deep_ones_was_thwarted",
+        "delayed_win",
+        "check_successful_conspiracy_4_5"
+      ]
+    },
+    {
+      "id": "R3",
+      "investigator_status": [
+        "alive",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Resolução 3",
+      "text": "As you emerge from the caverns of Devil Reef and look up into the sky, your throat clenches tight. The sun and moon are still locked in unholy alignment, and the sea still swallows most of the coast.",
+      "steps": [
+        "flood_has_begun",
+        "check_successful_conspiracy_6_7"
+      ]
+    },
+    {
+      "id": "R4",
+      "investigator_status": [
+        "alive",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Resolução 4",
+      "text": "Agent Harper is the first to speak. \"We did it. I can't believe we did it.\" You nod. Not only were you able to stop the Deep Ones, but you helped Agent Harper accomplish her mission as well. She digs through her belongings for a bright orange firearm with a large barrel, loads a flare into it, and launches the bright light into the sky with a victorious smirk. \"They'll be coming for us any minute now. I'm sure you'll be rewarded handsomely for your help. So long as you agree to speak to nobody about any of this, of course,\" she says. You nod. It's not like anyone would believe you, anyway.",
+      "steps": [
+        "agent_harpers_mission_is_complete",
+        "3_bonus_xp",
+        "$upgrade_decks",
+        "win"
+      ]
+    },
+    {
+      "id": "R5",
+      "investigator_status": [
+        "alive",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Resolution 5",
+      "text": "There is no sign of Agent Harper anywhere. Perhaps she never made it out of the city alive. You hold out hope that she is out there, somewhere. Still, you are relieved that at the very least, nobody will ever be able to use the riches of Y'ha-nthlei to manipulate humanity ever again. Not the government, not the Deep Ones-nobody.",
+      "steps": [
+        "riches_of_the_deep_are_lost_forever",
+        "3_bonus_xp",
+        "$upgrade_decks",
+        "win"
+      ]
+    },
+    {
+      "id": "R6",
+      "investigator_status": [
+        "alive",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Resolution 6",
+      "text": "Agent Harper is the first to speak. \"Well. Mission accomplished, I suppose.\" You bite your lip. She may have accomplished her mission, but the toll of the Deep Ones' ritual on the world will never fade. She digs through her belongings for a bright orange firearm with a large barrel, loads a flare into it, and launches the bright light into the sky with a victorious smirk. \"They'll be coming for us any minute now. Then we'll blow that city apart, and hopefully, this will all be over,\" she says. You aren't so sure. Much of the damage has already been done. Will it ever truly end? Or are you just delaying the inevitable?",
+      "steps": [
+        "agent_harpers_mission_is_complete_at_what_cost",
+        "2_mental_trauma",
+        "skip_epilogue",
+        "$upgrade_decks",
+        "win_maybe"
+      ]
+    },
+    {
+      "id": "R7",
+      "investigator_status": [
+        "alive",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Resolution 7",
+      "text": "There is no sign of Agent Harper anywhere. Perhaps she never made it out of the city alive. You hold out hope that she is out there, somewhere. Still, you are relieved that at the very least, nobody will ever be able to use the riches of Y'ha-nthlei to manipulate humanity ever again. Not the government, not the Deep Ones-nobody. You peer out once more to the waves thrashing across the horizon. The flood seems to have halted. Perhaps you have harmed the Deep Ones and their masters enough that their ritual",
+      "steps": [
+        "riches_of_the_deep_are_destroyed_at_what_cost",
+        "2_mental_trauma",
+        "skip_epilogue",
+        "$upgrade_decks",
+        "win_maybe"
+      ]
+    },
+    {
+      "id": "R8",
+      "investigator_status": [
+        "alive",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Resolution 8",
+      "text": "As the ritual concludes, the eastern seaboard becomes the first coastline drowned by the rising sea. The rest of the continent is swift to follow. The icecaps melt, consuming the remainder of the Earth. Cities fall. Humanity is no longer. All that is left is the ocean and the ever-static alignment of celestial bodies that looms overhead. And of course, the inheritors of this new Earth: Hydra, Dagon, and their children.",
+      "steps": [
+        "deep_ones_have_flooded_the_earth",
+        "all_killed",
+        "skip_epilogue",
+        "lose"
+      ]
+    }
+  ]
 },
 {
   "id": "puzzle_pieces",
@@ -76458,6 +77950,18 @@
       ]
     },
     {
+      "id": "dagon_has_awakened_small",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "dagon_has_awakened",
+          "text": "Dagon has awakened."
+        }
+      ]
+    },
+    {
       "id": "resolution_1",
       "type": "resolution",
       "resolution": "R1"
@@ -76603,6 +78107,96 @@
       "id": "keys_rule",
       "title": "Keys",
       "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
+    },
+    {
+      "id": "maybe_ask_act_or_agenda",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "scenario_data",
+        "scenario_data": "resolution",
+        "options": [
+          {
+            "condition": "R1",
+            "steps": [
+              "ask_act_or_agenda"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_act_or_agenda",
+      "text": "Did you reach R1 by advancing Act 3b or Agenda 3b?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "act",
+            "text": "Act 3b",
+            "steps": [
+              "orders_ritual_was_disrupted",
+              "ask_dagon_asleep"
+            ]
+          },
+          {
+            "id": "agenda",
+            "text": "Agenda 3b",
+            "steps": [
+              "dagon_has_awakened_small"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "orders_ritual_was_disrupted",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "orders_ritual_was_disrupted",
+          "text": "the Order's ritual was disrupted."
+        }
+      ]
+    },
+    {
+      "id": "dagon_still_slumbers",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "dagon_still_slumbers",
+          "text": "Dagon still slumbers."
+        }
+      ]
+    },
+    {
+      "id": "ask_dagon_asleep",
+      "text": "Which version of Dagon is in play (or in the victory display)?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "sleep",
+            "text": "Dagon <i>(Deep in Slumber)</i> is in play.",
+            "steps": [
+              "dagon_still_slumbers"
+            ]
+          },
+          {
+            "id": "awake",
+            "text": "Dagon <i>(Awakened and Enraged)</i> is in play or in the victory display.",
+            "steps": [
+              "dagon_has_awakened_small"
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -76631,8 +78225,9 @@
         "physical",
         "mental"
       ],
-      "text": "You're somewhere else now, lying on your stomach on cold, damp stone. Your arms are held tight behind your back. You have no idea how you got here. As consciousness returns, your vision comes into focus. You crane your neck up to view your surroundings, but it's too dark to see anything inside your stone cell.\n\"I'll ask you one last time. Who sent you here?\" a voice asks. It is deep and husky, like the croaking of a frog.\nYou hear the familiar, cool baritone of Agent Dawson reply: \"Your breath smells awful. Ever heard of brushing your teeth?\" Despite the sarcasm dripping from his words, his voice wavers ever so slightly.\n\"Your mockery only masks the fear that hides within,\" the voice replies. \"Very well. If you are of no use to us, you will be the first to be sacrificed.\"\nYour vision continues to adjust. You can just barely make out Dawson's silhouette on the other side of the cell. He is kneeling before a metal hatch in the stone floor. An elderly robed figure presses a curved knife against Dawson's throat. Someone lifts the hatch, and Dawson's eyes go wide. He gives you one last despairing look, shakes his head slowly and deliberately, and quietly slides something across the stone floor. Then the hooded figure pushes him in. In the scuffle and the low light, nobody notices the car key that skitters to a halt directly next to you.\nYou grab the key and stuff it into your pocket just before you are shoved forward. Two more sets of cold, clammy hands grap your shoulders, and the hooded figure slides his knife up to your neck. All you can see of his face are his wide, unblinking eyes.\n\"Oceiros, these ones were found in Dagon's lair as well,\" another voice explains to the elderly figure in the robes. \"We believe they were the ones snooping around Devil Reef.\"\nThe man with the knife to your throat nods. \"Your turn,\" he declares. \"Tell us why you have come and perhaps we will let you go. Who sent you? What have you seen?\"",
+      "text": "You're somewhere else now, lying on your stomach on cold, damp stone. Your arms are held tight behind your back. You have no idea how you got here. As consciousness returns, your vision comes into focus. You crane your neck up to view your surroundings, but it's too dark to see anything inside your stone cell.\n\"I'll ask you one last time. Who sent you here?\" a voice asks. It is deep and husky, like the croaking of a frog.\nYou hear the familiar, cool baritone of Agent Dawson reply: \"Your breath smells awful. Ever heard of brushing your teeth?\" Despite the sarcasm dripping from his words, his voice wavers ever so slightly.\n\"Your mockery only masks the fear that hides within,\" the voice replies. \"Very well. If you are of no use to us, you will be the first to be sacrificed.\"\nYour vision continues to adjust. You can just barely make out Dawson's silhouette on the other side of the cell. He is kneeling before a metal hatch in the stone floor. An elderly robed figure presses a curved knife against Dawson's throat. Someone lifts the hatch, and Dawson's eyes go wide. He gives you one last despairing look, shakes his head slowly and deliberately, and quietly slides something across the stone floor. Then the hooded figure pushes him in. In the scuffle and the low light, nobody notices the car key that skitters to a halt directly next to you.\nYou grab the key and stuff it into your pocket just before you are shoved forward. Two more sets of cold, clammy hands grap your shoulders, and the hooded figure slides his knife up to your neck. All you can see of his face are his wide, unblinking eyes.\n\"Oceiros, these ones were found in Lair of Dagon as well,\" another voice explains to the elderly figure in the robes. \"We believe they were the ones snooping around Devil Reef.\"\nThe man with the knife to your throat nods. \"Your turn,\" he declares. \"Tell us why you have come and perhaps we will let you go. Who sent you? What have you seen?\"",
       "steps": [
+        "maybe_ask_act_or_agenda",
         "earn_xp",
         "maybe_ask_suspect_defeated",
         "ask_oceiros"
@@ -79250,7 +80845,291 @@
   "header": "",
   "type": "placeholder",
   "icon": "rising_tide",
-  "setup": [],
-  "steps": []
+  "setup": [
+    "epilogue_1",
+    "check_all_memories",
+    "check_meeting_with_thomas_dawson",
+    "check_battle_with_a_horrifying_devil",
+    "check_decision_to_stick_together",
+    "check_encounter_with_a_secret_cult",
+    "check_a_deal_with_joe_sargent",
+    "check_a_followed_lead",
+    "check_an_intervention",
+    "check_a_jailbreak",
+    "check_discovery_of_a_strange_idol",
+    "check_discovery_of_an_unholy_mantle",
+    "check_discovery_of_a_mystical_relic",
+    "check_conversation_with_mr_moore",
+    "check_lifecycle_of_a_deep_one",
+    "check_stinging_betrayal",
+    "actually_check_memories"
+  ],
+  "steps": [
+    {
+      "id": "epilogue_1",
+      "type": "story",
+      "text": "The drive home to Arkham is quiet. After everything you have been through, you would have thought the quiet to be a pieceful reprieve… but you are alone with your thoughts-thoughts of Innsmouth, of Deep Ones, of enormous monsters dwelling in the depths beneath the waves. You find yourself checking your rearview mirror regularly, waiting to spot the headlights of pursuers who want you dead; the glowing, unblinking eyes of an aquatic horror in your back seat; or perhaps even the cold, dead glare of Thomas Dawson, mutated nearly beyond recognition. But you see nothing. Just an empty road.\nYou sigh and run through the events of the past few weeks once more. You believe you have a complete picture of what occurred, and yet you still feel like there is something missing. Another gap in your memories…"
+    },
+    {
+      "id": "check_all_memories",
+      "text": "If all 14 of the following entries are noted under \"Recovered Memories\", read Flashback XV."
+    },
+    {
+      "id": "check_meeting_with_thomas_dawson",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "meeting_with_thomas_dawson",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_battle_with_a_horrifying_devil",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "battle_with_a_horrifying_devil",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_decision_to_stick_together",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "decision_to_stick_together",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_encounter_with_a_secret_cult",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "encounter_with_a_secret_cult",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_a_deal_with_joe_sargent",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "a_deal_with_joe_sargent",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_a_followed_lead",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "a_followed_lead",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_an_intervention",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "an_intervention",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_a_jailbreak",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "a_jailbreak",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_discovery_of_a_strange_idol",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "discovery_of_a_strange_idol",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_discovery_of_an_unholy_mantle",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "discovery_of_an_unholy_mantle",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_discovery_of_a_mystical_relic",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "discovery_of_a_mystical_relic",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_conversation_with_mr_moore",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "conversation_with_mr_moore",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_lifecycle_of_a_deep_one",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "lifecycle_of_a_deep_one",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_stinging_betrayal",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "stinging_betrayal",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "actually_check_memories",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_count",
+        "section": "memories_recovered",
+        "id": "$num_entries",
+        "options": [
+          {
+            "numCondition": 14,
+            "steps": [
+              "flashback_15",
+              "horrific_truth"
+            ]
+          }
+        ],
+        "defaultOption": {
+          "steps": [
+            "epilogue_2"
+          ]
+        }
+      }
+    },
+    {
+      "id": "epilogue_2",
+      "type": "story",
+      "text": "…you shake the feeling away. It doesn't matter anymore. This whole ordeal is behind you now. Innsmouth, Dagon, Hydra, Y'ha-nthlei-just a terrible memory you wish you could forget, like all those other memories you lost. Your foot lies heavy on the accelerator. The faster you are away from this hellish place, the better."
+    },
+    {
+      "id": "flashback_15",
+      "title": "Flashback XV",
+      "type": "story",
+      "text": "You are back in Agent Dawson's office in Boston. He has stepped out for only a brief moment in order to retrieve some documents for you to sign. Some kind of agreement not to speak of anything you might see or hear while working for the government, no doubt. Several minutes pass. You begin to wander throughout the office, examining the many books and maps Dawson has scattered around. Some are harmless enough-a medical textbook, a history of New England, a treatise on the anatomy of aquatic creatures throughout the Atlantic-but the volumes get stranger and stranger the more of his collection you examine.\nVenturing nearer to Dawson's side of the office, you notice that the many books, envelopes, and documents spread across the surface of his desk lie atop an unfolded map. You decide to chance a peek, hoping Dawson's task will keep him from his office for a while longer. Pushing some of the objects in your way aside, you examine the map. It is an enormous nautical chart of the world's oceans, marked in many spots with fresh black ink. A fountain pen lies nearby.\nThe marks that Dawson has made are curious, to say the least. There are over a dozen scattered across the seas. Some lie just off the coast of various continents, while others are in the middle of the ocean, their locations marked with wide, unfilled circles to show that their exact coordinates unknown. Strange words are scribbled next to each. P'tha'wei in the north Atlantic, near Greenland. Yhe'nthalla in the south Atlantic, just off the coast of Africa. R'lyeh deep in the south Pacific. Th'all-iewa by Australia in the eastern Indian Ocean. And at least ten more, some marked with question marks-an indication that this record is incomplete. You gently push aside the book that lies atop North America and see one more just off the coast of Massachusetts. Y'ha-nthlei.\nYou slam the brakes and screech to a halt as your mind pulls back to the present. <i>No. It can't be.</i> Your heart twists into a knot as you realize the truth. <i>No-!</i>\nY'ha-nthlei was not the home of the Deep Ones. It was just one of many."
+    },
+    {
+      "id": "horrific_truth",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "memories_recovered",
+          "id": "horrific_truth",
+          "text": "the horrific truth"
+        }
+      ]
+    }
+  ]
 }]}
 ]

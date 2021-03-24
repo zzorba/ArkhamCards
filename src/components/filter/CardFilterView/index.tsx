@@ -26,15 +26,15 @@ import { slotsTranslations } from '../CardAssetFilterView';
 
 function rangeText(name: string, values: [number, number]) {
   if (values[0] === values[1]) {
-    return `${name}(${values[0]})`;
+    return `${name} (${values[0]})`;
   }
-  return `${name}(${values[0]}-${values[1]})`;
+  return `${name} (${values[0]}-${values[1]})`;
 }
 function listText(name: string, values: string[], translations?: { [key: string]: string }) {
   if (translations) {
-    return `${name}(${map(values, item => translations[item]).join(', ')})`;
+    return `${name} (${map(values, item => translations[item]).join(', ')})`;
   }
-  return `${name}(${values.join(', ')})`;
+  return `${name} (${values.join(', ')})`;
 }
 
 function splitTraits(value: string): string[] {
@@ -94,6 +94,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     enemyFight,
     enemyEvadeEnabled,
     enemyEvade,
+    enemySwarm,
     shroud,
     shroudEnabled,
     clues,
@@ -213,6 +214,9 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     if (enemyMassive) {
       parts.push(t`Massive`);
     }
+    if (enemySwarm) {
+      parts.push(t`Swarm`);
+    }
     if (enemyHealthEnabled) {
       if (enemyHealthPerInvestigator) {
         parts.push(rangeText(t`HPI`, enemyHealth));
@@ -249,6 +253,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     enemySpawn,
     enemyPrey,
     enemyAloof,
+    enemySwarm,
     enemyMassive,
     enemyHealthEnabled,
     enemyHealth,
