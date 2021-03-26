@@ -164,6 +164,7 @@ export const syncRules = async function(
     ]);
   });
 };
+export const NON_LOCALIZED_CARDS = new Set(['en', 'pt']);
 
 export const syncCards = async function(
   db: Database,
@@ -174,7 +175,7 @@ export const syncCards = async function(
   VERBOSE && console.log('syncCards called');
   try {
     VERBOSE && console.log('Starting sync of cards from ArkhamDB');
-    const langPrefix = lang && lang !== 'en' ? `${lang}.` : '';
+    const langPrefix = lang && !NON_LOCALIZED_CARDS.has(lang) ? `${lang}.` : '';
     const uri = `https://${langPrefix}arkhamdb.com/api/public/cards/?encounter=1`;
     const packsByCode: { [code: string]: Pack } = {};
     const cycleNames: {
