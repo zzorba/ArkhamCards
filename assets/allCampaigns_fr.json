@@ -78918,14 +78918,18 @@
     {
       "id": "intro_1",
       "narration": {
-        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.intro",
-        "name": "Intro"
+        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.intro_1",
+        "name": "Intro 1"
       },
       "type": "story",
       "text": "<center><game>MERCREDI 17 AOÛT 1927</game></center>\n<center><game>CINQ SEMAINES PLUS TÔT</game></center>\n« Réveillez-vous, bon sang ! » L'agent Dawson vous secoue de la main droite. Vous êtes dans le siège passager de sa Pristine dernier cri. Les rayons de la lune se reflètent sur la carrosserie polie à travers le brouillard du Massachussetts. « Nous y sommes presque », vous informe Dawson. Malheureusement, Innsmouth n'a pas de chemin de fer fonctionnel, solution que vous auriez préférée, II y a bien un bus qui va de Boston à Newburyport et un autre qui va de Newburyport à Innsmouth… mais Dawson a insisté pour vous emmener lui-même, peut-être pour vous fournir une échappatoire si les choses tournent mal ou alors pour frimer à bord de sa voiture hors de prix. Probablement les deux.\nVous arrivez à Innsmouth et l'odeur du vieux poisson pourri et de murs moisis et décrépis vous envahit. La plupart des bâtiments de l'ouest de la ville semblent abandonnés, mais vous apercevez de-ci de-là des silhouettes derrière des fenêtres. Vous imaginez que la voiture rutilante de l'agent Dawson doit faire forte impression dans une ville aussi miteuse. Vous plaisantez en suggérant qu'il aurait dû vous conduire ici dans un vieux tacot. II répond avec un sourire : « Ce n'est pas du tout mon style. »\nVous atteignez enfin la gare désaffectée depuis des années. Quelques wagons sont abandonnés sur les voies et le dépôt est condamné par des planches clouées. Dawson grimace et vous désigne un véhicule garé sur le terrain vague. « C'est la décapotable de l'agent Harper. Garons-nous ici et continuons à pied. Nous pourrons nous déplacer plus facilement en ville comme ça », conclut-il.\nVous fouillez le véhicule de l'agent Harper avant de continuer, mais il ne contient aucun indice de ce qui lui est arrivé. Vous vous dirigez ensuite vers l'est, traversez la rivière Manuxet, croisant d'innombrables entrepôts déserts, ruelles sordides et habitants taciturnes. « Harper doit être quelque part dans cette maudite ville. Les habitants n'ont pas l'air très amicaux. Je ne serais pas surpris qu'elle ait attiré l'attention d'une bande de malfrats locale ou quelque chose dans ce goût là… » commente Dawson à voix haute. Vous lui demandez comment il sait qu'elle n'est pas simplement en train de se cacher. « Ah, oui — eh bien, nous avons une phrase codée pour cela. Si elle m'avait envoyé une lettre disant qu’elle a “une course à faire”, cela aurait signifié qu'elle était hors jeu pour un montent. Sans ce signal, je me dois d'envisager le pire. » Au nord-est, plusieurs usines surplombent les toits branlants, les dômes et les belvédères. Aucun autochtone ne s'arrête pour vous souhaiter la bienvenue. Compte tenu de leur attitude repoussante, leur manque de courtoisie est plutôt un soulagement.\nVous atteignez enfin la place centrale, juste au sud de la Manuxet, mais les bâtiments de briques décrépis qui constituent ce supposé cœur de la ville ne vous rassurent pas vraiment quant au sort de l'agent Harper. Un vieux bus est arrêté non loin, son chauffeur au teint huileux est adossé à la porte et vous observe l'air suspicieux. Ne sachant par où commencer, vous décidez de vous séparer afin de couvrir plus de terrain. « Cuisinez les habitants et apprenez-en plus sur cette ville », ordonne Dawson. « Découvrez qui sont les gros poissons de ce trou à rats. L'un d'eux doit savoir où Harper a été vue pour la dernière fois, ou avec qui. Je vais essayer de découvrir où elle logeait et tenter de retrouver sa trace. Rendez-vous à 19 heures. Compris ? » Vous hochez la tête et partez de votre côté.\nLa première personne que vous interrogez est le chauffeur de bus, qui doit avoir une bonne connaissance de la ville. Sa peau grise et flasque est la première chose que vous remarquez, rapidement suivie par les rides inhabituellement profondes recouvrant son cou, comme s'il avait vieilli prématurément. Ses yeux globuleux ont un aspect dérangeant et vous n'êtes pas certain de l'avoir vu cligner des yeux une seule fois pendant que vous approchiez. Vous commencez à lui tendre la main pour Vous présenter, mais finissez par renoncer, au cas où cet homme souffre d'une sorte de maladie dont vous n 'avez jamais entendu parler. Il se présente comme étant Joe Sargent et vous donne des renseignements appréciables — bien que sommaires — sur les bâtiments qui vous entourent."
     },
     {
       "id": "info_summary",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.info_summary",
+        "name": "Info Summary"
+      },
       "type": "rule_reminder",
       "text": "Ce qui suit est un résumé des informations fournies aux investigateurs concernant la ville d'Innsmouth.",
       "bullets": [
@@ -78955,8 +78959,8 @@
     {
       "id": "intro_2",
       "narration": {
-        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.the_accusation",
-        "name": "The Accusation"
+        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.intro_2",
+        "name": "Intro 2"
       },
       "type": "story",
       "text": "M. Sargent vous demande ensuite ce qui vous amène à Innsmouth. Vous éludez question en posant une des vôtres. Vous lui demandez s'il a vu quelqu'un correspondant à la description de l'agent Harper en ville. Il s'interrompt et secoue la tête. « Jamais vue » marmonne-t-il, le regard fuyant.\nVous passez le reste de la journée à parcourir les rues de la ville, tentant vainement d'engager la conversation avec les habitants. Plus vous passez de temps dans cette ville sordide, plus vous regrettez d'avoir accepté l'offre de l'agent Dawson. II y a quelque chose de malsain ici, quelque chose de pourri et de fétide qui vous dérange jusqu'au plus profond de votre âme.\nLe soir venu, vous retrouvez l'agent Dawson sur la place désormais déserte et vous échangez les informations que vous avez récoltées. « Regardez ça », dit-il en vous tendant une lettre froissée et tâchée d'encre qui lui est adressée. « II semblerait que Harper ait pris une chambre dans ce vieil hôtel répugnant. Elle l'a toujours techniquement, mais elle n 'a pas reparu depuis plusieurs jours. Je suis entré par effraction et j’ai trouvé ça parmi ses affaires. »\nÀ en juger par ce courrier non posté, il semble que l'agent Harper savait que quelqu'un en ville la surveillait. <i>Je suis suivie</i>, explique la lettre. <i>J'ignore comment ils savent, mais ils savent. C'est comme si la ville entière était dans le coup. Je n'ai aucun contact ici à qui je peux me fier. II faudra plusieurs agents pour tirer tout ça au clair, j 'ai peur de —</i>\nLa lettre s'interrompt brutalement. « Eh bien, il y a plusieurs agents désormais » dit amèrement Dawson une fois la lettre lue. « Il ne peut y avoir qu'une seule raison pour laquelle elle n'a pas envoyé cette lettre. Harper est en danger, et quelqu'un dans cette satanée ville sait où elle se trouve. » Ensemble, vous élaborez un plan pour trouver l'agent Harper. Premièrement, fouiller le dernier lieu où elle a été vue. Deuxièmement, trouver qui savait qu'elle était en ville. Troisièmement… leur rendre une petite visite."
@@ -79712,6 +79716,10 @@
     },
     {
       "id": "accusation_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.the_accusation",
+        "name": "The Accusation"
+      },
       "type": "rule_reminder",
       "title": "L'accusation",
       "text": "Grâce aux connaissances que vous avez rassemblées, vous êtes en mesure de porter une accusation afin de déterminer qui a kidnappé Elina Harper et où elle est retenue. Afin de porter cette accusation, les joueurs doivent choisir un ennemi [[Suspect]] et un lieu [[Cachette]] parmi les options inscrites sur la carte de référence Trouver l'Agent Harper. Notez que le [[Suspect]] ne peut pas être un ennemi actuellement en jeu ou dans la pile de Victoire, de même que la [[Cachette]] ne peut pas être un lieu actuellement en jeu. Utilisez ces informations pour affiner votre choix."
