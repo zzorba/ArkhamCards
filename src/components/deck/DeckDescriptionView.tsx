@@ -12,7 +12,7 @@ import { Navigation } from 'react-native-navigation';
 import ActionButton from 'react-native-action-button';
 
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
-import { useFlag, useKeyboardHeight, useTabooSetId } from '@components/core/hooks';
+import { useComponentDidDisappear, useFlag, useKeyboardHeight, useTabooSetId } from '@components/core/hooks';
 import { useDeckEditState, useParsedDeck } from './hooks';
 import CardTextComponent from '@components/card/CardTextComponent';
 import space, { s, xs } from '@styles/space';
@@ -62,6 +62,11 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
     }
     Navigation.pop(componentId);
   }, [edit, id, description, dispatch, componentId]);
+  useComponentDidDisappear(() => {
+    if (edit) {
+      dispatch(setDeckDescription(id, description));
+    }
+  }, componentId, [edit, id, description]);
   const hasDescriptionChange = description !== (deck?.description_md || '');
   const [keyboardHeight] = useKeyboardHeight();
   const onEdit = useCallback(() => {
