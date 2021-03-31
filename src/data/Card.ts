@@ -45,6 +45,11 @@ const REPRINT_CARDS: {
   '02190': ['jac'],
   '02153': ['jac'],
   '04032': ['jac'],
+
+  '07004': ['bob'],
+  '07005': ['tdg'],
+  '02003': ['hoth'],
+  '05001': ['tftbw'],
 };
 
 const FEMININE_INVESTIGATORS = new Set([

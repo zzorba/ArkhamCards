@@ -17,7 +17,7 @@ import { msgid, ngettext, t } from 'ttag';
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '@actions/types';
-import Card from '@data/Card';
+import Card, { cardInCollection } from '@data/Card';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import ShowNonCollectionFooter from '@components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
 import { getPacksInCollection } from '@reducers';
@@ -222,9 +222,7 @@ export default function InvestigatorsListComponent({
         results.push(currentBucket);
       }
       if (i) {
-        if (i.pack_code && (
-          i.pack_code === 'core' || in_collection[i.pack_code])
-        ) {
+        if (i.pack_code && cardInCollection(i, in_collection)) {
           currentBucket.data.push(i);
         } else {
           nonCollectionCards.push(i);
