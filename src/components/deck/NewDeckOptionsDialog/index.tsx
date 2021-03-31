@@ -37,6 +37,7 @@ import DeckButton from '../controls/DeckButton';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useSimpleTextDialog } from '../dialogs';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -95,6 +96,12 @@ function NewDeckOptionsDialog({
     });
   }, [setMeta, metaState]);
   const investigator = useMemo(() => (investigators && investigators[investigatorId]) || undefined, [investigatorId, investigators]);
+  const investigatorFront = useMemo(() => (investigators && metaState.alternate_front) ? investigators[metaState.alternate_front] : investigator,
+    [investigator, investigators, metaState]);
+  const investigatorBack = useMemo(() => (investigators && metaState.alternate_back) ? investigators[metaState.alternate_back] : investigator,
+    [investigator, investigators, metaState]
+  );
+
   const defaultDeckName = useMemo(() => {
     if (!investigator || !investigator.name) {
       return t`New Deck`;
@@ -383,6 +390,13 @@ function NewDeckOptionsDialog({
   return (
     <View style={[styles.flex, backgroundStyle]}>
       <ScrollView contentContainerStyle={backgroundStyle} keyboardShouldPersistTaps="always">
+        <View style={space.paddingS}>
+          <InvestigatorSummaryBlock
+            investigator={investigatorFront || investigator}
+            tabooSetId={tabooSetId}
+            investigatorBack={investigatorBack}
+          />
+        </View>
         { formContent }
         <View style={[space.paddingS, styles.row]}>
           <View style={[space.marginRightS, styles.flex]}>

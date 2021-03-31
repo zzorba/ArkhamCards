@@ -43,6 +43,7 @@ import DeckMetadataControls from '../controls/DeckMetadataControls';
 import { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
 import { ControlType } from '@components/cardlist/CardSearchResult/ControlComponent';
 import { getPacksInCollection } from '@reducers';
+import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
 
 interface SectionCardId extends CardId {
   special: boolean;
@@ -324,18 +325,6 @@ export default function DeckViewTab(props: Props) {
   const [limitedSlots, toggleLimitedSlots] = useFlag(false);
   const investigator = useMemo(() => cards[deck.investigator_code], [cards, deck.investigator_code]);
   const [data, setData] = useState<DeckSection[]>([]);
-  const showInvestigator = useCallback(() => {
-    if (investigatorFront) {
-      showCard(
-        componentId,
-        investigatorFront.code,
-        investigatorFront,
-        colors,
-        false,
-        tabooSetId,
-      );
-    }
-  }, [componentId, tabooSetId, investigatorFront, colors]);
 
   const [uniqueBondedCards, bondedCardsCount] = useMemo((): [Card[], number] => {
     const bondedCards: Card[] = [];
@@ -611,44 +600,16 @@ export default function DeckViewTab(props: Props) {
     if (!investigatorCard) {
       return null;
     }
-
     return (
-      <View style={styles.column}>
-        <TouchableOpacity onPress={showInvestigator}>
-          <View>
-            <View style={styles.header}>
-              <View style={styles.headerTextColumn}>
-                <InvestigatorStatLine
-                  investigator={investigatorCard}
-                />
-                { !!investigatorCard.text && (
-                  <View style={[styles.gameTextBlock, styles.headerLeftMargin]}>
-                    <CardTextComponent
-                      text={investigatorCard.text}
-                    />
-                  </View>
-                ) }
-              </View>
-              <View style={[styles.headerColumn, styles.headerLeftMargin]}>
-                <View style={styles.image}>
-                  <InvestigatorImage
-                    card={investigator || investigatorCard}
-                    componentId={componentId}
-                    yithian={yithian}
-                    border
-                  />
-                </View>
-                <HealthSanityLine investigator={investigatorCard} />
-              </View>
-            </View>
-          </View>
-          <View style={styles.headerLeftMargin}>
-            <CardTabooTextBlock card={investigatorCard} />
-          </View>
-        </TouchableOpacity>
-      </View>
+      <InvestigatorSummaryBlock
+        investigator={investigatorCard}
+        yithian={yithian}
+        componentId={componentId}
+        tabooSetId={tabooSetId}
+      />
     );
-  }, [componentId, parsedDeck.slots, showInvestigator, cards, investigator, investigatorFront]);
+
+  }, [componentId, parsedDeck.slots, cards, investigatorFront, tabooSetId]);
 
   const header = useMemo(() => {
     return (
