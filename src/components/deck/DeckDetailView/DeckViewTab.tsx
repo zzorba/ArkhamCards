@@ -608,7 +608,6 @@ export default function DeckViewTab(props: Props) {
         tabooSetId={tabooSetId}
       />
     );
-
   }, [componentId, parsedDeck.slots, cards, investigatorFront, tabooSetId]);
 
   const header = useMemo(() => {
