@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { find, forEach, map, sumBy, throttle } from 'lodash';
+import { find, forEach, map, sumBy, throttle, uniqBy } from 'lodash';
 import { Action } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
 import { NetInfoStateType } from '@react-native-community/netinfo';
@@ -150,7 +150,7 @@ function NewDeckOptionsDialog({
         }
       }
     );
-    return result;
+    return map(result, r => uniqBy(r, x => x.code));
   }, [cards, investigator]);
   const meta = useMemo((): DeckMeta =>{
     const starterDeckMeta = starterDeck && investigator && starterDecks.meta[investigator.code];
