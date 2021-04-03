@@ -18,6 +18,7 @@ fragment GuideAchievement on guide_achievement {
 
 fragment IdDeck on campaign_deck {
   id
+  owner_id
   arkhamdb_id
   local_uuid
   campaign_id
@@ -50,7 +51,6 @@ fragment AllDeck on campaign_deck {
 
 fragment LatestDeck on campaign_deck {
   ...BasicDeck
-  owner_id,
   campaign {
     id
     uuid
