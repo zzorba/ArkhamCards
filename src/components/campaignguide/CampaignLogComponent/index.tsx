@@ -108,7 +108,6 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
       return null;
     }
     const tokenCount = sum(values(campaignLog.chaosBag));
-    console.log('Rendering the chaos bag');
     return (
       <View style={[space.paddingSideS, space.paddingBottomM]}>
         <DeckBubbleHeader title={t`Chaos Bag (${tokenCount})`} />

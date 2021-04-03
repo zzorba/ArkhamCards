@@ -32,11 +32,11 @@ interface Props {
 
 interface Item {
   key: string;
-  deckId: DeckId;
+  deckId: MiniDeckT;
 }
 
 function keyExtractor(item: Item) {
-  return item.deckId.uuid;
+  return item.deckId.id.uuid;
 }
 
 function DeckListItem({
@@ -44,7 +44,7 @@ function DeckListItem({
   deckClicked,
   deckToCampaign,
 }: {
-  deckId: DeckId;
+  deckId: MiniDeckT;
   deckClicked: (deck: Deck, investigator: Card | undefined, campaignId: CampaignId | undefined) => void;
   deckToCampaign?: { [uuid: string]: Campaign };
 }) {
@@ -59,7 +59,7 @@ function DeckListItem({
   return (
     <NewDeckListRow
       lang={lang}
-      key={deckId.uuid}
+      key={deckId.id.uuid}
       deck={deck}
       investigator={investigator}
       onPress={deckClicked}
@@ -84,8 +84,8 @@ export default function DeckList({
         return searchMatchesText(searchTerm, [deckId.name, investigator.name]);
       }), deckId => {
         return {
-          key: `${deckId}`,
-          deckId: deckId.id,
+          key: `${deckId.id.uuid}`,
+          deckId: deckId,
           deckClicked,
         };
       });
@@ -96,7 +96,7 @@ export default function DeckList({
   }) => {
     return (
       <DeckListItem
-        key={deckId.uuid}
+        key={deckId.id.uuid}
         deckId={deckId}
         deckClicked={deckClicked}
         deckToCampaign={deckToCampaign}

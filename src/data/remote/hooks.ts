@@ -12,6 +12,8 @@ import {
   useGetCampaignGuideQuery,
   CampaignGuideDocument,
   CampaignDocument,
+  LatestDeckFragmentDoc,
+  LatestDeckFragment,
 } from '@generated/graphql/apollo-schema';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { FriendStatus } from './api';
@@ -25,6 +27,7 @@ import { useDispatch } from 'react-redux';
 import { setServerDecks } from '@components/deck/actions';
 import { DeckActions } from './decks';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
+import { useApolloClient } from '@apollo/client';
 
 
 export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
@@ -259,12 +262,23 @@ export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, (
   return [deckIds, userLoading || dataLoading, refresh];
 }
 
-export function useLatestDeckRemote(deckId: DeckId): LatestDeckT | undefined {
-  const { data } = useGetLatestDeckQuery({
-    variables: { deckId: deckId.serverId || 0 },
-    fetchPolicy: 'cache-only',
-    skip: !deckId.serverId,
+export function useLatestDeckRemote(deckId: DeckId, campaign_id: number | undefined): LatestDeckT | undefined {
+  const { cache } = useApolloClient();
+  const currentDeck = cache.readFragment<LatestDeckFragment>({
+    fragment: LatestDeckFragmentDoc,
+    fragmentName: 'LatestDeck',
+    id: cache.identify({
+      __typename: 'campaign_deck',
+      campaign_id: campaign_id || 0,
+      local_uuid: deckId.local ? deckId.uuid : null,
+      arkhamdb_id: deckId.local ? null : deckId.id,
+    }),
   });
-  const deck = data?.campaign_deck_by_pk;
-  return useMemo(() => deck ? new LatestDeckRemote(deck) : undefined, [deck]);
+
+  return useMemo(() => {
+    if (!campaign_id || !deckId.serverId) {
+      return undefined;
+    }
+    return currentDeck ? new LatestDeckRemote(currentDeck) : undefined;
+  }, [campaign_id, deckId, currentDeck]);
 }

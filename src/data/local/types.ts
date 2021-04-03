@@ -220,12 +220,14 @@ export class MiniDeckRedux implements MiniDeckT {
   name: string;
   investigator: string;
   date_update: string;
+  campaign_id?: number;
 
   constructor(deck: Deck) {
     this.id = getDeckId(deck);
     this.name = deck.name;
     this.investigator = deck.investigator_code;
     this.date_update = deck.date_update;
+    this.campaign_id = undefined;
   }
 }
 

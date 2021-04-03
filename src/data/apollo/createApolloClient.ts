@@ -20,9 +20,6 @@ import trackerLink from './trackerLink';
 export const GRAPHQL_SERVER = 'api.arkhamcards.com/v1';
 
 const typePolicies: TypedTypePolicies = {
-  deck: {
-    keyFields: ['campaign_id', 'arkhamdb_id', 'local_uuid'],
-  },
   campaign_deck: {
     keyFields: ['campaign_id', 'arkhamdb_id', 'local_uuid'],
   },

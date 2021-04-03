@@ -307,11 +307,14 @@ export class MiniDeckRemote implements MiniDeckT {
   investigator: string;
   date_update: string;
   name: string;
+  campaign_id: number;
+
   constructor(deck: LatestDeckFragment) {
     this.id = fragmentToDeckId(deck);
     this.investigator = deck.investigator;
     this.name = deck.content?.name || '';
     this.date_update = deck.content?.date_update || '';
+    this.campaign_id = deck.campaign_id;
   }
 }
 
