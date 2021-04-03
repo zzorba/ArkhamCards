@@ -5,4 +5,5 @@ export default interface MiniDeckT {
   name: string;
   investigator: string;
   date_update: string;
+  campaign_id?: number;
 }

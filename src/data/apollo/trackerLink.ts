@@ -45,7 +45,6 @@ export default (dispatch: Dispatch<Action>) => (
     }
     return forward(operation).map(data => {
       if (tracked) {
-        console.log(`Removing a tracked query: ${id}`);
         dispatch(trackedQueriesRemove(id));
       }
       return data;

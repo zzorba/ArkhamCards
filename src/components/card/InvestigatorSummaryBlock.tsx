@@ -7,7 +7,7 @@ import InvestigatorImage from '@components/core/InvestigatorImage';
 import CardTextComponent from '@components/card/CardTextComponent';
 import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
 import HealthSanityLine from '@components/core/HealthSanityLine';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useFlag } from '@components/core/hooks';

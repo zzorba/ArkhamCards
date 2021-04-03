@@ -1,6 +1,6 @@
 import { useCallback, useContext, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { flatMap, concat, sortBy, reverse } from 'lodash';
+import { filter, flatMap, concat, sortBy, reverse } from 'lodash';
 
 import { getCampaigns, MyDecksState } from '@reducers';
 import { Campaign, CampaignId, DeckId } from '@actions/types';
@@ -14,6 +14,7 @@ import LatestDeckT from './interfaces/LatestDeckT';
 import { refreshMyDecks } from '@actions';
 import { DeckActions } from './remote/decks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import MiniDeckT from './interfaces/MiniDeckT';
 
 export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => void)] {
   const campaigns = useSelector(getCampaigns);
@@ -81,8 +82,13 @@ export function useMyDecks(deckActions: DeckActions): [MyDecksState, () => void]
     }
   }, [dispatch, user, deckActions, refreshing, refreshRemoteDecks]);
   const mergedMyDecks = useMemo(() => {
+    const remoteDeckLocalIds = new Set(flatMap(remoteMyDecks, d => d.id.local ? d.id.uuid : []));
+    const remoteDeckArkhamDbIds = new Set(flatMap(remoteMyDecks, d => d.id.local ? [] : d.id.id));
+    const filteredMyDecks = filter(myDecks, d => {
+      return d.id.local ? !remoteDeckLocalIds.has(d.id.uuid) : remoteDeckArkhamDbIds.has(d.id.id);
+    });
     return reverse(sortBy(
-      [...myDecks, ...remoteMyDecks],
+      [...filteredMyDecks, ...remoteMyDecks],
       r => r.date_update
     ));
   }, [myDecks, remoteMyDecks]);
@@ -94,8 +100,8 @@ export function useMyDecks(deckActions: DeckActions): [MyDecksState, () => void]
   }, onRefresh];
 }
 
-export function useLatestDeck(deckId: DeckId, deckToCampaign?: { [uuid: string]: Campaign }): LatestDeckT | undefined {
-  const reduxDeck = useLatestDeckRedux(deckId, deckToCampaign);
-  const remoteDeck = useLatestDeckRemote(deckId);
-  return deckId?.serverId ? remoteDeck : reduxDeck;
+export function useLatestDeck(deckId: MiniDeckT, deckToCampaign?: { [uuid: string]: Campaign }): LatestDeckT | undefined {
+  const reduxDeck = useLatestDeckRedux(deckId.id, deckToCampaign);
+  const remoteDeck = useLatestDeckRemote(deckId.id, deckId.campaign_id);
+  return deckId.id.serverId ? remoteDeck : reduxDeck;
 }

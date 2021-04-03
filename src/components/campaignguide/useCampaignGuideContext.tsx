@@ -261,12 +261,10 @@ export default function useCampaignGuideContext(
       return;
     }
     if (campaign.guideVersion === -1) {
-      console.log('Updating guide version');
       dispatch(updateCampaignGuideVersion(updateCampaignActions, campaignId, campaignGuide.campaignVersion()));
     }
     // tslint:disable-next-line: strict-comparisons
     if (campaign.difficulty !== campaignLog.campaignData.difficulty) {
-      console.log('Updating difficulty');
       dispatch(updateCampaignDifficulty(updateCampaignActions, campaignId, campaignLog.campaignData.difficulty));
     }
     forEach(
@@ -274,14 +272,12 @@ export default function useCampaignGuideContext(
       investigator => {
         const newData = campaignLog.campaignData.investigatorData[investigator] || {};
         if (deepDiff(omit(campaign.investigatorData[investigator] || {}, ['spentXp']), newData)?.length) {
-          console.log(`Updating investigator(${investigator}) data.`);
           dispatch(updateCampaignInvestigatorData(user, updateCampaignActions, campaignId, investigator, newData));
         }
       }
     )
 
     if (deepDiff(campaign.chaosBag, campaignLog.chaosBag)?.length) {
-      console.log('Updating chaos bag');
       dispatch(updateCampaignChaosBag(updateCampaignActions.setChaosBag, campaignId, campaignLog.chaosBag));
     }
     const scenarioResults = flatMap(scenarios, scenario => {
@@ -297,7 +293,6 @@ export default function useCampaignGuideContext(
       };
     });
     if (deepDiff(campaign.scenarioResults, scenarioResults)?.length) {
-      console.log('Updating scenario results');
       dispatch(updateCampaignScenarioResults(updateCampaignActions, campaignId, scenarioResults));
     }
   }, [user, campaign, campaignGuide, campaignId, dispatch, updateCampaignActions]);
