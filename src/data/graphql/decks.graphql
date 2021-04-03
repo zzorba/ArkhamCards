@@ -56,11 +56,8 @@ mutation insertNextLocalDeck(
       update_columns: [next_deck_id]
     }
   ) {
-    id
-    local_uuid
-    campaign_id
+    ...IdDeck
     investigator
-    owner_id
     next_deck {
       ...LatestDeck
 	  }
@@ -98,11 +95,8 @@ mutation insertNextArkhamDbDeck(
       update_columns: [next_deck_id]
     }
   ) {
-    id
-    arkhamdb_id
-    campaign_id
+    ...IdDeck
     investigator
-    owner_id
     next_deck {
       ...LatestDeck
 	  }
@@ -127,8 +121,7 @@ mutation updateArkhamDbDeck(
   ) {
     affected_rows
     returning {
-      id
-      arkhamdb_id
+      ...IdDeck
       content
       content_hash
     }
@@ -152,8 +145,7 @@ mutation updateLocalDeck(
   ) {
     affected_rows
     returning {
-      id
-      local_uuid
+      ...IdDeck
       content
       content_hash
     }
@@ -174,9 +166,7 @@ mutation deleteAllLocalDecks(
   ) {
     affected_rows
     returning {
-      id
-      campaign_id
-      local_uuid
+      ...IdDeck
       owner_id
     }
   }
@@ -197,9 +187,7 @@ mutation deleteAllArkhamDbDecks(
   ) {
     affected_rows
     returning {
-      id
-      campaign_id
-      arkhamdb_id
+      ...IdDeck
       owner_id
     }
   }
@@ -217,9 +205,7 @@ mutation deleteLocalDeck(
   ) {
     affected_rows
     returning {
-      id
-      campaign_id
-      local_uuid
+      ...IdDeck
       owner_id
       previous_deck {
         ...LatestDeck
@@ -240,9 +226,7 @@ mutation deleteArkhamDbDeck(
   ) {
     affected_rows
     returning {
-      id
-      campaign_id
-      arkhamdb_id
+      ...IdDeck
       owner_id
       previous_deck {
         ...LatestDeck

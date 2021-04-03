@@ -6957,11 +6957,12 @@ export type InsertNextLocalDeckMutation = (
   { __typename?: 'mutation_root' }
   & { insert_campaign_deck_one?: Maybe<(
     { __typename?: 'campaign_deck' }
-    & Pick<Campaign_Deck, 'id' | 'local_uuid' | 'campaign_id' | 'investigator' | 'owner_id'>
+    & Pick<Campaign_Deck, 'investigator'>
     & { next_deck?: Maybe<(
       { __typename?: 'campaign_deck' }
       & LatestDeckFragment
     )> }
+    & IdDeckFragment
   )> }
 );
 
@@ -6980,11 +6981,12 @@ export type InsertNextArkhamDbDeckMutation = (
   { __typename?: 'mutation_root' }
   & { insert_campaign_deck_one?: Maybe<(
     { __typename?: 'campaign_deck' }
-    & Pick<Campaign_Deck, 'id' | 'arkhamdb_id' | 'campaign_id' | 'investigator' | 'owner_id'>
+    & Pick<Campaign_Deck, 'investigator'>
     & { next_deck?: Maybe<(
       { __typename?: 'campaign_deck' }
       & LatestDeckFragment
     )> }
+    & IdDeckFragment
   )> }
 );
 
@@ -7003,7 +7005,8 @@ export type UpdateArkhamDbDeckMutation = (
     & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
     & { returning: Array<(
       { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'id' | 'arkhamdb_id' | 'content' | 'content_hash'>
+      & Pick<Campaign_Deck, 'content' | 'content_hash'>
+      & IdDeckFragment
     )> }
   )> }
 );
@@ -7023,7 +7026,8 @@ export type UpdateLocalDeckMutation = (
     & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
     & { returning: Array<(
       { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'id' | 'local_uuid' | 'content' | 'content_hash'>
+      & Pick<Campaign_Deck, 'content' | 'content_hash'>
+      & IdDeckFragment
     )> }
   )> }
 );
@@ -7041,7 +7045,8 @@ export type DeleteAllLocalDecksMutation = (
     & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
     & { returning: Array<(
       { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'id' | 'campaign_id' | 'local_uuid' | 'owner_id'>
+      & Pick<Campaign_Deck, 'owner_id'>
+      & IdDeckFragment
     )> }
   )> }
 );
@@ -7059,7 +7064,8 @@ export type DeleteAllArkhamDbDecksMutation = (
     & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
     & { returning: Array<(
       { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'id' | 'campaign_id' | 'arkhamdb_id' | 'owner_id'>
+      & Pick<Campaign_Deck, 'owner_id'>
+      & IdDeckFragment
     )> }
   )> }
 );
@@ -7077,11 +7083,12 @@ export type DeleteLocalDeckMutation = (
     & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
     & { returning: Array<(
       { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'id' | 'campaign_id' | 'local_uuid' | 'owner_id'>
+      & Pick<Campaign_Deck, 'owner_id'>
       & { previous_deck?: Maybe<(
         { __typename?: 'campaign_deck' }
         & LatestDeckFragment
       )> }
+      & IdDeckFragment
     )> }
   )> }
 );
@@ -7099,11 +7106,12 @@ export type DeleteArkhamDbDeckMutation = (
     & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
     & { returning: Array<(
       { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'id' | 'campaign_id' | 'arkhamdb_id' | 'owner_id'>
+      & Pick<Campaign_Deck, 'owner_id'>
       & { previous_deck?: Maybe<(
         { __typename?: 'campaign_deck' }
         & LatestDeckFragment
       )> }
+      & IdDeckFragment
     )> }
   )> }
 );
@@ -7156,7 +7164,7 @@ export type GuideAchievementFragment = (
 
 export type IdDeckFragment = (
   { __typename?: 'campaign_deck' }
-  & Pick<Campaign_Deck, 'id' | 'arkhamdb_id' | 'local_uuid' | 'campaign_id'>
+  & Pick<Campaign_Deck, 'id' | 'owner_id' | 'arkhamdb_id' | 'local_uuid' | 'campaign_id'>
 );
 
 export type MiniDeckFragment = (
@@ -7188,7 +7196,6 @@ export type AllDeckFragment = (
 
 export type LatestDeckFragment = (
   { __typename?: 'campaign_deck' }
-  & Pick<Campaign_Deck, 'owner_id'>
   & { campaign: (
     { __typename?: 'campaign' }
     & Pick<Campaign, 'id' | 'uuid' | 'name'>
@@ -7728,6 +7735,7 @@ export type RemoveCampaignInvestigatorMutation = (
 export const IdDeckFragmentDoc = gql`
     fragment IdDeck on campaign_deck {
   id
+  owner_id
   arkhamdb_id
   local_uuid
   campaign_id
@@ -7815,7 +7823,6 @@ export const FullInvestigatorDataFragmentDoc = gql`
 export const LatestDeckFragmentDoc = gql`
     fragment LatestDeck on campaign_deck {
   ...BasicDeck
-  owner_id
   campaign {
     id
     uuid
@@ -8037,17 +8044,15 @@ export const InsertNextLocalDeckDocument = gql`
     object: {local_uuid: $previous_local_uuid, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId, next_deck: {data: {local_uuid: $local_uuid, campaign_id: $campaign_id, investigator: $investigator, content: $content, content_hash: $content_hash, owner_id: $userId}}}
     on_conflict: {constraint: deck_local_uuid_campaign_id_key, update_columns: [next_deck_id]}
   ) {
-    id
-    local_uuid
-    campaign_id
+    ...IdDeck
     investigator
-    owner_id
     next_deck {
       ...LatestDeck
     }
   }
 }
-    ${LatestDeckFragmentDoc}`;
+    ${IdDeckFragmentDoc}
+${LatestDeckFragmentDoc}`;
 export type InsertNextLocalDeckMutationFn = Apollo.MutationFunction<InsertNextLocalDeckMutation, InsertNextLocalDeckMutationVariables>;
 
 /**
@@ -8085,17 +8090,15 @@ export const InsertNextArkhamDbDeckDocument = gql`
     object: {arkhamdb_id: $previous_arkhamdb_id, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId, next_deck: {data: {arkhamdb_id: $arkhamdb_id, campaign_id: $campaign_id, investigator: $investigator, content: $content, content_hash: $content_hash, owner_id: $userId}}}
     on_conflict: {constraint: deck_arkhamdb_id_campaign_id_key, update_columns: [next_deck_id]}
   ) {
-    id
-    arkhamdb_id
-    campaign_id
+    ...IdDeck
     investigator
-    owner_id
     next_deck {
       ...LatestDeck
     }
   }
 }
-    ${LatestDeckFragmentDoc}`;
+    ${IdDeckFragmentDoc}
+${LatestDeckFragmentDoc}`;
 export type InsertNextArkhamDbDeckMutationFn = Apollo.MutationFunction<InsertNextArkhamDbDeckMutation, InsertNextArkhamDbDeckMutationVariables>;
 
 /**
@@ -8135,14 +8138,13 @@ export const UpdateArkhamDbDeckDocument = gql`
   ) {
     affected_rows
     returning {
-      id
-      arkhamdb_id
+      ...IdDeck
       content
       content_hash
     }
   }
 }
-    `;
+    ${IdDeckFragmentDoc}`;
 export type UpdateArkhamDbDeckMutationFn = Apollo.MutationFunction<UpdateArkhamDbDeckMutation, UpdateArkhamDbDeckMutationVariables>;
 
 /**
@@ -8179,14 +8181,13 @@ export const UpdateLocalDeckDocument = gql`
   ) {
     affected_rows
     returning {
-      id
-      local_uuid
+      ...IdDeck
       content
       content_hash
     }
   }
 }
-    `;
+    ${IdDeckFragmentDoc}`;
 export type UpdateLocalDeckMutationFn = Apollo.MutationFunction<UpdateLocalDeckMutation, UpdateLocalDeckMutationVariables>;
 
 /**
@@ -8222,14 +8223,12 @@ export const DeleteAllLocalDecksDocument = gql`
   ) {
     affected_rows
     returning {
-      id
-      campaign_id
-      local_uuid
+      ...IdDeck
       owner_id
     }
   }
 }
-    `;
+    ${IdDeckFragmentDoc}`;
 export type DeleteAllLocalDecksMutationFn = Apollo.MutationFunction<DeleteAllLocalDecksMutation, DeleteAllLocalDecksMutationVariables>;
 
 /**
@@ -8263,14 +8262,12 @@ export const DeleteAllArkhamDbDecksDocument = gql`
   ) {
     affected_rows
     returning {
-      id
-      campaign_id
-      arkhamdb_id
+      ...IdDeck
       owner_id
     }
   }
 }
-    `;
+    ${IdDeckFragmentDoc}`;
 export type DeleteAllArkhamDbDecksMutationFn = Apollo.MutationFunction<DeleteAllArkhamDbDecksMutation, DeleteAllArkhamDbDecksMutationVariables>;
 
 /**
@@ -8304,9 +8301,7 @@ export const DeleteLocalDeckDocument = gql`
   ) {
     affected_rows
     returning {
-      id
-      campaign_id
-      local_uuid
+      ...IdDeck
       owner_id
       previous_deck {
         ...LatestDeck
@@ -8314,7 +8309,8 @@ export const DeleteLocalDeckDocument = gql`
     }
   }
 }
-    ${LatestDeckFragmentDoc}`;
+    ${IdDeckFragmentDoc}
+${LatestDeckFragmentDoc}`;
 export type DeleteLocalDeckMutationFn = Apollo.MutationFunction<DeleteLocalDeckMutation, DeleteLocalDeckMutationVariables>;
 
 /**
@@ -8348,9 +8344,7 @@ export const DeleteArkhamDbDeckDocument = gql`
   ) {
     affected_rows
     returning {
-      id
-      campaign_id
-      arkhamdb_id
+      ...IdDeck
       owner_id
       previous_deck {
         ...LatestDeck
@@ -8358,7 +8352,8 @@ export const DeleteArkhamDbDeckDocument = gql`
     }
   }
 }
-    ${LatestDeckFragmentDoc}`;
+    ${IdDeckFragmentDoc}
+${LatestDeckFragmentDoc}`;
 export type DeleteArkhamDbDeckMutationFn = Apollo.MutationFunction<DeleteArkhamDbDeckMutation, DeleteArkhamDbDeckMutationVariables>;
 
 /**
