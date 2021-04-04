@@ -17,16 +17,20 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import MiniDeckT from './interfaces/MiniDeckT';
 
 export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => void)] {
+  const { user } = useContext(ArkhamCardsAuthContext);
   const campaigns = useSelector(getCampaigns);
   const [serverCampaigns, loading, refresh] = useRemoteCampaigns();
   const allCampaigns = useMemo(() => {
+    if (!user) {
+      return campaigns;
+    }
     return sortBy(
       concat(
         campaigns,
         serverCampaigns
       ),
       c => -c.updatedAt.getTime());
-  }, [campaigns, serverCampaigns]);
+  }, [campaigns, serverCampaigns, user]);
   return [allCampaigns, loading, refresh];
 }
 
@@ -69,7 +73,6 @@ export function useCampaignInvestigators(campaign: undefined | SingleCampaignT, 
   }, [campaignInvestigators, investigators]);
 }
 
-
 export function useMyDecks(deckActions: DeckActions): [MyDecksState, () => void] {
   const dispatch = useDispatch();
   const { user } = useContext(ArkhamCardsAuthContext);
@@ -82,6 +85,9 @@ export function useMyDecks(deckActions: DeckActions): [MyDecksState, () => void]
     }
   }, [dispatch, user, deckActions, refreshing, refreshRemoteDecks]);
   const mergedMyDecks = useMemo(() => {
+    if (!user) {
+      return myDecks;
+    }
     const remoteDeckLocalIds = new Set(flatMap(remoteMyDecks, d => d.id.local ? d.id.uuid : []));
     const remoteDeckArkhamDbIds = new Set(flatMap(remoteMyDecks, d => d.id.local ? [] : d.id.id));
     const filteredMyDecks = filter(myDecks, d => {
@@ -91,7 +97,7 @@ export function useMyDecks(deckActions: DeckActions): [MyDecksState, () => void]
       [...filteredMyDecks, ...remoteMyDecks],
       r => r.date_update
     ));
-  }, [myDecks, remoteMyDecks]);
+  }, [myDecks, remoteMyDecks, user]);
   return [{
     myDecks: mergedMyDecks,
     error,
