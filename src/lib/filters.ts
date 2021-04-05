@@ -56,7 +56,8 @@ export interface FilterState {
   actions: string[];
   skillModifiers: SkillModifierFilters;
   skillModifiersEnabled: boolean;
-  packs: string[];
+  packCodes: string[];
+  packNames: string[];
   cycleNames: string[];
   slots: string[];
   encounters: string[];
@@ -145,7 +146,8 @@ export const defaultFilterState: FilterState = {
     agility: false,
   },
   skillModifiersEnabled: false,
-  packs: [],
+  packCodes: [],
+  packNames: [],
   cycleNames: [],
   slots: [],
   encounters: [],
@@ -541,7 +543,6 @@ export default class FilterBuilder {
     return [];
   }
 
-
   playerCardFilters(filters: FilterState): Brackets[] {
     const {
       uses,
@@ -635,7 +636,7 @@ export default class FilterBuilder {
         ...this.equalsVectorClause(filters.types, 'type_code'),
         ...this.equalsVectorClause(filters.subTypes, 'subtype_code'),
         ...this.playerCardFilters(filters),
-        ...this.equalsVectorClause(filters.packs, 'pack_name'),
+        ...this.equalsVectorClause(filters.packCodes, 'pack_code'),
         ...this.equalsVectorClause(filters.encounters, 'encounter_name'),
         ...this.equalsVectorClause(filters.illustrators, 'illustrator'),
         ...this.miscFilter(filters),

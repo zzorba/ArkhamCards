@@ -325,11 +325,12 @@ export default function({
 
   const query = useMemo(() => {
     const queryParts: Brackets[] = [];
+    const actuallyIncludeDuplicates = includeDuplicates || (filters?.packCodes.length);
     if (mythosToggle) {
       if (mythosMode) {
         queryParts.push(MYTHOS_CARDS_QUERY);
       } else {
-        if (includeDuplicates) {
+        if (actuallyIncludeDuplicates) {
           queryParts.push(BROWSE_CARDS_WITH_DUPLICATES_QUERY);
         } else {
           queryParts.push(BROWSE_CARDS_QUERY);
@@ -343,11 +344,11 @@ export default function({
       // queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));
     }
     return combineQueries(
-      includeDuplicates ? BASIC_WITH_DUPLICATES_QUERY : BASIC_QUERY,
+      actuallyIncludeDuplicates ? BASIC_WITH_DUPLICATES_QUERY : BASIC_QUERY,
       queryParts,
       'and'
     );
-  }, [baseQuery, mythosToggle, selectedSort, mythosMode, includeDuplicates]);
+  }, [baseQuery, mythosToggle, selectedSort, mythosMode, includeDuplicates, filters]);
   const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters, true), [filters]);
   const [hasFilters, showFiltersPress] = useFilterButton(componentId, baseQuery);
   const renderFabIcon = useCallback(() => (

@@ -71,7 +71,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     pushFilterView('SearchFilters.Location');
   }, [pushFilterView]);
   const {
-    packs,
+    packNames,
     enemyElite,
     enemyNonElite,
     enemyHunter,
@@ -136,10 +136,10 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
   } = filters;
 
   const selectedPacksText = useMemo(() => {
-    if (!allPacks || !packs || !allPacks.length || !packs.length) {
+    if (!allPacks || !packNames || !allPacks.length || !packNames.length) {
       return t`Packs: All`;
     }
-    const selectedPackNames = new Set(packs);
+    const selectedPackNames = new Set(packNames);
     const cyclePackCounts: { [code: string]: number } = {};
     const selectedCyclePackCounts: { [code: string]: number } = {};
     const cycleNames: { [code: string]: string } = {};
@@ -177,7 +177,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     });
     const allPacksString = parts.join(', ');
     return t`Packs: ${allPacksString}`;
-  }, [packs, allPacks]);
+  }, [packNames, allPacks]);
 
   const enemyFilterText = useMemo(() => {
     const parts = [];
@@ -568,7 +568,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
         query={baseQuery}
         tabooSetId={tabooSetId}
       />
-      { (packs.length > 0 || allPacks.length > 1) && (
+      { (packNames.length > 0 || allPacks.length > 1) && (
         <NavButton
           text={selectedPacksText}
           onPress={onPacksPress}

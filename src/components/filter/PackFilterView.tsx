@@ -21,44 +21,50 @@ const PackFilterView = (props: FilterFunctionProps & NavigationProps) => {
   } = useFilterFunctions(props, {
     title: t`Pack Filters`,
   });
-  const { packs } = filters;
+  const { packCodes, packNames } = filters;
   const allPacks = useSelector(getAllPacks);
   const setChecked = useCallback((code: string, value: boolean) => {
-    const deltaPacks = map(
-      filter(allPacks, pack => pack.code === code),
-      pack => pack.name
+    const deltaPacks = filter(allPacks, pack => pack.code === code);
+    const deltaPackCodes = map(deltaPacks, pack => pack.code);
+    const deltaPackNames = map(deltaPacks, pack => pack.name);
+    onFilterChange(
+      'packCodes',
+      value ? union(packCodes, deltaPackCodes) : difference(packCodes, deltaPackCodes)
     );
     onFilterChange(
-      'packs',
-      value ? union(packs, deltaPacks) : difference(packs, deltaPacks)
+      'packNames',
+      value ? union(packNames, deltaPackNames) : difference(packNames, deltaPackNames)
     );
-  }, [packs, onFilterChange, allPacks]);
+  }, [packCodes, packNames, onFilterChange, allPacks]);
 
   const setCycleChecked = useCallback((cycle_code: string, value: boolean) => {
     const cyclePack = find(allPacks, pack => pack.code === cycle_code);
     if (cyclePack) {
-      const deltaPacks = map(
-        filter(allPacks, pack => pack.cycle_position === cyclePack.cycle_position),
-        pack => pack.name
-      );
+      const deltaPacks = filter(allPacks, pack => pack.cycle_position === cyclePack.cycle_position);
+      const deltaPackCodes = map(deltaPacks, pack => pack.code);
+      const deltaPackNames = map(deltaPacks, pack => pack.name);
 
       onFilterChange(
-        'packs',
-        value ? union(packs, deltaPacks) : difference(packs, deltaPacks)
+        'packCodes',
+        value ? union(packCodes, deltaPackCodes) : difference(packCodes, deltaPackCodes)
+      );
+      onFilterChange(
+        'packNames',
+        value ? union(packNames, deltaPackNames) : difference(packNames, deltaPackNames)
       );
     }
-  }, [onFilterChange, packs, allPacks]);
+  }, [onFilterChange, packCodes, packNames, allPacks]);
   const { typography } = useContext(StyleContext);
   const selected = useMemo(() => {
-    const selectedPackNames = new Set(packs || []);
+    const selectedPackCodes = new Set(packCodes || []);
     const result: { [pack_code: string]: boolean } = {};
     forEach(allPacks, pack => {
-      if (selectedPackNames.has(pack.name)) {
+      if (selectedPackCodes.has(pack.code)) {
         result[pack.code] = true;
       }
     });
     return result;
-  }, [allPacks, packs]);
+  }, [allPacks, packCodes]);
 
   if (!allPacks.length) {
     return (
