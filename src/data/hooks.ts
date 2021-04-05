@@ -31,7 +31,7 @@ export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => vo
       ),
       c => -c.updatedAt.getTime());
   }, [campaigns, serverCampaigns, user]);
-  return [allCampaigns, loading, refresh];
+  return [allCampaigns, !!user && loading, refresh];
 }
 
 export function useCampaignGuideState(campaignId?: CampaignId, live?: boolean): CampaignGuideStateT | undefined {
@@ -101,7 +101,7 @@ export function useMyDecks(deckActions: DeckActions): [MyDecksState, () => void]
   return [{
     myDecks: mergedMyDecks,
     error,
-    refreshing: refreshing || remoteRefreshing,
+    refreshing: refreshing || (!!user && remoteRefreshing),
     myDecksUpdated,
   }, onRefresh];
 }
