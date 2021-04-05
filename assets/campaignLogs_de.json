@@ -2386,11 +2386,11 @@
           },
           {
             "id": "agent_harpers_mission_is_complete",
-            "text": "Agent Harper's mission is complete."
+            "text": "Agent Harpers Mission ist abgeschlossen."
           },
           {
             "id": "agent_harpers_mission_is_complete_at_what_cost",
-            "text": "Agent Harper's mission is complete… but at what cost?"
+            "text": "Agent Harpers Mission ist abgeschlossen … aber zu welchem Preis?"
           },
           {
             "id": "allen_out_for_blood",
@@ -2410,15 +2410,15 @@
           },
           {
             "id": "deep_ones_have_flooded_the_earth",
-            "text": "the Deep Ones have flooded the Earth."
+            "text": "Die Tiefen Wesen haben die Erde überflutet."
           },
           {
             "id": "escaped_yhanthlei",
-            "text": "the investigators escaped Y'ha-nthlei."
+            "text": "Die Ermittler sind aus Y’ha-nthlei entkommen."
           },
           {
             "id": "flood_has_begun",
-            "text": "the flood has begun."
+            "text": "Die Flut hat eingesetzt."
           },
           {
             "id": "friendly_out_for_blood",
@@ -2482,7 +2482,7 @@
           },
           {
             "id": "plot_of_the_deep_ones_was_thwarted",
-            "text": "the plot of the Deep Ones was thwarted."
+            "text": "Die Verschwörung der Tiefen Wesen wurde vereitelt."
           },
           {
             "id": "possess_a_map_of_yhanthlei",
@@ -2502,11 +2502,11 @@
           },
           {
             "id": "riches_of_the_deep_are_destroyed_at_what_cost",
-            "text": "the riches of the deep are destroyed… but at what cost?"
+            "text": "Die Reichtümer der Tiefe sind für immer verloren … aber zu welchem Preis?"
           },
           {
             "id": "riches_of_the_deep_are_lost_forever",
-            "text": "the riches of the deep are lost forever."
+            "text": "Die Reichtümer der Tiefe sind für immer verloren."
           },
           {
             "id": "terror_of_devil_reef_is_dead",
@@ -2688,7 +2688,7 @@
           },
           {
             "id": "horrific_truth",
-            "text": "the horrific truth"
+            "text": "die schreckliche Wahrheit"
           },
           {
             "id": "lifecycle_of_a_deep_one",
@@ -2700,7 +2700,7 @@
           },
           {
             "id": "stinging_betrayal",
-            "text": "a stinging betrayal"
+            "text": "ein schmerzhafter Verrat"
           }
         ]
       },
