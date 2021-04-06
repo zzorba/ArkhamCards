@@ -43013,7 +43013,7 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "check_carl_sanford_possesses_the_secrets_of_the_universe",
+        "id": "carl_sanford_possesses_the_secrets_of_the_universe",
         "options": [
           {
             "boolCondition": true,
