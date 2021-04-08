@@ -4,7 +4,7 @@ import Card, { CardsMap } from './Card';
 import TabooSet from './TabooSet';
 import Database from './Database';
 import { PlayerCards } from './DatabaseContext';
-import { INVESTIGATOR_CARDS_QUERY, PLAYER_CARDS_QUERY } from './query';
+import { INVESTIGATOR_CARDS_QUERY, PLAYER_CARDS_QUERY, SYNC_CARDS_QUERY } from './query';
 
 export interface InvestigatorCardState {
   [tabooSet: string]: CardsMap;
@@ -25,7 +25,7 @@ export default async function syncPlayerCards(
     const tabooSetsP = db.tabooSets().then(ts => ts.createQueryBuilder().getMany());
     const qbP = db.cardsQuery();
     const investigatorsP = qbP.then(qb => qb.where(INVESTIGATOR_CARDS_QUERY).getMany());
-    const cardsP = qbP.then(qb => qb.where(PLAYER_CARDS_QUERY).getMany());
+    const cardsP = qbP.then(qb => qb.where(SYNC_CARDS_QUERY).getMany());
     const investigators = await investigatorsP;
     const investigatorsByTaboo = mapValues(
       groupBy(investigators, card => card.taboo_set_id || 0),

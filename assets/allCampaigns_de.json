@@ -75731,7 +75731,6 @@
   "scenario_name": "In den Mahlstrom hinein",
   "full_name": "Szenario VIII: In den Mahlstrom hinein",
   "header": "Szenario VIII",
-  "type": "placeholder",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -80851,7 +80850,7 @@
   "scenario_name": "Epilog",
   "full_name": "Epilog",
   "header": "",
-  "type": "placeholder",
+  "type": "epilogue",
   "icon": "rising_tide",
   "setup": [
     "epilogue_1",

@@ -75731,7 +75731,6 @@
   "scenario_name": "Hacia el remolino",
   "full_name": "Escenario VIII: Hacia el remolino",
   "header": "Escenario VIII",
-  "type": "placeholder",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -80851,7 +80850,7 @@
   "scenario_name": "Epílogo",
   "full_name": "Epílogo",
   "header": "",
-  "type": "placeholder",
+  "type": "epilogue",
   "icon": "rising_tide",
   "setup": [
     "epilogue_1",

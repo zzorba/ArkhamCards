@@ -68682,7 +68682,6 @@
   "scenario_name": "Into the Maelstrom",
   "full_name": "Scenario VIII: Into the Maelstrom",
   "header": "Scenario VIII",
-  "type": "placeholder",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -73347,7 +73346,7 @@
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
   "header": "",
-  "type": "placeholder",
+  "type": "epilogue",
   "icon": "rising_tide",
   "setup": [
     "epilogue_1",

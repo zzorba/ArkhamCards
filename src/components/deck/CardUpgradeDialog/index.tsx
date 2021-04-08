@@ -61,6 +61,14 @@ export default function CardUpgradeDialog({
 }: Props) {
   const cards = usePlayerCards();
   const deckEdits = useSimpleDeckEdits(id);
+  const originalCodes = useMemo(() => {
+    if (!deckEdits?.slots) {
+      return new Set();
+    }
+    return new Set(map(filter(cardsByName, c => !!deckEdits.slots[c.code]), c => c.code));
+    // Intentionally only updating when we gain/lose slot changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [!!deckEdits?.slots, cardsByName]);
   const dispatch = useDispatch();
   const { backgroundStyle, borderStyle, typography, width } = useContext(StyleContext);
   const inCollection = useSelector(getPacksInCollection);
@@ -75,17 +83,28 @@ export default function CardUpgradeDialog({
     }
   }, componentId, [componentId]);
 
+  const dedupedCardsByName = useMemo(() => {
+    const reprints = filter(cardsByName, c => !!c.duplicate_of_code);
+    const cardsToDrop = new Set(map(reprints, c => {
+      if (originalCodes.has(c.code)) {
+        return c.duplicate_of_code;
+      }
+      return c.code;
+    }));
+    return filter(cardsByName, c => !cardsToDrop.has(c.code));
+  }, [cardsByName, originalCodes]);
+
   const namedCards = useMemo(() => {
     if (!deckEdits) {
       return [];
     }
     const validation = new DeckValidation(investigator, deckEdits.slots, deckEdits.meta);
     return sortBy(
-      filter(cardsByName,
+      filter(dedupedCardsByName,
         card => validation.canIncludeCard(card, false)),
       card => card.xp || 0
     );
-  }, [cardsByName, investigator, deckEdits]);
+  }, [dedupedCardsByName, investigator, deckEdits]);
   const onIncrementIgnore = useCallback((code: string) => {
     dispatch(incIgnoreDeckSlot(id, code));
   }, [dispatch, id]);

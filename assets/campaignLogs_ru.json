@@ -1399,11 +1399,11 @@
         "entries": [
           {
             "id": "alive",
-            "text": "Gavriella is alive."
+            "text": "Гавриэла жива."
           },
           {
             "id": "dead",
-            "text": "Gavriella Mizrah is dead."
+            "text": "Гавриэла погибла."
           },
           {
             "id": "on_gavriellas_trail",
@@ -1416,11 +1416,11 @@
         "entries": [
           {
             "id": "alive",
-            "text": "Jerome is alive."
+            "text": "Джером жив."
           },
           {
             "id": "dead",
-            "text": "Jerome Davids is dead."
+            "text": "Джером погиб."
           },
           {
             "id": "on_jeromes_trail",
@@ -1433,11 +1433,11 @@
         "entries": [
           {
             "id": "alive",
-            "text": "Valentino is alive."
+            "text": "Валентино жив."
           },
           {
             "id": "dead",
-            "text": "Valentino Rivas is dead."
+            "text": "Валентино погиб."
           },
           {
             "id": "on_valentinos_trail",
@@ -1450,11 +1450,11 @@
         "entries": [
           {
             "id": "alive",
-            "text": "Penny is alive."
+            "text": "Пенни жива."
           },
           {
             "id": "dead",
-            "text": "Penny White is dead."
+            "text": "Пенни погибла."
           },
           {
             "id": "on_pennys_trail",
@@ -1476,7 +1476,7 @@
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
-            "text": "Anette Mason is possessed by evil."
+            "text": "Анетта Мейсон одержима злом."
           },
           {
             "id": "anette_taught_you_the_spells_of_old",
@@ -1516,7 +1516,7 @@
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
-            "text": "Carl Sanford possesses the secrets of the universe."
+            "text": "Карл Сэнфорд овладел тайнами Вселенной."
           },
           {
             "id": "continued_alone",
@@ -1556,7 +1556,7 @@
           },
           {
             "id": "inducted_into_the_inner_circle",
-            "text": "the investigators were inducted into the Inner Circle."
+            "text": "сыщики посвящены во Внутренний круг."
           },
           {
             "id": "investigators_escaped_the_spectral_realm",
@@ -1572,7 +1572,7 @@
           },
           {
             "id": "kept_mementos_hidden",
-            "text": "the investigators kept their mementos hidden."
+            "text": "сыщики скрыли собранные свидетельства."
           },
           {
             "id": "learned_nothing_of_the_lodges_schemes",
@@ -1604,11 +1604,11 @@
           },
           {
             "id": "sided_with_the_coven",
-            "text": "the investigators sided with the coven."
+            "text": "сыщики приняли сторону ковена."
           },
           {
             "id": "sided_with_the_lodge",
-            "text": "the investigators sided with the Lodge."
+            "text": "сыщики приняли сторону Ложи."
           },
           {
             "id": "signed_the_black_book",
@@ -1624,7 +1624,7 @@
           },
           {
             "id": "true_work_of_silver_twilight_lodge_has_begun",
-            "text": "the true work of the Silver Twilight Lodge has begun."
+            "text": "Ложа Серебряных Сумерек взялась за своё дело."
           },
           {
             "id": "witches_spell_broken",

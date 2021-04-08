@@ -80,6 +80,7 @@ function hasUpgrades(
     find(cardsByName[card.real_name.toLowerCase()] || [], upgradeCard => (
       upgradeCard &&
       upgradeCard.code !== code &&
+      (upgradeCard.xp || 0) > (card.xp || 0) &&
       validation.canIncludeCard(upgradeCard, false) &&
       (upgradeCard.pack_code === 'core' || inCollection[upgradeCard.pack_code])
     )));
