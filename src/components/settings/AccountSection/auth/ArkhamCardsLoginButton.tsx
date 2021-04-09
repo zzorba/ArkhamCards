@@ -265,6 +265,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
         leftIcon={{ type: 'material', name: 'email' }}
         placeholder={t`Email address`}
         autoCompleteType="email"
+        autoCapitalize="none"
         value={emailAddress}
         keyboardType="email-address"
         textContentType="username"

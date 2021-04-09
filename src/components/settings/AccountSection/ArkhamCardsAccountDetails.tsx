@@ -8,7 +8,7 @@ import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButt
 import { useSimpleTextDialog } from '@components/deck/dialogs';
 import { NavigationProps } from '@components/nav/types';
 import { Navigation } from 'react-native-navigation';
-import { FriendsViewProps } from '../FriendsView';
+import { FriendsViewProps } from '@components/social/FriendsView';
 import { useUpdateHandle } from '@data/remote/api';
 import StyleContext from '@styles/StyleContext';
 import { useMyProfile } from '@data/remote/hooks';
