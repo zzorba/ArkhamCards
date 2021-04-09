@@ -30,7 +30,8 @@ export const getLatestDeck: DocumentNode;
 declare module '*/fragments.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const GuideInput: DocumentNode;
+  export const UserInfo: DocumentNode;
+export const GuideInput: DocumentNode;
 export const GuideAchievement: DocumentNode;
 export const IdDeck: DocumentNode;
 export const MiniDeck: DocumentNode;
@@ -53,7 +54,9 @@ declare module '*/readCampaigns.graphql' {
   export const getMyCampaigns: DocumentNode;
 export const getCampaign: DocumentNode;
 export const getCampaignGuide: DocumentNode;
+export const getCampaignAccess: DocumentNode;
 export const campaign: DocumentNode;
+export const campaignAccess: DocumentNode;
 export const campaignGuide: DocumentNode;
 
   export default defaultDocument;

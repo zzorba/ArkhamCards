@@ -24,7 +24,6 @@ function FeedComponent({ userId, componentId, searchTerm, searchResults, handleS
   showHeader: () => void;
   focus: () => void;
 }) {
-
   const searchFriendsPressed = useCallback(() => {
     showHeader();
     focus();

@@ -13,6 +13,7 @@ import EncounterIcon from '@icons/EncounterIcon';
 export type DeckButtonIcon =
   'backup' |
   'seal' |
+  'lock' |
   'log' |
   'finish' |
   'wrench' |

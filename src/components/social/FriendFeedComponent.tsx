@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, FlatList, ListRenderItemInfo, Platform, StyleSheet, Text, View } from 'react-native';
-import { find, forEach, map } from 'lodash';
+import { forEach, map } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -24,12 +24,19 @@ interface FriendControls {
   rejectRequest: (userId: string) => Promise<void>;
 }
 
-export type UserControls = FriendControls;
+interface CampaignAccessControls {
+  type: 'campaign';
+  hasAccess: boolean;
+  inviteUser: (userId: string) => Promise<void>;
+  removeUser: (userId: string) => Promise<void>;
+}
+
+export type UserControls = FriendControls | CampaignAccessControls;
 
 interface UserItem {
   type: 'user';
   user: SimpleUser;
-  controls: UserControls | undefined;
+  controls?: UserControls;
 }
 interface HeaderItem {
   type: 'header';
@@ -110,11 +117,53 @@ function FriendControlsComponent({ user, status, refetchMyProfile, acceptRequest
   }, [onAcceptPress, onRejectPress, colors, status, submitting]);
 }
 
+
+function AccessControlsComponent({ user, hasAccess, inviteUser, removeUser }: {
+  user: SimpleUser;
+  hasAccess: boolean;
+  inviteUser: (userId: string) => Promise<void>;
+  removeUser: (userId: string) => Promise<void>;
+}) {
+  const { colors } = useContext(StyleContext);
+  const [submitting, setSubmitting] = useState<'invite' | 'remove'>();
+  const onInvitePress = useCallback(async() => {
+    setSubmitting('invite');
+    await inviteUser(user.id);
+    setSubmitting(undefined);
+  }, [inviteUser, user.id]);
+  const onRemovePress = useCallback(async() => {
+    setSubmitting('remove');
+    await removeUser(user.id);
+    setSubmitting(undefined);
+  }, [removeUser, user.id]);
+  return (
+    <View style={styles.button}>
+      { hasAccess ? (
+        <RoundButton onPress={onRemovePress} disabled={!!submitting}>
+          { submitting === 'remove' ? (
+            <ActivityIndicator size="small" animating color={colors.D30} />
+          ) : (
+            <AppIcon size={16} name="dismiss" color={colors.D30} />
+          ) }
+        </RoundButton>
+      ) : (
+        <RoundButton onPress={onInvitePress} disabled={!!submitting}>
+          { submitting === 'invite' ? (
+            <ActivityIndicator size="small" animating color={colors.D30} />
+          ) : (
+            <AppIcon size={16} name={'plus-thin'} color={colors.D30} />
+          ) }
+        </RoundButton>
+      ) }
+    </View>
+  );
+}
+
 function UserRow({ user, showUser, status, controls, refetchMyProfile }: {
   user: SimpleUser;
   refetchMyProfile: () => void;
   showUser?: (userId: string, handle?: string) => void;
-  controls: FriendControls | undefined;
+  controls: UserControls | undefined;
   status?: FriendStatus;
 }) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
@@ -137,6 +186,15 @@ function UserRow({ user, showUser, status, controls, refetchMyProfile }: {
             refetchMyProfile={refetchMyProfile}
             acceptRequest={controls.acceptRequest}
             rejectRequest={controls.rejectRequest}
+          />
+        );
+      case 'campaign':
+        return (
+          <AccessControlsComponent
+            user={user}
+            hasAccess={controls.hasAccess}
+            inviteUser={controls.inviteUser}
+            removeUser={controls.removeUser}
           />
         );
       default:
@@ -166,8 +224,8 @@ function UserRow({ user, showUser, status, controls, refetchMyProfile }: {
 interface Props {
   componentId: string;
   userId: string;
-  handleScroll: (...args: any[]) => void;
-  searchResults: SearchResults;
+  handleScroll?: (...args: any[]) => void;
+  searchResults?: SearchResults;
   error?: string;
 
   toFeed: (
@@ -249,6 +307,7 @@ export default function FriendFeedComponent({ componentId, userId, handleScroll,
   }, [user, myFriendStatus, borderStyle, typography, refetchMyProfile, showUser]);
 
   const data: FriendFeedItem[] = useMemo(() => toFeed(isSelf, profile), [toFeed, isSelf, profile]);
+  const searchResultsError = searchResults?.error;
   const header = useMemo(() => {
     const spacer = Platform.OS === 'android' && <View style={styles.searchBarPadding} />;
     return (
@@ -259,29 +318,29 @@ export default function FriendFeedComponent({ componentId, userId, handleScroll,
             <Text style={[typography.text, typography.white]}>{ error }</Text>
           </View>
         ) }
-        { !!searchResults.error && (
+        { !!searchResultsError && (
           <View style={[space.paddingM, { backgroundColor: colors.warn }]}>
-            <Text style={[typography.text, typography.white]}>{ searchResults.error }</Text>
+            <Text style={[typography.text, typography.white]}>{ searchResultsError }</Text>
           </View>
         ) }
       </>
     );
-  }, [colors, error, typography, searchResults.error]);
+  }, [colors, error, typography, searchResultsError]);
   const doRefresh = useCallback(() => {
     refetchMyProfile();
     refetchProfile();
   }, [refetchMyProfile, refetchProfile]);
   useEffect(() => {
     doRefresh();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <FlatList
-      contentInset={Platform.OS === 'android' ? undefined : { top: SEARCH_BAR_HEIGHT }}
-      contentOffset={Platform.OS === 'android' ? undefined : { x: 0, y: -SEARCH_BAR_HEIGHT }}
-      ListHeaderComponent={header}
+      contentInset={!handleScroll || Platform.OS === 'android' ? undefined : { top: SEARCH_BAR_HEIGHT }}
+      contentOffset={!handleScroll || Platform.OS === 'android' ? undefined : { x: 0, y: -SEARCH_BAR_HEIGHT }}
+      ListHeaderComponent={handleScroll && header}
       onRefresh={doRefresh}
-      refreshing={loading || loadingMyProfile || searchResults.loading}
+      refreshing={loading || loadingMyProfile || !!searchResults?.loading}
       onScroll={handleScroll}
       data={data}
       renderItem={renderItem}

@@ -1,3 +1,8 @@
+fragment UserInfo on users {
+  id
+  handle
+}
+
 fragment GuideInput on guide_input {
   id
   campaign_id
@@ -132,7 +137,7 @@ fragment FullCampaign on campaign {
   weaknessSet
   guided
   guide_version
-  owner
+  owner_id
   investigators {
     id
     investigator

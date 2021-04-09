@@ -407,7 +407,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   TIC,
 ]);
 
-export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set([]);
+export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
 
 export interface CustomCampaignLog {
   sections?: string[];
