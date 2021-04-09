@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { filter, flatMap, concat, sortBy, reverse } from 'lodash';
 
 import { getCampaigns, MyDecksState } from '@reducers';
-import { Campaign, CampaignId, DeckId } from '@actions/types';
+import { Campaign, CampaignId } from '@actions/types';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import Card, { CardsMap } from '@data/types/Card';

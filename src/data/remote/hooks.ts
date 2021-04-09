@@ -8,7 +8,6 @@ import {
   useGetProfileQuery,
   useGetCampaignQuery,
   useGetMyDecksLazyQuery,
-  useGetLatestDeckQuery,
   useGetCampaignGuideQuery,
   CampaignGuideDocument,
   CampaignDocument,

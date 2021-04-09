@@ -1,5 +1,5 @@
 import { ApolloCache, DocumentNode, MutationUpdaterFn } from '@apollo/client';
-import { filter, find, flatMap, forEach, map, pick, omit } from 'lodash';
+import { filter, find, flatMap, map, pick, omit } from 'lodash';
 
 import {
   AddCampaignInvestigatorDocument,
@@ -69,7 +69,6 @@ import {
   UpdateArkhamDbDeckDocument,
   InsertNewDeckMutation,
   InsertNewDeckDocument,
-  UpdateLocalDeckMutation,
   InsertNextLocalDeckDocument,
   InsertNextArkhamDbDeckDocument,
   InsertNextLocalDeckMutation,
