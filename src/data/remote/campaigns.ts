@@ -1,7 +1,7 @@
 import { useCallback, useContext, useMemo } from 'react';
 import { filter, forEach, map, omit } from 'lodash';
 
-import { Campaign, CampaignDifficulty, CampaignGuideState, CampaignNotes, GuideAchievement, GuideInput, ScenarioResult, Trauma, TraumaAndCardData, UploadedCampaignId, WeaknessSet } from '@actions/types';
+import { Campaign, CampaignDifficulty, CampaignGuideState, CampaignId, CampaignNotes, GuideAchievement, GuideInput, ScenarioResult, Trauma, TraumaAndCardData, UploadedCampaignId, WeaknessSet } from '@actions/types';
 import { useModifyUserCache } from '@data/apollo/cache';
 import {
   useUploadNewCampaignMutation,
@@ -111,6 +111,30 @@ function useCreateLinkedCampaignRequest(): (
   }, [apiCall]);
 }
 
+interface EditCampaignAccessData {
+  campaignId: string;
+  serverId: number;
+  users: string[];
+  action: 'grant' | 'revoke';
+}
+
+export function useEditCampaignAccessRequest(): (
+  campaignId: UploadedCampaignId,
+  users: string[],
+  action: 'grant' | 'revoke'
+) => Promise<void> {
+  const apiCall = useFunction<EditCampaignAccessData, LinkCampaignResponse>('campaign-editAccessCampaign');
+  return useCallback(async(
+    campaignId: UploadedCampaignId,
+    users: string[],
+    action: 'grant' | 'revoke'
+  ): Promise<void> => {
+    const data = await apiCall({ campaignId: campaignId.campaignId, serverId: campaignId.serverId, users, action });
+    if (data.error) {
+      throw new Error(data.error);
+    }
+  }, [apiCall]);
+}
 
 function guideAchievementToInsert(a: GuideAchievement, serverId: number): Guide_Achievement_Insert_Input {
   return {
