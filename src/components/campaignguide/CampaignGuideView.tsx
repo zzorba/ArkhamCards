@@ -60,6 +60,7 @@ function CampaignGuideView(props: Props) {
     return (
       <View style={space.paddingSideS}>
         <UploadCampaignButton
+          componentId={componentId}
           campaignId={campaignId}
           setCampaignServerId={setCampaignServerId}
           showAlert={showAlert}

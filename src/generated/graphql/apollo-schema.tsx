@@ -366,7 +366,9 @@ export type Campaign = {
   /** An object relationship */
   linked_campaign: Campaign;
   name?: Maybe<Scalars['String']>;
-  owner: Scalars['String'];
+  /** An object relationship */
+  owner: Users;
+  owner_id: Scalars['String'];
   scenarioResults?: Maybe<Scalars['jsonb']>;
   showInterludes?: Maybe<Scalars['Boolean']>;
   standaloneId?: Maybe<Scalars['jsonb']>;
@@ -511,6 +513,8 @@ export type Campaign_Access = {
   campaign_id: Scalars['Int'];
   hidden?: Maybe<Scalars['Boolean']>;
   id: Scalars['Int'];
+  /** An object relationship */
+  user: Users;
   user_id: Scalars['String'];
 };
 
@@ -587,6 +591,7 @@ export type Campaign_Access_Bool_Exp = {
   campaign_id?: Maybe<Int_Comparison_Exp>;
   hidden?: Maybe<Boolean_Comparison_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
+  user?: Maybe<Users_Bool_Exp>;
   user_id?: Maybe<String_Comparison_Exp>;
 };
 
@@ -609,6 +614,7 @@ export type Campaign_Access_Insert_Input = {
   campaign_id?: Maybe<Scalars['Int']>;
   hidden?: Maybe<Scalars['Boolean']>;
   id?: Maybe<Scalars['Int']>;
+  user?: Maybe<Users_Obj_Rel_Insert_Input>;
   user_id?: Maybe<Scalars['String']>;
 };
 
@@ -663,6 +669,7 @@ export type Campaign_Access_Order_By = {
   campaign_id?: Maybe<Order_By>;
   hidden?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  user?: Maybe<Users_Order_By>;
   user_id?: Maybe<Order_By>;
 };
 
@@ -870,7 +877,8 @@ export type Campaign_Bool_Exp = {
   link_campaign_id?: Maybe<Int_Comparison_Exp>;
   linked_campaign?: Maybe<Campaign_Bool_Exp>;
   name?: Maybe<String_Comparison_Exp>;
-  owner?: Maybe<String_Comparison_Exp>;
+  owner?: Maybe<Users_Bool_Exp>;
+  owner_id?: Maybe<String_Comparison_Exp>;
   scenarioResults?: Maybe<Jsonb_Comparison_Exp>;
   showInterludes?: Maybe<Boolean_Comparison_Exp>;
   standaloneId?: Maybe<Jsonb_Comparison_Exp>;
@@ -1695,7 +1703,8 @@ export type Campaign_Insert_Input = {
   link_campaign_id?: Maybe<Scalars['Int']>;
   linked_campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
   name?: Maybe<Scalars['String']>;
-  owner?: Maybe<Scalars['String']>;
+  owner?: Maybe<Users_Obj_Rel_Insert_Input>;
+  owner_id?: Maybe<Scalars['String']>;
   scenarioResults?: Maybe<Scalars['jsonb']>;
   showInterludes?: Maybe<Scalars['Boolean']>;
   standaloneId?: Maybe<Scalars['jsonb']>;
@@ -2000,7 +2009,7 @@ export type Campaign_Max_Fields = {
   link_b_campaign_id?: Maybe<Scalars['Int']>;
   link_campaign_id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
-  owner?: Maybe<Scalars['String']>;
+  owner_id?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   uuid?: Maybe<Scalars['String']>;
 };
@@ -2017,7 +2026,7 @@ export type Campaign_Min_Fields = {
   link_b_campaign_id?: Maybe<Scalars['Int']>;
   link_campaign_id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
-  owner?: Maybe<Scalars['String']>;
+  owner_id?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   uuid?: Maybe<Scalars['String']>;
 };
@@ -2069,7 +2078,8 @@ export type Campaign_Order_By = {
   link_campaign_id?: Maybe<Order_By>;
   linked_campaign?: Maybe<Campaign_Order_By>;
   name?: Maybe<Order_By>;
-  owner?: Maybe<Order_By>;
+  owner?: Maybe<Users_Order_By>;
+  owner_id?: Maybe<Order_By>;
   scenarioResults?: Maybe<Order_By>;
   showInterludes?: Maybe<Order_By>;
   standaloneId?: Maybe<Order_By>;
@@ -2121,7 +2131,7 @@ export enum Campaign_Select_Column {
   /** column name */
   Name = 'name',
   /** column name */
-  Owner = 'owner',
+  OwnerId = 'owner_id',
   /** column name */
   ScenarioResults = 'scenarioResults',
   /** column name */
@@ -2151,7 +2161,7 @@ export type Campaign_Set_Input = {
   link_b_campaign_id?: Maybe<Scalars['Int']>;
   link_campaign_id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
-  owner?: Maybe<Scalars['String']>;
+  owner_id?: Maybe<Scalars['String']>;
   scenarioResults?: Maybe<Scalars['jsonb']>;
   showInterludes?: Maybe<Scalars['Boolean']>;
   standaloneId?: Maybe<Scalars['jsonb']>;
@@ -2229,7 +2239,7 @@ export enum Campaign_Update_Column {
   /** column name */
   Name = 'name',
   /** column name */
-  Owner = 'owner',
+  OwnerId = 'owner_id',
   /** column name */
   ScenarioResults = 'scenarioResults',
   /** column name */
@@ -7152,6 +7162,11 @@ export type GetLatestDeckQuery = (
   )> }
 );
 
+export type UserInfoFragment = (
+  { __typename?: 'users' }
+  & Pick<Users, 'id' | 'handle'>
+);
+
 export type GuideInputFragment = (
   { __typename?: 'guide_input' }
   & Pick<Guide_Input, 'id' | 'campaign_id' | 'step' | 'scenario' | 'type' | 'payload' | 'created_at'>
@@ -7240,7 +7255,7 @@ export type MiniCampaignFragment = (
 
 export type FullCampaignFragment = (
   { __typename?: 'campaign' }
-  & Pick<Campaign, 'id' | 'updated_at' | 'uuid' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'campaignNotes' | 'chaosBag' | 'showInterludes' | 'scenarioResults' | 'weaknessSet' | 'guided' | 'guide_version' | 'owner'>
+  & Pick<Campaign, 'id' | 'updated_at' | 'uuid' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'campaignNotes' | 'chaosBag' | 'showInterludes' | 'scenarioResults' | 'weaknessSet' | 'guided' | 'guide_version' | 'owner_id'>
   & { investigators: Array<(
     { __typename?: 'campaign_investigator' }
     & Pick<Campaign_Investigator, 'id' | 'investigator'>
@@ -7330,6 +7345,29 @@ export type GetCampaignGuideQuery = (
   )> }
 );
 
+export type GetCampaignAccessQueryVariables = Exact<{
+  campaign_id: Scalars['Int'];
+}>;
+
+
+export type GetCampaignAccessQuery = (
+  { __typename?: 'query_root' }
+  & { campaign_by_pk?: Maybe<(
+    { __typename?: 'campaign' }
+    & Pick<Campaign, 'id' | 'uuid'>
+    & { owner: (
+      { __typename?: 'users' }
+      & UserInfoFragment
+    ), access: Array<(
+      { __typename?: 'campaign_access' }
+      & { user: (
+        { __typename?: 'users' }
+        & UserInfoFragment
+      ) }
+    )> }
+  )> }
+);
+
 export type CampaignSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
@@ -7340,6 +7378,29 @@ export type CampaignSubscription = (
   & { campaign_by_pk?: Maybe<(
     { __typename?: 'campaign' }
     & FullCampaignFragment
+  )> }
+);
+
+export type CampaignAccessSubscriptionVariables = Exact<{
+  campaign_id: Scalars['Int'];
+}>;
+
+
+export type CampaignAccessSubscription = (
+  { __typename?: 'subscription_root' }
+  & { campaign_by_pk?: Maybe<(
+    { __typename?: 'campaign' }
+    & Pick<Campaign, 'id' | 'uuid'>
+    & { owner: (
+      { __typename?: 'users' }
+      & UserInfoFragment
+    ), access: Array<(
+      { __typename?: 'campaign_access' }
+      & { user: (
+        { __typename?: 'users' }
+        & UserInfoFragment
+      ) }
+    )> }
   )> }
 );
 
@@ -7370,19 +7431,19 @@ export type GetProfileQuery = (
       { __typename?: 'user_friends' }
       & { user?: Maybe<(
         { __typename?: 'users' }
-        & Pick<Users, 'id' | 'handle'>
+        & UserInfoFragment
       )> }
     )>, sent_requests: Array<(
       { __typename?: 'user_sent_friend_requests' }
       & { user?: Maybe<(
         { __typename?: 'users' }
-        & Pick<Users, 'id' | 'handle'>
+        & UserInfoFragment
       )> }
     )>, received_requests: Array<(
       { __typename?: 'user_received_friend_requests' }
       & { user?: Maybe<(
         { __typename?: 'users' }
-        & Pick<Users, 'id' | 'handle'>
+        & UserInfoFragment
       )> }
     )> }
   )> }
@@ -7732,6 +7793,12 @@ export type RemoveCampaignInvestigatorMutation = (
   )> }
 );
 
+export const UserInfoFragmentDoc = gql`
+    fragment UserInfo on users {
+  id
+  handle
+}
+    `;
 export const IdDeckFragmentDoc = gql`
     fragment IdDeck on campaign_deck {
   id
@@ -7856,7 +7923,7 @@ export const FullCampaignFragmentDoc = gql`
   weaknessSet
   guided
   guide_version
-  owner
+  owner_id
   investigators {
     id
     investigator
@@ -8565,6 +8632,48 @@ export function useGetCampaignGuideLazyQuery(baseOptions?: Apollo.LazyQueryHookO
 export type GetCampaignGuideQueryHookResult = ReturnType<typeof useGetCampaignGuideQuery>;
 export type GetCampaignGuideLazyQueryHookResult = ReturnType<typeof useGetCampaignGuideLazyQuery>;
 export type GetCampaignGuideQueryResult = Apollo.QueryResult<GetCampaignGuideQuery, GetCampaignGuideQueryVariables>;
+export const GetCampaignAccessDocument = gql`
+    query getCampaignAccess($campaign_id: Int!) {
+  campaign_by_pk(id: $campaign_id) {
+    id
+    uuid
+    owner {
+      ...UserInfo
+    }
+    access {
+      user {
+        ...UserInfo
+      }
+    }
+  }
+}
+    ${UserInfoFragmentDoc}`;
+
+/**
+ * __useGetCampaignAccessQuery__
+ *
+ * To run a query within a React component, call `useGetCampaignAccessQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCampaignAccessQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCampaignAccessQuery({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *   },
+ * });
+ */
+export function useGetCampaignAccessQuery(baseOptions: Apollo.QueryHookOptions<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>) {
+        return Apollo.useQuery<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>(GetCampaignAccessDocument, baseOptions);
+      }
+export function useGetCampaignAccessLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>) {
+          return Apollo.useLazyQuery<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>(GetCampaignAccessDocument, baseOptions);
+        }
+export type GetCampaignAccessQueryHookResult = ReturnType<typeof useGetCampaignAccessQuery>;
+export type GetCampaignAccessLazyQueryHookResult = ReturnType<typeof useGetCampaignAccessLazyQuery>;
+export type GetCampaignAccessQueryResult = Apollo.QueryResult<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>;
 export const CampaignDocument = gql`
     subscription campaign($campaign_id: Int!) {
   campaign_by_pk(id: $campaign_id) {
@@ -8594,6 +8703,44 @@ export function useCampaignSubscription(baseOptions: Apollo.SubscriptionHookOpti
       }
 export type CampaignSubscriptionHookResult = ReturnType<typeof useCampaignSubscription>;
 export type CampaignSubscriptionResult = Apollo.SubscriptionResult<CampaignSubscription>;
+export const CampaignAccessDocument = gql`
+    subscription campaignAccess($campaign_id: Int!) {
+  campaign_by_pk(id: $campaign_id) {
+    id
+    uuid
+    owner {
+      ...UserInfo
+    }
+    access {
+      user {
+        ...UserInfo
+      }
+    }
+  }
+}
+    ${UserInfoFragmentDoc}`;
+
+/**
+ * __useCampaignAccessSubscription__
+ *
+ * To run a query within a React component, call `useCampaignAccessSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useCampaignAccessSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCampaignAccessSubscription({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *   },
+ * });
+ */
+export function useCampaignAccessSubscription(baseOptions: Apollo.SubscriptionHookOptions<CampaignAccessSubscription, CampaignAccessSubscriptionVariables>) {
+        return Apollo.useSubscription<CampaignAccessSubscription, CampaignAccessSubscriptionVariables>(CampaignAccessDocument, baseOptions);
+      }
+export type CampaignAccessSubscriptionHookResult = ReturnType<typeof useCampaignAccessSubscription>;
+export type CampaignAccessSubscriptionResult = Apollo.SubscriptionResult<CampaignAccessSubscription>;
 export const CampaignGuideDocument = gql`
     subscription campaignGuide($campaign_id: Int!) {
   campaign_guide(where: {id: {_eq: $campaign_id}}) {
@@ -8630,25 +8777,22 @@ export const GetProfileDocument = gql`
     handle
     friends {
       user {
-        id
-        handle
+        ...UserInfo
       }
     }
     sent_requests {
       user {
-        id
-        handle
+        ...UserInfo
       }
     }
     received_requests {
       user {
-        id
-        handle
+        ...UserInfo
       }
     }
   }
 }
-    `;
+    ${UserInfoFragmentDoc}`;
 
 /**
  * __useGetProfileQuery__

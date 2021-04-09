@@ -1,7 +1,7 @@
 import { useContext, useMemo, useEffect, useCallback, useRef } from 'react';
-import { flatMap, map, omit } from 'lodash';
+import { flatMap, find, map, omit } from 'lodash';
 
-import { CampaignId, DeckId } from '@actions/types';
+import { CampaignId, DeckId, UploadedCampaignId } from '@actions/types';
 import {
   MiniCampaignFragment,
   useGetMyCampaignsLazyQuery,
@@ -9,7 +9,9 @@ import {
   useGetCampaignQuery,
   useGetMyDecksLazyQuery,
   useGetCampaignGuideQuery,
+  useGetCampaignAccessQuery,
   CampaignGuideDocument,
+  CampaignAccessDocument,
   CampaignDocument,
   LatestDeckFragmentDoc,
   LatestDeckFragment,
@@ -120,9 +122,69 @@ export function useCampaignRemote(campaignId: CampaignId | undefined, live?: boo
     if (data?.campaign_by_pk) {
       return new SingleCampaignRemote(data.campaign_by_pk);
     }
-    console.log('data is null');
     return undefined;
   }, [data, campaignId]);
+}
+
+
+export interface CampaignAccess {
+  owner: SimpleUser;
+  access: SimpleUser[];
+}
+
+export function useCampaignAccess(campaignId: UploadedCampaignId): CampaignAccess | undefined {
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const [profile] = useMyProfile();
+  const { data, subscribeToMore } = useGetCampaignAccessQuery({
+    variables: { campaign_id: campaignId.serverId },
+    fetchPolicy: 'cache-first',
+    skip: (!user || !campaignId.serverId),
+    returnPartialData: true,
+  });
+  useEffect(() => {
+    if (user && subscribeToMore) {
+      return subscribeToMore({
+        document: CampaignAccessDocument,
+        variables: { campaign_id: campaignId.serverId },
+      });
+    }
+  }, [user, campaignId, subscribeToMore]);
+
+  const getFriendStatus = useCallback((id: string): FriendStatus => {
+    if (profile) {
+      if (find(profile.friends, f => f.id === id)) {
+        return FriendStatus.FRIEND;
+      }
+      if (find(profile.sentRequests, f => f.id === id)) {
+        return FriendStatus.SENT;
+      }
+      if (find(profile.receivedRequests, f => f.id === id)) {
+        return FriendStatus.RECEIVED;
+      }
+    }
+    return FriendStatus.NONE;
+  }, [profile]);
+
+  return useMemo(() => {
+    if (!data?.campaign_by_pk) {
+      return undefined;
+    }
+    const owner: SimpleUser = {
+      id: data.campaign_by_pk.owner.id,
+      handle: data.campaign_by_pk.owner.handle || undefined,
+      status: getFriendStatus(data.campaign_by_pk.owner.id),
+    };
+    return {
+      owner,
+      access: map(data.campaign_by_pk.access, u => {
+        return {
+          id: u.user.id,
+          handle: u.user.handle || undefined,
+          status: getFriendStatus(u.user.id),
+        };
+      }),
+    };
+  }, [data, getFriendStatus]);
 }
 
 

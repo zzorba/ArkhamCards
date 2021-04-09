@@ -3,6 +3,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '@reducers';
 import { Action } from 'redux';
 import { useDispatch } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { CampaignId } from '@actions/types';
@@ -14,8 +15,10 @@ import DeckButton from '@components/deck/controls/DeckButton';
 import { ShowAlert } from '@components/deck/dialogs';
 import { s } from '@styles/space';
 import { DeckActions } from '@data/remote/decks';
+import { CampaignAccessProps } from './CampaignAccessView';
 
 interface Props {
+  componentId: string;
   campaignId: CampaignId;
   deckActions: DeckActions;
   setCampaignServerId: (serverId: number) => void;
@@ -29,7 +32,7 @@ interface Props {
 
 type Dispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
-export default function UploadCampaignButton({ campaignId, deckActions, setCampaignServerId, showAlert }: Props) {
+export default function UploadCampaignButton({ componentId, campaignId, deckActions, setCampaignServerId, showAlert }: Props) {
   const { user } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected }] = useNetworkStatus();
   const [uploading, setUploading] = useState(false);
@@ -48,8 +51,43 @@ export default function UploadCampaignButton({ campaignId, deckActions, setCampa
     }
   }, [dispatch, setCampaignServerId, setUploading, showAlert,
     createCampaignActions, user, uploading, deckActions, campaignId]);
-  if (!user || campaignId.serverId) {
+
+  const editAccessPressed = useCallback(() => {
+    if (campaignId.serverId) {
+      Navigation.push<CampaignAccessProps>(componentId, {
+        component: {
+          name: 'Campaign.Access',
+          passProps: {
+            campaignId,
+          },
+          options: {
+            topBar: {
+              title: {
+                text: t`Access`,
+              },
+              backButton: {
+                title: t`Back`,
+              },
+            },
+          },
+        },
+      });
+    }
+  }, [componentId, campaignId]);
+  if (!user) {
     return null;
+  }
+  if (campaignId.serverId) {
+    return (
+      <DeckButton
+        icon="lock"
+        title={t`Edit access`}
+        thin
+        color="light_gray"
+        onPress={editAccessPressed}
+        bottomMargin={s}
+      />
+    );
   }
   return (
     <DeckButton

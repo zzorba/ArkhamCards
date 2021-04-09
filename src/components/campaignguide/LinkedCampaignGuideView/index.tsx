@@ -95,6 +95,7 @@ export default function LinkedCampaignGuideView(props: Props) {
     return (
       <View style={space.paddingSideS}>
         <UploadCampaignButton
+          componentId={componentId}
           campaignId={campaignId}
           setCampaignServerId={setCampaignServerId}
           deckActions={deckActions}

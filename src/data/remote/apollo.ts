@@ -450,7 +450,7 @@ export const handleUploadNewCampaign: MutationUpdaterFn<UploadNewCampaignMutatio
     return;
   }
   const campaignId = data.update_campaign_by_pk.id;
-  const ownerId = data.update_campaign_by_pk.owner;
+  const ownerId = data.update_campaign_by_pk.owner_id;
 
   cache.writeQuery<GetCampaignQuery>({
     query: GetCampaignDocument,

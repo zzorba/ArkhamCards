@@ -344,6 +344,7 @@ function CampaignDetailView(props: Props) {
               bottomMargin={s}
             />
             <UploadCampaignButton
+              componentId={componentId}
               campaignId={campaignId}
               setCampaignServerId={setCampaignServerId}
               showAlert={showAlert}
