@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import { Campaign, CampaignId, Deck, DeckId } from '@actions/types';
+import { Campaign, CampaignId, Deck } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import Card from '@data/types/Card';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';

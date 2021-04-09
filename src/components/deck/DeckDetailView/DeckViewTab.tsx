@@ -1,6 +1,6 @@
 import React, { MutableRefObject, ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { filter, find, flatMap, flatten, forEach, map, sum, sumBy, uniqBy } from 'lodash';
-import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { c, msgid, t } from 'ttag';
 
@@ -14,19 +14,14 @@ import {
   SplitCards,
 } from '@actions/types';
 import { showCard, showCardSwipe } from '@components/nav/helper';
-import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
-import InvestigatorImage from '@components/core/InvestigatorImage';
-import CardTextComponent from '@components/card/CardTextComponent';
 import DeckProgressComponent from '../DeckProgressComponent';
 import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
-import HealthSanityLine from '@components/core/HealthSanityLine';
 import { BODY_OF_A_YITHIAN, TypeCodeType } from '@app_constants';
 import DeckValidation from '@lib/DeckValidation';
 import Card, { CardsMap } from '@data/types/Card';
 import TabooSet from '@data/types/TabooSet';
-import space, { isBig, m, s, xs } from '@styles/space';
+import space, { isBig, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useFlag } from '@components/core/hooks';
 import { setDeckTabooSet, updateDeckMeta } from '@components/deck/actions';
@@ -684,36 +679,8 @@ export default function DeckViewTab(props: Props) {
 }
 
 const styles = StyleSheet.create({
-  headerLeftMargin: {
-    marginLeft: xs,
-  },
-  header: {
-    marginTop: m,
-    marginRight: s,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-  },
-  headerTextColumn: {
-    flexDirection: 'column',
-    flex: 1,
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
-  image: {
-    marginBottom: xs,
-  },
-  headerColumn: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    marginLeft: s,
-  },
   headerWrapper: {
     position: 'relative',
-  },
-  column: {
-    flex: 1,
   },
   containerWrapper: {
     flexDirection: isBig ? 'row' : 'column',
@@ -731,11 +698,6 @@ const styles = StyleSheet.create({
   headerBlock: {
     paddingBottom: s,
     position: 'relative',
-  },
-  gameTextBlock: {
-    paddingLeft: xs,
-    marginBottom: s,
-    marginRight: s,
   },
   footerPadding: {
     height: FOOTER_HEIGHT,
