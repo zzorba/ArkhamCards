@@ -78768,6 +78768,12 @@
         "id": "the_innsmouth_conspiracy.the_pit_of_despair.resolution_1",
         "name": "Resolution 1"
       },
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
       "title": "Auflösung 1",
       "text": "In einiger Entfernung färbt sich der Himmel blutrot, und der Vollmond hängt direkt unterhalb der abgedunkelten Sonne. Du bist kurz davor, die Augen zu schließen und dich der Bewusstlosigkeit hinzugeben, als dich eine fremde Stimme aufschrecken lässt. „Oh, Sie leben ja noch!“. In der angespannten Stimme kannst du deutlich den rhythmischen indianischen Akzent heraushören, ebenso wie das unerschütterliche Selbstbewusstsein eines ausgebildeten Profis. Vor dir steht eine Frau mit langem schwarzem Haar. Ihr zerfledderter Trenchcoat hat schon bessere Tage gesehen. In ihrem schmutzverschmierten Gesicht kannst du ein paar Schrammen erkennen. „Sie wirken verwirrt. Warum sehen Sie mich so an?“, fragt dich die Fremde.",
       "steps": [

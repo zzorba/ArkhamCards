@@ -2388,7 +2388,7 @@
           },
           {
             "id": "dagon_has_awakened",
-            "text": "Dagon has awakened."
+            "text": "Dagon s'est réveillé."
           },
           {
             "id": "dagon_still_slumbers",
@@ -2412,11 +2412,11 @@
           },
           {
             "id": "gatekeeper_has_been_defeated",
-            "text": "the gatekeeper has been defeated."
+            "text": "le gardien de la porte a été vaincu."
           },
           {
             "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
-            "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+            "text": "la porte de Y'ha-nthlei vous reconnait comme son gardien légitime."
           },
           {
             "id": "gilman_out_for_blood",
@@ -2424,7 +2424,7 @@
           },
           {
             "id": "guardian_of_yhanthlei_is_dispatched",
-            "text": "the guardian of Y’ha-nthlei is dispatched."
+            "text": "le protecteur de Y'ha-nthlei est mort."
           },
           {
             "id": "headdress_brought_to_the_lighthouse",

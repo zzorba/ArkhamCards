@@ -78768,6 +78768,12 @@
         "id": "the_innsmouth_conspiracy.the_pit_of_despair.resolution_1",
         "name": "Resolution 1"
       },
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
       "title": "Resolución 1",
       "text": "A lo lejos, el cielo es de un color carmesí oscuro, con la luna llena justo debajo de un sol ennegrecido. Estás a punto de cerrar los ojos y rendirte a la inconsciencia cuando la voz de una desconocida te hace sobresaltarte y ponerte en pie.\n–¡Oh! ¿Sigue con vida?\nPese a la fatiga de la voz, oyes un rítmico acento indio y la inquebrantable confianza de una profesional entrenada. Tienes frente a ti a una mujer de largo pelo azabache. Su ajada gabardina ha tenido épocas mejoras, y hay moratones salpicando su piel cubierta de suciedad.\n–Parece confundido. ¿Por qué me mira así? –te pregunta la desconocida.",
       "steps": [
