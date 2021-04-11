@@ -7,11 +7,11 @@ export const ALL_LANGUAGES = [
   'de',
   'fr',
   'it',
+  'zh',
   'ko',
+  'pt',
   'uk',
   'pl',
-  'pt',
-  'zh',
 ];
 
 export function getSystemLanguage() {

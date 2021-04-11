@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from 'react';
-import { Dimensions, useWindowDimensions } from 'react-native';
+import { Dimensions, Platform, useWindowDimensions } from 'react-native';
 import { useSelector } from 'react-redux';
 import { useColorScheme } from 'react-native-appearance';
 import { ThemeProvider } from 'react-native-elements';
@@ -69,7 +69,9 @@ export default function StyleProvider({ children } : Props) {
   const darkMode = (themeOverride ? themeOverride === 'dark' : colorScheme === 'dark');
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
   const gameFont = lang === 'ru' ? 'Teutonic RU' : 'Teutonic';
-  const styleTypography = useMemo(() => typography(appFontScale, colors, gameFont, lang), [appFontScale, colors, gameFont, lang]);
+  const italicFont = lang === 'zh' && Platform.OS === 'ios' ? 'PingFangTC-Light' : 'Alegreya-Italic';
+  const boldItalicFont = lang === 'zh' && Platform.OS === 'ios' ? 'PingFangTC-Semibold' : 'Alegreya-ExtraBoldItalic';
+  const styleTypography = useMemo(() => typography(appFontScale, colors, italicFont, boldItalicFont, gameFont, lang), [appFontScale, colors, gameFont, boldItalicFont, italicFont, lang]);
   const context = useMemo(() => {
     return {
       ...DEFAULLT_STYLE_CONTEXT,
@@ -80,6 +82,7 @@ export default function StyleProvider({ children } : Props) {
       typography: styleTypography,
       colors,
       gameFont,
+      italicFont,
       backgroundStyle: {
         backgroundColor: colors.background,
       },
@@ -90,7 +93,7 @@ export default function StyleProvider({ children } : Props) {
         backgroundColor: colors.disableOverlay,
       },
     };
-  }, [darkMode, fontScale, appFontScale, styleTypography, colors, gameFont ,width, height]);
+  }, [darkMode, fontScale, appFontScale, styleTypography, italicFont, colors, gameFont ,width, height]);
   return (
     <StyleContext.Provider value={context}>
       <ThemeProvider theme={darkMode ? DARK_ELEMENTS_THEME : LIGHT_ELEMENTS_THEME}>

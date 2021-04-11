@@ -112,10 +112,11 @@ const link = split(
   httpsLink
 );
 export default function constructApolloClient(store: Store) {
+  const links = __DEV__ ? [loggerLink] : [];
   return new ApolloClient({
     cache,
     link: ApolloLink.from([
-      loggerLink,
+      ...links,
       errorLink,
       trackerLink(store.dispatch),
       apolloQueueLink,

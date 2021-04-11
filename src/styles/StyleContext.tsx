@@ -7,6 +7,7 @@ import typography, { Typography } from '@styles/typography';
 export interface StyleContextType {
   darkMode: boolean;
   colors: ThemeColors;
+  italicFont: string;
   gameFont: string;
   fontScale: number;
   typography: Typography;
@@ -23,14 +24,15 @@ export interface StyleContextType {
   height: number;
 }
 
-export const DEFAULLT_STYLE_CONTEXT = {
+export const DEFAULLT_STYLE_CONTEXT: StyleContextType = {
   darkMode: false,
   width: 100,
   height: 100,
   colors: LIGHT_THEME,
+  italicFont: 'Alegreya-Italic',
   gameFont: 'Teutonic',
   fontScale: 1,
-  typography: typography(1.0, LIGHT_THEME, 'Teutonic', 'en'),
+  typography: typography(1.0, LIGHT_THEME, 'Alegreya-Italic', 'Alegreya-ExtraBoldItalic', 'Teutonic', 'en'),
   backgroundStyle: {
     backgroundColor: LIGHT_THEME.background,
   },
