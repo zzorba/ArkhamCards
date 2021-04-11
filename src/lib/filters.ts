@@ -290,7 +290,7 @@ export default class FilterBuilder {
     const traits_field = localizedTraits ? 'traits_normalized' : 'real_traits_normalized';
     return this.complexVectorClause(
       'trait',
-      map(traits, trait => `%#${trait}#%`),
+      map(traits, trait => `%#${trait.toLowerCase()}#%`),
       (valueName: string) => `c.${traits_field} LIKE :${valueName} OR (linked_card.${traits_field} is not null AND linked_card.${traits_field} LIKE :${valueName})`
     );
   }

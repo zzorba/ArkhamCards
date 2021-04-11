@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { EventEmitter } from 'events';
 import * as RNLocalize from 'react-native-localize';
 import LanguageContext from './LanguageContext';
@@ -35,8 +35,15 @@ export default function LanguageProvider({ children }: Props) {
     };
   }, []);
   const langChoice = useSelector(getLangChoice);
+  const lang = langChoice === 'system' ? systemLang : langChoice;
+  const context = useMemo(() => {
+    return {
+      lang,
+      useCardTraits: lang !== 'ru',
+    };
+  }, [lang]);
   return (
-    <LanguageContext.Provider value={{ lang: langChoice === 'system' ? systemLang : langChoice }}>
+    <LanguageContext.Provider value={context}>
       { children }
     </LanguageContext.Provider>
   );

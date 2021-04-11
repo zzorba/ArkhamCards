@@ -8,6 +8,7 @@ import {
 import { useSelector } from 'react-redux';
 import { c, t } from 'ttag';
 
+import localizedTraits from './localizedTraits';
 import FactionChooser from './FactionChooser';
 import XpChooser from './XpChooser';
 import SkillIconChooser from './SkillIconChooser';
@@ -23,6 +24,7 @@ import { NavigationProps } from '@components/nav/types';
 import useFilterFunctions, { FilterFunctionProps } from '../useFilterFunctions';
 import FixedSetChooserButton from '../FixedSetChooserButton';
 import { slotsTranslations } from '../CardAssetFilterView';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 function rangeText(name: string, values: [number, number]) {
   if (values[0] === values[1]) {
@@ -44,6 +46,7 @@ function splitTraits(value: string): string[] {
 export type CardFilterProps = FilterFunctionProps;
 
 const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
+  const { useCardTraits } = useContext(LanguageContext);
   const {
     filters,
     defaultFilterState,
@@ -471,7 +474,8 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
         <FilterChooserButton
           title={t`Traits`}
           componentId={componentId}
-          field="traits"
+          field={useCardTraits ? 'traits' : 'real_traits'}
+          fixedTranslations={useCardTraits ? localizedTraits : undefined}
           processValue={splitTraits}
           selection={traits}
           setting="traits"

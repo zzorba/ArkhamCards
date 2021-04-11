@@ -240,7 +240,7 @@ export default function({
   includeDuplicates,
 }: Props) {
   const { fontScale, colors } = useContext(StyleContext);
-  const { lang } = useContext(LanguageContext);
+  const { lang, useCardTraits } = useContext(LanguageContext);
   const [searchText, setSearchText] = useState(false);
   const [searchFlavor, setSearchFlavor] = useState(false);
   const [searchBack, setSearchBack] = useState(false);
@@ -349,7 +349,7 @@ export default function({
       'and'
     );
   }, [baseQuery, mythosToggle, selectedSort, mythosMode, includeDuplicates, filters]);
-  const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters, true), [filters]);
+  const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters, useCardTraits), [filters, useCardTraits]);
   const [hasFilters, showFiltersPress] = useFilterButton(componentId, baseQuery);
   const renderFabIcon = useCallback(() => (
     <View style={styles.relative}>

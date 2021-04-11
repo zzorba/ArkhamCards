@@ -43,6 +43,15 @@ export default function DbChooserButton({ componentId, title, field, onChange, f
   const onPress = useCallback(() => {
     setPressed(true);
     db.getDistinctFields(field, query, tabooSetId, processValue).then(values => {
+      /*
+      // This code will export all traits in the english database.
+      console.log('const localized_traits = {')
+      forEach(values, value => {
+        const escaped = value.replace(`'`, `\\'`);
+        console.log(`  '${escaped}': c('trait').t\`${value}\`,`)
+      });
+      console.log('};')
+      */
       const actualValues = fixedTranslations ? map(values, item => fixedTranslations[item] || item) : values;
       const actualSelection = fixedTranslations ? map(selection || [], item => fixedTranslations[item] || item) : selection;
       Navigation.push<SearchSelectProps>(componentId, {
