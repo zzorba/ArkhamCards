@@ -147,7 +147,6 @@ export function useCampaignDeckFromRemote(id: DeckId | undefined, campaignId: Ca
     if (!campaignId?.serverId) {
       return undefined;
     }
-    console.log(data);
     return data?.campaign_deck?.length ? new LatestDeckRemote(data.campaign_deck[0]) : undefined;
   }, [data, campaignId]);
 }

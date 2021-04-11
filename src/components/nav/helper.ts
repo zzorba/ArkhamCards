@@ -332,10 +332,8 @@ export async function openUrl(
   const rule_match = url.match(rule_regex);
   if (rule_match) {
     const rule_id = rule_match[3];
-    console.log(`Looking for rule ${rule_id}`);
     const rules = await db.getRulesPaged(0, 1, where('r.id = :rule_id', { rule_id }));
     if (rules.length) {
-      console.log(`Found it`);
       Navigation.push(componentId, {
         component: {
           name: 'Rule',
@@ -356,7 +354,6 @@ export async function openUrl(
       });
       return;
     }
-    console.log(`No match`);
   }
 
   if (startsWith(url, '/')) {

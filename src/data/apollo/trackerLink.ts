@@ -41,7 +41,7 @@ export default (dispatch: Dispatch<Action>) => (
         })
       );
     } else {
-      console.log(`Skipping tracking of: ${name}`);
+      // console.log(`Skipping tracking of: ${name}`);
     }
     return forward(operation).map(data => {
       if (tracked) {
