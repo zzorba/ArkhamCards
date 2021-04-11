@@ -84,7 +84,7 @@ function mainQuery(
               // Do something else in this case?
               return [];
             }
-            return keys(deck.slots);
+            return keys(deck.deck.slots);
           })
         );
         if (!deckCodes.length) {

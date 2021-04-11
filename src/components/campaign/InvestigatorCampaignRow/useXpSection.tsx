@@ -1,19 +1,18 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import { Deck } from '@actions/types';
 import { showDeckModal } from '@components/nav/helper';
 import Card, { CardsMap } from '@data/types/Card';
-import { AppState, makeDeckSelector } from '@reducers';
 import { parseBasicDeck } from '@lib/parseDeck';
 import StyleContext from '@styles/StyleContext';
 import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 interface Props {
-  componentId: string;
-  deck?: Deck;
+  deck?: LatestDeckT;
   campaign: MiniCampaignT;
   cards: CardsMap;
   investigator: Card;
@@ -25,41 +24,37 @@ interface Props {
   last?: boolean;
 }
 
-export default function useXpSection({ componentId, deck, campaign, cards, investigator, last, showDeckUpgrade, editXpPressed, spentXp, totalXp }: Props): [React.ReactNode, boolean] {
+export default function useXpSection({ deck, campaign, cards, investigator, last, showDeckUpgrade, editXpPressed, spentXp, totalXp }: Props): [React.ReactNode, boolean] {
   const { colors } = useContext(StyleContext);
-  const previousDeckSelector = useMemo(makeDeckSelector, []);
-  const previousDeck = useSelector((state: AppState) => {
-    return deck?.previousDeckId ? previousDeckSelector(state, deck.previousDeckId) : undefined;
-  });
-
+  const { user } = useContext(ArkhamCardsAuthContext);
   const showDeckUpgradePress = useCallback(() => {
     if (deck && showDeckUpgrade) {
-      showDeckUpgrade(investigator, deck);
+      showDeckUpgrade(investigator, deck.deck);
     }
   }, [investigator, deck, showDeckUpgrade]);
 
   const onPress = useCallback(() => {
     if (deck) {
       showDeckModal(
-        componentId,
-        deck,
+        deck.id,
+        deck.deck,
         campaign?.id,
         colors,
         investigator,
         'upgrade',
       );
     }
-  }, [colors, componentId, campaign, deck, investigator]);
-
+  }, [colors, campaign, deck, investigator]);
+  const ownerDeck = !deck?.owner || !user || deck.owner.id === user.uid;
   const parsedDeck = useMemo(() => {
     if (!deck) {
       return undefined;
     }
-    if (!previousDeck && !showDeckUpgrade) {
+    if (!deck.previousDeck && !showDeckUpgrade) {
       return undefined;
     }
-    return parseBasicDeck(deck, cards, previousDeck);
-  }, [previousDeck, showDeckUpgrade, deck, cards]);
+    return parseBasicDeck(deck.deck, cards, deck.previousDeck);
+  }, [deck, showDeckUpgrade, cards]);
   if (deck) {
     if (!parsedDeck) {
       return [null, false];
@@ -69,7 +64,7 @@ export default function useXpSection({ componentId, deck, campaign, cards, inves
       return [null, false];
     }
     const spentXp = changes?.spentXp || 0;
-    const totalXp = (deck.xp || 0) + (deck.xp_adjustment || 0);
+    const totalXp = (deck.deck.xp || 0) + (deck.deck.xp_adjustment || 0);
     return [(
       <>
         <MiniPickerStyleButton
@@ -90,7 +85,7 @@ export default function useXpSection({ componentId, deck, campaign, cards, inves
           />
         ) }
       </>
-    ), spentXp === 0 && totalXp !== 0];
+    ), ownerDeck && spentXp === 0 && totalXp !== 0];
   }
   if (totalXp === 0) {
     return [null, false];

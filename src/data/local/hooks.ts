@@ -1,12 +1,26 @@
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
-import { AppState, MyDecksState, getAllDecks, getMyDecksState, makeCampaignGuideStateSelector, makeCampaignSelector, makeLatestDecksSelector, getDeck } from '@reducers';
+import { AppState, MyDecksState, getAllDecks, getMyDecksState, makeCampaignGuideStateSelector, makeCampaignSelector, makeLatestDecksSelector, getDeck, getEffectiveDeckId, makeDeckSelector } from '@reducers';
 import { Campaign, CampaignId, DeckId, getCampaignLastUpdated, getLastUpdated } from '@actions/types';
 import { CampaignGuideStateRedux, LatestDeckRedux, SingleCampaignRedux } from './types';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+
+
+export function useDeckFromRedux(id: DeckId | undefined, campaignId?: CampaignId): LatestDeckT | undefined {
+  const effectiveDeckIdSelector = useCallback((state: AppState) => id !== undefined ? getEffectiveDeckId(state, id) : undefined, [id]);
+  const effectiveDeckId = useSelector(effectiveDeckIdSelector);
+  const deckSelector = useMemo(makeDeckSelector, []);
+  const previousDeckSelector = useMemo(makeDeckSelector, []);
+  const theDeck = useSelector((state: AppState) => effectiveDeckId !== undefined ? deckSelector(state, effectiveDeckId) : undefined) || undefined;
+  const thePreviousDeck = useSelector((state: AppState) => (theDeck && theDeck.previousDeckId) ? previousDeckSelector(state, theDeck.previousDeckId) : undefined);
+  const getCampaign = useMemo(makeCampaignSelector, []);
+  const reduxCampaign = useSelector((state: AppState) => campaignId ? getCampaign(state, campaignId.campaignId) : undefined);
+
+  return theDeck ? new LatestDeckRedux(theDeck, thePreviousDeck, reduxCampaign) : undefined;
+}
 
 export function useCampaignGuideFromRedux(campaignId?: CampaignId): CampaignGuideStateT | undefined {
   const campaignGuideStateSelector = useMemo(makeCampaignGuideStateSelector, []);

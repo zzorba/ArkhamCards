@@ -7055,7 +7055,6 @@ export type DeleteAllLocalDecksMutation = (
     & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
     & { returning: Array<(
       { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'owner_id'>
       & IdDeckFragment
     )> }
   )> }
@@ -7074,7 +7073,6 @@ export type DeleteAllArkhamDbDecksMutation = (
     & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
     & { returning: Array<(
       { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'owner_id'>
       & IdDeckFragment
     )> }
   )> }
@@ -7093,7 +7091,6 @@ export type DeleteLocalDeckMutation = (
     & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
     & { returning: Array<(
       { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'owner_id'>
       & { previous_deck?: Maybe<(
         { __typename?: 'campaign_deck' }
         & LatestDeckFragment
@@ -7116,7 +7113,6 @@ export type DeleteArkhamDbDeckMutation = (
     & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
     & { returning: Array<(
       { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'owner_id'>
       & { previous_deck?: Maybe<(
         { __typename?: 'campaign_deck' }
         & LatestDeckFragment
@@ -7146,6 +7142,20 @@ export type GetMyDecksQuery = (
       { __typename?: 'campaign_deck' }
       & AllDeckFragment
     )> }
+  )> }
+);
+
+export type GetLatestCampaignDeckQueryVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  id_exp: Campaign_Deck_Bool_Exp;
+}>;
+
+
+export type GetLatestCampaignDeckQuery = (
+  { __typename?: 'query_root' }
+  & { campaign_deck: Array<(
+    { __typename?: 'campaign_deck' }
+    & LatestDeckFragment
   )> }
 );
 
@@ -7211,7 +7221,10 @@ export type AllDeckFragment = (
 
 export type LatestDeckFragment = (
   { __typename?: 'campaign_deck' }
-  & { campaign: (
+  & { owner: (
+    { __typename?: 'users' }
+    & UserInfoFragment
+  ), campaign: (
     { __typename?: 'campaign' }
     & Pick<Campaign, 'id' | 'uuid' | 'name'>
   ), investigator_data?: Maybe<(
@@ -7793,12 +7806,6 @@ export type RemoveCampaignInvestigatorMutation = (
   )> }
 );
 
-export const UserInfoFragmentDoc = gql`
-    fragment UserInfo on users {
-  id
-  handle
-}
-    `;
 export const IdDeckFragmentDoc = gql`
     fragment IdDeck on campaign_deck {
   id
@@ -7887,9 +7894,18 @@ export const FullInvestigatorDataFragmentDoc = gql`
   updated_at
 }
     ${MiniInvestigatorDataFragmentDoc}`;
+export const UserInfoFragmentDoc = gql`
+    fragment UserInfo on users {
+  id
+  handle
+}
+    `;
 export const LatestDeckFragmentDoc = gql`
     fragment LatestDeck on campaign_deck {
   ...BasicDeck
+  owner {
+    ...UserInfo
+  }
   campaign {
     id
     uuid
@@ -7906,7 +7922,8 @@ export const LatestDeckFragmentDoc = gql`
     ...BasicDeck
   }
 }
-    ${BasicDeckFragmentDoc}`;
+    ${BasicDeckFragmentDoc}
+${UserInfoFragmentDoc}`;
 export const FullCampaignFragmentDoc = gql`
     fragment FullCampaign on campaign {
   id
@@ -8291,7 +8308,6 @@ export const DeleteAllLocalDecksDocument = gql`
     affected_rows
     returning {
       ...IdDeck
-      owner_id
     }
   }
 }
@@ -8330,7 +8346,6 @@ export const DeleteAllArkhamDbDecksDocument = gql`
     affected_rows
     returning {
       ...IdDeck
-      owner_id
     }
   }
 }
@@ -8369,7 +8384,6 @@ export const DeleteLocalDeckDocument = gql`
     affected_rows
     returning {
       ...IdDeck
-      owner_id
       previous_deck {
         ...LatestDeck
       }
@@ -8412,7 +8426,6 @@ export const DeleteArkhamDbDeckDocument = gql`
     affected_rows
     returning {
       ...IdDeck
-      owner_id
       previous_deck {
         ...LatestDeck
       }
@@ -8489,6 +8502,40 @@ export function useGetMyDecksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type GetMyDecksQueryHookResult = ReturnType<typeof useGetMyDecksQuery>;
 export type GetMyDecksLazyQueryHookResult = ReturnType<typeof useGetMyDecksLazyQuery>;
 export type GetMyDecksQueryResult = Apollo.QueryResult<GetMyDecksQuery, GetMyDecksQueryVariables>;
+export const GetLatestCampaignDeckDocument = gql`
+    query getLatestCampaignDeck($campaign_id: Int!, $id_exp: campaign_deck_bool_exp!) {
+  campaign_deck(where: {_and: [{campaign_id: {_eq: $campaign_id}}, $id_exp]}) {
+    ...LatestDeck
+  }
+}
+    ${LatestDeckFragmentDoc}`;
+
+/**
+ * __useGetLatestCampaignDeckQuery__
+ *
+ * To run a query within a React component, call `useGetLatestCampaignDeckQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLatestCampaignDeckQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetLatestCampaignDeckQuery({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      id_exp: // value for 'id_exp'
+ *   },
+ * });
+ */
+export function useGetLatestCampaignDeckQuery(baseOptions: Apollo.QueryHookOptions<GetLatestCampaignDeckQuery, GetLatestCampaignDeckQueryVariables>) {
+        return Apollo.useQuery<GetLatestCampaignDeckQuery, GetLatestCampaignDeckQueryVariables>(GetLatestCampaignDeckDocument, baseOptions);
+      }
+export function useGetLatestCampaignDeckLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLatestCampaignDeckQuery, GetLatestCampaignDeckQueryVariables>) {
+          return Apollo.useLazyQuery<GetLatestCampaignDeckQuery, GetLatestCampaignDeckQueryVariables>(GetLatestCampaignDeckDocument, baseOptions);
+        }
+export type GetLatestCampaignDeckQueryHookResult = ReturnType<typeof useGetLatestCampaignDeckQuery>;
+export type GetLatestCampaignDeckLazyQueryHookResult = ReturnType<typeof useGetLatestCampaignDeckLazyQuery>;
+export type GetLatestCampaignDeckQueryResult = Apollo.QueryResult<GetLatestCampaignDeckQuery, GetLatestCampaignDeckQueryVariables>;
 export const GetLatestDeckDocument = gql`
     query getLatestDeck($deckId: Int!) {
   campaign_deck_by_pk(id: $deckId) {

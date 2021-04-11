@@ -4,21 +4,22 @@ import { t } from 'ttag';
 
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import { scenarioRewards } from '@components/campaign/constants';
-import { DeckId, Slots } from '@actions/types';
+import { Slots } from '@actions/types';
 import Card from '@data/types/Card';
 import { PLAYER_CARDS_QUERY, combineQueries, MYTHOS_CARDS_QUERY } from '@data/sqlite/query';
 import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
-import { useDeck, useSlots } from '@components/core/hooks';
+import { useSlots } from '@components/core/hooks';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { QuerySort } from '@data/sqlite/types';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 import { ActivityIndicator } from 'react-native';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 interface Props {
   componentId: string;
   investigator: Card;
-  deckId: DeckId;
+  deck: LatestDeckT;
   encounterCodes: string[];
   scenarioName?: string;
   updateStoryCounts: (exileCounts: Slots) => void;
@@ -33,16 +34,15 @@ const SORT: QuerySort[] = [
 export default function StoryCardSelectorComponent({
   componentId,
   investigator,
-  deckId,
+  deck,
   encounterCodes,
   scenarioName,
   updateStoryCounts,
 }: Props) {
   const { colors } = useContext(StyleContext);
   const [initialized, setInitialized] = useState(false);
-  const [deck] = useDeck(deckId);
   const [storyCounts, setStoryCounts] = useSlots({}, updateStoryCounts, true);
-  const tabooSetId = deck?.taboo_id || 0;
+  const tabooSetId = deck.deck.taboo_id || 0;
   const updateCount = useCallback((card: Card, count: number) => {
     setStoryCounts({ type: 'set-slot', code: card.code, value: count });
   }, [setStoryCounts]);
@@ -67,9 +67,9 @@ export default function StoryCardSelectorComponent({
     const storyCards: Card[] = [];
     const deckStoryCards: Card[] = [];
     forEach(allStoryCards, card => {
-      if (deck && card.code && deck.slots && (deck.slots?.[card.code] || 0) > 0) {
+      if (deck && card.code && deck.deck.slots && (deck.deck.slots?.[card.code] || 0) > 0) {
         deckStoryCards.push(card);
-        deckStorySlots[card.code] = deck.slots[card.code];
+        deckStorySlots[card.code] = deck.deck.slots[card.code];
       } else if (card.encounter_code && encounterCodesSet.has(card.encounter_code)) {
         storyCards.push(card);
       }

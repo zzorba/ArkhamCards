@@ -167,7 +167,6 @@ mutation deleteAllLocalDecks(
     affected_rows
     returning {
       ...IdDeck
-      owner_id
     }
   }
 }
@@ -188,7 +187,6 @@ mutation deleteAllArkhamDbDecks(
     affected_rows
     returning {
       ...IdDeck
-      owner_id
     }
   }
 }
@@ -206,7 +204,6 @@ mutation deleteLocalDeck(
     affected_rows
     returning {
       ...IdDeck
-      owner_id
       previous_deck {
         ...LatestDeck
       }
@@ -227,7 +224,6 @@ mutation deleteArkhamDbDeck(
     affected_rows
     returning {
       ...IdDeck
-      owner_id
       previous_deck {
         ...LatestDeck
       }
@@ -251,10 +247,27 @@ query getMyDecks(
   }
 }
 
+
+query getLatestCampaignDeck(
+  $campaign_id: Int!,
+  $id_exp: campaign_deck_bool_exp!
+) {
+	campaign_deck(
+    where: {
+    	_and: [
+      	{ campaign_id: { _eq: $campaign_id } },
+        $id_exp
+      ]
+    }
+  ) {
+    ...LatestDeck
+  }
+}
+
 query getLatestDeck(
   $deckId: Int!
 ) {
-	campaign_deck_by_pk(id: $deckId) {
+  campaign_deck_by_pk(id: $deckId) {
     ...LatestDeck
   }
 }

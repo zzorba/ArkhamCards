@@ -21,6 +21,7 @@ export const deleteAllArkhamDbDecks: DocumentNode;
 export const deleteLocalDeck: DocumentNode;
 export const deleteArkhamDbDeck: DocumentNode;
 export const getMyDecks: DocumentNode;
+export const getLatestCampaignDeck: DocumentNode;
 export const getLatestDeck: DocumentNode;
 
   export default defaultDocument;

@@ -27,7 +27,6 @@ interface Props {
   updateInvestigatorXp: (investigator: Card, xp: number) => void;
   campaign: SingleCampaignT;
   originalDeckUuids: Set<string>;
-  componentId: string;
   decks: LatestDeckT[];
   allInvestigators: Card[];
 }
@@ -50,7 +49,6 @@ export default function UpgradeDecksList({
   updateInvestigatorXp,
   campaign,
   originalDeckUuids,
-  componentId,
   decks,
   allInvestigators,
 }: Props) {
@@ -115,8 +113,7 @@ export default function UpgradeDecksList({
               key={deck.id.local ? deck.id.uuid : deck.id.id}
               lang={lang}
               campaign={campaign}
-              componentId={componentId}
-              id={deck.id}
+              deck={deck}
               renderDetails={renderDetails}
               compact
               viewDeckButton

@@ -138,7 +138,7 @@ export default function DecksSection({
     });
   }, [delayedUpdateCampaignNotes, campaign.campaignNotes]);
 
-  const renderInvestigator = useCallback((investigator: Card, eliminated: boolean, deck?: Deck) => {
+  const renderInvestigator = useCallback((investigator: Card, eliminated: boolean, deck?: LatestDeckT) => {
     const traumaAndCardData = campaign.getInvestigatorData(investigator.code);
     return (
       <InvestigatorCampaignRow
@@ -191,7 +191,7 @@ export default function DecksSection({
     <>
       { flatMap(aliveInvestigators, investigator => {
         const deck = find(latestDecks, deck => deck.investigator === investigator.code);
-        return renderInvestigator(investigator, false, deck?.deck);
+        return renderInvestigator(investigator, false, deck);
       }) }
       { killedInvestigators.length > 0 && (
         <View style={[styles.underline, borderStyle]}>
@@ -202,7 +202,7 @@ export default function DecksSection({
           </View>
           { flatMap(killedInvestigators, investigator => {
             const deck = find(latestDecks, deck => deck.investigator === investigator.code);
-            return renderInvestigator(investigator, true, deck?.deck);
+            return renderInvestigator(investigator, true, deck);
           }) }
         </View>
       ) }

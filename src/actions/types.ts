@@ -687,6 +687,7 @@ export interface EditDeckState {
   ignoreDeckLimitSlots: Slots;
   meta: DeckMeta;
   mode: 'edit' | 'upgrade' | 'view';
+  editable: boolean;
 }
 export const START_DECK_EDIT = 'START_DECK_EDIT';
 export interface StartDeckEditAction {

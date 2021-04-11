@@ -8,6 +8,7 @@ import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import { ChaosBag } from '@app_constants';
 import LatestDeckT, { DeckCampaignInfo } from '@data/interfaces/LatestDeckT';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
+import { SimpleUser } from './hooks';
 
 const EMPTY_TRAUMA = {};
 
@@ -48,8 +49,8 @@ function fragmentToFullInvestigatorData(campaign: FullCampaignFragment): Investi
 function fragmentToInvestigators(campaign: MiniCampaignFragment): string[] {
   return uniq(
     concat(
-      flatMap(campaign.latest_decks, d => d.deck?.investigator || []),
       flatMap(campaign.investigators, i => i.investigator),
+      flatMap(campaign.latest_decks, d => d.deck?.investigator || []),
     )
   );
 }
@@ -307,14 +308,17 @@ export class MiniDeckRemote implements MiniDeckT {
   investigator: string;
   date_update: string;
   name: string;
-  campaign_id: number;
+  campaign_id: CampaignId;
 
   constructor(deck: LatestDeckFragment) {
     this.id = fragmentToDeckId(deck);
     this.investigator = deck.investigator;
     this.name = deck.content?.name || '';
     this.date_update = deck.content?.date_update || '';
-    this.campaign_id = deck.campaign_id;
+    this.campaign_id = {
+      campaignId: deck.campaign.uuid,
+      serverId: deck.campaign.id,
+    };
   }
 }
 
@@ -322,9 +326,14 @@ export class LatestDeckRemote extends MiniDeckRemote implements LatestDeckT {
   deck: Deck;
   previousDeck: Deck | undefined;
   campaign: DeckCampaignInfo | undefined;
+  owner: SimpleUser | undefined;
 
   constructor(deck: LatestDeckFragment) {
     super(deck);
+    this.owner = {
+      handle: deck.owner.handle || undefined,
+      id: deck.owner.id,
+    };
     this.deck = deck.content;
     this.previousDeck = deck.previous_deck?.content;
     this.campaign = deck.campaign?.name ? {

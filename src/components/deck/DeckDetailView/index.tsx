@@ -56,7 +56,6 @@ export interface DeckDetailProps {
   title?: string;
   subtitle?: string;
   campaignId: CampaignId | undefined;
-  isPrivate?: boolean;
   modal?: boolean;
 }
 
@@ -71,7 +70,6 @@ function DeckDetailView({
   title,
   subtitle,
   campaignId,
-  isPrivate,
   modal,
   signedIn,
   login,
@@ -496,7 +494,6 @@ function DeckDetailView({
   const copyDialog = useMemo(() => {
     return (
       <CopyDeckDialog
-        componentId={componentId}
         campaign={campaign}
         deckId={copying ? id : undefined}
         toggleVisible={toggleCopyDialog}
@@ -504,7 +501,7 @@ function DeckDetailView({
         actions={deckActions}
       />
     );
-  }, [componentId, id, signedIn, campaign, copying, deckActions, toggleCopyDialog]);
+  }, [id, signedIn, campaign, copying, deckActions, toggleCopyDialog]);
 
   const showTabooPicker = useCallback(() => {
     setTabooOpen(true);
@@ -542,7 +539,7 @@ function DeckDetailView({
     onValueChange: updateDeckName,
     value: name || '',
   });
-  const editable = !!isPrivate && !!deck && !deck.nextDeckId;
+  const editable = !!deckEdits?.editable;
   const onEditPressed = useCallback(() => {
     setFabOpen(false);
     setMode('edit');
@@ -729,7 +726,6 @@ function DeckDetailView({
       normalCardCount,
       totalCardCount,
     } = parsedDeck;
-    const editable = isPrivate && deck && !deck.nextDeckId;
     const xp = (deck.xp || 0) + deckEdits.xpAdjustment;
     const adjustment = deckEdits.xpAdjustment >= 0 ? `+${deckEdits.xpAdjustment}` : `${deckEdits.xpAdjustment}`;
     const xpString = t`${xp} (${adjustment}) XP`;
@@ -840,24 +836,25 @@ function DeckDetailView({
           onPress={toggleCopyDialog}
           title={t`Clone deck`}
         />
-        { deck.investigator_code !== CUSTOM_INVESTIGATOR && (deck.local ? (
+        { deck.local && deck.investigator_code !== CUSTOM_INVESTIGATOR && editable && (
           <MenuButton
             icon="world"
             onPress={uploadToArkhamDB}
             title={t`Upload to ArkhamDB`}
             numberOfLines={2}
-            last={!isPrivate}
+            last={!editable}
           />
-        ) : (
+        ) }
+        { !deck.local && (
           <MenuButton
             icon="world"
             title={t`View on ArkhamDB`}
             description={t`Open in browser`}
             onPress={viewDeck}
-            last={!isPrivate}
+            last={!editable}
           />
-        )) }
-        { !!isPrivate && (
+        ) }
+        { editable && (
           <MenuButton
             icon="delete"
             title={t`Delete deck`}
@@ -867,7 +864,7 @@ function DeckDetailView({
         ) }
       </ScrollView>
     );
-  }, [backgroundStyle, onAddCardsPressed, isPrivate, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
+  }, [backgroundStyle, onAddCardsPressed, editable, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
     showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB, showDescription,
     onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditNameDialog, showXpAdjustmentDialog, showTabooPicker,
     onEditSpecialPressed, onChecklistPressed,
@@ -984,7 +981,7 @@ function DeckDetailView({
       </View>
     );
   }
-  if (!parsedDeck || !cards || !deckEdits) {
+  if (!parsedDeck || !cards) {
     return (
       <LoadingSpinner large />
     );
@@ -1022,7 +1019,6 @@ function DeckDetailView({
               cards={cards}
               cardsByName={cardsByName}
               bondedCardsByName={bondedCardsByName}
-              isPrivate={!!isPrivate}
               buttons={buttons}
               showEditCards={onAddCardsPressed}
               showDeckHistory={showUpgradeHistoryPressed}

@@ -1,11 +1,12 @@
 import { find, flatMap, sortBy } from 'lodash';
 
-import { Deck, NumberChoices, StandaloneId } from '@actions/types';
+import { NumberChoices, StandaloneId } from '@actions/types';
 import { FullCampaign, Effect, Errata, Scenario } from './types';
 import CampaignGuide, { CampaignLog, CampaignLogSection } from './CampaignGuide';
 import ScenarioGuide from './ScenarioGuide';
 import ScenarioStep from './ScenarioStep';
 import GuidedCampaignLog from './GuidedCampaignLog';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 export interface ScenarioId {
   scenarioId: string;
@@ -41,7 +42,7 @@ export interface ProcessedCampaign {
 }
 
 export interface LatestDecks {
-  [code: string]: Deck | undefined;
+  [code: string]: LatestDeckT | undefined;
 }
 
 export interface DisplayChoice {

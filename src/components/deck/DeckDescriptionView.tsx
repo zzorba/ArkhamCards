@@ -39,7 +39,7 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
   const tabooSetId = useTabooSetId();
   const parsedDeckObj = useParsedDeck(id, componentId);
   const { mode } = useDeckEditState(parsedDeckObj);
-  const { deck, deckEdits, parsedDeck, editable } = parsedDeckObj;
+  const { deck, deckEdits, parsedDeck } = parsedDeckObj;
   const factionColor = useMemo(() => colors.faction[parsedDeck?.investigator.factionCode() || 'neutral'].background, [parsedDeck, colors.faction]);
   const [description, setDescription] = useState(deckEdits?.descriptionChange || deck?.description_md || '');
   useEffect(() => {
@@ -118,7 +118,7 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
           onPress={backPressed}
           yOffset={Platform.OS === 'ios' ? keyboardHeight : undefined} />
       ) }
-      { !!editable && fab }
+      { !!deckEdits?.editable && fab }
     </View>
   );
 }

@@ -189,6 +189,7 @@ function getPreviousDeck(
     campaign_id: currentDeck.campaign_id,
     investigator_data: currentDeck.investigator_data,
     owner_id: currentDeck.owner_id,
+    owner: currentDeck.owner,
     id: previousDeck.id,
     investigator: previousDeck.investigator,
     arkhamdb_id: previousDeck.arkhamdb_id,
@@ -451,6 +452,9 @@ export function useDeckActions(): DeckActions {
           arkhamdb_id: deckId.id || null,
           investigator: deck.investigator_code,
           owner_id: user.uid,
+          owner: {
+            id: user.uid,
+          },
           content: deck,
           content_hash,
           campaign: {
@@ -512,6 +516,9 @@ export function useDeckActions(): DeckActions {
               arkhamdb_id: null,
               investigator: deck.investigator_code,
               owner_id: user.uid,
+              owner: {
+                id: user.uid,
+              },
               content: deck,
               content_hash,
               campaign: {
@@ -557,6 +564,9 @@ export function useDeckActions(): DeckActions {
             local_uuid: null,
             investigator: deck.investigator_code,
             owner_id: user.uid,
+            owner: {
+              id: user.uid,
+            },
             content: deck,
             content_hash,
             campaign: {

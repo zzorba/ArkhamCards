@@ -669,7 +669,7 @@ export default class GuidedCampaignLog {
       const investigatorAssignedCards: Slots = {};
       const deck = latestDecks[investigator.code];
       if (deck) {
-        forEach(deck.slots, (count, code) => {
+        forEach(deck.deck.slots, (count, code) => {
           const card = cards[code];
           if (card && card.isBasicWeakness()) {
             investigatorAssignedCards[code] = count;

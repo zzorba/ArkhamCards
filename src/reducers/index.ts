@@ -384,11 +384,11 @@ export function makeLatestCampaignInvestigatorsSelector(): (state: AppState, inv
       }
       const latestDecks: Deck[] = flatMap(latestDeckIds, deckId => getDeck(decks, deckId) || []);
       return uniq([
+        ...flatMap(nonDeckInvestigators, code => investigators[code] || []),
         ...flatMap(
           filter(latestDecks, deck => !!(deck && deck.investigator_code)),
           deck => investigators[deck.investigator_code] || []
         ),
-        ...flatMap(nonDeckInvestigators, code => investigators[code] || []),
       ]);
     }
   );
@@ -482,11 +482,13 @@ export const getMyDecksState: (state: AppState) => MyDecksState = createSelector
   myDecksUpdatedSelector,
   myDecksRefreshingSelector,
   myDecksErrorSelector,
-  (allDecks, dateUpdated, refreshing, error) => {
+  getDeckToCampaignMap,
+  (allDecks, dateUpdated, refreshing, error, deckToCampaign) => {
     const myDecks = map(reverse(sortBy(filter(values(allDecks), deck => {
       return !!deck && !deck.nextDeckId;
     }), deck => deck.date_update)), deck => {
-      return new MiniDeckRedux(deck);
+      const id = getDeckId(deck);
+      return new MiniDeckRedux(deck, deckToCampaign[id.uuid] || undefined);
     });
     return {
       myDecks: myDecks || EMPTY_MY_DECKS,

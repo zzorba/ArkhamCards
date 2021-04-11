@@ -10,7 +10,7 @@ import { DrawSimulatorProps } from '@components/deck/DrawSimulatorView';
 import { DeckDetailProps } from '@components/deck/DeckDetailView';
 import { CardDetailProps } from '@components/card/CardDetailView';
 import { CardDetailSwipeProps } from '@components/card/DbCardDetailSwipeView';
-import { CampaignId, Deck, DeckId, getDeckId, ParsedDeck } from '@actions/types';
+import { CampaignId, Deck, DeckId, ParsedDeck } from '@actions/types';
 import Card from '@data/types/Card';
 import { iconsMap } from '@app/NavIcons';
 import { CardImageProps } from '@components/card/CardImageView';
@@ -99,7 +99,7 @@ export function getDeckOptions(
 }
 
 export function showDeckModal(
-  componentId: string,
+  id: DeckId,
   deck: Deck,
   campaignId: CampaignId | undefined,
   colors: ThemeColors,
@@ -107,8 +107,7 @@ export function showDeckModal(
   initialMode?: 'upgrade' | 'edit'
 ) {
   const passProps: DeckDetailProps = {
-    id: getDeckId(deck),
-    isPrivate: true,
+    id,
     modal: true,
     campaignId,
     title: investigator ? investigator.name : t`Deck`,
