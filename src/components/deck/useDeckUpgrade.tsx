@@ -9,13 +9,14 @@ import { AppState } from '@reducers';
 import { Action } from 'redux';
 import { useDispatch } from 'react-redux';
 import { DeckActions } from '@data/remote/decks';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
 export type SaveDeckUpgrade = (xp: number, storyCounts: Slots, ignoreStoryCounts: Slots, exileCounts: Slots) => void;
 
 export default function useDeckUpgrade(
-  deck: Deck | undefined,
+  deck: LatestDeckT | undefined,
   actions: DeckActions,
   upgradeCompleted: (deck: Deck, xp: number) => void,
 ): [boolean, string | undefined, SaveDeckUpgrade] {
@@ -95,7 +96,7 @@ export default function useDeckUpgrade(
     }
     if (!saving || isRetry) {
       setSaving(true);
-      doSaveDeckUpgrade(deck, xp, exileCounts).then(
+      doSaveDeckUpgrade(deck.deck, xp, exileCounts).then(
         (deck: Deck) => handleStoryCardChanges(deck, xp, storyCounts, ignoreStoryCounts),
         (e: Error) => {
           setError(e.message);

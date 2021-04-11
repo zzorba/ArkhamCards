@@ -13,7 +13,6 @@ interface Props {
   deck: Deck;
   cards: CardsMap;
   parsedDeck: ParsedDeck;
-  isPrivate: boolean;
   editable: boolean;
   title?: string;
   onTitlePress?: (deck: ParsedDeck) => void;

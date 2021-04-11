@@ -1,5 +1,5 @@
 import { useContext, useMemo, useEffect, useCallback, useRef } from 'react';
-import { flatMap, find, map, omit } from 'lodash';
+import { flatMap, map, omit } from 'lodash';
 
 import { CampaignId, DeckId, UploadedCampaignId } from '@actions/types';
 import {
@@ -15,6 +15,8 @@ import {
   CampaignDocument,
   LatestDeckFragmentDoc,
   LatestDeckFragment,
+  useGetLatestDeckQuery,
+  useGetLatestCampaignDeckQuery,
 } from '@generated/graphql/apollo-schema';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { FriendStatus } from './api';
@@ -127,19 +129,55 @@ export function useCampaignRemote(campaignId: CampaignId | undefined, live?: boo
 }
 
 
+export function useCampaignDeckFromRemote(id: DeckId | undefined, campaignId: CampaignId | undefined): LatestDeckT | undefined {
+  const { data } = useGetLatestCampaignDeckQuery({
+    variables: {
+      campaign_id: campaignId?.serverId || 0,
+      id_exp: id?.id ? {
+        arkhamdb_id: { _eq: id.id },
+      } : {
+        local_uuid: { _eq: id?.uuid || '' },
+      },
+    },
+    fetchPolicy: 'cache-first',
+    skip: !campaignId?.serverId || !id,
+  });
+
+  return useMemo(() => {
+    if (!campaignId?.serverId) {
+      return undefined;
+    }
+    console.log(data);
+    return data?.campaign_deck?.length ? new LatestDeckRemote(data.campaign_deck[0]) : undefined;
+  }, [data, campaignId]);
+}
+export function useDeckFromRemote(id: DeckId | undefined, fetch: boolean): LatestDeckT | undefined {
+  const { data } = useGetLatestDeckQuery({
+    variables: {
+      deckId: id?.serverId || 0 },
+    fetchPolicy: fetch ? 'cache-first' : 'cache-only',
+    skip: !id?.serverId,
+  });
+
+  return useMemo(() => {
+    if (!id?.serverId) {
+      return undefined;
+    }
+    return data?.campaign_deck_by_pk ? new LatestDeckRemote(data.campaign_deck_by_pk) : undefined;
+  }, [data, id]);
+}
+
 export interface CampaignAccess {
   owner: SimpleUser;
   access: SimpleUser[];
 }
-
 export function useCampaignAccess(campaignId: UploadedCampaignId): CampaignAccess | undefined {
   const { user } = useContext(ArkhamCardsAuthContext);
-  const [profile] = useMyProfile();
   const { data, subscribeToMore } = useGetCampaignAccessQuery({
     variables: { campaign_id: campaignId.serverId },
     fetchPolicy: 'cache-first',
     skip: (!user || !campaignId.serverId),
-    returnPartialData: true,
+    returnPartialData: false,
   });
   useEffect(() => {
     if (user && subscribeToMore) {
@@ -150,21 +188,6 @@ export function useCampaignAccess(campaignId: UploadedCampaignId): CampaignAcces
     }
   }, [user, campaignId, subscribeToMore]);
 
-  const getFriendStatus = useCallback((id: string): FriendStatus => {
-    if (profile) {
-      if (find(profile.friends, f => f.id === id)) {
-        return FriendStatus.FRIEND;
-      }
-      if (find(profile.sentRequests, f => f.id === id)) {
-        return FriendStatus.SENT;
-      }
-      if (find(profile.receivedRequests, f => f.id === id)) {
-        return FriendStatus.RECEIVED;
-      }
-    }
-    return FriendStatus.NONE;
-  }, [profile]);
-
   return useMemo(() => {
     if (!data?.campaign_by_pk) {
       return undefined;
@@ -172,7 +195,6 @@ export function useCampaignAccess(campaignId: UploadedCampaignId): CampaignAcces
     const owner: SimpleUser = {
       id: data.campaign_by_pk.owner.id,
       handle: data.campaign_by_pk.owner.handle || undefined,
-      status: getFriendStatus(data.campaign_by_pk.owner.id),
     };
     return {
       owner,
@@ -180,18 +202,17 @@ export function useCampaignAccess(campaignId: UploadedCampaignId): CampaignAcces
         return {
           id: u.user.id,
           handle: u.user.handle || undefined,
-          status: getFriendStatus(u.user.id),
         };
       }),
     };
-  }, [data, getFriendStatus]);
+  }, [data]);
 }
 
 
 export interface SimpleUser {
   id: string;
   handle?: string;
-  status: FriendStatus;
+  // status: FriendStatus;
 }
 
 export interface UserProfile {
@@ -323,21 +344,21 @@ export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, (
   return [deckIds, userLoading || dataLoading, refresh];
 }
 
-export function useLatestDeckRemote(deckId: DeckId, campaign_id: number | undefined): LatestDeckT | undefined {
+export function useLatestDeckRemote(deckId: DeckId, campaign_id: CampaignId | undefined): LatestDeckT | undefined {
   const { cache } = useApolloClient();
   const currentDeck = cache.readFragment<LatestDeckFragment>({
     fragment: LatestDeckFragmentDoc,
     fragmentName: 'LatestDeck',
     id: cache.identify({
       __typename: 'campaign_deck',
-      campaign_id: campaign_id || 0,
+      campaign_id: campaign_id?.serverId || 0,
       local_uuid: deckId.local ? deckId.uuid : null,
       arkhamdb_id: deckId.local ? null : deckId.id,
     }),
   });
 
   return useMemo(() => {
-    if (!campaign_id || !deckId.serverId) {
+    if (!campaign_id?.serverId || !deckId.serverId) {
       return undefined;
     }
     return currentDeck ? new LatestDeckRemote(currentDeck) : undefined;

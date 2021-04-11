@@ -44,7 +44,8 @@ import ArkhamButton from '@components/core/ArkhamButton';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 import { useSimpleDeckEdits } from '@components/deck/hooks';
-import { useCards, useDeck, useEffectUpdate, useToggles } from '@components/core/hooks';
+import { useDeck } from '@data/hooks';
+import { useCards, useEffectUpdate, useToggles } from '@components/core/hooks';
 import LoadingCardSearchResult from '../LoadingCardSearchResult';
 import { ControlType } from '../CardSearchResult/ControlComponent';
 import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
@@ -607,11 +608,11 @@ export default function({
   showNonCollection,
 }: Props) {
   const { db } = useContext(DatabaseContext);
-  const [deck] = useDeck(deckId);
+  const deck = useDeck(deckId);
   const deckEdits = useSimpleDeckEdits(deckId);
   const { colors, borderStyle, fontScale, typography } = useContext(StyleContext);
   const [loadingMessage, setLoadingMessage] = useState(getRandomLoadingMessage());
-  const tabooSetOverride = deckId !== undefined ? ((deckEdits?.tabooSetChange || deck?.taboo_id) || 0) : undefined;
+  const tabooSetOverride = deckId !== undefined ? ((deckEdits?.tabooSetChange || deck?.deck.taboo_id) || 0) : undefined;
   const tabooSetSelctor = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelctor(state, tabooSetOverride));
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
@@ -632,7 +633,7 @@ export default function({
     textQuery,
     showAllNonCollection: showNonCollection,
     deckCardCounts: deckEdits?.slots,
-    originalDeckSlots: currentDeckOnly ? undefined : deck?.slots,
+    originalDeckSlots: currentDeckOnly ? undefined : deck?.deck.slots,
     storyOnly,
   });
   const dispatch = useDispatch();

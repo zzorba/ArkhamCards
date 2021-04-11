@@ -110,7 +110,6 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
         </Text>
       </View>
       <UpgradeDecksList
-        componentId={componentId}
         lang={lang}
         campaign={campaign}
         allInvestigators={allInvestigators}

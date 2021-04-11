@@ -48,30 +48,29 @@ export default function EditCampaignAccessView({ campaignId, componentId }: Camp
   const toFeed = useCallback((isSelf: boolean, profile?: UserProfile) => {
     const feed: FriendFeedItem[] = [];
     if (campaignAccess) {
-      feed.push({ type: 'header', header: t`Creator` });
+      feed.push({ type: 'header', header: t`Campaign players` });
       feed.push({
         type: 'user',
         user: campaignAccess.owner,
       });
       const otherPlayers = filter(campaignAccess.access, u => u.id !== campaignAccess.owner.id);
       if (otherPlayers.length) {
-        feed.push({ type: 'header', header: t`Other players` });
         forEach(otherPlayers, u => {
           feed.push({
             type: 'user',
             user: u,
-            controls: {
+            controls: u.id !== user?.uid ? {
               type: 'campaign',
               hasAccess: true,
               inviteUser,
               removeUser,
-            },
+            } : undefined,
           });
         });
       }
       const accessUsers = new Set(map(campaignAccess.access, u => u.id));
       if (find(profile?.friends || [], u => !accessUsers.has(u.id))) {
-        feed.push({ type: 'header', header: t`Other friends` });
+        feed.push({ type: 'header', header: t`Add friends to campaign` });
         forEach(profile?.friends || [], u => {
           if (!accessUsers.has(u.id)) {
             feed.push({
@@ -92,12 +91,12 @@ export default function EditCampaignAccessView({ campaignId, componentId }: Camp
     }
     feed.push({
       type: 'button',
-      title: t`Search for friends to add`,
-      icon: 'search',
+      title: t`Add friends`,
+      icon: 'expand',
       onPress: editFriendsPressed,
     });
     return feed;
-  }, [campaignAccess, editFriendsPressed, inviteUser, removeUser]);
+  }, [campaignAccess, user, editFriendsPressed, inviteUser, removeUser]);
   if (!user) {
     return <LoadingSpinner />;
   }

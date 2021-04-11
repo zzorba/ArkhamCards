@@ -546,13 +546,13 @@ msgstr "Tué"
 msgid "Insane"
 msgstr "Dément"
 
-msgid "Hide Decks From Other Campaigns"
+msgid "Hide decks from other campaigns"
 msgstr "Masquer les Decks des Autres Campagnes"
 
-msgid "Hide Killed and Insane Investigators"
+msgid "Hide killed and insane investigators"
 msgstr "Masquer les Investigateurs Tués et Déments"
 
-msgid "Only Show Previous Campaign Members"
+msgid "Only show previous campaign members"
 msgstr "Afficher uniquement les Membres de la Campagne Précédente"
 
 msgid "Experience"
@@ -857,21 +857,21 @@ msgstr "Réserve du Chaos"
 msgid "Adjust Weakness Set"
 msgstr "Ajuster la Collection des Faiblesses"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Ce Deck contient plusieurs faiblesses de base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Ce Deck contient une faiblesse de base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr ""
 "Voulez-vous les supprimer de l’ensemble des faiblesses de base de la "
 "campagne ?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr ""
 "Voulez-vous la supprimer de l’ensemble des faiblesses de base de la "

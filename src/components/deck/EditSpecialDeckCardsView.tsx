@@ -3,6 +3,7 @@ import { forEach, keys, map, sortBy } from 'lodash';
 import { ScrollView, StyleSheet } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
+import { useDispatch } from 'react-redux';
 
 import { EditDeckProps } from './DeckEditView';
 import { CampaignDrawWeaknessProps } from '@components/campaign/CampaignDrawWeaknessDialog';
@@ -17,8 +18,8 @@ import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import ArkhamButton from '@components/core/ArkhamButton';
-import { useDeck, usePlayerCards } from '@components/core/hooks';
-import { useDispatch } from 'react-redux';
+import { usePlayerCards } from '@components/core/hooks';
+import { useCampaignDeck } from '@data/hooks';
 import { setIgnoreDeckSlot } from './actions';
 import { useDeckEdits } from './hooks';
 import { useAlertDialog } from './dialogs';
@@ -34,7 +35,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
   const { backgroundStyle, colors } = useContext(StyleContext);
   const { componentId, campaignId, assignedWeaknesses, id } = props;
   const [unsavedAssignedWeaknesses, setUnsavedAssignedWeaknesses] = useState<string[]>(assignedWeaknesses || []);
-  const [deck] = useDeck(id);
+  const deck = useCampaignDeck(id, campaignId);
   const dispatch = useDispatch();
   const [deckEdits, deckEditsRef] = useDeckEdits(id);
 
@@ -53,7 +54,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
   const cards = usePlayerCards();
 
   const editStoryPressed = useCallback(() => {
-    const investigator = deck && cards && cards[deck.investigator_code];
+    const investigator = deck && cards && cards[deck.deck.investigator_code];
     const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<EditDeckProps>(componentId, {
       component: {
@@ -112,7 +113,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
     if (!deckEditsRef.current) {
       return;
     }
-    const investigator = deck && cards && cards[deck.investigator_code];
+    const investigator = deck && cards && cards[deck.deck.investigator_code];
     const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<DrawWeaknessProps>(componentId, {
       component: {
@@ -159,7 +160,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
     if (!campaignId || !deckEditsRef.current) {
       return;
     }
-    const investigator = deck && cards && cards[deck.investigator_code];
+    const investigator = deck && cards && cards[deck.deck.investigator_code];
     const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<CampaignDrawWeaknessProps>(componentId, {
       component: {

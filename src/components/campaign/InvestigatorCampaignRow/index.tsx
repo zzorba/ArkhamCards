@@ -24,6 +24,7 @@ import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButto
 import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
 import useXpSection from './useXpSection';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 interface Props {
   componentId: string;
@@ -34,7 +35,7 @@ interface Props {
   traumaAndCardData: TraumaAndCardData;
   playerCards: CardsMap;
   chooseDeckForInvestigator?: (investigator: Card) => void;
-  deck?: Deck;
+  deck?: LatestDeckT;
   showXpDialog: (investigator: Card) => void;
   removeInvestigator?: (investigator: Card) => void;
   // For legacy system
@@ -88,7 +89,6 @@ export default function InvestigatorCampaignRow({
   }, [showXpDialog, investigator]);
 
   const [xpButton, upgradeBadge] = useXpSection({
-    componentId,
     deck,
     campaign,
     cards: playerCards,
@@ -130,14 +130,14 @@ export default function InvestigatorCampaignRow({
   const viewDeck = useCallback(() => {
     if (deck) {
       showDeckModal(
-        componentId,
-        deck,
+        deck.id,
+        deck.deck,
         campaign?.id,
         colors,
         investigator,
       );
     }
-  }, [campaign, componentId, investigator, deck, colors]);
+  }, [campaign, investigator, deck, colors]);
 
   const selectDeck = useCallback(() => {
     chooseDeckForInvestigator && chooseDeckForInvestigator(investigator);

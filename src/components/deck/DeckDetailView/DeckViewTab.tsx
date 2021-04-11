@@ -255,7 +255,6 @@ interface Props {
   };
   visible: boolean;
   editable: boolean;
-  isPrivate: boolean;
   buttons?: ReactNode;
   showEditSpecial?: () => void;
   showXpAdjustmentDialog: () => void;
@@ -303,7 +302,6 @@ export default function DeckViewTab(props: Props) {
     showTaboo,
     tabooOpen,
     buttons,
-    isPrivate,
     showDeckHistory,
     deckEdits,
     deckEditsRef,
@@ -667,7 +665,6 @@ export default function DeckViewTab(props: Props) {
           deck={deck}
           parsedDeck={parsedDeck}
           editable={editable}
-          isPrivate={isPrivate}
           showDeckHistory={showDeckHistory}
           tabooSetId={tabooSetId}
           singleCardView={singleCardView}

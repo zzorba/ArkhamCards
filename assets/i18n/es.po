@@ -546,13 +546,13 @@ msgstr "Muerto"
 msgid "Insane"
 msgstr "Loco"
 
-msgid "Hide Decks From Other Campaigns"
+msgid "Hide decks from other campaigns"
 msgstr "Ocultar Mazos de Otras Campañas"
 
-msgid "Hide Killed and Insane Investigators"
+msgid "Hide killed and insane investigators"
 msgstr "Ocultar Investigadores Muertos y Locos"
 
-msgid "Only Show Previous Campaign Members"
+msgid "Only show previous campaign members"
 msgstr "Solo Mostrar Miembros de Campañas Anteriores"
 
 msgid "Experience"
@@ -857,19 +857,19 @@ msgstr "Bolsa de Caos"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Debilidades"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Este mazo contiene varias debilidades básicas"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Este mazo contiene una debilidad básica"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarlas del Conjunto de Debilidades Básicas de la Campaña?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarla del Conjunto de Debilidades Básicas de la Campaña?"
 

@@ -6,13 +6,13 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { filter, map } from 'lodash';
+import { filter } from 'lodash';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import useNetworkStatus from '@components/core/useNetworkStatus';
-import { CampaignId, Deck, DeckId } from '@actions/types';
+import { CampaignId, Deck } from '@actions/types';
 import Card from '@data/types/Card';
 import DeckListComponent from '@components/decklist/DeckListComponent';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
@@ -32,9 +32,7 @@ interface OwnProps {
   componentId: string;
   deckClicked: (deck: Deck, investigator: Card | undefined, campaign: CampaignId | undefined) => void;
   onlyDecks?: MiniDeckT[];
-  onlyInvestigators?: string[];
-  filterDeckIds?: DeckId[];
-  filterInvestigators?: string[];
+  filterDeck?: (deck: MiniDeckT) => boolean;
   searchOptions?: SearchOptions;
   customFooter?: ReactNode;
 }
@@ -44,9 +42,7 @@ type Props = OwnProps & LoginStateProps;
 function MyDecksComponent({
   deckClicked,
   onlyDecks,
-  onlyInvestigators,
-  filterDeckIds = [],
-  filterInvestigators = [],
+  filterDeck,
   searchOptions,
   customFooter,
   login,
@@ -161,15 +157,8 @@ function MyDecksComponent({
   }, [searchOptions, errorLine]);
 
   const deckIds = useMemo(() => {
-    const onlyInvestigatorSet = onlyInvestigators ? new Set(onlyInvestigators) : undefined;
-    const filterDeckIdsSet = new Set(map(filterDeckIds, id => id.uuid));
-    const filterInvestigatorsSet = new Set(filterInvestigators);
-    return filter(onlyDecks || myDecks, deckId => {
-      return !filterDeckIdsSet.has(deckId.id.uuid) && (
-        !filterInvestigatorsSet.has(deckId.investigator)
-      ) && (!onlyInvestigatorSet || onlyInvestigatorSet.has(deckId.investigator));
-    });
-  }, [onlyInvestigators, onlyDecks, filterDeckIds, filterInvestigators, myDecks]);
+    return filter(onlyDecks || myDecks, deckId => !filterDeck || filterDeck(deckId));
+  }, [filterDeck, onlyDecks, myDecks]);
   return (
     <DeckListComponent
       searchOptions={searchOptions}

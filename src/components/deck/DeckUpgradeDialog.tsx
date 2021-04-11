@@ -20,8 +20,8 @@ import EditTraumaComponent from '@components/campaign/EditTraumaComponent';
 import Card from '@data/types/Card';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useCampaign } from '@data/hooks';
-import { useDeck, useInvestigatorCards, useNavigationButtonPressed, useSlots } from '@components/core/hooks';
+import { useCampaign, useCampaignDeck } from '@data/hooks';
+import { useInvestigatorCards, useNavigationButtonPressed, useSlots } from '@components/core/hooks';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import useDeckUpgrade from './useDeckUpgrade';
 import { useDeckActions } from '@data/remote/decks';
@@ -38,7 +38,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const actions = useDeckActions();
   const updateCampaignActions = useUpdateCampaignActions();
-  const [deck] = useDeck(id);
+  const deck = useCampaignDeck(id, campaignId);
   const campaign = useCampaign(campaignId);
   const deckUpgradeComponent = useRef<DeckUpgradeHandles>(null);
 
@@ -47,7 +47,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
   const storyEncounterCodes = useMemo(() => latestScenario && latestScenario.scenarioCode ? [latestScenario.scenarioCode] : [], [latestScenario]);
 
   const [storyCounts, updateStoryCounts] = useSlots({});
-  const investigators = useInvestigatorCards(deck?.taboo_id);
+  const investigators = useInvestigatorCards(deck?.deck.taboo_id);
   const dispatch = useDispatch();
 
   const [traumaUpdate, setTraumaUpdate] = useState<Trauma | undefined>();
@@ -75,7 +75,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
     if (!deck || !investigators) {
       return undefined;
     }
-    return investigators[deck.investigator_code];
+    return investigators[deck.deck.investigator_code];
   }, [deck, investigators]);
 
   const deckUpgradeComplete = useCallback((deck: Deck) => {
@@ -85,7 +85,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
       }
     }
     if (showNewDeck) {
-      showDeckModal(componentId, deck, campaign?.id, colors, investigator, 'upgrade');
+      showDeckModal(getDeckId(deck), deck, campaign?.id, colors, investigator, 'upgrade');
     } else {
       Navigation.pop(componentId);
     }
@@ -112,7 +112,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
         <StoryCardSelectorComponent
           componentId={componentId}
           investigator={investigator}
-          deckId={getDeckId(deck)}
+          deck={deck}
           updateStoryCounts={onStoryCountsChange}
           encounterCodes={storyEncounterCodes}
           scenarioName={scenarioName}

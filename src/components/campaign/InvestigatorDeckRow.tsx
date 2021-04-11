@@ -20,18 +20,18 @@ interface Props {
 
 export default function InvestigatorDeckRow({ id, actions, deckRemoved }: Props) {
   const { lang } = useContext(LanguageContext);
-  const [theDeck] = useDeckWithFetch(id, actions);
-  const investigators = useInvestigatorCards(theDeck?.taboo_id || 0);
-  const investigator = theDeck && investigators && investigators[theDeck.investigator_code];
+  const deck = useDeckWithFetch(id, actions);
+  const investigators = useInvestigatorCards(deck?.deck.taboo_id || 0);
+  const investigator = deck && investigators && investigators[deck.deck.investigator_code];
   const onRemove = useCallback(() => {
-    deckRemoved && deckRemoved(id, theDeck, investigator);
+    deckRemoved && deckRemoved(id, deck?.deck, investigator);
   }, [
     deckRemoved,
     id,
-    theDeck,
+    deck,
     investigator,
   ]);
-  if (!theDeck || !investigator) {
+  if (!deck || !investigator) {
     return null;
   }
   return (

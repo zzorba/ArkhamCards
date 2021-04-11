@@ -1,4 +1,5 @@
 import { CampaignId, Deck, Trauma } from '@actions/types';
+import { SimpleUser } from '@data/remote/hooks';
 import MiniDeckT from './MiniDeckT';
 
 export interface DeckCampaignInfo {
@@ -8,6 +9,7 @@ export interface DeckCampaignInfo {
 }
 
 export default interface LatestDeckT extends MiniDeckT {
+  owner: SimpleUser | undefined;
   deck: Deck;
   previousDeck: Deck | undefined;
   campaign?: DeckCampaignInfo;

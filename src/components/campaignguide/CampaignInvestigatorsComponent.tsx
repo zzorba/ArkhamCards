@@ -74,7 +74,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
             text: t`Remove deck`,
             style: 'destructive',
             onPress: () => {
-              campaignState.removeDeck(deck);
+              campaignState.removeDeck(deck.id, deck.investigator);
             },
           },
         ]

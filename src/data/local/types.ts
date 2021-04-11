@@ -220,14 +220,14 @@ export class MiniDeckRedux implements MiniDeckT {
   name: string;
   investigator: string;
   date_update: string;
-  campaign_id?: number;
+  campaign_id?: CampaignId;
 
-  constructor(deck: Deck) {
+  constructor(deck: Deck, campaign: Campaign | undefined) {
     this.id = getDeckId(deck);
     this.name = deck.name;
     this.investigator = deck.investigator_code;
     this.date_update = deck.date_update;
-    this.campaign_id = undefined;
+    this.campaign_id = campaign ? getCampaignId(campaign) : undefined;
   }
 }
 
@@ -235,9 +235,10 @@ export class LatestDeckRedux extends MiniDeckRedux implements LatestDeckT {
   deck: Deck;
   previousDeck: Deck | undefined;
   campaign: DeckCampaignInfo | undefined;
+  owner = undefined;
 
   constructor(deck: Deck, previousDeck: Deck | undefined, campaign: Campaign | undefined) {
-    super(deck);
+    super(deck, campaign);
     this.deck = deck;
     this.previousDeck = previousDeck;
     this.campaign = campaign ? {

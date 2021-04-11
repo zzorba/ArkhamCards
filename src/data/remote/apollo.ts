@@ -414,6 +414,7 @@ function removeDeck(
         return deck.previous_deck ? {
           ...deck.previous_deck || undefined,
           owner_id: deck.owner_id,
+          owner: deck.owner,
           campaign_id: deck.campaign_id,
           campaign: deck.campaign,
         } : undefined;

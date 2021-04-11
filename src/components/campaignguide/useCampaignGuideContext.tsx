@@ -7,14 +7,12 @@ import { SingleCampaignGuideData } from './contextHelper';
 import campaignActions, { updateCampaignChaosBag, updateCampaignDifficulty, updateCampaignGuideVersion, updateCampaignInvestigatorData, updateCampaignScenarioResults } from '@components/campaign/actions';
 import guideActions from '@components/campaignguide/actions';
 import {
-  Deck,
   NumberChoices,
   StringChoices,
   SupplyCounts,
   GuideStartSideScenarioInput,
   GuideStartCustomSideScenarioInput,
   InvestigatorTraumaData,
-  getDeckId,
   DeckId,
   CampaignId,
 } from '@actions/types';
@@ -27,6 +25,7 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { UpdateCampaignActions, useGuideActions } from '@data/remote/campaigns';
 import { DeckActions } from '@data/remote/decks';
 import { ProcessedCampaign } from '@data/scenario';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 const EMPTY_SPENT_XP = {};
 export default function useCampaignGuideContext(
@@ -60,9 +59,10 @@ export default function useCampaignGuideContext(
   }, [dispatch, user, remoteGuideActions, campaignId]);
 
   const removeDeck = useCallback((
-    deck: Deck
+    deckId: DeckId,
+    investigator: string
   ) => {
-    dispatch(campaignActions.removeInvestigator(user, updateCampaignActions, campaignId, deck.investigator_code, getDeckId(deck)));
+    dispatch(campaignActions.removeInvestigator(user, updateCampaignActions, campaignId, investigator, deckId));
   }, [dispatch, campaignId, user, updateCampaignActions]);
 
   const removeInvestigator = useCallback((investigator: Card) => {
@@ -195,11 +195,11 @@ export default function useCampaignGuideContext(
   const latestDecks = campaignData?.campaign?.latestDecks();
   const decksByInvestigator = useMemo(() => {
     const decksByInvestigator: {
-      [code: string]: Deck | undefined;
+      [code: string]: LatestDeckT | undefined;
     } = {};
     forEach(latestDecks, deck => {
       if (deck && deck.investigator) {
-        decksByInvestigator[deck.investigator] = deck.deck;
+        decksByInvestigator[deck.investigator] = deck;
       }
     });
     return decksByInvestigator;

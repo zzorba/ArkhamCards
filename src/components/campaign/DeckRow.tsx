@@ -2,12 +2,13 @@ import React, { useCallback, useContext, useMemo } from 'react';
 
 import { showDeckModal } from '@components/nav/helper';
 import DeckListRow from '../decklist/DeckListRow';
-import { Deck, DeckId } from '@actions/types';
+import { Deck } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
-import { useDeckWithFetch, useInvestigatorCards, usePlayerCards, usePressCallback } from '@components/core/hooks';
+import { useInvestigatorCards, usePlayerCards, usePressCallback } from '@components/core/hooks';
 import { DeckActions } from '@data/remote/decks';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 type RenderDeckDetails = (
   deck: Deck,
@@ -17,8 +18,7 @@ type RenderDeckDetails = (
 ) => React.ReactNode | null;
 
 export interface DeckRowProps {
-  componentId: string;
-  id: DeckId;
+  deck: LatestDeckT;
   campaign: MiniCampaignT;
   lang: string;
   renderSubDetails?: RenderDeckDetails;
@@ -34,8 +34,7 @@ interface Props extends DeckRowProps {
 }
 
 export default function DeckRow({
-  componentId,
-  id,
+  deck: { deck, previousDeck, id },
   campaign,
   lang,
   renderSubDetails,
@@ -44,57 +43,53 @@ export default function DeckRow({
   skipRender,
   compact,
   viewDeckButton,
-  actions,
 }: Props) {
   const { colors } = useContext(StyleContext);
-  const [theDeck, thePreviousDeck] = useDeckWithFetch(id, actions);
-  const cards = usePlayerCards(theDeck?.taboo_id);
-  const investigators = useInvestigatorCards(theDeck?.taboo_id);
-  const investigator = theDeck && investigators && investigators[theDeck.investigator_code] || undefined;
+  const cards = usePlayerCards(deck.taboo_id);
+  const investigators = useInvestigatorCards(deck.taboo_id);
+  const investigator = deck && investigators && investigators[deck.investigator_code] || undefined;
   const onDeckPressFunction = useCallback(() => {
-    if (theDeck) {
-      showDeckModal(componentId, theDeck, campaign.id, colors, investigator);
-    }
-  }, [componentId, theDeck, campaign, colors, investigator]);
+    showDeckModal(id, deck, campaign.id, colors, investigator);
+  }, [id, deck, campaign, colors, investigator]);
   const onDeckPress = usePressCallback(onDeckPressFunction);
   const subDetails = useMemo(() => {
-    if (theDeck && renderSubDetails) {
+    if (deck && renderSubDetails) {
       if (!investigator || !cards) {
         return null;
       }
       return renderSubDetails(
-        theDeck,
+        deck,
         cards,
         investigator,
-        thePreviousDeck
+        previousDeck
       );
     }
     return null;
-  }, [theDeck, cards, investigator, thePreviousDeck, renderSubDetails]);
+  }, [deck, cards, investigator, previousDeck, renderSubDetails]);
   const details = useMemo(() => {
-    if (!theDeck || !renderDetails) {
+    if (!deck || !renderDetails) {
       return null;
     }
     if (!investigator || !cards) {
       return null;
     }
-    return renderDetails(theDeck, cards, investigator, thePreviousDeck);
-  }, [theDeck, cards, investigator, thePreviousDeck, renderDetails]);
+    return renderDetails(deck, cards, investigator, previousDeck);
+  }, [deck, cards, investigator, previousDeck, renderDetails]);
 
-  if (!theDeck) {
+  if (!deck) {
     return null;
   }
   if (!investigator) {
     return null;
   }
-  if (skipRender && skipRender(theDeck, investigator)) {
+  if (skipRender && skipRender(deck, investigator)) {
     return null;
   }
   return (
     <DeckListRow
-      deck={theDeck}
+      deck={deck}
+      previousDeck={previousDeck}
       lang={lang}
-      previousDeck={thePreviousDeck}
       onPress={onDeckPress}
       investigator={investigator}
       details={details}

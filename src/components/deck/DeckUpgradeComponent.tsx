@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback, useContext, useImperativeHandle, useMemo } from 'react';
+import React, { forwardRef, useCallback, useContext, useImperativeHandle } from 'react';
 import {
   ActivityIndicator,
   View,
@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import { Deck, getDeckId, Slots } from '@actions/types';
+import { Slots } from '@actions/types';
 import BasicListRow from '@components/core/BasicListRow';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import { NavigationProps } from '@components/nav/types';
@@ -19,10 +19,11 @@ import StyleContext from '@styles/StyleContext';
 import { useCounter, useSlots } from '@components/core/hooks';
 import DeckButton from './controls/DeckButton';
 import { SaveDeckUpgrade } from './useDeckUpgrade';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 interface DeckUpgradeProps extends NavigationProps{
   investigator: Card;
-  deck: Deck;
+  deck: LatestDeckT;
   startingXp?: number;
   campaignSection?: React.ReactNode;
   storyCounts: Slots;
@@ -66,7 +67,6 @@ function DeckUpgradeComponent({
   const onExileCountChange = useCallback((card: Card, count: number) => {
     updateExileCounts({ type: 'set-slot', code: card.code, value: count });
   }, [updateExileCounts]);
-  const deckId = useMemo(() => getDeckId(deck), [deck]);
   if (!deck) {
     return null;
   }
@@ -105,7 +105,7 @@ function DeckUpgradeComponent({
       </BasicListRow>
       <ExileCardSelectorComponent
         componentId={componentId}
-        id={deckId}
+        deck={deck}
         label={(
           <CardSectionHeader
             section={{ superTitle: t`Exiled cards` }}

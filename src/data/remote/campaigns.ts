@@ -1,7 +1,7 @@
 import { useCallback, useContext, useMemo } from 'react';
 import { filter, forEach, map, omit } from 'lodash';
 
-import { Campaign, CampaignDifficulty, CampaignGuideState, CampaignId, CampaignNotes, GuideAchievement, GuideInput, ScenarioResult, Trauma, TraumaAndCardData, UploadedCampaignId, WeaknessSet } from '@actions/types';
+import { Campaign, CampaignDifficulty, CampaignGuideState, CampaignNotes, GuideAchievement, GuideInput, ScenarioResult, Trauma, TraumaAndCardData, UploadedCampaignId, WeaknessSet } from '@actions/types';
 import { useModifyUserCache } from '@data/apollo/cache';
 import {
   useUploadNewCampaignMutation,
@@ -118,20 +118,30 @@ interface EditCampaignAccessData {
   action: 'grant' | 'revoke';
 }
 
+interface BasicResponse extends ErrorResponse {
+  success?: boolean;
+}
+
 export function useEditCampaignAccessRequest(): (
   campaignId: UploadedCampaignId,
   users: string[],
   action: 'grant' | 'revoke'
 ) => Promise<void> {
-  const apiCall = useFunction<EditCampaignAccessData, LinkCampaignResponse>('campaign-editAccessCampaign');
+  const apiCall = useFunction<EditCampaignAccessData, BasicResponse>('campaign-editAccess');
   return useCallback(async(
     campaignId: UploadedCampaignId,
     users: string[],
     action: 'grant' | 'revoke'
   ): Promise<void> => {
-    const data = await apiCall({ campaignId: campaignId.campaignId, serverId: campaignId.serverId, users, action });
-    if (data.error) {
-      throw new Error(data.error);
+    try {
+      const data = await apiCall({ campaignId: campaignId.campaignId, serverId: campaignId.serverId, users, action });
+      if (data.error) {
+        console.log(data.error)
+        throw new Error(data.error);
+      }
+    } catch (e) {
+      console.log(`Error with edit campaign access: ${e.message}`);
+      throw e;
     }
   }, [apiCall]);
 }

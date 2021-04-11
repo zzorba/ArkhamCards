@@ -19,7 +19,7 @@ import useNetworkStatus from '@components/core/useNetworkStatus';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import { saveNewDeck } from '@components/deck/actions';
 import { NavigationProps } from '@components/nav/types';
-import { CampaignId, Deck, DeckMeta, Slots } from '@actions/types';
+import { CampaignId, Deck, DeckMeta, getDeckId, Slots } from '@actions/types';
 import { CUSTOM_INVESTIGATOR, RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import Card from '@data/types/Card';
 import { AppState } from '@reducers';
@@ -208,8 +208,8 @@ function NewDeckOptionsDialog({
     setSaving(false);
     // Change the deck options for required cards, if present.
     onCreateDeck && onCreateDeck(deck);
-    showDeckModal(componentId, deck, campaignId, colors, investigator);
-  }, [componentId, campaignId, onCreateDeck, colors, investigator, setSaving]);
+    showDeckModal(getDeckId(deck), deck, campaignId, colors, investigator);
+  }, [campaignId, onCreateDeck, colors, investigator, setSaving]);
   const createDeck = useCallback((isRetry?: boolean) => {
     const deckName = deckNameChange || defaultDeckName;
     if (investigator && (!saving || isRetry)) {

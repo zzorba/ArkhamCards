@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { filter, flatMap, concat, sortBy, reverse } from 'lodash';
 
 import { getCampaigns, MyDecksState } from '@reducers';
-import { Campaign, CampaignId } from '@actions/types';
+import { Campaign, CampaignId, DeckId } from '@actions/types';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import Card, { CardsMap } from '@data/types/Card';
-import { useMyDecksRemote, useRemoteCampaigns, useCampaignGuideStateRemote, useLatestDeckRemote, useCampaignRemote } from '@data/remote/hooks';
+import { useMyDecksRemote, useRemoteCampaigns, useCampaignGuideStateRemote, useLatestDeckRemote, useCampaignRemote, useDeckFromRemote, useCampaignDeckFromRemote } from '@data/remote/hooks';
 import CampaignGuideStateT from './interfaces/CampaignGuideStateT';
-import { useCampaignFromRedux, useCampaignGuideFromRedux, useLatestDeckRedux, useMyDecksRedux } from './local/hooks';
+import { useCampaignFromRedux, useCampaignGuideFromRedux, useDeckFromRedux, useLatestDeckRedux, useMyDecksRedux } from './local/hooks';
 import LatestDeckT from './interfaces/LatestDeckT';
 import { refreshMyDecks } from '@actions';
 import { DeckActions } from './remote/decks';
@@ -71,6 +71,29 @@ export function useCampaignInvestigators(campaign: undefined | SingleCampaignT, 
     }
     return [flatMap(campaignInvestigators, i => investigators[i] || []), false];
   }, [campaignInvestigators, investigators]);
+}
+
+
+export function useCampaignDeck(id: DeckId | undefined, campaignId: CampaignId | undefined): LatestDeckT | undefined {
+  const reduxDeck = useDeckFromRedux(id, campaignId);
+  const remoteDeck = useCampaignDeckFromRemote(id, campaignId);
+  return useMemo(() => {
+    if (!campaignId?.serverId || reduxDeck) {
+      return reduxDeck;
+    }
+    return remoteDeck;
+  }, [remoteDeck, reduxDeck, campaignId]);
+}
+
+export function useDeck(id: DeckId | undefined, fetch?: boolean): LatestDeckT | undefined {
+  const reduxDeck = useDeckFromRedux(id);
+  const remoteDeck = useDeckFromRemote(id, fetch || false);
+  return useMemo(() => {
+    if (!id?.serverId || reduxDeck) {
+      return reduxDeck;
+    }
+    return remoteDeck;
+  }, [remoteDeck, reduxDeck, id]);
 }
 
 export function useMyDecks(deckActions: DeckActions): [MyDecksState, () => void] {

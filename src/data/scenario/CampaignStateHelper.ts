@@ -3,7 +3,6 @@ import { t } from 'ttag';
 import uuid from 'react-native-uuid';
 
 import {
-  Deck,
   GuideStartSideScenarioInput,
   GuideStartCustomSideScenarioInput,
   GuideInput,
@@ -21,7 +20,7 @@ import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 
 export interface CampaignGuideActions {
   showChooseDeck: (singleInvestigator?: Card, callback?: (code: string) => void) => void;
-  removeDeck: (deck: Deck) => void;
+  removeDeck: (deckId: DeckId, investigator: string) => void;
   removeInvestigator: (investigator: Card) => void;
   setDecision: (id: string, value: boolean, scenarioId?: string) => void;
   setCount: (id: string, value: number, scenarioId?: string) => void;
@@ -73,8 +72,8 @@ export default class CampaignStateHelper {
     this.actions.showChooseDeck(singleInvestigator, callback);
   }
 
-  removeDeck(deck: Deck) {
-    this.actions.removeDeck(deck);
+  removeDeck(deckId: DeckId, investigator: string) {
+    this.actions.removeDeck(deckId, investigator);
   }
 
   removeInvestigator(investigator: Card) {

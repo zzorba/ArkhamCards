@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { concat, filter, flatMap, flatten, keys, map, uniqBy, uniq, throttle } from 'lodash';
+import { concat, filter, flatMap, find, flatten, keys, map, uniqBy, uniq, throttle } from 'lodash';
 import {
   Keyboard,
   StyleSheet,
@@ -28,6 +28,7 @@ import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { useFlag, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 import { useCampaign } from '@data/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 export interface MyDecksSelectorProps {
   campaignId: CampaignId;
@@ -189,7 +190,7 @@ function MyDecksSelectorDialog(props: Props) {
       forDecks ? [(
         <View style={styles.row} key={0}>
           <Text style={[typography.small, styles.searchOption]}>
-            { t`Hide Decks From Other Campaigns` }
+            { t`Hide decks from other campaigns` }
           </Text>
           <ArkhamSwitch
             useGestureHandler
@@ -201,7 +202,7 @@ function MyDecksSelectorDialog(props: Props) {
       (!!campaign && !singleInvestigator && !simpleOptions) ? [(
         <View style={styles.row} key={1}>
           <Text style={[typography.small, styles.searchOption]}>
-            { t`Hide Killed and Insane Investigators` }
+            { t`Hide killed and insane investigators` }
           </Text>
           <ArkhamSwitch
             useGestureHandler
@@ -213,7 +214,7 @@ function MyDecksSelectorDialog(props: Props) {
       (!!campaign && !singleInvestigator && !simpleOptions) ? [(
         <View style={styles.row} key={2}>
           <Text style={[typography.small, styles.searchOption]}>
-            { t`Only Show Previous Campaign Members` }
+            { t`Only show previous campaign members` }
           </Text>
           <ArkhamSwitch
             useGestureHandler
@@ -240,17 +241,32 @@ function MyDecksSelectorDialog(props: Props) {
     );
   }, [componentId, props]);
 
+  const filterDeck = useCallback((deck: MiniDeckT): boolean => {
+    if (singleInvestigator && deck.investigator !== singleInvestigator) {
+      return false;
+    }
+
+    if (onlyShowSelected) {
+      return true;
+    }
+    if (hideOtherCampaignDecks && deck.campaign_id) {
+      return deck.campaign_id.campaignId === campaignId.campaignId;
+    }
+    if (find(filterInvestigators, deck.investigator)) {
+      return false;
+    }
+    return true;
+  }, [singleInvestigator, onlyShowSelected, filterInvestigators, hideOtherCampaignDecks, campaignId]);
+
   const deckTab = useMemo(() => (
     <DeckSelectorTab
       componentId={componentId}
       onDeckSelect={onDeckSelect}
       searchOptions={searchOptions(true)}
-      filterDeckIds={filterDeckIds}
       onlyDecks={onlyDecks}
-      filterInvestigators={filterInvestigators}
-      onlyInvestigators={onlyInvestigators}
+      filterDeck={filterDeck}
     />
-  ), [componentId, onDeckSelect, searchOptions, filterDeckIds, onlyDecks, filterInvestigators, onlyInvestigators]);
+  ), [componentId, onDeckSelect, searchOptions, filterDeck, onlyDecks]);
   const investigatorTab = useMemo(() => {
     if (!onInvestigatorSelect) {
       return null;

@@ -85,7 +85,6 @@ export default function DeckHistoryView({
         passProps: {
           id: parsedDeck.id,
           campaignId: campaign?.id,
-          isPrivate: true,
         },
         options: getDeckOptions(colors, { title: parsedDeck.deck.name }, parsedDeck.investigator),
       },
@@ -106,7 +105,6 @@ export default function DeckHistoryView({
           parsedDeck={deck}
           cards={cards}
           editable={false}
-          isPrivate
         />
       )) }
     </ScrollView>

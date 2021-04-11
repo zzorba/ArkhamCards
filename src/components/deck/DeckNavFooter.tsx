@@ -52,7 +52,7 @@ export default function DeckNavFooter({
   const { colors, shadow, typography } = useContext(StyleContext);
   const parsedDeckObj = useParsedDeck(deckId, componentId);
   const { showXpAdjustmentDialog, xpAdjustmentDialog } = useAdjustXpDialog(parsedDeckObj);
-  const { deck, parsedDeck, editable } = parsedDeckObj;
+  const { deck, parsedDeck, deckEdits } = parsedDeckObj;
   const { mode } = useDeckEditState(parsedDeckObj);
   const xpString = useMemo(() => {
     if (!parsedDeck) {
@@ -76,7 +76,7 @@ export default function DeckNavFooter({
   }, [parsedDeck]);
 
   const xpLine = useMemo(() => {
-    if (!editable || !deck || !deck.previousDeckId) {
+    if (!deckEdits?.editable || !deck || !deck.previousDeckId) {
       return (
         <Text style={[typography.button, typography.bold, typography.inverted]} allowFontScaling={false}>
           { xpString }
@@ -99,7 +99,7 @@ export default function DeckNavFooter({
         </View>
       </TouchableOpacity>
     );
-  }, [editable, xpString, deck, showXpAdjustmentDialog, typography, colors]);
+  }, [deckEdits, xpString, deck, showXpAdjustmentDialog, typography, colors]);
   if (mode === 'view' && !forceShow) {
     return null;
   }
