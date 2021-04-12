@@ -54,13 +54,7 @@ export default function CardDetailComponent({ componentId, card, width, showSpoi
     }
   }, [componentId]);
 
-  const shouldBlur = useMemo(() => {
-    if (showSpoilers) {
-      return false;
-    }
-    return card && card.mythos_card;
-  }, [showSpoilers, card]);
-
+  const shouldBlur = !showSpoilers && !!(card && card.mythos_card);
   const showInvestigatorCardsPressed = useCallback(() => {
     showInvestigatorCards && showInvestigatorCards(card.code);
   }, [card, showInvestigatorCards]);

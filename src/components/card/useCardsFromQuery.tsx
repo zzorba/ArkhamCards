@@ -16,11 +16,9 @@ interface Props {
 export default function useCardsFromQuery({ query, sort, tabooSetOverride }: Props): [Card[], boolean] {
   const tabooSetId = useTabooSetId(tabooSetOverride);
   const { db } = useContext(DatabaseContext);
-  const [cards, setCards] = useState<Card[] | undefined>();
+  const [cards, setCards] = useState<Card[] | undefined>(query ? [] : undefined);
   useEffect(() => {
-    if (!query) {
-      setCards([]);
-    } else {
+    if (query) {
       // setCards(undefined);
       db.getCards(query, tabooSetId, sort).then(cards => {
         setCards(filter(cards, card => !!card));

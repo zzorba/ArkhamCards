@@ -32,7 +32,7 @@ import CardFooterInfo from './CardFooterInfo';
 import CardFooterButton from './CardFooterButton';
 import ArkhamButton from '@components/core/ArkhamButton';
 import InvestigatorImage from '@components/core/InvestigatorImage';
-import { useFlag } from '@components/core/hooks';
+import { useFlag, useWhyDidYouUpdate } from '@components/core/hooks';
 
 const SKILL_ICON_SIZE = 24;
 const MAX_WIDTH = 768;
@@ -64,7 +64,9 @@ interface Props {
   width: number;
 }
 
-export default function TwoSidedCardComponent({ componentId, card, linked, notFirst, simple, width }: Props) {
+export default function TwoSidedCardComponent(props: Props) {
+  useWhyDidYouUpdate('TwoSidedCardComponent', props);
+  const { componentId, card, linked, notFirst, simple, width } = props;
   const { backgroundStyle, shadow, colors, typography } = useContext(StyleContext);
   const [showBack, toggleShowBack] = useFlag(false);
   const isHorizontal = card.type_code === 'act' ||

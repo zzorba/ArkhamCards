@@ -11,7 +11,6 @@ import android.content.Context;
 import java.util.List;
 
 import androidx.annotation.Nullable;
-import androidx.multidex.MultiDex;
 
 
 public class MainApplication extends NavigationApplication {
@@ -48,7 +47,6 @@ public class MainApplication extends NavigationApplication {
   @Override
   protected void attachBaseContext(Context context) {
     super.attachBaseContext(context);
-    MultiDex.install(this);
   }
 }
 

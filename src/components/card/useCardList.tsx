@@ -22,15 +22,17 @@ export default function useCardList(codes: string[], type: 'player' | 'encounter
   const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
   const [queryCards, queryCardsLoading] = useCardsFromQuery({ query, tabooSetOverride });
-  if (!codes.length) {
-    return [[], false];
-  }
-  if (type === 'player') {
-    if (!cards || !investigators) {
-      return [[], true];
+  return useMemo(() => {
+    if (!codes.length) {
+      return [[], false];
     }
-    const playerCards = flatMap(codes, code => cards[code] || investigators[code] || []);
-    return [playerCards, false];
-  }
-  return [queryCards, queryCardsLoading];
+    if (type === 'player') {
+      if (!cards || !investigators) {
+        return [[], true];
+      }
+      const playerCards = flatMap(codes, code => cards[code] || investigators[code] || []);
+      return [playerCards, false];
+    }
+    return [queryCards, queryCardsLoading];
+  }, [codes, type, cards, investigators, queryCards, queryCardsLoading]);
 }
