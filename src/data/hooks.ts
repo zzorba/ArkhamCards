@@ -21,15 +21,8 @@ export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => vo
   const campaigns = useSelector(getCampaigns);
   const [serverCampaigns, loading, refresh] = useRemoteCampaigns();
   const allCampaigns = useMemo(() => {
-    if (!user) {
-      return campaigns;
-    }
-    return sortBy(
-      concat(
-        campaigns,
-        serverCampaigns
-      ),
-      c => -c.updatedAt.getTime());
+    const toSort = user ? concat(campaigns, serverCampaigns) : campaigns;
+    return sortBy(toSort, c => -c.updatedAt.getTime());
   }, [campaigns, serverCampaigns, user]);
   return [allCampaigns, !!user && loading, refresh];
 }
