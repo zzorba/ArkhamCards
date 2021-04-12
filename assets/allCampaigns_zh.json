@@ -6678,7 +6678,7 @@
     },
     {
       "id": "check_ashleigh_clarke",
-      "text": "查看冒險日誌。<i>如果在“貴賓會談”下方記錄有阿什莉‧克拉克</i>：",
+      "text": "查看冒險日誌。<i>如果在“貴賓會談”下方記錄有阿什莉·克拉克</i>：",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -7165,7 +7165,7 @@
         "choices": [
           {
             "id": "ashleigh_killed",
-            "text": "阿什莉‧克拉克<i>(歌聲漸亡)</i>位於勝利牌區嗎？",
+            "text": "阿什莉·克拉克<i>(歌聲漸亡)</i>位於勝利牌區嗎？",
             "steps": [
               "kill_ashleigh"
             ]
@@ -7176,7 +7176,7 @@
     {
       "id": "kill_ashleigh",
       "bullet_type": "small",
-      "text": "在你的冒險日誌的“貴賓遇害”下方記錄<i>阿什莉‧克拉克</i>。",
+      "text": "在你的冒險日誌的“貴賓遇害”下方記錄<i>阿什莉·克拉克</i>。",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -11364,7 +11364,7 @@
         "name": "Intro 2"
       },
       "type": "story",
-      "text": "在接下來的幾天裡，你深入鑽研你所收集到的證據，希望能夠從中找出關於丹尼爾‧契斯特菲爾德的信息，他是《黃衣之王》早年演出的一名舞台工作人員。據你所知，他是那場演出的演職人員中唯一的倖存者。而其他的演職人員——所有能在記錄中找到的——在演出當晚之後不久便失蹤或死亡，他們的遇害形式各不相同，但卻都呈現出病態的異常。離奇事故、自殺身亡、憑空消失。\n如果要作進一步的調查，丹尼爾似乎是你唯一的線索了。根據你找到的記錄，他在很多年以前就被送進了阿卡姆瘋人院。在那之後，關於丹尼爾接受治療的文件再無下文。你不知道他現在是否還活著。可能他早已痊癒出院，如果真是這樣的話你的調查將難上加難，但要找到答案只得一種辦法。你收拾行囊，出發前往市中心的阿卡姆瘋人院。"
+      "text": "在接下來的幾天裡，你深入鑽研你所收集到的證據，希望能夠從中找出關於丹尼爾·契斯特菲爾德的信息，他是《黃衣之王》早年演出的一名舞台工作人員。據你所知，他是那場演出的演職人員中唯一的倖存者。而其他的演職人員——所有能在記錄中找到的——在演出當晚之後不久便失蹤或死亡，他們的遇害形式各不相同，但卻都呈現出病態的異常。離奇事故、自殺身亡、憑空消失。\n如果要作進一步的調查，丹尼爾似乎是你唯一的線索了。根據你找到的記錄，他在很多年以前就被送進了阿卡姆瘋人院。在那之後，關於丹尼爾接受治療的文件再無下文。你不知道他現在是否還活著。可能他早已痊癒出院，如果真是這樣的話你的調查將難上加難，但要找到答案只得一種辦法。你收拾行囊，出發前往市中心的阿卡姆瘋人院。"
     },
     {
       "id": "intro_3",
@@ -11373,11 +11373,11 @@
         "name": "Intro 3"
       },
       "type": "story",
-      "text": "當你步入瘋人院時，你停下腳步與接待員談話，但你感覺你的身體在驅使著你一步一步邁向瘋子的聚居地。你向接待員提到《黃衣之王》和丹尼爾時，他的臉龐上流露出困惑的表情。但是在你的堅持之下，他從檔案櫃裡一番好找，終於找出一個樣式簡陋的白色文件夾。裡面有著病人的許多資料——病例，精神評估報告等等。就在他翻頁時，你認出了幾張面孔。“丹尼爾……丹尼爾‧契斯特菲爾德，對嗎？他是在明茨醫生的特殊護理下收容入院的。但你不能見他；他當前的級別只允許醫院員工進行探視。”你與他爭辯起來，堅持要進入病房大樓，因為你堅信丹尼爾掌握著通向真相的門匙，找到他你才能明白這一切。\n接待員憐憫地笑笑，態度變得緩和，他向旁邊的警衛點了點頭。“噢，當然，當然，”他帶有街頭小販般懇切的口氣。“我會安排你與明茨醫生會面，到時你就可以問他有關丹尼爾的事情了。這幾位先生會領你進去的。”你馬上就會得到你所追尋的答案，不由得放下心來，在護送之下走進了阿卡姆瘋人院的病房大樓。"
+      "text": "當你步入瘋人院時，你停下腳步與接待員談話，但你感覺你的身體在驅使著你一步一步邁向瘋子的聚居地。你向接待員提到《黃衣之王》和丹尼爾時，他的臉龐上流露出困惑的表情。但是在你的堅持之下，他從檔案櫃裡一番好找，終於找出一個樣式簡陋的白色文件夾。裡面有著病人的許多資料——病例，精神評估報告等等。就在他翻頁時，你認出了幾張面孔。“丹尼爾……丹尼爾·契斯特菲爾德，對嗎？他是在明茨醫生的特殊護理下收容入院的。但你不能見他；他當前的級別只允許醫院員工進行探視。”你與他爭辯起來，堅持要進入病房大樓，因為你堅信丹尼爾掌握著通向真相的門匙，找到他你才能明白這一切。\n接待員憐憫地笑笑，態度變得緩和，他向旁邊的警衛點了點頭。“噢，當然，當然，”他帶有街頭小販般懇切的口氣。“我會安排你與明茨醫生會面，到時你就可以問他有關丹尼爾的事情了。這幾位先生會領你進去的。”你馬上就會得到你所追尋的答案，不由得放下心來，在護送之下走進了阿卡姆瘋人院的病房大樓。"
     },
     {
       "id": "check_constance_dumaine",
-      "text": "請查看冒險日誌。<i>如果在貴賓會談下方記錄有康斯坦絲‧杜梅因</i>：",
+      "text": "請查看冒險日誌。<i>如果在貴賓會談下方記錄有康斯坦絲·杜梅因</i>：",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -11434,7 +11434,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "將下列卡牌放在一邊，位於場外：丹尼爾‧契斯特菲爾德，以及所有的病人拘禁室。"
+      "text": "將下列卡牌放在一邊，位於場外：丹尼爾·契斯特菲爾德，以及所有的病人拘禁室。"
     },
     {
       "id": "setup_locations",
@@ -11815,7 +11815,7 @@
         "choices": [
           {
             "id": "constance_killed",
-            "text": "康斯坦絲‧杜梅因<i>(過度社交)</i>位於勝利牌區嗎？",
+            "text": "康斯坦絲·杜梅因<i>(過度社交)</i>位於勝利牌區嗎？",
             "steps": [
               "kill_constance"
             ]
@@ -11826,7 +11826,7 @@
     {
       "id": "kill_constance",
       "bullet_type": "small",
-      "text": "在你的冒險日誌的“貴賓遇害”下方記錄<i>康斯坦絲‧杜梅因</i>。",
+      "text": "在你的冒險日誌的“貴賓遇害”下方記錄<i>康斯坦絲·杜梅因</i>。",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -19830,7 +19830,7 @@
     },
     {
       "id": "check_ashleigh_clarke",
-      "text": "查看冒險日誌。<i>如果在“貴賓會談”下方記錄有阿什莉‧克拉克</i>：",
+      "text": "查看冒險日誌。<i>如果在“貴賓會談”下方記錄有阿什莉·克拉克</i>：",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -20299,7 +20299,7 @@
         "choices": [
           {
             "id": "ashleigh_killed",
-            "text": "阿什莉‧克拉克<i>(歌聲漸亡)</i>位於勝利牌區嗎？",
+            "text": "阿什莉·克拉克<i>(歌聲漸亡)</i>位於勝利牌區嗎？",
             "steps": [
               "kill_ashleigh"
             ]
@@ -20310,7 +20310,7 @@
     {
       "id": "kill_ashleigh",
       "bullet_type": "small",
-      "text": "在你的冒險日誌的“貴賓遇害”下方記錄<i>阿什莉‧克拉克</i>。",
+      "text": "在你的冒險日誌的“貴賓遇害”下方記錄<i>阿什莉·克拉克</i>。",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -23991,7 +23991,7 @@
         "name": "Intro 2"
       },
       "type": "story",
-      "text": "在接下來的幾天裡，你深入鑽研你所收集到的證據，希望能夠從中找出關於丹尼爾‧契斯特菲爾德的信息，他是《黃衣之王》早年演出的一名舞台工作人員。據你所知，他是那場演出的演職人員中唯一的倖存者。而其他的演職人員——所有能在記錄中找到的——在演出當晚之後不久便失蹤或死亡，他們的遇害形式各不相同，但卻都呈現出病態的異常。離奇事故、自殺身亡、憑空消失。\n如果要作進一步的調查，丹尼爾似乎是你唯一的線索了。根據你找到的記錄，他在很多年以前就被送進了阿卡姆瘋人院。在那之後，關於丹尼爾接受治療的文件再無下文。你不知道他現在是否還活著。可能他早已痊癒出院，如果真是這樣的話你的調查將難上加難，但要找到答案只得一種辦法。你收拾行囊，出發前往市中心的阿卡姆瘋人院。"
+      "text": "在接下來的幾天裡，你深入鑽研你所收集到的證據，希望能夠從中找出關於丹尼爾·契斯特菲爾德的信息，他是《黃衣之王》早年演出的一名舞台工作人員。據你所知，他是那場演出的演職人員中唯一的倖存者。而其他的演職人員——所有能在記錄中找到的——在演出當晚之後不久便失蹤或死亡，他們的遇害形式各不相同，但卻都呈現出病態的異常。離奇事故、自殺身亡、憑空消失。\n如果要作進一步的調查，丹尼爾似乎是你唯一的線索了。根據你找到的記錄，他在很多年以前就被送進了阿卡姆瘋人院。在那之後，關於丹尼爾接受治療的文件再無下文。你不知道他現在是否還活著。可能他早已痊癒出院，如果真是這樣的話你的調查將難上加難，但要找到答案只得一種辦法。你收拾行囊，出發前往市中心的阿卡姆瘋人院。"
     },
     {
       "id": "intro_3",
@@ -24000,11 +24000,11 @@
         "name": "Intro 3"
       },
       "type": "story",
-      "text": "當你步入瘋人院時，你停下腳步與接待員談話，但你感覺你的身體在驅使著你一步一步邁向瘋子的聚居地。你向接待員提到《黃衣之王》和丹尼爾時，他的臉龐上流露出困惑的表情。但是在你的堅持之下，他從檔案櫃裡一番好找，終於找出一個樣式簡陋的白色文件夾。裡面有著病人的許多資料——病例，精神評估報告等等。就在他翻頁時，你認出了幾張面孔。“丹尼爾……丹尼爾‧契斯特菲爾德，對嗎？他是在明茨醫生的特殊護理下收容入院的。但你不能見他；他當前的級別只允許醫院員工進行探視。”你與他爭辯起來，堅持要進入病房大樓，因為你堅信丹尼爾掌握著通向真相的門匙，找到他你才能明白這一切。\n接待員憐憫地笑笑，態度變得緩和，他向旁邊的警衛點了點頭。“噢，當然，當然，”他帶有街頭小販般懇切的口氣。“我會安排你與明茨醫生會面，到時你就可以問他有關丹尼爾的事情了。這幾位先生會領你進去的。”你馬上就會得到你所追尋的答案，不由得放下心來，在護送之下走進了阿卡姆瘋人院的病房大樓。"
+      "text": "當你步入瘋人院時，你停下腳步與接待員談話，但你感覺你的身體在驅使著你一步一步邁向瘋子的聚居地。你向接待員提到《黃衣之王》和丹尼爾時，他的臉龐上流露出困惑的表情。但是在你的堅持之下，他從檔案櫃裡一番好找，終於找出一個樣式簡陋的白色文件夾。裡面有著病人的許多資料——病例，精神評估報告等等。就在他翻頁時，你認出了幾張面孔。“丹尼爾……丹尼爾·契斯特菲爾德，對嗎？他是在明茨醫生的特殊護理下收容入院的。但你不能見他；他當前的級別只允許醫院員工進行探視。”你與他爭辯起來，堅持要進入病房大樓，因為你堅信丹尼爾掌握著通向真相的門匙，找到他你才能明白這一切。\n接待員憐憫地笑笑，態度變得緩和，他向旁邊的警衛點了點頭。“噢，當然，當然，”他帶有街頭小販般懇切的口氣。“我會安排你與明茨醫生會面，到時你就可以問他有關丹尼爾的事情了。這幾位先生會領你進去的。”你馬上就會得到你所追尋的答案，不由得放下心來，在護送之下走進了阿卡姆瘋人院的病房大樓。"
     },
     {
       "id": "check_constance_dumaine",
-      "text": "請查看冒險日誌。<i>如果在貴賓會談下方記錄有康斯坦絲‧杜梅因</i>：",
+      "text": "請查看冒險日誌。<i>如果在貴賓會談下方記錄有康斯坦絲·杜梅因</i>：",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -24417,7 +24417,7 @@
         "choices": [
           {
             "id": "constance_killed",
-            "text": "康斯坦絲‧杜梅因<i>(過度社交)</i>位於勝利牌區嗎？",
+            "text": "康斯坦絲·杜梅因<i>(過度社交)</i>位於勝利牌區嗎？",
             "steps": [
               "kill_constance"
             ]
@@ -24428,7 +24428,7 @@
     {
       "id": "kill_constance",
       "bullet_type": "small",
-      "text": "在你的冒險日誌的“貴賓遇害”下方記錄<i>康斯坦絲‧杜梅因</i>。",
+      "text": "在你的冒險日誌的“貴賓遇害”下方記錄<i>康斯坦絲·杜梅因</i>。",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -24757,8 +24757,8 @@
     {
       "id": "prologue",
       "type": "story",
-      "title": "Earth is Not Ours",
-      "text": "“Primal myth and modern delusion joined in their assumption that mankind is only one—perhaps the least—of the highly evolved and dominant races of this planet’s long and largely unknown career.” – H. P. Lovecraft, “The Shadow out of Time”"
+      "title": "地球並不屬於我們",
+      "text": "“原始神話與現今的幻象均反映出，人類在這顆星球漫長而充滿未知的道路中，可能只是高度進化且佔統領地位的種族中的一員——或許是其中最為渺小的。”——H. P. 洛夫克拉夫特《超越時空之影》"
     },
     {
       "id": "choose_investigators",
@@ -24771,25 +24771,25 @@
       "id": "supplies",
       "type": "rule_reminder",
       "title": "補給品",
-      "text": "At certain points throughout The Forgotten Age campaign, investigators are given the opportunity to choose supplies to bring on their expeditions into the wilds. These supplies are recorded in the Campaign Log, under each investigator’s “Supplies” section.\nSupplies are purchased with supply points, which are granted to investigators whenever they are given the opportunity to purchase supplies. Leftover supply points are not recorded, and are lost.\nAn investigator’s supplies will determine the possible options available during gameplay and throughout the story of this campaign. <b>Each supply has no effect on its own.</b> Some card effects, story options, and resolutions may change or become available depending on the supplies carried by the investigator(s)."
+      "text": "在《失落的時代》劇本的特定時間點，調查員能夠去選擇自己的補給品，在野外探險過程中隨身攜帶。這些補給品將被記錄在冒險日誌中每位調查員的“補給品”下方。\n補給品要用補給品點數來購買，調查員在能購買補給品時會獲得補給品點數。未使用的補給品點數均會失去，不作紀錄。\n每個調查員的補給品將決定遊戲過程和這個劇本中的劇情中可能出現的選項。<b>每個補給品本身沒有效果。</b>根據調查員所攜帶的補給品，可能改變或產生某些卡牌效果、劇情選項和結局。"
     },
     {
       "id": "vengeance",
       "type": "rule_reminder",
-      "title": "Vengeance X",
-      "text": "Some encounter cards are worth vengeance points. The text <b>Vengeance X</b> indicates that a card is worth X vengeance points.\nLike <b>Victory X</b>, when an encounter card with <b>Vengeance X</b> is overcome by the investigators, it is stored in the victory display until the end of the scenario. However, unlike victory points, vengeance represents the awareness and animosity of the Father of Serpents, and it is generally a good idea to avoid accruing vengeance points whenever possible.\nVengeance points in the victory display have no impact upon the game unless specifically referenced by another encounter card.",
+      "title": "復仇X",
+      "text": "某些遭遇卡會計復仇點數。<b>復仇X</b>字樣即表明該卡牌計X點復仇點數。\n與<b>勝利X</b>相似，在調查員解決帶有<b>復仇X</b>的遭遇卡時，將該卡牌放置到勝利牌區直到冒險結束。但與勝利點數不同的是，復仇點數表示萬蛇之父的警覺與敵意，最好盡可能地避免復仇點數的增長。\n勝利牌區內的復仇點數不影響遊戲，除非有另一張遭遇卡提到了這些復仇點數。",
       "bullets": [
         {
-          "text": "As an enemy with <b>Vengeance X</b> is defeated, place the card in the victory display instead of in the discard pile."
+          "text": "帶有<b>復仇X</b>關鍵詞的敵人被擊敗時，將其放到勝利牌區，而不是放入棄牌堆。"
         },
         {
-          "text": "At the end of a scenario, take each location with <b>Vengeance X</b> that is in play, revealed, and has no clues on it, and place it in the victory display."
+          "text": "當一場冒險結束時，從場上帶有<b>復仇X</b>關鍵詞的所有地點中，拿取已揭示且其上方沒有線索的地點，將這些地點放到勝利牌區。"
         },
         {
-          "text": "As a treachery card with <b>Vengeance X</b> completes its resolution, place it in the victory display instead of in the discard pile."
+          "text": "帶有<b>復仇X</b>關鍵詞的詭計卡結算完畢後，將其放置到勝利牌區，而不是放入棄牌堆。"
         },
         {
-          "text": "Cards worth vengeance points are not also worth victory points unless the card has both <b>Victory X</b> and <b>Vengeance X.</b>"
+          "text": "計復仇點數的卡牌如果既有<b>勝利X</b>又有<b>復仇X</b>，則該卡牌計復仇點數和勝利點數。"
         }
       ]
     },
@@ -24932,7 +24932,7 @@
       "id": "explore",
       "type": "rule_reminder",
       "title": "Explore",
-      "text": "Some abilities in this campaign are identified with an <b>Explore</b> action designator. Such abilities are generally used to find new locations to put into play, and are initiated using the “activate” action.\n<b>Explore</b> abilities instruct you to draw the top card of the “exploration deck,” which is a separate deck that is constructed during the setup of some scenarios. This deck consists of several single-sided locations and treachery cards.",
+      "text": "這個劇本中的某些能力帶有<b>探索</b>行動標識。此類能力通常會通過“啟動”行動發動，用於找出新的地點並將這一地點放置入場。\n<b>探索</b>能力會指示你抽取“探索牌堆”頂上的1張卡牌。探索牌堆是一個獨立的牌堆，在某些冒險的設置階段構成該牌堆，包含多張單面地點卡和詭計卡。",
       "bullets": [
         {
           "text": "Each <b>Explore</b> ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a “successful” exploration."
@@ -24944,7 +24944,7 @@
           "text": "If a treachery card is drawn, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. There is no discard pile for the exploration deck. This is considered an “unsuccessful” exploration."
         },
         {
-          "text": "As a single-sided location is put into play from the exploration deck, place clues on that location equal to its clue value."
+          "text": "單面地點從探索牌堆放置入場時，在該地點上放置線索，數量等於其線索值。"
         },
         {
           "text": "If an enemy is drawn from the exploration deck, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. This is considered an \"unsuccessful\" exploration."
@@ -24953,7 +24953,7 @@
           "text": "In some scenarios, there are additional changes to the explore rules. These changes are noted on the setup card for each scenario."
         }
       ],
-      "example": "<i>Example: Agenda 1a—“Expedition into the Wild” has the following ability: “[action]: <b>Explore.</b> Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Circuitous Trail. Because Circuitous Trail is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Low on Supplies treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Circuitous Trail that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Path of Thorns, which is connected to the Expedition Camp. Her exploration is successful. Path of Thorns is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Path of Thorns.</i>"
+      "example": "<i>範例：密謀1a—“荒野探險”有著以下能力：“[action]：<b>探索</b>。抽取探索牌堆頂上的1張卡牌。如果該卡牌是一個連接地點，放置入場並移動到該地點。”厄休拉·唐斯位於探險營地，希望找到並前往一個新的地點。她用自己的第一個行動來探索，抽取探索牌堆頂上的1張卡牌，抽出的卡牌是曲折小道。 因為曲折小道不與探險營地連接，將其放在探索牌堆旁邊，然後厄休拉從探索牌堆抽取下一張卡牌。這次她抽出了補給短缺詭計卡，如常結算並將該卡牌放到遭遇棄牌堆。她的探索失敗了，必須將先前抽出的曲折小道洗回探索牌堆。厄休拉決定用第二個行動來再次探索。這次她抽出了荊棘之路，這個地點與探險營地是連接的，探索成功。將荊棘之路放置入場，在該卡牌上方放置線索，數量等於其線索值，然後厄休拉立即從探險營地移動到荊棘之路。</i>"
     }
   ],
   "achievements": [
@@ -25126,8 +25126,8 @@
 },
 {
   "id": "tfa_interlude2",
-  "scenario_name": "Expedition's End",
-  "full_name": "Interlude II: Expedition's End",
+  "scenario_name": "探險結束",
+  "full_name": "幕間故事II：探險結束",
   "header": "幕間故事II",
   "type": "interlude",
   "icon": "expedition",
@@ -25184,7 +25184,7 @@
         "name": "Expedition's End 1"
       },
       "type": "story",
-      "text": "<right><fancy>Friday, July 17th, 1925</fancy></right>\nWe have finally made it back to Arkham, our expedition a “success.” Alejandro is excited to report his findings to the university. How he maintains his starry-eyed idealism after the hell we went through in the jungle is beyond me. His attention is fixated on the strange relic that we discovered in the ruins. I wish we knew a little more about the artifact’s origins. It unsettles me greatly. It hums at all times and pulses with an otherworldly energy I can scarcely describe. As we traveled home with the artifact in tow, our nights were plagued by bizarre nightmares: dreams of other worlds and civilizations.\nAlejandro wants to bring the relic to the Miskatonic Museum, to put on display along with the other Eztli artifacts we discovered. My feelings are mixed. At the museum, it will receive proper care, and historians will be able to study it and perhaps even discern its purpose. However, I fear that the relic may be too dangerous for the public. After all, we still have no idea what the damned thing even is. Alejandro would hate it, but perhaps it would be better to keep the relic somewhere safe, where Harlan and I can study it in private. I’ll have to decide tonight; after tomorrow, there won’t be time to change my mind..."
+      "text": "<right><fancy>1925年7月17日，星期五</fancy></right>\n我們終於成功回到了阿卡姆，這次探險“成功”了。亞歷山卓要向大學匯報自己的發現，他為此激動不已。我不理解他為什麼在經過叢林的遭遇之後，還能繼續滿懷熱誠、雙目放光地堅持自己的理想主義。他專注於我們從遺跡裡找到的那件古怪遺物，但願我們能對它的起源有多一些了解。它使我心神激盪，難以平靜。它一直嗡嗡作響，伴隨著我難以描述的超於現世的能量而搏動著。自從我們帶著這件遺物回來之後，每晚都被怪異的噩夢所折磨，我們在夢裡看到了其他的世界和文明。\n亞歷山卓要我將這件遺物帶回米斯卡塔尼克博物館，和我們發現的其他埃茲特里遺物一同展示。我百感交集。它會在博物館裡得到妥善的保管，可供歷史學家研究，甚至可能得知它的用途。但是，我擔心這件遺物公開展示可能過於危險。我們仍然不知道這該死的東西究竟是什麼。或許應該將這個遺物存放在安全的地方，以供我和哈倫私下對它研究，但我猜亞歷山卓不喜歡這樣。今晚我就得做決定；在明天之後，就沒時間改變主意了……"
     },
     {
       "id": "choose_where_relic_goes",
@@ -25195,7 +25195,7 @@
         "choices": [
           {
             "id": "museum",
-            "text": "<i>It belongs in a museum. Alejandro and the museum staff will be able to study it and learn more about its purpose.</i>",
+            "text": "<i>它屬於博物館。亞歷山卓和博物館的工作人員能夠研究它，並且深入了解它的用途。</i>",
             "steps": [
               "ee_2",
               "gave_relic_to_alejandro",
@@ -25207,7 +25207,7 @@
           },
           {
             "id": "hide",
-            "text": "<i>It is too dangerous to be on display. We should keep it hidden and safe until we know more about it.</i>",
+            "text": "<i>將它拿去展覽太危險了。在我們了解更多關於它的知識之前，它都應該被秘密地妥善保存起來。</i>",
             "steps": [
               "ee_3",
               "gave_relic_to_harlan",
@@ -25225,7 +25225,7 @@
         "name": "Expedition's End 2"
       },
       "type": "story",
-      "text": "<right><fancy>Sunday, July 19th, 1925</fancy></right>\nI’ve decided to give custody of the relic to Alejandro. This entire expedition was based on his research, after all—he should be the one to study it. If anyone can discover the relic’s secrets, it’s him.\nThe relic is to be the centerpiece of a new exhibit at the museum. Alejandro has already written extensively about our discoveries, but his work has only just begun. Many mysteries about our expedition remain. How have the Eztli people remained undiscovered for so long? Why did they appear to be guarding the jungle, and from what? Who really built the temple ruins we explored? I have no doubt Alejandro will uncover the answers to these questions, given enough time.\nAs for me, my role in this endeavor has ended. However, I have yet to relax. My thoughts are constantly in the jungle—serpentine figures in the shadows, obsidian arrows embedded in skeletal bodies, malformed voices shrieking in the cavernous depths. When I walk through the streets, I find myself drawn toward the museum without realizing it, as though possessed to see the relic once again. There is a nagging sensation in the back of my mind, as though we have forgotten something important. What must I do to rid myself of—\n(The journal entry ends abruptly.)"
+      "text": "<right><fancy>1925年7月19日，星期天</fancy></right>\n我決定將這件遺物交給亞歷山卓保管。說到底，這整場探險都是為他的研究服務的——應該由他來研究這東西。要是有人能夠發現這件遺物的秘密，那準是他。\n這件遺物將成為博物館新展覽的核心展品。亞歷山卓已經為我們的發現費了不少筆墨，但他的研究才剛剛開始。我們的探險之旅仍有不少未知之謎。埃茲特里人為什麼這麼久都未被發現？他們似乎在保衛叢林，是出於什麼目的？叢林又是為什麼需要保衛呢？我們探索的神廟遺跡到底是誰建造的？我相信如果時間足夠，亞歷山卓定能找出這些問題的答案。\n至於我，這件事我已經幫不上忙了。可是，我還是放鬆不下來。我的思緒始終停留在叢林裡——陰影中的蛇形生物、嵌入屍骨中的黑曜石箭枝，從洞穴深處傳來失真的尖叫聲。我走過一條條街道時，發現自己竟渾然不覺地向著博物館的方向走去，就像著了魔一樣想要再看那遺物一眼。我腦海中有種感覺揮之不去，似乎我們忘了某些重要的事情。我得讓自己擺脫那——\n(這篇日誌戛然而止。)"
     },
     {
       "id": "gave_relic_to_alejandro",
@@ -25234,7 +25234,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "gave_relic_to_alejandro",
-          "text": "the investigators gave custody of the relic to Alejandro."
+          "text": "調查員將遺物交給了亞歷山卓。"
         }
       ]
     },
@@ -25245,7 +25245,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "earned_alejandros_trust",
-          "text": "the investigators have earned Alejandro’s trust."
+          "text": "調查員贏得了亞歷山卓的信任。"
         }
       ]
     },
@@ -25268,7 +25268,7 @@
     },
     {
       "id": "earn_alejandro",
-      "text": "Any one investigator may choose to add Alejandro Vela to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "任何一位調查員可以選擇將亞歷山卓·維拉加入牌組。這張卡牌不計入該調查員的卡牌張數。",
       "effects": [
         {
           "type": "add_card",
@@ -25295,7 +25295,7 @@
         "name": "Expedition's End 3"
       },
       "type": "story",
-      "text": "<right><fancy>Sunday, July 19th, 1925</fancy></right>\nI’ve decided to keep the relic hidden for now. Alejandro is not happy with my decision, but until we know what the orb is capable of, it’s important that it stay somewhere safe, where it won’t endanger others. Harlan agrees with me, and has offered to take custody of the relic and keep it in his private office. There, we can study the artifact in secret.\nAlejandro is staying in Arkham for the time being, recording his notes about the expedition and helping the museum put together an exhibit displaying our other, less dangerous discoveries. As for me, I hope to find answers to other mysteries: How have the Eztli people remained undiscovered for so long? Why did they appear to be guarding the jungle, and from what? Who really built the temple ruins we explored?\nMy thoughts are constantly in the jungle—serpentine figures in the shadows, obsidian arrows embedded in skeletal bodies, malformed voices shrieking in the cavernous depths. Each time I leave Harlan’s office, I find myself longing to head back and gaze upon the relic once more. There is a nagging sensation in the back of my mind, as though we have forgotten something important. What must I do to rid myself of—\n(The journal entry ends abruptly.)"
+      "text": "<right><fancy>1925年7月19日，星期天</fancy></right>\n我決定暫時保管這件遺物。亞歷山卓對我的決定並不滿意，但是只要我們還不知道這個鋼球的作用，它就必須放在穩妥的地方，以免危及他人的安全。哈倫同意我的決定，提出由他來保管遺物，並存放到他的私人辦公室。我們就在那兒秘密研究這件遺物。\n亞歷山卓暫時住在阿卡姆，將本次探險的經歷作記錄，並幫助博物館將我們找到的危害性較低的其他遺物一同展出。至於我，我希望找到其他謎團的答案：埃茲特里人為什麼這麼久都未被發現？他們似乎在保衛叢林，是出於什麼目的？叢林又是為什麼需要保衛呢？我們探索的神廟遺跡到底是誰建造的？\n我的思緒始終停留在叢林裡——陰影中的蛇形生物、嵌入屍骨中的黑曜石箭枝，從洞穴深處傳來失真的尖叫聲。每當我走出哈倫的辦公室，我發覺自己想要立馬返回，繼續凝視著那件遺物。我腦海中有種感覺揮之不去，似乎我們忘了某些重要的事情。我得讓自己擺脫那——\n(這篇日誌戛然而止。)"
     },
     {
       "id": "gave_relic_to_harlan",
@@ -25304,19 +25304,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "gave_relic_to_harlan",
-          "text": "the investigators gave custody of the relic to Harlan Earnstone."
+          "text": "調查員將遺物交給了哈倫·恩斯通。"
         }
       ]
     },
     {
       "id": "alejandro_on_his_own",
-      "text": "In your Campaign Log, record that <i>Alejandro is continuing his research on his own</i>. If Alejandro Vela is currently in an investigator’s deck, remove him from that investigator’s deck.",
+      "text": "在冒險日誌中，記錄下<i>亞歷山卓繼續獨力研究</i>。如果亞歷山卓·維拉已在調查員的牌組中，將其移出該調查員的牌組。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "alejandro_on_his_own",
-          "text": "Alejandro is continuing his research on his own."
+          "text": "亞歷山卓繼續獨力研究。"
         },
         {
           "type": "remove_card",
@@ -25331,7 +25331,7 @@
         "name": "Expedition's End 4"
       },
       "type": "story",
-      "text": "You drop your pen as a loud knocking at the door startles you, and you jump to your feet. It is almost 2:30 in the morning. Who could possibly be at your door at this hour? Your thoughts wander again to the jungle, and you are faced with a vision of serpent-creatures attacking you in your own home. Shuddering, you find a weapon and approach the front door carefully, ready to strike if need be. You take a long breath and open the door.\nOn the other side is a familiar woman with brown skin, long brown hair, and piercing yellow eyes set in a hard glare. Though her attire has changed, you recognize her instantly as Ichtaca, the Eztli warrior you encountered in the rainforest. Wearing a long coat and a Bollman hat, she is visibly uncomfortable in her shoes. Her jaw is set in anger. You are about to raise your weapon in defense when she lets out a heavy sigh and walks slowly over the threshold of your home, shutting your front door behind her. “Whatever you did, you have to reverse it,” she intones darkly. “Or we will all cease to exist.”"
+      "text": "一陣響亮的敲門聲把你嚇了一跳，手裡的鋼筆都掉到了地上。這時臨近凌晨2:30。誰會在這個時間來敲你的門呢？你的思緒再次飄回了叢林，腦海中浮現了一個景象：蛇人來到你的家中攻擊你。你戰戰兢兢，找出一件武器並小心地走近前門，做好了攻擊的準備，以防萬一。你深吸一口氣，把門打開。\n門的另一邊是一位熟悉的女士，有著古銅色皮膚，棕色長捲髮，她一雙金色的明眸目光銳利，怒目圓睜。儘管她換了一身穿著，你還是立即認出了她——伊塔卡，你在叢林裡遇到的埃茲特里戰士。她穿著一件長大衣，戴著一頂博爾曼帽子，很顯然她穿著鞋子不太自在。她怒不可遏。你正準備舉起武器防禦的時候，她重重地嘆了一口氣，慢步走進你家並關上了前門。“不管你做了什麼，你必須得將它逆轉，”她用陰鬱的口吻說道，“否則我們都將不復存在。”"
     },
     {
       "id": "ee_5",
@@ -25340,7 +25340,7 @@
         "name": "Expedition's End 5"
       },
       "type": "story",
-      "text": "Harlan Earnstone paces across your living room, dabbing his wrinkled forehead with his handkerchief. “It’s my fault. I should never have encouraged them to go on that dreadful expedition.” Though your paths have only crossed a few times before, Mr. Earnstone has become a valuable contact of yours within Miskatonic University. When the University’s latest expedition returned with only a few survivors and a handful of strange, archaic artifacts, he came to you for advice.\n“I know, I know. I should at least take solace in the fact that the expedition was successful, despite its heavy losses. Alejandro was right all along. The Eztli people are real. And yet...I am concerned about some of these findings.” Harlan pulls a small leather-bound journal from his suitcase and hands it to you. “Before the expedition leader’s tragic death, the leader recorded many of the group’s discoveries in this journal. One of the surviving members of the expedition managed to grab it from the camp before fleeing the jungle. I think if you read these entries, you’ll understand what I mean. The things they experienced, the creatures they encountered...” Harlan shudders and adjusts his glasses with too-shaky hands. “I am concerned not only for Alejandro, but for all of us. Read this journal, and if you can, please keep an eye on my colleague.” You agree to help, but his worry does not fade. “I only hope that I am not damning you to a similar fate by asking for your aid.”\nYou spend the remainder of that night studying the expedition journal, your mind swimming with thoughts of strange serpent-creatures and Aztec warriors. Long after Harlan has left, a loud knocking at the door startles you, and you jump to your feet. It is almost 2:30 in the morning. Who could possibly be at your door at this hour? You open the front door warily. On the other side is a woman with brown skin, long brown hair, and piercing yellow eyes set in a hard glare. She wears a long coat and a Bollman-style hat, visibly uncomfortable in her shoes. Her jaw is set in anger. A sudden flash of insight crosses your mind, and you realize at once who she must be. After all, you’ve read and re-read the journal’s description of Ichtaca, the Eztli warrior. She lets out a heavy sigh and walks slowly over the threshold of your home, shutting your front door behind her. “Whatever they did, you have to reverse it,” she intones darkly. “Or we will all cease to exist.”"
+      "text": "哈倫·恩斯通走進了你的起居室，用他的手帕擦拭著滿佈皺紋的前額。“是我的錯。我不該鼓動他們參加這場凶險的探險。”儘管你們只有寥寥幾次交集，恩斯通先生已成為你在米斯卡塔尼克大學重要的聯絡人。最近這場探險只有幾人倖免於難，帶回了幾件怪異的古代遺物，所以他前來尋求你的建議。\n“我知道，我知道。這次探險儘管損傷慘重，但是成功了，這最終的結果至少可以讓我聊以自慰。亞歷山卓說的沒錯，埃茲特里人是真實存在的，而且存在至今……我擔心其中的一些發現會引起恐慌。哈倫從自己的手提箱裡拿出一本皮面的日誌，遞給你。“在探險隊隊長壯烈犧牲之前，他將隊伍的發現都記在了這本日誌裡。探險隊的其中一位倖存者趕在逃出叢林之前，從營地裡找出了這本日誌。我想，你要是讀了這些日誌，你會明白我的意思。他們的經歷，還有他們遭遇的那些生物……”哈倫渾身發抖，用顫抖的雙手扶著自己的眼鏡。“我擔心的不只是亞歷山卓一人，而是我們所有人。讀一讀這本日誌，還有，如果可以的話，請留心我的這位同事。”你答應幫他的忙，但他的憂慮並未消減。“我只希望我請你幫忙的這件事，不要害你遇上相同的命運。”\n在這晚接下來的時間裡，你都在研讀探險隊的日誌，你的思緒在古怪的蛇人和阿茲特克的戰士之間游移。哈倫離開之後過了很久，一陣響亮的敲門聲把你嚇了一跳。這時臨近凌晨2:30。誰會在這個時間來敲你的門呢？你謹慎地打開了前門。門的另一邊是一位女士，有著古銅色的皮膚，棕色長捲髮，她一雙金色的明眸目光銳利，怒目圓睜。她穿著一件長大衣，戴著一頂博爾曼帽子，很顯然她穿著鞋子不太自在。她怒不可遏。你的腦中突然靈光一閃，你馬上認出了她是誰。畢竟你把日誌裡對埃茲特里戰士伊塔卡的描述讀了一遍又一遍。她重重地嘆了一口氣，慢步走進你家並關上了前門。“不管他們做了什麼，你必須得將它逆轉，”她用陰鬱的口吻說道，“否則我們都將不復存在。”"
     }
   ]
 },
@@ -25856,7 +25856,7 @@
         "name": "Prologue"
       },
       "type": "story",
-      "text": "<right><fancy>Tuesday, June 2nd, 1925</fancy></right>\nThere will be no rest for us this summer, it seems.\nToday I met with Harlan Earnstone, a historical theorist at Miskatonic University and an old friend of mine. He’d said he had a job offer for me, but frankly, I didn’t know what to expect.\nHarlan introduced me to an associate of his: Alejandro Vela, a distinguished historian from across the southern border. Mr. Vela is a graduate of a prestigious university in Mexico City, and has spent many years researching the Aztec Empire. He claims that he has found evidence regarding the existence of an unheard-of Aztec city-state called Eztli. His strange and unprecedented findings were not accepted by the university, and he’s become a pariah among his peers.\nAlejandro came to Arkham to seek funding for an expedition into the rainforests of southern Mexico, where he believes that the ruins of the Eztli altepetl lie undiscovered. His description of this city-state’s origins defies modern understanding of Mesoamerican history. Despite this— or, knowing my old friend, because of this—Harlan is enthralled by Alejandro’s discoveries. Miskatonic University has agreed to fund the expedition (albeit meagerly), and Harlan wants me to go along.\nThe way I see it, there’s a good chance we’re looking for something that doesn’t even exist. But if there’s even a slight chance these Eztli people existed, the historical significance would be profound. We debated the issue for some time, but in the end, we accepted Alejandro’s offer. Preparations are underway, and we should be setting off by the end of the month. With any luck, we’ll have this journal filled with all manner of interesting discoveries. If not, perhaps it’ll be a nice wedge to place beneath Harlan’s lopsided desk."
+      "text": "<right><fancy>1925年6月2日，星期二</fancy></right>\n看來今年夏天我們沒工夫休息了。\n今天我去見我的老朋友，米斯卡塔尼克大學的歷史理論家哈倫·恩斯通。他說他有份差事給我，但老實說，我不知道他要介紹什麼差事給我。\n哈倫向我介紹了他的一位同事：亞歷山卓·維拉，一位來自南部邊境以外的著名歷史學家。維拉先生畢業於墨西哥城一所知名學府，他用了許多年來尋找阿茲特克王國。他聲稱找到了證據，能夠證明一個前所未聞的阿茲特克城邦——埃茲特里的存在。他古怪而空前的發現未被大學接受，還遭到了同行的唾棄。\n亞歷山卓來到阿卡姆尋求贊助，籌措前往墨西哥南部叢林探險的資金，他相信埃茲特里城邦的遺跡就在那兒，等待被發現。他對於那個城邦起源的描述，有悖於當代對中美洲歷史的理解。儘管如此，或者說，憑我對這位老友的瞭解，哈倫正因為這一點，才沉醉於亞歷山卓的發現。米斯卡塔尼克大學同意出資贊助這次探險(儘管金額不多)，哈倫希望我同行。\n在我看來，很有可能我們所尋找的東西根本就不存在。但若是埃茲特里人有存在的可能性，哪怕微乎其微，都具有深遠的歷史意義。我們為此事爭論了好一會，但最終我還是接受了亞歷山卓的邀請。準備工作緊密進行著，我們將在月底之前出發。如果運氣好的話，我們會讓這本日誌上寫滿各種有趣的發現。不然，這本日誌多半就只能被哈倫拿來墊桌腳了。"
     },
     {
       "id": "choose_investigators",
@@ -25867,12 +25867,12 @@
     },
     {
       "id": "expedition_leader",
-      "text": "If Ursula Downs, Leo Anderson, or Monterey Jack was chosen as an investigator for this campaign: Choose one of those investigators to be the expedition leader. That investigator begins Scenarios I and II as the lead investigator."
+      "text": "如果厄休拉·唐斯、里奧·安德森或蒙特雷·傑克作為調查員參與劇本：選擇他們之中的一位調查員擔任本次探險的隊長，在開始冒險I和冒險II時，由該調查員擔任調查隊隊長。"
     },
     {
       "id": "supplies",
       "type": "input",
-      "text": "As an outcast from academia, funding for Alejandro’s expedition is limited. Each investigator must choose supplies to bring for the expedition. In the Campaign Log, under each investigator’s “Supplies” section, record the supplies that investigator chose to bring. <i>(Note: Provisions and Medicine can be taken more than once by recording their name multiple times and spending the appropriate number of supply points each time.)</i>",
+      "text": "作為一個被驅逐出學術界的人，亞歷山卓的探險資金有限。每位調查員必須選擇本次探險所要攜帶的補給品。在冒險日誌中每位調查員的“補給品”下方，記錄下調查員選擇要攜帶的補給品。<i>(注意：配給和藥品可以多次拿取，如果多次拿取，則每次均需要記錄其名稱，並且花費對應的補給品點數。)</i>",
       "input": {
         "type": "supplies",
         "section": "supplies",
@@ -25886,69 +25886,69 @@
           {
             "id": "provisions",
             "name": "Provisions",
-            "description": "Food and water for one person. A must-have for any journey.",
+            "description": "一人份的乾糧和水。出行必備。",
             "cost": 1,
             "multiple": true
           },
           {
             "id": "medicine",
             "name": "Medicine",
-            "description": "To stave off disease, infection, or venom.",
+            "description": "治病，消除感染，解毒。",
             "cost": 2,
             "multiple": true
           },
           {
             "id": "rope",
-            "name": "Rope",
-            "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
+            "name": "繩索",
+            "description": "幾圈又長又結實的繩索，對於攀爬和岩洞探險來說至關重要。",
             "cost": 3
           },
           {
             "id": "blanket",
-            "name": "Blanket",
-            "description": "For warmth at night.",
+            "name": "毛毯",
+            "description": "好在夜裡保暖。",
             "cost": 2
           },
           {
             "id": "canteen",
             "name": "Canteen",
-            "description": "Can be refilled at streams and rivers.",
+            "description": "可以在小溪和河邊盛水。",
             "cost": 2
           },
           {
             "id": "torches",
-            "name": "Torches",
-            "description": "Can light up dark areas, or set sconces alight.",
+            "name": "火把",
+            "description": "可以照亮昏暗的區域，或點燃燭臺。",
             "cost": 3
           },
           {
             "id": "compass",
-            "name": "Compass",
-            "description": "Can guide you when you are hopelessly lost.",
+            "name": "指南針",
+            "description": "在你迷失方向而絕望時，它能夠指引你。",
             "cost": 2
           },
           {
             "id": "map",
             "name": "Map",
-            "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+            "description": "現在地圖上還沒作標記，但隨著時間推移，你或許能夠描繪出周邊的環境。",
             "cost": 3
           },
           {
             "id": "binoculars",
-            "name": "Binoculars",
-            "description": "To help you see faraway places.",
+            "name": "雙筒望遠鏡",
+            "description": "幫助你看到更遠的地方。",
             "cost": 2
           },
           {
             "id": "chalk",
-            "name": "Chalk",
-            "description": "For writing on rough stone surfaces.",
+            "name": "粉筆",
+            "description": "用來在粗糙的石面寫字。",
             "cost": 2
           },
           {
             "id": "pendant",
-            "name": "Pendant",
-            "description": "Useless, but fond memories bring comfort to travelers far from home.",
+            "name": "掛墜",
+            "description": "沒甚麼用，但美好的回憶能給遠離家鄉的遊子帶來安慰。",
             "cost": 1
           }
         ]
@@ -25959,7 +25959,7 @@
 {
   "id": "tfa_interlude1",
   "scenario_name": "不眠之夜",
-  "full_name": "Interlude I: Restless Nights",
+  "full_name": "幕間故事I：不眠之夜",
   "header": "幕間故事 I",
   "type": "interlude",
   "icon": "deadly_traps",
@@ -25975,7 +25975,7 @@
   "steps": [
     {
       "id": "prompt",
-      "text": "In order, read each of the following sections:"
+      "text": "按順序閱讀以下段落："
     },
     {
       "id": "check_blanket",
@@ -25984,17 +25984,17 @@
         "name": "Blanket Check"
       },
       "type": "branch",
-      "text": "Check your supplies to see which investigators have a blanket.",
+      "text": "查看你們的補給品，檢查那些調查員帶有毛毯。",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
         "investigator": "all",
         "id": "blanket",
-        "name": "Blanket",
+        "name": "毛毯",
         "options": [
           {
             "boolCondition": true,
-            "prompt": "Restful Sleep",
+            "prompt": "安穩入睡",
             "border": true,
             "effects": [
               {
@@ -26008,7 +26008,7 @@
           },
           {
             "boolCondition": false,
-            "prompt": "Tossing and Turning",
+            "prompt": "輾轉反側",
             "border": true,
             "effects": [
               {
@@ -26034,8 +26034,8 @@
         "name": "Tossing and Turning"
       },
       "type": "story",
-      "title": "Tossing and Turning",
-      "text": "Those nights in the jungle, I barely slept. A strange fog rolled through the camp each night, plunging the area in an intense and peculiar cold. My bedroll offered some protection against the elements, but we hadn’t been prepared for this unnatural weather. Flies and mosquitoes buzzed in my ears every time I began to drift off. Even when I finally slept, I would soon be startled awake by the crawling of an insect or lizard across my face. I wager I’ll get very little sleep on this journey..."
+      "title": "輾轉反側",
+      "text": "在叢林度過的每個夜晚，我都幾乎沒睡著過。一團古怪的霧氣每晚壟罩著營地，使這片區域陷入詭異的嚴寒。我的睡袋多少可以抵擋些嚴寒，但我們並未作準備對應這異常的氣候。每當我將要入睡時，蒼蠅和蚊子就在我的耳朵裡嗡嗡作響。就算我睡著了，也很快會因為昆蟲或蜥蜴在臉上爬來爬去而嚇醒。我敢打賭，我在這趟旅程中睡不了多少時間……"
     },
     {
       "id": "restful_sleep",
@@ -26043,9 +26043,9 @@
         "id": "the_forgotten_age.interlude_1.restful_sleep",
         "name": "Restful Sleep"
       },
-      "title": "Restful Sleep",
+      "title": "安穩入睡",
       "type": "story",
-      "text": "Mercifully, I was able to sleep through each night. However, while my body rested, my mind was plagued by nightmares. A cavern like a gaping maw, bathed in dim red light...the walls slithering with the glimmering scales of a hundred vipers...it might have been better had I not slept at all."
+      "text": "幸好，我每晚還能入睡。但是，在我的身體得到休息的同時，精神卻受著夢魘的折磨。我夢到身在昏暗的紅光之中，有一處血盆大口一般的洞穴……上百條毒蛇的鱗片在洞壁上閃爍著微光……我情願自己沒睡著。"
     },
     {
       "id": "no_ill_effects",
@@ -26057,7 +26057,7 @@
         "id": "the_forgotten_age.interlude_1.provisions_check",
         "name": "Provisions Check"
       },
-      "text": "Check your supplies. The investigators, as a group, must cross off one provisions per investigator from their supplies. For each provisions they cannot cross off, choose an investigator to read <b>Low on Rations</b>.",
+      "text": "查看你們的補給品。調查員以團隊為單位，必須從補給品中劃掉配給，劃掉的數量等於調查員人數。調查員每少劃掉一個配給，選擇一位調查員來閱讀<b>配給不足</b>。",
       "type": "input",
       "input": {
         "type": "use_supplies",
@@ -26092,7 +26092,7 @@
       },
       "type": "story",
       "title": "Low on Rations",
-      "text": "We thought we’d brought enough food and water for everybody, but the journey had taken its toll on our supplies. When the sun rose and it came time to eat, we discovered we were already running out of provisions."
+      "text": "我們原以為帶的食物和水足夠我們所有人享用，但這趟旅程耗盡了我們的物資。當太陽升起，到了進食的時間，我們發現自己的食物和水都已耗盡。"
     },
     {
       "id": "fewer_resources",
@@ -26104,18 +26104,18 @@
         "id": "the_forgotten_age.interlude_1.binoculars_check",
         "name": "Binoculars Check"
       },
-      "text": "The lead investigator must choose one investigator to be the group’s lookout. Then, that investigator checks their supplies to see if they have binoculars.",
+      "text": "調查員隊長必須選擇一位調查員來為隊伍放哨。然後，該調查員查看自己的補給品之中是否帶有雙筒望遠鏡。",
       "type": "input",
       "input": {
         "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
-        "name": "(has binoculars)",
+        "name": "(有雙筒望遠鏡)",
         "investigator": "choice",
-        "prompt": "Group's lookout",
+        "prompt": "團隊的放哨者",
         "positiveChoice": {
           "id": "positive",
-          "text": "Shapes in the Trees",
+          "text": "樹林中的身影",
           "border": true,
           "effects": [
             {
@@ -26134,7 +26134,7 @@
         },
         "negativeChoice": {
           "id": "eyes_in_the_dark",
-          "text": "Eyes in the Dark",
+          "text": "黑暗中的眼睛",
           "border": true,
           "effects": [
             {
@@ -26159,8 +26159,8 @@
         "name": "Eyes in the Dark"
       },
       "type": "story",
-      "title": "Eyes in the Dark",
-      "text": "Each night, I was watched. I didn’t just feel watched: I saw the eyes peering out from the inky darkness that surrounded our camp. They knew we were there. The yellow eyes watched me, alert, my weapons drawn, ready to defend the camp if the need arose. Our eyes met, and a darkness seized my heart."
+      "title": "黑暗中的眼睛",
+      "text": "每一個夜晚，我都受到監視。這並不是我的錯覺：我看見在營地的周圍，有許多雙眼睛從漆黑之中投來視線。它們知道我們在那裡。那些黃色的眼睛緊盯著我，我心生警惕，拔出自己的武器來準備保衛營地。就在目光相接之時，一片黑暗攫噬了我的心靈。"
     },
     {
       "id": "shapes_in_the_tress",
@@ -26169,12 +26169,12 @@
         "name": "Shapes in the Trees"
       },
       "type": "story",
-      "title": "Shapes in the Trees",
-      "text": "Most of the nights passed without incident, but on this night, I was startled by the rustling of tree branches along the southern border of our camp’s clearing. Despite the darkness, I was able to use my binoculars to see shapes moving in the trees. The shapes appeared human, but...why? Why do they only watch us from afar? What is their purpose?"
+      "title": "樹林中的身影",
+      "text": "大多數夜晚都無驚無險地度過了，但今晚，營地空地的南邊傳來枝葉的沙沙聲，把我嚇了一跳。儘管身處黑夜，我還是能用雙筒望遠鏡看到樹林中移動的身影。那些身影看起來像人類，但……為什麼？他們為什麼要從遠處監視我們，他們有何目的？"
     },
     {
       "id": "bonus_binoculars_xp",
-      "text": "You earn 2 additional experience as you gain further insight into the motivations of the Eztli."
+      "text": "你進一步了解埃茲特里人的動機，獲得2點額外的經驗點數。"
     },
     {
       "id": "use_medicine",
@@ -26244,7 +26244,7 @@
       },
       "type": "story",
       "title": "The Poison Spreads",
-      "text": "As the days went by, the poison continued to spread through my body. By the second night, my skin was drenched in sweat. I started having difficutly breathing, and I began every morning by retching up most of the previous night’s dinner."
+      "text": "隨著時間的流逝，毒性在我的體內持續擴散。到了第二晚，汗水浸濕了我的皮膚。我呼吸變得十分困難，每天早晨起來，我幾乎都要將前一晚的晚餐吐出來。"
     }
   ]
 },
@@ -26437,7 +26437,7 @@
     },
     {
       "id": "set_aside_poisoned",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "將不在調查員牌組中的所有中毒弱點卡放在一邊。"
     },
     {
       "id": "encounter_deck",
@@ -26538,7 +26538,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "有任何玩家獲得中毒弱點卡嗎？",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -26547,7 +26547,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "已中毒",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -26957,7 +26957,7 @@
     },
     {
       "id": "set_aside_poisoned",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "將不在調查員牌組中的所有中毒弱點卡放在一邊。"
     },
     {
       "id": "encounter_deck",
@@ -27003,14 +27003,14 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia:",
+        "text": "瓦盧西亞的預示者身上的傷害點數：",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
             "operation": "set_input",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "預示者還活著(#X#點傷害)。"
           }
         ]
       }
@@ -27018,10 +27018,10 @@
     {
       "id": "record_yigs_fury",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "勝利牌區每有1點復仇點數，在你冒險日誌的“伊格之怒”下方作一次記錄。",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "勝利牌區裡的復仇點數：",
         "delta": true,
         "effects": [
           {
@@ -27099,7 +27099,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "有任何玩家獲得中毒弱點卡嗎？",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -27108,7 +27108,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "已中毒",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -28356,7 +28356,7 @@
     },
     {
       "id": "set_aside_poisoned",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "將不在調查員牌組中的所有中毒弱點卡放在一邊。"
     },
     {
       "id": "encounter_deck",
@@ -28483,14 +28483,14 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia:",
+        "text": "瓦盧西亞的預示者身上的傷害點數：",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
             "operation": "set_input",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "預示者還活著(#X#點傷害)。"
           }
         ]
       }
@@ -28498,10 +28498,10 @@
     {
       "id": "record_yigs_fury",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "勝利牌區每有1點復仇點數，在你冒險日誌的“伊格之怒”下方作一次記錄。",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "勝利牌區裡的復仇點數：",
         "delta": true,
         "effects": [
           {
@@ -28530,7 +28530,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "有任何玩家獲得中毒弱點卡嗎？",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -28539,7 +28539,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "已中毒",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -29943,7 +29943,7 @@
     },
     {
       "id": "set_aside_poison",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "將不在調查員牌組中的所有中毒弱點卡放在一邊。"
     },
     {
       "id": "encounter_deck",
@@ -30174,14 +30174,14 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia:",
+        "text": "瓦盧西亞的預示者身上的傷害點數：",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
             "operation": "set_input",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "預示者還活著(#X#點傷害)。"
           }
         ]
       }
@@ -30189,10 +30189,10 @@
     {
       "id": "record_yigs_fury",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "勝利牌區每有1點復仇點數，在你冒險日誌的“伊格之怒”下方作一次記錄。",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "勝利牌區裡的復仇點數：",
         "delta": true,
         "effects": [
           {
@@ -30254,7 +30254,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "有任何玩家獲得中毒弱點卡嗎？",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -30263,7 +30263,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "已中毒",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -30327,7 +30327,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "rope",
-        "name": "Rope",
+        "name": "繩索",
         "prompt": "Use rope",
         "investigator": "choice",
         "min": 1,
@@ -30562,7 +30562,7 @@
         "name": "Intro 1"
       },
       "type": "story",
-      "text": "<right><fancy>Wednesday, July 8th, 1925</fancy></right>\nOur runners, José and Maria, returned several days later. They were fully stocked with food, water, aspirin, and weapons. I am curious how deep Alejandro’s connections are in Mexico. For an outcast historian, he was able to secure guns and ammunition faster than I had anticipated. But perhaps it is better if he keeps his sources undisclosed.\nWe ventured once more into the jungle. This time, we were prepared. We had learned from our previous excursion, and we made our way across the river canyon, venturing deeper south than we had dared before. Eventually we reached the ruins Alejandro sought, and soon we will enter what Alejandro believes is the main temple. Strangely, the serpent creatures we encountered earlier didn’t attack in force as we had feared. Could they have fled? Or are they simply lying in wait, preparing to ambush while we sleep at night?"
+      "text": "<right><fancy>1925年7月8日，星期三</fancy></right>\n派出去取補給品的何塞和瑪利亞在幾天後回來了。他們帶回了滿滿的食物、水、阿司匹林、武器。我很好奇亞歷山卓在墨西哥究竟有著多深厚的人脈關係。作為一個被學界驅逐的歷史學家，他搞到槍枝和彈藥的速度之快，超出了我的預期。不過，這些東西的來路，或許別人還是不知道為好。\n我們再次進入叢林探險。這一次，我們做足了準備，從上次經歷中汲取教訓，穿過河谷，向之前不敢進入的南部更深處進發。最終我們來到了亞歷山卓苦苦找尋的遺跡，馬上就要進入遺跡內部，亞歷山卓認為主神廟就在這裡。奇怪的是，我們害怕的事情並未發生，早前遇到的蛇人並未來襲。它們逃走了嗎？還是說它們只是在等待，準備在晚上我們睡下的時後發動突襲？"
     },
     {
       "id": "intro_2",
@@ -30571,15 +30571,15 @@
         "name": "Intro 2"
       },
       "type": "story",
-      "text": "<right><fancy>Friday, July 3rd, 1925</fancy></right>\nWe spent most of yesterday moving our camp to the edge of the ruins. With the serpentine creatures still guarding the region, we have decided that a small party will have the best chance of slipping into the main temple unnoticed. I told Maria, the expedition’s naturalist, to take one of the trucks and wait beyond the northern edge of the rainforest. Our cartographer, José, is guarding the camp until we return. We’re on our own, but at least we’ve cleared an escape route in the event things go sour..."
+      "text": "<right><fancy>1925年7月3日，星期五</fancy></right>\n我們昨天幾乎花了一整天來轉移營地，在遺跡邊上紮營。蛇人仍然保衛著這片區域，為了悄聲無息地潛入主神廟，我們決定派出一支精銳小隊。我告訴探險隊中的博物學家瑪利亞，要她開一輛卡車，到叢林北面的邊境之外等候。我們的製圖專家何塞則負責保衛營地，直到我們回來。我們只能靠自己，但以防情況變糟，我們還清出了一條逃生路線……"
     },
     {
       "id": "setup_locations",
-      "text": "Put the Entryway into play. Each investigator begins play in the Entryway."
+      "text": "將遺跡入口放置入場。每位調查員從遺跡入口開始遊戲。"
     },
     {
       "id": "set_aside_poisoned",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "將不在調查員牌組中的所有中毒弱點卡放在一邊。"
     },
     {
       "id": "encounter_deck",
@@ -30664,11 +30664,11 @@
     },
     {
       "id": "three_or_fewer_fury",
-      "text": "Check Campaign Log. Because there are three or fewer tally marks under “Yig’s Fury”"
+      "text": "查看冒險日誌。由於“伊格之怒”下方的記錄小於或等於3次："
     },
     {
       "id": "four_or_more_fury",
-      "text": "Check Campaign Log. Because there are four or more tally marks under “Yig’s Fury”"
+      "text": "查看冒險日誌。由於“伊格之怒”下方的記錄大於或等於4次："
     },
     {
       "id": "resolution_2",
@@ -30693,11 +30693,11 @@
     {
       "id": "yigs_fury_bad",
       "type": "story",
-      "text": "The creatures are upon you before you have time to react. You scream in agony as you are skewered by razor-sharp spears."
+      "text": "你還沒來的及反應，這些生物就朝你撲了過來，你被剃刀般鋒利的長矛刺穿，痛叫出聲。"
     },
     {
       "id": "defeated_investigators_killed",
-      "text": "Each investigator who was defeated is <b>killed</b>. (If there are not enough investigators to continue the campaign, the campaign is over and the players lose.)",
+      "text": "被擊敗的調查員<b>陣亡</b>。(如果沒有足夠的調查員繼續遊戲，那麼這個劇本結束並且玩家失敗。)",
       "effects": [
         {
           "type": "trauma",
@@ -30709,11 +30709,11 @@
     {
       "id": "yigs_fury_okay",
       "type": "story",
-      "text": "Suddenly, a distant voice hisses to the others, and the serpents tentatively retreat into the darkness. You run for your life, not taking any chances."
+      "text": "突然間，一道遙遠的聲音對這群生物嘶嘶低語，蛇群暫時退回黑暗之中。你捨命狂奔，不願再以身犯險。"
     },
     {
       "id": "mark_3_yigs_fury",
-      "text": "Record three tally marks under “Yig’s Fury.”",
+      "text": "在“伊格之怒”下方作3次記錄。",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -30732,14 +30732,14 @@
         "choices": [
           {
             "id": "go_back_in",
-            "text": "<i>“We can’t stop now—we have to go back inside!”</i>",
+            "text": "<i>“我們不能在這裡停下——我們必須回到神廟裡去！”</i>",
             "steps": [
               "resolution_4"
             ]
           },
           {
             "id": "destroy",
-            "text": "<i>“It’s too dangerous. This place must be destroyed.”</i>",
+            "text": "<i>“太危險了。必須把這個地方毀掉。”</i>",
             "steps": [
               "resolution_5"
             ]
@@ -30749,13 +30749,13 @@
     },
     {
       "id": "investigators_recovered_relic",
-      "text": "In your Campaign Log, record that <i>the investigators recovered the Relic of Ages</i>. One investigator must add the Relic of Ages to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "在冒險日誌中，記錄下<i>調查員找到了古代遺物</i>。一位調查員必須將古代遺物加入其牌組。這張卡牌不計入該調查員的卡牌張數。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "investigators_recovered_relic",
-          "text": "the investigators recovered the Relic of Ages."
+          "text": "調查員找到了古代遺物。"
         },
         {
           "type": "add_card",
@@ -30772,7 +30772,7 @@
         "choices": [
           {
             "id": "harbinger_alive",
-            "text": "Is the Harbinger of Valusia still in play or set aside?",
+            "text": "瓦盧西亞的預示者是否仍在場上或被放在一邊？",
             "steps": [
               "record_harbinger"
             ]
@@ -30782,18 +30782,18 @@
     },
     {
       "id": "record_harbinger",
-      "text": "Record in your Campaign Log that <i>the Harbinger is still alive</i>. Next to this, in parentheses, record how much damage is on the Harbinger of Valusia.",
+      "text": "在冒險日誌中，記錄下<i>預示者還活著</i>。在這句話旁邊，將瓦盧西亞的預示者身上的傷害點數記在括號裡。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia:",
+        "text": "瓦盧西亞的預示者身上的傷害點數：",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
             "operation": "set_input",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "預示者還活著(#X#點傷害)。"
           }
         ]
       }
@@ -30801,10 +30801,10 @@
     {
       "id": "record_yigs_fury",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "勝利牌區每有1點復仇點數，在你冒險日誌的“伊格之怒”下方作一次記錄。",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "勝利牌區裡的復仇點數：",
         "delta": true,
         "effects": [
           {
@@ -30818,11 +30818,11 @@
     {
       "id": "record_yigs_fury_plus_10",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "勝利牌區每有1點復仇點數，在你冒險日誌的“伊格之怒”下方作一次記錄。",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
-        "confirm_text": "Record an additional ten tally marks, as you have angered Yig with your foolish actions.",
+        "text": "勝利牌區裡的復仇點數：",
+        "confirm_text": "額外作10次記錄，你們愚蠢的行為觸怒了伊格。",
         "delta": true,
         "effects": [
           {
@@ -30846,17 +30846,17 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "alejandro_recovered_relic",
-          "text": "Alejandro recovered the Relic of Ages."
+          "text": "亞歷山卓找到了古代遺物。"
         }
       ]
     },
     {
       "id": "choose_new_investigators",
-      "text": "Any player whose investigator was killed or driven insane must choose a new investigator to play, as normal."
+      "text": "任何玩家的調查員如已陣亡或發瘋，則他必須如常選擇一位新的調查員入場。"
     },
     {
       "id": "extra_doom_on_entryway",
-      "text": "During setup, when the Entryway is put into play, place one doom on it for each time this resolution has been reached."
+      "text": "在設置期間，在遺跡入口被放置入場時，每達成此結局一次，即在該地點上放置1個毀滅標記。"
     },
     {
       "id": "earn_xp",
@@ -30875,7 +30875,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "有任何玩家獲得中毒弱點卡嗎？",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -30884,7 +30884,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "已中毒",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -31040,7 +31040,7 @@
         "name": "Investigator Defeat"
       },
       "title": "調查員被擊敗",
-      "text": "The temple shakes with the ferocity of an earthquake, causing you to collapse to the ground. Serpent creatures emerge from the shadows around you, surrounding you completely. The thought, “This is how it ends,” flashes through your mind. For a moment, you contemplate the absurdity of your death. You can only hope that nobody else will be foolish enough to try to explore these forsaken ruins.",
+      "text": "神廟在猛烈的地震中劇烈搖晃，你倒了在地上。成群的蛇人從周圍的陰影中驟現，將你團團圍住。你的腦海中閃過一個念頭——“完了”，在這一刻，你想到自己竟然死得這麼荒唐。你只能希望，不會再有人犯傻，試圖探索這些失落的遺跡。",
       "steps": [
         "check_yigs_fury"
       ]
@@ -31057,7 +31057,7 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution was reached\n(each investigator resigned before act 3)",
+      "title": "未達成任何結局\n(所有調查員在場景3前均已撤退)",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -31075,7 +31075,7 @@
         "name": "Resolution 1"
       },
       "title": "結局1",
-      "text": "(The following is scrawled below the previous journal entry.)\nThe outside of the temple ruins appeared Aztec in origin, but once we breached the interior, it became clear that these buildings had a very different and inhuman origin. The ruins were alive. The grooves in the walls were illuminated as though powered by electricity, and a faint hum of energy reverberated throughout the halls. In spite of the serpent creatures, we were able to reach a hidden passage that led deeper underground.\nIn the central chamber of these underground halls, we found our prize: a steel orb of unknown origin, gently humming and glowing with a dim blue light. It was attached delicately to a bronze frame, appearing almost religious in its significance, and we knew it could not have been made by the Aztecs.\nWith the artifact in tow, we fled the ruins. The building had started to crumble around us, as though the orb was the only thing keeping it standing. Had it been powering the ruins, like a battery? What exactly was this device that the serpents guarded so fervently?\nMaria was waiting for us with the trucks when we finally reached the northern edge of the rainforest. We’re getting the hell out of this serpent-infested jungle while we still can.",
+      "text": "(以下是潦草地記在先前的日誌裡的內容。)\n神廟遺跡外部看起來像是阿茲特克風格，但當我們進入建築內部時，我們發現這些建築的起源顯然不同於阿茲特克，而是起源於非人種族。這些遺跡還“活”著。如同電力驅動一般，牆壁上的凹槽發出光芒，一陣低沉的能量嗡嗡聲在各個廳室中迴盪。儘管蛇人百般阻撓，我們還是開啟了一條秘密通道，通向更深的地下。\n在諸多地下廳室的中央石室裡，我們找到了自己的戰利品：一個發出輕微的嗡嗡聲、包裹在暗淡藍光中的神祕鋼球。這個球被精心嵌入一個青銅支架裡面，似乎具有宗教意義，我們認為它不可能是阿茲特克人所製。\n我們帶著遺物逃出了遺跡。這座建築開始劇震，彷彿它是依靠這個球才得以維持存在的。是這個球在為遺跡供能嗎，像電池一樣？得到眾蛇保護的這件遺物究竟是什麼？\n我們終於到達了叢林北部邊境，瑪利亞和卡車就在這等著我們。趁還來得及，我們得抓緊逃出這片蛇群出沒的叢林。",
       "steps": [
         "investigators_recovered_relic",
         "check_harbinger",
@@ -31091,7 +31091,7 @@
         "name": "Resolution 2"
       },
       "title": "結局2",
-      "text": "(The following is scrawled below the previous journal entry.)\nIt is not in my nature to leave a thing unfinished. For the sake of my fallen comrades, I have taken it upon myself to record the remainder of our expedition in this journal.\nThe others never made it out of the temple. I convinced two of the other members of the expedition, José and Andrea, to venture in after the others...But now I fear a terrible fate has befallen them, as well.\nThankfully, my gambit was worthwhile. While José and Andrea searched for the others, I snuck into the temple and took a different route. Having seen what we have seen, knowing what we know now, I couldn’t have returned to the university without evidence of our discovery. While the serpent creatures were distracted, I was able to reach a hidden passageway that led deeper underground.\nIn the central chamber of these underground halls, I found the device. The orb was made of an unnatural steel, attached delicately to its bronze frame. It pulsed with power in my hands and glowed with a dim blue light. Any fool could tell that it was not made by the Aztecs, but the other members of the expedition could not even begin to understand its true significance. The ruins started to crumble around me as I left, but it mattered not. The relic was all that mattered now.\nWith the artifact in tow, I returned to camp and told the others it was time to depart. Maria was waiting for us with the trucks when we finally reached the northern edge of the jungle. Now we are headed to Texas, where we will cross the border into the United States.\nIt is a shame what happened to the others. Their sacrifice will not be in vain. Now, my work can continue.\n– Alejandro Vela",
+      "text": "(以下是潦草地記在先前的日誌裡的內容。)\n半途而廢不是我的作風。為了我死去的同伴，我決定自己在這本日誌上記錄接下來的探險。\n其他人沒能活著逃出神殿。我說服了探險隊的另外兩名成員，何塞和安德里亞。讓他們進去尋找其他人……但我擔心他們也遭逢了同樣的厄運。\n謝天謝地，我的策略奏效了。當何塞和安德里亞搜尋他人時，我偷偷溜進神廟，沿著另一條路線走。我親眼目睹，知道了那些事情，現在必須找到證據以作證明，才能返回大學。趁著蛇人在注意別處之際，我來到了一條秘密通道，通往更深的地下。\n在諸多地下廳室的中央石室裡，我找到了一件遺物。這個球體是由非天然的鋼鐵製成，精巧地安裝在青銅支架上。它在我手中有力地搏動，發出暗淡的藍色光芒。傻子都知道它不是阿茲特克人製造出來的，但探險隊的其他隊員還不了解它真正的意義。在我離開的時候，我周圍的遺跡開始晃動，但這不打緊，那個遺物是現在唯一要緊的東西。\n我拖著這個遺物返回了營地，讓其他隊員立刻撤離。我們終於到達了叢林北部邊境，瑪利亞和卡車就在這等著我們。現在我們得穿過邊境進入美國，前往德克薩斯州。\n很遺憾在別的隊員身上發生了這樣的事。他們不會白白犧牲的。現在，我可以繼續研究了。\n——亞歷山卓·維拉",
       "steps": [
         "alejandro_recovered_relic",
         "check_harbinger",
@@ -31107,7 +31107,7 @@
         "name": "Resolution 3"
       },
       "title": "結局3",
-      "text": "(The following is scrawled below the previous journal entry.)\nThis was a mistake. This was all a terrible mistake. We escaped the temple with our lives, but not a moment too soon. The ruins were alive. It was as though the walls knew of our intrusion, hated us for our presence. Wanted us out. Wanted us dead.\nWe have gathered outside the temple where José is waiting for us. Alejandro, unwilling to return home empty-handed, wants us to go back inside. We must decide what to do next.",
+      "text": "(以下是潦草地記在先前的日誌裡的內容。)\n那是個錯誤，那完全就是個可怕的錯誤。我們活著逃出了神廟，沒有一秒餘裕。這些遺跡還“活”著。牆壁彷彿知道我們入侵此地，對我們的存在深惡痛絕，要我們滾，要置我們於死地。\n我們在神廟外集合，而何塞就在這兒等待我們。亞歷山卓不希望空手而回，想要我們回到神廟裡去。我們得決定接下來要做什麼。",
       "steps": [
         "choose_to_continue"
       ]
@@ -31119,7 +31119,7 @@
         "name": "Resolution 4"
       },
       "title": "結局4",
-      "text": "(The following is scrawled below the previous journal entry.)\nWe’ve made our decision. Alejandro is right: we’ve come too far to back down now. Our plan is to regroup and head back into the temple once more. Even from here, we can tell that the layout of the temple has warped and changed. The ruins seem to have reset to their dormant state. With any luck, we’ll make it out this time...",
+      "text": "(以下是潦草地記在先前的日誌裡的內容。)\n我們做出了決定。亞歷山卓說得對：我們不能半途放棄，我們得重組隊伍，再次回到神廟裡去。即使從這兒看，我們也能明顯看出神廟發生了扭曲和變化。這些遺跡似乎重新進入了休眠狀態。如果幸運的話，我們這次會成功的……",
       "steps": [
         "replay_scenario",
         "choose_new_investigators",
@@ -31134,7 +31134,7 @@
         "name": "Resolution 5"
       },
       "title": "結局5",
-      "text": "(The following is scrawled below the previous journal entry.)\nWe made our decision. There was no way we were going back into that deathtrap. Thankfully, there was another way. José had brought some TNT from the trucks, and there was more than enough to level the damned place.\nThat night, we put on a hell of a fireworks show. The jungle protested. Birds scattered into the sky, the ground rumbled, and hateful snarls surrounded our camp. But the dynamite did its job. Once the dust settled, we began sifting through the debris in search of anything with historical or cultural significance we could bring back to Arkham.\nJosé was the first to notice the blue light peeking out from underneath the remains of the temple. The rays grew in intensity with each passing moment. As we started clearing the rubble in order to discover the source of the light, there was a sudden flash, and the debris at the center of the ruins scattered. A steel orb of unknown origin lay on top of the rubble, gently humming. It was attached delicately to a bronze frame, appearing almost religious in its significance. The blue glow emanating from the device dimmed as I touched it. There was no way a device like this was built by the Aztecs.\nWith the artifact in tow, we left the smoldering temple behind us. We had outstayed our welcome in this rainforest, and we knew it. Around us, the jungle hissed. The ground slithered and crawled with snakes. In the darkness, we heard shouts in a language we could not understand. There was no time to pack up camp; we ran as soon as we had the chance. Andrea was struck in her throat by a black-feathered arrow, her startled scream captured in grim perpetuity. José was grabbed by a giant boa as we fled north into the river canyon. His neck snapped before we could reach him.\nMaria was waiting for us with the trucks when we finally reached the northern edge of the jungle. We didn’t stop until we crossed into Mexico City. Even now I do not feel safe: who could, after seeing what we have seen?\nTo hell with the Eztli and to hell with this forsaken place.",
+      "text": "(以下是潦草地記在先前的日誌裡的內容。)\n我們做出了決定。我們不能回去那座危險的建築中。值得慶幸的是，還有另一種辦法。何塞從卡車裡拿出了一些TNT炸藥，足夠將這個該死的地方夷為平地。\n當天夜裡，我們簡直是搞了一場煙火秀。叢林對此舉十分抗拒，鳥群受驚飛向天空，地面震動不已，我們的營地周圍充斥著憤恨的嚎叫。但炸藥發揮了效用，將建築炸毀。當塵埃落定，我們開始在廢墟中搜，找具有歷史或文化意義的東西，好像我們帶回阿卡姆。\n何塞最先發現了神廟殘垣下發出的藍色光芒。光芒隨著時間流逝而愈發強烈。當我們開始清理碎石，以便找到光芒的來源時，突然一道閃光，遺跡中央的廢墟四散開來。一個來歷不明的鋼球位於碎石堆頂上，發出輕微的嗡嗡聲。這個球被精心嵌入一個青銅支架裡面，似乎具有宗教意義。當我觸碰它的時候，從這件遺物中發出了暗淡的藍色光芒。這樣的遺物不可能是阿茲特克人製造出來的。\n我們拖著這個遺物逃出了遺跡，將還冒著青煙的神廟拋在身後。我們在叢林已逗留太久，我們自己也清楚地知道這一點。在我們周圍，整個叢林充斥著嘶嘶聲，地面上爬滿了蜿蜒的蛇群。在黑暗之中，我們聽到一種無法理解的語言在此起彼伏地吼叫著。沒時間收拾營地了；我們得抓緊時間逃跑。安德里亞的喉嚨被一根黑羽箭刺中，她驚恐的尖叫永遠被扼在喉嚨裡，叫不出聲。在我們一路向北，逃到河谷時，何塞被一條巨蟒緊緊纏住。我們還沒來得及施以援手，他的脖子就被折斷了。\n我們終於到達了叢林北部邊境，瑪利亞和卡車就在這等著我們。我們到了墨西哥城之後，才停下了腳步。至今我仍沒有安全感：在親眼目睹那一切之後，我們還能重獲安全感嗎？\n讓埃茲特里和這個被遺忘的地方都見鬼去吧。",
       "steps": [
         "investigators_recovered_relic",
         "check_harbinger",
@@ -31168,11 +31168,11 @@
         "name": "Prologue"
       },
       "type": "story",
-      "text": "<right><fancy>Sunday, June 28th, 1925</fancy></right>\nIt’s been a hell of a day. We’ve just set up camp along the northern border of the rainforest where Alejandro believes the Eztli once dwelled. The jungle here is dense and untamed. The sky hides above the tree cover, but I can tell from the crisp breeze that storm clouds are brewing overhead.\nThe dangers of our expedition have been explained to us many times. We are hundreds of miles away from any sign of civilization. Nobody in modern times has yet to pierce the heart of these wilds. Until now, nobody has had reason to try. After all, it wouldn’t make sense to find Aztec ruins in this region of Mexico. And yet, here we are: looking for ruins that may not exist in a place where, by all accounts, they should not.\nAlready one of our surveyors has fallen ill, and another has been bitten by a viper. I’m starting to think the rainforest doesn’t want us here. If this luck persists, ours will be the shortest expedition in Miskatonic University’s history. Tonight, we rest. Tomorrow, we venture into uncharted wilds."
+      "text": "<right><fancy>1925年6月28日，星期天</fancy></right>\n今天真是糟透了。我們剛剛才在叢林南部邊境紮好營，這兒就是亞歷山卓深信埃茲特里曾經存在的地方。這片叢林生長茂密，充滿野性。樹冠遮蓋了天空，但從這清爽的微風看來，我敢肯定頭上正積聚著烏雲。\n我們曾多次被告知本次探險的危險性。這裡遠離文明的跡象已有幾百英里，當代還沒人踏入過這片狂野之地的腹地。直至現在，也沒有人有理由去作這一嘗試。畢竟，墨西哥的這個區域根本不應該存在阿茲特克遺跡。但現在我們到此尋找遺跡，儘管大家都說它不可能存在於此。\n我們的一位測量員已疾病纏身，而另一位則被毒蛇咬傷。我不禁覺得，叢林不希望我們在此出現。要是運氣一直這麼糟，我們這次探險恐怕要成米斯卡塔尼克大學史上最短的探險了。今晚我們先作休整，明天便要步入這片神秘的野地探險了。"
     },
     {
       "id": "setup_locations",
-      "text": "Put the Expedition Camp into play. Each investigator begins play at the Expedition Camp."
+      "text": "將探險營地放置入場。每位調查員從探險營地開始遊戲。"
     },
     {
       "id": "set_aside_cards",
@@ -31181,7 +31181,7 @@
       "encounter_sets": [
         "agents_of_yig"
       ],
-      "text": "Set the following cards aside, out of play: The three single-sided [[Ruins]] locations, the <i>Agents of Yig</i> encounter set, the four Poisoned weaknesses, the Alejandro Vela asset, and the Ichtaca enemy."
+      "text": "將下列卡牌放在一邊，位於場外：3張單面的[[遺跡]]地點卡、<i>伊格的使徒</i>遭遇組、4張中毒弱點卡、亞歷山卓·維拉支援卡、伊塔卡敵人卡。"
     },
     {
       "id": "encounter_deck",
@@ -31194,7 +31194,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "wait_for_additional_supplies",
-          "text": "the investigators were forced to wait for additional supplies."
+          "text": "調查員不得不等候補給。"
         }
       ]
     },
@@ -31205,7 +31205,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "ichtaca_observed_progress",
-          "text": "Ichtaca observed your progress with keen interest."
+          "text": "伊塔卡饒有興趣地觀察著調查進展。"
         }
       ]
     },
@@ -31216,19 +31216,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "earned_ichtacas_trust",
-          "text": "the investigators have earned Ichtaca’s trust."
+          "text": "調查員贏得了伊塔卡的信任。"
         }
       ]
     },
     {
       "id": "alejandro_followed_to_ruins",
-      "text": "In your Campaign Log, record that <i>Alejandro followed the investigators into the ruins</i>. Any one investigator may choose to add Alejandro Vela to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "在冒險日誌中，記錄下<i>亞歷山卓跟著調查員進入了遺跡</i>。任何一位調查員可以選擇將亞歷山卓·維拉加入其牌組。這張卡牌不計入該調查員的卡牌張數。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "alejandro_followed_to_ruins",
-          "text": "Alejandro followed the investigators into the ruins."
+          "text": "亞歷山卓跟著調查員進入了遺跡。"
         },
         {
           "type": "add_card",
@@ -31244,19 +31244,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "ichtaca_is_wary",
-          "text": "Ichtaca is wary of the investigators."
+          "text": "伊塔卡堤防調查員。"
         }
       ]
     },
     {
       "id": "alejandro_remained_at_camp",
-      "text": "In your Campaign Log, record that <i>Alejandro chose to remain at camp</i>. Do not add Alejandro Vela to any investigator’s deck.",
+      "text": "在冒險日誌中，記錄下<i>亞歷山卓選擇留在營地</i>。不要將亞歷山卓·維拉加入任何調查員的牌組。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "alejandro_remained_at_camp",
-          "text": "Alejandro chose to remain at camp."
+          "text": "亞歷山卓選擇留在營地。"
         }
       ]
     },
@@ -31267,20 +31267,20 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "cleared_path_to_temple",
-          "text": "the investigators cleared a path to the Eztli ruins."
+          "text": "調查員清出了一條通往埃茲特里遺跡的道路。"
         }
       ]
     },
     {
       "id": "check_final_act",
-      "text": "Which of the following was true?",
+      "text": "以下何者成立？",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "act_1_or_2",
-            "text": "It was Act 1 or 2 when the scenario ended.",
+            "text": "冒險結束時的場景為場景1或場景2。",
             "steps": [
               "ichtaca_observed_progress",
               "alejandro_followed_to_ruins"
@@ -31288,7 +31288,7 @@
           },
           {
             "id": "fought_ichtaca",
-            "text": "“You fought with Ichtaca”",
+            "text": "“你與伊塔卡發生了衝突”",
             "steps": [
               "maybe_add_tablet_token",
               "ichtaca_is_wary",
@@ -31297,7 +31297,7 @@
           },
           {
             "id": "talked_to_ichtaca",
-            "text": "“Ichtaca is leading the way”",
+            "text": "“伊塔卡在帶路”",
             "steps": [
               "maybe_add_cultist_token",
               "earned_ichtacas_trust",
@@ -31309,11 +31309,11 @@
     },
     {
       "id": "record_vengeance",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log. Beware the anger of the Father of Serpents, as his fury will haunt you in the future.",
+      "text": "勝利牌區每有1點復仇點數，在你冒險日誌的“伊格之怒”下方作一次記錄。當心萬蛇之父的怒火，因為你們之後將會受他的怒火灼燒。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "勝利牌區裡的復仇點數：",
         "delta": true,
         "effects": [
           {
@@ -31341,7 +31341,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "有任何玩家獲得中毒弱點卡嗎？",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -31350,7 +31350,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "已中毒",
             "effects": [
               {
                 "type": "add_card",
@@ -31398,15 +31398,15 @@
     },
     {
       "id": "add_chaos_token",
-      "text": "Which of these is true?",
+      "text": "以下那些成立？",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "cultist",
-            "text": "<i>Ichtaca is leading the way.</i>",
-            "description": "Add 1 [cultist] token.",
+            "text": "<i>伊塔卡在帶路。</i>",
+            "description": "加入1個[cultist]標記。",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -31418,8 +31418,8 @@
           },
           {
             "id": "tablet",
-            "text": "<i>You fought with Icthaca.</i>",
-            "description": "Add 1 [tablet] token.",
+            "text": "<i>你與伊塔卡發生了衝突。</i>",
+            "description": "加入1個[tablet]標記。",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -31470,7 +31470,7 @@
     },
     {
       "id": "add_tablet_token",
-      "text": "While playing the scenario, there was an instruction to add one [tablet] token to the chaos bag.",
+      "text": "在冒險進行時，曾經有指示將1個[tablet]標記加入混亂袋。",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -31482,7 +31482,7 @@
     },
     {
       "id": "add_cultist_token",
-      "text": "While playing the scenario, there was an instruction to add one [cultist] token to the chaos bag.",
+      "text": "在冒險進行時，曾經有指示將1個[cultist]標記加入混亂袋。",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -31548,7 +31548,7 @@
         "physical",
         "mental"
       ],
-      "text": "<right><fancy>Wednesday, July 1st, 1925</fancy></right>\nI still have no idea how we made it back to camp alive.\nThe jungle was more perilous than we could have possibly imagined. This may read like the ravings of a lunatic, but I cannot explain it any other way. Being lost in the jungle was no picnic, but that was the least of our worries. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate, hunting us relentlessly.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he was more disturbed than fascinated. I suppose he has a right to be incredulous. Nothing about this expedition makes sense.\nThe serpent creatures chased us for what seemed like days. Finally we were able to find our way back to camp, but the price was steep. We had lost all progress we had made, and many of us were injured or afflicted by serpent venom. We have no choice but to send runners to the nearest city for additional supplies and to wait and recover from our wounds.",
+      "text": "<right><fancy>1925年7月1日，星期三</fancy></right>\n我完全不知道我是怎麼活著回到營地的。\n叢林的險惡遠遠超出我們的想像。這聽起來就像瘋子的胡話，但我沒法以別的方式解釋這件事。我們在叢林裡迷了路，大費周章才回到正途，但與別的事相比，迷路根本算不上什麼。叢林“有人看守”，看守者是深不可測的恐怖存在：這些蛇人被憤怒和仇恨所驅使，無情地追捕我們。\n或許跟它們一樣可怕的，還有叢林中的原住民。從衣著和談吐來看，他們像是阿茲特克的戰士。阿茲特克人早在數百年前便被征服，但這些戰士們卻不知何故存活至今。他們為什麼幾個世紀都沒被發現？我們實在想不到答案。我本以為亞歷山卓準會為此興奮不已，想要更加瞭解他們。然而他實際上卻十分不安，一洗先前那副陶醉的神情。畢竟這次探險盡是些不合常理的怪事，他確實有理由懷疑。\n一群蛇人大概追了我們好幾天，最終我們找到了返回營地的路，但付出的代價十分慘痛。探險至今為止的進展全都化為泡影，隊伍裡的好些成員都受了傷，或受蛇毒折磨。我們別無選擇，只能派幾個人跑到最近的城市再去拿些補給品，等傷員恢復。",
       "steps": [
         "wait_for_additional_supplies",
         "check_final_act",
@@ -31564,7 +31564,7 @@
         "name": "Resolution 1"
       },
       "title": "結局1",
-      "text": "<right><fancy>Thursday, July 2nd, 1925</fancy></right>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. The warrior named Ichtaca was particularly intriguing. We were able to defuse the initial encounter with her, and surprisingly, she helped guide us through the jungle, only to disappear mysteriously when we reached the ruins. I have a feeling we have not seen the last of her.\nAlejandro did not agree with our decision to trust the Eztli warriors. He’s decided to stay at camp until further notice, disturbed as he is by their presence. I thought he would be excited to learn more about them, but I expect this discovery defies even his broad-minded theories. I suppose he has a right to be distrustful. Nothing about this expedition makes sense.\nWe have cleared a route to what Alejandro believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
+      "text": "<right><fancy>1925年7月2日，星期四</fancy></right>\n不知怎地，在歷盡艱辛和數小時的探索之後，我們找到了亞歷山卓苦苦找尋的遺跡，儘管我們未曾想在這片荒野叢林之中有此遭遇。叢林“有人看守”，看守者是深不可測的恐怖存在：被憤怒和仇恨所驅使的蛇人。它們無情地追趕我們，運用原始的武器，以嘶嘶的叫聲互相交流。\n或許跟它們一樣可怕的，還有叢林中的原住民。從衣著和談吐來看，他們像是阿茲特克的戰士。阿茲特克人早在數百年前便被征服，但這些戰士們卻不知何故存活至今。他們為什麼幾個世紀都沒被發現？我們實在想不到答案。那個名叫伊塔卡的戰士尤其神秘。我們在初次遭遇她時成功解除了她的敵意，令人吃驚的是她指引我們通過了叢林。但當我們到達遺跡時，她卻神秘地消失了。我有種感覺，我們還會再次見到她。\n我們提議相信埃茲特里的戰士們，而亞歷山卓對此並不贊同。他決定留在營地等待進一步消息，戰士們在場使他煩惱焦躁。我本以為他準會興奮地想要更加瞭解他們，但我猜想這一發現甚至與他博大精深的理論相悖。畢竟這次探險盡是些不合常理的怪事，他確實有理由懷疑。\n我們清出了一條道路，通向亞歷山卓相信遺跡主神廟所在的地方。一群蛇形生物似乎要阻止我們進入此地，因此我們一刻也不能耽擱，幾乎沒時間休整隊伍。很快我們就會進入遺跡，看看它們到底藏著什麼秘密。",
       "steps": [
         "maybe_add_cultist_token",
         "cleared_path_to_temple",
@@ -31582,7 +31582,7 @@
         "name": "Resolution 2"
       },
       "title": "結局2",
-      "text": "<right><fancy>Thursday, July 2nd, 1925</fancy></right>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he shared our alarm. We managed to fend off and interrogate their leader, a warrior named Ichtaca. Before she fled, she warned us to not go near the ruins. Unfortunately for her, we refuse to go home empty-handed.\nWith Alejandro leading the way, we’ve cleared a route to what he believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
+      "text": "<right><fancy>1925年7月2日，星期四</fancy></right>\n不知怎地，在歷盡艱辛和數小時的探索之後，我們找到了亞歷山卓苦苦找尋的遺跡，儘管我們未曾想在這片荒野叢林之中有此遭遇。叢林“有人看守”，看守者是深不可測的恐怖存在：被憤怒和仇恨所驅使的蛇人。它們無情地追趕我們，運用原始的武器，以嘶嘶的叫聲互相交流。\n或許跟它們一樣可怕的，還有叢林中的原住民。從衣著和談吐來看，他們像是阿茲特克的戰士。阿茲特克人早在數百年前便被征服，但這些戰士們卻不知何故存活至今。他們為什麼幾個世紀都沒被發現？我們實在想不到答案。我本以為亞歷山卓準會興奮地想要更加瞭解他們，但亞歷山卓和我們一樣驚慌。我們成功擊退並質問他們的首領，一位名叫伊塔卡的戰士，她警告我們別再靠近遺跡，然後就逃走了。她真不好運，我們是不會空著手回去的。\n在亞歷山卓的指引之下，我們清出一條道路，通向他相信遺跡主神廟所在的地方。一群蛇形生物似乎要阻止我們進入此地，因此我們一刻也不能耽擱，幾乎沒時間休整隊伍。很快我們就會進入遺跡，看看它們到底藏著什麼秘密。",
       "steps": [
         "maybe_add_tablet_token",
         "cleared_path_to_temple",
@@ -31703,7 +31703,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "gave_relic_to_alejandro",
-                "text": "the investigators gave custody of the relic to Alejandro."
+                "text": "調查員將遺物交給了亞歷山卓。"
               }
             ]
           },
@@ -31718,7 +31718,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "gave_relic_to_harlan",
-                "text": "the investigators gave custody of the relic to Harlan Earnstone."
+                "text": "調查員將遺物交給了哈倫·恩斯通。"
               }
             ]
           }
@@ -33026,14 +33026,14 @@
           {
             "id": "provisions",
             "name": "Provisions",
-            "description": "Food and water for one person. A must-have for any journey.",
+            "description": "一人份的乾糧和水。出行必備。",
             "cost": 1,
             "multiple": true
           },
           {
             "id": "medicine",
             "name": "Medicine",
-            "description": "To stave off disease, infection, or venom.",
+            "description": "治病，消除感染，解毒。",
             "cost": 2,
             "multiple": true
           },
@@ -33046,32 +33046,32 @@
           },
           {
             "id": "blanket",
-            "name": "Blanket",
-            "description": "For warmth at night.",
+            "name": "毛毯",
+            "description": "好在夜裡保暖。",
             "cost": 2
           },
           {
             "id": "canteen",
             "name": "Canteen",
-            "description": "Can be refilled at streams and rivers.",
+            "description": "可以在小溪和河邊盛水。",
             "cost": 2
           },
           {
             "id": "compass",
-            "name": "Compass",
-            "description": "Can guide you when you are hopelessly lost.",
+            "name": "指南針",
+            "description": "在你迷失方向而絕望時，它能夠指引你。",
             "cost": 2
           },
           {
             "id": "binoculars",
-            "name": "Binoculars",
-            "description": "To help you see faraway places.",
+            "name": "雙筒望遠鏡",
+            "description": "幫助你看到更遠的地方。",
             "cost": 2
           },
           {
             "id": "chalk",
-            "name": "Chalk",
-            "description": "For writing on rough stone surfaces.",
+            "name": "粉筆",
+            "description": "用來在粗糙的石面寫字。",
             "cost": 2
           },
           {
@@ -33139,14 +33139,14 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia:",
+        "text": "瓦盧西亞的預示者身上的傷害點數：",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
             "operation": "set_input",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "預示者還活著(#X#點傷害)。"
           }
         ]
       }
@@ -33154,10 +33154,10 @@
     {
       "id": "record_yigs_fury",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "勝利牌區每有1點復仇點數，在你冒險日誌的“伊格之怒”下方作一次記錄。",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "勝利牌區裡的復仇點數：",
         "delta": true,
         "effects": [
           {
@@ -33572,7 +33572,7 @@
     },
     {
       "id": "set_aside_poison",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "將不在調查員牌組中的所有中毒弱點卡放在一邊。"
     },
     {
       "id": "encounter_deck",
@@ -34138,7 +34138,7 @@
         "section": "supplies",
         "investigator": "any",
         "id": "torches",
-        "name": "Torches",
+        "name": "火把",
         "options": [
           {
             "boolCondition": true,
@@ -34696,7 +34696,7 @@
         "section": "supplies",
         "investigator": "any",
         "id": "chalk",
-        "name": "Chalk",
+        "name": "粉筆",
         "options": [
           {
             "boolCondition": true,
@@ -34761,7 +34761,7 @@
     },
     {
       "id": "eat_provisions",
-      "text": "Check your supplies. The investigators, as a group, must cross off one provisions per investigator from their supplies. For each provisions they cannot cross off, choose an investigator to read <b>Low on Rations</b>.",
+      "text": "查看你們的補給品。調查員以團隊為單位，必須從補給品中劃掉配給，劃掉的數量等於調查員人數。調查員每少劃掉一個配給，選擇一位調查員來閱讀<b>配給不足</b>。",
       "type": "input",
       "input": {
         "type": "use_supplies",
@@ -34880,18 +34880,18 @@
     },
     {
       "id": "check_blanket",
-      "text": "Check your supplies to see which investigators have a blanket.",
+      "text": "查看你們的補給品，檢查那些調查員帶有毛毯。",
       "type": "branch",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
         "investigator": "all",
         "id": "blanket",
-        "name": "Blanket",
+        "name": "毛毯",
         "options": [
           {
             "boolCondition": true,
-            "prompt": "Restful Sleep",
+            "prompt": "安穩入睡",
             "border": true,
             "effects": [
               {
@@ -34905,7 +34905,7 @@
           },
           {
             "boolCondition": false,
-            "prompt": "Tossing and Turning",
+            "prompt": "輾轉反側",
             "border": true,
             "effects": [
               {
@@ -34931,7 +34931,7 @@
         "name": "Tossing and Turning"
       },
       "type": "story",
-      "title": "Tossing and Turning",
+      "title": "輾轉反側",
       "text": "Sleep does not come easily for you. Barely any layers protect you from the bitter cold of the underground cavern, and you lie shivering for hours before exhaustion finally claims you. You awaken every hour or so as the shifting of your body almost causes you to tumble off your stone perch. When “morning” comes, you are even more weary than you were the previous night."
     },
     {
@@ -34940,7 +34940,7 @@
         "id": "the_forgotten_age.interlude_4.restful_sleep",
         "name": "Restful Sleep"
       },
-      "title": "Restful Sleep",
+      "title": "安穩入睡",
       "type": "story",
       "text": "Though you long for a proper bed, at least your blanket protects you from the frigid chill that permeates the cavern. When “morning” arrives, your body longs for more sleep, but you know you must press onward and reach the Nexus as fast as you can..."
     }
@@ -41616,7 +41616,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "你一輩子都在讀書。小時候，只是簡單地沉浸在無害的故事之中。確切地說，儘管故事很嚇人，卻是無害的。你對恐怖和驚悚的迷戀使你在朋友和同學中贏得了“嚇人精”的綽號。但是隨著你的年齡增長，這種迷戀也跟著成長，漸漸地變成了一種痴迷。神秘和虛構開始無法滿足你對恐怖的胃口，你渴望更<i>真實</i>的東西。\n當你發現約翰·迪伊的《死靈之書》譯本時，你知道自己終於找到了一直暗暗渴望的真正恐怖。只要你讀完這本可怕的書，你就會知道有什麼正在等待著你。然後你就會將它深鎖在奧恩圖書館的亨利·阿米蒂奇的禁忌藏書區，永遠不再打開。\n也許，這只是你喜歡的幻想。然而你也無法抗拒《死靈之書》—亡者的典籍—的魅力。這就是為什麼當阿米蒂奇博士召喚你到奧恩圖書館時，你所感到的刺骨恐懼精確地預測了發生了什麼事。\n「我不知道怎麼會發生這種事，」阿米蒂奇博士在調查破壞時說道。整個禁忌收藏都變得亂七八糟。《死靈之書》躺在附近的桌子上，書上的金屬扣環斷裂。你的手指滑過皮革般、有著皮膚觸感的書頁。你的眼睛隨著每個字跳動，像是跳著一支熟悉的舞蹈：\n<center><i>“他們走在偏僻的地方，看不見且汙穢，聖言在這裡被道出，儀式在他們的季節裡喧囂。狂風鼓譟著他們的聲音，大地低語著他們的意識。”當你意識到將要需發生的事情時，你的喉嚨一緊。有什麼東西已經被釋放了，而你是唯一知道該如何阻止它的人……"
+      "text": "你一輩子都在讀書。小時候，只是簡單地沉浸在無害的故事之中。確切地說，儘管故事很嚇人，卻是無害的。你對恐怖和驚悚的迷戀使你在朋友和同學中贏得了“嚇人精”的綽號。但是隨著你的年齡增長，這種迷戀也跟著成長，漸漸地變成了一種痴迷。神秘和虛構開始無法滿足你對恐怖的胃口，你渴望更<i>真實</i>的東西。\n當你發現約翰·迪伊的《死靈之書》譯本時，你知道自己終於找到了一直暗暗渴望的真正恐怖。只要你讀完這本可怕的書，你就會知道有什麼正在等待著你。然後你就會將它深鎖在奧恩圖書館的亨利·阿米蒂奇的禁忌藏書區，永遠不再打開。\n也許，這只是你喜歡的幻想。然而你也無法抗拒《死靈之書》—亡者的典籍—的魅力。這就是為什麼當阿米蒂奇博士召喚你到奧恩圖書館時，你所感到的刺骨恐懼精確地預測了發生了什麼事。\n「我不知道怎麼會發生這種事，」阿米蒂奇博士在調查破壞時說道。整個禁忌收藏都變得亂七八糟。《死靈之書》躺在附近的桌子上，書上的金屬扣環斷裂。你的手指滑過皮革般、有著皮膚觸感的書頁。你的眼睛隨著每個字跳動，像是跳著一支熟悉的舞蹈：\n<center><i>“他們走在偏僻的地方，看不見且汙穢，聖言在這裡被道出，儀式在他們的季節裡喧囂。狂風鼓譟著他們的聲音，大地低語著他們的意識。”</i></center>\n當你意識到將要需發生的事情時，你的喉嚨一緊。有什麼東西已經被釋放了，而你是唯一知道該如何阻止它的人……"
     },
     {
       "id": "investigator_setup",
@@ -62818,8 +62818,8 @@
     {
       "id": "prologue",
       "type": "story",
-      "title": "Earth is Not Ours",
-      "text": "“Primal myth and modern delusion joined in their assumption that mankind is only one—perhaps the least—of the highly evolved and dominant races of this planet’s long and largely unknown career.” – H. P. Lovecraft, “The Shadow out of Time”"
+      "title": "地球並不屬於我們",
+      "text": "“原始神話與現今的幻象均反映出，人類在這顆星球漫長而充滿未知的道路中，可能只是高度進化且佔統領地位的種族中的一員——或許是其中最為渺小的。”——H. P. 洛夫克拉夫特《超越時空之影》"
     },
     {
       "id": "choose_investigators",
@@ -62832,25 +62832,25 @@
       "id": "supplies",
       "type": "rule_reminder",
       "title": "補給品",
-      "text": "At certain points throughout The Forgotten Age campaign, investigators are given the opportunity to choose supplies to bring on their expeditions into the wilds. These supplies are recorded in the Campaign Log, under each investigator’s “Supplies” section.\nSupplies are purchased with supply points, which are granted to investigators whenever they are given the opportunity to purchase supplies. Leftover supply points are not recorded, and are lost.\nAn investigator’s supplies will determine the possible options available during gameplay and throughout the story of this campaign. <b>Each supply has no effect on its own.</b> Some card effects, story options, and resolutions may change or become available depending on the supplies carried by the investigator(s)."
+      "text": "在《失落的時代》劇本的特定時間點，調查員能夠去選擇自己的補給品，在野外探險過程中隨身攜帶。這些補給品將被記錄在冒險日誌中每位調查員的“補給品”下方。\n補給品要用補給品點數來購買，調查員在能購買補給品時會獲得補給品點數。未使用的補給品點數均會失去，不作紀錄。\n每個調查員的補給品將決定遊戲過程和這個劇本中的劇情中可能出現的選項。<b>每個補給品本身沒有效果。</b>根據調查員所攜帶的補給品，可能改變或產生某些卡牌效果、劇情選項和結局。"
     },
     {
       "id": "vengeance",
       "type": "rule_reminder",
-      "title": "Vengeance X",
-      "text": "Some encounter cards are worth vengeance points. The text <b>Vengeance X</b> indicates that a card is worth X vengeance points.\nLike <b>Victory X</b>, when an encounter card with <b>Vengeance X</b> is overcome by the investigators, it is stored in the victory display until the end of the scenario. However, unlike victory points, vengeance represents the awareness and animosity of the Father of Serpents, and it is generally a good idea to avoid accruing vengeance points whenever possible.\nVengeance points in the victory display have no impact upon the game unless specifically referenced by another encounter card.",
+      "title": "復仇X",
+      "text": "某些遭遇卡會計復仇點數。<b>復仇X</b>字樣即表明該卡牌計X點復仇點數。\n與<b>勝利X</b>相似，在調查員解決帶有<b>復仇X</b>的遭遇卡時，將該卡牌放置到勝利牌區直到冒險結束。但與勝利點數不同的是，復仇點數表示萬蛇之父的警覺與敵意，最好盡可能地避免復仇點數的增長。\n勝利牌區內的復仇點數不影響遊戲，除非有另一張遭遇卡提到了這些復仇點數。",
       "bullets": [
         {
-          "text": "As an enemy with <b>Vengeance X</b> is defeated, place the card in the victory display instead of in the discard pile."
+          "text": "帶有<b>復仇X</b>關鍵詞的敵人被擊敗時，將其放到勝利牌區，而不是放入棄牌堆。"
         },
         {
-          "text": "At the end of a scenario, take each location with <b>Vengeance X</b> that is in play, revealed, and has no clues on it, and place it in the victory display."
+          "text": "當一場冒險結束時，從場上帶有<b>復仇X</b>關鍵詞的所有地點中，拿取已揭示且其上方沒有線索的地點，將這些地點放到勝利牌區。"
         },
         {
-          "text": "As a treachery card with <b>Vengeance X</b> completes its resolution, place it in the victory display instead of in the discard pile."
+          "text": "帶有<b>復仇X</b>關鍵詞的詭計卡結算完畢後，將其放置到勝利牌區，而不是放入棄牌堆。"
         },
         {
-          "text": "Cards worth vengeance points are not also worth victory points unless the card has both <b>Victory X</b> and <b>Vengeance X.</b>"
+          "text": "計復仇點數的卡牌如果既有<b>勝利X</b>又有<b>復仇X</b>，則該卡牌計復仇點數和勝利點數。"
         }
       ]
     },
@@ -62858,7 +62858,7 @@
       "id": "explore",
       "type": "rule_reminder",
       "title": "Explore",
-      "text": "Some abilities in this campaign are identified with an <b>Explore</b> action designator. Such abilities are generally used to find new locations to put into play, and are initiated using the “activate” action.\n<b>Explore</b> abilities instruct you to draw the top card of the “exploration deck,” which is a separate deck that is constructed during the setup of some scenarios. This deck consists of several single-sided locations and treachery cards.",
+      "text": "這個劇本中的某些能力帶有<b>探索</b>行動標識。此類能力通常會通過“啟動”行動發動，用於找出新的地點並將這一地點放置入場。\n<b>探索</b>能力會指示你抽取“探索牌堆”頂上的1張卡牌。探索牌堆是一個獨立的牌堆，在某些冒險的設置階段構成該牌堆，包含多張單面地點卡和詭計卡。",
       "bullets": [
         {
           "text": "Each <b>Explore</b> ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a “successful” exploration."
@@ -62870,13 +62870,13 @@
           "text": "If a treachery card is drawn, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. There is no discard pile for the exploration deck. This is considered an “unsuccessful” exploration."
         },
         {
-          "text": "As a single-sided location is put into play from the exploration deck, place clues on that location equal to its clue value."
+          "text": "單面地點從探索牌堆放置入場時，在該地點上放置線索，數量等於其線索值。"
         },
         {
           "text": "If the entire exploration deck is revealed without finding either a treachery card or a location specified by the explore ability, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
         }
       ],
-      "example": "<i>Example: Agenda 1a—“Expedition into the Wild” has the following ability: “[action]: <b>Explore.</b> Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Circuitous Trail. Because Circuitous Trail is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Low on Supplies treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Circuitous Trail that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Path of Thorns, which is connected to the Expedition Camp. Her exploration is successful. Path of Thorns is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Path of Thorns.</i>"
+      "example": "<i>範例：密謀1a—“荒野探險”有著以下能力：“[action]：<b>探索</b>。抽取探索牌堆頂上的1張卡牌。如果該卡牌是一個連接地點，放置入場並移動到該地點。”厄休拉·唐斯位於探險營地，希望找到並前往一個新的地點。她用自己的第一個行動來探索，抽取探索牌堆頂上的1張卡牌，抽出的卡牌是曲折小道。 因為曲折小道不與探險營地連接，將其放在探索牌堆旁邊，然後厄休拉從探索牌堆抽取下一張卡牌。這次她抽出了補給短缺詭計卡，如常結算並將該卡牌放到遭遇棄牌堆。她的探索失敗了，必須將先前抽出的曲折小道洗回探索牌堆。厄休拉決定用第二個行動來再次探索。這次她抽出了荊棘之路，這個地點與探險營地是連接的，探索成功。將荊棘之路放置入場，在該卡牌上方放置線索，數量等於其線索值，然後厄休拉立即從探險營地移動到荊棘之路。</i>"
     },
     {
       "id": "difficulty_choice",
@@ -63085,8 +63085,8 @@
 },
 {
   "id": "tfa_interlude2",
-  "scenario_name": "Expedition's End",
-  "full_name": "Interlude II: Expedition's End",
+  "scenario_name": "探險結束",
+  "full_name": "幕間故事II：探險結束",
   "header": "幕間故事II",
   "type": "interlude",
   "icon": "expedition",
@@ -63143,7 +63143,7 @@
         "name": "Expedition's End 1"
       },
       "type": "story",
-      "text": "<right><fancy>Friday, July 17th, 1925</fancy></right>\nWe have finally made it back to Arkham, our expedition a “success.” Alejandro is excited to report his findings to the university. How he maintains his starry-eyed idealism after the hell we went through in the jungle is beyond me. His attention is fixated on the strange relic that we discovered in the ruins. I wish we knew a little more about the artifact’s origins. It unsettles me greatly. It hums at all times and pulses with an otherworldly energy I can scarcely describe. As we traveled home with the artifact in tow, our nights were plagued by bizarre nightmares: dreams of other worlds and civilizations.\nAlejandro wants to bring the relic to the Miskatonic Museum, to put on display along with the other Eztli artifacts we discovered. My feelings are mixed. At the museum, it will receive proper care, and historians will be able to study it and perhaps even discern its purpose. However, I fear that the relic may be too dangerous for the public. After all, we still have no idea what the damned thing even is. Alejandro would hate it, but perhaps it would be better to keep the relic somewhere safe, where Harlan and I can study it in private. I’ll have to decide tonight; after tomorrow, there won’t be time to change my mind..."
+      "text": "<right><fancy>1925年7月17日，星期五</fancy></right>\n我們終於成功回到了阿卡姆，這次探險“成功”了。亞歷山卓要向大學匯報自己的發現，他為此激動不已。我不理解他為什麼在經過叢林的遭遇之後，還能繼續滿懷熱誠、雙目放光地堅持自己的理想主義。他專注於我們從遺跡裡找到的那件古怪遺物，但願我們能對它的起源有多一些了解。它使我心神激盪，難以平靜。它一直嗡嗡作響，伴隨著我難以描述的超於現世的能量而搏動著。自從我們帶著這件遺物回來之後，每晚都被怪異的噩夢所折磨，我們在夢裡看到了其他的世界和文明。\n亞歷山卓要我將這件遺物帶回米斯卡塔尼克博物館，和我們發現的其他埃茲特里遺物一同展示。我百感交集。它會在博物館裡得到妥善的保管，可供歷史學家研究，甚至可能得知它的用途。但是，我擔心這件遺物公開展示可能過於危險。我們仍然不知道這該死的東西究竟是什麼。或許應該將這個遺物存放在安全的地方，以供我和哈倫私下對它研究，但我猜亞歷山卓不喜歡這樣。今晚我就得做決定；在明天之後，就沒時間改變主意了……"
     },
     {
       "id": "choose_where_relic_goes",
@@ -63154,7 +63154,7 @@
         "choices": [
           {
             "id": "museum",
-            "text": "<i>It belongs in a museum. Alejandro and the museum staff will be able to study it and learn more about its purpose.</i>",
+            "text": "<i>它屬於博物館。亞歷山卓和博物館的工作人員能夠研究它，並且深入了解它的用途。</i>",
             "steps": [
               "ee_2",
               "gave_relic_to_alejandro",
@@ -63166,7 +63166,7 @@
           },
           {
             "id": "hide",
-            "text": "<i>It is too dangerous to be on display. We should keep it hidden and safe until we know more about it.</i>",
+            "text": "<i>將它拿去展覽太危險了。在我們了解更多關於它的知識之前，它都應該被秘密地妥善保存起來。</i>",
             "steps": [
               "ee_3",
               "gave_relic_to_harlan",
@@ -63184,7 +63184,7 @@
         "name": "Expedition's End 2"
       },
       "type": "story",
-      "text": "<right><fancy>Sunday, July 19th, 1925</fancy></right>\nI’ve decided to give custody of the relic to Alejandro. This entire expedition was based on his research, after all—he should be the one to study it. If anyone can discover the relic’s secrets, it’s him.\nThe relic is to be the centerpiece of a new exhibit at the museum. Alejandro has already written extensively about our discoveries, but his work has only just begun. Many mysteries about our expedition remain. How have the Eztli people remained undiscovered for so long? Why did they appear to be guarding the jungle, and from what? Who really built the temple ruins we explored? I have no doubt Alejandro will uncover the answers to these questions, given enough time.\nAs for me, my role in this endeavor has ended. However, I have yet to relax. My thoughts are constantly in the jungle—serpentine figures in the shadows, obsidian arrows embedded in skeletal bodies, malformed voices shrieking in the cavernous depths. When I walk through the streets, I find myself drawn toward the museum without realizing it, as though possessed to see the relic once again. There is a nagging sensation in the back of my mind, as though we have forgotten something important. What must I do to rid myself of—\n(The journal entry ends abruptly.)"
+      "text": "<right><fancy>1925年7月19日，星期天</fancy></right>\n我決定將這件遺物交給亞歷山卓保管。說到底，這整場探險都是為他的研究服務的——應該由他來研究這東西。要是有人能夠發現這件遺物的秘密，那準是他。\n這件遺物將成為博物館新展覽的核心展品。亞歷山卓已經為我們的發現費了不少筆墨，但他的研究才剛剛開始。我們的探險之旅仍有不少未知之謎。埃茲特里人為什麼這麼久都未被發現？他們似乎在保衛叢林，是出於什麼目的？叢林又是為什麼需要保衛呢？我們探索的神廟遺跡到底是誰建造的？我相信如果時間足夠，亞歷山卓定能找出這些問題的答案。\n至於我，這件事我已經幫不上忙了。可是，我還是放鬆不下來。我的思緒始終停留在叢林裡——陰影中的蛇形生物、嵌入屍骨中的黑曜石箭枝，從洞穴深處傳來失真的尖叫聲。我走過一條條街道時，發現自己竟渾然不覺地向著博物館的方向走去，就像著了魔一樣想要再看那遺物一眼。我腦海中有種感覺揮之不去，似乎我們忘了某些重要的事情。我得讓自己擺脫那——\n(這篇日誌戛然而止。)"
     },
     {
       "id": "gave_relic_to_alejandro",
@@ -63193,7 +63193,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "gave_relic_to_alejandro",
-          "text": "the investigators gave custody of the relic to Alejandro."
+          "text": "調查員將遺物交給了亞歷山卓。"
         }
       ]
     },
@@ -63204,7 +63204,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "earned_alejandros_trust",
-          "text": "the investigators have earned Alejandro’s trust."
+          "text": "調查員贏得了亞歷山卓的信任。"
         }
       ]
     },
@@ -63227,7 +63227,7 @@
     },
     {
       "id": "earn_alejandro",
-      "text": "Any one investigator may choose to add Alejandro Vela to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "任何一位調查員可以選擇將亞歷山卓·維拉加入牌組。這張卡牌不計入該調查員的卡牌張數。",
       "effects": [
         {
           "type": "add_card",
@@ -63254,7 +63254,7 @@
         "name": "Expedition's End 3"
       },
       "type": "story",
-      "text": "<right><fancy>Sunday, July 19th, 1925</fancy></right>\nI’ve decided to keep the relic hidden for now. Alejandro is not happy with my decision, but until we know what the orb is capable of, it’s important that it stay somewhere safe, where it won’t endanger others. Harlan agrees with me, and has offered to take custody of the relic and keep it in his private office. There, we can study the artifact in secret.\nAlejandro is staying in Arkham for the time being, recording his notes about the expedition and helping the museum put together an exhibit displaying our other, less dangerous discoveries. As for me, I hope to find answers to other mysteries: How have the Eztli people remained undiscovered for so long? Why did they appear to be guarding the jungle, and from what? Who really built the temple ruins we explored?\nMy thoughts are constantly in the jungle—serpentine figures in the shadows, obsidian arrows embedded in skeletal bodies, malformed voices shrieking in the cavernous depths. Each time I leave Harlan’s office, I find myself longing to head back and gaze upon the relic once more. There is a nagging sensation in the back of my mind, as though we have forgotten something important. What must I do to rid myself of—\n(The journal entry ends abruptly.)"
+      "text": "<right><fancy>1925年7月19日，星期天</fancy></right>\n我決定暫時保管這件遺物。亞歷山卓對我的決定並不滿意，但是只要我們還不知道這個鋼球的作用，它就必須放在穩妥的地方，以免危及他人的安全。哈倫同意我的決定，提出由他來保管遺物，並存放到他的私人辦公室。我們就在那兒秘密研究這件遺物。\n亞歷山卓暫時住在阿卡姆，將本次探險的經歷作記錄，並幫助博物館將我們找到的危害性較低的其他遺物一同展出。至於我，我希望找到其他謎團的答案：埃茲特里人為什麼這麼久都未被發現？他們似乎在保衛叢林，是出於什麼目的？叢林又是為什麼需要保衛呢？我們探索的神廟遺跡到底是誰建造的？\n我的思緒始終停留在叢林裡——陰影中的蛇形生物、嵌入屍骨中的黑曜石箭枝，從洞穴深處傳來失真的尖叫聲。每當我走出哈倫的辦公室，我發覺自己想要立馬返回，繼續凝視著那件遺物。我腦海中有種感覺揮之不去，似乎我們忘了某些重要的事情。我得讓自己擺脫那——\n(這篇日誌戛然而止。)"
     },
     {
       "id": "gave_relic_to_harlan",
@@ -63263,19 +63263,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "gave_relic_to_harlan",
-          "text": "the investigators gave custody of the relic to Harlan Earnstone."
+          "text": "調查員將遺物交給了哈倫·恩斯通。"
         }
       ]
     },
     {
       "id": "alejandro_on_his_own",
-      "text": "In your Campaign Log, record that <i>Alejandro is continuing his research on his own</i>. If Alejandro Vela is currently in an investigator’s deck, remove him from that investigator’s deck.",
+      "text": "在冒險日誌中，記錄下<i>亞歷山卓繼續獨力研究</i>。如果亞歷山卓·維拉已在調查員的牌組中，將其移出該調查員的牌組。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "alejandro_on_his_own",
-          "text": "Alejandro is continuing his research on his own."
+          "text": "亞歷山卓繼續獨力研究。"
         },
         {
           "type": "remove_card",
@@ -63290,7 +63290,7 @@
         "name": "Expedition's End 4"
       },
       "type": "story",
-      "text": "You drop your pen as a loud knocking at the door startles you, and you jump to your feet. It is almost 2:30 in the morning. Who could possibly be at your door at this hour? Your thoughts wander again to the jungle, and you are faced with a vision of serpent-creatures attacking you in your own home. Shuddering, you find a weapon and approach the front door carefully, ready to strike if need be. You take a long breath and open the door.\nOn the other side is a familiar woman with brown skin, long brown hair, and piercing yellow eyes set in a hard glare. Though her attire has changed, you recognize her instantly as Ichtaca, the Eztli warrior you encountered in the rainforest. Wearing a long coat and a Bollman hat, she is visibly uncomfortable in her shoes. Her jaw is set in anger. You are about to raise your weapon in defense when she lets out a heavy sigh and walks slowly over the threshold of your home, shutting your front door behind her. “Whatever you did, you have to reverse it,” she intones darkly. “Or we will all cease to exist.”"
+      "text": "一陣響亮的敲門聲把你嚇了一跳，手裡的鋼筆都掉到了地上。這時臨近凌晨2:30。誰會在這個時間來敲你的門呢？你的思緒再次飄回了叢林，腦海中浮現了一個景象：蛇人來到你的家中攻擊你。你戰戰兢兢，找出一件武器並小心地走近前門，做好了攻擊的準備，以防萬一。你深吸一口氣，把門打開。\n門的另一邊是一位熟悉的女士，有著古銅色皮膚，棕色長捲髮，她一雙金色的明眸目光銳利，怒目圓睜。儘管她換了一身穿著，你還是立即認出了她——伊塔卡，你在叢林裡遇到的埃茲特里戰士。她穿著一件長大衣，戴著一頂博爾曼帽子，很顯然她穿著鞋子不太自在。她怒不可遏。你正準備舉起武器防禦的時候，她重重地嘆了一口氣，慢步走進你家並關上了前門。“不管你做了什麼，你必須得將它逆轉，”她用陰鬱的口吻說道，“否則我們都將不復存在。”"
     },
     {
       "id": "ee_5",
@@ -63299,14 +63299,14 @@
         "name": "Expedition's End 5"
       },
       "type": "story",
-      "text": "Harlan Earnstone paces across your living room, dabbing his wrinkled forehead with his handkerchief. “It’s my fault. I should never have encouraged them to go on that dreadful expedition.” Though your paths have only crossed a few times before, Mr. Earnstone has become a valuable contact of yours within Miskatonic University. When the University’s latest expedition returned with only a few survivors and a handful of strange, archaic artifacts, he came to you for advice.\n“I know, I know. I should at least take solace in the fact that the expedition was successful, despite its heavy losses. Alejandro was right all along. The Eztli people are real. And yet...I am concerned about some of these findings.” Harlan pulls a small leather-bound journal from his suitcase and hands it to you. “Before the expedition leader’s tragic death, the leader recorded many of the group’s discoveries in this journal. One of the surviving members of the expedition managed to grab it from the camp before fleeing the jungle. I think if you read these entries, you’ll understand what I mean. The things they experienced, the creatures they encountered...” Harlan shudders and adjusts his glasses with too-shaky hands. “I am concerned not only for Alejandro, but for all of us. Read this journal, and if you can, please keep an eye on my colleague.” You agree to help, but his worry does not fade. “I only hope that I am not damning you to a similar fate by asking for your aid.”\nYou spend the remainder of that night studying the expedition journal, your mind swimming with thoughts of strange serpent-creatures and Aztec warriors. Long after Harlan has left, a loud knocking at the door startles you, and you jump to your feet. It is almost 2:30 in the morning. Who could possibly be at your door at this hour? You open the front door warily. On the other side is a woman with brown skin, long brown hair, and piercing yellow eyes set in a hard glare. She wears a long coat and a Bollman-style hat, visibly uncomfortable in her shoes. Her jaw is set in anger. A sudden flash of insight crosses your mind, and you realize at once who she must be. After all, you’ve read and re-read the journal’s description of Ichtaca, the Eztli warrior. She lets out a heavy sigh and walks slowly over the threshold of your home, shutting your front door behind her. “Whatever they did, you have to reverse it,” she intones darkly. “Or we will all cease to exist.”"
+      "text": "哈倫·恩斯通走進了你的起居室，用他的手帕擦拭著滿佈皺紋的前額。“是我的錯。我不該鼓動他們參加這場凶險的探險。”儘管你們只有寥寥幾次交集，恩斯通先生已成為你在米斯卡塔尼克大學重要的聯絡人。最近這場探險只有幾人倖免於難，帶回了幾件怪異的古代遺物，所以他前來尋求你的建議。\n“我知道，我知道。這次探險儘管損傷慘重，但是成功了，這最終的結果至少可以讓我聊以自慰。亞歷山卓說的沒錯，埃茲特里人是真實存在的，而且存在至今……我擔心其中的一些發現會引起恐慌。哈倫從自己的手提箱裡拿出一本皮面的日誌，遞給你。“在探險隊隊長壯烈犧牲之前，他將隊伍的發現都記在了這本日誌裡。探險隊的其中一位倖存者趕在逃出叢林之前，從營地裡找出了這本日誌。我想，你要是讀了這些日誌，你會明白我的意思。他們的經歷，還有他們遭遇的那些生物……”哈倫渾身發抖，用顫抖的雙手扶著自己的眼鏡。“我擔心的不只是亞歷山卓一人，而是我們所有人。讀一讀這本日誌，還有，如果可以的話，請留心我的這位同事。”你答應幫他的忙，但他的憂慮並未消減。“我只希望我請你幫忙的這件事，不要害你遇上相同的命運。”\n在這晚接下來的時間裡，你都在研讀探險隊的日誌，你的思緒在古怪的蛇人和阿茲特克的戰士之間游移。哈倫離開之後過了很久，一陣響亮的敲門聲把你嚇了一跳。這時臨近凌晨2:30。誰會在這個時間來敲你的門呢？你謹慎地打開了前門。門的另一邊是一位女士，有著古銅色的皮膚，棕色長捲髮，她一雙金色的明眸目光銳利，怒目圓睜。她穿著一件長大衣，戴著一頂博爾曼帽子，很顯然她穿著鞋子不太自在。她怒不可遏。你的腦中突然靈光一閃，你馬上認出了她是誰。畢竟你把日誌裡對埃茲特里戰士伊塔卡的描述讀了一遍又一遍。她重重地嘆了一口氣，慢步走進你家並關上了前門。“不管他們做了什麼，你必須得將它逆轉，”她用陰鬱的口吻說道，“否則我們都將不復存在。”"
     }
   ]
 },
 {
   "id": "eztli",
   "scenario_name": "埃茲特里的覆滅",
-  "full_name": "Scenario II: The Doom of Eztli",
+  "full_name": "冒險II：埃茲特里的覆滅",
   "header": "冒險II",
   "setup": [
     "check_wait_for_additional_supplies",
@@ -63366,7 +63366,7 @@
         "name": "Intro 1"
       },
       "type": "story",
-      "text": "<right><fancy>Wednesday, July 8th, 1925</fancy></right>\nOur runners, José and Maria, returned several days later. They were fully stocked with food, water, aspirin, and weapons. I am curious how deep Alejandro’s connections are in Mexico. For an outcast historian, he was able to secure guns and ammunition faster than I had anticipated. But perhaps it is better if he keeps his sources undisclosed.\nWe ventured once more into the jungle. This time, we were prepared. We had learned from our previous excursion, and we made our way across the river canyon, venturing deeper south than we had dared before. Eventually we reached the ruins Alejandro sought, and soon we will enter what Alejandro believes is the main temple. Strangely, the serpent creatures we encountered earlier didn’t attack in force as we had feared. Could they have fled? Or are they simply lying in wait, preparing to ambush while we sleep at night?"
+      "text": "<right><fancy>1925年7月8日，星期三</fancy></right>\n派出去取補給品的何塞和瑪利亞在幾天後回來了。他們帶回了滿滿的食物、水、阿司匹林、武器。我很好奇亞歷山卓在墨西哥究竟有著多深厚的人脈關係。作為一個被學界驅逐的歷史學家，他搞到槍枝和彈藥的速度之快，超出了我的預期。不過，這些東西的來路，或許別人還是不知道為好。\n我們再次進入叢林探險。這一次，我們做足了準備，從上次經歷中汲取教訓，穿過河谷，向之前不敢進入的南部更深處進發。最終我們來到了亞歷山卓苦苦找尋的遺跡，馬上就要進入遺跡內部，亞歷山卓認為主神廟就在這裡。奇怪的是，我們害怕的事情並未發生，早前遇到的蛇人並未來襲。它們逃走了嗎？還是說它們只是在等待，準備在晚上我們睡下的時後發動突襲？"
     },
     {
       "id": "intro_2",
@@ -63375,7 +63375,7 @@
         "name": "Intro 2"
       },
       "type": "story",
-      "text": "<right><fancy>Friday, July 3rd, 1925</fancy></right>\nWe spent most of yesterday moving our camp to the edge of the ruins. With the serpentine creatures still guarding the region, we have decided that a small party will have the best chance of slipping into the main temple unnoticed. I told Maria, the expedition’s naturalist, to take one of the trucks and wait beyond the northern edge of the rainforest. Our cartographer, José, is guarding the camp until we return. We’re on our own, but at least we’ve cleared an escape route in the event things go sour..."
+      "text": "<right><fancy>1925年7月3日，星期五</fancy></right>\n我們昨天幾乎花了一整天來轉移營地，在遺跡邊上紮營。蛇人仍然保衛著這片區域，為了悄聲無息地潛入主神廟，我們決定派出一支精銳小隊。我告訴探險隊中的博物學家瑪利亞，要她開一輛卡車，到叢林北面的邊境之外等候。我們的製圖專家何塞則負責保衛營地，直到我們回來。我們只能靠自己，但以防情況變糟，我們還清出了一條逃生路線……"
     },
     {
       "id": "gather_encounter_sets",
@@ -63394,19 +63394,19 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the Entryway into play. Each investigator begins play in the Entryway."
+      "text": "將遺跡入口放置入場。每位調查員從遺跡入口開始遊戲。"
     },
     {
       "id": "create_exploration_deck",
-      "text": "Create the exploration deck. This is done by taking the five single-sided [[Ancient]] locations and shuffling them together, along with one copy each of the following treachery cards: Ill Omen, Deep Dark, Final Mistake, Entombed, and Crypt Chill."
+      "text": "構建探索牌堆。拿取五張單面的[[古代]]地點，將這些地點與詭計卡混洗形成探索牌堆，詭計卡為以下每種一張：不祥之兆、一片漆黑、致命錯誤、半身入土、地窖寒風。"
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: The Harbinger of Valusia enemy, the Chamber of Time location, and the Relic of Ages asset."
+      "text": "將下列卡牌放在一邊，位於場外：瓦盧西亞的預示者敵人卡、時間石室地點卡、古代遺物支援卡。"
     },
     {
       "id": "set_aside_poisoned",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "將不在調查員牌組中的所有中毒弱點卡放在一邊。"
     },
     {
       "id": "encounter_deck",
@@ -63491,11 +63491,11 @@
     },
     {
       "id": "three_or_fewer_fury",
-      "text": "Check Campaign Log. Because there are three or fewer tally marks under “Yig’s Fury”"
+      "text": "查看冒險日誌。由於“伊格之怒”下方的記錄小於或等於3次："
     },
     {
       "id": "four_or_more_fury",
-      "text": "Check Campaign Log. Because there are four or more tally marks under “Yig’s Fury”"
+      "text": "查看冒險日誌。由於“伊格之怒”下方的記錄大於或等於4次："
     },
     {
       "id": "resolution_2",
@@ -63520,11 +63520,11 @@
     {
       "id": "yigs_fury_bad",
       "type": "story",
-      "text": "The creatures are upon you before you have time to react. You scream in agony as you are skewered by razor-sharp spears."
+      "text": "你還沒來的及反應，這些生物就朝你撲了過來，你被剃刀般鋒利的長矛刺穿，痛叫出聲。"
     },
     {
       "id": "defeated_investigators_killed",
-      "text": "Each investigator who was defeated is <b>killed</b>. (If there are not enough investigators to continue the campaign, the campaign is over and the players lose.)",
+      "text": "被擊敗的調查員<b>陣亡</b>。(如果沒有足夠的調查員繼續遊戲，那麼這個劇本結束並且玩家失敗。)",
       "effects": [
         {
           "type": "trauma",
@@ -63536,11 +63536,11 @@
     {
       "id": "yigs_fury_okay",
       "type": "story",
-      "text": "Suddenly, a distant voice hisses to the others, and the serpents tentatively retreat into the darkness. You run for your life, not taking any chances."
+      "text": "突然間，一道遙遠的聲音對這群生物嘶嘶低語，蛇群暫時退回黑暗之中。你捨命狂奔，不願再以身犯險。"
     },
     {
       "id": "mark_3_yigs_fury",
-      "text": "Record three tally marks under “Yig’s Fury.”",
+      "text": "在“伊格之怒”下方作3次記錄。",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -63559,14 +63559,14 @@
         "choices": [
           {
             "id": "go_back_in",
-            "text": "<i>“We can’t stop now—we have to go back inside!”</i>",
+            "text": "<i>“我們不能在這裡停下——我們必須回到神廟裡去！”</i>",
             "steps": [
               "resolution_4"
             ]
           },
           {
             "id": "destroy",
-            "text": "<i>“It’s too dangerous. This place must be destroyed.”</i>",
+            "text": "<i>“太危險了。必須把這個地方毀掉。”</i>",
             "steps": [
               "resolution_5"
             ]
@@ -63576,13 +63576,13 @@
     },
     {
       "id": "investigators_recovered_relic",
-      "text": "In your Campaign Log, record that <i>the investigators recovered the Relic of Ages</i>. One investigator must add the Relic of Ages to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "在冒險日誌中，記錄下<i>調查員找到了古代遺物</i>。一位調查員必須將古代遺物加入其牌組。這張卡牌不計入該調查員的卡牌張數。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "investigators_recovered_relic",
-          "text": "the investigators recovered the Relic of Ages."
+          "text": "調查員找到了古代遺物。"
         },
         {
           "type": "add_card",
@@ -63599,7 +63599,7 @@
         "choices": [
           {
             "id": "harbinger_alive",
-            "text": "Is the Harbinger of Valusia still in play or set aside?",
+            "text": "瓦盧西亞的預示者是否仍在場上或被放在一邊？",
             "steps": [
               "record_harbinger"
             ]
@@ -63609,18 +63609,18 @@
     },
     {
       "id": "record_harbinger",
-      "text": "Record in your Campaign Log that <i>the Harbinger is still alive</i>. Next to this, in parentheses, record how much damage is on the Harbinger of Valusia.",
+      "text": "在冒險日誌中，記錄下<i>預示者還活著</i>。在這句話旁邊，將瓦盧西亞的預示者身上的傷害點數記在括號裡。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia:",
+        "text": "瓦盧西亞的預示者身上的傷害點數：",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
             "operation": "set_input",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "預示者還活著(#X#點傷害)。"
           }
         ]
       }
@@ -63628,10 +63628,10 @@
     {
       "id": "record_yigs_fury",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "勝利牌區每有1點復仇點數，在你冒險日誌的“伊格之怒”下方作一次記錄。",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "勝利牌區裡的復仇點數：",
         "delta": true,
         "effects": [
           {
@@ -63645,11 +63645,11 @@
     {
       "id": "record_yigs_fury_plus_10",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "勝利牌區每有1點復仇點數，在你冒險日誌的“伊格之怒”下方作一次記錄。",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
-        "confirm_text": "Record an additional ten tally marks, as you have angered Yig with your foolish actions.",
+        "text": "勝利牌區裡的復仇點數：",
+        "confirm_text": "額外作10次記錄，你們愚蠢的行為觸怒了伊格。",
         "delta": true,
         "effects": [
           {
@@ -63673,13 +63673,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "alejandro_recovered_relic",
-          "text": "Alejandro recovered the Relic of Ages."
+          "text": "亞歷山卓找到了古代遺物。"
         }
       ]
     },
     {
       "id": "replay_scenario",
-      "text": "The investigators must replay <b>Scenario II: The Doom of Eztli</b>. Reset the game to this scenario’s Setup. Do not record anything in your Campaign Log except for any trauma suffered from your previous game. No experience points are earned from your previous game.",
+      "text": "調查員必須重玩<b>冒險II：埃茲特里的覆滅</b>。重置遊戲，至本場冒險的<b>設置階段</b>。除了在上一場遊戲中受到的任何創傷以外，不要在冒險日誌記錄任何信息。你們在上一局遊戲不獲得經驗點數。",
       "effects": [
         {
           "type": "campaign_data",
@@ -63690,11 +63690,11 @@
     },
     {
       "id": "choose_new_investigators",
-      "text": "Any player whose investigator was killed or driven insane must choose a new investigator to play, as normal."
+      "text": "任何玩家的調查員如已陣亡或發瘋，則他必須如常選擇一位新的調查員入場。"
     },
     {
       "id": "extra_doom_on_entryway",
-      "text": "During setup, when the Entryway is put into play, place one doom on it for each time this resolution has been reached."
+      "text": "在設置期間，在遺跡入口被放置入場時，每達成此結局一次，即在該地點上放置1個毀滅標記。"
     },
     {
       "id": "earn_xp",
@@ -63713,7 +63713,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "有任何玩家獲得中毒弱點卡嗎？",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -63722,7 +63722,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "已中毒",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -63754,7 +63754,7 @@
         "name": "Investigator Defeat"
       },
       "title": "調查員被擊敗",
-      "text": "The temple shakes with the ferocity of an earthquake, causing you to collapse to the ground. Serpent creatures emerge from the shadows around you, surrounding you completely. The thought, “This is how it ends,” flashes through your mind. For a moment, you contemplate the absurdity of your death. You can only hope that nobody else will be foolish enough to try to explore these forsaken ruins.",
+      "text": "神廟在猛烈的地震中劇烈搖晃，你倒了在地上。成群的蛇人從周圍的陰影中驟現，將你團團圍住。你的腦海中閃過一個念頭——“完了”，在這一刻，你想到自己竟然死得這麼荒唐。你只能希望，不會再有人犯傻，試圖探索這些失落的遺跡。",
       "steps": [
         "check_yigs_fury"
       ]
@@ -63771,7 +63771,7 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution was reached\n(each investigator resigned before act 3)",
+      "title": "未達成任何結局\n(所有調查員在場景3前均已撤退)",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -63789,7 +63789,7 @@
         "name": "Resolution 1"
       },
       "title": "結局1",
-      "text": "(The following is scrawled below the previous journal entry.)\nThe outside of the temple ruins appeared Aztec in origin, but once we breached the interior, it became clear that these buildings had a very different and inhuman origin. The ruins were alive. The grooves in the walls were illuminated as though powered by electricity, and a faint hum of energy reverberated throughout the halls. In spite of the serpent creatures, we were able to reach a hidden passage that led deeper underground.\nIn the central chamber of these underground halls, we found our prize: a steel orb of unknown origin, gently humming and glowing with a dim blue light. It was attached delicately to a bronze frame, appearing almost religious in its significance, and we knew it could not have been made by the Aztecs.\nWith the artifact in tow, we fled the ruins. The building had started to crumble around us, as though the orb was the only thing keeping it standing. Had it been powering the ruins, like a battery? What exactly was this device that the serpents guarded so fervently?\nMaria was waiting for us with the trucks when we finally reached the northern edge of the rainforest. We’re getting the hell out of this serpent-infested jungle while we still can.",
+      "text": "(以下是潦草地記在先前的日誌裡的內容。)\n神廟遺跡外部看起來像是阿茲特克風格，但當我們進入建築內部時，我們發現這些建築的起源顯然不同於阿茲特克，而是起源於非人種族。這些遺跡還“活”著。如同電力驅動一般，牆壁上的凹槽發出光芒，一陣低沉的能量嗡嗡聲在各個廳室中迴盪。儘管蛇人百般阻撓，我們還是開啟了一條秘密通道，通向更深的地下。\n在諸多地下廳室的中央石室裡，我們找到了自己的戰利品：一個發出輕微的嗡嗡聲、包裹在暗淡藍光中的神祕鋼球。這個球被精心嵌入一個青銅支架裡面，似乎具有宗教意義，我們認為它不可能是阿茲特克人所製。\n我們帶著遺物逃出了遺跡。這座建築開始劇震，彷彿它是依靠這個球才得以維持存在的。是這個球在為遺跡供能嗎，像電池一樣？得到眾蛇保護的這件遺物究竟是什麼？\n我們終於到達了叢林北部邊境，瑪利亞和卡車就在這等著我們。趁還來得及，我們得抓緊逃出這片蛇群出沒的叢林。",
       "steps": [
         "investigators_recovered_relic",
         "check_harbinger",
@@ -63805,7 +63805,7 @@
         "name": "Resolution 2"
       },
       "title": "結局2",
-      "text": "(The following is scrawled below the previous journal entry.)\nIt is not in my nature to leave a thing unfinished. For the sake of my fallen comrades, I have taken it upon myself to record the remainder of our expedition in this journal.\nThe others never made it out of the temple. I convinced two of the other members of the expedition, José and Andrea, to venture in after the others...But now I fear a terrible fate has befallen them, as well.\nThankfully, my gambit was worthwhile. While José and Andrea searched for the others, I snuck into the temple and took a different route. Having seen what we have seen, knowing what we know now, I couldn’t have returned to the university without evidence of our discovery. While the serpent creatures were distracted, I was able to reach a hidden passageway that led deeper underground.\nIn the central chamber of these underground halls, I found the device. The orb was made of an unnatural steel, attached delicately to its bronze frame. It pulsed with power in my hands and glowed with a dim blue light. Any fool could tell that it was not made by the Aztecs, but the other members of the expedition could not even begin to understand its true significance. The ruins started to crumble around me as I left, but it mattered not. The relic was all that mattered now.\nWith the artifact in tow, I returned to camp and told the others it was time to depart. Maria was waiting for us with the trucks when we finally reached the northern edge of the jungle. Now we are headed to Texas, where we will cross the border into the United States.\nIt is a shame what happened to the others. Their sacrifice will not be in vain. Now, my work can continue.\n– Alejandro Vela",
+      "text": "(以下是潦草地記在先前的日誌裡的內容。)\n半途而廢不是我的作風。為了我死去的同伴，我決定自己在這本日誌上記錄接下來的探險。\n其他人沒能活著逃出神殿。我說服了探險隊的另外兩名成員，何塞和安德里亞。讓他們進去尋找其他人……但我擔心他們也遭逢了同樣的厄運。\n謝天謝地，我的策略奏效了。當何塞和安德里亞搜尋他人時，我偷偷溜進神廟，沿著另一條路線走。我親眼目睹，知道了那些事情，現在必須找到證據以作證明，才能返回大學。趁著蛇人在注意別處之際，我來到了一條秘密通道，通往更深的地下。\n在諸多地下廳室的中央石室裡，我找到了一件遺物。這個球體是由非天然的鋼鐵製成，精巧地安裝在青銅支架上。它在我手中有力地搏動，發出暗淡的藍色光芒。傻子都知道它不是阿茲特克人製造出來的，但探險隊的其他隊員還不了解它真正的意義。在我離開的時候，我周圍的遺跡開始晃動，但這不打緊，那個遺物是現在唯一要緊的東西。\n我拖著這個遺物返回了營地，讓其他隊員立刻撤離。我們終於到達了叢林北部邊境，瑪利亞和卡車就在這等著我們。現在我們得穿過邊境進入美國，前往德克薩斯州。\n很遺憾在別的隊員身上發生了這樣的事。他們不會白白犧牲的。現在，我可以繼續研究了。\n——亞歷山卓·維拉",
       "steps": [
         "alejandro_recovered_relic",
         "check_harbinger",
@@ -63821,7 +63821,7 @@
         "name": "Resolution 3"
       },
       "title": "結局3",
-      "text": "(The following is scrawled below the previous journal entry.)\nThis was a mistake. This was all a terrible mistake. We escaped the temple with our lives, but not a moment too soon. The ruins were alive. It was as though the walls knew of our intrusion, hated us for our presence. Wanted us out. Wanted us dead.\nWe have gathered outside the temple where José is waiting for us. Alejandro, unwilling to return home empty-handed, wants us to go back inside. We must decide what to do next.",
+      "text": "(以下是潦草地記在先前的日誌裡的內容。)\n那是個錯誤，那完全就是個可怕的錯誤。我們活著逃出了神廟，沒有一秒餘裕。這些遺跡還“活”著。牆壁彷彿知道我們入侵此地，對我們的存在深惡痛絕，要我們滾，要置我們於死地。\n我們在神廟外集合，而何塞就在這兒等待我們。亞歷山卓不希望空手而回，想要我們回到神廟裡去。我們得決定接下來要做什麼。",
       "steps": [
         "choose_to_continue"
       ]
@@ -63833,7 +63833,7 @@
         "name": "Resolution 4"
       },
       "title": "結局4",
-      "text": "(The following is scrawled below the previous journal entry.)\nWe’ve made our decision. Alejandro is right: we’ve come too far to back down now. Our plan is to regroup and head back into the temple once more. Even from here, we can tell that the layout of the temple has warped and changed. The ruins seem to have reset to their dormant state. With any luck, we’ll make it out this time...",
+      "text": "(以下是潦草地記在先前的日誌裡的內容。)\n我們做出了決定。亞歷山卓說得對：我們不能半途放棄，我們得重組隊伍，再次回到神廟裡去。即使從這兒看，我們也能明顯看出神廟發生了扭曲和變化。這些遺跡似乎重新進入了休眠狀態。如果幸運的話，我們這次會成功的……",
       "steps": [
         "replay_scenario",
         "choose_new_investigators",
@@ -63848,7 +63848,7 @@
         "name": "Resolution 5"
       },
       "title": "結局5",
-      "text": "(The following is scrawled below the previous journal entry.)\nWe made our decision. There was no way we were going back into that deathtrap. Thankfully, there was another way. José had brought some TNT from the trucks, and there was more than enough to level the damned place.\nThat night, we put on a hell of a fireworks show. The jungle protested. Birds scattered into the sky, the ground rumbled, and hateful snarls surrounded our camp. But the dynamite did its job. Once the dust settled, we began sifting through the debris in search of anything with historical or cultural significance we could bring back to Arkham.\nJosé was the first to notice the blue light peeking out from underneath the remains of the temple. The rays grew in intensity with each passing moment. As we started clearing the rubble in order to discover the source of the light, there was a sudden flash, and the debris at the center of the ruins scattered. A steel orb of unknown origin lay on top of the rubble, gently humming. It was attached delicately to a bronze frame, appearing almost religious in its significance. The blue glow emanating from the device dimmed as I touched it. There was no way a device like this was built by the Aztecs.\nWith the artifact in tow, we left the smoldering temple behind us. We had outstayed our welcome in this rainforest, and we knew it. Around us, the jungle hissed. The ground slithered and crawled with snakes. In the darkness, we heard shouts in a language we could not understand. There was no time to pack up camp; we ran as soon as we had the chance. Andrea was struck in her throat by a black-feathered arrow, her startled scream captured in grim perpetuity. José was grabbed by a giant boa as we fled north into the river canyon. His neck snapped before we could reach him.\nMaria was waiting for us with the trucks when we finally reached the northern edge of the jungle. We didn’t stop until we crossed into Mexico City. Even now I do not feel safe: who could, after seeing what we have seen?\nTo hell with the Eztli and to hell with this forsaken place.",
+      "text": "(以下是潦草地記在先前的日誌裡的內容。)\n我們做出了決定。我們不能回去那座危險的建築中。值得慶幸的是，還有另一種辦法。何塞從卡車裡拿出了一些TNT炸藥，足夠將這個該死的地方夷為平地。\n當天夜裡，我們簡直是搞了一場煙火秀。叢林對此舉十分抗拒，鳥群受驚飛向天空，地面震動不已，我們的營地周圍充斥著憤恨的嚎叫。但炸藥發揮了效用，將建築炸毀。當塵埃落定，我們開始在廢墟中搜，找具有歷史或文化意義的東西，好像我們帶回阿卡姆。\n何塞最先發現了神廟殘垣下發出的藍色光芒。光芒隨著時間流逝而愈發強烈。當我們開始清理碎石，以便找到光芒的來源時，突然一道閃光，遺跡中央的廢墟四散開來。一個來歷不明的鋼球位於碎石堆頂上，發出輕微的嗡嗡聲。這個球被精心嵌入一個青銅支架裡面，似乎具有宗教意義。當我觸碰它的時候，從這件遺物中發出了暗淡的藍色光芒。這樣的遺物不可能是阿茲特克人製造出來的。\n我們拖著這個遺物逃出了遺跡，將還冒著青煙的神廟拋在身後。我們在叢林已逗留太久，我們自己也清楚地知道這一點。在我們周圍，整個叢林充斥著嘶嘶聲，地面上爬滿了蜿蜒的蛇群。在黑暗之中，我們聽到一種無法理解的語言在此起彼伏地吼叫著。沒時間收拾營地了；我們得抓緊時間逃跑。安德里亞的喉嚨被一根黑羽箭刺中，她驚恐的尖叫永遠被扼在喉嚨裡，叫不出聲。在我們一路向北，逃到河谷時，何塞被一條巨蟒緊緊纏住。我們還沒來得及施以援手，他的脖子就被折斷了。\n我們終於到達了叢林北部邊境，瑪利亞和卡車就在這等著我們。我們到了墨西哥城之後，才停下了腳步。至今我仍沒有安全感：在親眼目睹那一切之後，我們還能重獲安全感嗎？\n讓埃茲特里和這個被遺忘的地方都見鬼去吧。",
       "steps": [
         "investigators_recovered_relic",
         "check_harbinger",
@@ -64106,7 +64106,7 @@
     },
     {
       "id": "set_aside_poisoned",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "將不在調查員牌組中的所有中毒弱點卡放在一邊。"
     },
     {
       "id": "encounter_deck",
@@ -64218,7 +64218,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "有任何玩家獲得中毒弱點卡嗎？",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -64227,7 +64227,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "已中毒",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -64347,7 +64347,7 @@
     },
     {
       "id": "set_aside_poisoned",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "將不在調查員牌組中的所有中毒弱點卡放在一邊。"
     },
     {
       "id": "encounter_deck",
@@ -64393,14 +64393,14 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia:",
+        "text": "瓦盧西亞的預示者身上的傷害點數：",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
             "operation": "set_input",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "預示者還活著(#X#點傷害)。"
           }
         ]
       }
@@ -64408,10 +64408,10 @@
     {
       "id": "record_yigs_fury",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "勝利牌區每有1點復仇點數，在你冒險日誌的“伊格之怒”下方作一次記錄。",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "勝利牌區裡的復仇點數：",
         "delta": true,
         "effects": [
           {
@@ -64489,7 +64489,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "有任何玩家獲得中毒弱點卡嗎？",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -64498,7 +64498,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "已中毒",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -65086,7 +65086,7 @@
         "name": "Prologue"
       },
       "type": "story",
-      "text": "<right><fancy>Tuesday, June 2nd, 1925</fancy></right>\nThere will be no rest for us this summer, it seems.\nToday I met with Harlan Earnstone, a historical theorist at Miskatonic University and an old friend of mine. He’d said he had a job offer for me, but frankly, I didn’t know what to expect.\nHarlan introduced me to an associate of his: Alejandro Vela, a distinguished historian from across the southern border. Mr. Vela is a graduate of a prestigious university in Mexico City, and has spent many years researching the Aztec Empire. He claims that he has found evidence regarding the existence of an unheard-of Aztec city-state called Eztli. His strange and unprecedented findings were not accepted by the university, and he’s become a pariah among his peers.\nAlejandro came to Arkham to seek funding for an expedition into the rainforests of southern Mexico, where he believes that the ruins of the Eztli altepetl lie undiscovered. His description of this city-state’s origins defies modern understanding of Mesoamerican history. Despite this— or, knowing my old friend, because of this—Harlan is enthralled by Alejandro’s discoveries. Miskatonic University has agreed to fund the expedition (albeit meagerly), and Harlan wants me to go along.\nThe way I see it, there’s a good chance we’re looking for something that doesn’t even exist. But if there’s even a slight chance these Eztli people existed, the historical significance would be profound. We debated the issue for some time, but in the end, we accepted Alejandro’s offer. Preparations are underway, and we should be setting off by the end of the month. With any luck, we’ll have this journal filled with all manner of interesting discoveries. If not, perhaps it’ll be a nice wedge to place beneath Harlan’s lopsided desk."
+      "text": "<right><fancy>1925年6月2日，星期二</fancy></right>\n看來今年夏天我們沒工夫休息了。\n今天我去見我的老朋友，米斯卡塔尼克大學的歷史理論家哈倫·恩斯通。他說他有份差事給我，但老實說，我不知道他要介紹什麼差事給我。\n哈倫向我介紹了他的一位同事：亞歷山卓·維拉，一位來自南部邊境以外的著名歷史學家。維拉先生畢業於墨西哥城一所知名學府，他用了許多年來尋找阿茲特克王國。他聲稱找到了證據，能夠證明一個前所未聞的阿茲特克城邦——埃茲特里的存在。他古怪而空前的發現未被大學接受，還遭到了同行的唾棄。\n亞歷山卓來到阿卡姆尋求贊助，籌措前往墨西哥南部叢林探險的資金，他相信埃茲特里城邦的遺跡就在那兒，等待被發現。他對於那個城邦起源的描述，有悖於當代對中美洲歷史的理解。儘管如此，或者說，憑我對這位老友的瞭解，哈倫正因為這一點，才沉醉於亞歷山卓的發現。米斯卡塔尼克大學同意出資贊助這次探險(儘管金額不多)，哈倫希望我同行。\n在我看來，很有可能我們所尋找的東西根本就不存在。但若是埃茲特里人有存在的可能性，哪怕微乎其微，都具有深遠的歷史意義。我們為此事爭論了好一會，但最終我還是接受了亞歷山卓的邀請。準備工作緊密進行著，我們將在月底之前出發。如果運氣好的話，我們會讓這本日誌上寫滿各種有趣的發現。不然，這本日誌多半就只能被哈倫拿來墊桌腳了。"
     },
     {
       "id": "choose_investigators",
@@ -65097,12 +65097,12 @@
     },
     {
       "id": "expedition_leader",
-      "text": "If Ursula Downs, Leo Anderson, or Monterey Jack was chosen as an investigator for this campaign: Choose one of those investigators to be the expedition leader. That investigator begins Scenarios I and II as the lead investigator."
+      "text": "如果厄休拉·唐斯、里奧·安德森或蒙特雷·傑克作為調查員參與劇本：選擇他們之中的一位調查員擔任本次探險的隊長，在開始冒險I和冒險II時，由該調查員擔任調查隊隊長。"
     },
     {
       "id": "supplies",
       "type": "input",
-      "text": "As an outcast from academia, funding for Alejandro’s expedition is limited. Each investigator must choose supplies to bring for the expedition. In the Campaign Log, under each investigator’s “Supplies” section, record the supplies that investigator chose to bring. <i>(Note: Provisions and Medicine can be taken more than once by recording their name multiple times and spending the appropriate number of supply points each time.)</i>",
+      "text": "作為一個被驅逐出學術界的人，亞歷山卓的探險資金有限。每位調查員必須選擇本次探險所要攜帶的補給品。在冒險日誌中每位調查員的“補給品”下方，記錄下調查員選擇要攜帶的補給品。<i>(注意：配給和藥品可以多次拿取，如果多次拿取，則每次均需要記錄其名稱，並且花費對應的補給品點數。)</i>",
       "input": {
         "type": "supplies",
         "section": "supplies",
@@ -65116,69 +65116,69 @@
           {
             "id": "provisions",
             "name": "Provisions",
-            "description": "Food and water for one person. A must-have for any journey.",
+            "description": "一人份的乾糧和水。出行必備。",
             "cost": 1,
             "multiple": true
           },
           {
             "id": "medicine",
             "name": "Medicine",
-            "description": "To stave off disease, infection, or venom.",
+            "description": "治病，消除感染，解毒。",
             "cost": 2,
             "multiple": true
           },
           {
             "id": "rope",
-            "name": "Rope",
-            "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
+            "name": "繩索",
+            "description": "幾圈又長又結實的繩索，對於攀爬和岩洞探險來說至關重要。",
             "cost": 3
           },
           {
             "id": "blanket",
-            "name": "Blanket",
-            "description": "For warmth at night.",
+            "name": "毛毯",
+            "description": "好在夜裡保暖。",
             "cost": 2
           },
           {
             "id": "canteen",
             "name": "Canteen",
-            "description": "Can be refilled at streams and rivers.",
+            "description": "可以在小溪和河邊盛水。",
             "cost": 2
           },
           {
             "id": "torches",
-            "name": "Torches",
-            "description": "Can light up dark areas, or set sconces alight.",
+            "name": "火把",
+            "description": "可以照亮昏暗的區域，或點燃燭臺。",
             "cost": 3
           },
           {
             "id": "compass",
-            "name": "Compass",
-            "description": "Can guide you when you are hopelessly lost.",
+            "name": "指南針",
+            "description": "在你迷失方向而絕望時，它能夠指引你。",
             "cost": 2
           },
           {
             "id": "map",
             "name": "Map",
-            "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+            "description": "現在地圖上還沒作標記，但隨著時間推移，你或許能夠描繪出周邊的環境。",
             "cost": 3
           },
           {
             "id": "binoculars",
-            "name": "Binoculars",
-            "description": "To help you see faraway places.",
+            "name": "雙筒望遠鏡",
+            "description": "幫助你看到更遠的地方。",
             "cost": 2
           },
           {
             "id": "chalk",
-            "name": "Chalk",
-            "description": "For writing on rough stone surfaces.",
+            "name": "粉筆",
+            "description": "用來在粗糙的石面寫字。",
             "cost": 2
           },
           {
             "id": "pendant",
-            "name": "Pendant",
-            "description": "Useless, but fond memories bring comfort to travelers far from home.",
+            "name": "掛墜",
+            "description": "沒甚麼用，但美好的回憶能給遠離家鄉的遊子帶來安慰。",
             "cost": 1
           }
         ]
@@ -65189,7 +65189,7 @@
 {
   "id": "tfa_interlude1",
   "scenario_name": "不眠之夜",
-  "full_name": "Interlude I: Restless Nights",
+  "full_name": "幕間故事I：不眠之夜",
   "header": "幕間故事 I",
   "type": "interlude",
   "icon": "deadly_traps",
@@ -65205,7 +65205,7 @@
   "steps": [
     {
       "id": "prompt",
-      "text": "In order, read each of the following sections:"
+      "text": "按順序閱讀以下段落："
     },
     {
       "id": "check_blanket",
@@ -65214,17 +65214,17 @@
         "name": "Blanket Check"
       },
       "type": "branch",
-      "text": "Check your supplies to see which investigators have a blanket.",
+      "text": "查看你們的補給品，檢查那些調查員帶有毛毯。",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
         "investigator": "all",
         "id": "blanket",
-        "name": "Blanket",
+        "name": "毛毯",
         "options": [
           {
             "boolCondition": true,
-            "prompt": "Restful Sleep",
+            "prompt": "安穩入睡",
             "border": true,
             "effects": [
               {
@@ -65238,7 +65238,7 @@
           },
           {
             "boolCondition": false,
-            "prompt": "Tossing and Turning",
+            "prompt": "輾轉反側",
             "border": true,
             "effects": [
               {
@@ -65264,8 +65264,8 @@
         "name": "Tossing and Turning"
       },
       "type": "story",
-      "title": "Tossing and Turning",
-      "text": "Those nights in the jungle, I barely slept. A strange fog rolled through the camp each night, plunging the area in an intense and peculiar cold. My bedroll offered some protection against the elements, but we hadn’t been prepared for this unnatural weather. Flies and mosquitoes buzzed in my ears every time I began to drift off. Even when I finally slept, I would soon be startled awake by the crawling of an insect or lizard across my face. I wager I’ll get very little sleep on this journey..."
+      "title": "輾轉反側",
+      "text": "在叢林度過的每個夜晚，我都幾乎沒睡著過。一團古怪的霧氣每晚壟罩著營地，使這片區域陷入詭異的嚴寒。我的睡袋多少可以抵擋些嚴寒，但我們並未作準備對應這異常的氣候。每當我將要入睡時，蒼蠅和蚊子就在我的耳朵裡嗡嗡作響。就算我睡著了，也很快會因為昆蟲或蜥蜴在臉上爬來爬去而嚇醒。我敢打賭，我在這趟旅程中睡不了多少時間……"
     },
     {
       "id": "restful_sleep",
@@ -65273,9 +65273,9 @@
         "id": "the_forgotten_age.interlude_1.restful_sleep",
         "name": "Restful Sleep"
       },
-      "title": "Restful Sleep",
+      "title": "安穩入睡",
       "type": "story",
-      "text": "Mercifully, I was able to sleep through each night. However, while my body rested, my mind was plagued by nightmares. A cavern like a gaping maw, bathed in dim red light...the walls slithering with the glimmering scales of a hundred vipers...it might have been better had I not slept at all."
+      "text": "幸好，我每晚還能入睡。但是，在我的身體得到休息的同時，精神卻受著夢魘的折磨。我夢到身在昏暗的紅光之中，有一處血盆大口一般的洞穴……上百條毒蛇的鱗片在洞壁上閃爍著微光……我情願自己沒睡著。"
     },
     {
       "id": "no_ill_effects",
@@ -65287,7 +65287,7 @@
         "id": "the_forgotten_age.interlude_1.provisions_check",
         "name": "Provisions Check"
       },
-      "text": "Check your supplies. The investigators, as a group, must cross off one provisions per investigator from their supplies. For each provisions they cannot cross off, choose an investigator to read <b>Low on Rations</b>.",
+      "text": "查看你們的補給品。調查員以團隊為單位，必須從補給品中劃掉配給，劃掉的數量等於調查員人數。調查員每少劃掉一個配給，選擇一位調查員來閱讀<b>配給不足</b>。",
       "type": "input",
       "input": {
         "type": "use_supplies",
@@ -65322,7 +65322,7 @@
       },
       "type": "story",
       "title": "Low on Rations",
-      "text": "We thought we’d brought enough food and water for everybody, but the journey had taken its toll on our supplies. When the sun rose and it came time to eat, we discovered we were already running out of provisions."
+      "text": "我們原以為帶的食物和水足夠我們所有人享用，但這趟旅程耗盡了我們的物資。當太陽升起，到了進食的時間，我們發現自己的食物和水都已耗盡。"
     },
     {
       "id": "fewer_resources",
@@ -65334,18 +65334,18 @@
         "id": "the_forgotten_age.interlude_1.binoculars_check",
         "name": "Binoculars Check"
       },
-      "text": "The lead investigator must choose one investigator to be the group’s lookout. Then, that investigator checks their supplies to see if they have binoculars.",
+      "text": "調查員隊長必須選擇一位調查員來為隊伍放哨。然後，該調查員查看自己的補給品之中是否帶有雙筒望遠鏡。",
       "type": "input",
       "input": {
         "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
-        "name": "(has binoculars)",
+        "name": "(有雙筒望遠鏡)",
         "investigator": "choice",
-        "prompt": "Group's lookout",
+        "prompt": "團隊的放哨者",
         "positiveChoice": {
           "id": "positive",
-          "text": "Shapes in the Trees",
+          "text": "樹林中的身影",
           "border": true,
           "effects": [
             {
@@ -65364,7 +65364,7 @@
         },
         "negativeChoice": {
           "id": "eyes_in_the_dark",
-          "text": "Eyes in the Dark",
+          "text": "黑暗中的眼睛",
           "border": true,
           "effects": [
             {
@@ -65389,8 +65389,8 @@
         "name": "Eyes in the Dark"
       },
       "type": "story",
-      "title": "Eyes in the Dark",
-      "text": "Each night, I was watched. I didn’t just feel watched: I saw the eyes peering out from the inky darkness that surrounded our camp. They knew we were there. The yellow eyes watched me, alert, my weapons drawn, ready to defend the camp if the need arose. Our eyes met, and a darkness seized my heart."
+      "title": "黑暗中的眼睛",
+      "text": "每一個夜晚，我都受到監視。這並不是我的錯覺：我看見在營地的周圍，有許多雙眼睛從漆黑之中投來視線。它們知道我們在那裡。那些黃色的眼睛緊盯著我，我心生警惕，拔出自己的武器來準備保衛營地。就在目光相接之時，一片黑暗攫噬了我的心靈。"
     },
     {
       "id": "shapes_in_the_tress",
@@ -65399,12 +65399,12 @@
         "name": "Shapes in the Trees"
       },
       "type": "story",
-      "title": "Shapes in the Trees",
-      "text": "Most of the nights passed without incident, but on this night, I was startled by the rustling of tree branches along the southern border of our camp’s clearing. Despite the darkness, I was able to use my binoculars to see shapes moving in the trees. The shapes appeared human, but...why? Why do they only watch us from afar? What is their purpose?"
+      "title": "樹林中的身影",
+      "text": "大多數夜晚都無驚無險地度過了，但今晚，營地空地的南邊傳來枝葉的沙沙聲，把我嚇了一跳。儘管身處黑夜，我還是能用雙筒望遠鏡看到樹林中移動的身影。那些身影看起來像人類，但……為什麼？他們為什麼要從遠處監視我們，他們有何目的？"
     },
     {
       "id": "bonus_binoculars_xp",
-      "text": "You earn 2 additional experience as you gain further insight into the motivations of the Eztli."
+      "text": "你進一步了解埃茲特里人的動機，獲得2點額外的經驗點數。"
     },
     {
       "id": "use_medicine",
@@ -65474,7 +65474,7 @@
       },
       "type": "story",
       "title": "The Poison Spreads",
-      "text": "As the days went by, the poison continued to spread through my body. By the second night, my skin was drenched in sweat. I started having difficutly breathing, and I began every morning by retching up most of the previous night’s dinner."
+      "text": "隨著時間的流逝，毒性在我的體內持續擴散。到了第二晚，汗水浸濕了我的皮膚。我呼吸變得十分困難，每天早晨起來，我幾乎都要將前一晚的晚餐吐出來。"
     }
   ]
 },
@@ -66562,7 +66562,7 @@
     },
     {
       "id": "set_aside_poisoned",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "將不在調查員牌組中的所有中毒弱點卡放在一邊。"
     },
     {
       "id": "encounter_deck",
@@ -66689,14 +66689,14 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia:",
+        "text": "瓦盧西亞的預示者身上的傷害點數：",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
             "operation": "set_input",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "預示者還活著(#X#點傷害)。"
           }
         ]
       }
@@ -66704,10 +66704,10 @@
     {
       "id": "record_yigs_fury",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "勝利牌區每有1點復仇點數，在你冒險日誌的“伊格之怒”下方作一次記錄。",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "勝利牌區裡的復仇點數：",
         "delta": true,
         "effects": [
           {
@@ -66736,7 +66736,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "有任何玩家獲得中毒弱點卡嗎？",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -66745,7 +66745,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "已中毒",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -67687,7 +67687,7 @@
         "section": "supplies",
         "investigator": "any",
         "id": "torches",
-        "name": "Torches",
+        "name": "火把",
         "options": [
           {
             "boolCondition": true,
@@ -68685,7 +68685,7 @@
     },
     {
       "id": "set_aside_poison",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "將不在調查員牌組中的所有中毒弱點卡放在一邊。"
     },
     {
       "id": "encounter_deck",
@@ -68916,14 +68916,14 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia:",
+        "text": "瓦盧西亞的預示者身上的傷害點數：",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
             "operation": "set_input",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "預示者還活著(#X#點傷害)。"
           }
         ]
       }
@@ -68931,10 +68931,10 @@
     {
       "id": "record_yigs_fury",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "勝利牌區每有1點復仇點數，在你冒險日誌的“伊格之怒”下方作一次記錄。",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "勝利牌區裡的復仇點數：",
         "delta": true,
         "effects": [
           {
@@ -68996,7 +68996,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "有任何玩家獲得中毒弱點卡嗎？",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -69005,7 +69005,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "已中毒",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -69069,7 +69069,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "rope",
-        "name": "Rope",
+        "name": "繩索",
         "prompt": "Use rope",
         "investigator": "choice",
         "min": 1,
@@ -69516,7 +69516,7 @@
         "section": "supplies",
         "investigator": "any",
         "id": "chalk",
-        "name": "Chalk",
+        "name": "粉筆",
         "options": [
           {
             "boolCondition": true,
@@ -69581,7 +69581,7 @@
     },
     {
       "id": "eat_provisions",
-      "text": "Check your supplies. The investigators, as a group, must cross off one provisions per investigator from their supplies. For each provisions they cannot cross off, choose an investigator to read <b>Low on Rations</b>.",
+      "text": "查看你們的補給品。調查員以團隊為單位，必須從補給品中劃掉配給，劃掉的數量等於調查員人數。調查員每少劃掉一個配給，選擇一位調查員來閱讀<b>配給不足</b>。",
       "type": "input",
       "input": {
         "type": "use_supplies",
@@ -69700,18 +69700,18 @@
     },
     {
       "id": "check_blanket",
-      "text": "Check your supplies to see which investigators have a blanket.",
+      "text": "查看你們的補給品，檢查那些調查員帶有毛毯。",
       "type": "branch",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
         "investigator": "all",
         "id": "blanket",
-        "name": "Blanket",
+        "name": "毛毯",
         "options": [
           {
             "boolCondition": true,
-            "prompt": "Restful Sleep",
+            "prompt": "安穩入睡",
             "border": true,
             "effects": [
               {
@@ -69725,7 +69725,7 @@
           },
           {
             "boolCondition": false,
-            "prompt": "Tossing and Turning",
+            "prompt": "輾轉反側",
             "border": true,
             "effects": [
               {
@@ -69751,7 +69751,7 @@
         "name": "Tossing and Turning"
       },
       "type": "story",
-      "title": "Tossing and Turning",
+      "title": "輾轉反側",
       "text": "Sleep does not come easily for you. Barely any layers protect you from the bitter cold of the underground cavern, and you lie shivering for hours before exhaustion finally claims you. You awaken every hour or so as the shifting of your body almost causes you to tumble off your stone perch. When “morning” comes, you are even more weary than you were the previous night."
     },
     {
@@ -69760,7 +69760,7 @@
         "id": "the_forgotten_age.interlude_4.restful_sleep",
         "name": "Restful Sleep"
       },
-      "title": "Restful Sleep",
+      "title": "安穩入睡",
       "type": "story",
       "text": "Though you long for a proper bed, at least your blanket protects you from the frigid chill that permeates the cavern. When “morning” arrives, your body longs for more sleep, but you know you must press onward and reach the Nexus as fast as you can..."
     }
@@ -69872,7 +69872,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "gave_relic_to_alejandro",
-                "text": "the investigators gave custody of the relic to Alejandro."
+                "text": "調查員將遺物交給了亞歷山卓。"
               }
             ]
           },
@@ -69887,7 +69887,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "gave_relic_to_harlan",
-                "text": "the investigators gave custody of the relic to Harlan Earnstone."
+                "text": "調查員將遺物交給了哈倫·恩斯通。"
               }
             ]
           }
@@ -70909,14 +70909,14 @@
           {
             "id": "provisions",
             "name": "Provisions",
-            "description": "Food and water for one person. A must-have for any journey.",
+            "description": "一人份的乾糧和水。出行必備。",
             "cost": 1,
             "multiple": true
           },
           {
             "id": "medicine",
             "name": "Medicine",
-            "description": "To stave off disease, infection, or venom.",
+            "description": "治病，消除感染，解毒。",
             "cost": 2,
             "multiple": true
           },
@@ -70929,32 +70929,32 @@
           },
           {
             "id": "blanket",
-            "name": "Blanket",
-            "description": "For warmth at night.",
+            "name": "毛毯",
+            "description": "好在夜裡保暖。",
             "cost": 2
           },
           {
             "id": "canteen",
             "name": "Canteen",
-            "description": "Can be refilled at streams and rivers.",
+            "description": "可以在小溪和河邊盛水。",
             "cost": 2
           },
           {
             "id": "compass",
-            "name": "Compass",
-            "description": "Can guide you when you are hopelessly lost.",
+            "name": "指南針",
+            "description": "在你迷失方向而絕望時，它能夠指引你。",
             "cost": 2
           },
           {
             "id": "binoculars",
-            "name": "Binoculars",
-            "description": "To help you see faraway places.",
+            "name": "雙筒望遠鏡",
+            "description": "幫助你看到更遠的地方。",
             "cost": 2
           },
           {
             "id": "chalk",
-            "name": "Chalk",
-            "description": "For writing on rough stone surfaces.",
+            "name": "粉筆",
+            "description": "用來在粗糙的石面寫字。",
             "cost": 2
           },
           {
@@ -71374,7 +71374,7 @@
     },
     {
       "id": "create_explore_deck",
-      "text": "Create the exploration deck. This is done by taking the five single-sided [[Ancient]] locations and shuffling them together, along with one copy each of the following treachery cards: Ill Omen, Deep Dark, Final Mistake, Entombed, and Crypt Chill."
+      "text": "構建探索牌堆。拿取五張單面的[[古代]]地點，將這些地點與詭計卡混洗形成探索牌堆，詭計卡為以下每種一張：不祥之兆、一片漆黑、致命錯誤、半身入土、地窖寒風。"
     },
     {
       "id": "set_aside_cards",
@@ -71394,7 +71394,7 @@
     },
     {
       "id": "set_aside_poison",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "將不在調查員牌組中的所有中毒弱點卡放在一邊。"
     },
     {
       "id": "encounter_deck",
@@ -71512,7 +71512,7 @@
 {
   "id": "wilds",
   "scenario_name": "荒莽密林",
-  "full_name": "Scenario I: The Untamed Wilds",
+  "full_name": "冒險I：荒莽密林",
   "header": "冒險I",
   "setup": [
     "intro",
@@ -71531,7 +71531,7 @@
         "name": "Prologue"
       },
       "type": "story",
-      "text": "<right><fancy>Sunday, June 28th, 1925</fancy></right>\nIt’s been a hell of a day. We’ve just set up camp along the northern border of the rainforest where Alejandro believes the Eztli once dwelled. The jungle here is dense and untamed. The sky hides above the tree cover, but I can tell from the crisp breeze that storm clouds are brewing overhead.\nThe dangers of our expedition have been explained to us many times. We are hundreds of miles away from any sign of civilization. Nobody in modern times has yet to pierce the heart of these wilds. Until now, nobody has had reason to try. After all, it wouldn’t make sense to find Aztec ruins in this region of Mexico. And yet, here we are: looking for ruins that may not exist in a place where, by all accounts, they should not.\nAlready one of our surveyors has fallen ill, and another has been bitten by a viper. I’m starting to think the rainforest doesn’t want us here. If this luck persists, ours will be the shortest expedition in Miskatonic University’s history. Tonight, we rest. Tomorrow, we venture into uncharted wilds."
+      "text": "<right><fancy>1925年6月28日，星期天</fancy></right>\n今天真是糟透了。我們剛剛才在叢林南部邊境紮好營，這兒就是亞歷山卓深信埃茲特里曾經存在的地方。這片叢林生長茂密，充滿野性。樹冠遮蓋了天空，但從這清爽的微風看來，我敢肯定頭上正積聚著烏雲。\n我們曾多次被告知本次探險的危險性。這裡遠離文明的跡象已有幾百英里，當代還沒人踏入過這片狂野之地的腹地。直至現在，也沒有人有理由去作這一嘗試。畢竟，墨西哥的這個區域根本不應該存在阿茲特克遺跡。但現在我們到此尋找遺跡，儘管大家都說它不可能存在於此。\n我們的一位測量員已疾病纏身，而另一位則被毒蛇咬傷。我不禁覺得，叢林不希望我們在此出現。要是運氣一直這麼糟，我們這次探險恐怕要成米斯卡塔尼克大學史上最短的探險了。今晚我們先作休整，明天便要步入這片神秘的野地探險了。"
     },
     {
       "id": "gather_encounter_sets",
@@ -71550,11 +71550,11 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the Expedition Camp into play. Each investigator begins play at the Expedition Camp."
+      "text": "將探險營地放置入場。每位調查員從探險營地開始遊戲。"
     },
     {
       "id": "create_exploration_deck",
-      "text": "Create the exploration deck. This is done by taking the five single-sided [[Jungle]] locations and shuffling them together, along with one copy each of the following treachery cards: Lost in the Wilds, Overgrowth, Snake Bite, Low on Supplies, and Arrows from the Trees."
+      "text": "構建探索牌堆。拿取五張單面的[[叢林]]地點，並與以下詭計卡每種一張混洗：迷失荒野、瘋狂生長、毒蛇噬咬、補給短缺、林中暗箭。"
     },
     {
       "id": "set_aside_cards",
@@ -71563,7 +71563,7 @@
       "encounter_sets": [
         "agents_of_yig"
       ],
-      "text": "Set the following cards aside, out of play: The three single-sided [[Ruins]] locations, the <i>Agents of Yig</i> encounter set, the four Poisoned weaknesses, the Alejandro Vela asset, and the Ichtaca enemy."
+      "text": "將下列卡牌放在一邊，位於場外：3張單面的[[遺跡]]地點卡、<i>伊格的使徒</i>遭遇組、4張中毒弱點卡、亞歷山卓·維拉支援卡、伊塔卡敵人卡。"
     },
     {
       "id": "encounter_deck",
@@ -71576,7 +71576,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "wait_for_additional_supplies",
-          "text": "the investigators were forced to wait for additional supplies."
+          "text": "調查員不得不等候補給。"
         }
       ]
     },
@@ -71587,7 +71587,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "ichtaca_observed_progress",
-          "text": "Ichtaca observed your progress with keen interest."
+          "text": "伊塔卡饒有興趣地觀察著調查進展。"
         }
       ]
     },
@@ -71598,19 +71598,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "earned_ichtacas_trust",
-          "text": "the investigators have earned Ichtaca’s trust."
+          "text": "調查員贏得了伊塔卡的信任。"
         }
       ]
     },
     {
       "id": "alejandro_followed_to_ruins",
-      "text": "In your Campaign Log, record that <i>Alejandro followed the investigators into the ruins</i>. Any one investigator may choose to add Alejandro Vela to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "在冒險日誌中，記錄下<i>亞歷山卓跟著調查員進入了遺跡</i>。任何一位調查員可以選擇將亞歷山卓·維拉加入其牌組。這張卡牌不計入該調查員的卡牌張數。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "alejandro_followed_to_ruins",
-          "text": "Alejandro followed the investigators into the ruins."
+          "text": "亞歷山卓跟著調查員進入了遺跡。"
         },
         {
           "type": "add_card",
@@ -71626,19 +71626,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "ichtaca_is_wary",
-          "text": "Ichtaca is wary of the investigators."
+          "text": "伊塔卡堤防調查員。"
         }
       ]
     },
     {
       "id": "alejandro_remained_at_camp",
-      "text": "In your Campaign Log, record that <i>Alejandro chose to remain at camp</i>. Do not add Alejandro Vela to any investigator’s deck.",
+      "text": "在冒險日誌中，記錄下<i>亞歷山卓選擇留在營地</i>。不要將亞歷山卓·維拉加入任何調查員的牌組。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "alejandro_remained_at_camp",
-          "text": "Alejandro chose to remain at camp."
+          "text": "亞歷山卓選擇留在營地。"
         }
       ]
     },
@@ -71649,20 +71649,20 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "cleared_path_to_temple",
-          "text": "the investigators cleared a path to the Eztli ruins."
+          "text": "調查員清出了一條通往埃茲特里遺跡的道路。"
         }
       ]
     },
     {
       "id": "check_final_act",
-      "text": "Which of the following was true?",
+      "text": "以下何者成立？",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "act_1_or_2",
-            "text": "It was Act 1 or 2 when the scenario ended.",
+            "text": "冒險結束時的場景為場景1或場景2。",
             "steps": [
               "ichtaca_observed_progress",
               "alejandro_followed_to_ruins"
@@ -71670,7 +71670,7 @@
           },
           {
             "id": "fought_ichtaca",
-            "text": "“You fought with Ichtaca”",
+            "text": "“你與伊塔卡發生了衝突”",
             "steps": [
               "maybe_add_tablet_token",
               "ichtaca_is_wary",
@@ -71679,7 +71679,7 @@
           },
           {
             "id": "talked_to_ichtaca",
-            "text": "“Ichtaca is leading the way”",
+            "text": "“伊塔卡在帶路”",
             "steps": [
               "maybe_add_cultist_token",
               "earned_ichtacas_trust",
@@ -71691,11 +71691,11 @@
     },
     {
       "id": "record_vengeance",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log. Beware the anger of the Father of Serpents, as his fury will haunt you in the future.",
+      "text": "勝利牌區每有1點復仇點數，在你冒險日誌的“伊格之怒”下方作一次記錄。當心萬蛇之父的怒火，因為你們之後將會受他的怒火灼燒。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "勝利牌區裡的復仇點數：",
         "delta": true,
         "effects": [
           {
@@ -71723,7 +71723,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "有任何玩家獲得中毒弱點卡嗎？",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -71732,7 +71732,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "已中毒",
             "effects": [
               {
                 "type": "add_card",
@@ -71780,15 +71780,15 @@
     },
     {
       "id": "add_chaos_token",
-      "text": "Which of these is true?",
+      "text": "以下那些成立？",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "cultist",
-            "text": "<i>Ichtaca is leading the way.</i>",
-            "description": "Add 1 [cultist] token.",
+            "text": "<i>伊塔卡在帶路。</i>",
+            "description": "加入1個[cultist]標記。",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -71800,8 +71800,8 @@
           },
           {
             "id": "tablet",
-            "text": "<i>You fought with Icthaca.</i>",
-            "description": "Add 1 [tablet] token.",
+            "text": "<i>你與伊塔卡發生了衝突。</i>",
+            "description": "加入1個[tablet]標記。",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -71852,7 +71852,7 @@
     },
     {
       "id": "add_tablet_token",
-      "text": "While playing the scenario, there was an instruction to add one [tablet] token to the chaos bag.",
+      "text": "在冒險進行時，曾經有指示將1個[tablet]標記加入混亂袋。",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -71864,7 +71864,7 @@
     },
     {
       "id": "add_cultist_token",
-      "text": "While playing the scenario, there was an instruction to add one [cultist] token to the chaos bag.",
+      "text": "在冒險進行時，曾經有指示將1個[cultist]標記加入混亂袋。",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -71889,7 +71889,7 @@
         "physical",
         "mental"
       ],
-      "text": "<right><fancy>Wednesday, July 1st, 1925</fancy></right>\nI still have no idea how we made it back to camp alive.\nThe jungle was more perilous than we could have possibly imagined. This may read like the ravings of a lunatic, but I cannot explain it any other way. Being lost in the jungle was no picnic, but that was the least of our worries. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate, hunting us relentlessly.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he was more disturbed than fascinated. I suppose he has a right to be incredulous. Nothing about this expedition makes sense.\nThe serpent creatures chased us for what seemed like days. Finally we were able to find our way back to camp, but the price was steep. We had lost all progress we had made, and many of us were injured or afflicted by serpent venom. We have no choice but to send runners to the nearest city for additional supplies and to wait and recover from our wounds.",
+      "text": "<right><fancy>1925年7月1日，星期三</fancy></right>\n我完全不知道我是怎麼活著回到營地的。\n叢林的險惡遠遠超出我們的想像。這聽起來就像瘋子的胡話，但我沒法以別的方式解釋這件事。我們在叢林裡迷了路，大費周章才回到正途，但與別的事相比，迷路根本算不上什麼。叢林“有人看守”，看守者是深不可測的恐怖存在：這些蛇人被憤怒和仇恨所驅使，無情地追捕我們。\n或許跟它們一樣可怕的，還有叢林中的原住民。從衣著和談吐來看，他們像是阿茲特克的戰士。阿茲特克人早在數百年前便被征服，但這些戰士們卻不知何故存活至今。他們為什麼幾個世紀都沒被發現？我們實在想不到答案。我本以為亞歷山卓準會為此興奮不已，想要更加瞭解他們。然而他實際上卻十分不安，一洗先前那副陶醉的神情。畢竟這次探險盡是些不合常理的怪事，他確實有理由懷疑。\n一群蛇人大概追了我們好幾天，最終我們找到了返回營地的路，但付出的代價十分慘痛。探險至今為止的進展全都化為泡影，隊伍裡的好些成員都受了傷，或受蛇毒折磨。我們別無選擇，只能派幾個人跑到最近的城市再去拿些補給品，等傷員恢復。",
       "steps": [
         "wait_for_additional_supplies",
         "check_final_act",
@@ -71905,7 +71905,7 @@
         "name": "Resolution 1"
       },
       "title": "結局1",
-      "text": "<right><fancy>Thursday, July 2nd, 1925</fancy></right>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. The warrior named Ichtaca was particularly intriguing. We were able to defuse the initial encounter with her, and surprisingly, she helped guide us through the jungle, only to disappear mysteriously when we reached the ruins. I have a feeling we have not seen the last of her.\nAlejandro did not agree with our decision to trust the Eztli warriors. He’s decided to stay at camp until further notice, disturbed as he is by their presence. I thought he would be excited to learn more about them, but I expect this discovery defies even his broad-minded theories. I suppose he has a right to be distrustful. Nothing about this expedition makes sense.\nWe have cleared a route to what Alejandro believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
+      "text": "<right><fancy>1925年7月2日，星期四</fancy></right>\n不知怎地，在歷盡艱辛和數小時的探索之後，我們找到了亞歷山卓苦苦找尋的遺跡，儘管我們未曾想在這片荒野叢林之中有此遭遇。叢林“有人看守”，看守者是深不可測的恐怖存在：被憤怒和仇恨所驅使的蛇人。它們無情地追趕我們，運用原始的武器，以嘶嘶的叫聲互相交流。\n或許跟它們一樣可怕的，還有叢林中的原住民。從衣著和談吐來看，他們像是阿茲特克的戰士。阿茲特克人早在數百年前便被征服，但這些戰士們卻不知何故存活至今。他們為什麼幾個世紀都沒被發現？我們實在想不到答案。那個名叫伊塔卡的戰士尤其神秘。我們在初次遭遇她時成功解除了她的敵意，令人吃驚的是她指引我們通過了叢林。但當我們到達遺跡時，她卻神秘地消失了。我有種感覺，我們還會再次見到她。\n我們提議相信埃茲特里的戰士們，而亞歷山卓對此並不贊同。他決定留在營地等待進一步消息，戰士們在場使他煩惱焦躁。我本以為他準會興奮地想要更加瞭解他們，但我猜想這一發現甚至與他博大精深的理論相悖。畢竟這次探險盡是些不合常理的怪事，他確實有理由懷疑。\n我們清出了一條道路，通向亞歷山卓相信遺跡主神廟所在的地方。一群蛇形生物似乎要阻止我們進入此地，因此我們一刻也不能耽擱，幾乎沒時間休整隊伍。很快我們就會進入遺跡，看看它們到底藏著什麼秘密。",
       "steps": [
         "maybe_add_cultist_token",
         "cleared_path_to_temple",
@@ -71923,7 +71923,7 @@
         "name": "Resolution 2"
       },
       "title": "結局2",
-      "text": "<right><fancy>Thursday, July 2nd, 1925</fancy></right>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he shared our alarm. We managed to fend off and interrogate their leader, a warrior named Ichtaca. Before she fled, she warned us to not go near the ruins. Unfortunately for her, we refuse to go home empty-handed.\nWith Alejandro leading the way, we’ve cleared a route to what he believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
+      "text": "<right><fancy>1925年7月2日，星期四</fancy></right>\n不知怎地，在歷盡艱辛和數小時的探索之後，我們找到了亞歷山卓苦苦找尋的遺跡，儘管我們未曾想在這片荒野叢林之中有此遭遇。叢林“有人看守”，看守者是深不可測的恐怖存在：被憤怒和仇恨所驅使的蛇人。它們無情地追趕我們，運用原始的武器，以嘶嘶的叫聲互相交流。\n或許跟它們一樣可怕的，還有叢林中的原住民。從衣著和談吐來看，他們像是阿茲特克的戰士。阿茲特克人早在數百年前便被征服，但這些戰士們卻不知何故存活至今。他們為什麼幾個世紀都沒被發現？我們實在想不到答案。我本以為亞歷山卓準會興奮地想要更加瞭解他們，但亞歷山卓和我們一樣驚慌。我們成功擊退並質問他們的首領，一位名叫伊塔卡的戰士，她警告我們別再靠近遺跡，然後就逃走了。她真不好運，我們是不會空著手回去的。\n在亞歷山卓的指引之下，我們清出一條道路，通向他相信遺跡主神廟所在的地方。一群蛇形生物似乎要阻止我們進入此地，因此我們一刻也不能耽擱，幾乎沒時間休整隊伍。很快我們就會進入遺跡，看看它們到底藏著什麼秘密。",
       "steps": [
         "maybe_add_tablet_token",
         "cleared_path_to_temple",

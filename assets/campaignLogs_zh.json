@@ -859,7 +859,7 @@
         "entries": [
           {
             "id": "alejandro_followed_to_ruins",
-            "text": "Alejandro followed the investigators into the ruins."
+            "text": "亞歷山卓跟著調查員進入了遺跡。"
           },
           {
             "id": "alejandro_is_missing",
@@ -867,15 +867,15 @@
           },
           {
             "id": "alejandro_on_his_own",
-            "text": "Alejandro is continuing his research on his own."
+            "text": "亞歷山卓繼續獨力研究。"
           },
           {
             "id": "alejandro_recovered_relic",
-            "text": "Alejandro recovered the Relic of Ages."
+            "text": "亞歷山卓找到了古代遺物。"
           },
           {
             "id": "alejandro_remained_at_camp",
-            "text": "Alejandro chose to remain at camp."
+            "text": "亞歷山卓選擇留在營地。"
           },
           {
             "id": "alejandro_remembers_everything",
@@ -895,7 +895,7 @@
           },
           {
             "id": "cleared_path_to_temple",
-            "text": "the investigators cleared a path to the Eztli ruins."
+            "text": "調查員清出了一條通往埃茲特里遺跡的道路。"
           },
           {
             "id": "cooperated_with_yithians",
@@ -903,11 +903,11 @@
           },
           {
             "id": "earned_alejandros_trust",
-            "text": "the investigators have earned Alejandro’s trust."
+            "text": "調查員贏得了亞歷山卓的信任。"
           },
           {
             "id": "earned_ichtacas_trust",
-            "text": "the investigators have earned Ichtaca’s trust."
+            "text": "調查員贏得了伊塔卡的信任。"
           },
           {
             "id": "fabric_of_time_unwoven",
@@ -931,11 +931,11 @@
           },
           {
             "id": "gave_relic_to_alejandro",
-            "text": "the investigators gave custody of the relic to Alejandro."
+            "text": "調查員將遺物交給了亞歷山卓。"
           },
           {
             "id": "gave_relic_to_harlan",
-            "text": "the investigators gave custody of the relic to Harlan Earnstone."
+            "text": "調查員將遺物交給了哈倫·恩斯通。"
           },
           {
             "id": "had_memories_expunged",
@@ -943,7 +943,7 @@
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "預示者還活著(#X#點傷害)。"
           },
           {
             "id": "ichtaca_has_confidence",
@@ -955,11 +955,11 @@
           },
           {
             "id": "ichtaca_is_wary",
-            "text": "Ichtaca is wary of the investigators."
+            "text": "伊塔卡堤防調查員。"
           },
           {
             "id": "ichtaca_observed_progress",
-            "text": "Ichtaca observed your progress with keen interest."
+            "text": "伊塔卡饒有興趣地觀察著調查進展。"
           },
           {
             "id": "ichtaca_set_against",
@@ -971,7 +971,7 @@
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "the investigators recovered the Relic of Ages."
+            "text": "調查員找到了古代遺物。"
           },
           {
             "id": "investigators_saved_serpents",
@@ -1043,7 +1043,7 @@
           },
           {
             "id": "wait_for_additional_supplies",
-            "text": "the investigators were forced to wait for additional supplies."
+            "text": "調查員不得不等候補給。"
           }
         ]
       },
@@ -1125,57 +1125,27 @@
       {
         "id": "provisions",
         "name": "Provisions",
-        "description": "Food and water for one person. A must-have for any journey.",
+        "description": "一人份的乾糧和水。出行必備。",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "medicine",
         "name": "Medicine",
-        "description": "To stave off disease, infection, or venom.",
+        "description": "治病，消除感染，解毒。",
         "cost": 2,
         "multiple": true
       },
       {
         "id": "pendant",
-        "name": "Pendant",
-        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "name": "掛墜",
+        "description": "沒甚麼用，但美好的回憶能給遠離家鄉的遊子帶來安慰。",
         "cost": 1
-      },
-      {
-        "id": "canteen",
-        "name": "Canteen",
-        "description": "Can be refilled at streams and rivers.",
-        "cost": 2
-      },
-      {
-        "id": "compass",
-        "name": "Compass",
-        "description": "Can guide you when you are hopelessly lost.",
-        "cost": 2
       },
       {
         "id": "pickaxe",
         "name": "Pickaxe",
         "description": "For breaking apart rocky surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "blanket",
-        "name": "Blanket",
-        "description": "For warmth at night.",
-        "cost": 2
-      },
-      {
-        "id": "chalk",
-        "name": "Chalk",
-        "description": "For writing on rough stone surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "binoculars",
-        "name": "Binoculars",
-        "description": "To help you see faraway places.",
         "cost": 2
       },
       {
@@ -1185,21 +1155,51 @@
         "cost": 2
       },
       {
+        "id": "canteen",
+        "name": "Canteen",
+        "description": "可以在小溪和河邊盛水。",
+        "cost": 2
+      },
+      {
+        "id": "compass",
+        "name": "指南針",
+        "description": "在你迷失方向而絕望時，它能夠指引你。",
+        "cost": 2
+      },
+      {
+        "id": "blanket",
+        "name": "毛毯",
+        "description": "好在夜裡保暖。",
+        "cost": 2
+      },
+      {
+        "id": "binoculars",
+        "name": "雙筒望遠鏡",
+        "description": "幫助你看到更遠的地方。",
+        "cost": 2
+      },
+      {
+        "id": "chalk",
+        "name": "粉筆",
+        "description": "用來在粗糙的石面寫字。",
+        "cost": 2
+      },
+      {
         "id": "torches",
-        "name": "Torches",
-        "description": "Can light up dark areas, or set sconces alight.",
+        "name": "火把",
+        "description": "可以照亮昏暗的區域，或點燃燭臺。",
         "cost": 3
       },
       {
         "id": "rope",
-        "name": "Rope",
-        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
+        "name": "繩索",
+        "description": "幾圈又長又結實的繩索，對於攀爬和岩洞探險來說至關重要。",
         "cost": 3
       },
       {
         "id": "map",
         "name": "Map",
-        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "description": "現在地圖上還沒作標記，但隨著時間推移，你或許能夠描繪出周邊的環境。",
         "cost": 3
       }
     ]
@@ -2047,7 +2047,7 @@
         "entries": [
           {
             "id": "alejandro_followed_to_ruins",
-            "text": "Alejandro followed the investigators into the ruins."
+            "text": "亞歷山卓跟著調查員進入了遺跡。"
           },
           {
             "id": "alejandro_is_missing",
@@ -2055,15 +2055,15 @@
           },
           {
             "id": "alejandro_on_his_own",
-            "text": "Alejandro is continuing his research on his own."
+            "text": "亞歷山卓繼續獨力研究。"
           },
           {
             "id": "alejandro_recovered_relic",
-            "text": "Alejandro recovered the Relic of Ages."
+            "text": "亞歷山卓找到了古代遺物。"
           },
           {
             "id": "alejandro_remained_at_camp",
-            "text": "Alejandro chose to remain at camp."
+            "text": "亞歷山卓選擇留在營地。"
           },
           {
             "id": "alejandro_remembers_everything",
@@ -2083,7 +2083,7 @@
           },
           {
             "id": "cleared_path_to_temple",
-            "text": "the investigators cleared a path to the Eztli ruins."
+            "text": "調查員清出了一條通往埃茲特里遺跡的道路。"
           },
           {
             "id": "cooperated_with_yithians",
@@ -2091,11 +2091,11 @@
           },
           {
             "id": "earned_alejandros_trust",
-            "text": "the investigators have earned Alejandro’s trust."
+            "text": "調查員贏得了亞歷山卓的信任。"
           },
           {
             "id": "earned_ichtacas_trust",
-            "text": "the investigators have earned Ichtaca’s trust."
+            "text": "調查員贏得了伊塔卡的信任。"
           },
           {
             "id": "fabric_of_time_unwoven",
@@ -2119,11 +2119,11 @@
           },
           {
             "id": "gave_relic_to_alejandro",
-            "text": "the investigators gave custody of the relic to Alejandro."
+            "text": "調查員將遺物交給了亞歷山卓。"
           },
           {
             "id": "gave_relic_to_harlan",
-            "text": "the investigators gave custody of the relic to Harlan Earnstone."
+            "text": "調查員將遺物交給了哈倫·恩斯通。"
           },
           {
             "id": "had_memories_expunged",
@@ -2131,7 +2131,7 @@
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "預示者還活著(#X#點傷害)。"
           },
           {
             "id": "ichtaca_has_confidence",
@@ -2143,11 +2143,11 @@
           },
           {
             "id": "ichtaca_is_wary",
-            "text": "Ichtaca is wary of the investigators."
+            "text": "伊塔卡堤防調查員。"
           },
           {
             "id": "ichtaca_observed_progress",
-            "text": "Ichtaca observed your progress with keen interest."
+            "text": "伊塔卡饒有興趣地觀察著調查進展。"
           },
           {
             "id": "ichtaca_set_against",
@@ -2159,7 +2159,7 @@
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "the investigators recovered the Relic of Ages."
+            "text": "調查員找到了古代遺物。"
           },
           {
             "id": "investigators_saved_serpents",
@@ -2227,7 +2227,7 @@
           },
           {
             "id": "wait_for_additional_supplies",
-            "text": "the investigators were forced to wait for additional supplies."
+            "text": "調查員不得不等候補給。"
           }
         ]
       },
@@ -2280,57 +2280,27 @@
       {
         "id": "provisions",
         "name": "Provisions",
-        "description": "Food and water for one person. A must-have for any journey.",
+        "description": "一人份的乾糧和水。出行必備。",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "medicine",
         "name": "Medicine",
-        "description": "To stave off disease, infection, or venom.",
+        "description": "治病，消除感染，解毒。",
         "cost": 2,
         "multiple": true
       },
       {
         "id": "pendant",
-        "name": "Pendant",
-        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "name": "掛墜",
+        "description": "沒甚麼用，但美好的回憶能給遠離家鄉的遊子帶來安慰。",
         "cost": 1
-      },
-      {
-        "id": "canteen",
-        "name": "Canteen",
-        "description": "Can be refilled at streams and rivers.",
-        "cost": 2
-      },
-      {
-        "id": "compass",
-        "name": "Compass",
-        "description": "Can guide you when you are hopelessly lost.",
-        "cost": 2
       },
       {
         "id": "pickaxe",
         "name": "Pickaxe",
         "description": "For breaking apart rocky surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "blanket",
-        "name": "Blanket",
-        "description": "For warmth at night.",
-        "cost": 2
-      },
-      {
-        "id": "chalk",
-        "name": "Chalk",
-        "description": "For writing on rough stone surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "binoculars",
-        "name": "Binoculars",
-        "description": "To help you see faraway places.",
         "cost": 2
       },
       {
@@ -2340,21 +2310,51 @@
         "cost": 2
       },
       {
+        "id": "canteen",
+        "name": "Canteen",
+        "description": "可以在小溪和河邊盛水。",
+        "cost": 2
+      },
+      {
+        "id": "compass",
+        "name": "指南針",
+        "description": "在你迷失方向而絕望時，它能夠指引你。",
+        "cost": 2
+      },
+      {
+        "id": "blanket",
+        "name": "毛毯",
+        "description": "好在夜裡保暖。",
+        "cost": 2
+      },
+      {
+        "id": "binoculars",
+        "name": "雙筒望遠鏡",
+        "description": "幫助你看到更遠的地方。",
+        "cost": 2
+      },
+      {
+        "id": "chalk",
+        "name": "粉筆",
+        "description": "用來在粗糙的石面寫字。",
+        "cost": 2
+      },
+      {
         "id": "torches",
-        "name": "Torches",
-        "description": "Can light up dark areas, or set sconces alight.",
+        "name": "火把",
+        "description": "可以照亮昏暗的區域，或點燃燭臺。",
         "cost": 3
       },
       {
         "id": "rope",
-        "name": "Rope",
-        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
+        "name": "繩索",
+        "description": "幾圈又長又結實的繩索，對於攀爬和岩洞探險來說至關重要。",
         "cost": 3
       },
       {
         "id": "map",
         "name": "Map",
-        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "description": "現在地圖上還沒作標記，但隨著時間推移，你或許能夠描繪出周邊的環境。",
         "cost": 3
       }
     ]

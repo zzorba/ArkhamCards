@@ -77247,7 +77247,7 @@
         "name": "Intro"
       },
       "type": "story",
-      "text": "Vous n'avez aucune idée de qui est cette femme où de comment elle vous connaît, pourtant, elle se comporte de manière famillière avec vous. Vous creusez votre mémoire pour tenter de vous souvenir des circonstances de votre rencontre, en vain. Vous êtes certain de ne l'avoir jamais rencontrée. Vous étant réveillé dans une oubliette froide et humide, vous ne vous sentez pas d'humeur très sociable. Votre peur et votre méfiance doivent transparaître, car la femme recule et son regrd s'étrécit. « Que se passe-t-il ? Qu'est-ce qui ne va pas ? »\nVous demandez à la femme comment elle vous connaît. « Vous ne vous souvenez vraiment pas ? Cela ca compliquer les choses. De quoi vous rappelez-vous ? Vous souvenez-vous de quelque chose ? »\nVous détaillez à la femme res réminisciences que vous avez eues plus tôt…"
+      "text": "Vous n'avez aucune idée de qui est cette femme où de comment elle vous connaît, pourtant, elle se comporte de manière famillière avec vous. Vous creusez votre mémoire pour tenter de vous souvenir des circonstances de votre rencontre, en vain. Vous êtes certain de ne l'avoir jamais rencontrée. Vous étant réveillé dans une oubliette froide et humide, vous ne vous sentez pas d'humeur très sociable. Votre peur et votre méfiance doivent transparaître, car la femme recule et son regard s'étrécit. « Que se passe-t-il ? Qu'est-ce qui ne va pas ? »\nVous demandez à la femme comment elle vous connaît. « Vous ne vous souvenez vraiment pas ? Cela va compliquer les choses. De quoi vous rappelez-vous ? Vous souvenez-vous de quelque chose ? »\nVous détaillez à la femme les réminisciences que vous avez eues plus tôt…"
     },
     {
       "id": "check_memories_recovered",
@@ -77279,11 +77279,11 @@
         "name": "Meeting with Thomas Dawson"
       },
       "type": "story",
-      "text": "Vous additionnez deux et deux et demandez à la femme si elle est bien Elina Harper. « Ha, vous vous souvenez donc ? » questionne-t-elle en souriant, mais vous secouez la tête en dénégation, expliquant simplement que vous vous souvenez avoir été engagé par un homme du nom de Thomas Dawson pour la retrouver. « Mais c'était il y a… oh. Vous avez oublié beaucoup de choses, n'est-ce pas ? En parlant de Dawson, où est-il ? L'avez-vous aperçu dans le coin ? »\nVos pensées se tournent vers le visage mutilé et difforme qui a provoqué votre flashback. L'expression de l'agent Harper s'assombrit en croiant votre regard. « … je vois. J'aurais aimé ne jamais venir dans cette maudite ville. Ces brutes vont payer pour ça. » Vous lui demandez qui elle pense responsable de la mort de Dawson et elle hausse les sourcils pour toute réponse. « C'est vrai, vous ne vous souvenez pas. De ce que j'en sais, la dernière fois où Dawson et vous avez été vus, c'est juste avant votre visite à l'Ordre Ésotérique de Dagon. Tirez-en vos propres conclusions. »"
+      "text": "Vous additionnez deux et deux et demandez à la femme si elle est bien Elina Harper. « Ha, vous vous souvenez donc ? » questionne-t-elle en souriant, mais vous secouez la tête en dénégation, expliquant simplement que vous vous souvenez avoir été engagé par un homme du nom de Thomas Dawson pour la retrouver. « Mais c'était il y a… oh. Vous avez oublié beaucoup de choses, n'est-ce pas ? En parlant de Dawson, où est-il ? L'avez-vous aperçu dans le coin ? »\nVos pensées se tournent vers le visage mutilé et difforme qui a provoqué votre flashback. L'expression de l'agent Harper s'assombrit en croisant votre regard. « … je vois. J'aurais aimé ne jamais venir dans cette maudite ville. Ces brutes vont payer pour ça. » Vous lui demandez qui elle pense responsable de la mort de Dawson et elle hausse les sourcils pour toute réponse. « C'est vrai, vous ne vous souvenez pas. De ce que j'en sais, la dernière fois où Dawson et vous avez été vus, c'est juste avant votre visite à l'Ordre Ésotérique de Dagon. Tirez-en vos propres conclusions. »"
     },
     {
       "id": "thomas_dawson_effects",
-      "text": "Le mystère de la conspiration d'épaissit. Chaque investigateur inscrit 1 point d'expérience supplémentaire sous la mention « Expérience non dépensée ».",
+      "text": "Le mystère de la conspiration s'épaissit. Chaque investigateur inscrit 1 point d'expérience supplémentaire sous la mention « Expérience non dépensée ».",
       "effects": [
         {
           "type": "earn_xp",
@@ -77358,11 +77358,11 @@
         "name": "Battle with a horrifying devil"
       },
       "type": "story",
-      "text": "Vous parlez à l'agent Harper de votre combat contre la terrifiante créature aquatique. « Le Récif du Diable » dit-elle en tremblant. « Quoi qu'il se passe dans cette ville, Me récif du Diable en est au cœur. Espérons que nous n'ayons plus à y retourner de sitôt… et espérons qussi que cette chose reste bien morte. »"
+      "text": "Vous parlez à l'agent Harper de votre combat contre la terrifiante créature aquatique. « Le Récif du Diable » dit-elle en tremblant. « Quoi qu'il se passe dans cette ville, le récif du Diable en est au cœur. Espérons que nous n'ayons plus à y retourner de sitôt… et espérons aussi que cette chose reste bien morte. »"
     },
     {
       "id": "devil_fight_effects",
-      "text": "Le mystère de la conspiration d'épaissit. Chaque investigateur inscrit 1 point d'expérience supplémentaire sous la mention « Expérience non dépensée ».",
+      "text": "Le mystère de la conspiration s'épaissit. Chaque investigateur inscrit 1 point d'expérience supplémentaire sous la mention « Expérience non dépensée ».",
       "effects": [
         {
           "type": "earn_xp",
@@ -77398,11 +77398,11 @@
         "name": "Decision to stick together"
       },
       "type": "story",
-      "text": "« ALors, vous et Dawson étiez partis ensemble à ma recherche ? Intéressant. »Elle réfléchit un moment. « j'imagine que même l'extraordinaire capitaine Dawson peut être ébranlé de temps en temps. C'est presque réconfoortant de savoir qu'il tenait tant à me retrouver. Pourtant… » Son regard se perd dans le vague. « Très bien, Dawson. Je vais m'assurer que vous nêtes pas mort en vain, même si je dois raser cette ville tout entière pour ça. »"
+      "text": "« ALors, vous et Dawson étiez partis ensemble à ma recherche ? Intéressant. »Elle réfléchit un moment. « j'imagine que même l'extraordinaire capitaine Dawson peut être ébranlé de temps en temps. C'est presque réconfortant de savoir qu'il tenait tant à me retrouver. Pourtant… » Son regard se perd dans le vague. « Très bien, Dawson. Je vais m'assurer que vous nêtes pas mort en vain, même si je dois raser cette ville tout entière pour ça. »"
     },
     {
       "id": "stayed_together_effects",
-      "text": "Le mystère de la conspiration d'épaissit. Chaque investigateur inscrit 1 point d'expérience supplémentaire sous la mention « Expérience non dépensée ».",
+      "text": "Le mystère de la conspiration s'épaissit. Chaque investigateur inscrit 1 point d'expérience supplémentaire sous la mention « Expérience non dépensée ».",
       "effects": [
         {
           "type": "earn_xp",
@@ -77442,7 +77442,7 @@
     },
     {
       "id": "encounter_with_a_secret_cult_effects",
-      "text": "Le mystère de la conspiration d'épaissit. Chaque investigateur inscrit 1 point d'expérience supplémentaire sous la mention « Expérience non dépensée ».",
+      "text": "Le mystère de la conspiration s'épaissit. Chaque investigateur inscrit 1 point d'expérience supplémentaire sous la mention « Expérience non dépensée ».",
       "effects": [
         {
           "type": "earn_xp",
@@ -77459,7 +77459,7 @@
         "name": "Outro"
       },
       "type": "story",
-      "text": "Vous pointez du doigt l'étrange horizon écarlate situé derrière l'agent Harper et notez l'alignement du soleil et de la lune. « Cela a débuté peu après que l'agent Dawson et vous êtes entrés dans le quartier générale de l'Ordre », explique-t-elle. « C'était il y a presque trois jours? Je n'ai aucune idée de ce que cela signifie, mais je pense que cela n'augure rien de bon. Tout Innsmouth s'est calfeutré après. Pas une âme en vue. Vous avez ru de la chance que je comprenne où vous chercher. »\nVotre esprit vacille. La dernière chose dont vous vous souvenez avant votre réveil dans ce maudit gouffre est cette agréable soirée de fin d'été dont vous profitiez allègrement à Arkham. Et là, vous vous trouvez dans une tout autre ville, vos souvenir en pièces. Vous demandez la date à l'agent Harper qui répond : « Nous somme le vingt-quatre septembre. J'ignore quand nous êtes arrivé à Innsmouth exactement et à quel point votre mémoire a été affectée. Vous ne vous souvenez de rie nd'autre ? Rien du tout ? »\nL'eau va et vient sur vos pieds tandis que vous luttez pour vous souvenir. En quelques minutes, la marée a monté de plusieur centimètres et elle ne semble pas prête de s'arrêter. Vous posez vos yeux sur la feme qui se tient devant vous — ses yeux las, ses vêtements froissés, les marques rouges sur ses poignets — et quelque chose se ranime dans votre esprit.\n« Réveillez-vous. Nous y somme presque. » Le souvenir tangue à la limite de votre conscience, menaçant de vous emporter dans les ténèbres. « Hé, réveillez-vous, j'ai dit. » Vous vous attrapez le front entre les mains tandis qu'une douleur fulgurante vous traverse le crâne. « Réveillez-vous, bon sang ! »\nLes ténèbre envahissent votre champ de vision à mesure que vos souvenirs affluent…"
+      "text": "Vous pointez du doigt l'étrange horizon écarlate situé derrière l'agent Harper et notez l'alignement du soleil et de la lune. « Cela a débuté peu après que l'agent Dawson et vous êtes entrés dans le quartier générale de l'Ordre », explique-t-elle. « C'était il y a presque trois jours? Je n'ai aucune idée de ce que cela signifie, mais je pense que cela n'augure rien de bon. Tout Innsmouth s'est calfeutré après. Pas une âme en vue. Vous avez eu de la chance que je comprenne où vous chercher. »\nVotre esprit vacille. La dernière chose dont vous vous souvenez avant votre réveil dans ce maudit gouffre est cette agréable soirée de fin d'été dont vous profitiez allègrement à Arkham. Et là, vous vous trouvez dans une tout autre ville, vos souvenir en pièces. Vous demandez la date à l'agent Harper qui répond : « Nous somme le vingt-quatre septembre. J'ignore quand vous êtes arrivé à Innsmouth exactement et à quel point votre mémoire a été affectée. Vous ne vous souvenez de rien d'autre ? Rien du tout ? »\nL'eau va et vient sur vos pieds tandis que vous luttez pour vous souvenir. En quelques minutes, la marée a monté de plusieurs centimètres et elle ne semble pas prête de s'arrêter. Vous posez vos yeux sur la femme qui se tient devant vous — ses yeux las, ses vêtements froissés, les marques rouges sur ses poignets — et quelque chose se ranime dans votre esprit.\n« Réveillez-vous. Nous y somme presque. » Le souvenir tangue à la limite de votre conscience, menaçant de vous emporter dans les ténèbres. « Hé, réveillez-vous, j'ai dit. » Vous vous attrapez le front entre les mains tandis qu'une douleur fulgurante vous traverse le crâne. « Réveillez-vous, bon sang ! »\nLes ténèbre envahissent votre champ de vision à mesure que vos souvenirs affluent…"
     }
   ]
 },
@@ -78757,7 +78757,7 @@
         "physical",
         "mental"
       ],
-      "text": "Vous toussez et recrachez du sable et de l'eau sale. Une eaux de mer, sombre et glacée, coule sur votre peau tandis que vous finissez de cracher votre dernière gorgée amère et salée dans le ressac.\nUne pair de mains chaudes vous saisit dans le dos et vous redresse en position assise. « Dieu merci vous êtes en vie », dit quelqu'un. Malgré la tension déformant sa voix, cous reconnaissez un accent indien chantant et l'inébranlable confiance d'un professionnelle entraînée. Au fur et à mesure que vos yeux s'ajustent, vous découvrez un ciel aux teintes rougeoyantes, la pleine lune suspendue juste sous le soleil obscurci. « Il n'y a pas detemps à perdre. Allez, levez-vous. »\nVous essuyez l'eau salée qui vous pique les yeux à mesure que vos force vous reviennenet. Votre sauveur s'avère être une femme aux long cheveux aile de corbeau. Son imperméable en lambeaux semble avoir connu des jours meilleurs et sa peau couverte de boue est couverte d'echymoses. « Vous avez l'air surpris. Pourquoi me fixez-vous ainsi ? » demande l'inconnue.",
+      "text": "Vous toussez et recrachez du sable et de l'eau sale. Une eaux de mer, sombre et glacée, coule sur votre peau tandis que vous finissez de cracher votre dernière gorgée amère et salée dans le ressac.\nUne pair de mains chaudes vous saisit dans le dos et vous redresse en position assise. « Dieu merci vous êtes en vie », dit quelqu'un. Malgré la tension déformant sa voix, vous reconnaissez un accent indien chantant et l'inébranlable confiance d'un professionnelle entraînée. Au fur et à mesure que vos yeux s'ajustent, vous découvrez un ciel aux teintes rougeoyantes, la pleine lune suspendue juste sous le soleil obscurci. « Il n'y a pas de temps à perdre. Allez, levez-vous. »\nVous essuyez l'eau salée qui vous pique les yeux à mesure que vos force vous reviennent. Votre sauveur s'avère être une femme aux long cheveux aile de corbeau. Son imperméable en lambeaux semble avoir connu des jours meilleurs et sa peau couverte de boue est couverte d'echymoses. « Vous avez l'air surpris. Pourquoi me fixez-vous ainsi ? » demande l'inconnue.",
       "steps": [
         "earn_xp"
       ]
