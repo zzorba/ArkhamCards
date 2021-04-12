@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2021-04-12 16:05+0400\n"
+"PO-Revision-Date: 2021-04-12 16:44+0400\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -4454,7 +4454,7 @@ msgstr "Древняя"
 
 msgctxt "trait"
 msgid "Ancient One"
-msgstr ""
+msgstr "Древний"
 
 msgctxt "trait"
 msgid "Arkham"
@@ -4698,7 +4698,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Elite"
-msgstr ""
+msgstr "Элитный"
 
 msgctxt "trait"
 msgid "Endtimes"
@@ -4706,23 +4706,23 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Evidence"
-msgstr ""
+msgstr "Свидетельство"
 
 msgctxt "trait"
 msgid "Exhibit"
-msgstr ""
+msgstr "Выставка"
 
 msgctxt "trait"
 msgid "Expedition"
-msgstr ""
+msgstr "Экспедиция"
 
 msgctxt "trait"
 msgid "Expert"
-msgstr ""
+msgstr "Экспертный"
 
 msgctxt "trait"
 msgid "Extradimensional"
-msgstr ""
+msgstr "Сверхпространственная"
 
 msgctxt "trait"
 msgid "Extraterrestrial"
@@ -4730,35 +4730,35 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Eztli"
-msgstr ""
+msgstr "Эцтли"
 
 msgctxt "trait"
 msgid "Familiar"
-msgstr ""
+msgstr "Фамильяр"
 
 msgctxt "trait"
 msgid "Fated"
-msgstr ""
+msgstr "Предначертанное"
 
 msgctxt "trait"
 msgid "Favor"
-msgstr ""
+msgstr "Одолжение"
 
 msgctxt "trait"
 msgid "Firearm"
-msgstr ""
+msgstr "Огнестрельное"
 
 msgctxt "trait"
 msgid "Flaw"
-msgstr ""
+msgstr "Изъян"
 
 msgctxt "trait"
 msgid "Flora"
-msgstr ""
+msgstr "Флора"
 
 msgctxt "trait"
 msgid "Footwear"
-msgstr ""
+msgstr "Обувь"
 
 msgctxt "trait"
 msgid "Forbidden"
@@ -4766,15 +4766,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Forgotten"
-msgstr ""
+msgstr "Забытая"
 
 msgctxt "trait"
 msgid "Fortune"
-msgstr ""
+msgstr "Удача"
 
 msgctxt "trait"
 msgid "Future"
-msgstr ""
+msgstr "Будущее"
 
 msgctxt "trait"
 msgid "Gambit"
@@ -4962,7 +4962,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Miskatonic"
-msgstr ""
+msgstr "Мискатоник"
 
 msgctxt "trait"
 msgid "Mnar"
