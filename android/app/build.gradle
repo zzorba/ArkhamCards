@@ -148,7 +148,7 @@ android {
         applicationId "com.arkhamcards"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 399
+        versionCode 400
         versionName "2.11.12"
         manifestPlaceholders = [
             appAuthRedirectScheme: 'arkhamcards'
@@ -190,7 +190,7 @@ android {
             def abi = output.getFilter(OutputFile.ABI)
             if (abi != null) {  // null for the universal-debug, universal-release variants
                 output.versionCodeOverride =
-                        defaultConfig.versionCode * 1000 + versionCodes.get(abi)
+                        versionCodes.get(abi) * 1048576 + defaultConfig.versionCode
             }
         }
     }
