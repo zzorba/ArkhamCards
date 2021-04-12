@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2021-04-12 16:44+0400\n"
+"PO-Revision-Date: 2021-04-12 16:03+0300\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -14,7 +14,7 @@ msgstr ""
 "%100<12 || n%100>14) ? 1 : 2);\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #, javascript-format
 msgid "${ action.name } (Campaign A)"
@@ -4838,11 +4838,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Human"
-msgstr ""
+msgstr "Гуманоид"
 
 msgctxt "trait"
 msgid "Humanoid"
-msgstr ""
+msgstr "Гуманоид"
 
 msgctxt "trait"
 msgid "Hunter"
@@ -4854,7 +4854,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Illicit"
-msgstr ""
+msgstr "Незаконный"
 
 msgctxt "trait"
 msgid "Improvised"
@@ -5054,7 +5054,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Passageway"
-msgstr ""
+msgstr "Проход"
 
 msgctxt "trait"
 msgid "Patron"
@@ -5074,7 +5074,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Police"
-msgstr ""
+msgstr "Полиция"
 
 msgctxt "trait"
 msgid "Port"
@@ -5086,7 +5086,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Power"
-msgstr ""
+msgstr "Мощь"
 
 msgctxt "trait"
 msgid "Practiced"
@@ -5118,7 +5118,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Relic"
-msgstr ""
+msgstr "Редкий"
 
 msgctxt "trait"
 msgid "Reporter"
@@ -5166,11 +5166,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Scheme"
-msgstr ""
+msgstr "Козни"
 
 msgctxt "trait"
 msgid "Scholar"
-msgstr ""
+msgstr "Учёный"
 
 msgctxt "trait"
 msgid "Science"
@@ -5194,7 +5194,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Service"
-msgstr ""
+msgstr "Служба"
 
 msgctxt "trait"
 msgid "Servitor"
