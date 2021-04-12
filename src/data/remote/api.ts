@@ -1,16 +1,45 @@
-import { UploadedCampaignId } from '@actions/types';
-import { useCallback, useReducer } from 'react';
-import { FriendUser, useFunction, ErrorResponse } from './hooks';
+import { useCallback, useContext, useReducer } from 'react';
+import { filter } from 'lodash';
+import functions from '@react-native-firebase/functions';
+
+import { SimpleUser } from '@data/remote/hooks';
+import { useModifyUserCache } from '@data/apollo/cache';
+
+import LanguageContext from '@lib/i18n/LanguageContext';
+
+export interface ErrorResponse {
+  error?: string;
+}
+
+export interface EmptyRequest {}
+
+export function useFunction<RequestT=EmptyRequest, ResponseT=ErrorResponse>(functionName: string) {
+  const { lang } = useContext(LanguageContext);
+  return useCallback(async(request: RequestT): Promise<ResponseT> => {
+    const response = await functions().httpsCallable(functionName)({ ...request, locale: lang });
+    return response.data as ResponseT;
+  }, [lang, functionName]);
+}
 
 interface UpdateHandleRequest {
   handle: string;
 }
 export function useUpdateHandle() {
+  const [updateCache] = useModifyUserCache();
   const apiCall = useFunction<UpdateHandleRequest>('social-updateHandle');
   return useCallback(async(handle: string) => {
     const data = await apiCall({ handle });
-    return data.error || undefined;
-  }, [apiCall]);
+    if (data.error) {
+      return data.error;
+    }
+    updateCache({
+      fields: {
+        handle() {
+          return handle;
+        },
+      },
+    });
+  }, [apiCall, updateCache]);
 }
 
 interface UpdateFriendRequest {
@@ -18,50 +47,51 @@ interface UpdateFriendRequest {
   action: 'request' | 'revoke';
 }
 
+export enum FriendStatus {
+  NONE = 'none',
+  RECEIVED = 'received',
+  SENT = 'sent',
+  FRIEND = 'friend',
+}
+
 export function useUpdateFriendRequest(setError: (error: string) => void) {
+  const [updateCache, client] = useModifyUserCache();
   const apiCall = useFunction<UpdateFriendRequest>('social-updateFriendRequest');
-  return useCallback(async(userId: string, action: 'request' | 'revoke') => {
+  return useCallback(async(
+    userId: string,
+    action: 'request' | 'revoke'
+  ) => {
     const data = await apiCall({ userId, action });
     if (data.error) {
       setError(data.error);
+    } else {
+      const targetId = client.cache.identify({ __typename: 'users', id: userId });
+      if (targetId) {
+        updateCache({
+          fields: {
+            friends(current) {
+              if (action === 'revoke') {
+                return filter(current, f => f.user?.__ref !== targetId);
+              }
+              return current;
+            },
+            sent_requests(current) {
+              if (action === 'revoke') {
+                return filter(current, f => f.user?.__ref !== targetId);
+              }
+              return current;
+            },
+            received_requests(current) {
+              if (action === 'revoke') {
+                return filter(current, f => f.user?.__ref !== targetId);
+              }
+
+            },
+          },
+        });
+      }
     }
-  }, [apiCall, setError]);
-}
-
-interface CampaignRequest {
-  campaignId: string;
-}
-
-interface CampaignResponse extends ErrorResponse {
-  campaignId: string;
-}
-export function useCreateCampaignRequest(): (campaignId: string) => Promise<UploadedCampaignId> {
-  const apiCall = useFunction<CampaignRequest, CampaignResponse>('campaign-create');
-  return useCallback(async(campaignId: string): Promise<UploadedCampaignId> => {
-    const data = await apiCall({ campaignId });
-    if (data.error) {
-      throw new Error(data.error);
-    }
-    return {
-      campaignId,
-      serverId: data.campaignId,
-    };
-  }, [apiCall]);
-}
-
-
-interface DeleteCampaignRequest extends ErrorResponse {
-  campaignId: string;
-  serverId: string;
-}
-export function useDeleteCampaignRequest() {
-  const apiCall = useFunction<DeleteCampaignRequest, ErrorResponse>('campaign-delete');
-  return useCallback(async({ campaignId, serverId }: UploadedCampaignId): Promise<void> => {
-    const data = await apiCall({ campaignId, serverId });
-    if (data.error) {
-      throw new Error(data.error);
-    }
-  }, [apiCall]);
+  }, [apiCall, setError, client.cache, updateCache]);
 }
 
 interface StartSearchAction {
@@ -78,7 +108,7 @@ interface ErrorSearchAction {
 interface FinishSearchAction {
   type: 'finish';
   term: string;
-  results: FriendUser[];
+  results: SimpleUser[];
 }
 
 type SearchAction = StartSearchAction | ErrorSearchAction | FinishSearchAction;
@@ -86,7 +116,7 @@ type SearchAction = StartSearchAction | ErrorSearchAction | FinishSearchAction;
 export interface SearchResults {
   term?: string;
   loading: boolean;
-  results?: FriendUser[];
+  results?: SimpleUser[];
   error?: string;
 }
 
@@ -126,7 +156,7 @@ interface SearchUsersRequest {
 
 interface SearchUsersResponse {
   error?: string;
-  users?: FriendUser[];
+  users?: SimpleUser[];
 }
 
 interface SearchUsers {

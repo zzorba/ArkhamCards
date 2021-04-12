@@ -16,14 +16,17 @@ import StyleContext from '@styles/StyleContext';
 import { usePlayerCards } from '@components/core/hooks';
 import { useSimpleDeckEdits } from '@components/deck/hooks';
 import space from '@styles/space';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 
 export interface DeckHistoryProps {
   id: DeckId;
+  campaign?: MiniCampaignT;
 }
 
 export default function DeckHistoryView({
   componentId,
   id,
+  campaign,
 }: DeckHistoryProps & NavigationProps) {
   const deckEdits = useSimpleDeckEdits(id);
   const { backgroundStyle, colors } = useContext(StyleContext);
@@ -81,12 +84,12 @@ export default function DeckHistoryView({
         name: 'Deck',
         passProps: {
           id: parsedDeck.id,
-          isPrivate: true,
+          campaignId: campaign?.id,
         },
         options: getDeckOptions(colors, { title: parsedDeck.deck.name }, parsedDeck.investigator),
       },
     });
-  }, [componentId, colors]);
+  }, [componentId, campaign, colors]);
   if (!cards) {
     return null;
   }
@@ -102,7 +105,6 @@ export default function DeckHistoryView({
           parsedDeck={deck}
           cards={cards}
           editable={false}
-          isPrivate
         />
       )) }
     </ScrollView>

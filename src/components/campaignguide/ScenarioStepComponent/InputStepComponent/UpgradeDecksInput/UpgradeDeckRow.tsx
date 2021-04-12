@@ -5,7 +5,7 @@ import { t } from 'ttag';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Switch from '@components/core/Switch';
-import { Deck, Slots, NumberChoices, DeckId, getDeckId } from '@actions/types';
+import { Deck, Slots, NumberChoices, getDeckId } from '@actions/types';
 import BasicListRow from '@components/core/BasicListRow';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import CardSectionHeader from '@components/core/CardSectionHeader';
@@ -14,50 +14,22 @@ import { showDeckModal, showCard } from '@components/nav/helper';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import DeckUpgradeComponent, { DeckUpgradeHandles } from '@components/deck/DeckUpgradeComponent';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import StyleContext from '@styles/StyleContext';
-import { useCounter, useEffectUpdate, useFlag, useDeck } from '@components/core/hooks';
+import { useCounter, useEffectUpdate, useFlag } from '@components/core/hooks';
 import useCardList from '@components/card/useCardList';
 import DeckButton from '@components/deck/controls/DeckButton';
 import space from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import useDeckUpgrade from '@components/deck/useDeckUpgrade';
-
-interface ShowDeckButtonProps {
-  componentId: string;
-  deckId: DeckId;
-  investigator: Card;
-}
-
-function ShowDeckButton({ componentId, deckId, investigator }: ShowDeckButtonProps) {
-  const { colors } = useContext(StyleContext);
-  const [deck] = useDeck(deckId, {});
-  const onPress = useCallback(() => {
-    if (deck) {
-      showDeckModal(
-        componentId,
-        deck,
-        colors,
-        investigator,
-        { hideCampaign: true }
-      );
-    }
-  }, [componentId, investigator, deck, colors]);
-
-  if (!deck) {
-    return null;
-  }
-  return (
-    <ArkhamButton
-      icon="deck"
-      title={t`View upgrade`}
-      onPress={onPress}
-    />
-  );
-}
+import { DeckActions } from '@data/remote/decks';
+import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
+import ShowDeckButton from '../ShowDeckButton';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 interface Props {
   componentId: string;
@@ -65,18 +37,20 @@ interface Props {
   campaignState: CampaignStateHelper;
   scenarioState: ScenarioStateHelper;
   investigator: Card;
-  deck?: Deck;
+  deck?: LatestDeckT;
   campaignLog: GuidedCampaignLog;
   setUnsavedEdits: (investigator: string, edits: boolean) => void;
   editable: boolean;
+  actions: DeckActions;
 }
 
 function computeChoiceId(stepId: string, investigator: Card) {
   return `${stepId}#${investigator.code}`;
 }
 
-function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investigator, deck, campaignLog, setUnsavedEdits, editable }: Props) {
+function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investigator, deck, campaignLog, actions, setUnsavedEdits, editable }: Props) {
   const { colors, typography } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const deckUpgradeComponent = useRef<DeckUpgradeHandles>();
   const earnedXp = useMemo(() => campaignLog.earnedXp(investigator.code), [campaignLog, investigator]);
   const [xpAdjust, incXp, decXp] = useCounter(earnedXp, {});
@@ -346,7 +320,7 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
   }, [incMental, decMental, incPhysical, decPhysical, toggleInsane, toggleKilled, investigator,
     colors, typography, baseTrauma, choices, editable, insane, killed, physicalTrauma, mentalTrauma,
     insaneAdjust, killedAdjust, traumaDelta]);
-  const [saving, error, saveDeckUpgrade] = useDeckUpgrade(deck, onUpgrade);
+  const [saving, error, saveDeckUpgrade] = useDeckUpgrade(deck, actions, onUpgrade);
   const saveButton = useMemo(() => {
     if (choices !== undefined || !editable || deck) {
       return null;
@@ -383,18 +357,18 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
     campaignState.showChooseDeck(investigator);
   }, [campaignState, investigator]);
 
+  const { campaign } = useContext(CampaignGuideContext);
   const viewDeck = useCallback(() => {
     if (deck) {
-      showDeckModal(componentId, deck, colors, investigator, { hideCampaign: true });
+      showDeckModal(deck.id, deck.deck, campaign?.id, colors, investigator);
     }
-  }, [componentId, colors, investigator, deck]);
+  }, [colors, investigator, deck, campaign]);
 
   const deckButton = useMemo(() => {
     if (deck && deckChoice !== undefined) {
       return (
         <View style={styles.row}>
           <ShowDeckButton
-            componentId={componentId}
             deckId={deckChoice}
             investigator={investigator}
           />
@@ -412,6 +386,19 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
       );
     }
     if (choices === undefined) {
+      if (deck.owner && user && deck.owner.id !== user.uid) {
+        return (
+          <View style={[styles.row, space.paddingBottomS]}>
+            <DeckButton
+              icon="upgrade"
+              color="light_gray"
+              title={t`Save deck upgrade`}
+              detail={deck.owner.handle ? t`${deck.owner.handle} must save this upgrade` : t`Your friend must save this upgrade`}
+              disabled
+            />
+          </View>
+        );
+      }
       return (
         <View style={[styles.row, space.paddingBottomS]}>
           <DeckButton
@@ -430,7 +417,7 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
         <ArkhamButton variant="outline" grow icon="deck" title={t`View deck`} onPress={viewDeck} />
       </View>
     );
-  }, [componentId, deck, editable, investigator, deckChoice, choices, save, saving, selectDeck, viewDeck]);
+  }, [deck, editable, investigator, user, deckChoice, choices, saving, save, selectDeck, viewDeck]);
 
   const storyCountsForDeck = useMemo(() => {
     if (!deck) {
@@ -440,9 +427,9 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
     forEach(keys(storyAssets), code => {
       const delta = storyAssetDeltas[code];
       if (delta) {
-        newSlots[code] = (deck.slots?.[code] || 0) + delta;
+        newSlots[code] = (deck.deck.slots?.[code] || 0) + delta;
       } else {
-        newSlots[code] = (deck.slots?.[code] || 0);
+        newSlots[code] = (deck.deck.slots?.[code] || 0);
       }
       if (newSlots[code] < 0) {
         newSlots[code] = 0;
@@ -451,7 +438,7 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
     forEach(storyAssetDeltas, (delta, code) => {
       if (storyAssets[code] === undefined) {
         if (delta) {
-          newSlots[code] = (deck.slots?.[code] || 0) + delta;
+          newSlots[code] = (deck.deck.slots?.[code] || 0) + delta;
         }
       }
     });

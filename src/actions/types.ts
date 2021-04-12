@@ -1,6 +1,6 @@
 import { ChaosBag, ChaosTokenType, FactionCodeType, SkillCodeType, SlotCodeType } from '@app_constants';
 import { CardFilterData, FilterState } from '@lib/filters';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 
 export const SORT_BY_TYPE = 'type';
 export const SORT_BY_FACTION = 'faction';
@@ -55,11 +55,13 @@ export interface LocalDeckId {
   id: undefined;
   local: true;
   uuid: string;
+  serverId?: number;
 }
 export interface ArkhamDbDeckId {
   id: number;
   local: false;
   uuid: string;
+  serverId?: number;
 }
 export type DeckId = LocalDeckId | ArkhamDbDeckId;
 
@@ -405,9 +407,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   TIC,
 ]);
 
-export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set([
-  TIC,
-]);
+export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
 
 export interface CustomCampaignLog {
   sections?: string[];
@@ -434,13 +434,13 @@ export interface LocalCampaignId {
 
 export interface UploadedCampaignId {
   campaignId: string;
-  serverId: string;
+  serverId: number;
 }
 
 export type CampaignId = LocalCampaignId | UploadedCampaignId;
 
 interface BaseCampaign {
-  serverId?: string;
+  serverId?: number;
   name: string;
   difficulty?: CampaignDifficulty;
   cycleCode: CampaignCycleCode;
@@ -491,11 +491,11 @@ export function getLastUpdated(campaign: { lastUpdated?: Date | string | number 
   return (campaign.lastUpdated.getTime());
 }
 
-export function getCampaignLastUpdated(campaign: Campaign, guide?: { lastUpdated?: Date | string | number }) {
+export function getCampaignLastUpdated(campaign: Campaign, guide?: { lastUpdated?: Date | string | number }): Date {
   if (campaign.guided && guide) {
-    return Math.min(-getLastUpdated(campaign), -getLastUpdated(guide));
+    return new Date(Math.min(getLastUpdated(campaign), getLastUpdated(guide)));
   }
-  return -getLastUpdated(campaign);
+  return new Date(getLastUpdated(campaign));
 }
 
 export interface LegacyCampaign extends BaseCampaign {
@@ -639,17 +639,32 @@ export interface CampaignSyncRequiredAction {
   campaignId: CampaignId;
 }
 
+export interface UploadedDeck {
+  deckId: DeckId;
+  hash: string;
+  campaignId: UploadedCampaignId[];
+}
 export const UPLOAD_DECK = 'UPLOAD_DECK';
 export interface UploadDeckAction {
   type: typeof UPLOAD_DECK;
   deckId: DeckId;
+  hash: string;
   campaignId: UploadedCampaignId;
 }
+
 export const REMOVE_UPLOAD_DECK = 'REMOVE_UPLOAD_DECK';
 export interface RemoveUploadDeckAction {
   type: typeof REMOVE_UPLOAD_DECK;
   deckId: DeckId;
-  campaignId: CampaignId;
+  campaignId: UploadedCampaignId;
+}
+
+export const SET_UPLOADED_DECKS = 'SET_UPLOADED_DECKS';
+export interface SetUploadedDecksAction {
+  type: typeof SET_UPLOADED_DECKS;
+  uploadedDecks: {
+    [uuid: string]: UploadedDeck | undefined;
+  };
 }
 
 export const DELETE_DECK = 'DELETE_DECK';
@@ -672,6 +687,7 @@ export interface EditDeckState {
   ignoreDeckLimitSlots: Slots;
   meta: DeckMeta;
   mode: 'edit' | 'upgrade' | 'view';
+  editable: boolean;
 }
 export const START_DECK_EDIT = 'START_DECK_EDIT';
 export interface StartDeckEditAction {
@@ -807,6 +823,16 @@ export interface UpdateCampaignAction {
   type: typeof UPDATE_CAMPAIGN;
   id: CampaignId;
   campaign: CampaignUpdate;
+  now: Date;
+}
+
+export const UPDATE_CAMPAIGN_TRAUMA = 'UPDATE_CAMPAIGN_TRAUMA';
+
+export interface UpdateCampaignTraumaAction {
+  type: typeof UPDATE_CAMPAIGN_TRAUMA;
+  id: CampaignId;
+  investigator: string;
+  trauma: TraumaAndCardData;
   now: Date;
 }
 
@@ -1060,6 +1086,8 @@ export interface GuideCampaignLinkInput extends BasicInput {
   decision: string;
 }
 
+export const SYSTEM_BASED_GUIDE_INPUT_TYPES = new Set(['campaign_link', 'inter_scenario']);
+
 export type GuideInput =
   GuideSuppliesInput |
   GuideDecisionInput |
@@ -1231,7 +1259,9 @@ export type DecksActions =
   ReplaceLocalDeckAction |
   EnsureUuidAction |
   ReduxMigrationAction |
-  UploadDeckAction;
+  UploadDeckAction |
+  RemoveUploadDeckAction |
+  SetUploadedDecksAction;
 
 export type DeckEditsActions =
   DeleteDeckAction |
@@ -1255,6 +1285,7 @@ export type CampaignActions =
   NewLinkedCampaignAction |
   UpdateCampaignAction |
   UpdateCampaignXpAction |
+  UpdateCampaignTraumaAction |
   DeleteCampaignAction |
   AddCampaignScenarioResultAction |
   EditCampaignScenarioResultAction |
@@ -1301,3 +1332,25 @@ export type DissonantVoicesActions =
   DissonantVoicesLoginStartedAction |
   DissonantVoicesLoginErrorAction |
   DissonantVoicesLogoutAction;
+
+export const TRACKED_QUERIES_ADD = 'TRACKED_QUERIES_ADD';
+export const TRACKED_QUERIES_REMOVE = 'TRACKED_QUERIES_REMOVE';
+
+export interface TrackedQuery {
+  contextJSON: string;
+  id: string;
+  name: string;
+  variablesJSON: string;
+}
+
+export interface TrackedQueriesAddAction {
+  type: typeof TRACKED_QUERIES_ADD;
+  payload: TrackedQuery;
+}
+
+export interface TrackedQueriesRemoveAction {
+  type: typeof TRACKED_QUERIES_REMOVE;
+  payload: string;
+}
+
+export type TrackedQueriesAction = TrackedQueriesAddAction | TrackedQueriesRemoveAction;

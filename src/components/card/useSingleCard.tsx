@@ -1,4 +1,4 @@
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { useMemo } from 'react';
 import useCardList from './useCardList';
 

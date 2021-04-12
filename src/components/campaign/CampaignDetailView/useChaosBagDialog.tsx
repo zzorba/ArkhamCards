@@ -9,14 +9,14 @@ import DeckButton from '@components/deck/controls/DeckButton';
 import space, { m, s } from '@styles/space';
 import { Navigation } from 'react-native-navigation';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
-import Card from '@data/Card';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import Card from '@data/types/Card';
 import { useDispatch } from 'react-redux';
 import { CampaignId } from '@actions/types';
 import { showChaosBagOddsCalculator, showDrawChaosBag, showGuideChaosBagOddsCalculator, showGuideDrawChaosBag } from '../nav';
 import { useDialog } from '@components/deck/dialogs';
 import StyleContext from '@styles/StyleContext';
-import { updateCampaign } from '../actions';
+import { updateCampaignChaosBag } from '../actions';
+import { SetCampaignChaosBagAction } from '@data/remote/campaigns';
 
 interface Props {
   componentId: string;
@@ -24,6 +24,7 @@ interface Props {
   campaignId: CampaignId;
   chaosBag: ChaosBag;
   guided?: boolean;
+  setChaosBag: SetCampaignChaosBagAction;
 }
 
 export function useSimpleChaosBagDialog(chaosBag: ChaosBag): [React.ReactNode, () => void] {
@@ -54,6 +55,7 @@ export default function useChaosBagDialog({
   campaignId,
   chaosBag,
   guided,
+  setChaosBag,
 }: Props): [React.ReactNode, () => void] {
   const { width } = useContext(StyleContext);
   const setVisibleRef = useRef<(visible: boolean) => void>();
@@ -73,11 +75,10 @@ export default function useChaosBagDialog({
       showDrawChaosBag(componentId, campaignId, allInvestigators);
     }
   }, [campaignId, componentId, guided, chaosBag, allInvestigators]);
-  const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
   const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
-    dispatch(updateCampaign(user, campaignId, { chaosBag }));
-  }, [dispatch, campaignId, user]);
+    dispatch(updateCampaignChaosBag(setChaosBag, campaignId, chaosBag));
+  }, [dispatch, setChaosBag, campaignId]);
 
   const editChaosBagDialog = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);

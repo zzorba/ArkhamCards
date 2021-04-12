@@ -21,8 +21,8 @@ import { addScenarioResult } from '../actions';
 import space, { m, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useCampaignInvestigators, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
-import { useCampaign } from '@data/hooks';
+import { useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
+import { useCampaignInvestigators, useCampaign } from '@data/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useCountDialog } from '@components/deck/dialogs';
@@ -43,12 +43,12 @@ function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
+  const investigators = useInvestigatorCards();
 
   const campaign = useCampaign(id);
-  const investigators = useInvestigatorCards();
+  const [allInvestigators] = useCampaignInvestigators(campaign, investigators);
   const [scenario, setScenario] = useState<ScenarioResult | undefined>();
   const [campaignNotes, setCampaignNotes] = useState<CampaignNotes | undefined>();
-  const allInvestigators = useCampaignInvestigators(campaign, investigators);
   const [xp, setXp] = useState(0);
 
   const doSave = useCallback((showDeckUpgrade: boolean) => {
@@ -135,11 +135,10 @@ function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
   }, [componentId, campaign, showTextEditDialog, scenarioCode]);
 
   const notes = useMemo(() => {
-    return campaignNotes ||
-      (campaign && campaign.campaignNotes);
+    return campaignNotes || campaign?.campaignNotes;
   }, [campaignNotes, campaign]);
 
-  const hasDecks = !!campaign && !!campaign.deckIds && campaign.deckIds.length > 0;
+  const hasDecks = campaign && campaign.latestDecks().length > 0;
   return (
     <View style={[styles.flex, backgroundStyle]}>
       <ScrollView style={styles.flex} contentContainerStyle={styles.container}>

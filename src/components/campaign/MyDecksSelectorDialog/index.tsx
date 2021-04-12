@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { concat, filter, flatMap, flatten, keys, uniqBy, uniq, throttle } from 'lodash';
+import { concat, filter, flatMap, find, flatten, keys, map, uniqBy, uniq, throttle } from 'lodash';
 import {
   Keyboard,
   StyleSheet,
@@ -19,14 +19,16 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { NavigationProps } from '@components/nav/types';
 import { CampaignId, Deck, DeckId, SortType, SORT_BY_PACK } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
-import Card from '@data/Card';
-import { getAllDecks, makeLatestCampaignDeckIdsSelector, AppState, getDeck, makeOtherCampiagnDeckIdsSelector } from '@reducers';
+import Card from '@data/types/Card';
+import { AppState, makeOtherCampiagnDeckIdsSelector } from '@reducers';
 import COLORS from '@styles/colors';
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { useFlag, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 import { useCampaign } from '@data/hooks';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
+import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 export interface MyDecksSelectorProps {
   campaignId: CampaignId;
@@ -34,7 +36,7 @@ export interface MyDecksSelectorProps {
   onInvestigatorSelect?: (card: Card) => void;
 
   singleInvestigator?: string;
-  selectedDeckIds?: DeckId[];
+  selectedDecks?: LatestDeckT[];
   selectedInvestigatorIds?: string[];
 
   onlyShowSelected?: boolean;
@@ -89,14 +91,11 @@ function investigatorOptions(): Options {
 
 function MyDecksSelectorDialog(props: Props) {
   const { fontScale, typography } = useContext(StyleContext);
-  const { componentId, campaignId, onDeckSelect, onInvestigatorSelect, singleInvestigator, selectedDeckIds, selectedInvestigatorIds, onlyShowSelected, simpleOptions } = props;
+  const { componentId, campaignId, onDeckSelect, onInvestigatorSelect, singleInvestigator, selectedDecks, selectedInvestigatorIds, onlyShowSelected, simpleOptions } = props;
 
   const campaign = useCampaign(campaignId);
   const otherCampaignsDeckIdsSelector = useMemo(() => makeOtherCampiagnDeckIdsSelector(), []);
   const otherCampaignDeckIds = useSelector((state: AppState) => otherCampaignsDeckIdsSelector(state, campaign));
-  const getLatestCampaignDeckIds = useMemo(makeLatestCampaignDeckIdsSelector, []);
-  const campaignLatestDeckIds = useSelector((state: AppState) => getLatestCampaignDeckIds(state, campaign));
-  const decks = useSelector(getAllDecks);
 
   const [hideOtherCampaignDecks, toggleHideOtherCampaignDecks] = useFlag(true);
   const [onlyShowPreviousCampaignMembers, toggleOnlyShowPreviousCampaignMembers] = useFlag(false);
@@ -116,16 +115,15 @@ function MyDecksSelectorDialog(props: Props) {
         });
     return uniq([
       ...(hideEliminatedInvestigators ? eliminatedInvestigators : []),
-      ...flatMap(selectedDeckIds, deckId => {
-        const deck = getDeck(decks, deckId);
+      ...flatMap(selectedDecks, deck => {
         if (deck) {
-          return [deck.investigator_code];
+          return [deck.investigator];
         }
         return [];
       }),
       ...(selectedInvestigatorIds || []),
     ]);
-  }, [hideEliminatedInvestigators, selectedInvestigatorIds, selectedDeckIds, decks, campaign, investigators, onlyShowSelected]);
+  }, [hideEliminatedInvestigators, selectedInvestigatorIds, selectedDecks, campaign, investigators, onlyShowSelected]);
   const onlyInvestigators = useMemo(() => {
     if (singleInvestigator) {
       return [singleInvestigator];
@@ -133,18 +131,21 @@ function MyDecksSelectorDialog(props: Props) {
     return undefined;
   }, [singleInvestigator]);
 
-  const showNewDeckDialog = useMemo(() => throttle(() => {
-    Navigation.push<NewDeckProps>(componentId, {
-      component: {
-        name: 'Deck.New',
-        passProps: {
-          onCreateDeck: onDeckSelect,
-          filterInvestigators,
-          onlyInvestigators,
+  const showNewDeckDialog = useMemo(() => {
+    return throttle(() => {
+      Navigation.push<NewDeckProps>(componentId, {
+        component: {
+          name: 'Deck.New',
+          passProps: {
+            campaignId,
+            onCreateDeck: onDeckSelect,
+            filterInvestigators,
+            onlyInvestigators,
+          },
         },
-      },
-    });
-  }, 200), [componentId, onDeckSelect, filterInvestigators, onlyInvestigators]);
+      });
+    }, 200);
+  }, [componentId, campaignId, onDeckSelect, filterInvestigators, onlyInvestigators]);
 
   const showSortDialog = useCallback(() => {
     Keyboard.dismiss();
@@ -161,25 +162,25 @@ function MyDecksSelectorDialog(props: Props) {
     }
   }, componentId, [componentId, showNewDeckDialog, showSortDialog]);
 
-  const onlyDeckIds = useMemo(() => {
+  const onlyDecks = useMemo(() => {
     if (onlyShowSelected) {
-      return selectedDeckIds;
+      return selectedDecks;
     }
     if (onlyShowPreviousCampaignMembers && campaign) {
-      return campaignLatestDeckIds;
+      return campaign.latestDecks();
     }
     return undefined;
-  }, [selectedDeckIds, campaign, campaignLatestDeckIds, onlyShowSelected, onlyShowPreviousCampaignMembers]);
+  }, [selectedDecks, campaign, onlyShowSelected, onlyShowPreviousCampaignMembers]);
 
   const filterDeckIds: DeckId[] = useMemo(() => {
     if (onlyShowSelected) {
       return [];
     }
     if (hideOtherCampaignDecks) {
-      return uniqBy(concat(otherCampaignDeckIds, selectedDeckIds || []), x => x.uuid);
+      return uniqBy(concat(otherCampaignDeckIds, map(selectedDecks || [], d => d.id)), x => x.uuid);
     }
-    return selectedDeckIds || [];
-  }, [selectedDeckIds, otherCampaignDeckIds, onlyShowSelected, hideOtherCampaignDecks]);
+    return map(selectedDecks || [], d => d.id);
+  }, [selectedDecks, otherCampaignDeckIds, onlyShowSelected, hideOtherCampaignDecks]);
 
   const searchOptions = useCallback((forDecks: boolean): SearchOptions | undefined => {
     if (onlyShowSelected) {
@@ -189,7 +190,7 @@ function MyDecksSelectorDialog(props: Props) {
       forDecks ? [(
         <View style={styles.row} key={0}>
           <Text style={[typography.small, styles.searchOption]}>
-            { t`Hide Decks From Other Campaigns` }
+            { t`Hide decks from other campaigns` }
           </Text>
           <ArkhamSwitch
             useGestureHandler
@@ -201,7 +202,7 @@ function MyDecksSelectorDialog(props: Props) {
       (!!campaign && !singleInvestigator && !simpleOptions) ? [(
         <View style={styles.row} key={1}>
           <Text style={[typography.small, styles.searchOption]}>
-            { t`Hide Killed and Insane Investigators` }
+            { t`Hide killed and insane investigators` }
           </Text>
           <ArkhamSwitch
             useGestureHandler
@@ -213,7 +214,7 @@ function MyDecksSelectorDialog(props: Props) {
       (!!campaign && !singleInvestigator && !simpleOptions) ? [(
         <View style={styles.row} key={2}>
           <Text style={[typography.small, styles.searchOption]}>
-            { t`Only Show Previous Campaign Members` }
+            { t`Only show previous campaign members` }
           </Text>
           <ArkhamSwitch
             useGestureHandler
@@ -240,17 +241,32 @@ function MyDecksSelectorDialog(props: Props) {
     );
   }, [componentId, props]);
 
+  const filterDeck = useCallback((deck: MiniDeckT): boolean => {
+    if (singleInvestigator && deck.investigator !== singleInvestigator) {
+      return false;
+    }
+
+    if (onlyShowSelected) {
+      return true;
+    }
+    if (hideOtherCampaignDecks && deck.campaign_id) {
+      return deck.campaign_id.campaignId === campaignId.campaignId;
+    }
+    if (find(filterInvestigators, deck.investigator)) {
+      return false;
+    }
+    return true;
+  }, [singleInvestigator, onlyShowSelected, filterInvestigators, hideOtherCampaignDecks, campaignId]);
+
   const deckTab = useMemo(() => (
     <DeckSelectorTab
       componentId={componentId}
       onDeckSelect={onDeckSelect}
       searchOptions={searchOptions(true)}
-      filterDeckIds={filterDeckIds}
-      onlyDeckIds={onlyDeckIds}
-      filterInvestigators={filterInvestigators}
-      onlyInvestigators={onlyInvestigators}
+      onlyDecks={onlyDecks}
+      filterDeck={filterDeck}
     />
-  ), [componentId, onDeckSelect, searchOptions, filterDeckIds, onlyDeckIds, filterInvestigators, onlyInvestigators]);
+  ), [componentId, onDeckSelect, searchOptions, filterDeck, onlyDecks]);
   const investigatorTab = useMemo(() => {
     if (!onInvestigatorSelect) {
       return null;
@@ -262,11 +278,11 @@ function MyDecksSelectorDialog(props: Props) {
         onInvestigatorSelect={onInvestigatorSelect}
         searchOptions={searchOptions(false)}
         filterDeckIds={filterDeckIds}
-        onlyDeckIds={onlyDeckIds}
+        onlyDecks={onlyDecks}
         filterInvestigators={filterInvestigators}
       />
     );
-  }, [componentId, selectedSort, onInvestigatorSelect, searchOptions, filterDeckIds, onlyDeckIds, filterInvestigators]);
+  }, [componentId, selectedSort, onInvestigatorSelect, searchOptions, filterDeckIds, onlyDecks, filterInvestigators]);
   const tabs = useMemo(() => {
     return investigatorTab ? [
       {

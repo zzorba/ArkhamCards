@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import DeckQuantityComponent from './DeckQuantityComponent';
 import { CardCount } from './CardCount';
 import CardUpgradeButton from './CardUpgradeButton';

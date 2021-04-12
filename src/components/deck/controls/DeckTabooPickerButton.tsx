@@ -3,7 +3,7 @@ import { find, map } from 'lodash';
 import { useSelector } from 'react-redux';
 import { c, t } from 'ttag';
 
-import Database from '@data/Database';
+import Database from '@data/sqlite/Database';
 import useDbData from '@components/core/useDbData';
 import { AppState } from '@reducers';
 import { usePickerDialog } from '../dialogs';
@@ -18,6 +18,7 @@ interface Props {
   first?: boolean;
   last?: boolean;
   show?: boolean;
+  loading?: boolean;
 }
 
 async function fetchTaboos(db: Database) {
@@ -28,7 +29,7 @@ async function fetchTaboos(db: Database) {
   return tabooSets;
 }
 
-export default function DeckTabooPickerButton({ tabooSetId, setTabooSet, disabled, show, open, first, last }: Props) {
+export default function DeckTabooPickerButton({ tabooSetId, setTabooSet, disabled, loading, show, open, first, last }: Props) {
   const settingsTabooSetId = useSelector((state: AppState) => state.settings.tabooId);
   const tabooSets = useDbData(fetchTaboos);
   const items = useMemo(() => [
@@ -71,6 +72,7 @@ export default function DeckTabooPickerButton({ tabooSetId, setTabooSet, disable
         title={t`Taboo List`}
         icon="taboo_thin"
         editable={!disabled}
+        loading={loading}
         onPress={showDialog}
         valueLabel={find(items, option => option.value === selectedValue)?.title || c('Taboo List').t`None`}
         first={first}

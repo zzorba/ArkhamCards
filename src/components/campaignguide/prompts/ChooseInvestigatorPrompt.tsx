@@ -5,7 +5,7 @@ import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import ScenarioStepContext from '../ScenarioStepContext';
 import StyleContext from '@styles/StyleContext';
 import ScenarioGuideContext from '../ScenarioGuideContext';

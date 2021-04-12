@@ -46,7 +46,14 @@ export interface Typography {
   inverted: TextStyle;
 }
 
-export default function(fontScale: number, colors: TypographyColors, gameFont: string, lang: string): Typography {
+export default function(
+  fontScale: number,
+  colors: TypographyColors,
+  italicFont: string,
+  boldItalicFont: string,
+  gameFont: string,
+  lang: string
+): Typography {
   return StyleSheet.create({
     searchLabel: {
       fontFamily: 'Alegreya-Regular',
@@ -62,7 +69,8 @@ export default function(fontScale: number, colors: TypographyColors, gameFont: s
       color: colors.lightText,
     },
     smallButtonLabel: {
-      fontFamily: 'Alegreya-Italic',
+      fontFamily: italicFont,
+      fontStyle: 'italic',
       fontSize: Math.ceil(14 * fontScale),
       lineHeight: Math.ceil((lang === 'zh' ? 17 : 14) * fontScale),
       letterSpacing: 0.3,
@@ -75,7 +83,8 @@ export default function(fontScale: number, colors: TypographyColors, gameFont: s
       color: colors.darkText,
     },
     cardTraits: {
-      fontFamily: 'Alegreya-Italic',
+      fontFamily: italicFont,
+      fontStyle: 'italic',
       fontSize: Math.ceil(16 * fontScale),
       lineHeight: Math.ceil(18 * fontScale),
       color: colors.lightText,
@@ -141,12 +150,14 @@ export default function(fontScale: number, colors: TypographyColors, gameFont: s
       color: colors.darkText,
     },
     boldItalic: {
-      fontFamily: 'Alegreya-ExtraBoldItalic',
+      fontFamily: boldItalicFont,
+      fontStyle: 'italic',
       fontWeight: Platform.OS === 'ios' ? '700' : undefined,
       color: colors.darkText,
     },
     italic: {
-      fontFamily: 'Alegreya-Italic',
+      fontFamily: italicFont,
+      fontStyle: 'italic',
     },
     gameFont: {
       fontFamily: gameFont,

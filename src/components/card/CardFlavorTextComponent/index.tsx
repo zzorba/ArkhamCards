@@ -203,7 +203,7 @@ export default function CardFlavorTextComponent(
       onLinkPress={onLinkPress}
       styles={{
         paragraph: {
-          fontFamily: 'Alegreya-Italic',
+          fontFamily: context.italicFont,
           fontSize: 16 * context.fontScale * sizeScale,
           lineHeight: 20 * context.fontScale * sizeScale,
           marginTop: 4,

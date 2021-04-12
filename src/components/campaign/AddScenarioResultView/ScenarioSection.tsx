@@ -4,27 +4,28 @@ import { View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { Campaign, SingleCampaign, ScenarioResult, CUSTOM, getCampaignId } from '@actions/types';
+import { ScenarioResult, CUSTOM } from '@actions/types';
 import SettingsSwitch from '@components/core/SettingsSwitch';
-import { updateCampaign } from '../actions';
+import { updateCampaignShowInterludes } from '../actions';
 import { completedScenario, scenarioFromCard, Scenario } from '../constants';
 import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import { makeAllCyclePacksSelector, getAllStandalonePacks, makePackSelector, AppState } from '@reducers';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
-import { where } from '@data/query';
+import { where } from '@data/sqlite/query';
 import space from '@styles/space';
 import { useCycleScenarios } from '@components/core/hooks';
 import { usePickerDialog } from '@components/deck/dialogs';
-import { QuerySort } from '@data/types';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { QuerySort } from '@data/sqlite/types';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import EncounterIcon from '@icons/EncounterIcon';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
+import { useSetCampaignShowInterludes } from '@data/remote/campaigns';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 interface OwnProps {
   componentId: string;
-  campaign: SingleCampaign;
+  campaign: SingleCampaignT;
   scenarioChanged: (result: ScenarioResult) => void;
   showTextEditDialog: ShowTextEditDialog;
   initialScenarioCode?: string;
@@ -38,18 +39,17 @@ export default function ScenarioSection({ campaign, initialScenarioCode, scenari
     query: SCENARIO_QUERY,
     sort: SCENARIO_SORT,
   });
-  const { user } = useContext(ArkhamCardsAuthContext);
   const { colors } = useContext(StyleContext);
   const getPack = useMemo(makePackSelector, []);
   const cyclePack = useSelector((state: AppState) => getPack(state, campaign.cycleCode));
   const getAllCyclePacks = useMemo(makeAllCyclePacksSelector, []);
   const cyclePacks = useSelector((state: AppState) => getAllCyclePacks(state, cyclePack));
   const standalonePacks = useSelector(getAllStandalonePacks);
-  const fixedCycleScenarios = useCycleScenarios(campaign);
+  const fixedCycleScenarios = useCycleScenarios(campaign.cycleCode);
   const showInterludes = !!campaign.showInterludes;
   const allScenarios = useMemo(() => {
     const hasCompletedScenario = completedScenario(campaign.scenarioResults);
-    const finishedScenarios = new Set(campaign.finishedScenarios);
+    const finishedScenarios = new Set(map(campaign.scenarioResults, r => r.scenarioCode));
     const cyclePackCodes = new Set(map(cyclePacks, pack => pack.code));
     const standalonePackCodes = new Set(map(standalonePacks, pack => pack.code));
     const cycleScenarios: Scenario[] = [];
@@ -74,16 +74,17 @@ export default function ScenarioSection({ campaign, initialScenarioCode, scenari
         scenario => !finishedScenarios.has(scenario.name) && !hasCompletedScenario(scenario)),
       standaloneScenarios
     );
-  }, [allScenarioCards, fixedCycleScenarios, campaign.scenarioResults, campaign.finishedScenarios, cyclePacks, standalonePacks]);
+  }, [allScenarioCards, fixedCycleScenarios, campaign.scenarioResults, cyclePacks, standalonePacks]);
 
   const [selectedScenario, setSelectedScenario] = useState<Scenario | typeof CUSTOM>(head(allScenarios) || CUSTOM);
   const [customScenario, setCustomScenario] = useState('');
   const [resolution, setResolution] = useState('');
   const dispatch = useDispatch();
 
+  const setShowInterludes = useSetCampaignShowInterludes();
   const toggleShowInterludes = useCallback(() => {
-    dispatch(updateCampaign(user, getCampaignId(campaign), { showInterludes: !showInterludes }));
-  }, [campaign, showInterludes, user, dispatch]);
+    dispatch(updateCampaignShowInterludes(setShowInterludes, campaign.id, !showInterludes));
+  }, [campaign, showInterludes, setShowInterludes, dispatch]);
 
   useEffect(() => {
     scenarioChanged({

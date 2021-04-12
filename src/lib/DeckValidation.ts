@@ -1,19 +1,22 @@
 import {
   groupBy,
   mapValues,
+  flatMap,
   forEach,
   find,
   findKey,
   filter,
+  map,
   minBy,
   indexOf,
+  sumBy,
 } from 'lodash';
 import { t } from 'ttag';
 
 import { DeckMeta, DeckProblem, DeckProblemType, Slots } from '@actions/types';
 import { ANCESTRAL_KNOWLEDGE_CODE, ON_YOUR_OWN_CODE, VERSATILE_CODE } from '@app_constants';
-import Card from '@data/Card';
-import DeckOption from '@data/DeckOption';
+import Card from '@data/types/Card';
+import DeckOption from '@data/types/DeckOption';
 
 
 interface SpecialCardCounts {
@@ -123,18 +126,13 @@ export default class DeckValidation {
     if (card && card.deck_requirements){
       //console.log(card.deck_requirements);
       // must have the required cards
-      if (card.deck_requirements.card){
-        let req_count = 0;
-        let req_met_count = 0;
-        forEach(card.deck_requirements.card, possible => {
-          req_count++;
-          if (find(cards, theCard =>
-            theCard.code === possible.code ||
-            find(possible.alternates, alt => alt === theCard.code))) {
-            req_met_count++;
-          }
-        });
-        if (req_met_count < req_count) {
+      if (card.deck_requirements.card) {
+        const requiredCards = map(card.deck_requirements.card, c => c.code);
+        const alternateCards = flatMap(card.deck_requirements.card, c => c.alternates || []);
+
+        if (sumBy(requiredCards, code => find(cards, theCard => theCard.code === code) ? 1 : 0) < requiredCards.length &&
+          (!alternateCards.length || sumBy(alternateCards, code => find(cards, theCard => theCard.code === code) ? 1 : 0) < alternateCards.length)
+        ) {
           return 'investigator';
         }
       }

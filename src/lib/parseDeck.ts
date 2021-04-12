@@ -33,7 +33,7 @@ import {
   Slots,
   SplitCards,
 } from '@actions/types';
-import Card, { CardKey, CardsMap } from '@data/Card';
+import Card, { CardKey, CardsMap } from '@data/types/Card';
 import {
   ARCANE_RESEARCH_CODE,
   ADAPTABLE_CODE,
@@ -452,7 +452,7 @@ function getDeckChanges(
       for (let i = 0; i < removedCards.length; i++) {
         const removedCard = removedCards[i];
         if (
-          addedCard.name === removedCard.name &&
+          addedCard.real_name === removedCard.real_name &&
           addedCard.xp !== undefined &&
           removedCard.xp !== undefined &&
           addedCard.xp > removedCard.xp

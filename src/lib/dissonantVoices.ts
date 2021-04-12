@@ -85,7 +85,6 @@ export async function authorizeDissonantVoices(): Promise<DissonantVoicesAuthRes
     body: JSON.stringify({ code: accessToken, type: 'app', client_id: 'arkhamcards' }),
   });
   if (response.status !== 200) {
-    console.log(response.status, response);
     throw Error('Invalid token');
   }
   const { token, is_patron } = await response.json();

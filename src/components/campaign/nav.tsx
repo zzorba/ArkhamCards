@@ -2,7 +2,7 @@ import { Campaign, CampaignId } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import { GuideDrawChaosBagProps } from '@components/campaignguide/GuideDrawChaosBagView';
 import { GuideOddsCalculatorProps } from '@components/campaignguide/GuideOddsCalculatorView';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { map } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';

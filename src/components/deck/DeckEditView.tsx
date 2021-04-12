@@ -5,10 +5,11 @@ import { VERSATILE_CODE, ON_YOUR_OWN_CODE } from '@app_constants';
 import CardSearchComponent from '@components/cardlist/CardSearchComponent';
 import { queryForInvestigator, negativeQueryForInvestigator } from '@lib/InvestigatorRequirements';
 import FilterBuilder, { defaultFilterState } from '@lib/filters';
-import { STORY_CARDS_QUERY, ON_YOUR_OWN_RESTRICTION, where, combineQueries } from '@data/query';
+import { STORY_CARDS_QUERY, ON_YOUR_OWN_RESTRICTION, where, combineQueries } from '@data/sqlite/query';
 import { NavigationProps } from '@components/nav/types';
-import { useDeck, useInvestigatorCards } from '@components/core/hooks';
+import { useInvestigatorCards } from '@components/core/hooks';
 import { useSimpleDeckEdits } from '@components/deck/hooks';
+import { useDeck } from '@data/hooks';
 import { DeckId } from '@actions/types';
 
 export interface EditDeckProps {
@@ -23,13 +24,13 @@ export default function DeckEditView({
   id,
   storyOnly,
 }: Props) {
-  const [deck] = useDeck(id, {});
+  const deck = useDeck(id);
   const deckEdits = useSimpleDeckEdits(id);
-  const tabooSetId = (deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : deck?.taboo_id) || 0;
+  const tabooSetId = (deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : deck?.deck.taboo_id) || 0;
   const investigators = useInvestigatorCards(tabooSetId);
   const [hideVersatile, setHideVersatile] = useState(false);
   const investigator = useMemo(() => {
-    const investigator_code = deckEdits?.meta.alternate_back || deck?.investigator_code;
+    const investigator_code = deckEdits?.meta.alternate_back || deck?.deck.investigator_code;
     return investigator_code && investigators && investigators[investigator_code];
   }, [deck, deckEdits, investigators]);
 
@@ -57,7 +58,7 @@ export default function DeckEditView({
         factions: ['guardian', 'seeker', 'rogue', 'mystic', 'survivor'],
         level: [0, 0],
         levelEnabled: true,
-      }, true);
+      }, false);
       if (versatileQuery) {
         const invertedClause = negativeQueryForInvestigator(investigator, deckEdits?.meta);
         if (invertedClause) {

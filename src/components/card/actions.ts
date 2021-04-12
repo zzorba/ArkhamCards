@@ -27,8 +27,8 @@ import {
   CardSetSchemaVersionAction,
 } from '@actions/types';
 import { getCardLang, AppState } from '@reducers/index';
-import { syncCards, syncTaboos } from '@lib/publicApi';
-import Database from '@data/Database';
+import { NON_LOCALIZED_CARDS, syncCards, syncTaboos } from '@lib/publicApi';
+import Database from '@data/sqlite/Database';
 
 const VERBOSE = false;
 function shouldFetchCards(state: AppState) {
@@ -111,8 +111,6 @@ export function fetchCards(
     }
   };
 }
-
-const NON_LOCALIZED_CARDS = new Set(['en', 'pt']);
 
 type PackActions = PacksFetchStartAction | PacksFetchErrorAction | PacksCacheHitAction | PacksAvailableAction;
 export function fetchPacks(

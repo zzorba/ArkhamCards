@@ -60,7 +60,7 @@ ScenarioFaqView.options = () => {
   };
 };
 
-export default withCampaignGuideContext(ScenarioFaqView);
+export default withCampaignGuideContext(ScenarioFaqView, { rootView: false });
 
 const styles = StyleSheet.create({
   container: {

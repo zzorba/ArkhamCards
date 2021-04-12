@@ -47,6 +47,7 @@ export default function(
         ignoreDeckLimitSlots: action.deck.ignoreDeckLimitSlots || {},
         xpAdjustment: action.deck.xp_adjustment || 0,
         mode: action.mode || 'view',
+        editable: !action.deck.nextDeckId,
       },
     } : state.edits;
     return {
@@ -221,6 +222,7 @@ export default function(
             meta: action.deck.meta || {},
             xpAdjustment: action.deck.xp_adjustment || 0,
             mode: 'view',
+            editable: !action.deck.nextDeckId,
           },
         },
       };

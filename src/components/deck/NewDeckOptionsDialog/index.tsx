@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { find, forEach, map, sumBy, throttle } from 'lodash';
+import { find, forEach, map, sumBy, throttle, uniqBy } from 'lodash';
 import { Action } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
 import { NetInfoStateType } from '@react-native-community/netinfo';
@@ -19,9 +19,9 @@ import useNetworkStatus from '@components/core/useNetworkStatus';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import { saveNewDeck } from '@components/deck/actions';
 import { NavigationProps } from '@components/nav/types';
-import { Deck, DeckMeta, Slots } from '@actions/types';
+import { CampaignId, Deck, DeckMeta, getDeckId, Slots } from '@actions/types';
 import { CUSTOM_INVESTIGATOR, RANDOM_BASIC_WEAKNESS } from '@app_constants';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { AppState } from '@reducers';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
@@ -37,9 +37,11 @@ import DeckButton from '../controls/DeckButton';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useSimpleTextDialog } from '../dialogs';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
+  campaignId: CampaignId | undefined;
   onCreateDeck: (deck: Deck) => void;
 }
 
@@ -52,9 +54,11 @@ type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 function NewDeckOptionsDialog({
   investigatorId,
   onCreateDeck,
+  campaignId,
   componentId,
   signedIn,
   login,
+  deckActions,
 }: Props) {
   const defaultTabooSetId = useTabooSetId();
   const { user } = useContext(ArkhamCardsAuthContext);
@@ -95,6 +99,12 @@ function NewDeckOptionsDialog({
     });
   }, [setMeta, metaState]);
   const investigator = useMemo(() => (investigators && investigators[investigatorId]) || undefined, [investigatorId, investigators]);
+  const investigatorFront = useMemo(() => (investigators && metaState.alternate_front) ? investigators[metaState.alternate_front] : investigator,
+    [investigator, investigators, metaState]);
+  const investigatorBack = useMemo(() => (investigators && metaState.alternate_back) ? investigators[metaState.alternate_back] : investigator,
+    [investigator, investigators, metaState]
+  );
+
   const defaultDeckName = useMemo(() => {
     if (!investigator || !investigator.name) {
       return t`New Deck`;
@@ -143,7 +153,7 @@ function NewDeckOptionsDialog({
         }
       }
     );
-    return result;
+    return map(result, r => uniqBy(r, x => x.code));
   }, [cards, investigator]);
   const meta = useMemo((): DeckMeta =>{
     const starterDeckMeta = starterDeck && investigator && starterDecks.meta[investigator.code];
@@ -198,14 +208,14 @@ function NewDeckOptionsDialog({
     setSaving(false);
     // Change the deck options for required cards, if present.
     onCreateDeck && onCreateDeck(deck);
-    showDeckModal(componentId, deck, colors, investigator);
-  }, [componentId, onCreateDeck, colors, investigator, setSaving]);
+    showDeckModal(getDeckId(deck), deck, campaignId, colors, investigator);
+  }, [campaignId, onCreateDeck, colors, investigator, setSaving]);
   const createDeck = useCallback((isRetry?: boolean) => {
     const deckName = deckNameChange || defaultDeckName;
     if (investigator && (!saving || isRetry)) {
       const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none);
       setSaving(true);
-      dispatch(saveNewDeck(user, {
+      dispatch(saveNewDeck(user, deckActions, {
         local,
         meta,
         deckName: deckName || t`New Deck`,
@@ -220,7 +230,7 @@ function NewDeckOptionsDialog({
         }
       );
     }
-  }, [signedIn, dispatch, showNewDeck, user,
+  }, [signedIn, dispatch, showNewDeck, deckActions, user,
     slots, meta, networkType, isConnected, offlineDeck, saving, starterDeck, tabooSetId, deckNameChange, investigator, defaultDeckName]);
 
   const onOkayPress = useMemo(() => throttle(() => createDeck(), 200), [createDeck]);
@@ -383,6 +393,13 @@ function NewDeckOptionsDialog({
   return (
     <View style={[styles.flex, backgroundStyle]}>
       <ScrollView contentContainerStyle={backgroundStyle} keyboardShouldPersistTaps="always">
+        <View style={space.paddingS}>
+          <InvestigatorSummaryBlock
+            investigator={investigatorFront || investigator}
+            tabooSetId={tabooSetId}
+            investigatorBack={investigatorBack}
+          />
+        </View>
         { formContent }
         <View style={[space.paddingS, styles.row]}>
           <View style={[space.marginRightS, styles.flex]}>

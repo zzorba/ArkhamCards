@@ -17,6 +17,7 @@ import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext
 import StyleContext from '@styles/StyleContext';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 import { useToggles } from '@components/core/hooks';
+import { useDeckActions } from '@data/remote/decks';
 
 interface Props {
   componentId: string;
@@ -28,7 +29,7 @@ export default function UpgradeDecksInput({ componentId, id }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { scenarioInvestigators, campaignLog } = useContext(ScenarioStepContext);
   const [unsavedEdits, , setUnsavedEdits] = useToggles({});
-
+  const deckActions = useDeckActions();
   const proceedMessage = useCallback((): string | undefined => {
     const unsavedDeck = find(
       scenarioInvestigators,
@@ -127,6 +128,7 @@ export default function UpgradeDecksInput({ componentId, id }: Props) {
             deck={latestDecks[investigator.code]}
             setUnsavedEdits={setUnsavedEdits}
             editable={!hasDecision}
+            actions={deckActions}
           />
         );
       }) }

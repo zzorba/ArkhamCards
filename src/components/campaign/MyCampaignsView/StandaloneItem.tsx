@@ -1,15 +1,16 @@
 import React, { useCallback } from 'react';
 
-import { Campaign, CUSTOM } from '@actions/types';
-import CampaignSummaryComponent from '../CampaignSummaryComponent';
+import { CUSTOM } from '@actions/types';
+import MiniCampaignSummaryComponent from '../MiniCampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 
 import GenericCampaignItem from './GenericCampaignItem';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 
 interface Props {
-  campaign: Campaign;
+  campaign: MiniCampaignT;
   scenarioName: string;
-  onPress: (id: string, campaign: Campaign) => void;
+  onPress: (id: string, campaign: MiniCampaignT) => void;
 }
 
 export default function StandaloneItem({ campaign, onPress, scenarioName }: Props) {
@@ -18,19 +19,17 @@ export default function StandaloneItem({ campaign, onPress, scenarioName }: Prop
   }, [onPress, campaign]);
   return (
     <GenericCampaignItem
-      lastUpdated={campaign.lastUpdated}
+      lastUpdated={campaign.updatedAt}
       onPress={handleOnPress}
     >
-      <CampaignSummaryComponent
+      <MiniCampaignSummaryComponent
         campaign={campaign}
         name={campaign.cycleCode !== CUSTOM ? campaign.name : undefined}
         standaloneName={scenarioName}
         hideScenario
       >
-        <CampaignInvestigatorRow
-          campaigns={[campaign]}
-        />
-      </CampaignSummaryComponent>
+        <CampaignInvestigatorRow campaign={campaign} />
+      </MiniCampaignSummaryComponent>
     </GenericCampaignItem>
   );
 }

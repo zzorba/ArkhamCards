@@ -2,7 +2,7 @@ import React, { useCallback, useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { map } from 'lodash';
 
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';

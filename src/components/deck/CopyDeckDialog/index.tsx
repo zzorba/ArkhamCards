@@ -19,33 +19,38 @@ import { makeBaseDeckSelector, makeLatestDeckSelector, AppState } from '@reducer
 import COLORS from '@styles/colors';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useDeck, useEffectUpdate, useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
+import { useDeck } from '@data/hooks';
+import { useEffectUpdate, useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { DeckActions } from '@data/remote/decks';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 
 interface Props {
-  componentId: string;
+  campaign: MiniCampaignT | undefined;
   toggleVisible: () => void;
   deckId?: DeckId;
   signedIn?: boolean;
+  actions: DeckActions;
 }
 
 type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
-export default function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn }: Props) {
+// TODO: remote decks
+export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signedIn, actions }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected, networkType }, refreshNetworkStatus] = useNetworkStatus();
   const dispatch: DeckDispatch = useDispatch();
-  const [deck] = useDeck(deckId, {});
+  const deck = useDeck(deckId);
   const baseDeckSelector = useMemo(makeBaseDeckSelector, []);
   const baseDeck = useSelector((state: AppState) => baseDeckSelector(state, deckId));
   const latestDeckSelector = useMemo(makeLatestDeckSelector, []);
   const latestDeck = useSelector((state: AppState) => latestDeckSelector(state, deckId));
   const [saving, setSaving] = useState(false);
   const [deckName, setDeckName] = useState<string | undefined>();
-  const [offlineDeck, setOfflineDeck] = useState(!!(deck && deck.local && deck.investigator_code !== CUSTOM_INVESTIGATOR));
+  const [offlineDeck, setOfflineDeck] = useState(!!(deck && deck.deck.local && deck.deck.investigator_code !== CUSTOM_INVESTIGATOR));
   const [selectedDeckId, setSelectedDeckId] = useState(deckId);
   const [error, setError] = useState<string | undefined>();
 
@@ -60,13 +65,12 @@ export default function CopyDeckDialog({ componentId, toggleVisible, deckId, sig
       resetForm();
     }
   }, [deckId]);
-
   const onDeckTypeChange = useCallback((value: boolean) => {
     if (value && !signedIn) {
-      dispatch(login());
+      dispatch(login(user, actions));
     }
     setOfflineDeck(!value);
-  }, [dispatch, signedIn, setOfflineDeck]);
+  }, [dispatch, signedIn, actions, user, setOfflineDeck]);
 
   const selectedDeck: Deck | undefined = useMemo(() => {
     if (baseDeck && getDeckId(baseDeck).uuid === selectedDeckId?.uuid) {
@@ -75,10 +79,10 @@ export default function CopyDeckDialog({ componentId, toggleVisible, deckId, sig
     if (latestDeck && getDeckId(latestDeck).uuid === selectedDeckId?.uuid) {
       return latestDeck;
     }
-    return deck;
+    return deck?.deck;
   }, [baseDeck, deck, latestDeck, selectedDeckId]);
   const investigators = useInvestigatorCards();
-  const investigator = useMemo(() => deck && investigators && investigators[deck.investigator_code], [deck, investigators]);
+  const investigator = useMemo(() => deck && investigators && investigators[deck.deck.investigator_code], [deck, investigators]);
 
   const showNewDeck = useCallback((deck: Deck) => {
     setSaving(false);
@@ -86,9 +90,8 @@ export default function CopyDeckDialog({ componentId, toggleVisible, deckId, sig
       toggleVisible();
     }
     // Change the deck options for required cards, if present.
-    showDeckModal(componentId, deck, colors, investigator);
-  }, [componentId, toggleVisible, investigator, setSaving, colors]);
-
+    showDeckModal(getDeckId(deck), deck, campaign?.id, colors, investigator);
+  }, [campaign, toggleVisible, investigator, setSaving, colors]);
   const saveCopy = useCallback((isRetry: boolean) => {
     if (!selectedDeck) {
       return;
@@ -96,7 +99,7 @@ export default function CopyDeckDialog({ componentId, toggleVisible, deckId, sig
     if (investigator && (!saving || isRetry)) {
       setSaving(true);
       const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none);
-      dispatch(saveClonedDeck(user, local, selectedDeck, deckName || t`New Deck`)).then(
+      dispatch(saveClonedDeck(user, actions, local, selectedDeck, deckName || t`New Deck`)).then(
         showNewDeck,
         (err) => {
           setSaving(false);
@@ -104,7 +107,7 @@ export default function CopyDeckDialog({ componentId, toggleVisible, deckId, sig
         }
       );
     }
-  }, [signedIn, isConnected, networkType, user,
+  }, [signedIn, actions, isConnected, networkType, user,
     deckName, offlineDeck, selectedDeck, saving, investigator,
     dispatch, setSaving, setError, showNewDeck]);
   const onOkayPress = useMemo(() => throttle(() => saveCopy(false), 200), [saveCopy]);
@@ -118,7 +121,7 @@ export default function CopyDeckDialog({ componentId, toggleVisible, deckId, sig
   }, [setSelectedDeckId]);
 
   const cards = usePlayerCards();
-  const parsedCurrentDeck = useMemo(() => cards && deck && parseBasicDeck(deck, cards), [cards, deck]);
+  const parsedCurrentDeck = useMemo(() => cards && deck && parseBasicDeck(deck?.deck, cards), [cards, deck]);
   const parsedBaseDeck = useMemo(() => cards && baseDeck && parseBasicDeck(baseDeck, cards), [cards, baseDeck]);
   const parsedLatestDeck = useMemo(() => cards && latestDeck && parseBasicDeck(latestDeck, cards), [cards, latestDeck]);
 
@@ -183,7 +186,7 @@ export default function CopyDeckDialog({ componentId, toggleVisible, deckId, sig
           returnKeyType="done"
         />
         { deckSelector }
-        { deck?.investigator_code !== CUSTOM_INVESTIGATOR && (
+        { deck?.deck.investigator_code !== CUSTOM_INVESTIGATOR && (
           <>
             <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
               { t`Deck Type` }
@@ -211,7 +214,7 @@ export default function CopyDeckDialog({ componentId, toggleVisible, deckId, sig
         ) }
       </>
     );
-  }, [signedIn, networkType, isConnected, colors, typography, saving, deckName, offlineDeck, error, deck?.investigator_code, onDeckNameChange, refreshNetworkStatus, onDeckTypeChange, deckSelector]);
+  }, [signedIn, networkType, isConnected, colors, typography, saving, deckName, offlineDeck, error, deck?.deck.investigator_code, onDeckNameChange, refreshNetworkStatus, onDeckTypeChange, deckSelector]);
 
 
   if (!investigator) {

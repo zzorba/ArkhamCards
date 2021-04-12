@@ -390,10 +390,6 @@ msgstr ""
 msgid "Packs: All"
 msgstr ""
 
-#, javascript-format
-msgid "${ cycleNames[cycle_position] } Cycle"
-msgstr ""
-
 msgid "Packs: ${ allPacksString }"
 msgstr ""
 
@@ -544,13 +540,13 @@ msgstr ""
 msgid "Insane"
 msgstr ""
 
-msgid "Hide Decks From Other Campaigns"
+msgid "Hide decks from other campaigns"
 msgstr ""
 
-msgid "Hide Killed and Insane Investigators"
+msgid "Hide killed and insane investigators"
 msgstr ""
 
-msgid "Only Show Previous Campaign Members"
+msgid "Only show previous campaign members"
 msgstr ""
 
 msgid "Experience"
@@ -1616,9 +1612,6 @@ msgid "XP Discount: ${ card.extra_xp }."
 msgstr ""
 
 msgid "Add Investigator Deck"
-msgstr ""
-
-msgid "Upgrade Deck with XP"
 msgstr ""
 
 msgid ""
@@ -3763,9 +3756,6 @@ msgstr ""
 msgid "Spent experience"
 msgstr ""
 
-msgid "View upgrade"
-msgstr ""
-
 msgid "Continue"
 msgstr ""
 
@@ -3888,6 +3878,38 @@ msgstr ""
 msgid "Whistles"
 msgstr ""
 
+msgid "Loading..."
+msgstr ""
+
+#, javascript-format
+msgid "${ deck.owner.handle } must save this upgrade"
+msgstr ""
+
+msgid "Your friend must save this upgrade"
+msgstr ""
+
+#, javascript-format
+msgid "${ deck.owner.handle } must save this deck"
+msgstr ""
+
+msgid "Your friend must save this deck"
+msgstr ""
+
+msgid "Campaign players"
+msgstr ""
+
+msgid "Add friends to campaign"
+msgstr ""
+
+msgid "Add friends"
+msgstr ""
+
+msgid "Access"
+msgstr ""
+
+msgid "Edit access"
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -4069,6 +4091,11 @@ msgstr ""
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr ""
+
+#, javascript-format
+msgctxt "filter"
+msgid "${ cycleNames[cycle_position] } Cycle"
 msgstr ""
 
 msgctxt "action"
@@ -4101,6 +4128,1014 @@ msgstr ""
 
 msgctxt "action"
 msgid "Resource"
+msgstr ""
+
+msgctxt "trait"
+msgid "???"
+msgstr ""
+
+msgctxt "trait"
+msgid "Abomination"
+msgstr ""
+
+msgctxt "trait"
+msgid "Abyss"
+msgstr ""
+
+msgctxt "trait"
+msgid "Act 1"
+msgstr ""
+
+msgctxt "trait"
+msgid "Act 2"
+msgstr ""
+
+msgctxt "trait"
+msgid "Agency"
+msgstr ""
+
+msgctxt "trait"
+msgid "Ally"
+msgstr ""
+
+msgctxt "trait"
+msgid "Altered"
+msgstr ""
+
+msgctxt "trait"
+msgid "Ancient"
+msgstr ""
+
+msgctxt "trait"
+msgid "Ancient One"
+msgstr ""
+
+msgctxt "trait"
+msgid "Arkham"
+msgstr ""
+
+msgctxt "trait"
+msgid "Arkham Asylum"
+msgstr ""
+
+msgctxt "trait"
+msgid "Armor"
+msgstr ""
+
+msgctxt "trait"
+msgid "Artist"
+msgstr ""
+
+msgctxt "trait"
+msgid "Assistant"
+msgstr ""
+
+msgctxt "trait"
+msgid "Attack"
+msgstr ""
+
+msgctxt "trait"
+msgid "Augury"
+msgstr ""
+
+msgctxt "trait"
+msgid "Avatar"
+msgstr ""
+
+msgctxt "trait"
+msgid "Basement"
+msgstr ""
+
+msgctxt "trait"
+msgid "Bayou"
+msgstr ""
+
+msgctxt "trait"
+msgid "Believer"
+msgstr ""
+
+msgctxt "trait"
+msgid "Blessed"
+msgstr ""
+
+msgctxt "trait"
+msgid "Blunder"
+msgstr ""
+
+msgctxt "trait"
+msgid "Boat"
+msgstr ""
+
+msgctxt "trait"
+msgid "Bold"
+msgstr ""
+
+msgctxt "trait"
+msgid "Boon"
+msgstr ""
+
+msgctxt "trait"
+msgid "Bridge"
+msgstr ""
+
+msgctxt "trait"
+msgid "Brotherhood"
+msgstr ""
+
+msgctxt "trait"
+msgid "Byakhee"
+msgstr ""
+
+msgctxt "trait"
+msgid "Bystander"
+msgstr ""
+
+msgctxt "trait"
+msgid "Cairo"
+msgstr ""
+
+msgctxt "trait"
+msgid "Campsite"
+msgstr ""
+
+msgctxt "trait"
+msgid "Carnevale"
+msgstr ""
+
+msgctxt "trait"
+msgid "Cave"
+msgstr ""
+
+msgctxt "trait"
+msgid "Central"
+msgstr ""
+
+msgctxt "trait"
+msgid "Charm"
+msgstr ""
+
+msgctxt "trait"
+msgid "Chosen"
+msgstr ""
+
+msgctxt "trait"
+msgid "Circle"
+msgstr ""
+
+msgctxt "trait"
+msgid "City"
+msgstr ""
+
+msgctxt "trait"
+msgid "Civic"
+msgstr ""
+
+msgctxt "trait"
+msgid "Clairvoyant"
+msgstr ""
+
+msgctxt "trait"
+msgid "Clothing"
+msgstr ""
+
+msgctxt "trait"
+msgid "Clover Club"
+msgstr ""
+
+msgctxt "trait"
+msgid "Coastal"
+msgstr ""
+
+msgctxt "trait"
+msgid "Composure"
+msgstr ""
+
+msgctxt "trait"
+msgid "Condition"
+msgstr ""
+
+msgctxt "trait"
+msgid "Connection"
+msgstr ""
+
+msgctxt "trait"
+msgid "Conspirator"
+msgstr ""
+
+msgctxt "trait"
+msgid "Construct"
+msgstr ""
+
+msgctxt "trait"
+msgid "Covenant"
+msgstr ""
+
+msgctxt "trait"
+msgid "Creature"
+msgstr ""
+
+msgctxt "trait"
+msgid "Crime Scene"
+msgstr ""
+
+msgctxt "trait"
+msgid "Criminal"
+msgstr ""
+
+msgctxt "trait"
+msgid "Cultist"
+msgstr ""
+
+msgctxt "trait"
+msgid "Curse"
+msgstr ""
+
+msgctxt "trait"
+msgid "Cursed"
+msgstr ""
+
+msgctxt "trait"
+msgid "Dark Young"
+msgstr ""
+
+msgctxt "trait"
+msgid "Deep One"
+msgstr ""
+
+msgctxt "trait"
+msgid "Depths"
+msgstr ""
+
+msgctxt "trait"
+msgid "Desert"
+msgstr ""
+
+msgctxt "trait"
+msgid "Desperate"
+msgstr ""
+
+msgctxt "trait"
+msgid "Detective"
+msgstr ""
+
+msgctxt "trait"
+msgid "Developed"
+msgstr ""
+
+msgctxt "trait"
+msgid "Dhole"
+msgstr ""
+
+msgctxt "trait"
+msgid "Distortion"
+msgstr ""
+
+msgctxt "trait"
+msgid "Dreamer"
+msgstr ""
+
+msgctxt "trait"
+msgid "Dreamlands"
+msgstr ""
+
+msgctxt "trait"
+msgid "Drifter"
+msgstr ""
+
+msgctxt "trait"
+msgid "Dunwich"
+msgstr ""
+
+msgctxt "trait"
+msgid "Eldritch"
+msgstr ""
+
+msgctxt "trait"
+msgid "Elite"
+msgstr ""
+
+msgctxt "trait"
+msgid "Endtimes"
+msgstr ""
+
+msgctxt "trait"
+msgid "Evidence"
+msgstr ""
+
+msgctxt "trait"
+msgid "Exhibit"
+msgstr ""
+
+msgctxt "trait"
+msgid "Expedition"
+msgstr ""
+
+msgctxt "trait"
+msgid "Expert"
+msgstr ""
+
+msgctxt "trait"
+msgid "Extradimensional"
+msgstr ""
+
+msgctxt "trait"
+msgid "Extraterrestrial"
+msgstr ""
+
+msgctxt "trait"
+msgid "Eztli"
+msgstr ""
+
+msgctxt "trait"
+msgid "Familiar"
+msgstr ""
+
+msgctxt "trait"
+msgid "Fated"
+msgstr ""
+
+msgctxt "trait"
+msgid "Favor"
+msgstr ""
+
+msgctxt "trait"
+msgid "Firearm"
+msgstr ""
+
+msgctxt "trait"
+msgid "Flaw"
+msgstr ""
+
+msgctxt "trait"
+msgid "Flora"
+msgstr ""
+
+msgctxt "trait"
+msgid "Footwear"
+msgstr ""
+
+msgctxt "trait"
+msgid "Forbidden"
+msgstr ""
+
+msgctxt "trait"
+msgid "Forgotten"
+msgstr ""
+
+msgctxt "trait"
+msgid "Fortune"
+msgstr ""
+
+msgctxt "trait"
+msgid "Future"
+msgstr ""
+
+msgctxt "trait"
+msgid "Gambit"
+msgstr ""
+
+msgctxt "trait"
+msgid "Geist"
+msgstr ""
+
+msgctxt "trait"
+msgid "Ghast"
+msgstr ""
+
+msgctxt "trait"
+msgid "Ghoul"
+msgstr ""
+
+msgctxt "trait"
+msgid "Government"
+msgstr ""
+
+msgctxt "trait"
+msgid "Grant"
+msgstr ""
+
+msgctxt "trait"
+msgid "Graveyard"
+msgstr ""
+
+msgctxt "trait"
+msgid "Ground Floor"
+msgstr ""
+
+msgctxt "trait"
+msgid "Guest"
+msgstr ""
+
+msgctxt "trait"
+msgid "Gug"
+msgstr ""
+
+msgctxt "trait"
+msgid "Hall"
+msgstr ""
+
+msgctxt "trait"
+msgid "Hazard"
+msgstr ""
+
+msgctxt "trait"
+msgid "Hex"
+msgstr ""
+
+msgctxt "trait"
+msgid "Hideout"
+msgstr ""
+
+msgctxt "trait"
+msgid "Historical Society"
+msgstr ""
+
+msgctxt "trait"
+msgid "Human"
+msgstr ""
+
+msgctxt "trait"
+msgid "Humanoid"
+msgstr ""
+
+msgctxt "trait"
+msgid "Hunter"
+msgstr ""
+
+msgctxt "trait"
+msgid "Hybrid"
+msgstr ""
+
+msgctxt "trait"
+msgid "Illicit"
+msgstr ""
+
+msgctxt "trait"
+msgid "Improvised"
+msgstr ""
+
+msgctxt "trait"
+msgid "Injury"
+msgstr ""
+
+msgctxt "trait"
+msgid "Innate"
+msgstr ""
+
+msgctxt "trait"
+msgid "Innocent"
+msgstr ""
+
+msgctxt "trait"
+msgid "Innsmouth"
+msgstr ""
+
+msgctxt "trait"
+msgid "Insect"
+msgstr ""
+
+msgctxt "trait"
+msgid "Insight"
+msgstr ""
+
+msgctxt "trait"
+msgid "Instrument"
+msgstr ""
+
+msgctxt "trait"
+msgid "Island"
+msgstr ""
+
+msgctxt "trait"
+msgid "Item"
+msgstr ""
+
+msgctxt "trait"
+msgid "Job"
+msgstr ""
+
+msgctxt "trait"
+msgid "Jungle"
+msgstr ""
+
+msgctxt "trait"
+msgid "Kadath"
+msgstr ""
+
+msgctxt "trait"
+msgid "Key"
+msgstr ""
+
+msgctxt "trait"
+msgid "Lead"
+msgstr ""
+
+msgctxt "trait"
+msgid "Leng"
+msgstr ""
+
+msgctxt "trait"
+msgid "Lodge"
+msgstr ""
+
+msgctxt "trait"
+msgid "Lunatic"
+msgstr ""
+
+msgctxt "trait"
+msgid "Madness"
+msgstr ""
+
+msgctxt "trait"
+msgid "Manifold"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mask"
+msgstr ""
+
+msgctxt "trait"
+msgid "Medic"
+msgstr ""
+
+msgctxt "trait"
+msgid "Melee"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mexico City"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mi-Go"
+msgstr ""
+
+msgctxt "trait"
+msgid "Midtown"
+msgstr ""
+
+msgctxt "trait"
+msgid "Miskatonic"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mnar"
+msgstr ""
+
+msgctxt "trait"
+msgid "Monster"
+msgstr ""
+
+msgctxt "trait"
+msgid "Montréal"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mountain"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mutated"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mystery"
+msgstr ""
+
+msgctxt "trait"
+msgid "New Orleans"
+msgstr ""
+
+msgctxt "trait"
+msgid "New York City"
+msgstr ""
+
+msgctxt "trait"
+msgid "Nightgaunt"
+msgstr ""
+
+msgctxt "trait"
+msgid "Obstacle"
+msgstr ""
+
+msgctxt "trait"
+msgid "Occult"
+msgstr ""
+
+msgctxt "trait"
+msgid "Ocean"
+msgstr ""
+
+msgctxt "trait"
+msgid "Omen"
+msgstr ""
+
+msgctxt "trait"
+msgid "Ooth-Nargai"
+msgstr ""
+
+msgctxt "trait"
+msgid "Ooze"
+msgstr ""
+
+msgctxt "trait"
+msgid "Oozified"
+msgstr ""
+
+msgctxt "trait"
+msgid "Oriab"
+msgstr ""
+
+msgctxt "trait"
+msgid "Otherworld"
+msgstr ""
+
+msgctxt "trait"
+msgid "Pact"
+msgstr ""
+
+msgctxt "trait"
+msgid "Paradox"
+msgstr ""
+
+msgctxt "trait"
+msgid "Paris"
+msgstr ""
+
+msgctxt "trait"
+msgid "Part 1"
+msgstr ""
+
+msgctxt "trait"
+msgid "Passageway"
+msgstr ""
+
+msgctxt "trait"
+msgid "Patron"
+msgstr ""
+
+msgctxt "trait"
+msgid "Performer"
+msgstr ""
+
+msgctxt "trait"
+msgid "Pnakotus"
+msgstr ""
+
+msgctxt "trait"
+msgid "Poison"
+msgstr ""
+
+msgctxt "trait"
+msgid "Police"
+msgstr ""
+
+msgctxt "trait"
+msgid "Port"
+msgstr ""
+
+msgctxt "trait"
+msgid "Portal"
+msgstr ""
+
+msgctxt "trait"
+msgid "Power"
+msgstr ""
+
+msgctxt "trait"
+msgid "Practiced"
+msgstr ""
+
+msgctxt "trait"
+msgid "Present-Day"
+msgstr ""
+
+msgctxt "trait"
+msgid "Prison"
+msgstr ""
+
+msgctxt "trait"
+msgid "Private"
+msgstr ""
+
+msgctxt "trait"
+msgid "Providence"
+msgstr ""
+
+msgctxt "trait"
+msgid "Rail"
+msgstr ""
+
+msgctxt "trait"
+msgid "Ranged"
+msgstr ""
+
+msgctxt "trait"
+msgid "Relic"
+msgstr ""
+
+msgctxt "trait"
+msgid "Reporter"
+msgstr ""
+
+msgctxt "trait"
+msgid "Research"
+msgstr ""
+
+msgctxt "trait"
+msgid "Return"
+msgstr ""
+
+msgctxt "trait"
+msgid "Ritual"
+msgstr ""
+
+msgctxt "trait"
+msgid "Ritual Site"
+msgstr ""
+
+msgctxt "trait"
+msgid "River"
+msgstr ""
+
+msgctxt "trait"
+msgid "Riverside"
+msgstr ""
+
+msgctxt "trait"
+msgid "Road"
+msgstr ""
+
+msgctxt "trait"
+msgid "Ruins"
+msgstr ""
+
+msgctxt "trait"
+msgid "Salem"
+msgstr ""
+
+msgctxt "trait"
+msgid "Sanctum"
+msgstr ""
+
+msgctxt "trait"
+msgid "Scheme"
+msgstr ""
+
+msgctxt "trait"
+msgid "Scholar"
+msgstr ""
+
+msgctxt "trait"
+msgid "Science"
+msgstr ""
+
+msgctxt "trait"
+msgid "Script"
+msgstr ""
+
+msgctxt "trait"
+msgid "Second Floor"
+msgstr ""
+
+msgctxt "trait"
+msgid "Sentinel Hill"
+msgstr ""
+
+msgctxt "trait"
+msgid "Serpent"
+msgstr ""
+
+msgctxt "trait"
+msgid "Service"
+msgstr ""
+
+msgctxt "trait"
+msgid "Servitor"
+msgstr ""
+
+msgctxt "trait"
+msgid "Shantak"
+msgstr ""
+
+msgctxt "trait"
+msgid "Shattered"
+msgstr ""
+
+msgctxt "trait"
+msgid "Ship"
+msgstr ""
+
+msgctxt "trait"
+msgid "Shoggoth"
+msgstr ""
+
+msgctxt "trait"
+msgid "Silver Twilight"
+msgstr ""
+
+msgctxt "trait"
+msgid "Skai"
+msgstr ""
+
+msgctxt "trait"
+msgid "Socialite"
+msgstr ""
+
+msgctxt "trait"
+msgid "Song"
+msgstr ""
+
+msgctxt "trait"
+msgid "Sorcerer"
+msgstr ""
+
+msgctxt "trait"
+msgid "Spectral"
+msgstr ""
+
+msgctxt "trait"
+msgid "Spell"
+msgstr ""
+
+msgctxt "trait"
+msgid "Spider"
+msgstr ""
+
+msgctxt "trait"
+msgid "Spirit"
+msgstr ""
+
+msgctxt "trait"
+msgid "St Mary's"
+msgstr ""
+
+msgctxt "trait"
+msgid "Staff"
+msgstr ""
+
+msgctxt "trait"
+msgid "Steps"
+msgstr ""
+
+msgctxt "trait"
+msgid "Summon"
+msgstr ""
+
+msgctxt "trait"
+msgid "Supply"
+msgstr ""
+
+msgctxt "trait"
+msgid "Surface"
+msgstr ""
+
+msgctxt "trait"
+msgid "Suspect"
+msgstr ""
+
+msgctxt "trait"
+msgid "Syndicate"
+msgstr ""
+
+msgctxt "trait"
+msgid "Tactic"
+msgstr ""
+
+msgctxt "trait"
+msgid "Talent"
+msgstr ""
+
+msgctxt "trait"
+msgid "Tarot"
+msgstr ""
+
+msgctxt "trait"
+msgid "Task"
+msgstr ""
+
+msgctxt "trait"
+msgid "Temple"
+msgstr ""
+
+msgctxt "trait"
+msgid "Tenochtitlán"
+msgstr ""
+
+msgctxt "trait"
+msgid "Tentacle"
+msgstr ""
+
+msgctxt "trait"
+msgid "Terror"
+msgstr ""
+
+msgctxt "trait"
+msgid "Third Floor"
+msgstr ""
+
+msgctxt "trait"
+msgid "Tindalos"
+msgstr ""
+
+msgctxt "trait"
+msgid "Tome"
+msgstr ""
+
+msgctxt "trait"
+msgid "Tool"
+msgstr ""
+
+msgctxt "trait"
+msgid "Town"
+msgstr ""
+
+msgctxt "trait"
+msgid "Train"
+msgstr ""
+
+msgctxt "trait"
+msgid "Trap"
+msgstr ""
+
+msgctxt "trait"
+msgid "Trick"
+msgstr ""
+
+msgctxt "trait"
+msgid "Unhallowed"
+msgstr ""
+
+msgctxt "trait"
+msgid "Upgrade"
+msgstr ""
+
+msgctxt "trait"
+msgid "Vale"
+msgstr ""
+
+msgctxt "trait"
+msgid "Vehicle"
+msgstr ""
+
+msgctxt "trait"
+msgid "Venice"
+msgstr ""
+
+msgctxt "trait"
+msgid "Veteran"
+msgstr ""
+
+msgctxt "trait"
+msgid "Void"
+msgstr ""
+
+msgctxt "trait"
+msgid "Warden"
+msgstr ""
+
+msgctxt "trait"
+msgid "Wastes"
+msgstr ""
+
+msgctxt "trait"
+msgid "Wayfarer"
+msgstr ""
+
+msgctxt "trait"
+msgid "Weapon"
+msgstr ""
+
+msgctxt "trait"
+msgid "Wilderness"
+msgstr ""
+
+msgctxt "trait"
+msgid "Witch"
+msgstr ""
+
+msgctxt "trait"
+msgid "Witch House"
+msgstr ""
+
+msgctxt "trait"
+msgid "Woods"
+msgstr ""
+
+msgctxt "trait"
+msgid "Y'ha-nthlei"
+msgstr ""
+
+msgctxt "trait"
+msgid "Yithian"
+msgstr ""
+
+msgctxt "trait"
+msgid "Yoth"
+msgstr ""
+
+msgctxt "trait"
+msgid "Zoog"
 msgstr ""
 
 msgctxt "Draw Cards"

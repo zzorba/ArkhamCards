@@ -3,7 +3,7 @@ import { find, flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
 import TwoSidedCardComponent from './TwoSidedCardComponent';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import CardDetailSectionHeader from './CardDetailSectionHeader';
 import FilterBuilder from '@lib/filters';
 import { useTabooSetId } from '@components/core/hooks';

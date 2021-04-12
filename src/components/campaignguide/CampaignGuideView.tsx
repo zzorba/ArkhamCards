@@ -4,19 +4,19 @@ import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
-import { updateCampaign } from '@components/campaign/actions';
+import { updateCampaignName } from '@components/campaign/actions';
 import withCampaignGuideContext, { CampaignGuideInputProps, InjectedCampaignGuideContextProps } from '@components/campaignguide/withCampaignGuideContext';
 import { NavigationProps } from '@components/nav/types';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import CampaignGuideContext from './CampaignGuideContext';
 import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
 import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
-import useTraumaDialog from '@components/campaign/useTraumaDialog';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import CampaignDetailTab from './CampaignDetailTab';
 import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
 import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 import space from '@styles/space';
+import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useDeckActions } from '@data/remote/decks';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -24,13 +24,14 @@ type Props = CampaignGuideProps & NavigationProps & InjectedCampaignGuideContext
 
 function CampaignGuideView(props: Props) {
   const [countDialog, showCountDialog] = useCountDialog();
-  const { user } = useContext(ArkhamCardsAuthContext);
   const { componentId, setCampaignServerId } = props;
   const campaignData = useContext(CampaignGuideContext);
   const { campaignId } = campaignData;
   const dispatch = useDispatch();
-  const updateCampaignName = useCallback((name: string) => {
-    dispatch(updateCampaign(user, campaignId, { name }));
+  const deckActions = useDeckActions();
+  const updateCampaignActions = useUpdateCampaignActions();
+  const setCampaignName = useCallback((name: string) => {
+    dispatch(updateCampaignName(updateCampaignActions, campaignId, name));
     Navigation.mergeOptions(componentId, {
       topBar: {
         title: {
@@ -38,13 +39,11 @@ function CampaignGuideView(props: Props) {
         },
       },
     });
-  }, [campaignId, user, dispatch, componentId]);
-  const { showTraumaDialog, traumaDialog } = useTraumaDialog({ hideKilledInsane: true });
-
+  }, [campaignId, dispatch, updateCampaignActions, componentId]);
   const { dialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
     title: t`Name`,
-    value: campaignData.campaignName,
-    onValueChange: updateCampaignName,
+    value: campaignData.campaign.name,
+    onValueChange: setCampaignName,
   });
 
   useStopAudioOnUnmount();
@@ -54,26 +53,29 @@ function CampaignGuideView(props: Props) {
     }
   }, componentId, [showEditNameDialog]);
 
-  const { campaignGuide, campaignState, campaignName } = campaignData;
+  const { campaignGuide, campaignState, campaign } = campaignData;
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const [alertDialog, showAlert] = useAlertDialog();
   const footerButtons = useMemo(() => {
     return (
       <View style={space.paddingSideS}>
         <UploadCampaignButton
+          componentId={componentId}
           campaignId={campaignId}
           setCampaignServerId={setCampaignServerId}
           showAlert={showAlert}
+          deckActions={deckActions}
+          guided
         />
         <DeleteCampaignButton
           componentId={componentId}
           campaignId={campaignId}
-          campaignName={campaignName || ''}
+          campaignName={campaign.name || ''}
           showAlert={showAlert}
         />
       </View>
     );
-  }, [componentId, campaignName, campaignId, setCampaignServerId, showAlert]);
+  }, [componentId, campaign.name, campaignId, deckActions, setCampaignServerId, showAlert]);
   return (
     <View style={styles.wrapper}>
       <CampaignDetailTab
@@ -81,18 +83,17 @@ function CampaignGuideView(props: Props) {
         processedCampaign={processedCampaign}
         showAlert={showAlert}
         showCountDialog={showCountDialog}
-        showTraumaDialog={showTraumaDialog}
         footerButtons={footerButtons}
+        updateCampaignActions={updateCampaignActions}
       />
       { alertDialog }
       { dialog }
-      { traumaDialog }
       { countDialog }
     </View>
   );
 }
 
-export default withCampaignGuideContext(CampaignGuideView);
+export default withCampaignGuideContext(CampaignGuideView, { rootView: true });
 
 const styles = StyleSheet.create({
   wrapper: {

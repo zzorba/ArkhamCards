@@ -1,13 +1,14 @@
 import React, { useCallback } from 'react';
 
-import { Campaign, CUSTOM } from '@actions/types';
-import CampaignSummaryComponent from '../CampaignSummaryComponent';
+import { CUSTOM } from '@actions/types';
+import MiniCampaignSummaryComponent from '../MiniCampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 import GenericCampaignItem from './GenericCampaignItem';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 
 interface Props {
-  campaign: Campaign;
-  onPress: (id: string, campaign: Campaign) => void;
+  campaign: MiniCampaignT;
+  onPress: (id: string, campaign: MiniCampaignT) => void;
 }
 
 export default function CampaignItem({ campaign, onPress }: Props) {
@@ -16,17 +17,15 @@ export default function CampaignItem({ campaign, onPress }: Props) {
   }, [onPress, campaign]);
   return (
     <GenericCampaignItem
-      lastUpdated={campaign.lastUpdated}
+      lastUpdated={campaign.updatedAt}
       onPress={handleOnPress}
     >
-      <CampaignSummaryComponent
+      <MiniCampaignSummaryComponent
         campaign={campaign}
         name={campaign.cycleCode !== CUSTOM ? campaign.name : undefined}
       >
-        <CampaignInvestigatorRow
-          campaigns={[campaign]}
-        />
-      </CampaignSummaryComponent>
+        <CampaignInvestigatorRow campaign={campaign} />
+      </MiniCampaignSummaryComponent>
     </GenericCampaignItem>
   );
 }

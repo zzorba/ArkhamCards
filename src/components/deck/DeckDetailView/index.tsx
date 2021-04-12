@@ -21,25 +21,21 @@ import withLoginState, { LoginStateProps } from '@components/core/withLoginState
 import CopyDeckDialog from '@components/deck/CopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
 import { deleteDeckAction } from '@components/deck/actions';
-import { CampaignId, DeckId, getCampaignId, getDeckId, UPDATE_DECK_EDIT } from '@actions/types';
+import { CampaignId, DeckId, getDeckId, UPDATE_DECK_EDIT } from '@actions/types';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { EditDeckProps } from '../DeckEditView';
 import { UpgradeDeckProps } from '../DeckUpgradeDialog';
 import { DeckHistoryProps } from '../DeckHistoryView';
 import { EditSpecialCardsProps } from '../EditSpecialDeckCardsView';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '@components/deck/DeckNavFooter';
-import {
-  makeCampaignForDeckSelector,
-  getPacksInCollection,
-  AppState,
-} from '@reducers';
+import { getPacksInCollection, AppState } from '@reducers';
 import space, { xs, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
-import { useParsedDeck } from '@components/deck/hooks';
+import { useParsedDeckWithFetch } from '@components/deck/hooks';
 import { useAdjustXpDialog, AlertButton, useAlertDialog, useBasicDialog, useSaveDialog, useSimpleTextDialog, useUploadLocalDeckDialog } from '@components/deck/dialogs';
 import { useBackButton, useFlag, useInvestigatorCards, useNavigationButtonPressed, useTabooSet } from '@components/core/hooks';
 import { NavigationProps } from '@components/nav/types';
@@ -59,9 +55,7 @@ export interface DeckDetailProps {
   initialMode?: 'upgrade' | 'edit';
   title?: string;
   subtitle?: string;
-  campaignId?: CampaignId;
-  hideCampaign?: boolean;
-  isPrivate?: boolean;
+  campaignId: CampaignId | undefined;
   modal?: boolean;
 }
 
@@ -76,22 +70,19 @@ function DeckDetailView({
   title,
   subtitle,
   campaignId,
-  hideCampaign,
-  isPrivate,
   modal,
   signedIn,
   login,
   initialMode,
+  deckActions,
 }: Props) {
   const { backgroundStyle, colors, darkMode, typography, shadow, width } = useContext(StyleContext);
+  const campaign = useCampaign(campaignId);
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
   const { user } = useContext(ArkhamCardsAuthContext);
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
-  const parsedDeckObj = useParsedDeck(id, 'DeckDetail', componentId, {
-    fetchIfMissing: true,
-    initialMode,
-  });
+  const parsedDeckObj = useParsedDeckWithFetch(id, componentId, deckActions, initialMode);
   const { showXpAdjustmentDialog, xpAdjustmentDialog } = useAdjustXpDialog(parsedDeckObj);
   const {
     deck,
@@ -103,13 +94,8 @@ function DeckDetailView({
     tabooSetId,
   } = parsedDeckObj;
 
-  const campaignForDeckSelector = useMemo(makeCampaignForDeckSelector, []);
   const deckId = useMemo(() => deck ? getDeckId(deck) : id, [deck, id]);
-  const mainCampaign = useCampaign(campaignId);
-  const campaign = useSelector((state: AppState) => {
-    return campaignId ? mainCampaign : campaignForDeckSelector(state, deckId);
-  });
-  const { savingDialog, saveEdits, saveEditsAndDismiss, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj, campaign);
+  const { savingDialog, saveEdits, saveEditsAndDismiss, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj);
 
   const [copying, toggleCopying] = useFlag(false);
   const {
@@ -298,7 +284,7 @@ function DeckDetailView({
       },
     });
   }, [modal, darkMode, componentId, mode, colors, factionColor, name, subtitle, title]);
-  const { uploadLocalDeck, uploadLocalDeckDialog } = useUploadLocalDeckDialog(deck, parsedDeck);
+  const { uploadLocalDeck, uploadLocalDeckDialog } = useUploadLocalDeckDialog(deckActions, deck, parsedDeck);
 
   useEffect(() => {
     if (!deck) {
@@ -322,12 +308,12 @@ function DeckDetailView({
     if (!deleting) {
       setDeleting(true);
 
-      deckDispatch(deleteDeckAction(user, id, deleteAllVersions)).then(() => {
+      deckDispatch(deleteDeckAction(user, deckActions, id, deleteAllVersions)).then(() => {
         Navigation.dismissAllModals();
         setDeleting(false);
       });
     }
-  }, [id, deleting, user, setDeleting, deckDispatch]);
+  }, [id, deleting, user, deckActions, setDeleting, deckDispatch]);
 
   const deleteAllDecks = useCallback(() => {
     deleteDeck(true);
@@ -341,12 +327,12 @@ function DeckDetailView({
     if (!deleting) {
       setDeleting(true);
 
-      deckDispatch(deleteDeckAction(user, id, false)).then(() => {
+      deckDispatch(deleteDeckAction(user, deckActions, id, false)).then(() => {
         Navigation.dismissAllModals();
         setDeleting(false);
       });
     }
-  }, [id, deckDispatch, deleting, user, setDeleting]);
+  }, [id, deckDispatch, deckActions, deleting, user, setDeleting]);
   const deleteBrokenDeck = useCallback(() => {
     showAlert(
       t`Delete broken deck`,
@@ -399,7 +385,7 @@ function DeckDetailView({
       component: {
         name: 'Deck.EditSpecial',
         passProps: {
-          campaignId: campaign ? getCampaignId(campaign) : undefined,
+          campaignId: campaign?.id,
           id,
           assignedWeaknesses: addedBasicWeaknesses,
         },
@@ -480,7 +466,7 @@ function DeckDetailView({
         passProps: {
           id: deckId,
           showNewDeck: true,
-          campaignId: campaign ? getCampaignId(campaign) : undefined,
+          campaignId: campaign?.id,
         },
         options: {
           statusBar: {
@@ -508,14 +494,14 @@ function DeckDetailView({
   const copyDialog = useMemo(() => {
     return (
       <CopyDeckDialog
-        componentId={componentId}
+        campaign={campaign}
         deckId={copying ? id : undefined}
         toggleVisible={toggleCopyDialog}
         signedIn={signedIn}
-
+        actions={deckActions}
       />
     );
-  }, [componentId, id, signedIn, copying, toggleCopyDialog]);
+  }, [id, signedIn, campaign, copying, deckActions, toggleCopyDialog]);
 
   const showTabooPicker = useCallback(() => {
     setTabooOpen(true);
@@ -553,7 +539,7 @@ function DeckDetailView({
     onValueChange: updateDeckName,
     value: name || '',
   });
-  const editable = !!isPrivate && !!deck && !deck.nextDeckId;
+  const editable = !!deckEdits?.editable;
   const onEditPressed = useCallback(() => {
     setFabOpen(false);
     setMode('edit');
@@ -716,12 +702,13 @@ function DeckDetailView({
           name: 'Deck.History',
           passProps: {
             id,
+            campaign,
           },
           options: getDeckOptions(colors, { title: t`Upgrade History` }, parsedDeck.investigator),
         },
       });
     }
-  }, [componentId, id, colors, parsedDeck, setFabOpen, setMenuOpen]);
+  }, [componentId, id, campaign, colors, parsedDeck, setFabOpen, setMenuOpen]);
 
   const showDrawSimulatorPressed = useCallback(() => {
     setFabOpen(false);
@@ -739,7 +726,6 @@ function DeckDetailView({
       normalCardCount,
       totalCardCount,
     } = parsedDeck;
-    const editable = isPrivate && deck && !deck.nextDeckId;
     const xp = (deck.xp || 0) + deckEdits.xpAdjustment;
     const adjustment = deckEdits.xpAdjustment >= 0 ? `+${deckEdits.xpAdjustment}` : `${deckEdits.xpAdjustment}`;
     const xpString = t`${xp} (${adjustment}) XP`;
@@ -850,24 +836,25 @@ function DeckDetailView({
           onPress={toggleCopyDialog}
           title={t`Clone deck`}
         />
-        { deck.investigator_code !== CUSTOM_INVESTIGATOR && (deck.local ? (
+        { deck.local && deck.investigator_code !== CUSTOM_INVESTIGATOR && editable && (
           <MenuButton
             icon="world"
             onPress={uploadToArkhamDB}
             title={t`Upload to ArkhamDB`}
             numberOfLines={2}
-            last={!isPrivate}
+            last={!editable}
           />
-        ) : (
+        ) }
+        { !deck.local && (
           <MenuButton
             icon="world"
             title={t`View on ArkhamDB`}
             description={t`Open in browser`}
             onPress={viewDeck}
-            last={!isPrivate}
+            last={!editable}
           />
-        )) }
-        { !!isPrivate && (
+        ) }
+        { editable && (
           <MenuButton
             icon="delete"
             title={t`Delete deck`}
@@ -877,7 +864,7 @@ function DeckDetailView({
         ) }
       </ScrollView>
     );
-  }, [backgroundStyle, onAddCardsPressed, isPrivate, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
+  }, [backgroundStyle, onAddCardsPressed, editable, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
     showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB, showDescription,
     onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditNameDialog, showXpAdjustmentDialog, showTabooPicker,
     onEditSpecialPressed, onChecklistPressed,
@@ -994,7 +981,7 @@ function DeckDetailView({
       </View>
     );
   }
-  if (!parsedDeck || !cards || !deckEdits) {
+  if (!parsedDeck || !cards) {
     return (
       <LoadingSpinner large />
     );
@@ -1032,18 +1019,14 @@ function DeckDetailView({
               cards={cards}
               cardsByName={cardsByName}
               bondedCardsByName={bondedCardsByName}
-              isPrivate={!!isPrivate}
               buttons={buttons}
               showEditCards={onAddCardsPressed}
-              showDeckUpgrade={onUpgradePressed}
               showDeckHistory={showUpgradeHistoryPressed}
               showXpAdjustmentDialog={showXpAdjustmentDialog}
               showCardUpgradeDialog={showCardUpgradeDialog}
               showEditSpecial={deck.nextDeckId ? undefined : onEditSpecialPressed}
               signedIn={signedIn}
               login={login}
-              campaign={campaign}
-              hideCampaign={hideCampaign}
               width={width}
               deckEdits={deckEdits}
               deckEditsRef={deckEditsRef}

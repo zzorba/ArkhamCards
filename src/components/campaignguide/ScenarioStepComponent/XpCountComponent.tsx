@@ -5,12 +5,10 @@ import { msgid, ngettext } from 'ttag';
 import { XpCountStep } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ChoiceListItemComponent from '@components/campaignguide/prompts/ChoiceListComponent/ChoiceListItemComponent';
-import Card, { CardsMap } from '@data/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import CampaignGuideContext from '../CampaignGuideContext';
-import { Deck, DeckId } from '@actions/types';
-import { useSelector } from 'react-redux';
-import { AppState, makeDeckSelector } from '@reducers';
+import { Deck } from '@actions/types';
 import { parseBasicDeck } from '@lib/parseDeck';
 
 interface Props {
@@ -18,15 +16,13 @@ interface Props {
   campaignLog: GuidedCampaignLog;
 }
 
-function SpentDeckXpComponent({ deck, campaignLog, previousDeckId, playerCards, children }: {
+function SpentDeckXpComponent({ deck, campaignLog, previousDeck, playerCards, children }: {
   deck: Deck;
   campaignLog: GuidedCampaignLog;
-  previousDeckId: DeckId;
+  previousDeck: Deck;
   playerCards: CardsMap;
   children: (xp: number) => JSX.Element | null;
 }) {
-  const getDeck = useMemo(makeDeckSelector, []);
-  const previousDeck = useSelector((state: AppState) => getDeck(state, previousDeckId)) || undefined;
   const parsedDeck = useMemo(() => parseBasicDeck(deck, playerCards, previousDeck), [deck, playerCards, previousDeck]);
   const earnedXp = campaignLog.earnedXp(deck.investigator_code);
   if (!parsedDeck) {
@@ -42,27 +38,26 @@ function SpentXpComponent({ investigator, campaignLog, children }: {
   campaignLog: GuidedCampaignLog;
   children: (xp: number) => JSX.Element | null;
 }) {
-  const { latestDecks, playerCards, adjustedInvestigatorData } = useContext(CampaignGuideContext);
+  const { latestDecks, playerCards, spentXp } = useContext(CampaignGuideContext);
 
   const deck = latestDecks[investigator.code];
   const earnedXp = campaignLog.earnedXp(investigator.code);
   if (deck) {
-    if (!deck.previousDeckId) {
+    if (!deck.previousDeck) {
       return children(earnedXp);
     }
     return (
       <SpentDeckXpComponent
-        deck={deck}
+        deck={deck.deck}
         campaignLog={campaignLog}
         playerCards={playerCards}
-        previousDeckId={deck.previousDeckId}
+        previousDeck={deck.previousDeck}
       >
         { children }
       </SpentDeckXpComponent>
     );
   }
-  const adjustedData = adjustedInvestigatorData[investigator.code];
-  return children(earnedXp + campaignLog.totalXp(investigator.code) - (adjustedData ? adjustedData.spentXp || 0 : 0));
+  return children(earnedXp + campaignLog.totalXp(investigator.code) - (spentXp[investigator.code] || 0));
 }
 
 function onChoiceChange() {

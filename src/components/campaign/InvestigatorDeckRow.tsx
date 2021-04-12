@@ -2,13 +2,15 @@ import React, { useCallback, useContext } from 'react';
 
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import { Deck, DeckId } from '@actions/types';
-import Card from '@data/Card';
-import { useDeck, useInvestigatorCards } from '@components/core/hooks';
+import Card from '@data/types/Card';
+import { useDeckWithFetch, useInvestigatorCards } from '@components/core/hooks';
 import { TINY_PHONE } from '@styles/sizes';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { DeckActions } from '@data/remote/decks';
 
 interface Props {
   id: DeckId;
+  actions: DeckActions;
   deckRemoved?: (
     id: DeckId,
     deck?: Deck,
@@ -16,20 +18,20 @@ interface Props {
   ) => void;
 }
 
-export default function InvestigatorDeckRow({ id, deckRemoved }: Props) {
+export default function InvestigatorDeckRow({ id, actions, deckRemoved }: Props) {
   const { lang } = useContext(LanguageContext);
-  const [theDeck] = useDeck(id, { fetchIfMissing: true });
-  const investigators = useInvestigatorCards(theDeck?.taboo_id || 0);
-  const investigator = theDeck && investigators && investigators[theDeck.investigator_code];
+  const deck = useDeckWithFetch(id, actions);
+  const investigators = useInvestigatorCards(deck?.deck.taboo_id || 0);
+  const investigator = deck && investigators && investigators[deck.deck.investigator_code];
   const onRemove = useCallback(() => {
-    deckRemoved && deckRemoved(id, theDeck, investigator);
+    deckRemoved && deckRemoved(id, deck?.deck, investigator);
   }, [
     deckRemoved,
     id,
-    theDeck,
+    deck,
     investigator,
   ]);
-  if (!theDeck || !investigator) {
+  if (!deck || !investigator) {
     return null;
   }
   return (

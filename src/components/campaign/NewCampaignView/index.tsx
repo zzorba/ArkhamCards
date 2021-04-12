@@ -36,7 +36,7 @@ import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPackChooserComponent';
 import { newCampaign, newLinkedCampaign, newStandalone } from '@components/campaign/actions';
 import { NavigationProps } from '@components/nav/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
 import COLORS from '@styles/colors';
 import space, { m, s } from '@styles/space';
@@ -52,6 +52,8 @@ import DeckButton from '@components/deck/controls/DeckButton';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import ChaosBagTextLine from './ChaosBagTextLine';
 import useAddCampaignNoteSectionDialog from '@components/campaign/useAddCampaignNoteSectionDialog';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
+import { LatestDeckRedux } from '@data/local/types';
 
 interface CampaignChoice {
   selection: CampaignSelection;
@@ -92,7 +94,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
   });
   const [guided, toggleGuided] = useFlag(true);
   const [difficulty, setDifficulty] = useState<CampaignDifficulty>(CampaignDifficulty.STANDARD);
-  const [deckIds, setDeckIds] = useState<DeckId[]>([]);
+  const [selectedDecks, setSelectedDecks] = useState<LatestDeckT[]>([]);
   const [investigatorIds, setInvestigatorIds] = useState<string[]>([]);
   const [investigatorToDeck, setInvestigatorToDeck] = useState<{ [code: string]: DeckId }>({});
   const [weaknessPacks, setWeaknessPacks] = useState<string[]>([]);
@@ -188,14 +190,14 @@ function NewCampaignView({ componentId }: NavigationProps) {
   }, [investigatorIds, setInvestigatorIds]);
 
   const deckAdded = useCallback((deck: Deck) => {
-    setDeckIds([...deckIds, getDeckId(deck)]);
+    setSelectedDecks([...selectedDecks, new LatestDeckRedux(deck, undefined, undefined)]);
     setInvestigatorIds([...investigatorIds, deck.investigator_code]);
     setInvestigatorToDeck({
       ...investigatorToDeck,
       [deck.investigator_code]: getDeckId(deck),
     });
     checkDeckForWeaknessPrompt(deck);
-  }, [setDeckIds, setInvestigatorIds, setInvestigatorToDeck, checkDeckForWeaknessPrompt, deckIds, investigatorIds, investigatorToDeck]);
+  }, [setSelectedDecks, setInvestigatorIds, setInvestigatorToDeck, checkDeckForWeaknessPrompt, selectedDecks, investigatorIds, investigatorToDeck]);
 
   const deckRemoved = useCallback((id: DeckId, deck?: Deck) => {
     const updatedInvestigatorToDeck: { [code: string]: DeckId } = {};
@@ -204,10 +206,10 @@ function NewCampaignView({ componentId }: NavigationProps) {
         updatedInvestigatorToDeck[code] = deckId;
       }
     });
-    setDeckIds(filter(deckIds, deckId => deckId.uuid !== id.uuid));
+    setSelectedDecks(filter(selectedDecks, deck => deck.id.uuid !== id.uuid));
     setInvestigatorIds(!deck ? investigatorIds : filter([...investigatorIds], code => deck.investigator_code !== code));
     setInvestigatorToDeck(updatedInvestigatorToDeck);
-  }, [investigatorToDeck, deckIds, investigatorIds, setDeckIds, setInvestigatorIds, setInvestigatorToDeck]);
+  }, [investigatorToDeck, selectedDecks, investigatorIds, setSelectedDecks, setInvestigatorIds, setInvestigatorToDeck]);
 
   const placeholderName = useMemo(() => {
     if (selection.type === 'campaign' && selection.code === CUSTOM) {
@@ -224,7 +226,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       showAlert(t`Name required`, t`You must specify a name for custom campaigns.`);
       return;
     }
-
+    const deckIds = map(selectedDecks, d => d.id);
     if (selection.type === 'campaign') {
       if (selection.code === TDE) {
         dispatch(newLinkedCampaign(
@@ -271,7 +273,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
     }
     Navigation.pop(componentId);
   }, [dispatch, showAlert, componentId, campaignLog, chaosBag, placeholderName, name, selection, user,
-    difficulty, deckIds, investigatorIds, weaknessPacks, weaknessAssignedCards, isGuided]);
+    difficulty, selectedDecks, investigatorIds, weaknessPacks, weaknessAssignedCards, isGuided]);
 
   const savePressed = useMemo(() => throttle(onSave, 200), [onSave]);
   useNavigationButtonPressed(({ buttonId }) => {
@@ -413,7 +415,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
         campaignId: { campaignId: 'new-deck' },
         onDeckSelect: deckAdded,
         onInvestigatorSelect: investigatorAdded,
-        selectedDeckIds: deckIds,
+        selectedDecks,
         selectedInvestigatorIds: investigatorIds,
       };
       Navigation.showModal<MyDecksSelectorProps>({
@@ -432,7 +434,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
         },
       });
     }
-  }, [deckIds, investigatorIds, deckAdded, investigatorAdded]);
+  }, [selectedDecks, investigatorIds, deckAdded, investigatorAdded]);
   const { dialog, showDialog } = useSimpleTextDialog({
     title: t`Name`,
     placeholder: placeholderName,
@@ -517,7 +519,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
             >
               <DeckSelector
                 componentId={componentId}
-                deckIds={deckIds}
+                deckIds={map(selectedDecks, d => d.id)}
                 investigatorIds={filter(investigatorIds, code => !investigatorToDeck[code])}
                 deckRemoved={deckRemoved}
                 investigatorRemoved={guided ? investigatorRemoved : undefined}

@@ -7,12 +7,11 @@ import { ThunkDispatch } from 'redux-thunk';
 import { t } from 'ttag';
 
 import NewDialog from '@components/core/NewDialog';
-import { Campaign, Deck, getCampaignId, getDeckId, ParsedDeck, UPDATE_DECK_EDIT } from '@actions/types';
+import { Deck, getDeckId, ParsedDeck, UPDATE_DECK_EDIT } from '@actions/types';
 import { useDispatch } from 'react-redux';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useCounter } from '@components/core/hooks';
 import { SaveDeckChanges, saveDeckChanges, uploadLocalDeck } from '@components/deck/actions';
-import { updateCampaign } from '@components/campaign/actions';
 import { AppState } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
@@ -21,6 +20,7 @@ import { ParsedDeckResults, DeckEditState, useDeckEditState } from './hooks';
 import DeckButton, { DeckButtonIcon } from './controls/DeckButton';
 import DeckBubbleHeader from './section/DeckBubbleHeader';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { DeckActions, useDeckActions } from '@data/remote/decks';
 
 interface DialogOptions {
   title: string;
@@ -454,6 +454,7 @@ export function useBasicDialog(title: string): BasicDialogResult {
 
 type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 export function useUploadLocalDeckDialog(
+  actions: DeckActions,
   deck?: Deck,
   parsedDeck?: ParsedDeck,
 ): {
@@ -469,13 +470,13 @@ export function useUploadLocalDeckDialog(
     }
     if (!saving || isRetry) {
       setSaving(true);
-      deckDispatch(uploadLocalDeck(user, deck)).then(() => {
+      deckDispatch(uploadLocalDeck(user, actions, deck)).then(() => {
         setSaving(false);
       }, () => {
         setSaving(false);
       });
     }
-  }, 200), [deckDispatch, parsedDeck, saving, deck, user, setSaving]);
+  }, 200), [deckDispatch, parsedDeck, saving, deck, user, actions, setSaving]);
   return {
     uploadLocalDeckDialog: savingDialog,
     uploadLocalDeck: doUploadLocalDeck,
@@ -553,10 +554,7 @@ export function useAdjustXpDialog({
   };
 }
 
-export function useSaveDialog(
-  parsedDeckResults: ParsedDeckResults,
-  campaign?: Campaign,
-): DeckEditState & {
+export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditState & {
   saving: boolean;
   saveEdits: () => void;
   saveEditsAndDismiss: () => void;
@@ -582,27 +580,7 @@ export function useSaveDialog(
     setSaving(false);
     setSaveError(err.message || 'Unknown Error');
   }, [setSaveError, setSaving]);
-
-  const updateCampaignWeaknessSet = useCallback((newAssignedCards: string[]) => {
-    if (campaign) {
-      const assignedCards = {
-        ...(campaign.weaknessSet && campaign.weaknessSet.assignedCards) || {},
-      };
-      forEach(newAssignedCards, code => {
-        assignedCards[code] = (assignedCards[code] || 0) + 1;
-      });
-      dispatch(updateCampaign(
-        user,
-        getCampaignId(campaign),
-        {
-          weaknessSet: {
-            packCodes: campaign.weaknessSet?.packCodes || [],
-            assignedCards,
-          },
-        },
-      ));
-    }
-  }, [campaign, dispatch, user]);
+  const deckActions = useDeckActions();
 
   const actuallySaveEdits = useCallback(async(dismissAfterSave: boolean, isRetry?: boolean) => {
     if (saving && !isRetry) {
@@ -629,12 +607,10 @@ export function useSaveDialog(
         };
         await deckDispatch(saveDeckChanges(
           user,
+          deckActions,
           deck,
           deckChanges,
         ));
-        if (addedBasicWeaknesses.length) {
-          updateCampaignWeaknessSet(addedBasicWeaknesses);
-        }
       }
 
       if (dismissAfterSave) {
@@ -652,8 +628,8 @@ export function useSaveDialog(
     } catch(e) {
       handleSaveError(e);
     }
-  }, [deck, saving, addedBasicWeaknesses, hasPendingEdits, parsedDeck, deckEditsRef, tabooSetId, user,
-    dispatch, deckDispatch, handleSaveError, setSaving, updateCampaignWeaknessSet]);
+  }, [deck, saving, hasPendingEdits, parsedDeck, deckEditsRef, tabooSetId, user, deckActions,
+    dispatch, deckDispatch, handleSaveError, setSaving]);
 
   const saveEdits = useMemo(() => throttle((isRetry?: boolean) => actuallySaveEdits(false, isRetry), 500), [actuallySaveEdits]);
   const saveEditsAndDismiss = useMemo((isRetry?: boolean) => throttle(() => actuallySaveEdits(true, isRetry), 500), [actuallySaveEdits]);

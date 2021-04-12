@@ -1,27 +1,22 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import { t } from 'ttag';
 
-import { DEFAULT_TRAUMA_DATA } from '@lib/trauma';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import NavButton from '@components/core/NavButton';
 import LabeledTextBox from '@components/core/LabeledTextBox';
-import { InvestigatorData, Trauma } from '@actions/types';
-import Card from '@data/Card';
+import { Trauma } from '@actions/types';
+import Card from '@data/types/Card';
 import space from '@styles/space';
 
 interface Props {
   investigator: Card;
-  investigatorData?: InvestigatorData;
+  traumaData: Trauma;
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
   sectionHeader?: boolean;
 }
 
-export default function EditTraumaComponent({ investigator, investigatorData, showTraumaDialog, sectionHeader }: Props) {
-  const traumaData = useMemo(() => {
-    return investigatorData?.[investigator.code] || DEFAULT_TRAUMA_DATA;
-  }, [investigatorData, investigator]);
-
+export default function EditTraumaComponent({ investigator, traumaData, showTraumaDialog, sectionHeader }: Props) {
   const editTraumaPressed = useCallback(() => {
     showTraumaDialog(investigator, traumaData);
   }, [traumaData, showTraumaDialog, investigator]);

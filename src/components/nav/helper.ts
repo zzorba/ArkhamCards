@@ -10,14 +10,14 @@ import { DrawSimulatorProps } from '@components/deck/DrawSimulatorView';
 import { DeckDetailProps } from '@components/deck/DeckDetailView';
 import { CardDetailProps } from '@components/card/CardDetailView';
 import { CardDetailSwipeProps } from '@components/card/DbCardDetailSwipeView';
-import { CampaignId, Deck, DeckId, getDeckId, ParsedDeck } from '@actions/types';
-import Card from '@data/Card';
+import { CampaignId, Deck, DeckId, ParsedDeck } from '@actions/types';
+import Card from '@data/types/Card';
 import { iconsMap } from '@app/NavIcons';
 import { CardImageProps } from '@components/card/CardImageView';
 import { ThemeColors } from '@styles/theme';
 import { StyleContextType } from '@styles/StyleContext';
-import Database from '@data/Database';
-import { where } from '@data/query';
+import Database from '@data/sqlite/Database';
+import { where } from '@data/sqlite/query';
 import COLORS from '@styles/colors';
 
 export function getDeckOptions(
@@ -98,28 +98,20 @@ export function getDeckOptions(
   return options;
 }
 
-interface DeckModalOptions {
-  campaignId?: CampaignId;
-  hideCampaign?: boolean;
-  initialMode?: 'upgrade' | 'edit';
-}
-
 export function showDeckModal(
-  componentId: string,
+  id: DeckId,
   deck: Deck,
+  campaignId: CampaignId | undefined,
   colors: ThemeColors,
   investigator?: Card,
-  options: DeckModalOptions = {}
+  initialMode?: 'upgrade' | 'edit'
 ) {
-  const { campaignId, hideCampaign, initialMode } = options;
   const passProps: DeckDetailProps = {
-    id: getDeckId(deck),
-    isPrivate: true,
+    id,
     modal: true,
     campaignId,
     title: investigator ? investigator.name : t`Deck`,
     subtitle: deck.name,
-    hideCampaign,
     initialMode,
   };
 
@@ -340,10 +332,8 @@ export async function openUrl(
   const rule_match = url.match(rule_regex);
   if (rule_match) {
     const rule_id = rule_match[3];
-    console.log(`Looking for rule ${rule_id}`);
     const rules = await db.getRulesPaged(0, 1, where('r.id = :rule_id', { rule_id }));
     if (rules.length) {
-      console.log(`Found it`);
       Navigation.push(componentId, {
         component: {
           name: 'Rule',
@@ -364,7 +354,6 @@ export async function openUrl(
       });
       return;
     }
-    console.log(`No match`);
   }
 
   if (startsWith(url, '/')) {

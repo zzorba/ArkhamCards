@@ -5,7 +5,7 @@ import { t } from 'ttag';
 import DeckSizeSelectPicker from './DeckSizeSelectPicker';
 import FactionSelectPicker from './FactionSelectPicker';
 import { DeckMeta } from '@actions/types';
-import DeckOption from '@data/DeckOption';
+import DeckOption from '@data/types/DeckOption';
 
 interface Props {
   option: DeckOption;

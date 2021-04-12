@@ -4,7 +4,7 @@ import EditTraumaDialogContent from './EditTraumaDialogContent';
 import NewDialog from '@components/core/NewDialog';
 import { t } from 'ttag';
 import { Trauma } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import DeckButton from '@components/deck/controls/DeckButton';
 
 interface Props {

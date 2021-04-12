@@ -2,8 +2,8 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { map, sortBy } from 'lodash';
 import { t } from 'ttag';
 
-import Card from '@data/Card';
-import { BASIC_WEAKNESS_QUERY, combineQueries } from '@data/query';
+import Card from '@data/types/Card';
+import { BASIC_WEAKNESS_QUERY, combineQueries } from '@data/sqlite/query';
 import SelectWeaknessTraitsComponent from './SelectWeaknessTraitsComponent';
 import DrawRandomWeaknessComponent from './DrawRandomWeaknessComponent';
 import InvestigatorChoicePrompt from '@components/campaignguide/prompts/InvestigatorChoicePrompt';

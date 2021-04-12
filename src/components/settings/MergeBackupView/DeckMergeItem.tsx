@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { msgid, ngettext } from 'ttag';
 import SettingsSwitch from '@components/core/SettingsSwitch';
 import { Deck } from '@actions/types';
-import { CardsMap } from '@data/Card';
+import { CardsMap } from '@data/types/Card';
 
 interface Props {
   deck: Deck;

@@ -67,13 +67,14 @@ export default function CampaignScenariosView({ campaignId, componentId }: Campa
   if (!campaign) {
     return <LoadingSpinner />;
   }
-  const hasCompletedScenario = completedScenario(campaign.scenarioResults);
+  const scenarioResults = campaign.scenarioResults;
+  const hasCompletedScenario = completedScenario(scenarioResults);
   return (
     <View style={[styles.flex, backgroundStyle]}>
       <ScrollView contentContainerStyle={backgroundStyle}>
-        { !(campaign.scenarioResults?.length === 0 && cycleScenarios.length === 0) && (
+        { !(scenarioResults.length === 0 && cycleScenarios.length === 0) && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
-            { map(campaign.scenarioResults, (scenario, idx) => {
+            { map(scenarioResults, (scenario, idx) => {
               return (
                 <ScenarioResultButton
                   key={idx}

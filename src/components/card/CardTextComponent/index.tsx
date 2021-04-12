@@ -59,7 +59,7 @@ function ArkhamIconSkillTextRule(style: StyleContextType, sizeScale: number): Ma
 
 function ArkahmIconSpanRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithIconName, State> {
   return {
-    match: SimpleMarkdown.inlineRegex(new RegExp('^<span class="icon-(.+?)"( title="[^"]*")?></span>')),
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<span class="icon-([^"]+)"( title="[^"]*")?><\\/span>')),
     order: BASE_ORDER + 1,
     parse: (capture) => {
       return { name: capture[1] };
@@ -227,13 +227,15 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
   const context = useContext(StyleContext);
   const cleanText = text
     .replace(/\\u2022/g, '•')
-    .replace(/<span class="icon-(.+?)"><\/span>/g, '[$1]')
+    .replace(/<span class="icon-([^"]+?)"><\/span>/g, '[$1]')
     .replace(/&rarr;/g, '→')
     .replace(/\/n/g, '\n')
     .replace(/^---*$/gm, '<hr>')
     .replace(/(^\s?-|^—\s+)(.+)$/gm,
       onLinkPress ? '<span class="icon-bullet"></span> $2' : '[bullet] $2'
-    );
+    )
+    .replace(/(<p>- )|(<p>–)/gm, onLinkPress ? '<p><span class="icon-bullet"></span> ' : '<p>[bullet] ');
+
   const wrappedOnLinkPress = useCallback((url: string) => {
     onLinkPress && onLinkPress(url, context);
   }, [onLinkPress, context]);

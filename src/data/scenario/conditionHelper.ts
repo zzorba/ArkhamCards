@@ -39,7 +39,7 @@ import {
   CampaignLogCountCondition,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 
 export interface BinaryResult {
   type: 'binary';

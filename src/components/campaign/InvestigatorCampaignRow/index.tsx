@@ -6,9 +6,9 @@ import { t } from 'ttag';
 
 import { showCard, showDeckModal } from '@components/nav/helper';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import { CampaignId, Deck, TraumaAndCardData } from '@actions/types';
+import { Deck, TraumaAndCardData } from '@actions/types';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
-import Card, { CardsMap } from '@data/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import useSingleCard from '@components/card/useSingleCard';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
@@ -23,17 +23,19 @@ import TraumaSummary from '../TraumaSummary';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
 import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
 import useXpSection from './useXpSection';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 interface Props {
   componentId: string;
-  campaignId: CampaignId;
+  campaign: MiniCampaignT;
   investigator: Card;
   spentXp: number;
   totalXp: number;
   traumaAndCardData: TraumaAndCardData;
   playerCards: CardsMap;
   chooseDeckForInvestigator?: (investigator: Card) => void;
-  deck?: Deck;
+  deck?: LatestDeckT;
   showXpDialog: (investigator: Card) => void;
   removeInvestigator?: (investigator: Card) => void;
   // For legacy system
@@ -61,7 +63,7 @@ function StoryAssetRow({ code, onCardPress, last }: { code: string; last: boolea
 
 export default function InvestigatorCampaignRow({
   componentId,
-  campaignId,
+  campaign,
   investigator,
   spentXp,
   totalXp,
@@ -87,8 +89,8 @@ export default function InvestigatorCampaignRow({
   }, [showXpDialog, investigator]);
 
   const [xpButton, upgradeBadge] = useXpSection({
-    componentId,
     deck,
+    campaign,
     cards: playerCards,
     investigator,
     showDeckUpgrade,
@@ -128,14 +130,14 @@ export default function InvestigatorCampaignRow({
   const viewDeck = useCallback(() => {
     if (deck) {
       showDeckModal(
-        componentId,
-        deck,
+        deck.id,
+        deck.deck,
+        campaign?.id,
         colors,
         investigator,
-        { campaignId, hideCampaign: true }
       );
     }
-  }, [campaignId, componentId, investigator, deck, colors]);
+  }, [campaign, investigator, deck, colors]);
 
   const selectDeck = useCallback(() => {
     chooseDeckForInvestigator && chooseDeckForInvestigator(investigator);

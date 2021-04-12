@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import { CORE_FACTION_CODES } from '@app_constants';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import CardCostIcon from '@components/core/CardCostIcon';
 import space, { xs } from '@styles/space';

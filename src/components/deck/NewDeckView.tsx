@@ -4,18 +4,19 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { showInvestigatorSortDialog } from '@components/cardlist/InvestigatorSortDialog';
-import { SORT_BY_PACK, SortType , Deck } from '@actions/types';
+import { SORT_BY_PACK, SortType , Deck, CampaignId } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
 import { NewDeckOptionsProps } from './NewDeckOptionsDialog';
 import { getDeckOptions } from '@components/nav/helper';
 import InvestigatorsListComponent from '@components/cardlist/InvestigatorsListComponent';
 import { NavigationProps } from '@components/nav/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface NewDeckProps {
+  campaignId: CampaignId | undefined;
   onCreateDeck: (deck: Deck) => void;
   filterInvestigators?: string[];
   onlyInvestigators?: string[];
@@ -23,7 +24,7 @@ export interface NewDeckProps {
 
 type Props = NewDeckProps & NavigationProps;
 
-function NewDeckView({ onCreateDeck, filterInvestigators, onlyInvestigators, componentId }: Props) {
+function NewDeckView({ onCreateDeck, campaignId, filterInvestigators, onlyInvestigators, componentId }: Props) {
   const { backgroundStyle, colors } = useContext(StyleContext);
   const [selectedSort, sortChanged] = useState<SortType>(SORT_BY_PACK);
 
@@ -45,6 +46,7 @@ function NewDeckView({ onCreateDeck, filterInvestigators, onlyInvestigators, com
       component: {
         name: 'Deck.NewOptions',
         passProps: {
+          campaignId,
           investigatorId: investigator.code,
           onCreateDeck,
         },
@@ -54,7 +56,7 @@ function NewDeckView({ onCreateDeck, filterInvestigators, onlyInvestigators, com
         },
       },
     });
-  }, [componentId, onCreateDeck, colors]);
+  }, [componentId, onCreateDeck, campaignId, colors]);
 
   return (
     <View style={[styles.container, backgroundStyle]}>

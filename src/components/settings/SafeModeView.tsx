@@ -6,7 +6,7 @@ import { t } from 'ttag';
 
 import { clearDecks } from '@actions';
 import BasicButton from '@components/core/BasicButton';
-import DatabaseContext from '@data/DatabaseContext';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
 import SettingsItem from './SettingsItem';
 import { BackupProps } from './BackupView';
 import StyleContext from '@styles/StyleContext';

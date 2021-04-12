@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
-import { filter, keys } from 'lodash';
+import { InteractionManager, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { filter, findLast, keys } from 'lodash';
 import { t } from 'ttag';
 import { Navigation } from 'react-native-navigation';
 
@@ -8,11 +8,7 @@ import { ProcessedCampaign } from '@data/scenario';
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
 import space, { s } from '@styles/space';
-import Card from '@data/Card';
-import { Campaign, CampaignCycleCode, CampaignId, Trauma } from '@actions/types';
-import { useDispatch } from 'react-redux';
-import { updateCampaign } from '@components/campaign/actions';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { CampaignCycleCode, Trauma } from '@actions/types';
 import { ShowScenario } from './LinkedCampaignGuideView/useCampaignLinkHelper';
 import DeckButton from '@components/deck/controls/DeckButton';
 import useChaosBagDialog from '@components/campaign/CampaignDetailView/useChaosBagDialog';
@@ -22,24 +18,25 @@ import { CampaignLogProps } from './CampaignLogView';
 import { CampaignAchievementsProps } from './CampaignAchievementsView';
 import CampaignInvestigatorsComponent from './CampaignInvestigatorsComponent';
 import CampaignSummaryHeader from '@components/campaign/CampaignSummaryHeader';
+import useTraumaDialog from '@components/campaign/useTraumaDialog';
+import { UpdateCampaignActions } from '@data/remote/campaigns';
 
 interface Props {
   componentId: string;
   processedCampaign: ProcessedCampaign;
+  updateCampaignActions: UpdateCampaignActions;
   showAlert: ShowAlert;
   showCountDialog: ShowCountDialog;
   showLinkedScenario?: ShowScenario;
-  showTraumaDialog: (investigator: Card, traumaData: Trauma, onUpdate?: (code: string, trauma: Trauma) => void) => void;
   displayLinkScenarioCount?: number;
   footerButtons: React.ReactNode;
 }
 export default function CampaignDetailTab({
-  componentId, processedCampaign, displayLinkScenarioCount, footerButtons,
-  showLinkedScenario, showAlert, showTraumaDialog, showCountDialog,
+  componentId, processedCampaign, displayLinkScenarioCount, footerButtons, updateCampaignActions,
+  showLinkedScenario, showAlert, showCountDialog,
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const { campaignId, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
-
   const showAddInvestigator = useCallback(() => {
     campaignState.showChooseDeck();
   }, [campaignState]);
@@ -87,10 +84,29 @@ export default function CampaignDetailTab({
       },
     });
   }, [componentId, campaignId]);
+  const updateTrauma = useCallback((code: string, trauma: Trauma) => {
+    const latestScenario = findLast(processedCampaign.scenarios, s => s.type === 'completed');
+    InteractionManager.runAfterInteractions(() => {
+      campaignState.setInterScenarioInvestigatorData(
+        code,
+        trauma,
+        latestScenario ? latestScenario?.id.encodedScenarioId : undefined
+      );
+    });
+  }, [processedCampaign, campaignState]);
+
+  const { showTraumaDialog, traumaDialog } = useTraumaDialog(updateTrauma, true);
 
   const chaosBagDisabled = useMemo(() => !keys(processedCampaign.campaignLog.chaosBag).length, [processedCampaign.campaignLog.chaosBag]);
   const allInvestigators = useMemo(() => filter(campaignInvestigators, investigator => !processedCampaign.campaignLog.isEliminated(investigator)), [campaignInvestigators, processedCampaign.campaignLog]);
-  const [chaosBagDialog, showChaosBag] = useChaosBagDialog({ componentId, allInvestigators, campaignId, chaosBag: processedCampaign.campaignLog.chaosBag || {}, guided: true });
+  const [chaosBagDialog, showChaosBag] = useChaosBagDialog({
+    componentId,
+    allInvestigators,
+    campaignId,
+    chaosBag: processedCampaign.campaignLog.chaosBag || {},
+    guided: true,
+    setChaosBag: updateCampaignActions.setChaosBag,
+  });
   return (
     <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
       <ScrollView contentContainerStyle={backgroundStyle} showsVerticalScrollIndicator={false}>
@@ -143,11 +159,13 @@ export default function CampaignDetailTab({
             processedCampaign={processedCampaign}
             showTraumaDialog={showTraumaDialog}
             showCountDialog={showCountDialog}
+            actions={updateCampaignActions}
           />
         </View>
         { footerButtons }
       </ScrollView>
       { chaosBagDialog }
+      { traumaDialog }
     </SafeAreaView>
   );
 }

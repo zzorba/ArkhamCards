@@ -15,6 +15,7 @@ const BAD_ICON_NAMES: { [key: string]: string | undefined} = {
   will: 'willpower',
   willlpower: 'willpower',
   'auto-fail': 'auto_fail',
+  autofail: 'auto_fail',
 };
 
 export default function ArkhamIconNode({ colors, fontScale }: StyleContextType, sizeScale: number) {

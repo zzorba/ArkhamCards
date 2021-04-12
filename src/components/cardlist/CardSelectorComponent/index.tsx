@@ -2,7 +2,7 @@ import React, { ReactNode, useCallback, useContext, useMemo } from 'react';
 import { filter, flatMap, keys, sortBy } from 'lodash';
 
 import { Slots } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import CardToggleRow from './CardToggleRow';
 import { showCard } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';

@@ -6,17 +6,16 @@ import { Action } from 'redux';
 import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 
-import { Deck, Slots, DeckId, getDeckId } from '@actions/types';
+import { Deck, Slots, getDeckId } from '@actions/types';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import BasicButton from '@components/core/BasicButton';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { showDeckModal, showCard } from '@components/nav/helper';
 import InvestigatorRow from '@components/core/InvestigatorRow';
-import { useDeck } from '@components/core/hooks';
 import useCardList from '@components/card/useCardList';
 import { saveDeckChanges, SaveDeckChanges } from '@components/deck/actions';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
@@ -24,41 +23,10 @@ import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { TINY_PHONE } from '@styles/sizes';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-
-interface ShowDeckButtonProps {
-  componentId: string;
-  deckId: DeckId;
-  investigator: Card;
-}
-
-function ShowDeckButton({ componentId, deckId, investigator }: ShowDeckButtonProps) {
-  const { colors } = useContext(StyleContext);
-  const [deck] = useDeck(deckId, {});
-  const onPress = useCallback(() => {
-    if (deck) {
-      showDeckModal(
-        componentId,
-        deck,
-        colors,
-        investigator,
-        { hideCampaign: true }
-      );
-    }
-  }, [componentId, investigator, deck, colors]);
-
-  if (!deck) {
-    return null;
-  }
-  return (
-    <ArkhamButton
-      variant="outline"
-      icon="deck"
-      grow
-      title={t`View deck`}
-      onPress={onPress}
-    />
-  );
-}
+import { DeckActions } from '@data/remote/decks';
+import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
+import ShowDeckButton from '../ShowDeckButton';
 
 interface Props {
   componentId: string;
@@ -66,9 +34,10 @@ interface Props {
   campaignState: CampaignStateHelper;
   scenarioState: ScenarioStateHelper;
   investigator: Card;
-  deck?: Deck;
+  deck?: LatestDeckT;
   campaignLog: GuidedCampaignLog;
   editable: boolean;
+  actions: DeckActions;
 }
 type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
@@ -76,7 +45,17 @@ function computeChoiceId(stepId: string, investigator: Card) {
   return `${stepId}#${investigator.code}`;
 }
 
-function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigator, deck, campaignLog, editable }: Props) {
+function SaveDeckRow({
+  componentId,
+  id,
+  campaignState,
+  scenarioState,
+  investigator,
+  deck,
+  campaignLog,
+  editable,
+  actions,
+}: Props) {
   const { colors } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const deckDispatch: DeckDispatch = useDispatch();
@@ -93,7 +72,7 @@ function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigat
 
   const save = useCallback(() => {
     if (deck) {
-      const slots: Slots = { ...deck.slots };
+      const slots: Slots = { ...deck.deck.slots };
       forEach(storyAssetDeltas, (delta, code) => {
         slots[code] = (slots[code] || 0) + delta;
         if (!slots[code]) {
@@ -101,9 +80,9 @@ function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigat
         }
       });
       const changes: SaveDeckChanges = { slots };
-      deckDispatch(saveDeckChanges(user, deck, changes) as any).then(saveCampaignLog);
+      deckDispatch(saveDeckChanges(user, actions, deck.deck, changes) as any).then(saveCampaignLog);
     }
-  }, [deck, user, deckDispatch, storyAssetDeltas, saveCampaignLog]);
+  }, [deck, user, actions, deckDispatch, storyAssetDeltas, saveCampaignLog]);
 
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);
@@ -151,6 +130,16 @@ function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigat
       return null;
     }
     if (deck) {
+      if (deck.owner && user && deck.owner.id !== user.uid) {
+        return (
+          <BasicButton
+            title={deck.owner.handle ? t`${deck.owner.handle} must save this deck` : t`Your friend must save this deck`}
+            onPress={save}
+            disabled
+          />
+        );
+      }
+
       return (
         <BasicButton
           title={t`Save deck changes`}
@@ -159,7 +148,7 @@ function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigat
       );
     }
     return null;
-  }, [choices, editable, deck, save]);
+  }, [choices, editable, deck, user, save]);
 
   const campaignSection = useMemo(() => {
     return (
@@ -173,19 +162,19 @@ function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigat
   const selectDeck = useCallback(() => {
     campaignState.showChooseDeck(investigator);
   }, [campaignState, investigator]);
+  const { campaign } = useContext(CampaignGuideContext);
 
   const viewDeck = useCallback(() => {
     if (deck) {
-      showDeckModal(componentId, deck, colors, investigator, { hideCampaign: true });
+      showDeckModal(deck.id, deck.deck, campaign?.id, colors, investigator);
     }
-  }, [componentId, colors, investigator, deck]);
+  }, [colors, campaign, investigator, deck]);
 
   const deckButton = useMemo(() => {
     if (deck && deckChoice !== undefined) {
       return (
         <View style={styles.row}>
           <ShowDeckButton
-            componentId={componentId}
             deckId={deckChoice}
             investigator={investigator}
           />
@@ -207,7 +196,7 @@ function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigat
         <ArkhamButton variant="outline" icon="deck" title={t`View deck`} onPress={viewDeck} />
       </View>
     );
-  }, [componentId, deck, editable, investigator, deckChoice, selectDeck, viewDeck]);
+  }, [deck, editable, investigator, deckChoice, selectDeck, viewDeck]);
 
   if (!find(storyAssetDeltas, (count: number) => count !== 0)) {
     return null;

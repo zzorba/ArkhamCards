@@ -1,31 +1,26 @@
-import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { ReactNode, useCallback, useContext, useMemo, useState } from 'react';
 import {
   Keyboard,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { forEach } from 'lodash';
-import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import DeckList from './DeckList';
-import { Campaign, Deck, DeckId } from '@actions/types';
-import Card from '@data/Card';
+import { Campaign, CampaignId, Deck } from '@actions/types';
+import Card from '@data/types/Card';
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
-import { fetchPublicDeck } from '@components/deck/actions';
-import { getAllDecks, getDeck } from '@reducers';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import LanguageContext from '@lib/i18n/LanguageContext';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 interface Props {
-  deckIds: DeckId[];
-  deckClicked: (deck: Deck, investigator?: Card) => void;
+  deckIds: MiniDeckT[];
+  deckToCampaign?: { [uuid: string]: Campaign };
+  deckClicked: (deck: Deck, investigator: Card | undefined, campaign: CampaignId | undefined) => void;
   onRefresh?: () => void;
   refreshing?: boolean;
-  deckToCampaign?: { [uuid: string]: Campaign };
   customHeader?: ReactNode;
   customFooter?: ReactNode;
   searchOptions?: SearchOptions;
@@ -34,34 +29,21 @@ interface Props {
 
 export default function DeckListComponent({
   deckIds,
+  deckToCampaign,
   deckClicked,
   onRefresh,
   refreshing,
-  deckToCampaign,
   customHeader,
   customFooter,
   searchOptions,
   isEmpty,
 }: Props) {
   const { typography } = useContext(StyleContext);
-  const { lang } = useContext(LanguageContext);
-  const { user } = useContext(ArkhamCardsAuthContext);
   const [searchTerm, setSearchTerm] = useState('');
-  const decks = useSelector(getAllDecks);
-  const handleDeckClick = useCallback((deck: Deck, investigator?: Card) => {
+  const handleDeckClick = useCallback((deck: Deck, investigator: Card | undefined, campaignId: CampaignId | undefined) => {
     Keyboard.dismiss();
-    deckClicked(deck, investigator);
+    deckClicked(deck, investigator, campaignId);
   }, [deckClicked]);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    // Only do this once, even though it might want to be done a second time.
-    forEach(deckIds, deckId => {
-      if (!getDeck(decks, deckId) && !deckId.local) {
-        dispatch(fetchPublicDeck(user, deckId, false));
-      }
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   const header = useMemo(() => (
     <View style={styles.header}>
       { !!customHeader && customHeader }
@@ -108,7 +90,6 @@ export default function DeckListComponent({
     >
       { onScroll => (
         <DeckList
-          lang={lang}
           deckIds={deckIds}
           header={header}
           footer={renderFooter}
@@ -116,7 +97,6 @@ export default function DeckListComponent({
           deckToCampaign={deckToCampaign}
           onRefresh={onRefresh}
           refreshing={refreshing}
-          decks={decks}
           onScroll={onScroll}
           deckClicked={handleDeckClick}
         />

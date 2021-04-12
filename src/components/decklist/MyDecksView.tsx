@@ -5,8 +5,8 @@ import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigati
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { Deck } from '@actions/types';
-import Card from '@data/Card';
+import { CampaignId, Deck, getDeckId } from '@actions/types';
+import Card from '@data/types/Card';
 import { iconsMap } from '@app/NavIcons';
 import { showDeckModal } from '@components/nav/helper';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
@@ -51,13 +51,13 @@ function MyDecksView({ componentId }: NavigationProps) {
     }
   }, componentId, [showNewDeckDialog]);
 
-  const deckNavClicked = useCallback((deck: Deck, investigator?: Card) => {
-    showDeckModal(componentId, deck, colors, investigator);
-  }, [componentId, colors]);
+  const deckNavClicked = useCallback((deck: Deck, investigator: Card | undefined, campaignId: CampaignId | undefined) => {
+    showDeckModal(getDeckId(deck), deck, campaignId, colors, investigator);
+  }, [colors]);
 
   const searchOptionControls = useMemo(() => {
-    const hasLocalDeck = !!find(myDecks, deckId => deckId.local);
-    const hasOnlineDeck = !!find(myDecks, deckId => !deckId.local);
+    const hasLocalDeck = !!find(myDecks, deckId => deckId.id.local);
+    const hasOnlineDeck = !!find(myDecks, deckId => !deckId.id.local);
     if (!localDecksOnly && !(hasLocalDeck && hasOnlineDeck)) {
       // need to have both to show the toggle.
       return null;
@@ -88,9 +88,9 @@ function MyDecksView({ componentId }: NavigationProps) {
     );
   }, [showNewDeckDialog]);
 
-  const onlyDeckIds = useMemo(() => {
+  const onlyDecks = useMemo(() => {
     if (localDecksOnly) {
-      return filter(myDecks, deckId => deckId.local);
+      return filter(myDecks, deckId => deckId.id.local);
     }
     return undefined;
   }, [myDecks, localDecksOnly]);
@@ -104,7 +104,7 @@ function MyDecksView({ componentId }: NavigationProps) {
       }}
       customFooter={customFooter}
       deckClicked={deckNavClicked}
-      onlyDeckIds={onlyDeckIds}
+      onlyDecks={onlyDecks}
     />
   );
 }

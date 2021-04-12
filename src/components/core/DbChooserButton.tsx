@@ -7,7 +7,7 @@ import { t } from 'ttag';
 import NavButton from './NavButton';
 import { SearchSelectProps } from '../cardlist/SearchMultiSelectView';
 import COLORS from '@styles/colors';
-import DatabaseContext from '@data/DatabaseContext';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
 
 interface Props {
   componentId: string;
@@ -43,6 +43,15 @@ export default function DbChooserButton({ componentId, title, field, onChange, f
   const onPress = useCallback(() => {
     setPressed(true);
     db.getDistinctFields(field, query, tabooSetId, processValue).then(values => {
+      /*
+      // This code will export all traits in the english database.
+      console.log('const localized_traits = {')
+      forEach(values, value => {
+        const escaped = value.replace(`'`, `\\'`);
+        console.log(`  '${escaped}': c('trait').t\`${value}\`,`)
+      });
+      console.log('};')
+      */
       const actualValues = fixedTranslations ? map(values, item => fixedTranslations[item] || item) : values;
       const actualSelection = fixedTranslations ? map(selection || [], item => fixedTranslations[item] || item) : selection;
       Navigation.push<SearchSelectProps>(componentId, {

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import { fetchCards, setLanguageChoice } from '@components/card/actions';
-import DatabaseContext from '@data/DatabaseContext';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { AppState } from '@reducers';
 import { getSystemLanguage, localizedName, ALL_LANGUAGES } from '@lib/i18n';
 import { ShowAlert, usePickerDialog } from '@components/deck/dialogs';
@@ -177,6 +177,7 @@ export default function LanguagePicker({ first, last, showAlert }: { first?: boo
         title={t`Language`}
         icon="world"
         editable={!cardsLoading}
+        loading={cardsLoading}
         onPress={showDialog}
         valueLabel={find(items, option => option.value === selectedValue)?.valueLabel || 'Unknown'}
         first={first}

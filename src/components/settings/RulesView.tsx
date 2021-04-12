@@ -4,16 +4,16 @@ import { TouchableOpacity, ListRenderItemInfo, FlatList, View, Platform, StyleSh
 import { t } from 'ttag';
 import { Brackets } from 'typeorm/browser';
 
-import Rule from '@data/Rule';
+import Rule from '@data/types/Rule';
 import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
 import CardTextComponent from '@components/card/CardTextComponent';
 import { s, m } from '@styles/space';
-import DatabaseContext from '@data/DatabaseContext';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { Navigation } from 'react-native-navigation';
 import { RuleViewProps } from './RuleView';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
-import { where } from '@data/query';
+import { where } from '@data/sqlite/query';
 
 interface Props {
   componentId: string;

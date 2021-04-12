@@ -1,11 +1,11 @@
 import { findIndex, flatMap, forEach, map, pull, sortBy, sortedUniq } from 'lodash';
 import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder, InsertResult, OrderByCondition, QueryRunner } from 'typeorm/browser';
 
-import Card, { PartialCard } from './Card';
-import EncounterSet from './EncounterSet';
-import FaqEntry from './FaqEntry';
-import TabooSet from './TabooSet';
-import Rule from './Rule';
+import Card, { PartialCard } from '../types/Card';
+import EncounterSet from '../types/EncounterSet';
+import FaqEntry from '../types/FaqEntry';
+import TabooSet from '../types/TabooSet';
+import Rule from '../types/Rule';
 import { QuerySort } from './types';
 import { tabooSetQuery, where } from './query';
 import syncPlayerCards, { InvestigatorCardState, PlayerCardState } from './syncPlayerCards';

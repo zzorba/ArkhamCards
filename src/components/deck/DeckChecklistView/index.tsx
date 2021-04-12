@@ -14,7 +14,7 @@ import { setDeckChecklistCard, resetDeckChecklist } from '@components/deck/actio
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import DbCardResultList from '@components/cardlist/CardSearchResultsComponent/DbCardResultList';
 import { showSortDialog } from '@components/cardlist/CardSortDialog';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';

@@ -1,4 +1,4 @@
-import { forEach, keys, omit, uniqBy } from 'lodash';
+import { filter, find, forEach, keys, omit, uniq } from 'lodash';
 import uuid from 'react-native-uuid';
 
 import {
@@ -24,14 +24,16 @@ import {
   DeckId,
   REDUX_MIGRATION,
   UPLOAD_DECK,
-  UploadedCampaignId,
+  SET_UPLOADED_DECKS,
+  REMOVE_UPLOAD_DECK,
+  UploadedDeck,
 } from '@actions/types';
 import deepDiff from 'deep-diff';
 
 interface DecksState {
   all: DecksMap;
-  uploaded?: {
-    [uuid: string]: UploadedCampaignId[] | undefined;
+  syncedDecks?: {
+    [uuid: string]: UploadedDeck | undefined;
   };
   replacedLocalIds?: {
     [uuid: string]: DeckId;
@@ -108,17 +110,49 @@ export default function(
       all,
     };
   }
-  if (action.type === UPLOAD_DECK) {
-    const uploaded = state.uploaded || {};
+  if (action.type === SET_UPLOADED_DECKS) {
     return {
       ...state,
-      uploaded: {
-        ...(uploaded),
-        [action.deckId.uuid]: uniqBy([
-          ...(uploaded[action.deckId.uuid] || []),
-          action.campaignId,
-        ], c => c.campaignId),
+      syncedDecks: action.uploadedDecks,
+    };
+  }
+  if (action.type === UPLOAD_DECK) {
+    const syncedDecks = state.syncedDecks || {};
+    const newUploadedDeck: UploadedDeck = {
+      deckId: action.deckId,
+      hash: action.hash,
+      campaignId: uniq([
+        ...(syncedDecks[action.deckId.uuid]?.campaignId || []),
+        action.campaignId,
+      ]),
+    };
+
+    return {
+      ...state,
+      syncedDecks: {
+        ...syncedDecks,
+        [action.deckId.uuid]: newUploadedDeck,
       },
+    };
+  }
+  if (action.type === REMOVE_UPLOAD_DECK) {
+    const syncedDecks: { [key: string]: UploadedDeck | undefined } = {
+      ...(state.syncedDecks || {}),
+    };
+    const existingUploadedDeck = syncedDecks[action.deckId.uuid];
+    const uploadedDeck = existingUploadedDeck && find(existingUploadedDeck.campaignId, id => id.serverId !== action.campaignId.serverId) ? {
+      deckId: existingUploadedDeck.deckId,
+      hash: existingUploadedDeck.hash,
+      campaignId: filter(existingUploadedDeck.campaignId, campaignId => campaignId.serverId !== action.campaignId.serverId),
+    } : undefined;
+    if (uploadedDeck) {
+      syncedDecks[action.deckId.uuid] = uploadedDeck;
+    } else {
+      delete syncedDecks[action.deckId.uuid];
+    }
+    return {
+      ...state,
+      syncedDecks,
     };
   }
   if (action.type === ARKHAMDB_LOGOUT || action.type === CLEAR_DECKS) {

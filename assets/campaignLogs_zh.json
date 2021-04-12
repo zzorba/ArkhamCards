@@ -240,26 +240,26 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "read_act_2",
-            "masculine_text": "#name# read Act 2 of The King in Yellow.",
-            "feminine_text": "#name# read Act 2 of The King in Yellow."
+            "id": "possessed",
+            "masculine_text": "#name#被附身。",
+            "feminine_text": "#name#被附身。"
           },
           {
-            "id": "possessed",
-            "masculine_text": "#name# was possessed.",
-            "feminine_text": "#name# was possessed."
+            "id": "read_act_2",
+            "masculine_text": "#name#閱讀了《黃衣之王》第二幕。",
+            "feminine_text": "#name#閱讀了《黃衣之王》第二幕。"
           },
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "the investigators were attacked as they escaped the Asylum."
+            "text": "調查員逃出瘋人院時受到攻擊。"
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "you awoke inside the catacombs."
+            "text": "你在地下墓穴中醒來。"
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "你所在的世界與卡爾克薩融為一體並且被哈斯塔支配。"
           },
           {
             "id": "chose_not_to_warn_police",
@@ -267,19 +267,19 @@
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "you destroyed the oathspeaker."
+            "text": "你摧毀了宣誓者。"
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "you did not escape the gaze of the phantom."
+            "text": "你沒能逃脫幻影的凝視。"
           },
           {
             "id": "entered_catacombs",
-            "text": "you entered the catacombs on your own."
+            "text": "你自行進入地下墓穴。"
           },
           {
             "id": "escaped_the_asylum",
-            "text": "the investigators escaped the Asylum."
+            "text": "調查員逃出瘋人院。"
           },
           {
             "id": "fled_dinner_party",
@@ -287,27 +287,27 @@
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "the followers of the sign have found the way forward."
+            "text": "印記的追隨者們獲得進展。"
           },
           {
             "id": "found_nigel_engram",
-            "text": "you found Nigel Engram."
+            "text": "你找到了奈傑爾·英格蘭姆。"
           },
           {
             "id": "found_nigels_home",
-            "text": "you found Nigel's home."
+            "text": "你找到了奈傑爾的住宅。"
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
+            "text": "哈斯塔已將你抓住。"
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
+            "text": "你聽從丹尼爾的警告。"
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
+            "text": "你無視丹尼爾的警告。"
           },
           {
             "id": "intruded_on_secret_meeting",
@@ -315,23 +315,23 @@
           },
           {
             "id": "king_claimed_victims",
-            "text": "the King claimed its victims."
+            "text": "王帶走了他的祭品。"
           },
           {
             "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
+            "text": "你已知曉大門所在。"
           },
           {
             "id": "left_onyx_clasp",
-            "text": "you left the onyx clasp behind."
+            "text": "你將黑瑪瑙釦環放回原位。"
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "你開啟了上方通路。"
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "你開啟了下方通路。"
           },
           {
             "id": "police_are_suspicious",
@@ -339,7 +339,7 @@
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
+            "text": "調查員阻止哈斯塔逃出牢獄。"
           },
           {
             "id": "slayed_the_monsters",
@@ -351,7 +351,7 @@
           },
           {
             "id": "took_onyx_clasp",
-            "text": "you took the onyx clasp."
+            "text": "你拿到了黑瑪瑙釦環。"
           },
           {
             "id": "tried_to_warn_police",
@@ -359,7 +359,7 @@
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "you were unable to find Nigel."
+            "text": "你沒能找到奈傑爾。"
           }
         ]
       },
@@ -376,7 +376,7 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "至少有一位調查員被附身。"
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -666,26 +666,26 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "read_act_2",
-            "masculine_text": "#name# read Act 2 of The King in Yellow.",
-            "feminine_text": "#name# read Act 2 of The King in Yellow."
+            "id": "possessed",
+            "masculine_text": "#name#被附身。",
+            "feminine_text": "#name#被附身。"
           },
           {
-            "id": "possessed",
-            "masculine_text": "#name# was possessed.",
-            "feminine_text": "#name# was possessed."
+            "id": "read_act_2",
+            "masculine_text": "#name#閱讀了《黃衣之王》第二幕。",
+            "feminine_text": "#name#閱讀了《黃衣之王》第二幕。"
           },
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "the investigators were attacked as they escaped the Asylum."
+            "text": "調查員逃出瘋人院時受到攻擊。"
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "you awoke inside the catacombs."
+            "text": "你在地下墓穴中醒來。"
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "你所在的世界與卡爾克薩融為一體並且被哈斯塔支配。"
           },
           {
             "id": "chose_not_to_warn_police",
@@ -693,19 +693,19 @@
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "you destroyed the oathspeaker."
+            "text": "你摧毀了宣誓者。"
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "you did not escape the gaze of the phantom."
+            "text": "你沒能逃脫幻影的凝視。"
           },
           {
             "id": "entered_catacombs",
-            "text": "you entered the catacombs on your own."
+            "text": "你自行進入地下墓穴。"
           },
           {
             "id": "escaped_the_asylum",
-            "text": "the investigators escaped the Asylum."
+            "text": "調查員逃出瘋人院。"
           },
           {
             "id": "fled_dinner_party",
@@ -713,27 +713,27 @@
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "the followers of the sign have found the way forward."
+            "text": "印記的追隨者們獲得進展。"
           },
           {
             "id": "found_nigel_engram",
-            "text": "you found Nigel Engram."
+            "text": "你找到了奈傑爾·英格蘭姆。"
           },
           {
             "id": "found_nigels_home",
-            "text": "you found Nigel's home."
+            "text": "你找到了奈傑爾的住宅。"
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
+            "text": "哈斯塔已將你抓住。"
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
+            "text": "你聽從丹尼爾的警告。"
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
+            "text": "你無視丹尼爾的警告。"
           },
           {
             "id": "intruded_on_secret_meeting",
@@ -741,23 +741,23 @@
           },
           {
             "id": "king_claimed_victims",
-            "text": "the King claimed its victims."
+            "text": "王帶走了他的祭品。"
           },
           {
             "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
+            "text": "你已知曉大門所在。"
           },
           {
             "id": "left_onyx_clasp",
-            "text": "you left the onyx clasp behind."
+            "text": "你將黑瑪瑙釦環放回原位。"
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "你開啟了上方通路。"
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "你開啟了下方通路。"
           },
           {
             "id": "police_are_suspicious",
@@ -765,7 +765,7 @@
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
+            "text": "調查員阻止哈斯塔逃出牢獄。"
           },
           {
             "id": "slayed_the_monsters",
@@ -777,7 +777,7 @@
           },
           {
             "id": "took_onyx_clasp",
-            "text": "you took the onyx clasp."
+            "text": "你拿到了黑瑪瑙釦環。"
           },
           {
             "id": "tried_to_warn_police",
@@ -785,7 +785,7 @@
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "you were unable to find Nigel."
+            "text": "你沒能找到奈傑爾。"
           }
         ]
       },
@@ -802,7 +802,7 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "至少有一位調查員被附身。"
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -1242,19 +1242,19 @@
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "the Excelsior claims another victim."
+            "text": "埃賽希爾酒店再次奪取另一名受害者的性命。"
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "the Excelsior is quiet, for now."
+            "text": "埃賽希爾酒店暫時恢復寧靜。"
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "the investigators fled the scene of the crime."
+            "text": "調查員們逃離了犯罪現場。"
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "the murders continue, unsolved."
+            "text": "謀殺持續，懸案未解。"
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
@@ -2371,6 +2371,14 @@
             "feminine_text": "#name# possesses a diving suit."
           },
           {
+            "id": "agent_harpers_mission_is_complete",
+            "text": "Agent Harper's mission is complete."
+          },
+          {
+            "id": "agent_harpers_mission_is_complete_at_what_cost",
+            "text": "Agent Harper's mission is complete… but at what cost?"
+          },
+          {
             "id": "allen_out_for_blood",
             "text": "Zadok Allen is out for blood."
           },
@@ -2381,6 +2389,22 @@
           {
             "id": "dagon_has_awakened",
             "text": "Dagon has awakened."
+          },
+          {
+            "id": "dagon_still_slumbers",
+            "text": "Dagon still slumbers."
+          },
+          {
+            "id": "deep_ones_have_flooded_the_earth",
+            "text": "the Deep Ones have flooded the Earth."
+          },
+          {
+            "id": "escaped_yhanthlei",
+            "text": "the investigators escaped Y'ha-nthlei."
+          },
+          {
+            "id": "flood_has_begun",
+            "text": "the flood has begun."
           },
           {
             "id": "friendly_out_for_blood",
@@ -2439,6 +2463,14 @@
             "text": "the mission was successful."
           },
           {
+            "id": "orders_ritual_was_disrupted",
+            "text": "the Order's ritual was disrupted."
+          },
+          {
+            "id": "plot_of_the_deep_ones_was_thwarted",
+            "text": "the plot of the Deep Ones was thwarted."
+          },
+          {
             "id": "possess_a_map_of_yhanthlei",
             "text": "the investigators possess a map of Y'ha-nthlei."
           },
@@ -2453,6 +2485,14 @@
           {
             "id": "reached_falcon_point_before_sunrise",
             "text": "the investigators reached Falcon Point before sunrise."
+          },
+          {
+            "id": "riches_of_the_deep_are_destroyed_at_what_cost",
+            "text": "the riches of the deep are destroyed… but at what cost?"
+          },
+          {
+            "id": "riches_of_the_deep_are_lost_forever",
+            "text": "the riches of the deep are lost forever."
           },
           {
             "id": "terror_of_devil_reef_is_dead",
@@ -2520,6 +2560,10 @@
             "text": "Shoreward Slums"
           },
           {
+            "id": "act_2_setup",
+            "text": "dummy"
+          },
+          {
             "id": "flashback_1",
             "text": "dummy"
           },
@@ -2537,6 +2581,10 @@
           },
           {
             "id": "flashback_13",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_14",
             "text": "dummy"
           },
           {
@@ -2625,12 +2673,20 @@
             "text": "an encounter with a secret cult"
           },
           {
+            "id": "horrific_truth",
+            "text": "the horrific truth"
+          },
+          {
             "id": "lifecycle_of_a_deep_one",
             "text": "the lifecycle of a \"Deep One\""
           },
           {
             "id": "meeting_with_thomas_dawson",
             "text": "a meeting with Thomas Dawson"
+          },
+          {
+            "id": "stinging_betrayal",
+            "text": "a stinging betrayal"
           }
         ]
       },

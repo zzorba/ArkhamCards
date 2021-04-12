@@ -8,24 +8,27 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '@reducers';
 import { Action } from 'redux';
 import { useDispatch } from 'react-redux';
+import { DeckActions } from '@data/remote/decks';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
 export type SaveDeckUpgrade = (xp: number, storyCounts: Slots, ignoreStoryCounts: Slots, exileCounts: Slots) => void;
 
 export default function useDeckUpgrade(
-  deck: Deck | undefined,
+  deck: LatestDeckT | undefined,
+  actions: DeckActions,
   upgradeCompleted: (deck: Deck, xp: number) => void,
 ): [boolean, string | undefined, SaveDeckUpgrade] {
   const { user } = useContext(ArkhamCardsAuthContext);
   const deckDispatch: DeckDispatch = useDispatch();
   const doSaveDeckChanges = useCallback((deck: Deck, changes: SaveDeckChanges): Promise<Deck> => {
-    return deckDispatch(saveDeckChanges(user, deck, changes) as any);
-  }, [deckDispatch, user]);
+    return deckDispatch(saveDeckChanges(user, actions, deck, changes) as any);
+  }, [deckDispatch, actions, user]);
 
   const doSaveDeckUpgrade = useCallback((deck: Deck, xp: number, exileCounts: Slots): Promise<Deck> => {
-    return deckDispatch(saveDeckUpgrade(user, deck, xp, exileCounts) as any);
-  }, [deckDispatch, user]);
+    return deckDispatch(saveDeckUpgrade(user, actions, deck, xp, exileCounts) as any);
+  }, [deckDispatch, actions, user]);
 
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | undefined>();
@@ -93,7 +96,7 @@ export default function useDeckUpgrade(
     }
     if (!saving || isRetry) {
       setSaving(true);
-      doSaveDeckUpgrade(deck, xp, exileCounts).then(
+      doSaveDeckUpgrade(deck.deck, xp, exileCounts).then(
         (deck: Deck) => handleStoryCardChanges(deck, xp, storyCounts, ignoreStoryCounts),
         (e: Error) => {
           setError(e.message);

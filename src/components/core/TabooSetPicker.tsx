@@ -3,7 +3,7 @@ import { findIndex, map } from 'lodash';
 import { format } from 'date-fns';
 import { c, t } from 'ttag';
 
-import Database from '@data/Database';
+import Database from '@data/sqlite/Database';
 import SinglePickerComponent from './SinglePickerComponent';
 import StyleContext from '@styles/StyleContext';
 import useDbData from './useDbData';

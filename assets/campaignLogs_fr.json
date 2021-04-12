@@ -2371,6 +2371,14 @@
             "feminine_text": "#name# possède un scaphandre."
           },
           {
+            "id": "agent_harpers_mission_is_complete",
+            "text": "Agent Harper's mission is complete."
+          },
+          {
+            "id": "agent_harpers_mission_is_complete_at_what_cost",
+            "text": "Agent Harper's mission is complete… but at what cost?"
+          },
+          {
             "id": "allen_out_for_blood",
             "text": "Zadok Allen veut votre peaux."
           },
@@ -2380,7 +2388,23 @@
           },
           {
             "id": "dagon_has_awakened",
-            "text": "Dagon has awakened."
+            "text": "Dagon s'est réveillé."
+          },
+          {
+            "id": "dagon_still_slumbers",
+            "text": "Dagon still slumbers."
+          },
+          {
+            "id": "deep_ones_have_flooded_the_earth",
+            "text": "the Deep Ones have flooded the Earth."
+          },
+          {
+            "id": "escaped_yhanthlei",
+            "text": "the investigators escaped Y'ha-nthlei."
+          },
+          {
+            "id": "flood_has_begun",
+            "text": "the flood has begun."
           },
           {
             "id": "friendly_out_for_blood",
@@ -2388,11 +2412,11 @@
           },
           {
             "id": "gatekeeper_has_been_defeated",
-            "text": "the gatekeeper has been defeated."
+            "text": "le gardien de la porte a été vaincu."
           },
           {
             "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
-            "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+            "text": "la porte de Y'ha-nthlei vous reconnait comme son gardien légitime."
           },
           {
             "id": "gilman_out_for_blood",
@@ -2400,7 +2424,7 @@
           },
           {
             "id": "guardian_of_yhanthlei_is_dispatched",
-            "text": "the guardian of Y’ha-nthlei is dispatched."
+            "text": "le protecteur de Y'ha-nthlei est mort."
           },
           {
             "id": "headdress_brought_to_the_lighthouse",
@@ -2439,6 +2463,14 @@
             "text": "la mission a réussi."
           },
           {
+            "id": "orders_ritual_was_disrupted",
+            "text": "the Order's ritual was disrupted."
+          },
+          {
+            "id": "plot_of_the_deep_ones_was_thwarted",
+            "text": "the plot of the Deep Ones was thwarted."
+          },
+          {
             "id": "possess_a_map_of_yhanthlei",
             "text": "les investigateurs possèdent une carte de Y' ha-nthlei."
           },
@@ -2453,6 +2485,14 @@
           {
             "id": "reached_falcon_point_before_sunrise",
             "text": "les investigateurs ont atteint le phare avant le lever du soleil."
+          },
+          {
+            "id": "riches_of_the_deep_are_destroyed_at_what_cost",
+            "text": "the riches of the deep are destroyed… but at what cost?"
+          },
+          {
+            "id": "riches_of_the_deep_are_lost_forever",
+            "text": "the riches of the deep are lost forever."
           },
           {
             "id": "terror_of_devil_reef_is_dead",
@@ -2520,6 +2560,10 @@
             "text": "Taudis sur les Berges"
           },
           {
+            "id": "act_2_setup",
+            "text": "leurre"
+          },
+          {
             "id": "flashback_1",
             "text": "leurre"
           },
@@ -2537,6 +2581,10 @@
           },
           {
             "id": "flashback_13",
+            "text": "leurre"
+          },
+          {
+            "id": "flashback_14",
             "text": "leurre"
           },
           {
@@ -2625,12 +2673,20 @@
             "text": "Une rencontre avec un culte secret"
           },
           {
+            "id": "horrific_truth",
+            "text": "the horrific truth"
+          },
+          {
             "id": "lifecycle_of_a_deep_one",
             "text": "le cycle de vie d'un « Profond »"
           },
           {
             "id": "meeting_with_thomas_dawson",
             "text": "Un rendez-vous avec Thomas Dawson"
+          },
+          {
+            "id": "stinging_betrayal",
+            "text": "a stinging betrayal"
           }
         ]
       },

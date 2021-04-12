@@ -23,6 +23,7 @@ export default function SettingsTabooPicker({ last }: Props) {
       setTabooSet={onSetTabooSet}
       disabled={cardsLoading}
       last={last}
+      loading={cardsLoading}
       show
     />
   );

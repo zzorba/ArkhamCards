@@ -1,11 +1,10 @@
 import React, { MutableRefObject, ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { filter, find, flatMap, flatten, forEach, map, sum, sumBy, uniqBy } from 'lodash';
-import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { c, msgid, t } from 'ttag';
 
 import {
-  Campaign,
   CardId,
   Deck,
   DeckMeta,
@@ -15,19 +14,14 @@ import {
   SplitCards,
 } from '@actions/types';
 import { showCard, showCardSwipe } from '@components/nav/helper';
-import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
-import InvestigatorImage from '@components/core/InvestigatorImage';
-import CardTextComponent from '@components/card/CardTextComponent';
 import DeckProgressComponent from '../DeckProgressComponent';
 import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
-import HealthSanityLine from '@components/core/HealthSanityLine';
 import { BODY_OF_A_YITHIAN, TypeCodeType } from '@app_constants';
 import DeckValidation from '@lib/DeckValidation';
-import Card, { CardsMap } from '@data/Card';
-import TabooSet from '@data/TabooSet';
-import space, { isBig, m, s, xs } from '@styles/space';
+import Card, { CardsMap } from '@data/types/Card';
+import TabooSet from '@data/types/TabooSet';
+import space, { isBig, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useFlag } from '@components/core/hooks';
 import { setDeckTabooSet, updateDeckMeta } from '@components/deck/actions';
@@ -43,6 +37,7 @@ import DeckMetadataControls from '../controls/DeckMetadataControls';
 import { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
 import { ControlType } from '@components/cardlist/CardSearchResult/ControlComponent';
 import { getPacksInCollection } from '@reducers';
+import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
 
 interface SectionCardId extends CardId {
   special: boolean;
@@ -79,6 +74,7 @@ function hasUpgrades(
     find(cardsByName[card.real_name.toLowerCase()] || [], upgradeCard => (
       upgradeCard &&
       upgradeCard.code !== code &&
+      (upgradeCard.xp || 0) > (card.xp || 0) &&
       validation.canIncludeCard(upgradeCard, false) &&
       (upgradeCard.pack_code === 'core' || inCollection[upgradeCard.pack_code])
     )));
@@ -248,8 +244,6 @@ interface Props {
   deck: Deck;
   investigatorFront?: Card;
   investigatorBack?: Card;
-  hideCampaign?: boolean;
-  campaign?: Campaign;
   parsedDeck: ParsedDeck;
   hasPendingEdits?: boolean;
   cards: CardsMap;
@@ -261,7 +255,6 @@ interface Props {
   };
   visible: boolean;
   editable: boolean;
-  isPrivate: boolean;
   buttons?: ReactNode;
   showEditSpecial?: () => void;
   showXpAdjustmentDialog: () => void;
@@ -275,7 +268,6 @@ interface Props {
   login: () => void;
   problem?: DeckProblem;
   showEditCards: () => void;
-  showDeckUpgrade: () => void;
   showDeckHistory: () => void;
   width: number;
   inCollection: {
@@ -310,10 +302,6 @@ export default function DeckViewTab(props: Props) {
     showTaboo,
     tabooOpen,
     buttons,
-    isPrivate,
-    campaign,
-    hideCampaign,
-    showDeckUpgrade,
     showDeckHistory,
     deckEdits,
     deckEditsRef,
@@ -324,18 +312,6 @@ export default function DeckViewTab(props: Props) {
   const [limitedSlots, toggleLimitedSlots] = useFlag(false);
   const investigator = useMemo(() => cards[deck.investigator_code], [cards, deck.investigator_code]);
   const [data, setData] = useState<DeckSection[]>([]);
-  const showInvestigator = useCallback(() => {
-    if (investigatorFront) {
-      showCard(
-        componentId,
-        investigatorFront.code,
-        investigatorFront,
-        colors,
-        false,
-        tabooSetId,
-      );
-    }
-  }, [componentId, tabooSetId, investigatorFront, colors]);
 
   const [uniqueBondedCards, bondedCardsCount] = useMemo((): [Card[], number] => {
     const bondedCards: Card[] = [];
@@ -611,44 +587,15 @@ export default function DeckViewTab(props: Props) {
     if (!investigatorCard) {
       return null;
     }
-
     return (
-      <View style={styles.column}>
-        <TouchableOpacity onPress={showInvestigator}>
-          <View>
-            <View style={styles.header}>
-              <View style={styles.headerTextColumn}>
-                <InvestigatorStatLine
-                  investigator={investigatorCard}
-                />
-                { !!investigatorCard.text && (
-                  <View style={[styles.gameTextBlock, styles.headerLeftMargin]}>
-                    <CardTextComponent
-                      text={investigatorCard.text}
-                    />
-                  </View>
-                ) }
-              </View>
-              <View style={[styles.headerColumn, styles.headerLeftMargin]}>
-                <View style={styles.image}>
-                  <InvestigatorImage
-                    card={investigator || investigatorCard}
-                    componentId={componentId}
-                    yithian={yithian}
-                    border
-                  />
-                </View>
-                <HealthSanityLine investigator={investigatorCard} />
-              </View>
-            </View>
-          </View>
-          <View style={styles.headerLeftMargin}>
-            <CardTabooTextBlock card={investigatorCard} />
-          </View>
-        </TouchableOpacity>
-      </View>
+      <InvestigatorSummaryBlock
+        investigator={investigatorCard}
+        yithian={yithian}
+        componentId={componentId}
+        tabooSetId={tabooSetId}
+      />
     );
-  }, [componentId, parsedDeck.slots, showInvestigator, cards, investigator, investigatorFront]);
+  }, [componentId, parsedDeck.slots, cards, investigatorFront, tabooSetId]);
 
   const header = useMemo(() => {
     return (
@@ -718,10 +665,6 @@ export default function DeckViewTab(props: Props) {
           deck={deck}
           parsedDeck={parsedDeck}
           editable={editable}
-          isPrivate={isPrivate}
-          campaign={campaign}
-          hideCampaign={hideCampaign}
-          showDeckUpgrade={showDeckUpgrade}
           showDeckHistory={showDeckHistory}
           tabooSetId={tabooSetId}
           singleCardView={singleCardView}
@@ -733,36 +676,8 @@ export default function DeckViewTab(props: Props) {
 }
 
 const styles = StyleSheet.create({
-  headerLeftMargin: {
-    marginLeft: xs,
-  },
-  header: {
-    marginTop: m,
-    marginRight: s,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-  },
-  headerTextColumn: {
-    flexDirection: 'column',
-    flex: 1,
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
-  image: {
-    marginBottom: xs,
-  },
-  headerColumn: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    marginLeft: s,
-  },
   headerWrapper: {
     position: 'relative',
-  },
-  column: {
-    flex: 1,
   },
   containerWrapper: {
     flexDirection: isBig ? 'row' : 'column',
@@ -780,11 +695,6 @@ const styles = StyleSheet.create({
   headerBlock: {
     paddingBottom: s,
     position: 'relative',
-  },
-  gameTextBlock: {
-    paddingLeft: xs,
-    marginBottom: s,
-    marginRight: s,
   },
   footerPadding: {
     height: FOOTER_HEIGHT,

@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { findIndex, flatMap, forEach } from 'lodash';
 
 import { InvestigatorCardResult, BoolOptionWithId } from '@data/scenario/conditionHelper';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { BoolOption } from '@data/scenario/types';
 import useCardList from '@components/card/useCardList';
 

@@ -7,6 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import signedIn from './signedIn';
 import campaigns from './campaigns';
 import guides from './guides';
+import trackedQueries from './trackedQueries';
 import filters from './filters';
 import cards from './cards';
 import decks from './decks';
@@ -33,13 +34,18 @@ import {
   DeckId,
   getDeckId,
   LocalDeck,
-  UploadedCampaignId,
   CampaignId,
   getCampaignLastUpdated,
   getLastUpdated,
+  UploadedDeck,
 } from '@actions/types';
-import Card, { CardsMap } from '@data/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import { ChaosBag } from '@app_constants';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
+import { LatestDeckRedux, MiniCampaignRedux, MiniDeckRedux, MiniLinkedCampaignRedux } from '@data/local/types';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import MiniDeckT from '@data/interfaces/MiniDeckT';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 const packsPersistConfig = {
   key: 'packs',
@@ -66,6 +72,12 @@ const guidesPersistConfig = {
   key: 'guides_2',
   timeout: 0,
   storage: AsyncStorage,
+};
+
+const trackedQueriesPersistConfig = {
+  key: 'trackedQueries',
+  storage: AsyncStorage,
+  blacklist: [],
 };
 
 const legacyDecksPersistConfig = {
@@ -119,7 +131,7 @@ const rootReducer = combineReducers({
   filters,
   deckEdits,
   dissonantVoices: persistReducer(dissonantVoicesPersistConfig, dissonantVoices),
-
+  trackedQueries: persistReducer(trackedQueriesPersistConfig, trackedQueries),
   decks: persistReducer(decksPersistConfig, decks),
   legacyGuides: persistReducer(legacyGuidesPersistConfig, legacyGuides),
   campaigns: legacyCampaigns,
@@ -144,34 +156,44 @@ function getCampaign(all: { [uuid: string]: Campaign }, campaignId: CampaignId):
 export const getCampaigns = createSelector(
   allCampaignsSelector,
   allGuidesSelector,
-  (allCampaigns, allGuides): {
-    campaign: Campaign;
-    sort: number;
-  }[] => sortBy(map(
+  allDecksSelector,
+  (allCampaigns, allGuides, allDecks): MiniCampaignT[] => map(
     filter(
       values(allCampaigns),
-      campaign => !campaign.linkedCampaignUuid
+      campaign => {
+        return (!campaign.linkedCampaignUuid && !campaign.serverId);
+      }
     ),
     (campaign: Campaign) => {
       if (campaign.linkUuid) {
         const campaignA = getCampaign(allCampaigns, { campaignId: campaign.linkUuid.campaignIdA, serverId: campaign.serverId });
-        const campaignB = getCampaign(allCampaigns, { campaignId: campaign.linkUuid.campaignIdA, serverId: campaign.serverId });
+        const campaignB = getCampaign(allCampaigns, { campaignId: campaign.linkUuid.campaignIdB, serverId: campaign.serverId });
         if (campaignA && campaignB) {
-          return {
+          const decksA = flatMap(campaignA.deckIds, id => getDeck(allDecks, id) || []);
+          const decksB = flatMap(campaignB.deckIds, id => getDeck(allDecks, id) || []);
+          return new MiniLinkedCampaignRedux(
             campaign,
-            sort: Math.min(
-              getCampaignLastUpdated(campaignA, allGuides[campaignA.uuid]),
-              getCampaignLastUpdated(campaignB, allGuides[campaignB.uuid])
-            ),
-          };
+            getCampaignLastUpdated(campaign),
+            campaignA,
+            decksA,
+            getCampaignLastUpdated(campaignA, allGuides[campaignA.uuid]),
+            campaignB,
+            decksB,
+            getCampaignLastUpdated(campaignB, allGuides[campaignB.uuid])
+          );
         }
       }
-      return {
+      return new MiniCampaignRedux(
         campaign,
-        sort: getCampaignLastUpdated(campaign, allGuides[campaign.uuid]),
-      };
+        flatMap(campaign.deckIds, id => {
+          const deck = getDeck(allDecks, id);
+          const previousDeck = deck?.previousDeckId ? getDeck(allDecks, deck.previousDeckId) : undefined;
+          return deck ? new LatestDeckRedux(deck, previousDeck, campaign) : [];
+        }),
+        getCampaignLastUpdated(campaign, allGuides[campaign.uuid]),
+      );
     }
-  ), c => c.sort)
+  )
 );
 
 export const getBackupData = createSelector(
@@ -308,7 +330,9 @@ export const getDeckToCampaignMap = createSelector(
   (
     allCampaigns: { [id: string]: Campaign },
     allDecks: DecksMap
-  ): { [uuid: string]: Campaign } => {
+  ): {
+    [uuid: string]: Campaign;
+  } => {
     const decks = allDecks || {};
     const campaigns = allCampaigns || {};
     const result: { [uuid: string]: Campaign } = {};
@@ -360,11 +384,11 @@ export function makeLatestCampaignInvestigatorsSelector(): (state: AppState, inv
       }
       const latestDecks: Deck[] = flatMap(latestDeckIds, deckId => getDeck(decks, deckId) || []);
       return uniq([
+        ...flatMap(nonDeckInvestigators, code => investigators[code] || []),
         ...flatMap(
           filter(latestDecks, deck => !!(deck && deck.investigator_code)),
           deck => investigators[deck.investigator_code] || []
         ),
-        ...flatMap(nonDeckInvestigators, code => investigators[code] || []),
       ]);
     }
   );
@@ -398,18 +422,27 @@ export const makeLatestCampaignDeckIdsSelector = (): (state: AppState, campaign?
     }
   );
 
-export const makeLatestDecksSelector = (): (state: AppState, campaign?: Campaign) => Deck[] =>
-  createSelector(
+export const makeLatestDecksSelector = (): (state: AppState, campaign?: Campaign) => LatestDeckT[] => {
+  const campaignDeckIdsSelector = makeLatestCampaignDeckIdsSelector();
+  return createSelector(
     (state: AppState) => getAllDecks(state),
-    makeLatestCampaignDeckIdsSelector(),
-    (decks: DecksMap, latestDeckIds: DeckId[]) => flatMap(latestDeckIds, deckId => getDeck(decks, deckId) || [])
+    campaignDeckIdsSelector,
+    (state: AppState, campaign?: Campaign) => campaign,
+    (decks: DecksMap, latestDeckIds: DeckId[], campaign?: Campaign) => {
+      return flatMap(latestDeckIds, deckId => {
+        const deck = getDeck(decks, deckId);
+        const previousDeck = deck?.previousDeckId && getDeck(decks, deck.previousDeckId);
+        return deck ? new LatestDeckRedux(deck, previousDeck, campaign) : [];
+      });
+    }
   );
+}
 
-export const makeOtherCampiagnDeckIdsSelector = (): (state: AppState, campaign?: Campaign) => DeckId[] =>
+export const makeOtherCampiagnDeckIdsSelector = (): (state: AppState, campaign?: SingleCampaignT) => DeckId[] =>
   createSelector(
     (state: AppState) => state.decks.all,
     (state: AppState) => state.campaigns_2.all,
-    (state: AppState, campaign?: Campaign) => campaign,
+    (state: AppState, campaign?: SingleCampaignT) => campaign,
     (decks, campaigns, campaign) => {
       if (!campaign) {
         return EMPTY_DECK_ID_LIST;
@@ -435,8 +468,8 @@ export const makeOtherCampiagnDeckIdsSelector = (): (state: AppState, campaign?:
 
 const EMPTY_MY_DECKS: DeckId[] = [];
 
-interface MyDecksState {
-  myDecks: DeckId[];
+export interface MyDecksState {
+  myDecks: MiniDeckT[];
   myDecksUpdated?: Date;
   refreshing: boolean,
   error?: string;
@@ -449,10 +482,14 @@ export const getMyDecksState: (state: AppState) => MyDecksState = createSelector
   myDecksUpdatedSelector,
   myDecksRefreshingSelector,
   myDecksErrorSelector,
-  (allDecks, dateUpdated, refreshing, error) => {
+  getDeckToCampaignMap,
+  (allDecks, dateUpdated, refreshing, error, deckToCampaign) => {
     const myDecks = map(reverse(sortBy(filter(values(allDecks), deck => {
       return !!deck && !deck.nextDeckId;
-    }), deck => deck.date_update)), deck => getDeckId(deck));
+    }), deck => deck.date_update)), deck => {
+      const id = getDeckId(deck);
+      return new MiniDeckRedux(deck, deckToCampaign[id.uuid] || undefined);
+    });
     return {
       myDecks: myDecks || EMPTY_MY_DECKS,
       myDecksUpdated: dateUpdated ? new Date(dateUpdated) : undefined,
@@ -563,9 +600,9 @@ export const makeCampaignForDeckSelector = () =>
   createSelector(
     (state: AppState) => getDeckToCampaignMap(state),
     (state: AppState, deckId: DeckId) => deckId,
-    (deckToCampaign, deckId): SingleCampaign | undefined => {
+    (deckToCampaign, deckId): Campaign | undefined => {
       if (deckId.uuid in deckToCampaign) {
-        return processCampaign(deckToCampaign[deckId.uuid]);
+        return deckToCampaign[deckId.uuid];
       }
       return undefined;
     }
@@ -708,8 +745,31 @@ export const makeCampaignChaosBagSelector = () =>
     }
   );
 
-const EMPTY_CAMPAIGN_IDS: UploadedCampaignId[] = [];
-export function getDeckUploadedCampaigns(state: AppState, id: DeckId): UploadedCampaignId[] {
-  const uploaded = state.decks.uploaded || {};
-  return uploaded[id.uuid] || EMPTY_CAMPAIGN_IDS;
+export function getDeckUploadedCampaigns(state: AppState, id: DeckId): UploadedDeck | undefined {
+  const uploaded = state.decks.syncedDecks || {};
+  return uploaded[id.uuid];
 }
+
+const getTrackedQueriesIds = (state: AppState) => state.trackedQueries.ids;
+
+const getTrackedQueriesById = (state: AppState) => state.trackedQueries.byId;
+
+export const getTrackedQueries = createSelector(
+  getTrackedQueriesIds,
+  getTrackedQueriesById,
+  (pIds, pById) => pIds.map(o => pById[o])
+);
+
+
+export const getArkhamDbDecks = createSelector(
+  (state: AppState) => state.decks.all,
+  (decks: DecksMap) => {
+    const allDecks: Deck[] = [];
+    forEach(decks, deck => {
+      if (!deck.local) {
+        allDecks.push(deck);
+      }
+    });
+    return allDecks;
+  }
+);

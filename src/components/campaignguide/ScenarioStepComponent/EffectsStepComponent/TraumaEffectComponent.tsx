@@ -6,7 +6,7 @@ import { c, t, msgid } from 'ttag';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
 import InvestigatorChoicePrompt from '../../prompts/InvestigatorChoicePrompt';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { TraumaEffect } from '@data/scenario/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import space from '@styles/space';

@@ -4,11 +4,11 @@ import { t } from 'ttag';
 
 import { CardCache, TabooCache, Pack } from '@actions/types';
 import { Rule as JsonRule } from '@data/scenario/types';
-import Card from '@data/Card';
-import Rule from '@data/Rule';
-import Database from '@data/Database';
-import TabooSet from '@data/TabooSet';
-import FaqEntry from '@data/FaqEntry';
+import Card from '@data/types/Card';
+import Rule from '@data/types/Rule';
+import Database from '@data/sqlite/Database';
+import TabooSet from '@data/types/TabooSet';
+import FaqEntry from '@data/types/FaqEntry';
 
 const VERBOSE = false;
 export const syncTaboos = async function(
@@ -164,6 +164,7 @@ export const syncRules = async function(
     ]);
   });
 };
+export const NON_LOCALIZED_CARDS = new Set(['en', 'pt']);
 
 export const syncCards = async function(
   db: Database,
@@ -174,7 +175,7 @@ export const syncCards = async function(
   VERBOSE && console.log('syncCards called');
   try {
     VERBOSE && console.log('Starting sync of cards from ArkhamDB');
-    const langPrefix = lang && lang !== 'en' ? `${lang}.` : '';
+    const langPrefix = lang && !NON_LOCALIZED_CARDS.has(lang) ? `${lang}.` : '';
     const uri = `https://${langPrefix}arkhamdb.com/api/public/cards/?encounter=1`;
     const packsByCode: { [code: string]: Pack } = {};
     const cycleNames: {

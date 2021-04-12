@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { flatMap, map, partition } from 'lodash';
+import { flatMap, map, partition, uniq } from 'lodash';
 import {
   View,
 } from 'react-native';
@@ -8,7 +8,7 @@ import { t } from 'ttag';
 import SignatureCardItem from './SignatureCardItem';
 import CardDetailSectionHeader from './CardDetailSectionHeader';
 import BondedCardsComponent from './BondedCardsComponent';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import space from '@styles/space';
 import useCardList from '../useCardList';
 
@@ -24,7 +24,7 @@ export default function SignatureCardsComponent({ componentId, investigator, wid
   }, [investigator]);
   const [requiredCards, requiredCardsLoading] = useCardList(requiredCodes, 'player');
   const alternateCodes = useMemo(() => {
-    return flatMap(investigator.deck_requirements?.card || [], req => (req.alternates || []));
+    return uniq(flatMap(investigator.deck_requirements?.card || [], req => (req.alternates || [])));
   }, [investigator]);
   const [alternateCards, alternateCardsLoading] = useCardList(alternateCodes, 'player');
   if (alternateCardsLoading && requiredCardsLoading) {

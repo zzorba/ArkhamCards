@@ -1,39 +1,35 @@
 import {
-  Deck,
-  SingleCampaign,
-  CampaignGuideState,
   StandaloneId,
   STANDALONE,
   CampaignId,
 } from '@actions/types';
 import { createSelector } from 'reselect';
 import CampaignGuide from '@data/scenario/CampaignGuide';
-import Card, { CardsMap } from '@data/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import { getCampaignGuide } from '@data/scenario';
 import {
   AppState,
-  makeLatestCampaignInvestigatorsSelector,
   getLangPreference,
-  makeLatestDecksSelector,
 } from '@reducers';
 import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
-import { useCampaign, useCampaignGuideState } from '@data/hooks';
+import { useCampaign, useCampaignGuideState, useCampaignInvestigators } from '@data/hooks';
+import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
-export interface CampaignGuideReduxData {
-  campaign: SingleCampaign;
+export interface SingleCampaignGuideData {
+  campaign: SingleCampaignT;
   campaignGuide: CampaignGuide;
-  campaignState: CampaignGuideState;
-  linkedCampaignState?: CampaignGuideState;
+  campaignState: CampaignGuideStateT;
+  linkedCampaignState?: CampaignGuideStateT;
   campaignInvestigators: Card[];
-  latestDecks: Deck[];
 }
 
-const makeCampaignGuideSelector = (): (state: AppState, campaign?: SingleCampaign) => CampaignGuide | undefined =>
+const makeCampaignGuideSelector = (): (state: AppState, campaign?: SingleCampaignT) => CampaignGuide | undefined =>
   createSelector(
     (state: AppState) => getLangPreference(state),
-    (state: AppState, campaign?: SingleCampaign) => campaign?.cycleCode,
-    (state: AppState, campaign?: SingleCampaign) => campaign?.standaloneId,
+    (state: AppState, campaign?: SingleCampaignT) => campaign?.cycleCode,
+    (state: AppState, campaign?: SingleCampaignT) => campaign?.standaloneId,
     (lang: string, campaignCode?: string, standaloneId?: StandaloneId) => {
       if (!campaignCode) {
         return undefined;
@@ -45,19 +41,20 @@ const makeCampaignGuideSelector = (): (state: AppState, campaign?: SingleCampaig
     }
   );
 
-export function useCampaignGuideReduxData(campaignId: CampaignId, investigators?: CardsMap): CampaignGuideReduxData | undefined {
-  const campaign = useCampaign(campaignId);
+export function useSingleCampaignGuideData(
+  campaignId: CampaignId,
+  investigators: undefined | CardsMap,
+  live: boolean
+): SingleCampaignGuideData | undefined {
+  const campaign = useCampaign(campaignId, live);
+  const [campaignInvestigators] = useCampaignInvestigators(campaign, investigators);
 
   const campaignGuideSelector = useMemo(makeCampaignGuideSelector, []);
-  const latestCampaignInvestigatorsSelector = useMemo(makeLatestCampaignInvestigatorsSelector, []);
-  const latestDecksSelector = useMemo(makeLatestDecksSelector, []);
-
   const campaignGuide = useSelector((state: AppState) => campaignGuideSelector(state, campaign));
-  const campaignInvestigators = useSelector((state: AppState) => latestCampaignInvestigatorsSelector(state, investigators, campaign));
-  const campaignState = useCampaignGuideState(campaignId);
-  const latestDecks = useSelector((state: AppState) => latestDecksSelector(state, campaign));
 
-  const linkedCampaignState = useCampaignGuideState(campaign?.linkedCampaignUuid ? { ...campaignId, campaignId: campaign.linkedCampaignUuid } : undefined);
+  const campaignState = useCampaignGuideState(campaignId, live);
+  const linkedCampaignState = useCampaignGuideState(campaign?.linkedCampaignId, false);
+
   return useMemo(() => {
     if (!campaign) {
       return undefined;
@@ -70,8 +67,7 @@ export function useCampaignGuideReduxData(campaignId: CampaignId, investigators?
       campaignGuide,
       campaignState,
       linkedCampaignState,
-      latestDecks,
       campaignInvestigators,
     };
-  }, [campaign, campaignGuide, campaignState, linkedCampaignState, latestDecks, campaignInvestigators]);
+  }, [campaign, campaignGuide, campaignState, linkedCampaignState, campaignInvestigators]);
 }

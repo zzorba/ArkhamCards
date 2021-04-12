@@ -8,6 +8,7 @@ import {
 import { useSelector } from 'react-redux';
 import { c, t } from 'ttag';
 
+import localizedTraits from './localizedTraits';
 import FactionChooser from './FactionChooser';
 import XpChooser from './XpChooser';
 import SkillIconChooser from './SkillIconChooser';
@@ -23,18 +24,19 @@ import { NavigationProps } from '@components/nav/types';
 import useFilterFunctions, { FilterFunctionProps } from '../useFilterFunctions';
 import FixedSetChooserButton from '../FixedSetChooserButton';
 import { slotsTranslations } from '../CardAssetFilterView';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 function rangeText(name: string, values: [number, number]) {
   if (values[0] === values[1]) {
-    return `${name}(${values[0]})`;
+    return `${name} (${values[0]})`;
   }
-  return `${name}(${values[0]}-${values[1]})`;
+  return `${name} (${values[0]}-${values[1]})`;
 }
 function listText(name: string, values: string[], translations?: { [key: string]: string }) {
   if (translations) {
-    return `${name}(${map(values, item => translations[item]).join(', ')})`;
+    return `${name} (${map(values, item => translations[item]).join(', ')})`;
   }
-  return `${name}(${values.join(', ')})`;
+  return `${name} (${values.join(', ')})`;
 }
 
 function splitTraits(value: string): string[] {
@@ -44,6 +46,7 @@ function splitTraits(value: string): string[] {
 export type CardFilterProps = FilterFunctionProps;
 
 const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
+  const { useCardTraits } = useContext(LanguageContext);
   const {
     filters,
     defaultFilterState,
@@ -71,7 +74,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     pushFilterView('SearchFilters.Location');
   }, [pushFilterView]);
   const {
-    packs,
+    packNames,
     enemyElite,
     enemyNonElite,
     enemyHunter,
@@ -94,6 +97,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     enemyFight,
     enemyEvadeEnabled,
     enemyEvade,
+    enemySwarm,
     shroud,
     shroudEnabled,
     clues,
@@ -135,10 +139,10 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
   } = filters;
 
   const selectedPacksText = useMemo(() => {
-    if (!allPacks || !packs || !allPacks.length || !packs.length) {
+    if (!allPacks || !packNames || !allPacks.length || !packNames.length) {
       return t`Packs: All`;
     }
-    const selectedPackNames = new Set(packs);
+    const selectedPackNames = new Set(packNames);
     const cyclePackCounts: { [code: string]: number } = {};
     const selectedCyclePackCounts: { [code: string]: number } = {};
     const cycleNames: { [code: string]: string } = {};
@@ -166,7 +170,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
 
     const parts: string[] = [];
     forEach(completeCycles, cycle_position => {
-      parts.push(t`${cycleNames[cycle_position]} Cycle`);
+      parts.push(c('filter').t`${cycleNames[cycle_position]} Cycle`);
     });
     const partialCyclesSet = new Set(partialCycles);
     forEach(selectedPacks, pack => {
@@ -176,7 +180,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     });
     const allPacksString = parts.join(', ');
     return t`Packs: ${allPacksString}`;
-  }, [packs, allPacks]);
+  }, [packNames, allPacks]);
 
   const enemyFilterText = useMemo(() => {
     const parts = [];
@@ -212,6 +216,9 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     }
     if (enemyMassive) {
       parts.push(t`Massive`);
+    }
+    if (enemySwarm) {
+      parts.push(t`Swarm`);
     }
     if (enemyHealthEnabled) {
       if (enemyHealthPerInvestigator) {
@@ -249,6 +256,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     enemySpawn,
     enemyPrey,
     enemyAloof,
+    enemySwarm,
     enemyMassive,
     enemyHealthEnabled,
     enemyHealth,
@@ -466,7 +474,8 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
         <FilterChooserButton
           title={t`Traits`}
           componentId={componentId}
-          field="traits"
+          field={useCardTraits ? 'traits' : 'real_traits'}
+          fixedTranslations={useCardTraits ? localizedTraits : undefined}
           processValue={splitTraits}
           selection={traits}
           setting="traits"
@@ -563,7 +572,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
         query={baseQuery}
         tabooSetId={tabooSetId}
       />
-      { (packs.length > 0 || allPacks.length > 1) && (
+      { (packNames.length > 0 || allPacks.length > 1) && (
         <NavButton
           text={selectedPacksText}
           onPress={onPacksPress}

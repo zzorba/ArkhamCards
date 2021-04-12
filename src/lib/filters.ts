@@ -1,7 +1,7 @@
 import { findIndex, forEach, map } from 'lodash';
 
-import { QueryParams } from '@data/types';
-import { BASIC_QUERY, combineQueries, combineQueriesOpt, where } from '@data/query';
+import { QueryParams } from '@data/sqlite/types';
+import { BASIC_QUERY, combineQueries, combineQueriesOpt, where } from '@data/sqlite/query';
 import { SKILLS, FactionCodeType, CARD_FACTION_CODES } from '@app_constants';
 import { Brackets } from 'typeorm/browser';
 
@@ -56,7 +56,8 @@ export interface FilterState {
   actions: string[];
   skillModifiers: SkillModifierFilters;
   skillModifiersEnabled: boolean;
-  packs: string[];
+  packCodes: string[];
+  packNames: string[];
   cycleNames: string[];
   slots: string[];
   encounters: string[];
@@ -145,7 +146,8 @@ export const defaultFilterState: FilterState = {
     agility: false,
   },
   skillModifiersEnabled: false,
-  packs: [],
+  packCodes: [],
+  packNames: [],
   cycleNames: [],
   slots: [],
   encounters: [],
@@ -288,7 +290,7 @@ export default class FilterBuilder {
     const traits_field = localizedTraits ? 'traits_normalized' : 'real_traits_normalized';
     return this.complexVectorClause(
       'trait',
-      map(traits, trait => `%#${trait}#%`),
+      map(traits, trait => `%#${trait.toLowerCase()}#%`),
       (valueName: string) => `c.${traits_field} LIKE :${valueName} OR (linked_card.${traits_field} is not null AND linked_card.${traits_field} LIKE :${valueName})`
     );
   }
@@ -541,7 +543,6 @@ export default class FilterBuilder {
     return [];
   }
 
-
   playerCardFilters(filters: FilterState): Brackets[] {
     const {
       uses,
@@ -635,7 +636,7 @@ export default class FilterBuilder {
         ...this.equalsVectorClause(filters.types, 'type_code'),
         ...this.equalsVectorClause(filters.subTypes, 'subtype_code'),
         ...this.playerCardFilters(filters),
-        ...this.equalsVectorClause(filters.packs, 'pack_name'),
+        ...this.equalsVectorClause(filters.packCodes, 'pack_code'),
         ...this.equalsVectorClause(filters.encounters, 'encounter_name'),
         ...this.equalsVectorClause(filters.illustrators, 'illustrator'),
         ...this.miscFilter(filters),

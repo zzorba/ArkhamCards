@@ -1,10 +1,10 @@
 import { concat, forEach, map, filter } from 'lodash';
 
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { CardFilterData, FilterState, defaultFilterState } from '@lib/filters';
-import Database from '@data/Database';
+import Database from '@data/sqlite/Database';
 import { Brackets } from 'typeorm/browser';
-import { tabooSetQuery } from '@data/query';
+import { tabooSetQuery } from '@data/sqlite/query';
 import { CARD_FACTION_CODES } from '@app_constants';
 
 function update(value: number | undefined | null, minMax: [number, number]): [number, number] {

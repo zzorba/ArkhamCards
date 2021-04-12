@@ -15,8 +15,8 @@ import { t } from 'ttag';
 
 import { DISSONANT_VOICES_LOGIN, Pack } from '@actions/types';
 import { clearDecks } from '@actions';
-import DatabaseContext from '@data/DatabaseContext';
-import Card from '@data/Card';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
+import Card from '@data/types/Card';
 import { getBackupData, getAllPacks, getLangChoice, AppState } from '@reducers';
 import { fetchCards } from '@components/card/actions';
 import SettingsItem from './SettingsItem';

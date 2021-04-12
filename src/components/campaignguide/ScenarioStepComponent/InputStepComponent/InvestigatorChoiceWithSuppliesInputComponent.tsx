@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import { find } from 'lodash';
-import { c, t } from 'ttag';
+import { c } from 'ttag';
 
 import ChooseInvestigatorPrompt from '../../prompts/ChooseInvestigatorPrompt';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import {
   InputStep,
   InvestigatorChoiceWithSuppliesInput,

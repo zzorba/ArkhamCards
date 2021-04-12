@@ -1,0 +1,274 @@
+
+
+mutation insertNewDeck(
+  $arkhamdb_id: Int,
+  $local_uuid: String,
+  $campaign_id: Int!,
+  $investigator: String!,
+  $content: jsonb!,
+  $content_hash: String!,
+  $userId: String!
+) {
+  insert_campaign_deck_one(
+    object: {
+      arkhamdb_id: $arkhamdb_id
+      local_uuid: $local_uuid
+      campaign_id: $campaign_id
+      investigator: $investigator
+      content: $content
+      content_hash: $content_hash
+      owner_id: $userId
+      base: true
+    }
+  ) {
+    ...LatestDeck
+  }
+}
+
+mutation insertNextLocalDeck(
+  $previous_local_uuid: String,
+  $local_uuid: String,
+  $campaign_id: Int!,
+  $investigator: String!,
+  $content: jsonb!,
+  $content_hash: String!,
+  $userId: String!
+) {
+  insert_campaign_deck_one(
+    object: {
+      local_uuid: $previous_local_uuid
+      investigator: $investigator
+      campaign_id: $campaign_id
+      owner_id: $userId
+      next_deck: {
+        data: {
+          local_uuid: $local_uuid
+          campaign_id: $campaign_id
+          investigator: $investigator
+          content: $content
+          content_hash: $content_hash
+          owner_id: $userId
+        }
+      }
+    }
+    on_conflict: {
+      constraint: deck_local_uuid_campaign_id_key
+      update_columns: [next_deck_id]
+    }
+  ) {
+    ...IdDeck
+    investigator
+    next_deck {
+      ...LatestDeck
+	  }
+  }
+}
+
+mutation insertNextArkhamDbDeck(
+  $previous_arkhamdb_id: Int!,
+  $arkhamdb_id: Int!,
+  $campaign_id: Int!,
+  $investigator: String!,
+  $content: jsonb!,
+  $content_hash: String!,
+  $userId: String!
+) {
+  insert_campaign_deck_one(
+    object: {
+      arkhamdb_id: $previous_arkhamdb_id
+      investigator: $investigator
+      campaign_id: $campaign_id
+      owner_id: $userId
+      next_deck: {
+        data: {
+          arkhamdb_id: $arkhamdb_id
+          campaign_id: $campaign_id
+          investigator: $investigator
+          content: $content
+          content_hash: $content_hash
+          owner_id: $userId
+        }
+      }
+    }
+    on_conflict: {
+      constraint: deck_arkhamdb_id_campaign_id_key
+      update_columns: [next_deck_id]
+    }
+  ) {
+    ...IdDeck
+    investigator
+    next_deck {
+      ...LatestDeck
+	  }
+  }
+}
+
+mutation updateArkhamDbDeck(
+  $arkhamdb_id: Int!,
+  $campaign_id: Int!,
+  $content: jsonb!,
+  $content_hash: String!
+) {
+  update_campaign_deck(
+    where: {
+      arkhamdb_id: { _eq: $arkhamdb_id }
+      campaign_id: { _eq: $campaign_id }
+    }
+  	_set: {
+      content: $content
+      content_hash: $content_hash
+    }
+  ) {
+    affected_rows
+    returning {
+      ...IdDeck
+      content
+      content_hash
+    }
+  }
+}
+mutation updateLocalDeck(
+  $local_uuid: String!,
+  $campaign_id: Int!,
+  $content: jsonb!,
+  $content_hash: String!
+) {
+  update_campaign_deck(
+    where: {
+      local_uuid: { _eq: $local_uuid }
+      campaign_id: { _eq: $campaign_id }
+    }
+  	_set: {
+      content: $content
+      content_hash: $content_hash
+    }
+  ) {
+    affected_rows
+    returning {
+      ...IdDeck
+      content
+      content_hash
+    }
+  }
+}
+
+mutation deleteAllLocalDecks(
+  $local_uuid: String!,
+  $campaign_id: Int!
+) {
+  delete_campaign_deck(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      other_decks: {
+        local_uuid: { _eq: $local_uuid }
+      }
+    }
+  ) {
+    affected_rows
+    returning {
+      ...IdDeck
+    }
+  }
+}
+
+
+mutation deleteAllArkhamDbDecks(
+  $arkhamdb_id: Int!,
+  $campaign_id: Int!
+) {
+  delete_campaign_deck(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      other_decks: {
+        arkhamdb_id: { _eq: $arkhamdb_id }
+      }
+    }
+  ) {
+    affected_rows
+    returning {
+      ...IdDeck
+    }
+  }
+}
+
+mutation deleteLocalDeck(
+  $local_uuid: String!,
+  $campaign_id: Int!
+) {
+  delete_campaign_deck(
+    where: {
+      local_uuid: { _eq: $local_uuid }
+      campaign_id: { _eq: $campaign_id }
+    }
+  ) {
+    affected_rows
+    returning {
+      ...IdDeck
+      previous_deck {
+        ...LatestDeck
+      }
+    }
+  }
+}
+
+mutation deleteArkhamDbDeck(
+  $arkhamdb_id: Int!,
+  $campaign_id: Int!
+) {
+  delete_campaign_deck(
+    where: {
+      arkhamdb_id: { _eq: $arkhamdb_id }
+      campaign_id: { _eq: $campaign_id }
+    }
+  ) {
+    affected_rows
+    returning {
+      ...IdDeck
+      previous_deck {
+        ...LatestDeck
+      }
+    }
+  }
+}
+
+query getMyDecks(
+  $userId: String!
+) {
+  users_by_pk(id: $userId) {
+    id
+    decks {
+      deck {
+        ...LatestDeck
+      }
+    }
+    all_decks {
+      ...AllDeck
+    }
+  }
+}
+
+
+query getLatestCampaignDeck(
+  $campaign_id: Int!,
+  $id_exp: campaign_deck_bool_exp!
+) {
+	campaign_deck(
+    where: {
+    	_and: [
+      	{ campaign_id: { _eq: $campaign_id } },
+        $id_exp
+      ]
+    }
+  ) {
+    ...LatestDeck
+  }
+}
+
+query getLatestDeck(
+  $deckId: Int!
+) {
+  campaign_deck_by_pk(id: $deckId) {
+    ...LatestDeck
+  }
+}
+

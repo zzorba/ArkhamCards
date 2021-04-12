@@ -10,8 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import Database from '@data/Database';
-import DatabaseContext from '@data/DatabaseContext';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { fetchCards, dismissUpdatePrompt } from './actions';
 import { AppState } from '@reducers';
 import { localizedName, getSystemLanguage } from '@lib/i18n';
@@ -26,23 +25,7 @@ const REPROMPT_DAYS = 3;
 const REFETCH_SECONDS = REFETCH_DAYS * 24 * 60 * 60;
 const REPROMPT_SECONDS = REPROMPT_DAYS * 24 * 60 * 60;
 
-interface ReduxProps {
-  loading?: boolean;
-  error?: string;
-  currentCardLang: string;
-  choiceLang: string;
-  useSystemLang: boolean;
-  fetchNeeded?: boolean;
-  dateFetched?: number;
-  dateUpdatePrompt?: number;
-}
-
 let CHANGING_LANGUAGE = false;
-
-interface ReduxActionProps {
-  fetchCards: (db: Database, cardLang: string, choiceLang: string) => void;
-  dismissUpdatePrompt: () => void;
-}
 
 interface Props {
   promptForUpdate?: boolean;

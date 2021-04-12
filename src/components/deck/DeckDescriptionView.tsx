@@ -12,12 +12,12 @@ import { Navigation } from 'react-native-navigation';
 import ActionButton from 'react-native-action-button';
 
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
-import { useFlag, useKeyboardHeight, useTabooSetId } from '@components/core/hooks';
+import { useComponentDidDisappear, useFlag, useKeyboardHeight, useTabooSetId } from '@components/core/hooks';
 import { useDeckEditState, useParsedDeck } from './hooks';
 import CardTextComponent from '@components/card/CardTextComponent';
 import space, { s, xs } from '@styles/space';
 import { openUrl } from '@components/nav/helper';
-import DatabaseContext from '@data/DatabaseContext';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { NavigationProps } from '@components/nav/types';
 import AppIcon from '@icons/AppIcon';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
@@ -37,9 +37,9 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
   const textInputRef = useRef<TextInput>(null);
   const dispatch = useDispatch();
   const tabooSetId = useTabooSetId();
-  const parsedDeckObj = useParsedDeck(id, 'DeckDescription', componentId);
+  const parsedDeckObj = useParsedDeck(id, componentId);
   const { mode } = useDeckEditState(parsedDeckObj);
-  const { deck, deckEdits, parsedDeck, editable } = parsedDeckObj;
+  const { deck, deckEdits, parsedDeck } = parsedDeckObj;
   const factionColor = useMemo(() => colors.faction[parsedDeck?.investigator.factionCode() || 'neutral'].background, [parsedDeck, colors.faction]);
   const [description, setDescription] = useState(deckEdits?.descriptionChange || deck?.description_md || '');
   useEffect(() => {
@@ -62,6 +62,11 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
     }
     Navigation.pop(componentId);
   }, [edit, id, description, dispatch, componentId]);
+  useComponentDidDisappear(() => {
+    if (edit) {
+      dispatch(setDeckDescription(id, description));
+    }
+  }, componentId, [edit, id, description]);
   const hasDescriptionChange = description !== (deck?.description_md || '');
   const [keyboardHeight] = useKeyboardHeight();
   const onEdit = useCallback(() => {
@@ -113,7 +118,7 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
           onPress={backPressed}
           yOffset={Platform.OS === 'ios' ? keyboardHeight : undefined} />
       ) }
-      { !!editable && fab }
+      { !!deckEdits?.editable && fab }
     </View>
   );
 }

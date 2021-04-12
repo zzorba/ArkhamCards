@@ -6,34 +6,33 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { filter, map } from 'lodash';
+import { filter } from 'lodash';
 import { NetInfoStateType } from '@react-native-community/netinfo';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { refreshMyDecks } from '@actions';
 import useNetworkStatus from '@components/core/useNetworkStatus';
-import { Deck, DeckId } from '@actions/types';
-import Card from '@data/Card';
+import { CampaignId, Deck } from '@actions/types';
+import Card from '@data/types/Card';
 import DeckListComponent from '@components/decklist/DeckListComponent';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import COLORS from '@styles/colors';
 import space, { s, xs } from '@styles/space';
-import { getAllDecks, getMyDecksState, getDeckToCampaignMap, getDeck } from '@reducers';
+import { getDeckToCampaignMap } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
+import { useMyDecks } from '@data/hooks';
+import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 interface OwnProps {
   componentId: string;
-  deckClicked: (deck: Deck, investigator?: Card) => void;
-  onlyDeckIds?: DeckId[];
-  onlyInvestigators?: string[];
-  filterDeckIds?: DeckId[];
-  filterInvestigators?: string[];
+  deckClicked: (deck: Deck, investigator: Card | undefined, campaign: CampaignId | undefined) => void;
+  onlyDecks?: MiniDeckT[];
+  filterDeck?: (deck: MiniDeckT) => boolean;
   searchOptions?: SearchOptions;
   customFooter?: ReactNode;
 }
@@ -42,34 +41,27 @@ type Props = OwnProps & LoginStateProps;
 
 function MyDecksComponent({
   deckClicked,
-  onlyDeckIds,
-  onlyInvestigators,
-  filterDeckIds = [],
-  filterInvestigators = [],
+  onlyDecks,
+  filterDeck,
   searchOptions,
   customFooter,
   login,
   signedIn,
+  deckActions,
 }: Props) {
   const [{ networkType, isConnected }] = useNetworkStatus();
   const { typography, width } = useContext(StyleContext);
-  const dispatch = useDispatch();
   const reLogin = useCallback(() => {
     login();
   }, [login]);
-  const decks = useSelector(getAllDecks);
   const deckToCampaign = useSelector(getDeckToCampaignMap);
-  const {
+  const [{
     myDecks,
     myDecksUpdated,
     refreshing,
     error,
-  } = useSelector(getMyDecksState);
-  const onRefresh = useCallback(() => {
-    if (!refreshing) {
-      dispatch(refreshMyDecks());
-    }
-  }, [dispatch, refreshing]);
+  }, onRefresh] = useMyDecks(deckActions);
+
 
   useEffect(() => {
     const now = new Date();
@@ -165,16 +157,8 @@ function MyDecksComponent({
   }, [searchOptions, errorLine]);
 
   const deckIds = useMemo(() => {
-    const onlyInvestigatorSet = onlyInvestigators ? new Set(onlyInvestigators) : undefined;
-    const filterDeckIdsSet = new Set(map(filterDeckIds, id => id.uuid));
-    const filterInvestigatorsSet = new Set(filterInvestigators);
-    return filter(onlyDeckIds || myDecks, deckId => {
-      const deck = getDeck(decks, deckId);
-      return !filterDeckIdsSet.has(deckId.uuid) && (
-        !deck || !filterInvestigatorsSet.has(deck.investigator_code)
-      ) && (!deck || !onlyInvestigatorSet || onlyInvestigatorSet.has(deck.investigator_code));
-    });
-  }, [onlyInvestigators, onlyDeckIds, filterDeckIds, filterInvestigators, myDecks, decks]);
+    return filter(onlyDecks || myDecks, deckId => !filterDeck || filterDeck(deckId));
+  }, [filterDeck, onlyDecks, myDecks]);
   return (
     <DeckListComponent
       searchOptions={searchOptions}

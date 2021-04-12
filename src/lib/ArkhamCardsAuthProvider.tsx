@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { EventEmitter } from 'events';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import database from '@react-native-firebase/database';
 
 import { ENABLE_ARKHAM_CARDS_ACCOUNT } from '@app_constants';
 import ArkhamCardsAuthContext from './ArkhamCardsAuthContext';
@@ -10,8 +11,18 @@ interface Props {
 }
 
 let eventListener: EventEmitter | null = null;
-let currentUser: FirebaseAuthTypes.User | undefined = undefined;
+export let currentUser: FirebaseAuthTypes.User | undefined = undefined;
+
 let currentUserLoading: boolean = true;
+
+export async function getAuthToken(): Promise<string | undefined> {
+  if (!currentUser) {
+    console.log('***********');
+    console.log('trying to get token with no user.');
+    return undefined;
+  }
+  return await currentUser.getIdToken();
+}
 
 interface State {
   user?: FirebaseAuthTypes.User;
@@ -31,10 +42,30 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
         // We only want to listen to this once, hence the singleton pattern.
         eventListener = new EventEmitter();
         eventListener.addListener('onAuthStateChanged', authUserChanged);
-        const callback = (user: FirebaseAuthTypes.User | null) => {
+        const callback = async(user: FirebaseAuthTypes.User | null) => {
           currentUserLoading = false;
           currentUser = user || undefined;
-          eventListener?.emit('onAuthStateChanged', currentUser);
+          if (user) {
+            const idTokenReuslt = await user.getIdTokenResult();
+            const hasuraClaims = idTokenReuslt.claims['https://hasura.io/jwt/claims'];
+            if (hasuraClaims) {
+              eventListener?.emit('onAuthStateChanged', currentUser);
+            } else {
+              console.log('No Hasura');
+              // Check if refresh is required.
+              const metadataRef = database().ref(`metadata/${user.uid}/refreshTime`);
+              metadataRef.on('value', async(data) => {
+                if (!data.exists) {
+                  eventListener?.emit('onAuthStateChanged', currentUser);
+                  return;
+                }
+                // Force refresh to pick up the latest custom claims changes.
+                eventListener?.emit('onAuthStateChanged', currentUser);
+              });
+            }
+          } else {
+            eventListener?.emit('onAuthStateChanged', currentUser);
+          }
         };
         auth().onAuthStateChanged(callback);
       } else {

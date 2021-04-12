@@ -4,7 +4,7 @@ import { c, t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import MultiPickerComponent from '@components/core/MultiPickerComponent';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 
 interface Props {
   choices?: string[];

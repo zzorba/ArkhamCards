@@ -5,15 +5,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { pick } from 'lodash';
 import { t, ngettext, msgid } from 'ttag';
 
-import DatabaseContext from '@data/DatabaseContext';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { getFilterState, getDefaultFilterState, AppState, getCardFilterData } from '@reducers';
 import FilterBuilder, { CardFilterData, DefaultCardFilterData, FilterState, defaultFilterState as DefaultFilterState } from '@lib/filters';
-import { combineQueriesOpt } from '@data/query';
+import { combineQueriesOpt } from '@data/sqlite/query';
 import deepDiff from 'deep-diff';
 import StyleContext from '@styles/StyleContext';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import { clearFilters, toggleFilter, updateFilter } from './actions';
 import { NavigationProps } from '@components/nav/types';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 export interface FilterFunctionProps {
   filterId: string;
@@ -49,6 +50,7 @@ export default function useFilterFunctions({
 }: WithFilterFunctionsOptions): FilterFunctions {
   const { db } = useContext(DatabaseContext);
   const { colors } = useContext(StyleContext);
+  const { useCardTraits } = useContext(LanguageContext);
   const currentFilters = useSelector<AppState, FilterState | undefined>(state => getFilterState(state, filterId));
   const defaultFilterState = useSelector<AppState, FilterState | undefined>(state => getDefaultFilterState(state, filterId));
   const cardFilterData = useSelector<AppState, CardFilterData | undefined>(state => getCardFilterData(state, filterId));
@@ -73,7 +75,7 @@ export default function useFilterFunctions({
   const [count, setCount] = useState(0);
   useEffect(() => {
     const filterParts: Brackets | undefined =
-      currentFilters && new FilterBuilder('filters').filterToQuery(currentFilters, true);
+      currentFilters && new FilterBuilder('filters').filterToQuery(currentFilters, useCardTraits);
     db.getCardCount(
       combineQueriesOpt(
         [
@@ -84,7 +86,7 @@ export default function useFilterFunctions({
       ),
       tabooSetId
     ).then(count => setCount(count));
-  }, [currentFilters, baseQuery, tabooSetId, db]);
+  }, [currentFilters, baseQuery, tabooSetId, db, useCardTraits]);
   useEffect(() => {
     Navigation.mergeOptions(componentId, {
       topBar: {

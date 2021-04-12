@@ -1,10 +1,10 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import DrawChaosBagComponent from './DrawChaosBagComponent';
-import { updateCampaign } from '@components/campaign/actions';
+import { updateCampaignChaosBag } from '@components/campaign/actions';
 import { NavigationProps } from '@components/nav/types';
 import { ChaosBag } from '@app_constants';
 import COLORS from '@styles/colors';
@@ -13,8 +13,8 @@ import { AppState, makeCampaignChaosBagSelector } from '@reducers';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import { CampaignId } from '@actions/types';
 import { showChaosBagOddsCalculator } from './nav';
-import Card from '@data/Card';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import Card from '@data/types/Card';
+import { useSetCampaignChaosBag } from '@data/remote/campaigns';
 
 export interface CampaignDrawChaosBagProps {
   campaignId: CampaignId;
@@ -25,13 +25,12 @@ type Props = NavigationProps & CampaignDrawChaosBagProps;
 
 function CampaignDrawChaosBagView({ componentId, campaignId, allInvestigators }: Props) {
   const chaosBagSelector = useMemo(makeCampaignChaosBagSelector, []);
-  const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
   const chaosBag = useSelector((state: AppState) => chaosBagSelector(state, campaignId.campaignId));
-
+  const setCampaignChaosBag = useSetCampaignChaosBag();
   const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
-    dispatch(updateCampaign(user, campaignId, { chaosBag }));
-  }, [dispatch, campaignId, user]);
+    dispatch(updateCampaignChaosBag(setCampaignChaosBag, campaignId, chaosBag));
+  }, [dispatch, setCampaignChaosBag, campaignId]);
 
   const showEditChaosBagDialog = useCallback(() => {
     Navigation.push<EditChaosBagProps>(componentId, {

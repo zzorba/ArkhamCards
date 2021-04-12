@@ -3,12 +3,12 @@ import { t } from 'ttag';
 
 import { CampaignId } from '@actions/types';
 import { useCountDialog } from '@components/deck/dialogs';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 
-export function useCampaignId(campaignId: CampaignId): [CampaignId, (serverId: string) => void] {
+export function useCampaignId(campaignId: CampaignId): [CampaignId, (serverId: number) => void] {
   const [liveCampaignId, setLiveCampaignId] = useState(campaignId);
   const setServerId = useCallback(
-    (serverId: string) => setLiveCampaignId({ campaignId: campaignId.campaignId, serverId }),
+    (serverId: number) => setLiveCampaignId({ campaignId: campaignId.campaignId, serverId }),
     [setLiveCampaignId, campaignId.campaignId]
   );
   return [liveCampaignId, setServerId];

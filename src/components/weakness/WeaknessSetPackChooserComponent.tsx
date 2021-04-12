@@ -3,7 +3,7 @@ import { filter, forEach, map, uniqBy } from 'lodash';
 import { useSelector } from 'react-redux';
 
 import PackListComponent from '@components/core/PackListComponent';
-import { BASIC_WEAKNESS_QUERY } from '@data/query';
+import { BASIC_WEAKNESS_QUERY } from '@data/sqlite/query';
 import { AppState } from '@reducers';
 import { useToggles, useWeaknessCards } from '@components/core/hooks';
 

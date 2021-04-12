@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 import CardCostIcon, { costIconSize } from '@components/core/CardCostIcon';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { SKILLS, SkillCodeType } from '@app_constants';
 import { rowHeight, iconSize } from './constants';
 import space, { s, xs } from '@styles/space';

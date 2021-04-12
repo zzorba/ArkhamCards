@@ -6403,7 +6403,7 @@
     },
     {
       "id": "found_nigel_engram",
-      "text": "Запишите в журнал кампании, что <i>вы нашли Найджела Энграма<i>. Каждый сыщик получает 1 ментальную травму в результате ужасного открытия. Каждый сыщик получает 2 опыта дополнительно, многое узнав о происках Короля в лохмотьях.",
+      "text": "Запишите в журнал кампании, что <i>вы нашли Найджела Энграма</i>. Каждый сыщик получает 1 ментальную травму в результате ужасного открытия. Каждый сыщик получает 2 опыта дополнительно, многое узнав о происках Короля в лохмотьях.",
       "effects": [
         {
           "type": "campaign_log",
@@ -19523,7 +19523,7 @@
     },
     {
       "id": "found_nigel_engram",
-      "text": "Запишите в журнал кампании, что <i>вы нашли Найджела Энграма<i>. Каждый сыщик получает 1 ментальную травму в результате ужасного открытия. Каждый сыщик получает 2 опыта дополнительно, многое узнав о происках Короля в лохмотьях.",
+      "text": "Запишите в журнал кампании, что <i>вы нашли Найджела Энграма</i>. Каждый сыщик получает 1 ментальную травму в результате ужасного открытия. Каждый сыщик получает 2 опыта дополнительно, многое узнав о происках Короля в лохмотьях.",
       "effects": [
         {
           "type": "campaign_log",
@@ -42263,7 +42263,8 @@
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "tes_escaped_brotherhood",
-                "text": "Сбежавшие агенты Братства: #name#"
+                "text": "Сбежавшие агенты Братства: #name#",
+                "cards": "$input_value"
               }
             ]
           }
@@ -45237,6 +45238,10 @@
   "steps": [
     {
       "id": "pre_intro",
+      "narration": {
+        "id": "the_circle_undone.disappearance_at_the_twilight_estate.prologue",
+        "name": "Prologue"
+      },
       "type": "story",
       "text": "22 ноября 1925 года, воскресенье. Аркхэм, штат Массачусетс.\nПрошёл уже месяц после кануна Дня всех Святых, но город всё ещё охвачен мрачной меланхолией. Каждое утро улицы окутывает густой туман. Ночи становятся не только длиннее, но и темнее — многие горожане готовы в этом поклясться. Но несмотря на дух уныния, жизнь в сонном Аркхэме идёт своим чередом. Респектабельные жители города воодушевлены избранием Натаниэля Роудса в Сенат США и с оптимизмом смотрят в будущее Аркхэма. А сегодня вечером человек по имени Джозеф Майгер устраивает в своём богатом особняке во Френч-Хилле благотворительный вечер Ложи Серебряных Сумерек — ежегодное закрытое мероприятие, которое на этот раз будет стоить жизни нескольким участникам…"
     },
@@ -45298,8 +45303,8 @@
     {
       "id": "intro",
       "narration": {
-        "id": "the_circle_undone.disappearance_at_the_twilight_estate.prologue",
-        "name": "Prologue"
+        "id": "the_circle_undone.disappearance_at_the_twilight_estate.intro",
+        "name": "Intro"
       },
       "type": "story",
       "text": "«Дамы и господа, — объявляет Джозеф Майгер, поднимая бокал. Постепенно шум стихает, и остаётся слышен лишь треск камина да шёпот сплетен. — Позвольте приветствовать вас в моём доме на очередном ежегодном благотворительном вечере. Сегодня здесь присутствуют очень уважаемые горожане. Благодарю вас всех за ваш упорный труд и щедрость». Одобрительный гул заполняет комнату. Многие гости поднимают бокалы за Валентино, одного из самых высокочтимых членов Ложи в этом году, который сегодня занимает место почётного гостя, ближе всех к камину. \nДжером, помощник Джозефа, сливается со стеной, поглядывая на карманные часы. В другом углу комнаты главная экономка Пенни ходит между столами, наполняя пустые бокалы и собирая грязные тарелки. «Каждый из вас совершил великие дела во имя Ложи Серебряных Сумерек и нашего древнего города, — продолжает Джозеф. — В следующем году мы продолжим нести это бремя и делать, что должно, на благо прогресса». Джером бесшумно шагает вперёд, прерывая речь с той непринуждённой уверенностью, что возникает за годы безупречной службы. Он слегка касается плеча Джозефа и показывает ему часы. «Но боюсь, моё время вышло. Большое спасибо за то, что пришли», — Джозеф завершает речь и кланяется. Под вежливые аплодисменты хозяин и его помощник быстрыми шагами направляются в сторону вестибюля. Пара слуг принимают пальто у запоздалых гостей, а Гавриэла, начальница охраны Джозефа, крепко стиснув зубы, внимательно наблюдает за входной дверью. «Мистер Сэнфорд прибыл?» — кратко осведомляется Джозеф, постукивая по паркету блестящей кожаной туфлей.\n«Боюсь, что нет, — отвечает Джером, просматривая последние страницы гостевой книги особняка. — Но должен быть здесь с минуты на минуту, мистер Майгер».\n«Хорошо. Когда он появится, не должно возникнуть никаких проблем. Понятно? — обращается Джозеф к Гавриэле. — Убедитесь, что он под надёжной охраной». Гавриэла кивает, похлопывая по плечевой кобуре с пистолетом 45-го калибра. Джозеф снова обращается к помощнику: «И пусть Пенни проследит, чтобы горячее не остыло, пока мы ждём мистера Сэнфорда. Без него никому не подавать ни единой порции».\n«Даже мистеру Ривасу, сэр?» — уточняет Джером, глядя на Джозефа поверх очков с толстыми стёклами. Джозеф задумывается.\n«Налейте мистеру Ривасу ещё бокал. Уверен, он не будет жаловаться. Кстати, я всё ещё жду отчёты, о которых говорил сегодня. Не забудь», — Джозеф хлопает помощника по плечу и возвращается в банкетный зал. Джером покорно кивает и идёт наверх.\nВскоре придёт тёмная мгла, и всё изменится."
@@ -46964,7 +46969,7 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "check_carl_sanford_possesses_the_secrets_of_the_universe",
+        "id": "carl_sanford_possesses_the_secrets_of_the_universe",
         "options": [
           {
             "boolCondition": true,
@@ -47068,7 +47073,7 @@
   "id": "the_inner_circle",
   "type": "interlude",
   "scenario_name": "Внутренний круг",
-  "full_name": "Interlude III: The Inner Circle",
+  "full_name": "Интерлюдия III: Внутренний круг",
   "header": "Интерлюдия III",
   "icon": "trapped_spirits",
   "setup": [
@@ -47084,7 +47089,7 @@
         "name": "The Inner Circle 1"
       },
       "type": "story",
-      "text": "You have been brought deep into the inner sanctum, where only the highest-ranking members of the Lodge are allowed. Mr. Sanford explains that the Order of the Silver Twilight is far older and more important than the public-facing Silver Twilight Lodge, and that their knowledge extends into the realm of the arcane and the obscure. “For many decades, the Order of the Silver Twilight has pursued knowledge that can elevate humanity. We have defended against threats to our very existence. We have sacrificed everything for this sacred cause. Now, one of these threats terrorizes our city, and we are the only ones who can stop it. You know the creature I speak of.” You nod in affirmation.\n“Here is what we know: it was the witches who brought this abomination upon Arkham. We tried to stop their ritual, but unfortunately, we were unsuccessful in binding it. Now it is loose, and we must finish what we started before the witches are able to do the same. But first, I understand you may have some information for us, as well. Please, hand over what you have found. It is important that we collaborate in order to understand this situation.”"
+      "text": "Вас привели в Святую святых, куда допускаются лишь самые высокопоставленные члены Ложи. Мистер Сэнфорд рассказывает, что Орден Серебряных Сумерек намного старше и важнее, чем его публичный фасад в виде Ложи Серебряных Сумерек, и что их знания охватывают области магического и тайного. «Многие десятилетия Орден Серебряных Сумерек искал знания, способные возвысить человечество. Мы защищались от угроз самому нашему существованию. Мы жертвовали всем во имя этой священной цели. Сегодня одна из таких угроз нависла над нашим городом, и только мы способны её остановить. Вы знаете, о какой сущности я говорю». \nВы утвердительно киваете.\n«Вот что нам известно: это исчадие призвали в Аркхэм ведьмы. Мы пытались остановить их обряд, но к сожалению, нам не удалось сковать призрака. Теперь он на свободе, и мы должны завершить свой ритуал, пока ведьмы не завершат свой. Но сперва покажите, пожалуйста, что вам удалось \nнайти, — полагаю, вам есть чем поделиться. Чтобы понимать происходящее, нам нужно работать сообща»."
     },
     {
       "id": "choose_to_share_info",
@@ -47094,7 +47099,7 @@
         "choices": [
           {
             "id": "give_mementos",
-            "text": "Give Mr. Sanford everything you have found.",
+            "text": "Отдать мистеру Сэнфорду все свои находки.",
             "steps": [
               "ic_2",
               "lose_all_mementos",
@@ -47103,7 +47108,7 @@
           },
           {
             "id": "hide_mementos",
-            "text": "Tell him you have nothing to show. (You are lying.)",
+            "text": "Ответить, что вам нечем поделиться. (Вы лжёте.)",
             "steps": [
               "ic_3",
               "kept_mementos_hidden"
@@ -47119,11 +47124,11 @@
         "name": "The Inner Circle 2"
       },
       "type": "story",
-      "text": "You show Mr. Sanford the evidence you’ve collected. “Hm… Yes, I see. It is as I suspected,” he murmurs as he inspects the trinkets."
+      "text": "Вы показываете мистеру Сэнфорду всё найденное. «Хм… Как я и думал. Да, всё сходится», — бормочет он, перебирая вещицы."
     },
     {
       "id": "lose_all_mementos",
-      "text": "Cross off each memento listed under “Mementos Discovered” in your Campaign Log.",
+      "text": "Вычеркните все записи в графе «Собранные свидетельства» журнала кампании.",
       "effects": [
         {
           "type": "campaign_log",
@@ -47177,7 +47182,7 @@
     },
     {
       "id": "check_rescued_josef",
-      "text": "Check Campaign Log. <i>If the investigators rescued Josef</i> and <i>the investigators told the Lodge about the coven</i>.",
+      "text": "Поскольку <i>сыщики спасли Джозефа</i> и <i>рассказали Ложе о ковене</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -47233,7 +47238,7 @@
         "name": "The Inner Circle 3"
       },
       "type": "story",
-      "text": "You don’t trust Carl Sanford with these pieces of evidence. Who knows what he intends to do with them? In the hands of the president of the Silver Twilight Lodge, any one of these items could be a deadly instrument. You lie, informing him that your investigation has so far proven fruitless. He clenches his jaw and glares at you for a moment, his cold blue eyes staring daggers into yours. “That is disappointing to hear. But perhaps it is my fault; I should not have imposed such a heavy burden on a neophyte to the Order.”\nMr. Sanford rises to his feet, and the other members of the Order follow suit. He addresses the other members of the Inner Circle: “All right. We have no more time to spare. The ritual must be completed at once. We shall use the same site as before—the central pillar of the Unvisited Isle, where the barrier between this world and the next is thinnest. It is likely that the anomaly will pursue us there, so act with caution.” Then he turns back to you. “We will require your assistance as well, of course. The device you hold is the key to binding the revenant. You must use it properly when the time comes. Do you understand?” You nod in affirmation. Taking a deep breath to steel your nerves, you prepare for the journey to the Unvisited Isle—a journey toward death itself."
+      "text": "Вы не доверяете свои находки Карлу Сэнфорду. Кто знает, что он с ними сделает? В руках президента Ложи Серебряных Сумерек любая из этих вещей может стать смертельным оружием. Вы лжёте, сообщая ему, что ваши расследования оказались бесплодны. Стиснув зубы, он сверлит вас своими голубыми глазами. «Жаль. Впрочем, в этом есть и моя вина: не стоило доверять столь ответственное задание неофиту Ордена». \nМистер Сэнфорд встаёт, и члены Ордена следуют его примеру. Он обращается к другим членам Внутреннего круга: «Хорошо. Тянуть больше нельзя. Ритуал нужно завершить немедленно. Совершим его на привычном месте, у центрального столпа на Безлюдном острове, где граница между этим миром и иным тоньше всего. Скорее всего, призрак последует за нами туда, так что будьте осмотрительны. — Затем он поворачивается обратно к вам. — Разумеется, нам понадобится и ваше содействие. Чтобы связать призрака, необходима ваша шкатулка. Будьте готовы использовать её должным образом в нужный момент. Понятно?» Вы утвердительно киваете. Сделав глубокий вдох, вы собираетесь с духом перед дорогой на Безлюдный остров — дорогой к самой смерти."
     },
     {
       "id": "kept_mementos_hidden",
@@ -47242,7 +47247,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "kept_mementos_hidden",
-          "text": "the investigators kept their mementos hidden."
+          "text": "сыщики скрыли собранные свидетельства."
         }
       ]
     },
@@ -47253,23 +47258,23 @@
         "name": "The Inner Circle 4"
       },
       "type": "story",
-      "text": "Carl Sanford grins and rises to his feet. “You have proven yourself a loyal asset to our Order. I believe it is time that you ascended to our Inner Circle.” You approach and kneel before Mr. Sanford. He spreads his arms wide and declares, “I hereby appoint to you the rank of Knight of the Inner Circle. Arise once more, knight, and stand tall. You are now one of the elite guardians of humanity, keepers of the truth, and stewards of the Silver Twilight Order.” Another member of the Order offers you a folded blue robe, and you don it solemnly. “Now, I am sure you have many questions for me. We do not have a lot of time to dawdle, but you deserve answers. What do you wish to know?”"
+      "text": "Карл Сэнфорд растягивает губы в улыбке и встаёт. «Вы доказали свою преданность нашему Ордену. Думаю, пришло время посвятить вас во Внутренний круг». Вы подходите к мистеру Сэнфорду и опускаетесь на колени. Он вскидывает руки и провозглашает: «Сим жалую вам звание Рыцаря Внутреннего круга. Восстаньте же, рыцарь, и держите голову высоко. Отныне вы один из почётных стражей человечества, хранителей истины и служителей Ордена Серебряных Сумерек». Другой член Ордена преподносит вам голубую мантию, и вы торжественно в неё облачаетесь. «Полагаю, у вас ко мне много вопросов. У нас мало времени на разговоры, но вы заслуживаете ответов. Спрашивайте»."
     },
     {
       "id": "ask_questions_intro",
-      "text": "You may ask up to three questions of Carl Sanford before his patience wears thin.",
+      "text": "Вы можете задать Карлу Сэнфорду до трёх вопросов, пока его терпение не иссякнет.",
       "bullet_type": "none"
     },
     {
       "id": "ask_first_question",
-      "text": "Choose a question to ask Card Sanford.",
+      "text": "Выберите вопрос, который вы зададите Карлу Сэнфорду.",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "q1",
-            "text": "<i>“What is the creature?”</i>",
+            "text": "<i>«Что это за существо?»</i>",
             "steps": [
               "answer_1",
               "record_answer_1",
@@ -47278,7 +47283,7 @@
           },
           {
             "id": "q2",
-            "text": "<i>“What do you want with the creature?”</i>",
+            "text": "<i>«Что вы хотите сделать с существом?»</i>",
             "steps": [
               "answer_2",
               "record_answer_2",
@@ -47287,7 +47292,7 @@
           },
           {
             "id": "q3",
-            "text": "<i>“What do the witches want with the creature?”</i>",
+            "text": "<i>«Что ведьмы хотят сделать с существом?»</i>",
             "steps": [
               "answer_3",
               "record_answer_3",
@@ -47296,7 +47301,7 @@
           },
           {
             "id": "q4",
-            "text": "<i>“Did you know about the creature before the charity gala?”</i>",
+            "text": "<i>«Знали ли вы о существе до благотворительного вечера?»</i>",
             "steps": [
               "answer_4",
               "record_answer_4",
@@ -47305,7 +47310,7 @@
           },
           {
             "id": "q5",
-            "text": "<i>“Where are the four missing people from the charity gala?”</i>",
+            "text": "<i>«Где сейчас четверо пропавших с благотворительного вечера?»</i>",
             "steps": [
               "answer_5",
               "record_answer_5",
@@ -47314,8 +47319,8 @@
           },
           {
             "id": "q6",
-            "text": "<i>“…Why are you looking at me like that?”</i>",
-            "description": "You may ask this question because <i>the investigators survived the watcher's embrace</i>.",
+            "text": "<i>«…Почему вы так на меня смотрите?»</i>",
+            "description": "Этот вопрос вы можете задать, поскольку сыщики <i>пережили объятия Стража.</i>",
             "condition": {
               "type": "campaign_log",
               "section": "campaign_notes",
@@ -47335,7 +47340,7 @@
           },
           {
             "id": "finished",
-            "text": "Finished asking questions.",
+            "text": "Вы закончили с вопросами.",
             "steps": []
           }
         ]
@@ -47343,14 +47348,14 @@
     },
     {
       "id": "ask_second_question",
-      "text": "Choose a question to ask Card Sanford.",
+      "text": "Выберите вопрос, который вы зададите Карлу Сэнфорду.",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "q1",
-            "text": "<i>“What is the creature?”</i>",
+            "text": "<i>«Что это за существо?»</i>",
             "steps": [
               "answer_1",
               "record_answer_1",
@@ -47370,7 +47375,7 @@
           },
           {
             "id": "q2",
-            "text": "<i>“What do you want with the creature?”</i>",
+            "text": "<i>«Что вы хотите сделать с существом?»</i>",
             "steps": [
               "answer_2",
               "record_answer_2",
@@ -47390,7 +47395,7 @@
           },
           {
             "id": "q3",
-            "text": "<i>“What do the witches want with the creature?”</i>",
+            "text": "<i>«Что ведьмы хотят сделать с существом?»</i>",
             "steps": [
               "answer_3",
               "record_answer_3",
@@ -47410,7 +47415,7 @@
           },
           {
             "id": "q4",
-            "text": "<i>“Did you know about the creature before the charity gala?”</i>",
+            "text": "<i>«Знали ли вы о существе до благотворительного вечера?»</i>",
             "steps": [
               "answer_4",
               "record_answer_4",
@@ -47430,7 +47435,7 @@
           },
           {
             "id": "q5",
-            "text": "<i>“Where are the four missing people from the charity gala?”</i>",
+            "text": "<i>«Где сейчас четверо пропавших с благотворительного вечера?»</i>",
             "steps": [
               "answer_5",
               "record_answer_5",
@@ -47450,8 +47455,8 @@
           },
           {
             "id": "q6",
-            "text": "<i>“…Why are you looking at me like that?”</i>",
-            "description": "You may ask this question because <i>the investigators survived the watcher's embrace</i>.",
+            "text": "<i>«…Почему вы так на меня смотрите?»</i>",
+            "description": "Этот вопрос вы можете задать, поскольку сыщики <i>пережили объятия Стража.</i>",
             "condition": {
               "type": "multi",
               "count": 2,
@@ -47494,7 +47499,7 @@
           },
           {
             "id": "finished",
-            "text": "Finished asking questions.",
+            "text": "Вы закончили с вопросами.",
             "steps": []
           }
         ]
@@ -47502,14 +47507,14 @@
     },
     {
       "id": "ask_third_question",
-      "text": "Choose a question to ask Card Sanford.",
+      "text": "Выберите вопрос, который вы зададите Карлу Сэнфорду.",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "q1",
-            "text": "<i>“What is the creature?”</i>",
+            "text": "<i>«Что это за существо?»</i>",
             "steps": [
               "answer_1",
               "record_answer_1"
@@ -47528,7 +47533,7 @@
           },
           {
             "id": "q2",
-            "text": "<i>“What do you want with the creature?”</i>",
+            "text": "<i>«Что вы хотите сделать с существом?»</i>",
             "steps": [
               "answer_2",
               "record_answer_2"
@@ -47547,7 +47552,7 @@
           },
           {
             "id": "q3",
-            "text": "<i>“What do the witches want with the creature?”</i>",
+            "text": "<i>«Что ведьмы хотят сделать с существом?»</i>",
             "steps": [
               "answer_3",
               "record_answer_3"
@@ -47566,7 +47571,7 @@
           },
           {
             "id": "q4",
-            "text": "<i>“Did you know about the creature before the charity gala?”</i>",
+            "text": "<i>«Знали ли вы о существе до благотворительного вечера?»</i>",
             "steps": [
               "answer_4",
               "record_answer_4"
@@ -47585,7 +47590,7 @@
           },
           {
             "id": "q5",
-            "text": "<i>“Where are the four missing people from the charity gala?”</i>",
+            "text": "<i>«Где сейчас четверо пропавших с благотворительного вечера?»</i>",
             "steps": [
               "answer_5",
               "record_answer_5"
@@ -47604,8 +47609,8 @@
           },
           {
             "id": "q6",
-            "text": "<i>“…Why are you looking at me like that?”</i>",
-            "description": "You may ask this question because <i>the investigators survived the watcher's embrace</i>.",
+            "text": "<i>«…Почему вы так на меня смотрите?»</i>",
+            "description": "Этот вопрос вы можете задать, поскольку сыщики <i>пережили объятия Стража.</i>",
             "condition": {
               "type": "multi",
               "count": 2,
@@ -47647,7 +47652,7 @@
           },
           {
             "id": "finished",
-            "text": "Finished asking questions.",
+            "text": "Вы закончили с вопросами.",
             "steps": []
           }
         ]
@@ -47720,7 +47725,7 @@
         "name": "What is the Creature?"
       },
       "type": "story",
-      "text": "“It is a powerful remnant, left behind from one who perished long ago. The witches could only have summoned it if they had a strong connection to the soul it once belonged to,” Mr. Sanford explains. “It could only be one person: Keziah Mason herself.”"
+      "text": "«Это могущественный призрак, оставшийся от человека давно усопшего. Ведьмам удалось призвать его лишь потому, что у них есть сильная связь с душой, которой он принадлежал, — объясняет мистер Сэнфорд. — Это может быть только сама Кассия Мейсон»."
     },
     {
       "id": "answer_2",
@@ -47729,7 +47734,7 @@
         "name": "What do you want with the Creature?"
       },
       "type": "story",
-      "text": "“First and foremost, we need to bind it to prevent it from doing further harm. That is of paramount importance. Once it is bound, we may be able to learn the secrets it possesses without endangering ourselves or others.”"
+      "text": "«В первую очередь нам необходимо сковать его, чтобы остановить разрушения. Это наша важнейшая цель. Как только он будет связан, мы сможем выведать известные ему тайны, не подвергая опасности ни себя, ни окружающих»."
     },
     {
       "id": "answer_3",
@@ -47738,7 +47743,7 @@
         "name": "What do the witches want with the Creature?"
       },
       "type": "story",
-      "text": "“I am sure they wish to learn its secrets, and draw from its power,” he theorizes, stroking his beard. “Perhaps allow one of their own to become possessed by the spirit, and hence gain power over life and death itself.”"
+      "text": "«Они определённо хотят узнать его тайны и воспользоваться его силой, — размышляет он, поглаживая бороду. — Возможно, они позволят духу вселиться в кого-то из них, чтобы заполучить власть над самой жизнью и смертью»."
     },
     {
       "id": "answer_4",
@@ -47747,7 +47752,7 @@
         "name": "Did you know about the Creature before the charity gala?"
       },
       "type": "story",
-      "text": "“In truth, yes,” Mr. Sanford admits. “But we did not know it would come to us. After interceding in the witch’s summoning rite, we investigated the spectral mist that was left behind for several days. We likely drew too much attention to ourselves, and it was drawn to our presence. Not necessarily a bad thing, in the end.”"
+      "text": "«По правде, знал, — признаёт мистер Сэнфорд. — Но мы не знали, придёт ли оно к нам. После вмешательства в ведьминский обряд мы несколько дней изучали пришедшую с ним потустороннюю мглу. Видимо, этим мы привлекли к себе слишком много внимания, и призрак последовал за нами. В конце концов, может, это и к лучшему»."
     },
     {
       "id": "answer_5",
@@ -47756,7 +47761,7 @@
         "name": "Where are the four missing people from the charity gala?"
       },
       "type": "story",
-      "text": "“God only knows,” Mr. Sanford replies with a sigh. “Taken by the revenant, perhaps. Or swallowed by the mist.” He considers this for a while, then adds, “I suspect that if they are still alive, they cannot be far from the revenant. For better or for worse, the anomaly seems localized around it."
+      "text": "«Только богу известно, — со вздохом отвечает мистер Сэнфорд. — Унесены призраком, скорее всего. Или поглощены мглой. — Он некоторое время обдумывает сказанное и добавляет: — Если они всё ещё живы, то, полагаю, будут неподалёку от самого призрака. Хорошо это или плохо, но аномалия, кажется, сосредоточена вокруг него»."
     },
     {
       "id": "answer_6",
@@ -47765,7 +47770,7 @@
         "name": "Why are you looking at me like that?"
       },
       "type": "story",
-      "text": "Mr. Sanford clears his throat. “I… It is nothing,” he lies."
+      "text": "Мистер Сэнфорд прокашливается. «Я… Показалось», — лжёт он."
     },
     {
       "id": "ic_5",
@@ -47774,7 +47779,7 @@
         "name": "The Inner Circle 5"
       },
       "type": "story",
-      "text": "Carl Sanford gives the trinkets and strange components to another member of the Inner Circle, who retrieves them with care and brings them upstairs. “Thank you for your assistance in this matter. We are stronger together than apart; don’t you agree?”\nMr. Sanford rises to his feet, and the other members of the Order follow suit. He addresses the other members of the Inner Circle: “All right. We have no more time to spare. The ritual must be completed at once. We shall use the same site as before—the central pillar of the Unvisited Isle, where the barrier between this world and the next is thinnest. It is likely that the anomaly will pursue us there, so act with caution.” Then he turns back to you. “We will require your assistance as well, of course. The device you hold is the key to binding the revenant. You must use it properly when the time comes. Do you understand?” You nod in affirmation. Taking a deep breath to steel your nerves, you prepare for the journey to the Unvisited Isle—a journey toward death itself."
+      "text": "Карл Сэнфорд передаёт вещицы и непонятные ингредиенты другому члену Внутреннего круга, который аккуратно принимает их и уносит наверх. «Благодарю за содействие в этом начинании. Вместе мы сильнее, чем порознь, не так ли?»\nМистер Сэнфорд встаёт, и члены Ордена следуют его примеру. Он обращается к другим членам Внутреннего круга: «Хорошо. Тянуть больше нельзя. Ритуал нужно завершить немедленно. Совершим его на привычном месте, у центрального столпа на Безлюдном острове, где граница между этим миром и иным тоньше всего. Скорее всего, призрак последует за нами туда, так что будьте осмотрительны. — Затем он поворачивается обратно к вам. — Разумеется, нам понадобится и ваше содействие. Чтобы связать призрака, необходима ваша шкатулка. Будьте готовы использовать её должным образом в нужный момент. Понятно?» Вы утвердительно киваете. Сделав глубокий вдох, вы собираетесь с духом перед дорогой на Безлюдный остров — дорогой к самой смерти."
     },
     {
       "id": "ic_6",
@@ -47783,7 +47788,7 @@
         "name": "The Inner Circle 6"
       },
       "type": "story",
-      "text": "Mr. Sanford rises to his feet, and the other members of the Order follow suit. He addresses the members of the Inner Circle, yourself included: “All right. We have no more time to spare. The ritual must be completed at once. We shall use the same site as before—the central pillar of the Unvisited Isle, where the barrier between this world and the next is thinnest. It is likely that the anomaly will pursue us there, so act with caution.” Then he turns directly to you and adds, “The device you hold is the key to binding the revenant. I trust you to use it properly when the time comes.” You and the other members of the circle nod in affirmation. Taking a deep breath to steel your nerves, you prepare for the journey to the Unvisited Isle—a journey toward death itself."
+      "text": "Мистер Сэнфорд встаёт, и члены Ордена следуют его примеру. Он обращается к другим членам Внутреннего круга: «Хорошо. Тянуть больше нельзя. Ритуал нужно завершить немедленно. Совершим его на привычном месте, у центрального столпа на Безлюдном острове, где граница между этим миром и иным тоньше всего. Скорее всего, призрак последует за нами туда, так что будьте осмотрительны. — Затем он поворачивается к вам и добавляет: — Чтобы связать призрака, необходима ваша шкатулка. Доверяю вам использовать её должным образом в нужный момент». Вместе с другими членами Внутреннего круга вы утвердительно киваете. Сделав глубокий вдох, вы собираетесь с духом перед дорогой на Безлюдный остров — дорогой к самой смерти."
     },
     {
       "id": "inducted_into_the_inner_circle",
@@ -47792,7 +47797,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "inducted_into_the_inner_circle",
-          "text": "the investigators were inducted into the Inner Circle."
+          "text": "сыщики посвящены во Внутренний круг."
         }
       ]
     }
@@ -49905,7 +49910,7 @@
 {
   "id": "union_and_disillusion",
   "scenario_name": "Единство и разочарование",
-  "full_name": "Scenario VI: Union and Disillusion",
+  "full_name": "Сценарий VI: Единство и разочарование",
   "header": "Сценарий VI",
   "setup": [
     "intro_1",
@@ -49937,27 +49942,27 @@
         "name": "Intro"
       },
       "type": "story",
-      "text": "The Unvisited Isle lies in the midst of the Miskatonic River, in between two of the bridges that span the river and connect the Downtown and Rivertown neighborhoods of Arkham. Overgrown with vines, thorns, and unnatural underbrush, the island is home to no residents and very few fauna. Rows of mysterious stone pillars stand sentry throughout the island, rising high above the treetops. Though many theories abound, none know for sure what purpose these stone pillars serve, or who built them. Very few dare to venture onto the shores of the enigmatic island, and those who do return with strange tales: bonfires in the woods at the darkest hours of night—stone altars with deep carvings impossible to translate—empty woods devoid of life, save for the stark-black ravens and whippoorwills who perch on the tree branches and watch trespassers with eager eyes. Unfortunately for you, the stakes are too high for you to heed these many warnings.\nThe streets of Arkham are emptier and quieter than you have ever seen them before. A familiar grey mist has enveloped the town. The haze grows denser and thicker the closer you get to the river. You move with haste, not wanting to encounter any others on your way to the site of the ritual, whether they be living or dead. You find several rowboats moored by the docks and climb aboard one of them. With the waters unnaturally still and barely any current carrying the boat, rowing toward the island should be a simple endeavor. Even so, the dense fog makes it difficult for you to get your bearings. Soon, you are completely enclosed by the grey mist, unable to see the banks of the river or the coast of the island. Shapes emerge from the fog. Ripples appear on the surface of the water. The gaze of the watcher is upon you.\nJust then, a pillar of spectral energy ascends into the sky, clear as day even through the haze. The shapes all turn their attention to this beacon, and you sense the watcher’s gaze slipping from your soul. The rite has begun. You row faster, using the light to guide you. It is time to decide once and for all why you have come—are you here to aid the Silver Twilight Lodge? Or to disrupt them?"
+      "text": "Посреди реки Мискатоник между двумя мостами, соеди­няющими арк­хэм­ские районы Даунтаун и Ривертаун, лежит Безлюдный остров, покрытый густым лесом, вьющимися растениями и колючим кустарником. Здесь не живут люди и почти нет зверей. По всему острову, пронзая кроны деревьев, возвышаются ряды таинственных каменных столбов. Несмотря на многочисленные предположения, никто не знает наверняка, кем и для чего были поставлены эти обелиски. Те немногие, кто отважился ступить на берег загадочного острова, рассказывают о кострах, в глухую полночь пылающих среди деревьев, о каменных алтарях, на которых высечены непереводимые письмена, и о пустых, почти безжизненных лесах, где лишь козодои да угольно-чёрные во́роны пристально следят с ветвей за незваными гостями. Но сейчас на кону стоит слишком многое, чтобы вы могли позволить себе прислушаться ко всем этим предостережениям.\nВы никогда прежде не видели улицы Аркхэма такими пустыми и тихими. Знакомая серая мгла окутала город. Чем ближе к берегу, тем гуще и плотнее она становится. Вы идёте быстрым шагом, чтобы не столкнуться ни с кем по пути к месту ритуала — ни с живыми, ни с мёртвыми. На причале вы видите несколько пришвартованных лодок и забираетесь в одну из них. Вода так спокойна, а течение столь неспешно, что доплыть до острова не составит особого труда. Однако вам очень сложно ориентироваться в густом тумане. Вскоре вы полностью окружены серой мглой, сквозь которую не видно ни берега, ни острова. Во мгле проступают силуэты. Поверхность воды покрывается рябью. Взор Стража прикован к вам.\nВ этот момент в небо вздымается столб потустороннего света, отчётливо видный даже сквозь покров мглы. Силуэты оборачиваются к этому маяку, и вы чувствуете, как взор Стража отпускает вашу душу. Ритуал начался. Вы спешно гребёте на свет. Настало время сделать окончательный выбор: вы здесь, чтобы помочь Ложе Серебряных Сумерек — или помешать ей?"
     },
     {
       "id": "point_of_no_return",
       "type": "input",
-      "text": "This is a point of no return—you will not get the chance to change your mind later. The investigators must decide (choose one):",
+      "text": "Это точка невозвращения: вы больше не сможете изменять своё решение. Сыщики должны решить (выберите одно):",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "help_ritual",
-            "text": "<i>“We have to help complete the Lodge’s ritual.”</i>",
-            "description": "Completing the ritual should bind the Spectral Watcher and prevent it from doing any more harm.",
+            "text": "<i>«Мы должны помочь Ложе завершить ритуал».</i>",
+            "description": "Ритуал должен сковать Призрачного Стража, чтобы он больше не смог причинять вред.",
             "steps": [
               "sided_with_the_lodge"
             ]
           },
           {
             "id": "thwart_ritual",
-            "text": "<i>“We have to stop the Lodge’s ritual.”</i>",
-            "description": "Disrupting the ritual should release the Spectral Watcher’s tether to the mortal realm.",
+            "text": "<i>«Мы должны остановить ритуал Ложи».</i>",
+            "description": "Если помешать ритуалу, связь Призрачного Стража с царством живых должна разорваться.",
             "steps": [
               "sided_with_the_coven"
             ]
@@ -49972,7 +49977,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "sided_with_the_lodge",
-          "text": "the investigators sided with the Lodge."
+          "text": "сыщики приняли сторону Ложи."
         }
       ]
     },
@@ -49983,7 +49988,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "sided_with_the_coven",
-          "text": "the investigators sided with the coven."
+          "text": "сыщики приняли сторону ковена."
         }
       ]
     },
@@ -50012,7 +50017,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the Miskatonic River and Forbidding Shore into play. Each investigator begins play at the Miskatonic River. Then, shuffle the 6 Unvisited Isle locations and choose 2 at random to put into play. Set the rest aside, out of play."
+      "text": "Введите в игру локации «Река Мискатоник» и «Зловещий берег». Все сыщики начинают игру в локации «Река Мискатоник». Затем перемешайте 6 локаций «Безлюдный остров», случайным образом выберите 2 из них и введите в игру. Остальные отложите в сторону."
     },
     {
       "id": "location_layout",
@@ -50058,19 +50063,19 @@
     {
       "id": "light_braziers",
       "bullet_type": "small",
-      "text": "The braziers at Forbidding Shore and both Unvisited Isle locations are already lit. Place a resource token on each of these locations to signify this. <i>(See “Circle / Braziers”)</i>"
+      "text": "Светильники на «Зловещем берегу» и в обеих локациях «Безлюдный остров» уже зажжены. Положите на них по жетону ресурса, чтобы обозначить это. <i>(См. «Круг и светильники» ниже.)</i>"
     },
     {
       "id": "set_aside_cards",
-      "text": "Set The Geist-Trap location and the Watcher’s Gaze treachery aside, out of play."
+      "text": "Отложите в сторону локацию «Ловушка для призраков» и напасть «Взор Стража»."
     },
     {
       "id": "set_aside_bosses",
-      "text": "Search the collection for Anette Mason (The Circle Undone #57) and Josef Meiger (The Circle Undone #85) and set them aside, out of play."
+      "text": "Найдите в комплекте карты «Анетта Мейсон» (Нарушенный круг 57) и «Джозеф Майгер» (Нарушенный круг 85) и отложите их в сторону."
     },
     {
       "id": "check_missing_persons",
-      "text": "Check the “Missing Persons” section of the Campaign Log. Based on which characters are crossed off and which are not, perform the following:"
+      "text": "Сверьтесь с графой «Пропавшие без вести» журнала кампании. В зависимости от того, какие персонажи в неё вычеркнуты, выполните следующее:"
     },
     {
       "id": "check_gavriella",
@@ -50098,12 +50103,12 @@
     {
       "id": "set_aside_gavriella",
       "bullet_type": "small",
-      "text": "Set the Gavriella Mizrah story asset aside, and place the Gavriella’s Fate story card beneath the scenario reference card."
+      "text": "Отложите в сторону сюжетный актив «Гавриэла Мизра» и положите карту сюжета «Участь Гаври­элы» под памятку сценария."
     },
     {
       "id": "remove_gavriella",
       "bullet_type": "small",
-      "text": "Remove the Gavriella Mizrah story asset and the Gavriella’s Fate story card from the game."
+      "text": "Удалите из игры сюжетный актив «Гавриэла Мизра» и карту сюжета «Участь Гаври­элы»."
     },
     {
       "id": "check_jerome",
@@ -50131,12 +50136,12 @@
     {
       "id": "set_aside_jerome",
       "bullet_type": "small",
-      "text": "Set the Jerome Davids story asset aside, and place the Jerome’s Fate story card beneath the scenario reference card."
+      "text": "Отложите в сторону сюжетный актив «Джером Дэвидс» и положите карту сюжета «Участь Дже­рома» под памятку сценария."
     },
     {
       "id": "remove_jerome",
       "bullet_type": "small",
-      "text": "Remove the Jerome Davids story asset and the Jerome’s Fate story card from the game."
+      "text": "Удалите из игры сюжетный актив «Джером Дэвидс» и карту сюжета «Участь Дже­рома»."
     },
     {
       "id": "check_penny",
@@ -50164,12 +50169,12 @@
     {
       "id": "set_aside_penny",
       "bullet_type": "small",
-      "text": "Set the Penny White story asset aside, and place the Penny’s Fate story card beneath the scenario reference card."
+      "text": "Отложите в сторону сюжетный актив «Пенни Уайт» и положите карту сюжета «Участь Пенни» под памятку сценария."
     },
     {
       "id": "remove_penny",
       "bullet_type": "small",
-      "text": "Remove the Penny White story asset and the Penny’s Fate story card from the game."
+      "text": "Удалите из игры сюжетный актив «Пенни Уайт» и карту сюжета «Участь Пенни»."
     },
     {
       "id": "check_valentino",
@@ -50197,16 +50202,16 @@
     {
       "id": "set_aside_valentino",
       "bullet_type": "small",
-      "text": "Set the Valentino Rivas story asset aside, and place the Valentino’s Fate story card beneath the scenario reference card."
+      "text": "Отложите в сторону сюжетный актив «Валентино Ривас» и положите карту сюжета «Участь Валентино» под памятку сценария."
     },
     {
       "id": "remove_valentino",
       "bullet_type": "small",
-      "text": "Remove the Valentino Rivas story asset and the Valentino’s Fate story card from the game."
+      "text": "Удалите из игры сюжетный актив «Валентино Ривас» и карту сюжета «Участь Валентино»."
     },
     {
       "id": "select_act_3_4",
-      "text": "Depending on the following circumstances, a different version of Acts 3 and 4 should be used in this scenario. Each other version of Act 3 or 4 is removed from the game."
+      "text": "В зависимости от нижеуказанных условий, в этом сценарии используются определённые версии сцен 3 и 4. Все остальные версии этих карт следует удалить из игры."
     },
     {
       "id": "check_sided_with_lodge",
@@ -50234,7 +50239,7 @@
     },
     {
       "id": "check_sided_with_the_coven_and_inner_circle",
-      "text": "<i>If the investigators sided with the coven</i>, <i>the investigators are deceiving the Lodge</i>, and <i>the investigators were inducted into the Inner Circle.</i>",
+      "text": "Если <i>сыщики приняли сторону ковена</i>, <i>сыщики обманывают Ложу</i> и <i>сыщики посвящены во Внутренний круг</i>:",
       "bullet_type": "small",
       "type": "branch",
       "condition": {
@@ -50282,7 +50287,7 @@
     },
     {
       "id": "check_sided_with_the_coven_and_deceiving",
-      "text": "If the above is not true, <i>the investigators sided with the coven</i>, and at least two of the following is true: <i>the investigators are deceiving the Lodge</i>, <i>the investigators hid their knowledge of the coven</i>, or <i>the investigators kept their mementos hidden.</i>",
+      "text": "Если вышеперечисленное неверно, <i>сыщики приняли сторону ковена</i> и как минимум два утверждения из следующих верны: <i>сыщики обманывают Ложу</i>, <i>сыщики скрыли информацию о ковене</i> или <i>сыщики скрыли собранные свидетельства</i>:",
       "bullet_type": "small",
       "type": "branch",
       "condition": {
@@ -50360,12 +50365,12 @@
     {
       "id": "act_3_v1",
       "bullet_type": "small",
-      "text": "Use Act 3—“Beyond the Mist (v. I)” and Act 4—“The Binding Rite.”"
+      "text": "Используйте карты «Сцена 3. По ту сторону мглы (вариант I)» и «Сцена 4. Связующий ритуал»."
     },
     {
       "id": "act_3_v2",
       "bullet_type": "small",
-      "text": "Use Act 3—“Beyond the Mist (v. II)” and Act 4—“The Broken Rite.”",
+      "text": "Используйте карты «Сцена 3. По ту сторону мглы (вариант II)» и «Сцена 4. Сорванный ритуал».",
       "effects": [
         {
           "type": "campaign_log",
@@ -50378,12 +50383,12 @@
     {
       "id": "act_3_v3",
       "bullet_type": "small",
-      "text": "Use Act 3—“Beyond the Mist (v. III)” and Act 4—“The Broken Rite.”"
+      "text": "Используйте карты «Сцена 3. По ту сторону мглы (вариант III)» и «Сцена 4. Сорванный ритуал»."
     },
     {
       "id": "act_3_v4",
       "bullet_type": "small",
-      "text": "Use Act 3—“Beyond the Mist (v. IV)” and Act 4—“The Broken Rite.”"
+      "text": "Используйте карты «Сцена 3. По ту сторону мглы (вариант IV)» и «Сцена 4. Сорванный ритуал»."
     },
     {
       "id": "check_heretics_released",
@@ -50434,22 +50439,22 @@
     {
       "id": "add_1_doom",
       "bullet_type": "small",
-      "text": "Place 1 doom on agenda 1a."
+      "text": "Положите 1 безысходность на замысел 1а."
     },
     {
       "id": "add_2_doom",
       "bullet_type": "small",
-      "text": "Place 2 doom on agenda 1a."
+      "text": "Положите 2 безысходности на замысел 1а."
     },
     {
       "id": "add_3_doom",
       "bullet_type": "small",
-      "text": "Place 3 doom on agenda 1a."
+      "text": "Положите 3 безысходности на замысел 1а."
     },
     {
       "id": "add_4_doom",
       "bullet_type": "small",
-      "text": "Place 4 doom on agenda 1a."
+      "text": "Положите 4 безысходности на замысел 1а."
     },
     {
       "id": "encounter_deck",
@@ -50458,26 +50463,26 @@
     {
       "id": "circle_braziers",
       "type": "rule_reminder",
-      "title": "Circle / Braziers",
-      "text": "Throughout this scenario, you will find locations with braziers on them, which can be lit or unlit using the ability with the [[Circle]] action designator on that location. A [[Circle]] ability is always used to either light or unlight the brazier on that location, and serves no other function. Lighting braziers is an important step in completing the ritual set up by the Silver Twilight Lodge. Whether you want braziers lit or unlit depends on whether you plan on aiding the Lodge or thwarting them.",
+      "title": "Круг и светильники",
+      "text": "В этом сценарии встречаются локации со светильниками, которые можно зажечь или погасить с помощью указанных на этих локациях свойств с обозначением «Круг». Действие «Круг» служит исключительно для того, чтобы зажечь или погасить светильник в своей локации, и не выполняет никакой другой функции. Чтобы ритуал Ложи Серебряных Сумерек прошёл успешно, светильники должны быть зажжены. В зависимости от того, помогаете вы Ложе или мешаете ей, вам нужно будет либо зажечь светильники, либо погасить их.",
       "bullets": [
         {
-          "text": "Skill tests on [[Circle]] actions often require an investigator to test multiple skills at once (such as “Test [combat]+[intellect]”). Such a test is considered to be a test of both skill types. Cards with either skill icon may be committed to the test, and both icons are considered matching skill icons."
+          "text": "Действие «Круг» может потребовать от вас пройти проверку сразу нескольких навыков (например, «Пройдите проверку [combat]+[intellect]»). Такая проверка считается проверкой всех этих навыков. Вы можете добавлять к такой проверке карты с символами любых указанных навыков, и все эти символы будут считаться подходящими."
         },
         {
-          "text": "If the brazier on a location is lit, place a resource token on that location to signify that the brazier on that location has been lit."
+          "text": "Если вы зажгли светильник в локации, положите на неё жетон ресурса, чтобы обозначить это."
         },
         {
-          "text": "If the brazier on a location is unlit, remove the resource token from that location, to signify that the brazier on that location is no longer lit."
+          "text": "Если вы погасили светильник в локации, уберите с неё жетон ресурса, чтобы обозначить, что светильник в локации больше не зажжён."
         },
         {
-          "text": "If a [[Circle]] action is unsuccessful, nothing happens."
+          "text": "Если проверка при действии «Круг» провалена, ничего не происходит."
         },
         {
-          "text": "A lit brazier on a location has no game effect on its own, although other card effects may reference whether or not the brazier on your location is lit."
+          "text": "Состояние светильника не имеет никаких игровых эффектов само по себе, однако некоторые эффекты других карт могут зависеть от того, зажжён или погашен светильник в вашей локации."
         },
         {
-          "text": "A brazier only has two states: lit or unlit. Lighting the brazier on a location with an already lit brazier has no effect, as does unlighting a brazier on a location with no lit brazier."
+          "text": "У светильника есть лишь два состояния: зажжённый и погашенный. Попытка зажечь светильник, который уже зажжён, ни к чему не приводит, равно как и попытка погасить погашенный светильник."
         }
       ]
     },
@@ -50547,14 +50552,14 @@
                 }
               ]
             },
-            "text": "Gavriella is alive.",
+            "text": "Гавриэла жива.",
             "steps": [
               "gavriella_alive"
             ]
           },
           {
             "id": "jerome_alive",
-            "text": "Jerome is alive.",
+            "text": "Джером жив.",
             "condition": {
               "type": "campaign_log",
               "section": "05047",
@@ -50571,7 +50576,7 @@
           },
           {
             "id": "penny_alive",
-            "text": "Penny is alive.",
+            "text": "Пенни жива.",
             "condition": {
               "type": "campaign_log",
               "section": "05049",
@@ -50588,7 +50593,7 @@
           },
           {
             "id": "valentino_alive",
-            "text": "Valentino is alive.",
+            "text": "Валентино жив.",
             "condition": {
               "type": "campaign_log",
               "section": "05048",
@@ -50608,65 +50613,65 @@
     },
     {
       "id": "gavriella_alive",
-      "text": "Next to Gavriella Mizrah's profile, record <i>Gavriella is alive.</i>",
+      "text": "Запишите рядом с фото Гавриэлы Мизры, что <i>Гавриэла жива.</i>",
       "hidden": true,
       "effects": [
         {
           "type": "campaign_log",
           "section": "05046",
           "id": "alive",
-          "text": "Gavriella is alive."
+          "text": "Гавриэла жива."
         }
       ]
     },
     {
       "id": "jerome_alive",
-      "text": "Next to Jerome Davids's profile, record <i>Jerome is alive.</i>",
+      "text": "Запишите рядом с фото Джерома Дэвидса, что <i>Джером жив.</i>",
       "hidden": true,
       "effects": [
         {
           "type": "campaign_log",
           "section": "05047",
           "id": "alive",
-          "text": "Jerome is alive."
+          "text": "Джером жив."
         }
       ]
     },
     {
       "id": "penny_alive",
-      "text": "Next to Penny White's profile, record <i>Penny is alive.</i>",
+      "text": "Запишите рядом с фото Пенни Уайт, что <i>Пенни жива.</i>",
       "hidden": true,
       "effects": [
         {
           "type": "campaign_log",
           "section": "05049",
           "id": "alive",
-          "text": "Penny is alive."
+          "text": "Пенни жива."
         }
       ]
     },
     {
       "id": "valentino_alive",
-      "text": "Next to Valentino Rivas's profile, record <i>Valentino is alive.</i>",
+      "text": "Запишите рядом с фото Валентино Риваса, что <i>Валентино жив.</i>",
       "effects": [
         {
           "type": "campaign_log",
           "section": "05048",
           "id": "alive",
-          "text": "Valentino is alive."
+          "text": "Валентино жив."
         }
       ]
     },
     {
       "id": "add_chaos_token",
-      "text": "What change should be made to the chaos bag?",
+      "text": "Какие изменения следует внести в мешок хаоса?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "remove_cultists",
-            "text": "Remove all [cultist] tokens",
+            "text": "Удалить все жетоны [cultist]",
             "effects": [
               {
                 "type": "remove_chaos_token",
@@ -50690,15 +50695,15 @@
         "choices": [
           {
             "id": "yes",
-            "text": "<i>“Yes.”</i>",
-            "description": "You may choose this option only if <i>the investigators were inducted into the Inner Circle</i>, and cannot choose this option <i>if the investigators are deceiving the Lodge</i>.",
+            "text": "<i>«Да».</i>",
+            "description": "Вы можете выбрать этот вариант, только если <i>сыщики посвящены во Внутренний круг</i>, и не можете выбрать его, если <i>сыщики обманывают Ложу</i>.",
             "steps": [
               "resolution_2"
             ]
           },
           {
             "id": "no",
-            "text": "<i>“No.”</i>",
+            "text": "<i>«Нет».</i>",
             "steps": [
               "resolution_3"
             ]
@@ -50728,13 +50733,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "true_work_of_silver_twilight_lodge_has_begun",
-          "text": "the true work of the Silver Twilight Lodge has begun."
+          "text": "Ложа Серебряных Сумерек взялась за своё дело."
         }
       ]
     },
     {
       "id": "silver_twilight_wins_campaign",
-      "text": "The Silver Twilight Lodge wins the campaign. (Investigators who are truly loyal to the Lodge win the campaign.)",
+      "text": "Ложа Серебряных Сумерек победила в кампании. (Сыщики, истинно преданные Ложе, победили в кампании.)",
       "effects": [
         {
           "type": "campaign_data",
@@ -50755,7 +50760,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "carl_sanford_possesses_the_secrets_of_the_universe",
-          "text": "Carl Sanford possesses the secrets of the universe."
+          "text": "Карл Сэнфорд овладел тайнами Вселенной."
         }
       ]
     },
@@ -50766,13 +50771,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "anette_mason_is_possessed_by_evil",
-          "text": "Anette Mason is possessed by evil."
+          "text": "Анетта Мейсон одержима злом."
         }
       ]
     },
     {
       "id": "compare_columns_explanation",
-      "text": "Check Campaign Log. Compare the following two bullets to see which has the most true statements."
+      "text": "Сверьтесь с журналом. Сравните количество истинных утверждений в левом и правом столбцах:"
     },
     {
       "id": "compare_columns",
@@ -50830,7 +50835,7 @@
     {
       "id": "left_result",
       "bullet_type": "small",
-      "text": "<i>The witches’ spell was broken.</i>\n<i>The investigators rescued Josef</i> / <i>Josef is alive and well.</i>\n<i>1 or fewer heretics were unleashed unto Arkham.</i>",
+      "text": "<i>Заклятие ведьм снято.</i>\n<i>Сыщики спасли Джозефа.</i> / <i>Джозеф жив и здоров.</i>\n<i>В Аркхэм проникла 1 еретичка или меньше.</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -50847,7 +50852,7 @@
     {
       "id": "right_result",
       "bullet_type": "small",
-      "text": "<i>The witches’ spell was cast.</i>\n<i>Josef disappeared into the mist.</i>\n<i>2 or more heretics were unleashed unto Arkham.</i>",
+      "text": "<i>Заклятие ведьм завершено.</i>\n<i>Джозеф исчез во мгле.</i>\n<i>В Аркхэм проникли 2 еретички или больше.</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -50874,12 +50879,12 @@
     {
       "id": "left_has_more",
       "bullet_type": "none",
-      "text": "Because the first bullet has more true statements, proceed to <b>Resolution 6</b>"
+      "text": "Поскольку в левом столбце больше истинных утверждений, чем в правом, перейдите к <b>исходу 6.</b>"
     },
     {
       "id": "right_has_more",
       "bullet_type": "none",
-      "text": "Because the second bullet has more true statements, proceed to <b>Resolution 7</b>"
+      "text": "Если в правом столбце больше истинных утверждений, чем в левом, перейдите к <b>исходу 7.</b>"
     },
     {
       "id": "resolution_5",
@@ -50984,7 +50989,7 @@
     },
     {
       "id": "remove_puzzle_box",
-      "text": "If an investigator’s deck contains the Puzzle Box card, remove it from that investigator’s deck.",
+      "text": "Если в колоде любого сыщика есть актив «Шкатулка с секретом», удалите эту карту из этой колоды.",
       "effects": [
         {
           "type": "remove_card",
@@ -50994,7 +50999,7 @@
     },
     {
       "id": "check_missing_persons_alive",
-      "text": "Check the “Missing Persons” section of your Campaign Log."
+      "text": "Сверьтесь с графой «Пропавшие без вести» журнала кампании."
     },
     {
       "id": "check_gavriella_in_game",
@@ -51016,7 +51021,7 @@
     {
       "id": "check_gavriella_alive",
       "bullet_type": "small",
-      "text": "<i>If Gavriella Mizrah is alive</i>, any one investigator may choose to add the Gavriella Mizrah asset to their deck. She does not count toward that investigator’s deck size. Otherwise, next to Gavriella Mizrah’s profile, record <i>Gavriella Mizrah is dead</i>.",
+      "text": "<i>Если Гавриэла жива</i>, любой сыщик может включить сюжет­ный актив «Гавриэла Мизра» в свою колоду. Эта карта не идёт в счёт размера колоды. В противном случае запишите рядом с фото Гавриэлы Мизры, что <i>Гавриэла погибла</i>.",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -51074,7 +51079,7 @@
                 "type": "campaign_log",
                 "section": "05046",
                 "id": "dead",
-                "text": "Gavriella Mizrah is dead."
+                "text": "Гавриэла погибла."
               }
             ]
           }
@@ -51101,7 +51106,7 @@
     {
       "id": "check_jerome_alive",
       "bullet_type": "small",
-      "text": "<i>If Jerome Davids is alive</i>, any one investigator may choose to add the Jerome Davids asset to their deck. He does not count toward that investigator’s deck size. Otherwise, next to Jerome Davids’s profile, record <i>Jerome Davids is dead</i>.",
+      "text": "Если <i>Джером жив</i>, любой сыщик может включить сюжетный актив «Джером Дэвидс» в свою колоду. Эта карта не идёт в счёт размера колоды. В противном случае запишите рядом с фото Джерома Дэвидса, что <i>Джером погиб</i>.",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -51159,7 +51164,7 @@
                 "type": "campaign_log",
                 "section": "05047",
                 "id": "dead",
-                "text": "Jerome Davids is dead."
+                "text": "Джером погиб."
               }
             ]
           }
@@ -51186,7 +51191,7 @@
     {
       "id": "check_penny_alive",
       "bullet_type": "small",
-      "text": "<i>If Penny White is alive</i>, any one investigator may choose to add the Penny White asset to their deck. She does not count toward that investigator’s deck size. Otherwise, next to Penny White’s profile, record <i>Penny White is dead</i>.",
+      "text": "Если <i>Пенни жива</i>, любой сыщик может включить сюжетный актив «Пенни Уайт» в свою колоду. Эта карта не идёт в счёт размера колоды. В противном случае запишите рядом с фото Пенни Уайт, что <i>Пенни погибла</i>.",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -51244,7 +51249,7 @@
                 "type": "campaign_log",
                 "section": "05049",
                 "id": "dead",
-                "text": "Penny White is dead."
+                "text": "Пенни погибла."
               }
             ]
           }
@@ -51271,7 +51276,7 @@
     {
       "id": "check_valentino_alive",
       "bullet_type": "small",
-      "text": "<i>If Valentino Rivas is alive</i>, any one investigator may choose to add the Valentino Rivas asset to their deck. He does not count toward that investigator’s deck size. Otherwise, next to Valentino Rivas’s profile, record <i>Valentino Rivas</i> is dead.",
+      "text": "Если <i>Валентино жив</i>, любой сыщик может включить сюжет­ный актив «Валентино Ривас» в свою колоду. Эта карта не идёт в счёт размера колоды. В противном случае запишите рядом с фото Валентино Риваса, что <i>Валентино погиб</i>.",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -51329,7 +51334,7 @@
                 "type": "campaign_log",
                 "section": "05048",
                 "id": "dead",
-                "text": "Valentino Rivas is dead."
+                "text": "Валентино погиб."
               }
             ]
           }
@@ -51353,7 +51358,7 @@
                 "type": "campaign_log",
                 "section": "05046",
                 "id": "alive",
-                "text": "Gavriella is alive."
+                "text": "Гавриэла жива."
               }
             ]
           }
@@ -51377,7 +51382,7 @@
                 "type": "campaign_log",
                 "section": "05047",
                 "id": "alive",
-                "text": "Jerome is alive."
+                "text": "Джером жив."
               }
             ]
           }
@@ -51401,7 +51406,7 @@
                 "type": "campaign_log",
                 "section": "05049",
                 "id": "alive",
-                "text": "Penny is alive."
+                "text": "Пенни жива."
               }
             ]
           }
@@ -51425,7 +51430,7 @@
                 "type": "campaign_log",
                 "section": "05048",
                 "id": "alive",
-                "text": "Valentino is alive."
+                "text": "Валентино жив."
               }
             ]
           }
@@ -51566,7 +51571,7 @@
     },
     {
       "id": "fix_remove_all_cultist_tokens",
-      "text": "While playing the scenario, there was an instruction to remove all [cultist] tokens from the chaos bag.",
+      "text": "В ходе партии было получено указание удалить все жетоны [cultist] из мешка хаоса.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -51594,7 +51599,7 @@
         "physical",
         "mental"
       ],
-      "text": "You barely remember sprinting back to shore and getting in your rowboat. It is as though you were possessed—by a fit of madness or by a spirit bent only on survival, you cannot say. You are shaken to your senses by the powerful gale which sweeps across the river, almost capsizing your boat. The spectral pillar marking the site of the Lodge’s ritual suddenly bursts outward. Dozens of specters and phantasmal shapes fly across the treetops and glide across the water. You will never forget their shrieks, like hundreds of deathcries sounding at once.",
+      "text": "Вы почти не помните, как выбежали на берег и запрыгнули в лодку. Вами словно что-то управляло: то ли приступ безумия, то ли инстинкт самосохранения. Вас приводит в чувство мощный порыв ветра, едва не опрокинувший вашу лодку. Призрачная колонна на месте проведения ритуала Ложи внезапно взрывается. Призраки и потусторонние тени десятками разлетаются над кронами и среди деревьев. Вам никогда не забыть их вопли, подобные сотне одновременно прозвучавших предсмертных криков.",
       "steps": [
         "resolution_5"
       ]
@@ -51606,7 +51611,7 @@
         "name": "Resolution 1"
       },
       "title": "Исход 1",
-      "text": "The revenant thrashes and writhes in torment, unable to escape with its connection to the spectral realm torn away. Carl Sanford steps forward, opens a thick leather tome, and the ghost’s memories—along with the remainder of its form—are unceremoniously pulled into its pages.\n“What have you done?!” Anette yells. Several members of her coven surround her. They are embattled, but you have no doubt they would lay down their life to protect their high priestess from harm.\n“What have I done? Why, I have cheated the Devil,” Sanford responds with a sinister grin. You notice the words of his tome are now glowing with a spectral radiance. “Keziah signed the Black Book of Azathoth in order to learn the secrets of the universe. A fatal error, in my estimation, for it put her in the clutches of one far more powerful than she.” He begins to read from the pages as he explains further. “She paid the price, but I shall reap the harvest.”\nAnette clenches her jaw and turns toward you. “You cannot even begin to fathom the secrets this monster now possesses. Do you truly believe he will use this power for good?” She asks.",
+      "text": "Лишённый связи с потусторонним миром, призрак извивается и бьётся в муках, тщетно пытаясь вырваться из ловушки. Карл Сэнфорд делает шаг вперёд, раскрывает толстую книгу в кожаном переплёте, и её страницы бесцеремонно всасывают всю память призрака и то, что осталось от его фигуры.\n«Что вы наделали?!» — кричит Анетта. Вокруг неё стоят несколько ведьм ковена. Они потрёпаны в схватке, но, очевидно, готовы пожертвовать собой, чтобы защитить верховную жрицу.\n«Что я наделал? Да я обманул самого Дьявола, — отвечает Сэнфорд со зловещей ухмылкой. Вы видите, что строки в его книге теперь сияют нездешним светом. — Кассия подписала Чёрную книгу Азатота, чтобы постичь тайны Вселенной, и оказалась во власти существа, куда более могущественного, чем она. Ужасная ошибка, на мой взгляд. — Он начинает перелистывать страницы. — Она заплатила цену, а я получу награду».\nАнетта стискивает зубы и поворачивается к вам: «Вы даже вообразить не можете, какие тайны теперь в руках у этого чудовища. Вы правда считаете, что он воспользуется этой силой во благо?» — восклицает она.",
       "steps": [
         "choose_if_sanford_is_good"
       ]
@@ -51618,7 +51623,7 @@
         "name": "Resolution 2"
       },
       "title": "Исход 2",
-      "text": "You stand tall and declare your loyalty proudly. The other members of the Order nod in affirmation. Carl Sanford will lead mankind to an era of peace, and protect them from the threats of the cosmos. It may take time for society to adjust, but humanity can only survive if these secrets are in the hands of the Order. The witches retreat into the woods, and you are left alone with your brothers and sisters of the Inner Circle. You gather around your leader, and as he reads from the New Creed of the Silver Twilight Order, he informs you of his plans: of the higher beings of the cosmos, of humanity’s ascension, of the Great Old Ones, of life and death, of Azathoth and the End of Everything. Step by step, the Order plots the future of the Earth, and you will become instrumental in the new world order.",
+      "text": "Гордо выпрямившись, вы торжественно заявляете о своей преданности Сэнфорду. Другие члены Ордена согласно кивают. Карл Сэнфорд приведёт человечество в эпоху мира и защитит его от космических угроз. Люди не сразу привыкнут к новому порядку, но если эти знания не попадут в руки Ордена, человечество обречено.\nВедьмы отступают в лес, оставляя вас наедине с братьями и сёстрами из Внутреннего круга. Вы собираетесь вокруг своего предводителя, который читает Новый Завет Ордена Серебряных Сумерек и рассказывает о своих планах: о высших существах космоса, о вознесении человечества, о Великих Древних, о жизни и смерти, об Азатоте и Конце Всего. Шаг за шагом Орден планирует будущее Земли, в котором вам предстоит стать одним из рычагов нового мирового порядка.",
       "steps": [
         "true_work_of_silver_twilight_lodge_has_begun",
         "silver_twilight_wins_campaign"
@@ -51631,7 +51636,7 @@
         "name": "Resolution 3"
       },
       "title": "Исход 3",
-      "text": "Anette is right. Sanford tricked you. This is what he was after all along. Perhaps he considers this “protecting humanity,” but the truth is that he has endangered the lives of others over and over again in order to serve his own greed and lust for power. You shake your head.\n“A pity,” Mr. Sanford complains, “I thought you were smarter than this.” You take several steps back, retreating to where the witches are gathered. Sanford turns to the other members of his Order and points to you. “Kill them,” he commands.\n“Erynn, give us cover!” Anette barks to the red-haired witch next to her. The witch nods in response and waves a wooden rod in front of her, creating a cloud of mist that masks your presence. “We have to get out of here. Go!” Anette yells.\nYour escape is a blur. Robed members of the Silver Twilight cult chase you relentlessly throughout the forsaken woods. You are only barely able to make it back to the shore before they catch up to you. You motion for Anette and the others to join you, but she shakes her head. “We’ll meet again soon.” The edges of the witches’ cloaks bleed into the night sky, and with a swirl of darkness, they vanish one by one.",
+      "text": "Анетта права. Сэнфорд вас обманул. Именно этого он и добивался с самого начала. Может, он и уверен, что защищает человечество, но на самом деле он раз за разом подвергал опасности жизни других в угоду своей жадности и властолюбию. Вы качаете головой.\n«Жаль, — недовольно произносит мистер Сэнфорд. — Я считал вас умнее». Вы отступаете на несколько шагов в сторону места, где собрались ведьмы. Сэнфорд оборачивается к другим членам Ордена. «Убить их», — командует он, указывая на вас.\n«Эринн, прикрой нас!» — бросает Анетта стоящей рядом с ней рыжеволосой ведьме. Та кивает в ответ и взмахивает перед собой деревянным жезлом, окутывая вас облаком дыма. «Надо убираться отсюда. Ну же!» — кричит Анетта.\nВы бежите сломя голову. Культисты Серебряных Сумерек упорно преследуют вас по богом забытому лесу. Вам едва удаётся добраться до берега, не угодив в их руки. Вы жестом приглашаете Анетту и остальных присоединиться к вам, но она качает головой: «Скоро мы встретимся вновь». Края их плащей расплываются на фоне ночного неба, и ведьмы одна за одной исчезают в вихре тьмы.",
       "steps": [
         "carl_sanford_possesses_the_secrets_of_the_universe",
         "resolution_8"
@@ -51644,7 +51649,7 @@
         "name": "Resolution 4"
       },
       "title": "Исход 4",
-      "text": "Anette approaches, confronting the remnant’s ethereal shell. “Sister! We are the ones who have called you here from the great beyond.” The shattered revenant turns its attention to Anette, and the rest of her coven watch in anticipation.\n“What are you doing, you fool? This spirit is no mere witch!” Carl Sanford yells out. But it is too late. Anette ignores Mr. Sanford, continuing to speak with the spectral presence. “For years we have suffered injustice after injustice. Share with me your secrets, sister. Together, as one mind, body, and soul, we can begin anew.”\nThe ghost reaches out to her with a long, skeletal arm. Anette’s sisters gasp as their high priestess steps forward and kneels before the being, offering herself. With a sudden rush of energy, the phantom soul is drawn inside Anette. She collapses to the ground, reeling from the spiritual impact. Her body writhes in torment, but none of the other witches step forward to help, instead watching with equal parts terror and fascination. Finally, Anette rises to her feet, her eyes aglow with mystical power. When she speaks, it is not her voice. “Sisters. Rejoice, for I am reborn,” Keziah says.\nCarl Sanford taps you with his cane. You were so transfixed by the events occurring in front of you that you hadn’t noticed the Lodge members slinking toward the edges of the clearing. One of the Lodge’s inner circle raises a revolver and attempts to fire, but the high priestess simply glares at him, and his arm withers and rots before your eyes. His gun clatters to the ground and he makes one final croak before he is nothing but a decayed husk on the ground. “We must leave this place at once,” Sanford says stoically. “This being possesses power over life and death itself. It will not suffer our presence any longer.”\nAnette—no, Keziah—turns her attention to you, and her eyes brighten. “You look familiar, child. Come, come. Do not be afraid. You have nothing to fear from me.” She grins wickedly. Her voice is like knives driving into your soul. You hate to admit it, but Sanford is right. You turn and flee with the rest of the Lodge, hoping you are fast enough to escape the witch’s magic. \nYour escape is a blur. Witches and spirits chase you relentlessly throughout the forsaken woods. You are only barely able to make it back to the shore before they catch up to you. Other members of the Lodge are perhaps not so fortunate. Having scattered in many directions, you’re not sure how many of them escaped, and you don’t see Carl Sanford anywhere, though you suspect he had a plan for this outcome.",
+      "text": "Анетта подходит к бесплотной фигуре призрака и обращается к ней: «Сестра! Это мы призвали тебя из великого небытия». Изломанный призрак переводит взгляд на Анетту. Остальной ковен замирает в ожидании.\n«Ты что творишь, дура? Этот дух — не просто ведьма!» — кричит Карл Сэнфорд. Но уже слишком поздно. Не обращая внимания на мистера Сэнфорда, Анетта продолжает разговор с призрачной сущностью. «Годами мы сносили несправедливости одну за другой. Поделись с нами тайнами, сестра. Вместе, в единстве наших тел и наших душ, мы сможем начать всё заново».\nПризрак протягивает к ней длинную костяную руку. Сёстры Анетты ахают, когда верховная жрица делает шаг вперёд и преклоняет колено перед существом, предлагая себя. Душа призрака стремительным потоком силы врывается в тело Анетты, и та падает наземь. Верховная жрица корчится в муках, но ни одна из ведьм не пытается помочь ей — они лишь наблюдают, проникнутые ужасом и восхище­нием. Наконец Анетта поднимается на ноги. В её глазах пылает мистическая мощь. Она начинает говорить, но это больше не её голос. «Сёстры. Радуйтесь, ибо я возродилась», — произносит Кассия.\nКарл Сэнфорд касается вас своей тростью. Происходящее так захватило вас, что вы не заметили, как члены Ложи крадучись отходят к краю поляны. Кто-то из Внутреннего круга поднимает револьвер, чтобы выстрелить, но один лишь взгляд верховной жрицы заставляет его руку скрючиться и истлеть прямо на ваших глазах. Его пистолет падает на землю, а сам он, издав последний хрип, обращается в иссохшую мумию. «Нужно немедленно уходить отсюда, — хладнокровно говорит Сэнфорд. — Это существо может управлять самими жизнью и смертью. Оно не будет больше терпеть наше присутствие». \nАнетта — нет, Кассия — поворачивается к вам, и её глаза вспыхивают. «Ты выглядишь знакомо, дитя. Подойди. Не бойся. Я не причиню тебе вреда». Она зловеще улыбается. Её голос ножом вонзается в вашу душу. Вам неприятно признавать это, но Сэнфорд прав. Вы разворачиватесь и стремглав бежите вслед за членами Ложи, надеясь, что магия ведьмы вас не догонит.\nВы бежите сломя голову. Ведьмы и духи упорно преследуют вас по богом забытому лесу. Вам едва удаётся добраться до берега, не угодив в их руки. Возможно, остальным членам Ложи не так повезло. Все они бежали врассыпную, и вы не знаете, многим ли удалось спастись. Карла Сэнфорда тоже нигде не видно, хотя у него наверняка был план и для такого исхода.",
       "steps": [
         "maybe_adjust_chaos_bag",
         "anette_mason_is_possessed_by_evil",
@@ -51678,7 +51683,7 @@
         "name": "Resolution 6"
       },
       "title": "Resolution 6",
-      "text": "When you come to your senses, the wind has subsided and the dark mist has vanished. With the ritual concluded, the island seems to have returned to normal—but was the ritual successful, or did it fail? You make your way to the center of the island to find out what happened. As you arrive, you find Anette and her coven heavily wounded, and the Lodge stands victorious. Carl Sanford holds a thick leather tome in his hands, its pages glowing with arcane power. “What have you done?!” Anette yells. Several members of her coven surround her. They are embattled, but you have no doubt they would lay down their life to protect their high priestess from harm.\n“What have I done? Why, I have cheated the Devil,” Sanford responds with a sinister grin. You notice the words of his tome are now glowing with a spectral radiance. “Keziah signed the Black Book of Azathoth in order to learn the secrets of the universe. A fatal error, in my estimation, for it put her in the clutches of one far more powerful than she.” He begins to read from the pages as he explains further. “She paid the price, but I shall reap the harvest.”\nAnette clenches her jaw and turns toward you. “Listen to me. You cannot even begin to fathom the secrets this monster now possesses. You must stop him, no matter the cost.”\nYou hold your tongue, but in the back of your mind, you suspect Anette is right. Sanford has tricked you. This is what he was after all along. Perhaps he considers this “protecting humanity,” but the truth is that he has endangered the lives of others over and over again in order to serve his own greed and lust for power. However, before you can confront Sanford, he turns to the other members of his Order and points to you. “This one is no longer useful,” he explains. “Kill them all.”\n“Erynn, give us cover!” Anette barks to the red-haired witch next to her. The witch nods in response and waves a wooden rod in front of her, creating a cloud of mist that masks your presence. “We have to get out of here. Go!” Anette yells.\nYour escape is a blur. Robed members of the Silver Twilight cult chase you relentlessly throughout the forsaken woods. You are only barely able to make it back to the shore before they catch up to you. You motion for Anette and the others to join you, but she shakes her head. “We’ll meet again soon.” The edges of the witches’ cloaks bleed into the night sky, and with a swirl of darkness, they vanish one by one.",
+      "text": "Когда вы приходите в себя, ветер улёгся, а тёмная мгла исчезла. По-видимому, на остров вернулся покой, как только закончился ритуал, — но завершился ли он успехом или провалом? Вы направляетесь к центру острова, чтобы узнать, что произошло. Прибыв на место, вы видите, что Анетта и ведьмы тяжело изранены, а Ложа торжествует. Карл Сэнфорд держит в руках толстую книгу в кожаном переплёте, а её страницы светятся мистической силой. «Что вы наделали?!» — кричит Анетта. Вокруг неё стоят несколько ведьм ковена. Они потрёпаны в схватке, но, очевидно, готовы пожертвовать собой, чтобы защитить верховную жрицу.\n«Что я наделал? Да я обманул самого Дьявола, — отвечает Сэнфорд со зловещей ухмылкой. Вы видите, что строки в его книге сияют нездешним светом. — Кассия подписала Чёрную книгу Азатота, чтобы постичь тайны Вселенной, и оказалась во власти существа, куда более могущественного, чем она. Ужасная ошибка, на мой взгляд. — Он начинает перелистывать страницы. — Она заплатила цену, а я получу награду».\nАнетта стискивает зубы и поворачивается к вам: «Послушайте. Вы даже вообразить не можете, какие тайны теперь в руках у этого чудовища. Вы должны во что бы то ни стало остановить его».\nВы молчите, но в глубине души чувствуете, что Анетта права. Сэнфорд вас обманул. Именно этого он и добивался с самого начала. Может, он и уверен, что защищает человечество, но на самом деле он раз за разом подвергал опасности жизни других в угоду своей жадности и властолюбию. Но прежде чем вы успеваете помешать Сэнфорду, он оборачивается к другим членам Ордена. «Эти нам больше не нужны. Убить их всех», — командует он, указывая на вас.\n«Эринн, прикрой нас!» — бросает Анетта стоящей рядом с ней рыжеволосой ведьме. Та кивает в ответ и взмахивает перед собой деревянным жезлом, окутывая вас облаком дыма. «Надо убираться отсюда. Ну же!» — кричит Анетта.\nВы бежите сломя голову. Культисты Серебряных Сумерек упорно преследуют вас по богом забытому лесу. Вам едва удаётся добраться до берега, не угодив в их руки. Вы жестом приглашаете Анетту и остальных присоединиться к вам, но она качает головой: «Скоро мы встретимся вновь». Края их плащей расплываются на фоне ночного неба, и ведьмы одна за одной исчезают в вихре тьмы.",
       "steps": [
         "carl_sanford_possesses_the_secrets_of_the_universe",
         "resolution_8"
@@ -51691,7 +51696,7 @@
         "name": "Resolution 7"
       },
       "title": "Resolution 7",
-      "text": "When you come to your senses, the wind has subsided and the dark mist has vanished. With the ritual concluded, the island seems to have returned to normal—but was the ritual successful, or did it fail? You make your way to the center of the island to find out what happened. As you arrive, you find Carl Sanford and the other members of his Order heavily wounded, and Anette and her coven stand victorious. Anette stands at the center of the clearing, her eyes aglow with mystical power. When she speaks, it is not her voice. “Sisters. Rejoice, for I am reborn,” Keziah says.\nCarl Sanford taps you with his cane. You were so transfixed by the events occurring in front of you that you hadn’t noticed the Lodge members slinking toward the edges of the clearing. One of the Lodge’s inner circle raises a revolver and attempts to fire, but the high priestess simply glares at him, and his arm withers and rots before your eyes. His gun clatters to the ground and he makes one final croak before he is nothing but a decayed husk on the ground. “We must leave this place at once,” Sanford says stoically. “This being possesses power over life and death itself. It will not suffer our presence any longer.”\nAnette—no, Keziah—turns her attention to you, and her eyes brighten. “You look familiar, child. Come, come. Do not be afraid. You have nothing to fear from me.” She grins wickedly. Her voice is like knives driving into your soul. You hate to admit it, but Sanford is right. You turn and flee with the rest of the Lodge, hoping you are fast enough to escape the witch’s magic.\nYour escape is a blur. Witches and spirits chase you relentlessly throughout the forsaken woods. You are only barely able to make it back to the shore before they catch up to you. Other members of the Lodge are perhaps not so fortunate. Having scattered in many directions, you’re not sure how many of them escaped, and you don’t see Carl Sanford anywhere, though you suspect he had a plan for this outcome.",
+      "text": "Когда вы приходите в себя, ветер улёгся, а тёмная мгла исчезла. По-видимому, на остров вернулся покой, как только закончился ритуал, — но завершился ли он успехом или провалом? Вы направляетесь к центру острова, чтобы узнать, что произошло. Прибыв на место, вы видите, что Карл Сэнфорд и другие члены Ложи тяжело изранены, а Анетта и ковен торжествуют. Верховная жрица стоит посреди поляны. В её глазах пылает мистическая мощь. Она начинает говорить, но это больше не её голос. «Сёстры. Радуйтесь, ибо я возродилась», — произносит Кассия.\nКарл Сэнфорд касается вас своей тростью. Происходящее так захватило вас, что вы не заметили, как члены Ложи крадучись отходят к краю поляны. Кто-то из Внутреннего круга поднимает револьвер, чтобы выстрелить, но один лишь взгляд верховной жрицы заставляет его руку скрючиться и истлеть прямо на ваших глазах. Его пистолет падает на землю, а сам он, издав последний хрип, обращается в иссохшую мумию. «Нужно немедленно уходить отсюда, — хладнокровно говорит Сэнфорд. — Это существо может управлять самими жизнью и смертью. Оно не будет больше терпеть наше присутствие». \nАнетта — нет, Кассия — поворачивается к вам, и её глаза вспыхивают. «Ты выглядишь знакомо, дитя. Подойди. Не бойся. Я не причиню тебе вреда». Она зловеще улыбается. Её голос ножом вонзается в вашу душу. Вам неприятно признавать это, но Сэнфорд прав. Вы разворачиватесь и стремглав бежите вслед за членами Ложи, надеясь, что магия ведьмы вас не догонит.\nВы бежите сломя голову. Ведьмы и духи упорно преследуют вас по богом забытому лесу. Вам едва удаётся добраться до берега, не угодив в их руки. Возможно, остальным членам Ложи не так повезло. Все они бежали врассыпную, и вы не знаете, многим ли удалось спастись. Карла Сэнфорда тоже нигде не видно, хотя у него наверняка был план и для такого исхода.",
       "steps": [
         "anette_mason_is_possessed_by_evil",
         "resolution_8"
@@ -51703,8 +51708,8 @@
         "id": "the_circle_undone.union_and_disillusion.resolution_8",
         "name": "Resolution 8"
       },
-      "title": "Resolution 8",
-      "text": "When you finally return to the banks of the Miskatonic River, you take stock of the situation…",
+      "title": "Исход 8",
+      "text": "Вернувшись наконец на берег Мискатоника, вы размышляете над происходящим…",
       "steps": [
         "remove_puzzle_box",
         "check_missing_persons_alive",
@@ -75726,9 +75731,1496 @@
   "scenario_name": "Into the Maelstrom",
   "full_name": "Scenario VIII: Into the Maelstrom",
   "header": "Сценарий VIII",
-  "type": "placeholder",
-  "setup": [],
-  "steps": []
+  "setup": [
+    "intro",
+    "gather_encounter_sets",
+    "setup_keys",
+    "check_possess_key",
+    "check_possess_map",
+    "check_keeper_of_the_gate_defeated",
+    "check_gate_rightful_guardian",
+    "maybe_add_facedown_keys",
+    "setup_locations",
+    "location_layout",
+    "check_diving_suit",
+    "setup_act_deck",
+    "set_aside_cards",
+    "add_flood_tokens",
+    "encounter_deck",
+    "keys_rule",
+    "neighboring_locations_rule",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "Your plan is simple. Foolish, but simple. The knowledge you've gathered leads you to conclude that the Esoteric Order of Dagon is the cause of both the rising tides and the appearance of the horrific \"Deep Ones.\" Not only that, but over the course of the last few decades, the Order has transformed the townsfolk into more of the horrific creatures, using them to infiltrate Innsmouth from within. But worst of all, the entity the cult worships-Dagon-is just one of two. His mate, Hydra, still slumbers in the depths below Innsmouth, waiting to awaken and stake her claim over an endless ocean.\nThese are the conclusions that have led to your plan: Travel once more to Devil Reef, descent into the city of the Deep Ones that lies hidden at the bottom of the ocean, and put a stop to the Deep Ones' plans once and for all. Agent Harper helps you prepare, loading your possessions onto the boat you managed to steal from what remained of Innsmouth's docks. \"We only have one shot at this,\" Harper says. \"I don't think I need to remind you what might happen if we fail.\" She looks pointedly at the flooded ruins of Innsmouth. \"Are you ready?\""
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Подготовка к сценарию",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "into_the_maelstrom",
+        "agents_of_hydra",
+        "creatures_of_the_deep",
+        "flooded_caverns",
+        "malfunction",
+        "syzygy",
+        "ancient_evils"
+      ]
+    },
+    {
+      "id": "setup_keys",
+      "bullet_type": "none",
+      "text": "Check the Campaign Log. Place each of the following keys (blue, red, green, and yellow) as follows:"
+    },
+    {
+      "id": "check_possess_key",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "possess_the_key_to_yhanthlei",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "choose_investigator_to_take_blue_key"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "set_blue_key_aside"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_investigator_to_take_blue_key",
+      "bullet_type": "small",
+      "text": "Because <i>the investigators possess the key to Y'ha-nthlei</i>, choose an investigator to take control of the blue key."
+    },
+    {
+      "id": "set_blue_key_aside",
+      "bullet_type": "small",
+      "text": "Because the investigators do <b>not</b> <i>possess the key to Y'ha-nthlei</i>, set the blue key aside, facedown."
+    },
+    {
+      "id": "check_possess_map",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "possess_a_map_of_yhanthlei",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "choose_investigator_to_take_red_key"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "set_red_key_aside"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_investigator_to_take_red_key",
+      "bullet_type": "small",
+      "text": "Because <i>the investigators possess a map of Y'ha-nthlei</i>, choose an investigator to take control of the red key."
+    },
+    {
+      "id": "set_red_key_aside",
+      "bullet_type": "small",
+      "text": "Because the investigators do <b>not</b> <i>possess a map of Y'ha-nthlei</i>, set the red key aside, facedown."
+    },
+    {
+      "id": "check_keeper_of_the_gate_defeated",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "guardian_of_yhanthlei_is_dispatched",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "choose_investigator_to_take_green_key"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "set_green_key_aside"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_investigator_to_take_green_key",
+      "bullet_type": "small",
+      "text": "Because <i>the guardian of Y’ha-nthlei is dispatched</i>, choose an investigator to take control of the green key."
+    },
+    {
+      "id": "set_green_key_aside",
+      "bullet_type": "small",
+      "text": "Because the guardian of Y'ha-nthlei has <b>not</b> been dispatched, set the green key aside, facedown."
+    },
+    {
+      "id": "check_gate_rightful_guardian",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "choose_investigator_to_take_yellow_key"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "set_yellow_key_aside"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_investigator_to_take_yellow_key",
+      "bullet_type": "small",
+      "text": "Because <i>the gateway to Y’ha-nthlei recognizes you as its rightful keeper</i>, choose an investigator to take control of the yellow key."
+    },
+    {
+      "id": "set_yellow_key_aside",
+      "bullet_type": "small",
+      "text": "Because the gateway to Y'ha-nthlei does <b>not</b> recognize you as its rightful keeper, set the yellow key aside, facedown."
+    },
+    {
+      "id": "maybe_add_facedown_keys",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "possess_the_key_to_yhanthlei",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "possess_a_map_of_yhanthlei",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 4,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "add_all_keys"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "maybe_add_facedown_keys_3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_add_facedown_keys_3",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "possess_the_key_to_yhanthlei",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "possess_a_map_of_yhanthlei",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 3,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "add_three_keys"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "maybe_add_facedown_keys_2"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_add_facedown_keys_2",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "possess_the_key_to_yhanthlei",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "possess_a_map_of_yhanthlei",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "add_two_keys"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "maybe_add_facedown_keys_1"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_add_facedown_keys_1",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "possess_the_key_to_yhanthlei",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "possess_a_map_of_yhanthlei",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 1,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "add_one_keys"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "add_no_keys"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_all_keys",
+      "text": "Set aside the purple, white and black keys facedown. Shuffle these three set aside keys so you do not know which is which."
+    },
+    {
+      "id": "add_three_keys",
+      "text": "Combine the the purple, white and black keys with the set aside key. Turn the keys facedown and shuffle them so you do not know which is which."
+    },
+    {
+      "id": "add_two_keys",
+      "text": "Shuffle the purple, white and black keys face down. Remove one of these keys at random from the game without looking at it (it will not be used in this scenario). Combine the two remaining keys with the two set aside keys, and shuffle them so you do not know which is which."
+    },
+    {
+      "id": "add_one_keys",
+      "text": "Shuffle the purple, white and black keys face down. Remove two of these keys at random from the game without looking at it (it will not be used in this scenario). Combine the remaining key with the three set aside keys, and shuffle them so you do not know which is which."
+    },
+    {
+      "id": "add_no_keys",
+      "text": "Remove the purple, white and black key from the game (they will not be used in this scenario)."
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put Gateway to Y’ha-nthlei Gate into play. <i>(It enter play partially flooded.)</i> Put each of the 8 Tidal Tunnel locations into play surrounding it.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play at the Gateway to Y'ha-nthlei."
+        },
+        {
+          "text": "Set each other location aside, out of play."
+        }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout for Act 1",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "07052_back",
+          "07052_back",
+          "07052_back"
+        ],
+        [
+          "07052_back",
+          "gateway",
+          "07052_back"
+        ],
+        [
+          "07052_back",
+          "07052_back",
+          "07052_back"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "gateway",
+          "name": "Gateway to Y’ha-nthlei"
+        }
+      ]
+    },
+    {
+      "id": "check_diving_suit",
+      "text": "Check Campaign Log.",
+      "bullets": [
+        {
+          "text": "Each investigator who <i>possesses a diving suit</i> begins play with a Diving Suit story asset in their play area."
+        },
+        {
+          "text": "Remove each unused Diving Suit from the game."
+        }
+      ]
+    },
+    {
+      "id": "setup_act_deck",
+      "text": "When constructing the act deck, use only the City of the Deep (v.I) version of act 2a. Set City of the Deep (v.II) and City of the Deep (v.III) aside, out of play."
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the Lloigor enemy, the Aquatic Abomination enemy, the double-sided Hydra enemy, and the double-sided Dagon enemy aside, out of play."
+    },
+    {
+      "id": "add_flood_tokens",
+      "text": "Add the flood tokens to the token pool."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Сложите в колоду контактов все оставшиеся карты контактов и перемешайте."
+    },
+    {
+      "id": "neighboring_locations_rule",
+      "type": "rule_reminder",
+      "title": "Location Adjacency in Y’ha-nthlei",
+      "text": "During this scenario, locations are arranged in a set pattern, with each location adjacent to one or more other locations.",
+      "bullets": [
+        {
+          "text": "<b>During this scenario, adjacent locations are considered to be connected to one another.</b>"
+        },
+        {
+          "text": "Locations are only adjacent orthogonally (left, right, above, or below); they are not adjacent diagonally."
+        }
+      ]
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "keys",
+            "text": "Ключи",
+            "steps": [
+              "ask_keys"
+            ]
+          },
+          {
+            "id": "flashback_14",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "flashback_14",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Flashback XIV",
+            "steps": [
+              "flashback_14_story",
+              "flashback_14_effects",
+              "flashback_14_choice"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "flashback_14",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "act_2_setup",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "act_2_setup",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Act 2 Setup",
+            "steps": [
+              "act_2_locations"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "act_2_setup",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "act_2_locations",
+      "type": "branch",
+      "text": "When setting up Act 2, use the \"Location Placement for Act 2\" button to see the layout for the scenarios. <i>Note: it has been adjusted based on the number of players in the game</i>. Take care not to look at the revealed side of any location that is not used.",
+      "condition": {
+        "type": "scenario_data",
+        "scenario_data": "player_count",
+        "options": [
+          {
+            "numCondition": 1,
+            "steps": [
+              "location_layout_act_2_1P"
+            ]
+          },
+          {
+            "numCondition": 2,
+            "steps": [
+              "location_layout_act_2_2P"
+            ]
+          },
+          {
+            "numCondition": 3,
+            "steps": [
+              "location_layout_act_2_3P"
+            ]
+          },
+          {
+            "numCondition": 4,
+            "steps": [
+              "location_layout_act_2_4P"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "location_layout_act_2_4P",
+      "type": "location_setup",
+      "text": "Location Placement (Act 2)",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "blank",
+          "gateway",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "sanctum",
+          "yhanthlei",
+          "yhanthlei",
+          "yhanthlei",
+          "yhanthlei",
+          "yhanthlei",
+          "sanctum"
+        ],
+        [
+          "blank",
+          "sanctum",
+          "blank",
+          "yhanthlei",
+          "blank",
+          "sanctum",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "lair_of_hydra",
+          "yhanthlei",
+          "lair_of_dagon",
+          "blank",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "gateway",
+          "name": "Gateway to Y’ha-nthlei"
+        },
+        {
+          "code": "sanctum",
+          "name": "Y'ha-nthlei Sanctum"
+        },
+        {
+          "code": "yhanthlei",
+          "name": "Y’ha-nthlei"
+        },
+        {
+          "code": "lair_of_hydra",
+          "name": "Lair of Hydra"
+        },
+        {
+          "code": "lair_of_dagon",
+          "name": "Lair of Dagon"
+        }
+      ]
+    },
+    {
+      "id": "location_layout_act_2_3P",
+      "type": "location_setup",
+      "text": "Location Placement (Act 2)",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "blank",
+          "gateway",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "sanctum",
+          "yhanthlei",
+          "yhanthlei",
+          "yhanthlei",
+          "yhanthlei",
+          "yhanthlei",
+          "sanctum"
+        ],
+        [
+          "blank",
+          "sanctum",
+          "lair_of_hydra",
+          "yhanthlei",
+          "lair_of_dagon",
+          "sanctum",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "gateway",
+          "name": "Gateway to Y’ha-nthlei"
+        },
+        {
+          "code": "sanctum",
+          "name": "Y'ha-nthlei Sanctum"
+        },
+        {
+          "code": "yhanthlei",
+          "name": "Y’ha-nthlei"
+        },
+        {
+          "code": "lair_of_hydra",
+          "name": "Lair of Hydra"
+        },
+        {
+          "code": "lair_of_dagon",
+          "name": "Lair of Dagon"
+        }
+      ]
+    },
+    {
+      "id": "location_layout_act_2_2P",
+      "type": "location_setup",
+      "text": "Location Placement (Act 2)",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "gateway",
+          "blank",
+          "blank"
+        ],
+        [
+          "sanctum",
+          "yhanthlei",
+          "yhanthlei",
+          "yhanthlei",
+          "sanctum"
+        ],
+        [
+          "blank",
+          "sanctum",
+          "yhanthlei",
+          "sanctum",
+          "blank"
+        ],
+        [
+          "blank",
+          "lair_of_hydra",
+          "yhanthlei",
+          "lair_of_dagon",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "gateway",
+          "name": "Gateway to Y’ha-nthlei"
+        },
+        {
+          "code": "sanctum",
+          "name": "Y'ha-nthlei Sanctum"
+        },
+        {
+          "code": "yhanthlei",
+          "name": "Y’ha-nthlei"
+        },
+        {
+          "code": "lair_of_hydra",
+          "name": "Lair of Hydra"
+        },
+        {
+          "code": "lair_of_dagon",
+          "name": "Lair of Dagon"
+        }
+      ]
+    },
+    {
+      "id": "location_layout_act_2_1P",
+      "type": "location_setup",
+      "text": "Location Placement (Act 2)",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "gateway",
+          "blank",
+          "blank"
+        ],
+        [
+          "sanctum",
+          "yhanthlei",
+          "yhanthlei",
+          "yhanthlei",
+          "sanctum"
+        ],
+        [
+          "sanctum",
+          "lair_of_hydra",
+          "yhanthlei",
+          "lair_of_dagon",
+          "sanctum"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "gateway",
+          "name": "Gateway to Y’ha-nthlei"
+        },
+        {
+          "code": "sanctum",
+          "name": "Y'ha-nthlei Sanctum"
+        },
+        {
+          "code": "yhanthlei",
+          "name": "Y’ha-nthlei"
+        },
+        {
+          "code": "lair_of_hydra",
+          "name": "Lair of Hydra"
+        },
+        {
+          "code": "lair_of_dagon",
+          "name": "Lair of Dagon"
+        }
+      ]
+    },
+    {
+      "id": "keys_rule",
+      "title": "Ключи",
+      "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
+    },
+    {
+      "id": "ask_keys",
+      "type": "input",
+      "text": "Which keys do you want to read the representation of:",
+      "input": {
+        "type": "checklist",
+        "text": "Read",
+        "choices": [
+          {
+            "id": "red",
+            "text": "Red",
+            "steps": [
+              "red_key"
+            ]
+          },
+          {
+            "id": "blue",
+            "text": "Blue",
+            "steps": [
+              "blue_key"
+            ]
+          },
+          {
+            "id": "green",
+            "text": "Green",
+            "steps": [
+              "green_key"
+            ]
+          },
+          {
+            "id": "yellow",
+            "text": "Yellow",
+            "steps": [
+              "yellow_key"
+            ]
+          },
+          {
+            "id": "purple",
+            "text": "Purple",
+            "steps": [
+              "purple_key"
+            ]
+          },
+          {
+            "id": "black",
+            "text": "Black",
+            "steps": [
+              "black_key"
+            ]
+          },
+          {
+            "id": "white",
+            "text": "White",
+            "steps": [
+              "white_key"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "red_key",
+      "text": "Red: Information regarding the otherworldly route to Y'ha-nthlei, and the secrets that lie within."
+    },
+    {
+      "id": "blue_key",
+      "text": "Blue: A key allowing entrance through the gateway to Y'ha-nthlei and its other thresholds."
+    },
+    {
+      "id": "green_key",
+      "text": "Green: A trophy proving one's worthiness to enter Y'ha-nthleiand commune with its deities."
+    },
+    {
+      "id": "yellow_key",
+      "text": "Yellow: A badge signifying one's allegiance to Y'ha-nthlei and its deities."
+    },
+    {
+      "id": "purple_key",
+      "text": "Purple: A key of shimmering gold for opening the vaults of the deep."
+    },
+    {
+      "id": "black_key",
+      "text": "Black: A key of obsidian used to activate the many traps within the city of the deep."
+    },
+    {
+      "id": "white_key",
+      "text": "White: A key of coral, one of many used to navigate the depths of Y'ha-nthlei."
+    },
+    {
+      "id": "flashback_14_story",
+      "title": "Flashback XIV",
+      "type": "story",
+      "text": "You are deep below the Esoteric Order of Dagon's headquarters once more, emerging from the hall where you had disrupted the Order's ritual. You follow Agent Dawson through a series of winding, flooded corridors flanked by statues of aquatic monstrosities and malformed beasts. You ask Dawson where exactly you're headed, but he doesn't reply. Finally, you enter another chamber, similar to the last. Its walls are covered in otherworldly effigies and a depiction of ocean waves swirling below an alignment of celestial bodies. Another familiar pool dominates the cavern, inside which the dark shape of somethign massive slumbers. To your surprise, Agent Harper stands in front of the pool, gazing into its dark reflection. She turns with a start when she hears you approach, relaxing only once she sees who you are. \"Is it done?\" Dawson asks.\nShe nods. \"This one isn't waking up anytime soon.\"\n\"Good. The Order is on to us. We have no time to spare. Let's get to the vault and take what we came for.\"\nYou reel. What exactly is going on here? Both of the agents notice your confusion at the same time. A moment of grim understanding dawns as you realize the truth of the situation. The agency didn't come here to investigate criminal activity in Innsmouth at all. They came here for something else. And the only vaults you've seen so far in these depths are the ones filled with archaic riches. The material wealth that has kept the town of Innsmouth afloat all these years-perhaps the very riches that persuaded so many townsfolk to follow the Order and forsake their own humanity.\nStifling your frustration, you ask how much of Dawson's briefing was a lie. \"Not all of it,\" he says calmly. \"Agent Harper was missing when I contacted you, that much was true. But she was sent here on a different mission. One we must complete this very moment or risk losing everything we've worked for. And you're going to help us.\"\nYou cross your arms in defiance. It's one thing to be kept in the dark by the two agents you've risked your life for. It's another to help them smuggle treasure on behalf of the government, especially when so much more is at stake.\n\"I don't think you understand,\" Dawson replies, his voice surprisingly level. \"You are an asset of the agency and under my authority. You will do as I command.\" As the silence between you grows more and more tense, you spot Dawson's hand twitching toward his holstered weapon. Is he truly willing to go that far…?\nJust then, you hear shouting down the hall. \"Shit. They're here.\" Dawson turns to Harper, his orders terse and quiet: \"Take the exit through Devil Reef. We'll head back the way we came. Meet up at the vault.\"\nThe next minute is a blur. Dawson and Harper split up. Despite your anger, you decide it is best to follow Agent Dawson, since you are familiar with the escape route. A torrent of footsteps and hollers follows close behind. You don't get far before you are cornered. An elderly man with wide, unblinking eyes and long robes blocks your exit. \"Take them,\" he says. The rest you recall only in flashes of horror. The interrogation. The dark, flooded pit. Dawson's fate. Harper discovering you on the beach-\n-You turn on Harper, your vision adjusting back to the present. She seems to understand what you have seen. Her hand hovers dangerously near her handgun. \"Dammit,\" she says. \"I was hoping you wouldn't remember what happened the last time we were in this room…\" She draws in a shaky breath as the two of you silently judge one another. \"So, what now?\" she asks. \"I still have a job to do. Are you going to get in my way?\""
+    },
+    {
+      "id": "flashback_14_effects",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "memories_recovered",
+          "id": "stinging_betrayal",
+          "text": "a stinging betrayal"
+        }
+      ]
+    },
+    {
+      "id": "flashback_14_choice",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "help_agent_harper",
+            "text": "Help Agent Harper complete her mission.",
+            "steps": [
+              "act_2_v2"
+            ]
+          },
+          {
+            "id": "help_agent_harper",
+            "text": "Defy Agent Harper.",
+            "steps": [
+              "remove_agent_harper",
+              "act_2_v3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "act_2_v2",
+      "bullet_type": "small",
+      "text": "Put the set-aside City of the Deep (v.II) into play next to the current act. It provides a new alternate objective."
+    },
+    {
+      "id": "remove_agent_harper",
+      "bullet_type": "small",
+      "text": "Search each player's hand, deck, discard pile, and all play areas for Elina Harper and remove her from the game."
+    },
+    {
+      "id": "act_2_v3",
+      "bullet_type": "small",
+      "text": " Put the set-aside City of the Deep (v.III) into play next to the current act. It provides a new alternate objective."
+    },
+    {
+      "id": "escaped_yhanthlei",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "escaped_yhanthlei",
+          "text": "the investigators escaped Y'ha-nthlei."
+        }
+      ]
+    },
+    {
+      "id": "flood_has_begun",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "flood_has_begun",
+          "text": "the flood has begun."
+        }
+      ]
+    },
+    {
+      "id": "plot_of_the_deep_ones_was_thwarted",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "plot_of_the_deep_ones_was_thwarted",
+          "text": "the plot of the Deep Ones was thwarted."
+        }
+      ]
+    },
+    {
+      "id": "agent_harpers_mission_is_complete",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "agent_harpers_mission_is_complete",
+          "text": "Agent Harper's mission is complete."
+        }
+      ]
+    },
+    {
+      "id": "agent_harpers_mission_is_complete_at_what_cost",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "agent_harpers_mission_is_complete_at_what_cost",
+          "text": "Agent Harper's mission is complete… but at what cost?"
+        }
+      ]
+    },
+    {
+      "id": "riches_of_the_deep_are_lost_forever",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "riches_of_the_deep_are_lost_forever",
+          "text": "the riches of the deep are lost forever."
+        }
+      ]
+    },
+    {
+      "id": "riches_of_the_deep_are_destroyed_at_what_cost",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "riches_of_the_deep_are_destroyed_at_what_cost",
+          "text": "the riches of the deep are destroyed… but at what cost?"
+        }
+      ]
+    },
+    {
+      "id": "deep_ones_have_flooded_the_earth",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "deep_ones_have_flooded_the_earth",
+          "text": "the Deep Ones have flooded the Earth."
+        }
+      ]
+    },
+    {
+      "id": "add_dagon_and_hydra_to_victory_display",
+      "type": "input",
+      "text": "Add both Dagon and Hydra to the victory display. Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "input": {
+        "type": "counter",
+        "text": "Победный счёт:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "2_physical_trauma",
+      "text": "Each investigator suffers 2 physical trauma from their ordeal beneath the waves.",
+      "effects": [
+        {
+          "type": "trauma",
+          "investigator": "all",
+          "physical": 2
+        }
+      ]
+    },
+    {
+      "id": "2_mental_trauma",
+      "text": "Each investigator suffers 2 mental trauma as they realize the world will never be the same.",
+      "effects": [
+        {
+          "type": "trauma",
+          "investigator": "all",
+          "mental": 2
+        }
+      ]
+    },
+    {
+      "id": "skip_epilogue",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "tic_epilogue"
+        }
+      ]
+    },
+    {
+      "id": "win_maybe",
+      "text": "The investigators win the campaign…?",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "win"
+        }
+      ]
+    },
+    {
+      "id": "win",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "win"
+        }
+      ]
+    },
+    {
+      "id": "lose",
+      "text": "Сыщики проиграли.",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "lose"
+        }
+      ]
+    },
+    {
+      "id": "check_shattering_the_alignment",
+      "type": "input",
+      "text": "Is Act 2b—\"Shattering the Alignment\" in the victory display?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "yes",
+            "text": "Да",
+            "steps": [
+              "resolution_2"
+            ]
+          },
+          {
+            "id": "no",
+            "text": "Нет",
+            "steps": [
+              "resolution_3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
+    },
+    {
+      "id": "resolution_3",
+      "type": "resolution",
+      "resolution": "R3"
+    },
+    {
+      "id": "resolution_4",
+      "type": "resolution",
+      "resolution": "R4"
+    },
+    {
+      "id": "resolution_5",
+      "type": "resolution",
+      "resolution": "R5"
+    },
+    {
+      "id": "resolution_6",
+      "type": "resolution",
+      "resolution": "R6"
+    },
+    {
+      "id": "resolution_7",
+      "type": "resolution",
+      "resolution": "R7"
+    },
+    {
+      "id": "resolution_8",
+      "type": "resolution",
+      "resolution": "R8"
+    },
+    {
+      "id": "delayed_win",
+      "text": "Сыщики победили в кампании!"
+    },
+    {
+      "id": "3_bonus_xp",
+      "text": "Each investigator earns 3 bonus experience.",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 3
+        }
+      ]
+    },
+    {
+      "id": "all_killed",
+      "text": "Все сыщики <b>убиты</b>.",
+      "effects": [
+        {
+          "type": "trauma",
+          "investigator": "all",
+          "killed": true
+        }
+      ]
+    },
+    {
+      "id": "check_successful_conspiracy_4_5",
+      "type": "input",
+      "text": "Check if another act card is in the victory display:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "fulfilled",
+            "text": "Act 2b—\"Conspiracy Fulfilled\"",
+            "steps": [
+              "resolution_4"
+            ]
+          },
+          {
+            "id": "dismantled",
+            "text": "Act 2b—\"Conspiracy Dismantled\"",
+            "steps": [
+              "resolution_5"
+            ]
+          },
+          {
+            "id": "neither",
+            "text": "Neither",
+            "steps": [
+              "$upgrade_decks"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_successful_conspiracy_6_7",
+      "type": "input",
+      "text": "Check if another act card is in the victory display:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "fulfilled",
+            "text": "Act 2b—\"Conspiracy Fulfilled\"",
+            "steps": [
+              "resolution_6"
+            ]
+          },
+          {
+            "id": "dismantled",
+            "text": "Act 2b—\"Conspiracy Dismantled\"",
+            "steps": [
+              "resolution_7"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "Исход не был достигнут\n(все сыщики побеждены)",
+      "text": "The chanting of the Deep Ones rises to a crescendo. The alien walls of Y'ha-nthlei twist and contort before your eyes, like lungs desperately clawing for breath. The air becomes thin. Water seeps through the walls. Nothing can stop the pull of the tide now. Nothing can stop the great flood. A triumphant roar sounds throughout the city, and the citizens of the deep rise to meet the cry in their jubilance. You collapse in exhaustion and resignation. Your part is over, now. The part of humanity will be soon to follow.",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": [
+        "resolution_8"
+      ]
+    },
+    {
+      "id": "R1",
+      "investigator_status": [
+        "alive",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Исход 1",
+      "text": "You frantically make your way back to the entrance to the undersea city, hoping desperately to escape alive. You feel the familiar tugging of the currents all around you as you emerge on the other side of the otherworldly threshold. Your heart does not stop racing until you finally break the surface of the water and collapse on an outcropping of rock.",
+      "steps": [
+        "escaped_yhanthlei",
+        "add_dagon_and_hydra_to_victory_display",
+        "2_physical_trauma",
+        "check_shattering_the_alignment"
+      ]
+    },
+    {
+      "id": "R2",
+      "investigator_status": [
+        "alive",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Исход 2",
+      "text": "As you emerge from the caverns of Devil Reef and look up into the sky, you are relieved to see the sun and moon no longer in alignment. The tide appears to be retreating, as well. The seas seem to have finally calmed.",
+      "steps": [
+        "plot_of_the_deep_ones_was_thwarted",
+        "delayed_win",
+        "check_successful_conspiracy_4_5"
+      ]
+    },
+    {
+      "id": "R3",
+      "investigator_status": [
+        "alive",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Исход 3",
+      "text": "As you emerge from the caverns of Devil Reef and look up into the sky, your throat clenches tight. The sun and moon are still locked in unholy alignment, and the sea still swallows most of the coast.",
+      "steps": [
+        "flood_has_begun",
+        "check_successful_conspiracy_6_7"
+      ]
+    },
+    {
+      "id": "R4",
+      "investigator_status": [
+        "alive",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Исход 4",
+      "text": "Agent Harper is the first to speak. \"We did it. I can't believe we did it.\" You nod. Not only were you able to stop the Deep Ones, but you helped Agent Harper accomplish her mission as well. She digs through her belongings for a bright orange firearm with a large barrel, loads a flare into it, and launches the bright light into the sky with a victorious smirk. \"They'll be coming for us any minute now. I'm sure you'll be rewarded handsomely for your help. So long as you agree to speak to nobody about any of this, of course,\" she says. You nod. It's not like anyone would believe you, anyway.",
+      "steps": [
+        "agent_harpers_mission_is_complete",
+        "3_bonus_xp",
+        "$upgrade_decks",
+        "win"
+      ]
+    },
+    {
+      "id": "R5",
+      "investigator_status": [
+        "alive",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Исход 5",
+      "text": "There is no sign of Agent Harper anywhere. Perhaps she never made it out of the city alive. You hold out hope that she is out there, somewhere. Still, you are relieved that at the very least, nobody will ever be able to use the riches of Y'ha-nthlei to manipulate humanity ever again. Not the government, not the Deep Ones-nobody.",
+      "steps": [
+        "riches_of_the_deep_are_lost_forever",
+        "3_bonus_xp",
+        "$upgrade_decks",
+        "win"
+      ]
+    },
+    {
+      "id": "R6",
+      "investigator_status": [
+        "alive",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Resolution 6",
+      "text": "Agent Harper is the first to speak. \"Well. Mission accomplished, I suppose.\" You bite your lip. She may have accomplished her mission, but the toll of the Deep Ones' ritual on the world will never fade. She digs through her belongings for a bright orange firearm with a large barrel, loads a flare into it, and launches the bright light into the sky with a victorious smirk. \"They'll be coming for us any minute now. Then we'll blow that city apart, and hopefully, this will all be over,\" she says. You aren't so sure. Much of the damage has already been done. Will it ever truly end? Or are you just delaying the inevitable?",
+      "steps": [
+        "agent_harpers_mission_is_complete_at_what_cost",
+        "2_mental_trauma",
+        "skip_epilogue",
+        "$upgrade_decks",
+        "win_maybe"
+      ]
+    },
+    {
+      "id": "R7",
+      "investigator_status": [
+        "alive",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Resolution 7",
+      "text": "There is no sign of Agent Harper anywhere. Perhaps she never made it out of the city alive. You hold out hope that she is out there, somewhere. Still, you are relieved that at the very least, nobody will ever be able to use the riches of Y'ha-nthlei to manipulate humanity ever again. Not the government, not the Deep Ones-nobody. You peer out once more to the waves thrashing across the horizon. The flood seems to have halted. Perhaps you have harmed the Deep Ones and their masters enough that their ritual",
+      "steps": [
+        "riches_of_the_deep_are_destroyed_at_what_cost",
+        "2_mental_trauma",
+        "skip_epilogue",
+        "$upgrade_decks",
+        "win_maybe"
+      ]
+    },
+    {
+      "id": "R8",
+      "investigator_status": [
+        "alive",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Исход 8",
+      "text": "As the ritual concludes, the eastern seaboard becomes the first coastline drowned by the rising sea. The rest of the continent is swift to follow. The icecaps melt, consuming the remainder of the Earth. Cities fall. Humanity is no longer. All that is left is the ocean and the ever-static alignment of celestial bodies that looms overhead. And of course, the inheritors of this new Earth: Hydra, Dagon, and their children.",
+      "steps": [
+        "deep_ones_have_flooded_the_earth",
+        "all_killed",
+        "skip_epilogue",
+        "lose"
+      ]
+    }
+  ]
 },
 {
   "id": "puzzle_pieces",
@@ -76457,6 +77949,18 @@
       ]
     },
     {
+      "id": "dagon_has_awakened_small",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "dagon_has_awakened",
+          "text": "Dagon has awakened."
+        }
+      ]
+    },
+    {
       "id": "resolution_1",
       "type": "resolution",
       "resolution": "R1"
@@ -76602,6 +78106,96 @@
       "id": "keys_rule",
       "title": "Ключи",
       "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
+    },
+    {
+      "id": "maybe_ask_act_or_agenda",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "scenario_data",
+        "scenario_data": "resolution",
+        "options": [
+          {
+            "condition": "R1",
+            "steps": [
+              "ask_act_or_agenda"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_act_or_agenda",
+      "text": "Did you reach R1 by advancing Act 3b or Agenda 3b?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "act",
+            "text": "Act 3b",
+            "steps": [
+              "orders_ritual_was_disrupted",
+              "ask_dagon_asleep"
+            ]
+          },
+          {
+            "id": "agenda",
+            "text": "Agenda 3b",
+            "steps": [
+              "dagon_has_awakened_small"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "orders_ritual_was_disrupted",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "orders_ritual_was_disrupted",
+          "text": "the Order's ritual was disrupted."
+        }
+      ]
+    },
+    {
+      "id": "dagon_still_slumbers",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "dagon_still_slumbers",
+          "text": "Dagon still slumbers."
+        }
+      ]
+    },
+    {
+      "id": "ask_dagon_asleep",
+      "text": "Which version of Dagon is in play (or in the victory display)?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "sleep",
+            "text": "Dagon <i>(Deep in Slumber)</i> is in play.",
+            "steps": [
+              "dagon_still_slumbers"
+            ]
+          },
+          {
+            "id": "awake",
+            "text": "Dagon <i>(Awakened and Enraged)</i> is in play or in the victory display.",
+            "steps": [
+              "dagon_has_awakened_small"
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -76632,6 +78226,7 @@
       ],
       "text": "You're somewhere else now, lying on your stomach on cold, damp stone. Your arms are held tight behind your back. You have no idea how you got here. As consciousness returns, your vision comes into focus. You crane your neck up to view your surroundings, but it's too dark to see anything inside your stone cell.\n\"I'll ask you one last time. Who sent you here?\" a voice asks. It is deep and husky, like the croaking of a frog.\nYou hear the familiar, cool baritone of Agent Dawson reply: \"Your breath smells awful. Ever heard of brushing your teeth?\" Despite the sarcasm dripping from his words, his voice wavers ever so slightly.\n\"Your mockery only masks the fear that hides within,\" the voice replies. \"Very well. If you are of no use to us, you will be the first to be sacrificed.\"\nYour vision continues to adjust. You can just barely make out Dawson's silhouette on the other side of the cell. He is kneeling before a metal hatch in the stone floor. An elderly robed figure presses a curved knife against Dawson's throat. Someone lifts the hatch, and Dawson's eyes go wide. He gives you one last despairing look, shakes his head slowly and deliberately, and quietly slides something across the stone floor. Then the hooded figure pushes him in. In the scuffle and the low light, nobody notices the car key that skitters to a halt directly next to you.\nYou grab the key and stuff it into your pocket just before you are shoved forward. Two more sets of cold, clammy hands grap your shoulders, and the hooded figure slides his knife up to your neck. All you can see of his face are his wide, unblinking eyes.\n\"Oceiros, these ones were found in Dagon's lair as well,\" another voice explains to the elderly figure in the robes. \"We believe they were the ones snooping around Devil Reef.\"\nThe man with the knife to your throat nods. \"Your turn,\" he declares. \"Tell us why you have come and perhaps we will let you go. Who sent you? What have you seen?\"",
       "steps": [
+        "maybe_ask_act_or_agenda",
         "earn_xp",
         "maybe_ask_suspect_defeated",
         "ask_oceiros"
@@ -77173,6 +78768,12 @@
         "id": "the_innsmouth_conspiracy.the_pit_of_despair.resolution_1",
         "name": "Resolution 1"
       },
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
       "title": "Исход 1",
       "text": "In the distance, the sky is a dark crimson, and the full moon hangs just below the blackened sun. You are about to close your eyes and surrender to unconsciousness when a stranger's voice startles you back to your feet. \"Oh! You are alive?\" Even through her strained voice, you can hear a rhythmic Indian accent and the unwavering confidence of a trained professional. Standing in front of you is a woman with long, raven-black hair. Her tattered trench coat has seen better days, and bruises splash across her dirt-covered skin. \"You seem confused. Why are you looking at me like that?\" the stranger asks.",
       "steps": [
@@ -77322,14 +78923,18 @@
     {
       "id": "intro_1",
       "narration": {
-        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.intro",
-        "name": "Intro"
+        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.intro_1",
+        "name": "Intro 1"
       },
       "type": "story",
       "text": "<center><game>WEDNESDAY, AUGUST 17, 1927</game></center>\n<center><game>FIVE WEEKS EARLIER</game></center>\n\"Wake up, dammit!\" Agent Dawson shakes you awake with his right hand. You are in the passenger seat of a pristine, state-of-the-art motorcar, its polished body glowing with light from the moon as it rolls through the foggy Massachusetts countryside. \"We're almost there,\" Dawson informs you. Unfortunately, Innsmouth lacks a working railroad, which you would have preferred. There is a bus that runs from Boston to Newburyport and another that runs from Newburyport to Innsmouth... but Dawson had insisted on driving you there himself, perhaps to provide you an escape route should things go sour, or to show off his expensive automobile. Probably both.\nAs you arrive in Innsmouth, the stale odor of day-old fish and decrepit, musty buildings washes over you. Many of the buildings along the western side of the town seem to be abandoned, though you occasionally spot figures in some of the windows. You imagine Agent Dawson's opulent car must make quite an impression in such a dirty and dingy town. You joke that perhaps he should have driven here in a jalopy, to which he replies with a smirk: \"That's never been my style.\"\nEventually, you reach a defunct railroad station that was given up years ago. A few train cars sit abandoned on the tracks, and the depot is boarded up and condemned. Dawson suddenly grimaces and points to another vehicle in the open lot. \"That's Agent Harper's breezer. Let's park here and continue on foot. We can move through the town a little easier that way,\" he reasons.\nYou check Agent Harper's vehicle before continuing, but it contains no clues as to her whereabouts. From there, you head eastward beside the Manuxet River, passing numerous deserted warehouses, sodden alleyways, and standoffish townsfolk. \"Harper's got to be somewhere in this forsaken town. Residents don't look all too friendly. Wouldn't be surprised if she drew too much attention from a local mob or the like...\" Dawson begins to contemplate aloud. You ask how he knows his agent isn't simply keeping a low profile. \"Ah yes—well, we have a code phrase for that. If she had sent me a letter saying she 'had some errands to run,' that would have signalled that she would be out of touch for a short while. Without that signal, I have to assume the worst.\" To the northeast, several factory buildings loom over the rest of the town's sagging gambrel roofs, cupolas, and widow's walks. None of the locals stop to greet you along your way. Given the repulsive countenance that many of them bear, their aversion to the usual small-town pleasantries is a relief.\nEventually, you reach the town square just south of Manuxet, though even these crumbling brick buildings that surround the supposed heart of the town inspire little confidence in Agent Harper's safety. An old bus idles nearby, its greasy-looking driver leaning against the door and eyeing you suspiciously. With little else to go on, you decide to split up, knowing that you can cover much more ground that way. \"Canvass the locals and learn more about this town,\" Dawson says. \"Find out who the big shots are in this hellhole. One of them is bound to know where Harper was last seen, or who she was with. I'm going to see if I can find where she was hiding out and look for some sign of her. Meet up with me here at 1900 hours. Understood?\" You nod in agreement and go your separate ways.\nThe first person you check with is the bus driver, who probably has a decent understanding of the town. His coarse, greyish skin is the first thing you notice, followed swiftly by unusually deep and shadowed creases in the flesh of his neck, almost as if he were prematurely aged. His bulging eyes are unsettling, and you're suddenly unsure whether you've seen him blink even once as you approach. You start to offer your hand as you introduce yourself, then think better of it, just in case the man has some kind of disease you've never heard of. He introduces himself as Joe Sargent and gives you a useful—if cursory—rundown of some of the nearby buildings."
     },
     {
       "id": "info_summary",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.info_summary",
+        "name": "Info Summary"
+      },
       "type": "rule_reminder",
       "text": "What follows is a summary of the information conveyed to the investigators about the town of Innsmouth.",
       "bullets": [
@@ -77359,8 +78964,8 @@
     {
       "id": "intro_2",
       "narration": {
-        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.the_accusation",
-        "name": "The Accusation"
+        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.intro_2",
+        "name": "Intro 2"
       },
       "type": "story",
       "text": "Finally, Mr. Sargent asks you what you're doing in Innsmouth. You dodge the question with one of your own, asking him if he has seen anybody around town matching Agent Harper's description. He pauses, then shakes his head. \"Never seen 'er,\" he mutters, refusing to meet your gaze.\nYou spend the rest of the day learning the layout of the town and attempting in vain to make conversation with the locals. The more time you spend in this strange, squalid town, the more you wish you had never taken Agent Dawson up on his offer. There is something foul in the air here, something rotten and fetid that disturbs you to your core.\nLater that night, you meet up with Agent Dawson in the now-deserted town square and share what you have learned. \"Take a look at this,\" he says, handing you a creased, ink-stained letter addressed to him. \"Turns out Harper had a room at that disgusting old hotel. Still does, technically, but it seemed like she hadn't been around for a few days. I broke in and found this among her things.\"\nJudging from the unmailed letter, it seems Agent Harper knew something in town was tracking her movements. <i>I'm being followed</i>, the missive explains. <i>Don't know how they know, but they know. It's like the whole town is in on something. I have no contacts here whom I trust. I'm going to require more than one agent to sort this out, I fear--</i>\nThe letter is cut short. \"Well, she has more than one agent now,\" Dawson says bitterly once you are done reading. \"There's only one reason she wouldn't have sent this letter. Harper's in danger, and somebody in this balled-up town knows where she is.\" Together, you begin to formulate a plan to find Agent Harper. First, narrow down her last known location. Second, find out who knew she was in town. Then... pay them a visit."
@@ -78116,6 +79721,10 @@
     },
     {
       "id": "accusation_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.the_accusation",
+        "name": "The Accusation"
+      },
       "type": "rule_reminder",
       "title": "The Accusation",
       "text": "Using the knowledge you've gathered, you must make an accusation in an attempt to locate who has kidnapped Elina Harper and where she is hidden. In order to make this accusation, the players must choose one [[Suspect]] enemy and one [[Hideout]] location from among the options listed on the Finding Agent Harper reference card. Note: the [[Suspect]] cannot be an enemy who is is currently in play or in the victory display, nor can the [[Hideout]] be a location that is currently in play. Use this information to narrow down your choices."
@@ -79247,9 +80856,293 @@
   "scenario_name": "Эпилог",
   "full_name": "Эпилог",
   "header": "",
-  "type": "placeholder",
+  "type": "epilogue",
   "icon": "rising_tide",
-  "setup": [],
-  "steps": []
+  "setup": [
+    "epilogue_1",
+    "check_all_memories",
+    "check_meeting_with_thomas_dawson",
+    "check_battle_with_a_horrifying_devil",
+    "check_decision_to_stick_together",
+    "check_encounter_with_a_secret_cult",
+    "check_a_deal_with_joe_sargent",
+    "check_a_followed_lead",
+    "check_an_intervention",
+    "check_a_jailbreak",
+    "check_discovery_of_a_strange_idol",
+    "check_discovery_of_an_unholy_mantle",
+    "check_discovery_of_a_mystical_relic",
+    "check_conversation_with_mr_moore",
+    "check_lifecycle_of_a_deep_one",
+    "check_stinging_betrayal",
+    "actually_check_memories"
+  ],
+  "steps": [
+    {
+      "id": "epilogue_1",
+      "type": "story",
+      "text": "The drive home to Arkham is quiet. After everything you have been through, you would have thought the quiet to be a pieceful reprieve… but you are alone with your thoughts-thoughts of Innsmouth, of Deep Ones, of enormous monsters dwelling in the depths beneath the waves. You find yourself checking your rearview mirror regularly, waiting to spot the headlights of pursuers who want you dead; the glowing, unblinking eyes of an aquatic horror in your back seat; or perhaps even the cold, dead glare of Thomas Dawson, mutated nearly beyond recognition. But you see nothing. Just an empty road.\nYou sigh and run through the events of the past few weeks once more. You believe you have a complete picture of what occurred, and yet you still feel like there is something missing. Another gap in your memories…"
+    },
+    {
+      "id": "check_all_memories",
+      "text": "If all 14 of the following entries are noted under \"Recovered Memories\", read Flashback XV."
+    },
+    {
+      "id": "check_meeting_with_thomas_dawson",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "meeting_with_thomas_dawson",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_battle_with_a_horrifying_devil",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "battle_with_a_horrifying_devil",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_decision_to_stick_together",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "decision_to_stick_together",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_encounter_with_a_secret_cult",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "encounter_with_a_secret_cult",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_a_deal_with_joe_sargent",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "a_deal_with_joe_sargent",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_a_followed_lead",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "a_followed_lead",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_an_intervention",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "an_intervention",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_a_jailbreak",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "a_jailbreak",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_discovery_of_a_strange_idol",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "discovery_of_a_strange_idol",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_discovery_of_an_unholy_mantle",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "discovery_of_an_unholy_mantle",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_discovery_of_a_mystical_relic",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "discovery_of_a_mystical_relic",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_conversation_with_mr_moore",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "conversation_with_mr_moore",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_lifecycle_of_a_deep_one",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "lifecycle_of_a_deep_one",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_stinging_betrayal",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "stinging_betrayal",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "actually_check_memories",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_count",
+        "section": "memories_recovered",
+        "id": "$num_entries",
+        "options": [
+          {
+            "numCondition": 14,
+            "steps": [
+              "flashback_15",
+              "horrific_truth"
+            ]
+          }
+        ],
+        "defaultOption": {
+          "steps": [
+            "epilogue_2"
+          ]
+        }
+      }
+    },
+    {
+      "id": "epilogue_2",
+      "type": "story",
+      "text": "…you shake the feeling away. It doesn't matter anymore. This whole ordeal is behind you now. Innsmouth, Dagon, Hydra, Y'ha-nthlei-just a terrible memory you wish you could forget, like all those other memories you lost. Your foot lies heavy on the accelerator. The faster you are away from this hellish place, the better."
+    },
+    {
+      "id": "flashback_15",
+      "title": "Flashback XV",
+      "type": "story",
+      "text": "You are back in Agent Dawson's office in Boston. He has stepped out for only a brief moment in order to retrieve some documents for you to sign. Some kind of agreement not to speak of anything you might see or hear while working for the government, no doubt. Several minutes pass. You begin to wander throughout the office, examining the many books and maps Dawson has scattered around. Some are harmless enough-a medical textbook, a history of New England, a treatise on the anatomy of aquatic creatures throughout the Atlantic-but the volumes get stranger and stranger the more of his collection you examine.\nVenturing nearer to Dawson's side of the office, you notice that the many books, envelopes, and documents spread across the surface of his desk lie atop an unfolded map. You decide to chance a peek, hoping Dawson's task will keep him from his office for a while longer. Pushing some of the objects in your way aside, you examine the map. It is an enormous nautical chart of the world's oceans, marked in many spots with fresh black ink. A fountain pen lies nearby.\nThe marks that Dawson has made are curious, to say the least. There are over a dozen scattered across the seas. Some lie just off the coast of various continents, while others are in the middle of the ocean, their locations marked with wide, unfilled circles to show that their exact coordinates unknown. Strange words are scribbled next to each. P'tha'wei in the north Atlantic, near Greenland. Yhe'nthalla in the south Atlantic, just off the coast of Africa. R'lyeh deep in the south Pacific. Th'all-iewa by Australia in the eastern Indian Ocean. And at least ten more, some marked with question marks-an indication that this record is incomplete. You gently push aside the book that lies atop North America and see one more just off the coast of Massachusetts. Y'ha-nthlei.\nYou slam the brakes and screech to a halt as your mind pulls back to the present. <i>No. It can't be.</i> Your heart twists into a knot as you realize the truth. <i>No-!</i>\nY'ha-nthlei was not the home of the Deep Ones. It was just one of many."
+    },
+    {
+      "id": "horrific_truth",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "memories_recovered",
+          "id": "horrific_truth",
+          "text": "the horrific truth"
+        }
+      ]
+    }
+  ]
 }]}
 ]
