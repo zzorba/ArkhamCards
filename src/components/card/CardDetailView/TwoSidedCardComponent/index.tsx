@@ -65,7 +65,6 @@ interface Props {
 }
 
 export default function TwoSidedCardComponent(props: Props) {
-  useWhyDidYouUpdate('TwoSidedCardComponent', props);
   const { componentId, card, linked, notFirst, simple, width } = props;
   const { backgroundStyle, shadow, colors, typography } = useContext(StyleContext);
   const [showBack, toggleShowBack] = useFlag(false);

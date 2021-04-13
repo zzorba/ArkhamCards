@@ -1,10 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { forEach, map } from 'lodash';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -23,15 +19,15 @@ interface Props {
   componentId?: string;
   card: Card;
   width: number;
+  simple?: boolean;
   showSpoilers: boolean;
   toggleShowSpoilers?: (code: string) => void;
   showInvestigatorCards?: (code: string) => void;
-  simple?: boolean;
 }
 
-export default function CardDetailComponent({ componentId, card, width, showSpoilers, toggleShowSpoilers, showInvestigatorCards, simple }: Props) {
-  const { backgroundStyle, colors, typography } = useContext(StyleContext);
+function InvestigatorInfoComponent({ componentId, card, width, simple, showInvestigatorCards }: Props) {
   const investigators = useInvestigatorCards();
+  const { colors, typography } = useContext(StyleContext);
   const parallelInvestigators = useMemo(() => {
     if (card.type_code !== 'investigator') {
       return [];
@@ -44,6 +40,78 @@ export default function CardDetailComponent({ componentId, card, width, showSpoi
     });
     return parallelInvestigators;
   }, [investigators, card]);
+  const showInvestigatorCardsPressed = useCallback(() => {
+    showInvestigatorCards && showInvestigatorCards(card.code);
+  }, [card, showInvestigatorCards]);
+
+  if (!card || card.type_code !== 'investigator' || card.encounter_code !== null) {
+    return null;
+  }
+  return (
+    <View style={styles.investigatorContent}>
+      { parallelInvestigators.length > 0 && (
+        <>
+          <CardDetailSectionHeader title={t`Parallel`} />
+          { map(parallelInvestigators, parallel => (
+            <TwoSidedCardComponent
+              key={parallel.code}
+              componentId={componentId}
+              card={parallel}
+              width={width}
+              simple={!!simple}
+            />
+          )) }
+        </>
+      ) }
+      <View style={styles.maxWidth}>
+        <View style={[styles.deckbuildingSection, { backgroundColor: colors.L20 }]}>
+          <Text style={[typography.large, typography.center, typography.uppercase]}>
+            { t`Deckbuilding` }
+          </Text>
+        </View>
+        <ArkhamButton
+          icon="deck"
+          title={t`Show all available cards`}
+          onPress={showInvestigatorCardsPressed}
+        />
+      </View>
+      <SignatureCardsComponent
+        componentId={componentId}
+        investigator={card}
+        width={width}
+      />
+    </View>
+  );
+}
+
+function SpoilersComponent({ componentId, card, width, toggleShowSpoilers }: Props) {
+  const { backgroundStyle, typography } = useContext(StyleContext);
+  const toggleShowSpoilersPressed = useCallback(() => {
+    toggleShowSpoilers && toggleShowSpoilers(card.code);
+  }, [card, toggleShowSpoilers]);
+
+  const editSpoilersPressed = useCallback(() => {
+    if (componentId) {
+      Navigation.push(componentId, {
+        component: {
+          name: 'My.Spoilers',
+        },
+      });
+    }
+  }, [componentId]);
+  return (
+    <View key={card.code} style={[styles.viewContainer, backgroundStyle, { width }]}>
+      <Text style={[typography.text, space.paddingM]}>
+        { t`Warning: this card contains possible spoilers for '${ card.pack_name }'.` }
+      </Text>
+      <BasicButton onPress={toggleShowSpoilersPressed} title="Show card" />
+      <BasicButton onPress={editSpoilersPressed} title="Edit my spoiler settings" />
+    </View>
+  );
+}
+
+export default function CardDetailComponent({ componentId, card, width, showSpoilers, toggleShowSpoilers, showInvestigatorCards, simple }: Props) {
+  const { backgroundStyle, typography } = useContext(StyleContext);
   const editSpoilersPressed = useCallback(() => {
     if (componentId) {
       Navigation.push(componentId, {
@@ -55,55 +123,10 @@ export default function CardDetailComponent({ componentId, card, width, showSpoi
   }, [componentId]);
 
   const shouldBlur = !showSpoilers && !!(card && card.mythos_card);
-  const showInvestigatorCardsPressed = useCallback(() => {
-    showInvestigatorCards && showInvestigatorCards(card.code);
-  }, [card, showInvestigatorCards]);
-
-  const investigatorCardsLink = useMemo(() => {
-    if (!card || card.type_code !== 'investigator' || card.encounter_code !== null) {
-      return null;
-    }
-    return (
-      <View style={styles.investigatorContent}>
-        { parallelInvestigators.length > 0 && (
-          <>
-            <CardDetailSectionHeader title={t`Parallel`} />
-            { map(parallelInvestigators, parallel => (
-              <TwoSidedCardComponent
-                key={parallel.code}
-                componentId={componentId}
-                card={parallel}
-                width={width}
-                simple={!!simple}
-              />
-            )) }
-          </>
-        ) }
-        <View style={styles.maxWidth}>
-          <View style={[styles.deckbuildingSection, { backgroundColor: colors.L20 }]}>
-            <Text style={[typography.large, typography.center, typography.uppercase]}>
-              { t`Deckbuilding` }
-            </Text>
-          </View>
-          <ArkhamButton
-            icon="deck"
-            title={t`Show all available cards`}
-            onPress={showInvestigatorCardsPressed}
-          />
-        </View>
-        <SignatureCardsComponent
-          componentId={componentId}
-          investigator={card}
-          width={width}
-        />
-      </View>
-    );
-  }, [componentId, card, width, typography, colors, showInvestigatorCardsPressed, simple, parallelInvestigators]);
-
   const toggleShowSpoilersPressed = useCallback(() => {
     toggleShowSpoilers && toggleShowSpoilers(card.code);
   }, [card, toggleShowSpoilers]);
-
+  const bondedCards = useMemo(() => [card], [card]);
   if (shouldBlur) {
     return (
       <View key={card.code} style={[styles.viewContainer, backgroundStyle, { width }]}>
@@ -127,11 +150,21 @@ export default function CardDetailComponent({ componentId, card, width, showSpoi
         />
         <BondedCardsComponent
           componentId={componentId}
-          cards={[card]}
+          cards={bondedCards}
           width={width}
         />
       </View>
-      { investigatorCardsLink }
+      { card.type_code === 'investigator' && (
+        <InvestigatorInfoComponent
+          componentId={componentId}
+          card={card}
+          width={width}
+          showSpoilers={showSpoilers}
+          simple={simple}
+          toggleShowSpoilers={toggleShowSpoilers}
+          showInvestigatorCards={showInvestigatorCards}
+        />
+      ) }
     </View>
   );
 }

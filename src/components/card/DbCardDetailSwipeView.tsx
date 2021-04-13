@@ -172,7 +172,8 @@ function DbCardDetailSwipeView(props: Props) {
     );
   }, [deckId, currentCard, packInCollection]);
   const renderCard = useCallback((
-    { item: card, index: itemIndex }: { item?: Card | undefined; index: number; dataIndex: number }): React.ReactNode => {
+    { item: card, index: itemIndex }: { item?: Card | undefined; index: number; dataIndex: number }
+  ): React.ReactNode => {
     if (!card) {
       return (
         <View style={[styles.wrapper, backgroundStyle, { width, height, justifyContent: 'center' }]}>
@@ -210,6 +211,8 @@ function DbCardDetailSwipeView(props: Props) {
         vertical={false}
         data={data}
         firstItem={initialIndex}
+        initialNumToRender={data[initialIndex]?.type_code === 'investigator' ? 1 : 2}
+        maxToRenderPerBatch={3}
         renderItem={renderCard}
         sliderWidth={width}
         itemWidth={width}
