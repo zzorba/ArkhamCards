@@ -32,7 +32,7 @@ import CardFooterInfo from './CardFooterInfo';
 import CardFooterButton from './CardFooterButton';
 import ArkhamButton from '@components/core/ArkhamButton';
 import InvestigatorImage from '@components/core/InvestigatorImage';
-import { useFlag, useWhyDidYouUpdate } from '@components/core/hooks';
+import { useFlag } from '@components/core/hooks';
 
 const SKILL_ICON_SIZE = 24;
 const MAX_WIDTH = 768;

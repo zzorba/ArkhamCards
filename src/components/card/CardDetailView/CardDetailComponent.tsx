@@ -111,32 +111,21 @@ function SpoilersComponent({ componentId, card, width, toggleShowSpoilers }: Pro
 }
 
 export default function CardDetailComponent({ componentId, card, width, showSpoilers, toggleShowSpoilers, showInvestigatorCards, simple }: Props) {
-  const { backgroundStyle, typography } = useContext(StyleContext);
-  const editSpoilersPressed = useCallback(() => {
-    if (componentId) {
-      Navigation.push(componentId, {
-        component: {
-          name: 'My.Spoilers',
-        },
-      });
-    }
-  }, [componentId]);
-
+  const { backgroundStyle } = useContext(StyleContext);
   const shouldBlur = !showSpoilers && !!(card && card.mythos_card);
-  const toggleShowSpoilersPressed = useCallback(() => {
-    toggleShowSpoilers && toggleShowSpoilers(card.code);
-  }, [card, toggleShowSpoilers]);
   const bondedCards = useMemo(() => [card], [card]);
   if (shouldBlur) {
     return (
-      <View key={card.code} style={[styles.viewContainer, backgroundStyle, { width }]}>
-        <Text style={[typography.text, space.paddingM]}>
-          { t`Warning: this card contains possible spoilers for '${ card.pack_name }'.` }
-        </Text>
-        <BasicButton onPress={toggleShowSpoilersPressed} title="Show card" />
-        <BasicButton onPress={editSpoilersPressed} title="Edit my spoiler settings" />
-      </View>
-    );
+      <SpoilersComponent
+        componentId={componentId}
+        card={card}
+        width={width}
+        showSpoilers={showSpoilers}
+        simple={simple}
+        toggleShowSpoilers={toggleShowSpoilers}
+        showInvestigatorCards={showInvestigatorCards}
+      />
+    )
   }
 
   return (

@@ -324,7 +324,7 @@ PODS:
     - react-native-config/App (= 1.4.2)
   - react-native-config/App (1.4.2):
     - React-Core
-  - react-native-document-picker (4.2.0):
+  - react-native-document-picker (5.0.3):
     - React-Core
   - react-native-in-app-browser (3.2.2):
     - React
@@ -332,11 +332,13 @@ PODS:
     - React
   - react-native-netinfo (6.0.0):
     - React-Core
+  - react-native-pager-view (5.1.3):
+    - React-Core
   - react-native-sqlite-storage (5.0.0):
     - React
-  - react-native-track-player (1.2.3):
-    - React
-  - react-native-webview (11.2.2):
+  - react-native-track-player (1.2.7):
+    - React-Core
+  - react-native-webview (11.3.2):
     - React-Core
   - React-perflogger (0.64.0)
   - React-RCTActionSheet (0.64.0):
@@ -419,7 +421,7 @@ PODS:
     - React-Core
   - RNColorMatrixImageFilters (5.2.10):
     - React-Core
-  - RNDeviceInfo (7.3.1):
+  - RNDeviceInfo (8.1.0):
     - React-Core
   - RNFastImage (8.3.4):
     - React-Core
@@ -451,16 +453,14 @@ PODS:
     - React
   - RNLocalize (2.0.2):
     - React-Core
-  - RNReanimated (1.13.2):
-    - React-Core
   - RNSha256 (1.4.7):
     - React
   - RNShare (5.2.2):
     - React-Core
   - RNSVG (12.1.0):
     - React
-  - RNVectorIcons (7.1.0):
-    - React
+  - RNVectorIcons (8.1.0):
+    - React-Core
   - SDWebImage (5.11.0):
     - SDWebImage/Core (= 5.11.0)
   - SDWebImage/Core (5.11.0)
@@ -504,6 +504,7 @@ DEPENDENCIES:
   - "react-native-in-app-browser (from `../node_modules/@matt-block/react-native-in-app-browser/ios`)"
   - react-native-keep-awake (from `../node_modules/react-native-keep-awake`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
+  - react-native-pager-view (from `../node_modules/react-native-pager-view`)
   - react-native-sqlite-storage (from `../node_modules/react-native-sqlite-storage`)
   - react-native-track-player (from `../node_modules/react-native-track-player`)
   - react-native-webview (from `../node_modules/react-native-webview`)
@@ -535,7 +536,6 @@ DEPENDENCIES:
   - "RNGoogleSignin (from `../node_modules/@react-native-community/google-signin`)"
   - RNKeychain (from `../node_modules/react-native-keychain`)
   - RNLocalize (from `../node_modules/react-native-localize`)
-  - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNSha256 (from `../node_modules/react-native-sha256`)
   - RNShare (from `../node_modules/react-native-share`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -622,6 +622,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-keep-awake"
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
+  react-native-pager-view:
+    :path: "../node_modules/react-native-pager-view"
   react-native-sqlite-storage:
     :path: "../node_modules/react-native-sqlite-storage"
   react-native-track-player:
@@ -684,8 +686,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-keychain"
   RNLocalize:
     :path: "../node_modules/react-native-localize"
-  RNReanimated:
-    :path: "../node_modules/react-native-reanimated"
   RNSha256:
     :path: "../node_modules/react-native-sha256"
   RNShare:
@@ -743,13 +743,14 @@ SPEC CHECKSUMS:
   react-native-appearance: 0f0e5fc2fcef70e03d48c8fe6b00b9158c2ba8aa
   react-native-apple-authentication: be849b8aefe45de190f8125126ef8cf8b02674ec
   react-native-config: c98128a72bc2c3a1ca72caec0b021f0fa944aa29
-  react-native-document-picker: 44ecae7103090b6789cca010f06f5205fd1cb66e
+  react-native-document-picker: 2e6ecd112c48215e36431734d902f35201ffab0a
   react-native-in-app-browser: 533839b6e87ec02a7a88bd9f4f7e6e5b586e25fa
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
   react-native-netinfo: e849fc21ca2f4128a5726c801a82fc6f4a6db50d
+  react-native-pager-view: 08c5414c85f5e3bb35e57f6e72a81a567b9ee749
   react-native-sqlite-storage: 418ef4afc5e6df6ce3574c4617e5f0b65cffde55
-  react-native-track-player: 28b96dd6404dea3eee80e67b74507679235a8dfb
-  react-native-webview: 74db71e90242a241259232952ccf9baed7acc6e8
+  react-native-track-player: 6ec965317dbf9d49f2f4f87d050b53b3f994a5b7
+  react-native-webview: 71567b6bf3d4e55914e580d720cc8f7df64af817
   React-perflogger: 9c547d8f06b9bf00cb447f2b75e8d7f19b7e02af
   React-RCTActionSheet: 3080b6e12e0e1a5b313c8c0050699b5c794a1b11
   React-RCTAnimation: 3f96f21a497ae7dabf4d2f150ee43f906aaf516f
@@ -767,7 +768,7 @@ SPEC CHECKSUMS:
   RNAppleAuthentication: f4cc93d710f1337f66550d04d84bf47553bc0eae
   RNCAsyncStorage: 44539979e1f234262d64d3ce86ec21cceb1b2c5e
   RNColorMatrixImageFilters: bad88a55a2b1ea57efcaff5a03297d25bd83947e
-  RNDeviceInfo: 6ecb1d1c87d20e4c62354be0348de23362824dcd
+  RNDeviceInfo: 677a08eaafcfac4e85d2d2aab68a3708ff261c04
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
   RNFBApp: d9ab9f2e63c70a9974294bb44c749b728cd4028f
   RNFBAuth: 73ef569faa4618624313fbc969dfaba66bb6d0ed
@@ -778,11 +779,10 @@ SPEC CHECKSUMS:
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
   RNKeychain: b8e0711b959a19c5b057d1e970d3c83d159b6da5
   RNLocalize: 43f6c30d8e19ad92282ae434d310fb463b31f419
-  RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
   RNSha256: bf2c90a9e0cec6dcbcc4100e4e19715ae7feaa34
   RNShare: 5cfe16bfd42cd2c4869a7692462181ac8cc15a6d
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
-  RNVectorIcons: bc69e6a278b14842063605de32bec61f0b251a59
+  RNVectorIcons: 31cebfcf94e8cf8686eb5303ae0357da64d7a5a4
   SDWebImage: 7acbb57630ac7db4a495547fb73916ff3e432f6b
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
   SRSRadialGradient: 71378a83e52b616c40367c37ee7cb6865f9f7c6e
