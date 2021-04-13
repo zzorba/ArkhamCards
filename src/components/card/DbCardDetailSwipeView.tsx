@@ -25,7 +25,7 @@ import { useToggles, useComponentDidAppear, useNavigationButtonPressed, useCards
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { where } from '@data/sqlite/query';
 import Carousel from 'react-native-snap-carousel';
-import DeckNavFooter from '@components/deck/DeckNavFooter';
+import DeckNavFooter, { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
 import { FactionCodeType } from '@app_constants';
 import FloatingDeckQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/FloatingDeckQuantityComponent';
 import { DeckId } from '@actions/types';
@@ -197,9 +197,10 @@ function DbCardDetailSwipeView(props: Props) {
           showInvestigatorCards={showInvestigatorCards}
           width={width}
         />
+        { deckId !== undefined && <View style={{ width, height: FOOTER_HEIGHT }} /> }
       </ScrollView>
     );
-  }, [showCardSpoiler, backgroundStyle, componentId, width, colors, height, toggleShowSpoilers, showInvestigatorCards]);
+  }, [showCardSpoiler, backgroundStyle, componentId, deckId, width, colors, height, toggleShowSpoilers, showInvestigatorCards]);
   const data: (Card | undefined)[] = useMemo(() => {
     return map(cardCodes, code => cards[code]);
   }, [cardCodes, cards]);
