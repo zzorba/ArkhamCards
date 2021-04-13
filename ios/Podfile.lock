@@ -417,7 +417,7 @@ PODS:
     - React-Core
   - RNAppleAuthentication (2.1.1):
     - React-Core
-  - RNCAsyncStorage (1.13.4):
+  - RNCAsyncStorage (1.15.2):
     - React-Core
   - RNColorMatrixImageFilters (5.2.10):
     - React-Core
@@ -444,7 +444,7 @@ PODS:
     - RNFBApp
   - RNFS (2.17.0):
     - React
-  - RNGestureHandler (1.9.0):
+  - RNGestureHandler (1.10.3):
     - React-Core
   - RNGoogleSignin (5.0.0):
     - GoogleSignIn (~> 5.0.0)
@@ -766,7 +766,7 @@ SPEC CHECKSUMS:
   ReactNativeNavigation: 91c082139a6ee8ef7d5c04c70995fdd2e8ababc9
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNAppleAuthentication: f4cc93d710f1337f66550d04d84bf47553bc0eae
-  RNCAsyncStorage: 44539979e1f234262d64d3ce86ec21cceb1b2c5e
+  RNCAsyncStorage: 9b7605e899f9acb2fba33e87952c529731265453
   RNColorMatrixImageFilters: bad88a55a2b1ea57efcaff5a03297d25bd83947e
   RNDeviceInfo: 677a08eaafcfac4e85d2d2aab68a3708ff261c04
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
@@ -775,7 +775,7 @@ SPEC CHECKSUMS:
   RNFBDatabase: 3bcb3fbcebc7bcd550124374d794cc8291dc32b1
   RNFBFunctions: dded5e4b76dfd0aad3252a1f15edca383c80b358
   RNFS: 93d5b5535eb39d98e6b19009faa8fe717f7ea45d
-  RNGestureHandler: 9b7e605a741412e20e13c512738a31bd1611759b
+  RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
   RNKeychain: b8e0711b959a19c5b057d1e970d3c83d159b6da5
   RNLocalize: 43f6c30d8e19ad92282ae434d310fb463b31f419
