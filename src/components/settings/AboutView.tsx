@@ -10,12 +10,12 @@ import CardTextComponent from '@components/card/CardTextComponent';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
+function linkPressed(url: string) {
+  Linking.openURL(url);
+}
+
 export default function AboutView() {
   const { backgroundStyle } = useContext(StyleContext);
-  const linkPressed = (url: string) => {
-    Linking.openURL(url);
-  };
-
   return (
     <ScrollView style={[space.paddingM, backgroundStyle]}>
       <CardTextComponent onLinkPress={linkPressed}

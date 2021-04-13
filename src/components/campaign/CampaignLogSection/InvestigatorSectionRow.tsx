@@ -63,7 +63,6 @@ export default function InvestigatorSectionRow({
               index={idx}
               notesChanged={notesChanged}
               showDialog={showDialog}
-              isInvestigator
             />
           );
         }) }

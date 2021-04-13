@@ -25,9 +25,9 @@ export function SingleButton({ idx, content, last, onPressIndex, height, selecte
   selected: boolean;
 }) {
   const { colors } = useContext(StyleContext);
-  const onPress = () => {
+  const onPress = useCallback(() => {
     onPressIndex(idx);
-  };
+  }, [onPressIndex, idx]);
 
   return (
     <>

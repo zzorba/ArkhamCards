@@ -18,7 +18,7 @@ interface Props {
   forceBig?: boolean;
 }
 
-function TinyCardQuantityComponent({ code, count: propsCount, countChanged: { setSlot }, limit }: Props) {
+function TinyCardQuantityComponent({ code, count: propsCount, countChanged: { setSlot }, limit }: Omit<Props, 'showZeroCount' | 'forceBig'>) {
   const { fontScale } = useContext(StyleContext);
   const [count, updateCount] = useReducer((count: number, action: 'cycle' | 'sync') => {
     if (action === 'cycle') {

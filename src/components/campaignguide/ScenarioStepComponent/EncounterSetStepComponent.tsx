@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import {
   StyleSheet,
   View,
@@ -38,7 +38,7 @@ export default function EncounterSetStepComponent({ componentId, campaignId, ste
   const alphabetizeEncounterSets = useSelector<AppState>(state => state.settings.alphabetizeEncounterSets || false);
   const { colors } = useContext(StyleContext);
 
-  const _viewEncounterErrata = () => {
+  const _viewEncounterErrata = useCallback(() => {
     Navigation.push<EncounterCardErrataProps>(componentId, {
       component: {
         name: 'Guide.CardErrata',
@@ -48,9 +48,9 @@ export default function EncounterSetStepComponent({ componentId, campaignId, ste
         },
       },
     });
-  };
+  }, [step, campaignId, componentId]);
 
-  const rawEncounterSets = map(
+  const rawEncounterSets = useMemo(() => map(
     step.encounter_sets,
     encounter_set => {
       return {
@@ -58,9 +58,9 @@ export default function EncounterSetStepComponent({ componentId, campaignId, ste
         name: campaignGuide.encounterSet(encounter_set),
       };
     }
-  );
-  const encounterSets = alphabetizeEncounterSets ? sortBy(rawEncounterSets, set => set.name || '???') : rawEncounterSets;
-  const encounterSetString = stringList(map(encounterSets, set => set.name ? `<i>${set.name}</i>` : 'Missing Set Name'));
+  ), [step.encounter_sets, campaignGuide]);
+  const encounterSets = useMemo(() => alphabetizeEncounterSets ? sortBy(rawEncounterSets, set => set.name || '???') : rawEncounterSets, [alphabetizeEncounterSets, rawEncounterSets]);
+  const encounterSetString = useMemo(() => stringList(map(encounterSets, set => set.name ? `<i>${set.name}</i>` : 'Missing Set Name')), [encounterSets]);
   const leadText = step.aside ?
     ngettext(
       msgid`Set the ${encounterSetString} encounter set aside, out of play.`,
@@ -77,7 +77,7 @@ export default function EncounterSetStepComponent({ componentId, campaignId, ste
   ngettext(msgid`${startText} This set is indicated by the following icon:`,
     `${startText} These sets are indicated by the following icons:`,
     encounterSets.length);
-  const errata = campaignGuide.cardErrata(step.encounter_sets);
+  const errata = useMemo(() => campaignGuide.cardErrata(step.encounter_sets), [campaignGuide, step.encounter_sets]);
   return (
     <>
       <SetupStepWrapper bulletType={step.bullet_type}>

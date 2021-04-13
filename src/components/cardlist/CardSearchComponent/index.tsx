@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo } from 'react';
-import { Platform, Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { Brackets } from 'typeorm/browser';
 import { Navigation, OptionsTopBarButton, OptionsTopBar } from 'react-native-navigation';

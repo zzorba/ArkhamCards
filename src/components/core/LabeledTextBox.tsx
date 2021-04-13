@@ -17,7 +17,6 @@ interface Props {
   placeholder?: string;
   style?: ViewStyle;
   column?: boolean;
-  required?: boolean;
 }
 
 export default function LabeledTextBox({

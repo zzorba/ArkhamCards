@@ -1,12 +1,11 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { concat, filter, flatMap, find, flatten, keys, map, uniqBy, uniq, throttle } from 'lodash';
+import { filter, flatMap, find, flatten, keys, uniq, throttle } from 'lodash';
 import {
   Keyboard,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { useSelector } from 'react-redux';
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -17,10 +16,9 @@ import DeckSelectorTab from './DeckSelectorTab';
 import { NewDeckProps } from '@components/deck/NewDeckView';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { NavigationProps } from '@components/nav/types';
-import { CampaignId, Deck, DeckId, SortType, SORT_BY_PACK } from '@actions/types';
+import { CampaignId, Deck, SortType, SORT_BY_PACK } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
 import Card from '@data/types/Card';
-import { AppState, makeOtherCampiagnDeckIdsSelector } from '@reducers';
 import COLORS from '@styles/colors';
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -94,8 +92,6 @@ function MyDecksSelectorDialog(props: Props) {
   const { componentId, campaignId, onDeckSelect, onInvestigatorSelect, singleInvestigator, selectedDecks, selectedInvestigatorIds, onlyShowSelected, simpleOptions } = props;
 
   const campaign = useCampaign(campaignId);
-  const otherCampaignsDeckIdsSelector = useMemo(() => makeOtherCampiagnDeckIdsSelector(), []);
-  const otherCampaignDeckIds = useSelector((state: AppState) => otherCampaignsDeckIdsSelector(state, campaign));
 
   const [hideOtherCampaignDecks, toggleHideOtherCampaignDecks] = useFlag(true);
   const [onlyShowPreviousCampaignMembers, toggleOnlyShowPreviousCampaignMembers] = useFlag(false);
@@ -171,16 +167,6 @@ function MyDecksSelectorDialog(props: Props) {
     }
     return undefined;
   }, [selectedDecks, campaign, onlyShowSelected, onlyShowPreviousCampaignMembers]);
-
-  const filterDeckIds: DeckId[] = useMemo(() => {
-    if (onlyShowSelected) {
-      return [];
-    }
-    if (hideOtherCampaignDecks) {
-      return uniqBy(concat(otherCampaignDeckIds, map(selectedDecks || [], d => d.id)), x => x.uuid);
-    }
-    return map(selectedDecks || [], d => d.id);
-  }, [selectedDecks, otherCampaignDeckIds, onlyShowSelected, hideOtherCampaignDecks]);
 
   const searchOptions = useCallback((forDecks: boolean): SearchOptions | undefined => {
     if (onlyShowSelected) {
@@ -277,12 +263,10 @@ function MyDecksSelectorDialog(props: Props) {
         sort={selectedSort}
         onInvestigatorSelect={onInvestigatorSelect}
         searchOptions={searchOptions(false)}
-        filterDeckIds={filterDeckIds}
-        onlyDecks={onlyDecks}
         filterInvestigators={filterInvestigators}
       />
     );
-  }, [componentId, selectedSort, onInvestigatorSelect, searchOptions, filterDeckIds, onlyDecks, filterInvestigators]);
+  }, [componentId, selectedSort, onInvestigatorSelect, searchOptions, filterInvestigators]);
   const tabs = useMemo(() => {
     return investigatorTab ? [
       {

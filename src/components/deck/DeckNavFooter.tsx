@@ -25,7 +25,6 @@ interface Props {
   componentId: string;
   deckId: DeckId;
   onPress: () => void;
-  controls?: React.ReactNode;
   control?: 'fab' | 'counts' ;
   forceShow?: boolean;
   yOffset?: number;

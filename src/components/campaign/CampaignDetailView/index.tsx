@@ -348,7 +348,6 @@ function CampaignDetailView(props: Props) {
               campaignId={campaignId}
               setCampaignServerId={setCampaignServerId}
               showAlert={showAlert}
-              guided={false}
               deckActions={deckActions}
             />
             <DeleteCampaignButton

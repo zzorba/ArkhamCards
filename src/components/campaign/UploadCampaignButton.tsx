@@ -23,11 +23,6 @@ interface Props {
   deckActions: DeckActions;
   setCampaignServerId: (serverId: number) => void;
   showAlert: ShowAlert;
-  guided: boolean;
-  linked?: {
-    campaignIdA: CampaignId;
-    campaignIdB: CampaignId;
-  };
 }
 
 type Dispatch = ThunkDispatch<AppState, unknown, Action<string>>;

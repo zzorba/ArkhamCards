@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import CardTextComponent from '@components/card/CardTextComponent';
@@ -26,13 +26,13 @@ export default function VariableTokenInput({
   decrement,
 }: Props) {
   const { borderStyle, typography } = useContext(StyleContext);
-  const inc = () => {
+  const inc = useCallback(() => {
     increment(symbol);
-  };
+  }, [increment, symbol]);
 
-  const dec = () => {
+  const dec = useCallback(() => {
     decrement(symbol);
-  };
+  }, [decrement, symbol]);
 
   return (
     <View style={[styles.skillRow, borderStyle]}>

@@ -29,7 +29,6 @@ import { useMyDecks } from '@data/hooks';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 interface OwnProps {
-  componentId: string;
   deckClicked: (deck: Deck, investigator: Card | undefined, campaign: CampaignId | undefined) => void;
   onlyDecks?: MiniDeckT[];
   filterDeck?: (deck: MiniDeckT) => boolean;

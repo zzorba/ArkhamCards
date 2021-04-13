@@ -10,17 +10,9 @@ import { DARK_THEME, LIGHT_THEME } from './theme';
 import typography from './typography';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
-interface OwnProps {
+interface Props {
   children: React.ReactNode;
 }
-
-interface ReduxProps {
-  lang: string;
-  themeOverride?: 'dark' | 'light';
-  appFontScale: number;
-}
-
-type Props = OwnProps & ReduxProps;
 
 const LIGHT_ELEMENTS_THEME = {
   Button: {
@@ -93,7 +85,7 @@ export default function StyleProvider({ children } : Props) {
         backgroundColor: colors.disableOverlay,
       },
     };
-  }, [darkMode, fontScale, appFontScale, styleTypography, italicFont, colors, gameFont ,width, height]);
+  }, [darkMode, fontScale, appFontScale, styleTypography, italicFont, colors, gameFont, width, height]);
   return (
     <StyleContext.Provider value={context}>
       <ThemeProvider theme={darkMode ? DARK_ELEMENTS_THEME : LIGHT_ELEMENTS_THEME}>

@@ -41,8 +41,7 @@ export interface CardDetailSwipeProps {
   faction?: FactionCodeType;
 }
 
-type Props = NavigationProps &
-  CardDetailSwipeProps;
+type Props = NavigationProps & CardDetailSwipeProps;
 
 const options = (passProps: CardDetailSwipeProps) => {
   return {

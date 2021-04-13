@@ -35,7 +35,6 @@ interface Props {
   chaosBag: ChaosBag;
   cycleScenarios?: Scenario[];
   allInvestigators: Card[];
-  scenarioCards?: Card[];
 }
 
 const SCENARIO_CODE_FIXER: {

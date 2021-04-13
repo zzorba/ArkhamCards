@@ -29,7 +29,6 @@ export default function DeckSelectorTab({
 
   return (
     <MyDecksComponent
-      componentId={componentId}
       searchOptions={searchOptions}
       deckClicked={deckSelected}
       onlyDecks={onlyDecks}

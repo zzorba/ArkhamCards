@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import {
   View,
   StyleSheet,
@@ -18,9 +18,9 @@ interface Props {
 }
 export default function ShowNonCollectionFooter({ id, title, onPress }: Props) {
   const { fontScale, borderStyle } = useContext(StyleContext);
-  const handleOnPress = () => {
+  const handleOnPress = useCallback(() => {
     onPress(id);
-  };
+  }, [onPress, id]);
 
   return (
     <View style={[styles.border, borderStyle, { height: rowNonCollectionHeight(fontScale) }]}>

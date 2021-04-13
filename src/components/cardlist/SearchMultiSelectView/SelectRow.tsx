@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import {
   StyleSheet,
   Text,
@@ -20,9 +20,9 @@ interface Props {
 
 export default function SelectRow({ value, selected, onSelectChanged, capitalize: capitalizeValue }: Props) {
   const { typography, borderStyle, fontScale, colors } = useContext(StyleContext);
-  const onCheckPress = () => {
+  const onCheckPress = useCallback(() => {
     onSelectChanged(value, !selected);
-  };
+  }, [value, onSelectChanged, selected]);
   const has_per_investigator = value.indexOf('[per_investigator]') !== -1;
   const text = value.replace('[per_investigator] ', '');
 

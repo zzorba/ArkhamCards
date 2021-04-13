@@ -97,7 +97,6 @@ function MyDecksView({ componentId }: NavigationProps) {
 
   return (
     <MyDecksComponent
-      componentId={componentId}
       searchOptions={{
         controls: searchOptionControls,
         height: searchOptionsHeight(fontScale),

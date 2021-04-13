@@ -19,18 +19,20 @@ module.exports = {
     }
   },
   'plugins': [
+    '@typescript-eslint',
     'react',
     'react-native',
     'destructuring',
   ],
   'extends': [
-    'plugin:@typescript-eslint/recommended',
-    'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
   ],
   'rules': {
-    // Enable additional rules for ESLint:
+    'no-unused-vars': 'off',   
+// Enable additional rules for ESLint:
     // http://eslint.org/docs/rules/
 
     // React native specific rules
