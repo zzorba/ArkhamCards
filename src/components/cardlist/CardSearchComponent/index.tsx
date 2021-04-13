@@ -95,13 +95,10 @@ export function navigationOptions(
     },
     accessibilityLabel: t`Sort`,
   }];
-  if (mythosToggle && Platform.OS === 'android') {
-    rightButtons.push(mythosButton);
-  }
   const topBarOptions: OptionsTopBar = {
     rightButtons,
   };
-  if (mythosToggle && Platform.OS === 'ios') {
+  if (mythosToggle) {
     topBarOptions.leftButtons = [mythosButton];
   }
 
