@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2021-04-12 16:03+0300\n"
+"PO-Revision-Date: 2021-04-13 14:03+0400\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -14,7 +14,7 @@ msgstr ""
 "%100<12 || n%100>14) ? 1 : 2);\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #, javascript-format
 msgid "${ action.name } (Campaign A)"
@@ -4566,7 +4566,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Circle"
-msgstr ""
+msgstr "Круг"
 
 msgctxt "trait"
 msgid "City"
@@ -4778,11 +4778,11 @@ msgstr "Будущее"
 
 msgctxt "trait"
 msgid "Gambit"
-msgstr ""
+msgstr "Авантюра"
 
 msgctxt "trait"
 msgid "Geist"
-msgstr ""
+msgstr "Привидение"
 
 msgctxt "trait"
 msgid "Ghast"
@@ -4790,7 +4790,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Ghoul"
-msgstr ""
+msgstr "Упырь"
 
 msgctxt "trait"
 msgid "Government"
@@ -4806,7 +4806,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Ground Floor"
-msgstr ""
+msgstr "Первый этаж"
 
 msgctxt "trait"
 msgid "Guest"
@@ -4814,7 +4814,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Gug"
-msgstr ""
+msgstr "Гуг"
 
 msgctxt "trait"
 msgid "Hall"
@@ -4822,11 +4822,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Hazard"
-msgstr ""
+msgstr "Происшествие"
 
 msgctxt "trait"
 msgid "Hex"
-msgstr ""
+msgstr "Колдовство"
 
 msgctxt "trait"
 msgid "Hideout"
@@ -4834,7 +4834,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Historical Society"
-msgstr ""
+msgstr "Историческое общество"
 
 msgctxt "trait"
 msgid "Human"
@@ -4846,7 +4846,7 @@ msgstr "Гуманоид"
 
 msgctxt "trait"
 msgid "Hunter"
-msgstr ""
+msgstr "Охотник"
 
 msgctxt "trait"
 msgid "Hybrid"
@@ -4858,15 +4858,15 @@ msgstr "Незаконный"
 
 msgctxt "trait"
 msgid "Improvised"
-msgstr ""
+msgstr "Экспромт"
 
 msgctxt "trait"
 msgid "Injury"
-msgstr ""
+msgstr "Повреждение"
 
 msgctxt "trait"
 msgid "Innate"
-msgstr ""
+msgstr "Врождённый"
 
 msgctxt "trait"
 msgid "Innocent"
@@ -4882,11 +4882,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Insight"
-msgstr ""
+msgstr "Интуиция"
 
 msgctxt "trait"
 msgid "Instrument"
-msgstr ""
+msgstr "Инструмент"
 
 msgctxt "trait"
 msgid "Island"
@@ -4894,7 +4894,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Item"
-msgstr ""
+msgstr "Вещь"
 
 msgctxt "trait"
 msgid "Job"
@@ -4902,7 +4902,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Jungle"
-msgstr ""
+msgstr "Джунгли"
 
 msgctxt "trait"
 msgid "Kadath"
@@ -4910,7 +4910,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Key"
-msgstr ""
+msgstr "Ключ"
 
 msgctxt "trait"
 msgid "Lead"
@@ -4922,15 +4922,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Lodge"
-msgstr ""
+msgstr "Ложа"
 
 msgctxt "trait"
 msgid "Lunatic"
-msgstr ""
+msgstr "Безумец"
 
 msgctxt "trait"
 msgid "Madness"
-msgstr ""
+msgstr "Безумие"
 
 msgctxt "trait"
 msgid "Manifold"
@@ -4938,23 +4938,23 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Mask"
-msgstr ""
+msgstr "Маска"
 
 msgctxt "trait"
 msgid "Medic"
-msgstr ""
+msgstr "Врач"
 
 msgctxt "trait"
 msgid "Melee"
-msgstr ""
+msgstr "Рукопашный"
 
 msgctxt "trait"
 msgid "Mexico City"
-msgstr ""
+msgstr "Мехико"
 
 msgctxt "trait"
 msgid "Mi-Go"
-msgstr ""
+msgstr "Ми-го"
 
 msgctxt "trait"
 msgid "Midtown"
@@ -4970,7 +4970,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Monster"
-msgstr ""
+msgstr "Монстр"
 
 msgctxt "trait"
 msgid "Montréal"
@@ -4990,7 +4990,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "New Orleans"
-msgstr ""
+msgstr "Новый Орлеан"
 
 msgctxt "trait"
 msgid "New York City"
@@ -4998,15 +4998,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Nightgaunt"
-msgstr ""
+msgstr "Ночной призрак"
 
 msgctxt "trait"
 msgid "Obstacle"
-msgstr ""
+msgstr "Преграда"
 
 msgctxt "trait"
 msgid "Occult"
-msgstr ""
+msgstr "Оккультный"
 
 msgctxt "trait"
 msgid "Ocean"
@@ -5014,7 +5014,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Omen"
-msgstr ""
+msgstr "Знамение"
 
 msgctxt "trait"
 msgid "Ooth-Nargai"
@@ -5034,19 +5034,19 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Otherworld"
-msgstr ""
+msgstr "Иной мир"
 
 msgctxt "trait"
 msgid "Pact"
-msgstr ""
+msgstr "Сделка"
 
 msgctxt "trait"
 msgid "Paradox"
-msgstr ""
+msgstr "Парадокс"
 
 msgctxt "trait"
 msgid "Paris"
-msgstr ""
+msgstr "Париж"
 
 msgctxt "trait"
 msgid "Part 1"
@@ -5058,19 +5058,19 @@ msgstr "Проход"
 
 msgctxt "trait"
 msgid "Patron"
-msgstr ""
+msgstr "Покровитель"
 
 msgctxt "trait"
 msgid "Performer"
-msgstr ""
+msgstr "Артист"
 
 msgctxt "trait"
 msgid "Pnakotus"
-msgstr ""
+msgstr "Пнакот"
 
 msgctxt "trait"
 msgid "Poison"
-msgstr ""
+msgstr "Яд"
 
 msgctxt "trait"
 msgid "Police"
@@ -5090,19 +5090,19 @@ msgstr "Мощь"
 
 msgctxt "trait"
 msgid "Practiced"
-msgstr ""
+msgstr "Приобретённый"
 
 msgctxt "trait"
 msgid "Present-Day"
-msgstr ""
+msgstr "Современная"
 
 msgctxt "trait"
 msgid "Prison"
-msgstr ""
+msgstr "Тюрьма"
 
 msgctxt "trait"
 msgid "Private"
-msgstr ""
+msgstr "Приватная"
 
 msgctxt "trait"
 msgid "Providence"
@@ -5110,11 +5110,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Rail"
-msgstr ""
+msgstr "Метро"
 
 msgctxt "trait"
 msgid "Ranged"
-msgstr ""
+msgstr "Дальнобойный"
 
 msgctxt "trait"
 msgid "Relic"
@@ -5122,7 +5122,7 @@ msgstr "Редкий"
 
 msgctxt "trait"
 msgid "Reporter"
-msgstr ""
+msgstr "Репортёр"
 
 msgctxt "trait"
 msgid "Research"
@@ -5134,7 +5134,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Ritual"
-msgstr ""
+msgstr "Ритуал"
 
 msgctxt "trait"
 msgid "Ritual Site"
@@ -5146,7 +5146,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Riverside"
-msgstr ""
+msgstr "Риверсайд"
 
 msgctxt "trait"
 msgid "Road"
@@ -5154,11 +5154,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Ruins"
-msgstr ""
+msgstr "Руины"
 
 msgctxt "trait"
 msgid "Salem"
-msgstr ""
+msgstr "Салем"
 
 msgctxt "trait"
 msgid "Sanctum"
@@ -5174,23 +5174,23 @@ msgstr "Учёный"
 
 msgctxt "trait"
 msgid "Science"
-msgstr ""
+msgstr "Наука"
 
 msgctxt "trait"
 msgid "Script"
-msgstr ""
+msgstr "Рукопись"
 
 msgctxt "trait"
 msgid "Second Floor"
-msgstr ""
+msgstr "Второй этаж"
 
 msgctxt "trait"
 msgid "Sentinel Hill"
-msgstr ""
+msgstr "Часовой холм"
 
 msgctxt "trait"
 msgid "Serpent"
-msgstr ""
+msgstr "Змея"
 
 msgctxt "trait"
 msgid "Service"
@@ -5198,15 +5198,15 @@ msgstr "Служба"
 
 msgctxt "trait"
 msgid "Servitor"
-msgstr ""
+msgstr "Прислужник"
 
 msgctxt "trait"
 msgid "Shantak"
-msgstr ""
+msgstr "Шантак"
 
 msgctxt "trait"
 msgid "Shattered"
-msgstr ""
+msgstr "Расколотая"
 
 msgctxt "trait"
 msgid "Ship"
@@ -5218,7 +5218,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Silver Twilight"
-msgstr ""
+msgstr "Серебряные Сумерки"
 
 msgctxt "trait"
 msgid "Skai"
@@ -5230,19 +5230,19 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Song"
-msgstr ""
+msgstr "Песнопение"
 
 msgctxt "trait"
 msgid "Sorcerer"
-msgstr ""
+msgstr "Чародей"
 
 msgctxt "trait"
 msgid "Spectral"
-msgstr ""
+msgstr "Потусторонняя"
 
 msgctxt "trait"
 msgid "Spell"
-msgstr ""
+msgstr "Заклинание"
 
 msgctxt "trait"
 msgid "Spider"
@@ -5250,7 +5250,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Spirit"
-msgstr ""
+msgstr "Дух"
 
 msgctxt "trait"
 msgid "St Mary's"
@@ -5270,7 +5270,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Supply"
-msgstr ""
+msgstr "Запас"
 
 msgctxt "trait"
 msgid "Surface"
@@ -5282,23 +5282,23 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Syndicate"
-msgstr ""
+msgstr "Синдикат"
 
 msgctxt "trait"
 msgid "Tactic"
-msgstr ""
+msgstr "Тактика"
 
 msgctxt "trait"
 msgid "Talent"
-msgstr ""
+msgstr "Талант"
 
 msgctxt "trait"
 msgid "Tarot"
-msgstr ""
+msgstr "Таро"
 
 msgctxt "trait"
 msgid "Task"
-msgstr ""
+msgstr "Задача"
 
 msgctxt "trait"
 msgid "Temple"
@@ -5306,31 +5306,31 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Tenochtitlán"
-msgstr ""
+msgstr "Теночтитлан"
 
 msgctxt "trait"
 msgid "Tentacle"
-msgstr ""
+msgstr "Щупальце"
 
 msgctxt "trait"
 msgid "Terror"
-msgstr ""
+msgstr "Жуть"
 
 msgctxt "trait"
 msgid "Third Floor"
-msgstr ""
+msgstr "Третий этаж"
 
 msgctxt "trait"
 msgid "Tindalos"
-msgstr ""
+msgstr "Тиндал"
 
 msgctxt "trait"
 msgid "Tome"
-msgstr ""
+msgstr "Книга"
 
 msgctxt "trait"
 msgid "Tool"
-msgstr ""
+msgstr "Инструмент"
 
 msgctxt "trait"
 msgid "Town"
@@ -5338,23 +5338,23 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Train"
-msgstr ""
+msgstr "Поезд"
 
 msgctxt "trait"
 msgid "Trap"
-msgstr ""
+msgstr "Ловушка"
 
 msgctxt "trait"
 msgid "Trick"
-msgstr ""
+msgstr "Уловка"
 
 msgctxt "trait"
 msgid "Unhallowed"
-msgstr ""
+msgstr "Нечистое место"
 
 msgctxt "trait"
 msgid "Upgrade"
-msgstr ""
+msgstr "Улучшение"
 
 msgctxt "trait"
 msgid "Vale"
@@ -5366,11 +5366,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Venice"
-msgstr ""
+msgstr "Венеция"
 
 msgctxt "trait"
 msgid "Veteran"
-msgstr ""
+msgstr "Ветеран"
 
 msgctxt "trait"
 msgid "Void"
@@ -5378,7 +5378,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Warden"
-msgstr ""
+msgstr "Служитель"
 
 msgctxt "trait"
 msgid "Wastes"
@@ -5386,27 +5386,27 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Wayfarer"
-msgstr ""
+msgstr "Путешественник"
 
 msgctxt "trait"
 msgid "Weapon"
-msgstr ""
+msgstr "Оружие"
 
 msgctxt "trait"
 msgid "Wilderness"
-msgstr ""
+msgstr "Глушь"
 
 msgctxt "trait"
 msgid "Witch"
-msgstr ""
+msgstr "Ведьма"
 
 msgctxt "trait"
 msgid "Witch House"
-msgstr ""
+msgstr "Ведьмин дом"
 
 msgctxt "trait"
 msgid "Woods"
-msgstr ""
+msgstr "Леса"
 
 msgctxt "trait"
 msgid "Y'ha-nthlei"
@@ -5414,11 +5414,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Yithian"
-msgstr ""
+msgstr "Йитианин"
 
 msgctxt "trait"
 msgid "Yoth"
-msgstr ""
+msgstr "Йот"
 
 msgctxt "trait"
 msgid "Zoog"
