@@ -47075,7 +47075,7 @@
   "scenario_name": "El Círculo Interno",
   "full_name": "Interludio III: El Círculo Interno",
   "header": "Interludio III",
-  "icon": "trapped_spirits",
+  "icon": "cold_fog",
   "setup": [
     "ic_1",
     "choose_to_share_info",

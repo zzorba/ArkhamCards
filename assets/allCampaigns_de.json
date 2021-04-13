@@ -47075,7 +47075,7 @@
   "scenario_name": "Der innere Kreis",
   "full_name": "Zwischenspiel III: Der innere Kreis",
   "header": "Zwischenspiel III",
-  "icon": "trapped_spirits",
+  "icon": "cold_fog",
   "setup": [
     "ic_1",
     "choose_to_share_info",

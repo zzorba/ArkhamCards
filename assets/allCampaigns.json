@@ -43103,7 +43103,7 @@
   "scenario_name": "The Inner Circle",
   "full_name": "Interlude III: The Inner Circle",
   "header": "Interlude III",
-  "icon": "trapped_spirits",
+  "icon": "cold_fog",
   "setup": [
     "ic_1",
     "choose_to_share_info",
