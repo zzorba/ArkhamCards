@@ -2290,7 +2290,7 @@ export type Friend_Status = {
   __typename?: 'friend_status';
   /** A computed field, executes function "friend_status_id" */
   id?: Maybe<Scalars['String']>;
-  status: Scalars['String'];
+  status: Friend_Status_Type_Enum;
   user_id_a: Scalars['String'];
   user_id_b: Scalars['String'];
 };
@@ -2322,7 +2322,7 @@ export type Friend_Status_Bool_Exp = {
   _and?: Maybe<Array<Friend_Status_Bool_Exp>>;
   _not?: Maybe<Friend_Status_Bool_Exp>;
   _or?: Maybe<Array<Friend_Status_Bool_Exp>>;
-  status?: Maybe<String_Comparison_Exp>;
+  status?: Maybe<Friend_Status_Type_Enum_Comparison_Exp>;
   user_id_a?: Maybe<String_Comparison_Exp>;
   user_id_b?: Maybe<String_Comparison_Exp>;
 };
@@ -2335,7 +2335,7 @@ export enum Friend_Status_Constraint {
 
 /** input type for inserting data into table "friend_status" */
 export type Friend_Status_Insert_Input = {
-  status?: Maybe<Scalars['String']>;
+  status?: Maybe<Friend_Status_Type_Enum>;
   user_id_a?: Maybe<Scalars['String']>;
   user_id_b?: Maybe<Scalars['String']>;
 };
@@ -2343,7 +2343,6 @@ export type Friend_Status_Insert_Input = {
 /** aggregate max on columns */
 export type Friend_Status_Max_Fields = {
   __typename?: 'friend_status_max_fields';
-  status?: Maybe<Scalars['String']>;
   user_id_a?: Maybe<Scalars['String']>;
   user_id_b?: Maybe<Scalars['String']>;
 };
@@ -2351,7 +2350,6 @@ export type Friend_Status_Max_Fields = {
 /** aggregate min on columns */
 export type Friend_Status_Min_Fields = {
   __typename?: 'friend_status_min_fields';
-  status?: Maybe<Scalars['String']>;
   user_id_a?: Maybe<Scalars['String']>;
   user_id_b?: Maybe<Scalars['String']>;
 };
@@ -2397,10 +2395,128 @@ export enum Friend_Status_Select_Column {
 
 /** input type for updating data in table "friend_status" */
 export type Friend_Status_Set_Input = {
-  status?: Maybe<Scalars['String']>;
+  status?: Maybe<Friend_Status_Type_Enum>;
   user_id_a?: Maybe<Scalars['String']>;
   user_id_b?: Maybe<Scalars['String']>;
 };
+
+/** columns and relationships of "friend_status_type" */
+export type Friend_Status_Type = {
+  __typename?: 'friend_status_type';
+  value: Scalars['String'];
+};
+
+/** aggregated selection of "friend_status_type" */
+export type Friend_Status_Type_Aggregate = {
+  __typename?: 'friend_status_type_aggregate';
+  aggregate?: Maybe<Friend_Status_Type_Aggregate_Fields>;
+  nodes: Array<Friend_Status_Type>;
+};
+
+/** aggregate fields of "friend_status_type" */
+export type Friend_Status_Type_Aggregate_Fields = {
+  __typename?: 'friend_status_type_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Friend_Status_Type_Max_Fields>;
+  min?: Maybe<Friend_Status_Type_Min_Fields>;
+};
+
+
+/** aggregate fields of "friend_status_type" */
+export type Friend_Status_Type_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Friend_Status_Type_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "friend_status_type". All fields are combined with a logical 'AND'. */
+export type Friend_Status_Type_Bool_Exp = {
+  _and?: Maybe<Array<Friend_Status_Type_Bool_Exp>>;
+  _not?: Maybe<Friend_Status_Type_Bool_Exp>;
+  _or?: Maybe<Array<Friend_Status_Type_Bool_Exp>>;
+  value?: Maybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "friend_status_type" */
+export enum Friend_Status_Type_Constraint {
+  /** unique or primary key constraint */
+  FriendStatusTypePkey = 'friend_status_type_pkey'
+}
+
+export enum Friend_Status_Type_Enum {
+  Friend = 'friend',
+  None = 'none',
+  Received = 'received',
+  Sent = 'sent'
+}
+
+/** Boolean expression to compare columns of type "friend_status_type_enum". All fields are combined with logical 'AND'. */
+export type Friend_Status_Type_Enum_Comparison_Exp = {
+  _eq?: Maybe<Friend_Status_Type_Enum>;
+  _in?: Maybe<Array<Friend_Status_Type_Enum>>;
+  _is_null?: Maybe<Scalars['Boolean']>;
+  _neq?: Maybe<Friend_Status_Type_Enum>;
+  _nin?: Maybe<Array<Friend_Status_Type_Enum>>;
+};
+
+/** input type for inserting data into table "friend_status_type" */
+export type Friend_Status_Type_Insert_Input = {
+  value?: Maybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Friend_Status_Type_Max_Fields = {
+  __typename?: 'friend_status_type_max_fields';
+  value?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Friend_Status_Type_Min_Fields = {
+  __typename?: 'friend_status_type_min_fields';
+  value?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "friend_status_type" */
+export type Friend_Status_Type_Mutation_Response = {
+  __typename?: 'friend_status_type_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Friend_Status_Type>;
+};
+
+/** on conflict condition type for table "friend_status_type" */
+export type Friend_Status_Type_On_Conflict = {
+  constraint: Friend_Status_Type_Constraint;
+  update_columns: Array<Friend_Status_Type_Update_Column>;
+  where?: Maybe<Friend_Status_Type_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "friend_status_type". */
+export type Friend_Status_Type_Order_By = {
+  value?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: friend_status_type */
+export type Friend_Status_Type_Pk_Columns_Input = {
+  value: Scalars['String'];
+};
+
+/** select columns of table "friend_status_type" */
+export enum Friend_Status_Type_Select_Column {
+  /** column name */
+  Value = 'value'
+}
+
+/** input type for updating data in table "friend_status_type" */
+export type Friend_Status_Type_Set_Input = {
+  value?: Maybe<Scalars['String']>;
+};
+
+/** update columns of table "friend_status_type" */
+export enum Friend_Status_Type_Update_Column {
+  /** column name */
+  Value = 'value'
+}
 
 /** update columns of table "friend_status" */
 export enum Friend_Status_Update_Column {
@@ -4206,6 +4322,10 @@ export type Mutation_Root = {
   delete_friend_status?: Maybe<Friend_Status_Mutation_Response>;
   /** delete single row from the table: "friend_status" */
   delete_friend_status_by_pk?: Maybe<Friend_Status>;
+  /** delete data from the table: "friend_status_type" */
+  delete_friend_status_type?: Maybe<Friend_Status_Type_Mutation_Response>;
+  /** delete single row from the table: "friend_status_type" */
+  delete_friend_status_type_by_pk?: Maybe<Friend_Status_Type>;
   /** delete data from the table: "guide_achievement" */
   delete_guide_achievement?: Maybe<Guide_Achievement_Mutation_Response>;
   /** delete single row from the table: "guide_achievement" */
@@ -4262,6 +4382,10 @@ export type Mutation_Root = {
   insert_friend_status?: Maybe<Friend_Status_Mutation_Response>;
   /** insert a single row into the table: "friend_status" */
   insert_friend_status_one?: Maybe<Friend_Status>;
+  /** insert data into the table: "friend_status_type" */
+  insert_friend_status_type?: Maybe<Friend_Status_Type_Mutation_Response>;
+  /** insert a single row into the table: "friend_status_type" */
+  insert_friend_status_type_one?: Maybe<Friend_Status_Type>;
   /** insert data into the table: "guide_achievement" */
   insert_guide_achievement?: Maybe<Guide_Achievement_Mutation_Response>;
   /** insert a single row into the table: "guide_achievement" */
@@ -4326,6 +4450,10 @@ export type Mutation_Root = {
   update_friend_status?: Maybe<Friend_Status_Mutation_Response>;
   /** update single row of the table: "friend_status" */
   update_friend_status_by_pk?: Maybe<Friend_Status>;
+  /** update data of the table: "friend_status_type" */
+  update_friend_status_type?: Maybe<Friend_Status_Type_Mutation_Response>;
+  /** update single row of the table: "friend_status_type" */
+  update_friend_status_type_by_pk?: Maybe<Friend_Status_Type>;
   /** update data of the table: "guide_achievement" */
   update_guide_achievement?: Maybe<Guide_Achievement_Mutation_Response>;
   /** update single row of the table: "guide_achievement" */
@@ -4428,6 +4556,18 @@ export type Mutation_RootDelete_Friend_StatusArgs = {
 export type Mutation_RootDelete_Friend_Status_By_PkArgs = {
   user_id_a: Scalars['String'];
   user_id_b: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Friend_Status_TypeArgs = {
+  where: Friend_Status_Type_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Friend_Status_Type_By_PkArgs = {
+  value: Scalars['String'];
 };
 
 
@@ -4609,6 +4749,20 @@ export type Mutation_RootInsert_Friend_StatusArgs = {
 export type Mutation_RootInsert_Friend_Status_OneArgs = {
   object: Friend_Status_Insert_Input;
   on_conflict?: Maybe<Friend_Status_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Friend_Status_TypeArgs = {
+  objects: Array<Friend_Status_Type_Insert_Input>;
+  on_conflict?: Maybe<Friend_Status_Type_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Friend_Status_Type_OneArgs = {
+  object: Friend_Status_Type_Insert_Input;
+  on_conflict?: Maybe<Friend_Status_Type_On_Conflict>;
 };
 
 
@@ -4855,6 +5009,20 @@ export type Mutation_RootUpdate_Friend_Status_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Friend_Status_TypeArgs = {
+  _set?: Maybe<Friend_Status_Type_Set_Input>;
+  where: Friend_Status_Type_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Friend_Status_Type_By_PkArgs = {
+  _set?: Maybe<Friend_Status_Type_Set_Input>;
+  pk_columns: Friend_Status_Type_Pk_Columns_Input;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Guide_AchievementArgs = {
   _inc?: Maybe<Guide_Achievement_Inc_Input>;
   _set?: Maybe<Guide_Achievement_Set_Input>;
@@ -5036,6 +5204,12 @@ export type Query_Root = {
   friend_status_aggregate: Friend_Status_Aggregate;
   /** fetch data from the table: "friend_status" using primary key columns */
   friend_status_by_pk?: Maybe<Friend_Status>;
+  /** fetch data from the table: "friend_status_type" */
+  friend_status_type: Array<Friend_Status_Type>;
+  /** fetch aggregated fields from the table: "friend_status_type" */
+  friend_status_type_aggregate: Friend_Status_Type_Aggregate;
+  /** fetch data from the table: "friend_status_type" using primary key columns */
+  friend_status_type_by_pk?: Maybe<Friend_Status_Type>;
   /** fetch data from the table: "guide_achievement" */
   guide_achievement: Array<Guide_Achievement>;
   /** fetch aggregated fields from the table: "guide_achievement" */
@@ -5237,6 +5411,29 @@ export type Query_RootFriend_Status_AggregateArgs = {
 export type Query_RootFriend_Status_By_PkArgs = {
   user_id_a: Scalars['String'];
   user_id_b: Scalars['String'];
+};
+
+
+export type Query_RootFriend_Status_TypeArgs = {
+  distinct_on?: Maybe<Array<Friend_Status_Type_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Friend_Status_Type_Order_By>>;
+  where?: Maybe<Friend_Status_Type_Bool_Exp>;
+};
+
+
+export type Query_RootFriend_Status_Type_AggregateArgs = {
+  distinct_on?: Maybe<Array<Friend_Status_Type_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Friend_Status_Type_Order_By>>;
+  where?: Maybe<Friend_Status_Type_Bool_Exp>;
+};
+
+
+export type Query_RootFriend_Status_Type_By_PkArgs = {
+  value: Scalars['String'];
 };
 
 
@@ -5482,6 +5679,12 @@ export type Subscription_Root = {
   friend_status_aggregate: Friend_Status_Aggregate;
   /** fetch data from the table: "friend_status" using primary key columns */
   friend_status_by_pk?: Maybe<Friend_Status>;
+  /** fetch data from the table: "friend_status_type" */
+  friend_status_type: Array<Friend_Status_Type>;
+  /** fetch aggregated fields from the table: "friend_status_type" */
+  friend_status_type_aggregate: Friend_Status_Type_Aggregate;
+  /** fetch data from the table: "friend_status_type" using primary key columns */
+  friend_status_type_by_pk?: Maybe<Friend_Status_Type>;
   /** fetch data from the table: "guide_achievement" */
   guide_achievement: Array<Guide_Achievement>;
   /** fetch aggregated fields from the table: "guide_achievement" */
@@ -5683,6 +5886,29 @@ export type Subscription_RootFriend_Status_AggregateArgs = {
 export type Subscription_RootFriend_Status_By_PkArgs = {
   user_id_a: Scalars['String'];
   user_id_b: Scalars['String'];
+};
+
+
+export type Subscription_RootFriend_Status_TypeArgs = {
+  distinct_on?: Maybe<Array<Friend_Status_Type_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Friend_Status_Type_Order_By>>;
+  where?: Maybe<Friend_Status_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootFriend_Status_Type_AggregateArgs = {
+  distinct_on?: Maybe<Array<Friend_Status_Type_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Friend_Status_Type_Order_By>>;
+  where?: Maybe<Friend_Status_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootFriend_Status_Type_By_PkArgs = {
+  value: Scalars['String'];
 };
 
 

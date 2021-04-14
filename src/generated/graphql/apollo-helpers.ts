@@ -625,20 +625,46 @@ export type friend_status_aggregate_fieldsFieldPolicy = {
 	max?: FieldPolicy<any> | FieldReadFunction<any>,
 	min?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type friend_status_max_fieldsKeySpecifier = ('status' | 'user_id_a' | 'user_id_b' | friend_status_max_fieldsKeySpecifier)[];
+export type friend_status_max_fieldsKeySpecifier = ('user_id_a' | 'user_id_b' | friend_status_max_fieldsKeySpecifier)[];
 export type friend_status_max_fieldsFieldPolicy = {
-	status?: FieldPolicy<any> | FieldReadFunction<any>,
 	user_id_a?: FieldPolicy<any> | FieldReadFunction<any>,
 	user_id_b?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type friend_status_min_fieldsKeySpecifier = ('status' | 'user_id_a' | 'user_id_b' | friend_status_min_fieldsKeySpecifier)[];
+export type friend_status_min_fieldsKeySpecifier = ('user_id_a' | 'user_id_b' | friend_status_min_fieldsKeySpecifier)[];
 export type friend_status_min_fieldsFieldPolicy = {
-	status?: FieldPolicy<any> | FieldReadFunction<any>,
 	user_id_a?: FieldPolicy<any> | FieldReadFunction<any>,
 	user_id_b?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type friend_status_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | friend_status_mutation_responseKeySpecifier)[];
 export type friend_status_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type friend_status_typeKeySpecifier = ('value' | friend_status_typeKeySpecifier)[];
+export type friend_status_typeFieldPolicy = {
+	value?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type friend_status_type_aggregateKeySpecifier = ('aggregate' | 'nodes' | friend_status_type_aggregateKeySpecifier)[];
+export type friend_status_type_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type friend_status_type_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | friend_status_type_aggregate_fieldsKeySpecifier)[];
+export type friend_status_type_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type friend_status_type_max_fieldsKeySpecifier = ('value' | friend_status_type_max_fieldsKeySpecifier)[];
+export type friend_status_type_max_fieldsFieldPolicy = {
+	value?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type friend_status_type_min_fieldsKeySpecifier = ('value' | friend_status_type_min_fieldsKeySpecifier)[];
+export type friend_status_type_min_fieldsFieldPolicy = {
+	value?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type friend_status_type_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | friend_status_type_mutation_responseKeySpecifier)[];
+export type friend_status_type_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
@@ -1118,7 +1144,7 @@ export type local_decks_variance_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type mutation_rootKeySpecifier = ('delete_base_decks' | 'delete_campaign' | 'delete_campaign_access' | 'delete_campaign_access_by_pk' | 'delete_campaign_by_pk' | 'delete_campaign_deck' | 'delete_campaign_deck_by_pk' | 'delete_campaign_guide' | 'delete_campaign_investigator' | 'delete_campaign_investigator_by_pk' | 'delete_friend_status' | 'delete_friend_status_by_pk' | 'delete_guide_achievement' | 'delete_guide_achievement_by_pk' | 'delete_guide_input' | 'delete_guide_input_by_pk' | 'delete_investigator_data' | 'delete_investigator_data_by_pk' | 'delete_latest_decks' | 'delete_local_decks' | 'delete_user_campaigns' | 'delete_user_friends' | 'delete_user_received_friend_requests' | 'delete_user_sent_friend_requests' | 'delete_users' | 'delete_users_by_pk' | 'insert_base_decks' | 'insert_base_decks_one' | 'insert_campaign' | 'insert_campaign_access' | 'insert_campaign_access_one' | 'insert_campaign_deck' | 'insert_campaign_deck_one' | 'insert_campaign_guide' | 'insert_campaign_guide_one' | 'insert_campaign_investigator' | 'insert_campaign_investigator_one' | 'insert_campaign_one' | 'insert_friend_status' | 'insert_friend_status_one' | 'insert_guide_achievement' | 'insert_guide_achievement_one' | 'insert_guide_input' | 'insert_guide_input_one' | 'insert_investigator_data' | 'insert_investigator_data_one' | 'insert_latest_decks' | 'insert_latest_decks_one' | 'insert_local_decks' | 'insert_local_decks_one' | 'insert_user_campaigns' | 'insert_user_campaigns_one' | 'insert_user_friends' | 'insert_user_friends_one' | 'insert_user_received_friend_requests' | 'insert_user_received_friend_requests_one' | 'insert_user_sent_friend_requests' | 'insert_user_sent_friend_requests_one' | 'insert_users' | 'insert_users_one' | 'update_base_decks' | 'update_campaign' | 'update_campaign_access' | 'update_campaign_access_by_pk' | 'update_campaign_by_pk' | 'update_campaign_deck' | 'update_campaign_deck_by_pk' | 'update_campaign_guide' | 'update_campaign_investigator' | 'update_campaign_investigator_by_pk' | 'update_friend_status' | 'update_friend_status_by_pk' | 'update_guide_achievement' | 'update_guide_achievement_by_pk' | 'update_guide_input' | 'update_guide_input_by_pk' | 'update_investigator_data' | 'update_investigator_data_by_pk' | 'update_latest_decks' | 'update_local_decks' | 'update_user_campaigns' | 'update_user_friends' | 'update_user_received_friend_requests' | 'update_user_sent_friend_requests' | 'update_users' | 'update_users_by_pk' | mutation_rootKeySpecifier)[];
+export type mutation_rootKeySpecifier = ('delete_base_decks' | 'delete_campaign' | 'delete_campaign_access' | 'delete_campaign_access_by_pk' | 'delete_campaign_by_pk' | 'delete_campaign_deck' | 'delete_campaign_deck_by_pk' | 'delete_campaign_guide' | 'delete_campaign_investigator' | 'delete_campaign_investigator_by_pk' | 'delete_friend_status' | 'delete_friend_status_by_pk' | 'delete_friend_status_type' | 'delete_friend_status_type_by_pk' | 'delete_guide_achievement' | 'delete_guide_achievement_by_pk' | 'delete_guide_input' | 'delete_guide_input_by_pk' | 'delete_investigator_data' | 'delete_investigator_data_by_pk' | 'delete_latest_decks' | 'delete_local_decks' | 'delete_user_campaigns' | 'delete_user_friends' | 'delete_user_received_friend_requests' | 'delete_user_sent_friend_requests' | 'delete_users' | 'delete_users_by_pk' | 'insert_base_decks' | 'insert_base_decks_one' | 'insert_campaign' | 'insert_campaign_access' | 'insert_campaign_access_one' | 'insert_campaign_deck' | 'insert_campaign_deck_one' | 'insert_campaign_guide' | 'insert_campaign_guide_one' | 'insert_campaign_investigator' | 'insert_campaign_investigator_one' | 'insert_campaign_one' | 'insert_friend_status' | 'insert_friend_status_one' | 'insert_friend_status_type' | 'insert_friend_status_type_one' | 'insert_guide_achievement' | 'insert_guide_achievement_one' | 'insert_guide_input' | 'insert_guide_input_one' | 'insert_investigator_data' | 'insert_investigator_data_one' | 'insert_latest_decks' | 'insert_latest_decks_one' | 'insert_local_decks' | 'insert_local_decks_one' | 'insert_user_campaigns' | 'insert_user_campaigns_one' | 'insert_user_friends' | 'insert_user_friends_one' | 'insert_user_received_friend_requests' | 'insert_user_received_friend_requests_one' | 'insert_user_sent_friend_requests' | 'insert_user_sent_friend_requests_one' | 'insert_users' | 'insert_users_one' | 'update_base_decks' | 'update_campaign' | 'update_campaign_access' | 'update_campaign_access_by_pk' | 'update_campaign_by_pk' | 'update_campaign_deck' | 'update_campaign_deck_by_pk' | 'update_campaign_guide' | 'update_campaign_investigator' | 'update_campaign_investigator_by_pk' | 'update_friend_status' | 'update_friend_status_by_pk' | 'update_friend_status_type' | 'update_friend_status_type_by_pk' | 'update_guide_achievement' | 'update_guide_achievement_by_pk' | 'update_guide_input' | 'update_guide_input_by_pk' | 'update_investigator_data' | 'update_investigator_data_by_pk' | 'update_latest_decks' | 'update_local_decks' | 'update_user_campaigns' | 'update_user_friends' | 'update_user_received_friend_requests' | 'update_user_sent_friend_requests' | 'update_users' | 'update_users_by_pk' | mutation_rootKeySpecifier)[];
 export type mutation_rootFieldPolicy = {
 	delete_base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_campaign?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1132,6 +1158,8 @@ export type mutation_rootFieldPolicy = {
 	delete_campaign_investigator_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_friend_status?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_friend_status_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_friend_status_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_friend_status_type_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_guide_achievement?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_guide_achievement_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_guide_input?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1160,6 +1188,8 @@ export type mutation_rootFieldPolicy = {
 	insert_campaign_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_friend_status?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_friend_status_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_friend_status_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_friend_status_type_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_guide_achievement?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_guide_achievement_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_guide_input?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1192,6 +1222,8 @@ export type mutation_rootFieldPolicy = {
 	update_campaign_investigator_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_friend_status?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_friend_status_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_friend_status_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_friend_status_type_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_guide_achievement?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_guide_achievement_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_guide_input?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1207,7 +1239,7 @@ export type mutation_rootFieldPolicy = {
 	update_users?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_users_by_pk?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type query_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'local_decks' | 'local_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | query_rootKeySpecifier)[];
+export type query_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'friend_status_type' | 'friend_status_type_aggregate' | 'friend_status_type_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'local_decks' | 'local_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | query_rootKeySpecifier)[];
 export type query_rootFieldPolicy = {
 	base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1228,6 +1260,9 @@ export type query_rootFieldPolicy = {
 	friend_status?: FieldPolicy<any> | FieldReadFunction<any>,
 	friend_status_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	friend_status_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	friend_status_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	friend_status_type_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	friend_status_type_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	guide_achievement?: FieldPolicy<any> | FieldReadFunction<any>,
 	guide_achievement_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	guide_achievement_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1253,7 +1288,7 @@ export type query_rootFieldPolicy = {
 	users_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	users_by_pk?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type subscription_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'local_decks' | 'local_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | subscription_rootKeySpecifier)[];
+export type subscription_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'friend_status_type' | 'friend_status_type_aggregate' | 'friend_status_type_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'local_decks' | 'local_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | subscription_rootKeySpecifier)[];
 export type subscription_rootFieldPolicy = {
 	base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1274,6 +1309,9 @@ export type subscription_rootFieldPolicy = {
 	friend_status?: FieldPolicy<any> | FieldReadFunction<any>,
 	friend_status_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	friend_status_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	friend_status_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	friend_status_type_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	friend_status_type_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	guide_achievement?: FieldPolicy<any> | FieldReadFunction<any>,
 	guide_achievement_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	guide_achievement_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1898,6 +1936,30 @@ export type TypedTypePolicies = TypePolicies & {
 	friend_status_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | friend_status_mutation_responseKeySpecifier | (() => undefined | friend_status_mutation_responseKeySpecifier),
 		fields?: friend_status_mutation_responseFieldPolicy,
+	},
+	friend_status_type?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | friend_status_typeKeySpecifier | (() => undefined | friend_status_typeKeySpecifier),
+		fields?: friend_status_typeFieldPolicy,
+	},
+	friend_status_type_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | friend_status_type_aggregateKeySpecifier | (() => undefined | friend_status_type_aggregateKeySpecifier),
+		fields?: friend_status_type_aggregateFieldPolicy,
+	},
+	friend_status_type_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | friend_status_type_aggregate_fieldsKeySpecifier | (() => undefined | friend_status_type_aggregate_fieldsKeySpecifier),
+		fields?: friend_status_type_aggregate_fieldsFieldPolicy,
+	},
+	friend_status_type_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | friend_status_type_max_fieldsKeySpecifier | (() => undefined | friend_status_type_max_fieldsKeySpecifier),
+		fields?: friend_status_type_max_fieldsFieldPolicy,
+	},
+	friend_status_type_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | friend_status_type_min_fieldsKeySpecifier | (() => undefined | friend_status_type_min_fieldsKeySpecifier),
+		fields?: friend_status_type_min_fieldsFieldPolicy,
+	},
+	friend_status_type_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | friend_status_type_mutation_responseKeySpecifier | (() => undefined | friend_status_type_mutation_responseKeySpecifier),
+		fields?: friend_status_type_mutation_responseFieldPolicy,
 	},
 	guide_achievement?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | guide_achievementKeySpecifier | (() => undefined | guide_achievementKeySpecifier),
