@@ -3359,10 +3359,6 @@ msgid_plural "${ size } Cards"
 msgstr[0] ""
 msgstr[1] ""
 
-#, javascript-format
-msgid "class_${ faction }"
-msgstr ""
-
 msgid "Select Parallel Investigator"
 msgstr ""
 

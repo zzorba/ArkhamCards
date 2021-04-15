@@ -194,11 +194,11 @@ export default function TwoSidedCardComponent(props: Props) {
 
   const metadataBlock = useMemo(() => {
     return (
-      <View style={styles.metadataBlock}>
+      <View style={[styles.metadataBlock, { width: '100%' }]}>
         <View style={styles.column}>
           { typeLine }
           { !!card.traits && (
-            <Text style={[typography.small, typography.boldItalic]}>
+            <Text style={[typography.small, typography.boldItalic]} numberOfLines={2} ellipsizeMode="tail">
               { card.traits }
             </Text>
           ) }
@@ -324,7 +324,7 @@ export default function TwoSidedCardComponent(props: Props) {
                 <View style={styles.metadataBlock}>
                   { typeLine }
                   { !!card.traits && (
-                    <Text style={[typography.small, typography.boldItalic]}>
+                    <Text style={[typography.small, typography.boldItalic]} numberOfLines={2} ellipsizeMode="tail">
                       { card.traits }
                     </Text>
                   ) }
@@ -454,8 +454,8 @@ export default function TwoSidedCardComponent(props: Props) {
             } : undefined,
           ]}>
             <View style={[styles.typeBlock, backgroundStyle]}>
-              <View style={styles.row}>
-                <View style={styles.mainColumn}>
+              <View style={[styles.row, styles.flex]}>
+                <View style={[styles.mainColumn, styles.flex]}>
                   { metadataBlock }
                   { playdataBlock }
                   { !!card.flavor && (simple || flavorFirst) &&
@@ -511,7 +511,6 @@ export default function TwoSidedCardComponent(props: Props) {
 
 const styles = StyleSheet.create({
   row: {
-    width: '100%',
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'space-between',

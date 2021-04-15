@@ -476,6 +476,9 @@ function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNod
       onPress: uploadCampaigns,
       loading: uploading,
     },
+    dismiss: {
+      title: t`Later`,
+    },
   });
 
   useEffect(() => {

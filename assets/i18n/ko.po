@@ -3476,10 +3476,6 @@ msgid "${ size } Card"
 msgid_plural "${ size } Cards"
 msgstr[0] "카드 ${ size }장"
 
-#, javascript-format
-msgid "class_${ faction }"
-msgstr "역할군_${ faction }"
-
 msgid "Select Parallel Investigator"
 msgstr "평행 조사자 선택"
 
@@ -4039,6 +4035,9 @@ msgid "Access"
 msgstr ""
 
 msgid "Edit access"
+msgstr ""
+
+msgid "Later"
 msgstr ""
 
 #, javascript-format

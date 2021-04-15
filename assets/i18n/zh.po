@@ -3443,10 +3443,6 @@ msgid "${ size } Card"
 msgid_plural "${ size } Cards"
 msgstr[0] "${ size }張卡牌"
 
-#, javascript-format
-msgid "class_${ faction }"
-msgstr "職階_${ faction }"
-
 msgid "Select Parallel Investigator"
 msgstr "選擇平行調查員"
 

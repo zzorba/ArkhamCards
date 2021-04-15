@@ -1588,10 +1588,6 @@ msgstr ""
 "Nota: Facção secundária deveria ser somente escolhida na hora de criação de "
 "baralho, não entre cenários."
 
-#, javascript-format
-msgid "class_${ faction }"
-msgstr "class_${ faction }"
-
 msgid "Original front · Original back"
 msgstr "Frente Original · Verso Original"
 
@@ -4224,6 +4220,9 @@ msgid "Access"
 msgstr ""
 
 msgid "Edit access"
+msgstr ""
+
+msgid "Later"
 msgstr ""
 
 msgctxt "masculine"
