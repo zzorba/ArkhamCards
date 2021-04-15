@@ -346,6 +346,7 @@ function CampaignDetailView(props: Props) {
             <UploadCampaignButton
               componentId={componentId}
               campaignId={campaignId}
+              campaign={campaign}
               setCampaignServerId={setCampaignServerId}
               showAlert={showAlert}
               deckActions={deckActions}

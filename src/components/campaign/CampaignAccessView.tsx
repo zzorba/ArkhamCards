@@ -14,8 +14,9 @@ import { FriendsViewProps } from '@components/social/FriendsView';
 
 export interface CampaignAccessProps {
   campaignId: UploadedCampaignId;
+  isOwner: boolean;
 }
-export default function EditCampaignAccessView({ campaignId, componentId }: CampaignAccessProps & NavigationProps) {
+export default function EditCampaignAccessView({ campaignId, isOwner, componentId }: CampaignAccessProps & NavigationProps) {
   const { user } = useContext(ArkhamCardsAuthContext);
   const campaignAccess = useCampaignAccess(campaignId);
   const editCampaignAccess = useEditCampaignAccessRequest();
@@ -59,7 +60,7 @@ export default function EditCampaignAccessView({ campaignId, componentId }: Camp
           feed.push({
             type: 'user',
             user: u,
-            controls: u.id !== user?.uid ? {
+            controls: u.id !== user?.uid && isOwner ? {
               type: 'campaign',
               hasAccess: true,
               inviteUser,
@@ -96,7 +97,7 @@ export default function EditCampaignAccessView({ campaignId, componentId }: Camp
       onPress: editFriendsPressed,
     });
     return feed;
-  }, [campaignAccess, user, editFriendsPressed, inviteUser, removeUser]);
+  }, [campaignAccess, user, isOwner, editFriendsPressed, inviteUser, removeUser]);
   if (!user) {
     return <LoadingSpinner />;
   }

@@ -16,10 +16,12 @@ import { ShowAlert } from '@components/deck/dialogs';
 import { s } from '@styles/space';
 import { DeckActions } from '@data/remote/decks';
 import { CampaignAccessProps } from './CampaignAccessView';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 interface Props {
   componentId: string;
   campaignId: CampaignId;
+  campaign: SingleCampaignT | undefined;
   deckActions: DeckActions;
   setCampaignServerId: (serverId: number) => void;
   showAlert: ShowAlert;
@@ -27,7 +29,7 @@ interface Props {
 
 type Dispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
-export default function UploadCampaignButton({ componentId, campaignId, deckActions, setCampaignServerId, showAlert }: Props) {
+export default function UploadCampaignButton({ componentId, campaign, campaignId, deckActions, setCampaignServerId, showAlert }: Props) {
   const { user } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected }] = useNetworkStatus();
   const [uploading, setUploading] = useState(false);
@@ -47,6 +49,7 @@ export default function UploadCampaignButton({ componentId, campaignId, deckActi
   }, [dispatch, setCampaignServerId, setUploading, showAlert,
     createCampaignActions, user, uploading, deckActions, campaignId]);
 
+  const isOwner = !!(campaign?.owner_id && user && campaignId.serverId && campaign.owner_id === user.uid);
   const editAccessPressed = useCallback(() => {
     if (campaignId.serverId) {
       Navigation.push<CampaignAccessProps>(componentId, {
@@ -54,6 +57,7 @@ export default function UploadCampaignButton({ componentId, campaignId, deckActi
           name: 'Campaign.Access',
           passProps: {
             campaignId,
+            isOwner,
           },
           options: {
             topBar: {
@@ -68,7 +72,7 @@ export default function UploadCampaignButton({ componentId, campaignId, deckActi
         },
       });
     }
-  }, [componentId, campaignId]);
+  }, [componentId, campaignId, isOwner]);
   if (!user) {
     return null;
   }
@@ -76,7 +80,7 @@ export default function UploadCampaignButton({ componentId, campaignId, deckActi
     return (
       <DeckButton
         icon="lock"
-        title={t`Edit access`}
+        title={isOwner ? t`Edit players` : t`View players`}
         thin
         color="light_gray"
         onPress={editAccessPressed}

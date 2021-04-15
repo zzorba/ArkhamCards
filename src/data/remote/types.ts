@@ -69,6 +69,7 @@ export class MiniCampaignRemote implements MiniCampaignT {
   public latestScenarioResult: ScenarioResult | undefined;
   public investigators: string[];
   public updatedAt: Date;
+  public owner_id: string;
   public linked: undefined | CampaignLink = undefined;
 
   constructor(
@@ -77,7 +78,7 @@ export class MiniCampaignRemote implements MiniCampaignT {
     this.campaign = campaign;
     this.campaignInvestigatorData = fragmentToInvestigatorData(campaign);
     this.updatedAt = new Date(Date.parse(campaign.updated_at));
-
+    this.owner_id = campaign.owner_id;
     this.investigators = fragmentToInvestigators(campaign);
     this.id = {
       campaignId: campaign.uuid,

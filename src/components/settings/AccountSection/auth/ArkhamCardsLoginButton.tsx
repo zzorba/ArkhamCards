@@ -180,7 +180,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
   backPressed: () => void;
   loginSucceeded: (user: FirebaseAuthTypes.UserCredential) => void;
 }) {
-  const { typography } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -262,10 +262,13 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
   return (
     <View style={styles.center}>
       <Input
-        leftIcon={{ type: 'material', name: 'email' }}
+        leftIcon={{ type: 'material', name: 'email', color: colors.darkText }}
         placeholder={t`Email address`}
+        inputStyle={typography.text as any}
+        placeholderTextColor={colors.lightText}
         autoCompleteType="email"
         autoCapitalize="none"
+        autoCorrect={false}
         value={emailAddress}
         keyboardType="email-address"
         textContentType="username"
@@ -278,7 +281,8 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
       />
       <Input
         ref={passwordInputRef}
-        leftIcon={{ type: 'material', name: 'lock' }}
+        leftIcon={{ type: 'material', name: 'lock', color: colors.darkText }}
+        inputStyle={typography.text as any}
         placeholder={t`Password`}
         secureTextEntry
         value={password}

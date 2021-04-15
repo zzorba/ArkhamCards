@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { ActivityIndicator, FlatList, ListRenderItemInfo, Platform, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, FlatList, ListRenderItemInfo, Platform, RefreshControl, StyleSheet, Text, View } from 'react-native';
 import { forEach, map } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -334,13 +334,20 @@ export default function FriendFeedComponent({ componentId, userId, handleScroll,
     doRefresh();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const isRefreshing = loading || loadingMyProfile || !!searchResults?.loading;
   return (
     <FlatList
       contentInset={!handleScroll || Platform.OS === 'android' ? undefined : { top: SEARCH_BAR_HEIGHT }}
       contentOffset={!handleScroll || Platform.OS === 'android' ? undefined : { x: 0, y: -SEARCH_BAR_HEIGHT }}
       ListHeaderComponent={handleScroll && header}
-      onRefresh={doRefresh}
-      refreshing={loading || loadingMyProfile || !!searchResults?.loading}
+      refreshControl={(
+        <RefreshControl
+          refreshing={isRefreshing}
+          onRefresh={doRefresh}
+          tintColor={colors.lightText}
+          progressViewOffset={SEARCH_BAR_HEIGHT}
+        />
+      )}
       onScroll={handleScroll}
       data={data}
       renderItem={renderItem}

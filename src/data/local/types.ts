@@ -18,6 +18,7 @@ export class MiniCampaignRedux implements MiniCampaignT {
   public uuid: string;
   public guided: boolean;
   public name: string;
+  public owner_id = undefined;
   public cycleCode: CampaignCycleCode;
   public difficulty: CampaignDifficulty | undefined;
   public standaloneId: StandaloneId | undefined;

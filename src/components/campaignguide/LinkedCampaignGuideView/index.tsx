@@ -97,6 +97,7 @@ export default function LinkedCampaignGuideView(props: Props) {
         <UploadCampaignButton
           componentId={componentId}
           campaignId={campaignId}
+          campaign={campaign}
           setCampaignServerId={setCampaignServerId}
           deckActions={deckActions}
           showAlert={showAlert}
@@ -109,7 +110,7 @@ export default function LinkedCampaignGuideView(props: Props) {
         />
       </View>
     );
-  }, [showAlert, setCampaignServerId, deckActions, componentId, campaignId, campaignName]);
+  }, [showAlert, setCampaignServerId, campaign, deckActions, componentId, campaignId, campaignName]);
 
   const campaignATab = useMemo(() => {
     if (!campaignDataA || !processedCampaignA || !contextA) {

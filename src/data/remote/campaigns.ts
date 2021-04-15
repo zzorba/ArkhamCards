@@ -273,6 +273,27 @@ export function useDeleteCampaignRequest() {
   }, [apiCall, updateCache, client]);
 }
 
+export function useLeaveCampaignRequest() {
+  const [updateCache, client] = useModifyUserCache();
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const editCampaignAccess = useEditCampaignAccessRequest();
+  return useCallback(async(campaignId: UploadedCampaignId): Promise<void> => {
+    if (user) {
+      await editCampaignAccess(campaignId, [user.uid], 'revoke');
+      const targetCampaignId = client.cache.identify({ __typename: 'campaign', id: campaignId.serverId });
+      if (targetCampaignId) {
+        updateCache({
+          fields: {
+            campaigns(current) {
+              return filter(current, c => c.campaign?.__ref !== targetCampaignId);
+            },
+          },
+        });
+      }
+    }
+  }, [editCampaignAccess, updateCache, client, user]);
+}
+
 export type SetCampaignChaosBagAction = (campaignId: UploadedCampaignId, chaosBag: ChaosBag) => Promise<void>;
 export function useSetCampaignChaosBag(): SetCampaignChaosBagAction {
   const [updateChaosBag] = useUpdateChaosBagMutation();

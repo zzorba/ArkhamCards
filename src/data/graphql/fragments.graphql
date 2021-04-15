@@ -110,6 +110,7 @@ fragment MiniCampaign on campaign {
   difficulty
   scenarioResults
   guided
+  owner_id
   latest_decks {
     deck {
       ...MiniDeck

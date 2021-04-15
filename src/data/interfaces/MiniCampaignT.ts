@@ -9,6 +9,7 @@ export default interface MiniCampaignT {
   id: CampaignId;
   uuid: string;
   guided: boolean;
+  owner_id: string | undefined;
   name: string;
   cycleCode: CampaignCycleCode;
   difficulty: CampaignDifficulty | undefined;

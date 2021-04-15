@@ -7477,7 +7477,7 @@ export type FullInvestigatorDataFragment = (
 
 export type MiniCampaignFragment = (
   { __typename?: 'campaign' }
-  & Pick<Campaign, 'id' | 'uuid' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'scenarioResults' | 'guided' | 'updated_at'>
+  & Pick<Campaign, 'id' | 'uuid' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'scenarioResults' | 'guided' | 'owner_id' | 'updated_at'>
   & { latest_decks: Array<(
     { __typename?: 'latest_decks' }
     & { deck?: Maybe<(
@@ -8093,6 +8093,7 @@ export const MiniCampaignFragmentDoc = gql`
   difficulty
   scenarioResults
   guided
+  owner_id
   latest_decks {
     deck {
       ...MiniDeck

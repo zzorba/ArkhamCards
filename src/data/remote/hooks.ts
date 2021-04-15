@@ -36,22 +36,27 @@ import { useApolloClient } from '@apollo/client';
 export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
   const { user, loading: userLoading } = useContext(ArkhamCardsAuthContext);
   const [loadMyCampaigns, { data, loading: dataLoading, refetch }] = useGetMyCampaignsLazyQuery({
-    variables: { userId: user?.uid || '' },
-    fetchPolicy: 'cache-first',
+    fetchPolicy: 'cache-and-network',
     returnPartialData: true,
   });
   useEffect(() => {
     if (user) {
-      loadMyCampaigns();
+      loadMyCampaigns({
+        variables: {
+          userId: user.uid,
+        },
+      });
     }
   }, [user, loadMyCampaigns]);
 
   const refresh = useCallback(() => {
-    refetch?.({ userId: user?.uid || '' });
+    if (user && refetch) {
+      refetch({ userId: user?.uid || '' });
+    }
   }, [refetch, user]);
   const rawCampaigns = data?.users_by_pk?.campaigns;
   const campaigns = useMemo(() => {
-    if (!rawCampaigns) {
+    if (!rawCampaigns || !user) {
       return [];
     }
     return flatMap(rawCampaigns, ({ campaign }) => {
@@ -67,7 +72,7 @@ export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
       }
       return new MiniCampaignRemote(campaign);
     });
-  }, [rawCampaigns]);
+  }, [rawCampaigns, user]);
   return [campaigns, userLoading || dataLoading, refresh];
 }
 
@@ -285,12 +290,16 @@ export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, (
   const dispatch = useDispatch();
   const checkForSync = useRef(false);
   const [loadMyDecks, { data, loading: dataLoading, refetch }] = useGetMyDecksLazyQuery({
-    variables: { userId: user?.uid || '' },
     fetchPolicy: 'cache-and-network',
+    returnPartialData: true,
   });
   useEffect(() => {
     if (user) {
-      loadMyDecks();
+      loadMyDecks({
+        variables: {
+          userId: user.uid,
+        },
+      });
     }
   }, [user, loadMyDecks]);
   const allDecks = data?.users_by_pk?.all_decks;
@@ -325,6 +334,7 @@ export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, (
   const refresh = useCallback(() => {
     if (user && refetch) {
       checkForSync.current = true;
+      console.log('refetching decks remote');
       refetch({ userId: user.uid });
     }
   }, [refetch, user]);

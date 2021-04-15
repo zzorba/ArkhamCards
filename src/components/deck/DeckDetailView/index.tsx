@@ -288,7 +288,7 @@ function DeckDetailView({
 
   useEffect(() => {
     if (!deck) {
-      if (!deleting && !id.local) {
+      if (!deleting && !id.local && !id.serverId) {
         showAlert(
           t`Deck has been deleted`,
           t`It looks like you deleted this deck from ArkhamDB.\n\n If it was part of a campaign you can add the same investigator back to restore your campaign data.`,
