@@ -1188,6 +1188,7 @@ msgstr ""
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr ""
 
+#, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr ""
 
@@ -3914,6 +3915,9 @@ msgid "Edit access"
 msgstr ""
 
 msgid "Later"
+msgstr ""
+
+msgid "Searching cards..."
 msgstr ""
 
 #, javascript-format

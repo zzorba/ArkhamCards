@@ -1134,6 +1134,7 @@ msgstr ""
 msgid "Taking three damage and three horror"
 msgstr ""
 
+#, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr ""
 
@@ -3904,6 +3905,12 @@ msgid "Access"
 msgstr ""
 
 msgid "Edit access"
+msgstr ""
+
+msgid "Later"
+msgstr ""
+
+msgid "Searching cards..."
 msgstr ""
 
 #, javascript-format

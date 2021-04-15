@@ -1144,6 +1144,7 @@ msgstr "Tratando de entender las secuencias anidadas"
 msgid "Taking three damage and three horror"
 msgstr "Recibiendo tres de Daño y tres de Horror"
 
+#, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "No hay cartas que coincidan con \"${searchTerm}\""
 
@@ -4213,6 +4214,9 @@ msgid "Edit access"
 msgstr ""
 
 msgid "Later"
+msgstr ""
+
+msgid "Searching cards..."
 msgstr ""
 
 #, javascript-format

@@ -1161,6 +1161,7 @@ msgstr "Prendo 3 danni e 3 orrori"
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr "Sto sopra di 5, spero di non pescare il tentacolo"
 
+#, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "Nessuna carta corrispondente per \"${ searchTerm }\""
 
@@ -4235,6 +4236,9 @@ msgid "Edit access"
 msgstr ""
 
 msgid "Later"
+msgstr ""
+
+msgid "Searching cards..."
 msgstr ""
 
 #, javascript-format

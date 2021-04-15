@@ -2293,6 +2293,7 @@ msgid_plural "Show ${ spoilerCardsCount } spoilers"
 msgstr[0] "Mostrar ${ spoilerCardsCount } spoiler"
 msgstr[1] "Mostrar ${ spoilerCardsCount } spoilers"
 
+#, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "Nenhuma carta para “${ searchTerm }”"
 
@@ -4223,6 +4224,9 @@ msgid "Edit access"
 msgstr ""
 
 msgid "Later"
+msgstr ""
+
+msgid "Searching cards..."
 msgstr ""
 
 msgctxt "masculine"

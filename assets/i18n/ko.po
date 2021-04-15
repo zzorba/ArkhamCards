@@ -1224,6 +1224,7 @@ msgstr "피해 3과 공포 3을 받는 중"
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr "5 높은 테스트에서 촉수 나오지 않기를 기도하는 중"
 
+#, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "\"${ searchTerm }\" 검색 조건과 일치하는 카드가 존재하지 않습니다."
 
@@ -4038,6 +4039,9 @@ msgid "Edit access"
 msgstr ""
 
 msgid "Later"
+msgstr ""
+
+msgid "Searching cards..."
 msgstr ""
 
 #, javascript-format

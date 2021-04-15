@@ -1138,6 +1138,7 @@ msgstr "正在查閱時空旅行的FAQ"
 msgid "Taking three damage and three horror"
 msgstr "準備承受3點傷害和3點恐懼"
 
+#, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "找不到符合\"${ searchTerm }\"的卡牌"
 
@@ -4000,6 +4001,12 @@ msgid "Access"
 msgstr ""
 
 msgid "Edit access"
+msgstr ""
+
+msgid "Later"
+msgstr ""
+
+msgid "Searching cards..."
 msgstr ""
 
 #, javascript-format

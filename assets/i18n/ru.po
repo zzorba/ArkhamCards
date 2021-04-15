@@ -1323,6 +1323,7 @@ msgstr "Получаем 3 раны и 3 ужаса"
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr "Семь против двух, лишь бы не щупальца"
 
+#, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "Нет карт по запросу «${ searchTerm }»"
 
@@ -4241,6 +4242,9 @@ msgid "Edit access"
 msgstr ""
 
 msgid "Later"
+msgstr ""
+
+msgid "Searching cards..."
 msgstr ""
 
 #, javascript-format
