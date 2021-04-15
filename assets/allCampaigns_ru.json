@@ -42236,7 +42236,7 @@
             "section": "campaign_notes",
             "id": "tes_dreamers_in_the_abyss",
             "operation": "set_input",
-            "text": "в Бездне #Х# сновидцев"
+            "text": "в Бездне #X# сновидцев"
           }
         ]
       }
