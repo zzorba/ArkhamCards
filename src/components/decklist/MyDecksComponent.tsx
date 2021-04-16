@@ -3,20 +3,16 @@ import {
   Platform,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import { filter } from 'lodash';
-import { NetInfoStateType } from '@react-native-community/netinfo';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import useNetworkStatus from '@components/core/useNetworkStatus';
 import Card from '@data/types/Card';
 import DeckListComponent from '@components/decklist/DeckListComponent';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
-import COLORS from '@styles/colors';
-import space, { s, xs } from '@styles/space';
+import space, { s } from '@styles/space';
 import { getDeckToCampaignMap } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
@@ -27,6 +23,7 @@ import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import { useMyDecks } from '@data/hooks';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import ConnectionProblemBanner from '@components/core/ConnectionProblemBanner';
 
 interface OwnProps {
   deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
@@ -48,7 +45,6 @@ function MyDecksComponent({
   signedIn,
   deckActions,
 }: Props) {
-  const [{ networkType, isConnected }] = useNetworkStatus();
   const { typography, width } = useContext(StyleContext);
   const reLogin = useCallback(() => {
     login();
@@ -73,36 +69,6 @@ function MyDecksComponent({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const errorLine = useMemo(() => {
-    if (!error && networkType !== NetInfoStateType.none) {
-      return null;
-    }
-    if (!isConnected || networkType === NetInfoStateType.none) {
-      return (
-        <View style={[styles.banner, styles.warning, { width }]}>
-          <Text style={typography.small}>
-            { t`Unable to update: you appear to be offline.` }
-          </Text>
-        </View>
-      );
-    }
-    if (error === 'badAccessToken') {
-      return (
-        <TouchableOpacity onPress={reLogin} style={[styles.banner, styles.error, { width }]}>
-          <Text style={[typography.small, styles.errorText, space.paddingS]}>
-            { t`We're having trouble updating your decks at this time. If the problem persists tap here to reauthorize.` }
-          </Text>
-        </TouchableOpacity>
-      );
-    }
-    return (
-      <TouchableOpacity onPress={reLogin} style={[styles.banner, styles.error, { width }]}>
-        <Text style={[typography.small, styles.errorText, space.paddingS]}>
-          { t`An unexpected error occurred (${error}). If restarting the app doesn't fix the problem, tap here to reauthorize.` }
-        </Text>
-      </TouchableOpacity>
-    );
-  }, [error, networkType, isConnected, width, typography, reLogin]);
 
   const signInFooter = useMemo(() => {
     if (signedIn) {
@@ -140,20 +106,13 @@ function MyDecksComponent({
 
   const header = useMemo(() => {
     const searchPadding = !!searchOptions && Platform.OS === 'android';
-    if (!errorLine && !searchPadding) {
-      return null;
-    }
     return (
       <>
-        { !!errorLine && (
-          <View style={styles.stack}>
-            { errorLine }
-          </View>
-        ) }
         { searchPadding && <View style={styles.searchBarPlaceholder} /> }
+        <ConnectionProblemBanner width={width} arkhamdbState={{ error, reLogin }} />
       </>
     );
-  }, [searchOptions, errorLine]);
+  }, [searchOptions, width, error, reLogin]);
 
   const deckIds = useMemo(() => {
     return filter(onlyDecks || myDecks, deckId => !filterDeck || filterDeck(deckId));
@@ -176,24 +135,6 @@ function MyDecksComponent({
 export default withLoginState<OwnProps>(MyDecksComponent);
 
 const styles = StyleSheet.create({
-  stack: {
-    flexDirection: 'column',
-  },
-  banner: {
-    paddingTop: xs,
-    paddingBottom: xs,
-    paddingLeft: s,
-    paddingRight: s,
-  },
-  error: {
-    backgroundColor: COLORS.red,
-  },
-  warning: {
-    backgroundColor: COLORS.yellow,
-  },
-  errorText: {
-    color: COLORS.white,
-  },
   signInFooter: {
     padding: s,
     paddingTop: 0,

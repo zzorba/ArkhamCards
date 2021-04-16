@@ -39,6 +39,7 @@ export interface Typography {
   strike: TextStyle;
   underline: TextStyle;
   uppercase: TextStyle;
+  black: TextStyle;
   white: TextStyle;
   error: TextStyle;
   dark: TextStyle;
@@ -210,6 +211,9 @@ export default function(
     },
     white: {
       color: COLORS.white,
+    },
+    black: {
+      color: COLORS.black,
     },
     error: {
       color: COLORS.red,

@@ -39,7 +39,7 @@ export default function LanguageProvider({ children }: Props) {
   const context = useMemo(() => {
     return {
       lang,
-      useCardTraits: lang !== 'ru',
+      useCardTraits: false, // lang !== 'ru',
     };
   }, [lang]);
   return (

@@ -46,6 +46,6 @@ export default {
   green: '#498D35',
   button: Platform.OS === 'ios' ? '#bbb' : '#000',
   navButton: (Platform.OS === 'ios' ? PlatformColor('linkColor') : '#007AFF') as any as string,
-  black: '#000',
+  black: '#24303C',
   switchTrackColor: Platform.OS === 'ios' ? { false: '#bbb', true: '#222' } : undefined,
 };

@@ -16,6 +16,7 @@ import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StandaloneItem from './StandaloneItem';
 import StyleContext from '@styles/StyleContext';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
+import ConnectionProblemBanner from '@components/core/ConnectionProblemBanner';
 
 interface Props {
   onScroll: (...args: any[]) => void;
@@ -32,7 +33,7 @@ interface CampaignItemType {
 }
 
 export default function CampaignList({ onScroll, componentId, campaigns, footer, standalonesById, onRefresh, refreshing }: Props) {
-  const { colors } = useContext(StyleContext);
+  const { colors, width } = useContext(StyleContext);
   const onPress = useCallback((id: string, campaign: MiniCampaignT) => {
     Keyboard.dismiss();
     const options: Options = {
@@ -127,13 +128,13 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
   }, [onPress, standalonesById]);
 
   const header = useMemo(() => {
-    if (Platform.OS === 'android') {
-      return (
-        <View style={styles.searchBarPadding} />
-      );
-    }
-    return null;
-  }, []);
+    return (
+      <>
+        { Platform.OS === 'android' && <View style={styles.searchBarPadding} /> }
+        <ConnectionProblemBanner width={width} />
+      </>
+    )
+  }, [width]);
   const [isRefreshing, setRefreshing] = useState(false);
   const doRefresh = useCallback(() => {
     setRefreshing(true);
