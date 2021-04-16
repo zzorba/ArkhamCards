@@ -83,7 +83,11 @@ export function useDeck(id: DeckId | undefined, fetch?: boolean): LatestDeckT | 
   const reduxDeck = useDeckFromRedux(id);
   const remoteDeck = useDeckFromRemote(id, fetch || false);
   return useMemo(() => {
-    if (!id?.serverId || (!id.local && reduxDeck)) {
+    if (!id) {
+      return undefined;
+    }
+    if (!id.serverId || (!id.local && reduxDeck)) {
+      // Server/ArkhamDB decks should use the local cache.
       return reduxDeck;
     }
     return remoteDeck;
@@ -119,7 +123,7 @@ export function useMyDecks(deckActions: DeckActions): [MyDecksState, () => void]
     const remoteDeckLocalIds = new Set(flatMap(remoteMyDecks, d => d.id.local ? d.id.uuid : []));
     const remoteDeckArkhamDbIds = new Set(flatMap(remoteMyDecks, d => d.id.local ? [] : d.id.id));
     const filteredMyDecks = filter(myDecks, d => {
-      return d.id.local ? !remoteDeckLocalIds.has(d.id.uuid) : remoteDeckArkhamDbIds.has(d.id.id);
+      return !(d.id.local ? remoteDeckLocalIds.has(d.id.uuid) : remoteDeckArkhamDbIds.has(d.id.id));
     });
     return reverse(sortBy(
       [...filteredMyDecks, ...remoteMyDecks],

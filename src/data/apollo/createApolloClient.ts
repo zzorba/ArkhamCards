@@ -25,6 +25,13 @@ const typePolicies: TypedTypePolicies = {
   },
   campaign: {
     keyFields: ['id'],
+    fields: {
+      latest_decks: {
+        merge(existing, incoming) {
+          return incoming;
+        },
+      },
+    },
   },
   chaos_bag_result: {
     keyFields: ['id'],
@@ -61,6 +68,20 @@ const typePolicies: TypedTypePolicies = {
   },
   guide_achievement: {
     keyFields: ['id', 'campaign_id'],
+  },
+  users: {
+    fields: {
+      decks: {
+        merge(existing, incoming) {
+          return incoming;
+        },
+      },
+      all_decks: {
+        merge(existing, incoming) {
+          return incoming;
+        },
+      },
+    },
   },
 };
 
