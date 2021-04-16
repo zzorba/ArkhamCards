@@ -1,14 +1,15 @@
-import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES } from '@actions/types';
+import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES, SealedToken } from '@actions/types';
 import { uniq, concat, flatMap, sumBy, find, findLast, maxBy, map, last, forEach, findLastIndex } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
-import { FullCampaignFragment, LatestDeckFragment, MiniCampaignFragment, Guide_Input, FullCampaignGuideStateFragment } from '@generated/graphql/apollo-schema';
+import { FullCampaignFragment, LatestDeckFragment, MiniCampaignFragment, Guide_Input, FullCampaignGuideStateFragment, FullChaosBagResultsFragment } from '@generated/graphql/apollo-schema';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
-import { ChaosBag } from '@app_constants';
+import { ChaosBag, ChaosTokenType } from '@app_constants';
 import LatestDeckT, { DeckCampaignInfo } from '@data/interfaces/LatestDeckT';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import { SimpleUser } from './hooks';
+import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 
 const EMPTY_TRAUMA = {};
 
@@ -316,6 +317,7 @@ export class MiniDeckRemote implements MiniDeckT {
     this.investigator = deck.investigator;
     this.name = deck.content?.name || '';
     this.date_update = deck.content?.date_update || '';
+    console.log(deck);
     this.campaign_id = {
       campaignId: deck.campaign.uuid,
       serverId: deck.campaign.id,
@@ -350,5 +352,21 @@ export class LatestDeckRemote extends MiniDeckRemote implements LatestDeckT {
         insane: deck.investigator_data?.insane || undefined,
       },
     } : undefined;
+  }
+}
+
+export class ChaosBagResultsRemote implements ChaosBagResultsT {
+  drawnTokens: ChaosTokenType[];
+  sealedTokens: SealedToken[];
+  blessTokens: number;
+  curseTokens: number;
+  totalDrawnTokens: number;
+
+  constructor(chaosBagResults: FullChaosBagResultsFragment) {
+    this.drawnTokens = chaosBagResults.drawn || [];
+    this.sealedTokens = chaosBagResults.sealed || [];
+    this.blessTokens = chaosBagResults.bless || 0;
+    this.curseTokens = chaosBagResults.curse || 0;
+    this.totalDrawnTokens = chaosBagResults.totalDrawn || 0;
   }
 }

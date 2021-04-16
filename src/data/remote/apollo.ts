@@ -82,6 +82,7 @@ function fullToMiniCampaignFragment(fragment: FullCampaignFragment): MiniCampaig
     ...pick(fragment, [
       'id',
       'uuid',
+      'owner_id',
       'name',
       'investigator_data',
       'latest_decks',

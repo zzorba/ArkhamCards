@@ -1,11 +1,12 @@
-import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId, WeaknessSet, InvestigatorData, CampaignGuideState, GuideInput, CampaignNotes, getDeckId, DeckId } from '@actions/types';
+import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId, WeaknessSet, InvestigatorData, CampaignGuideState, GuideInput, CampaignNotes, getDeckId, DeckId, SealedToken, ChaosBagResults } from '@actions/types';
 import { find, findLast, uniq, map, concat, last, maxBy, sumBy } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
-import { ChaosBag } from '@app_constants';
+import { ChaosBag, ChaosTokenType } from '@app_constants';
 import LatestDeckT, { DeckCampaignInfo } from '@data/interfaces/LatestDeckT';
+import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 const EMPTY_TRAUMA: Trauma = {};
@@ -247,5 +248,21 @@ export class LatestDeckRedux extends MiniDeckRedux implements LatestDeckT {
       name: campaign.name,
       trauma: campaign.investigatorData?.[deck.investigator_code] || {},
     } : undefined;
+  }
+}
+
+export class ChaosBagResultsRedux implements ChaosBagResultsT {
+  drawnTokens: ChaosTokenType[];
+  sealedTokens: SealedToken[];
+  blessTokens: number;
+  curseTokens: number;
+  totalDrawnTokens: number;
+
+  constructor(chaosBagResults: ChaosBagResults) {
+    this.drawnTokens = chaosBagResults.drawnTokens;
+    this.sealedTokens = chaosBagResults.sealedTokens;
+    this.blessTokens = chaosBagResults.blessTokens || 0;
+    this.curseTokens = chaosBagResults.curseTokens || 0;
+    this.totalDrawnTokens = chaosBagResults.totalDrawnTokens;
   }
 }

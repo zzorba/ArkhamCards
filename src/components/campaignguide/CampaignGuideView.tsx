@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
@@ -17,6 +17,7 @@ import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 import space from '@styles/space';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
 import { useDeckActions } from '@data/remote/decks';
+import StyleContext from '@styles/StyleContext';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -26,6 +27,7 @@ function CampaignGuideView(props: Props) {
   const [countDialog, showCountDialog] = useCountDialog();
   const { componentId, setCampaignServerId } = props;
   const campaignData = useContext(CampaignGuideContext);
+  const { typography } = useContext(StyleContext);
   const { campaignId } = campaignData;
   const dispatch = useDispatch();
   const deckActions = useDeckActions();
@@ -59,6 +61,12 @@ function CampaignGuideView(props: Props) {
   const footerButtons = useMemo(() => {
     return (
       <View style={space.paddingSideS}>
+        <View style={[space.paddingBottomS, space.paddingTopS]}>
+          <Text style={[typography.large, typography.center, typography.light]}>
+            { `— ${t`Settings`} —` }
+          </Text>
+        </View>
+
         <UploadCampaignButton
           componentId={componentId}
           campaignId={campaignId}
@@ -75,7 +83,7 @@ function CampaignGuideView(props: Props) {
         />
       </View>
     );
-  }, [componentId, campaign.name, campaignId, deckActions, setCampaignServerId, showAlert]);
+  }, [componentId, campaign, campaignId, deckActions, typography, setCampaignServerId, showAlert]);
   return (
     <View style={styles.wrapper}>
       <CampaignDetailTab

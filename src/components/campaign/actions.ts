@@ -1,4 +1,4 @@
-import { forEach, map } from 'lodash';
+import { filter, forEach, map } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
 
 import {
@@ -53,13 +53,16 @@ import {
   UPDATE_CAMPAIGN_TRAUMA,
   TraumaAndCardData,
   LocalCampaignId,
+  SealedToken,
 } from '@actions/types';
-import { ChaosBag } from '@app_constants';
+import { ChaosBag, ChaosTokenType } from '@app_constants';
 import { AppState, makeCampaignSelector, getDeck, makeDeckSelector } from '@reducers';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { uploadCampaignDeckHelper } from '@lib/firebaseApi';
 import { DeckActions } from '@data/remote/decks';
 import { SetCampaignChaosBagAction, SetCampaignNotesAction, SetCampaignShowInterludes, SetCampaignWeaknessSetAction, UpdateCampaignActions } from '@data/remote/campaigns';
+import { ChaosBagActions } from '@data/remote/chaosBag';
+import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 
 function getBaseDeckIds(
   state: AppState,
@@ -449,7 +452,7 @@ function updateCampaign(
   };
 }
 
-export function updateChaosBagResults(
+function updateChaosBagResults(
   id: CampaignId,
   chaosBagResults: ChaosBagResults
 ): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
@@ -463,19 +466,123 @@ export function updateChaosBagResults(
   };
 }
 
+export function updateChaosBagClearTokens(
+  actions: ChaosBagActions,
+  id: CampaignId,
+  bless: number,
+  curse: number,
+  chaosBagResults: ChaosBagResultsT
+): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
+  return (dispatch) => {
+    if (id.serverId) {
+      actions.clearTokens(id, bless, curse);
+    } else {
+      dispatch(updateChaosBagResults(id, {
+        drawnTokens: [],
+        blessTokens: bless,
+        curseTokens: curse,
+        sealedTokens: chaosBagResults.sealedTokens,
+        totalDrawnTokens: chaosBagResults.totalDrawnTokens,
+      }));
+    }
+  };
+}
+
+export function updateChaosBagDrawToken(
+  actions: ChaosBagActions,
+  id: CampaignId,
+  drawn: ChaosTokenType[],
+  chaosBagResults: ChaosBagResultsT
+): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
+  return (dispatch) => {
+    if (id.serverId) {
+      actions.drawToken(id, drawn);
+    } else {
+      dispatch(updateChaosBagResults(id, {
+        ...chaosBagResults,
+        drawnTokens: drawn,
+        totalDrawnTokens: chaosBagResults.totalDrawnTokens + 1,
+      }));
+    }
+  };
+}
+
+export function updateChaosBagReleaseAllSealed(
+  actions: ChaosBagActions,
+  id: CampaignId,
+  chaosBagResults: ChaosBagResultsT
+): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
+  return (dispatch) => {
+    if (id.serverId) {
+      actions.releaseAllSealed(id);
+    } else {
+      dispatch(updateChaosBagResults(id, {
+        ...chaosBagResults,
+        sealedTokens: [],
+      }));
+    }
+  };
+}
+
+export function updateChaosBagResetBlessCurse(
+  actions: ChaosBagActions,
+  id: CampaignId,
+  chaosBagResults: ChaosBagResultsT
+): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
+  return (dispatch) => {
+    const drawnTokens = filter(chaosBagResults.drawnTokens, t => t !== 'bless' && t !== 'curse');
+    const sealedTokens = filter(chaosBagResults.sealedTokens, t => t.icon !== 'bless' && t.icon !== 'curse');
+    if (id.serverId) {
+      actions.resetBlessCurse(id, drawnTokens, sealedTokens);
+    } else {
+      dispatch(updateChaosBagResults(id, {
+        ...chaosBagResults,
+        blessTokens: 0,
+        curseTokens: 0,
+        drawnTokens,
+        sealedTokens,
+      }));
+    }
+  };
+}
+
+
+export function updateChaosBagSealTokens(
+  actions: ChaosBagActions,
+  id: CampaignId,
+  chaosBagResults: ChaosBagResultsT,
+  sealedTokens: SealedToken[]
+): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
+  return (dispatch) => {
+    if (id.serverId) {
+      actions.sealTokens(id, sealedTokens);
+    } else {
+      dispatch(updateChaosBagResults(id, {
+        ...chaosBagResults,
+        sealedTokens,
+      }));
+    }
+  };
+}
+
 export function adjustBlessCurseChaosBagResults(
+  actions: ChaosBagActions,
   id: CampaignId,
   type: 'bless' | 'curse',
   direction: 'inc' | 'dec'
 ): ThunkAction<void, AppState, unknown, AdjustBlessCurseAction> {
   return (dispatch) => {
-    dispatch({
-      type: ADJUST_BLESS_CURSE,
-      id,
-      bless: type === 'bless',
-      direction,
-      now: new Date(),
-    });
+    if (id.serverId) {
+      actions.adjustBlessCurse(id, type, direction);
+    } else {
+      dispatch({
+        type: ADJUST_BLESS_CURSE,
+        id,
+        bless: type === 'bless',
+        direction,
+        now: new Date(),
+      });
+    }
   };
 }
 

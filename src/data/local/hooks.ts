@@ -1,12 +1,13 @@
 import { useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
-import { AppState, MyDecksState, getAllDecks, getMyDecksState, makeCampaignGuideStateSelector, makeCampaignSelector, makeLatestDecksSelector, getDeck, getEffectiveDeckId, makeDeckSelector } from '@reducers';
+import { AppState, MyDecksState, getAllDecks, getMyDecksState, makeCampaignGuideStateSelector, makeCampaignSelector, makeLatestDecksSelector, getDeck, getEffectiveDeckId, makeDeckSelector, makeChaosBagResultsSelector } from '@reducers';
 import { Campaign, CampaignId, DeckId, getCampaignLastUpdated, getLastUpdated } from '@actions/types';
-import { CampaignGuideStateRedux, LatestDeckRedux, SingleCampaignRedux } from './types';
+import { CampaignGuideStateRedux, ChaosBagResultsRedux, LatestDeckRedux, SingleCampaignRedux } from './types';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 
 
 export function useDeckFromRedux(id: DeckId | undefined, campaignId?: CampaignId): LatestDeckT | undefined {
@@ -53,6 +54,14 @@ export function useLatestDeckRedux(deckId: DeckId, deckToCampaign?: { [uuid: str
   return useMemo(() => {
     return deck && new LatestDeckRedux(deck, previousDeck, deckToCampaign?.[deckId.uuid]);
   }, [deckId.uuid, deckToCampaign, deck, previousDeck]);
+}
+
+export function useChaosBagResultsRedux({ campaignId }: CampaignId): ChaosBagResultsT {
+  const chaosBagResultsSelector = useMemo(makeChaosBagResultsSelector, []);
+  const chaosBagResults = useSelector((state: AppState) => chaosBagResultsSelector(state, campaignId));
+  return useMemo(() => {
+    return new ChaosBagResultsRedux(chaosBagResults);
+  }, [chaosBagResults]);
 }
 
 export function useMyDecksRedux(): MyDecksState {

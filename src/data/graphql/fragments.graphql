@@ -29,6 +29,15 @@ fragment IdDeck on campaign_deck {
   campaign_id
 }
 
+fragment FullChaosBagResults on chaos_bag_results {
+  campaign_id
+  bless
+  curse
+  drawn
+  sealed
+  totalDrawn
+}
+
 fragment MiniDeck on campaign_deck {
   ...IdDeck
   investigator

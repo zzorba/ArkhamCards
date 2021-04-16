@@ -9,8 +9,10 @@ import { Toggles, useEffectUpdate, useToggles } from '@components/core/hooks';
 import { CampaignId, ChaosBagResults, SealedToken } from '@actions/types';
 import { useDialog } from '@components/deck/dialogs';
 import { useDispatch } from 'react-redux';
-import { updateChaosBagResults } from './actions';
+import { updateChaosBagSealTokens } from './actions';
 import space from '@styles/space';
+import { ChaosBagActions } from '@data/remote/chaosBag';
+import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 
 export interface SealTokenDialogProps {
   campaignId: CampaignId;
@@ -25,7 +27,7 @@ function getSealedToggles(chaosBagResults: ChaosBagResults): Toggles {
   return toggles;
 }
 
-export default function useSealTokenDialog(campaignId: CampaignId, chaosBag: ChaosBag, chaosBagResults: ChaosBagResults): [React.ReactNode, () => void] {
+export default function useSealTokenDialog(campaignId: CampaignId, chaosBag: ChaosBag, chaosBagResults: ChaosBagResultsT, actions: ChaosBagActions): [React.ReactNode, () => void] {
   const [sealed, toggleSealToken,,syncToggles] = useToggles(getSealedToggles(chaosBagResults));
   const allTokens: SealedToken[] = useMemo(() => {
     const unsortedTokens: ChaosTokenType[] = keys(chaosBag) as ChaosTokenType[];
@@ -70,15 +72,9 @@ export default function useSealTokenDialog(campaignId: CampaignId, chaosBag: Cha
       return !!sealed[t.id];
     });
 
-    const newChaosBagResults: ChaosBagResults = {
-      ...chaosBagResults,
-      drawnTokens: chaosBagResults.drawnTokens,
-      sealedTokens: newSealedTokens,
-      totalDrawnTokens: chaosBagResults.totalDrawnTokens,
-    };
 
-    dispatch(updateChaosBagResults(campaignId, newChaosBagResults));
-  }, [dispatch, campaignId, chaosBagResults, allTokens, sealed]);
+    dispatch(updateChaosBagSealTokens(actions, campaignId, chaosBagResults, newSealedTokens));
+  }, [dispatch, campaignId, chaosBagResults, actions, allTokens, sealed]);
 
   const content = useMemo(() => {
     return (

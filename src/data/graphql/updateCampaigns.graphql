@@ -20,6 +20,162 @@ mutation deleteInvestigatorDecks(
   }
 }
 
+mutation chaosBagClearTokens(
+  $campaign_id: Int!,
+  $bless: Int!,
+  $curse: Int!
+) {
+  update_chaos_bag_results_by_pk(
+    pk_columns: { campaign_id: $campaign_id }
+    _set: {
+      drawn: []
+      bless: $bless
+      curse: $curse
+    }
+  ) {
+    campaign_id
+    drawn
+    bless
+    curse
+  }
+}
+
+mutation chaosBagDrawToken(
+  $campaign_id: Int!,
+  $drawn: jsonb!
+) {
+  update_chaos_bag_results_by_pk(
+    pk_columns: { campaign_id: $campaign_id }
+    _set: {
+      drawn: $drawn
+    }
+    _inc: {
+      totalDrawn: 1
+    }
+  ) {
+    campaign_id
+    drawn
+    totalDrawn
+  }
+}
+
+mutation chaosBagResetBlessCurse(
+  $campaign_id: Int!,
+  $drawn: jsonb!,
+  $sealed: jsonb!
+) {
+  update_chaos_bag_results_by_pk(
+    pk_columns: { campaign_id: $campaign_id }
+    _set: {
+      bless: 0
+      curse: 0
+      drawn: $drawn
+      sealed: $sealed
+    }
+  ) {
+    campaign_id
+    bless
+    curse
+    drawn
+    sealed
+  }
+}
+
+mutation chaosBagSealTokens(
+  $campaign_id: Int!,
+  $sealed: jsonb!
+) {
+  update_chaos_bag_results_by_pk(
+    pk_columns: { campaign_id: $campaign_id }
+    _set: {
+      sealed: $sealed
+    }
+  ) {
+    campaign_id
+    sealed
+  }
+}
+
+mutation chaosBagReleaseAllSealed($campaign_id: Int!) {
+  update_chaos_bag_results_by_pk(
+    pk_columns: { campaign_id: $campaign_id }
+    _set: {
+      sealed: []
+    }
+  ) {
+    campaign_id
+    sealed
+  }
+}
+
+mutation chaosBagIncBless($campaign_id: Int!) {
+  update_chaos_bag_results(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      bless: { _lt: 10 }
+    }
+    _inc: {
+      bless: 1
+    }
+  ) {
+    returning {
+    	campaign_id
+      bless
+	  }
+  }
+}
+
+mutation chaosBagDecBless($campaign_id: Int!) {
+  update_chaos_bag_results(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      bless: { _gt: 0 }
+    }
+    _inc: {
+      bless: -1
+    }
+  ) {
+    returning {
+    	campaign_id
+      bless
+	  }
+  }
+}
+
+mutation chaosBagIncCurse($campaign_id: Int!) {
+  update_chaos_bag_results(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      curse: { _lt: 10 }
+    }
+    _inc: {
+      curse: 1
+    }
+  ) {
+    returning {
+    	campaign_id
+      curse
+	  }
+  }
+}
+
+mutation chaosBagDecCurse($campaign_id: Int!) {
+  update_chaos_bag_results(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      curse: { _gt: 0 }
+    }
+    _inc: {
+      curse: -1
+    }
+  ) {
+    returning {
+    	campaign_id
+      curse
+	  }
+  }
+}
+
 mutation setBinaryAchievement(
   $campaign_id: Int!,
   $id: String!,

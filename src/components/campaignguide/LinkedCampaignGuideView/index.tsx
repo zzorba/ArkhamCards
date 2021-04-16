@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo, useRef, useEffect } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import React, { useCallback, useMemo, useRef, useEffect, useContext } from 'react';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
@@ -23,6 +23,7 @@ import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 import space from '@styles/space';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
 import { useDeckActions } from '@data/remote/decks';
+import StyleContext from '@styles/StyleContext';
 
 export interface LinkedCampaignGuideProps {
   campaignId: CampaignId;
@@ -42,6 +43,7 @@ export default function LinkedCampaignGuideView(props: Props) {
       { campaignId: props.campaignIdB.campaignId, serverId: campaignId.serverId },
     ];
   }, [props.campaignIdA, props.campaignIdB, campaignId.serverId]);
+  const { typography } = useContext(StyleContext);
   const investigators = useInvestigatorCards();
   const dispatch = useDispatch();
   const deckActions = useDeckActions();
@@ -94,6 +96,12 @@ export default function LinkedCampaignGuideView(props: Props) {
   const footerButtons = useMemo(() => {
     return (
       <View style={space.paddingSideS}>
+        <View style={[space.paddingBottomS, space.paddingTopS]}>
+          <Text style={[typography.large, typography.center, typography.light]}>
+            { `— ${t`Settings`} —` }
+          </Text>
+        </View>
+
         <UploadCampaignButton
           componentId={componentId}
           campaignId={campaignId}
@@ -110,7 +118,7 @@ export default function LinkedCampaignGuideView(props: Props) {
         />
       </View>
     );
-  }, [showAlert, setCampaignServerId, campaign, deckActions, componentId, campaignId, campaignName]);
+  }, [showAlert, setCampaignServerId, typography, campaign, deckActions, componentId, campaignId, campaignName]);
 
   const campaignATab = useMemo(() => {
     if (!campaignDataA || !processedCampaignA || !contextA) {

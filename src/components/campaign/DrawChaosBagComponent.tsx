@@ -6,14 +6,14 @@ import { jt, t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
 
 import { ChaosBag } from '@app_constants';
-import { CampaignId, ChaosBagResults } from '@actions/types';
+import { CampaignId } from '@actions/types';
 import ChaosToken, { SMALL_TOKEN_SIZE } from './ChaosToken';
-import { adjustBlessCurseChaosBagResults, updateChaosBagResults } from './actions';
+import { adjustBlessCurseChaosBagResults, updateChaosBagClearTokens, updateChaosBagDrawToken, updateChaosBagReleaseAllSealed, updateChaosBagResetBlessCurse, updateChaosBagSealTokens } from './actions';
 import SealTokenButton from './SealTokenButton';
 import { flattenChaosBag } from './campaignUtil';
 import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useChaosBagResults } from '@components/core/hooks';
+import { useChaosBagResults } from '@data/hooks';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
@@ -23,6 +23,7 @@ import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
 import { TINY_PHONE } from '@styles/sizes';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useChaosBagActions } from '@data/remote/chaosBag';
 
 interface Props {
   campaignId: CampaignId;
@@ -89,21 +90,19 @@ export default function DrawChaosBagComponent({ campaignId, chaosBag, viewChaosB
   const dispatch = useDispatch();
   const chaosBagResults = useChaosBagResults(campaignId);
   const [isChaosBagEmpty, setIsChaosBagEmpty] = useState(false);
-  const [sealDialog, showSealDialog] = useSealTokenDialog(campaignId, chaosBag, chaosBagResults);
+  const actions = useChaosBagActions();
+  const [sealDialog, showSealDialog] = useSealTokenDialog(campaignId, chaosBag, chaosBagResults, actions);
   const clearTokens = useCallback((removeBlessCurse?: boolean) => {
     const blessToRemove = removeBlessCurse ? sumBy(chaosBagResults.drawnTokens, token => token === 'bless' ? 1 : 0) : 0;
     const curseToRemove = removeBlessCurse ? sumBy(chaosBagResults.drawnTokens, token => token === 'curse' ? 1 : 0) : 0;
-
-    const newChaosBagResults: ChaosBagResults = {
-      drawnTokens: [],
-      blessTokens: (chaosBagResults.blessTokens || 0) - blessToRemove,
-      curseTokens: (chaosBagResults.curseTokens || 0) - curseToRemove,
-      sealedTokens: chaosBagResults.sealedTokens,
-      totalDrawnTokens: chaosBagResults.totalDrawnTokens,
-    };
-
-    dispatch(updateChaosBagResults(campaignId, newChaosBagResults));
-  }, [campaignId, chaosBagResults, dispatch]);
+    dispatch(updateChaosBagClearTokens(
+      actions,
+      campaignId,
+      Math.max(chaosBagResults.blessTokens - blessToRemove, 0),
+      Math.max(chaosBagResults.curseTokens - curseToRemove, 0),
+      chaosBagResults
+    ));
+  }, [campaignId, chaosBagResults, actions, dispatch]);
 
   const handleClearTokensKeepBlessAndCursedPressed = useCallback(() => {
     clearTokens();
@@ -141,19 +140,11 @@ export default function DrawChaosBagComponent({ campaignId, chaosBag, viewChaosB
 
     if (newIconKey) {
       drawnTokens.push(newIconKey);
-
-      const newChaosBagResults = {
-        ...chaosBagResults,
-        drawnTokens: drawnTokens,
-        sealedTokens: chaosBagResults.sealedTokens,
-        totalDrawnTokens: chaosBagResults.totalDrawnTokens + 1,
-      };
-
-      dispatch(updateChaosBagResults(campaignId, newChaosBagResults));
+      dispatch(updateChaosBagDrawToken(actions, campaignId, drawnTokens, chaosBagResults));
     } else {
       clearTokens();
     }
-  }, [campaignId, chaosBag, chaosBagResults, dispatch, clearTokens, getRandomChaosToken]);
+  }, [campaignId, chaosBag, chaosBagResults, actions, dispatch, clearTokens, getRandomChaosToken]);
 
   const handleDrawTokenPressed = useCallback(() => {
     if (chaosBagResults.drawnTokens.length >= 1) {
@@ -168,37 +159,28 @@ export default function DrawChaosBagComponent({ campaignId, chaosBag, viewChaosB
   }, [drawToken]);
 
   const releaseAllTokens = useCallback(() => {
-    dispatch(updateChaosBagResults(campaignId, {
-      ...chaosBagResults,
-      sealedTokens: [],
-    }));
-  }, [campaignId, dispatch, chaosBagResults]);
+    dispatch(updateChaosBagReleaseAllSealed(actions, campaignId, chaosBagResults));
+  }, [campaignId, actions, dispatch, chaosBagResults]);
 
   const handleResetBlessCursePressed = useCallback(() => {
-    dispatch(updateChaosBagResults(campaignId, {
-      ...chaosBagResults,
-      blessTokens: 0,
-      curseTokens: 0,
-      drawnTokens: filter(chaosBagResults.drawnTokens, t => t !== 'bless' && t !== 'curse'),
-      sealedTokens: filter(chaosBagResults.sealedTokens, t => t.icon !== 'bless' && t.icon !== 'curse'),
-    }));
-  }, [campaignId, dispatch, chaosBagResults]);
+    dispatch(updateChaosBagResetBlessCurse(actions, campaignId, chaosBagResults));
+  }, [campaignId, dispatch, actions, chaosBagResults]);
 
   const incBless = useCallback(() => {
-    dispatch(adjustBlessCurseChaosBagResults(campaignId, 'bless', 'inc'));
-  }, [campaignId, dispatch]);
+    dispatch(adjustBlessCurseChaosBagResults(actions, campaignId, 'bless', 'inc'));
+  }, [actions, campaignId, dispatch]);
 
   const decBless = useCallback(() => {
-    dispatch(adjustBlessCurseChaosBagResults(campaignId, 'bless', 'dec'));
-  }, [campaignId, dispatch]);
+    dispatch(adjustBlessCurseChaosBagResults(actions, campaignId, 'bless', 'dec'));
+  }, [actions, campaignId, dispatch]);
 
   const incCurse = useCallback(() => {
-    dispatch(adjustBlessCurseChaosBagResults(campaignId, 'curse', 'inc'));
-  }, [campaignId, dispatch]);
+    dispatch(adjustBlessCurseChaosBagResults(actions, campaignId, 'curse', 'inc'));
+  }, [actions, campaignId, dispatch]);
 
   const decCurse = useCallback(() => {
-    dispatch(adjustBlessCurseChaosBagResults(campaignId, 'curse', 'dec'));
-  }, [campaignId, dispatch]);
+    dispatch(adjustBlessCurseChaosBagResults(actions, campaignId, 'curse', 'dec'));
+  }, [actions, campaignId, dispatch]);
 
   const drawnTokens = useMemo(() => {
     const drawnTokens = chaosBagResults.drawnTokens;
@@ -228,17 +210,9 @@ export default function DrawChaosBagComponent({ campaignId, chaosBag, viewChaosB
   }, [chaosBagResults.drawnTokens, handleDrawTokenPressed]);
 
   const releaseSealedToken = useCallback((id: string) => {
-    let newSealedTokens = [...chaosBagResults.sealedTokens];
-    newSealedTokens = newSealedTokens.filter(token => token.id !== id);
-    const newChaosBagResults = {
-      ...chaosBagResults,
-      drawnTokens: chaosBagResults.drawnTokens,
-      sealedTokens: newSealedTokens,
-      totalDrawnTokens: chaosBagResults.totalDrawnTokens,
-    };
-
-    dispatch(updateChaosBagResults(campaignId, newChaosBagResults));
-  }, [dispatch, campaignId, chaosBagResults]);
+    const newSealedTokens = filter(chaosBagResults.sealedTokens || [], token => token.id !== id);
+    dispatch(updateChaosBagSealTokens(actions, campaignId, chaosBagResults, newSealedTokens));
+  }, [dispatch, campaignId, actions, chaosBagResults]);
   const sealedTokens = useMemo(() => {
     const sealedTokens = chaosBagResults.sealedTokens;
     return sealedTokens.map(token => {

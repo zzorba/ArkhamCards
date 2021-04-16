@@ -343,6 +343,11 @@ function CampaignDetailView(props: Props) {
               onPress={drawWeaknessPressed}
               bottomMargin={s}
             />
+            <View style={[space.paddingBottomS, space.paddingTopS]}>
+              <Text style={[typography.large, typography.center, typography.light]}>
+                { `— ${t`Settings`} —` }
+              </Text>
+            </View>
             <UploadCampaignButton
               componentId={componentId}
               campaignId={campaignId}

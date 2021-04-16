@@ -6,10 +6,11 @@ import { getCampaigns, MyDecksState } from '@reducers';
 import { Campaign, CampaignId, DeckId } from '@actions/types';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 import Card, { CardsMap } from '@data/types/Card';
-import { useMyDecksRemote, useRemoteCampaigns, useCampaignGuideStateRemote, useLatestDeckRemote, useCampaignRemote, useDeckFromRemote, useCampaignDeckFromRemote } from '@data/remote/hooks';
+import { useMyDecksRemote, useRemoteCampaigns, useCampaignGuideStateRemote, useLatestDeckRemote, useCampaignRemote, useDeckFromRemote, useCampaignDeckFromRemote, useChaosBagResultsFromRemote } from '@data/remote/hooks';
 import CampaignGuideStateT from './interfaces/CampaignGuideStateT';
-import { useCampaignFromRedux, useCampaignGuideFromRedux, useDeckFromRedux, useLatestDeckRedux, useMyDecksRedux } from './local/hooks';
+import { useCampaignFromRedux, useCampaignGuideFromRedux, useChaosBagResultsRedux, useDeckFromRedux, useLatestDeckRedux, useMyDecksRedux } from './local/hooks';
 import LatestDeckT from './interfaces/LatestDeckT';
 import { refreshMyDecks } from '@actions';
 import { DeckActions } from './remote/decks';
@@ -87,6 +88,17 @@ export function useDeck(id: DeckId | undefined, fetch?: boolean): LatestDeckT | 
     }
     return remoteDeck;
   }, [remoteDeck, reduxDeck, id]);
+}
+
+export function useChaosBagResults(id: CampaignId): ChaosBagResultsT {
+  const reduxData = useChaosBagResultsRedux(id);
+  const remoteData = useChaosBagResultsFromRemote(id);
+  return useMemo(() => {
+    if (!id.serverId) {
+      return reduxData;
+    }
+    return remoteData || reduxData;
+  }, [id, remoteData, reduxData]);
 }
 
 export function useMyDecks(deckActions: DeckActions): [MyDecksState, () => void] {

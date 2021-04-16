@@ -17,11 +17,13 @@ import {
   LatestDeckFragment,
   useGetLatestDeckQuery,
   useGetLatestCampaignDeckQuery,
+  useGetChaosBagResultsQuery,
+  ChaosBagResultsDocument,
 } from '@generated/graphql/apollo-schema';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { FriendStatus } from './api';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
-import { MiniLinkedCampaignRemote, MiniCampaignRemote, LatestDeckRemote, MiniDeckRemote, CampaignGuideStateRemote } from './types';
+import { MiniLinkedCampaignRemote, MiniCampaignRemote, LatestDeckRemote, MiniDeckRemote, CampaignGuideStateRemote, ChaosBagResultsRemote } from './types';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { SingleCampaignRemote } from '@data/remote/types';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
@@ -31,6 +33,7 @@ import { setServerDecks } from '@components/deck/actions';
 import { DeckActions } from './decks';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import { useApolloClient } from '@apollo/client';
+import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 
 
 export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
@@ -154,6 +157,32 @@ export function useCampaignDeckFromRemote(id: DeckId | undefined, campaignId: Ca
     }
     return data?.campaign_deck?.length ? new LatestDeckRemote(data.campaign_deck[0]) : undefined;
   }, [data, campaignId]);
+}
+
+export function useChaosBagResultsFromRemote(campaignId: CampaignId): ChaosBagResultsT | undefined {
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const { data, subscribeToMore } = useGetChaosBagResultsQuery({
+    variables: {
+      campaign_id: campaignId.serverId || 0,
+    },
+    fetchPolicy: 'cache-first',
+    skip: !campaignId.serverId,
+  });
+
+  useEffect(() => {
+    if (user && campaignId?.serverId && subscribeToMore) {
+      return subscribeToMore({
+        document: ChaosBagResultsDocument,
+        variables: { campaign_id: campaignId.serverId },
+      });
+    }
+  }, [user, campaignId, subscribeToMore]);
+  return useMemo(() => {
+    if (!campaignId.serverId || !data?.chaos_bag_results_by_pk) {
+      return undefined;
+    }
+    return new ChaosBagResultsRemote(data.chaos_bag_results_by_pk);
+  }, [campaignId, data]);
 }
 export function useDeckFromRemote(id: DeckId | undefined, fetch: boolean): LatestDeckT | undefined {
   const { data } = useGetLatestDeckQuery({
@@ -291,7 +320,7 @@ export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, (
   const checkForSync = useRef(false);
   const [loadMyDecks, { data, loading: dataLoading, refetch }] = useGetMyDecksLazyQuery({
     fetchPolicy: 'cache-and-network',
-    returnPartialData: true,
+    returnPartialData: false,
   });
   useEffect(() => {
     if (user) {
