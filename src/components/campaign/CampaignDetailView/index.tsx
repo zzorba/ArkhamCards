@@ -34,6 +34,7 @@ import useChaosBagDialog from './useChaosBagDialog';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useDeckActions } from '@data/remote/decks';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import LoadingSpinner from '@components/core/LoadingSpinner';
 
 export interface CampaignDetailProps {
   campaignId: CampaignId;
@@ -252,6 +253,11 @@ function CampaignDetailView(props: Props) {
     setChaosBag: updateCampaignActions.setChaosBag,
   });
   if (!campaign) {
+    if (campaignId.serverId) {
+      return (
+        <LoadingSpinner />
+      );
+    }
     return (
       <View>
         <BasicButton

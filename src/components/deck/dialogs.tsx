@@ -38,6 +38,7 @@ interface DialogOptions {
   allowDismiss?: boolean;
   alignment?: 'center' | 'bottom';
   avoidKeyboard?: boolean;
+  customButtons?: React.ReactNode[];
 }
 
 export function useDialog({
@@ -48,6 +49,7 @@ export function useDialog({
   allowDismiss,
   alignment,
   avoidKeyboard,
+  customButtons,
 }: DialogOptions): {
   dialog: React.ReactNode;
   visible: boolean;
@@ -74,7 +76,9 @@ export function useDialog({
     setVisible(false);
   }, [setVisible, confirmOnPress]);
   const buttons = useMemo(() => {
-    const result: React.ReactNode[] = [];
+    const result: React.ReactNode[] = [
+      ...(customButtons || []),
+    ];
     if (dismiss?.title) {
       result.push(
         <DeckButton
@@ -101,7 +105,7 @@ export function useDialog({
       );
     }
     return result;
-  }, [confirm, onConfirm, onDismiss, dismiss]);
+  }, [confirm, onConfirm, onDismiss, customButtons, dismiss]);
   const dialog = useMemo(() => {
     return (
       <NewDialog
@@ -112,11 +116,12 @@ export function useDialog({
         buttons={buttons}
         alignment={alignment}
         avoidKeyboard={avoidKeyboard}
+        forceVerticalButtons={!!customButtons}
       >
         { content }
       </NewDialog>
     );
-  }, [title, dismiss, visible, alignment, onDismiss, buttons, content, allowDismiss, avoidKeyboard]);
+  }, [title, dismiss, visible, alignment, customButtons, onDismiss, buttons, content, allowDismiss, avoidKeyboard]);
   const showDialog = useCallback(() => setVisible(true), [setVisible]);
   return {
     visible,

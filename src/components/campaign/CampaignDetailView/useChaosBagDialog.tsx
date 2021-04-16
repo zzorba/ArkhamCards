@@ -103,6 +103,39 @@ export default function useChaosBagDialog({
       },
     });
   }, [componentId, chaosBag, updateChaosBag]);
+  const customButtons = useMemo(() => {
+    const result: React.ReactNode[] = [];
+    if (!guided) {
+      result.push(
+        <DeckButton
+          key="edit"
+          thin
+          icon="edit"
+          title={t`Edit chaos bag`}
+          onPress={editChaosBagDialog}
+        />
+      );
+    }
+    result.push(
+      <DeckButton
+        key="draw"
+        thin
+        icon="chaos_bag"
+        title={t`Draw chaos tokens`}
+        onPress={drawChaosBagPressed}
+      />
+    );
+    result.push(
+      <DeckButton
+        key="odds"
+        thin
+        icon="difficulty"
+        title={t`Odds calculator`}
+        onPress={oddsCalculatorPressed}
+      />
+    );
+    return result;
+  }, [oddsCalculatorPressed, drawChaosBagPressed, editChaosBagDialog, guided]);
   const content = useMemo(() => {
     return (
       <>
@@ -112,32 +145,10 @@ export default function useChaosBagDialog({
             width={width - m * 2}
           />
         </View>
-        { !guided && (
-          <DeckButton
-            thin
-            icon="edit"
-            title={t`Edit chaos bag`}
-            onPress={editChaosBagDialog}
-            topMargin={s}
-            bottomMargin={s}
-          />
-        ) }
-        <DeckButton
-          thin
-          icon="chaos_bag"
-          title={t`Draw chaos tokens`}
-          onPress={drawChaosBagPressed}
-          bottomMargin={s}
-        />
-        <DeckButton
-          thin
-          icon="difficulty"
-          title={t`Odds calculator`}
-          onPress={oddsCalculatorPressed}
-        />
+
       </>
     );
-  }, [chaosBag, guided, width, editChaosBagDialog, drawChaosBagPressed, oddsCalculatorPressed]);
+  }, [chaosBag, width]);
 
   const tokenCount = useMemo(() => sum(values(chaosBag)), [chaosBag]);
   const { dialog, showDialog, setVisible } = useDialog({
@@ -145,9 +156,8 @@ export default function useChaosBagDialog({
     content,
     allowDismiss: true,
     alignment: 'bottom',
+    customButtons,
   });
-  useEffect(() => {
-    setVisibleRef.current = setVisible;
-  }, [setVisible]);
+  setVisibleRef.current = setVisible;
   return [dialog, showDialog];
 }
