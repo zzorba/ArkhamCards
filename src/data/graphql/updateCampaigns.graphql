@@ -314,8 +314,8 @@ mutation addGuideInput(
       payload: $payload
     }
     on_conflict: {
-      constraint: guide_input_scenario_campaign_id_step_type_key
-      update_columns: [payload]
+      constraint: guide_input_pkey
+      update_columns: [scenario, step, type, payload]
     }
   ) {
     ...GuideInput

@@ -50,7 +50,7 @@ export default function DeckProgressComponent({
           singleCardView={singleCardView}
           editable={editable}
           onTitlePress={onTitlePress}
-          footerButton={!!editable && !!deck.previousDeckId && !!showDeckHistory && (
+          footerButton={!deck.nextDeckId && !!deck.previousDeckId && !!showDeckHistory && (
             <RoundedFooterButton
               icon="deck"
               title={t`Upgrade History`}

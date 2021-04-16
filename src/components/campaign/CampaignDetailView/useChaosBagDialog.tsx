@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useRef } from 'react';
+import React, { useCallback, useContext, useMemo, useRef } from 'react';
 import { View } from 'react-native';
 import { map, sum, values } from 'lodash';
 import { t } from 'ttag';
@@ -6,7 +6,7 @@ import { t } from 'ttag';
 import { ChaosBag } from '@app_constants';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import DeckButton from '@components/deck/controls/DeckButton';
-import space, { m, s } from '@styles/space';
+import space, { m } from '@styles/space';
 import { Navigation } from 'react-native-navigation';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
 import Card from '@data/types/Card';

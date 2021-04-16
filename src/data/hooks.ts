@@ -8,9 +8,9 @@ import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 import Card, { CardsMap } from '@data/types/Card';
-import { useMyDecksRemote, useRemoteCampaigns, useCampaignGuideStateRemote, useLatestDeckRemote, useCampaignRemote, useDeckFromRemote, useCampaignDeckFromRemote, useChaosBagResultsFromRemote } from '@data/remote/hooks';
+import { useMyDecksRemote, useRemoteCampaigns, useCampaignGuideStateRemote, useLatestDeckRemote, useCampaignRemote, useDeckFromRemote, useCampaignDeckFromRemote, useChaosBagResultsFromRemote, useDeckHistoryRemote } from '@data/remote/hooks';
 import CampaignGuideStateT from './interfaces/CampaignGuideStateT';
-import { useCampaignFromRedux, useCampaignGuideFromRedux, useChaosBagResultsRedux, useDeckFromRedux, useLatestDeckRedux, useMyDecksRedux } from './local/hooks';
+import { useCampaignFromRedux, useCampaignGuideFromRedux, useChaosBagResultsRedux, useDeckFromRedux, useDeckHistoryRedux, useLatestDeckRedux, useMyDecksRedux } from './local/hooks';
 import LatestDeckT from './interfaces/LatestDeckT';
 import { refreshMyDecks } from '@actions';
 import { DeckActions } from './remote/decks';
@@ -142,4 +142,19 @@ export function useLatestDeck(deckId: MiniDeckT, deckToCampaign?: { [uuid: strin
   const reduxDeck = useLatestDeckRedux(deckId.id, deckToCampaign);
   const remoteDeck = useLatestDeckRemote(deckId.id, deckId.campaign_id);
   return deckId.id.serverId ? remoteDeck : reduxDeck;
+}
+
+export function useDeckHistory(
+  id: DeckId,
+  investigator: string,
+  campaign: MiniCampaignT | undefined,
+): LatestDeckT[] | undefined {
+  const reduxDeck = useDeckHistoryRedux(id);
+  const remoteDeck = useDeckHistoryRemote(id, investigator, campaign);
+  if (!id.serverId || (!id.local && reduxDeck.length)) {
+    console.log('redux history')
+    return reduxDeck;
+  }
+  console.log('remote history');
+  return remoteDeck;
 }

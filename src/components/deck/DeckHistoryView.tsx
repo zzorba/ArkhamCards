@@ -1,65 +1,60 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { map } from 'lodash';
+import { flatMap, map } from 'lodash';
 import { ScrollView } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import DeckProgressComponent from './DeckProgressComponent';
 import { DeckDetailProps } from './DeckDetailView';
 import { getDeckOptions } from '@components/nav/helper';
 import { NavigationProps } from '@components/nav/types';
-import { Deck, DeckId, getDeckId, ParsedDeck } from '@actions/types';
-import { getAllDecks, getDeck } from '@reducers';
+import { DeckId, ParsedDeck } from '@actions/types';
 import { parseDeck } from '@lib/parseDeck';
 import StyleContext from '@styles/StyleContext';
 import { usePlayerCards } from '@components/core/hooks';
 import { useSimpleDeckEdits } from '@components/deck/hooks';
 import space from '@styles/space';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
+import { useDeckHistory } from '@data/hooks';
 
 export interface DeckHistoryProps {
   id: DeckId;
+  investigator: string;
   campaign?: MiniCampaignT;
 }
 
 export default function DeckHistoryView({
   componentId,
   id,
+  investigator,
   campaign,
 }: DeckHistoryProps & NavigationProps) {
   const deckEdits = useSimpleDeckEdits(id);
   const { backgroundStyle, colors } = useContext(StyleContext);
   const cards = usePlayerCards();
-  const decks = useSelector(getAllDecks);
+  const deckHistory = useDeckHistory(id, investigator, campaign);
   const historicDecks = useMemo(() => {
-    if (!cards) {
+    if (!cards || !deckHistory) {
       return [];
     }
-    const decksResult: ParsedDeck[] = [];
-    let deck: Deck | undefined = getDeck(decks, id);
-    while (deck) {
-      const currentDeck = getDeckId(deck).uuid === id.uuid;
-      const previousDeck: Deck | undefined = (
-        deck.previousDeckId ? getDeck(decks, deck.previousDeckId) : undefined
-      );
+    return flatMap(deckHistory, deck => {
+      const currentDeck = deck.id.uuid === id.uuid;
       const currentXpAdjustment = currentDeck ? deckEdits?.xpAdjustment : undefined;
       const parsedDeck = parseDeck(
-        deck,
-        (currentDeck && deckEdits?.meta) || (deck.meta || {}),
-        (currentDeck && deckEdits?.slots) || deck.slots || {},
-        (currentDeck && deckEdits?.ignoreDeckLimitSlots) || deck.ignoreDeckLimitSlots,
+        deck.deck,
+        (currentDeck && deckEdits?.meta) || (deck.deck.meta || {}),
+        (currentDeck && deckEdits?.slots) || deck.deck.slots || {},
+        (currentDeck && deckEdits?.ignoreDeckLimitSlots) || deck.deck.ignoreDeckLimitSlots,
         cards,
-        previousDeck,
-        currentXpAdjustment !== undefined ? currentXpAdjustment : (deck.xp_adjustment || 0),
+        deck.previousDeck,
+        currentXpAdjustment !== undefined ? currentXpAdjustment : (deck.deck.xp_adjustment || 0),
       );
       if (parsedDeck) {
-        decksResult.push(parsedDeck);
+        return [parsedDeck];
       }
-      deck = previousDeck;
-    }
-    return decksResult;
-  }, [id, decks, cards, deckEdits]);
+      return [];
+    });
+  }, [id, deckHistory, cards, deckEdits]);
 
   const deckTitle = useCallback((deck: ParsedDeck, versionNumber: number): string => {
     if (!deck.changes) {

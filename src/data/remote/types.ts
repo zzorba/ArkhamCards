@@ -215,10 +215,10 @@ export class SingleCampaignRemote extends MiniCampaignRemote implements SingleCa
 
 function unpackGuideInput(input: Pick<Guide_Input, 'id' | 'step' | 'type' | 'scenario' | 'payload' | 'created_at'>): GuideInput {
   return {
+    ...input.payload,
     step: input.step || null,
     scenario: input.scenario || null,
     type: input.type || null,
-    ...input.payload,
   };
 }
 
@@ -310,17 +310,17 @@ export class MiniDeckRemote implements MiniDeckT {
   investigator: string;
   date_update: string;
   name: string;
-  campaign_id: CampaignId;
+  campaign_id?: CampaignId;
 
   constructor(deck: LatestDeckFragment) {
     this.id = fragmentToDeckId(deck);
     this.investigator = deck.investigator;
     this.name = deck.content?.name || '';
     this.date_update = deck.content?.date_update || '';
-    this.campaign_id = {
+    this.campaign_id = deck.campaign ? {
       campaignId: deck.campaign.uuid,
       serverId: deck.campaign.id,
-    };
+    } : undefined;
   }
 }
 

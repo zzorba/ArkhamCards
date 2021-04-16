@@ -227,11 +227,11 @@ export default class CampaignStateHelper {
     return this.state.findLastInput(input => (
       input.type === type &&
       // tslint:disable-next-line
-      input.scenario === scenario && (
+      ((!input.scenario && !scenario) || input.scenario === scenario) && (
         input.type === 'start_scenario' ||
         input.type === 'start_side_scenario' ||
-        // tslint:disable-next-line
-        input.step === step
+        // tslint:disable-next-line: strict-comparisons
+        ((!step && !input.step) || step === input.step)
       )
     ));
   }

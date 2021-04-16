@@ -705,6 +705,7 @@ function DeckDetailView({
           passProps: {
             id,
             campaign,
+            investigator: parsedDeck.investigator.code,
           },
           options: getDeckOptions(colors, { title: t`Upgrade History` }, parsedDeck.investigator),
         },
@@ -802,9 +803,11 @@ function DeckDetailView({
             />
           </>
         ) }
+        { (editable || (!deck.nextDeckId && !!deck.previousDeckId)) && (
+          <DeckBubbleHeader title={t`Campaign`} />
+        ) }
         { editable && (
           <>
-            <DeckBubbleHeader title={t`Campaign`} />
             { !!deck.previousDeckId && (
               <MenuButton
                 icon="xp"
@@ -822,15 +825,15 @@ function DeckDetailView({
               last={!deck.previousDeckId}
               numberOfLines={2}
             />
-            { !!deck.previousDeckId && (
-              <MenuButton
-                icon="deck"
-                onPress={showUpgradeHistoryPressed}
-                title={t`Upgrade History`}
-                last
-              />
-            ) }
           </>
+        ) }
+        { (!deck.nextDeckId && !!deck.previousDeckId) && (
+          <MenuButton
+            icon="deck"
+            onPress={showUpgradeHistoryPressed}
+            title={t`Upgrade History`}
+            last
+          />
         ) }
         <DeckBubbleHeader title={t`Options`} />
         <MenuButton

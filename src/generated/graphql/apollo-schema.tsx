@@ -338,8 +338,10 @@ export type Campaign = {
   /** An object relationship */
   campaign_guide?: Maybe<Campaign_Guide>;
   chaosBag?: Maybe<Scalars['jsonb']>;
-  /** An object relationship */
-  chaos_bag_result?: Maybe<Chaos_Bag_Result>;
+  /** An array relationship */
+  chaos_bag_result: Array<Chaos_Bag_Result>;
+  /** An aggregate relationship */
+  chaos_bag_result_aggregate: Chaos_Bag_Result_Aggregate;
   created_at: Scalars['timestamptz'];
   cycleCode?: Maybe<Scalars['String']>;
   deleted?: Maybe<Scalars['Boolean']>;
@@ -430,6 +432,26 @@ export type CampaignCampaignNotesArgs = {
 /** columns and relationships of "campaign" */
 export type CampaignChaosBagArgs = {
   path?: Maybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "campaign" */
+export type CampaignChaos_Bag_ResultArgs = {
+  distinct_on?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Chaos_Bag_Result_Order_By>>;
+  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
+};
+
+
+/** columns and relationships of "campaign" */
+export type CampaignChaos_Bag_Result_AggregateArgs = {
+  distinct_on?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Chaos_Bag_Result_Order_By>>;
+  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
 };
 
 
@@ -1690,7 +1712,7 @@ export type Campaign_Insert_Input = {
   campaignNotes?: Maybe<Scalars['jsonb']>;
   campaign_guide?: Maybe<Campaign_Guide_Obj_Rel_Insert_Input>;
   chaosBag?: Maybe<Scalars['jsonb']>;
-  chaos_bag_result?: Maybe<Chaos_Bag_Result_Obj_Rel_Insert_Input>;
+  chaos_bag_result?: Maybe<Chaos_Bag_Result_Arr_Rel_Insert_Input>;
   created_at?: Maybe<Scalars['timestamptz']>;
   cycleCode?: Maybe<Scalars['String']>;
   deleted?: Maybe<Scalars['Boolean']>;
@@ -2066,7 +2088,7 @@ export type Campaign_Order_By = {
   campaignNotes?: Maybe<Order_By>;
   campaign_guide?: Maybe<Campaign_Guide_Order_By>;
   chaosBag?: Maybe<Order_By>;
-  chaos_bag_result?: Maybe<Chaos_Bag_Result_Order_By>;
+  chaos_bag_result_aggregate?: Maybe<Chaos_Bag_Result_Aggregate_Order_By>;
   created_at?: Maybe<Order_By>;
   cycleCode?: Maybe<Order_By>;
   deleted?: Maybe<Order_By>;
@@ -2347,10 +2369,32 @@ export type Chaos_Bag_Result_Aggregate_FieldsCountArgs = {
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Aggregate_Order_By = {
+  avg?: Maybe<Chaos_Bag_Result_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Chaos_Bag_Result_Max_Order_By>;
+  min?: Maybe<Chaos_Bag_Result_Min_Order_By>;
+  stddev?: Maybe<Chaos_Bag_Result_Stddev_Order_By>;
+  stddev_pop?: Maybe<Chaos_Bag_Result_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Chaos_Bag_Result_Stddev_Samp_Order_By>;
+  sum?: Maybe<Chaos_Bag_Result_Sum_Order_By>;
+  var_pop?: Maybe<Chaos_Bag_Result_Var_Pop_Order_By>;
+  var_samp?: Maybe<Chaos_Bag_Result_Var_Samp_Order_By>;
+  variance?: Maybe<Chaos_Bag_Result_Variance_Order_By>;
+};
+
 /** append existing jsonb value of filtered columns with new jsonb value */
 export type Chaos_Bag_Result_Append_Input = {
   drawn?: Maybe<Scalars['jsonb']>;
   sealed?: Maybe<Scalars['jsonb']>;
+};
+
+/** input type for inserting array relation for remote table "chaos_bag_result" */
+export type Chaos_Bag_Result_Arr_Rel_Insert_Input = {
+  data: Array<Chaos_Bag_Result_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: Maybe<Chaos_Bag_Result_On_Conflict>;
 };
 
 /** aggregate avg on columns */
@@ -2360,6 +2404,14 @@ export type Chaos_Bag_Result_Avg_Fields = {
   curse?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   totalDrawn?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Avg_Order_By = {
+  bless?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "chaos_bag_result". All fields are combined with a logical 'AND'. */
@@ -2436,6 +2488,16 @@ export type Chaos_Bag_Result_Max_Fields = {
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
+/** order by max() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Max_Order_By = {
+  bless?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Chaos_Bag_Result_Min_Fields = {
   __typename?: 'chaos_bag_result_min_fields';
@@ -2447,6 +2509,16 @@ export type Chaos_Bag_Result_Min_Fields = {
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
+/** order by min() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Min_Order_By = {
+  bless?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
 /** response of any mutation on the table "chaos_bag_result" */
 export type Chaos_Bag_Result_Mutation_Response = {
   __typename?: 'chaos_bag_result_mutation_response';
@@ -2454,13 +2526,6 @@ export type Chaos_Bag_Result_Mutation_Response = {
   affected_rows: Scalars['Int'];
   /** data from the rows affected by the mutation */
   returning: Array<Chaos_Bag_Result>;
-};
-
-/** input type for inserting object relation for remote table "chaos_bag_result" */
-export type Chaos_Bag_Result_Obj_Rel_Insert_Input = {
-  data: Chaos_Bag_Result_Insert_Input;
-  /** on conflict condition */
-  on_conflict?: Maybe<Chaos_Bag_Result_On_Conflict>;
 };
 
 /** on conflict condition type for table "chaos_bag_result" */
@@ -2535,6 +2600,14 @@ export type Chaos_Bag_Result_Stddev_Fields = {
   totalDrawn?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Stddev_Order_By = {
+  bless?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
+};
+
 /** aggregate stddev_pop on columns */
 export type Chaos_Bag_Result_Stddev_Pop_Fields = {
   __typename?: 'chaos_bag_result_stddev_pop_fields';
@@ -2542,6 +2615,14 @@ export type Chaos_Bag_Result_Stddev_Pop_Fields = {
   curse?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   totalDrawn?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Stddev_Pop_Order_By = {
+  bless?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -2553,6 +2634,14 @@ export type Chaos_Bag_Result_Stddev_Samp_Fields = {
   totalDrawn?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev_samp() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Stddev_Samp_Order_By = {
+  bless?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
+};
+
 /** aggregate sum on columns */
 export type Chaos_Bag_Result_Sum_Fields = {
   __typename?: 'chaos_bag_result_sum_fields';
@@ -2560,6 +2649,14 @@ export type Chaos_Bag_Result_Sum_Fields = {
   curse?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
   totalDrawn?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Sum_Order_By = {
+  bless?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
 };
 
 /** update columns of table "chaos_bag_result" */
@@ -2591,6 +2688,14 @@ export type Chaos_Bag_Result_Var_Pop_Fields = {
   totalDrawn?: Maybe<Scalars['Float']>;
 };
 
+/** order by var_pop() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Var_Pop_Order_By = {
+  bless?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
+};
+
 /** aggregate var_samp on columns */
 export type Chaos_Bag_Result_Var_Samp_Fields = {
   __typename?: 'chaos_bag_result_var_samp_fields';
@@ -2600,6 +2705,14 @@ export type Chaos_Bag_Result_Var_Samp_Fields = {
   totalDrawn?: Maybe<Scalars['Float']>;
 };
 
+/** order by var_samp() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Var_Samp_Order_By = {
+  bless?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
+};
+
 /** aggregate variance on columns */
 export type Chaos_Bag_Result_Variance_Fields = {
   __typename?: 'chaos_bag_result_variance_fields';
@@ -2607,6 +2720,14 @@ export type Chaos_Bag_Result_Variance_Fields = {
   curse?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   totalDrawn?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Variance_Order_By = {
+  bless?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
 };
 
 /** columns and relationships of "friend_status" */
@@ -3290,9 +3411,7 @@ export type Guide_Input_Bool_Exp = {
 /** unique or primary key constraints on table "guide_input" */
 export enum Guide_Input_Constraint {
   /** unique or primary key constraint */
-  GuideInputPkey = 'guide_input_pkey',
-  /** unique or primary key constraint */
-  GuideInputScenarioCampaignIdStepTypeKey = 'guide_input_scenario_campaign_id_step_type_key'
+  GuideInputPkey = 'guide_input_pkey'
 }
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
@@ -5586,9 +5705,9 @@ export type Query_Root = {
   campaign_investigator_aggregate: Campaign_Investigator_Aggregate;
   /** fetch data from the table: "campaign_investigator" using primary key columns */
   campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
-  /** fetch data from the table: "chaos_bag_result" */
+  /** An array relationship */
   chaos_bag_result: Array<Chaos_Bag_Result>;
-  /** fetch aggregated fields from the table: "chaos_bag_result" */
+  /** An aggregate relationship */
   chaos_bag_result_aggregate: Chaos_Bag_Result_Aggregate;
   /** fetch data from the table: "chaos_bag_result" using primary key columns */
   chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
@@ -6090,9 +6209,9 @@ export type Subscription_Root = {
   campaign_investigator_aggregate: Campaign_Investigator_Aggregate;
   /** fetch data from the table: "campaign_investigator" using primary key columns */
   campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
-  /** fetch data from the table: "chaos_bag_result" */
+  /** An array relationship */
   chaos_bag_result: Array<Chaos_Bag_Result>;
-  /** fetch aggregated fields from the table: "chaos_bag_result" */
+  /** An aggregate relationship */
   chaos_bag_result_aggregate: Chaos_Bag_Result_Aggregate;
   /** fetch data from the table: "chaos_bag_result" using primary key columns */
   chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
@@ -7845,6 +7964,21 @@ export type GetLatestDeckQuery = (
   )> }
 );
 
+export type GetDeckHistoryQueryVariables = Exact<{
+  user_id: Scalars['String'];
+  campaign_id: Scalars['Int'];
+  investigator: Scalars['String'];
+}>;
+
+
+export type GetDeckHistoryQuery = (
+  { __typename?: 'query_root' }
+  & { campaign_deck: Array<(
+    { __typename?: 'campaign_deck' }
+    & HistoryDeckFragment
+  )> }
+);
+
 export type UserInfoFragment = (
   { __typename?: 'users' }
   & Pick<Users, 'id' | 'handle'>
@@ -7887,6 +8021,21 @@ export type AllDeckFragment = (
   & { campaign: (
     { __typename?: 'campaign' }
     & Pick<Campaign, 'id' | 'uuid'>
+  ), next_deck?: Maybe<(
+    { __typename?: 'campaign_deck' }
+    & IdDeckFragment
+  )>, previous_deck?: Maybe<(
+    { __typename?: 'campaign_deck' }
+    & IdDeckFragment
+  )> }
+  & BasicDeckFragment
+);
+
+export type HistoryDeckFragment = (
+  { __typename?: 'campaign_deck' }
+  & { owner: (
+    { __typename?: 'users' }
+    & UserInfoFragment
   ), next_deck?: Maybe<(
     { __typename?: 'campaign_deck' }
     & IdDeckFragment
@@ -8706,6 +8855,28 @@ export const AllDeckFragmentDoc = gql`
 }
     ${BasicDeckFragmentDoc}
 ${IdDeckFragmentDoc}`;
+export const UserInfoFragmentDoc = gql`
+    fragment UserInfo on users {
+  id
+  handle
+}
+    `;
+export const HistoryDeckFragmentDoc = gql`
+    fragment HistoryDeck on campaign_deck {
+  ...BasicDeck
+  owner {
+    ...UserInfo
+  }
+  next_deck {
+    ...IdDeck
+  }
+  previous_deck {
+    ...IdDeck
+  }
+}
+    ${BasicDeckFragmentDoc}
+${UserInfoFragmentDoc}
+${IdDeckFragmentDoc}`;
 export const MiniInvestigatorDataFragmentDoc = gql`
     fragment MiniInvestigatorData on investigator_data {
   id
@@ -8757,12 +8928,6 @@ export const FullInvestigatorDataFragmentDoc = gql`
   updated_at
 }
     ${MiniInvestigatorDataFragmentDoc}`;
-export const UserInfoFragmentDoc = gql`
-    fragment UserInfo on users {
-  id
-  handle
-}
-    `;
 export const LatestDeckFragmentDoc = gql`
     fragment LatestDeck on campaign_deck {
   ...BasicDeck
@@ -9448,6 +9613,45 @@ export function useGetLatestDeckLazyQuery(baseOptions?: Apollo.LazyQueryHookOpti
 export type GetLatestDeckQueryHookResult = ReturnType<typeof useGetLatestDeckQuery>;
 export type GetLatestDeckLazyQueryHookResult = ReturnType<typeof useGetLatestDeckLazyQuery>;
 export type GetLatestDeckQueryResult = Apollo.QueryResult<GetLatestDeckQuery, GetLatestDeckQueryVariables>;
+export const GetDeckHistoryDocument = gql`
+    query getDeckHistory($user_id: String!, $campaign_id: Int!, $investigator: String!) {
+  campaign_deck(
+    where: {owner_id: {_eq: $user_id}, campaign_id: {_eq: $campaign_id}, investigator: {_eq: $investigator}}
+  ) {
+    ...HistoryDeck
+  }
+}
+    ${HistoryDeckFragmentDoc}`;
+
+/**
+ * __useGetDeckHistoryQuery__
+ *
+ * To run a query within a React component, call `useGetDeckHistoryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetDeckHistoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetDeckHistoryQuery({
+ *   variables: {
+ *      user_id: // value for 'user_id'
+ *      campaign_id: // value for 'campaign_id'
+ *      investigator: // value for 'investigator'
+ *   },
+ * });
+ */
+export function useGetDeckHistoryQuery(baseOptions: Apollo.QueryHookOptions<GetDeckHistoryQuery, GetDeckHistoryQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetDeckHistoryQuery, GetDeckHistoryQueryVariables>(GetDeckHistoryDocument, options);
+      }
+export function useGetDeckHistoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetDeckHistoryQuery, GetDeckHistoryQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetDeckHistoryQuery, GetDeckHistoryQueryVariables>(GetDeckHistoryDocument, options);
+        }
+export type GetDeckHistoryQueryHookResult = ReturnType<typeof useGetDeckHistoryQuery>;
+export type GetDeckHistoryLazyQueryHookResult = ReturnType<typeof useGetDeckHistoryLazyQuery>;
+export type GetDeckHistoryQueryResult = Apollo.QueryResult<GetDeckHistoryQuery, GetDeckHistoryQueryVariables>;
 export const GetMyCampaignsDocument = gql`
     query getMyCampaigns($userId: String!) {
   users_by_pk(id: $userId) {
@@ -10442,7 +10646,7 @@ export const AddGuideInputDocument = gql`
     mutation addGuideInput($id: String!, $campaign_id: Int!, $type: String!, $scenario: String, $step: String, $payload: jsonb) {
   insert_guide_input_one(
     object: {id: $id, campaign_id: $campaign_id, scenario: $scenario, step: $step, type: $type, payload: $payload}
-    on_conflict: {constraint: guide_input_scenario_campaign_id_step_type_key, update_columns: [payload]}
+    on_conflict: {constraint: guide_input_pkey, update_columns: [payload]}
   ) {
     ...GuideInput
   }

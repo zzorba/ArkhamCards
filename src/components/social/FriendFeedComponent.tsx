@@ -55,6 +55,19 @@ interface PlaceholderItem {
 
 export type FriendFeedItem = UserItem | HeaderItem | ButtonItem | PlaceholderItem;
 
+function itemKey(item: FriendFeedItem): string {
+  switch (item.type) {
+    case 'user':
+      return item.user.id;
+    case 'header':
+      return item.header;
+    case 'button':
+      return item.title;
+    case 'placeholder':
+      return item.text;
+  }
+}
+
 function FriendControlsComponent({ user, status, refetchMyProfile, acceptRequest, rejectRequest }: {
   user: SimpleUser;
   status?: FriendStatus;
@@ -351,6 +364,7 @@ export default function FriendFeedComponent({ componentId, userId, handleScroll,
       onScroll={handleScroll}
       data={data}
       renderItem={renderItem}
+      keyExtractor={itemKey}
     />
   );
 }

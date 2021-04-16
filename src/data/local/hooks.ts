@@ -2,7 +2,7 @@ import { useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import { AppState, MyDecksState, getAllDecks, getMyDecksState, makeCampaignGuideStateSelector, makeCampaignSelector, makeLatestDecksSelector, getDeck, getEffectiveDeckId, makeDeckSelector, makeChaosBagResultsSelector } from '@reducers';
-import { Campaign, CampaignId, DeckId, getCampaignLastUpdated, getLastUpdated } from '@actions/types';
+import { Campaign, CampaignId, Deck, DeckId, getCampaignLastUpdated, getLastUpdated } from '@actions/types';
 import { CampaignGuideStateRedux, ChaosBagResultsRedux, LatestDeckRedux, SingleCampaignRedux } from './types';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
@@ -66,4 +66,20 @@ export function useChaosBagResultsRedux({ campaignId }: CampaignId): ChaosBagRes
 
 export function useMyDecksRedux(): MyDecksState {
   return useSelector(getMyDecksState);
+}
+
+export function useDeckHistoryRedux(id: DeckId): LatestDeckT[] {
+  const decks = useSelector(getAllDecks);
+  return useMemo(() => {
+    const latestDecks: LatestDeckT[] = [];
+    let deck: Deck | undefined = getDeck(decks, id);
+    while (deck) {
+      const previousDeck: Deck | undefined = (
+        deck.previousDeckId ? getDeck(decks, deck.previousDeckId) : undefined
+      );
+      latestDecks.push(new LatestDeckRedux(deck, previousDeck, undefined));
+      deck = previousDeck;
+    }
+    return latestDecks;
+  }, [id, decks]);
 }

@@ -1,5 +1,5 @@
 import { useContext, useMemo, useEffect, useCallback, useRef } from 'react';
-import { flatMap, map, omit } from 'lodash';
+import { flatMap, forEach, map, omit } from 'lodash';
 
 import { CampaignId, DeckId, UploadedCampaignId } from '@actions/types';
 import {
@@ -19,6 +19,8 @@ import {
   ChaosBagResultsDocument,
   useGetMyDecksQuery,
   useGetMyCampaignsQuery,
+  useGetDeckHistoryQuery,
+  HistoryDeckFragment,
 } from '@generated/graphql/apollo-schema';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { FriendStatus } from './api';
@@ -108,7 +110,7 @@ export function useCampaignRemote(campaignId: CampaignId | undefined, live?: boo
     variables: { campaign_id: campaignId?.serverId || 0 },
     fetchPolicy: live ? 'cache-first' : 'cache-only',
     skip: (!user || !campaignId?.serverId),
-    returnPartialData: true,
+    returnPartialData: false,
   });
   useEffect(() => {
     if (live && user && campaignId?.serverId && subscribeToMore) {
@@ -392,4 +394,47 @@ export function useLatestDeckRemote(deckId: DeckId, campaign_id: CampaignId | un
     }
     return currentDeck ? new LatestDeckRemote(currentDeck) : undefined;
   }, [campaign_id, deckId, currentDeck]);
+}
+
+export function useDeckHistoryRemote(id: DeckId, investigator: string, campaign: MiniCampaignT | undefined): LatestDeckT[] | undefined {
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const { data } = useGetDeckHistoryQuery({
+    variables: {
+      user_id: user?.uid || '',
+      campaign_id: campaign?.id.serverId || 0,
+      investigator,
+    },
+    skip: !user?.uid || !campaign || !campaign?.id.serverId,
+  });
+
+  return useMemo(() => {
+    if (!id.serverId || !campaign?.id.serverId || !data?.campaign_deck.length) {
+      return undefined;
+    }
+    console.log(data.campaign_deck);
+    const decksById: {
+      [id: string]: HistoryDeckFragment;
+    } = {};
+    forEach(data.campaign_deck, d => {
+      decksById[d.id] = d;
+    });
+    const latestDecks: LatestDeckT[] = [];
+    let deck: HistoryDeckFragment | undefined = decksById[id.serverId];
+    while (deck) {
+      const previousDeck: HistoryDeckFragment | undefined = (deck.previous_deck && decksById[deck.previous_deck.id]) || undefined;
+      latestDecks.push(new LatestDeckRemote({
+        __typename: 'campaign_deck',
+        ...deck,
+        previous_deck: previousDeck,
+        campaign: {
+          __typename: 'campaign',
+          id: campaign.id.serverId,
+          uuid: campaign.id.campaignId,
+          name: campaign.name,
+        },
+      }));
+      deck = previousDeck;
+    }
+    return latestDecks;
+  }, [campaign, id, data]);
 }

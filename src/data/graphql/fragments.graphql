@@ -63,6 +63,19 @@ fragment AllDeck on campaign_deck {
   }
 }
 
+fragment HistoryDeck on campaign_deck {
+  ...BasicDeck
+  owner {
+    ...UserInfo
+  }
+  next_deck {
+    ...IdDeck
+  }
+  previous_deck {
+    ...IdDeck
+  }
+}
+
 fragment LatestDeck on campaign_deck {
   ...BasicDeck
   owner {
