@@ -17,6 +17,7 @@ import StandaloneItem from './StandaloneItem';
 import StyleContext from '@styles/StyleContext';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import ConnectionProblemBanner from '@components/core/ConnectionProblemBanner';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 interface Props {
   onScroll: (...args: any[]) => void;
@@ -34,6 +35,7 @@ interface CampaignItemType {
 
 export default function CampaignList({ onScroll, componentId, campaigns, footer, standalonesById, onRefresh, refreshing }: Props) {
   const { colors, width } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const onPress = useCallback((id: string, campaign: MiniCampaignT) => {
     Keyboard.dismiss();
     const options: Options = {
@@ -131,10 +133,10 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
     return (
       <>
         { Platform.OS === 'android' && <View style={styles.searchBarPadding} /> }
-        <ConnectionProblemBanner width={width} />
+        { !!user && <ConnectionProblemBanner width={width} /> }
       </>
     )
-  }, [width]);
+  }, [width, user]);
   const [isRefreshing, setRefreshing] = useState(false);
   const doRefresh = useCallback(() => {
     setRefreshing(true);

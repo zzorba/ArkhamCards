@@ -80,7 +80,7 @@ export type base_decks_variance_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaignKeySpecifier = ('access' | 'access_aggregate' | 'base_decks' | 'base_decks_aggregate' | 'campaignNotes' | 'campaign_guide' | 'chaosBag' | 'chaos_bag_results' | 'created_at' | 'cycleCode' | 'deleted' | 'difficulty' | 'guide_version' | 'guided' | 'id' | 'investigator_data' | 'investigator_data_aggregate' | 'investigators' | 'investigators_aggregate' | 'latest_decks' | 'latest_decks_aggregate' | 'link_a_campaign' | 'link_a_campaign_id' | 'link_b_campaign' | 'link_b_campaign_id' | 'link_campaign_id' | 'linked_campaign' | 'name' | 'owner' | 'owner_id' | 'scenarioResults' | 'showInterludes' | 'standaloneId' | 'updated_at' | 'uuid' | 'weaknessSet' | campaignKeySpecifier)[];
+export type campaignKeySpecifier = ('access' | 'access_aggregate' | 'base_decks' | 'base_decks_aggregate' | 'campaignNotes' | 'campaign_guide' | 'chaosBag' | 'chaos_bag_result' | 'created_at' | 'cycleCode' | 'deleted' | 'difficulty' | 'guide_version' | 'guided' | 'id' | 'investigator_data' | 'investigator_data_aggregate' | 'investigators' | 'investigators_aggregate' | 'latest_decks' | 'latest_decks_aggregate' | 'link_a_campaign' | 'link_a_campaign_id' | 'link_b_campaign' | 'link_b_campaign_id' | 'link_campaign_id' | 'linked_campaign' | 'name' | 'owner' | 'owner_id' | 'scenarioResults' | 'showInterludes' | 'standaloneId' | 'updated_at' | 'uuid' | 'weaknessSet' | campaignKeySpecifier)[];
 export type campaignFieldPolicy = {
 	access?: FieldPolicy<any> | FieldReadFunction<any>,
 	access_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -89,7 +89,7 @@ export type campaignFieldPolicy = {
 	campaignNotes?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_guide?: FieldPolicy<any> | FieldReadFunction<any>,
 	chaosBag?: FieldPolicy<any> | FieldReadFunction<any>,
-	chaos_bag_results?: FieldPolicy<any> | FieldReadFunction<any>,
+	chaos_bag_result?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	cycleCode?: FieldPolicy<any> | FieldReadFunction<any>,
 	deleted?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -608,25 +608,25 @@ export type campaign_variance_fieldsFieldPolicy = {
 	link_b_campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	link_campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type chaos_bag_resultsKeySpecifier = ('bless' | 'campaign' | 'campaign_id' | 'created_at' | 'curse' | 'drawn' | 'sealed' | 'totalDrawn' | 'updated_at' | chaos_bag_resultsKeySpecifier)[];
-export type chaos_bag_resultsFieldPolicy = {
+export type chaos_bag_resultKeySpecifier = ('bless' | 'campaign' | 'created_at' | 'curse' | 'drawn' | 'id' | 'sealed' | 'totalDrawn' | 'updated_at' | chaos_bag_resultKeySpecifier)[];
+export type chaos_bag_resultFieldPolicy = {
 	bless?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign?: FieldPolicy<any> | FieldReadFunction<any>,
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	curse?: FieldPolicy<any> | FieldReadFunction<any>,
 	drawn?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	sealed?: FieldPolicy<any> | FieldReadFunction<any>,
 	totalDrawn?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type chaos_bag_results_aggregateKeySpecifier = ('aggregate' | 'nodes' | chaos_bag_results_aggregateKeySpecifier)[];
-export type chaos_bag_results_aggregateFieldPolicy = {
+export type chaos_bag_result_aggregateKeySpecifier = ('aggregate' | 'nodes' | chaos_bag_result_aggregateKeySpecifier)[];
+export type chaos_bag_result_aggregateFieldPolicy = {
 	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	nodes?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type chaos_bag_results_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | chaos_bag_results_aggregate_fieldsKeySpecifier)[];
-export type chaos_bag_results_aggregate_fieldsFieldPolicy = {
+export type chaos_bag_result_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | chaos_bag_result_aggregate_fieldsKeySpecifier)[];
+export type chaos_bag_result_aggregate_fieldsFieldPolicy = {
 	avg?: FieldPolicy<any> | FieldReadFunction<any>,
 	count?: FieldPolicy<any> | FieldReadFunction<any>,
 	max?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -639,83 +639,83 @@ export type chaos_bag_results_aggregate_fieldsFieldPolicy = {
 	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
 	variance?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type chaos_bag_results_avg_fieldsKeySpecifier = ('bless' | 'campaign_id' | 'curse' | 'totalDrawn' | chaos_bag_results_avg_fieldsKeySpecifier)[];
-export type chaos_bag_results_avg_fieldsFieldPolicy = {
+export type chaos_bag_result_avg_fieldsKeySpecifier = ('bless' | 'curse' | 'id' | 'totalDrawn' | chaos_bag_result_avg_fieldsKeySpecifier)[];
+export type chaos_bag_result_avg_fieldsFieldPolicy = {
 	bless?: FieldPolicy<any> | FieldReadFunction<any>,
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	curse?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	totalDrawn?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type chaos_bag_results_max_fieldsKeySpecifier = ('bless' | 'campaign_id' | 'created_at' | 'curse' | 'totalDrawn' | 'updated_at' | chaos_bag_results_max_fieldsKeySpecifier)[];
-export type chaos_bag_results_max_fieldsFieldPolicy = {
+export type chaos_bag_result_max_fieldsKeySpecifier = ('bless' | 'created_at' | 'curse' | 'id' | 'totalDrawn' | 'updated_at' | chaos_bag_result_max_fieldsKeySpecifier)[];
+export type chaos_bag_result_max_fieldsFieldPolicy = {
 	bless?: FieldPolicy<any> | FieldReadFunction<any>,
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	curse?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	totalDrawn?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type chaos_bag_results_min_fieldsKeySpecifier = ('bless' | 'campaign_id' | 'created_at' | 'curse' | 'totalDrawn' | 'updated_at' | chaos_bag_results_min_fieldsKeySpecifier)[];
-export type chaos_bag_results_min_fieldsFieldPolicy = {
+export type chaos_bag_result_min_fieldsKeySpecifier = ('bless' | 'created_at' | 'curse' | 'id' | 'totalDrawn' | 'updated_at' | chaos_bag_result_min_fieldsKeySpecifier)[];
+export type chaos_bag_result_min_fieldsFieldPolicy = {
 	bless?: FieldPolicy<any> | FieldReadFunction<any>,
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	curse?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	totalDrawn?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type chaos_bag_results_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | chaos_bag_results_mutation_responseKeySpecifier)[];
-export type chaos_bag_results_mutation_responseFieldPolicy = {
+export type chaos_bag_result_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | chaos_bag_result_mutation_responseKeySpecifier)[];
+export type chaos_bag_result_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type chaos_bag_results_stddev_fieldsKeySpecifier = ('bless' | 'campaign_id' | 'curse' | 'totalDrawn' | chaos_bag_results_stddev_fieldsKeySpecifier)[];
-export type chaos_bag_results_stddev_fieldsFieldPolicy = {
+export type chaos_bag_result_stddev_fieldsKeySpecifier = ('bless' | 'curse' | 'id' | 'totalDrawn' | chaos_bag_result_stddev_fieldsKeySpecifier)[];
+export type chaos_bag_result_stddev_fieldsFieldPolicy = {
 	bless?: FieldPolicy<any> | FieldReadFunction<any>,
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	curse?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	totalDrawn?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type chaos_bag_results_stddev_pop_fieldsKeySpecifier = ('bless' | 'campaign_id' | 'curse' | 'totalDrawn' | chaos_bag_results_stddev_pop_fieldsKeySpecifier)[];
-export type chaos_bag_results_stddev_pop_fieldsFieldPolicy = {
+export type chaos_bag_result_stddev_pop_fieldsKeySpecifier = ('bless' | 'curse' | 'id' | 'totalDrawn' | chaos_bag_result_stddev_pop_fieldsKeySpecifier)[];
+export type chaos_bag_result_stddev_pop_fieldsFieldPolicy = {
 	bless?: FieldPolicy<any> | FieldReadFunction<any>,
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	curse?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	totalDrawn?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type chaos_bag_results_stddev_samp_fieldsKeySpecifier = ('bless' | 'campaign_id' | 'curse' | 'totalDrawn' | chaos_bag_results_stddev_samp_fieldsKeySpecifier)[];
-export type chaos_bag_results_stddev_samp_fieldsFieldPolicy = {
+export type chaos_bag_result_stddev_samp_fieldsKeySpecifier = ('bless' | 'curse' | 'id' | 'totalDrawn' | chaos_bag_result_stddev_samp_fieldsKeySpecifier)[];
+export type chaos_bag_result_stddev_samp_fieldsFieldPolicy = {
 	bless?: FieldPolicy<any> | FieldReadFunction<any>,
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	curse?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	totalDrawn?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type chaos_bag_results_sum_fieldsKeySpecifier = ('bless' | 'campaign_id' | 'curse' | 'totalDrawn' | chaos_bag_results_sum_fieldsKeySpecifier)[];
-export type chaos_bag_results_sum_fieldsFieldPolicy = {
+export type chaos_bag_result_sum_fieldsKeySpecifier = ('bless' | 'curse' | 'id' | 'totalDrawn' | chaos_bag_result_sum_fieldsKeySpecifier)[];
+export type chaos_bag_result_sum_fieldsFieldPolicy = {
 	bless?: FieldPolicy<any> | FieldReadFunction<any>,
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	curse?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	totalDrawn?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type chaos_bag_results_var_pop_fieldsKeySpecifier = ('bless' | 'campaign_id' | 'curse' | 'totalDrawn' | chaos_bag_results_var_pop_fieldsKeySpecifier)[];
-export type chaos_bag_results_var_pop_fieldsFieldPolicy = {
+export type chaos_bag_result_var_pop_fieldsKeySpecifier = ('bless' | 'curse' | 'id' | 'totalDrawn' | chaos_bag_result_var_pop_fieldsKeySpecifier)[];
+export type chaos_bag_result_var_pop_fieldsFieldPolicy = {
 	bless?: FieldPolicy<any> | FieldReadFunction<any>,
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	curse?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	totalDrawn?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type chaos_bag_results_var_samp_fieldsKeySpecifier = ('bless' | 'campaign_id' | 'curse' | 'totalDrawn' | chaos_bag_results_var_samp_fieldsKeySpecifier)[];
-export type chaos_bag_results_var_samp_fieldsFieldPolicy = {
+export type chaos_bag_result_var_samp_fieldsKeySpecifier = ('bless' | 'curse' | 'id' | 'totalDrawn' | chaos_bag_result_var_samp_fieldsKeySpecifier)[];
+export type chaos_bag_result_var_samp_fieldsFieldPolicy = {
 	bless?: FieldPolicy<any> | FieldReadFunction<any>,
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	curse?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	totalDrawn?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type chaos_bag_results_variance_fieldsKeySpecifier = ('bless' | 'campaign_id' | 'curse' | 'totalDrawn' | chaos_bag_results_variance_fieldsKeySpecifier)[];
-export type chaos_bag_results_variance_fieldsFieldPolicy = {
+export type chaos_bag_result_variance_fieldsKeySpecifier = ('bless' | 'curse' | 'id' | 'totalDrawn' | chaos_bag_result_variance_fieldsKeySpecifier)[];
+export type chaos_bag_result_variance_fieldsFieldPolicy = {
 	bless?: FieldPolicy<any> | FieldReadFunction<any>,
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	curse?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	totalDrawn?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type friend_statusKeySpecifier = ('id' | 'status' | 'user_id_a' | 'user_id_b' | friend_statusKeySpecifier)[];
@@ -1255,7 +1255,7 @@ export type local_decks_variance_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type mutation_rootKeySpecifier = ('delete_base_decks' | 'delete_campaign' | 'delete_campaign_access' | 'delete_campaign_access_by_pk' | 'delete_campaign_by_pk' | 'delete_campaign_deck' | 'delete_campaign_deck_by_pk' | 'delete_campaign_guide' | 'delete_campaign_investigator' | 'delete_campaign_investigator_by_pk' | 'delete_chaos_bag_results' | 'delete_chaos_bag_results_by_pk' | 'delete_friend_status' | 'delete_friend_status_by_pk' | 'delete_friend_status_type' | 'delete_friend_status_type_by_pk' | 'delete_guide_achievement' | 'delete_guide_achievement_by_pk' | 'delete_guide_input' | 'delete_guide_input_by_pk' | 'delete_investigator_data' | 'delete_investigator_data_by_pk' | 'delete_latest_decks' | 'delete_local_decks' | 'delete_user_campaigns' | 'delete_user_friends' | 'delete_user_received_friend_requests' | 'delete_user_sent_friend_requests' | 'delete_users' | 'delete_users_by_pk' | 'insert_base_decks' | 'insert_base_decks_one' | 'insert_campaign' | 'insert_campaign_access' | 'insert_campaign_access_one' | 'insert_campaign_deck' | 'insert_campaign_deck_one' | 'insert_campaign_guide' | 'insert_campaign_guide_one' | 'insert_campaign_investigator' | 'insert_campaign_investigator_one' | 'insert_campaign_one' | 'insert_chaos_bag_results' | 'insert_chaos_bag_results_one' | 'insert_friend_status' | 'insert_friend_status_one' | 'insert_friend_status_type' | 'insert_friend_status_type_one' | 'insert_guide_achievement' | 'insert_guide_achievement_one' | 'insert_guide_input' | 'insert_guide_input_one' | 'insert_investigator_data' | 'insert_investigator_data_one' | 'insert_latest_decks' | 'insert_latest_decks_one' | 'insert_local_decks' | 'insert_local_decks_one' | 'insert_user_campaigns' | 'insert_user_campaigns_one' | 'insert_user_friends' | 'insert_user_friends_one' | 'insert_user_received_friend_requests' | 'insert_user_received_friend_requests_one' | 'insert_user_sent_friend_requests' | 'insert_user_sent_friend_requests_one' | 'insert_users' | 'insert_users_one' | 'update_base_decks' | 'update_campaign' | 'update_campaign_access' | 'update_campaign_access_by_pk' | 'update_campaign_by_pk' | 'update_campaign_deck' | 'update_campaign_deck_by_pk' | 'update_campaign_guide' | 'update_campaign_investigator' | 'update_campaign_investigator_by_pk' | 'update_chaos_bag_results' | 'update_chaos_bag_results_by_pk' | 'update_friend_status' | 'update_friend_status_by_pk' | 'update_friend_status_type' | 'update_friend_status_type_by_pk' | 'update_guide_achievement' | 'update_guide_achievement_by_pk' | 'update_guide_input' | 'update_guide_input_by_pk' | 'update_investigator_data' | 'update_investigator_data_by_pk' | 'update_latest_decks' | 'update_local_decks' | 'update_user_campaigns' | 'update_user_friends' | 'update_user_received_friend_requests' | 'update_user_sent_friend_requests' | 'update_users' | 'update_users_by_pk' | mutation_rootKeySpecifier)[];
+export type mutation_rootKeySpecifier = ('delete_base_decks' | 'delete_campaign' | 'delete_campaign_access' | 'delete_campaign_access_by_pk' | 'delete_campaign_by_pk' | 'delete_campaign_deck' | 'delete_campaign_deck_by_pk' | 'delete_campaign_guide' | 'delete_campaign_investigator' | 'delete_campaign_investigator_by_pk' | 'delete_chaos_bag_result' | 'delete_chaos_bag_result_by_pk' | 'delete_friend_status' | 'delete_friend_status_by_pk' | 'delete_friend_status_type' | 'delete_friend_status_type_by_pk' | 'delete_guide_achievement' | 'delete_guide_achievement_by_pk' | 'delete_guide_input' | 'delete_guide_input_by_pk' | 'delete_investigator_data' | 'delete_investigator_data_by_pk' | 'delete_latest_decks' | 'delete_local_decks' | 'delete_user_campaigns' | 'delete_user_friends' | 'delete_user_received_friend_requests' | 'delete_user_sent_friend_requests' | 'delete_users' | 'delete_users_by_pk' | 'insert_base_decks' | 'insert_base_decks_one' | 'insert_campaign' | 'insert_campaign_access' | 'insert_campaign_access_one' | 'insert_campaign_deck' | 'insert_campaign_deck_one' | 'insert_campaign_guide' | 'insert_campaign_guide_one' | 'insert_campaign_investigator' | 'insert_campaign_investigator_one' | 'insert_campaign_one' | 'insert_chaos_bag_result' | 'insert_chaos_bag_result_one' | 'insert_friend_status' | 'insert_friend_status_one' | 'insert_friend_status_type' | 'insert_friend_status_type_one' | 'insert_guide_achievement' | 'insert_guide_achievement_one' | 'insert_guide_input' | 'insert_guide_input_one' | 'insert_investigator_data' | 'insert_investigator_data_one' | 'insert_latest_decks' | 'insert_latest_decks_one' | 'insert_local_decks' | 'insert_local_decks_one' | 'insert_user_campaigns' | 'insert_user_campaigns_one' | 'insert_user_friends' | 'insert_user_friends_one' | 'insert_user_received_friend_requests' | 'insert_user_received_friend_requests_one' | 'insert_user_sent_friend_requests' | 'insert_user_sent_friend_requests_one' | 'insert_users' | 'insert_users_one' | 'update_base_decks' | 'update_campaign' | 'update_campaign_access' | 'update_campaign_access_by_pk' | 'update_campaign_by_pk' | 'update_campaign_deck' | 'update_campaign_deck_by_pk' | 'update_campaign_guide' | 'update_campaign_investigator' | 'update_campaign_investigator_by_pk' | 'update_chaos_bag_result' | 'update_chaos_bag_result_by_pk' | 'update_friend_status' | 'update_friend_status_by_pk' | 'update_friend_status_type' | 'update_friend_status_type_by_pk' | 'update_guide_achievement' | 'update_guide_achievement_by_pk' | 'update_guide_input' | 'update_guide_input_by_pk' | 'update_investigator_data' | 'update_investigator_data_by_pk' | 'update_latest_decks' | 'update_local_decks' | 'update_user_campaigns' | 'update_user_friends' | 'update_user_received_friend_requests' | 'update_user_sent_friend_requests' | 'update_users' | 'update_users_by_pk' | mutation_rootKeySpecifier)[];
 export type mutation_rootFieldPolicy = {
 	delete_base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_campaign?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1267,8 +1267,8 @@ export type mutation_rootFieldPolicy = {
 	delete_campaign_guide?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_campaign_investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_campaign_investigator_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
-	delete_chaos_bag_results?: FieldPolicy<any> | FieldReadFunction<any>,
-	delete_chaos_bag_results_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_chaos_bag_result?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_chaos_bag_result_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_friend_status?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_friend_status_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_friend_status_type?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1299,8 +1299,8 @@ export type mutation_rootFieldPolicy = {
 	insert_campaign_investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_campaign_investigator_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_campaign_one?: FieldPolicy<any> | FieldReadFunction<any>,
-	insert_chaos_bag_results?: FieldPolicy<any> | FieldReadFunction<any>,
-	insert_chaos_bag_results_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_chaos_bag_result?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_chaos_bag_result_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_friend_status?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_friend_status_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_friend_status_type?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1335,8 +1335,8 @@ export type mutation_rootFieldPolicy = {
 	update_campaign_guide?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_campaign_investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_campaign_investigator_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
-	update_chaos_bag_results?: FieldPolicy<any> | FieldReadFunction<any>,
-	update_chaos_bag_results_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_chaos_bag_result?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_chaos_bag_result_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_friend_status?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_friend_status_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_friend_status_type?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1356,7 +1356,7 @@ export type mutation_rootFieldPolicy = {
 	update_users?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_users_by_pk?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type query_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'chaos_bag_results' | 'chaos_bag_results_aggregate' | 'chaos_bag_results_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'friend_status_type' | 'friend_status_type_aggregate' | 'friend_status_type_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'local_decks' | 'local_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | query_rootKeySpecifier)[];
+export type query_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'chaos_bag_result' | 'chaos_bag_result_aggregate' | 'chaos_bag_result_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'friend_status_type' | 'friend_status_type_aggregate' | 'friend_status_type_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'local_decks' | 'local_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | query_rootKeySpecifier)[];
 export type query_rootFieldPolicy = {
 	base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1374,9 +1374,9 @@ export type query_rootFieldPolicy = {
 	campaign_investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_investigator_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_investigator_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
-	chaos_bag_results?: FieldPolicy<any> | FieldReadFunction<any>,
-	chaos_bag_results_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
-	chaos_bag_results_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	chaos_bag_result?: FieldPolicy<any> | FieldReadFunction<any>,
+	chaos_bag_result_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	chaos_bag_result_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	friend_status?: FieldPolicy<any> | FieldReadFunction<any>,
 	friend_status_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	friend_status_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1408,7 +1408,7 @@ export type query_rootFieldPolicy = {
 	users_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	users_by_pk?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type subscription_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'chaos_bag_results' | 'chaos_bag_results_aggregate' | 'chaos_bag_results_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'friend_status_type' | 'friend_status_type_aggregate' | 'friend_status_type_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'local_decks' | 'local_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | subscription_rootKeySpecifier)[];
+export type subscription_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'chaos_bag_result' | 'chaos_bag_result_aggregate' | 'chaos_bag_result_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'friend_status_type' | 'friend_status_type_aggregate' | 'friend_status_type_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'local_decks' | 'local_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | subscription_rootKeySpecifier)[];
 export type subscription_rootFieldPolicy = {
 	base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1426,9 +1426,9 @@ export type subscription_rootFieldPolicy = {
 	campaign_investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_investigator_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_investigator_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
-	chaos_bag_results?: FieldPolicy<any> | FieldReadFunction<any>,
-	chaos_bag_results_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
-	chaos_bag_results_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	chaos_bag_result?: FieldPolicy<any> | FieldReadFunction<any>,
+	chaos_bag_result_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	chaos_bag_result_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	friend_status?: FieldPolicy<any> | FieldReadFunction<any>,
 	friend_status_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	friend_status_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -2036,61 +2036,61 @@ export type TypedTypePolicies = TypePolicies & {
 		keyFields?: false | campaign_variance_fieldsKeySpecifier | (() => undefined | campaign_variance_fieldsKeySpecifier),
 		fields?: campaign_variance_fieldsFieldPolicy,
 	},
-	chaos_bag_results?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | chaos_bag_resultsKeySpecifier | (() => undefined | chaos_bag_resultsKeySpecifier),
-		fields?: chaos_bag_resultsFieldPolicy,
+	chaos_bag_result?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | chaos_bag_resultKeySpecifier | (() => undefined | chaos_bag_resultKeySpecifier),
+		fields?: chaos_bag_resultFieldPolicy,
 	},
-	chaos_bag_results_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | chaos_bag_results_aggregateKeySpecifier | (() => undefined | chaos_bag_results_aggregateKeySpecifier),
-		fields?: chaos_bag_results_aggregateFieldPolicy,
+	chaos_bag_result_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | chaos_bag_result_aggregateKeySpecifier | (() => undefined | chaos_bag_result_aggregateKeySpecifier),
+		fields?: chaos_bag_result_aggregateFieldPolicy,
 	},
-	chaos_bag_results_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | chaos_bag_results_aggregate_fieldsKeySpecifier | (() => undefined | chaos_bag_results_aggregate_fieldsKeySpecifier),
-		fields?: chaos_bag_results_aggregate_fieldsFieldPolicy,
+	chaos_bag_result_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | chaos_bag_result_aggregate_fieldsKeySpecifier | (() => undefined | chaos_bag_result_aggregate_fieldsKeySpecifier),
+		fields?: chaos_bag_result_aggregate_fieldsFieldPolicy,
 	},
-	chaos_bag_results_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | chaos_bag_results_avg_fieldsKeySpecifier | (() => undefined | chaos_bag_results_avg_fieldsKeySpecifier),
-		fields?: chaos_bag_results_avg_fieldsFieldPolicy,
+	chaos_bag_result_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | chaos_bag_result_avg_fieldsKeySpecifier | (() => undefined | chaos_bag_result_avg_fieldsKeySpecifier),
+		fields?: chaos_bag_result_avg_fieldsFieldPolicy,
 	},
-	chaos_bag_results_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | chaos_bag_results_max_fieldsKeySpecifier | (() => undefined | chaos_bag_results_max_fieldsKeySpecifier),
-		fields?: chaos_bag_results_max_fieldsFieldPolicy,
+	chaos_bag_result_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | chaos_bag_result_max_fieldsKeySpecifier | (() => undefined | chaos_bag_result_max_fieldsKeySpecifier),
+		fields?: chaos_bag_result_max_fieldsFieldPolicy,
 	},
-	chaos_bag_results_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | chaos_bag_results_min_fieldsKeySpecifier | (() => undefined | chaos_bag_results_min_fieldsKeySpecifier),
-		fields?: chaos_bag_results_min_fieldsFieldPolicy,
+	chaos_bag_result_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | chaos_bag_result_min_fieldsKeySpecifier | (() => undefined | chaos_bag_result_min_fieldsKeySpecifier),
+		fields?: chaos_bag_result_min_fieldsFieldPolicy,
 	},
-	chaos_bag_results_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | chaos_bag_results_mutation_responseKeySpecifier | (() => undefined | chaos_bag_results_mutation_responseKeySpecifier),
-		fields?: chaos_bag_results_mutation_responseFieldPolicy,
+	chaos_bag_result_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | chaos_bag_result_mutation_responseKeySpecifier | (() => undefined | chaos_bag_result_mutation_responseKeySpecifier),
+		fields?: chaos_bag_result_mutation_responseFieldPolicy,
 	},
-	chaos_bag_results_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | chaos_bag_results_stddev_fieldsKeySpecifier | (() => undefined | chaos_bag_results_stddev_fieldsKeySpecifier),
-		fields?: chaos_bag_results_stddev_fieldsFieldPolicy,
+	chaos_bag_result_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | chaos_bag_result_stddev_fieldsKeySpecifier | (() => undefined | chaos_bag_result_stddev_fieldsKeySpecifier),
+		fields?: chaos_bag_result_stddev_fieldsFieldPolicy,
 	},
-	chaos_bag_results_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | chaos_bag_results_stddev_pop_fieldsKeySpecifier | (() => undefined | chaos_bag_results_stddev_pop_fieldsKeySpecifier),
-		fields?: chaos_bag_results_stddev_pop_fieldsFieldPolicy,
+	chaos_bag_result_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | chaos_bag_result_stddev_pop_fieldsKeySpecifier | (() => undefined | chaos_bag_result_stddev_pop_fieldsKeySpecifier),
+		fields?: chaos_bag_result_stddev_pop_fieldsFieldPolicy,
 	},
-	chaos_bag_results_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | chaos_bag_results_stddev_samp_fieldsKeySpecifier | (() => undefined | chaos_bag_results_stddev_samp_fieldsKeySpecifier),
-		fields?: chaos_bag_results_stddev_samp_fieldsFieldPolicy,
+	chaos_bag_result_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | chaos_bag_result_stddev_samp_fieldsKeySpecifier | (() => undefined | chaos_bag_result_stddev_samp_fieldsKeySpecifier),
+		fields?: chaos_bag_result_stddev_samp_fieldsFieldPolicy,
 	},
-	chaos_bag_results_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | chaos_bag_results_sum_fieldsKeySpecifier | (() => undefined | chaos_bag_results_sum_fieldsKeySpecifier),
-		fields?: chaos_bag_results_sum_fieldsFieldPolicy,
+	chaos_bag_result_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | chaos_bag_result_sum_fieldsKeySpecifier | (() => undefined | chaos_bag_result_sum_fieldsKeySpecifier),
+		fields?: chaos_bag_result_sum_fieldsFieldPolicy,
 	},
-	chaos_bag_results_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | chaos_bag_results_var_pop_fieldsKeySpecifier | (() => undefined | chaos_bag_results_var_pop_fieldsKeySpecifier),
-		fields?: chaos_bag_results_var_pop_fieldsFieldPolicy,
+	chaos_bag_result_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | chaos_bag_result_var_pop_fieldsKeySpecifier | (() => undefined | chaos_bag_result_var_pop_fieldsKeySpecifier),
+		fields?: chaos_bag_result_var_pop_fieldsFieldPolicy,
 	},
-	chaos_bag_results_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | chaos_bag_results_var_samp_fieldsKeySpecifier | (() => undefined | chaos_bag_results_var_samp_fieldsKeySpecifier),
-		fields?: chaos_bag_results_var_samp_fieldsFieldPolicy,
+	chaos_bag_result_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | chaos_bag_result_var_samp_fieldsKeySpecifier | (() => undefined | chaos_bag_result_var_samp_fieldsKeySpecifier),
+		fields?: chaos_bag_result_var_samp_fieldsFieldPolicy,
 	},
-	chaos_bag_results_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | chaos_bag_results_variance_fieldsKeySpecifier | (() => undefined | chaos_bag_results_variance_fieldsKeySpecifier),
-		fields?: chaos_bag_results_variance_fieldsFieldPolicy,
+	chaos_bag_result_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | chaos_bag_result_variance_fieldsKeySpecifier | (() => undefined | chaos_bag_result_variance_fieldsKeySpecifier),
+		fields?: chaos_bag_result_variance_fieldsFieldPolicy,
 	},
 	friend_status?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | friend_statusKeySpecifier | (() => undefined | friend_statusKeySpecifier),

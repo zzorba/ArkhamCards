@@ -29,8 +29,8 @@ fragment IdDeck on campaign_deck {
   campaign_id
 }
 
-fragment FullChaosBagResults on chaos_bag_results {
-  campaign_id
+fragment FullChaosBagResult on chaos_bag_result {
+  id
   bless
   curse
   drawn

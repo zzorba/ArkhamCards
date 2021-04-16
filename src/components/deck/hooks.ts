@@ -69,7 +69,7 @@ export function useDeckEdits(
       };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialDeck]);
+  }, [initialDeck, id]);
   const otherDeckEdits: EditDeckState | undefined = useMemo(() => {
     if (user && initialDeck?.owner?.id && user.uid !== initialDeck.owner.id) {
       return {

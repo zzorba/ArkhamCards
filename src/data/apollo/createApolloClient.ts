@@ -26,8 +26,8 @@ const typePolicies: TypedTypePolicies = {
   campaign: {
     keyFields: ['id'],
   },
-  chaos_bag_results: {
-    keyFields: ['campaign_id'],
+  chaos_bag_result: {
+    keyFields: ['id'],
     fields: {
       drawn: {
         merge(existing, incoming) {

@@ -339,7 +339,7 @@ export type Campaign = {
   campaign_guide?: Maybe<Campaign_Guide>;
   chaosBag?: Maybe<Scalars['jsonb']>;
   /** An object relationship */
-  chaos_bag_results?: Maybe<Chaos_Bag_Results>;
+  chaos_bag_result?: Maybe<Chaos_Bag_Result>;
   created_at: Scalars['timestamptz'];
   cycleCode?: Maybe<Scalars['String']>;
   deleted?: Maybe<Scalars['Boolean']>;
@@ -863,7 +863,7 @@ export type Campaign_Bool_Exp = {
   campaignNotes?: Maybe<Jsonb_Comparison_Exp>;
   campaign_guide?: Maybe<Campaign_Guide_Bool_Exp>;
   chaosBag?: Maybe<Jsonb_Comparison_Exp>;
-  chaos_bag_results?: Maybe<Chaos_Bag_Results_Bool_Exp>;
+  chaos_bag_result?: Maybe<Chaos_Bag_Result_Bool_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
   cycleCode?: Maybe<String_Comparison_Exp>;
   deleted?: Maybe<Boolean_Comparison_Exp>;
@@ -1690,7 +1690,7 @@ export type Campaign_Insert_Input = {
   campaignNotes?: Maybe<Scalars['jsonb']>;
   campaign_guide?: Maybe<Campaign_Guide_Obj_Rel_Insert_Input>;
   chaosBag?: Maybe<Scalars['jsonb']>;
-  chaos_bag_results?: Maybe<Chaos_Bag_Results_Obj_Rel_Insert_Input>;
+  chaos_bag_result?: Maybe<Chaos_Bag_Result_Obj_Rel_Insert_Input>;
   created_at?: Maybe<Scalars['timestamptz']>;
   cycleCode?: Maybe<Scalars['String']>;
   deleted?: Maybe<Scalars['Boolean']>;
@@ -2066,7 +2066,7 @@ export type Campaign_Order_By = {
   campaignNotes?: Maybe<Order_By>;
   campaign_guide?: Maybe<Campaign_Guide_Order_By>;
   chaosBag?: Maybe<Order_By>;
-  chaos_bag_results?: Maybe<Chaos_Bag_Results_Order_By>;
+  chaos_bag_result?: Maybe<Chaos_Bag_Result_Order_By>;
   created_at?: Maybe<Order_By>;
   cycleCode?: Maybe<Order_By>;
   deleted?: Maybe<Order_By>;
@@ -2290,220 +2290,222 @@ export type Campaign_Variance_Fields = {
   link_campaign_id?: Maybe<Scalars['Float']>;
 };
 
-/** columns and relationships of "chaos_bag_results" */
-export type Chaos_Bag_Results = {
-  __typename?: 'chaos_bag_results';
+/** columns and relationships of "chaos_bag_result" */
+export type Chaos_Bag_Result = {
+  __typename?: 'chaos_bag_result';
   bless: Scalars['Int'];
   /** An object relationship */
   campaign: Campaign;
-  campaign_id: Scalars['Int'];
   created_at: Scalars['timestamptz'];
   curse: Scalars['Int'];
   drawn: Scalars['jsonb'];
+  id: Scalars['Int'];
   sealed: Scalars['jsonb'];
   totalDrawn?: Maybe<Scalars['Int']>;
   updated_at: Scalars['timestamptz'];
 };
 
 
-/** columns and relationships of "chaos_bag_results" */
-export type Chaos_Bag_ResultsDrawnArgs = {
+/** columns and relationships of "chaos_bag_result" */
+export type Chaos_Bag_ResultDrawnArgs = {
   path?: Maybe<Scalars['String']>;
 };
 
 
-/** columns and relationships of "chaos_bag_results" */
-export type Chaos_Bag_ResultsSealedArgs = {
+/** columns and relationships of "chaos_bag_result" */
+export type Chaos_Bag_ResultSealedArgs = {
   path?: Maybe<Scalars['String']>;
 };
 
-/** aggregated selection of "chaos_bag_results" */
-export type Chaos_Bag_Results_Aggregate = {
-  __typename?: 'chaos_bag_results_aggregate';
-  aggregate?: Maybe<Chaos_Bag_Results_Aggregate_Fields>;
-  nodes: Array<Chaos_Bag_Results>;
+/** aggregated selection of "chaos_bag_result" */
+export type Chaos_Bag_Result_Aggregate = {
+  __typename?: 'chaos_bag_result_aggregate';
+  aggregate?: Maybe<Chaos_Bag_Result_Aggregate_Fields>;
+  nodes: Array<Chaos_Bag_Result>;
 };
 
-/** aggregate fields of "chaos_bag_results" */
-export type Chaos_Bag_Results_Aggregate_Fields = {
-  __typename?: 'chaos_bag_results_aggregate_fields';
-  avg?: Maybe<Chaos_Bag_Results_Avg_Fields>;
+/** aggregate fields of "chaos_bag_result" */
+export type Chaos_Bag_Result_Aggregate_Fields = {
+  __typename?: 'chaos_bag_result_aggregate_fields';
+  avg?: Maybe<Chaos_Bag_Result_Avg_Fields>;
   count: Scalars['Int'];
-  max?: Maybe<Chaos_Bag_Results_Max_Fields>;
-  min?: Maybe<Chaos_Bag_Results_Min_Fields>;
-  stddev?: Maybe<Chaos_Bag_Results_Stddev_Fields>;
-  stddev_pop?: Maybe<Chaos_Bag_Results_Stddev_Pop_Fields>;
-  stddev_samp?: Maybe<Chaos_Bag_Results_Stddev_Samp_Fields>;
-  sum?: Maybe<Chaos_Bag_Results_Sum_Fields>;
-  var_pop?: Maybe<Chaos_Bag_Results_Var_Pop_Fields>;
-  var_samp?: Maybe<Chaos_Bag_Results_Var_Samp_Fields>;
-  variance?: Maybe<Chaos_Bag_Results_Variance_Fields>;
+  max?: Maybe<Chaos_Bag_Result_Max_Fields>;
+  min?: Maybe<Chaos_Bag_Result_Min_Fields>;
+  stddev?: Maybe<Chaos_Bag_Result_Stddev_Fields>;
+  stddev_pop?: Maybe<Chaos_Bag_Result_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Chaos_Bag_Result_Stddev_Samp_Fields>;
+  sum?: Maybe<Chaos_Bag_Result_Sum_Fields>;
+  var_pop?: Maybe<Chaos_Bag_Result_Var_Pop_Fields>;
+  var_samp?: Maybe<Chaos_Bag_Result_Var_Samp_Fields>;
+  variance?: Maybe<Chaos_Bag_Result_Variance_Fields>;
 };
 
 
-/** aggregate fields of "chaos_bag_results" */
-export type Chaos_Bag_Results_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Chaos_Bag_Results_Select_Column>>;
+/** aggregate fields of "chaos_bag_result" */
+export type Chaos_Bag_Result_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
 /** append existing jsonb value of filtered columns with new jsonb value */
-export type Chaos_Bag_Results_Append_Input = {
+export type Chaos_Bag_Result_Append_Input = {
   drawn?: Maybe<Scalars['jsonb']>;
   sealed?: Maybe<Scalars['jsonb']>;
 };
 
 /** aggregate avg on columns */
-export type Chaos_Bag_Results_Avg_Fields = {
-  __typename?: 'chaos_bag_results_avg_fields';
+export type Chaos_Bag_Result_Avg_Fields = {
+  __typename?: 'chaos_bag_result_avg_fields';
   bless?: Maybe<Scalars['Float']>;
-  campaign_id?: Maybe<Scalars['Float']>;
   curse?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
   totalDrawn?: Maybe<Scalars['Float']>;
 };
 
-/** Boolean expression to filter rows from the table "chaos_bag_results". All fields are combined with a logical 'AND'. */
-export type Chaos_Bag_Results_Bool_Exp = {
-  _and?: Maybe<Array<Chaos_Bag_Results_Bool_Exp>>;
-  _not?: Maybe<Chaos_Bag_Results_Bool_Exp>;
-  _or?: Maybe<Array<Chaos_Bag_Results_Bool_Exp>>;
+/** Boolean expression to filter rows from the table "chaos_bag_result". All fields are combined with a logical 'AND'. */
+export type Chaos_Bag_Result_Bool_Exp = {
+  _and?: Maybe<Array<Chaos_Bag_Result_Bool_Exp>>;
+  _not?: Maybe<Chaos_Bag_Result_Bool_Exp>;
+  _or?: Maybe<Array<Chaos_Bag_Result_Bool_Exp>>;
   bless?: Maybe<Int_Comparison_Exp>;
   campaign?: Maybe<Campaign_Bool_Exp>;
-  campaign_id?: Maybe<Int_Comparison_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
   curse?: Maybe<Int_Comparison_Exp>;
   drawn?: Maybe<Jsonb_Comparison_Exp>;
+  id?: Maybe<Int_Comparison_Exp>;
   sealed?: Maybe<Jsonb_Comparison_Exp>;
   totalDrawn?: Maybe<Int_Comparison_Exp>;
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
 };
 
-/** unique or primary key constraints on table "chaos_bag_results" */
-export enum Chaos_Bag_Results_Constraint {
+/** unique or primary key constraints on table "chaos_bag_result" */
+export enum Chaos_Bag_Result_Constraint {
   /** unique or primary key constraint */
-  ChaosBagPkey = 'chaos_bag_pkey'
+  ChaosBagPkey = 'chaos_bag_pkey',
+  /** unique or primary key constraint */
+  ChaosBagResultsCampaignIdKey = 'chaos_bag_results_campaign_id_key'
 }
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-export type Chaos_Bag_Results_Delete_At_Path_Input = {
+export type Chaos_Bag_Result_Delete_At_Path_Input = {
   drawn?: Maybe<Array<Scalars['String']>>;
   sealed?: Maybe<Array<Scalars['String']>>;
 };
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
-export type Chaos_Bag_Results_Delete_Elem_Input = {
+export type Chaos_Bag_Result_Delete_Elem_Input = {
   drawn?: Maybe<Scalars['Int']>;
   sealed?: Maybe<Scalars['Int']>;
 };
 
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
-export type Chaos_Bag_Results_Delete_Key_Input = {
+export type Chaos_Bag_Result_Delete_Key_Input = {
   drawn?: Maybe<Scalars['String']>;
   sealed?: Maybe<Scalars['String']>;
 };
 
-/** input type for incrementing numeric columns in table "chaos_bag_results" */
-export type Chaos_Bag_Results_Inc_Input = {
+/** input type for incrementing numeric columns in table "chaos_bag_result" */
+export type Chaos_Bag_Result_Inc_Input = {
   bless?: Maybe<Scalars['Int']>;
-  campaign_id?: Maybe<Scalars['Int']>;
   curse?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
   totalDrawn?: Maybe<Scalars['Int']>;
 };
 
-/** input type for inserting data into table "chaos_bag_results" */
-export type Chaos_Bag_Results_Insert_Input = {
+/** input type for inserting data into table "chaos_bag_result" */
+export type Chaos_Bag_Result_Insert_Input = {
   bless?: Maybe<Scalars['Int']>;
   campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
-  campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   curse?: Maybe<Scalars['Int']>;
   drawn?: Maybe<Scalars['jsonb']>;
+  id?: Maybe<Scalars['Int']>;
   sealed?: Maybe<Scalars['jsonb']>;
   totalDrawn?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
-export type Chaos_Bag_Results_Max_Fields = {
-  __typename?: 'chaos_bag_results_max_fields';
+export type Chaos_Bag_Result_Max_Fields = {
+  __typename?: 'chaos_bag_result_max_fields';
   bless?: Maybe<Scalars['Int']>;
-  campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   curse?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
   totalDrawn?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregate min on columns */
-export type Chaos_Bag_Results_Min_Fields = {
-  __typename?: 'chaos_bag_results_min_fields';
+export type Chaos_Bag_Result_Min_Fields = {
+  __typename?: 'chaos_bag_result_min_fields';
   bless?: Maybe<Scalars['Int']>;
-  campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   curse?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
   totalDrawn?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
-/** response of any mutation on the table "chaos_bag_results" */
-export type Chaos_Bag_Results_Mutation_Response = {
-  __typename?: 'chaos_bag_results_mutation_response';
+/** response of any mutation on the table "chaos_bag_result" */
+export type Chaos_Bag_Result_Mutation_Response = {
+  __typename?: 'chaos_bag_result_mutation_response';
   /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
   /** data from the rows affected by the mutation */
-  returning: Array<Chaos_Bag_Results>;
+  returning: Array<Chaos_Bag_Result>;
 };
 
-/** input type for inserting object relation for remote table "chaos_bag_results" */
-export type Chaos_Bag_Results_Obj_Rel_Insert_Input = {
-  data: Chaos_Bag_Results_Insert_Input;
+/** input type for inserting object relation for remote table "chaos_bag_result" */
+export type Chaos_Bag_Result_Obj_Rel_Insert_Input = {
+  data: Chaos_Bag_Result_Insert_Input;
   /** on conflict condition */
-  on_conflict?: Maybe<Chaos_Bag_Results_On_Conflict>;
+  on_conflict?: Maybe<Chaos_Bag_Result_On_Conflict>;
 };
 
-/** on conflict condition type for table "chaos_bag_results" */
-export type Chaos_Bag_Results_On_Conflict = {
-  constraint: Chaos_Bag_Results_Constraint;
-  update_columns: Array<Chaos_Bag_Results_Update_Column>;
-  where?: Maybe<Chaos_Bag_Results_Bool_Exp>;
+/** on conflict condition type for table "chaos_bag_result" */
+export type Chaos_Bag_Result_On_Conflict = {
+  constraint: Chaos_Bag_Result_Constraint;
+  update_columns: Array<Chaos_Bag_Result_Update_Column>;
+  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
 };
 
-/** Ordering options when selecting data from "chaos_bag_results". */
-export type Chaos_Bag_Results_Order_By = {
+/** Ordering options when selecting data from "chaos_bag_result". */
+export type Chaos_Bag_Result_Order_By = {
   bless?: Maybe<Order_By>;
   campaign?: Maybe<Campaign_Order_By>;
-  campaign_id?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
   curse?: Maybe<Order_By>;
   drawn?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
   sealed?: Maybe<Order_By>;
   totalDrawn?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
 };
 
-/** primary key columns input for table: chaos_bag_results */
-export type Chaos_Bag_Results_Pk_Columns_Input = {
-  campaign_id: Scalars['Int'];
+/** primary key columns input for table: chaos_bag_result */
+export type Chaos_Bag_Result_Pk_Columns_Input = {
+  id: Scalars['Int'];
 };
 
 /** prepend existing jsonb value of filtered columns with new jsonb value */
-export type Chaos_Bag_Results_Prepend_Input = {
+export type Chaos_Bag_Result_Prepend_Input = {
   drawn?: Maybe<Scalars['jsonb']>;
   sealed?: Maybe<Scalars['jsonb']>;
 };
 
-/** select columns of table "chaos_bag_results" */
-export enum Chaos_Bag_Results_Select_Column {
+/** select columns of table "chaos_bag_result" */
+export enum Chaos_Bag_Result_Select_Column {
   /** column name */
   Bless = 'bless',
-  /** column name */
-  CampaignId = 'campaign_id',
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
   Curse = 'curse',
   /** column name */
   Drawn = 'drawn',
+  /** column name */
+  Id = 'id',
   /** column name */
   Sealed = 'sealed',
   /** column name */
@@ -2512,66 +2514,66 @@ export enum Chaos_Bag_Results_Select_Column {
   UpdatedAt = 'updated_at'
 }
 
-/** input type for updating data in table "chaos_bag_results" */
-export type Chaos_Bag_Results_Set_Input = {
+/** input type for updating data in table "chaos_bag_result" */
+export type Chaos_Bag_Result_Set_Input = {
   bless?: Maybe<Scalars['Int']>;
-  campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   curse?: Maybe<Scalars['Int']>;
   drawn?: Maybe<Scalars['jsonb']>;
+  id?: Maybe<Scalars['Int']>;
   sealed?: Maybe<Scalars['jsonb']>;
   totalDrawn?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregate stddev on columns */
-export type Chaos_Bag_Results_Stddev_Fields = {
-  __typename?: 'chaos_bag_results_stddev_fields';
+export type Chaos_Bag_Result_Stddev_Fields = {
+  __typename?: 'chaos_bag_result_stddev_fields';
   bless?: Maybe<Scalars['Float']>;
-  campaign_id?: Maybe<Scalars['Float']>;
   curse?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
   totalDrawn?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_pop on columns */
-export type Chaos_Bag_Results_Stddev_Pop_Fields = {
-  __typename?: 'chaos_bag_results_stddev_pop_fields';
+export type Chaos_Bag_Result_Stddev_Pop_Fields = {
+  __typename?: 'chaos_bag_result_stddev_pop_fields';
   bless?: Maybe<Scalars['Float']>;
-  campaign_id?: Maybe<Scalars['Float']>;
   curse?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
   totalDrawn?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_samp on columns */
-export type Chaos_Bag_Results_Stddev_Samp_Fields = {
-  __typename?: 'chaos_bag_results_stddev_samp_fields';
+export type Chaos_Bag_Result_Stddev_Samp_Fields = {
+  __typename?: 'chaos_bag_result_stddev_samp_fields';
   bless?: Maybe<Scalars['Float']>;
-  campaign_id?: Maybe<Scalars['Float']>;
   curse?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
   totalDrawn?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate sum on columns */
-export type Chaos_Bag_Results_Sum_Fields = {
-  __typename?: 'chaos_bag_results_sum_fields';
+export type Chaos_Bag_Result_Sum_Fields = {
+  __typename?: 'chaos_bag_result_sum_fields';
   bless?: Maybe<Scalars['Int']>;
-  campaign_id?: Maybe<Scalars['Int']>;
   curse?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
   totalDrawn?: Maybe<Scalars['Int']>;
 };
 
-/** update columns of table "chaos_bag_results" */
-export enum Chaos_Bag_Results_Update_Column {
+/** update columns of table "chaos_bag_result" */
+export enum Chaos_Bag_Result_Update_Column {
   /** column name */
   Bless = 'bless',
-  /** column name */
-  CampaignId = 'campaign_id',
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
   Curse = 'curse',
   /** column name */
   Drawn = 'drawn',
+  /** column name */
+  Id = 'id',
   /** column name */
   Sealed = 'sealed',
   /** column name */
@@ -2581,29 +2583,29 @@ export enum Chaos_Bag_Results_Update_Column {
 }
 
 /** aggregate var_pop on columns */
-export type Chaos_Bag_Results_Var_Pop_Fields = {
-  __typename?: 'chaos_bag_results_var_pop_fields';
+export type Chaos_Bag_Result_Var_Pop_Fields = {
+  __typename?: 'chaos_bag_result_var_pop_fields';
   bless?: Maybe<Scalars['Float']>;
-  campaign_id?: Maybe<Scalars['Float']>;
   curse?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
   totalDrawn?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate var_samp on columns */
-export type Chaos_Bag_Results_Var_Samp_Fields = {
-  __typename?: 'chaos_bag_results_var_samp_fields';
+export type Chaos_Bag_Result_Var_Samp_Fields = {
+  __typename?: 'chaos_bag_result_var_samp_fields';
   bless?: Maybe<Scalars['Float']>;
-  campaign_id?: Maybe<Scalars['Float']>;
   curse?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
   totalDrawn?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate variance on columns */
-export type Chaos_Bag_Results_Variance_Fields = {
-  __typename?: 'chaos_bag_results_variance_fields';
+export type Chaos_Bag_Result_Variance_Fields = {
+  __typename?: 'chaos_bag_result_variance_fields';
   bless?: Maybe<Scalars['Float']>;
-  campaign_id?: Maybe<Scalars['Float']>;
   curse?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
   totalDrawn?: Maybe<Scalars['Float']>;
 };
 
@@ -4640,10 +4642,10 @@ export type Mutation_Root = {
   delete_campaign_investigator?: Maybe<Campaign_Investigator_Mutation_Response>;
   /** delete single row from the table: "campaign_investigator" */
   delete_campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
-  /** delete data from the table: "chaos_bag_results" */
-  delete_chaos_bag_results?: Maybe<Chaos_Bag_Results_Mutation_Response>;
-  /** delete single row from the table: "chaos_bag_results" */
-  delete_chaos_bag_results_by_pk?: Maybe<Chaos_Bag_Results>;
+  /** delete data from the table: "chaos_bag_result" */
+  delete_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
+  /** delete single row from the table: "chaos_bag_result" */
+  delete_chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
   /** delete data from the table: "friend_status" */
   delete_friend_status?: Maybe<Friend_Status_Mutation_Response>;
   /** delete single row from the table: "friend_status" */
@@ -4704,10 +4706,10 @@ export type Mutation_Root = {
   insert_campaign_investigator_one?: Maybe<Campaign_Investigator>;
   /** insert a single row into the table: "campaign" */
   insert_campaign_one?: Maybe<Campaign>;
-  /** insert data into the table: "chaos_bag_results" */
-  insert_chaos_bag_results?: Maybe<Chaos_Bag_Results_Mutation_Response>;
-  /** insert a single row into the table: "chaos_bag_results" */
-  insert_chaos_bag_results_one?: Maybe<Chaos_Bag_Results>;
+  /** insert data into the table: "chaos_bag_result" */
+  insert_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
+  /** insert a single row into the table: "chaos_bag_result" */
+  insert_chaos_bag_result_one?: Maybe<Chaos_Bag_Result>;
   /** insert data into the table: "friend_status" */
   insert_friend_status?: Maybe<Friend_Status_Mutation_Response>;
   /** insert a single row into the table: "friend_status" */
@@ -4776,10 +4778,10 @@ export type Mutation_Root = {
   update_campaign_investigator?: Maybe<Campaign_Investigator_Mutation_Response>;
   /** update single row of the table: "campaign_investigator" */
   update_campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
-  /** update data of the table: "chaos_bag_results" */
-  update_chaos_bag_results?: Maybe<Chaos_Bag_Results_Mutation_Response>;
-  /** update single row of the table: "chaos_bag_results" */
-  update_chaos_bag_results_by_pk?: Maybe<Chaos_Bag_Results>;
+  /** update data of the table: "chaos_bag_result" */
+  update_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
+  /** update single row of the table: "chaos_bag_result" */
+  update_chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
   /** update data of the table: "friend_status" */
   update_friend_status?: Maybe<Friend_Status_Mutation_Response>;
   /** update single row of the table: "friend_status" */
@@ -4881,14 +4883,14 @@ export type Mutation_RootDelete_Campaign_Investigator_By_PkArgs = {
 
 
 /** mutation root */
-export type Mutation_RootDelete_Chaos_Bag_ResultsArgs = {
-  where: Chaos_Bag_Results_Bool_Exp;
+export type Mutation_RootDelete_Chaos_Bag_ResultArgs = {
+  where: Chaos_Bag_Result_Bool_Exp;
 };
 
 
 /** mutation root */
-export type Mutation_RootDelete_Chaos_Bag_Results_By_PkArgs = {
-  campaign_id: Scalars['Int'];
+export type Mutation_RootDelete_Chaos_Bag_Result_By_PkArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -5085,16 +5087,16 @@ export type Mutation_RootInsert_Campaign_OneArgs = {
 
 
 /** mutation root */
-export type Mutation_RootInsert_Chaos_Bag_ResultsArgs = {
-  objects: Array<Chaos_Bag_Results_Insert_Input>;
-  on_conflict?: Maybe<Chaos_Bag_Results_On_Conflict>;
+export type Mutation_RootInsert_Chaos_Bag_ResultArgs = {
+  objects: Array<Chaos_Bag_Result_Insert_Input>;
+  on_conflict?: Maybe<Chaos_Bag_Result_On_Conflict>;
 };
 
 
 /** mutation root */
-export type Mutation_RootInsert_Chaos_Bag_Results_OneArgs = {
-  object: Chaos_Bag_Results_Insert_Input;
-  on_conflict?: Maybe<Chaos_Bag_Results_On_Conflict>;
+export type Mutation_RootInsert_Chaos_Bag_Result_OneArgs = {
+  object: Chaos_Bag_Result_Insert_Input;
+  on_conflict?: Maybe<Chaos_Bag_Result_On_Conflict>;
 };
 
 
@@ -5355,28 +5357,28 @@ export type Mutation_RootUpdate_Campaign_Investigator_By_PkArgs = {
 
 
 /** mutation root */
-export type Mutation_RootUpdate_Chaos_Bag_ResultsArgs = {
-  _append?: Maybe<Chaos_Bag_Results_Append_Input>;
-  _delete_at_path?: Maybe<Chaos_Bag_Results_Delete_At_Path_Input>;
-  _delete_elem?: Maybe<Chaos_Bag_Results_Delete_Elem_Input>;
-  _delete_key?: Maybe<Chaos_Bag_Results_Delete_Key_Input>;
-  _inc?: Maybe<Chaos_Bag_Results_Inc_Input>;
-  _prepend?: Maybe<Chaos_Bag_Results_Prepend_Input>;
-  _set?: Maybe<Chaos_Bag_Results_Set_Input>;
-  where: Chaos_Bag_Results_Bool_Exp;
+export type Mutation_RootUpdate_Chaos_Bag_ResultArgs = {
+  _append?: Maybe<Chaos_Bag_Result_Append_Input>;
+  _delete_at_path?: Maybe<Chaos_Bag_Result_Delete_At_Path_Input>;
+  _delete_elem?: Maybe<Chaos_Bag_Result_Delete_Elem_Input>;
+  _delete_key?: Maybe<Chaos_Bag_Result_Delete_Key_Input>;
+  _inc?: Maybe<Chaos_Bag_Result_Inc_Input>;
+  _prepend?: Maybe<Chaos_Bag_Result_Prepend_Input>;
+  _set?: Maybe<Chaos_Bag_Result_Set_Input>;
+  where: Chaos_Bag_Result_Bool_Exp;
 };
 
 
 /** mutation root */
-export type Mutation_RootUpdate_Chaos_Bag_Results_By_PkArgs = {
-  _append?: Maybe<Chaos_Bag_Results_Append_Input>;
-  _delete_at_path?: Maybe<Chaos_Bag_Results_Delete_At_Path_Input>;
-  _delete_elem?: Maybe<Chaos_Bag_Results_Delete_Elem_Input>;
-  _delete_key?: Maybe<Chaos_Bag_Results_Delete_Key_Input>;
-  _inc?: Maybe<Chaos_Bag_Results_Inc_Input>;
-  _prepend?: Maybe<Chaos_Bag_Results_Prepend_Input>;
-  _set?: Maybe<Chaos_Bag_Results_Set_Input>;
-  pk_columns: Chaos_Bag_Results_Pk_Columns_Input;
+export type Mutation_RootUpdate_Chaos_Bag_Result_By_PkArgs = {
+  _append?: Maybe<Chaos_Bag_Result_Append_Input>;
+  _delete_at_path?: Maybe<Chaos_Bag_Result_Delete_At_Path_Input>;
+  _delete_elem?: Maybe<Chaos_Bag_Result_Delete_Elem_Input>;
+  _delete_key?: Maybe<Chaos_Bag_Result_Delete_Key_Input>;
+  _inc?: Maybe<Chaos_Bag_Result_Inc_Input>;
+  _prepend?: Maybe<Chaos_Bag_Result_Prepend_Input>;
+  _set?: Maybe<Chaos_Bag_Result_Set_Input>;
+  pk_columns: Chaos_Bag_Result_Pk_Columns_Input;
 };
 
 
@@ -5584,12 +5586,12 @@ export type Query_Root = {
   campaign_investigator_aggregate: Campaign_Investigator_Aggregate;
   /** fetch data from the table: "campaign_investigator" using primary key columns */
   campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
-  /** fetch data from the table: "chaos_bag_results" */
-  chaos_bag_results: Array<Chaos_Bag_Results>;
-  /** fetch aggregated fields from the table: "chaos_bag_results" */
-  chaos_bag_results_aggregate: Chaos_Bag_Results_Aggregate;
-  /** fetch data from the table: "chaos_bag_results" using primary key columns */
-  chaos_bag_results_by_pk?: Maybe<Chaos_Bag_Results>;
+  /** fetch data from the table: "chaos_bag_result" */
+  chaos_bag_result: Array<Chaos_Bag_Result>;
+  /** fetch aggregated fields from the table: "chaos_bag_result" */
+  chaos_bag_result_aggregate: Chaos_Bag_Result_Aggregate;
+  /** fetch data from the table: "chaos_bag_result" using primary key columns */
+  chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
   /** fetch data from the table: "friend_status" */
   friend_status: Array<Friend_Status>;
   /** fetch aggregated fields from the table: "friend_status" */
@@ -5782,26 +5784,26 @@ export type Query_RootCampaign_Investigator_By_PkArgs = {
 };
 
 
-export type Query_RootChaos_Bag_ResultsArgs = {
-  distinct_on?: Maybe<Array<Chaos_Bag_Results_Select_Column>>;
+export type Query_RootChaos_Bag_ResultArgs = {
+  distinct_on?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Chaos_Bag_Results_Order_By>>;
-  where?: Maybe<Chaos_Bag_Results_Bool_Exp>;
+  order_by?: Maybe<Array<Chaos_Bag_Result_Order_By>>;
+  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
 };
 
 
-export type Query_RootChaos_Bag_Results_AggregateArgs = {
-  distinct_on?: Maybe<Array<Chaos_Bag_Results_Select_Column>>;
+export type Query_RootChaos_Bag_Result_AggregateArgs = {
+  distinct_on?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Chaos_Bag_Results_Order_By>>;
-  where?: Maybe<Chaos_Bag_Results_Bool_Exp>;
+  order_by?: Maybe<Array<Chaos_Bag_Result_Order_By>>;
+  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
 };
 
 
-export type Query_RootChaos_Bag_Results_By_PkArgs = {
-  campaign_id: Scalars['Int'];
+export type Query_RootChaos_Bag_Result_By_PkArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -6088,12 +6090,12 @@ export type Subscription_Root = {
   campaign_investigator_aggregate: Campaign_Investigator_Aggregate;
   /** fetch data from the table: "campaign_investigator" using primary key columns */
   campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
-  /** fetch data from the table: "chaos_bag_results" */
-  chaos_bag_results: Array<Chaos_Bag_Results>;
-  /** fetch aggregated fields from the table: "chaos_bag_results" */
-  chaos_bag_results_aggregate: Chaos_Bag_Results_Aggregate;
-  /** fetch data from the table: "chaos_bag_results" using primary key columns */
-  chaos_bag_results_by_pk?: Maybe<Chaos_Bag_Results>;
+  /** fetch data from the table: "chaos_bag_result" */
+  chaos_bag_result: Array<Chaos_Bag_Result>;
+  /** fetch aggregated fields from the table: "chaos_bag_result" */
+  chaos_bag_result_aggregate: Chaos_Bag_Result_Aggregate;
+  /** fetch data from the table: "chaos_bag_result" using primary key columns */
+  chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
   /** fetch data from the table: "friend_status" */
   friend_status: Array<Friend_Status>;
   /** fetch aggregated fields from the table: "friend_status" */
@@ -6286,26 +6288,26 @@ export type Subscription_RootCampaign_Investigator_By_PkArgs = {
 };
 
 
-export type Subscription_RootChaos_Bag_ResultsArgs = {
-  distinct_on?: Maybe<Array<Chaos_Bag_Results_Select_Column>>;
+export type Subscription_RootChaos_Bag_ResultArgs = {
+  distinct_on?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Chaos_Bag_Results_Order_By>>;
-  where?: Maybe<Chaos_Bag_Results_Bool_Exp>;
+  order_by?: Maybe<Array<Chaos_Bag_Result_Order_By>>;
+  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
 };
 
 
-export type Subscription_RootChaos_Bag_Results_AggregateArgs = {
-  distinct_on?: Maybe<Array<Chaos_Bag_Results_Select_Column>>;
+export type Subscription_RootChaos_Bag_Result_AggregateArgs = {
+  distinct_on?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Chaos_Bag_Results_Order_By>>;
-  where?: Maybe<Chaos_Bag_Results_Bool_Exp>;
+  order_by?: Maybe<Array<Chaos_Bag_Result_Order_By>>;
+  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
 };
 
 
-export type Subscription_RootChaos_Bag_Results_By_PkArgs = {
-  campaign_id: Scalars['Int'];
+export type Subscription_RootChaos_Bag_Result_By_PkArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -7863,9 +7865,9 @@ export type IdDeckFragment = (
   & Pick<Campaign_Deck, 'id' | 'owner_id' | 'arkhamdb_id' | 'local_uuid' | 'campaign_id'>
 );
 
-export type FullChaosBagResultsFragment = (
-  { __typename?: 'chaos_bag_results' }
-  & Pick<Chaos_Bag_Results, 'campaign_id' | 'bless' | 'curse' | 'drawn' | 'sealed' | 'totalDrawn'>
+export type FullChaosBagResultFragment = (
+  { __typename?: 'chaos_bag_result' }
+  & Pick<Chaos_Bag_Result, 'id' | 'bless' | 'curse' | 'drawn' | 'sealed' | 'totalDrawn'>
 );
 
 export type MiniDeckFragment = (
@@ -8064,9 +8066,9 @@ export type GetCaosBagResultsQueryVariables = Exact<{
 
 export type GetCaosBagResultsQuery = (
   { __typename?: 'query_root' }
-  & { chaos_bag_results_by_pk?: Maybe<(
-    { __typename?: 'chaos_bag_results' }
-    & FullChaosBagResultsFragment
+  & { chaos_bag_result_by_pk?: Maybe<(
+    { __typename?: 'chaos_bag_result' }
+    & FullChaosBagResultFragment
   )> }
 );
 
@@ -8077,9 +8079,9 @@ export type GetChaosBagResultsQueryVariables = Exact<{
 
 export type GetChaosBagResultsQuery = (
   { __typename?: 'query_root' }
-  & { chaos_bag_results_by_pk?: Maybe<(
-    { __typename?: 'chaos_bag_results' }
-    & Pick<Chaos_Bag_Results, 'campaign_id' | 'bless' | 'curse' | 'drawn' | 'sealed' | 'totalDrawn'>
+  & { chaos_bag_result_by_pk?: Maybe<(
+    { __typename?: 'chaos_bag_result' }
+    & Pick<Chaos_Bag_Result, 'id' | 'bless' | 'curse' | 'drawn' | 'sealed' | 'totalDrawn'>
   )> }
 );
 
@@ -8139,9 +8141,9 @@ export type ChaosBagResultsSubscriptionVariables = Exact<{
 
 export type ChaosBagResultsSubscription = (
   { __typename?: 'subscription_root' }
-  & { chaos_bag_results_by_pk?: Maybe<(
-    { __typename?: 'chaos_bag_results' }
-    & FullChaosBagResultsFragment
+  & { chaos_bag_result_by_pk?: Maybe<(
+    { __typename?: 'chaos_bag_result' }
+    & FullChaosBagResultFragment
   )> }
 );
 
@@ -8204,9 +8206,9 @@ export type ChaosBagClearTokensMutationVariables = Exact<{
 
 export type ChaosBagClearTokensMutation = (
   { __typename?: 'mutation_root' }
-  & { update_chaos_bag_results_by_pk?: Maybe<(
-    { __typename?: 'chaos_bag_results' }
-    & Pick<Chaos_Bag_Results, 'campaign_id' | 'drawn' | 'bless' | 'curse'>
+  & { update_chaos_bag_result_by_pk?: Maybe<(
+    { __typename?: 'chaos_bag_result' }
+    & Pick<Chaos_Bag_Result, 'id' | 'drawn' | 'bless' | 'curse'>
   )> }
 );
 
@@ -8218,9 +8220,9 @@ export type ChaosBagDrawTokenMutationVariables = Exact<{
 
 export type ChaosBagDrawTokenMutation = (
   { __typename?: 'mutation_root' }
-  & { update_chaos_bag_results_by_pk?: Maybe<(
-    { __typename?: 'chaos_bag_results' }
-    & Pick<Chaos_Bag_Results, 'campaign_id' | 'drawn' | 'totalDrawn'>
+  & { update_chaos_bag_result_by_pk?: Maybe<(
+    { __typename?: 'chaos_bag_result' }
+    & Pick<Chaos_Bag_Result, 'id' | 'drawn' | 'totalDrawn'>
   )> }
 );
 
@@ -8233,9 +8235,9 @@ export type ChaosBagResetBlessCurseMutationVariables = Exact<{
 
 export type ChaosBagResetBlessCurseMutation = (
   { __typename?: 'mutation_root' }
-  & { update_chaos_bag_results_by_pk?: Maybe<(
-    { __typename?: 'chaos_bag_results' }
-    & Pick<Chaos_Bag_Results, 'campaign_id' | 'bless' | 'curse' | 'drawn' | 'sealed'>
+  & { update_chaos_bag_result_by_pk?: Maybe<(
+    { __typename?: 'chaos_bag_result' }
+    & Pick<Chaos_Bag_Result, 'id' | 'bless' | 'curse' | 'drawn' | 'sealed'>
   )> }
 );
 
@@ -8247,9 +8249,9 @@ export type ChaosBagSealTokensMutationVariables = Exact<{
 
 export type ChaosBagSealTokensMutation = (
   { __typename?: 'mutation_root' }
-  & { update_chaos_bag_results_by_pk?: Maybe<(
-    { __typename?: 'chaos_bag_results' }
-    & Pick<Chaos_Bag_Results, 'campaign_id' | 'sealed'>
+  & { update_chaos_bag_result_by_pk?: Maybe<(
+    { __typename?: 'chaos_bag_result' }
+    & Pick<Chaos_Bag_Result, 'id' | 'sealed'>
   )> }
 );
 
@@ -8260,9 +8262,9 @@ export type ChaosBagReleaseAllSealedMutationVariables = Exact<{
 
 export type ChaosBagReleaseAllSealedMutation = (
   { __typename?: 'mutation_root' }
-  & { update_chaos_bag_results_by_pk?: Maybe<(
-    { __typename?: 'chaos_bag_results' }
-    & Pick<Chaos_Bag_Results, 'campaign_id' | 'sealed'>
+  & { update_chaos_bag_result_by_pk?: Maybe<(
+    { __typename?: 'chaos_bag_result' }
+    & Pick<Chaos_Bag_Result, 'id' | 'sealed'>
   )> }
 );
 
@@ -8273,11 +8275,11 @@ export type ChaosBagIncBlessMutationVariables = Exact<{
 
 export type ChaosBagIncBlessMutation = (
   { __typename?: 'mutation_root' }
-  & { update_chaos_bag_results?: Maybe<(
-    { __typename?: 'chaos_bag_results_mutation_response' }
+  & { update_chaos_bag_result?: Maybe<(
+    { __typename?: 'chaos_bag_result_mutation_response' }
     & { returning: Array<(
-      { __typename?: 'chaos_bag_results' }
-      & Pick<Chaos_Bag_Results, 'campaign_id' | 'bless'>
+      { __typename?: 'chaos_bag_result' }
+      & Pick<Chaos_Bag_Result, 'id' | 'bless'>
     )> }
   )> }
 );
@@ -8289,11 +8291,11 @@ export type ChaosBagDecBlessMutationVariables = Exact<{
 
 export type ChaosBagDecBlessMutation = (
   { __typename?: 'mutation_root' }
-  & { update_chaos_bag_results?: Maybe<(
-    { __typename?: 'chaos_bag_results_mutation_response' }
+  & { update_chaos_bag_result?: Maybe<(
+    { __typename?: 'chaos_bag_result_mutation_response' }
     & { returning: Array<(
-      { __typename?: 'chaos_bag_results' }
-      & Pick<Chaos_Bag_Results, 'campaign_id' | 'bless'>
+      { __typename?: 'chaos_bag_result' }
+      & Pick<Chaos_Bag_Result, 'id' | 'bless'>
     )> }
   )> }
 );
@@ -8305,11 +8307,11 @@ export type ChaosBagIncCurseMutationVariables = Exact<{
 
 export type ChaosBagIncCurseMutation = (
   { __typename?: 'mutation_root' }
-  & { update_chaos_bag_results?: Maybe<(
-    { __typename?: 'chaos_bag_results_mutation_response' }
+  & { update_chaos_bag_result?: Maybe<(
+    { __typename?: 'chaos_bag_result_mutation_response' }
     & { returning: Array<(
-      { __typename?: 'chaos_bag_results' }
-      & Pick<Chaos_Bag_Results, 'campaign_id' | 'curse'>
+      { __typename?: 'chaos_bag_result' }
+      & Pick<Chaos_Bag_Result, 'id' | 'curse'>
     )> }
   )> }
 );
@@ -8321,11 +8323,11 @@ export type ChaosBagDecCurseMutationVariables = Exact<{
 
 export type ChaosBagDecCurseMutation = (
   { __typename?: 'mutation_root' }
-  & { update_chaos_bag_results?: Maybe<(
-    { __typename?: 'chaos_bag_results_mutation_response' }
+  & { update_chaos_bag_result?: Maybe<(
+    { __typename?: 'chaos_bag_result_mutation_response' }
     & { returning: Array<(
-      { __typename?: 'chaos_bag_results' }
-      & Pick<Chaos_Bag_Results, 'campaign_id' | 'curse'>
+      { __typename?: 'chaos_bag_result' }
+      & Pick<Chaos_Bag_Result, 'id' | 'curse'>
     )> }
   )> }
 );
@@ -8656,9 +8658,9 @@ export type RemoveCampaignInvestigatorMutation = (
   )> }
 );
 
-export const FullChaosBagResultsFragmentDoc = gql`
-    fragment FullChaosBagResults on chaos_bag_results {
-  campaign_id
+export const FullChaosBagResultFragmentDoc = gql`
+    fragment FullChaosBagResult on chaos_bag_result {
+  id
   bless
   curse
   drawn
@@ -9608,11 +9610,11 @@ export type GetCampaignAccessLazyQueryHookResult = ReturnType<typeof useGetCampa
 export type GetCampaignAccessQueryResult = Apollo.QueryResult<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>;
 export const GetCaosBagResultsDocument = gql`
     query getCaosBagResults($campaign_id: Int!) {
-  chaos_bag_results_by_pk(campaign_id: $campaign_id) {
-    ...FullChaosBagResults
+  chaos_bag_result_by_pk(id: $campaign_id) {
+    ...FullChaosBagResult
   }
 }
-    ${FullChaosBagResultsFragmentDoc}`;
+    ${FullChaosBagResultFragmentDoc}`;
 
 /**
  * __useGetCaosBagResultsQuery__
@@ -9643,8 +9645,8 @@ export type GetCaosBagResultsLazyQueryHookResult = ReturnType<typeof useGetCaosB
 export type GetCaosBagResultsQueryResult = Apollo.QueryResult<GetCaosBagResultsQuery, GetCaosBagResultsQueryVariables>;
 export const GetChaosBagResultsDocument = gql`
     query getChaosBagResults($campaign_id: Int!) {
-  chaos_bag_results_by_pk(campaign_id: $campaign_id) {
-    campaign_id
+  chaos_bag_result_by_pk(id: $campaign_id) {
+    id
     bless
     curse
     drawn
@@ -9782,11 +9784,11 @@ export type CampaignGuideSubscriptionHookResult = ReturnType<typeof useCampaignG
 export type CampaignGuideSubscriptionResult = Apollo.SubscriptionResult<CampaignGuideSubscription>;
 export const ChaosBagResultsDocument = gql`
     subscription chaosBagResults($campaign_id: Int!) {
-  chaos_bag_results_by_pk(campaign_id: $campaign_id) {
-    ...FullChaosBagResults
+  chaos_bag_result_by_pk(id: $campaign_id) {
+    ...FullChaosBagResult
   }
 }
-    ${FullChaosBagResultsFragmentDoc}`;
+    ${FullChaosBagResultFragmentDoc}`;
 
 /**
  * __useChaosBagResultsSubscription__
@@ -9906,11 +9908,11 @@ export type DeleteInvestigatorDecksMutationResult = Apollo.MutationResult<Delete
 export type DeleteInvestigatorDecksMutationOptions = Apollo.BaseMutationOptions<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>;
 export const ChaosBagClearTokensDocument = gql`
     mutation chaosBagClearTokens($campaign_id: Int!, $bless: Int!, $curse: Int!) {
-  update_chaos_bag_results_by_pk(
-    pk_columns: {campaign_id: $campaign_id}
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
     _set: {drawn: [], bless: $bless, curse: $curse}
   ) {
-    campaign_id
+    id
     drawn
     bless
     curse
@@ -9947,12 +9949,12 @@ export type ChaosBagClearTokensMutationResult = Apollo.MutationResult<ChaosBagCl
 export type ChaosBagClearTokensMutationOptions = Apollo.BaseMutationOptions<ChaosBagClearTokensMutation, ChaosBagClearTokensMutationVariables>;
 export const ChaosBagDrawTokenDocument = gql`
     mutation chaosBagDrawToken($campaign_id: Int!, $drawn: jsonb!) {
-  update_chaos_bag_results_by_pk(
-    pk_columns: {campaign_id: $campaign_id}
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
     _set: {drawn: $drawn}
     _inc: {totalDrawn: 1}
   ) {
-    campaign_id
+    id
     drawn
     totalDrawn
   }
@@ -9987,11 +9989,11 @@ export type ChaosBagDrawTokenMutationResult = Apollo.MutationResult<ChaosBagDraw
 export type ChaosBagDrawTokenMutationOptions = Apollo.BaseMutationOptions<ChaosBagDrawTokenMutation, ChaosBagDrawTokenMutationVariables>;
 export const ChaosBagResetBlessCurseDocument = gql`
     mutation chaosBagResetBlessCurse($campaign_id: Int!, $drawn: jsonb!, $sealed: jsonb!) {
-  update_chaos_bag_results_by_pk(
-    pk_columns: {campaign_id: $campaign_id}
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
     _set: {bless: 0, curse: 0, drawn: $drawn, sealed: $sealed}
   ) {
-    campaign_id
+    id
     bless
     curse
     drawn
@@ -10029,11 +10031,11 @@ export type ChaosBagResetBlessCurseMutationResult = Apollo.MutationResult<ChaosB
 export type ChaosBagResetBlessCurseMutationOptions = Apollo.BaseMutationOptions<ChaosBagResetBlessCurseMutation, ChaosBagResetBlessCurseMutationVariables>;
 export const ChaosBagSealTokensDocument = gql`
     mutation chaosBagSealTokens($campaign_id: Int!, $sealed: jsonb!) {
-  update_chaos_bag_results_by_pk(
-    pk_columns: {campaign_id: $campaign_id}
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
     _set: {sealed: $sealed}
   ) {
-    campaign_id
+    id
     sealed
   }
 }
@@ -10067,11 +10069,11 @@ export type ChaosBagSealTokensMutationResult = Apollo.MutationResult<ChaosBagSea
 export type ChaosBagSealTokensMutationOptions = Apollo.BaseMutationOptions<ChaosBagSealTokensMutation, ChaosBagSealTokensMutationVariables>;
 export const ChaosBagReleaseAllSealedDocument = gql`
     mutation chaosBagReleaseAllSealed($campaign_id: Int!) {
-  update_chaos_bag_results_by_pk(
-    pk_columns: {campaign_id: $campaign_id}
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
     _set: {sealed: []}
   ) {
-    campaign_id
+    id
     sealed
   }
 }
@@ -10104,12 +10106,12 @@ export type ChaosBagReleaseAllSealedMutationResult = Apollo.MutationResult<Chaos
 export type ChaosBagReleaseAllSealedMutationOptions = Apollo.BaseMutationOptions<ChaosBagReleaseAllSealedMutation, ChaosBagReleaseAllSealedMutationVariables>;
 export const ChaosBagIncBlessDocument = gql`
     mutation chaosBagIncBless($campaign_id: Int!) {
-  update_chaos_bag_results(
-    where: {campaign_id: {_eq: $campaign_id}, bless: {_lt: 10}}
+  update_chaos_bag_result(
+    where: {id: {_eq: $campaign_id}, bless: {_lt: 10}}
     _inc: {bless: 1}
   ) {
     returning {
-      campaign_id
+      id
       bless
     }
   }
@@ -10143,12 +10145,12 @@ export type ChaosBagIncBlessMutationResult = Apollo.MutationResult<ChaosBagIncBl
 export type ChaosBagIncBlessMutationOptions = Apollo.BaseMutationOptions<ChaosBagIncBlessMutation, ChaosBagIncBlessMutationVariables>;
 export const ChaosBagDecBlessDocument = gql`
     mutation chaosBagDecBless($campaign_id: Int!) {
-  update_chaos_bag_results(
-    where: {campaign_id: {_eq: $campaign_id}, bless: {_gt: 0}}
+  update_chaos_bag_result(
+    where: {id: {_eq: $campaign_id}, bless: {_gt: 0}}
     _inc: {bless: -1}
   ) {
     returning {
-      campaign_id
+      id
       bless
     }
   }
@@ -10182,12 +10184,12 @@ export type ChaosBagDecBlessMutationResult = Apollo.MutationResult<ChaosBagDecBl
 export type ChaosBagDecBlessMutationOptions = Apollo.BaseMutationOptions<ChaosBagDecBlessMutation, ChaosBagDecBlessMutationVariables>;
 export const ChaosBagIncCurseDocument = gql`
     mutation chaosBagIncCurse($campaign_id: Int!) {
-  update_chaos_bag_results(
-    where: {campaign_id: {_eq: $campaign_id}, curse: {_lt: 10}}
+  update_chaos_bag_result(
+    where: {id: {_eq: $campaign_id}, curse: {_lt: 10}}
     _inc: {curse: 1}
   ) {
     returning {
-      campaign_id
+      id
       curse
     }
   }
@@ -10221,12 +10223,12 @@ export type ChaosBagIncCurseMutationResult = Apollo.MutationResult<ChaosBagIncCu
 export type ChaosBagIncCurseMutationOptions = Apollo.BaseMutationOptions<ChaosBagIncCurseMutation, ChaosBagIncCurseMutationVariables>;
 export const ChaosBagDecCurseDocument = gql`
     mutation chaosBagDecCurse($campaign_id: Int!) {
-  update_chaos_bag_results(
-    where: {campaign_id: {_eq: $campaign_id}, curse: {_gt: 0}}
+  update_chaos_bag_result(
+    where: {id: {_eq: $campaign_id}, curse: {_gt: 0}}
     _inc: {curse: -1}
   ) {
     returning {
-      campaign_id
+      id
       curse
     }
   }

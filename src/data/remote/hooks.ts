@@ -173,10 +173,10 @@ export function useChaosBagResultsFromRemote(campaignId: CampaignId): ChaosBagRe
     }
   }, [user, campaignId, subscribeToMore]);
   return useMemo(() => {
-    if (!campaignId.serverId || !data?.chaos_bag_results_by_pk) {
+    if (!campaignId.serverId || !data?.chaos_bag_result_by_pk) {
       return undefined;
     }
-    return new ChaosBagResultsRemote(data.chaos_bag_results_by_pk);
+    return new ChaosBagResultsRemote(data.chaos_bag_result_by_pk);
   }, [campaignId, data]);
 }
 export function useDeckFromRemote(id: DeckId | undefined, fetch: boolean): LatestDeckT | undefined {

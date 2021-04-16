@@ -72,11 +72,11 @@ export function useCampaignDeck(id: DeckId | undefined, campaignId: CampaignId |
   const reduxDeck = useDeckFromRedux(id, campaignId);
   const remoteDeck = useCampaignDeckFromRemote(id, campaignId);
   return useMemo(() => {
-    if (!campaignId?.serverId || reduxDeck) {
+    if (!campaignId?.serverId || (!id?.local && reduxDeck)) {
       return reduxDeck;
     }
     return remoteDeck;
-  }, [remoteDeck, reduxDeck, campaignId]);
+  }, [remoteDeck, reduxDeck, campaignId, id]);
 }
 
 export function useDeck(id: DeckId | undefined, fetch?: boolean): LatestDeckT | undefined {

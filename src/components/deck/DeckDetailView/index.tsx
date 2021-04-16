@@ -539,7 +539,7 @@ function DeckDetailView({
     onValueChange: updateDeckName,
     value: name || '',
   });
-  const authedForEdits = deck?.local || arkhamDb;
+  const authedForEdits = !!deck?.local || arkhamDb;
   const editable = !!deckEdits?.editable && authedForEdits;
   const suggestArkhamDbLogin = !!deckEdits?.editable && !authedForEdits;
   const onEditPressed = useCallback(() => {

@@ -25,15 +25,15 @@ mutation chaosBagClearTokens(
   $bless: Int!,
   $curse: Int!
 ) {
-  update_chaos_bag_results_by_pk(
-    pk_columns: { campaign_id: $campaign_id }
+  update_chaos_bag_result_by_pk(
+    pk_columns: { id: $campaign_id }
     _set: {
       drawn: []
       bless: $bless
       curse: $curse
     }
   ) {
-    campaign_id
+    id
     drawn
     bless
     curse
@@ -44,8 +44,8 @@ mutation chaosBagDrawToken(
   $campaign_id: Int!,
   $drawn: jsonb!
 ) {
-  update_chaos_bag_results_by_pk(
-    pk_columns: { campaign_id: $campaign_id }
+  update_chaos_bag_result_by_pk(
+    pk_columns: { id: $campaign_id }
     _set: {
       drawn: $drawn
     }
@@ -53,7 +53,7 @@ mutation chaosBagDrawToken(
       totalDrawn: 1
     }
   ) {
-    campaign_id
+    id
     drawn
     totalDrawn
   }
@@ -64,8 +64,8 @@ mutation chaosBagResetBlessCurse(
   $drawn: jsonb!,
   $sealed: jsonb!
 ) {
-  update_chaos_bag_results_by_pk(
-    pk_columns: { campaign_id: $campaign_id }
+  update_chaos_bag_result_by_pk(
+    pk_columns: { id: $campaign_id }
     _set: {
       bless: 0
       curse: 0
@@ -73,7 +73,7 @@ mutation chaosBagResetBlessCurse(
       sealed: $sealed
     }
   ) {
-    campaign_id
+    id
     bless
     curse
     drawn
@@ -85,33 +85,33 @@ mutation chaosBagSealTokens(
   $campaign_id: Int!,
   $sealed: jsonb!
 ) {
-  update_chaos_bag_results_by_pk(
-    pk_columns: { campaign_id: $campaign_id }
+  update_chaos_bag_result_by_pk(
+    pk_columns: { id: $campaign_id }
     _set: {
       sealed: $sealed
     }
   ) {
-    campaign_id
+    id
     sealed
   }
 }
 
 mutation chaosBagReleaseAllSealed($campaign_id: Int!) {
-  update_chaos_bag_results_by_pk(
-    pk_columns: { campaign_id: $campaign_id }
+  update_chaos_bag_result_by_pk(
+    pk_columns: { id: $campaign_id }
     _set: {
       sealed: []
     }
   ) {
-    campaign_id
+    id
     sealed
   }
 }
 
 mutation chaosBagIncBless($campaign_id: Int!) {
-  update_chaos_bag_results(
+  update_chaos_bag_result(
     where: {
-      campaign_id: { _eq: $campaign_id }
+      id: { _eq: $campaign_id }
       bless: { _lt: 10 }
     }
     _inc: {
@@ -119,16 +119,16 @@ mutation chaosBagIncBless($campaign_id: Int!) {
     }
   ) {
     returning {
-    	campaign_id
+    	id
       bless
 	  }
   }
 }
 
 mutation chaosBagDecBless($campaign_id: Int!) {
-  update_chaos_bag_results(
+  update_chaos_bag_result(
     where: {
-      campaign_id: { _eq: $campaign_id }
+      id: { _eq: $campaign_id }
       bless: { _gt: 0 }
     }
     _inc: {
@@ -136,16 +136,16 @@ mutation chaosBagDecBless($campaign_id: Int!) {
     }
   ) {
     returning {
-    	campaign_id
+    	id
       bless
 	  }
   }
 }
 
 mutation chaosBagIncCurse($campaign_id: Int!) {
-  update_chaos_bag_results(
+  update_chaos_bag_result(
     where: {
-      campaign_id: { _eq: $campaign_id }
+      id: { _eq: $campaign_id }
       curse: { _lt: 10 }
     }
     _inc: {
@@ -153,16 +153,16 @@ mutation chaosBagIncCurse($campaign_id: Int!) {
     }
   ) {
     returning {
-    	campaign_id
+    	id
       curse
 	  }
   }
 }
 
 mutation chaosBagDecCurse($campaign_id: Int!) {
-  update_chaos_bag_results(
+  update_chaos_bag_result(
     where: {
-      campaign_id: { _eq: $campaign_id }
+      id: { _eq: $campaign_id }
       curse: { _gt: 0 }
     }
     _inc: {
@@ -170,7 +170,7 @@ mutation chaosBagDecCurse($campaign_id: Int!) {
     }
   ) {
     returning {
-    	campaign_id
+    	id
       curse
 	  }
   }

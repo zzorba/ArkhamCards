@@ -20,7 +20,7 @@ export function useDeckFromRedux(id: DeckId | undefined, campaignId?: CampaignId
   const getCampaign = useMemo(makeCampaignSelector, []);
   const reduxCampaign = useSelector((state: AppState) => campaignId ? getCampaign(state, campaignId.campaignId) : undefined);
 
-  return theDeck ? new LatestDeckRedux(theDeck, thePreviousDeck, reduxCampaign) : undefined;
+  return useMemo(() => theDeck ? new LatestDeckRedux(theDeck, thePreviousDeck, reduxCampaign) : undefined, [theDeck, thePreviousDeck, reduxCampaign]);
 }
 
 export function useCampaignGuideFromRedux(campaignId?: CampaignId): CampaignGuideStateT | undefined {

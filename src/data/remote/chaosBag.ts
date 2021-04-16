@@ -1,7 +1,7 @@
 import { SealedToken, UploadedCampaignId } from '@actions/types'
 import { useApolloClient } from '@apollo/client';
 import { ChaosTokenType } from '@app_constants';
-import { FullChaosBagResultsFragment, FullChaosBagResultsFragmentDoc, useChaosBagClearTokensMutation, useChaosBagDecBlessMutation, useChaosBagDecCurseMutation, useChaosBagDrawTokenMutation, useChaosBagIncBlessMutation, useChaosBagIncCurseMutation, useChaosBagReleaseAllSealedMutation, useChaosBagResetBlessCurseMutation, useChaosBagSealTokensMutation } from '@generated/graphql/apollo-schema'
+import { FullChaosBagResultFragment, FullChaosBagResultFragmentDoc, useChaosBagClearTokensMutation, useChaosBagDecBlessMutation, useChaosBagDecCurseMutation, useChaosBagDrawTokenMutation, useChaosBagIncBlessMutation, useChaosBagIncCurseMutation, useChaosBagReleaseAllSealedMutation, useChaosBagResetBlessCurseMutation, useChaosBagSealTokensMutation } from '@generated/graphql/apollo-schema'
 import { useCallback } from 'react';
 
 export interface ChaosBagActions {
@@ -31,9 +31,9 @@ export function useChaosBagActions(): ChaosBagActions {
     await clearTokensReq({
       optimisticResponse: {
         __typename: 'mutation_root',
-        update_chaos_bag_results_by_pk: {
-          __typename: 'chaos_bag_results',
-          campaign_id: campaignId.serverId,
+        update_chaos_bag_result_by_pk: {
+          __typename: 'chaos_bag_result',
+          id: campaignId.serverId,
           bless,
           curse,
           drawn: [],
@@ -51,10 +51,10 @@ export function useChaosBagActions(): ChaosBagActions {
   }, [clearTokensReq]);
 
   const adjustBlessCurse = useCallback(async(campaignId: UploadedCampaignId, type: 'bless' | 'curse', direction: 'inc' | 'dec') => {
-    const id = cache.identify({ __typename: 'chaos_bag_results', campaign_id: campaignId.serverId });
-    const existingCacheData = cache.readFragment<FullChaosBagResultsFragment>({
-      fragment: FullChaosBagResultsFragmentDoc,
-      fragmentName: 'FullChaosBagResults',
+    const id = cache.identify({ __typename: 'chaos_bag_result', id: campaignId.serverId });
+    const existingCacheData = cache.readFragment<FullChaosBagResultFragment>({
+      fragment: FullChaosBagResultFragmentDoc,
+      fragmentName: 'FullChaosBagResult',
       id,
     });
     if (type === 'bless') {
@@ -62,12 +62,12 @@ export function useChaosBagActions(): ChaosBagActions {
         await incBless({
           optimisticResponse: {
             __typename: 'mutation_root',
-            update_chaos_bag_results: {
-              __typename: 'chaos_bag_results_mutation_response',
+            update_chaos_bag_result: {
+              __typename: 'chaos_bag_result_mutation_response',
               returning: [
                 {
-                  __typename: 'chaos_bag_results',
-                  campaign_id: campaignId.serverId,
+                  __typename: 'chaos_bag_result',
+                  id: campaignId.serverId,
                   bless: Math.min((existingCacheData?.bless || 0) + 1, 10),
                 },
               ],
@@ -84,12 +84,12 @@ export function useChaosBagActions(): ChaosBagActions {
         await decBless({
           optimisticResponse: {
             __typename: 'mutation_root',
-            update_chaos_bag_results: {
-              __typename: 'chaos_bag_results_mutation_response',
+            update_chaos_bag_result: {
+              __typename: 'chaos_bag_result_mutation_response',
               returning: [
                 {
-                  __typename: 'chaos_bag_results',
-                  campaign_id: campaignId.serverId,
+                  __typename: 'chaos_bag_result',
+                  id: campaignId.serverId,
                   bless: Math.max((existingCacheData?.bless || 0) - 1, 0),
                 },
               ],
@@ -108,12 +108,12 @@ export function useChaosBagActions(): ChaosBagActions {
         await incCurse({
           optimisticResponse: {
             __typename: 'mutation_root',
-            update_chaos_bag_results: {
-              __typename: 'chaos_bag_results_mutation_response',
+            update_chaos_bag_result: {
+              __typename: 'chaos_bag_result_mutation_response',
               returning: [
                 {
-                  __typename: 'chaos_bag_results',
-                  campaign_id: campaignId.serverId,
+                  __typename: 'chaos_bag_result',
+                  id: campaignId.serverId,
                   curse: Math.min((existingCacheData?.curse || 0) + 1, 10),
                 },
               ],
@@ -130,12 +130,12 @@ export function useChaosBagActions(): ChaosBagActions {
         await decCurse({
           optimisticResponse: {
             __typename: 'mutation_root',
-            update_chaos_bag_results: {
-              __typename: 'chaos_bag_results_mutation_response',
+            update_chaos_bag_result: {
+              __typename: 'chaos_bag_result_mutation_response',
               returning: [
                 {
-                  __typename: 'chaos_bag_results',
-                  campaign_id: campaignId.serverId,
+                  __typename: 'chaos_bag_result',
+                  id: campaignId.serverId,
                   curse: Math.max((existingCacheData?.curse || 0) - 1, 0),
                 },
               ],
@@ -153,18 +153,18 @@ export function useChaosBagActions(): ChaosBagActions {
   }, [incBless, decBless, incCurse, decCurse, cache]);
 
   const drawToken = useCallback(async(campaignId: UploadedCampaignId, drawn: ChaosTokenType[]) => {
-    const id = cache.identify({ __typename: 'chaos_bag_results', campaign_id: campaignId.serverId });
-    const existingCacheData = cache.readFragment<FullChaosBagResultsFragment>({
-      fragment: FullChaosBagResultsFragmentDoc,
-      fragmentName: 'FullChaosBagResults',
+    const id = cache.identify({ __typename: 'chaos_bag_result', id: campaignId.serverId });
+    const existingCacheData = cache.readFragment<FullChaosBagResultFragment>({
+      fragment: FullChaosBagResultFragmentDoc,
+      fragmentName: 'FullChaosBagResult',
       id,
     });
     await drawTokenReq({
       optimisticResponse: {
         __typename: 'mutation_root',
-        update_chaos_bag_results_by_pk: {
-          __typename: 'chaos_bag_results',
-          campaign_id: campaignId.serverId,
+        update_chaos_bag_result_by_pk: {
+          __typename: 'chaos_bag_result',
+          id: campaignId.serverId,
           drawn,
           totalDrawn: (existingCacheData?.totalDrawn || 0) + 1,
         },
@@ -183,9 +183,9 @@ export function useChaosBagActions(): ChaosBagActions {
     await sealTokensReq({
       optimisticResponse: {
         __typename: 'mutation_root',
-        update_chaos_bag_results_by_pk: {
-          __typename: 'chaos_bag_results',
-          campaign_id: campaignId.serverId,
+        update_chaos_bag_result_by_pk: {
+          __typename: 'chaos_bag_result',
+          id: campaignId.serverId,
           sealed,
         },
       },
@@ -203,9 +203,9 @@ export function useChaosBagActions(): ChaosBagActions {
     await resetBlessCurseReq({
       optimisticResponse: {
         __typename: 'mutation_root',
-        update_chaos_bag_results_by_pk: {
-          __typename: 'chaos_bag_results',
-          campaign_id: campaignId.serverId,
+        update_chaos_bag_result_by_pk: {
+          __typename: 'chaos_bag_result',
+          id: campaignId.serverId,
           sealed,
           drawn,
           bless: 0,
@@ -227,9 +227,9 @@ export function useChaosBagActions(): ChaosBagActions {
     await releaseAllSealedReq({
       optimisticResponse: {
         __typename: 'mutation_root',
-        update_chaos_bag_results_by_pk: {
-          __typename: 'chaos_bag_results',
-          campaign_id: campaignId.serverId,
+        update_chaos_bag_result_by_pk: {
+          __typename: 'chaos_bag_result',
+          id: campaignId.serverId,
           sealed: [],
         },
       },
