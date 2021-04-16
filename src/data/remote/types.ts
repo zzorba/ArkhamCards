@@ -317,7 +317,6 @@ export class MiniDeckRemote implements MiniDeckT {
     this.investigator = deck.investigator;
     this.name = deck.content?.name || '';
     this.date_update = deck.content?.date_update || '';
-    console.log(deck);
     this.campaign_id = {
       campaignId: deck.campaign.uuid,
       serverId: deck.campaign.id,

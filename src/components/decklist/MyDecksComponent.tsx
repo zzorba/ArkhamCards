@@ -12,7 +12,6 @@ import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import useNetworkStatus from '@components/core/useNetworkStatus';
-import { CampaignId, Deck } from '@actions/types';
 import Card from '@data/types/Card';
 import DeckListComponent from '@components/decklist/DeckListComponent';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
@@ -27,9 +26,10 @@ import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import { useMyDecks } from '@data/hooks';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 interface OwnProps {
-  deckClicked: (deck: Deck, investigator: Card | undefined, campaign: CampaignId | undefined) => void;
+  deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
   onlyDecks?: MiniDeckT[];
   filterDeck?: (deck: MiniDeckT) => boolean;
   searchOptions?: SearchOptions;

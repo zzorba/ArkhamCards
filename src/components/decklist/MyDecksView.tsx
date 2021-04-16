@@ -5,7 +5,6 @@ import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigati
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { CampaignId, Deck, getDeckId } from '@actions/types';
 import Card from '@data/types/Card';
 import { iconsMap } from '@app/NavIcons';
 import { showDeckModal } from '@components/nav/helper';
@@ -18,6 +17,7 @@ import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { NavigationProps } from '@components/nav/types';
 import { useFlag, useNavigationButtonPressed } from '@components/core/hooks';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 function searchOptionsHeight(fontScale: number) {
   return 20 + (fontScale * 20 + 8) + 12;
@@ -51,8 +51,8 @@ function MyDecksView({ componentId }: NavigationProps) {
     }
   }, componentId, [showNewDeckDialog]);
 
-  const deckNavClicked = useCallback((deck: Deck, investigator: Card | undefined, campaignId: CampaignId | undefined) => {
-    showDeckModal(getDeckId(deck), deck, campaignId, colors, investigator);
+  const deckNavClicked = useCallback((deck: LatestDeckT, investigator: Card | undefined) => {
+    showDeckModal(deck.id, deck.deck, deck.campaign?.id, colors, investigator);
   }, [colors]);
 
   const searchOptionControls = useMemo(() => {

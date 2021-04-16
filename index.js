@@ -22,9 +22,9 @@ import createApolloClient from './src/data/apollo/createApolloClient';
 
 function MyProvider({ store: { redux, persistor, apollo }, children }) {
   return (
-    <ArkhamCardsAuthProvider>
-      <AppearanceProvider>
-        <Provider store={redux}>
+    <AppearanceProvider>
+      <Provider store={redux}>
+        <ArkhamCardsAuthProvider>
           <PersistGate loading={null} persistor={persistor}>
             <ApolloProvider client={apollo}>
               <LanguageProvider>
@@ -36,9 +36,9 @@ function MyProvider({ store: { redux, persistor, apollo }, children }) {
               </LanguageProvider>
             </ApolloProvider>
           </PersistGate>
-        </Provider>
-      </AppearanceProvider>
-    </ArkhamCardsAuthProvider>
+        </ArkhamCardsAuthProvider>
+      </Provider>
+    </AppearanceProvider>
   );
 }
 

@@ -83,7 +83,7 @@ export function useDeck(id: DeckId | undefined, fetch?: boolean): LatestDeckT | 
   const reduxDeck = useDeckFromRedux(id);
   const remoteDeck = useDeckFromRemote(id, fetch || false);
   return useMemo(() => {
-    if (!id?.serverId || reduxDeck) {
+    if (!id?.serverId || (!id.local && reduxDeck)) {
       return reduxDeck;
     }
     return remoteDeck;

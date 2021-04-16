@@ -35,12 +35,14 @@ import {
   UploadedDeck,
   SetUploadedDecksAction,
   UploadedCampaignId,
+  StartDeckEditAction,
 } from '@actions/types';
 import { login } from '@actions';
 import { saveDeck, loadDeck, upgradeDeck, newCustomDeck, UpgradeDeckResult, deleteDeck } from '@lib/authApi';
-import { AppState, getArkhamDbDecks, getDeckUploadedCampaigns, makeDeckSelector } from '@reducers/index';
+import { AppState, getArkhamDbDecks, getDeckUploadedCampaigns } from '@reducers/index';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { DeckActions, syncCampaignDecksFromArkhamDB } from '@data/remote/decks';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 export function setServerDecks(
   deckIds: {
@@ -613,17 +615,14 @@ export function updateDeckMeta(
   };
 }
 
-export function startDeckEdit(id: DeckId, initialMode?: 'upgrade' | 'edit'): ThunkAction<void, AppState, unknown, Action<string>> {
-  return (dispatch, getState): void => {
-    const deck = makeDeckSelector()(getState(), id);
-    if (deck) {
-      dispatch({
-        type: START_DECK_EDIT,
-        id,
-        deck,
-        mode: initialMode,
-      });
-    }
+export function startDeckEdit(id: DeckId, deck: LatestDeckT, initialMode?: 'upgrade' | 'edit'): ThunkAction<void, AppState, unknown, StartDeckEditAction> {
+  return (dispatch): void => {
+    dispatch({
+      type: START_DECK_EDIT,
+      id,
+      deck: deck.deck,
+      mode: initialMode,
+    });
   };
 }
 

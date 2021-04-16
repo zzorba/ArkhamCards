@@ -4,10 +4,8 @@ import { flatMap, map, omit } from 'lodash';
 import { CampaignId, DeckId, UploadedCampaignId } from '@actions/types';
 import {
   MiniCampaignFragment,
-  useGetMyCampaignsLazyQuery,
   useGetProfileQuery,
   useGetCampaignQuery,
-  useGetMyDecksLazyQuery,
   useGetCampaignGuideQuery,
   useGetCampaignAccessQuery,
   CampaignGuideDocument,
@@ -19,6 +17,8 @@ import {
   useGetLatestCampaignDeckQuery,
   useGetChaosBagResultsQuery,
   ChaosBagResultsDocument,
+  useGetMyDecksQuery,
+  useGetMyCampaignsQuery,
 } from '@generated/graphql/apollo-schema';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { FriendStatus } from './api';
@@ -38,19 +38,14 @@ import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 
 export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
   const { user, loading: userLoading } = useContext(ArkhamCardsAuthContext);
-  const [loadMyCampaigns, { data, loading: dataLoading, refetch }] = useGetMyCampaignsLazyQuery({
-    fetchPolicy: 'cache-and-network',
+  const { data, loading: dataLoading, refetch } = useGetMyCampaignsQuery({
+    variables: {
+      userId: user?.uid || '',
+    },
+    skip: !user,
+    fetchPolicy: 'cache-first',
     returnPartialData: true,
   });
-  useEffect(() => {
-    if (user) {
-      loadMyCampaigns({
-        variables: {
-          userId: user.uid,
-        },
-      });
-    }
-  }, [user, loadMyCampaigns]);
 
   const refresh = useCallback(() => {
     if (user && refetch) {
@@ -187,16 +182,17 @@ export function useChaosBagResultsFromRemote(campaignId: CampaignId): ChaosBagRe
 export function useDeckFromRemote(id: DeckId | undefined, fetch: boolean): LatestDeckT | undefined {
   const { data } = useGetLatestDeckQuery({
     variables: {
-      deckId: id?.serverId || 0 },
-    fetchPolicy: fetch ? 'cache-first' : 'cache-only',
+      deckId: id?.serverId || 0,
+    },
+    fetchPolicy: fetch ? 'cache-and-network' : 'cache-only',
     skip: !id?.serverId,
   });
 
   return useMemo(() => {
-    if (!id?.serverId) {
+    if (!id?.serverId || !data?.campaign_deck_by_pk) {
       return undefined;
     }
-    return data?.campaign_deck_by_pk ? new LatestDeckRemote(data.campaign_deck_by_pk) : undefined;
+    return new LatestDeckRemote(data.campaign_deck_by_pk);
   }, [data, id]);
 }
 
@@ -318,19 +314,14 @@ export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, (
   const { user, loading: userLoading } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
   const checkForSync = useRef(false);
-  const [loadMyDecks, { data, loading: dataLoading, refetch }] = useGetMyDecksLazyQuery({
-    fetchPolicy: 'cache-and-network',
-    returnPartialData: false,
+  const { data, loading: dataLoading, refetch } = useGetMyDecksQuery({
+    fetchPolicy: 'cache-first',
+    variables: {
+      userId: user?.uid || '',
+    },
+    skip: !user,
+    returnPartialData: true,
   });
-  useEffect(() => {
-    if (user) {
-      loadMyDecks({
-        variables: {
-          userId: user.uid,
-        },
-      });
-    }
-  }, [user, loadMyDecks]);
   const allDecks = data?.users_by_pk?.all_decks;
   useEffect(() => {
     if (allDecks) {
@@ -379,7 +370,7 @@ export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, (
       return new MiniDeckRemote(deck);
     });
   }, [rawDecks]);
-  return [deckIds, userLoading || dataLoading, refresh];
+  return [deckIds, !!(user && !data) || userLoading || dataLoading, refresh];
 }
 
 export function useLatestDeckRemote(deckId: DeckId, campaign_id: CampaignId | undefined): LatestDeckT | undefined {

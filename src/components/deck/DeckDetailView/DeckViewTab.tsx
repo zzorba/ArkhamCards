@@ -1,6 +1,6 @@
 import React, { MutableRefObject, ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { filter, find, flatMap, flatten, forEach, map, sum, sumBy, uniqBy } from 'lodash';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { Text, ScrollView, StyleSheet, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { c, msgid, t } from 'ttag';
 
@@ -13,6 +13,7 @@ import {
   ParsedDeck,
   SplitCards,
 } from '@actions/types';
+import COLORS from '@styles/colors';
 import { showCard, showCardSwipe } from '@components/nav/helper';
 import DeckProgressComponent from '../DeckProgressComponent';
 import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
@@ -241,6 +242,7 @@ function bondedSections(
 
 interface Props {
   componentId: string;
+  suggestArkhamDbLogin: boolean;
   deck: Deck;
   investigatorFront?: Card;
   investigatorBack?: Card;
@@ -281,6 +283,7 @@ interface Props {
 export default function DeckViewTab(props: Props) {
   const {
     componentId,
+    suggestArkhamDbLogin,
     tabooSetId,
     cards,
     investigatorFront,
@@ -307,7 +310,7 @@ export default function DeckViewTab(props: Props) {
     deckEditsRef,
     mode,
   } = props;
-  const { backgroundStyle, colors } = useContext(StyleContext);
+  const { backgroundStyle, colors, shadow, typography } = useContext(StyleContext);
   const packInCollection = useSelector(getPacksInCollection);
   const [limitedSlots, toggleLimitedSlots] = useFlag(false);
   const investigator = useMemo(() => cards[deck.investigator_code], [cards, deck.investigator_code]);
@@ -656,6 +659,19 @@ export default function DeckViewTab(props: Props) {
 
   return (
     <ScrollView contentContainerStyle={backgroundStyle}>
+      { suggestArkhamDbLogin && (
+        <View opacity={0.95} style={[
+          styles.banner,
+          shadow.large,
+          space.paddingVerticalXs,
+          space.paddingSideS,
+          { backgroundColor: COLORS.red },
+        ]}>
+          <Text style={[space.paddingS, typography.small, typography.white]}>
+            {t`This appears to be one of your decks from ArkhamDB, however you are not currently logged in. If you wish to make edits, please login through the app settings.`}
+          </Text>
+        </View>
+      ) }
       { header }
       <View style={space.marginSideS}>
         { renderedData }
@@ -676,6 +692,9 @@ export default function DeckViewTab(props: Props) {
 }
 
 const styles = StyleSheet.create({
+  banner: {
+    width: '100%',
+  },
   headerWrapper: {
     position: 'relative',
   },

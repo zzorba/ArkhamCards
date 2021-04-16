@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import { EventEmitter } from 'events';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 
 import { ENABLE_ARKHAM_CARDS_ACCOUNT } from '@app_constants';
 import ArkhamCardsAuthContext from './ArkhamCardsAuthContext';
+import { useSelector } from 'react-redux';
+import { AppState } from '@reducers';
 
 interface Props {
   children: React.ReactNode;
@@ -29,7 +31,11 @@ interface State {
   loading: boolean;
 }
 export default function ArkhamCardsAuthProvider({ children }: Props) {
-  const [state, setState] = useState<State>({ user: currentUser, loading: currentUserLoading });
+  const arkhamDb = useSelector((state: AppState) => state.signedIn.status);
+  const [state, setState] = useState<State>({
+    user: currentUser,
+    loading: currentUserLoading,
+  });
   useEffect(() => {
     if (ENABLE_ARKHAM_CARDS_ACCOUNT) {
       const authUserChanged = (user: FirebaseAuthTypes.User | undefined) => {
@@ -76,8 +82,14 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
       };
     }
   }, []);
+  const context = useMemo(() => {
+    return {
+      ...state,
+      arkhamDb,
+    };
+  }, [state, arkhamDb])
   return (
-    <ArkhamCardsAuthContext.Provider value={state}>
+    <ArkhamCardsAuthContext.Provider value={context}>
       { children }
     </ArkhamCardsAuthContext.Provider>
   );

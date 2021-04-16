@@ -61,17 +61,15 @@ export function useDeckEdits(
 ): [EditDeckState | undefined, MutableRefObject<EditDeckState | undefined>] {
   const dispatch = useDispatch();
   const { user } = useContext(ArkhamCardsAuthContext);
-  const initialized = useRef(false);
   useEffect(() => {
-    if (!!initialDeck && id !== undefined && !initialized.current) {
-      initialized.current = true;
-      dispatch(startDeckEdit(id, initialMode));
+    if (initialDeck && id !== undefined) {
+      dispatch(startDeckEdit(id, initialDeck, initialMode));
       return function cleanup() {
         dispatch(finishDeckEdit(id));
       };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [!!initialDeck]);
+  }, [initialDeck]);
   const otherDeckEdits: EditDeckState | undefined = useMemo(() => {
     if (user && initialDeck?.owner?.id && user.uid !== initialDeck.owner.id) {
       return {

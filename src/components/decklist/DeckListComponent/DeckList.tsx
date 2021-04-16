@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import { Campaign, CampaignId, Deck } from '@actions/types';
+import { Campaign } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import Card from '@data/types/Card';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
@@ -17,6 +17,7 @@ import NewDeckListRow from './NewDeckListRow';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useLatestDeck } from '@data/hooks';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 interface Props {
   deckIds: MiniDeckT[];
@@ -27,7 +28,7 @@ interface Props {
   onRefresh?: () => void;
   refreshing?: boolean;
   onScroll: (...args: any[]) => void;
-  deckClicked: (deck: Deck, investigator: Card | undefined, campaign: CampaignId | undefined) => void;
+  deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
 }
 
 interface Item {
@@ -45,7 +46,7 @@ function DeckListItem({
   deckToCampaign,
 }: {
   deckId: MiniDeckT;
-  deckClicked: (deck: Deck, investigator: Card | undefined, campaignId: CampaignId | undefined) => void;
+  deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
   deckToCampaign?: { [uuid: string]: Campaign };
 }) {
   const { width } = useContext(StyleContext);

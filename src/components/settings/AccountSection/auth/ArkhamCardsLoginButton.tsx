@@ -347,7 +347,13 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
           <DeckButton thin color="red" icon="dismiss" title={t`Cancel`} onPress={backPressed} />
         </View>
         <View style={[styles.row, { flex: 1 }, space.paddingLeftS]}>
-          <DeckButton thin icon="check-thin" title={mode === 'create' ? t`Sign up` : t`Sign in`} onPress={submitEmail} loading={submitting} />
+          <DeckButton
+            thin
+            icon="check-thin"
+            title={mode === 'create' ? t`Sign up` : t`Sign in`}
+            onPress={submitEmail}
+            loading={submitting}
+          />
         </View>
       </View>
     </View>
@@ -538,16 +544,18 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   const createAccountPressed = useCallback(() => setMode('create'), [setMode]);
   const loginPressed = useCallback(() => setMode('login'), [setMode]);
   const resetDialog = useCallback(() => {
-    setMode(undefined);
-    setEmailLogin(false);
     if (setVisibleRef.current) {
       setVisibleRef.current(false);
     }
-  }, [setMode, setEmailLogin, setVisibleRef]);
+    setTimeout(() => {
+      setMode(undefined);
+      setEmailLogin(false);
+    }, 200);
+  }, [setMode, setEmailLogin]);
 
   const loginSucceeded = useCallback((user: FirebaseAuthTypes.UserCredential) => {
-    dispatch(arkhamCardsLogin(user.user.uid));
     resetDialog();
+    dispatch(arkhamCardsLogin(user.user.uid));
     showUploadDialog();
   }, [resetDialog, dispatch, showUploadDialog]);
 
@@ -632,9 +640,7 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
       onPress: resetDialog,
     },
   });
-  useEffect(() => {
-    setVisibleRef.current = setVisible;
-  }, [setVisible]);
+  setVisibleRef.current = setVisible;
   return (
     <View style={[space.paddingTopS, styles.wrapper]}>
       <DeckButton

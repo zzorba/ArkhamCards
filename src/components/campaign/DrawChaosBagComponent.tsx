@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, Pressable, TouchableWithoutFeedback, View, LayoutChangeEvent } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { cloneDeep, find, filter, shuffle, sumBy, reverse } from 'lodash';
+import { cloneDeep, find, filter, map, shuffle, sumBy, reverse } from 'lodash';
 import { jt, t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
 
@@ -64,7 +64,7 @@ function BlessCurseCounter({ type, value, min, inc, dec }: { type: 'bless' | 'cu
 
 function ReturnBlessCurseButton({ onPress }: { onPress: () => void }) {
   const { colors, typography } = useContext(StyleContext);
-  const doNotRemove = <Text style={{ color: colors.warn }}>{t`do not remove`}</Text>;
+  const doNotRemove = <Text key="do_not_remove" style={{ color: colors.warn }}>{t`do not remove`}</Text>;
   const [height, setHeight] = useState(40);
   const updateSize = useCallback((event: LayoutChangeEvent) => {
     setHeight(event.nativeEvent.layout.height);
@@ -126,7 +126,7 @@ export default function DrawChaosBagComponent({ campaignId, chaosBag, viewChaosB
     currentChaosBag.curse = chaosBagResults.curseTokens || 0;
 
     const drawnTokens = [...chaosBagResults.drawnTokens];
-    const sealedTokens = [...chaosBagResults.sealedTokens].map(token => token.icon);
+    const sealedTokens = map(chaosBagResults.sealedTokens, token => token.icon);
     const drawnAndSealedTokens = drawnTokens.concat(sealedTokens);
 
     drawnAndSealedTokens.forEach(function(token) {
@@ -185,7 +185,7 @@ export default function DrawChaosBagComponent({ campaignId, chaosBag, viewChaosB
   const drawnTokens = useMemo(() => {
     const drawnTokens = chaosBagResults.drawnTokens;
     if (drawnTokens.length > 1) {
-      return reverse(drawnTokens.slice(0, drawnTokens.length - 1).map(function(token, index) {
+      return reverse(map(drawnTokens.slice(0, drawnTokens.length - 1), (token, index) => {
         return (
           <View style={space.paddingSideXs} key={index}>
             <ChaosToken
@@ -215,7 +215,7 @@ export default function DrawChaosBagComponent({ campaignId, chaosBag, viewChaosB
   }, [dispatch, campaignId, actions, chaosBagResults]);
   const sealedTokens = useMemo(() => {
     const sealedTokens = chaosBagResults.sealedTokens;
-    return sealedTokens.map(token => {
+    return map(sealedTokens, token => {
       return (
         <View style={space.paddingXs} key={token.id}>
           <SealTokenButton
@@ -305,7 +305,7 @@ export default function DrawChaosBagComponent({ campaignId, chaosBag, viewChaosB
       return null;
     }
     return (
-      <ReturnBlessCurseButton onPress={handleClearTokensKeepBlessAndCursedPressed} />
+      <ReturnBlessCurseButton key="return" onPress={handleClearTokensKeepBlessAndCursedPressed} />
     );
   }, [chaosBagResults.drawnTokens, handleClearTokensKeepBlessAndCursedPressed]);
   return (
