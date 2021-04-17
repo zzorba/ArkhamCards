@@ -4000,13 +4000,34 @@ msgstr ""
 msgid "Access"
 msgstr ""
 
-msgid "Edit access"
-msgstr ""
-
 msgid "Later"
 msgstr ""
 
 msgid "Searching cards..."
+msgstr ""
+
+msgid ""
+"This appears to be one of your decks from ArkhamDB, however you are not "
+"currently logged in. If you wish to make edits, please login through the "
+"app settings."
+msgstr ""
+
+msgid "Leave campaign"
+msgstr ""
+
+msgid ""
+"Are you sure you want to leave this campaign?\n"
+"\n"
+"Your decks will be removed from the campaign, but you can rejoin it later."
+msgstr ""
+
+msgid "Leave"
+msgstr ""
+
+msgid "Edit players"
+msgstr ""
+
+msgid "View players"
 msgstr ""
 
 #, javascript-format
