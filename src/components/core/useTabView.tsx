@@ -51,7 +51,7 @@ export default function useTabView({ tabs, onTabChange, scrollEnabled }: Props):
 
   const renderTab = useCallback(({ route }: { route: { key: string } }) => {
     const tab = find(tabs, t => t.key === route.key);
-    return tab && tab.node;
+    return tab?.node;
   }, [tabs]);
 
   const routes: TabRoute[] = useMemo(() => map(tabs, tab => {
@@ -60,20 +60,14 @@ export default function useTabView({ tabs, onTabChange, scrollEnabled }: Props):
       title: tab.title,
     };
   }), [tabs]);
-  const navigationState = useMemo(() => {
-    return { index, routes };
-  }, [index, routes]);
-  const tabView = useMemo(() => {
-    return (
-      <TabView
-        renderTabBar={renderTabBar}
-        navigationState={navigationState}
-        renderScene={renderTab}
-        onIndexChange={onIndexChange}
-        initialLayout={{ width }}
-      />
-    );
-  }, [renderTab, navigationState, onIndexChange, renderTabBar, width]);
-
-  return [tabView, setIndex];
+  return [(
+    <TabView
+      key="tab"
+      renderTabBar={renderTabBar}
+      navigationState={{ index, routes }}
+      renderScene={renderTab}
+      onIndexChange={onIndexChange}
+      initialLayout={{ width }}
+    />
+  ), setIndex];
 }

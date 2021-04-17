@@ -231,7 +231,7 @@ export type campaign_avg_fieldsFieldPolicy = {
 	link_b_campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	link_campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaign_deckKeySpecifier = ('arkhamdb_id' | 'base' | 'campaign' | 'campaign_id' | 'content' | 'content_hash' | 'id' | 'investigator' | 'investigator_data' | 'local_uuid' | 'next_deck' | 'next_deck_id' | 'other_decks' | 'other_decks_aggregate' | 'owner' | 'owner_id' | 'previous_deck' | campaign_deckKeySpecifier)[];
+export type campaign_deckKeySpecifier = ('arkhamdb_id' | 'base' | 'campaign' | 'campaign_id' | 'content' | 'content_hash' | 'id' | 'investigator' | 'investigator_data' | 'local_uuid' | 'next_deck' | 'next_deck_id' | 'other_decks' | 'other_decks_aggregate' | 'owner' | 'owner_id' | 'previous_deck' | 'previous_decks' | 'previous_decks_aggregate' | 'updated_at' | campaign_deckKeySpecifier)[];
 export type campaign_deckFieldPolicy = {
 	arkhamdb_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	base?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -249,7 +249,10 @@ export type campaign_deckFieldPolicy = {
 	other_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	owner?: FieldPolicy<any> | FieldReadFunction<any>,
 	owner_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	previous_deck?: FieldPolicy<any> | FieldReadFunction<any>
+	previous_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	previous_decks?: FieldPolicy<any> | FieldReadFunction<any>,
+	previous_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type campaign_deck_aggregateKeySpecifier = ('aggregate' | 'nodes' | campaign_deck_aggregateKeySpecifier)[];
 export type campaign_deck_aggregateFieldPolicy = {
@@ -277,7 +280,7 @@ export type campaign_deck_avg_fieldsFieldPolicy = {
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaign_deck_max_fieldsKeySpecifier = ('arkhamdb_id' | 'campaign_id' | 'content_hash' | 'id' | 'investigator' | 'local_uuid' | 'next_deck_id' | 'owner_id' | campaign_deck_max_fieldsKeySpecifier)[];
+export type campaign_deck_max_fieldsKeySpecifier = ('arkhamdb_id' | 'campaign_id' | 'content_hash' | 'id' | 'investigator' | 'local_uuid' | 'next_deck_id' | 'owner_id' | 'updated_at' | campaign_deck_max_fieldsKeySpecifier)[];
 export type campaign_deck_max_fieldsFieldPolicy = {
 	arkhamdb_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -286,9 +289,10 @@ export type campaign_deck_max_fieldsFieldPolicy = {
 	investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	local_uuid?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	owner_id?: FieldPolicy<any> | FieldReadFunction<any>
+	owner_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaign_deck_min_fieldsKeySpecifier = ('arkhamdb_id' | 'campaign_id' | 'content_hash' | 'id' | 'investigator' | 'local_uuid' | 'next_deck_id' | 'owner_id' | campaign_deck_min_fieldsKeySpecifier)[];
+export type campaign_deck_min_fieldsKeySpecifier = ('arkhamdb_id' | 'campaign_id' | 'content_hash' | 'id' | 'investigator' | 'local_uuid' | 'next_deck_id' | 'owner_id' | 'updated_at' | campaign_deck_min_fieldsKeySpecifier)[];
 export type campaign_deck_min_fieldsFieldPolicy = {
 	arkhamdb_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -297,7 +301,8 @@ export type campaign_deck_min_fieldsFieldPolicy = {
 	investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	local_uuid?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	owner_id?: FieldPolicy<any> | FieldReadFunction<any>
+	owner_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type campaign_deck_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | campaign_deck_mutation_responseKeySpecifier)[];
 export type campaign_deck_mutation_responseFieldPolicy = {

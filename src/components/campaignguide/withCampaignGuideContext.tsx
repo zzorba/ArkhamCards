@@ -31,10 +31,12 @@ export default function withCampaignGuideContext<Props>(
     const deckActions = useDeckActions();
     const context = useCampaignGuideContext(campaignId, deckActions, updateCampaignActions, campaignData);
     if (!campaignData || !context) {
+      // console.log(`withCampaignGuideContext: campaignData-${!!campaignData}, context-${!!context}`);
       return (
         <LoadingSpinner />
       );
     }
+    // console.log(`withCampaignGuideContext: allGood`);
     return (
       <CampaignGuideContext.Provider value={context}>
         <WrappedComponent {...props as Props} setCampaignServerId={setCampaignServerId} />

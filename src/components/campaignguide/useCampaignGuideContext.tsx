@@ -297,6 +297,7 @@ export default function useCampaignGuideContext(
     }
   }, [user, campaign, campaignGuide, campaignId, dispatch, updateCampaignActions]);
   return useMemo(() => {
+    // console.log(`useCampaignGuideContext campaignId: ${JSON.stringify(campaignId)} campaign: ${!!campaign}, campaignGuide: ${!!campaignGuide}, campaignStateHelper: ${!!campaignStateHelper}, campaignInvestigators: ${!!campaignInvestigators}, cards: ${!!cards}`);
     if (!campaign || !campaignGuide || !campaignStateHelper || !cards || !campaignInvestigators) {
       return undefined;
     }

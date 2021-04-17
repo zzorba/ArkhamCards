@@ -19,6 +19,7 @@ interface Props {
   showDeckHistory?: () => void;
   tabooSetId?: number;
   singleCardView?: boolean;
+  showBaseDeck?: boolean
 }
 
 export default function DeckProgressComponent({
@@ -32,15 +33,16 @@ export default function DeckProgressComponent({
   showDeckHistory,
   tabooSetId,
   singleCardView,
+  showBaseDeck,
 }: Props) {
-  if (!deck.previousDeckId && !deck.nextDeckId && !editable && !title) {
+  if (!deck.previousDeckId && !deck.nextDeckId && !title && !editable) {
     return null;
   }
 
   // Actually compute the diffs.
   return (
     <View style={styles.container}>
-      { !!(deck.previousDeckId) && (
+      { (!!(deck.previousDeckId) || !!showBaseDeck) && (
         <ChangesFromPreviousDeck
           componentId={componentId}
           title={title}

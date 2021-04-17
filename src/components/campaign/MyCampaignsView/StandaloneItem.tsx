@@ -13,7 +13,7 @@ interface Props {
   onPress: (id: string, campaign: MiniCampaignT) => void;
 }
 
-export default function StandaloneItem({ campaign, onPress, scenarioName }: Props) {
+function StandaloneItem({ campaign, onPress, scenarioName }: Props) {
   const handleOnPress = useCallback(() => {
     onPress(campaign.uuid, campaign);
   }, [onPress, campaign]);
@@ -34,3 +34,5 @@ export default function StandaloneItem({ campaign, onPress, scenarioName }: Prop
   );
 }
 
+
+export default React.memo(StandaloneItem);

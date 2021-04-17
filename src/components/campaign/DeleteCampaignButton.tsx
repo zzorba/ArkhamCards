@@ -10,15 +10,16 @@ import { useDeleteCampaignRequest, useLeaveCampaignRequest } from '@data/remote/
 import { deleteCampaign } from './actions';
 import { s } from '@styles/space';
 import DeckButton from '@components/deck/controls/DeckButton';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 interface Props {
   componentId: string;
   campaignId: CampaignId;
-  campaignName: string;
+  campaign: SingleCampaignT | undefined;
   showAlert: ShowAlert;
 }
 
-export default function DeleteCampaignButton({ componentId, campaignId, campaignName, showAlert }: Props) {
+export default function DeleteCampaignButton({ componentId, campaignId, campaign, showAlert }: Props) {
   const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
   const deleteServerCampaign = useDeleteCampaignRequest();
@@ -31,6 +32,7 @@ export default function DeleteCampaignButton({ componentId, campaignId, campaign
     Navigation.pop(componentId);
   }, [dispatch, componentId, campaignId, deleteServerCampaign, user]);
   const confirmDeleteCampaign = useCallback(() => {
+    const campaignName = campaign?.name || '';
     showAlert(
       t`Delete`,
       t`Are you sure you want to delete the campaign: ${campaignName}`,
@@ -39,7 +41,7 @@ export default function DeleteCampaignButton({ componentId, campaignId, campaign
         { text: t`Delete`, onPress: actuallyDeleteCampaign, style: 'destructive' },
       ],
     );
-  }, [campaignName, actuallyDeleteCampaign, showAlert]);
+  }, [campaign, actuallyDeleteCampaign, showAlert]);
 
   const actuallyLeaveCampaign = useCallback(() => {
     if (campaignId.serverId) {
@@ -57,7 +59,7 @@ export default function DeleteCampaignButton({ componentId, campaignId, campaign
       ],
     );
   }, [actuallyLeaveCampaign, showAlert]);
-  if (user && campaignId.serverId) {
+  if (user && campaignId.serverId && campaign && user.uid !== campaign.owner_id) {
     return (
       <DeckButton
         icon="delete"

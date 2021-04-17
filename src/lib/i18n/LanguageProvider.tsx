@@ -19,6 +19,7 @@ export default function LanguageProvider({ children }: Props) {
     if (eventListener === null) {
       // We only want to listen to this once, hence the singleton pattern.
       eventListener = new EventEmitter();
+      eventListener.setMaxListeners(100);
       const callback = () => {
         currentSystemLang = getSystemLanguage();
         eventListener?.emit('langChange', currentSystemLang);

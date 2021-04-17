@@ -152,9 +152,7 @@ export function useDeckHistory(
   const reduxDeck = useDeckHistoryRedux(id);
   const remoteDeck = useDeckHistoryRemote(id, investigator, campaign);
   if (!id.serverId || (!id.local && reduxDeck.length)) {
-    console.log('redux history')
     return reduxDeck;
   }
-  console.log('remote history');
   return remoteDeck;
 }

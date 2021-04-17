@@ -946,6 +946,11 @@ export type Campaign_Deck = {
   owner_id: Scalars['String'];
   /** An object relationship */
   previous_deck?: Maybe<Campaign_Deck>;
+  /** An array relationship */
+  previous_decks: Array<Campaign_Deck>;
+  /** An aggregate relationship */
+  previous_decks_aggregate: Campaign_Deck_Aggregate;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 
@@ -967,6 +972,26 @@ export type Campaign_DeckOther_DecksArgs = {
 
 /** columns and relationships of "campaign_deck" */
 export type Campaign_DeckOther_Decks_AggregateArgs = {
+  distinct_on?: Maybe<Array<Campaign_Deck_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Campaign_Deck_Order_By>>;
+  where?: Maybe<Campaign_Deck_Bool_Exp>;
+};
+
+
+/** columns and relationships of "campaign_deck" */
+export type Campaign_DeckPrevious_DecksArgs = {
+  distinct_on?: Maybe<Array<Campaign_Deck_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Campaign_Deck_Order_By>>;
+  where?: Maybe<Campaign_Deck_Bool_Exp>;
+};
+
+
+/** columns and relationships of "campaign_deck" */
+export type Campaign_DeckPrevious_Decks_AggregateArgs = {
   distinct_on?: Maybe<Array<Campaign_Deck_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -1069,6 +1094,8 @@ export type Campaign_Deck_Bool_Exp = {
   owner?: Maybe<Users_Bool_Exp>;
   owner_id?: Maybe<String_Comparison_Exp>;
   previous_deck?: Maybe<Campaign_Deck_Bool_Exp>;
+  previous_decks?: Maybe<Campaign_Deck_Bool_Exp>;
+  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "campaign_deck" */
@@ -1122,6 +1149,8 @@ export type Campaign_Deck_Insert_Input = {
   owner?: Maybe<Users_Obj_Rel_Insert_Input>;
   owner_id?: Maybe<Scalars['String']>;
   previous_deck?: Maybe<Campaign_Deck_Obj_Rel_Insert_Input>;
+  previous_decks?: Maybe<Campaign_Deck_Arr_Rel_Insert_Input>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -1135,6 +1164,7 @@ export type Campaign_Deck_Max_Fields = {
   local_uuid?: Maybe<Scalars['String']>;
   next_deck_id?: Maybe<Scalars['Int']>;
   owner_id?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** order by max() on columns of table "campaign_deck" */
@@ -1147,6 +1177,7 @@ export type Campaign_Deck_Max_Order_By = {
   local_uuid?: Maybe<Order_By>;
   next_deck_id?: Maybe<Order_By>;
   owner_id?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -1160,6 +1191,7 @@ export type Campaign_Deck_Min_Fields = {
   local_uuid?: Maybe<Scalars['String']>;
   next_deck_id?: Maybe<Scalars['Int']>;
   owner_id?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** order by min() on columns of table "campaign_deck" */
@@ -1172,6 +1204,7 @@ export type Campaign_Deck_Min_Order_By = {
   local_uuid?: Maybe<Order_By>;
   next_deck_id?: Maybe<Order_By>;
   owner_id?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
 };
 
 /** response of any mutation on the table "campaign_deck" */
@@ -1215,6 +1248,8 @@ export type Campaign_Deck_Order_By = {
   owner?: Maybe<Users_Order_By>;
   owner_id?: Maybe<Order_By>;
   previous_deck?: Maybe<Campaign_Deck_Order_By>;
+  previous_decks_aggregate?: Maybe<Campaign_Deck_Aggregate_Order_By>;
+  updated_at?: Maybe<Order_By>;
 };
 
 /** primary key columns input for table: campaign_deck */
@@ -1248,7 +1283,9 @@ export enum Campaign_Deck_Select_Column {
   /** column name */
   NextDeckId = 'next_deck_id',
   /** column name */
-  OwnerId = 'owner_id'
+  OwnerId = 'owner_id',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 /** input type for updating data in table "campaign_deck" */
@@ -1263,6 +1300,7 @@ export type Campaign_Deck_Set_Input = {
   local_uuid?: Maybe<Scalars['String']>;
   next_deck_id?: Maybe<Scalars['Int']>;
   owner_id?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregate stddev on columns */
@@ -1354,7 +1392,9 @@ export enum Campaign_Deck_Update_Column {
   /** column name */
   NextDeckId = 'next_deck_id',
   /** column name */
-  OwnerId = 'owner_id'
+  OwnerId = 'owner_id',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 /** aggregate var_pop on columns */
@@ -7878,7 +7918,13 @@ export type DeleteLocalDeckMutationVariables = Exact<{
 
 export type DeleteLocalDeckMutation = (
   { __typename?: 'mutation_root' }
-  & { delete_campaign_deck?: Maybe<(
+  & { update_campaign_deck?: Maybe<(
+    { __typename?: 'campaign_deck_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'campaign_deck' }
+      & LatestDeckFragment
+    )> }
+  )>, delete_campaign_deck?: Maybe<(
     { __typename?: 'campaign_deck_mutation_response' }
     & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
     & { returning: Array<(
@@ -7900,7 +7946,13 @@ export type DeleteArkhamDbDeckMutationVariables = Exact<{
 
 export type DeleteArkhamDbDeckMutation = (
   { __typename?: 'mutation_root' }
-  & { delete_campaign_deck?: Maybe<(
+  & { update_campaign_deck?: Maybe<(
+    { __typename?: 'campaign_deck_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'campaign_deck' }
+      & LatestDeckFragment
+    )> }
+  )>, delete_campaign_deck?: Maybe<(
     { __typename?: 'campaign_deck_mutation_response' }
     & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
     & { returning: Array<(
@@ -7937,13 +7989,27 @@ export type GetMyDecksQuery = (
   )> }
 );
 
-export type GetLatestCampaignDeckQueryVariables = Exact<{
+export type GetLatestLocalDeckQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
-  id_exp: Campaign_Deck_Bool_Exp;
+  local_uuid: Scalars['String'];
 }>;
 
 
-export type GetLatestCampaignDeckQuery = (
+export type GetLatestLocalDeckQuery = (
+  { __typename?: 'query_root' }
+  & { campaign_deck: Array<(
+    { __typename?: 'campaign_deck' }
+    & LatestDeckFragment
+  )> }
+);
+
+export type GetLatestArkhamDbDeckQueryVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  arkhamdb_id: Scalars['Int'];
+}>;
+
+
+export type GetLatestArkhamDbDeckQuery = (
   { __typename?: 'query_root' }
   & { campaign_deck: Array<(
     { __typename?: 'campaign_deck' }
@@ -9155,8 +9221,7 @@ export type InsertNewDeckMutationOptions = Apollo.BaseMutationOptions<InsertNewD
 export const InsertNextLocalDeckDocument = gql`
     mutation insertNextLocalDeck($previous_local_uuid: String, $local_uuid: String, $campaign_id: Int!, $investigator: String!, $content: jsonb!, $content_hash: String!, $userId: String!) {
   insert_campaign_deck_one(
-    object: {local_uuid: $previous_local_uuid, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId, next_deck: {data: {local_uuid: $local_uuid, campaign_id: $campaign_id, investigator: $investigator, content: $content, content_hash: $content_hash, owner_id: $userId}}}
-    on_conflict: {constraint: deck_local_uuid_campaign_id_key, update_columns: [next_deck_id]}
+    object: {local_uuid: $local_uuid, arkhamdb_id: null, campaign_id: $campaign_id, investigator: $investigator, content: $content, content_hash: $content_hash, owner_id: $userId, previous_decks: {data: {local_uuid: $previous_local_uuid, arkhamdb_id: null, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId}, on_conflict: {constraint: deck_local_uuid_campaign_id_key, update_columns: [next_deck_id]}}}
   ) {
     ...IdDeck
     investigator
@@ -9202,8 +9267,7 @@ export type InsertNextLocalDeckMutationOptions = Apollo.BaseMutationOptions<Inse
 export const InsertNextArkhamDbDeckDocument = gql`
     mutation insertNextArkhamDbDeck($previous_arkhamdb_id: Int!, $arkhamdb_id: Int!, $campaign_id: Int!, $investigator: String!, $content: jsonb!, $content_hash: String!, $userId: String!) {
   insert_campaign_deck_one(
-    object: {arkhamdb_id: $previous_arkhamdb_id, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId, next_deck: {data: {arkhamdb_id: $arkhamdb_id, campaign_id: $campaign_id, investigator: $investigator, content: $content, content_hash: $content_hash, owner_id: $userId}}}
-    on_conflict: {constraint: deck_arkhamdb_id_campaign_id_key, update_columns: [next_deck_id]}
+    object: {arkhamdb_id: $previous_arkhamdb_id, local_uuid: null, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId, previous_decks: {data: {arkhamdb_id: $arkhamdb_id, local_uuid: null, campaign_id: $campaign_id, investigator: $investigator, content: $content, content_hash: $content_hash, owner_id: $userId}, on_conflict: {constraint: deck_arkhamdb_id_campaign_id_key, update_columns: [next_deck_id]}}}
   ) {
     ...IdDeck
     investigator
@@ -9414,6 +9478,14 @@ export type DeleteAllArkhamDbDecksMutationResult = Apollo.MutationResult<DeleteA
 export type DeleteAllArkhamDbDecksMutationOptions = Apollo.BaseMutationOptions<DeleteAllArkhamDbDecksMutation, DeleteAllArkhamDbDecksMutationVariables>;
 export const DeleteLocalDeckDocument = gql`
     mutation deleteLocalDeck($local_uuid: String!, $campaign_id: Int!) {
+  update_campaign_deck(
+    where: {next_deck: {local_uuid: {_eq: $local_uuid}, campaign_id: {_eq: $campaign_id}}}
+    _delete_key: {content: "nextDeckId"}
+  ) {
+    returning {
+      ...LatestDeck
+    }
+  }
   delete_campaign_deck(
     where: {local_uuid: {_eq: $local_uuid}, campaign_id: {_eq: $campaign_id}}
   ) {
@@ -9426,8 +9498,8 @@ export const DeleteLocalDeckDocument = gql`
     }
   }
 }
-    ${IdDeckFragmentDoc}
-${LatestDeckFragmentDoc}`;
+    ${LatestDeckFragmentDoc}
+${IdDeckFragmentDoc}`;
 export type DeleteLocalDeckMutationFn = Apollo.MutationFunction<DeleteLocalDeckMutation, DeleteLocalDeckMutationVariables>;
 
 /**
@@ -9457,6 +9529,14 @@ export type DeleteLocalDeckMutationResult = Apollo.MutationResult<DeleteLocalDec
 export type DeleteLocalDeckMutationOptions = Apollo.BaseMutationOptions<DeleteLocalDeckMutation, DeleteLocalDeckMutationVariables>;
 export const DeleteArkhamDbDeckDocument = gql`
     mutation deleteArkhamDbDeck($arkhamdb_id: Int!, $campaign_id: Int!) {
+  update_campaign_deck(
+    where: {next_deck: {arkhamdb_id: {_eq: $arkhamdb_id}, campaign_id: {_eq: $campaign_id}}}
+    _delete_key: {content: "nextDeckId"}
+  ) {
+    returning {
+      ...LatestDeck
+    }
+  }
   delete_campaign_deck(
     where: {arkhamdb_id: {_eq: $arkhamdb_id}, campaign_id: {_eq: $campaign_id}}
   ) {
@@ -9469,8 +9549,8 @@ export const DeleteArkhamDbDeckDocument = gql`
     }
   }
 }
-    ${IdDeckFragmentDoc}
-${LatestDeckFragmentDoc}`;
+    ${LatestDeckFragmentDoc}
+${IdDeckFragmentDoc}`;
 export type DeleteArkhamDbDeckMutationFn = Apollo.MutationFunction<DeleteArkhamDbDeckMutation, DeleteArkhamDbDeckMutationVariables>;
 
 /**
@@ -9542,42 +9622,82 @@ export function useGetMyDecksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type GetMyDecksQueryHookResult = ReturnType<typeof useGetMyDecksQuery>;
 export type GetMyDecksLazyQueryHookResult = ReturnType<typeof useGetMyDecksLazyQuery>;
 export type GetMyDecksQueryResult = Apollo.QueryResult<GetMyDecksQuery, GetMyDecksQueryVariables>;
-export const GetLatestCampaignDeckDocument = gql`
-    query getLatestCampaignDeck($campaign_id: Int!, $id_exp: campaign_deck_bool_exp!) {
-  campaign_deck(where: {_and: [{campaign_id: {_eq: $campaign_id}}, $id_exp]}) {
+export const GetLatestLocalDeckDocument = gql`
+    query getLatestLocalDeck($campaign_id: Int!, $local_uuid: String!) {
+  campaign_deck(
+    where: {campaign_id: {_eq: $campaign_id}, local_uuid: {_eq: $local_uuid}}
+  ) {
     ...LatestDeck
   }
 }
     ${LatestDeckFragmentDoc}`;
 
 /**
- * __useGetLatestCampaignDeckQuery__
+ * __useGetLatestLocalDeckQuery__
  *
- * To run a query within a React component, call `useGetLatestCampaignDeckQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetLatestCampaignDeckQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetLatestLocalDeckQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLatestLocalDeckQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetLatestCampaignDeckQuery({
+ * const { data, loading, error } = useGetLatestLocalDeckQuery({
  *   variables: {
  *      campaign_id: // value for 'campaign_id'
- *      id_exp: // value for 'id_exp'
+ *      local_uuid: // value for 'local_uuid'
  *   },
  * });
  */
-export function useGetLatestCampaignDeckQuery(baseOptions: Apollo.QueryHookOptions<GetLatestCampaignDeckQuery, GetLatestCampaignDeckQueryVariables>) {
+export function useGetLatestLocalDeckQuery(baseOptions: Apollo.QueryHookOptions<GetLatestLocalDeckQuery, GetLatestLocalDeckQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetLatestCampaignDeckQuery, GetLatestCampaignDeckQueryVariables>(GetLatestCampaignDeckDocument, options);
+        return Apollo.useQuery<GetLatestLocalDeckQuery, GetLatestLocalDeckQueryVariables>(GetLatestLocalDeckDocument, options);
       }
-export function useGetLatestCampaignDeckLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLatestCampaignDeckQuery, GetLatestCampaignDeckQueryVariables>) {
+export function useGetLatestLocalDeckLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLatestLocalDeckQuery, GetLatestLocalDeckQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetLatestCampaignDeckQuery, GetLatestCampaignDeckQueryVariables>(GetLatestCampaignDeckDocument, options);
+          return Apollo.useLazyQuery<GetLatestLocalDeckQuery, GetLatestLocalDeckQueryVariables>(GetLatestLocalDeckDocument, options);
         }
-export type GetLatestCampaignDeckQueryHookResult = ReturnType<typeof useGetLatestCampaignDeckQuery>;
-export type GetLatestCampaignDeckLazyQueryHookResult = ReturnType<typeof useGetLatestCampaignDeckLazyQuery>;
-export type GetLatestCampaignDeckQueryResult = Apollo.QueryResult<GetLatestCampaignDeckQuery, GetLatestCampaignDeckQueryVariables>;
+export type GetLatestLocalDeckQueryHookResult = ReturnType<typeof useGetLatestLocalDeckQuery>;
+export type GetLatestLocalDeckLazyQueryHookResult = ReturnType<typeof useGetLatestLocalDeckLazyQuery>;
+export type GetLatestLocalDeckQueryResult = Apollo.QueryResult<GetLatestLocalDeckQuery, GetLatestLocalDeckQueryVariables>;
+export const GetLatestArkhamDbDeckDocument = gql`
+    query getLatestArkhamDbDeck($campaign_id: Int!, $arkhamdb_id: Int!) {
+  campaign_deck(
+    where: {campaign_id: {_eq: $campaign_id}, arkhamdb_id: {_eq: $arkhamdb_id}}
+  ) {
+    ...LatestDeck
+  }
+}
+    ${LatestDeckFragmentDoc}`;
+
+/**
+ * __useGetLatestArkhamDbDeckQuery__
+ *
+ * To run a query within a React component, call `useGetLatestArkhamDbDeckQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLatestArkhamDbDeckQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetLatestArkhamDbDeckQuery({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      arkhamdb_id: // value for 'arkhamdb_id'
+ *   },
+ * });
+ */
+export function useGetLatestArkhamDbDeckQuery(baseOptions: Apollo.QueryHookOptions<GetLatestArkhamDbDeckQuery, GetLatestArkhamDbDeckQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetLatestArkhamDbDeckQuery, GetLatestArkhamDbDeckQueryVariables>(GetLatestArkhamDbDeckDocument, options);
+      }
+export function useGetLatestArkhamDbDeckLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLatestArkhamDbDeckQuery, GetLatestArkhamDbDeckQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetLatestArkhamDbDeckQuery, GetLatestArkhamDbDeckQueryVariables>(GetLatestArkhamDbDeckDocument, options);
+        }
+export type GetLatestArkhamDbDeckQueryHookResult = ReturnType<typeof useGetLatestArkhamDbDeckQuery>;
+export type GetLatestArkhamDbDeckLazyQueryHookResult = ReturnType<typeof useGetLatestArkhamDbDeckLazyQuery>;
+export type GetLatestArkhamDbDeckQueryResult = Apollo.QueryResult<GetLatestArkhamDbDeckQuery, GetLatestArkhamDbDeckQueryVariables>;
 export const GetLatestDeckDocument = gql`
     query getLatestDeck($deckId: Int!) {
   campaign_deck_by_pk(id: $deckId) {

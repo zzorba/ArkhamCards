@@ -19,6 +19,8 @@ import {
   AllDeckFragmentDoc,
   LatestDeckFragment,
   LatestDeckFragmentDoc,
+  UserInfoFragment,
+  UserInfoFragmentDoc,
 } from '@generated/graphql/apollo-schema';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { ApolloCache, useApolloClient } from '@apollo/client';
@@ -95,6 +97,17 @@ interface DeckCache {
   all: { [id: number]: RemoteDeckInfo | undefined };
   local: { [uuid: string]: RemoteDeckInfo | undefined };
   arkhamDb: { [arkhamDbId: number]: RemoteDeckInfo | undefined };
+}
+
+function getUserHandle(cache: ApolloCache<unknown>, user: FirebaseAuthTypes.User): string | undefined {
+  return cache.readFragment<UserInfoFragment>({
+    fragment: UserInfoFragmentDoc,
+    fragmentName: 'UserInfo',
+    id: cache.identify({
+      __typename: 'users',
+      id: user.uid,
+    }),
+  })?.handle || undefined;
 }
 
 function getDeckCache(cache: ApolloCache<unknown>, user: FirebaseAuthTypes.User | undefined): DeckCache {
@@ -280,7 +293,6 @@ export function useDeckActions(): DeckActions {
     }
 
     if (deckId.local) {
-
       await deleteLocalDeck({
         optimisticResponse: {
           __typename: 'mutation_root',
@@ -432,6 +444,7 @@ export function useDeckActions(): DeckActions {
     if (!user) {
       throw new Error('No user');
     }
+    const handle = getUserHandle(cache.current, user);
     const deckId = getDeckId(deck);
     const content_hash = await hashDeck(deck);
     const variables = {
@@ -453,8 +466,12 @@ export function useDeckActions(): DeckActions {
           investigator: deck.investigator_code,
           owner_id: user.uid,
           owner: {
+            __typename: 'users',
             id: user.uid,
+            handle,
           },
+          previous_deck: null,
+          investigator_data: null,
           content: deck,
           content_hash,
           campaign: {
@@ -487,6 +504,7 @@ export function useDeckActions(): DeckActions {
     if (!user) {
       throw new Error('No user');
     }
+    const handle = getUserHandle(cache.current, user);
     const deckId = getDeckId(deck);
     const content_hash = await hashDeck(deck);
     const variables = {
@@ -517,7 +535,9 @@ export function useDeckActions(): DeckActions {
               investigator: deck.investigator_code,
               owner_id: user.uid,
               owner: {
+                __typename: 'users',
                 id: user.uid,
+                handle,
               },
               content: deck,
               content_hash,
@@ -543,7 +563,7 @@ export function useDeckActions(): DeckActions {
     }
 
     if (previousDeckId.local || deck.local) {
-      throw new Error(`Can't mix remove and local decks`);
+      throw new Error(`Can't mix remote and local decks`);
     }
     const response = await createNextArkhamDbDeck({
       optimisticResponse: {
@@ -565,7 +585,9 @@ export function useDeckActions(): DeckActions {
             investigator: deck.investigator_code,
             owner_id: user.uid,
             owner: {
+              __typename: 'users',
               id: user.uid,
+              handle,
             },
             content: deck,
             content_hash,

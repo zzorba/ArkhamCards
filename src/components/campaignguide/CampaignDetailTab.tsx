@@ -96,7 +96,6 @@ export default function CampaignDetailTab({
   }, [processedCampaign, campaignState]);
 
   const { showTraumaDialog, traumaDialog } = useTraumaDialog(updateTrauma, true);
-
   const chaosBagDisabled = useMemo(() => !keys(processedCampaign.campaignLog.chaosBag).length, [processedCampaign.campaignLog.chaosBag]);
   const allInvestigators = useMemo(() => filter(campaignInvestigators, investigator => !processedCampaign.campaignLog.isEliminated(investigator)), [campaignInvestigators, processedCampaign.campaignLog]);
   const [chaosBagDialog, showChaosBag] = useChaosBagDialog({

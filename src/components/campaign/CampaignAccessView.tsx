@@ -49,8 +49,9 @@ export default function EditCampaignAccessView({ campaignId, isOwner, componentI
   const toFeed = useCallback((isSelf: boolean, profile?: UserProfile) => {
     const feed: FriendFeedItem[] = [];
     if (campaignAccess) {
-      feed.push({ type: 'header', header: t`Campaign players` });
+      feed.push({ id: 'campaign_players_header', type: 'header', header: t`Campaign players` });
       feed.push({
+        id: 'owner',
         type: 'user',
         user: campaignAccess.owner,
       });
@@ -58,6 +59,7 @@ export default function EditCampaignAccessView({ campaignId, isOwner, componentI
       if (otherPlayers.length) {
         forEach(otherPlayers, u => {
           feed.push({
+            id: `player-${u.id}`,
             type: 'user',
             user: u,
             controls: u.id !== user?.uid && isOwner ? {
@@ -71,10 +73,11 @@ export default function EditCampaignAccessView({ campaignId, isOwner, componentI
       }
       const accessUsers = new Set(map(campaignAccess.access, u => u.id));
       if (find(profile?.friends || [], u => !accessUsers.has(u.id))) {
-        feed.push({ type: 'header', header: t`Add friends to campaign` });
+        feed.push({ id: 'add_friends', type: 'header', header: t`Add friends to campaign` });
         forEach(profile?.friends || [], u => {
           if (!accessUsers.has(u.id)) {
             feed.push({
+              id: `friends-${u.id}`,
               type: 'user',
               user: u,
               controls: {
@@ -91,6 +94,7 @@ export default function EditCampaignAccessView({ campaignId, isOwner, componentI
       // Loading?
     }
     feed.push({
+      id: 'add_friends',
       type: 'button',
       title: t`Add friends`,
       icon: 'expand',

@@ -34,21 +34,25 @@ interface CampaignAccessControls {
 export type UserControls = FriendControls | CampaignAccessControls;
 
 interface UserItem {
+  id: string;
   type: 'user';
   user: SimpleUser;
   controls?: UserControls;
 }
 interface HeaderItem {
+  id: string;
   type: 'header';
   header: string;
 }
 interface ButtonItem {
+  id: string;
   type: 'button';
   icon: ArkhamButtonIconType;
   title: string;
   onPress: () => void;
 }
 interface PlaceholderItem {
+  id: string;
   type: 'placeholder';
   text: string;
 }
@@ -56,16 +60,7 @@ interface PlaceholderItem {
 export type FriendFeedItem = UserItem | HeaderItem | ButtonItem | PlaceholderItem;
 
 function itemKey(item: FriendFeedItem): string {
-  switch (item.type) {
-    case 'user':
-      return item.user.id;
-    case 'header':
-      return item.header;
-    case 'button':
-      return item.title;
-    case 'placeholder':
-      return item.text;
-  }
+  return item.id;
 }
 
 function FriendControlsComponent({ user, status, refetchMyProfile, acceptRequest, rejectRequest }: {

@@ -55,7 +55,6 @@ export default function DeckHistoryView({
       return [];
     });
   }, [id, deckHistory, cards, deckEdits]);
-
   const deckTitle = useCallback((deck: ParsedDeck, versionNumber: number): string => {
     if (!deck.changes) {
       return t`Original Deck`;
@@ -92,7 +91,7 @@ export default function DeckHistoryView({
     <ScrollView contentContainerStyle={[backgroundStyle, space.paddingSideS]}>
       { map(historicDecks, (deck, idx) => (
         <DeckProgressComponent
-          key={deck.id.uuid}
+          key={idx}
           title={deckTitle(deck, historicDecks.length - idx)}
           onTitlePress={idx === 0 ? undefined : onDeckPress}
           componentId={componentId}
@@ -100,6 +99,7 @@ export default function DeckHistoryView({
           parsedDeck={deck}
           cards={cards}
           editable={false}
+          showBaseDeck
         />
       )) }
     </ScrollView>

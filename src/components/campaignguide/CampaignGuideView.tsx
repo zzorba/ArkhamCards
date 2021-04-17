@@ -78,7 +78,7 @@ function CampaignGuideView(props: Props) {
         <DeleteCampaignButton
           componentId={componentId}
           campaignId={campaignId}
-          campaignName={campaign.name || ''}
+          campaign={campaign}
           showAlert={showAlert}
         />
       </View>

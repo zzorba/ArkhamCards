@@ -69,6 +69,8 @@ function DeckListItem({
   );
 }
 
+const MemoDeckListItem = React.memo(DeckListItem);
+
 export default function DeckList({
   deckIds, header, searchTerm, refreshing, deckToCampaign,
   footer, onRefresh, onScroll, deckClicked,
@@ -96,7 +98,7 @@ export default function DeckList({
     item: Item;
   }) => {
     return (
-      <DeckListItem
+      <MemoDeckListItem
         key={deckId.id.uuid}
         deckId={deckId}
         deckClicked={deckClicked}

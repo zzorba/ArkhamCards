@@ -1,5 +1,5 @@
 import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES, SealedToken } from '@actions/types';
-import { uniq, concat, flatMap, sumBy, find, findLast, maxBy, map, last, forEach, findLastIndex } from 'lodash';
+import { sortBy, uniq, concat, flatMap, sumBy, find, findLast, maxBy, map, last, forEach, findLastIndex } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
 import { FullCampaignFragment, LatestDeckFragment, MiniCampaignFragment, Guide_Input, FullCampaignGuideStateFragment, FullChaosBagResultFragment } from '@generated/graphql/apollo-schema';
@@ -123,7 +123,6 @@ export class MiniLinkedCampaignRemote extends MiniCampaignRemote {
     this.investigatorDataB = fragmentToInvestigatorData(campaignB);
     this.updatedAtA = new Date(Date.parse(campaignA.updated_at));
     this.updatedAtB = new Date(Date.parse(campaignB.updated_at));
-
     this.investigators = uniq(
       concat(
         this.investigators,
@@ -140,7 +139,7 @@ export class MiniLinkedCampaignRemote extends MiniCampaignRemote {
       last(this.campaignB.scenarioResults || []) || undefined
     );
     this.updatedAt = maxBy(
-      [super.updatedAt, this.updatedAtA, this.updatedAtB],
+      [this.updatedAt, this.updatedAtA, this.updatedAtB],
       d => d.getTime()
     ) as Date;
     this.linked = {
@@ -230,7 +229,7 @@ export class CampaignGuideStateRemote implements CampaignGuideStateT {
   constructor(guide: FullCampaignGuideStateFragment) {
     this.guide = guide;
     this.guideUpdatedAt = new Date(Date.parse(guide.updated_at));
-    this.inputs = map(this.guide.guide_inputs, unpackGuideInput);
+    this.inputs = map(sortBy(this.guide.guide_inputs, i => i.created_at), unpackGuideInput);
   }
 
   undoInputs(scenarioId: string) {
@@ -336,7 +335,7 @@ export class LatestDeckRemote extends MiniDeckRemote implements LatestDeckT {
       handle: deck.owner.handle || undefined,
       id: deck.owner.id,
     };
-    this.deck = deck.content;
+    this.deck = deck.content || {};
     this.previousDeck = deck.previous_deck?.content;
     this.campaign = deck.campaign?.name ? {
       id: {

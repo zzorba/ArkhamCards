@@ -143,6 +143,14 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
     onRefresh && onRefresh();
     setTimeout(() => setRefreshing(false), 1000);
   }, [setRefreshing, onRefresh]);
+  const data = useMemo(() => {
+    return map(campaigns, campaign => {
+      return {
+        key: campaign.uuid,
+        campaign,
+      };
+    });
+  }, [campaigns]);
   return (
     <FlatList
       contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
@@ -156,12 +164,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
         />
       ) : undefined}
       onScroll={onScroll}
-      data={map(campaigns, campaign => {
-        return {
-          key: campaign.uuid,
-          campaign,
-        };
-      })}
+      data={data}
       renderItem={renderItem}
       ListHeaderComponent={header}
       ListFooterComponent={footer}

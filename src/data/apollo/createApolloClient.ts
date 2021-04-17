@@ -31,6 +31,16 @@ const typePolicies: TypedTypePolicies = {
           return incoming;
         },
       },
+      investigators: {
+        merge(existing, incoming) {
+          return incoming;
+        },
+      },
+      investigator_data: {
+        merge(existing, incoming) {
+          return incoming;
+        },
+      },
     },
   },
   chaos_bag_result: {

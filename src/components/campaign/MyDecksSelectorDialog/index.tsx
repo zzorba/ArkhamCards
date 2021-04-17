@@ -236,13 +236,13 @@ function MyDecksSelectorDialog(props: Props) {
       return true;
     }
     if (hideOtherCampaignDecks && deck.campaign_id) {
-      return deck.campaign_id.campaignId === campaignId.campaignId;
+      return !deck.campaign_id.campaignId;
     }
     if (find(filterInvestigators, deck.investigator)) {
       return false;
     }
     return true;
-  }, [singleInvestigator, onlyShowSelected, filterInvestigators, hideOtherCampaignDecks, campaignId]);
+  }, [singleInvestigator, onlyShowSelected, filterInvestigators, hideOtherCampaignDecks]);
 
   const deckTab = useMemo(() => (
     <DeckSelectorTab

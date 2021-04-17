@@ -14,7 +14,8 @@ import {
   LatestDeckFragmentDoc,
   LatestDeckFragment,
   useGetLatestDeckQuery,
-  useGetLatestCampaignDeckQuery,
+  useGetLatestLocalDeckQuery,
+  useGetLatestArkhamDbDeckQuery,
   useGetChaosBagResultsQuery,
   ChaosBagResultsDocument,
   useGetMyDecksQuery,
@@ -45,8 +46,8 @@ export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
       userId: user?.uid || '',
     },
     skip: !user,
-    fetchPolicy: 'cache-first',
-    returnPartialData: true,
+    fetchPolicy: 'cache-and-network',
+    returnPartialData: false,
   });
 
   const refresh = useCallback(() => {
@@ -82,6 +83,7 @@ export function useCampaignGuideStateRemote(campaignId: CampaignId | undefined, 
     variables: { campaign_id: campaignId?.serverId || 0 },
     fetchPolicy: live ? 'cache-first' : 'cache-only',
     skip: (!user || !campaignId?.serverId),
+    returnPartialData: false,
   });
 
   useEffect(() => {
@@ -135,25 +137,33 @@ export function useCampaignRemote(campaignId: CampaignId | undefined, live?: boo
 
 
 export function useCampaignDeckFromRemote(id: DeckId | undefined, campaignId: CampaignId | undefined): LatestDeckT | undefined {
-  const { data } = useGetLatestCampaignDeckQuery({
+  const { data: localData } = useGetLatestLocalDeckQuery({
     variables: {
       campaign_id: campaignId?.serverId || 0,
-      id_exp: id?.id ? {
-        arkhamdb_id: { _eq: id.id },
-      } : {
-        local_uuid: { _eq: id?.uuid || '' },
-      },
+      local_uuid: id?.local ? id.uuid : '',
     },
-    fetchPolicy: 'cache-first',
-    skip: !campaignId?.serverId || !id,
+    fetchPolicy: 'cache-and-network',
+    skip: !campaignId?.serverId || !id?.local,
+  });
+  const { data: arkhamDbData } = useGetLatestArkhamDbDeckQuery({
+    variables: {
+      campaign_id: campaignId?.serverId || 0,
+      arkhamdb_id: (id && !id.local) ? id.id : 0,
+    },
+    fetchPolicy: 'cache-and-network',
+    skip: !campaignId?.serverId || !!(id && !id.local),
   });
 
   return useMemo(() => {
-    if (!campaignId?.serverId) {
+    if (!id || !campaignId?.serverId) {
       return undefined;
     }
-    return data?.campaign_deck?.length ? new LatestDeckRemote(data.campaign_deck[0]) : undefined;
-  }, [data, campaignId]);
+    const data = id.local ? localData : arkhamDbData;
+    if (!data?.campaign_deck?.length) {
+      return undefined;
+    }
+    return new LatestDeckRemote(data.campaign_deck[0]);
+  }, [localData, arkhamDbData, id, campaignId]);
 }
 
 export function useChaosBagResultsFromRemote(campaignId: CampaignId): ChaosBagResultsT | undefined {
@@ -181,6 +191,7 @@ export function useChaosBagResultsFromRemote(campaignId: CampaignId): ChaosBagRe
     return new ChaosBagResultsRemote(data.chaos_bag_result_by_pk);
   }, [campaignId, data]);
 }
+
 export function useDeckFromRemote(id: DeckId | undefined, fetch: boolean): LatestDeckT | undefined {
   const { data } = useGetLatestDeckQuery({
     variables: {
@@ -317,16 +328,16 @@ export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, (
   const dispatch = useDispatch();
   const checkForSync = useRef(false);
   const { data, loading: dataLoading, refetch } = useGetMyDecksQuery({
-    fetchPolicy: 'cache-first',
+    fetchPolicy: 'cache-and-network',
     variables: {
       userId: user?.uid || '',
     },
     skip: !user,
-    returnPartialData: true,
+    returnPartialData: false,
   });
   const allDecks = data?.users_by_pk?.all_decks;
   useEffect(() => {
-    if (allDecks) {
+    if (allDecks && !checkForSync.current) {
       const uploadDecks = map(allDecks, i => {
         const deckId: DeckId = i.arkhamdb_id ? {
           id: i.arkhamdb_id,
@@ -348,15 +359,16 @@ export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, (
           },
         };
       });
+      // console.log(`Syncing AllDecks: ${JSON.stringify(map(allDecks, d => `${d.id} - ${d.investigator}`))}`);
       dispatch(setServerDecks(uploadDecks, actions, checkForSync.current));
-      checkForSync.current = false;
+      checkForSync.current = true;
     }
+    // console.log(`AllDecks changed: ${JSON.stringify(map(allDecks, d => `${d.id} - ${d.investigator}`))}`);
   }, [allDecks, actions, dispatch])
 
   const refresh = useCallback(() => {
     if (user && refetch) {
-      checkForSync.current = true;
-      console.log('refetching decks remote');
+      checkForSync.current = false;
       refetch({ userId: user.uid });
     }
   }, [refetch, user]);
@@ -411,7 +423,6 @@ export function useDeckHistoryRemote(id: DeckId, investigator: string, campaign:
     if (!id.serverId || !campaign?.id.serverId || !data?.campaign_deck.length) {
       return undefined;
     }
-    console.log(data.campaign_deck);
     const decksById: {
       [id: string]: HistoryDeckFragment;
     } = {};

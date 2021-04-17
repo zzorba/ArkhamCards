@@ -47,6 +47,7 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
       if (eventListener === null) {
         // We only want to listen to this once, hence the singleton pattern.
         eventListener = new EventEmitter();
+        eventListener.setMaxListeners(100);
         eventListener.addListener('onAuthStateChanged', authUserChanged);
         const callback = async(user: FirebaseAuthTypes.User | null) => {
           currentUserLoading = false;
