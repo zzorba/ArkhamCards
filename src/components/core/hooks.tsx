@@ -602,7 +602,7 @@ export function useInterval(callback: () => void, delay: number) {
     return () => clearInterval(id);
   }, [delay]);
 }
-
+/*
 export function useWhyDidYouUpdate<T>(name: string, props: T) {
   // Get a mutable ref object where we can store props ...
   // ... for comparison next time this hook runs.
@@ -636,3 +636,4 @@ export function useWhyDidYouUpdate<T>(name: string, props: T) {
     previousProps.current = props;
   });
 }
+*/

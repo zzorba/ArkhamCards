@@ -615,13 +615,14 @@ export function updateDeckMeta(
   };
 }
 
-export function startDeckEdit(id: DeckId, deck: LatestDeckT, initialMode?: 'upgrade' | 'edit'): ThunkAction<void, AppState, unknown, StartDeckEditAction> {
+export function startDeckEdit(id: DeckId, deck: LatestDeckT, editable: boolean, initialMode: undefined | 'upgrade' | 'edit'): ThunkAction<void, AppState, unknown, StartDeckEditAction> {
   return (dispatch): void => {
     dispatch({
       type: START_DECK_EDIT,
       id,
       deck: deck.deck,
       mode: initialMode,
+      editable,
     });
   };
 }

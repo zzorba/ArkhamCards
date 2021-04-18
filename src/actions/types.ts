@@ -695,6 +695,7 @@ export interface StartDeckEditAction {
   id: DeckId;
   deck?: Deck;
   mode?: 'edit' | 'upgrade' | 'view';
+  editable: boolean;
 }
 
 export const UPDATE_DECK_EDIT = 'UPDATE_DECK_EDIT';

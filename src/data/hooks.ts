@@ -16,6 +16,7 @@ import { refreshMyDecks } from '@actions';
 import { DeckActions } from './remote/decks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import MiniDeckT from './interfaces/MiniDeckT';
+import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 
 export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => void)] {
   const { user } = useContext(ArkhamCardsAuthContext);
@@ -67,31 +68,39 @@ export function useCampaignInvestigators(campaign: undefined | SingleCampaignT, 
   }, [campaignInvestigators, investigators]);
 }
 
+function shouldUseReduxDeck(id: DeckId, user: FirebaseAuthTypes.User | undefined, reduxDeck: LatestDeckT | undefined, remoteDeck: LatestDeckT | undefined) {
+  return (!id.local && reduxDeck) && (!user || !remoteDeck || !remoteDeck.owner || user.uid === remoteDeck.owner.id);
+}
 
 export function useCampaignDeck(id: DeckId | undefined, campaignId: CampaignId | undefined): LatestDeckT | undefined {
+  const { user } = useContext(ArkhamCardsAuthContext);
   const reduxDeck = useDeckFromRedux(id, campaignId);
   const remoteDeck = useCampaignDeckFromRemote(id, campaignId);
   return useMemo(() => {
-    if (!campaignId?.serverId || (!id?.local && reduxDeck)) {
+    if (!id) {
+      return undefined;
+    }
+    if (!campaignId?.serverId || shouldUseReduxDeck(id, user, reduxDeck, remoteDeck)) {
       return reduxDeck;
     }
     return remoteDeck;
-  }, [remoteDeck, reduxDeck, campaignId, id]);
+  }, [remoteDeck, reduxDeck, user, campaignId, id]);
 }
 
 export function useDeck(id: DeckId | undefined, fetch?: boolean): LatestDeckT | undefined {
+  const { user } = useContext(ArkhamCardsAuthContext);
   const reduxDeck = useDeckFromRedux(id);
   const remoteDeck = useDeckFromRemote(id, fetch || false);
   return useMemo(() => {
     if (!id) {
       return undefined;
     }
-    if (!id.serverId || (!id.local && reduxDeck)) {
+    if (!id.serverId || shouldUseReduxDeck(id, user, reduxDeck, remoteDeck)) {
       // Server/ArkhamDB decks should use the local cache.
       return reduxDeck;
     }
     return remoteDeck;
-  }, [remoteDeck, reduxDeck, id]);
+  }, [remoteDeck, reduxDeck, user, id]);
 }
 
 export function useChaosBagResults(id: CampaignId): ChaosBagResultsT {

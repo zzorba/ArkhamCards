@@ -25,6 +25,8 @@ import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
 import useXpSection from './useXpSection';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import RoundedFooterButton from '@components/core/RoundedFooterButton';
 
 interface Props {
   componentId: string;
@@ -79,6 +81,7 @@ export default function InvestigatorCampaignRow({
   miniButtons,
 }: Props) {
   const { colors, typography, width } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);
   }, [componentId, colors]);
@@ -162,6 +165,7 @@ export default function InvestigatorCampaignRow({
     outputRange: ['-90deg', '-180deg'],
     extrapolate: 'clamp',
   });
+  const canRemoveDeck = !deck?.owner || (user && deck.owner.id === user.uid);
   return (
     <View style={space.marginBottomS}>
       <TouchableWithoutFeedback onPress={toggleOpen}>
@@ -219,14 +223,22 @@ export default function InvestigatorCampaignRow({
               </>
             ) }
           </View>
-          <RoundedFooterDoubleButton
-            onPressA={deck ? viewDeck : selectDeck}
-            iconA="deck"
-            titleA={deck ? t`View deck` : t`Select deck`}
-            onPressB={removePressed}
-            iconB="dismiss"
-            titleB={deck ? t`Remove deck` : t`Remove`}
-          />
+          { deck && !canRemoveDeck ? (
+            <RoundedFooterButton
+              onPress={viewDeck}
+              icon="deck"
+              title={t`View deck`}
+            />
+          ) : (
+            <RoundedFooterDoubleButton
+              onPressA={deck ? viewDeck : selectDeck}
+              iconA="deck"
+              titleA={deck ? t`View deck` : t`Select deck`}
+              onPressB={removePressed}
+              iconB="dismiss"
+              titleB={deck ? t`Remove deck` : t`Remove`}
+            />
+          ) }
         </View>
       </Collapsible>
     </View>

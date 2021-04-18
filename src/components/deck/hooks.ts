@@ -63,7 +63,8 @@ export function useDeckEdits(
   const { user } = useContext(ArkhamCardsAuthContext);
   useEffect(() => {
     if (initialDeck && id !== undefined) {
-      dispatch(startDeckEdit(id, initialDeck, initialMode));
+      const editable = (!initialDeck.owner?.id || !user || initialDeck.owner.id === user.uid);
+      dispatch(startDeckEdit(id, initialDeck, editable, initialMode));
       return function cleanup() {
         dispatch(finishDeckEdit(id));
       };

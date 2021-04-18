@@ -58,11 +58,10 @@ mutation insertNextLocalDeck(
       }
     }
   ) {
-    ...IdDeck
-    investigator
-    next_deck {
-      ...LatestDeck
-	  }
+    ...LatestDeck
+    previous_deck {
+      ...IdDeck
+    }
   }
 }
 
@@ -99,11 +98,10 @@ mutation insertNextArkhamDbDeck(
       }
     }
   ) {
-    ...IdDeck
-    investigator
-    next_deck {
-      ...LatestDeck
-	  }
+    ...LatestDeck
+    previous_deck {
+      ...IdDeck
+    }
   }
 }
 

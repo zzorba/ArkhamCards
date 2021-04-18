@@ -132,7 +132,7 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
     } else {
       saveCampaignLog(xpAdjust);
     }
-  }, [deck, deckUpgradeComponent, saveCampaignLog, xpAdjust]);
+  }, [deck, saveCampaignLog, xpAdjust]);
 
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);
@@ -405,9 +405,10 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
             icon="upgrade"
             color="gold"
             title={t`Save deck upgrade`}
-            detail={t`Save XP to deck after making adjustments`}
+            detail={saving ? t`Saving` : t`Save XP to deck after making adjustments`}
             onPress={save}
             loading={saving}
+            disabled={saving}
           />
         </View>
       );

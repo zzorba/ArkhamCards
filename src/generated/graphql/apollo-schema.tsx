@@ -7799,12 +7799,11 @@ export type InsertNextLocalDeckMutation = (
   { __typename?: 'mutation_root' }
   & { insert_campaign_deck_one?: Maybe<(
     { __typename?: 'campaign_deck' }
-    & Pick<Campaign_Deck, 'investigator'>
-    & { next_deck?: Maybe<(
+    & { previous_deck?: Maybe<(
       { __typename?: 'campaign_deck' }
-      & LatestDeckFragment
+      & IdDeckFragment
     )> }
-    & IdDeckFragment
+    & LatestDeckFragment
   )> }
 );
 
@@ -7823,12 +7822,11 @@ export type InsertNextArkhamDbDeckMutation = (
   { __typename?: 'mutation_root' }
   & { insert_campaign_deck_one?: Maybe<(
     { __typename?: 'campaign_deck' }
-    & Pick<Campaign_Deck, 'investigator'>
-    & { next_deck?: Maybe<(
+    & { previous_deck?: Maybe<(
       { __typename?: 'campaign_deck' }
-      & LatestDeckFragment
+      & IdDeckFragment
     )> }
-    & IdDeckFragment
+    & LatestDeckFragment
   )> }
 );
 
@@ -9223,15 +9221,14 @@ export const InsertNextLocalDeckDocument = gql`
   insert_campaign_deck_one(
     object: {local_uuid: $local_uuid, arkhamdb_id: null, campaign_id: $campaign_id, investigator: $investigator, content: $content, content_hash: $content_hash, owner_id: $userId, previous_decks: {data: {local_uuid: $previous_local_uuid, arkhamdb_id: null, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId}, on_conflict: {constraint: deck_local_uuid_campaign_id_key, update_columns: [next_deck_id]}}}
   ) {
-    ...IdDeck
-    investigator
-    next_deck {
-      ...LatestDeck
+    ...LatestDeck
+    previous_deck {
+      ...IdDeck
     }
   }
 }
-    ${IdDeckFragmentDoc}
-${LatestDeckFragmentDoc}`;
+    ${LatestDeckFragmentDoc}
+${IdDeckFragmentDoc}`;
 export type InsertNextLocalDeckMutationFn = Apollo.MutationFunction<InsertNextLocalDeckMutation, InsertNextLocalDeckMutationVariables>;
 
 /**
@@ -9269,15 +9266,14 @@ export const InsertNextArkhamDbDeckDocument = gql`
   insert_campaign_deck_one(
     object: {arkhamdb_id: $previous_arkhamdb_id, local_uuid: null, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId, previous_decks: {data: {arkhamdb_id: $arkhamdb_id, local_uuid: null, campaign_id: $campaign_id, investigator: $investigator, content: $content, content_hash: $content_hash, owner_id: $userId}, on_conflict: {constraint: deck_arkhamdb_id_campaign_id_key, update_columns: [next_deck_id]}}}
   ) {
-    ...IdDeck
-    investigator
-    next_deck {
-      ...LatestDeck
+    ...LatestDeck
+    previous_deck {
+      ...IdDeck
     }
   }
 }
-    ${IdDeckFragmentDoc}
-${LatestDeckFragmentDoc}`;
+    ${LatestDeckFragmentDoc}
+${IdDeckFragmentDoc}`;
 export type InsertNextArkhamDbDeckMutationFn = Apollo.MutationFunction<InsertNextArkhamDbDeckMutation, InsertNextArkhamDbDeckMutationVariables>;
 
 /**

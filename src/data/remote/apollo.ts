@@ -276,11 +276,11 @@ function removeAllMatchingDecks(
 }
 
 export const handleInsertNextLocalDeck: MutationUpdaterFn<InsertNextLocalDeckMutation> = (cache, { data }) => {
-  if (!data?.insert_campaign_deck_one?.next_deck) {
+  if (!data?.insert_campaign_deck_one?.previous_deck) {
     return;
   }
-  const oldDeck = data.insert_campaign_deck_one;
-  const newDeck = data.insert_campaign_deck_one.next_deck;
+  const newDeck = omit(data.insert_campaign_deck_one, ['previous_deck']);
+  const oldDeck = data.insert_campaign_deck_one.previous_deck;
 
   const swapDeck = (deck: IdDeckFragment) => {
     return !!(deck.local_uuid && deck.local_uuid === oldDeck.local_uuid) || !!(deck.arkhamdb_id && deck.arkhamdb_id === oldDeck.arkhamdb_id);
@@ -317,11 +317,11 @@ export const handleInsertNextLocalDeck: MutationUpdaterFn<InsertNextLocalDeckMut
 
 
 export const handleInsertNextArkhamDbDeck: MutationUpdaterFn<InsertNextArkhamDbDeckMutation> = (cache, { data }) => {
-  if (!data?.insert_campaign_deck_one?.next_deck) {
+  if (!data?.insert_campaign_deck_one?.previous_deck) {
     return;
   }
-  const oldDeck = data.insert_campaign_deck_one;
-  const newDeck = data.insert_campaign_deck_one.next_deck;
+  const oldDeck = data.insert_campaign_deck_one?.previous_deck;
+  const newDeck = omit(data.insert_campaign_deck_one, ['previous_deck']);
 
   const swapDeck = (deck: IdDeckFragment) => {
     return !!(deck.local_uuid && deck.local_uuid === oldDeck.local_uuid) || !!(deck.arkhamdb_id && deck.arkhamdb_id === oldDeck.arkhamdb_id);

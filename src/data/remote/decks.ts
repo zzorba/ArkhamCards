@@ -520,32 +520,32 @@ export function useDeckActions(): DeckActions {
           __typename: 'mutation_root',
           insert_campaign_deck_one: {
             __typename: 'campaign_deck',
-            id: previousDeckId.serverId || -1,
+            id: -1,
             campaign_id: campaignId.serverId,
-            local_uuid: previousDeckId.uuid,
+            local_uuid: deck.uuid,
             arkhamdb_id: null,
             investigator: deck.investigator_code,
             owner_id: user.uid,
-            next_deck: {
+            owner: {
+              __typename: 'users',
+              id: user.uid,
+              handle,
+            },
+            content: deck,
+            content_hash,
+            previous_deck: {
               __typename: 'campaign_deck',
-              id: -1,
-              campaign_id: campaignId.serverId,
-              local_uuid: deck.uuid,
+              id: previousDeckId.serverId || -1,
+              local_uuid: previousDeckId.uuid,
               arkhamdb_id: null,
+              campaign_id: campaignId.serverId,
               investigator: deck.investigator_code,
               owner_id: user.uid,
-              owner: {
-                __typename: 'users',
-                id: user.uid,
-                handle,
-              },
-              content: deck,
-              content_hash,
-              campaign: {
-                __typename: 'campaign',
-                id: campaignId.serverId,
-                uuid: campaignId.campaignId,
-              },
+            },
+            campaign: {
+              __typename: 'campaign',
+              id: campaignId.serverId,
+              uuid: campaignId.campaignId,
             },
           },
         },
@@ -559,7 +559,7 @@ export function useDeckActions(): DeckActions {
         },
         update: optimisticUpdates.insertNextLocalDeck.update,
       });
-      return response.data?.insert_campaign_deck_one?.next_deck?.id;
+      return response.data?.insert_campaign_deck_one?.id;
     }
 
     if (previousDeckId.local || deck.local) {
@@ -570,32 +570,32 @@ export function useDeckActions(): DeckActions {
         __typename: 'mutation_root',
         insert_campaign_deck_one: {
           __typename: 'campaign_deck',
-          id: previousDeckId.serverId || -1,
+          id: -1,
           campaign_id: campaignId.serverId,
-          arkhamdb_id: previousDeckId.id,
+          arkhamdb_id: deck.id,
           local_uuid: null,
           investigator: deck.investigator_code,
           owner_id: user.uid,
-          next_deck: {
+          owner: {
+            __typename: 'users',
+            id: user.uid,
+            handle,
+          },
+          content: deck,
+          content_hash,
+          campaign: {
+            __typename: 'campaign',
+            id: campaignId.serverId,
+            uuid: campaignId.campaignId,
+          },
+          previous_deck: {
             __typename: 'campaign_deck',
-            id: -1,
-            campaign_id: campaignId.serverId,
-            arkhamdb_id: deck.id,
+            id: previousDeckId.serverId || -1,
             local_uuid: null,
+            arkhamdb_id: previousDeckId.id,
+            campaign_id: campaignId.serverId,
             investigator: deck.investigator_code,
             owner_id: user.uid,
-            owner: {
-              __typename: 'users',
-              id: user.uid,
-              handle,
-            },
-            content: deck,
-            content_hash,
-            campaign: {
-              __typename: 'campaign',
-              id: campaignId.serverId,
-              uuid: campaignId.campaignId,
-            },
           },
         },
       },
@@ -609,7 +609,7 @@ export function useDeckActions(): DeckActions {
       },
       update: optimisticUpdates.insertNextArkhamDbDeck.update,
     });
-    return response.data?.insert_campaign_deck_one?.next_deck?.id;
+    return response.data?.insert_campaign_deck_one?.id;
   }, [createNextArkhamDbDeck, createNextLocalDeck, user]);
   return useMemo(() => {
     return {

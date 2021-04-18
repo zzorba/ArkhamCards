@@ -47,7 +47,7 @@ export default function(
         ignoreDeckLimitSlots: action.deck.ignoreDeckLimitSlots || {},
         xpAdjustment: action.deck.xp_adjustment || 0,
         mode: action.mode || 'view',
-        editable: !action.deck.nextDeckId,
+        editable: !action.deck.nextDeckId && action.editable,
       },
     } : state.edits;
     return {
