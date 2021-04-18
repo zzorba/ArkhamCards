@@ -303,7 +303,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
         switch (remedy) {
           case 'try-create':
             return (
-              <View style={[space.paddingTopS, space.paddingBottomM]}>
+              <View key={idx} style={[space.paddingTopS, space.paddingBottomM]}>
                 <Text style={[typography.text, space.paddingBottomS]}>
                   { t`Would you like to create a new account instead?` }
                 </Text>
@@ -314,7 +314,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
             );
           case 'try-login':
             return (
-              <View style={[space.paddingTopS, space.paddingBottomM]}>
+              <View key={idx} style={[space.paddingTopS, space.paddingBottomM]}>
                 <Text style={[typography.text, space.paddingBottomS]}>
                   { t`Are you trying to sign in to an existing account?` }
                 </Text>
@@ -331,7 +331,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
                 </Text>
               </View>
             ) : (
-              <View style={[space.paddingTopS, space.paddingBottomM]}>
+              <View key={idx} style={[space.paddingTopS, space.paddingBottomM]}>
                 <Text style={[typography.text, space.paddingBottomS]}>
                   { t`Would you like to reset your password via email?` }
                 </Text>

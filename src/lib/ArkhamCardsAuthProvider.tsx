@@ -58,16 +58,20 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
             if (hasuraClaims) {
               eventListener?.emit('onAuthStateChanged', currentUser);
             } else {
-              console.log('No Hasura');
               // Check if refresh is required.
               const metadataRef = database().ref(`metadata/${user.uid}/refreshTime`);
               metadataRef.on('value', async(data) => {
-                if (!data.exists) {
-                  eventListener?.emit('onAuthStateChanged', currentUser);
+                if (!data.exists()) {
+                  setTimeout(() => callback(user), 500);
                   return;
                 }
-                // Force refresh to pick up the latest custom claims changes.
-                eventListener?.emit('onAuthStateChanged', currentUser);
+                const idTokenReuslt = await user.getIdTokenResult(true);
+                if (idTokenReuslt.claims['https://hasura.io/jwt/claims']) {
+                  // Force refresh to pick up the latest custom claims changes.
+                  eventListener?.emit('onAuthStateChanged', currentUser);
+                } else {
+                  setTimeout(() => callback(user), 500);
+                }
               });
             }
           } else {

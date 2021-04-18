@@ -25,6 +25,7 @@ import StyleContext from '@styles/StyleContext';
 import { saveAuthResponse } from '@lib/dissonantVoices';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import useTextEditDialog from '@components/core/useTextEditDialog';
+import { useApolloClient } from '@apollo/client';
 
 
 function goOffline() {
@@ -84,17 +85,22 @@ export default function DiagnosticsView() {
     await (await db.faqEntries()).createQueryBuilder().delete().execute();
     await (await db.tabooSets()).createQueryBuilder().delete().execute();
   }, [db]);
-
+  const apollo = useApolloClient();
   const doSyncCards = useCallback(() => {
     dispatch(fetchCards(db, lang, langChoice));
   }, [dispatch, lang, langChoice, db]);
 
-  const clearCache = useCallback(() => {
+  const clearCache = useCallback(async() => {
     dispatch(clearDecks());
+    await apollo.cache.reset();
+    await apollo.resetStore();
+  }, [apollo, dispatch]);
+
+  const clearCardCache = useCallback(() => {
     clearDatabase().then(() => {
       doSyncCards();
     });
-  }, [dispatch, clearDatabase, doSyncCards]);
+  }, [clearDatabase, doSyncCards]);
 
   const addDebugCardJson = useCallback((json: string) => {
     const packsByCode: { [code: string]: Pack } = {};
@@ -201,6 +207,10 @@ export default function DiagnosticsView() {
         <SettingsItem
           onPress={clearCache}
           text={t`Clear cache`}
+        />
+        <SettingsItem
+          onPress={clearCardCache}
+          text={t`Clear card cache`}
         />
         { debugSection }
       </ScrollView>

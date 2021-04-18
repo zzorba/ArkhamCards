@@ -76,14 +76,14 @@ mutation insertNextArkhamDbDeck(
 ) {
   insert_campaign_deck_one(
     object: {
-      arkhamdb_id: $previous_arkhamdb_id
+      arkhamdb_id: $arkhamdb_id
       local_uuid: null
       investigator: $investigator
       campaign_id: $campaign_id
       owner_id: $userId
       previous_decks: {
         data: {
-          arkhamdb_id: $arkhamdb_id
+          arkhamdb_id: $previous_arkhamdb_id
           local_uuid: null
           campaign_id: $campaign_id
           investigator: $investigator
