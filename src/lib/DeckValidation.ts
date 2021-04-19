@@ -127,12 +127,10 @@ export default class DeckValidation {
       //console.log(card.deck_requirements);
       // must have the required cards
       if (card.deck_requirements.card) {
-        const requiredCards = map(card.deck_requirements.card, c => c.code);
-        const alternateCards = flatMap(card.deck_requirements.card, c => c.alternates || []);
-
-        if (sumBy(requiredCards, code => find(cards, theCard => theCard.code === code) ? 1 : 0) < requiredCards.length &&
-          (!alternateCards.length || sumBy(alternateCards, code => find(cards, theCard => theCard.code === code) ? 1 : 0) < alternateCards.length)
-        ) {
+        if (find(card.deck_requirements.card, req =>
+          !find(cards, theCard => theCard.code === req.code) &&
+          !(req.alternates?.length && req.alternates.length === sumBy(req.alternates, code => find(cards, theCard => theCard.code === code) ? 1 : 0))
+        )) {
           return 'investigator';
         }
       }
