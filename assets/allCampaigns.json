@@ -52698,7 +52698,7 @@
         "physical",
         "mental"
       ],
-      "text": " You startle awake, riveted and dazed by the magnitude of the dream that held your attention for so long. And yet, when you try to recall any of it, you remember very little. It is all a haze—like distant memories from decades ago. Just the hint of the dream remains. A black castle. A ship sailing through space. A staircase. A black cat. The only thing you remember is a voice in your head. A fundamental truth of the universe that you cannot shake from your memory. It speaks to you, even now, as you tremble under the hospital sheets: “Your dreams are mine!”",
+      "text": "You startle awake, riveted and dazed by the magnitude of the dream that held your attention for so long. And yet, when you try to recall any of it, you remember very little. It is all a haze—like distant memories from decades ago. Just the hint of the dream remains. A black castle. A ship sailing through space. A staircase. A black cat. The only thing you remember is a voice in your head. A fundamental truth of the universe that you cannot shake from your memory. It speaks to you, even now, as you tremble under the hospital sheets: “Your dreams are mine!”",
       "steps": ["nyarlathoteps_invasion_has_begun", "send_nyarlathoteps_invasion_has_begun", "maybe_lose_campaign"]
     },
     {
@@ -68717,7 +68717,7 @@
         "agents_of_hydra",
         "creatures_of_the_deep",
         "flooded_caverns",
-        "malfunction",
+        "shattered_memories",
         "syzygy",
         "ancient_evils"
       ]

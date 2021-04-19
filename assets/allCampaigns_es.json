@@ -11006,7 +11006,7 @@
     },
     {
       "id": "add_two_conviction",
-      "text": "During the scenario, you were instructed to mark two <b>Conviction</b> in your Campaign Log.",
+      "text": "Durante el escenario, se te indicó marcar dos <b>Convicciones</b> en el registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -11036,7 +11036,7 @@
     },
     {
       "id": "add_two_doubt",
-      "text": "During the scenario, you were instructed to mark two <b>Doubt</b> in your Campaign Log.",
+      "text": "Durante el escenario, se te indicó marcar dos <b>Dudas</b> en el registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -11088,13 +11088,13 @@
     {
       "id": "ask_conviction_or_doubt_resolution",
       "type": "input",
-      "text": "During the scenario, were you instructed to make any Campaign Log changes?",
+      "text": "Durante el escenario, ¿se te indicó hacer cambios en el registro de campaña?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "doubt",
-            "text": "Mark 2 <b>Doubt</b>.",
+            "text": "Marca 2 <b>Dudas</b>.",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -11106,7 +11106,7 @@
           },
           {
             "id": "conviction",
-            "text": "Mark 2 <b>Conviction</b>.",
+            "text": "Marca 2 <b>Convicciones</b>.",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -11118,7 +11118,7 @@
           },
           {
             "id": "neither",
-            "text": "Scenario ended before Act 2b was resolved."
+            "text": "El escenario finalizó antes de resolver el Acto 2b."
           }
         ]
       }
@@ -23602,7 +23602,7 @@
     },
     {
       "id": "add_two_conviction",
-      "text": "During the scenario, you were instructed to mark two <b>Conviction</b> in your Campaign Log.",
+      "text": "Durante el escenario, se te indicó marcar dos <b>Convicciones</b> en el registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -23632,7 +23632,7 @@
     },
     {
       "id": "add_two_doubt",
-      "text": "During the scenario, you were instructed to mark two <b>Doubt</b> in your Campaign Log.",
+      "text": "Durante el escenario, se te indicó marcar dos <b>Dudas</b> en el registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -23684,13 +23684,13 @@
     {
       "id": "ask_conviction_or_doubt_resolution",
       "type": "input",
-      "text": "During the scenario, were you instructed to make any Campaign Log changes?",
+      "text": "Durante el escenario, ¿se te indicó hacer cambios en el registro de campaña?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "doubt",
-            "text": "Mark 2 <b>Doubt</b>.",
+            "text": "Marca 2 <b>Dudas</b>.",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -23702,7 +23702,7 @@
           },
           {
             "id": "conviction",
-            "text": "Mark 2 <b>Conviction</b>.",
+            "text": "Marca 2 <b>Convicciones</b>.",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -23714,7 +23714,7 @@
           },
           {
             "id": "neither",
-            "text": "Scenario ended before Act 2b was resolved."
+            "text": "El escenario finalizó antes de resolver el Acto 2b."
           }
         ]
       }
@@ -26110,7 +26110,7 @@
         "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
-        "name": "(has binoculars)",
+        "name": "(tiene prismáticos)",
         "investigator": "choice",
         "prompt": "Centinela del grupo",
         "positiveChoice": {
@@ -39279,13 +39279,13 @@
       "id": "barkham_rule",
       "title": "Barkham Horror",
       "type": "rule_reminder",
-      "text": "<i>Barkham Horror</i> is an alternate universe in which the conflict between humanity and the eldritch forces of the mythos takes a back seat, and the conflict between dogs and cats takes center stage.",
+      "text": "<i>Barkham Horror</i> es un universo alternativo en el que el conflicto entre la humanidad y las fuerzas arcanas de los Mitos queda en segundo plano, y el conflicto entre perros y gatos cobra todo el protagonismo.",
       "bullets": [
         {
-          "text": "Investigator and player cards included in <i>Barkham Horror</i> expansions cannot be used in traditional <i>Arkham Horror: The Card Game</i> scenarios."
+          "text": "Los investigadores y las cartas de Jugador incluidas en las expansiones de <i>Barkham Horror</i> no se pueden usar en escenarios tradicionales de <i>Arkham Horror: El juego de cartas</i>."
         },
         {
-          "text": "Likewise, only investigators from <i>Barkham Horror</i> expansions should be used while playing a <i>Barkham Horror</i> scenario. Other player cards from any <i>Arkham Horror: The Card Game</i> product may be used."
+          "text": "De igual modo, al jugar un escenario de<i>Barkham Horror</i> sólo se pueden usar investigadores de expansiones de <i>Barkham Horror</i>. Si que pueden usarse otras cartas de Jugador de cual­quier producto de <i>Arkham Horror: El juego de cartas</i>."
         }
       ]
     },
@@ -39298,18 +39298,18 @@
     {
       "id": "lousy_with_cats_rule",
       "type": "rule_reminder",
-      "title": "“Lousy with cats”",
-      "text": "Six of the locations in this scenario begin play with a facedown [[Meowsk]] enemy beneath them. During this scenario, a location with a facedown encounter card beneath it is “lousy with cats.” <b>This has no inherent game effect.</b> However, some card effects may change depending on whether or not a location is lousy with cats.",
+      "title": "\"Plagado de gatos\"",
+      "text": "Seis de los Lugares de este escenario comienzan la partida teniendo debajo un Enemigo [[Miáuscara]] boca abajo. Durante este escenario, un Lugar que tenga debajo una carta de Encuentro boca abajo está \"plagado de gatos\". Esto no tiene ningún efecto de juego inherente. Sin embargo, los efectos de algunas cartas pueden cambiar en función de si un Lugar está plagado de gatos o no.",
       "bullets": [
         {
-          "text": "If the encounter card beneath a location that is lousy with cats enters play or is removed for any reason, that location is no longer lousy with cats."
+          "text": "Si la carta de Encuentro que hay debajo de un Lugar que esté plagado de gatos entra en juego o es retirada por cualquier motivo, ese Lugar deja de estar plagado de gatos."
         }
       ]
     },
     {
       "id": "sniffing_locations_rule",
       "type": "rule_reminder",
-      "title": "“Sniffing” Locations",
+      "title": "\"Olfatear\" Lugares",
       "text": "Dogs have a fantastic sense of smell. Kate Winthpup in particular has an ability that allows her to “sniff ” a location. You may wish to use a token (such as a resource token) or a piece of scrap paper to record which locations you’ve sniffed. In general, once you sniff a location, it is sniffed for the rest of the game."
     },
     {
@@ -40205,7 +40205,7 @@
         "choices": [
           {
             "id": "cleared_evidence",
-            "text": "¿Los investigadores no han \"limpiado la sangre\", ni \"ocultado el cuerpo\" ni \"ordenado la habitación\"?",
+            "text": "¿Los investigadores NO han \"limpiado la sangre\", ni \"ocultado el cuerpo\" ni \"ordenado la habitación\"?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -40249,7 +40249,7 @@
         "choices": [
           {
             "id": "have_clues",
-            "text": "¿No hay Enemigos [[Inocente]] en la zona de victoria?",
+            "text": "¿Hay 0 Enemigos [[Inocente]] en la zona de victoria?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -40337,7 +40337,7 @@
         "choices": [
           {
             "id": "cleared_evidence",
-            "text": "¿Los investigadores han \"limpiado la sangre\", ni \"ocultado el cuerpo\" ni \"ordenado la habitación\"?",
+            "text": "¿Los investigadores han \"limpiado la sangre\", \"ocultado el cuerpo\" y \"ordenado la habitación\"?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -42658,7 +42658,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Pon aparte, fuera del juego, las siguientes cartas: Khopesh del Abismo, Ángel descarnado invocado, el Lugar de una sola cara Portal arcano, el Enemigo de doble cara Xzharah, los S Lugares [[Sobrenatural]] de doble cara y ambas copias del Shantak temido. Xzharah y los Lugares [[Sobrenatural]] tienen cartas de Historia en su dorso. Para una mejor experiencia, no mires las cartas de Historia de sus dorsos <i>(consulta \"Cartas de Historia\")</i>."
+      "text": "Pon aparte, fuera del juego, las siguientes cartas: Khopesh del Abismo, Ángel descarnado invocado, el Lugar de una sola cara Portal arcano, el Enemigo de doble cara Xzharah, los 5 Lugares [[Sobrenatural]] de doble cara y ambas copias del Shantak temido. Xzharah y los Lugares [[Sobrenatural]] tienen cartas de Historia en su dorso. Para una mejor experiencia, no mires las cartas de Historia de sus dorsos <i>(consulta \"Cartas de Historia\")</i>."
     },
     {
       "id": "create_exploration_deck",
@@ -43639,7 +43639,7 @@
     {
       "id": "add_chaos_token",
       "type": "input",
-      "text": "Which chaos token should be added to the bag?",
+      "text": "¿Qué ficha de Caos debería añadirse a la bolsa?",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -65340,7 +65340,7 @@
         "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
-        "name": "(has binoculars)",
+        "name": "(tiene prismáticos)",
         "investigator": "choice",
         "prompt": "Centinela del grupo",
         "positiveChoice": {
@@ -75766,7 +75766,7 @@
         "agents_of_hydra",
         "creatures_of_the_deep",
         "flooded_caverns",
-        "malfunction",
+        "shattered_memories",
         "syzygy",
         "ancient_evils"
       ]
