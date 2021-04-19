@@ -413,10 +413,10 @@ export function useDeckHistoryRemote(id: DeckId, investigator: string, campaign:
   const { user } = useContext(ArkhamCardsAuthContext);
   const { data } = useGetDeckHistoryQuery({
     variables: {
-      user_id: user?.uid || '',
       campaign_id: campaign?.id.serverId || 0,
       investigator,
     },
+    fetchPolicy: 'cache-and-network',
     skip: !user?.uid || !campaign || !campaign?.id.serverId,
   });
 

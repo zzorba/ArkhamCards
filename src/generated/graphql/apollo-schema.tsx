@@ -8029,7 +8029,6 @@ export type GetLatestDeckQuery = (
 );
 
 export type GetDeckHistoryQueryVariables = Exact<{
-  user_id: Scalars['String'];
   campaign_id: Scalars['Int'];
   investigator: Scalars['String'];
 }>;
@@ -9730,9 +9729,9 @@ export type GetLatestDeckQueryHookResult = ReturnType<typeof useGetLatestDeckQue
 export type GetLatestDeckLazyQueryHookResult = ReturnType<typeof useGetLatestDeckLazyQuery>;
 export type GetLatestDeckQueryResult = Apollo.QueryResult<GetLatestDeckQuery, GetLatestDeckQueryVariables>;
 export const GetDeckHistoryDocument = gql`
-    query getDeckHistory($user_id: String!, $campaign_id: Int!, $investigator: String!) {
+    query getDeckHistory($campaign_id: Int!, $investigator: String!) {
   campaign_deck(
-    where: {owner_id: {_eq: $user_id}, campaign_id: {_eq: $campaign_id}, investigator: {_eq: $investigator}}
+    where: {campaign_id: {_eq: $campaign_id}, investigator: {_eq: $investigator}}
   ) {
     ...HistoryDeck
   }
@@ -9751,7 +9750,6 @@ export const GetDeckHistoryDocument = gql`
  * @example
  * const { data, loading, error } = useGetDeckHistoryQuery({
  *   variables: {
- *      user_id: // value for 'user_id'
  *      campaign_id: // value for 'campaign_id'
  *      investigator: // value for 'investigator'
  *   },

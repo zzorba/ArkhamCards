@@ -318,13 +318,11 @@ query getLatestDeck(
 }
 
 query getDeckHistory(
-  $user_id: String!,
   $campaign_id: Int!,
   $investigator: String!
 ) {
   campaign_deck(
     where: {
-      owner_id: { _eq: $user_id }
       campaign_id: { _eq: $campaign_id }
       investigator: { _eq: $investigator }
     }
