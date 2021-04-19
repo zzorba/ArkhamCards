@@ -75,6 +75,7 @@ function DeckListRowDetails({
   const { colors, typography } = useContext(StyleContext);
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
   const cards = usePlayerCards(deck.taboo_id || 0);
+  const parsedDeck = useMemo(() => !details && deck && cards && parseBasicDeck(deck, cards, previousDeck), [details, deck, cards, previousDeck]);
   if (details) {
     return (
       <>
@@ -82,7 +83,6 @@ function DeckListRowDetails({
       </>
     );
   }
-  const parsedDeck = deck && cards && parseBasicDeck(deck, cards, previousDeck);
   if (!parsedDeck || !investigator) {
     return (
       <Placeholder Animation={loadingAnimation}>

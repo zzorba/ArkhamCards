@@ -60,7 +60,6 @@ export default function UpgradeDecksList({
     investigator: Card,
     previousDeck?: Deck
   ) => {
-
     if (!deck) {
       return null;
     }

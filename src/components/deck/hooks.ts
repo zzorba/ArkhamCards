@@ -123,9 +123,14 @@ function useParsedDeckHelper(
   const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.deck.taboo_id || 0);
   const cards = usePlayerCards(tabooSetId);
   const visible = useComponentVisible(componentId);
-  const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>((deck && cards && fetchIfMissing) ?
-    parseDeck(deck.deck, deck.deck.meta || {}, deck.deck.slots || {}, deck.deck.ignoreDeckLimitSlots, cards, deck.previousDeck, deck.deck.xp_adjustment || 0) :
-    undefined);
+  const initialized = useRef(false);
+  const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>(undefined);
+  useEffect(() => {
+    if (deck && cards && fetchIfMissing && !parsedDeck && !initialized.current) {
+      initialized.current = true;
+      setParsedDeck(parseDeck(deck.deck, deck.deck.meta || {}, deck.deck.slots || {}, deck.deck.ignoreDeckLimitSlots, cards, deck.previousDeck, deck.deck.xp_adjustment || 0));
+    }
+  }, [deck, cards, fetchIfMissing, parsedDeck]);
   useDebouncedEffect(() => {
     if (cards && visible && deckEdits && deck) {
       setParsedDeck(

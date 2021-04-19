@@ -82,7 +82,7 @@ function DeckListRowDetails({
   const { colors, typography } = useContext(StyleContext);
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
   const cards = usePlayerCards(deck.deck.taboo_id || 0);
-  const parsedDeck = useMemo(() => deck && cards && parseBasicDeck(deck.deck, cards, deck.previousDeck), [deck, cards]);
+  const parsedDeck = useMemo(() => (!details && deck && cards) ? parseBasicDeck(deck.deck, cards, deck.previousDeck) : undefined, [deck, cards, details]);
   const [mainXpString, xpDetailString] = useDeckXpStrings(parsedDeck);
   if (details) {
     return (
@@ -161,6 +161,7 @@ export default function NewDeckListRow({
   width,
 }: Props) {
   const { colors, typography } = useContext(StyleContext);
+  const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
   const onDeckPressFunction = useCallback(() => {
     onPress && onPress(deck, investigator);
   }, [deck, investigator, onPress]);
@@ -203,9 +204,15 @@ export default function NewDeckListRow({
                 <Text style={[typography.large, typography.white]} numberOfLines={1} ellipsizeMode="tail">
                   { deck.deck.name }
                 </Text>
-                <Text style={[typography.smallLabel, typography.italic, typography.white]}>
-                  { investigator?.name || '' }
-                </Text>
+                { investigator?.name ? (
+                  <Text style={[typography.smallLabel, typography.italic, typography.white]}>
+                    { investigator?.name || '' }
+                  </Text>
+                ) : (
+                  <Placeholder Animation={loadingAnimation}>
+                    <PlaceholderLine color={colors.M} height={10} width={25} style={{ marginTop: 4, marginBottom: 2 }} />
+                  </Placeholder>
+                ) }
               </View>
             </RoundedFactionHeader>
           )}
