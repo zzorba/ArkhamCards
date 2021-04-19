@@ -218,72 +218,74 @@ function DeckDetailView({
     }
   }, componentId, [saveEdits, toggleMenuOpen, handleBackPress]);
   useBackButton(handleBackPress);
-
+  const hasInvestigator = !!parsedDeck?.investigator;
   const factionColor = useMemo(() => colors.faction[parsedDeck?.investigator.factionCode() || 'neutral'].background, [parsedDeck, colors.faction]);
   useEffect(() => {
-    const textColors = {
-      view: '#FFFFFF',
-      edit: COLORS.L30,
-      upgrade: COLORS.D30,
-    };
-    const textColor = textColors[mode];
-    const backgroundColors = {
-      view: factionColor,
-      edit: darkMode ? COLORS.D20 : COLORS.D10,
-      upgrade: colors.upgrade,
-    };
-    const statusBarStyles: { [key: string]: 'light' | 'dark' | undefined } = {
-      view: 'light',
-      edit: 'light',
-      upgrade: 'dark',
-    };
-    const backgroundColor = backgroundColors[mode];
-    const titles = {
-      view: title,
-      upgrade: t`Upgrading deck`,
-      edit: t`Editing deck`,
-    };
-    const rightButtons: OptionsTopBarButton[] = [{
-      id: 'menu',
-      icon: iconsMap.menu,
-      color: textColor,
-      accessibilityLabel: t`Menu`,
-    }];
-    const leftButtons = modal ? [
-      Platform.OS === 'ios' ? {
-        text: t`Done`,
-        id: 'back',
+    if (hasInvestigator) {
+      const textColors = {
+        view: '#FFFFFF',
+        edit: COLORS.L30,
+        upgrade: COLORS.D30,
+      };
+      const textColor = textColors[mode];
+      const backgroundColors = {
+        view: factionColor,
+        edit: darkMode ? COLORS.D20 : COLORS.D10,
+        upgrade: colors.upgrade,
+      };
+      const statusBarStyles: { [key: string]: 'light' | 'dark' | undefined } = {
+        view: 'light',
+        edit: 'light',
+        upgrade: 'dark',
+      };
+      const backgroundColor = backgroundColors[mode];
+      const titles = {
+        view: title,
+        upgrade: t`Upgrading deck`,
+        edit: t`Editing deck`,
+      };
+      const rightButtons: OptionsTopBarButton[] = [{
+        id: 'menu',
+        icon: iconsMap.menu,
         color: textColor,
-      } : {
-        icon: iconsMap['arrow-left'],
-        id: 'androidBack',
-        color: textColor,
-      },
-    ] : [];
-
-
-    Navigation.mergeOptions(componentId, {
-      statusBar: {
-        style: statusBarStyles[mode],
-        backgroundColor,
-      },
-      topBar: {
-        title: {
-          text: titles[mode],
+        accessibilityLabel: t`Menu`,
+      }];
+      const leftButtons = modal ? [
+        Platform.OS === 'ios' ? {
+          text: t`Done`,
+          id: 'back',
+          color: textColor,
+        } : {
+          icon: iconsMap['arrow-left'],
+          id: 'androidBack',
           color: textColor,
         },
-        subtitle: {
-          text: name || subtitle,
-          color: textColor,
+      ] : [];
+
+
+      Navigation.mergeOptions(componentId, {
+        statusBar: {
+          style: statusBarStyles[mode],
+          backgroundColor,
         },
-        background: {
-          color: backgroundColor,
+        topBar: {
+          title: {
+            text: titles[mode],
+            color: textColor,
+          },
+          subtitle: {
+            text: name || subtitle,
+            color: textColor,
+          },
+          background: {
+            color: backgroundColor,
+          },
+          leftButtons,
+          rightButtons,
         },
-        leftButtons,
-        rightButtons,
-      },
-    });
-  }, [modal, darkMode, componentId, mode, colors, factionColor, name, subtitle, title]);
+      });
+    }
+  }, [modal, hasInvestigator, darkMode, componentId, mode, colors, factionColor, name, subtitle, title]);
   const { uploadLocalDeck, uploadLocalDeckDialog } = useUploadLocalDeckDialog(deckActions, deck, parsedDeck);
 
   useEffect(() => {
@@ -679,7 +681,6 @@ function DeckDetailView({
         style: 'destructive',
       });
     }
-
     showAlert(
       t`Delete deck`,
       t`Are you sure you want to delete this deck?`,
@@ -1008,6 +1009,7 @@ function DeckDetailView({
             <DeckViewTab
               componentId={componentId}
               visible={visible}
+              deckId={id}
               suggestArkhamDbLogin={suggestArkhamDbLogin}
               inCollection={inCollection}
               investigatorFront={investigatorFront}

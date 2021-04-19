@@ -4,7 +4,7 @@ import { t } from 'ttag';
 
 import { showCard, showCardSwipe } from '@components/nav/helper';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import { DeckChanges, ParsedDeck, Slots } from '@actions/types';
+import { DeckChanges, DeckId, ParsedDeck, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import DeckBubbleHeader from '../section/DeckBubbleHeader';
@@ -16,7 +16,8 @@ interface Props {
   cards: CardsMap;
   parsedDeck: ParsedDeck;
   tabooSetId?: number;
-  onTitlePress?: (deck: ParsedDeck) => void;
+  deckId: DeckId;
+  onTitlePress?: (deckId: DeckId, deck: ParsedDeck) => void;
   singleCardView?: boolean;
   title?: string;
   editable: boolean;
@@ -36,6 +37,7 @@ export default function ChangesFromPreviousDeck({
   componentId,
   cards,
   parsedDeck,
+  deckId,
   tabooSetId,
   onTitlePress,
   singleCardView,
@@ -119,9 +121,9 @@ export default function ChangesFromPreviousDeck({
 
   const handleTitlePress = useCallback(() => {
     if (onTitlePress) {
-      onTitlePress(parsedDeck);
+      onTitlePress(deckId, parsedDeck);
     }
-  }, [onTitlePress, parsedDeck]);
+  }, [onTitlePress, deckId, parsedDeck]);
 
   const editsSection = useMemo(() => {
     if (changes && hasChanges(changes)) {

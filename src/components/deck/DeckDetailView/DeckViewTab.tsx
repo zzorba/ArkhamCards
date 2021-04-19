@@ -7,6 +7,7 @@ import { c, msgid, t } from 'ttag';
 import {
   CardId,
   Deck,
+  DeckId,
   DeckMeta,
   DeckProblem,
   EditDeckState,
@@ -244,6 +245,7 @@ interface Props {
   componentId: string;
   suggestArkhamDbLogin: boolean;
   deck: Deck;
+  deckId: DeckId;
   investigatorFront?: Card;
   investigatorBack?: Card;
   parsedDeck: ParsedDeck;
@@ -286,6 +288,7 @@ export default function DeckViewTab(props: Props) {
     suggestArkhamDbLogin,
     tabooSetId,
     cards,
+    deckId,
     investigatorFront,
     investigatorBack,
     deck,
@@ -678,6 +681,7 @@ export default function DeckViewTab(props: Props) {
         <DeckProgressComponent
           componentId={componentId}
           cards={cards}
+          deckId={deckId}
           deck={deck}
           parsedDeck={parsedDeck}
           editable={editable}

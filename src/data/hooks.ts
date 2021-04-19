@@ -157,11 +157,11 @@ export function useDeckHistory(
   id: DeckId,
   investigator: string,
   campaign: MiniCampaignT | undefined,
-): LatestDeckT[] | undefined {
+): [LatestDeckT[] | undefined, boolean, undefined | (() => Promise<void>)] {
   const reduxDeck = useDeckHistoryRedux(id);
-  const remoteDeck = useDeckHistoryRemote(id, investigator, campaign);
+  const [remoteDeck, loading, refresh] = useDeckHistoryRemote(id, investigator, campaign);
   if (!id.serverId || (!id.local && reduxDeck.length)) {
-    return reduxDeck;
+    return [reduxDeck, false, undefined];
   }
-  return remoteDeck;
+  return [remoteDeck, loading, refresh];
 }

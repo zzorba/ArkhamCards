@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { t } from 'ttag';
 
 import ChangesFromPreviousDeck from './ChangesFromPreviousDeck';
-import { Deck, ParsedDeck } from '@actions/types';
+import { Deck, DeckId, ParsedDeck } from '@actions/types';
 import { CardsMap } from '@data/types/Card';
 import { l, xs } from '@styles/space';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
@@ -15,7 +15,8 @@ interface Props {
   parsedDeck: ParsedDeck;
   editable: boolean;
   title?: string;
-  onTitlePress?: (deck: ParsedDeck) => void;
+  deckId: DeckId
+  onTitlePress?: (deckId: DeckId, deck: ParsedDeck) => void;
   showDeckHistory?: () => void;
   tabooSetId?: number;
   singleCardView?: boolean;
@@ -25,6 +26,7 @@ interface Props {
 export default function DeckProgressComponent({
   componentId,
   deck,
+  deckId,
   cards,
   parsedDeck,
   editable,
@@ -51,6 +53,7 @@ export default function DeckProgressComponent({
           tabooSetId={tabooSetId}
           singleCardView={singleCardView}
           editable={editable}
+          deckId={deckId}
           onTitlePress={onTitlePress}
           footerButton={!deck.nextDeckId && !!deck.previousDeckId && !!showDeckHistory && (
             <RoundedFooterButton
