@@ -7,9 +7,10 @@ import {
 
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import InvestigatorImage from '@components/core/InvestigatorImage';
-import { s } from '@styles/space';
+import { s, xs } from '@styles/space';
 import { useInvestigatorCards } from '@components/core/hooks';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
+import { TINY_PHONE } from '@styles/sizes';
 
 interface Props {
   campaign: MiniCampaignT;
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   investigator: {
-    marginRight: s,
+    marginRight: TINY_PHONE ? xs : s,
     marginBottom: s,
   },
 });

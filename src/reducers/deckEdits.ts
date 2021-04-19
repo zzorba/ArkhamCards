@@ -13,6 +13,7 @@ import {
   DeckEditsActions,
   REPLACE_LOCAL_DECK,
   getDeckId,
+  SYNC_DECK,
 } from '@actions/types';
 
 interface DeckEditsState {
@@ -25,18 +26,36 @@ interface DeckEditsState {
   checklist: {
     [id: string]: string[] | undefined;
   };
+  deck_uploads?: {
+    [uuid: string]: string[] | undefined;
+  };
 }
 
 const DEFAULT_DECK_EDITS_STATE: DeckEditsState = {
   edits: {},
   editting: {},
   checklist: {},
+  deck_uploads: {},
 };
 
 export default function(
   state = DEFAULT_DECK_EDITS_STATE,
   action: DeckEditsActions
 ): DeckEditsState {
+  if (action.type === SYNC_DECK) {
+    const deck_uploads = {
+      ...(state.deck_uploads || {}),
+    };
+    const campaign = deck_uploads[action.campaignId.campaignId] || [];
+    const newCampaign = action.uploading ? [...campaign, action.investigator] : filter(campaign, i => i !== action.investigator);
+    return {
+      ...state,
+      deck_uploads: {
+        ...deck_uploads,
+        [action.campaignId.campaignId]: newCampaign,
+      },
+    };
+  }
   if (action.type === START_DECK_EDIT) {
     const newEdits = action.deck ? {
       ...state.edits || {},

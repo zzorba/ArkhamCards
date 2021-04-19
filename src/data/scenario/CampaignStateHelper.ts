@@ -19,7 +19,7 @@ import Card, { CardsMap } from '@data/types/Card';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 
 export interface CampaignGuideActions {
-  showChooseDeck: (singleInvestigator?: Card, callback?: (code: string) => void) => void;
+  showChooseDeck: (singleInvestigator?: Card, callback?: (code: string) => Promise<void>) => void;
   removeDeck: (deckId: DeckId, investigator: string) => void;
   removeInvestigator: (investigator: Card) => void;
   setDecision: (id: string, value: boolean, scenarioId?: string) => void;
@@ -68,7 +68,7 @@ export default class CampaignStateHelper {
     return this.state.lastUpdated() || new Date();
   }
 
-  showChooseDeck(singleInvestigator?: Card, callback?: (code: string) => void) {
+  showChooseDeck(singleInvestigator?: Card, callback?: (code: string) => Promise<void>) {
     this.actions.showChooseDeck(singleInvestigator, callback);
   }
 

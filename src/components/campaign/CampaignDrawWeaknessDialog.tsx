@@ -127,7 +127,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
     }
   }, componentId, [showEditWeaknessDialogPressed]);
 
-  const selectDeck = useCallback((deck: Deck) => {
+  const selectDeck = useCallback(async(deck: Deck) => {
     const id = getDeckId(deck);
     const theDeck = find(latestDecks, d => d.id.uuid === id.uuid);
     setSelectedDeck(theDeck);

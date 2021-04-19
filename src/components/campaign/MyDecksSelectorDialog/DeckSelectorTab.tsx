@@ -9,7 +9,7 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 interface Props {
   componentId: string;
-  onDeckSelect: (deck: Deck) => void;
+  onDeckSelect: (deck: Deck) => Promise<void>;
   searchOptions?: SearchOptions;
 
   onlyDecks?: MiniDeckT[];
@@ -23,11 +23,10 @@ export default function DeckSelectorTab({
   onlyDecks,
   onDeckSelect,
 }: Props) {
-  const deckSelected = useCallback((deck: LatestDeckT) => {
+  const deckSelected = useCallback(async(deck: LatestDeckT) => {
     onDeckSelect(deck.deck);
     Navigation.dismissModal(componentId);
   }, [onDeckSelect, componentId]);
-
   return (
     <MyDecksComponent
       searchOptions={searchOptions}

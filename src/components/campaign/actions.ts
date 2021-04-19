@@ -108,7 +108,7 @@ export function addInvestigator(
   id: CampaignId,
   investigator: string,
   deckId?: DeckId,
-): ThunkAction<void, AppState, unknown, CampaignAddInvestigatorAction> {
+): ThunkAction<Promise<void>, AppState, unknown, CampaignAddInvestigatorAction> {
   return async(dispatch, getState: () => AppState) => {
     const baseDeckId = deckId ?
       getBaseDeckIds(getState(), [deckId])[0] :
@@ -126,7 +126,7 @@ export function addInvestigator(
       dispatch(action);
     }
     if (baseDeckId && id.serverId && user) {
-      dispatch(uploadCampaignDeckHelper(id, baseDeckId, deckActions));
+      await dispatch(uploadCampaignDeckHelper(id, baseDeckId, deckActions));
     }
   };
 }

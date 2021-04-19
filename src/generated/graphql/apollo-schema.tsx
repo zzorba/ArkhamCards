@@ -9264,7 +9264,7 @@ export type InsertNextLocalDeckMutationOptions = Apollo.BaseMutationOptions<Inse
 export const InsertNextArkhamDbDeckDocument = gql`
     mutation insertNextArkhamDbDeck($previous_arkhamdb_id: Int!, $arkhamdb_id: Int!, $campaign_id: Int!, $investigator: String!, $content: jsonb!, $content_hash: String!, $userId: String!) {
   insert_campaign_deck_one(
-    object: {arkhamdb_id: $arkhamdb_id, local_uuid: null, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId, previous_decks: {data: {arkhamdb_id: $previous_arkhamdb_id, local_uuid: null, campaign_id: $campaign_id, investigator: $investigator, content: $content, content_hash: $content_hash, owner_id: $userId}, on_conflict: {constraint: deck_arkhamdb_id_campaign_id_key, update_columns: [next_deck_id]}}}
+    object: {arkhamdb_id: $arkhamdb_id, local_uuid: null, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId, content: $content, content_hash: $content_hash, previous_decks: {data: {arkhamdb_id: $previous_arkhamdb_id, local_uuid: null, campaign_id: $campaign_id, investigator: $investigator, owner_id: $userId}, on_conflict: {constraint: deck_arkhamdb_id_campaign_id_key, update_columns: [next_deck_id]}}}
   ) {
     ...LatestDeck
     previous_deck {

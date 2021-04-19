@@ -93,7 +93,7 @@ function setNewDeck(
     if (deck.previousDeckId && user) {
       const previousDeckId = deck.previousDeckId;
       const uploads = getDeckUploadedCampaigns(getState(), deck.previousDeckId);
-      if (uploads?.campaignId.length && user) {
+      if (uploads?.campaignId.length) {
         await Promise.all(
           map(uploads.campaignId, campaignId => actions.createNextDeck(deck, campaignId, previousDeckId))
         );

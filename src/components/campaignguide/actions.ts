@@ -1,4 +1,4 @@
-import { forEach } from 'lodash';
+import { map } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
 
 import {
@@ -54,22 +54,36 @@ function uploadCampaignHelper(
       campaign: { serverId: campaignId.serverId },
       now: new Date(),
     });
-    forEach(campaign.deckIds || [], deckId => {
-      dispatch(uploadCampaignDeckHelper(campaignId, deckId, deckActions));
-    });
+    Promise.all(map(campaign.deckIds || [], deckId => {
+      return dispatch(uploadCampaignDeckHelper(campaignId, deckId, deckActions));
+    }));
   };
 }
 
+type UploadCampaignResult = {
+  type: 'linked';
+  ids: {
+    campaignId: UploadedCampaignId;
+    campaignIdA: UploadedCampaignId;
+    campaignIdB: UploadedCampaignId;
+  };
+} | {
+  type: 'single';
+  id: UploadedCampaignId;
+}
 export function uploadCampaign(
   user: FirebaseAuthTypes.User,
   actions: CreateCampaignActions,
   deckActions: DeckActions,
   campaignId: CampaignId
-): ThunkAction<Promise<UploadedCampaignId>, AppState, unknown, UpdateCampaignAction> {
-  return async(dispatch, getState): Promise<UploadedCampaignId> => {
+): ThunkAction<Promise<UploadCampaignResult>, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch, getState): Promise<UploadCampaignResult> => {
     const state = getState();
     if (campaignId.serverId) {
-      return campaignId;
+      return {
+        type: 'single',
+        id: campaignId,
+      };
     }
     const campaign = makeCampaignSelector()(state, campaignId.campaignId);
     if (!campaign) {
@@ -87,11 +101,17 @@ export function uploadCampaign(
         dispatch(uploadCampaignHelper(campaignB, ids.campaignIdB, guided, actions, deckActions));
       }
       dispatch(uploadCampaignHelper(campaign, ids.campaignId, guided, actions, deckActions));
-      return ids.campaignId;
+      return {
+        type: 'linked',
+        ids,
+      };
     }
     const newCampaignId = await actions.createCampaign(campaignId.campaignId, guided);
     dispatch(uploadCampaignHelper(campaign, newCampaignId, guided, actions, deckActions));
-    return newCampaignId;
+    return {
+      type: 'single',
+      id: newCampaignId,
+    };
   };
 }
 

@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-import { DeckId, getDeckId, UploadedCampaignId, UPLOAD_DECK } from '@actions/types';
+import { DeckId, getDeckId, SYNC_DECK, UploadedCampaignId, UPLOAD_DECK } from '@actions/types';
 import { AppState, makeDeckSelector } from '@reducers';
 import { DeckActions } from '@data/remote/decks';
 
@@ -10,11 +10,20 @@ export function uploadCampaignDeckHelper(
   campaignId: UploadedCampaignId,
   deckId: DeckId,
   actions: DeckActions
-): ThunkAction<void, AppState, unknown, Action<string>> {
+): ThunkAction<Promise<void>, AppState, unknown, Action<string>> {
   return async(dispatch, getState) => {
     const state = getState();
     const deckSelector = makeDeckSelector();
     let deck = deckSelector(state, deckId);
+    const investigator = deck?.investigator_code;
+    if (investigator) {
+      dispatch({
+        type: SYNC_DECK,
+        campaignId,
+        investigator,
+        uploading: true,
+      });
+    }
     while (deck) {
       const deckId = getDeckId(deck);
       if (!deck.previousDeckId) {
@@ -31,6 +40,14 @@ export function uploadCampaignDeckHelper(
         break;
       }
       deck = deckSelector(state, deck.nextDeckId);
+    }
+    if (investigator) {
+      dispatch({
+        type: SYNC_DECK,
+        campaignId,
+        investigator,
+        uploading: false,
+      });
     }
   };
 }

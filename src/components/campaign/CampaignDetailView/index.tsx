@@ -35,6 +35,9 @@ import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useDeckActions } from '@data/remote/decks';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
 import LoadingSpinner from '@components/core/LoadingSpinner';
+import { ThunkDispatch } from 'redux-thunk';
+import { AppState } from '@reducers';
+import { Action } from 'redux';
 
 export interface CampaignDetailProps {
   campaignId: CampaignId;
@@ -43,6 +46,7 @@ export interface CampaignDetailProps {
 type Props = NavigationProps & CampaignDetailProps
 
 const EMPTY_CHAOS_BAG = {};
+type AsyncDispatch = ThunkDispatch<AppState, unknown, Action>;
 
 function CampaignDetailView(props: Props) {
   const { componentId } = props;
@@ -58,6 +62,7 @@ function CampaignDetailView(props: Props) {
 
   const updateCampaignActions = useUpdateCampaignActions();
   const dispatch = useDispatch();
+  const asyncDispatch: AsyncDispatch = useDispatch();
 
   const updateInvestigatorTrauma = useCallback((investigator: string, trauma: Trauma) => {
     dispatch(updateCampaignInvestigatorTrauma(updateCampaignActions, campaignId, investigator, trauma));
@@ -142,10 +147,10 @@ function CampaignDetailView(props: Props) {
     }
   }, [cards, campaign, updateWeaknessAssignedCards, showAlert]);
   const deckActions = useDeckActions();
-  const onAddDeck = useCallback((deck: Deck) => {
-    dispatch(addInvestigator(user, deckActions, updateCampaignActions, campaignId, deck.investigator_code, getDeckId(deck)));
+  const onAddDeck = useCallback(async(deck: Deck) => {
+    await asyncDispatch(addInvestigator(user, deckActions, updateCampaignActions, campaignId, deck.investigator_code, getDeckId(deck)));
     checkForWeaknessPrompt(deck);
-  }, [user, campaignId, deckActions, updateCampaignActions, dispatch, checkForWeaknessPrompt]);
+  }, [user, campaignId, deckActions, updateCampaignActions, asyncDispatch, checkForWeaknessPrompt]);
 
   const onAddInvestigator = useCallback((card: Card) => {
     dispatch(addInvestigator(user, deckActions, updateCampaignActions, campaignId, card.code));

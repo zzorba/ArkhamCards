@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useContext } from 'react';
+import React, { useCallback, useMemo, useRef, useContext, useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
@@ -15,7 +15,6 @@ import { useInvestigatorCards, useNavigationButtonPressed } from '@components/co
 import useCampaignGuideContext from '@components/campaignguide/useCampaignGuideContext';
 import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
 import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
-import { useCampaignId } from '@components/campaign/hooks';
 import { useCampaignLinkHelper } from './useCampaignLinkHelper';
 import CampaignDetailTab from '../CampaignDetailTab';
 import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
@@ -35,9 +34,13 @@ export interface LinkedCampaignGuideProps {
 type Props = LinkedCampaignGuideProps & NavigationProps;
 
 export default function LinkedCampaignGuideView(props: Props) {
-  const { componentId, campaignIdA, campaignIdB } = props;
+  const { componentId } = props;
   const [countDialog, showCountDialog] = useCountDialog();
-  const [campaignId, setCampaignServerId] = useCampaignId(props.campaignId);
+  const [{ campaignId, campaignIdA, campaignIdB }, setCampaignLinkedServerId] = useState({
+    campaignId: props.campaignId,
+    campaignIdA: props.campaignIdA,
+    campaignIdB: props.campaignIdB,
+  });
   const { typography } = useContext(StyleContext);
   const investigators = useInvestigatorCards();
   const dispatch = useDispatch();
@@ -105,7 +108,8 @@ export default function LinkedCampaignGuideView(props: Props) {
           componentId={componentId}
           campaignId={campaignId}
           campaign={campaign}
-          setCampaignServerId={setCampaignServerId}
+          setCampaignLinkedServerId={setCampaignLinkedServerId}
+          setCampaignServerId={undefined}
           deckActions={deckActions}
           showAlert={showAlert}
         />
@@ -117,7 +121,7 @@ export default function LinkedCampaignGuideView(props: Props) {
         />
       </View>
     );
-  }, [showAlert, setCampaignServerId, typography, campaign, deckActions, componentId, campaignId]);
+  }, [showAlert, setCampaignLinkedServerId, typography, campaign, deckActions, componentId, campaignId]);
 
   const campaignATab = useMemo(() => {
     if (!campaignDataA) {

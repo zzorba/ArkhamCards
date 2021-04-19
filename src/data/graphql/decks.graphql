@@ -81,14 +81,14 @@ mutation insertNextArkhamDbDeck(
       investigator: $investigator
       campaign_id: $campaign_id
       owner_id: $userId
+      content: $content
+      content_hash: $content_hash
       previous_decks: {
         data: {
           arkhamdb_id: $previous_arkhamdb_id
           local_uuid: null
           campaign_id: $campaign_id
           investigator: $investigator
-          content: $content
-          content_hash: $content_hash
           owner_id: $userId
         }
         on_conflict: {

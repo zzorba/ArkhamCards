@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { CampaignId } from '@actions/types';
+import { CampaignId, UploadedCampaignId } from '@actions/types';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useCreateCampaignActions } from '@data/remote/campaigns';
 import { uploadCampaign } from '@components/campaignguide/actions';
@@ -23,13 +23,18 @@ interface Props {
   campaignId: CampaignId;
   campaign: SingleCampaignT | undefined;
   deckActions: DeckActions;
-  setCampaignServerId: (serverId: number) => void;
+  setCampaignServerId: undefined | ((serverId: number) => void);
+  setCampaignLinkedServerId?: (id: {
+    campaignId: UploadedCampaignId;
+    campaignIdA: UploadedCampaignId;
+    campaignIdB: UploadedCampaignId;
+  }) => void;
   showAlert: ShowAlert;
 }
 
 type Dispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
-export default function UploadCampaignButton({ componentId, campaign, campaignId, deckActions, setCampaignServerId, showAlert }: Props) {
+export default function UploadCampaignButton({ componentId, campaign, campaignId, deckActions, setCampaignServerId, setCampaignLinkedServerId, showAlert }: Props) {
   const { user } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected }] = useNetworkStatus();
   const [uploading, setUploading] = useState(false);
@@ -40,13 +45,17 @@ export default function UploadCampaignButton({ componentId, campaign, campaignId
       setUploading(true);
       try {
         const newCampaignId = await dispatch(uploadCampaign(user, createCampaignActions, deckActions, campaignId));
-        setCampaignServerId(newCampaignId.serverId);
+        if (newCampaignId.type === 'single') {
+          setCampaignServerId && setCampaignServerId(newCampaignId.id.serverId);
+        } else {
+          setCampaignLinkedServerId && setCampaignLinkedServerId(newCampaignId.ids);
+        }
       } catch (e) {
         showAlert('Error', e.message);
       }
       setUploading(false);
     }
-  }, [dispatch, setCampaignServerId, setUploading, showAlert,
+  }, [dispatch, setCampaignServerId, setCampaignLinkedServerId, setUploading, showAlert,
     createCampaignActions, user, uploading, deckActions, campaignId]);
 
   const isOwner = !!(campaign?.owner_id && user && campaignId.serverId && campaign.owner_id === user.uid);

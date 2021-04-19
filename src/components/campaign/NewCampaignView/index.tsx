@@ -189,7 +189,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
     setInvestigatorIds(filter(investigatorIds, id => id !== card.code));
   }, [investigatorIds, setInvestigatorIds]);
 
-  const deckAdded = useCallback((deck: Deck) => {
+  const deckAdded = useCallback(async(deck: Deck) => {
     setSelectedDecks([...selectedDecks, new LatestDeckRedux(deck, undefined, undefined)]);
     setInvestigatorIds([...investigatorIds, deck.investigator_code]);
     setInvestigatorToDeck({

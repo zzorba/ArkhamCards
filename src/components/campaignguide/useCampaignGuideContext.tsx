@@ -40,7 +40,7 @@ export default function useCampaignGuideContext(
   const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
   const campaignChooseDeck = useChooseDeck(createDeckActions, updateCampaignActions);
-  const showChooseDeck = useCallback((singleInvestigator?: Card, callback?: (code: string) => void) => {
+  const showChooseDeck = useCallback((singleInvestigator?: Card, callback?: (code: string) => Promise<void>) => {
     if (campaignInvestigators !== undefined) {
       campaignChooseDeck(campaignId, campaignInvestigators, singleInvestigator, callback);
     }

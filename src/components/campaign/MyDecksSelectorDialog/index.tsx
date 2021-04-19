@@ -30,7 +30,7 @@ import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 export interface MyDecksSelectorProps {
   campaignId: CampaignId;
-  onDeckSelect: (deck: Deck) => void;
+  onDeckSelect: (deck: Deck) => Promise<void>;
   onInvestigatorSelect?: (card: Card) => void;
 
   singleInvestigator?: string;

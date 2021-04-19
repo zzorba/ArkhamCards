@@ -3,6 +3,7 @@ import { Animated, Easing, Text, View, StyleSheet } from 'react-native';
 import { find , map } from 'lodash';
 import Collapsible from 'react-native-collapsible';
 import { t } from 'ttag';
+import { useSelector } from 'react-redux';
 
 import { showCard, showDeckModal } from '@components/nav/helper';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
@@ -27,6 +28,7 @@ import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
+import { AppState, makeUploadingDeckSelector } from '@reducers';
 
 interface Props {
   componentId: string;
@@ -80,6 +82,8 @@ export default function InvestigatorCampaignRow({
   children,
   miniButtons,
 }: Props) {
+  const uploadingSelector = useMemo(makeUploadingDeckSelector, []);
+  const uploading = useSelector((state: AppState) => uploadingSelector(state, campaign.id, investigator.code));
   const { colors, typography, width } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const onCardPress = useCallback((card: Card) => {
@@ -101,6 +105,7 @@ export default function InvestigatorCampaignRow({
     totalXp,
     spentXp,
     editXpPressed,
+    uploading,
   });
 
   const onTraumaPress = useCallback(() => {
@@ -166,6 +171,36 @@ export default function InvestigatorCampaignRow({
     extrapolate: 'clamp',
   });
   const canRemoveDeck = !deck?.owner || (user && deck.owner.id === user.uid);
+
+  const footerButton = useMemo(() => {
+    if (uploading) {
+      return (
+        <RoundedFooterButton
+          icon="spinner"
+          title={t`Uploading...`}
+        />
+      );
+    }
+    if (deck && !canRemoveDeck) {
+      return (
+        <RoundedFooterButton
+          onPress={viewDeck}
+          icon="deck"
+          title={t`View deck`}
+        />
+      );
+    }
+    return (
+      <RoundedFooterDoubleButton
+        onPressA={deck ? viewDeck : selectDeck}
+        iconA="deck"
+        titleA={deck ? t`View deck` : t`Select deck`}
+        onPressB={removePressed}
+        iconB="dismiss"
+        titleB={deck ? t`Remove deck` : t`Remove`}
+      />
+    )
+  }, [uploading, deck, canRemoveDeck, viewDeck, selectDeck, removePressed]);
   return (
     <View style={space.marginBottomS}>
       <TouchableWithoutFeedback onPress={toggleOpen}>
@@ -223,22 +258,7 @@ export default function InvestigatorCampaignRow({
               </>
             ) }
           </View>
-          { deck && !canRemoveDeck ? (
-            <RoundedFooterButton
-              onPress={viewDeck}
-              icon="deck"
-              title={t`View deck`}
-            />
-          ) : (
-            <RoundedFooterDoubleButton
-              onPressA={deck ? viewDeck : selectDeck}
-              iconA="deck"
-              titleA={deck ? t`View deck` : t`Select deck`}
-              onPressB={removePressed}
-              iconB="dismiss"
-              titleB={deck ? t`Remove deck` : t`Remove`}
-            />
-          ) }
+          { footerButton }
         </View>
       </Collapsible>
     </View>

@@ -27,18 +27,19 @@ import { ApolloCache, useApolloClient } from '@apollo/client';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { optimisticUpdates } from './apollo';
 
+let fakeId: number = -1;
 export interface DeckActions {
   updateDeck: (deck: Deck, campaignId: UploadedCampaignId) => Promise<void>;
   deleteDeck: (deckId: DeckId, campaignId: UploadedCampaignId, deleteAllVersions: boolean) => Promise<void>;
   createBaseDeck: (
     deck: Deck,
     campaignId: UploadedCampaignId
-  ) => Promise<number | undefined>;
+  ) => Promise<void>;
   createNextDeck: (
     deck: Deck,
     campaignId: UploadedCampaignId,
     previousDeckId: DeckId
-  ) => Promise<number | undefined>;
+  ) => Promise<void >;
 }
 
 function hashDeck(deck: Deck): Promise<string> {
@@ -302,7 +303,7 @@ export function useDeckActions(): DeckActions {
             returning: [
               {
                 __typename: 'campaign_deck',
-                id: deckId.serverId || -1,
+                id: deckId.serverId || (fakeId--),
                 campaign_id: campaignId.serverId,
                 local_uuid: deckId.uuid,
                 arkhamdb_id: null,
@@ -336,7 +337,7 @@ export function useDeckActions(): DeckActions {
             returning: [
               {
                 __typename: 'campaign_deck',
-                id: deckId.serverId || -1,
+                id: deckId.serverId || (fakeId--),
                 campaign_id: campaignId.serverId,
                 arkhamdb_id: deckId.id,
                 local_uuid: null,
@@ -379,7 +380,7 @@ export function useDeckActions(): DeckActions {
             returning: [
               {
                 __typename: 'campaign_deck',
-                id: deckId.serverId || -1,
+                id: deckId.serverId || (fakeId--),
                 local_uuid: deckId.uuid,
                 arkhamdb_id: null,
                 campaign_id: campaignId.serverId,
@@ -410,7 +411,7 @@ export function useDeckActions(): DeckActions {
             returning: [
               {
                 __typename: 'campaign_deck',
-                id: deckId.serverId || -1,
+                id: deckId.serverId || (fakeId--),
                 arkhamdb_id: deckId.id,
                 local_uuid: null,
                 campaign_id: campaignId.serverId,
@@ -440,7 +441,7 @@ export function useDeckActions(): DeckActions {
   const createBaseDeck = useCallback(async(
     deck: Deck,
     campaignId: UploadedCampaignId,
-  ) => {
+  ): Promise<void> => {
     if (!user) {
       throw new Error('No user');
     }
@@ -454,12 +455,12 @@ export function useDeckActions(): DeckActions {
       content: deck,
       content_hash,
     };
-    const response = await createNewDeck({
+    await createNewDeck({
       optimisticResponse: {
         __typename: 'mutation_root',
         insert_campaign_deck_one: {
           __typename: 'campaign_deck',
-          id: -1,
+          id: (fakeId--),
           campaign_id: campaignId.serverId,
           local_uuid: deckId.local ? deckId.uuid : null,
           arkhamdb_id: deckId.id || null,
@@ -493,14 +494,13 @@ export function useDeckActions(): DeckActions {
       },
       update: optimisticUpdates.insertNewDeck.update,
     });
-    return response?.data?.insert_campaign_deck_one?.id;
   }, [createNewDeck, user]);
 
   const createNextDeck = useCallback(async(
     deck: Deck,
     campaignId: UploadedCampaignId,
     previousDeckId: DeckId
-  ) => {
+  ): Promise<void> => {
     if (!user) {
       throw new Error('No user');
     }
@@ -515,12 +515,12 @@ export function useDeckActions(): DeckActions {
       content_hash,
     };
     if (deckId.local) {
-      const response = await createNextLocalDeck({
+      await createNextLocalDeck({
         optimisticResponse: {
           __typename: 'mutation_root',
           insert_campaign_deck_one: {
             __typename: 'campaign_deck',
-            id: -1,
+            id: (fakeId--),
             campaign_id: campaignId.serverId,
             local_uuid: deck.uuid,
             arkhamdb_id: null,
@@ -535,7 +535,7 @@ export function useDeckActions(): DeckActions {
             content_hash,
             previous_deck: {
               __typename: 'campaign_deck',
-              id: previousDeckId.serverId || -1,
+              id: previousDeckId.serverId || (fakeId--),
               local_uuid: previousDeckId.uuid,
               arkhamdb_id: null,
               campaign_id: campaignId.serverId,
@@ -559,18 +559,18 @@ export function useDeckActions(): DeckActions {
         },
         update: optimisticUpdates.insertNextLocalDeck.update,
       });
-      return response.data?.insert_campaign_deck_one?.id;
+      return;
     }
 
     if (previousDeckId.local || deck.local) {
       throw new Error(`Can't mix remote and local decks`);
     }
-    const response = await createNextArkhamDbDeck({
+    await createNextArkhamDbDeck({
       optimisticResponse: {
         __typename: 'mutation_root',
         insert_campaign_deck_one: {
           __typename: 'campaign_deck',
-          id: -1,
+          id: (fakeId--),
           campaign_id: campaignId.serverId,
           arkhamdb_id: deck.id,
           local_uuid: null,
@@ -590,7 +590,7 @@ export function useDeckActions(): DeckActions {
           },
           previous_deck: {
             __typename: 'campaign_deck',
-            id: previousDeckId.serverId || -1,
+            id: previousDeckId.serverId || (fakeId--),
             local_uuid: null,
             arkhamdb_id: previousDeckId.id,
             campaign_id: campaignId.serverId,
@@ -609,7 +609,6 @@ export function useDeckActions(): DeckActions {
       },
       update: optimisticUpdates.insertNextArkhamDbDeck.update,
     });
-    return response.data?.insert_campaign_deck_one?.id;
   }, [createNextArkhamDbDeck, createNextLocalDeck, user]);
   return useMemo(() => {
     return {

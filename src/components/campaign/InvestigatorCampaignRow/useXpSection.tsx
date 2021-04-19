@@ -22,9 +22,10 @@ interface Props {
   spentXp: number;
   totalXp: number;
   last?: boolean;
+  uploading: boolean;
 }
 
-export default function useXpSection({ deck, campaign, cards, investigator, last, showDeckUpgrade, editXpPressed, spentXp, totalXp }: Props): [React.ReactNode, boolean] {
+export default function useXpSection({ deck, campaign, cards, investigator, last, showDeckUpgrade, editXpPressed, spentXp, totalXp, uploading }: Props): [React.ReactNode, boolean] {
   const { colors } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const showDeckUpgradePress = useCallback(() => {
@@ -47,15 +48,15 @@ export default function useXpSection({ deck, campaign, cards, investigator, last
   }, [colors, campaign, deck, investigator]);
   const ownerDeck = !deck?.owner || !user || deck.owner.id === user.uid;
   const parsedDeck = useMemo(() => {
-    if (!deck) {
+    if (!deck || uploading) {
       return undefined;
     }
     if (!deck.previousDeck && !showDeckUpgrade) {
       return undefined;
     }
     return parseBasicDeck(deck.deck, cards, deck.previousDeck);
-  }, [deck, showDeckUpgrade, cards]);
-  if (deck) {
+  }, [deck, uploading, showDeckUpgrade, cards]);
+  if (deck && !uploading) {
     if (!parsedDeck) {
       return [null, false];
     }
@@ -71,7 +72,7 @@ export default function useXpSection({ deck, campaign, cards, investigator, last
           title={t`Experience`}
           valueLabel={t`${spentXp} of ${totalXp} spent`}
           last={last && !showDeckUpgrade}
-          editable
+          editable={!uploading}
           onPress={onPress}
         />
         { !!showDeckUpgrade && (
@@ -81,7 +82,7 @@ export default function useXpSection({ deck, campaign, cards, investigator, last
             icon="upgrade"
             onPress={showDeckUpgradePress}
             last={last}
-            editable
+            editable={!uploading}
           />
         ) }
       </>
@@ -96,7 +97,7 @@ export default function useXpSection({ deck, campaign, cards, investigator, last
       title={t`Experience`}
       valueLabel={t`${spentXp} of ${totalXp} spent` }
       last={last}
-      editable
+      editable={!uploading}
       onPress={editXpPressed}
     />
   ), false];
