@@ -39892,7 +39892,7 @@
     },
     {
       "id": "create_leads_deck",
-      "text": "Es werden alle Storzvorteilskarten aus den 5 beiseitegelegten Begegnugssets herausgesucht (Fremdartiges Gerät, Buch der Rituale, Unheimliche Lösung, Schlüssel des Direktors und Altes Medaillon) und zu einem eigenen Deck zusammengemischt: Dies ist das Spurendeck. Es wird neben die Szenarioübersichtskarte gelegt."
+      "text": "Es werden alle Storyvorteilskarten aus den 5 beiseitegelegten Begegnugssets herausgesucht (Fremdartiges Gerät, Buch der Rituale, Unheimliche Lösung, Schlüssel des Direktors und Altes Medaillon) und zu einem eigenen Deck zusammengemischt: Dies ist das Spurendeck. Es wird neben die Szenarioübersichtskarte gelegt."
     },
     {
       "id": "setup_locations",
@@ -40400,7 +40400,7 @@
     {
       "id": "the_truth_4",
       "type": "story",
-      "text": "„Nein. Nein, ich glaube Ihnen nicht!“, sagt Sergeant Monroe und zeiht seine Waffe. „Nichts davon passt zusammen. Sie kommen jetzt mit mir. Ihre Geschichte können Sie auf dem Revier erzählen.“ Du hebst die Hände, doch als Monroe dich gerade nach draußen führen will, ertönt ein gewaltiger Knall aus einem anderen Teil des Hotels. Das gesamte Gebäude erzittert bis auf die Grundmauern und man hört Leute schreien. „Was zum Teufel?“ Monroe schaut zur Tür, dann zu dir. „Sie bleiben hier“, warnt er dich, „oder ich schwöre, ich werde Sie beim nächsten Mal direkt einlochen!“ Er läuft davon, um den Lärm zu untersuchen, und murmelt, dass er zu alt für diesen Job wird."
+      "text": "„Nein. Nein, ich glaube Ihnen nicht!“, sagt Sergeant Monroe und zieht seine Waffe. „Nichts davon passt zusammen. Sie kommen jetzt mit mir. Ihre Geschichte können Sie auf dem Revier erzählen.“ Du hebst die Hände, doch als Monroe dich gerade nach draußen führen will, ertönt ein gewaltiger Knall aus einem anderen Teil des Hotels. Das gesamte Gebäude erzittert bis auf die Grundmauern und man hört Leute schreien. „Was zum Teufel?“ Monroe schaut zur Tür, dann zu dir. „Sie bleiben hier“, warnt er dich, „oder ich schwöre, ich werde Sie beim nächsten Mal direkt einlochen!“ Er läuft davon, um den Lärm zu untersuchen, und murmelt, dass er zu alt für diesen Job wird."
     },
     {
       "id": "the_truth_4_consequences",
@@ -40864,7 +40864,7 @@
     {
       "id": "time_worn_locket_and_managers_key",
       "type": "story",
-      "text": "Die Frau in dem Medaillon ist vor vielen Jahren ermordet worden und der Direktor hatte den Auftrag gegeben. Der Mann in Zimmer 225 war einer der beteiligten Hotemitarbeiter. In jenem Zimmer hat der Geist in einem Anfall von gerechtem Zorn Besitz von dir ergriffen. Nichts in diesem Hotel wird wieder normal werden, bis der Direktor zerstört und der Geist gerächt ist."
+      "text": "Die Frau in dem Medaillon ist vor vielen Jahren ermordet worden und der Direktor hatte den Auftrag gegeben. Der Mann in Zimmer 225 war einer der beteiligten Hotelmitarbeiter. In jenem Zimmer hat der Geist in einem Anfall von gerechtem Zorn Besitz von dir ergriffen. Nichts in diesem Hotel wird wieder normal werden, bis der Direktor zerstört und der Geist gerächt ist."
     },
     {
       "id": "true_culprit_6",
@@ -40934,7 +40934,7 @@
     },
     {
       "id": "true_culprit_7",
-      "text": "Entferne alles Verderben aus dem Spiel. Rücke das Szenen- und das Agendadeck zur beiseitegelegten Karte „Der wahre Täter (VI)“ vor. Sie ist sowohl aktuelle Szene als auch die aktuelle Agenda."
+      "text": "Entferne alles Verderben aus dem Spiel. Rücke das Szenen- und das Agendadeck zur beiseitegelegten Karte „Der wahre Täter (VII)“ vor. Sie ist sowohl aktuelle Szene als auch die aktuelle Agenda."
     },
     {
       "id": "move_clues_7",
@@ -41186,7 +41186,7 @@
         "choices": [
           {
             "id": "replay",
-            "text": "Spiele das Szenario erneuet.",
+            "text": "Spiele das Szenario erneut.",
             "steps": [
               "$upgrade_decks",
               "replay_scenario"
@@ -41194,7 +41194,7 @@
           },
           {
             "id": "done",
-            "text": "Speile das Szenario nicht erneut.",
+            "text": "Spiele das Szenario nicht erneut.",
             "steps": [
               "murders_continue_unsolved",
               "earn_xp",
@@ -41214,7 +41214,7 @@
         "choices": [
           {
             "id": "replay",
-            "text": "Spiele das Szenario erneuet.",
+            "text": "Spiele das Szenario erneut.",
             "steps": [
               "$upgrade_decks",
               "replay_scenario"
@@ -41222,7 +41222,7 @@
           },
           {
             "id": "done",
-            "text": "Speile das Szenario nicht erneut.",
+            "text": "Spiele das Szenario nicht erneut.",
             "steps": [
               "murders_continue_unsolved",
               "earn_xp",
@@ -41373,7 +41373,7 @@
     {
       "id": "R1",
       "title": "Auflösung 1",
-      "text": "Niemand wird jemals glauben, was du im Excelsior gesehen hast. Keine drei Tage später war das Hotel wieder geöffnet, als wäre nie etwas passiert. Doch du weißt es besser. Du hast alles mit eigenen Augen gesehe. Die Ereignisse verfolgen dich weiterhin in deinen Träumen und deinen wachen Gedanken. Auch heute gehst du noch Umwege, um das Excelsior zu meiden, obwohl bereits Wochen vergangen sind und es keine Anzeichen für weitere dunkle Pläne innerhalb seiner verfluchten Mauern gibt. Das Einzige, was die widerhallenden Erinnerungen an diese schrecklichen Erfahrungen zum Schweigen bringen kann, ist ein Besuch in der örtlichen Flüsterkneipe. Doch selbst sämtlicher Alkohol auf der Welt könnte die grausamen Visionen nicht aus deinen Albträumen fernhalten, die dich mitten in der nacht schweißgebadet aufschrecken lassen. In dieser Zeit wirst du auf eine Person aufmerksam, die sich in der Stadt nach dem Excelsior erkundigt. Unschuldige Fragen zunächst, doch mit jedem Tag, der vergeht, werden sie nachdrücklicher. Diese Person wird dir mit Sicherheit glauben! Irgendjemand muss es tun. Du bist vielleicht aus dem Griff des Excelsior entkommen, doch es wird andere Opfer geben, da bist du dir sicher. Du schnappst dir ein Stück Papier und schreibst hastig eine Notiz.\n<center><fancy>Es ist alles nur Fassade.</fancy></center>\n<center><fancy>Zimmer 225. Heute Nacht.</fancy></center>\n<center><fancy>Es ist noch nicht vorbei.</fancy></center>\nFalls diese Person hinter den Schleier des Excelsior blicken kann, dann können das vielleicht auch andere. Es mag noch nicht zu spät sein, die Machenschaften im Hotel ein für alle Mal zu beenden, bevor das alles wieder passiert!",
+      "text": "Niemand wird jemals glauben, was du im Excelsior gesehen hast. Keine drei Tage später war das Hotel wieder geöffnet, als wäre nie etwas passiert. Doch du weißt es besser. Du hast alles mit eigenen Augen gesehe. Die Ereignisse verfolgen dich weiterhin in deinen Träumen und deinen wachen Gedanken. Auch heute gehst du noch Umwege, um das Excelsior zu meiden, obwohl bereits Wochen vergangen sind und es keine Anzeichen für weitere dunkle Pläne innerhalb seiner verfluchten Mauern gibt. Das Einzige, was die widerhallenden Erinnerungen an diese schrecklichen Erfahrungen zum Schweigen bringen kann, ist ein Besuch in der örtlichen Flüsterkneipe. Doch selbst sämtlicher Alkohol auf der Welt könnte die grausamen Visionen nicht aus deinen Albträumen fernhalten, die dich mitten in der Nacht schweißgebadet aufschrecken lassen. In dieser Zeit wirst du auf eine Person aufmerksam, die sich in der Stadt nach dem Excelsior erkundigt. Unschuldige Fragen zunächst, doch mit jedem Tag, der vergeht, werden sie nachdrücklicher. Diese Person wird dir mit Sicherheit glauben! Irgendjemand muss es tun. Du bist vielleicht aus dem Griff des Excelsior entkommen, doch es wird andere Opfer geben, da bist du dir sicher. Du schnappst dir ein Stück Papier und schreibst hastig eine Notiz.\n<center><fancy>Es ist alles nur Fassade.</fancy></center>\n<center><fancy>Zimmer 225. Heute Nacht.</fancy></center>\n<center><fancy>Es ist noch nicht vorbei.</fancy></center>\nFalls diese Person hinter den Schleier des Excelsior blicken kann, dann können das vielleicht auch andere. Es mag noch nicht zu spät sein, die Machenschaften im Hotel ein für alle Mal zu beenden, bevor das alles wieder passiert!",
       "steps": [
         "excelsior_is_quiet_for_now",
         "check_police_on_your_side",
@@ -41385,7 +41385,7 @@
     {
       "id": "R2",
       "title": "Auflösung 2",
-      "text": "„Wenn Sie noch länger da sitzen, muss ich Ihnen Miete berechnen.“ Du blinzelst schnell, als würdest du aus einem tiefen Traum erwachen. Als du aufblickst, erkennst du einen Kellner, der dich genervt anstarrt. Er trägt einen Stapel mit schmutzigem Geschirr. In deiner Hand hältst du ein Glas Wasser. Du kannst dich nicht daran erinnern, es bestellt zu haben. Wie lange bist du schon hier? Und wo genau ist hier? Du drehst dich in deinem Stuhl herum und erkennst das Restaurant des Excelsior wieder. Ein paar andere Gäste sind anwesen, die ein frühes Abendessen bestellen und dich nicht weiter beachten. Das weiche Licht des Herbstnachmittags fällt durch die Fenster und aus der Hotellobby dringt geschäftigerLärm herüber. Du drehst dich wieder um und wirfst einen kurzen Blick auf den Kellner, bevor du in die Tasche greifst, einen Vierteldollar auf den Tisch fallen lässt und dich in Richtung Lobby aufmachst. Deine Beine fühlen sich wie Gelee an und während du aus dem Restaurant stolperst, sehen diech andere Gäste besorgt an. Der Wachmann in der Ecke der Lobby beobachtet jeden deiner Schritte. Du gehst hinüber zur Rezeption und stützt dich an ihr hoch, doch als sich der Concierge nähert und du sein Gesicht erkennst, schreckst du zurück. Alle arbeiten, als wäre nichts geschehen. Aber das kann nicht sein. Alles, was du gesehen hast, war real, oder? Du stürmst durch die Vordertür, bevor der Concierge bei dir ist. Du musst Abstand zwischen dich und diesen verfluchten Ort bringen.\nDie Wochen vergehen. Nichts hilft dabei, das Gefühl in deinem Kopf zu unterdrücken, dass du etwas Wichtiges übersehen hast. Diese Angelegenheit mit dem Excelsior ist noch lange nicht abgeschlossen. Du beginnst deine Untersuchungen von vorne und hörst dich in der Stadt nach den neuesten Gerüchten über das Hotel um. Noch mehr vermisste Mitarbeiter. Weitere plötzliche Schließungen. Gäste, die nie am Hotel angekommen sind. Gäste, die das Hotel nie verlassen haben. Es ist alles zu viel.\nDu stehst an einer einsamen Straßenecke in der Nordstadt und überlegst, was du tun sollst. Straßenlaternen um dich herum gehen flackernd an, während der Abend in die Stadt schleicht. In diesem Moment rempelt dich ein Fremder an und murmelt eine halbherzige Entschuldigung. Du machst einen Schritt hinterher, bevor eine Erinnerung an deinem Bewusstsein nagt. Nein. Kann es sein…? Du steckst deine Hände in die Manteltaschen - im Inneren befindet sich eine kleine, gefaltete Notiz. Du blickst auf, doch der Fußgänger ist nirgendwo zu sehen. Langsam entfaltest du den Zettel und deine Finger zittern vor Angst.\n<center><fancy>Es ist alles nur Fassade.</fancy></center>\n<center><fancy>Zimmer 225. Heute Nacht.</fancy></center>\n<center><fancy>Es ist noch nicht vorbei.</fancy></center>",
+      "text": "„Wenn Sie noch länger da sitzen, muss ich Ihnen Miete berechnen.“ Du blinzelst schnell, als würdest du aus einem tiefen Traum erwachen. Als du aufblickst, erkennst du einen Kellner, der dich genervt anstarrt. Er trägt einen Stapel mit schmutzigem Geschirr. In deiner Hand hältst du ein Glas Wasser. Du kannst dich nicht daran erinnern, es bestellt zu haben. Wie lange bist du schon hier? Und wo genau ist hier? Du drehst dich in deinem Stuhl herum und erkennst das Restaurant des Excelsior wieder. Ein paar andere Gäste sind anwesend, die ein frühes Abendessen bestellen und dich nicht weiter beachten. Das weiche Licht des Herbstnachmittags fällt durch die Fenster und aus der Hotellobby dringt geschäftiger Lärm herüber. Du drehst dich wieder um und wirfst einen kurzen Blick auf den Kellner, bevor du in die Tasche greifst, einen Vierteldollar auf den Tisch fallen lässt und dich in Richtung Lobby aufmachst. Deine Beine fühlen sich wie Gelee an und während du aus dem Restaurant stolperst, sehen dich andere Gäste besorgt an. Der Wachmann in der Ecke der Lobby beobachtet jeden deiner Schritte. Du gehst hinüber zur Rezeption und stützt dich an ihr hoch, doch als sich der Concierge nähert und du sein Gesicht erkennst, schreckst du zurück. Alle arbeiten, als wäre nichts geschehen. Aber das kann nicht sein. Alles, was du gesehen hast, war real, oder? Du stürmst durch die Vordertür, bevor der Concierge bei dir ist. Du musst Abstand zwischen dich und diesen verfluchten Ort bringen.\nDie Wochen vergehen. Nichts hilft dabei, das Gefühl in deinem Kopf zu unterdrücken, dass du etwas Wichtiges übersehen hast. Diese Angelegenheit mit dem Excelsior ist noch lange nicht abgeschlossen. Du beginnst deine Untersuchungen von vorne und hörst dich in der Stadt nach den neuesten Gerüchten über das Hotel um. Noch mehr vermisste Mitarbeiter. Weitere plötzliche Schließungen. Gäste, die nie am Hotel angekommen sind. Gäste, die das Hotel nie verlassen haben. Es ist alles zu viel.\nDu stehst an einer einsamen Straßenecke in der Nordstadt und überlegst, was du tun sollst. Straßenlaternen um dich herum gehen flackernd an, während der Abend in die Stadt schleicht. In diesem Moment rempelt dich ein Fremder an und murmelt eine halbherzige Entschuldigung. Du machst einen Schritt hinterher, bevor eine Erinnerung an deinem Bewusstsein nagt. Nein. Kann es sein…? Du steckst deine Hände in die Manteltaschen - im Inneren befindet sich eine kleine, gefaltete Notiz. Du blickst auf, doch der Fußgänger ist nirgendwo zu sehen. Langsam entfaltest du den Zettel und deine Finger zittern vor Angst.\n<center><fancy>Es ist alles nur Fassade.</fancy></center>\n<center><fancy>Zimmer 225. Heute Nacht.</fancy></center>\n<center><fancy>Es ist noch nicht vorbei.</fancy></center>",
       "steps": [
         "check_replay_scenario_R2"
       ]
