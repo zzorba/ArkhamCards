@@ -229,7 +229,7 @@ export class CampaignGuideStateRemote implements CampaignGuideStateT {
   constructor(guide: FullCampaignGuideStateFragment) {
     this.guide = guide;
     this.guideUpdatedAt = new Date(Date.parse(guide.updated_at));
-    this.inputs = map(sortBy(this.guide.guide_inputs, i => i.created_at), unpackGuideInput);
+    this.inputs = map(this.guide.guide_inputs, unpackGuideInput);
   }
 
   undoInputs(scenarioId: string) {

@@ -16,6 +16,7 @@ import { TypedTypePolicies } from '@generated/graphql/apollo-helpers';
 import { getAuthToken } from '@lib/ArkhamCardsAuthProvider';
 
 import trackerLink from './trackerLink';
+import deepDiff from 'deep-diff';
 
 export const GRAPHQL_SERVER = 'api.arkhamcards.com/v1';
 
@@ -48,11 +49,25 @@ const typePolicies: TypedTypePolicies = {
     fields: {
       drawn: {
         merge(existing, incoming) {
+          if (existing?.length !== incoming?.length) {
+            return incoming;
+          }
+          const diff = deepDiff(existing, incoming);
+          if (!diff?.length) {
+            return existing;
+          }
           return incoming;
         },
       },
       sealed: {
         merge(existing, incoming) {
+          if (existing?.length !== incoming?.length) {
+            return incoming;
+          }
+          const diff = deepDiff(existing, incoming);
+          if (!diff?.length) {
+            return existing;
+          }
           return incoming;
         },
       },
@@ -63,11 +78,25 @@ const typePolicies: TypedTypePolicies = {
     fields: {
       guide_inputs: {
         merge(existing, incoming) {
+          if (existing?.length !== incoming?.length) {
+            return incoming;
+          }
+          const diff = deepDiff(existing, incoming);
+          if (!diff?.length) {
+            return existing;
+          }
           return incoming;
         },
       },
       guide_achievements: {
         merge(existing, incoming) {
+          if (existing?.length !== incoming?.length) {
+            return incoming;
+          }
+          const diff = deepDiff(existing, incoming);
+          if (!diff?.length) {
+            return existing;
+          }
           return incoming;
         },
       },
@@ -171,5 +200,6 @@ export default function constructApolloClient(store: Store) {
       link,
     ]),
     assumeImmutableResults: true,
+
   });
 }

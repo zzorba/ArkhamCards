@@ -23,6 +23,7 @@ import {
   useGetDeckHistoryQuery,
   HistoryDeckFragment,
 } from '@generated/graphql/apollo-schema';
+import { useWhyDidYouUpdate } from '@components/core/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { FriendStatus } from './api';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
@@ -94,7 +95,6 @@ export function useCampaignGuideStateRemote(campaignId: CampaignId | undefined, 
       });
     }
   }, [live, user, campaignId, subscribeToMore]);
-
   return useMemo(() => {
     if (!campaignId || !campaignId.serverId) {
       return undefined;

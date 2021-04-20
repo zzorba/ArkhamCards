@@ -1,12 +1,10 @@
 import {
   groupBy,
   mapValues,
-  flatMap,
   forEach,
   find,
   findKey,
   filter,
-  map,
   minBy,
   indexOf,
   sumBy,

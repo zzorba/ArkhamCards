@@ -254,7 +254,7 @@ export default function NewDeckListRow({
         </RoundedFactionBlock>
       </View>
     );
-  }, [colors, yithian, eliminated, deck, investigator, subDetails, lang, details, width, typography]);
+  }, [colors, yithian, eliminated, loadingAnimation, deck, investigator, subDetails, lang, details, width, typography]);
 
   if (!deck) {
     return (

@@ -22,10 +22,11 @@ interface Props {
   spentXp: number;
   totalXp: number;
   last?: boolean;
+  isDeckOwner: boolean;
   uploading: boolean;
 }
 
-export default function useXpSection({ deck, campaign, cards, investigator, last, showDeckUpgrade, editXpPressed, spentXp, totalXp, uploading }: Props): [React.ReactNode, boolean] {
+export default function useXpSection({ deck, campaign, cards, investigator, last, showDeckUpgrade, editXpPressed, spentXp, totalXp, isDeckOwner, uploading }: Props): [React.ReactNode, boolean] {
   const { colors } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const showDeckUpgradePress = useCallback(() => {
@@ -72,7 +73,7 @@ export default function useXpSection({ deck, campaign, cards, investigator, last
           title={t`Experience`}
           valueLabel={t`${spentXp} of ${totalXp} spent`}
           last={last && !showDeckUpgrade}
-          editable={!uploading}
+          editable={isDeckOwner && !uploading}
           onPress={onPress}
         />
         { !!showDeckUpgrade && (

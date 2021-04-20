@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { flatMap, forEach, map } from 'lodash';
-import { ListRenderItemInfo, RefreshControl, ScrollView } from 'react-native';
+import { flatMap, forEach } from 'lodash';
+import { ListRenderItemInfo, RefreshControl } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 

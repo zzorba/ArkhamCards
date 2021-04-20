@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import { filter, map } from 'lodash';
 import {
   FlatList,
@@ -18,6 +18,7 @@ import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useLatestDeck } from '@data/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import { useDebounce } from '@react-hook/debounce';
 
 interface Props {
   deckIds: MiniDeckT[];
@@ -106,12 +107,15 @@ export default function DeckList({
       />
     );
   }, [deckClicked, deckToCampaign]);
-
+  const [debouncedRefreshing, setDebouncedRefreshing] = useDebounce(!!refreshing, 500, true);
+  useEffect(() => {
+    setDebouncedRefreshing(!!refreshing);
+  }, [refreshing, setDebouncedRefreshing]);
   return (
     <FlatList
       refreshControl={
         <RefreshControl
-          refreshing={!!refreshing}
+          refreshing={debouncedRefreshing}
           onRefresh={onRefresh}
           tintColor={colors.lightText}
           progressViewOffset={SEARCH_BAR_HEIGHT}

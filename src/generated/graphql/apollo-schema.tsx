@@ -8049,7 +8049,7 @@ export type UserInfoFragment = (
 
 export type GuideInputFragment = (
   { __typename?: 'guide_input' }
-  & Pick<Guide_Input, 'id' | 'campaign_id' | 'step' | 'scenario' | 'type' | 'payload' | 'created_at'>
+  & Pick<Guide_Input, 'id' | 'campaign_id' | 'step' | 'scenario' | 'type' | 'payload'>
 );
 
 export type GuideAchievementFragment = (
@@ -9067,7 +9067,6 @@ export const GuideInputFragmentDoc = gql`
   scenario
   type
   payload
-  created_at
 }
     `;
 export const GuideAchievementFragmentDoc = gql`
@@ -9084,10 +9083,10 @@ export const FullCampaignGuideStateFragmentDoc = gql`
   id
   uuid
   updated_at
-  guide_inputs {
+  guide_inputs(order_by: {created_at: asc}) {
     ...GuideInput
   }
-  guide_achievements {
+  guide_achievements(order_by: {created_at: asc}) {
     ...GuideAchievement
   }
 }

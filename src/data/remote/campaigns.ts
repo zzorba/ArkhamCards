@@ -750,7 +750,6 @@ export function useGuideActions(): GuideActions {
         insert_guide_input_one: {
           ...insert,
           __typename: 'guide_input',
-          created_at: new Date().toISOString(),
         },
       },
       variables: insert,

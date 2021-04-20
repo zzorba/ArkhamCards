@@ -94,6 +94,7 @@ export default function InvestigatorCampaignRow({
   const editXpPressed = useCallback(() => {
     showXpDialog(investigator);
   }, [showXpDialog, investigator]);
+  const canRemoveDeck = !deck?.owner || (user && deck.owner.id === user.uid);
 
   const [xpButton, upgradeBadge] = useXpSection({
     deck,
@@ -106,6 +107,7 @@ export default function InvestigatorCampaignRow({
     spentXp,
     editXpPressed,
     uploading,
+    isDeckOwner: !!canRemoveDeck,
   });
 
   const onTraumaPress = useCallback(() => {
@@ -170,8 +172,6 @@ export default function InvestigatorCampaignRow({
     outputRange: ['-90deg', '-180deg'],
     extrapolate: 'clamp',
   });
-  const canRemoveDeck = !deck?.owner || (user && deck.owner.id === user.uid);
-
   const footerButton = useMemo(() => {
     if (uploading) {
       return (

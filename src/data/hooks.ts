@@ -120,8 +120,8 @@ export function useMyDecks(deckActions: DeckActions): [MyDecksState, () => void]
   const { myDecks, error, refreshing, myDecksUpdated } = useMyDecksRedux();
   const [remoteMyDecks, remoteRefreshing, refreshRemoteDecks] = useMyDecksRemote(deckActions);
   const onRefresh = useCallback(() => {
+    refreshRemoteDecks();
     if (!refreshing) {
-      refreshRemoteDecks();
       dispatch(refreshMyDecks(user, deckActions));
     }
   }, [dispatch, user, deckActions, refreshing, refreshRemoteDecks]);

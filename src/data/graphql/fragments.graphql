@@ -10,7 +10,6 @@ fragment GuideInput on guide_input {
   scenario
   type
   payload
-  created_at
 }
 
 fragment GuideAchievement on guide_achievement {
@@ -194,10 +193,10 @@ fragment FullCampaignGuideState on campaign_guide {
   id
   uuid
   updated_at
-  guide_inputs {
+  guide_inputs(order_by: { created_at: asc }) {
     ...GuideInput
   }
-  guide_achievements {
+  guide_achievements(order_by: { created_at: asc }) {
     ...GuideAchievement
   }
 }
