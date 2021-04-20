@@ -4250,6 +4250,12 @@ msgstr ""
 msgid "View players"
 msgstr ""
 
+msgid "Clear card cache"
+msgstr ""
+
+msgid "Uploading..."
+msgstr ""
+
 msgctxt "masculine"
 msgid "Alive"
 msgstr "Vivo"

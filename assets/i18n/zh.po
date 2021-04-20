@@ -4030,6 +4030,12 @@ msgstr ""
 msgid "View players"
 msgstr ""
 
+msgid "Clear card cache"
+msgstr ""
+
+msgid "Uploading..."
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
