@@ -1,5 +1,5 @@
 import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES, SealedToken } from '@actions/types';
-import { sortBy, uniq, concat, flatMap, sumBy, find, findLast, maxBy, map, last, forEach, findLastIndex } from 'lodash';
+import { uniq, concat, flatMap, sumBy, find, findLast, maxBy, map, last, forEach, findLastIndex } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
 import { FullCampaignFragment, LatestDeckFragment, MiniCampaignFragment, Guide_Input, FullCampaignGuideStateFragment, FullChaosBagResultFragment } from '@generated/graphql/apollo-schema';
@@ -212,7 +212,7 @@ export class SingleCampaignRemote extends MiniCampaignRemote implements SingleCa
   }
 }
 
-function unpackGuideInput(input: Pick<Guide_Input, 'id' | 'step' | 'type' | 'scenario' | 'payload' | 'created_at'>): GuideInput {
+function unpackGuideInput(input: Pick<Guide_Input, 'id' | 'step' | 'type' | 'scenario' | 'payload'>): GuideInput {
   return {
     ...input.payload,
     step: input.step || null,

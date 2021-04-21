@@ -686,6 +686,7 @@ export interface PlayScenarioInput {
 }
 export interface TextBoxInput {
   type: "text_box";
+  undo?: boolean;
   effects: FreeformCampaignLogEffect[];
 }
 export interface ReceiveCampaignLinkInput {

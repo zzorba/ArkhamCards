@@ -18,6 +18,8 @@ import StyleContext from '@styles/StyleContext';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import ConnectionProblemBanner from '@components/core/ConnectionProblemBanner';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import useNetworkStatus from '@components/core/useNetworkStatus';
+import { NetInfoStateType } from '@react-native-community/netinfo';
 
 interface Props {
   onScroll: (...args: any[]) => void;
@@ -128,7 +130,8 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
       />
     );
   }, [onPress, standalonesById]);
-
+  const [{ networkType, isConnected }] = useNetworkStatus();
+  const offline = !isConnected || networkType === NetInfoStateType.none;
   const header = useMemo(() => {
     return (
       <>
@@ -157,7 +160,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
       contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
       refreshControl={onRefresh ? (
         <RefreshControl
-          refreshing={isRefreshing || !!refreshing}
+          refreshing={!offline && (isRefreshing || !!refreshing)}
           onRefresh={doRefresh}
           tintColor={colors.lightText}
           progressViewOffset={SEARCH_BAR_HEIGHT}

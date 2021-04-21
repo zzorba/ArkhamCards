@@ -585,13 +585,13 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
         __typename: 'mutation_root',
         insert_investigator_data_one: {
           __typename: 'investigator_data',
-          id: `${campaignId.serverId}-${investigator}`,
+          id: `${campaignId.serverId} ${investigator}`,
           ...variables,
         },
       },
       variables,
       context: {
-        serializationKey: campaignId.serverId,
+        serializationKey: `${campaignId.serverId}-${investigator}`,
       },
       update: optimisticUpdates.updateInvestigatorTrauma.update,
     });
@@ -601,29 +601,28 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
     const variables = {
       campaign_id: campaignId.serverId,
       investigator,
-      killed: data.killed || null,
-      insane: data.insane || null,
-      physical: data.physical || null,
       mental: data.mental || null,
-      added_cards: data.addedCards || [],
-      removed_cards: data.removedCards || [],
-      ignore_story_assets: data.ignoreStoryAssets || [],
-      story_assets: data.storyAssets || [],
-      available_xp: data.availableXp || 0,
+      physical: data.physical || null,
+      insane: data.insane || null,
+      killed: data.killed || null,
+      storyAssets: data.storyAssets || [],
+      addedCards: data.addedCards || [],
+      removedCards: data.removedCards || [],
+      ignoreStoryAssets: data.ignoreStoryAssets || [],
+      availableXp: data.availableXp || 0,
     };
     await updateInvestigatorData({
       optimisticResponse: {
         __typename: 'mutation_root',
         insert_investigator_data_one: {
           __typename: 'investigator_data',
-          id: `${campaignId.serverId}-${investigator}`,
-          updated_at: new Date(),
+          id: `${campaignId.serverId} ${investigator}`,
           ...variables,
         },
       },
       variables,
       context: {
-        serializationKey: campaignId.serverId,
+        serializationKey: `${campaignId.serverId}-${investigator}`,
       },
       update: optimisticUpdates.updateInvestigatorData.update,
     });
@@ -656,7 +655,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
           __typename: 'mutation_root',
           insert_investigator_data_one: {
             __typename: 'investigator_data',
-            id: `${campaignId.serverId}-${investigator}`,
+            id: `${campaignId.serverId} ${investigator}`,
             campaign_id: campaignId.serverId,
             investigator,
             spentXp: xp,
@@ -668,7 +667,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
           spent_xp: xp,
         },
         context: {
-          serializationKey: campaignId.serverId,
+          serializationKey: `${campaignId.serverId}-${investigator}`,
         },
         update: optimisticUpdates.updateSpentXp.update,
       });
@@ -678,7 +677,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
           __typename: 'mutation_root',
           insert_investigator_data_one: {
             __typename: 'investigator_data',
-            id: `${campaignId.serverId}-${investigator}`,
+            id: `${campaignId.serverId} ${investigator}`,
             campaign_id: campaignId.serverId,
             investigator,
             availableXp: xp,
@@ -690,7 +689,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
           available_xp: xp,
         },
         context: {
-          serializationKey: campaignId.serverId,
+          serializationKey: `${campaignId.serverId}-${investigator}`,
         },
         update: optimisticUpdates.updateAvailableXp.update,
       });

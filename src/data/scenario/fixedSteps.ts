@@ -231,6 +231,7 @@ function editCampaignLogStep(): InputStep {
     text: t`In your Campaign Log, record that:`,
     input: {
       type: 'text_box',
+      undo: true,
       effects: [
         {
           type: 'freeform_campaign_log',

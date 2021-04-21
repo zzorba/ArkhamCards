@@ -118,8 +118,6 @@ fragment FullInvestigatorData on investigator_data {
   availableXp
   spentXp
   specialXp
-
-  updated_at
 }
 
 fragment MiniCampaign on campaign {
@@ -132,16 +130,16 @@ fragment MiniCampaign on campaign {
   scenarioResults
   guided
   owner_id
-  latest_decks {
+  latest_decks(order_by: { owner_id: asc }) {
     deck {
       ...MiniDeck
     }
   }
-  investigators {
+  investigators(order_by: { created_at: asc }) {
     id
     investigator
   }
-  investigator_data {
+  investigator_data(order_by: { created_at: asc}) {
     ...MiniInvestigatorData
   }
   updated_at
@@ -163,14 +161,14 @@ fragment FullCampaign on campaign {
   guided
   guide_version
   owner_id
-  investigators {
+  investigators(order_by: { created_at: asc }) {
     id
     investigator
   }
-  investigator_data {
+  investigator_data(order_by: { created_at: asc}) {
     ...FullInvestigatorData
   }
-  latest_decks {
+  latest_decks(order_by: { owner_id: asc }) {
     deck {
       ...LatestDeck
     }

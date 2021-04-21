@@ -374,11 +374,11 @@ mutation updateInvestigatorData(
   $mental: Int,
   $killed: Boolean,
   $insane: Boolean,
-  $added_cards: jsonb,
-  $available_xp: Int,
-  $story_assets: jsonb,
-  $ignore_story_assets: jsonb,
-  $removed_cards: jsonb
+  $addedCards: jsonb,
+  $availableXp: Int,
+  $storyAssets: jsonb,
+  $ignoreStoryAssets: jsonb,
+  $removedCards: jsonb
 ) {
   insert_investigator_data_one(
     object: {
@@ -388,11 +388,11 @@ mutation updateInvestigatorData(
       mental: $mental
       killed: $killed
       insane: $insane
-      addedCards: $added_cards
-      storyAssets: $story_assets
-      ignoreStoryAssets: $ignore_story_assets
-      removedCards: $removed_cards
-      availableXp: $available_xp
+      addedCards: $addedCards
+      storyAssets: $storyAssets
+      ignoreStoryAssets: $ignoreStoryAssets
+      removedCards: $removedCards
+      availableXp: $availableXp
     }
     on_conflict: {
       constraint: investigator_data_pkey

@@ -178,6 +178,7 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
         <TextBoxInputComponent
           id={step.id}
           prompt={step.text}
+          showUndo={!!step.input.undo}
         />
       );
     case 'send_campaign_link':

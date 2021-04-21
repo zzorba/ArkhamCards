@@ -1461,7 +1461,7 @@
     },
     {
       "id": "trauma",
-      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as they never fully recovers from their time spent outside the realm of reality.",
+      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as they never fully recover from their time spent outside the realm of reality.",
       "effects": [
         {
           "type": "trauma",
@@ -4278,7 +4278,7 @@
     },
     {
     	"id": "ritual_trauma",
-      "text": "Each investigator suffers 2 mental trauma, as they never fully recovers from their ordeal.",
+      "text": "Each investigator suffers 2 mental trauma, as they never fully recover from their ordeal.",
       "effects": [
         {
           "type": "trauma",
@@ -7163,7 +7163,7 @@
     },
     {
       "id": "take_mental_trauma",
-      "text": "Each investigator suffers 2 mental trauma, as they never fully recovers from their time spent in Carcosa, the realm of madness.",
+      "text": "Each investigator suffers 2 mental trauma, as they never fully recover from their time spent in Carcosa, the realm of madness.",
       "effects": [
         {
           "type": "trauma",
@@ -7174,7 +7174,7 @@
     },
     {
       "id": "take_physical_trauma",
-      "text": "Each investigator suffers 2 physical trauma, as they never fully recovers from their time spent in Carcosa, the realm of madness.",
+      "text": "Each investigator suffers 2 physical trauma, as they never fully recover from their time spent in Carcosa, the realm of madness.",
       "effects": [
         {
           "type": "trauma",
@@ -7185,7 +7185,7 @@
     },
     {
       "id": "take_physical_and_mental_trauma",
-      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as they never fully recovers from their time spent in Carcosa, the realm of madness.",
+      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as they never fully recover from their time spent in Carcosa, the realm of madness.",
       "effects": [
         {
           "type": "trauma",
@@ -12341,7 +12341,7 @@
     },
     {
       "id": "trauma",
-      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as they never fully recovers from their time spent outside the realm of reality.",
+      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as they never fully recover from their time spent outside the realm of reality.",
       "effects": [
         {
           "type": "trauma",
@@ -15080,7 +15080,7 @@
     },
     {
       "id": "ritual_trauma",
-      "text": "Each investigator suffers 2 mental trauma, as they never fully recovers from their ordeal.",
+      "text": "Each investigator suffers 2 mental trauma, as they never fully recover from their ordeal.",
       "effects": [
         {
           "type": "trauma",
@@ -19942,7 +19942,7 @@
     },
     {
       "id": "take_mental_trauma",
-      "text": "Each investigator suffers 2 mental trauma, as they never fully recovers from their time spent in Carcosa, the realm of madness.",
+      "text": "Each investigator suffers 2 mental trauma, as they never fully recover from their time spent in Carcosa, the realm of madness.",
       "effects": [
         {
           "type": "trauma",
@@ -19953,7 +19953,7 @@
     },
     {
       "id": "take_physical_trauma",
-      "text": "Each investigator suffers 2 physical trauma, as they never fully recovers from their time spent in Carcosa, the realm of madness.",
+      "text": "Each investigator suffers 2 physical trauma, as they never fully recover from their time spent in Carcosa, the realm of madness.",
       "effects": [
         {
           "type": "trauma",
@@ -19964,7 +19964,7 @@
     },
     {
       "id": "take_physical_and_mental_trauma",
-      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as they never fully recovers from their time spent in Carcosa, the realm of madness.",
+      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as they never fully recover from their time spent in Carcosa, the realm of madness.",
       "effects": [
         {
           "type": "trauma",
@@ -26135,7 +26135,7 @@
     },
     {
       "id": "two_physical_and_mental_trauma",
-      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as they never fully recovers from the expedition into N’kai.",
+      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as they never fully recover from the expedition into N’kai.",
       "effects": [
         {
           "type": "trauma",
@@ -59853,7 +59853,7 @@
     },
     {
       "id": "two_physical_and_mental_trauma",
-      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as they never fully recovers from the expedition into N’kai.",
+      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as they never fully recover from the expedition into N’kai.",
       "effects": [
         {
           "type": "trauma",

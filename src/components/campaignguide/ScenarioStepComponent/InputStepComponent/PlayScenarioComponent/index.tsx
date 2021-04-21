@@ -74,6 +74,7 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
           <ChooseOnePrompt
             id={`${id}_campaign_log`}
             text={t`Choose entry to add to campaign log:`}
+            showUndo
             choices={[
               ...choices,
               {
@@ -142,6 +143,7 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
         </SetupStepWrapper>
       ) }
       { mainContent }
+      { }
     </>
   );
 }

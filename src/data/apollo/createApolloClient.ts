@@ -10,6 +10,7 @@ import { RetryLink } from '@apollo/client/link/retry';
 import loggerLink from 'apollo-link-logger';
 import QueueLink from 'apollo-link-queue';
 import SerializingLink from 'apollo-link-serialize';
+import { map, zip } from 'lodash';
 
 import { TypedTypePolicies } from '@generated/graphql/apollo-helpers';
 
@@ -34,11 +35,26 @@ const typePolicies: TypedTypePolicies = {
       },
       investigators: {
         merge(existing, incoming) {
+          if (existing?.length !== incoming?.length) {
+            return incoming;
+          }
+          const diff = deepDiff(existing, incoming);
+          if (!diff?.length) {
+            return existing;
+          }
           return incoming;
         },
       },
       investigator_data: {
         merge(existing, incoming) {
+          if (existing?.length !== incoming?.length) {
+            return incoming;
+          }
+          const diff = deepDiff(existing, incoming);
+          if (!diff?.length) {
+            return existing;
+          }
+          console.log({ existing, incoming });
           return incoming;
         },
       },
@@ -108,16 +124,47 @@ const typePolicies: TypedTypePolicies = {
   guide_achievement: {
     keyFields: ['id', 'campaign_id'],
   },
+  investigator_data: {
+    keyFields: ['id'],
+  },
   users: {
     fields: {
       decks: {
         merge(existing, incoming) {
+          if (existing?.length !== incoming?.length) {
+            return incoming;
+          }
+          const diff = deepDiff(existing, incoming);
+          if (!diff?.length) {
+            return existing;
+          }
           return incoming;
         },
       },
       all_decks: {
         merge(existing, incoming) {
+          if (existing?.length !== incoming?.length) {
+            return incoming;
+          }
+          const diff = deepDiff(existing, incoming);
+          if (!diff?.length) {
+            return existing;
+          }
           return incoming;
+        },
+      },
+      campaigns: {
+        merge(existing, incoming) {
+          if (existing?.length !== incoming?.length) {
+            return incoming;
+          }
+          return map(zip(existing, incoming), ([e, i]) => {
+            const matches = !deepDiff(e, i)?.length;
+            if (matches) {
+              return e;
+            }
+            return i;
+          });
         },
       },
     },

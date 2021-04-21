@@ -8134,7 +8134,7 @@ export type MiniInvestigatorDataFragment = (
 
 export type FullInvestigatorDataFragment = (
   { __typename?: 'investigator_data' }
-  & Pick<Investigator_Data, 'addedCards' | 'ignoreStoryAssets' | 'removedCards' | 'availableXp' | 'spentXp' | 'specialXp' | 'updated_at'>
+  & Pick<Investigator_Data, 'addedCards' | 'ignoreStoryAssets' | 'removedCards' | 'availableXp' | 'spentXp' | 'specialXp'>
   & MiniInvestigatorDataFragment
 );
 
@@ -8681,11 +8681,11 @@ export type UpdateInvestigatorDataMutationVariables = Exact<{
   mental?: Maybe<Scalars['Int']>;
   killed?: Maybe<Scalars['Boolean']>;
   insane?: Maybe<Scalars['Boolean']>;
-  added_cards?: Maybe<Scalars['jsonb']>;
-  available_xp?: Maybe<Scalars['Int']>;
-  story_assets?: Maybe<Scalars['jsonb']>;
-  ignore_story_assets?: Maybe<Scalars['jsonb']>;
-  removed_cards?: Maybe<Scalars['jsonb']>;
+  addedCards?: Maybe<Scalars['jsonb']>;
+  availableXp?: Maybe<Scalars['Int']>;
+  storyAssets?: Maybe<Scalars['jsonb']>;
+  ignoreStoryAssets?: Maybe<Scalars['jsonb']>;
+  removedCards?: Maybe<Scalars['jsonb']>;
 }>;
 
 
@@ -8963,16 +8963,16 @@ export const MiniCampaignFragmentDoc = gql`
   scenarioResults
   guided
   owner_id
-  latest_decks {
+  latest_decks(order_by: {owner_id: asc}) {
     deck {
       ...MiniDeck
     }
   }
-  investigators {
+  investigators(order_by: {created_at: asc}) {
     id
     investigator
   }
-  investigator_data {
+  investigator_data(order_by: {created_at: asc}) {
     ...MiniInvestigatorData
   }
   updated_at
@@ -8988,7 +8988,6 @@ export const FullInvestigatorDataFragmentDoc = gql`
   availableXp
   spentXp
   specialXp
-  updated_at
 }
     ${MiniInvestigatorDataFragmentDoc}`;
 export const LatestDeckFragmentDoc = gql`
@@ -9032,14 +9031,14 @@ export const FullCampaignFragmentDoc = gql`
   guided
   guide_version
   owner_id
-  investigators {
+  investigators(order_by: {created_at: asc}) {
     id
     investigator
   }
-  investigator_data {
+  investigator_data(order_by: {created_at: asc}) {
     ...FullInvestigatorData
   }
-  latest_decks {
+  latest_decks(order_by: {owner_id: asc}) {
     deck {
       ...LatestDeck
     }
@@ -10876,9 +10875,9 @@ export type UpdateInvestigatorTraumaMutationHookResult = ReturnType<typeof useUp
 export type UpdateInvestigatorTraumaMutationResult = Apollo.MutationResult<UpdateInvestigatorTraumaMutation>;
 export type UpdateInvestigatorTraumaMutationOptions = Apollo.BaseMutationOptions<UpdateInvestigatorTraumaMutation, UpdateInvestigatorTraumaMutationVariables>;
 export const UpdateInvestigatorDataDocument = gql`
-    mutation updateInvestigatorData($campaign_id: Int!, $investigator: String!, $physical: Int, $mental: Int, $killed: Boolean, $insane: Boolean, $added_cards: jsonb, $available_xp: Int, $story_assets: jsonb, $ignore_story_assets: jsonb, $removed_cards: jsonb) {
+    mutation updateInvestigatorData($campaign_id: Int!, $investigator: String!, $physical: Int, $mental: Int, $killed: Boolean, $insane: Boolean, $addedCards: jsonb, $availableXp: Int, $storyAssets: jsonb, $ignoreStoryAssets: jsonb, $removedCards: jsonb) {
   insert_investigator_data_one(
-    object: {campaign_id: $campaign_id, investigator: $investigator, physical: $physical, mental: $mental, killed: $killed, insane: $insane, addedCards: $added_cards, storyAssets: $story_assets, ignoreStoryAssets: $ignore_story_assets, removedCards: $removed_cards, availableXp: $available_xp}
+    object: {campaign_id: $campaign_id, investigator: $investigator, physical: $physical, mental: $mental, killed: $killed, insane: $insane, addedCards: $addedCards, storyAssets: $storyAssets, ignoreStoryAssets: $ignoreStoryAssets, removedCards: $removedCards, availableXp: $availableXp}
     on_conflict: {constraint: investigator_data_pkey, update_columns: [physical, mental, killed, insane, addedCards, removedCards, storyAssets, ignoreStoryAssets, availableXp]}
   ) {
     ...FullInvestigatorData
@@ -10906,11 +10905,11 @@ export type UpdateInvestigatorDataMutationFn = Apollo.MutationFunction<UpdateInv
  *      mental: // value for 'mental'
  *      killed: // value for 'killed'
  *      insane: // value for 'insane'
- *      added_cards: // value for 'added_cards'
- *      available_xp: // value for 'available_xp'
- *      story_assets: // value for 'story_assets'
- *      ignore_story_assets: // value for 'ignore_story_assets'
- *      removed_cards: // value for 'removed_cards'
+ *      addedCards: // value for 'addedCards'
+ *      availableXp: // value for 'availableXp'
+ *      storyAssets: // value for 'storyAssets'
+ *      ignoreStoryAssets: // value for 'ignoreStoryAssets'
+ *      removedCards: // value for 'removedCards'
  *   },
  * });
  */

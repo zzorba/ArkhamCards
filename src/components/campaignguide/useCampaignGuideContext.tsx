@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useCallback, useContext, useMemo } from 'react';
-import { flatMap, forEach, concat, keys, uniq, omit } from 'lodash';
+import { flatMap, forEach, concat, keys, uniq } from 'lodash';
 import deepDiff from 'deep-diff';
 
 import { SingleCampaignGuideData } from './contextHelper';
@@ -270,8 +270,19 @@ export default function useCampaignGuideContext(
     forEach(
       uniq(concat(keys(campaign.investigatorData), keys(campaignLog.campaignData.investigatorData))),
       investigator => {
+        const oldData = campaign.investigatorData[investigator] || {};
         const newData = campaignLog.campaignData.investigatorData[investigator] || {};
-        if (deepDiff(omit(campaign.investigatorData[investigator] || {}, ['spentXp']), newData)?.length) {
+        const hasChanges =
+          (!!oldData.killed !== !!newData.killed) ||
+          (!!oldData.insane !== !!newData.insane) ||
+          (oldData.mental || 0) !== (newData.mental || 0) ||
+          (oldData.physical || 0) !== (newData.physical || 0) ||
+          (oldData.availableXp || 0) !== (newData.availableXp || 0) ||
+          deepDiff(oldData.addedCards || [], newData.addedCards || [])?.length ||
+          deepDiff(oldData.removedCards || [], newData.removedCards || [])?.length ||
+          deepDiff(oldData.storyAssets || [], newData.storyAssets || [])?.length ||
+          deepDiff(oldData.ignoreStoryAssets || [], newData.ignoreStoryAssets || [])?.length;
+        if (hasChanges) {
           dispatch(updateCampaignInvestigatorData(user, updateCampaignActions, campaignId, investigator, newData));
         }
       }

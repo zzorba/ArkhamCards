@@ -24,12 +24,13 @@ export function uploadCampaignDeckHelper(
         uploading: true,
       });
     }
+    const promises: Promise<void>[] = [];
     while (deck) {
       const deckId = getDeckId(deck);
       if (!deck.previousDeckId) {
-        await actions.createBaseDeck(deck, campaignId);
+        promises.push(actions.createBaseDeck(deck, campaignId));
       } else {
-        await actions.createNextDeck(deck, campaignId, deck.previousDeckId);
+        promises.push(actions.createNextDeck(deck, campaignId, deck.previousDeckId));
       }
       dispatch({
         type: UPLOAD_DECK,
@@ -42,11 +43,13 @@ export function uploadCampaignDeckHelper(
       deck = deckSelector(state, deck.nextDeckId);
     }
     if (investigator) {
-      dispatch({
-        type: SYNC_DECK,
-        campaignId,
-        investigator,
-        uploading: false,
+      Promise.all(promises).then(() => {
+        dispatch({
+          type: SYNC_DECK,
+          campaignId,
+          investigator,
+          uploading: false,
+        });
       });
     }
   };

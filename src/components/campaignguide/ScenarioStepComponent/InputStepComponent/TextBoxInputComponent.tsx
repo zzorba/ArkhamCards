@@ -1,5 +1,6 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { NativeSyntheticEvent, TextInput, TextInputSubmitEditingEventData, StyleSheet } from 'react-native';
+import { throttle } from 'lodash';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
@@ -11,13 +12,18 @@ import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext
 
 interface Props {
   id: string;
+  showUndo: boolean;
   prompt?: string;
 }
 
-export default function TextBoxInputComponent({ id, prompt }: Props) {
+export default function TextBoxInputComponent({ id, prompt, showUndo }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { borderStyle, typography } = useContext(StyleContext);
   const [text, setText] = useState('');
+
+  const undo = useMemo(() => throttle(() => {
+    scenarioState.undo();
+  }, 500, { leading: true, trailing: false }), [scenarioState]);
 
   const saveText = useCallback((text: string) => {
     if (text) {
@@ -54,6 +60,12 @@ export default function TextBoxInputComponent({ id, prompt }: Props) {
         onPress={onSavePress}
         disabled={!text}
       />
+      { showUndo && (
+        <BasicButton
+          title={t`Cancel`}
+          onPress={undo}
+        />
+      ) }
     </>
   );
 }

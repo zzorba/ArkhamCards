@@ -79,6 +79,8 @@ import {
   GetLatestArkhamDbDeckDocument,
   GetLatestDeckQuery,
   GetLatestDeckDocument,
+  MiniInvestigatorDataFragment,
+  MiniCampaignFragmentDoc,
 } from '@generated/graphql/apollo-schema';
 
 function fullToMiniCampaignFragment(fragment: FullCampaignFragment): MiniCampaignFragment {
@@ -733,7 +735,6 @@ const handleRemoveGuideInputs: MutationUpdaterFn<RemoveGuideInputsMutation> = (c
 };
 
 function updateMiniCampaign(cache: ApolloCache<unknown>, campaignId: number, update: (fragment: MiniCampaignFragment) => MiniCampaignFragment) {
-  /*
   const id = cache.identify({ __typename: 'campaign', id: campaignId });
   const existingCacheData = cache.readFragment<MiniCampaignFragment>({
     fragment: MiniCampaignFragmentDoc,
@@ -742,13 +743,12 @@ function updateMiniCampaign(cache: ApolloCache<unknown>, campaignId: number, upd
   });
   if (existingCacheData) {
     const data = update(existingCacheData);
-    console.log(`Updating miniCampaign from ${JSON.stringify(existingCacheData)} to ${JSON.stringify(data)}`);
     cache.writeFragment<MiniCampaignFragment>({
       fragment: MiniCampaignFragmentDoc,
       fragmentName: 'MiniCampaign',
       data,
     });
-  }*/
+  }
 }
 
 
@@ -814,10 +814,10 @@ const handleAddCampaignInvestigator: MutationUpdaterFn<AddCampaignInvestigatorMu
     return;
   }
   const { campaign_id, investigator } = data.insert_campaign_investigator_one;
-  updateMiniCampaign(
+  updateFullCampaign(
     cache,
     campaign_id,
-    (existingCacheData: MiniCampaignFragment) => {
+    (existingCacheData: FullCampaignFragment) => {
       return {
         ...existingCacheData,
         investigators: [
@@ -860,6 +860,7 @@ const handleUpdateInvestigatorTrauma: MutationUpdaterFn<UpdateInvestigatorTrauma
     return;
   }
   const investigator_data = data.insert_investigator_data_one;
+  const mini_investigator_data = pick(investigator_data, ['__typename', 'id', 'campaign_id', 'investigator', 'mental', 'physical', 'insane', 'killed', 'storuAssets']) as MiniInvestigatorDataFragment;
   updateMiniCampaign(
     cache,
     investigator_data.campaign_id,
@@ -870,19 +871,21 @@ const handleUpdateInvestigatorTrauma: MutationUpdaterFn<UpdateInvestigatorTrauma
           ...existingCacheData,
           investigator_data: [
             ...existingCacheData.investigator_data || [],
-            investigator_data,
+            mini_investigator_data,
           ],
         };
       }
       return {
         ...existingCacheData,
-        investigator_data: [
-          ...filter(existingCacheData.investigator_data, id => id.investigator !== investigator_data.investigator),
-          {
+        investigator_data: map(existingCacheData.investigator_data, id => {
+          if (id.investigator !== investigator_data.investigator) {
+            return id;
+          }
+          return {
             ...existingInvestigatorData,
             ...investigator_data,
-          },
-        ],
+          };
+        }),
       };
     }
   );
@@ -905,10 +908,12 @@ function updateFullInvestigatorData(cache: ApolloCache<unknown>, campaignId: num
       }
       return {
         ...existingCacheData,
-        investigator_data: [
-          ...filter(existingCacheData.investigator_data, id => id.investigator !== investigator),
-          update(existingInvestigatorData),
-        ],
+        investigator_data: map(existingCacheData.investigator_data, id => {
+          if (id.investigator !== investigator) {
+            return id;
+          }
+          return update(id);
+        }),
       };
     }
   );
@@ -931,7 +936,6 @@ function emptyInvestigatorData(campaign_id: number, investigator: string): FullI
     ignoreStoryAssets: [],
     availableXp: 0,
     spentXp: 0,
-    updated_at: new Date(),
   };
 }
 
@@ -950,8 +954,9 @@ const handleUpdateInvestigatorData: MutationUpdaterFn<UpdateInvestigatorDataMuta
       };
     }
     return {
-      ...data,
       ...investigator_data,
+      spentXp: data.spentXp,
+      specialXp: data.specialXp,
     };
   });
 };

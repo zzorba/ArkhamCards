@@ -1,6 +1,7 @@
 import { useContext, useMemo, useEffect, useCallback, useRef } from 'react';
 import { flatMap, forEach, map, omit } from 'lodash';
 
+import { useDebounce } from 'use-debounce';
 import { CampaignId, DeckId, UploadedCampaignId } from '@actions/types';
 import {
   MiniCampaignFragment,
@@ -23,7 +24,6 @@ import {
   useGetDeckHistoryQuery,
   HistoryDeckFragment,
 } from '@generated/graphql/apollo-schema';
-import { useWhyDidYouUpdate } from '@components/core/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { FriendStatus } from './api';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
@@ -50,7 +50,6 @@ export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
     fetchPolicy: 'cache-and-network',
     returnPartialData: false,
   });
-
   const refresh = useCallback(() => {
     if (user && refetch) {
       refetch({ userId: user?.uid || '' });
@@ -75,7 +74,8 @@ export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
       return new MiniCampaignRemote(campaign);
     });
   }, [rawCampaigns, user]);
-  return [campaigns, userLoading || dataLoading, refresh];
+  const [loading] = useDebounce(userLoading || dataLoading, 200);
+  return [campaigns, loading, refresh];
 }
 
 export function useCampaignGuideStateRemote(campaignId: CampaignId | undefined, live?: boolean): CampaignGuideStateT | undefined {
