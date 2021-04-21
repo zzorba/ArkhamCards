@@ -9,6 +9,7 @@ import { onError } from '@apollo/client/link/error';
 import { RetryLink } from '@apollo/client/link/retry';
 import loggerLink from 'apollo-link-logger';
 import QueueLink from 'apollo-link-queue';
+import deepEqual from 'deep-equal';
 import SerializingLink from 'apollo-link-serialize';
 import { map, zip } from 'lodash';
 
@@ -17,7 +18,6 @@ import { TypedTypePolicies } from '@generated/graphql/apollo-helpers';
 import { getAuthToken } from '@lib/ArkhamCardsAuthProvider';
 
 import trackerLink from './trackerLink';
-import deepDiff from 'deep-diff';
 
 export const GRAPHQL_SERVER = 'api.arkhamcards.com/v1';
 
@@ -38,8 +38,7 @@ const typePolicies: TypedTypePolicies = {
           if (existing?.length !== incoming?.length) {
             return incoming;
           }
-          const diff = deepDiff(existing, incoming);
-          if (!diff?.length) {
+          if (deepEqual(existing, incoming)) {
             return existing;
           }
           return incoming;
@@ -50,8 +49,7 @@ const typePolicies: TypedTypePolicies = {
           if (existing?.length !== incoming?.length) {
             return incoming;
           }
-          const diff = deepDiff(existing, incoming);
-          if (!diff?.length) {
+          if (deepEqual(existing, incoming)) {
             return existing;
           }
           console.log({ existing, incoming });
@@ -68,8 +66,7 @@ const typePolicies: TypedTypePolicies = {
           if (existing?.length !== incoming?.length) {
             return incoming;
           }
-          const diff = deepDiff(existing, incoming);
-          if (!diff?.length) {
+          if (deepEqual(existing, incoming)) {
             return existing;
           }
           return incoming;
@@ -80,8 +77,7 @@ const typePolicies: TypedTypePolicies = {
           if (existing?.length !== incoming?.length) {
             return incoming;
           }
-          const diff = deepDiff(existing, incoming);
-          if (!diff?.length) {
+          if (deepEqual(existing, incoming)) {
             return existing;
           }
           return incoming;
@@ -97,8 +93,7 @@ const typePolicies: TypedTypePolicies = {
           if (existing?.length !== incoming?.length) {
             return incoming;
           }
-          const diff = deepDiff(existing, incoming);
-          if (!diff?.length) {
+          if (deepEqual(existing, incoming)) {
             return existing;
           }
           return incoming;
@@ -109,8 +104,7 @@ const typePolicies: TypedTypePolicies = {
           if (existing?.length !== incoming?.length) {
             return incoming;
           }
-          const diff = deepDiff(existing, incoming);
-          if (!diff?.length) {
+          if (deepEqual(existing, incoming)) {
             return existing;
           }
           return incoming;
@@ -134,8 +128,7 @@ const typePolicies: TypedTypePolicies = {
           if (existing?.length !== incoming?.length) {
             return incoming;
           }
-          const diff = deepDiff(existing, incoming);
-          if (!diff?.length) {
+          if (deepEqual(existing, incoming)) {
             return existing;
           }
           return incoming;
@@ -146,8 +139,7 @@ const typePolicies: TypedTypePolicies = {
           if (existing?.length !== incoming?.length) {
             return incoming;
           }
-          const diff = deepDiff(existing, incoming);
-          if (!diff?.length) {
+          if (deepEqual(existing, incoming)) {
             return existing;
           }
           return incoming;
@@ -159,8 +151,7 @@ const typePolicies: TypedTypePolicies = {
             return incoming;
           }
           return map(zip(existing, incoming), ([e, i]) => {
-            const matches = !deepDiff(e, i)?.length;
-            if (matches) {
+            if (deepEqual(e, i)) {
               return e;
             }
             return i;

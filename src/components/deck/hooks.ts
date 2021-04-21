@@ -2,7 +2,7 @@ import { MutableRefObject, useContext, useEffect, useMemo, useRef, useState } fr
 import useDebouncedEffect from 'use-debounced-effect-hook';
 import { Platform } from 'react-native';
 import { forEach, keys, range } from 'lodash';
-import deepDiff from 'deep-diff';
+import deepEqual from 'deep-equal';
 import { ngettext, msgid, t } from 'ttag';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -234,7 +234,7 @@ export function useDeckEditState({
     });
 
     const originalTabooSet: number = (deck.taboo_id || 0);
-    const metaChanges = deepDiff(deckEdits.meta, deck.meta || {});
+    const metaChanged = !deepEqual(deckEdits.meta, deck.meta || {});
     setHasPendingEdits(
       (deckEdits.nameChange && deck.name !== deckEdits.nameChange) ||
       (deckEdits.descriptionChange && deck.description_md !== deckEdits.descriptionChange) ||
@@ -243,7 +243,7 @@ export function useDeckEditState({
       keys(slotDeltas.removals).length > 0 ||
       keys(slotDeltas.additions).length > 0 ||
       slotDeltas.ignoreDeckLimitChanged ||
-      (!!metaChanges && metaChanges.length > 0)
+      metaChanged
     );
     setSlotDeltas(slotDeltas);
   }, [deck, deckEdits, visible]);

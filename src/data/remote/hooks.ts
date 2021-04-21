@@ -385,7 +385,8 @@ export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, (
       return new MiniDeckRemote(deck);
     });
   }, [rawDecks]);
-  return [deckIds, !!(user && !data) || userLoading || dataLoading, refresh];
+  const [loading] = useDebounce(!!(user && !data) || userLoading || dataLoading, 200);
+  return [deckIds, loading, refresh];
 }
 
 export function useLatestDeckRemote(deckId: DeckId, campaign_id: CampaignId | undefined): LatestDeckT | undefined {

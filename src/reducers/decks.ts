@@ -28,7 +28,7 @@ import {
   REMOVE_UPLOAD_DECK,
   UploadedDeck,
 } from '@actions/types';
-import deepDiff from 'deep-diff';
+import deepEqual from 'deep-equal';
 
 interface DecksState {
   all: DecksMap;
@@ -278,8 +278,7 @@ export default function(
   }
   if (action.type === UPDATE_DECK) {
     const deck = updateDeck(state, action);
-    const diff = deepDiff(state.all[action.id.uuid] || {}, deck);
-    if (!diff || !diff.length) {
+    if (deepEqual(state.all[action.id.uuid] || {}, deck)) {
       return state;
     }
 

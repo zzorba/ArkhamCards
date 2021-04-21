@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useCallback, useContext, useMemo } from 'react';
 import { flatMap, forEach, concat, keys, uniq } from 'lodash';
-import deepDiff from 'deep-diff';
+import deepEqual from 'deep-equal';
 
 import { SingleCampaignGuideData } from './contextHelper';
 import campaignActions, { updateCampaignChaosBag, updateCampaignDifficulty, updateCampaignGuideVersion, updateCampaignInvestigatorData, updateCampaignScenarioResults } from '@components/campaign/actions';
@@ -278,17 +278,17 @@ export default function useCampaignGuideContext(
           (oldData.mental || 0) !== (newData.mental || 0) ||
           (oldData.physical || 0) !== (newData.physical || 0) ||
           (oldData.availableXp || 0) !== (newData.availableXp || 0) ||
-          deepDiff(oldData.addedCards || [], newData.addedCards || [])?.length ||
-          deepDiff(oldData.removedCards || [], newData.removedCards || [])?.length ||
-          deepDiff(oldData.storyAssets || [], newData.storyAssets || [])?.length ||
-          deepDiff(oldData.ignoreStoryAssets || [], newData.ignoreStoryAssets || [])?.length;
+          !deepEqual(oldData.addedCards || [], newData.addedCards || []) ||
+          !deepEqual(oldData.removedCards || [], newData.removedCards || []) ||
+          !deepEqual(oldData.storyAssets || [], newData.storyAssets || []) ||
+          !deepEqual(oldData.ignoreStoryAssets || [], newData.ignoreStoryAssets || []);
         if (hasChanges) {
           dispatch(updateCampaignInvestigatorData(user, updateCampaignActions, campaignId, investigator, newData));
         }
       }
     )
 
-    if (deepDiff(campaign.chaosBag, campaignLog.chaosBag)?.length) {
+    if (!deepEqual(campaign.chaosBag, campaignLog.chaosBag)) {
       dispatch(updateCampaignChaosBag(updateCampaignActions.setChaosBag, campaignId, campaignLog.chaosBag));
     }
     const scenarioResults = flatMap(scenarios, scenario => {
@@ -303,7 +303,7 @@ export default function useCampaignGuideContext(
         interlude: scenarioType === 'interlude' || scenarioType === 'epilogue',
       };
     });
-    if (deepDiff(campaign.scenarioResults, scenarioResults)?.length) {
+    if (!deepEqual(campaign.scenarioResults, scenarioResults)?.length) {
       dispatch(updateCampaignScenarioResults(updateCampaignActions, campaignId, scenarioResults));
     }
   }, [user, campaign, campaignGuide, campaignId, dispatch, updateCampaignActions]);

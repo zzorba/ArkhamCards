@@ -9,12 +9,12 @@ import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { getFilterState, getDefaultFilterState, AppState, getCardFilterData } from '@reducers';
 import FilterBuilder, { CardFilterData, DefaultCardFilterData, FilterState, defaultFilterState as DefaultFilterState } from '@lib/filters';
 import { combineQueriesOpt } from '@data/sqlite/query';
-import deepDiff from 'deep-diff';
 import StyleContext from '@styles/StyleContext';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import { clearFilters, toggleFilter, updateFilter } from './actions';
 import { NavigationProps } from '@components/nav/types';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import deepEqual from 'deep-equal';
 
 export interface FilterFunctionProps {
   filterId: string;
@@ -64,13 +64,12 @@ export default function useFilterFunctions({
   }, componentId, [filterId, clearTraits]);
 
   const hasChanges = useMemo(() => {
-    const differences = (clearTraits && clearTraits.length) ?
-      deepDiff(
+    return !((clearTraits && clearTraits.length) ?
+      deepEqual(
         pick(currentFilters, clearTraits),
         pick(defaultFilterState, clearTraits)
       ) :
-      deepDiff(currentFilters, defaultFilterState);
-    return differences && differences.length;
+      deepEqual(currentFilters, defaultFilterState));
   }, [defaultFilterState, clearTraits, currentFilters]);
   const [count, setCount] = useState(0);
   useEffect(() => {
