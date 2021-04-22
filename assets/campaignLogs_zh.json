@@ -863,7 +863,7 @@
           },
           {
             "id": "alejandro_is_missing",
-            "text": "Alejandro is missing."
+            "text": "亞歷山卓已失蹤。"
           },
           {
             "id": "alejandro_on_his_own",
@@ -879,19 +879,19 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro remembers everything."
+            "text": "亞歷山卓恢復記憶。"
           },
           {
             "id": "alejandro_set_against",
-            "text": "Alejandro is set against you."
+            "text": "亞歷山卓與你為敵。"
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "你點燃了火盆。"
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "你未點燃火盆。"
           },
           {
             "id": "cleared_path_to_temple",
@@ -899,7 +899,7 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "調查員協助伊斯人。"
           },
           {
             "id": "earned_alejandros_trust",
@@ -911,23 +911,23 @@
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "時間線被解開。"
           },
           {
             "id": "fell_into_depths",
-            "text": "the investigators fell into the depths."
+            "text": "調查員落下深淵。"
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "the investigators forged a bond with Ichtaca."
+            "text": "調查員和伊塔卡建立了緊密的聯繫。"
           },
           {
             "id": "forging_own_path",
-            "text": "you are forging your own path."
+            "text": "你決定自尋前路。"
           },
           {
             "id": "found_missing_relic",
-            "text": "the investigators found the missing relic."
+            "text": "調查員找回了丟失的遺物。"
           },
           {
             "id": "gave_relic_to_alejandro",
@@ -939,7 +939,7 @@
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "調查員的記憶被擦除。"
           },
           {
             "id": "harbinger_alive",
@@ -947,11 +947,11 @@
           },
           {
             "id": "ichtaca_has_confidence",
-            "text": "Ichtaca has confidence in you."
+            "text": "伊塔卡對你有信心。"
           },
           {
             "id": "ichtaca_in_the_dark",
-            "text": "Ichtaca is in the dark."
+            "text": "伊塔卡隱瞞秘密。"
           },
           {
             "id": "ichtaca_is_wary",
@@ -963,11 +963,11 @@
           },
           {
             "id": "ichtaca_set_against",
-            "text": "Ichtaca is set against you."
+            "text": "伊塔卡與你為敵。"
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "Ichtaca’s faith is restored."
+            "text": "伊塔卡重振信念。"
           },
           {
             "id": "investigators_recovered_relic",
@@ -975,47 +975,47 @@
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "調查員拯救了蛇族文明。"
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "調查員拯救了伊斯人的文明。"
           },
           {
             "id": "jungle_watches",
-            "text": "the jungle watches (#name# x#X#)."
+            "text": "叢林監視著你(#name# x#X#)。"
           },
           {
             "id": "mapped_way_forward",
-            "text": "the investigators mapped out the way forward."
+            "text": "調查員找到了前進的道路。"
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "調查員修補了時間的裂縫。"
           },
           {
             "id": "nexus_is_near",
-            "text": "the nexus is near."
+            "text": "接近聯結點。"
           },
           {
             "id": "paths_known",
-            "text": "#X# paths are known to you."
+            "text": "你知道了#X#條道路。"
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "歸位程式產生反效果。"
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "歸位程式產生劇烈的反效果。"
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "歸位程式完美完成。"
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "歸位程式成功。"
           },
           {
             "id": "recruited_help_of_another_expedition",
@@ -1023,23 +1023,23 @@
           },
           {
             "id": "relic_is_missing",
-            "text": "the relic is missing."
+            "text": "遺物已丟失。"
           },
           {
             "id": "rescued_alejandro",
-            "text": "the investigators rescued Alejandro."
+            "text": "調查員解救了亞歷山卓。"
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "調查員抗拒監禁。"
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "the investigators sealed the Relic of Ages forever."
+            "text": "調查員永遠封印了古代遺物。"
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "調查員使時間倒流。"
           },
           {
             "id": "wait_for_additional_supplies",
@@ -1064,15 +1064,15 @@
           },
           {
             "id": "final_depth",
-            "text": "#X# depth"
+            "text": "深度等級#X#"
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca left without you."
+            "text": "伊塔卡獨自離開。"
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "listened to Ichtaca's tale."
+            "text": "你傾聽了伊塔卡的敘述。"
           },
           {
             "id": "rtdoe_gain_mysterious_scepter",
@@ -1084,7 +1084,7 @@
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "已完成#X#個任務"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -1116,22 +1116,22 @@
         "multiple": false
       },
       {
-        "id": "gasoline",
-        "name": "Gasoline",
-        "description": "Enough for a long journey bycar.",
-        "cost": 1,
-        "multiple": true
-      },
-      {
         "id": "provisions",
-        "name": "Provisions",
+        "name": "配給",
         "description": "一人份的乾糧和水。出行必備。",
         "cost": 1,
         "multiple": true
       },
       {
+        "id": "gasoline",
+        "name": "汽油",
+        "description": "足夠一輛車跑一趟長途了。",
+        "cost": 1,
+        "multiple": true
+      },
+      {
         "id": "medicine",
-        "name": "Medicine",
+        "name": "藥品",
         "description": "治病，消除感染，解毒。",
         "cost": 2,
         "multiple": true
@@ -1143,20 +1143,8 @@
         "cost": 1
       },
       {
-        "id": "pickaxe",
-        "name": "Pickaxe",
-        "description": "For breaking apart rocky surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "pocketknife",
-        "name": "Pocketknife",
-        "description": "Too small to be used as a reliable weapon, but easily concealed.",
-        "cost": 2
-      },
-      {
         "id": "canteen",
-        "name": "Canteen",
+        "name": "水壺",
         "description": "可以在小溪和河邊盛水。",
         "cost": 2
       },
@@ -1185,6 +1173,18 @@
         "cost": 2
       },
       {
+        "id": "pickaxe",
+        "name": "鶴嘴鋤",
+        "description": "用來敲裂岩石的表面。",
+        "cost": 2
+      },
+      {
+        "id": "pocketknife",
+        "name": "摺疊小刀",
+        "description": "這東西太小，不能用作一把可靠的武器，但易於藏匿。",
+        "cost": 2
+      },
+      {
         "id": "torches",
         "name": "火把",
         "description": "可以照亮昏暗的區域，或點燃燭臺。",
@@ -1198,7 +1198,7 @@
       },
       {
         "id": "map",
-        "name": "Map",
+        "name": "地圖",
         "description": "現在地圖上還沒作標記，但隨著時間推移，你或許能夠描繪出周邊的環境。",
         "cost": 3
       }
@@ -2051,7 +2051,7 @@
           },
           {
             "id": "alejandro_is_missing",
-            "text": "Alejandro is missing."
+            "text": "亞歷山卓已失蹤。"
           },
           {
             "id": "alejandro_on_his_own",
@@ -2067,19 +2067,19 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro remembers everything."
+            "text": "亞歷山卓恢復記憶。"
           },
           {
             "id": "alejandro_set_against",
-            "text": "Alejandro is set against you."
+            "text": "亞歷山卓與你為敵。"
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "你點燃了火盆。"
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "你未點燃火盆。"
           },
           {
             "id": "cleared_path_to_temple",
@@ -2087,7 +2087,7 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "調查員協助伊斯人。"
           },
           {
             "id": "earned_alejandros_trust",
@@ -2099,23 +2099,23 @@
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "時間線被解開。"
           },
           {
             "id": "fell_into_depths",
-            "text": "the investigators fell into the depths."
+            "text": "調查員落下深淵。"
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "the investigators forged a bond with Ichtaca."
+            "text": "調查員和伊塔卡建立了緊密的聯繫。"
           },
           {
             "id": "forging_own_path",
-            "text": "you are forging your own path."
+            "text": "你決定自尋前路。"
           },
           {
             "id": "found_missing_relic",
-            "text": "the investigators found the missing relic."
+            "text": "調查員找回了丟失的遺物。"
           },
           {
             "id": "gave_relic_to_alejandro",
@@ -2127,7 +2127,7 @@
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "調查員的記憶被擦除。"
           },
           {
             "id": "harbinger_alive",
@@ -2135,11 +2135,11 @@
           },
           {
             "id": "ichtaca_has_confidence",
-            "text": "Ichtaca has confidence in you."
+            "text": "伊塔卡對你有信心。"
           },
           {
             "id": "ichtaca_in_the_dark",
-            "text": "Ichtaca is in the dark."
+            "text": "伊塔卡隱瞞秘密。"
           },
           {
             "id": "ichtaca_is_wary",
@@ -2151,11 +2151,11 @@
           },
           {
             "id": "ichtaca_set_against",
-            "text": "Ichtaca is set against you."
+            "text": "伊塔卡與你為敵。"
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "Ichtaca’s faith is restored."
+            "text": "伊塔卡重振信念。"
           },
           {
             "id": "investigators_recovered_relic",
@@ -2163,67 +2163,67 @@
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "調查員拯救了蛇族文明。"
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "調查員拯救了伊斯人的文明。"
           },
           {
             "id": "jungle_watches",
-            "text": "the jungle watches (#name# x#X#)."
+            "text": "叢林監視著你(#name# x#X#)。"
           },
           {
             "id": "mapped_way_forward",
-            "text": "the investigators mapped out the way forward."
+            "text": "調查員找到了前進的道路。"
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "調查員修補了時間的裂縫。"
           },
           {
             "id": "nexus_is_near",
-            "text": "the nexus is near."
+            "text": "接近聯結點。"
           },
           {
             "id": "paths_known",
-            "text": "#X# paths are known to you."
+            "text": "你知道了#X#條道路。"
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "歸位程式產生反效果。"
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "歸位程式產生劇烈的反效果。"
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "歸位程式完美完成。"
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "歸位程式成功。"
           },
           {
             "id": "relic_is_missing",
-            "text": "the relic is missing."
+            "text": "遺物已丟失。"
           },
           {
             "id": "rescued_alejandro",
-            "text": "the investigators rescued Alejandro."
+            "text": "調查員解救了亞歷山卓。"
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "調查員抗拒監禁。"
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "the investigators sealed the Relic of Ages forever."
+            "text": "調查員永遠封印了古代遺物。"
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "調查員使時間倒流。"
           },
           {
             "id": "wait_for_additional_supplies",
@@ -2248,19 +2248,19 @@
           },
           {
             "id": "final_depth",
-            "text": "#X# depth"
+            "text": "深度等級#X#"
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca left without you."
+            "text": "伊塔卡獨自離開。"
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "listened to Ichtaca's tale."
+            "text": "你傾聽了伊塔卡的敘述。"
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "已完成#X#個任務"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -2271,22 +2271,22 @@
     ],
     "supplies": [
       {
-        "id": "gasoline",
-        "name": "Gasoline",
-        "description": "Enough for a long journey bycar.",
-        "cost": 1,
-        "multiple": true
-      },
-      {
         "id": "provisions",
-        "name": "Provisions",
+        "name": "配給",
         "description": "一人份的乾糧和水。出行必備。",
         "cost": 1,
         "multiple": true
       },
       {
+        "id": "gasoline",
+        "name": "汽油",
+        "description": "足夠一輛車跑一趟長途了。",
+        "cost": 1,
+        "multiple": true
+      },
+      {
         "id": "medicine",
-        "name": "Medicine",
+        "name": "藥品",
         "description": "治病，消除感染，解毒。",
         "cost": 2,
         "multiple": true
@@ -2298,20 +2298,8 @@
         "cost": 1
       },
       {
-        "id": "pickaxe",
-        "name": "Pickaxe",
-        "description": "For breaking apart rocky surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "pocketknife",
-        "name": "Pocketknife",
-        "description": "Too small to be used as a reliable weapon, but easily concealed.",
-        "cost": 2
-      },
-      {
         "id": "canteen",
-        "name": "Canteen",
+        "name": "水壺",
         "description": "可以在小溪和河邊盛水。",
         "cost": 2
       },
@@ -2340,6 +2328,18 @@
         "cost": 2
       },
       {
+        "id": "pickaxe",
+        "name": "鶴嘴鋤",
+        "description": "用來敲裂岩石的表面。",
+        "cost": 2
+      },
+      {
+        "id": "pocketknife",
+        "name": "摺疊小刀",
+        "description": "這東西太小，不能用作一把可靠的武器，但易於藏匿。",
+        "cost": 2
+      },
+      {
         "id": "torches",
         "name": "火把",
         "description": "可以照亮昏暗的區域，或點燃燭臺。",
@@ -2353,7 +2353,7 @@
       },
       {
         "id": "map",
-        "name": "Map",
+        "name": "地圖",
         "description": "現在地圖上還沒作標記，但隨著時間推移，你或許能夠描繪出周邊的環境。",
         "cost": 3
       }
