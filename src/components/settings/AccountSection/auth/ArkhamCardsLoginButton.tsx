@@ -466,7 +466,7 @@ function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNod
       updateUploadState({ type: 'start', total: uploadCampaigns.length });
       await Promise.all(
         map(uploadCampaigns, c => {
-          return dispatch(uploadCampaign(user, createCampaignActions, deckActions, c.id)).then(
+          return dispatch(uploadCampaign(createCampaignActions, deckActions, c.id)).then(
             () => updateUploadState({ type: 'finish' }),
             () => updateUploadState({ type: 'error' }),
           );

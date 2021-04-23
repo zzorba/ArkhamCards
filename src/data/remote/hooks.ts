@@ -39,6 +39,12 @@ import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import { useApolloClient } from '@apollo/client';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 
+function useCachedValue<T>(value: T | undefined): T | undefined {
+  const ref = useRef<T | undefined>(value);
+  const result = value || ref.current;
+  ref.current = result;
+  return result;
+}
 
 export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
   const { user, loading: userLoading } = useContext(ArkhamCardsAuthContext);
@@ -95,7 +101,7 @@ export function useCampaignGuideStateRemote(campaignId: CampaignId | undefined, 
       });
     }
   }, [live, user, campaignId, subscribeToMore]);
-  return useMemo(() => {
+  const result = useMemo(() => {
     if (!campaignId || !campaignId.serverId) {
       return undefined;
     }
@@ -104,6 +110,7 @@ export function useCampaignGuideStateRemote(campaignId: CampaignId | undefined, 
     }
     return undefined;
   }, [data, campaignId]);
+  return useCachedValue(result);
 }
 
 export function useCampaignRemote(campaignId: CampaignId | undefined, live?: boolean): SingleCampaignT | undefined {
@@ -124,7 +131,7 @@ export function useCampaignRemote(campaignId: CampaignId | undefined, live?: boo
   }, [user, campaignId, live, subscribeToMore]);
 
 
-  return useMemo(() => {
+  const result = useMemo(() => {
     if (!campaignId || !campaignId.serverId) {
       return undefined;
     }
@@ -133,6 +140,7 @@ export function useCampaignRemote(campaignId: CampaignId | undefined, live?: boo
     }
     return undefined;
   }, [data, campaignId]);
+  return useCachedValue(result);
 }
 
 
@@ -154,7 +162,7 @@ export function useCampaignDeckFromRemote(id: DeckId | undefined, campaignId: Ca
     skip: !campaignId?.serverId || !!(id && !id.local),
   });
 
-  return useMemo(() => {
+  const result = useMemo(() => {
     if (!id || !campaignId?.serverId) {
       return undefined;
     }
@@ -164,6 +172,7 @@ export function useCampaignDeckFromRemote(id: DeckId | undefined, campaignId: Ca
     }
     return new LatestDeckRemote(data.campaign_deck[0]);
   }, [localData, arkhamDbData, id, campaignId]);
+  return useCachedValue(result);
 }
 
 export function useChaosBagResultsFromRemote(campaignId: CampaignId): ChaosBagResultsT | undefined {
@@ -184,12 +193,13 @@ export function useChaosBagResultsFromRemote(campaignId: CampaignId): ChaosBagRe
       });
     }
   }, [user, campaignId, subscribeToMore]);
-  return useMemo(() => {
+  const result = useMemo(() => {
     if (!campaignId.serverId || !data?.chaos_bag_result_by_pk) {
       return undefined;
     }
     return new ChaosBagResultsRemote(data.chaos_bag_result_by_pk);
   }, [campaignId, data]);
+  return useCachedValue(result);
 }
 
 export function useDeckFromRemote(id: DeckId | undefined, fetch: boolean): LatestDeckT | undefined {
@@ -202,12 +212,13 @@ export function useDeckFromRemote(id: DeckId | undefined, fetch: boolean): Lates
     skip: !id?.serverId,
   });
 
-  return useMemo(() => {
+  const result = useMemo(() => {
     if (!id?.serverId || !data?.campaign_deck_by_pk) {
       return undefined;
     }
     return new LatestDeckRemote(data.campaign_deck_by_pk);
   }, [data, id]);
+  return useCachedValue(result);
 }
 
 export interface CampaignAccess {
@@ -402,17 +413,18 @@ export function useLatestDeckRemote(deckId: DeckId, campaign_id: CampaignId | un
     }),
   });
 
-  return useMemo(() => {
+  const result = useMemo(() => {
     if (!campaign_id?.serverId || !deckId.serverId) {
       return undefined;
     }
     return currentDeck ? new LatestDeckRemote(currentDeck) : undefined;
   }, [campaign_id, deckId, currentDeck]);
+  return useCachedValue(result);
 }
 
 export function useDeckHistoryRemote(id: DeckId, investigator: string, campaign: MiniCampaignT | undefined): [LatestDeckT[] | undefined, boolean, () => Promise<void>] {
-  const { user } = useContext(ArkhamCardsAuthContext);
-  const { data, loading, refetch } = useGetDeckHistoryQuery({
+  const { user, loading: userLoading } = useContext(ArkhamCardsAuthContext);
+  const { data, loading: dataLoading, refetch } = useGetDeckHistoryQuery({
     variables: {
       campaign_id: campaign?.id.serverId || 0,
       investigator,
@@ -459,6 +471,6 @@ export function useDeckHistoryRemote(id: DeckId, investigator: string, campaign:
     }
     return latestDecks;
   }, [campaign, id, data]);
-
+  const [loading] = useDebounce(!!(user && !data) || userLoading || dataLoading, 200);
   return [result, loading, refresh];
 }

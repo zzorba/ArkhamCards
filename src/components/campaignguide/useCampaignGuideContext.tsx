@@ -303,7 +303,7 @@ export default function useCampaignGuideContext(
         interlude: scenarioType === 'interlude' || scenarioType === 'epilogue',
       };
     });
-    if (!deepEqual(campaign.scenarioResults, scenarioResults)?.length) {
+    if (!deepEqual(campaign.scenarioResults, scenarioResults)) {
       dispatch(updateCampaignScenarioResults(updateCampaignActions, campaignId, scenarioResults));
     }
   }, [user, campaign, campaignGuide, campaignId, dispatch, updateCampaignActions]);

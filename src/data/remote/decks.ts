@@ -1,8 +1,11 @@
 import { useCallback, useContext, useMemo, useRef } from 'react';
 import { sha1 } from 'react-native-sha256';
 import { forEach, keys, map, uniq } from 'lodash';
+import { Action } from 'redux';
+import { ThunkAction } from 'redux-thunk';
 
-import { Deck, DeckId, getDeckId, UploadedCampaignId, UploadedDeck } from '@actions/types';
+import { AppState, makeDeckSelector } from '@reducers';
+import { Deck, DeckId, getDeckId, UploadedCampaignId, UploadedDeck, SYNC_DECK, UPLOAD_DECK } from '@actions/types';
 import {
   useDeleteAllArkhamDbDecksMutation,
   useDeleteAllLocalDecksMutation,
@@ -44,6 +47,55 @@ export interface DeckActions {
 
 function hashDeck(deck: Deck): Promise<string> {
   return sha1(JSON.stringify(deck));
+}
+
+export function uploadCampaignDeckHelper(
+  campaignId: UploadedCampaignId,
+  deckId: DeckId,
+  actions: DeckActions
+): ThunkAction<Promise<void>, AppState, unknown, Action<string>> {
+  return async(dispatch, getState) => {
+    const state = getState();
+    const deckSelector = makeDeckSelector();
+    let deck = deckSelector(state, deckId);
+    const investigator = deck?.investigator_code;
+    if (investigator) {
+      dispatch({
+        type: SYNC_DECK,
+        campaignId,
+        investigator,
+        uploading: true,
+      });
+    }
+    const promises: Promise<void>[] = [];
+    while (deck) {
+      const deckId = getDeckId(deck);
+      if (!deck.previousDeckId) {
+        promises.push(actions.createBaseDeck(deck, campaignId));
+      } else {
+        promises.push(actions.createNextDeck(deck, campaignId, deck.previousDeckId));
+      }
+      dispatch({
+        type: UPLOAD_DECK,
+        deckId,
+        campaignId,
+      });
+      if (!deck.nextDeckId) {
+        break;
+      }
+      deck = deckSelector(state, deck.nextDeckId);
+    }
+    if (investigator) {
+      Promise.all(promises).then(() => {
+        dispatch({
+          type: SYNC_DECK,
+          campaignId,
+          investigator,
+          uploading: false,
+        });
+      });
+    }
+  };
 }
 
 export async function syncCampaignDecksFromArkhamDB(

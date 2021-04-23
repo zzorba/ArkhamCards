@@ -215,7 +215,11 @@ export default function InvestigatorCampaignRow({
               badge={upgradeBadge ? 'upgrade' : undefined}
             />
             <View style={[space.paddingLeftXs, styles.textColumn]}>
-              <Text style={[typography.cardName, typography.white, eliminated ? typography.strike : undefined]}>
+              <Text
+                style={[typography.cardName, typography.white, eliminated ? typography.strike : undefined]}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+              >
                 { investigator.name }
               </Text>
               <Text style={[typography.cardTraits, typography.white, eliminated ? typography.strike : undefined]}>

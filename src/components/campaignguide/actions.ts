@@ -27,9 +27,8 @@ import {
 
 import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import { uploadCampaignDeckHelper } from '@lib/firebaseApi';
 import { CreateCampaignActions, GuideActions } from '@data/remote/campaigns';
-import { DeckActions } from '@data/remote/decks';
+import { DeckActions, uploadCampaignDeckHelper } from '@data/remote/decks';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 
 function uploadCampaignHelper(
@@ -71,8 +70,8 @@ type UploadCampaignResult = {
   type: 'single';
   id: UploadedCampaignId;
 }
+
 export function uploadCampaign(
-  user: FirebaseAuthTypes.User,
   actions: CreateCampaignActions,
   deckActions: DeckActions,
   campaignId: CampaignId

@@ -58,8 +58,7 @@ import {
 import { ChaosBag, ChaosTokenType } from '@app_constants';
 import { AppState, makeCampaignSelector, getDeck, makeDeckSelector } from '@reducers';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import { uploadCampaignDeckHelper } from '@lib/firebaseApi';
-import { DeckActions } from '@data/remote/decks';
+import { DeckActions, uploadCampaignDeckHelper } from '@data/remote/decks';
 import { SetCampaignChaosBagAction, SetCampaignNotesAction, SetCampaignShowInterludes, SetCampaignWeaknessSetAction, UpdateCampaignActions } from '@data/remote/campaigns';
 import { ChaosBagActions } from '@data/remote/chaosBag';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';

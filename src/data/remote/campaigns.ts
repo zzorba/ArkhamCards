@@ -1,23 +1,37 @@
 import { useCallback, useContext, useMemo } from 'react';
 import { filter, forEach, map, omit } from 'lodash';
+import { useApolloClient } from '@apollo/client';
 
-import { Campaign, CampaignDifficulty, CampaignGuideState, CampaignNotes, GuideAchievement, GuideInput, ScenarioResult, Trauma, TraumaAndCardData, UploadedCampaignId, WeaknessSet } from '@actions/types';
+import {
+  Campaign,
+  CampaignDifficulty,
+  CampaignGuideState,
+  CampaignNotes,
+  GuideAchievement,
+  GuideInput,
+  ScenarioResult,
+  Trauma,
+  TraumaAndCardData,
+  UploadedCampaignId,
+  WeaknessSet,
+} from '@actions/types';
+import { uploadLocalDeck } from '@data/remote/apollo';
 import { useModifyUserCache } from '@data/apollo/cache';
 import {
-  useUploadNewCampaignMutation,
+  useAddGuideInputMutation,
+  useAddCampaignInvestigatorMutation,
+  useDecCountAchievementMutation,
   useDeleteInvestigatorDecksMutation,
   useIncCountAchievementMaxMutation,
   useIncCountAchievementMutation,
-  useDecCountAchievementMutation,
+  useRemoveCampaignInvestigatorMutation,
+  useRemoveGuideInputsMutation,
   useSetBinaryAchievementMutation,
-  useAddGuideInputMutation,
   useUpdateInvestigatorTraumaMutation,
   useUpdateWeaknessSetMutation,
   useUpdateCampaignNameMutation,
   useUpdateSpentXpMutation,
   useUpdateAvailableXpMutation,
-  useAddCampaignInvestigatorMutation,
-  useRemoveCampaignInvestigatorMutation,
   useUpdateChaosBagMutation,
   useUpdateCampaignNotesMutation,
   useUpdateCampaignShowInterludesMutation,
@@ -25,11 +39,11 @@ import {
   useUpdateCampaignScenarioResultsMutation,
   useUpdateCampaignDifficultyMutation,
   useUpdateCampaignGuideVersionMutation,
+  useUploadNewCampaignMutation,
   Guide_Input_Insert_Input,
   Guide_Achievement_Insert_Input,
   Investigator_Data_Insert_Input,
   Campaign_Investigator_Insert_Input,
-  useRemoveGuideInputsMutation,
 } from '@generated/graphql/apollo-schema';
 import { useFunction, ErrorResponse } from './api';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
@@ -110,6 +124,50 @@ function useCreateLinkedCampaignRequest(): (
     };
   }, [apiCall]);
 }
+
+interface UploadLocalDeckData {
+  localDeckId: string;
+  arkhamDbId: number;
+}
+
+interface BasicResponse extends ErrorResponse {
+  success?: boolean;
+  deckIds: {
+    id: number;
+    campaignId: number;
+  }[];
+}
+
+export function useUploadLocalDeckRequest(): (
+  localDeckId: string,
+  arkhamDbId: number,
+) => Promise<void> {
+  const apollo = useApolloClient();
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const apiCall = useFunction<UploadLocalDeckData, BasicResponse>('campaign-uploadLocalDeck');
+  const cache = apollo.cache;
+  return useCallback(async(
+    localDeckId: string,
+    arkhamDbId: number
+  ): Promise<void> => {
+    if (user) {
+      try {
+        const data = await apiCall({ localDeckId, arkhamDbId });
+        if (data.error) {
+          console.log(data.error)
+          throw new Error(data.error);
+        }
+        data.deckIds.forEach(({ campaignId }) => {
+          uploadLocalDeck(cache, campaignId, user.uid, localDeckId, arkhamDbId);
+        });
+      } catch (e) {
+        console.log(`Error with local deck upload: ${e.message}`);
+        throw e;
+      }
+    }
+  }, [apiCall, user, cache]);
+}
+
 
 interface EditCampaignAccessData {
   campaignId: string;

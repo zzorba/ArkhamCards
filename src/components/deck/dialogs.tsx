@@ -21,6 +21,7 @@ import DeckButton, { DeckButtonIcon } from './controls/DeckButton';
 import DeckBubbleHeader from './section/DeckBubbleHeader';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { DeckActions, useDeckActions } from '@data/remote/decks';
+import { useUploadLocalDeckRequest } from '@data/remote/campaigns';
 
 interface DialogOptions {
   title: string;
@@ -467,21 +468,22 @@ export function useUploadLocalDeckDialog(
   uploadLocalDeck: () => void;
 } {
   const { user } = useContext(ArkhamCardsAuthContext);
+  const replaceLocalDeckRequest = useUploadLocalDeckRequest();
   const { saving, setSaving, savingDialog } = useBasicDialog(t`Uploading deck`);
   const deckDispatch: DeckDispatch = useDispatch();
   const doUploadLocalDeck = useMemo(() => throttle((isRetry?: boolean) => {
-    if (!parsedDeck || !deck) {
+    if (!parsedDeck || !deck || !deck.local) {
       return;
     }
     if (!saving || isRetry) {
       setSaving(true);
-      deckDispatch(uploadLocalDeck(user, actions, deck)).then(() => {
+      deckDispatch(uploadLocalDeck(user, actions, replaceLocalDeckRequest, deck)).then(() => {
         setSaving(false);
       }, () => {
         setSaving(false);
       });
     }
-  }, 200), [deckDispatch, parsedDeck, saving, deck, user, actions, setSaving]);
+  }, 200), [deckDispatch, replaceLocalDeckRequest, setSaving, saving, user, deck, parsedDeck, actions]);
   return {
     uploadLocalDeckDialog: savingDialog,
     uploadLocalDeck: doUploadLocalDeck,

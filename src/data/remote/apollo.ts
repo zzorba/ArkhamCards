@@ -279,6 +279,65 @@ function removeAllMatchingDecks(
   );
 }
 
+export const uploadLocalDeck = (
+  cache: ApolloCache<unknown>,
+  campaign_id: number,
+  owner_id: string,
+  local_uuid: string,
+  arkhamdb_id: number,
+) => {
+  const swapDeck = (deck: IdDeckFragment) => {
+    return !!(deck.local_uuid && deck.local_uuid === local_uuid);
+  };
+  updateDecks(cache, campaign_id, owner_id,
+    (deck: MiniDeckFragment) => {
+      return swapDeck(deck) ? {
+        type: 'swap',
+        deck: {
+          ...deck,
+          local_uuid: null,
+          arkhamdb_id,
+        },
+      } : { type: 'keep' };
+    },
+    (deck: AllDeckFragment) => {
+      return swapDeck(deck) ? {
+        type: 'swap',
+        deck: {
+          ...deck,
+          local_uuid: null,
+          arkhamdb_id,
+        },
+      } : { type: 'keep' };
+    },
+    (deck: LatestDeckFragment) => {
+      if (swapDeck(deck)) {
+        const theDeck = {
+          ...deck,
+          local_uuid: null,
+          arkhamdb_id,
+        };
+        // console.log(`${new Date().toTimeString()}: Caching uploaded deck ${theDeck.id},${theDeck.arkhamdb_id},${theDeck.local_uuid}`);
+        cache.writeQuery<GetLatestDeckQuery>({
+          query: GetLatestDeckDocument,
+          variables: {
+            id: theDeck.id,
+          },
+          data: {
+            __typename: 'query_root',
+            campaign_deck_by_pk: theDeck,
+          },
+        });
+        return {
+          type: 'swap',
+          deck: theDeck,
+        };
+      }
+      return { type: 'keep' };
+    }
+  );
+};
+
 export const handleInsertNextLocalDeck: MutationUpdaterFn<InsertNextLocalDeckMutation> = (cache, { data }) => {
   if (!data?.insert_campaign_deck_one?.previous_deck) {
     return;

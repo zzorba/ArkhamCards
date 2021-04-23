@@ -36,6 +36,8 @@ import {
   SetUploadedDecksAction,
   UploadedCampaignId,
   StartDeckEditAction,
+  UPLOAD_DECK,
+  LocalDeck,
 } from '@actions/types';
 import { login } from '@actions';
 import { saveDeck, loadDeck, upgradeDeck, newCustomDeck, UpgradeDeckResult, deleteDeck } from '@lib/authApi';
@@ -95,7 +97,13 @@ function setNewDeck(
       const uploads = getDeckUploadedCampaigns(getState(), deck.previousDeckId);
       if (uploads?.campaignId.length) {
         await Promise.all(
-          map(uploads.campaignId, campaignId => actions.createNextDeck(deck, campaignId, previousDeckId))
+          map(uploads.campaignId, campaignId => actions.createNextDeck(deck, campaignId, previousDeckId).then(() => {
+            dispatch({
+              type: UPLOAD_DECK,
+              deckId: getDeckId(deck),
+              campaignId,
+            });
+          }))
         );
       }
     }
@@ -471,19 +479,24 @@ export const saveClonedDeck = (
 export const uploadLocalDeck = (
   user: FirebaseAuthTypes.User | undefined,
   actions: DeckActions,
-  localDeck: Deck
+  replaceLocalDeckRequest: (localDeckId: string, arkhamDbId: number) => Promise<void>,
+  localDeck: LocalDeck
 ): ThunkAction<Promise<Deck>, AppState, unknown, Action<string>> => {
-  return (dispatch): Promise<Deck> => {
-    return dispatch(saveClonedDeck(
+  return async(dispatch, getState): Promise<Deck> => {
+    const uploads = getDeckUploadedCampaigns(getState(), getDeckId(localDeck));
+    const deck = await dispatch(saveClonedDeck(
       user,
       actions,
       false,
       localDeck,
       localDeck.name
-    )).then(deck => {
-      dispatch(replaceLocalDeck(getDeckId(localDeck), deck as ArkhamDbDeck));
-      return deck;
-    });
+    ));
+    const theDeck = deck as ArkhamDbDeck;
+    dispatch(replaceLocalDeck(getDeckId(localDeck), theDeck));
+    if (user && uploads?.campaignId.length) {
+      await replaceLocalDeckRequest(localDeck.uuid, theDeck.id);
+    }
+    return deck;
   };
 };
 

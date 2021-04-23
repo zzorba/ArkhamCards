@@ -44,7 +44,7 @@ export default function UploadCampaignButton({ componentId, campaign, campaignId
     if (!uploading && user && !campaignId.serverId) {
       setUploading(true);
       try {
-        const newCampaignId = await dispatch(uploadCampaign(user, createCampaignActions, deckActions, campaignId));
+        const newCampaignId = await dispatch(uploadCampaign(createCampaignActions, deckActions, campaignId));
         if (newCampaignId.type === 'single') {
           setCampaignServerId && setCampaignServerId(newCampaignId.id.serverId);
         } else {
