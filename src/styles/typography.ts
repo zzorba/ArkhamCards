@@ -152,13 +152,13 @@ export default function(
     },
     boldItalic: {
       fontFamily: boldItalicFont,
-      fontStyle: 'italic',
+      fontStyle: Platform.OS === 'ios' ? 'italic' : undefined,
       fontWeight: Platform.OS === 'ios' ? '700' : undefined,
       color: colors.darkText,
     },
     italic: {
       fontFamily: italicFont,
-      fontStyle: 'italic',
+      fontStyle: Platform.OS === 'ios' ? 'italic' : undefined,
     },
     gameFont: {
       fontFamily: gameFont,
