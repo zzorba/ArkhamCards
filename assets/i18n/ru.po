@@ -4166,9 +4166,6 @@ msgstr "Потрачено ${ _spentXp } из ${ _totalXp }"
 msgid "Save your changes to the campaign log"
 msgstr "Сохранить в журнале кампании"
 
-msgid "You must be online to upload campaigns"
-msgstr "Нужен интернет, чтобы загрузить кампании"
-
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr ""
 
@@ -4272,6 +4269,21 @@ msgid "Clear card cache"
 msgstr ""
 
 msgid "Uploading..."
+msgstr ""
+
+msgid "Leave standalone"
+msgstr ""
+
+msgid ""
+"Are you sure you want to leave this standalone?\n"
+"\n"
+"Your decks will be removed from the standalone, but you can rejoin it later."
+msgstr ""
+
+msgid "Upload standalone"
+msgstr ""
+
+msgid "You must be online to upload"
 msgstr ""
 
 #, javascript-format

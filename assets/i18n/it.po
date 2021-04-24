@@ -4160,9 +4160,6 @@ msgstr "${ _spentXp } di ${ _totalXp } spesi"
 msgid "Save your changes to the campaign log"
 msgstr "Salva le modifiche nel Diario della Campagna"
 
-msgid "You must be online to upload campaigns"
-msgstr "Devi essere connesso per caricare le campagne"
-
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr "I mazzi con Conoscenza Ancestrale devono includere almeno 10 abilità."
 
@@ -4266,6 +4263,21 @@ msgid "Clear card cache"
 msgstr ""
 
 msgid "Uploading..."
+msgstr ""
+
+msgid "Leave standalone"
+msgstr ""
+
+msgid ""
+"Are you sure you want to leave this standalone?\n"
+"\n"
+"Your decks will be removed from the standalone, but you can rejoin it later."
+msgstr ""
+
+msgid "Upload standalone"
+msgstr ""
+
+msgid "You must be online to upload"
 msgstr ""
 
 #, javascript-format
