@@ -15,7 +15,7 @@ import {
   UploadedCampaignId,
   WeaknessSet,
 } from '@actions/types';
-import { uploadLocalDeck } from '@data/remote/apollo';
+import { deleteCampaignFromCache, uploadLocalDeck } from '@data/remote/apollo';
 import { useModifyUserCache } from '@data/apollo/cache';
 import {
   useAddGuideInputMutation,
@@ -311,24 +311,18 @@ interface DeleteCampaignRequest extends ErrorResponse {
   serverId: number;
 }
 export function useDeleteCampaignRequest() {
-  const [updateCache, client] = useModifyUserCache();
+  const client = useApolloClient();
+  const { user } = useContext(ArkhamCardsAuthContext);
   const apiCall = useFunction<DeleteCampaignRequest, ErrorResponse>('campaign-delete');
   return useCallback(async({ campaignId, serverId }: UploadedCampaignId): Promise<void> => {
+    if (user) {
+      deleteCampaignFromCache(client.cache, user.uid, campaignId);
+    }
     const data = await apiCall({ campaignId, serverId });
     if (data.error) {
       throw new Error(data.error);
     }
-    const targetCampaignId = client.cache.identify({ __typename: 'campaign', id: serverId });
-    if (targetCampaignId) {
-      updateCache({
-        fields: {
-          campaigns(current) {
-            return filter(current, c => c.campaign?.__ref !== targetCampaignId);
-          },
-        },
-      });
-    }
-  }, [apiCall, updateCache, client]);
+  }, [apiCall, client, user]);
 }
 
 export function useLeaveCampaignRequest() {

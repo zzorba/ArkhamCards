@@ -1,7 +1,10 @@
 import { Campaign, CampaignId } from '@actions/types';
 import { ChaosBag } from '@app_constants';
+import { CampaignLogProps } from '@components/campaignguide/CampaignLogView';
 import { GuideDrawChaosBagProps } from '@components/campaignguide/GuideDrawChaosBagView';
 import { GuideOddsCalculatorProps } from '@components/campaignguide/GuideOddsCalculatorView';
+import CampaignGuide from '@data/scenario/CampaignGuide';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import Card from '@data/types/Card';
 import { map } from 'lodash';
 import { Navigation } from 'react-native-navigation';
@@ -45,11 +48,46 @@ export function showEditChaosBag(componentId: string, campaign: Campaign, update
   });
 }
 
+
+export function showGuideCampaignLog(
+  componentId: string,
+  campaignId: CampaignId,
+  campaignGuide: CampaignGuide,
+  campaignLog: GuidedCampaignLog,
+  standalone?: boolean,
+  scenarioId?: string,
+) {
+  Navigation.push<CampaignLogProps>(componentId, {
+    component: {
+      name: 'Guide.Log',
+      passProps: {
+        campaignId,
+        campaignLog,
+        scenarioId,
+        campaignGuide,
+        standalone,
+      },
+      options: {
+        topBar: {
+          title: {
+            text: t`Campaign Log`,
+          },
+          backButton: {
+            title: t`Back`,
+          },
+        },
+      },
+    },
+  });
+}
+
 export function showGuideDrawChaosBag(
   componentId: string,
   campaignId: CampaignId,
   chaosBag: ChaosBag,
-  investigatorIds: string[]
+  investigatorIds: string[],
+  scenarioId: string | undefined,
+  standalone: boolean | undefined,
 ) {
   Navigation.push<GuideDrawChaosBagProps>(componentId, {
     component: {
@@ -58,6 +96,8 @@ export function showGuideDrawChaosBag(
         campaignId,
         chaosBag,
         investigatorIds,
+        scenarioId,
+        standalone,
       },
       options: {
         topBar: {

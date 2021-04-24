@@ -4,6 +4,7 @@ import { map } from 'lodash';
 import { useDispatch } from 'react-redux';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
+import { Action } from 'redux';
 
 import BasicButton from '@components/core/BasicButton';
 import { CampaignId, CUSTOM, Deck, DeckId, getDeckId, Slots, Trauma, WeaknessSet } from '@actions/types';
@@ -37,7 +38,6 @@ import { useUpdateCampaignActions } from '@data/remote/campaigns';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '@reducers';
-import { Action } from 'redux';
 
 export interface CampaignDetailProps {
   campaignId: CampaignId;

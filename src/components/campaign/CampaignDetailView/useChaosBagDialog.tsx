@@ -70,7 +70,7 @@ export default function useChaosBagDialog({
   const drawChaosBagPressed = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);
     if (guided) {
-      showGuideDrawChaosBag(componentId, campaignId, chaosBag, map(allInvestigators, c => c.code));
+      showGuideDrawChaosBag(componentId, campaignId, chaosBag, map(allInvestigators, c => c.code), undefined, false);
     } else {
       showDrawChaosBag(componentId, campaignId, allInvestigators);
     }

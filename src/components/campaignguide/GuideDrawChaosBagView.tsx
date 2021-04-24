@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import DrawChaosBagComponent from '@components/campaign/DrawChaosBagComponent';
@@ -7,23 +7,39 @@ import { CampaignId } from '@actions/types';
 import { showGuideChaosBagOddsCalculator } from '@components/campaign/nav';
 import { NavigationProps } from '@components/nav/types';
 import { useSimpleChaosBagDialog } from '@components/campaign/CampaignDetailView/useChaosBagDialog';
+import { useScenarioGuideContext } from './withScenarioGuideContext';
 
 export interface GuideDrawChaosBagProps {
   campaignId: CampaignId;
+  scenarioId?: string;
+  standalone?: boolean;
   chaosBag: ChaosBag;
   investigatorIds: string[];
 }
 
-export default function GuideDrawChaosBagView({ componentId, campaignId, chaosBag, investigatorIds }: GuideDrawChaosBagProps & NavigationProps) {
+export default function GuideDrawChaosBagView({ componentId, campaignId, scenarioId, standalone, chaosBag, investigatorIds }: GuideDrawChaosBagProps & NavigationProps) {
+  const [campaignContext, scenarioContext] = useScenarioGuideContext(campaignId, scenarioId, false, standalone);
+  const liveChaosBag = useMemo(() => {
+    if (scenarioId) {
+      return scenarioContext?.processedScenario?.latestCampaignLog?.chaosBag;
+    }
+    if (!campaignContext) {
+      return undefined;
+    }
+    const { campaignGuide, campaignState } = campaignContext;
+    const processedCampaign = campaignGuide.processAllScenarios(campaignState);
+    return processedCampaign.campaignLog.chaosBag;
+  }, [campaignContext, scenarioContext, scenarioId]);
+  const theChaosBag = liveChaosBag || chaosBag;
   const [dialog, showDialog] = useSimpleChaosBagDialog(chaosBag);
   const showOdds = useCallback(() => {
-    showGuideChaosBagOddsCalculator(componentId, campaignId, chaosBag, investigatorIds);
-  }, [componentId, campaignId, chaosBag, investigatorIds]);
+    showGuideChaosBagOddsCalculator(componentId, campaignId, theChaosBag, investigatorIds);
+  }, [componentId, campaignId, theChaosBag, investigatorIds]);
   return (
     <View style={styles.container}>
       <DrawChaosBagComponent
         campaignId={campaignId}
-        chaosBag={chaosBag}
+        chaosBag={theChaosBag}
         viewChaosBagOdds={showOdds}
         editViewPressed={showDialog}
       />

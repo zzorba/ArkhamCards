@@ -1,53 +1,75 @@
-import React, { useContext, useMemo } from 'react';
-import { Text } from 'react-native';
+import React, { useMemo } from 'react';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
-import ScenarioGuideContext from './ScenarioGuideContext';
-import withCampaignGuideContext, { CampaignGuideInputProps } from './withCampaignGuideContext';
+import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
+import { CampaignGuideInputProps, InjectedCampaignGuideContextProps, useCampaignGuideContext } from './withCampaignGuideContext';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import CampaignGuideContext from './CampaignGuideContext';
+import CampaignGuideContext, { CampaignGuideContextType } from './CampaignGuideContext';
+import { CampaignId } from '@actions/types';
+import LoadingSpinner from '@components/core/LoadingSpinner';
 
 export interface ScenarioGuideInputProps extends CampaignGuideInputProps {
   scenarioId: string;
   standalone?: boolean;
 }
 
-export default function withScenarioGuideContext<Props>(
-  WrappedComponent: React.ComponentType<Props>
-): React.ComponentType<Props & ScenarioGuideInputProps> {
-  function ScenarioDataComponent(props: Props & ScenarioGuideInputProps) {
-    const { campaignState, campaignGuide } = useContext(CampaignGuideContext);
-    const { scenarioId, standalone } = props;
-    const processedScenario = useMemo(
-      () => campaignGuide.getScenario(scenarioId, campaignState, standalone),
-      [scenarioId, campaignGuide, campaignState, standalone]);
-    const scenarioState = useMemo(() => {
-      return processedScenario && new ScenarioStateHelper(processedScenario.scenarioGuide.id, campaignState);
-    }, [processedScenario, campaignState]);
-
-    const context = useMemo(() => {
-      if (!processedScenario || !scenarioState) {
+export function useScenarioGuideContext(
+  campaignId: CampaignId,
+  scenarioId: undefined | string,
+  rootView: boolean,
+  standalone?: boolean
+): [CampaignGuideContextType | undefined, ScenarioGuideContextType | undefined, (serverId: number) => void] {
+  const [campaignContext, setCampaignServerId] = useCampaignGuideContext(campaignId, rootView);
+  const processedScenario = useMemo(
+    () => {
+      if (!campaignContext || !scenarioId) {
         return undefined;
       }
-      return {
-        processedScenario,
-        scenarioState,
-      };
-    }, [processedScenario, scenarioState]);
+      const { campaignGuide, campaignState } = campaignContext;
+      return campaignGuide.getScenario(scenarioId, campaignState, standalone);
+    },
+    [scenarioId, campaignContext, standalone]);
+  const scenarioState = useMemo(() => {
+    if (!campaignContext || !processedScenario) {
+      return undefined;
+    }
+    const { campaignState } = campaignContext;
+    return processedScenario && new ScenarioStateHelper(processedScenario.scenarioGuide.id, campaignState);
+  }, [processedScenario, campaignContext]);
+  const scenarioContext = useMemo(() => {
+    if (!processedScenario || !scenarioState) {
+      return undefined;
+    }
+    return {
+      processedScenario,
+      scenarioState,
+    };
+  }, [processedScenario, scenarioState]);
 
-    if (!context) {
-      return <Text>Unknown scenario: { scenarioId }</Text>;
+  return [campaignContext, scenarioContext, setCampaignServerId];
+}
+
+export default function withScenarioGuideContext<Props>(
+  WrappedComponent: React.ComponentType<Props & InjectedCampaignGuideContextProps>
+): React.ComponentType<Props & ScenarioGuideInputProps> {
+  function ScenarioDataComponent(props: Props & ScenarioGuideInputProps) {
+    const [campaignContext, scenarioContext, setCampaignServerId] = useScenarioGuideContext(props.campaignId, props.scenarioId, props.standalone || false, props.standalone);
+    if (!campaignContext || !scenarioContext) {
+      return (
+        <LoadingSpinner />
+      );
     }
     return (
-      <ScenarioGuideContext.Provider value={context}>
-        <WrappedComponent {...props as Props} />
-      </ScenarioGuideContext.Provider>
+      <CampaignGuideContext.Provider value={campaignContext}>
+        <ScenarioGuideContext.Provider value={scenarioContext}>
+          <WrappedComponent
+            {...props as Props}
+            setCampaignServerId={setCampaignServerId}
+          />
+        </ScenarioGuideContext.Provider>
+      </CampaignGuideContext.Provider>
     );
   }
-  const result = withCampaignGuideContext<Props & ScenarioGuideInputProps>(
-    ScenarioDataComponent,
-    { rootView: false }
-  );
-  hoistNonReactStatic(result, WrappedComponent);
-  return result as React.ComponentType<Props & ScenarioGuideInputProps>;
+  hoistNonReactStatic(ScenarioDataComponent, WrappedComponent);
+  return ScenarioDataComponent as React.ComponentType<Props & ScenarioGuideInputProps>;
 }

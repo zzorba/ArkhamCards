@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { InteractionManager, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
-import { filter, findLast, keys } from 'lodash';
+import { filter, findLast, keys, last } from 'lodash';
 import { t } from 'ttag';
 import { Navigation } from 'react-native-navigation';
 
@@ -14,12 +14,12 @@ import DeckButton from '@components/deck/controls/DeckButton';
 import useChaosBagDialog from '@components/campaign/CampaignDetailView/useChaosBagDialog';
 import CampaignGuideContext from './CampaignGuideContext';
 import ScenarioCarouselComponent from './ScenarioCarouselComponent';
-import { CampaignLogProps } from './CampaignLogView';
 import { CampaignAchievementsProps } from './CampaignAchievementsView';
 import CampaignInvestigatorsComponent from './CampaignInvestigatorsComponent';
 import CampaignSummaryHeader from '@components/campaign/CampaignSummaryHeader';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import { UpdateCampaignActions } from '@data/remote/campaigns';
+import { showGuideCampaignLog } from '@components/campaign/nav';
 
 interface Props {
   componentId: string;
@@ -40,29 +40,17 @@ export default function CampaignDetailTab({
   const showAddInvestigator = useCallback(() => {
     campaignState.showChooseDeck();
   }, [campaignState]);
+  const scenarioId = useMemo(() => last(filter(processedCampaign.scenarios, s => s.type === 'started'))?.id.encodedScenarioId, [processedCampaign.scenarios]);
   const showCampaignLog = useCallback(() => {
-    Navigation.push<CampaignLogProps>(componentId, {
-      component: {
-        name: 'Guide.Log',
-        passProps: {
-          campaignId,
-          campaignGuide,
-          campaignLog: processedCampaign.campaignLog,
-          hideChaosBag: true,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Campaign Log`,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
-    });
-  }, [componentId, campaignId, campaignGuide, processedCampaign.campaignLog]);
+    showGuideCampaignLog(
+      componentId,
+      campaignId,
+      campaignGuide,
+      processedCampaign.campaignLog,
+      false,
+      scenarioId
+    );
+  }, [componentId, campaignId, campaignGuide, processedCampaign.campaignLog, scenarioId]);
 
   const showCampaignAchievements = useCallback(() => {
     Navigation.push<CampaignAchievementsProps>(componentId, {

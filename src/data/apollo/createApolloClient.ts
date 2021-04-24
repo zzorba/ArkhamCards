@@ -87,6 +87,7 @@ const typePolicies: TypedTypePolicies = {
   },
   campaign_guide: {
     keyFields: ['id'],
+    merge: true,
     fields: {
       guide_inputs: {
         merge(existing, incoming) {

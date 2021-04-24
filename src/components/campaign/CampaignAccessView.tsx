@@ -73,7 +73,7 @@ export default function EditCampaignAccessView({ campaignId, isOwner, componentI
       }
       const accessUsers = new Set(map(campaignAccess.access, u => u.id));
       if (find(profile?.friends || [], u => !accessUsers.has(u.id))) {
-        feed.push({ id: 'add_friends', type: 'header', header: t`Add friends to campaign` });
+        feed.push({ id: 'add_friends_header', type: 'header', header: t`Add friends to campaign` });
         forEach(profile?.friends || [], u => {
           if (!accessUsers.has(u.id)) {
             feed.push({
@@ -94,7 +94,7 @@ export default function EditCampaignAccessView({ campaignId, isOwner, componentI
       // Loading?
     }
     feed.push({
-      id: 'add_friends',
+      id: 'search_friends_button',
       type: 'button',
       title: t`Add friends`,
       icon: 'expand',

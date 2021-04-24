@@ -12,7 +12,7 @@ import { useSingleCampaignGuideData } from '@components/campaignguide/contextHel
 import { NavigationProps } from '@components/nav/types';
 import { useCampaign } from '@data/hooks';
 import { useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
-import useCampaignGuideContext from '@components/campaignguide/useCampaignGuideContext';
+import useCampaignGuideContextFromActions from '@components/campaignguide/useCampaignGuideContextFromActions';
 import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
 import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import { useCampaignLinkHelper } from './useCampaignLinkHelper';
@@ -74,8 +74,8 @@ export default function LinkedCampaignGuideView(props: Props) {
     }
   }, componentId, [showEditNameDialog]);
 
-  const contextA = useCampaignGuideContext(campaignIdA, deckActions, updateCampaignActions, campaignDataA);
-  const contextB = useCampaignGuideContext(campaignIdB, deckActions, updateCampaignActions, campaignDataB);
+  const contextA = useCampaignGuideContextFromActions(campaignIdA, deckActions, updateCampaignActions, campaignDataA);
+  const contextB = useCampaignGuideContextFromActions(campaignIdB, deckActions, updateCampaignActions, campaignDataB);
   // console.log(`contextA: ${!!contextA}, contextA.campaignGuide: ${!!contextA?.campaignGuide}, contextA.campaignState: ${!!contextA?.campaignState}`);
   // console.log(`contextB: ${!!contextB}, contextB.campaignGuide: ${!!contextB?.campaignGuide}, contextB.campaignState: ${!!contextB?.campaignState}`);
   const processedCampaignA = useMemo(() => {

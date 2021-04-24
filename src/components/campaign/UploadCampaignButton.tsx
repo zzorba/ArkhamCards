@@ -21,6 +21,7 @@ import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 interface Props {
   componentId: string;
   campaignId: CampaignId;
+  standalone?: boolean;
   campaign: SingleCampaignT | undefined;
   deckActions: DeckActions;
   setCampaignServerId: undefined | ((serverId: number) => void);
@@ -34,7 +35,7 @@ interface Props {
 
 type Dispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
-export default function UploadCampaignButton({ componentId, campaign, campaignId, deckActions, setCampaignServerId, setCampaignLinkedServerId, showAlert }: Props) {
+export default function UploadCampaignButton({ componentId, campaign, campaignId, deckActions, standalone, setCampaignServerId, setCampaignLinkedServerId, showAlert }: Props) {
   const { user } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected }] = useNetworkStatus();
   const [uploading, setUploading] = useState(false);
@@ -100,8 +101,8 @@ export default function UploadCampaignButton({ componentId, campaign, campaignId
   return (
     <DeckButton
       icon="backup"
-      title={t`Upload campaign`}
-      detail={!isConnected ? t`You must be online to upload campaigns` : undefined}
+      title={standalone ? t`Upload standalone` : t`Upload campaign`}
+      detail={!isConnected ? t`You must be online to upload` : undefined}
       disabled={!isConnected}
       thin
       color="light_gray"

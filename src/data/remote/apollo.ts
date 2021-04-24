@@ -677,6 +677,33 @@ export const handleDeleteLocalDeck: MutationUpdaterFn<DeleteLocalDeckMutation> =
   removeDeck(cache, campaign_id, owner_id, matchesDeck, previous_deck || undefined);
 };
 
+export const deleteCampaignFromCache = (cache: ApolloCache<unknown>, userId: string, uuid: string) => {
+  const cacheData = cache.readQuery<GetMyCampaignsQuery>({
+    query: GetMyCampaignsDocument,
+    variables: {
+      userId,
+    },
+  });
+  if (!cacheData || !cacheData.users_by_pk) {
+    return;
+  }
+  cache.writeQuery<GetMyCampaignsQuery>({
+    query: GetMyCampaignsDocument,
+    variables: {
+      userId,
+    },
+    data: {
+      users_by_pk: {
+        __typename: 'users',
+        id: userId,
+        campaigns: [
+          ...filter(cacheData.users_by_pk.campaigns, c => c.campaign?.uuid !== uuid),
+        ],
+      },
+    },
+  });
+}
+
 export const handleUploadNewCampaign: MutationUpdaterFn<UploadNewCampaignMutation> = (cache, { data }) => {
   if (data === undefined || !data?.update_campaign_by_pk) {
     return;
