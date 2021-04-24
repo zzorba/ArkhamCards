@@ -36,6 +36,7 @@ interface Props {
   investigator: Card;
   spentXp: number;
   totalXp: number;
+  unspentXp: number;
   traumaAndCardData: TraumaAndCardData;
   playerCards: CardsMap;
   chooseDeckForInvestigator?: (investigator: Card) => void;
@@ -71,16 +72,17 @@ export default function InvestigatorCampaignRow({
   investigator,
   spentXp,
   totalXp,
-  showXpDialog,
+  unspentXp,
   traumaAndCardData,
   playerCards,
-  chooseDeckForInvestigator,
   deck,
+  children,
+  miniButtons,
+  showXpDialog,
+  chooseDeckForInvestigator,
   removeInvestigator,
   showDeckUpgrade,
   showTraumaDialog,
-  children,
-  miniButtons,
 }: Props) {
   const uploadingSelector = useMemo(makeUploadingDeckSelector, []);
   const uploading = useSelector((state: AppState) => uploadingSelector(state, campaign.id, investigator.code));
@@ -101,13 +103,14 @@ export default function InvestigatorCampaignRow({
     campaign,
     cards: playerCards,
     investigator,
-    showDeckUpgrade,
     last: !miniButtons,
     totalXp,
     spentXp,
-    editXpPressed,
+    unspentXp,
     uploading,
     isDeckOwner: !!canRemoveDeck,
+    showDeckUpgrade,
+    editXpPressed,
   });
 
   const onTraumaPress = useCallback(() => {

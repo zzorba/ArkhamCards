@@ -8,6 +8,7 @@ import { showGuideChaosBagOddsCalculator } from '@components/campaign/nav';
 import { NavigationProps } from '@components/nav/types';
 import { useSimpleChaosBagDialog } from '@components/campaign/CampaignDetailView/useChaosBagDialog';
 import { useScenarioGuideContext } from './withScenarioGuideContext';
+import useSingleCard from '@components/card/useSingleCard';
 
 export interface GuideDrawChaosBagProps {
   campaignId: CampaignId;

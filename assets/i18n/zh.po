@@ -4048,6 +4048,16 @@ msgstr ""
 msgid "You must be online to upload"
 msgstr ""
 
+msgid "Adjust scenario XP and trauma"
+msgstr ""
+
+msgid "Unspent XP"
+msgstr ""
+
+#, javascript-format
+msgid "${ unspentXp } saved"
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -4220,43 +4230,6 @@ msgstr "如果<i>${ card.name }</i>在“${ entry.section }”名單中："
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name }閱讀<b>${ sectionName }</b>"
-
-#, javascript-format
-msgctxt "filter"
-msgid "${ cycleNames[cycle_position] } Cycle"
-msgstr "${ cycleNames[cycle_position] }循環"
-
-msgctxt "action"
-msgid "Fight"
-msgstr "攻擊"
-
-msgctxt "action"
-msgid "Engage"
-msgstr "交戰"
-
-msgctxt "action"
-msgid "Investigate"
-msgstr "調查"
-
-msgctxt "action"
-msgid "Play"
-msgstr "打出"
-
-msgctxt "action"
-msgid "Draw"
-msgstr "抽牌"
-
-msgctxt "action"
-msgid "Move"
-msgstr "移動"
-
-msgctxt "action"
-msgid "Evade"
-msgstr "躲避"
-
-msgctxt "action"
-msgid "Resource"
-msgstr "資源"
 
 msgctxt "trait"
 msgid "???"
@@ -5265,6 +5238,43 @@ msgstr ""
 msgctxt "trait"
 msgid "Zoog"
 msgstr ""
+
+#, javascript-format
+msgctxt "filter"
+msgid "${ cycleNames[cycle_position] } Cycle"
+msgstr "${ cycleNames[cycle_position] }循環"
+
+msgctxt "action"
+msgid "Fight"
+msgstr "攻擊"
+
+msgctxt "action"
+msgid "Engage"
+msgstr "交戰"
+
+msgctxt "action"
+msgid "Investigate"
+msgstr "調查"
+
+msgctxt "action"
+msgid "Play"
+msgstr "打出"
+
+msgctxt "action"
+msgid "Draw"
+msgstr "抽牌"
+
+msgctxt "action"
+msgid "Move"
+msgstr "移動"
+
+msgctxt "action"
+msgid "Evade"
+msgstr "躲避"
+
+msgctxt "action"
+msgid "Resource"
+msgstr "資源"
 
 msgctxt "Draw Cards"
 msgid "All"

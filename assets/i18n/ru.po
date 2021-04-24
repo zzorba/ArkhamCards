@@ -4286,6 +4286,16 @@ msgstr ""
 msgid "You must be online to upload"
 msgstr ""
 
+msgid "Adjust scenario XP and trauma"
+msgstr ""
+
+msgid "Unspent XP"
+msgstr ""
+
+#, javascript-format
+msgid "${ unspentXp } saved"
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -4502,43 +4512,6 @@ msgstr ""
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } читает <b>${ sectionName }</b>"
-
-#, javascript-format
-msgctxt "filter"
-msgid "${ cycleNames[cycle_position] } Cycle"
-msgstr "Цикл ${ cycleNames[cycle_position] }"
-
-msgctxt "action"
-msgid "Fight"
-msgstr "Бой"
-
-msgctxt "action"
-msgid "Engage"
-msgstr "Начать сражаться"
-
-msgctxt "action"
-msgid "Investigate"
-msgstr "Исследование"
-
-msgctxt "action"
-msgid "Play"
-msgstr "Сыграть карту"
-
-msgctxt "action"
-msgid "Draw"
-msgstr "Взять карту"
-
-msgctxt "action"
-msgid "Move"
-msgstr "Переместиться"
-
-msgctxt "action"
-msgid "Evade"
-msgstr "Уход"
-
-msgctxt "action"
-msgid "Resource"
-msgstr "Взять ресурс"
 
 msgctxt "trait"
 msgid "???"
@@ -5547,6 +5520,43 @@ msgstr ""
 msgctxt "trait"
 msgid "Zoog"
 msgstr ""
+
+#, javascript-format
+msgctxt "filter"
+msgid "${ cycleNames[cycle_position] } Cycle"
+msgstr "Цикл ${ cycleNames[cycle_position] }"
+
+msgctxt "action"
+msgid "Fight"
+msgstr "Бой"
+
+msgctxt "action"
+msgid "Engage"
+msgstr "Начать сражаться"
+
+msgctxt "action"
+msgid "Investigate"
+msgstr "Исследование"
+
+msgctxt "action"
+msgid "Play"
+msgstr "Сыграть карту"
+
+msgctxt "action"
+msgid "Draw"
+msgstr "Взять карту"
+
+msgctxt "action"
+msgid "Move"
+msgstr "Переместиться"
+
+msgctxt "action"
+msgid "Evade"
+msgstr "Уход"
+
+msgctxt "action"
+msgid "Resource"
+msgstr "Взять ресурс"
 
 msgctxt "Draw Cards"
 msgid "All"

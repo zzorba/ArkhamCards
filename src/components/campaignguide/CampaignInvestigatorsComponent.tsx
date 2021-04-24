@@ -144,6 +144,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
           playerCards={playerCards}
           spentXp={spentXp[investigator.code] || 0}
           totalXp={processedCampaign.campaignLog.totalXp(investigator.code)}
+          unspentXp={processedCampaign.campaignLog.specialXp(investigator.code, 'unspect_xp')}
           deck={latestDecks[investigator.code]}
           componentId={componentId}
           investigator={investigator}

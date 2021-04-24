@@ -4258,6 +4258,16 @@ msgstr ""
 msgid "You must be online to upload"
 msgstr ""
 
+msgid "Adjust scenario XP and trauma"
+msgstr ""
+
+msgid "Unspent XP"
+msgstr ""
+
+#, javascript-format
+msgid "${ unspentXp } saved"
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -4460,43 +4470,6 @@ msgstr ""
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } lee <b>${ sectionName }</b>"
-
-#, javascript-format
-msgctxt "filter"
-msgid "${ cycleNames[cycle_position] } Cycle"
-msgstr "Ciclo ${cycleNames[cycle_position]}"
-
-msgctxt "action"
-msgid "Fight"
-msgstr "Combatir"
-
-msgctxt "action"
-msgid "Engage"
-msgstr "Enfrentarse"
-
-msgctxt "action"
-msgid "Investigate"
-msgstr "Investigar"
-
-msgctxt "action"
-msgid "Play"
-msgstr "Jugar"
-
-msgctxt "action"
-msgid "Draw"
-msgstr "Robar"
-
-msgctxt "action"
-msgid "Move"
-msgstr "Mover"
-
-msgctxt "action"
-msgid "Evade"
-msgstr "Evitar"
-
-msgctxt "action"
-msgid "Resource"
-msgstr "Recurso"
 
 msgctxt "trait"
 msgid "???"
@@ -5505,6 +5478,43 @@ msgstr ""
 msgctxt "trait"
 msgid "Zoog"
 msgstr ""
+
+#, javascript-format
+msgctxt "filter"
+msgid "${ cycleNames[cycle_position] } Cycle"
+msgstr "Ciclo ${cycleNames[cycle_position]}"
+
+msgctxt "action"
+msgid "Fight"
+msgstr "Combatir"
+
+msgctxt "action"
+msgid "Engage"
+msgstr "Enfrentarse"
+
+msgctxt "action"
+msgid "Investigate"
+msgstr "Investigar"
+
+msgctxt "action"
+msgid "Play"
+msgstr "Jugar"
+
+msgctxt "action"
+msgid "Draw"
+msgstr "Robar"
+
+msgctxt "action"
+msgid "Move"
+msgstr "Mover"
+
+msgctxt "action"
+msgid "Evade"
+msgstr "Evitar"
+
+msgctxt "action"
+msgid "Resource"
+msgstr "Recurso"
 
 msgctxt "Draw Cards"
 msgid "All"
