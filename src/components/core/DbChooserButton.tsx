@@ -8,6 +8,7 @@ import NavButton from './NavButton';
 import { SearchSelectProps } from '../cardlist/SearchMultiSelectView';
 import COLORS from '@styles/colors';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   componentId: string;
@@ -26,6 +27,7 @@ interface Props {
 }
 export default function DbChooserButton({ componentId, title, field, onChange, fixedTranslations, selection, indent, query, tabooSetId, processValue, capitalize }: Props) {
   const { db } = useContext(DatabaseContext);
+  const { lang } = useContext(LanguageContext);
   const [pressed, setPressed] = useState(false);
 
   const onSelectionChange = useCallback((selection: string[]) => {
@@ -59,7 +61,7 @@ export default function DbChooserButton({ componentId, title, field, onChange, f
           name: 'SearchFilters.Chooser',
           passProps: {
             placeholder: t`Search ${title}`,
-            values: actualValues,
+            values: fixedTranslations ? actualValues.sort((a, b) => a.localeCompare(b, lang)) : actualValues,
             onChange: onSelectionChange,
             selection: actualSelection,
             capitalize,
@@ -87,7 +89,7 @@ export default function DbChooserButton({ componentId, title, field, onChange, f
       });
       setPressed(false);
     });
-  }, [capitalize, db, field, componentId, title, fixedTranslations, setPressed, onSelectionChange, selection, processValue, query, tabooSetId]);
+  }, [capitalize, db, field, componentId, title, fixedTranslations, lang, setPressed, onSelectionChange, selection, processValue, query, tabooSetId]);
 
   const selectedDescription = useMemo(() => {
     if (!selection || !selection.length) {

@@ -13,6 +13,8 @@ interface Props {
 let eventListener: EventEmitter | null = null;
 let currentSystemLang: string | undefined = undefined;
 
+const LOCALIZED_CARD_TRAITS = new Set(['fr']);
+
 export default function LanguageProvider({ children }: Props) {
   const [systemLang, setSystemLang] = useState<string>(currentSystemLang || getSystemLanguage());
   useEffect(() => {
@@ -40,7 +42,7 @@ export default function LanguageProvider({ children }: Props) {
   const context = useMemo(() => {
     return {
       lang,
-      useCardTraits: false, // lang !== 'ru',
+      useCardTraits: !LOCALIZED_CARD_TRAITS.has(lang),
     };
   }, [lang]);
   return (

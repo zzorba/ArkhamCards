@@ -119,6 +119,9 @@ export default function SearchMultiSelectView({ componentId, placeholder, onChan
           onScroll={onScroll}
           renderItem={renderItem}
           keyExtractor={keyExtractor}
+          maxToRenderPerBatch={30}
+          initialNumToRender={30}
+          onEndReachedThreshold={0.5}
           keyboardShouldPersistTaps="always"
           keyboardDismissMode="on-drag"
           ListHeaderComponent={header}
