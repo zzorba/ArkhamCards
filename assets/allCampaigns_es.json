@@ -71942,7 +71942,7 @@
 {
   "id": "tic",
   "position": 7,
-  "version": 1,
+  "version": 2,
   "name": "La conspiración de Innsmouth",
   "campaign_type": "campaign",
   "campaign_log": [
@@ -73313,6 +73313,33 @@
           }
         ]
       }
+    },
+    {
+      "id": "$upgrade_decks",
+      "type": "input",
+      "input": {
+        "type": "upgrade_decks",
+        "skip_decks": true,
+        "special_xp": "unspect_xp"
+      }
+    },
+    {
+      "id": "maybe_upgrade_decks",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "$upgrade_decks"
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -73346,7 +73373,8 @@
         "maybe_ask_idol",
         "maybe_ask_mantle",
         "maybe_ask_headdress",
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     },
     {
@@ -73367,7 +73395,8 @@
         "maybe_ask_idol",
         "maybe_ask_mantle",
         "maybe_ask_headdress",
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     },
     {
@@ -73404,7 +73433,8 @@
         "maybe_ask_idol",
         "maybe_ask_mantle",
         "maybe_ask_headdress",
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     }
   ]
@@ -75689,6 +75719,33 @@
           }
         ]
       }
+    },
+    {
+      "id": "$upgrade_decks",
+      "type": "input",
+      "input": {
+        "type": "upgrade_decks",
+        "skip_decks": true,
+        "special_xp": "unspect_xp"
+      }
+    },
+    {
+      "id": "maybe_upgrade_decks",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "$upgrade_decks"
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -75721,7 +75778,8 @@
       "steps": [
         "maybe_made_it_safely_to_their_vehicles",
         "earn_xp",
-        "check_made_it_safely_to_their_vehicles"
+        "check_made_it_safely_to_their_vehicles",
+        "maybe_upgrade_decks"
       ]
     }
   ]
@@ -78742,6 +78800,33 @@
           ]
         }
       ]
+    },
+    {
+      "id": "$upgrade_decks",
+      "type": "input",
+      "input": {
+        "type": "upgrade_decks",
+        "skip_decks": true,
+        "special_xp": "unspect_xp"
+      }
+    },
+    {
+      "id": "maybe_upgrade_decks",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "$upgrade_decks"
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -78759,7 +78844,8 @@
       ],
       "text": "Escupes y toses el agua sucia y la arena que llenan tus pulmones. La fría y oscura agua del mar lame tu piel mientras tratas de quitarte el amargo sabor salado de la marea creciente.\nUn par de manos cálidas te empujan por la espalda y hacen que te incorpores\n–Menos mal que sigue con vida –dice alguien.\nPese a la fatiga de la voz, oyes un rítmico acento indio y la inquebrantable confianza de una profesional entrenada. Cuando tu vista se aclara, ves un cielo de un color carmesí oscuro, con la luna llena justo debajo de un sol ennegrecido.\n–No tenemos tiempo que perder. Vamos, arriba.\nTe limpias la sal que te pica en los ojos y sientes cómo recuperas tus fuerzas lentamente. Tu salvadora es una mujer de largo pelo azabache. Su ajada gabardina ha tenido épocas mejoras, y hay moratones salpicando su piel cubierta de suciedad.\n–Parece confundido. ¿Por qué me mira así? –te pregunta la desconocida.",
       "steps": [
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     },
     {
@@ -78777,7 +78863,8 @@
       "title": "Resolución 1",
       "text": "A lo lejos, el cielo es de un color carmesí oscuro, con la luna llena justo debajo de un sol ennegrecido. Estás a punto de cerrar los ojos y rendirte a la inconsciencia cuando la voz de una desconocida te hace sobresaltarte y ponerte en pie.\n–¡Oh! ¿Sigue con vida?\nPese a la fatiga de la voz, oyes un rítmico acento indio y la inquebrantable confianza de una profesional entrenada. Tienes frente a ti a una mujer de largo pelo azabache. Su ajada gabardina ha tenido épocas mejoras, y hay moratones salpicando su piel cubierta de suciedad.\n–Parece confundido. ¿Por qué me mira así? –te pregunta la desconocida.",
       "steps": [
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     }
   ]

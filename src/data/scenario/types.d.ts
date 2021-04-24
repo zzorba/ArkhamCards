@@ -539,6 +539,8 @@ export interface InputStep {
 }
 export interface UpgradeDecksInput {
   type: "upgrade_decks";
+  skip_decks?: boolean;
+  special_xp?: SpecialXp;
 }
 export interface CardChoiceInput {
   type: "card_choice";

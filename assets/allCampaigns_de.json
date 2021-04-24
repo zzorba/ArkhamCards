@@ -71942,7 +71942,7 @@
 {
   "id": "tic",
   "position": 7,
-  "version": 1,
+  "version": 2,
   "name": "Die Innsmouth-Verschwörung",
   "campaign_type": "campaign",
   "campaign_log": [
@@ -73313,6 +73313,33 @@
           }
         ]
       }
+    },
+    {
+      "id": "$upgrade_decks",
+      "type": "input",
+      "input": {
+        "type": "upgrade_decks",
+        "skip_decks": true,
+        "special_xp": "unspect_xp"
+      }
+    },
+    {
+      "id": "maybe_upgrade_decks",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "$upgrade_decks"
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -73346,7 +73373,8 @@
         "maybe_ask_idol",
         "maybe_ask_mantle",
         "maybe_ask_headdress",
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     },
     {
@@ -73367,7 +73395,8 @@
         "maybe_ask_idol",
         "maybe_ask_mantle",
         "maybe_ask_headdress",
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     },
     {
@@ -73404,7 +73433,8 @@
         "maybe_ask_idol",
         "maybe_ask_mantle",
         "maybe_ask_headdress",
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     }
   ]
@@ -75689,6 +75719,33 @@
           }
         ]
       }
+    },
+    {
+      "id": "$upgrade_decks",
+      "type": "input",
+      "input": {
+        "type": "upgrade_decks",
+        "skip_decks": true,
+        "special_xp": "unspect_xp"
+      }
+    },
+    {
+      "id": "maybe_upgrade_decks",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "$upgrade_decks"
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -75721,7 +75778,8 @@
       "steps": [
         "maybe_made_it_safely_to_their_vehicles",
         "earn_xp",
-        "check_made_it_safely_to_their_vehicles"
+        "check_made_it_safely_to_their_vehicles",
+        "maybe_upgrade_decks"
       ]
     }
   ]
@@ -78742,6 +78800,33 @@
           ]
         }
       ]
+    },
+    {
+      "id": "$upgrade_decks",
+      "type": "input",
+      "input": {
+        "type": "upgrade_decks",
+        "skip_decks": true,
+        "special_xp": "unspect_xp"
+      }
+    },
+    {
+      "id": "maybe_upgrade_decks",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "$upgrade_decks"
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -78759,7 +78844,8 @@
       ],
       "text": "Du hustest das Wasser und den Sand aus deinen Lungen aus. Kaltes, dunkles Meerwasser umspült dich, als du einen Mundvoll beißendes Salzwasser zurück in die anbrandenden Fluten spuckst. \nDu spürst warme Hände, die dich auf den Rücken rollen und dich in eine aufrechte Sitzposition hieven. „Gott sei Dank, Sie leben“, sagt jemand. In der angespannten Stimme kannst du deutlich den rhythmischen indianischen Akzent heraushören, ebenso wie das unerschütterliche Selbstbewusstsein eines ausgebildeten Profis. Als dein Blick wieder klar wird, blickst du in einen blutroten Himmel, an dem der Vollmond direkt unterhalb der abgedunkelten Sonne zu erkennen ist. „Wir haben keine Zeit zu verlieren. Kommen Sie, stehen Sie auf.“ \nDu wischst dir das brennende Salzwasser aus den Augen. Nur langsam kehrt deine Stärke wieder zurück. Dein Retter stellt sich als eine Frau mit langem schwarzen Haar heraus. Ihr zerfledderter Trenchcoat hat schon bessere Tage gesehen. In ihrem schmutzverschmierten Gesicht kannst du ein paar Schrammen e erkennen. „Sie wirken verwirrt. Warum sehen Sie mich so an?“, fragt dich die Fremde.",
       "steps": [
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     },
     {
@@ -78777,7 +78863,8 @@
       "title": "Auflösung 1",
       "text": "In einiger Entfernung färbt sich der Himmel blutrot, und der Vollmond hängt direkt unterhalb der abgedunkelten Sonne. Du bist kurz davor, die Augen zu schließen und dich der Bewusstlosigkeit hinzugeben, als dich eine fremde Stimme aufschrecken lässt. „Oh, Sie leben ja noch!“. In der angespannten Stimme kannst du deutlich den rhythmischen indianischen Akzent heraushören, ebenso wie das unerschütterliche Selbstbewusstsein eines ausgebildeten Profis. Vor dir steht eine Frau mit langem schwarzem Haar. Ihr zerfledderter Trenchcoat hat schon bessere Tage gesehen. In ihrem schmutzverschmierten Gesicht kannst du ein paar Schrammen erkennen. „Sie wirken verwirrt. Warum sehen Sie mich so an?“, fragt dich die Fremde.",
       "steps": [
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     }
   ]

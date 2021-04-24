@@ -231,7 +231,9 @@ function MyDecksSelectorDialog(props: Props) {
     if (singleInvestigator && deck.investigator !== singleInvestigator) {
       return false;
     }
-
+    if (selectedInvestigatorIds && find(selectedInvestigatorIds, i => i === deck.investigator)) {
+      return false;
+    }
     if (onlyShowSelected) {
       return true;
     }
@@ -242,7 +244,7 @@ function MyDecksSelectorDialog(props: Props) {
       return false;
     }
     return true;
-  }, [singleInvestigator, onlyShowSelected, filterInvestigators, hideOtherCampaignDecks]);
+  }, [singleInvestigator, selectedInvestigatorIds, onlyShowSelected, filterInvestigators, hideOtherCampaignDecks]);
 
   const deckTab = useMemo(() => (
     <DeckSelectorTab

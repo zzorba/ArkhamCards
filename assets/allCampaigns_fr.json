@@ -71942,7 +71942,7 @@
 {
   "id": "tic",
   "position": 7,
-  "version": 1,
+  "version": 2,
   "name": "La Conspiration d'Innsmouth",
   "campaign_type": "campaign",
   "campaign_log": [
@@ -73313,6 +73313,33 @@
           }
         ]
       }
+    },
+    {
+      "id": "$upgrade_decks",
+      "type": "input",
+      "input": {
+        "type": "upgrade_decks",
+        "skip_decks": true,
+        "special_xp": "unspect_xp"
+      }
+    },
+    {
+      "id": "maybe_upgrade_decks",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "$upgrade_decks"
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -73346,7 +73373,8 @@
         "maybe_ask_idol",
         "maybe_ask_mantle",
         "maybe_ask_headdress",
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     },
     {
@@ -73367,7 +73395,8 @@
         "maybe_ask_idol",
         "maybe_ask_mantle",
         "maybe_ask_headdress",
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     },
     {
@@ -73404,7 +73433,8 @@
         "maybe_ask_idol",
         "maybe_ask_mantle",
         "maybe_ask_headdress",
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     }
   ]
@@ -75689,6 +75719,33 @@
           }
         ]
       }
+    },
+    {
+      "id": "$upgrade_decks",
+      "type": "input",
+      "input": {
+        "type": "upgrade_decks",
+        "skip_decks": true,
+        "special_xp": "unspect_xp"
+      }
+    },
+    {
+      "id": "maybe_upgrade_decks",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "$upgrade_decks"
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -75721,7 +75778,8 @@
       "steps": [
         "maybe_made_it_safely_to_their_vehicles",
         "earn_xp",
-        "check_made_it_safely_to_their_vehicles"
+        "check_made_it_safely_to_their_vehicles",
+        "maybe_upgrade_decks"
       ]
     }
   ]
@@ -78742,6 +78800,33 @@
           ]
         }
       ]
+    },
+    {
+      "id": "$upgrade_decks",
+      "type": "input",
+      "input": {
+        "type": "upgrade_decks",
+        "skip_decks": true,
+        "special_xp": "unspect_xp"
+      }
+    },
+    {
+      "id": "maybe_upgrade_decks",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "$upgrade_decks"
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -78759,7 +78844,8 @@
       ],
       "text": "Vous toussez et recrachez du sable et de l'eau sale. Une eaux de mer, sombre et glacée, coule sur votre peau tandis que vous finissez de cracher votre dernière gorgée amère et salée dans le ressac.\nUne pair de mains chaudes vous saisit dans le dos et vous redresse en position assise. « Dieu merci vous êtes en vie », dit quelqu'un. Malgré la tension déformant sa voix, vous reconnaissez un accent indien chantant et l'inébranlable confiance d'un professionnelle entraînée. Au fur et à mesure que vos yeux s'ajustent, vous découvrez un ciel aux teintes rougeoyantes, la pleine lune suspendue juste sous le soleil obscurci. « Il n'y a pas de temps à perdre. Allez, levez-vous. »\nVous essuyez l'eau salée qui vous pique les yeux à mesure que vos force vous reviennent. Votre sauveur s'avère être une femme aux long cheveux aile de corbeau. Son imperméable en lambeaux semble avoir connu des jours meilleurs et sa peau couverte de boue est couverte d'echymoses. « Vous avez l'air surpris. Pourquoi me fixez-vous ainsi ? » demande l'inconnue.",
       "steps": [
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     },
     {
@@ -78777,7 +78863,8 @@
       "title": "Conclusion 1",
       "text": "Au loin, le ciel prend des teintes rougeoyantes et la pleine lune est suspendue juste sous le soleil obscurcu. Vous êts sur le point de sombrer dans l'inconscience quand une voix inconnue vous fait reprendre vos esprit. « Ho ! Vous êtes en vie ? » Malgré la tension déformant sa voix, vous reconnaissez un accent indien chantant et l'inébranlable confiance d'une professionnelle entrainée. Une femme aux longs cheveux aile de corbeau se tient devant vous. Son imperméable en lambeaux semble avoir connu des jours meilleurs et sa peau couverte de boue est couverte d'echymoses. « Vous avez l'air surpris. Pourquoi me fixez-vois ainsi ? », demande l'inconnue.",
       "steps": [
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     }
   ]

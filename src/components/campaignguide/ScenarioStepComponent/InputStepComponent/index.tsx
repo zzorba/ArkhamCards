@@ -136,6 +136,8 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
         <UpgradeDecksInput
           id={step.id}
           componentId={componentId}
+          skipDeckSave={step.input.skip_decks}
+          specialXp={step.input.special_xp}
         />
       );
     case 'save_decks':
