@@ -19,7 +19,7 @@ import { getAuthToken } from '@lib/ArkhamCardsAuthProvider';
 
 import trackerLink from './trackerLink';
 
-export const GRAPHQL_SERVER = 'api.arkhamcards.com/v1';
+export const GRAPHQL_SERVER = 'gapi.arkhamcards.com/v1';
 
 const typePolicies: TypedTypePolicies = {
   campaign_deck: {

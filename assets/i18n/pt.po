@@ -4278,6 +4278,13 @@ msgstr ""
 msgid "${ unspentXp } saved"
 msgstr ""
 
+#, javascript-format
+msgid "Scenario Card - ${ difficultyStr }"
+msgstr ""
+
+msgid "Scenario Card"
+msgstr ""
+
 msgctxt "masculine"
 msgid "Alive"
 msgstr "Vivo"

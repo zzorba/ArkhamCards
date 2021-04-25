@@ -3963,6 +3963,13 @@ msgid "${ unspentXp } saved"
 msgstr ""
 
 #, javascript-format
+msgid "Scenario Card - ${ difficultyStr }"
+msgstr ""
+
+msgid "Scenario Card"
+msgstr ""
+
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr ""

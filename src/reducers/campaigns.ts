@@ -396,6 +396,24 @@ export default function(
       // Can't update a campaign that doesn't exist.
       return state;
     }
+    if (action.xpType === 'spentXp' && campaign.guided) {
+      const investigatorData = existingCampaign.adjustedInvestigatorData?.[action.investigator] || {};
+      const campaign: Campaign = {
+        ...existingCampaign,
+        adjustedInvestigatorData: {
+          ...existingCampaign.adjustedInvestigatorData,
+          [action.investigator]: {
+            ...investigatorData,
+            [action.xpType]: action.value,
+          },
+        },
+        lastUpdated: action.now,
+      };
+      return {
+        ...state,
+        all: { ...state.all, [action.id.campaignId]: campaign },
+      };
+    }
     const investigatorData = existingCampaign.investigatorData?.[action.investigator] || {};
     const campaign: Campaign = {
       ...existingCampaign,
