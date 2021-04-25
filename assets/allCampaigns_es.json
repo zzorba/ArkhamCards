@@ -306,6 +306,7 @@
   "scenario_name": "Sangre en el altar",
   "header": "Escenario IV",
   "full_name": "Escenario IV: Sangre en el altar",
+  "chaos_bag_card": "02195",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -835,6 +836,7 @@
   "scenario_name": "El Essex County Express",
   "header": "Escenario III",
   "full_name": "Escenario III: El Essex County Express",
+  "chaos_bag_card": "02159",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -1256,6 +1258,7 @@
   "scenario_name": "Actividad extracurricular",
   "header": "Escenario I-A",
   "full_name": "Escenario I-A: Actividad extracurricular",
+  "chaos_bag_card": "02041",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -1597,6 +1600,7 @@
   "scenario_name": "Perdidos en el tiempo y el espacio",
   "header": "Escenario VII",
   "full_name": "Escenario VII: Perdidos en el tiempo y el espacio",
+  "chaos_bag_card": "02311",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -2280,6 +2284,7 @@
   "scenario_name": "La casa siempre gana",
   "header": "Escenario I–B",
   "full_name": "Escenario I–B: La casa siempre gana",
+  "chaos_bag_card": "02062",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -2624,6 +2629,7 @@
   "scenario_name": "El museo Miskatonic",
   "header": "Escenario II",
   "full_name": "Escenario II: El museo Miskatonic",
+  "chaos_bag_card": "02118",
   "setup": [
     "prologue",
     "check_henry_armitage_kidnapped",
@@ -2954,6 +2960,7 @@
   "scenario_name": "Invisibles y sin dimensión",
   "header": "Escenario V",
   "full_name": "Escenario V: Invisibles y sin dimensión",
+  "chaos_bag_card": "02236",
   "setup": [
     "prologue",
     "warn_or_calm_choice",
@@ -3336,6 +3343,7 @@
   "scenario_name": "Donde aguarda la perdición",
   "header": "Escenario VI",
   "full_name": "Escenario VI: Donde aguarda la perdición",
+  "chaos_bag_card": "02274",
   "setup": [
     "prologue",
     "check_naomi_has_back",
@@ -4031,6 +4039,7 @@
   "scenario_name": "Las máscaras de medianoche",
   "header": "Escenario II",
   "full_name": "Escenario II: Las máscaras de medianoche",
+  "chaos_bag_card": "01120",
   "standalone_setup": [
     "setup_standalone_bag",
     "house_burned",
@@ -4687,6 +4696,7 @@
   "scenario_name": "El Devorador de las Profundidades",
   "header": "Escenario III",
   "full_name": "Escenario III: El Devorador de las Profundidades",
+  "chaos_bag_card": "01142",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -5130,6 +5140,7 @@
   "scenario_name": "El encuentro",
   "header": "Escenario I",
   "full_name": "Escenario I: El encuentro",
+  "chaos_bag_card": "01104",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -5670,6 +5681,7 @@
   "scenario_name": "El Fantasma de la Verdad",
   "full_name": "Escenario V: El Fantasma de la Verdad",
   "header": "Escenario V",
+  "chaos_bag_card": "03200",
   "setup": [
     "app_note",
     "check_king_claimed_victims",
@@ -6646,6 +6658,7 @@
   "scenario_name": "Surgen estrellas negras",
   "full_name": "Escenario VII: Surgen estrellas negras",
   "header": "Escenario VII",
+  "chaos_bag_card": "03274",
   "setup": [
     "intro",
     "check_ashleigh_clarke",
@@ -7374,6 +7387,7 @@
   "scenario_name": "Se cierra el telón",
   "full_name": "Escenario I: Se cierra el telón",
   "header": "Escenario I",
+  "chaos_bag_card": "03043",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -7726,6 +7740,7 @@
   "scenario_name": "Penumbrosa Carcosa",
   "full_name": "Escenario VIII: Penumbrosa Carcosa",
   "header": "Escenario VIII",
+  "chaos_bag_card": "03316",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -8564,6 +8579,7 @@
   "scenario_name": "Ecos del pasado",
   "full_name": "Escenario III: Ecos del pasado",
   "header": "Escenario III",
+  "chaos_bag_card": "03120",
   "setup": [
     "intro",
     "check_sebastien_moreau",
@@ -9781,6 +9797,7 @@
   "scenario_name": "El Último Rey",
   "full_name": "Escenario II: El Último Rey",
   "header": "Escenario II",
+  "chaos_bag_card": "03061",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -10264,6 +10281,7 @@
   "scenario_name": "La máscara pálida",
   "full_name": "Escenario VI: La máscara pálida",
   "header": "Escenario VI",
+  "chaos_bag_card": "03240",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -11189,6 +11207,7 @@
   "scenario_name": "El juramento inconfesable",
   "full_name": "Escenario IV: El juramento inconfesable",
   "header": "Escenario IV",
+  "chaos_bag_card": "03159",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -12548,6 +12567,7 @@
   "scenario_name": "Regreso a Sangre en el altar",
   "header": "Escenario IV",
   "full_name": "Escenario IV: Regreso a Sangre en el altar",
+  "chaos_bag_card": "02195",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -12986,6 +13006,7 @@
   "scenario_name": "Regreso a El Essex County Express",
   "header": "Escenario III",
   "full_name": "Escenario III: Regreso a El Essex County Express",
+  "chaos_bag_card": "02159",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -13413,6 +13434,7 @@
   "scenario_name": "Regreso a Actividad extracurricular",
   "header": "Escenario I-A",
   "full_name": "Escenario I–A: Regreso a Actividad extracurricular",
+  "chaos_bag_card": "02041",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -13778,6 +13800,7 @@
   "scenario_name": "Regreso a Perdidos en el tiempo y el espacio",
   "header": "Escenario VII",
   "full_name": "Escenario VII: Regreso a Perdidos en el tiempo y el espacio",
+  "chaos_bag_card": "02311",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -14131,6 +14154,7 @@
   "scenario_name": "Regreso a La casa siempre gana",
   "header": "Escenario I–B",
   "full_name": "Escenario I–B: Regreso a La casa siempre gana",
+  "chaos_bag_card": "02062",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -14476,6 +14500,7 @@
   "scenario_name": "Regreso a El museo Miskatonic",
   "header": "Escenario II",
   "full_name": "Escenario II: Regreso a El museo Miskatonic",
+  "chaos_bag_card": "02118",
   "setup": [
     "prologue",
     "check_henry_armitage_kidnapped",
@@ -14815,6 +14840,7 @@
   "scenario_name": "Regreso a Invisibles y sin dimensión",
   "header": "Escenario V",
   "full_name": "Escenario V: Regreso a Invisibles y sin dimensión",
+  "chaos_bag_card": "02236",
   "setup": [
     "prologue",
     "warn_or_calm_choice",
@@ -15209,6 +15235,7 @@
   "scenario_name": "Regreso a Donde aguarda la perdición",
   "header": "Escenario VI",
   "full_name": "Escenario VI: Regreso a Donde aguarda la perdición",
+  "chaos_bag_card": "02274",
   "setup": [
     "prologue",
     "check_naomi_has_back",
@@ -16360,6 +16387,7 @@
   "scenario_name": "Regreso a El Devorador de las Profundidades",
   "header": "Escenario III",
   "full_name": "Escenario III: Regreso a El Devorador de las Profundidades",
+  "chaos_bag_card": "01142",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -16804,6 +16832,7 @@
   "scenario_name": "Regreso a El encuentro",
   "header": "Escenario I",
   "full_name": "Escenario I: Regreso a El encuentro",
+  "chaos_bag_card": "01104",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -17131,6 +17160,7 @@
   "scenario_name": "Regreso a Las máscaras de medianoche",
   "header": "Escenario II",
   "full_name": "Escenario II: Regreso a Las máscaras de medianoche",
+  "chaos_bag_card": "01120",
   "standalone_setup": [
     "setup_standalone_bag",
     "house_burned",
@@ -18815,6 +18845,7 @@
   "scenario_name": "Regreso a El Fantasma de la Verdad",
   "full_name": "Escenario V: Regreso a El Fantasma de la Verdad",
   "header": "Escenario V",
+  "chaos_bag_card": "03200",
   "setup": [
     "app_note",
     "check_king_claimed_victims",
@@ -19797,6 +19828,7 @@
   "scenario_name": "Regreso a Surgen estrellas negras",
   "full_name": "Escenario VII: Regreso a Surgen estrellas negras",
   "header": "Escenario VII",
+  "chaos_bag_card": "03274",
   "setup": [
     "intro",
     "check_ashleigh_clarke",
@@ -20542,6 +20574,7 @@
   "scenario_name": "Regreso a Se cierra el telón",
   "full_name": "Escenario I: Regreso a Se cierra el telón",
   "header": "Escenario I",
+  "chaos_bag_card": "03043",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -20947,6 +20980,7 @@
   "scenario_name": "Regreso a Penumbrosa Carcosa",
   "full_name": "Escenario VIII: Regreso a Penumbrosa Carcosa",
   "header": "Escenario VIII",
+  "chaos_bag_card": "03316",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -21796,6 +21830,7 @@
   "scenario_name": "Regreso a Ecos del pasado",
   "full_name": "Escenario III: Regreso a Ecos del pasado",
   "header": "Escenario III",
+  "chaos_bag_card": "03120",
   "setup": [
     "intro",
     "check_sebastien_moreau",
@@ -22393,6 +22428,7 @@
   "scenario_name": "Regreso a El Último Rey",
   "full_name": "Escenario II: Regreso a El Último Rey",
   "header": "Escenario II",
+  "chaos_bag_card": "03061",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -22882,6 +22918,7 @@
   "scenario_name": "Regreso a La máscara pálida",
   "full_name": "Escenario VI: Regreso a La máscara pálida",
   "header": "Escenario VI",
+  "chaos_bag_card": "03240",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -23816,6 +23853,7 @@
   "scenario_name": "Regreso a El juramento inconfesable",
   "full_name": "Escenario IV: Regreso a El juramento inconfesable",
   "header": "Escenario IV",
+  "chaos_bag_card": "03159",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -26253,6 +26291,7 @@
   "scenario_name": "Regreso a El corazón de los ancianos, primera parte",
   "full_name": "Escenario V-A: Regreso a El corazón de los ancianos, primera parte",
   "header": "Escenario V-A",
+  "chaos_bag_card": "04205",
   "setup": [
     "intro_1",
     "choose_who_to_consult",
@@ -27301,6 +27340,7 @@
   "scenario_name": "Regreso a Eones destrozados",
   "full_name": "Escenario VIII: Regreso a Eones destrozados",
   "header": "Escenario VIII",
+  "chaos_bag_card": "04314",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -27843,6 +27883,7 @@
   "scenario_name": "Regreso a El límite del otro lado",
   "full_name": "Escenario IV: Regreso a El límite del otro lado",
   "header": "Escenario IV",
+  "chaos_bag_card": "04161",
   "setup": [
     "intro",
     "check_forged_bond_with_ichtaca",
@@ -28668,6 +28709,7 @@
   "scenario_name": "Regreso a La Ciudad de los Archivos",
   "full_name": "Escenario VI: Regreso a La Ciudad de los Archivos",
   "header": "Escenario VI",
+  "chaos_bag_card": "04237",
   "setup": [
     "intro_1",
     "choose_to_cooperate",
@@ -29146,6 +29188,7 @@
   "scenario_name": "Regreso a Las profundidades de Yoth",
   "full_name": "Escenario VII: Regreso a Las profundidades de Yoth",
   "header": "Escenario VII",
+  "chaos_bag_card": "04277",
   "standalone_setup": [
     "setup_standalone_bag",
     "setup_standalone_log_1",
@@ -30500,6 +30543,7 @@
   "scenario_name": "Regreso a La perdición de Eztli",
   "full_name": "Escenario II: Regreso a La perdición de Eztli",
   "header": "Escenario II",
+  "chaos_bag_card": "04054",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -31150,6 +31194,7 @@
   "scenario_name": "Regreso a Naturaleza salvaje",
   "full_name": "Escenario I: Regreso a Naturaleza salvaje",
   "header": "Escenario I",
+  "chaos_bag_card": "04043",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -31600,6 +31645,7 @@
   "scenario_name": "Regreso a Los hilos del destino",
   "full_name": "Escenario III: Regreso a Los hilos del destino",
   "header": "Escenario III",
+  "chaos_bag_card": "04113",
   "standalone_setup": [
     "setup_standalone_bag",
     "intro_1",
@@ -33219,6 +33265,7 @@
   "scenario_name": "Regreso a Vuelta atrás en el tiempo",
   "full_name": "Escenario IX: Regreso a Vuelta atrás en el tiempo",
   "header": "Escenario IX",
+  "chaos_bag_card": "04344",
   "setup": [
     "check_wait_for_additional_supplies",
     "cross_off_everything",
@@ -34988,6 +35035,7 @@
   "scenario_name": "Todo o nada",
   "full_name": "Todo o nada",
   "header": "",
+  "chaos_bag_card": "90011",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -35577,6 +35625,7 @@
   "scenario_name": "Bad Blood",
   "full_name": "Bad Blood",
   "header": "",
+  "chaos_bag_card": "90020",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -36140,6 +36189,7 @@
   "scenario_name": "La masa que lo devoraba todo",
   "full_name": "La masa que lo devoraba todo",
   "header": "",
+  "chaos_bag_card": "85001",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -37556,6 +37606,7 @@
   "scenario_name": "Carnevale de horrores",
   "full_name": "Carnevale de horrores",
   "header": "",
+  "chaos_bag_card": "82001",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -37985,6 +38036,7 @@
   "scenario_name": "La maldición del Rougarou",
   "full_name": "La maldición del Rougarou",
   "header": "",
+  "chaos_bag_card": "81001",
   "xp_cost": 1,
   "standalone_setup": [
     "choose_difficulty",
@@ -38267,6 +38319,7 @@
   "scenario_name": "Los laberintos de la demencia",
   "full_name": "Los laberintos de la demencia",
   "header": "",
+  "chaos_bag_card": "70001",
   "side_scenario_type": "standalone",
   "standalone_setup": [
     "choose_difficulty",
@@ -39646,6 +39699,7 @@
   "scenario_name": "Asesinato en el hotel Excelsior",
   "full_name": "Asesinato en el hotel Excelsior",
   "header": "",
+  "chaos_bag_card": "84001",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -41405,6 +41459,7 @@
   "scenario_name": "Lee o muere",
   "full_name": "Lee o muere",
   "header": "",
+  "chaos_bag_card": "90004",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -41971,6 +42026,7 @@
   "scenario_name": "El letargo eterno",
   "full_name": "El letargo eterno",
   "header": "",
+  "chaos_bag_card": "83001",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -42464,6 +42520,7 @@
   "scenario_name": "El usurpador de la noche",
   "full_name": "El usurpador de la noche",
   "header": "",
+  "chaos_bag_card": "83016",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -42950,6 +43007,7 @@
   "scenario_name": "La guerra de los Dioses Exteriores",
   "full_name": "La guerra de los Dioses Exteriores",
   "header": "",
+  "chaos_bag_card": "86001",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -43977,6 +44035,7 @@
   "scenario_name": "A las puertas de la muerte",
   "full_name": "Escenario II: A las puertas de la muerte",
   "header": "Escenario II",
+  "chaos_bag_card": "05065",
   "setup": [
     "intro_article",
     "intro",
@@ -44699,6 +44758,7 @@
   "scenario_name": "Ante el trono negro",
   "full_name": "Escenario VIII: Ante el trono negro",
   "header": "Escenario VIII",
+  "chaos_bag_card": "05325",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -45213,6 +45273,7 @@
   "full_name": "Prólogo: Desaparición en la finca del Crepúsculo",
   "header": "Prólogo",
   "type": "interlude",
+  "chaos_bag_card": "05043",
   "setup": [
     "pre_intro",
     "choose_neutral_investigators",
@@ -45856,6 +45917,7 @@
   "scenario_name": "Por el bien común",
   "full_name": "Escenario V: Por el bien común",
   "header": "Escenario V",
+  "chaos_bag_card": "05197",
   "setup": [
     "intro_1",
     "check_members_of_the_lodge",
@@ -46319,6 +46381,7 @@
   "scenario_name": "En las garras del caos",
   "full_name": "Escenario VII: En las garras del caos",
   "header": "Escenario VII",
+  "chaos_bag_card": "05284",
   "setup": [
     "intro_1",
     "check_never_seen_again",
@@ -48164,6 +48227,7 @@
   "scenario_name": "El nombre secreto",
   "full_name": "Escenario III: El nombre secreto",
   "header": "Escenario III",
+  "chaos_bag_card": "05120",
   "setup": [
     "check_members_of_the_lodge",
     "gather_encounter_sets",
@@ -48789,6 +48853,7 @@
   "scenario_name": "La paga del pecado",
   "full_name": "Escenario IV: La paga del pecado",
   "header": "Escenario IV",
+  "chaos_bag_card": "05161",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -49083,6 +49148,7 @@
   "scenario_name": "La hora bruja",
   "full_name": "Escenario I: La hora bruja",
   "header": "Escenario I",
+  "chaos_bag_card": "05050",
   "setup": [
     "intro",
     "choose_fate",
@@ -49912,6 +49978,7 @@
   "scenario_name": "Unión y desilusión",
   "full_name": "Escenario VI: Unión y desilusión",
   "header": "Escenario VI",
+  "chaos_bag_card": "05238",
   "setup": [
     "intro_1",
     "point_of_no_return",
@@ -54545,6 +54612,7 @@
   "scenario_name": "Más allá de las Puertas del Sueño",
   "full_name": "Escenario 1–A: Más allá de las Puertas del Sueño",
   "header": "Escenario I-A",
+  "chaos_bag_card": "06039",
   "setup": [
     "dream_intro",
     "choose_dreams",
@@ -55529,6 +55597,7 @@
   "scenario_name": "El lado oscuro de la luna",
   "full_name": "Escenario III–A: El lado oscuro de la luna",
   "header": "Escenario III–A",
+  "chaos_bag_card": "06206",
   "setup": [
     "check_someone_captured",
     "gather_encounter_sets",
@@ -55968,6 +56037,7 @@
   "scenario_name": "La búsqueda de Kadath",
   "full_name": "Escenario II–A: La búsqueda de Kadath",
   "header": "Escenario II–A",
+  "chaos_bag_card": "06119",
   "standalone_setup": [
     "setup_standalone_bag",
     "black_cat_not_at_your_side",
@@ -57049,6 +57119,7 @@
   "scenario_name": "Donde moran los dioses",
   "full_name": "Escenario IV–A: Donde moran los dioses",
   "header": "Escenario IV–A",
+  "chaos_bag_card": "06286",
   "setup": [
     "check_carried_to_the_cold_wastes",
     "gather_encounter_sets",
@@ -58221,6 +58292,7 @@
   "scenario_name": "Mil formas de horror",
   "full_name": "Escenario II–B: Mil formas de horror",
   "header": "Escenario II–B",
+  "chaos_bag_card": "06168",
   "setup": [
     "intro_1",
     "check_black_cat_at_your_side",
@@ -60734,6 +60806,7 @@
   "scenario_name": "Punto sin retorno",
   "full_name": "Escenario III–B: Punto sin retorno",
   "header": "Escenario III–B",
+  "chaos_bag_card": "06247",
   "setup": [
     "check_randolph_did_not_survive_descent",
     "gather_encounter_sets",
@@ -61242,6 +61315,7 @@
   "scenario_name": "Pesadilla consciente",
   "full_name": "Escenario 1–B: Pesadilla consciente",
   "header": "Escenario I–B",
+  "chaos_bag_card": "06063",
   "setup": [
     "intro_1",
     "choose_doctor",
@@ -61790,6 +61864,7 @@
   "scenario_name": "Tejedora del cosmos",
   "full_name": "Escenario IV–B: Tejedora del cosmos",
   "header": "Escenario IV–B",
+  "chaos_bag_card": "06333",
   "setup": [
     "weaver_intro",
     "gather_encounter_sets",
@@ -63308,6 +63383,7 @@
   "scenario_name": "La perdición de Eztli",
   "full_name": "Escenario II: La perdición de Eztli",
   "header": "Escenario II",
+  "chaos_bag_card": "04054",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -63864,6 +63940,7 @@
   "scenario_name": "El corazón de los ancianos, primera parte",
   "full_name": "Escenario V-A: El corazón de los ancianos, primera parte",
   "header": "Escenario V-A",
+  "chaos_bag_card": "04205",
   "setup": [
     "intro_1",
     "choose_who_to_consult",
@@ -65483,6 +65560,7 @@
   "scenario_name": "Eones destrozados",
   "full_name": "Escenario VIII: Eones destrozados",
   "header": "Escenario VIII",
+  "chaos_bag_card": "04314",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -66014,6 +66092,7 @@
   "scenario_name": "El límite del otro lado",
   "full_name": "Escenario IV: El límite del otro lado",
   "header": "Escenario IV",
+  "chaos_bag_card": "04161",
   "setup": [
     "intro",
     "check_forged_bond_with_ichtaca",
@@ -66833,6 +66912,7 @@
   "scenario_name": "La Ciudad de los Archivos",
   "full_name": "Escenario VI: La Ciudad de los Archivos",
   "header": "Escenario VI",
+  "chaos_bag_card": "04237",
   "setup": [
     "intro_1",
     "choose_to_cooperate",
@@ -67862,6 +67942,7 @@
   "scenario_name": "Las profundidades de Yoth",
   "full_name": "Escenario VII: Las profundidades de Yoth",
   "header": "Escenario VII",
+  "chaos_bag_card": "04277",
   "standalone_setup": [
     "setup_standalone_bag",
     "setup_standalone_log_1",
@@ -69771,6 +69852,7 @@
   "scenario_name": "Los hilos del destino",
   "full_name": "Escenario III: Los hilos del destino",
   "header": "Escenario III",
+  "chaos_bag_card": "04113",
   "standalone_setup": [
     "setup_standalone_bag",
     "intro_1",
@@ -71022,6 +71104,7 @@
   "scenario_name": "Vuelta atrás en el tiempo",
   "full_name": "Escenario IX: Vuelta atrás en el tiempo",
   "header": "Escenario IX",
+  "chaos_bag_card": "04344",
   "setup": [
     "check_wait_for_additional_supplies",
     "cross_off_everything",
@@ -71514,6 +71597,7 @@
   "scenario_name": "Naturaleza salvaje",
   "full_name": "Escenario I: Naturaleza salvaje",
   "header": "Escenario I",
+  "chaos_bag_card": "04043",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -72296,6 +72380,8 @@
   "scenario_name": "Una luz en la niebla",
   "full_name": "Escenario VI: Una luz en la niebla",
   "header": "Escenario VI",
+  "chaos_bag_card_text": "[skull]: -1. If your location is flooded, reveal an additional chaos token.\n[cultist]: -2. If you fail, after this test ends, increase the flood level of your location.\n[tablet]: -3. If you fail this test and your location is flooded, take 1 damage.\n[elder_thing]: -4. If you fail, move the nearest ready unengaged enemy once toward your location. It loses aloof during this movement.",
+  "chaos_bag_card_back_text": "[skull]: -2. If your location is flooded, reveal an additional chaos token.\n[cultist]: -2. If you fail, after this test ends, increase the flood level of your location (if you cannot, take 1 horror instead).\n[tablet]: -3. If you fail this test and your location is flooded, take 2 damage.\n[elder_thing]: -4. Move the nearest unengaged enemy once toward your location. It loses aloof during this movement.",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -73754,6 +73840,7 @@
   "scenario_name": "Arrecife del Diablo",
   "full_name": "Scenario IV: Devil Reef",
   "header": "Escenario IV",
+  "chaos_bag_card": "07163",
   "setup": [
     "intro_1",
     "check_mission_succeeded",
@@ -74794,6 +74881,7 @@
   "scenario_name": "Horror a toda máquina",
   "full_name": "Escenario V: Horror a toda máquina",
   "header": "Escenario V",
+  "chaos_bag_card": "07198",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -75119,6 +75207,7 @@
   "scenario_name": "Hasta el cuello",
   "full_name": "Escenario III: Hasta el cuello",
   "header": "Escenario III",
+  "chaos_bag_card": "07123",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -75789,6 +75878,8 @@
   "scenario_name": "Hacia el remolino",
   "full_name": "Escenario VIII: Hacia el remolino",
   "header": "Escenario VIII",
+  "chaos_bag_card_text": "[skull]: -1 (-3 instead if there are 4 or more unflooded [[Y'ha-nthlei]] locations in play).\n[cultist]: -3. If you fail, place 1 doom on the current agenda (this may cause the current agenda to advance).\n[tablet]: -4. If you fail, you must either increase the flood level of your location or take 1 damage.\n[elder_thing]: -5. If you fail and there is a key on your location, take 1 horror.",
+  "chaos_bag_card_back_text": "[skull]: -2 (-4 instead if there are 4 or more unflooded [[Y'ha-nthlei]] locations in play).\n[cultist]: -4. If you fail, place 1 doom on the current agenda (this may cause the current agenda to advance).\n[tablet]: -5. If you fail, you must either increase the flood level of your location or take 1 damage.\n[elder_thing]: -6. If you fail and there is a key on your location, take 1 horror.",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -77526,6 +77617,8 @@
   "scenario_name": "La guarida de Dagón",
   "full_name": "Escenario VII: La guarida de Dagón",
   "header": "Escenario VII",
+  "chaos_bag_card_text": "[skull]: -1 for each key on this card.\n[cultist]: -0. Reveal an additional chaos token. If you reveal 1 or more [curse] tokens during this test, you automatically fail.\n[tablet]: -3. If you fail, place each key you control on your location.\n[elder_thing]: -4. If you fail, add 1 [curse] token to the chaos bag.",
+  "chaos_bag_card_back_text": "[skull]: -2 for each key on this card.\n[cultist]: -2. Reveal an additional chaos token. If you reveal 1 or more [curse] tokens during this test, you automatically fail.\n[tablet]: -3. Place each key you control on your location and take 1 damage.\n[elder_thing]: -4. Add 2 [curse] tokens to the chaos bag.",
   "setup": [
     "intro_1",
     "check_mission_succeeded",
@@ -78342,6 +78435,7 @@
   "scenario_name": "El pozo de la desesperación",
   "full_name": "Escenario 1: El pozo de la desesperación",
   "header": "Escenario I",
+  "chaos_bag_card": "07041",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -78990,6 +79084,7 @@
   "scenario_name": "La desaparición de Elina Harper",
   "full_name": "Escenario II: La desaparición de Elina Harper",
   "header": "Escenario II",
+  "chaos_bag_card": "07056",
   "setup": [
     "intro_1",
     "info_summary",

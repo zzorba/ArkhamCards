@@ -86,12 +86,15 @@ export default function CampaignDetailTab({
   const { showTraumaDialog, traumaDialog } = useTraumaDialog(updateTrauma, true);
   const chaosBagDisabled = useMemo(() => !keys(processedCampaign.campaignLog.chaosBag).length, [processedCampaign.campaignLog.chaosBag]);
   const allInvestigators = useMemo(() => filter(campaignInvestigators, investigator => !processedCampaign.campaignLog.isEliminated(investigator)), [campaignInvestigators, processedCampaign.campaignLog]);
+  const currentScenario = findLast(processedCampaign.scenarios, s => s.type === 'started');
+
   const [chaosBagDialog, showChaosBag] = useChaosBagDialog({
     componentId,
     allInvestigators,
     campaignId,
     chaosBag: processedCampaign.campaignLog.chaosBag || {},
     guided: true,
+    scenarioId: currentScenario?.id?.encodedScenarioId,
     setChaosBag: updateCampaignActions.setChaosBag,
   });
   return (

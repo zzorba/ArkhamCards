@@ -306,6 +306,7 @@
   "scenario_name": "血色祭壇",
   "header": "冒險IV",
   "full_name": "冒險IV：血色祭壇",
+  "chaos_bag_card": "02195",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -835,6 +836,7 @@
   "scenario_name": "瘋狂列車",
   "header": "冒險III",
   "full_name": "冒險III：瘋狂列車",
+  "chaos_bag_card": "02159",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -1256,6 +1258,7 @@
   "scenario_name": "課外活動",
   "header": "冒險 I–A",
   "full_name": "冒險 I–A：課外活動",
+  "chaos_bag_card": "02041",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -1597,6 +1600,7 @@
   "scenario_name": "迷失時空",
   "header": "冒險VII",
   "full_name": "冒險VII：迷失時空",
+  "chaos_bag_card": "02311",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -2280,6 +2284,7 @@
   "scenario_name": "百賭百勝",
   "header": "冒險 I–B",
   "full_name": "冒險 I–B: 百賭百勝",
+  "chaos_bag_card": "02062",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -2624,6 +2629,7 @@
   "scenario_name": "博物館之夜",
   "header": "冒險II",
   "full_name": "冒險II：博物館之夜",
+  "chaos_bag_card": "02118",
   "setup": [
     "prologue",
     "check_henry_armitage_kidnapped",
@@ -2954,6 +2960,7 @@
   "scenario_name": "無人知曉",
   "header": "冒險V",
   "full_name": "冒險V：無人知曉",
+  "chaos_bag_card": "02236",
   "setup": [
     "prologue",
     "warn_or_calm_choice",
@@ -3336,6 +3343,7 @@
   "scenario_name": "毀滅之地",
   "header": "冒險VI",
   "full_name": "冒險VI：毀滅之地",
+  "chaos_bag_card": "02274",
   "setup": [
     "prologue",
     "check_naomi_has_back",
@@ -4031,6 +4039,7 @@
   "scenario_name": "午夜假面",
   "header": "冒險II",
   "full_name": "冒險 II：午夜假面",
+  "chaos_bag_card": "01120",
   "standalone_setup": [
     "setup_standalone_bag",
     "house_burned",
@@ -4687,6 +4696,7 @@
   "scenario_name": "地底噬魔",
   "header": "冒險III",
   "full_name": "冒險III：地底噬魔",
+  "chaos_bag_card": "01142",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -5130,6 +5140,7 @@
   "scenario_name": "聚集於此",
   "header": "冒險I",
   "full_name": "冒險I：聚集於此",
+  "chaos_bag_card": "01104",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -5670,6 +5681,7 @@
   "scenario_name": "真相幻影",
   "full_name": "冒險V：真相幻影",
   "header": "冒險V",
+  "chaos_bag_card": "03200",
   "setup": [
     "app_note",
     "check_king_claimed_victims",
@@ -6646,6 +6658,7 @@
   "scenario_name": "黑星升起",
   "full_name": "冒險VII：黑星升起",
   "header": "冒險VII",
+  "chaos_bag_card": "03274",
   "setup": [
     "intro",
     "check_ashleigh_clarke",
@@ -7374,6 +7387,7 @@
   "scenario_name": "謝幕",
   "full_name": "冒險I：謝幕",
   "header": "冒險I",
+  "chaos_bag_card": "03043",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -7726,6 +7740,7 @@
   "scenario_name": "卡城幽影",
   "full_name": "冒險VIII：卡城幽影",
   "header": "冒險VIII",
+  "chaos_bag_card": "03316",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -8564,6 +8579,7 @@
   "scenario_name": "往事回聲",
   "full_name": "冒險III：往事回聲",
   "header": "冒險III",
+  "chaos_bag_card": "03120",
   "setup": [
     "intro",
     "check_sebastien_moreau",
@@ -9781,6 +9797,7 @@
   "scenario_name": "最後的王者",
   "full_name": "冒險II：最後的王者",
   "header": "冒險II",
+  "chaos_bag_card": "03061",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -10264,6 +10281,7 @@
   "scenario_name": "蒼白面具",
   "full_name": "冒險VI：蒼白面具",
   "header": "冒險VI",
+  "chaos_bag_card": "03240",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -11189,6 +11207,7 @@
   "scenario_name": "邪穢誓約",
   "full_name": "冒險IV：邪穢誓約",
   "header": "冒險IV",
+  "chaos_bag_card": "03159",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -12548,6 +12567,7 @@
   "scenario_name": "重返血色祭壇",
   "header": "冒險IV",
   "full_name": "Scenario IV: Return to Blood on the Altar",
+  "chaos_bag_card": "02195",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -12986,6 +13006,7 @@
   "scenario_name": "Return to The Essex County Express",
   "header": "冒險III",
   "full_name": "Scenario III: Return to The Essex County Express",
+  "chaos_bag_card": "02159",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -13413,6 +13434,7 @@
   "scenario_name": "重返課外活動",
   "header": "冒險 I–A",
   "full_name": "Scenario I–A: Return to Extracurricular Activity",
+  "chaos_bag_card": "02041",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -13778,6 +13800,7 @@
   "scenario_name": "重返迷失時空",
   "header": "冒險VII",
   "full_name": "Scenario VII: Return to Lost in Time and Space",
+  "chaos_bag_card": "02311",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -14131,6 +14154,7 @@
   "scenario_name": "重返百賭百勝",
   "header": "冒險 I–B",
   "full_name": "Scenario I–B: Return to The House Always Wins",
+  "chaos_bag_card": "02062",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -14476,6 +14500,7 @@
   "scenario_name": "重返博物館之夜",
   "header": "冒險II",
   "full_name": "Scenario II: Return to The Miskatonic Museum",
+  "chaos_bag_card": "02118",
   "setup": [
     "prologue",
     "check_henry_armitage_kidnapped",
@@ -14815,6 +14840,7 @@
   "scenario_name": "重返無人知曉",
   "header": "冒險V",
   "full_name": "Scenario V: Return to Undimensioned and Unseen",
+  "chaos_bag_card": "02236",
   "setup": [
     "prologue",
     "warn_or_calm_choice",
@@ -15209,6 +15235,7 @@
   "scenario_name": "重返毀滅之地",
   "header": "冒險VI",
   "full_name": "Scenario VI: Return to Where Doom Awaits",
+  "chaos_bag_card": "02274",
   "setup": [
     "prologue",
     "check_naomi_has_back",
@@ -16360,6 +16387,7 @@
   "scenario_name": "Return to The Devourer Below",
   "header": "冒險III",
   "full_name": "Scenario III: Return to The Devourer Below",
+  "chaos_bag_card": "01142",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -16804,6 +16832,7 @@
   "scenario_name": "重返聚集於此",
   "header": "冒險I",
   "full_name": "Scenario I: Return to the Gathering",
+  "chaos_bag_card": "01104",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -17131,6 +17160,7 @@
   "scenario_name": "Return to The Midnight Masks",
   "header": "冒險II",
   "full_name": "Scenario II: Return to The Midnight Masks",
+  "chaos_bag_card": "01120",
   "standalone_setup": [
     "setup_standalone_bag",
     "house_burned",
@@ -18815,6 +18845,7 @@
   "scenario_name": "重返真相幻影",
   "full_name": "Scenario V: Return to A Phantom of Truth",
   "header": "冒險V",
+  "chaos_bag_card": "03200",
   "setup": [
     "app_note",
     "check_king_claimed_victims",
@@ -19797,6 +19828,7 @@
   "scenario_name": "重返黑星升起",
   "full_name": "Scenario VII: Return to Black Stars Rise",
   "header": "冒險VII",
+  "chaos_bag_card": "03274",
   "setup": [
     "intro",
     "check_ashleigh_clarke",
@@ -20542,6 +20574,7 @@
   "scenario_name": "重返謝幕",
   "full_name": "Scenario I: Return to Curtain Call",
   "header": "冒險I",
+  "chaos_bag_card": "03043",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -20947,6 +20980,7 @@
   "scenario_name": "重返卡城幽影",
   "full_name": "Scenario VIII: Return to Dim Carcosa",
   "header": "冒險VIII",
+  "chaos_bag_card": "03316",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -21796,6 +21830,7 @@
   "scenario_name": "重返往事回聲",
   "full_name": "Scenario III: Return to Echoes of the Past",
   "header": "冒險III",
+  "chaos_bag_card": "03120",
   "setup": [
     "intro",
     "check_sebastien_moreau",
@@ -22393,6 +22428,7 @@
   "scenario_name": "重返最後的王者",
   "full_name": "Scenario II: Return to The Last King",
   "header": "冒險II",
+  "chaos_bag_card": "03061",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -22882,6 +22918,7 @@
   "scenario_name": "重返蒼白面具",
   "full_name": "Scenario VI: Return to The Pallid Mask",
   "header": "冒險VI",
+  "chaos_bag_card": "03240",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -23816,6 +23853,7 @@
   "scenario_name": "重返邪穢誓約",
   "full_name": "Scenario IV: Return to The Unspeakable Oath",
   "header": "冒險IV",
+  "chaos_bag_card": "03159",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -26253,6 +26291,7 @@
   "scenario_name": "Return to Heart of the Elders, Part 1",
   "full_name": "Scenario V–A: Return to Heart of the Elders, Part 1",
   "header": "冒險V-A",
+  "chaos_bag_card": "04205",
   "setup": [
     "intro_1",
     "choose_who_to_consult",
@@ -27301,6 +27340,7 @@
   "scenario_name": "重返破碎永世",
   "full_name": "Scenario VIII: Return to Shattered Aeons",
   "header": "冒險VIII",
+  "chaos_bag_card": "04314",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -27843,6 +27883,7 @@
   "scenario_name": "重返界線彼端",
   "full_name": "Scenario IV: Return to The Boundary Beyond",
   "header": "冒險IV",
+  "chaos_bag_card": "04161",
   "setup": [
     "intro",
     "check_forged_bond_with_ichtaca",
@@ -28668,6 +28709,7 @@
   "scenario_name": "重返天機之城",
   "full_name": "Scenario VI: Return to The City of Archives",
   "header": "冒險VI",
+  "chaos_bag_card": "04237",
   "setup": [
     "intro_1",
     "choose_to_cooperate",
@@ -29146,6 +29188,7 @@
   "scenario_name": "重返幽嘶之城",
   "full_name": "Scenario VII: Return to The Depths of Yoth",
   "header": "冒險VII",
+  "chaos_bag_card": "04277",
   "standalone_setup": [
     "setup_standalone_bag",
     "setup_standalone_log_1",
@@ -30500,6 +30543,7 @@
   "scenario_name": "重返埃茲特里的覆滅",
   "full_name": "Scenario II: Return to The Doom of Eztli",
   "header": "冒險II",
+  "chaos_bag_card": "04054",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -31150,6 +31194,7 @@
   "scenario_name": "重返荒莽密林",
   "full_name": "Scenario I: Return to The Untamed Wilds",
   "header": "冒險I",
+  "chaos_bag_card": "04043",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -31600,6 +31645,7 @@
   "scenario_name": "重返命運之線",
   "full_name": "Scenario III: Return to Threads of Fate",
   "header": "冒險III",
+  "chaos_bag_card": "04113",
   "standalone_setup": [
     "setup_standalone_bag",
     "intro_1",
@@ -33219,6 +33265,7 @@
   "scenario_name": "Return to Turn Back Time",
   "full_name": "Scenario IX: Return to Turn Back Time",
   "header": "冒險IX",
+  "chaos_bag_card": "04344",
   "setup": [
     "check_wait_for_additional_supplies",
     "cross_off_everything",
@@ -34988,6 +35035,7 @@
   "scenario_name": "All or Nothing",
   "full_name": "All or Nothing",
   "header": "",
+  "chaos_bag_card": "90011",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -35577,6 +35625,7 @@
   "scenario_name": "Bad Blood",
   "full_name": "Bad Blood",
   "header": "",
+  "chaos_bag_card": "90020",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -36140,6 +36189,7 @@
   "scenario_name": "The Blob That Ate Everything",
   "full_name": "The Blob That Ate Everything",
   "header": "",
+  "chaos_bag_card": "85001",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -37556,6 +37606,7 @@
   "scenario_name": "Carnevale of Horrors",
   "full_name": "Carnevale of Horrors",
   "header": "",
+  "chaos_bag_card": "82001",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -37985,6 +38036,7 @@
   "scenario_name": "Curse of the Rougarou",
   "full_name": "Curse of the Rougarou",
   "header": "",
+  "chaos_bag_card": "81001",
   "xp_cost": 1,
   "standalone_setup": [
     "choose_difficulty",
@@ -38267,6 +38319,7 @@
   "scenario_name": "The Labyrinths of Lunacy",
   "full_name": "The Labyrinths of Lunacy",
   "header": "",
+  "chaos_bag_card": "70001",
   "side_scenario_type": "standalone",
   "standalone_setup": [
     "choose_difficulty",
@@ -39646,6 +39699,7 @@
   "scenario_name": "埃賽希爾酒店謀殺案(暫譯)",
   "full_name": "埃賽希爾酒店謀殺案(暫譯)",
   "header": "",
+  "chaos_bag_card": "84001",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -41405,6 +41459,7 @@
   "scenario_name": "死亡閱讀(暫譯)",
   "full_name": "死亡閱讀(暫譯)",
   "header": "",
+  "chaos_bag_card": "90004",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -41971,6 +42026,7 @@
   "scenario_name": "The Eternal Slumber",
   "full_name": "The Eternal Slumber",
   "header": "",
+  "chaos_bag_card": "83001",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -42464,6 +42520,7 @@
   "scenario_name": "The Night's Usurper",
   "full_name": "The Night's Usurper",
   "header": "",
+  "chaos_bag_card": "83016",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -42950,6 +43007,7 @@
   "scenario_name": "War of the Outer Gods",
   "full_name": "War of the Outer Gods",
   "header": "",
+  "chaos_bag_card": "86001",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -43977,6 +44035,7 @@
   "scenario_name": "At Death's Doorstep",
   "full_name": "Scenario II: At Death's Doorstep",
   "header": "冒險II",
+  "chaos_bag_card": "05065",
   "setup": [
     "intro_article",
     "intro",
@@ -44699,6 +44758,7 @@
   "scenario_name": "黑色王座",
   "full_name": "Scenario VIII: Before the Black Throne",
   "header": "冒險VIII",
+  "chaos_bag_card": "05325",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -45213,6 +45273,7 @@
   "full_name": "Prologue: Disappearance at the Twilight Estate",
   "header": "引導故事",
   "type": "interlude",
+  "chaos_bag_card": "05043",
   "setup": [
     "pre_intro",
     "choose_neutral_investigators",
@@ -45856,6 +45917,7 @@
   "scenario_name": "崇高利益",
   "full_name": "Scenario V: For the Greater Good",
   "header": "冒險V",
+  "chaos_bag_card": "05197",
   "setup": [
     "intro_1",
     "check_members_of_the_lodge",
@@ -46319,6 +46381,7 @@
   "scenario_name": "混沌魔掌",
   "full_name": "Scenario VII: In the Clutches of Chaos",
   "header": "冒險VII",
+  "chaos_bag_card": "05284",
   "setup": [
     "intro_1",
     "check_never_seen_again",
@@ -48164,6 +48227,7 @@
   "scenario_name": "隱秘之名",
   "full_name": "Scenario III: The Secret Name",
   "header": "冒險III",
+  "chaos_bag_card": "05120",
   "setup": [
     "check_members_of_the_lodge",
     "gather_encounter_sets",
@@ -48789,6 +48853,7 @@
   "scenario_name": "惡罪報應",
   "full_name": "Scenario IV: The Wages of Sin",
   "header": "冒險IV",
+  "chaos_bag_card": "05161",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -49083,6 +49148,7 @@
   "scenario_name": "The Witching Hour",
   "full_name": "Scenario I: The Witching Hour",
   "header": "冒險I",
+  "chaos_bag_card": "05050",
   "setup": [
     "intro",
     "choose_fate",
@@ -49912,6 +49978,7 @@
   "scenario_name": "聚合幻滅",
   "full_name": "Scenario VI: Union and Disillusion",
   "header": "冒險VI",
+  "chaos_bag_card": "05238",
   "setup": [
     "intro_1",
     "point_of_no_return",
@@ -54545,6 +54612,7 @@
   "scenario_name": "Beyond the Gates of Sleep",
   "full_name": "Scenario I–A: Beyond the Gates of Sleep",
   "header": "冒險 I–A",
+  "chaos_bag_card": "06039",
   "setup": [
     "dream_intro",
     "choose_dreams",
@@ -55529,6 +55597,7 @@
   "scenario_name": "Dark Side of the Moon",
   "full_name": "Scenario III–A: Dark Side of the Moon",
   "header": "Scenario III-A",
+  "chaos_bag_card": "06206",
   "setup": [
     "check_someone_captured",
     "gather_encounter_sets",
@@ -55968,6 +56037,7 @@
   "scenario_name": "The Search for Kadath",
   "full_name": "Scenario II–A: The Search for Kadath",
   "header": "Scenario II-A",
+  "chaos_bag_card": "06119",
   "standalone_setup": [
     "setup_standalone_bag",
     "black_cat_not_at_your_side",
@@ -57049,6 +57119,7 @@
   "scenario_name": "Where the Gods Dwell",
   "full_name": "Scenario IV–A: Where the Gods Dwell",
   "header": "Scenario IV-A",
+  "chaos_bag_card": "06286",
   "setup": [
     "check_carried_to_the_cold_wastes",
     "gather_encounter_sets",
@@ -58221,6 +58292,7 @@
   "scenario_name": "A Thousand Shapes of Horror",
   "full_name": "Scenario II–B: A Thousand Shapes of Horror",
   "header": "Scenario II-B",
+  "chaos_bag_card": "06168",
   "setup": [
     "intro_1",
     "check_black_cat_at_your_side",
@@ -60734,6 +60806,7 @@
   "scenario_name": "Point of No Return",
   "full_name": "Scenario III–B: Point of No Return",
   "header": "Scenario III-B",
+  "chaos_bag_card": "06247",
   "setup": [
     "check_randolph_did_not_survive_descent",
     "gather_encounter_sets",
@@ -61242,6 +61315,7 @@
   "scenario_name": "Waking Nightmare",
   "full_name": "Scenario I–B: Waking Nightmare",
   "header": "冒險 I–B",
+  "chaos_bag_card": "06063",
   "setup": [
     "intro_1",
     "choose_doctor",
@@ -61790,6 +61864,7 @@
   "scenario_name": "Weaver of the Cosmos",
   "full_name": "Scenario IV-B: Weaver of the Cosmos",
   "header": "Scenario IV-B",
+  "chaos_bag_card": "06333",
   "setup": [
     "weaver_intro",
     "gather_encounter_sets",
@@ -63308,6 +63383,7 @@
   "scenario_name": "埃茲特里的覆滅",
   "full_name": "冒險II：埃茲特里的覆滅",
   "header": "冒險II",
+  "chaos_bag_card": "04054",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -63864,6 +63940,7 @@
   "scenario_name": "久遠腹地，第一章",
   "full_name": "冒險V–A：久遠腹地，第一章",
   "header": "冒險V-A",
+  "chaos_bag_card": "04205",
   "setup": [
     "intro_1",
     "choose_who_to_consult",
@@ -65483,6 +65560,7 @@
   "scenario_name": "破碎永世",
   "full_name": "冒險VIII：破碎永世",
   "header": "冒險VIII",
+  "chaos_bag_card": "04314",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -66014,6 +66092,7 @@
   "scenario_name": "界線彼端",
   "full_name": "冒險IV：界線彼端",
   "header": "冒險IV",
+  "chaos_bag_card": "04161",
   "setup": [
     "intro",
     "check_forged_bond_with_ichtaca",
@@ -66833,6 +66912,7 @@
   "scenario_name": "天機之城",
   "full_name": "冒險VI：天機之城",
   "header": "冒險VI",
+  "chaos_bag_card": "04237",
   "setup": [
     "intro_1",
     "choose_to_cooperate",
@@ -67862,6 +67942,7 @@
   "scenario_name": "幽嘶深淵",
   "full_name": "冒險VII：幽嘶深淵",
   "header": "冒險VII",
+  "chaos_bag_card": "04277",
   "standalone_setup": [
     "setup_standalone_bag",
     "setup_standalone_log_1",
@@ -69771,6 +69852,7 @@
   "scenario_name": "命運之線",
   "full_name": "冒險III：命運之線",
   "header": "冒險III",
+  "chaos_bag_card": "04113",
   "standalone_setup": [
     "setup_standalone_bag",
     "intro_1",
@@ -71022,6 +71104,7 @@
   "scenario_name": "時間倒流",
   "full_name": "秘密冒險IX：時間倒流",
   "header": "冒險IX",
+  "chaos_bag_card": "04344",
   "setup": [
     "check_wait_for_additional_supplies",
     "cross_off_everything",
@@ -71514,6 +71597,7 @@
   "scenario_name": "荒莽密林",
   "full_name": "冒險I：荒莽密林",
   "header": "冒險I",
+  "chaos_bag_card": "04043",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -72296,6 +72380,8 @@
   "scenario_name": "A Light in the Fog",
   "full_name": "Scenario VI: A Light in the Fog",
   "header": "冒險VI",
+  "chaos_bag_card_text": "[skull]: -1. If your location is flooded, reveal an additional chaos token.\n[cultist]: -2. If you fail, after this test ends, increase the flood level of your location.\n[tablet]: -3. If you fail this test and your location is flooded, take 1 damage.\n[elder_thing]: -4. If you fail, move the nearest ready unengaged enemy once toward your location. It loses aloof during this movement.",
+  "chaos_bag_card_back_text": "[skull]: -2. If your location is flooded, reveal an additional chaos token.\n[cultist]: -2. If you fail, after this test ends, increase the flood level of your location (if you cannot, take 1 horror instead).\n[tablet]: -3. If you fail this test and your location is flooded, take 2 damage.\n[elder_thing]: -4. Move the nearest unengaged enemy once toward your location. It loses aloof during this movement.",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -73754,6 +73840,7 @@
   "scenario_name": "Devil Reef",
   "full_name": "Scenario IV: Devil Reef",
   "header": "冒險IV",
+  "chaos_bag_card": "07163",
   "setup": [
     "intro_1",
     "check_mission_succeeded",
@@ -74794,6 +74881,7 @@
   "scenario_name": "Horror in High Gear",
   "full_name": "Scenario V: Horror in High Gear",
   "header": "冒險V",
+  "chaos_bag_card": "07198",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -75119,6 +75207,7 @@
   "scenario_name": "In Too Deep",
   "full_name": "Scenario III: In Too Deep",
   "header": "冒險III",
+  "chaos_bag_card": "07123",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -75789,6 +75878,8 @@
   "scenario_name": "Into the Maelstrom",
   "full_name": "Scenario VIII: Into the Maelstrom",
   "header": "冒險VIII",
+  "chaos_bag_card_text": "[skull]: -1 (-3 instead if there are 4 or more unflooded [[Y'ha-nthlei]] locations in play).\n[cultist]: -3. If you fail, place 1 doom on the current agenda (this may cause the current agenda to advance).\n[tablet]: -4. If you fail, you must either increase the flood level of your location or take 1 damage.\n[elder_thing]: -5. If you fail and there is a key on your location, take 1 horror.",
+  "chaos_bag_card_back_text": "[skull]: -2 (-4 instead if there are 4 or more unflooded [[Y'ha-nthlei]] locations in play).\n[cultist]: -4. If you fail, place 1 doom on the current agenda (this may cause the current agenda to advance).\n[tablet]: -5. If you fail, you must either increase the flood level of your location or take 1 damage.\n[elder_thing]: -6. If you fail and there is a key on your location, take 1 horror.",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -77526,6 +77617,8 @@
   "scenario_name": "The Lair of Dagon",
   "full_name": "Scenario VII: The Lair of Dagon",
   "header": "冒險VII",
+  "chaos_bag_card_text": "[skull]: -1 for each key on this card.\n[cultist]: -0. Reveal an additional chaos token. If you reveal 1 or more [curse] tokens during this test, you automatically fail.\n[tablet]: -3. If you fail, place each key you control on your location.\n[elder_thing]: -4. If you fail, add 1 [curse] token to the chaos bag.",
+  "chaos_bag_card_back_text": "[skull]: -2 for each key on this card.\n[cultist]: -2. Reveal an additional chaos token. If you reveal 1 or more [curse] tokens during this test, you automatically fail.\n[tablet]: -3. Place each key you control on your location and take 1 damage.\n[elder_thing]: -4. Add 2 [curse] tokens to the chaos bag.",
   "setup": [
     "intro_1",
     "check_mission_succeeded",
@@ -78342,6 +78435,7 @@
   "scenario_name": "The Pit of Despair",
   "full_name": "Scenario I: The Pit of Despair",
   "header": "冒險I",
+  "chaos_bag_card": "07041",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -78990,6 +79084,7 @@
   "scenario_name": "The Vanishing of Elina Harper",
   "full_name": "Scenario II: The Vanishing of Elina Harper",
   "header": "冒險II",
+  "chaos_bag_card": "07056",
   "setup": [
     "intro_1",
     "info_summary",

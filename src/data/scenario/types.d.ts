@@ -865,6 +865,9 @@ export interface Achievement {
 }
 export interface Scenario {
   id: string;
+  chaos_bag_card?: string;
+  chaos_bag_card_text?: string;
+  chaos_bag_card_back_text?: string;
   scenario_name: string;
   full_name: string;
   header: string;

@@ -1,12 +1,12 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, Pressable, TouchableWithoutFeedback, View, LayoutChangeEvent } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { cloneDeep, find, filter, map, shuffle, sumBy, reverse } from 'lodash';
+import { cloneDeep, find, filter, map, shuffle, sumBy, reverse, uniq } from 'lodash';
 import { jt, t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
 
 import { ChaosBag } from '@app_constants';
-import { CampaignId } from '@actions/types';
+import { CampaignDifficulty, CampaignId } from '@actions/types';
 import ChaosToken, { SMALL_TOKEN_SIZE } from './ChaosToken';
 import { adjustBlessCurseChaosBagResults, updateChaosBagClearTokens, updateChaosBagDrawToken, updateChaosBagReleaseAllSealed, updateChaosBagResetBlessCurse, updateChaosBagSealTokens } from './actions';
 import SealTokenButton from './SealTokenButton';
@@ -24,10 +24,14 @@ import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButto
 import { TINY_PHONE } from '@styles/sizes';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useChaosBagActions } from '@data/remote/chaosBag';
+import CardTextComponent from '@components/card/CardTextComponent';
+import { difficultyString } from './constants';
 
 interface Props {
   campaignId: CampaignId;
   chaosBag: ChaosBag;
+  difficulty?: CampaignDifficulty;
+  scenarioCardText?: string;
   viewChaosBagOdds: () => void;
   editViewPressed: () => void;
   editable?: boolean;
@@ -85,8 +89,10 @@ function ReturnBlessCurseButton({ onPress }: { onPress: () => void }) {
   );
 }
 
+const CARD_TOKEN = new Set(['skull', 'cultist', 'tablet', 'elder_thing']);
+
 export default function DrawChaosBagComponent(props: Props) {
-  const { campaignId, chaosBag, viewChaosBagOdds, editViewPressed, editable } = props;
+  const { campaignId, chaosBag, viewChaosBagOdds, editViewPressed, difficulty, editable, scenarioCardText } = props;
   const { backgroundStyle, fontScale, colors, typography } = useContext(StyleContext);
   const dispatch = useDispatch();
   const chaosBagResults = useChaosBagResults(campaignId);
@@ -138,7 +144,6 @@ export default function DrawChaosBagComponent(props: Props) {
     });
 
     const newIconKey = getRandomChaosToken(currentChaosBag);
-
     if (newIconKey) {
       drawnTokens.push(newIconKey);
       dispatch(updateChaosBagDrawToken(actions, campaignId, drawnTokens, chaosBagResults));
@@ -189,9 +194,7 @@ export default function DrawChaosBagComponent(props: Props) {
       return reverse(map(drawnTokens.slice(0, drawnTokens.length - 1), (token, index) => {
         return (
           <View style={space.paddingSideXs} key={index}>
-            <ChaosToken
-              iconKey={token}
-              small
+            <ChaosToken iconKey={token} small
             />
           </View>
         );
@@ -309,6 +312,119 @@ export default function DrawChaosBagComponent(props: Props) {
       <ReturnBlessCurseButton key="return" onPress={handleClearTokensKeepBlessAndCursedPressed} />
     );
   }, [chaosBagResults.drawnTokens, handleClearTokensKeepBlessAndCursedPressed]);
+  const blurseSection = useMemo(() => {
+    return (
+      <View style={[styles.blessCurseBlock, space.paddingTopM, space.paddingBottomM, space.paddingSideS, { borderColor: colors.L20 }]}>
+        <BlessCurseCounter
+          value={chaosBagResults.blessTokens || 0}
+          inc={incBless}
+          dec={decBless}
+          min={sumBy(chaosBagResults.sealedTokens, token => token.icon === 'bless' ? 1 : 0)}
+          type="bless"
+        />
+        <BlessCurseCounter
+          value={chaosBagResults.curseTokens || 0}
+          inc={incCurse}
+          dec={decCurse}
+          min={sumBy(chaosBagResults.sealedTokens, token => token.icon === 'curse' ? 1 : 0)}
+          type="curse"
+        />
+      </View>
+    );
+  }, [incCurse, decCurse, incBless, decBless, chaosBagResults.blessTokens, chaosBagResults.curseTokens, chaosBagResults.sealedTokens, colors]);
+  const hasSealedTokens = chaosBagResults.sealedTokens.length;
+  const hasBlessCurse = !((chaosBagResults.blessTokens || 0) === 0 && (chaosBagResults.curseTokens || 0) === 0);
+  const advancedSection = useMemo(() => {
+    return (
+      <View style={[space.paddingS]}>
+        { hasSealedTokens ? (
+          <RoundedFactionBlock
+            faction="neutral"
+            header={
+              <View style={[styles.headerBlock, { backgroundColor: colors.L10 }]}>
+                <View style={space.paddingRightM}>
+                  <AppIcon name="seal" size={32} color={colors.D10} />
+                </View>
+                <Text style={typography.cardName}>
+                  { t`Sealed Tokens` }
+                </Text>
+              </View>
+            }
+            footer={
+              <RoundedFooterDoubleButton
+                iconA="expand"
+                titleA={t`Seal tokens`}
+                onPressA={showSealDialog}
+                iconB="dismiss"
+                titleB={t`Release all`}
+                onPressB={releaseAllTokens}
+              />}
+          >
+            <View style={[space.paddingTopS, space.paddingBottomS, styles.sealedTokenRow]}>
+              { sealedTokens }
+            </View>
+          </RoundedFactionBlock>
+        ) : (
+          <View style={space.paddingBottomS}>
+            <DeckButton icon="seal" title={t`Seal tokens`} onPress={showSealDialog} color="dark_gray" />
+          </View>
+        ) }
+        <View style={[space.paddingBottomM, space.paddingTopS]}>
+          { hasBlessCurse ? (
+            <DeckButton icon="dismiss" title={t`Remove all bless & curse tokens`} onPress={handleResetBlessCursePressed} color="dark_gray" />
+          ) : (
+            <View style={{ height: 20 * fontScale + s * 2 + xs * 2 - 2 }} />
+          ) }
+        </View>
+      </View>
+    );
+  }, [showSealDialog, handleResetBlessCursePressed, releaseAllTokens,
+    fontScale, sealedTokens, colors, typography, hasSealedTokens, hasBlessCurse]);
+  const specialTokenSection = useMemo(() => {
+    if (!scenarioCardText) {
+      return null;
+    }
+    const difficultyStr = difficulty && difficultyString(difficulty);
+    return (
+      <View style={space.paddingSideS}>
+        <RoundedFactionBlock
+          faction="neutral"
+          header={
+            <View style={[styles.headerBlock, { backgroundColor: colors.L10 }]}>
+              <View style={space.paddingRightM}>
+                <AppIcon name="card-outline" size={32} color={colors.D10} />
+              </View>
+              <Text style={typography.cardName}>
+                { difficultyStr ? t`Scenario Card - ${difficultyStr}` : t`Scenario Card` }
+              </Text>
+            </View>
+          }>
+          <View style={space.paddingTopS}>
+            <CardTextComponent key="special_effects" text={scenarioCardText} sizeScale={1.2} />
+          </View>
+        </RoundedFactionBlock>
+      </View>
+    );
+  }, [scenarioCardText, colors, typography, difficulty]);
+
+  const drawnSpecialTokens = useMemo(() => {
+    return uniq(filter(chaosBagResults.drawnTokens, token => CARD_TOKEN.has(token))).length > 0;
+  }, [chaosBagResults.drawnTokens]);
+  const lowerContent = useMemo(() => {
+    if (drawnSpecialTokens && specialTokenSection) {
+      return (
+        <View>
+          { specialTokenSection }
+        </View>
+      )
+    }
+    return (
+      <View>
+        { blurseSection }
+        { advancedSection }
+      </View>
+    );
+  }, [drawnSpecialTokens, specialTokenSection, blurseSection, advancedSection]);
   return (
     <SafeAreaView style={styles.container}>
       <KeepAwake />
@@ -331,66 +447,7 @@ export default function DrawChaosBagComponent(props: Props) {
               </View>
             ) }
           </View>
-          <View>
-            <View style={[styles.blessCurseBlock, space.paddingTopM, space.paddingBottomM, space.paddingSideS, { borderColor: colors.L20 }]}>
-              <BlessCurseCounter
-                value={chaosBagResults.blessTokens || 0}
-                inc={incBless}
-                dec={decBless}
-                min={sumBy(chaosBagResults.sealedTokens, token => token.icon === 'bless' ? 1 : 0)}
-                type="bless"
-              />
-              <BlessCurseCounter
-                value={chaosBagResults.curseTokens || 0}
-                inc={incCurse}
-                dec={decCurse}
-                min={sumBy(chaosBagResults.sealedTokens, token => token.icon === 'curse' ? 1 : 0)}
-                type="curse"
-              />
-            </View>
-            <View style={[space.paddingS]}>
-              { chaosBagResults.sealedTokens.length > 0 ? (
-                <RoundedFactionBlock
-                  faction="neutral"
-                  header={
-                    <View style={[styles.headerBlock, { backgroundColor: colors.L10 }]}>
-                      <View style={space.paddingRightM}>
-                        <AppIcon name="seal" size={32} color={colors.D10} />
-                      </View>
-                      <Text style={typography.cardName}>
-                        { t`Sealed Tokens` }
-                      </Text>
-                    </View>
-                  }
-                  footer={
-                    <RoundedFooterDoubleButton
-                      iconA="expand"
-                      titleA={t`Seal tokens`}
-                      onPressA={showSealDialog}
-                      iconB="dismiss"
-                      titleB={t`Release all`}
-                      onPressB={releaseAllTokens}
-                    />}
-                >
-                  <View style={[space.paddingTopS, space.paddingBottomS, styles.sealedTokenRow]}>
-                    { sealedTokens }
-                  </View>
-                </RoundedFactionBlock>
-              ) : (
-                <View style={space.paddingBottomS}>
-                  <DeckButton icon="seal" title={t`Seal tokens`} onPress={showSealDialog} color="dark_gray" />
-                </View>
-              ) }
-              <View style={[space.paddingBottomM, space.paddingTopS]}>
-                { !((chaosBagResults.blessTokens || 0) === 0 && (chaosBagResults.curseTokens || 0) === 0) ? (
-                  <DeckButton icon="dismiss" title={t`Remove all bless & curse tokens`} onPress={handleResetBlessCursePressed} color="dark_gray" />
-                ) : (
-                  <View style={{ height: 20 * fontScale + s * 2 + xs * 2 - 2 }} />
-                ) }
-              </View>
-
-            </View>
-          </View>
+          { lowerContent }
         </View>
       </ScrollView>
       { sealDialog }

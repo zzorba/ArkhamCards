@@ -22,6 +22,7 @@ interface Props {
   componentId: string;
   allInvestigators: Card[];
   campaignId: CampaignId;
+  scenarioId: string | undefined;
   chaosBag: ChaosBag;
   guided?: boolean;
   setChaosBag: SetCampaignChaosBagAction;
@@ -55,6 +56,7 @@ export default function useChaosBagDialog({
   campaignId,
   chaosBag,
   guided,
+  scenarioId,
   setChaosBag,
 }: Props): [React.ReactNode, () => void] {
   const { width } = useContext(StyleContext);
@@ -70,11 +72,11 @@ export default function useChaosBagDialog({
   const drawChaosBagPressed = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);
     if (guided) {
-      showGuideDrawChaosBag(componentId, campaignId, chaosBag, map(allInvestigators, c => c.code), undefined, false);
+      showGuideDrawChaosBag(componentId, campaignId, chaosBag, map(allInvestigators, c => c.code), scenarioId, false);
     } else {
       showDrawChaosBag(componentId, campaignId, allInvestigators);
     }
-  }, [campaignId, componentId, guided, chaosBag, allInvestigators]);
+  }, [campaignId, componentId, guided, chaosBag, allInvestigators, scenarioId]);
   const dispatch = useDispatch();
   const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
     dispatch(updateCampaignChaosBag(setChaosBag, campaignId, chaosBag));

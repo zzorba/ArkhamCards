@@ -256,6 +256,7 @@ function CampaignDetailView(props: Props) {
     campaignId,
     chaosBag: campaign?.chaosBag || EMPTY_CHAOS_BAG,
     setChaosBag: updateCampaignActions.setChaosBag,
+    scenarioId: undefined,
   });
   if (!campaign) {
     if (campaignId.serverId) {
