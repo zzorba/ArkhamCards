@@ -1,5 +1,5 @@
 import { useCallback, useContext, useMemo } from 'react';
-import { filter, forEach, map, omit } from 'lodash';
+import { filter, forEach, map, omit, uniq, keys, concat } from 'lodash';
 import { useApolloClient } from '@apollo/client';
 
 import {
@@ -226,10 +226,9 @@ export function useUploadNewCampaign(): UploadNewCampaignFn {
       achievements = map(guide?.achievements || [], a => guideAchievementToInsert(a, campaignId));
     }
     const investigator_data: Investigator_Data_Insert_Input[] = [];
-    forEach(campaign.investigatorData, (data, investigator) => {
-      if (!data) {
-        return;
-      }
+    forEach(uniq(concat(keys(campaign.investigatorData), keys(campaign.adjustedInvestigatorData))), (investigator) => {
+      const data = campaign.investigatorData?.[investigator] || {};
+      const adjustedInvestigatorData = campaign.guided ? (campaign.adjustedInvestigatorData?.[investigator] || {}) : data;
       investigator_data.push({
         campaign_id: campaignId,
         investigator,
@@ -242,8 +241,8 @@ export function useUploadNewCampaign(): UploadNewCampaignFn {
         mental: data.mental,
         physical: data.physical,
         specialXp: data.specialXp,
-        spentXp: data.spentXp,
         availableXp: data.availableXp,
+        spentXp: adjustedInvestigatorData.spentXp,
       });
     });
     const investigators: Campaign_Investigator_Insert_Input[] = [];
