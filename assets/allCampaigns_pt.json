@@ -53718,6 +53718,24 @@
           {
             "boolCondition": false,
             "steps": [
+              "check_black_cat_spoke_of_atlach_nacha"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_black_cat_spoke_of_atlach_nacha",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "black_cat_spoke_of_atlach_nacha",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
               "move_cat_to_campaign_b"
             ]
           }
