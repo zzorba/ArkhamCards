@@ -78192,17 +78192,24 @@
           {
             "id": "suspect_defeated",
             "text": "Y-a-t'il un ennemi [[Suspect]] dans la pile de victoire ?",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "gatekeeper_has_been_defeated",
-                "text": "le gardien de la porte a été vaincu."
-              }
+            "steps": [
+              "gatekeeper_has_been_defeated"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "gatekeeper_has_been_defeated",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "gatekeeper_has_been_defeated",
+          "text": "le gardien de la porte a été vaincu."
+        }
+      ]
     },
     {
       "id": "ask_oceiros",

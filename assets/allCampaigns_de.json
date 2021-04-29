@@ -78192,17 +78192,24 @@
           {
             "id": "suspect_defeated",
             "text": "Befindet sich ein [[Verdächtiger]]-Gegner im Siegpunktestapel?",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "gatekeeper_has_been_defeated",
-                "text": "Der Hüter des Tores wurde besiegt."
-              }
+            "steps": [
+              "gatekeeper_has_been_defeated"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "gatekeeper_has_been_defeated",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "gatekeeper_has_been_defeated",
+          "text": "Der Hüter des Tores wurde besiegt."
+        }
+      ]
     },
     {
       "id": "ask_oceiros",

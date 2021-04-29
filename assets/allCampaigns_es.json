@@ -78192,17 +78192,24 @@
           {
             "id": "suspect_defeated",
             "text": "Is a [[Suspect]] enemy in the victory display?",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "gatekeeper_has_been_defeated",
-                "text": "the gatekeeper has been defeated."
-              }
+            "steps": [
+              "gatekeeper_has_been_defeated"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "gatekeeper_has_been_defeated",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "gatekeeper_has_been_defeated",
+          "text": "the gatekeeper has been defeated."
+        }
+      ]
     },
     {
       "id": "ask_oceiros",
