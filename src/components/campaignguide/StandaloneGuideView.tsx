@@ -1,53 +1,76 @@
-import React, { useCallback, useContext } from 'react';
-import { Navigation } from 'react-native-navigation';
-import { useDispatch } from 'react-redux';
+import React, { useContext, useMemo } from 'react';
+import { Text, View } from 'react-native';
 import { t } from 'ttag';
 
-import { CampaignId, StandaloneId } from '@actions/types';
-import { deleteCampaign } from '@components/campaign/actions';
-import BasicButton from '@components/core/BasicButton';
+import { CampaignId } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
-import ScenarioView from './ScenarioView';
-import StyleContext from '@styles/StyleContext';
 import { useAlertDialog } from '@components/deck/dialogs';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
+import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
+import ScenarioComponent, { dynamicOptions } from './ScenarioComponent';
+import withScenarioGuideContext, { ScenarioGuideInputProps } from './withScenarioGuideContext';
+import CampaignGuideContext from './CampaignGuideContext';
+import { useDeckActions } from '@data/remote/decks';
+import { InjectedCampaignGuideContextProps } from './withCampaignGuideContext';
+import space from '@styles/space';
+import ScenarioGuideContext from './ScenarioGuideContext';
+import StyleContext from '@styles/StyleContext';
 
-export interface StandaloneGuideProps {
+export interface StandaloneGuideProps extends ScenarioGuideInputProps {
   campaignId: CampaignId;
-  standaloneId: StandaloneId;
 }
-export default function StandaloneGuideView({ campaignId, standaloneId, componentId }: StandaloneGuideProps & NavigationProps) {
-  const { colors } = useContext(StyleContext);
-  const { user } = useContext(ArkhamCardsAuthContext);
+
+function StandaloneGuideView({ campaignId, componentId, setCampaignServerId }: StandaloneGuideProps & NavigationProps & InjectedCampaignGuideContextProps) {
+  const { typography } = useContext(StyleContext);
+  const { campaign } = useContext(CampaignGuideContext);
+  const { processedScenario } = useContext(ScenarioGuideContext);
   useStopAudioOnUnmount();
-  const dispatch = useDispatch();
-  const handleDelete = useCallback(() => {
-    dispatch(deleteCampaign(user, campaignId));
-    Navigation.pop(componentId);
-  }, [campaignId, componentId, user, dispatch]);
   const [alertDialog, showAlert] = useAlertDialog();
-  const deletePressed = useCallback(() => {
-    showAlert(
-      t`Delete`,
-      t`Are you sure you want to delete this standalone?`,
-      [
-        { text: t`Cancel`, style: 'cancel' },
-        { text: t`Delete`, onPress: handleDelete, style: 'destructive' },
-      ],
+  const deckActions = useDeckActions();
+  const footer = useMemo(() => {
+    return (
+      <View style={space.paddingSideS}>
+        <View style={[space.paddingBottomS, space.paddingTopS]}>
+          <Text style={[typography.large, typography.center, typography.light]}>
+            { `— ${t`Settings`} —` }
+          </Text>
+        </View>
+        <UploadCampaignButton
+          componentId={componentId}
+          campaignId={campaign.id}
+          campaign={campaign}
+          deckActions={deckActions}
+          setCampaignServerId={setCampaignServerId}
+          showAlert={showAlert}
+          standalone
+        />
+        <DeleteCampaignButton
+          componentId={componentId}
+          campaignId={campaignId}
+          campaign={campaign}
+          showAlert={showAlert}
+          standalone
+        />
+      </View>
     );
-  }, [handleDelete, showAlert]);
+  }, [componentId, campaignId, setCampaignServerId, showAlert, deckActions, campaign, typography]);
 
   return (
     <>
-      <ScenarioView
+      <ScenarioComponent
         componentId={componentId}
-        campaignId={campaignId}
-        scenarioId={standaloneId.scenarioId}
         standalone
-        footer={<BasicButton onPress={deletePressed} title={t`Delete standalone`} color={colors.warn} />}
+        footer={campaign && processedScenario && footer}
       />
       { alertDialog }
     </>
   );
 }
+
+
+StandaloneGuideView.options = () => {
+  return dynamicOptions(false);
+};
+
+export default withScenarioGuideContext(StandaloneGuideView);

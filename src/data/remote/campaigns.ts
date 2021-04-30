@@ -1,23 +1,37 @@
 import { useCallback, useContext, useMemo } from 'react';
-import { filter, forEach, map, omit } from 'lodash';
+import { filter, forEach, map, omit, uniq, keys, concat } from 'lodash';
+import { useApolloClient } from '@apollo/client';
 
-import { Campaign, CampaignDifficulty, CampaignGuideState, CampaignNotes, GuideAchievement, GuideInput, ScenarioResult, Trauma, TraumaAndCardData, UploadedCampaignId, WeaknessSet } from '@actions/types';
+import {
+  Campaign,
+  CampaignDifficulty,
+  CampaignGuideState,
+  CampaignNotes,
+  GuideAchievement,
+  GuideInput,
+  ScenarioResult,
+  Trauma,
+  TraumaAndCardData,
+  UploadedCampaignId,
+  WeaknessSet,
+} from '@actions/types';
+import { deleteCampaignFromCache, uploadLocalDeck } from '@data/remote/apollo';
 import { useModifyUserCache } from '@data/apollo/cache';
 import {
-  useUploadNewCampaignMutation,
+  useAddGuideInputMutation,
+  useAddCampaignInvestigatorMutation,
+  useDecCountAchievementMutation,
   useDeleteInvestigatorDecksMutation,
   useIncCountAchievementMaxMutation,
   useIncCountAchievementMutation,
-  useDecCountAchievementMutation,
+  useRemoveCampaignInvestigatorMutation,
+  useRemoveGuideInputsMutation,
   useSetBinaryAchievementMutation,
-  useAddGuideInputMutation,
   useUpdateInvestigatorTraumaMutation,
   useUpdateWeaknessSetMutation,
   useUpdateCampaignNameMutation,
   useUpdateSpentXpMutation,
   useUpdateAvailableXpMutation,
-  useAddCampaignInvestigatorMutation,
-  useRemoveCampaignInvestigatorMutation,
   useUpdateChaosBagMutation,
   useUpdateCampaignNotesMutation,
   useUpdateCampaignShowInterludesMutation,
@@ -25,11 +39,11 @@ import {
   useUpdateCampaignScenarioResultsMutation,
   useUpdateCampaignDifficultyMutation,
   useUpdateCampaignGuideVersionMutation,
+  useUploadNewCampaignMutation,
   Guide_Input_Insert_Input,
   Guide_Achievement_Insert_Input,
   Investigator_Data_Insert_Input,
   Campaign_Investigator_Insert_Input,
-  useRemoveGuideInputsMutation,
 } from '@generated/graphql/apollo-schema';
 import { useFunction, ErrorResponse } from './api';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
@@ -111,6 +125,50 @@ function useCreateLinkedCampaignRequest(): (
   }, [apiCall]);
 }
 
+interface UploadLocalDeckData {
+  localDeckId: string;
+  arkhamDbId: number;
+}
+
+interface BasicResponse extends ErrorResponse {
+  success?: boolean;
+  deckIds: {
+    id: number;
+    campaignId: number;
+  }[];
+}
+
+export function useUploadLocalDeckRequest(): (
+  localDeckId: string,
+  arkhamDbId: number,
+) => Promise<void> {
+  const apollo = useApolloClient();
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const apiCall = useFunction<UploadLocalDeckData, BasicResponse>('campaign-uploadLocalDeck');
+  const cache = apollo.cache;
+  return useCallback(async(
+    localDeckId: string,
+    arkhamDbId: number
+  ): Promise<void> => {
+    if (user) {
+      try {
+        const data = await apiCall({ localDeckId, arkhamDbId });
+        if (data.error) {
+          console.log(data.error)
+          throw new Error(data.error);
+        }
+        data.deckIds.forEach(({ campaignId }) => {
+          uploadLocalDeck(cache, campaignId, user.uid, localDeckId, arkhamDbId);
+        });
+      } catch (e) {
+        console.log(`Error with local deck upload: ${e.message}`);
+        throw e;
+      }
+    }
+  }, [apiCall, user, cache]);
+}
+
+
 interface EditCampaignAccessData {
   campaignId: string;
   serverId: number;
@@ -168,10 +226,9 @@ export function useUploadNewCampaign(): UploadNewCampaignFn {
       achievements = map(guide?.achievements || [], a => guideAchievementToInsert(a, campaignId));
     }
     const investigator_data: Investigator_Data_Insert_Input[] = [];
-    forEach(campaign.investigatorData, (data, investigator) => {
-      if (!data) {
-        return;
-      }
+    forEach(uniq(concat(keys(campaign.investigatorData), keys(campaign.adjustedInvestigatorData))), (investigator) => {
+      const data = campaign.investigatorData?.[investigator] || {};
+      const adjustedInvestigatorData = campaign.guided ? (campaign.adjustedInvestigatorData?.[investigator] || {}) : data;
       investigator_data.push({
         campaign_id: campaignId,
         investigator,
@@ -184,8 +241,8 @@ export function useUploadNewCampaign(): UploadNewCampaignFn {
         mental: data.mental,
         physical: data.physical,
         specialXp: data.specialXp,
-        spentXp: data.spentXp,
         availableXp: data.availableXp,
+        spentXp: adjustedInvestigatorData.spentXp,
       });
     });
     const investigators: Campaign_Investigator_Insert_Input[] = [];
@@ -253,24 +310,39 @@ interface DeleteCampaignRequest extends ErrorResponse {
   serverId: number;
 }
 export function useDeleteCampaignRequest() {
-  const [updateCache, client] = useModifyUserCache();
+  const client = useApolloClient();
+  const { user } = useContext(ArkhamCardsAuthContext);
   const apiCall = useFunction<DeleteCampaignRequest, ErrorResponse>('campaign-delete');
   return useCallback(async({ campaignId, serverId }: UploadedCampaignId): Promise<void> => {
+    if (user) {
+      deleteCampaignFromCache(client.cache, user.uid, campaignId);
+    }
     const data = await apiCall({ campaignId, serverId });
     if (data.error) {
       throw new Error(data.error);
     }
-    const targetCampaignId = client.cache.identify({ __typename: 'campaign', id: serverId });
-    if (targetCampaignId) {
-      updateCache({
-        fields: {
-          campaigns(current) {
-            return filter(current, c => c.campaign?.__ref !== targetCampaignId);
+  }, [apiCall, client, user]);
+}
+
+export function useLeaveCampaignRequest() {
+  const [updateCache, client] = useModifyUserCache();
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const editCampaignAccess = useEditCampaignAccessRequest();
+  return useCallback(async(campaignId: UploadedCampaignId): Promise<void> => {
+    if (user) {
+      await editCampaignAccess(campaignId, [user.uid], 'revoke');
+      const targetCampaignId = client.cache.identify({ __typename: 'campaign', id: campaignId.serverId });
+      if (targetCampaignId) {
+        updateCache({
+          fields: {
+            campaigns(current) {
+              return filter(current, c => c.campaign?.__ref !== targetCampaignId);
+            },
           },
-        },
-      });
+        });
+      }
     }
-  }, [apiCall, updateCache, client]);
+  }, [editCampaignAccess, updateCache, client, user]);
 }
 
 export type SetCampaignChaosBagAction = (campaignId: UploadedCampaignId, chaosBag: ChaosBag) => Promise<void>;
@@ -497,6 +569,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
       optimisticResponse: {
         __typename: 'mutation_root',
         delete_campaign_investigator: {
+          __typename: 'campaign_investigator_mutation_response',
           returning: [
             {
               __typename: 'campaign_investigator',
@@ -563,13 +636,13 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
         __typename: 'mutation_root',
         insert_investigator_data_one: {
           __typename: 'investigator_data',
-          id: `${campaignId.serverId}-${investigator}`,
+          id: `${campaignId.serverId} ${investigator}`,
           ...variables,
         },
       },
       variables,
       context: {
-        serializationKey: campaignId.serverId,
+        serializationKey: `${campaignId.serverId}-${investigator}`,
       },
       update: optimisticUpdates.updateInvestigatorTrauma.update,
     });
@@ -579,29 +652,28 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
     const variables = {
       campaign_id: campaignId.serverId,
       investigator,
-      killed: data.killed || null,
-      insane: data.insane || null,
-      physical: data.physical || null,
       mental: data.mental || null,
-      added_cards: data.addedCards || [],
-      removed_cards: data.removedCards || [],
-      ignore_story_assets: data.ignoreStoryAssets || [],
-      story_assets: data.storyAssets || [],
-      available_xp: data.availableXp || 0,
+      physical: data.physical || null,
+      insane: data.insane || null,
+      killed: data.killed || null,
+      storyAssets: data.storyAssets || [],
+      addedCards: data.addedCards || [],
+      removedCards: data.removedCards || [],
+      ignoreStoryAssets: data.ignoreStoryAssets || [],
+      availableXp: data.availableXp || 0,
     };
     await updateInvestigatorData({
       optimisticResponse: {
         __typename: 'mutation_root',
         insert_investigator_data_one: {
           __typename: 'investigator_data',
-          id: `${campaignId.serverId}-${investigator}`,
-          updated_at: new Date(),
+          id: `${campaignId.serverId} ${investigator}`,
           ...variables,
         },
       },
       variables,
       context: {
-        serializationKey: campaignId.serverId,
+        serializationKey: `${campaignId.serverId}-${investigator}`,
       },
       update: optimisticUpdates.updateInvestigatorData.update,
     });
@@ -634,7 +706,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
           __typename: 'mutation_root',
           insert_investigator_data_one: {
             __typename: 'investigator_data',
-            id: `${campaignId.serverId}-${investigator}`,
+            id: `${campaignId.serverId} ${investigator}`,
             campaign_id: campaignId.serverId,
             investigator,
             spentXp: xp,
@@ -646,7 +718,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
           spent_xp: xp,
         },
         context: {
-          serializationKey: campaignId.serverId,
+          serializationKey: `${campaignId.serverId}-${investigator}`,
         },
         update: optimisticUpdates.updateSpentXp.update,
       });
@@ -656,7 +728,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
           __typename: 'mutation_root',
           insert_investigator_data_one: {
             __typename: 'investigator_data',
-            id: `${campaignId.serverId}-${investigator}`,
+            id: `${campaignId.serverId} ${investigator}`,
             campaign_id: campaignId.serverId,
             investigator,
             availableXp: xp,
@@ -668,7 +740,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
           available_xp: xp,
         },
         context: {
-          serializationKey: campaignId.serverId,
+          serializationKey: `${campaignId.serverId}-${investigator}`,
         },
         update: optimisticUpdates.updateAvailableXp.update,
       });
@@ -728,7 +800,6 @@ export function useGuideActions(): GuideActions {
         insert_guide_input_one: {
           ...insert,
           __typename: 'guide_input',
-          created_at: new Date(),
         },
       },
       variables: insert,

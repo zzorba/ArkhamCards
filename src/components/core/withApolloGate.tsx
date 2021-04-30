@@ -34,8 +34,15 @@ function ApolloGate({ children }: Props): JSX.Element {
   const loading = useSelector((state: AppState) => state.packs.loading || state.cards.loading);
   useEffect(() => {
     if (user && isConnected) {
-      // console.log('Opening apollo');
-      apolloQueueLink.open();
+      user.getIdTokenResult().then(idTokenResult => {
+        const hasuraClaims = idTokenResult.claims['https://hasura.io/jwt/claims'];
+        if (hasuraClaims) {
+          // console.log('Opening apollo');
+          apolloQueueLink.open();
+        } else {
+          apolloQueueLink.close();
+        }
+      });
     } else {
       // console.log('Closing apollo');
       apolloQueueLink.close();

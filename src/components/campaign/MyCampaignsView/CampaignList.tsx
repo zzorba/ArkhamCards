@@ -16,6 +16,10 @@ import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StandaloneItem from './StandaloneItem';
 import StyleContext from '@styles/StyleContext';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
+import ConnectionProblemBanner from '@components/core/ConnectionProblemBanner';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import useNetworkStatus from '@components/core/useNetworkStatus';
+import { NetInfoStateType } from '@react-native-community/netinfo';
 
 interface Props {
   onScroll: (...args: any[]) => void;
@@ -32,7 +36,8 @@ interface CampaignItemType {
 }
 
 export default function CampaignList({ onScroll, componentId, campaigns, footer, standalonesById, onRefresh, refreshing }: Props) {
-  const { colors } = useContext(StyleContext);
+  const { colors, width } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const onPress = useCallback((id: string, campaign: MiniCampaignT) => {
     Keyboard.dismiss();
     const options: Options = {
@@ -61,7 +66,8 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
             name: 'Guide.Standalone',
             passProps: {
               campaignId: campaign.id,
-              standaloneId,
+              scenarioId: standaloneId.scenarioId,
+              standalone: true,
             },
             options,
           },
@@ -125,40 +131,44 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
       />
     );
   }, [onPress, standalonesById]);
-
+  const [{ networkType, isConnected }] = useNetworkStatus();
+  const offline = !isConnected || networkType === NetInfoStateType.none;
   const header = useMemo(() => {
-    if (Platform.OS === 'android') {
-      return (
-        <View style={styles.searchBarPadding} />
-      );
-    }
-    return null;
-  }, []);
+    return (
+      <>
+        { Platform.OS === 'android' && <View style={styles.searchBarPadding} /> }
+        { !!user && <ConnectionProblemBanner width={width} /> }
+      </>
+    )
+  }, [width, user]);
   const [isRefreshing, setRefreshing] = useState(false);
   const doRefresh = useCallback(() => {
     setRefreshing(true);
     onRefresh && onRefresh();
     setTimeout(() => setRefreshing(false), 1000);
   }, [setRefreshing, onRefresh]);
+  const data = useMemo(() => {
+    return map(campaigns, campaign => {
+      return {
+        key: campaign.uuid,
+        campaign,
+      };
+    });
+  }, [campaigns]);
   return (
     <FlatList
       contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
       contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
       refreshControl={onRefresh ? (
         <RefreshControl
-          refreshing={isRefreshing || !!refreshing}
+          refreshing={!offline && (isRefreshing || !!refreshing)}
           onRefresh={doRefresh}
           tintColor={colors.lightText}
           progressViewOffset={SEARCH_BAR_HEIGHT}
         />
       ) : undefined}
       onScroll={onScroll}
-      data={map(campaigns, campaign => {
-        return {
-          key: campaign.uuid,
-          campaign,
-        };
-      })}
+      data={data}
       renderItem={renderItem}
       ListHeaderComponent={header}
       ListFooterComponent={footer}

@@ -1,10 +1,8 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { View } from 'react-native';
 import { flatMap, keys, sum, values } from 'lodash';
-import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { GuideDrawChaosBagProps } from '@components/campaignguide/GuideDrawChaosBagView';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import CampaignLogSuppliesComponent from './CampaignLogSuppliesComponent';
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
@@ -15,18 +13,19 @@ import StyleContext from '@styles/StyleContext';
 import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
 import DeckButton from '@components/deck/controls/DeckButton';
 import { CampaignId } from '@actions/types';
-import { showGuideChaosBagOddsCalculator } from '@components/campaign/nav';
+import { showGuideChaosBagOddsCalculator, showGuideDrawChaosBag } from '@components/campaign/nav';
 
 interface Props {
   componentId: string;
   campaignId: CampaignId;
   campaignGuide: CampaignGuide;
   campaignLog: GuidedCampaignLog;
+  scenarioId?: string;
   standalone?: boolean;
   hideChaosBag?: boolean;
 }
 
-export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, standalone, hideChaosBag }: Props) {
+export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, scenarioId, standalone, hideChaosBag }: Props) {
   const { backgroundStyle, width } = useContext(StyleContext);
   const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'count' | 'supplies') => {
     switch (type) {
@@ -78,27 +77,15 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
   }, [componentId, campaignId, campaignLog]);
 
   const chaosBagSimulatorPressed = useCallback(() => {
-    Navigation.push<GuideDrawChaosBagProps>(componentId, {
-      component: {
-        name: 'Guide.DrawChaosBag',
-        passProps: {
-          campaignId,
-          chaosBag: campaignLog.chaosBag,
-          investigatorIds: campaignLog.investigatorCodesSafe(),
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Chaos Bag`,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
-    });
-  }, [componentId, campaignId, campaignLog]);
+    showGuideDrawChaosBag(
+      componentId,
+      campaignId,
+      campaignLog.chaosBag,
+      campaignLog.investigatorCodesSafe(),
+      scenarioId,
+      standalone
+    );
+  }, [componentId, campaignId, campaignLog, scenarioId, standalone]);
 
   const chaosBagSection = useMemo(() => {
     if (hideChaosBag) {

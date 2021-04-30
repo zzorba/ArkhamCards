@@ -1588,10 +1588,6 @@ msgstr ""
 "Nota: Facção secundária deveria ser somente escolhida na hora de criação de "
 "baralho, não entre cenários."
 
-#, javascript-format
-msgid "class_${ faction }"
-msgstr "class_${ faction }"
-
 msgid "Original front · Original back"
 msgstr "Frente Original · Verso Original"
 
@@ -2297,6 +2293,7 @@ msgid_plural "Show ${ spoilerCardsCount } spoilers"
 msgstr[0] "Mostrar ${ spoilerCardsCount } spoiler"
 msgstr[1] "Mostrar ${ spoilerCardsCount } spoilers"
 
+#, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "Nenhuma carta para “${ searchTerm }”"
 
@@ -4137,9 +4134,6 @@ msgstr "${ _spentXp } de ${ _totalXp } spent"
 msgid "Save your changes to the campaign log"
 msgstr "Salve suas mudanças ao registro de campanha"
 
-msgid "You must be online to upload campaigns"
-msgstr "Você deve estar online para enviar campanhas"
-
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr "Baralhos com Conhecimento Ancestral devem incluir pelo menos 10 perícias."
 
@@ -4223,7 +4217,72 @@ msgstr ""
 msgid "Access"
 msgstr ""
 
-msgid "Edit access"
+msgid "Later"
+msgstr ""
+
+msgid "Searching cards..."
+msgstr ""
+
+msgid ""
+"This appears to be one of your decks from ArkhamDB, however you are not "
+"currently logged in. If you wish to make edits, please login through the "
+"app settings."
+msgstr ""
+
+msgid "Leave campaign"
+msgstr ""
+
+msgid ""
+"Are you sure you want to leave this campaign?\n"
+"\n"
+"Your decks will be removed from the campaign, but you can rejoin it later."
+msgstr ""
+
+msgid "Leave"
+msgstr ""
+
+msgid "Edit players"
+msgstr ""
+
+msgid "View players"
+msgstr ""
+
+msgid "Clear card cache"
+msgstr ""
+
+msgid "Uploading..."
+msgstr ""
+
+msgid "Leave standalone"
+msgstr ""
+
+msgid ""
+"Are you sure you want to leave this standalone?\n"
+"\n"
+"Your decks will be removed from the standalone, but you can rejoin it later."
+msgstr ""
+
+msgid "Upload standalone"
+msgstr ""
+
+msgid "You must be online to upload"
+msgstr ""
+
+msgid "Adjust scenario XP and trauma"
+msgstr ""
+
+msgid "Unspent XP"
+msgstr ""
+
+#, javascript-format
+msgid "${ unspentXp } saved"
+msgstr ""
+
+#, javascript-format
+msgid "Scenario Card - ${ difficultyStr }"
+msgstr ""
+
+msgid "Scenario Card"
 msgstr ""
 
 msgctxt "masculine"
@@ -4428,43 +4487,6 @@ msgid ""
 msgstr ""
 "Se <i>${ card.name }</i> está listada is listed under Check ‘${ "
 "entry.section }’ in your Campaign Log."
-
-#, javascript-format
-msgctxt "filter"
-msgid "${ cycleNames[cycle_position] } Cycle"
-msgstr "${ cycleNames[cycle_position] } Ciclo"
-
-msgctxt "action"
-msgid "Fight"
-msgstr "Lutar"
-
-msgctxt "action"
-msgid "Engage"
-msgstr "Engajar"
-
-msgctxt "action"
-msgid "Investigate"
-msgstr "Investigar"
-
-msgctxt "action"
-msgid "Play"
-msgstr "Jogar"
-
-msgctxt "action"
-msgid "Draw"
-msgstr "Comprar"
-
-msgctxt "action"
-msgid "Move"
-msgstr "Mover"
-
-msgctxt "action"
-msgid "Evade"
-msgstr "Evadir"
-
-msgctxt "action"
-msgid "Resource"
-msgstr "Recurso"
 
 msgctxt "trait"
 msgid "???"
@@ -5473,6 +5495,43 @@ msgstr ""
 msgctxt "trait"
 msgid "Zoog"
 msgstr ""
+
+#, javascript-format
+msgctxt "filter"
+msgid "${ cycleNames[cycle_position] } Cycle"
+msgstr "${ cycleNames[cycle_position] } Ciclo"
+
+msgctxt "action"
+msgid "Fight"
+msgstr "Lutar"
+
+msgctxt "action"
+msgid "Engage"
+msgstr "Engajar"
+
+msgctxt "action"
+msgid "Investigate"
+msgstr "Investigar"
+
+msgctxt "action"
+msgid "Play"
+msgstr "Jogar"
+
+msgctxt "action"
+msgid "Draw"
+msgstr "Comprar"
+
+msgctxt "action"
+msgid "Move"
+msgstr "Mover"
+
+msgctxt "action"
+msgid "Evade"
+msgstr "Evadir"
+
+msgctxt "action"
+msgid "Resource"
+msgstr "Recurso"
 
 msgctxt "Draw Cards"
 msgid "All"

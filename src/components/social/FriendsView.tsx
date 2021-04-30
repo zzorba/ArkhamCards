@@ -58,6 +58,7 @@ function FeedComponent({ userId, componentId, searchTerm, searchResults, handleS
     const feed: FriendFeedItem[] = [];
     if (searchTerm && searchTerm !== searchResults.term) {
       feed.push({
+        id: 'search',
         type: 'button',
         title: t`Search for ${searchTerm}`,
         icon: 'search',
@@ -65,31 +66,32 @@ function FeedComponent({ userId, componentId, searchTerm, searchResults, handleS
       });
     }
     if (find(profile?.receivedRequests, matchesSearch) && isSelf) {
-      feed.push({ type: 'header', header: t`Friend Requests` });
+      feed.push({ id: 'requests_header', type: 'header', header: t`Friend Requests` });
       forEach(profile?.receivedRequests, f => {
         if (matchesSearch(f)) {
-          feed.push({ type: 'user', user: f, controls });
+          feed.push({ id: `request_${f.id}`, type: 'user', user: f, controls });
         }
       });
     }
     if (find(profile?.sentRequests, matchesSearch) && isSelf) {
-      feed.push({ type: 'header', header: t`Pending Friend Requests` });
+      feed.push({ id: 'pending_header', type: 'header', header: t`Pending Friend Requests` });
       forEach(profile?.sentRequests, f => {
         if (matchesSearch(f)) {
-          feed.push({ type: 'user', user: f, controls });
+          feed.push({ id: `pending_${f.id}`, type: 'user', user: f, controls });
         }
       });
     }
     if (!searchTerm || find(profile?.friends, matchesSearch)) {
-      feed.push({ type: 'header', header: t`Friends` });
+      feed.push({ id: 'friends_header', type: 'header', header: t`Friends` });
       forEach(profile?.friends, f => {
         if (matchesSearch(f)) {
-          feed.push({ type: 'user', user: f, controls });
+          feed.push({ id: `friend_${f.id}`, type: 'user', user: f, controls });
         }
       });
     }
     if (isSelf && !searchTerm) {
       feed.push({
+        id: 'search',
         type: 'button',
         title: t`Search for friends to add`,
         icon: 'search',
@@ -97,18 +99,19 @@ function FeedComponent({ userId, componentId, searchTerm, searchResults, handleS
       });
     }
     if (searchTerm && !searchResults.loading) {
-      feed.push({ type: 'header', header: t`Search Results` });
+      feed.push({ id: 'search_results', type: 'header', header: t`Search Results` });
       if (find(searchResults.results || [], matchesSearch)) {
         forEach(searchResults.results, f => {
           if (matchesSearch(f)) {
-            feed.push({ type: 'user', user: f, controls });
+            feed.push({ id: `match_${f.id}`, type: 'user', user: f, controls });
           }
         });
       } else if (searchResults.term === searchTerm) {
-        feed.push({ type: 'placeholder', text: t`No results found for search '${searchResults.term}'.` });
-        feed.push({ type: 'button', title: t`Clear search`, icon: 'search', onPress: clearSearchPressed });
+        feed.push({ id: 'no_results', type: 'placeholder', text: t`No results found for search '${searchResults.term}'.` });
+        feed.push({ id: 'clear', type: 'button', title: t`Clear search`, icon: 'search', onPress: clearSearchPressed });
       } else {
         feed.push({
+          id: 'search_now',
           type: 'button',
           title: t`Search for ${searchTerm}`,
           icon: 'search',

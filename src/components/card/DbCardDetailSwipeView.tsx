@@ -25,7 +25,7 @@ import { useToggles, useComponentDidAppear, useNavigationButtonPressed, useCards
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { where } from '@data/sqlite/query';
 import Carousel from 'react-native-snap-carousel';
-import DeckNavFooter from '@components/deck/DeckNavFooter';
+import DeckNavFooter, { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
 import { FactionCodeType } from '@app_constants';
 import FloatingDeckQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/FloatingDeckQuantityComponent';
 import { DeckId } from '@actions/types';
@@ -41,8 +41,7 @@ export interface CardDetailSwipeProps {
   faction?: FactionCodeType;
 }
 
-type Props = NavigationProps &
-  CardDetailSwipeProps;
+type Props = NavigationProps & CardDetailSwipeProps;
 
 const options = (passProps: CardDetailSwipeProps) => {
   return {
@@ -172,7 +171,8 @@ function DbCardDetailSwipeView(props: Props) {
     );
   }, [deckId, currentCard, packInCollection]);
   const renderCard = useCallback((
-    { item: card, index: itemIndex }: { item?: Card | undefined; index: number; dataIndex: number }): React.ReactNode => {
+    { item: card, index: itemIndex }: { item?: Card | undefined; index: number; dataIndex: number }
+  ): React.ReactNode => {
     if (!card) {
       return (
         <View style={[styles.wrapper, backgroundStyle, { width, height, justifyContent: 'center' }]}>
@@ -196,9 +196,10 @@ function DbCardDetailSwipeView(props: Props) {
           showInvestigatorCards={showInvestigatorCards}
           width={width}
         />
+        { deckId !== undefined && <View style={{ width, height: FOOTER_HEIGHT }} /> }
       </ScrollView>
     );
-  }, [showCardSpoiler, backgroundStyle, componentId, width, colors, height, toggleShowSpoilers, showInvestigatorCards]);
+  }, [showCardSpoiler, backgroundStyle, componentId, deckId, width, colors, height, toggleShowSpoilers, showInvestigatorCards]);
   const data: (Card | undefined)[] = useMemo(() => {
     return map(cardCodes, code => cards[code]);
   }, [cardCodes, cards]);
@@ -210,6 +211,8 @@ function DbCardDetailSwipeView(props: Props) {
         vertical={false}
         data={data}
         firstItem={initialIndex}
+        initialNumToRender={data[initialIndex]?.type_code === 'investigator' ? 1 : 2}
+        maxToRenderPerBatch={3}
         renderItem={renderCard}
         sliderWidth={width}
         itemWidth={width}

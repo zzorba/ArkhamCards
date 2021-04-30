@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { View } from 'react-native';
 import { t } from 'ttag';
 
@@ -11,11 +11,13 @@ import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { BulletType } from '@data/scenario/types';
 import { DisplayChoice } from '@data/scenario';
 import space from '@styles/space';
+import { throttle } from 'lodash';
 
 interface Props {
   id: string;
   bulletType?: BulletType;
   text?: string;
+  showUndo?: boolean;
   choices: DisplayChoice[];
   picker?: boolean;
 }
@@ -30,9 +32,14 @@ export default function ChooseOnePrompt({
   text,
   choices,
   picker,
+  showUndo,
 }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const [currentSelectedChoice, setSelectedChoice] = useState<number | undefined>();
+
+  const undo = useMemo(() => throttle(() => {
+    scenarioState.undo();
+  }, 500, { leading: true, trailing: false }), [scenarioState]);
 
   const onChoiceChange = useCallback((index: number | null) => {
     if (index === null) {
@@ -82,6 +89,12 @@ export default function ChooseOnePrompt({
           title={t`Proceed`}
           onPress={save}
           disabled={selectedChoice === undefined}
+        />
+      ) }
+      { !!showUndo && (
+        <BasicButton
+          title={t`Cancel`}
+          onPress={undo}
         />
       ) }
     </>

@@ -37,7 +37,7 @@ export default function FactionSelectPicker({
     description: editWarning ? t`Note: Secondary faction should only be selected at deck creation time, not between scenarios.` : undefined,
     items: map(factions, (faction, index) => {
       return {
-        icon: t`class_${faction}`,
+        icon: `class_${faction}`,
         title: Card.factionCodeToName(faction, t`Select Faction`),
         value: index,
       };

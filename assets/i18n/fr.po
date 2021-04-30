@@ -131,11 +131,11 @@ msgid "Edit Collection"
 msgstr "Modifier la Collection"
 
 msgid "Search decks"
-msgstr "Rechercher des Decks"
+msgstr "Rechercher des decks"
 
 #, javascript-format
 msgid "No matching decks for \"${ searchTerm }\"."
-msgstr "Pas de Decks correspondants pour « ${searchTerm} »."
+msgstr "Pas de decks correspondants pour « ${searchTerm} »."
 
 msgid "${ scenarioCount } scenario completed"
 msgid_plural "${ scenarioCount } scenarios completed"
@@ -499,7 +499,7 @@ msgid "Check for updates"
 msgstr "Vérifier les mises à jour"
 
 msgid "Add Campaign Log Section"
-msgstr "Ajouter une Section de Journal de Campagne"
+msgstr "Ajouter une Section dans le Carnet de Campagne"
 
 msgid "Section Name"
 msgstr "Nom de la Section"
@@ -547,7 +547,7 @@ msgid "Insane"
 msgstr "Dément"
 
 msgid "Hide decks from other campaigns"
-msgstr "Masquer les Decks des Autres Campagnes"
+msgstr "Masquer les decks des autres campagnes"
 
 msgid "Hide killed and insane investigators"
 msgstr "Masquer les Investigateurs Tués et Déments"
@@ -859,11 +859,11 @@ msgstr "Ajuster la Collection des Faiblesses"
 
 #. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
-msgstr "Ce Deck contient plusieurs faiblesses de base"
+msgstr "Ce deck contient plusieurs faiblesses de base"
 
 #. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
-msgstr "Ce Deck contient une faiblesse de base"
+msgstr "Ce deck contient une faiblesse de base"
 
 #. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
@@ -1067,17 +1067,17 @@ msgid "Delete all versions"
 msgstr "Supprimer toutes les versions"
 
 msgid "Delete deck"
-msgstr "Supprimer ce Deck"
+msgstr "Supprimer ce deck"
 
 msgid "Are you sure you want to delete this deck?"
-msgstr "Êtes-vous sûr de vouloir supprimer ce Deck ?"
+msgstr "Êtes-vous sûr de vouloir supprimer ce deck ?"
 
 msgid "Save Local Changes"
 msgstr "Enregistrer les Modifications Locales"
 
 msgid "Please save any local edits to this deck before sharing to ArkhamDB"
 msgstr ""
-"Veuillez enregistrer toutes les modifications locales de ce Deck avant de "
+"Veuillez enregistrer toutes les modifications locales de ce deck avant de "
 "le partager sur ArkhamDB"
 
 msgid "Unsupported Operation"
@@ -1093,7 +1093,7 @@ msgid "View on ArkhamDB"
 msgstr "Voir sur ArkhamDB"
 
 msgid "Save deck changes?"
-msgstr "Enregistrer les changements du Deck ?"
+msgstr "Enregistrer les changements du deck ?"
 
 msgid "Edit Special Cards"
 msgstr "Modifier les Cartes Spéciales"
@@ -1102,7 +1102,7 @@ msgid "Edit Deck"
 msgstr "Modifier le Deck"
 
 msgid "Deck has been deleted"
-msgstr "Le Deck a été supprimé"
+msgstr "Le deck a été supprimé"
 
 msgid "Error"
 msgstr "Erreur"
@@ -1120,7 +1120,7 @@ msgid ""
 "Make a copy of a deck so that you can use it in a different campaign or "
 "choose different upgrades."
 msgstr ""
-"Faites la copie d’un Deck afin de pouvoir l’utiliser dans une autre "
+"Faites la copie d’un deck afin de pouvoir l’utiliser dans une autre "
 "campagne ou de choisir différentes améliorations."
 
 msgid "Type"
@@ -1150,6 +1150,7 @@ msgstr "Tente de donner un sens à la FAQ Time Warp"
 msgid "Taking three damage and three horror"
 msgstr "Subit 3 dégâts et 3 horreurs"
 
+#, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "Pas de cartes correspondantes pour « ${searchTerm} »"
 
@@ -1207,7 +1208,7 @@ msgid "Show front"
 msgstr "Afficher le recto de la carte"
 
 msgid "Deckbuilding Cards"
-msgstr "Cartes autorisées pour le Deck"
+msgstr "Cartes autorisées dans le deck"
 
 #, javascript-format
 msgid ""
@@ -1221,7 +1222,7 @@ msgid "Yig's Fury"
 msgstr "Fureur de Yig"
 
 msgid "Doesn't comply with the Investigator requirements."
-msgstr "Ne respecte pas les exigences de construction de l’Investigateur."
+msgstr "Ne respecte pas les exigences du deck de l’Investigateur."
 
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr "5 de plus, j’espère ne pas révéler un pion Tentacules"
@@ -1243,7 +1244,7 @@ msgid ""
 "difficulty, and to enforce shifts in deckbuilding environments over time."
 msgstr ""
 "La liste des tabous est une liste de cartes d’Horreur à Arkham : Le Jeu de "
-"Carte incluant des restrictions optionnelles de Deck ou des modifications "
+"Carte incluant des restrictions optionnelles de deck ou des modifications "
 "de texte. Cette liste est conçue pour créer un équilibre entre la puissance "
 "des investigateurs et la difficulté des scénarios, et pour contrebalancer "
 "les déséquilibres dans la construction des decks au fil du temps."
@@ -1305,7 +1306,7 @@ msgid ""
 "\n"
 "Use the + button to create a new one."
 msgstr ""
-"Pas encore de Decks.\n"
+"Pas encore de decks.\n"
 "\n"
 "Utilisez le bouton + pour en créer un nouveau."
 
@@ -1317,10 +1318,10 @@ msgid ""
 "\n"
 "Otherwise, you can draw random weaknesses from your entire collection."
 msgstr ""
-"Ce Deck ne semble pas encore faire partie d’une campagne.\n"
+"Ce deck ne semble pas encore faire partie d’une campagne.\n"
 "\n"
 "Si vous ajoutez ce deck à une campagne, l’application peut suivre les "
-"faiblesses disponibles entre plusieurs Decks.\n"
+"faiblesses disponibles entre plusieurs decks.\n"
 "\n"
 "Sinon, vous pouvez piocher des faiblesses aléatoires depuis votre "
 "collection entière."
@@ -1331,10 +1332,10 @@ msgid ""
 "\n"
 "Sign in to access your decks or share decks you have created with others."
 msgstr ""
-"ArkhamDB est un site de construction de Deck populaire où vous pouvez gérer "
+"ArkhamDB est un site de construction de deck populaire où vous pouvez gérer "
 "et partager des decks avec d’autres personnes.\n"
 "\n"
-"Connectez-vous pour accéder à vos Decks ou partager des Decks que vous avez "
+"Connectez-vous pour accéder à vos decks ou partager des decks que vous avez "
 "créés avec d’autres personnes."
 
 msgid ""
@@ -1393,9 +1394,9 @@ msgstr ""
 "Utilisez le bouton + pour en créer un nouveau.\n"
 "\n"
 "Vous pouvez utiliser cette application pour garder une trace des campagnes, "
-"y compris le traumatisme de l’investigateur, la reserve du chaos, les "
+"y compris le traumatisme de l’investigateur, la réserve du Chaos, les "
 "faiblesses de base, les Notes de Campagne et les valeurs d’expérience pour "
-"tous les Decks."
+"tous les decks."
 
 msgid "Sort"
 msgstr "Trier"
@@ -1405,7 +1406,7 @@ msgid ""
 "\n"
 "After doing this you will need network access to make changes to the deck."
 msgstr ""
-"Vous pouvez télécharger votre Deck vers ArkhamDB pour le partager avec "
+"Vous pouvez télécharger votre deck vers ArkhamDB pour le partager avec "
 "d’autres personnes.\n"
 "\n"
 "Après avoir fait ceci, vous aurez besoin d’un accès réseau pour apporter "
@@ -1417,7 +1418,7 @@ msgid ""
 "If it was part of a campaign you can add the same investigator back to "
 "restore your campaign data."
 msgstr ""
-"Il semble que vous ayez supprimé ce Deck depuis ArkhamDB.\n"
+"Il semble que vous ayez supprimé ce deck depuis ArkhamDB.\n"
 "\n"
 "Si il faisait partie d’une campagne, vous pouvez rajouter le même "
 "investigateur pour restaurer vos données de campagne."
@@ -1435,14 +1436,14 @@ msgid ""
 "Current Version ${ parsedCurrentDeck.deck.version }\n"
 "${ parsedCurrentDeck.experience } XP"
 msgstr ""
-"Version actuelle ${parsedCurrentDeck.deck.version} \n"
+"Version Actuelle ${parsedCurrentDeck.deck.version} \n"
 " ${parsedCurrentDeck.experience} XP"
 
 msgid ""
 "Latest Version ${ parsedLatestDeck.deck.version }\n"
 "${ parsedLatestDeck.experience } XP"
 msgstr ""
-"Dernière version ${parsedLatestDeck.deck.version} \n"
+"Dernière Version ${parsedLatestDeck.deck.version} \n"
 " ${parsedLatestDeck.experience} XP"
 
 msgid "Share"
@@ -1462,7 +1463,7 @@ msgid "Story Cards - Existing"
 msgstr "Cartes d’histoire - existantes"
 
 msgid "Upgrade deck"
-msgstr "Améliorer ce Deck"
+msgstr "Améliorer ce deck"
 
 msgid "Saving..."
 msgstr "Sauvegarde en cours…"
@@ -1479,12 +1480,10 @@ msgid "Clues: ${ clues }${ perInvestigatorClues }"
 msgstr "Seuil d'Indice : ${clues} ${perInvestigatorClues}"
 
 msgid "Shroud: ${ shroud }. Clues: ${ clues }${ perInvestigatorClues }."
-msgstr ""
-"Valeur Occulte : ${shroud}. Valeur d'Indice : ${clues} "
-"${perInvestigatorClues}."
+msgstr "Valeur Occulte : ${shroud}. Indice(s) : ${clues} ${perInvestigatorClues}."
 
 msgid "Update investigator decks"
-msgstr "Mettre à jour les Decks Investigateur"
+msgstr "Mettre à jour les decks Investigateur"
 
 msgid ""
 "By upgrading a deck, you can track XP and story card upgrades as your "
@@ -1492,7 +1491,7 @@ msgid ""
 "\n"
 "Previous versions of your deck will still be accessible."
 msgstr ""
-"En améliorant un Deck, vous pouvez suivre les mises à jour de l'XP et des "
+"En améliorant un deck, vous pouvez suivre les mises à jour de l'XP et des "
 "cartes d'histoire au fur et à mesure de votre campagne.\n"
 "\n"
 "Les versions précédentes de votre deck seront toujours accessibles."
@@ -1507,7 +1506,7 @@ msgid ""
 "You can opt-in to always seeing taboos and buiding decks with them in "
 "Settings."
 msgstr ""
-"Vous pouvez choisir de toujours voir les Tabous et les Decks construits "
+"Vous pouvez choisir de toujours voir les Tabous et les decks construits "
 "avec eux dans les Paramètres."
 
 #, javascript-format
@@ -1564,7 +1563,7 @@ msgid ""
 "We're having trouble updating your decks at this time. If the problem "
 "persists tap here to reauthorize."
 msgstr ""
-"Nous avons du mal à mettre à jour vos Decks en ce moment. Si le problème "
+"Nous avons du mal à mettre à jour vos decks en ce moment. Si le problème "
 "persiste, appuyez ici pour réautoriser."
 
 msgid "Multiplayer"
@@ -1711,7 +1710,7 @@ msgid ""
 "Note: Deck size should only be selected at deck creation time, not between "
 "scenarios."
 msgstr ""
-"Remarque : La taille du Deck ne doit être sélectionnée qu'au moment de la "
+"Remarque : la taille du deck ne doit être sélectionnée qu'au moment de la "
 "création du deck, et non entre les scénarios."
 
 msgid ""
@@ -1719,7 +1718,7 @@ msgid ""
 "between scenarios."
 msgstr ""
 "Remarque : La classe secondaire ne doit être sélectionnée qu'au moment de "
-"la création du Deck, et non entre les scénarios."
+"la création du deck, et non entre les scénarios."
 
 msgid ""
 "This deck contains next/previous versions with upgrades, so we cannot "
@@ -1728,12 +1727,11 @@ msgid ""
 "If you would like to upload it, you can use Clone to upload a clone of the "
 "current deck."
 msgstr ""
-"Ce Deck contient des versions suivantes/précédentes avec des mises à "
-"niveau, donc nous ne pouvons pas le télécharger sur ArkhamDB pour le "
-"moment.\n"
+"Ce deck contient des versions suivantes/précédentes avec des améliorations, "
+"donc nous ne pouvons pas le télécharger sur ArkhamDB pour le moment.\n"
 "\n"
-"Si vous souhaitez le télécharger, vous pouvez utiliser Clôner pour "
-"télécharger un clone du deck actuel."
+"Si vous souhaitez le télécharger, vous pouvez utiliser l'option \"Dupliquer "
+"ce deck\" pour créer une copie du deck actuel."
 
 #, javascript-format
 msgid "${ xp } (${ adjustment }) XP"
@@ -1800,16 +1798,17 @@ msgid "Spend two resources to automatically succeed"
 msgstr "Dépenser deux ressources pour réussir automatiquement"
 
 msgid "Resource cost of the top card on your deck"
-msgstr "Coût en ressource de la carte supérieure de votre Deck"
+msgstr "Coût en ressource de la carte du dessus de votre deck"
 
 msgid ""
 "Note: chaos tokens that cause additional tokens to be revealed does not "
 "show correct odds for the \"Draw Two Pick One\" and similar multi-draw "
 "situations."
 msgstr ""
-"Remarque : les pions Chaos qui provoquent la révélation de pions "
-"supplémentaires ne permettent pas d'obtenir des probabilités correctes pour "
-"les tirages multiples."
+"Remarque : les pions Chaos qui font révéler des pions supplémentaires ne "
+"permettent pas d'obtenir des probabilités correctes dans des cas comme\n"
+"« Révélez un pion, choisissez-en un » ou des cas où vous révélez plusieurs "
+"pions à la fois."
 
 msgid "Deleting"
 msgstr "Suppression en cours"
@@ -1867,7 +1866,7 @@ msgid "Upgrade History"
 msgstr "Historique des Améliorations"
 
 msgid "Original Deck"
-msgstr "Deck d'origine"
+msgstr "Deck d'Origine"
 
 #, javascript-format
 msgid "Latest Deck: ${ deck.changes.spentXp } of ${ deck.availableExperience } XP"
@@ -1960,7 +1959,7 @@ msgid ""
 "Upgrading your deck allows changes and experience to be tracked over the "
 "course of a campaign."
 msgstr ""
-"Améliorer votre Deck permet de le modifier et de suivre l'évolution de "
+"Améliorer votre deck permet de le modifier et de suivre l'évolution de "
 "votre expérience au cours de la campagne."
 
 msgid "Choose Investigator"
@@ -2057,23 +2056,23 @@ msgid " (New Total: ${ totalMental })"
 msgstr " (Nouveau Total : ${ totalMental })"
 
 msgid "Save deck upgrade"
-msgstr "Enregistrer les améliorations de Deck"
+msgstr "Enregistrer les améliorations de deck"
 
 msgid "Save adjustments"
 msgstr "Enregistrer les modifications"
 
 msgid "Select deck"
-msgstr "Choisir un Deck"
+msgstr "Choisir un deck"
 
 msgid "View deck"
-msgstr "Voir le Deck"
+msgstr "Voir le deck"
 
 msgid "Update decks with scenario results"
-msgstr "Mettre à jour le Deck avec les résultats de scénario"
+msgstr "Mettre à jour le deck avec les résultats du scénario"
 
 #, javascript-format
 msgid "Who will add ${ card.name } to their deck?"
-msgstr "Qui va ajouter ${ card.name } à son Deck ?"
+msgstr "Qui va ajouter ${ card.name } à son deck ?"
 
 #, javascript-format
 msgid "In your Campaign Log, under \"${ section }\", record ${ card.name }. "
@@ -2101,7 +2100,7 @@ msgid "Remove ${ card.name } (${ input.length })"
 msgstr "Retirer ${ card.name } (${ input.length })"
 
 msgid "Who will remove ${ card.name } from their deck?"
-msgstr "Qui va supprimer ${ card.name } de son Deck ?"
+msgstr "Qui va supprimer ${ card.name } de son deck ?"
 
 msgid "You suffer 1 physical or mental trauma <i>(your choice)</i>."
 msgstr "Vous subissez 1 traumatisme physique ou mental <i>(votre choix)</i>."
@@ -2197,14 +2196,14 @@ msgstr[0] "${ investigators } doit lire <b>${ prompt }"
 msgstr[1] "${ investigators } doivent lire <b>${ prompt }"
 
 msgid "Does any investigator have \"${ cardName }\" in their deck?"
-msgstr "Un investigateur a-t-il « ${ cardName } » dans son Deck ?"
+msgstr "Un investigateur a-t-il « ${ cardName } » dans son deck ?"
 
 #, javascript-format
 msgid "Was an investigator with \"${ cardName }\" in their deck defeated?"
-msgstr "Un investigateur avec « ${ cardName } » dans son Deck a-t-il été vaincu ?"
+msgstr "Un investigateur avec « ${ cardName } » dans son deck a-t-il été vaincu ?"
 
 msgid "For each investigator with \"${ cardName }\" in their deck:"
-msgstr "Pour chaque investigateur avec « ${ cardName } » dans son Deck :"
+msgstr "Pour chaque investigateur avec « ${ cardName } » dans son deck :"
 
 #, javascript-format
 msgid "Because there is ${ playerCount } player in the game:"
@@ -2263,7 +2262,7 @@ msgid ""
 "You can view the deck and delete the most recent 'upgrade' to put things "
 "back the way they were."
 msgstr ""
-"Il semble que vous essayez d'annuler une amélioration de Deck\n"
+"Il semble que vous essayez d'annuler une amélioration de deck\n"
 "\n"
 "Notez que l'application ne supprimera PAS votre dernière mise à jour "
 "d'ArkhamDB, ainsi, les changements antérieurs seront toujours appliqués.\n"
@@ -2278,13 +2277,13 @@ msgid "In your Campaign Log, record that:"
 msgstr "Dans votre Carnet de Campagne, notez que :"
 
 msgid "Enter a name for this deck."
-msgstr "Entrez un nom pour ce Deck."
+msgstr "Entrez un nom pour ce deck."
 
 msgid "Use Starter Deck"
 msgstr "Utiliser un Deck de Départ"
 
 msgid "Create deck"
-msgstr "Créer un Deck"
+msgstr "Créer un deck"
 
 msgid "Sign In"
 msgstr "S'identifier"
@@ -2302,7 +2301,7 @@ msgid "Return to..."
 msgstr "Renouveau..."
 
 msgid "Investigator Starter Decks"
-msgstr "Decks de Départ d'Investigateur"
+msgstr "Decks de Départ Investigateur"
 
 msgid "Show story assets from other campaigns"
 msgstr "Montrer les soutiens d'histoires d'autres campagnes"
@@ -2411,10 +2410,10 @@ msgid "Upgrade ${ humanVersionNumber }: ${ deck.availableExperience } XP"
 msgstr "Amélioration ${ humanVersionNumber } : ${ deck.availableExperience } XP"
 
 msgid "Delete broken deck"
-msgstr "Supprimer les Decks corrompus"
+msgstr "Supprimer les decks corrompus"
 
 msgid "Looks like we are having trouble loading this deck for some reason"
-msgstr "Il semble que nous ayons des problème à charger ce Deck"
+msgstr "Il semble que nous ayons des problème à charger ce deck"
 
 msgid "Delete Deck"
 msgstr "Supprimer le Deck"
@@ -2490,7 +2489,7 @@ msgid "Remove deck"
 msgstr "Supprimer le deck"
 
 msgid "Remove deck from campaign"
-msgstr "Supprimer le deck de la camapagne"
+msgstr "Supprimer le deck de la campagne"
 
 msgid ""
 "Are you sure you want to remove this deck from the campaign?\n"
@@ -2607,8 +2606,8 @@ msgid ""
 "The app does not enforce Challenge Scenario prerequisites, so please "
 "confirm that they apply manually."
 msgstr ""
-"L'app ne vérifie pas les prérequis des scénarios défi, donc merci de "
-"confirmer qu'ils s'appliquent manuellement."
+"L'application ne vérifie pas les prérequis des scénarios défi, donc merci "
+"de confirmer qu'ils s'appliquent manuellement."
 
 msgid "Play this scenario"
 msgstr "Jouer ce scénario"
@@ -2714,7 +2713,7 @@ msgid "Use app for scenario setup & resolutions"
 msgstr "Utiliser l'application pour la mise en place et les conclusions"
 
 msgid "Track campaign log and resolutions manually"
-msgstr "Suivre le Carnet de Campagne et les conclusions manuellement"
+msgstr "Gérer le Carnet de Campagne et les conclusions manuellement"
 
 msgid "Investigators"
 msgstr "Investigateurs"
@@ -2855,12 +2854,12 @@ msgid ""
 "This will let you backup your local decks and campaigns for safe-keeping. "
 "This can also be used to move them to another device."
 msgstr ""
-"Ceci vous permet de sauvegarder vos decks et campagnes locaux an tant "
+"Ceci vous permet de sauvegarder vos decks et vos campagnes en tant "
 "qu'archives. Cela vous permet aussi de les transférer vers un autre "
 "appareil."
 
 msgid "Save backup"
-msgstr "Enregister la sauvegarde"
+msgstr "Enregistrer la sauvegarde"
 
 msgid "Cannot request access"
 msgstr "Ne peut pas demander l'accès"
@@ -3447,13 +3446,13 @@ msgid "For balancing and evaluating"
 msgstr "Pour mesurer l'équilibre entre vos cartes"
 
 msgid "Check your deck stability"
-msgstr "Testez la stabilité de votre Deck"
+msgstr "Pour tester la stabilité de votre deck"
 
 msgid "Story assets and weaknesses"
 msgstr "Soutiens et faiblesses d'histoire"
 
 msgid "Clone deck"
-msgstr "Dupliquer ce Deck"
+msgstr "Dupliquer ce deck"
 
 msgid "Open in browser"
 msgstr "Ouvrir dans le navigateur"
@@ -3523,7 +3522,7 @@ msgid "${ overspent } overspent"
 msgstr "${ overspent } dépensés en trop"
 
 msgid "For easy deck assembly"
-msgstr "Pour assembler facilement votre vrai Deck"
+msgstr "Pour assembler facilement votre vrai deck"
 
 msgid "Reads \"${ badThing.prompt }\""
 msgstr "Lire \"${ badThing.prompt }\""
@@ -3610,7 +3609,7 @@ msgstr "Actions"
 
 #. This is a deck upgrade action.
 msgid "Undo deck upgrade?"
-msgstr "Annuler les améliorations du Deck ?"
+msgstr "Annuler les améliorations du deck ?"
 
 msgid ""
 "<b>Additional Options</b>: When you upgrade a [[Spell]], you may instead "
@@ -3638,7 +3637,7 @@ msgid ""
 "track changes."
 msgstr ""
 "Si vous venez de terminer un scénario, utilisez le bouton 'Améliorer' qui "
-"vous permettra de voir les progrès de votre Deck."
+"vous permettra de voir les progrès de votre deck."
 
 msgid "XP earned"
 msgstr "Expérience gagnée"
@@ -3658,10 +3657,6 @@ msgid_plural "${ size } Cards"
 msgstr[0] "${ size } Carte"
 msgstr[1] "${ size } Cartes"
 
-#, javascript-format
-msgid "class_${ faction }"
-msgstr "class_${ faction }"
-
 msgid "Select Parallel Investigator"
 msgstr "Sélectionner un Investigateur Parallèle"
 
@@ -3669,7 +3664,7 @@ msgid "Upgrade experience"
 msgstr "Ajuster l'expérience"
 
 msgid "Upgrading deck"
-msgstr "Amélioration du Deck"
+msgstr "Amélioration du deck"
 
 msgid "Editing deck"
 msgstr "Modification du deck"
@@ -3718,7 +3713,7 @@ msgid ""
 "changes might be applied twice. You should view the deck and manually undo "
 "the edits before reapplying the changes."
 msgstr ""
-"Il semble que vous essayez d'annuler la sauvegarde d'un deck\n"
+"Il semble que vous essayez d'annuler la sauvegarde d'un deck.\n"
 "\n"
 "Notez que l'application ne pourra PAS annuler ces changements, donc si vous "
 "les réitérez, ils pourraient bien s'appliquer deux fois. Vous devriez "
@@ -3881,7 +3876,7 @@ msgid ""
 "More features are in the works."
 msgstr ""
 "En utilisant un compte Arkham Cards, vous pourrez sauvegarder et "
-"synchroniser vos données de campagne entre tous vos équipements.\n"
+"synchroniser vos données de campagne entre tous vos appareils.\n"
 "D'autres contenus supplémentaires sont en cours."
 
 msgid "Sign in to your account"
@@ -3927,7 +3922,7 @@ msgid "Logged in"
 msgstr "Connecté"
 
 msgid "Synchronize decks"
-msgstr "Synchroniser les Decks"
+msgstr "Synchroniser les decks"
 
 msgid "Log out"
 msgstr "Déconnexion"
@@ -3979,7 +3974,7 @@ msgid "Save upgrade"
 msgstr "Enregistrer la modification"
 
 msgid "Uploading deck"
-msgstr "Transfert de deck"
+msgstr "Transfert du deck"
 
 msgid "Earned experience:"
 msgstr "Expérience gagnée :"
@@ -4081,7 +4076,7 @@ msgid "Uploaded campaigns will be synced between devices."
 msgstr "Les campagnes envoyées seront synchronisées entre les appareils."
 
 msgid "Review records"
-msgstr "Revoir les enregistrements"
+msgstr "Examinez vos notes"
 
 msgid "Note campaign achievements"
 msgstr "Noter les résultats de campagne"
@@ -4090,7 +4085,7 @@ msgid "Complete campaign setup"
 msgstr "Terminer la mise en place de la campagne"
 
 msgid "Review and draw tokens"
-msgstr "Rechercher et piocher des pions"
+msgstr "Examinez et piochez des pions Chaos"
 
 msgid "Spent experience"
 msgstr "Expérience dépensée"
@@ -4123,7 +4118,7 @@ msgid "Review scenario results"
 msgstr "Revoir les résultats des scénarios"
 
 msgid "Edit chaos bag"
-msgstr "Modifier la réserve du chaos"
+msgstr "Modifier la réserve du Chaos"
 
 msgid "Scenario name"
 msgstr "Nom du scénario"
@@ -4134,19 +4129,19 @@ msgstr[0] "${ unspentXp } XP non dépensée"
 msgstr[1] "${ unspentXp } XP non dépensées"
 
 msgid "Tap to draw"
-msgstr "Incliner pour piocher"
+msgstr "Appuyez ici pour piocher"
 
 msgid "Draw another"
 msgstr "Piocher à nouveau"
 
 msgid "Return tokens"
-msgstr "Remettre des pions"
+msgstr "Remettre les pions dans la réserve"
 
 msgid "Seal tokens"
 msgstr "Sceller des pions"
 
 msgid "Release all"
-msgstr "Libérer tout"
+msgstr "Libérer les pions"
 
 msgid "Remove all bless & curse tokens"
 msgstr "Supprimer tous les pions Béni et Maudit"
@@ -4159,7 +4154,7 @@ msgid "Return, but ${ doNotRemove } Bless/Curse"
 msgstr "Remettre, sauf ${ doNotRemove } Béni/Maudit"
 
 msgid "View chaos bag"
-msgstr "Regarder la réserve du chaos"
+msgstr "Examiner la réserve du Chaos"
 
 msgid "Sealed tokens"
 msgstr "Pions scellés"
@@ -4174,14 +4169,13 @@ msgstr "${ _spentXp } sur ${ _totalXp } dépensée(s)"
 msgid "Save your changes to the campaign log"
 msgstr "Enregistrez vos modifications dans le carnet de campagne."
 
-msgid "You must be online to upload campaigns"
-msgstr ""
-
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr ""
+"Les decks avec la Connaissance Ancestrale doivent inclure au moins 10 "
+"compétences."
 
 msgid "Faction, Level, Type"
-msgstr ""
+msgstr "Classe, Niveau, Type"
 
 #, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
@@ -4222,14 +4216,14 @@ msgstr ""
 
 #, javascript-format
 msgid "${ deck.owner.handle } must save this upgrade"
-msgstr ""
+msgstr "${ deck.owner.handle } doit sauvegarder cette amélioration"
 
 msgid "Your friend must save this upgrade"
 msgstr ""
 
 #, javascript-format
 msgid "${ deck.owner.handle } must save this deck"
-msgstr ""
+msgstr "${ deck.owner.handle } doit sauvegarder ce deck"
 
 msgid "Your friend must save this deck"
 msgstr ""
@@ -4246,7 +4240,72 @@ msgstr ""
 msgid "Access"
 msgstr ""
 
-msgid "Edit access"
+msgid "Clear card cache"
+msgstr ""
+
+msgid "Later"
+msgstr ""
+
+msgid ""
+"This appears to be one of your decks from ArkhamDB, however you are not "
+"currently logged in. If you wish to make edits, please login through the "
+"app settings."
+msgstr ""
+
+msgid "Searching cards..."
+msgstr ""
+
+msgid "Leave standalone"
+msgstr ""
+
+msgid "Leave campaign"
+msgstr ""
+
+msgid ""
+"Are you sure you want to leave this standalone?\n"
+"\n"
+"Your decks will be removed from the standalone, but you can rejoin it later."
+msgstr ""
+
+msgid ""
+"Are you sure you want to leave this campaign?\n"
+"\n"
+"Your decks will be removed from the campaign, but you can rejoin it later."
+msgstr ""
+
+msgid "Leave"
+msgstr ""
+
+msgid "Edit players"
+msgstr ""
+
+msgid "View players"
+msgstr ""
+
+msgid "Upload standalone"
+msgstr ""
+
+msgid "You must be online to upload"
+msgstr ""
+
+msgid "Uploading..."
+msgstr ""
+
+msgid "Adjust scenario XP and trauma"
+msgstr ""
+
+msgid "Unspent XP"
+msgstr ""
+
+#, javascript-format
+msgid "${ unspentXp } saved"
+msgstr ""
+
+#, javascript-format
+msgid "Scenario Card - ${ difficultyStr }"
+msgstr ""
+
+msgid "Scenario Card"
 msgstr ""
 
 #, javascript-format
@@ -4456,6 +4515,1014 @@ msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } lit <b>${ sectionName }</b>"
 
+msgctxt "trait"
+msgid "???"
+msgstr "???"
+
+msgctxt "trait"
+msgid "Abomination"
+msgstr "Abomination"
+
+msgctxt "trait"
+msgid "Abyss"
+msgstr ""
+
+msgctxt "trait"
+msgid "Act 1"
+msgstr "Acte 1"
+
+msgctxt "trait"
+msgid "Act 2"
+msgstr "Acte 2"
+
+msgctxt "trait"
+msgid "Agency"
+msgstr "Agence"
+
+msgctxt "trait"
+msgid "Ally"
+msgstr "Allié"
+
+msgctxt "trait"
+msgid "Altered"
+msgstr "Altéré"
+
+msgctxt "trait"
+msgid "Ancient"
+msgstr "Ancien"
+
+msgctxt "trait"
+msgid "Ancient One"
+msgstr "Grand Ancien"
+
+msgctxt "trait"
+msgid "Arkham"
+msgstr "Arkham"
+
+msgctxt "trait"
+msgid "Arkham Asylum"
+msgstr "Asile d'Arkham"
+
+msgctxt "trait"
+msgid "Armor"
+msgstr "Armure"
+
+msgctxt "trait"
+msgid "Artist"
+msgstr "Artiste"
+
+msgctxt "trait"
+msgid "Assistant"
+msgstr "Assistant"
+
+msgctxt "trait"
+msgid "Attack"
+msgstr "Attaque"
+
+msgctxt "trait"
+msgid "Augury"
+msgstr "Augure"
+
+msgctxt "trait"
+msgid "Avatar"
+msgstr "Avatar"
+
+msgctxt "trait"
+msgid "Basement"
+msgstr "Sous-sol"
+
+msgctxt "trait"
+msgid "Bayou"
+msgstr ""
+
+msgctxt "trait"
+msgid "Believer"
+msgstr "Croyant"
+
+msgctxt "trait"
+msgid "Blessed"
+msgstr "Béni"
+
+msgctxt "trait"
+msgid "Blunder"
+msgstr "Bévue"
+
+msgctxt "trait"
+msgid "Boat"
+msgstr ""
+
+msgctxt "trait"
+msgid "Bold"
+msgstr "Audacieux"
+
+msgctxt "trait"
+msgid "Boon"
+msgstr "Avantage"
+
+msgctxt "trait"
+msgid "Bridge"
+msgstr "Pont"
+
+msgctxt "trait"
+msgid "Brotherhood"
+msgstr "Confrérie"
+
+msgctxt "trait"
+msgid "Byakhee"
+msgstr "Byakhee"
+
+msgctxt "trait"
+msgid "Bystander"
+msgstr "Passant"
+
+msgctxt "trait"
+msgid "Cairo"
+msgstr "Caire"
+
+msgctxt "trait"
+msgid "Campsite"
+msgstr ""
+
+msgctxt "trait"
+msgid "Carnevale"
+msgstr "Carnaval"
+
+msgctxt "trait"
+msgid "Cave"
+msgstr "Grotte"
+
+msgctxt "trait"
+msgid "Central"
+msgstr "Central"
+
+msgctxt "trait"
+msgid "Charm"
+msgstr "Charme"
+
+msgctxt "trait"
+msgid "Chosen"
+msgstr "Élu"
+
+msgctxt "trait"
+msgid "Circle"
+msgstr "Cercle"
+
+msgctxt "trait"
+msgid "City"
+msgstr "Cité"
+
+msgctxt "trait"
+msgid "Civic"
+msgstr "Municipal"
+
+msgctxt "trait"
+msgid "Clairvoyant"
+msgstr "Clairvoyant"
+
+msgctxt "trait"
+msgid "Clothing"
+msgstr "Vêtement"
+
+msgctxt "trait"
+msgid "Clover Club"
+msgstr "Club du Trèfle"
+
+msgctxt "trait"
+msgid "Coastal"
+msgstr ""
+
+msgctxt "trait"
+msgid "Composure"
+msgstr "Aplomb"
+
+msgctxt "trait"
+msgid "Condition"
+msgstr "Condition"
+
+msgctxt "trait"
+msgid "Connection"
+msgstr "Relation"
+
+msgctxt "trait"
+msgid "Conspirator"
+msgstr "Conspirateur"
+
+msgctxt "trait"
+msgid "Construct"
+msgstr ""
+
+msgctxt "trait"
+msgid "Covenant"
+msgstr "Traité"
+
+msgctxt "trait"
+msgid "Creature"
+msgstr "Créature"
+
+msgctxt "trait"
+msgid "Crime Scene"
+msgstr "Scène de Crime"
+
+msgctxt "trait"
+msgid "Criminal"
+msgstr "Criminel"
+
+msgctxt "trait"
+msgid "Cultist"
+msgstr "Cultiste"
+
+msgctxt "trait"
+msgid "Curse"
+msgstr "Malédiction"
+
+msgctxt "trait"
+msgid "Cursed"
+msgstr "Maudit"
+
+msgctxt "trait"
+msgid "Dark Young"
+msgstr "Sombre Rejeton"
+
+msgctxt "trait"
+msgid "Deep One"
+msgstr "Profond"
+
+msgctxt "trait"
+msgid "Depths"
+msgstr "Profondeurs"
+
+msgctxt "trait"
+msgid "Desert"
+msgstr "Désert"
+
+msgctxt "trait"
+msgid "Desperate"
+msgstr "Désespéré"
+
+msgctxt "trait"
+msgid "Detective"
+msgstr "Détective"
+
+msgctxt "trait"
+msgid "Developed"
+msgstr "Développé"
+
+msgctxt "trait"
+msgid "Dhole"
+msgstr "Dhole"
+
+msgctxt "trait"
+msgid "Distortion"
+msgstr "Distortion"
+
+msgctxt "trait"
+msgid "Dreamer"
+msgstr "Rêveur"
+
+msgctxt "trait"
+msgid "Dreamlands"
+msgstr "Contrées du Rêve"
+
+msgctxt "trait"
+msgid "Drifter"
+msgstr "Vagabond"
+
+msgctxt "trait"
+msgid "Dunwich"
+msgstr "Dunwich"
+
+msgctxt "trait"
+msgid "Eldritch"
+msgstr "Eldritch"
+
+msgctxt "trait"
+msgid "Elite"
+msgstr "Élite"
+
+msgctxt "trait"
+msgid "Endtimes"
+msgstr "Fin des Temps"
+
+msgctxt "trait"
+msgid "Evidence"
+msgstr "Preuve"
+
+msgctxt "trait"
+msgid "Exhibit"
+msgstr "Exposition"
+
+msgctxt "trait"
+msgid "Expedition"
+msgstr "Expédition"
+
+msgctxt "trait"
+msgid "Expert"
+msgstr "Expert"
+
+msgctxt "trait"
+msgid "Extradimensional"
+msgstr "Extradimensionnel"
+
+msgctxt "trait"
+msgid "Extraterrestrial"
+msgstr "Extraterrestre"
+
+msgctxt "trait"
+msgid "Eztli"
+msgstr "Eztli"
+
+msgctxt "trait"
+msgid "Familiar"
+msgstr "Familier"
+
+msgctxt "trait"
+msgid "Fated"
+msgstr "Condamné"
+
+msgctxt "trait"
+msgid "Favor"
+msgstr "Faveur"
+
+msgctxt "trait"
+msgid "Firearm"
+msgstr "Arme à feu"
+
+msgctxt "trait"
+msgid "Flaw"
+msgstr "Défaut"
+
+msgctxt "trait"
+msgid "Flora"
+msgstr "Flore"
+
+msgctxt "trait"
+msgid "Footwear"
+msgstr "Paire de chaussures"
+
+msgctxt "trait"
+msgid "Forbidden"
+msgstr "Interdit"
+
+msgctxt "trait"
+msgid "Forgotten"
+msgstr "Oublié"
+
+msgctxt "trait"
+msgid "Fortune"
+msgstr "Chance"
+
+msgctxt "trait"
+msgid "Future"
+msgstr "Futur"
+
+msgctxt "trait"
+msgid "Gambit"
+msgstr "Stratagème"
+
+msgctxt "trait"
+msgid "Geist"
+msgstr "Geist"
+
+msgctxt "trait"
+msgid "Ghast"
+msgstr "Ghast"
+
+msgctxt "trait"
+msgid "Ghoul"
+msgstr "Goule"
+
+msgctxt "trait"
+msgid "Government"
+msgstr "Gouvernement"
+
+msgctxt "trait"
+msgid "Grant"
+msgstr "Subvention"
+
+msgctxt "trait"
+msgid "Graveyard"
+msgstr "Cimetière"
+
+msgctxt "trait"
+msgid "Ground Floor"
+msgstr "Rez-de-chaussée"
+
+msgctxt "trait"
+msgid "Guest"
+msgstr "Invité"
+
+msgctxt "trait"
+msgid "Gug"
+msgstr "Gug"
+
+msgctxt "trait"
+msgid "Hall"
+msgstr "Hall"
+
+msgctxt "trait"
+msgid "Hazard"
+msgstr "Risque"
+
+msgctxt "trait"
+msgid "Hex"
+msgstr "Sortilège"
+
+msgctxt "trait"
+msgid "Hideout"
+msgstr ""
+
+msgctxt "trait"
+msgid "Historical Society"
+msgstr "Société des Historiens"
+
+msgctxt "trait"
+msgid "Human"
+msgstr "Humanoïde"
+
+msgctxt "trait"
+msgid "Humanoid"
+msgstr "Humanoïde"
+
+msgctxt "trait"
+msgid "Hunter"
+msgstr "Chasseur"
+
+msgctxt "trait"
+msgid "Hybrid"
+msgstr "Hybride"
+
+msgctxt "trait"
+msgid "Illicit"
+msgstr "Illicite"
+
+msgctxt "trait"
+msgid "Improvised"
+msgstr "Improvisé"
+
+msgctxt "trait"
+msgid "Injury"
+msgstr "Blessure"
+
+msgctxt "trait"
+msgid "Innate"
+msgstr "Inné"
+
+msgctxt "trait"
+msgid "Innocent"
+msgstr "Innocent"
+
+msgctxt "trait"
+msgid "Innsmouth"
+msgstr "Innsmouth"
+
+msgctxt "trait"
+msgid "Insect"
+msgstr "Insecte"
+
+msgctxt "trait"
+msgid "Insight"
+msgstr "Perspicacité"
+
+msgctxt "trait"
+msgid "Instrument"
+msgstr "Instrument"
+
+msgctxt "trait"
+msgid "Island"
+msgstr "Île"
+
+msgctxt "trait"
+msgid "Item"
+msgstr "Objet"
+
+msgctxt "trait"
+msgid "Job"
+msgstr "Boulot"
+
+msgctxt "trait"
+msgid "Jungle"
+msgstr "Jungle"
+
+msgctxt "trait"
+msgid "Kadath"
+msgstr "Kadath"
+
+msgctxt "trait"
+msgid "Key"
+msgstr "Clé"
+
+msgctxt "trait"
+msgid "Lead"
+msgstr "Piste"
+
+msgctxt "trait"
+msgid "Leng"
+msgstr "Leng"
+
+msgctxt "trait"
+msgid "Lodge"
+msgstr "Loge"
+
+msgctxt "trait"
+msgid "Lunatic"
+msgstr "Lunatique"
+
+msgctxt "trait"
+msgid "Madness"
+msgstr "Folie"
+
+msgctxt "trait"
+msgid "Manifold"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mask"
+msgstr "Masque"
+
+msgctxt "trait"
+msgid "Medic"
+msgstr "Médecin"
+
+msgctxt "trait"
+msgid "Melee"
+msgstr "Corps-à-corps"
+
+msgctxt "trait"
+msgid "Mexico City"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mi-Go"
+msgstr "Mi-Go"
+
+msgctxt "trait"
+msgid "Midtown"
+msgstr ""
+
+msgctxt "trait"
+msgid "Miskatonic"
+msgstr "Miskatonic"
+
+msgctxt "trait"
+msgid "Mnar"
+msgstr "Mnar"
+
+msgctxt "trait"
+msgid "Monster"
+msgstr "Monstre"
+
+msgctxt "trait"
+msgid "Montréal"
+msgstr "Montréal"
+
+msgctxt "trait"
+msgid "Mountain"
+msgstr "Montagne"
+
+msgctxt "trait"
+msgid "Mutated"
+msgstr "Muté"
+
+msgctxt "trait"
+msgid "Mystery"
+msgstr "Mystère"
+
+msgctxt "trait"
+msgid "New Orleans"
+msgstr "Nouvelle-Orléans"
+
+msgctxt "trait"
+msgid "New York City"
+msgstr "New York"
+
+msgctxt "trait"
+msgid "Nightgaunt"
+msgstr "Maigre Bête de la Nuit"
+
+msgctxt "trait"
+msgid "Obstacle"
+msgstr "Obstacle"
+
+msgctxt "trait"
+msgid "Occult"
+msgstr "Occulte"
+
+msgctxt "trait"
+msgid "Ocean"
+msgstr "Océan"
+
+msgctxt "trait"
+msgid "Omen"
+msgstr "Présage"
+
+msgctxt "trait"
+msgid "Ooth-Nargai"
+msgstr "Ooth-Nargai"
+
+msgctxt "trait"
+msgid "Ooze"
+msgstr ""
+
+msgctxt "trait"
+msgid "Oozified"
+msgstr ""
+
+msgctxt "trait"
+msgid "Oriab"
+msgstr "Oriab"
+
+msgctxt "trait"
+msgid "Otherworld"
+msgstr "Autre Monde"
+
+msgctxt "trait"
+msgid "Pact"
+msgstr "Pacte"
+
+msgctxt "trait"
+msgid "Paradox"
+msgstr "Paradoxe"
+
+msgctxt "trait"
+msgid "Paris"
+msgstr "Paris"
+
+msgctxt "trait"
+msgid "Part 1"
+msgstr ""
+
+msgctxt "trait"
+msgid "Passageway"
+msgstr "Passage"
+
+msgctxt "trait"
+msgid "Patron"
+msgstr "Mécène"
+
+msgctxt "trait"
+msgid "Performer"
+msgstr "Interprète"
+
+msgctxt "trait"
+msgid "Pnakotus"
+msgstr "Pnakotus"
+
+msgctxt "trait"
+msgid "Poison"
+msgstr "Poison"
+
+msgctxt "trait"
+msgid "Police"
+msgstr "Police"
+
+msgctxt "trait"
+msgid "Port"
+msgstr "Port"
+
+msgctxt "trait"
+msgid "Portal"
+msgstr "Portail"
+
+msgctxt "trait"
+msgid "Power"
+msgstr "Pouvoir"
+
+msgctxt "trait"
+msgid "Practiced"
+msgstr "Entraîné"
+
+msgctxt "trait"
+msgid "Present-Day"
+msgstr ""
+
+msgctxt "trait"
+msgid "Prison"
+msgstr "Prison"
+
+msgctxt "trait"
+msgid "Private"
+msgstr "Privé"
+
+msgctxt "trait"
+msgid "Providence"
+msgstr "Providence"
+
+msgctxt "trait"
+msgid "Rail"
+msgstr "Rail"
+
+msgctxt "trait"
+msgid "Ranged"
+msgstr "À distance"
+
+msgctxt "trait"
+msgid "Relic"
+msgstr "Relique"
+
+msgctxt "trait"
+msgid "Reporter"
+msgstr "Reporter"
+
+msgctxt "trait"
+msgid "Research"
+msgstr "Recherche"
+
+msgctxt "trait"
+msgid "Return"
+msgstr "Renouveau"
+
+msgctxt "trait"
+msgid "Ritual"
+msgstr "Rituel"
+
+msgctxt "trait"
+msgid "Ritual Site"
+msgstr "Site du Rituel"
+
+msgctxt "trait"
+msgid "River"
+msgstr "Rivière"
+
+msgctxt "trait"
+msgid "Riverside"
+msgstr ""
+
+msgctxt "trait"
+msgid "Road"
+msgstr "Route"
+
+msgctxt "trait"
+msgid "Ruins"
+msgstr "Ruines"
+
+msgctxt "trait"
+msgid "Salem"
+msgstr "Salem"
+
+msgctxt "trait"
+msgid "Sanctum"
+msgstr "Sanctuaire"
+
+msgctxt "trait"
+msgid "Scheme"
+msgstr "Manigance"
+
+msgctxt "trait"
+msgid "Scholar"
+msgstr "Érudit"
+
+msgctxt "trait"
+msgid "Science"
+msgstr "Science"
+
+msgctxt "trait"
+msgid "Script"
+msgstr "Texte"
+
+msgctxt "trait"
+msgid "Second Floor"
+msgstr "Premier Étage"
+
+msgctxt "trait"
+msgid "Sentinel Hill"
+msgstr "Colline de la Sentinelle"
+
+msgctxt "trait"
+msgid "Serpent"
+msgstr "Serpent"
+
+msgctxt "trait"
+msgid "Service"
+msgstr "Service"
+
+msgctxt "trait"
+msgid "Servitor"
+msgstr "Serviteur"
+
+msgctxt "trait"
+msgid "Shantak"
+msgstr "Shantak"
+
+msgctxt "trait"
+msgid "Shattered"
+msgstr ""
+
+msgctxt "trait"
+msgid "Ship"
+msgstr ""
+
+msgctxt "trait"
+msgid "Shoggoth"
+msgstr "Shoggoth"
+
+msgctxt "trait"
+msgid "Silver Twilight"
+msgstr "Crépuscule d'Argent"
+
+msgctxt "trait"
+msgid "Skai"
+msgstr "Skai"
+
+msgctxt "trait"
+msgid "Socialite"
+msgstr "Mondain"
+
+msgctxt "trait"
+msgid "Song"
+msgstr "Chant"
+
+msgctxt "trait"
+msgid "Sorcerer"
+msgstr "Sorcier"
+
+msgctxt "trait"
+msgid "Spectral"
+msgstr "Spectral"
+
+msgctxt "trait"
+msgid "Spell"
+msgstr "Sort"
+
+msgctxt "trait"
+msgid "Spider"
+msgstr "Araignée"
+
+msgctxt "trait"
+msgid "Spirit"
+msgstr "Esprit"
+
+msgctxt "trait"
+msgid "St Mary's"
+msgstr ""
+
+msgctxt "trait"
+msgid "Staff"
+msgstr "Employé"
+
+msgctxt "trait"
+msgid "Steps"
+msgstr "Escalier"
+
+msgctxt "trait"
+msgid "Summon"
+msgstr "Invocation"
+
+msgctxt "trait"
+msgid "Supply"
+msgstr "Ravitaillement"
+
+msgctxt "trait"
+msgid "Surface"
+msgstr "Surface"
+
+msgctxt "trait"
+msgid "Suspect"
+msgstr "Suspect"
+
+msgctxt "trait"
+msgid "Syndicate"
+msgstr "Syndicat"
+
+msgctxt "trait"
+msgid "Tactic"
+msgstr "Tactique"
+
+msgctxt "trait"
+msgid "Talent"
+msgstr "Talent"
+
+msgctxt "trait"
+msgid "Tarot"
+msgstr "Tarot"
+
+msgctxt "trait"
+msgid "Task"
+msgstr "Tâche"
+
+msgctxt "trait"
+msgid "Temple"
+msgstr "Temple"
+
+msgctxt "trait"
+msgid "Tenochtitlán"
+msgstr "Tenochtitlán"
+
+msgctxt "trait"
+msgid "Tentacle"
+msgstr "Tentacule"
+
+msgctxt "trait"
+msgid "Terror"
+msgstr "Terreur"
+
+msgctxt "trait"
+msgid "Third Floor"
+msgstr "Deuxième Étage"
+
+msgctxt "trait"
+msgid "Tindalos"
+msgstr "Tindalos"
+
+msgctxt "trait"
+msgid "Tome"
+msgstr "Livre"
+
+msgctxt "trait"
+msgid "Tool"
+msgstr "Outil"
+
+msgctxt "trait"
+msgid "Town"
+msgstr "Ville"
+
+msgctxt "trait"
+msgid "Train"
+msgstr "Train"
+
+msgctxt "trait"
+msgid "Trap"
+msgstr "Piège"
+
+msgctxt "trait"
+msgid "Trick"
+msgstr "Ruse"
+
+msgctxt "trait"
+msgid "Unhallowed"
+msgstr ""
+
+msgctxt "trait"
+msgid "Upgrade"
+msgstr "Amélioration"
+
+msgctxt "trait"
+msgid "Vale"
+msgstr "Vallée"
+
+msgctxt "trait"
+msgid "Vehicle"
+msgstr "Véhicule"
+
+msgctxt "trait"
+msgid "Venice"
+msgstr "Venise"
+
+msgctxt "trait"
+msgid "Veteran"
+msgstr "Vétéran"
+
+msgctxt "trait"
+msgid "Void"
+msgstr "Vide"
+
+msgctxt "trait"
+msgid "Warden"
+msgstr "Gardien"
+
+msgctxt "trait"
+msgid "Wastes"
+msgstr "Désert"
+
+msgctxt "trait"
+msgid "Wayfarer"
+msgstr "Voyageur"
+
+msgctxt "trait"
+msgid "Weapon"
+msgstr "Arme"
+
+msgctxt "trait"
+msgid "Wilderness"
+msgstr ""
+
+msgctxt "trait"
+msgid "Witch"
+msgstr "Ensorceleur"
+
+msgctxt "trait"
+msgid "Witch House"
+msgstr ""
+
+msgctxt "trait"
+msgid "Woods"
+msgstr "Bois"
+
+msgctxt "trait"
+msgid "Y'ha-nthlei"
+msgstr "Y'ha-nthlei"
+
+msgctxt "trait"
+msgid "Yithian"
+msgstr "Yithien"
+
+msgctxt "trait"
+msgid "Yoth"
+msgstr "Yoth"
+
+msgctxt "trait"
+msgid "Zoog"
+msgstr "Zoog"
+
 #, javascript-format
 msgctxt "filter"
 msgid "${ cycleNames[cycle_position] } Cycle"
@@ -4492,1014 +5559,6 @@ msgstr "Échapper à"
 msgctxt "action"
 msgid "Resource"
 msgstr "Ressource"
-
-msgctxt "trait"
-msgid "???"
-msgstr ""
-
-msgctxt "trait"
-msgid "Abomination"
-msgstr ""
-
-msgctxt "trait"
-msgid "Abyss"
-msgstr ""
-
-msgctxt "trait"
-msgid "Act 1"
-msgstr ""
-
-msgctxt "trait"
-msgid "Act 2"
-msgstr ""
-
-msgctxt "trait"
-msgid "Agency"
-msgstr ""
-
-msgctxt "trait"
-msgid "Ally"
-msgstr ""
-
-msgctxt "trait"
-msgid "Altered"
-msgstr ""
-
-msgctxt "trait"
-msgid "Ancient"
-msgstr ""
-
-msgctxt "trait"
-msgid "Ancient One"
-msgstr ""
-
-msgctxt "trait"
-msgid "Arkham"
-msgstr ""
-
-msgctxt "trait"
-msgid "Arkham Asylum"
-msgstr ""
-
-msgctxt "trait"
-msgid "Armor"
-msgstr ""
-
-msgctxt "trait"
-msgid "Artist"
-msgstr ""
-
-msgctxt "trait"
-msgid "Assistant"
-msgstr ""
-
-msgctxt "trait"
-msgid "Attack"
-msgstr ""
-
-msgctxt "trait"
-msgid "Augury"
-msgstr ""
-
-msgctxt "trait"
-msgid "Avatar"
-msgstr ""
-
-msgctxt "trait"
-msgid "Basement"
-msgstr ""
-
-msgctxt "trait"
-msgid "Bayou"
-msgstr ""
-
-msgctxt "trait"
-msgid "Believer"
-msgstr ""
-
-msgctxt "trait"
-msgid "Blessed"
-msgstr ""
-
-msgctxt "trait"
-msgid "Blunder"
-msgstr ""
-
-msgctxt "trait"
-msgid "Boat"
-msgstr ""
-
-msgctxt "trait"
-msgid "Bold"
-msgstr ""
-
-msgctxt "trait"
-msgid "Boon"
-msgstr ""
-
-msgctxt "trait"
-msgid "Bridge"
-msgstr ""
-
-msgctxt "trait"
-msgid "Brotherhood"
-msgstr ""
-
-msgctxt "trait"
-msgid "Byakhee"
-msgstr ""
-
-msgctxt "trait"
-msgid "Bystander"
-msgstr ""
-
-msgctxt "trait"
-msgid "Cairo"
-msgstr ""
-
-msgctxt "trait"
-msgid "Campsite"
-msgstr ""
-
-msgctxt "trait"
-msgid "Carnevale"
-msgstr ""
-
-msgctxt "trait"
-msgid "Cave"
-msgstr ""
-
-msgctxt "trait"
-msgid "Central"
-msgstr ""
-
-msgctxt "trait"
-msgid "Charm"
-msgstr ""
-
-msgctxt "trait"
-msgid "Chosen"
-msgstr ""
-
-msgctxt "trait"
-msgid "Circle"
-msgstr ""
-
-msgctxt "trait"
-msgid "City"
-msgstr ""
-
-msgctxt "trait"
-msgid "Civic"
-msgstr ""
-
-msgctxt "trait"
-msgid "Clairvoyant"
-msgstr ""
-
-msgctxt "trait"
-msgid "Clothing"
-msgstr ""
-
-msgctxt "trait"
-msgid "Clover Club"
-msgstr ""
-
-msgctxt "trait"
-msgid "Coastal"
-msgstr ""
-
-msgctxt "trait"
-msgid "Composure"
-msgstr ""
-
-msgctxt "trait"
-msgid "Condition"
-msgstr ""
-
-msgctxt "trait"
-msgid "Connection"
-msgstr ""
-
-msgctxt "trait"
-msgid "Conspirator"
-msgstr ""
-
-msgctxt "trait"
-msgid "Construct"
-msgstr ""
-
-msgctxt "trait"
-msgid "Covenant"
-msgstr ""
-
-msgctxt "trait"
-msgid "Creature"
-msgstr ""
-
-msgctxt "trait"
-msgid "Crime Scene"
-msgstr ""
-
-msgctxt "trait"
-msgid "Criminal"
-msgstr ""
-
-msgctxt "trait"
-msgid "Cultist"
-msgstr ""
-
-msgctxt "trait"
-msgid "Curse"
-msgstr ""
-
-msgctxt "trait"
-msgid "Cursed"
-msgstr ""
-
-msgctxt "trait"
-msgid "Dark Young"
-msgstr ""
-
-msgctxt "trait"
-msgid "Deep One"
-msgstr ""
-
-msgctxt "trait"
-msgid "Depths"
-msgstr ""
-
-msgctxt "trait"
-msgid "Desert"
-msgstr ""
-
-msgctxt "trait"
-msgid "Desperate"
-msgstr ""
-
-msgctxt "trait"
-msgid "Detective"
-msgstr ""
-
-msgctxt "trait"
-msgid "Developed"
-msgstr ""
-
-msgctxt "trait"
-msgid "Dhole"
-msgstr ""
-
-msgctxt "trait"
-msgid "Distortion"
-msgstr ""
-
-msgctxt "trait"
-msgid "Dreamer"
-msgstr ""
-
-msgctxt "trait"
-msgid "Dreamlands"
-msgstr ""
-
-msgctxt "trait"
-msgid "Drifter"
-msgstr ""
-
-msgctxt "trait"
-msgid "Dunwich"
-msgstr ""
-
-msgctxt "trait"
-msgid "Eldritch"
-msgstr ""
-
-msgctxt "trait"
-msgid "Elite"
-msgstr ""
-
-msgctxt "trait"
-msgid "Endtimes"
-msgstr ""
-
-msgctxt "trait"
-msgid "Evidence"
-msgstr ""
-
-msgctxt "trait"
-msgid "Exhibit"
-msgstr ""
-
-msgctxt "trait"
-msgid "Expedition"
-msgstr ""
-
-msgctxt "trait"
-msgid "Expert"
-msgstr ""
-
-msgctxt "trait"
-msgid "Extradimensional"
-msgstr ""
-
-msgctxt "trait"
-msgid "Extraterrestrial"
-msgstr ""
-
-msgctxt "trait"
-msgid "Eztli"
-msgstr ""
-
-msgctxt "trait"
-msgid "Familiar"
-msgstr ""
-
-msgctxt "trait"
-msgid "Fated"
-msgstr ""
-
-msgctxt "trait"
-msgid "Favor"
-msgstr ""
-
-msgctxt "trait"
-msgid "Firearm"
-msgstr ""
-
-msgctxt "trait"
-msgid "Flaw"
-msgstr ""
-
-msgctxt "trait"
-msgid "Flora"
-msgstr ""
-
-msgctxt "trait"
-msgid "Footwear"
-msgstr ""
-
-msgctxt "trait"
-msgid "Forbidden"
-msgstr ""
-
-msgctxt "trait"
-msgid "Forgotten"
-msgstr ""
-
-msgctxt "trait"
-msgid "Fortune"
-msgstr ""
-
-msgctxt "trait"
-msgid "Future"
-msgstr ""
-
-msgctxt "trait"
-msgid "Gambit"
-msgstr ""
-
-msgctxt "trait"
-msgid "Geist"
-msgstr ""
-
-msgctxt "trait"
-msgid "Ghast"
-msgstr ""
-
-msgctxt "trait"
-msgid "Ghoul"
-msgstr ""
-
-msgctxt "trait"
-msgid "Government"
-msgstr ""
-
-msgctxt "trait"
-msgid "Grant"
-msgstr ""
-
-msgctxt "trait"
-msgid "Graveyard"
-msgstr ""
-
-msgctxt "trait"
-msgid "Ground Floor"
-msgstr ""
-
-msgctxt "trait"
-msgid "Guest"
-msgstr ""
-
-msgctxt "trait"
-msgid "Gug"
-msgstr ""
-
-msgctxt "trait"
-msgid "Hall"
-msgstr ""
-
-msgctxt "trait"
-msgid "Hazard"
-msgstr ""
-
-msgctxt "trait"
-msgid "Hex"
-msgstr ""
-
-msgctxt "trait"
-msgid "Hideout"
-msgstr ""
-
-msgctxt "trait"
-msgid "Historical Society"
-msgstr ""
-
-msgctxt "trait"
-msgid "Human"
-msgstr ""
-
-msgctxt "trait"
-msgid "Humanoid"
-msgstr ""
-
-msgctxt "trait"
-msgid "Hunter"
-msgstr ""
-
-msgctxt "trait"
-msgid "Hybrid"
-msgstr ""
-
-msgctxt "trait"
-msgid "Illicit"
-msgstr ""
-
-msgctxt "trait"
-msgid "Improvised"
-msgstr ""
-
-msgctxt "trait"
-msgid "Injury"
-msgstr ""
-
-msgctxt "trait"
-msgid "Innate"
-msgstr ""
-
-msgctxt "trait"
-msgid "Innocent"
-msgstr ""
-
-msgctxt "trait"
-msgid "Innsmouth"
-msgstr ""
-
-msgctxt "trait"
-msgid "Insect"
-msgstr ""
-
-msgctxt "trait"
-msgid "Insight"
-msgstr ""
-
-msgctxt "trait"
-msgid "Instrument"
-msgstr ""
-
-msgctxt "trait"
-msgid "Island"
-msgstr ""
-
-msgctxt "trait"
-msgid "Item"
-msgstr ""
-
-msgctxt "trait"
-msgid "Job"
-msgstr ""
-
-msgctxt "trait"
-msgid "Jungle"
-msgstr ""
-
-msgctxt "trait"
-msgid "Kadath"
-msgstr ""
-
-msgctxt "trait"
-msgid "Key"
-msgstr ""
-
-msgctxt "trait"
-msgid "Lead"
-msgstr ""
-
-msgctxt "trait"
-msgid "Leng"
-msgstr ""
-
-msgctxt "trait"
-msgid "Lodge"
-msgstr ""
-
-msgctxt "trait"
-msgid "Lunatic"
-msgstr ""
-
-msgctxt "trait"
-msgid "Madness"
-msgstr ""
-
-msgctxt "trait"
-msgid "Manifold"
-msgstr ""
-
-msgctxt "trait"
-msgid "Mask"
-msgstr ""
-
-msgctxt "trait"
-msgid "Medic"
-msgstr ""
-
-msgctxt "trait"
-msgid "Melee"
-msgstr ""
-
-msgctxt "trait"
-msgid "Mexico City"
-msgstr ""
-
-msgctxt "trait"
-msgid "Mi-Go"
-msgstr ""
-
-msgctxt "trait"
-msgid "Midtown"
-msgstr ""
-
-msgctxt "trait"
-msgid "Miskatonic"
-msgstr ""
-
-msgctxt "trait"
-msgid "Mnar"
-msgstr ""
-
-msgctxt "trait"
-msgid "Monster"
-msgstr ""
-
-msgctxt "trait"
-msgid "Montréal"
-msgstr ""
-
-msgctxt "trait"
-msgid "Mountain"
-msgstr ""
-
-msgctxt "trait"
-msgid "Mutated"
-msgstr ""
-
-msgctxt "trait"
-msgid "Mystery"
-msgstr ""
-
-msgctxt "trait"
-msgid "New Orleans"
-msgstr ""
-
-msgctxt "trait"
-msgid "New York City"
-msgstr ""
-
-msgctxt "trait"
-msgid "Nightgaunt"
-msgstr ""
-
-msgctxt "trait"
-msgid "Obstacle"
-msgstr ""
-
-msgctxt "trait"
-msgid "Occult"
-msgstr ""
-
-msgctxt "trait"
-msgid "Ocean"
-msgstr ""
-
-msgctxt "trait"
-msgid "Omen"
-msgstr ""
-
-msgctxt "trait"
-msgid "Ooth-Nargai"
-msgstr ""
-
-msgctxt "trait"
-msgid "Ooze"
-msgstr ""
-
-msgctxt "trait"
-msgid "Oozified"
-msgstr ""
-
-msgctxt "trait"
-msgid "Oriab"
-msgstr ""
-
-msgctxt "trait"
-msgid "Otherworld"
-msgstr ""
-
-msgctxt "trait"
-msgid "Pact"
-msgstr ""
-
-msgctxt "trait"
-msgid "Paradox"
-msgstr ""
-
-msgctxt "trait"
-msgid "Paris"
-msgstr ""
-
-msgctxt "trait"
-msgid "Part 1"
-msgstr ""
-
-msgctxt "trait"
-msgid "Passageway"
-msgstr ""
-
-msgctxt "trait"
-msgid "Patron"
-msgstr ""
-
-msgctxt "trait"
-msgid "Performer"
-msgstr ""
-
-msgctxt "trait"
-msgid "Pnakotus"
-msgstr ""
-
-msgctxt "trait"
-msgid "Poison"
-msgstr ""
-
-msgctxt "trait"
-msgid "Police"
-msgstr ""
-
-msgctxt "trait"
-msgid "Port"
-msgstr ""
-
-msgctxt "trait"
-msgid "Portal"
-msgstr ""
-
-msgctxt "trait"
-msgid "Power"
-msgstr ""
-
-msgctxt "trait"
-msgid "Practiced"
-msgstr ""
-
-msgctxt "trait"
-msgid "Present-Day"
-msgstr ""
-
-msgctxt "trait"
-msgid "Prison"
-msgstr ""
-
-msgctxt "trait"
-msgid "Private"
-msgstr ""
-
-msgctxt "trait"
-msgid "Providence"
-msgstr ""
-
-msgctxt "trait"
-msgid "Rail"
-msgstr ""
-
-msgctxt "trait"
-msgid "Ranged"
-msgstr ""
-
-msgctxt "trait"
-msgid "Relic"
-msgstr ""
-
-msgctxt "trait"
-msgid "Reporter"
-msgstr ""
-
-msgctxt "trait"
-msgid "Research"
-msgstr ""
-
-msgctxt "trait"
-msgid "Return"
-msgstr ""
-
-msgctxt "trait"
-msgid "Ritual"
-msgstr ""
-
-msgctxt "trait"
-msgid "Ritual Site"
-msgstr ""
-
-msgctxt "trait"
-msgid "River"
-msgstr ""
-
-msgctxt "trait"
-msgid "Riverside"
-msgstr ""
-
-msgctxt "trait"
-msgid "Road"
-msgstr ""
-
-msgctxt "trait"
-msgid "Ruins"
-msgstr ""
-
-msgctxt "trait"
-msgid "Salem"
-msgstr ""
-
-msgctxt "trait"
-msgid "Sanctum"
-msgstr ""
-
-msgctxt "trait"
-msgid "Scheme"
-msgstr ""
-
-msgctxt "trait"
-msgid "Scholar"
-msgstr ""
-
-msgctxt "trait"
-msgid "Science"
-msgstr ""
-
-msgctxt "trait"
-msgid "Script"
-msgstr ""
-
-msgctxt "trait"
-msgid "Second Floor"
-msgstr ""
-
-msgctxt "trait"
-msgid "Sentinel Hill"
-msgstr ""
-
-msgctxt "trait"
-msgid "Serpent"
-msgstr ""
-
-msgctxt "trait"
-msgid "Service"
-msgstr ""
-
-msgctxt "trait"
-msgid "Servitor"
-msgstr ""
-
-msgctxt "trait"
-msgid "Shantak"
-msgstr ""
-
-msgctxt "trait"
-msgid "Shattered"
-msgstr ""
-
-msgctxt "trait"
-msgid "Ship"
-msgstr ""
-
-msgctxt "trait"
-msgid "Shoggoth"
-msgstr ""
-
-msgctxt "trait"
-msgid "Silver Twilight"
-msgstr ""
-
-msgctxt "trait"
-msgid "Skai"
-msgstr ""
-
-msgctxt "trait"
-msgid "Socialite"
-msgstr ""
-
-msgctxt "trait"
-msgid "Song"
-msgstr ""
-
-msgctxt "trait"
-msgid "Sorcerer"
-msgstr ""
-
-msgctxt "trait"
-msgid "Spectral"
-msgstr ""
-
-msgctxt "trait"
-msgid "Spell"
-msgstr ""
-
-msgctxt "trait"
-msgid "Spider"
-msgstr ""
-
-msgctxt "trait"
-msgid "Spirit"
-msgstr ""
-
-msgctxt "trait"
-msgid "St Mary's"
-msgstr ""
-
-msgctxt "trait"
-msgid "Staff"
-msgstr ""
-
-msgctxt "trait"
-msgid "Steps"
-msgstr ""
-
-msgctxt "trait"
-msgid "Summon"
-msgstr ""
-
-msgctxt "trait"
-msgid "Supply"
-msgstr ""
-
-msgctxt "trait"
-msgid "Surface"
-msgstr ""
-
-msgctxt "trait"
-msgid "Suspect"
-msgstr ""
-
-msgctxt "trait"
-msgid "Syndicate"
-msgstr ""
-
-msgctxt "trait"
-msgid "Tactic"
-msgstr ""
-
-msgctxt "trait"
-msgid "Talent"
-msgstr ""
-
-msgctxt "trait"
-msgid "Tarot"
-msgstr ""
-
-msgctxt "trait"
-msgid "Task"
-msgstr ""
-
-msgctxt "trait"
-msgid "Temple"
-msgstr ""
-
-msgctxt "trait"
-msgid "Tenochtitlán"
-msgstr ""
-
-msgctxt "trait"
-msgid "Tentacle"
-msgstr ""
-
-msgctxt "trait"
-msgid "Terror"
-msgstr ""
-
-msgctxt "trait"
-msgid "Third Floor"
-msgstr ""
-
-msgctxt "trait"
-msgid "Tindalos"
-msgstr ""
-
-msgctxt "trait"
-msgid "Tome"
-msgstr ""
-
-msgctxt "trait"
-msgid "Tool"
-msgstr ""
-
-msgctxt "trait"
-msgid "Town"
-msgstr ""
-
-msgctxt "trait"
-msgid "Train"
-msgstr ""
-
-msgctxt "trait"
-msgid "Trap"
-msgstr ""
-
-msgctxt "trait"
-msgid "Trick"
-msgstr ""
-
-msgctxt "trait"
-msgid "Unhallowed"
-msgstr ""
-
-msgctxt "trait"
-msgid "Upgrade"
-msgstr ""
-
-msgctxt "trait"
-msgid "Vale"
-msgstr ""
-
-msgctxt "trait"
-msgid "Vehicle"
-msgstr ""
-
-msgctxt "trait"
-msgid "Venice"
-msgstr ""
-
-msgctxt "trait"
-msgid "Veteran"
-msgstr ""
-
-msgctxt "trait"
-msgid "Void"
-msgstr ""
-
-msgctxt "trait"
-msgid "Warden"
-msgstr ""
-
-msgctxt "trait"
-msgid "Wastes"
-msgstr ""
-
-msgctxt "trait"
-msgid "Wayfarer"
-msgstr ""
-
-msgctxt "trait"
-msgid "Weapon"
-msgstr ""
-
-msgctxt "trait"
-msgid "Wilderness"
-msgstr ""
-
-msgctxt "trait"
-msgid "Witch"
-msgstr ""
-
-msgctxt "trait"
-msgid "Witch House"
-msgstr ""
-
-msgctxt "trait"
-msgid "Woods"
-msgstr ""
-
-msgctxt "trait"
-msgid "Y'ha-nthlei"
-msgstr ""
-
-msgctxt "trait"
-msgid "Yithian"
-msgstr ""
-
-msgctxt "trait"
-msgid "Yoth"
-msgstr ""
-
-msgctxt "trait"
-msgid "Zoog"
-msgstr ""
 
 msgctxt "Draw Cards"
 msgid "All"

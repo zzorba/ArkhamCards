@@ -125,14 +125,13 @@ function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
     }
     return (
       <ScenarioSection
-        componentId={componentId}
         campaign={campaign}
         scenarioChanged={setScenario}
         showTextEditDialog={showTextEditDialog}
         initialScenarioCode={scenarioCode}
       />
     );
-  }, [componentId, campaign, showTextEditDialog, scenarioCode]);
+  }, [campaign, showTextEditDialog, scenarioCode]);
 
   const notes = useMemo(() => {
     return campaignNotes || campaign?.campaignNotes;

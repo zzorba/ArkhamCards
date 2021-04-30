@@ -3,6 +3,7 @@ import { Animated, Easing, Text, View, StyleSheet } from 'react-native';
 import { find , map } from 'lodash';
 import Collapsible from 'react-native-collapsible';
 import { t } from 'ttag';
+import { useSelector } from 'react-redux';
 
 import { showCard, showDeckModal } from '@components/nav/helper';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
@@ -25,6 +26,9 @@ import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
 import useXpSection from './useXpSection';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import RoundedFooterButton from '@components/core/RoundedFooterButton';
+import { AppState, makeUploadingDeckSelector } from '@reducers';
 
 interface Props {
   componentId: string;
@@ -32,6 +36,7 @@ interface Props {
   investigator: Card;
   spentXp: number;
   totalXp: number;
+  unspentXp: number;
   traumaAndCardData: TraumaAndCardData;
   playerCards: CardsMap;
   chooseDeckForInvestigator?: (investigator: Card) => void;
@@ -67,18 +72,22 @@ export default function InvestigatorCampaignRow({
   investigator,
   spentXp,
   totalXp,
-  showXpDialog,
+  unspentXp,
   traumaAndCardData,
   playerCards,
-  chooseDeckForInvestigator,
   deck,
+  children,
+  miniButtons,
+  showXpDialog,
+  chooseDeckForInvestigator,
   removeInvestigator,
   showDeckUpgrade,
   showTraumaDialog,
-  children,
-  miniButtons,
 }: Props) {
+  const uploadingSelector = useMemo(makeUploadingDeckSelector, []);
+  const uploading = useSelector((state: AppState) => uploadingSelector(state, campaign.id, investigator.code));
   const { colors, typography, width } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);
   }, [componentId, colors]);
@@ -87,16 +96,20 @@ export default function InvestigatorCampaignRow({
   const editXpPressed = useCallback(() => {
     showXpDialog(investigator);
   }, [showXpDialog, investigator]);
+  const canRemoveDeck = !deck?.owner || (user && deck.owner.id === user.uid);
 
   const [xpButton, upgradeBadge] = useXpSection({
     deck,
     campaign,
     cards: playerCards,
     investigator,
-    showDeckUpgrade,
     last: !miniButtons,
     totalXp,
     spentXp,
+    unspentXp,
+    uploading,
+    isDeckOwner: !!canRemoveDeck,
+    showDeckUpgrade,
     editXpPressed,
   });
 
@@ -162,6 +175,35 @@ export default function InvestigatorCampaignRow({
     outputRange: ['-90deg', '-180deg'],
     extrapolate: 'clamp',
   });
+  const footerButton = useMemo(() => {
+    if (uploading) {
+      return (
+        <RoundedFooterButton
+          icon="spinner"
+          title={t`Uploading...`}
+        />
+      );
+    }
+    if (deck && !canRemoveDeck) {
+      return (
+        <RoundedFooterButton
+          onPress={viewDeck}
+          icon="deck"
+          title={t`View deck`}
+        />
+      );
+    }
+    return (
+      <RoundedFooterDoubleButton
+        onPressA={deck ? viewDeck : selectDeck}
+        iconA="deck"
+        titleA={deck ? t`View deck` : t`Select deck`}
+        onPressB={removePressed}
+        iconB="dismiss"
+        titleB={deck ? t`Remove deck` : t`Remove`}
+      />
+    )
+  }, [uploading, deck, canRemoveDeck, viewDeck, selectDeck, removePressed]);
   return (
     <View style={space.marginBottomS}>
       <TouchableWithoutFeedback onPress={toggleOpen}>
@@ -176,7 +218,11 @@ export default function InvestigatorCampaignRow({
               badge={upgradeBadge ? 'upgrade' : undefined}
             />
             <View style={[space.paddingLeftXs, styles.textColumn]}>
-              <Text style={[typography.cardName, typography.white, eliminated ? typography.strike : undefined]}>
+              <Text
+                style={[typography.cardName, typography.white, eliminated ? typography.strike : undefined]}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+              >
                 { investigator.name }
               </Text>
               <Text style={[typography.cardTraits, typography.white, eliminated ? typography.strike : undefined]}>
@@ -219,14 +265,7 @@ export default function InvestigatorCampaignRow({
               </>
             ) }
           </View>
-          <RoundedFooterDoubleButton
-            onPressA={deck ? viewDeck : selectDeck}
-            iconA="deck"
-            titleA={deck ? t`View deck` : t`Select deck`}
-            onPressB={removePressed}
-            iconB="dismiss"
-            titleB={deck ? t`Remove deck` : t`Remove`}
-          />
+          { footerButton }
         </View>
       </Collapsible>
     </View>

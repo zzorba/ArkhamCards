@@ -1224,6 +1224,7 @@ msgstr "피해 3과 공포 3을 받는 중"
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr "5 높은 테스트에서 촉수 나오지 않기를 기도하는 중"
 
+#, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "\"${ searchTerm }\" 검색 조건과 일치하는 카드가 존재하지 않습니다."
 
@@ -3476,10 +3477,6 @@ msgid "${ size } Card"
 msgid_plural "${ size } Cards"
 msgstr[0] "카드 ${ size }장"
 
-#, javascript-format
-msgid "class_${ faction }"
-msgstr "역할군_${ faction }"
-
 msgid "Select Parallel Investigator"
 msgstr "평행 조사자 선택"
 
@@ -3966,9 +3963,6 @@ msgstr ""
 msgid "Save your changes to the campaign log"
 msgstr ""
 
-msgid "You must be online to upload campaigns"
-msgstr ""
-
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr ""
 
@@ -4038,7 +4032,72 @@ msgstr ""
 msgid "Access"
 msgstr ""
 
-msgid "Edit access"
+msgid "Later"
+msgstr ""
+
+msgid "Searching cards..."
+msgstr ""
+
+msgid ""
+"This appears to be one of your decks from ArkhamDB, however you are not "
+"currently logged in. If you wish to make edits, please login through the "
+"app settings."
+msgstr ""
+
+msgid "Leave campaign"
+msgstr ""
+
+msgid ""
+"Are you sure you want to leave this campaign?\n"
+"\n"
+"Your decks will be removed from the campaign, but you can rejoin it later."
+msgstr ""
+
+msgid "Leave"
+msgstr ""
+
+msgid "Edit players"
+msgstr ""
+
+msgid "View players"
+msgstr ""
+
+msgid "Clear card cache"
+msgstr ""
+
+msgid "Uploading..."
+msgstr ""
+
+msgid "Leave standalone"
+msgstr ""
+
+msgid ""
+"Are you sure you want to leave this standalone?\n"
+"\n"
+"Your decks will be removed from the standalone, but you can rejoin it later."
+msgstr ""
+
+msgid "Upload standalone"
+msgstr ""
+
+msgid "You must be online to upload"
+msgstr ""
+
+msgid "Adjust scenario XP and trauma"
+msgstr ""
+
+msgid "Unspent XP"
+msgstr ""
+
+#, javascript-format
+msgid "${ unspentXp } saved"
+msgstr ""
+
+#, javascript-format
+msgid "Scenario Card - ${ difficultyStr }"
+msgstr ""
+
+msgid "Scenario Card"
 msgstr ""
 
 #, javascript-format
@@ -4225,43 +4284,6 @@ msgstr ""
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } 조사자는 <b>${ sectionName }</b> 항목을 읽습니다."
-
-#, javascript-format
-msgctxt "filter"
-msgid "${ cycleNames[cycle_position] } Cycle"
-msgstr "${ cycleNames[cycle_position] } 사이클"
-
-msgctxt "action"
-msgid "Fight"
-msgstr "전투"
-
-msgctxt "action"
-msgid "Engage"
-msgstr "교전"
-
-msgctxt "action"
-msgid "Investigate"
-msgstr "조사"
-
-msgctxt "action"
-msgid "Play"
-msgstr "플레이"
-
-msgctxt "action"
-msgid "Draw"
-msgstr "뽑기"
-
-msgctxt "action"
-msgid "Move"
-msgstr "이동"
-
-msgctxt "action"
-msgid "Evade"
-msgstr "회피"
-
-msgctxt "action"
-msgid "Resource"
-msgstr "자원(획득)"
 
 msgctxt "trait"
 msgid "???"
@@ -5270,6 +5292,43 @@ msgstr ""
 msgctxt "trait"
 msgid "Zoog"
 msgstr ""
+
+#, javascript-format
+msgctxt "filter"
+msgid "${ cycleNames[cycle_position] } Cycle"
+msgstr "${ cycleNames[cycle_position] } 사이클"
+
+msgctxt "action"
+msgid "Fight"
+msgstr "전투"
+
+msgctxt "action"
+msgid "Engage"
+msgstr "교전"
+
+msgctxt "action"
+msgid "Investigate"
+msgstr "조사"
+
+msgctxt "action"
+msgid "Play"
+msgstr "플레이"
+
+msgctxt "action"
+msgid "Draw"
+msgstr "뽑기"
+
+msgctxt "action"
+msgid "Move"
+msgstr "이동"
+
+msgctxt "action"
+msgid "Evade"
+msgstr "회피"
+
+msgctxt "action"
+msgid "Resource"
+msgstr "자원(획득)"
 
 msgctxt "Draw Cards"
 msgid "All"

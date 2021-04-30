@@ -15,8 +15,6 @@ function Spinner({ value, size }: { size: number; value: Animated.Value }) {
     inputRange: [0, 1],
     outputRange: ['120deg', '0deg'],
   });
-
-
   const scale = value.interpolate({
     inputRange: [0, 1],
     outputRange: [size / 3, size],

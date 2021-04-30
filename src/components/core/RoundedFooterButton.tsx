@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
@@ -7,7 +7,7 @@ import ArkhamButtonIcon, { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon'
 
 interface Props {
   onPress?: () => void;
-  icon: ArkhamButtonIconType;
+  icon: ArkhamButtonIconType | 'spinner';
   title: string;
 }
 
@@ -29,7 +29,7 @@ export default function RoundedFooterButton({ onPress, icon, title }: Props) {
       disabled={!onPress}
     >
       <View pointerEvents="box-none" style={styles.row}>
-        <ArkhamButtonIcon icon={icon} color="dark" />
+        { icon === 'spinner' ? <ActivityIndicator size="small" color={colors.D20} animating /> : <ArkhamButtonIcon icon={icon} color="dark" /> }
         <Text style={[typography.button, { marginLeft: height / 4, color: colors.D20 }]}>
           { title }
         </Text>

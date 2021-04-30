@@ -18,37 +18,42 @@ import StyleContext from '@styles/StyleContext';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 import { useToggles } from '@components/core/hooks';
 import { useDeckActions } from '@data/remote/decks';
+import { SpecialXp } from '@data/scenario/types';
 
 interface Props {
   componentId: string;
   id: string;
+  skipDeckSave?: boolean;
+  specialXp?: SpecialXp;
 }
 
-export default function UpgradeDecksInput({ componentId, id }: Props) {
+export default function UpgradeDecksInput({ componentId, id, skipDeckSave, specialXp }: Props) {
   const { latestDecks, campaignState } = useContext(CampaignGuideContext);
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { scenarioInvestigators, campaignLog } = useContext(ScenarioStepContext);
   const [unsavedEdits, , setUnsavedEdits] = useToggles({});
   const deckActions = useDeckActions();
   const proceedMessage = useCallback((): string | undefined => {
-    const unsavedDeck = find(
-      scenarioInvestigators,
-      investigator => {
-        if (campaignLog.isEliminated(investigator)) {
+    if (!skipDeckSave) {
+      const unsavedDeck = find(
+        scenarioInvestigators,
+        investigator => {
+          if (campaignLog.isEliminated(investigator)) {
+            return false;
+          }
+          const choiceId = UpgradeDeckRow.choiceId(id, investigator);
+          if (scenarioState.numberChoices(choiceId) !== undefined) {
+            // Already saved
+            return false;
+          }
+          if (latestDecks[investigator.code]) {
+            return true;
+          }
           return false;
-        }
-        const choiceId = UpgradeDeckRow.choiceId(id, investigator);
-        if (scenarioState.numberChoices(choiceId) !== undefined) {
-          // Already saved
-          return false;
-        }
-        if (latestDecks[investigator.code]) {
-          return true;
-        }
-        return false;
-      });
-    if (unsavedDeck) {
-      return t`It looks like one or more deck upgrades are unsaved. If you would like the app to track spent experience as you make deck changes, please go back and press 'Save deck upgrade' on each investigator before proceeding to the next scenario.\n\nOnce an upgrade has been saved, you can edit the deck as normal and the app will properly track the experience cost for any changes you make (the original versions of the deck can still be viewed from the deck's menu).`;
+        });
+      if (unsavedDeck) {
+        return t`It looks like one or more deck upgrades are unsaved. If you would like the app to track spent experience as you make deck changes, please go back and press 'Save deck upgrade' on each investigator before proceeding to the next scenario.\n\nOnce an upgrade has been saved, you can edit the deck as normal and the app will properly track the experience cost for any changes you make (the original versions of the deck can still be viewed from the deck's menu).`;
+      }
     }
 
     const unsavedNonDeck = find(
@@ -62,7 +67,7 @@ export default function UpgradeDecksInput({ componentId, id }: Props) {
           // Already saved
           return false;
         }
-        if (latestDecks[investigator.code]) {
+        if (!skipDeckSave && latestDecks[investigator.code]) {
           return false;
         }
         return !!unsavedEdits[investigator.code];
@@ -71,7 +76,7 @@ export default function UpgradeDecksInput({ componentId, id }: Props) {
       return t`It looks like you edited the experience or trauma for an investigator, but have not saved it yet. Please go back and select ‘Save adjustments’ to ensure your changes are saved.`;
     }
     return undefined;
-  }, [id, latestDecks, unsavedEdits, scenarioInvestigators, scenarioState, campaignLog]);
+  }, [id, skipDeckSave, latestDecks, unsavedEdits, scenarioInvestigators, scenarioState, campaignLog]);
 
   const actuallySave = useCallback(() => {
     scenarioState.setDecision(id, true);
@@ -102,7 +107,7 @@ export default function UpgradeDecksInput({ componentId, id }: Props) {
     <View>
       <View style={[styles.header, borderStyle]}>
         <Text style={[typography.bigGameFont, typography.right]}>
-          { t`Update decks with scenario results` }
+          { skipDeckSave ? t`Adjust scenario XP and trauma` : t`Update decks with scenario results` }
         </Text>
       </View>
       { map(scenarioInvestigators, investigator => {
@@ -129,6 +134,8 @@ export default function UpgradeDecksInput({ componentId, id }: Props) {
             setUnsavedEdits={setUnsavedEdits}
             editable={!hasDecision}
             actions={deckActions}
+            skipDeckSave={skipDeckSave}
+            specialXp={specialXp}
           />
         );
       }) }

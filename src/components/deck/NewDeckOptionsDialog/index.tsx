@@ -5,6 +5,7 @@ import {
   ScrollView,
   StyleSheet,
   View,
+  SafeAreaView,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { find, forEach, map, sumBy, throttle, uniqBy } from 'lodash';
@@ -23,7 +24,7 @@ import { CampaignId, Deck, DeckMeta, getDeckId, Slots } from '@actions/types';
 import { CUSTOM_INVESTIGATOR, RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import Card from '@data/types/Card';
 import { AppState } from '@reducers';
-import space from '@styles/space';
+import space, { m, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import starterDecks from '../../../../assets/starter-decks';
 import StyleContext from '@styles/StyleContext';
@@ -38,6 +39,7 @@ import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useSimpleTextDialog } from '../dialogs';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
+import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -64,7 +66,7 @@ function NewDeckOptionsDialog({
   const { user } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected, networkType }, refreshNetworkStatus] = useNetworkStatus();
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
-  const { backgroundStyle, colors, typography } = useContext(StyleContext);
+  const { backgroundStyle, colors, fontScale, typography, width } = useContext(StyleContext);
   const [saving, setSaving] = useState(false);
   const [deckNameChange, setDeckNameChange] = useState<string | undefined>();
   const [offlineDeck, toggleOfflineDeck] = useFlag(
@@ -326,7 +328,7 @@ function NewDeckOptionsDialog({
                     cards={requiredCards}
                     value={optionSelected[index] || false}
                     onValueChange={toggleOptionsSelected}
-                    last={index === (requiredCards.length - 1)}
+                    last={index === (requiredCardOptions.length - 1)}
                   />
                 );
               }) }
@@ -385,13 +387,14 @@ function NewDeckOptionsDialog({
     return null;
   }
   const okDisabled = saving || !(starterDeck || !!find(optionSelected, selected => selected));
+  const footerSize = s + m + NOTCH_BOTTOM_PADDING + 42 * fontScale;
   if (saving) {
     return (
       <LoadingSpinner large />
     );
   }
   return (
-    <View style={[styles.flex, backgroundStyle]}>
+    <SafeAreaView style={[styles.column, backgroundStyle]}>
       <ScrollView contentContainerStyle={backgroundStyle} keyboardShouldPersistTaps="always">
         <View style={space.paddingS}>
           <InvestigatorSummaryBlock
@@ -401,26 +404,27 @@ function NewDeckOptionsDialog({
           />
         </View>
         { formContent }
-        <View style={[space.paddingS, styles.row]}>
-          <View style={[space.marginRightS, styles.flex]}>
-            <DeckButton
-              title={t`Cancel`}
-              color="red"
-              icon="dismiss"
-              onPress={cancelPressed}
-            />
-          </View>
-          <View style={styles.flex}>
-            <DeckButton
-              title={t`Create deck`}
-              icon="plus-thin"
-              onPress={okDisabled ? undefined : onOkayPress}
-            />
-          </View>
-        </View>
+        <View style={{ height: footerSize }} />
       </ScrollView>
+      <View style={[{ position: 'absolute', bottom: 0, paddingTop: s, paddingBottom: m + NOTCH_BOTTOM_PADDING, left: 0, height: footerSize, width, backgroundColor: colors.L20 }, styles.row]}>
+        <View style={[space.marginLeftS, styles.flex]}>
+          <DeckButton
+            title={t`Cancel`}
+            color="red"
+            icon="dismiss"
+            onPress={cancelPressed}
+          />
+        </View>
+        <View style={[styles.flex, space.marginRightS, space.marginLeftS]}>
+          <DeckButton
+            title={t`Create deck`}
+            icon="plus-thin"
+            onPress={okDisabled ? undefined : onOkayPress}
+          />
+        </View>
+      </View>
       { nameDialog }
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -433,8 +437,14 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   flex: {
     flex: 1,
+  },
+  column: {
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    width: '100%',
   },
 });

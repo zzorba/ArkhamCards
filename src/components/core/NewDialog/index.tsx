@@ -20,6 +20,7 @@ interface Props {
   children: React.ReactNode | React.ReactNode[];
   alignment?: 'center' | 'bottom',
   avoidKeyboard?: boolean;
+  forceVerticalButtons?: boolean;
 }
 function NewDialog({
   title,
@@ -30,9 +31,10 @@ function NewDialog({
   children,
   alignment = 'center',
   avoidKeyboard,
+  forceVerticalButtons,
 }: Props) {
   const { backgroundStyle, darkMode, colors, shadow, typography, width, height } = useContext(StyleContext);
-  const verticalButtons = buttons.length > 2 || TINY_PHONE;
+  const verticalButtons = forceVerticalButtons || buttons.length > 2 || TINY_PHONE;
   return (
     <Modal
       avoidKeyboard={avoidKeyboard}

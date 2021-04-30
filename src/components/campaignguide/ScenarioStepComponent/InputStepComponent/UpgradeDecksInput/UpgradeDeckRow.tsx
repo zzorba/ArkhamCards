@@ -30,6 +30,7 @@ import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import ShowDeckButton from '../ShowDeckButton';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { SpecialXp } from '@data/scenario/types';
 
 interface Props {
   componentId: string;
@@ -42,17 +43,24 @@ interface Props {
   setUnsavedEdits: (investigator: string, edits: boolean) => void;
   editable: boolean;
   actions: DeckActions;
+  skipDeckSave?: boolean;
+  specialXp?: SpecialXp;
 }
 
 function computeChoiceId(stepId: string, investigator: Card) {
   return `${stepId}#${investigator.code}`;
 }
 
-function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investigator, deck, campaignLog, actions, setUnsavedEdits, editable }: Props) {
+function UpgradeDeckRow({ componentId, skipDeckSave, specialXp, id, campaignState, scenarioState, investigator, deck, campaignLog, actions, setUnsavedEdits, editable }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const deckUpgradeComponent = useRef<DeckUpgradeHandles>();
-  const earnedXp = useMemo(() => campaignLog.earnedXp(investigator.code), [campaignLog, investigator]);
+  const earnedXp = useMemo(() => {
+    if (specialXp) {
+      return campaignLog.specialXp(investigator.code, specialXp);
+    }
+    return campaignLog.earnedXp(investigator.code);
+  }, [campaignLog, investigator, specialXp]);
   const [xpAdjust, incXp, decXp] = useCounter(earnedXp, {});
   const [physicalAdjust, incPhysical, decPhysical] = useCounter(0, {});
   const [mentalAdjust, incMental, decMental] = useCounter(0, {});
@@ -83,8 +91,8 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
       killed: [killedAdjust ? 1 : 0],
       insane: [insaneAdjust ? 1 : 0],
     };
-    scenarioState.setNumberChoices(choiceId, choices, deck ? getDeckId(deck) : undefined);
-  }, [scenarioState, earnedXp, choiceId, physicalAdjust, mentalAdjust, killedAdjust, insaneAdjust]);
+    scenarioState.setNumberChoices(choiceId, choices, !skipDeckSave && deck ? getDeckId(deck) : undefined);
+  }, [scenarioState, skipDeckSave, earnedXp, choiceId, physicalAdjust, mentalAdjust, killedAdjust, insaneAdjust]);
 
   const [choices, deckChoice] = useMemo(() => scenarioState.numberAndDeckChoices(choiceId), [scenarioState, choiceId]);
 
@@ -125,14 +133,14 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
   }, [saveCampaignLog]);
 
   const save = useCallback(() => {
-    if (deck) {
+    if (deck && !skipDeckSave) {
       if (deckUpgradeComponent.current) {
         deckUpgradeComponent.current.save();
       }
     } else {
       saveCampaignLog(xpAdjust);
     }
-  }, [deck, deckUpgradeComponent, saveCampaignLog, xpAdjust]);
+  }, [deck, skipDeckSave, saveCampaignLog, xpAdjust]);
 
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);
@@ -322,7 +330,7 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
     insaneAdjust, killedAdjust, traumaDelta]);
   const [saving, error, saveDeckUpgrade] = useDeckUpgrade(deck, actions, onUpgrade);
   const saveButton = useMemo(() => {
-    if (choices !== undefined || !editable || deck) {
+    if (choices !== undefined || !editable || (!skipDeckSave && deck)) {
       return null;
     }
     if (!unsavedEdits) {
@@ -340,18 +348,18 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
         />
       </View>
     );
-  }, [choices, editable, deck, save, saving, unsavedEdits]);
+  }, [choices, skipDeckSave, editable, deck, save, saving, unsavedEdits]);
 
   const campaignSection = useMemo(() => {
     return (
       <>
-        { (choices !== undefined || !deck) && xpSection }
+        { (choices !== undefined || skipDeckSave || !deck) && xpSection }
         { traumaSection }
         { storyAssetSection }
         { saveButton }
       </>
     );
-  }, [choices, deck, xpSection, traumaSection, storyAssetSection, saveButton]);
+  }, [deck, skipDeckSave, choices, xpSection, traumaSection, storyAssetSection, saveButton]);
 
   const selectDeck = useCallback(() => {
     campaignState.showChooseDeck(investigator);
@@ -365,7 +373,7 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
   }, [colors, investigator, deck, campaign]);
 
   const deckButton = useMemo(() => {
-    if (deck && deckChoice !== undefined) {
+    if (deck && !skipDeckSave && deckChoice !== undefined) {
       return (
         <View style={styles.row}>
           <ShowDeckButton
@@ -375,7 +383,7 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
         </View>
       );
     }
-    if (!editable) {
+    if (!editable || skipDeckSave) {
       return null;
     }
     if (!deck) {
@@ -405,9 +413,10 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
             icon="upgrade"
             color="gold"
             title={t`Save deck upgrade`}
-            detail={t`Save XP to deck after making adjustments`}
+            detail={saving ? t`Saving` : t`Save XP to deck after making adjustments`}
             onPress={save}
             loading={saving}
+            disabled={saving}
           />
         </View>
       );
@@ -417,7 +426,7 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
         <ArkhamButton variant="outline" grow icon="deck" title={t`View deck`} onPress={viewDeck} />
       </View>
     );
-  }, [deck, editable, investigator, user, deckChoice, choices, saving, save, selectDeck, viewDeck]);
+  }, [deck, editable, investigator, skipDeckSave, user, deckChoice, choices, saving, save, selectDeck, viewDeck]);
 
   const storyCountsForDeck = useMemo(() => {
     if (!deck) {
@@ -447,7 +456,7 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
 
 
   const detailsSection = useMemo(() => {
-    if (!deck) {
+    if (!deck || skipDeckSave) {
       return campaignSection;
     }
     if (choices !== undefined || !editable) {
@@ -468,8 +477,8 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
         error={error}
       />
     );
-  }, [componentId, deck, investigator, campaignLog, editable, choices, storyCountsForDeck,
-    saveDeckUpgrade, saving, error,
+  }, [componentId, deck, investigator, campaignLog, editable, skipDeckSave,
+    choices, storyCountsForDeck, saving, error, saveDeckUpgrade,
     deckUpgradeComponent, campaignSection]);
 
   const isYithian = storyAssets && (storyAssets[BODY_OF_A_YITHIAN] || 0) > 0;

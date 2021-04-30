@@ -8,17 +8,18 @@ import {
 import { t } from 'ttag';
 
 import DeckList from './DeckList';
-import { Campaign, CampaignId, Deck } from '@actions/types';
+import { Campaign } from '@actions/types';
 import Card from '@data/types/Card';
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 interface Props {
   deckIds: MiniDeckT[];
   deckToCampaign?: { [uuid: string]: Campaign };
-  deckClicked: (deck: Deck, investigator: Card | undefined, campaign: CampaignId | undefined) => void;
+  deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
   onRefresh?: () => void;
   refreshing?: boolean;
   customHeader?: ReactNode;
@@ -40,9 +41,9 @@ export default function DeckListComponent({
 }: Props) {
   const { typography } = useContext(StyleContext);
   const [searchTerm, setSearchTerm] = useState('');
-  const handleDeckClick = useCallback((deck: Deck, investigator: Card | undefined, campaignId: CampaignId | undefined) => {
+  const handleDeckClick = useCallback((deck: LatestDeckT, investigator: Card | undefined) => {
     Keyboard.dismiss();
-    deckClicked(deck, investigator, campaignId);
+    deckClicked(deck, investigator);
   }, [deckClicked]);
   const header = useMemo(() => (
     <View style={styles.header}>

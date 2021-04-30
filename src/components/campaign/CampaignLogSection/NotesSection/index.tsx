@@ -13,7 +13,6 @@ interface Props {
   title: string;
   notes: string[];
   showDialog: ShowTextEditDialog;
-  isInvestigator?: boolean;
 }
 
 interface UpdateNoteAction {

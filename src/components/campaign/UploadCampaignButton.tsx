@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { CampaignId } from '@actions/types';
+import { CampaignId, UploadedCampaignId } from '@actions/types';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useCreateCampaignActions } from '@data/remote/campaigns';
 import { uploadCampaign } from '@components/campaignguide/actions';
@@ -16,23 +16,26 @@ import { ShowAlert } from '@components/deck/dialogs';
 import { s } from '@styles/space';
 import { DeckActions } from '@data/remote/decks';
 import { CampaignAccessProps } from './CampaignAccessView';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 interface Props {
   componentId: string;
   campaignId: CampaignId;
+  standalone?: boolean;
+  campaign: SingleCampaignT | undefined;
   deckActions: DeckActions;
-  setCampaignServerId: (serverId: number) => void;
+  setCampaignServerId: undefined | ((serverId: number) => void);
+  setCampaignLinkedServerId?: (id: {
+    campaignId: UploadedCampaignId;
+    campaignIdA: UploadedCampaignId;
+    campaignIdB: UploadedCampaignId;
+  }) => void;
   showAlert: ShowAlert;
-  guided: boolean;
-  linked?: {
-    campaignIdA: CampaignId;
-    campaignIdB: CampaignId;
-  };
 }
 
 type Dispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
-export default function UploadCampaignButton({ componentId, campaignId, deckActions, setCampaignServerId, showAlert }: Props) {
+export default function UploadCampaignButton({ componentId, campaign, campaignId, deckActions, standalone, setCampaignServerId, setCampaignLinkedServerId, showAlert }: Props) {
   const { user } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected }] = useNetworkStatus();
   const [uploading, setUploading] = useState(false);
@@ -42,16 +45,21 @@ export default function UploadCampaignButton({ componentId, campaignId, deckActi
     if (!uploading && user && !campaignId.serverId) {
       setUploading(true);
       try {
-        const newCampaignId = await dispatch(uploadCampaign(user, createCampaignActions, deckActions, campaignId));
-        setCampaignServerId(newCampaignId.serverId);
+        const newCampaignId = await dispatch(uploadCampaign(createCampaignActions, deckActions, campaignId));
+        if (newCampaignId.type === 'single') {
+          setCampaignServerId && setCampaignServerId(newCampaignId.id.serverId);
+        } else {
+          setCampaignLinkedServerId && setCampaignLinkedServerId(newCampaignId.ids);
+        }
       } catch (e) {
         showAlert('Error', e.message);
       }
       setUploading(false);
     }
-  }, [dispatch, setCampaignServerId, setUploading, showAlert,
+  }, [dispatch, setCampaignServerId, setCampaignLinkedServerId, setUploading, showAlert,
     createCampaignActions, user, uploading, deckActions, campaignId]);
 
+  const isOwner = !!(campaign?.owner_id && user && campaignId.serverId && campaign.owner_id === user.uid);
   const editAccessPressed = useCallback(() => {
     if (campaignId.serverId) {
       Navigation.push<CampaignAccessProps>(componentId, {
@@ -59,6 +67,7 @@ export default function UploadCampaignButton({ componentId, campaignId, deckActi
           name: 'Campaign.Access',
           passProps: {
             campaignId,
+            isOwner,
           },
           options: {
             topBar: {
@@ -73,7 +82,7 @@ export default function UploadCampaignButton({ componentId, campaignId, deckActi
         },
       });
     }
-  }, [componentId, campaignId]);
+  }, [componentId, campaignId, isOwner]);
   if (!user) {
     return null;
   }
@@ -81,7 +90,7 @@ export default function UploadCampaignButton({ componentId, campaignId, deckActi
     return (
       <DeckButton
         icon="lock"
-        title={t`Edit access`}
+        title={isOwner ? t`Edit players` : t`View players`}
         thin
         color="light_gray"
         onPress={editAccessPressed}
@@ -92,8 +101,8 @@ export default function UploadCampaignButton({ componentId, campaignId, deckActi
   return (
     <DeckButton
       icon="backup"
-      title={t`Upload campaign`}
-      detail={!isConnected ? t`You must be online to upload campaigns` : undefined}
+      title={standalone ? t`Upload standalone` : t`Upload campaign`}
+      detail={!isConnected ? t`You must be online to upload` : undefined}
       disabled={!isConnected}
       thin
       color="light_gray"

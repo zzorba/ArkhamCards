@@ -148,6 +148,7 @@ export default function DecksSection({
         investigator={investigator}
         spentXp={traumaAndCardData.spentXp || 0}
         totalXp={traumaAndCardData.availableXp || 0}
+        unspentXp={0}
         showXpDialog={showXpDialog}
         traumaAndCardData={traumaAndCardData}
         showTraumaDialog={showTraumaDialog}

@@ -695,6 +695,7 @@ export interface StartDeckEditAction {
   id: DeckId;
   deck?: Deck;
   mode?: 'edit' | 'upgrade' | 'view';
+  editable: boolean;
 }
 
 export const UPDATE_DECK_EDIT = 'UPDATE_DECK_EDIT';
@@ -1002,6 +1003,14 @@ export interface RemoveFilterSetAction {
   id: string;
 }
 
+export const SYNC_DECK = 'SYNC_DECK';
+export interface SyncDeckAction {
+  type: typeof SYNC_DECK;
+  campaignId: UploadedCampaignId;
+  investigator: string;
+  uploading: boolean;
+}
+
 interface BasicInput {
   scenario?: string;
 }
@@ -1273,7 +1282,8 @@ export type DeckEditsActions =
   StartDeckEditAction |
   UpdateDeckEditAction |
   FinishDeckEditAction |
-  UpdateDeckEditCountsAction;
+  UpdateDeckEditCountsAction |
+  SyncDeckAction;
 
 export type CampaignActions =
   ArkhamDbLogoutAction |

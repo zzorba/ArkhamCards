@@ -13,12 +13,15 @@ interface Props {
 let eventListener: EventEmitter | null = null;
 let currentSystemLang: string | undefined = undefined;
 
+const LOCALIZED_CARD_TRAITS = new Set(['fr']);
+
 export default function LanguageProvider({ children }: Props) {
   const [systemLang, setSystemLang] = useState<string>(currentSystemLang || getSystemLanguage());
   useEffect(() => {
     if (eventListener === null) {
       // We only want to listen to this once, hence the singleton pattern.
       eventListener = new EventEmitter();
+      eventListener.setMaxListeners(100);
       const callback = () => {
         currentSystemLang = getSystemLanguage();
         eventListener?.emit('langChange', currentSystemLang);
@@ -39,7 +42,7 @@ export default function LanguageProvider({ children }: Props) {
   const context = useMemo(() => {
     return {
       lang,
-      useCardTraits: lang !== 'ru',
+      useCardTraits: !LOCALIZED_CARD_TRAITS.has(lang),
     };
   }, [lang]);
   return (

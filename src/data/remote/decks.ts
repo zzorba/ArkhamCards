@@ -1,8 +1,11 @@
 import { useCallback, useContext, useMemo, useRef } from 'react';
 import { sha1 } from 'react-native-sha256';
 import { forEach, keys, map, uniq } from 'lodash';
+import { Action } from 'redux';
+import { ThunkAction } from 'redux-thunk';
 
-import { Deck, DeckId, getDeckId, UploadedCampaignId, UploadedDeck } from '@actions/types';
+import { AppState, makeDeckSelector } from '@reducers';
+import { Deck, DeckId, getDeckId, UploadedCampaignId, UploadedDeck, SYNC_DECK, UPLOAD_DECK } from '@actions/types';
 import {
   useDeleteAllArkhamDbDecksMutation,
   useDeleteAllLocalDecksMutation,
@@ -19,28 +22,80 @@ import {
   AllDeckFragmentDoc,
   LatestDeckFragment,
   LatestDeckFragmentDoc,
+  UserInfoFragment,
+  UserInfoFragmentDoc,
 } from '@generated/graphql/apollo-schema';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { ApolloCache, useApolloClient } from '@apollo/client';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { optimisticUpdates } from './apollo';
 
+let fakeId: number = -1;
 export interface DeckActions {
   updateDeck: (deck: Deck, campaignId: UploadedCampaignId) => Promise<void>;
   deleteDeck: (deckId: DeckId, campaignId: UploadedCampaignId, deleteAllVersions: boolean) => Promise<void>;
   createBaseDeck: (
     deck: Deck,
     campaignId: UploadedCampaignId
-  ) => Promise<number | undefined>;
+  ) => Promise<void>;
   createNextDeck: (
     deck: Deck,
     campaignId: UploadedCampaignId,
     previousDeckId: DeckId
-  ) => Promise<number | undefined>;
+  ) => Promise<void >;
 }
 
 function hashDeck(deck: Deck): Promise<string> {
   return sha1(JSON.stringify(deck));
+}
+
+export function uploadCampaignDeckHelper(
+  campaignId: UploadedCampaignId,
+  deckId: DeckId,
+  actions: DeckActions
+): ThunkAction<Promise<void>, AppState, unknown, Action<string>> {
+  return async(dispatch, getState) => {
+    const state = getState();
+    const deckSelector = makeDeckSelector();
+    let deck = deckSelector(state, deckId);
+    const investigator = deck?.investigator_code;
+    if (investigator) {
+      dispatch({
+        type: SYNC_DECK,
+        campaignId,
+        investigator,
+        uploading: true,
+      });
+    }
+    const promises: Promise<void>[] = [];
+    while (deck) {
+      const deckId = getDeckId(deck);
+      if (!deck.previousDeckId) {
+        promises.push(actions.createBaseDeck(deck, campaignId));
+      } else {
+        promises.push(actions.createNextDeck(deck, campaignId, deck.previousDeckId));
+      }
+      dispatch({
+        type: UPLOAD_DECK,
+        deckId,
+        campaignId,
+      });
+      if (!deck.nextDeckId) {
+        break;
+      }
+      deck = deckSelector(state, deck.nextDeckId);
+    }
+    if (investigator) {
+      Promise.all(promises).then(() => {
+        dispatch({
+          type: SYNC_DECK,
+          campaignId,
+          investigator,
+          uploading: false,
+        });
+      });
+    }
+  };
 }
 
 export async function syncCampaignDecksFromArkhamDB(
@@ -95,6 +150,17 @@ interface DeckCache {
   all: { [id: number]: RemoteDeckInfo | undefined };
   local: { [uuid: string]: RemoteDeckInfo | undefined };
   arkhamDb: { [arkhamDbId: number]: RemoteDeckInfo | undefined };
+}
+
+function getUserHandle(cache: ApolloCache<unknown>, user: FirebaseAuthTypes.User): string | undefined {
+  return cache.readFragment<UserInfoFragment>({
+    fragment: UserInfoFragmentDoc,
+    fragmentName: 'UserInfo',
+    id: cache.identify({
+      __typename: 'users',
+      id: user.uid,
+    }),
+  })?.handle || undefined;
 }
 
 function getDeckCache(cache: ApolloCache<unknown>, user: FirebaseAuthTypes.User | undefined): DeckCache {
@@ -280,7 +346,6 @@ export function useDeckActions(): DeckActions {
     }
 
     if (deckId.local) {
-
       await deleteLocalDeck({
         optimisticResponse: {
           __typename: 'mutation_root',
@@ -290,7 +355,7 @@ export function useDeckActions(): DeckActions {
             returning: [
               {
                 __typename: 'campaign_deck',
-                id: deckId.serverId || -1,
+                id: deckId.serverId || (fakeId--),
                 campaign_id: campaignId.serverId,
                 local_uuid: deckId.uuid,
                 arkhamdb_id: null,
@@ -324,7 +389,7 @@ export function useDeckActions(): DeckActions {
             returning: [
               {
                 __typename: 'campaign_deck',
-                id: deckId.serverId || -1,
+                id: deckId.serverId || (fakeId--),
                 campaign_id: campaignId.serverId,
                 arkhamdb_id: deckId.id,
                 local_uuid: null,
@@ -367,7 +432,7 @@ export function useDeckActions(): DeckActions {
             returning: [
               {
                 __typename: 'campaign_deck',
-                id: deckId.serverId || -1,
+                id: deckId.serverId || (fakeId--),
                 local_uuid: deckId.uuid,
                 arkhamdb_id: null,
                 campaign_id: campaignId.serverId,
@@ -398,7 +463,7 @@ export function useDeckActions(): DeckActions {
             returning: [
               {
                 __typename: 'campaign_deck',
-                id: deckId.serverId || -1,
+                id: deckId.serverId || (fakeId--),
                 arkhamdb_id: deckId.id,
                 local_uuid: null,
                 campaign_id: campaignId.serverId,
@@ -428,10 +493,11 @@ export function useDeckActions(): DeckActions {
   const createBaseDeck = useCallback(async(
     deck: Deck,
     campaignId: UploadedCampaignId,
-  ) => {
+  ): Promise<void> => {
     if (!user) {
       throw new Error('No user');
     }
+    const handle = getUserHandle(cache.current, user);
     const deckId = getDeckId(deck);
     const content_hash = await hashDeck(deck);
     const variables = {
@@ -441,20 +507,24 @@ export function useDeckActions(): DeckActions {
       content: deck,
       content_hash,
     };
-    const response = await createNewDeck({
+    await createNewDeck({
       optimisticResponse: {
         __typename: 'mutation_root',
         insert_campaign_deck_one: {
           __typename: 'campaign_deck',
-          id: -1,
+          id: (fakeId--),
           campaign_id: campaignId.serverId,
           local_uuid: deckId.local ? deckId.uuid : null,
           arkhamdb_id: deckId.id || null,
           investigator: deck.investigator_code,
           owner_id: user.uid,
           owner: {
+            __typename: 'users',
             id: user.uid,
+            handle,
           },
+          previous_deck: null,
+          investigator_data: null,
           content: deck,
           content_hash,
           campaign: {
@@ -476,17 +546,17 @@ export function useDeckActions(): DeckActions {
       },
       update: optimisticUpdates.insertNewDeck.update,
     });
-    return response?.data?.insert_campaign_deck_one?.id;
   }, [createNewDeck, user]);
 
   const createNextDeck = useCallback(async(
     deck: Deck,
     campaignId: UploadedCampaignId,
     previousDeckId: DeckId
-  ) => {
+  ): Promise<void> => {
     if (!user) {
       throw new Error('No user');
     }
+    const handle = getUserHandle(cache.current, user);
     const deckId = getDeckId(deck);
     const content_hash = await hashDeck(deck);
     const variables = {
@@ -497,35 +567,37 @@ export function useDeckActions(): DeckActions {
       content_hash,
     };
     if (deckId.local) {
-      const response = await createNextLocalDeck({
+      await createNextLocalDeck({
         optimisticResponse: {
           __typename: 'mutation_root',
           insert_campaign_deck_one: {
             __typename: 'campaign_deck',
-            id: previousDeckId.serverId || -1,
+            id: (fakeId--),
             campaign_id: campaignId.serverId,
-            local_uuid: previousDeckId.uuid,
+            local_uuid: deck.uuid,
             arkhamdb_id: null,
             investigator: deck.investigator_code,
             owner_id: user.uid,
-            next_deck: {
+            owner: {
+              __typename: 'users',
+              id: user.uid,
+              handle,
+            },
+            content: deck,
+            content_hash,
+            previous_deck: {
               __typename: 'campaign_deck',
-              id: -1,
-              campaign_id: campaignId.serverId,
-              local_uuid: deck.uuid,
+              id: previousDeckId.serverId || (fakeId--),
+              local_uuid: previousDeckId.uuid,
               arkhamdb_id: null,
+              campaign_id: campaignId.serverId,
               investigator: deck.investigator_code,
               owner_id: user.uid,
-              owner: {
-                id: user.uid,
-              },
-              content: deck,
-              content_hash,
-              campaign: {
-                __typename: 'campaign',
-                id: campaignId.serverId,
-                uuid: campaignId.campaignId,
-              },
+            },
+            campaign: {
+              __typename: 'campaign',
+              id: campaignId.serverId,
+              uuid: campaignId.campaignId,
             },
           },
         },
@@ -539,41 +611,43 @@ export function useDeckActions(): DeckActions {
         },
         update: optimisticUpdates.insertNextLocalDeck.update,
       });
-      return response.data?.insert_campaign_deck_one?.next_deck?.id;
+      return;
     }
 
     if (previousDeckId.local || deck.local) {
-      throw new Error(`Can't mix remove and local decks`);
+      throw new Error(`Can't mix remote and local decks`);
     }
-    const response = await createNextArkhamDbDeck({
+    await createNextArkhamDbDeck({
       optimisticResponse: {
         __typename: 'mutation_root',
         insert_campaign_deck_one: {
           __typename: 'campaign_deck',
-          id: previousDeckId.serverId || -1,
+          id: (fakeId--),
           campaign_id: campaignId.serverId,
-          arkhamdb_id: previousDeckId.id,
+          arkhamdb_id: deck.id,
           local_uuid: null,
           investigator: deck.investigator_code,
           owner_id: user.uid,
-          next_deck: {
+          owner: {
+            __typename: 'users',
+            id: user.uid,
+            handle,
+          },
+          content: deck,
+          content_hash,
+          campaign: {
+            __typename: 'campaign',
+            id: campaignId.serverId,
+            uuid: campaignId.campaignId,
+          },
+          previous_deck: {
             __typename: 'campaign_deck',
-            id: -1,
-            campaign_id: campaignId.serverId,
-            arkhamdb_id: deck.id,
+            id: previousDeckId.serverId || (fakeId--),
             local_uuid: null,
+            arkhamdb_id: previousDeckId.id,
+            campaign_id: campaignId.serverId,
             investigator: deck.investigator_code,
             owner_id: user.uid,
-            owner: {
-              id: user.uid,
-            },
-            content: deck,
-            content_hash,
-            campaign: {
-              __typename: 'campaign',
-              id: campaignId.serverId,
-              uuid: campaignId.campaignId,
-            },
           },
         },
       },
@@ -587,7 +661,6 @@ export function useDeckActions(): DeckActions {
       },
       update: optimisticUpdates.insertNextArkhamDbDeck.update,
     });
-    return response.data?.insert_campaign_deck_one?.next_deck?.id;
   }, [createNextArkhamDbDeck, createNextLocalDeck, user]);
   return useMemo(() => {
     return {

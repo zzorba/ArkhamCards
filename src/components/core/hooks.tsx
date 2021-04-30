@@ -3,12 +3,11 @@ import { BackHandler, InteractionManager, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import { forEach, debounce, find } from 'lodash';
 
-import { CampaignCycleCode, CampaignId, ChaosBagResults, DeckId, Slots } from '@actions/types';
+import { CampaignCycleCode, DeckId, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   AppState,
-  makeChaosBagResultsSelector,
   makeTabooSetSelector,
 } from '@reducers';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
@@ -545,11 +544,6 @@ export function useCampaignScenarios(campaign: SingleCampaignT | undefined): [Sc
   return [cycleScenarios, scenarioByCode];
 }
 
-export function useChaosBagResults({ campaignId }: CampaignId): ChaosBagResults {
-  const chaosBagResultsSelector = useMemo(makeChaosBagResultsSelector, []);
-  return useSelector((state: AppState) => chaosBagResultsSelector(state, campaignId));
-}
-
 export function useDeckWithFetch(id: DeckId | undefined, actions: DeckActions): LatestDeckT | undefined {
   const deck = useDeck(id, true);
   const dispatch = useDispatch();
@@ -642,5 +636,4 @@ export function useWhyDidYouUpdate<T>(name: string, props: T) {
     // Finally update previousProps with current props for next hook call
     previousProps.current = props;
   });
-}
-*/
+}*/

@@ -50,7 +50,7 @@ export default function RandomLocationInputComponent({ input }: Props) {
   }, []);
   const done = useMemo(() => throttle(() => {
     scenarioState.undo();
-  }, 500), [scenarioState]);
+  }, 500, { leading: true, trailing: false }), [scenarioState]);
 
   const drawLocation = useCallback(() => {
     updateChoices('draw');

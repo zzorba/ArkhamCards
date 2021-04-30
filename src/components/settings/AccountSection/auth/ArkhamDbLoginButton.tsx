@@ -18,7 +18,7 @@ interface Props {
 export default function ArkhamDbLoginButton({ last, showAlert }: Props) {
   const dispatch = useDispatch();
   const loading = useSelector((state: AppState) => state.signedIn.loading);
-  const signedIn = useSelector((state: AppState) => state.signedIn.status);
+  const { arkhamDb } = useContext(ArkhamCardsAuthContext);
   const { error } = useSelector(getMyDecksState);
   const [{ isConnected }] = useNetworkStatus();
   const doLogout = useCallback(() => {
@@ -57,10 +57,10 @@ export default function ArkhamDbLoginButton({ last, showAlert }: Props) {
       return [t`Authorization issues`, <DeckButton thin color="red" key="reauth-control" onPress={reauthPressed} title={t`Reconnect`} />];
     }
     return [
-      signedIn ? t`Logged in` : t`Synchronize decks`,
-      <DeckButton key="auth-control" thin onPress={signedIn ? logOutPressed : loginPressed} title={signedIn ? t`Log out` : t`Log in`} />,
+      arkhamDb ? t`Logged in` : t`Synchronize decks`,
+      <DeckButton key="auth-control" thin onPress={arkhamDb ? logOutPressed : loginPressed} title={arkhamDb ? t`Log out` : t`Log in`} />,
     ];
-  }, [error, isConnected, signedIn, reauthPressed, loginPressed, logOutPressed]);
+  }, [error, isConnected, arkhamDb, reauthPressed, loginPressed, logOutPressed]);
   return (
     <DeckActionRow
       icon="arkhamdb"

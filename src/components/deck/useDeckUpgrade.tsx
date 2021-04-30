@@ -1,5 +1,5 @@
 import { useCallback, useContext, useMemo, useState } from 'react';
-import { find, forEach, keys, throttle } from 'lodash';
+import { find, forEach, keys, debounce } from 'lodash';
 
 import { Deck, Slots } from '@actions/types';
 import { saveDeckChanges, SaveDeckChanges, saveDeckUpgrade } from './actions';
@@ -96,22 +96,22 @@ export default function useDeckUpgrade(
     }
     if (!saving || isRetry) {
       setSaving(true);
-      doSaveDeckUpgrade(deck.deck, xp, exileCounts).then(
+      setTimeout(() => doSaveDeckUpgrade(deck.deck, xp, exileCounts).then(
         (deck: Deck) => handleStoryCardChanges(deck, xp, storyCounts, ignoreStoryCounts),
         (e: Error) => {
           setError(e.message);
           setSaving(false);
         }
-      );
+      ), 0);
     }
   }, [deck, doSaveDeckUpgrade, saving, handleStoryCardChanges, setError, setSaving]);
   const throttledSaveUpgrade = useMemo(() => {
-    return throttle((
+    return debounce((
       xp: number,
       storyCounts: Slots,
       ignoreStoryCounts: Slots,
       exileCounts: Slots
-    ) => saveUpgrade(xp, storyCounts, ignoreStoryCounts, exileCounts), 200);
+    ) => saveUpgrade(xp, storyCounts, ignoreStoryCounts, exileCounts), 1000, { leading: true, trailing: false });
   }, [saveUpgrade]);
 
   return [saving, error, throttledSaveUpgrade];

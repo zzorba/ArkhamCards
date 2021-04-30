@@ -4,6 +4,7 @@ export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+const defaultOptions =  {}
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -337,6 +338,10 @@ export type Campaign = {
   /** An object relationship */
   campaign_guide?: Maybe<Campaign_Guide>;
   chaosBag?: Maybe<Scalars['jsonb']>;
+  /** An array relationship */
+  chaos_bag_result: Array<Chaos_Bag_Result>;
+  /** An aggregate relationship */
+  chaos_bag_result_aggregate: Chaos_Bag_Result_Aggregate;
   created_at: Scalars['timestamptz'];
   cycleCode?: Maybe<Scalars['String']>;
   deleted?: Maybe<Scalars['Boolean']>;
@@ -427,6 +432,26 @@ export type CampaignCampaignNotesArgs = {
 /** columns and relationships of "campaign" */
 export type CampaignChaosBagArgs = {
   path?: Maybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "campaign" */
+export type CampaignChaos_Bag_ResultArgs = {
+  distinct_on?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Chaos_Bag_Result_Order_By>>;
+  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
+};
+
+
+/** columns and relationships of "campaign" */
+export type CampaignChaos_Bag_Result_AggregateArgs = {
+  distinct_on?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Chaos_Bag_Result_Order_By>>;
+  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
 };
 
 
@@ -860,6 +885,7 @@ export type Campaign_Bool_Exp = {
   campaignNotes?: Maybe<Jsonb_Comparison_Exp>;
   campaign_guide?: Maybe<Campaign_Guide_Bool_Exp>;
   chaosBag?: Maybe<Jsonb_Comparison_Exp>;
+  chaos_bag_result?: Maybe<Chaos_Bag_Result_Bool_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
   cycleCode?: Maybe<String_Comparison_Exp>;
   deleted?: Maybe<Boolean_Comparison_Exp>;
@@ -920,6 +946,11 @@ export type Campaign_Deck = {
   owner_id: Scalars['String'];
   /** An object relationship */
   previous_deck?: Maybe<Campaign_Deck>;
+  /** An array relationship */
+  previous_decks: Array<Campaign_Deck>;
+  /** An aggregate relationship */
+  previous_decks_aggregate: Campaign_Deck_Aggregate;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 
@@ -941,6 +972,26 @@ export type Campaign_DeckOther_DecksArgs = {
 
 /** columns and relationships of "campaign_deck" */
 export type Campaign_DeckOther_Decks_AggregateArgs = {
+  distinct_on?: Maybe<Array<Campaign_Deck_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Campaign_Deck_Order_By>>;
+  where?: Maybe<Campaign_Deck_Bool_Exp>;
+};
+
+
+/** columns and relationships of "campaign_deck" */
+export type Campaign_DeckPrevious_DecksArgs = {
+  distinct_on?: Maybe<Array<Campaign_Deck_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Campaign_Deck_Order_By>>;
+  where?: Maybe<Campaign_Deck_Bool_Exp>;
+};
+
+
+/** columns and relationships of "campaign_deck" */
+export type Campaign_DeckPrevious_Decks_AggregateArgs = {
   distinct_on?: Maybe<Array<Campaign_Deck_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -1043,6 +1094,8 @@ export type Campaign_Deck_Bool_Exp = {
   owner?: Maybe<Users_Bool_Exp>;
   owner_id?: Maybe<String_Comparison_Exp>;
   previous_deck?: Maybe<Campaign_Deck_Bool_Exp>;
+  previous_decks?: Maybe<Campaign_Deck_Bool_Exp>;
+  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "campaign_deck" */
@@ -1096,6 +1149,8 @@ export type Campaign_Deck_Insert_Input = {
   owner?: Maybe<Users_Obj_Rel_Insert_Input>;
   owner_id?: Maybe<Scalars['String']>;
   previous_deck?: Maybe<Campaign_Deck_Obj_Rel_Insert_Input>;
+  previous_decks?: Maybe<Campaign_Deck_Arr_Rel_Insert_Input>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -1109,6 +1164,7 @@ export type Campaign_Deck_Max_Fields = {
   local_uuid?: Maybe<Scalars['String']>;
   next_deck_id?: Maybe<Scalars['Int']>;
   owner_id?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** order by max() on columns of table "campaign_deck" */
@@ -1121,6 +1177,7 @@ export type Campaign_Deck_Max_Order_By = {
   local_uuid?: Maybe<Order_By>;
   next_deck_id?: Maybe<Order_By>;
   owner_id?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -1134,6 +1191,7 @@ export type Campaign_Deck_Min_Fields = {
   local_uuid?: Maybe<Scalars['String']>;
   next_deck_id?: Maybe<Scalars['Int']>;
   owner_id?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** order by min() on columns of table "campaign_deck" */
@@ -1146,6 +1204,7 @@ export type Campaign_Deck_Min_Order_By = {
   local_uuid?: Maybe<Order_By>;
   next_deck_id?: Maybe<Order_By>;
   owner_id?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
 };
 
 /** response of any mutation on the table "campaign_deck" */
@@ -1189,6 +1248,8 @@ export type Campaign_Deck_Order_By = {
   owner?: Maybe<Users_Order_By>;
   owner_id?: Maybe<Order_By>;
   previous_deck?: Maybe<Campaign_Deck_Order_By>;
+  previous_decks_aggregate?: Maybe<Campaign_Deck_Aggregate_Order_By>;
+  updated_at?: Maybe<Order_By>;
 };
 
 /** primary key columns input for table: campaign_deck */
@@ -1222,7 +1283,9 @@ export enum Campaign_Deck_Select_Column {
   /** column name */
   NextDeckId = 'next_deck_id',
   /** column name */
-  OwnerId = 'owner_id'
+  OwnerId = 'owner_id',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 /** input type for updating data in table "campaign_deck" */
@@ -1237,6 +1300,7 @@ export type Campaign_Deck_Set_Input = {
   local_uuid?: Maybe<Scalars['String']>;
   next_deck_id?: Maybe<Scalars['Int']>;
   owner_id?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregate stddev on columns */
@@ -1328,7 +1392,9 @@ export enum Campaign_Deck_Update_Column {
   /** column name */
   NextDeckId = 'next_deck_id',
   /** column name */
-  OwnerId = 'owner_id'
+  OwnerId = 'owner_id',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 /** aggregate var_pop on columns */
@@ -1686,6 +1752,7 @@ export type Campaign_Insert_Input = {
   campaignNotes?: Maybe<Scalars['jsonb']>;
   campaign_guide?: Maybe<Campaign_Guide_Obj_Rel_Insert_Input>;
   chaosBag?: Maybe<Scalars['jsonb']>;
+  chaos_bag_result?: Maybe<Chaos_Bag_Result_Arr_Rel_Insert_Input>;
   created_at?: Maybe<Scalars['timestamptz']>;
   cycleCode?: Maybe<Scalars['String']>;
   deleted?: Maybe<Scalars['Boolean']>;
@@ -2061,6 +2128,7 @@ export type Campaign_Order_By = {
   campaignNotes?: Maybe<Order_By>;
   campaign_guide?: Maybe<Campaign_Guide_Order_By>;
   chaosBag?: Maybe<Order_By>;
+  chaos_bag_result_aggregate?: Maybe<Chaos_Bag_Result_Aggregate_Order_By>;
   created_at?: Maybe<Order_By>;
   cycleCode?: Maybe<Order_By>;
   deleted?: Maybe<Order_By>;
@@ -2284,12 +2352,430 @@ export type Campaign_Variance_Fields = {
   link_campaign_id?: Maybe<Scalars['Float']>;
 };
 
+/** columns and relationships of "chaos_bag_result" */
+export type Chaos_Bag_Result = {
+  __typename?: 'chaos_bag_result';
+  bless: Scalars['Int'];
+  /** An object relationship */
+  campaign: Campaign;
+  created_at: Scalars['timestamptz'];
+  curse: Scalars['Int'];
+  drawn: Scalars['jsonb'];
+  id: Scalars['Int'];
+  sealed: Scalars['jsonb'];
+  totalDrawn?: Maybe<Scalars['Int']>;
+  updated_at: Scalars['timestamptz'];
+};
+
+
+/** columns and relationships of "chaos_bag_result" */
+export type Chaos_Bag_ResultDrawnArgs = {
+  path?: Maybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "chaos_bag_result" */
+export type Chaos_Bag_ResultSealedArgs = {
+  path?: Maybe<Scalars['String']>;
+};
+
+/** aggregated selection of "chaos_bag_result" */
+export type Chaos_Bag_Result_Aggregate = {
+  __typename?: 'chaos_bag_result_aggregate';
+  aggregate?: Maybe<Chaos_Bag_Result_Aggregate_Fields>;
+  nodes: Array<Chaos_Bag_Result>;
+};
+
+/** aggregate fields of "chaos_bag_result" */
+export type Chaos_Bag_Result_Aggregate_Fields = {
+  __typename?: 'chaos_bag_result_aggregate_fields';
+  avg?: Maybe<Chaos_Bag_Result_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Chaos_Bag_Result_Max_Fields>;
+  min?: Maybe<Chaos_Bag_Result_Min_Fields>;
+  stddev?: Maybe<Chaos_Bag_Result_Stddev_Fields>;
+  stddev_pop?: Maybe<Chaos_Bag_Result_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Chaos_Bag_Result_Stddev_Samp_Fields>;
+  sum?: Maybe<Chaos_Bag_Result_Sum_Fields>;
+  var_pop?: Maybe<Chaos_Bag_Result_Var_Pop_Fields>;
+  var_samp?: Maybe<Chaos_Bag_Result_Var_Samp_Fields>;
+  variance?: Maybe<Chaos_Bag_Result_Variance_Fields>;
+};
+
+
+/** aggregate fields of "chaos_bag_result" */
+export type Chaos_Bag_Result_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Aggregate_Order_By = {
+  avg?: Maybe<Chaos_Bag_Result_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Chaos_Bag_Result_Max_Order_By>;
+  min?: Maybe<Chaos_Bag_Result_Min_Order_By>;
+  stddev?: Maybe<Chaos_Bag_Result_Stddev_Order_By>;
+  stddev_pop?: Maybe<Chaos_Bag_Result_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Chaos_Bag_Result_Stddev_Samp_Order_By>;
+  sum?: Maybe<Chaos_Bag_Result_Sum_Order_By>;
+  var_pop?: Maybe<Chaos_Bag_Result_Var_Pop_Order_By>;
+  var_samp?: Maybe<Chaos_Bag_Result_Var_Samp_Order_By>;
+  variance?: Maybe<Chaos_Bag_Result_Variance_Order_By>;
+};
+
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type Chaos_Bag_Result_Append_Input = {
+  drawn?: Maybe<Scalars['jsonb']>;
+  sealed?: Maybe<Scalars['jsonb']>;
+};
+
+/** input type for inserting array relation for remote table "chaos_bag_result" */
+export type Chaos_Bag_Result_Arr_Rel_Insert_Input = {
+  data: Array<Chaos_Bag_Result_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: Maybe<Chaos_Bag_Result_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Chaos_Bag_Result_Avg_Fields = {
+  __typename?: 'chaos_bag_result_avg_fields';
+  bless?: Maybe<Scalars['Float']>;
+  curse?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  totalDrawn?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Avg_Order_By = {
+  bless?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "chaos_bag_result". All fields are combined with a logical 'AND'. */
+export type Chaos_Bag_Result_Bool_Exp = {
+  _and?: Maybe<Array<Chaos_Bag_Result_Bool_Exp>>;
+  _not?: Maybe<Chaos_Bag_Result_Bool_Exp>;
+  _or?: Maybe<Array<Chaos_Bag_Result_Bool_Exp>>;
+  bless?: Maybe<Int_Comparison_Exp>;
+  campaign?: Maybe<Campaign_Bool_Exp>;
+  created_at?: Maybe<Timestamptz_Comparison_Exp>;
+  curse?: Maybe<Int_Comparison_Exp>;
+  drawn?: Maybe<Jsonb_Comparison_Exp>;
+  id?: Maybe<Int_Comparison_Exp>;
+  sealed?: Maybe<Jsonb_Comparison_Exp>;
+  totalDrawn?: Maybe<Int_Comparison_Exp>;
+  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "chaos_bag_result" */
+export enum Chaos_Bag_Result_Constraint {
+  /** unique or primary key constraint */
+  ChaosBagPkey = 'chaos_bag_pkey',
+  /** unique or primary key constraint */
+  ChaosBagResultsCampaignIdKey = 'chaos_bag_results_campaign_id_key'
+}
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type Chaos_Bag_Result_Delete_At_Path_Input = {
+  drawn?: Maybe<Array<Scalars['String']>>;
+  sealed?: Maybe<Array<Scalars['String']>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type Chaos_Bag_Result_Delete_Elem_Input = {
+  drawn?: Maybe<Scalars['Int']>;
+  sealed?: Maybe<Scalars['Int']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type Chaos_Bag_Result_Delete_Key_Input = {
+  drawn?: Maybe<Scalars['String']>;
+  sealed?: Maybe<Scalars['String']>;
+};
+
+/** input type for incrementing numeric columns in table "chaos_bag_result" */
+export type Chaos_Bag_Result_Inc_Input = {
+  bless?: Maybe<Scalars['Int']>;
+  curse?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  totalDrawn?: Maybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "chaos_bag_result" */
+export type Chaos_Bag_Result_Insert_Input = {
+  bless?: Maybe<Scalars['Int']>;
+  campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  curse?: Maybe<Scalars['Int']>;
+  drawn?: Maybe<Scalars['jsonb']>;
+  id?: Maybe<Scalars['Int']>;
+  sealed?: Maybe<Scalars['jsonb']>;
+  totalDrawn?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Chaos_Bag_Result_Max_Fields = {
+  __typename?: 'chaos_bag_result_max_fields';
+  bless?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  curse?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  totalDrawn?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by max() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Max_Order_By = {
+  bless?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Chaos_Bag_Result_Min_Fields = {
+  __typename?: 'chaos_bag_result_min_fields';
+  bless?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  curse?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  totalDrawn?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by min() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Min_Order_By = {
+  bless?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
+/** response of any mutation on the table "chaos_bag_result" */
+export type Chaos_Bag_Result_Mutation_Response = {
+  __typename?: 'chaos_bag_result_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Chaos_Bag_Result>;
+};
+
+/** on conflict condition type for table "chaos_bag_result" */
+export type Chaos_Bag_Result_On_Conflict = {
+  constraint: Chaos_Bag_Result_Constraint;
+  update_columns: Array<Chaos_Bag_Result_Update_Column>;
+  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "chaos_bag_result". */
+export type Chaos_Bag_Result_Order_By = {
+  bless?: Maybe<Order_By>;
+  campaign?: Maybe<Campaign_Order_By>;
+  created_at?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  drawn?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  sealed?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: chaos_bag_result */
+export type Chaos_Bag_Result_Pk_Columns_Input = {
+  id: Scalars['Int'];
+};
+
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type Chaos_Bag_Result_Prepend_Input = {
+  drawn?: Maybe<Scalars['jsonb']>;
+  sealed?: Maybe<Scalars['jsonb']>;
+};
+
+/** select columns of table "chaos_bag_result" */
+export enum Chaos_Bag_Result_Select_Column {
+  /** column name */
+  Bless = 'bless',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Curse = 'curse',
+  /** column name */
+  Drawn = 'drawn',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Sealed = 'sealed',
+  /** column name */
+  TotalDrawn = 'totalDrawn',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "chaos_bag_result" */
+export type Chaos_Bag_Result_Set_Input = {
+  bless?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  curse?: Maybe<Scalars['Int']>;
+  drawn?: Maybe<Scalars['jsonb']>;
+  id?: Maybe<Scalars['Int']>;
+  sealed?: Maybe<Scalars['jsonb']>;
+  totalDrawn?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate stddev on columns */
+export type Chaos_Bag_Result_Stddev_Fields = {
+  __typename?: 'chaos_bag_result_stddev_fields';
+  bless?: Maybe<Scalars['Float']>;
+  curse?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  totalDrawn?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Stddev_Order_By = {
+  bless?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Chaos_Bag_Result_Stddev_Pop_Fields = {
+  __typename?: 'chaos_bag_result_stddev_pop_fields';
+  bless?: Maybe<Scalars['Float']>;
+  curse?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  totalDrawn?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Stddev_Pop_Order_By = {
+  bless?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Chaos_Bag_Result_Stddev_Samp_Fields = {
+  __typename?: 'chaos_bag_result_stddev_samp_fields';
+  bless?: Maybe<Scalars['Float']>;
+  curse?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  totalDrawn?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Stddev_Samp_Order_By = {
+  bless?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Chaos_Bag_Result_Sum_Fields = {
+  __typename?: 'chaos_bag_result_sum_fields';
+  bless?: Maybe<Scalars['Int']>;
+  curse?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  totalDrawn?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Sum_Order_By = {
+  bless?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
+};
+
+/** update columns of table "chaos_bag_result" */
+export enum Chaos_Bag_Result_Update_Column {
+  /** column name */
+  Bless = 'bless',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Curse = 'curse',
+  /** column name */
+  Drawn = 'drawn',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Sealed = 'sealed',
+  /** column name */
+  TotalDrawn = 'totalDrawn',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** aggregate var_pop on columns */
+export type Chaos_Bag_Result_Var_Pop_Fields = {
+  __typename?: 'chaos_bag_result_var_pop_fields';
+  bless?: Maybe<Scalars['Float']>;
+  curse?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  totalDrawn?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Var_Pop_Order_By = {
+  bless?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Chaos_Bag_Result_Var_Samp_Fields = {
+  __typename?: 'chaos_bag_result_var_samp_fields';
+  bless?: Maybe<Scalars['Float']>;
+  curse?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  totalDrawn?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Var_Samp_Order_By = {
+  bless?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Chaos_Bag_Result_Variance_Fields = {
+  __typename?: 'chaos_bag_result_variance_fields';
+  bless?: Maybe<Scalars['Float']>;
+  curse?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  totalDrawn?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "chaos_bag_result" */
+export type Chaos_Bag_Result_Variance_Order_By = {
+  bless?: Maybe<Order_By>;
+  curse?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  totalDrawn?: Maybe<Order_By>;
+};
+
 /** columns and relationships of "friend_status" */
 export type Friend_Status = {
   __typename?: 'friend_status';
   /** A computed field, executes function "friend_status_id" */
   id?: Maybe<Scalars['String']>;
-  status: Scalars['String'];
+  status: Friend_Status_Type_Enum;
   user_id_a: Scalars['String'];
   user_id_b: Scalars['String'];
 };
@@ -2321,7 +2807,7 @@ export type Friend_Status_Bool_Exp = {
   _and?: Maybe<Array<Friend_Status_Bool_Exp>>;
   _not?: Maybe<Friend_Status_Bool_Exp>;
   _or?: Maybe<Array<Friend_Status_Bool_Exp>>;
-  status?: Maybe<String_Comparison_Exp>;
+  status?: Maybe<Friend_Status_Type_Enum_Comparison_Exp>;
   user_id_a?: Maybe<String_Comparison_Exp>;
   user_id_b?: Maybe<String_Comparison_Exp>;
 };
@@ -2334,7 +2820,7 @@ export enum Friend_Status_Constraint {
 
 /** input type for inserting data into table "friend_status" */
 export type Friend_Status_Insert_Input = {
-  status?: Maybe<Scalars['String']>;
+  status?: Maybe<Friend_Status_Type_Enum>;
   user_id_a?: Maybe<Scalars['String']>;
   user_id_b?: Maybe<Scalars['String']>;
 };
@@ -2342,7 +2828,6 @@ export type Friend_Status_Insert_Input = {
 /** aggregate max on columns */
 export type Friend_Status_Max_Fields = {
   __typename?: 'friend_status_max_fields';
-  status?: Maybe<Scalars['String']>;
   user_id_a?: Maybe<Scalars['String']>;
   user_id_b?: Maybe<Scalars['String']>;
 };
@@ -2350,7 +2835,6 @@ export type Friend_Status_Max_Fields = {
 /** aggregate min on columns */
 export type Friend_Status_Min_Fields = {
   __typename?: 'friend_status_min_fields';
-  status?: Maybe<Scalars['String']>;
   user_id_a?: Maybe<Scalars['String']>;
   user_id_b?: Maybe<Scalars['String']>;
 };
@@ -2396,10 +2880,128 @@ export enum Friend_Status_Select_Column {
 
 /** input type for updating data in table "friend_status" */
 export type Friend_Status_Set_Input = {
-  status?: Maybe<Scalars['String']>;
+  status?: Maybe<Friend_Status_Type_Enum>;
   user_id_a?: Maybe<Scalars['String']>;
   user_id_b?: Maybe<Scalars['String']>;
 };
+
+/** columns and relationships of "friend_status_type" */
+export type Friend_Status_Type = {
+  __typename?: 'friend_status_type';
+  value: Scalars['String'];
+};
+
+/** aggregated selection of "friend_status_type" */
+export type Friend_Status_Type_Aggregate = {
+  __typename?: 'friend_status_type_aggregate';
+  aggregate?: Maybe<Friend_Status_Type_Aggregate_Fields>;
+  nodes: Array<Friend_Status_Type>;
+};
+
+/** aggregate fields of "friend_status_type" */
+export type Friend_Status_Type_Aggregate_Fields = {
+  __typename?: 'friend_status_type_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Friend_Status_Type_Max_Fields>;
+  min?: Maybe<Friend_Status_Type_Min_Fields>;
+};
+
+
+/** aggregate fields of "friend_status_type" */
+export type Friend_Status_Type_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Friend_Status_Type_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "friend_status_type". All fields are combined with a logical 'AND'. */
+export type Friend_Status_Type_Bool_Exp = {
+  _and?: Maybe<Array<Friend_Status_Type_Bool_Exp>>;
+  _not?: Maybe<Friend_Status_Type_Bool_Exp>;
+  _or?: Maybe<Array<Friend_Status_Type_Bool_Exp>>;
+  value?: Maybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "friend_status_type" */
+export enum Friend_Status_Type_Constraint {
+  /** unique or primary key constraint */
+  FriendStatusTypePkey = 'friend_status_type_pkey'
+}
+
+export enum Friend_Status_Type_Enum {
+  Friend = 'friend',
+  None = 'none',
+  Received = 'received',
+  Sent = 'sent'
+}
+
+/** Boolean expression to compare columns of type "friend_status_type_enum". All fields are combined with logical 'AND'. */
+export type Friend_Status_Type_Enum_Comparison_Exp = {
+  _eq?: Maybe<Friend_Status_Type_Enum>;
+  _in?: Maybe<Array<Friend_Status_Type_Enum>>;
+  _is_null?: Maybe<Scalars['Boolean']>;
+  _neq?: Maybe<Friend_Status_Type_Enum>;
+  _nin?: Maybe<Array<Friend_Status_Type_Enum>>;
+};
+
+/** input type for inserting data into table "friend_status_type" */
+export type Friend_Status_Type_Insert_Input = {
+  value?: Maybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Friend_Status_Type_Max_Fields = {
+  __typename?: 'friend_status_type_max_fields';
+  value?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Friend_Status_Type_Min_Fields = {
+  __typename?: 'friend_status_type_min_fields';
+  value?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "friend_status_type" */
+export type Friend_Status_Type_Mutation_Response = {
+  __typename?: 'friend_status_type_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Friend_Status_Type>;
+};
+
+/** on conflict condition type for table "friend_status_type" */
+export type Friend_Status_Type_On_Conflict = {
+  constraint: Friend_Status_Type_Constraint;
+  update_columns: Array<Friend_Status_Type_Update_Column>;
+  where?: Maybe<Friend_Status_Type_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "friend_status_type". */
+export type Friend_Status_Type_Order_By = {
+  value?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: friend_status_type */
+export type Friend_Status_Type_Pk_Columns_Input = {
+  value: Scalars['String'];
+};
+
+/** select columns of table "friend_status_type" */
+export enum Friend_Status_Type_Select_Column {
+  /** column name */
+  Value = 'value'
+}
+
+/** input type for updating data in table "friend_status_type" */
+export type Friend_Status_Type_Set_Input = {
+  value?: Maybe<Scalars['String']>;
+};
+
+/** update columns of table "friend_status_type" */
+export enum Friend_Status_Type_Update_Column {
+  /** column name */
+  Value = 'value'
+}
 
 /** update columns of table "friend_status" */
 export enum Friend_Status_Update_Column {
@@ -2849,9 +3451,7 @@ export type Guide_Input_Bool_Exp = {
 /** unique or primary key constraints on table "guide_input" */
 export enum Guide_Input_Constraint {
   /** unique or primary key constraint */
-  GuideInputPkey = 'guide_input_pkey',
-  /** unique or primary key constraint */
-  GuideInputScenarioCampaignIdStepTypeKey = 'guide_input_scenario_campaign_id_step_type_key'
+  GuideInputPkey = 'guide_input_pkey'
 }
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
@@ -4201,10 +4801,18 @@ export type Mutation_Root = {
   delete_campaign_investigator?: Maybe<Campaign_Investigator_Mutation_Response>;
   /** delete single row from the table: "campaign_investigator" */
   delete_campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
+  /** delete data from the table: "chaos_bag_result" */
+  delete_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
+  /** delete single row from the table: "chaos_bag_result" */
+  delete_chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
   /** delete data from the table: "friend_status" */
   delete_friend_status?: Maybe<Friend_Status_Mutation_Response>;
   /** delete single row from the table: "friend_status" */
   delete_friend_status_by_pk?: Maybe<Friend_Status>;
+  /** delete data from the table: "friend_status_type" */
+  delete_friend_status_type?: Maybe<Friend_Status_Type_Mutation_Response>;
+  /** delete single row from the table: "friend_status_type" */
+  delete_friend_status_type_by_pk?: Maybe<Friend_Status_Type>;
   /** delete data from the table: "guide_achievement" */
   delete_guide_achievement?: Maybe<Guide_Achievement_Mutation_Response>;
   /** delete single row from the table: "guide_achievement" */
@@ -4257,10 +4865,18 @@ export type Mutation_Root = {
   insert_campaign_investigator_one?: Maybe<Campaign_Investigator>;
   /** insert a single row into the table: "campaign" */
   insert_campaign_one?: Maybe<Campaign>;
+  /** insert data into the table: "chaos_bag_result" */
+  insert_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
+  /** insert a single row into the table: "chaos_bag_result" */
+  insert_chaos_bag_result_one?: Maybe<Chaos_Bag_Result>;
   /** insert data into the table: "friend_status" */
   insert_friend_status?: Maybe<Friend_Status_Mutation_Response>;
   /** insert a single row into the table: "friend_status" */
   insert_friend_status_one?: Maybe<Friend_Status>;
+  /** insert data into the table: "friend_status_type" */
+  insert_friend_status_type?: Maybe<Friend_Status_Type_Mutation_Response>;
+  /** insert a single row into the table: "friend_status_type" */
+  insert_friend_status_type_one?: Maybe<Friend_Status_Type>;
   /** insert data into the table: "guide_achievement" */
   insert_guide_achievement?: Maybe<Guide_Achievement_Mutation_Response>;
   /** insert a single row into the table: "guide_achievement" */
@@ -4321,10 +4937,18 @@ export type Mutation_Root = {
   update_campaign_investigator?: Maybe<Campaign_Investigator_Mutation_Response>;
   /** update single row of the table: "campaign_investigator" */
   update_campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
+  /** update data of the table: "chaos_bag_result" */
+  update_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
+  /** update single row of the table: "chaos_bag_result" */
+  update_chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
   /** update data of the table: "friend_status" */
   update_friend_status?: Maybe<Friend_Status_Mutation_Response>;
   /** update single row of the table: "friend_status" */
   update_friend_status_by_pk?: Maybe<Friend_Status>;
+  /** update data of the table: "friend_status_type" */
+  update_friend_status_type?: Maybe<Friend_Status_Type_Mutation_Response>;
+  /** update single row of the table: "friend_status_type" */
+  update_friend_status_type_by_pk?: Maybe<Friend_Status_Type>;
   /** update data of the table: "guide_achievement" */
   update_guide_achievement?: Maybe<Guide_Achievement_Mutation_Response>;
   /** update single row of the table: "guide_achievement" */
@@ -4418,6 +5042,18 @@ export type Mutation_RootDelete_Campaign_Investigator_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_Chaos_Bag_ResultArgs = {
+  where: Chaos_Bag_Result_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Chaos_Bag_Result_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_Friend_StatusArgs = {
   where: Friend_Status_Bool_Exp;
 };
@@ -4427,6 +5063,18 @@ export type Mutation_RootDelete_Friend_StatusArgs = {
 export type Mutation_RootDelete_Friend_Status_By_PkArgs = {
   user_id_a: Scalars['String'];
   user_id_b: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Friend_Status_TypeArgs = {
+  where: Friend_Status_Type_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Friend_Status_Type_By_PkArgs = {
+  value: Scalars['String'];
 };
 
 
@@ -4598,6 +5246,20 @@ export type Mutation_RootInsert_Campaign_OneArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_Chaos_Bag_ResultArgs = {
+  objects: Array<Chaos_Bag_Result_Insert_Input>;
+  on_conflict?: Maybe<Chaos_Bag_Result_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Chaos_Bag_Result_OneArgs = {
+  object: Chaos_Bag_Result_Insert_Input;
+  on_conflict?: Maybe<Chaos_Bag_Result_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_Friend_StatusArgs = {
   objects: Array<Friend_Status_Insert_Input>;
   on_conflict?: Maybe<Friend_Status_On_Conflict>;
@@ -4608,6 +5270,20 @@ export type Mutation_RootInsert_Friend_StatusArgs = {
 export type Mutation_RootInsert_Friend_Status_OneArgs = {
   object: Friend_Status_Insert_Input;
   on_conflict?: Maybe<Friend_Status_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Friend_Status_TypeArgs = {
+  objects: Array<Friend_Status_Type_Insert_Input>;
+  on_conflict?: Maybe<Friend_Status_Type_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Friend_Status_Type_OneArgs = {
+  object: Friend_Status_Type_Insert_Input;
+  on_conflict?: Maybe<Friend_Status_Type_On_Conflict>;
 };
 
 
@@ -4840,6 +5516,32 @@ export type Mutation_RootUpdate_Campaign_Investigator_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Chaos_Bag_ResultArgs = {
+  _append?: Maybe<Chaos_Bag_Result_Append_Input>;
+  _delete_at_path?: Maybe<Chaos_Bag_Result_Delete_At_Path_Input>;
+  _delete_elem?: Maybe<Chaos_Bag_Result_Delete_Elem_Input>;
+  _delete_key?: Maybe<Chaos_Bag_Result_Delete_Key_Input>;
+  _inc?: Maybe<Chaos_Bag_Result_Inc_Input>;
+  _prepend?: Maybe<Chaos_Bag_Result_Prepend_Input>;
+  _set?: Maybe<Chaos_Bag_Result_Set_Input>;
+  where: Chaos_Bag_Result_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Chaos_Bag_Result_By_PkArgs = {
+  _append?: Maybe<Chaos_Bag_Result_Append_Input>;
+  _delete_at_path?: Maybe<Chaos_Bag_Result_Delete_At_Path_Input>;
+  _delete_elem?: Maybe<Chaos_Bag_Result_Delete_Elem_Input>;
+  _delete_key?: Maybe<Chaos_Bag_Result_Delete_Key_Input>;
+  _inc?: Maybe<Chaos_Bag_Result_Inc_Input>;
+  _prepend?: Maybe<Chaos_Bag_Result_Prepend_Input>;
+  _set?: Maybe<Chaos_Bag_Result_Set_Input>;
+  pk_columns: Chaos_Bag_Result_Pk_Columns_Input;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Friend_StatusArgs = {
   _set?: Maybe<Friend_Status_Set_Input>;
   where: Friend_Status_Bool_Exp;
@@ -4850,6 +5552,20 @@ export type Mutation_RootUpdate_Friend_StatusArgs = {
 export type Mutation_RootUpdate_Friend_Status_By_PkArgs = {
   _set?: Maybe<Friend_Status_Set_Input>;
   pk_columns: Friend_Status_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Friend_Status_TypeArgs = {
+  _set?: Maybe<Friend_Status_Type_Set_Input>;
+  where: Friend_Status_Type_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Friend_Status_Type_By_PkArgs = {
+  _set?: Maybe<Friend_Status_Type_Set_Input>;
+  pk_columns: Friend_Status_Type_Pk_Columns_Input;
 };
 
 
@@ -5029,12 +5745,24 @@ export type Query_Root = {
   campaign_investigator_aggregate: Campaign_Investigator_Aggregate;
   /** fetch data from the table: "campaign_investigator" using primary key columns */
   campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
+  /** An array relationship */
+  chaos_bag_result: Array<Chaos_Bag_Result>;
+  /** An aggregate relationship */
+  chaos_bag_result_aggregate: Chaos_Bag_Result_Aggregate;
+  /** fetch data from the table: "chaos_bag_result" using primary key columns */
+  chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
   /** fetch data from the table: "friend_status" */
   friend_status: Array<Friend_Status>;
   /** fetch aggregated fields from the table: "friend_status" */
   friend_status_aggregate: Friend_Status_Aggregate;
   /** fetch data from the table: "friend_status" using primary key columns */
   friend_status_by_pk?: Maybe<Friend_Status>;
+  /** fetch data from the table: "friend_status_type" */
+  friend_status_type: Array<Friend_Status_Type>;
+  /** fetch aggregated fields from the table: "friend_status_type" */
+  friend_status_type_aggregate: Friend_Status_Type_Aggregate;
+  /** fetch data from the table: "friend_status_type" using primary key columns */
+  friend_status_type_by_pk?: Maybe<Friend_Status_Type>;
   /** fetch data from the table: "guide_achievement" */
   guide_achievement: Array<Guide_Achievement>;
   /** fetch aggregated fields from the table: "guide_achievement" */
@@ -5215,6 +5943,29 @@ export type Query_RootCampaign_Investigator_By_PkArgs = {
 };
 
 
+export type Query_RootChaos_Bag_ResultArgs = {
+  distinct_on?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Chaos_Bag_Result_Order_By>>;
+  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
+};
+
+
+export type Query_RootChaos_Bag_Result_AggregateArgs = {
+  distinct_on?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Chaos_Bag_Result_Order_By>>;
+  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
+};
+
+
+export type Query_RootChaos_Bag_Result_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
 export type Query_RootFriend_StatusArgs = {
   distinct_on?: Maybe<Array<Friend_Status_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -5236,6 +5987,29 @@ export type Query_RootFriend_Status_AggregateArgs = {
 export type Query_RootFriend_Status_By_PkArgs = {
   user_id_a: Scalars['String'];
   user_id_b: Scalars['String'];
+};
+
+
+export type Query_RootFriend_Status_TypeArgs = {
+  distinct_on?: Maybe<Array<Friend_Status_Type_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Friend_Status_Type_Order_By>>;
+  where?: Maybe<Friend_Status_Type_Bool_Exp>;
+};
+
+
+export type Query_RootFriend_Status_Type_AggregateArgs = {
+  distinct_on?: Maybe<Array<Friend_Status_Type_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Friend_Status_Type_Order_By>>;
+  where?: Maybe<Friend_Status_Type_Bool_Exp>;
+};
+
+
+export type Query_RootFriend_Status_Type_By_PkArgs = {
+  value: Scalars['String'];
 };
 
 
@@ -5475,12 +6249,24 @@ export type Subscription_Root = {
   campaign_investigator_aggregate: Campaign_Investigator_Aggregate;
   /** fetch data from the table: "campaign_investigator" using primary key columns */
   campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
+  /** An array relationship */
+  chaos_bag_result: Array<Chaos_Bag_Result>;
+  /** An aggregate relationship */
+  chaos_bag_result_aggregate: Chaos_Bag_Result_Aggregate;
+  /** fetch data from the table: "chaos_bag_result" using primary key columns */
+  chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
   /** fetch data from the table: "friend_status" */
   friend_status: Array<Friend_Status>;
   /** fetch aggregated fields from the table: "friend_status" */
   friend_status_aggregate: Friend_Status_Aggregate;
   /** fetch data from the table: "friend_status" using primary key columns */
   friend_status_by_pk?: Maybe<Friend_Status>;
+  /** fetch data from the table: "friend_status_type" */
+  friend_status_type: Array<Friend_Status_Type>;
+  /** fetch aggregated fields from the table: "friend_status_type" */
+  friend_status_type_aggregate: Friend_Status_Type_Aggregate;
+  /** fetch data from the table: "friend_status_type" using primary key columns */
+  friend_status_type_by_pk?: Maybe<Friend_Status_Type>;
   /** fetch data from the table: "guide_achievement" */
   guide_achievement: Array<Guide_Achievement>;
   /** fetch aggregated fields from the table: "guide_achievement" */
@@ -5661,6 +6447,29 @@ export type Subscription_RootCampaign_Investigator_By_PkArgs = {
 };
 
 
+export type Subscription_RootChaos_Bag_ResultArgs = {
+  distinct_on?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Chaos_Bag_Result_Order_By>>;
+  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
+};
+
+
+export type Subscription_RootChaos_Bag_Result_AggregateArgs = {
+  distinct_on?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Chaos_Bag_Result_Order_By>>;
+  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
+};
+
+
+export type Subscription_RootChaos_Bag_Result_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
 export type Subscription_RootFriend_StatusArgs = {
   distinct_on?: Maybe<Array<Friend_Status_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -5682,6 +6491,29 @@ export type Subscription_RootFriend_Status_AggregateArgs = {
 export type Subscription_RootFriend_Status_By_PkArgs = {
   user_id_a: Scalars['String'];
   user_id_b: Scalars['String'];
+};
+
+
+export type Subscription_RootFriend_Status_TypeArgs = {
+  distinct_on?: Maybe<Array<Friend_Status_Type_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Friend_Status_Type_Order_By>>;
+  where?: Maybe<Friend_Status_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootFriend_Status_Type_AggregateArgs = {
+  distinct_on?: Maybe<Array<Friend_Status_Type_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Friend_Status_Type_Order_By>>;
+  where?: Maybe<Friend_Status_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootFriend_Status_Type_By_PkArgs = {
+  value: Scalars['String'];
 };
 
 
@@ -6967,12 +7799,11 @@ export type InsertNextLocalDeckMutation = (
   { __typename?: 'mutation_root' }
   & { insert_campaign_deck_one?: Maybe<(
     { __typename?: 'campaign_deck' }
-    & Pick<Campaign_Deck, 'investigator'>
-    & { next_deck?: Maybe<(
+    & { previous_deck?: Maybe<(
       { __typename?: 'campaign_deck' }
-      & LatestDeckFragment
+      & IdDeckFragment
     )> }
-    & IdDeckFragment
+    & LatestDeckFragment
   )> }
 );
 
@@ -6991,12 +7822,11 @@ export type InsertNextArkhamDbDeckMutation = (
   { __typename?: 'mutation_root' }
   & { insert_campaign_deck_one?: Maybe<(
     { __typename?: 'campaign_deck' }
-    & Pick<Campaign_Deck, 'investigator'>
-    & { next_deck?: Maybe<(
+    & { previous_deck?: Maybe<(
       { __typename?: 'campaign_deck' }
-      & LatestDeckFragment
+      & IdDeckFragment
     )> }
-    & IdDeckFragment
+    & LatestDeckFragment
   )> }
 );
 
@@ -7086,7 +7916,13 @@ export type DeleteLocalDeckMutationVariables = Exact<{
 
 export type DeleteLocalDeckMutation = (
   { __typename?: 'mutation_root' }
-  & { delete_campaign_deck?: Maybe<(
+  & { update_campaign_deck?: Maybe<(
+    { __typename?: 'campaign_deck_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'campaign_deck' }
+      & LatestDeckFragment
+    )> }
+  )>, delete_campaign_deck?: Maybe<(
     { __typename?: 'campaign_deck_mutation_response' }
     & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
     & { returning: Array<(
@@ -7108,7 +7944,13 @@ export type DeleteArkhamDbDeckMutationVariables = Exact<{
 
 export type DeleteArkhamDbDeckMutation = (
   { __typename?: 'mutation_root' }
-  & { delete_campaign_deck?: Maybe<(
+  & { update_campaign_deck?: Maybe<(
+    { __typename?: 'campaign_deck_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'campaign_deck' }
+      & LatestDeckFragment
+    )> }
+  )>, delete_campaign_deck?: Maybe<(
     { __typename?: 'campaign_deck_mutation_response' }
     & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
     & { returning: Array<(
@@ -7145,13 +7987,27 @@ export type GetMyDecksQuery = (
   )> }
 );
 
-export type GetLatestCampaignDeckQueryVariables = Exact<{
+export type GetLatestLocalDeckQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
-  id_exp: Campaign_Deck_Bool_Exp;
+  local_uuid: Scalars['String'];
 }>;
 
 
-export type GetLatestCampaignDeckQuery = (
+export type GetLatestLocalDeckQuery = (
+  { __typename?: 'query_root' }
+  & { campaign_deck: Array<(
+    { __typename?: 'campaign_deck' }
+    & LatestDeckFragment
+  )> }
+);
+
+export type GetLatestArkhamDbDeckQueryVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  arkhamdb_id: Scalars['Int'];
+}>;
+
+
+export type GetLatestArkhamDbDeckQuery = (
   { __typename?: 'query_root' }
   & { campaign_deck: Array<(
     { __typename?: 'campaign_deck' }
@@ -7172,6 +8028,20 @@ export type GetLatestDeckQuery = (
   )> }
 );
 
+export type GetDeckHistoryQueryVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  investigator: Scalars['String'];
+}>;
+
+
+export type GetDeckHistoryQuery = (
+  { __typename?: 'query_root' }
+  & { campaign_deck: Array<(
+    { __typename?: 'campaign_deck' }
+    & HistoryDeckFragment
+  )> }
+);
+
 export type UserInfoFragment = (
   { __typename?: 'users' }
   & Pick<Users, 'id' | 'handle'>
@@ -7179,7 +8049,7 @@ export type UserInfoFragment = (
 
 export type GuideInputFragment = (
   { __typename?: 'guide_input' }
-  & Pick<Guide_Input, 'id' | 'campaign_id' | 'step' | 'scenario' | 'type' | 'payload' | 'created_at'>
+  & Pick<Guide_Input, 'id' | 'campaign_id' | 'step' | 'scenario' | 'type' | 'payload'>
 );
 
 export type GuideAchievementFragment = (
@@ -7190,6 +8060,11 @@ export type GuideAchievementFragment = (
 export type IdDeckFragment = (
   { __typename?: 'campaign_deck' }
   & Pick<Campaign_Deck, 'id' | 'owner_id' | 'arkhamdb_id' | 'local_uuid' | 'campaign_id'>
+);
+
+export type FullChaosBagResultFragment = (
+  { __typename?: 'chaos_bag_result' }
+  & Pick<Chaos_Bag_Result, 'id' | 'bless' | 'curse' | 'drawn' | 'sealed' | 'totalDrawn'>
 );
 
 export type MiniDeckFragment = (
@@ -7209,6 +8084,21 @@ export type AllDeckFragment = (
   & { campaign: (
     { __typename?: 'campaign' }
     & Pick<Campaign, 'id' | 'uuid'>
+  ), next_deck?: Maybe<(
+    { __typename?: 'campaign_deck' }
+    & IdDeckFragment
+  )>, previous_deck?: Maybe<(
+    { __typename?: 'campaign_deck' }
+    & IdDeckFragment
+  )> }
+  & BasicDeckFragment
+);
+
+export type HistoryDeckFragment = (
+  { __typename?: 'campaign_deck' }
+  & { owner: (
+    { __typename?: 'users' }
+    & UserInfoFragment
   ), next_deck?: Maybe<(
     { __typename?: 'campaign_deck' }
     & IdDeckFragment
@@ -7244,13 +8134,13 @@ export type MiniInvestigatorDataFragment = (
 
 export type FullInvestigatorDataFragment = (
   { __typename?: 'investigator_data' }
-  & Pick<Investigator_Data, 'addedCards' | 'ignoreStoryAssets' | 'removedCards' | 'availableXp' | 'spentXp' | 'specialXp' | 'updated_at'>
+  & Pick<Investigator_Data, 'addedCards' | 'ignoreStoryAssets' | 'removedCards' | 'availableXp' | 'spentXp' | 'specialXp'>
   & MiniInvestigatorDataFragment
 );
 
 export type MiniCampaignFragment = (
   { __typename?: 'campaign' }
-  & Pick<Campaign, 'id' | 'uuid' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'scenarioResults' | 'guided' | 'updated_at'>
+  & Pick<Campaign, 'id' | 'uuid' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'scenarioResults' | 'guided' | 'owner_id' | 'updated_at'>
   & { latest_decks: Array<(
     { __typename?: 'latest_decks' }
     & { deck?: Maybe<(
@@ -7381,6 +8271,32 @@ export type GetCampaignAccessQuery = (
   )> }
 );
 
+export type GetCaosBagResultsQueryVariables = Exact<{
+  campaign_id: Scalars['Int'];
+}>;
+
+
+export type GetCaosBagResultsQuery = (
+  { __typename?: 'query_root' }
+  & { chaos_bag_result_by_pk?: Maybe<(
+    { __typename?: 'chaos_bag_result' }
+    & FullChaosBagResultFragment
+  )> }
+);
+
+export type GetChaosBagResultsQueryVariables = Exact<{
+  campaign_id: Scalars['Int'];
+}>;
+
+
+export type GetChaosBagResultsQuery = (
+  { __typename?: 'query_root' }
+  & { chaos_bag_result_by_pk?: Maybe<(
+    { __typename?: 'chaos_bag_result' }
+    & Pick<Chaos_Bag_Result, 'id' | 'bless' | 'curse' | 'drawn' | 'sealed' | 'totalDrawn'>
+  )> }
+);
+
 export type CampaignSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
@@ -7430,6 +8346,19 @@ export type CampaignGuideSubscription = (
   )> }
 );
 
+export type ChaosBagResultsSubscriptionVariables = Exact<{
+  campaign_id: Scalars['Int'];
+}>;
+
+
+export type ChaosBagResultsSubscription = (
+  { __typename?: 'subscription_root' }
+  & { chaos_bag_result_by_pk?: Maybe<(
+    { __typename?: 'chaos_bag_result' }
+    & FullChaosBagResultFragment
+  )> }
+);
+
 export type GetProfileQueryVariables = Exact<{
   userId: Scalars['String'];
 }>;
@@ -7476,6 +8405,141 @@ export type DeleteInvestigatorDecksMutation = (
     & { returning: Array<(
       { __typename?: 'campaign_deck' }
       & Pick<Campaign_Deck, 'id' | 'campaign_id' | 'arkhamdb_id' | 'local_uuid' | 'investigator'>
+    )> }
+  )> }
+);
+
+export type ChaosBagClearTokensMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  bless: Scalars['Int'];
+  curse: Scalars['Int'];
+}>;
+
+
+export type ChaosBagClearTokensMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_chaos_bag_result_by_pk?: Maybe<(
+    { __typename?: 'chaos_bag_result' }
+    & Pick<Chaos_Bag_Result, 'id' | 'drawn' | 'bless' | 'curse'>
+  )> }
+);
+
+export type ChaosBagDrawTokenMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  drawn: Scalars['jsonb'];
+}>;
+
+
+export type ChaosBagDrawTokenMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_chaos_bag_result_by_pk?: Maybe<(
+    { __typename?: 'chaos_bag_result' }
+    & Pick<Chaos_Bag_Result, 'id' | 'drawn' | 'totalDrawn'>
+  )> }
+);
+
+export type ChaosBagResetBlessCurseMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  drawn: Scalars['jsonb'];
+  sealed: Scalars['jsonb'];
+}>;
+
+
+export type ChaosBagResetBlessCurseMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_chaos_bag_result_by_pk?: Maybe<(
+    { __typename?: 'chaos_bag_result' }
+    & Pick<Chaos_Bag_Result, 'id' | 'bless' | 'curse' | 'drawn' | 'sealed'>
+  )> }
+);
+
+export type ChaosBagSealTokensMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  sealed: Scalars['jsonb'];
+}>;
+
+
+export type ChaosBagSealTokensMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_chaos_bag_result_by_pk?: Maybe<(
+    { __typename?: 'chaos_bag_result' }
+    & Pick<Chaos_Bag_Result, 'id' | 'sealed'>
+  )> }
+);
+
+export type ChaosBagReleaseAllSealedMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+}>;
+
+
+export type ChaosBagReleaseAllSealedMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_chaos_bag_result_by_pk?: Maybe<(
+    { __typename?: 'chaos_bag_result' }
+    & Pick<Chaos_Bag_Result, 'id' | 'sealed'>
+  )> }
+);
+
+export type ChaosBagIncBlessMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+}>;
+
+
+export type ChaosBagIncBlessMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_chaos_bag_result?: Maybe<(
+    { __typename?: 'chaos_bag_result_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'chaos_bag_result' }
+      & Pick<Chaos_Bag_Result, 'id' | 'bless'>
+    )> }
+  )> }
+);
+
+export type ChaosBagDecBlessMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+}>;
+
+
+export type ChaosBagDecBlessMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_chaos_bag_result?: Maybe<(
+    { __typename?: 'chaos_bag_result_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'chaos_bag_result' }
+      & Pick<Chaos_Bag_Result, 'id' | 'bless'>
+    )> }
+  )> }
+);
+
+export type ChaosBagIncCurseMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+}>;
+
+
+export type ChaosBagIncCurseMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_chaos_bag_result?: Maybe<(
+    { __typename?: 'chaos_bag_result_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'chaos_bag_result' }
+      & Pick<Chaos_Bag_Result, 'id' | 'curse'>
+    )> }
+  )> }
+);
+
+export type ChaosBagDecCurseMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+}>;
+
+
+export type ChaosBagDecCurseMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_chaos_bag_result?: Maybe<(
+    { __typename?: 'chaos_bag_result_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'chaos_bag_result' }
+      & Pick<Chaos_Bag_Result, 'id' | 'curse'>
     )> }
   )> }
 );
@@ -7617,11 +8681,11 @@ export type UpdateInvestigatorDataMutationVariables = Exact<{
   mental?: Maybe<Scalars['Int']>;
   killed?: Maybe<Scalars['Boolean']>;
   insane?: Maybe<Scalars['Boolean']>;
-  added_cards?: Maybe<Scalars['jsonb']>;
-  available_xp?: Maybe<Scalars['Int']>;
-  story_assets?: Maybe<Scalars['jsonb']>;
-  ignore_story_assets?: Maybe<Scalars['jsonb']>;
-  removed_cards?: Maybe<Scalars['jsonb']>;
+  addedCards?: Maybe<Scalars['jsonb']>;
+  availableXp?: Maybe<Scalars['Int']>;
+  storyAssets?: Maybe<Scalars['jsonb']>;
+  ignoreStoryAssets?: Maybe<Scalars['jsonb']>;
+  removedCards?: Maybe<Scalars['jsonb']>;
 }>;
 
 
@@ -7806,6 +8870,16 @@ export type RemoveCampaignInvestigatorMutation = (
   )> }
 );
 
+export const FullChaosBagResultFragmentDoc = gql`
+    fragment FullChaosBagResult on chaos_bag_result {
+  id
+  bless
+  curse
+  drawn
+  sealed
+  totalDrawn
+}
+    `;
 export const IdDeckFragmentDoc = gql`
     fragment IdDeck on campaign_deck {
   id
@@ -7844,6 +8918,28 @@ export const AllDeckFragmentDoc = gql`
 }
     ${BasicDeckFragmentDoc}
 ${IdDeckFragmentDoc}`;
+export const UserInfoFragmentDoc = gql`
+    fragment UserInfo on users {
+  id
+  handle
+}
+    `;
+export const HistoryDeckFragmentDoc = gql`
+    fragment HistoryDeck on campaign_deck {
+  ...BasicDeck
+  owner {
+    ...UserInfo
+  }
+  next_deck {
+    ...IdDeck
+  }
+  previous_deck {
+    ...IdDeck
+  }
+}
+    ${BasicDeckFragmentDoc}
+${UserInfoFragmentDoc}
+${IdDeckFragmentDoc}`;
 export const MiniInvestigatorDataFragmentDoc = gql`
     fragment MiniInvestigatorData on investigator_data {
   id
@@ -7866,16 +8962,17 @@ export const MiniCampaignFragmentDoc = gql`
   difficulty
   scenarioResults
   guided
-  latest_decks {
+  owner_id
+  latest_decks(order_by: {owner_id: asc}) {
     deck {
       ...MiniDeck
     }
   }
-  investigators {
+  investigators(order_by: {created_at: asc}) {
     id
     investigator
   }
-  investigator_data {
+  investigator_data(order_by: {created_at: asc}) {
     ...MiniInvestigatorData
   }
   updated_at
@@ -7891,15 +8988,8 @@ export const FullInvestigatorDataFragmentDoc = gql`
   availableXp
   spentXp
   specialXp
-  updated_at
 }
     ${MiniInvestigatorDataFragmentDoc}`;
-export const UserInfoFragmentDoc = gql`
-    fragment UserInfo on users {
-  id
-  handle
-}
-    `;
 export const LatestDeckFragmentDoc = gql`
     fragment LatestDeck on campaign_deck {
   ...BasicDeck
@@ -7941,14 +9031,14 @@ export const FullCampaignFragmentDoc = gql`
   guided
   guide_version
   owner_id
-  investigators {
+  investigators(order_by: {created_at: asc}) {
     id
     investigator
   }
-  investigator_data {
+  investigator_data(order_by: {created_at: asc}) {
     ...FullInvestigatorData
   }
-  latest_decks {
+  latest_decks(order_by: {owner_id: asc}) {
     deck {
       ...LatestDeck
     }
@@ -7976,7 +9066,6 @@ export const GuideInputFragmentDoc = gql`
   scenario
   type
   payload
-  created_at
 }
     `;
 export const GuideAchievementFragmentDoc = gql`
@@ -7993,10 +9082,10 @@ export const FullCampaignGuideStateFragmentDoc = gql`
   id
   uuid
   updated_at
-  guide_inputs {
+  guide_inputs(order_by: {created_at: asc}) {
     ...GuideInput
   }
-  guide_achievements {
+  guide_achievements(order_by: {created_at: asc}) {
     ...GuideAchievement
   }
 }
@@ -8077,7 +9166,8 @@ export type UploadNewCampaignMutationFn = Apollo.MutationFunction<UploadNewCampa
  * });
  */
 export function useUploadNewCampaignMutation(baseOptions?: Apollo.MutationHookOptions<UploadNewCampaignMutation, UploadNewCampaignMutationVariables>) {
-        return Apollo.useMutation<UploadNewCampaignMutation, UploadNewCampaignMutationVariables>(UploadNewCampaignDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UploadNewCampaignMutation, UploadNewCampaignMutationVariables>(UploadNewCampaignDocument, options);
       }
 export type UploadNewCampaignMutationHookResult = ReturnType<typeof useUploadNewCampaignMutation>;
 export type UploadNewCampaignMutationResult = Apollo.MutationResult<UploadNewCampaignMutation>;
@@ -8117,7 +9207,8 @@ export type InsertNewDeckMutationFn = Apollo.MutationFunction<InsertNewDeckMutat
  * });
  */
 export function useInsertNewDeckMutation(baseOptions?: Apollo.MutationHookOptions<InsertNewDeckMutation, InsertNewDeckMutationVariables>) {
-        return Apollo.useMutation<InsertNewDeckMutation, InsertNewDeckMutationVariables>(InsertNewDeckDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InsertNewDeckMutation, InsertNewDeckMutationVariables>(InsertNewDeckDocument, options);
       }
 export type InsertNewDeckMutationHookResult = ReturnType<typeof useInsertNewDeckMutation>;
 export type InsertNewDeckMutationResult = Apollo.MutationResult<InsertNewDeckMutation>;
@@ -8125,18 +9216,16 @@ export type InsertNewDeckMutationOptions = Apollo.BaseMutationOptions<InsertNewD
 export const InsertNextLocalDeckDocument = gql`
     mutation insertNextLocalDeck($previous_local_uuid: String, $local_uuid: String, $campaign_id: Int!, $investigator: String!, $content: jsonb!, $content_hash: String!, $userId: String!) {
   insert_campaign_deck_one(
-    object: {local_uuid: $previous_local_uuid, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId, next_deck: {data: {local_uuid: $local_uuid, campaign_id: $campaign_id, investigator: $investigator, content: $content, content_hash: $content_hash, owner_id: $userId}}}
-    on_conflict: {constraint: deck_local_uuid_campaign_id_key, update_columns: [next_deck_id]}
+    object: {local_uuid: $local_uuid, arkhamdb_id: null, campaign_id: $campaign_id, investigator: $investigator, content: $content, content_hash: $content_hash, owner_id: $userId, previous_decks: {data: {local_uuid: $previous_local_uuid, arkhamdb_id: null, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId}, on_conflict: {constraint: deck_local_uuid_campaign_id_key, update_columns: [next_deck_id]}}}
   ) {
-    ...IdDeck
-    investigator
-    next_deck {
-      ...LatestDeck
+    ...LatestDeck
+    previous_deck {
+      ...IdDeck
     }
   }
 }
-    ${IdDeckFragmentDoc}
-${LatestDeckFragmentDoc}`;
+    ${LatestDeckFragmentDoc}
+${IdDeckFragmentDoc}`;
 export type InsertNextLocalDeckMutationFn = Apollo.MutationFunction<InsertNextLocalDeckMutation, InsertNextLocalDeckMutationVariables>;
 
 /**
@@ -8163,7 +9252,8 @@ export type InsertNextLocalDeckMutationFn = Apollo.MutationFunction<InsertNextLo
  * });
  */
 export function useInsertNextLocalDeckMutation(baseOptions?: Apollo.MutationHookOptions<InsertNextLocalDeckMutation, InsertNextLocalDeckMutationVariables>) {
-        return Apollo.useMutation<InsertNextLocalDeckMutation, InsertNextLocalDeckMutationVariables>(InsertNextLocalDeckDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InsertNextLocalDeckMutation, InsertNextLocalDeckMutationVariables>(InsertNextLocalDeckDocument, options);
       }
 export type InsertNextLocalDeckMutationHookResult = ReturnType<typeof useInsertNextLocalDeckMutation>;
 export type InsertNextLocalDeckMutationResult = Apollo.MutationResult<InsertNextLocalDeckMutation>;
@@ -8171,18 +9261,16 @@ export type InsertNextLocalDeckMutationOptions = Apollo.BaseMutationOptions<Inse
 export const InsertNextArkhamDbDeckDocument = gql`
     mutation insertNextArkhamDbDeck($previous_arkhamdb_id: Int!, $arkhamdb_id: Int!, $campaign_id: Int!, $investigator: String!, $content: jsonb!, $content_hash: String!, $userId: String!) {
   insert_campaign_deck_one(
-    object: {arkhamdb_id: $previous_arkhamdb_id, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId, next_deck: {data: {arkhamdb_id: $arkhamdb_id, campaign_id: $campaign_id, investigator: $investigator, content: $content, content_hash: $content_hash, owner_id: $userId}}}
-    on_conflict: {constraint: deck_arkhamdb_id_campaign_id_key, update_columns: [next_deck_id]}
+    object: {arkhamdb_id: $arkhamdb_id, local_uuid: null, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId, content: $content, content_hash: $content_hash, previous_decks: {data: {arkhamdb_id: $previous_arkhamdb_id, local_uuid: null, campaign_id: $campaign_id, investigator: $investigator, owner_id: $userId}, on_conflict: {constraint: deck_arkhamdb_id_campaign_id_key, update_columns: [next_deck_id]}}}
   ) {
-    ...IdDeck
-    investigator
-    next_deck {
-      ...LatestDeck
+    ...LatestDeck
+    previous_deck {
+      ...IdDeck
     }
   }
 }
-    ${IdDeckFragmentDoc}
-${LatestDeckFragmentDoc}`;
+    ${LatestDeckFragmentDoc}
+${IdDeckFragmentDoc}`;
 export type InsertNextArkhamDbDeckMutationFn = Apollo.MutationFunction<InsertNextArkhamDbDeckMutation, InsertNextArkhamDbDeckMutationVariables>;
 
 /**
@@ -8209,7 +9297,8 @@ export type InsertNextArkhamDbDeckMutationFn = Apollo.MutationFunction<InsertNex
  * });
  */
 export function useInsertNextArkhamDbDeckMutation(baseOptions?: Apollo.MutationHookOptions<InsertNextArkhamDbDeckMutation, InsertNextArkhamDbDeckMutationVariables>) {
-        return Apollo.useMutation<InsertNextArkhamDbDeckMutation, InsertNextArkhamDbDeckMutationVariables>(InsertNextArkhamDbDeckDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InsertNextArkhamDbDeckMutation, InsertNextArkhamDbDeckMutationVariables>(InsertNextArkhamDbDeckDocument, options);
       }
 export type InsertNextArkhamDbDeckMutationHookResult = ReturnType<typeof useInsertNextArkhamDbDeckMutation>;
 export type InsertNextArkhamDbDeckMutationResult = Apollo.MutationResult<InsertNextArkhamDbDeckMutation>;
@@ -8252,7 +9341,8 @@ export type UpdateArkhamDbDeckMutationFn = Apollo.MutationFunction<UpdateArkhamD
  * });
  */
 export function useUpdateArkhamDbDeckMutation(baseOptions?: Apollo.MutationHookOptions<UpdateArkhamDbDeckMutation, UpdateArkhamDbDeckMutationVariables>) {
-        return Apollo.useMutation<UpdateArkhamDbDeckMutation, UpdateArkhamDbDeckMutationVariables>(UpdateArkhamDbDeckDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateArkhamDbDeckMutation, UpdateArkhamDbDeckMutationVariables>(UpdateArkhamDbDeckDocument, options);
       }
 export type UpdateArkhamDbDeckMutationHookResult = ReturnType<typeof useUpdateArkhamDbDeckMutation>;
 export type UpdateArkhamDbDeckMutationResult = Apollo.MutationResult<UpdateArkhamDbDeckMutation>;
@@ -8295,7 +9385,8 @@ export type UpdateLocalDeckMutationFn = Apollo.MutationFunction<UpdateLocalDeckM
  * });
  */
 export function useUpdateLocalDeckMutation(baseOptions?: Apollo.MutationHookOptions<UpdateLocalDeckMutation, UpdateLocalDeckMutationVariables>) {
-        return Apollo.useMutation<UpdateLocalDeckMutation, UpdateLocalDeckMutationVariables>(UpdateLocalDeckDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateLocalDeckMutation, UpdateLocalDeckMutationVariables>(UpdateLocalDeckDocument, options);
       }
 export type UpdateLocalDeckMutationHookResult = ReturnType<typeof useUpdateLocalDeckMutation>;
 export type UpdateLocalDeckMutationResult = Apollo.MutationResult<UpdateLocalDeckMutation>;
@@ -8333,7 +9424,8 @@ export type DeleteAllLocalDecksMutationFn = Apollo.MutationFunction<DeleteAllLoc
  * });
  */
 export function useDeleteAllLocalDecksMutation(baseOptions?: Apollo.MutationHookOptions<DeleteAllLocalDecksMutation, DeleteAllLocalDecksMutationVariables>) {
-        return Apollo.useMutation<DeleteAllLocalDecksMutation, DeleteAllLocalDecksMutationVariables>(DeleteAllLocalDecksDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteAllLocalDecksMutation, DeleteAllLocalDecksMutationVariables>(DeleteAllLocalDecksDocument, options);
       }
 export type DeleteAllLocalDecksMutationHookResult = ReturnType<typeof useDeleteAllLocalDecksMutation>;
 export type DeleteAllLocalDecksMutationResult = Apollo.MutationResult<DeleteAllLocalDecksMutation>;
@@ -8371,13 +9463,22 @@ export type DeleteAllArkhamDbDecksMutationFn = Apollo.MutationFunction<DeleteAll
  * });
  */
 export function useDeleteAllArkhamDbDecksMutation(baseOptions?: Apollo.MutationHookOptions<DeleteAllArkhamDbDecksMutation, DeleteAllArkhamDbDecksMutationVariables>) {
-        return Apollo.useMutation<DeleteAllArkhamDbDecksMutation, DeleteAllArkhamDbDecksMutationVariables>(DeleteAllArkhamDbDecksDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteAllArkhamDbDecksMutation, DeleteAllArkhamDbDecksMutationVariables>(DeleteAllArkhamDbDecksDocument, options);
       }
 export type DeleteAllArkhamDbDecksMutationHookResult = ReturnType<typeof useDeleteAllArkhamDbDecksMutation>;
 export type DeleteAllArkhamDbDecksMutationResult = Apollo.MutationResult<DeleteAllArkhamDbDecksMutation>;
 export type DeleteAllArkhamDbDecksMutationOptions = Apollo.BaseMutationOptions<DeleteAllArkhamDbDecksMutation, DeleteAllArkhamDbDecksMutationVariables>;
 export const DeleteLocalDeckDocument = gql`
     mutation deleteLocalDeck($local_uuid: String!, $campaign_id: Int!) {
+  update_campaign_deck(
+    where: {next_deck: {local_uuid: {_eq: $local_uuid}, campaign_id: {_eq: $campaign_id}}}
+    _delete_key: {content: "nextDeckId"}
+  ) {
+    returning {
+      ...LatestDeck
+    }
+  }
   delete_campaign_deck(
     where: {local_uuid: {_eq: $local_uuid}, campaign_id: {_eq: $campaign_id}}
   ) {
@@ -8390,8 +9491,8 @@ export const DeleteLocalDeckDocument = gql`
     }
   }
 }
-    ${IdDeckFragmentDoc}
-${LatestDeckFragmentDoc}`;
+    ${LatestDeckFragmentDoc}
+${IdDeckFragmentDoc}`;
 export type DeleteLocalDeckMutationFn = Apollo.MutationFunction<DeleteLocalDeckMutation, DeleteLocalDeckMutationVariables>;
 
 /**
@@ -8413,13 +9514,22 @@ export type DeleteLocalDeckMutationFn = Apollo.MutationFunction<DeleteLocalDeckM
  * });
  */
 export function useDeleteLocalDeckMutation(baseOptions?: Apollo.MutationHookOptions<DeleteLocalDeckMutation, DeleteLocalDeckMutationVariables>) {
-        return Apollo.useMutation<DeleteLocalDeckMutation, DeleteLocalDeckMutationVariables>(DeleteLocalDeckDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteLocalDeckMutation, DeleteLocalDeckMutationVariables>(DeleteLocalDeckDocument, options);
       }
 export type DeleteLocalDeckMutationHookResult = ReturnType<typeof useDeleteLocalDeckMutation>;
 export type DeleteLocalDeckMutationResult = Apollo.MutationResult<DeleteLocalDeckMutation>;
 export type DeleteLocalDeckMutationOptions = Apollo.BaseMutationOptions<DeleteLocalDeckMutation, DeleteLocalDeckMutationVariables>;
 export const DeleteArkhamDbDeckDocument = gql`
     mutation deleteArkhamDbDeck($arkhamdb_id: Int!, $campaign_id: Int!) {
+  update_campaign_deck(
+    where: {next_deck: {arkhamdb_id: {_eq: $arkhamdb_id}, campaign_id: {_eq: $campaign_id}}}
+    _delete_key: {content: "nextDeckId"}
+  ) {
+    returning {
+      ...LatestDeck
+    }
+  }
   delete_campaign_deck(
     where: {arkhamdb_id: {_eq: $arkhamdb_id}, campaign_id: {_eq: $campaign_id}}
   ) {
@@ -8432,8 +9542,8 @@ export const DeleteArkhamDbDeckDocument = gql`
     }
   }
 }
-    ${IdDeckFragmentDoc}
-${LatestDeckFragmentDoc}`;
+    ${LatestDeckFragmentDoc}
+${IdDeckFragmentDoc}`;
 export type DeleteArkhamDbDeckMutationFn = Apollo.MutationFunction<DeleteArkhamDbDeckMutation, DeleteArkhamDbDeckMutationVariables>;
 
 /**
@@ -8455,7 +9565,8 @@ export type DeleteArkhamDbDeckMutationFn = Apollo.MutationFunction<DeleteArkhamD
  * });
  */
 export function useDeleteArkhamDbDeckMutation(baseOptions?: Apollo.MutationHookOptions<DeleteArkhamDbDeckMutation, DeleteArkhamDbDeckMutationVariables>) {
-        return Apollo.useMutation<DeleteArkhamDbDeckMutation, DeleteArkhamDbDeckMutationVariables>(DeleteArkhamDbDeckDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteArkhamDbDeckMutation, DeleteArkhamDbDeckMutationVariables>(DeleteArkhamDbDeckDocument, options);
       }
 export type DeleteArkhamDbDeckMutationHookResult = ReturnType<typeof useDeleteArkhamDbDeckMutation>;
 export type DeleteArkhamDbDeckMutationResult = Apollo.MutationResult<DeleteArkhamDbDeckMutation>;
@@ -8494,48 +9605,92 @@ ${AllDeckFragmentDoc}`;
  * });
  */
 export function useGetMyDecksQuery(baseOptions: Apollo.QueryHookOptions<GetMyDecksQuery, GetMyDecksQueryVariables>) {
-        return Apollo.useQuery<GetMyDecksQuery, GetMyDecksQueryVariables>(GetMyDecksDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetMyDecksQuery, GetMyDecksQueryVariables>(GetMyDecksDocument, options);
       }
 export function useGetMyDecksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMyDecksQuery, GetMyDecksQueryVariables>) {
-          return Apollo.useLazyQuery<GetMyDecksQuery, GetMyDecksQueryVariables>(GetMyDecksDocument, baseOptions);
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetMyDecksQuery, GetMyDecksQueryVariables>(GetMyDecksDocument, options);
         }
 export type GetMyDecksQueryHookResult = ReturnType<typeof useGetMyDecksQuery>;
 export type GetMyDecksLazyQueryHookResult = ReturnType<typeof useGetMyDecksLazyQuery>;
 export type GetMyDecksQueryResult = Apollo.QueryResult<GetMyDecksQuery, GetMyDecksQueryVariables>;
-export const GetLatestCampaignDeckDocument = gql`
-    query getLatestCampaignDeck($campaign_id: Int!, $id_exp: campaign_deck_bool_exp!) {
-  campaign_deck(where: {_and: [{campaign_id: {_eq: $campaign_id}}, $id_exp]}) {
+export const GetLatestLocalDeckDocument = gql`
+    query getLatestLocalDeck($campaign_id: Int!, $local_uuid: String!) {
+  campaign_deck(
+    where: {campaign_id: {_eq: $campaign_id}, local_uuid: {_eq: $local_uuid}}
+  ) {
     ...LatestDeck
   }
 }
     ${LatestDeckFragmentDoc}`;
 
 /**
- * __useGetLatestCampaignDeckQuery__
+ * __useGetLatestLocalDeckQuery__
  *
- * To run a query within a React component, call `useGetLatestCampaignDeckQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetLatestCampaignDeckQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetLatestLocalDeckQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLatestLocalDeckQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetLatestCampaignDeckQuery({
+ * const { data, loading, error } = useGetLatestLocalDeckQuery({
  *   variables: {
  *      campaign_id: // value for 'campaign_id'
- *      id_exp: // value for 'id_exp'
+ *      local_uuid: // value for 'local_uuid'
  *   },
  * });
  */
-export function useGetLatestCampaignDeckQuery(baseOptions: Apollo.QueryHookOptions<GetLatestCampaignDeckQuery, GetLatestCampaignDeckQueryVariables>) {
-        return Apollo.useQuery<GetLatestCampaignDeckQuery, GetLatestCampaignDeckQueryVariables>(GetLatestCampaignDeckDocument, baseOptions);
+export function useGetLatestLocalDeckQuery(baseOptions: Apollo.QueryHookOptions<GetLatestLocalDeckQuery, GetLatestLocalDeckQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetLatestLocalDeckQuery, GetLatestLocalDeckQueryVariables>(GetLatestLocalDeckDocument, options);
       }
-export function useGetLatestCampaignDeckLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLatestCampaignDeckQuery, GetLatestCampaignDeckQueryVariables>) {
-          return Apollo.useLazyQuery<GetLatestCampaignDeckQuery, GetLatestCampaignDeckQueryVariables>(GetLatestCampaignDeckDocument, baseOptions);
+export function useGetLatestLocalDeckLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLatestLocalDeckQuery, GetLatestLocalDeckQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetLatestLocalDeckQuery, GetLatestLocalDeckQueryVariables>(GetLatestLocalDeckDocument, options);
         }
-export type GetLatestCampaignDeckQueryHookResult = ReturnType<typeof useGetLatestCampaignDeckQuery>;
-export type GetLatestCampaignDeckLazyQueryHookResult = ReturnType<typeof useGetLatestCampaignDeckLazyQuery>;
-export type GetLatestCampaignDeckQueryResult = Apollo.QueryResult<GetLatestCampaignDeckQuery, GetLatestCampaignDeckQueryVariables>;
+export type GetLatestLocalDeckQueryHookResult = ReturnType<typeof useGetLatestLocalDeckQuery>;
+export type GetLatestLocalDeckLazyQueryHookResult = ReturnType<typeof useGetLatestLocalDeckLazyQuery>;
+export type GetLatestLocalDeckQueryResult = Apollo.QueryResult<GetLatestLocalDeckQuery, GetLatestLocalDeckQueryVariables>;
+export const GetLatestArkhamDbDeckDocument = gql`
+    query getLatestArkhamDbDeck($campaign_id: Int!, $arkhamdb_id: Int!) {
+  campaign_deck(
+    where: {campaign_id: {_eq: $campaign_id}, arkhamdb_id: {_eq: $arkhamdb_id}}
+  ) {
+    ...LatestDeck
+  }
+}
+    ${LatestDeckFragmentDoc}`;
+
+/**
+ * __useGetLatestArkhamDbDeckQuery__
+ *
+ * To run a query within a React component, call `useGetLatestArkhamDbDeckQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLatestArkhamDbDeckQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetLatestArkhamDbDeckQuery({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      arkhamdb_id: // value for 'arkhamdb_id'
+ *   },
+ * });
+ */
+export function useGetLatestArkhamDbDeckQuery(baseOptions: Apollo.QueryHookOptions<GetLatestArkhamDbDeckQuery, GetLatestArkhamDbDeckQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetLatestArkhamDbDeckQuery, GetLatestArkhamDbDeckQueryVariables>(GetLatestArkhamDbDeckDocument, options);
+      }
+export function useGetLatestArkhamDbDeckLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLatestArkhamDbDeckQuery, GetLatestArkhamDbDeckQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetLatestArkhamDbDeckQuery, GetLatestArkhamDbDeckQueryVariables>(GetLatestArkhamDbDeckDocument, options);
+        }
+export type GetLatestArkhamDbDeckQueryHookResult = ReturnType<typeof useGetLatestArkhamDbDeckQuery>;
+export type GetLatestArkhamDbDeckLazyQueryHookResult = ReturnType<typeof useGetLatestArkhamDbDeckLazyQuery>;
+export type GetLatestArkhamDbDeckQueryResult = Apollo.QueryResult<GetLatestArkhamDbDeckQuery, GetLatestArkhamDbDeckQueryVariables>;
 export const GetLatestDeckDocument = gql`
     query getLatestDeck($deckId: Int!) {
   campaign_deck_by_pk(id: $deckId) {
@@ -8561,14 +9716,54 @@ export const GetLatestDeckDocument = gql`
  * });
  */
 export function useGetLatestDeckQuery(baseOptions: Apollo.QueryHookOptions<GetLatestDeckQuery, GetLatestDeckQueryVariables>) {
-        return Apollo.useQuery<GetLatestDeckQuery, GetLatestDeckQueryVariables>(GetLatestDeckDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetLatestDeckQuery, GetLatestDeckQueryVariables>(GetLatestDeckDocument, options);
       }
 export function useGetLatestDeckLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLatestDeckQuery, GetLatestDeckQueryVariables>) {
-          return Apollo.useLazyQuery<GetLatestDeckQuery, GetLatestDeckQueryVariables>(GetLatestDeckDocument, baseOptions);
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetLatestDeckQuery, GetLatestDeckQueryVariables>(GetLatestDeckDocument, options);
         }
 export type GetLatestDeckQueryHookResult = ReturnType<typeof useGetLatestDeckQuery>;
 export type GetLatestDeckLazyQueryHookResult = ReturnType<typeof useGetLatestDeckLazyQuery>;
 export type GetLatestDeckQueryResult = Apollo.QueryResult<GetLatestDeckQuery, GetLatestDeckQueryVariables>;
+export const GetDeckHistoryDocument = gql`
+    query getDeckHistory($campaign_id: Int!, $investigator: String!) {
+  campaign_deck(
+    where: {campaign_id: {_eq: $campaign_id}, investigator: {_eq: $investigator}}
+  ) {
+    ...HistoryDeck
+  }
+}
+    ${HistoryDeckFragmentDoc}`;
+
+/**
+ * __useGetDeckHistoryQuery__
+ *
+ * To run a query within a React component, call `useGetDeckHistoryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetDeckHistoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetDeckHistoryQuery({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      investigator: // value for 'investigator'
+ *   },
+ * });
+ */
+export function useGetDeckHistoryQuery(baseOptions: Apollo.QueryHookOptions<GetDeckHistoryQuery, GetDeckHistoryQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetDeckHistoryQuery, GetDeckHistoryQueryVariables>(GetDeckHistoryDocument, options);
+      }
+export function useGetDeckHistoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetDeckHistoryQuery, GetDeckHistoryQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetDeckHistoryQuery, GetDeckHistoryQueryVariables>(GetDeckHistoryDocument, options);
+        }
+export type GetDeckHistoryQueryHookResult = ReturnType<typeof useGetDeckHistoryQuery>;
+export type GetDeckHistoryLazyQueryHookResult = ReturnType<typeof useGetDeckHistoryLazyQuery>;
+export type GetDeckHistoryQueryResult = Apollo.QueryResult<GetDeckHistoryQuery, GetDeckHistoryQueryVariables>;
 export const GetMyCampaignsDocument = gql`
     query getMyCampaigns($userId: String!) {
   users_by_pk(id: $userId) {
@@ -8605,10 +9800,12 @@ export const GetMyCampaignsDocument = gql`
  * });
  */
 export function useGetMyCampaignsQuery(baseOptions: Apollo.QueryHookOptions<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>) {
-        return Apollo.useQuery<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>(GetMyCampaignsDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>(GetMyCampaignsDocument, options);
       }
 export function useGetMyCampaignsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>) {
-          return Apollo.useLazyQuery<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>(GetMyCampaignsDocument, baseOptions);
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>(GetMyCampaignsDocument, options);
         }
 export type GetMyCampaignsQueryHookResult = ReturnType<typeof useGetMyCampaignsQuery>;
 export type GetMyCampaignsLazyQueryHookResult = ReturnType<typeof useGetMyCampaignsLazyQuery>;
@@ -8638,10 +9835,12 @@ export const GetCampaignDocument = gql`
  * });
  */
 export function useGetCampaignQuery(baseOptions: Apollo.QueryHookOptions<GetCampaignQuery, GetCampaignQueryVariables>) {
-        return Apollo.useQuery<GetCampaignQuery, GetCampaignQueryVariables>(GetCampaignDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCampaignQuery, GetCampaignQueryVariables>(GetCampaignDocument, options);
       }
 export function useGetCampaignLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCampaignQuery, GetCampaignQueryVariables>) {
-          return Apollo.useLazyQuery<GetCampaignQuery, GetCampaignQueryVariables>(GetCampaignDocument, baseOptions);
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCampaignQuery, GetCampaignQueryVariables>(GetCampaignDocument, options);
         }
 export type GetCampaignQueryHookResult = ReturnType<typeof useGetCampaignQuery>;
 export type GetCampaignLazyQueryHookResult = ReturnType<typeof useGetCampaignLazyQuery>;
@@ -8671,10 +9870,12 @@ export const GetCampaignGuideDocument = gql`
  * });
  */
 export function useGetCampaignGuideQuery(baseOptions: Apollo.QueryHookOptions<GetCampaignGuideQuery, GetCampaignGuideQueryVariables>) {
-        return Apollo.useQuery<GetCampaignGuideQuery, GetCampaignGuideQueryVariables>(GetCampaignGuideDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCampaignGuideQuery, GetCampaignGuideQueryVariables>(GetCampaignGuideDocument, options);
       }
 export function useGetCampaignGuideLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCampaignGuideQuery, GetCampaignGuideQueryVariables>) {
-          return Apollo.useLazyQuery<GetCampaignGuideQuery, GetCampaignGuideQueryVariables>(GetCampaignGuideDocument, baseOptions);
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCampaignGuideQuery, GetCampaignGuideQueryVariables>(GetCampaignGuideDocument, options);
         }
 export type GetCampaignGuideQueryHookResult = ReturnType<typeof useGetCampaignGuideQuery>;
 export type GetCampaignGuideLazyQueryHookResult = ReturnType<typeof useGetCampaignGuideLazyQuery>;
@@ -8713,14 +9914,91 @@ export const GetCampaignAccessDocument = gql`
  * });
  */
 export function useGetCampaignAccessQuery(baseOptions: Apollo.QueryHookOptions<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>) {
-        return Apollo.useQuery<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>(GetCampaignAccessDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>(GetCampaignAccessDocument, options);
       }
 export function useGetCampaignAccessLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>) {
-          return Apollo.useLazyQuery<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>(GetCampaignAccessDocument, baseOptions);
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>(GetCampaignAccessDocument, options);
         }
 export type GetCampaignAccessQueryHookResult = ReturnType<typeof useGetCampaignAccessQuery>;
 export type GetCampaignAccessLazyQueryHookResult = ReturnType<typeof useGetCampaignAccessLazyQuery>;
 export type GetCampaignAccessQueryResult = Apollo.QueryResult<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>;
+export const GetCaosBagResultsDocument = gql`
+    query getCaosBagResults($campaign_id: Int!) {
+  chaos_bag_result_by_pk(id: $campaign_id) {
+    ...FullChaosBagResult
+  }
+}
+    ${FullChaosBagResultFragmentDoc}`;
+
+/**
+ * __useGetCaosBagResultsQuery__
+ *
+ * To run a query within a React component, call `useGetCaosBagResultsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCaosBagResultsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCaosBagResultsQuery({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *   },
+ * });
+ */
+export function useGetCaosBagResultsQuery(baseOptions: Apollo.QueryHookOptions<GetCaosBagResultsQuery, GetCaosBagResultsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCaosBagResultsQuery, GetCaosBagResultsQueryVariables>(GetCaosBagResultsDocument, options);
+      }
+export function useGetCaosBagResultsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCaosBagResultsQuery, GetCaosBagResultsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCaosBagResultsQuery, GetCaosBagResultsQueryVariables>(GetCaosBagResultsDocument, options);
+        }
+export type GetCaosBagResultsQueryHookResult = ReturnType<typeof useGetCaosBagResultsQuery>;
+export type GetCaosBagResultsLazyQueryHookResult = ReturnType<typeof useGetCaosBagResultsLazyQuery>;
+export type GetCaosBagResultsQueryResult = Apollo.QueryResult<GetCaosBagResultsQuery, GetCaosBagResultsQueryVariables>;
+export const GetChaosBagResultsDocument = gql`
+    query getChaosBagResults($campaign_id: Int!) {
+  chaos_bag_result_by_pk(id: $campaign_id) {
+    id
+    bless
+    curse
+    drawn
+    sealed
+    totalDrawn
+  }
+}
+    `;
+
+/**
+ * __useGetChaosBagResultsQuery__
+ *
+ * To run a query within a React component, call `useGetChaosBagResultsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetChaosBagResultsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetChaosBagResultsQuery({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *   },
+ * });
+ */
+export function useGetChaosBagResultsQuery(baseOptions: Apollo.QueryHookOptions<GetChaosBagResultsQuery, GetChaosBagResultsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetChaosBagResultsQuery, GetChaosBagResultsQueryVariables>(GetChaosBagResultsDocument, options);
+      }
+export function useGetChaosBagResultsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetChaosBagResultsQuery, GetChaosBagResultsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetChaosBagResultsQuery, GetChaosBagResultsQueryVariables>(GetChaosBagResultsDocument, options);
+        }
+export type GetChaosBagResultsQueryHookResult = ReturnType<typeof useGetChaosBagResultsQuery>;
+export type GetChaosBagResultsLazyQueryHookResult = ReturnType<typeof useGetChaosBagResultsLazyQuery>;
+export type GetChaosBagResultsQueryResult = Apollo.QueryResult<GetChaosBagResultsQuery, GetChaosBagResultsQueryVariables>;
 export const CampaignDocument = gql`
     subscription campaign($campaign_id: Int!) {
   campaign_by_pk(id: $campaign_id) {
@@ -8746,7 +10024,8 @@ export const CampaignDocument = gql`
  * });
  */
 export function useCampaignSubscription(baseOptions: Apollo.SubscriptionHookOptions<CampaignSubscription, CampaignSubscriptionVariables>) {
-        return Apollo.useSubscription<CampaignSubscription, CampaignSubscriptionVariables>(CampaignDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useSubscription<CampaignSubscription, CampaignSubscriptionVariables>(CampaignDocument, options);
       }
 export type CampaignSubscriptionHookResult = ReturnType<typeof useCampaignSubscription>;
 export type CampaignSubscriptionResult = Apollo.SubscriptionResult<CampaignSubscription>;
@@ -8784,7 +10063,8 @@ export const CampaignAccessDocument = gql`
  * });
  */
 export function useCampaignAccessSubscription(baseOptions: Apollo.SubscriptionHookOptions<CampaignAccessSubscription, CampaignAccessSubscriptionVariables>) {
-        return Apollo.useSubscription<CampaignAccessSubscription, CampaignAccessSubscriptionVariables>(CampaignAccessDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useSubscription<CampaignAccessSubscription, CampaignAccessSubscriptionVariables>(CampaignAccessDocument, options);
       }
 export type CampaignAccessSubscriptionHookResult = ReturnType<typeof useCampaignAccessSubscription>;
 export type CampaignAccessSubscriptionResult = Apollo.SubscriptionResult<CampaignAccessSubscription>;
@@ -8813,10 +10093,41 @@ export const CampaignGuideDocument = gql`
  * });
  */
 export function useCampaignGuideSubscription(baseOptions: Apollo.SubscriptionHookOptions<CampaignGuideSubscription, CampaignGuideSubscriptionVariables>) {
-        return Apollo.useSubscription<CampaignGuideSubscription, CampaignGuideSubscriptionVariables>(CampaignGuideDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useSubscription<CampaignGuideSubscription, CampaignGuideSubscriptionVariables>(CampaignGuideDocument, options);
       }
 export type CampaignGuideSubscriptionHookResult = ReturnType<typeof useCampaignGuideSubscription>;
 export type CampaignGuideSubscriptionResult = Apollo.SubscriptionResult<CampaignGuideSubscription>;
+export const ChaosBagResultsDocument = gql`
+    subscription chaosBagResults($campaign_id: Int!) {
+  chaos_bag_result_by_pk(id: $campaign_id) {
+    ...FullChaosBagResult
+  }
+}
+    ${FullChaosBagResultFragmentDoc}`;
+
+/**
+ * __useChaosBagResultsSubscription__
+ *
+ * To run a query within a React component, call `useChaosBagResultsSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagResultsSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useChaosBagResultsSubscription({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *   },
+ * });
+ */
+export function useChaosBagResultsSubscription(baseOptions: Apollo.SubscriptionHookOptions<ChaosBagResultsSubscription, ChaosBagResultsSubscriptionVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useSubscription<ChaosBagResultsSubscription, ChaosBagResultsSubscriptionVariables>(ChaosBagResultsDocument, options);
+      }
+export type ChaosBagResultsSubscriptionHookResult = ReturnType<typeof useChaosBagResultsSubscription>;
+export type ChaosBagResultsSubscriptionResult = Apollo.SubscriptionResult<ChaosBagResultsSubscription>;
 export const GetProfileDocument = gql`
     query getProfile($userId: String!) {
   users_by_pk(id: $userId) {
@@ -8858,10 +10169,12 @@ export const GetProfileDocument = gql`
  * });
  */
 export function useGetProfileQuery(baseOptions: Apollo.QueryHookOptions<GetProfileQuery, GetProfileQueryVariables>) {
-        return Apollo.useQuery<GetProfileQuery, GetProfileQueryVariables>(GetProfileDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetProfileQuery, GetProfileQueryVariables>(GetProfileDocument, options);
       }
 export function useGetProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetProfileQuery, GetProfileQueryVariables>) {
-          return Apollo.useLazyQuery<GetProfileQuery, GetProfileQueryVariables>(GetProfileDocument, baseOptions);
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetProfileQuery, GetProfileQueryVariables>(GetProfileDocument, options);
         }
 export type GetProfileQueryHookResult = ReturnType<typeof useGetProfileQuery>;
 export type GetProfileLazyQueryHookResult = ReturnType<typeof useGetProfileLazyQuery>;
@@ -8903,11 +10216,366 @@ export type DeleteInvestigatorDecksMutationFn = Apollo.MutationFunction<DeleteIn
  * });
  */
 export function useDeleteInvestigatorDecksMutation(baseOptions?: Apollo.MutationHookOptions<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>) {
-        return Apollo.useMutation<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>(DeleteInvestigatorDecksDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>(DeleteInvestigatorDecksDocument, options);
       }
 export type DeleteInvestigatorDecksMutationHookResult = ReturnType<typeof useDeleteInvestigatorDecksMutation>;
 export type DeleteInvestigatorDecksMutationResult = Apollo.MutationResult<DeleteInvestigatorDecksMutation>;
 export type DeleteInvestigatorDecksMutationOptions = Apollo.BaseMutationOptions<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>;
+export const ChaosBagClearTokensDocument = gql`
+    mutation chaosBagClearTokens($campaign_id: Int!, $bless: Int!, $curse: Int!) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {drawn: [], bless: $bless, curse: $curse}
+  ) {
+    id
+    drawn
+    bless
+    curse
+  }
+}
+    `;
+export type ChaosBagClearTokensMutationFn = Apollo.MutationFunction<ChaosBagClearTokensMutation, ChaosBagClearTokensMutationVariables>;
+
+/**
+ * __useChaosBagClearTokensMutation__
+ *
+ * To run a mutation, you first call `useChaosBagClearTokensMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagClearTokensMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chaosBagClearTokensMutation, { data, loading, error }] = useChaosBagClearTokensMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      bless: // value for 'bless'
+ *      curse: // value for 'curse'
+ *   },
+ * });
+ */
+export function useChaosBagClearTokensMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagClearTokensMutation, ChaosBagClearTokensMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChaosBagClearTokensMutation, ChaosBagClearTokensMutationVariables>(ChaosBagClearTokensDocument, options);
+      }
+export type ChaosBagClearTokensMutationHookResult = ReturnType<typeof useChaosBagClearTokensMutation>;
+export type ChaosBagClearTokensMutationResult = Apollo.MutationResult<ChaosBagClearTokensMutation>;
+export type ChaosBagClearTokensMutationOptions = Apollo.BaseMutationOptions<ChaosBagClearTokensMutation, ChaosBagClearTokensMutationVariables>;
+export const ChaosBagDrawTokenDocument = gql`
+    mutation chaosBagDrawToken($campaign_id: Int!, $drawn: jsonb!) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {drawn: $drawn}
+    _inc: {totalDrawn: 1}
+  ) {
+    id
+    drawn
+    totalDrawn
+  }
+}
+    `;
+export type ChaosBagDrawTokenMutationFn = Apollo.MutationFunction<ChaosBagDrawTokenMutation, ChaosBagDrawTokenMutationVariables>;
+
+/**
+ * __useChaosBagDrawTokenMutation__
+ *
+ * To run a mutation, you first call `useChaosBagDrawTokenMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagDrawTokenMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chaosBagDrawTokenMutation, { data, loading, error }] = useChaosBagDrawTokenMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      drawn: // value for 'drawn'
+ *   },
+ * });
+ */
+export function useChaosBagDrawTokenMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagDrawTokenMutation, ChaosBagDrawTokenMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChaosBagDrawTokenMutation, ChaosBagDrawTokenMutationVariables>(ChaosBagDrawTokenDocument, options);
+      }
+export type ChaosBagDrawTokenMutationHookResult = ReturnType<typeof useChaosBagDrawTokenMutation>;
+export type ChaosBagDrawTokenMutationResult = Apollo.MutationResult<ChaosBagDrawTokenMutation>;
+export type ChaosBagDrawTokenMutationOptions = Apollo.BaseMutationOptions<ChaosBagDrawTokenMutation, ChaosBagDrawTokenMutationVariables>;
+export const ChaosBagResetBlessCurseDocument = gql`
+    mutation chaosBagResetBlessCurse($campaign_id: Int!, $drawn: jsonb!, $sealed: jsonb!) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {bless: 0, curse: 0, drawn: $drawn, sealed: $sealed}
+  ) {
+    id
+    bless
+    curse
+    drawn
+    sealed
+  }
+}
+    `;
+export type ChaosBagResetBlessCurseMutationFn = Apollo.MutationFunction<ChaosBagResetBlessCurseMutation, ChaosBagResetBlessCurseMutationVariables>;
+
+/**
+ * __useChaosBagResetBlessCurseMutation__
+ *
+ * To run a mutation, you first call `useChaosBagResetBlessCurseMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagResetBlessCurseMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chaosBagResetBlessCurseMutation, { data, loading, error }] = useChaosBagResetBlessCurseMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      drawn: // value for 'drawn'
+ *      sealed: // value for 'sealed'
+ *   },
+ * });
+ */
+export function useChaosBagResetBlessCurseMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagResetBlessCurseMutation, ChaosBagResetBlessCurseMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChaosBagResetBlessCurseMutation, ChaosBagResetBlessCurseMutationVariables>(ChaosBagResetBlessCurseDocument, options);
+      }
+export type ChaosBagResetBlessCurseMutationHookResult = ReturnType<typeof useChaosBagResetBlessCurseMutation>;
+export type ChaosBagResetBlessCurseMutationResult = Apollo.MutationResult<ChaosBagResetBlessCurseMutation>;
+export type ChaosBagResetBlessCurseMutationOptions = Apollo.BaseMutationOptions<ChaosBagResetBlessCurseMutation, ChaosBagResetBlessCurseMutationVariables>;
+export const ChaosBagSealTokensDocument = gql`
+    mutation chaosBagSealTokens($campaign_id: Int!, $sealed: jsonb!) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {sealed: $sealed}
+  ) {
+    id
+    sealed
+  }
+}
+    `;
+export type ChaosBagSealTokensMutationFn = Apollo.MutationFunction<ChaosBagSealTokensMutation, ChaosBagSealTokensMutationVariables>;
+
+/**
+ * __useChaosBagSealTokensMutation__
+ *
+ * To run a mutation, you first call `useChaosBagSealTokensMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagSealTokensMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chaosBagSealTokensMutation, { data, loading, error }] = useChaosBagSealTokensMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      sealed: // value for 'sealed'
+ *   },
+ * });
+ */
+export function useChaosBagSealTokensMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagSealTokensMutation, ChaosBagSealTokensMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChaosBagSealTokensMutation, ChaosBagSealTokensMutationVariables>(ChaosBagSealTokensDocument, options);
+      }
+export type ChaosBagSealTokensMutationHookResult = ReturnType<typeof useChaosBagSealTokensMutation>;
+export type ChaosBagSealTokensMutationResult = Apollo.MutationResult<ChaosBagSealTokensMutation>;
+export type ChaosBagSealTokensMutationOptions = Apollo.BaseMutationOptions<ChaosBagSealTokensMutation, ChaosBagSealTokensMutationVariables>;
+export const ChaosBagReleaseAllSealedDocument = gql`
+    mutation chaosBagReleaseAllSealed($campaign_id: Int!) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {sealed: []}
+  ) {
+    id
+    sealed
+  }
+}
+    `;
+export type ChaosBagReleaseAllSealedMutationFn = Apollo.MutationFunction<ChaosBagReleaseAllSealedMutation, ChaosBagReleaseAllSealedMutationVariables>;
+
+/**
+ * __useChaosBagReleaseAllSealedMutation__
+ *
+ * To run a mutation, you first call `useChaosBagReleaseAllSealedMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagReleaseAllSealedMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chaosBagReleaseAllSealedMutation, { data, loading, error }] = useChaosBagReleaseAllSealedMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *   },
+ * });
+ */
+export function useChaosBagReleaseAllSealedMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagReleaseAllSealedMutation, ChaosBagReleaseAllSealedMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChaosBagReleaseAllSealedMutation, ChaosBagReleaseAllSealedMutationVariables>(ChaosBagReleaseAllSealedDocument, options);
+      }
+export type ChaosBagReleaseAllSealedMutationHookResult = ReturnType<typeof useChaosBagReleaseAllSealedMutation>;
+export type ChaosBagReleaseAllSealedMutationResult = Apollo.MutationResult<ChaosBagReleaseAllSealedMutation>;
+export type ChaosBagReleaseAllSealedMutationOptions = Apollo.BaseMutationOptions<ChaosBagReleaseAllSealedMutation, ChaosBagReleaseAllSealedMutationVariables>;
+export const ChaosBagIncBlessDocument = gql`
+    mutation chaosBagIncBless($campaign_id: Int!) {
+  update_chaos_bag_result(
+    where: {id: {_eq: $campaign_id}, bless: {_lt: 10}}
+    _inc: {bless: 1}
+  ) {
+    returning {
+      id
+      bless
+    }
+  }
+}
+    `;
+export type ChaosBagIncBlessMutationFn = Apollo.MutationFunction<ChaosBagIncBlessMutation, ChaosBagIncBlessMutationVariables>;
+
+/**
+ * __useChaosBagIncBlessMutation__
+ *
+ * To run a mutation, you first call `useChaosBagIncBlessMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagIncBlessMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chaosBagIncBlessMutation, { data, loading, error }] = useChaosBagIncBlessMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *   },
+ * });
+ */
+export function useChaosBagIncBlessMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagIncBlessMutation, ChaosBagIncBlessMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChaosBagIncBlessMutation, ChaosBagIncBlessMutationVariables>(ChaosBagIncBlessDocument, options);
+      }
+export type ChaosBagIncBlessMutationHookResult = ReturnType<typeof useChaosBagIncBlessMutation>;
+export type ChaosBagIncBlessMutationResult = Apollo.MutationResult<ChaosBagIncBlessMutation>;
+export type ChaosBagIncBlessMutationOptions = Apollo.BaseMutationOptions<ChaosBagIncBlessMutation, ChaosBagIncBlessMutationVariables>;
+export const ChaosBagDecBlessDocument = gql`
+    mutation chaosBagDecBless($campaign_id: Int!) {
+  update_chaos_bag_result(
+    where: {id: {_eq: $campaign_id}, bless: {_gt: 0}}
+    _inc: {bless: -1}
+  ) {
+    returning {
+      id
+      bless
+    }
+  }
+}
+    `;
+export type ChaosBagDecBlessMutationFn = Apollo.MutationFunction<ChaosBagDecBlessMutation, ChaosBagDecBlessMutationVariables>;
+
+/**
+ * __useChaosBagDecBlessMutation__
+ *
+ * To run a mutation, you first call `useChaosBagDecBlessMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagDecBlessMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chaosBagDecBlessMutation, { data, loading, error }] = useChaosBagDecBlessMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *   },
+ * });
+ */
+export function useChaosBagDecBlessMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagDecBlessMutation, ChaosBagDecBlessMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChaosBagDecBlessMutation, ChaosBagDecBlessMutationVariables>(ChaosBagDecBlessDocument, options);
+      }
+export type ChaosBagDecBlessMutationHookResult = ReturnType<typeof useChaosBagDecBlessMutation>;
+export type ChaosBagDecBlessMutationResult = Apollo.MutationResult<ChaosBagDecBlessMutation>;
+export type ChaosBagDecBlessMutationOptions = Apollo.BaseMutationOptions<ChaosBagDecBlessMutation, ChaosBagDecBlessMutationVariables>;
+export const ChaosBagIncCurseDocument = gql`
+    mutation chaosBagIncCurse($campaign_id: Int!) {
+  update_chaos_bag_result(
+    where: {id: {_eq: $campaign_id}, curse: {_lt: 10}}
+    _inc: {curse: 1}
+  ) {
+    returning {
+      id
+      curse
+    }
+  }
+}
+    `;
+export type ChaosBagIncCurseMutationFn = Apollo.MutationFunction<ChaosBagIncCurseMutation, ChaosBagIncCurseMutationVariables>;
+
+/**
+ * __useChaosBagIncCurseMutation__
+ *
+ * To run a mutation, you first call `useChaosBagIncCurseMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagIncCurseMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chaosBagIncCurseMutation, { data, loading, error }] = useChaosBagIncCurseMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *   },
+ * });
+ */
+export function useChaosBagIncCurseMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagIncCurseMutation, ChaosBagIncCurseMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChaosBagIncCurseMutation, ChaosBagIncCurseMutationVariables>(ChaosBagIncCurseDocument, options);
+      }
+export type ChaosBagIncCurseMutationHookResult = ReturnType<typeof useChaosBagIncCurseMutation>;
+export type ChaosBagIncCurseMutationResult = Apollo.MutationResult<ChaosBagIncCurseMutation>;
+export type ChaosBagIncCurseMutationOptions = Apollo.BaseMutationOptions<ChaosBagIncCurseMutation, ChaosBagIncCurseMutationVariables>;
+export const ChaosBagDecCurseDocument = gql`
+    mutation chaosBagDecCurse($campaign_id: Int!) {
+  update_chaos_bag_result(
+    where: {id: {_eq: $campaign_id}, curse: {_gt: 0}}
+    _inc: {curse: -1}
+  ) {
+    returning {
+      id
+      curse
+    }
+  }
+}
+    `;
+export type ChaosBagDecCurseMutationFn = Apollo.MutationFunction<ChaosBagDecCurseMutation, ChaosBagDecCurseMutationVariables>;
+
+/**
+ * __useChaosBagDecCurseMutation__
+ *
+ * To run a mutation, you first call `useChaosBagDecCurseMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagDecCurseMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chaosBagDecCurseMutation, { data, loading, error }] = useChaosBagDecCurseMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *   },
+ * });
+ */
+export function useChaosBagDecCurseMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagDecCurseMutation, ChaosBagDecCurseMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChaosBagDecCurseMutation, ChaosBagDecCurseMutationVariables>(ChaosBagDecCurseDocument, options);
+      }
+export type ChaosBagDecCurseMutationHookResult = ReturnType<typeof useChaosBagDecCurseMutation>;
+export type ChaosBagDecCurseMutationResult = Apollo.MutationResult<ChaosBagDecCurseMutation>;
+export type ChaosBagDecCurseMutationOptions = Apollo.BaseMutationOptions<ChaosBagDecCurseMutation, ChaosBagDecCurseMutationVariables>;
 export const SetBinaryAchievementDocument = gql`
     mutation setBinaryAchievement($campaign_id: Int!, $id: String!, $value: Boolean!) {
   insert_guide_achievement_one(
@@ -8940,7 +10608,8 @@ export type SetBinaryAchievementMutationFn = Apollo.MutationFunction<SetBinaryAc
  * });
  */
 export function useSetBinaryAchievementMutation(baseOptions?: Apollo.MutationHookOptions<SetBinaryAchievementMutation, SetBinaryAchievementMutationVariables>) {
-        return Apollo.useMutation<SetBinaryAchievementMutation, SetBinaryAchievementMutationVariables>(SetBinaryAchievementDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<SetBinaryAchievementMutation, SetBinaryAchievementMutationVariables>(SetBinaryAchievementDocument, options);
       }
 export type SetBinaryAchievementMutationHookResult = ReturnType<typeof useSetBinaryAchievementMutation>;
 export type SetBinaryAchievementMutationResult = Apollo.MutationResult<SetBinaryAchievementMutation>;
@@ -8989,7 +10658,8 @@ export type IncCountAchievementMaxMutationFn = Apollo.MutationFunction<IncCountA
  * });
  */
 export function useIncCountAchievementMaxMutation(baseOptions?: Apollo.MutationHookOptions<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>) {
-        return Apollo.useMutation<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>(IncCountAchievementMaxDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>(IncCountAchievementMaxDocument, options);
       }
 export type IncCountAchievementMaxMutationHookResult = ReturnType<typeof useIncCountAchievementMaxMutation>;
 export type IncCountAchievementMaxMutationResult = Apollo.MutationResult<IncCountAchievementMaxMutation>;
@@ -9033,7 +10703,8 @@ export type IncCountAchievementMutationFn = Apollo.MutationFunction<IncCountAchi
  * });
  */
 export function useIncCountAchievementMutation(baseOptions?: Apollo.MutationHookOptions<IncCountAchievementMutation, IncCountAchievementMutationVariables>) {
-        return Apollo.useMutation<IncCountAchievementMutation, IncCountAchievementMutationVariables>(IncCountAchievementDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<IncCountAchievementMutation, IncCountAchievementMutationVariables>(IncCountAchievementDocument, options);
       }
 export type IncCountAchievementMutationHookResult = ReturnType<typeof useIncCountAchievementMutation>;
 export type IncCountAchievementMutationResult = Apollo.MutationResult<IncCountAchievementMutation>;
@@ -9077,7 +10748,8 @@ export type DecCountAchievementMutationFn = Apollo.MutationFunction<DecCountAchi
  * });
  */
 export function useDecCountAchievementMutation(baseOptions?: Apollo.MutationHookOptions<DecCountAchievementMutation, DecCountAchievementMutationVariables>) {
-        return Apollo.useMutation<DecCountAchievementMutation, DecCountAchievementMutationVariables>(DecCountAchievementDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DecCountAchievementMutation, DecCountAchievementMutationVariables>(DecCountAchievementDocument, options);
       }
 export type DecCountAchievementMutationHookResult = ReturnType<typeof useDecCountAchievementMutation>;
 export type DecCountAchievementMutationResult = Apollo.MutationResult<DecCountAchievementMutation>;
@@ -9086,7 +10758,7 @@ export const AddGuideInputDocument = gql`
     mutation addGuideInput($id: String!, $campaign_id: Int!, $type: String!, $scenario: String, $step: String, $payload: jsonb) {
   insert_guide_input_one(
     object: {id: $id, campaign_id: $campaign_id, scenario: $scenario, step: $step, type: $type, payload: $payload}
-    on_conflict: {constraint: guide_input_scenario_campaign_id_step_type_key, update_columns: [payload]}
+    on_conflict: {constraint: guide_input_pkey, update_columns: [payload]}
   ) {
     ...GuideInput
   }
@@ -9117,7 +10789,8 @@ export type AddGuideInputMutationFn = Apollo.MutationFunction<AddGuideInputMutat
  * });
  */
 export function useAddGuideInputMutation(baseOptions?: Apollo.MutationHookOptions<AddGuideInputMutation, AddGuideInputMutationVariables>) {
-        return Apollo.useMutation<AddGuideInputMutation, AddGuideInputMutationVariables>(AddGuideInputDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AddGuideInputMutation, AddGuideInputMutationVariables>(AddGuideInputDocument, options);
       }
 export type AddGuideInputMutationHookResult = ReturnType<typeof useAddGuideInputMutation>;
 export type AddGuideInputMutationResult = Apollo.MutationResult<AddGuideInputMutation>;
@@ -9154,7 +10827,8 @@ export type RemoveGuideInputsMutationFn = Apollo.MutationFunction<RemoveGuideInp
  * });
  */
 export function useRemoveGuideInputsMutation(baseOptions?: Apollo.MutationHookOptions<RemoveGuideInputsMutation, RemoveGuideInputsMutationVariables>) {
-        return Apollo.useMutation<RemoveGuideInputsMutation, RemoveGuideInputsMutationVariables>(RemoveGuideInputsDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<RemoveGuideInputsMutation, RemoveGuideInputsMutationVariables>(RemoveGuideInputsDocument, options);
       }
 export type RemoveGuideInputsMutationHookResult = ReturnType<typeof useRemoveGuideInputsMutation>;
 export type RemoveGuideInputsMutationResult = Apollo.MutationResult<RemoveGuideInputsMutation>;
@@ -9194,15 +10868,16 @@ export type UpdateInvestigatorTraumaMutationFn = Apollo.MutationFunction<UpdateI
  * });
  */
 export function useUpdateInvestigatorTraumaMutation(baseOptions?: Apollo.MutationHookOptions<UpdateInvestigatorTraumaMutation, UpdateInvestigatorTraumaMutationVariables>) {
-        return Apollo.useMutation<UpdateInvestigatorTraumaMutation, UpdateInvestigatorTraumaMutationVariables>(UpdateInvestigatorTraumaDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateInvestigatorTraumaMutation, UpdateInvestigatorTraumaMutationVariables>(UpdateInvestigatorTraumaDocument, options);
       }
 export type UpdateInvestigatorTraumaMutationHookResult = ReturnType<typeof useUpdateInvestigatorTraumaMutation>;
 export type UpdateInvestigatorTraumaMutationResult = Apollo.MutationResult<UpdateInvestigatorTraumaMutation>;
 export type UpdateInvestigatorTraumaMutationOptions = Apollo.BaseMutationOptions<UpdateInvestigatorTraumaMutation, UpdateInvestigatorTraumaMutationVariables>;
 export const UpdateInvestigatorDataDocument = gql`
-    mutation updateInvestigatorData($campaign_id: Int!, $investigator: String!, $physical: Int, $mental: Int, $killed: Boolean, $insane: Boolean, $added_cards: jsonb, $available_xp: Int, $story_assets: jsonb, $ignore_story_assets: jsonb, $removed_cards: jsonb) {
+    mutation updateInvestigatorData($campaign_id: Int!, $investigator: String!, $physical: Int, $mental: Int, $killed: Boolean, $insane: Boolean, $addedCards: jsonb, $availableXp: Int, $storyAssets: jsonb, $ignoreStoryAssets: jsonb, $removedCards: jsonb) {
   insert_investigator_data_one(
-    object: {campaign_id: $campaign_id, investigator: $investigator, physical: $physical, mental: $mental, killed: $killed, insane: $insane, addedCards: $added_cards, storyAssets: $story_assets, ignoreStoryAssets: $ignore_story_assets, removedCards: $removed_cards, availableXp: $available_xp}
+    object: {campaign_id: $campaign_id, investigator: $investigator, physical: $physical, mental: $mental, killed: $killed, insane: $insane, addedCards: $addedCards, storyAssets: $storyAssets, ignoreStoryAssets: $ignoreStoryAssets, removedCards: $removedCards, availableXp: $availableXp}
     on_conflict: {constraint: investigator_data_pkey, update_columns: [physical, mental, killed, insane, addedCards, removedCards, storyAssets, ignoreStoryAssets, availableXp]}
   ) {
     ...FullInvestigatorData
@@ -9230,16 +10905,17 @@ export type UpdateInvestigatorDataMutationFn = Apollo.MutationFunction<UpdateInv
  *      mental: // value for 'mental'
  *      killed: // value for 'killed'
  *      insane: // value for 'insane'
- *      added_cards: // value for 'added_cards'
- *      available_xp: // value for 'available_xp'
- *      story_assets: // value for 'story_assets'
- *      ignore_story_assets: // value for 'ignore_story_assets'
- *      removed_cards: // value for 'removed_cards'
+ *      addedCards: // value for 'addedCards'
+ *      availableXp: // value for 'availableXp'
+ *      storyAssets: // value for 'storyAssets'
+ *      ignoreStoryAssets: // value for 'ignoreStoryAssets'
+ *      removedCards: // value for 'removedCards'
  *   },
  * });
  */
 export function useUpdateInvestigatorDataMutation(baseOptions?: Apollo.MutationHookOptions<UpdateInvestigatorDataMutation, UpdateInvestigatorDataMutationVariables>) {
-        return Apollo.useMutation<UpdateInvestigatorDataMutation, UpdateInvestigatorDataMutationVariables>(UpdateInvestigatorDataDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateInvestigatorDataMutation, UpdateInvestigatorDataMutationVariables>(UpdateInvestigatorDataDocument, options);
       }
 export type UpdateInvestigatorDataMutationHookResult = ReturnType<typeof useUpdateInvestigatorDataMutation>;
 export type UpdateInvestigatorDataMutationResult = Apollo.MutationResult<UpdateInvestigatorDataMutation>;
@@ -9279,7 +10955,8 @@ export type UpdateSpentXpMutationFn = Apollo.MutationFunction<UpdateSpentXpMutat
  * });
  */
 export function useUpdateSpentXpMutation(baseOptions?: Apollo.MutationHookOptions<UpdateSpentXpMutation, UpdateSpentXpMutationVariables>) {
-        return Apollo.useMutation<UpdateSpentXpMutation, UpdateSpentXpMutationVariables>(UpdateSpentXpDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateSpentXpMutation, UpdateSpentXpMutationVariables>(UpdateSpentXpDocument, options);
       }
 export type UpdateSpentXpMutationHookResult = ReturnType<typeof useUpdateSpentXpMutation>;
 export type UpdateSpentXpMutationResult = Apollo.MutationResult<UpdateSpentXpMutation>;
@@ -9319,7 +10996,8 @@ export type UpdateAvailableXpMutationFn = Apollo.MutationFunction<UpdateAvailabl
  * });
  */
 export function useUpdateAvailableXpMutation(baseOptions?: Apollo.MutationHookOptions<UpdateAvailableXpMutation, UpdateAvailableXpMutationVariables>) {
-        return Apollo.useMutation<UpdateAvailableXpMutation, UpdateAvailableXpMutationVariables>(UpdateAvailableXpDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateAvailableXpMutation, UpdateAvailableXpMutationVariables>(UpdateAvailableXpDocument, options);
       }
 export type UpdateAvailableXpMutationHookResult = ReturnType<typeof useUpdateAvailableXpMutation>;
 export type UpdateAvailableXpMutationResult = Apollo.MutationResult<UpdateAvailableXpMutation>;
@@ -9357,7 +11035,8 @@ export type UpdateWeaknessSetMutationFn = Apollo.MutationFunction<UpdateWeakness
  * });
  */
 export function useUpdateWeaknessSetMutation(baseOptions?: Apollo.MutationHookOptions<UpdateWeaknessSetMutation, UpdateWeaknessSetMutationVariables>) {
-        return Apollo.useMutation<UpdateWeaknessSetMutation, UpdateWeaknessSetMutationVariables>(UpdateWeaknessSetDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateWeaknessSetMutation, UpdateWeaknessSetMutationVariables>(UpdateWeaknessSetDocument, options);
       }
 export type UpdateWeaknessSetMutationHookResult = ReturnType<typeof useUpdateWeaknessSetMutation>;
 export type UpdateWeaknessSetMutationResult = Apollo.MutationResult<UpdateWeaknessSetMutation>;
@@ -9395,7 +11074,8 @@ export type UpdateCampaignDifficultyMutationFn = Apollo.MutationFunction<UpdateC
  * });
  */
 export function useUpdateCampaignDifficultyMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCampaignDifficultyMutation, UpdateCampaignDifficultyMutationVariables>) {
-        return Apollo.useMutation<UpdateCampaignDifficultyMutation, UpdateCampaignDifficultyMutationVariables>(UpdateCampaignDifficultyDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateCampaignDifficultyMutation, UpdateCampaignDifficultyMutationVariables>(UpdateCampaignDifficultyDocument, options);
       }
 export type UpdateCampaignDifficultyMutationHookResult = ReturnType<typeof useUpdateCampaignDifficultyMutation>;
 export type UpdateCampaignDifficultyMutationResult = Apollo.MutationResult<UpdateCampaignDifficultyMutation>;
@@ -9433,7 +11113,8 @@ export type UpdateCampaignScenarioResultsMutationFn = Apollo.MutationFunction<Up
  * });
  */
 export function useUpdateCampaignScenarioResultsMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCampaignScenarioResultsMutation, UpdateCampaignScenarioResultsMutationVariables>) {
-        return Apollo.useMutation<UpdateCampaignScenarioResultsMutation, UpdateCampaignScenarioResultsMutationVariables>(UpdateCampaignScenarioResultsDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateCampaignScenarioResultsMutation, UpdateCampaignScenarioResultsMutationVariables>(UpdateCampaignScenarioResultsDocument, options);
       }
 export type UpdateCampaignScenarioResultsMutationHookResult = ReturnType<typeof useUpdateCampaignScenarioResultsMutation>;
 export type UpdateCampaignScenarioResultsMutationResult = Apollo.MutationResult<UpdateCampaignScenarioResultsMutation>;
@@ -9471,7 +11152,8 @@ export type UpdateCampaignGuideVersionMutationFn = Apollo.MutationFunction<Updat
  * });
  */
 export function useUpdateCampaignGuideVersionMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCampaignGuideVersionMutation, UpdateCampaignGuideVersionMutationVariables>) {
-        return Apollo.useMutation<UpdateCampaignGuideVersionMutation, UpdateCampaignGuideVersionMutationVariables>(UpdateCampaignGuideVersionDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateCampaignGuideVersionMutation, UpdateCampaignGuideVersionMutationVariables>(UpdateCampaignGuideVersionDocument, options);
       }
 export type UpdateCampaignGuideVersionMutationHookResult = ReturnType<typeof useUpdateCampaignGuideVersionMutation>;
 export type UpdateCampaignGuideVersionMutationResult = Apollo.MutationResult<UpdateCampaignGuideVersionMutation>;
@@ -9509,7 +11191,8 @@ export type UpdateCampaignNotesMutationFn = Apollo.MutationFunction<UpdateCampai
  * });
  */
 export function useUpdateCampaignNotesMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCampaignNotesMutation, UpdateCampaignNotesMutationVariables>) {
-        return Apollo.useMutation<UpdateCampaignNotesMutation, UpdateCampaignNotesMutationVariables>(UpdateCampaignNotesDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateCampaignNotesMutation, UpdateCampaignNotesMutationVariables>(UpdateCampaignNotesDocument, options);
       }
 export type UpdateCampaignNotesMutationHookResult = ReturnType<typeof useUpdateCampaignNotesMutation>;
 export type UpdateCampaignNotesMutationResult = Apollo.MutationResult<UpdateCampaignNotesMutation>;
@@ -9547,7 +11230,8 @@ export type UpdateCampaignShowInterludesMutationFn = Apollo.MutationFunction<Upd
  * });
  */
 export function useUpdateCampaignShowInterludesMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCampaignShowInterludesMutation, UpdateCampaignShowInterludesMutationVariables>) {
-        return Apollo.useMutation<UpdateCampaignShowInterludesMutation, UpdateCampaignShowInterludesMutationVariables>(UpdateCampaignShowInterludesDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateCampaignShowInterludesMutation, UpdateCampaignShowInterludesMutationVariables>(UpdateCampaignShowInterludesDocument, options);
       }
 export type UpdateCampaignShowInterludesMutationHookResult = ReturnType<typeof useUpdateCampaignShowInterludesMutation>;
 export type UpdateCampaignShowInterludesMutationResult = Apollo.MutationResult<UpdateCampaignShowInterludesMutation>;
@@ -9585,7 +11269,8 @@ export type UpdateChaosBagMutationFn = Apollo.MutationFunction<UpdateChaosBagMut
  * });
  */
 export function useUpdateChaosBagMutation(baseOptions?: Apollo.MutationHookOptions<UpdateChaosBagMutation, UpdateChaosBagMutationVariables>) {
-        return Apollo.useMutation<UpdateChaosBagMutation, UpdateChaosBagMutationVariables>(UpdateChaosBagDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateChaosBagMutation, UpdateChaosBagMutationVariables>(UpdateChaosBagDocument, options);
       }
 export type UpdateChaosBagMutationHookResult = ReturnType<typeof useUpdateChaosBagMutation>;
 export type UpdateChaosBagMutationResult = Apollo.MutationResult<UpdateChaosBagMutation>;
@@ -9620,7 +11305,8 @@ export type UpdateCampaignNameMutationFn = Apollo.MutationFunction<UpdateCampaig
  * });
  */
 export function useUpdateCampaignNameMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCampaignNameMutation, UpdateCampaignNameMutationVariables>) {
-        return Apollo.useMutation<UpdateCampaignNameMutation, UpdateCampaignNameMutationVariables>(UpdateCampaignNameDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateCampaignNameMutation, UpdateCampaignNameMutationVariables>(UpdateCampaignNameDocument, options);
       }
 export type UpdateCampaignNameMutationHookResult = ReturnType<typeof useUpdateCampaignNameMutation>;
 export type UpdateCampaignNameMutationResult = Apollo.MutationResult<UpdateCampaignNameMutation>;
@@ -9658,7 +11344,8 @@ export type AddCampaignInvestigatorMutationFn = Apollo.MutationFunction<AddCampa
  * });
  */
 export function useAddCampaignInvestigatorMutation(baseOptions?: Apollo.MutationHookOptions<AddCampaignInvestigatorMutation, AddCampaignInvestigatorMutationVariables>) {
-        return Apollo.useMutation<AddCampaignInvestigatorMutation, AddCampaignInvestigatorMutationVariables>(AddCampaignInvestigatorDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AddCampaignInvestigatorMutation, AddCampaignInvestigatorMutationVariables>(AddCampaignInvestigatorDocument, options);
       }
 export type AddCampaignInvestigatorMutationHookResult = ReturnType<typeof useAddCampaignInvestigatorMutation>;
 export type AddCampaignInvestigatorMutationResult = Apollo.MutationResult<AddCampaignInvestigatorMutation>;
@@ -9697,7 +11384,8 @@ export type RemoveCampaignInvestigatorMutationFn = Apollo.MutationFunction<Remov
  * });
  */
 export function useRemoveCampaignInvestigatorMutation(baseOptions?: Apollo.MutationHookOptions<RemoveCampaignInvestigatorMutation, RemoveCampaignInvestigatorMutationVariables>) {
-        return Apollo.useMutation<RemoveCampaignInvestigatorMutation, RemoveCampaignInvestigatorMutationVariables>(RemoveCampaignInvestigatorDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<RemoveCampaignInvestigatorMutation, RemoveCampaignInvestigatorMutationVariables>(RemoveCampaignInvestigatorDocument, options);
       }
 export type RemoveCampaignInvestigatorMutationHookResult = ReturnType<typeof useRemoveCampaignInvestigatorMutation>;
 export type RemoveCampaignInvestigatorMutationResult = Apollo.MutationResult<RemoveCampaignInvestigatorMutation>;

@@ -208,7 +208,7 @@ msgid "Hide ArkhamDB Decks"
 msgstr "Ocultar mazos de ArkhamDB"
 
 msgid "New Deck"
-msgstr "Nuevo Mazo"
+msgstr "Nuevo mazo"
 
 msgid "Authorization error"
 msgstr "Error de autorización"
@@ -1130,7 +1130,7 @@ msgid "Cursing at the tentacle token"
 msgstr "Maldiciendo la ficha del tentáculo"
 
 msgid "Drawing a mythos card with surge"
-msgstr "Robando una carta de Encuentros con Oleada"
+msgstr "Robando una carta de Encuentro con Oleada"
 
 msgid "Placing doom on the agenda"
 msgstr "Poniendo perdición en el Plan en curso"
@@ -1144,6 +1144,7 @@ msgstr "Tratando de entender las secuencias anidadas"
 msgid "Taking three damage and three horror"
 msgstr "Recibiendo tres de Daño y tres de Horror"
 
+#, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "No hay cartas que coincidan con \"${searchTerm}\""
 
@@ -2224,7 +2225,7 @@ msgid "Killed and Insane Investigators"
 msgstr "Investigadores muertos y locos"
 
 msgid "Delete campaign"
-msgstr "Borrar Campaña"
+msgstr "Borrar campaña"
 
 msgid "Guide not yet available"
 msgstr "Guía aún no disponible"
@@ -2266,7 +2267,7 @@ msgid "Enter a name for this deck."
 msgstr "Inserta un nombre para este mazo."
 
 msgid "Use Starter Deck"
-msgstr "Utiliza el Mazo inicial"
+msgstr "Utilizar mazo inicial FFG"
 
 msgid "Create deck"
 msgstr "Crear mazo"
@@ -3177,7 +3178,7 @@ msgid "Edit Chaos Bag"
 msgstr "Editar Bolsa de Caos"
 
 msgid "Chaos bag is empty"
-msgstr "Chaos bag is empty"
+msgstr "Bolsa de Caos vacía"
 
 msgid "Bless"
 msgstr "Bendición"
@@ -3514,7 +3515,7 @@ msgid ""
 "Dissonant Voices is an ongoing project by Mythos Busters to narrate the "
 "english scenario text for each Arkham Horror campaign."
 msgstr ""
-"Voces disonantes es un proyecto en marcha de Mythos Busters para narrar, en "
+"Dissonant Voices es un proyecto en marcha de Mythos Busters para narrar, en "
 "inglés, los textos de las campañas de Arkham Horror."
 
 msgid "Are you sure you want to delete this standalone?"
@@ -3633,10 +3634,6 @@ msgid "${ size } Card"
 msgid_plural "${ size } Cards"
 msgstr[0] "${ size } carta"
 msgstr[1] "${ size } cartas"
-
-#, javascript-format
-msgid "class_${ faction }"
-msgstr "class_${ faction }"
 
 msgid "Select Parallel Investigator"
 msgstr "Selecciona investigador paralelo"
@@ -3923,7 +3920,7 @@ msgid "Audio narration"
 msgstr "Narración campañas"
 
 msgid "Dissonant Voices"
-msgstr "Voces disonantes"
+msgstr "Dissonant Voices"
 
 msgid "Notes"
 msgstr "Notas"
@@ -4141,79 +4138,141 @@ msgstr "${ _spentXp } de ${ _totalXp } gastada"
 msgid "Save your changes to the campaign log"
 msgstr "Guardar tus cambios en el registro de campaña"
 
-msgid "You must be online to upload campaigns"
-msgstr ""
-
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
-msgstr ""
+msgstr "Los mazos con Conocimiento ancestral deben incluir al menos 10 Habilidades."
 
 msgid "Faction, Level, Type"
-msgstr ""
+msgstr "Clase, Nivel, Tipo"
 
 #, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
-msgstr ""
+msgstr "${ normalCardCount } / ${ deckSize } cartas"
 
 msgid "Ammo"
-msgstr ""
+msgstr "Munición"
 
 msgid "Bounties"
-msgstr ""
+msgstr "Recompensas"
 
 msgid "Charges"
-msgstr ""
+msgstr "Cargas"
 
 msgid "Keys"
-msgstr ""
+msgstr "Llaves"
 
 msgid "Locks"
-msgstr ""
+msgstr "Cierres"
 
 msgid "Resources"
-msgstr ""
+msgstr "Recursos"
 
 msgid "Secrets"
-msgstr ""
+msgstr "Secretos"
 
 msgid "Tickets"
-msgstr ""
+msgstr "Billetes"
 
 msgid "Tries"
-msgstr ""
+msgstr "Intentos"
 
 msgid "Whistles"
-msgstr ""
+msgstr "Silbatos"
 
 msgid "Loading..."
-msgstr ""
+msgstr "Cargando..."
 
 #, javascript-format
 msgid "${ deck.owner.handle } must save this upgrade"
-msgstr ""
+msgstr "${ deck.owner.handle } debe guardar esta mejora"
 
 msgid "Your friend must save this upgrade"
-msgstr ""
+msgstr "Tu amigo debe guardar esta mejora"
 
 #, javascript-format
 msgid "${ deck.owner.handle } must save this deck"
-msgstr ""
+msgstr "${ deck.owner.handle } debe guardar este mazo"
 
 msgid "Your friend must save this deck"
-msgstr ""
+msgstr "Tu amigo debe guardar este mazo"
 
 msgid "Campaign players"
-msgstr ""
+msgstr "Jugadores de la campaña"
 
 msgid "Add friends to campaign"
-msgstr ""
+msgstr "Añadir amigos a la campaña"
 
 msgid "Add friends"
-msgstr ""
+msgstr "Añadir amigos"
 
 msgid "Access"
+msgstr "Acceso"
+
+msgid "Later"
+msgstr "Más tarde"
+
+msgid "Searching cards..."
+msgstr "Buscando cartas..."
+
+msgid ""
+"This appears to be one of your decks from ArkhamDB, however you are not "
+"currently logged in. If you wish to make edits, please login through the "
+"app settings."
 msgstr ""
 
-msgid "Edit access"
+msgid "Leave campaign"
+msgstr ""
+
+msgid ""
+"Are you sure you want to leave this campaign?\n"
+"\n"
+"Your decks will be removed from the campaign, but you can rejoin it later."
+msgstr ""
+
+msgid "Leave"
+msgstr ""
+
+msgid "Edit players"
+msgstr ""
+
+msgid "View players"
+msgstr ""
+
+msgid "Clear card cache"
+msgstr ""
+
+msgid "Uploading..."
+msgstr ""
+
+msgid "Leave standalone"
+msgstr ""
+
+msgid ""
+"Are you sure you want to leave this standalone?\n"
+"\n"
+"Your decks will be removed from the standalone, but you can rejoin it later."
+msgstr ""
+
+msgid "Upload standalone"
+msgstr ""
+
+msgid "You must be online to upload"
+msgstr ""
+
+msgid "Adjust scenario XP and trauma"
+msgstr ""
+
+msgid "Unspent XP"
+msgstr ""
+
+#, javascript-format
+msgid "${ unspentXp } saved"
+msgstr ""
+
+#, javascript-format
+msgid "Scenario Card - ${ difficultyStr }"
+msgstr ""
+
+msgid "Scenario Card"
 msgstr ""
 
 #, javascript-format
@@ -4418,43 +4477,6 @@ msgstr ""
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } lee <b>${ sectionName }</b>"
-
-#, javascript-format
-msgctxt "filter"
-msgid "${ cycleNames[cycle_position] } Cycle"
-msgstr "Ciclo ${cycleNames[cycle_position]}"
-
-msgctxt "action"
-msgid "Fight"
-msgstr "Combatir"
-
-msgctxt "action"
-msgid "Engage"
-msgstr "Enfrentarse"
-
-msgctxt "action"
-msgid "Investigate"
-msgstr "Investigar"
-
-msgctxt "action"
-msgid "Play"
-msgstr "Jugar"
-
-msgctxt "action"
-msgid "Draw"
-msgstr "Robar"
-
-msgctxt "action"
-msgid "Move"
-msgstr "Mover"
-
-msgctxt "action"
-msgid "Evade"
-msgstr "Evitar"
-
-msgctxt "action"
-msgid "Resource"
-msgstr "Recurso"
 
 msgctxt "trait"
 msgid "???"
@@ -5463,6 +5485,43 @@ msgstr ""
 msgctxt "trait"
 msgid "Zoog"
 msgstr ""
+
+#, javascript-format
+msgctxt "filter"
+msgid "${ cycleNames[cycle_position] } Cycle"
+msgstr "Ciclo ${cycleNames[cycle_position]}"
+
+msgctxt "action"
+msgid "Fight"
+msgstr "Combatir"
+
+msgctxt "action"
+msgid "Engage"
+msgstr "Enfrentarse"
+
+msgctxt "action"
+msgid "Investigate"
+msgstr "Investigar"
+
+msgctxt "action"
+msgid "Play"
+msgstr "Jugar"
+
+msgctxt "action"
+msgid "Draw"
+msgstr "Robar"
+
+msgctxt "action"
+msgid "Move"
+msgstr "Mover"
+
+msgctxt "action"
+msgid "Evade"
+msgstr "Evitar"
+
+msgctxt "action"
+msgid "Resource"
+msgstr "Recurso"
 
 msgctxt "Draw Cards"
 msgid "All"

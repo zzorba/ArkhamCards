@@ -9,7 +9,9 @@ import { onError } from '@apollo/client/link/error';
 import { RetryLink } from '@apollo/client/link/retry';
 import loggerLink from 'apollo-link-logger';
 import QueueLink from 'apollo-link-queue';
+import deepEqual from 'deep-equal';
 import SerializingLink from 'apollo-link-serialize';
+import { map, zip } from 'lodash';
 
 import { TypedTypePolicies } from '@generated/graphql/apollo-helpers';
 
@@ -17,7 +19,7 @@ import { getAuthToken } from '@lib/ArkhamCardsAuthProvider';
 
 import trackerLink from './trackerLink';
 
-export const GRAPHQL_SERVER = 'api.arkhamcards.com/v1';
+export const GRAPHQL_SERVER = 'gapi.arkhamcards.com/v1';
 
 const typePolicies: TypedTypePolicies = {
   campaign_deck: {
@@ -25,17 +27,87 @@ const typePolicies: TypedTypePolicies = {
   },
   campaign: {
     keyFields: ['id'],
+    fields: {
+      latest_decks: {
+        merge(existing, incoming) {
+          return incoming;
+        },
+      },
+      investigators: {
+        merge(existing, incoming) {
+          if (existing?.length !== incoming?.length) {
+            return incoming;
+          }
+          if (deepEqual(existing, incoming)) {
+            return existing;
+          }
+          return incoming;
+        },
+      },
+      investigator_data: {
+        merge(existing, incoming) {
+          if (existing?.length !== incoming?.length) {
+            return incoming;
+          }
+          if (deepEqual(existing, incoming)) {
+            return existing;
+          }
+          console.log({ existing, incoming });
+          return incoming;
+        },
+      },
+    },
+  },
+  chaos_bag_result: {
+    keyFields: ['id'],
+    fields: {
+      drawn: {
+        merge(existing, incoming) {
+          if (existing?.length !== incoming?.length) {
+            return incoming;
+          }
+          if (deepEqual(existing, incoming)) {
+            return existing;
+          }
+          return incoming;
+        },
+      },
+      sealed: {
+        merge(existing, incoming) {
+          if (existing?.length !== incoming?.length) {
+            return incoming;
+          }
+          if (deepEqual(existing, incoming)) {
+            return existing;
+          }
+          return incoming;
+        },
+      },
+    },
   },
   campaign_guide: {
     keyFields: ['id'],
+    merge: true,
     fields: {
       guide_inputs: {
         merge(existing, incoming) {
+          if (existing?.length !== incoming?.length) {
+            return incoming;
+          }
+          if (deepEqual(existing, incoming)) {
+            return existing;
+          }
           return incoming;
         },
       },
       guide_achievements: {
         merge(existing, incoming) {
+          if (existing?.length !== incoming?.length) {
+            return incoming;
+          }
+          if (deepEqual(existing, incoming)) {
+            return existing;
+          }
           return incoming;
         },
       },
@@ -46,6 +118,48 @@ const typePolicies: TypedTypePolicies = {
   },
   guide_achievement: {
     keyFields: ['id', 'campaign_id'],
+  },
+  investigator_data: {
+    keyFields: ['id'],
+  },
+  users: {
+    fields: {
+      decks: {
+        merge(existing, incoming) {
+          if (existing?.length !== incoming?.length) {
+            return incoming;
+          }
+          if (deepEqual(existing, incoming)) {
+            return existing;
+          }
+          return incoming;
+        },
+      },
+      all_decks: {
+        merge(existing, incoming) {
+          if (existing?.length !== incoming?.length) {
+            return incoming;
+          }
+          if (deepEqual(existing, incoming)) {
+            return existing;
+          }
+          return incoming;
+        },
+      },
+      campaigns: {
+        merge(existing, incoming) {
+          if (existing?.length !== incoming?.length) {
+            return incoming;
+          }
+          return map(zip(existing, incoming), ([e, i]) => {
+            if (deepEqual(e, i)) {
+              return e;
+            }
+            return i;
+          });
+        },
+      },
+    },
   },
 };
 
@@ -125,5 +239,6 @@ export default function constructApolloClient(store: Store) {
       link,
     ]),
     assumeImmutableResults: true,
+
   });
 }

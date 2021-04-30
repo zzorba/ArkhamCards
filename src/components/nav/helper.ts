@@ -115,17 +115,18 @@ export function showDeckModal(
     initialMode,
   };
 
+  const options = getDeckOptions(colors, {
+    modal: true,
+    title: deck.name,
+    initialMode,
+  }, investigator);
   Navigation.showModal<DeckDetailProps>({
     stack: {
       children: [{
         component: {
           name: 'Deck',
           passProps,
-          options: getDeckOptions(colors, {
-            modal: true,
-            title: deck.name,
-            initialMode,
-          }, investigator),
+          options,
         },
       }],
     },

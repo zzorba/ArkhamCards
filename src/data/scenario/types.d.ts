@@ -539,6 +539,8 @@ export interface InputStep {
 }
 export interface UpgradeDecksInput {
   type: "upgrade_decks";
+  skip_decks?: boolean;
+  special_xp?: SpecialXp;
 }
 export interface CardChoiceInput {
   type: "card_choice";
@@ -686,6 +688,7 @@ export interface PlayScenarioInput {
 }
 export interface TextBoxInput {
   type: "text_box";
+  undo?: boolean;
   effects: FreeformCampaignLogEffect[];
 }
 export interface ReceiveCampaignLinkInput {
@@ -862,6 +865,9 @@ export interface Achievement {
 }
 export interface Scenario {
   id: string;
+  chaos_bag_card?: string;
+  chaos_bag_card_text?: string;
+  chaos_bag_card_back_text?: string;
   scenario_name: string;
   full_name: string;
   header: string;

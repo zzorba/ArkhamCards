@@ -20,6 +20,162 @@ mutation deleteInvestigatorDecks(
   }
 }
 
+mutation chaosBagClearTokens(
+  $campaign_id: Int!,
+  $bless: Int!,
+  $curse: Int!
+) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      drawn: []
+      bless: $bless
+      curse: $curse
+    }
+  ) {
+    id
+    drawn
+    bless
+    curse
+  }
+}
+
+mutation chaosBagDrawToken(
+  $campaign_id: Int!,
+  $drawn: jsonb!
+) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      drawn: $drawn
+    }
+    _inc: {
+      totalDrawn: 1
+    }
+  ) {
+    id
+    drawn
+    totalDrawn
+  }
+}
+
+mutation chaosBagResetBlessCurse(
+  $campaign_id: Int!,
+  $drawn: jsonb!,
+  $sealed: jsonb!
+) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      bless: 0
+      curse: 0
+      drawn: $drawn
+      sealed: $sealed
+    }
+  ) {
+    id
+    bless
+    curse
+    drawn
+    sealed
+  }
+}
+
+mutation chaosBagSealTokens(
+  $campaign_id: Int!,
+  $sealed: jsonb!
+) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      sealed: $sealed
+    }
+  ) {
+    id
+    sealed
+  }
+}
+
+mutation chaosBagReleaseAllSealed($campaign_id: Int!) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      sealed: []
+    }
+  ) {
+    id
+    sealed
+  }
+}
+
+mutation chaosBagIncBless($campaign_id: Int!) {
+  update_chaos_bag_result(
+    where: {
+      id: { _eq: $campaign_id }
+      bless: { _lt: 10 }
+    }
+    _inc: {
+      bless: 1
+    }
+  ) {
+    returning {
+    	id
+      bless
+	  }
+  }
+}
+
+mutation chaosBagDecBless($campaign_id: Int!) {
+  update_chaos_bag_result(
+    where: {
+      id: { _eq: $campaign_id }
+      bless: { _gt: 0 }
+    }
+    _inc: {
+      bless: -1
+    }
+  ) {
+    returning {
+    	id
+      bless
+	  }
+  }
+}
+
+mutation chaosBagIncCurse($campaign_id: Int!) {
+  update_chaos_bag_result(
+    where: {
+      id: { _eq: $campaign_id }
+      curse: { _lt: 10 }
+    }
+    _inc: {
+      curse: 1
+    }
+  ) {
+    returning {
+    	id
+      curse
+	  }
+  }
+}
+
+mutation chaosBagDecCurse($campaign_id: Int!) {
+  update_chaos_bag_result(
+    where: {
+      id: { _eq: $campaign_id }
+      curse: { _gt: 0 }
+    }
+    _inc: {
+      curse: -1
+    }
+  ) {
+    returning {
+    	id
+      curse
+	  }
+  }
+}
+
 mutation setBinaryAchievement(
   $campaign_id: Int!,
   $id: String!,
@@ -158,7 +314,7 @@ mutation addGuideInput(
       payload: $payload
     }
     on_conflict: {
-      constraint: guide_input_scenario_campaign_id_step_type_key
+      constraint: guide_input_pkey
       update_columns: [payload]
     }
   ) {
@@ -218,11 +374,11 @@ mutation updateInvestigatorData(
   $mental: Int,
   $killed: Boolean,
   $insane: Boolean,
-  $added_cards: jsonb,
-  $available_xp: Int,
-  $story_assets: jsonb,
-  $ignore_story_assets: jsonb,
-  $removed_cards: jsonb
+  $addedCards: jsonb,
+  $availableXp: Int,
+  $storyAssets: jsonb,
+  $ignoreStoryAssets: jsonb,
+  $removedCards: jsonb
 ) {
   insert_investigator_data_one(
     object: {
@@ -232,11 +388,11 @@ mutation updateInvestigatorData(
       mental: $mental
       killed: $killed
       insane: $insane
-      addedCards: $added_cards
-      storyAssets: $story_assets
-      ignoreStoryAssets: $ignore_story_assets
-      removedCards: $removed_cards
-      availableXp: $available_xp
+      addedCards: $addedCards
+      storyAssets: $storyAssets
+      ignoreStoryAssets: $ignoreStoryAssets
+      removedCards: $removedCards
+      availableXp: $availableXp
     }
     on_conflict: {
       constraint: investigator_data_pkey

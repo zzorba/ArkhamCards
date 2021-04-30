@@ -11,7 +11,7 @@ interface Props {
   onPress: (id: string, campaign: MiniCampaignT) => void;
 }
 
-export default function CampaignItem({ campaign, onPress }: Props) {
+function CampaignItem({ campaign, onPress }: Props) {
   const handleOnPress = useCallback(() => {
     onPress(campaign.uuid, campaign);
   }, [onPress, campaign]);
@@ -29,3 +29,5 @@ export default function CampaignItem({ campaign, onPress }: Props) {
     </GenericCampaignItem>
   );
 }
+
+export default React.memo(CampaignItem);

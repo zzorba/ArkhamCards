@@ -1,9 +1,9 @@
 import React from 'react';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
-import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
+import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import { useSingleCampaignGuideData } from '@components/campaignguide/contextHelper';
-import useCampaignGuideContext from './useCampaignGuideContext';
+import useCampaignGuideContextFromActions from './useCampaignGuideContextFromActions';
 import { useInvestigatorCards } from '@components/core/hooks';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { CampaignId } from '@actions/types';
@@ -19,18 +19,23 @@ export interface InjectedCampaignGuideContextProps {
   setCampaignServerId: (serverId: number) => void;
 }
 
+export function useCampaignGuideContext(oCampaignId: CampaignId, live: boolean): [CampaignGuideContextType | undefined, (serverId: number) => void] {
+  const [campaignId, setCampaignServerId] = useCampaignId(oCampaignId);
+  const investigators = useInvestigatorCards();
+  const campaignData = useSingleCampaignGuideData(campaignId, investigators, live);
+  const updateCampaignActions = useUpdateCampaignActions();
+  const deckActions = useDeckActions();
+  const context = useCampaignGuideContextFromActions(campaignId, deckActions, updateCampaignActions, campaignData);
+  return [context, setCampaignServerId];
+}
+
 export default function withCampaignGuideContext<Props>(
   WrappedComponent: React.ComponentType<Props & InjectedCampaignGuideContextProps>,
   { rootView }: { rootView: boolean }
 ): React.ComponentType<Props & CampaignGuideInputProps> {
   function CampaignDataComponent(props: Props & CampaignGuideInputProps) {
-    const [campaignId, setCampaignServerId] = useCampaignId(props.campaignId);
-    const investigators = useInvestigatorCards();
-    const campaignData = useSingleCampaignGuideData(campaignId, investigators, rootView);
-    const updateCampaignActions = useUpdateCampaignActions();
-    const deckActions = useDeckActions();
-    const context = useCampaignGuideContext(campaignId, deckActions, updateCampaignActions, campaignData);
-    if (!campaignData || !context) {
+    const [context, setCampaignServerId] = useCampaignGuideContext(props.campaignId, rootView);
+    if (!context) {
       return (
         <LoadingSpinner />
       );

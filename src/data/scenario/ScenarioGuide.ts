@@ -14,6 +14,7 @@ import {
   getFixedStep,
   scenarioStepIds,
 } from './fixedSteps';
+import { CampaignDifficulty } from '@actions/types';
 
 interface ExecutedScenario {
   steps: ScenarioStep[];
@@ -52,6 +53,17 @@ export default class ScenarioGuide {
 
   scenarioName(): string {
     return this.scenario.scenario_name;
+  }
+
+  scenarioCard(): string | undefined {
+    return this.scenario.chaos_bag_card;
+  }
+
+  scenarioCardText(difficulty: CampaignDifficulty): string | undefined {
+    if (difficulty === CampaignDifficulty.EASY || difficulty === CampaignDifficulty.STANDARD) {
+      return this.scenario.chaos_bag_card_text;
+    }
+    return this.scenario.chaos_bag_card_back_text;
   }
 
   scenarioHeader(): string {

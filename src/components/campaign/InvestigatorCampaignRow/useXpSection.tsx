@@ -19,12 +19,28 @@ interface Props {
   showDeckUpgrade?: (investigator: Card, deck: Deck) => void;
   editXpPressed?: () => void;
 
+  unspentXp: number;
   spentXp: number;
   totalXp: number;
   last?: boolean;
+  isDeckOwner: boolean;
+  uploading: boolean;
 }
 
-export default function useXpSection({ deck, campaign, cards, investigator, last, showDeckUpgrade, editXpPressed, spentXp, totalXp }: Props): [React.ReactNode, boolean] {
+export default function useXpSection({
+  deck,
+  campaign,
+  cards,
+  investigator,
+  last,
+  spentXp,
+  totalXp,
+  unspentXp,
+  isDeckOwner,
+  uploading,
+  showDeckUpgrade,
+  editXpPressed,
+}: Props): [React.ReactNode, boolean] {
   const { colors } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const showDeckUpgradePress = useCallback(() => {
@@ -47,15 +63,15 @@ export default function useXpSection({ deck, campaign, cards, investigator, last
   }, [colors, campaign, deck, investigator]);
   const ownerDeck = !deck?.owner || !user || deck.owner.id === user.uid;
   const parsedDeck = useMemo(() => {
-    if (!deck) {
+    if (!deck || uploading) {
       return undefined;
     }
     if (!deck.previousDeck && !showDeckUpgrade) {
       return undefined;
     }
     return parseBasicDeck(deck.deck, cards, deck.previousDeck);
-  }, [deck, showDeckUpgrade, cards]);
-  if (deck) {
+  }, [deck, uploading, showDeckUpgrade, cards]);
+  if (deck && !uploading) {
     if (!parsedDeck) {
       return [null, false];
     }
@@ -68,36 +84,60 @@ export default function useXpSection({ deck, campaign, cards, investigator, last
     return [(
       <>
         <MiniPickerStyleButton
-          title={t`Experience`}
+          key="xp"
+          title={unspentXp > 0 ? t`Available XP` : t`Experience`}
           valueLabel={t`${spentXp} of ${totalXp} spent`}
-          last={last && !showDeckUpgrade}
-          editable
+          last={last && !unspentXp && !showDeckUpgrade}
+          editable={isDeckOwner && !uploading}
           onPress={onPress}
         />
+        { unspentXp > 0 && (
+          <MiniPickerStyleButton
+            key="unspent"
+            title={t`Unspent XP`}
+            valueLabel={t`${unspentXp} saved`}
+            last={last && !showDeckUpgrade}
+            editable={false}
+          />
+        )}
         { !!showDeckUpgrade && (
           <MiniPickerStyleButton
+            key="upgrade"
             title={t`Upgrade Deck`}
             valueLabel={t`Add XP from scenario`}
             icon="upgrade"
             onPress={showDeckUpgradePress}
             last={last}
-            editable
+            editable={!uploading}
           />
         ) }
       </>
-    ), ownerDeck && spentXp === 0 && totalXp !== 0];
+    ), ownerDeck && spentXp === 0 && unspentXp === 0 && totalXp !== 0];
   }
-  if (totalXp === 0) {
+  if (totalXp === 0 && unspentXp === 0) {
     return [null, false];
   }
   return [(
-    <MiniPickerStyleButton
-      key="xp"
-      title={t`Experience`}
-      valueLabel={t`${spentXp} of ${totalXp} spent` }
-      last={last}
-      editable
-      onPress={editXpPressed}
-    />
+    <>
+      { totalXp > 0 && (
+        <MiniPickerStyleButton
+          key="xp"
+          title={unspentXp > 0 ? t`Available XP` : t`Experience`}
+          valueLabel={t`${spentXp} of ${totalXp} spent` }
+          last={last && !unspentXp}
+          editable={!uploading}
+          onPress={editXpPressed}
+        />
+      )}
+      { unspentXp > 0 && (
+        <MiniPickerStyleButton
+          key="unspent"
+          title={t`Unspent XP`}
+          valueLabel={t`${unspentXp} saved`}
+          last={last && !showDeckUpgrade}
+          editable={false}
+        />
+      )}
+    </>
   ), false];
 }

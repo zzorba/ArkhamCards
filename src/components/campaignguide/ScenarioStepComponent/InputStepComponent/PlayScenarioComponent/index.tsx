@@ -16,6 +16,7 @@ import { chooseOneInputChoices } from '@data/scenario/inputHelper';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 import { CampaignId } from '@actions/types';
 import { showGuideDrawChaosBag } from '@components/campaign/nav';
+import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 
 interface Props {
   componentId: string;
@@ -25,6 +26,7 @@ interface Props {
 }
 
 export default function PlayScenarioComponent({ componentId, campaignId, id, input }: Props) {
+  const { campaign } = useContext(CampaignGuideContext);
   const { scenarioState, processedScenario } = useContext(ScenarioGuideContext);
   const { campaignLog } = useContext(ScenarioStepContext);
 
@@ -57,10 +59,17 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
       },
     });
   }, [componentId, campaignId, processedScenario]);
-
+  const standalone = !!campaign.standaloneId;
   const chaosBagSimulatorPressed = useCallback(() => {
-    showGuideDrawChaosBag(componentId, campaignId, campaignLog.chaosBag, processedScenario.latestCampaignLog.investigatorCodes(false));
-  }, [componentId, campaignId, campaignLog, processedScenario.latestCampaignLog]);
+    showGuideDrawChaosBag(
+      componentId,
+      campaignId,
+      campaignLog.chaosBag,
+      processedScenario.latestCampaignLog.investigatorCodes(false),
+      processedScenario.id.encodedScenarioId,
+      standalone
+    );
+  }, [componentId, campaignId, campaignLog, processedScenario.latestCampaignLog, standalone, processedScenario.id]);
 
   const mainContent = useMemo(() => {
     const firstDecision = scenarioState.choice(id);
@@ -74,6 +83,7 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
           <ChooseOnePrompt
             id={`${id}_campaign_log`}
             text={t`Choose entry to add to campaign log:`}
+            showUndo
             choices={[
               ...choices,
               {
@@ -142,6 +152,7 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
         </SetupStepWrapper>
       ) }
       { mainContent }
+      { }
     </>
   );
 }

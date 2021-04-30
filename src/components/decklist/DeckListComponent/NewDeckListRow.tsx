@@ -13,7 +13,7 @@ import {
   Fade,
 } from 'rn-placeholder';
 
-import { Campaign, CampaignId, Deck } from '@actions/types';
+import { Campaign } from '@actions/types';
 import Card from '@data/types/Card';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import { getProblemMessage } from '@components/core/DeckProblemRow';
@@ -35,7 +35,7 @@ interface Props {
   lang: string;
   deck: LatestDeckT;
   investigator?: Card;
-  onPress?: (deck: Deck, investigator: Card | undefined, campaignId: CampaignId | undefined) => void;
+  onPress?: (deck: LatestDeckT, investigator: Card | undefined) => void;
   details?: ReactNode;
   subDetails?: ReactNode;
   viewDeckButton?: boolean;
@@ -82,7 +82,7 @@ function DeckListRowDetails({
   const { colors, typography } = useContext(StyleContext);
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
   const cards = usePlayerCards(deck.deck.taboo_id || 0);
-  const parsedDeck = useMemo(() => deck && cards && parseBasicDeck(deck.deck, cards, deck.previousDeck), [deck, cards]);
+  const parsedDeck = useMemo(() => (!details && deck && cards) ? parseBasicDeck(deck.deck, cards, deck.previousDeck) : undefined, [deck, cards, details]);
   const [mainXpString, xpDetailString] = useDeckXpStrings(parsedDeck);
   if (details) {
     return (
@@ -161,8 +161,9 @@ export default function NewDeckListRow({
   width,
 }: Props) {
   const { colors, typography } = useContext(StyleContext);
+  const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
   const onDeckPressFunction = useCallback(() => {
-    onPress && onPress(deck.deck, investigator, deck.campaign?.id);
+    onPress && onPress(deck, investigator);
   }, [deck, investigator, onPress]);
   const onDeckPress = usePressCallback(onDeckPressFunction);
   const yithian = useMemo(() => !!deck.deck.slots && (deck.deck.slots[BODY_OF_A_YITHIAN] || 0) > 0, [deck.deck.slots]);
@@ -203,9 +204,15 @@ export default function NewDeckListRow({
                 <Text style={[typography.large, typography.white]} numberOfLines={1} ellipsizeMode="tail">
                   { deck.deck.name }
                 </Text>
-                <Text style={[typography.smallLabel, typography.italic, typography.white]}>
-                  { investigator?.name || '' }
-                </Text>
+                { investigator?.name ? (
+                  <Text style={[typography.smallLabel, typography.italic, typography.white]}>
+                    { investigator?.name || '' }
+                  </Text>
+                ) : (
+                  <Placeholder Animation={loadingAnimation}>
+                    <PlaceholderLine color={colors.M} height={10} width={25} style={{ marginTop: 4, marginBottom: 2 }} />
+                  </Placeholder>
+                ) }
               </View>
             </RoundedFactionHeader>
           )}
@@ -247,7 +254,7 @@ export default function NewDeckListRow({
         </RoundedFactionBlock>
       </View>
     );
-  }, [colors, yithian, eliminated, deck, investigator, subDetails, lang, details, width, typography]);
+  }, [colors, yithian, eliminated, loadingAnimation, deck, investigator, subDetails, lang, details, width, typography]);
 
   if (!deck) {
     return (

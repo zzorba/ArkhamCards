@@ -35,12 +35,16 @@ import {
   UploadedDeck,
   SetUploadedDecksAction,
   UploadedCampaignId,
+  StartDeckEditAction,
+  UPLOAD_DECK,
+  LocalDeck,
 } from '@actions/types';
 import { login } from '@actions';
 import { saveDeck, loadDeck, upgradeDeck, newCustomDeck, UpgradeDeckResult, deleteDeck } from '@lib/authApi';
-import { AppState, getArkhamDbDecks, getDeckUploadedCampaigns, makeDeckSelector } from '@reducers/index';
+import { AppState, getArkhamDbDecks, getDeckUploadedCampaigns } from '@reducers/index';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { DeckActions, syncCampaignDecksFromArkhamDB } from '@data/remote/decks';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 export function setServerDecks(
   deckIds: {
@@ -91,9 +95,15 @@ function setNewDeck(
     if (deck.previousDeckId && user) {
       const previousDeckId = deck.previousDeckId;
       const uploads = getDeckUploadedCampaigns(getState(), deck.previousDeckId);
-      if (uploads?.campaignId.length && user) {
+      if (uploads?.campaignId.length) {
         await Promise.all(
-          map(uploads.campaignId, campaignId => actions.createNextDeck(deck, campaignId, previousDeckId))
+          map(uploads.campaignId, campaignId => actions.createNextDeck(deck, campaignId, previousDeckId).then(() => {
+            dispatch({
+              type: UPLOAD_DECK,
+              deckId: getDeckId(deck),
+              campaignId,
+            });
+          }))
         );
       }
     }
@@ -469,19 +479,24 @@ export const saveClonedDeck = (
 export const uploadLocalDeck = (
   user: FirebaseAuthTypes.User | undefined,
   actions: DeckActions,
-  localDeck: Deck
+  replaceLocalDeckRequest: (localDeckId: string, arkhamDbId: number) => Promise<void>,
+  localDeck: LocalDeck
 ): ThunkAction<Promise<Deck>, AppState, unknown, Action<string>> => {
-  return (dispatch): Promise<Deck> => {
-    return dispatch(saveClonedDeck(
+  return async(dispatch, getState): Promise<Deck> => {
+    const uploads = getDeckUploadedCampaigns(getState(), getDeckId(localDeck));
+    const deck = await dispatch(saveClonedDeck(
       user,
       actions,
       false,
       localDeck,
       localDeck.name
-    )).then(deck => {
-      dispatch(replaceLocalDeck(getDeckId(localDeck), deck as ArkhamDbDeck));
-      return deck;
-    });
+    ));
+    const theDeck = deck as ArkhamDbDeck;
+    dispatch(replaceLocalDeck(getDeckId(localDeck), theDeck));
+    if (user && uploads?.campaignId.length) {
+      await replaceLocalDeckRequest(localDeck.uuid, theDeck.id);
+    }
+    return deck;
   };
 };
 
@@ -613,17 +628,15 @@ export function updateDeckMeta(
   };
 }
 
-export function startDeckEdit(id: DeckId, initialMode?: 'upgrade' | 'edit'): ThunkAction<void, AppState, unknown, Action<string>> {
-  return (dispatch, getState): void => {
-    const deck = makeDeckSelector()(getState(), id);
-    if (deck) {
-      dispatch({
-        type: START_DECK_EDIT,
-        id,
-        deck,
-        mode: initialMode,
-      });
-    }
+export function startDeckEdit(id: DeckId, deck: LatestDeckT, editable: boolean, initialMode: undefined | 'upgrade' | 'edit'): ThunkAction<void, AppState, unknown, StartDeckEditAction> {
+  return (dispatch): void => {
+    dispatch({
+      type: START_DECK_EDIT,
+      id,
+      deck: deck.deck,
+      mode: initialMode,
+      editable,
+    });
   };
 }
 

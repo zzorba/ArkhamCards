@@ -10,7 +10,6 @@ fragment GuideInput on guide_input {
   scenario
   type
   payload
-  created_at
 }
 
 fragment GuideAchievement on guide_achievement {
@@ -29,6 +28,15 @@ fragment IdDeck on campaign_deck {
   campaign_id
 }
 
+fragment FullChaosBagResult on chaos_bag_result {
+  id
+  bless
+  curse
+  drawn
+  sealed
+  totalDrawn
+}
+
 fragment MiniDeck on campaign_deck {
   ...IdDeck
   investigator
@@ -45,6 +53,19 @@ fragment AllDeck on campaign_deck {
   campaign {
     id
     uuid
+  }
+  next_deck {
+    ...IdDeck
+  }
+  previous_deck {
+    ...IdDeck
+  }
+}
+
+fragment HistoryDeck on campaign_deck {
+  ...BasicDeck
+  owner {
+    ...UserInfo
   }
   next_deck {
     ...IdDeck
@@ -97,8 +118,6 @@ fragment FullInvestigatorData on investigator_data {
   availableXp
   spentXp
   specialXp
-
-  updated_at
 }
 
 fragment MiniCampaign on campaign {
@@ -110,16 +129,17 @@ fragment MiniCampaign on campaign {
   difficulty
   scenarioResults
   guided
-  latest_decks {
+  owner_id
+  latest_decks(order_by: { owner_id: asc }) {
     deck {
       ...MiniDeck
     }
   }
-  investigators {
+  investigators(order_by: { created_at: asc }) {
     id
     investigator
   }
-  investigator_data {
+  investigator_data(order_by: { created_at: asc}) {
     ...MiniInvestigatorData
   }
   updated_at
@@ -141,14 +161,14 @@ fragment FullCampaign on campaign {
   guided
   guide_version
   owner_id
-  investigators {
+  investigators(order_by: { created_at: asc }) {
     id
     investigator
   }
-  investigator_data {
+  investigator_data(order_by: { created_at: asc}) {
     ...FullInvestigatorData
   }
-  latest_decks {
+  latest_decks(order_by: { owner_id: asc }) {
     deck {
       ...LatestDeck
     }
@@ -171,10 +191,10 @@ fragment FullCampaignGuideState on campaign_guide {
   id
   uuid
   updated_at
-  guide_inputs {
+  guide_inputs(order_by: { created_at: asc }) {
     ...GuideInput
   }
-  guide_achievements {
+  guide_achievements(order_by: { created_at: asc }) {
     ...GuideAchievement
   }
 }

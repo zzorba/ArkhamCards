@@ -5,10 +5,11 @@ import MyDecksComponent from '@components/decklist/MyDecksComponent';
 import { Deck } from '@actions/types';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 interface Props {
   componentId: string;
-  onDeckSelect: (deck: Deck) => void;
+  onDeckSelect: (deck: Deck) => Promise<void>;
   searchOptions?: SearchOptions;
 
   onlyDecks?: MiniDeckT[];
@@ -22,14 +23,12 @@ export default function DeckSelectorTab({
   onlyDecks,
   onDeckSelect,
 }: Props) {
-  const deckSelected = useCallback((deck: Deck) => {
-    onDeckSelect(deck);
+  const deckSelected = useCallback(async(deck: LatestDeckT) => {
+    onDeckSelect(deck.deck);
     Navigation.dismissModal(componentId);
   }, [onDeckSelect, componentId]);
-
   return (
     <MyDecksComponent
-      componentId={componentId}
       searchOptions={searchOptions}
       deckClicked={deckSelected}
       onlyDecks={onlyDecks}

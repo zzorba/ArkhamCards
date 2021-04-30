@@ -903,6 +903,7 @@ export default class ScenarioStep {
                 type: 'earn_xp',
                 investigator: '$input_value',
                 bonus: xpAdjust,
+                special_xp: input.special_xp,
               });
             }
             const physicalAdjust = (choices.physical && choices.physical[0]) || 0;

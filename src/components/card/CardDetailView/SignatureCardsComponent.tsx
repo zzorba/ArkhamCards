@@ -27,6 +27,12 @@ export default function SignatureCardsComponent({ componentId, investigator, wid
     return uniq(flatMap(investigator.deck_requirements?.card || [], req => (req.alternates || [])));
   }, [investigator]);
   const [alternateCards, alternateCardsLoading] = useCardList(alternateCodes, 'player');
+  const bondedCards = useMemo(() => {
+    return [
+      ...(requiredCards || []),
+      ...(alternateCards || []),
+    ];
+  }, [requiredCards, alternateCards]);
   if (alternateCardsLoading && requiredCardsLoading) {
     return null;
   }
@@ -75,11 +81,7 @@ export default function SignatureCardsComponent({ componentId, investigator, wid
       <BondedCardsComponent
         componentId={componentId}
         width={width}
-        cards={[
-          ...(requiredCards || []),
-          ...(altCards || []),
-          ...(advancedCards || []),
-        ]}
+        cards={bondedCards}
       />
     </View>
   );

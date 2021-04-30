@@ -48,6 +48,23 @@ query getCampaignAccess($campaign_id: Int!) {
   }
 }
 
+query getCaosBagResults($campaign_id: Int!) {
+  chaos_bag_result_by_pk(id: $campaign_id) {
+    ...FullChaosBagResult
+  }
+}
+
+query getChaosBagResults($campaign_id: Int!) {
+  chaos_bag_result_by_pk(id: $campaign_id) {
+    id
+    bless
+    curse
+    drawn
+    sealed
+    totalDrawn
+  }
+}
+
 subscription campaign($campaign_id: Int!) {
   campaign_by_pk(id: $campaign_id) {
     ...FullCampaign
@@ -69,11 +86,16 @@ subscription campaignAccess($campaign_id: Int!) {
   }
 }
 
-
 subscription campaignGuide($campaign_id: Int!) {
   campaign_guide(
     where: { id: {_eq: $campaign_id }}
   ) {
     ...FullCampaignGuideState
+  }
+}
+
+subscription chaosBagResults($campaign_id: Int!) {
+  chaos_bag_result_by_pk(id: $campaign_id) {
+    ...FullChaosBagResult
   }
 }

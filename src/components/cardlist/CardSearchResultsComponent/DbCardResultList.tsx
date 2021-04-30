@@ -49,6 +49,7 @@ import { useCards, useEffectUpdate, useToggles } from '@components/core/hooks';
 import LoadingCardSearchResult from '../LoadingCardSearchResult';
 import { ControlType } from '../CardSearchResult/ControlComponent';
 import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
+import LoadingSpinner from '@components/core/LoadingSpinner';
 
 interface Props {
   componentId: string;
@@ -239,11 +240,16 @@ interface SectionFeed {
   feed: Item[];
   fullFeed: PartialCard[];
   refreshing: boolean;
+  refreshingSearch: boolean;
   fetchMore?: () => void;
   showSpoilerCards: boolean;
   refreshDeck?: () => void;
 }
 
+interface LoadedState {
+  cards: PartialCard[];
+  textQuery: Brackets | undefined;
+}
 function useSectionFeed({
   componentId,
   query,
@@ -262,15 +268,22 @@ function useSectionFeed({
   const packInCollection = useSelector(getPacksInCollection);
   const [showNonCollection, , setShowNonCollection, clearShowNonCollection] = useToggles({});
   const storyQuery = storyOnly ? query : undefined;
-  const [deckCards, setDeckCards] = useState<PartialCard[]>([]);
+  const [{ cards: deckCards, textQuery: deckCardsTextQuery }, setDeckCards] = useState<LoadedState>({
+    cards: [],
+    textQuery: undefined,
+  });
   const [mainQueryCards, setMainQueryCards] = useState<PartialCard[]>([]);
-  const [textQueryCards, setTextQueryCards] = useState<PartialCard[]>([]);
+  const [{ cards: textQueryCards, textQuery: textQueryCardsTextQuery }, setTextQueryCards] = useState<LoadedState>({
+    cards: [],
+    textQuery: undefined,
+  });
   const [deckQuery, hasDeckChanges, refreshDeck] = useDeckQuery(deckCardCounts, originalDeckSlots);
   useEffect(() => {
     let ignore = false;
     if (!deckQuery) {
-      setDeckCards([]);
+      setDeckCards({ cards: [], textQuery: undefined });
     } else {
+      const searchTextQuery = textQuery;
       db.getPartialCards(
         combineQueries(
           deckQuery,
@@ -285,7 +298,7 @@ function useSectionFeed({
         sort
       ).then(cards => {
         if (!ignore) {
-          setDeckCards(cards);
+          setDeckCards({ cards, textQuery: searchTextQuery });
         }
       });
     }
@@ -460,11 +473,12 @@ function useSectionFeed({
     if (textQuery) {
       let ignore = false;
       if (!query) {
-        setTextQueryCards([]);
+        setTextQueryCards({ cards: [], textQuery: undefined });
         return;
       }
       // Look for textual card changes.
       // const start = new Date();
+      const searchTextQuery = textQuery;
       db.getPartialCards(
         combineQueries(query,
           [
@@ -478,7 +492,7 @@ function useSectionFeed({
       ).then((cards: PartialCard[]) => {
         if (!ignore) {
           // console.log(`Fetched text cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
-          setTextQueryCards(cards);
+          setTextQueryCards({ cards, textQuery: searchTextQuery });
         }
       });
       return () => {
@@ -569,6 +583,8 @@ function useSectionFeed({
     feed: items,
     fullFeed: visibleCards,
     refreshing: refreshing || (feedLoading && !expandButtonPressed),
+    // tslint:disable-next-line: strict-comparisons
+    refreshingSearch: (!!deckQuery && deckCardsTextQuery !== textQuery) || (textQueryCardsTextQuery !== textQuery),
     fetchMore,
     showSpoilerCards: showSpoilers,
     refreshDeck: hasDeckChanges ? refreshDeck : undefined,
@@ -621,6 +637,7 @@ export default function({
     feed,
     fullFeed,
     refreshing,
+    refreshingSearch,
     fetchMore,
     showSpoilerCards,
     refreshDeck,
@@ -811,19 +828,26 @@ export default function({
       <View style={styles.footer}>
         { (!refreshing && fullFeed.length === 0) ? (
           <View>
+            { refreshingSearch && <LoadingSpinner inline /> }
             <View style={[styles.emptyText, borderStyle]}>
-              <Text style={typography.text}>
-                { searchTerm ?
-                  t`No matching cards for "${searchTerm}"` :
-                  t`No matching cards` }
-              </Text>
+              { refreshingSearch ? (
+                <Text style={typography.text}>
+                  { t`Searching cards...` }
+                </Text>
+              ) : (
+                <Text style={typography.text}>
+                  { searchTerm ?
+                    t`No matching cards for "${searchTerm}"` :
+                    t`No matching cards` }
+                </Text>
+              ) }
             </View>
             { expandSearchControls }
           </View>
         ) : expandSearchControls }
       </View>
     );
-  }, [searchTerm, expandSearchControls, borderStyle, fullFeed.length, typography, refreshing]);
+  }, [searchTerm, expandSearchControls, borderStyle, fullFeed.length, typography, refreshing, refreshingSearch]);
   const handleScrollBeginDrag = useCallback(() => {
     Keyboard.dismiss();
   }, []);

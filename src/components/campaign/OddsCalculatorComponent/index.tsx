@@ -20,7 +20,8 @@ import { ChaosBag, CHAOS_TOKEN_COLORS, SPECIAL_TOKENS, SpecialTokenValue, ChaosT
 import Card from '@data/types/Card';
 import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useChaosBagResults, useCounter, useCounters } from '@components/core/hooks';
+import { useCounter, useCounters } from '@components/core/hooks';
+import { useChaosBagResults } from '@data/hooks';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { SCENARIO_CARDS_QUERY } from '@data/sqlite/query';
 import LoadingSpinner from '@components/core/LoadingSpinner';
@@ -35,7 +36,6 @@ interface Props {
   chaosBag: ChaosBag;
   cycleScenarios?: Scenario[];
   allInvestigators: Card[];
-  scenarioCards?: Card[];
 }
 
 const SCENARIO_CODE_FIXER: {

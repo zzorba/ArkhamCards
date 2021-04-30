@@ -94,26 +94,22 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
 const PROCEED_STEP_ID = '$proceed';
 
 const CHOOSE_INVESTIGATORS_STEP_ID = '$choose_investigators';
-function chooseInvestigatorsStep(): InputStep {
-  return {
-    id: CHOOSE_INVESTIGATORS_STEP_ID,
-    type: 'input',
-    input: {
-      type: 'scenario_investigators',
-    },
-  };
-}
+const chooseInvestigatorsStep: InputStep = {
+  id: CHOOSE_INVESTIGATORS_STEP_ID,
+  type: 'input',
+  input: {
+    type: 'scenario_investigators',
+  },
+};
 
 const UPGRADE_DECKS_STEP_ID = '$upgrade_decks';
-function upgradeDecksStep(): InputStep {
-  return {
-    id: UPGRADE_DECKS_STEP_ID,
-    type: 'input',
-    input: {
-      type: 'upgrade_decks',
-    },
-  };
-}
+const upgradeDecksStep: InputStep = {
+  id: UPGRADE_DECKS_STEP_ID,
+  type: 'input',
+  input: {
+    type: 'upgrade_decks',
+  },
+};
 
 const DRAW_STANDALONE_WEAKNESS_STEP_ID = '$draw_standalone_weakness';
 function drawStandaloneWeaknessStep(): InputStep {
@@ -146,15 +142,13 @@ function drawStandaloneWeaknessStep(): InputStep {
 }
 
 const SAVE_STANDALONE_DECKS_ID = '$save_standalone_decks';
-function saveStandaloneDecksStep(): InputStep {
-  return {
-    id: SAVE_STANDALONE_DECKS_ID,
-    type: 'input',
-    input: {
-      type: 'save_decks',
-    },
-  };
-}
+const saveStandaloneDecksStep: InputStep = {
+  id: SAVE_STANDALONE_DECKS_ID,
+  type: 'input',
+  input: {
+    type: 'save_decks',
+  },
+};
 
 const DRAW_WEAKNESS_STEP_ID = '$draw_weakness';
 function drawWeaknessStep(): InputStep {
@@ -213,15 +207,13 @@ function recordTraumaStep(): InputStep {
 }
 
 export const PLAY_SCENARIO_STEP_ID = '$play_scenario';
-function playScenarioStep(): InputStep {
-  return {
-    id: PLAY_SCENARIO_STEP_ID,
-    type: 'input',
-    input: {
-      type: 'play_scenario',
-    },
-  };
-}
+const playScenarioStep: InputStep = {
+  id: PLAY_SCENARIO_STEP_ID,
+  type: 'input',
+  input: {
+    type: 'play_scenario',
+  },
+};
 
 const EDIT_CAMPAIGN_LOG_STEP_ID = '$campaign_log';
 function editCampaignLogStep(): InputStep {
@@ -231,6 +223,7 @@ function editCampaignLogStep(): InputStep {
     text: t`In your Campaign Log, record that:`,
     input: {
       type: 'text_box',
+      undo: true,
       effects: [
         {
           type: 'freeform_campaign_log',
@@ -404,13 +397,11 @@ export function createInvestigatorStatusStep(
 }
 
 export const INTER_SCENARIO_CHANGES_STEP_ID = '$inter_scenario_changes';
-function interScenarioChangesStep(): Step {
-  return {
-    id: INTER_SCENARIO_CHANGES_STEP_ID,
-    type: 'internal',
-    hidden: true,
-  };
-}
+const interScenarioChangesStep: Step = {
+  id: INTER_SCENARIO_CHANGES_STEP_ID,
+  type: 'internal',
+  hidden: true,
+};
 
 export function getFixedStep(
   id: string,
@@ -454,7 +445,7 @@ export function getFixedStep(
       };
     }
     case INTER_SCENARIO_CHANGES_STEP_ID:
-      return interScenarioChangesStep();
+      return interScenarioChangesStep;
     case EDIT_CAMPAIGN_LOG_STEP_ID:
       return editCampaignLogStep();
     case DRAW_WEAKNESS_STEP_ID:
@@ -462,15 +453,15 @@ export function getFixedStep(
     case DRAW_STANDALONE_WEAKNESS_STEP_ID:
       return drawStandaloneWeaknessStep();
     case PLAY_SCENARIO_STEP_ID:
-      return playScenarioStep();
+      return playScenarioStep;
     case CHOOSE_INVESTIGATORS_STEP_ID:
-      return chooseInvestigatorsStep();
+      return chooseInvestigatorsStep;
     case UPGRADE_DECKS_STEP_ID:
-      return upgradeDecksStep();
+      return upgradeDecksStep;
     case LEAD_INVESTIGATOR_STEP_ID:
       return leadInvestigatorStep();
     case SAVE_STANDALONE_DECKS_ID:
-      return saveStandaloneDecksStep();
+      return saveStandaloneDecksStep;
     case RECORD_TRAUMA_STEP_ID:
       return recordTraumaStep();
     default:

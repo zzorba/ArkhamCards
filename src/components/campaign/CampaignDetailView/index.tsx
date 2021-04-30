@@ -4,6 +4,7 @@ import { map } from 'lodash';
 import { useDispatch } from 'react-redux';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
+import { Action } from 'redux';
 
 import BasicButton from '@components/core/BasicButton';
 import { CampaignId, CUSTOM, Deck, DeckId, getDeckId, Slots, Trauma, WeaknessSet } from '@actions/types';
@@ -34,6 +35,9 @@ import useChaosBagDialog from './useChaosBagDialog';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useDeckActions } from '@data/remote/decks';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import LoadingSpinner from '@components/core/LoadingSpinner';
+import { ThunkDispatch } from 'redux-thunk';
+import { AppState } from '@reducers';
 
 export interface CampaignDetailProps {
   campaignId: CampaignId;
@@ -42,6 +46,7 @@ export interface CampaignDetailProps {
 type Props = NavigationProps & CampaignDetailProps
 
 const EMPTY_CHAOS_BAG = {};
+type AsyncDispatch = ThunkDispatch<AppState, unknown, Action>;
 
 function CampaignDetailView(props: Props) {
   const { componentId } = props;
@@ -57,6 +62,7 @@ function CampaignDetailView(props: Props) {
 
   const updateCampaignActions = useUpdateCampaignActions();
   const dispatch = useDispatch();
+  const asyncDispatch: AsyncDispatch = useDispatch();
 
   const updateInvestigatorTrauma = useCallback((investigator: string, trauma: Trauma) => {
     dispatch(updateCampaignInvestigatorTrauma(updateCampaignActions, campaignId, investigator, trauma));
@@ -141,10 +147,10 @@ function CampaignDetailView(props: Props) {
     }
   }, [cards, campaign, updateWeaknessAssignedCards, showAlert]);
   const deckActions = useDeckActions();
-  const onAddDeck = useCallback((deck: Deck) => {
-    dispatch(addInvestigator(user, deckActions, updateCampaignActions, campaignId, deck.investigator_code, getDeckId(deck)));
+  const onAddDeck = useCallback(async(deck: Deck) => {
+    await asyncDispatch(addInvestigator(user, deckActions, updateCampaignActions, campaignId, deck.investigator_code, getDeckId(deck)));
     checkForWeaknessPrompt(deck);
-  }, [user, campaignId, deckActions, updateCampaignActions, dispatch, checkForWeaknessPrompt]);
+  }, [user, campaignId, deckActions, updateCampaignActions, asyncDispatch, checkForWeaknessPrompt]);
 
   const onAddInvestigator = useCallback((card: Card) => {
     dispatch(addInvestigator(user, deckActions, updateCampaignActions, campaignId, card.code));
@@ -250,8 +256,14 @@ function CampaignDetailView(props: Props) {
     campaignId,
     chaosBag: campaign?.chaosBag || EMPTY_CHAOS_BAG,
     setChaosBag: updateCampaignActions.setChaosBag,
+    scenarioId: undefined,
   });
   if (!campaign) {
+    if (campaignId.serverId) {
+      return (
+        <LoadingSpinner />
+      );
+    }
     return (
       <View>
         <BasicButton
@@ -343,18 +355,23 @@ function CampaignDetailView(props: Props) {
               onPress={drawWeaknessPressed}
               bottomMargin={s}
             />
+            <View style={[space.paddingBottomS, space.paddingTopS]}>
+              <Text style={[typography.large, typography.center, typography.light]}>
+                { `— ${t`Settings`} —` }
+              </Text>
+            </View>
             <UploadCampaignButton
               componentId={componentId}
               campaignId={campaignId}
+              campaign={campaign}
               setCampaignServerId={setCampaignServerId}
               showAlert={showAlert}
-              guided={false}
               deckActions={deckActions}
             />
             <DeleteCampaignButton
               componentId={componentId}
               campaignId={campaignId}
-              campaignName={campaign?.name || ''}
+              campaign={campaign}
               showAlert={showAlert}
             />
           </View>

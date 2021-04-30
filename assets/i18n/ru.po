@@ -1305,6 +1305,7 @@ msgstr "Получаем 3 раны и 3 ужаса"
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr "Семь против двух, лишь бы не щупальца"
 
+#, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "Нет карт по запросу «${ searchTerm }»"
 
@@ -3584,10 +3585,6 @@ msgstr[0] "${ size } Card"
 msgstr[1] "${ size } Cards"
 msgstr[2] "${ size } карт"
 
-#, javascript-format
-msgid "class_${ faction }"
-msgstr "класс_${ faction }"
-
 msgid "Select Parallel Investigator"
 msgstr "Альтернативный сыщик"
 
@@ -4095,9 +4092,6 @@ msgstr "Потрачено ${ _spentXp } из ${ _totalXp }"
 msgid "Save your changes to the campaign log"
 msgstr "Сохранить в журнале кампании"
 
-msgid "You must be online to upload campaigns"
-msgstr "Нужен интернет, чтобы загрузить кампании"
-
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr ""
 
@@ -4167,7 +4161,72 @@ msgstr ""
 msgid "Access"
 msgstr ""
 
-msgid "Edit access"
+msgid "Later"
+msgstr ""
+
+msgid "Searching cards..."
+msgstr ""
+
+msgid ""
+"This appears to be one of your decks from ArkhamDB, however you are not "
+"currently logged in. If you wish to make edits, please login through the "
+"app settings."
+msgstr ""
+
+msgid "Leave campaign"
+msgstr ""
+
+msgid ""
+"Are you sure you want to leave this campaign?\n"
+"\n"
+"Your decks will be removed from the campaign, but you can rejoin it later."
+msgstr ""
+
+msgid "Leave"
+msgstr ""
+
+msgid "Edit players"
+msgstr ""
+
+msgid "View players"
+msgstr ""
+
+msgid "Clear card cache"
+msgstr ""
+
+msgid "Uploading..."
+msgstr ""
+
+msgid "Leave standalone"
+msgstr ""
+
+msgid ""
+"Are you sure you want to leave this standalone?\n"
+"\n"
+"Your decks will be removed from the standalone, but you can rejoin it later."
+msgstr ""
+
+msgid "Upload standalone"
+msgstr ""
+
+msgid "You must be online to upload"
+msgstr ""
+
+msgid "Adjust scenario XP and trauma"
+msgstr ""
+
+msgid "Unspent XP"
+msgstr ""
+
+#, javascript-format
+msgid "${ unspentXp } saved"
+msgstr ""
+
+#, javascript-format
+msgid "Scenario Card - ${ difficultyStr }"
+msgstr ""
+
+msgid "Scenario Card"
 msgstr ""
 
 #, javascript-format
@@ -4378,43 +4437,6 @@ msgstr ""
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } читает <b>${ sectionName }</b>"
-
-#, javascript-format
-msgctxt "filter"
-msgid "${ cycleNames[cycle_position] } Cycle"
-msgstr "Цикл ${ cycleNames[cycle_position] }"
-
-msgctxt "action"
-msgid "Fight"
-msgstr "Бой"
-
-msgctxt "action"
-msgid "Engage"
-msgstr "Начать сражаться"
-
-msgctxt "action"
-msgid "Investigate"
-msgstr "Исследование"
-
-msgctxt "action"
-msgid "Play"
-msgstr "Сыграть карту"
-
-msgctxt "action"
-msgid "Draw"
-msgstr "Взять карту"
-
-msgctxt "action"
-msgid "Move"
-msgstr "Переместиться"
-
-msgctxt "action"
-msgid "Evade"
-msgstr "Уход"
-
-msgctxt "action"
-msgid "Resource"
-msgstr "Взять ресурс"
 
 msgctxt "trait"
 msgid "???"
@@ -5423,6 +5445,43 @@ msgstr "Йот"
 msgctxt "trait"
 msgid "Zoog"
 msgstr ""
+
+#, javascript-format
+msgctxt "filter"
+msgid "${ cycleNames[cycle_position] } Cycle"
+msgstr "Цикл ${ cycleNames[cycle_position] }"
+
+msgctxt "action"
+msgid "Fight"
+msgstr "Бой"
+
+msgctxt "action"
+msgid "Engage"
+msgstr "Начать сражаться"
+
+msgctxt "action"
+msgid "Investigate"
+msgstr "Исследование"
+
+msgctxt "action"
+msgid "Play"
+msgstr "Сыграть карту"
+
+msgctxt "action"
+msgid "Draw"
+msgstr "Взять карту"
+
+msgctxt "action"
+msgid "Move"
+msgstr "Переместиться"
+
+msgctxt "action"
+msgid "Evade"
+msgstr "Уход"
+
+msgctxt "action"
+msgid "Resource"
+msgstr "Взять ресурс"
 
 msgctxt "Draw Cards"
 msgid "All"

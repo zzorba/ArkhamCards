@@ -8,6 +8,7 @@ import HealthSanityIcon from '@components/core/HealthSanityIcon';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 import Card from '@data/types/Card';
+import { TINY_PHONE } from '@styles/sizes';
 
 
 interface Props {
@@ -33,7 +34,7 @@ export default function TraumaSummary({ trauma, investigator, whiteText }: Props
     }
     return <Text style={typography.subHeaderText}>{c('trauma').t`None`}</Text>;
   }
-  if (physical + mental > 3) {
+  if (physical + mental > (TINY_PHONE ? 2 : 3)) {
     // compact mode;
     return (
       <View style={styles.row}>

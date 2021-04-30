@@ -26,8 +26,6 @@ export interface SearchSelectProps {
   capitalize?: boolean;
 }
 
-type Props = NavigationProps & SearchSelectProps;
-
 interface Item {
   value: string;
   selected: boolean;
@@ -37,7 +35,7 @@ function keyExtractor(item: Item) {
   return item.value;
 }
 
-export default function SearchMultiSelectView({ componentId, placeholder, onChange, values, selection: initialSelection, capitalize }: Props) {
+export default function SearchMultiSelectView({ componentId, placeholder, onChange, values, selection: initialSelection, capitalize }: NavigationProps & SearchSelectProps) {
   const { backgroundStyle } = useContext(StyleContext);
   const [selection, setSelection] = useState<string[]>(initialSelection || []);
   const [search, setSearch] = useState('');
@@ -121,6 +119,9 @@ export default function SearchMultiSelectView({ componentId, placeholder, onChan
           onScroll={onScroll}
           renderItem={renderItem}
           keyExtractor={keyExtractor}
+          maxToRenderPerBatch={30}
+          initialNumToRender={30}
+          onEndReachedThreshold={0.5}
           keyboardShouldPersistTaps="always"
           keyboardDismissMode="on-drag"
           ListHeaderComponent={header}

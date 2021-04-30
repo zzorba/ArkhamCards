@@ -226,7 +226,7 @@ function PlayerView({ style }: PlayerProps) {
         }}
       >
         <View style={styles.leftRow}>
-          <ArtworkView track={track} state={state} />
+          <ArtworkView track={track} />
           <TitleView track={track} />
           <View style={space.marginLeftM}>
             <ActivityIndicator
@@ -251,9 +251,7 @@ function PlayerView({ style }: PlayerProps) {
 }
 
 interface ArtworkProps {
-  style?: ViewStyle;
   track: TrackPlayer.Track | null;
-  state: TrackPlayer.State | null;
 }
 
 function ArtworkView({ track }: ArtworkProps) {
@@ -360,7 +358,7 @@ function TrackView({ track, isCurrentTrack }: TrackProps) {
             backgroundColor: isCurrentTrack ? 'grey' : 'transparent',
           }}
         >
-          <ArtworkView track={track} state={null} />
+          <ArtworkView track={track} />
           <TitleView style={{ flex: 1 }} track={track} />
         </View>
       </>

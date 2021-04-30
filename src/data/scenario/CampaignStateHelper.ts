@@ -19,7 +19,7 @@ import Card, { CardsMap } from '@data/types/Card';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 
 export interface CampaignGuideActions {
-  showChooseDeck: (singleInvestigator?: Card, callback?: (code: string) => void) => void;
+  showChooseDeck: (singleInvestigator?: Card, callback?: (code: string) => Promise<void>) => void;
   removeDeck: (deckId: DeckId, investigator: string) => void;
   removeInvestigator: (investigator: Card) => void;
   setDecision: (id: string, value: boolean, scenarioId?: string) => void;
@@ -68,7 +68,7 @@ export default class CampaignStateHelper {
     return this.state.lastUpdated() || new Date();
   }
 
-  showChooseDeck(singleInvestigator?: Card, callback?: (code: string) => void) {
+  showChooseDeck(singleInvestigator?: Card, callback?: (code: string) => Promise<void>) {
     this.actions.showChooseDeck(singleInvestigator, callback);
   }
 
@@ -194,7 +194,7 @@ export default class CampaignStateHelper {
     );
     if (latestInput &&
       latestInput.type === 'choice_list' &&
-      (latestInput.step.startsWith('$upgrade_decks#') || latestInput.step.startsWith('$save_standalone_decks')) &&
+      (latestInput.step.startsWith('$upgrade_decks#') || latestInput.step.startsWith('$save_standalone_decks#')) &&
       !!latestInput.deckId
     ) {
       const isUpgrade = latestInput.step.startsWith('$upgrade_decks#');
@@ -227,11 +227,11 @@ export default class CampaignStateHelper {
     return this.state.findLastInput(input => (
       input.type === type &&
       // tslint:disable-next-line
-      input.scenario === scenario && (
+      ((!input.scenario && !scenario) || input.scenario === scenario) && (
         input.type === 'start_scenario' ||
         input.type === 'start_side_scenario' ||
-        // tslint:disable-next-line
-        input.step === step
+        // tslint:disable-next-line: strict-comparisons
+        ((!step && !input.step) || step === input.step)
       )
     ));
   }

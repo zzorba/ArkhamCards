@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import {
   StyleSheet,
   Text,
@@ -107,11 +107,11 @@ function ImageContent({ card }: { card: Card }) {
 
 export default function PlayerCardImage({ componentId, card }: Props) {
   const { colors } = useContext(StyleContext);
-  const onPress = () => {
+  const onPress = useCallback(() => {
     if (componentId) {
       showCardImage(componentId, card, colors);
     }
-  };
+  }, [componentId, card, colors]);
 
   if (!card.imagesrc) {
     return (

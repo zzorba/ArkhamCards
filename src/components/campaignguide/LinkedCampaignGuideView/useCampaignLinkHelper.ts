@@ -3,7 +3,7 @@ import { find } from 'lodash';
 import { ProcessedCampaign } from '@data/scenario';
 import { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import { showScenario } from '@components/campaignguide/nav';
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import { useCounter } from '@components/core/hooks';
 
 interface Props {
@@ -41,9 +41,7 @@ export function useCampaignLinkHelper({ componentId, campaignA, campaignDataA, c
       );
     }
   }, [campaignA, componentId, setSelectedTab, campaignDataA, incCounter]);
-  useEffect(() => {
-    showScenarioA.current = showCampaignScenarioA;
-  }, [showCampaignScenarioA]);
+  showScenarioA.current = showCampaignScenarioA;
   const showCampaignScenarioB = useCallback((scenarioId: string) => {
     if (!campaignB || !campaignDataB) {
       return;
@@ -65,8 +63,6 @@ export function useCampaignLinkHelper({ componentId, campaignA, campaignDataA, c
       );
     }
   }, [campaignB, componentId, campaignDataB, setSelectedTab, incCounter]);
-  useEffect(() => {
-    showScenarioB.current = showCampaignScenarioB;
-  }, [showCampaignScenarioB]);
+  showScenarioB.current = showCampaignScenarioB;
   return [showCampaignScenarioA, showCampaignScenarioB, counter];
 }

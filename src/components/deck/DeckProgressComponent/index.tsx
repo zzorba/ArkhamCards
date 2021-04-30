@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { t } from 'ttag';
 
 import ChangesFromPreviousDeck from './ChangesFromPreviousDeck';
-import { Deck, ParsedDeck } from '@actions/types';
+import { Deck, DeckId, ParsedDeck } from '@actions/types';
 import { CardsMap } from '@data/types/Card';
 import { l, xs } from '@styles/space';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
@@ -15,15 +15,18 @@ interface Props {
   parsedDeck: ParsedDeck;
   editable: boolean;
   title?: string;
-  onTitlePress?: (deck: ParsedDeck) => void;
+  deckId: DeckId
+  onTitlePress?: (deckId: DeckId, deck: ParsedDeck) => void;
   showDeckHistory?: () => void;
   tabooSetId?: number;
   singleCardView?: boolean;
+  showBaseDeck?: boolean
 }
 
 export default function DeckProgressComponent({
   componentId,
   deck,
+  deckId,
   cards,
   parsedDeck,
   editable,
@@ -32,15 +35,16 @@ export default function DeckProgressComponent({
   showDeckHistory,
   tabooSetId,
   singleCardView,
+  showBaseDeck,
 }: Props) {
-  if (!deck.previousDeckId && !deck.nextDeckId && !editable && !title) {
+  if (!deck.previousDeckId && !deck.nextDeckId && !title && !editable) {
     return null;
   }
 
   // Actually compute the diffs.
   return (
     <View style={styles.container}>
-      { !!(deck.previousDeckId) && (
+      { (!!(deck.previousDeckId) || !!showBaseDeck) && (
         <ChangesFromPreviousDeck
           componentId={componentId}
           title={title}
@@ -49,8 +53,9 @@ export default function DeckProgressComponent({
           tabooSetId={tabooSetId}
           singleCardView={singleCardView}
           editable={editable}
+          deckId={deckId}
           onTitlePress={onTitlePress}
-          footerButton={!!editable && !!deck.previousDeckId && !!showDeckHistory && (
+          footerButton={!deck.nextDeckId && !!deck.previousDeckId && !!showDeckHistory && (
             <RoundedFooterButton
               icon="deck"
               title={t`Upgrade History`}

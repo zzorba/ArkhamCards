@@ -1161,6 +1161,7 @@ msgstr "Prendo 3 danni e 3 orrori"
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr "Sto sopra di 5, spero di non pescare il tentacolo"
 
+#, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "Nessuna carta corrispondente per \"${ searchTerm }\""
 
@@ -3655,10 +3656,6 @@ msgid_plural "${ size } Cards"
 msgstr[0] "${ size } Carta"
 msgstr[1] "${ size } Carte"
 
-#, javascript-format
-msgid "class_${ faction }"
-msgstr "class_${ faction }"
-
 msgid "Select Parallel Investigator"
 msgstr "Seleziona Investigatore Parallelo"
 
@@ -4163,9 +4160,6 @@ msgstr "${ _spentXp } di ${ _totalXp } spesi"
 msgid "Save your changes to the campaign log"
 msgstr "Salva le modifiche nel Diario della Campagna"
 
-msgid "You must be online to upload campaigns"
-msgstr "Devi essere connesso per caricare le campagne"
-
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr "I mazzi con Conoscenza Ancestrale devono includere almeno 10 abilità."
 
@@ -4235,7 +4229,72 @@ msgstr ""
 msgid "Access"
 msgstr ""
 
-msgid "Edit access"
+msgid "Later"
+msgstr ""
+
+msgid "Searching cards..."
+msgstr ""
+
+msgid ""
+"This appears to be one of your decks from ArkhamDB, however you are not "
+"currently logged in. If you wish to make edits, please login through the "
+"app settings."
+msgstr ""
+
+msgid "Leave campaign"
+msgstr ""
+
+msgid ""
+"Are you sure you want to leave this campaign?\n"
+"\n"
+"Your decks will be removed from the campaign, but you can rejoin it later."
+msgstr ""
+
+msgid "Leave"
+msgstr ""
+
+msgid "Edit players"
+msgstr ""
+
+msgid "View players"
+msgstr ""
+
+msgid "Clear card cache"
+msgstr ""
+
+msgid "Uploading..."
+msgstr ""
+
+msgid "Leave standalone"
+msgstr ""
+
+msgid ""
+"Are you sure you want to leave this standalone?\n"
+"\n"
+"Your decks will be removed from the standalone, but you can rejoin it later."
+msgstr ""
+
+msgid "Upload standalone"
+msgstr ""
+
+msgid "You must be online to upload"
+msgstr ""
+
+msgid "Adjust scenario XP and trauma"
+msgstr ""
+
+msgid "Unspent XP"
+msgstr ""
+
+#, javascript-format
+msgid "${ unspentXp } saved"
+msgstr ""
+
+#, javascript-format
+msgid "Scenario Card - ${ difficultyStr }"
+msgstr ""
+
+msgid "Scenario Card"
 msgstr ""
 
 #, javascript-format
@@ -4440,43 +4499,6 @@ msgstr ""
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } reads <b>${ sectionName }</b>"
-
-#, javascript-format
-msgctxt "filter"
-msgid "${ cycleNames[cycle_position] } Cycle"
-msgstr "${ cycleNames[cycle_position] } Ciclo"
-
-msgctxt "action"
-msgid "Fight"
-msgstr "Combatti"
-
-msgctxt "action"
-msgid "Engage"
-msgstr "Impegna"
-
-msgctxt "action"
-msgid "Investigate"
-msgstr "Indaga"
-
-msgctxt "action"
-msgid "Play"
-msgstr "Gioca"
-
-msgctxt "action"
-msgid "Draw"
-msgstr "Pesca"
-
-msgctxt "action"
-msgid "Move"
-msgstr "Muovi"
-
-msgctxt "action"
-msgid "Evade"
-msgstr "Eludi"
-
-msgctxt "action"
-msgid "Resource"
-msgstr "Risorsa"
 
 msgctxt "trait"
 msgid "???"
@@ -5485,6 +5507,43 @@ msgstr ""
 msgctxt "trait"
 msgid "Zoog"
 msgstr ""
+
+#, javascript-format
+msgctxt "filter"
+msgid "${ cycleNames[cycle_position] } Cycle"
+msgstr "${ cycleNames[cycle_position] } Ciclo"
+
+msgctxt "action"
+msgid "Fight"
+msgstr "Combatti"
+
+msgctxt "action"
+msgid "Engage"
+msgstr "Impegna"
+
+msgctxt "action"
+msgid "Investigate"
+msgstr "Indaga"
+
+msgctxt "action"
+msgid "Play"
+msgstr "Gioca"
+
+msgctxt "action"
+msgid "Draw"
+msgstr "Pesca"
+
+msgctxt "action"
+msgid "Move"
+msgstr "Muovi"
+
+msgctxt "action"
+msgid "Evade"
+msgstr "Eludi"
+
+msgctxt "action"
+msgid "Resource"
+msgstr "Risorsa"
 
 msgctxt "Draw Cards"
 msgid "All"

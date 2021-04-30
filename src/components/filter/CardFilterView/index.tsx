@@ -8,7 +8,7 @@ import {
 import { useSelector } from 'react-redux';
 import { c, t } from 'ttag';
 
-import localizedTraits from './localizedTraits';
+import getLcalizedTraits from './getLocalizedTraits';
 import FactionChooser from './FactionChooser';
 import XpChooser from './XpChooser';
 import SkillIconChooser from './SkillIconChooser';
@@ -344,6 +344,12 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     baseQuery,
     tabooSetId,
   } = props;
+  const localizedTraits = useMemo(() => {
+    if (!useCardTraits) {
+      return getLcalizedTraits();
+    }
+    return undefined;
+  }, [useCardTraits]);
   return (
     <ScrollView contentContainerStyle={backgroundStyle}>
       <FactionChooser
@@ -475,7 +481,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
           title={t`Traits`}
           componentId={componentId}
           field={useCardTraits ? 'traits' : 'real_traits'}
-          fixedTranslations={useCardTraits ? localizedTraits : undefined}
+          fixedTranslations={localizedTraits}
           processValue={splitTraits}
           selection={traits}
           setting="traits"

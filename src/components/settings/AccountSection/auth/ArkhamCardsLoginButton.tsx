@@ -180,7 +180,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
   backPressed: () => void;
   loginSucceeded: (user: FirebaseAuthTypes.UserCredential) => void;
 }) {
-  const { typography } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -262,10 +262,13 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
   return (
     <View style={styles.center}>
       <Input
-        leftIcon={{ type: 'material', name: 'email' }}
+        leftIcon={{ type: 'material', name: 'email', color: colors.darkText }}
         placeholder={t`Email address`}
+        inputStyle={typography.text as any}
+        placeholderTextColor={colors.lightText}
         autoCompleteType="email"
         autoCapitalize="none"
+        autoCorrect={false}
         value={emailAddress}
         keyboardType="email-address"
         textContentType="username"
@@ -278,7 +281,8 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
       />
       <Input
         ref={passwordInputRef}
-        leftIcon={{ type: 'material', name: 'lock' }}
+        leftIcon={{ type: 'material', name: 'lock', color: colors.darkText }}
+        inputStyle={typography.text as any}
         placeholder={t`Password`}
         secureTextEntry
         value={password}
@@ -299,7 +303,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
         switch (remedy) {
           case 'try-create':
             return (
-              <View style={[space.paddingTopS, space.paddingBottomM]}>
+              <View key={idx} style={[space.paddingTopS, space.paddingBottomM]}>
                 <Text style={[typography.text, space.paddingBottomS]}>
                   { t`Would you like to create a new account instead?` }
                 </Text>
@@ -310,7 +314,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
             );
           case 'try-login':
             return (
-              <View style={[space.paddingTopS, space.paddingBottomM]}>
+              <View key={idx} style={[space.paddingTopS, space.paddingBottomM]}>
                 <Text style={[typography.text, space.paddingBottomS]}>
                   { t`Are you trying to sign in to an existing account?` }
                 </Text>
@@ -327,7 +331,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
                 </Text>
               </View>
             ) : (
-              <View style={[space.paddingTopS, space.paddingBottomM]}>
+              <View key={idx} style={[space.paddingTopS, space.paddingBottomM]}>
                 <Text style={[typography.text, space.paddingBottomS]}>
                   { t`Would you like to reset your password via email?` }
                 </Text>
@@ -343,7 +347,13 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
           <DeckButton thin color="red" icon="dismiss" title={t`Cancel`} onPress={backPressed} />
         </View>
         <View style={[styles.row, { flex: 1 }, space.paddingLeftS]}>
-          <DeckButton thin icon="check-thin" title={mode === 'create' ? t`Sign up` : t`Sign in`} onPress={submitEmail} loading={submitting} />
+          <DeckButton
+            thin
+            icon="check-thin"
+            title={mode === 'create' ? t`Sign up` : t`Sign in`}
+            onPress={submitEmail}
+            loading={submitting}
+          />
         </View>
       </View>
     </View>
@@ -456,7 +466,7 @@ function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNod
       updateUploadState({ type: 'start', total: uploadCampaigns.length });
       await Promise.all(
         map(uploadCampaigns, c => {
-          return dispatch(uploadCampaign(user, createCampaignActions, deckActions, c.id)).then(
+          return dispatch(uploadCampaign(createCampaignActions, deckActions, c.id)).then(
             () => updateUploadState({ type: 'finish' }),
             () => updateUploadState({ type: 'error' }),
           );
@@ -475,6 +485,9 @@ function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNod
       title: uploading ? t`Uploading` : t`Upload`,
       onPress: uploadCampaigns,
       loading: uploading,
+    },
+    dismiss: {
+      title: t`Later`,
     },
   });
 
@@ -531,16 +544,18 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   const createAccountPressed = useCallback(() => setMode('create'), [setMode]);
   const loginPressed = useCallback(() => setMode('login'), [setMode]);
   const resetDialog = useCallback(() => {
-    setMode(undefined);
-    setEmailLogin(false);
     if (setVisibleRef.current) {
       setVisibleRef.current(false);
     }
-  }, [setMode, setEmailLogin, setVisibleRef]);
+    setTimeout(() => {
+      setMode(undefined);
+      setEmailLogin(false);
+    }, 200);
+  }, [setMode, setEmailLogin]);
 
   const loginSucceeded = useCallback((user: FirebaseAuthTypes.UserCredential) => {
-    dispatch(arkhamCardsLogin(user.user.uid));
     resetDialog();
+    dispatch(arkhamCardsLogin(user.user.uid));
     showUploadDialog();
   }, [resetDialog, dispatch, showUploadDialog]);
 
@@ -625,9 +640,7 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
       onPress: resetDialog,
     },
   });
-  useEffect(() => {
-    setVisibleRef.current = setVisible;
-  }, [setVisible]);
+  setVisibleRef.current = setVisible;
   return (
     <View style={[space.paddingTopS, styles.wrapper]}>
       <DeckButton

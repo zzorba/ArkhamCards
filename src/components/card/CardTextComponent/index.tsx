@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import SimpleMarkdown from 'simple-markdown';
 import {
   MarkdownView,
@@ -35,9 +35,11 @@ const ParagraphTagRule: MarkdownRule<WithChildren, State> = {
   render: ParagraphHtmlTagNode,
 };
 
-function ArkhamIconRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithIconName, State> {
+function ArkhamIconRule(style: StyleContextType, sizeScale: number, avoidLinks: boolean): MarkdownRule<WithIconName, State> {
   return {
-    match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\](?=$|[^(])')),
+    match: SimpleMarkdown.inlineRegex(
+      avoidLinks ? new RegExp('^\\[([^\\]]+)\\](?=$|[^(])') : new RegExp('^\\[([^\\]]+)\\]')
+    ),
     order: BASE_ORDER + 1,
     parse: (capture) => {
       return { name: capture[1] };
@@ -239,29 +241,31 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
   const wrappedOnLinkPress = useCallback((url: string) => {
     onLinkPress && onLinkPress(url, context);
   }, [onLinkPress, context]);
-
+  const rules = useMemo(() => {
+    return {
+      emMarkdown: EmphasisMarkdownTagRule(context),
+      arkhamIconSpan: ArkahmIconSpanRule(context, sizeScale),
+      hrTag: HrTagRule,
+      blockquoteTag: BlockquoteHtmlTagRule,
+      delTag: DelHtmlTagRule(context),
+      brTag: BreakTagRule(context),
+      biTag: BoldItalicHtmlTagRule(context),
+      badBiTag: MalformedBoldItalicHtmlTagRule(context),
+      bTag: BoldHtmlTagRule(context),
+      pTag: ParagraphTagRule,
+      uTag: UnderlineHtmlTagRule(context),
+      emTag: EmphasisHtmlTagRule(context),
+      iTag: ItalicHtmlTagRule(context),
+      smallcapsTag: SmallCapsHtmlTagRule(context),
+      center: CenterHtmlTagRule,
+      arkhamIcon: ArkhamIconRule(context, sizeScale, !!onLinkPress),
+      arkhamIconSkillTestRule: ArkhamIconSkillTextRule(context, sizeScale),
+    };
+  }, [context, sizeScale, onLinkPress]);
   // Text that has hyperlinks uses a different style for the icons.
   return (
     <MarkdownView
-      rules={{
-        emMarkdown: EmphasisMarkdownTagRule(context),
-        arkhamIconSpan: ArkahmIconSpanRule(context, sizeScale),
-        hrTag: HrTagRule,
-        blockquoteTag: BlockquoteHtmlTagRule,
-        delTag: DelHtmlTagRule(context),
-        brTag: BreakTagRule(context),
-        biTag: BoldItalicHtmlTagRule(context),
-        badBiTag: MalformedBoldItalicHtmlTagRule(context),
-        bTag: BoldHtmlTagRule(context),
-        pTag: ParagraphTagRule,
-        uTag: UnderlineHtmlTagRule(context),
-        emTag: EmphasisHtmlTagRule(context),
-        iTag: ItalicHtmlTagRule(context),
-        smallcapsTag: SmallCapsHtmlTagRule(context),
-        center: CenterHtmlTagRule,
-        arkhamIcon: ArkhamIconRule(context, sizeScale),
-        arkhamIconSkillTestRule: ArkhamIconSkillTextRule(context, sizeScale),
-      }}
+      rules={rules}
       style={{ width: '100%' }}
       styles={{
         list: {

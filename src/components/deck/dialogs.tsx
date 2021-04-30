@@ -21,6 +21,7 @@ import DeckButton, { DeckButtonIcon } from './controls/DeckButton';
 import DeckBubbleHeader from './section/DeckBubbleHeader';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { DeckActions, useDeckActions } from '@data/remote/decks';
+import { useUploadLocalDeckRequest } from '@data/remote/campaigns';
 
 interface DialogOptions {
   title: string;
@@ -38,6 +39,7 @@ interface DialogOptions {
   allowDismiss?: boolean;
   alignment?: 'center' | 'bottom';
   avoidKeyboard?: boolean;
+  customButtons?: React.ReactNode[];
 }
 
 export function useDialog({
@@ -48,6 +50,7 @@ export function useDialog({
   allowDismiss,
   alignment,
   avoidKeyboard,
+  customButtons,
 }: DialogOptions): {
   dialog: React.ReactNode;
   visible: boolean;
@@ -74,7 +77,9 @@ export function useDialog({
     setVisible(false);
   }, [setVisible, confirmOnPress]);
   const buttons = useMemo(() => {
-    const result: React.ReactNode[] = [];
+    const result: React.ReactNode[] = [
+      ...(customButtons || []),
+    ];
     if (dismiss?.title) {
       result.push(
         <DeckButton
@@ -101,7 +106,7 @@ export function useDialog({
       );
     }
     return result;
-  }, [confirm, onConfirm, onDismiss, dismiss]);
+  }, [confirm, onConfirm, onDismiss, customButtons, dismiss]);
   const dialog = useMemo(() => {
     return (
       <NewDialog
@@ -112,11 +117,12 @@ export function useDialog({
         buttons={buttons}
         alignment={alignment}
         avoidKeyboard={avoidKeyboard}
+        forceVerticalButtons={!!customButtons}
       >
         { content }
       </NewDialog>
     );
-  }, [title, dismiss, visible, alignment, onDismiss, buttons, content, allowDismiss, avoidKeyboard]);
+  }, [title, dismiss, visible, alignment, customButtons, onDismiss, buttons, content, allowDismiss, avoidKeyboard]);
   const showDialog = useCallback(() => setVisible(true), [setVisible]);
   return {
     visible,
@@ -462,21 +468,22 @@ export function useUploadLocalDeckDialog(
   uploadLocalDeck: () => void;
 } {
   const { user } = useContext(ArkhamCardsAuthContext);
+  const replaceLocalDeckRequest = useUploadLocalDeckRequest();
   const { saving, setSaving, savingDialog } = useBasicDialog(t`Uploading deck`);
   const deckDispatch: DeckDispatch = useDispatch();
   const doUploadLocalDeck = useMemo(() => throttle((isRetry?: boolean) => {
-    if (!parsedDeck || !deck) {
+    if (!parsedDeck || !deck || !deck.local) {
       return;
     }
     if (!saving || isRetry) {
       setSaving(true);
-      deckDispatch(uploadLocalDeck(user, actions, deck)).then(() => {
+      deckDispatch(uploadLocalDeck(user, actions, replaceLocalDeckRequest, deck)).then(() => {
         setSaving(false);
       }, () => {
         setSaving(false);
       });
     }
-  }, 200), [deckDispatch, parsedDeck, saving, deck, user, actions, setSaving]);
+  }, 200), [deckDispatch, replaceLocalDeckRequest, setSaving, saving, user, deck, parsedDeck, actions]);
   return {
     uploadLocalDeckDialog: savingDialog,
     uploadLocalDeck: doUploadLocalDeck,

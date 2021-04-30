@@ -24,7 +24,6 @@ import { useSetCampaignShowInterludes } from '@data/remote/campaigns';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 interface OwnProps {
-  componentId: string;
   campaign: SingleCampaignT;
   scenarioChanged: (result: ScenarioResult) => void;
   showTextEditDialog: ShowTextEditDialog;

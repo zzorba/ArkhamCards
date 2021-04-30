@@ -1,8 +1,8 @@
 import React, { useContext, useMemo } from 'react';
-import { Dimensions, Platform, useWindowDimensions } from 'react-native';
+import { Appearance, Dimensions, Platform, useWindowDimensions } from 'react-native';
 import { useSelector } from 'react-redux';
-import { useColorScheme } from 'react-native-appearance';
 import { ThemeProvider } from 'react-native-elements';
+import { throttle } from 'lodash';
 
 import StyleContext, { DEFAULLT_STYLE_CONTEXT } from './StyleContext';
 import { getAppFontScale, getThemeOverride } from '@reducers';
@@ -10,17 +10,32 @@ import { DARK_THEME, LIGHT_THEME } from './theme';
 import typography from './typography';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
-interface OwnProps {
+function useColorScheme(delay = 2000) {
+  const [colorScheme, setColorScheme] = React.useState(
+    Appearance.getColorScheme()
+  );
+  const onColorSchemeChange = useMemo(() =>
+    throttle(({ colorScheme }) => {
+      setColorScheme(colorScheme);
+    },
+    delay,
+    {
+      leading: false,
+      trailing: true,
+    })
+  , [setColorScheme, delay]);
+  React.useEffect(() => {
+    Appearance.addChangeListener(onColorSchemeChange);
+    return () => {
+      onColorSchemeChange.cancel();
+      Appearance.removeChangeListener(onColorSchemeChange);
+    };
+  }, [onColorSchemeChange]);
+  return colorScheme;
+}
+interface Props {
   children: React.ReactNode;
 }
-
-interface ReduxProps {
-  lang: string;
-  themeOverride?: 'dark' | 'light';
-  appFontScale: number;
-}
-
-type Props = OwnProps & ReduxProps;
 
 const LIGHT_ELEMENTS_THEME = {
   Button: {
@@ -72,6 +87,7 @@ export default function StyleProvider({ children } : Props) {
   const italicFont = lang === 'zh' && Platform.OS === 'ios' ? 'PingFangTC-Light' : 'Alegreya-Italic';
   const boldItalicFont = lang === 'zh' && Platform.OS === 'ios' ? 'PingFangTC-Semibold' : 'Alegreya-ExtraBoldItalic';
   const styleTypography = useMemo(() => typography(appFontScale, colors, italicFont, boldItalicFont, gameFont, lang), [appFontScale, colors, gameFont, boldItalicFont, italicFont, lang]);
+
   const context = useMemo(() => {
     return {
       ...DEFAULLT_STYLE_CONTEXT,
@@ -93,7 +109,7 @@ export default function StyleProvider({ children } : Props) {
         backgroundColor: colors.disableOverlay,
       },
     };
-  }, [darkMode, fontScale, appFontScale, styleTypography, italicFont, colors, gameFont ,width, height]);
+  }, [darkMode, fontScale, appFontScale, styleTypography, italicFont, colors, gameFont, width, height]);
   return (
     <StyleContext.Provider value={context}>
       <ThemeProvider theme={darkMode ? DARK_ELEMENTS_THEME : LIGHT_ELEMENTS_THEME}>

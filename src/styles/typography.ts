@@ -39,6 +39,7 @@ export interface Typography {
   strike: TextStyle;
   underline: TextStyle;
   uppercase: TextStyle;
+  black: TextStyle;
   white: TextStyle;
   error: TextStyle;
   dark: TextStyle;
@@ -46,6 +47,7 @@ export interface Typography {
   inverted: TextStyle;
 }
 
+const ITALIC_FONT_STYLE = Platform.OS === 'ios' ? 'italic' : undefined;
 export default function(
   fontScale: number,
   colors: TypographyColors,
@@ -70,7 +72,7 @@ export default function(
     },
     smallButtonLabel: {
       fontFamily: italicFont,
-      fontStyle: 'italic',
+      fontStyle: ITALIC_FONT_STYLE,
       fontSize: Math.ceil(14 * fontScale),
       lineHeight: Math.ceil((lang === 'zh' ? 17 : 14) * fontScale),
       letterSpacing: 0.3,
@@ -84,7 +86,7 @@ export default function(
     },
     cardTraits: {
       fontFamily: italicFont,
-      fontStyle: 'italic',
+      fontStyle: ITALIC_FONT_STYLE,
       fontSize: Math.ceil(16 * fontScale),
       lineHeight: Math.ceil(18 * fontScale),
       color: colors.lightText,
@@ -151,13 +153,13 @@ export default function(
     },
     boldItalic: {
       fontFamily: boldItalicFont,
-      fontStyle: 'italic',
+      fontStyle: ITALIC_FONT_STYLE,
       fontWeight: Platform.OS === 'ios' ? '700' : undefined,
       color: colors.darkText,
     },
     italic: {
       fontFamily: italicFont,
-      fontStyle: 'italic',
+      fontStyle: ITALIC_FONT_STYLE,
     },
     gameFont: {
       fontFamily: gameFont,
@@ -210,6 +212,9 @@ export default function(
     },
     white: {
       color: COLORS.white,
+    },
+    black: {
+      color: COLORS.black,
     },
     error: {
       color: COLORS.red,

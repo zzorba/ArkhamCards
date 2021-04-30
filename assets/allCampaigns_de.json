@@ -306,6 +306,7 @@
   "scenario_name": "Blut auf dem Altar",
   "header": "Szenario IV",
   "full_name": "Szenario IV: Blut auf dem Altar",
+  "chaos_bag_card": "02195",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -835,6 +836,7 @@
   "scenario_name": "Der Essex-County-Express",
   "header": "Szenario III",
   "full_name": "Szenario III: Der Essex-County-Express",
+  "chaos_bag_card": "02159",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -1256,6 +1258,7 @@
   "scenario_name": "Aktivitäten außerhalb des Lehrplans",
   "header": "Szenario I–A",
   "full_name": "Szenario I–A: Aktivitäten außerhalb des Lehrplans",
+  "chaos_bag_card": "02041",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -1597,6 +1600,7 @@
   "scenario_name": "Verloren in Zeit und Raum",
   "header": "Szenario VII",
   "full_name": "Szenario VII: Verloren in Zeit und Raum",
+  "chaos_bag_card": "02311",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -2280,6 +2284,7 @@
   "scenario_name": "Das Haus gewinnt immer",
   "header": "Szenario I–B",
   "full_name": "Szenario I–B: Das Haus gewinnt immer",
+  "chaos_bag_card": "02062",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -2624,6 +2629,7 @@
   "scenario_name": "Das Miskatonic-Museum",
   "header": "Szenario II",
   "full_name": "Szenario II: Das Miskatonic-Museum",
+  "chaos_bag_card": "02118",
   "setup": [
     "prologue",
     "check_henry_armitage_kidnapped",
@@ -2954,6 +2960,7 @@
   "scenario_name": "Gestaltlos und unsichtbar",
   "header": "Szenario V",
   "full_name": "Szenario V: Gestaltlos und unsichtbar",
+  "chaos_bag_card": "02236",
   "setup": [
     "prologue",
     "warn_or_calm_choice",
@@ -3336,6 +3343,7 @@
   "scenario_name": "Wo das Verderben wartet",
   "header": "Szenario VI",
   "full_name": "Szenario VI: Wo das Verderben wartet",
+  "chaos_bag_card": "02274",
   "setup": [
     "prologue",
     "check_naomi_has_back",
@@ -4031,6 +4039,7 @@
   "scenario_name": "Die Mitternachtsmasken",
   "header": "Szenario II",
   "full_name": "Szenario II: Die Mitternachtsmasken",
+  "chaos_bag_card": "01120",
   "standalone_setup": [
     "setup_standalone_bag",
     "house_burned",
@@ -4687,6 +4696,7 @@
   "scenario_name": "Der Verschlinger aus der Tiefe",
   "header": "Szenario III",
   "full_name": "Szenario III: Der Verschlinger aus der Tiefe",
+  "chaos_bag_card": "01142",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -5130,6 +5140,7 @@
   "scenario_name": "Die Zusammenkunft",
   "header": "Szenario I",
   "full_name": "Szenario I: Die Zusammenkunft",
+  "chaos_bag_card": "01104",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -5670,6 +5681,7 @@
   "scenario_name": "Ein Phantom der Wahrheit",
   "full_name": "Szenario V: Ein Phantom der Wahrheit",
   "header": "Szenario V",
+  "chaos_bag_card": "03200",
   "setup": [
     "app_note",
     "check_king_claimed_victims",
@@ -6646,6 +6658,7 @@
   "scenario_name": "Die schwarzen Sterne gehen auf",
   "full_name": "Szenario VII: Die schwarzen Sterne gehen auf",
   "header": "Szenario VII",
+  "chaos_bag_card": "03274",
   "setup": [
     "intro",
     "check_ashleigh_clarke",
@@ -7374,6 +7387,7 @@
   "scenario_name": "Ruf vor den Vorhang",
   "full_name": "Szenario I: Ruf vor den Vorhang",
   "header": "Szenario I",
+  "chaos_bag_card": "03043",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -7726,6 +7740,7 @@
   "scenario_name": "Finsteres Carcosa",
   "full_name": "Szenario VIII: Finsteres Carcosa",
   "header": "Szenario VIII",
+  "chaos_bag_card": "03316",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -8564,6 +8579,7 @@
   "scenario_name": "Widerhall aus der Vergangenheit",
   "full_name": "Szenario III: Widerhall aus der Vergangenheit",
   "header": "Szenario III",
+  "chaos_bag_card": "03120",
   "setup": [
     "intro",
     "check_sebastien_moreau",
@@ -9781,6 +9797,7 @@
   "scenario_name": "Der letzte König",
   "full_name": "Szenario II: Der letzte König",
   "header": "Szenario II",
+  "chaos_bag_card": "03061",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -10264,6 +10281,7 @@
   "scenario_name": "Die Bleiche Maske",
   "full_name": "Szenario VI: Die Bleiche Maske",
   "header": "Szenario VI",
+  "chaos_bag_card": "03240",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -11189,6 +11207,7 @@
   "scenario_name": "Der unaussprechliche Eid",
   "full_name": "Szenario IV: Der unaussprechliche Eid",
   "header": "Szenario IV",
+  "chaos_bag_card": "03159",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -12548,6 +12567,7 @@
   "scenario_name": "Rückkehr zu: Blut auf dem Altar",
   "header": "Szenario IV",
   "full_name": "Szenario IV: Rückkehr zu: Blut auf dem Altar",
+  "chaos_bag_card": "02195",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -12986,6 +13006,7 @@
   "scenario_name": "Rückkehr zu: Der Essex-County-Express",
   "header": "Szenario III",
   "full_name": "Szenario III: Rückkehr zu: Der Essex-County-Express",
+  "chaos_bag_card": "02159",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -13413,6 +13434,7 @@
   "scenario_name": "Aktivitäten außerhalb des Lehrplans",
   "header": "Szenario I–A",
   "full_name": "Szenario I–A: Rückkehr zu: Aktivitäten außerhalb des Lehrplans",
+  "chaos_bag_card": "02041",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -13778,6 +13800,7 @@
   "scenario_name": "Rückkehr zu: Verloren in Zeit und Raum",
   "header": "Szenario VII",
   "full_name": "Szenario VII: Rückkehr zu: Verloren in Zeit und Raum",
+  "chaos_bag_card": "02311",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -14131,6 +14154,7 @@
   "scenario_name": "Rückkehr zu: Das Haus gewinnt immer",
   "header": "Szenario I–B",
   "full_name": "Szenario I–B: Rückkehr zu: Das Haus gewinnt immer",
+  "chaos_bag_card": "02062",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -14476,6 +14500,7 @@
   "scenario_name": "Rückkehr zu: Das Miskatonic-Museum",
   "header": "Szenario II",
   "full_name": "Szenario II: Rückkehr zu: Das Miskatonic-Museum",
+  "chaos_bag_card": "02118",
   "setup": [
     "prologue",
     "check_henry_armitage_kidnapped",
@@ -14815,6 +14840,7 @@
   "scenario_name": "Rückkehr zu: Gestaltlos und unsichtbar",
   "header": "Szenario V",
   "full_name": "Szenario V: Rückkehr zu: Gestaltlos und unsichtbar",
+  "chaos_bag_card": "02236",
   "setup": [
     "prologue",
     "warn_or_calm_choice",
@@ -15209,6 +15235,7 @@
   "scenario_name": "Rückkehr zu: Wo das Verderben wartet",
   "header": "Szenario VI",
   "full_name": "Szenario VI: Rückkehr zu: Wo das Verderben wartet",
+  "chaos_bag_card": "02274",
   "setup": [
     "prologue",
     "check_naomi_has_back",
@@ -16360,6 +16387,7 @@
   "scenario_name": "Rückkehr zu: Der Verschlinger aus der Tiefe",
   "header": "Szenario III",
   "full_name": "Szenario III: Rückkehr zu: Der Verschlinger aus der Tiefe",
+  "chaos_bag_card": "01142",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -16804,6 +16832,7 @@
   "scenario_name": "Rückkehr zu: Die Zusammenkunft",
   "header": "Szenario I",
   "full_name": "Szenario I: Rückkehr zu: Die Zusammenkunft",
+  "chaos_bag_card": "01104",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -17131,6 +17160,7 @@
   "scenario_name": "Rückkehr zu: Die Mitternachtsmasken",
   "header": "Szenario II",
   "full_name": "Szenario II: Rückkehr zu: Die Mitternachtsmasken",
+  "chaos_bag_card": "01120",
   "standalone_setup": [
     "setup_standalone_bag",
     "house_burned",
@@ -18815,6 +18845,7 @@
   "scenario_name": "Rückkehr zu: Ein Phantom der Wahrheit",
   "full_name": "Szenario V: Rückkehr zu: Ein Phantom der Wahrheit",
   "header": "Szenario V",
+  "chaos_bag_card": "03200",
   "setup": [
     "app_note",
     "check_king_claimed_victims",
@@ -19797,6 +19828,7 @@
   "scenario_name": "Rückkehr zu: Die schwarzen Sterne gehen auf",
   "full_name": "Szenario VII: Rückkehr zu: Die schwarzen Sterne gehen auf",
   "header": "Szenario VII",
+  "chaos_bag_card": "03274",
   "setup": [
     "intro",
     "check_ashleigh_clarke",
@@ -20542,6 +20574,7 @@
   "scenario_name": "Rückkehr zu: Ruf vor den Vorhang",
   "full_name": "Szenario I: Rückkehr zu: Ruf vor den Vorhang",
   "header": "Szenario I",
+  "chaos_bag_card": "03043",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -20947,6 +20980,7 @@
   "scenario_name": "Rückkehr zu: Finsteres Carcosa",
   "full_name": "Szenario VIII: Rückkehr zu: Finsteres Carcosa",
   "header": "Szenario VIII",
+  "chaos_bag_card": "03316",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -21796,6 +21830,7 @@
   "scenario_name": "Rückkehr zu: Widerhall aus der Vergangenheit",
   "full_name": "Szenario III: Rückkehr zu: Widerhall aus der Vergangenheit",
   "header": "Szenario III",
+  "chaos_bag_card": "03120",
   "setup": [
     "intro",
     "check_sebastien_moreau",
@@ -22393,6 +22428,7 @@
   "scenario_name": "Rückkehr zu: Der letzte König",
   "full_name": "Szenario II: Rückkehr zu: Der letzte König",
   "header": "Szenario II",
+  "chaos_bag_card": "03061",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -22882,6 +22918,7 @@
   "scenario_name": "Rückkehr zu: Die Bleiche Maske",
   "full_name": "Szenario VI: Rückkehr zu: Die Bleiche Maske",
   "header": "Szenario VI",
+  "chaos_bag_card": "03240",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -23816,6 +23853,7 @@
   "scenario_name": "Rückkehr zu: Der unaussprechliche Eid",
   "full_name": "Szenario IV: Rückkehr zu: Der unaussprechliche Eid",
   "header": "Szenario IV",
+  "chaos_bag_card": "03159",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -26253,6 +26291,7 @@
   "scenario_name": "Rückkehr zu: Das Herz der Älteren, Teil 1",
   "full_name": "Szenario V-A: Das Herz der Älteren, Teil 1",
   "header": "Szenario V–A",
+  "chaos_bag_card": "04205",
   "setup": [
     "intro_1",
     "choose_who_to_consult",
@@ -27301,6 +27340,7 @@
   "scenario_name": "Rückkehr zu: Zerstörte Zeitalter",
   "full_name": "Szenario VIII: Rückkehr zu: Zerstörte Zeitalter",
   "header": "Szenario VIII",
+  "chaos_bag_card": "04314",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -27843,6 +27883,7 @@
   "scenario_name": "Rückkehr zu: Die jenseitige Grenze",
   "full_name": "Szenario IV: Rückkehr zu: Die jenseitige Grenze",
   "header": "Szenario IV",
+  "chaos_bag_card": "04161",
   "setup": [
     "intro",
     "check_forged_bond_with_ichtaca",
@@ -28668,6 +28709,7 @@
   "scenario_name": "Rückkehr zu: Die Archivstadt",
   "full_name": "Szenario VI: Rückkehr zu: Die Archivstadt",
   "header": "Szenario VI",
+  "chaos_bag_card": "04237",
   "setup": [
     "intro_1",
     "choose_to_cooperate",
@@ -29146,6 +29188,7 @@
   "scenario_name": "Rückkehr zu: Die Tiefen von Yoth",
   "full_name": "Szenario VII: Rückkehr zu: Die Tiefen von Yoth",
   "header": "Szenario VII",
+  "chaos_bag_card": "04277",
   "standalone_setup": [
     "setup_standalone_bag",
     "setup_standalone_log_1",
@@ -30500,6 +30543,7 @@
   "scenario_name": "Rückkehr zu: Das Verderben von Eztli",
   "full_name": "Szenario II: Rückkehr zu: Das Verderben von Eztli",
   "header": "Szenario II",
+  "chaos_bag_card": "04054",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -31150,6 +31194,7 @@
   "scenario_name": "Rückkehr zu: Die ungezähmte Wildnis",
   "full_name": "Szenario I: Rückkehr zu: Die ungezähmte Wildnis",
   "header": "Szenario I",
+  "chaos_bag_card": "04043",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -31600,6 +31645,7 @@
   "scenario_name": "Rückkehr zu: Fäden des Schicksals",
   "full_name": "Szenario III: Rückkehr zu: Fäden des Schicksals",
   "header": "Szenario III",
+  "chaos_bag_card": "04113",
   "standalone_setup": [
     "setup_standalone_bag",
     "intro_1",
@@ -33219,6 +33265,7 @@
   "scenario_name": "Rückkehr zu: Die Zeit zurückdrehen",
   "full_name": "Szenario IX: Rückkehr zu: Die Zeit zurückdrehen",
   "header": "Scenario IX",
+  "chaos_bag_card": "04344",
   "setup": [
     "check_wait_for_additional_supplies",
     "cross_off_everything",
@@ -34988,6 +35035,7 @@
   "scenario_name": "Alles oder nichts",
   "full_name": "Alles oder nichts",
   "header": "",
+  "chaos_bag_card": "90011",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -35577,6 +35625,7 @@
   "scenario_name": "Böses Blut",
   "full_name": "Böses Blut",
   "header": "",
+  "chaos_bag_card": "90020",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -36140,6 +36189,7 @@
   "scenario_name": "Der Blob, der alles fraß",
   "full_name": "Der Blob, der alles fraß",
   "header": "",
+  "chaos_bag_card": "85001",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -37556,6 +37606,7 @@
   "scenario_name": "Karneval des Schreckens",
   "full_name": "Karneval des Schreckens",
   "header": "",
+  "chaos_bag_card": "82001",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -37985,6 +38036,7 @@
   "scenario_name": "Der Fluch des Rougarou",
   "full_name": "Der Fluch des Rougarou",
   "header": "",
+  "chaos_bag_card": "81001",
   "xp_cost": 1,
   "standalone_setup": [
     "choose_difficulty",
@@ -38267,6 +38319,7 @@
   "scenario_name": "Die Labyrinthe des Irrsinns",
   "full_name": "Die Labyrinthe des Irrsinns",
   "header": "",
+  "chaos_bag_card": "70001",
   "side_scenario_type": "standalone",
   "standalone_setup": [
     "choose_difficulty",
@@ -39646,6 +39699,7 @@
   "scenario_name": "Mord im Excelsior-Hotel",
   "full_name": "Mord im Excelsior-Hotel",
   "header": "",
+  "chaos_bag_card": "84001",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -39892,7 +39946,7 @@
     },
     {
       "id": "create_leads_deck",
-      "text": "Es werden alle Storzvorteilskarten aus den 5 beiseitegelegten Begegnugssets herausgesucht (Fremdartiges Gerät, Buch der Rituale, Unheimliche Lösung, Schlüssel des Direktors und Altes Medaillon) und zu einem eigenen Deck zusammengemischt: Dies ist das Spurendeck. Es wird neben die Szenarioübersichtskarte gelegt."
+      "text": "Es werden alle Storyvorteilskarten aus den 5 beiseitegelegten Begegnugssets herausgesucht (Fremdartiges Gerät, Buch der Rituale, Unheimliche Lösung, Schlüssel des Direktors und Altes Medaillon) und zu einem eigenen Deck zusammengemischt: Dies ist das Spurendeck. Es wird neben die Szenarioübersichtskarte gelegt."
     },
     {
       "id": "setup_locations",
@@ -40400,7 +40454,7 @@
     {
       "id": "the_truth_4",
       "type": "story",
-      "text": "„Nein. Nein, ich glaube Ihnen nicht!“, sagt Sergeant Monroe und zeiht seine Waffe. „Nichts davon passt zusammen. Sie kommen jetzt mit mir. Ihre Geschichte können Sie auf dem Revier erzählen.“ Du hebst die Hände, doch als Monroe dich gerade nach draußen führen will, ertönt ein gewaltiger Knall aus einem anderen Teil des Hotels. Das gesamte Gebäude erzittert bis auf die Grundmauern und man hört Leute schreien. „Was zum Teufel?“ Monroe schaut zur Tür, dann zu dir. „Sie bleiben hier“, warnt er dich, „oder ich schwöre, ich werde Sie beim nächsten Mal direkt einlochen!“ Er läuft davon, um den Lärm zu untersuchen, und murmelt, dass er zu alt für diesen Job wird."
+      "text": "„Nein. Nein, ich glaube Ihnen nicht!“, sagt Sergeant Monroe und zieht seine Waffe. „Nichts davon passt zusammen. Sie kommen jetzt mit mir. Ihre Geschichte können Sie auf dem Revier erzählen.“ Du hebst die Hände, doch als Monroe dich gerade nach draußen führen will, ertönt ein gewaltiger Knall aus einem anderen Teil des Hotels. Das gesamte Gebäude erzittert bis auf die Grundmauern und man hört Leute schreien. „Was zum Teufel?“ Monroe schaut zur Tür, dann zu dir. „Sie bleiben hier“, warnt er dich, „oder ich schwöre, ich werde Sie beim nächsten Mal direkt einlochen!“ Er läuft davon, um den Lärm zu untersuchen, und murmelt, dass er zu alt für diesen Job wird."
     },
     {
       "id": "the_truth_4_consequences",
@@ -40864,7 +40918,7 @@
     {
       "id": "time_worn_locket_and_managers_key",
       "type": "story",
-      "text": "Die Frau in dem Medaillon ist vor vielen Jahren ermordet worden und der Direktor hatte den Auftrag gegeben. Der Mann in Zimmer 225 war einer der beteiligten Hotemitarbeiter. In jenem Zimmer hat der Geist in einem Anfall von gerechtem Zorn Besitz von dir ergriffen. Nichts in diesem Hotel wird wieder normal werden, bis der Direktor zerstört und der Geist gerächt ist."
+      "text": "Die Frau in dem Medaillon ist vor vielen Jahren ermordet worden und der Direktor hatte den Auftrag gegeben. Der Mann in Zimmer 225 war einer der beteiligten Hotelmitarbeiter. In jenem Zimmer hat der Geist in einem Anfall von gerechtem Zorn Besitz von dir ergriffen. Nichts in diesem Hotel wird wieder normal werden, bis der Direktor zerstört und der Geist gerächt ist."
     },
     {
       "id": "true_culprit_6",
@@ -40934,7 +40988,7 @@
     },
     {
       "id": "true_culprit_7",
-      "text": "Entferne alles Verderben aus dem Spiel. Rücke das Szenen- und das Agendadeck zur beiseitegelegten Karte „Der wahre Täter (VI)“ vor. Sie ist sowohl aktuelle Szene als auch die aktuelle Agenda."
+      "text": "Entferne alles Verderben aus dem Spiel. Rücke das Szenen- und das Agendadeck zur beiseitegelegten Karte „Der wahre Täter (VII)“ vor. Sie ist sowohl aktuelle Szene als auch die aktuelle Agenda."
     },
     {
       "id": "move_clues_7",
@@ -41073,7 +41127,7 @@
     {
       "id": "sinister_solution_and_tome_of_rituals",
       "type": "story",
-      "text": "Die Enklave hat mithilfe eines abscheulichen Blutrituals die Kontrolle über ein nichtmenschliches Gehirn erlangt. Nun benutzt der Kult den gewaltigen Intellekt und die seltsamen Sekrete des Gehirns, um andere ihrem Willen zu unterwerfen… und du bist ihr neuestes Opfer. Der einzige Weg, ihren Plan zu vereiteln ist, ihren Einfluss auf dieses Gehirn ein für alle Mal zu brechen. und du bist ihr neuestes Opfer. Der einzige Weg, ihren Plan zu vereiteln ist, ihren Einfluss auf dieses Gehirn ein für alle Mal zu brechen."
+      "text": "Die Enklave hat mithilfe eines abscheulichen Blutrituals die Kontrolle über ein nichtmenschliches Gehirn erlangt. Nun benutzt der Kult den gewaltigen Intellekt und die seltsamen Sekrete des Gehirns, um andere ihrem Willen zu unterwerfen… und du bist ihr neuestes Opfer. Der einzige Weg, ihren Plan zu vereiteln ist, ihren Einfluss auf dieses Gehirn ein für alle Mal zu brechen."
     },
     {
       "id": "true_culprit_9",
@@ -41186,7 +41240,7 @@
         "choices": [
           {
             "id": "replay",
-            "text": "Spiele das Szenario erneuet.",
+            "text": "Spiele das Szenario erneut.",
             "steps": [
               "$upgrade_decks",
               "replay_scenario"
@@ -41194,7 +41248,7 @@
           },
           {
             "id": "done",
-            "text": "Speile das Szenario nicht erneut.",
+            "text": "Spiele das Szenario nicht erneut.",
             "steps": [
               "murders_continue_unsolved",
               "earn_xp",
@@ -41214,7 +41268,7 @@
         "choices": [
           {
             "id": "replay",
-            "text": "Spiele das Szenario erneuet.",
+            "text": "Spiele das Szenario erneut.",
             "steps": [
               "$upgrade_decks",
               "replay_scenario"
@@ -41222,7 +41276,7 @@
           },
           {
             "id": "done",
-            "text": "Speile das Szenario nicht erneut.",
+            "text": "Spiele das Szenario nicht erneut.",
             "steps": [
               "murders_continue_unsolved",
               "earn_xp",
@@ -41373,7 +41427,7 @@
     {
       "id": "R1",
       "title": "Auflösung 1",
-      "text": "Niemand wird jemals glauben, was du im Excelsior gesehen hast. Keine drei Tage später war das Hotel wieder geöffnet, als wäre nie etwas passiert. Doch du weißt es besser. Du hast alles mit eigenen Augen gesehe. Die Ereignisse verfolgen dich weiterhin in deinen Träumen und deinen wachen Gedanken. Auch heute gehst du noch Umwege, um das Excelsior zu meiden, obwohl bereits Wochen vergangen sind und es keine Anzeichen für weitere dunkle Pläne innerhalb seiner verfluchten Mauern gibt. Das Einzige, was die widerhallenden Erinnerungen an diese schrecklichen Erfahrungen zum Schweigen bringen kann, ist ein Besuch in der örtlichen Flüsterkneipe. Doch selbst sämtlicher Alkohol auf der Welt könnte die grausamen Visionen nicht aus deinen Albträumen fernhalten, die dich mitten in der nacht schweißgebadet aufschrecken lassen. In dieser Zeit wirst du auf eine Person aufmerksam, die sich in der Stadt nach dem Excelsior erkundigt. Unschuldige Fragen zunächst, doch mit jedem Tag, der vergeht, werden sie nachdrücklicher. Diese Person wird dir mit Sicherheit glauben! Irgendjemand muss es tun. Du bist vielleicht aus dem Griff des Excelsior entkommen, doch es wird andere Opfer geben, da bist du dir sicher. Du schnappst dir ein Stück Papier und schreibst hastig eine Notiz.\n<center><fancy>Es ist alles nur Fassade.</fancy></center>\n<center><fancy>Zimmer 225. Heute Nacht.</fancy></center>\n<center><fancy>Es ist noch nicht vorbei.</fancy></center>\nFalls diese Person hinter den Schleier des Excelsior blicken kann, dann können das vielleicht auch andere. Es mag noch nicht zu spät sein, die Machenschaften im Hotel ein für alle Mal zu beenden, bevor das alles wieder passiert!",
+      "text": "Niemand wird jemals glauben, was du im Excelsior gesehen hast. Keine drei Tage später war das Hotel wieder geöffnet, als wäre nie etwas passiert. Doch du weißt es besser. Du hast alles mit eigenen Augen gesehe. Die Ereignisse verfolgen dich weiterhin in deinen Träumen und deinen wachen Gedanken. Auch heute gehst du noch Umwege, um das Excelsior zu meiden, obwohl bereits Wochen vergangen sind und es keine Anzeichen für weitere dunkle Pläne innerhalb seiner verfluchten Mauern gibt. Das Einzige, was die widerhallenden Erinnerungen an diese schrecklichen Erfahrungen zum Schweigen bringen kann, ist ein Besuch in der örtlichen Flüsterkneipe. Doch selbst sämtlicher Alkohol auf der Welt könnte die grausamen Visionen nicht aus deinen Albträumen fernhalten, die dich mitten in der Nacht schweißgebadet aufschrecken lassen. In dieser Zeit wirst du auf eine Person aufmerksam, die sich in der Stadt nach dem Excelsior erkundigt. Unschuldige Fragen zunächst, doch mit jedem Tag, der vergeht, werden sie nachdrücklicher. Diese Person wird dir mit Sicherheit glauben! Irgendjemand muss es tun. Du bist vielleicht aus dem Griff des Excelsior entkommen, doch es wird andere Opfer geben, da bist du dir sicher. Du schnappst dir ein Stück Papier und schreibst hastig eine Notiz.\n<center><fancy>Es ist alles nur Fassade.</fancy></center>\n<center><fancy>Zimmer 225. Heute Nacht.</fancy></center>\n<center><fancy>Es ist noch nicht vorbei.</fancy></center>\nFalls diese Person hinter den Schleier des Excelsior blicken kann, dann können das vielleicht auch andere. Es mag noch nicht zu spät sein, die Machenschaften im Hotel ein für alle Mal zu beenden, bevor das alles wieder passiert!",
       "steps": [
         "excelsior_is_quiet_for_now",
         "check_police_on_your_side",
@@ -41385,7 +41439,7 @@
     {
       "id": "R2",
       "title": "Auflösung 2",
-      "text": "„Wenn Sie noch länger da sitzen, muss ich Ihnen Miete berechnen.“ Du blinzelst schnell, als würdest du aus einem tiefen Traum erwachen. Als du aufblickst, erkennst du einen Kellner, der dich genervt anstarrt. Er trägt einen Stapel mit schmutzigem Geschirr. In deiner Hand hältst du ein Glas Wasser. Du kannst dich nicht daran erinnern, es bestellt zu haben. Wie lange bist du schon hier? Und wo genau ist hier? Du drehst dich in deinem Stuhl herum und erkennst das Restaurant des Excelsior wieder. Ein paar andere Gäste sind anwesen, die ein frühes Abendessen bestellen und dich nicht weiter beachten. Das weiche Licht des Herbstnachmittags fällt durch die Fenster und aus der Hotellobby dringt geschäftigerLärm herüber. Du drehst dich wieder um und wirfst einen kurzen Blick auf den Kellner, bevor du in die Tasche greifst, einen Vierteldollar auf den Tisch fallen lässt und dich in Richtung Lobby aufmachst. Deine Beine fühlen sich wie Gelee an und während du aus dem Restaurant stolperst, sehen diech andere Gäste besorgt an. Der Wachmann in der Ecke der Lobby beobachtet jeden deiner Schritte. Du gehst hinüber zur Rezeption und stützt dich an ihr hoch, doch als sich der Concierge nähert und du sein Gesicht erkennst, schreckst du zurück. Alle arbeiten, als wäre nichts geschehen. Aber das kann nicht sein. Alles, was du gesehen hast, war real, oder? Du stürmst durch die Vordertür, bevor der Concierge bei dir ist. Du musst Abstand zwischen dich und diesen verfluchten Ort bringen.\nDie Wochen vergehen. Nichts hilft dabei, das Gefühl in deinem Kopf zu unterdrücken, dass du etwas Wichtiges übersehen hast. Diese Angelegenheit mit dem Excelsior ist noch lange nicht abgeschlossen. Du beginnst deine Untersuchungen von vorne und hörst dich in der Stadt nach den neuesten Gerüchten über das Hotel um. Noch mehr vermisste Mitarbeiter. Weitere plötzliche Schließungen. Gäste, die nie am Hotel angekommen sind. Gäste, die das Hotel nie verlassen haben. Es ist alles zu viel.\nDu stehst an einer einsamen Straßenecke in der Nordstadt und überlegst, was du tun sollst. Straßenlaternen um dich herum gehen flackernd an, während der Abend in die Stadt schleicht. In diesem Moment rempelt dich ein Fremder an und murmelt eine halbherzige Entschuldigung. Du machst einen Schritt hinterher, bevor eine Erinnerung an deinem Bewusstsein nagt. Nein. Kann es sein…? Du steckst deine Hände in die Manteltaschen - im Inneren befindet sich eine kleine, gefaltete Notiz. Du blickst auf, doch der Fußgänger ist nirgendwo zu sehen. Langsam entfaltest du den Zettel und deine Finger zittern vor Angst.\n<center><fancy>Es ist alles nur Fassade.</fancy></center>\n<center><fancy>Zimmer 225. Heute Nacht.</fancy></center>\n<center><fancy>Es ist noch nicht vorbei.</fancy></center>",
+      "text": "„Wenn Sie noch länger da sitzen, muss ich Ihnen Miete berechnen.“ Du blinzelst schnell, als würdest du aus einem tiefen Traum erwachen. Als du aufblickst, erkennst du einen Kellner, der dich genervt anstarrt. Er trägt einen Stapel mit schmutzigem Geschirr. In deiner Hand hältst du ein Glas Wasser. Du kannst dich nicht daran erinnern, es bestellt zu haben. Wie lange bist du schon hier? Und wo genau ist hier? Du drehst dich in deinem Stuhl herum und erkennst das Restaurant des Excelsior wieder. Ein paar andere Gäste sind anwesend, die ein frühes Abendessen bestellen und dich nicht weiter beachten. Das weiche Licht des Herbstnachmittags fällt durch die Fenster und aus der Hotellobby dringt geschäftiger Lärm herüber. Du drehst dich wieder um und wirfst einen kurzen Blick auf den Kellner, bevor du in die Tasche greifst, einen Vierteldollar auf den Tisch fallen lässt und dich in Richtung Lobby aufmachst. Deine Beine fühlen sich wie Gelee an und während du aus dem Restaurant stolperst, sehen dich andere Gäste besorgt an. Der Wachmann in der Ecke der Lobby beobachtet jeden deiner Schritte. Du gehst hinüber zur Rezeption und stützt dich an ihr hoch, doch als sich der Concierge nähert und du sein Gesicht erkennst, schreckst du zurück. Alle arbeiten, als wäre nichts geschehen. Aber das kann nicht sein. Alles, was du gesehen hast, war real, oder? Du stürmst durch die Vordertür, bevor der Concierge bei dir ist. Du musst Abstand zwischen dich und diesen verfluchten Ort bringen.\nDie Wochen vergehen. Nichts hilft dabei, das Gefühl in deinem Kopf zu unterdrücken, dass du etwas Wichtiges übersehen hast. Diese Angelegenheit mit dem Excelsior ist noch lange nicht abgeschlossen. Du beginnst deine Untersuchungen von vorne und hörst dich in der Stadt nach den neuesten Gerüchten über das Hotel um. Noch mehr vermisste Mitarbeiter. Weitere plötzliche Schließungen. Gäste, die nie am Hotel angekommen sind. Gäste, die das Hotel nie verlassen haben. Es ist alles zu viel.\nDu stehst an einer einsamen Straßenecke in der Nordstadt und überlegst, was du tun sollst. Straßenlaternen um dich herum gehen flackernd an, während der Abend in die Stadt schleicht. In diesem Moment rempelt dich ein Fremder an und murmelt eine halbherzige Entschuldigung. Du machst einen Schritt hinterher, bevor eine Erinnerung an deinem Bewusstsein nagt. Nein. Kann es sein…? Du steckst deine Hände in die Manteltaschen - im Inneren befindet sich eine kleine, gefaltete Notiz. Du blickst auf, doch der Fußgänger ist nirgendwo zu sehen. Langsam entfaltest du den Zettel und deine Finger zittern vor Angst.\n<center><fancy>Es ist alles nur Fassade.</fancy></center>\n<center><fancy>Zimmer 225. Heute Nacht.</fancy></center>\n<center><fancy>Es ist noch nicht vorbei.</fancy></center>",
       "steps": [
         "check_replay_scenario_R2"
       ]
@@ -41405,6 +41459,7 @@
   "scenario_name": "Lies oder stirb",
   "full_name": "Lies oder stirb",
   "header": "",
+  "chaos_bag_card": "90004",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -41971,6 +42026,7 @@
   "scenario_name": "Der ewige Schlaf",
   "full_name": "Der ewige Schlaf",
   "header": "",
+  "chaos_bag_card": "83001",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -42464,6 +42520,7 @@
   "scenario_name": "Usurpator der Nacht",
   "full_name": "Usurpator der Nacht",
   "header": "",
+  "chaos_bag_card": "83016",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -42950,6 +43007,7 @@
   "scenario_name": "Krieg der Äußeren Götter",
   "full_name": "Krieg der Äußeren Götter",
   "header": "",
+  "chaos_bag_card": "86001",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -43977,6 +44035,7 @@
   "scenario_name": "Auf der Schwelle des Todes",
   "full_name": "Szenario II: Auf der Schwelle des Todes",
   "header": "Szenario II",
+  "chaos_bag_card": "05065",
   "setup": [
     "intro_article",
     "intro",
@@ -44699,6 +44758,7 @@
   "scenario_name": "Vor dem Schwarzen Thron",
   "full_name": "Szenario VIII: Vor dem Schwarzen Thron",
   "header": "Szenario VIII",
+  "chaos_bag_card": "05325",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -45213,6 +45273,7 @@
   "full_name": "Prolog: Die Vermissten vom Anwesen der Dämmerung",
   "header": "Prolog",
   "type": "interlude",
+  "chaos_bag_card": "05043",
   "setup": [
     "pre_intro",
     "choose_neutral_investigators",
@@ -45856,6 +45917,7 @@
   "scenario_name": "Für das große Ganze",
   "full_name": "Szenario V: Für das große Ganze",
   "header": "Szenario V",
+  "chaos_bag_card": "05197",
   "setup": [
     "intro_1",
     "check_members_of_the_lodge",
@@ -46319,6 +46381,7 @@
   "scenario_name": "In den Fängen des Chaos",
   "full_name": "Szenario VII: In den Fängen des Chaos",
   "header": "Szenario VII",
+  "chaos_bag_card": "05284",
   "setup": [
     "intro_1",
     "check_never_seen_again",
@@ -47075,7 +47138,7 @@
   "scenario_name": "Der innere Kreis",
   "full_name": "Zwischenspiel III: Der innere Kreis",
   "header": "Zwischenspiel III",
-  "icon": "trapped_spirits",
+  "icon": "cold_fog",
   "setup": [
     "ic_1",
     "choose_to_share_info",
@@ -48164,6 +48227,7 @@
   "scenario_name": "Der geheime Name",
   "full_name": "Szenario III: Der geheime Name",
   "header": "Szenario III",
+  "chaos_bag_card": "05120",
   "setup": [
     "check_members_of_the_lodge",
     "gather_encounter_sets",
@@ -48789,6 +48853,7 @@
   "scenario_name": "Der Sünde Lohn",
   "full_name": "Szenario IV: Der Sünde Lohn",
   "header": "Szenario IV",
+  "chaos_bag_card": "05161",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -49083,6 +49148,7 @@
   "scenario_name": "Hexenstunde",
   "full_name": "Szenario I: Hexenstunde",
   "header": "Szenario I",
+  "chaos_bag_card": "05050",
   "setup": [
     "intro",
     "choose_fate",
@@ -49912,6 +49978,7 @@
   "scenario_name": "Einheit und Ernüchterung",
   "full_name": "Szenario VI: Einheit und Ernüchterung",
   "header": "Szenario VI",
+  "chaos_bag_card": "05238",
   "setup": [
     "intro_1",
     "point_of_no_return",
@@ -53651,6 +53718,24 @@
           {
             "boolCondition": false,
             "steps": [
+              "check_black_cat_spoke_of_atlach_nacha"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_black_cat_spoke_of_atlach_nacha",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "black_cat_spoke_of_atlach_nacha",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
               "move_cat_to_campaign_b"
             ]
           }
@@ -54545,6 +54630,7 @@
   "scenario_name": "Hinter den Toren des Schlafes",
   "full_name": "Szenario I–A: Hinter den Toren des Schlafes",
   "header": "Szenario I–A",
+  "chaos_bag_card": "06039",
   "setup": [
     "dream_intro",
     "choose_dreams",
@@ -55529,6 +55615,7 @@
   "scenario_name": "Die dunkle Seite des Mondes",
   "full_name": "Szenario III-A: Die dunkle Seite des Mondes",
   "header": "Szenario III-A",
+  "chaos_bag_card": "06206",
   "setup": [
     "check_someone_captured",
     "gather_encounter_sets",
@@ -55968,6 +56055,7 @@
   "scenario_name": "Die Suche nach Kadath",
   "full_name": "Szenario II–A: Die Suche nach Kadath",
   "header": "Szenario II–A",
+  "chaos_bag_card": "06119",
   "standalone_setup": [
     "setup_standalone_bag",
     "black_cat_not_at_your_side",
@@ -57049,6 +57137,7 @@
   "scenario_name": "Wo Götter wohnen",
   "full_name": "Szenario IV-A: Wo Götter wohnen",
   "header": "Szenario IV-A",
+  "chaos_bag_card": "06286",
   "setup": [
     "check_carried_to_the_cold_wastes",
     "gather_encounter_sets",
@@ -58221,6 +58310,7 @@
   "scenario_name": "Tausend Formen des Schreckens",
   "full_name": "Szenario II–B: Tausend Formen des Schreckens",
   "header": "Szenario II–B",
+  "chaos_bag_card": "06168",
   "setup": [
     "intro_1",
     "check_black_cat_at_your_side",
@@ -60734,6 +60824,7 @@
   "scenario_name": "Kein Zurück mehr",
   "full_name": "Szenario III–B: Kein Zurück mehr",
   "header": "Szenario III–B",
+  "chaos_bag_card": "06247",
   "setup": [
     "check_randolph_did_not_survive_descent",
     "gather_encounter_sets",
@@ -61242,6 +61333,7 @@
   "scenario_name": "Erwachter Albtraum",
   "full_name": "Szenario I–B: Erwachter Albtraum",
   "header": "Szenario I–B",
+  "chaos_bag_card": "06063",
   "setup": [
     "intro_1",
     "choose_doctor",
@@ -61790,6 +61882,7 @@
   "scenario_name": "Weber des Kosmos",
   "full_name": "Szenario IV–B: Weber des Kosmos",
   "header": "Szenario IV–B",
+  "chaos_bag_card": "06333",
   "setup": [
     "weaver_intro",
     "gather_encounter_sets",
@@ -63308,6 +63401,7 @@
   "scenario_name": "Das Verderben von Eztli",
   "full_name": "Szenario II: Das Verderben von Eztli",
   "header": "Szenario II",
+  "chaos_bag_card": "04054",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -63864,6 +63958,7 @@
   "scenario_name": "Das Herz der Älteren, Teil 1",
   "full_name": "Szenario V–A: Das Herz der Älteren, Teil 1",
   "header": "Szenario V–A",
+  "chaos_bag_card": "04205",
   "setup": [
     "intro_1",
     "choose_who_to_consult",
@@ -65483,6 +65578,7 @@
   "scenario_name": "Zerstörte Zeitalter",
   "full_name": "Szenario VIII: Zerstörte Zeitalter",
   "header": "Szenario VIII",
+  "chaos_bag_card": "04314",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -66014,6 +66110,7 @@
   "scenario_name": "Die jenseitige Grenze",
   "full_name": "Szenario IV: Die jenseitige Grenze",
   "header": "Szenario IV",
+  "chaos_bag_card": "04161",
   "setup": [
     "intro",
     "check_forged_bond_with_ichtaca",
@@ -66833,6 +66930,7 @@
   "scenario_name": "Die Archivstadt",
   "full_name": "Szenario VI: Die Archivstadt",
   "header": "Szenario VI",
+  "chaos_bag_card": "04237",
   "setup": [
     "intro_1",
     "choose_to_cooperate",
@@ -67862,6 +67960,7 @@
   "scenario_name": "Die Tiefen von Yoth",
   "full_name": "Szenario VII: Die Tiefen von Yoth",
   "header": "Szenario VII",
+  "chaos_bag_card": "04277",
   "standalone_setup": [
     "setup_standalone_bag",
     "setup_standalone_log_1",
@@ -69771,6 +69870,7 @@
   "scenario_name": "Fäden des Schicksals",
   "full_name": "Szenario III: Fäden des Schicksals",
   "header": "Szenario III",
+  "chaos_bag_card": "04113",
   "standalone_setup": [
     "setup_standalone_bag",
     "intro_1",
@@ -71022,6 +71122,7 @@
   "scenario_name": "Die Zeit zurückdrehen",
   "full_name": "Szenario IX: Die Zeit zurückdrehen",
   "header": "Scenario IX",
+  "chaos_bag_card": "04344",
   "setup": [
     "check_wait_for_additional_supplies",
     "cross_off_everything",
@@ -71514,6 +71615,7 @@
   "scenario_name": "Die ungezähmte Wildnis",
   "full_name": "Szenario I: Die ungezähmte Wildnis",
   "header": "Szenario I",
+  "chaos_bag_card": "04043",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -71942,7 +72044,7 @@
 {
   "id": "tic",
   "position": 7,
-  "version": 1,
+  "version": 2,
   "name": "Die Innsmouth-Verschwörung",
   "campaign_type": "campaign",
   "campaign_log": [
@@ -72296,6 +72398,8 @@
   "scenario_name": "Ein Licht im Nebel",
   "full_name": "Szenario VI: Ein Licht im Nebel",
   "header": "Szenario VI",
+  "chaos_bag_card_text": "[skull]: -1. If your location is flooded, reveal an additional chaos token.\n[cultist]: -2. If you fail, after this test ends, increase the flood level of your location.\n[tablet]: -3. If you fail this test and your location is flooded, take 1 damage.\n[elder_thing]: -4. If you fail, move the nearest ready unengaged enemy once toward your location. It loses aloof during this movement.",
+  "chaos_bag_card_back_text": "[skull]: -2. If your location is flooded, reveal an additional chaos token.\n[cultist]: -2. If you fail, after this test ends, increase the flood level of your location (if you cannot, take 1 horror instead).\n[tablet]: -3. If you fail this test and your location is flooded, take 2 damage.\n[elder_thing]: -4. Move the nearest unengaged enemy once toward your location. It loses aloof during this movement.",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -73313,6 +73417,33 @@
           }
         ]
       }
+    },
+    {
+      "id": "$upgrade_decks",
+      "type": "input",
+      "input": {
+        "type": "upgrade_decks",
+        "skip_decks": true,
+        "special_xp": "unspect_xp"
+      }
+    },
+    {
+      "id": "maybe_upgrade_decks",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "$upgrade_decks"
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -73346,7 +73477,8 @@
         "maybe_ask_idol",
         "maybe_ask_mantle",
         "maybe_ask_headdress",
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     },
     {
@@ -73367,7 +73499,8 @@
         "maybe_ask_idol",
         "maybe_ask_mantle",
         "maybe_ask_headdress",
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     },
     {
@@ -73404,7 +73537,8 @@
         "maybe_ask_idol",
         "maybe_ask_mantle",
         "maybe_ask_headdress",
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     }
   ]
@@ -73724,6 +73858,7 @@
   "scenario_name": "Das Teufelsriff",
   "full_name": "Szenario IV: Das Teufelsriff",
   "header": "Szenario IV",
+  "chaos_bag_card": "07163",
   "setup": [
     "intro_1",
     "check_mission_succeeded",
@@ -74764,6 +74899,7 @@
   "scenario_name": "Der reinste Schrecken",
   "full_name": "Szenario V: Der reinste Schrecken",
   "header": "Szenario V",
+  "chaos_bag_card": "07198",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -75089,6 +75225,7 @@
   "scenario_name": "Zu tief drin",
   "full_name": "Szenario III: Zu tief drin",
   "header": "Szenario III",
+  "chaos_bag_card": "07123",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -75689,6 +75826,33 @@
           }
         ]
       }
+    },
+    {
+      "id": "$upgrade_decks",
+      "type": "input",
+      "input": {
+        "type": "upgrade_decks",
+        "skip_decks": true,
+        "special_xp": "unspect_xp"
+      }
+    },
+    {
+      "id": "maybe_upgrade_decks",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "$upgrade_decks"
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -75721,7 +75885,8 @@
       "steps": [
         "maybe_made_it_safely_to_their_vehicles",
         "earn_xp",
-        "check_made_it_safely_to_their_vehicles"
+        "check_made_it_safely_to_their_vehicles",
+        "maybe_upgrade_decks"
       ]
     }
   ]
@@ -75731,6 +75896,8 @@
   "scenario_name": "In den Mahlstrom hinein",
   "full_name": "Szenario VIII: In den Mahlstrom hinein",
   "header": "Szenario VIII",
+  "chaos_bag_card_text": "[skull]: -1 (-3 instead if there are 4 or more unflooded [[Y'ha-nthlei]] locations in play).\n[cultist]: -3. If you fail, place 1 doom on the current agenda (this may cause the current agenda to advance).\n[tablet]: -4. If you fail, you must either increase the flood level of your location or take 1 damage.\n[elder_thing]: -5. If you fail and there is a key on your location, take 1 horror.",
+  "chaos_bag_card_back_text": "[skull]: -2 (-4 instead if there are 4 or more unflooded [[Y'ha-nthlei]] locations in play).\n[cultist]: -4. If you fail, place 1 doom on the current agenda (this may cause the current agenda to advance).\n[tablet]: -5. If you fail, you must either increase the flood level of your location or take 1 damage.\n[elder_thing]: -6. If you fail and there is a key on your location, take 1 horror.",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -75766,7 +75933,7 @@
         "agents_of_hydra",
         "creatures_of_the_deep",
         "flooded_caverns",
-        "malfunction",
+        "shattered_memories",
         "syzygy",
         "ancient_evils"
       ]
@@ -77468,6 +77635,8 @@
   "scenario_name": "In Dagons Reich",
   "full_name": "Szenario VII: In Dagons Reich",
   "header": "Szenario VII",
+  "chaos_bag_card_text": "[skull]: -1 for each key on this card.\n[cultist]: -0. Reveal an additional chaos token. If you reveal 1 or more [curse] tokens during this test, you automatically fail.\n[tablet]: -3. If you fail, place each key you control on your location.\n[elder_thing]: -4. If you fail, add 1 [curse] token to the chaos bag.",
+  "chaos_bag_card_back_text": "[skull]: -2 for each key on this card.\n[cultist]: -2. Reveal an additional chaos token. If you reveal 1 or more [curse] tokens during this test, you automatically fail.\n[tablet]: -3. Place each key you control on your location and take 1 damage.\n[elder_thing]: -4. Add 2 [curse] tokens to the chaos bag.",
   "setup": [
     "intro_1",
     "check_mission_succeeded",
@@ -78023,17 +78192,24 @@
           {
             "id": "suspect_defeated",
             "text": "Befindet sich ein [[Verdächtiger]]-Gegner im Siegpunktestapel?",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "gatekeeper_has_been_defeated",
-                "text": "Der Hüter des Tores wurde besiegt."
-              }
+            "steps": [
+              "gatekeeper_has_been_defeated"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "gatekeeper_has_been_defeated",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "gatekeeper_has_been_defeated",
+          "text": "Der Hüter des Tores wurde besiegt."
+        }
+      ]
     },
     {
       "id": "ask_oceiros",
@@ -78284,6 +78460,7 @@
   "scenario_name": "Die Grotte der Verzweiflung",
   "full_name": "Szenario I: Die Grotte der Verzweiflung",
   "header": "Szenario I",
+  "chaos_bag_card": "07041",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -78742,6 +78919,33 @@
           ]
         }
       ]
+    },
+    {
+      "id": "$upgrade_decks",
+      "type": "input",
+      "input": {
+        "type": "upgrade_decks",
+        "skip_decks": true,
+        "special_xp": "unspect_xp"
+      }
+    },
+    {
+      "id": "maybe_upgrade_decks",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "$upgrade_decks"
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -78759,7 +78963,8 @@
       ],
       "text": "Du hustest das Wasser und den Sand aus deinen Lungen aus. Kaltes, dunkles Meerwasser umspült dich, als du einen Mundvoll beißendes Salzwasser zurück in die anbrandenden Fluten spuckst. \nDu spürst warme Hände, die dich auf den Rücken rollen und dich in eine aufrechte Sitzposition hieven. „Gott sei Dank, Sie leben“, sagt jemand. In der angespannten Stimme kannst du deutlich den rhythmischen indianischen Akzent heraushören, ebenso wie das unerschütterliche Selbstbewusstsein eines ausgebildeten Profis. Als dein Blick wieder klar wird, blickst du in einen blutroten Himmel, an dem der Vollmond direkt unterhalb der abgedunkelten Sonne zu erkennen ist. „Wir haben keine Zeit zu verlieren. Kommen Sie, stehen Sie auf.“ \nDu wischst dir das brennende Salzwasser aus den Augen. Nur langsam kehrt deine Stärke wieder zurück. Dein Retter stellt sich als eine Frau mit langem schwarzen Haar heraus. Ihr zerfledderter Trenchcoat hat schon bessere Tage gesehen. In ihrem schmutzverschmierten Gesicht kannst du ein paar Schrammen e erkennen. „Sie wirken verwirrt. Warum sehen Sie mich so an?“, fragt dich die Fremde.",
       "steps": [
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     },
     {
@@ -78777,7 +78982,8 @@
       "title": "Auflösung 1",
       "text": "In einiger Entfernung färbt sich der Himmel blutrot, und der Vollmond hängt direkt unterhalb der abgedunkelten Sonne. Du bist kurz davor, die Augen zu schließen und dich der Bewusstlosigkeit hinzugeben, als dich eine fremde Stimme aufschrecken lässt. „Oh, Sie leben ja noch!“. In der angespannten Stimme kannst du deutlich den rhythmischen indianischen Akzent heraushören, ebenso wie das unerschütterliche Selbstbewusstsein eines ausgebildeten Profis. Vor dir steht eine Frau mit langem schwarzem Haar. Ihr zerfledderter Trenchcoat hat schon bessere Tage gesehen. In ihrem schmutzverschmierten Gesicht kannst du ein paar Schrammen erkennen. „Sie wirken verwirrt. Warum sehen Sie mich so an?“, fragt dich die Fremde.",
       "steps": [
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     }
   ]
@@ -78903,6 +79109,7 @@
   "scenario_name": "Das Verschwinden der Elina Harper",
   "full_name": "Szenario II: Das Verschwinden der Elina Harper",
   "header": "Szenario II",
+  "chaos_bag_card": "07056",
   "setup": [
     "intro_1",
     "info_summary",

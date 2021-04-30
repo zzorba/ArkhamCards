@@ -2,7 +2,7 @@ import { MutableRefObject, useContext, useEffect, useMemo, useRef, useState } fr
 import useDebouncedEffect from 'use-debounced-effect-hook';
 import { Platform } from 'react-native';
 import { forEach, keys, range } from 'lodash';
-import deepDiff from 'deep-diff';
+import deepEqual from 'deep-equal';
 import { ngettext, msgid, t } from 'ttag';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -61,17 +61,16 @@ export function useDeckEdits(
 ): [EditDeckState | undefined, MutableRefObject<EditDeckState | undefined>] {
   const dispatch = useDispatch();
   const { user } = useContext(ArkhamCardsAuthContext);
-  const initialized = useRef(false);
   useEffect(() => {
-    if (!!initialDeck && id !== undefined && !initialized.current) {
-      initialized.current = true;
-      dispatch(startDeckEdit(id, initialMode));
+    if (initialDeck && id !== undefined) {
+      const editable = (!initialDeck.owner?.id || !user || initialDeck.owner.id === user.uid);
+      dispatch(startDeckEdit(id, initialDeck, editable, initialMode));
       return function cleanup() {
         dispatch(finishDeckEdit(id));
       };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [!!initialDeck]);
+  }, [initialDeck, id]);
   const otherDeckEdits: EditDeckState | undefined = useMemo(() => {
     if (user && initialDeck?.owner?.id && user.uid !== initialDeck.owner.id) {
       return {
@@ -124,9 +123,14 @@ function useParsedDeckHelper(
   const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.deck.taboo_id || 0);
   const cards = usePlayerCards(tabooSetId);
   const visible = useComponentVisible(componentId);
-  const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>((deck && cards && fetchIfMissing) ?
-    parseDeck(deck.deck, deck.deck.meta || {}, deck.deck.slots || {}, deck.deck.ignoreDeckLimitSlots, cards, deck.previousDeck, deck.deck.xp_adjustment || 0) :
-    undefined);
+  const initialized = useRef(false);
+  const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>(undefined);
+  useEffect(() => {
+    if (deck && cards && fetchIfMissing && !parsedDeck && !initialized.current) {
+      initialized.current = true;
+      setParsedDeck(parseDeck(deck.deck, deck.deck.meta || {}, deck.deck.slots || {}, deck.deck.ignoreDeckLimitSlots, cards, deck.previousDeck, deck.deck.xp_adjustment || 0));
+    }
+  }, [deck, cards, fetchIfMissing, parsedDeck]);
   useDebouncedEffect(() => {
     if (cards && visible && deckEdits && deck) {
       setParsedDeck(
@@ -230,7 +234,7 @@ export function useDeckEditState({
     });
 
     const originalTabooSet: number = (deck.taboo_id || 0);
-    const metaChanges = deepDiff(deckEdits.meta, deck.meta || {});
+    const metaChanged = !deepEqual(deckEdits.meta, deck.meta || {});
     setHasPendingEdits(
       (deckEdits.nameChange && deck.name !== deckEdits.nameChange) ||
       (deckEdits.descriptionChange && deck.description_md !== deckEdits.descriptionChange) ||
@@ -239,7 +243,7 @@ export function useDeckEditState({
       keys(slotDeltas.removals).length > 0 ||
       keys(slotDeltas.additions).length > 0 ||
       slotDeltas.ignoreDeckLimitChanged ||
-      (!!metaChanges && metaChanges.length > 0)
+      metaChanged
     );
     setSlotDeltas(slotDeltas);
   }, [deck, deckEdits, visible]);

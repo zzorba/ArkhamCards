@@ -5,11 +5,11 @@ import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { LatestDecks, ProcessedCampaign } from '@data/scenario';
 import Card, { CardsMap } from '@data/types/Card';
-import MiniCampaignT from '@data/interfaces/MiniCampaignT';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 export interface CampaignGuideContextType {
   campaignId: CampaignId;
-  campaign: MiniCampaignT;
+  campaign: SingleCampaignT;
 
   campaignGuideVersion: number;
   campaignGuide: CampaignGuide;

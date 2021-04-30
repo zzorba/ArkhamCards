@@ -306,6 +306,7 @@
   "scenario_name": "Du Sang sur l'Autel",
   "header": "Scénario IV",
   "full_name": "Scénario IV : Du Sang sur l'Autel",
+  "chaos_bag_card": "02195",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -835,6 +836,7 @@
   "scenario_name": "L’Express du Comté d’Essex",
   "header": "Scénario III",
   "full_name": "Scénario III : L’Express du Comté d’Essex",
+  "chaos_bag_card": "02159",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -1256,6 +1258,7 @@
   "scenario_name": "Activité Extrascolaire",
   "header": "Scénario I–A",
   "full_name": "Scénario I–A : Activité Extrascolaire",
+  "chaos_bag_card": "02041",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -1597,6 +1600,7 @@
   "scenario_name": "Perdu dans le Temps et l’Espace",
   "header": "Scénario VII",
   "full_name": "Scénario VII : Perdu dans le Temps et l’Espace",
+  "chaos_bag_card": "02311",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -2280,6 +2284,7 @@
   "scenario_name": "La Banque Gagne Toujours",
   "header": "Scénario I–B",
   "full_name": "Scénario I–B : La Banque Gagne Toujours",
+  "chaos_bag_card": "02062",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -2624,6 +2629,7 @@
   "scenario_name": "Le Musée Miskatonic",
   "header": "Scénario II",
   "full_name": "Scénario II : Le Musée Miskatonic",
+  "chaos_bag_card": "02118",
   "setup": [
     "prologue",
     "check_henry_armitage_kidnapped",
@@ -2954,6 +2960,7 @@
   "scenario_name": "Aux Frontières du Visible",
   "header": "Scénario V",
   "full_name": "Scénario V : Aux Frontières du Visible",
+  "chaos_bag_card": "02236",
   "setup": [
     "prologue",
     "warn_or_calm_choice",
@@ -3336,6 +3343,7 @@
   "scenario_name": "Là où le Destin Attend",
   "header": "Scénario VI",
   "full_name": "Scénario VI : Là où le Destin Attend",
+  "chaos_bag_card": "02274",
   "setup": [
     "prologue",
     "check_naomi_has_back",
@@ -4031,6 +4039,7 @@
   "scenario_name": "Les Masques de Minuit",
   "header": "Scénario II",
   "full_name": "Chapitre II : Les Masques de Minuit",
+  "chaos_bag_card": "01120",
   "standalone_setup": [
     "setup_standalone_bag",
     "house_burned",
@@ -4687,6 +4696,7 @@
   "scenario_name": "Le Dévoreur du Dessous",
   "header": "Scénario III",
   "full_name": "Chapitre III : Le Dévoreur du Dessous",
+  "chaos_bag_card": "01142",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -5130,6 +5140,7 @@
   "scenario_name": "Le Rassemblement",
   "header": "Scénario I",
   "full_name": "Scénario I : Le Rassemblement",
+  "chaos_bag_card": "01104",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -5670,6 +5681,7 @@
   "scenario_name": "Le Spectre de la Vérité",
   "full_name": "Scénario V : Le Spectre de la Vérité",
   "header": "Scénario V",
+  "chaos_bag_card": "03200",
   "setup": [
     "app_note",
     "check_king_claimed_victims",
@@ -6646,6 +6658,7 @@
   "scenario_name": "Sous les Étoiles Noires",
   "full_name": "Scénario VII : Sous les Étoiles Noires",
   "header": "Scénario VII",
+  "chaos_bag_card": "03274",
   "setup": [
     "intro",
     "check_ashleigh_clarke",
@@ -7374,6 +7387,7 @@
   "scenario_name": "Baisser de Rideau",
   "full_name": "Scénario I : Baisser de Rideau",
   "header": "Scénario I",
+  "chaos_bag_card": "03043",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -7726,6 +7740,7 @@
   "scenario_name": "La Pâle Carcosa",
   "full_name": "Scénario VIII : La Pâle Carcosa",
   "header": "Scénario VIII",
+  "chaos_bag_card": "03316",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -8564,6 +8579,7 @@
   "scenario_name": "Les Échos du Passé",
   "full_name": "Scénario III : Les Échos du Passé",
   "header": "Scénario III",
+  "chaos_bag_card": "03120",
   "setup": [
     "intro",
     "check_sebastien_moreau",
@@ -9781,6 +9797,7 @@
   "scenario_name": "Le Dernier Roi",
   "full_name": "Scénario II : Le Dernier Roi",
   "header": "Scénario II",
+  "chaos_bag_card": "03061",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -10264,6 +10281,7 @@
   "scenario_name": "Le Masque Blême",
   "full_name": "Scénario VI : Le Masque Blême",
   "header": "Scénario VI",
+  "chaos_bag_card": "03240",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -11189,6 +11207,7 @@
   "scenario_name": "Le Serment Indicible",
   "full_name": "Scénario IV : Le Serment Indicible",
   "header": "Scénario IV",
+  "chaos_bag_card": "03159",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -12548,6 +12567,7 @@
   "scenario_name": "Renouveau - Du Sang sur l'Autel",
   "header": "Scénario IV",
   "full_name": "Scénario IV: Renouveau - Du Sang sur l'Autel",
+  "chaos_bag_card": "02195",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -12986,6 +13006,7 @@
   "scenario_name": "Renouveau - L'Express du Comté d'Essex",
   "header": "Scénario III",
   "full_name": "Scénario III: Renouveau - L'Express du Comté d'Essex",
+  "chaos_bag_card": "02159",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -13413,6 +13434,7 @@
   "scenario_name": "Renouveau - Activité Extrascolaire",
   "header": "Scénario I–A",
   "full_name": "Scénario I–A:Renouveau - Activité Extrascolaire",
+  "chaos_bag_card": "02041",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -13778,6 +13800,7 @@
   "scenario_name": "Renouveau - Perdu dans le Temps et l'Espace",
   "header": "Scénario VII",
   "full_name": "Scénario VII: Renouveau - Perdu dans le Temps et l'Espace",
+  "chaos_bag_card": "02311",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -14131,6 +14154,7 @@
   "scenario_name": "Renouveau - La Banque Gagne Toujours",
   "header": "Scénario I–B",
   "full_name": "Scénario I–B: Renouveau - La Banque Gagne Toujours",
+  "chaos_bag_card": "02062",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -14476,6 +14500,7 @@
   "scenario_name": "Renouveau - Le Musée Miskatonic",
   "header": "Scénario II",
   "full_name": "Scénario II: Renouveau - Le Musée Miskatonic",
+  "chaos_bag_card": "02118",
   "setup": [
     "prologue",
     "check_henry_armitage_kidnapped",
@@ -14815,6 +14840,7 @@
   "scenario_name": "Renouveau - Aux Frontières du Visible",
   "header": "Scénario V",
   "full_name": "Scénario V: Renouveau - Aux Frontières du Visible",
+  "chaos_bag_card": "02236",
   "setup": [
     "prologue",
     "warn_or_calm_choice",
@@ -15209,6 +15235,7 @@
   "scenario_name": "Renouveau - Là où le Destin Attend",
   "header": "Scénario VI",
   "full_name": "Scénario VI: Renouveau - Là où le Destin Attend",
+  "chaos_bag_card": "02274",
   "setup": [
     "prologue",
     "check_naomi_has_back",
@@ -16360,6 +16387,7 @@
   "scenario_name": "Renouveau - Le Dévoreur du Dessous",
   "header": "Scénario III",
   "full_name": "Scénario III: Renouveau - Le Dévoreur du Dessous",
+  "chaos_bag_card": "01142",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -16804,6 +16832,7 @@
   "scenario_name": "Renouveau - Le Rassemblement",
   "header": "Scénario I",
   "full_name": "Scénario I: Renouveau - Le Rassemblement",
+  "chaos_bag_card": "01104",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -17131,6 +17160,7 @@
   "scenario_name": "Renouveau - Les Masques de Minuit",
   "header": "Scénario II",
   "full_name": "Scénario II: Renouveau - Les Masques de Minuit",
+  "chaos_bag_card": "01120",
   "standalone_setup": [
     "setup_standalone_bag",
     "house_burned",
@@ -18815,6 +18845,7 @@
   "scenario_name": "Renouveau - Le Spectre de la Vérité",
   "full_name": "Scénario V :Renouveau - Le Spectre de la Vérité",
   "header": "Scénario V",
+  "chaos_bag_card": "03200",
   "setup": [
     "app_note",
     "check_king_claimed_victims",
@@ -19797,6 +19828,7 @@
   "scenario_name": "Renouveau - Sous les Étoiles Noires",
   "full_name": "Scénario VII : Renouveau - Sous les Étoiles Noires",
   "header": "Scénario VII",
+  "chaos_bag_card": "03274",
   "setup": [
     "intro",
     "check_ashleigh_clarke",
@@ -20542,6 +20574,7 @@
   "scenario_name": "Renouveau - Baisser de Rideau",
   "full_name": "Scénario I : Renouveau - Baisser de Rideau",
   "header": "Scénario I",
+  "chaos_bag_card": "03043",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -20947,6 +20980,7 @@
   "scenario_name": "Renouveau - La Pâle Carcosa",
   "full_name": "Scénario VIII : Renouveau - La Pâle Carcosa",
   "header": "Scénario VIII",
+  "chaos_bag_card": "03316",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -21796,6 +21830,7 @@
   "scenario_name": "Renouveau - Les Échos du Passé",
   "full_name": "Scénario III : Renouveau - Les Échos du Passé",
   "header": "Scénario III",
+  "chaos_bag_card": "03120",
   "setup": [
     "intro",
     "check_sebastien_moreau",
@@ -22393,6 +22428,7 @@
   "scenario_name": "Renouveau - Le Dernier Roi",
   "full_name": "Scénario II : Renouveau - Le Dernier Roi",
   "header": "Scénario II",
+  "chaos_bag_card": "03061",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -22882,6 +22918,7 @@
   "scenario_name": "Renouveau - Le Masque Blême",
   "full_name": "Scénario VI : Renouveau - Le Masque Blême",
   "header": "Scénario VI",
+  "chaos_bag_card": "03240",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -23816,6 +23853,7 @@
   "scenario_name": "Renouveau - Le Serment Indicible",
   "full_name": "Scénario IV : Renouveau - Le Serment Indicible",
   "header": "Scénario IV",
+  "chaos_bag_card": "03159",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -25184,7 +25222,7 @@
         "name": "Expedition's End 1"
       },
       "type": "story",
-      "text": "<right><fancy>Vendredi 17 juillet 1925</fancy></right>\nNous sommes finalement rentrés à Arkham, notre expédition ayant été un «csuccès ». Alejandro est pressé de rapporter ses découvertes à l'université. Je ne comprends pas comment il parvient à rester aussi optimiste et positif après l'enfer que nous avons traversé dans cette jungle. Toute son attention est focalisée sur cette étrange relique que nous avons découverte dans les ruines. J'aurais aimé en savoir plus sur les origines de cet artefact. Cela me trouble beaucoup. Il bourdonne toujours et pulse d'une énergie surnaturelle que je peux à peine décrire. Tandis que nous voyagions avec l'artefact, nos nuits étaient emplies de cauchemars étranges : des rêves d'autres mondes et d'autres civilisations.\nAlejandro veut apporter la relique au Musée Miskatonic, pour l'exposer avec les autres artefacts eztli que nous avons découverts. Je suis plutôt mitigé. Au musée, elle pourra bénéficier d'une attention particulière et des historiens pourront l'étudier, pour peut-être découvrir à quoi elle sert. Cependant, je crains que cette relique ne soit trop dangereuse pour le public. Après tout, nous n'avons toujours aucune idée de ce qu'est cette chose. Alejandro va détester cette idée, mais peutêtre serait-il plus sage de la garder en sécurité quelque part où Harlan et moi pourrions l'étudier en privé. Il faut que je me décide cette nuit. Après-demain, il sera trop tard pour changer d'avis…"
+      "text": "<right><fancy>Vendredi 17 juillet 1925</fancy></right>\nNous sommes finalement rentrés à Arkham, notre expédition ayant été un « succès ». Alejandro est pressé de rapporter ses découvertes à l'université. Je ne comprends pas comment il parvient à rester aussi optimiste et positif après l'enfer que nous avons traversé dans cette jungle. Toute son attention est focalisée sur cette étrange relique que nous avons découverte dans les ruines. J'aurais aimé en savoir plus sur les origines de cet artefact. Cela me trouble beaucoup. Il bourdonne toujours et pulse d'une énergie surnaturelle que je peux à peine décrire. Tandis que nous voyagions avec l'artefact, nos nuits étaient emplies de cauchemars étranges : des rêves d'autres mondes et d'autres civilisations.\nAlejandro veut apporter la relique au Musée Miskatonic, pour l'exposer avec les autres artefacts eztli que nous avons découverts. Je suis plutôt mitigé. Au musée, elle pourra bénéficier d'une attention particulière et des historiens pourront l'étudier, pour peut-être découvrir à quoi elle sert. Cependant, je crains que cette relique ne soit trop dangereuse pour le public. Après tout, nous n'avons toujours aucune idée de ce qu'est cette chose. Alejandro va détester cette idée, mais peutêtre serait-il plus sage de la garder en sécurité quelque part où Harlan et moi pourrions l'étudier en privé. Il faut que je me décide cette nuit. Après-demain, il sera trop tard pour changer d'avis…"
     },
     {
       "id": "choose_where_relic_goes",
@@ -26253,6 +26291,7 @@
   "scenario_name": "Renouveau - Le Cœur des Anciens, Partie 1",
   "full_name": "Scénario V-A : Renouveau - Le Cœur des Anciens, Partie 1",
   "header": "Scénario V-A",
+  "chaos_bag_card": "04205",
   "setup": [
     "intro_1",
     "choose_who_to_consult",
@@ -27301,6 +27340,7 @@
   "scenario_name": "Renouveau - Paradoxes Temporels",
   "full_name": "Scénario VIII : Renouveau - Paradoxes Temporels",
   "header": "Scénario VIII",
+  "chaos_bag_card": "04314",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -27843,6 +27883,7 @@
   "scenario_name": "Renouveau - Par-delà les Limites",
   "full_name": "Scénario IV : Renouveau - Par-delà les Limites",
   "header": "Scénario IV",
+  "chaos_bag_card": "04161",
   "setup": [
     "intro",
     "check_forged_bond_with_ichtaca",
@@ -28668,6 +28709,7 @@
   "scenario_name": "Renouveau - La Cité des Archives",
   "full_name": "Scénario VI : Renouveau - La Cité des Archives",
   "header": "Scénario VI",
+  "chaos_bag_card": "04237",
   "setup": [
     "intro_1",
     "choose_to_cooperate",
@@ -29146,6 +29188,7 @@
   "scenario_name": "Renouveau - La Civilisation Oubliée",
   "full_name": "Scénario VII : Renouveau - La Civilisation Oubliée",
   "header": "Scénario VII",
+  "chaos_bag_card": "04277",
   "standalone_setup": [
     "setup_standalone_bag",
     "setup_standalone_log_1",
@@ -30500,6 +30543,7 @@
   "scenario_name": "Renouveau - Le Fléau des Eztli",
   "full_name": "Scénario II : Renouveau - Le Fléau des Eztli",
   "header": "Scénario II",
+  "chaos_bag_card": "04054",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -31150,6 +31194,7 @@
   "scenario_name": "Renouveau - Une Contrée Sauvage",
   "full_name": "Scénario I : Renouveau - Une Contrée Sauvage",
   "header": "Scénario I",
+  "chaos_bag_card": "04043",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -31600,6 +31645,7 @@
   "scenario_name": "Renouveau - Les Fils du Destin",
   "full_name": "Scénario III : Renouveau - Les Fils du Destin",
   "header": "Scénario III",
+  "chaos_bag_card": "04113",
   "standalone_setup": [
     "setup_standalone_bag",
     "intro_1",
@@ -33219,6 +33265,7 @@
   "scenario_name": "Renouveau - Remonter le temps",
   "full_name": "Scénario IX : Renouveau - Remonter le temps",
   "header": "Scénario Secret IX",
+  "chaos_bag_card": "04344",
   "setup": [
     "check_wait_for_additional_supplies",
     "cross_off_everything",
@@ -34988,6 +35035,7 @@
   "scenario_name": "Le Tout pour le Tout",
   "full_name": "Le Tout pour le Tout",
   "header": "",
+  "chaos_bag_card": "90011",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -35577,6 +35625,7 @@
   "scenario_name": "Mauvais Sang",
   "full_name": "Mauvais Sang",
   "header": "",
+  "chaos_bag_card": "90020",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -36140,6 +36189,7 @@
   "scenario_name": "Le Dévoreur de Toute Chose",
   "full_name": "Le Dévoreur de Toute Chose",
   "header": "",
+  "chaos_bag_card": "85001",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -37556,6 +37606,7 @@
   "scenario_name": "Le Carnaval des Horreurs",
   "full_name": "Le Carnaval des Horreurs",
   "header": "",
+  "chaos_bag_card": "82001",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -37985,6 +38036,7 @@
   "scenario_name": "La Malédiction du Rougarou",
   "full_name": "La Malédiction du Rougarou",
   "header": "",
+  "chaos_bag_card": "81001",
   "xp_cost": 1,
   "standalone_setup": [
     "choose_difficulty",
@@ -38267,6 +38319,7 @@
   "scenario_name": "Les Labyrinthes de la Folie",
   "full_name": "Les Labyrinthes de la Folie",
   "header": "",
+  "chaos_bag_card": "70001",
   "side_scenario_type": "standalone",
   "standalone_setup": [
     "choose_difficulty",
@@ -39646,6 +39699,7 @@
   "scenario_name": "Meutre à l'Hôtel Excelsior",
   "full_name": "Meutre à l'Hôtel Excelsior",
   "header": "",
+  "chaos_bag_card": "84001",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -41405,6 +41459,7 @@
   "scenario_name": "Lire ou Mourir",
   "full_name": "Lire ou Mourir",
   "header": "",
+  "chaos_bag_card": "90004",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -41971,6 +42026,7 @@
   "scenario_name": "Éternelle Torpeur",
   "full_name": "Éternelle Torpeur",
   "header": "",
+  "chaos_bag_card": "83001",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -42464,6 +42520,7 @@
   "scenario_name": "L'Usurpateur de la Nuit",
   "full_name": "L'Usurpateur de la Nuit",
   "header": "",
+  "chaos_bag_card": "83016",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -42950,6 +43007,7 @@
   "scenario_name": "La Guerre des Dieux Extérieurs",
   "full_name": "La Guerre des Dieux Extérieurs",
   "header": "",
+  "chaos_bag_card": "86001",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -43977,6 +44035,7 @@
   "scenario_name": "Aux Portes de la Mort",
   "full_name": "Scénario II : Aux Portes de la Mort",
   "header": "Scénario II",
+  "chaos_bag_card": "05065",
   "setup": [
     "intro_article",
     "intro",
@@ -44699,6 +44758,7 @@
   "scenario_name": "Devant le Trône Noir",
   "full_name": "Scénario VIII: Devant le Trône Noir",
   "header": "Scénario VIII",
+  "chaos_bag_card": "05325",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -45213,6 +45273,7 @@
   "full_name": "Prologue: Disparitions dans la Demeure du Crépuscule",
   "header": "Prologue",
   "type": "interlude",
+  "chaos_bag_card": "05043",
   "setup": [
     "pre_intro",
     "choose_neutral_investigators",
@@ -45856,6 +45917,7 @@
   "scenario_name": "Pour le Bien Commun",
   "full_name": "Scénario V: Pour le Bien Commun",
   "header": "Scénario V",
+  "chaos_bag_card": "05197",
   "setup": [
     "intro_1",
     "check_members_of_the_lodge",
@@ -46319,6 +46381,7 @@
   "scenario_name": "Dans les Griffes du Chaos",
   "full_name": "Scénario VII: Dans les Griffes du Chaos",
   "header": "Scénario VII",
+  "chaos_bag_card": "05284",
   "setup": [
     "intro_1",
     "check_never_seen_again",
@@ -47075,7 +47138,7 @@
   "scenario_name": "Le Cercle Restreint",
   "full_name": "Interlude III: Le Cercle Restreint",
   "header": "Interlude III",
-  "icon": "trapped_spirits",
+  "icon": "cold_fog",
   "setup": [
     "ic_1",
     "choose_to_share_info",
@@ -48164,6 +48227,7 @@
   "scenario_name": "Le Nom Secret",
   "full_name": "Scénario III: Le Nom Secret",
   "header": "Scénario III",
+  "chaos_bag_card": "05120",
   "setup": [
     "check_members_of_the_lodge",
     "gather_encounter_sets",
@@ -48789,6 +48853,7 @@
   "scenario_name": "Le Salaire du Péché",
   "full_name": "Scénario IV: Le Salaire du Péché",
   "header": "Scénario IV",
+  "chaos_bag_card": "05161",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -49083,6 +49148,7 @@
   "scenario_name": "L’Heure des Sorcières",
   "full_name": "Scénario I : L’Heure des Sorcières",
   "header": "Scénario I",
+  "chaos_bag_card": "05050",
   "setup": [
     "intro",
     "choose_fate",
@@ -49912,6 +49978,7 @@
   "scenario_name": "Union et Désillusion",
   "full_name": "Scénario VI : Union et Désillusion",
   "header": "Scénario VI",
+  "chaos_bag_card": "05238",
   "setup": [
     "intro_1",
     "point_of_no_return",
@@ -53651,6 +53718,24 @@
           {
             "boolCondition": false,
             "steps": [
+              "check_black_cat_spoke_of_atlach_nacha"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_black_cat_spoke_of_atlach_nacha",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "black_cat_spoke_of_atlach_nacha",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
               "move_cat_to_campaign_b"
             ]
           }
@@ -54545,6 +54630,7 @@
   "scenario_name": "Par-delà le Mur du Sommeil",
   "full_name": "Scénario 1A : Par-delà le Mur du Sommeil",
   "header": "Scénario I–A",
+  "chaos_bag_card": "06039",
   "setup": [
     "dream_intro",
     "choose_dreams",
@@ -55529,6 +55615,7 @@
   "scenario_name": "La Face Cachée de la Lune",
   "full_name": "Scénario III-A : La Face Cachée de la Lune",
   "header": "Scénario III-A",
+  "chaos_bag_card": "06206",
   "setup": [
     "check_someone_captured",
     "gather_encounter_sets",
@@ -55968,6 +56055,7 @@
   "scenario_name": "À la Recherche de Kadath",
   "full_name": "Scénario II-A : À la Recherche de Kadath",
   "header": "Scénario II-A",
+  "chaos_bag_card": "06119",
   "standalone_setup": [
     "setup_standalone_bag",
     "black_cat_not_at_your_side",
@@ -57049,6 +57137,7 @@
   "scenario_name": "La Demeure des Dieux",
   "full_name": "Scénario IV-A : La Demeure des Dieux",
   "header": "Scénario IV-A",
+  "chaos_bag_card": "06286",
   "setup": [
     "check_carried_to_the_cold_wastes",
     "gather_encounter_sets",
@@ -58221,6 +58310,7 @@
   "scenario_name": "Mille Nuances d’Horreur",
   "full_name": "Scénario II-B : Mille Nuances d’Horreur",
   "header": "Scénario II-B",
+  "chaos_bag_card": "06168",
   "setup": [
     "intro_1",
     "check_black_cat_at_your_side",
@@ -60734,6 +60824,7 @@
   "scenario_name": "Point de Non-Retour",
   "full_name": "Scénario III-B : Point de Non-Retour",
   "header": "Scénario III-B",
+  "chaos_bag_card": "06247",
   "setup": [
     "check_randolph_did_not_survive_descent",
     "gather_encounter_sets",
@@ -61242,6 +61333,7 @@
   "scenario_name": "Cauchemar Éveillé",
   "full_name": "Scénario 1B : Cauchemar Éveillé",
   "header": "Scénario I–B",
+  "chaos_bag_card": "06063",
   "setup": [
     "intro_1",
     "choose_doctor",
@@ -61790,6 +61882,7 @@
   "scenario_name": "Tisseuse du Cosmos",
   "full_name": "Scénario IV-B : Tisseuse du Cosmos",
   "header": "Scenario IV-B",
+  "chaos_bag_card": "06333",
   "setup": [
     "weaver_intro",
     "gather_encounter_sets",
@@ -63143,7 +63236,7 @@
         "name": "Expedition's End 1"
       },
       "type": "story",
-      "text": "<right><fancy>Vendredi 17 juillet 1925</fancy></right>\nNous sommes finalement rentrés à Arkham, notre expédition ayant été un «csuccès ». Alejandro est pressé de rapporter ses découvertes à l'université. Je ne comprends pas comment il parvient à rester aussi optimiste et positif après l'enfer que nous avons traversé dans cette jungle. Toute son attention est focalisée sur cette étrange relique que nous avons découverte dans les ruines. J'aurais aimé en savoir plus sur les origines de cet artefact. Cela me trouble beaucoup. Il bourdonne toujours et pulse d'une énergie surnaturelle que je peux à peine décrire. Tandis que nous voyagions avec l'artefact, nos nuits étaient emplies de cauchemars étranges : des rêves d'autres mondes et d'autres civilisations.\nAlejandro veut apporter la relique au Musée Miskatonic, pour l'exposer avec les autres artefacts eztli que nous avons découverts. Je suis plutôt mitigé. Au musée, elle pourra bénéficier d'une attention particulière et des historiens pourront l'étudier, pour peut-être découvrir à quoi elle sert. Cependant, je crains que cette relique ne soit trop dangereuse pour le public. Après tout, nous n'avons toujours aucune idée de ce qu'est cette chose. Alejandro va détester cette idée, mais peutêtre serait-il plus sage de la garder en sécurité quelque part où Harlan et moi pourrions l'étudier en privé. Il faut que je me décide cette nuit. Après-demain, il sera trop tard pour changer d'avis…"
+      "text": "<right><fancy>Vendredi 17 juillet 1925</fancy></right>\nNous sommes finalement rentrés à Arkham, notre expédition ayant été un « succès ». Alejandro est pressé de rapporter ses découvertes à l'université. Je ne comprends pas comment il parvient à rester aussi optimiste et positif après l'enfer que nous avons traversé dans cette jungle. Toute son attention est focalisée sur cette étrange relique que nous avons découverte dans les ruines. J'aurais aimé en savoir plus sur les origines de cet artefact. Cela me trouble beaucoup. Il bourdonne toujours et pulse d'une énergie surnaturelle que je peux à peine décrire. Tandis que nous voyagions avec l'artefact, nos nuits étaient emplies de cauchemars étranges : des rêves d'autres mondes et d'autres civilisations.\nAlejandro veut apporter la relique au Musée Miskatonic, pour l'exposer avec les autres artefacts eztli que nous avons découverts. Je suis plutôt mitigé. Au musée, elle pourra bénéficier d'une attention particulière et des historiens pourront l'étudier, pour peut-être découvrir à quoi elle sert. Cependant, je crains que cette relique ne soit trop dangereuse pour le public. Après tout, nous n'avons toujours aucune idée de ce qu'est cette chose. Alejandro va détester cette idée, mais peutêtre serait-il plus sage de la garder en sécurité quelque part où Harlan et moi pourrions l'étudier en privé. Il faut que je me décide cette nuit. Après-demain, il sera trop tard pour changer d'avis…"
     },
     {
       "id": "choose_where_relic_goes",
@@ -63308,6 +63401,7 @@
   "scenario_name": "Le Fléau des Eztli",
   "full_name": "Scénario II : Le Fléau des Eztli",
   "header": "Scénario II",
+  "chaos_bag_card": "04054",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -63864,6 +63958,7 @@
   "scenario_name": "Le Coeur des Anciens, Partie 1",
   "full_name": "Scénario V-A : Le Coeur des Anciens, Partie 1",
   "header": "Scénario V-A",
+  "chaos_bag_card": "04205",
   "setup": [
     "intro_1",
     "choose_who_to_consult",
@@ -65483,6 +65578,7 @@
   "scenario_name": "Paradoxes Temporels",
   "full_name": "Scénario VIII : Paradoxes Temporels",
   "header": "Scénario VIII",
+  "chaos_bag_card": "04314",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -66014,6 +66110,7 @@
   "scenario_name": "Par-delà les Limites",
   "full_name": "Scénario IV : Par-delà les Limites",
   "header": "Scénario IV",
+  "chaos_bag_card": "04161",
   "setup": [
     "intro",
     "check_forged_bond_with_ichtaca",
@@ -66833,6 +66930,7 @@
   "scenario_name": "La Cité des Archives",
   "full_name": "Scénario VI : La Cité des Archives",
   "header": "Scénario VI",
+  "chaos_bag_card": "04237",
   "setup": [
     "intro_1",
     "choose_to_cooperate",
@@ -67862,6 +67960,7 @@
   "scenario_name": "Les Profondeurs de Yoth",
   "full_name": "Scénario VII : Les Profondeurs de Yoth",
   "header": "Scénario VII",
+  "chaos_bag_card": "04277",
   "standalone_setup": [
     "setup_standalone_bag",
     "setup_standalone_log_1",
@@ -69771,6 +69870,7 @@
   "scenario_name": "Les Fils du Destin",
   "full_name": "Scénario III : Les Fils du Destin",
   "header": "Scénario III",
+  "chaos_bag_card": "04113",
   "standalone_setup": [
     "setup_standalone_bag",
     "intro_1",
@@ -71022,6 +71122,7 @@
   "scenario_name": "Remonter le Temps",
   "full_name": "Scénario Secret IX : Remonter le Temps",
   "header": "Scénario Secret IX",
+  "chaos_bag_card": "04344",
   "setup": [
     "check_wait_for_additional_supplies",
     "cross_off_everything",
@@ -71514,6 +71615,7 @@
   "scenario_name": "Une Contrée Sauvage",
   "full_name": "Scénario I : Une Contrée Sauvage",
   "header": "Scénario I",
+  "chaos_bag_card": "04043",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -71942,7 +72044,7 @@
 {
   "id": "tic",
   "position": 7,
-  "version": 1,
+  "version": 2,
   "name": "La Conspiration d'Innsmouth",
   "campaign_type": "campaign",
   "campaign_log": [
@@ -72296,6 +72398,8 @@
   "scenario_name": "Une Lueur dans le Brouillard",
   "full_name": "Scénario VI : Une Lueur dans le Brouillard",
   "header": "Scénario VI",
+  "chaos_bag_card_text": "[skull]: -1. If your location is flooded, reveal an additional chaos token.\n[cultist]: -2. If you fail, after this test ends, increase the flood level of your location.\n[tablet]: -3. If you fail this test and your location is flooded, take 1 damage.\n[elder_thing]: -4. If you fail, move the nearest ready unengaged enemy once toward your location. It loses aloof during this movement.",
+  "chaos_bag_card_back_text": "[skull]: -2. If your location is flooded, reveal an additional chaos token.\n[cultist]: -2. If you fail, after this test ends, increase the flood level of your location (if you cannot, take 1 horror instead).\n[tablet]: -3. If you fail this test and your location is flooded, take 2 damage.\n[elder_thing]: -4. Move the nearest unengaged enemy once toward your location. It loses aloof during this movement.",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -73313,6 +73417,33 @@
           }
         ]
       }
+    },
+    {
+      "id": "$upgrade_decks",
+      "type": "input",
+      "input": {
+        "type": "upgrade_decks",
+        "skip_decks": true,
+        "special_xp": "unspect_xp"
+      }
+    },
+    {
+      "id": "maybe_upgrade_decks",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "$upgrade_decks"
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -73346,7 +73477,8 @@
         "maybe_ask_idol",
         "maybe_ask_mantle",
         "maybe_ask_headdress",
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     },
     {
@@ -73367,7 +73499,8 @@
         "maybe_ask_idol",
         "maybe_ask_mantle",
         "maybe_ask_headdress",
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     },
     {
@@ -73404,7 +73537,8 @@
         "maybe_ask_idol",
         "maybe_ask_mantle",
         "maybe_ask_headdress",
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     }
   ]
@@ -73724,6 +73858,7 @@
   "scenario_name": "Le Récif du Diable",
   "full_name": "Scénario IV : Le Récif du Diable",
   "header": "Scénario IV",
+  "chaos_bag_card": "07163",
   "setup": [
     "intro_1",
     "check_mission_succeeded",
@@ -74764,6 +74899,7 @@
   "scenario_name": "Horreur à Toute Vitesse",
   "full_name": "Scénario V : Horreur à Toute Vitesse",
   "header": "Scénario V",
+  "chaos_bag_card": "07198",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -75089,6 +75225,7 @@
   "scenario_name": "Mouillés Jusqu’au Cou",
   "full_name": "Scénario III : Mouillés Jusqu'au Cou",
   "header": "Scénario III",
+  "chaos_bag_card": "07123",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -75689,6 +75826,33 @@
           }
         ]
       }
+    },
+    {
+      "id": "$upgrade_decks",
+      "type": "input",
+      "input": {
+        "type": "upgrade_decks",
+        "skip_decks": true,
+        "special_xp": "unspect_xp"
+      }
+    },
+    {
+      "id": "maybe_upgrade_decks",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "$upgrade_decks"
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -75721,7 +75885,8 @@
       "steps": [
         "maybe_made_it_safely_to_their_vehicles",
         "earn_xp",
-        "check_made_it_safely_to_their_vehicles"
+        "check_made_it_safely_to_their_vehicles",
+        "maybe_upgrade_decks"
       ]
     }
   ]
@@ -75731,6 +75896,8 @@
   "scenario_name": "Dans le Maelström",
   "full_name": "Scénario VII : Dans le Maelström",
   "header": "Scénario VIII",
+  "chaos_bag_card_text": "[skull]: -1 (-3 instead if there are 4 or more unflooded [[Y'ha-nthlei]] locations in play).\n[cultist]: -3. If you fail, place 1 doom on the current agenda (this may cause the current agenda to advance).\n[tablet]: -4. If you fail, you must either increase the flood level of your location or take 1 damage.\n[elder_thing]: -5. If you fail and there is a key on your location, take 1 horror.",
+  "chaos_bag_card_back_text": "[skull]: -2 (-4 instead if there are 4 or more unflooded [[Y'ha-nthlei]] locations in play).\n[cultist]: -4. If you fail, place 1 doom on the current agenda (this may cause the current agenda to advance).\n[tablet]: -5. If you fail, you must either increase the flood level of your location or take 1 damage.\n[elder_thing]: -6. If you fail and there is a key on your location, take 1 horror.",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -75755,7 +75922,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "Your plan is simple. Foolish, but simple. The knowledge you've gathered leads you to conclude that the Esoteric Order of Dagon is the cause of both the rising tides and the appearance of the horrific \"Deep Ones.\" Not only that, but over the course of the last few decades, the Order has transformed the townsfolk into more of the horrific creatures, using them to infiltrate Innsmouth from within. But worst of all, the entity the cult worships-Dagon-is just one of two. His mate, Hydra, still slumbers in the depths below Innsmouth, waiting to awaken and stake her claim over an endless ocean.\nThese are the conclusions that have led to your plan: Travel once more to Devil Reef, descent into the city of the Deep Ones that lies hidden at the bottom of the ocean, and put a stop to the Deep Ones' plans once and for all. Agent Harper helps you prepare, loading your possessions onto the boat you managed to steal from what remained of Innsmouth's docks. \"We only have one shot at this,\" Harper says. \"I don't think I need to remind you what might happen if we fail.\" She looks pointedly at the flooded ruins of Innsmouth. \"Are you ready?\""
+      "text": "Your plan is simple. Foolish, but simple. The knowledge you've gathered leads you to conclude that the Esoteric Order of Dagon is the cause of both the rising tides and the appearance of the horrific \"Deep Ones.\" Not only that, but over the course of the last few decades, the Order has transformed the townsfolk into more of the horrific creatures, using them to infiltrate Innsmouth from within. But worst of all, the entity the cult worships-Dagon-is just one of two. His mate, Hydra, still slumbers in the depths below Innsmouth, waiting to awaken and stake her claim over an endless ocean.\nThese are the conclusions that have led to your plan: Travel once more to Devil Reef, descend into the city of the Deep Ones that lies hidden at the bottom of the ocean, and put a stop to the Deep Ones' plans once and for all. Agent Harper helps you prepare, loading your possessions onto the boat you managed to steal from what remained of Innsmouth's docks. \"We only have one shot at this,\" Harper says. \"I don't think I need to remind you what might happen if we fail.\" She looks pointedly at the flooded ruins of Innsmouth. \"Are you ready?\""
     },
     {
       "id": "gather_encounter_sets",
@@ -75766,7 +75933,7 @@
         "agents_of_hydra",
         "creatures_of_the_deep",
         "flooded_caverns",
-        "malfunction",
+        "shattered_memories",
         "syzygy",
         "ancient_evils"
       ]
@@ -76192,7 +76359,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put Gateway to Y’ha-nthlei Gate into play. <i>(It enter play partially flooded.)</i> Put each of the 8 Tidal Tunnel locations into play surrounding it.",
+      "text": "Put Gateway to Y’ha-nthlei into play. <i>(It enter play partially flooded.)</i> Put each of the 8 Tidal Tunnel locations into play surrounding it.",
       "bullets": [
         {
           "text": "Each investigator begins play at the Gateway to Y'ha-nthlei."
@@ -77247,7 +77414,7 @@
         "name": "Intro"
       },
       "type": "story",
-      "text": "Vous n'avez aucune idée de qui est cette femme où de comment elle vous connaît, pourtant, elle se comporte de manière famillière avec vous. Vous creusez votre mémoire pour tenter de vous souvenir des circonstances de votre rencontre, en vain. Vous êtes certain de ne l'avoir jamais rencontrée. Vous étant réveillé dans une oubliette froide et humide, vous ne vous sentez pas d'humeur très sociable. Votre peur et votre méfiance doivent transparaître, car la femme recule et son regrd s'étrécit. « Que se passe-t-il ? Qu'est-ce qui ne va pas ? »\nVous demandez à la femme comment elle vous connaît. « Vous ne vous souvenez vraiment pas ? Cela ca compliquer les choses. De quoi vous rappelez-vous ? Vous souvenez-vous de quelque chose ? »\nVous détaillez à la femme res réminisciences que vous avez eues plus tôt…"
+      "text": "Vous n'avez aucune idée de qui est cette femme où de comment elle vous connaît, pourtant, elle se comporte de manière famillière avec vous. Vous creusez votre mémoire pour tenter de vous souvenir des circonstances de votre rencontre, en vain. Vous êtes certain de ne l'avoir jamais rencontrée. Vous étant réveillé dans une oubliette froide et humide, vous ne vous sentez pas d'humeur très sociable. Votre peur et votre méfiance doivent transparaître, car la femme recule et son regard s'étrécit. « Que se passe-t-il ? Qu'est-ce qui ne va pas ? »\nVous demandez à la femme comment elle vous connaît. « Vous ne vous souvenez vraiment pas ? Cela va compliquer les choses. De quoi vous rappelez-vous ? Vous souvenez-vous de quelque chose ? »\nVous détaillez à la femme les réminisciences que vous avez eues plus tôt…"
     },
     {
       "id": "check_memories_recovered",
@@ -77279,11 +77446,11 @@
         "name": "Meeting with Thomas Dawson"
       },
       "type": "story",
-      "text": "Vous additionnez deux et deux et demandez à la femme si elle est bien Elina Harper. « Ha, vous vous souvenez donc ? » questionne-t-elle en souriant, mais vous secouez la tête en dénégation, expliquant simplement que vous vous souvenez avoir été engagé par un homme du nom de Thomas Dawson pour la retrouver. « Mais c'était il y a… oh. Vous avez oublié beaucoup de choses, n'est-ce pas ? En parlant de Dawson, où est-il ? L'avez-vous aperçu dans le coin ? »\nVos pensées se tournent vers le visage mutilé et difforme qui a provoqué votre flashback. L'expression de l'agent Harper s'assombrit en croiant votre regard. « … je vois. J'aurais aimé ne jamais venir dans cette maudite ville. Ces brutes vont payer pour ça. » Vous lui demandez qui elle pense responsable de la mort de Dawson et elle hausse les sourcils pour toute réponse. « C'est vrai, vous ne vous souvenez pas. De ce que j'en sais, la dernière fois où Dawson et vous avez été vus, c'est juste avant votre visite à l'Ordre Ésotérique de Dagon. Tirez-en vos propres conclusions. »"
+      "text": "Vous additionnez deux et deux et demandez à la femme si elle est bien Elina Harper. « Ha, vous vous souvenez donc ? » questionne-t-elle en souriant, mais vous secouez la tête en dénégation, expliquant simplement que vous vous souvenez avoir été engagé par un homme du nom de Thomas Dawson pour la retrouver. « Mais c'était il y a… oh. Vous avez oublié beaucoup de choses, n'est-ce pas ? En parlant de Dawson, où est-il ? L'avez-vous aperçu dans le coin ? »\nVos pensées se tournent vers le visage mutilé et difforme qui a provoqué votre flashback. L'expression de l'agent Harper s'assombrit en croisant votre regard. « … je vois. J'aurais aimé ne jamais venir dans cette maudite ville. Ces brutes vont payer pour ça. » Vous lui demandez qui elle pense responsable de la mort de Dawson et elle hausse les sourcils pour toute réponse. « C'est vrai, vous ne vous souvenez pas. De ce que j'en sais, la dernière fois où Dawson et vous avez été vus, c'est juste avant votre visite à l'Ordre Ésotérique de Dagon. Tirez-en vos propres conclusions. »"
     },
     {
       "id": "thomas_dawson_effects",
-      "text": "Le mystère de la conspiration d'épaissit. Chaque investigateur inscrit 1 point d'expérience supplémentaire sous la mention « Expérience non dépensée ».",
+      "text": "Le mystère de la conspiration s'épaissit. Chaque investigateur inscrit 1 point d'expérience supplémentaire sous la mention « Expérience non dépensée ».",
       "effects": [
         {
           "type": "earn_xp",
@@ -77358,11 +77525,11 @@
         "name": "Battle with a horrifying devil"
       },
       "type": "story",
-      "text": "Vous parlez à l'agent Harper de votre combat contre la terrifiante créature aquatique. « Le Récif du Diable » dit-elle en tremblant. « Quoi qu'il se passe dans cette ville, Me récif du Diable en est au cœur. Espérons que nous n'ayons plus à y retourner de sitôt… et espérons qussi que cette chose reste bien morte. »"
+      "text": "Vous parlez à l'agent Harper de votre combat contre la terrifiante créature aquatique. « Le Récif du Diable » dit-elle en tremblant. « Quoi qu'il se passe dans cette ville, le récif du Diable en est au cœur. Espérons que nous n'ayons plus à y retourner de sitôt… et espérons aussi que cette chose reste bien morte. »"
     },
     {
       "id": "devil_fight_effects",
-      "text": "Le mystère de la conspiration d'épaissit. Chaque investigateur inscrit 1 point d'expérience supplémentaire sous la mention « Expérience non dépensée ».",
+      "text": "Le mystère de la conspiration s'épaissit. Chaque investigateur inscrit 1 point d'expérience supplémentaire sous la mention « Expérience non dépensée ».",
       "effects": [
         {
           "type": "earn_xp",
@@ -77398,11 +77565,11 @@
         "name": "Decision to stick together"
       },
       "type": "story",
-      "text": "« ALors, vous et Dawson étiez partis ensemble à ma recherche ? Intéressant. »Elle réfléchit un moment. « j'imagine que même l'extraordinaire capitaine Dawson peut être ébranlé de temps en temps. C'est presque réconfoortant de savoir qu'il tenait tant à me retrouver. Pourtant… » Son regard se perd dans le vague. « Très bien, Dawson. Je vais m'assurer que vous nêtes pas mort en vain, même si je dois raser cette ville tout entière pour ça. »"
+      "text": "« ALors, vous et Dawson étiez partis ensemble à ma recherche ? Intéressant. »Elle réfléchit un moment. « j'imagine que même l'extraordinaire capitaine Dawson peut être ébranlé de temps en temps. C'est presque réconfortant de savoir qu'il tenait tant à me retrouver. Pourtant… » Son regard se perd dans le vague. « Très bien, Dawson. Je vais m'assurer que vous nêtes pas mort en vain, même si je dois raser cette ville tout entière pour ça. »"
     },
     {
       "id": "stayed_together_effects",
-      "text": "Le mystère de la conspiration d'épaissit. Chaque investigateur inscrit 1 point d'expérience supplémentaire sous la mention « Expérience non dépensée ».",
+      "text": "Le mystère de la conspiration s'épaissit. Chaque investigateur inscrit 1 point d'expérience supplémentaire sous la mention « Expérience non dépensée ».",
       "effects": [
         {
           "type": "earn_xp",
@@ -77442,7 +77609,7 @@
     },
     {
       "id": "encounter_with_a_secret_cult_effects",
-      "text": "Le mystère de la conspiration d'épaissit. Chaque investigateur inscrit 1 point d'expérience supplémentaire sous la mention « Expérience non dépensée ».",
+      "text": "Le mystère de la conspiration s'épaissit. Chaque investigateur inscrit 1 point d'expérience supplémentaire sous la mention « Expérience non dépensée ».",
       "effects": [
         {
           "type": "earn_xp",
@@ -77459,7 +77626,7 @@
         "name": "Outro"
       },
       "type": "story",
-      "text": "Vous pointez du doigt l'étrange horizon écarlate situé derrière l'agent Harper et notez l'alignement du soleil et de la lune. « Cela a débuté peu après que l'agent Dawson et vous êtes entrés dans le quartier générale de l'Ordre », explique-t-elle. « C'était il y a presque trois jours? Je n'ai aucune idée de ce que cela signifie, mais je pense que cela n'augure rien de bon. Tout Innsmouth s'est calfeutré après. Pas une âme en vue. Vous avez ru de la chance que je comprenne où vous chercher. »\nVotre esprit vacille. La dernière chose dont vous vous souvenez avant votre réveil dans ce maudit gouffre est cette agréable soirée de fin d'été dont vous profitiez allègrement à Arkham. Et là, vous vous trouvez dans une tout autre ville, vos souvenir en pièces. Vous demandez la date à l'agent Harper qui répond : « Nous somme le vingt-quatre septembre. J'ignore quand nous êtes arrivé à Innsmouth exactement et à quel point votre mémoire a été affectée. Vous ne vous souvenez de rie nd'autre ? Rien du tout ? »\nL'eau va et vient sur vos pieds tandis que vous luttez pour vous souvenir. En quelques minutes, la marée a monté de plusieur centimètres et elle ne semble pas prête de s'arrêter. Vous posez vos yeux sur la feme qui se tient devant vous — ses yeux las, ses vêtements froissés, les marques rouges sur ses poignets — et quelque chose se ranime dans votre esprit.\n« Réveillez-vous. Nous y somme presque. » Le souvenir tangue à la limite de votre conscience, menaçant de vous emporter dans les ténèbres. « Hé, réveillez-vous, j'ai dit. » Vous vous attrapez le front entre les mains tandis qu'une douleur fulgurante vous traverse le crâne. « Réveillez-vous, bon sang ! »\nLes ténèbre envahissent votre champ de vision à mesure que vos souvenirs affluent…"
+      "text": "Vous pointez du doigt l'étrange horizon écarlate situé derrière l'agent Harper et notez l'alignement du soleil et de la lune. « Cela a débuté peu après que l'agent Dawson et vous êtes entrés dans le quartier générale de l'Ordre », explique-t-elle. « C'était il y a presque trois jours? Je n'ai aucune idée de ce que cela signifie, mais je pense que cela n'augure rien de bon. Tout Innsmouth s'est calfeutré après. Pas une âme en vue. Vous avez eu de la chance que je comprenne où vous chercher. »\nVotre esprit vacille. La dernière chose dont vous vous souvenez avant votre réveil dans ce maudit gouffre est cette agréable soirée de fin d'été dont vous profitiez allègrement à Arkham. Et là, vous vous trouvez dans une tout autre ville, vos souvenir en pièces. Vous demandez la date à l'agent Harper qui répond : « Nous somme le vingt-quatre septembre. J'ignore quand vous êtes arrivé à Innsmouth exactement et à quel point votre mémoire a été affectée. Vous ne vous souvenez de rien d'autre ? Rien du tout ? »\nL'eau va et vient sur vos pieds tandis que vous luttez pour vous souvenir. En quelques minutes, la marée a monté de plusieurs centimètres et elle ne semble pas prête de s'arrêter. Vous posez vos yeux sur la femme qui se tient devant vous — ses yeux las, ses vêtements froissés, les marques rouges sur ses poignets — et quelque chose se ranime dans votre esprit.\n« Réveillez-vous. Nous y somme presque. » Le souvenir tangue à la limite de votre conscience, menaçant de vous emporter dans les ténèbres. « Hé, réveillez-vous, j'ai dit. » Vous vous attrapez le front entre les mains tandis qu'une douleur fulgurante vous traverse le crâne. « Réveillez-vous, bon sang ! »\nLes ténèbre envahissent votre champ de vision à mesure que vos souvenirs affluent…"
     }
   ]
 },
@@ -77468,6 +77635,8 @@
   "scenario_name": "La Tanière de Dagon",
   "full_name": "Scénario VII : La Tanière de Dagon",
   "header": "Scénario VII",
+  "chaos_bag_card_text": "[skull]: -1 for each key on this card.\n[cultist]: -0. Reveal an additional chaos token. If you reveal 1 or more [curse] tokens during this test, you automatically fail.\n[tablet]: -3. If you fail, place each key you control on your location.\n[elder_thing]: -4. If you fail, add 1 [curse] token to the chaos bag.",
+  "chaos_bag_card_back_text": "[skull]: -2 for each key on this card.\n[cultist]: -2. Reveal an additional chaos token. If you reveal 1 or more [curse] tokens during this test, you automatically fail.\n[tablet]: -3. Place each key you control on your location and take 1 damage.\n[elder_thing]: -4. Add 2 [curse] tokens to the chaos bag.",
   "setup": [
     "intro_1",
     "check_mission_succeeded",
@@ -78023,17 +78192,24 @@
           {
             "id": "suspect_defeated",
             "text": "Y-a-t'il un ennemi [[Suspect]] dans la pile de victoire ?",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "gatekeeper_has_been_defeated",
-                "text": "le gardien de la porte a été vaincu."
-              }
+            "steps": [
+              "gatekeeper_has_been_defeated"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "gatekeeper_has_been_defeated",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "gatekeeper_has_been_defeated",
+          "text": "le gardien de la porte a été vaincu."
+        }
+      ]
     },
     {
       "id": "ask_oceiros",
@@ -78284,6 +78460,7 @@
   "scenario_name": "Le Gouffre du Désespoir",
   "full_name": "Scénario I : Le Gouffre du Désespoir",
   "header": "Scénario I",
+  "chaos_bag_card": "07041",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -78742,6 +78919,33 @@
           ]
         }
       ]
+    },
+    {
+      "id": "$upgrade_decks",
+      "type": "input",
+      "input": {
+        "type": "upgrade_decks",
+        "skip_decks": true,
+        "special_xp": "unspect_xp"
+      }
+    },
+    {
+      "id": "maybe_upgrade_decks",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "$upgrade_decks"
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -78757,9 +78961,10 @@
         "physical",
         "mental"
       ],
-      "text": "Vous toussez et recrachez du sable et de l'eau sale. Une eaux de mer, sombre et glacée, coule sur votre peau tandis que vous finissez de cracher votre dernière gorgée amère et salée dans le ressac.\nUne pair de mains chaudes vous saisit dans le dos et vous redresse en position assise. « Dieu merci vous êtes en vie », dit quelqu'un. Malgré la tension déformant sa voix, cous reconnaissez un accent indien chantant et l'inébranlable confiance d'un professionnelle entraînée. Au fur et à mesure que vos yeux s'ajustent, vous découvrez un ciel aux teintes rougeoyantes, la pleine lune suspendue juste sous le soleil obscurci. « Il n'y a pas detemps à perdre. Allez, levez-vous. »\nVous essuyez l'eau salée qui vous pique les yeux à mesure que vos force vous reviennenet. Votre sauveur s'avère être une femme aux long cheveux aile de corbeau. Son imperméable en lambeaux semble avoir connu des jours meilleurs et sa peau couverte de boue est couverte d'echymoses. « Vous avez l'air surpris. Pourquoi me fixez-vous ainsi ? » demande l'inconnue.",
+      "text": "Vous toussez et recrachez du sable et de l'eau sale. Une eaux de mer, sombre et glacée, coule sur votre peau tandis que vous finissez de cracher votre dernière gorgée amère et salée dans le ressac.\nUne pair de mains chaudes vous saisit dans le dos et vous redresse en position assise. « Dieu merci vous êtes en vie », dit quelqu'un. Malgré la tension déformant sa voix, vous reconnaissez un accent indien chantant et l'inébranlable confiance d'un professionnelle entraînée. Au fur et à mesure que vos yeux s'ajustent, vous découvrez un ciel aux teintes rougeoyantes, la pleine lune suspendue juste sous le soleil obscurci. « Il n'y a pas de temps à perdre. Allez, levez-vous. »\nVous essuyez l'eau salée qui vous pique les yeux à mesure que vos force vous reviennent. Votre sauveur s'avère être une femme aux long cheveux aile de corbeau. Son imperméable en lambeaux semble avoir connu des jours meilleurs et sa peau couverte de boue est couverte d'echymoses. « Vous avez l'air surpris. Pourquoi me fixez-vous ainsi ? » demande l'inconnue.",
       "steps": [
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     },
     {
@@ -78777,7 +78982,8 @@
       "title": "Conclusion 1",
       "text": "Au loin, le ciel prend des teintes rougeoyantes et la pleine lune est suspendue juste sous le soleil obscurcu. Vous êts sur le point de sombrer dans l'inconscience quand une voix inconnue vous fait reprendre vos esprit. « Ho ! Vous êtes en vie ? » Malgré la tension déformant sa voix, vous reconnaissez un accent indien chantant et l'inébranlable confiance d'une professionnelle entrainée. Une femme aux longs cheveux aile de corbeau se tient devant vous. Son imperméable en lambeaux semble avoir connu des jours meilleurs et sa peau couverte de boue est couverte d'echymoses. « Vous avez l'air surpris. Pourquoi me fixez-vois ainsi ? », demande l'inconnue.",
       "steps": [
-        "earn_xp"
+        "earn_xp",
+        "maybe_upgrade_decks"
       ]
     }
   ]
@@ -78903,6 +79109,7 @@
   "scenario_name": "La Disparition d'Elina Harper",
   "full_name": "Scénario II : La Disparition d'Elina Harper",
   "header": "Scénario II",
+  "chaos_bag_card": "07056",
   "setup": [
     "intro_1",
     "info_summary",

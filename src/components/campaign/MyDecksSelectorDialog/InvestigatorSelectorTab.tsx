@@ -1,20 +1,16 @@
 import React, { useCallback } from 'react';
 import { Navigation } from 'react-native-navigation';
 
-import { DeckId, SortType } from '@actions/types';
+import { SortType } from '@actions/types';
 import InvestigatorsListComponent from '@components/cardlist/InvestigatorsListComponent';
 import Card from '@data/types/Card';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
-import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 interface Props {
   componentId: string;
   onInvestigatorSelect: (card: Card) => void;
   searchOptions?: SearchOptions;
   sort: SortType;
-
-  onlyDecks?: MiniDeckT[];
-  filterDeckIds: DeckId[];
   filterInvestigators: string[];
 }
 

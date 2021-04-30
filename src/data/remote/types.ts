@@ -1,14 +1,15 @@
-import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES } from '@actions/types';
+import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES, SealedToken } from '@actions/types';
 import { uniq, concat, flatMap, sumBy, find, findLast, maxBy, map, last, forEach, findLastIndex } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
-import { FullCampaignFragment, LatestDeckFragment, MiniCampaignFragment, Guide_Input, FullCampaignGuideStateFragment } from '@generated/graphql/apollo-schema';
+import { FullCampaignFragment, LatestDeckFragment, MiniCampaignFragment, Guide_Input, FullCampaignGuideStateFragment, FullChaosBagResultFragment } from '@generated/graphql/apollo-schema';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
-import { ChaosBag } from '@app_constants';
+import { ChaosBag, ChaosTokenType } from '@app_constants';
 import LatestDeckT, { DeckCampaignInfo } from '@data/interfaces/LatestDeckT';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import { SimpleUser } from './hooks';
+import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 
 const EMPTY_TRAUMA = {};
 
@@ -69,6 +70,7 @@ export class MiniCampaignRemote implements MiniCampaignT {
   public latestScenarioResult: ScenarioResult | undefined;
   public investigators: string[];
   public updatedAt: Date;
+  public owner_id: string;
   public linked: undefined | CampaignLink = undefined;
 
   constructor(
@@ -77,7 +79,7 @@ export class MiniCampaignRemote implements MiniCampaignT {
     this.campaign = campaign;
     this.campaignInvestigatorData = fragmentToInvestigatorData(campaign);
     this.updatedAt = new Date(Date.parse(campaign.updated_at));
-
+    this.owner_id = campaign.owner_id;
     this.investigators = fragmentToInvestigators(campaign);
     this.id = {
       campaignId: campaign.uuid,
@@ -121,7 +123,6 @@ export class MiniLinkedCampaignRemote extends MiniCampaignRemote {
     this.investigatorDataB = fragmentToInvestigatorData(campaignB);
     this.updatedAtA = new Date(Date.parse(campaignA.updated_at));
     this.updatedAtB = new Date(Date.parse(campaignB.updated_at));
-
     this.investigators = uniq(
       concat(
         this.investigators,
@@ -138,7 +139,7 @@ export class MiniLinkedCampaignRemote extends MiniCampaignRemote {
       last(this.campaignB.scenarioResults || []) || undefined
     );
     this.updatedAt = maxBy(
-      [super.updatedAt, this.updatedAtA, this.updatedAtB],
+      [this.updatedAt, this.updatedAtA, this.updatedAtB],
       d => d.getTime()
     ) as Date;
     this.linked = {
@@ -211,12 +212,12 @@ export class SingleCampaignRemote extends MiniCampaignRemote implements SingleCa
   }
 }
 
-function unpackGuideInput(input: Pick<Guide_Input, 'id' | 'step' | 'type' | 'scenario' | 'payload' | 'created_at'>): GuideInput {
+function unpackGuideInput(input: Pick<Guide_Input, 'id' | 'step' | 'type' | 'scenario' | 'payload'>): GuideInput {
   return {
+    ...input.payload,
     step: input.step || null,
     scenario: input.scenario || null,
     type: input.type || null,
-    ...input.payload,
   };
 }
 
@@ -308,17 +309,17 @@ export class MiniDeckRemote implements MiniDeckT {
   investigator: string;
   date_update: string;
   name: string;
-  campaign_id: CampaignId;
+  campaign_id?: CampaignId;
 
   constructor(deck: LatestDeckFragment) {
     this.id = fragmentToDeckId(deck);
     this.investigator = deck.investigator;
     this.name = deck.content?.name || '';
     this.date_update = deck.content?.date_update || '';
-    this.campaign_id = {
+    this.campaign_id = deck.campaign ? {
       campaignId: deck.campaign.uuid,
       serverId: deck.campaign.id,
-    };
+    } : undefined;
   }
 }
 
@@ -334,7 +335,7 @@ export class LatestDeckRemote extends MiniDeckRemote implements LatestDeckT {
       handle: deck.owner.handle || undefined,
       id: deck.owner.id,
     };
-    this.deck = deck.content;
+    this.deck = deck.content || {};
     this.previousDeck = deck.previous_deck?.content;
     this.campaign = deck.campaign?.name ? {
       id: {
@@ -349,5 +350,21 @@ export class LatestDeckRemote extends MiniDeckRemote implements LatestDeckT {
         insane: deck.investigator_data?.insane || undefined,
       },
     } : undefined;
+  }
+}
+
+export class ChaosBagResultsRemote implements ChaosBagResultsT {
+  drawnTokens: ChaosTokenType[];
+  sealedTokens: SealedToken[];
+  blessTokens: number;
+  curseTokens: number;
+  totalDrawnTokens: number;
+
+  constructor(chaosBagResults: FullChaosBagResultFragment) {
+    this.drawnTokens = chaosBagResults.drawn || [];
+    this.sealedTokens = chaosBagResults.sealed || [];
+    this.blessTokens = chaosBagResults.bless || 0;
+    this.curseTokens = chaosBagResults.curse || 0;
+    this.totalDrawnTokens = chaosBagResults.totalDrawn || 0;
   }
 }

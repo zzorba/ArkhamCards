@@ -544,6 +544,16 @@ export const makeGetDecksSelector = () =>
     }
   );
 
+export const makeUploadingDeckSelector = () =>
+  createSelector(
+    (state: AppState) => state.deckEdits.deck_uploads,
+    (state: AppState, campaignId: CampaignId) => campaignId.campaignId,
+    (state: AppState, campaignId: CampaignId, investigator: string) => investigator,
+    (deck_uploads, campaignId, investigator) => {
+      return !!find((deck_uploads || {})[campaignId] || [], i => i === investigator);
+    },
+  );
+
 export function processCampaign(campaign: Campaign): SingleCampaign {
   const latestScenario = last(campaign.scenarioResults);
   const finishedScenarios = flatMap(campaign.scenarioResults || [], r => r.scenario);

@@ -48,14 +48,13 @@ export function useSingleCampaignGuideData(
 ): SingleCampaignGuideData | undefined {
   const campaign = useCampaign(campaignId, live);
   const [campaignInvestigators] = useCampaignInvestigators(campaign, investigators);
-
   const campaignGuideSelector = useMemo(makeCampaignGuideSelector, []);
   const campaignGuide = useSelector((state: AppState) => campaignGuideSelector(state, campaign));
 
   const campaignState = useCampaignGuideState(campaignId, live);
   const linkedCampaignState = useCampaignGuideState(campaign?.linkedCampaignId, false);
-
   return useMemo(() => {
+    // console.log(`useSingleCampaignGuideData campaignId: ${JSON.stringify(campaignId)} campaign: ${!!campaign}, campaignGuide: ${!!campaignGuide}, campaignState: ${!!campaignState}`);
     if (!campaign) {
       return undefined;
     }

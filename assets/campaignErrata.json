@@ -301,6 +301,15 @@
           "answer": "Yes. Empty space serves as a method to judge the distance from one location to another, and as a place for certain enemies to spawn or move through; it is not required that there be an empty space in the spot where the location is placed or moves to. "
         }
       ]
+    },
+    {
+      "scenario_code": "into_the_maelstrom",
+      "questions": [
+        {
+          "question": "Do we have to advance act 1a immediately if all investigators are at the Gateway to Y’ha-nthlei location and they control all four keys?",
+          "answer": "No. This act advancement should be optional, though in the original printing it is a forced advance."
+        }
+      ]
     }
   ]
 }

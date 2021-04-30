@@ -29,6 +29,10 @@ function getActiveIndex(scenarios: ProcessedScenario[]) {
   return scenarios.length - 1;
 }
 
+interface ScenarioItem {
+  item: ProcessedScenario;
+  index: number;
+}
 export default function ScenarioCarouselComponent({
   componentId,
   processedCampaign,
@@ -78,7 +82,7 @@ export default function ScenarioCarouselComponent({
   }, [visible]);
   const [selectedIndex, setIndex] = useState(activeIndex);
   const numScenarios = processedCampaign.scenarios.length;
-  const renderScenario = useCallback(({ item, index }: { item: ProcessedScenario; index: number; dataIndex: number }) => {
+  const renderScenario = useCallback(({ item, index }: ScenarioItem) => {
     return (
       <ScenarioCard
         key={index}

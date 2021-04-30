@@ -36,31 +36,32 @@ mutation insertNextLocalDeck(
 ) {
   insert_campaign_deck_one(
     object: {
-      local_uuid: $previous_local_uuid
-      investigator: $investigator
+      local_uuid: $local_uuid
+      arkhamdb_id: null
       campaign_id: $campaign_id
+      investigator: $investigator
+      content: $content
+      content_hash: $content_hash
       owner_id: $userId
-      next_deck: {
+      previous_decks: {
         data: {
-          local_uuid: $local_uuid
-          campaign_id: $campaign_id
+          local_uuid: $previous_local_uuid
+          arkhamdb_id: null
           investigator: $investigator
-          content: $content
-          content_hash: $content_hash
+          campaign_id: $campaign_id
           owner_id: $userId
+        }
+        on_conflict: {
+          constraint: deck_local_uuid_campaign_id_key
+          update_columns: [next_deck_id]
         }
       }
     }
-    on_conflict: {
-      constraint: deck_local_uuid_campaign_id_key
-      update_columns: [next_deck_id]
-    }
   ) {
-    ...IdDeck
-    investigator
-    next_deck {
-      ...LatestDeck
-	  }
+    ...LatestDeck
+    previous_deck {
+      ...IdDeck
+    }
   }
 }
 
@@ -75,31 +76,32 @@ mutation insertNextArkhamDbDeck(
 ) {
   insert_campaign_deck_one(
     object: {
-      arkhamdb_id: $previous_arkhamdb_id
+      arkhamdb_id: $arkhamdb_id
+      local_uuid: null
       investigator: $investigator
       campaign_id: $campaign_id
       owner_id: $userId
-      next_deck: {
+      content: $content
+      content_hash: $content_hash
+      previous_decks: {
         data: {
-          arkhamdb_id: $arkhamdb_id
+          arkhamdb_id: $previous_arkhamdb_id
+          local_uuid: null
           campaign_id: $campaign_id
           investigator: $investigator
-          content: $content
-          content_hash: $content_hash
           owner_id: $userId
+        }
+        on_conflict: {
+          constraint: deck_arkhamdb_id_campaign_id_key
+          update_columns: [next_deck_id]
         }
       }
     }
-    on_conflict: {
-      constraint: deck_arkhamdb_id_campaign_id_key
-      update_columns: [next_deck_id]
-    }
   ) {
-    ...IdDeck
-    investigator
-    next_deck {
-      ...LatestDeck
-	  }
+    ...LatestDeck
+    previous_deck {
+      ...IdDeck
+    }
   }
 }
 
@@ -195,6 +197,21 @@ mutation deleteLocalDeck(
   $local_uuid: String!,
   $campaign_id: Int!
 ) {
+  update_campaign_deck(
+    where: {
+      next_deck: {
+        local_uuid: { _eq: $local_uuid }
+        campaign_id: { _eq: $campaign_id }
+      }
+    }
+    _delete_key: {
+      content: "nextDeckId"
+    }
+  ) {
+    returning {
+      ...LatestDeck
+    }
+  }
   delete_campaign_deck(
     where: {
       local_uuid: { _eq: $local_uuid }
@@ -215,6 +232,21 @@ mutation deleteArkhamDbDeck(
   $arkhamdb_id: Int!,
   $campaign_id: Int!
 ) {
+  update_campaign_deck(
+    where: {
+      next_deck: {
+        arkhamdb_id: { _eq: $arkhamdb_id }
+        campaign_id: { _eq: $campaign_id }
+      }
+    }
+    _delete_key: {
+      content: "nextDeckId"
+    }
+  ) {
+    returning {
+      ...LatestDeck
+    }
+  }
   delete_campaign_deck(
     where: {
       arkhamdb_id: { _eq: $arkhamdb_id }
@@ -248,27 +280,53 @@ query getMyDecks(
 }
 
 
-query getLatestCampaignDeck(
-  $campaign_id: Int!,
-  $id_exp: campaign_deck_bool_exp!
+query getLatestLocalDeck(
+  $campaign_id: Int!
+  $local_uuid: String!
 ) {
 	campaign_deck(
     where: {
-    	_and: [
-      	{ campaign_id: { _eq: $campaign_id } },
-        $id_exp
-      ]
+      campaign_id: { _eq: $campaign_id }
+      local_uuid: { _eq: $local_uuid }
     }
   ) {
     ...LatestDeck
   }
 }
 
-query getLatestDeck(
-  $deckId: Int!
+query getLatestArkhamDbDeck(
+  $campaign_id: Int!
+  $arkhamdb_id: Int!
 ) {
-  campaign_deck_by_pk(id: $deckId) {
+	campaign_deck(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      arkhamdb_id: { _eq: $arkhamdb_id }
+    }
+  ) {
     ...LatestDeck
   }
 }
 
+
+query getLatestDeck(
+  $deckId: Int!
+) {
+	campaign_deck_by_pk(id: $deckId) {
+    ...LatestDeck
+  }
+}
+
+query getDeckHistory(
+  $campaign_id: Int!,
+  $investigator: String!
+) {
+  campaign_deck(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      investigator: { _eq: $investigator }
+    }
+  ) {
+    ...HistoryDeck
+  }
+}
