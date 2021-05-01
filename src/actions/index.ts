@@ -19,7 +19,7 @@ import {
   DISSONANT_VOICES_LOGIN_ERROR,
   DISSONANT_VOICES_LOGOUT,
 } from './types';
-import { AppState } from '@reducers';
+import { AppState, getArkhamDbDecks } from '@reducers';
 
 import { getAccessToken, signInFlow, signOutFlow } from '@lib/auth';
 import * as dissonantVoices from '@lib/dissonantVoices';
@@ -155,6 +155,15 @@ export function refreshMyDecks(
           type: MY_DECKS_CACHE_HIT,
           timestamp: new Date(),
         });
+        if (user) {
+          const state = getState();
+          const [arkhamDbDecks] = getArkhamDbDecks(state);
+          syncCampaignDecksFromArkhamDB(
+            arkhamDbDecks,
+            state.decks.syncedDecks || {},
+            actions
+          );
+        }
       } else {
         dispatch({
           type: SET_MY_DECKS,

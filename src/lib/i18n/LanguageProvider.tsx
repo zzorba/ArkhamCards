@@ -13,7 +13,7 @@ interface Props {
 let eventListener: EventEmitter | null = null;
 let currentSystemLang: string | undefined = undefined;
 
-const LOCALIZED_CARD_TRAITS = new Set(['fr']);
+const LOCALIZED_CARD_TRAITS = new Set(['fr', 'ru']);
 
 export default function LanguageProvider({ children }: Props) {
   const [systemLang, setSystemLang] = useState<string>(currentSystemLang || getSystemLanguage());

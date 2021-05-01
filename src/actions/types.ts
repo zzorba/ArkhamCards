@@ -77,6 +77,8 @@ export interface ArkhamDbApiDeck {
   scenarioCount?: number;
   slots: Slots;
   ignoreDeckLimitSlots: Slots;
+  sideSlots?: Slots;
+  user_id: number;
   exile_string?: string;
   problem?: DeckProblemType;
   version?: string;
@@ -85,6 +87,7 @@ export interface ArkhamDbApiDeck {
   spentXp?: number;
   next_deck?: number;
   previous_deck?: number;
+  tags?: string;
 }
 
 interface BaseDeck {
@@ -97,6 +100,7 @@ interface BaseDeck {
   date_creation: string;
   scenarioCount?: number;
   slots?: Slots;
+  sideSlots?: Slots;
   ignoreDeckLimitSlots: Slots;
   exile_string?: string;
   problem?: DeckProblemType;
@@ -106,12 +110,14 @@ interface BaseDeck {
   spentXp?: number;
   nextDeckId?: DeckId;
   previousDeckId?: DeckId;
+  tags?: string;
 }
 
 export interface ArkhamDbDeck extends BaseDeck {
   id: number;
   local: undefined;
   uuid: undefined;
+  user_id: number;
 }
 
 export interface LocalDeck extends BaseDeck {
@@ -642,12 +648,14 @@ export interface CampaignSyncRequiredAction {
 export interface UploadedDeck {
   deckId: DeckId;
   hash: string;
+  nextDeckId: DeckId | undefined;
   campaignId: UploadedCampaignId[];
 }
 export const UPLOAD_DECK = 'UPLOAD_DECK';
 export interface UploadDeckAction {
   type: typeof UPLOAD_DECK;
   deckId: DeckId;
+  nextDeckId: DeckId | undefined;
   hash: string;
   campaignId: UploadedCampaignId;
 }
@@ -734,7 +742,7 @@ export interface FinishDeckEditAction {
 export const SET_MY_DECKS = 'SET_MY_DECKS';
 export interface SetMyDecksAction {
   type: typeof SET_MY_DECKS;
-  decks: Deck[];
+  decks: ArkhamDbDeck[];
   lastModified: string;
   timestamp: Date;
 }

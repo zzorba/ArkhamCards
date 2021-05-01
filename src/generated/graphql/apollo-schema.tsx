@@ -923,6 +923,7 @@ export enum Campaign_Constraint {
 export type Campaign_Deck = {
   __typename?: 'campaign_deck';
   arkhamdb_id?: Maybe<Scalars['Int']>;
+  arkhamdb_user?: Maybe<Scalars['Int']>;
   base?: Maybe<Scalars['Boolean']>;
   /** An object relationship */
   campaign: Campaign;
@@ -1060,6 +1061,7 @@ export type Campaign_Deck_Arr_Rel_Insert_Input = {
 export type Campaign_Deck_Avg_Fields = {
   __typename?: 'campaign_deck_avg_fields';
   arkhamdb_id?: Maybe<Scalars['Float']>;
+  arkhamdb_user?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   next_deck_id?: Maybe<Scalars['Float']>;
@@ -1068,6 +1070,7 @@ export type Campaign_Deck_Avg_Fields = {
 /** order by avg() on columns of table "campaign_deck" */
 export type Campaign_Deck_Avg_Order_By = {
   arkhamdb_id?: Maybe<Order_By>;
+  arkhamdb_user?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   next_deck_id?: Maybe<Order_By>;
@@ -1079,6 +1082,7 @@ export type Campaign_Deck_Bool_Exp = {
   _not?: Maybe<Campaign_Deck_Bool_Exp>;
   _or?: Maybe<Array<Campaign_Deck_Bool_Exp>>;
   arkhamdb_id?: Maybe<Int_Comparison_Exp>;
+  arkhamdb_user?: Maybe<Int_Comparison_Exp>;
   base?: Maybe<Boolean_Comparison_Exp>;
   campaign?: Maybe<Campaign_Bool_Exp>;
   campaign_id?: Maybe<Int_Comparison_Exp>;
@@ -1126,6 +1130,7 @@ export type Campaign_Deck_Delete_Key_Input = {
 /** input type for incrementing numeric columns in table "campaign_deck" */
 export type Campaign_Deck_Inc_Input = {
   arkhamdb_id?: Maybe<Scalars['Int']>;
+  arkhamdb_user?: Maybe<Scalars['Int']>;
   campaign_id?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
   next_deck_id?: Maybe<Scalars['Int']>;
@@ -1134,6 +1139,7 @@ export type Campaign_Deck_Inc_Input = {
 /** input type for inserting data into table "campaign_deck" */
 export type Campaign_Deck_Insert_Input = {
   arkhamdb_id?: Maybe<Scalars['Int']>;
+  arkhamdb_user?: Maybe<Scalars['Int']>;
   base?: Maybe<Scalars['Boolean']>;
   campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
   campaign_id?: Maybe<Scalars['Int']>;
@@ -1157,6 +1163,7 @@ export type Campaign_Deck_Insert_Input = {
 export type Campaign_Deck_Max_Fields = {
   __typename?: 'campaign_deck_max_fields';
   arkhamdb_id?: Maybe<Scalars['Int']>;
+  arkhamdb_user?: Maybe<Scalars['Int']>;
   campaign_id?: Maybe<Scalars['Int']>;
   content_hash?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
@@ -1170,6 +1177,7 @@ export type Campaign_Deck_Max_Fields = {
 /** order by max() on columns of table "campaign_deck" */
 export type Campaign_Deck_Max_Order_By = {
   arkhamdb_id?: Maybe<Order_By>;
+  arkhamdb_user?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
   content_hash?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
@@ -1184,6 +1192,7 @@ export type Campaign_Deck_Max_Order_By = {
 export type Campaign_Deck_Min_Fields = {
   __typename?: 'campaign_deck_min_fields';
   arkhamdb_id?: Maybe<Scalars['Int']>;
+  arkhamdb_user?: Maybe<Scalars['Int']>;
   campaign_id?: Maybe<Scalars['Int']>;
   content_hash?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
@@ -1197,6 +1206,7 @@ export type Campaign_Deck_Min_Fields = {
 /** order by min() on columns of table "campaign_deck" */
 export type Campaign_Deck_Min_Order_By = {
   arkhamdb_id?: Maybe<Order_By>;
+  arkhamdb_user?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
   content_hash?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
@@ -1233,6 +1243,7 @@ export type Campaign_Deck_On_Conflict = {
 /** Ordering options when selecting data from "campaign_deck". */
 export type Campaign_Deck_Order_By = {
   arkhamdb_id?: Maybe<Order_By>;
+  arkhamdb_user?: Maybe<Order_By>;
   base?: Maybe<Order_By>;
   campaign?: Maybe<Campaign_Order_By>;
   campaign_id?: Maybe<Order_By>;
@@ -1267,6 +1278,8 @@ export enum Campaign_Deck_Select_Column {
   /** column name */
   ArkhamdbId = 'arkhamdb_id',
   /** column name */
+  ArkhamdbUser = 'arkhamdb_user',
+  /** column name */
   Base = 'base',
   /** column name */
   CampaignId = 'campaign_id',
@@ -1291,6 +1304,7 @@ export enum Campaign_Deck_Select_Column {
 /** input type for updating data in table "campaign_deck" */
 export type Campaign_Deck_Set_Input = {
   arkhamdb_id?: Maybe<Scalars['Int']>;
+  arkhamdb_user?: Maybe<Scalars['Int']>;
   base?: Maybe<Scalars['Boolean']>;
   campaign_id?: Maybe<Scalars['Int']>;
   content?: Maybe<Scalars['jsonb']>;
@@ -1307,6 +1321,7 @@ export type Campaign_Deck_Set_Input = {
 export type Campaign_Deck_Stddev_Fields = {
   __typename?: 'campaign_deck_stddev_fields';
   arkhamdb_id?: Maybe<Scalars['Float']>;
+  arkhamdb_user?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   next_deck_id?: Maybe<Scalars['Float']>;
@@ -1315,6 +1330,7 @@ export type Campaign_Deck_Stddev_Fields = {
 /** order by stddev() on columns of table "campaign_deck" */
 export type Campaign_Deck_Stddev_Order_By = {
   arkhamdb_id?: Maybe<Order_By>;
+  arkhamdb_user?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   next_deck_id?: Maybe<Order_By>;
@@ -1324,6 +1340,7 @@ export type Campaign_Deck_Stddev_Order_By = {
 export type Campaign_Deck_Stddev_Pop_Fields = {
   __typename?: 'campaign_deck_stddev_pop_fields';
   arkhamdb_id?: Maybe<Scalars['Float']>;
+  arkhamdb_user?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   next_deck_id?: Maybe<Scalars['Float']>;
@@ -1332,6 +1349,7 @@ export type Campaign_Deck_Stddev_Pop_Fields = {
 /** order by stddev_pop() on columns of table "campaign_deck" */
 export type Campaign_Deck_Stddev_Pop_Order_By = {
   arkhamdb_id?: Maybe<Order_By>;
+  arkhamdb_user?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   next_deck_id?: Maybe<Order_By>;
@@ -1341,6 +1359,7 @@ export type Campaign_Deck_Stddev_Pop_Order_By = {
 export type Campaign_Deck_Stddev_Samp_Fields = {
   __typename?: 'campaign_deck_stddev_samp_fields';
   arkhamdb_id?: Maybe<Scalars['Float']>;
+  arkhamdb_user?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   next_deck_id?: Maybe<Scalars['Float']>;
@@ -1349,6 +1368,7 @@ export type Campaign_Deck_Stddev_Samp_Fields = {
 /** order by stddev_samp() on columns of table "campaign_deck" */
 export type Campaign_Deck_Stddev_Samp_Order_By = {
   arkhamdb_id?: Maybe<Order_By>;
+  arkhamdb_user?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   next_deck_id?: Maybe<Order_By>;
@@ -1358,6 +1378,7 @@ export type Campaign_Deck_Stddev_Samp_Order_By = {
 export type Campaign_Deck_Sum_Fields = {
   __typename?: 'campaign_deck_sum_fields';
   arkhamdb_id?: Maybe<Scalars['Int']>;
+  arkhamdb_user?: Maybe<Scalars['Int']>;
   campaign_id?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
   next_deck_id?: Maybe<Scalars['Int']>;
@@ -1366,6 +1387,7 @@ export type Campaign_Deck_Sum_Fields = {
 /** order by sum() on columns of table "campaign_deck" */
 export type Campaign_Deck_Sum_Order_By = {
   arkhamdb_id?: Maybe<Order_By>;
+  arkhamdb_user?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   next_deck_id?: Maybe<Order_By>;
@@ -1375,6 +1397,8 @@ export type Campaign_Deck_Sum_Order_By = {
 export enum Campaign_Deck_Update_Column {
   /** column name */
   ArkhamdbId = 'arkhamdb_id',
+  /** column name */
+  ArkhamdbUser = 'arkhamdb_user',
   /** column name */
   Base = 'base',
   /** column name */
@@ -1401,6 +1425,7 @@ export enum Campaign_Deck_Update_Column {
 export type Campaign_Deck_Var_Pop_Fields = {
   __typename?: 'campaign_deck_var_pop_fields';
   arkhamdb_id?: Maybe<Scalars['Float']>;
+  arkhamdb_user?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   next_deck_id?: Maybe<Scalars['Float']>;
@@ -1409,6 +1434,7 @@ export type Campaign_Deck_Var_Pop_Fields = {
 /** order by var_pop() on columns of table "campaign_deck" */
 export type Campaign_Deck_Var_Pop_Order_By = {
   arkhamdb_id?: Maybe<Order_By>;
+  arkhamdb_user?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   next_deck_id?: Maybe<Order_By>;
@@ -1418,6 +1444,7 @@ export type Campaign_Deck_Var_Pop_Order_By = {
 export type Campaign_Deck_Var_Samp_Fields = {
   __typename?: 'campaign_deck_var_samp_fields';
   arkhamdb_id?: Maybe<Scalars['Float']>;
+  arkhamdb_user?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   next_deck_id?: Maybe<Scalars['Float']>;
@@ -1426,6 +1453,7 @@ export type Campaign_Deck_Var_Samp_Fields = {
 /** order by var_samp() on columns of table "campaign_deck" */
 export type Campaign_Deck_Var_Samp_Order_By = {
   arkhamdb_id?: Maybe<Order_By>;
+  arkhamdb_user?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   next_deck_id?: Maybe<Order_By>;
@@ -1435,6 +1463,7 @@ export type Campaign_Deck_Var_Samp_Order_By = {
 export type Campaign_Deck_Variance_Fields = {
   __typename?: 'campaign_deck_variance_fields';
   arkhamdb_id?: Maybe<Scalars['Float']>;
+  arkhamdb_user?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   next_deck_id?: Maybe<Scalars['Float']>;
@@ -1443,6 +1472,7 @@ export type Campaign_Deck_Variance_Fields = {
 /** order by variance() on columns of table "campaign_deck" */
 export type Campaign_Deck_Variance_Order_By = {
   arkhamdb_id?: Maybe<Order_By>;
+  arkhamdb_user?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   next_deck_id?: Maybe<Order_By>;
@@ -7768,6 +7798,7 @@ export type UploadNewCampaignMutation = (
 export type InsertNewDeckMutationVariables = Exact<{
   arkhamdb_id?: Maybe<Scalars['Int']>;
   local_uuid?: Maybe<Scalars['String']>;
+  arkhamdb_user?: Maybe<Scalars['Int']>;
   campaign_id: Scalars['Int'];
   investigator: Scalars['String'];
   content: Scalars['jsonb'];
@@ -7810,6 +7841,7 @@ export type InsertNextLocalDeckMutation = (
 export type InsertNextArkhamDbDeckMutationVariables = Exact<{
   previous_arkhamdb_id: Scalars['Int'];
   arkhamdb_id: Scalars['Int'];
+  arkhamdb_user?: Maybe<Scalars['Int']>;
   campaign_id: Scalars['Int'];
   investigator: Scalars['String'];
   content: Scalars['jsonb'];
@@ -7835,6 +7867,7 @@ export type UpdateArkhamDbDeckMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
   content: Scalars['jsonb'];
   content_hash: Scalars['String'];
+  arkhamdb_user?: Maybe<Scalars['Int']>;
 }>;
 
 
@@ -7845,7 +7878,7 @@ export type UpdateArkhamDbDeckMutation = (
     & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
     & { returning: Array<(
       { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'content' | 'content_hash'>
+      & Pick<Campaign_Deck, 'content' | 'content_hash' | 'arkhamdb_user'>
       & IdDeckFragment
     )> }
   )> }
@@ -8075,7 +8108,7 @@ export type MiniDeckFragment = (
 
 export type BasicDeckFragment = (
   { __typename?: 'campaign_deck' }
-  & Pick<Campaign_Deck, 'content' | 'content_hash'>
+  & Pick<Campaign_Deck, 'arkhamdb_user' | 'content' | 'content_hash'>
   & MiniDeckFragment
 );
 
@@ -8898,6 +8931,7 @@ export const MiniDeckFragmentDoc = gql`
 export const BasicDeckFragmentDoc = gql`
     fragment BasicDeck on campaign_deck {
   ...MiniDeck
+  arkhamdb_user
   content
   content_hash
 }
@@ -9173,9 +9207,9 @@ export type UploadNewCampaignMutationHookResult = ReturnType<typeof useUploadNew
 export type UploadNewCampaignMutationResult = Apollo.MutationResult<UploadNewCampaignMutation>;
 export type UploadNewCampaignMutationOptions = Apollo.BaseMutationOptions<UploadNewCampaignMutation, UploadNewCampaignMutationVariables>;
 export const InsertNewDeckDocument = gql`
-    mutation insertNewDeck($arkhamdb_id: Int, $local_uuid: String, $campaign_id: Int!, $investigator: String!, $content: jsonb!, $content_hash: String!, $userId: String!) {
+    mutation insertNewDeck($arkhamdb_id: Int, $local_uuid: String, $arkhamdb_user: Int, $campaign_id: Int!, $investigator: String!, $content: jsonb!, $content_hash: String!, $userId: String!) {
   insert_campaign_deck_one(
-    object: {arkhamdb_id: $arkhamdb_id, local_uuid: $local_uuid, campaign_id: $campaign_id, investigator: $investigator, content: $content, content_hash: $content_hash, owner_id: $userId, base: true}
+    object: {arkhamdb_id: $arkhamdb_id, arkhamdb_user: $arkhamdb_user, local_uuid: $local_uuid, campaign_id: $campaign_id, investigator: $investigator, content: $content, content_hash: $content_hash, owner_id: $userId, base: true}
   ) {
     ...LatestDeck
   }
@@ -9198,6 +9232,7 @@ export type InsertNewDeckMutationFn = Apollo.MutationFunction<InsertNewDeckMutat
  *   variables: {
  *      arkhamdb_id: // value for 'arkhamdb_id'
  *      local_uuid: // value for 'local_uuid'
+ *      arkhamdb_user: // value for 'arkhamdb_user'
  *      campaign_id: // value for 'campaign_id'
  *      investigator: // value for 'investigator'
  *      content: // value for 'content'
@@ -9259,9 +9294,9 @@ export type InsertNextLocalDeckMutationHookResult = ReturnType<typeof useInsertN
 export type InsertNextLocalDeckMutationResult = Apollo.MutationResult<InsertNextLocalDeckMutation>;
 export type InsertNextLocalDeckMutationOptions = Apollo.BaseMutationOptions<InsertNextLocalDeckMutation, InsertNextLocalDeckMutationVariables>;
 export const InsertNextArkhamDbDeckDocument = gql`
-    mutation insertNextArkhamDbDeck($previous_arkhamdb_id: Int!, $arkhamdb_id: Int!, $campaign_id: Int!, $investigator: String!, $content: jsonb!, $content_hash: String!, $userId: String!) {
+    mutation insertNextArkhamDbDeck($previous_arkhamdb_id: Int!, $arkhamdb_id: Int!, $arkhamdb_user: Int, $campaign_id: Int!, $investigator: String!, $content: jsonb!, $content_hash: String!, $userId: String!) {
   insert_campaign_deck_one(
-    object: {arkhamdb_id: $arkhamdb_id, local_uuid: null, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId, content: $content, content_hash: $content_hash, previous_decks: {data: {arkhamdb_id: $previous_arkhamdb_id, local_uuid: null, campaign_id: $campaign_id, investigator: $investigator, owner_id: $userId}, on_conflict: {constraint: deck_arkhamdb_id_campaign_id_key, update_columns: [next_deck_id]}}}
+    object: {arkhamdb_id: $arkhamdb_id, arkhamdb_user: $arkhamdb_user, local_uuid: null, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId, content: $content, content_hash: $content_hash, previous_decks: {data: {arkhamdb_id: $previous_arkhamdb_id, local_uuid: null, campaign_id: $campaign_id, investigator: $investigator, owner_id: $userId}, on_conflict: {constraint: deck_arkhamdb_id_campaign_id_key, update_columns: [next_deck_id]}}}
   ) {
     ...LatestDeck
     previous_deck {
@@ -9288,6 +9323,7 @@ export type InsertNextArkhamDbDeckMutationFn = Apollo.MutationFunction<InsertNex
  *   variables: {
  *      previous_arkhamdb_id: // value for 'previous_arkhamdb_id'
  *      arkhamdb_id: // value for 'arkhamdb_id'
+ *      arkhamdb_user: // value for 'arkhamdb_user'
  *      campaign_id: // value for 'campaign_id'
  *      investigator: // value for 'investigator'
  *      content: // value for 'content'
@@ -9304,16 +9340,17 @@ export type InsertNextArkhamDbDeckMutationHookResult = ReturnType<typeof useInse
 export type InsertNextArkhamDbDeckMutationResult = Apollo.MutationResult<InsertNextArkhamDbDeckMutation>;
 export type InsertNextArkhamDbDeckMutationOptions = Apollo.BaseMutationOptions<InsertNextArkhamDbDeckMutation, InsertNextArkhamDbDeckMutationVariables>;
 export const UpdateArkhamDbDeckDocument = gql`
-    mutation updateArkhamDbDeck($arkhamdb_id: Int!, $campaign_id: Int!, $content: jsonb!, $content_hash: String!) {
+    mutation updateArkhamDbDeck($arkhamdb_id: Int!, $campaign_id: Int!, $content: jsonb!, $content_hash: String!, $arkhamdb_user: Int) {
   update_campaign_deck(
     where: {arkhamdb_id: {_eq: $arkhamdb_id}, campaign_id: {_eq: $campaign_id}}
-    _set: {content: $content, content_hash: $content_hash}
+    _set: {content: $content, content_hash: $content_hash, arkhamdb_user: $arkhamdb_user}
   ) {
     affected_rows
     returning {
       ...IdDeck
       content
       content_hash
+      arkhamdb_user
     }
   }
 }
@@ -9337,6 +9374,7 @@ export type UpdateArkhamDbDeckMutationFn = Apollo.MutationFunction<UpdateArkhamD
  *      campaign_id: // value for 'campaign_id'
  *      content: // value for 'content'
  *      content_hash: // value for 'content_hash'
+ *      arkhamdb_user: // value for 'arkhamdb_user'
  *   },
  * });
  */

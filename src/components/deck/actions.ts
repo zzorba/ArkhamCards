@@ -50,6 +50,7 @@ export function setServerDecks(
   deckIds: {
     deckId: DeckId;
     hash: string | undefined;
+    nextDeckId: DeckId | undefined;
     campaignId: UploadedCampaignId;
   }[],
   actions: DeckActions,
@@ -61,20 +62,19 @@ export function setServerDecks(
       const existing = uploadedDecks[deck.deckId.uuid];
       uploadedDecks[deck.deckId.uuid] = existing ? {
         deckId: deck.deckId,
+        nextDeckId: deck.nextDeckId,
         hash: deck.hash || '',
         campaignId: [...existing.campaignId, deck.campaignId],
       } : {
         deckId: deck.deckId,
+        nextDeckId: deck.nextDeckId,
         hash: deck.hash || '',
         campaignId: [deck.campaignId],
       };
     });
-    dispatch({
-      type: SET_UPLOADED_DECKS,
-      uploadedDecks,
-    });
+    dispatch({ type: SET_UPLOADED_DECKS, uploadedDecks });
     if (refresh) {
-      const arkhamDbDecks = getArkhamDbDecks(getState());
+      const [arkhamDbDecks, loading] = getArkhamDbDecks(getState());
       syncCampaignDecksFromArkhamDB(arkhamDbDecks, uploadedDecks, actions);
     }
   };

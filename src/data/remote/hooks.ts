@@ -355,15 +355,27 @@ export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, (
           id: i.arkhamdb_id,
           local: false,
           uuid: `${i.arkhamdb_id}`,
-          serverId: i.id || undefined,
+          serverId: i.id,
         } : {
           id: undefined,
           local: true,
           uuid: i.local_uuid || '',
-          serverId: i.id || undefined,
+          serverId: i.id,
         };
+        const nextDeckId: DeckId | undefined = i.next_deck && (i.next_deck.arkhamdb_id ? {
+          id: i.next_deck.arkhamdb_id,
+          local: false,
+          uuid: `${i.next_deck.arkhamdb_id}`,
+          serverId: i.next_deck.id,
+        } : {
+          id: undefined,
+          local: true,
+          uuid: i.next_deck.local_uuid || '',
+          serverId: i.next_deck.id,
+        }) || undefined;
         return {
           deckId,
+          nextDeckId,
           hash: i.content_hash || '',
           campaignId: {
             campaignId: i.campaign.uuid,
