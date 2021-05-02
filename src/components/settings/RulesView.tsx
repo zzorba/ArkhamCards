@@ -14,12 +14,14 @@ import { RuleViewProps } from './RuleView';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import { where } from '@data/sqlite/query';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   componentId: string;
 }
 
 function RuleComponent({ componentId, rule, level }: { componentId: string; rule: Rule; level: number }) {
+  const { listSeperator } = useContext(LanguageContext);
   const onPress = useCallback(() =>{
     Navigation.push<RuleViewProps>(componentId, {
       component: {
@@ -42,7 +44,7 @@ function RuleComponent({ componentId, rule, level }: { componentId: string; rule
       <TouchableOpacity onPress={onPress}>
         <CardFlavorTextComponent text={`<game>${rule.title}</game>`} />
         { rule.rules && rule.rules.length > 0 && (
-          <CardTextComponent text={map(rule.rules || [], subRule => subRule.title).join(', ')} />
+          <CardTextComponent text={map(rule.rules || [], subRule => subRule.title).join(listSeperator)} />
         ) }
       </TouchableOpacity>
     </View>

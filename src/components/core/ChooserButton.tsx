@@ -1,9 +1,10 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import NavButton from './NavButton';
 import { SearchSelectProps } from '../cardlist/SearchMultiSelectView';
 import COLORS from '@styles/colors';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   componentId: string;
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export default function ChooserButton({ componentId, title, values, onChange, selection, indent }: Props) {
+  const { listSeperator } = useContext(LanguageContext);
   const onPress = useCallback(() => {
     Navigation.push<SearchSelectProps>(componentId, {
       component: {
@@ -49,7 +51,7 @@ export default function ChooserButton({ componentId, title, values, onChange, se
   }, [componentId, title, values, onChange, selection]);
   return (
     <NavButton
-      text={`${title}: ${selection && selection.length ? selection.join(', ') : t`All`}`}
+      text={`${title}: ${selection && selection.length ? selection.join(listSeperator) : t`All`}`}
       onPress={onPress}
       indent={indent}
     />

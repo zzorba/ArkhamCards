@@ -15,6 +15,13 @@ let currentSystemLang: string | undefined = undefined;
 
 const LOCALIZED_CARD_TRAITS = new Set(['fr', 'ru']);
 
+function getListSeperator(lang: string): string {
+  switch (lang) {
+    case 'zh': return '、';
+    default: return ', ';
+  }
+}
+
 export default function LanguageProvider({ children }: Props) {
   const [systemLang, setSystemLang] = useState<string>(currentSystemLang || getSystemLanguage());
   useEffect(() => {
@@ -43,6 +50,7 @@ export default function LanguageProvider({ children }: Props) {
     return {
       lang,
       useCardTraits: !LOCALIZED_CARD_TRAITS.has(lang),
+      listSeperator: getListSeperator(lang),
     };
   }, [lang]);
   return (

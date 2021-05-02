@@ -32,11 +32,11 @@ function rangeText(name: string, values: [number, number]) {
   }
   return `${name} (${values[0]}-${values[1]})`;
 }
-function listText(name: string, values: string[], translations?: { [key: string]: string }) {
+function listText(name: string, values: string[], listSeperator: string, translations?: { [key: string]: string }) {
   if (translations) {
-    return `${name} (${map(values, item => translations[item]).join(', ')})`;
+    return `${name} (${map(values, item => translations[item]).join(listSeperator)})`;
   }
-  return `${name} (${values.join(', ')})`;
+  return `${name} (${values.join(listSeperator)})`;
 }
 
 function splitTraits(value: string): string[] {
@@ -46,7 +46,7 @@ function splitTraits(value: string): string[] {
 export type CardFilterProps = FilterFunctionProps;
 
 const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
-  const { useCardTraits } = useContext(LanguageContext);
+  const { useCardTraits, listSeperator } = useContext(LanguageContext);
   const {
     filters,
     defaultFilterState,
@@ -137,7 +137,6 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     skillModifiers,
     skillModifiersEnabled,
   } = filters;
-
   const selectedPacksText = useMemo(() => {
     if (!allPacks || !packNames || !allPacks.length || !packNames.length) {
       return t`Packs: All`;
@@ -178,9 +177,9 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
         parts.push(pack.name);
       }
     });
-    const allPacksString = parts.join(', ');
+    const allPacksString = parts.join(listSeperator);
     return t`Packs: ${allPacksString}`;
-  }, [packNames, allPacks]);
+  }, [packNames, allPacks, listSeperator]);
 
   const enemyFilterText = useMemo(() => {
     const parts = [];
@@ -243,9 +242,10 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     if (parts.length === 0) {
       return t`Enemies: All`;
     }
-    const searchParts = parts.join(', ');
+    const searchParts = parts.join(listSeperator);
     return t`Enemies: ${searchParts}`;
   }, [
+    listSeperator,
     enemyElite,
     enemyNonElite,
     enemyHunter,
@@ -281,10 +281,10 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
       parts.push(rangeText(t`Sanity`, assetSanity));
     }
     if (uses.length) {
-      parts.push(listText(t`Uses`, uses));
+      parts.push(listText(t`Uses`, uses, listSeperator));
     }
     if (slots.length) {
-      parts.push(listText(t`Slots`, slots, slotsTranslations()));
+      parts.push(listText(t`Slots`, slots, listSeperator, slotsTranslations()));
     }
     if (skillModifiersEnabled) {
       const modifiers: string[] = [];
@@ -300,14 +300,14 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
       if (skillModifiers.willpower) {
         modifiers.push(t`Willpower`);
       }
-      parts.push(listText(t`Boost`, modifiers));
+      parts.push(listText(t`Boost`, modifiers, listSeperator));
     }
     if (parts.length === 0) {
       return t`Assets: All`;
     }
-    const searchParts = parts.join(', ');
+    const searchParts = parts.join(listSeperator);
     return t`Assets: ${searchParts}`;
-  }, [assetHealthEnabled, assetHealth, assetSanityEnabled, assetSanity, uses, slots, skillModifiersEnabled, skillModifiers]);
+  }, [assetHealthEnabled, assetHealth, assetSanityEnabled, assetSanity, uses, slots, skillModifiersEnabled, skillModifiers, listSeperator]);
   const locationFilterText = useMemo(() => {
     const parts = [];
     if (cluesEnabled) {
@@ -327,16 +327,9 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     if (parts.length === 0) {
       return t`Locations: All`;
     }
-    const searchParts = parts.join(', ');
+    const searchParts = parts.join(listSeperator);
     return t`Locations: ${searchParts}`;
-  }, [
-    shroud,
-    shroudEnabled,
-    clues,
-    cluesEnabled,
-    cluesFixed,
-    hauntedEnabled,
-  ]);
+  }, [listSeperator, shroud, shroudEnabled, clues, cluesEnabled, cluesFixed, hauntedEnabled]);
   const { allFactions, hasXp, hasWeakness, hasCost, hasSkill, hasEnemy, hasLocation } = cardFilterData;
   const { backgroundStyle, borderStyle, width } = useContext(StyleContext);
   const {

@@ -330,6 +330,7 @@ export default class Card {
   public clues?: number;
   @Column('integer', { nullable: true })
   public shroud?: number;
+  @Column('boolean', { nullable: true })
   public clues_fixed?: boolean;
   @Column('integer', { nullable: true })
   public doom?: number;
@@ -574,7 +575,7 @@ export default class Card {
     ));
   }
 
-  traumaString(traumaData?: TraumaAndCardData) {
+  traumaString(listSeperator: string, traumaData?: TraumaAndCardData) {
     if (!traumaData) {
       return t`None`;
     }
@@ -594,7 +595,7 @@ export default class Card {
     if (!parts.length) {
       return t`None`;
     }
-    return parts.join(', ');
+    return parts.join(listSeperator);
   }
 
   realCost(linked?: boolean) {

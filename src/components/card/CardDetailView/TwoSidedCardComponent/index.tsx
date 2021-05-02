@@ -234,6 +234,7 @@ export default function TwoSidedCardComponent(props: Props) {
     const doom = num(card.doom);
     const shroud = num(card.shroud);
     const clues = num(card.clues);
+    console.log(card);
     const perInvestigatorClues = (card.clues && card.clues > 0 && !card.clues_fixed) ?
       <ArkhamIcon key="per_investigator" name="per_investigator" size={12} color={colors.darkText} /> :
       '';

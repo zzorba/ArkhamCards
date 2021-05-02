@@ -6,6 +6,7 @@ import { t } from 'ttag';
 import { SearchSelectProps } from '@components/cardlist/SearchMultiSelectView';
 import StyleContext from '@styles/StyleContext';
 import NavButton from '@components/core/NavButton';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   componentId: string;
@@ -29,6 +30,7 @@ export default function FixedSetChooserButton({
   allValues,
 }: Props) {
   const { colors } = useContext(StyleContext);
+  const { listSeperator } = useContext(LanguageContext);
   const reversedValues = useMemo(() => {
     const reversed: { [key: string]: string } = {};
     forEach(allValues, (value, key) => {
@@ -75,8 +77,8 @@ export default function FixedSetChooserButton({
     setPressed(false);
   }, [allValues, colors, componentId, title, setPressed, onChange, selection]);
   const selectedDescription = useMemo(
-    () => selection && selection.length ? map(selection, item => allValues[item]).join(', ') : t`All`,
-    [allValues, selection]
+    () => selection && selection.length ? map(selection, item => allValues[item]).join(listSeperator) : t`All`,
+    [allValues, selection, listSeperator]
   );
   return (
     <NavButton

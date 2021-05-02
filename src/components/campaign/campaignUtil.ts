@@ -9,7 +9,8 @@ export function campaignToText(
   campaign: Campaign,
   latestDeckIds: number[],
   decks: DecksMap,
-  investigators: CardsMap
+  investigators: CardsMap,
+  listSeperator: string
 ) {
   const lines: string[] = [];
   lines.push(campaign.name);
@@ -56,7 +57,7 @@ export function campaignToText(
     } else {
       lines.push(`Deck: https://arkhamdb.com/deck/view/${deck.id}`);
     }
-    lines.push(`Trauma: ${investigator.traumaString(campaign.investigatorData?.[investigator.code])}`);
+    lines.push(`Trauma: ${investigator.traumaString(listSeperator, campaign.investigatorData?.[investigator.code])}`);
     forEach(campaignNotes?.investigatorNotes?.sections || [], section => {
       lines.push(`${section.title}:`);
       const notes = section.notes[investigator.code] || [];
