@@ -82,7 +82,7 @@ export async function decks(existingLastModified?: string): Promise<DecksRespons
   return result;
 }
 
-export async function loadDeck(id: number): Promise<Deck> {
+export async function loadDeck(id: number): Promise<ArkhamDbDeck> {
   const accessToken = await getAccessToken();
   if (!accessToken) {
     throw new Error('badAccessToken');
@@ -156,8 +156,8 @@ export async function newCustomDeck(
   );
 }
 
-export async function newDeck(investigator: string, name: string, tabooSetId?: number) {
-  const accessToken = getAccessToken();
+export async function newDeck(investigator: string, name: string, tabooSetId?: number): Promise<ArkhamDbDeck> {
+  const accessToken = await getAccessToken();
   if (!accessToken) {
     throw new Error('badAccessToken');
   }
@@ -181,7 +181,7 @@ export async function newDeck(investigator: string, name: string, tabooSetId?: n
   if (!json.success) {
     throw new Error(json.msg);
   }
-  return loadDeck(json.msg);
+  return await loadDeck(json.msg);
 }
 
 export async function saveDeck(
