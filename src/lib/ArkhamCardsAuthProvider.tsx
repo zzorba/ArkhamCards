@@ -32,6 +32,7 @@ interface State {
 }
 
 export default function ArkhamCardsAuthProvider({ children }: Props) {
+  const arkhamDb = useSelector((state: AppState) => state.signedIn.status);
   const arkhamDbUser = useSelector((state: AppState) => state.signedIn.status ? state.decks.arkhamDbUser : undefined);
   const [state, setState] = useState<State>({
     user: currentUser,
@@ -92,8 +93,9 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
     return {
       ...state,
       arkhamDbUser,
+      arkhamDb,
     };
-  }, [state, arkhamDbUser])
+  }, [state, arkhamDbUser, arkhamDb])
   return (
     <ArkhamCardsAuthContext.Provider value={context}>
       { children }
