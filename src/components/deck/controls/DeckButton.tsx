@@ -65,21 +65,21 @@ const ICON_SIZE: { [icon: string]: number | undefined } = {
   'plus-button': 32,
   'minus-button': 32,
   'right-arrow': 32,
+  'plus-thin': 24,
+  'check-thin': 30,
   weakness: 24,
   'card-outline': 24,
   tdea: 28,
   tdeb: 28,
   book: 22,
-  'draw': 24,
-  'arkhamdb': 24,
-  'logo': 28,
-  'login': 24,
-  'email': 24,
-  'edit': 24,
+  draw: 24,
+  arkhamdb: 24,
+  logo: 28,
+  login: 24,
+  email: 24,
+  edit: 24,
   upgrade: 34,
-  'plus-thin': 24,
-  'dismiss': 22,
-  'check-thin': 30,
+  dismiss: 22,
 };
 const ICON_SIZE_THIN: { [icon: string]: number | undefined } = {
   upgrade: 26,
@@ -92,7 +92,7 @@ const ICON_STYLE: { [icon: string]: ViewStyle | undefined } = {
   'check-thin': {
     marginTop: -6,
   },
-  'upgrade': {
+  upgrade: {
     marginTop: 0,
   },
 };
@@ -183,12 +183,15 @@ export default function DeckButton({
     }
     return <AppIcon name={icon} size={size} color={theIconColor} />;
   }, [loading, icon, thin, theIconColor]);
-  const height = (detail ? 32 : 20) * fontScale + s * 2 + xs * 2;
+  const topTextHeight = 22 * Math.max(1.0, fontScale);
+  const textHeight = (detail ? 10 : 0) * Math.max(1.0, fontScale) + topTextHeight;
+  const height = textHeight + s * 2 + xs * 2;
   return (
     <Ripple
       disabled={disabled}
       style={[
         {
+          height,
           borderRadius: color === 'dark_gray' || color === 'light_gray' ? 8 : 4,
           backgroundColor: backgroundColors[color],
         },
@@ -213,14 +216,14 @@ export default function DeckButton({
             styles.icon,
             space.marginLeftXs,
             space.marginRightS,
-            thin ? { marginLeft: xs, width: 24, height: height - s * 2 - xs } : { width: 32, height: height - s * 2 - xs },
+            thin ? { marginLeft: xs, width: 28, height: 32 * fontScale } : { width: 32, height: 32 * fontScale },
             loading ? undefined : ICON_STYLE[icon],
           ]}>
             { iconContent }
           </View>
         ) }
         <View style={[styles.column, space.paddingRightS, !icon ? space.paddingLeftS : undefined, shrink ? undefined : styles.grow, space.paddingTopXs]}>
-          <Text numberOfLines={1} ellipsizeMode="clip" style={[detail ? typography.large : typography.cardName, { color: disabled ? disabledTextColor[color] : textColor[color] }]}>
+          <Text numberOfLines={1} ellipsizeMode="clip" style={[detail ? typography.large : typography.cardName, { minHeight: topTextHeight, color: disabled ? disabledTextColor[color] : textColor[color] }]}>
             { title }
           </Text>
           { !!detail && (
