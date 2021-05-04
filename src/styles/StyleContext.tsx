@@ -22,10 +22,12 @@ export interface StyleContextType {
   };
   width: number;
   height: number;
+  justifyContent: boolean;
 }
 
 export const DEFAULLT_STYLE_CONTEXT: StyleContextType = {
   darkMode: false,
+  justifyContent: true,
   width: 100,
   height: 100,
   colors: LIGHT_THEME,

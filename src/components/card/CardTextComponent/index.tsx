@@ -285,6 +285,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
           lineHeight: 20 * context.fontScale * sizeScale,
           marginTop: 4,
           marginBottom: 4,
+          textAlign: context.justifyContent ? 'justify' : 'left',
         },
         tableHeaderCell: {
           minHeight: 40,

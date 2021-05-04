@@ -23,7 +23,7 @@ export default function ResultIndicatorIcon({ result }: Props) {
       <MaterialCommunityIcons
         name={result ? 'thumb-up-outline' : 'thumb-down-outline'}
         size={24}
-        color={colors.scenarioGreen}
+        color={result ? colors.scenarioGreen : colors.skill.combat.icon}
       />
     </View>
   );

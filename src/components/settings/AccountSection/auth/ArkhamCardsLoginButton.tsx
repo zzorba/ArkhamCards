@@ -1,33 +1,25 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState, useRef, useReducer } from 'react';
-import { filter, forEach, map, uniq } from 'lodash';
+import React, { useCallback, useContext, useEffect, useMemo, useState, useRef } from 'react';
+import { forEach, map, uniq } from 'lodash';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Input } from 'react-native-elements';
 import { AppleButton, appleAuth, appleAuthAndroid } from '@invertase/react-native-apple-authentication';
 import { GoogleSignin, GoogleSigninButton } from '@react-native-community/google-signin';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import uuid from 'react-native-uuid';
-import { useDispatch, useSelector } from 'react-redux';
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { useDispatch } from 'react-redux';
+import { ThunkAction } from 'redux-thunk';
 import { Action } from 'redux';
-// @ts-ignore TS7016
-import ProgressBar from 'react-native-progress/Bar';
 import { t } from 'ttag';
 
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, useDialog } from '@components/deck/dialogs';
 import space, { s, xs } from '@styles/space';
-import { useFlag, useToggles } from '@components/core/hooks';
+import { useFlag } from '@components/core/hooks';
 import DeckButton from '@components/deck/controls/DeckButton';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { ARKHAM_CARDS_LOGIN, ARKHAM_CARDS_LOGOUT, STANDALONE } from '@actions/types';
-import { AppState, getCampaigns } from '@reducers';
+import { ARKHAM_CARDS_LOGIN, ARKHAM_CARDS_LOGOUT } from '@actions/types';
+import { AppState } from '@reducers';
 import { removeLocalCampaign } from '@components/campaign/actions';
-import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
-import EncounterIcon from '@icons/EncounterIcon';
-import { uploadCampaign } from '@components/campaignguide/actions';
-import { useCreateCampaignActions } from '@data/remote/campaigns';
-import MiniCampaignT from '@data/interfaces/MiniCampaignT';
-import { useDeckActions } from '@data/remote/decks';
 import useCampaignUploadDialog from './useCampaignUploadDialog';
 
 function arkhamCardsLogin(user: string): ThunkAction<void, AppState, unknown, Action<string>> {

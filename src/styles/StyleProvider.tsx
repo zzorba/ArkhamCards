@@ -5,7 +5,7 @@ import { ThemeProvider } from 'react-native-elements';
 import { throttle } from 'lodash';
 
 import StyleContext, { DEFAULLT_STYLE_CONTEXT } from './StyleContext';
-import { getAppFontScale, getThemeOverride } from '@reducers';
+import { AppState, getAppFontScale, getThemeOverride } from '@reducers';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 import typography from './typography';
 import LanguageContext from '@lib/i18n/LanguageContext';
@@ -66,6 +66,7 @@ export default function StyleProvider({ children } : Props) {
   const themeOverride = useSelector(getThemeOverride);
   const appFontScale = useSelector(getAppFontScale);
   const colorScheme = useColorScheme();
+  const justifyContent = useSelector((state: AppState) => !state.settings.leftAlignContent);
   const { fontScale, width: windowWidth, height: windowHeight, scale: windowScale } = useWindowDimensions();
   const { scale: screenScale } = useMemo(() => Dimensions.get('screen'), []);
   const { width, height } = useMemo(() => {
@@ -98,6 +99,7 @@ export default function StyleProvider({ children } : Props) {
       typography: styleTypography,
       colors,
       gameFont,
+      justifyContent,
       italicFont,
       backgroundStyle: {
         backgroundColor: colors.background,
@@ -109,7 +111,7 @@ export default function StyleProvider({ children } : Props) {
         backgroundColor: colors.disableOverlay,
       },
     };
-  }, [darkMode, fontScale, appFontScale, styleTypography, italicFont, colors, gameFont, width, height]);
+  }, [darkMode, fontScale, appFontScale, styleTypography, italicFont, colors, gameFont, width, height, justifyContent]);
   return (
     <StyleContext.Provider value={context}>
       <ThemeProvider theme={darkMode ? DARK_ELEMENTS_THEME : LIGHT_ELEMENTS_THEME}>
