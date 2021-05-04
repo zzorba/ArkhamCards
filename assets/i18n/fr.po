@@ -247,10 +247,10 @@ msgid "Nevermind"
 msgstr "Peu importe"
 
 msgid "Restore campaign data?"
-msgstr "Restaurer les données de campagne ?"
+msgstr "Restaurer les données de Campagne ?"
 
 msgid "Backup campaign data?"
-msgstr "Sauvegarder les données de campagne ?"
+msgstr "Sauvegarder les données de Campagne ?"
 
 msgid "Export Campaign Data"
 msgstr "Exporter les Données de Campagne"
@@ -259,10 +259,10 @@ msgid "Backup"
 msgstr "Sauvegarde"
 
 msgid "Backup Campaign Data"
-msgstr "Sauvegarder les Données de Campagne"
+msgstr "Sauvegarder les données de Campagne"
 
 msgid "Restore Campaign Data"
-msgstr "Restaurer les Données de Campagne"
+msgstr "Restaurer les données de Campagne"
 
 msgid "Caches"
 msgstr "Caches"
@@ -301,7 +301,7 @@ msgid "Error: Check for Cards Again"
 msgstr "Erreur : Vérifier les cartes à nouveau"
 
 msgid "Check ArkhamDB for updates"
-msgstr "Mise à jour ArkhamDB"
+msgstr "Mettre à jour ArkhamDB"
 
 msgid "Card Collection"
 msgstr "Collection de Cartes"
@@ -891,7 +891,7 @@ msgid "My ${ campaign } Campaign"
 msgstr "Ma campagne ${campaign}"
 
 msgid "Include all basic weaknesses from these expansions"
-msgstr "Inclure toutes les faiblesses de base de ces extensions"
+msgstr "Inclure les faiblesses de base de ces extensions."
 
 msgid "Add Log Section"
 msgstr "Ajouter une Section de Journal"
@@ -910,10 +910,10 @@ msgid "No matching campaigns for \"${ search }\"."
 msgstr "Aucune campagne correspondante pour « ${search} »."
 
 msgid "Search campaigns"
-msgstr "Rechercher des campagnes"
+msgstr "Rechercher une campagne"
 
 msgid "Save changes?"
-msgstr "Enregistrer les modifications ?"
+msgstr "Enregistrer ?"
 
 msgid "Looks like you have made some changes that have not been saved."
 msgstr ""
@@ -1262,7 +1262,7 @@ msgstr ""
 "utiliser)."
 
 msgid "Note: not all cards have translations available."
-msgstr "Remarque : toutes les cartes ne disposent pas de traductions disponibles."
+msgstr "Remarque : toutes les cartes ne disposent pas de traductions."
 
 msgid "Taboo List"
 msgstr "Liste des Tabous"
@@ -1308,7 +1308,7 @@ msgid ""
 msgstr ""
 "Pas encore de decks.\n"
 "\n"
-"Utilisez le bouton + pour en créer un nouveau."
+"Utilisez le bouton + pour en créer une nouvelle."
 
 msgid ""
 "This deck does not seem to be part of a campaign yet.\n"
@@ -1393,10 +1393,10 @@ msgstr ""
 "\n"
 "Utilisez le bouton + pour en créer un nouveau.\n"
 "\n"
-"Vous pouvez utiliser cette application pour garder une trace des campagnes, "
-"y compris le traumatisme de l’investigateur, la réserve du Chaos, les "
-"faiblesses de base, les Notes de Campagne et les valeurs d’expérience pour "
-"tous les decks."
+"Vous pouvez utiliser cette application pour garder une trace de vos campagnes, "
+"ainsi que les traumatismes de vos investigateurs, la réserve du Chaos, les "
+"faiblesses de base, les Notes de Campagne et les valeurs d’expérience de "
+"tous vos decks."
 
 msgid "Sort"
 msgstr "Trier"
@@ -1548,7 +1548,7 @@ msgid "Preferences"
 msgstr "Préférences"
 
 msgid "Swipe between card results"
-msgstr "Swiper entre les cartes trouvées"
+msgstr "Balayer les résultats de carte"
 
 msgid "Select Faction"
 msgstr "Sélectionner une classe"
@@ -1936,13 +1936,13 @@ msgstr "Statut de l'Investigateur à la fin du scénario :"
 
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
-msgstr "Passez à <b>${ nextScenarioName }</b>."
+msgstr "Passez au <b>${ nextScenarioName }</b>."
 
 msgid ""
 "Mark the scenarios you've played through to make the results start showing "
 "up in search results."
 msgstr ""
-"Marquer les scenarios que vous avez joués pour permettre la visualisation "
+"Marquez les scenarios déjà joués pour les rendre visibles "
 "dans les résultats de recherche."
 
 msgid "Loading"
@@ -2574,7 +2574,7 @@ msgid "Mental"
 msgstr "Mental"
 
 msgid "Record trauma"
-msgstr "Noter le traumatisme"
+msgstr "Noter un traumatisme"
 
 msgid "Defeated: physical trauma"
 msgstr "Vaincus : traumatisme physique"
@@ -2710,7 +2710,7 @@ msgid " (Per Investigator)"
 msgstr " (Par Investigateur)"
 
 msgid "Use app for scenario setup & resolutions"
-msgstr "Utiliser l'application pour la mise en place et les conclusions"
+msgstr "Utiliser l'application pour la mise en place et les conclusions."
 
 msgid "Track campaign log and resolutions manually"
 msgstr "Gérer le Carnet de Campagne et les conclusions manuellement"
@@ -2832,7 +2832,7 @@ msgid "Unexpected file type"
 msgstr "Type de fichier inattendu"
 
 msgid "Backup Data"
-msgstr "Sauvegarde des Données"
+msgstr "Sauvegarder les données"
 
 msgid "This app expects an Arkham Cards backup file (.acb/.json)"
 msgstr "Cette application attend un ficher de sauvegarde d'Arkham Cards (.acb/.json)"
@@ -3086,7 +3086,7 @@ msgstr "Clair"
 
 #, javascript-format
 msgid "Default (${ systemSchemeName })"
-msgstr "Par defaut (${ systemSchemeName })"
+msgstr "Par défaut (${ systemSchemeName })"
 
 msgid "Theme"
 msgstr "Thème"
@@ -3256,7 +3256,7 @@ msgid "XX-Large"
 msgstr "Très Grand"
 
 msgid "Font Size"
-msgstr "Taille de Police"
+msgstr "Taille de la police"
 
 msgid ""
 "This can be used to make the app font size larger, though it may impact "
@@ -3368,7 +3368,7 @@ msgid "Slot: ${ card.slot }"
 msgstr "Emplacement : ${ card.slot }"
 
 msgid "Search rules"
-msgstr "Rechercher des règles"
+msgstr "Rechercher une règle"
 
 msgid "Signature Weakness"
 msgstr "Faiblesse Signature"
@@ -3771,7 +3771,7 @@ msgstr[0] "${ standalonePackCount } Paquet"
 msgstr[1] "${ standalonePackCount } Paquets"
 
 msgid "Encounter Spoilers"
-msgstr "Spoilers de Rencontre"
+msgstr "Spoilers des cartes Rencontre"
 
 msgid "Support"
 msgstr "Assistance"
@@ -3934,7 +3934,7 @@ msgid "ArkhamDB"
 msgstr "ArkhamDB"
 
 msgid "Narration enabled"
-msgstr "Narration désactivée"
+msgstr "Narration activée"
 
 msgid "Audio narration"
 msgstr "Narration audio"
@@ -4006,7 +4006,7 @@ msgid "You must specify a name for custom campaigns."
 msgstr "Vous devez spécifier un nom pour les campagnes personnalisées."
 
 msgid "Export diagnostic data"
-msgstr "Exporter des données de diagnostic"
+msgstr "Exporter les données de diagnostic"
 
 msgid ""
 "This feature is intended for advanced diagnostics. Just copy the data "
@@ -4082,7 +4082,7 @@ msgid "Note campaign achievements"
 msgstr "Noter les résultats de campagne"
 
 msgid "Complete campaign setup"
-msgstr "Terminer la mise en place de la campagne"
+msgstr "Terminez la mise en place de la campagne"
 
 msgid "Review and draw tokens"
 msgstr "Examinez et piochez des pions Chaos"
@@ -4160,7 +4160,7 @@ msgid "Sealed tokens"
 msgstr "Pions scellés"
 
 msgid "Save XP to deck after making adjustments"
-msgstr "Sauvegarder l'XP du deck après avoir fait des ajustements"
+msgstr "Sauvegarde l'XP du deck après les ajustements."
 
 #, javascript-format
 msgid "${ _spentXp } of ${ _totalXp } spent"
@@ -4212,7 +4212,7 @@ msgid "Whistles"
 msgstr "Sifflets"
 
 msgid "Loading..."
-msgstr ""
+msgstr "Chargement..."
 
 #, javascript-format
 msgid "${ deck.owner.handle } must save this upgrade"
@@ -4226,25 +4226,25 @@ msgid "${ deck.owner.handle } must save this deck"
 msgstr "${ deck.owner.handle } doit sauvegarder ce deck"
 
 msgid "Your friend must save this deck"
-msgstr ""
+msgstr "Votre ami doit sauvegarder ce deck"
 
 msgid "Campaign players"
-msgstr ""
+msgstr "Joueurs de la Campagne"
 
 msgid "Add friends to campaign"
-msgstr ""
+msgstr "Ajouter des amis à la Campagne"
 
 msgid "Add friends"
-msgstr ""
+msgstr "Ajouter des amis"
 
 msgid "Access"
-msgstr ""
+msgstr "Accès"
 
 msgid "Clear card cache"
-msgstr ""
+msgstr "Vider le cache des cartes"
 
 msgid "Later"
-msgstr ""
+msgstr "Plus tard"
 
 msgid ""
 "This appears to be one of your decks from ArkhamDB, however you are not "
@@ -4253,13 +4253,13 @@ msgid ""
 msgstr ""
 
 msgid "Searching cards..."
-msgstr ""
+msgstr "Recherche des cartes..."
 
 msgid "Leave standalone"
-msgstr ""
+msgstr "Quitter le Scénario indépendant"
 
 msgid "Leave campaign"
-msgstr ""
+msgstr "Quitter la campagne"
 
 msgid ""
 "Are you sure you want to leave this standalone?\n"
@@ -4274,13 +4274,13 @@ msgid ""
 msgstr ""
 
 msgid "Leave"
-msgstr ""
+msgstr "Quitter"
 
 msgid "Edit players"
 msgstr ""
 
 msgid "View players"
-msgstr ""
+msgstr "Voir les joueurs"
 
 msgid "Upload standalone"
 msgstr ""
