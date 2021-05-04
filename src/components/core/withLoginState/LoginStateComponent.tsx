@@ -20,7 +20,7 @@ interface Props {
 
 export default function LoginStateComponent({ noWrapper, actions, children }: Props) {
   const { backgroundStyle, colors } = useContext(StyleContext);
-  const { arkhamDbUser } = useContext(ArkhamCardsAuthContext);
+  const { arkhamDb } = useContext(ArkhamCardsAuthContext);
   const error = useSelector((state: AppState) => state.signedIn.error || undefined);
   const loading = useSelector((state: AppState) => state.signedIn.loading);
   const dispatch = useDispatch();
@@ -28,11 +28,11 @@ export default function LoginStateComponent({ noWrapper, actions, children }: Pr
   const doLogin = useCallback(() => dispatch(login(user, actions)), [dispatch, user, actions]);
 
   if (noWrapper) {
-    return children(doLogin, !!arkhamDbUser, error);
+    return children(doLogin, arkhamDb, error);
   }
   return (
     <View style={styles.wrapper}>
-      { children(doLogin, !!arkhamDbUser, error) }
+      { children(doLogin, arkhamDb, error) }
       { !!loading && (
         <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
           <ActivityIndicator

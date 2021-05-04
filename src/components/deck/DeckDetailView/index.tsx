@@ -80,7 +80,7 @@ function DeckDetailView({
   const campaign = useCampaign(campaignId);
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
-  const { user, arkhamDbUser } = useContext(ArkhamCardsAuthContext);
+  const { user, arkhamDbUser, arkhamDb } = useContext(ArkhamCardsAuthContext);
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const parsedDeckObj = useParsedDeckWithFetch(id, componentId, deckActions, initialMode);
   const { showXpAdjustmentDialog, xpAdjustmentDialog } = useAdjustXpDialog(parsedDeckObj);
@@ -541,7 +541,7 @@ function DeckDetailView({
     onValueChange: updateDeckName,
     value: name || '',
   });
-  const authedForEdits: boolean = !!deck && (deck.local || deck.user_id === arkhamDbUser);
+  const authedForEdits: boolean = !!deck && (deck.local || (arkhamDb && !arkhamDbUser) || deck.user_id === arkhamDbUser);
   const editable = !!deckEdits?.editable && authedForEdits;
   const suggestArkhamDbLogin = !!deckEdits?.editable && !authedForEdits;
   const onEditPressed = useCallback(() => {

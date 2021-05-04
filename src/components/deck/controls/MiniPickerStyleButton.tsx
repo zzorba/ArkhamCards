@@ -61,11 +61,9 @@ export default function MiniPickerStyleButton({
             </View>
           </View>
         </View>
-        { !!editable && (
-          <View style={styles.editIcon}>
-            <AppIcon name={icon} size={icon === 'edit' ? 18 : 26} color={colors.M} />
-          </View>
-        ) }
+        <View style={styles.editIcon}>
+          { !!editable && <AppIcon name={icon} size={icon === 'edit' ? 18 : 26} color={colors.M} /> }
+        </View>
       </View>
     </Ripple>
   );

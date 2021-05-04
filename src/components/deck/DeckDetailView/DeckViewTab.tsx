@@ -314,7 +314,7 @@ export default function DeckViewTab(props: Props) {
     deckEditsRef,
     mode,
   } = props;
-  const { arkhamDbUser } = useContext(ArkhamCardsAuthContext);
+  const { arkhamDb } = useContext(ArkhamCardsAuthContext);
   const { backgroundStyle, colors, shadow, typography } = useContext(StyleContext);
   const packInCollection = useSelector(getPacksInCollection);
   const [limitedSlots, toggleLimitedSlots] = useFlag(false);
@@ -673,7 +673,7 @@ export default function DeckViewTab(props: Props) {
           { backgroundColor: COLORS.red },
         ]}>
           <Text style={[space.paddingS, typography.small, typography.white]}>
-            { arkhamDbUser ?
+            { arkhamDb ?
               t`This appears to be one of your decks from ArkhamDB, however you seem to be logged into a differen ArkhamDB account? If you wish to make edits, please login through the app settings.` :
               t`This appears to be one of your decks from ArkhamDB, however you are not currently logged in. If you wish to make edits, please login through the app settings.` }
           </Text>
