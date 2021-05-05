@@ -396,12 +396,12 @@ export default function(
       // Can't update a campaign that doesn't exist.
       return state;
     }
-    if (action.xpType === 'spentXp' && campaign.guided) {
+    if (action.xpType === 'spentXp' && existingCampaign.guided) {
       const investigatorData = existingCampaign.adjustedInvestigatorData?.[action.investigator] || {};
       const campaign: Campaign = {
         ...existingCampaign,
         adjustedInvestigatorData: {
-          ...existingCampaign.adjustedInvestigatorData,
+          ...(existingCampaign.adjustedInvestigatorData || {}),
           [action.investigator]: {
             ...investigatorData,
             [action.xpType]: action.value,
@@ -418,7 +418,7 @@ export default function(
     const campaign: Campaign = {
       ...existingCampaign,
       investigatorData: {
-        ...existingCampaign.investigatorData,
+        ...(existingCampaign.investigatorData || {}),
         [action.investigator]: {
           ...investigatorData,
           [action.xpType]: action.value,

@@ -19,6 +19,7 @@ import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext
 import { useToggles } from '@components/core/hooks';
 import { useDeckActions } from '@data/remote/decks';
 import { SpecialXp } from '@data/scenario/types';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   componentId: string;
@@ -30,6 +31,7 @@ interface Props {
 export default function UpgradeDecksInput({ componentId, id, skipDeckSave, specialXp }: Props) {
   const { latestDecks, campaignState } = useContext(CampaignGuideContext);
   const { scenarioState } = useContext(ScenarioGuideContext);
+  const { listSeperator } = useContext(LanguageContext);
   const { scenarioInvestigators, campaignLog } = useContext(ScenarioStepContext);
   const [unsavedEdits, , setUnsavedEdits] = useToggles({});
   const deckActions = useDeckActions();
@@ -116,7 +118,7 @@ export default function UpgradeDecksInput({ componentId, id, skipDeckSave, speci
             <InvestigatorRow
               key={investigator.code}
               investigator={investigator}
-              description={investigator.traumaString(campaignLog.traumaAndCardData(investigator.code))}
+              description={investigator.traumaString(listSeperator, campaignLog.traumaAndCardData(investigator.code))}
               eliminated
             />
           );

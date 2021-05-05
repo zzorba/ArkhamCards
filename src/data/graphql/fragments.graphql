@@ -44,6 +44,7 @@ fragment MiniDeck on campaign_deck {
 
 fragment BasicDeck on campaign_deck {
   ...MiniDeck
+  arkhamdb_user
   content
   content_hash
 }

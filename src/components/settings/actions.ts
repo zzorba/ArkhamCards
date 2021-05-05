@@ -67,6 +67,15 @@ export function setColorblind(value: boolean): SetMiscSettingAction {
   };
 }
 
+
+export function setLeftAlign(value: boolean): SetMiscSettingAction {
+  return {
+    type: SET_MISC_SETTING,
+    setting: 'left_align',
+    value,
+  };
+}
+
 export function ensureUuid(): EnsureUuidAction {
   return {
     type: ENSURE_UUID,

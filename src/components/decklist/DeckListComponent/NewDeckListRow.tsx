@@ -30,6 +30,7 @@ import ArkhamButtonIcon from '@icons/ArkhamButtonIcon';
 import WarningIcon from '@icons/WarningIcon';
 import { useDeckXpStrings } from '@components/deck/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   lang: string;
@@ -80,6 +81,7 @@ function DeckListRowDetails({
   eliminated,
 }: DetailProps) {
   const { colors, typography } = useContext(StyleContext);
+  const { listSeperator } = useContext(LanguageContext);
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
   const cards = usePlayerCards(deck.deck.taboo_id || 0);
   const parsedDeck = useMemo(() => (!details && deck && cards) ? parseBasicDeck(deck.deck, cards, deck.previousDeck) : undefined, [deck, cards, details]);
@@ -109,7 +111,7 @@ function DeckListRowDetails({
     campaignLines.push(deck.campaign.name);
   }
   if (eliminated) {
-    campaignLines.push(investigator.traumaString(traumaData));
+    campaignLines.push(investigator.traumaString(listSeperator, traumaData));
   } else {
     campaignLines.push(
       ngettext(
@@ -128,7 +130,7 @@ function DeckListRowDetails({
       />
       { eliminated && (
         <Text style={typography.small}>
-          { investigator.traumaString(traumaData) }
+          { investigator.traumaString(listSeperator, traumaData) }
         </Text>
       ) }
       { !!xpString && (

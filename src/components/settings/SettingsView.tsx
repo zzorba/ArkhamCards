@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Linking,
   View,
+  Platform,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
@@ -16,7 +17,7 @@ import FontSizePicker from './FontSizePicker';
 import LanguagePicker from './LanguagePicker';
 import SettingsTabooPicker from './SettingsTabooPicker';
 import { fetchCards } from '@components/card/actions';
-import { setSingleCardView, setAlphabetizeEncounterSets, setColorblind } from './actions';
+import { setSingleCardView, setAlphabetizeEncounterSets, setColorblind, setLeftAlign } from './actions';
 import { prefetch } from '@lib/auth';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { AppState, getLangChoice, getPacksInCollection, getPackSpoilers, getAllPacks } from '@reducers';
@@ -63,6 +64,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
   const alphabetizeEncounterSets = useSelector((state: AppState) => state.settings.alphabetizeEncounterSets || false);
   const colorblind = useSelector((state: AppState) => state.settings.colorblind || false);
   const cardsLoading = useSelector((state: AppState) => state.cards.loading);
+  const justifyContent = useSelector((state: AppState) => !state.settings.leftAlignContent);
   const cardsError = useSelector((state: AppState) => state.cards.error || undefined);
   const { lang } = useContext(LanguageContext);
   const langChoice = useSelector(getLangChoice);
@@ -134,6 +136,10 @@ export default function SettingsView({ componentId }: NavigationProps) {
     dispatch(setColorblind(value));
   }, [dispatch]);
 
+  const justifyContentChanged = useCallback((value: boolean) => {
+    dispatch(setLeftAlign(!value));
+  }, [dispatch]);
+
   const rulesPressed = useCallback(() => {
     navButtonPressed('Rules', t`Rules`);
   }, [navButtonPressed]);
@@ -201,9 +207,17 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 icon="sort-by-alpha"
                 title={t`Alphabetize guide encounter sets`}
                 value={alphabetizeEncounterSets}
-                last={!SHOW_DISSONANT_VOICES}
                 onValueChange={alphabetizeEncounterSetsChanged}
               />
+              { (Platform.OS === 'ios' || (typeof Platform.Version !== 'string' && Platform.Version >= 26)) && (
+                <DeckCheckboxButton
+                  icon="menu"
+                  title={t`Justify text`}
+                  value={justifyContent}
+                  last={!SHOW_DISSONANT_VOICES}
+                  onValueChange={justifyContentChanged}
+                />
+              ) }
               { SHOW_DISSONANT_VOICES && <DissonantVoicesLoginButton showAlert={showAlert} last /> }
             </RoundedFactionBlock>
           </View>

@@ -1,4 +1,4 @@
-import { filter, find, forEach, keys, omit, uniq } from 'lodash';
+import { filter, find, forEach, keys, flatMap, head, omit, uniq } from 'lodash';
 import uuid from 'react-native-uuid';
 
 import {
@@ -38,6 +38,7 @@ interface DecksState {
   replacedLocalIds?: {
     [uuid: string]: DeckId;
   };
+  arkhamDbUser: number | undefined;
   dateUpdated: number | null;
   refreshing: boolean;
   error: string | null;
@@ -47,6 +48,7 @@ interface DecksState {
 const DEFAULT_DECK_STATE: DecksState = {
   all: {},
   replacedLocalIds: {},
+  arkhamDbUser: undefined,
   dateUpdated: null,
   refreshing: false,
   error: null,
@@ -121,6 +123,7 @@ export default function(
     const newUploadedDeck: UploadedDeck = {
       deckId: action.deckId,
       hash: action.hash,
+      nextDeckId: action.nextDeckId,
       campaignId: uniq([
         ...(syncedDecks[action.deckId.uuid]?.campaignId || []),
         action.campaignId,
@@ -143,6 +146,7 @@ export default function(
     const uploadedDeck = existingUploadedDeck && find(existingUploadedDeck.campaignId, id => id.serverId !== action.campaignId.serverId) ? {
       deckId: existingUploadedDeck.deckId,
       hash: existingUploadedDeck.hash,
+      nextDeckId: existingUploadedDeck.nextDeckId,
       campaignId: filter(existingUploadedDeck.campaignId, campaignId => campaignId.serverId !== action.campaignId.serverId),
     } : undefined;
     if (uploadedDeck) {
@@ -164,6 +168,7 @@ export default function(
     });
     return {
       ...DEFAULT_DECK_STATE,
+      arkhamDbUser: action.type === ARKHAMDB_LOGOUT ? undefined : state.arkhamDbUser,
       all,
     };
   }
@@ -201,6 +206,7 @@ export default function(
         }
       }
     });
+    const arkhamDbUser = head(flatMap(action.decks, d => d.user_id ? [d.user_id] : []));
     forEach(action.decks, deck => {
       const deckId = getDeckId(deck);
       all[deckId.uuid] = deck;
@@ -216,7 +222,7 @@ export default function(
     });
     forEach(action.decks, deck => {
       let scenarioCount = 0;
-      let currentDeck = deck;
+      let currentDeck: Deck = deck;
       while (currentDeck && currentDeck.previousDeckId) {
         scenarioCount ++;
         currentDeck = all[currentDeck.previousDeckId.uuid];
@@ -226,6 +232,7 @@ export default function(
     return {
       ...state,
       all,
+      arkhamDbUser,
       dateUpdated: action.timestamp.getTime(),
       lastModified: action.lastModified,
       refreshing: false,

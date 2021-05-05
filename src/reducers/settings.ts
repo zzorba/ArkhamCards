@@ -23,6 +23,7 @@ interface SettingsState {
   lang?: string;
   theme?: 'dark' | 'light';
   fontScale?: number;
+  leftAlignContent?: boolean;
 
   version?: number;
 }
@@ -35,6 +36,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   colorblind: false,
   lang: 'system',
   fontScale: undefined,
+  leftAlignContent: false,
   version: CURRENT_REDUX_VERSION,
 };
 
@@ -90,6 +92,11 @@ export default function(
           return {
             ...state,
             colorblind: action.value,
+          };
+        case 'left_align':
+          return {
+            ...state,
+            leftAlignContent: action.value,
           };
       }
       return state;

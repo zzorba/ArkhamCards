@@ -3,6 +3,7 @@
 mutation insertNewDeck(
   $arkhamdb_id: Int,
   $local_uuid: String,
+  $arkhamdb_user: Int,
   $campaign_id: Int!,
   $investigator: String!,
   $content: jsonb!,
@@ -12,6 +13,7 @@ mutation insertNewDeck(
   insert_campaign_deck_one(
     object: {
       arkhamdb_id: $arkhamdb_id
+      arkhamdb_user: $arkhamdb_user
       local_uuid: $local_uuid
       campaign_id: $campaign_id
       investigator: $investigator
@@ -68,6 +70,7 @@ mutation insertNextLocalDeck(
 mutation insertNextArkhamDbDeck(
   $previous_arkhamdb_id: Int!,
   $arkhamdb_id: Int!,
+  $arkhamdb_user: Int,
   $campaign_id: Int!,
   $investigator: String!,
   $content: jsonb!,
@@ -77,6 +80,7 @@ mutation insertNextArkhamDbDeck(
   insert_campaign_deck_one(
     object: {
       arkhamdb_id: $arkhamdb_id
+      arkhamdb_user: $arkhamdb_user
       local_uuid: null
       investigator: $investigator
       campaign_id: $campaign_id
@@ -109,7 +113,8 @@ mutation updateArkhamDbDeck(
   $arkhamdb_id: Int!,
   $campaign_id: Int!,
   $content: jsonb!,
-  $content_hash: String!
+  $content_hash: String!,
+  $arkhamdb_user: Int
 ) {
   update_campaign_deck(
     where: {
@@ -119,6 +124,7 @@ mutation updateArkhamDbDeck(
   	_set: {
       content: $content
       content_hash: $content_hash
+      arkhamdb_user: $arkhamdb_user
     }
   ) {
     affected_rows
@@ -126,6 +132,7 @@ mutation updateArkhamDbDeck(
       ...IdDeck
       content
       content_hash
+      arkhamdb_user
     }
   }
 }

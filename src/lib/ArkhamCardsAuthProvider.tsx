@@ -30,8 +30,10 @@ interface State {
   user?: FirebaseAuthTypes.User;
   loading: boolean;
 }
+
 export default function ArkhamCardsAuthProvider({ children }: Props) {
   const arkhamDb = useSelector((state: AppState) => state.signedIn.status);
+  const arkhamDbUser = useSelector((state: AppState) => state.signedIn.status ? state.decks.arkhamDbUser : undefined);
   const [state, setState] = useState<State>({
     user: currentUser,
     loading: currentUserLoading,
@@ -90,9 +92,10 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
   const context = useMemo(() => {
     return {
       ...state,
+      arkhamDbUser,
       arkhamDb,
     };
-  }, [state, arkhamDb])
+  }, [state, arkhamDbUser, arkhamDb])
   return (
     <ArkhamCardsAuthContext.Provider value={context}>
       { children }

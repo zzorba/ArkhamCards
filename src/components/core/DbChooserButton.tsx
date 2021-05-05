@@ -27,7 +27,7 @@ interface Props {
 }
 export default function DbChooserButton({ componentId, title, field, onChange, fixedTranslations, selection, indent, query, tabooSetId, processValue, capitalize }: Props) {
   const { db } = useContext(DatabaseContext);
-  const { lang } = useContext(LanguageContext);
+  const { lang, listSeperator } = useContext(LanguageContext);
   const [pressed, setPressed] = useState(false);
 
   const onSelectionChange = useCallback((selection: string[]) => {
@@ -95,8 +95,8 @@ export default function DbChooserButton({ componentId, title, field, onChange, f
     if (!selection || !selection.length) {
       return t`All`;
     }
-    return (fixedTranslations ? map(selection, item => fixedTranslations[item] || item) : selection).join(', ');
-  }, [selection, fixedTranslations]);
+    return (fixedTranslations ? map(selection, item => fixedTranslations[item] || item) : selection).join(listSeperator);
+  }, [selection, fixedTranslations, listSeperator]);
   return (
     <NavButton
       text={`${title}: ${selectedDescription}`}

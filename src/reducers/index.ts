@@ -38,6 +38,7 @@ import {
   getCampaignLastUpdated,
   getLastUpdated,
   UploadedDeck,
+  ArkhamDbDeck,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { ChaosBag } from '@app_constants';
@@ -773,13 +774,15 @@ export const getTrackedQueries = createSelector(
 
 export const getArkhamDbDecks = createSelector(
   (state: AppState) => state.decks.all,
-  (decks: DecksMap) => {
-    const allDecks: Deck[] = [];
+  (state: AppState) => state.decks.refreshing,
+  (state: AppState) => state.decks.error,
+  (decks: DecksMap, refreshing: boolean, error: string | null): [ArkhamDbDeck[], boolean] => {
+    const allDecks: ArkhamDbDeck[] = [];
     forEach(decks, deck => {
       if (!deck.local) {
         allDecks.push(deck);
       }
     });
-    return allDecks;
+    return [allDecks, !!error];
   }
 );

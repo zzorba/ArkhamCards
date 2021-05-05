@@ -108,13 +108,13 @@ export default function(
     large: {
       fontFamily: 'Alegreya-Medium',
       fontSize: Math.ceil(18 * fontScale),
-      lineHeight: Math.ceil(20 * fontScale),
+      lineHeight: Math.ceil((lang === 'zh' ? 22 : 20) * fontScale),
       color: colors.darkText,
     },
     header: {
       fontFamily: 'Alegreya-Medium',
       fontSize: Math.ceil(22 * fontScale),
-      lineHeight: Math.ceil(24 * fontScale),
+      lineHeight: Math.ceil((lang === 'zh' ? 26 : 24) * fontScale),
       color: colors.darkText,
     },
     button: {

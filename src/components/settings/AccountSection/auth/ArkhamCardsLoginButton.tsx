@@ -1,33 +1,26 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState, useRef, useReducer } from 'react';
-import { filter, forEach, map, uniq } from 'lodash';
+import React, { useCallback, useContext, useEffect, useMemo, useState, useRef } from 'react';
+import { forEach, map, uniq } from 'lodash';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Input } from 'react-native-elements';
 import { AppleButton, appleAuth, appleAuthAndroid } from '@invertase/react-native-apple-authentication';
 import { GoogleSignin, GoogleSigninButton } from '@react-native-community/google-signin';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import uuid from 'react-native-uuid';
-import { useDispatch, useSelector } from 'react-redux';
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { useDispatch } from 'react-redux';
+import { ThunkAction } from 'redux-thunk';
 import { Action } from 'redux';
-// @ts-ignore TS7016
-import ProgressBar from 'react-native-progress/Bar';
 import { t } from 'ttag';
 
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, useDialog } from '@components/deck/dialogs';
 import space, { s, xs } from '@styles/space';
-import { useFlag, useToggles } from '@components/core/hooks';
+import { useFlag } from '@components/core/hooks';
 import DeckButton from '@components/deck/controls/DeckButton';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { ARKHAM_CARDS_LOGIN, ARKHAM_CARDS_LOGOUT, STANDALONE } from '@actions/types';
-import { AppState, getCampaigns } from '@reducers';
+import { ARKHAM_CARDS_LOGIN, ARKHAM_CARDS_LOGOUT } from '@actions/types';
+import { AppState } from '@reducers';
 import { removeLocalCampaign } from '@components/campaign/actions';
-import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
-import EncounterIcon from '@icons/EncounterIcon';
-import { uploadCampaign } from '@components/campaignguide/actions';
-import { useCreateCampaignActions } from '@data/remote/campaigns';
-import MiniCampaignT from '@data/interfaces/MiniCampaignT';
-import { useDeckActions } from '@data/remote/decks';
+import useCampaignUploadDialog from './useCampaignUploadDialog';
 
 function arkhamCardsLogin(user: string): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {
@@ -360,153 +353,6 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
   );
 }
 
-function CampaignRow({ campaign, value, onChange, last }: { campaign: MiniCampaignT; value: boolean; last: boolean; onChange: (uuid: string, value: boolean) => void }) {
-  const { colors } = useContext(StyleContext);
-  const uuid = campaign.uuid;
-  const onValueChange = useCallback((value: boolean) => onChange(uuid, !value), [uuid, onChange]);
-  const cycleCode = campaign.cycleCode;
-  const standaloneId = cycleCode === STANDALONE ? campaign.standaloneId : undefined;
-  return (
-    <DeckCheckboxButton
-      icon={(
-        <EncounterIcon
-          encounter_code={standaloneId ? standaloneId.scenarioId : cycleCode}
-          size={22}
-          color={colors.M}
-        />
-      )}
-      title={campaign.name}
-      value={!value}
-      onValueChange={onValueChange}
-      last={last}
-    />
-  );
-}
-
-interface UploadState {
-  total: number;
-  finished: number;
-  completed: boolean;
-}
-
-type UploadDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
-
-function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNode, () => void] {
-  const localCampaigns = useSelector(getCampaigns);
-  const dispatch: UploadDispatch = useDispatch();
-  const { colors, typography, width } = useContext(StyleContext);
-  const [uploadState, updateUploadState] = useReducer(
-    (state: UploadState | undefined, action: { type: 'start'; total: number } | { type: 'finish' } | { type: 'error' }) => {
-      switch (action.type) {
-        case 'start':
-          if (action.total > 0) {
-            return {
-              total: action.total,
-              finished: 0,
-              completed: false,
-            };
-          }
-          return {
-            completed: true,
-            total: 1,
-            finished: 1,
-          };
-        case 'error':
-        case 'finish':
-          if (state) {
-            return {
-              total: state.total,
-              finished: state.finished + 1,
-              completed: (state.finished + 1) >= state.total,
-            };
-          }
-          return undefined;
-      }
-    }, undefined);
-  const [noUpload,, setNoUpload] = useToggles({});
-  const content = useMemo(() => {
-    if (uploadState) {
-      return (
-        <View style={[styles.column, space.paddingBottomS, styles.center]}>
-          <View style={space.paddingS}>
-            <Text style={typography.large}>{t`Uploading`}</Text>
-          </View>
-          <View style={[styles.row, space.paddingBottomS]}>
-            <ProgressBar progress={uploadState.finished / uploadState.total} color={colors.D30} width={width * 0.6} />
-          </View>
-        </View>
-      );
-    }
-    return (
-      <View style={styles.column}>
-        <View style={space.paddingS}>
-          <Text style={typography.text}>
-            { t`Campaigns can be uploaded to your Arkham Cards account.` }
-            { '\n' }
-            { t`Uploaded campaigns will be synced between devices.` }
-          </Text>
-        </View>
-        { map(localCampaigns, (campaign, idx) => (
-          <CampaignRow
-            key={campaign.uuid}
-            campaign={campaign}
-            value={!!noUpload[campaign.uuid]}
-            onChange={setNoUpload}
-            last={idx === localCampaigns.length - 1}
-          />
-        )) }
-      </View>
-    );
-  }, [localCampaigns, setNoUpload, noUpload, typography, uploadState, width, colors]);
-  const createCampaignActions = useCreateCampaignActions();
-  const deckActions = useDeckActions();
-  const uploadCampaigns = useCallback(async() => {
-    if (user) {
-      const uploadCampaigns = filter(localCampaigns, c => !noUpload[c.uuid]);
-      updateUploadState({ type: 'start', total: uploadCampaigns.length });
-      await Promise.all(
-        map(uploadCampaigns, c => {
-          return dispatch(uploadCampaign(createCampaignActions, deckActions, c.id)).then(
-            () => updateUploadState({ type: 'finish' }),
-            () => updateUploadState({ type: 'error' }),
-          );
-        }),
-      );
-    }
-    return true;
-  }, [user, localCampaigns, noUpload, dispatch, updateUploadState, createCampaignActions, deckActions]);
-  const uploading = !!uploadState?.completed;
-  const { dialog, showDialog, setVisible } = useDialog({
-    title: t`Upload campaigns`,
-    alignment: 'center',
-    content,
-    allowDismiss: false,
-    confirm: {
-      title: uploading ? t`Uploading` : t`Upload`,
-      onPress: uploadCampaigns,
-      loading: uploading,
-    },
-    dismiss: {
-      title: t`Later`,
-    },
-  });
-
-  useEffect(() => {
-    if (uploadState && uploadState.completed) {
-      setVisible(false);
-    }
-  }, [setVisible, uploadState]);
-  const maybeShowDialog = useCallback(() => {
-    if (localCampaigns.length) {
-      setTimeout(() => {
-        showDialog();
-      }, 500);
-    }
-  }, [localCampaigns, showDialog]);
-
-  return [dialog, maybeShowDialog];
-}
-
 interface Props {
   showAlert: ShowAlert;
 }
@@ -523,7 +369,6 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
     dispatch(logout());
   }, [dispatch]);
   const [uploadDialog, showUploadDialog] = useCampaignUploadDialog(user);
-
   const logoutPressed = useCallback(() => {
     showAlert(
       t`Sign out of Arkham Cards?`,
@@ -667,8 +512,5 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-  },
-  column: {
-    flexDirection: 'column',
   },
 });

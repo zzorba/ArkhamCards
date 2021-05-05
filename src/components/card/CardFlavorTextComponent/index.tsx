@@ -209,6 +209,7 @@ export default function CardFlavorTextComponent(
           marginTop: 4,
           marginBottom: 4,
           color: color || context.colors.darkText,
+          textAlign: context.justifyContent ? 'justify' : 'left',
         },
       }}
     >

@@ -24,6 +24,7 @@ import { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { usePlayerCards } from '@components/core/hooks';
 import { TINY_PHONE } from '@styles/sizes';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   lang: string;
@@ -73,6 +74,7 @@ function DeckListRowDetails({
   eliminated,
 }: DetailProps) {
   const { colors, typography } = useContext(StyleContext);
+  const { listSeperator } = useContext(LanguageContext);
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
   const cards = usePlayerCards(deck.taboo_id || 0);
   const parsedDeck = useMemo(() => !details && deck && cards && parseBasicDeck(deck, cards, previousDeck), [details, deck, cards, previousDeck]);
@@ -112,7 +114,7 @@ function DeckListRowDetails({
       </Text>
       { eliminated && (
         <Text style={typography.small}>
-          { investigator.traumaString(traumaData) }
+          { investigator.traumaString(listSeperator, traumaData) }
         </Text>
       ) }
       { !!xpString && (

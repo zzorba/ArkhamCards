@@ -21,6 +21,7 @@ export function migrateDecks(
       ...omit(deck, ['local', 'uuid']),
       local: undefined,
       uuid: undefined,
+      user_id: -1,
     };
     const deckId = getDeckId(updatedDeck);
     all[deckId.uuid] = updatedDeck;
