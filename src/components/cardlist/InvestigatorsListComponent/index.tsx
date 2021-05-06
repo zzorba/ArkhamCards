@@ -222,7 +222,7 @@ export default function InvestigatorsListComponent({
         results.push(currentBucket);
       }
       if (i) {
-        if (i.pack_code && cardInCollection(i, in_collection)) {
+        if (i.pack_code && (i.pack_code === 'core' || cardInCollection(i, in_collection))) {
           currentBucket.data.push(i);
         } else {
           nonCollectionCards.push(i);
