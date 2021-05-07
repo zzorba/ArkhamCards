@@ -133,7 +133,7 @@ msgid "Edit Collection"
 msgstr "Modifier la Collection"
 
 msgid "Search decks"
-msgstr "Rechercher des decks"
+msgstr "Rechercher un deck"
 
 #, javascript-format
 msgid "No matching decks for \"${ searchTerm }\"."
@@ -198,7 +198,7 @@ msgid "Faction"
 msgstr "Classe"
 
 msgid "Pack"
-msgstr "Paquet"
+msgstr "Collection"
 
 msgid "Connect to ArkhamDB"
 msgstr "Se connecter à ArkhamDB"
@@ -210,7 +210,7 @@ msgid "Hide ArkhamDB Decks"
 msgstr "Masquer les Decks d’ArkhamDB"
 
 msgid "New Deck"
-msgstr "Nouveau Deck"
+msgstr "Nouveau deck"
 
 msgid "Authorization error"
 msgstr "Erreur d’autorisation"
@@ -306,10 +306,10 @@ msgid "Check ArkhamDB for updates"
 msgstr "Mettre à jour ArkhamDB"
 
 msgid "Card Collection"
-msgstr "Collection de Cartes"
+msgstr "Collection de cartes"
 
 msgid "Spoiler Settings"
-msgstr "Paramètres des Spoilers"
+msgstr "Paramètres des spoilers"
 
 msgid "Elite"
 msgstr "Élite"
@@ -534,13 +534,13 @@ msgstr "Traumatisme"
 
 #, javascript-format
 msgid "${ investigator.firstName }’s Trauma"
-msgstr "Traumatisme de ${investigator.firstName}"
+msgstr "Traumatismes de ${investigator.firstName}"
 
 msgid "Physical Trauma"
-msgstr "Traumatisme Physique"
+msgstr "Traumatismes physiques"
 
 msgid "Mental Trauma"
-msgstr "Traumatisme Mental"
+msgstr "Traumatismes mentaux"
 
 msgid "Killed"
 msgstr "Tué"
@@ -851,7 +851,7 @@ msgid "Campaign"
 msgstr "Campagne"
 
 msgid "New Campaign"
-msgstr "Nouvelle Campagne"
+msgstr "Nouvelle campagne"
 
 msgid "Chaos Bag"
 msgstr "Réserve du Chaos"
@@ -898,7 +898,7 @@ msgid "Difficulty"
 msgstr "Difficulté"
 
 msgid "Create Campaign"
-msgstr "Créer une Campagne"
+msgstr "Créer la campagne"
 
 msgid "Campaigns"
 msgstr "Campagnes"
@@ -1117,8 +1117,8 @@ msgid ""
 "Make a copy of a deck so that you can use it in a different campaign or choose different "
 "upgrades."
 msgstr ""
-"Faites la copie d’un deck afin de pouvoir l’utiliser dans une autre campagne ou de "
-"choisir différentes améliorations."
+"Copie ce deck afin de pouvoir l’utiliser pour une autre campagne ou pour "
+"choisir des améliorations différentes."
 
 msgid "Type"
 msgstr "Type"
@@ -1240,10 +1240,10 @@ msgid ""
 "balance between investigator power and scenario difficulty, and to enforce shifts in "
 "deckbuilding environments over time."
 msgstr ""
-"La liste des tabous est une liste de cartes d’Horreur à Arkham : Le Jeu de Carte "
+"La Liste des Tabous est une liste de cartes d’Horreur à Arkham : Le Jeu de Carte "
 "incluant des restrictions optionnelles de deck ou des modifications de texte. Cette "
 "liste est conçue pour créer un équilibre entre la puissance des investigateurs et la "
-"difficulté des scénarios, et pour contrebalancer les déséquilibres dans la construction "
+"difficulté des scénarios et contrebalancer les déséquilibres dans la construction "
 "des decks au fil du temps."
 
 msgid ""
@@ -1251,8 +1251,8 @@ msgid ""
 "adhere to the restrictions on this list, but if an investigator chooses to do so, they "
 "must do so in full (an investigator cannot pick and choose which restrictions to use)."
 msgstr ""
-"Adhérer à la liste des tabous est complètement facultatif. Les investigateurs ne sont "
-"pas obligés d’adhérer aux restrictions sur cette liste, mais si un investigateur choisit "
+"Adhérer à la Liste des Tabous est complètement facultatif. Les investigateurs ne sont "
+"pas obligés d’adhérer aux restrictions sur cette liste mais si un investigateur choisit "
 "de le faire, il doit le faire intégralement (un investigateur ne peut pas choisir les "
 "restrictions à utiliser)."
 
@@ -1275,10 +1275,10 @@ msgid "Charts"
 msgstr "Graphiques"
 
 msgid "Card Costs"
-msgstr "Coût des Cartes"
+msgstr "Coût des cartes"
 
 msgid "Card Factions"
-msgstr "Classe des Cartes"
+msgstr "Classe des cartes"
 
 msgid "Bonded"
 msgstr "Liée"
@@ -1287,7 +1287,7 @@ msgid "Bound Cards"
 msgstr "Cartes Liées"
 
 msgid "Taboo"
-msgstr "Tabous"
+msgstr "Liste des Tabous"
 
 msgid "Taboo List Changes"
 msgstr "Changements de la Liste des Tabous"
@@ -1664,16 +1664,16 @@ msgid "Bonded Cards (${ count })"
 msgstr "Cartes Liées (${ count })"
 
 msgid "New Name"
-msgstr "Nouveau Nom"
+msgstr "Nouveau nom"
 
 msgid "Game Text"
-msgstr "Texte de Jeu"
+msgstr "Texte de jeu"
 
 msgid "Flavor Text"
-msgstr "Texte d'Ambiance"
+msgstr "Texte d'ambiance"
 
 msgid "Card Backs"
-msgstr "Verso de Carte"
+msgstr "Verso de carte"
 
 msgid "Encounter Cards"
 msgstr "Cartes Rencontre"
@@ -1723,7 +1723,7 @@ msgid "${ xp } (${ adjustment }) XP"
 msgstr "${ xp } (${ adjustment }) XP"
 
 msgid "Draw Simulator"
-msgstr "Simulateur de Pioche"
+msgstr "Simulateur de pioche"
 
 msgid "Available XP"
 msgstr "XP disponible(s)"
@@ -1747,16 +1747,16 @@ msgid "Succeed By 3 or More"
 msgstr "Réussite avec une différence de 3 ou plus"
 
 msgid "Change Scenario"
-msgstr "Changer de Scénario"
+msgstr "Changer de scénario"
 
 msgid "Weakness Set"
-msgstr "Ensemble des Faiblesses"
+msgstr "Ensemble des faiblesses"
 
 msgid "Options"
 msgstr "Options"
 
 msgid "Deck Cards"
-msgstr "Cartes du Deck"
+msgstr "Cartes du deck"
 
 msgid "Save changes before upgrading"
 msgstr "Sauvegarder les modifications avant d'améliorer"
@@ -1924,7 +1924,7 @@ msgid ""
 "Mark the scenarios you've played through to make the results start showing up in search "
 "results."
 msgstr ""
-"Marquez les scenarios déjà joués pour les rendre visibles "
+"Marquer les scenarios déjà joués pour les rendre visibles "
 "dans les résultats de recherche."
 
 msgid "Loading"
@@ -1957,7 +1957,7 @@ msgid "The investigators must decide (choose one):"
 msgstr "Les investigateurs doivent décider (choisissez-en un) :"
 
 msgid "Add new investigator"
-msgstr "Ajouter un Investigateur"
+msgstr "Ajouter un investigateur"
 
 #, javascript-format
 msgid "${ supplyName } to use (${ desiredCount })"
@@ -2016,7 +2016,7 @@ msgstr[0] "${ startText } Ce set est reconnaissable à l'icône suivante :"
 msgstr[1] "${ startText } Ces sets sont reconnaissables aux icônes suivantes:"
 
 msgid "Choose Investigators"
-msgstr "Choisissez les Investigateurs"
+msgstr "Choisir les Investigateurs"
 
 msgid "Campaign cards"
 msgstr "Cartes de campagne"
@@ -2671,7 +2671,7 @@ msgid ""
 "If you encounter any problems with the campaign guide system, please let me know at "
 "arkhamcards@gmail.com."
 msgstr ""
-"Si vous rencontrez un problème avec le Guide de Campagne, faites-le moi savoir ici : "
+"Si vous rencontrez un problème avec le Guide de Campagne, envoyez un message à l'adresse : "
 "arkhamcards@gmail.com."
 
 #, javascript-format
@@ -2735,7 +2735,7 @@ msgid "Select resolution"
 msgstr "Choisir une conclusion"
 
 msgid "Contact us"
-msgstr "Contactez-nous"
+msgstr "Contact"
 
 #, javascript-format
 msgid "${ count } resupply"
@@ -2776,7 +2776,7 @@ msgid "Unexpected file type"
 msgstr "Type de fichier inattendu"
 
 msgid "Backup Data"
-msgstr "Sauvegarder les données"
+msgstr "Sauvegarde des données"
 
 msgid "This app expects an Arkham Cards backup file (.acb/.json)"
 msgstr "Cette application attend un ficher de sauvegarde d'Arkham Cards (.acb/.json)"
@@ -3325,25 +3325,25 @@ msgid "Version to copy"
 msgstr "Version à copier"
 
 msgid "Updated Monday"
-msgstr "Mis à jour Lundi"
+msgstr "Mis à jour lundi"
 
 msgid "Updated Tuesday"
-msgstr "Mis à jour Mardi"
+msgstr "Mis à jour mardi"
 
 msgid "Updated Wednesday"
-msgstr "Mis à jour Mercredi"
+msgstr "Mis à jour mercredi"
 
 msgid "Updated Thursday"
-msgstr "Mis à jour Jeudi"
+msgstr "Mis à jour jeudi"
 
 msgid "Updated Friday"
-msgstr "Mis à jour Vendredi"
+msgstr "Mis à jour vendredi"
 
 msgid "Updated Saturday"
-msgstr "Mis à jour Samedi"
+msgstr "Mis à jour samedi"
 
 msgid "Updated Sunday"
-msgstr "Mis à jour Dimanche"
+msgstr "Mis à jour dimanche"
 
 msgid "Books"
 msgstr "Livres"
@@ -4001,7 +4001,7 @@ msgid "Uploaded campaigns will be synced between devices."
 msgstr "Les campagnes envoyées seront synchronisées entre les appareils."
 
 msgid "Review records"
-msgstr "Examinez vos notes"
+msgstr "Examiner vos notes"
 
 msgid "Note campaign achievements"
 msgstr "Noter les résultats de campagne"
@@ -4010,7 +4010,7 @@ msgid "Complete campaign setup"
 msgstr "Terminez la mise en place de la campagne"
 
 msgid "Review and draw tokens"
-msgstr "Examinez et piochez des pions Chaos"
+msgstr "Examiner et piocher des pions Chaos"
 
 msgid "Spent experience"
 msgstr "Expérience dépensée"
