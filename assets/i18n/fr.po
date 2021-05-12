@@ -2962,7 +2962,7 @@ msgid "Cache cleared"
 msgstr "Cache vidé"
 
 msgid "Rules"
-msgstr "Règles"
+msgstr "Règles du jeu"
 
 msgid "Encounter Card Errata"
 msgstr "Errata de carte Rencontre"
@@ -2974,10 +2974,10 @@ msgid "Show Spoilers"
 msgstr "Afficher les spoilers"
 
 msgid "Scenario FAQ"
-msgstr "FAQ scénario"
+msgstr "FAQ du scénario"
 
 msgid "Interlude FAQ"
-msgstr "FAQ interlude"
+msgstr "FAQ de l'interlude"
 
 #, javascript-format
 msgid "Show ${ nonCollection.length } non-collection card"
@@ -4562,7 +4562,7 @@ msgstr "Caire"
 
 msgctxt "trait"
 msgid "Campsite"
-msgstr "Site du camp"
+msgstr "Campement"
 
 msgctxt "trait"
 msgid "Carnevale"
@@ -4970,7 +4970,7 @@ msgstr "Corps-à-corps"
 
 msgctxt "trait"
 msgid "Mexico City"
-msgstr "Ville de Mexico"
+msgstr "Mexico"
 
 msgctxt "trait"
 msgid "Mi-Go"
@@ -5166,7 +5166,7 @@ msgstr "Rivière"
 
 msgctxt "trait"
 msgid "Riverside"
-msgstr "Bord de la rivière"
+msgstr "Berges"
 
 msgctxt "trait"
 msgid "Road"
@@ -5370,7 +5370,7 @@ msgstr "Ruse"
 
 msgctxt "trait"
 msgid "Unhallowed"
-msgstr "Impudique"
+msgstr "Non Consacré"
 
 msgctxt "trait"
 msgid "Upgrade"
