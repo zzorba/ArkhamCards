@@ -291,14 +291,16 @@ export class CampaignGuideStateRemote implements CampaignGuideStateT {
 }
 
 export function fragmentToDeckId(deck: LatestDeckFragment): DeckId {
-  return deck.arkhamdb_id ? {
+  return deck.arkhamdb_id && deck.arkhamdb_user ? {
     id: deck.arkhamdb_id,
+    arkhamdb_user: deck.arkhamdb_user,
     local: false,
     uuid: `${deck.arkhamdb_id}`,
     serverId: deck.id,
   } : {
     serverId: deck.id,
     id: undefined,
+    arkhamdb_user: undefined,
     local: true,
     uuid: deck.local_uuid || '',
   };

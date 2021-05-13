@@ -360,7 +360,7 @@ interface Props {
 export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   const { darkMode, typography } = useContext(StyleContext);
   const dispatch = useDispatch();
-  const { user, loading } = useContext(ArkhamCardsAuthContext);
+  const { userId, loading } = useContext(ArkhamCardsAuthContext);
   const [emailLogin, toggleEmailLogin, setEmailLogin] = useFlag(false);
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const [mode, setMode] = useState<'login' | 'create' | undefined>();
@@ -368,7 +368,7 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
     await auth().signOut();
     dispatch(logout());
   }, [dispatch]);
-  const [uploadDialog, showUploadDialog] = useCampaignUploadDialog(user);
+  const [uploadDialog, showUploadDialog] = useCampaignUploadDialog(userId);
   const logoutPressed = useCallback(() => {
     showAlert(
       t`Sign out of Arkham Cards?`,
@@ -489,11 +489,11 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   return (
     <View style={[space.paddingTopS, styles.wrapper]}>
       <DeckButton
-        title={user ? t`Sign out` : t`Sign in to app`}
+        title={userId ? t`Sign out` : t`Sign in to app`}
         icon="logo"
         loading={loading}
-        color={user ? 'default' : 'red'}
-        onPress={user ? logoutPressed : showLoginDialog}
+        color={userId ? 'default' : 'red'}
+        onPress={userId ? logoutPressed : showLoginDialog}
       />
       { loginDialog }
       { uploadDialog }

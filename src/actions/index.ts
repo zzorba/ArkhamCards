@@ -18,19 +18,15 @@ import {
   DISSONANT_VOICES_LOGIN,
   DISSONANT_VOICES_LOGIN_ERROR,
   DISSONANT_VOICES_LOGOUT,
+  ArkhamDbDeck,
 } from './types';
 import { AppState, getArkhamDbDecks } from '@reducers';
 
 import { getAccessToken, signInFlow, signOutFlow } from '@lib/auth';
 import * as dissonantVoices from '@lib/dissonantVoices';
 import { decks } from '@lib/authApi';
-import { DeckActions, syncCampaignDecksFromArkhamDB } from '@data/remote/decks';
-import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 
-export function login(
-  user: FirebaseAuthTypes.User | undefined,
-  actions: DeckActions
-): ThunkAction<void, AppState, unknown, Action<string>> {
+export function login(): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch): void => {
     dispatch({
       type: ARKHAMDB_LOGIN_STARTED,
@@ -40,7 +36,7 @@ export function login(
         dispatch({
           type: ARKHAMDB_LOGIN,
         });
-        dispatch(refreshMyDecks(user, actions));
+        dispatch(refreshMyDecks(false));
       } else {
         dispatch({
           type: ARKHAMDB_LOGIN_ERROR,
@@ -141,52 +137,40 @@ function getDecksLastModified(state: AppState): string | undefined {
     undefined;
 }
 
-export function refreshMyDecks(
-  user: FirebaseAuthTypes.User | undefined,
-  actions: DeckActions
-): ThunkAction<void, AppState, unknown, Action<string>> {
-  return (dispatch, getState) => {
+export function refreshMyDecks(cacheArkhamDb: boolean): ThunkAction<Promise<ArkhamDbDeck[]>, AppState, unknown, Action<string>> {
+  return async(dispatch, getState) => {
+    if (cacheArkhamDb) {
+      const [arkhamDbDecks] = getArkhamDbDecks(getState());
+      return arkhamDbDecks;
+    }
     dispatch({
       type: MY_DECKS_START_REFRESH,
     });
-    decks(getDecksLastModified(getState())).then(response => {
+    try {
+      const response = await decks(getDecksLastModified(getState()));
       if (response.cacheHit) {
         dispatch({
           type: MY_DECKS_CACHE_HIT,
           timestamp: new Date(),
         });
-        if (user) {
-          const state = getState();
-          const [arkhamDbDecks] = getArkhamDbDecks(state);
-          syncCampaignDecksFromArkhamDB(
-            arkhamDbDecks,
-            state.decks.syncedDecks || {},
-            actions
-          );
-        }
-      } else {
-        dispatch({
-          type: SET_MY_DECKS,
-          decks: response.decks,
-          lastModified: response.lastModified,
-          timestamp: new Date(),
-        });
-        if (user) {
-          syncCampaignDecksFromArkhamDB(
-            response.decks || [],
-            getState().decks.syncedDecks || {},
-            actions
-          );
-        }
+        const [arkhamDbDecks] = getArkhamDbDecks(getState());
+        return arkhamDbDecks;
       }
-    },
-    error => {
+      dispatch({
+        type: SET_MY_DECKS,
+        decks: response.decks,
+        lastModified: response.lastModified,
+        timestamp: new Date(),
+      });
+      return response.decks || [];
+    } catch(error) {
       console.log(`ERROR: ${error.message || error}`);
       dispatch({
         type: MY_DECKS_ERROR,
         error: error.message || error,
       });
-    });
+      throw new Error(error.message);
+    }
   };
 }
 

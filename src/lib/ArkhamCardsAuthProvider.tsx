@@ -28,6 +28,7 @@ export async function getAuthToken(): Promise<string | undefined> {
 
 interface State {
   user?: FirebaseAuthTypes.User;
+  userId?: string;
   loading: boolean;
 }
 
@@ -36,6 +37,7 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
   const arkhamDbUser = useSelector((state: AppState) => state.signedIn.status ? state.decks.arkhamDbUser : undefined);
   const [state, setState] = useState<State>({
     user: currentUser,
+    userId: currentUser?.uid,
     loading: currentUserLoading,
   });
   useEffect(() => {
@@ -43,6 +45,7 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
       const authUserChanged = (user: FirebaseAuthTypes.User | undefined) => {
         setState({
           user,
+          userId: user?.uid,
           loading: false,
         });
       };

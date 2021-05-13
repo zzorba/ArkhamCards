@@ -457,6 +457,7 @@ export default function(
             if (deckId.uuid === action.localId.uuid) {
               return {
                 id: action.deck.id,
+                arkhamdb_user: action.deck.user_id,
                 local: false,
                 uuid: `${action.deck.id}`,
               };

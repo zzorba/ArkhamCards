@@ -54,7 +54,7 @@ function CampaignDetailView(props: Props) {
   const [countDialog, showCountDialog] = useCountDialog();
   const [campaignId, setCampaignServerId] = useCampaignId(props.campaignId);
   const { backgroundStyle, typography } = useContext(StyleContext);
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
   const campaign = useCampaign(campaignId, true);
@@ -148,17 +148,17 @@ function CampaignDetailView(props: Props) {
   }, [cards, campaign, updateWeaknessAssignedCards, showAlert]);
   const deckActions = useDeckActions();
   const onAddDeck = useCallback(async(deck: Deck) => {
-    await asyncDispatch(addInvestigator(user, deckActions, updateCampaignActions, campaignId, deck.investigator_code, getDeckId(deck)));
+    await asyncDispatch(addInvestigator(userId, deckActions, updateCampaignActions, campaignId, deck.investigator_code, getDeckId(deck)));
     checkForWeaknessPrompt(deck);
-  }, [user, campaignId, deckActions, updateCampaignActions, asyncDispatch, checkForWeaknessPrompt]);
+  }, [userId, campaignId, deckActions, updateCampaignActions, asyncDispatch, checkForWeaknessPrompt]);
 
   const onAddInvestigator = useCallback((card: Card) => {
-    dispatch(addInvestigator(user, deckActions, updateCampaignActions, campaignId, card.code));
-  }, [user, campaignId, deckActions, updateCampaignActions, dispatch]);
+    dispatch(addInvestigator(userId, deckActions, updateCampaignActions, campaignId, card.code));
+  }, [userId, campaignId, deckActions, updateCampaignActions, dispatch]);
 
   const onRemoveInvestigator = useCallback((investigator: Card, removedDeckId?: DeckId) => {
-    dispatch(removeInvestigator(user, updateCampaignActions, campaignId, investigator.code, removedDeckId));
-  }, [user, updateCampaignActions, campaignId, dispatch]);
+    dispatch(removeInvestigator(userId, updateCampaignActions, campaignId, investigator.code, removedDeckId));
+  }, [userId, updateCampaignActions, campaignId, dispatch]);
 
   const showChooseDeck = useCallback((
     singleInvestigator?: Card,

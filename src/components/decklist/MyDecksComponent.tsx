@@ -24,6 +24,8 @@ import { useMyDecks } from '@data/hooks';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import ConnectionProblemBanner from '@components/core/ConnectionProblemBanner';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { useDeckActions } from '@data/remote/decks';
 
 interface OwnProps {
   deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
@@ -43,8 +45,9 @@ function MyDecksComponent({
   customFooter,
   login,
   signedIn,
-  deckActions,
 }: Props) {
+  const deckActions = useDeckActions();
+  const { userId, arkhamDb } = useContext(ArkhamCardsAuthContext);
   const { typography, width } = useContext(StyleContext);
   const reLogin = useCallback(() => {
     login();
@@ -57,18 +60,17 @@ function MyDecksComponent({
     error,
   }, onRefresh] = useMyDecks(deckActions);
 
-
   useEffect(() => {
+    console.log(`MyDecks: user: ${userId}, arkhamDb: ${arkhamDb}`);
     const now = new Date();
-    if ((!myDecks ||
-      myDecks.length === 0 ||
-      !myDecksUpdated ||
-      (myDecksUpdated.getTime() / 1000 + 600) < (now.getTime() / 1000)
-    ) && signedIn) {
-      onRefresh();
-    }
+    const cacheArkhamDb = !((!myDecks || myDecks.length === 0 || !myDecksUpdated || (myDecksUpdated.getTime() / 1000 + 600) < (now.getTime() / 1000)) && signedIn);
+    onRefresh(cacheArkhamDb);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [userId, arkhamDb]);
+
+  const doRefresh = useCallback(() => {
+    onRefresh(false);
+  }, [onRefresh]);
 
   const signInFooter = useMemo(() => {
     if (signedIn) {
@@ -125,7 +127,7 @@ function MyDecksComponent({
       deckIds={deckIds}
       deckClicked={deckClicked}
       deckToCampaign={deckToCampaign}
-      onRefresh={signedIn ? onRefresh : undefined}
+      onRefresh={signedIn || userId ? doRefresh : undefined}
       refreshing={refreshing}
       isEmpty={myDecks.length === 0}
     />

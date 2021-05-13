@@ -36,13 +36,13 @@ interface Props {
 type Dispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
 export default function UploadCampaignButton({ componentId, campaign, campaignId, deckActions, standalone, setCampaignServerId, setCampaignLinkedServerId, showAlert }: Props) {
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected }] = useNetworkStatus();
   const [uploading, setUploading] = useState(false);
   const dispatch: Dispatch = useDispatch();
   const createCampaignActions = useCreateCampaignActions();
   const confirmUploadCampaign = useCallback(async() => {
-    if (!uploading && user && !campaignId.serverId) {
+    if (!uploading && userId && !campaignId.serverId) {
       setUploading(true);
       try {
         const newCampaignId = await dispatch(uploadCampaign(createCampaignActions, deckActions, campaignId));
@@ -57,9 +57,9 @@ export default function UploadCampaignButton({ componentId, campaign, campaignId
       setUploading(false);
     }
   }, [dispatch, setCampaignServerId, setCampaignLinkedServerId, setUploading, showAlert,
-    createCampaignActions, user, uploading, deckActions, campaignId]);
+    createCampaignActions, userId, uploading, deckActions, campaignId]);
 
-  const isOwner = !!(campaign?.owner_id && user && campaignId.serverId && campaign.owner_id === user.uid);
+  const isOwner = !!(campaign?.owner_id && userId && campaignId.serverId && campaign.owner_id === userId);
   const editAccessPressed = useCallback(() => {
     if (campaignId.serverId) {
       Navigation.push<CampaignAccessProps>(componentId, {
@@ -83,7 +83,7 @@ export default function UploadCampaignButton({ componentId, campaign, campaignId
       });
     }
   }, [componentId, campaignId, isOwner]);
-  if (!user) {
+  if (!userId) {
     return null;
   }
   if (campaignId.serverId) {

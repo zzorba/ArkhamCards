@@ -56,12 +56,14 @@ export interface LocalDeckId {
   local: true;
   uuid: string;
   serverId?: number;
+  arkhamdb_user: undefined;
 }
 export interface ArkhamDbDeckId {
   id: number;
   local: false;
   uuid: string;
   serverId?: number;
+  arkhamdb_user: number;
 }
 export type DeckId = LocalDeckId | ArkhamDbDeckId;
 
@@ -129,12 +131,14 @@ export function getDeckId(deck: Deck): DeckId {
   if (deck.local) {
     return {
       id: undefined,
+      arkhamdb_user: undefined,
       local: true,
       uuid: deck.uuid,
     };
   }
   return {
     id: deck.id,
+    arkhamdb_user: deck.user_id,
     local: false,
     uuid: `${deck.id}`,
   };
@@ -657,6 +661,9 @@ export interface UploadedDeck {
   nextDeckId: DeckId | undefined;
   campaignId: UploadedCampaignId[];
 }
+export interface GroupedUploadedDecks {
+  [uuid: string]: UploadedDeck | undefined;
+}
 export const UPLOAD_DECK = 'UPLOAD_DECK';
 export interface UploadDeckAction {
   type: typeof UPLOAD_DECK;
@@ -676,9 +683,7 @@ export interface RemoveUploadDeckAction {
 export const SET_UPLOADED_DECKS = 'SET_UPLOADED_DECKS';
 export interface SetUploadedDecksAction {
   type: typeof SET_UPLOADED_DECKS;
-  uploadedDecks: {
-    [uuid: string]: UploadedDeck | undefined;
-  };
+  uploadedDecks: GroupedUploadedDecks;
 }
 
 export const DELETE_DECK = 'DELETE_DECK';

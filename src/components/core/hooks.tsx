@@ -548,16 +548,16 @@ export function useCampaignScenarios(campaign: SingleCampaignT | undefined): [Sc
 export function useDeckWithFetch(id: DeckId | undefined, actions: DeckActions): LatestDeckT | undefined {
   const deck = useDeck(id, true);
   const dispatch = useDispatch();
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   useEffect(() => {
     if (!deck && id !== undefined && !id.local) {
-      dispatch(fetchPrivateDeck(user, actions, id));
+      dispatch(fetchPrivateDeck(userId, actions, id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     if (!deck?.previousDeck && deck?.deck.previousDeckId && !deck.deck.local && !deck.deck.previousDeckId.local) {
-      dispatch(fetchPrivateDeck(user, actions, deck.deck.previousDeckId));
+      dispatch(fetchPrivateDeck(userId, actions, deck.deck.previousDeckId));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deck]);

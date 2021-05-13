@@ -34,7 +34,7 @@ export default function useCampaignGuideContextFromActions(
   updateCampaignActions: UpdateCampaignActions,
   campaignData?: SingleCampaignGuideData
 ): CampaignGuideContextType | undefined {
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const campaignInvestigators = campaignData?.campaignInvestigators;
   const dispatch = useDispatch();
   const investigators = useInvestigatorCards();
@@ -47,105 +47,105 @@ export default function useCampaignGuideContextFromActions(
   }, [campaignId, campaignChooseDeck, campaignInvestigators]);
   const remoteGuideActions = useGuideActions();
   const setBinaryAchievement = useCallback((achievementId: string, value: boolean) => {
-    dispatch(guideActions.setBinaryAchievement(user, remoteGuideActions, campaignId, achievementId, value));
-  }, [dispatch, user, remoteGuideActions, campaignId]);
+    dispatch(guideActions.setBinaryAchievement(userId, remoteGuideActions, campaignId, achievementId, value));
+  }, [dispatch, userId, remoteGuideActions, campaignId]);
 
   const incCountAchievement = useCallback((achievementId: string, max?: number) => {
-    dispatch(guideActions.incCountAchievement(user, remoteGuideActions, campaignId, achievementId, max));
-  }, [dispatch, user, remoteGuideActions, campaignId]);
+    dispatch(guideActions.incCountAchievement(userId, remoteGuideActions, campaignId, achievementId, max));
+  }, [dispatch, userId, remoteGuideActions, campaignId]);
 
   const decCountAchievement = useCallback((achievementId: string) => {
-    dispatch(guideActions.decCountAchievement(user, remoteGuideActions, campaignId, achievementId));
-  }, [dispatch, user, remoteGuideActions, campaignId]);
+    dispatch(guideActions.decCountAchievement(userId, remoteGuideActions, campaignId, achievementId));
+  }, [dispatch, userId, remoteGuideActions, campaignId]);
 
   const removeDeck = useCallback((
     deckId: DeckId,
     investigator: string
   ) => {
-    dispatch(campaignActions.removeInvestigator(user, updateCampaignActions, campaignId, investigator, deckId));
-  }, [dispatch, campaignId, user, updateCampaignActions]);
+    dispatch(campaignActions.removeInvestigator(userId, updateCampaignActions, campaignId, investigator, deckId));
+  }, [dispatch, campaignId, userId, updateCampaignActions]);
 
   const removeInvestigator = useCallback((investigator: Card) => {
-    dispatch(campaignActions.removeInvestigator(user, updateCampaignActions, campaignId, investigator.code));
-  }, [dispatch, campaignId, user, updateCampaignActions]);
+    dispatch(campaignActions.removeInvestigator(userId, updateCampaignActions, campaignId, investigator.code));
+  }, [dispatch, campaignId, userId, updateCampaignActions]);
 
   const startScenario = useCallback((scenarioId: string) => {
-    dispatch(guideActions.startScenario(user, remoteGuideActions, campaignId, scenarioId));
-  }, [dispatch, campaignId, remoteGuideActions, user]);
+    dispatch(guideActions.startScenario(userId, remoteGuideActions, campaignId, scenarioId));
+  }, [dispatch, campaignId, remoteGuideActions, userId]);
 
   const startSideScenario = useCallback((scenario: GuideStartSideScenarioInput | GuideStartCustomSideScenarioInput) => {
-    dispatch(guideActions.startSideScenario(user, remoteGuideActions, campaignId, scenario));
-  }, [dispatch, campaignId, remoteGuideActions, user]);
+    dispatch(guideActions.startSideScenario(userId, remoteGuideActions, campaignId, scenario));
+  }, [dispatch, campaignId, remoteGuideActions, userId]);
 
   const setDecision = useCallback((stepId: string, value: boolean, scenarioId?: string) => {
     dispatch(guideActions.setScenarioDecision(
-      user,
+      userId,
       remoteGuideActions,
       campaignId,
       stepId,
       value,
       scenarioId
     ));
-  }, [dispatch, campaignId, remoteGuideActions, user]);
+  }, [dispatch, campaignId, remoteGuideActions, userId]);
 
   const setCount = useCallback((stepId: string, value: number, scenarioId?: string) => {
     dispatch(guideActions.setScenarioCount(
-      user,
+      userId,
       remoteGuideActions,
       campaignId,
       stepId,
       value,
       scenarioId
     ));
-  }, [dispatch, campaignId, remoteGuideActions, user]);
+  }, [dispatch, campaignId, remoteGuideActions, userId]);
 
   const setText = useCallback((stepId: string, value: string, scenarioId?: string) => {
     dispatch(guideActions.setScenarioText(
-      user,
+      userId,
       remoteGuideActions,
       campaignId,
       stepId,
       value,
       scenarioId
     ));
-  }, [dispatch, campaignId, remoteGuideActions, user]);
+  }, [dispatch, campaignId, remoteGuideActions, userId]);
 
   const setSupplies = useCallback((stepId: string, supplyCounts: SupplyCounts, scenarioId?: string) => {
     dispatch(guideActions.setScenarioSupplies(
-      user,
+      userId,
       remoteGuideActions,
       campaignId,
       stepId,
       supplyCounts,
       scenarioId
     ));
-  }, [dispatch, campaignId, remoteGuideActions, user]);
+  }, [dispatch, campaignId, remoteGuideActions, userId]);
 
   const setStringChoices = useCallback((stepId: string, choices: StringChoices, scenarioId?: string) => {
     dispatch(guideActions.setScenarioStringChoices(
-      user,
+      userId,
       remoteGuideActions,
       campaignId,
       stepId,
       choices,
       scenarioId
     ));
-  }, [dispatch, campaignId, remoteGuideActions, user]);
+  }, [dispatch, campaignId, remoteGuideActions, userId]);
 
   const setCampaignLink = useCallback((stepId: string, value: string, scenarioId?: string) => {
     dispatch(guideActions.setCampaignLink(
-      user,
+      userId,
       remoteGuideActions,
       campaignId,
       stepId,
       value,
       scenarioId
     ));
-  }, [dispatch, campaignId, remoteGuideActions, user]);
+  }, [dispatch, campaignId, remoteGuideActions, userId]);
 
   const setNumberChoices = useCallback((stepId: string, choices: NumberChoices, deckId?: DeckId, scenarioId?: string) => {
     dispatch(guideActions.setScenarioNumberChoices(
-      user,
+      userId,
       remoteGuideActions,
       campaignId,
       stepId,
@@ -153,45 +153,45 @@ export default function useCampaignGuideContextFromActions(
       deckId,
       scenarioId
     ));
-  }, [dispatch, campaignId, remoteGuideActions, user]);
+  }, [dispatch, campaignId, remoteGuideActions, userId]);
 
   const setChoice = useCallback((stepId: string, choice: number, scenarioId?: string) => {
     dispatch(guideActions.setScenarioChoice(
-      user,
+      userId,
       remoteGuideActions,
       campaignId,
       stepId,
       choice,
       scenarioId
     ));
-  }, [dispatch, campaignId, remoteGuideActions, user]);
+  }, [dispatch, campaignId, remoteGuideActions, userId]);
 
   const setInterScenarioData = useCallback((investigatorData: InvestigatorTraumaData, scenarioId?: string) => {
     dispatch(guideActions.setInterScenarioData(
-      user,
+      userId,
       remoteGuideActions,
       campaignId,
       investigatorData,
       scenarioId
     ));
-  }, [dispatch, campaignId, remoteGuideActions, user]);
+  }, [dispatch, campaignId, remoteGuideActions, userId]);
 
   const campaignState = campaignData?.campaignState;
   const undo = useCallback((scenarioId: string) => {
     if (campaignState) {
       dispatch(guideActions.undo(
-        user,
+        userId,
         remoteGuideActions,
         campaignId,
         scenarioId,
         campaignState
       ));
     }
-  }, [dispatch, campaignId, campaignState, user, remoteGuideActions]);
+  }, [dispatch, campaignId, campaignState, userId, remoteGuideActions]);
 
   const resetScenario = useCallback((scenarioId: string) => {
-    dispatch(guideActions.resetScenario(user, campaignId, scenarioId));
-  }, [dispatch, user, campaignId]);
+    dispatch(guideActions.resetScenario(userId, campaignId, scenarioId));
+  }, [dispatch, userId, campaignId]);
   const latestDecks = campaignData?.campaign?.latestDecks();
   const decksByInvestigator = useMemo(() => {
     const decksByInvestigator: {
@@ -283,7 +283,7 @@ export default function useCampaignGuideContextFromActions(
           !deepEqual(oldData.storyAssets || [], newData.storyAssets || []) ||
           !deepEqual(oldData.ignoreStoryAssets || [], newData.ignoreStoryAssets || []);
         if (hasChanges) {
-          dispatch(updateCampaignInvestigatorData(user, updateCampaignActions, campaignId, investigator, newData));
+          dispatch(updateCampaignInvestigatorData(userId, updateCampaignActions, campaignId, investigator, newData));
         }
       }
     )
@@ -306,7 +306,7 @@ export default function useCampaignGuideContextFromActions(
     if (!deepEqual(campaign.scenarioResults, scenarioResults)) {
       dispatch(updateCampaignScenarioResults(updateCampaignActions, campaignId, scenarioResults));
     }
-  }, [user, campaign, campaignGuide, campaignId, dispatch, updateCampaignActions]);
+  }, [userId, campaign, campaignGuide, campaignId, dispatch, updateCampaignActions]);
   return useMemo(() => {
     // console.log(`useCampaignGuideContextFromActions campaignId: ${JSON.stringify(campaignId)} campaign: ${!!campaign}, campaignGuide: ${!!campaignGuide}, campaignStateHelper: ${!!campaignStateHelper}, campaignInvestigators: ${!!campaignInvestigators}, cards: ${!!cards}`);
     if (!campaign || !campaignGuide || !campaignStateHelper || !cards || !campaignInvestigators) {

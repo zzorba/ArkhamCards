@@ -143,14 +143,14 @@ export function useUploadLocalDeckRequest(): (
   arkhamDbId: number,
 ) => Promise<void> {
   const apollo = useApolloClient();
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const apiCall = useFunction<UploadLocalDeckData, BasicResponse>('campaign-uploadLocalDeck');
   const cache = apollo.cache;
   return useCallback(async(
     localDeckId: string,
     arkhamDbId: number
   ): Promise<void> => {
-    if (user) {
+    if (userId) {
       try {
         const data = await apiCall({ localDeckId, arkhamDbId });
         if (data.error) {
@@ -158,14 +158,14 @@ export function useUploadLocalDeckRequest(): (
           throw new Error(data.error);
         }
         data.deckIds.forEach(({ campaignId }) => {
-          uploadLocalDeck(cache, campaignId, user.uid, localDeckId, arkhamDbId);
+          uploadLocalDeck(cache, campaignId, userId, localDeckId, arkhamDbId);
         });
       } catch (e) {
         console.log(`Error with local deck upload: ${e.message}`);
         throw e;
       }
     }
-  }, [apiCall, user, cache]);
+  }, [apiCall, userId, cache]);
 }
 
 
@@ -311,26 +311,26 @@ interface DeleteCampaignRequest extends ErrorResponse {
 }
 export function useDeleteCampaignRequest() {
   const client = useApolloClient();
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const apiCall = useFunction<DeleteCampaignRequest, ErrorResponse>('campaign-delete');
   return useCallback(async({ campaignId, serverId }: UploadedCampaignId): Promise<void> => {
-    if (user) {
-      deleteCampaignFromCache(client.cache, user.uid, campaignId);
+    if (userId) {
+      deleteCampaignFromCache(client.cache, userId, campaignId);
     }
     const data = await apiCall({ campaignId, serverId });
     if (data.error) {
       throw new Error(data.error);
     }
-  }, [apiCall, client, user]);
+  }, [apiCall, client, userId]);
 }
 
 export function useLeaveCampaignRequest() {
   const [updateCache, client] = useModifyUserCache();
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const editCampaignAccess = useEditCampaignAccessRequest();
   return useCallback(async(campaignId: UploadedCampaignId): Promise<void> => {
-    if (user) {
-      await editCampaignAccess(campaignId, [user.uid], 'revoke');
+    if (userId) {
+      await editCampaignAccess(campaignId, [userId], 'revoke');
       const targetCampaignId = client.cache.identify({ __typename: 'campaign', id: campaignId.serverId });
       if (targetCampaignId) {
         updateCache({
@@ -342,7 +342,7 @@ export function useLeaveCampaignRequest() {
         });
       }
     }
-  }, [editCampaignAccess, updateCache, client, user]);
+  }, [editCampaignAccess, updateCache, client, userId]);
 }
 
 export type SetCampaignChaosBagAction = (campaignId: UploadedCampaignId, chaosBag: ChaosBag) => Promise<void>;
@@ -472,7 +472,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
   const [updateDifficulty] = useUpdateCampaignDifficultyMutation();
   const [updateGuideVersion] = useUpdateCampaignGuideVersionMutation();
 
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const [insertInvestigator] = useAddCampaignInvestigatorMutation();
   const [deleteInvestigator] = useRemoveCampaignInvestigatorMutation();
   const [deleteInvestigatorDecks] = useDeleteInvestigatorDecksMutation();
@@ -591,7 +591,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
     });
   }, [deleteInvestigator]);
   const removeInvestigatorDeck = useCallback(async(campaignId: UploadedCampaignId, investigator: string) => {
-    if (!user) {
+    if (!userId) {
       return;
     }
     await deleteInvestigatorDecks({
@@ -611,7 +611,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
         },
       },
       variables: {
-        user_id: user.uid,
+        user_id: userId,
         investigator,
         campaign_id: campaignId.serverId,
       },
@@ -620,7 +620,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
       },
       update: optimisticUpdates.deleteInvestigatorDecks.update,
     });
-  }, [deleteInvestigatorDecks, user]);
+  }, [deleteInvestigatorDecks, userId]);
 
   const setInvestigatorTrauma = useCallback(async(campaignId: UploadedCampaignId, investigator: string, trauma: Trauma) => {
     const variables = {

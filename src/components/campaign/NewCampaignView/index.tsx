@@ -81,7 +81,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const cards = usePlayerCards();
   const dispatch = useDispatch();
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
 
   const [name, setName] = useState('');
   const [{ selection, campaign, hasGuide }, setCampaignChoice] = useState<CampaignChoice>({
@@ -230,7 +230,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
     if (selection.type === 'campaign') {
       if (selection.code === TDE) {
         dispatch(newLinkedCampaign(
-          user,
+          userId,
           name || placeholderName,
           TDE,
           TDEA,
@@ -243,7 +243,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       } else {
         // Save to redux.
         dispatch(newCampaign(
-          user,
+          userId,
           name || placeholderName,
           selection.code,
           isGuided ? undefined : difficulty,
@@ -260,7 +260,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       }
     } else {
       dispatch(newStandalone(
-        user,
+        userId,
         name || placeholderName,
         selection.id,
         deckIds,
@@ -272,7 +272,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       ));
     }
     Navigation.pop(componentId);
-  }, [dispatch, showAlert, componentId, campaignLog, chaosBag, placeholderName, name, selection, user,
+  }, [dispatch, showAlert, componentId, campaignLog, chaosBag, placeholderName, name, selection, userId,
     difficulty, selectedDecks, investigatorIds, weaknessPacks, weaknessAssignedCards, isGuided]);
 
   const savePressed = useMemo(() => throttle(onSave, 200), [onSave]);

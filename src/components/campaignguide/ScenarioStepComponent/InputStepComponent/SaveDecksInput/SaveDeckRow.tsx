@@ -57,7 +57,7 @@ function SaveDeckRow({
   actions,
 }: Props) {
   const { colors } = useContext(StyleContext);
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const deckDispatch: DeckDispatch = useDispatch();
   const choiceId = useMemo(() => {
     return computeChoiceId(id, investigator);
@@ -80,9 +80,9 @@ function SaveDeckRow({
         }
       });
       const changes: SaveDeckChanges = { slots };
-      deckDispatch(saveDeckChanges(user, actions, deck.deck, changes) as any).then(saveCampaignLog);
+      deckDispatch(saveDeckChanges(userId, actions, deck.deck, changes) as any).then(saveCampaignLog);
     }
-  }, [deck, user, actions, deckDispatch, storyAssetDeltas, saveCampaignLog]);
+  }, [deck, userId, actions, deckDispatch, storyAssetDeltas, saveCampaignLog]);
 
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);
@@ -130,7 +130,7 @@ function SaveDeckRow({
       return null;
     }
     if (deck) {
-      if (deck.owner && user && deck.owner.id !== user.uid) {
+      if (deck.owner && userId && deck.owner.id !== userId) {
         return (
           <BasicButton
             title={deck.owner.handle ? t`${deck.owner.handle} must save this deck` : t`Your friend must save this deck`}
@@ -148,7 +148,7 @@ function SaveDeckRow({
       );
     }
     return null;
-  }, [choices, editable, deck, user, save]);
+  }, [choices, editable, deck, userId, save]);
 
   const campaignSection = useMemo(() => {
     return (

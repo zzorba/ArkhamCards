@@ -53,7 +53,7 @@ function computeChoiceId(stepId: string, investigator: Card) {
 
 function UpgradeDeckRow({ componentId, skipDeckSave, specialXp, id, campaignState, scenarioState, investigator, deck, campaignLog, actions, setUnsavedEdits, editable }: Props) {
   const { colors, typography } = useContext(StyleContext);
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const deckUpgradeComponent = useRef<DeckUpgradeHandles>();
   const earnedXp = useMemo(() => {
     if (specialXp) {
@@ -394,7 +394,7 @@ function UpgradeDeckRow({ componentId, skipDeckSave, specialXp, id, campaignStat
       );
     }
     if (choices === undefined) {
-      if (deck.owner && user && deck.owner.id !== user.uid) {
+      if (deck.owner && userId && deck.owner.id !== userId) {
         return (
           <View style={[styles.row, space.paddingBottomS]}>
             <DeckButton
@@ -426,7 +426,7 @@ function UpgradeDeckRow({ componentId, skipDeckSave, specialXp, id, campaignStat
         <ArkhamButton variant="outline" grow icon="deck" title={t`View deck`} onPress={viewDeck} />
       </View>
     );
-  }, [deck, editable, investigator, skipDeckSave, user, deckChoice, choices, saving, save, selectDeck, viewDeck]);
+  }, [deck, editable, investigator, skipDeckSave, userId, deckChoice, choices, saving, save, selectDeck, viewDeck]);
 
   const storyCountsForDeck = useMemo(() => {
     if (!deck) {

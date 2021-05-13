@@ -23,6 +23,7 @@ function cleanDeck(apiDeck: ArkhamDbApiDeck): ArkhamDbDeck {
   if (apiDeck.previous_deck) {
     deck.previousDeckId = {
       id: apiDeck.previous_deck,
+      arkhamdb_user: apiDeck.user_id,
       local: false,
       uuid: `${apiDeck.previous_deck}`,
     };
@@ -30,6 +31,7 @@ function cleanDeck(apiDeck: ArkhamDbApiDeck): ArkhamDbDeck {
   if (apiDeck.next_deck) {
     deck.nextDeckId = {
       id: apiDeck.next_deck,
+      arkhamdb_user: apiDeck.user_id,
       local: false,
       uuid: `${apiDeck.next_deck}`,
     };

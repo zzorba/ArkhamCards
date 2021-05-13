@@ -32,56 +32,36 @@ import {
   ArkhamDbDeck,
   ArkhamDbDeckId,
   SET_UPLOADED_DECKS,
-  UploadedDeck,
   SetUploadedDecksAction,
   UploadedCampaignId,
   StartDeckEditAction,
   UPLOAD_DECK,
   LocalDeck,
+  GroupedUploadedDecks,
 } from '@actions/types';
 import { login } from '@actions';
 import { saveDeck, loadDeck, upgradeDeck, newCustomDeck, UpgradeDeckResult, deleteDeck } from '@lib/authApi';
-import { AppState, getArkhamDbDecks, getDeckUploadedCampaigns } from '@reducers/index';
-import { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import { DeckActions, syncCampaignDecksFromArkhamDB } from '@data/remote/decks';
+import { AppState, getDeckUploadedCampaigns } from '@reducers/index';
+import { DeckActions } from '@data/remote/decks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 
+export interface ServerDeck {
+  deckId: DeckId;
+  hash: string | undefined;
+  nextDeckId: DeckId | undefined;
+  campaignId: UploadedCampaignId;
+}
+
 export function setServerDecks(
-  deckIds: {
-    deckId: DeckId;
-    hash: string | undefined;
-    nextDeckId: DeckId | undefined;
-    campaignId: UploadedCampaignId;
-  }[],
-  actions: DeckActions,
-  refresh: boolean
+  uploadedDecks: GroupedUploadedDecks
 ): ThunkAction<void, AppState, unknown, SetUploadedDecksAction> {
-  return async(dispatch, getState) => {
-    const uploadedDecks: { [uuid: string]: UploadedDeck | undefined } = {};
-    forEach(deckIds, deck => {
-      const existing = uploadedDecks[deck.deckId.uuid];
-      uploadedDecks[deck.deckId.uuid] = existing ? {
-        deckId: deck.deckId,
-        nextDeckId: deck.nextDeckId,
-        hash: deck.hash || '',
-        campaignId: [...existing.campaignId, deck.campaignId],
-      } : {
-        deckId: deck.deckId,
-        nextDeckId: deck.nextDeckId,
-        hash: deck.hash || '',
-        campaignId: [deck.campaignId],
-      };
-    });
+  return async(dispatch) => {
     dispatch({ type: SET_UPLOADED_DECKS, uploadedDecks });
-    if (refresh) {
-      const [arkhamDbDecks, loading] = getArkhamDbDecks(getState());
-      syncCampaignDecksFromArkhamDB(arkhamDbDecks, uploadedDecks, actions);
-    }
   };
 }
 
 function setNewDeck(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: DeckActions,
   id: DeckId,
   deck: Deck,
@@ -92,7 +72,7 @@ function setNewDeck(
       id,
       deck,
     });
-    if (deck.previousDeckId && user) {
+    if (deck.previousDeckId && userId) {
       const previousDeckId = deck.previousDeckId;
       const uploads = getDeckUploadedCampaigns(getState(), deck.previousDeckId);
       if (uploads?.campaignId.length) {
@@ -111,7 +91,7 @@ function setNewDeck(
 }
 
 function updateDeck(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: DeckActions,
   id: DeckId,
   deck: Deck,
@@ -124,7 +104,7 @@ function updateDeck(
       deck,
       isWrite,
     });
-    if (user) {
+    if (userId) {
       const uploads = getDeckUploadedCampaigns(getState(), id);
       if (uploads?.campaignId.length) {
         await Promise.all(map(uploads.campaignId, campaignId => actions.updateDeck(deck, campaignId)));
@@ -134,7 +114,7 @@ function updateDeck(
 }
 
 export function removeDeck(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: DeckActions,
   id: DeckId,
   deleteAllVersions?: boolean
@@ -146,7 +126,7 @@ export function removeDeck(
       id,
       deleteAllVersions: !!deleteAllVersions,
     });
-    if (user && uploads?.campaignId.length) {
+    if (userId && uploads?.campaignId.length) {
       await Promise.all(
         map(uploads.campaignId, campaignId => {
           return actions.deleteDeck(id, campaignId, !!deleteAllVersions);
@@ -169,23 +149,23 @@ export function replaceLocalDeck(
 }
 
 export function fetchPrivateDeck(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: DeckActions,
   id: ArkhamDbDeckId
 ): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {
     loadDeck(id.id).then(deck => {
-      dispatch(updateDeck(user, actions, id, deck, false));
+      dispatch(updateDeck(userId, actions, id, deck, false));
     }).catch(err => {
       if (err.message === 'Not Found') {
-        dispatch(removeDeck(user, actions, id));
+        dispatch(removeDeck(userId, actions, id));
       }
     });
   };
 }
 
 export function fetchPublicDeck(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: DeckActions,
   id: ArkhamDbDeckId,
   useDeckEndpoint: boolean
@@ -200,10 +180,10 @@ export function fetchPublicDeck(
         throw new Error(`Unexpected status: ${response.status}`);
       })
       .then(json => {
-        dispatch(updateDeck(user, actions, id, json, false));
+        dispatch(updateDeck(userId, actions, id, json, false));
       }).catch((err: Error) => {
         if (!useDeckEndpoint) {
-          return dispatch(fetchPublicDeck(user, actions, id, true));
+          return dispatch(fetchPublicDeck(userId, actions, id, true));
         }
         console.log(err);
       });
@@ -211,19 +191,19 @@ export function fetchPublicDeck(
 }
 
 const handleUpgradeDeckResult = (
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   createDeckActions: DeckActions,
   result: UpgradeDeckResult,
 ): ThunkAction<void, AppState, unknown, Action<string>> => {
   return (dispatch) => {
-    dispatch(updateDeck(user, createDeckActions, getDeckId(result.deck), result.deck, false));
-    dispatch(setNewDeck(user, createDeckActions, getDeckId(result.upgradedDeck), result.upgradedDeck));
+    dispatch(updateDeck(userId, createDeckActions, getDeckId(result.deck), result.deck, false));
+    dispatch(setNewDeck(userId, createDeckActions, getDeckId(result.upgradedDeck), result.upgradedDeck));
     return Promise.resolve(true);
   };
 };
 
 export const deleteDeckAction = (
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: DeckActions,
   id: DeckId,
   deleteAllVersion: boolean
@@ -231,20 +211,20 @@ export const deleteDeckAction = (
   return (dispatch) => {
     return new Promise<boolean>((resolve, reject) => {
       if (id.local) {
-        dispatch(removeDeck(user, actions, id, deleteAllVersion));
+        dispatch(removeDeck(userId, actions, id, deleteAllVersion));
         resolve(true);
       } else {
         const deleteDeckPromise = deleteDeck(id.id, deleteAllVersion);
         handleAuthErrors(
           deleteDeckPromise,
           () => {
-            dispatch(removeDeck(user, actions, id, deleteAllVersion));
+            dispatch(removeDeck(userId, actions, id, deleteAllVersion));
             resolve(true);
           },
           reject,
           () => null,
           () => {
-            dispatch(login(user, actions));
+            dispatch(login());
           }
         );
       }
@@ -253,7 +233,7 @@ export const deleteDeckAction = (
 };
 
 export const saveDeckUpgrade = (
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: DeckActions,
   deck: Deck,
   xp: number,
@@ -269,7 +249,7 @@ export const saveDeckUpgrade = (
       });
       if (deck.local) {
         const result = upgradeLocalDeck(deck, xp, exileParts);
-        dispatch(handleUpgradeDeckResult(user, actions, result));
+        dispatch(handleUpgradeDeckResult(userId, actions, result));
         resolve(result.upgradedDeck);
       } else {
         const exiles = exileParts.join(',');
@@ -277,7 +257,7 @@ export const saveDeckUpgrade = (
         handleAuthErrors(
           upgradeDeckPromise,
           result => {
-            dispatch(handleUpgradeDeckResult(user, actions, result));
+            dispatch(handleUpgradeDeckResult(userId, actions, result));
             setTimeout(() => {
               resolve(result.upgradedDeck);
             }, 1000);
@@ -285,11 +265,11 @@ export const saveDeckUpgrade = (
           reject,
           // retry
           () => {
-            dispatch(saveDeckUpgrade(user, actions, deck, xp, exileCounts))
+            dispatch(saveDeckUpgrade(userId, actions, deck, xp, exileCounts))
               .then(deck => resolve(deck));
           },
           () => {
-            dispatch(login(user, actions));
+            dispatch(login());
           }
         );
       }
@@ -310,7 +290,7 @@ export interface SaveDeckChanges {
 }
 
 export const saveDeckChanges = (
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: DeckActions,
   deck: Deck,
   changes: SaveDeckChanges,
@@ -330,7 +310,7 @@ export const saveDeckChanges = (
           (changes.meta !== undefined && changes.meta !== null) ? changes.meta : deck.meta,
           (changes.description !== undefined && changes.description !== null) ? changes.description : deck.description_md
         );
-        dispatch(updateDeck(user, actions, getDeckId(newDeck), newDeck, true));
+        dispatch(updateDeck(userId, actions, getDeckId(newDeck), newDeck, true));
         setTimeout(() => {
           resolve(newDeck);
         }, 1000);
@@ -351,17 +331,17 @@ export const saveDeckChanges = (
           savePromise,
           // onSuccess
           (deck: Deck) => {
-            dispatch(updateDeck(user, actions, getDeckId(deck), deck, true));
+            dispatch(updateDeck(userId, actions, getDeckId(deck), deck, true));
             resolve(deck);
           },
           reject,
           () => {
-            dispatch(saveDeckChanges(user, actions, deck, changes))
+            dispatch(saveDeckChanges(userId, actions, deck, changes))
               .then(deck => resolve(deck));
           },
           // login
           () => {
-            dispatch(login(user, actions));
+            dispatch(login());
           }
         );
       }
@@ -381,7 +361,7 @@ export interface NewDeckParams {
   description?: string;
 }
 export const saveNewDeck = (
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: DeckActions,
   params: NewDeckParams
 ): ThunkAction<Promise<Deck>, AppState, unknown, Action<string>> => {
@@ -397,7 +377,7 @@ export const saveNewDeck = (
           params.problem,
           params.description
         );
-        dispatch(setNewDeck(user, actions, getDeckId(deck), deck));
+        dispatch(setNewDeck(userId, actions, getDeckId(deck), deck));
         setTimeout(() => {
           resolve(deck);
         }, 1000);
@@ -416,16 +396,16 @@ export const saveNewDeck = (
           newDeckPromise,
           // onSuccess
           (deck: Deck) => {
-            dispatch(setNewDeck(user, actions, getDeckId(deck), deck));
+            dispatch(setNewDeck(userId, actions, getDeckId(deck), deck));
             resolve(deck);
           },
           reject,
           () => {
-            dispatch(saveNewDeck(user, actions, params)).then(deck => resolve(deck));
+            dispatch(saveNewDeck(userId, actions, params)).then(deck => resolve(deck));
           },
           // login
           () => {
-            dispatch(login(user, actions));
+            dispatch(login());
           }
         );
       }
@@ -434,7 +414,7 @@ export const saveNewDeck = (
 };
 
 export const saveClonedDeck = (
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: DeckActions,
   local: boolean,
   cloneDeck: Deck,
@@ -442,7 +422,7 @@ export const saveClonedDeck = (
 ): ThunkAction<Promise<Deck>, AppState, unknown, Action<string>> => {
   return (dispatch): Promise<Deck> => {
     return new Promise<Deck>((resolve, reject) => {
-      dispatch(saveNewDeck(user, actions, {
+      dispatch(saveNewDeck(userId, actions, {
         local,
         deckName,
         investigatorCode: cloneDeck.investigator_code,
@@ -455,7 +435,7 @@ export const saveClonedDeck = (
       })).then(deck => {
         setTimeout(() => {
           dispatch(saveDeckChanges(
-            user,
+            userId,
             actions,
             deck,
             {
@@ -477,7 +457,7 @@ export const saveClonedDeck = (
 };
 
 export const uploadLocalDeck = (
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: DeckActions,
   replaceLocalDeckRequest: (localDeckId: string, arkhamDbId: number) => Promise<void>,
   localDeck: LocalDeck
@@ -485,7 +465,7 @@ export const uploadLocalDeck = (
   return async(dispatch, getState): Promise<Deck> => {
     const uploads = getDeckUploadedCampaigns(getState(), getDeckId(localDeck));
     const deck = await dispatch(saveClonedDeck(
-      user,
+      userId,
       actions,
       false,
       localDeck,
@@ -493,7 +473,7 @@ export const uploadLocalDeck = (
     ));
     const theDeck = deck as ArkhamDbDeck;
     dispatch(replaceLocalDeck(getDeckId(localDeck), theDeck));
-    if (user && uploads?.campaignId.length) {
+    if (userId && uploads?.campaignId.length) {
       await replaceLocalDeckRequest(localDeck.uuid, theDeck.id);
     }
     return deck;

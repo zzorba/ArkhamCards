@@ -1,8 +1,9 @@
-import React from 'react';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import React from 'react';
 
 interface ArkhamCardsAuthContextType {
   user?: FirebaseAuthTypes.User;
+  userId?: string;
   loading: boolean;
 
   arkhamDb: boolean;

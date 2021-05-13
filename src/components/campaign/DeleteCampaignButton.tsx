@@ -21,17 +21,17 @@ interface Props {
 }
 
 export default function DeleteCampaignButton({ componentId, campaignId, campaign, showAlert, standalone }: Props) {
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
   const deleteServerCampaign = useDeleteCampaignRequest();
   const leaveCampaign = useLeaveCampaignRequest();
   const actuallyDeleteCampaign = useCallback(() => {
-    if (campaignId.serverId && user) {
+    if (campaignId.serverId && userId) {
       deleteServerCampaign(campaignId);
     }
-    dispatch(deleteCampaign(user, campaignId));
+    dispatch(deleteCampaign(userId, campaignId));
     Navigation.pop(componentId);
-  }, [dispatch, componentId, campaignId, deleteServerCampaign, user]);
+  }, [dispatch, componentId, campaignId, deleteServerCampaign, userId]);
   const confirmDeleteCampaign = useCallback(() => {
     const campaignName = campaign?.name || '';
     showAlert(
@@ -64,7 +64,7 @@ export default function DeleteCampaignButton({ componentId, campaignId, campaign
       ],
     );
   }, [standalone, actuallyLeaveCampaign, showAlert]);
-  if (user && campaignId.serverId && campaign && user.uid !== campaign.owner_id) {
+  if (userId && campaignId.serverId && campaign && userId !== campaign.owner_id) {
     return (
       <DeckButton
         icon="delete"

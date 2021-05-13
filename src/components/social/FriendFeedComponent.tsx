@@ -244,9 +244,9 @@ interface Props {
 
 export default function FriendFeedComponent({ componentId, userId, handleScroll, error, searchResults, toFeed }: Props) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId: currentUserId } = useContext(ArkhamCardsAuthContext);
   const [myProfile, loadingMyProfile, refetchMyProfile] = useMyProfile(true);
-  const isSelf = user?.uid === userId;
+  const isSelf = currentUserId === userId;
   const [profile, loading, refetchProfile] = useProfile(userId, isSelf);
   const myFriendStatus = useMemo(() => {
     const status: { [uid: string]: FriendStatus } = {};
@@ -289,8 +289,8 @@ export default function FriendFeedComponent({ componentId, userId, handleScroll,
             user={item.user}
             refetchMyProfile={refetchMyProfile}
             controls={item.controls}
-            status={item.user.id !== user?.uid ? myFriendStatus[item.user.id] || FriendStatus.NONE : undefined}
-            showUser={item.user.id !== user?.uid ? showUser : undefined}
+            status={item.user.id !== currentUserId ? myFriendStatus[item.user.id] || FriendStatus.NONE : undefined}
+            showUser={item.user.id !== currentUserId ? showUser : undefined}
           />
         );
       case 'header':
@@ -312,7 +312,7 @@ export default function FriendFeedComponent({ componentId, userId, handleScroll,
       default:
         return null;
     }
-  }, [user, myFriendStatus, borderStyle, typography, refetchMyProfile, showUser]);
+  }, [currentUserId, myFriendStatus, borderStyle, typography, refetchMyProfile, showUser]);
 
   const data: FriendFeedItem[] = useMemo(() => toFeed(isSelf, profile), [toFeed, isSelf, profile]);
   const searchResultsError = searchResults?.error;

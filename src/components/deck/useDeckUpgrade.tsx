@@ -20,15 +20,15 @@ export default function useDeckUpgrade(
   actions: DeckActions,
   upgradeCompleted: (deck: Deck, xp: number) => void,
 ): [boolean, string | undefined, SaveDeckUpgrade] {
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const deckDispatch: DeckDispatch = useDispatch();
   const doSaveDeckChanges = useCallback((deck: Deck, changes: SaveDeckChanges): Promise<Deck> => {
-    return deckDispatch(saveDeckChanges(user, actions, deck, changes) as any);
-  }, [deckDispatch, actions, user]);
+    return deckDispatch(saveDeckChanges(userId, actions, deck, changes) as any);
+  }, [deckDispatch, actions, userId]);
 
   const doSaveDeckUpgrade = useCallback((deck: Deck, xp: number, exileCounts: Slots): Promise<Deck> => {
-    return deckDispatch(saveDeckUpgrade(user, actions, deck, xp, exileCounts) as any);
-  }, [deckDispatch, actions, user]);
+    return deckDispatch(saveDeckUpgrade(userId, actions, deck, xp, exileCounts) as any);
+  }, [deckDispatch, actions, userId]);
 
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | undefined>();

@@ -467,7 +467,7 @@ export function useUploadLocalDeckDialog(
   uploadLocalDeckDialog: React.ReactNode;
   uploadLocalDeck: () => void;
 } {
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const replaceLocalDeckRequest = useUploadLocalDeckRequest();
   const { saving, setSaving, savingDialog } = useBasicDialog(t`Uploading deck`);
   const deckDispatch: DeckDispatch = useDispatch();
@@ -477,13 +477,13 @@ export function useUploadLocalDeckDialog(
     }
     if (!saving || isRetry) {
       setSaving(true);
-      deckDispatch(uploadLocalDeck(user, actions, replaceLocalDeckRequest, deck)).then(() => {
+      deckDispatch(uploadLocalDeck(userId, actions, replaceLocalDeckRequest, deck)).then(() => {
         setSaving(false);
       }, () => {
         setSaving(false);
       });
     }
-  }, 200), [deckDispatch, replaceLocalDeckRequest, setSaving, saving, user, deck, parsedDeck, actions]);
+  }, 200), [deckDispatch, replaceLocalDeckRequest, setSaving, saving, userId, deck, parsedDeck, actions]);
   return {
     uploadLocalDeckDialog: savingDialog,
     uploadLocalDeck: doUploadLocalDeck,
@@ -576,7 +576,7 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
   } = parsedDeckResults;
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const {
     saving,
     setSaving,
@@ -613,7 +613,7 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
           meta: deckEditsRef.current.meta,
         };
         await deckDispatch(saveDeckChanges(
-          user,
+          userId,
           deckActions,
           deck,
           deckChanges,
@@ -635,7 +635,7 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
     } catch(e) {
       handleSaveError(e);
     }
-  }, [deck, saving, hasPendingEdits, parsedDeck, deckEditsRef, tabooSetId, user, deckActions,
+  }, [deck, saving, hasPendingEdits, parsedDeck, deckEditsRef, tabooSetId, userId, deckActions,
     dispatch, deckDispatch, handleSaveError, setSaving]);
 
   const saveEdits = useMemo(() => throttle((isRetry?: boolean) => actuallySaveEdits(false, isRetry), 500), [actuallySaveEdits]);
