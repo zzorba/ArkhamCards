@@ -2977,10 +2977,10 @@ msgstr ""
 "Em seu Registro de Campanha, embaixo de “${ logEntry.section }”, anote "
 "<i>${ logEntry.text }</i>."
 
+#, javascript-format
 msgid "Add ${ tokenString } to the chaos bag."
 msgstr "Adicionar ${ tokenString } à bolsa do caos."
 
-#, javascript-format
 msgid "Remove ${ tokenString } from the chaos bag."
 msgstr "Remover ${ tokenString } da bolsa do caos."
 
@@ -2988,6 +2988,7 @@ msgstr "Remover ${ tokenString } da bolsa do caos."
 msgid "${ investigator.name } removes ${ card.name } (Advanced)"
 msgstr "${ investigator.name } remove ${ card.name } (Avançado)"
 
+#, javascript-format
 msgid "${ investigator.name } removes ${ card.name }"
 msgstr "${ investigator.name } remove ${ card.name }"
 
@@ -4289,6 +4290,27 @@ msgid ""
 "This appears to be one of your decks from ArkhamDB, however you seem to be "
 "logged into a differen ArkhamDB account? If you wish to make edits, please "
 "login through the app settings."
+msgstr ""
+
+msgid "Justify text"
+msgstr ""
+
+msgid "${ tokens[0] } and ${ tokens[1] }"
+msgstr ""
+
+msgid "Dark Matter"
+msgstr ""
+
+msgid "Impending Doom"
+msgstr ""
+
+msgid "Memories"
+msgstr ""
+
+msgid "By Axolotl"
+msgstr ""
+
+msgid "Fan-Made Campaigns"
 msgstr ""
 
 msgctxt "masculine"

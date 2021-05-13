@@ -1613,10 +1613,10 @@ msgid ""
 "logEntry.text }</i>."
 msgstr "당신의 캠페인 기록지 중 \"${ logEntry.section }\" 항목에, ${ logEntry.text }라고 기록합니다."
 
+#, javascript-format
 msgid "Add ${ tokenString } to the chaos bag."
 msgstr "${ tokenString } 토큰을 혼돈 주머니에 넣습니다."
 
-#, javascript-format
 msgid "Remove ${ tokenString } from the chaos bag."
 msgstr "${ tokenString } 토큰을 혼돈 주머니에서 제거합니다."
 
@@ -2506,6 +2506,7 @@ msgstr "${ investigator.name } 조사자는 ${ card.name } 카드를 획득합�
 msgid "${ investigator.name } removes ${ card.name } (Advanced)"
 msgstr "${ investigator.name } 조사자는 ${ card.name } (강화된) 카드를 제거합니다."
 
+#, javascript-format
 msgid "${ investigator.name } removes ${ card.name }"
 msgstr "${ investigator.name } 조사자는 ${ card.name } 카드를 제거합니다."
 
@@ -4104,6 +4105,27 @@ msgid ""
 "This appears to be one of your decks from ArkhamDB, however you seem to be "
 "logged into a differen ArkhamDB account? If you wish to make edits, please "
 "login through the app settings."
+msgstr ""
+
+msgid "Justify text"
+msgstr ""
+
+msgid "${ tokens[0] } and ${ tokens[1] }"
+msgstr ""
+
+msgid "Dark Matter"
+msgstr ""
+
+msgid "Impending Doom"
+msgstr ""
+
+msgid "Memories"
+msgstr ""
+
+msgid "By Axolotl"
+msgstr ""
+
+msgid "Fan-Made Campaigns"
 msgstr ""
 
 #, javascript-format

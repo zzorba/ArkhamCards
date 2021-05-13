@@ -2246,10 +2246,10 @@ msgid ""
 "logEntry.text }</i>."
 msgstr "在冒險日誌中，“${ logEntry.section }”下，記錄<i>${ logEntry.text }</i>。"
 
+#, javascript-format
 msgid "Add ${ tokenString } to the chaos bag."
 msgstr "將${ tokenString }標記加入混亂袋。"
 
-#, javascript-format
 msgid "Remove ${ tokenString } from the chaos bag."
 msgstr "將${ tokenString }標記自混亂袋中移除。"
 
@@ -2492,6 +2492,7 @@ msgstr "${ investigator.name }獲得${ card.name }。"
 msgid "${ investigator.name } removes ${ card.name } (Advanced)"
 msgstr "${ investigator.name }移除${ card.name } (進階版)。"
 
+#, javascript-format
 msgid "${ investigator.name } removes ${ card.name }"
 msgstr "${ investigator.name }移除${ card.name }。"
 
@@ -4069,6 +4070,27 @@ msgid ""
 "This appears to be one of your decks from ArkhamDB, however you seem to be "
 "logged into a differen ArkhamDB account? If you wish to make edits, please "
 "login through the app settings."
+msgstr ""
+
+msgid "Justify text"
+msgstr ""
+
+msgid "${ tokens[0] } and ${ tokens[1] }"
+msgstr ""
+
+msgid "Dark Matter"
+msgstr ""
+
+msgid "Impending Doom"
+msgstr ""
+
+msgid "Memories"
+msgstr ""
+
+msgid "By Axolotl"
+msgstr ""
+
+msgid "Fan-Made Campaigns"
 msgstr ""
 
 #, javascript-format
