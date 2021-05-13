@@ -7,7 +7,7 @@ import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import InvestigatorCounterComponent from '@components/campaignguide/prompts/InvestigatorCounterComponent';
 import { InputStep, InvestigatorCounterInput } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import { forEach } from 'lodash';
+import { find, forEach } from 'lodash';
 
 interface Props {
   step: InputStep;
@@ -17,11 +17,27 @@ interface Props {
 
 export default function InvestigatorCounterInputComponent({ step, input, campaignLog }: Props) {
   const { scenarioInvestigators } = useContext(ScenarioStepContext);
-  const investigatorCounterLimits = useMemo(() => {
+  const investigatorCounterMinLimits = useMemo(() => {
+    if (!input.investigator_count_min) {
+      return undefined;
+    }
+    const limits: { [key: string]: number } = {};
+    const section = campaignLog.investigatorSections[input.investigator_count_min] || {};
+    forEach(scenarioInvestigators, investigator => {
+      const entry = find(section[investigator.code]?.entries || [], e => e.id === '$count' && e.type === 'count');
+      if (entry?.type === 'count') {
+        limits[investigator.code] = -entry.count;
+      } else {
+        limits[investigator.code] = 0;
+      }
+    });
+    return limits;
+
+  }, [scenarioInvestigators, input.investigator_count_min, campaignLog.investigatorSections]);
+  const investigatorCounterMaxLimits = useMemo(() => {
     if (!input.max && !input.investigator_max) {
       return undefined;
     }
-
     const limits: { [key: string]: number } = {};
     forEach(scenarioInvestigators, investigator => {
       const trauma = campaignLog.traumaAndCardData(investigator.code);
@@ -60,7 +76,8 @@ export default function InvestigatorCounterInputComponent({ step, input, campaig
       <InvestigatorCounterComponent
         id={step.id}
         countText={input.text}
-        limits={investigatorCounterLimits}
+        maxLimits={investigatorCounterMaxLimits}
+        minLimits={investigatorCounterMinLimits}
         description={description}
       />
     </>

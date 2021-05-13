@@ -24,6 +24,7 @@ import {
   Effect,
   EffectsWithInput,
   EffectsStep,
+  CampaignLogInvestigatorCountEffect,
 } from '@data/scenario/types';
 import { getSpecialEffectChoiceList } from './effectHelper';
 import { investigatorChoiceInputChoices, chooseOneInputChoices } from '@data/scenario/inputHelper';
@@ -812,12 +813,13 @@ export default class ScenarioStep {
         if (supplies === undefined) {
           return undefined;
         }
-        const effects: Effect[] = flatMap(supplies, (investigatorSupplies, code) =>
+        const effects: CampaignLogInvestigatorCountEffect[] = flatMap(supplies, (investigatorSupplies, code) =>
           flatMap(investigatorSupplies, (count, supplyId) => {
             return {
-              type: 'campaign_log_count',
+              type: 'campaign_log_investigator_count',
               section: input.section,
-              investigator: code,
+              investigator: '$fixed_investigator',
+              fixed_investigator: code,
               operation: 'add',
               id: supplyId,
               value: count,
@@ -975,9 +977,10 @@ export default class ScenarioStep {
             }
             const consumeSuppliesEffects: Effect[] = map(choice, ([count], code) => {
               return {
-                type: 'campaign_log_count',
+                type: 'campaign_log_investigator_count',
                 section: input.section,
-                investigator: code,
+                investigator: '$fixed_investigator',
+                fixed_investigator: code,
                 operation: 'add',
                 id: input.id,
                 value: -(input.investigator === 'all' ? count : 1),
@@ -1031,9 +1034,10 @@ export default class ScenarioStep {
             }
             const consumeSuppliesEffects: Effect[] = map(numberChoice, (counts, code) => {
               return {
-                type: 'campaign_log_count',
+                type: 'campaign_log_investigator_count',
                 section: input.section,
-                investigator: code,
+                investigator: '$fixed_investigator',
+                fixed_investigator: code,
                 operation: 'add',
                 id: input.id,
                 value: -counts[0],

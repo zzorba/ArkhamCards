@@ -41,6 +41,7 @@ import {
   ScenarioStatus,
   TraumaEffect,
   GainSuppliesEffect,
+  CampaignLogInvestigatorCountEffect,
 } from './types';
 import CampaignGuide, { CAMPAIGN_SETUP_ID } from './CampaignGuide';
 import Card, { CardsMap } from '@data/types/Card';
@@ -153,6 +154,7 @@ export default class GuidedCampaignLog {
     switch (effect.type) {
       case 'campaign_log':
       case 'campaign_log_count':
+      case 'campaign_log_investigator_count':
       case 'campaign_log_cards':
       case 'freeform_campaign_log':
       case 'scenario_data':
@@ -269,6 +271,13 @@ export default class GuidedCampaignLog {
               break;
             case 'campaign_log':
               this.handleCampaignLogEffect(effect, input);
+              break;
+            case 'campaign_log_investigator_count':
+              this.handleCampaignLogInvestigatorCountEffect(
+                effect,
+                input,
+                numberInput && numberInput.length ? numberInput[0] : undefined
+              );
               break;
             case 'campaign_log_count': {
               this.handleCampaignLogCountEffect(
@@ -983,15 +992,16 @@ export default class GuidedCampaignLog {
     }
     forEach(input, investigator => {
       forEach(effect.supplies, supply => {
-        const countEffect: CampaignLogCountEffect = {
-          type: 'campaign_log_count',
+        const countEffect: CampaignLogInvestigatorCountEffect = {
+          type: 'campaign_log_investigator_count',
           section: effect.section,
-          investigator: investigator,
+          investigator: '$fixed_investigator',
+          fixed_investigator: investigator,
           operation: 'add',
           id: supply.id,
           value: 1,
         };
-        this.handleCampaignLogCountEffect(countEffect);
+        this.handleCampaignLogInvestigatorCountEffect(countEffect);
       });
     });
   }
@@ -1139,13 +1149,24 @@ export default class GuidedCampaignLog {
   private updateSectionWithCount(
     section: EntrySection,
     id: string,
-    effect: CampaignLogCountEffect,
+    operation: 'add' | 'add_input' | 'subtract_input' | 'set' | 'set_input',
     value: number
   ): EntrySection {
     // Normal entry
-    const entry = find(section.entries, entry => entry.id === effect.id);
+    const entry = find(section.entries, entry => entry.id === id);
     const count = (entry && entry.type === 'count') ? entry.count : 0;
-    switch (effect.operation) {
+    switch (operation) {
+      case 'subtract_input':
+        if (entry && entry.type === 'count') {
+          entry.count = count - value;
+        } else {
+          section.entries.push({
+            type: 'count',
+            id,
+            count: count - value,
+          });
+        }
+        break;
       case 'add':
       case 'add_input':
         if (entry && entry.type === 'count') {
@@ -1174,6 +1195,49 @@ export default class GuidedCampaignLog {
     return section;
   }
 
+  private getCampaignLogInvestigatorCountInvestigators(
+    effect: CampaignLogInvestigatorCountEffect,
+    input?: string[]
+  ): string[] {
+    switch (effect.investigator) {
+      case '$fixed_investigator':
+        if (!effect.fixed_investigator) {
+          throw new Error('investigator set to $fixed_investigator without corresponding fields.');
+        }
+        return [effect.fixed_investigator];
+      case '$input_value':
+        if (!input) {
+          console.log('No input for campaign_log_count effect with specified $input_value.');
+          return [];
+        }
+        return input;
+      case 'all':
+        return this.investigatorCodes(false);
+    }
+  }
+
+  private handleCampaignLogInvestigatorCountEffect(
+    effect: CampaignLogInvestigatorCountEffect,
+    input?: string[],
+    numberInput?: number
+  ) {
+    const value: number = (
+      (effect.operation === 'add_input' || effect.operation === 'set_input') ?
+        numberInput :
+        effect.value
+    ) || 0;
+    const investigatorSection = this.investigatorSections[effect.section] || {};
+    const investigators = this.getCampaignLogInvestigatorCountInvestigators(effect, input);
+    forEach(investigators, investigator => {
+      const section = investigatorSection[investigator] || {
+        entries: [],
+        crossedOut: {},
+      };
+      investigatorSection[investigator] = this.updateSectionWithCount(section, effect.id, effect.operation, value);
+    })
+    this.investigatorSections[effect.section] = investigatorSection;
+  }
+
   private handleCampaignLogCountEffect(effect: CampaignLogCountEffect, numberInput?: number) {
     const value: number = (
       (effect.operation === 'add_input' || effect.operation === 'set_input') ?
@@ -1197,31 +1261,13 @@ export default class GuidedCampaignLog {
           break;
       }
       this.countSections[effect.section] = section;
-    } else if (effect.investigator) {
-      const investigatorSection = this.investigatorSections[effect.section] || {};
-      const section = investigatorSection[effect.investigator] || {
-        entries: [],
-        crossedOut: {},
-      };
-      investigatorSection[effect.investigator] = this.updateSectionWithCount(
-        section,
-        effect.id,
-        effect,
-        value
-      );
-      this.investigatorSections[effect.section] = investigatorSection;
     } else {
       const section = this.sections[effect.section] || {
         entries: [],
         crossedOut: {},
       };
 
-      this.sections[effect.section] = this.updateSectionWithCount(
-        section,
-        effect.id,
-        effect,
-        value
-      );
+      this.sections[effect.section] = this.updateSectionWithCount(section, effect.id, effect.operation, value);
     }
   }
 

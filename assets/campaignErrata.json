@@ -298,7 +298,7 @@
       "questions": [
         {
           "question": "When a location is connected via the Cosmos deck or when the placement of a location moves during this scenario, can it be placed in a spot where there is no empty space?",
-          "answer": "Yes. Empty space serves as a method to judge the distance from one location to another, and as a place for certain enemies to spawn or move through; it is not required that there be an empty space in the spot where the location is placed or moves to. "
+          "answer": "Yes. Empty space serves as a method to judge the distance from one location to another, and as a place for certain enemies to spawn or move through; it is not required that there be an empty space in the spot where the location is placed or moves to."
         }
       ]
     },

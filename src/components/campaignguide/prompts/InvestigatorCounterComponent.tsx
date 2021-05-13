@@ -7,7 +7,10 @@ import StyleContext from '@styles/StyleContext';
 
 interface Props {
   id: string;
-  limits?: {
+  minLimits?: {
+    [code: string]: number;
+  };
+  maxLimits?: {
     [code: string]: number;
   };
   countText?: string;
@@ -18,7 +21,7 @@ interface Props {
 }
 
 export default function InvestigatorCounterComponent({
-  id, limits, requiredTotal, countText, description,
+  id, maxLimits, minLimits, requiredTotal, countText, description,
 }: Props) {
   const { scenarioInvestigators } = useContext(ScenarioStepContext);
   const { colors } = useContext(StyleContext);
@@ -30,10 +33,12 @@ export default function InvestigatorCounterComponent({
           code: investigator.code,
           name: investigator.name,
           color: colors.faction[investigator.factionCode()].background,
-          limit: limits ? limits[investigator.code] : undefined,
+          limit: maxLimits ? maxLimits[investigator.code] : undefined,
+          min: (minLimits && minLimits[investigator.code]) || 0,
           description: description ? description[investigator.code] : undefined,
         };
       })}
+      showDelta={!!minLimits}
       countText={countText}
       requiredTotal={requiredTotal}
     />

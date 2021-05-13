@@ -1,6 +1,6 @@
 import { filter, find, forEach } from 'lodash';
 
-import { NumberChoices } from '@actions/types';
+import { NumberChoices, StringChoices } from '@actions/types';
 import {
   BinaryChoiceCondition,
   InvestigatorChoiceCondition,
@@ -21,6 +21,7 @@ import {
   BinaryResult,
   InvestigatorResult,
   campaignLogCountConditionResult,
+  campaignDataScenarioConditionResult,
 } from '@data/scenario/conditionHelper';
 import { PersonalizedChoices, UniversalChoices, DisplayChoiceWithId } from '@data/scenario';
 
@@ -108,15 +109,21 @@ export function calculateBinaryConditionResult(
     case 'has_card':
       return binaryCardConditionResult(condition, campaignLog);
     case 'campaign_data': {
-      if (condition.campaign_data === 'investigator') {
-        return campaignDataInvestigatorConditionResult(condition, campaignLog);
+      switch (condition.campaign_data) {
+        case 'investigator':
+          return campaignDataInvestigatorConditionResult(condition, campaignLog);
+        case 'scenario_completed':
+        case 'scenario_replayed':
+          return campaignDataScenarioConditionResult(condition, campaignLog);
+        case 'chaos_bag': {
+          const numericResult = campaignDataChaosBagConditionResult(condition, campaignLog);
+          return {
+            type: 'binary',
+            decision: !!numericResult.option,
+            option: numericResult.option,
+          };
+        }
       }
-      const numericResult = campaignDataChaosBagConditionResult(condition, campaignLog);
-      return {
-        type: 'binary',
-        decision: !!numericResult.option,
-        option: numericResult.option,
-      };
     }
     case 'campaign_log':
       return campaignLogConditionResult(condition, campaignLog);
@@ -140,7 +147,7 @@ export function calculateBinaryConditionResult(
 function calculateInvestigatorConditionResult(
   condition: InvestigatorChoiceCondition,
   campaignLog: GuidedCampaignLog
-): InvestigatorResult {
+): Omit<InvestigatorResult, 'options'> {
   switch (condition.type) {
     case 'has_card':
       return investigatorCardConditionResult(condition, campaignLog);
@@ -148,6 +155,18 @@ function calculateInvestigatorConditionResult(
       return basicTraumaConditionResult(condition, campaignLog);
     case 'investigator':
       return investigatorConditionResult(condition, campaignLog);
+    case 'campaign_log': {
+      const result = campaignLogConditionResult(condition, campaignLog);
+      const investigators = campaignLog.investigatorCodes(false);
+      const investigatorChoices: StringChoices = {};
+      forEach(investigators, code => {
+        investigatorChoices[code] = result.option ? [condition.id] : [];
+      });
+      return {
+        type: 'investigator',
+        investigatorChoices,
+      };
+    }
   }
 }
 

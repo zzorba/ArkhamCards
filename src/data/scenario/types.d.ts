@@ -26,6 +26,7 @@ export type Condition =
   | MultiCondition
   | CampaignLogCondition
   | CampaignLogCountCondition
+  | CampaignLogInvestigatorCountCondition
   | MathCondition
   | CardCondition
   | CampaignDataCondition
@@ -45,6 +46,7 @@ export type Effect =
   | CampaignLogEffect
   | CampaignLogCardsEffect
   | CampaignLogCountEffect
+  | CampaignLogInvestigatorCountEffect
   | CampaignDataEffect
   | ScenarioDataEffect
   | AddRemoveChaosTokenEffect
@@ -128,13 +130,18 @@ export type Input =
   | SaveDecksInput;
 export type CardQuery = CardSearchQuery | CardCodeList;
 export type UseSuppliesInput = UseSuppliesChoiceInput | UseSuppliesAllInput;
-export type InvestigatorChoiceCondition = InvestigatorCardCondition | BasicTraumaCondition | InvestigatorCondition;
+export type InvestigatorChoiceCondition =
+  | InvestigatorCardCondition
+  | BasicTraumaCondition
+  | InvestigatorCondition
+  | CampaignLogCondition;
 export type BinaryChoiceCondition =
   | BinaryCardCondition
   | CampaignDataInvestigatorCondition
+  | CampaignDataScenarioCondition
+  | CampaignDataChaosBagCondition
   | CampaignLogCondition
   | CampaignLogCountCondition
-  | CampaignDataChaosBagCondition
   | MultiCondition;
 export type LocationConnector = "purple_moon" | "blue_triangle" | "red_square" | "orange_heart" | "green_diamond";
 export type AllCampaigns = FullCampaign[];
@@ -158,7 +165,7 @@ export interface Campaign {
   campaign_log: {
     id: string;
     title: string;
-    type?: "count" | "supplies" | "hidden";
+    type?: "investigator_count" | "count" | "supplies" | "hidden";
   }[];
   scenarios: string[];
   setup: string[];
@@ -184,6 +191,7 @@ export interface MultiCondition {
     | CampaignDataChaosBagCondition
     | CampaignLogCountCondition
     | CampaignDataVersionCondition
+    | CampaignDataScenarioCondition
     | ScenarioDataResolutionCondition
     | BinaryCardCondition
   )[];
@@ -280,8 +288,17 @@ export interface CampaignLogCardsEffect {
 export interface CampaignLogCountEffect {
   type: "campaign_log_count";
   section: string;
-  investigator?: string;
   id?: string;
+  operation: "set_input" | "set" | "add_input" | "add" | "subtract_input";
+  value?: number;
+  text?: string;
+}
+export interface CampaignLogInvestigatorCountEffect {
+  type: "campaign_log_investigator_count";
+  section: string;
+  id: string;
+  investigator: "all" | "$input_value" | "$fixed_investigator";
+  fixed_investigator?: string;
   operation: "set_input" | "set" | "add_input" | "add";
   value?: number;
   text?: string;
@@ -379,6 +396,12 @@ export interface CampaignDataVersionCondition {
   min_version: number;
   options: BoolOption[];
 }
+export interface CampaignDataScenarioCondition {
+  type: "campaign_data";
+  campaign_data: "scenario_completed" | "scenario_replayed";
+  scenario: string;
+  options: BoolOption[];
+}
 export interface ScenarioDataResolutionCondition {
   type: "scenario_data";
   scenario_data: "resolution";
@@ -395,6 +418,13 @@ export interface BinaryCardCondition {
   investigator: "defeated" | "any";
   card: string;
   options: BoolOption[];
+}
+export interface CampaignLogInvestigatorCountCondition {
+  type: "campaign_log_investigator_count";
+  section: string;
+  investigator: "any" | "all";
+  options: NumOption[];
+  defaultOption?: DefaultOption;
 }
 export interface MathCompareCondition {
   type: "math";
@@ -441,12 +471,6 @@ export interface CampaignDataDifficultyCondition {
   type: "campaign_data";
   campaign_data: "difficulty";
   options: StringOption[];
-}
-export interface CampaignDataScenarioCondition {
-  type: "campaign_data";
-  campaign_data: "scenario_completed" | "scenario_replayed";
-  scenario: string;
-  options: BoolOption[];
 }
 export interface CampaignDataInvestigatorCondition {
   type: "campaign_data";
@@ -541,6 +565,7 @@ export interface UpgradeDecksInput {
   type: "upgrade_decks";
   skip_decks?: boolean;
   special_xp?: SpecialXp;
+  counter?: string;
 }
 export interface CardChoiceInput {
   type: "card_choice";
@@ -661,8 +686,10 @@ export interface CounterInput {
 export interface InvestigatorCounterInput {
   type: "investigator_counter";
   text: string;
+  negative?: boolean;
   effects: Effect[];
   investigator_max?: "physical_trauma" | "mental_trauma";
+  investigator_count_min?: string;
   max?: number;
   show_special_xp?: string;
 }

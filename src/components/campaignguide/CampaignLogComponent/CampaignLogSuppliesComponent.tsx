@@ -13,9 +13,10 @@ interface Props {
   sectionId: string;
   campaignGuide: CampaignGuide;
   section: InvestigatorSection;
+  title?: string;
 }
 
-function CampaignLogSuppliesInvestigatorSection({ sectionId, campaignGuide, section, code }: Props & { code: string }) {
+function CampaignLogSuppliesInvestigatorSection({ sectionId, campaignGuide, section, code, title }: Props & { code: string }) {
   const [investigator] = useSingleCard(code, 'player');
   if (!investigator) {
     return null;
@@ -30,6 +31,7 @@ function CampaignLogSuppliesInvestigatorSection({ sectionId, campaignGuide, sect
             sectionId={sectionId}
             campaignGuide={campaignGuide}
             section={investigatorSection}
+            title={title}
           />
         ) }
       </View>
@@ -37,7 +39,7 @@ function CampaignLogSuppliesInvestigatorSection({ sectionId, campaignGuide, sect
   );
 }
 
-export default function CampaignLogSuppliesComponent({ sectionId, campaignGuide, section }: Props) {
+export default function CampaignLogSuppliesComponent({ sectionId, campaignGuide, section, title }: Props) {
   return (
     <>
       { map(section, (investigatorSection, code) => (
@@ -45,6 +47,7 @@ export default function CampaignLogSuppliesComponent({ sectionId, campaignGuide,
           sectionId={sectionId}
           campaignGuide={campaignGuide}
           section={section}
+          title={title}
           key={code}
           code={code}
         />
