@@ -69,7 +69,8 @@ export type BulletType = "none" | "small";
 export type CampaignDataEffect =
   | CampaignDataResultEffect
   | CampaignDataDifficultyEffect
-  | CampaignDataNextScenarioEffect;
+  | CampaignDataNextScenarioEffect
+  | CampaignDataSwapChaosBagEffect;
 export type Difficulty = "easy" | "standard" | "hard" | "expert";
 export type ScenarioDataEffect =
   | ScenarioDataInvestigatorEffect
@@ -172,6 +173,7 @@ export interface Campaign {
   steps: Step[];
   side_scenario_steps?: Step[];
   campaign_type: "standalone" | "campaign";
+  custom?: CustomData;
   achievements?: Achievement[];
 }
 export interface BranchStep {
@@ -317,6 +319,11 @@ export interface CampaignDataNextScenarioEffect {
   type: "campaign_data";
   setting: "next_scenario" | "skip_scenario" | "replay_scenario";
   scenario: string;
+}
+export interface CampaignDataSwapChaosBagEffect {
+  type: "campaign_data";
+  setting: "swap_chaos_bag";
+  initialize?: boolean;
 }
 export interface ScenarioDataInvestigatorEffect {
   type: "scenario_data";
@@ -879,6 +886,10 @@ export interface InternalStep {
   title?: null;
   narration?: Narration;
 }
+export interface CustomData {
+  creator: string;
+  download_link: string;
+}
 export interface Achievement {
   id: string;
   title: string;
@@ -902,6 +913,7 @@ export interface Scenario {
   xp_cost?: number;
   side_scenario_type?: "challenge" | "standalone";
   challenge?: ChallengeData;
+  custom?: CustomData;
   setup: string[];
   resolutions?: Resolution[];
   steps: Step[];

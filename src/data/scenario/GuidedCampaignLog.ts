@@ -146,6 +146,7 @@ export default class GuidedCampaignLog {
   campaignData: CampaignData;
   campaignGuide: CampaignGuide;
   chaosBag: ChaosBag;
+  swapChaosBag: ChaosBag;
   investigatorCards: CardsMap;
   linked: boolean;
   guideVersion: number;
@@ -210,6 +211,7 @@ export default class GuidedCampaignLog {
         everyStoryAsset: [],
       };
       this.chaosBag = {};
+      this.swapChaosBag = {};
       this.latestScenarioData = {
         investigatorStatus: {},
       };
@@ -239,6 +241,7 @@ export default class GuidedCampaignLog {
       this.scenarioData = readThrough.scenarioData;
       this.campaignData = readThrough.campaignData;
       this.chaosBag = readThrough.chaosBag;
+      this.swapChaosBag = readThrough.swapChaosBag;
       this.latestScenarioData = readThrough.latestScenarioData;
     } else {
       this.sections = cloneDeep(readThrough.sections);
@@ -246,6 +249,7 @@ export default class GuidedCampaignLog {
       this.investigatorSections = cloneDeep(readThrough.investigatorSections);
       this.scenarioData = cloneDeep(readThrough.scenarioData);
       this.chaosBag = cloneDeep(readThrough.chaosBag);
+      this.swapChaosBag = cloneDeep(readThrough.swapChaosBag);
       this.campaignData = cloneDeep(readThrough.campaignData);
       this.latestScenarioData = cloneDeep(readThrough.latestScenarioData);
 
@@ -1038,6 +1042,16 @@ export default class GuidedCampaignLog {
       case 'next_scenario':
         this.campaignData.nextScenario = effect.scenario;
         break;
+      case 'swap_chaos_bag': {
+        const swap = this.swapChaosBag;
+        this.swapChaosBag = this.chaosBag;
+        if (effect.initialize) {
+          this.chaosBag = {};
+        } else {
+          this.chaosBag = swap;
+        }
+        break;
+      }
     }
   }
 

@@ -1241,6 +1241,14 @@
             "text": "the sun banished Cnidathqua into the depths."
           },
           {
+            "id": "constellation_was_lost_to_the_depths",
+            "text": "the Constellation was lost to the depths."
+          },
+          {
+            "id": "constellation_was_saved",
+            "text": "the Constellation was saved."
+          },
+          {
             "id": "meh_excelsior_claims_another_victim",
             "text": "埃賽希爾酒店再次奪取另一名受害者的性命。"
           },
@@ -1255,6 +1263,14 @@
           {
             "id": "meh_murders_continue_unsolved",
             "text": "謀殺持續，懸案未解。"
+          },
+          {
+            "id": "ritual_at_sea_was_completed",
+            "text": "the ritual at sea was completed."
+          },
+          {
+            "id": "ritual_at_sea_was_halted",
+            "text": "the ritual at sea was halted."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
@@ -1315,6 +1331,30 @@
           },
           {
             "id": "act_3_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "coc_bridge",
+            "text": "dummy"
+          },
+          {
+            "id": "coc_engine_room",
+            "text": "dummy"
+          },
+          {
+            "id": "coc_galley",
+            "text": "dummy"
+          },
+          {
+            "id": "coc_library",
+            "text": "dummy"
+          },
+          {
+            "id": "coc_passenger_cabins",
+            "text": "dummy"
+          },
+          {
+            "id": "coc_swap_chaos_bag",
             "text": "dummy"
           },
           {

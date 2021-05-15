@@ -524,6 +524,12 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'dark_matter':
       case 'zdm':
         return this.darkMatterIcon('the_tatterdemalion', size, color);
+      case 'deep_ones':
+      case 'sinking_ship':
+        return this.standaloneIcon(encounter_code, size, color);
+      case 'consternation_on_the_constellation':
+      case 'zcc':
+        return this.standaloneIcon('consternation_on_the_constellation', size, color);
       default:
         return this.coreIcon('core', size, color);
     }

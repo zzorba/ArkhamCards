@@ -4,6 +4,7 @@ import {
   Step,
   Scenario,
   Resolution,
+  CustomData,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import ScenarioStep from './ScenarioStep';
@@ -57,6 +58,10 @@ export default class ScenarioGuide {
 
   scenarioCard(): string | undefined {
     return this.scenario.chaos_bag_card;
+  }
+
+  scenarioCustomData(): CustomData | undefined {
+    return this.scenario.custom;
   }
 
   scenarioCardText(difficulty: CampaignDifficulty): string | undefined {

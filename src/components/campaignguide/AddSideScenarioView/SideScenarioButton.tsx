@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import EncounterIcon from '@icons/EncounterIcon';
 import NavButton from '@components/core/NavButton';
-import { ChallengeData, Scenario } from '@data/scenario/types';
+import { ChallengeData, CustomData, Scenario } from '@data/scenario/types';
 import space, { s, m } from '@styles/space';
 import { ChallengeScenarioProps } from '@components/campaignguide/ChallengeScenarioView';
 import StyleContext from '@styles/StyleContext';
@@ -32,6 +32,21 @@ function ChallengeBlock({ scenario, challenge }: { scenario: Scenario; challenge
       </Text>
       <Text style={[typography.small, typography.light, space.paddingTopS]}>
         { t`Experience cost: ${challengeCost} for ${investigator.name}, ${xpCost} for each other investigator` }
+      </Text>
+    </View>
+  );
+}
+
+function CustomBlock({ scenario, custom }: { scenario: Scenario; custom: CustomData }) {
+  const { typography } = useContext(StyleContext);
+  const xpCost = scenario.xp_cost || 0;
+  return (
+    <View style={styles.flex}>
+      <Text style={[typography.small, space.paddingTopS]}>
+        { t`Fan-made scenario by ${custom.creator}` }
+      </Text>
+      <Text style={[typography.small, typography.light, space.paddingTopS]}>
+        { t`Experience cost: ${xpCost}` }
       </Text>
     </View>
   );
@@ -71,6 +86,23 @@ export default function SideScenarioButton({ scenario, onPress, componentId }: P
     }
   };
   const xpCost = scenario.xp_cost || 0;
+  const descriptionLine = useMemo(() => {
+    if (scenario.side_scenario_type === 'challenge' && !!scenario.challenge) {
+      return (
+        <ChallengeBlock challenge={scenario.challenge} scenario={scenario} />
+      );
+    }
+    if (scenario.custom) {
+      return (
+        <CustomBlock custom={scenario.custom} scenario={scenario} />
+      );
+    }
+    return (
+      <Text style={[typography.small, typography.light, space.paddingTopS]}>
+        { t`Experience cost: ${xpCost}` }
+      </Text>
+    );
+  }, [xpCost, scenario, typography]);
   return (
     <NavButton
       onPress={scenario.side_scenario_type === 'challenge' && scenario.challenge ? _onPressChallenge : _onPress}
@@ -87,13 +119,7 @@ export default function SideScenarioButton({ scenario, onPress, componentId }: P
           <Text style={typography.text}>
             { scenario.scenario_name }
           </Text>
-          { (scenario.side_scenario_type === 'challenge' && !!scenario.challenge) ? (
-            <ChallengeBlock challenge={scenario.challenge} scenario={scenario} />
-          ) : (
-            <Text style={[typography.small, typography.light, space.paddingTopS]}>
-              { t`Experience cost: ${xpCost}` }
-            </Text>
-          ) }
+          { descriptionLine }
         </View>
       </View>
     </NavButton>

@@ -1241,6 +1241,14 @@
             "text": "le soleil a banni Cnidathqua dans les profondeurs."
           },
           {
+            "id": "constellation_was_lost_to_the_depths",
+            "text": "the Constellation was lost to the depths."
+          },
+          {
+            "id": "constellation_was_saved",
+            "text": "the Constellation was saved."
+          },
+          {
             "id": "meh_excelsior_claims_another_victim",
             "text": "l'Excelsior a fait une nouvelle victime."
           },
@@ -1255,6 +1263,14 @@
           {
             "id": "meh_murders_continue_unsolved",
             "text": "les meurtres continuent, irrésolus."
+          },
+          {
+            "id": "ritual_at_sea_was_completed",
+            "text": "the ritual at sea was completed."
+          },
+          {
+            "id": "ritual_at_sea_was_halted",
+            "text": "the ritual at sea was halted."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
@@ -1315,6 +1331,30 @@
           },
           {
             "id": "act_3_setup",
+            "text": "leurre"
+          },
+          {
+            "id": "coc_bridge",
+            "text": "leurre"
+          },
+          {
+            "id": "coc_engine_room",
+            "text": "leurre"
+          },
+          {
+            "id": "coc_galley",
+            "text": "leurre"
+          },
+          {
+            "id": "coc_library",
+            "text": "leurre"
+          },
+          {
+            "id": "coc_passenger_cabins",
+            "text": "leurre"
+          },
+          {
+            "id": "coc_swap_chaos_bag",
             "text": "leurre"
           },
           {

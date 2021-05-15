@@ -35025,7 +35025,8 @@
     "bad_blood",
     "in_the_labyrinths_of_lunacy",
     "war_of_the_outer_gods",
-    "meddling_of_meowlathotep"
+    "meddling_of_meowlathotep",
+    "consternation_on_the_constellation"
   ],
   "setup": [],
   "steps": []
@@ -38026,6 +38027,765 @@
         "earn_xp",
         "choose_masks",
         "ask_innocent_revelers_saved",
+        "$upgrade_decks"
+      ]
+    }
+  ]
+},
+{
+  "id": "consternation_on_the_constellation",
+  "scenario_name": "Consternation on the Constellation",
+  "full_name": "Consternation on the Constellation",
+  "header": "",
+  "xp_cost": 2,
+  "custom": {
+    "creator": "Mythos Busters",
+    "download_link": "https://mythosbusters.com/custom-scenarios/"
+  },
+  "standalone_setup": [
+    "choose_difficulty",
+    "intro",
+    "gather_encounter_sets",
+    "setup_locations",
+    "check_players",
+    "setup_crate_of_goods",
+    "set_aside_cards",
+    "spawn_order_enforcer",
+    "encounter_deck",
+    "$play_scenario"
+  ],
+  "setup": [
+    "xp_cost",
+    "swap_chaos_bag",
+    "chaos_bag_rule",
+    "setup_chaos_bag",
+    "intro",
+    "gather_encounter_sets",
+    "setup_locations",
+    "check_players",
+    "setup_crate_of_goods",
+    "set_aside_cards",
+    "spawn_order_enforcer",
+    "encounter_deck",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "choose_difficulty",
+      "text": "Scegliere il livello di difficoltà:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "standard",
+            "text": "Standard",
+            "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -4, -4, -5, -6, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "skull",
+                  "skull",
+                  "skull",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hard",
+            "text": "Difficile",
+            "description": "+1, 0, 0, 0, -1, -1, -2, -2, -3, -4, -4, -5, -6, -7, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "-7",
+                  "skull",
+                  "skull",
+                  "skull",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "xp_cost",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": -2
+        }
+      ]
+    },
+    {
+      "id": "swap_chaos_bag",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "swap_chaos_bag",
+          "initialize": true
+        },
+        {
+          "type": "campaign_log",
+          "section": "hidden",
+          "id": "coc_swap_chaos_bag",
+          "text": "dummy"
+        }
+      ]
+    },
+    {
+      "id": "chaos_bag_rule",
+      "text": "This scenario is played with a custom chaos bag. The campaign chaos bag has been saved and will be restored when the scenario is completed."
+    },
+    {
+      "id": "setup_chaos_bag",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "difficulty",
+        "options": [
+          {
+            "condition": "easy",
+            "steps": [
+              "add_standard_bag"
+            ]
+          },
+          {
+            "condition": "standard",
+            "steps": [
+              "add_standard_bag"
+            ]
+          },
+          {
+            "condition": "hard",
+            "steps": [
+              "add_hard_bag"
+            ]
+          },
+          {
+            "condition": "expert",
+            "steps": [
+              "add_hard_bag"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_standard_bag",
+      "bullet_type": "small",
+      "text": "Use following tokens for your chaos bag: +1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -4, -4, -5, -6, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1",
+            "0",
+            "0",
+            "0",
+            "-1",
+            "-1",
+            "-1",
+            "-2",
+            "-2",
+            "-3",
+            "-4",
+            "-4",
+            "-5",
+            "-6",
+            "skull",
+            "skull",
+            "skull",
+            "auto_fail",
+            "elder_sign"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "add_hard_bag",
+      "bullet_type": "small",
+      "text": "Use the following tokens for your chaos bag: +1, 0, 0, 0, -1, -1, -2, -2, -3, -4, -4, -5, -6, -7, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1",
+            "0",
+            "0",
+            "0",
+            "-1",
+            "-1",
+            "-2",
+            "-2",
+            "-3",
+            "-4",
+            "-4",
+            "-5",
+            "-6",
+            "-7",
+            "skull",
+            "skull",
+            "skull",
+            "auto_fail",
+            "elder_sign"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "restore_chaos_bag",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "coc_swap_chaos_bag",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "swap_chaos_bag"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro",
+      "type": "story",
+      "title": "Welcome Aboard!",
+      "text": "\"Join me on the other side of the sea. All your questions will find answers beyond the deep.\"\nYou stare one more time at the cryptic note that sits on your table alongside a brand new set of first-class tickets offering passage aboard the SS Constellation, a luxury ocean liner sailing from Boston to London in a few days' time. The unmarked envelope had arrived just yesterday, promising a welcome solution to a vexing affair.\nIn the past few weeks, several collections of esoteric artifacts in Arkham have been ransacked, culminating in the murder of an employee of the Miskatonic Historical Society. Your contacts have informed you that similar burglaries have taken place in Boston, Innsmouth, and New York. Strangely, nothing has been reported missing as yet except for a few records and books. What could these people be looking for? You have a growing fear that it is something dastardly indeed.\nWith leads running dry, hopping aboard an ocean liner in response to a note from an unknown sender seems only one step above a wild goose chase, but it's the best chance you may get. With that in mind, you grab the tickets and head out the door."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Preparazione",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "consternation_on_the_constellation",
+        "deep_ones",
+        "sinking_ship"
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put Cargo Room and Open Water into play. Each investigator begins play at the Cargo Room. Set each other location aside, out of play."
+    },
+    {
+      "id": "check_players",
+      "type": "branch",
+      "condition": {
+        "type": "scenario_data",
+        "scenario_data": "player_count",
+        "options": [
+          {
+            "numCondition": 2,
+            "steps": [
+              "remove_1_taking_on_water"
+            ]
+          },
+          {
+            "numCondition": 3,
+            "steps": [
+              "remove_2_taking_on_water"
+            ]
+          },
+          {
+            "numCondition": 4,
+            "steps": [
+              "remove_3_taking_on_water"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "remove_1_taking_on_water",
+      "text": "Because there are exactly 2 players, remove 1 copy of Taking on Water from the game."
+    },
+    {
+      "id": "remove_2_taking_on_water",
+      "text": "Because there are exactly 3 players, remove 2 copies of Taking on Water from the game."
+    },
+    {
+      "id": "remove_3_taking_on_water",
+      "text": "Because there are exactly 4 players, remove 3 copies of Taking on Water from the game."
+    },
+    {
+      "id": "setup_crate_of_goods",
+      "text": "Set the 5 \"Crate of Goods\" assets aside.",
+      "bullets": [
+        {
+          "text": "Shuffle the Tablet of Dagon and 2 other random Crate of Goods assets together. Remove the remaining Create of Goods asset from the game."
+        },
+        {
+          "text": "All 3 cards should be showing only the unrevealed Crate of Goods side, so that players do not known which Crate of Goods is the Tablet of Dagon."
+        }
+      ]
+    },
+    {
+      "id": "set_aside_cards",
+      "type": "encounter_sets",
+      "text": "Set Luther Marsh and each card from the <i>Deep Ones</i> and <i>Sinking Ship</i> encounter sets aside, out of play.",
+      "encounter_sets": [
+        "deep_ones",
+        "sinking_ship"
+      ]
+    },
+    {
+      "id": "spawn_order_enforcer",
+      "text": "Search the gathered encounter sets for 1 copy of Order Enforcer. Spawn it at Cargo Room."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+    {
+      "id": "earn_xp",
+      "text": "Ogni investigatore guadagna un ammontare di punti esperienza pari al valore di Vittoria di ogni carta nella galleria delle vittorie (ricordate di aggiungere i luoghi validi nella galleria delle vittorie).",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Galleria delle vittorie:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ritual_at_sea_was_completed",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "ritual_at_sea_was_completed",
+          "text": "the ritual at sea was completed."
+        }
+      ]
+    },
+    {
+      "id": "constellation_was_lost_to_the_depths",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "constellation_was_lost_to_the_depths",
+          "text": "the Constellation was lost to the depths."
+        }
+      ]
+    },
+    {
+      "id": "ritual_at_sea_was_halted",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "ritual_at_sea_was_halted",
+          "text": "the ritual at sea was halted."
+        }
+      ]
+    },
+    {
+      "id": "constellation_was_saved",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "constellation_was_saved",
+          "text": "the Constellation was saved."
+        }
+      ]
+    },
+    {
+      "id": "check_constellation_was_saved",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "constellation_was_saved",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "trust_earned_story",
+              "earn_inspector"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_1_token",
+      "title": "Additional Rewards",
+      "text": "Add a +1 token to your campaign chaos bag for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trust_earned_story",
+      "type": "story",
+      "title": "Trust Earned",
+      "text": "When you make it back to shore, you are greeted by an older gentleman with a familiar name. \"Legrasse,\" he says, offering his hand. \"You did well to save the ship. Since I've learned of the existence of such things, I've dedicated my retirement to trying to keep dangerous relics out of the hands of people like these cultists, but they will go to seemingly any lengths to grasp at horrible power. I thought I could safely transport these relics in secret across the sea, but I was terribly wrong. Thank you for your help. I'll be in touch.\""
+    },
+    {
+      "id": "earn_inspector",
+      "text": "Any one investigator may choose to add Inspector Legrasse to their deck. This card does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "zcc_00038"
+        }
+      ]
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "add_chaos_token",
+            "repeatable": true,
+            "condition": {
+              "type": "multi",
+              "count": 5,
+              "conditions": [
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "coc_bridge",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "coc_engine_room",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "coc_galley",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "coc_library",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "coc_passenger_cabins",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                }
+              ],
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Adjust chaos bag",
+            "steps": [
+              "add_chaos_token"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_chaos_token",
+      "text": "Which location's changes to the chaos bag do you want to perform?\n<i>(Note: if you are using the digital chaos bag, you will need to Seal tokens manually)</i>",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "bridge",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "coc_bridge",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Bridge",
+            "description": "Add one [elder_thing] to the chaos bag.",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "elder_thing"
+                ]
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "coc_bridge",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "engine_room",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "coc_engine_room",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Engine Room",
+            "description": "Add one [elder_thing] to the chaos bag.",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "elder_thing"
+                ]
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "coc_engine_room",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "galley",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "coc_galley",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Galley",
+            "description": "Add one [cultist] to the chaos bag.",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "cultist"
+                ]
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "coc_galley",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "library",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "coc_library",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Library",
+            "description": "Add one [tablet] to the chaos bag.",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "tablet"
+                ]
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "coc_library",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "passenger_cabins",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "coc_passenger_cabins",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Passenger Cabins",
+            "description": "Add one [cultist] to the chaos bag.",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "cultist"
+                ]
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "coc_passenger_cabins",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached\n(each investigator was defeated)",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "You come to consciousness draped over a piece of wreckage floating on the endless ocean. There is no sign of the Constellation except the flotsam that surrounds you. You think you feel something massive swimming just below and panic hits as you don't dare to think what it might be. It is then that you see the light of an approaching vessel in the night. Perhaps rescue is at hand, though what has been unleashed that night you cannot say.",
+      "steps": [
+        "restore_chaos_bag",
+        "ritual_at_sea_was_completed",
+        "constellation_was_lost_to_the_depths",
+        "earn_xp",
+        "$upgrade_decks"
+      ]
+    },
+    {
+      "id": "R1",
+      "title": "Risoluzione 1",
+      "text": "You work the oars of the lifeboat furiously, pushing yourself beyond endurance in the vain hope that you might escape the clutches of the horrific creatures that have overtaken the Constellation. Whether by fortune, providence, or some mysterious power, no foul monster finds its way aboard to end your flight. The tablet in your possession glows with mysterious colors, reflecting the lights of the northern sky overhead. Astonishingly, you watch as the Deep Ones crawl back into the ocean as the Constellation recedes behind you, the ritual seemingly aborted. A horn sounds ahead through the fog, breaking your reverie. Rescue has come!",
+      "steps": [
+        "restore_chaos_bag",
+        "ritual_at_sea_was_halted",
+        "constellation_was_saved",
+        "earn_xp",
+        "add_1_token",
+        "check_constellation_was_saved",
+        "$upgrade_decks"
+      ]
+    },
+    {
+      "id": "R2",
+      "title": "Risoluzione 2",
+      "text": "The tablet lies shattered on the ground, its power broken. Looking over the edge of the ship, you can see no sign of the creatures that so tormented the hull mere moments before. Those crew members and passengers that have survived the ordeal gather on deck and stare in disbelief at each other. Finally, the stern voice of an officer calls everyone to action. With a concerted effort, the ship is saved from a watery grave along with the lives of those aboard. You shudder to think of how many more might have been lost in far-off places if the ritual had not been brought to a violent end as well.",
+      "steps": [
+        "restore_chaos_bag",
+        "ritual_at_sea_was_halted",
+        "constellation_was_saved",
+        "earn_xp",
+        "add_1_token",
+        "check_constellation_was_saved",
+        "$upgrade_decks"
+      ]
+    },
+    {
+      "id": "R3",
+      "title": "Risoluzione 3",
+      "text": "The tablet lies shattered on the ground, its power broken. Looking over the edge of the ship, you can see no sign of the creatures that so tormented the hull mere moments before. Those crew members and passengers that have survived the ordeal gather on deck and stare in disbelief at each other. Then, all are forced to grab hold of whatever is near as the ship lists suddenly to one side. Some scramble to the lifeboats while others dive into the ocean below, heedless of height. Breathless minutes later, you find yourself aboard a rescue vessel, watching the Constellation sink beneath the waters. Lives were lost this night, but you comfort yourself thinking of how many more might have been lost if the ritual had not been brought to a violent end.",
+      "steps": [
+        "restore_chaos_bag",
+        "ritual_at_sea_was_halted",
+        "constellation_was_lost_to_the_depths",
+        "earn_xp",
+        "add_1_token",
+        "check_constellation_was_saved",
         "$upgrade_decks"
       ]
     }
@@ -81360,6 +82120,10 @@
   "position": 20,
   "version": 1,
   "name": "Dark Matter",
+  "custom": {
+    "creator": "Axolotl",
+    "download_link": "https://mysteriouschanting.wordpress.com/2020/10/17/dark-matter-campaign/"
+  },
   "campaign_type": "campaign",
   "campaign_log": [
     {
@@ -81818,6 +82582,7 @@
     },
     {
       "id": "desync_story",
+      "title": "Desynchronization",
       "type": "story",
       "text": "An overturned schoolbus gathers dust on the school grounds. As you examine the vandalized windows, you notice a glimpse of your own reflection. However, you no longer recognize the person looking back at you. The frame, the distinct facial features, they all seem so familiar to you, yet you know this is not your body. You stare into the glass in disbelief. The face of your reflection morphs into a blank, pale mask with no mouth, nose or eyes. The virtual reality no longer recognizes your residual self image anymore -- the mental projection of your digital self has decayed into nothingness."
     },
@@ -82279,6 +83044,7 @@
         "branches": [
           {
             "id": "adjust_memories",
+            "repeatable": true,
             "text": "Adjust \"Memories\"",
             "steps": [
               "adjust_memories"
@@ -82538,6 +83304,7 @@
         "branches": [
           {
             "id": "adjust_impending_doom",
+            "repeatable": true,
             "text": "Adjust \"Impending Doom\"",
             "steps": [
               "adjust_impending_doom"
@@ -82545,6 +83312,7 @@
           },
           {
             "id": "adjust_memories",
+            "repeatable": true,
             "text": "Adjust \"Memories\"",
             "steps": [
               "adjust_memories"
@@ -83561,6 +84329,7 @@
         "branches": [
           {
             "id": "adjust_memories",
+            "repeatable": true,
             "text": "Adjust \"Memories\"",
             "steps": [
               "adjust_memories"
@@ -84310,6 +85079,7 @@
         "branches": [
           {
             "id": "adjust_memories",
+            "repeatable": true,
             "text": "Adjust \"Memories\"",
             "steps": [
               "adjust_memories"
@@ -85342,8 +86112,8 @@
         "end_3_trauma",
         "end_3_entries",
         "earn_xp",
-        "win_campaign",
-        "$upgrade_decks"
+        "$upgrade_decks",
+        "win_campaign"
       ]
     }
   ]
@@ -85823,6 +86593,7 @@
         "branches": [
           {
             "id": "adjust_memories",
+            "repeatable": true,
             "text": "Adjust \"Memories\"",
             "steps": [
               "adjust_memories"
@@ -85830,6 +86601,7 @@
           },
           {
             "id": "mark_impending_doom",
+            "repeatable": true,
             "text": "Mark 1 \"Impending Doom\"",
             "steps": [
               "add_1_impending_doom"
@@ -86110,6 +86882,7 @@
         "branches": [
           {
             "id": "adjust_memories",
+            "repeatable": true,
             "text": "Adjust \"Memories\"",
             "steps": [
               "adjust_memories"
@@ -86321,6 +87094,7 @@
         "branches": [
           {
             "id": "adjust_memories",
+            "repeatable": true,
             "text": "Adjust \"Memories\"",
             "steps": [
               "adjust_memories"
@@ -86328,6 +87102,7 @@
           },
           {
             "id": "add_cards",
+            "repeatable": true,
             "condition": {
               "type": "multi",
               "count": 2,

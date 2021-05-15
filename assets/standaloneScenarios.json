@@ -33,6 +33,10 @@
   },
   {
     "campaignId": "side",
+    "scenarioId": "consternation_on_the_constellation"
+  },
+  {
+    "campaignId": "side",
     "scenarioId": "curse_of_the_rougarou"
   },
   {
