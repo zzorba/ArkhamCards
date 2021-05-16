@@ -594,11 +594,16 @@ export function campaignLogInvestigatorCountConditionResult(condition: CampaignL
   const investigators = campaignLog.investigatorCodes(false);
   switch (condition.investigator) {
     case 'any': {
-      const scenarionInvestigators = new Set(investigators);
+      const scenarionInvestigators = investigators;
       // Basically find the first option that matches *any* investigator;
-      const option = find(condition.options, o => !!find(section, (entrySection, code) => {
-        return (scenarionInvestigators.has(code)) && !!find(entrySection.entries, entry => entry.id === '$count' && entry.type === 'count' && entry.count === o.numCondition);
-      }));
+      const option = find(condition.options, o => {
+        return !!find(scenarionInvestigators, code => {
+          const entrySection = section[code];
+          const entry = find(entrySection?.entries || [], entry => entry.id === '$count' && entry.type === 'count');
+          const count = (entry?.type === 'count' && entry.count) || 0;
+          return o.numCondition === count;
+        });
+      });
       return {
         type: 'binary',
         decision: !!option,

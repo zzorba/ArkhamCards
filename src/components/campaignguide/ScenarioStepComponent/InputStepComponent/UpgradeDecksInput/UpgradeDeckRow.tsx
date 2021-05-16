@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { flatMap, forEach, keys, map, sortBy } from 'lodash';
+import { flatMap, find, forEach, keys, map, sortBy } from 'lodash';
 import { t } from 'ttag';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -45,15 +45,31 @@ interface Props {
   actions: DeckActions;
   skipDeckSave?: boolean;
   specialXp?: SpecialXp;
+  investigatorCounter?: string;
 }
 
 function computeChoiceId(stepId: string, investigator: Card) {
   return `${stepId}#${investigator.code}`;
 }
 
-function UpgradeDeckRow({ componentId, skipDeckSave, specialXp, id, campaignState, scenarioState, investigator, deck, campaignLog, actions, setUnsavedEdits, editable }: Props) {
+function UpgradeDeckRow({
+  componentId,
+  investigatorCounter,
+  skipDeckSave,
+  specialXp,
+  id,
+  campaignState,
+  scenarioState,
+  investigator,
+  deck,
+  campaignLog,
+  actions,
+  setUnsavedEdits,
+  editable,
+}: Props) {
   const { colors, typography } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
+  const { campaignGuide } = useContext(CampaignGuideContext);
   const deckUpgradeComponent = useRef<DeckUpgradeHandles>();
   const earnedXp = useMemo(() => {
     if (specialXp) {
@@ -66,14 +82,24 @@ function UpgradeDeckRow({ componentId, skipDeckSave, specialXp, id, campaignStat
   const [mentalAdjust, incMental, decMental] = useCounter(0, {});
   const [killedAdjust, toggleKilled] = useFlag(false);
   const [insaneAdjust, toggleInsane] = useFlag(false);
+  const investigatorSection = investigatorCounter ? campaignLog.investigatorSections[investigatorCounter] : undefined;
+  const existingCount = useMemo(() => {
+    if (!investigatorCounter) {
+      return 0;
+    }
+    const entry = find(investigatorSection?.[investigator.code]?.entries || [], e => e.id === '$count' && e.type === 'count');
+    return entry?.type === 'count' ? entry.count : 0;
+  }, [investigatorSection, investigator, investigatorCounter]);
+  const [countAdjust, incCount, decCount] = useCounter(0, { min: -existingCount });
 
   const unsavedEdits = useMemo(() => {
     return physicalAdjust !== 0 ||
       mentalAdjust !== 0 ||
       xpAdjust !== earnedXp ||
       killedAdjust ||
-      insaneAdjust;
-  }, [earnedXp, xpAdjust, physicalAdjust, mentalAdjust, killedAdjust, insaneAdjust]);
+      insaneAdjust ||
+      countAdjust !== 0;
+  }, [earnedXp, xpAdjust, physicalAdjust, mentalAdjust, killedAdjust, insaneAdjust, countAdjust]);
 
   useEffectUpdate(() => {
     setUnsavedEdits(investigator.code, unsavedEdits);
@@ -91,11 +117,15 @@ function UpgradeDeckRow({ componentId, skipDeckSave, specialXp, id, campaignStat
       killed: [killedAdjust ? 1 : 0],
       insane: [insaneAdjust ? 1 : 0],
     };
+    if (investigatorCounter) {
+      choices.count = [countAdjust];
+    }
     scenarioState.setNumberChoices(choiceId, choices, !skipDeckSave && deck ? getDeckId(deck) : undefined);
-  }, [scenarioState, skipDeckSave, earnedXp, choiceId, physicalAdjust, mentalAdjust, killedAdjust, insaneAdjust]);
+  }, [scenarioState, skipDeckSave, investigatorCounter,
+    countAdjust, earnedXp, choiceId, physicalAdjust, mentalAdjust, killedAdjust, insaneAdjust,
+  ]);
 
   const [choices, deckChoice] = useMemo(() => scenarioState.numberAndDeckChoices(choiceId), [scenarioState, choiceId]);
-
   const xp: number = useMemo(() => {
     if (choices === undefined) {
       return xpAdjust;
@@ -350,16 +380,64 @@ function UpgradeDeckRow({ componentId, skipDeckSave, specialXp, id, campaignStat
     );
   }, [choices, skipDeckSave, editable, deck, save, saving, unsavedEdits]);
 
+  const count: number = useMemo(() => {
+    if (choices === undefined) {
+      return countAdjust;
+    }
+    return (choices.count && choices.count[0]) || 0;
+  }, [choices, countAdjust]);
+
+  const customCountsSection = useMemo(() => {
+    if (!investigatorCounter) {
+      return null;
+    }
+    const section = find(campaignGuide.campaignLogSections(), s => s.id === investigatorCounter);
+    if (!section) {
+      return null;
+    }
+    const newTotal = count + existingCount;
+    const locked = (choices !== undefined) || !editable;
+    const deltaString = count >= 0 ? `+${count}` : `${count}`;
+    return (
+      <>
+        <CardSectionHeader
+          investigator={investigator}
+          section={{ superTitle: section.title }}
+        />
+        <BasicListRow>
+          <Text style={[typography.text]}>
+            { deltaString }
+          </Text>
+          { !locked && (
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end'}}>
+              <Text style={[typography.text, { color: colors.lightText }, space.marginRightS]}>
+                { t` (New Total: ${newTotal})` }
+              </Text>
+              <PlusMinusButtons
+                count={newTotal}
+                onIncrement={incCount}
+                onDecrement={decCount}
+                min={0}
+              />
+            </View>
+          ) }
+        </BasicListRow>
+      </>
+    );
+  }, [investigatorCounter, editable, investigator, incCount, decCount,
+    choices, count, existingCount, campaignGuide, colors, typography]);
+
   const campaignSection = useMemo(() => {
     return (
       <>
         { (choices !== undefined || skipDeckSave || !deck) && xpSection }
+        { customCountsSection }
         { traumaSection }
         { storyAssetSection }
         { saveButton }
       </>
     );
-  }, [deck, skipDeckSave, choices, xpSection, traumaSection, storyAssetSection, saveButton]);
+  }, [deck, skipDeckSave, choices, xpSection, traumaSection, storyAssetSection, customCountsSection, saveButton]);
 
   const selectDeck = useCallback(() => {
     campaignState.showChooseDeck(investigator);

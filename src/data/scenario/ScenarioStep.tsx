@@ -900,6 +900,18 @@ export default class ScenarioStep {
           if (choices !== undefined) {
             const effects: Effect[] = [];
             const xpAdjust = (choices.xp && choices.xp[0]) || 0;
+            const count = (choices.count && choices.count[0] || 0);
+            if (input.counter && count) {
+              effects.push({
+                type: 'campaign_log_investigator_count',
+                section: input.counter,
+                id: '$count',
+                investigator: '$fixed_investigator',
+                fixed_investigator: investigator.code,
+                operation: 'add',
+                value: count,
+              });
+            }
             if (xpAdjust !== 0) {
               effects.push({
                 type: 'earn_xp',

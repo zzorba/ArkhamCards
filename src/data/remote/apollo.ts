@@ -142,7 +142,8 @@ function updateDecks(
         return [];
       }),
     };
-  });*/
+  });
+  */
 
   updateFullCampaign(cache, campaign_id, (fragment) => {
     return {

@@ -1414,23 +1414,23 @@
         "entries": [
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# a disparu dans le brouillard",
-            "feminine_text": "#name# a disparu dans le brouillard"
+            "masculine_text": "#name# a disparu dans la brume.",
+            "feminine_text": "#name# a disparu dans la brume."
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# a été aspiré dans le domaine spectral",
-            "feminine_text": "#name# a été aspirée dans le domaine spectral"
+            "masculine_text": "#name# a été aspiré dans le monde spectral",
+            "feminine_text": "#name# a été aspirée dans le monde spectral"
           },
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# a été enlevé par le Guetteur",
-            "feminine_text": "#name# a été enlevée par le Guetteur"
+            "masculine_text": "#name# a été emporté par le Guetteur",
+            "feminine_text": "#name# a été emportée par le Guetteur"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# a été réclamé par les spectres",
-            "feminine_text": "#name# a été réclamée par les spectres"
+            "masculine_text": "les spectres se sont emparés de #name#.",
+            "feminine_text": "les spectres se sont emparés de #name#."
           }
         ]
       },
@@ -1552,7 +1552,7 @@
           },
           {
             "id": "being_hunted",
-            "text": "vous êtes traqué."
+            "text": "vous êtes pris en chasse."
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",

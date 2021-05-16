@@ -35,6 +35,7 @@ import { SHOW_DISSONANT_VOICES } from '@lib/audio/narrationPlayer';
 import DissonantVoicesLoginButton from './AccountSection/auth/DissonantVoicesLoginButton';
 import { useAlertDialog } from '@components/deck/dialogs';
 import { CURRENT_REDUX_VERSION } from '@reducers/settings';
+import ApolloClientContext from '@data/apollo/ApolloClientContext';
 
 function contactPressed() {
   Linking.openURL('mailto:arkhamcards@gmail.com');
@@ -111,9 +112,10 @@ export default function SettingsView({ componentId }: NavigationProps) {
     navButtonPressed('Settings.Backup', t`Backup`);
   }, [navButtonPressed]);
 
+  const { anonClient } = useContext(ApolloClientContext);
   const doSyncCards = useCallback(() => {
-    dispatch(fetchCards(db, lang, langChoice));
-  }, [dispatch, db, lang, langChoice]);
+    dispatch(fetchCards(db, anonClient, lang, langChoice));
+  }, [dispatch, db, anonClient, lang, langChoice]);
 
   const syncCardsText = useMemo(() => {
     if (cardsLoading) {

@@ -516,6 +516,10 @@ export default class Card {
     return this.subname ? t`${this.name} <i>(${this.subname})</i>` : this.name;
   }
 
+  public custom(): boolean {
+    return this.code.startsWith('z');
+  }
+
   public grammarGenderMasculine(): boolean {
     return !FEMININE_INVESTIGATORS.has(this.code);
   }
@@ -1091,6 +1095,9 @@ export default class Card {
       };
     }
     result.browse_visible = 0;
+    if (result.code.startsWith('z')) {
+      result.browse_visible += 16;
+    }
     if (result.code === RANDOM_BASIC_WEAKNESS) {
       result.browse_visible += 3;
     } else if ((!result.altArtInvestigator && !result.back_linked && !result.hidden)) {

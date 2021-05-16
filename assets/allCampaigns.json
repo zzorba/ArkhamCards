@@ -78923,6 +78923,7 @@
         "type": "investigator_choice",
         "investigator": "choice",
         "source": "scenario",
+        "optional": true,
         "choices": [
           {
             "id": "has_cybervirus",
