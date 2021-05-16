@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2021-05-16 11:56+0300\n"
+"PO-Revision-Date: 2021-05-16 12:21+0300\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -3814,10 +3814,10 @@ msgid "Create a new account"
 msgstr "Создать новый аккаунт"
 
 msgid "Sign up with email"
-msgstr "Зарегистрироваться по адресу электронной почты"
+msgstr "Зарегистрироваться по емейлу"
 
 msgid "Sign in with email"
-msgstr "Войти по адресу электронной почты"
+msgstr "Войти по емейлу"
 
 msgid "Sign out"
 msgstr "Выйти"
@@ -4133,106 +4133,116 @@ msgid "Whistles"
 msgstr "Свистки"
 
 msgid "Loading..."
-msgstr ""
+msgstr "Загрузка…"
 
 #, javascript-format
 msgid "${ deck.owner.handle } must save this upgrade"
-msgstr ""
+msgstr "${ deck.owner.handle } должен сохранить это улучшение"
 
 msgid "Your friend must save this upgrade"
-msgstr ""
+msgstr "Ваш товарищ должен сохранить это улучшение"
 
 #, javascript-format
 msgid "${ deck.owner.handle } must save this deck"
-msgstr ""
+msgstr "${ deck.owner.handle } должен сохранить эту колоду"
 
 msgid "Your friend must save this deck"
-msgstr ""
+msgstr "Ваш товарищ должен сохранить эту колоду"
 
 msgid "Campaign players"
-msgstr ""
+msgstr "Участники кампании"
 
 msgid "Add friends to campaign"
-msgstr ""
+msgstr "Добавить товарищей к кампании"
 
 msgid "Add friends"
-msgstr ""
+msgstr "Добавить товарищей"
 
 msgid "Access"
-msgstr ""
+msgstr "Доступ"
 
 msgid "Later"
-msgstr ""
+msgstr "Позже"
 
 msgid "Searching cards..."
-msgstr ""
+msgstr "Поиск карт…"
 
 msgid ""
 "This appears to be one of your decks from ArkhamDB, however you are not currently logged "
 "in. If you wish to make edits, please login through the app settings."
 msgstr ""
+"Похоже, это одна из ваших колод с Arkhamdb, но вы не вошли в свой аккаунт. Если желаете "
+"редактировать колоду, войдите в него в настройках приложения."
 
 msgid "Leave campaign"
-msgstr ""
+msgstr "Покинуть кампанию"
 
 msgid ""
 "Are you sure you want to leave this campaign?\n"
 "\n"
 "Your decks will be removed from the campaign, but you can rejoin it later."
 msgstr ""
+"Уверены?\n"
+"\n"
+"Ваша колода будет удалена из кампании, но вы сможете снова присоединиться к ней позже."
 
 msgid "Leave"
-msgstr ""
+msgstr "Покинуть"
 
 msgid "Edit players"
-msgstr ""
+msgstr "Править игроков"
 
 msgid "View players"
-msgstr ""
+msgstr "Список игроков"
 
 msgid "Clear card cache"
-msgstr ""
+msgstr "Очистить кэш карт"
 
 msgid "Uploading..."
-msgstr ""
+msgstr "Отправка…"
 
 msgid "Leave standalone"
-msgstr ""
+msgstr "Покинуть сценарий"
 
 msgid ""
 "Are you sure you want to leave this standalone?\n"
 "\n"
 "Your decks will be removed from the standalone, but you can rejoin it later."
 msgstr ""
+"Уверены?\n"
+"\n"
+"Ваша колода будет удалена из сценария, но вы сможете снова присоединиться позже."
 
 msgid "Upload standalone"
-msgstr ""
+msgstr "Отправить сценарий"
 
 msgid "You must be online to upload"
-msgstr ""
+msgstr "Нужен интернет, чтобы отправить"
 
 msgid "Adjust scenario XP and trauma"
-msgstr ""
+msgstr "Править опыт и травмы"
 
 msgid "Unspent XP"
-msgstr ""
+msgstr "Непотраченный опыт"
 
 #, javascript-format
 msgid "${ unspentXp } saved"
-msgstr ""
+msgstr "${ unspentXp } осталось"
 
 #, javascript-format
 msgid "Scenario Card - ${ difficultyStr }"
-msgstr ""
+msgstr "Карты сценария — ${ difficultyStr }"
 
 msgid "Scenario Card"
-msgstr ""
+msgstr "Карта сценария"
 
 msgid ""
 "This appears to be one of your decks from ArkhamDB, however you seem to be logged into a "
 "differen ArkhamDB account? If you wish to make edits, please login through the app "
 "settings."
 msgstr ""
+"Похоже, это одна из ваших колод с Arkhamdb, однако, похоже, вы вошли в другой аккаунт. "
+"Если желаете редактировать колоду, войдите в свой аккаунт в настройках приложения."
 
 #, javascript-format
 msgctxt "masculine"
@@ -4545,7 +4555,7 @@ msgstr "Дерзость"
 
 msgctxt "trait"
 msgid "Boon"
-msgstr ""
+msgstr "Дар"
 
 msgctxt "trait"
 msgid "Bridge"
@@ -4605,7 +4615,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Clairvoyant"
-msgstr ""
+msgstr "Ясновидящая"
 
 msgctxt "trait"
 msgid "Clothing"
@@ -4613,7 +4623,7 @@ msgstr "Одежда"
 
 msgctxt "trait"
 msgid "Clover Club"
-msgstr ""
+msgstr "Клуб «Клевер»"
 
 msgctxt "trait"
 msgid "Coastal"
@@ -4669,11 +4679,11 @@ msgstr "Проклятый"
 
 msgctxt "trait"
 msgid "Dark Young"
-msgstr ""
+msgstr "Тёмная молодь"
 
 msgctxt "trait"
 msgid "Deep One"
-msgstr ""
+msgstr "Глубоководный"
 
 msgctxt "trait"
 msgid "Depths"
@@ -4729,7 +4739,7 @@ msgstr "Элитный"
 
 msgctxt "trait"
 msgid "Endtimes"
-msgstr ""
+msgstr "Конец времён"
 
 msgctxt "trait"
 msgid "Evidence"
@@ -4821,7 +4831,7 @@ msgstr "Упырь"
 
 msgctxt "trait"
 msgid "Government"
-msgstr ""
+msgstr "Правительство"
 
 msgctxt "trait"
 msgid "Grant"
@@ -5169,7 +5179,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "River"
-msgstr ""
+msgstr "Река"
 
 msgctxt "trait"
 msgid "Riverside"
@@ -5189,7 +5199,7 @@ msgstr "Салем"
 
 msgctxt "trait"
 msgid "Sanctum"
-msgstr ""
+msgstr "Святилище"
 
 msgctxt "trait"
 msgid "Scheme"
@@ -5253,7 +5263,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Socialite"
-msgstr ""
+msgstr "Бомонд"
 
 msgctxt "trait"
 msgid "Song"
