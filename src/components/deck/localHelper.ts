@@ -83,6 +83,7 @@ export function upgradeLocalDeck(
   const timestamp = (new Date()).toISOString();
   const id: DeckId = {
     id: undefined,
+    arkhamdb_user: undefined,
     local: true,
     uuid: uuid.v4(),
   };

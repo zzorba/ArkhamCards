@@ -37,6 +37,7 @@ import {
   Operand,
   DefaultOption,
   CampaignLogCountCondition,
+  CampaignLogInvestigatorCountCondition,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import Card from '@data/types/Card';
@@ -126,7 +127,7 @@ function stringConditionResult(
   };
 }
 
-function investigatorResult<T>(
+function investigatorResult(
   investigatorChoices: StringChoices,
   options: OptionWithId[]
 ): InvestigatorResult {
@@ -137,7 +138,7 @@ function investigatorResult<T>(
   };
 }
 
-function investigatorCardResult<T>(
+function investigatorCardResult(
   investigatorChoices: StringChoices,
   options: BoolOptionWithId[]
 ): InvestigatorCardResult {
@@ -584,6 +585,63 @@ export function campaignLogCountConditionResult(condition: CampaignLogCountCondi
   );
 }
 
+
+export function campaignLogInvestigatorCountConditionResult(condition: CampaignLogInvestigatorCountCondition, campaignLog: GuidedCampaignLog): InvestigatorResult | BinaryResult {
+  const section = campaignLog.investigatorSections[condition.section];
+  if (!section) {
+    throw new Error(`Unknown section: ${condition.section}`);
+  }
+  const investigators = campaignLog.investigatorCodes(false);
+  switch (condition.investigator) {
+    case 'any': {
+      const scenarionInvestigators = investigators;
+      // Basically find the first option that matches *any* investigator;
+      const option = find(condition.options, o => {
+        return !!find(scenarionInvestigators, code => {
+          const entrySection = section[code];
+          const entry = find(entrySection?.entries || [], entry => entry.id === '$count' && entry.type === 'count');
+          const count = (entry?.type === 'count' && entry.count) || 0;
+          return o.numCondition === count;
+        });
+      });
+      return {
+        type: 'binary',
+        decision: !!option,
+        option: option || condition.defaultOption,
+      };
+    }
+    case 'all': {
+      const investigatorChoices: StringChoices = {};
+      for (let i = 0; i < investigators.length; i++) {
+        const investigator = investigators[i];
+        const countEntry = find(section[investigator]?.entries || [], entry => entry.id === '$count' && entry.type === 'count');
+        const count = (countEntry?.type === 'count' && countEntry.count) || 0;
+        const matches = filter(condition.options, option => option.numCondition === count);
+        if (matches.length) {
+          investigatorChoices[investigator] = map(matches, match => `${match.numCondition}`);
+        } else if (condition.defaultOption) {
+          investigatorChoices[investigator] = ['default'];
+        }
+      }
+      return investigatorResult(
+        investigatorChoices,
+        [
+          ...map(condition.options, option => {
+            return {
+              ...option,
+              id: `${option.numCondition}`,
+            };
+          }),
+          ...(condition.defaultOption ? [{
+            ...condition.defaultOption,
+            id: 'default',
+          }] : []),
+        ]
+      );
+    }
+  }
+}
+
 export function conditionResult(
   condition: Condition,
   campaignLog: GuidedCampaignLog
@@ -593,6 +651,10 @@ export function conditionResult(
       return multiConditionResult(condition, campaignLog);
     case 'check_supplies':
       return checkSuppliesConditionResult(condition, campaignLog);
+    case 'campaign_data':
+      return campaignDataConditionResult(condition, campaignLog);
+    case 'campaign_log_investigator_count':
+      return campaignLogInvestigatorCountConditionResult(condition, campaignLog);
     case 'campaign_log_cards':
     case 'campaign_log_section_exists':
     case 'campaign_log':

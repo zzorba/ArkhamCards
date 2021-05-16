@@ -130,6 +130,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
   }, [processedCampaign.scenarios, showAlert]);
   const investigatorCount = campaignInvestigators.length;
   const suppliesSections = useMemo(() => filter(campaignGuide.campaignLogSections(), section => section.id !== 'hidden' && section.type === 'supplies'), [campaignGuide]);
+  const investigatorCountSections = useMemo(() => filter(campaignGuide.campaignLogSections(), section => section.id !== 'hidden' && section.type === 'investigator_count'), [campaignGuide]);
   return (
     <>
       <View style={[space.paddingBottomS, space.paddingTopS]}>
@@ -155,6 +156,27 @@ export default function CampaignInvestigatorsComponent(props: Props) {
           showTraumaDialog={canEditTrauma ? showTraumaDialog : disabledShowTraumaPressed}
         >
           <>
+            {
+              flatMap(investigatorCountSections, investigatorCount => {
+                const section = processedCampaign.campaignLog.investigatorSections[investigatorCount.id];
+                if (!section) {
+                  return null;
+                }
+                const investigatorSection = section[investigator.code];
+                const countEntry = find(investigatorSection?.entries, e => e.id === '$count' && e.type === 'count');
+                return (
+                  <View key={`${investigator.code}-${investigatorCount.id}`} style={space.paddingBottomS}>
+                    <DeckSlotHeader
+                      title={investigatorCount.title}
+                      first
+                    />
+                    <Text style={[space.marginLeftS, typography.gameFont]}>
+                      {countEntry?.type === 'count' ? countEntry.count : 0}
+                    </Text>
+                  </View>
+                );
+              })
+            }
             { flatMap(suppliesSections, supplies => {
               const section = processedCampaign.campaignLog.investigatorSections[supplies.id];
               if (!section) {

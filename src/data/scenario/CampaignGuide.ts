@@ -54,7 +54,11 @@ interface LogEntrySupplies extends LogSection {
   supply: Supply;
 }
 
-type LogEntry = LogEntrySectionCount | LogEntryCard | LogEntryText | LogEntrySupplies;
+interface LogEntryInvestigatorCount extends LogSection {
+  type: 'investigator_count';
+}
+
+type LogEntry = LogEntrySectionCount | LogEntryCard | LogEntryText | LogEntrySupplies | LogEntryInvestigatorCount;
 const CARD_REGEX = /\d\d\d\d\d[a-z]?/;
 export const CAMPAIGN_SETUP_ID = '$campaign_setup';
 
@@ -563,6 +567,16 @@ export default class CampaignGuide {
         section: section.title,
         supply,
       };
+    }
+    if (section.type === 'investigator_count') {
+      const count = find(this.log.supplies, s => s.id === id);
+      if (!count) {
+        throw new Error(`Could not find Supply: ${id}`);
+      }
+      return {
+        type: 'investigator_count',
+        section: section.title,
+      }
     }
     if (id === '$count') {
       return {

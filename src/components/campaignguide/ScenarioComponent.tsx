@@ -1,7 +1,8 @@
-import React, { useCallback, useContext, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import {
   Alert,
   KeyboardAvoidingView,
+  Linking,
   ScrollView,
   StyleSheet,
 } from 'react-native';
@@ -226,6 +227,12 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
 
   const hasInterludeFaq = processedScenario.scenarioGuide.scenarioType() !== 'scenario' &&
     processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;
+  const customData = processedScenario.scenarioGuide.scenarioCustomData();
+  const downloadPressed = useCallback(() => {
+    if (customData) {
+      Linking.openURL(customData.download_link);
+    }
+  }, [customData]);
   return (
     <KeyboardAvoidingView
       style={[styles.keyboardView, backgroundStyle]}
@@ -236,6 +243,7 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
       <KeepAwake />
       <NarrationWrapper>
         <ScrollView contentContainerStyle={backgroundStyle}>
+          { !!customData && <BasicButton title={t`Download print and play cards`} onPress={downloadPressed} /> }
           { !!hasInterludeFaq && (
             <BasicButton
               title={t`Interlude FAQ`}

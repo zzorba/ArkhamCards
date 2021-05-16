@@ -138,6 +138,7 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
           componentId={componentId}
           skipDeckSave={step.input.skip_decks}
           specialXp={step.input.special_xp}
+          investigatorCounter={step.input.counter}
         />
       );
     case 'save_decks':

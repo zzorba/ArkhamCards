@@ -151,7 +151,7 @@ export default function CardUpgradeDialog({
 
   const cardInCollection = useCallback((card: Card): boolean => {
     return (
-      card.code === 'core' ||
+      card.pack_code === 'core' ||
       inCollection[card.pack_code] ||
       showNonCollection
     );

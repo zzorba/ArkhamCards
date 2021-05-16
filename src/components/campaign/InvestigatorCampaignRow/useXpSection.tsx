@@ -42,7 +42,7 @@ export default function useXpSection({
   editXpPressed,
 }: Props): [React.ReactNode, boolean] {
   const { colors } = useContext(StyleContext);
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const showDeckUpgradePress = useCallback(() => {
     if (deck && showDeckUpgrade) {
       showDeckUpgrade(investigator, deck.deck);
@@ -61,7 +61,7 @@ export default function useXpSection({
       );
     }
   }, [colors, campaign, deck, investigator]);
-  const ownerDeck = !deck?.owner || !user || deck.owner.id === user.uid;
+  const ownerDeck = !deck?.owner || !userId || deck.owner.id === userId;
   const parsedDeck = useMemo(() => {
     if (!deck || uploading) {
       return undefined;

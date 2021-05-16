@@ -21,6 +21,7 @@ import {
   CustomCampaignLog,
   ScenarioResult,
   STANDALONE,
+  DARK_MATTER,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import Card from '@data/types/Card';
@@ -57,6 +58,7 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case TIC: return t`The Innsmouth Conspiracy`;
     case CUSTOM: return null;
     case STANDALONE: return t`Standalone`;
+    case DARK_MATTER: return t`Dark Matter`;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -266,6 +268,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Into the Maelstrom`, code: 'into_the_maelstrom', pack_code: 'itm' },
       { name: t`Epilogue`, code: 'epligoue', pack_code: 'itm', interlude: true },
     ];
+    case DARK_MATTER: return [];
     case TDE: return [];
     case CUSTOM: return [];
     case STANDALONE: return [];
@@ -292,32 +295,34 @@ export function campaignNames() {
     tdeb: t`The Web of Dreams`,
     tcu: t`The Circle Undone`,
     tic: t`The Innsmouth Conspiracy`,
+    zdm: t`Dark Matter`,
     standalone: t`Standalone`,
   };
 }
 
 export function campaignColor(cycle: CampaignCycleCode, colors: ThemeColors) {
   switch (cycle) {
-    case 'core':
-    case 'rtnotz':
-    case 'tcu':
+    case CORE:
+    case RTNOTZ:
+    case TCU:
     case 'custom':
-    case 'standalone':
+    case STANDALONE:
       return colors.campaign.blue;
-    case 'ptc':
-    case 'rtptc':
+    case PTC:
+    case RTPTC:
       return colors.campaign.gold;
-    case 'tdea':
-    case 'tdeb':
-    case 'tde':
+    case TDEA:
+    case TDEB:
+    case TDE:
+    case DARK_MATTER:
       return colors.campaign.purple;
-    case 'tfa':
-    case 'rttfa':
+    case TFA:
+    case RTTFA:
       return colors.campaign.green;
-    case 'tic':
+    case TIC:
       return colors.campaign.red;
-    case 'dwl':
-    case 'rtdwl':
+    case DWL:
+    case RTDWL:
       return colors.campaign.teal;
   }
 }
@@ -405,6 +410,14 @@ export function getCampaignLog(
           t`Possible Hideouts`,
         ],
       };
+    case DARK_MATTER:
+      return {
+        sections: [
+          t`Campaign Notes`,
+        ],
+        counts: [t`Impending Doom`],
+        investigatorCounts: [t`Memories`],
+      };
     case CUSTOM:
       return {
         sections: [
@@ -479,6 +492,13 @@ const TIC_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
 };
 
+const DARK_MATTER_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 2, '-2': 2, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 1, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
+};
+
 function basicScenarioRewards(encounterCode: string) {
   switch (encounterCode) {
     case 'blood_on_the_altar':
@@ -550,6 +570,8 @@ export function getChaosBag(
       return TDEB_BAG[difficulty];
     case TIC:
       return TIC_BAG[difficulty];
+    case DARK_MATTER:
+      return DARK_MATTER_BAG[difficulty];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;

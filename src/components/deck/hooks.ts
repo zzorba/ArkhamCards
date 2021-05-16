@@ -60,10 +60,10 @@ export function useDeckEdits(
   initialMode?: 'edit' | 'upgrade'
 ): [EditDeckState | undefined, MutableRefObject<EditDeckState | undefined>] {
   const dispatch = useDispatch();
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   useEffect(() => {
     if (initialDeck && id !== undefined) {
-      const editable = (!initialDeck.owner?.id || !user || initialDeck.owner.id === user.uid);
+      const editable = (!initialDeck.owner?.id || !userId || initialDeck.owner.id === userId);
       dispatch(startDeckEdit(id, initialDeck, editable, initialMode));
       return function cleanup() {
         dispatch(finishDeckEdit(id));
@@ -72,7 +72,7 @@ export function useDeckEdits(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialDeck, id]);
   const otherDeckEdits: EditDeckState | undefined = useMemo(() => {
-    if (user && initialDeck?.owner?.id && user.uid !== initialDeck.owner.id) {
+    if (userId && initialDeck?.owner?.id && userId !== initialDeck.owner.id) {
       return {
         xpAdjustment: initialDeck.deck.xp_adjustment || 0,
         slots: initialDeck.deck.slots || {},
@@ -83,7 +83,7 @@ export function useDeckEdits(
       };
     }
     return undefined;
-  }, [user, initialDeck]);
+  }, [userId, initialDeck]);
   const reduxDeckEdits = useSimpleDeckEdits(id);
   const deckEditsRef = useRef<EditDeckState>();
   const deckEdits = otherDeckEdits || reduxDeckEdits;

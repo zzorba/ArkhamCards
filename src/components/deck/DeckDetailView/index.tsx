@@ -49,6 +49,7 @@ import { CardUpgradeDialogProps } from '../CardUpgradeDialog';
 import DeckProblemBanner from '../DeckProblemBanner';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useCampaign } from '@data/hooks';
+import { useDeckActions } from '@data/remote/decks';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -74,13 +75,13 @@ function DeckDetailView({
   signedIn,
   login,
   initialMode,
-  deckActions,
 }: Props) {
   const { backgroundStyle, colors, darkMode, typography, shadow, width } = useContext(StyleContext);
+  const deckActions = useDeckActions();
   const campaign = useCampaign(campaignId);
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
-  const { user, arkhamDbUser, arkhamDb } = useContext(ArkhamCardsAuthContext);
+  const { userId, arkhamDbUser, arkhamDb } = useContext(ArkhamCardsAuthContext);
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const parsedDeckObj = useParsedDeckWithFetch(id, componentId, deckActions, initialMode);
   const { showXpAdjustmentDialog, xpAdjustmentDialog } = useAdjustXpDialog(parsedDeckObj);
@@ -310,12 +311,12 @@ function DeckDetailView({
     if (!deleting) {
       setDeleting(true);
 
-      deckDispatch(deleteDeckAction(user, deckActions, id, deleteAllVersions)).then(() => {
+      deckDispatch(deleteDeckAction(userId, deckActions, id, deleteAllVersions)).then(() => {
         Navigation.dismissAllModals();
         setDeleting(false);
       });
     }
-  }, [id, deleting, user, deckActions, setDeleting, deckDispatch]);
+  }, [id, deleting, userId, deckActions, setDeleting, deckDispatch]);
 
   const deleteAllDecks = useCallback(() => {
     deleteDeck(true);
@@ -329,12 +330,12 @@ function DeckDetailView({
     if (!deleting) {
       setDeleting(true);
 
-      deckDispatch(deleteDeckAction(user, deckActions, id, false)).then(() => {
+      deckDispatch(deleteDeckAction(userId, deckActions, id, false)).then(() => {
         Navigation.dismissAllModals();
         setDeleting(false);
       });
     }
-  }, [id, deckDispatch, deckActions, deleting, user, setDeleting]);
+  }, [id, deckDispatch, deckActions, deleting, userId, setDeleting]);
   const deleteBrokenDeck = useCallback(() => {
     showAlert(
       t`Delete broken deck`,

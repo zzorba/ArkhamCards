@@ -19,21 +19,24 @@ import ArkhamCardsAuthProvider from './src/lib/ArkhamCardsAuthProvider';
 import App from './src/app/App';
 import { ENABLE_ARKHAM_CARDS_ACCOUNT } from './src/app_constants';
 import createApolloClient from './src/data/apollo/createApolloClient';
+import ApolloClientContext from './src/data/apollo/ApolloClientContext';
 
-function MyProvider({ store: { redux, persistor, apollo }, children }) {
+function MyProvider({ store: { redux, persistor, apollo, anonApollo }, children }) {
   return (
     <AppearanceProvider>
       <Provider store={redux}>
         <ArkhamCardsAuthProvider>
           <PersistGate loading={null} persistor={persistor}>
             <ApolloProvider client={apollo}>
-              <LanguageProvider>
-                <DatabaseProvider>
-                  <StyleProvider>
-                    { children }
-                  </StyleProvider>
-                </DatabaseProvider>
-              </LanguageProvider>
+              <ApolloClientContext.Provider value={{ client: apollo, anonClient: anonApollo }}>
+                <LanguageProvider>
+                  <DatabaseProvider>
+                    <StyleProvider>
+                      { children }
+                    </StyleProvider>
+                  </DatabaseProvider>
+                </LanguageProvider>
+              </ApolloClientContext.Provider>
             </ApolloProvider>
           </PersistGate>
         </ArkhamCardsAuthProvider>
@@ -47,7 +50,7 @@ if (ENABLE_ARKHAM_CARDS_ACCOUNT) {
 }
 
 const { store, persistor } = configureStore({});
-const apolloClient = createApolloClient(store);
+const [apolloClient, anonClient] = createApolloClient(store);
 
 persistCache({
   cache: apolloClient.cache,
@@ -64,7 +67,7 @@ Crashes.setListener({
 /* eslint-disable @typescript-eslint/no-unused-vars */
 let app = null;
 Navigation.events().registerAppLaunchedListener(() => {
-  registerScreens(MyProvider, { redux: store, persistor: persistor, apollo: apolloClient });
+  registerScreens(MyProvider, { redux: store, persistor: persistor, apollo: apolloClient, anonApollo: anonClient });
   app = new App(store);
 });
 

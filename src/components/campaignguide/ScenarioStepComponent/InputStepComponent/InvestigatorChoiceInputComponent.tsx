@@ -72,7 +72,7 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
           choiceId={choice.id}
           checkText={choice.text}
           investigators={choices.type === 'personalized' ? keys(choices.perCode) : undefined}
-          min={input.investigator === 'choice' ? 1 : 0}
+          min={input.investigator === 'choice' && !input.optional ? 1 : 0}
           max={4}
         />
       </>

@@ -15,7 +15,7 @@ import { useMyProfile } from '@data/remote/hooks';
 
 export default function ArkhamCardsAccountDetails({ componentId }: NavigationProps) {
   const { typography } = useContext(StyleContext);
-  const { user, loading } = useContext(ArkhamCardsAuthContext);
+  const { userId, loading } = useContext(ArkhamCardsAuthContext);
   const [profile, loadingProfile] = useMyProfile();
 
   const updateHandle = useUpdateHandle();
@@ -26,12 +26,12 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
     placeholder: t`Choose a handle for your account`,
   });
   const editFriendsPressed = useCallback(() => {
-    if (user) {
+    if (userId) {
       Navigation.push<FriendsViewProps>(componentId, {
         component: {
           name: 'Friends',
           passProps: {
-            userId: user.uid,
+            userId,
           },
           options: {
             topBar: {
@@ -43,10 +43,10 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
         },
       });
     }
-  }, [componentId, user]);
+  }, [componentId, userId]);
   const friendCount = profile?.friends?.length || 0;
   const pendingFriendCount = profile?.receivedRequests?.length || 0;
-  if (!user) {
+  if (!userId) {
     return (
       <View style={[space.paddingBottomS, space.paddingTopS, space.paddingSideS]}>
         <Text style={typography.text}>{t`This app works just fine without an account.\nBut signing in will allow you to sync campaigns between devices, with more features planned for the future.`}</Text>

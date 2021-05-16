@@ -27,7 +27,7 @@ interface Props {
 
 export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, scenarioId, standalone, hideChaosBag }: Props) {
   const { backgroundStyle, width } = useContext(StyleContext);
-  const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'count' | 'supplies') => {
+  const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'investigator_count' | 'count' | 'supplies') => {
     switch (type) {
       case 'count': {
         const count = campaignLog.count(id, '$count');
@@ -37,6 +37,20 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
           </View>
         );
       }
+      case 'investigator_count':
+        const section = campaignLog.investigatorSections[id];
+        return (
+          <View style={space.paddingSideS}>
+            { !!section && (
+              <CampaignLogSuppliesComponent
+                sectionId={id}
+                title={title}
+                section={section}
+                campaignGuide={campaignGuide}
+              />
+            ) }
+          </View>
+        );
       case 'supplies': {
         const section = campaignLog.investigatorSections[id];
         return (

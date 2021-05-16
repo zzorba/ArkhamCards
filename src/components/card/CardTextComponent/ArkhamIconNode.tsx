@@ -24,10 +24,11 @@ export default function ArkhamIconNode({ colors, fontScale }: StyleContextType, 
     output: OutputFunction,
     state: RenderState
   ) => {
+    const icon_name = BAD_ICON_NAMES[node.name] || node.name
     return (
       <ArkhamIcon
         key={state.key}
-        name={BAD_ICON_NAMES[node.name] || node.name}
+        name={icon_name}
         size={16 * fontScale * sizeScale}
         color={colors.darkText}
       />

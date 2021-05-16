@@ -4,16 +4,16 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export function useModifyUserCache(): [(options: Cache.ModifyOptions) => void, ApolloClient<unknown>] {
   const client = useApolloClient();
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
 
   return [useCallback((options: Cache.ModifyOptions) => {
-    if (!user) {
+    if (!userId) {
       return;
     }
-    const targetId = client.cache.identify({ __typename: 'users', id: user.uid });
+    const targetId = client.cache.identify({ __typename: 'users', id: userId });
     client.cache.modify({
       ...options,
       id: targetId,
     });
-  }, [client, user]), client];
+  }, [client, userId]), client];
 }

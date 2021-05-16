@@ -40,6 +40,7 @@ import { useSimpleTextDialog } from '../dialogs';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
+import { useDeckActions } from '@data/remote/decks';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -60,10 +61,10 @@ function NewDeckOptionsDialog({
   componentId,
   signedIn,
   login,
-  deckActions,
 }: Props) {
+  const deckActions = useDeckActions();
   const defaultTabooSetId = useTabooSetId();
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected, networkType }, refreshNetworkStatus] = useNetworkStatus();
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const { backgroundStyle, colors, fontScale, typography, width } = useContext(StyleContext);
@@ -217,7 +218,7 @@ function NewDeckOptionsDialog({
     if (investigator && (!saving || isRetry)) {
       const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none);
       setSaving(true);
-      dispatch(saveNewDeck(user, deckActions, {
+      dispatch(saveNewDeck(userId, deckActions, {
         local,
         meta,
         deckName: deckName || t`New Deck`,
@@ -232,7 +233,7 @@ function NewDeckOptionsDialog({
         }
       );
     }
-  }, [signedIn, dispatch, showNewDeck, deckActions, user,
+  }, [signedIn, dispatch, showNewDeck, deckActions, userId,
     slots, meta, networkType, isConnected, offlineDeck, saving, starterDeck, tabooSetId, deckNameChange, investigator, defaultDeckName]);
 
   const onOkayPress = useMemo(() => throttle(() => createDeck(), 200), [createDeck]);

@@ -41,7 +41,7 @@ function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
   const [addSectionDialog, showAddSectionDialog] = useAddCampaignNoteSectionDialog();
   const [countDialog, showCountDialog] = useCountDialog();
   const { backgroundStyle } = useContext(StyleContext);
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
   const investigators = useInvestigatorCards();
 
@@ -54,7 +54,7 @@ function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
   const doSave = useCallback((showDeckUpgrade: boolean) => {
     if (scenario) {
       const scenarioResult: ScenarioResult = { ...scenario, xp };
-      dispatch(addScenarioResult(user, id, scenarioResult, campaignNotes));
+      dispatch(addScenarioResult(userId, id, scenarioResult, campaignNotes));
       const passProps: UpgradeDecksProps = {
         id,
         scenarioResult,
@@ -82,7 +82,7 @@ function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
         Navigation.pop(componentId);
       }
     }
-  }, [componentId, id, dispatch, user, scenario, xp, campaignNotes]);
+  }, [componentId, id, dispatch, userId, scenario, xp, campaignNotes]);
 
   const savePressed = useMemo(() => throttle((showDeckUpgrade: boolean) => doSave(showDeckUpgrade), 200), [doSave]);
   useNavigationButtonPressed(({ buttonId }) => {

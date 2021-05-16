@@ -1,7 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo, useReducer } from 'react';
 import { filter, map } from 'lodash';
 import { StyleSheet, Text, View } from 'react-native';
-import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
@@ -60,7 +59,7 @@ interface UploadState {
 
 type UploadDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
-export default function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNode, () => void] {
+export default function useCampaignUploadDialog(userId?: string): [React.ReactNode, () => void] {
   const localCampaigns = useSelector(getCampaigns);
   const dispatch: UploadDispatch = useDispatch();
   const { colors, typography, width } = useContext(StyleContext);
@@ -130,7 +129,7 @@ export default function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): 
   const createCampaignActions = useCreateCampaignActions();
   const deckActions = useDeckActions();
   const uploadCampaigns = useCallback(async() => {
-    if (user) {
+    if (userId) {
       const uploadCampaigns = filter(localCampaigns, c => !noUpload[c.uuid]);
       updateUploadState({ type: 'start', total: uploadCampaigns.length });
       await Promise.all(
@@ -143,7 +142,7 @@ export default function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): 
       );
     }
     return true;
-  }, [user, localCampaigns, noUpload, dispatch, updateUploadState, createCampaignActions, deckActions]);
+  }, [userId, localCampaigns, noUpload, dispatch, updateUploadState, createCampaignActions, deckActions]);
   const uploading = !!uploadState?.completed;
   const { dialog, showDialog, setVisible } = useDialog({
     title: t`Upload campaigns`,

@@ -4,10 +4,7 @@ import { msgid, ngettext, t } from 'ttag';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import CampaignGuideContext from '../../CampaignGuideContext';
-import {
-  BranchStep,
-  CampaignLogCountCondition,
-} from '@data/scenario/types';
+import { BranchStep, CampaignLogCountCondition } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 
 interface Props {

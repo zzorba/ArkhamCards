@@ -4,6 +4,7 @@ import ArkhamIcon from './ArkhamIcon';
 import CarcosaIcon from './CarcosaIcon';
 import CircleIcon from './CircleIcon';
 import CoreSetIcon from './CoreSetIcon';
+import DarkMatterIcon from './DarkMatterIcon';
 import DreamEatersIcon from './DreamEatersIcon';
 import DunwichIcon from './DunwichIcon';
 import ForgottenIcon from './ForgottenIcon';
@@ -27,6 +28,10 @@ export default class EncounterIcon extends React.PureComponent<Props> {
 
   innsmouthIcon(name: string, size: number, color: string) {
     return (<InnsmouthIcon name={name} size={size} color={color} />);
+  }
+
+  darkMatterIcon(name: string, size: number, color: string) {
+    return (<DarkMatterIcon name={name} size={size} color={color} />);
   }
 
   dunwichIcon(name: string, size: number, color: string) {
@@ -499,6 +504,32 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'malfunction':
         return this.innsmouthIcon(encounter_code, size, color);
 
+      case 'the_tatterdemalion':
+      case 'electric_nightmare':
+      case 'lost_quantum':
+      case 'in_the_shadow_of_earth':
+      case 'strange_moons':
+      case 'the_machine_in_yellow':
+      case 'fragment_of_carcosa':
+      case 'starfall':
+      case 'deep_space':
+      case 'anachronism':
+      case 'dark_past':
+      case 'artificial_intelligence':
+      case 'endtimes':
+      case 'the_boogeyman':
+      case 'interstellar_predators':
+      case 'hasturs_gaze':
+        return this.darkMatterIcon(encounter_code, size, color);
+      case 'dark_matter':
+      case 'zdm':
+        return this.darkMatterIcon('the_tatterdemalion', size, color);
+      case 'deep_ones':
+      case 'sinking_ship':
+        return this.standaloneIcon(encounter_code, size, color);
+      case 'consternation_on_the_constellation':
+      case 'zcc':
+        return this.standaloneIcon('consternation_on_the_constellation', size, color);
       default:
         return this.coreIcon('core', size, color);
     }

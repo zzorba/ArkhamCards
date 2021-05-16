@@ -17,7 +17,7 @@ export interface CampaignAccessProps {
   isOwner: boolean;
 }
 export default function EditCampaignAccessView({ campaignId, isOwner, componentId }: CampaignAccessProps & NavigationProps) {
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const campaignAccess = useCampaignAccess(campaignId);
   const editCampaignAccess = useEditCampaignAccessRequest();
   const inviteUser = useCallback(async(user: string) => {
@@ -27,12 +27,12 @@ export default function EditCampaignAccessView({ campaignId, isOwner, componentI
     await editCampaignAccess(campaignId, [user], 'revoke');
   }, [editCampaignAccess, campaignId]);
   const editFriendsPressed = useCallback(() => {
-    if (user) {
+    if (userId) {
       Navigation.push<FriendsViewProps>(componentId, {
         component: {
           name: 'Friends',
           passProps: {
-            userId: user.uid,
+            userId,
           },
           options: {
             topBar: {
@@ -44,7 +44,7 @@ export default function EditCampaignAccessView({ campaignId, isOwner, componentI
         },
       });
     }
-  }, [componentId, user]);
+  }, [componentId, userId]);
 
   const toFeed = useCallback((isSelf: boolean, profile?: UserProfile) => {
     const feed: FriendFeedItem[] = [];
@@ -62,7 +62,7 @@ export default function EditCampaignAccessView({ campaignId, isOwner, componentI
             id: `player-${u.id}`,
             type: 'user',
             user: u,
-            controls: u.id !== user?.uid && isOwner ? {
+            controls: u.id !== userId && isOwner ? {
               type: 'campaign',
               hasAccess: true,
               inviteUser,
@@ -101,14 +101,14 @@ export default function EditCampaignAccessView({ campaignId, isOwner, componentI
       onPress: editFriendsPressed,
     });
     return feed;
-  }, [campaignAccess, user, isOwner, editFriendsPressed, inviteUser, removeUser]);
-  if (!user) {
+  }, [campaignAccess, userId, isOwner, editFriendsPressed, inviteUser, removeUser]);
+  if (!userId) {
     return <LoadingSpinner />;
   }
   return (
     <FriendFeedComponent
       componentId={componentId}
-      userId={user.uid}
+      userId={userId}
       toFeed={toFeed}
     />
   );

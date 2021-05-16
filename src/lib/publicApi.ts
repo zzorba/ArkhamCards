@@ -9,6 +9,8 @@ import Rule from '@data/types/Rule';
 import Database from '@data/sqlite/Database';
 import TabooSet from '@data/types/TabooSet';
 import FaqEntry from '@data/types/FaqEntry';
+import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
+import { GetCustomCardsDocument, GetCustomCardsQueryResult, GetCustomCardsQueryVariables } from '@generated/graphql/apollo-schema';
 
 const VERBOSE = false;
 export const syncTaboos = async function(
@@ -168,11 +170,18 @@ export const NON_LOCALIZED_CARDS = new Set(['en', 'pt']);
 
 export const syncCards = async function(
   db: Database,
+  anonClient: ApolloClient<NormalizedCacheObject>,
   packs: Pack[],
   lang?: string,
   cache?: CardCache
 ): Promise<CardCache | null> {
   VERBOSE && console.log('syncCards called');
+  const customCardsPromise = anonClient.query<GetCustomCardsQueryResult, GetCustomCardsQueryVariables>({
+    query: GetCustomCardsDocument,
+    variables: {
+      locale: lang || 'en',
+    },
+  });
   try {
     VERBOSE && console.log('Starting sync of cards from ArkhamDB');
     const langPrefix = lang && !NON_LOCALIZED_CARDS.has(lang) ? `${lang}.` : '';

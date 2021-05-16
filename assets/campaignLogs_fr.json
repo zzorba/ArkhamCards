@@ -1241,6 +1241,14 @@
             "text": "le soleil a banni Cnidathqua dans les profondeurs."
           },
           {
+            "id": "constellation_was_lost_to_the_depths",
+            "text": "the Constellation was lost to the depths."
+          },
+          {
+            "id": "constellation_was_saved",
+            "text": "the Constellation was saved."
+          },
+          {
             "id": "meh_excelsior_claims_another_victim",
             "text": "l'Excelsior a fait une nouvelle victime."
           },
@@ -1255,6 +1263,14 @@
           {
             "id": "meh_murders_continue_unsolved",
             "text": "les meurtres continuent, irrésolus."
+          },
+          {
+            "id": "ritual_at_sea_was_completed",
+            "text": "the ritual at sea was completed."
+          },
+          {
+            "id": "ritual_at_sea_was_halted",
+            "text": "the ritual at sea was halted."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
@@ -1318,6 +1334,30 @@
             "text": "leurre"
           },
           {
+            "id": "coc_bridge",
+            "text": "leurre"
+          },
+          {
+            "id": "coc_engine_room",
+            "text": "leurre"
+          },
+          {
+            "id": "coc_galley",
+            "text": "leurre"
+          },
+          {
+            "id": "coc_library",
+            "text": "leurre"
+          },
+          {
+            "id": "coc_passenger_cabins",
+            "text": "leurre"
+          },
+          {
+            "id": "coc_swap_chaos_bag",
+            "text": "leurre"
+          },
+          {
             "id": "epic_multiplayer",
             "text": "leurre"
           },
@@ -1374,23 +1414,23 @@
         "entries": [
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# a disparu dans le brouillard",
-            "feminine_text": "#name# a disparu dans le brouillard"
+            "masculine_text": "#name# a disparu dans la brume.",
+            "feminine_text": "#name# a disparu dans la brume."
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# a été aspiré dans le domaine spectral",
-            "feminine_text": "#name# a été aspirée dans le domaine spectral"
+            "masculine_text": "#name# a été aspiré dans le monde spectral",
+            "feminine_text": "#name# a été aspirée dans le monde spectral"
           },
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# a été enlevé par le Guetteur",
-            "feminine_text": "#name# a été enlevée par le Guetteur"
+            "masculine_text": "#name# a été emporté par le Guetteur",
+            "feminine_text": "#name# a été emportée par le Guetteur"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# a été réclamé par les spectres",
-            "feminine_text": "#name# a été réclamée par les spectres"
+            "masculine_text": "les spectres se sont emparés de #name#.",
+            "feminine_text": "les spectres se sont emparés de #name#."
           }
         ]
       },
@@ -1512,7 +1552,7 @@
           },
           {
             "id": "being_hunted",
-            "text": "vous êtes traqué."
+            "text": "vous êtes pris en chasse."
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
@@ -2745,6 +2785,176 @@
           {
             "id": "marsh",
             "text": "Barnabas Marsh"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "zdm",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "has_been_corrupted_by_the_earth",
+            "masculine_text": "#name# has been corrupted by the Earth.",
+            "feminine_text": "#name# has been corrupted by the Earth."
+          },
+          {
+            "id": "infected_by_cybervirus",
+            "masculine_text": "#name# has been infected by the cybervirus.",
+            "feminine_text": "#name# has been infected by the cybervirus."
+          },
+          {
+            "id": "allied_with_the_migo",
+            "text": "you are allied with the Mi-Go."
+          },
+          {
+            "id": "caught_in_the_supernovas_blast",
+            "text": "#name# was caught in the supernova's blast."
+          },
+          {
+            "id": "elbrus_station_has_been_fully_stabilized",
+            "text": "Elbrus Station has been fully stabilized."
+          },
+          {
+            "id": "elbrus_station_has_been_lost_in_the_quantum_realm",
+            "text": "Elbrus Station has been lost in the quantum realm."
+          },
+          {
+            "id": "entered_the_virtual_dreamlands_by_your_own_means",
+            "text": "you entered the Virtual Dreamlands by your own means."
+          },
+          {
+            "id": "escaped_hasturs_grasp_and_prevented_him_from_escaping_his_prison",
+            "text": "the investigators have finally escaped Hastur's grasp and prevented him from escaping his prison."
+          },
+          {
+            "id": "fully_restored_the_sanity_of_k2ps187",
+            "text": "you fully restored the sanity of K2-PS187."
+          },
+          {
+            "id": "hastur_and_tassilda_are_imprisoned",
+            "text": "Hastur and Tassilda are imprisoned in Carcosa once more, and the universe vanquished the inevitable… For now."
+          },
+          {
+            "id": "have_witnessed_the_primordial_chaos",
+            "text": "you have witnessed the primordial chaos."
+          },
+          {
+            "id": "have_witnessed_the_unconscious_pandemonium",
+            "text": "you have witnessed the unconscious pandemonium."
+          },
+          {
+            "id": "hope_was_shielded_from_the_blast",
+            "text": "Hope was shielded from the blast."
+          },
+          {
+            "id": "know_of_abjuration_of_the_throne",
+            "text": "you know of the Abjuration of the Throne."
+          },
+          {
+            "id": "lived_remainder_of_their_days_on_paradise",
+            "text": "#name# lived the remainder of their days, on Paradise."
+          },
+          {
+            "id": "lived_remainder_of_their_days_with_hope",
+            "text": "#name# lived the remainder of their days, with Hope."
+          },
+          {
+            "id": "migo_safely_returned_to_their_home_world",
+            "text": "the Mi-Go safely returned to their home world."
+          },
+          {
+            "id": "nostalgia_2_has_been_saved",
+            "text": "the Nostalgia II has been saved."
+          },
+          {
+            "id": "not_in_good_standing_with_the_migo",
+            "text": "you are not in good standing with the Mi-Go."
+          },
+          {
+            "id": "partially_restored_the_sanity_of_k2ps187",
+            "text": "you partially restored the sanity of K2-PS187."
+          },
+          {
+            "id": "realm_of_carcosa_overtook_our_universe",
+            "text": "the realm of Carcosa overtook our universe, and Tassilda rules over the black stars."
+          },
+          {
+            "id": "returned_to_the_palaces_of_dim_carcosa",
+            "text": "you have returned to the palaces of Dim Carcosa."
+          },
+          {
+            "id": "sun_went_supernova",
+            "text": "the sun went supernova and wiped out most of the solar system."
+          },
+          {
+            "id": "transported_to_the_virtual_dreamlands_by_maja",
+            "text": "you were transported to the Virtual Dreamlands by Maja."
+          },
+          {
+            "id": "trapped_in_a_virtual_nightmare",
+            "text": "you are trapped in a virtual nightmare."
+          },
+          {
+            "id": "trapped_within_carcosa",
+            "text": "the investigators are trapped within Carcosa."
+          },
+          {
+            "id": "ucc_escaped_to_another_galaxy",
+            "text": "the UCC escaped to another galaxy."
+          },
+          {
+            "id": "uncovered_the_cultists_inhuman_methods",
+            "text": "you have uncovered the cultist's inhuman methods."
+          },
+          {
+            "id": "watched_the_performance_of_heir_to_carcosa",
+            "text": "you have watched the performance of Heir to Carcosa."
+          },
+          {
+            "id": "witnesed_the_manifested_madness",
+            "text": "you witnessed the manifested madness."
+          },
+          {
+            "id": "you_have_rescued_the_remaining_crew_of_the_nostalgia_2",
+            "text": "you have rescued the remaining crew of the Nostalgia II."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "delayed_win",
+            "text": "leurre"
+          },
+          {
+            "id": "en_asked_reintegrated",
+            "text": "leurre"
+          },
+          {
+            "id": "lq_erwin",
+            "text": "leurre"
+          },
+          {
+            "id": "sm_migo_scientist",
+            "text": "leurre"
+          },
+          {
+            "id": "soe_crew_assets",
+            "text": "leurre"
+          },
+          {
+            "id": "soe_crew_imitations",
+            "text": "leurre"
+          },
+          {
+            "id": "zdm_end_2",
+            "text": "done"
           }
         ]
       }

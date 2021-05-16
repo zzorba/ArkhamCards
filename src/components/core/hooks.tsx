@@ -180,6 +180,7 @@ interface IncCountAction {
 interface DecCountAction {
   type: 'dec';
   key: string;
+  min?: number;
 }
 
 interface SetCountAction {
@@ -194,7 +195,7 @@ interface SyncCountAction {
 interface Counters {
   [code: string]: number | undefined;
 }
-export function useCounters(initialValue: Counters): [Counters, (code: string, max?: number) => void, (code: string) => void, (code: string, value: number) => void, (values: Counters) => void] {
+export function useCounters(initialValue: Counters): [Counters, (code: string, max?: number) => void, (code: string, min?: number) => void, (code: string, value: number) => void, (values: Counters) => void] {
   const [value, updateValue] = useReducer((state: Counters, action: IncCountAction | DecCountAction | SetCountAction | SyncCountAction) => {
     switch (action.type) {
       case 'set':
@@ -212,7 +213,7 @@ export function useCounters(initialValue: Counters): [Counters, (code: string, m
       case 'dec': {
         return {
           ...state,
-          [action.key]: Math.max(0, (state[action.key] || 0) - 1),
+          [action.key]: Math.max(action.min || 0, (state[action.key] || 0) - 1),
         };
       }
       case 'sync':
@@ -224,8 +225,8 @@ export function useCounters(initialValue: Counters): [Counters, (code: string, m
   const inc = useCallback((code: string, max?: number) => {
     updateValue({ type: 'inc', key: code, max });
   }, [updateValue]);
-  const dec = useCallback((code: string) => {
-    updateValue({ type: 'dec', key: code });
+  const dec = useCallback((code: string, min?: number) => {
+    updateValue({ type: 'dec', key: code, min });
   }, [updateValue]);
   const set = useCallback((code: string, value: number) => {
     updateValue({ type: 'set', key: code, value });
@@ -547,16 +548,16 @@ export function useCampaignScenarios(campaign: SingleCampaignT | undefined): [Sc
 export function useDeckWithFetch(id: DeckId | undefined, actions: DeckActions): LatestDeckT | undefined {
   const deck = useDeck(id, true);
   const dispatch = useDispatch();
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   useEffect(() => {
     if (!deck && id !== undefined && !id.local) {
-      dispatch(fetchPrivateDeck(user, actions, id));
+      dispatch(fetchPrivateDeck(userId, actions, id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     if (!deck?.previousDeck && deck?.deck.previousDeckId && !deck.deck.local && !deck.deck.previousDeckId.local) {
-      dispatch(fetchPrivateDeck(user, actions, deck.deck.previousDeckId));
+      dispatch(fetchPrivateDeck(userId, actions, deck.deck.previousDeckId));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deck]);

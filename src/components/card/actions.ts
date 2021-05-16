@@ -29,6 +29,7 @@ import {
 import { getCardLang, AppState } from '@reducers/index';
 import { NON_LOCALIZED_CARDS, syncCards, syncTaboos } from '@lib/publicApi';
 import Database from '@data/sqlite/Database';
+import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 
 const VERBOSE = false;
 function shouldFetchCards(state: AppState) {
@@ -52,6 +53,7 @@ export function setLanguageChoice(choiceLang: string): SetLanguageChoiceAction {
 
 export function fetchCards(
   db: Database,
+  anonClient: ApolloClient<NormalizedCacheObject>,
   cardLang: string,
   choiceLang: string
 ): ThunkAction<void, AppState, unknown, CardSetSchemaVersionAction | CardFetchStartAction | CardFetchErrorAction | CardFetchSuccessAction> {
@@ -76,9 +78,10 @@ export function fetchCards(
     VERBOSE && console.log('Fetching packs');
     const packs = await dispatch(fetchPacks(cardLang));
     VERBOSE && console.log('Packs fetched');
+
     try {
       const state = getState();
-      const cardCache = await syncCards(db, packs, cardLang, cardsCache(state, cardLang));
+      const cardCache = await syncCards(db, anonClient, packs, cardLang, cardsCache(state, cardLang));
       try {
         const tabooCache = await syncTaboos(
           db,

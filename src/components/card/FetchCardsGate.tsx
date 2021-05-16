@@ -19,6 +19,7 @@ import StyleContext from '@styles/StyleContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useEffectUpdate } from '@components/core/hooks';
 import useReduxMigrator from '@components/settings/useReduxMigrator';
+import ApolloClientContext from '@data/apollo/ApolloClientContext';
 
 const REFETCH_DAYS = 7;
 const REPROMPT_DAYS = 3;
@@ -52,10 +53,10 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props): JS
     const cards = await db.cards();
     return await cards.count();
   }, [db]);
-
+  const { anonClient } = useContext(ApolloClientContext);
   const doFetch = useCallback(() => {
-    dispatch(fetchCards(db, choiceLang, useSystemLang ? 'system' : choiceLang));
-  }, [dispatch, db, choiceLang, useSystemLang]);
+    dispatch(fetchCards(db, anonClient, choiceLang, useSystemLang ? 'system' : choiceLang));
+  }, [dispatch, db, anonClient, choiceLang, useSystemLang]);
 
   const ignoreUpdate = useCallback(() => {
     dispatch(dismissUpdatePrompt());

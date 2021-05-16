@@ -17,7 +17,7 @@ import FontSizePicker from './FontSizePicker';
 import LanguagePicker from './LanguagePicker';
 import SettingsTabooPicker from './SettingsTabooPicker';
 import { fetchCards } from '@components/card/actions';
-import { setSingleCardView, setAlphabetizeEncounterSets, setColorblind, setLeftAlign } from './actions';
+import { setSingleCardView, setAlphabetizeEncounterSets, setColorblind, setJustifyContent } from './actions';
 import { prefetch } from '@lib/auth';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { AppState, getLangChoice, getPacksInCollection, getPackSpoilers, getAllPacks } from '@reducers';
@@ -35,6 +35,7 @@ import { SHOW_DISSONANT_VOICES } from '@lib/audio/narrationPlayer';
 import DissonantVoicesLoginButton from './AccountSection/auth/DissonantVoicesLoginButton';
 import { useAlertDialog } from '@components/deck/dialogs';
 import { CURRENT_REDUX_VERSION } from '@reducers/settings';
+import ApolloClientContext from '@data/apollo/ApolloClientContext';
 
 function contactPressed() {
   Linking.openURL('mailto:arkhamcards@gmail.com');
@@ -64,7 +65,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
   const alphabetizeEncounterSets = useSelector((state: AppState) => state.settings.alphabetizeEncounterSets || false);
   const colorblind = useSelector((state: AppState) => state.settings.colorblind || false);
   const cardsLoading = useSelector((state: AppState) => state.cards.loading);
-  const justifyContent = useSelector((state: AppState) => !state.settings.leftAlignContent);
+  const justifyContent = useSelector((state: AppState) => !!state.settings.justifyContent);
   const cardsError = useSelector((state: AppState) => state.cards.error || undefined);
   const { lang } = useContext(LanguageContext);
   const langChoice = useSelector(getLangChoice);
@@ -111,9 +112,10 @@ export default function SettingsView({ componentId }: NavigationProps) {
     navButtonPressed('Settings.Backup', t`Backup`);
   }, [navButtonPressed]);
 
+  const { anonClient } = useContext(ApolloClientContext);
   const doSyncCards = useCallback(() => {
-    dispatch(fetchCards(db, lang, langChoice));
-  }, [dispatch, db, lang, langChoice]);
+    dispatch(fetchCards(db, anonClient, lang, langChoice));
+  }, [dispatch, db, anonClient, lang, langChoice]);
 
   const syncCardsText = useMemo(() => {
     if (cardsLoading) {
@@ -137,7 +139,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
   }, [dispatch]);
 
   const justifyContentChanged = useCallback((value: boolean) => {
-    dispatch(setLeftAlign(!value));
+    dispatch(setJustifyContent(value));
   }, [dispatch]);
 
   const rulesPressed = useCallback(() => {

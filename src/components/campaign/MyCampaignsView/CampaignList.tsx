@@ -37,7 +37,7 @@ interface CampaignItemType {
 
 export default function CampaignList({ onScroll, componentId, campaigns, footer, standalonesById, onRefresh, refreshing }: Props) {
   const { colors, width } = useContext(StyleContext);
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const onPress = useCallback((id: string, campaign: MiniCampaignT) => {
     Keyboard.dismiss();
     const options: Options = {
@@ -137,10 +137,10 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
     return (
       <>
         { Platform.OS === 'android' && <View style={styles.searchBarPadding} /> }
-        { !!user && <ConnectionProblemBanner width={width} /> }
+        { !!userId && <ConnectionProblemBanner width={width} /> }
       </>
     )
-  }, [width, user]);
+  }, [width, userId]);
   const [isRefreshing, setRefreshing] = useState(false);
   const doRefresh = useCallback(() => {
     setRefreshing(true);

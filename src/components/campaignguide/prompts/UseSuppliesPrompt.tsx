@@ -50,7 +50,7 @@ export default function UseSuppliesPrompt({ id, text, input, campaignLog }: Prop
       <InvestigatorCounterComponent
         id={`${id}_used`}
         countText={t`${supplyName} to use (${desiredCount})`}
-        limits={supplyLimits}
+        maxLimits={supplyLimits}
         requiredTotal={Math.min(totalProvisionCount, desiredCount)}
       />
     );
@@ -124,7 +124,7 @@ export default function UseSuppliesPrompt({ id, text, input, campaignLog }: Prop
             <InvestigatorCounterComponent
               id={id}
               countText={input.prompt}
-              limits={supplyLimits}
+              maxLimits={supplyLimits}
             />
           ) }
         </>

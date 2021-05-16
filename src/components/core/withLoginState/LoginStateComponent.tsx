@@ -9,23 +9,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '@actions';
 import { AppState } from '@reducers';
 import StyleContext from '@styles/StyleContext';
-import { DeckActions } from '@data/remote/decks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 interface Props {
   noWrapper: boolean;
   children: (login: () => void, signedIn: boolean, signInError?: string) => JSX.Element | null;
-  actions: DeckActions;
 }
 
-export default function LoginStateComponent({ noWrapper, actions, children }: Props) {
+export default function LoginStateComponent({ noWrapper, children }: Props) {
   const { backgroundStyle, colors } = useContext(StyleContext);
   const { arkhamDb } = useContext(ArkhamCardsAuthContext);
   const error = useSelector((state: AppState) => state.signedIn.error || undefined);
   const loading = useSelector((state: AppState) => state.signedIn.loading);
   const dispatch = useDispatch();
-  const { user } = useContext(ArkhamCardsAuthContext);
-  const doLogin = useCallback(() => dispatch(login(user, actions)), [dispatch, user, actions]);
+  const doLogin = useCallback(() => dispatch(login()), [dispatch]);
 
   if (noWrapper) {
     return children(doLogin, arkhamDb, error);

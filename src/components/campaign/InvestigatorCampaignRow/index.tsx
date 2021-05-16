@@ -87,7 +87,7 @@ export default function InvestigatorCampaignRow({
   const uploadingSelector = useMemo(makeUploadingDeckSelector, []);
   const uploading = useSelector((state: AppState) => uploadingSelector(state, campaign.id, investigator.code));
   const { colors, typography, width } = useContext(StyleContext);
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);
   }, [componentId, colors]);
@@ -96,7 +96,7 @@ export default function InvestigatorCampaignRow({
   const editXpPressed = useCallback(() => {
     showXpDialog(investigator);
   }, [showXpDialog, investigator]);
-  const canRemoveDeck = !deck?.owner || (user && deck.owner.id === user.uid);
+  const canRemoveDeck = !deck?.owner || (userId && deck.owner.id === userId);
 
   const [xpButton, upgradeBadge] = useXpSection({
     deck,

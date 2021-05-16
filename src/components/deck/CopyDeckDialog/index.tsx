@@ -40,7 +40,7 @@ type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 // TODO: remote decks
 export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signedIn, actions }: Props) {
   const { colors, typography } = useContext(StyleContext);
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected, networkType }, refreshNetworkStatus] = useNetworkStatus();
   const dispatch: DeckDispatch = useDispatch();
   const deck = useDeck(deckId);
@@ -67,10 +67,10 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
   }, [deckId]);
   const onDeckTypeChange = useCallback((value: boolean) => {
     if (value && !signedIn) {
-      dispatch(login(user, actions));
+      dispatch(login());
     }
     setOfflineDeck(!value);
-  }, [dispatch, signedIn, actions, user, setOfflineDeck]);
+  }, [dispatch, signedIn, setOfflineDeck]);
 
   const selectedDeck: Deck | undefined = useMemo(() => {
     if (baseDeck && getDeckId(baseDeck).uuid === selectedDeckId?.uuid) {
@@ -99,7 +99,7 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
     if (investigator && (!saving || isRetry)) {
       setSaving(true);
       const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none);
-      dispatch(saveClonedDeck(user, actions, local, selectedDeck, deckName || t`New Deck`)).then(
+      dispatch(saveClonedDeck(userId, actions, local, selectedDeck, deckName || t`New Deck`)).then(
         showNewDeck,
         (err) => {
           setSaving(false);
@@ -107,7 +107,7 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
         }
       );
     }
-  }, [signedIn, actions, isConnected, networkType, user,
+  }, [signedIn, actions, isConnected, networkType, userId,
     deckName, offlineDeck, selectedDeck, saving, investigator,
     dispatch, setSaving, setError, showNewDeck]);
   const onOkayPress = useMemo(() => throttle(() => saveCopy(false), 200), [saveCopy]);

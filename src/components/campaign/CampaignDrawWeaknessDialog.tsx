@@ -62,7 +62,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
   const { borderStyle } = useContext(StyleContext);
   const dispatch: DeckDispatch = useDispatch();
   const deckActions = useDeckActions();
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const campaign = useCampaign(campaignId);
   campaign?.latestDecks
   const investigators = useInvestigatorCards();
@@ -197,7 +197,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
       const problem = parsedDeck && parsedDeck.problem ? parsedDeck.problem.reason : '';
 
       setSaving(true);
-      dispatch(saveDeckChanges(user, deckActions, selectedDeck.deck, {
+      dispatch(saveDeckChanges(userId, deckActions, selectedDeck.deck, {
         slots: newSlots,
         problem,
         spentXp: parsedDeck && parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
@@ -216,7 +216,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
       });
     }
   }, [pendingNextCard, pendingAssignedCards, campaignId, weaknessSet, cards, selectedDeck, replaceRandomBasicWeakness, deckSlots,
-    unsavedAssignedCards, user, deckActions, setCampaignWeaknessSet, updateDeckSlots, saveWeakness, dispatch, setSaving, updatePendingAssignedCards, setPendingNextCard]);
+    unsavedAssignedCards, userId, deckActions, setCampaignWeaknessSet, updateDeckSlots, saveWeakness, dispatch, setSaving, updatePendingAssignedCards, setPendingNextCard]);
 
   const investigatorChooser = useMemo(() => {
     const investigator = selectedDeck && investigators && investigators[selectedDeck.investigator];

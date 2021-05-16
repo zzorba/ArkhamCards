@@ -18,11 +18,11 @@ import { AppState } from '@reducers';
 type AsyncDispatch = ThunkDispatch<AppState, unknown, Action>;
 
 export default function useChooseDeck(createDeckActions: DeckActions, updateActions: UpdateCampaignActions) {
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const dispatch: AsyncDispatch = useDispatch();
   const doAddInvestigator = useCallback(async(campaignId: CampaignId, code: string, deckId?: DeckId) => {
-    await dispatch(addInvestigator(user, createDeckActions, updateActions, campaignId, code, deckId));
-  }, [dispatch, user, createDeckActions, updateActions]);
+    await dispatch(addInvestigator(userId, createDeckActions, updateActions, campaignId, code, deckId));
+  }, [dispatch, userId, createDeckActions, updateActions]);
 
   const showChooseDeck = useCallback((
     campaignId: CampaignId,

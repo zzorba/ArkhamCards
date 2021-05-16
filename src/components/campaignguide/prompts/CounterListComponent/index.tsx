@@ -17,6 +17,7 @@ export interface CounterItem {
   description?: string;
   color?: string;
   limit?: number;
+  min?: number;
 }
 
 interface Props {
@@ -25,9 +26,10 @@ interface Props {
   countText?: string;
   requiredTotal?: number;
   loading?: boolean;
+  showDelta?: boolean;
 }
 
-export default function CounterListComponent({ id, items, countText, requiredTotal, loading }: Props) {
+export default function CounterListComponent({ id, items, countText, requiredTotal, loading, showDelta }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { colors, borderStyle, typography } = useContext(StyleContext);
   const [counts, onInc, onDec] = useCounters({});
@@ -95,7 +97,7 @@ export default function CounterListComponent({ id, items, countText, requiredTot
         <View style={[styles.loadingRow, borderStyle]}>
           <ActivityIndicator size="small" animating color={colors.lightText} />
         </View>
-      ) : map(items, ({ code, name, description, limit, color }, idx) => {
+      ) : map(items, ({ code, name, description, limit, min, color }, idx) => {
         const value = getValue(code);
         return (
           <CounterListItemComponent
@@ -106,9 +108,11 @@ export default function CounterListComponent({ id, items, countText, requiredTot
             description={description}
             onInc={onInc}
             onDec={onDec}
-            limit={limit}
+            max={limit}
+            min={min}
             editable={!hasDecision}
             color={color}
+            showDelta={!!showDelta}
           />
         );
       }) }

@@ -11,27 +11,28 @@ interface Props {
   description?: string;
   color?: string;
   value: number;
-  limit?: number;
-  onInc: (code: string, limit?: number) => void;
-  onDec: (code: string) => void;
+  max?: number;
+  min?: number;
+  onInc: (code: string, max?: number) => void;
+  onDec: (code: string, min?: number) => void;
   editable: boolean;
+  showDelta: boolean;
 }
 
-export default function CounterListItemComponent({ code, name, description, color, value, limit, onInc, onDec, editable }: Props) {
+export default function CounterListItemComponent({ code, name, description, color, value, max, min, onInc, onDec, editable, showDelta }: Props) {
   const { borderStyle, typography } = useContext(StyleContext);
-  const inc = useCallback(() => onInc(code, limit), [onInc, code, limit]);
-  const dec = useCallback(() => onDec(code), [onDec, code]);
+  const inc = useCallback(() => onInc(code, max), [onInc, code, max]);
+  const dec = useCallback(() => onDec(code, min), [onDec, code, min]);
 
   const count = useMemo(() => {
     return (
       <View style={styles.count}>
         <Text style={[typography.bigGameFont, typography.center, color ? typography.white : {}]}>
-          { value }
+          { showDelta && value > 0 ? `+${value}` : `${value}` }
         </Text>
       </View>
     );
-  }, [color, value, typography]);
-
+  }, [color, value, showDelta, typography]);
   return (
     <View style={[
       styles.promptRow,
@@ -51,7 +52,8 @@ export default function CounterListItemComponent({ code, name, description, colo
       { editable ? (
         <PlusMinusButtons
           count={value}
-          max={limit}
+          max={max}
+          min={min}
           onIncrement={inc}
           onDecrement={dec}
           countRender={count}

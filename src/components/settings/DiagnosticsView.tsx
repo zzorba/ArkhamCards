@@ -26,6 +26,7 @@ import { saveAuthResponse } from '@lib/dissonantVoices';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useApolloClient } from '@apollo/client';
+import ApolloClientContext from '@data/apollo/ApolloClientContext';
 
 
 function goOffline() {
@@ -86,9 +87,10 @@ export default function DiagnosticsView() {
     await (await db.tabooSets()).createQueryBuilder().delete().execute();
   }, [db]);
   const apollo = useApolloClient();
+  const { anonClient } = useContext(ApolloClientContext);
   const doSyncCards = useCallback(() => {
-    dispatch(fetchCards(db, lang, langChoice));
-  }, [dispatch, lang, langChoice, db]);
+    dispatch(fetchCards(db, anonClient, lang, langChoice));
+  }, [dispatch, lang, langChoice, db, anonClient]);
 
   const clearCache = useCallback(async() => {
     dispatch(clearDecks());

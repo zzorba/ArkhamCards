@@ -26,7 +26,6 @@ import {
 } from '@actions/types';
 
 import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
-import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { CreateCampaignActions, GuideActions } from '@data/remote/campaigns';
 import { DeckActions, uploadCampaignDeckHelper } from '@data/remote/decks';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
@@ -115,14 +114,14 @@ export function uploadCampaign(
 }
 
 export function undo(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: GuideActions,
   campaignId: CampaignId,
   scenarioId: string,
   campaignState: CampaignGuideStateT
 ): ThunkAction<void, AppState, unknown, GuideUndoInputAction> {
   return (dispatch) => {
-    if (user && campaignId.serverId) {
+    if (userId && campaignId.serverId) {
       const undoInputs = campaignState.undoInputs(scenarioId);
       if (undoInputs.length) {
         actions.removeInputs(campaignId, undoInputs);
@@ -139,7 +138,7 @@ export function undo(
 }
 
 function updateAchievement(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   action: GuideUpdateAchievementAction
 ): ThunkAction<void, AppState, unknown, GuideUpdateAchievementAction> {
   return (dispatch) => {
@@ -148,18 +147,18 @@ function updateAchievement(
 }
 
 export function setBinaryAchievement(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: GuideActions,
   campaignId: CampaignId,
   achievementId: string,
   value: boolean,
 ): ThunkAction<void, AppState, unknown, GuideUpdateAchievementAction> {
   return (dispatch) => {
-    if (user && campaignId.serverId) {
+    if (userId && campaignId.serverId) {
       actions.setBinaryAchievement(campaignId, achievementId, value);
     } else {
       dispatch(
-        updateAchievement(user, {
+        updateAchievement(userId, {
           type: GUIDE_UPDATE_ACHIEVEMENT,
           campaignId,
           id: achievementId,
@@ -172,17 +171,17 @@ export function setBinaryAchievement(
 }
 
 export function incCountAchievement(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: GuideActions,
   campaignId: CampaignId,
   achievementId: string,
   max?: number
 ): ThunkAction<void, AppState, unknown, GuideUpdateAchievementAction> {
   return (dispatch) => {
-    if (user && campaignId.serverId) {
+    if (userId && campaignId.serverId) {
       actions.incAchievement(campaignId, achievementId, max);
     } else {
-      dispatch(updateAchievement(user, {
+      dispatch(updateAchievement(userId, {
         type: GUIDE_UPDATE_ACHIEVEMENT,
         campaignId,
         id: achievementId,
@@ -195,17 +194,17 @@ export function incCountAchievement(
 }
 
 export function decCountAchievement(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: GuideActions,
   campaignId: CampaignId,
   achievementId: string,
   max?: number
 ): ThunkAction<void, AppState, unknown, GuideUpdateAchievementAction> {
   return (dispatch) => {
-    if (user && campaignId.serverId) {
+    if (userId && campaignId.serverId) {
       actions.decAchievement(campaignId, achievementId);
     } else {
-      dispatch(updateAchievement(user, {
+      dispatch(updateAchievement(userId, {
         type: GUIDE_UPDATE_ACHIEVEMENT,
         campaignId,
         id: achievementId,
@@ -218,7 +217,7 @@ export function decCountAchievement(
 }
 
 export function resetScenario(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   campaignId: CampaignId,
   scenarioId: string
 ): ThunkAction<void, AppState, unknown, GuideResetScenarioAction> {
@@ -233,13 +232,13 @@ export function resetScenario(
 }
 
 function setGuideInputAction(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: GuideActions,
   campaignId: CampaignId,
   input: GuideInput
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
   return async(dispatch) => {
-    if (user && campaignId.serverId) {
+    if (userId && campaignId.serverId) {
       actions.setInput(campaignId, input);
     } else {
       dispatch({
@@ -252,12 +251,12 @@ function setGuideInputAction(
   };
 }
 export function startScenario(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: GuideActions,
   campaignId: CampaignId,
   scenario: string
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
-  return setGuideInputAction(user, actions, campaignId, {
+  return setGuideInputAction(userId, actions, campaignId, {
     type: 'start_scenario',
     scenario,
     step: undefined,
@@ -266,23 +265,23 @@ export function startScenario(
 
 
 export function startSideScenario(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: GuideActions,
   campaignId: CampaignId,
   scenario: GuideStartSideScenarioInput | GuideStartCustomSideScenarioInput
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
-  return setGuideInputAction(user, actions, campaignId, scenario);
+  return setGuideInputAction(userId, actions, campaignId, scenario);
 }
 
 export function setScenarioDecision(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: GuideActions,
   campaignId: CampaignId,
   step: string,
   value: boolean,
   scenario?: string
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
-  return setGuideInputAction(user, actions, campaignId, {
+  return setGuideInputAction(userId, actions, campaignId, {
     type: 'decision',
     scenario,
     step,
@@ -291,13 +290,13 @@ export function setScenarioDecision(
 }
 
 export function setInterScenarioData(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: GuideActions,
   campaignId: CampaignId,
   value: InvestigatorTraumaData,
   scenario?: string
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
-  return setGuideInputAction(user, actions, campaignId, {
+  return setGuideInputAction(userId, actions, campaignId, {
     type: 'inter_scenario',
     scenario,
     investigatorData: value,
@@ -306,14 +305,14 @@ export function setInterScenarioData(
 }
 
 export function setScenarioCount(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: GuideActions,
   campaignId: CampaignId,
   step: string,
   value: number,
   scenario?: string
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
-  return setGuideInputAction(user, actions, campaignId, {
+  return setGuideInputAction(userId, actions, campaignId, {
     type: 'count',
     scenario,
     step,
@@ -322,14 +321,14 @@ export function setScenarioCount(
 }
 
 export function setScenarioSupplies(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: GuideActions,
   campaignId: CampaignId,
   step: string,
   supplies: SupplyCounts,
   scenario?: string
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
-  return setGuideInputAction(user, actions, campaignId, {
+  return setGuideInputAction(userId, actions, campaignId, {
     type: 'supplies',
     scenario,
     step,
@@ -338,7 +337,7 @@ export function setScenarioSupplies(
 }
 
 export function setScenarioNumberChoices(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: GuideActions,
   campaignId: CampaignId,
   step: string,
@@ -346,7 +345,7 @@ export function setScenarioNumberChoices(
   deckId?: DeckId,
   scenario?: string
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
-  return setGuideInputAction(user, actions, campaignId, {
+  return setGuideInputAction(userId, actions, campaignId, {
     type: 'choice_list',
     scenario,
     step,
@@ -356,14 +355,14 @@ export function setScenarioNumberChoices(
 }
 
 export function setScenarioStringChoices(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: GuideActions,
   campaignId: CampaignId,
   step: string,
   choices: StringChoices,
   scenario?: string
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
-  return setGuideInputAction(user, actions, campaignId, {
+  return setGuideInputAction(userId, actions, campaignId, {
     type: 'string_choices',
     scenario,
     step,
@@ -372,14 +371,14 @@ export function setScenarioStringChoices(
 }
 
 export function setScenarioChoice(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: GuideActions,
   campaignId: CampaignId,
   step: string,
   choice: number,
   scenario?: string
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
-  return setGuideInputAction(user, actions, campaignId, {
+  return setGuideInputAction(userId, actions, campaignId, {
     type: 'choice',
     scenario,
     step,
@@ -388,14 +387,14 @@ export function setScenarioChoice(
 }
 
 export function setScenarioText(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: GuideActions,
   campaignId: CampaignId,
   step: string,
   text: string,
   scenario?: string
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
-  return setGuideInputAction(user, actions, campaignId, {
+  return setGuideInputAction(userId, actions, campaignId, {
     type: 'text',
     scenario,
     step,
@@ -404,14 +403,14 @@ export function setScenarioText(
 }
 
 export function setCampaignLink(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: GuideActions,
   campaignId: CampaignId,
   step: string,
   decision: string,
   scenario?: string
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
-  return setGuideInputAction(user, actions, campaignId, {
+  return setGuideInputAction(userId, actions, campaignId, {
     type: 'campaign_link',
     scenario,
     step,

@@ -8,7 +8,6 @@ import DeckButton from '@components/deck/controls/DeckButton';
 import DeckActionRow from '@components/deck/controls/DeckActionRow';
 import useNetworkStatus from '@components/core/useNetworkStatus';
 import { ShowAlert } from '@components/deck/dialogs';
-import { useDeckActions } from '@data/remote/decks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 interface Props {
@@ -24,11 +23,9 @@ export default function ArkhamDbLoginButton({ last, showAlert }: Props) {
   const doLogout = useCallback(() => {
     dispatch(logout());
   }, [dispatch]);
-  const { user } = useContext(ArkhamCardsAuthContext);
-  const actions = useDeckActions();
   const loginPressed = useCallback(() => {
-    dispatch(login(user, actions));
-  }, [dispatch, user, actions]);
+    dispatch(login());
+  }, [dispatch]);
   const logOutPressed = useCallback(() => {
     showAlert(
       t`Are you sure you want to sign out?`,

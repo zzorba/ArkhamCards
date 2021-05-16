@@ -1,16 +1,16 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { map, partition } from 'lodash';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import {
   CUSTOM,
-  ALL_CAMPAIGNS,
   GUIDED_CAMPAIGNS,
   TDE,
   TDEA,
   TDEB,
   CampaignCycleCode,
+  DARK_MATTER,
 } from '@actions/types';
 import CycleItem from './CycleItem';
 import { campaignName } from '../constants';
@@ -18,7 +18,10 @@ import { getPacksInCollection } from '@reducers';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 
 export interface SelectCampagaignProps {
+  campaigns: CampaignCycleCode[];
   campaignChanged: (packCode: CampaignCycleCode, text: string, hasGuide: boolean) => void;
+  segment?: boolean;
+  includeCustom?: boolean;
 }
 
 function campaignDescription(packCode: CampaignCycleCode): string | undefined {
@@ -29,12 +32,14 @@ function campaignDescription(packCode: CampaignCycleCode): string | undefined {
       return t`Campaign A\nFour-part campaign`;
     case TDEB:
       return t`Campaign B\nFour-part campaign`;
+    case DARK_MATTER:
+      return t`By Axolotl`
     default:
       return undefined;
   }
 }
 
-export default function CampaignTab({ campaignChanged }: SelectCampagaignProps) {
+export default function CampaignTab({ campaignChanged, campaigns, segment, includeCustom }: SelectCampagaignProps) {
   const in_collection = useSelector(getPacksInCollection);
 
   const onPress = useCallback((campaignCode: CampaignCycleCode, text: string) => {
@@ -54,19 +59,24 @@ export default function CampaignTab({ campaignChanged }: SelectCampagaignProps) 
     );
   }, [onPress]);
 
-  const [myCampaigns, otherCampaigns] = partition(
-    ALL_CAMPAIGNS,
-    pack_code => (in_collection[pack_code] || (
-      in_collection.tde && (pack_code === TDEA || pack_code === TDEB || pack_code === TDE)))
-  );
+  const [myCampaigns, otherCampaigns] = useMemo(() => {
+    if (!segment) {
+      return [campaigns, []];
+    }
+    return partition(
+      campaigns,
+      pack_code => (in_collection[pack_code] || (
+        in_collection.tde && (pack_code === TDEA || pack_code === TDEB || pack_code === TDE)))
+    );
+  }, [segment, campaigns, in_collection]);
   return (
     <>
-      { myCampaigns.length > 0 && (
+      { !!segment && myCampaigns.length > 0 && (
         <CardSectionHeader section={{ title: t`My Campaigns` }} />
       ) }
       { map(myCampaigns, pack_code => renderCampaign(pack_code)) }
-      { renderCampaign(CUSTOM) }
-      { otherCampaigns.length > 0 && (
+      { includeCustom && renderCampaign(CUSTOM) }
+      { !!segment && otherCampaigns.length > 0 && (
         <CardSectionHeader section={{ title: t`Other Campaigns` }} />
       ) }
       { map(otherCampaigns, pack_code => renderCampaign(pack_code)) }

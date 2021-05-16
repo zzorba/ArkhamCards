@@ -68,10 +68,10 @@ export function setColorblind(value: boolean): SetMiscSettingAction {
 }
 
 
-export function setLeftAlign(value: boolean): SetMiscSettingAction {
+export function setJustifyContent(value: boolean): SetMiscSettingAction {
   return {
     type: SET_MISC_SETTING,
-    setting: 'left_align',
+    setting: 'justify',
     value,
   };
 }

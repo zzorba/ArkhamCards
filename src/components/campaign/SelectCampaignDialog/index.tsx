@@ -4,7 +4,8 @@ import { ScrollView, StyleSheet, Text } from 'react-native';
 import { t } from 'ttag';
 
 import {
-  CampaignCycleCode, StandaloneId,
+  ALL_CAMPAIGNS,
+  CampaignCycleCode, CUSTOM_CAMPAIGNS, StandaloneId,
 } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import useTabView from '@components/core/useTabView';
@@ -13,6 +14,9 @@ import CampaignTab from './CampaignTab';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import space from '@styles/space';
+import CardSectionHeader from '@components/core/CardSectionHeader';
+
+const SHOW_CUSTOM = false;
 
 export type CampaignSelection = {
   type: 'campaign';
@@ -50,12 +54,30 @@ function SelectCampaignDialog({ selectionChanged, componentId }: SelectCampagaig
       title: t`Campaigns`,
       node: (
         <ScrollView style={[styles.flex, backgroundStyle]}>
-          <CampaignTab campaignChanged={campaignChanged} />
+          <CampaignTab
+            campaignChanged={campaignChanged}
+            campaigns={ALL_CAMPAIGNS}
+            segment
+            includeCustom={!SHOW_CUSTOM}
+          />
           <ArkhamButton
             icon="edit"
             onPress={editCollection}
             title={t`Edit Collection`}
           />
+          { !!SHOW_CUSTOM && (
+            <>
+              <CardSectionHeader section={{ title: t`Fan-Made Campaigns` }} />
+              <CampaignTab
+                campaignChanged={campaignChanged}
+                campaigns={CUSTOM_CAMPAIGNS}
+                includeCustom
+              />
+              <Text style={[space.marginSideM, space.marginTopM, space.marginBottomL, typography.text]}>
+                { t`If you are a custom content creator who has a "finished" campaign you'd like to see in the app, contact me at arkhamcards@gmail.com. Adding custom campaigns is a great deal of work, but I'd love to support the community in anyway I can.` }
+              </Text>
+            </>
+          ) }
         </ScrollView>
       ),
     },

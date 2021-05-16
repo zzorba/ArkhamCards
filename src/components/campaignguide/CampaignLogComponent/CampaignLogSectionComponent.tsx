@@ -11,9 +11,10 @@ interface Props {
   sectionId: string;
   campaignGuide: CampaignGuide;
   section: EntrySection;
+  title?: string;
 }
 
-export default function CampaignLogSectionComponent({ sectionId, campaignGuide, section }: Props) {
+export default function CampaignLogSectionComponent({ sectionId, campaignGuide, section, title }: Props) {
   const renderEntry = useCallback((entry: CampaignLogEntry) => {
     if (entry.type === 'freeform') {
       return (
@@ -38,7 +39,7 @@ export default function CampaignLogSectionComponent({ sectionId, campaignGuide, 
           }
           return (
             <TextEntryComponent
-              text={`${logEntry.supply.name}: #X#`}
+              text={`${title || logEntry.supply.name}: #X#`}
               entry={entry}
             />
           );
@@ -76,6 +77,10 @@ export default function CampaignLogSectionComponent({ sectionId, campaignGuide, 
             decoration={decoration}
           />
         );
+      case 'investigator_count':
+        return (
+          <Text>investigator   count</Text>
+        );
       case 'section_count':
         return (
           <Text>section count</Text>
@@ -90,7 +95,7 @@ export default function CampaignLogSectionComponent({ sectionId, campaignGuide, 
           />
         );
     }
-  }, [sectionId, campaignGuide, section]);
+  }, [sectionId, campaignGuide, section, title]);
 
   return (
     <>

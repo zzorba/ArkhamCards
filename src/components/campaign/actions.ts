@@ -57,7 +57,6 @@ import {
 } from '@actions/types';
 import { ChaosBag, ChaosTokenType } from '@app_constants';
 import { AppState, makeCampaignSelector, getDeck, makeDeckSelector } from '@reducers';
-import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { DeckActions, uploadCampaignDeckHelper } from '@data/remote/decks';
 import { SetCampaignChaosBagAction, SetCampaignNotesAction, SetCampaignShowInterludes, SetCampaignWeaknessSetAction, UpdateCampaignActions } from '@data/remote/campaigns';
 import { ChaosBagActions } from '@data/remote/chaosBag';
@@ -101,7 +100,7 @@ export function cleanBrokenCampaigns(): CleanBrokenCampaignsAction {
 }
 
 export function addInvestigator(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   deckActions: DeckActions,
   updateCampaignActions: UpdateCampaignActions,
   id: CampaignId,
@@ -112,7 +111,7 @@ export function addInvestigator(
     const baseDeckId = deckId ?
       getBaseDeckIds(getState(), [deckId])[0] :
       undefined;
-    if (user && id.serverId) {
+    if (userId && id.serverId) {
       await updateCampaignActions.addInvestigator(id, investigator);
     } else {
       const action: CampaignAddInvestigatorAction = {
@@ -124,14 +123,14 @@ export function addInvestigator(
       };
       dispatch(action);
     }
-    if (baseDeckId && id.serverId && user) {
+    if (baseDeckId && id.serverId && userId) {
       await dispatch(uploadCampaignDeckHelper(id, baseDeckId, deckActions));
     }
   };
 }
 
 export function removeInvestigator(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: UpdateCampaignActions,
   id: CampaignId,
   investigator: string,
@@ -141,7 +140,7 @@ export function removeInvestigator(
     const baseDeckId = deckId ?
       getBaseDeckIds(getState(), [deckId])[0] :
       undefined;
-    if (user && id.serverId) {
+    if (userId && id.serverId) {
       if (deckId) {
         // First removal is only for the deck
         await actions.removeInvestigatorDeck(id, investigator);
@@ -162,7 +161,7 @@ export function removeInvestigator(
 }
 
 export function newLinkedCampaign(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   name: string,
   cycleCode: CampaignCycleCode,
   cycleCodeA: CampaignCycleCode,
@@ -182,7 +181,7 @@ export function newLinkedCampaign(
 }
 
 export function newStandalone(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   name: string,
   standaloneId: StandaloneId,
   deckIds: DeckId[],
@@ -204,7 +203,7 @@ export function newStandalone(
 }
 
 export function newCampaign(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   name: string,
   pack_code: CampaignCycleCode,
   difficulty: CampaignDifficulty | undefined,
@@ -281,7 +280,7 @@ export function updateCampaignInvestigatorTrauma(
 
 
 export function updateCampaignInvestigatorData(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   actions: UpdateCampaignActions,
   id: CampaignId,
   investigator: string,
@@ -620,7 +619,7 @@ export function removeLocalCampaign(
 }
 
 export function deleteCampaign(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   { campaignId }: CampaignId
 ): ThunkAction<void, AppState, unknown, DeleteCampaignAction | RemoveUploadDeckAction> {
   return (dispatch, getState) => {
@@ -644,7 +643,7 @@ export function deleteCampaign(
 }
 
 export function addScenarioResult(
-  user: FirebaseAuthTypes.User | undefined,
+  userId: string | undefined,
   campaignId: CampaignId,
   scenarioResult: ScenarioResult,
   campaignNotes?: CampaignNotes

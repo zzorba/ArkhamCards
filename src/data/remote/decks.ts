@@ -10,10 +10,10 @@ import {
   Deck,
   DeckId,
   UploadedCampaignId,
-  UploadedDeck,
   getDeckId,
   SYNC_DECK,
   UPLOAD_DECK,
+  GroupedUploadedDecks,
 } from '@actions/types';
 import {
   useDeleteAllArkhamDbDecksMutation,
@@ -36,7 +36,6 @@ import {
 } from '@generated/graphql/apollo-schema';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { ApolloCache, useApolloClient } from '@apollo/client';
-import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { optimisticUpdates } from './apollo';
 
 let fakeId: number = -1;
@@ -51,7 +50,7 @@ export interface DeckActions {
     deck: Deck,
     campaignId: UploadedCampaignId,
     previousDeckId: DeckId
-  ) => Promise<void >;
+  ) => Promise<void>;
 }
 
 function hashDeck(deck: Deck): Promise<string> {
@@ -109,47 +108,82 @@ export function uploadCampaignDeckHelper(
 
 export async function syncCampaignDecksFromArkhamDB(
   decks: ArkhamDbDeck[],
-  uploadedDecks: {
-    [uuid: string]: UploadedDeck | undefined;
-  },
+  uploadedDecks: GroupedUploadedDecks,
   actions: DeckActions
 ) {
+  const arkhamDbDecksById: { [uuid: string]: ArkhamDbDeck } = {};
   const foundDecks: { [uuid: string]: boolean } = {};
-  for (let i = 0; i < decks.length; i++) {
-    const deck = decks[i];
-    const deckId = getDeckId(deck);
+  forEach(decks, d => {
+    const deckId = getDeckId(d);
     foundDecks[deckId.uuid] = true;
-    const hash = await hashDeck(deck);
-    const uploadedDeck = uploadedDecks[deckId.uuid];
-    if (uploadedDeck) {
-      if (uploadedDeck.hash !== hash) {
-        // Content changed, so we need to update the deck.
-        for (let j = 0; j < uploadedDeck.campaignId.length; j++) {
-          const campaignId = uploadedDeck.campaignId[j];
-          await actions.updateDeck(deck, campaignId);
+    arkhamDbDecksById[deckId.uuid] = d;
+  });
+
+  // We need to visit the decks in order, from first (base) to last (latest).
+  for (let i = 0; i < decks.length; i++) {
+    const baseDeck = decks[i];
+    if (baseDeck.previousDeckId) {
+      // Not a base deck, so continue for now.
+      continue;
+    }
+    const baseDeckId = getDeckId(baseDeck);
+    const baseUploadedDecks = uploadedDecks[baseDeckId.uuid];
+    if (!baseUploadedDecks) {
+      // Not uploaded to ArkhamDB, so we aren't interested in this one, apparently.
+      continue;
+    }
+    let deck: ArkhamDbDeck = baseDeck;
+    while (true) {
+      const deckId = getDeckId(deck);
+      const uploadedDeck = uploadedDecks[deckId.uuid];
+      if (uploadedDeck) {
+        const hash = await hashDeck(baseDeck);
+        if (uploadedDeck.hash !== hash) {
+          // Content changed, so we need to update the deck.
+          await Promise.all(map(uploadedDeck.campaignId, campaignId => actions.updateDeck(deck, campaignId)));
         }
-      }
-      if (deck.nextDeckId) {
-        // It has a next deck, let's check if its properly aligned.
-        const uploadedNextDeck = uploadedDecks[deck.nextDeckId.uuid];
-        if (uploadedNextDeck) {
-          // It already exists, let's make sure its id matches.
+        if (deck.nextDeckId) {
+          // It has a next deck, let's check if its properly aligned.
+          const uploadedNextDeck = uploadedDecks[deck.nextDeckId.uuid];
+          if (uploadedNextDeck && (!uploadedNextDeck.deckId.local || deck.nextDeckId.id !== uploadedNextDeck.deckId.id)) {
+            // It already exists, but has the wrong arkhamDbID -- so we delete it, and it will be recreated later (in the loop);
+            await Promise.all(map(uploadedNextDeck.campaignId, campaignId => actions.deleteDeck(uploadedNextDeck.deckId, campaignId, false)));
+            delete uploadedDecks[deck.nextDeckId.uuid];
+          }
         }
-      } else {
-        // Maybe
+      } else if (deck.previousDeckId) {
+        const previousDeckId = deck.previousDeckId;
+        // This is a deck we are interested in uploading, but we don't seem to have a record on our server.
+        // So we need to create a 'new' one in the chain.
+        await Promise.all(map(baseUploadedDecks.campaignId, campaignId => actions.createNextDeck(deck, campaignId, previousDeckId)))
       }
+      const nextDeck: ArkhamDbDeck | undefined = deck.nextDeckId && arkhamDbDecksById[deck.nextDeckId.uuid];
+      if (!nextDeck) {
+        // Job's done
+        break;
+      }
+      // Keep going until we process the whole 'chain'
+      deck = nextDeck;
     }
   }
-  const uuids = keys(uploadedDecks);
-  for (let i = 0; i < uuids.length; i++) {
-    const uuid = uuids[i];
-    const uploadedDeck = uploadedDecks[uuid];
-    if (uploadedDeck) {
-      if (uploadedDeck.deckId.local && !foundDecks[uploadedDeck.deckId.uuid]) {
-        for (let j = 0; j < uploadedDeck.campaignId.length; j++) {
-          const campaignId = uploadedDeck.campaignId[j];
-          await actions.deleteDeck(uploadedDeck.deckId, campaignId, false);
-        }
+
+  // Now to handle the deletion for decks we did *not* find.
+  if (decks.length) {
+    // If there are zero ArkhamDB decks, we don't delete since we *aren't sure* which are ours.
+    const arkhamDbUser = decks[0].user_id;
+    const uuids = keys(uploadedDecks);
+    for (let i = 0; i < uuids.length; i++) {
+      const uuid = uuids[i];
+      const uploadedDeck = uploadedDecks[uuid];
+      // We need to delete the deck if all of the following are true:
+      // 1) a remote deck
+      // 2) from the same user
+      // 3) that we didn't find in this payload
+      if (uploadedDeck && !uploadedDeck.deckId.local &&
+        uploadedDeck.deckId.arkhamdb_user === arkhamDbUser &&
+        !foundDecks[uploadedDeck.deckId.uuid]
+      ) {
+        await Promise.all(map(uploadedDeck.campaignId, campaignId => actions.deleteDeck(uploadedDeck.deckId, campaignId, false)));
       }
     }
   }
@@ -174,22 +208,22 @@ interface DeckCache {
   arkhamDb: { [arkhamDbId: number]: RemoteDeckInfo | undefined };
 }
 
-function getUserHandle(cache: ApolloCache<unknown>, user: FirebaseAuthTypes.User): string | undefined {
+function getUserHandle(cache: ApolloCache<unknown>, userId: string): string | undefined {
   return cache.readFragment<UserInfoFragment>({
     fragment: UserInfoFragmentDoc,
     fragmentName: 'UserInfo',
     id: cache.identify({
       __typename: 'users',
-      id: user.uid,
+      id: userId,
     }),
   })?.handle || undefined;
 }
 
-function getDeckCache(cache: ApolloCache<unknown>, user: FirebaseAuthTypes.User | undefined): DeckCache {
+function getDeckCache(cache: ApolloCache<unknown>, userId: string | undefined): DeckCache {
   const cacheData = cache.readQuery<GetMyDecksQuery>({
     query: GetMyDecksDocument,
     variables: {
-      usuerId: user?.uid || '',
+      usuerId: userId || '',
     },
   });
   const all: { [id: number]: RemoteDeckInfo | undefined } = {};
@@ -297,7 +331,7 @@ function getPreviousDeck(
   };
 }
 export function useDeckActions(): DeckActions {
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const apollo = useApolloClient();
   const cache = useRef(apollo.cache);
   cache.current = apollo.cache;
@@ -307,9 +341,9 @@ export function useDeckActions(): DeckActions {
   const [deleteAllArkhamDbDecks] = useDeleteAllArkhamDbDecksMutation();
   const [deleteAllLocalDecks] = useDeleteAllLocalDecksMutation();
   const deleteDeck = useCallback(async(deckId: DeckId, campaignId: UploadedCampaignId, deleteAllVersions: boolean) => {
-    const owner_id = user?.uid || '';
+    const owner_id = userId || '';
     if (deleteAllVersions) {
-      const deckCache = getDeckCache(cache.current, user);
+      const deckCache = getDeckCache(cache.current, userId);
       if (deckId.local) {
         const ids = getAllDeckIds(deckCache.local[deckId.uuid], deckCache);
         await deleteAllLocalDecks({
@@ -445,12 +479,12 @@ export function useDeckActions(): DeckActions {
         update: optimisticUpdates.deleteArkhamDbDeck.update,
       });
     }
-  }, [deleteArkhamDbDeck, deleteLocalDeck, deleteAllLocalDecks, deleteAllArkhamDbDecks, user]);
+  }, [deleteArkhamDbDeck, deleteLocalDeck, deleteAllLocalDecks, deleteAllArkhamDbDecks, userId]);
 
   const [updateLocalDeck] = useUpdateLocalDeckMutation();
   const [updateArkhamDbDeck] = useUpdateArkhamDbDeckMutation();
   const updateDeck = useCallback(async(deck: Deck, campaignId: UploadedCampaignId) => {
-    const owner_id = user?.uid || '';
+    const owner_id = userId || '';
     const content_hash = await hashDeck(deck);
     if (deck.local) {
       await updateLocalDeck({
@@ -517,7 +551,7 @@ export function useDeckActions(): DeckActions {
         },
       });
     }
-  }, [updateLocalDeck, updateArkhamDbDeck, user]);
+  }, [updateLocalDeck, updateArkhamDbDeck, userId]);
 
   const [createNewDeck] = useInsertNewDeckMutation();
   const [createNextArkhamDbDeck] = useInsertNextArkhamDbDeckMutation();
@@ -526,15 +560,15 @@ export function useDeckActions(): DeckActions {
     deck: Deck,
     campaignId: UploadedCampaignId,
   ): Promise<void> => {
-    if (!user) {
+    if (!userId) {
       throw new Error('No user');
     }
-    const handle = getUserHandle(cache.current, user);
+    const handle = getUserHandle(cache.current, userId);
     const content_hash = await hashDeck(deck);
     const variables = {
       campaign_id: campaignId.serverId,
       investigator: deck.investigator_code,
-      userId: user.uid,
+      userId,
       content: deck,
       content_hash,
     };
@@ -549,10 +583,10 @@ export function useDeckActions(): DeckActions {
           arkhamdb_id: deck.local ? null : deck.id,
           arkhamdb_user: deck.local ? null : deck.user_id,
           investigator: deck.investigator_code,
-          owner_id: user.uid,
+          owner_id: userId,
           owner: {
             __typename: 'users',
-            id: user.uid,
+            id: userId,
             handle,
           },
           previous_deck: null,
@@ -580,23 +614,23 @@ export function useDeckActions(): DeckActions {
       },
       update: optimisticUpdates.insertNewDeck.update,
     });
-  }, [createNewDeck, user]);
+  }, [createNewDeck, userId]);
 
   const createNextDeck = useCallback(async(
     deck: Deck,
     campaignId: UploadedCampaignId,
     previousDeckId: DeckId
   ): Promise<void> => {
-    if (!user) {
+    if (!userId) {
       throw new Error('No user');
     }
-    const handle = getUserHandle(cache.current, user);
+    const handle = getUserHandle(cache.current, userId);
     const deckId = getDeckId(deck);
     const content_hash = await hashDeck(deck);
     const variables = {
       campaign_id: campaignId.serverId,
       investigator: deck.investigator_code,
-      userId: user.uid,
+      userId,
       content: deck,
       content_hash,
     };
@@ -612,10 +646,10 @@ export function useDeckActions(): DeckActions {
             arkhamdb_id: null,
             arkhamdb_user: null,
             investigator: deck.investigator_code,
-            owner_id: user.uid,
+            owner_id: userId,
             owner: {
               __typename: 'users',
-              id: user.uid,
+              id: userId,
               handle,
             },
             content: deck,
@@ -628,7 +662,7 @@ export function useDeckActions(): DeckActions {
               arkhamdb_user: null,
               campaign_id: campaignId.serverId,
               investigator: deck.investigator_code,
-              owner_id: user.uid,
+              owner_id: userId,
             },
             campaign: {
               __typename: 'campaign',
@@ -664,10 +698,10 @@ export function useDeckActions(): DeckActions {
           arkhamdb_user: deck.user_id,
           local_uuid: null,
           investigator: deck.investigator_code,
-          owner_id: user.uid,
+          owner_id: userId,
           owner: {
             __typename: 'users',
-            id: user.uid,
+            id: userId,
             handle,
           },
           content: deck,
@@ -685,7 +719,7 @@ export function useDeckActions(): DeckActions {
             arkhamdb_user: deck.user_id,
             campaign_id: campaignId.serverId,
             investigator: deck.investigator_code,
-            owner_id: user.uid,
+            owner_id: userId,
           },
         },
       },
@@ -700,7 +734,7 @@ export function useDeckActions(): DeckActions {
       },
       update: optimisticUpdates.insertNextArkhamDbDeck.update,
     });
-  }, [createNextArkhamDbDeck, createNextLocalDeck, user]);
+  }, [createNextArkhamDbDeck, createNextLocalDeck, userId]);
   return useMemo(() => {
     return {
       updateDeck,

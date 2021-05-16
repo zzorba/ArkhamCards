@@ -2,7 +2,7 @@ import { useCallback, useContext, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { filter, flatMap, concat, sortBy, reverse } from 'lodash';
 
-import { getCampaigns, MyDecksState } from '@reducers';
+import { AppState, getCampaigns, MyDecksState } from '@reducers';
 import { Campaign, CampaignId, DeckId } from '@actions/types';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
@@ -13,20 +13,21 @@ import CampaignGuideStateT from './interfaces/CampaignGuideStateT';
 import { useCampaignFromRedux, useCampaignGuideFromRedux, useChaosBagResultsRedux, useDeckFromRedux, useDeckHistoryRedux, useLatestDeckRedux, useMyDecksRedux } from './local/hooks';
 import LatestDeckT from './interfaces/LatestDeckT';
 import { refreshMyDecks } from '@actions';
-import { DeckActions } from './remote/decks';
+import { DeckActions, syncCampaignDecksFromArkhamDB } from './remote/decks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import MiniDeckT from './interfaces/MiniDeckT';
-import { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import { ThunkDispatch } from 'redux-thunk';
+import { Action } from 'redux';
 
 export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => void)] {
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const campaigns = useSelector(getCampaigns);
   const [serverCampaigns, loading, refresh] = useRemoteCampaigns();
   const allCampaigns = useMemo(() => {
-    const toSort = user ? concat(campaigns, serverCampaigns) : campaigns;
+    const toSort = userId ? concat(campaigns, serverCampaigns) : campaigns;
     return sortBy(toSort, c => -c.updatedAt.getTime());
-  }, [campaigns, serverCampaigns, user]);
-  return [allCampaigns, !!user && loading, refresh];
+  }, [campaigns, serverCampaigns, userId]);
+  return [allCampaigns, !!userId && loading, refresh];
 }
 
 export function useCampaignGuideState(campaignId?: CampaignId, live?: boolean): CampaignGuideStateT | undefined {
@@ -68,39 +69,39 @@ export function useCampaignInvestigators(campaign: undefined | SingleCampaignT, 
   }, [campaignInvestigators, investigators]);
 }
 
-function shouldUseReduxDeck(id: DeckId, user: FirebaseAuthTypes.User | undefined, reduxDeck: LatestDeckT | undefined, remoteDeck: LatestDeckT | undefined) {
-  return (!id.local && reduxDeck) && (!user || !remoteDeck || !remoteDeck.owner || user.uid === remoteDeck.owner.id);
+function shouldUseReduxDeck(id: DeckId, userId: string | undefined, reduxDeck: LatestDeckT | undefined, remoteDeck: LatestDeckT | undefined) {
+  return (!id.local && reduxDeck) && (!userId || !remoteDeck || !remoteDeck.owner || userId === remoteDeck.owner.id);
 }
 
 export function useCampaignDeck(id: DeckId | undefined, campaignId: CampaignId | undefined): LatestDeckT | undefined {
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const reduxDeck = useDeckFromRedux(id, campaignId);
   const remoteDeck = useCampaignDeckFromRemote(id, campaignId);
   return useMemo(() => {
     if (!id) {
       return undefined;
     }
-    if (!campaignId?.serverId || shouldUseReduxDeck(id, user, reduxDeck, remoteDeck)) {
+    if (!campaignId?.serverId || shouldUseReduxDeck(id, userId, reduxDeck, remoteDeck)) {
       return reduxDeck;
     }
     return remoteDeck;
-  }, [remoteDeck, reduxDeck, user, campaignId, id]);
+  }, [remoteDeck, reduxDeck, userId, campaignId, id]);
 }
 
 export function useDeck(id: DeckId | undefined, fetch?: boolean): LatestDeckT | undefined {
-  const { user } = useContext(ArkhamCardsAuthContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
   const reduxDeck = useDeckFromRedux(id);
   const remoteDeck = useDeckFromRemote(id, fetch || false);
   return useMemo(() => {
     if (!id) {
       return undefined;
     }
-    if (!id.serverId || shouldUseReduxDeck(id, user, reduxDeck, remoteDeck)) {
+    if (!id.serverId || shouldUseReduxDeck(id, userId, reduxDeck, remoteDeck)) {
       // Server/ArkhamDB decks should use the local cache.
       return reduxDeck;
     }
     return remoteDeck;
-  }, [remoteDeck, reduxDeck, user, id]);
+  }, [remoteDeck, reduxDeck, userId, id]);
 }
 
 export function useChaosBagResults(id: CampaignId): ChaosBagResultsT {
@@ -114,19 +115,29 @@ export function useChaosBagResults(id: CampaignId): ChaosBagResultsT {
   }, [id, remoteData, reduxData]);
 }
 
-export function useMyDecks(deckActions: DeckActions): [MyDecksState, () => void] {
-  const dispatch = useDispatch();
-  const { user } = useContext(ArkhamCardsAuthContext);
+export function useMyDecks(deckActions: DeckActions): [MyDecksState, (cacheArkhamDb: boolean) => Promise<void>] {
+  const dispatch: ThunkDispatch<AppState, unknown, Action> = useDispatch();
+  const { userId, arkhamDb } = useContext(ArkhamCardsAuthContext);
   const { myDecks, error, refreshing, myDecksUpdated } = useMyDecksRedux();
   const [remoteMyDecks, remoteRefreshing, refreshRemoteDecks] = useMyDecksRemote(deckActions);
-  const onRefresh = useCallback(() => {
-    refreshRemoteDecks();
+  const onRefresh = useCallback(async(cacheArkhamDb: boolean) => {
     if (!refreshing) {
-      dispatch(refreshMyDecks(user, deckActions));
+      const remoteDecksPromise = userId && refreshRemoteDecks();
+      const arkhamDbDeckPromise = arkhamDb && dispatch(refreshMyDecks(cacheArkhamDb));
+      if (remoteDecksPromise && arkhamDbDeckPromise) {
+        try {
+          const remoteDecks = await remoteDecksPromise;
+          const arkhamDbDecks = await arkhamDbDeckPromise;
+          syncCampaignDecksFromArkhamDB(arkhamDbDecks, remoteDecks, deckActions);
+        } catch (error) {
+          console.log('Could not sync decks at the moment');
+          console.log(error);
+        }
+      }
     }
-  }, [dispatch, user, deckActions, refreshing, refreshRemoteDecks]);
+  }, [dispatch, userId, arkhamDb, deckActions, refreshing, refreshRemoteDecks]);
   const mergedMyDecks = useMemo(() => {
-    if (!user) {
+    if (!userId) {
       return myDecks;
     }
     const remoteDeckLocalIds = new Set(flatMap(remoteMyDecks, d => d.id.local ? d.id.uuid : []));
@@ -138,11 +149,11 @@ export function useMyDecks(deckActions: DeckActions): [MyDecksState, () => void]
       [...filteredMyDecks, ...remoteMyDecks],
       r => r.date_update
     ));
-  }, [myDecks, remoteMyDecks, user]);
+  }, [myDecks, remoteMyDecks, userId]);
   return [{
     myDecks: mergedMyDecks,
     error,
-    refreshing: refreshing || (!!user && remoteRefreshing),
+    refreshing: refreshing || (!!userId && remoteRefreshing),
     myDecksUpdated,
   }, onRefresh];
 }

@@ -1815,10 +1815,10 @@ msgid ""
 msgstr ""
 "В графе «${ logEntry.section }» журнала кампании запишите <i>${ logEntry.text }</i>."
 
+#, javascript-format
 msgid "Add ${ tokenString } to the chaos bag."
 msgstr "Добавьте ${ tokenString } в мешок хаоса."
 
-#, javascript-format
 msgid "Remove ${ tokenString } from the chaos bag."
 msgstr "Удалите ${ tokenString } из мешка хаоса."
 
@@ -1826,6 +1826,7 @@ msgstr "Удалите ${ tokenString } из мешка хаоса."
 msgid "${ investigator.name } removes ${ card.name } (Advanced)"
 msgstr "${ investigator.name } удаляет ${ card.name } (Продвинутую)"
 
+#, javascript-format
 msgid "${ investigator.name } removes ${ card.name }"
 msgstr "${ investigator.name } удаляет ${ card.name }"
 
@@ -4243,6 +4244,27 @@ msgid ""
 msgstr ""
 "Похоже, это одна из ваших колод с Arkhamdb, однако, похоже, вы вошли в другой аккаунт. "
 "Если желаете редактировать колоду, войдите в свой аккаунт в настройках приложения."
+
+msgid "Justify text"
+msgstr ""
+
+msgid "${ tokens[0] } and ${ tokens[1] }"
+msgstr ""
+
+msgid "Dark Matter"
+msgstr ""
+
+msgid "Impending Doom"
+msgstr ""
+
+msgid "Memories"
+msgstr ""
+
+msgid "By Axolotl"
+msgstr ""
+
+msgid "Fan-Made Campaigns"
+msgstr ""
 
 #, javascript-format
 msgctxt "masculine"

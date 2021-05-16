@@ -1,6 +1,6 @@
 import { Store } from 'redux';
 import { stringify } from 'flatted';
-import { ApolloClient, ApolloLink, HttpLink, InMemoryCache, split } from '@apollo/client';
+import { ApolloClient, ApolloLink, HttpLink, InMemoryCache, NormalizedCache, NormalizedCacheObject, split } from '@apollo/client';
 import { SubscriptionClient } from 'subscriptions-transport-ws';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { setContext } from '@apollo/client/link/context';
@@ -167,6 +167,8 @@ const cache = new InMemoryCache({
   typePolicies,
 });
 
+const anonCache = new InMemoryCache();
+
 const errorLink = onError((e) => {
   // tslint:disable-next-line
   console.log('Caught Apollo Client Error');
@@ -225,9 +227,9 @@ const link = split(
   wsLink,
   httpsLink
 );
-export default function constructApolloClient(store: Store) {
+export default function createApolloClient(store: Store): [ApolloClient<NormalizedCacheObject>, ApolloClient<NormalizedCacheObject>] {
   const links = __DEV__ ? [loggerLink] : [];
-  return new ApolloClient({
+  const authClient = new ApolloClient({
     cache,
     link: ApolloLink.from([
       ...links,
@@ -239,6 +241,17 @@ export default function constructApolloClient(store: Store) {
       link,
     ]),
     assumeImmutableResults: true,
-
   });
+
+  const anonClient = new ApolloClient({
+    cache: anonCache,
+    link: ApolloLink.from([
+      ...links,
+      errorLink,
+      retryLink,
+    ]),
+    assumeImmutableResults: true,
+  });
+
+  return [authClient, anonClient];
 }

@@ -27,14 +27,13 @@ import {
   SET_UPLOADED_DECKS,
   REMOVE_UPLOAD_DECK,
   UploadedDeck,
+  GroupedUploadedDecks,
 } from '@actions/types';
 import deepEqual from 'deep-equal';
 
 interface DecksState {
   all: DecksMap;
-  syncedDecks?: {
-    [uuid: string]: UploadedDeck | undefined;
-  };
+  syncedDecks?: GroupedUploadedDecks;
   replacedLocalIds?: {
     [uuid: string]: DeckId;
   };

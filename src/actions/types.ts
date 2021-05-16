@@ -56,12 +56,14 @@ export interface LocalDeckId {
   local: true;
   uuid: string;
   serverId?: number;
+  arkhamdb_user: undefined;
 }
 export interface ArkhamDbDeckId {
   id: number;
   local: false;
   uuid: string;
   serverId?: number;
+  arkhamdb_user: number;
 }
 export type DeckId = LocalDeckId | ArkhamDbDeckId;
 
@@ -129,12 +131,14 @@ export function getDeckId(deck: Deck): DeckId {
   if (deck.local) {
     return {
       id: undefined,
+      arkhamdb_user: undefined,
       local: true,
       uuid: deck.uuid,
     };
   }
   return {
     id: deck.id,
+    arkhamdb_user: deck.user_id,
     local: false,
     uuid: `${deck.id}`,
   };
@@ -363,6 +367,7 @@ export const TDEA = 'tdea';
 export const TDEB = 'tdeb';
 export const TIC = 'tic';
 export const STANDALONE = 'standalone';
+export const DARK_MATTER = 'zdm';
 
 export type CampaignCycleCode =
   typeof CUSTOM |
@@ -379,7 +384,8 @@ export type CampaignCycleCode =
   typeof TDEA |
   typeof TDEB |
   typeof TIC |
-  typeof STANDALONE;
+  typeof STANDALONE |
+  typeof DARK_MATTER;
 
 export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   CORE,
@@ -396,6 +402,9 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TDEB,
   TIC,
 ];
+export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
+  DARK_MATTER,
+];
 
 export const GUIDED_CAMPAIGNS = new Set([
   CORE,
@@ -411,9 +420,10 @@ export const GUIDED_CAMPAIGNS = new Set([
   TDEA,
   TDEB,
   TIC,
+  DARK_MATTER,
 ]);
 
-export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
+export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([DARK_MATTER]);
 
 export interface CustomCampaignLog {
   sections?: string[];
@@ -543,7 +553,7 @@ export interface SetTabooSetAction {
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
 export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
-  setting: 'single_card' | 'alphabetize' | 'colorblind' | 'left_align';
+  setting: 'single_card' | 'alphabetize' | 'colorblind' | 'justify';
   value: boolean;
 }
 
@@ -651,6 +661,9 @@ export interface UploadedDeck {
   nextDeckId: DeckId | undefined;
   campaignId: UploadedCampaignId[];
 }
+export interface GroupedUploadedDecks {
+  [uuid: string]: UploadedDeck | undefined;
+}
 export const UPLOAD_DECK = 'UPLOAD_DECK';
 export interface UploadDeckAction {
   type: typeof UPLOAD_DECK;
@@ -670,9 +683,7 @@ export interface RemoveUploadDeckAction {
 export const SET_UPLOADED_DECKS = 'SET_UPLOADED_DECKS';
 export interface SetUploadedDecksAction {
   type: typeof SET_UPLOADED_DECKS;
-  uploadedDecks: {
-    [uuid: string]: UploadedDeck | undefined;
-  };
+  uploadedDecks: GroupedUploadedDecks;
 }
 
 export const DELETE_DECK = 'DELETE_DECK';
