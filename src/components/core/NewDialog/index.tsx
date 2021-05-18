@@ -41,8 +41,8 @@ function NewDialog({
       isVisible={visible}
       animationIn={alignment === 'bottom' ? 'slideInUp' : 'fadeIn'}
       animationOut={alignment === 'bottom' ? 'slideOutDown' : 'fadeOut'}
-      onBackdropPress={onDismiss}
-      onBackButtonPress={onDismiss}
+      onBackdropPress={dismissable ? onDismiss : undefined}
+      onBackButtonPress={dismissable ? onDismiss : undefined}
       hasBackdrop
       backdropOpacity={darkMode ? 0.75 : 0.5}
       backdropColor={darkMode ? '#444444' : '#000000'}

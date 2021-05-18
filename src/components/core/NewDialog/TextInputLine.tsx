@@ -14,8 +14,9 @@ interface Props {
 
   onSubmit?: (text: string) => void;
   paddingBottom?: number;
+  disabled?: boolean;
 }
-export default function TextInputLine({ value, onChangeText, textInputRef, error, placeholder, paddingBottom, onSubmit }: Props) {
+export default function TextInputLine({ value, onChangeText, disabled, textInputRef, error, placeholder, paddingBottom, onSubmit }: Props) {
   const { colors, typography } = useContext(StyleContext);
 
   const onSubmitEditting = useCallback((e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
@@ -34,6 +35,7 @@ export default function TextInputLine({ value, onChangeText, textInputRef, error
         ]}
         autoFocus={Platform.OS === 'ios'}
         value={value}
+        editable={!disabled}
         placeholder={placeholder}
         placeholderTextColor={colors.lightText}
         onChangeText={onChangeText}

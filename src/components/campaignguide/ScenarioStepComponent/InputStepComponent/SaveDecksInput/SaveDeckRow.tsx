@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { AppState, StyleSheet, View } from 'react-native';
-import { flatMap, filter, find, forEach, map, sortBy } from 'lodash';
+import { flatMap, find, forEach, map, sortBy } from 'lodash';
 import { t } from 'ttag';
 import { Action } from 'redux';
 import { useDispatch } from 'react-redux';

@@ -326,7 +326,9 @@ export function useProfile(profileUserId: string | undefined, useCached?: boolea
     };
   }, [data]);
   const doRefetch = useCallback(() => {
-    refetch?.({ userId: profileUserId });
+    refetch?.({
+      userId: profileUserId,
+    });
   }, [refetch, profileUserId]);
   return [profile, userLoading || dataLoading, doRefetch];
 }

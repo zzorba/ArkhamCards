@@ -20,7 +20,7 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { ARKHAM_CARDS_LOGIN, ARKHAM_CARDS_LOGOUT } from '@actions/types';
 import { AppState } from '@reducers';
 import { removeLocalCampaign } from '@components/campaign/actions';
-import useCampaignUploadDialog from './useCampaignUploadDialog';
+import useConfirmSignupDialog from './useConfirmSignupDialog';
 
 function arkhamCardsLogin(user: string): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {
@@ -368,7 +368,7 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
     await auth().signOut();
     dispatch(logout());
   }, [dispatch]);
-  const [uploadDialog, showUploadDialog] = useCampaignUploadDialog(userId);
+  const [signupDialog, showSignupDialog] = useConfirmSignupDialog();
   const logoutPressed = useCallback(() => {
     showAlert(
       t`Sign out of Arkham Cards?`,
@@ -401,8 +401,8 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   const loginSucceeded = useCallback((user: FirebaseAuthTypes.UserCredential) => {
     resetDialog();
     dispatch(arkhamCardsLogin(user.user.uid));
-    showUploadDialog();
-  }, [resetDialog, dispatch, showUploadDialog]);
+    showSignupDialog();
+  }, [resetDialog, dispatch, showSignupDialog]);
 
   const signInToApple = useCallback(() => onAppleButtonPress().then(loginSucceeded), [loginSucceeded]);
   const signInToGoogle = useCallback(() => onGoogleButtonPress().then(loginSucceeded), [loginSucceeded]);
@@ -496,7 +496,7 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
         onPress={userId ? logoutPressed : showLoginDialog}
       />
       { loginDialog }
-      { uploadDialog }
+      { signupDialog }
     </View>
   );
 }
