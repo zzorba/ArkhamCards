@@ -554,8 +554,9 @@ export function multiConditionResult(
               return campaignDataConditionResult(subCondition, campaignLog).option ? 1 : 0;
             case 'version':
               return campaignDataVersionConditionResult(subCondition, campaignLog).option ? 1 : 0;
-            default:
-              return 0;
+            case 'scenario_completed':
+            case 'scenario_replayed':
+              return campaignDataScenarioConditionResult(subCondition, campaignLog).option ? 1 : 0;
           }
         }
         case 'scenario_data': {

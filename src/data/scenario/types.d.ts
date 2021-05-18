@@ -70,7 +70,8 @@ export type CampaignDataEffect =
   | CampaignDataResultEffect
   | CampaignDataDifficultyEffect
   | CampaignDataNextScenarioEffect
-  | CampaignDataSwapChaosBagEffect;
+  | CampaignDataSwapChaosBagEffect
+  | CampaignDataRedirectExperienceEffect;
 export type Difficulty = "easy" | "standard" | "hard" | "expert";
 export type ScenarioDataEffect =
   | ScenarioDataInvestigatorEffect
@@ -211,6 +212,7 @@ export interface BoolOption {
   prompt?: string;
   effects?: Effect[];
   border?: boolean;
+  pre_border_effects?: Effect[];
   steps?: string[];
 }
 export interface StoryStepEffect {
@@ -283,7 +285,7 @@ export interface CampaignLogCardsEffect {
   text?: string;
   masculine_text?: string;
   feminine_text?: string;
-  cards?: "$lead_investigator" | "$defeated_investigators" | "$input_value";
+  cards?: "$lead_investigator" | "$all_investigators" | "$defeated_investigators" | "$input_value";
   cross_out?: boolean;
   remove?: boolean;
 }
@@ -299,7 +301,7 @@ export interface CampaignLogInvestigatorCountEffect {
   type: "campaign_log_investigator_count";
   section: string;
   id: string;
-  investigator: "all" | "$input_value" | "$fixed_investigator";
+  investigator: "all" | "defeated" | "$input_value" | "lead_investigator" | "$fixed_investigator";
   fixed_investigator?: string;
   operation: "set_input" | "set" | "add_input" | "add";
   value?: number;
@@ -324,6 +326,11 @@ export interface CampaignDataSwapChaosBagEffect {
   type: "campaign_data";
   setting: "swap_chaos_bag";
   initialize?: boolean;
+}
+export interface CampaignDataRedirectExperienceEffect {
+  type: "campaign_data";
+  setting: "redirect_experience";
+  investigator_count: string;
 }
 export interface ScenarioDataInvestigatorEffect {
   type: "scenario_data";
@@ -394,6 +401,7 @@ export interface Option {
   condition?: string;
   prompt?: string;
   border?: boolean;
+  pre_border_effects?: Effect[];
   effects?: Effect[];
   steps?: string[];
 }
@@ -417,6 +425,7 @@ export interface ScenarioDataResolutionCondition {
 export interface StringOption {
   condition: string;
   border?: boolean;
+  pre_border_effects?: Effect[];
   effects?: Effect[];
   steps?: string[];
 }
@@ -603,6 +612,7 @@ export interface Choice {
   description?: string;
   steps?: string[];
   border?: boolean;
+  pre_border_effects?: Effect[];
   effects?: Effect[];
 }
 export interface SuppliesInput {
@@ -646,6 +656,7 @@ export interface InvestigatorConditionalChoice {
   description?: string;
   condition?: InvestigatorChoiceCondition;
   border?: boolean;
+  pre_border_effects?: Effect[];
   steps?: string[];
   effects?: Effect[];
 }
@@ -673,6 +684,7 @@ export interface BinaryConditionalChoice {
   condition?: BinaryChoiceCondition;
   repeatable?: boolean;
   border?: boolean;
+  pre_border_effects?: Effect[];
   steps?: string[];
   effects?: Effect[];
 }
@@ -904,6 +916,7 @@ export interface Achievement {
 }
 export interface Scenario {
   id: string;
+  allow_side_scenario?: boolean;
   chaos_bag_card?: string;
   chaos_bag_card_text?: string;
   chaos_bag_card_back_text?: string;

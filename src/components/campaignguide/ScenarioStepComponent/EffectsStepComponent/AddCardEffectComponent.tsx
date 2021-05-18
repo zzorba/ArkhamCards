@@ -15,6 +15,7 @@ import space from '@styles/space';
 interface Props {
   id: string;
   effect: AddCardEffect;
+  input?: string[];
 }
 
 function renderInvestigators(investigators: Card[], card: Card) {
@@ -30,7 +31,7 @@ function renderInvestigators(investigators: Card[], card: Card) {
   ));
 }
 
-export default function AddCardEffectComponent({ id, effect }: Props) {
+export default function AddCardEffectComponent({ id, effect, input }: Props) {
   const { typography } = useContext(StyleContext);
   const [card, loading] = useSingleCard(effect.card, 'player');
   if (loading) {
@@ -51,6 +52,7 @@ export default function AddCardEffectComponent({ id, effect }: Props) {
       fixedInvestigator={effect.fixed_investigator}
       render={renderInvestigators}
       optional={effect.optional}
+      input={input}
       description={t`Who will add ${card.name} to their deck?`}
       extraArg={card}
     />

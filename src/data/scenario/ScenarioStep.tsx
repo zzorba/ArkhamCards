@@ -5,6 +5,7 @@ import {
   forEach,
   groupBy,
   keys,
+  omit,
   map,
   mapValues,
   partition,
@@ -24,7 +25,6 @@ import {
   Effect,
   EffectsWithInput,
   EffectsStep,
-  CampaignLogInvestigatorCountEffect,
 } from '@data/scenario/types';
 import { getSpecialEffectChoiceList } from './effectHelper';
 import { investigatorChoiceInputChoices, chooseOneInputChoices } from '@data/scenario/inputHelper';
@@ -336,12 +336,21 @@ export default class ScenarioStep {
             ...((result.option && result.option.steps) || []),
             ...this.remainingStepIds,
           ],
-          [{
-            border: (result.option && result.option.border),
-            numberInput: result.type === 'number' ? [result.number] : undefined,
-            input: result.type === 'binary' ? result.input : undefined,
-            effects: (result.option && result.option.effects) || [],
-          }],
+          [
+            ...(result.option?.pre_border_effects ? [
+              {
+                effects: result.option.pre_border_effects,
+                numberInput: result.type === 'number' ? [result.number] : undefined,
+                input: result.type === 'binary' ? result.input : undefined,
+              },
+            ] : []),
+            {
+              border: (result.option && result.option.border),
+              numberInput: result.type === 'number' ? [result.number] : undefined,
+              input: result.type === 'binary' ? result.input : undefined,
+              effects: (result.option && result.option.effects) || [],
+            },
+          ],
           scenarioState,
           {}
         );
@@ -370,7 +379,10 @@ export default class ScenarioStep {
   private processListChoices(
     choiceList: StringChoices,
     theChoices: Choices
-  ) {
+  ): {
+    effectsWithInput: EffectsWithInput[];
+    stepIds: string[];
+  } {
     const groupedEffects = groupBy(
       flatMap(choiceList, (choices, code) => {
         return choices.map(choiceId => {
@@ -399,7 +411,15 @@ export default class ScenarioStep {
           effects: (selectedChoice && selectedChoice.effects) || [],
           border: (selectedChoice && selectedChoice.border),
         };
-        return result;
+        return [
+          ...(selectedChoice?.pre_border_effects ? [
+            {
+              effects: selectedChoice.pre_border_effects,
+              input: map(group, item => item.code),
+            },
+          ] : []),
+          result,
+        ];
       });
     return {
       effectsWithInput,
@@ -813,25 +833,27 @@ export default class ScenarioStep {
         if (supplies === undefined) {
           return undefined;
         }
-        const effects: CampaignLogInvestigatorCountEffect[] = flatMap(supplies, (investigatorSupplies, code) =>
+        const effectsWithInput: EffectsWithInput[] = flatMap(supplies, (investigatorSupplies, code) =>
           flatMap(investigatorSupplies, (count, supplyId) => {
             return {
-              type: 'campaign_log_investigator_count',
-              section: input.section,
-              investigator: '$fixed_investigator',
-              fixed_investigator: code,
-              operation: 'add',
-              id: supplyId,
-              value: count,
+              effects: [
+                {
+                  type: 'campaign_log_investigator_count',
+                  section: input.section,
+                  investigator: '$input_value',
+                  operation: 'add',
+                  id: supplyId,
+                  value: count,
+                },
+              ],
+              input: [code],
             };
           })
         );
         return this.maybeCreateEffectsStep(
           step.id,
           this.remainingStepIds,
-          [{
-            effects,
-          }],
+          effectsWithInput,
           scenarioState,
           {}
         );
@@ -901,13 +923,13 @@ export default class ScenarioStep {
             const effects: Effect[] = [];
             const xpAdjust = (choices.xp && choices.xp[0]) || 0;
             const count = (choices.count && choices.count[0] || 0);
-            if (input.counter && count) {
+            const section = (input.counter || this.campaignLog.campaignData.redirect_experience);
+            if (count && section) {
               effects.push({
                 type: 'campaign_log_investigator_count',
-                section: input.counter,
+                section,
                 id: '$count',
-                investigator: '$fixed_investigator',
-                fixed_investigator: investigator.code,
+                investigator: '$input_value',
                 operation: 'add',
                 value: count,
               });
@@ -954,6 +976,17 @@ export default class ScenarioStep {
                 hidden: true,
               });
             }
+            forEach(omit(choices, ['insane', 'killed', 'count', 'physical', 'mental', 'xp']), (count, exile_code) => {
+              if (count.length) {
+                for (let i = 0; i < count[0]; i++) {
+                  effects.push({
+                    type: 'remove_card',
+                    investigator: '$input_value',
+                    card: exile_code,
+                  });
+                }
+              }
+            });
 
             if (effects.length) {
               effectsWithInput.push({
@@ -987,15 +1020,17 @@ export default class ScenarioStep {
             if (choice === undefined) {
               return undefined;
             }
-            const consumeSuppliesEffects: Effect[] = map(choice, ([count], code) => {
+            const effectsWithInput: EffectsWithInput[] = map(choice, ([count], code) => {
               return {
-                type: 'campaign_log_investigator_count',
-                section: input.section,
-                investigator: '$fixed_investigator',
-                fixed_investigator: code,
-                operation: 'add',
-                id: input.id,
-                value: -(input.investigator === 'all' ? count : 1),
+                input: [code],
+                effects: [{
+                  type: 'campaign_log_investigator_count',
+                  section: input.section,
+                  investigator: '$input_value',
+                  operation: 'add',
+                  id: input.id,
+                  value: -(input.investigator === 'all' ? count : 1),
+                }],
               };
             });
             const useCount = sum(map(choice, count => count[0]));
@@ -1005,9 +1040,7 @@ export default class ScenarioStep {
               return this.maybeCreateEffectsStep(
                 this.step.id,
                 this.remainingStepIds,
-                [{
-                  effects: consumeSuppliesEffects,
-                }],
+                effectsWithInput,
                 scenarioState,
                 {}
               );
@@ -1023,14 +1056,14 @@ export default class ScenarioStep {
                 ...(theBadThing && theBadThing.steps) || [],
                 ...this.remainingStepIds,
               ],
-              [{
-                effects: consumeSuppliesEffects,
-              },
-              {
-                border: true,
-                input: keys(secondChoice),
-                effects: (theBadThing && theBadThing.effects) || [],
-              }],
+              [
+                ...effectsWithInput,
+                {
+                  border: true,
+                  input: keys(secondChoice),
+                  effects: (theBadThing && theBadThing.effects) || [],
+                },
+              ],
               scenarioState,
               {}
             );
@@ -1044,15 +1077,17 @@ export default class ScenarioStep {
             if (numberChoice === undefined) {
               return undefined;
             }
-            const consumeSuppliesEffects: Effect[] = map(numberChoice, (counts, code) => {
+            const effectsWithInput: EffectsWithInput[] = map(numberChoice, (counts, code) => {
               return {
-                type: 'campaign_log_investigator_count',
-                section: input.section,
-                investigator: '$fixed_investigator',
-                fixed_investigator: code,
-                operation: 'add',
-                id: input.id,
-                value: -counts[0],
+                effects: [{
+                  type: 'campaign_log_investigator_count',
+                  section: input.section,
+                  investigator: '$input_value',
+                  operation: 'add',
+                  id: input.id,
+                  value: -counts[0],
+                }],
+                input: [code],
               };
             });
             const hasAny = keys(numberChoice).length > 0;
@@ -1064,9 +1099,7 @@ export default class ScenarioStep {
               return this.maybeCreateEffectsStep(
                 this.step.id,
                 this.remainingStepIds,
-                [{
-                  effects: consumeSuppliesEffects,
-                }],
+                effectsWithInput,
                 scenarioState,
                 {}
               );
@@ -1083,9 +1116,13 @@ export default class ScenarioStep {
                 ...this.remainingStepIds,
               ],
               [
-                {
-                  effects: consumeSuppliesEffects,
-                },
+                ...effectsWithInput,
+                ...(branchChoice.pre_border_effects ? [
+                  {
+                    effects: branchChoice.pre_border_effects,
+                    input: effectsInput,
+                  },
+                ] : []),
                 {
                   border: branchChoice && branchChoice.border,
                   input: effectsInput,
@@ -1132,11 +1169,13 @@ export default class ScenarioStep {
     scenarioState: ScenarioStateHelper,
     ifTrue?: {
       border?: boolean;
+      pre_border_effects?: null | Effect[];
       steps?: null | string[];
       effects?: null | Effect[];
     },
     ifFalse?: {
       border?: boolean;
+      pre_border_effects?: null | Effect[];
       steps?: null | string[];
       effects?: null | Effect[];
     },
@@ -1149,11 +1188,19 @@ export default class ScenarioStep {
         ...((resultCondition && resultCondition.steps) || []),
         ...remainingStepIds,
       ],
-      [{
-        border: (resultCondition && resultCondition.border),
-        input,
-        effects: (resultCondition && resultCondition.effects) || [],
-      }],
+      [
+        ...(resultCondition?.pre_border_effects ? [
+          {
+            effects: resultCondition.pre_border_effects,
+            input,
+          },
+        ] : []),
+        {
+          border: (resultCondition && resultCondition.border),
+          input,
+          effects: (resultCondition && resultCondition.effects) || [],
+        },
+      ],
       scenarioState,
       {}
     );

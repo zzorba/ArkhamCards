@@ -83,6 +83,10 @@ export default class ScenarioGuide {
     return this.scenario.type || 'scenario';
   }
 
+  allowSideScenario(): boolean {
+    return !!this.scenario.allow_side_scenario;
+  }
+
   resolutions(): Resolution[] {
     return this.scenario.resolutions || [];
   }

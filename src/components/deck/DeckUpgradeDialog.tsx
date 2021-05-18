@@ -121,7 +121,6 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
     );
   }, [deck, componentId, campaign, showTraumaDialog, storyEncounterCodes, scenarioName, investigator, traumaUpdate, onStoryCountsChange]);
   const [saving, error, saveDeckUpgrade] = useDeckUpgrade(deck, actions, deckUpgradeComplete);
-
   if (!deck || !investigator) {
     return null;
   }

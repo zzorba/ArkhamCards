@@ -569,10 +569,6 @@ export default class CampaignGuide {
       };
     }
     if (section.type === 'investigator_count') {
-      const count = find(this.log.supplies, s => s.id === id);
-      if (!count) {
-        throw new Error(`Could not find Supply: ${id}`);
-      }
       return {
         type: 'investigator_count',
         section: section.title,

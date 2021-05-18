@@ -1,5 +1,5 @@
 import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'typeorm/browser';
-import { forEach, filter, keys, map, min, find } from 'lodash';
+import { forEach, filter, keys, map, min, omit, find } from 'lodash';
 import { t } from 'ttag';
 
 import { SortType, SORT_BY_COST, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData } from '@actions/types';
@@ -7,6 +7,7 @@ import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, FactionCodeType, TypeCodeType, Ski
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
 import { QuerySort } from '../sqlite/types';
+import { CoreCardFragment, CoreCardTextFragment } from '@generated/graphql/apollo-schema';
 
 const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+(\\s\\[per_investigator\\])?\\s(.+)\\)\\..*');
@@ -864,6 +865,74 @@ export default class Card {
             return t`Scenario`;
         }
     }
+  }
+
+  static fromGraphQl(
+    card: CoreCardFragment & {
+      packs: { name: string }[];
+      translations: CoreCardTextFragment[];
+    },
+    lang: string
+  ) {
+    const cardTypeNames: { [key: string]: string } = {
+      asset: t`Asset`,
+      event: t`Event`,
+      skill: t`Skill`,
+      investigator: t`Investigator`,
+      treachery: t`Treachery`,
+      scenario: t`Scenario`,
+      location: t`Location`,
+      enemy: t`Enemy`,
+      act: t`Act`,
+      agenda: t`Agenda`,
+    };
+    const factionNames: { [key: string]: string } = {
+      neutral: t`Neutral`,
+      guardian: t`Guardian`,
+      seeker: t`Seeker`,
+      rogue: t`Rogue`,
+      mystic: t`Mystic`,
+      survivor: t`Survivor`,
+      mythos: t`Mythos`,
+    };
+
+    const subTypeName: { [key: string]: string } = {
+      weakness: t`Weakness`,
+      basicweakness: t`Basic Weakness`,
+    };
+    const json: any = card.translations.length ? {
+      ...omit(card, '__typename', 'real_pack_name', 'real_flavor'),
+      ...omit(card.translations[0], '__typename'),
+    } : {
+      ...omit(card, '__typename', 'real_pack_name', 'real_flavor'),
+      flavor: card.real_flavor,
+      name: card.real_name,
+      slot: card.real_slot,
+      subname: card.real_subname,
+      text: card.real_text,
+      traits: card.real_traits,
+    };
+    json.pack_name = card.packs.length ? card.packs[0].name : card.real_pack_name;
+    json.type_name = cardTypeNames[card.type_code];
+    json.faction_name = factionNames[card.faction_code];
+    if (card.subtype_code) {
+      json.subtype_name = subTypeName[card.subtype_code];
+    }
+    return Card.fromJson(json,
+      {
+        [card.pack_code]: {
+          position: card.pack_position,
+          cycle_position: 0,
+        },
+      },
+      {
+        '0': {
+          name: t`Fan-Made Content`,
+          code: 'fan',
+        },
+      },
+      lang
+    );
   }
 
   static fromJson(

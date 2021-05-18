@@ -80,6 +80,7 @@ export default function EffectsStepComponent({ componentId, width, step, campaig
           <AddCardEffectComponent
             id={id}
             effect={effect}
+            input={input}
           />
         );
       case 'remove_card':

@@ -625,7 +625,7 @@ export type campaign_variance_fieldsFieldPolicy = {
 	link_b_campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	link_campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type cardKeySpecifier = ('code' | 'cost' | 'deck_limit' | 'encounter_code' | 'encounter_position' | 'exceptional' | 'exile' | 'health' | 'is_unique' | 'myriad' | 'pack_code' | 'permanent' | 'position' | 'quantity' | 'real_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'subtype_code' | 'translations' | 'translations_aggregate' | 'type_code' | cardKeySpecifier)[];
+export type cardKeySpecifier = ('code' | 'cost' | 'deck_limit' | 'encounter_code' | 'encounter_position' | 'exceptional' | 'exile' | 'faction_code' | 'health' | 'is_unique' | 'myriad' | 'pack_code' | 'pack_position' | 'packs' | 'packs_aggregate' | 'permanent' | 'position' | 'quantity' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'subtype_code' | 'translations' | 'translations_aggregate' | 'type_code' | cardKeySpecifier)[];
 export type cardFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -634,14 +634,20 @@ export type cardFieldPolicy = {
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	exceptional?: FieldPolicy<any> | FieldReadFunction<any>,
 	exile?: FieldPolicy<any> | FieldReadFunction<any>,
+	faction_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
 	is_unique?: FieldPolicy<any> | FieldReadFunction<any>,
 	myriad?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_code?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	packs?: FieldPolicy<any> | FieldReadFunction<any>,
+	packs_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	permanent?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_pack_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_slot?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_subname?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_text?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -676,12 +682,13 @@ export type card_aggregate_fieldsFieldPolicy = {
 	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
 	variance?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_avg_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_avg_fieldsKeySpecifier)[];
+export type card_avg_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_avg_fieldsKeySpecifier)[];
 export type card_avg_fieldsFieldPolicy = {
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
 	sanity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -691,18 +698,22 @@ export type card_avg_fieldsFieldPolicy = {
 	skill_wild?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_max_fieldsKeySpecifier = ('code' | 'cost' | 'deck_limit' | 'encounter_code' | 'encounter_position' | 'health' | 'pack_code' | 'position' | 'quantity' | 'real_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'subtype_code' | 'type_code' | card_max_fieldsKeySpecifier)[];
+export type card_max_fieldsKeySpecifier = ('code' | 'cost' | 'deck_limit' | 'encounter_code' | 'encounter_position' | 'faction_code' | 'health' | 'pack_code' | 'pack_position' | 'position' | 'quantity' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'subtype_code' | 'type_code' | card_max_fieldsKeySpecifier)[];
 export type card_max_fieldsFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	faction_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_code?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_pack_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_slot?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_subname?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_text?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -716,18 +727,22 @@ export type card_max_fieldsFieldPolicy = {
 	subtype_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	type_code?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_min_fieldsKeySpecifier = ('code' | 'cost' | 'deck_limit' | 'encounter_code' | 'encounter_position' | 'health' | 'pack_code' | 'position' | 'quantity' | 'real_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'subtype_code' | 'type_code' | card_min_fieldsKeySpecifier)[];
+export type card_min_fieldsKeySpecifier = ('code' | 'cost' | 'deck_limit' | 'encounter_code' | 'encounter_position' | 'faction_code' | 'health' | 'pack_code' | 'pack_position' | 'position' | 'quantity' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'subtype_code' | 'type_code' | card_min_fieldsKeySpecifier)[];
 export type card_min_fieldsFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	faction_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_code?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_pack_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_slot?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_subname?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_text?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -746,12 +761,47 @@ export type card_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_stddev_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_stddev_fieldsKeySpecifier)[];
+export type card_packKeySpecifier = ('code' | 'locale' | 'name' | card_packKeySpecifier)[];
+export type card_packFieldPolicy = {
+	code?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type card_pack_aggregateKeySpecifier = ('aggregate' | 'nodes' | card_pack_aggregateKeySpecifier)[];
+export type card_pack_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type card_pack_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | card_pack_aggregate_fieldsKeySpecifier)[];
+export type card_pack_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type card_pack_max_fieldsKeySpecifier = ('code' | 'locale' | 'name' | card_pack_max_fieldsKeySpecifier)[];
+export type card_pack_max_fieldsFieldPolicy = {
+	code?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type card_pack_min_fieldsKeySpecifier = ('code' | 'locale' | 'name' | card_pack_min_fieldsKeySpecifier)[];
+export type card_pack_min_fieldsFieldPolicy = {
+	code?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type card_pack_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | card_pack_mutation_responseKeySpecifier)[];
+export type card_pack_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type card_stddev_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_stddev_fieldsKeySpecifier)[];
 export type card_stddev_fieldsFieldPolicy = {
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
 	sanity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -761,12 +811,13 @@ export type card_stddev_fieldsFieldPolicy = {
 	skill_wild?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_stddev_pop_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_stddev_pop_fieldsKeySpecifier)[];
+export type card_stddev_pop_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_stddev_pop_fieldsKeySpecifier)[];
 export type card_stddev_pop_fieldsFieldPolicy = {
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
 	sanity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -776,12 +827,13 @@ export type card_stddev_pop_fieldsFieldPolicy = {
 	skill_wild?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_stddev_samp_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_stddev_samp_fieldsKeySpecifier)[];
+export type card_stddev_samp_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_stddev_samp_fieldsKeySpecifier)[];
 export type card_stddev_samp_fieldsFieldPolicy = {
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
 	sanity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -791,12 +843,13 @@ export type card_stddev_samp_fieldsFieldPolicy = {
 	skill_wild?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_sum_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_sum_fieldsKeySpecifier)[];
+export type card_sum_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_sum_fieldsKeySpecifier)[];
 export type card_sum_fieldsFieldPolicy = {
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
 	sanity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -806,10 +859,9 @@ export type card_sum_fieldsFieldPolicy = {
 	skill_wild?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_textKeySpecifier = ('code' | 'code_locale' | 'encounter_name' | 'flavor' | 'locale' | 'name' | 'slot' | 'subname' | 'text' | 'traits' | card_textKeySpecifier)[];
+export type card_textKeySpecifier = ('code' | 'encounter_name' | 'flavor' | 'locale' | 'name' | 'slot' | 'subname' | 'text' | 'traits' | card_textKeySpecifier)[];
 export type card_textFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
-	code_locale?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -830,10 +882,9 @@ export type card_text_aggregate_fieldsFieldPolicy = {
 	max?: FieldPolicy<any> | FieldReadFunction<any>,
 	min?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_text_max_fieldsKeySpecifier = ('code' | 'code_locale' | 'encounter_name' | 'flavor' | 'locale' | 'name' | 'slot' | 'subname' | 'text' | 'traits' | card_text_max_fieldsKeySpecifier)[];
+export type card_text_max_fieldsKeySpecifier = ('code' | 'encounter_name' | 'flavor' | 'locale' | 'name' | 'slot' | 'subname' | 'text' | 'traits' | card_text_max_fieldsKeySpecifier)[];
 export type card_text_max_fieldsFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
-	code_locale?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -843,10 +894,9 @@ export type card_text_max_fieldsFieldPolicy = {
 	text?: FieldPolicy<any> | FieldReadFunction<any>,
 	traits?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_text_min_fieldsKeySpecifier = ('code' | 'code_locale' | 'encounter_name' | 'flavor' | 'locale' | 'name' | 'slot' | 'subname' | 'text' | 'traits' | card_text_min_fieldsKeySpecifier)[];
+export type card_text_min_fieldsKeySpecifier = ('code' | 'encounter_name' | 'flavor' | 'locale' | 'name' | 'slot' | 'subname' | 'text' | 'traits' | card_text_min_fieldsKeySpecifier)[];
 export type card_text_min_fieldsFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
-	code_locale?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -861,12 +911,13 @@ export type card_text_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_var_pop_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_var_pop_fieldsKeySpecifier)[];
+export type card_var_pop_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_var_pop_fieldsKeySpecifier)[];
 export type card_var_pop_fieldsFieldPolicy = {
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
 	sanity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -876,12 +927,13 @@ export type card_var_pop_fieldsFieldPolicy = {
 	skill_wild?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_var_samp_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_var_samp_fieldsKeySpecifier)[];
+export type card_var_samp_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_var_samp_fieldsKeySpecifier)[];
 export type card_var_samp_fieldsFieldPolicy = {
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
 	sanity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -891,12 +943,13 @@ export type card_var_samp_fieldsFieldPolicy = {
 	skill_wild?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_variance_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_variance_fieldsKeySpecifier)[];
+export type card_variance_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_variance_fieldsKeySpecifier)[];
 export type card_variance_fieldsFieldPolicy = {
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
 	sanity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1553,7 +1606,7 @@ export type local_decks_variance_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type mutation_rootKeySpecifier = ('delete_base_decks' | 'delete_campaign' | 'delete_campaign_access' | 'delete_campaign_access_by_pk' | 'delete_campaign_by_pk' | 'delete_campaign_deck' | 'delete_campaign_deck_by_pk' | 'delete_campaign_guide' | 'delete_campaign_investigator' | 'delete_campaign_investigator_by_pk' | 'delete_card' | 'delete_card_by_pk' | 'delete_card_text' | 'delete_card_text_by_pk' | 'delete_chaos_bag_result' | 'delete_chaos_bag_result_by_pk' | 'delete_friend_status' | 'delete_friend_status_by_pk' | 'delete_friend_status_type' | 'delete_friend_status_type_by_pk' | 'delete_guide_achievement' | 'delete_guide_achievement_by_pk' | 'delete_guide_input' | 'delete_guide_input_by_pk' | 'delete_investigator_data' | 'delete_investigator_data_by_pk' | 'delete_latest_decks' | 'delete_local_decks' | 'delete_user_campaigns' | 'delete_user_friends' | 'delete_user_received_friend_requests' | 'delete_user_sent_friend_requests' | 'delete_users' | 'delete_users_by_pk' | 'insert_base_decks' | 'insert_base_decks_one' | 'insert_campaign' | 'insert_campaign_access' | 'insert_campaign_access_one' | 'insert_campaign_deck' | 'insert_campaign_deck_one' | 'insert_campaign_guide' | 'insert_campaign_guide_one' | 'insert_campaign_investigator' | 'insert_campaign_investigator_one' | 'insert_campaign_one' | 'insert_card' | 'insert_card_one' | 'insert_card_text' | 'insert_card_text_one' | 'insert_chaos_bag_result' | 'insert_chaos_bag_result_one' | 'insert_friend_status' | 'insert_friend_status_one' | 'insert_friend_status_type' | 'insert_friend_status_type_one' | 'insert_guide_achievement' | 'insert_guide_achievement_one' | 'insert_guide_input' | 'insert_guide_input_one' | 'insert_investigator_data' | 'insert_investigator_data_one' | 'insert_latest_decks' | 'insert_latest_decks_one' | 'insert_local_decks' | 'insert_local_decks_one' | 'insert_user_campaigns' | 'insert_user_campaigns_one' | 'insert_user_friends' | 'insert_user_friends_one' | 'insert_user_received_friend_requests' | 'insert_user_received_friend_requests_one' | 'insert_user_sent_friend_requests' | 'insert_user_sent_friend_requests_one' | 'insert_users' | 'insert_users_one' | 'update_base_decks' | 'update_campaign' | 'update_campaign_access' | 'update_campaign_access_by_pk' | 'update_campaign_by_pk' | 'update_campaign_deck' | 'update_campaign_deck_by_pk' | 'update_campaign_guide' | 'update_campaign_investigator' | 'update_campaign_investigator_by_pk' | 'update_card' | 'update_card_by_pk' | 'update_card_text' | 'update_card_text_by_pk' | 'update_chaos_bag_result' | 'update_chaos_bag_result_by_pk' | 'update_friend_status' | 'update_friend_status_by_pk' | 'update_friend_status_type' | 'update_friend_status_type_by_pk' | 'update_guide_achievement' | 'update_guide_achievement_by_pk' | 'update_guide_input' | 'update_guide_input_by_pk' | 'update_investigator_data' | 'update_investigator_data_by_pk' | 'update_latest_decks' | 'update_local_decks' | 'update_user_campaigns' | 'update_user_friends' | 'update_user_received_friend_requests' | 'update_user_sent_friend_requests' | 'update_users' | 'update_users_by_pk' | mutation_rootKeySpecifier)[];
+export type mutation_rootKeySpecifier = ('delete_base_decks' | 'delete_campaign' | 'delete_campaign_access' | 'delete_campaign_access_by_pk' | 'delete_campaign_by_pk' | 'delete_campaign_deck' | 'delete_campaign_deck_by_pk' | 'delete_campaign_guide' | 'delete_campaign_investigator' | 'delete_campaign_investigator_by_pk' | 'delete_card' | 'delete_card_by_pk' | 'delete_card_pack' | 'delete_card_pack_by_pk' | 'delete_card_text' | 'delete_card_text_by_pk' | 'delete_chaos_bag_result' | 'delete_chaos_bag_result_by_pk' | 'delete_friend_status' | 'delete_friend_status_by_pk' | 'delete_friend_status_type' | 'delete_friend_status_type_by_pk' | 'delete_guide_achievement' | 'delete_guide_achievement_by_pk' | 'delete_guide_input' | 'delete_guide_input_by_pk' | 'delete_investigator_data' | 'delete_investigator_data_by_pk' | 'delete_latest_decks' | 'delete_local_decks' | 'delete_user_campaigns' | 'delete_user_friends' | 'delete_user_received_friend_requests' | 'delete_user_sent_friend_requests' | 'delete_users' | 'delete_users_by_pk' | 'insert_base_decks' | 'insert_base_decks_one' | 'insert_campaign' | 'insert_campaign_access' | 'insert_campaign_access_one' | 'insert_campaign_deck' | 'insert_campaign_deck_one' | 'insert_campaign_guide' | 'insert_campaign_guide_one' | 'insert_campaign_investigator' | 'insert_campaign_investigator_one' | 'insert_campaign_one' | 'insert_card' | 'insert_card_one' | 'insert_card_pack' | 'insert_card_pack_one' | 'insert_card_text' | 'insert_card_text_one' | 'insert_chaos_bag_result' | 'insert_chaos_bag_result_one' | 'insert_friend_status' | 'insert_friend_status_one' | 'insert_friend_status_type' | 'insert_friend_status_type_one' | 'insert_guide_achievement' | 'insert_guide_achievement_one' | 'insert_guide_input' | 'insert_guide_input_one' | 'insert_investigator_data' | 'insert_investigator_data_one' | 'insert_latest_decks' | 'insert_latest_decks_one' | 'insert_local_decks' | 'insert_local_decks_one' | 'insert_user_campaigns' | 'insert_user_campaigns_one' | 'insert_user_friends' | 'insert_user_friends_one' | 'insert_user_received_friend_requests' | 'insert_user_received_friend_requests_one' | 'insert_user_sent_friend_requests' | 'insert_user_sent_friend_requests_one' | 'insert_users' | 'insert_users_one' | 'update_base_decks' | 'update_campaign' | 'update_campaign_access' | 'update_campaign_access_by_pk' | 'update_campaign_by_pk' | 'update_campaign_deck' | 'update_campaign_deck_by_pk' | 'update_campaign_guide' | 'update_campaign_investigator' | 'update_campaign_investigator_by_pk' | 'update_card' | 'update_card_by_pk' | 'update_card_pack' | 'update_card_pack_by_pk' | 'update_card_text' | 'update_card_text_by_pk' | 'update_chaos_bag_result' | 'update_chaos_bag_result_by_pk' | 'update_friend_status' | 'update_friend_status_by_pk' | 'update_friend_status_type' | 'update_friend_status_type_by_pk' | 'update_guide_achievement' | 'update_guide_achievement_by_pk' | 'update_guide_input' | 'update_guide_input_by_pk' | 'update_investigator_data' | 'update_investigator_data_by_pk' | 'update_latest_decks' | 'update_local_decks' | 'update_user_campaigns' | 'update_user_friends' | 'update_user_received_friend_requests' | 'update_user_sent_friend_requests' | 'update_users' | 'update_users_by_pk' | mutation_rootKeySpecifier)[];
 export type mutation_rootFieldPolicy = {
 	delete_base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_campaign?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1567,6 +1620,8 @@ export type mutation_rootFieldPolicy = {
 	delete_campaign_investigator_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_card?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_card_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_card_pack?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_card_pack_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_card_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_card_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_chaos_bag_result?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1603,6 +1658,8 @@ export type mutation_rootFieldPolicy = {
 	insert_campaign_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_card?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_card_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_card_pack?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_card_pack_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_card_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_card_text_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_chaos_bag_result?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1643,6 +1700,8 @@ export type mutation_rootFieldPolicy = {
 	update_campaign_investigator_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_card?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_card_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_card_pack?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_card_pack_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_card_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_card_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_chaos_bag_result?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1666,7 +1725,7 @@ export type mutation_rootFieldPolicy = {
 	update_users?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_users_by_pk?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type query_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'card' | 'card_aggregate' | 'card_by_pk' | 'card_text' | 'card_text_aggregate' | 'card_text_by_pk' | 'chaos_bag_result' | 'chaos_bag_result_aggregate' | 'chaos_bag_result_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'friend_status_type' | 'friend_status_type_aggregate' | 'friend_status_type_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'local_decks' | 'local_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | query_rootKeySpecifier)[];
+export type query_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'card' | 'card_aggregate' | 'card_by_pk' | 'card_pack' | 'card_pack_aggregate' | 'card_pack_by_pk' | 'card_text' | 'card_text_aggregate' | 'card_text_by_pk' | 'chaos_bag_result' | 'chaos_bag_result_aggregate' | 'chaos_bag_result_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'friend_status_type' | 'friend_status_type_aggregate' | 'friend_status_type_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'local_decks' | 'local_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | query_rootKeySpecifier)[];
 export type query_rootFieldPolicy = {
 	base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1687,6 +1746,9 @@ export type query_rootFieldPolicy = {
 	card?: FieldPolicy<any> | FieldReadFunction<any>,
 	card_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	card_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	card_pack?: FieldPolicy<any> | FieldReadFunction<any>,
+	card_pack_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	card_pack_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	card_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	card_text_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	card_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1724,7 +1786,7 @@ export type query_rootFieldPolicy = {
 	users_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	users_by_pk?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type subscription_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'card' | 'card_aggregate' | 'card_by_pk' | 'card_text' | 'card_text_aggregate' | 'card_text_by_pk' | 'chaos_bag_result' | 'chaos_bag_result_aggregate' | 'chaos_bag_result_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'friend_status_type' | 'friend_status_type_aggregate' | 'friend_status_type_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'local_decks' | 'local_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | subscription_rootKeySpecifier)[];
+export type subscription_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'card' | 'card_aggregate' | 'card_by_pk' | 'card_pack' | 'card_pack_aggregate' | 'card_pack_by_pk' | 'card_text' | 'card_text_aggregate' | 'card_text_by_pk' | 'chaos_bag_result' | 'chaos_bag_result_aggregate' | 'chaos_bag_result_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'friend_status_type' | 'friend_status_type_aggregate' | 'friend_status_type_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'local_decks' | 'local_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | subscription_rootKeySpecifier)[];
 export type subscription_rootFieldPolicy = {
 	base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1745,6 +1807,9 @@ export type subscription_rootFieldPolicy = {
 	card?: FieldPolicy<any> | FieldReadFunction<any>,
 	card_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	card_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	card_pack?: FieldPolicy<any> | FieldReadFunction<any>,
+	card_pack_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	card_pack_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	card_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	card_text_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	card_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -2385,6 +2450,30 @@ export type TypedTypePolicies = TypePolicies & {
 	card_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | card_mutation_responseKeySpecifier | (() => undefined | card_mutation_responseKeySpecifier),
 		fields?: card_mutation_responseFieldPolicy,
+	},
+	card_pack?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | card_packKeySpecifier | (() => undefined | card_packKeySpecifier),
+		fields?: card_packFieldPolicy,
+	},
+	card_pack_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | card_pack_aggregateKeySpecifier | (() => undefined | card_pack_aggregateKeySpecifier),
+		fields?: card_pack_aggregateFieldPolicy,
+	},
+	card_pack_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | card_pack_aggregate_fieldsKeySpecifier | (() => undefined | card_pack_aggregate_fieldsKeySpecifier),
+		fields?: card_pack_aggregate_fieldsFieldPolicy,
+	},
+	card_pack_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | card_pack_max_fieldsKeySpecifier | (() => undefined | card_pack_max_fieldsKeySpecifier),
+		fields?: card_pack_max_fieldsFieldPolicy,
+	},
+	card_pack_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | card_pack_min_fieldsKeySpecifier | (() => undefined | card_pack_min_fieldsKeySpecifier),
+		fields?: card_pack_min_fieldsFieldPolicy,
+	},
+	card_pack_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | card_pack_mutation_responseKeySpecifier | (() => undefined | card_pack_mutation_responseKeySpecifier),
+		fields?: card_pack_mutation_responseFieldPolicy,
 	},
 	card_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | card_stddev_fieldsKeySpecifier | (() => undefined | card_stddev_fieldsKeySpecifier),

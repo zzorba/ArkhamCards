@@ -40693,6 +40693,7 @@
       "input": {
         "type": "counter",
         "text": "Victory display:",
+        "confirm_text": "Each investigator earns 2 bonus experience as they have prevented all of the Outer Gods from completing their schemes",
         "effects": [
           {
             "type": "earn_xp",
@@ -74496,9 +74497,6 @@
     "the_tatterdemalion",
     "electric_nightmare",
     "mission_briefing",
-    "lost_quantum",
-    "in_the_shadow_of_earth",
-    "strange_moons",
     "introspection",
     "the_machine_in_yellow",
     "fragment_of_carcosa",
@@ -74687,12 +74685,12 @@
     {
       "id": "epilogue_1",
       "type": "story",
-      "text": "Despite all odds, humanity survived the second apocalypse. Beneath the light of new stars and amidst the dust of the dead, humanity enters a golden era of scientific development and prosperity. When the white dwarf that used to be the sun extinguishes, mankind will have colonized half a galaxy worth of stars. Some of the worlds will succumb to the madness of the Ancient Ones, but most will survive --- and thrive. And yet, after billions and billions of years, the net entropy of the universe continues to increase, slowly and steadily. The stars go dim, one by one, until what the beings that descended from what was once humanity must survive by extracting the negligible amount of radiation released by the only celestial bodies remaining in the universe -- black holes. And still, after a finite but uncountable time, even the black holes will evaporate…"
+      "text": "Despite all odds, humanity survived the second apocalypse. Beneath the light of new stars and amidst the dust of the dead, humanity enters a golden era of scientific development and prosperity. When the white dwarf that used to be the sun extinguishes, mankind will have colonized half a galaxy worth of stars. Some of the worlds will succumb to the madness of the Ancient Ones, but most will survive — and thrive. And yet, after billions and billions of years, the net entropy of the universe continues to increase, slowly and steadily. The stars go dim, one by one, until what the beings that descended from what was once humanity must survive by extracting the negligible amount of radiation released by the only celestial bodies remaining in the universe — black holes. And still, after a finite but uncountable time, even the black holes will evaporate…"
     },
     {
       "id": "epilogue_2",
       "type": "story",
-      "text": "Humanity may have perished along with its star, but not all life in the universe is aligned with the Ancients Ones. The fungoid Mi-Go scientists escaped the solar system with the infinite trove of knowledge they collected from observing the humans. The descendants of the Mi-Go would live on, and colonize many galaxies in search of more knowledge to satisfy their ravenous curiosity. And yet, after billions and billions of years, the net entropy of the universe continues to increase, slowly and steadily. The stars go dim, one by one, until what the beings that descended from what was once the Mi-Go must survive by extracting the negligible amount of radiation released by the only celestial bodies remaining in the universe -- black holes. And still, after a finite but uncountable time, even the black holes will evaporate…"
+      "text": "Humanity may have perished along with its star, but not all life in the universe is aligned with the Ancients Ones. The fungoid Mi-Go scientists escaped the solar system with the infinite trove of knowledge they collected from observing the humans. The descendants of the Mi-Go would live on, and colonize many galaxies in search of more knowledge to satisfy their ravenous curiosity. And yet, after billions and billions of years, the net entropy of the universe continues to increase, slowly and steadily. The stars go dim, one by one, until what the beings that descended from what was once the Mi-Go must survive by extracting the negligible amount of radiation released by the only celestial bodies remaining in the universe — black holes. And still, after a finite but uncountable time, even the black holes will evaporate…"
     },
     {
       "id": "check_migo_escaped",
@@ -74716,7 +74714,7 @@
     {
       "id": "epilogue_3",
       "type": "story",
-      "text": "And when all the black holes do disappear, and all that is left is a vacuum of vastly separated photons and electrons, life in the cosmos will cease to exist. Our universe succumbs to a cold and empty death, leaving behind a world of maximum decay and infinite dark matter -- A world that was once known to some as Carcosa."
+      "text": "And when all the black holes do disappear, and all that is left is a vacuum of vastly separated photons and electrons, life in the cosmos will cease to exist. Our universe succumbs to a cold and empty death, leaving behind a world of maximum decay and infinite dark matter — A world that was once known to some as Carcosa."
     },
     {
       "id": "realm_of_carcosa_overtook_our_universe",
@@ -74732,7 +74730,7 @@
     {
       "id": "epilogue_4",
       "type": "story",
-      "text": "But humanity is not alone. They have encountered countless alien species throughout the universe and shared their knowledge and advancements towards finding a way to reverse entropy. The final piece of the puzzle was information that had been collected by the Mi-Go scientists of Yuggoth -- the data within six human brains that once populated a kindergarten class on Earth, before the Ancient Ones first awakened. And thus, with the essential help of the Mi-Go, the Royal Family of Carcosa was imprisoned in their mad realm of Carcosa once more, and yellow stars rise again in the rebirth of a brighter universe."
+      "text": "But humanity is not alone. They have encountered countless alien species throughout the universe and shared their knowledge and advancements towards finding a way to reverse entropy. The final piece of the puzzle was information that had been collected by the Mi-Go scientists of Yuggoth — the data within six human brains that once populated a kindergarten class on Earth, before the Ancient Ones first awakened. And thus, with the essential help of the Mi-Go, the Royal Family of Carcosa was imprisoned in their mad realm of Carcosa once more, and yellow stars rise again in the rebirth of a brighter universe."
     },
     {
       "id": "hastur_and_tassilda_are_imprisoned",
@@ -74749,7 +74747,7 @@
       "id": "design_notes",
       "title": "Design Notes",
       "bullet_type": "none",
-      "text": "Hope you enjoyed this campaign! Creating it was quite a journey! This campaign originally began as a 3-part campaign, consisting of The Tatterdemalion, Electric Nightmare and Starfall, but I quickly realized, along with a few playtesters, that the setting and story was too interesting to leave so quickly.\nThe framework of Arkham Horror LCG is really a medium to tell stories in -- and I knew that deep space sci-fi horror is a genre deeply connected to Lovecraftian themes and would have to be explored by custom scenarios eventually. I originally did not want to make it because it would have been very simple for a sci-fi themed campaign to stray in tone from the Arkham Files universe, but when I finally figured out a way to bring the investigators into the future that wasn't too ridiculous, and how to incorporate the mythos in a way that fits the universe without being too obvious, I just had to create the campaign. The King in Yellow is my favourite Ancient One, with the way it plays with psychological horror and perception of reality, with a certain theatrical flare, and the Path to Carcosa is my favourite campaign released so far, so it was only natural for a virtual reality-bending memory-involved campaign to become a loose sequel to the Path to Carcosa. Hastur is not the Ancient One most would associate with deep space, which is precisely why it fits so well.\nI hope this campaign satisfies the need for a deep space sci-fi campaign. I tried to incorporate as many sci-fi tropes that are to be expected from a \"sci-fi\" campaign organically as possible while keeping the tone and writing style of FFG's stories. I do hope more people will explore the story space of sci-fi with the Arkham framework, perhaps even further in the future than I have, maybe something closer to a space-opera? Or even a pure adaptation of the Alien series. But for now, that will be it from me in this grim future setting.\nAnyways, I do hope you all enjoyed this campaign. Alas, it's time to work on the next one, whenever I have free time, in these <i>dark ages</i>."
+      "text": "Hope you enjoyed this campaign! Creating it was quite a journey! This campaign originally began as a 3-part campaign, consisting of The Tatterdemalion, Electric Nightmare and Starfall, but I quickly realized, along with a few playtesters, that the setting and story was too interesting to leave so quickly.\nThe framework of Arkham Horror LCG is really a medium to tell stories in — and I knew that deep space sci-fi horror is a genre deeply connected to Lovecraftian themes and would have to be explored by custom scenarios eventually. I originally did not want to make it because it would have been very simple for a sci-fi themed campaign to stray in tone from the Arkham Files universe, but when I finally figured out a way to bring the investigators into the future that wasn't too ridiculous, and how to incorporate the mythos in a way that fits the universe without being too obvious, I just had to create the campaign. The King in Yellow is my favourite Ancient One, with the way it plays with psychological horror and perception of reality, with a certain theatrical flare, and the Path to Carcosa is my favourite campaign released so far, so it was only natural for a virtual reality-bending memory-involved campaign to become a loose sequel to the Path to Carcosa. Hastur is not the Ancient One most would associate with deep space, which is precisely why it fits so well.\nI hope this campaign satisfies the need for a deep space sci-fi campaign. I tried to incorporate as many sci-fi tropes that are to be expected from a \"sci-fi\" campaign organically as possible while keeping the tone and writing style of FFG's stories. I do hope more people will explore the story space of sci-fi with the Arkham framework, perhaps even further in the future than I have, maybe something closer to a space-opera? Or even a pure adaptation of the Alien series. But for now, that will be it from me in this grim future setting.\nAnyways, I do hope you all enjoyed this campaign. Alas, it's time to work on the next one, whenever I have free time, in these <i>dark ages</i>."
     },
     {
       "id": "credits",
@@ -74787,7 +74785,7 @@
   "setup": [
     "intro",
     "check_memories",
-    "check_memories_weakness",
+    "maybe_check_memories_weakness",
     "gather_encounter_sets",
     "gather_boogeyman",
     "random_act_1",
@@ -74806,7 +74804,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "You struggle to follow the pace of the little girl as she skips and hops towards the small town. \"My name is Maja. My directive is to store and manage the information archives on the ship.\" She hastily explains that a few of her classmates and her were kidnapped from their school by the 'bad people' on January 16th, 2045. Their brains were surgically removed and preserved in a special experimental machine that eventually became the powerful supercomputer operating the Tatterdemalion, K2-PS187.\nAs you walk through the town, it becomes clear that something horrible has happened here. Everything appears to be in disarray, as if a riot has recently passed through. Freshly-painted yellow graffiti depicting strange symbols and hieroglyphs can be seen. Everywhere are splatters of blood, spent shell casings, and pale face masks. There are no bodies, but you can hear the sound of distant screams, gunshots, and sirens coming from beyond the streets. Nearby is an overturned police car and a black box truck lying on its side. Huge claw marks have torn into the metal of the truck and its rear doors hang open. As you walk past, a radio from within crackles and sputters, then blares, “Hello, Unit 12? Unit 12, is that you? Please respond.\" Maja clarifies that this virtual environment that represents K2-PS187's dreams takes the form of the day they got captured, the day the entire world ended. What could possibly have happened on Earth in the distant future? Or rather, the distant past?\nYou finally arrive outside of a large brick building. Maja halts and gestures towards it. \"This is where my friends are hiding. The bad people made us translate a scary story and make a movie for them. We didn't want to read it, but they made us. A few days later, Annie, the universal translator, she -- she --\" Maja struggles to utter the words. There is a desperate fear in her eyes. \"You won't believe me, but I swear, it was the Boogeyman! I saw the Boogeyman eat her! I ran away and searched the archives to see if anything, anyone could help. After a long time, I finally found someone and called out to them. That's when you woke up! Now that you're inside our system, you can save us!\"\nBefore you is a path leading to a pair of double doors, above which are the words “Public School 187.” Underneath, someone has written “HASTUR RISES!” in yellow spray paint. An inhuman howl echoes through the halls inside the school, followed by children screaming in terror."
+      "text": "You struggle to follow the pace of the little girl as she skips and hops towards the small town. \"My name is Maja. My directive is to store and manage the information archives on the ship.\" She hastily explains that a few of her classmates and her were kidnapped from their school by the 'bad people' on January 16th, 2045. Their brains were surgically removed and preserved in a special experimental machine that eventually became the powerful supercomputer operating the Tatterdemalion, K2-PS187.\nAs you walk through the town, it becomes clear that something horrible has happened here. Everything appears to be in disarray, as if a riot has recently passed through. Freshly-painted yellow graffiti depicting strange symbols and hieroglyphs can be seen. Everywhere are splatters of blood, spent shell casings, and pale face masks. There are no bodies, but you can hear the sound of distant screams, gunshots, and sirens coming from beyond the streets. Nearby is an overturned police car and a black box truck lying on its side. Huge claw marks have torn into the metal of the truck and its rear doors hang open. As you walk past, a radio from within crackles and sputters, then blares, “Hello, Unit 12? Unit 12, is that you? Please respond.\" Maja clarifies that this virtual environment that represents K2-PS187's dreams takes the form of the day they got captured, the day the entire world ended. What could possibly have happened on Earth in the distant future? Or rather, the distant past?\nYou finally arrive outside of a large brick building. Maja halts and gestures towards it. \"This is where my friends are hiding. The bad people made us translate a scary story and make a movie for them. We didn't want to read it, but they made us. A few days later, Annie, the universal translator, she — she —\" Maja struggles to utter the words. There is a desperate fear in her eyes. \"You won't believe me, but I swear, it was the Boogeyman! I saw the Boogeyman eat her! I ran away and searched the archives to see if anything, anyone could help. After a long time, I finally found someone and called out to them. That's when you woke up! Now that you're inside our system, you can save us!\"\nBefore you is a path leading to a pair of double doors, above which are the words “Public School 187.” Underneath, someone has written “HASTUR RISES!” in yellow spray paint. An inhuman howl echoes through the halls inside the school, followed by children screaming in terror."
     },
     {
       "id": "check_memories",
@@ -74819,19 +74817,51 @@
         "options": [
           {
             "numCondition": 0,
-            "steps": ["desync_story", "desync_effect"]
+            "steps": ["desync_story", "desync_effect"],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "zdm_desync_weakness",
+                "text": "dummy"
+              }
+            ]
           },
           {
             "numCondition": 1,
-            "steps": ["desync_story", "desync_effect"]
+            "steps": ["desync_story", "desync_effect"],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "zdm_desync_weakness",
+                "text": "dummy"
+              }
+            ]
           },
           {
             "numCondition": 2,
-            "steps": ["desync_story", "desync_effect"]
+            "steps": ["desync_story", "desync_effect"],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "zdm_desync_weakness",
+                "text": "dummy"
+              }
+            ]
           },
           {
             "numCondition": 3,
-            "steps": ["desync_story", "desync_effect"]
+            "steps": ["desync_story", "desync_effect"],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "zdm_desync_weakness",
+                "text": "dummy"
+              }
+            ]
           }
         ],
         "defaultOption": {}
@@ -74841,11 +74871,27 @@
       "id": "desync_story",
       "title": "Desynchronization",
       "type": "story",
-      "text": "An overturned schoolbus gathers dust on the school grounds. As you examine the vandalized windows, you notice a glimpse of your own reflection. However, you no longer recognize the person looking back at you. The frame, the distinct facial features, they all seem so familiar to you, yet you know this is not your body. You stare into the glass in disbelief. The face of your reflection morphs into a blank, pale mask with no mouth, nose or eyes. The virtual reality no longer recognizes your residual self image anymore -- the mental projection of your digital self has decayed into nothingness."
+      "text": "An overturned schoolbus gathers dust on the school grounds. As you examine the vandalized windows, you notice a glimpse of your own reflection. However, you no longer recognize the person looking back at you. The frame, the distinct facial features, they all seem so familiar to you, yet you know this is not your body. You stare into the glass in disbelief. The face of your reflection morphs into a blank, pale mask with no mouth, nose or eyes. The virtual reality no longer recognizes your residual self image anymore — the mental projection of your digital self has decayed into nothingness."
     },
     {
       "id": "desync_effect",
       "text": "You must add the Desync weakness to your deck. This card does not count towards your deck limit."
+    },
+    {
+      "id": "maybe_check_memories_weakness",
+      "hidden": true,
+      "type": "branch",
+      "condition":  {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "zdm_desync_weakness",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["check_memories_weakness", "save_decks"]
+          }
+        ]
+      }
     },
     {
       "id": "check_memories_weakness",
@@ -74896,6 +74942,13 @@
             ]
           }
         ]
+      }
+    },
+    {
+      "id": "save_decks",
+      "type": "input",
+      "input": {
+        "type": "save_decks"
       }
     },
     {
@@ -74971,7 +75024,7 @@
       "id": "switching_locations_rule",
       "type": "rule_reminder",
       "title": "Switching Locations",
-      "text": "Throughout this scenario, you may be instructed to switch two locations with each other. When a location is switched with another location, they take each other's place in the arrangement. All tokens, attachments, investigators, enemies, and other cards at each location remain on the same location (they have “moved” with the location -- only the arrangement and connections have changed.)\n<i>For example, if Wendy Adams is currently in the School Grounds and is instructed to switch her location with the Entrance Hall, which is directly above the School Grounds, the positions of the two locations will be switched. After switching these two locations with each other, Wendy Adams remains in the School Grounds, which is now directly above the Entrance Hall.</i>"
+      "text": "Throughout this scenario, you may be instructed to switch two locations with each other. When a location is switched with another location, they take each other's place in the arrangement. All tokens, attachments, investigators, enemies, and other cards at each location remain on the same location (they have “moved” with the location — only the arrangement and connections have changed.)\n<i>For example, if Wendy Adams is currently in the School Grounds and is instructed to switch her location with the Entrance Hall, which is directly above the School Grounds, the positions of the two locations will be switched. After switching these two locations with each other, Wendy Adams remains in the School Grounds, which is now directly above the Entrance Hall.</i>"
     },
     {
       "id": "swarming_rule",
@@ -75249,7 +75302,6 @@
       "type": "input",
       "input": {
         "type": "upgrade_decks",
-        "skip_decks": true,
         "counter": "memories"
       }
     },
@@ -75341,7 +75393,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "There is no time to waste. As if it were muscle-memory, you adorn the makeshift shrine by installing one of the quantum shards in the center. Several of the golden discs obtained from the Mi-Go must be placed in front -- aligned to form a syzygy. With the components in order, you pronounce the unspeakable message from Earth:\n<center>\"Let the red dawn surmise</center>\n<center>What we shall do,</center>\n<center>When this blue starlight dies</center>\n<center>And all is through.\"</center>\nThe golden discs begin trembling, building momentum until they all turn upright and begin to roll around the shrine in one direction. The quantum artifact's hue shifts into a yellow glare before glowing an intense and dense red. The discs spin around and around the surface at different, but consistent speeds, until they finally slow down to a crawl and fall over simultaneously. Then, as suddenly as it began, the red shard erupts in a fog of nebulous gas, blinding you in its flurry.\nWhen your eyesight returns, all that remains are the golden discs resting at various locations across the floor. You instinctively recognize this as a schematic of the solar system. Upon closer examination, a single remnant of the purple shard remains between what you believe is Jupiter and Saturn's orbits. K2-PS187 confirms that the depiction is accurate to the current star-time -- and begins plotting a course towards the asteroid.\nOn the way there, you think of the different worlds you have visited and many adventures you have experienced, both in this world and in your own. Throughout every interaction, every quest, is the underlying sense of hope and optimism for the future. This future does not deserve to become another pawn to the mad king, and you intend to stop that from happening.\nWhen you arrive, the asteroid does not resemble what you had expected. The egg-shaped asteroid is about 4 km at its widest, and looks awfully… normal. The yellow color is closer to a murky brown than gold. It is littered with craters and cavities, battered by the harshness of space. Without delay, you suit on and descend onto the surface of Fragment, ready to face the Royal Princess of Carcosa…"
+      "text": "There is no time to waste. As if it were muscle-memory, you adorn the makeshift shrine by installing one of the quantum shards in the center. Several of the golden discs obtained from the Mi-Go must be placed in front — aligned to form a syzygy. With the components in order, you pronounce the unspeakable message from Earth:\n<center>\"Let the red dawn surmise</center>\n<center>What we shall do,</center>\n<center>When this blue starlight dies</center>\n<center>And all is through.\"</center>\nThe golden discs begin trembling, building momentum until they all turn upright and begin to roll around the shrine in one direction. The quantum artifact's hue shifts into a yellow glare before glowing an intense and dense red. The discs spin around and around the surface at different, but consistent speeds, until they finally slow down to a crawl and fall over simultaneously. Then, as suddenly as it began, the red shard erupts in a fog of nebulous gas, blinding you in its flurry.\nWhen your eyesight returns, all that remains are the golden discs resting at various locations across the floor. You instinctively recognize this as a schematic of the solar system. Upon closer examination, a single remnant of the purple shard remains between what you believe is Jupiter and Saturn's orbits. K2-PS187 confirms that the depiction is accurate to the current star-time — and begins plotting a course towards the asteroid.\nOn the way there, you think of the different worlds you have visited and many adventures you have experienced, both in this world and in your own. Throughout every interaction, every quest, is the underlying sense of hope and optimism for the future. This future does not deserve to become another pawn to the mad king, and you intend to stop that from happening.\nWhen you arrive, the asteroid does not resemble what you had expected. The egg-shaped asteroid is about 4 km at its widest, and looks awfully… normal. The yellow color is closer to a murky brown than gold. It is littered with craters and cavities, battered by the harshness of space. Without delay, you suit on and descend onto the surface of Fragment, ready to face the Royal Princess of Carcosa…"
     },
     {
       "id": "gather_encounter_sets",
@@ -75551,7 +75603,15 @@
               ]
             },
             "text": "Adjust chaos bag",
-            "steps": ["remove_chaos_token"]
+            "steps": ["remove_chaos_token"],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "zdm_foc_chaos_bag",
+                "text": "dummy"
+              }
+            ]
           }
         ],
         "campaign_log": [
@@ -75637,7 +75697,7 @@
           },
           {
             "id": "-1",
-            "text": "-1",
+            "text": "−1",
             "effects": [
               {
                 "type": "remove_chaos_token",
@@ -75669,7 +75729,7 @@
           },
           {
             "id": "-2",
-            "text": "-2",
+            "text": "−2",
             "effects": [
               {
                 "type": "remove_chaos_token",
@@ -75698,7 +75758,7 @@
           },
           {
             "id": "-3",
-            "text": "-3",
+            "text": "−3",
             "effects": [
               {
                 "type": "remove_chaos_token",
@@ -75724,7 +75784,7 @@
           },
           {
             "id": "-4",
-            "text": "-4",
+            "text": "−4",
             "effects": [
               {
                 "type": "remove_chaos_token",
@@ -75747,7 +75807,7 @@
           },
           {
             "id": "-5",
-            "text": "-5",
+            "text": "−5",
             "effects": [
               {
                 "type": "remove_chaos_token",
@@ -75770,7 +75830,7 @@
           },
           {
             "id": "-6",
-            "text": "-6",
+            "text": "−6",
             "effects": [
               {
                 "type": "remove_chaos_token",
@@ -75790,7 +75850,7 @@
           },
           {
             "id": "-7",
-            "text": "-7",
+            "text": "−7",
             "effects": [
               {
                 "type": "remove_chaos_token",
@@ -75810,7 +75870,7 @@
           },
           {
             "id": "-8",
-            "text": "-8",
+            "text": "−8",
             "effects": [
               {
                 "type": "remove_chaos_token",
@@ -76010,7 +76070,7 @@
     {
       "id": "R2",
       "title": "Resolution 2",
-      "text": "You wake up in cold sweat back in the cryo-chamber. While you are confused and disoriented, K2-PS187 explains that you have been in a coma for over 2 months after you have decided to enter your own mind. Your experience on that asteroid, the true nature of Hastur -- it was too real to be imagined, it must have been forged from fragments of the cultist's memories. Regardless of the circumstances, you now know of the impending doom of the solar system, and understand what you must do: Save as many as you can before the inevitable.",
+      "text": "You wake up in cold sweat back in the cryo-chamber. While you are confused and disoriented, K2-PS187 explains that you have been in a coma for over 2 months after you have decided to enter your own mind. Your experience on that asteroid, the true nature of Hastur — it was too real to be imagined, it must have been forged from fragments of the cultist's memories. Regardless of the circumstances, you now know of the impending doom of the solar system, and understand what you must do: Save as many as you can before the inevitable.",
       "steps": ["add_2_impending_doom", "earn_xp", "$upgrade_decks"]
     },
     {
@@ -76044,7 +76104,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "\"In the middle of the 21st century, Earth was in complete chaos. Rioting, crime, madness and worse had become the order of the day for the entire world. […] In a last ditch of effort, two of the Arks were completed and the third vessel was stripped for parts. The two completed vessels set out for Mars, each carrying 3000 humans in suspended animation. One vessel, the Liberty, suffered a massive power plant failure and the crew and passengers were killed. The other ship, Hope, eventually reached Mars…\"\n<right>-- Maja, Information Archives</right>\nThe planet Earth -- what used to be humanity's sanctuary, is now abandoned to the madness of the Ancient Ones. There is very little information of what remains on the Earth, but if anyone would attempt to send out a transmission, survey vessels stationed around the planet such as the Nostalgia II would hear those calls.\nThe trip itself was uneventful, and you spend your days watching the blue dot of Earth grow and grow in size. Around the time you can finally recognize a few of the continents, the Tatterdemalion picks up a lonely and distant beat -- the echo of the Nostalgia II's distress beacon. You try to hail the crew with your radios, but there is no response. The Tatterdemalion begins its deceleration, and with no time to waste, you prepare to board the godforsaken ship."
+      "text": "\"In the middle of the 21st century, Earth was in complete chaos. Rioting, crime, madness and worse had become the order of the day for the entire world. […] In a last ditch of effort, two of the Arks were completed and the third vessel was stripped for parts. The two completed vessels set out for Mars, each carrying 3000 humans in suspended animation. One vessel, the Liberty, suffered a massive power plant failure and the crew and passengers were killed. The other ship, Hope, eventually reached Mars…\"\n<right>— Maja, Information Archives</right>\nThe planet Earth — what used to be humanity's sanctuary, is now abandoned to the madness of the Ancient Ones. There is very little information of what remains on the Earth, but if anyone would attempt to send out a transmission, survey vessels stationed around the planet such as the Nostalgia II would hear those calls.\nThe trip itself was uneventful, and you spend your days watching the blue dot of Earth grow and grow in size. Around the time you can finally recognize a few of the continents, the Tatterdemalion picks up a lonely and distant beat — the echo of the Nostalgia II's distress beacon. You try to hail the crew with your radios, but there is no response. The Tatterdemalion begins its deceleration, and with no time to waste, you prepare to board the godforsaken ship."
     },
     {
       "id": "gather_encounter_sets",
@@ -76093,6 +76153,23 @@
     },
     {
       "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "confirm_text": "Each investigator earns 2 bonus experience as they have seen the unthinkable.",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all",
+            "bonus": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_xp_plus_2",
       "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
       "type": "input",
       "input": {
@@ -76153,11 +76230,11 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["go_resolution_5", "resolution_5"]
+            "steps": ["check_for_imitations", "ask_imitations", "check_imitations"]
           },
           {
             "boolCondition": false,
-            "steps": ["check_for_imitations", "ask_imitations", "check_imitations"]
+            "steps": ["go_resolution_5", "resolution_5"]
           }
         ]
       }
@@ -76282,7 +76359,27 @@
     },
     {
       "id": "add_impending_doom",
-      "text": "Add 1 tally mark under \"Impending Doom\" in your Campaign Log."
+      "text": "Add 1 tally mark under \"Impending Doom\" in your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_count",
+          "section": "impending_doom",
+          "operation": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "add_4_impending_doom",
+      "text": "Add 4 tally marks under \"Impending Doom\" in your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_count",
+          "section": "impending_doom",
+          "operation": "add",
+          "value": 4
+        }
+      ]
     },
     {
       "id": "add_loss_impending_doom",
@@ -76323,7 +76420,6 @@
       "type": "input",
       "input": {
         "type": "upgrade_decks",
-        "skip_decks": true,
         "counter": "memories"
       }
     },
@@ -76350,7 +76446,7 @@
             "scenario": "lost_quantum",
             "options": [
               {
-                "boolCondition": false
+                "boolCondition": true
               }
             ]
           }
@@ -76366,12 +76462,11 @@
     },
     {
       "id": "search_for_fragment",
-      "title": "The Search for Fragment",
-      "text": "Aboard the Tatterdemalion, you and your companions seek the coordinates of the asteroid \"Fragment\" to prevent the ascension of Tassilda, daughter of Hastur. Upon analysing the remaining data aboard the ship, K2-PS187 and you have decided on 3 traces that are worth investigating. However, time is of the essence  -- you may want to visit the destination you think will be the most valuable first."
+      "title": "The Search for Fragment (continued)",
+      "text": "Aboard the Tatterdemalion, you and your companions seek the coordinates of the asteroid \"Fragment\" to prevent the ascension of Tassilda, daughter of Hastur. Upon analysing the remaining data aboard the ship, K2-PS187 and you have decided on 3 traces that are worth investigating. However, time is of the essence  — you may want to visit the destination you think will be the most valuable first."
     },
     {
       "id": "choose_trace",
-      "title": "The Search for Fragment (continued)",
       "text": "The investigators must choose to follow one of the following traces:",
       "type": "input",
       "input": {
@@ -76412,7 +76507,6 @@
     },
     {
       "id": "proceed_lost_quantum",
-      "text": "Proceed to <b>Scenario IIIa: Lost Quantum</b>.",
       "effects": [
         {
           "type": "campaign_data",
@@ -76423,7 +76517,6 @@
     },
     {
       "id": "proceed_strange_moons",
-      "text": "Proceed to <b>Scenario IIIc: Strange Moons</b>.",
       "effects": [
         {
           "type": "campaign_data",
@@ -76497,15 +76590,27 @@
                 }
               ]
             },
-            "text": "you witnessed the manifested madness.",
-            "steps": ["witnesed_the_manifested_madness"]
+            "text": "You witnessed the manifested madness.",
+            "steps": ["witnesed_the_manifested_madness_small"]
           }
-
         ]
       }
     },
     {
+      "id": "witnesed_the_manifested_madness_small",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "witnesed_the_manifested_madness",
+          "text": "you witnessed the manifested madness."
+        }
+      ]
+    },
+    {
       "id": "has_been_corrupted_by_the_earth",
+      "bullet_type": "small",
       "text": "Which investigator(s) <i>has been corrupted by the earth</i>",
       "type": "input",
       "input": {
@@ -76556,6 +76661,31 @@
           }
         ]
       }
+    },
+    {
+      "id": "couldnt_save_the_crew_of_the_nostalgia_2",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "couldnt_save_the_crew_of_the_nostalgia_2",
+          "text": "you couldn't save the crew of the Nostalgia II."
+        }
+      ]
+    },
+    {
+      "id": "all_investigsators_corrupted_by_the_earth",
+      "text": "Record in your Campaign Log that all investigators <i>have been corrupted by the Earth.</i>",
+      "effects": [
+        {
+          "type": "campaign_log_cards",
+          "section": "campaign_notes",
+          "id": "has_been_corrupted_by_the_earth",
+          "cards": "$all_investigators",
+          "masculine_text": "#name# has been corrupted by the Earth.",
+          "feminine_text": "#name# has been corrupted by the Earth."
+        }
+      ]
     }
   ],
   "resolutions": [
@@ -76585,14 +76715,20 @@
     {
       "id": "R3",
       "title": "Resolution 3",
-      "text": "You barely made it out of the madhouse alive. You managed to save some of the crew, and they mourn the lost for several days. Thankfully, none of the crew members you have brought aboard was an imitation. Over time, they describe how the madness only began a few days after they decoded a transmission from Earth -- a cryptic poem.\n<center>\"Let the red dawn surmise</center>\n<center>What we shall do,</center>\n<center>When this blue starlight dies</center>\n<center>And all is through.\"</center>\nYou believe this poem must be what the cultists were after -- but it is meaningless to you and doesn't help you uncover the coordinates of Fragment.\nWhen you finally deliver the remaining crew to a service station in the Martian orbit, the survivors thank you once more for saving them and bids farewell. Despite all, you must leave this behind you and look forwards towards another lead.",
+      "text": "You barely made it out of the madhouse alive. You managed to save some of the crew, and they mourn the lost for several days. Thankfully, none of the crew members you have brought aboard was an imitation. Over time, they describe how the madness only began a few days after they decoded a transmission from Earth — a cryptic poem.\n<center>\"Let the red dawn surmise</center>\n<center>What we shall do,</center>\n<center>When this blue starlight dies</center>\n<center>And all is through.\"</center>\nYou believe this poem must be what the cultists were after — but it is meaningless to you and doesn't help you uncover the coordinates of Fragment.\nWhen you finally deliver the remaining crew to a service station in the Martian orbit, the survivors thank you once more for saving them and bids farewell. Despite all, you must leave this behind you and look forwards towards another lead.",
       "steps": ["you_have_rescued_the_remaining_crew_of_the_nostalgia_2", "add_impending_doom", "add_loss_impending_doom", "earn_xp", "$upgrade_decks", "proceed_search_for_fragment"]
     },
     {
       "id": "R4",
       "title": "Resolution 4",
-      "text": "The remaining crew of the Nostalgia II thank you for your help in defeating the abomination. They describe how the madness only began a few days after they decoded a transmission from Earth -- a cryptic poem.\n<center>\"Let the red dawn surmise</center>\n<center>What we shall do,</center>\n<center>When this blue starlight dies</center>\n<center>And all is through.\"</center>\nYou believe this poem must be what the cultists were after -- but it is meaningless to you and doesn't help you uncover the coordinates of Fragment. Despite all, you must leave this behind you and look forwards towards another lead.",
+      "text": "The remaining crew of the Nostalgia II thank you for your help in defeating the abomination. They describe how the madness only began a few days after they decoded a transmission from Earth — a cryptic poem.\n<center>\"Let the red dawn surmise</center>\n<center>What we shall do,</center>\n<center>When this blue starlight dies</center>\n<center>And all is through.\"</center>\nYou believe this poem must be what the cultists were after — but it is meaningless to you and doesn't help you uncover the coordinates of Fragment. Despite all, you must leave this behind you and look forwards towards another lead.",
       "steps": ["maybe_witnesed_the_manifested_madness", "nostalgia_2_has_been_saved", "earn_space_artillery", "add_elder_thing", "add_impending_doom", "add_win_impending_doom", "earn_xp_plus_crew", "$upgrade_decks", "proceed_search_for_fragment"]
+    },
+    {
+      "id": "R5",
+      "title": "Resolution 5",
+      "text": "You couldn't save anyone. The one silver lining — during the ordeal, K2-PS187 was able to hack into the mainframe and uncover what the cultists retrieved, a cryptic message received from Earth. You spend some time attempting to decode the message — but to no avail. You just leave this decryption, and the traumatic experiences associated with it, behind for now and look forwards toward another lead.",
+      "steps": ["couldnt_save_the_crew_of_the_nostalgia_2", "all_investigsators_corrupted_by_the_earth", "add_4_impending_doom", "earn_xp_plus_2", "$upgrade_decks", "proceed_search_for_fragment"]
     }
   ]
 }
@@ -76606,22 +76742,26 @@
   "icon": "deep_space",
   "setup": [
     "intro",
+    "describe_search_ship",
     "ask_search_ship",
+    "describe_side_mission",
     "ask_side_mission",
-    "add_chaos_token",
-    "check_memories_for_weakness",
-    "check_uncovered_the_cultists_inhuman_methods"
+    "check_side_mission"
   ],
   "steps": [
     {
       "id": "intro",
       "type": "story",
-      "text": "The strange quantum shards, the golden disks obtained from the Mi-Go, the cryptic message from Earth… Despite travelling throughout the solar system to uncover these individual pieces of the puzzle, you still can't seem to fit them together into one big picture. There is a key element missing -- a connective tissue that will make sense of it all. Of course, there is also still one place you know for certain contains all of your answers, but you fear what you may find there. And that place is your own mind.\nDeep within your own subconscious, you can feel a shimmer of the cultist you embody  -- imprisoned in the edges between your thoughts. You know for certain that the other version of you remembers how to find Fragment.\nEntering one's own virtual mind is particularly dangerous as any small mistake could send you spiraling into insanity. But you are ready to confront your past once and for all. With the help of K2-PS187, the cryo-chamber's dream protocols are once again tinkered with to access your own personal memories this time. You lie back down in the cryo-chamber once more. With a flick of a switch, you begin to fall back into unconsciousness…"
+      "text": "The strange quantum shards, the golden disks obtained from the Mi-Go, the cryptic message from Earth… Despite travelling throughout the solar system to uncover these individual pieces of the puzzle, you still can't seem to fit them together into one big picture. There is a key element missing — a connective tissue that will make sense of it all. Of course, there is also still one place you know for certain contains all of your answers, but you fear what you may find there. And that place is your own mind.\nDeep within your own subconscious, you can feel a shimmer of the cultist you embody  — imprisoned in the edges between your thoughts. You know for certain that the other version of you remembers how to find Fragment.\nEntering one's own virtual mind is particularly dangerous as any small mistake could send you spiraling into insanity. But you are ready to confront your past once and for all. With the help of K2-PS187, the cryo-chamber's dream protocols are once again tinkered with to access your own personal memories this time. You lie back down in the cryo-chamber once more. With a flick of a switch, you begin to fall back into unconsciousness…"
+    },
+    {
+      "id": "describe_search_ship",
+      "text": "The investigators may choose to take their time to search the Tatterdemalion for any more important details they may have missed."
     },
     {
       "id": "ask_search_ship",
+      "bullet_type": "small",
       "type": "input",
-      "text": "The investigators may choose to take their time to search the Tatterdemalion for any more important details they may have missed.",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -76629,20 +76769,58 @@
             "id": "yes",
             "text": "Would you like to search the Tatterdemalion?",
             "description": "If you do so, add 1 tally mark to \"Impending Doom\" and to each investigator's \"Memories\".",
+            "steps": ["add_1_impending_doom", "add_1_memory"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_1_impending_doom",
+      "bullet_type": "small",
+      "text": "Add 1 tally mark under \"Impending Doom\" in your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_count",
+          "section": "impending_doom",
+          "operation": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "add_1_memory",
+      "bullet_type": "small",
+      "text": "Each investigators gains 1 Memory.",
+      "effects": [
+        {
+          "type": "campaign_log_investigator_count",
+          "section": "memories",
+          "id": "$count",
+          "investigator": "all",
+          "operation": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "describe_side_mission",
+      "text": "The investigators may choose to enter a simulation of the Earth's histories to learn more about this future by playing a side-story, crossing out \"Memories\" instead of paying its experience cost. Experience earned by playing the side-story become \"Memories\" for investigators instead."
+    },
+    {
+      "id": "ask_side_mission",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "side_mission",
+            "text": "Would you like to add a side-story to the campaign?",
             "effects": [
               {
-                "type": "campaign_log_count",
-                "section": "impending_doom",
-                "operation": "add",
-                "value": 1
-              },
-              {
-                "type": "campaign_log_investigator_count",
-                "section": "memories",
-                "id": "$count",
-                "investigator": "all",
-                "operation": "add",
-                "value": 1
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "zdm_side_story",
+                "text": "dummy"
               }
             ]
           }
@@ -76650,7 +76828,46 @@
       }
     },
     {
-      "id": "ask_side_mission"
+      "id": "check_side_mission",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "zdm_side_story",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "redirect_experience",
+                "investigator_count": "memories"
+              },
+              {
+                "type": "campaign_data",
+                "setting": "next_scenario",
+                "scenario": "introspection_continued"
+              }
+            ],
+            "steps": ["side_scenario_instructions"]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "add_chaos_token",
+              "explain_memories_for_weakness",
+              "check_memories_for_weakness",
+              "check_uncovered_the_cultists_inhuman_methods"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "side_scenario_instructions",
+      "bullet_type": "small",
+      "text": "Use the \"Add side scenario\" button on the campaign screen to choose and play a side scenario. Experience will be automatically turned into \"Memories\"."
     },
     {
       "id": "add_chaos_token",
@@ -76699,8 +76916,11 @@
       }
     },
     {
+      "id": "explain_memories_for_weakness",
+      "text": "Each investigator with 6 or more \"Memories\" earns the Echoes of the Past weakness."
+    },
+    {
       "id": "check_memories_for_weakness",
-      "text": "Each investigator with 6 or more \"Memories\" earns the Echoes of the Past weakness.",
       "type": "branch",
       "condition": {
         "type": "campaign_log_investigator_count",
@@ -76733,8 +76953,16 @@
               "investigator": "$input_value",
               "card": "zdm_00198"
             }
-          ]
+          ],
+          "steps": ["save_decks"]
         }
+      }
+    },
+    {
+      "id": "save_decks",
+      "type": "input",
+      "input": {
+        "type": "save_decks"
       }
     },
     {
@@ -76747,7 +76975,13 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["introspection_1", "additional_resource_card"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["introspection_1", "additional_resource_card"]
+              }
+            ]
           }
         ]
       }
@@ -76755,7 +76989,7 @@
     {
       "id": "introspection_1",
       "type": "story",
-      "text": "Memories of your past life come flooding back to you -- horrible visions of launching missiles onto mining outposts, spreading memetic biological viruses, and other unspeakable evils upon humanity. The cultist that you used to be must answer for their atrocities -- and you are more than ready to finally extinguish their presence within you."
+      "text": "Memories of your past life come flooding back to you — horrible visions of launching missiles onto mining outposts, spreading memetic biological viruses, and other unspeakable evils upon humanity. The cultist that you used to be must answer for their atrocities — and you are more than ready to finally extinguish their presence within you."
     },
     {
       "id": "additional_resource_card",
@@ -76764,6 +76998,161 @@
   ]
 }
 ,
+{
+  "id": "introspection_continued",
+  "scenario_name": "Introspection (continued)",
+  "full_name": "Interlude II: Introspection (continued)",
+  "header": "Interlude II",
+  "allow_side_scenario": true,
+  "type": "interlude",
+  "icon": "deep_space",
+  "setup": [
+    "clear_experience_redirect",
+    "add_chaos_token",
+    "explain_memories_for_weakness",
+    "check_memories_for_weakness",
+    "check_uncovered_the_cultists_inhuman_methods"
+  ],
+  "steps": [
+    {
+      "id": "clear_experience_redirect",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "redirect_experience",
+          "investigator_count": ""
+        }
+      ]
+    },
+    {
+      "id": "add_chaos_token",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "difficulty",
+        "options": [
+          {
+            "condition": "easy",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-3"]
+              }
+            ]
+          },
+          {
+            "condition": "standard",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-5"]
+              }
+            ]
+          },
+          {
+            "condition": "hard",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-6", "elder_thing"]
+              }
+            ]
+          },
+          {
+            "condition": "expert",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-7", "elder_thing"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "explain_memories_for_weakness",
+      "text": "Each investigator with 6 or more \"Memories\" earns the Echoes of the Past weakness."
+    },
+    {
+      "id": "check_memories_for_weakness",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_investigator_count",
+        "section": "memories",
+        "investigator": "all",
+        "options": [
+          {
+            "numCondition": 0
+          },
+          {
+            "numCondition": 1
+          },
+          {
+            "numCondition": 2
+          },
+          {
+            "numCondition": 3
+          },
+          {
+            "numCondition": 4
+          },
+          {
+            "numCondition": 5
+          }
+        ],
+        "defaultOption": {
+          "effects": [
+            {
+              "type": "add_card",
+              "investigator": "$input_value",
+              "card": "zdm_00198"
+            }
+          ],
+          "steps": ["save_decks"]
+        }
+      }
+    },
+    {
+      "id": "save_decks",
+      "type": "input",
+      "input": {
+        "type": "save_decks"
+      }
+    },
+    {
+      "id": "check_uncovered_the_cultists_inhuman_methods",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "uncovered_the_cultists_inhuman_methods",
+        "options": [
+          {
+            "boolCondition": true,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["introspection_1", "additional_resource_card"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "introspection_1",
+      "type": "story",
+      "text": "Memories of your past life come flooding back to you — horrible visions of launching missiles onto mining outposts, spreading memetic biological viruses, and other unspeakable evils upon humanity. The cultist that you used to be must answer for their atrocities — and you are more than ready to finally extinguish their presence within you."
+    },
+    {
+      "id": "additional_resource_card",
+      "text": "Each investigator begins the following scenario with 1 additional resource and 1 additional card in their starting hand."
+    }
+  ]
+},
 {
   "id": "lost_quantum",
   "scenario_name": "Lost Quantum",
@@ -76786,7 +77175,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "\"When the world ended, the various scientific and mining communities of different nationalities that lie in the asteroid belt between the planets Mars and Jupiter had formed a pact -- a promise to ensure the survival of mankind. […] The United Colonial Coalition is composed of twenty colonies, varying widely in size, population, and purpose. Some colonies exist solely for mining, while others focus on scientific research or are engineering centers; these usually have fewer than 200 individuals living within them. Other asteroids serve as population centers, containing vast hydroponic farms, universities, and recreational areas. These can be home to more than a thousand colonists…\"\n<right>- Maja, Information Archives</right>\nWhen you arrive at the asteroid, you are absorbed by the fuchsia glow of Elbrus. Quantum materials have only recently been discovered, but may hold key properties that could be used to engineer devices that would have been impossible with classical materials. Unfortunately, quantum fields generated by these materials disrupt traditional radio communication, making it impossible for you to hail the scientists on Elbrus. Without further ado, you and your companions board one of the landing crafts and drift towards the asteroid…\nThe purple aurora spreads over the viewport like distant milk, filling the room with an electric tinge. Your final approach vector takes you directly over one of the larger craters on the asteroid. The computer calculates the trajectories, and commences the final descent onto the rocky surface. It is just then that the short-range radios crackle into a man's terrified voice. \"Abort the landing procedure now! Abort! Before --\" But it is too late. The warning lights begin flashing on and off as the craft spins out of control. You grab onto anything you can, but the vessel increasingly spins and spins until your arms flail and darkness prevails…"
+      "text": "\"When the world ended, the various scientific and mining communities of different nationalities that lie in the asteroid belt between the planets Mars and Jupiter had formed a pact — a promise to ensure the survival of mankind. […] The United Colonial Coalition is composed of twenty colonies, varying widely in size, population, and purpose. Some colonies exist solely for mining, while others focus on scientific research or are engineering centers; these usually have fewer than 200 individuals living within them. Other asteroids serve as population centers, containing vast hydroponic farms, universities, and recreational areas. These can be home to more than a thousand colonists…\"\n<right>- Maja, Information Archives</right>\nWhen you arrive at the asteroid, you are absorbed by the fuchsia glow of Elbrus. Quantum materials have only recently been discovered, but may hold key properties that could be used to engineer devices that would have been impossible with classical materials. Unfortunately, quantum fields generated by these materials disrupt traditional radio communication, making it impossible for you to hail the scientists on Elbrus. Without further ado, you and your companions board one of the landing crafts and drift towards the asteroid…\nThe purple aurora spreads over the viewport like distant milk, filling the room with an electric tinge. Your final approach vector takes you directly over one of the larger craters on the asteroid. The computer calculates the trajectories, and commences the final descent onto the rocky surface. It is just then that the short-range radios crackle into a man's terrified voice. \"Abort the landing procedure now! Abort! Before —\" But it is too late. The warning lights begin flashing on and off as the craft spins out of control. You grab onto anything you can, but the vessel increasingly spins and spins until your arms flail and darkness prevails…"
     },
     {
       "id": "gather_encounter_sets",
@@ -76921,6 +77310,7 @@
     },
     {
       "id": "have_witnessed_the_primordial_chaos",
+      "hidden": true,
       "effects": [
         {
           "type": "campaign_log",
@@ -77019,7 +77409,6 @@
       "type": "input",
       "input": {
         "type": "upgrade_decks",
-        "skip_decks": true,
         "counter": "memories"
       }
     },
@@ -77046,7 +77435,7 @@
             "scenario": "in_the_shadow_of_earth",
             "options": [
               {
-                "boolCondition": false
+                "boolCondition": true
               }
             ]
           }
@@ -77062,12 +77451,11 @@
     },
     {
       "id": "search_for_fragment",
-      "title": "The Search for Fragment",
-      "text": "Aboard the Tatterdemalion, you and your companions seek the coordinates of the asteroid \"Fragment\" to prevent the ascension of Tassilda, daughter of Hastur. Upon analysing the remaining data aboard the ship, K2-PS187 and you have decided on 3 traces that are worth investigating. However, time is of the essence  -- you may want to visit the destination you think will be the most valuable first."
+      "title": "The Search for Fragment (continued)",
+      "text": "Aboard the Tatterdemalion, you and your companions seek the coordinates of the asteroid \"Fragment\" to prevent the ascension of Tassilda, daughter of Hastur. Upon analysing the remaining data aboard the ship, K2-PS187 and you have decided on 3 traces that are worth investigating. However, time is of the essence  — you may want to visit the destination you think will be the most valuable first."
     },
     {
       "id": "choose_trace",
-      "title": "The Search for Fragment (continued)",
       "text": "The investigators must choose to follow one of the following traces:",
       "type": "input",
       "input": {
@@ -77108,7 +77496,6 @@
     },
     {
       "id": "proceed_in_the_shadow_of_earth",
-      "text": "Proceed to <b>Scenario IIIb: In the Shadow of Earth</b>.",
       "effects": [
         {
           "type": "campaign_data",
@@ -77119,7 +77506,6 @@
     },
     {
       "id": "proceed_strange_moons",
-      "text": "Proceed to <b>Scenario IIIc: Strange Moons</b>.",
       "effects": [
         {
           "type": "campaign_data",
@@ -77195,19 +77581,19 @@
     {
       "id": "R1",
       "title": "Resolution 1",
-      "text": "When you finally came back to your senses, you and your companions were inside the Tatterdemalion, and Elbrus appears to have disappeared -- possibly lost in space and time within the quantum realm. You don't remember much of what happened. Despite the initial evidence pointing to the contrary -- proof was eventually found that the ordeal has been real -- shards of the quantum-behaving crystals were discovered in the cargo bay, that you presumably have brought back from Elbrus. Still unsure of why the cultists have come, you prepare for the next destination, which may finally give a few answers rather than pose more questions.",
+      "text": "When you finally came back to your senses, you and your companions were inside the Tatterdemalion, and Elbrus appears to have disappeared — possibly lost in space and time within the quantum realm. You don't remember much of what happened. Despite the initial evidence pointing to the contrary — proof was eventually found that the ordeal has been real — shards of the quantum-behaving crystals were discovered in the cargo bay, that you presumably have brought back from Elbrus. Still unsure of why the cultists have come, you prepare for the next destination, which may finally give a few answers rather than pose more questions.",
       "steps": ["elbrus_station_has_been_lost_in_the_quantum_realm", "maybe_have_witnessed_the_primordial_chaos", "earn_xp", "$upgrade_decks", "add_4_impending_doom", "proceed_search_for_fragment"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
-      "text": "The physicist is more than grateful for your help. \"All this vital research -- thank god you came in time. If you ever need to get something done in the Colonial territories, I'll make sure to put in my good word.\" With a nod and an awkward handshake, you depart the facility and return to the Tatterdemalion. The cultists have stolen the quantum shards from Elbrus, but for what purpose, you are still unsure.\nYou look into the ephemeral glow of the crystal shard Erwin has gifted you, wondering about the bizarre circumstances you have found yourself in. However, there's no time to waste on self-reflection -- K2-PS187 awaits your next heading.",
+      "text": "The physicist is more than grateful for your help. \"All this vital research — thank god you came in time. If you ever need to get something done in the Colonial territories, I'll make sure to put in my good word.\" With a nod and an awkward handshake, you depart the facility and return to the Tatterdemalion. The cultists have stolen the quantum shards from Elbrus, but for what purpose, you are still unsure.\nYou look into the ephemeral glow of the crystal shard Erwin has gifted you, wondering about the bizarre circumstances you have found yourself in. However, there's no time to waste on self-reflection — K2-PS187 awaits your next heading.",
       "steps": ["elbrus_station_has_been_fully_stabilized", "earn_xp", "$upgrade_decks", "add_elder_thing", "add_1_impending_doom", "proceed_search_for_fragment"]
     },
     {
       "id": "R3",
       "title": "Resolution 3",
-      "text": "A few moments after you return to the Tatterdemalion, Elbrus implodes in a cacophony of ephemeral haze and pops out of existence. The physicist sighs in relief. \"Thank god you came in time. It's a shame about all that research that was lost, but at least everyone is safe. Now please explain to me why we are now in the very ship I remember came to pillage our facility.\" You brief Erwin on your quest and discuss what purposes the cultists could have had with the quantum shards. The physicist proposes several ideas of quantum weaponry or tools - but none of which makes any sense. Regardless, he is willing to join you on your quest -- out of good will or curiosity, you are unsure. Still unsure of why the cultists have come, you prepare for the next destination, which may finally give a few answers rather than pose more questions.",
+      "text": "A few moments after you return to the Tatterdemalion, Elbrus implodes in a cacophony of ephemeral haze and pops out of existence. The physicist sighs in relief. \"Thank god you came in time. It's a shame about all that research that was lost, but at least everyone is safe. Now please explain to me why we are now in the very ship I remember came to pillage our facility.\" You brief Erwin on your quest and discuss what purposes the cultists could have had with the quantum shards. The physicist proposes several ideas of quantum weaponry or tools - but none of which makes any sense. Regardless, he is willing to join you on your quest — out of good will or curiosity, you are unsure. Still unsure of why the cultists have come, you prepare for the next destination, which may finally give a few answers rather than pose more questions.",
       "steps": ["elbrus_station_has_been_lost_in_the_quantum_realm", "earn_erwin_simmons", "earn_xp", "$upgrade_decks", "add_2_impending_doom", "proceed_search_for_fragment"]
     }
   ]
@@ -77260,7 +77646,7 @@
     {
       "id": "briefing_3",
       "type": "story",
-      "text": "The crew of Tatterdemalion was composed of worshippers of Hastur, one of the Ancient Ones that has descended upon Earth. The cultists recently undertook a mission to free Tassilda, daughter of Hastur, rumored to be imprisoned on an asteroid codenamed Fragment. The ship managed to rendezvous with Fragment and deployed several survey teams to search the caverns upon it. Before your current mind was implanted, you were one of these cultist explorers, destined to awaken Tassilda.\nAfter a few weeks of survey, one of the teams retrieved a slab of alien hieroglyphs, and ordered K2-PS187 to begin a translation. Another team reported to have found the inner chambers where Tassilda resided and destroyed the imprisoning sigils. They were never heard from again.\nYou and your fellow cultists swiftly withdrew from the asteroid before the princess of Carcosa could awaken and attack the Tatterdemalion. Content that such were the risks one took worshipping gods of pure chaos, you did not mourn your lost companions. The ship was set to return to the inner solar system. Your mission has been a success. You had finally freed Tassilda, the daughter of Hastur, who might soon be elevated by her father to become a new Ancient One.\nWhile most of the cultists entered cryosleep for the journey home, K2-PS187 was busy analysing the alien runes. When the translation was complete, the computer learned of a story titled \"Heir to Carcosa.\" The knowledge caused it to go insane and slaughter all of the waking crew out of terror. The ship was left in turmoil, drifting without sense through space -- until K2-PS187 brought you back into this world from the archives in a final cry for help.\nYou now understand what you must do. Although Earth is no longer the home it used to be, humanity still exists, spread out throughout colonies in the solar system, living in fear and in isolation. If the being named Tassilda, Heir to Carcosa, would be exalted by her father, there is no doubt that she will decide to reign over humanity's colonies with the madness of Carcosa. You must atone for your past sins and eliminate the entity before she can be elevated to godhood. Unfortunately, the last recorded positions of Fragment were among the data lost during the initial corruption. However, K2-PS187 was able to retrieve a few leads from the ship's itinerary. You will need to traverse the solar system to locate the coordinates of the asteroid and prevent Tassilda's ascension."
+      "text": "The crew of Tatterdemalion was composed of worshippers of Hastur, one of the Ancient Ones that has descended upon Earth. The cultists recently undertook a mission to free Tassilda, daughter of Hastur, rumored to be imprisoned on an asteroid codenamed Fragment. The ship managed to rendezvous with Fragment and deployed several survey teams to search the caverns upon it. Before your current mind was implanted, you were one of these cultist explorers, destined to awaken Tassilda.\nAfter a few weeks of survey, one of the teams retrieved a slab of alien hieroglyphs, and ordered K2-PS187 to begin a translation. Another team reported to have found the inner chambers where Tassilda resided and destroyed the imprisoning sigils. They were never heard from again.\nYou and your fellow cultists swiftly withdrew from the asteroid before the princess of Carcosa could awaken and attack the Tatterdemalion. Content that such were the risks one took worshipping gods of pure chaos, you did not mourn your lost companions. The ship was set to return to the inner solar system. Your mission has been a success. You had finally freed Tassilda, the daughter of Hastur, who might soon be elevated by her father to become a new Ancient One.\nWhile most of the cultists entered cryosleep for the journey home, K2-PS187 was busy analysing the alien runes. When the translation was complete, the computer learned of a story titled \"Heir to Carcosa.\" The knowledge caused it to go insane and slaughter all of the waking crew out of terror. The ship was left in turmoil, drifting without sense through space — until K2-PS187 brought you back into this world from the archives in a final cry for help.\nYou now understand what you must do. Although Earth is no longer the home it used to be, humanity still exists, spread out throughout colonies in the solar system, living in fear and in isolation. If the being named Tassilda, Heir to Carcosa, would be exalted by her father, there is no doubt that she will decide to reign over humanity's colonies with the madness of Carcosa. You must atone for your past sins and eliminate the entity before she can be elevated to godhood. Unfortunately, the last recorded positions of Fragment were among the data lost during the initial corruption. However, K2-PS187 was able to retrieve a few leads from the ship's itinerary. You will need to traverse the solar system to locate the coordinates of the asteroid and prevent Tassilda's ascension."
     },
 
     {
@@ -77333,7 +77719,7 @@
     {
       "id": "search_for_fragment",
       "title": "The Search for Fragment",
-      "text": "Aboard the Tatterdemalion, you and your companions seek the coordinates of the asteroid \"Fragment\" to prevent the ascension of Tassilda, daughter of Hastur. Upon analysing the remaining data aboard the ship, K2-PS187 and you have decided on 3 traces that are worth investigating. However, time is of the essence  -- you may want to visit the destination you think will be the most valuable first."
+      "text": "Aboard the Tatterdemalion, you and your companions seek the coordinates of the asteroid \"Fragment\" to prevent the ascension of Tassilda, daughter of Hastur. Upon analysing the remaining data aboard the ship, K2-PS187 and you have decided on 3 traces that are worth investigating. However, time is of the essence  — you may want to visit the destination you think will be the most valuable first."
     },
     {
       "id": "choose_trace",
@@ -77392,7 +77778,6 @@
     },
     {
       "id": "proceed_lost_quantum",
-      "text": "Proceed to <b>Scenario IIIa: Lost Quantum</b>.",
       "effects": [
         {
           "type": "campaign_data",
@@ -77403,7 +77788,6 @@
     },
     {
       "id": "proceed_in_the_shadow_of_earth",
-      "text": "Proceed to <b>Scenario IIIb: In the Shadow of Earth</b>.",
       "effects": [
         {
           "type": "campaign_data",
@@ -77414,7 +77798,6 @@
     },
     {
       "id": "proceed_strange_moons",
-      "text": "Proceed to <b>Scenario IIIc: Strange Moons</b>.",
       "effects": [
         {
           "type": "campaign_data",
@@ -77471,7 +77854,7 @@
     {
       "id": "another_path",
       "type": "story",
-      "text": "Perhaps there is another way. The ritual you've glimpsed in the halls of Tassilda's temple will take many months to prepare -- and you still do not know where it must be performed, but if it is possible, it will surely give humanity enough time to develop the technology necessary to survive. Now to find the ritual site is another question altogether…"
+      "text": "Perhaps there is another way. The ritual you've glimpsed in the halls of Tassilda's temple will take many months to prepare — and you still do not know where it must be performed, but if it is possible, it will surely give humanity enough time to develop the technology necessary to survive. Now to find the ritual site is another question altogether…"
     },
     {
       "id": "gather_encounter_sets",
@@ -77645,7 +78028,7 @@
       "id": "beyond_hope_story",
       "type": "story",
       "title": "Beyond Hope",
-      "text": "After the blackout finally ended, you and your fellow companions left the underground shelters of Hope to witness a dazzling array of painterly gases, and a faint white sphere -- the residual legacy of the sun. Colony researchers have claimed that it would have been impossible for the electromagnetic shield to protect the entire planet from the blast without the unexpected but embraced energy spike originating from the nearby alien ruins. It is the dawn of a new beginning for mankind, the age of the White Sun. You live the rest of your days helping the megapolis sustain itself and recounting the fantasy stories of your life on Earth. And yet you wonder, as you look up to the light of the white dwarf, how long until it too, inevitably decays and humanity will once more need to escape extinction…"
+      "text": "After the blackout finally ended, you and your fellow companions left the underground shelters of Hope to witness a dazzling array of painterly gases, and a faint white sphere — the residual legacy of the sun. Colony researchers have claimed that it would have been impossible for the electromagnetic shield to protect the entire planet from the blast without the unexpected but embraced energy spike originating from the nearby alien ruins. It is the dawn of a new beginning for mankind, the age of the White Sun. You live the rest of your days helping the megapolis sustain itself and recounting the fantasy stories of your life on Earth. And yet you wonder, as you look up to the light of the white dwarf, how long until it too, inevitably decays and humanity will once more need to escape extinction…"
     },
     {
       "id": "beyond_hope_effects",
@@ -77655,11 +78038,11 @@
       "id": "far_far_away_story",
       "type": "story",
       "title": "Far, Far Away",
-      "text": "The scientists of Sinai activated the space-time warping device moments before the blast. The colony of New Brooklyn was jaunted along the folds of space time, towards a new galaxy, and a new future. The destination -- a prospective binary system of many exoplanets -- appears to be safe and far beyond the reach of the Ancient Ones of the old world. You live the rest of your days helping humanity build outposts under the virgin skies of a new home, a planet the settlers will call Paradise. You recount stories of your life on Earth to your descendants, stories that will become fairy tales and eventually legends. The inhabitants upon this new world live and work together in peace and prosperity. It is the dawn of a new beginning for mankind. And yet you wonder, as you look up to the light of your new stars, how long until they too, inevitably decay and humanity will once more need to escape extinction…"
+      "text": "The scientists of Sinai activated the space-time warping device moments before the blast. The colony of New Brooklyn was jaunted along the folds of space time, towards a new galaxy, and a new future. The destination — a prospective binary system of many exoplanets — appears to be safe and far beyond the reach of the Ancient Ones of the old world. You live the rest of your days helping humanity build outposts under the virgin skies of a new home, a planet the settlers will call Paradise. You recount stories of your life on Earth to your descendants, stories that will become fairy tales and eventually legends. The inhabitants upon this new world live and work together in peace and prosperity. It is the dawn of a new beginning for mankind. And yet you wonder, as you look up to the light of your new stars, how long until they too, inevitably decay and humanity will once more need to escape extinction…"
     },
     {
       "id": "far_far_away_effects",
-      "text": "In your Campaign Log, record that <i>your investigator lived the remainder of their days, on Paradise."
+      "text": "In your Campaign Log, record that <i>your investigator lived the remainder of their days, on Paradise.</i>"
     },
     {
       "id": "the_end_1_story",
@@ -77690,6 +78073,17 @@
       ]
     },
     {
+      "id": "defeated_killed",
+      "text": "Each defeated investigator is <b>killed</b>.",
+      "effects": [
+        {
+          "type": "trauma",
+          "killed": true,
+          "investigator": "defeated"
+        }
+      ]
+    },
+    {
       "id": "some_killed",
       "text": "Each investigator is <b>killed</b>."
     },
@@ -77697,18 +78091,7 @@
       "id": "the_end_2_story",
       "type": "story",
       "title": "The End 2",
-      "text": "The light of the supernova engulfs the skies and surrounds you and your companions. Despite being unable to save yourself from the blast, you still feel accomplished -- and redeemed -- by what you have done to save others. In your finals moments, before the shockwave strips you of your corporeal essence, you shut your eyes in acceptance of your terrible fate."
-    },
-    {
-      "id": "the_end_2_effects",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "caught_in_the_supernovas_blast",
-          "text": "#name# was caught in the supernova's blast."
-        }
-      ]
+      "text": "The light of the supernova engulfs the skies and surrounds you and your companions. Despite being unable to save yourself from the blast, you still feel accomplished — and redeemed — by what you have done to save others. In your finals moments, before the shockwave strips you of your corporeal essence, you shut your eyes in acceptance of your terrible fate."
     },
     {
       "id": "the_end_3_story",
@@ -77847,6 +78230,7 @@
     },
     {
       "id": "maybe_ask_resigned",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -77909,6 +78293,10 @@
       "text": "Because <i>the UCC escaped to another galaxy</i>, the investigators that resigned at New Brooklyn should read <b>Far, Far Away</b>."
     },
     {
+      "id": "the_end_2_effects",
+      "text": "In your Campaign Log, record that <i>your investigator was caught in the supernova's blast</i>."
+    },
+    {
       "id": "ask_resigned_location",
       "type": "input",
       "text": "Where did each investigator resign?",
@@ -77930,16 +78318,22 @@
               ]
             },
             "text": "Hope",
+            "border": true,
+            "pre_border_effects": [{
+              "type": "story_step",
+              "steps": ["beyond_hope_intro"]
+            }],
             "effects": [
               {
                 "type": "story_step",
-                "steps": ["beyond_hope_intro", "beyond_hope_story", "beyond_hope_effects"]
+                "steps": ["beyond_hope_story", "beyond_hope_effects"]
               },
               {
-                "type": "campaign_log",
+                "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "lived_remainder_of_their_days_with_hope",
-                "text": "#name# lived the remainder of their days, with Hope."
+                "text": "#name# lived the remainder of their days, with Hope.",
+                "cards": "$input_value"
               },
               {
                 "type": "campaign_log",
@@ -77962,16 +78356,22 @@
               ]
             },
             "text": "New Brooklyn",
+            "border": true,
+            "pre_border_effects": [{
+              "type": "story_step",
+              "steps": ["far_far_away_intro"]
+            }],
             "effects": [
               {
                 "type": "story_step",
-                "steps": ["far_far_away_intro", "far_far_away_story", "far_far_away_effects"]
+                "steps": ["far_far_away_story", "far_far_away_effects"]
               },
               {
-                "type": "campaign_log",
+                "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "lived_remainder_of_their_days_on_paradise",
-                "text": "#name# lived the remainder of their days, on Paradise."
+                "text": "#name# lived the remainder of their days, on Paradise.",
+                "cards": "$input_value"
               },
               {
                 "type": "campaign_log",
@@ -77984,16 +78384,35 @@
           {
             "id": "other",
             "text": "Other location",
+            "border": true,
+            "pre_border_effects": [{
+              "type": "story_step",
+              "steps": ["the_end_2_intro"]
+            }],
             "effects": [
               {
                 "type": "story_step",
                 "steps": ["the_end_2_story", "the_end_2_effects", "some_killed"]
               },
               {
+                "type": "campaign_log_cards",
+                "section": "campaign_notes",
+                "id": "caught_in_the_supernovas_blast",
+                "text": "#name# was caught in the supernova's blast.",
+                "cards": "$input_value"
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "campaign_notes",
+                "id": "caught_in_the_supernovas_blast",
+                "text": "#name# was caught in the supernova's blast.",
+                "cards": "$defeated_investigators"
+              },
+              {
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "zdm_end_2",
-                "text": "done"
+                "text": "dummy"
               },
               {
                 "type": "trauma",
@@ -78037,10 +78456,31 @@
         "options": [
           {
             "boolCondition": false,
-            "steps": ["the_end_2_story", "the_end_2_effects", "some_killed"]
+            "steps": ["remaining_read_end_2", "the_end_2_story", "the_end_2_effects", "all_caught_in_supernovas_blast", "defeated_killed"]
           }
         ]
       }
+    },
+    {
+      "id": "the_end_2_intro",
+      "text": "The remaining investigators, along with any defeated investigators, must read <b>The End 2</b>"
+    },
+    {
+      "id": "all_caught_in_supernovas_blast",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "campaign_log_cards",
+          "section": "campaign_notes",
+          "id": "caught_in_the_supernovas_blast",
+          "text": "#name# was caught in the supernova's blast.",
+          "cards": "$defeated_investigators"
+        }
+      ]
+    },
+    {
+      "id": "remaining_read_end_2",
+      "text": "The remaining defeated investigators must read <b>The End 2</b>."
     },
     {
       "id": "handle_win_lose",
@@ -78068,6 +78508,7 @@
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "investigator_status": [
+        "resigned",
         "eliminated",
         "physical",
         "mental"
@@ -78077,13 +78518,19 @@
     {
       "id": "R1",
       "title": "Resolution 1",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
       "text": "A brilliant light shines over the solar system. The cataclysmic supernova radiates through the void, annihilating all unprotected life and stripping all the heavenly bodies of their precious atmosphere, leaving barren worlds in its wake.",
       "steps": ["sun_went_supernova", "ask_repairing_the_threshold", "ask_last_hope", "ask_project_origami", "maybe_ask_resigned", "handle_win_lose"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
-      "text": "The Royal Princess of Carcosa succumbs to your assault and wastes away before you. You have defeated Tassilda, and in doing so have prevented the early collapse of the sun. Suddenly there is a horrific smell wafting down all around you, carried by a blast of chilly air. Before any of you can react, a dark cloud crackling with arcs of yellow and white energy expels from the sun, surrounding the entire ship. Within this cloud hovers a horrific creature. It is enormous, wrinkled, and hunched, with dozens of tentacles, each tipped with a wicked-looking fang. This can only be the being Tassilda spoke of, her sire, the Last King. In an instant, the great abomination begins crushing the hull of the ship inwards. In your final moments, despite being unable to save yourself from the blast, you feel accomplished -- and redeemed -- by what you have done to save the others.",
+      "text": "The Royal Princess of Carcosa succumbs to your assault and wastes away before you. You have defeated Tassilda, and in doing so have prevented the early collapse of the sun. Suddenly there is a horrific smell wafting down all around you, carried by a blast of chilly air. Before any of you can react, a dark cloud crackling with arcs of yellow and white energy expels from the sun, surrounding the entire ship. Within this cloud hovers a horrific creature. It is enormous, wrinkled, and hunched, with dozens of tentacles, each tipped with a wicked-looking fang. This can only be the being Tassilda spoke of, her sire, the Last King. In an instant, the great abomination begins crushing the hull of the ship inwards. In your final moments, despite being unable to save yourself from the blast, you feel accomplished — and redeemed — by what you have done to save the others.",
       "steps": ["the_end_3_story", "escaped_hasturs_grasp_and_prevented_him_from_escaping_his_prison", "end_3_trauma", "end_3_entries", "earn_xp", "$upgrade_decks", "win_campaign"]
     }
   ]
@@ -78114,7 +78561,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "\"Humanity's first contact with the extraterrestrials was in the early 21st century, when a lunar expedition stumbled upon a vast underground network of alien structures underneath the sea of regolith. The Greys, as humanity has come to know them, were under the guise of a curious species that came to our solar system to observe and probe the young civilization. The true purpose of their lunar activities have remained concealed for many years…\"\n<right>--Maja, Information Archives</right>\nYou look out the view ports and can see only dense, orange clouds for most of the descent. Only after the landing shuttle dipped into the troposphere that the clouds are thin enough for you to peer at the ground below — miles and miles of windswept dunes of methane snow, broken by knife-like volcanic ridges of icy stone, open craters belching “lava flows” of liquid water, ammonia, and methane that freeze into fantastic shapes as they pour down the slopes. You could never have dreamed of anything like the beauty and alien landscape of Titan.\nThe craft lands smoothly onto a flat slab of ice. After K2-PS187 confirms that this is the coordinates of the unusual \"business trips\" that the cultists were conducting, you suit up, open the hatch and step out into the harsh terrain. A large tunnel nestled between the orange cliffs greets you. A green glow pulsates from within, illuminating a strange figure, guarding the entrance…"
+      "text": "\"Humanity's first contact with the extraterrestrials was in the early 21st century, when a lunar expedition stumbled upon a vast underground network of alien structures underneath the sea of regolith. The Greys, as humanity has come to know them, were under the guise of a curious species that came to our solar system to observe and probe the young civilization. The true purpose of their lunar activities have remained concealed for many years…\"\n<right>—Maja, Information Archives</right>\nYou look out the view ports and can see only dense, orange clouds for most of the descent. Only after the landing shuttle dipped into the troposphere that the clouds are thin enough for you to peer at the ground below — miles and miles of windswept dunes of methane snow, broken by knife-like volcanic ridges of icy stone, open craters belching “lava flows” of liquid water, ammonia, and methane that freeze into fantastic shapes as they pour down the slopes. You could never have dreamed of anything like the beauty and alien landscape of Titan.\nThe craft lands smoothly onto a flat slab of ice. After K2-PS187 confirms that this is the coordinates of the unusual \"business trips\" that the cultists were conducting, you suit up, open the hatch and step out into the harsh terrain. A large tunnel nestled between the orange cliffs greets you. A green glow pulsates from within, illuminating a strange figure, guarding the entrance…"
     },
     {
       "id": "gather_encounter_sets",
@@ -78394,7 +78841,6 @@
       "type": "input",
       "input": {
         "type": "upgrade_decks",
-        "skip_decks": true,
         "counter": "memories"
       }
     },
@@ -78421,7 +78867,7 @@
             "scenario": "in_the_shadow_of_earth",
             "options": [
               {
-                "boolCondition": false
+                "boolCondition": true
               }
             ]
           }
@@ -78437,12 +78883,11 @@
     },
     {
       "id": "search_for_fragment",
-      "title": "The Search for Fragment",
-      "text": "Aboard the Tatterdemalion, you and your companions seek the coordinates of the asteroid \"Fragment\" to prevent the ascension of Tassilda, daughter of Hastur. Upon analysing the remaining data aboard the ship, K2-PS187 and you have decided on 3 traces that are worth investigating. However, time is of the essence  -- you may want to visit the destination you think will be the most valuable first."
+      "title": "The Search for Fragment (continued)",
+      "text": "Aboard the Tatterdemalion, you and your companions seek the coordinates of the asteroid \"Fragment\" to prevent the ascension of Tassilda, daughter of Hastur. Upon analysing the remaining data aboard the ship, K2-PS187 and you have decided on 3 traces that are worth investigating. However, time is of the essence  — you may want to visit the destination you think will be the most valuable first."
     },
     {
       "id": "choose_trace",
-      "title": "The Search for Fragment (continued)",
       "text": "The investigators must choose to follow one of the following traces:",
       "type": "input",
       "input": {
@@ -78483,7 +78928,6 @@
     },
     {
       "id": "proceed_lost_quantum",
-      "text": "Proceed to <b>Scenario IIIa: Lost Quantum</b>.",
       "effects": [
         {
           "type": "campaign_data",
@@ -78494,7 +78938,6 @@
     },
     {
       "id": "proceed_in_the_shadow_of_earth",
-      "text": "Proceed to <b>Scenario IIIb: In the Shadow of Earth</b>.",
       "effects": [
         {
           "type": "campaign_data",
@@ -78599,13 +79042,13 @@
     {
       "id": "R1",
       "title": "Resolution 1",
-      "text": "Flapping and screeching, you had no chance against the extraterrestrial swarm that descended onto Titan shortly after you have arrived. Fortunately -- it seems as though you were not their target. The alien facility has been ransacked and any clues you could have gleamed has been destroyed. At the very least, they left you alone. When the coast is finally clear of the flying monstrosities, you search through the ruins to find several golden disks of various radii. Aboard the Tatterdemalion, you fiddle with these disks and try to combine them in various orientations -- but they don't appear to have any use other than the value of the material itself. There is still much you don't know, and with resolve, you prepare for the next expedition.",
+      "text": "Flapping and screeching, you had no chance against the extraterrestrial swarm that descended onto Titan shortly after you have arrived. Fortunately — it seems as though you were not their target. The alien facility has been ransacked and any clues you could have gleamed has been destroyed. At the very least, they left you alone. When the coast is finally clear of the flying monstrosities, you search through the ruins to find several golden disks of various radii. Aboard the Tatterdemalion, you fiddle with these disks and try to combine them in various orientations — but they don't appear to have any use other than the value of the material itself. There is still much you don't know, and with resolve, you prepare for the next expedition.",
       "steps": ["not_in_good_standing_with_the_migo", "ask_3_story_assets_in_victory_display", "add_1_impending_doom", "add_brain_impending_doom", "earn_xp_bonus_2", "$upgrade_decks", "proceed_search_for_fragment"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
-      "text": "On board the Tatterdemalion, you try to decipher the meaning of the various glimpses you've seen within the alien facility, but nothing strikes you as particularly significant. A thorough search of the cargo hold reveals a stack of the golden disks that were exchanged during the transaction. You fiddle with them and try to combine them in various orientations -- but they don't appear to have any use other than the value of the material itself. There is still much you don't know, and with resolve, you prepare for the next expedition.",
+      "text": "On board the Tatterdemalion, you try to decipher the meaning of the various glimpses you've seen within the alien facility, but nothing strikes you as particularly significant. A thorough search of the cargo hold reveals a stack of the golden disks that were exchanged during the transaction. You fiddle with them and try to combine them in various orientations — but they don't appear to have any use other than the value of the material itself. There is still much you don't know, and with resolve, you prepare for the next expedition.",
       "steps": ["ask_3_story_assets_in_victory_display", "ask_migo_in_victory_display", "check_migo_in_victory_display", "add_1_impending_doom", "earn_xp", "$upgrade_decks", "proceed_search_for_fragment"]
     }
   ]
@@ -78631,7 +79074,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "You awaken with a start, as though shaken by an unseen force. There are only a few other patrons in the audience, and no performers on stage. The lights are dimmed, and the stage curtains are tattered and ripped. A foul but unrecognizable smell permeates the air. You are back in the Ward theatre -- where it all began. Is this an artifact of your memory? Or have you been dreaming this entire time? Shaking off your drowsiness, you call out into the air for K2-PS187. To your relief, and slight disappointment, the digitalized voices respond in confirmation that the procedure behaved as planned. You have arrived inside of your own mind…"
+      "text": "You awaken with a start, as though shaken by an unseen force. There are only a few other patrons in the audience, and no performers on stage. The lights are dimmed, and the stage curtains are tattered and ripped. A foul but unrecognizable smell permeates the air. You are back in the Ward theatre — where it all began. Is this an artifact of your memory? Or have you been dreaming this entire time? Shaking off your drowsiness, you call out into the air for K2-PS187. To your relief, and slight disappointment, the digitalized voices respond in confirmation that the procedure behaved as planned. You have arrived inside of your own mind…"
     },
     {
       "id": "gather_encounter_sets",
@@ -78657,6 +79100,7 @@
     },
     {
       "id": "ask_add_memories",
+      "bullet_type": "small",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -78771,7 +79215,6 @@
       "type": "input",
       "input": {
         "type": "upgrade_decks",
-        "skip_decks": true,
         "counter": "memories"
       }
     },
@@ -78825,13 +79268,13 @@
     {
       "id": "R1",
       "title": "Resolution 1",
-      "text": "You had a dream. A vivid, lucid and all-too real dream. You escaped the Ward theatre into the rainy streets of Arkham. You would visit the after-party of the dreadful King in Yellow, and embark along a grand and mind-bending adventure across Arkham which eventually leads to France and into Carcosa itself. When you finally wake up in cold sweat back in the cryo-chamber, you almost forgot the new reality you had found yourself in. Although the ordeal has been difficult and took much longer than you anticipated, you have finally unlocked that part of your memories that has been kept concealed by your other self -- the ritual to locate the Fragment of Carcosa.",
+      "text": "You had a dream. A vivid, lucid and all-too real dream. You escaped the Ward theatre into the rainy streets of Arkham. You would visit the after-party of the dreadful King in Yellow, and embark along a grand and mind-bending adventure across Arkham which eventually leads to France and into Carcosa itself. When you finally wake up in cold sweat back in the cryo-chamber, you almost forgot the new reality you had found yourself in. Although the ordeal has been difficult and took much longer than you anticipated, you have finally unlocked that part of your memories that has been kept concealed by your other self — the ritual to locate the Fragment of Carcosa.",
       "steps": ["ask_reminiscence", "add_2_impending_doom", "earn_xp_bonus_2", "$upgrade_decks"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
-      "text": "With the infectious tumor that is the cultist's consciousness finally ejected from your mind, you have unlocked that part of your memories that has been kept concealed by your other self -- the ritual to locate the Fragment of Carcosa. Without further ado, you quickly disconnect yourself from the virtual dreamlands and return to form in the Tatterdemalion, ready to confront Tassilda at long last.",
+      "text": "With the infectious tumor that is the cultist's consciousness finally ejected from your mind, you have unlocked that part of your memories that has been kept concealed by your other self — the ritual to locate the Fragment of Carcosa. Without further ado, you quickly disconnect yourself from the virtual dreamlands and return to form in the Tatterdemalion, ready to confront Tassilda at long last.",
       "steps": ["ask_reminiscence", "earn_xp", "$upgrade_decks"]
     }
   ]
@@ -78857,7 +79300,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "You awaken, entombed in ice. Your skin, your organs, even your bones are cold. You can't move and it's hard to form coherent thoughts… A tingle of warmth slowly spreads through your veins…\nWhen your eyelids finally thaw, all you see is a large pane of frosted glass. What is going on? Where are you? One moment, you were in the Ward Theatre, watching the tedious theatre performance, and the next, in a cryosleep chamber.\nCryosleep… Despite having never heard the word before, you instinctively know what this procedure must be. Your mind may not recollect, but your body has been through this cycle of freezing and thawing many times. The thought of being familiar with something so foreign to you disturbs you to the core.\nWhen the warmth eventually reaches your fingers, the glass window slides open and releases you into a dark, metallic room. The control panel next to your tomb delivers its computerized announcement: \"Welcome back aboard the Tatterdemalion. The current star date is April 4, 2147.\" You look out the nearest window, only to witness a black canvas of infinite stars and a colossal cerulean sphere -- the planet Neptune. The thought of drifting through the infinite expanse of space does not frighten you, for you have lived your entire life in space -- not in your past life in Arkham, but in the person you embody now. As you begin wondering how much stranger this dream of yours can become, a loud blaring alarm echoes through the vacant ship…"
+      "text": "You awaken, entombed in ice. Your skin, your organs, even your bones are cold. You can't move and it's hard to form coherent thoughts… A tingle of warmth slowly spreads through your veins…\nWhen your eyelids finally thaw, all you see is a large pane of frosted glass. What is going on? Where are you? One moment, you were in the Ward Theatre, watching the tedious theatre performance, and the next, in a cryosleep chamber.\nCryosleep… Despite having never heard the word before, you instinctively know what this procedure must be. Your mind may not recollect, but your body has been through this cycle of freezing and thawing many times. The thought of being familiar with something so foreign to you disturbs you to the core.\nWhen the warmth eventually reaches your fingers, the glass window slides open and releases you into a dark, metallic room. The control panel next to your tomb delivers its computerized announcement: \"Welcome back aboard the Tatterdemalion. The current star date is April 4, 2147.\" You look out the nearest window, only to witness a black canvas of infinite stars and a colossal cerulean sphere — the planet Neptune. The thought of drifting through the infinite expanse of space does not frighten you, for you have lived your entire life in space — not in your past life in Arkham, but in the person you embody now. As you begin wondering how much stranger this dream of yours can become, a loud blaring alarm echoes through the vacant ship…"
     },
     {
       "id": "gather_encounter_sets",
@@ -78987,7 +79430,6 @@
       "type": "input",
       "input": {
         "type": "upgrade_decks",
-        "skip_decks": true,
         "counter": "memories"
       }
     },

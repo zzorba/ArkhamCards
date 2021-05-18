@@ -2816,6 +2816,10 @@
             "text": "#name# was caught in the supernova's blast."
           },
           {
+            "id": "couldnt_save_the_crew_of_the_nostalgia_2",
+            "text": "you couldn't save the crew of the Nostalgia II."
+          },
+          {
             "id": "elbrus_station_has_been_fully_stabilized",
             "text": "Elbrus Station has been fully stabilized."
           },
@@ -2953,8 +2957,20 @@
             "text": "leurre"
           },
           {
+            "id": "zdm_desync_weakness",
+            "text": "leurre"
+          },
+          {
             "id": "zdm_end_2",
-            "text": "done"
+            "text": "leurre"
+          },
+          {
+            "id": "zdm_foc_chaos_bag",
+            "text": "leurre"
+          },
+          {
+            "id": "zdm_side_story",
+            "text": "leurre"
           }
         ]
       }

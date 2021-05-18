@@ -11,24 +11,29 @@ interface Props {
   exileCounts: Slots;
   updateExileCount: (card: Card, count: number) => void;
   label?: React.ReactNode;
+  children: React.ReactNode;
 }
 
 function isExile(card: Card) {
   return !!card.exile;
 }
 
-export default function ExileCardSelectorComponent({ componentId, deck, exileCounts, updateExileCount, label }: Props) {
+export default function ExileCardSelectorComponent({ componentId, deck, exileCounts, updateExileCount, label, children }: Props) {
   if (!deck) {
-    return null;
+    return <>{children}</>;
   }
   return (
-    <CardSelectorComponent
-      componentId={componentId}
-      slots={deck.deck.slots || {}}
-      counts={exileCounts}
-      updateCount={updateExileCount}
-      filterCard={isExile}
-      header={label}
-    />
+    <>
+      <CardSelectorComponent
+        componentId={componentId}
+        slots={deck.deck.slots || {}}
+        counts={exileCounts}
+        updateCount={updateExileCount}
+        filterCard={isExile}
+        header={label}
+        forceHeader={!!children}
+      />
+      { children }
+    </>
   );
 }

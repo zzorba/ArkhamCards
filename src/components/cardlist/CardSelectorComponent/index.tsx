@@ -16,10 +16,12 @@ interface Props {
   updateCount?: (card: Card, value: number) => void;
   filterCard?: (card: Card) => boolean;
   header?: ReactNode;
+  forceHeader?: boolean;
+  locked?: boolean;
 }
 
 
-export default function CardSelectorComponent({ componentId, slots, counts, toggleCard, updateCount, filterCard, header }: Props) {
+export default function CardSelectorComponent({ componentId, slots, counts, toggleCard, updateCount, filterCard, forceHeader, header, locked }: Props) {
   const { colors } = useContext(StyleContext);
 
   const onChange = useCallback((card: Card, count: number) => {
@@ -59,6 +61,9 @@ export default function CardSelectorComponent({ componentId, slots, counts, togg
   }, [slots, cards, filterCard]);
 
   if (!matchingCards.length || !cards) {
+    if (forceHeader) {
+      return <>{ header }</>;
+    }
     return null;
   }
 
@@ -78,6 +83,7 @@ export default function CardSelectorComponent({ componentId, slots, counts, togg
             onChange={onChange}
             count={counts[code] || 0}
             limit={toggleCard ? 1 : slots[code]}
+            locked={locked}
           />
         );
       }) }

@@ -51,6 +51,9 @@ export default function useDeckUpgrade(
     if (hasStoryChange) {
       const newSlots: Slots = { ...upgradedDeck.slots };
       forEach(storyCounts, (count, code) => {
+        if (code.startsWith('z')) {
+          return;
+        }
         if (count > 0) {
           newSlots[code] = count;
         } else {
@@ -59,6 +62,9 @@ export default function useDeckUpgrade(
       });
       const newIgnoreSlots: Slots = { ...upgradedDeck.ignoreDeckLimitSlots };
       forEach(ignoreStoryCounts, (count, code) => {
+        if (code.startsWith('z')) {
+          return;
+        }
         if (count > 0){
           newIgnoreSlots[code] = count;
         } else {

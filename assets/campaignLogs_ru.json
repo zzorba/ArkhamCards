@@ -1520,27 +1520,27 @@
           },
           {
             "id": "anette_taught_you_the_spells_of_old",
-            "text": "Anette taught you the spells of old."
+            "text": "Анетта обучила вас заклинаниям былых дней."
           },
           {
             "id": "arrested_anette",
-            "text": "the investigators arrested Anette."
+            "text": "сыщики арестовали Анетту."
           },
           {
             "id": "arrested_sanford",
-            "text": "the investigators arrested Sanford."
+            "text": "сыщики арестовали Сэнфорда."
           },
           {
             "id": "asked_anette_for_assistance",
-            "text": "the investigators asked Anette for assistance."
+            "text": "сыщики попросили Анетту о помощи."
           },
           {
             "id": "asked_sanford_for_assistance",
-            "text": "the investigators asked Sanford for assistance."
+            "text": "попросили Сэнфорда о помощи."
           },
           {
             "id": "assumed_control_of_the_silver_twilight_lodge",
-            "text": "the investigators assumed control of the Silver Twilight Lodge."
+            "text": "сыщики захватили контроль над Ложей Серебряных Сумерек."
           },
           {
             "id": "azathoth_devoured_the_universe",
@@ -1560,7 +1560,7 @@
           },
           {
             "id": "continued_alone",
-            "text": "the investigators continued alone."
+            "text": "сыщики идут дальше сами."
           },
           {
             "id": "deceiving_the_lodge",
@@ -1572,7 +1572,7 @@
           },
           {
             "id": "doom_draws_ever_closer",
-            "text": "doom draws ever closer."
+            "text": "погибель приближается."
           },
           {
             "id": "enemies_of_the_lodge",
@@ -1628,7 +1628,7 @@
           },
           {
             "id": "path_winds_before_you",
-            "text": "the path winds before you: #X#"
+            "text": "Путь лежит перед вами: #X#"
           },
           {
             "id": "pieces_of_evidence",
@@ -2816,6 +2816,10 @@
             "text": "#name# was caught in the supernova's blast."
           },
           {
+            "id": "couldnt_save_the_crew_of_the_nostalgia_2",
+            "text": "you couldn't save the crew of the Nostalgia II."
+          },
+          {
             "id": "elbrus_station_has_been_fully_stabilized",
             "text": "Elbrus Station has been fully stabilized."
           },
@@ -2953,8 +2957,20 @@
             "text": "dummy"
           },
           {
+            "id": "zdm_desync_weakness",
+            "text": "dummy"
+          },
+          {
             "id": "zdm_end_2",
-            "text": "done"
+            "text": "dummy"
+          },
+          {
+            "id": "zdm_foc_chaos_bag",
+            "text": "dummy"
+          },
+          {
+            "id": "zdm_side_story",
+            "text": "dummy"
           }
         ]
       }

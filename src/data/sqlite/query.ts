@@ -26,7 +26,7 @@ export const STORY_CARDS_QUERY = where(
 export const MYTHOS_CARDS_QUERY = where('c.browse_visible in (2,3)');
 export const BROWSE_CARDS_QUERY = where('c.browse_visible in (1,3)');
 export const PLAYER_CARDS_QUERY = where(`c.browse_visible in (1,3,4,17,19,20)`);
-export const SYNC_CARDS_QUERY = where(`c.browse_visible in (1,3,4,9,11,12)`);
+export const SYNC_CARDS_QUERY = where(`c.browse_visible in (1,3,4,9,11,12,17,19,20,25,27,28)`);
 export const BROWSE_CARDS_WITH_DUPLICATES_QUERY = where('c.browse_visible in (1,3,4,5,7,9,11,12)');
 export const INVESTIGATOR_CARDS_QUERY = where('c.type_code = "investigator"');
 export function tabooSetQuery(tabooSetId?: number) {

@@ -283,7 +283,17 @@ export default function useCampaignGuideContextFromActions(
           !deepEqual(oldData.storyAssets || [], newData.storyAssets || []) ||
           !deepEqual(oldData.ignoreStoryAssets || [], newData.ignoreStoryAssets || []);
         if (hasChanges) {
-          dispatch(updateCampaignInvestigatorData(userId, updateCampaignActions, campaignId, investigator, newData));
+          dispatch(updateCampaignInvestigatorData(userId, updateCampaignActions, campaignId, investigator, {
+            killed: !!newData.killed,
+            insane: !!newData.insane,
+            mental: newData.mental || 0,
+            physical: newData.physical || 0,
+            availableXp: newData.availableXp || 0,
+            addedCards: newData.addedCards || [],
+            removedCards: newData.removedCards || [],
+            storyAssets: newData.storyAssets || [],
+            ignoreStoryAssets: newData.ignoreStoryAssets || [],
+          }));
         }
       }
     )

@@ -126,6 +126,7 @@ interface CampaignData {
   lastSavedInvestigatorData: {
     [code: string]: TraumaAndCardData | undefined;
   };
+  redirect_experience: string;
 }
 
 export default class GuidedCampaignLog {
@@ -209,6 +210,7 @@ export default class GuidedCampaignLog {
         investigatorData: {},
         lastSavedInvestigatorData: {},
         everyStoryAsset: [],
+        redirect_experience: '',
       };
       this.chaosBag = {};
       this.swapChaosBag = {};
@@ -310,7 +312,20 @@ export default class GuidedCampaignLog {
               this.handleReplaceCardEffect(effect);
               break;
             case 'earn_xp':
-              this.handleEarnXpEffect(effect, input, numberInput);
+              if (this.campaignData.redirect_experience) {
+                const count_effect: CampaignLogInvestigatorCountEffect = {
+                  type: 'campaign_log_investigator_count',
+                  section: this.campaignData.redirect_experience,
+                  id: '$count',
+                  investigator: effect.investigator,
+                  fixed_investigator: effect.fixed_investigator,
+                  operation: 'add',
+                  value: (effect.bonus || 0) + (numberInput?.length ? numberInput[0] : 0),
+                };
+                this.handleCampaignLogInvestigatorCountEffect(count_effect);
+              } else {
+                this.handleEarnXpEffect(effect, input, numberInput);
+              }
               break;
             case 'upgrade_decks':
               this.handleUpgradeDecksEffect();
@@ -1052,6 +1067,10 @@ export default class GuidedCampaignLog {
         }
         break;
       }
+      case 'redirect_experience': {
+        this.campaignData.redirect_experience = effect.investigator_count;
+        break;
+      }
     }
   }
 
@@ -1209,27 +1228,6 @@ export default class GuidedCampaignLog {
     return section;
   }
 
-  private getCampaignLogInvestigatorCountInvestigators(
-    effect: CampaignLogInvestigatorCountEffect,
-    input?: string[]
-  ): string[] {
-    switch (effect.investigator) {
-      case '$fixed_investigator':
-        if (!effect.fixed_investigator) {
-          throw new Error('investigator set to $fixed_investigator without corresponding fields.');
-        }
-        return [effect.fixed_investigator];
-      case '$input_value':
-        if (!input) {
-          console.log('No input for campaign_log_count effect with specified $input_value.');
-          return [];
-        }
-        return input;
-      case 'all':
-        return this.investigatorCodes(false);
-    }
-  }
-
   private handleCampaignLogInvestigatorCountEffect(
     effect: CampaignLogInvestigatorCountEffect,
     input?: string[],
@@ -1241,7 +1239,7 @@ export default class GuidedCampaignLog {
         effect.value
     ) || 0;
     const investigatorSection = this.investigatorSections[effect.section] || {};
-    const investigators = this.getCampaignLogInvestigatorCountInvestigators(effect, input);
+    const investigators = this.getInvestigators(effect.investigator, input);
     forEach(investigators, investigator => {
       const section = investigatorSection[investigator] || {
         entries: [],
@@ -1358,6 +1356,11 @@ export default class GuidedCampaignLog {
                   count: 1,
                 });
                 break;
+              }
+              case '$all_investigators': {
+                forEach(this.investigatorCodes(true), code => {
+                  cards.push({ card: code, count: 1 });
+                })
               }
               case '$defeated_investigators': {
                 forEach(

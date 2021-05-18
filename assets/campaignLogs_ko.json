@@ -241,125 +241,125 @@
         "entries": [
           {
             "id": "read_act_2",
-            "masculine_text": "#name# read Act 2 of The King in Yellow.",
-            "feminine_text": "#name# read Act 2 of The King in Yellow."
+            "masculine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다.",
+            "feminine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다."
           },
           {
             "id": "possessed",
-            "masculine_text": "#name# was possessed.",
-            "feminine_text": "#name# was possessed."
+            "masculine_text": "#name# 조사자는 꼭두각시로 전락했다.",
+            "feminine_text": "#name# 조사자는 꼭두각시로 전락했다."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "the investigators were attacked as they escaped the Asylum."
+            "text": "조사자들이 정신병원을 탈출하는 동안 공격받았다."
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "you awoke inside the catacombs."
+            "text": "정신을 차려보니 카타콤 안이었다."
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "캠페인 기록지에 카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다라고 기록합니다."
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "you chose not to go to the police."
+            "text": "당신이 경찰에게 알리지 않았다."
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "you destroyed the oathspeaker."
+            "text": "맹세를 입에 담은 자를 쓰러뜨렸다."
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "you did not escape the gaze of the phantom."
+            "text": "망령의 응시에서 벗어나지 못했다."
           },
           {
             "id": "entered_catacombs",
-            "text": "you entered the catacombs on your own."
+            "text": "제 발로 카타콤에 들어갔다."
           },
           {
             "id": "escaped_the_asylum",
-            "text": "the investigators escaped the Asylum."
+            "text": "조사자들이 정신병원에서 탈출했다."
           },
           {
             "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
+            "text": "만찬회에서 달아났다."
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "the followers of the sign have found the way forward."
+            "text": "황색 표식의 추종자들이 나아갈 길을 찾았다."
           },
           {
             "id": "found_nigel_engram",
-            "text": "you found Nigel Engram."
+            "text": "나이젤 잉그램을 찾았다."
           },
           {
             "id": "found_nigels_home",
-            "text": "you found Nigel's home."
+            "text": "나이젤의 집을 찾았다."
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
+            "text": "하스터가 당신을 사로잡았다."
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
+            "text": "대니얼의 경고를 받아들인다."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
+            "text": "대니얼의 경고를 무시한다."
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
+            "text": "당신이 밀회에 침범했다."
           },
           {
             "id": "king_claimed_victims",
-            "text": "the King claimed its victims."
+            "text": "왕이 희생양을 거두었다."
           },
           {
             "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
+            "text": "관문이 있는 곳을 알아냈다."
           },
           {
             "id": "left_onyx_clasp",
-            "text": "you left the onyx clasp behind."
+            "text": "오닉스 장식 고리를 두고 나왔다."
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "위의 길을 열었다."
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "아래의 길을 열었다."
           },
           {
             "id": "police_are_suspicious",
-            "text": "the police are suspicious of you."
+            "text": "경찰이 당신을 의심한다."
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
+            "text": "조사자들은 하스터가 감옥에서 탈출하지 못하도록 막았다."
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "당신이 만찬회의 괴물을 모조리 죽였다."
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "the Stranger is on to you."
+            "text": "이방인이 당신을 눈여겨 본다."
           },
           {
             "id": "took_onyx_clasp",
-            "text": "you took the onyx clasp."
+            "text": "오닉스 장식 고리를 챙겼다."
           },
           {
             "id": "tried_to_warn_police",
-            "text": "you tried to warn the police."
+            "text": "당신이 경찰에게 경고하려 했다."
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "you were unable to find Nigel."
+            "text": "나이젤을 찾지 못했다."
           }
         ]
       },
@@ -376,7 +376,7 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "조사자가 한 명이라도 꼭두각시로 전락했다."
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -667,125 +667,125 @@
         "entries": [
           {
             "id": "read_act_2",
-            "masculine_text": "#name# read Act 2 of The King in Yellow.",
-            "feminine_text": "#name# read Act 2 of The King in Yellow."
+            "masculine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다.",
+            "feminine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다."
           },
           {
             "id": "possessed",
-            "masculine_text": "#name# was possessed.",
-            "feminine_text": "#name# was possessed."
+            "masculine_text": "#name# 조사자는 꼭두각시로 전락했다.",
+            "feminine_text": "#name# 조사자는 꼭두각시로 전락했다."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "the investigators were attacked as they escaped the Asylum."
+            "text": "조사자들이 정신병원을 탈출하는 동안 공격받았다."
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "you awoke inside the catacombs."
+            "text": "정신을 차려보니 카타콤 안이었다."
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "캠페인 기록지에 카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다라고 기록합니다."
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "you chose not to go to the police."
+            "text": "당신이 경찰에게 알리지 않았다."
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "you destroyed the oathspeaker."
+            "text": "맹세를 입에 담은 자를 쓰러뜨렸다."
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "you did not escape the gaze of the phantom."
+            "text": "망령의 응시에서 벗어나지 못했다."
           },
           {
             "id": "entered_catacombs",
-            "text": "you entered the catacombs on your own."
+            "text": "제 발로 카타콤에 들어갔다."
           },
           {
             "id": "escaped_the_asylum",
-            "text": "the investigators escaped the Asylum."
+            "text": "조사자들이 정신병원에서 탈출했다."
           },
           {
             "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
+            "text": "만찬회에서 달아났다."
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "the followers of the sign have found the way forward."
+            "text": "황색 표식의 추종자들이 나아갈 길을 찾았다."
           },
           {
             "id": "found_nigel_engram",
-            "text": "you found Nigel Engram."
+            "text": "나이젤 잉그램을 찾았다."
           },
           {
             "id": "found_nigels_home",
-            "text": "you found Nigel's home."
+            "text": "나이젤의 집을 찾았다."
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
+            "text": "하스터가 당신을 사로잡았다."
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
+            "text": "대니얼의 경고를 받아들인다."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
+            "text": "대니얼의 경고를 무시한다."
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
+            "text": "당신이 밀회에 침범했다."
           },
           {
             "id": "king_claimed_victims",
-            "text": "the King claimed its victims."
+            "text": "왕이 희생양을 거두었다."
           },
           {
             "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
+            "text": "관문이 있는 곳을 알아냈다."
           },
           {
             "id": "left_onyx_clasp",
-            "text": "you left the onyx clasp behind."
+            "text": "오닉스 장식 고리를 두고 나왔다."
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "위의 길을 열었다."
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "아래의 길을 열었다."
           },
           {
             "id": "police_are_suspicious",
-            "text": "the police are suspicious of you."
+            "text": "경찰이 당신을 의심한다."
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
+            "text": "조사자들은 하스터가 감옥에서 탈출하지 못하도록 막았다."
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "당신이 만찬회의 괴물을 모조리 죽였다."
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "the Stranger is on to you."
+            "text": "이방인이 당신을 눈여겨 본다."
           },
           {
             "id": "took_onyx_clasp",
-            "text": "you took the onyx clasp."
+            "text": "오닉스 장식 고리를 챙겼다."
           },
           {
             "id": "tried_to_warn_police",
-            "text": "you tried to warn the police."
+            "text": "당신이 경찰에게 경고하려 했다."
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "you were unable to find Nigel."
+            "text": "나이젤을 찾지 못했다."
           }
         ]
       },
@@ -802,7 +802,7 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "조사자가 한 명이라도 꼭두각시로 전락했다."
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -859,163 +859,163 @@
         "entries": [
           {
             "id": "alejandro_followed_to_ruins",
-            "text": "Alejandro followed the investigators into the ruins."
+            "text": "알레한드로가 조사자들을 따라 유적으로 들어갔다."
           },
           {
             "id": "alejandro_is_missing",
-            "text": "Alejandro is missing."
+            "text": "알레한드로가 실종되었다."
           },
           {
             "id": "alejandro_on_his_own",
-            "text": "Alejandro is continuing his research on his own."
+            "text": "알레한드로가 독자적으로 연구를 이어나간다."
           },
           {
             "id": "alejandro_recovered_relic",
-            "text": "Alejandro recovered the Relic of Ages."
+            "text": "알레한드로가 시대의 유물을 손에 넣었다."
           },
           {
             "id": "alejandro_remained_at_camp",
-            "text": "Alejandro chose to remain at camp."
+            "text": "알레한드로가 야영지에 남기로 했다."
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro remembers everything."
+            "text": "알레한드로가 기억을 되찾았다."
           },
           {
             "id": "alejandro_set_against",
-            "text": "Alejandro is set against you."
+            "text": "알레한드로와 척이 졌다."
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "화로에 불을 밝혔다."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "화로에 불을 밝히지 못했다."
           },
           {
             "id": "cleared_path_to_temple",
-            "text": "the investigators cleared a path to the Eztli ruins."
+            "text": "조사자들이 에스틀리 유적으로 향하는 길을 냈다."
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "조사자들이 이스인에게 협조했다."
           },
           {
             "id": "earned_alejandros_trust",
-            "text": "the investigators have earned Alejandro’s trust."
+            "text": "조사자들이 알레한드로의 신뢰를 얻었다."
           },
           {
             "id": "earned_ichtacas_trust",
-            "text": "the investigators have earned Ichtaca’s trust."
+            "text": "조사자들이 이츠타카의 신뢰를 얻었다."
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "시간의 연속체가 한 가닥 한 가닥까지 해체되었다."
           },
           {
             "id": "fell_into_depths",
-            "text": "the investigators fell into the depths."
+            "text": "조사자들이 깊은 구렁텅이로 추락했다."
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "the investigators forged a bond with Ichtaca."
+            "text": "조사자들이 이츠타카와 유대감을 쌓았다."
           },
           {
             "id": "forging_own_path",
-            "text": "you are forging your own path."
+            "text": "조사자들이 자신만의 방법을 찾아 나섰다."
           },
           {
             "id": "found_missing_relic",
-            "text": "the investigators found the missing relic."
+            "text": "조사자들이 잃어버린 유물을 찾아냈다."
           },
           {
             "id": "gave_relic_to_alejandro",
-            "text": "the investigators gave custody of the relic to Alejandro."
+            "text": "조사자들이 알레한드로에게 유물 관리를 맡겼다."
           },
           {
             "id": "gave_relic_to_harlan",
-            "text": "the investigators gave custody of the relic to Harlan Earnstone."
+            "text": "조사자들이 할런 언스톤에게 유물 관리를 맡겼다."
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "조사자들의 기억이 지워졌다."
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "발루시아의 선봉장이 살아 있다. (피해 #X#)"
           },
           {
             "id": "ichtaca_has_confidence",
-            "text": "Ichtaca has confidence in you."
+            "text": "이츠타카가 조사자들을 믿는다."
           },
           {
             "id": "ichtaca_in_the_dark",
-            "text": "Ichtaca is in the dark."
+            "text": "이츠타카의 행적을 쫓지 못했다."
           },
           {
             "id": "ichtaca_is_wary",
-            "text": "Ichtaca is wary of the investigators."
+            "text": "이츠타카가 조사자들을 경계한다."
           },
           {
             "id": "ichtaca_observed_progress",
-            "text": "Ichtaca observed your progress with keen interest."
+            "text": "이츠타카가 조사자들의 행보를 눈여겨봤다."
           },
           {
             "id": "ichtaca_set_against",
-            "text": "Ichtaca is set against you."
+            "text": "이츠타카와 척이 졌다."
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "Ichtaca’s faith is restored."
+            "text": "조사자들이 이츠타카와 유대감을 쌓았다."
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "the investigators recovered the Relic of Ages."
+            "text": "조사자들이 시대의 유물을 손에 넣었다."
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "조사자들이 뱀의 문명을 구원했다."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "조사자들이 이스인의 문명을 구원했다."
           },
           {
             "id": "jungle_watches",
-            "text": "the jungle watches (#name# x#X#)."
+            "text": "밀림이 지켜본다 (#name# x#X#)"
           },
           {
             "id": "mapped_way_forward",
-            "text": "the investigators mapped out the way forward."
+            "text": "조사자들이 앞으로 갈 길을 면밀히 검토했다."
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "조사자들이 시간 연속체에 난 균열을 봉합했다."
           },
           {
             "id": "nexus_is_near",
-            "text": "the nexus is near."
+            "text": "느카이의 연결점이 가까이 있다."
           },
           {
             "id": "paths_known",
-            "text": "#X# paths are known to you."
+            "text": "#X#가지 길을 알아냈다."
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "의식 전이 과정이 역효과를 낳았다."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "의식 전이 과정이 어마어마한 역효과를 낳았다."
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "의식 전이 과정이 완벽했다."
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "의식 전이 과정이 성공했다."
           },
           {
             "id": "recruited_help_of_another_expedition",
@@ -1023,27 +1023,27 @@
           },
           {
             "id": "relic_is_missing",
-            "text": "the relic is missing."
+            "text": "유물을 잃어버렸다."
           },
           {
             "id": "rescued_alejandro",
-            "text": "the investigators rescued Alejandro."
+            "text": "조사자들이 알레한드로를 구출했다."
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "조사자들이 나포에 저항했다."
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "the investigators sealed the Relic of Ages forever."
+            "text": "조사자들이 시대의 유물을 영원히 봉인했다."
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "조사자들이 시간을 되돌렸다."
           },
           {
             "id": "wait_for_additional_supplies",
-            "text": "the investigators were forced to wait for additional supplies."
+            "text": "조사자들이 하릴없이 추가 탐험 물자가 도착하기만을 기다렸다."
           }
         ]
       },
@@ -1064,15 +1064,15 @@
           },
           {
             "id": "final_depth",
-            "text": "#X# depth"
+            "text": "깊이 #X#"
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca left without you."
+            "text": "이츠타카가 당신을 두고 나가버렸다."
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "listened to Ichtaca's tale."
+            "text": "이츠타카의 이야기를 들었다."
           },
           {
             "id": "rtdoe_gain_mysterious_scepter",
@@ -1084,7 +1084,7 @@
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "#X# 개의 임무 완수"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -1116,90 +1116,90 @@
         "multiple": false
       },
       {
-        "id": "gasoline",
-        "name": "Gasoline",
-        "description": "Enough for a long journey bycar.",
+        "id": "provisions",
+        "name": "비상 물자",
+        "description": "1인분의 음식과 물입니다. 어딜 가더라도 식량이야말로 필수품입니다.",
         "cost": 1,
         "multiple": true
       },
       {
-        "id": "provisions",
-        "name": "Provisions",
-        "description": "Food and water for one person. A must-have for any journey.",
+        "id": "gasoline",
+        "name": "휘발유",
+        "description": "차를 타고 장거리 이동을 하려면 필요합니다.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "medicine",
-        "name": "Medicine",
-        "description": "To stave off disease, infection, or venom.",
+        "name": "약품",
+        "description": "질병, 감염, 맹독 등을 치료하기 위한 응급 약품입니다.",
         "cost": 2,
         "multiple": true
       },
       {
         "id": "pendant",
-        "name": "Pendant",
-        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "name": "팬던트",
+        "description": "실용성은 없습니다. 하지만 집에서 멀리 떠나 온 여행자라면 행복한 기억을 떠올리며 마음을 달랠 수 있습니다.",
         "cost": 1
       },
       {
-        "id": "canteen",
-        "name": "Canteen",
-        "description": "Can be refilled at streams and rivers.",
+        "id": "chalk",
+        "name": "분필",
+        "description": "거친 돌 표면 등에 기록할 수 있습니다.",
         "cost": 2
       },
       {
         "id": "compass",
-        "name": "Compass",
-        "description": "Can guide you when you are hopelessly lost.",
+        "name": "나침반",
+        "description": "길을 완전히 잃었을 때 방향을 알려줍니다.",
         "cost": 2
       },
       {
         "id": "pickaxe",
-        "name": "Pickaxe",
-        "description": "For breaking apart rocky surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "blanket",
-        "name": "Blanket",
-        "description": "For warmth at night.",
-        "cost": 2
-      },
-      {
-        "id": "chalk",
-        "name": "Chalk",
-        "description": "For writing on rough stone surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "binoculars",
-        "name": "Binoculars",
-        "description": "To help you see faraway places.",
+        "name": "곡괭이",
+        "description": "단단한 것을 깨부술 수 있습니다.",
         "cost": 2
       },
       {
         "id": "pocketknife",
-        "name": "Pocketknife",
-        "description": "Too small to be used as a reliable weapon, but easily concealed.",
+        "name": "주머니칼",
+        "description": "든든한 무기라기엔 너무나도 작은 칼이지만, 쉽게 숨길 수 있습니다.",
         "cost": 2
       },
       {
+        "id": "binoculars",
+        "name": "쌍안경",
+        "description": "먼 곳을 살펴보는 데에 유용합니다.",
+        "cost": 2
+      },
+      {
+        "id": "canteen",
+        "name": "수통",
+        "description": "시냇물 또는 강물을 담을 수 있습니다.",
+        "cost": 2
+      },
+      {
+        "id": "blanket",
+        "name": "담요",
+        "description": "야간에 온기를 유지할 수 있습니다.",
+        "cost": 2
+      },
+      {
+        "id": "map",
+        "name": "지도",
+        "description": "당장은 아무 표시도 없는 지도입니다. 하지만 탐사를 이어감에 따라 주변 지형을 지도상에 표시할 수 있습니다.",
+        "cost": 3
+      },
+      {
         "id": "torches",
-        "name": "Torches",
-        "description": "Can light up dark areas, or set sconces alight.",
+        "name": "횃불",
+        "description": "어두운 곳을 밝힐 수도 있고 초에 불을 붙일 수도 있습니다.",
         "cost": 3
       },
       {
         "id": "rope",
-        "name": "Rope",
-        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
-        "cost": 3
-      },
-      {
-        "id": "map",
-        "name": "Map",
-        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "name": "밧줄",
+        "description": "여러 바퀴를 둘러 만 튼튼한 밧줄 꾸러미입니다. 등산과 동굴 탐험에서는 필수입니다.",
         "cost": 3
       }
     ]
@@ -2087,187 +2087,187 @@
         "entries": [
           {
             "id": "alejandro_followed_to_ruins",
-            "text": "Alejandro followed the investigators into the ruins."
+            "text": "알레한드로가 조사자들을 따라 유적으로 들어갔다."
           },
           {
             "id": "alejandro_is_missing",
-            "text": "Alejandro is missing."
+            "text": "알레한드로가 실종되었다."
           },
           {
             "id": "alejandro_on_his_own",
-            "text": "Alejandro is continuing his research on his own."
+            "text": "알레한드로가 독자적으로 연구를 이어나간다."
           },
           {
             "id": "alejandro_recovered_relic",
-            "text": "Alejandro recovered the Relic of Ages."
+            "text": "알레한드로가 시대의 유물을 손에 넣었다."
           },
           {
             "id": "alejandro_remained_at_camp",
-            "text": "Alejandro chose to remain at camp."
+            "text": "알레한드로가 야영지에 남기로 했다."
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro remembers everything."
+            "text": "알레한드로가 기억을 되찾았다."
           },
           {
             "id": "alejandro_set_against",
-            "text": "Alejandro is set against you."
+            "text": "알레한드로와 척이 졌다."
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "화로에 불을 밝혔다."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "화로에 불을 밝히지 못했다."
           },
           {
             "id": "cleared_path_to_temple",
-            "text": "the investigators cleared a path to the Eztli ruins."
+            "text": "조사자들이 에스틀리 유적으로 향하는 길을 냈다."
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "조사자들이 이스인에게 협조했다."
           },
           {
             "id": "earned_alejandros_trust",
-            "text": "the investigators have earned Alejandro’s trust."
+            "text": "조사자들이 알레한드로의 신뢰를 얻었다."
           },
           {
             "id": "earned_ichtacas_trust",
-            "text": "the investigators have earned Ichtaca’s trust."
+            "text": "조사자들이 이츠타카의 신뢰를 얻었다."
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "시간의 연속체가 한 가닥 한 가닥까지 해체되었다."
           },
           {
             "id": "fell_into_depths",
-            "text": "the investigators fell into the depths."
+            "text": "조사자들이 깊은 구렁텅이로 추락했다."
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "the investigators forged a bond with Ichtaca."
+            "text": "조사자들이 이츠타카와 유대감을 쌓았다."
           },
           {
             "id": "forging_own_path",
-            "text": "you are forging your own path."
+            "text": "조사자들이 자신만의 방법을 찾아 나섰다."
           },
           {
             "id": "found_missing_relic",
-            "text": "the investigators found the missing relic."
+            "text": "조사자들이 잃어버린 유물을 찾아냈다."
           },
           {
             "id": "gave_relic_to_alejandro",
-            "text": "the investigators gave custody of the relic to Alejandro."
+            "text": "조사자들이 알레한드로에게 유물 관리를 맡겼다."
           },
           {
             "id": "gave_relic_to_harlan",
-            "text": "the investigators gave custody of the relic to Harlan Earnstone."
+            "text": "조사자들이 할런 언스톤에게 유물 관리를 맡겼다."
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "조사자들의 기억이 지워졌다."
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "발루시아의 선봉장이 살아 있다. (피해 #X#)"
           },
           {
             "id": "ichtaca_has_confidence",
-            "text": "Ichtaca has confidence in you."
+            "text": "이츠타카가 조사자들을 믿는다."
           },
           {
             "id": "ichtaca_in_the_dark",
-            "text": "Ichtaca is in the dark."
+            "text": "이츠타카의 행적을 쫓지 못했다."
           },
           {
             "id": "ichtaca_is_wary",
-            "text": "Ichtaca is wary of the investigators."
+            "text": "이츠타카가 조사자들을 경계한다."
           },
           {
             "id": "ichtaca_observed_progress",
-            "text": "Ichtaca observed your progress with keen interest."
+            "text": "이츠타카가 조사자들의 행보를 눈여겨봤다."
           },
           {
             "id": "ichtaca_set_against",
-            "text": "Ichtaca is set against you."
+            "text": "이츠타카와 척이 졌다."
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "Ichtaca’s faith is restored."
+            "text": "조사자들이 이츠타카와 유대감을 쌓았다."
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "the investigators recovered the Relic of Ages."
+            "text": "조사자들이 시대의 유물을 손에 넣었다."
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "조사자들이 뱀의 문명을 구원했다."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "조사자들이 이스인의 문명을 구원했다."
           },
           {
             "id": "jungle_watches",
-            "text": "the jungle watches (#name# x#X#)."
+            "text": "밀림이 지켜본다 (#name# x#X#)"
           },
           {
             "id": "mapped_way_forward",
-            "text": "the investigators mapped out the way forward."
+            "text": "조사자들이 앞으로 갈 길을 면밀히 검토했다."
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "조사자들이 시간 연속체에 난 균열을 봉합했다."
           },
           {
             "id": "nexus_is_near",
-            "text": "the nexus is near."
+            "text": "느카이의 연결점이 가까이 있다."
           },
           {
             "id": "paths_known",
-            "text": "#X# paths are known to you."
+            "text": "#X#가지 길을 알아냈다."
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "의식 전이 과정이 역효과를 낳았다."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "의식 전이 과정이 어마어마한 역효과를 낳았다."
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "의식 전이 과정이 완벽했다."
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "의식 전이 과정이 성공했다."
           },
           {
             "id": "relic_is_missing",
-            "text": "the relic is missing."
+            "text": "유물을 잃어버렸다."
           },
           {
             "id": "rescued_alejandro",
-            "text": "the investigators rescued Alejandro."
+            "text": "조사자들이 알레한드로를 구출했다."
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "조사자들이 나포에 저항했다."
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "the investigators sealed the Relic of Ages forever."
+            "text": "조사자들이 시대의 유물을 영원히 봉인했다."
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "조사자들이 시간을 되돌렸다."
           },
           {
             "id": "wait_for_additional_supplies",
-            "text": "the investigators were forced to wait for additional supplies."
+            "text": "조사자들이 하릴없이 추가 탐험 물자가 도착하기만을 기다렸다."
           }
         ]
       },
@@ -2288,19 +2288,19 @@
           },
           {
             "id": "final_depth",
-            "text": "#X# depth"
+            "text": "깊이 #X#"
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca left without you."
+            "text": "이츠타카가 당신을 두고 나가버렸다."
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "listened to Ichtaca's tale."
+            "text": "이츠타카의 이야기를 들었다."
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "#X# 개의 임무 완수"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -2311,90 +2311,90 @@
     ],
     "supplies": [
       {
-        "id": "gasoline",
-        "name": "Gasoline",
-        "description": "Enough for a long journey bycar.",
+        "id": "provisions",
+        "name": "비상 물자",
+        "description": "1인분의 음식과 물입니다. 어딜 가더라도 식량이야말로 필수품입니다.",
         "cost": 1,
         "multiple": true
       },
       {
-        "id": "provisions",
-        "name": "Provisions",
-        "description": "Food and water for one person. A must-have for any journey.",
+        "id": "gasoline",
+        "name": "휘발유",
+        "description": "차를 타고 장거리 이동을 하려면 필요합니다.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "medicine",
-        "name": "Medicine",
-        "description": "To stave off disease, infection, or venom.",
+        "name": "약품",
+        "description": "질병, 감염, 맹독 등을 치료하기 위한 응급 약품입니다.",
         "cost": 2,
         "multiple": true
       },
       {
         "id": "pendant",
-        "name": "Pendant",
-        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "name": "팬던트",
+        "description": "실용성은 없습니다. 하지만 집에서 멀리 떠나 온 여행자라면 행복한 기억을 떠올리며 마음을 달랠 수 있습니다.",
         "cost": 1
       },
       {
-        "id": "canteen",
-        "name": "Canteen",
-        "description": "Can be refilled at streams and rivers.",
+        "id": "chalk",
+        "name": "분필",
+        "description": "거친 돌 표면 등에 기록할 수 있습니다.",
         "cost": 2
       },
       {
         "id": "compass",
-        "name": "Compass",
-        "description": "Can guide you when you are hopelessly lost.",
+        "name": "나침반",
+        "description": "길을 완전히 잃었을 때 방향을 알려줍니다.",
         "cost": 2
       },
       {
         "id": "pickaxe",
-        "name": "Pickaxe",
-        "description": "For breaking apart rocky surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "blanket",
-        "name": "Blanket",
-        "description": "For warmth at night.",
-        "cost": 2
-      },
-      {
-        "id": "chalk",
-        "name": "Chalk",
-        "description": "For writing on rough stone surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "binoculars",
-        "name": "Binoculars",
-        "description": "To help you see faraway places.",
+        "name": "곡괭이",
+        "description": "단단한 것을 깨부술 수 있습니다.",
         "cost": 2
       },
       {
         "id": "pocketknife",
-        "name": "Pocketknife",
-        "description": "Too small to be used as a reliable weapon, but easily concealed.",
+        "name": "주머니칼",
+        "description": "든든한 무기라기엔 너무나도 작은 칼이지만, 쉽게 숨길 수 있습니다.",
         "cost": 2
       },
       {
+        "id": "binoculars",
+        "name": "쌍안경",
+        "description": "먼 곳을 살펴보는 데에 유용합니다.",
+        "cost": 2
+      },
+      {
+        "id": "canteen",
+        "name": "수통",
+        "description": "시냇물 또는 강물을 담을 수 있습니다.",
+        "cost": 2
+      },
+      {
+        "id": "blanket",
+        "name": "담요",
+        "description": "야간에 온기를 유지할 수 있습니다.",
+        "cost": 2
+      },
+      {
+        "id": "map",
+        "name": "지도",
+        "description": "당장은 아무 표시도 없는 지도입니다. 하지만 탐사를 이어감에 따라 주변 지형을 지도상에 표시할 수 있습니다.",
+        "cost": 3
+      },
+      {
         "id": "torches",
-        "name": "Torches",
-        "description": "Can light up dark areas, or set sconces alight.",
+        "name": "횃불",
+        "description": "어두운 곳을 밝힐 수도 있고 초에 불을 붙일 수도 있습니다.",
         "cost": 3
       },
       {
         "id": "rope",
-        "name": "Rope",
-        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
-        "cost": 3
-      },
-      {
-        "id": "map",
-        "name": "Map",
-        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "name": "밧줄",
+        "description": "여러 바퀴를 둘러 만 튼튼한 밧줄 꾸러미입니다. 등산과 동굴 탐험에서는 필수입니다.",
         "cost": 3
       }
     ]
@@ -2816,6 +2816,10 @@
             "text": "#name# was caught in the supernova's blast."
           },
           {
+            "id": "couldnt_save_the_crew_of_the_nostalgia_2",
+            "text": "you couldn't save the crew of the Nostalgia II."
+          },
+          {
             "id": "elbrus_station_has_been_fully_stabilized",
             "text": "Elbrus Station has been fully stabilized."
           },
@@ -2953,8 +2957,20 @@
             "text": "dummy"
           },
           {
+            "id": "zdm_desync_weakness",
+            "text": "dummy"
+          },
+          {
             "id": "zdm_end_2",
-            "text": "done"
+            "text": "dummy"
+          },
+          {
+            "id": "zdm_foc_chaos_bag",
+            "text": "dummy"
+          },
+          {
+            "id": "zdm_side_story",
+            "text": "dummy"
           }
         ]
       }

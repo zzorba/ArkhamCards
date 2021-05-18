@@ -2,41 +2,16 @@ query getCustomCards(
   $locale: String!
 ) {
   card {
-    code,
-    cost,
-    deck_limit,
-    encounter_code,
-    encounter_position,
-    exile,
-    health,
-    is_unique,
-    pack_code,
-    permanent,
-    position,
-    quantity,
-    real_name,
-    real_slot,
-    real_subname,
-    real_text,
-    real_traits,
-    sanity,
-    skill_agility,
-    skill_combat,
-    skill_intellect,
-    skill_willpower,
-    skill_wild,
-    subtype_code,
-    type_code
+    ...CoreCard
+    packs(
+      where: { locale: { _eq: $locale }}
+    ) {
+      name
+    }
     translations(
       where: { locale: { _eq: $locale }}
     ) {
-      flavor,
-      encounter_name,
-      name,
-      slot,
-      subname,
-      text,
-      traits,
+      ...CoreCardText
     }
   }
 }
