@@ -423,7 +423,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   DARK_MATTER,
 ]);
 
-export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([DARK_MATTER]);
+export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
 
 export interface CustomCampaignLog {
   sections?: string[];

@@ -117,6 +117,10 @@ export default class CampaignGuide {
     return this.campaign.campaign.id;
   }
 
+  campaignCustomData() {
+    return this.campaign.campaign.custom;
+  }
+
   campaignName() {
     return this.campaign.campaign.name;
   }

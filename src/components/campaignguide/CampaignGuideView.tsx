@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Linking, StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
@@ -14,10 +14,11 @@ import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components
 import CampaignDetailTab from './CampaignDetailTab';
 import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
 import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
-import space from '@styles/space';
+import space, { s } from '@styles/space';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
 import { useDeckActions } from '@data/remote/decks';
 import StyleContext from '@styles/StyleContext';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -58,6 +59,12 @@ function CampaignGuideView(props: Props) {
   const { campaignGuide, campaignState, campaign } = campaignData;
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const [alertDialog, showAlert] = useAlertDialog();
+  const customData = campaignGuide.campaignCustomData();
+  const downloadPressed = useCallback(() => {
+    if (customData) {
+      Linking.openURL(customData.download_link);
+    }
+  }, [customData]);
   const footerButtons = useMemo(() => {
     return (
       <View style={space.paddingSideS}>
@@ -66,7 +73,18 @@ function CampaignGuideView(props: Props) {
             { `— ${t`Settings`} —` }
           </Text>
         </View>
-
+        {
+          !!customData && (
+            <DeckButton
+              icon="world"
+              title={t`Download printable cards`}
+              thin
+              color="light_gray"
+              onPress={downloadPressed}
+              bottomMargin={s}
+            />
+          )
+        }
         <UploadCampaignButton
           componentId={componentId}
           campaignId={campaignId}
@@ -83,7 +101,7 @@ function CampaignGuideView(props: Props) {
         />
       </View>
     );
-  }, [componentId, campaign, campaignId, deckActions, typography, setCampaignServerId, showAlert]);
+  }, [componentId, campaign, campaignId, deckActions, typography, customData, downloadPressed, setCampaignServerId, showAlert]);
   return (
     <View style={styles.wrapper}>
       <CampaignDetailTab

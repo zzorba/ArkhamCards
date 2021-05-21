@@ -135,12 +135,16 @@ async function insertChunk<T>(things: T[], insert: (things: T[]) => Promise<any>
 
 function rulesJson(lang?: string) {
   switch (lang) {
+    case 'fr':
+      return require('../../assets/rules_fr.json');
     case 'es':
       return require('../../assets/rules_es.json');
     case 'ru':
       return require('../../assets/rules_ru.json');
     case 'de':
       return require('../../assets/rules_de.json');
+    case 'ko':
+      return require('../../assets/rules_ko.json');
     case 'en':
     default:
       return require('../../assets/rules.json');
@@ -224,6 +228,17 @@ export const syncCards = async function(
         headers,
       });
       if (response.status === 304 && cache) {
+        const customCardsResponse = await customCardsPromise;
+        const customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
+
+        const queryRunner = await db.startTransaction();
+
+        await insertChunk(customCards, async(c: Card[]) => {
+          await queryRunner.manager.delete(Card, map(c, c => c.id));
+          await queryRunner.manager.insert(Card, c);
+        });
+        await queryRunner.commitTransaction();
+        await queryRunner.release();
         return cache;
       }
       VERBOSE && console.log('Got results from ArkhamDB');

@@ -588,10 +588,7 @@ export function campaignLogCountConditionResult(condition: CampaignLogCountCondi
 
 
 export function campaignLogInvestigatorCountConditionResult(condition: CampaignLogInvestigatorCountCondition, campaignLog: GuidedCampaignLog): InvestigatorResult | BinaryResult {
-  const section = campaignLog.investigatorSections[condition.section];
-  if (!section) {
-    throw new Error(`Unknown section: ${condition.section}`);
-  }
+  const section = campaignLog.investigatorSections[condition.section] || {};
   const investigators = campaignLog.investigatorCodes(false);
   switch (condition.investigator) {
     case 'any': {

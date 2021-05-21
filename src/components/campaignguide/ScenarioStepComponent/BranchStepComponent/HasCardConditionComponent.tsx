@@ -87,7 +87,7 @@ export default function HasCardConditionComponent({ step, condition, campaignLog
   return (
     <BinaryResult
       bulletType={step.bullet_type}
-      prompt={prompt}
+      prompt={step.text || prompt}
       result={result.decision}
     />
   );
