@@ -11,6 +11,7 @@ import {
   TDEB,
   CampaignCycleCode,
   DARK_MATTER,
+  ALICE_IN_WONDERLAND,
 } from '@actions/types';
 import CycleItem from './CycleItem';
 import { campaignName } from '../constants';
@@ -33,7 +34,9 @@ function campaignDescription(packCode: CampaignCycleCode): string | undefined {
     case TDEB:
       return t`Campaign B\nFour-part campaign`;
     case DARK_MATTER:
-      return t`By Axolotl`
+      return t`Fan-made campaign by Axolotl`
+    case ALICE_IN_WONDERLAND:
+      return t`Fan-made campiagn by The Beard`;
     default:
       return undefined;
   }

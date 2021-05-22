@@ -82162,9 +82162,7 @@
   ],
   "scenarios": [
     "aw_prologue",
-    "arkham_in_wonderland",
-    "lucid_nightmare",
-    "aw_epilogue"
+    "arkham_in_wonderland"
   ],
   "setup": [
     "prologue",
@@ -82177,7 +82175,7 @@
       "id": "prologue",
       "type": "story",
       "title": "A Realm of Pure Madness",
-      "text": "  `In THAT direction,' the Cat said, waving its right paw round, `lives a Hatter: and in THAT direction,' waving the other paw, `lives a March Hare. Visit either you like: they're both mad.'\n  `But I don't want to go among mad people,' Alice remarked.\n  `Oh, you can't help that,' said the Cat: `we're all mad here. I'm mad. You're mad.'\n<right>- Lewis Caroll, \"Alice's Adventures in Wonderland\"</right>"
+      "text": "'In THAT direction,' the Cat said, waving its right paw round, 'lives a Hatter: and in THAT direction,' waving the other paw, 'lives a March Hare. Visit either you like: they're both mad.'\n  'But I don't want to go among mad people,' Alice remarked.\n  'Oh, you can't help that,' said the Cat: 'we're all mad here. I'm mad. You're mad.'\n<right>- Lewis Caroll, \"Alice's Adventures in Wonderland\"</right>"
     },
     {
       "id": "intro",
@@ -82604,6 +82602,43 @@
           "section": "campaign_notes",
           "id": "white_rabbit_survived_the_monsters_attack",
           "text": "the White Rabbit survived the monster's attack."
+        }
+      ]
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "campaign_log": [
+          {
+            "id": "intuition",
+            "condition": {
+              "type": "campaign_log",
+              "section": "fragments_of_alice",
+              "id": "intuition",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Fragments of Alice: Intuition.",
+            "steps": [
+              "fragments_of_alice_intuition"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fragments_of_alice_intuition",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "fragments_of_alice",
+          "id": "intuition",
+          "text": "Intuition"
         }
       ]
     }
@@ -83235,7 +83270,7 @@
   "full_name": "Prologo",
   "header": "",
   "type": "interlude",
-  "icon": "",
+  "icon": "arkham",
   "setup": [
     "intro"
   ],
@@ -83529,7 +83564,7 @@
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": "zaw_knave_of_hearts"
+          "card": "zaw_00139"
         }
       ]
     },
@@ -83540,7 +83575,44 @@
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": "zaw_executioners_axe"
+          "card": "zaw_00159"
+        }
+      ]
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "campaign_log": [
+          {
+            "id": "intuition",
+            "condition": {
+              "type": "campaign_log",
+              "section": "fragments_of_alice",
+              "id": "compassion",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Fragments of Alice: Compassion.",
+            "steps": [
+              "fragments_of_alice_compassion"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fragments_of_alice_compassion",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "fragments_of_alice",
+          "id": "compassion",
+          "text": "Compassion"
         }
       ]
     }
@@ -83919,13 +83991,52 @@
     },
     {
       "id": "r1_story",
+      "title": "Risoluzione 1",
       "type": "story",
       "text": "You abandon the prospect of victory against the Red King and flee the chess board fields.  The landscape tears as you flee, ripped apart by the sudden surge of shadows while the red pieces rush forward to finish the defenders.  It seems as if you may be overwhelmed as well, but the shifting landscape opens up a gap in the orderly hedge rows.  You dive through without hesitation and hunker down as the land around you shudders in destruction.\nMinutes pass, and finally the wild din fades, replaced again by an eerie silence.  You emerge from the hedges to find the entire battlefield now marred and blasted by the dark surge.  Bodies of defeated chess pieces lie strewn about the fields, most of them cracked and contorted from whatever force ripped them apart.  You glance in the direction of the Red King's castle to see it as you first did: a red shard in a dark vortex.  Slowly you make your way back towards the ruined defenses of the White King to search for survivors.\nScattered stone and derelict pillars are all that remain of the white castle you first set out from.  Many of the missing chunks of masonry look as though they were bitten or clawed apart rather than shattered.  The trail of destruction leads directly to the throne of the White King.  You find his body on the steps to his throne, shredded to unrecognizable state but for the crown he once wore.  You realize now just how deeply the shadows have divided Wonderland.  The two sides may have once met in combat honorably, as the white pieces expected to fight, but Gurathnaka's corruption transformed the red pieces into remorseless monsters that share its hunger.  You depart solemnly to recuperate and find a new battlefield to face the shadows upon."
     },
     {
       "id": "r2_story",
+      "title": "Risoluzione 2",
       "type": "story",
       "text": "You approach the fallen Red King cautiously.  The shadows have ceased to flow out of him, but you're not about to take extra risks if you can help it.  Moments pass without event, and gradually the sound of the Red King's labored breathing magnifies.  You turn him over and are astonished to find that despite his injuries, the king is asleep!  You open the Red King's eyes manually, only to find them filled with swirling darkness.  Whatever shadowy power has possessed the king is keeping him alive even in this state.  You ponder the possibilities and it soon becomes clear to you what has happened.  Gurathnaka is an eater of dreams, and even the denizens of a dream can have dreams of their own.  The Red King's dreams sustain the shadows as they try to consume both Wonderland and Arkham.  You grimace with pity as you deliver the merciful killing blow to the Red King.\nAs the death blow lands, the shadows retreat from the castle with an echoing shriek.  The remaining red chess pieces, however, turn to retire without any sound or expression.  Perhaps some core principle drives them to obey the rules of chess even when controlled by Gurathnaka's shadows.  Whatever the reason, you're relieved that you won't have to fight your way back out of the castle.\nYou return wearily across the battlefield to the opposing castle of the White King, who meets you proudly.  \"A fine victory, just fine!  I knew I was right to put my confidence - no, wait, it was satisfaction - satisfaction in you!  Come now, we must feast and revel before we go to gloat of our victory to the Red King!\"  You say nothing, not wanting to sour the mood and possibly upset the White King.  If there's one thing you've learned, it's that the inhabitants of Wonderland are notoriously short-tempered.  You give a noncommittal answer and let the king return to his celebration as you quietly depart."
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "campaign_log": [
+          {
+            "id": "intuition",
+            "condition": {
+              "type": "campaign_log",
+              "section": "fragments_of_alice",
+              "id": "curiosity",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Fragments of Alice: Curiosity.",
+            "steps": [
+              "fragments_of_alice_curiosity"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fragments_of_alice_curiosity",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "fragments_of_alice",
+          "id": "curiosity",
+          "text": "Curiosity"
+        }
+      ]
     }
   ],
   "resolutions": [
@@ -83976,7 +84087,7 @@
   "full_name": "Interlude: Gryphon and Mock Turtle",
   "header": "Interludio",
   "type": "interlude",
-  "icon": "",
+  "icon": "gryphon_and_mock_turtle",
   "setup": [
     "intro",
     "check_strength_of_wonderland",
@@ -84417,7 +84528,7 @@
   "full_name": "Interlude: Humpty Dumpty",
   "header": "Interludio",
   "type": "interlude",
-  "icon": "",
+  "icon": "humpty_dumpty",
   "setup": [
     "intro",
     "decide_situation",
@@ -84612,6 +84723,7 @@
   "steps": [
     {
       "id": "check_direction",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -85166,7 +85278,7 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "hare_hatter_and_dormouse_enjoyed_your_company",
+        "id": "hare_and_hatter_enjoyed_your_company",
         "options": [
           {
             "boolCondition": true,
@@ -85814,15 +85926,15 @@
       "effects": [
         {
           "type": "remove_card",
-          "card": "zaw_knave_of_hearts"
+          "card": "zaw_00139"
         },
         {
           "type": "remove_card",
-          "card": "zaw_executions_axe"
+          "card": "zaw_00159"
         },
         {
           "type": "remove_card",
-          "card": "zaw_doormouse"
+          "card": "zaw_00095"
         },
         {
           "type": "remove_card",
@@ -85830,20 +85942,20 @@
         },
         {
           "type": "remove_card",
-          "card": "zaw_looking_glass_book"
+          "card": "zaw_00028"
         },
         {
           "type": "remove_card",
-          "card": "zaw_bellman"
+          "card": "zaw_00181"
         },
         {
           "type": "remove_card",
-          "card": "zaw_vorpal_blade"
+          "card": "zaw_00197"
         },
         {
           "type": "add_card",
           "investigator": "all",
-          "card": "zaw_tenebrous_nightmares"
+          "card": "zaw_00369s"
         }
       ]
     },
@@ -85913,6 +86025,11 @@
           "type": "campaign_data",
           "setting": "result",
           "value": "win"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "next_scenario",
+          "scenario": "aw_epilogue"
         }
       ]
     }
@@ -86229,7 +86346,7 @@
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": "zaw_tweedles_rattle"
+          "card": "zaw_00240"
         }
       ]
     },
@@ -86264,6 +86381,43 @@
           "type": "trauma",
           "investigator": "all",
           "physical": 1
+        }
+      ]
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "campaign_log": [
+          {
+            "id": "intuition",
+            "condition": {
+              "type": "campaign_log",
+              "section": "fragments_of_alice",
+              "id": "reason",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Fragments of Alice: Reason.",
+            "steps": [
+              "fragments_of_alice_reason"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fragments_of_alice_reason",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "fragments_of_alice",
+          "id": "reason",
+          "text": "Reason"
         }
       ]
     }
@@ -86506,13 +86660,13 @@
       ]
     },
     {
-      "id": "hare_hatter_and_dormouse_enjoyed_your_company",
+      "id": "hare_and_hatter_enjoyed_your_company",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
-          "id": "hare_hatter_and_dormouse_enjoyed_your_company",
-          "text": "the Hare, Hatter, and Dormouse enjoyed your company."
+          "id": "hare_and_hatter_enjoyed_your_company",
+          "text": "the Hare and  Hatter thoroughly enjoyed your company."
         }
       ]
     },
@@ -86621,7 +86775,44 @@
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": "zaw_doormouse"
+          "card": "zaw_00095"
+        }
+      ]
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "campaign_log": [
+          {
+            "id": "intuition",
+            "condition": {
+              "type": "campaign_log",
+              "section": "fragments_of_alice",
+              "id": "patience",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Fragments of Alice: Patience.",
+            "steps": [
+              "fragments_of_alice_patience"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fragments_of_alice_patience",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "fragments_of_alice",
+          "id": "patience",
+          "text": "Patience"
         }
       ]
     }
@@ -86657,7 +86848,7 @@
       "text": "\"An excellent riddle!  Let's have another!\"  The exclamation snaps you out of your thoughts, and you turn to see the Hare and Hatter still seated around the table, sipping tea and smiling congenially.  You keep your distance, remembering how they behaved during the earlier chaos, but they act as though nothing had happened.  \"Come now, a bright guest like you can surely think of a riddle we haven't heard before!\" the Hare invites, bounding over to escort you to a closer chair.  Your thoughts jumble and your words stumble, but your recent experience inspires a question.  When can you be in the dark and in the light at the same time?  The duo scratch their chins and tap their spoons idly, spending several seconds in thought.  Finally, the Hare draws upward and raises a finger.  \"When it's day out, but you've no idea what's going on!\" he proudly proclaims.\n\"No, no!  It's quite the opposite!\" the Hatter scoffs, \"When you know exactly what is going on, but it's dark all around!  After all, it was pitch black only a moment ago and we knew precisely what happened!\"  You raise an eyebrow at the suggestion that they were aware of the danger the entire time.  The Hatter pulls you closer and lowers his voice to a whisper that's somehow louder than his speaking voice.  \"Everyone is mad here, you know.  The things that make sense, well, those belong in Alice's world.  And the shadows are rather picky.  Why, poor Dormy here started making sense and they went after him just like that!\"  You press the two mad partygoers further, and to your surprise, they divulge plenty of details about Gurathnaka and his brood.\nThe Dormouse gives a long sigh and smiles faintly as he continues waking up fully.  \"They may be mad, but friends are friends.  I'm quite surprised - and happy, mind you - that you didn't give them a thrashing for their trouble.\"",
       "steps": [
         "add_1_strength_of_wonderland",
-        "hare_hatter_and_dormouse_enjoyed_your_company",
+        "hare_and_hatter_enjoyed_your_company",
         "earn_xp",
         "5_bonus_xp",
         "resolution_6"
@@ -86711,7 +86902,7 @@
   "full_name": "Interlude: The Caterpillar",
   "header": "Interludio",
   "type": "interlude",
-  "icon": "",
+  "icon": "caterpillar",
   "setup": [
     "intro",
     "decide_situation",
@@ -86887,7 +87078,7 @@
   "full_name": "Interlude: The Dodo",
   "header": "Interludio",
   "type": "interlude",
-  "icon": "",
+  "icon": "dodo",
   "setup": [
     "check_direction",
     "caucus_race",
@@ -86900,6 +87091,7 @@
   "steps": [
     {
       "id": "check_direction",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -86935,7 +87127,7 @@
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": "zaw_strange_refreshments"
+          "card": "zaw_00027"
         }
       ]
     },
@@ -87095,7 +87287,7 @@
   "full_name": "Interlude: The Duchess",
   "header": "Interludio",
   "type": "interlude",
-  "icon": "",
+  "icon": "duchess",
   "setup": [
     "intro",
     "decide_situation",
@@ -87254,7 +87446,7 @@
   "full_name": "Interlude: The Lion and the Unicorn",
   "header": "Interludio",
   "type": "interlude",
-  "icon": "",
+  "icon": "lion_and_unicorn",
   "setup": [
     "intro",
     "decide_situation",
@@ -87430,7 +87622,7 @@
   "full_name": "Interlude: The White Queen",
   "header": "Interludio",
   "type": "interlude",
-  "icon": "",
+  "icon": "white_queen",
   "setup": [
     "check_direction",
     "future_memories",
@@ -87443,6 +87635,7 @@
   "steps": [
     {
       "id": "check_direction",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -87478,7 +87671,7 @@
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": "zaw_looking_glass_book"
+          "card": "zaw_00028"
         }
       ]
     },
@@ -87909,7 +88102,7 @@
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": "zaw_bellman"
+          "card": "zaw_00181"
         }
       ]
     },
@@ -87920,12 +88113,13 @@
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": "zaw_vorpal_blade"
+          "card": "zaw_00197"
         }
       ]
     },
     {
       "id": "r1_story",
+      "title": "Risoluzione 1",
       "type": "story",
       "text": "Regrets fill your mind as you flee the Tulgey Wood.  You're frustrated by fleeing the woods ungracefully, by not catching the Snark, and by even joining the hunt in the first place.  The echoes of the other hunters gradually reaching their own untimely ends reverberates between the trees.  Each short series of shouts and shrieks inevitably ends in a sudden silence.  The distant sound of the Bellman's ringing is the last thing to fade into the night, bringing an end to the disastrous expedition.\nYou take only a few steps more before a rushing sound of air builds behind you.  You turn in dread to see a blanket of darkness sweeping over the forest, extinguishing every speck of light in its path.  Not wanting to strain your luck any further, you break into a sprint.  Your own lights flicker and begin to fade as you keep just ahead of the advancing wave.  Step by step you maneuver over the rough terrain, daring not look back again, until a ray of morning sun blinds you suddenly.  You collapse down in confusion and exhaustion, expecting the worst, but the wave of darkness has receded once again."
     },
@@ -87956,6 +88150,7 @@
     },
     {
       "id": "r2_story",
+      "title": "Risoluzione 2",
       "type": "story",
       "text": "The Snark looks up at you meekly, almost tamely, as the other hunters gather around to view their prize up close in the fading darkness.  Questions fly and theories puncture each other until the Bellman gathers everyone's attention once more.  \"We have found success, or rather success has found us, given the circumstances!  Three cheers for the Bodyguard who first laid hands on the beast!\"  The hunters cheer and call for a celebratory feast, but with only the Snark available to cook, they agree it would be a terrible waste.\nThe Snark in the meantime sits quietly in the center of the group.  The many purported uses for the beast seem beyond its capabilities, but for its ability to lead you safely out of the woods.  The Snark - and you by extension - must know every inch of these woods by now, for all that you covered during the chase.  For minutes at a time, it studies each of the hunters in turn before directing its attention back at you.  The creature is observant, another quality that no doubt helped it stay out of harm's way until recently.  You stare into the Snark's eyes, and you lock for several seconds before it speaks to you in perfect English.  \"I've been told it's rude to stare.\""
     },
@@ -88058,6 +88253,43 @@
           }
         ]
       }
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "campaign_log": [
+          {
+            "id": "intuition",
+            "condition": {
+              "type": "campaign_log",
+              "section": "fragments_of_alice",
+              "id": "courage",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Fragments of Alice: Courage.",
+            "steps": [
+              "fragments_of_alice_courage"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fragments_of_alice_courage",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "fragments_of_alice",
+          "id": "courage",
+          "text": "Courage"
+        }
+      ]
     }
   ],
   "resolutions": [

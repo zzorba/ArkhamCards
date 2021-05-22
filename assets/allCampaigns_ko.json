@@ -2371,7 +2371,7 @@
     {
       "id": "criminal_aloof_note",
       "type": "rule_reminder",
-      "text": "<b>주의:</b> 이번 시나리오를 시작할 때, 주요사건 1a는 모든 [[Criminal]] 적에게 ‘냉담한’ 키워드를 부여합니다. ‘냉담한’ 적은 당신과 자동으로 교전하지 않습니다. 특정 지점에서, 이런 적들이 ‘냉담한’ 키워드를 잃을 수 있습니다. ‘냉담한’ 키워드를 잃은 적은 일반적인 규칙에 따라 같은 장소에 있는 조사자와 자동으로 교전한다는 점을 꼭 기억해야 합니다."
+      "text": "<b>주의:</b> 이번 시나리오를 시작할 때, 주요사건 1a는 모든 [[범죄자]] 적에게 ‘냉담한’ 키워드를 부여합니다. ‘냉담한’ 적은 당신과 자동으로 교전하지 않습니다. 특정 지점에서, 이런 적들이 ‘냉담한’ 키워드를 잃을 수 있습니다. ‘냉담한’ 키워드를 잃은 적은 일반적인 규칙에 따라 같은 장소에 있는 조사자와 자동으로 교전한다는 점을 꼭 기억해야 합니다."
     },
     {
       "id": "bone_to_pick",
@@ -3172,7 +3172,7 @@
     },
     {
       "id": "add_weakness",
-      "text": "모든 조사자는 보유 게임에서 무작위 [[Madness]], [[Injury]], 또는 [[Pact]] 기본 약점 하나를 무작위로 찾아서 캠페인이 끝날 때까지 자신의 덱에 추가합니다.",
+      "text": "모든 조사자는 보유 게임에서 무작위 [[정신이상]], [[부상]], 또는 [[계약]] 기본 약점 하나를 무작위로 찾아서 캠페인이 끝날 때까지 자신의 덱에 추가합니다.",
       "effects": [
         {
           "type": "add_weakness",
@@ -4980,7 +4980,7 @@
     },
     {
       "id": "madness_weakness",
-      "text": "리타를 희생시켰다는 죄책감은 평생 당신의 기억을 따라다닐 것입니다. 각 조사자는 보유 게임에서 무작위 [[Madness]] 약점을 1장 자신의 덱에 추가합니다.",
+      "text": "리타를 희생시켰다는 죄책감은 평생 당신의 기억을 따라다닐 것입니다. 각 조사자는 보유 게임에서 무작위 [[정신이상]] 약점을 1장 자신의 덱에 추가합니다.",
       "effects": [
         {
           "type": "add_weakness",
@@ -6865,7 +6865,7 @@
     },
     {
       "id": "add_weakness",
-      "text": "모든 조사자는 보유 게임에서 무작위 [[Madness]] 또는 [[Pact]] 또는 [[Cultist]] 또는 [[Detective]] 기본 약점을 1장 찾아서 자신의 덱에 추가합니다.",
+      "text": "모든 조사자는 보유 게임에서 무작위 [[정신이상]] 또는 [[계약]] 또는 [[추종자]] 또는 [[탐정]] 기본 약점을 1장 찾아서 자신의 덱에 추가합니다.",
       "effects": [
         {
           "type": "add_weakness",
@@ -7261,7 +7261,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "carcosa_merged",
-          "text": "캠페인 기록지에 카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다라고 기록합니다."
+          "text": "카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다."
         }
       ]
     },
@@ -7633,7 +7633,7 @@
         "choices": [
           {
             "id": "a_city_aflame",
-            "text": "A City Aflame",
+            "text": "불길에 휩싸인 도시",
             "description": "혼돈 주머니에 [cultist] 2개를 추가합니다.",
             "effects": [
               {
@@ -7647,7 +7647,7 @@
           },
           {
             "id": "the_path_is_mine",
-            "text": "The Path is Mine",
+            "text": "길은 내 것이다",
             "description": "혼돈 주머니에 [tablet] 2개를 추가합니다.",
             "effects": [
               {
@@ -7661,7 +7661,7 @@
           },
           {
             "id": "the_shores_of_hali",
-            "text": "The Shores of Hali",
+            "text": "할리 호숫가",
             "description": "혼돈 주머니에 [elder_thing] 2개를 추가합니다.",
             "effects": [
               {
@@ -8370,7 +8370,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "carcosa_merged",
-          "text": "캠페인 기록지에 카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다라고 기록합니다."
+          "text": "카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다."
         }
       ]
     },
@@ -8652,7 +8652,7 @@
     },
     {
       "id": "choose_locations",
-      "text": "무작위로 [[Ground Floor]] ‘아컴 사학회’ 장소 1장, [[Second Floor]] ‘아컴 사학회’ 장소 1장, [[Third Floor]] ‘아컴 사학회’ 장소 1장을 선택합니다. 이렇게 선택한 장소는 공개 면을 보지 않고 게임에서 제거합니다."
+      "text": "무작위로 [[1층]] ‘아컴 사학회’ 장소 1장, [[2층]] ‘아컴 사학회’ 장소 1장, [[3층]] ‘아컴 사학회’ 장소 1장을 선택합니다. 이렇게 선택한 장소는 공개 면을 보지 않고 게임에서 제거합니다."
     },
     {
       "id": "setup_locations",
@@ -8727,17 +8727,17 @@
     },
     {
       "id": "one_cultist",
-      "text": "조우 세트에서 ‘카르코사의 구도자’ 사본 1장을 찾습니다. 찾은 ‘카르코사의 구도자’는 [[Third Floor]] ‘아컴 사학회’ 장소 한 곳에 출현합니다.",
+      "text": "조우 세트에서 ‘카르코사의 구도자’ 사본 1장을 찾습니다. 찾은 ‘카르코사의 구도자’는 [[3층]] ‘아컴 사학회’ 장소 한 곳에 출현합니다.",
       "bullet_type": "small"
     },
     {
       "id": "two_cultists",
-      "text": "세 명이 게임을 한다면, 조우 세트에서 ‘카르코사의 구도자’ 사본 2장을 찾습니다. 찾은 ‘카르코사의 구도자’는 서로 다른 [[Third Floor]] ‘아컴 사학회’ 장소 두 곳에 하나씩 출현합니다.",
+      "text": "세 명이 게임을 한다면, 조우 세트에서 ‘카르코사의 구도자’ 사본 2장을 찾습니다. 찾은 ‘카르코사의 구도자’는 서로 다른 [[3층]] ‘아컴 사학회’ 장소 두 곳에 하나씩 출현합니다.",
       "bullet_type": "small"
     },
     {
       "id": "three_cultists",
-      "text": "조우 세트에서 ‘카르코사의 구도자’ 사본 3장을 찾습니다. 찾은 ‘카르코사의 구도자’는 서로 다른 [[Second Floor]] 또는 [[Third Floor]] ‘아컴 사학회’ 장소 세 곳에 하나씩 출현합니다.",
+      "text": "조우 세트에서 ‘카르코사의 구도자’ 사본 3장을 찾습니다. 찾은 ‘카르코사의 구도자’는 서로 다른 [[2층]] 또는 [[3층]] ‘아컴 사학회’ 장소 세 곳에 하나씩 출현합니다.",
       "bullet_type": "small"
     },
     {
@@ -10124,7 +10124,7 @@
     {
       "id": "vips_slain",
       "type": "input",
-      "text": "캠페인 기록지의 “살해당한 VIP” 아래에 승점 더미에 있는 고유 [[Lunatic]] 적의 명칭을 모두 기록합니다.",
+      "text": "캠페인 기록지의 “살해당한 VIP” 아래에 승점 더미에 있는 고유 [[광인]] 적의 명칭을 모두 기록합니다.",
       "input": {
         "type": "card_choice",
         "query": [
@@ -10834,7 +10834,7 @@
     },
     {
       "id": "read_act_2_choice",
-      "text": "각 조사자는 『황색의 왕』 제2막을 읽을지 말지 선택해야 합니다. 하지만, 적어도 한 명은 제2막을 읽어야 합니다.\n캠페인 기록지에 제2막을 읽기로 한 조사자의 이름을 모두 기록합니다. 제2막을 읽은 모든 조사자는 보유 게임에서 무작위 [[Madness]] 또는 [[Pact]] 기본 약점 하나를 찾아서 자신의 덱에 추가합니다(이 카드는 조사자의 덱 크기를 계산할 때 포함되지 않습니다). 제2막을 읽은 각 조사자는 누더기 왕의 음모에 대한 통찰력을 얻었기 때문에, 경험치를 추가로 2씩 얻습니다.",
+      "text": "각 조사자는 『황색의 왕』 제2막을 읽을지 말지 선택해야 합니다. 하지만, 적어도 한 명은 제2막을 읽어야 합니다.\n캠페인 기록지에 제2막을 읽기로 한 조사자의 이름을 모두 기록합니다. 제2막을 읽은 모든 조사자는 보유 게임에서 무작위 [[정신이상]] 또는 [계약]] 기본 약점 하나를 찾아서 자신의 덱에 추가합니다(이 카드는 조사자의 덱 크기를 계산할 때 포함되지 않습니다). 제2막을 읽은 각 조사자는 누더기 왕의 음모에 대한 통찰력을 얻었기 때문에, 경험치를 추가로 2씩 얻습니다.",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -11424,7 +11424,7 @@
     },
     {
       "id": "gain_courage",
-      "text": "모든 조사자는 자신의 덱 맨 위 카드 1장을 (앞면을 보지 않고) 뒷면으로 자신의 플레이 영역에 둡니다. 이 카드를 비용 0에 아무 아이콘도 없고 정신력이 2인 [[Courage]] 자산으로 간주합니다. 그 카드가 어떤 이유에서든 플레이 영역을 나가면, 그 카드를 버립니다."
+      "text": "모든 조사자는 자신의 덱 맨 위 카드 1장을 (앞면을 보지 않고) 뒷면으로 자신의 플레이 영역에 둡니다. 이 카드를 비용 0에 아무 아이콘도 없고 정신력이 2인 [[용기]] 자산으로 간주합니다. 그 카드가 어떤 이유에서든 플레이 영역을 나가면, 그 카드를 버립니다."
     },
     {
       "id": "gather_encounter_sets",
@@ -11441,11 +11441,11 @@
     },
     {
       "id": "set_aside_monsters",
-      "text": "모아온 조우 세트에서 모든 [[Monster]] 적을 추려내 별도의 카드 더미로 구분하여 치워 둡니다([[Monster]] 적이 총 7장이어야 합니다)."
+      "text": "모아온 조우 세트에서 모든 [[괴물]] 적을 추려내 별도의 카드 더미로 구분하여 치워 둡니다([[괴물]] 적이 총 7장이어야 합니다)."
     },
     {
       "id": "set_aside_lunatics",
-      "text": "모아온 조우 세트에서 모든 [[Lunatic]] 적을 추려내 별도의 카드 더미로 구분하여 치워 둡니다([[Lunatic]] 적이 총 7장이어야 합니다)."
+      "text": "모아온 조우 세트에서 모든 [[광인]] 적을 추려내 별도의 카드 더미로 구분하여 치워 둡니다([[광인]] 적이 총 7장이어야 합니다)."
     },
     {
       "id": "choose_locations",
@@ -14213,7 +14213,7 @@
     {
       "id": "criminal_aloof_note",
       "type": "rule_reminder",
-      "text": "<b>주의:</b> 이번 시나리오를 시작할 때, 주요사건 1a는 모든 [[Criminal]] 적에게 ‘냉담한’ 키워드를 부여합니다. ‘냉담한’ 적은 당신과 자동으로 교전하지 않습니다. 특정 지점에서, 이런 적들이 ‘냉담한’ 키워드를 잃을 수 있습니다. ‘냉담한’ 키워드를 잃은 적은 일반적인 규칙에 따라 같은 장소에 있는 조사자와 자동으로 교전한다는 점을 꼭 기억해야 합니다."
+      "text": "<b>주의:</b> 이번 시나리오를 시작할 때, 주요사건 1a는 모든 [[범죄자]] 적에게 ‘냉담한’ 키워드를 부여합니다. ‘냉담한’ 적은 당신과 자동으로 교전하지 않습니다. 특정 지점에서, 이런 적들이 ‘냉담한’ 키워드를 잃을 수 있습니다. ‘냉담한’ 키워드를 잃은 적은 일반적인 규칙에 따라 같은 장소에 있는 조사자와 자동으로 교전한다는 점을 꼭 기억해야 합니다."
     },
     {
       "id": "bone_to_pick",
@@ -15022,7 +15022,7 @@
     },
     {
       "id": "add_weakness",
-      "text": "모든 조사자는 보유 게임에서 무작위 [[Madness]], [[Injury]], 또는 [[Pact]] 기본 약점 하나를 무작위로 찾아서 캠페인이 끝날 때까지 자신의 덱에 추가합니다.",
+      "text": "모든 조사자는 보유 게임에서 무작위 [[정신이상]], [[부상]], 또는 [[계약]] 기본 약점 하나를 무작위로 찾아서 캠페인이 끝날 때까지 자신의 덱에 추가합니다.",
       "effects": [
         {
           "type": "add_weakness",
@@ -16341,7 +16341,7 @@
     {
       "id": "pinch_hitter",
       "title": "대타자",
-      "text": "‘야구 방망이’를 부러뜨리지 않고서, ‘야구 방망이로’ [[Ghoul]] 적을 셋 쓰러뜨리십시오.",
+      "text": "‘야구 방망이’를 부러뜨리지 않고서, ‘야구 방망이로’ [[구울]] 적을 셋 쓰러뜨리십시오.",
       "type": "binary"
     },
     {
@@ -16359,13 +16359,13 @@
     {
       "id": "theyre_just_misunderstood",
       "title": "아니 글쎄 오해라니까요",
-      "text": "고유 [[Cultist]] 적을 하나도 쓰러뜨리지 않고서 <i>광신도의 밤</i> 캠페인에서 승리하십시오.",
+      "text": "고유 [[추종자]] 적을 하나도 쓰러뜨리지 않고서 <i>광신도의 밤</i> 캠페인에서 승리하십시오.",
       "type": "binary"
     },
     {
       "id": "umordhoths_favor",
       "title": "우몰도스의 은총",
-      "text": "[[Ghoul]] 적을 하나도 쓰러뜨리지 않고서 <i>광신도의 밤</i> 캠페인에서 승리하십시오.",
+      "text": "[[구울]] 적을 하나도 쓰러뜨리지 않고서 <i>광신도의 밤</i> 캠페인에서 승리하십시오.",
       "type": "binary"
     },
     {
@@ -16651,7 +16651,7 @@
     },
     {
       "id": "madness_weakness",
-      "text": "리타를 희생시켰다는 죄책감은 평생 당신의 기억을 따라다닐 것입니다. 각 조사자는 보유 게임에서 무작위 [[Madness]] 약점을 1장 자신의 덱에 추가합니다.",
+      "text": "리타를 희생시켰다는 죄책감은 평생 당신의 기억을 따라다닐 것입니다. 각 조사자는 보유 게임에서 무작위 [[정신이상]] 약점을 1장 자신의 덱에 추가합니다.",
       "effects": [
         {
           "type": "add_weakness",
@@ -17751,17 +17751,17 @@
     },
     {
       "id": "one_cultist",
-      "text": "모은 조우 세트에서 체력 1짜리 [[Cultist]] 적 하나를 뽑아 ‘아컴 남부’에 출현시킵니다.",
+      "text": "모은 조우 세트에서 체력 1짜리 [[추종자]] 적 하나를 뽑아 ‘아컴 남부’에 출현시킵니다.",
       "bullet_type": "small"
     },
     {
       "id": "two_cultists",
-      "text": "모은 조우 세트에서 체력 1짜리 [[Cultist]] 적 둘을 뽑아 ‘아컴 남부’와 ‘아컴 번화가’에 출현시킵니다.",
+      "text": "모은 조우 세트에서 체력 1짜리 [[추종자]] 적 둘을 뽑아 ‘아컴 남부’와 ‘아컴 번화가’에 출현시킵니다.",
       "bullet_type": "small"
     },
     {
       "id": "three_cultists",
-      "text": "모은 조우 세트에서 체력 1짜리 [[Cultist]] 적 셋을 뽑아 ‘아컴 남부’와 ‘아컴 번화가’, ‘묘지’에 출현시킵니다.",
+      "text": "모은 조우 세트에서 체력 1짜리 [[추종자]] 적 셋을 뽑아 ‘아컴 남부’와 ‘아컴 번화가’, ‘묘지’에 출현시킵니다.",
       "bullet_type": "small"
     }
   ],
@@ -18191,7 +18191,7 @@
     },
     {
       "id": "path_is_mine",
-      "title": "The Path is Mine",
+      "title": "길은 내 것이다",
       "text": "Win <i>The Path to Carcosa</i> campaign with less than <b>2 Doubt</b> and <b>Conviction</b> in total.",
       "type": "binary"
     },
@@ -20018,7 +20018,7 @@
     },
     {
       "id": "add_weakness",
-      "text": "모든 조사자는 보유 게임에서 무작위 [[Madness]] 또는 [[Pact]] 또는 [[Cultist]] 또는 [[Detective]] 기본 약점을 1장 찾아서 자신의 덱에 추가합니다.",
+      "text": "모든 조사자는 보유 게임에서 무작위 [[정신이상]] 또는 [[계약]] 또는 [[추종자]] 또는 [[탐정]] 기본 약점을 1장 찾아서 자신의 덱에 추가합니다.",
       "effects": [
         {
           "type": "add_weakness",
@@ -20414,7 +20414,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "carcosa_merged",
-          "text": "캠페인 기록지에 카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다라고 기록합니다."
+          "text": "카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다."
         }
       ]
     },
@@ -20831,7 +20831,7 @@
         "choices": [
           {
             "id": "a_city_aflame",
-            "text": "A City Aflame",
+            "text": "불길에 휩싸인 도시",
             "description": "혼돈 주머니에 [cultist] 2개를 추가합니다.",
             "effects": [
               {
@@ -20845,7 +20845,7 @@
           },
           {
             "id": "the_path_is_mine",
-            "text": "The Path is Mine",
+            "text": "길은 내 것이다",
             "description": "혼돈 주머니에 [tablet] 2개를 추가합니다.",
             "effects": [
               {
@@ -20859,7 +20859,7 @@
           },
           {
             "id": "the_shores_of_hali",
-            "text": "The Shores of Hali",
+            "text": "할리 호숫가",
             "description": "혼돈 주머니에 [elder_thing] 2개를 추가합니다.",
             "effects": [
               {
@@ -21561,7 +21561,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "carcosa_merged",
-          "text": "캠페인 기록지에 카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다라고 기록합니다."
+          "text": "카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다."
         }
       ]
     },
@@ -21929,17 +21929,17 @@
     },
     {
       "id": "one_cultist",
-      "text": "조우 세트에서 ‘카르코사의 구도자’ 사본 1장을 찾습니다. 찾은 ‘카르코사의 구도자’는 [[Third Floor]] ‘아컴 사학회’ 장소 한 곳에 출현합니다.",
+      "text": "조우 세트에서 ‘카르코사의 구도자’ 사본 1장을 찾습니다. 찾은 ‘카르코사의 구도자’는 [[3층]] ‘아컴 사학회’ 장소 한 곳에 출현합니다.",
       "bullet_type": "small"
     },
     {
       "id": "two_cultists",
-      "text": "세 명이 게임을 한다면, 조우 세트에서 ‘카르코사의 구도자’ 사본 2장을 찾습니다. 찾은 ‘카르코사의 구도자’는 서로 다른 [[Third Floor]] ‘아컴 사학회’ 장소 두 곳에 하나씩 출현합니다.",
+      "text": "세 명이 게임을 한다면, 조우 세트에서 ‘카르코사의 구도자’ 사본 2장을 찾습니다. 찾은 ‘카르코사의 구도자’는 서로 다른 [[3층]] ‘아컴 사학회’ 장소 두 곳에 하나씩 출현합니다.",
       "bullet_type": "small"
     },
     {
       "id": "three_cultists",
-      "text": "조우 세트에서 ‘카르코사의 구도자’ 사본 3장을 찾습니다. 찾은 ‘카르코사의 구도자’는 서로 다른 [[Second Floor]] 또는 [[Third Floor]] ‘아컴 사학회’ 장소 세 곳에 하나씩 출현합니다.",
+      "text": "조우 세트에서 ‘카르코사의 구도자’ 사본 3장을 찾습니다. 찾은 ‘카르코사의 구도자’는 서로 다른 [[2층]] 또는 [[3층]] ‘아컴 사학회’ 장소 세 곳에 하나씩 출현합니다.",
       "bullet_type": "small"
     },
     {
@@ -22731,7 +22731,7 @@
     {
       "id": "vips_slain",
       "type": "input",
-      "text": "캠페인 기록지의 “살해당한 VIP” 아래에 승점 더미에 있는 고유 [[Lunatic]] 적의 명칭을 모두 기록합니다.",
+      "text": "캠페인 기록지의 “살해당한 VIP” 아래에 승점 더미에 있는 고유 [[광인]] 적의 명칭을 모두 기록합니다.",
       "input": {
         "type": "card_choice",
         "query": [
@@ -23449,7 +23449,7 @@
     },
     {
       "id": "read_act_2_choice",
-      "text": "각 조사자는 『황색의 왕』 제2막을 읽을지 말지 선택해야 합니다. 하지만, 적어도 한 명은 제2막을 읽어야 합니다.\n캠페인 기록지에 제2막을 읽기로 한 조사자의 이름을 모두 기록합니다. 제2막을 읽은 모든 조사자는 보유 게임에서 무작위 [[Madness]] 또는 [[Pact]] 기본 약점 하나를 찾아서 자신의 덱에 추가합니다(이 카드는 조사자의 덱 크기를 계산할 때 포함되지 않습니다). 제2막을 읽은 각 조사자는 누더기 왕의 음모에 대한 통찰력을 얻었기 때문에, 경험치를 추가로 2씩 얻습니다.",
+      "text": "각 조사자는 『황색의 왕』 제2막을 읽을지 말지 선택해야 합니다. 하지만, 적어도 한 명은 제2막을 읽어야 합니다.\n캠페인 기록지에 제2막을 읽기로 한 조사자의 이름을 모두 기록합니다. 제2막을 읽은 모든 조사자는 보유 게임에서 무작위 [[정신이상]] 또는 [계약]] 기본 약점 하나를 찾아서 자신의 덱에 추가합니다(이 카드는 조사자의 덱 크기를 계산할 때 포함되지 않습니다). 제2막을 읽은 각 조사자는 누더기 왕의 음모에 대한 통찰력을 얻었기 때문에, 경험치를 추가로 2씩 얻습니다.",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -24070,15 +24070,15 @@
     },
     {
       "id": "gain_courage",
-      "text": "모든 조사자는 자신의 덱 맨 위 카드 1장을 (앞면을 보지 않고) 뒷면으로 자신의 플레이 영역에 둡니다. 이 카드를 비용 0에 아무 아이콘도 없고 정신력이 2인 [[Courage]] 자산으로 간주합니다. 그 카드가 어떤 이유에서든 플레이 영역을 나가면, 그 카드를 버립니다."
+      "text": "모든 조사자는 자신의 덱 맨 위 카드 1장을 (앞면을 보지 않고) 뒷면으로 자신의 플레이 영역에 둡니다. 이 카드를 비용 0에 아무 아이콘도 없고 정신력이 2인 [[용기]] 자산으로 간주합니다. 그 카드가 어떤 이유에서든 플레이 영역을 나가면, 그 카드를 버립니다."
     },
     {
       "id": "set_aside_monsters",
-      "text": "모아온 조우 세트에서 모든 [[Monster]] 적을 추려내 별도의 카드 더미로 구분하여 치워 둡니다([[Monster]] 적이 총 7장이어야 합니다)."
+      "text": "모아온 조우 세트에서 모든 [[괴물]] 적을 추려내 별도의 카드 더미로 구분하여 치워 둡니다([[괴물]] 적이 총 7장이어야 합니다)."
     },
     {
       "id": "set_aside_lunatics",
-      "text": "모아온 조우 세트에서 모든 [[Lunatic]] 적을 추려내 별도의 카드 더미로 구분하여 치워 둡니다([[Lunatic]] 적이 총 7장이어야 합니다)."
+      "text": "모아온 조우 세트에서 모든 [[광인]] 적을 추려내 별도의 카드 더미로 구분하여 치워 둡니다([[광인]] 적이 총 7장이어야 합니다)."
     },
     {
       "id": "setup_locations",
@@ -26467,12 +26467,12 @@
     },
     {
       "id": "choose_ruins",
-      "text": "다음 [[Ruins]] 장소 3장 중에서 무작위로 1장을 선택합니다: ‘수풀이 무성한 유적’, ‘송곳니의 사원’, ‘돌 제단’. 무작위로 선택한 장소 1장을 탐사 덱에 합친 후 섞습니다. 나머지 장소 2장은 게임에서 제거합니다."
+      "text": "다음 [[유적]] 장소 3장 중에서 무작위로 1장을 선택합니다: ‘수풀이 무성한 유적’, ‘송곳니의 사원’, ‘돌 제단’. 무작위로 선택한 장소 1장을 탐사 덱에 합친 후 섞습니다. 나머지 장소 2장은 게임에서 제거합니다."
     },
     {
       "id": "choose_ruins_and_start_in_play",
       "bullet_type": "small",
-      "text": "다음 [[Ruins]] 장소 3장 중에서 무작위로 1장을 선택합니다: ‘수풀이 무성한 유적’, ‘송곳니의 사원’, ‘돌 제단’. 무작위로 선택한 장소 1장을 플레이 영역에 둡니다. 나머지 장소 2장은 게임에서 제거합니다."
+      "text": "다음 [[유적]] 장소 3장 중에서 무작위로 1장을 선택합니다: ‘수풀이 무성한 유적’, ‘송곳니의 사원’, ‘돌 제단’. 무작위로 선택한 장소 1장을 플레이 영역에 둡니다. 나머지 장소 2장은 게임에서 제거합니다."
     },
     {
       "id": "set_aside_poisoned",
@@ -28411,7 +28411,7 @@
     },
     {
       "id": "check_act_2",
-      "text": "시나리오가 끝났을 때 조사자들이 주요목적 2에 있었다면, 플레이 상태이며 단서가 하나도 없는 [[Tenochtitlán]] 장소를 모두 승점 더미에 추가합니다."
+      "text": "시나리오가 끝났을 때 조사자들이 주요목적 2에 있었다면, 플레이 상태이며 단서가 하나도 없는 [[테노치티틀란]] 장소를 모두 승점 더미에 추가합니다."
     },
     {
       "id": "record_x_paths_known",
@@ -28419,7 +28419,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "승점 더미에 있는 [[Tenochtitlán]] 장소:",
+        "text": "승점 더미에 있는 [[테노치티틀란]] 장소:",
         "max": 6,
         "effects": [
           {
@@ -28559,7 +28559,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "confirm_text": "각 조사자는 승점 더미에 있는 [[Tenochtitlán]] 장소마다 경험치를 추가로 1씩 더 얻습니다.",
+        "confirm_text": "각 조사자는 승점 더미에 있는 [[테노치티틀란]] 장소마다 경험치를 추가로 1씩 더 얻습니다.",
         "text": "승점 더미:",
         "effects": [
           {
@@ -28804,7 +28804,7 @@
     },
     {
       "id": "set_aside_unique_assets",
-      "text": "시작 카드를 뽑기 전에, 모든 조사자는 자신의 덱과 플레이 영역에서 [[Item]] 물품 자산을 모두 찾아서 비플레이 상태로 치워 둡니다. 이러한 자산은 지금의 시간대에는 존재하지 않기 때문입니다."
+      "text": "시작 카드를 뽑기 전에, 모든 조사자는 자신의 덱과 플레이 영역에서 고유 [[물품]] 자산을 모두 찾아서 비플레이 상태로 치워 둡니다. 이러한 자산은 지금의 시간대에는 존재하지 않기 때문입니다."
     },
     {
       "id": "set_aside_alejandro",
@@ -31226,7 +31226,7 @@
       "encounter_sets": [
         "agents_of_yig"
       ],
-      "text": "다음 카드들을 비플레이 상태로 치워 둡니다: 단면 [[Ruins]] 장소 3장, <i>이그의 권속</i> 조우 세트, ‘중독’ 약점 4장, ‘알레한드로 벨라’ 자산, ‘이츠타카’ 적."
+      "text": "다음 카드들을 비플레이 상태로 치워 둡니다: 단면 [[유적]] 장소 3장, <i>이그의 권속</i> 조우 세트, ‘중독’ 약점 4장, ‘알레한드로 벨라’ 자산, ‘이츠타카’ 적."
     },
     {
       "id": "encounter_deck",
@@ -42233,7 +42233,7 @@
     "xp_cost": 2,
     "requirements": [
       {
-        "text": "‘데이지 워커’의 덱에는 [[Tome]] 자산이 4개 이상 포함되어야 합니다([[Tome]] 약점을 제외하고 4개 이상이어야 합니다)."
+        "text": "‘데이지 워커’의 덱에는 [[서적]] 자산이 4개 이상 포함되어야 합니다([[서적]] 약점을 제외하고 4개 이상이어야 합니다)."
       }
     ]
   },
@@ -42442,7 +42442,7 @@
     {
       "id": "investigator_setup",
       "title": "조사자 준비",
-      "text": "‘데이지 워커’의 덱에서 약점이 아닌 [[Tome]] 자산을 모두 제거합니다. 이렇게 제거한 [[Tome]] 자산을 모두 비플레이 상태로 치워 둡니다."
+      "text": "‘데이지 워커’의 덱에서 약점이 아닌 [[서적]] 자산을 모두 제거합니다. 이렇게 제거한 [[Tome]] 자산을 모두 비플레이 상태로 치워 둡니다."
     },
     {
       "id": "gather_encounter_sets",
@@ -42535,10 +42535,10 @@
     },
     {
       "id": "setup_tomes",
-      "text": "앞서 ‘데이지 워커’의 덱에서 제거하여 치워 두었던 [[Tome]] 자산을 모두 섞습니다. 이렇게 섞은 [[Tome]] 자산을 ‘미스캐토닉 대학 안마당’을 제외하고, 플레이 상태인 모든 장소 밑에 무작위로 1장씩 뒷면이 보이게 둡니다(‘오른 도서관’에서 먼 장소부터 시작해서 둡니다). 그러고 나서도 [[Tome]] 자산이 남아 있다면, 남은 서적 자산을 모두 ‘오른 도서관’ 밑에 뒷면이 보이게 둡니다.",
+      "text": "앞서 ‘데이지 워커’의 덱에서 제거하여 치워 두었던 [[서적]] 자산을 모두 섞습니다. 이렇게 섞은 [[서적]] 자산을 ‘미스캐토닉 대학 안마당’을 제외하고, 플레이 상태인 모든 장소 밑에 무작위로 1장씩 뒷면이 보이게 둡니다(‘오른 도서관’에서 먼 장소부터 시작해서 둡니다). 그러고 나서도 [[서적]] 자산이 남아 있다면, 남은 서적 자산을 모두 ‘오른 도서관’ 밑에 뒷면이 보이게 둡니다.",
       "bullets": [
         {
-          "text": "예를 들어, ‘데이지 워커’가 앞서 [[Tome]] 자산 12장을 치워 두었다고 합시다. ‘미스캐토닉 대학 안마당’을 제외하고, 모든 장소 밑에 뒷면으로 1장씩 놓아야 합니다. 나머지 6장은 ‘오른 도서관’ 밑에 놓아야 합니다."
+          "text": "예를 들어, ‘데이지 워커’가 앞서 [[서적]] 자산 12장을 치워 두었다고 합시다. ‘미스캐토닉 대학 안마당’을 제외하고, 모든 장소 밑에 뒷면으로 1장씩 놓아야 합니다. 나머지 6장은 ‘오른 도서관’ 밑에 놓아야 합니다."
         }
       ]
     },
@@ -42669,7 +42669,7 @@
     },
     {
       "id": "ask_daisy_tomes",
-      "text": "시나리오의 끝에 ‘데이지 워커’가 조종하고 있던 [[Tome]] 자산은 몇 개입니까?",
+      "text": "시나리오의 끝에 ‘데이지 워커’가 조종하고 있던 [[서적]] 자산은 몇 개입니까?",
       "type": "input",
       "input": {
         "type": "counter",
@@ -42707,7 +42707,7 @@
     },
     {
       "id": "daisy_experience_explanation",
-      "text": "‘데이지 워커’는 승점 더미에 있는 카드의 승점값 합계 또는 게임이 끝날 때 ‘데이지 워커’가 조종하고 있던 [[Tome]] 자산의 개수 중 더 높은 값만큼 경험치를 얻습니다."
+      "text": "‘데이지 워커’는 승점 더미에 있는 카드의 승점값 합계 또는 게임이 끝날 때 ‘데이지 워커’가 조종하고 있던 [[서적]] 자산의 개수 중 더 높은 값만큼 경험치를 얻습니다."
     },
     {
       "id": "daisy_experience",
@@ -64259,7 +64259,7 @@
     },
     {
       "id": "create_exploration_deck",
-      "text": "다음과 같이 탐사 덱을 만듭니다. 단면 [[Ancient]] 장소 5장과 다음 음모 카드 사본을 1장씩 함께 섞어 한 더미로 만듭니다: ‘불길한 징조’, ‘깊은 어둠’, ‘치명적인 실수’, ‘생매장’, ‘으스스한 한기’."
+      "text": "다음과 같이 탐사 덱을 만듭니다. 단면 [[고대]] 장소 5장과 다음 음모 카드 사본을 1장씩 함께 섞어 한 더미로 만듭니다: ‘불길한 징조’, ‘깊은 어둠’, ‘치명적인 실수’, ‘생매장’, ‘으스스한 한기’."
     },
     {
       "id": "set_aside_cards",
@@ -64932,7 +64932,7 @@
     },
     {
       "id": "create_exploration_deck",
-      "text": "다음과 같이 탐사 덱을 만듭니다. 단면 [[Jungle]] 장소 6장과 다음 조우 카드 사본을 1장씩 함께 섞어 한 더미로 만듭니다: ‘구덩이 함정’, ‘개미 떼다!’, ‘야생에서 길을 잃다’, ‘물자 부족’."
+      "text": "다음과 같이 탐사 덱을 만듭니다. 단면 [[밀림]] 장소 6장과 다음 조우 카드 사본을 1장씩 함께 섞어 한 더미로 만듭니다: ‘구덩이 함정’, ‘개미 떼다!’, ‘야생에서 길을 잃다’, ‘물자 부족’."
     },
     {
       "id": "check_mapped_way_forward",
@@ -64959,12 +64959,12 @@
     },
     {
       "id": "choose_ruins",
-      "text": "다음 [[Ruins]] 장소 3장 중에서 무작위로 1장을 선택합니다: ‘수풀이 무성한 유적’, ‘송곳니의 사원’, ‘돌 제단’. 무작위로 선택한 장소 1장을 탐사 덱에 합친 후 섞습니다. 나머지 장소 2장은 게임에서 제거합니다."
+      "text": "다음 [[유적]] 장소 3장 중에서 무작위로 1장을 선택합니다: ‘수풀이 무성한 유적’, ‘송곳니의 사원’, ‘돌 제단’. 무작위로 선택한 장소 1장을 탐사 덱에 합친 후 섞습니다. 나머지 장소 2장은 게임에서 제거합니다."
     },
     {
       "id": "choose_ruins_and_start_in_play",
       "bullet_type": "small",
-      "text": "다음 [[Ruins]] 장소 3장 중에서 무작위로 1장을 선택합니다: ‘수풀이 무성한 유적’, ‘송곳니의 사원’, ‘돌 제단’. 무작위로 선택한 장소 1장을 플레이 영역에 둡니다. 나머지 장소 2장은 게임에서 제거합니다."
+      "text": "다음 [[유적]] 장소 3장 중에서 무작위로 1장을 선택합니다: ‘수풀이 무성한 유적’, ‘송곳니의 사원’, ‘돌 제단’. 무작위로 선택한 장소 1장을 플레이 영역에 둡니다. 나머지 장소 2장은 게임에서 제거합니다."
     },
     {
       "id": "set_aside_poisoned",
@@ -66593,7 +66593,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "다음 카드들을 비플레이 상태로 치워 둡니다: ‘형태 없는 종자’, ‘시대의 유물(시간의 흐름을 풀어놓다)’, ‘시간의 이질지대’, 주요목적 4a – ‘실낙원’, 주요목적 4a – ‘시한부 종말’, 단면으로 된 6장의 산산조각난 장소."
+      "text": "다음 카드들을 비플레이 상태로 치워 둡니다: ‘형태 없는 종자’, ‘시대의 유물(시간의 흐름을 풀어놓다)’, ‘시간의 이질지대’, 주요목적 4a – ‘실낙원’, 주요목적 4a – ‘시한부 종말’, 단면으로 된 6장의 [[산산조각난]] 장소."
     },
     {
       "id": "create_exploration_deck",
@@ -67414,7 +67414,7 @@
     },
     {
       "id": "create_exploration_deck",
-      "text": "다음과 같이 탐사 덱을 만듭니다. 단면 [[Ancient]] 장소 12장과 다음 조우 카드 사본을 1장씩 함께 섞어 한 더미로 만듭니다: ‘다른 시간대를 비추는 창’, ‘불안정한 시간선’, ‘시간의 균열’, ‘시간의 흐름 속에서 잃어버리다’."
+      "text": "다음과 같이 탐사 덱을 만듭니다. 단면 [[고대]] 장소 12장과 다음 조우 카드 사본을 1장씩 함께 섞어 한 더미로 만듭니다: ‘다른 시간대를 비추는 창’, ‘불안정한 시간선’, ‘시간의 균열’, ‘시간의 흐름 속에서 잃어버리다’."
     },
     {
       "id": "set_aside_cards",
@@ -67440,7 +67440,7 @@
     },
     {
       "id": "check_act_2",
-      "text": "시나리오가 끝났을 때 조사자들이 주요목적 2에 있었다면, 플레이 상태이며 단서가 하나도 없는 [[Tenochtitlán]] 장소를 모두 승점 더미에 추가합니다."
+      "text": "시나리오가 끝났을 때 조사자들이 주요목적 2에 있었다면, 플레이 상태이며 단서가 하나도 없는 [[테노치티틀란]] 장소를 모두 승점 더미에 추가합니다."
     },
     {
       "id": "record_x_paths_known",
@@ -67448,7 +67448,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "승점 더미에 있는 [[Tenochtitlán]] 장소:",
+        "text": "승점 더미에 있는 [[테노치티틀란]] 장소:",
         "max": 6,
         "effects": [
           {
@@ -67588,7 +67588,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "confirm_text": "각 조사자는 승점 더미에 있는 [[Tenochtitlán]] 장소마다 경험치를 추가로 1씩 더 얻습니다.",
+        "confirm_text": "각 조사자는 승점 더미에 있는 [[테노치티틀란]] 장소마다 경험치를 추가로 1씩 더 얻습니다.",
         "text": "승점 더미:",
         "effects": [
           {
@@ -67803,7 +67803,7 @@
     },
     {
       "id": "set_aside_unique_assets",
-      "text": "시작 카드를 뽑기 전에, 모든 조사자는 자신의 덱과 플레이 영역에서 [[Item]] 물품 자산을 모두 찾아서 비플레이 상태로 치워 둡니다. 이러한 자산은 지금의 시간대에는 존재하지 않기 때문입니다."
+      "text": "시작 카드를 뽑기 전에, 모든 조사자는 자신의 덱과 플레이 영역에서 고유 [[물품]] 자산을 모두 찾아서 비플레이 상태로 치워 둡니다. 이러한 자산은 지금의 시간대에는 존재하지 않기 때문입니다."
     },
     {
       "id": "set_aside_alejandro",
@@ -72242,7 +72242,7 @@
     },
     {
       "id": "create_explore_deck",
-      "text": "다음과 같이 탐사 덱을 만듭니다. 단면 [[Ancient]] 장소 5장과 다음 음모 카드 사본을 1장씩 함께 섞어 한 더미로 만듭니다: ‘불길한 징조’, ‘깊은 어둠’, ‘치명적인 실수’, ‘생매장’, ‘으스스한 한기’."
+      "text": "다음과 같이 탐사 덱을 만듭니다. 단면 [[고대]] 장소 5장과 다음 음모 카드 사본을 1장씩 함께 섞어 한 더미로 만듭니다: ‘불길한 징조’, ‘깊은 어둠’, ‘치명적인 실수’, ‘생매장’, ‘으스스한 한기’."
     },
     {
       "id": "set_aside_cards",
@@ -72423,7 +72423,7 @@
     },
     {
       "id": "create_exploration_deck",
-      "text": "다음과 같이 탐사 덱을 만듭니다. 단면 [[Jungle]] 장소 5장과 다음 음모 카드 사본을 1장씩 함께 섞어 한 더미로 만듭니다: ‘야생에서 길을 잃다’, ‘우거진 수풀’, ‘뱀에 물리다’, ‘물자 부족’, ‘나무 사이로 날아온 화살’."
+      "text": "다음과 같이 탐사 덱을 만듭니다. 단면 [[밀림]] 장소 5장과 다음 음모 카드 사본을 1장씩 함께 섞어 한 더미로 만듭니다: ‘야생에서 길을 잃다’, ‘우거진 수풀’, ‘뱀에 물리다’, ‘물자 부족’, ‘나무 사이로 날아온 화살’."
     },
     {
       "id": "set_aside_cards",
@@ -72432,7 +72432,7 @@
       "encounter_sets": [
         "agents_of_yig"
       ],
-      "text": "다음 카드들을 비플레이 상태로 치워 둡니다: 단면 [[Ruins]] 장소 3장, <i>이그의 권속</i> 조우 세트, ‘중독’ 약점 4장, ‘알레한드로 벨라’ 자산, ‘이츠타카’ 적."
+      "text": "다음 카드들을 비플레이 상태로 치워 둡니다: 단면 [[유적]] 장소 3장, <i>이그의 권속</i> 조우 세트, ‘중독’ 약점 4장, ‘알레한드로 벨라’ 자산, ‘이츠타카’ 적."
     },
     {
       "id": "encounter_deck",
@@ -82162,9 +82162,7 @@
   ],
   "scenarios": [
     "aw_prologue",
-    "arkham_in_wonderland",
-    "lucid_nightmare",
-    "aw_epilogue"
+    "arkham_in_wonderland"
   ],
   "setup": [
     "prologue",
@@ -82177,7 +82175,7 @@
       "id": "prologue",
       "type": "story",
       "title": "A Realm of Pure Madness",
-      "text": "  `In THAT direction,' the Cat said, waving its right paw round, `lives a Hatter: and in THAT direction,' waving the other paw, `lives a March Hare. Visit either you like: they're both mad.'\n  `But I don't want to go among mad people,' Alice remarked.\n  `Oh, you can't help that,' said the Cat: `we're all mad here. I'm mad. You're mad.'\n<right>- Lewis Caroll, \"Alice's Adventures in Wonderland\"</right>"
+      "text": "'In THAT direction,' the Cat said, waving its right paw round, 'lives a Hatter: and in THAT direction,' waving the other paw, 'lives a March Hare. Visit either you like: they're both mad.'\n  'But I don't want to go among mad people,' Alice remarked.\n  'Oh, you can't help that,' said the Cat: 'we're all mad here. I'm mad. You're mad.'\n<right>- Lewis Caroll, \"Alice's Adventures in Wonderland\"</right>"
     },
     {
       "id": "intro",
@@ -82604,6 +82602,43 @@
           "section": "campaign_notes",
           "id": "white_rabbit_survived_the_monsters_attack",
           "text": "the White Rabbit survived the monster's attack."
+        }
+      ]
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "campaign_log": [
+          {
+            "id": "intuition",
+            "condition": {
+              "type": "campaign_log",
+              "section": "fragments_of_alice",
+              "id": "intuition",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Fragments of Alice: Intuition.",
+            "steps": [
+              "fragments_of_alice_intuition"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fragments_of_alice_intuition",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "fragments_of_alice",
+          "id": "intuition",
+          "text": "Intuition"
         }
       ]
     }
@@ -83235,7 +83270,7 @@
   "full_name": "서막",
   "header": "",
   "type": "interlude",
-  "icon": "",
+  "icon": "arkham",
   "setup": [
     "intro"
   ],
@@ -83529,7 +83564,7 @@
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": "zaw_knave_of_hearts"
+          "card": "zaw_00139"
         }
       ]
     },
@@ -83540,7 +83575,44 @@
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": "zaw_executioners_axe"
+          "card": "zaw_00159"
+        }
+      ]
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "campaign_log": [
+          {
+            "id": "intuition",
+            "condition": {
+              "type": "campaign_log",
+              "section": "fragments_of_alice",
+              "id": "compassion",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Fragments of Alice: Compassion.",
+            "steps": [
+              "fragments_of_alice_compassion"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fragments_of_alice_compassion",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "fragments_of_alice",
+          "id": "compassion",
+          "text": "Compassion"
         }
       ]
     }
@@ -83919,13 +83991,52 @@
     },
     {
       "id": "r1_story",
+      "title": "결말 1",
       "type": "story",
       "text": "You abandon the prospect of victory against the Red King and flee the chess board fields.  The landscape tears as you flee, ripped apart by the sudden surge of shadows while the red pieces rush forward to finish the defenders.  It seems as if you may be overwhelmed as well, but the shifting landscape opens up a gap in the orderly hedge rows.  You dive through without hesitation and hunker down as the land around you shudders in destruction.\nMinutes pass, and finally the wild din fades, replaced again by an eerie silence.  You emerge from the hedges to find the entire battlefield now marred and blasted by the dark surge.  Bodies of defeated chess pieces lie strewn about the fields, most of them cracked and contorted from whatever force ripped them apart.  You glance in the direction of the Red King's castle to see it as you first did: a red shard in a dark vortex.  Slowly you make your way back towards the ruined defenses of the White King to search for survivors.\nScattered stone and derelict pillars are all that remain of the white castle you first set out from.  Many of the missing chunks of masonry look as though they were bitten or clawed apart rather than shattered.  The trail of destruction leads directly to the throne of the White King.  You find his body on the steps to his throne, shredded to unrecognizable state but for the crown he once wore.  You realize now just how deeply the shadows have divided Wonderland.  The two sides may have once met in combat honorably, as the white pieces expected to fight, but Gurathnaka's corruption transformed the red pieces into remorseless monsters that share its hunger.  You depart solemnly to recuperate and find a new battlefield to face the shadows upon."
     },
     {
       "id": "r2_story",
+      "title": "결말 2",
       "type": "story",
       "text": "You approach the fallen Red King cautiously.  The shadows have ceased to flow out of him, but you're not about to take extra risks if you can help it.  Moments pass without event, and gradually the sound of the Red King's labored breathing magnifies.  You turn him over and are astonished to find that despite his injuries, the king is asleep!  You open the Red King's eyes manually, only to find them filled with swirling darkness.  Whatever shadowy power has possessed the king is keeping him alive even in this state.  You ponder the possibilities and it soon becomes clear to you what has happened.  Gurathnaka is an eater of dreams, and even the denizens of a dream can have dreams of their own.  The Red King's dreams sustain the shadows as they try to consume both Wonderland and Arkham.  You grimace with pity as you deliver the merciful killing blow to the Red King.\nAs the death blow lands, the shadows retreat from the castle with an echoing shriek.  The remaining red chess pieces, however, turn to retire without any sound or expression.  Perhaps some core principle drives them to obey the rules of chess even when controlled by Gurathnaka's shadows.  Whatever the reason, you're relieved that you won't have to fight your way back out of the castle.\nYou return wearily across the battlefield to the opposing castle of the White King, who meets you proudly.  \"A fine victory, just fine!  I knew I was right to put my confidence - no, wait, it was satisfaction - satisfaction in you!  Come now, we must feast and revel before we go to gloat of our victory to the Red King!\"  You say nothing, not wanting to sour the mood and possibly upset the White King.  If there's one thing you've learned, it's that the inhabitants of Wonderland are notoriously short-tempered.  You give a noncommittal answer and let the king return to his celebration as you quietly depart."
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "campaign_log": [
+          {
+            "id": "intuition",
+            "condition": {
+              "type": "campaign_log",
+              "section": "fragments_of_alice",
+              "id": "curiosity",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Fragments of Alice: Curiosity.",
+            "steps": [
+              "fragments_of_alice_curiosity"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fragments_of_alice_curiosity",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "fragments_of_alice",
+          "id": "curiosity",
+          "text": "Curiosity"
+        }
+      ]
     }
   ],
   "resolutions": [
@@ -83976,7 +84087,7 @@
   "full_name": "Interlude: Gryphon and Mock Turtle",
   "header": "막간",
   "type": "interlude",
-  "icon": "",
+  "icon": "gryphon_and_mock_turtle",
   "setup": [
     "intro",
     "check_strength_of_wonderland",
@@ -84417,7 +84528,7 @@
   "full_name": "Interlude: Humpty Dumpty",
   "header": "막간",
   "type": "interlude",
-  "icon": "",
+  "icon": "humpty_dumpty",
   "setup": [
     "intro",
     "decide_situation",
@@ -84612,6 +84723,7 @@
   "steps": [
     {
       "id": "check_direction",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -85166,7 +85278,7 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "hare_hatter_and_dormouse_enjoyed_your_company",
+        "id": "hare_and_hatter_enjoyed_your_company",
         "options": [
           {
             "boolCondition": true,
@@ -85814,15 +85926,15 @@
       "effects": [
         {
           "type": "remove_card",
-          "card": "zaw_knave_of_hearts"
+          "card": "zaw_00139"
         },
         {
           "type": "remove_card",
-          "card": "zaw_executions_axe"
+          "card": "zaw_00159"
         },
         {
           "type": "remove_card",
-          "card": "zaw_doormouse"
+          "card": "zaw_00095"
         },
         {
           "type": "remove_card",
@@ -85830,20 +85942,20 @@
         },
         {
           "type": "remove_card",
-          "card": "zaw_looking_glass_book"
+          "card": "zaw_00028"
         },
         {
           "type": "remove_card",
-          "card": "zaw_bellman"
+          "card": "zaw_00181"
         },
         {
           "type": "remove_card",
-          "card": "zaw_vorpal_blade"
+          "card": "zaw_00197"
         },
         {
           "type": "add_card",
           "investigator": "all",
-          "card": "zaw_tenebrous_nightmares"
+          "card": "zaw_00369s"
         }
       ]
     },
@@ -85913,6 +86025,11 @@
           "type": "campaign_data",
           "setting": "result",
           "value": "win"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "next_scenario",
+          "scenario": "aw_epilogue"
         }
       ]
     }
@@ -86229,7 +86346,7 @@
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": "zaw_tweedles_rattle"
+          "card": "zaw_00240"
         }
       ]
     },
@@ -86264,6 +86381,43 @@
           "type": "trauma",
           "investigator": "all",
           "physical": 1
+        }
+      ]
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "campaign_log": [
+          {
+            "id": "intuition",
+            "condition": {
+              "type": "campaign_log",
+              "section": "fragments_of_alice",
+              "id": "reason",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Fragments of Alice: Reason.",
+            "steps": [
+              "fragments_of_alice_reason"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fragments_of_alice_reason",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "fragments_of_alice",
+          "id": "reason",
+          "text": "Reason"
         }
       ]
     }
@@ -86506,13 +86660,13 @@
       ]
     },
     {
-      "id": "hare_hatter_and_dormouse_enjoyed_your_company",
+      "id": "hare_and_hatter_enjoyed_your_company",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
-          "id": "hare_hatter_and_dormouse_enjoyed_your_company",
-          "text": "the Hare, Hatter, and Dormouse enjoyed your company."
+          "id": "hare_and_hatter_enjoyed_your_company",
+          "text": "the Hare and  Hatter thoroughly enjoyed your company."
         }
       ]
     },
@@ -86621,7 +86775,44 @@
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": "zaw_doormouse"
+          "card": "zaw_00095"
+        }
+      ]
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "campaign_log": [
+          {
+            "id": "intuition",
+            "condition": {
+              "type": "campaign_log",
+              "section": "fragments_of_alice",
+              "id": "patience",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Fragments of Alice: Patience.",
+            "steps": [
+              "fragments_of_alice_patience"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fragments_of_alice_patience",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "fragments_of_alice",
+          "id": "patience",
+          "text": "Patience"
         }
       ]
     }
@@ -86657,7 +86848,7 @@
       "text": "\"An excellent riddle!  Let's have another!\"  The exclamation snaps you out of your thoughts, and you turn to see the Hare and Hatter still seated around the table, sipping tea and smiling congenially.  You keep your distance, remembering how they behaved during the earlier chaos, but they act as though nothing had happened.  \"Come now, a bright guest like you can surely think of a riddle we haven't heard before!\" the Hare invites, bounding over to escort you to a closer chair.  Your thoughts jumble and your words stumble, but your recent experience inspires a question.  When can you be in the dark and in the light at the same time?  The duo scratch their chins and tap their spoons idly, spending several seconds in thought.  Finally, the Hare draws upward and raises a finger.  \"When it's day out, but you've no idea what's going on!\" he proudly proclaims.\n\"No, no!  It's quite the opposite!\" the Hatter scoffs, \"When you know exactly what is going on, but it's dark all around!  After all, it was pitch black only a moment ago and we knew precisely what happened!\"  You raise an eyebrow at the suggestion that they were aware of the danger the entire time.  The Hatter pulls you closer and lowers his voice to a whisper that's somehow louder than his speaking voice.  \"Everyone is mad here, you know.  The things that make sense, well, those belong in Alice's world.  And the shadows are rather picky.  Why, poor Dormy here started making sense and they went after him just like that!\"  You press the two mad partygoers further, and to your surprise, they divulge plenty of details about Gurathnaka and his brood.\nThe Dormouse gives a long sigh and smiles faintly as he continues waking up fully.  \"They may be mad, but friends are friends.  I'm quite surprised - and happy, mind you - that you didn't give them a thrashing for their trouble.\"",
       "steps": [
         "add_1_strength_of_wonderland",
-        "hare_hatter_and_dormouse_enjoyed_your_company",
+        "hare_and_hatter_enjoyed_your_company",
         "earn_xp",
         "5_bonus_xp",
         "resolution_6"
@@ -86711,7 +86902,7 @@
   "full_name": "Interlude: The Caterpillar",
   "header": "막간",
   "type": "interlude",
-  "icon": "",
+  "icon": "caterpillar",
   "setup": [
     "intro",
     "decide_situation",
@@ -86887,7 +87078,7 @@
   "full_name": "Interlude: The Dodo",
   "header": "막간",
   "type": "interlude",
-  "icon": "",
+  "icon": "dodo",
   "setup": [
     "check_direction",
     "caucus_race",
@@ -86900,6 +87091,7 @@
   "steps": [
     {
       "id": "check_direction",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -86935,7 +87127,7 @@
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": "zaw_strange_refreshments"
+          "card": "zaw_00027"
         }
       ]
     },
@@ -87095,7 +87287,7 @@
   "full_name": "Interlude: The Duchess",
   "header": "막간",
   "type": "interlude",
-  "icon": "",
+  "icon": "duchess",
   "setup": [
     "intro",
     "decide_situation",
@@ -87254,7 +87446,7 @@
   "full_name": "Interlude: The Lion and the Unicorn",
   "header": "막간",
   "type": "interlude",
-  "icon": "",
+  "icon": "lion_and_unicorn",
   "setup": [
     "intro",
     "decide_situation",
@@ -87430,7 +87622,7 @@
   "full_name": "Interlude: The White Queen",
   "header": "막간",
   "type": "interlude",
-  "icon": "",
+  "icon": "white_queen",
   "setup": [
     "check_direction",
     "future_memories",
@@ -87443,6 +87635,7 @@
   "steps": [
     {
       "id": "check_direction",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -87478,7 +87671,7 @@
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": "zaw_looking_glass_book"
+          "card": "zaw_00028"
         }
       ]
     },
@@ -87909,7 +88102,7 @@
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": "zaw_bellman"
+          "card": "zaw_00181"
         }
       ]
     },
@@ -87920,12 +88113,13 @@
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": "zaw_vorpal_blade"
+          "card": "zaw_00197"
         }
       ]
     },
     {
       "id": "r1_story",
+      "title": "결말 1",
       "type": "story",
       "text": "Regrets fill your mind as you flee the Tulgey Wood.  You're frustrated by fleeing the woods ungracefully, by not catching the Snark, and by even joining the hunt in the first place.  The echoes of the other hunters gradually reaching their own untimely ends reverberates between the trees.  Each short series of shouts and shrieks inevitably ends in a sudden silence.  The distant sound of the Bellman's ringing is the last thing to fade into the night, bringing an end to the disastrous expedition.\nYou take only a few steps more before a rushing sound of air builds behind you.  You turn in dread to see a blanket of darkness sweeping over the forest, extinguishing every speck of light in its path.  Not wanting to strain your luck any further, you break into a sprint.  Your own lights flicker and begin to fade as you keep just ahead of the advancing wave.  Step by step you maneuver over the rough terrain, daring not look back again, until a ray of morning sun blinds you suddenly.  You collapse down in confusion and exhaustion, expecting the worst, but the wave of darkness has receded once again."
     },
@@ -87956,6 +88150,7 @@
     },
     {
       "id": "r2_story",
+      "title": "결말 2",
       "type": "story",
       "text": "The Snark looks up at you meekly, almost tamely, as the other hunters gather around to view their prize up close in the fading darkness.  Questions fly and theories puncture each other until the Bellman gathers everyone's attention once more.  \"We have found success, or rather success has found us, given the circumstances!  Three cheers for the Bodyguard who first laid hands on the beast!\"  The hunters cheer and call for a celebratory feast, but with only the Snark available to cook, they agree it would be a terrible waste.\nThe Snark in the meantime sits quietly in the center of the group.  The many purported uses for the beast seem beyond its capabilities, but for its ability to lead you safely out of the woods.  The Snark - and you by extension - must know every inch of these woods by now, for all that you covered during the chase.  For minutes at a time, it studies each of the hunters in turn before directing its attention back at you.  The creature is observant, another quality that no doubt helped it stay out of harm's way until recently.  You stare into the Snark's eyes, and you lock for several seconds before it speaks to you in perfect English.  \"I've been told it's rude to stare.\""
     },
@@ -88058,6 +88253,43 @@
           }
         ]
       }
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "campaign_log": [
+          {
+            "id": "intuition",
+            "condition": {
+              "type": "campaign_log",
+              "section": "fragments_of_alice",
+              "id": "courage",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Fragments of Alice: Courage.",
+            "steps": [
+              "fragments_of_alice_courage"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fragments_of_alice_courage",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "fragments_of_alice",
+          "id": "courage",
+          "text": "Courage"
+        }
+      ]
     }
   ],
   "resolutions": [

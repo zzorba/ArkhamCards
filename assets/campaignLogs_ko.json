@@ -259,7 +259,7 @@
           },
           {
             "id": "carcosa_merged",
-            "text": "캠페인 기록지에 카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다라고 기록합니다."
+            "text": "카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다."
           },
           {
             "id": "chose_not_to_warn_police",
@@ -685,7 +685,7 @@
           },
           {
             "id": "carcosa_merged",
-            "text": "캠페인 기록지에 카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다라고 기록합니다."
+            "text": "카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다."
           },
           {
             "id": "chose_not_to_warn_police",
@@ -2814,16 +2814,16 @@
             "text": "Gurathnaka and its shadows were banished from Arkham."
           },
           {
+            "id": "hare_and_hatter_enjoyed_your_company",
+            "text": "the Hare and  Hatter thoroughly enjoyed your company."
+          },
+          {
             "id": "hare_and_hatter_were_cast_into_the_shadows",
             "text": "the Hare and the Hatter were cast into the shadows."
           },
           {
             "id": "hare_couldnt_cope_with_hatters_death",
             "text": "the Hare couldn't cope with the Hatter's death."
-          },
-          {
-            "id": "hare_hatter_and_dormouse_enjoyed_your_company",
-            "text": "the Hare, Hatter, and Dormouse enjoyed your company."
           },
           {
             "id": "hare_hatter_and_dormouse_were_consumed_by_shadows",
@@ -2944,6 +2944,35 @@
           {
             "id": "white_rabbit_survived_the_monsters_attack",
             "text": "the White Rabbit survived the monster's attack."
+          }
+        ]
+      },
+      {
+        "section": "fragments_of_alice",
+        "entries": [
+          {
+            "id": "compassion",
+            "text": "Compassion"
+          },
+          {
+            "id": "courage",
+            "text": "Courage"
+          },
+          {
+            "id": "curiosity",
+            "text": "Curiosity"
+          },
+          {
+            "id": "intuition",
+            "text": "Intuition"
+          },
+          {
+            "id": "patience",
+            "text": "Patience"
+          },
+          {
+            "id": "reason",
+            "text": "Reason"
           }
         ]
       },

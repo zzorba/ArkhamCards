@@ -10,6 +10,7 @@ import DunwichIcon from './DunwichIcon';
 import ForgottenIcon from './ForgottenIcon';
 import StandaloneIcon from './StandaloneIcon';
 import InnsmouthIcon from './InnsmouthIcon';
+import AliceIcon from './AliceIcon';
 
 interface Props {
   encounter_code: string;
@@ -18,6 +19,9 @@ interface Props {
 }
 
 export default class EncounterIcon extends React.PureComponent<Props> {
+  aliceIcon(name: string, size: number, color: string) {
+    return (<AliceIcon name={name} size={size} color={color} />);
+  }
   arkhamIcon(name: string, size: number, color: string) {
     return (<ArkhamIcon name={name} size={size} color={color} />);
   }
@@ -503,7 +507,6 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'syzygy':
       case 'malfunction':
         return this.innsmouthIcon(encounter_code, size, color);
-
       case 'the_tatterdemalion':
       case 'electric_nightmare':
       case 'lost_quantum':
@@ -524,6 +527,38 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'dark_matter':
       case 'zdm':
         return this.darkMatterIcon('the_tatterdemalion', size, color);
+      case 'a_sea_of_troubles':
+      case 'gurathnakas_shadows':
+      case 'arkham_in_wonderland':
+      case 'warped_reality':
+      case 'bleeding_hearts':
+      case 'card_guards':
+      case 'riddles_and_games':
+      case 'wonderland_boons':
+      case 'wonderland_banes':
+      case 'fools_mate':
+      case 'chessmen':
+      case 'lucid_nightmare':
+      case 'alice_in_arkham':
+      case 'sibling_rivalry':
+      case 'tempest_in_a_teapot':
+      case 'walrus_and_carpenter':
+      case 'wild_snark_chase':
+      case 'dodo':
+      case 'caterpillar':
+      case 'white_queen':
+      case 'gryphon_and_mock_turtle':
+      case 'duchess':
+      case 'humpty_dumpty':
+      case 'lion_and_unicorn':
+        return this.aliceIcon(encounter_code, size, color);
+      case 'chesire_cat':
+        return this.aliceIcon('cheshire_cat', size, color);
+      case 'jabberwocky':
+        return this.aliceIcon('jabberwock', size, color);
+      case 'alice_in_wonderland':
+      case 'zaw':
+        return this.aliceIcon('alice_in_wonderland', size, color);
       case 'deep_ones':
       case 'sinking_ship':
         return this.standaloneIcon(encounter_code, size, color);

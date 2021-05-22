@@ -30,6 +30,8 @@
 		6560EBDD25A012700076B227 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6560EBDC25A012700076B227 /* GoogleService-Info.plist */; };
 		656D83DB25AA4AB90010E4CA /* cost.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 656D83DA25AA4AB80010E4CA /* cost.ttf */; };
 		657276692644DE1B00157DE3 /* dark_matter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 657276682644DE1B00157DE3 /* dark_matter.ttf */; };
+		657276D0265984A200157DE3 /* alice.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 657276CF265984A200157DE3 /* alice.ttf */; };
+		657276D32659850A00157DE3 /* Caveat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 657276D22659850A00157DE3 /* Caveat.ttf */; };
 		6585116F250D6C0500DCB842 /* Alegreya-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */; };
 		65851170250D6C0500DCB842 /* Alegreya-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */; };
 		65851172250D6DB200DCB842 /* Alegreya-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */; };
@@ -93,6 +95,8 @@
 		6560EBDC25A012700076B227 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		656D83DA25AA4AB80010E4CA /* cost.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = cost.ttf; path = ../assets/cost.ttf; sourceTree = "<group>"; };
 		657276682644DE1B00157DE3 /* dark_matter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dark_matter.ttf; path = ../assets/dark_matter.ttf; sourceTree = "<group>"; };
+		657276CF265984A200157DE3 /* alice.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = alice.ttf; path = ../assets/alice.ttf; sourceTree = "<group>"; };
+		657276D22659850A00157DE3 /* Caveat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Caveat.ttf; path = ../assets/Caveat.ttf; sourceTree = "<group>"; };
 		6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Regular.ttf"; path = "../assets/Alegreya-Regular.ttf"; sourceTree = "<group>"; };
 		6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Italic.ttf"; path = "../assets/Alegreya-Italic.ttf"; sourceTree = "<group>"; };
 		65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Medium.ttf"; path = "../assets/Alegreya-Medium.ttf"; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				657276D22659850A00157DE3 /* Caveat.ttf */,
+				657276CF265984A200157DE3 /* alice.ttf */,
 				657276682644DE1B00157DE3 /* dark_matter.ttf */,
 				65862DA025F17A3D00BDD228 /* Teutonic RU.ttf */,
 				6506962325D05D5300B134B0 /* tokens.ttf */,
@@ -350,6 +356,7 @@
 				659EB1BD25118C55007E69E0 /* Alegreya-MediumItalic.ttf in Resources */,
 				65CF51E0220386F400A1D2FA /* circle.ttf in Resources */,
 				65C3FAC7242037850014ED97 /* AnkeCalligraphicFG.ttf in Resources */,
+				657276D32659850A00157DE3 /* Caveat.ttf in Resources */,
 				65447A8724154F2600961717 /* allCampaigns.json in Resources */,
 				657276692644DE1B00157DE3 /* dark_matter.ttf in Resources */,
 				65F8DBA0247EE0B500286F16 /* uk.po.json in Resources */,
@@ -362,6 +369,7 @@
 				652EB740226BAF9C00F6D790 /* fr.po.json in Resources */,
 				65D3FA06210FF315000F8B9D /* Teutonic.ttf in Resources */,
 				65447A8924154F3200961717 /* campaignLogs.json in Resources */,
+				657276D0265984A200157DE3 /* alice.ttf in Resources */,
 				659EB1C225118E2F007E69E0 /* Alegreya-ExtraBold.ttf in Resources */,
 				65F8DB9F247EE0B500286F16 /* pl.po.json in Resources */,
 				65F2F38224D47DE800B716AB /* campaignLogs_es.json in Resources */,
