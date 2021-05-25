@@ -83002,12 +83002,13 @@
   "full_name": "Epilogo",
   "header": "",
   "type": "epilogue",
-  "icon": "",
+  "icon": "alice_in_arkham",
   "setup": [
     "intro",
     "check_strength_of_wonderland",
     "alices_fate",
     "earn_alice",
+    "$upgrade_decks",
     "credits",
     "design_notes"
   ],
@@ -83027,141 +83028,356 @@
         "options": [
           {
             "numCondition": 0,
-            "steps": [
-              "death_of_a_dream"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "death_of_a_dream"
+                ]
+              }
             ]
           },
           {
             "numCondition": 1,
-            "steps": [
-              "scattered_thoughts",
-              "2_bonus_xp"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "scattered_thoughts",
+                  "2_bonus_xp"
+                ]
+              },
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": 2
+              }
             ]
           },
           {
             "numCondition": 2,
-            "steps": [
-              "scattered_thoughts",
-              "2_bonus_xp"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "scattered_thoughts",
+                  "2_bonus_xp"
+                ]
+              },
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": 2
+              }
             ]
           },
           {
             "numCondition": 3,
-            "steps": [
-              "scattered_thoughts",
-              "2_bonus_xp"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "scattered_thoughts",
+                  "2_bonus_xp"
+                ]
+              },
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": 2
+              }
             ]
           },
           {
             "numCondition": 4,
-            "steps": [
-              "scattered_thoughts",
-              "2_bonus_xp"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "scattered_thoughts",
+                  "2_bonus_xp"
+                ]
+              },
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": 2
+              }
             ]
           },
           {
             "numCondition": 5,
-            "steps": [
-              "scattered_thoughts",
-              "2_bonus_xp"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "scattered_thoughts",
+                  "2_bonus_xp"
+                ]
+              },
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": 2
+              }
             ]
           },
           {
             "numCondition": 6,
-            "steps": [
-              "scattered_thoughts",
-              "2_bonus_xp"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "scattered_thoughts",
+                  "2_bonus_xp"
+                ]
+              },
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": 2
+              }
             ]
           },
           {
             "numCondition": 7,
-            "steps": [
-              "half_formed_visions",
-              "4_bonus_xp"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "half_formed_visions",
+                  "4_bonus_xp"
+                ]
+              },
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": 4
+              }
             ]
           },
           {
             "numCondition": 8,
-            "steps": [
-              "half_formed_visions",
-              "4_bonus_xp"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "half_formed_visions",
+                  "4_bonus_xp"
+                ]
+              },
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": 4
+              }
             ]
           },
           {
             "numCondition": 9,
-            "steps": [
-              "half_formed_visions",
-              "4_bonus_xp"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "half_formed_visions",
+                  "4_bonus_xp"
+                ]
+              },
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": 4
+              }
             ]
           },
           {
             "numCondition": 10,
-            "steps": [
-              "half_formed_visions",
-              "4_bonus_xp"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "half_formed_visions",
+                  "4_bonus_xp"
+                ]
+              },
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": 4
+              }
             ]
           },
           {
             "numCondition": 11,
-            "steps": [
-              "half_formed_visions",
-              "4_bonus_xp"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "half_formed_visions",
+                  "4_bonus_xp"
+                ]
+              },
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": 4
+              }
             ]
           },
           {
             "numCondition": 12,
-            "steps": [
-              "half_formed_visions",
-              "4_bonus_xp"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "half_formed_visions",
+                  "4_bonus_xp"
+                ]
+              },
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": 4
+              }
             ]
           },
           {
             "numCondition": 13,
-            "steps": [
-              "dreams_made_real",
-              "6_bonus_xp"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "dreams_made_real",
+                  "6_bonus_xp"
+                ]
+              },
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": 6
+              }
             ]
           },
           {
             "numCondition": 14,
-            "steps": [
-              "dreams_made_real",
-              "6_bonus_xp"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "dreams_made_real",
+                  "6_bonus_xp"
+                ]
+              },
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": 6
+              }
             ]
           },
           {
             "numCondition": 15,
-            "steps": [
-              "dreams_made_real",
-              "6_bonus_xp"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "dreams_made_real",
+                  "6_bonus_xp"
+                ]
+              },
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": 6
+              }
             ]
           },
           {
             "numCondition": 16,
-            "steps": [
-              "dreams_made_real",
-              "6_bonus_xp"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "dreams_made_real",
+                  "6_bonus_xp"
+                ]
+              },
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": 6
+              }
             ]
           },
           {
             "numCondition": 17,
-            "steps": [
-              "dreams_made_real",
-              "6_bonus_xp"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "dreams_made_real",
+                  "6_bonus_xp"
+                ]
+              },
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": 6
+              }
             ]
           },
           {
             "numCondition": 18,
-            "steps": [
-              "dreams_made_real",
-              "6_bonus_xp"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "dreams_made_real",
+                  "6_bonus_xp"
+                ]
+              },
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": 6
+              }
             ]
           }
         ],
         "defaultOption": {
-          "steps": [
-            "wonders_never_cease",
-            "8_bonus_xp"
+          "border": true,
+          "effects": [
+            {
+              "type": "story_step",
+              "steps": [
+                "wonders_never_cease",
+                "8_bonus_xp"
+              ]
+            },
+            {
+              "type": "earn_xp",
+              "investigator": "all",
+              "bonus": 8
+            }
           ]
         }
       }
@@ -83198,14 +83414,7 @@
     },
     {
       "id": "2_bonus_xp",
-      "text": "Each investigator earns 2 bonus experience.",
-      "effects": [
-        {
-          "type": "earn_xp",
-          "investigator": "all",
-          "bonus": 2
-        }
-      ]
+      "text": "Each investigator earns 2 bonus experience."
     },
     {
       "id": "4_bonus_xp",
@@ -83667,9 +83876,7 @@
       "title": "Risoluzione 3",
       "text": "Even after brutally dispatching the shadows, the Queen's anger isn't satisfied yet.  She marches toward you with fire still burning in her eyes and the executioner's axe still in hand.  Someone is going to die for what she just went through, and you are still at the top of her list.  You look to the Knave and he looks to you, his eyes narrowing.  Is he prepared to sell you out to save his own head?  Are you prepared to do the same?  You have little time to think the dilemma over before the Queen cuts you short.",
       "steps": [
-        "decide_fate",
-        "earn_xp",
-        "resolution_6"
+        "decide_fate"
       ]
     },
     {
@@ -84773,122 +84980,242 @@
         "options": [
           {
             "numCondition": 0,
-            "steps": [
-              "shattered_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "shattered_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 1,
-            "steps": [
-              "broken_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "broken_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 2,
-            "steps": [
-              "broken_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "broken_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 3,
-            "steps": [
-              "broken_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "broken_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 4,
-            "steps": [
-              "broken_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "broken_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 5,
-            "steps": [
-              "broken_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "broken_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 6,
-            "steps": [
-              "broken_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "broken_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 7,
-            "steps": [
-              "insidious_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "insidious_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 8,
-            "steps": [
-              "insidious_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "insidious_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 9,
-            "steps": [
-              "insidious_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "insidious_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 10,
-            "steps": [
-              "insidious_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "insidious_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 11,
-            "steps": [
-              "insidious_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "insidious_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 12,
-            "steps": [
-              "insidious_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "insidious_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 13,
-            "steps": [
-              "pervasive_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "pervasive_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 14,
-            "steps": [
-              "pervasive_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "pervasive_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 15,
-            "steps": [
-              "pervasive_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "pervasive_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 16,
-            "steps": [
-              "pervasive_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "pervasive_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 17,
-            "steps": [
-              "pervasive_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "pervasive_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 18,
-            "steps": [
-              "pervasive_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "pervasive_dreams"
+                ]
+              }
             ]
           }
         ],
         "defaultOption": {
-          "steps": [
-            "consuming_dreams"
+          "border": true,
+          "effects": [
+            {
+              "type": "story_step",
+              "steps": [
+                "consuming_dreams"
+              ]
+            }
           ]
         }
       }
@@ -84939,44 +85266,86 @@
         "options": [
           {
             "numCondition": 0,
-            "steps": [
-              "absent_minded"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "absent_minded"
+                ]
+              }
             ]
           },
           {
             "numCondition": 1,
-            "steps": [
-              "absent_minded"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "absent_minded"
+                ]
+              }
             ]
           },
           {
             "numCondition": 2,
-            "steps": [
-              "half_a_mind"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "half_a_mind"
+                ]
+              }
             ]
           },
           {
             "numCondition": 3,
-            "steps": [
-              "half_a_mind"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "half_a_mind"
+                ]
+              }
             ]
           },
           {
             "numCondition": 4,
-            "steps": [
-              "half_a_mind"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "half_a_mind"
+                ]
+              }
             ]
           },
           {
             "numCondition": 5,
-            "steps": [
-              "presence_of_mind"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "presence_of_mind"
+                ]
+              }
             ]
           },
           {
             "numCondition": 6,
-            "steps": [
-              "presence_of_mind"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "presence_of_mind"
+                ]
+              }
             ]
           }
         ]
@@ -85584,6 +85953,7 @@
     },
     {
       "id": "check_fragments_intuition",
+      "text": "Check Fragments of Alice. If <i>Intuition</i> is listed:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -85617,6 +85987,7 @@
     },
     {
       "id": "check_fragments_patience",
+      "text": "Check Fragments of Alice. If <i>Patience</i> is listed:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -85650,6 +86021,7 @@
     },
     {
       "id": "check_fragments_compassion",
+      "text": "Check Fragments of Alice. If <i>Compassion</i> is listed:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -85683,6 +86055,7 @@
     },
     {
       "id": "check_fragments_courage",
+      "text": "Check Fragments of Alice. If <i>Courage</i> is listed:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -85716,6 +86089,7 @@
     },
     {
       "id": "check_fragments_reason",
+      "text": "Check Fragments of Alice. If <i>Reason</i> is listed:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -85749,6 +86123,7 @@
     },
     {
       "id": "check_fragments_curiosity",
+      "text": "Check Fragments of Alice. If <i>Curiosity</i> is listed:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -85955,7 +86330,7 @@
         {
           "type": "add_card",
           "investigator": "all",
-          "card": "zaw_00369s"
+          "card": "zaw_00369"
         }
       ]
     },
@@ -86081,6 +86456,7 @@
         "2_physical_and_2_mental_trauma",
         "remove_all_wonderland_cards_and_add_tenebrous_nightmares",
         "earn_xp",
+        "$upgrade_decks",
         "survived"
       ]
     },

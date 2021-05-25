@@ -4338,9 +4338,6 @@ msgstr ""
 msgid "Memories"
 msgstr ""
 
-msgid "By Axolotl"
-msgstr ""
-
 msgid "Fan-Made Campaigns"
 msgstr ""
 
@@ -4396,6 +4393,27 @@ msgid ""
 "like to see in the app, contact me at arkhamcards@gmail.com. Custom "
 "campaigns are a fair amount of work, but I'd love to support the community "
 "in anyway I can."
+msgstr ""
+
+msgid "Alice in Wonderland"
+msgstr ""
+
+msgid "Fragments of Alilce"
+msgstr ""
+
+msgid "Wonderland Boons"
+msgstr ""
+
+msgid "Wonderland Banes"
+msgstr ""
+
+msgid "Strength of Wonderland"
+msgstr ""
+
+msgid "Fan-made campaign by Axolotl"
+msgstr ""
+
+msgid "Fan-made campiagn by The Beard"
 msgstr ""
 
 #, javascript-format

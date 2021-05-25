@@ -385,6 +385,7 @@ export interface CampaignDataChaosBagCondition {
 export interface NumOption {
   numCondition: number;
   effects?: Effect[];
+  border?: boolean;
   steps?: string[];
 }
 export interface CampaignLogCountCondition {
