@@ -1,4 +1,4 @@
-export const ENABLE_ARKHAM_CARDS_ACCOUNT = false;
+export const ENABLE_ARKHAM_CARDS_ACCOUNT = true;
 export type TypeCodeType =
   'asset' |
   'event' |

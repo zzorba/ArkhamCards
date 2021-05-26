@@ -66340,6 +66340,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Crimson-tinted fog bathes the sky as you reach the gatehouse of Falcon Point. Atop the cliffs above you, the lighthouse beacon pierces through the mist. Considering the state of Innsmouth, you wonder what purpose the signal serves now. You doubt there are any ships out at sea given the inclement weather.\nSomewhere inside is the evidence you found weeks ago. You suspect that Oceiros—the man who captured you and left you in that pit to die—also resides within. \"Are you ready?\" Agent Harper asks. \"We have no real escape route here, should things go south. Be prepared for anything.\"\nYou nod. It's too late to turn back now. Steadily, you make your way toward the cliffs. One way or another, this ends today."
     },
@@ -66751,6 +66755,10 @@
     },
     {
       "id": "flashback_12_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.flashback_12",
+        "name": "Flashback XII"
+      },
       "title": "Flashback XII",
       "type": "story",
       "text": "You peer up at Falcon Point lighthouse, but from much further below. You are aboard Mr. Moore's fishing vessel, during your voyage to Devil Reef several weeks earlier. The ship sways back and forth as angry waves thrash against its hull. \"'Fraid it's gon' be a bit rocky,\" the ship captain shouts over the crashing of the tumultuous sea. \"Weather's been awful wild of late. Strange tides an' stranger winds.\"\nBut still you stare up at the ominous lighthouse, its beacon a guiding light, a warning sign, or both. Curious what knowledge he might have, you ask Mr. Moore about the lighthouse. \"That ol' thing? Been there longer'n Innsmouth itself. Marsh family's kept it runnin' as long as I remember. Oceiros is keeper now. Strange fella, that Oceiros. They say the only place in town he visits is the Order o' Dagon hall by New Church Green.\" He shakes his head.\nYou wonder if there are more secrets inside the lighthouse than meets the eye. Mr. Moore seems to note your curiosity. \"I've heard them Marshes've carved out caverns beneath the lighthouse goin' all the way down to sea level an' beyond,\" he claims. \"Dunno if that's true, but sometimes when I'm out at sea I've seen groups of 'em up by the cliffside, all wavin' an kneelin' like they're prayin' or something. Never really paid it much mind, but…\" his voice grows quieter. \"Jus' thought you oughta know.\"\nYou nod and thank him. If what he's saying is true, perhaps you should give this lighthouse a visit. You make a mental note to research more about Falcon Point once you return to town.\nWhen your mind snaps back to the present, you recall the legwork you'd done after your expedition to Devil Reef, and the information you found on the vast network of tunnels beneath the lighthouse…"
@@ -66870,6 +66878,10 @@
 
     {
       "id": "flashback_13_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.flashback_13",
+        "name": "Flashback XIII"
+      },
       "title": "Flashback XIII",
       "type": "story",
       "text": "You speak with one of the many sailors who frequent a ramshackle tavern by the docks of Innsmouth, somewhere in the southeastern slums of the decrepit seaport. He's found his own little corner of the pub in which to hide and drown himself in alcohol. So much the better—you'd prefer to keep your investigation quiet.\nYou jot down notes as the drunken man rambles on about the creatures he's seen swimming off the coast and prowling around the reefs. \"Deep Ones,\" he names them. \"Caught one in my net once,\" he blabbers through slurred speach. \"She an' her eggs—tha's right!—'er eggs, bigger'n your fist, an' squirmin' an' wrigglin', too!\"\nAbsorbed in the ritual of telling a tale for his fellow sailors, he elaborates: \"She had one of 'em in her arms. Tiny little devil, with bulgin', hateful eyes. Couldn't stand the sight of it. I threw the net o'er as soon as I realized what I'd caught, an' came right back 'ere. If I had my way I'd never sail 'gain.\"\nYou mull this new information over in your head. If this man speaks the truth, these creatures seem to have a lifecycle similar to that of a fish. But then, what is the purpose of the uncanny hybrid creatures you have seen skulking about the town? Are they but figments of your frightened imagination? Or is there a much more sinister part of this lifecycle that you are missing?"
@@ -67280,6 +67292,10 @@
   "resolutions": [
     {
       "id": "no_resolution_defeated",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No resolution was reached\n(each investigator was defeated)",
       "investigator_status": [
         "eliminated",
@@ -67290,6 +67306,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.resolution_1",
+        "name": "Resolution 1"
+      },
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -67304,6 +67324,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.resolution_2",
+        "name": "Resolution 2"
+      },
       "investigator_status": [
         "alive",
         "resigned",
@@ -67319,6 +67343,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.resolution_3",
+        "name": "Resolution 3"
+      },
       "investigator_status": [
         "alive",
         "resigned",
@@ -67332,6 +67360,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.resolution_4",
+        "name": "Resolution 4"
+      },
       "investigator_status": [
         "alive",
         "resigned",
@@ -75270,13 +75302,9 @@
               {
                 "type": "story_step",
                 "steps": ["scattered_thoughts", "2_bonus_xp"]
-              },
-              {
-                "type": "earn_xp",
-                "investigator": "all",
-                "bonus": 2
               }
-            ]
+            ],
+            "steps": ["award_2_bonus_xp"]
           },
           {
             "numCondition": 2,
@@ -75285,13 +75313,9 @@
               {
                 "type": "story_step",
                 "steps": ["scattered_thoughts", "2_bonus_xp"]
-              },
-              {
-                "type": "earn_xp",
-                "investigator": "all",
-                "bonus": 2
               }
-            ]
+            ],
+            "steps": ["award_2_bonus_xp"]
           },
           {
             "numCondition": 3,
@@ -75300,13 +75324,9 @@
               {
                 "type": "story_step",
                 "steps": ["scattered_thoughts", "2_bonus_xp"]
-              },
-              {
-                "type": "earn_xp",
-                "investigator": "all",
-                "bonus": 2
               }
-            ]
+            ],
+            "steps": ["award_2_bonus_xp"]
           },
           {
             "numCondition": 4,
@@ -75315,13 +75335,9 @@
               {
                 "type": "story_step",
                 "steps": ["scattered_thoughts", "2_bonus_xp"]
-              },
-              {
-                "type": "earn_xp",
-                "investigator": "all",
-                "bonus": 2
               }
-            ]
+            ],
+            "steps": ["award_2_bonus_xp"]
           },
           {
             "numCondition": 5,
@@ -75330,13 +75346,9 @@
               {
                 "type": "story_step",
                 "steps": ["scattered_thoughts", "2_bonus_xp"]
-              },
-              {
-                "type": "earn_xp",
-                "investigator": "all",
-                "bonus": 2
               }
-            ]
+            ],
+            "steps": ["award_2_bonus_xp"]
           },
           {
             "numCondition": 6,
@@ -75345,13 +75357,9 @@
               {
                 "type": "story_step",
                 "steps": ["scattered_thoughts", "2_bonus_xp"]
-              },
-              {
-                "type": "earn_xp",
-                "investigator": "all",
-                "bonus": 2
               }
-            ]
+            ],
+            "steps": ["award_2_bonus_xp"]
           },
           {
             "numCondition": 7,
@@ -75360,13 +75368,9 @@
               {
                 "type": "story_step",
                 "steps": ["half_formed_visions", "4_bonus_xp"]
-              },
-              {
-                "type": "earn_xp",
-                "investigator": "all",
-                "bonus": 4
               }
-            ]
+            ],
+            "steps": ["award_4_bonus_xp"]
           },
           {
             "numCondition": 8,
@@ -75375,13 +75379,9 @@
               {
                 "type": "story_step",
                 "steps": ["half_formed_visions", "4_bonus_xp"]
-              },
-              {
-                "type": "earn_xp",
-                "investigator": "all",
-                "bonus": 4
               }
-            ]
+            ],
+            "steps": ["award_4_bonus_xp"]
           },
           {
             "numCondition": 9,
@@ -75390,13 +75390,9 @@
               {
                 "type": "story_step",
                 "steps": ["half_formed_visions", "4_bonus_xp"]
-              },
-              {
-                "type": "earn_xp",
-                "investigator": "all",
-                "bonus": 4
               }
-            ]
+            ],
+            "steps": ["award_4_bonus_xp"]
           },
           {
             "numCondition": 10,
@@ -75405,13 +75401,9 @@
               {
                 "type": "story_step",
                 "steps": ["half_formed_visions", "4_bonus_xp"]
-              },
-              {
-                "type": "earn_xp",
-                "investigator": "all",
-                "bonus": 4
               }
-            ]
+            ],
+            "steps": ["award_4_bonus_xp"]
           },
           {
             "numCondition": 11,
@@ -75420,13 +75412,9 @@
               {
                 "type": "story_step",
                 "steps": ["half_formed_visions", "4_bonus_xp"]
-              },
-              {
-                "type": "earn_xp",
-                "investigator": "all",
-                "bonus": 4
               }
-            ]
+            ],
+            "steps": ["award_4_bonus_xp"]
           },
           {
             "numCondition": 12,
@@ -75435,13 +75423,9 @@
               {
                 "type": "story_step",
                 "steps": ["half_formed_visions", "4_bonus_xp"]
-              },
-              {
-                "type": "earn_xp",
-                "investigator": "all",
-                "bonus": 4
               }
-            ]
+            ],
+            "steps": ["award_4_bonus_xp"]
           },
           {
             "numCondition": 13,
@@ -75450,13 +75434,9 @@
               {
                 "type": "story_step",
                 "steps": ["dreams_made_real", "6_bonus_xp"]
-              },
-              {
-                "type": "earn_xp",
-                "investigator": "all",
-                "bonus": 6
               }
-            ]
+            ],
+            "steps": ["award_6_bonus_xp"]
           },
           {
             "numCondition": 14,
@@ -75465,13 +75445,9 @@
               {
                 "type": "story_step",
                 "steps": ["dreams_made_real", "6_bonus_xp"]
-              },
-              {
-                "type": "earn_xp",
-                "investigator": "all",
-                "bonus": 6
               }
-            ]
+            ],
+            "steps": ["award_6_bonus_xp"]
           },
           {
             "numCondition": 15,
@@ -75480,13 +75456,9 @@
               {
                 "type": "story_step",
                 "steps": ["dreams_made_real", "6_bonus_xp"]
-              },
-              {
-                "type": "earn_xp",
-                "investigator": "all",
-                "bonus": 6
               }
-            ]
+            ],
+            "steps": ["award_6_bonus_xp"]
           },
           {
             "numCondition": 16,
@@ -75495,13 +75467,9 @@
               {
                 "type": "story_step",
                 "steps": ["dreams_made_real", "6_bonus_xp"]
-              },
-              {
-                "type": "earn_xp",
-                "investigator": "all",
-                "bonus": 6
               }
-            ]
+            ],
+            "steps": ["award_6_bonus_xp"]
           },
           {
             "numCondition": 17,
@@ -75510,13 +75478,9 @@
               {
                 "type": "story_step",
                 "steps": ["dreams_made_real", "6_bonus_xp"]
-              },
-              {
-                "type": "earn_xp",
-                "investigator": "all",
-                "bonus": 6
               }
-            ]
+            ],
+            "steps": ["award_6_bonus_xp"]
           },
           {
             "numCondition": 18,
@@ -75525,13 +75489,9 @@
               {
                 "type": "story_step",
                 "steps": ["dreams_made_real", "6_bonus_xp"]
-              },
-              {
-                "type": "earn_xp",
-                "investigator": "all",
-                "bonus": 6
               }
-            ]
+            ],
+            "steps": ["award_6_bonus_xp"]
           }
         ],
         "defaultOption": {
@@ -75540,15 +75500,55 @@
             {
               "type": "story_step",
               "steps": ["wonders_never_cease", "8_bonus_xp"]
-            },
-            {
-              "type": "earn_xp",
-              "investigator": "all",
-              "bonus": 8
             }
-          ]
+          ],
+          "steps": ["award_8_bonus_xp"]
         }
       }
+    },
+    {
+      "id": "award_2_bonus_xp",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 2
+        }
+      ]
+    },
+    {
+      "id": "award_4_bonus_xp",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 4
+        }
+      ]
+    },
+    {
+      "id": "award_6_bonus_xp",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 6
+        }
+      ]
+    },
+    {
+      "id": "award_8_bonus_xp",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 8
+        }
+      ]
     },
     {
       "id": "death_of_a_dream",
@@ -75587,36 +75587,15 @@
     },
     {
       "id": "4_bonus_xp",
-      "text": "Each investigator earns 4 bonus experience.",
-      "effects": [
-        {
-          "type": "earn_xp",
-          "investigator": "all",
-          "bonus": 4
-        }
-      ]
+      "text": "Each investigator earns 4 bonus experience."
     },
     {
       "id": "6_bonus_xp",
-      "text": "Each investigator earns 6 bonus experience.",
-      "effects": [
-        {
-          "type": "earn_xp",
-          "investigator": "all",
-          "bonus": 6
-        }
-      ]
+      "text": "Each investigator earns 6 bonus experience."
     },
     {
       "id": "8_bonus_xp",
-      "text": "Each investigator earns 8 bonus experience.",
-      "effects": [
-        {
-          "type": "earn_xp",
-          "investigator": "all",
-          "bonus": 8
-        }
-      ]
+      "text": "Each investigator earns 8 bonus experience."
     },
     {
       "id": "alices_fate",
