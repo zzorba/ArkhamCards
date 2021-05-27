@@ -11706,7 +11706,7 @@
     },
     {
       "id": "defeated_insane",
-      "text": "쓰러진 모든 조사자는 미칩니다. 캠페인을 계속 진행할 충분한 조사자가 남아 있지 않으면, 캠페인은 여기서 끝나고 모든 플레이어는 패배합니다.",
+      "text": "쓰러진 모든 조사자는 <b>미칩니다</b>. 캠페인을 계속 진행할 충분한 조사자가 남아 있지 않으면, 캠페인은 여기서 끝나고 모든 플레이어는 패배합니다.",
       "effects": [
         {
           "type": "trauma",
@@ -11717,7 +11717,7 @@
     },
     {
       "id": "choose_new_investigators",
-      "text": "캠페인을 계속 진행할 충분한 조사자가 남아 있지 않으면, 캠페인은 여기서 끝나고 모든 플레이어는 패배합니다. 그렇지 않다면, 캠페인은 계속 이어집니다. (자신의 조사자가 미쳐 버린 모든 플레이어는 사용 가능한 조사자 중 하나를 선택합니다. 참조 안내서의 9쪽에서 미친 조사자에 대한 자세한 규칙을 참조하세요)",
+      "text": "캠페인을 계속 진행할 충분한 조사자가 남아 있지 않으면, 캠페인은 여기서 끝나고 모든 플레이어는 패배합니다. 그렇지 않다면, 캠페인은 계속 이어집니다. (자신의 조사자가 <b>미쳐 버린</b> 모든 플레이어는 사용 가능한 조사자 중 하나를 선택합니다. 참조 안내서의 9쪽에서 미친 조사자에 대한 자세한 규칙을 참조하세요)",
       "type": "input",
       "input": {
         "type": "scenario_investigators",
@@ -12048,7 +12048,7 @@
   "id": "rtdwl",
   "position": 1,
   "version": 1,
-  "name": "Return to The Dunwich Legacy",
+  "name": "돌아온 던위치의 유산",
   "campaign_type": "campaign",
   "campaign_log": [
     {
@@ -12564,7 +12564,7 @@
 },
 {
   "id": "return_to_blood_on_the_altar",
-  "scenario_name": "Return to Blood on the Altar",
+  "scenario_name": "돌아온 제단에 흘린 피",
   "header": "시나리오 IV",
   "full_name": "Scenario IV: Return to Blood on the Altar",
   "chaos_bag_card": "02195",
@@ -13431,7 +13431,7 @@
 },
 {
   "id": "return_to_extracurricular_activity",
-  "scenario_name": "Return to Extracurricular Activity",
+  "scenario_name": "돌아온 과외 활동",
   "header": "시나리오 I-A",
   "full_name": "Scenario I–A: Return to Extracurricular Activity",
   "chaos_bag_card": "02041",
@@ -13797,7 +13797,7 @@
 },
 {
   "id": "return_to_lost_in_time_and_space",
-  "scenario_name": "Return to Lost in Time and Space",
+  "scenario_name": "돌아온 시공간을 헤매다",
   "header": "시나리오 VII",
   "full_name": "Scenario VII: Return to Lost in Time and Space",
   "chaos_bag_card": "02311",
@@ -14151,7 +14151,7 @@
 },
 {
   "id": "return_to_the_house_always_wins",
-  "scenario_name": "Return to The House Always Wins",
+  "scenario_name": "돌아온 도박장은 언제나 이긴다",
   "header": "시나리오 I-B",
   "full_name": "Scenario I–B: Return to The House Always Wins",
   "chaos_bag_card": "02062",
@@ -14497,7 +14497,7 @@
 },
 {
   "id": "return_to_the_miskatonic_museum",
-  "scenario_name": "Return to The Miskatonic Museum",
+  "scenario_name": "돌아온 미스캐토닉 박물관",
   "header": "시나리오 II",
   "full_name": "Scenario II: Return to The Miskatonic Museum",
   "chaos_bag_card": "02118",
@@ -14837,7 +14837,7 @@
 },
 {
   "id": "return_to_undimensioned_and_unseen",
-  "scenario_name": "Return to Undimensioned and Unseen",
+  "scenario_name": "돌아온 차원 너머에 보이지 않는 존재",
   "header": "시나리오 V",
   "full_name": "Scenario V: Return to Undimensioned and Unseen",
   "chaos_bag_card": "02236",
@@ -15232,7 +15232,7 @@
 },
 {
   "id": "return_to_where_doom_awaits",
-  "scenario_name": "Return to Where Doom Awaits",
+  "scenario_name": "돌아온 파멸이 기다리는 곳",
   "header": "시나리오 VI",
   "full_name": "Scenario VI: Return to Where Doom Awaits",
   "chaos_bag_card": "02274",
@@ -17826,7 +17826,7 @@
   "id": "rtptc",
   "position": 2,
   "version": 2,
-  "name": "Return to The Path to Carcosa",
+  "name": "돌아온 카르코사로 가는 길",
   "campaign_type": "campaign",
   "campaign_log": [
     {
@@ -18842,7 +18842,7 @@
 },
 {
   "id": "return_to_a_phantom_of_truth",
-  "scenario_name": "Return to A Phantom of Truth",
+  "scenario_name": "돌아온 진실의 망령",
   "full_name": "Scenario V: Return to A Phantom of Truth",
   "header": "시나리오 V",
   "chaos_bag_card": "03200",
@@ -19825,7 +19825,7 @@
 },
 {
   "id": "return_to_black_stars_rise",
-  "scenario_name": "Return to Black Stars Rise",
+  "scenario_name": "돌아온 검은 별이 떠오르다",
   "full_name": "Scenario VII: Return to Black Stars Rise",
   "header": "시나리오 VII",
   "chaos_bag_card": "03274",
@@ -20571,7 +20571,7 @@
 },
 {
   "id": "return_to_curtain_call",
-  "scenario_name": "Return to Curtain Call",
+  "scenario_name": "돌아온 커튼콜",
   "full_name": "Scenario I: Return to Curtain Call",
   "header": "시나리오 I",
   "chaos_bag_card": "03043",
@@ -20977,7 +20977,7 @@
 },
 {
   "id": "return_to_dim_carcosa",
-  "scenario_name": "Return to Dim Carcosa",
+  "scenario_name": "돌아온 어스레한 카르코사",
   "full_name": "Scenario VIII: Return to Dim Carcosa",
   "header": "시나리오 VIII",
   "chaos_bag_card": "03316",
@@ -21827,7 +21827,7 @@
 },
 {
   "id": "return_to_echoes_of_the_past",
-  "scenario_name": "Return to Echoes of the Past",
+  "scenario_name": "돌아온 과거로부터의 메아리",
   "full_name": "Scenario III: Return to Echoes of the Past",
   "header": "시나리오 III",
   "chaos_bag_card": "03120",
@@ -22425,7 +22425,7 @@
 },
 {
   "id": "return_to_the_last_king",
-  "scenario_name": "Return to The Last King",
+  "scenario_name": "돌아온 마지막 왕",
   "full_name": "Scenario II: Return to The Last King",
   "header": "시나리오 II",
   "chaos_bag_card": "03061",
@@ -22915,7 +22915,7 @@
 },
 {
   "id": "return_to_the_pallid_mask",
-  "scenario_name": "Return to The Pallid Mask",
+  "scenario_name": "돌아온 창백한 가면",
   "full_name": "Scenario VI: Return to The Pallid Mask",
   "header": "시나리오 VI",
   "chaos_bag_card": "03240",
@@ -23850,7 +23850,7 @@
 },
 {
   "id": "return_to_the_unspeakable_oath",
-  "scenario_name": "Return to The Unspeakable Oath",
+  "scenario_name": "돌아온 입에 담아선 안 될 맹세",
   "full_name": "Scenario IV: Return to The Unspeakable Oath",
   "header": "시나리오 IV",
   "chaos_bag_card": "03159",
@@ -24327,7 +24327,7 @@
     },
     {
       "id": "defeated_insane",
-      "text": "쓰러진 모든 조사자는 미칩니다. 캠페인을 계속 진행할 충분한 조사자가 남아 있지 않으면, 캠페인은 여기서 끝나고 모든 플레이어는 패배합니다.",
+      "text": "쓰러진 모든 조사자는 <b>미칩니다</b>. 캠페인을 계속 진행할 충분한 조사자가 남아 있지 않으면, 캠페인은 여기서 끝나고 모든 플레이어는 패배합니다.",
       "effects": [
         {
           "type": "trauma",
@@ -24338,7 +24338,7 @@
     },
     {
       "id": "choose_new_investigators",
-      "text": "캠페인을 계속 진행할 충분한 조사자가 남아 있지 않으면, 캠페인은 여기서 끝나고 모든 플레이어는 패배합니다. 그렇지 않다면, 캠페인은 계속 이어집니다. (자신의 조사자가 미쳐 버린 모든 플레이어는 사용 가능한 조사자 중 하나를 선택합니다. 참조 안내서의 9쪽에서 미친 조사자에 대한 자세한 규칙을 참조하세요)",
+      "text": "캠페인을 계속 진행할 충분한 조사자가 남아 있지 않으면, 캠페인은 여기서 끝나고 모든 플레이어는 패배합니다. 그렇지 않다면, 캠페인은 계속 이어집니다. (자신의 조사자가 <b>미쳐 버린</b> 모든 플레이어는 사용 가능한 조사자 중 하나를 선택합니다. 참조 안내서의 9쪽에서 미친 조사자에 대한 자세한 규칙을 참조하세요)",
       "type": "input",
       "input": {
         "type": "scenario_investigators",
@@ -24742,7 +24742,7 @@
   "id": "rttfa",
   "position": 3,
   "version": 1,
-  "name": "Return to The Forgotten Age",
+  "name": "돌아온 잊힌 시대",
   "campaign_type": "campaign",
   "campaign_log": [
     {
@@ -27337,7 +27337,7 @@
 },
 {
   "id": "return_to_shattered_aeons",
-  "scenario_name": "Return to Shattered Aeons",
+  "scenario_name": "돌아온 산산조각난 영겁",
   "full_name": "Scenario VIII: Return to Shattered Aeons",
   "header": "시나리오 VIII",
   "chaos_bag_card": "04314",
@@ -27880,7 +27880,7 @@
 },
 {
   "id": "return_to_the_boundary_beyond",
-  "scenario_name": "Return to The Boundary Beyond",
+  "scenario_name": "돌아온 경계 너머",
   "full_name": "Scenario IV: Return to The Boundary Beyond",
   "header": "시나리오 IV",
   "chaos_bag_card": "04161",
@@ -28706,7 +28706,7 @@
 },
 {
   "id": "return_to_the_city_of_archives",
-  "scenario_name": "Return to The City of Archives",
+  "scenario_name": "돌아온 기록물의 도시",
   "full_name": "Scenario VI: Return to The City of Archives",
   "header": "시나리오 VI",
   "chaos_bag_card": "04237",
@@ -28920,7 +28920,7 @@
     },
     {
       "id": "all_insane",
-      "text": "모든 조사자는 미칩니다.",
+      "text": "모든 조사자는 <b>미칩니다</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -29185,7 +29185,7 @@
 },
 {
   "id": "return_to_the_depths_of_yoth",
-  "scenario_name": "Return to The Depths of Yoth",
+  "scenario_name": "돌아온 요스 깊은 곳으로",
   "full_name": "Scenario VII: Return to The Depths of Yoth",
   "header": "시나리오 VII",
   "chaos_bag_card": "04277",
@@ -30540,7 +30540,7 @@
 },
 {
   "id": "return_to_the_doom_of_eztli",
-  "scenario_name": "Return to The Doom of Eztli",
+  "scenario_name": "돌아온 에스틀리의 몰락",
   "full_name": "Scenario II: Return to The Doom of Eztli",
   "header": "시나리오 II",
   "chaos_bag_card": "04054",
@@ -30896,7 +30896,7 @@
     },
     {
       "id": "choose_new_investigators",
-      "text": "자신의 조사자가 미쳐 버렸거나 사망한 모든 플레이어는 사용 가능한 조사자 중 하나를 선택합니다."
+      "text": "자신의 조사자가 <b>미쳐 버렸거나</b> 사망한 모든 플레이어는 사용 가능한 조사자 중 하나를 선택합니다."
     },
     {
       "id": "extra_doom_on_entryway",
@@ -31191,7 +31191,7 @@
 },
 {
   "id": "return_to_the_untamed_wilds",
-  "scenario_name": "Return to The Untamed Wilds",
+  "scenario_name": "돌아온 길들지 않은 야생",
   "full_name": "Scenario I: Return to The Untamed Wilds",
   "header": "시나리오 I",
   "chaos_bag_card": "04043",
@@ -31642,7 +31642,7 @@
 },
 {
   "id": "return_to_threads_of_fate",
-  "scenario_name": "Return to Threads of Fate",
+  "scenario_name": "돌아온 운명의 실가닥",
   "full_name": "Scenario III: Return to Threads of Fate",
   "header": "시나리오 III",
   "chaos_bag_card": "04113",
@@ -31845,7 +31845,7 @@
     },
     {
       "id": "choose_talk_to_ichtaca_standalone",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "대표 조사자가 둘 중 하나를 결정해야 합니다:",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -31872,7 +31872,7 @@
     },
     {
       "id": "choose_talk_to_ichtaca",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "대표 조사자가 둘 중 하나를 결정해야 합니다:",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -33627,7 +33627,7 @@
     },
     {
       "id": "all_insane",
-      "text": "모든 조사자는 미칩니다.",
+      "text": "모든 조사자는 <b>미칩니다</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -34998,7 +34998,7 @@
   "campaign":
 {
   "id": "side",
-  "name": "Side Scenarios",
+  "name": "외전 시나리오",
   "campaign_type": "campaign",
   "position": 0,
   "version": 1,
@@ -39924,8 +39924,8 @@
 },
 {
   "id": "meddling_of_meowlathotep",
-  "scenario_name": "The Meddling of Meowlathotep",
-  "full_name": "The Meddling of Meowlathotep",
+  "scenario_name": "냐옹라토텝의 역습",
+  "full_name": "냐옹라토텝의 역습",
   "header": "",
   "side_scenario_type": "standalone",
   "standalone_setup": [
@@ -40096,15 +40096,15 @@
     },
     {
       "id": "barkham_rule",
-      "title": "Barkham Horror",
+      "title": "멍컴호러",
       "type": "rule_reminder",
-      "text": "<i>Barkham Horror</i> is an alternate universe in which the conflict between humanity and the eldritch forces of the mythos takes a back seat, and the conflict between dogs and cats takes center stage.",
+      "text": "<i>멍컴호러</i>에서 여러분은 인류와 끔찍한 괴물들이 맞서는 아컴호러의 세계를 잠시 뒤로 한 채, 개와 고양이가 팽팽한 기 싸움을 벌이는 평행 우주의 이야기를 체험하게 됩니다.",
       "bullets": [
         {
-          "text": "Investigator and player cards included in <i>Barkham Horror</i> expansions cannot be used in traditional <i>Arkham Horror: The Card Game</i> scenarios."
+          "text": "<i>멍컴호러</i> 확장에 수록된 모든 조사자와 플레이어 카드는 다른 일반적인 <i>아컴호러 카드게임</i>의 시나리오에서 사용할 수 없습니다."
         },
         {
-          "text": "Likewise, only investigators from <i>Barkham Horror</i> expansions should be used while playing a <i>Barkham Horror</i> scenario. Other player cards from any <i>Arkham Horror: The Card Game</i> product may be used."
+          "text": "<i>멍컴호러</i> 확장을 플레이할 때는 오직 <i>멍컴호러</i> 확장에 수록된 조사자만 사용할 수 있습니다. 하지만 조사자 카드를 제외한 <i>아컴호러 카드게임</i>의 플레이어 카드들은 여전히 사용할 수 있습니다."
         }
       ]
     },
@@ -40112,45 +40112,45 @@
       "id": "alert_rule",
       "type": "rule_reminder",
       "title": "경계",
-      "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
+      "text": "조사자가 경꼐 키워드가 있는 적으로부터 회피를 시도하는 도중 능력 테스트에 실패할 때마다, 우선 그 능력 테스트의 모든 결과를 적용합니다. 그 후, 그 적이 자신에게 회피를 시도했던 조사자를 상대로 공격을 수행합니다(경계 공격). 적은 경계 공격을 수행한 후에도 소진 상태가 되지 않습니다. 경계 공격은 조사자와 적이 교전하고 있는지 여부에 상관없이 발생합니다."
     },
     {
       "id": "lousy_with_cats_rule",
       "type": "rule_reminder",
-      "title": "“Lousy with cats”",
-      "text": "Six of the locations in this scenario begin play with a facedown [[Meowsk]] enemy beneath them. During this scenario, a location with a facedown encounter card beneath it is “lousy with cats.” <b>This has no inherent game effect.</b> However, some card effects may change depending on whether or not a location is lousy with cats.",
+      "title": "“고양이가 득실거리는”",
+      "text": "이 시나리오를 시작할 때, 장소 여섯 군데에는 [[묘스크]] 적이 하나씩 장소 카드 밑에 뒷면으로 놓여 있습니다. 이 시나리오를 진행하는 동안, 뒷면 조우 카드가 밑에 놓여 있는 장소는 “고양이가 득실거리는” 장소입니다. <b>어떤 장소에 “고양이가 득실거리는”지의 여부 그 자체에는 게임에 영향을 미치는 어떠한 효과도 없습니다.</b> 하지만 “고양이가 득실거리는”지 아닌지 여부에 따라 일부 카드의 효과가 변하기도 합니다.",
       "bullets": [
         {
-          "text": "If the encounter card beneath a location that is lousy with cats enters play or is removed for any reason, that location is no longer lousy with cats."
+          "text": "고양이가 득실거리는 장소 밑에 있던 조우 카드가 어떤 이유로든 플레이 영역에 들어오거나 제거되면, 그 장소에선 더는 고양이가 득실거리지 않습니다."
         }
       ]
     },
     {
       "id": "sniffing_locations_rule",
       "type": "rule_reminder",
-      "title": "“Sniffing” Locations",
-      "text": "Dogs have a fantastic sense of smell. Kate Winthpup in particular has an ability that allows her to “sniff ” a location. You may wish to use a token (such as a resource token) or a piece of scrap paper to record which locations you’ve sniffed. In general, once you sniff a location, it is sniffed for the rest of the game."
+      "title": "장소의 “냄새 맡기”",
+      "text": "개들의 후각은 놀랄 만큼 발달하여 있습니다. 예를 들어, 멍컴호러의 조사자 중 하나인 캣이트 멍스롭은 장소 한 곳의 “냄새를 맡는” 기능을 지녔습니다. 냄새를 맡은 장소를 표시하고 싶다면, 종잇조각이나 자원 토큰 같은 것을 원하는 장소에 놓으면 됩니다. 일반적으로 당신이 어떤 장소의 냄새를 맡으면, 그 장소는 게임이 끝날 떄까지 냄새를 맡은 장소인 것으로 봅니다."
     },
     {
       "id": "hp_quote",
       "type": "story",
-      "text": "“We may, indeed, judge the tone and bias of a civilisation by its relative attitude toward dogs and cats.”\n– H. P. Lovecraft, “Cats and Dogs”"
+      "text": "“우리는 어떤 문명이 개와 고양이를 대하는 상대적 태도를 통해 그 문명의 기조와 성향을 판별할 수 있습니다.”\n– H. P. 러브크래프트, “개와 고양이”"
     },
     {
       "id": "intro_1",
       "type": "story",
-      "text": "It is a dark and stormy night in the storied and haunted city of Barkham. By the time you hit the streets, it is raining cats and dogs. But you’ve picked up the scent of something big, and once you sink your teeth into a story, you just can’t let go. A little wet fur has never stopped you from finding the truth.\nStrange happenings have been going on in Barkham. Cat sightings are at an all-time high, and each day more and more pigeons go missing. While this wouldn’t normally be newsworthy, you know that there is more to this story than meets the eye. After all, while a few cats are harmless and adorable, most are nefarious schemers. You have heard the whispers and the howls on the wind. The Order of Dead Rodents on the Doorstep is back, and whatever they are plotting, only you can stop it.\nYou’re heading back to your home in Slobbertown—the Barkham neighborhood closest to the docks—when you catch a whiff of something foul and pungent in the air. Whatever is causing such an acrid stench must be nearby. But just then, another scent—!"
+      "text": "유서 깊고 으스스한 도시 멍컴. 해가 지고 밤이 찾아오자 어느새 멍컴에 궂은 비가 내리기 시작합니다. 부슬부슬 내리던 비는 당신이 밖으로 나간 순간 세찬 호우로 바뀝니다. 하지만 이 쏟아지는 비에도 불구하고 당신의 코는 도시에 은은히 퍼져 있는 수상한 냄새를 놓치지 않앗습니다. 진정한 명견이라면 한번 문 사냥감은 절대 놓치지 않는 법! 털이 조금 젖은 정도로 조사를 포기할 만큼 당신의 의지는 나약하지 않습니다.\n멍컴 시에 기묘한 일이 벌어지고 있는 것이 분명합니다. 고양이 목격 건수가 사상 최대치를 기록했고, 매일같이 수많은 비둘기가 사라지고 있습니다. 혹자는 겨우 이 정도로 호들갑이냐고 할지 모르겠지만, 보이는 것 이상의 무언가가 있다는 걸 당신은 알고 있습니다. 물론 일부 고양이가 무해하고 사랑스러운 것은 사실이지만, 대부분의 고양이는 사악한 모략가임이 분명합니다. 바로 지금, 바람결에 날려 온 속삭이는 소리와 울부짖는 소리가 들렸습니다. '문간에 놓인 죽은 쥐새끼 협회(속칭 야옹단)'가 돌아온 것이 분명합니다. 그들이 무엇을 획책하고 있던, 오직 당신만이 그 음모를 막을 수 있습니다.\n공기 중에서 불쾌하고 얼얼한 냄새를 감지한 당신은 부두에서 가장 가까운, 츄르릅타운에 있는 당신의 집 방향으로 발걸음을 옮깁니다. 이런 매캐한 악취를 내는 것이 무엇인지 몰라도, 굉장히 가까운 곳에 잇는 것만큼은 분명합니다. 그런데 갑자기, 또 다른 강렬한 냄새가 당신의 코를 찌릅니다-!"
     },
     {
       "id": "choose_scent_to_follow",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "대표 조사자가 둘 중 하나를 결정해야 합니다:",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "foul_stench",
-            "text": "Follow the foul stench.",
+            "text": "계속해서 악취를 따라갑니다.",
             "steps": [
               "intro_2",
               "choose_confront_cat"
@@ -40158,7 +40158,7 @@
           },
           {
             "id": "bacon",
-            "text": "Follow the scent of bacon.",
+            "text": "베이컨 냄새는 참을 수 없지!",
             "steps": [
               "intro_3",
               "choose_food"
@@ -40170,18 +40170,18 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "No! You cannot be dissuaded, not even by thoughts of tasty bacon and ear scratches from all of the humans who congegrate around Velma’s Doghouse. This investigation is too important. You continue tracking the awful odor until you come upon its source: a hairball, hacked up in an alleyway by the docks. Of course. If this isn’t proof of feline involvement, you don’t know what is. Then you hear it: HRRK! HRRRRK! There’s only one thing that could be!"
+      "text": "안됩니다! 벨마의 개집에서 풍겨오는 향긋한 베이컨 냄새에 무너질 순 없습니다! 어쩌면 맛있는 베이컨을 먹는 동안 가게에 모인 사람들이 당신을 쓰다듬어주고 귀여워해 줄지도 모르지만요... 아니, 그래도 안됩니다! 이번 조사는 굉장히 중요합니다. 불쾌한 냄새를 꼐속 따라간 긑에, 당신은 냄새의 근원지를 발견합니다. 부두 옆 골목길에 헤어볼이 굴러다니고 있습니다. 대체 이것이 사악한 고양이의 흔적이 아니면 무엇이란 말입니까? 헤어볼을 자세히 관찰하려는 찰나, 어떤 소리가 들립니다: “그르르르릉, 그르릉!” 자, 이제 답은 하나뿐입니다!"
     },
     {
       "id": "choose_confront_cat",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "대표 조사자가 둘 중 하나를 결정해야 합니다:",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "foul_stench",
-            "text": "Confront the barfy cat.",
+            "text": "역겨운 고양이 녀석과 대면합니다.",
             "steps": [
               "intro_4",
               "setup_slobbertown",
@@ -40191,7 +40191,7 @@
           },
           {
             "id": "bacon",
-            "text": "Follow the cat to its lair.",
+            "text": "고양이의 은신처까지 몰래 쫓아갑니다.",
             "steps": [
               "intro_5",
               "setup_snoutside",
@@ -40205,18 +40205,18 @@
     {
       "id": "intro_3",
       "type": "story",
-      "text": "The investigation can wait. Bacon is eternal. You follow that lovely smell northeast to Velma’s Doghouse in Beasttown. The sounds of revelry and the sizzling of grilled food make your tail wag faster than the cracking of a whip. And yet, something else tugs at the back of your dog-brain… What was it you were doing before?"
+      "text": "조사는 나중에도 할 수 있습니다. 그러나 사랑스러운 베이컨은 그 무엇과도 비견할 수 없습니다. 당신은 향긋한 냄새를 따라 불독타운 북동쪽에 있는 벨마의 개집으로 발걸음을 옮깁니다. 사람들의 말소리와 지글지글 익어가는 베이컨 소리를 듣자 당신의 꼬리가 채찍질하듯 빠르게 흔들립니다. 그런데 잠깐만요. 무언가가 당신의 뇌리를 스칩니다... 조금 전에 뭔가 다른 일을 하고 있지 않았던가요?"
     },
     {
       "id": "choose_food",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "대표 조사자가 둘 중 하나를 결정해야 합니다:",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "foul_stench",
-            "text": "Nope, food.",
+            "text": "아냐, 먹을 게 최고야.",
             "steps": [
               "intro_6",
               "setup_beasttown",
@@ -40226,7 +40226,7 @@
           },
           {
             "id": "bacon",
-            "text": "Oh yeah, investigating the Order.",
+            "text": "아 맞다, 야옹단을 조사하려고 했었지.",
             "steps": [
               "intro_7",
               "setup_tailside",
@@ -40240,38 +40240,38 @@
     {
       "id": "intro_4",
       "type": "story",
-      "text": "You are too dogged to turn back now. You soon come across the unfortunate creature, the source of the wretched retching. Once it is done, it goes back to licking its fur, and you wonder if cats truly have no sense of cause and effect. “What is the Order plotting?” you ask pointedly.\n“Why should I tell you, mutt?” the cat replies with a hint of apathy in its voice. “You’ll be our prey soon enough.” With that, the cat leaps gracefully from the street to a low-hanging tree branch, and vanishes from sight.\nPrey? You ponder the cat’s words. Conflict between your kind and theirs is as old as time, but you have never been their prey. What exactly is their game…?"
+      "text": "여기서 꼬리를 말고 물러서기엔 당신의 자존심이 용납지 않습니다. 잠시 후, 그 끔찍한 토사물(헤어볼)을 내뱉은 가여운 생물체가 당신의 앞에 나타납니다. 가장 이해가 안 되는 건, 방금 막 고통스럽게 헤어볼을 내뱉은 참인데도 이 고양이가 자기 털을 다시 핥고 있다는 점입니다. 대체 인과관계에 대한 개념이 있기는 한 걸까요? “야용단이 무슨 짓을 꾸미고 있는 거야?” 당신이 날카롭게 묻습니다.\n“내가 그걸 왜 너한테 말해야 해? 바보 아냐?” 고양이가 심드렁한 기색을 보이며 답합니다. “너희는 곧 우리의 먹잇감이 될 거야.” 그렇게 말하곤, 고양이는 우아하게 뛰어올라 낮게 드리운 나뭇가지에 착지합니다. 고양이가 당신의 시야에서 사라지기까지는 오랜 시간이 걸리지 않았습니다.\n먹잇감이라고? 당신은 고양이의 말을 곰곰이 생각해봅니다. 당신의 종족과 그들의 종족 간의 갈등은 헤아릴 수 없을 만큼 오래되었지만, 단 한 순간도 당신의 종족이 그들의 먹이가 된 적은 없습니다. 대체 무슨 소리를 하는 걸까요...?"
     },
     {
       "id": "setup_slobbertown",
-      "text": "Proceed to <b>Setup</b>. You will begin play in Slobbertown."
+      "text": "<b>게임 준비</b>로 이어집니다. 여러분은 '츄르릅타운'에서 시작합니다."
     },
     {
       "id": "intro_5",
       "type": "story",
-      "text": "You track the scent of the cat and follow from a distance. Eventually it leaves the docks and makes its way southwest, toward Snoutside. What could a cat be doing way out here?\nYour question is answered when the creature is picked up by a robed human outside the manor house of the Barkham Hisstorical Society, an organization devoted to educating the populace about the “noble” cats of the city. It makes sense that such a reviled cult would be involved in this plot. The human brings the cat indoors, presumably to feed it and give it treats and such. Your blood boils. Curse you, foul cat! How dare you trick these humans into thinking you are cute and fluffy and not at all evil—!"
+      "text": "당신은 조금 거리를 두고 고양이의 냄새를 쫓습니다. 당신은 어느새 부둣가를 벗어나 남서쪽의 개코마을에 도달합니다. 대체 고양이가 여기서 뭘 하는 걸까요?\n당신의 의문은 멍컴 “샤악-!”회 저택에서 나온 로브를 걸친 인간이 그 고양이를 집어 든 순간 풀립니다. 멍컴 “샤악-!”회는 대중들에게 고결한(웃음) 고양이의 매력을 전파하는 데에 헌신적인 집단입니다. 그럼 그렇지! 사회로부터 지탄받는 사이비 종교 집단이 이번 음모에 연루된 것도 그리 이상한 일이 아닙니다. 당신이 그리 생각하는 사이 그 인간은 고양이를 집어 들고 문 안쪽으로 사라집니다. 아마 고양이에게 맛있는 사료와 따뜻한 보금자리를 제공하겠죠. 당신은 피가 끓어오르는 것을 느낍니다. 이 저주받을 사악한 고양이! 어떻게 감히 인간들을 속이고 그렇게 깜찍하고 귀엽고 보송보송한 척, 아무것도 모르는 순진한 척을 할 수 있지!"
     },
     {
       "id": "setup_snoutside",
-      "text": "Proceed to <b>Setup</b>. You will begin play in Snoutside."
+      "text": "<b>게임 준비</b>로 이어집니다. 여러분은 '개코마을'에서 시작합니다."
     },
     {
       "id": "intro_6",
       "type": "story",
-      "text": ": It isn’t until your belly is full of yummy food and your tummy has been thoroughly rubbed that you remember why you were out and about in the first place. You patrol the area until you spot several panicked rats scurrying from a nearby sewer drain.\n“What’s the matter?” you bark. They chitter and chirp in response, and it is only then that you remember that rats can’t talk. Still, you glean some of their story from their frantic pantomiming. The Order of Dead Rodents at the Doorstep, as evidenced by their very namesake, has been hunting rats for ages. But now it is not just cats hunting them, but horrid cat-abominations that defy all earthly logic. Sounds like the Order is up to its old tricks once again…"
+      "text": "오랜 시간이 지났습니다. 어느새 당신의 위장은 맛있는 음식으로 가득 찼고, 수많은 사람의 손길이 당신의 배를 거쳐갔습니다. 그제야 당신은 밖을 나돌아다닌 당초 목적이 뭐였는지 겨우 기억해냅니다. 인근 지역을 순찰하던 당신은 하수구에서 허겁지겁 달려오는 겁먹은 쥐 몇 마리를 발견합니다.\n“대체 무슨 일이죠?” 당신이 컹컹 짖자, 쥐들은 찍찍거리며 당신에게 답합니다. 당신은 쥐가 말을 할 줄 모른다는 사실을 떠올립니다. 다행히도 쥐들의 광기에 서린 몸짓 발짓을 보며 그들이 무슨 말을 하고 싶은지 대강 알아챌 수는 있었습니다. '문간에 놓인 죽은 쥐새끼 협회'는 그 이름에서 알 수 있듯 아주 오래전부터 쥐들을 공격해 왔습니다. 하지만 이번에는 고양이뿐만 아니라 기묘한 존재들까지 쥐들을 습격해왔다고 합니다. 그렇습니다, 이 세계의 모든 법칙을 무시한 뒤틀린 존재... '냥물'이 나타난 것입니다. 아무래도 야옹단이 고대의 잊힌 존재를 잠에서 꺠우려 하는 모양입니다..."
     },
     {
       "id": "setup_beasttown",
-      "text": "Proceed to <b>Setup</b>. You will begin play in Beasttown."
+      "text": "<b>게임 준비</b>로 이어집니다. 여러분은 '불독타운'에서 시작합니다."
     },
     {
       "id": "intro_7",
       "type": "story",
-      "text": "The urgency of your investigation is too important for you to be distracted by thoughts of tasty food. As you turn away from Velma’s, you spot a streak of cat-fur dipping gracefully out of sight. Using your keen sense of smell, you keep a tight pursuit as the cat winds its way west to Tailside, where Barkham’s train station can be found.\nYou follow the cat to the tracks on the western edge of town, where it ducks underneath an abandoned train car marked with a cat’s paw print. “Meowsachusetts Catnip Co.” reads the label beneath the logo. A front for a cult headquarters, no doubt. You are about to eavesdrop on the cats’ refuge when suddenly, a creature bursts forth from underneath the train! It is a hideous hybrid of bird, bat, and cat, with webbed paws and membranous wings notably lacking in fur, though its face is unmistakably feline. The sight of the thing makes your fur stand on end."
+      "text": "이번 조사는 맛있는 음식의 유혹도 떨칠 수 있을 정도로 중요합니다. 당신이 벨마의 개집에서 눈길을 돌리자, 고양이 털 뭉치가 스르륵 굴러가 시야 밖으로 사라지는 것이 보입니다. 당신은 날카로운 후각을 이용해 털 뭉치 주인의 뒤를 바싹 쫓습니다. 서쪽으로 발길을 돌린 고양이는 멍컴 시의 유일한 기차역이 있는 개꼬리마을로 향합니다.\n고양이는 마을 서쪽 변두리에 있는 철로까지 이동한 후, 몸을 쑥 굽히더니 고양이 발바닥 로고가 찍힌 버려진 가차 아래로 들어가 버립니다. 로고 아래에는 '묘사추세츠 캣닙 주식회사'라고 적혀 있습니다. 이곳이 바로 사교도 집단의 본부가 분명합니다. 당신은 염탐을 위해 기차에 귀를 가져다 대려 한 순간, 기차 밑에서 수상한 괴생물체가 튀어나옵니다! 그 생물은(아니 과연 이것을 생물이라고 부를 수 있을까요?) 조류, 박쥐, 고양이가 섞인 끔찍한 잡종으로, 얼굴을 의심할 여지없는 고양이이지만 몸에 털이 아주 적고 발에는 물갈퀴가 달렸으며 등짝에는 얇은 막으로 된 날개가 솟아나 있습니다. 기괴한 광경에 당신의 털이 쭈뼛 곤두섭니다."
     },
     {
       "id": "setup_tailside",
-      "text": "Proceed to <b>Setup</b>. You will begin play in Tailside."
+      "text": "<b>게임 준비</b>로 이어집니다. 여러분은 '개꼬리마을'에서 시작합니다."
     },
     {
       "id": "gather_encounter_sets",
@@ -40283,37 +40283,37 @@
     },
     {
       "id": "setup_locations_snoutside",
-      "text": "Put all of the locations into play.",
+      "text": "모든 장소 카드를 플레이 영역에 둡니다.",
       "bullets": [
         {
-          "text": "Each investigator begins play at Snoutside."
+          "text": "모든 조사자는 '개코마을'에서 시작합니다."
         }
       ]
     },
     {
       "id": "setup_locations_tailside",
-      "text": "Put all of the locations into play.",
+      "text": "모든 장소 카드를 플레이 영역에 둡니다.",
       "bullets": [
         {
-          "text": "Each investigator begins play at Tailside."
+          "text": "모든 조사자는 '개꼬리마을'에서 시작합니다."
         }
       ]
     },
     {
       "id": "setup_locations_beasttown",
-      "text": "Put all of the locations into play.",
+      "text": "모든 장소 카드를 플레이 영역에 둡니다.",
       "bullets": [
         {
-          "text": "Each investigator begins play at Beasttown."
+          "text": "모든 조사자는 '불독타운'에서 시작합니다."
         }
       ]
     },
     {
       "id": "setup_locations_slobbertown",
-      "text": "Put all of the locations into play.",
+      "text": "모든 장소 카드를 플레이 영역에 둡니다.",
       "bullets": [
         {
-          "text": "Each investigator begins play at Slobbertown."
+          "text": "모든 조사자는 '츄르릅타운'에서 시작합니다."
         }
       ]
     },
@@ -40352,58 +40352,58 @@
       "location_names": [
         {
           "code": "barkham_asylum",
-          "name": "Barkham Asylum"
+          "name": "멍컴 정신병원"
         },
         {
           "code": "velmas_doghouse",
-          "name": "Velma's Doghouse"
+          "name": "벨마의 개집"
         },
         {
           "code": "tailside",
-          "name": "Tailside"
+          "name": "개꼬리마을"
         },
         {
           "code": "beasttown",
-          "name": "Beasttown"
+          "name": "불독타운"
         },
         {
           "code": "arkham_city_pound",
-          "name": "Arkham City Pound"
+          "name": "멍컴 유기견 보호소"
         },
         {
           "code": "muttskatonic_university",
-          "name": "Muttskatonic University"
+          "name": "미스캣토닉 애견대학"
         },
         {
           "code": "snoutside",
-          "name": "Snoutside"
+          "name": "개코마을"
         },
         {
           "code": "slobbertown",
-          "name": "Slobbertown"
+          "name": "츄르릅타운"
         },
         {
           "code": "st_marys_animal_hospital",
-          "name": "St. Mary's Animal Hospital"
+          "name": "세인트 메리 동물병원"
         },
         {
           "code": "boneyard",
-          "name": "Boneyard"
+          "name": "뼈무덤"
         }
       ]
     },
     {
       "id": "setup_meowsk_cards",
-      "text": "Find and shuffle the 7 [[Meowsk]] enemies. Remove 1 of them from the game without looking at it. Place 1 of the remaining [[Meowsk]] enemies facedown beneath each of the following locations: Barkham Asylum, Barkham City Pound, Velma’s Doghouse, Muttskatonic University, Boneyard, and St. Mary’s Animal Hospital.",
+      "text": "[[묘스크]] 적 7장을 찾아서 섞은 후, 그중 1장을 무작위로 게임에서 제거합니다. 제거한 카드가 무엇인지 봐서는 안 됩니다. 남은 [[묘스크]] 적 6장을, 아래에 제시된 각 장소 밑에 무작위로 1장씩 뒷면이 보이게 둡니다 - '멍컴 정신병원', '멍컴 유기견 보호소', '벨마의 개집', '미스캣토닉 애견대학', '뼈무덤', '세인트 메리 동물병원'.",
       "bullets": [
         {
-          "text": "Each of these locations is “lousy with cats” (see “lousy with cats”, above). A location is no longer lousy with cats if the encounter card beneath it is removed for any reason."
+          "text": "이 장소들은 “고양이가 득실거리는” 장소입니다(아래의 “고양이가 득실거리는” 설명 참조). 한 장소 밑에 놓여있던 카드가 어떤 이유로든 제거되면, 그곳은 이제 “고양이가 득실거리는” 장소가 아닙니다."
         }
       ]
     },
     {
       "id": "set_aside_cards",
-      "text": "Set Meowlathotep aside, out of play."
+      "text": "'냐옹라토텝'을 비플레이 상태로 치워 둡니다."
     },
     {
       "id": "encounter_deck",
@@ -40416,15 +40416,15 @@
     },
     {
       "id": "investigators_win",
-      "text": "The investigators win, but only if they, too, are dog people."
+      "text": "조사자들이 승리했습니다! 멍멍이 애호가들이여, 환호의 함성을 지르세요!"
     },
     {
       "id": "cat_people_are_traitors",
-      "text": "Cat people complete the scenario successfully but feel like traitors."
+      "text": "고양이 애호가시라고요? 물론 당신도 승리했습니다, 이 치사한 배신자야."
     },
     {
       "id": "investigators_lose",
-      "text": "The investigators lose! Players who are cat people win the game, though."
+      "text": "조사자들은 패배했습니다. 하지만 고양이 애호가인 사람은 승리합니다."
     }
   ],
   "resolutions": [
@@ -40444,7 +40444,7 @@
     {
       "id": "R1",
       "title": "결말 1",
-      "text": "The humans will never know the danger that lurked just beyond the edges of their senses—the danger they could not smell despite its foul scent. You will stay alert and loyally sniff out any hazards to your beloved city, for that is the duty and burden you and all dogkind bear. But, until the next time you are needed, you are content to sleep, play, and eat treat after treat. Victory is sweet.",
+      "text": "인간들이 자신의 감각 너머에 숨어 있는 위협을 알아채는 일은 앞으로도 결코 없을 것입니다. 인간들은 어쩜 그 구리구리한 냄새를 맡지 못하는 걸까요? 하지만 우린 다릅니다. 사랑하는 도시의 평화를 지키기 위해, 언제나 코를 킁킁대며 도시에 도사린 음모를 찾아낼 준비가 되어 있습니다. 바로 그것이 우리 모든 견종의 의무입니다. 하지만 그날이 오기 전까지 우리는 먹고, 자고, 놀고, 먹고, 또 먹을 것입니다! 달콤한 승리에 취해서 말이죠.",
       "steps": [
         "investigators_win",
         "cat_people_are_traitors"
@@ -40453,7 +40453,7 @@
     {
       "id": "R2",
       "title": "결말 2",
-      "text": "It's the end of all dogkind. The a-pawcalypse. A real cat-astrophe. An absolute cat-acylsm.\n\n\n\n…I'll see myself out.",
+      "text": "괭신도들의 음모를 막지 못했습니다. 온 세상이 고양이판입니다! 그야말로 백귀“야옹”행이 따로 없습니다! 아포“캣”립스가 벌어지고 만 것입니다! 이것이 전설로만 전해지는 견종의 종말 판데“멍”니움인 것일까요?\n\n\n\n…이제 생각나는 말장난도 없네요. 이만 퇴장하겠습니다(후다닥).",
       "steps": [
         "investigators_lose"
       ]
@@ -44601,7 +44601,7 @@
   "id": "tcu",
   "position": 4,
   "version": 3,
-  "name": "The Circle Undone",
+  "name": "끝맺지 못한 의식",
   "campaign_type": "campaign",
   "campaign_log": [
     {
@@ -45522,7 +45522,7 @@
 },
 {
   "id": "before_the_black_throne",
-  "scenario_name": "Before the Black Throne",
+  "scenario_name": "검은 옥좌 앞에",
   "full_name": "Scenario VIII: Before the Black Throne",
   "header": "시나리오 VIII",
   "chaos_bag_card": "05325",
@@ -46681,7 +46681,7 @@
 },
 {
   "id": "for_the_greater_good",
-  "scenario_name": "For the Greater Good",
+  "scenario_name": "대의를 위하여",
   "full_name": "Scenario V: For the Greater Good",
   "header": "시나리오 V",
   "chaos_bag_card": "05197",
@@ -46995,7 +46995,7 @@
     {
       "id": "keys",
       "type": "rule_reminder",
-      "title": "Keys",
+      "title": "열쇠",
       "text": "The setup of this scenario instructs the players to set aside 1 [skull] token, 1 [cultist] token, 1 [tablet] token, and 1 [elder_thing] token, as keys. These keys are never placed in the chaos bag and do not act as traditional chaos tokens. Instead, they represent keys which investigators can recover and use throughout the scenario.\nKeys can enter play via several different card effects, and are usually placed on an enemy, location, or story asset. Keys can be acquired in one of three ways:",
       "bullets": [
         {
@@ -47145,7 +47145,7 @@
 },
 {
   "id": "in_the_clutches_of_chaos",
-  "scenario_name": "In the Clutches of Chaos",
+  "scenario_name": "혼돈의 손아귀에서",
   "full_name": "Scenario VII: In the Clutches of Chaos",
   "header": "시나리오 VII",
   "chaos_bag_card": "05284",
@@ -48991,7 +48991,7 @@
 },
 {
   "id": "the_secret_name",
-  "scenario_name": "The Secret Name",
+  "scenario_name": "비밀 이름",
   "full_name": "Scenario III: The Secret Name",
   "header": "시나리오 III",
   "chaos_bag_card": "05120",
@@ -49617,7 +49617,7 @@
 },
 {
   "id": "the_wages_of_sin",
-  "scenario_name": "The Wages of Sin",
+  "scenario_name": "죄악의 응보",
   "full_name": "Scenario IV: The Wages of Sin",
   "header": "시나리오 IV",
   "chaos_bag_card": "05161",
@@ -49941,7 +49941,7 @@
     {
       "id": "choose_fate",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "대표 조사자가 둘 중 하나를 결정해야 합니다:",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -50742,7 +50742,7 @@
 },
 {
   "id": "union_and_disillusion",
-  "scenario_name": "Union and Disillusion",
+  "scenario_name": "합일과 환멸",
   "full_name": "Scenario VI: Union and Disillusion",
   "header": "시나리오 VI",
   "chaos_bag_card": "05238",
@@ -52835,7 +52835,7 @@
       "id": "alert",
       "type": "rule_reminder",
       "title": "경계",
-      "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
+      "text": "조사자가 경꼐 키워드가 있는 적으로부터 회피를 시도하는 도중 능력 테스트에 실패할 때마다, 우선 그 능력 테스트의 모든 결과를 적용합니다. 그 후, 그 적이 자신에게 회피를 시도했던 조사자를 상대로 공격을 수행합니다(경계 공격). 적은 경계 공격을 수행한 후에도 소진 상태가 되지 않습니다. 경계 공격은 조사자와 적이 교전하고 있는지 여부에 상관없이 발생합니다."
     },
     {
       "id": "story",
@@ -53013,7 +53013,7 @@
     {
       "id": "black_cat_choice",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "대표 조사자가 둘 중 하나를 결정해야 합니다:",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -56379,7 +56379,7 @@
 },
 {
   "id": "dark_side_of_the_moon",
-  "scenario_name": "Dark Side of the Moon",
+  "scenario_name": "달의 어두운 면",
   "full_name": "Scenario III–A: Dark Side of the Moon",
   "header": "Scenario III-A",
   "chaos_bag_card": "06206",
@@ -56819,7 +56819,7 @@
 },
 {
   "id": "the_search_for_kadath",
-  "scenario_name": "The Search for Kadath",
+  "scenario_name": "카다스를 찾아서",
   "full_name": "Scenario II–A: The Search for Kadath",
   "header": "Scenario II-A",
   "chaos_bag_card": "06119",
@@ -59018,7 +59018,7 @@
       "id": "alert",
       "type": "rule_reminder",
       "title": "경계",
-      "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
+      "text": "조사자가 경꼐 키워드가 있는 적으로부터 회피를 시도하는 도중 능력 테스트에 실패할 때마다, 우선 그 능력 테스트의 모든 결과를 적용합니다. 그 후, 그 적이 자신에게 회피를 시도했던 조사자를 상대로 공격을 수행합니다(경계 공격). 적은 경계 공격을 수행한 후에도 소진 상태가 되지 않습니다. 경계 공격은 조사자와 적이 교전하고 있는지 여부에 상관없이 발생합니다."
     },
     {
       "id": "story",
@@ -59074,7 +59074,7 @@
 }, "scenarios": [
 {
   "id": "a_thousand_shapes_of_horror",
-  "scenario_name": "A Thousand Shapes of Horror",
+  "scenario_name": "천 가지 무시무시한 형체",
   "full_name": "Scenario II–B: A Thousand Shapes of Horror",
   "header": "Scenario II-B",
   "chaos_bag_card": "06168",
@@ -61588,7 +61588,7 @@
 },
 {
   "id": "point_of_no_return",
-  "scenario_name": "Point of No Return",
+  "scenario_name": "돌아올 수 없는 다리",
   "full_name": "Scenario III–B: Point of No Return",
   "header": "Scenario III-B",
   "chaos_bag_card": "06247",
@@ -62646,7 +62646,7 @@
 },
 {
   "id": "weaver_of_the_cosmos",
-  "scenario_name": "Weaver of the Cosmos",
+  "scenario_name": "우주의 가닥을 엮는 자",
   "full_name": "Scenario IV-B: Weaver of the Cosmos",
   "header": "Scenario IV-B",
   "chaos_bag_card": "06333",
@@ -64551,7 +64551,7 @@
     },
     {
       "id": "choose_new_investigators",
-      "text": "자신의 조사자가 미쳐 버렸거나 사망한 모든 플레이어는 사용 가능한 조사자 중 하나를 선택합니다."
+      "text": "자신의 조사자가 <b>미쳐 버렸거나</b> 사망한 모든 플레이어는 사용 가능한 조사자 중 하나를 선택합니다."
     },
     {
       "id": "extra_doom_on_entryway",
@@ -64995,7 +64995,7 @@
     },
     {
       "id": "replay_scenario",
-      "text": "조사자들은 시나리오 <b>V–A: “고대 문명의 심장부(1부)</b>를 다시 진행해야 합니다. 이 시나리오의 <b>게임 준비</b> 과정으로 되돌아갑니다. 캠페인 기록지에는 방금 진행한 게임에서 겪은 트라우마와 바로 위의 항목을 제외하고 어떤 항목도 기록하지 않습니다. 방금 진행한 게임에서는 경험치도 전혀 획득하지 않습니다. 자신의 조사자가 미쳐 버렸거나 사망한 모든 플레이어는 사용가능한 조사자 중 하나를 선택합니다.",
+      "text": "조사자들은 시나리오 <b>V–A: “고대 문명의 심장부(1부)</b>를 다시 진행해야 합니다. 이 시나리오의 <b>게임 준비</b> 과정으로 되돌아갑니다. 캠페인 기록지에는 방금 진행한 게임에서 겪은 트라우마와 바로 위의 항목을 제외하고 어떤 항목도 기록하지 않습니다. 방금 진행한 게임에서는 경험치도 전혀 획득하지 않습니다. 자신의 조사자가 <b>미쳐 버렸거나</b> 사망한 모든 플레이어는 사용가능한 조사자 중 하나를 선택합니다.",
       "effects": [
         {
           "type": "campaign_data",
@@ -67950,7 +67950,7 @@
     },
     {
       "id": "all_insane",
-      "text": "모든 조사자는 미칩니다.",
+      "text": "모든 조사자는 <b>미칩니다</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -70835,7 +70835,7 @@
     },
     {
       "id": "choose_talk_to_ichtaca_standalone",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "대표 조사자가 둘 중 하나를 결정해야 합니다:",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -70862,7 +70862,7 @@
     },
     {
       "id": "choose_talk_to_ichtaca",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "대표 조사자가 둘 중 하나를 결정해야 합니다:",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -72270,7 +72270,7 @@
     },
     {
       "id": "all_insane",
-      "text": "모든 조사자는 미칩니다.",
+      "text": "모든 조사자는 <b>미칩니다</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -72812,7 +72812,7 @@
   "id": "tic",
   "position": 7,
   "version": 2,
-  "name": "The Innsmouth Conspiracy",
+  "name": "인스머스에 드리운 음모",
   "campaign_type": "campaign",
   "campaign_log": [
     {
@@ -73116,7 +73116,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "열쇠",
       "type": "rule_reminder",
       "text": "This expansion introduces key tokens that represent important objects or pieces of information that can be claimed and used during scenarios.\nKey tokens have two sides. When facedown, all seven keys have the same universal key symbol, so they can be randomized without the investigators knowing which is which. When faceup, each key is color coded with a unique color.\nIf a scenario uses one or more keys, the setup of that scenario indicates how many are set aside and whether they should be faceup or randomized facedown. Keys can enter play via several different card effects, and they are usually placed on enemy, location, or story asset. Keys can be acquired in any of three ways:",
       "bullets": [
@@ -73191,6 +73191,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Crimson-tinted fog bathes the sky as you reach the gatehouse of Falcon Point. Atop the cliffs above you, the lighthouse beacon pierces through the mist. Considering the state of Innsmouth, you wonder what purpose the signal serves now. You doubt there are any ships out at sea given the inclement weather.\nSomewhere inside is the evidence you found weeks ago. You suspect that Oceiros—the man who captured you and left you in that pit to die—also resides within. \"Are you ready?\" Agent Harper asks. \"We have no real escape route here, should things go south. Be prepared for anything.\"\nYou nod. It's too late to turn back now. Steadily, you make your way toward the cliffs. One way or another, this ends today."
     },
@@ -73362,7 +73366,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "열쇠",
       "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
     },
     {
@@ -73509,7 +73513,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "열쇠",
             "steps": [
               "ask_keys"
             ]
@@ -73662,6 +73666,10 @@
     },
     {
       "id": "flashback_12_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.flashback_12",
+        "name": "Flashback XII"
+      },
       "title": "Flashback XII",
       "type": "story",
       "text": "You peer up at Falcon Point lighthouse, but from much further below. You are aboard Mr. Moore's fishing vessel, during your voyage to Devil Reef several weeks earlier. The ship sways back and forth as angry waves thrash against its hull. \"'Fraid it's gon' be a bit rocky,\" the ship captain shouts over the crashing of the tumultuous sea. \"Weather's been awful wild of late. Strange tides an' stranger winds.\"\nBut still you stare up at the ominous lighthouse, its beacon a guiding light, a warning sign, or both. Curious what knowledge he might have, you ask Mr. Moore about the lighthouse. \"That ol' thing? Been there longer'n Innsmouth itself. Marsh family's kept it runnin' as long as I remember. Oceiros is keeper now. Strange fella, that Oceiros. They say the only place in town he visits is the Order o' Dagon hall by New Church Green.\" He shakes his head.\nYou wonder if there are more secrets inside the lighthouse than meets the eye. Mr. Moore seems to note your curiosity. \"I've heard them Marshes've carved out caverns beneath the lighthouse goin' all the way down to sea level an' beyond,\" he claims. \"Dunno if that's true, but sometimes when I'm out at sea I've seen groups of 'em up by the cliffside, all wavin' an kneelin' like they're prayin' or something. Never really paid it much mind, but…\" his voice grows quieter. \"Jus' thought you oughta know.\"\nYou nod and thank him. If what he's saying is true, perhaps you should give this lighthouse a visit. You make a mental note to research more about Falcon Point once you return to town.\nWhen your mind snaps back to the present, you recall the legwork you'd done after your expedition to Devil Reef, and the information you found on the vast network of tunnels beneath the lighthouse…"
@@ -73786,6 +73794,10 @@
     },
     {
       "id": "flashback_13_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.flashback_13",
+        "name": "Flashback XIII"
+      },
       "title": "Flashback XIII",
       "type": "story",
       "text": "You speak with one of the many sailors who frequent a ramshackle tavern by the docks of Innsmouth, somewhere in the southeastern slums of the decrepit seaport. He's found his own little corner of the pub in which to hide and drown himself in alcohol. So much the better—you'd prefer to keep your investigation quiet.\nYou jot down notes as the drunken man rambles on about the creatures he's seen swimming off the coast and prowling around the reefs. \"Deep Ones,\" he names them. \"Caught one in my net once,\" he blabbers through slurred speach. \"She an' her eggs—tha's right!—'er eggs, bigger'n your fist, an' squirmin' an' wrigglin', too!\"\nAbsorbed in the ritual of telling a tale for his fellow sailors, he elaborates: \"She had one of 'em in her arms. Tiny little devil, with bulgin', hateful eyes. Couldn't stand the sight of it. I threw the net o'er as soon as I realized what I'd caught, an' came right back 'ere. If I had my way I'd never sail 'gain.\"\nYou mull this new information over in your head. If this man speaks the truth, these creatures seem to have a lifecycle similar to that of a fish. But then, what is the purpose of the uncanny hybrid creatures you have seen skulking about the town? Are they but figments of your frightened imagination? Or is there a much more sinister part of this lifecycle that you are missing?"
@@ -74216,6 +74228,10 @@
   "resolutions": [
     {
       "id": "no_resolution_defeated",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "아무 결말에도 도달하지 못했다면\n(모든 조사자가 쓰러졌다면)",
       "investigator_status": [
         "eliminated",
@@ -74228,6 +74244,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.resolution_1",
+        "name": "Resolution 1"
+      },
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -74250,6 +74270,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.resolution_2",
+        "name": "Resolution 2"
+      },
       "investigator_status": [
         "alive",
         "resigned",
@@ -74272,6 +74296,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.resolution_3",
+        "name": "Resolution 3"
+      },
       "investigator_status": [
         "alive",
         "resigned",
@@ -74288,6 +74316,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.resolution_4",
+        "name": "Resolution 4"
+      },
       "investigator_status": [
         "alive",
         "resigned",
@@ -75037,7 +75069,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "열쇠",
             "steps": [
               "ask_keys"
             ]
@@ -76192,7 +76224,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "열쇠",
       "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
     },
     {
@@ -76203,7 +76235,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "열쇠",
             "steps": [
               "ask_keys"
             ]
@@ -77216,7 +77248,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "열쇠",
             "steps": [
               "ask_keys"
             ]
@@ -77549,7 +77581,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "열쇠",
       "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
     },
     {
@@ -78788,7 +78820,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "열쇠",
             "steps": [
               "ask_keys"
             ]
@@ -79047,7 +79079,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "열쇠",
       "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
     },
     {
@@ -79377,7 +79409,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "열쇠",
       "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
     },
     {
@@ -79404,7 +79436,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "열쇠",
             "steps": [
               "ask_keys"
             ]
@@ -83002,12 +83034,13 @@
   "full_name": "후일담",
   "header": "",
   "type": "epilogue",
-  "icon": "",
+  "icon": "alice_in_arkham",
   "setup": [
     "intro",
     "check_strength_of_wonderland",
     "alices_fate",
     "earn_alice",
+    "$upgrade_decks",
     "credits",
     "design_notes"
   ],
@@ -83027,144 +83060,365 @@
         "options": [
           {
             "numCondition": 0,
-            "steps": [
-              "death_of_a_dream"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "death_of_a_dream"
+                ]
+              }
             ]
           },
           {
             "numCondition": 1,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "scattered_thoughts",
+                  "2_bonus_xp"
+                ]
+              }
+            ],
             "steps": [
-              "scattered_thoughts",
-              "2_bonus_xp"
+              "award_2_bonus_xp"
             ]
           },
           {
             "numCondition": 2,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "scattered_thoughts",
+                  "2_bonus_xp"
+                ]
+              }
+            ],
             "steps": [
-              "scattered_thoughts",
-              "2_bonus_xp"
+              "award_2_bonus_xp"
             ]
           },
           {
             "numCondition": 3,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "scattered_thoughts",
+                  "2_bonus_xp"
+                ]
+              }
+            ],
             "steps": [
-              "scattered_thoughts",
-              "2_bonus_xp"
+              "award_2_bonus_xp"
             ]
           },
           {
             "numCondition": 4,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "scattered_thoughts",
+                  "2_bonus_xp"
+                ]
+              }
+            ],
             "steps": [
-              "scattered_thoughts",
-              "2_bonus_xp"
+              "award_2_bonus_xp"
             ]
           },
           {
             "numCondition": 5,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "scattered_thoughts",
+                  "2_bonus_xp"
+                ]
+              }
+            ],
             "steps": [
-              "scattered_thoughts",
-              "2_bonus_xp"
+              "award_2_bonus_xp"
             ]
           },
           {
             "numCondition": 6,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "scattered_thoughts",
+                  "2_bonus_xp"
+                ]
+              }
+            ],
             "steps": [
-              "scattered_thoughts",
-              "2_bonus_xp"
+              "award_2_bonus_xp"
             ]
           },
           {
             "numCondition": 7,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "half_formed_visions",
+                  "4_bonus_xp"
+                ]
+              }
+            ],
             "steps": [
-              "half_formed_visions",
-              "4_bonus_xp"
+              "award_4_bonus_xp"
             ]
           },
           {
             "numCondition": 8,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "half_formed_visions",
+                  "4_bonus_xp"
+                ]
+              }
+            ],
             "steps": [
-              "half_formed_visions",
-              "4_bonus_xp"
+              "award_4_bonus_xp"
             ]
           },
           {
             "numCondition": 9,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "half_formed_visions",
+                  "4_bonus_xp"
+                ]
+              }
+            ],
             "steps": [
-              "half_formed_visions",
-              "4_bonus_xp"
+              "award_4_bonus_xp"
             ]
           },
           {
             "numCondition": 10,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "half_formed_visions",
+                  "4_bonus_xp"
+                ]
+              }
+            ],
             "steps": [
-              "half_formed_visions",
-              "4_bonus_xp"
+              "award_4_bonus_xp"
             ]
           },
           {
             "numCondition": 11,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "half_formed_visions",
+                  "4_bonus_xp"
+                ]
+              }
+            ],
             "steps": [
-              "half_formed_visions",
-              "4_bonus_xp"
+              "award_4_bonus_xp"
             ]
           },
           {
             "numCondition": 12,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "half_formed_visions",
+                  "4_bonus_xp"
+                ]
+              }
+            ],
             "steps": [
-              "half_formed_visions",
-              "4_bonus_xp"
+              "award_4_bonus_xp"
             ]
           },
           {
             "numCondition": 13,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "dreams_made_real",
+                  "6_bonus_xp"
+                ]
+              }
+            ],
             "steps": [
-              "dreams_made_real",
-              "6_bonus_xp"
+              "award_6_bonus_xp"
             ]
           },
           {
             "numCondition": 14,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "dreams_made_real",
+                  "6_bonus_xp"
+                ]
+              }
+            ],
             "steps": [
-              "dreams_made_real",
-              "6_bonus_xp"
+              "award_6_bonus_xp"
             ]
           },
           {
             "numCondition": 15,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "dreams_made_real",
+                  "6_bonus_xp"
+                ]
+              }
+            ],
             "steps": [
-              "dreams_made_real",
-              "6_bonus_xp"
+              "award_6_bonus_xp"
             ]
           },
           {
             "numCondition": 16,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "dreams_made_real",
+                  "6_bonus_xp"
+                ]
+              }
+            ],
             "steps": [
-              "dreams_made_real",
-              "6_bonus_xp"
+              "award_6_bonus_xp"
             ]
           },
           {
             "numCondition": 17,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "dreams_made_real",
+                  "6_bonus_xp"
+                ]
+              }
+            ],
             "steps": [
-              "dreams_made_real",
-              "6_bonus_xp"
+              "award_6_bonus_xp"
             ]
           },
           {
             "numCondition": 18,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "dreams_made_real",
+                  "6_bonus_xp"
+                ]
+              }
+            ],
             "steps": [
-              "dreams_made_real",
-              "6_bonus_xp"
+              "award_6_bonus_xp"
             ]
           }
         ],
         "defaultOption": {
+          "border": true,
+          "effects": [
+            {
+              "type": "story_step",
+              "steps": [
+                "wonders_never_cease",
+                "8_bonus_xp"
+              ]
+            }
+          ],
           "steps": [
-            "wonders_never_cease",
-            "8_bonus_xp"
+            "award_8_bonus_xp"
           ]
         }
       }
+    },
+    {
+      "id": "award_2_bonus_xp",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 2
+        }
+      ]
+    },
+    {
+      "id": "award_4_bonus_xp",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 4
+        }
+      ]
+    },
+    {
+      "id": "award_6_bonus_xp",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 6
+        }
+      ]
+    },
+    {
+      "id": "award_8_bonus_xp",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 8
+        }
+      ]
     },
     {
       "id": "death_of_a_dream",
@@ -83198,47 +83452,19 @@
     },
     {
       "id": "2_bonus_xp",
-      "text": "Each investigator earns 2 bonus experience.",
-      "effects": [
-        {
-          "type": "earn_xp",
-          "investigator": "all",
-          "bonus": 2
-        }
-      ]
+      "text": "Each investigator earns 2 bonus experience."
     },
     {
       "id": "4_bonus_xp",
-      "text": "Each investigator earns 4 bonus experience.",
-      "effects": [
-        {
-          "type": "earn_xp",
-          "investigator": "all",
-          "bonus": 4
-        }
-      ]
+      "text": "Each investigator earns 4 bonus experience."
     },
     {
       "id": "6_bonus_xp",
-      "text": "Each investigator earns 6 bonus experience.",
-      "effects": [
-        {
-          "type": "earn_xp",
-          "investigator": "all",
-          "bonus": 6
-        }
-      ]
+      "text": "Each investigator earns 6 bonus experience."
     },
     {
       "id": "8_bonus_xp",
-      "text": "Each investigator earns 8 bonus experience.",
-      "effects": [
-        {
-          "type": "earn_xp",
-          "investigator": "all",
-          "bonus": 8
-        }
-      ]
+      "text": "Each investigator earns 8 bonus experience."
     },
     {
       "id": "alices_fate",
@@ -83667,9 +83893,7 @@
       "title": "결말 3",
       "text": "Even after brutally dispatching the shadows, the Queen's anger isn't satisfied yet.  She marches toward you with fire still burning in her eyes and the executioner's axe still in hand.  Someone is going to die for what she just went through, and you are still at the top of her list.  You look to the Knave and he looks to you, his eyes narrowing.  Is he prepared to sell you out to save his own head?  Are you prepared to do the same?  You have little time to think the dilemma over before the Queen cuts you short.",
       "steps": [
-        "decide_fate",
-        "earn_xp",
-        "resolution_6"
+        "decide_fate"
       ]
     },
     {
@@ -84773,122 +84997,242 @@
         "options": [
           {
             "numCondition": 0,
-            "steps": [
-              "shattered_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "shattered_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 1,
-            "steps": [
-              "broken_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "broken_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 2,
-            "steps": [
-              "broken_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "broken_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 3,
-            "steps": [
-              "broken_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "broken_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 4,
-            "steps": [
-              "broken_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "broken_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 5,
-            "steps": [
-              "broken_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "broken_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 6,
-            "steps": [
-              "broken_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "broken_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 7,
-            "steps": [
-              "insidious_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "insidious_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 8,
-            "steps": [
-              "insidious_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "insidious_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 9,
-            "steps": [
-              "insidious_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "insidious_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 10,
-            "steps": [
-              "insidious_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "insidious_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 11,
-            "steps": [
-              "insidious_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "insidious_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 12,
-            "steps": [
-              "insidious_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "insidious_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 13,
-            "steps": [
-              "pervasive_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "pervasive_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 14,
-            "steps": [
-              "pervasive_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "pervasive_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 15,
-            "steps": [
-              "pervasive_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "pervasive_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 16,
-            "steps": [
-              "pervasive_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "pervasive_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 17,
-            "steps": [
-              "pervasive_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "pervasive_dreams"
+                ]
+              }
             ]
           },
           {
             "numCondition": 18,
-            "steps": [
-              "pervasive_dreams"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "pervasive_dreams"
+                ]
+              }
             ]
           }
         ],
         "defaultOption": {
-          "steps": [
-            "consuming_dreams"
+          "border": true,
+          "effects": [
+            {
+              "type": "story_step",
+              "steps": [
+                "consuming_dreams"
+              ]
+            }
           ]
         }
       }
@@ -84939,44 +85283,86 @@
         "options": [
           {
             "numCondition": 0,
-            "steps": [
-              "absent_minded"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "absent_minded"
+                ]
+              }
             ]
           },
           {
             "numCondition": 1,
-            "steps": [
-              "absent_minded"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "absent_minded"
+                ]
+              }
             ]
           },
           {
             "numCondition": 2,
-            "steps": [
-              "half_a_mind"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "half_a_mind"
+                ]
+              }
             ]
           },
           {
             "numCondition": 3,
-            "steps": [
-              "half_a_mind"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "half_a_mind"
+                ]
+              }
             ]
           },
           {
             "numCondition": 4,
-            "steps": [
-              "half_a_mind"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "half_a_mind"
+                ]
+              }
             ]
           },
           {
             "numCondition": 5,
-            "steps": [
-              "presence_of_mind"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "presence_of_mind"
+                ]
+              }
             ]
           },
           {
             "numCondition": 6,
-            "steps": [
-              "presence_of_mind"
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "presence_of_mind"
+                ]
+              }
             ]
           }
         ]
@@ -85584,6 +85970,7 @@
     },
     {
       "id": "check_fragments_intuition",
+      "text": "Check Fragments of Alice. If <i>Intuition</i> is listed:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -85617,6 +86004,7 @@
     },
     {
       "id": "check_fragments_patience",
+      "text": "Check Fragments of Alice. If <i>Patience</i> is listed:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -85650,6 +86038,7 @@
     },
     {
       "id": "check_fragments_compassion",
+      "text": "Check Fragments of Alice. If <i>Compassion</i> is listed:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -85683,6 +86072,7 @@
     },
     {
       "id": "check_fragments_courage",
+      "text": "Check Fragments of Alice. If <i>Courage</i> is listed:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -85716,6 +86106,7 @@
     },
     {
       "id": "check_fragments_reason",
+      "text": "Check Fragments of Alice. If <i>Reason</i> is listed:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -85749,6 +86140,7 @@
     },
     {
       "id": "check_fragments_curiosity",
+      "text": "Check Fragments of Alice. If <i>Curiosity</i> is listed:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -85955,7 +86347,7 @@
         {
           "type": "add_card",
           "investigator": "all",
-          "card": "zaw_00369s"
+          "card": "zaw_00369"
         }
       ]
     },
@@ -86081,6 +86473,7 @@
         "2_physical_and_2_mental_trauma",
         "remove_all_wonderland_cards_and_add_tenebrous_nightmares",
         "earn_xp",
+        "$upgrade_decks",
         "survived"
       ]
     },
@@ -88439,7 +88832,7 @@
       "id": "alert",
       "type": "rule_reminder",
       "title": "경계",
-      "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
+      "text": "조사자가 경꼐 키워드가 있는 적으로부터 회피를 시도하는 도중 능력 테스트에 실패할 때마다, 우선 그 능력 테스트의 모든 결과를 적용합니다. 그 후, 그 적이 자신에게 회피를 시도했던 조사자를 상대로 공격을 수행합니다(경계 공격). 적은 경계 공격을 수행한 후에도 소진 상태가 되지 않습니다. 경계 공격은 조사자와 적이 교전하고 있는지 여부에 상관없이 발생합니다."
     },
     {
       "id": "difficulty_choice",
@@ -89171,7 +89564,7 @@
     },
     {
       "id": "all_insane",
-      "text": "모든 조사자는 미칩니다.",
+      "text": "모든 조사자는 <b>미칩니다</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -89489,7 +89882,7 @@
     },
     {
       "id": "all_insane",
-      "text": "모든 조사자는 미칩니다.",
+      "text": "모든 조사자는 <b>미칩니다</b>.",
       "effects": [
         {
           "type": "trauma",

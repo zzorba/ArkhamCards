@@ -652,7 +652,8 @@ export default class GuidedCampaignLog {
   earnedXp(code: string): number {
     const data = this.campaignData.investigatorData[code] || {};
     const lastSavedData = this.campaignData.lastSavedInvestigatorData[code] || {};
-    return (data.availableXp || 0) - (lastSavedData.availableXp || 0);
+    const earnedXp = (data.availableXp || 0) - (lastSavedData.availableXp || 0);
+    return earnedXp;
   }
 
   private baseSlots(): Slots {

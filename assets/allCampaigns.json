@@ -66340,6 +66340,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Crimson-tinted fog bathes the sky as you reach the gatehouse of Falcon Point. Atop the cliffs above you, the lighthouse beacon pierces through the mist. Considering the state of Innsmouth, you wonder what purpose the signal serves now. You doubt there are any ships out at sea given the inclement weather.\nSomewhere inside is the evidence you found weeks ago. You suspect that Oceiros—the man who captured you and left you in that pit to die—also resides within. \"Are you ready?\" Agent Harper asks. \"We have no real escape route here, should things go south. Be prepared for anything.\"\nYou nod. It's too late to turn back now. Steadily, you make your way toward the cliffs. One way or another, this ends today."
     },
@@ -66751,6 +66755,10 @@
     },
     {
       "id": "flashback_12_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.flashback_12",
+        "name": "Flashback XII"
+      },
       "title": "Flashback XII",
       "type": "story",
       "text": "You peer up at Falcon Point lighthouse, but from much further below. You are aboard Mr. Moore's fishing vessel, during your voyage to Devil Reef several weeks earlier. The ship sways back and forth as angry waves thrash against its hull. \"'Fraid it's gon' be a bit rocky,\" the ship captain shouts over the crashing of the tumultuous sea. \"Weather's been awful wild of late. Strange tides an' stranger winds.\"\nBut still you stare up at the ominous lighthouse, its beacon a guiding light, a warning sign, or both. Curious what knowledge he might have, you ask Mr. Moore about the lighthouse. \"That ol' thing? Been there longer'n Innsmouth itself. Marsh family's kept it runnin' as long as I remember. Oceiros is keeper now. Strange fella, that Oceiros. They say the only place in town he visits is the Order o' Dagon hall by New Church Green.\" He shakes his head.\nYou wonder if there are more secrets inside the lighthouse than meets the eye. Mr. Moore seems to note your curiosity. \"I've heard them Marshes've carved out caverns beneath the lighthouse goin' all the way down to sea level an' beyond,\" he claims. \"Dunno if that's true, but sometimes when I'm out at sea I've seen groups of 'em up by the cliffside, all wavin' an kneelin' like they're prayin' or something. Never really paid it much mind, but…\" his voice grows quieter. \"Jus' thought you oughta know.\"\nYou nod and thank him. If what he's saying is true, perhaps you should give this lighthouse a visit. You make a mental note to research more about Falcon Point once you return to town.\nWhen your mind snaps back to the present, you recall the legwork you'd done after your expedition to Devil Reef, and the information you found on the vast network of tunnels beneath the lighthouse…"
@@ -66870,6 +66878,10 @@
 
     {
       "id": "flashback_13_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.flashback_13",
+        "name": "Flashback XIII"
+      },
       "title": "Flashback XIII",
       "type": "story",
       "text": "You speak with one of the many sailors who frequent a ramshackle tavern by the docks of Innsmouth, somewhere in the southeastern slums of the decrepit seaport. He's found his own little corner of the pub in which to hide and drown himself in alcohol. So much the better—you'd prefer to keep your investigation quiet.\nYou jot down notes as the drunken man rambles on about the creatures he's seen swimming off the coast and prowling around the reefs. \"Deep Ones,\" he names them. \"Caught one in my net once,\" he blabbers through slurred speach. \"She an' her eggs—tha's right!—'er eggs, bigger'n your fist, an' squirmin' an' wrigglin', too!\"\nAbsorbed in the ritual of telling a tale for his fellow sailors, he elaborates: \"She had one of 'em in her arms. Tiny little devil, with bulgin', hateful eyes. Couldn't stand the sight of it. I threw the net o'er as soon as I realized what I'd caught, an' came right back 'ere. If I had my way I'd never sail 'gain.\"\nYou mull this new information over in your head. If this man speaks the truth, these creatures seem to have a lifecycle similar to that of a fish. But then, what is the purpose of the uncanny hybrid creatures you have seen skulking about the town? Are they but figments of your frightened imagination? Or is there a much more sinister part of this lifecycle that you are missing?"
@@ -67280,6 +67292,10 @@
   "resolutions": [
     {
       "id": "no_resolution_defeated",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No resolution was reached\n(each investigator was defeated)",
       "investigator_status": [
         "eliminated",
@@ -67290,6 +67306,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.resolution_1",
+        "name": "Resolution 1"
+      },
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -67304,6 +67324,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.resolution_2",
+        "name": "Resolution 2"
+      },
       "investigator_status": [
         "alive",
         "resigned",
@@ -67319,6 +67343,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.resolution_3",
+        "name": "Resolution 3"
+      },
       "investigator_status": [
         "alive",
         "resigned",
@@ -67332,6 +67360,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.a_light_in_the_fog.resolution_4",
+        "name": "Resolution 4"
+      },
       "investigator_status": [
         "alive",
         "resigned",
@@ -75231,12 +75263,13 @@
   "full_name": "Epilogue",
   "header": "",
   "type": "epilogue",
-  "icon": "",
+  "icon": "alice_in_arkham",
   "setup": [
     "intro",
     "check_strength_of_wonderland",
     "alices_fate",
     "earn_alice",
+    "$upgrade_decks",
     "credits",
     "design_notes"
   ],
@@ -75246,7 +75279,6 @@
       "type": "story",
       "text": "You scour the newspapers in the days you are confined to the hospital bed for recovery.  Throughout all of them, you can't find any mention of the catastrophic events that nearly consumed Arkham.  You had hoped to preserve the city as much as possible, but it's almost insulting how little remains to prove your mission's success.  The possibility of it all being an invention of your own mind occurs, but you have no time to consider before the nurse returns to your bedside.  \"Excuse me, but if you're feeling well enough, a visitor is here to see you.\"  You sit up in bed with a surge of excitement as Alice enters your room with a small smile.  You both wait for the nurse to give you some privacy before she clasps your hand tightly.\n\"You've done it!\" Alice breathes, trying not to shout with joy.  The relief on her face is plain to see, and she looks far better than she did when you first saw her on the train and in the aslyum.  \"I truly can't thank you enough, especially as the evidence of all your struggles has all been returned to Wonderland.  You've done me - and the world at large - an incredible service.\"  You assure Alice that most of your adventures seem to escape the public's eye, but you would have done it all again in spite of the risks.  Alice settles down onto your bedside, and for a brief moment, her smile dips with sadness.  You ask Alice how she's been holding up amid all this, as the key piece of Gurathnaka's plot.\n\"I don't quite know yet,\" she replies with a far-off look in her eye, \"I may never be the same again after all that happened, and this may not yet be the end.  I know that the shadows aren't gone for good.  I can still feel them grasping at the edges of my dreams.\"  Alice looks back to you gratefully and her smile returns.  \"But for the first time in over a decade, I can sleep without fear.  Both for myself and for the world around me.\"  You think back on your journey through Wonderland, and you ask Alice about what has befallen her strange dreams."
     },
-
     {
       "id": "check_strength_of_wonderland",
       "type": "branch",
@@ -75257,85 +75289,266 @@
         "options": [
           {
             "numCondition": 0,
-            "steps": ["death_of_a_dream"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["death_of_a_dream"]
+            }]
           },
           {
             "numCondition": 1,
-            "steps": ["scattered_thoughts", "2_bonus_xp"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["scattered_thoughts", "2_bonus_xp"]
+              }
+            ],
+            "steps": ["award_2_bonus_xp"]
           },
           {
             "numCondition": 2,
-            "steps": ["scattered_thoughts", "2_bonus_xp"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["scattered_thoughts", "2_bonus_xp"]
+              }
+            ],
+            "steps": ["award_2_bonus_xp"]
           },
           {
             "numCondition": 3,
-            "steps": ["scattered_thoughts", "2_bonus_xp"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["scattered_thoughts", "2_bonus_xp"]
+              }
+            ],
+            "steps": ["award_2_bonus_xp"]
           },
           {
             "numCondition": 4,
-            "steps": ["scattered_thoughts", "2_bonus_xp"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["scattered_thoughts", "2_bonus_xp"]
+              }
+            ],
+            "steps": ["award_2_bonus_xp"]
           },
           {
             "numCondition": 5,
-            "steps": ["scattered_thoughts", "2_bonus_xp"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["scattered_thoughts", "2_bonus_xp"]
+              }
+            ],
+            "steps": ["award_2_bonus_xp"]
           },
           {
             "numCondition": 6,
-            "steps": ["scattered_thoughts", "2_bonus_xp"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["scattered_thoughts", "2_bonus_xp"]
+              }
+            ],
+            "steps": ["award_2_bonus_xp"]
           },
           {
             "numCondition": 7,
-            "steps": ["half_formed_visions", "4_bonus_xp"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["half_formed_visions", "4_bonus_xp"]
+              }
+            ],
+            "steps": ["award_4_bonus_xp"]
           },
           {
             "numCondition": 8,
-            "steps": ["half_formed_visions", "4_bonus_xp"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["half_formed_visions", "4_bonus_xp"]
+              }
+            ],
+            "steps": ["award_4_bonus_xp"]
           },
           {
             "numCondition": 9,
-            "steps": ["half_formed_visions", "4_bonus_xp"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["half_formed_visions", "4_bonus_xp"]
+              }
+            ],
+            "steps": ["award_4_bonus_xp"]
           },
           {
             "numCondition": 10,
-            "steps": ["half_formed_visions", "4_bonus_xp"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["half_formed_visions", "4_bonus_xp"]
+              }
+            ],
+            "steps": ["award_4_bonus_xp"]
           },
           {
             "numCondition": 11,
-            "steps": ["half_formed_visions", "4_bonus_xp"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["half_formed_visions", "4_bonus_xp"]
+              }
+            ],
+            "steps": ["award_4_bonus_xp"]
           },
           {
             "numCondition": 12,
-            "steps": ["half_formed_visions", "4_bonus_xp"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["half_formed_visions", "4_bonus_xp"]
+              }
+            ],
+            "steps": ["award_4_bonus_xp"]
           },
           {
             "numCondition": 13,
-            "steps": ["dreams_made_real", "6_bonus_xp"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["dreams_made_real", "6_bonus_xp"]
+              }
+            ],
+            "steps": ["award_6_bonus_xp"]
           },
           {
             "numCondition": 14,
-            "steps": ["dreams_made_real", "6_bonus_xp"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["dreams_made_real", "6_bonus_xp"]
+              }
+            ],
+            "steps": ["award_6_bonus_xp"]
           },
           {
             "numCondition": 15,
-            "steps": ["dreams_made_real", "6_bonus_xp"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["dreams_made_real", "6_bonus_xp"]
+              }
+            ],
+            "steps": ["award_6_bonus_xp"]
           },
           {
             "numCondition": 16,
-            "steps": ["dreams_made_real", "6_bonus_xp"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["dreams_made_real", "6_bonus_xp"]
+              }
+            ],
+            "steps": ["award_6_bonus_xp"]
           },
           {
             "numCondition": 17,
-            "steps": ["dreams_made_real", "6_bonus_xp"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["dreams_made_real", "6_bonus_xp"]
+              }
+            ],
+            "steps": ["award_6_bonus_xp"]
           },
           {
             "numCondition": 18,
-            "steps": ["dreams_made_real", "6_bonus_xp"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["dreams_made_real", "6_bonus_xp"]
+              }
+            ],
+            "steps": ["award_6_bonus_xp"]
           }
         ],
         "defaultOption": {
-          "steps": ["wonders_never_cease", "8_bonus_xp"]
+          "border": true,
+          "effects": [
+            {
+              "type": "story_step",
+              "steps": ["wonders_never_cease", "8_bonus_xp"]
+            }
+          ],
+          "steps": ["award_8_bonus_xp"]
         }
       }
+    },
+    {
+      "id": "award_2_bonus_xp",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 2
+        }
+      ]
+    },
+    {
+      "id": "award_4_bonus_xp",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 4
+        }
+      ]
+    },
+    {
+      "id": "award_6_bonus_xp",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 6
+        }
+      ]
+    },
+    {
+      "id": "award_8_bonus_xp",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 8
+        }
+      ]
     },
     {
       "id": "death_of_a_dream",
@@ -75370,47 +75583,19 @@
     },
     {
       "id": "2_bonus_xp",
-      "text": "Each investigator earns 2 bonus experience.",
-      "effects": [
-        {
-          "type": "earn_xp",
-          "investigator": "all",
-          "bonus": 2
-        }
-      ]
+      "text": "Each investigator earns 2 bonus experience."
     },
     {
       "id": "4_bonus_xp",
-      "text": "Each investigator earns 4 bonus experience.",
-      "effects": [
-        {
-          "type": "earn_xp",
-          "investigator": "all",
-          "bonus": 4
-        }
-      ]
+      "text": "Each investigator earns 4 bonus experience."
     },
     {
       "id": "6_bonus_xp",
-      "text": "Each investigator earns 6 bonus experience.",
-      "effects": [
-        {
-          "type": "earn_xp",
-          "investigator": "all",
-          "bonus": 6
-        }
-      ]
+      "text": "Each investigator earns 6 bonus experience."
     },
     {
       "id": "8_bonus_xp",
-      "text": "Each investigator earns 8 bonus experience.",
-      "effects": [
-        {
-          "type": "earn_xp",
-          "investigator": "all",
-          "bonus": 8
-        }
-      ]
+      "text": "Each investigator earns 8 bonus experience."
     },
     {
       "id": "alices_fate",
@@ -75813,7 +75998,7 @@
       "id": "R3",
       "title": "Resolution 3",
       "text": "Even after brutally dispatching the shadows, the Queen's anger isn't satisfied yet.  She marches toward you with fire still burning in her eyes and the executioner's axe still in hand.  Someone is going to die for what she just went through, and you are still at the top of her list.  You look to the Knave and he looks to you, his eyes narrowing.  Is he prepared to sell you out to save his own head?  Are you prepared to do the same?  You have little time to think the dilemma over before the Queen cuts you short.",
-      "steps": ["decide_fate", "earn_xp", "resolution_6"]
+      "steps": ["decide_fate"]
     },
     {
       "id": "R4",
@@ -76801,83 +76986,163 @@
         "options": [
           {
             "numCondition": 0,
-            "steps": ["shattered_dreams"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["shattered_dreams"]
+            }]
           },
           {
             "numCondition": 1,
-            "steps": ["broken_dreams"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["broken_dreams"]
+            }]
           },
           {
             "numCondition": 2,
-            "steps": ["broken_dreams"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["broken_dreams"]
+            }]
           },
           {
             "numCondition": 3,
-            "steps": ["broken_dreams"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["broken_dreams"]
+            }]
           },
           {
             "numCondition": 4,
-            "steps": ["broken_dreams"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["broken_dreams"]
+            }]
           },
           {
             "numCondition": 5,
-            "steps": ["broken_dreams"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["broken_dreams"]
+            }]
           },
           {
             "numCondition": 6,
-            "steps": ["broken_dreams"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["broken_dreams"]
+            }]
           },
           {
             "numCondition": 7,
-            "steps": ["insidious_dreams"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["insidious_dreams"]
+            }]
           },
           {
             "numCondition": 8,
-            "steps": ["insidious_dreams"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["insidious_dreams"]
+            }]
           },
           {
             "numCondition": 9,
-            "steps": ["insidious_dreams"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["insidious_dreams"]
+            }]
           },
           {
             "numCondition": 10,
-            "steps": ["insidious_dreams"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["insidious_dreams"]
+            }]
           },
           {
             "numCondition": 11,
-            "steps": ["insidious_dreams"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["insidious_dreams"]
+            }]
           },
           {
             "numCondition": 12,
-            "steps": ["insidious_dreams"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["insidious_dreams"]
+            }]
           },
           {
             "numCondition": 13,
-            "steps": ["pervasive_dreams"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["pervasive_dreams"]
+            }]
           },
           {
             "numCondition": 14,
-            "steps": ["pervasive_dreams"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["pervasive_dreams"]
+            }]
           },
           {
             "numCondition": 15,
-            "steps": ["pervasive_dreams"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["pervasive_dreams"]
+            }]
           },
           {
             "numCondition": 16,
-            "steps": ["pervasive_dreams"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["pervasive_dreams"]
+            }]
           },
           {
             "numCondition": 17,
-            "steps": ["pervasive_dreams"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["pervasive_dreams"]
+            }]
           },
           {
             "numCondition": 18,
-            "steps": ["pervasive_dreams"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["pervasive_dreams"]
+            }]
           }
         ],
         "defaultOption": {
-          "steps": ["consuming_dreams"]
+          "border": true,
+          "effects": [{
+            "type": "story_step",
+            "steps": ["consuming_dreams"]
+          }]
         }
       }
     },
@@ -76927,31 +77192,59 @@
         "options": [
           {
             "numCondition": 0,
-            "steps": ["absent_minded"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["absent_minded"]
+            }]
           },
           {
             "numCondition": 1,
-            "steps": ["absent_minded"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["absent_minded"]
+            }]
           },
           {
             "numCondition": 2,
-            "steps": ["half_a_mind"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["half_a_mind"]
+            }]
           },
           {
             "numCondition": 3,
-            "steps": ["half_a_mind"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["half_a_mind"]
+            }]
           },
           {
             "numCondition": 4,
-            "steps": ["half_a_mind"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["half_a_mind"]
+            }]
           },
           {
             "numCondition": 5,
-            "steps": ["presence_of_mind"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["presence_of_mind"]
+            }]
           },
           {
             "numCondition": 6,
-            "steps": ["presence_of_mind"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["presence_of_mind"]
+            }]
           }
         ]
       }
@@ -77474,6 +77767,7 @@
     },
     {
       "id": "check_fragments_intuition",
+      "text": "Check Fragments of Alice. If <i>Intuition</i> is listed:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -77503,6 +77797,7 @@
     },
     {
       "id": "check_fragments_patience",
+      "text": "Check Fragments of Alice. If <i>Patience</i> is listed:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -77532,6 +77827,7 @@
     },
     {
       "id": "check_fragments_compassion",
+      "text": "Check Fragments of Alice. If <i>Compassion</i> is listed:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -77561,6 +77857,7 @@
     },
     {
       "id": "check_fragments_courage",
+      "text": "Check Fragments of Alice. If <i>Courage</i> is listed:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -77590,6 +77887,7 @@
     },
     {
       "id": "check_fragments_reason",
+      "text": "Check Fragments of Alice. If <i>Reason</i> is listed:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -77619,6 +77917,7 @@
     },
     {
       "id": "check_fragments_curiosity",
+      "text": "Check Fragments of Alice. If <i>Curiosity</i> is listed:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -77813,7 +78112,7 @@
         {
           "type": "add_card",
           "investigator": "all",
-          "card": "zaw_00369s"
+          "card": "zaw_00369"
         }
       ]
     },
@@ -77929,7 +78228,7 @@
         "mental"
       ],
       "text": "Alice collapses to the cobblestone streets without hardly any sound.  For an instant, time suspends, and a piercing cry from Gurathnaka rattles your very soul.  All at once, the world around you explodes into chaos, and you anchor yourself with whatever you can grab.  Your eyes squeeze shut and you yell in exertion and panic, until-\nYour eyes open to a plaster roof lit by dim electric bulbs.  The scent of disinfectant lingers in the air, mixed with various unidentifiable chemicals.  Your head thrums and your entire body aches as you gather your bearings.  It soon becomes clear that you are lying in one of the many beds of St. Mary's Hospital, with bandages and casts wrapped tightly in place.  You lie in a daze until a nurse approaches you with a relaxed manner.  \"You're lucky to be alive!\" she encourages, inspecting some of your more superficial wounds, \"You must have been hit by a car or something even larger!\"  Questions flow out of your mouth, and the nurse responds without the least bit of concern.  She, and the rest of Arkham, doesn't recall anything about shadows or the upheaval of reality that you experienced.  By her account, you were discovered last night on the north end of the city and brought to the hospital for treatment.\nDays pass until you are considered fit enough to leave the hospital of your own accord, and in that time, your dreams are plagued by visions of the shadows you fought.  Once cleared, you head directly toward Arkham Asylum and inquire frantically at the front desk about Alice's well-being.  The receptionist shakes his head and gives a resigned sigh.  \"You hadn't heard?  Miss Liddell passed away last week from complications of an epileptic fit.  Quite sad, but there wasn't much that could be done for the poor woman.\"",
-      "steps": ["alice_perished_and_wonderland_has_been_lost_forever", "gurathnaka_and_its_shadows_were_banished_from_arkham", "2_physical_and_2_mental_trauma", "remove_all_wonderland_cards_and_add_tenebrous_nightmares", "earn_xp", "survived"]
+      "steps": ["alice_perished_and_wonderland_has_been_lost_forever", "gurathnaka_and_its_shadows_were_banished_from_arkham", "2_physical_and_2_mental_trauma", "remove_all_wonderland_cards_and_add_tenebrous_nightmares", "earn_xp", "$upgrade_decks", "survived"]
     },
     {
       "id": "R3",
