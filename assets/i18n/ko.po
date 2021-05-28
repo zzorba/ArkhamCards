@@ -2874,7 +2874,7 @@ msgid "Cache cleared"
 msgstr "캐시 초기화"
 
 msgid "Rules"
-msgstr "규칙(영문)"
+msgstr "규칙(참조 안내서)"
 
 msgid "Encounter Card Errata"
 msgstr "조우 카드 정오표"
@@ -3482,7 +3482,7 @@ msgid "Select Parallel Investigator"
 msgstr "평행 조사자 선택"
 
 msgid "Upgrade experience"
-msgstr ""
+msgstr "최근 향상 경험치"
 
 msgid "Upgrading deck"
 msgstr "덱 향상 중"
@@ -3942,11 +3942,11 @@ msgid "Remove all bless & curse tokens"
 msgstr "모든 축복과 저주 토큰 제거하기"
 
 msgid "do not remove"
-msgstr ""
+msgstr "제거하지 마세요"
 
 #, javascript-format
 msgid "Return, but ${ doNotRemove } Bless/Curse"
-msgstr ""
+msgstr "되돌리기만 하고 축복/저주는 ${ doNotRemove })"
 
 msgid "View chaos bag"
 msgstr "혼돈 주머니 보기"
@@ -4124,7 +4124,7 @@ msgid "${ tokens[0] } and ${ tokens[1] }"
 msgstr "${ tokens[0] } 토큰과 ${ tokens[1] } 토큰"
 
 msgid "Dark Matter"
-msgstr ""
+msgstr "암흑 물질"
 
 msgid "Impending Doom"
 msgstr ""
@@ -4195,7 +4195,7 @@ msgstr ""
 "커스텀 캠페인은 상당한 양의 작업이지만 어쨌든 가능한 커뮤니티를 지원하고 싶습니다."
 
 msgid "Alice in Wonderland"
-msgstr ""
+msgstr "이상한 나라의 앨리스"
 
 msgid "Fragments of Alilce"
 msgstr ""
@@ -4210,10 +4210,10 @@ msgid "Strength of Wonderland"
 msgstr ""
 
 msgid "Fan-made campaign by Axolotl"
-msgstr ""
+msgstr "팬메이드 캠페인 (제작자: Axolotl)"
 
 msgid "Fan-made campiagn by The Beard"
-msgstr ""
+msgstr "팬메이드 캠페인 (제작자: Beard)"
 
 #, javascript-format
 msgctxt "masculine"
