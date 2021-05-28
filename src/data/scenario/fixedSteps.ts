@@ -99,6 +99,18 @@ const chooseInvestigatorsStep: InputStep = {
   type: 'input',
   input: {
     type: 'scenario_investigators',
+    lead_investigator_effects: [
+      {
+        type: 'scenario_data',
+        setting: 'lead_investigator',
+        investigator: '$input_value',
+      },
+      {
+        type: 'scenario_data',
+        setting: 'scenario_status',
+        status: 'started',
+      },
+    ],
   },
 };
 
@@ -234,7 +246,7 @@ function editCampaignLogStep(): InputStep {
   };
 }
 
-const LEAD_INVESTIGATOR_STEP_ID = '$lead_investigator';
+export const LEAD_INVESTIGATOR_STEP_ID = '$lead_investigator';
 function leadInvestigatorStep(): InputStep {
   return {
     id: LEAD_INVESTIGATOR_STEP_ID,

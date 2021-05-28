@@ -727,6 +727,7 @@ export interface InvestigatorChoiceWithSuppliesInput {
 export interface ScenarioInvestigatorsInput {
   type: "scenario_investigators";
   choose_none_steps?: string[];
+  lead_investigator_effects?: Effect[];
 }
 export interface PlayScenarioInput {
   type: "play_scenario";
