@@ -76812,6 +76812,7 @@
     },
     {
       "id": "check_keeper_of_the_gate_defeated",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -76845,6 +76846,7 @@
     },
     {
       "id": "check_gate_rightful_guardian",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "campaign_log",
