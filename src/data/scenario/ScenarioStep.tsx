@@ -976,7 +976,7 @@ export default class ScenarioStep {
                 hidden: true,
               });
             }
-            forEach(omit(choices, ['insane', 'killed', 'count', 'physical', 'mental', 'xp']), (count, exile_code) => {
+            forEach(omit(choices, ['insane', 'killed', 'count', 'physical', 'mental', 'xp', 'deckId']), (count, exile_code) => {
               if (count.length) {
                 for (let i = 0; i < count[0]; i++) {
                   effects.push({

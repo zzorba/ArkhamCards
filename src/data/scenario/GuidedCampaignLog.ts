@@ -635,7 +635,7 @@ export default class GuidedCampaignLog {
       case 'choice':
       case '$fixed_investigator':
         // These are rewritten in ScenarioStep
-        throw new Error('should not happen');
+        throw new Error(`should not happen: ${investigator}`);
     }
   }
 
@@ -1015,13 +1015,12 @@ export default class GuidedCampaignLog {
         const countEffect: CampaignLogInvestigatorCountEffect = {
           type: 'campaign_log_investigator_count',
           section: effect.section,
-          investigator: '$fixed_investigator',
-          fixed_investigator: investigator,
+          investigator: '$input_value',
           operation: 'add',
           id: supply.id,
           value: 1,
         };
-        this.handleCampaignLogInvestigatorCountEffect(countEffect);
+        this.handleCampaignLogInvestigatorCountEffect(countEffect, [investigator]);
       });
     });
   }

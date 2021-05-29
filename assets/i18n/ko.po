@@ -10,7 +10,7 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: 엘케인, 푸른이\n"
 "Language-Team: \n"
-"x-generator: Poedit 2.4.2\n"
+"x-generator: Poedit 2.4.3\n"
 
 #, javascript-format
 msgid "${ action.name } (Campaign A)"
@@ -3927,7 +3927,6 @@ msgstr "시나리오 이름"
 msgid "${ unspentXp } XP unspent"
 msgid_plural "${ unspentXp } XP unspent"
 msgstr[0] "${ unspentXp } 경험치 남음"
-msgstr[1] "${ unspentXp } 경험치 남음"
 
 msgid "Tap to draw"
 msgstr "탭하여 뽑기"
@@ -3952,7 +3951,7 @@ msgstr "제거하지 마세요"
 
 #, javascript-format
 msgid "Return, but ${ doNotRemove } Bless/Curse"
-msgstr "되돌리기만 하고 축복/저주는 ${ doNotRemove })"
+msgstr "되돌리기만 하고 축복/저주는 ${ doNotRemove }"
 
 msgid "View chaos bag"
 msgstr "혼돈 주머니 보기"
