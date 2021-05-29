@@ -68946,7 +68946,7 @@
           "text": "Place 24 barriers (using resource tokens) between these locations, as shown."
         },
         {
-          "text": "Each investigation begins play at the Desolate Coastline."
+          "text": "Each investigator begins play at the Desolate Coastline."
         }
       ]
     },
@@ -83393,6 +83393,18 @@
       }
     },
     {
+      "id": "add_impending_doom",
+      "text": "Add 1 tally mark under \"Impending Doom\" in your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_count",
+          "section": "impending_doom",
+          "operation": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
       "id": "$play_scenario",
       "type": "input",
       "input": {
@@ -83403,6 +83415,12 @@
             "repeatable": true,
             "text": "Adjust \"Memories\"",
             "steps": ["adjust_memories"]
+          },
+          {
+            "id": "mark_impending_doom",
+            "repeatable": true,
+            "text": "Mark 1 \"Impending Doom\"",
+            "steps": ["add_1_impending_doom"]
           }
         ],
         "campaign_log": [
@@ -84363,6 +84381,40 @@
           {
             "boolCondition": false,
             "steps": ["lose_campaign"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "adjust_memories",
+      "type": "input",
+      "text": "Add or remove \"Memories\":",
+      "input": {
+        "type": "investigator_counter",
+        "text": "Memories",
+        "investigator_count_min": "memories",
+        "effects": [
+          {
+            "type": "campaign_log_investigator_count",
+            "section": "memories",
+            "id": "$count",
+            "investigator": "$input_value",
+            "operation": "add_input"
+          }
+        ]
+      }
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "adjust_memories",
+            "repeatable": true,
+            "text": "Adjust \"Memories\"",
+            "steps": ["adjust_memories"]
           }
         ]
       }
