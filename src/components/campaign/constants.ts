@@ -299,6 +299,7 @@ export function campaignNames() {
     tcu: t`The Circle Undone`,
     tic: t`The Innsmouth Conspiracy`,
     zdm: t`Dark Matter`,
+    zaw: t`Alice in Wonderland`,
     standalone: t`Standalone`,
   };
 }
