@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: 앨케인, 푸른이\n"
+"Last-Translator: 엘케인, 푸른이\n"
 "Language-Team: \n"
 "x-generator: Poedit 2.4.2\n"
 
@@ -1450,11 +1450,11 @@ msgstr "${ supplyName } 사용 (${ desiredCount })"
 #, javascript-format
 msgid "(${ supply.cost } supply point each)"
 msgid_plural "(${ supply.cost } supply points each)"
-msgstr[0] "(개당 ${ supply.cost } 보급 점수)"
+msgstr[0] "(개당 ${ supply.cost } 물자 점수)"
 
 msgid "(${ supply.cost } supply point)"
 msgid_plural "(${ supply.cost } supply points)"
-msgstr[0] "(${ supply.cost } 보급 점수)"
+msgstr[0] "(${ supply.cost } 물자 점수)"
 
 #, javascript-format
 msgid "${ spent } of ${ total }"
@@ -1684,7 +1684,7 @@ msgid_plural ""
 "Since ${ list } all have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
-"${ list } 조사자는 ${ supplyName } 보급품을 가지고 있으므로, 해당 조사자는 <b>${ sectionName "
+"${ list } 조사자는 ${ supplyName } 탐험 물자를 가지고 있으므로, 해당 조사자는 <b>${ sectionName "
 "}</b> 항목을 읽어야만 합니다."
 
 #, javascript-format
@@ -1695,7 +1695,7 @@ msgid_plural ""
 "Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
-"${ list } 조사자가 ${ supplyName } 보급품을 가지고 있지 않으므로, 해당 조사자는<b>${ sectionName "
+"${ list } 조사자가 ${ supplyName } 탐험 물자를 가지고 있지 않으므로, 해당 조사자는<b>${ sectionName "
 "}</b> 항목을 읽어야만 합니다."
 
 #, javascript-format
