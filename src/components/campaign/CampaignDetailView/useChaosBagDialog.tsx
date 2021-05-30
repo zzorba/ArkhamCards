@@ -25,7 +25,7 @@ interface Props {
   scenarioId: string | undefined;
   chaosBag: ChaosBag;
   guided?: boolean;
-  setChaosBag: SetCampaignChaosBagAction;
+  setChaosBag?: SetCampaignChaosBagAction;
 }
 
 export function useSimpleChaosBagDialog(chaosBag: ChaosBag): [React.ReactNode, () => void] {
@@ -79,7 +79,9 @@ export default function useChaosBagDialog({
   }, [campaignId, componentId, guided, chaosBag, allInvestigators, scenarioId]);
   const dispatch = useDispatch();
   const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
-    dispatch(updateCampaignChaosBag(setChaosBag, campaignId, chaosBag));
+    if (setChaosBag) {
+      dispatch(updateCampaignChaosBag(setChaosBag, campaignId, chaosBag));
+    }
   }, [dispatch, setChaosBag, campaignId]);
 
   const editChaosBagDialog = useCallback(() => {
@@ -89,7 +91,7 @@ export default function useChaosBagDialog({
         name: 'Dialog.EditChaosBag',
         passProps: {
           chaosBag,
-          updateChaosBag: updateChaosBag,
+          updateChaosBag,
           trackDeltas: true,
         },
         options: {
@@ -107,7 +109,7 @@ export default function useChaosBagDialog({
   }, [componentId, chaosBag, updateChaosBag]);
   const customButtons = useMemo(() => {
     const result: React.ReactNode[] = [];
-    if (!guided) {
+    if (!guided && setChaosBag) {
       result.push(
         <DeckButton
           key="edit"

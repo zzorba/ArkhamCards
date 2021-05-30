@@ -47,7 +47,7 @@ function checkInvestigatorDefeatStep(resolutions: Resolution[]): BranchStep {
   };
 }
 
-const CHOOSE_RESOLUTION_STEP_ID = '$choose_resolution';
+export const CHOOSE_RESOLUTION_STEP_ID = '$choose_resolution';
 function chooseResolutionStep(resolutions: Resolution[]): InputStep {
   const hasInvestigatorDefeat = !!find(
     resolutions,

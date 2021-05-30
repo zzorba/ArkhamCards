@@ -1,32 +1,27 @@
 import React, { useCallback } from 'react';
 
-import BasicButton from '@components/core/BasicButton';
 import { BinaryConditionalChoice } from '@data/scenario/types';
-import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import { calculateBinaryConditionResult } from '@data/scenario/inputHelper';
+import DeckButton from '@components/deck/controls/DeckButton';
+import { s } from '@styles/space';
 
 interface Props {
   index: number;
+  icon: string;
   choice: BinaryConditionalChoice;
-  campaignLog: GuidedCampaignLog;
   onPress: (index: number) => void;
 }
 
-export default function BranchButton({ index, choice, campaignLog, onPress }: Props) {
+export default function BranchButton({ index, choice, icon, onPress }: Props) {
   const handleOnPress = useCallback(() => {
     onPress(index);
   }, [index, onPress]);
-
-  if (choice.condition) {
-    const result = calculateBinaryConditionResult(choice.condition, campaignLog);
-    if (!result.option) {
-      return null;
-    }
-  }
   return (
-    <BasicButton
+    <DeckButton
+      color="dark_gray"
       title={choice.text}
+      encounterIcon={icon}
       onPress={handleOnPress}
+      bottomMargin={s}
     />
   );
 }

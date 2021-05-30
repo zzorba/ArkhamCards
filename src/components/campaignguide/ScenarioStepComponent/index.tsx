@@ -14,6 +14,7 @@ import TableStepComponent from './TableStepComponent';
 import EffectsStepComponent from './EffectsStepComponent';
 import ResolutionStepComponent from './ResolutionStepComponent';
 import CampaignGuideContext from '../CampaignGuideContext';
+import { CHOOSE_RESOLUTION_STEP_ID } from '@data/scenario/fixedSteps';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 import XpCountComponent from './XpCountComponent';
 import BranchStepComponent from './BranchStepComponent';
@@ -27,6 +28,7 @@ import ScenarioStep from '@data/scenario/ScenarioStep';
 import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import NarrationStepComponent from './NarrationStepComponent';
+import ScenarioGuideContext from '../ScenarioGuideContext';
 
 interface Props {
   componentId: string;
@@ -138,6 +140,8 @@ export default function ScenarioStepComponent({
 }: Props) {
   const { typography, colors } = useContext(StyleContext);
   const { campaignInvestigators } = useContext(CampaignGuideContext);
+  const { processedScenario } = useContext(ScenarioGuideContext);
+
   const context: ScenarioStepContextType = useMemo(() => {
     const safeCodes = new Set(step.campaignLog.investigatorCodesSafe());
     const investigators = filter(
@@ -149,6 +153,7 @@ export default function ScenarioStepComponent({
       scenarioInvestigators: investigators,
     };
   }, [step.campaignLog, campaignInvestigators]);
+  const resolution = step.step.id === CHOOSE_RESOLUTION_STEP_ID || context.campaignLog.scenarioStatus(processedScenario.id.encodedScenarioId) === 'resolution';
   const proceed = useCallback(() => {
     Navigation.pop(componentId);
   }, [componentId]);
@@ -159,7 +164,7 @@ export default function ScenarioStepComponent({
         <View style={styles.titleWrapper}>
           <Text style={[
             typography.bigGameFont,
-            { color: colors.campaign.setup },
+            { color: resolution ? colors.campaign.resolution : colors.campaign.setup },
             space.paddingTopL,
             border ? typography.center : {},
           ]}>

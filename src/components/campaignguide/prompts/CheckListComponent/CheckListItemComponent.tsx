@@ -58,7 +58,7 @@ function InvesigatorCheckListItemComponent({
   const content = useMemo(() => {
     return (
       <CompactInvestigatorRow
-        width={width - (editable ? s * 4 : 2)}
+        width={width - s * (editable ? 4 : 2)}
         leftContent={editable && (
           <View style={styles.switch}>
             <ArkhamSwitch

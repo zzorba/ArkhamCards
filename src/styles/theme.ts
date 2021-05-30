@@ -70,6 +70,7 @@ export interface ThemeColors {
   campaign:{
     setup: string;
     resolution: string;
+    resolutionBackground: string;
     gold: string;
     blue: string;
     teal: string;
@@ -234,6 +235,7 @@ export const LIGHT_THEME: ThemeColors = {
   campaign: {
     setup: '#128C60',
     resolution: '#E75122',
+    resolutionBackground: '#E7512233',
     gold: '#c99b3833',
     blue: '#00408033',
     teal: '#00666633',
@@ -376,6 +378,7 @@ export const DARK_THEME: ThemeColors = {
   campaign: {
     setup: '#07AF73',
     resolution: '#F04932',
+    resolutionBackground: '#F0493233',
     gold: '#755a2088',
     blue: '#395c8088',
     teal: '#2a666688',
