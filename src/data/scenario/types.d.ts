@@ -946,6 +946,7 @@ export interface ChallengeData {
 export interface Resolution {
   id: string;
   title: string;
+  description?: string;
   text?: string;
   investigator_status?: InvestigatorStatus[];
   steps: string[];

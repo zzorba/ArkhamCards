@@ -659,6 +659,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -1202,6 +1203,7 @@
     {
       "id": "no_resolution",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -1517,6 +1519,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -1848,6 +1851,7 @@
     {
       "id": "no_resolution",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -2545,6 +2549,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局\n(所有調查員都在場景3前投降，或被消滅)",
+      "description": "Each investigator resigned before Act 3 or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -2907,6 +2912,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -3295,6 +3301,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -3792,6 +3799,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -4645,6 +4653,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -5071,6 +5080,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -5337,6 +5347,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "physical",
@@ -6588,6 +6599,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -7306,6 +7318,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -7685,6 +7698,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -8482,6 +8496,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -9084,6 +9099,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -11150,6 +11166,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -11980,6 +11997,7 @@
     {
       "id": "no_resolution",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -12937,6 +12955,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -13378,6 +13397,7 @@
     {
       "id": "no_resolution",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -13717,6 +13737,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -14082,6 +14103,7 @@
     {
       "id": "no_resolution",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -14416,6 +14438,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局\n(所有調查員都在場景3前投降，或被消滅)",
+      "description": "Each investigator resigned before Act 3 or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -14787,6 +14810,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -15187,6 +15211,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -15690,6 +15715,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -16763,6 +16789,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -17086,6 +17113,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "physical",
@@ -17773,6 +17801,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -19758,6 +19787,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -20493,6 +20523,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -20925,6 +20956,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -21733,6 +21765,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -22346,6 +22379,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -23796,6 +23830,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -24674,6 +24709,7 @@
     {
       "id": "no_resolution",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -26916,6 +26952,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -27291,6 +27328,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -27788,6 +27826,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -28653,6 +28692,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -29155,6 +29195,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -30498,6 +30539,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -31092,6 +31134,7 @@
     {
       "id": "no_resolution_defeated",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -31102,6 +31145,7 @@
     {
       "id": "no_resolution_resigned",
       "title": "未達成任何結局\n(所有調查員在場景3前均已撤退)",
+      "description": "Each investigator resigned before act 3",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -31587,6 +31631,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -33219,6 +33264,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -33763,6 +33809,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -35589,6 +35636,7 @@
     {
       "id": "no_resolution",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "resigned",
         "physical",
@@ -36148,6 +36196,7 @@
     {
       "id": "no_resolution",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -37567,6 +37616,7 @@
     {
       "id": "no_resolution",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -37990,6 +38040,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -38736,6 +38787,7 @@
     {
       "id": "no_resolution",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -39038,6 +39090,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -39879,6 +39932,7 @@
     {
       "id": "no_resolution",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -40431,6 +40485,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -42164,6 +42219,7 @@
     {
       "id": "no_resolution_defeated",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -42178,6 +42234,7 @@
     {
       "id": "no_resolution",
       "title": "未達成任何結局(至少有一位調查員撤退)：",
+      "description": "At least one investigator resigned",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -42750,6 +42807,7 @@
     {
       "id": "no_resolution",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -43238,6 +43296,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -43724,6 +43783,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -44512,6 +44572,7 @@
     {
       "id": "no_resolution",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -45456,6 +45517,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -45934,6 +45996,7 @@
     {
       "id": "no_resolution",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -46499,6 +46562,7 @@
         "name": "Resolution"
       },
       "title": "No resolution was reached, because each investigator was defeated",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -47084,6 +47148,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -47835,6 +47900,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -49570,6 +49636,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -50287,6 +50354,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -52427,6 +52495,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -56323,6 +56392,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -56761,6 +56831,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -57827,6 +57898,7 @@
     {
       "id": "no_resolution_resigned",
       "title": "未達成任何結局(至少有一位調查員撤退)：",
+      "description": "At least one investigator resigned",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -57840,6 +57912,7 @@
     {
       "id": "no_resolution_defeated",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -58643,6 +58716,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -59384,6 +59458,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -62031,6 +62106,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -62532,6 +62608,7 @@
         "name": "No Resolution (Resigned)"
       },
       "title": "未達成任何結局(至少有一位調查員撤退)：",
+      "description": "At least one investigator resigned",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -62554,6 +62631,7 @@
         "name": "No Resolution (Resigned)"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -63534,6 +63612,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "text": "You awaken trapped inside something tight and sticky. Your arms are bound to your sides, and no matter how fiercely you struggle, you cannot seem to move except to wiggle your fingers helplessly. Slowly, dread creeps its way through your mind as you realize the situation you are in. As you cannot move your head, you are forced to watch as the eight-legged creature emerges from the darkness. It makes no sound as it steps onto the web. Its many eyes reflect your terrified expression. Its mandibles drip with hunger. You only wish you could look away.",
       "steps": [
         "bridge_was_completed",
@@ -64623,6 +64702,7 @@
     {
       "id": "no_resolution_defeated",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -64633,6 +64713,7 @@
     {
       "id": "no_resolution_resigned",
       "title": "未達成任何結局\n(所有調查員在場景3前均已撤退)",
+      "description": "Each investigator resigned before act 3",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -65121,6 +65202,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -65392,6 +65474,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -66782,6 +66865,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -67641,6 +67725,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -68132,6 +68217,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -69948,6 +70034,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -71849,6 +71936,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -72347,6 +72435,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -72752,6 +72841,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -74233,6 +74323,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -75442,6 +75533,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -75985,6 +76077,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -76662,6 +76755,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -78043,6 +78137,7 @@
     {
       "id": "no_resolution",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "text": "The chanting of the Deep Ones rises to a crescendo. The alien walls of Y'ha-nthlei twist and contort before your eyes, like lungs desperately clawing for breath. The air becomes thin. Water seeps through the walls. Nothing can stop the pull of the tide now. Nothing can stop the great flood. A triumphant roar sounds throughout the city, and the citizens of the deep rise to meet the cry in their jubilance. You collapse in exhaustion and resignation. Your part is over, now. The part of humanity will be soon to follow.",
       "investigator_status": [
         "eliminated",
@@ -79179,6 +79274,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -79757,6 +79853,7 @@
         "name": "No Resolution"
       },
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -81755,6 +81852,7 @@
         "name": "No Resolution"
       },
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -82681,6 +82779,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -82971,6 +83070,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -83857,6 +83957,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -84269,6 +84370,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -86432,6 +86534,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -86821,6 +86924,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -87216,6 +87320,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -88699,6 +88804,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -89746,6 +89852,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -90521,6 +90628,7 @@
     {
       "id": "no_resolution",
       "title": "未達成任何結局\n(所有調查員都被擊敗)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -91203,6 +91311,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -92186,6 +92295,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -93264,6 +93374,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -93826,6 +93937,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -94077,6 +94189,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -94480,6 +94593,7 @@
     {
       "id": "no_resolution",
       "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",

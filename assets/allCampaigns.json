@@ -548,6 +548,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -1033,6 +1034,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -1323,6 +1325,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -1618,6 +1621,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -2248,6 +2252,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned before Act 3 or was defeated)",
+      "description": "Each investigator resigned before Act 3 or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -2568,6 +2573,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -2898,6 +2904,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -3339,6 +3346,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -4020,6 +4028,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -4412,6 +4421,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -4651,6 +4661,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "physical",
@@ -5704,6 +5715,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -6329,6 +6341,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -6665,6 +6678,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -7361,6 +7375,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -7898,6 +7913,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -9787,6 +9803,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -10484,6 +10501,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -11429,6 +11447,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -11870,6 +11889,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -12209,6 +12229,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -12574,6 +12595,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -12908,6 +12930,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned before Act 3 or was defeated)",
+      "description": "Each investigator resigned before Act 3 or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -13279,6 +13302,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -13679,6 +13703,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -14182,6 +14207,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -15255,6 +15281,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -15578,6 +15605,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "physical",
@@ -16265,6 +16293,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -18250,6 +18279,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -18985,6 +19015,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -19417,6 +19448,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -20225,6 +20257,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -20838,6 +20871,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -22288,6 +22322,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -23166,6 +23201,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -25408,6 +25444,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -25783,6 +25820,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -26280,6 +26318,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -27145,6 +27184,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -27647,6 +27687,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -28990,6 +29031,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -29584,6 +29626,7 @@
     {
       "id": "no_resolution_defeated",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -29594,6 +29637,7 @@
     {
       "id": "no_resolution_resigned",
       "title": "No resolution was reached\n(each investigator resigned before act 3)",
+      "description": "Each investigator resigned before act 3",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -30079,6 +30123,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -31711,6 +31756,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -32255,6 +32301,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -33987,6 +34034,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "resigned",
         "physical",
@@ -34462,6 +34510,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -35033,6 +35082,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -35392,6 +35442,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -36017,6 +36068,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -36239,6 +36291,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -37000,6 +37053,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -37430,6 +37484,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -38958,6 +39013,7 @@
     {
       "id": "no_resolution_defeated",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -38972,6 +39028,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(at least one investigator resigned)",
+      "description": "At least one investigator resigned",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -39439,6 +39496,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -39865,6 +39923,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -40279,6 +40338,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -40883,6 +40943,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -41691,6 +41752,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -42078,6 +42140,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -42582,6 +42645,7 @@
         "name": "Resolution"
       },
       "title": "No resolution was reached, because each investigator was defeated",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -43102,6 +43166,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -43741,6 +43806,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -45245,6 +45311,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -45886,6 +45953,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -47835,6 +47903,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -51288,6 +51357,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -51682,6 +51752,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -52679,6 +52750,7 @@
     {
       "id": "no_resolution_resigned",
       "title": "No resolution was reached\n(at least one investigator resigned)",
+      "description": "At least one investigator resigned",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -52690,6 +52762,7 @@
     {
       "id": "no_resolution_defeated",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -53411,6 +53484,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -54021,6 +54095,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -56341,6 +56416,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -56802,6 +56878,7 @@
         "name": "No Resolution (Resigned)"
       },
       "title": "No resolution was reached\n(at least one investigator resigned)",
+      "description": "At least one investigator resigned",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -56818,6 +56895,7 @@
         "name": "No Resolution (Resigned)"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -57687,6 +57765,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "text": "You awaken trapped inside something tight and sticky. Your arms are bound to your sides, and no matter how fiercely you struggle, you cannot seem to move except to wiggle your fingers helplessly. Slowly, dread creeps its way through your mind as you realize the situation you are in. As you cannot move your head, you are forced to watch as the eight-legged creature emerges from the darkness. It makes no sound as it steps onto the web. Its many eyes reflect your terrified expression. Its mandibles drip with hunger. You only wish you could look away.",
       "steps": ["bridge_was_completed", "all_killed", "maybe_lose_campaign"]
     },
@@ -58631,6 +58710,7 @@
     {
       "id": "no_resolution_defeated",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -58641,6 +58721,7 @@
     {
       "id": "no_resolution_resigned",
       "title": "No resolution was reached\n(each investigator resigned before act 3)",
+      "description": "Each investigator resigned before act 3",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -59079,6 +59160,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -59334,6 +59416,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -60638,6 +60721,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -61370,6 +61454,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -61800,6 +61885,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -63430,6 +63516,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -65155,6 +65242,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -65629,6 +65717,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -66002,6 +66091,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -67297,6 +67387,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -68352,6 +68443,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -68866,6 +68958,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -69474,6 +69567,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -70664,6 +70758,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "text": "The chanting of the Deep Ones rises to a crescendo. The alien walls of Y'ha-nthlei twist and contort before your eyes, like lungs desperately clawing for breath. The air becomes thin. Water seeps through the walls. Nothing can stop the pull of the tide now. Nothing can stop the great flood. A triumphant roar sounds throughout the city, and the citizens of the deep rise to meet the cry in their jubilance. You collapse in exhaustion and resignation. Your part is over, now. The part of humanity will be soon to follow.",
       "investigator_status": [
         "eliminated",
@@ -71656,6 +71751,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -72197,6 +72293,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -74121,6 +74218,7 @@
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -74956,6 +75054,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -75211,6 +75310,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -75975,6 +76075,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -76347,6 +76448,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -78197,6 +78299,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -78558,6 +78661,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -78919,6 +79023,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -80285,6 +80390,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -81201,6 +81307,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -81911,6 +82018,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator was defeated)",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -82551,6 +82659,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -83447,6 +83556,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -84424,6 +84534,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -84944,6 +85055,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -85170,6 +85282,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -85545,6 +85658,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
         "eliminated",
