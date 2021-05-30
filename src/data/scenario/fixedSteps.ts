@@ -489,7 +489,6 @@ export function scenarioStepIds(scenario: Scenario, standalone?: boolean) {
       PROCEED_STEP_ID,
     ] : [
       CHOOSE_INVESTIGATORS_STEP_ID,
-      LEAD_INVESTIGATOR_STEP_ID,
       ...(standalone ? [DRAW_STANDALONE_WEAKNESS_STEP_ID, SAVE_STANDALONE_DECKS_ID] : []),
       ...((standalone && scenario.standalone_setup) || scenario.setup),
     ];

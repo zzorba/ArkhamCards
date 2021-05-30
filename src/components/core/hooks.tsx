@@ -265,7 +265,7 @@ interface RemoveAction {
 type SectionToggleAction = SetToggleAction | ToggleAction | ClearAction | RemoveAction;
 
 
-export function useToggles(initialState: Toggles): [
+export function useToggles(initialState: Toggles, sync?: (toggles: Toggles) => void): [
   Toggles,
   (code: string) => void,
   (code: string | number, value: boolean) => void,
@@ -293,6 +293,9 @@ export function useToggles(initialState: Toggles): [
         };
     }
   }, initialState);
+  useEffect(() => {
+    sync?.(toggles);
+  }, [sync, toggles]);
   const toggle = useCallback((code: string) => updateToggles({ type: 'toggle', key: code }), [updateToggles]);
   const set = useCallback((code: string | number, value: boolean) => updateToggles({ type: 'set', key: code, value }), [updateToggles]);
   const clear = useCallback((state?: Toggles) => updateToggles({ type: 'clear', state }), [updateToggles]);

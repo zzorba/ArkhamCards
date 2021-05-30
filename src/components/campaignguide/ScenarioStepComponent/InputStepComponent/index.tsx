@@ -169,10 +169,12 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
             id={step.id}
             choiceId="chosen"
             checkText={t`Choose Investigators`}
+            confirmText={t`Investigators`}
             defaultState
             min={step.input.choose_none_steps ? 0 : 1}
             max={4}
             allowNewDecks
+            includeLeadInvestigator={!!step.input.lead_investigator_effects}
           />
         </>
       );

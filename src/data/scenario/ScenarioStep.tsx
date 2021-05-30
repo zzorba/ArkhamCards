@@ -32,7 +32,7 @@ import { conditionResult } from '@data/scenario/conditionHelper';
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, PLAY_SCENARIO_STEP_ID } from '@data/scenario/fixedSteps';
+import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, PLAY_SCENARIO_STEP_ID, LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
 
 export default class ScenarioStep {
   step: Step;
@@ -709,7 +709,7 @@ export default class ScenarioStep {
             this.campaignLog
           );
         }
-        const effectsWithInput: EffectsWithInput = {
+        const effectsWithInput: EffectsWithInput[] = [{
           input: investigators,
           effects: [
             {
@@ -718,11 +718,23 @@ export default class ScenarioStep {
               investigator: '$input_value',
             },
           ],
-        };
+        }];
+
+        const lead_invesigator_choices = scenarioState.stringChoices(LEAD_INVESTIGATOR_STEP_ID);
+        if (input.lead_investigator_effects) {
+          if (!lead_invesigator_choices) {
+            return undefined;
+          }
+          effectsWithInput.push({
+            input: lead_invesigator_choices.lead || [],
+            effects: input.lead_investigator_effects,
+          });
+        }
+
         return this.maybeCreateEffectsStep(
           step.id,
           this.remainingStepIds,
-          [effectsWithInput],
+          effectsWithInput,
           scenarioState,
           {}
         );

@@ -15,6 +15,7 @@ import {
   REDUX_MIGRATION,
   CampaignId,
   SYSTEM_BASED_GUIDE_INPUT_TYPES,
+  SYSTEM_BASED_GUIDE_INPUT_IDS,
 } from '@actions/types';
 
 export interface GuidesState {
@@ -187,7 +188,8 @@ export default function(
           campaign.inputs,
           input => (
             input.scenario === action.scenarioId &&
-            !SYSTEM_BASED_GUIDE_INPUT_TYPES.has(input.type)
+            !SYSTEM_BASED_GUIDE_INPUT_TYPES.has(input.type) &&
+            !(input.step && SYSTEM_BASED_GUIDE_INPUT_IDS.has(input.step))
           )
         );
         if (latestInputIndex === -1) {
@@ -196,7 +198,7 @@ export default function(
         const inputs: GuideInput[] = [];
         const removedInputs: GuideInput[] = [];
         forEach(campaign.inputs, (input: GuideInput, idx: number) => {
-          if (SYSTEM_BASED_GUIDE_INPUT_TYPES.has(input.type)) {
+          if (SYSTEM_BASED_GUIDE_INPUT_TYPES.has(input.type) || (input.step && SYSTEM_BASED_GUIDE_INPUT_IDS.has(input.step))) {
             if (idx < latestInputIndex || input.scenario !== action.scenarioId) {
               inputs.push(input);
             } else {

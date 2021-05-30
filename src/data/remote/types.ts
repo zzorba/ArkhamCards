@@ -1,4 +1,4 @@
-import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES, SealedToken } from '@actions/types';
+import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES, SYSTEM_BASED_GUIDE_INPUT_IDS, SealedToken } from '@actions/types';
 import { uniq, concat, flatMap, sumBy, find, findLast, maxBy, map, last, forEach, findLastIndex } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
@@ -240,7 +240,8 @@ export class CampaignGuideStateRemote implements CampaignGuideStateT {
       this.inputs,
       input => (
         input.scenario === scenarioId &&
-        !SYSTEM_BASED_GUIDE_INPUT_TYPES.has(input.type)
+        !SYSTEM_BASED_GUIDE_INPUT_TYPES.has(input.type) &&
+        !(input.step && SYSTEM_BASED_GUIDE_INPUT_IDS.has(input.step))
       )
     );
     if (latestInputIndex === -1) {
@@ -248,7 +249,7 @@ export class CampaignGuideStateRemote implements CampaignGuideStateT {
     }
     const removedInputs: GuideInput[] = [];
     forEach(this.inputs, (input: GuideInput, idx: number) => {
-      if (SYSTEM_BASED_GUIDE_INPUT_TYPES.has(input.type)) {
+      if (SYSTEM_BASED_GUIDE_INPUT_TYPES.has(input.type) || (input.step && SYSTEM_BASED_GUIDE_INPUT_IDS.has(input.step))) {
         if (idx >= latestInputIndex && input.scenario === scenarioId) {
           removedInputs.push(input);
         }
