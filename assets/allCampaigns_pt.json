@@ -658,7 +658,7 @@
         "id": "the_dunwich_legacy.blood_on_the_altar.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -1202,7 +1202,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -1518,7 +1518,7 @@
         "id": "the_dunwich_legacy.extracurricular_activity.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -1850,7 +1850,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -2548,7 +2548,7 @@
         "id": "the_dunwich_legacy.the_house_always_wins.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada (cada investigador desistiu antes do Ato 3 ou foi derrotado):",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned before Act 3 or was defeated",
       "investigator_status": [
         "resigned",
@@ -2911,7 +2911,7 @@
         "id": "the_dunwich_legacy.the_miskatonic_museum.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -3300,7 +3300,7 @@
         "id": "the_dunwich_legacy.undimensioned_and_unseen.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -3798,7 +3798,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -4652,7 +4652,7 @@
         "id": "the_night_of_the_zealot.the_midnight_masks.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -5079,7 +5079,7 @@
         "id": "the_night_of_the_zealot.the_devourer_below.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -5346,7 +5346,7 @@
         "id": "the_night_of_the_zealot.the_gathering.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -6598,7 +6598,7 @@
         "id": "the_path_to_carcosa.a_phantom_of_truth.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -7317,7 +7317,7 @@
         "id": "the_path_to_carcosa.black_stars_rise.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -7697,7 +7697,7 @@
         "id": "the_path_to_carcosa.curtain_call.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -8495,7 +8495,7 @@
         "id": "the_path_to_carcosa.dim_carcosa.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -9098,7 +9098,7 @@
         "id": "the_path_to_carcosa.echoes_of_the_past.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -11165,7 +11165,7 @@
         "id": "the_path_to_carcosa.the_pallid_mask.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -11996,7 +11996,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -12954,7 +12954,7 @@
         "id": "the_dunwich_legacy.blood_on_the_altar.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -13396,7 +13396,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -13736,7 +13736,7 @@
         "id": "the_dunwich_legacy.extracurricular_activity.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -14102,7 +14102,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -14437,7 +14437,7 @@
         "id": "the_dunwich_legacy.the_house_always_wins.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada (cada investigador desistiu antes do Ato 3 ou foi derrotado):",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned before Act 3 or was defeated",
       "investigator_status": [
         "resigned",
@@ -14809,7 +14809,7 @@
         "id": "the_dunwich_legacy.the_miskatonic_museum.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -15210,7 +15210,7 @@
         "id": "the_dunwich_legacy.undimensioned_and_unseen.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -15714,7 +15714,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -16788,7 +16788,7 @@
         "id": "the_night_of_the_zealot.the_devourer_below.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -17112,7 +17112,7 @@
         "id": "the_night_of_the_zealot.the_gathering.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -17800,7 +17800,7 @@
         "id": "the_night_of_the_zealot.the_midnight_masks.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -19786,7 +19786,7 @@
         "id": "the_path_to_carcosa.a_phantom_of_truth.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -20522,7 +20522,7 @@
         "id": "the_path_to_carcosa.black_stars_rise.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -20955,7 +20955,7 @@
         "id": "the_path_to_carcosa.curtain_call.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -21764,7 +21764,7 @@
         "id": "the_path_to_carcosa.dim_carcosa.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -22378,7 +22378,7 @@
         "id": "the_path_to_carcosa.echoes_of_the_past.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -23829,7 +23829,7 @@
         "id": "the_path_to_carcosa.the_pallid_mask.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -24708,7 +24708,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -26951,7 +26951,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -27327,7 +27327,7 @@
         "id": "the_forgotten_age.heart_of_the_elders_part_2.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -27825,7 +27825,7 @@
         "id": "the_forgotten_age.shattered_aeons.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -28691,7 +28691,7 @@
         "id": "the_forgotten_age.the_boundary_beyond.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -29194,7 +29194,7 @@
         "id": "the_forgotten_age.the_city_of_archives.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -30538,7 +30538,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -31133,7 +31133,7 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -31144,7 +31144,7 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution was reached\n(each investigator resigned before act 3)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned before act 3",
       "investigator_status": [
         "resigned",
@@ -31630,7 +31630,7 @@
         "id": "the_forgotten_age.the_untamed_wilds.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -33263,7 +33263,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -33808,7 +33808,7 @@
         "id": "the_forgotten_age.turn_back_time.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -35635,7 +35635,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "resigned",
@@ -36195,7 +36195,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -37615,7 +37615,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -38039,7 +38039,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -38786,7 +38786,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -39089,7 +39089,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -39931,7 +39931,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -40484,7 +40484,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -42218,7 +42218,7 @@
   "resolutions": [
     {
       "id": "no_resolution_defeated",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -42233,7 +42233,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached\n(at least one investigator resigned)",
+      "title": "No resolution was reached",
       "description": "At least one investigator resigned",
       "investigator_status": [
         "resigned",
@@ -42806,7 +42806,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -43295,7 +43295,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -43782,7 +43782,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -44571,7 +44571,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -45516,7 +45516,7 @@
         "id": "the_circle_undone.at_deaths_doorstep.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -45995,7 +45995,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -46561,7 +46561,7 @@
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.resolution",
         "name": "Resolution"
       },
-      "title": "No resolution was reached, because each investigator was defeated",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -47147,7 +47147,7 @@
         "id": "the_circle_undone.for_the_greater_good.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -47899,7 +47899,7 @@
         "id": "the_circle_undone.in_the_clutches_of_chaos.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -49635,7 +49635,7 @@
         "id": "the_circle_undone.the_secret_name.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -50353,7 +50353,7 @@
         "id": "the_circle_undone.the_witching_hour.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -52494,7 +52494,7 @@
         "id": "the_circle_undone.union_and_disillusion.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -56391,7 +56391,7 @@
         "id": "the_dreameaters.beyond_the_gates_of_sleep.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -56830,7 +56830,7 @@
         "id": "the_dreameaters.dark_side_of_the_moon.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -57897,7 +57897,7 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution was reached\n(at least one investigator resigned)",
+      "title": "No resolution was reached",
       "description": "At least one investigator resigned",
       "investigator_status": [
         "resigned",
@@ -57911,7 +57911,7 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -58715,7 +58715,7 @@
         "id": "the_dreameaters.where_the_gods_dwell.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -59457,7 +59457,7 @@
         "id": "the_dreameaters.a_thousand_shapes_of_horror.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -62105,7 +62105,7 @@
         "id": "the_dreameaters.point_of_no_return.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -62607,7 +62607,7 @@
         "id": "the_dreameaters.waking_nightmare.no_resolution_resigned",
         "name": "No Resolution (Resigned)"
       },
-      "title": "No resolution was reached\n(at least one investigator resigned)",
+      "title": "No resolution was reached",
       "description": "At least one investigator resigned",
       "investigator_status": [
         "resigned",
@@ -62630,7 +62630,7 @@
         "id": "the_dreameaters.waking_nightmare.no_resolution_defeated",
         "name": "No Resolution (Resigned)"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -63611,7 +63611,7 @@
         "id": "the_dreameaters.weaver_of_the_cosmos.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "text": "You awaken trapped inside something tight and sticky. Your arms are bound to your sides, and no matter how fiercely you struggle, you cannot seem to move except to wiggle your fingers helplessly. Slowly, dread creeps its way through your mind as you realize the situation you are in. As you cannot move your head, you are forced to watch as the eight-legged creature emerges from the darkness. It makes no sound as it steps onto the web. Its many eyes reflect your terrified expression. Its mandibles drip with hunger. You only wish you could look away.",
       "steps": [
@@ -64701,7 +64701,7 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -64712,7 +64712,7 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution was reached\n(each investigator resigned before act 3)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned before act 3",
       "investigator_status": [
         "resigned",
@@ -65201,7 +65201,7 @@
         "id": "the_forgotten_age.heart_of_the_elders_part_1.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -65473,7 +65473,7 @@
         "id": "the_forgotten_age.heart_of_the_elders_part_2.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -66864,7 +66864,7 @@
         "id": "the_forgotten_age.shattered_aeons.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -67724,7 +67724,7 @@
         "id": "the_forgotten_age.the_boundary_beyond.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -68216,7 +68216,7 @@
         "id": "the_forgotten_age.the_city_of_archives.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -70033,7 +70033,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -71935,7 +71935,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -72434,7 +72434,7 @@
         "id": "the_forgotten_age.turn_back_time.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -72840,7 +72840,7 @@
         "id": "the_forgotten_age.the_untamed_wilds.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -74322,7 +74322,7 @@
         "id": "the_innsmouth_conspiracy.a_light_in_the_fog.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -75532,7 +75532,7 @@
         "id": "the_innsmouth_conspiracy.devil_reef.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -76076,7 +76076,7 @@
         "id": "the_innsmouth_conspiracy.horror_in_high_gear.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -76754,7 +76754,7 @@
         "id": "the_innsmouth_conspiracy.in_too_deep.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -78136,7 +78136,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "text": "The chanting of the Deep Ones rises to a crescendo. The alien walls of Y'ha-nthlei twist and contort before your eyes, like lungs desperately clawing for breath. The air becomes thin. Water seeps through the walls. Nothing can stop the pull of the tide now. Nothing can stop the great flood. A triumphant roar sounds throughout the city, and the citizens of the deep rise to meet the cry in their jubilance. You collapse in exhaustion and resignation. Your part is over, now. The part of humanity will be soon to follow.",
       "investigator_status": [
@@ -79273,7 +79273,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -79852,7 +79852,7 @@
         "id": "the_innsmouth_conspiracy.the_pit_of_despair.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -81851,7 +81851,7 @@
         "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.no_resolution",
         "name": "No Resolution"
       },
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -82778,7 +82778,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -83069,7 +83069,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -83956,7 +83956,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -84369,7 +84369,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -86533,7 +86533,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -86923,7 +86923,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -87319,7 +87319,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -88803,7 +88803,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -89851,7 +89851,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -90627,7 +90627,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Se nenhuma resolução foi alcançada (cada investigador foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -91310,7 +91310,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -92294,7 +92294,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -93373,7 +93373,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -93936,7 +93936,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -94188,7 +94188,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
@@ -94592,7 +94592,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "Nenhuma resolução foi alcançada\n(cada investigador desistiu ou foi derrotado)",
+      "title": "No resolution was reached",
       "description": "Each investigator resigned or was defeated",
       "investigator_status": [
         "resigned",
