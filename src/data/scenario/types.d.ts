@@ -607,6 +607,7 @@ export interface CardCodeList {
 }
 export interface Choice {
   id: string;
+  large?: boolean;
   text: string;
   feminine_text?: string;
   masculine_text?: string;
