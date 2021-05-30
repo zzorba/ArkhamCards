@@ -681,6 +681,7 @@ export interface ChooseOneInput {
 }
 export interface BinaryConditionalChoice {
   id: string;
+  large?: boolean;
   text: string;
   description?: string;
   condition?: BinaryChoiceCondition;
