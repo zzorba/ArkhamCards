@@ -65,7 +65,7 @@ export type InvestigatorSelector =
   | "any_resigned"
   | "$input_value"
   | "$fixed_investigator";
-export type BulletType = "none" | "small";
+export type BulletType = "none" | "small" | "default";
 export type CampaignDataEffect =
   | CampaignDataResultEffect
   | CampaignDataDifficultyEffect
