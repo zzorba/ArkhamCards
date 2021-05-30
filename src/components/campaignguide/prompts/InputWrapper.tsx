@@ -7,8 +7,9 @@ import space, { s, xs } from '@styles/space';
 import ActionButton from './ActionButton';
 
 interface Props {
+  bulletType: ''
   editable: boolean;
-  title: string;
+  title?: string;
   titleNode?: React.ReactNode;
   buttons?: React.ReactNode;
   onSubmit?: () => void;
@@ -16,16 +17,19 @@ interface Props {
   children: React.ReactNode;
 }
 
-function TitleRow({ title, titleNode, editable }: { title: string; titleNode?: React.ReactNode; editable?: boolean }) {
+function TitleRow({ title, titleNode, editable }: { title?: string; titleNode?: React.ReactNode; editable?: boolean }) {
   const { colors, typography } = useContext(StyleContext);
+  if (!title && !titleNode) {
+    return null;
+  }
   return (
     <View style={[
       styles.row,
       space.paddingXs,
-      titleNode ? styles.spaceBetween : undefined,
+      (titleNode && title) ? styles.spaceBetween : undefined,
       editable ? { marginLeft: xs, marginRight: xs, borderBottomWidth: 1, borderColor: colors.L10 } : undefined,
     ]}>
-      <Text style={typography.mediumGameFont}>{title}</Text>
+      { !!title && <Text style={typography.mediumGameFont}>{title}</Text> }
       { !!titleNode && titleNode }
     </View>
   );
@@ -39,13 +43,13 @@ function ButtonRow({ buttons, onSubmit, disabledText }: { buttons?: React.ReactN
   return (
     <View style={[
       styles.row,
-      buttons ? styles.spaceBetween : styles.flexEnd,
+      (buttons && onSubmit) ? styles.spaceBetween : styles.flexEnd,
       { borderTopWidth: 1, borderColor: colors.L10 },
       space.paddingTopXs,
       space.marginXs,
     ]}>
-      { !!buttons && <View style={space.paddingRightS}>{buttons}</View> }
-      { !!onSubmit ? (
+      { !!buttons && <View style={!!onSubmit ? space.paddingRightS : undefined}>{buttons}</View> }
+      { !!onSubmit && (
         <ActionButton
           title={disabledText || t`Continue`}
           color="dark"
@@ -53,8 +57,6 @@ function ButtonRow({ buttons, onSubmit, disabledText }: { buttons?: React.ReactN
           disabled={!!disabledText}
           rightIcon="right-arrow"
         />
-      ) : (
-        <View style={space.paddingS} />
       ) }
     </View>
   );

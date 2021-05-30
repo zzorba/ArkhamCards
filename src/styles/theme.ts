@@ -67,8 +67,9 @@ export interface ThemeColors {
   health: string;
   sanity: string;
   disableOverlay: string;
-  scenarioGreen: string;
   campaign:{
+    setup: string;
+    resolution: string;
     gold: string;
     blue: string;
     teal: string;
@@ -230,8 +231,9 @@ export const LIGHT_THEME: ThemeColors = {
   },
   health: '#8D181E',
   sanity: '#165385',
-  scenarioGreen: '#2E5344',
   campaign: {
+    setup: '#128C60',
+    resolution: '#E75122',
     gold: '#c99b3833',
     blue: '#00408033',
     teal: '#00666633',
@@ -371,8 +373,9 @@ export const DARK_THEME: ThemeColors = {
   },
   health: '#AE4236',
   sanity: '#2C7FC0',
-  scenarioGreen: '#1fab73',
   campaign: {
+    setup: '#07AF73',
+    resolution: '#F04932',
     gold: '#755a2088',
     blue: '#395c8088',
     teal: '#2a666688',

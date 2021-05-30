@@ -5,24 +5,41 @@ import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
 import space from '@styles/space';
+import { ThemeColors } from '@styles/theme';
 
+type LEFT_ICON = 'plus-thin' | 'check' | 'close';
 interface Props {
-  color: 'dark' | 'light'
+  color: 'dark' | 'light' | 'green' | 'red';
   onPress: () => void;
-  leftIcon?: 'plus-thin';
+  leftIcon?: LEFT_ICON;
   rightIcon?: 'right-arrow';
   title: string;
   disabled?: boolean;
 }
 
+function getBackgroundColor(color: 'dark' | 'light' | 'green' | 'red', colors: ThemeColors): string {
+  switch (color) {
+    case 'dark': return colors.D10;
+    case 'light': return colors.L15;
+    case 'green': return colors.campaign.setup;
+    case 'red': return colors.campaign.resolution;
+  }
+}
+
+const LEFT_ICON_SIZE = {
+  'plus-thin': 18,
+  'check': 16,
+  'close': 24,
+};
+
 export default function ActionButton({ color, onPress, title, leftIcon, rightIcon, disabled }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const content = useMemo(() => {
-    const enabledColor = color === 'dark' ? colors.L30 : colors.D20;
+    const enabledColor = color === 'light' ? colors.D20 : colors.L30;
     const textColor = disabled ? colors.D10 : enabledColor;
     return (
       <View style={styles.button}>
-        { leftIcon && <View style={space.paddingRightS}><AppIcon size={18} name={leftIcon} color={textColor} /></View> }
+        { leftIcon && <View style={space.paddingRightS}><AppIcon size={LEFT_ICON_SIZE[leftIcon]} name={leftIcon} color={textColor} /></View> }
         <Text style={[space.paddingTopXs, typography.cardName, { color: textColor }]}>
           { title }
         </Text>
@@ -54,7 +71,7 @@ export default function ActionButton({ color, onPress, title, leftIcon, rightIco
       style={[
         styles.button,
         {
-          backgroundColor: color === 'dark' ? colors.D10 : colors.L15,
+          backgroundColor: getBackgroundColor(color, colors),
           height: 40,
           borderRadius: 24,
           paddingLeft: leftIcon ? 12 : 20,

@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
 import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
 
@@ -10,44 +10,50 @@ import { ThemeColors } from '@styles/theme';
 interface Props extends TouchableOpacityProps {
   useGestureHandler?: boolean;
   value: boolean;
-  onValueChange: (checked: boolean) => void;
+  onValueChange?: (checked: boolean) => void;
   accessibilityLabel?: string;
   large?: boolean;
-  color?: 'light';
+  color?: 'light' | 'dark';
 }
-function getCircleColor(value: boolean, color: 'light' | undefined, colors: ThemeColors) {
-  if (color === 'light') {
-    return !value ? colors.D10 : COLORS.L15;
+function getCircleColor(value: boolean, color: 'light' | 'dark' | undefined, colors: ThemeColors) {
+  switch (color) {
+    case 'light':
+      return !value ? colors.D10 : COLORS.L15;
+    case 'dark':
+      return colors.D10;
+    default:
+      return colors.L10;
   }
-  return colors.L10;
+}
+function getCheckColor(color: 'light' | 'dark' | undefined, colors: ThemeColors) {
+  switch (color) {
+    case 'light':
+      return COLORS.L30;
+    case 'dark':
+      return colors.D20;
+    default:
+      return colors.M;
+  }
 }
 export default function ArkhamSwitch({ useGestureHandler, value, onValueChange, accessibilityLabel, disabled, large, color, ...props }: Props) {
   const { colors } = useContext(StyleContext);
 
   const onPress = useCallback(() => {
-    onValueChange(!value);
+    onValueChange?.(!value);
   }, [value, onValueChange]);
 
   const circleColor = getCircleColor(value, color, colors);
-  const checkColor = color === 'light' ? COLORS.L30 : colors.M;
-
-  const TouchableComponent = useGestureHandler ? GestureHandlerTouchableOpacity : TouchableOpacity;
-  return (
-    <TouchableComponent
-      onPress={onPress}
-      accessibilityRole="switch"
-      accessibilityLabel={accessibilityLabel}
-      accessibilityState={{ checked: value }}
-      disabled={disabled} {...props}
-    >
+  const checkColor = getCheckColor(color, colors);
+  const content = useMemo(() => {
+    return (
       <View style={[styles.icon, large ? styles.largeIcon : undefined]}>
         <AppIcon
           size={large ? 34 : 28}
-          name="check-circle"
+          name={large ? 'circle-thin' : 'check-circle'}
           color={disabled ? colors.L20 : circleColor}
         />
         { !!value && (
-          <View style={styles.check}>
+          <View style={large ? styles.largeCheck : styles.check}>
             <AppIcon
               size={large ? 26 : 20}
               name="check"
@@ -56,6 +62,23 @@ export default function ArkhamSwitch({ useGestureHandler, value, onValueChange, 
           </View>
         )}
       </View>
+    );
+  }, [disabled, large, value, colors, circleColor, checkColor]);
+  if (!onValueChange) {
+    return content;
+  }
+
+  const TouchableComponent = useGestureHandler ? GestureHandlerTouchableOpacity : TouchableOpacity;
+  return (
+    <TouchableComponent
+      onPress={onPress}
+      accessibilityRole="switch"
+      accessibilityLabel={accessibilityLabel}
+      accessibilityState={{ checked: value }}
+      disabled={disabled}
+      {...props}
+    >
+      { content }
     </TouchableComponent>
   );
 }
@@ -77,6 +100,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 2,
     right: 3,
+  },
+  largeCheck: {
+    position: 'absolute',
+    top: 3,
+    right: 4,
   },
 });
 

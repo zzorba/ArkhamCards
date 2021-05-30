@@ -30,6 +30,7 @@ interface Props {
   countRender?: React.ReactNode;
   hideDisabledMinus?: boolean;
   dialogStyle?: boolean;
+  rounded?: boolean;
   showZeroCount?: boolean;
 }
 
@@ -69,18 +70,25 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       onIncrement,
       color,
       dialogStyle,
+      rounded,
     } = this.props;
     const { colors } = this.context;
     const size = (this.props.size || 36);
-    const width = size * 0.8;
+    const width = rounded ? 40 : size * 0.8;
     if (this.incrementEnabled()) {
       return (
-        <TouchableOpacity onPress={onIncrement} style={dialogStyle ? { width, height: width } : undefined}>
+        <TouchableOpacity
+          onPress={onIncrement}
+          style={[
+            dialogStyle ? { width, height: width } : undefined,
+            rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20, backgroundColor: colors.L15 } : undefined,
+          ]}
+        >
           { dialogStyle ? (
             <AppIcon
               name="plus-button"
-              size={28}
-              color={colors.M}
+              size={rounded ? 36 : 28}
+              color={rounded ? colors.D10 : colors.M}
             />
           ) : (
             <MaterialCommunityIcons
@@ -99,12 +107,17 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       );
     }
     return (
-      <TouchableOpacity disabled style={dialogStyle ? { width, height: width } : undefined}>
+      <TouchableOpacity
+        disabled
+        style={[
+          dialogStyle ? { width, height: width } : undefined,
+          rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20 } : undefined,
+        ]}>
         { dialogStyle ? (
           <View opacity={0.3}>
             <AppIcon
               name="plus-button"
-              size={28}
+              size={rounded ? 36 : 28}
               color={colors.M}
             />
           </View>
@@ -149,18 +162,25 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       color,
       hideDisabledMinus,
       dialogStyle,
+      rounded,
     } = this.props;
     const { colors } = this.context;
     const size = (this.props.size || 36);
-    const width = size * 0.8;
+    const width = rounded ? 40 : size * 0.8;
     if (this.decrementEnabled()) {
       return (
-        <TouchableOpacity onPress={onDecrement} style={dialogStyle ? { width, height: width } : undefined}>
+        <TouchableOpacity
+          onPress={onDecrement}
+          style={[
+            dialogStyle ? { width, height: width } : undefined,
+            rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20, backgroundColor: colors.L15 } : undefined,
+          ]}
+        >
           { dialogStyle ? (
             <AppIcon
               name="minus-button"
-              size={28}
-              color={colors.M}
+              size={rounded ? 36 : 28}
+              color={rounded ? colors.D10 : colors.M}
             />
           ) : (
             <MaterialCommunityIcons
@@ -178,12 +198,18 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       );
     }
     return (
-      <TouchableOpacity disabled style={dialogStyle ? { width, height: width } : undefined}>
+      <TouchableOpacity
+        disabled
+        style={[
+          dialogStyle ? { width, height: width } : undefined,
+          rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20 } : undefined,
+        ]}
+      >
         { dialogStyle ? (
           <View opacity={0.3}>
             <AppIcon
               name="minus-button"
-              size={28}
+              size={rounded ? 36 : 28}
               color={colors.M}
             />
           </View>

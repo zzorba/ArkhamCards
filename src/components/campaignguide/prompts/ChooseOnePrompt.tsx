@@ -12,6 +12,7 @@ import { BulletType } from '@data/scenario/types';
 import { DisplayChoice } from '@data/scenario';
 import space from '@styles/space';
 import { throttle } from 'lodash';
+import InputWrapper from './InputWrapper';
 
 interface Props {
   id: string;
@@ -59,21 +60,35 @@ export default function ChooseOnePrompt({
   return (
     <>
       { picker ? (
-        <SinglePickerComponent
-          title={selectedChoice === undefined ? (text || '') : ''}
-          choices={choices}
-          selectedIndex={selectedChoice}
-          onChoiceChange={onChoiceChange}
-          editable={decision === undefined}
-          topBorder
-        />
-      ) : (
         <>
-          <SetupStepWrapper bulletType={bulletType}>
-            <CampaignGuideTextComponent
-              text={text || t`The investigators must decide (choose one):`}
+          <SinglePickerComponent
+            title={selectedChoice === undefined ? (text || '') : ''}
+            choices={choices}
+            selectedIndex={selectedChoice}
+            onChoiceChange={onChoiceChange}
+            editable={decision === undefined}
+            topBorder
+          />
+          { decision === undefined && (
+            <BasicButton
+              title={t`Proceed`}
+              onPress={save}
+              disabled={selectedChoice === undefined}
             />
-          </SetupStepWrapper>
+          ) }
+        </>
+      ) : (
+        <InputWrapper
+          titleNode={
+            <SetupStepWrapper bulletType={bulletType}>
+              <CampaignGuideTextComponent
+                text={text || t`The investigators must decide (choose one):`}
+              />
+            </SetupStepWrapper>
+          }
+          editable={decision === undefined}
+          disabledText={selectedChoice === undefined ? t`Continue` : undefined} onSubmit={save}
+        >
           <View style={[space.paddingTopS, space.paddingBottomS]}>
             <ChooseOneListComponent
               choices={choices}
@@ -82,14 +97,7 @@ export default function ChooseOnePrompt({
               editable={decision === undefined}
             />
           </View>
-        </>
-      ) }
-      { decision === undefined && (
-        <BasicButton
-          title={t`Proceed`}
-          onPress={save}
-          disabled={selectedChoice === undefined}
-        />
+        </InputWrapper>
       ) }
       { !!showUndo && decision === undefined && (
         <BasicButton

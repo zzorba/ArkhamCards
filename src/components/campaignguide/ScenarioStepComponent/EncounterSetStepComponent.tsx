@@ -20,6 +20,7 @@ import space from '@styles/space';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import StyleContext from '@styles/StyleContext';
 import { CampaignId } from '@actions/types';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 const CORE_SET_ICONS = new Set([
   'torch', 'arkham', 'cultists', 'tentacles', 'rats', 'ghouls', 'striking_fear',
@@ -100,7 +101,7 @@ export default function EncounterSetStepComponent({ componentId, campaignId, ste
         ) }
       </SetupStepWrapper>
       { !!errata.length && (
-        <BasicButton title={t`Encounter Card Errata`} onPress={_viewEncounterErrata} />
+        <ArkhamButton icon="faq" title={t`Encounter Card Errata`} onPress={_viewEncounterErrata} />
       ) }
     </>
   );

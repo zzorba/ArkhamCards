@@ -159,7 +159,7 @@ export default function ScenarioStepComponent({
         <View style={styles.titleWrapper}>
           <Text style={[
             typography.bigGameFont,
-            { color: colors.scenarioGreen },
+            { color: colors.campaign.setup },
             space.paddingTopL,
             border ? typography.center : {},
           ]}>
