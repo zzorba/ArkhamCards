@@ -65,7 +65,7 @@ export type InvestigatorSelector =
   | "any_resigned"
   | "$input_value"
   | "$fixed_investigator";
-export type BulletType = "none" | "small";
+export type BulletType = "none" | "small" | "default";
 export type CampaignDataEffect =
   | CampaignDataResultEffect
   | CampaignDataDifficultyEffect
@@ -607,6 +607,7 @@ export interface CardCodeList {
 }
 export interface Choice {
   id: string;
+  large?: boolean;
   text: string;
   feminine_text?: string;
   masculine_text?: string;
@@ -676,10 +677,12 @@ export interface InvestigatorCondition {
 export interface ChooseOneInput {
   type: "choose_one";
   style?: "picker";
+  confirm_text?: string;
   choices: BinaryConditionalChoice[];
 }
 export interface BinaryConditionalChoice {
   id: string;
+  large?: boolean;
   text: string;
   description?: string;
   condition?: BinaryChoiceCondition;
@@ -946,6 +949,7 @@ export interface ChallengeData {
 export interface Resolution {
   id: string;
   title: string;
+  description?: string;
   text?: string;
   investigator_status?: InvestigatorStatus[];
   steps: string[];
