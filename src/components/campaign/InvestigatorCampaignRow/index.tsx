@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
-import { Animated, Easing, Text, View, StyleSheet } from 'react-native';
+import { Animated, Easing, View, StyleSheet } from 'react-native';
 import { find , map } from 'lodash';
 import Collapsible from 'react-native-collapsible';
 import { t } from 'ttag';
@@ -13,8 +13,6 @@ import Card, { CardsMap } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import useSingleCard from '@components/card/useSingleCard';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
-import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
-import InvestigatorImage from '@components/core/InvestigatorImage';
 import space, { s } from '@styles/space';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { useEffectUpdate, useFlag } from '@components/core/hooks';
@@ -29,6 +27,7 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import { AppState, makeUploadingDeckSelector } from '@reducers';
+import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 
 interface Props {
   componentId: string;
@@ -86,7 +85,7 @@ export default function InvestigatorCampaignRow({
 }: Props) {
   const uploadingSelector = useMemo(makeUploadingDeckSelector, []);
   const uploading = useSelector((state: AppState) => uploadingSelector(state, campaign.id, investigator.code));
-  const { colors, typography, width } = useContext(StyleContext);
+  const { colors, width } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);
@@ -207,34 +206,19 @@ export default function InvestigatorCampaignRow({
   return (
     <View style={space.marginBottomS}>
       <TouchableWithoutFeedback onPress={toggleOpen}>
-        <RoundedFactionHeader eliminated={eliminated} faction={investigator.factionCode()} width={width - s * 2} fullRound={!open}>
-          <View style={[styles.row, space.paddingLeftXs]}>
-            <InvestigatorImage
-              card={investigator}
-              size="tiny"
-              border
-              yithian={yithian}
-              killedOrInsane={eliminated}
-              badge={upgradeBadge ? 'upgrade' : undefined}
-            />
-            <View style={[space.paddingLeftXs, styles.textColumn]}>
-              <Text
-                style={[typography.cardName, typography.white, eliminated ? typography.strike : undefined]}
-                numberOfLines={1}
-                ellipsizeMode="tail"
-              >
-                { investigator.name }
-              </Text>
-              <Text style={[typography.cardTraits, typography.white, eliminated ? typography.strike : undefined]}>
-                { investigator.subname }
-              </Text>
-            </View>
-            { !open && <View style={styles.trauma}><TraumaSummary trauma={traumaAndCardData} investigator={investigator} whiteText /></View> }
-            <Animated.View style={{ width: 36, height: 36, transform: [{ rotate: iconRotate }] }}>
-              <AppIcon name="expand_less" size={36} color="#FFF" />
-            </Animated.View>
-          </View>
-        </RoundedFactionHeader>
+        <CompactInvestigatorRow
+          investigator={investigator}
+          eliminated={eliminated}
+          yithian={yithian}
+          open={open}
+          upgradeBadge={upgradeBadge}
+          width={width - s * 2}
+        >
+          { !open && <View style={styles.trauma}><TraumaSummary trauma={traumaAndCardData} investigator={investigator} whiteText /></View> }
+          <Animated.View style={{ width: 36, height: 36, transform: [{ rotate: iconRotate }] }}>
+            <AppIcon name="expand_less" size={36} color="#FFF" />
+          </Animated.View>
+        </CompactInvestigatorRow>
       </TouchableWithoutFeedback>
       <Collapsible collapsed={!open}>
         <View style={[
@@ -279,15 +263,6 @@ const styles = StyleSheet.create({
     borderLeftWidth: 1,
     borderRightWidth: 1,
     borderBottomWidth: 1,
-  },
-  textColumn: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
-  row: {
-    flexDirection: 'row',
   },
   trauma: {
     flexDirection: 'row',

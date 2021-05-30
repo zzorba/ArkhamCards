@@ -32,6 +32,9 @@ export default StyleSheet.create({
   paddingXs: {
     padding: xs,
   },
+  marginXs: {
+    margin: xs,
+  },
   paddingS: {
     padding: s,
   },

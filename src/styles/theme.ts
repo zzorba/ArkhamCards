@@ -23,6 +23,7 @@ export interface ThemeColors {
   fight: string;
   evade: string;
   L10: string;
+  L15: string;
   L20: string;
   L30: string;
   D10: string;
@@ -86,9 +87,11 @@ export interface ThemeColors {
   };
 }
 const light10 = '#D7D3C6';
+const light15 = '#E6E1D3';
 const light20 = '#F5F0E1';
 const light30 = '#FFFBF2';
 const dark10 = '#656C6F';
+const dark15 = '#5e686e';
 const dark20 = '#475259';
 const dark30 = '#24303C';
 const medium = '#9B9B9B';
@@ -120,6 +123,7 @@ export const LIGHT_THEME: ThemeColors = {
   fight: '#8D181E',
   evade: '#0D6813',
   L10: light10,
+  L15: light15,
   L20: light20,
   L30: light30,
   D10: dark10,
@@ -262,6 +266,7 @@ export const DARK_THEME: ThemeColors = {
   D20: light20,
   D30: light30,
   L10: dark10,
+  L15: dark15,
   L20: dark20,
   L30: dark30,
   background: dark30,

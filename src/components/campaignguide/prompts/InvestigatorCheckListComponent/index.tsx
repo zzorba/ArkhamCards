@@ -3,11 +3,13 @@ import { map, filter, findIndex } from 'lodash';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import CheckListComponent from './CheckListComponent';
-import CampaignGuideContext from '../CampaignGuideContext';
-import ScenarioStepContext from '../ScenarioStepContext';
+import CheckListComponent from '../CheckListComponent';
+import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
+import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
+import InputWrapper from '../InputWrapper';
+import ActionButton from '../ActionButton';
 
 interface Props {
   id: string;
@@ -55,9 +57,11 @@ export default function InvestigatorCheckListComponent({
       return null;
     }
     return (
-      <BasicButton
+      <ActionButton
+        color="light"
+        leftIcon="plus-thin"
         onPress={showAddDeckDialog}
-        title={t`Add new investigator`}
+        title={t`Add new`}
       />
     );
   }, [allowNewDecks, showAddDeckDialog]);
@@ -81,6 +85,7 @@ export default function InvestigatorCheckListComponent({
         investigators,
         investigator => {
           return {
+            investigator: investigator,
             code: investigator.code,
             name: investigator.name,
             color: colors.faction[investigator.factionCode()].background,

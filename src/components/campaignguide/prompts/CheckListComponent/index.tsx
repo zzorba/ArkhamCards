@@ -13,11 +13,14 @@ import { BulletType } from '@data/scenario/types';
 import { m, s } from '@styles/space';
 import { useEffectUpdate, useToggles } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
+import Card from '@data/types/Card';
+import InputWrapper from '../InputWrapper';
 
 export interface ListItem {
   code: string;
   name: string;
   color?: string;
+  investigator?: Card;
 }
 
 export interface CheckListComponentProps {
@@ -70,18 +73,13 @@ export default function CheckListComponent({ id, choiceId, defaultState, bulletT
   const choiceList = scenarioState.stringChoices(id);
   const hasDecision = choiceList !== undefined;
 
-  const saveButton = useMemo(() => {
+  const disabledText = useMemo(() => {
     if (hasDecision) {
-      return null;
+      return undefined;
     }
     const effectiveMin = (!fixedMin && min) ? Math.min(min, items.length) : min;
     if (effectiveMin === undefined && max === undefined) {
-      return (
-        <BasicButton
-          title={t`Proceed`}
-          onPress={save}
-        />
-      );
+      return undefined;
     }
     const currentTotal = sum(
       map(
@@ -92,19 +90,11 @@ export default function CheckListComponent({ id, choiceId, defaultState, bulletT
     const hasMin = (effectiveMin === undefined || currentTotal >= effectiveMin);
     const hasMax = (max === undefined || currentTotal <= max);
     const enabled = hasMin && hasMax;
-    return !enabled ? (
-      <BasicButton
-        title={hasMin ? t`Too many` : t`Not enough`}
-        onPress={save}
-        disabled
-      />
-    ) : (
-      <BasicButton
-        title={t`Proceed`}
-        onPress={save}
-      />
-    );
-  }, [hasDecision, items, max, fixedMin, save, selectedChoice, min]);
+    if (!enabled) {
+      return hasMin ? t`Too many` : t`Not enough`;
+    }
+    return undefined;
+  }, [hasDecision, items, max, fixedMin, selectedChoice, min]);
 
   return (
     <>
@@ -113,56 +103,46 @@ export default function CheckListComponent({ id, choiceId, defaultState, bulletT
           <CampaignGuideTextComponent text={text} />
         </SetupStepWrapper>
       ) }
-      <View style={[styles.prompt, borderStyle]}>
-        <Text style={typography.mediumGameFont}>
-          { checkText }
-        </Text>
-      </View>
-      { loading ? (
-        <View style={[styles.loadingRow, borderStyle]}>
-          <ActivityIndicator size="small" animating color={colors.lightText} />
-        </View>
-      ) : map(items, (item, idx) => {
-        const selected = choiceList !== undefined ? (
-          choiceList[item.code] !== undefined
-        ) : (
-          !!selectedChoice[item.code]
-        );
-        return (
-          <CheckListItemComponent
-            key={idx}
-            {...item}
-            selected={selected}
-            onChoiceToggle={onChoiceToggle}
-            editable={!hasDecision}
-          />
-        );
-      }) }
-      { ((items.length === 0 && !loading) || (choiceList !== undefined && keys(choiceList).length === 0)) && (
-        <View style={[styles.row, borderStyle]}>
-          <Text style={[typography.mediumGameFont, styles.nameText]}>
-            { t`None` }
-          </Text>
-        </View>
-      ) }
-      { !hasDecision && !!button && (
-        <View style={[styles.bottomBorder, borderStyle]}>
-          { button }
-        </View>
-      ) }
-      { saveButton }
+      <InputWrapper
+        title={checkText}
+        editable={!hasDecision}
+        disabledText={disabledText}
+        buttons={!hasDecision && !!button ? button : undefined}
+        onSubmit={save}
+      >
+        { loading ? (
+          <View style={[styles.loadingRow, borderStyle]}>
+            <ActivityIndicator size="small" animating color={colors.lightText} />
+          </View>
+        ) : map(items, (item, idx) => {
+          const selected = choiceList !== undefined ? (
+            choiceList[item.code] !== undefined
+          ) : (
+            !!selectedChoice[item.code]
+          );
+          return (
+            <CheckListItemComponent
+              key={idx}
+              {...item}
+              selected={selected}
+              onChoiceToggle={onChoiceToggle}
+              editable={!hasDecision}
+            />
+          );
+        }) }
+        { ((items.length === 0 && !loading) || (choiceList !== undefined && keys(choiceList).length === 0)) && (
+          <View style={[styles.row, borderStyle]}>
+            <Text style={[typography.mediumGameFont, styles.nameText]}>
+              { t`None` }
+            </Text>
+          </View>
+        ) }
+      </InputWrapper>
     </>
   );
 }
 
 const styles = StyleSheet.create({
-  prompt: {
-    flexDirection: 'row',
-    paddingTop: m,
-    paddingRight: m,
-    justifyContent: 'flex-end',
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
   row: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     padding: s,
@@ -171,9 +151,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-  },
-  bottomBorder: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
   },
   nameText: {
     fontWeight: '600',
