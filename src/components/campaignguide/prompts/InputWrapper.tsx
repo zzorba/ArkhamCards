@@ -24,7 +24,6 @@ function TitleRow({ title, titleNode, editable }: { title: string; titleNode?: R
       space.paddingXs,
       titleNode ? styles.spaceBetween : undefined,
       editable ? { marginLeft: xs, marginRight: xs, borderBottomWidth: 1, borderColor: colors.L10 } : undefined,
-      space.marginBottomS,
     ]}>
       <Text style={typography.mediumGameFont}>{title}</Text>
       { !!titleNode && titleNode }
@@ -40,11 +39,10 @@ function ButtonRow({ buttons, onSubmit, disabledText }: { buttons?: React.ReactN
   return (
     <View style={[
       styles.row,
-      space.marginXs,
       buttons ? styles.spaceBetween : styles.flexEnd,
       { borderTopWidth: 1, borderColor: colors.L10 },
-      space.paddingTopS,
-      space.marginBottomL,
+      space.paddingTopXs,
+      space.marginXs,
     ]}>
       { !!buttons && <View style={space.paddingRightS}>{buttons}</View> }
       { !!onSubmit ? (
@@ -66,9 +64,16 @@ export default function InputWrapper({ children, editable, title, titleNode, but
   const { colors, shadow } = useContext(StyleContext);
   if (editable) {
     return (
-      <View style={[styles.container, space.paddingS, space.marginS, shadow.large, { backgroundColor: colors.L20 }]}>
+      <View
+        style={[
+          styles.container,
+          space.marginS,
+          shadow.large,
+          space.marginBottomL,
+          { backgroundColor: colors.L20 },
+        ]}>
         <TitleRow title={title} titleNode={titleNode} editable={editable} />
-        { children }
+        <View style={[space.paddingSideS, space.paddingTopS, space.paddingBottomXs ]}>{ children }</View>
         <ButtonRow buttons={buttons} onSubmit={onSubmit} disabledText={disabledText} />
       </View>
     );

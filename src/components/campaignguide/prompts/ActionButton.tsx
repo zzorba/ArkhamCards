@@ -41,8 +41,8 @@ export default function ActionButton({ color, onPress, title, leftIcon, rightIco
           borderRadius: 24,
           borderStyle: 'dashed',
           height: 40,
-          paddingLeft: 20,
-          paddingRight: 20,
+          paddingLeft: leftIcon ? 12 : 20,
+          paddingRight: rightIcon ? 8 : 20,
         },
       ]}>
         { content }
@@ -57,8 +57,8 @@ export default function ActionButton({ color, onPress, title, leftIcon, rightIco
           backgroundColor: color === 'dark' ? colors.D10 : colors.L15,
           height: 40,
           borderRadius: 24,
-          paddingLeft: 20,
-          paddingRight: 20,
+          paddingLeft: leftIcon ? 12 : 20,
+          paddingRight: rightIcon ? 8 : 20,
         },
       ]}
       onPress={onPress}
