@@ -19,6 +19,8 @@ interface Props {
   width: number;
   height: number;
   faction: string;
+  transparent?: boolean;
+  fullRound?: boolean;
 }
 
 // flip horizontally: transform={`translate(${width},0) scale(-1,1)`}
@@ -71,12 +73,12 @@ function StretchPattern({
 }
 
 
-function HeaderPattern({ faction, width, height }: { faction : string; width: number; height: number }) {
+function HeaderPattern({ faction, width, height, transparent }: { faction : string; width: number; height: number; transparent?: boolean }) {
   switch (faction) {
     case 'guardian':
       return (
         <StretchPattern patternWidth={344} width={width} height={height}>
-          <GuardianPattern />
+          <GuardianPattern color={transparent ? '#000' : '#FFF'} />
         </StretchPattern>
       );
     case 'seeker':
@@ -88,13 +90,13 @@ function HeaderPattern({ faction, width, height }: { faction : string; width: nu
     case 'rogue':
       return (
         <RepeatPattern patternWidth={360} height={height}>
-          <RoguePattern />
+          <RoguePattern color={transparent ? '#000' : '#FFF'} />
         </RepeatPattern>
       );
     case 'mystic':
       return (
         <RepeatPattern patternWidth={360} height={height}>
-          <MysticPattern />
+          <MysticPattern color={transparent ? '#000' : '#FFF'} />
         </RepeatPattern>
       );
     case 'survivor':
@@ -106,48 +108,60 @@ function HeaderPattern({ faction, width, height }: { faction : string; width: nu
     case 'mythos':
       return (
         <StretchPattern patternWidth={360} width={width} height={height}>
-          <MythosPattern />
+          <MythosPattern color={transparent ? '#000' : '#FFF'} />
         </StretchPattern>
       );
     case 'neutral':
     default:
       return (
         <RepeatPattern patternWidth={360} height={height}>
-          <NeutralPattern />
+          <NeutralPattern color={transparent ? '#000' : '#FFF'} />
         </RepeatPattern>
       );
   }
 }
 
-function HeaderPath({ width, height, opacity }: { width: number; height: number; opacity: number; }) {
+function HeaderPath({ width, height, opacity, fullRound }: { width: number; height: number; opacity: number; fullRound?: boolean }) {
   const topWidth = width - 16;
-  const sideHeight = height - 8;
+  const sideHeight = fullRound ? (height - 16) : height - 8;
 
   return (
     <Path
-      d={`M0,${height}
-        v-${sideHeight}
-        a8,8 0 0 1 8 -8
-        h${topWidth}
-        q8,0 8,8
-        v${sideHeight}
-        z
-      `}
+      d={fullRound ? (
+        `M0,${height}
+          v-${sideHeight}
+          a8,8 0 0 1 8,-8
+          h${topWidth}
+          a8,8 0 0 1 8,8
+          v${sideHeight}
+          a8,8 0 0 1 -8,8
+          h-100
+          a8,8 0 0 1 -8,-8
+        `) : (
+        `M0,${height}
+          v-${sideHeight}
+          a8,8 0 0 1 8,-8
+          h${topWidth}
+          a8,8 0 0 1 8,8
+          v${sideHeight}
+          z
+        `
+      )}
       fill="url(#FactionPattern)"
       fillOpacity={opacity}
     />
   );
 }
 
-const FactionPatternComponent = React.memo(function FactionPattern({ width, height, faction }: Props) {
-  const opacity = (faction === 'seeker' || faction === 'neutral') ? 0.07 : 0.1;
+const FactionPatternComponent = React.memo(function FactionPattern({ width, height, faction, transparent, fullRound }: Props) {
+  const opacity = transparent || (faction === 'seeker' || faction === 'neutral') ? 0.07 : 0.1;
   return (
     <View style={[styles.pattern, { width, height }, Platform.OS === 'android' ? { opacity } : {}]}>
       <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
         <Defs>
-          <HeaderPattern faction={faction} width={width} height={height} />
+          <HeaderPattern faction={faction} width={width} height={height} transparent={transparent} />
         </Defs>
-        <HeaderPath width={width} height={height} opacity={opacity} />
+        <HeaderPath fullRound={fullRound} width={width} height={height} opacity={opacity} />
       </Svg>
     </View>
   );

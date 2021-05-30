@@ -1,13 +1,17 @@
 import React, { useCallback, useContext } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Switch from '@components/core/Switch';
-import space from '@styles/space';
+import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import Card from '@data/types/Card';
+import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
 
 interface Props {
   code: string;
+  investigator?: Card;
   name: string;
   color?: string;
   selected: boolean;
@@ -17,18 +21,43 @@ interface Props {
 
 export default function CheckListItemComponent({
   code,
+  investigator,
   name,
   color,
   selected,
   onChoiceToggle,
   editable,
 }: Props) {
-  const { borderStyle, colors, typography } = useContext(StyleContext);
+  const { borderStyle, colors, typography, width } = useContext(StyleContext);
   const toggle = useCallback((value: boolean) => {
     onChoiceToggle(code, value);
   }, [onChoiceToggle, code]);
+  const onPress = useCallback(() => toggle(!selected), [selected, toggle]);
   if (!editable && !selected) {
     return null;
+  }
+  if (investigator) {
+    return (
+      <View style={space.paddingBottomXs}>
+        <TouchableOpacity onPress={onPress}>
+          <CompactInvestigatorRow
+            width={width - (editable ? s * 4 : 2)}
+            leftContent={editable && (
+              <View style={[{ flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }]}>
+                <ArkhamSwitch
+                  onValueChange={toggle}
+                  value={selected}
+                  large
+                  color="light"
+                />
+              </View>
+            )}
+            investigator={investigator}
+            transparent={editable && !selected}
+          />
+        </TouchableOpacity>
+      </View>
+    );
   }
   return (
     <View style={[

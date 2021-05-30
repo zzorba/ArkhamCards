@@ -228,17 +228,19 @@ export const syncCards = async function(
         headers,
       });
       if (response.status === 304 && cache) {
-        const customCardsResponse = await customCardsPromise;
-        const customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
-
-        const queryRunner = await db.startTransaction();
-
-        await insertChunk(customCards, async(c: Card[]) => {
-          await queryRunner.manager.delete(Card, map(c, c => c.id));
-          await queryRunner.manager.insert(Card, c);
-        });
-        await queryRunner.commitTransaction();
-        await queryRunner.release();
+        try {
+          const customCardsResponse = await customCardsPromise;
+          const customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
+          const queryRunner = await db.startTransaction();
+          await insertChunk(customCards, async(c: Card[]) => {
+            await queryRunner.manager.delete(Card, map(c, c => c.id));
+            await queryRunner.manager.insert(Card, c);
+          });
+          await queryRunner.commitTransaction();
+          await queryRunner.release();
+        } catch (e) {
+          console.log(e);
+        }
         return cache;
       }
       VERBOSE && console.log('Got results from ArkhamDB');
@@ -381,8 +383,13 @@ export const syncCards = async function(
           });
         }
       });
-      const customCardsResponse = await customCardsPromise;
-      const customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
+      let customCards: Card[] = [];
+      try {
+        const customCardsResponse = await customCardsPromise;
+        customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
+      } catch (e) {
+        console.log(e);
+      }
       const [linkedCards, normalCards] = partition(dedupedCards, card => !!card.linked_card);
       const queryRunner = await db.startTransaction();
       VERBOSE && console.log('Parsed all cards');
@@ -397,9 +404,11 @@ export const syncCards = async function(
       await insertChunk(normalCards, async(c: Card[]) => {
         await queryRunner.manager.insert(Card, c);
       });
-      await insertChunk(customCards, async(c: Card[]) => {
-        await queryRunner.manager.insert(Card, c);
-      });
+      if (customCards.length) {
+        await insertChunk(customCards, async(c: Card[]) => {
+          await queryRunner.manager.insert(Card, c);
+        });
+      }
       await queryRunner.commitTransaction();
       await queryRunner.release();
       VERBOSE && console.log('Inserted normal cards');

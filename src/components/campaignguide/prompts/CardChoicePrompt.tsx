@@ -21,6 +21,7 @@ import Card from '@data/types/Card';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { calculateCardChoiceResult } from '@data/scenario/inputHelper';
 import ScenarioGuideContext from '../ScenarioGuideContext';
+import ActionButton from './ActionButton';
 
 interface Props {
   componentId: string;
@@ -254,7 +255,9 @@ export default function CardChoicePrompt({ componentId, id, text, input }: Props
       checkText={choice.text}
       loading={loading}
       button={(nonDeckButton && selectedCards === undefined) ? (
-        <BasicButton
+        <ActionButton
+          color="light"
+          leftIcon="plus-thin"
           title={t`Choose additional card`}
           onPress={showOtherCardSelector}
         />
