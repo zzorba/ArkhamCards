@@ -123,8 +123,7 @@ function HeaderPattern({ faction, width, height, transparent }: { faction : stri
 
 function HeaderPath({ width, height, opacity, fullRound }: { width: number; height: number; opacity: number; fullRound?: boolean }) {
   const topWidth = width - 16;
-  const sideHeight = fullRound ? (height - 16) : height - 8;
-
+  const sideHeight = height - 8;
   return (
     <Path
       d={fullRound ? (

@@ -69,6 +69,7 @@ export default function ChoiceComponent({
 const styles = StyleSheet.create({
   textBlock: {
     flex: 1,
+    marginRight: s,
   },
   row: {
     flexDirection: 'row',
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   bullet: {
-    marginRight: m,
+    marginRight: s,
     minWidth: s + m,
   },
   radioButton: {

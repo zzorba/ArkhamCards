@@ -11,14 +11,15 @@ interface Props {
   children: React.ReactNode | React.ReactNode[];
   footer?: React.ReactNode;
   noSpace?: boolean;
+  noShadow?: boolean;
 }
 
-export default function RoundedFactionBlock({ header, footer, children, faction, noSpace }: Props) {
+export default function RoundedFactionBlock({ header, footer, children, faction, noSpace, noShadow }: Props) {
   const { colors, shadow } = useContext(StyleContext);
   return (
     <View style={[
       styles.block,
-      shadow.large,
+      noShadow ? undefined : shadow.large,
       {
         borderColor: colors.faction[faction].background,
         backgroundColor: colors.background,

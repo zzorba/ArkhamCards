@@ -1,13 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { t } from 'ttag';
 
 import StyleContext from '@styles/StyleContext';
 import space, { s, xs } from '@styles/space';
 import ActionButton from './ActionButton';
+import { BulletType } from '@data/scenario/types';
+import SetupStepWrapper from '../SetupStepWrapper';
 
 interface Props {
-  bulletType: ''
+  bulletType?: BulletType;
   editable: boolean;
   title?: string;
   titleNode?: React.ReactNode;
@@ -17,20 +19,38 @@ interface Props {
   children: React.ReactNode;
 }
 
-function TitleRow({ title, titleNode, editable }: { title?: string; titleNode?: React.ReactNode; editable?: boolean }) {
+function TitleRow({ title, titleNode, editable, bulletType }: { bulletType?: BulletType; title?: string; titleNode?: React.ReactNode; editable?: boolean }) {
   const { colors, typography } = useContext(StyleContext);
-  if (!title && !titleNode) {
+  const content = useMemo(() => {
+    if (!title && !titleNode) {
+      return null;
+    }
+    if (bulletType) {
+      return (
+        <SetupStepWrapper bulletType={bulletType} noPadding={editable}>
+          { !!title && <Text style={typography.mediumGameFont}>{title}</Text> }
+          { !!titleNode && titleNode }
+        </SetupStepWrapper>
+      );
+    }
+    return (
+      <>
+        { !!title && <Text style={typography.mediumGameFont}>{title}</Text> }
+        { !!titleNode && titleNode }
+      </>
+    );
+  }, [title, titleNode, editable, bulletType, typography]);
+  if (!content) {
     return null;
   }
   return (
     <View style={[
       styles.row,
-      space.paddingXs,
+      (editable || !bulletType) ? space.paddingXs : undefined,
       (titleNode && title) ? styles.spaceBetween : undefined,
       editable ? { marginLeft: xs, marginRight: xs, borderBottomWidth: 1, borderColor: colors.L10 } : undefined,
     ]}>
-      { !!title && <Text style={typography.mediumGameFont}>{title}</Text> }
-      { !!titleNode && titleNode }
+      { content }
     </View>
   );
 }
@@ -62,7 +82,7 @@ function ButtonRow({ buttons, onSubmit, disabledText }: { buttons?: React.ReactN
   );
 }
 
-export default function InputWrapper({ children, editable, title, titleNode, buttons, onSubmit, disabledText }: Props) {
+export default function InputWrapper({ children, bulletType, editable, title, titleNode, buttons, onSubmit, disabledText }: Props) {
   const { colors, shadow } = useContext(StyleContext);
   if (editable) {
     return (
@@ -74,16 +94,16 @@ export default function InputWrapper({ children, editable, title, titleNode, but
           space.marginBottomL,
           { backgroundColor: colors.L20 },
         ]}>
-        <TitleRow title={title} titleNode={titleNode} editable={editable} />
-        <View style={[space.paddingSideS, space.paddingTopS, space.paddingBottomXs ]}>{ children }</View>
+        <TitleRow bulletType={bulletType} title={title} titleNode={titleNode} editable={editable} />
+        <View style={[space.paddingSideS, space.paddingTopS, space.paddingBottomXs]}>{ children }</View>
         <ButtonRow buttons={buttons} onSubmit={onSubmit} disabledText={disabledText} />
       </View>
     );
   }
   return (
-    <View style={space.paddingS}>
-      <TitleRow title={title} titleNode={titleNode} />
-      { children }
+    <View style={bulletType ? undefined : space.paddingS}>
+      <TitleRow bulletType={bulletType} title={title} titleNode={titleNode} />
+      <View style={bulletType ? space.paddingSideS : undefined}>{ children }</View>
     </View>
   );
 }

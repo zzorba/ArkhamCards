@@ -79,12 +79,11 @@ export default function ChooseOnePrompt({
         </>
       ) : (
         <InputWrapper
+          bulletType={bulletType || 'default'}
           titleNode={
-            <SetupStepWrapper bulletType={bulletType}>
-              <CampaignGuideTextComponent
-                text={text || t`The investigators must decide (choose one):`}
-              />
-            </SetupStepWrapper>
+            <CampaignGuideTextComponent
+              text={text || t`The investigators must decide (choose one):`}
+            />
           }
           editable={decision === undefined}
           disabledText={selectedChoice === undefined ? t`Continue` : undefined} onSubmit={save}

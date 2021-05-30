@@ -11,6 +11,8 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 
 export type DeckButtonIcon =
+  'faq' |
+  'trauma' |
   'backup' |
   'seal' |
   'lock' |
@@ -50,18 +52,22 @@ interface Props {
   title: string;
   detail?: string;
   icon?: DeckButtonIcon;
+  encounterIcon?: string;
   color?: 'red' | 'red_outline' | 'gold' | 'default' | 'dark_gray' | 'light_gray';
   onPress?: () => void;
-  rightMargin?: boolean;
+  rightMargin?: number;
   thin?: boolean;
   shrink?: boolean;
   loading?: boolean;
   bottomMargin?: number;
+  leftMargin?: number;
   topMargin?: number;
   disabled?: boolean;
+  noShadow?: boolean;
 }
 
 const ICON_SIZE: { [icon: string]: number | undefined } = {
+  trauma: 32,
   backup: 24,
   'plus-button': 32,
   'minus-button': 32,
@@ -87,9 +93,6 @@ const ICON_SIZE_THIN: { [icon: string]: number | undefined } = {
 };
 
 const ICON_STYLE: { [icon: string]: ViewStyle | undefined } = {
-  weakness: {
-    marginLeft: -3,
-  },
   'check-thin': {
     marginTop: -6,
   },
@@ -105,15 +108,18 @@ export default function DeckButton({
   disabled,
   title,
   detail,
+  encounterIcon,
   icon,
   color = 'default',
   onPress,
+  leftMargin,
   rightMargin,
   topMargin,
   thin,
   shrink,
   loading,
   bottomMargin,
+  noShadow,
 }: Props) {
   const { colors, fontScale, typography, shadow } = useContext(StyleContext);
   const backgroundColors = {
@@ -169,6 +175,9 @@ export default function DeckButton({
     if (loading) {
       return <ActivityIndicator animating color={theIconColor} size="small" />;
     }
+    if (encounterIcon) {
+      return <EncounterIcon encounter_code={encounterIcon} size={26} color={theIconColor} />;
+    }
     if (!icon) {
       return null;
     }
@@ -183,7 +192,7 @@ export default function DeckButton({
       return <EncounterIcon encounter_code={icon} size={size} color={theIconColor} />;
     }
     return <AppIcon name={icon} size={size} color={theIconColor} />;
-  }, [loading, icon, thin, theIconColor]);
+  }, [loading, icon, thin, encounterIcon, theIconColor]);
   const topTextHeight = 22 * Math.max(1.0, fontScale);
   const textHeight = (detail ? 10 : 0) * Math.max(1.0, fontScale) + topTextHeight;
   const height = textHeight + s * 2 + xs * 2;
@@ -196,9 +205,10 @@ export default function DeckButton({
           borderRadius: color === 'dark_gray' || color === 'light_gray' ? 8 : 4,
           backgroundColor: backgroundColors[color],
         },
-        color === 'dark_gray' ? shadow.large : undefined,
+        color === 'dark_gray' && !noShadow ? shadow.large : undefined,
         shrink ? undefined : styles.grow,
-        rightMargin ? space.marginRightS : undefined,
+        leftMargin ? { marginLeft: leftMargin } : undefined,
+        rightMargin ? { marginRight: rightMargin } : undefined,
         bottomMargin ? { marginBottom: bottomMargin } : undefined,
         topMargin ? { marginTop: topMargin } : undefined,
       ]}
@@ -212,13 +222,13 @@ export default function DeckButton({
         space.paddingTopS,
         space.paddingBottomS,
       ]}>
-        { !!icon && (
+        { !!iconContent && (
           <View style={[
             styles.icon,
             space.marginLeftXs,
             space.marginRightS,
             thin ? { marginLeft: xs, width: 28, height: 32 * fontScale } : { width: 32, height: 32 * fontScale },
-            loading ? undefined : ICON_STYLE[icon],
+            loading || !icon ? undefined : ICON_STYLE[icon],
           ]}>
             { iconContent }
           </View>

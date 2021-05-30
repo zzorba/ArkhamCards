@@ -8,6 +8,8 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import { BulletType } from '@data/scenario/types';
 import space, { s, m, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import ScenarioStepContext from './ScenarioStepContext';
+import ScenarioGuideContext from './ScenarioGuideContext';
 
 interface Props {
   bulletType?: BulletType;
@@ -15,10 +17,15 @@ interface Props {
   children: React.ReactNode | React.ReactNode[];
   border?: boolean;
   hasTitle?: boolean;
+
+  noPadding?: boolean;
 }
 
-export default function SetupStepWrapper({ bulletType, reverseSpacing, children, border, hasTitle }: Props) {
+export default function SetupStepWrapper({ bulletType, noPadding, reverseSpacing, children, border, hasTitle }: Props) {
   const { colors } = useContext(StyleContext);
+  const { campaignLog } = useContext(ScenarioStepContext);
+  const { processedScenario } = useContext(ScenarioGuideContext);
+  const resolution = campaignLog.scenarioStatus(processedScenario.id.encodedScenarioId) === 'resolution';
 
   const balancedSpacing = useMemo(() => {
     switch (bulletType) {
@@ -37,11 +44,11 @@ export default function SetupStepWrapper({ bulletType, reverseSpacing, children,
         return <View style={styles.bullet} />;
       case 'small':
         return (
-          <View style={[styles.smallBullet, { width: 20 }]}>
+          <View style={[noPadding ? undefined : styles.smallBullet, { width: 20 }]}>
             <ArkhamIcon
               name="bullet"
               size={20}
-              color={colors.campaign.setup}
+              color={resolution ? colors.campaign.resolution : colors.campaign.setup}
             />
           </View>
         );
@@ -51,12 +58,12 @@ export default function SetupStepWrapper({ bulletType, reverseSpacing, children,
             <ArkhamIcon
               name="guide_bullet"
               size={22}
-              color={colors.campaign.setup}
+              color={resolution ? colors.campaign.resolution : colors.campaign.setup}
             />
           </View>
         );
     }
-  }, [bulletType, colors]);
+  }, [bulletType, resolution, noPadding, colors]);
 
   if (reverseSpacing) {
     return (
@@ -76,8 +83,8 @@ export default function SetupStepWrapper({ bulletType, reverseSpacing, children,
   return (
     <View style={[
       styles.step,
-      space.paddingS,
-      space.paddingSideM,
+      noPadding ? undefined : space.paddingS,
+      noPadding ? undefined : space.paddingSideM,
       border ? {
         borderTopWidth: StyleSheet.hairlineWidth,
         borderBottomWidth: StyleSheet.hairlineWidth,
