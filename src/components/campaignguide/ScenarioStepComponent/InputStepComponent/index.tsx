@@ -51,6 +51,7 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
           id={step.id}
           bulletType={step.bullet_type}
           text={step.text}
+          confirmText={step.input.confirm_text}
           choices={chooseOneInputChoices(step.input.choices, campaignLog)}
           picker={step.input.style === 'picker'}
         />

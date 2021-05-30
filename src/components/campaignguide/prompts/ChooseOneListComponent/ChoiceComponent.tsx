@@ -35,7 +35,7 @@ export default function ChoiceComponent({
   const textContent = useMemo(() => {
     return (
       <>
-        { choice.text && <CampaignGuideTextComponent text={choice.text} /> }
+        { choice.text && <CampaignGuideTextComponent text={choice.text} sizeScale={choice.large ? 1.2 : 1} /> }
         { choice.description && <CampaignGuideTextComponent text={choice.description} /> }
       </>
     );
@@ -69,6 +69,9 @@ export default function ChoiceComponent({
 const styles = StyleSheet.create({
   textBlock: {
     flex: 1,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
     marginRight: s,
   },
   row: {

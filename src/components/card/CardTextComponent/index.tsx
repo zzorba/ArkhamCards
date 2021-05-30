@@ -158,7 +158,7 @@ function BoldItalicHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, 
   };
 }
 
-function BoldHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+function BoldHtmlTagRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<b>([\\s\\S]+?)<\\/b>')),
     order: BASE_ORDER + 2,
@@ -167,7 +167,7 @@ function BoldHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, St
         children: nestedParse(capture[1], state),
       };
     },
-    render: BoldHtmlTagNode(style),
+    render: BoldHtmlTagNode(style, sizeScale),
   };
 }
 
@@ -251,7 +251,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
       brTag: BreakTagRule(context),
       biTag: BoldItalicHtmlTagRule(context),
       badBiTag: MalformedBoldItalicHtmlTagRule(context),
-      bTag: BoldHtmlTagRule(context),
+      bTag: BoldHtmlTagRule(context, sizeScale),
       pTag: ParagraphTagRule,
       uTag: UnderlineHtmlTagRule(context),
       emTag: EmphasisHtmlTagRule(context),

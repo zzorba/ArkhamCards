@@ -18,9 +18,11 @@ interface Props {
   id: string;
   bulletType?: BulletType;
   text?: string;
+  confirmText?: string;
   showUndo?: boolean;
   choices: DisplayChoice[];
   picker?: boolean;
+  largePrompt?: boolean;
 }
 
 interface State {
@@ -31,6 +33,7 @@ export default function ChooseOnePrompt({
   id,
   bulletType,
   text,
+  confirmText,
   choices,
   picker,
   showUndo,
@@ -57,6 +60,7 @@ export default function ChooseOnePrompt({
 
   const decision = scenarioState.choice(id);
   const selectedChoice = decision !== undefined ? decision : currentSelectedChoice;
+  const prompt = (decision === undefined ? text : confirmText) || text || t`The investigators must decide (choose one):`;
   return (
     <>
       { picker ? (
@@ -80,11 +84,8 @@ export default function ChooseOnePrompt({
       ) : (
         <InputWrapper
           bulletType={bulletType || 'default'}
-          titleNode={
-            <CampaignGuideTextComponent
-              text={text || t`The investigators must decide (choose one):`}
-            />
-          }
+          title={confirmText ? prompt : undefined}
+          titleNode={confirmText ? undefined : <CampaignGuideTextComponent text={prompt} />}
           editable={decision === undefined}
           disabledText={selectedChoice === undefined ? t`Continue` : undefined} onSubmit={save}
         >
