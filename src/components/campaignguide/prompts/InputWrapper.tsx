@@ -28,14 +28,14 @@ function TitleRow({ title, titleNode, editable, bulletType }: { bulletType?: Bul
     if (bulletType) {
       return (
         <SetupStepWrapper bulletType={bulletType} noPadding={editable}>
-          { !!title && <Text style={typography.mediumGameFont}>{title}</Text> }
+          { !!title && <Text style={typography.bigGameFont}>{title}</Text> }
           { !!titleNode && titleNode }
         </SetupStepWrapper>
       );
     }
     return (
       <>
-        { !!title && <Text style={typography.mediumGameFont}>{title}</Text> }
+        { !!title && <Text style={typography.bigGameFont}>{title}</Text> }
         { !!titleNode && titleNode }
       </>
     );

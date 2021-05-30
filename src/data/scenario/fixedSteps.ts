@@ -56,16 +56,17 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
   const step: InputStep = {
     id: CHOOSE_RESOLUTION_STEP_ID,
     type: 'input',
-    title: t`Resolutions`,
-    text: t`Select resolution`,
+    text: t`Choose resolution`,
     bullet_type: 'none',
     input: {
       type: 'choose_one',
+      confirm_text: t`Resolution`,
       choices: map(
         filter(resolutions, resolution => resolution.id !== 'investigator_defeat'),
         resolution => {
           const choice: BinaryConditionalChoice = {
             id: resolution.id,
+            large: true,
             text: `<b>${resolution.title}</b>`,
             description: resolution.description ? `<i>${resolution.description}</i>` : undefined,
             steps: [
