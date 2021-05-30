@@ -5,6 +5,7 @@ import { t } from 'ttag';
 import BasicButton from '@components/core/BasicButton';
 import { LocationSetupProps } from '../LocationSetupView';
 import { LocationSetupStep } from '@data/scenario/types';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 interface Props {
   step: LocationSetupStep;
@@ -33,6 +34,6 @@ export default function LocationSetupButton({ componentId, step }: Props) {
     });
   }, [componentId, step]);
   return (
-    <BasicButton title={step.text} onPress={onPress} />
+    <ArkhamButton icon="show" title={step.text} onPress={onPress} />
   );
 }

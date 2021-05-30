@@ -18,21 +18,21 @@ export default function StepBorder({ type, width, margin }: Props) {
       { type === 'top' ? (
         <>
           <View style={[styles.topLeft, { left: margin }]}>
-            <AppIcon size={width * SCALE} color={colors.scenarioGreen} name="fleur_top_left" />
+            <AppIcon size={width * SCALE} color={colors.campaign.setup} name="fleur_top_left" />
           </View>
-          <View style={[styles.topLine, { backgroundColor: colors.scenarioGreen, width: lineWidth, left: (width - lineWidth) / 2 }]} />
+          <View style={[styles.topLine, { backgroundColor: colors.campaign.setup, width: lineWidth, left: (width - lineWidth) / 2 }]} />
           <View style={[styles.topRight, { right: margin }]}>
-            <AppIcon size={width * SCALE} color={colors.scenarioGreen} name="fleur_top_right" />
+            <AppIcon size={width * SCALE} color={colors.campaign.setup} name="fleur_top_right" />
           </View>
         </>
       ) : (
         <>
           <View style={[styles.bottomLeft, { left: margin }]}>
-            <AppIcon size={width * SCALE} color={colors.scenarioGreen} name="fleur_bottom_left" />
+            <AppIcon size={width * SCALE} color={colors.campaign.setup} name="fleur_bottom_left" />
           </View>
-          <View style={[styles.bottomLine, { backgroundColor: colors.scenarioGreen, width: lineWidth, left: (width - lineWidth) / 2 }]} />
+          <View style={[styles.bottomLine, { backgroundColor: colors.campaign.setup, width: lineWidth, left: (width - lineWidth) / 2 }]} />
           <View style={[styles.bottomRight, { right: margin }]}>
-            <AppIcon size={width * SCALE} color={colors.scenarioGreen} name="fleur_bottom_right" />
+            <AppIcon size={width * SCALE} color={colors.campaign.setup} name="fleur_bottom_right" />
           </View>
         </>
       ) }

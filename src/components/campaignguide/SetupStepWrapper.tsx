@@ -41,7 +41,7 @@ export default function SetupStepWrapper({ bulletType, reverseSpacing, children,
             <ArkhamIcon
               name="bullet"
               size={20}
-              color={colors.darkText}
+              color={colors.campaign.setup}
             />
           </View>
         );
@@ -51,7 +51,7 @@ export default function SetupStepWrapper({ bulletType, reverseSpacing, children,
             <ArkhamIcon
               name="guide_bullet"
               size={22}
-              color={colors.scenarioGreen}
+              color={colors.campaign.setup}
             />
           </View>
         );
