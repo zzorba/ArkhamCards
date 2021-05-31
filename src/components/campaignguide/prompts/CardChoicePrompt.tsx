@@ -4,7 +4,6 @@ import { filter, find, flatMap, keys, map, partition, uniq, uniqBy } from 'lodas
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import CounterListComponent from './CounterListComponent';
 import CheckListComponent from './CheckListComponent';
 import ChoiceListComponent from './ChoiceListComponent';

@@ -3,15 +3,12 @@ import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { every, findIndex, forEach, flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import ChoiceListItemComponent from './ChoiceListItemComponent';
 import ScenarioGuideContext from '../../ScenarioGuideContext';
-import SetupStepWrapper from '../../SetupStepWrapper';
 import { StringChoices } from '@actions/types';
-import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType } from '@data/scenario/types';
 import { Choices, DisplayChoiceWithId } from '@data/scenario';
-import space, { m } from '@styles/space';
+import { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import Card from '@data/types/Card';
 import InputWrapper from '../InputWrapper';

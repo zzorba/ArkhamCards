@@ -139,7 +139,7 @@ export default function useChaosBagDialog({
       />
     );
     return result;
-  }, [oddsCalculatorPressed, drawChaosBagPressed, editChaosBagDialog, guided]);
+  }, [oddsCalculatorPressed, drawChaosBagPressed, editChaosBagDialog, setChaosBag, guided]);
   const content = useMemo(() => {
     return (
       <>

@@ -1,10 +1,8 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { filter, findIndex, map, keys } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
-import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import Card from '@data/types/Card';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import StyleContext from '@styles/StyleContext';

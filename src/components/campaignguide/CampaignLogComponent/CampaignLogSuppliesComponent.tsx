@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { map } from 'lodash';
 
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { InvestigatorSection } from '@data/scenario/GuidedCampaignLog';
-import space, { l, m, s } from '@styles/space';
+import space from '@styles/space';
 import useSingleCard from '@components/card/useSingleCard';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
@@ -63,11 +63,3 @@ export default function CampaignLogSuppliesComponent({ sectionId, campaignGuide,
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: s,
-    paddingLeft: m,
-    paddingRight: l,
-  },
-});
