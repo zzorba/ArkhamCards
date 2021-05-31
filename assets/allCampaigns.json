@@ -2638,7 +2638,6 @@
     },
     {
       "id": "warn_or_calm_choice",
-      "text": "The investigators must decide (choose one):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -13385,7 +13384,6 @@
     },
     {
       "id": "warn_or_calm_choice",
-      "text": "The investigators must decide (choose one):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -23817,6 +23815,7 @@
     },
     {
       "id": "maybe_earn_alejandro",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "has_card",
@@ -30658,7 +30657,11 @@
     },
     {
       "id": "setup_act_ab",
-      "text": "Adjust the contents of the “a/b” deck as follows:",
+      "text": "Adjust the contents of the “a/b” deck as follows:"
+    },
+    {
+      "id": "setup_act_ab_actual",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -58193,6 +58196,7 @@
     },
     {
       "id": "maybe_earn_alejandro",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "has_card",
@@ -64193,6 +64197,7 @@
     "encounter_deck",
     "three_acts_three_decks",
     "setup_act_ab",
+    "setup_act_ab_actual",
     "setup_act_cd",
     "setup_act_ef_prompt",
     "setup_act_ef",
@@ -64576,7 +64581,11 @@
     },
     {
       "id": "setup_act_ab",
-      "text": "Adjust the contents of the “a/b” deck as follows:",
+      "text": "Adjust the contents of the “a/b” deck as follows:"
+    },
+    {
+      "id": "setup_act_ab_actual",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "campaign_log",

@@ -1,5 +1,6 @@
 import React, { useContext, useMemo } from 'react';
-import { t } from 'ttag';
+import { StyleSheet, Text, View } from 'react-native';
+import { c, t } from 'ttag';
 
 import ChooseOnePrompt from '@components/campaignguide/prompts/ChooseOnePrompt';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
@@ -11,6 +12,8 @@ import { chooseOneInputChoices } from '@data/scenario/inputHelper';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 import { CampaignId } from '@actions/types';
 import PlayOptionsComponent from './PlayOptionsComponent';
+import StyleContext from '@styles/StyleContext';
+import space from '@styles/space';
 
 interface Props {
   componentId: string;
@@ -22,6 +25,7 @@ interface Props {
 export default function PlayScenarioComponent({ componentId, campaignId, id, input }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { campaignLog } = useContext(ScenarioStepContext);
+  const { colors, typography } = useContext(StyleContext);
 
   const mainContent = useMemo(() => {
     const firstDecision = scenarioState.choice(id);
@@ -39,7 +43,7 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
             choices={[
               ...choices,
               {
-                text: 'Other.',
+                text: c('campaign_log_entry').t`Other.`,
               },
             ]}
           />
@@ -56,8 +60,17 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
         />
       );
     }
+    if (firstDecision === PlayingScenarioBranch.RESOLUTION) {
+      return (
+        <View style={[styles.resolutionBlock, space.marginS, { backgroundColor: colors.campaign.resolutionBackground }]}>
+          <View style={[styles.resolutionContent, space.paddingS]}>
+            <Text style={[typography.bigGameFont, { color: colors.campaign.resolution }]}>{t`Scenario Ended`}</Text>
+          </View>
+        </View>
+      )
+    }
     return null;
-  }, [scenarioState, campaignLog, componentId, campaignId, id, input]);
+  }, [scenarioState, campaignLog, typography, colors, componentId, campaignId, id, input]);
 
   return (
     <>
@@ -73,3 +86,14 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  resolutionBlock: {
+    borderRadius: 8,
+  },
+  resolutionContent: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+});

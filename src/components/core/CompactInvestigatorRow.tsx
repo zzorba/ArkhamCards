@@ -50,7 +50,7 @@ export default function CompactInvestigatorRow({ eliminated, investigator, trans
             { investigator.subname }
           </Text>
         </View>
-        { !!children && <View style={space.paddingLeftS}>{children }</View> }
+        { !!children && <View style={[styles.rightRow, space.paddingLeftS]}>{ children }</View> }
       </View>
     </RoundedFactionHeader>
   );
@@ -66,6 +66,11 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+    alignItems: 'center',
+  },
+  rightRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
     alignItems: 'center',
   },
 });

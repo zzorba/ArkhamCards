@@ -399,7 +399,7 @@ export function createInvestigatorStatusStep(
   return {
     id,
     type: 'input',
-    text: t`Investigator status at end of scenario:`,
+    text: t`Status of investigators`,
     input: {
       type: 'investigator_choice',
       investigator: 'all',

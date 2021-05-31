@@ -13,9 +13,12 @@ import { BulletType } from '@data/scenario/types';
 import { Choices, DisplayChoiceWithId } from '@data/scenario';
 import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import Card from '@data/types/Card';
+import InputWrapper from '../InputWrapper';
 
 export interface ListItem {
   code: string;
+  investigator?: Card;
   name: string;
   color?: string;
   masculine?: boolean;
@@ -81,21 +84,6 @@ export default function InvestigatorChoicePrompt({ id, bulletType, text, optiona
   }, [id, options, scenarioState, selectedChoice]);
   const inputChoices = scenarioState.stringChoices(id);
   const hasDecision = inputChoices !== undefined;
-  const saveButton = useMemo(() => {
-    if (hasDecision) {
-      return <View style={space.marginBottomM} />;
-    }
-    return (
-      <BasicButton
-        title={t`Proceed`}
-        onPress={save}
-        disabled={detailed && !every(
-          items,
-          item => selectedChoice[item.code] !== undefined)
-        }
-      />
-    );
-  }, [hasDecision, items, detailed, selectedChoice, save]);
 
   const getChoice = useCallback((
     code: string,
@@ -156,17 +144,22 @@ export default function InvestigatorChoicePrompt({ id, bulletType, text, optiona
   }, [inputChoices, items, detailed, options, optional, getChoice, onChoiceChange]);
 
   return (
-    <>
-      <SetupStepWrapper bulletType={bulletType}>
-        { !!text && <CampaignGuideTextComponent text={text} /> }
-      </SetupStepWrapper>
+    <InputWrapper
+      editable={!hasDecision}
+      onSubmit={save}
+      disabledText={detailed && !every(
+        items,
+        item => selectedChoice[item.code] !== undefined) ? t`Continue` : undefined}
+      title={text}
+      titleStyle="setup"
+      bulletType={bulletType}
+    >
       { loading ? (
         <View style={[styles.loadingRow, borderStyle]}>
           <ActivityIndicator size="small" animating color={colors.lightText} />
         </View>
       ) : choicesComponent }
-      { saveButton }
-    </>
+    </InputWrapper>
   );
 }
 

@@ -1,14 +1,17 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { filter, findIndex, map, keys } from 'lodash';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import Card from '@data/types/Card';
-import ScenarioStepContext from '../ScenarioStepContext';
+import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import StyleContext from '@styles/StyleContext';
-import ScenarioGuideContext from '../ScenarioGuideContext';
+import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
+import InputWrapper from '../InputWrapper';
+import InvestigatorRadioChoice from './InvestigatorRadioChoice';
+import { s } from '@styles/space';
 
 interface Props {
   id: string;
@@ -35,7 +38,7 @@ export default function ChooseInvestigatorPrompt({
 }: Props): JSX.Element {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { scenarioInvestigators } = useContext(ScenarioStepContext);
-  const { borderStyle } = useContext(StyleContext);
+  const { borderStyle, width } = useContext(StyleContext);
   const [selectedInvestigator, setSelectedInvestigator] = useState(required && scenarioInvestigators.length > 0 ? scenarioInvestigators[0].code : undefined);
   const theInvestigators = useMemo(() => {
     const investigatorSet = investigators && new Set(investigators);
@@ -86,52 +89,44 @@ export default function ChooseInvestigatorPrompt({
     );
   }, [selectedInvestigator, choice, theInvestigators]);
   return (
-    <>
-      <View style={[
-        styles.wrapper,
-        borderStyle,
-        id !== '$lead_investigator' ? styles.topBorder : {},
-      ]}>
-        <SinglePickerComponent
-          title={title}
-          description={description}
-          defaultLabel={defaultLabel}
-          choices={
-            map(theInvestigators, investigator => {
-              return {
-                text: investigatorToValue ? investigatorToValue(investigator) : investigator.name,
-                effects: [],
-              };
-            })
-          }
-          optional={!required}
-          selectedIndex={selectedIndex === -1 ? undefined : selectedIndex}
-          editable={choice === undefined}
-          onChoiceChange={onChoiceChange}
-          topBorder
-        />
-      </View>
-      { choice !== undefined ?
-        // TODO: need to handle no-choice here?
-        (!!renderResults && renderResults(
-          selectedIndex === -1 ? undefined : theInvestigators[selectedIndex]
-        )) : (
-          <BasicButton
-            title={t`Proceed`}
-            onPress={save}
-            disabled={required && selectedInvestigator === undefined}
+    <InputWrapper
+      title={title}
+      onSubmit={save}
+      editable={choice === undefined}
+      disabledText={required && selectedInvestigator === undefined ? t`Continue` : undefined}
+    >
+      <View style={{ flexDirection: 'column' }}>
+        { map(theInvestigators, (investigator, index) => (
+          <InvestigatorRadioChoice
+            key={investigator.code}
+            type="investigator"
+            investigator={investigator}
+            index={index}
+            onSelect={onChoiceChange}
+            editable={choice === undefined}
+            selected={selectedIndex === index}
+            width={width - s * (choice === undefined ? 4 : 2)}
           />
-        )
+        )) }
+        { !required && (
+          <InvestigatorRadioChoice
+            key="default"
+            type="placeholder"
+            label={defaultLabel || ''}
+            index={-1}
+            onSelect={onChoiceChange}
+            selected={selectedIndex === -1}
+            editable={choice === undefined}
+            width={width - s * (choice === undefined ? 4 : 2)}
+          />
+        ) }
+      </View>
+      { choice !== undefined && (
+        // TODO: need to handle no-choice here?
+        !!renderResults && renderResults(
+          selectedIndex === -1 ? undefined : theInvestigators[selectedIndex]
+        ))
       }
-    </>
+    </InputWrapper>
   );
 }
-
-const styles = StyleSheet.create({
-  wrapper: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-  topBorder: {
-    borderTopWidth: StyleSheet.hairlineWidth,
-  },
-});

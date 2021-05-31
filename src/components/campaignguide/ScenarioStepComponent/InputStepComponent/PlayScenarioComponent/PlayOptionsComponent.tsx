@@ -160,6 +160,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
             noShadow
             title={t`Scenario FAQ`}
             onPress={showScenarioFaq}
+            bottomMargin={s}
           />
         ) }
         { !!branches.length && (
@@ -181,16 +182,18 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
             ) }
           </>
         ) }
-        <TouchableOpacity onPress={resolutionPressed}>
-          <View style={[styles.resolutionBlock, { backgroundColor: colors.campaign.resolutionBackground }]}>
-            <BorderWrapper border resolution width={width - s * 4}>
-              <View style={[styles.resolutionContent, space.paddingS, space.paddingTopL]}>
-                <Text style={[typography.bigGameFont, { color: colors.campaign.resolution }]}>{t`Scenario Ended`}</Text>
-                { !input.no_resolutions && <Text style={typography.mediumGameFont}>{t`Proceed to Resolutions`}</Text> }
-              </View>
-            </BorderWrapper>
-          </View>
-        </TouchableOpacity>
+        <View style={space.paddingBottomS}>
+          <TouchableOpacity onPress={resolutionPressed}>
+            <View style={[styles.resolutionBlock, { backgroundColor: colors.campaign.resolutionBackground }]}>
+              <BorderWrapper border resolution width={width - s * 4}>
+                <View style={[styles.resolutionContent, space.paddingS, space.paddingTopL]}>
+                  <Text style={[typography.bigGameFont, { color: colors.campaign.resolution }]}>{t`Scenario Ended`}</Text>
+                  { !input.no_resolutions && <Text style={typography.mediumGameFont}>{t`Proceed to Resolutions`}</Text> }
+                </View>
+              </BorderWrapper>
+            </View>
+          </TouchableOpacity>
+        </View>
       </InputWrapper>
       { chaosBagDialog }
       { campaignLogDialog }

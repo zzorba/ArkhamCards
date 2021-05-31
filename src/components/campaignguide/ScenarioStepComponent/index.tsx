@@ -191,7 +191,7 @@ export default function ScenarioStepComponent({
 
 const styles = StyleSheet.create({
   titleWrapper: {
-    marginLeft: m + s,
+    marginLeft: m,
     marginRight: m + s,
   },
   extraTopPadding: {

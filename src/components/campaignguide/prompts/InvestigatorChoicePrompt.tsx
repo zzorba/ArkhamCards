@@ -19,6 +19,7 @@ export default function InvestigatorChoicePrompt({ investigators, ...otherProps 
       items={map(investigators || scenarioInvestigators, investigator => {
         return {
           code: investigator.code,
+          investigator,
           name: investigator.name,
           masculine: investigator.grammarGenderMasculine(),
           color: colors.faction[investigator.factionCode()].background,
