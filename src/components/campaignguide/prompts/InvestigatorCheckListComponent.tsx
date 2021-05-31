@@ -3,16 +3,16 @@ import { StyleSheet, View, Text } from 'react-native';
 import { keys, map, filter, findIndex, find } from 'lodash';
 import { t } from 'ttag';
 
-import CheckListComponent, { ListItem } from '../CheckListComponent';
+import CheckListComponent, { ListItem } from './CheckListComponent';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
-import ActionButton from '../ActionButton';
+import ActionButton from './ActionButton';
+import RadioButton from './RadioButton';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 import { LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
 import { Toggles } from '@components/core/hooks';
-import RadioButton from '../RadioButton';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import space from '@styles/space';
 

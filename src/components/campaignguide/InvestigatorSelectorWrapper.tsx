@@ -131,11 +131,7 @@ export default function InvestigatorSelectorWrapper<T = undefined>({
         title={t`Choose Investigator`}
         choiceId="chosen_investigator"
         description={description}
-        investigators={getInvestigatorChoices(
-          investigator,
-          scenarioInvestigators,
-          campaignLog
-        )}
+        investigators={getInvestigatorChoices(investigator, scenarioInvestigators, campaignLog)}
         defaultLabel={t`No one`}
         required={investigator === 'any' || investigator === 'any_resigned'}
       />

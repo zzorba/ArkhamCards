@@ -37,7 +37,7 @@ export default function ResolutionStepComponent({ step }: Props) {
         <View style={space.marginTopM}>
           <View style={{ ...space.marginSideM, display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
             { narration && <NarrationButton narration={narration} />}
-            <Text style={{ ...typography.mediumGameFont, flex: 1, paddingLeft: s }}>
+            <Text style={{ ...typography.mediumGameFont, flex: 1 }}>
               { resolution.title }
             </Text>
           </View>

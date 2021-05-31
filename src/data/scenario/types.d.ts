@@ -676,7 +676,6 @@ export interface InvestigatorCondition {
 }
 export interface ChooseOneInput {
   type: "choose_one";
-  style?: "picker";
   confirm_text?: string;
   choices: BinaryConditionalChoice[];
 }

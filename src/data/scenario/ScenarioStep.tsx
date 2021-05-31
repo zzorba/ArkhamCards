@@ -726,7 +726,7 @@ export default class ScenarioStep {
             return undefined;
           }
           effectsWithInput.push({
-            input: lead_invesigator_choices.lead || [],
+            input: keys(lead_invesigator_choices),
             effects: input.lead_investigator_effects,
           });
         }

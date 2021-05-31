@@ -104,7 +104,7 @@ export default function NumberPrompt({
             { count !== undefined && (
               <View style={[space.paddingLeftS, space.paddingRightM]}>
                 <Text style={[typography.mediumGameFont, typography.regular]}>
-                  { count }
+                  { delta && currentValue >= 0 ? '+ ' : '' }{ count }
                 </Text>
               </View>
             ) }
@@ -142,9 +142,6 @@ const styles = StyleSheet.create({
   },
   countDelta: {
     minWidth: 50,
-  },
-  content: {
-    flexDirection: 'column',
   },
   promptRow: {
     flexDirection: 'row',

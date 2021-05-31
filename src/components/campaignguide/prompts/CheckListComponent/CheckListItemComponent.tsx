@@ -56,26 +56,27 @@ function InvesigatorCheckListItemComponent({
     ) : investigatorButton;
   }, [onSecondaryChoice, onSecondaryPress, editable, selected, investigatorButton]);
   const content = useMemo(() => {
+    const switchContent = (editable || selected) && (
+      <View style={styles.switch}>
+        <ArkhamSwitch
+          onValueChange={toggle}
+          value={selected}
+          large
+          color="light"
+        />
+      </View>
+    );
     return (
       <CompactInvestigatorRow
         width={width - s * (editable ? 4 : 2)}
-        leftContent={editable && (
-          <View style={styles.switch}>
-            <ArkhamSwitch
-              onValueChange={toggle}
-              value={selected}
-              large
-              color="light"
-            />
-          </View>
-        )}
+        leftContent={onSecondaryChoice ? switchContent : undefined}
         investigator={investigator}
         transparent={editable && !selected}
       >
-        { secondaryButton }
+        { onSecondaryChoice ? secondaryButton : switchContent }
       </CompactInvestigatorRow>
     );
-  }, [secondaryButton, width, editable, toggle, selected, investigator]);
+  }, [secondaryButton, width, onSecondaryChoice, editable, toggle, selected, investigator]);
   return (
     <View style={space.paddingBottomXs}>
       { editable ? (
@@ -98,7 +99,7 @@ export default function CheckListItemComponent({
   onSecondaryChoice,
   editable,
 }: Props) {
-  const { borderStyle, colors, typography, width } = useContext(StyleContext);
+  const { borderStyle, colors, typography } = useContext(StyleContext);
   const toggle = useCallback((value: boolean) => {
     onChoiceToggle(code, value);
   }, [onChoiceToggle, code]);

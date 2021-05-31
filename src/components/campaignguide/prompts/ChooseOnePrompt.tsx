@@ -13,6 +13,7 @@ import { DisplayChoice } from '@data/scenario';
 import space from '@styles/space';
 import { throttle } from 'lodash';
 import InputWrapper from './InputWrapper';
+import ActionButton from './ActionButton';
 
 interface Props {
   id: string;
@@ -21,7 +22,6 @@ interface Props {
   confirmText?: string;
   showUndo?: boolean;
   choices: DisplayChoice[];
-  picker?: boolean;
   largePrompt?: boolean;
 }
 
@@ -35,7 +35,6 @@ export default function ChooseOnePrompt({
   text,
   confirmText,
   choices,
-  picker,
   showUndo,
 }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
@@ -63,42 +62,30 @@ export default function ChooseOnePrompt({
   const prompt = (decision === undefined ? text : confirmText) || text || t`The investigators must decide (choose one):`;
   return (
     <>
-      { picker ? (
-        <>
-          <SinglePickerComponent
-            title={selectedChoice === undefined ? (text || '') : ''}
+      <InputWrapper
+        bulletType={bulletType || 'default'}
+        title={confirmText ? prompt : undefined}
+        titleNode={confirmText ? undefined : <View style={{ flex: 1 }}><CampaignGuideTextComponent text={prompt} /></View>}
+        titleButton={(showUndo && decision === undefined) ? (
+          <ActionButton
+            color="dark"
+            leftIcon="undo"
+            title={t`Undo`}
+            onPress={undo}
+          />
+        ) : undefined}
+        editable={decision === undefined}
+        disabledText={selectedChoice === undefined ? t`Continue` : undefined} onSubmit={save}
+      >
+        <View style={[space.paddingTopS, space.paddingBottomS]}>
+          <ChooseOneListComponent
             choices={choices}
             selectedIndex={selectedChoice}
-            onChoiceChange={onChoiceChange}
+            onSelect={setSelectedChoice}
             editable={decision === undefined}
-            topBorder
           />
-          { decision === undefined && (
-            <BasicButton
-              title={t`Proceed`}
-              onPress={save}
-              disabled={selectedChoice === undefined}
-            />
-          ) }
-        </>
-      ) : (
-        <InputWrapper
-          bulletType={bulletType || 'default'}
-          title={confirmText ? prompt : undefined}
-          titleNode={confirmText ? undefined : <CampaignGuideTextComponent text={prompt} />}
-          editable={decision === undefined}
-          disabledText={selectedChoice === undefined ? t`Continue` : undefined} onSubmit={save}
-        >
-          <View style={[space.paddingTopS, space.paddingBottomS]}>
-            <ChooseOneListComponent
-              choices={choices}
-              selectedIndex={selectedChoice}
-              onSelect={setSelectedChoice}
-              editable={decision === undefined}
-            />
-          </View>
-        </InputWrapper>
-      ) }
+        </View>
+      </InputWrapper>
       { !!showUndo && decision === undefined && (
         <BasicButton
           title={t`Cancel`}

@@ -53,7 +53,6 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
           text={step.text}
           confirmText={step.input.confirm_text}
           choices={chooseOneInputChoices(step.input.choices, campaignLog)}
-          picker={step.input.style === 'picker'}
         />
       );
     case 'checklist': {

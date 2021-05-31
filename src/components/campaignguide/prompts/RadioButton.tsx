@@ -6,11 +6,18 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 
 interface Props {
   color: 'light';
-  icon: 'per_investigator';
+  icon: 'per_investigator' | 'radio';
   selected?: boolean;
 }
 
 export default function RadioButton({ icon, selected }: Props) {
+  if (icon === 'radio') {
+    return (
+      <View style={[styles.button, styles.radioButton]}>
+        { selected && <View style={styles.radioFillButton} /> }
+      </View>
+    );
+  }
   return (
     <View style={[styles.button, { backgroundColor: selected ? '#FFFBF2' : '#FFFBF244' }]}>
       { !!selected && <ArkhamIcon name={icon} size={22} color={COLORS.D30} /> }
@@ -26,6 +33,15 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     width: 32,
     height: 32,
+  },
+  radioButton: {
+    borderWidth: 1,
+    borderColor: COLORS.L30,
+  },
+  radioFillButton: {
+    borderRadius: 12,
+    width: 24,
+    height: 24,
     backgroundColor: COLORS.L30,
   },
 });

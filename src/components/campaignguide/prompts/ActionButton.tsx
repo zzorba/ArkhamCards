@@ -7,7 +7,7 @@ import AppIcon from '@icons/AppIcon';
 import space from '@styles/space';
 import { ThemeColors } from '@styles/theme';
 
-type LEFT_ICON = 'plus-thin' | 'check' | 'close';
+type LEFT_ICON = 'plus-thin' | 'check' | 'close' | 'undo';
 interface Props {
   color: 'dark' | 'light' | 'green' | 'red';
   onPress: () => void;
@@ -27,6 +27,7 @@ function getBackgroundColor(color: 'dark' | 'light' | 'green' | 'red', colors: T
 }
 
 const LEFT_ICON_SIZE = {
+  'undo': 24,
   'plus-thin': 18,
   'check': 16,
   'close': 24,
