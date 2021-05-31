@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { t } from 'ttag';
 
 import StyleContext from '@styles/StyleContext';
-import space, { s, xs } from '@styles/space';
+import space, { xs } from '@styles/space';
 import ActionButton from './ActionButton';
 import { BulletType } from '@data/scenario/types';
 import SetupStepWrapper from '../SetupStepWrapper';
@@ -94,7 +94,18 @@ function ButtonRow({ buttons, onSubmit, disabledText }: { buttons?: React.ReactN
   );
 }
 
-export default function InputWrapper({ children, bulletType, editable, title, titleStyle='header', titleNode, titleButton, buttons, onSubmit, disabledText }: Props) {
+export default function InputWrapper({
+  children,
+  bulletType,
+  editable,
+  title,
+  titleStyle = 'header',
+  titleNode,
+  titleButton,
+  buttons,
+  onSubmit,
+  disabledText,
+}: Props) {
   const { colors, shadow } = useContext(StyleContext);
   if (editable) {
     return (

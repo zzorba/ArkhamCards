@@ -1,12 +1,9 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import BinaryResult from '../../BinaryResult';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { DisplayChoice } from '@data/scenario';
 import space, { m, s, xs } from '@styles/space';
-import StyleContext from '@styles/StyleContext';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 
 interface Props {

@@ -8,7 +8,7 @@ import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext from '../ScenarioGuideContext';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { ResolutionStep } from '@data/scenario/types';
-import space, { s } from '@styles/space';
+import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { NarrationButton, useNarration } from './NarrationStepComponent';
 

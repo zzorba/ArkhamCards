@@ -3,12 +3,9 @@ import { Text, View } from 'react-native';
 import { forEach, keys, map, sumBy } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import SupplyComponent from './SupplyComponent';
 import ScenarioGuideContext from '../../ScenarioGuideContext';
 import ScenarioStepContext from '../../ScenarioStepContext';
-import SetupStepWrapper from '../../SetupStepWrapper';
-import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType, Supply, SuppliesInput } from '@data/scenario/types';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import StyleContext from '@styles/StyleContext';

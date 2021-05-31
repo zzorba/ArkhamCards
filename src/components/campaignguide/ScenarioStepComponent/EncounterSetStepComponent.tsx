@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux';
 import { msgid, ngettext, t } from 'ttag';
 
 import { AppState } from '@reducers';
-import BasicButton from '@components/core/BasicButton';
 import { stringList } from '@lib/stringHelper';
 import SetupStepWrapper from '../SetupStepWrapper';
 import { EncounterSetsStep } from '@data/scenario/types';

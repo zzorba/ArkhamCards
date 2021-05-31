@@ -17,7 +17,6 @@ import COLORS from '@styles/colors';
 import CampaignGuideContext from './CampaignGuideContext';
 import StepsComponent from './StepsComponent';
 import { hasDissonantVoices } from '@reducers';
-import BasicButton from '@components/core/BasicButton';
 import { NavigationProps } from '@components/nav/types';
 import { ScenarioFaqProps } from '@components/campaignguide/ScenarioFaqView';
 import { useNavigationButtonPressed } from '@components/core/hooks';

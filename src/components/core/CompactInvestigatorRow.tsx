@@ -5,7 +5,7 @@ import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import InvestigatorImage from '@components/core/InvestigatorImage';
-import space, { s } from '@styles/space';
+import space from '@styles/space';
 
 interface Props {
   investigator: Card;

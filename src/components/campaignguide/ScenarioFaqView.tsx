@@ -7,7 +7,6 @@ import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideT
 import withCampaignGuideContext, { CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
 import space from '@styles/space';
 import { Question } from '@data/scenario/types';
-import BasicButton from '@components/core/BasicButton';
 import StyleContext from '@styles/StyleContext';
 import CampaignGuideContext from './CampaignGuideContext';
 import ArkhamButton from '@components/core/ArkhamButton';
