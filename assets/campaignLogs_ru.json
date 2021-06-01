@@ -1507,8 +1507,8 @@
         "entries": [
           {
             "id": "lead_investigator_joins_pipers",
-            "masculine_text": "#name# joins the pipers of Azathoth.",
-            "feminine_text": "#name# joins the pipers of Azathoth."
+            "masculine_text": "#name# присоединился к флейтистам Азатота.",
+            "feminine_text": "#name# присоединилась к флейтистам Азатота."
           },
           {
             "id": "accepted_fate",
@@ -1544,11 +1544,11 @@
           },
           {
             "id": "azathoth_devoured_the_universe",
-            "text": "Azathoth devoured the universe."
+            "text": "Азатот поглотил Вселенную."
           },
           {
             "id": "azathoth_slumbers",
-            "text": "Azathoth slumbers… for now."
+            "text": "Азатот дремлет… пока."
           },
           {
             "id": "being_hunted",
@@ -1652,7 +1652,7 @@
           },
           {
             "id": "signed_the_black_book",
-            "text": "the investigators signed the Black Book of Azathoth."
+            "text": "сыщики подписали Чёрную книгу Азатота."
           },
           {
             "id": "survived_the_watchers_embrace",

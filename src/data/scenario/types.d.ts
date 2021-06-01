@@ -650,6 +650,7 @@ export interface InvestigatorChoiceInput {
   optional?: boolean;
   investigator: "all" | "choice" | "any" | "resigned";
   special_mode?: "detailed" | "sequential";
+  confirm_text?: string;
   choices: InvestigatorConditionalChoice[];
 }
 export interface InvestigatorConditionalChoice {

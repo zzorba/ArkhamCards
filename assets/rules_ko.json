@@ -317,9 +317,9 @@
   },
   {
     "id": "Prologue_Investigators",
-    "title": "서막의 조사자",
+    "title": "서막용 조사자",
     "cycle": ["tcu"],
-    "text": "The four investigator cards depicted here (Gavriella Mizrah, Jerome Davids, Penny White, and Valentino Rivas) are marked with the <i>Disappearance at the Twilight Estate</i> encounter set icon and can only be used in the prologue for <i>The Circle Undone</i>. They cannot be used in other scenarios. Keep them with the rest of the scenario cards for <i>Disappearance at the Twilight Estate</i>, and do not integrate them into your collection of player cards."
+    "text": "여기에 나와 있는 조사자 카드 4장(‘가브리엘라 미즈라’, ‘제롬 데이비즈’, ‘페니 화이트’, ‘발렌티노 리바스’)은 <b><i>끝맺지 못한 의식 캠페인</i></b>의 서막에서만 사용하며, 카드에 <b><i>황혼회 저택에서의 실종</i></b> 조우 세트 아이콘이 그려져 있습니다. 서막용 조사자 카드는 다른 시나리오에서 사용할 수 없습니다. 서막용 조사자 카드는 다른 “황혼회 저택에서의 실종” 시나리오 카드와 함께 보관해두고 보유한 플레이어 카드와 합쳐두지 않도록 합니다."
   },
   {
     "id": "Ownership_and_Control",
@@ -514,7 +514,7 @@
     "id": "Joes_Hunch_Deck",
     "title": "조 다이아몬드의 \"직감 덱\"",
     "cycle": ["tcu"],
-    "text": "As a private eye, Joe Diamond has learned to follow his instincts, and therefore he has a separate hunch deck, which is constructed during step 4 of the setup of each scenario. The cards in this hunch deck are chosen from Joe's 40-card deck and therefore count toward his total deck size. With the exception of these setup instructions, all references to Joe's \"deck\" refer to Joe's standard investigator deck and not his hunch deck. Joe's hunch deck has no discard pile; cards from your hunch deck are discarded to your standard discard pile when played."
+    "text": "사설탐정인 ‘조 다이아몬드’는 본능에 따라 사건을 조사하는 방법을 익혔으므로, 직감 덱을 별도로 운용합니다. 시나리오를 준비할 때마다, '4. 조사자 덱을 구성하고 섞습니다' 과정에서 직감 덱도 함께 구성합니다. ‘조 다이아몬드’는 40장짜리 덱에서 별도로 카드를 선택하여 직감 덱을 구성하므로 직감 덱에 속한 카드 역시 덱 크기에 계산합니다. 이렇게 게임 준비 과정에서 직감 덱을 만들라는 경우를 제외하고는, ‘조 다이아몬드’의 \"덱\"이란 항상 직감 덱이 아닌 ‘조 다이아몬드’의 일반 조사자 덱을 뜻합니다. 또한 직감 덱에는 별도의 버린 카드 더미가 없으므로, 직감 덱에서 플레이하여 버리는 카드는 기존 버린 카드 더미에 놓습니다."
   },
   {
     "id": "Investigation_Phase_Placeholder",

@@ -31,9 +31,12 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
       <InvestigatorChoicePrompt
         id={step.id}
         text={step.text}
+        confirmText={input.confirm_text}
         bulletType={step.bullet_type}
         options={investigatorChoiceInputChoices(input, campaignLog)}
         detailed
+        investigator={campaignLog.investigators(false)[investigatorOffset]}
+        noInvestigatorItems
         investigators={slice(
           campaignLog.investigators(false),
           investigatorOffset,

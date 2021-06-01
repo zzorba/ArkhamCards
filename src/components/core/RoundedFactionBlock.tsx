@@ -23,7 +23,7 @@ export default function RoundedFactionBlock({ header, footer, children, faction,
       {
         borderColor: colors.faction[faction].background,
         backgroundColor: colors.background,
-        paddingBottom: footer ? 0 : s,
+        paddingBottom: (noSpace || footer) ? 0 : s,
       },
     ]}>
       { header }

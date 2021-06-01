@@ -3,14 +3,18 @@ import { StyleSheet, Text, View } from 'react-native';
 import { t } from 'ttag';
 
 import StyleContext from '@styles/StyleContext';
-import space, { xs } from '@styles/space';
+import space, { s, xs } from '@styles/space';
 import ActionButton from './ActionButton';
 import { BulletType } from '@data/scenario/types';
 import SetupStepWrapper from '../SetupStepWrapper';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
+import Card from '@data/types/Card';
+import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 
 interface Props {
   bulletType?: BulletType;
+  investigator?: Card;
   editable: boolean;
   title?: string;
   titleNode?: React.ReactNode;
@@ -96,6 +100,7 @@ function ButtonRow({ buttons, onSubmit, disabledText }: { buttons?: React.ReactN
 
 export default function InputWrapper({
   children,
+  investigator,
   bulletType,
   editable,
   title,
@@ -106,7 +111,23 @@ export default function InputWrapper({
   onSubmit,
   disabledText,
 }: Props) {
-  const { colors, shadow } = useContext(StyleContext);
+  const { colors, shadow, width } = useContext(StyleContext);
+  if (investigator) {
+    return (
+      <View style={[space.paddingSideS, space.marginBottomL]}>
+        <RoundedFactionBlock
+          noSpace
+          noShadow={!editable}
+          faction={investigator.factionCode()}
+          header={<CompactInvestigatorRow investigator={investigator} width={width - s * 2} open />}
+        >
+          <TitleRow bulletType={bulletType} titleStyle={titleStyle} title={title} titleNode={titleNode} titleButton={titleButton} editable={editable} />
+          <View style={[space.paddingSideS, space.paddingTopS, space.paddingBottomXs]}>{ children }</View>
+          { editable && <ButtonRow buttons={buttons} onSubmit={onSubmit} disabledText={disabledText} /> }
+        </RoundedFactionBlock>
+      </View>
+    );
+  }
   if (editable) {
     return (
       <View

@@ -8,7 +8,7 @@ import ScenarioGuideContext from '../../ScenarioGuideContext';
 import { StringChoices } from '@actions/types';
 import { BulletType } from '@data/scenario/types';
 import { Choices, DisplayChoiceWithId } from '@data/scenario';
-import { m } from '@styles/space';
+import { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import Card from '@data/types/Card';
 import InputWrapper from '../InputWrapper';
@@ -23,8 +23,11 @@ export interface ListItem {
 
 export interface ChoiceListComponentProps {
   id: string;
+  investigator?: Card;
+  noInvestigatorItems?: boolean;
   bulletType?: BulletType;
   text?: string;
+  confirmText?: string;
   optional?: boolean;
   detailed?: boolean;
   options: Choices;
@@ -34,9 +37,9 @@ interface Props extends ChoiceListComponentProps {
   items: ListItem[];
 }
 
-export default function InvestigatorChoicePrompt({ id, bulletType, text, optional, detailed, options, loading, items }: Props) {
+export default function ChoiceListComponent({ id, noInvestigatorItems, investigator, bulletType, text, confirmText, optional, detailed, options, loading, items }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
-  const { borderStyle, colors } = useContext(StyleContext);
+  const { borderStyle, colors, width } = useContext(StyleContext);
   const [selectedChoice, setSelectedChoice] = useState(() => {
     const selectedChoice: {
       [code: string]: number | undefined;
@@ -116,10 +119,12 @@ export default function InvestigatorChoicePrompt({ id, bulletType, text, optiona
           choices={choices}
           choice={getChoice(item.code, choices, inputChoices)}
           onChoiceChange={onChoiceChange}
+          noInvestigatorItems
           optional={!!optional}
           editable={inputChoices === undefined}
           detailed={detailed}
           firstItem={idx === 0}
+          width={width - s * (inputChoices === undefined ? 4 : 2)}
         />
       );
     });
@@ -133,21 +138,23 @@ export default function InvestigatorChoicePrompt({ id, bulletType, text, optiona
           editable={false}
           optional={false}
           onChoiceChange={onChoiceChange}
+          width={width - s * (inputChoices === undefined ? 4 : 2)}
           firstItem
         />
       );
     }
     return results;
-  }, [inputChoices, items, detailed, options, optional, getChoice, onChoiceChange]);
+  }, [inputChoices, items, detailed, options, optional, width, getChoice, onChoiceChange]);
 
   return (
     <InputWrapper
       editable={!hasDecision}
+      investigator={investigator}
       onSubmit={save}
       disabledText={detailed && !every(
         items,
         item => selectedChoice[item.code] !== undefined) ? t`Continue` : undefined}
-      title={text}
+      title={(inputChoices !== undefined ? confirmText : undefined) || text}
       titleStyle="setup"
       bulletType={bulletType}
     >
