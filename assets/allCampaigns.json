@@ -30215,6 +30215,7 @@
     "encounter_deck",
     "three_acts_three_decks",
     "setup_act_ab",
+    "setup_act_ab_actual",
     "setup_act_cd",
     "setup_act_ef_prompt",
     "setup_act_ef",
@@ -50540,10 +50541,12 @@
     },
     {
       "id": "choose_dreams",
+      "bullet_type": "default",
       "text": "Choose a dream (different if able):",
       "type": "input",
       "input": {
         "type": "investigator_choice",
+        "confirm_text": "Chosen dream:",
         "source": "scenario",
         "investigator": "all",
         "special_mode": "sequential",
@@ -83509,18 +83512,6 @@
           }
         ]
       }
-    },
-    {
-      "id": "add_impending_doom",
-      "text": "Add 1 tally mark under \"Impending Doom\" in your Campaign Log.",
-      "effects": [
-        {
-          "type": "campaign_log_count",
-          "section": "impending_doom",
-          "operation": "add",
-          "value": 1
-        }
-      ]
     },
     {
       "id": "$play_scenario",

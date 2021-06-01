@@ -9,9 +9,11 @@ import space, { s } from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import Card from '@data/types/Card';
+import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 
 interface Props {
   code: string;
+  noInvestigatorItems?: boolean;
   investigator?: Card;
   name: string;
   color?: string;
@@ -23,11 +25,13 @@ interface Props {
   editable: boolean;
   detailed?: boolean;
   firstItem: boolean;
+  width: number;
 }
 
 export default function ChoiceListItemComponent({
   code,
   investigator,
+  noInvestigatorItems,
   name,
   color,
   masculine,
@@ -38,8 +42,9 @@ export default function ChoiceListItemComponent({
   editable,
   detailed,
   firstItem,
+  width,
 }: Props) {
-  const { borderStyle, typography, width } = useContext(StyleContext);
+  const { borderStyle, typography } = useContext(StyleContext);
   const onSelect = useCallback((idx: number | null) => {
     if (idx === null) {
       return;
@@ -61,24 +66,27 @@ export default function ChoiceListItemComponent({
   if (detailed) {
     return (
       <>
-        <View style={[
-          styles.headerRow,
-          borderStyle,
-          space.paddingS,
-          space.paddingLeftM,
-          color ? { backgroundColor: color } : {},
-        ]}>
-          <View>
-            <Text style={[
-              typography.mediumGameFont,
-              styles.nameText,
-              color ? { color: COLORS.white } : {},
-            ]}>
-              { name }
-            </Text>
+        { !noInvestigatorItems && (investigator ? (
+          <CompactInvestigatorRow investigator={investigator} width={width} />
+        ) : (
+          <View style={[
+            styles.headerRow,
+            borderStyle,
+            space.paddingS,
+            space.paddingLeftM,
+            color ? { backgroundColor: color } : {},
+          ]}>
+            <View>
+              <Text style={[
+                typography.mediumGameFont,
+                styles.nameText,
+                color ? { color: COLORS.white } : {},
+              ]}>
+                { name }
+              </Text>
+            </View>
           </View>
-          <View />
-        </View>
+        )) }
         <ChooseOneListComponent
           choices={genderedChoices}
           selectedIndex={choice}

@@ -168,6 +168,15 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
             <Text style={[space.paddingS, typography.cardName, typography.center, typography.italic, typography.light]}>
               { t`Scenario effects` }
             </Text>
+            { !!input.campaign_log?.length && (
+              <BranchButton
+                icon={processedScenario.id.scenarioId}
+                key="campaign"
+                index={-1}
+                text={t`Edit campaign log`}
+                onPress={showCampaignLogDialog}
+              />
+            ) }
             { map(
               branches || [],
               (choice, index) => (
@@ -175,7 +184,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
                   icon={processedScenario.id.scenarioId}
                   key={index}
                   index={index}
-                  choice={choice}
+                  text={choice.text}
                   onPress={branchPress}
                 />
               )
