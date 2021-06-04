@@ -117,6 +117,10 @@ export default class CampaignGuide {
     return this.campaign.campaign.id;
   }
 
+  campaignCustomData() {
+    return this.campaign.campaign.custom;
+  }
+
   campaignName() {
     return this.campaign.campaign.name;
   }
@@ -569,10 +573,6 @@ export default class CampaignGuide {
       };
     }
     if (section.type === 'investigator_count') {
-      const count = find(this.log.supplies, s => s.id === id);
-      if (!count) {
-        throw new Error(`Could not find Supply: ${id}`);
-      }
       return {
         type: 'investigator_count',
         section: section.title,

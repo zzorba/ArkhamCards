@@ -15,17 +15,18 @@ import StyleContext from '@styles/StyleContext';
 
 interface Props {
   loading?: boolean;
+  disabled?: boolean;
   navigation?: boolean;
   text: string;
   onPress?: () => void;
 }
 
-export default function SettingsItem({ loading, navigation, text, onPress }: Props) {
+export default function SettingsItem({ loading, disabled, navigation, text, onPress }: Props) {
   const { colors, typography } = useContext(StyleContext);
   if (loading) {
     return (
       <View style={[styles.wrapper, space.paddingXs]}>
-        <Text style={[typography.text, space.marginLeftS]}>{ text }</Text>
+        <Text style={[typography.text, disabled ? typography.light : undefined, space.marginLeftS]}>{ text }</Text>
         <ActivityIndicator
           style={[styles.spinner, space.marginLeftM]}
           color={colors.lightText}

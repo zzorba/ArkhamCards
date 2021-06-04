@@ -368,6 +368,7 @@ export const TDEB = 'tdeb';
 export const TIC = 'tic';
 export const STANDALONE = 'standalone';
 export const DARK_MATTER = 'zdm';
+export const ALICE_IN_WONDERLAND = 'zaw';
 
 export type CampaignCycleCode =
   typeof CUSTOM |
@@ -385,7 +386,8 @@ export type CampaignCycleCode =
   typeof TDEB |
   typeof TIC |
   typeof STANDALONE |
-  typeof DARK_MATTER;
+  typeof DARK_MATTER |
+  typeof ALICE_IN_WONDERLAND;
 
 export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   CORE,
@@ -403,6 +405,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TIC,
 ];
 export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
+  ALICE_IN_WONDERLAND,
   DARK_MATTER,
 ];
 
@@ -420,10 +423,11 @@ export const GUIDED_CAMPAIGNS = new Set([
   TDEA,
   TDEB,
   TIC,
+  ALICE_IN_WONDERLAND,
   DARK_MATTER,
 ]);
 
-export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([DARK_MATTER]);
+export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
 
 export interface CustomCampaignLog {
   sections?: string[];

@@ -6,7 +6,7 @@ import { Action } from 'redux';
 import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 
-import { Deck, Slots, getDeckId } from '@actions/types';
+import { Deck, Slots, getDeckId, DeckId } from '@actions/types';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import BasicButton from '@components/core/BasicButton';
 import CardSectionHeader from '@components/core/CardSectionHeader';
@@ -63,8 +63,8 @@ function SaveDeckRow({
     return computeChoiceId(id, investigator);
   }, [id, investigator]);
 
-  const saveCampaignLog = useCallback((deck?: Deck) => {
-    scenarioState.setNumberChoices(choiceId, {}, deck ? getDeckId(deck) : undefined);
+  const saveCampaignLog = useCallback((deckId?: DeckId) => {
+    scenarioState.setNumberChoices(choiceId, {}, deckId);
   }, [scenarioState, choiceId]);
 
   const [choices, deckChoice] = useMemo(() => scenarioState.numberAndDeckChoices(choiceId), [scenarioState, choiceId]);
@@ -73,14 +73,24 @@ function SaveDeckRow({
   const save = useCallback(() => {
     if (deck) {
       const slots: Slots = { ...deck.deck.slots };
-      forEach(storyAssetDeltas, (delta, code) => {
-        slots[code] = (slots[code] || 0) + delta;
-        if (!slots[code]) {
-          delete slots[code];
-        }
-      });
-      const changes: SaveDeckChanges = { slots };
-      deckDispatch(saveDeckChanges(userId, actions, deck.deck, changes) as any).then(saveCampaignLog);
+      const allowedChanges = !!find(storyAssetDeltas, (delta, code) => !code.startsWith('z'));
+      if (!allowedChanges) {
+        saveCampaignLog(deck.id);
+      } else {
+        forEach(storyAssetDeltas, (delta, code) => {
+          if (code.startsWith('z')) {
+            return;
+          }
+          slots[code] = (slots[code] || 0) + delta;
+          if (!slots[code]) {
+            delete slots[code];
+          }
+        });
+        const changes: SaveDeckChanges = { slots };
+        deckDispatch(saveDeckChanges(userId, actions, deck.deck, changes) as any).then(
+          (d: Deck) => saveCampaignLog(getDeckId(d))
+        );
+      }
     }
   }, [deck, userId, actions, deckDispatch, storyAssetDeltas, saveCampaignLog]);
 

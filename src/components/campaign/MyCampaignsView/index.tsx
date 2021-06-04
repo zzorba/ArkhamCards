@@ -82,7 +82,7 @@ function MyCampaignsView({ componentId }: NavigationProps) {
           parts.push(standalonesById[standaloneId.campaignId][standaloneId.scenarioId]);
         }
       } else if (cycleCode !== CUSTOM) {
-        parts.push(campaignNames()[cycleCode]);
+        parts.push(campaignNames()[cycleCode] || '');
       }
       if (!searchMatchesText(search, parts)) {
         return [];

@@ -91,7 +91,7 @@ export default function ChooseOnePrompt({
           disabled={selectedChoice === undefined}
         />
       ) }
-      { !!showUndo && (
+      { !!showUndo && decision === undefined && (
         <BasicButton
           title={t`Cancel`}
           onPress={undo}

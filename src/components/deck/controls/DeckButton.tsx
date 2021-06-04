@@ -22,6 +22,7 @@ export type DeckButtonIcon =
   'right-arrow' |
   'weakness' |
   'card-outline' |
+  'world' |
   'deck' |
   'draw' |
   'tdea' |

@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: 엘케인, 푸른이\n"
 "Language-Team: \n"
-"x-generator: Poedit 2.4.2\n"
+"x-generator: Poedit 2.4.3\n"
 
 #, javascript-format
 msgid "${ action.name } (Campaign A)"
@@ -62,7 +62,7 @@ msgid "Other"
 msgstr "기타"
 
 msgid "Weaver of the Cosmos"
-msgstr ""
+msgstr "우주의 가닥을 엮는 자"
 
 #, javascript-format
 msgid "${ things[0] } and ${ things[1] }"
@@ -1143,19 +1143,19 @@ msgid "The Dunwich Legacy"
 msgstr "던위치의 유산"
 
 msgid "The Path to Carcosa"
-msgstr ""
+msgstr "카르코사로 가는 길"
 
 msgid "The Forgotten Age"
-msgstr ""
+msgstr "잊힌 시대"
 
 msgid "The Circle Undone"
-msgstr ""
+msgstr "끝맺지 못한 의식"
 
 msgid "The Dream-Eaters"
-msgstr ""
+msgstr "꿈을 먹는 자"
 
 msgid "The Innsmouth Conspiracy"
-msgstr ""
+msgstr "인스머스에 드리운 음모"
 
 msgid "Sort by"
 msgstr "정렬하기"
@@ -1247,7 +1247,7 @@ msgid "Game Text"
 msgstr "게임 텍스트"
 
 msgid "Flavor Text"
-msgstr "플레이버 텍스트"
+msgstr "읽을거리"
 
 msgid "Card Backs"
 msgstr "카드 뒷면"
@@ -1450,11 +1450,11 @@ msgstr "${ supplyName } 사용 (${ desiredCount })"
 #, javascript-format
 msgid "(${ supply.cost } supply point each)"
 msgid_plural "(${ supply.cost } supply points each)"
-msgstr[0] "(개당 ${ supply.cost } 보급 점수)"
+msgstr[0] "(개당 ${ supply.cost } 물자 점수)"
 
 msgid "(${ supply.cost } supply point)"
 msgid_plural "(${ supply.cost } supply points)"
-msgstr[0] "(${ supply.cost } 보급 점수)"
+msgstr[0] "(${ supply.cost } 물자 점수)"
 
 #, javascript-format
 msgid "${ spent } of ${ total }"
@@ -1684,7 +1684,7 @@ msgid_plural ""
 "Since ${ list } all have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
-"${ list } 조사자는 ${ supplyName } 보급품을 가지고 있으므로, 해당 조사자는 <b>${ sectionName "
+"${ list } 조사자는 ${ supplyName } 탐험 물자를 가지고 있으므로, 해당 조사자는 <b>${ sectionName "
 "}</b> 항목을 읽어야만 합니다."
 
 #, javascript-format
@@ -1695,7 +1695,7 @@ msgid_plural ""
 "Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
-"${ list } 조사자가 ${ supplyName } 보급품을 가지고 있지 않으므로, 해당 조사자는<b>${ sectionName "
+"${ list } 조사자가 ${ supplyName } 탐험 물자를 가지고 있지 않으므로, 해당 조사자는<b>${ sectionName "
 "}</b> 항목을 읽어야만 합니다."
 
 #, javascript-format
@@ -1793,7 +1793,7 @@ msgid "Experience cost: ${ xpCost }"
 msgstr "경험치 비용: ${ xpCost }"
 
 msgid "Custom side scenario"
-msgstr "커스텀 독립 시나리오"
+msgstr "커스텀 외전 시나리오"
 
 msgid "Scenario Name"
 msgstr "시나리오명"
@@ -1890,13 +1890,13 @@ msgid "Return to the Night of the Zealot"
 msgstr "돌아온 광신도의 밤"
 
 msgid "Return to The Dunwich Legacy"
-msgstr ""
+msgstr "돌아온 던위치의 유산"
 
 msgid "The Path To Carcosa"
-msgstr ""
+msgstr "카르코사로 가는 길"
 
 msgid "Return to The Path to Carcosa"
-msgstr ""
+msgstr "돌아온 카르코사로 가는 길"
 
 msgid "The Dream-Quest"
 msgstr ""
@@ -1950,121 +1950,121 @@ msgid "Epilogue"
 msgstr "후일담"
 
 msgid "Return to Extracurricular Activity"
-msgstr ""
+msgstr "돌아온 과외 활동"
 
 msgid "Return to The House Always Wins"
-msgstr ""
+msgstr "돌아온 도박장은 언제나 이긴다"
 
 msgid "Return to The Miskatonic Museum"
-msgstr ""
+msgstr "돌아온 미스캐토닉 박물관"
 
 msgid "Return to Essex County Express"
-msgstr ""
+msgstr "돌아온 에식스 카운티 특급열차"
 
 msgid "Return to Blood on the Altar"
-msgstr ""
+msgstr "돌아온 제단에 흘린 피"
 
 msgid "Return to Undimensioned and Unseen"
-msgstr ""
+msgstr "돌아온 차원 너머에 보이지 않는 존재"
 
 msgid "Return to Where Doom Awaits"
-msgstr ""
+msgstr "돌아온 파멸이 기다리는 곳"
 
 msgid "Return to Lost in Time and Space"
-msgstr ""
+msgstr "돌아온 시공간을 헤매다"
 
 msgid "Curtain Call"
-msgstr ""
+msgstr "커튼콜"
 
 msgid "The Last King"
-msgstr ""
+msgstr "마지막 왕"
 
 msgid "Lunacy’s Reward"
-msgstr ""
+msgstr "광기의 보상"
 
 msgid "Echoes of the Past"
-msgstr ""
+msgstr "과거로부터의 메아리"
 
 msgid "The Unspeakable Oath"
-msgstr ""
+msgstr "입에 담아선 안 될 맹세"
 
 msgid "Lost Soul"
-msgstr ""
+msgstr "잃어버린 영혼"
 
 msgid "A Phantom of Truth"
-msgstr ""
+msgstr "진실의 망령"
 
 msgid "The Pallid Mask"
-msgstr ""
+msgstr "창백한 가면"
 
 msgid "Black Stars Rise"
-msgstr ""
+msgstr "검은 별이 떠오르다"
 
 msgid "Dim Carcosa"
-msgstr ""
+msgstr "어스레한 카르코사"
 
 msgid "Return to Curtain Call"
-msgstr ""
+msgstr "돌아온 커튼콜"
 
 msgid "Return to The Last King"
-msgstr ""
+msgstr "돌아온 마지막 왕"
 
 msgid "Return to Echoes of the Past"
-msgstr ""
+msgstr "돌아온 과거로부터의 메아리"
 
 msgid "Return to The Unspeakable Oath"
-msgstr ""
+msgstr "돌아온 입에 담아선 안 될 맹세"
 
 msgid "Return to A Phantom of Truth"
-msgstr ""
+msgstr "돌아온 진실의 망령"
 
 msgid "Return to The Pallid Mask"
-msgstr ""
+msgstr "돌아온 창백한 가면"
 
 msgid "Return to Black Stars Rise"
-msgstr ""
+msgstr "돌아온 검은 별이 떠오르다"
 
 msgid "Return to Dim Carcosa"
-msgstr ""
+msgstr "돌아온 어스레한 카르코사"
 
 msgid "The Untamed Wilds"
-msgstr ""
+msgstr "길들지 않은 야생"
 
 msgid "Restless Nights"
-msgstr ""
+msgstr "쉴 수 없는 밤"
 
 msgid "The Doom of Eztli"
-msgstr ""
+msgstr "에스틀리의 몰락"
 
 msgid "Expedition’s End"
-msgstr ""
+msgstr "탐사의 끝"
 
 msgid "Threads of Fate"
-msgstr ""
+msgstr "운명의 실가닥"
 
 msgid "The Boundary Beyond"
-msgstr ""
+msgstr "경계 너머"
 
 msgid "The Jungle Beckons"
-msgstr ""
+msgstr "손짓하는 밀림"
 
 msgid "Heart of the Elders"
-msgstr ""
+msgstr "고대 문명의 심장부"
 
 msgid "The City of Archives"
-msgstr ""
+msgstr "기록물의 도시"
 
 msgid "Those Held Captive"
-msgstr ""
+msgstr "포로가 되었던 자들"
 
 msgid "The Depths of Yoth"
-msgstr ""
+msgstr "요스 깊은 곳으로"
 
 msgid "The Darkness"
-msgstr ""
+msgstr "어둠"
 
 msgid "Shattered Aeons"
-msgstr ""
+msgstr "산산조각난 영겁"
 
 msgid "Prologue: Disappearance at the Twilight Estate"
 msgstr ""
@@ -2079,28 +2079,28 @@ msgid "The Price of Progress"
 msgstr ""
 
 msgid "The Secret Name"
-msgstr ""
+msgstr "비밀 이름"
 
 msgid "The Wages of Sin"
-msgstr ""
+msgstr "죄악의 응보"
 
 msgid "For the Greater Good"
-msgstr ""
+msgstr "대의를 위하여"
 
 msgid "The Inner Circle"
 msgstr ""
 
 msgid "Union and Disillusion"
-msgstr ""
+msgstr "합일과 환멸"
 
 msgid "In the Clutches of Chaos"
-msgstr ""
+msgstr "혼돈의 손아귀에서"
 
 msgid "Twist of Fate"
 msgstr ""
 
 msgid "Before the Black Throne"
-msgstr ""
+msgstr "검은 옥좌 앞에"
 
 msgid "Return to The Gathering"
 msgstr "돌아온 회합"
@@ -2118,28 +2118,28 @@ msgid "The Black Cat"
 msgstr ""
 
 msgid "The Search for Kadath"
-msgstr ""
+msgstr "카다스를 찾아서"
 
 msgid "The Oneironauts"
 msgstr ""
 
 msgid "Dark Side of the Moon"
-msgstr ""
+msgstr "달의 어두운 면"
 
 msgid "The Great Ones"
 msgstr ""
 
 msgid "Where Gods Dwell"
-msgstr ""
+msgstr "신들이 기거하는 곳"
 
 msgid "Waking Nightmare"
 msgstr ""
 
 msgid "A Thousand Shapes of Horror"
-msgstr ""
+msgstr "천 가지 무시무시한 형체"
 
 msgid "Point of No Return"
-msgstr ""
+msgstr "돌아올 수 없는 다리"
 
 msgid "The Night of the Zealot"
 msgstr "광신도의 밤"
@@ -2157,25 +2157,25 @@ msgid "Sacrificed to Yog-Sothoth"
 msgstr "요그 소토스에게 바쳐진 제물"
 
 msgid "VIPs Interviewed"
-msgstr ""
+msgstr "대담을 나눈 VIP"
 
 msgid "VIPs Slain"
-msgstr ""
+msgstr "살해당한 VIP"
 
 msgid "Doubt"
-msgstr ""
+msgstr "의심"
 
 msgid "Conviction"
-msgstr ""
+msgstr "믿음"
 
 msgid "Chasing the Stranger"
-msgstr ""
+msgstr "이방인을 추적하다"
 
 msgid "Yig's Fury"
-msgstr ""
+msgstr "이그의 분노"
 
 msgid "Supplies"
-msgstr ""
+msgstr "탐험 물자"
 
 msgid "Mementos Discovered"
 msgstr ""
@@ -2225,16 +2225,22 @@ msgid ""
 "Campaign A and Campaign B\n"
 "Eight-part campaign"
 msgstr ""
+"캠페인 A와 캠페인 B\n"
+"8부 캠페인"
 
 msgid ""
 "Campaign A\n"
 "Four-part campaign"
 msgstr ""
+"캠페인 A\n"
+"4부 캠페인"
 
 msgid ""
 "Campaign B\n"
 "Four-part campaign"
 msgstr ""
+"캠페인 B\n"
+"4부 캠페인"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgid "Custom"
@@ -2549,35 +2555,35 @@ msgid "Download printable cards"
 msgstr "인쇄가능한 카드 받기"
 
 msgid "Return to Threads of Fate"
-msgstr ""
+msgstr "돌아온 운명의 실가닥"
 
 msgid "Return to Heart of the Elders"
-msgstr ""
+msgstr "돌아온 고대 문명의 심장부"
 
 msgid "Return to Shattered Aeons"
-msgstr ""
+msgstr "돌아온 산산조각난 영겁"
 
 #, javascript-format
 msgid "${ confirmText } <i>(included automatically)</i>"
 msgstr "${ confirmText } (이 항목으로 얻는 경험치는 자동으로 포함됩니다)."
 
 msgid "Return to The Forgotten Age"
-msgstr ""
+msgstr "돌아온 잊힌 시대"
 
 msgid "Return to The Untamed Wilds"
-msgstr ""
+msgstr "돌아온 길들지 않은 야생"
 
 msgid "Return to The Doom of Eztli"
-msgstr ""
+msgstr "돌아온 에스틀리의 몰락"
 
 msgid "Return to The Boundary Beyond"
-msgstr ""
+msgstr "돌아온 경계 너머"
 
 msgid "Return to The City of Archives"
-msgstr ""
+msgstr "돌아온 기록물의 도시"
 
 msgid "Return to The Depths of Yoth"
-msgstr ""
+msgstr "돌아온 요스 깊은 곳으로"
 
 msgid "Save XP"
 msgstr "경험치 저장"
@@ -2607,7 +2613,7 @@ msgstr ""
 
 #, javascript-format
 msgid "${ spentXp } of ${ totalXp } spent"
-msgstr "${ totalXp } 중 ${spentXp} 소비"
+msgstr "${ totalXp } 중 ${ spentXp } 소비"
 
 msgid ""
 "Are you sure you want to remove this deck from the campaign?\n"
@@ -2874,7 +2880,7 @@ msgid "Cache cleared"
 msgstr "캐시 초기화"
 
 msgid "Rules"
-msgstr "규칙(영문)"
+msgstr "규칙(참조 안내서)"
 
 msgid "Encounter Card Errata"
 msgstr "조우 카드 정오표"
@@ -3363,7 +3369,7 @@ msgstr ""
 "것 입니다."
 
 msgid "Are you sure you want to delete this standalone?"
-msgstr "독립시나리오를 삭제하기를 원합니까?"
+msgstr "독립 시나리오를 삭제하기를 원합니까?"
 
 msgid "Delete standalone"
 msgstr "독립 시나리오 삭제"
@@ -3445,7 +3451,7 @@ msgstr ""
 "사본 개수를 계산할 때 포함하지 않습니다)."
 
 msgid "${ spentXP } of ${ _adjustedXp } XP spent"
-msgstr "${ spentXP } 경험치 중 ${ _adjustedXp } 소비"
+msgstr "${ _adjustedXp } 경험치 중 ${ spentXP } 소비"
 
 msgid "Upgrading"
 msgstr "향상 중"
@@ -3482,7 +3488,7 @@ msgid "Select Parallel Investigator"
 msgstr "평행 조사자 선택"
 
 msgid "Upgrade experience"
-msgstr ""
+msgstr "최근 향상 경험치"
 
 msgid "Upgrading deck"
 msgstr "덱 향상 중"
@@ -3807,7 +3813,7 @@ msgid "You must specify a name for custom campaigns."
 msgstr "커스텀 캠페인의 이름을 설정하여야 합니다."
 
 msgid "Export diagnostic data"
-msgstr "진단 데이터 추출"
+msgstr "진단 데이터 내보내기"
 
 msgid ""
 "This feature is intended for advanced diagnostics. Just copy the data "
@@ -3824,297 +3830,306 @@ msgid "Migrate now"
 msgstr "지금 마이그레이션하기"
 
 msgid "Export Diagnostic Data"
-msgstr ""
+msgstr "진단 데이터 내보내기"
 
 msgid "Agility"
-msgstr ""
+msgstr "민첩"
 
 msgid "Combat"
-msgstr ""
+msgstr "힘"
 
 msgid "Intellect"
-msgstr ""
+msgstr "지식"
 
 msgid "Willpower"
-msgstr ""
+msgstr "의지"
 
 msgid "Boost"
-msgstr ""
+msgstr "소모"
 
 msgid "Skill Boosts"
-msgstr ""
+msgstr "능력 소모"
 
 msgid "Skill Boosts: All"
-msgstr ""
+msgstr "능력 소모: 모두"
 
 msgid ""
 "If you run into any problems with this migration, please contact "
 "arkhamcards@gmail.com."
-msgstr ""
+msgstr "만약 이 마이그레이션 중에 어떤 오류라도 맞닥뜨리게 된다면, arkhamcards@gmail.com 으로 연락주세요."
 
 msgid "Asset: Body. Arcane"
-msgstr ""
+msgstr "자산: 신체. 마법"
 
 msgid "Color blind friendly icons"
-msgstr ""
+msgstr "색맹 친화적 아이콘"
 
 msgid "Uploading"
-msgstr ""
+msgstr "업로드 중"
 
 msgid "Upload campaigns"
-msgstr ""
+msgstr "캠페인 업로드"
 
 msgid "Campaigns can be uploaded to your Arkham Cards account."
-msgstr ""
+msgstr "아컴 카드 계정에 캠페인을 업로드할 수 있습니다."
 
 msgid "Uploaded campaigns will be synced between devices."
-msgstr ""
+msgstr "업로드된 캠페인은 장치 간에 동기화될 것입니다."
 
 msgid "Review records"
-msgstr ""
+msgstr "기록 열람"
 
 msgid "Note campaign achievements"
-msgstr ""
+msgstr "캠페인 업적 기록"
 
 msgid "Complete campaign setup"
-msgstr ""
+msgstr "캠페인 준비 완료"
 
 msgid "Review and draw tokens"
-msgstr ""
+msgstr "토큰 보기 및 뽑기"
 
 msgid "Spent experience"
-msgstr ""
+msgstr "경험치 소비"
 
 msgid "Continue"
-msgstr ""
+msgstr "계속"
 
 msgid "Start"
-msgstr ""
+msgstr "시작"
 
 msgid "View results"
-msgstr ""
+msgstr "결과 보기"
 
 msgid "Skipped"
-msgstr ""
+msgstr "건너뜀"
 
 msgid "Locked"
-msgstr ""
+msgstr "잠김"
 
 msgid "Add scenario result"
-msgstr ""
+msgstr "시나리오 결과 추가"
 
 msgid "Record completed scenario"
-msgstr ""
+msgstr "완료된 시나리오 기록 열람"
 
 msgid "Add XP from scenario"
-msgstr ""
+msgstr "시나리오로부터 경험치 추가"
 
 msgid "Review scenario results"
-msgstr ""
+msgstr "시나리오 결과 열람"
 
 msgid "Edit chaos bag"
-msgstr ""
+msgstr "혼돈 주머니 수정"
 
 msgid "Scenario name"
-msgstr ""
+msgstr "시나리오 이름"
 
 msgid "${ unspentXp } XP unspent"
 msgid_plural "${ unspentXp } XP unspent"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ unspentXp } 경험치 남음"
 
 msgid "Tap to draw"
-msgstr ""
+msgstr "탭하여 뽑기"
 
 msgid "Draw another"
-msgstr ""
+msgstr "하나 더 뽑기"
 
 msgid "Return tokens"
-msgstr ""
+msgstr "토큰 되돌리기"
 
 msgid "Seal tokens"
-msgstr ""
+msgstr "토큰 봉인하기"
 
 msgid "Release all"
-msgstr ""
+msgstr "모두 해방하기"
 
 msgid "Remove all bless & curse tokens"
-msgstr ""
+msgstr "모든 축복과 저주 토큰 제거하기"
 
 msgid "do not remove"
-msgstr ""
+msgstr "제거하지 마세요"
 
 #, javascript-format
 msgid "Return, but ${ doNotRemove } Bless/Curse"
-msgstr ""
+msgstr "되돌리기만 하고 축복/저주는 ${ doNotRemove }"
 
 msgid "View chaos bag"
-msgstr ""
+msgstr "혼돈 주머니 보기"
 
 msgid "Sealed tokens"
-msgstr ""
+msgstr "봉인된 토큰"
 
 msgid "Save XP to deck after making adjustments"
-msgstr ""
+msgstr "조정 후 경험치를 덱에 저장하십시오"
 
 #, javascript-format
 msgid "${ _spentXp } of ${ _totalXp } spent"
-msgstr ""
+msgstr "${ _totalXp } 경험치 중 ${ _spentXp } 소비"
 
 msgid "Save your changes to the campaign log"
-msgstr ""
+msgstr "변경 사항을 캠페인 기록지에 저장"
 
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
-msgstr ""
+msgstr "Ancestral Knowledge 카드가 있는 덱은 반드시 10장 이상의 능력 카드를 포함하여야 합니다."
 
 msgid "Faction, Level, Type"
-msgstr ""
+msgstr "역할군, 레벨, 유형"
 
 #, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
-msgstr ""
+msgstr "${ normalCardCount } / ${ deckSize } 카드"
 
 msgid "Ammo"
-msgstr ""
+msgstr "탄약"
 
 msgid "Bounties"
-msgstr ""
+msgstr "현상금"
 
 msgid "Charges"
-msgstr ""
+msgstr "충전"
 
 msgid "Keys"
-msgstr ""
+msgstr "열쇠"
 
 msgid "Locks"
-msgstr ""
+msgstr "자물쇠"
 
 msgid "Resources"
-msgstr ""
+msgstr "자원"
 
 msgid "Secrets"
-msgstr ""
+msgstr "비밀"
 
 msgid "Tickets"
 msgstr ""
 
 msgid "Tries"
-msgstr ""
+msgstr "시도"
 
 msgid "Whistles"
-msgstr ""
+msgstr "호각"
 
 msgid "Loading..."
-msgstr ""
+msgstr "불러오는 중..."
 
 #, javascript-format
 msgid "${ deck.owner.handle } must save this upgrade"
-msgstr ""
+msgstr "${ deck.owner.handle }도 반드시 향상을 저장해야 합니다"
 
 msgid "Your friend must save this upgrade"
-msgstr ""
+msgstr "당신의 친구도 반드시 향상을 저장해야 합니다"
 
 #, javascript-format
 msgid "${ deck.owner.handle } must save this deck"
-msgstr ""
+msgstr "${ deck.owner.handle }도 반드시 덱을 저장해야 합니다"
 
 msgid "Your friend must save this deck"
-msgstr ""
+msgstr "당신의 친구도 덱을 반드시 저장해야 합니다"
 
 msgid "Campaign players"
-msgstr ""
+msgstr "캠페인 플레이어"
 
 msgid "Add friends to campaign"
-msgstr ""
+msgstr "캠페인에 친구 추가"
 
 msgid "Add friends"
-msgstr ""
+msgstr "친구 추가"
 
 msgid "Access"
-msgstr ""
+msgstr "입장"
 
 msgid "Later"
-msgstr ""
+msgstr "나중에"
 
 msgid "Searching cards..."
-msgstr ""
+msgstr "카드를 찾는 중..."
 
 msgid ""
 "This appears to be one of your decks from ArkhamDB, however you are not "
 "currently logged in. If you wish to make edits, please login through the "
 "app settings."
 msgstr ""
+"아컴디비로부터 당신의 덱 중에 하나를 이곳에 표시하려 했지만, 당신은 현재 로그인되어 있지 않습니다. 만약 수정을 원한다면, 앱 "
+"설정에서 로그인해주세요."
 
 msgid "Leave campaign"
-msgstr ""
+msgstr "캠페인 떠나기"
 
 msgid ""
 "Are you sure you want to leave this campaign?\n"
 "\n"
 "Your decks will be removed from the campaign, but you can rejoin it later."
 msgstr ""
+"정말로 이 캠페인을 떠나시겠습니까?\n"
+"\n"
+"당신의 덱은 캠페인에서 제거되지만, 당신은 나중에 다시 참여할 수도 있습니다."
 
 msgid "Leave"
-msgstr ""
+msgstr "떠나기"
 
 msgid "Edit players"
-msgstr ""
+msgstr "플레이어 수정"
 
 msgid "View players"
-msgstr ""
+msgstr "플레이어 보기"
 
 msgid "Clear card cache"
-msgstr ""
+msgstr "카드 캐시 비우기"
 
 msgid "Uploading..."
-msgstr ""
+msgstr "업로드 중..."
 
 msgid "Leave standalone"
-msgstr ""
+msgstr "독립 시나리오 떠나기"
 
 msgid ""
 "Are you sure you want to leave this standalone?\n"
 "\n"
 "Your decks will be removed from the standalone, but you can rejoin it later."
 msgstr ""
+"정말로 이 독립 시나리오에서 떠나시겠습니까?\n"
+"\n"
+"당신의 덱은 독립 시나리오에서 제거되지만, 당신은 나중에 다시 참여할 수도 있습니다."
 
 msgid "Upload standalone"
-msgstr ""
+msgstr "독립 시나리오 업로드"
 
 msgid "You must be online to upload"
-msgstr ""
+msgstr "온라인에서만 업로드해야 합니다."
 
 msgid "Adjust scenario XP and trauma"
-msgstr ""
+msgstr "시나리오 경험치와 트라우마 조정"
 
 msgid "Unspent XP"
-msgstr ""
+msgstr "남은 경험치"
 
 #, javascript-format
 msgid "${ unspentXp } saved"
-msgstr ""
+msgstr "${ unspentXp } 저장됨"
 
 #, javascript-format
 msgid "Scenario Card - ${ difficultyStr }"
-msgstr ""
+msgstr "시나리오 카드 - ${ difficultyStr }"
 
 msgid "Scenario Card"
-msgstr ""
+msgstr "시나리오 카드"
 
 msgid ""
 "This appears to be one of your decks from ArkhamDB, however you seem to be "
 "logged into a differen ArkhamDB account? If you wish to make edits, please "
 "login through the app settings."
 msgstr ""
+"아컴디비로부터 당신의 덱 중에 하나를 이곳에 표시하려 했지만, 당신은 현재 다른 아컴디비 계정에 로그인되어 있는 것으로 보입니다. 만약 "
+"수정을 원한다면, 앱 설정에서 로그인해주세요."
 
 msgid "Justify text"
-msgstr ""
+msgstr "텍스트 행 맞추기"
 
 msgid "${ tokens[0] } and ${ tokens[1] }"
-msgstr ""
+msgstr "${ tokens[0] } 토큰과 ${ tokens[1] } 토큰"
 
 msgid "Dark Matter"
-msgstr ""
+msgstr "암흑 물질"
 
 msgid "Impending Doom"
 msgstr ""
@@ -4122,11 +4137,88 @@ msgstr ""
 msgid "Memories"
 msgstr ""
 
-msgid "By Axolotl"
+msgid "Fan-Made Campaigns"
+msgstr "팬메이드 캠페인"
+
+msgid "Fan-Made Content"
+msgstr "팬메이드 컨텐츠"
+
+msgid "Fetching account details..."
+msgstr "계정 세부사항을 가져 오는 중..."
+
+msgid ""
+"Thanks for signing up for Arkham Cards.\n"
+"\n"
+"First of all, you'll need to create a handle for your account."
+msgstr ""
+"아컴 카드에 가입해 주셔서 감사합니다.\n"
+"\n"
+"첫 번쨰로, 당신의 계정에 대한 핸들을 만들어야 합니다."
+
+msgid ""
+"People will be able to search for friends using their handle so you can "
+"join their campaigns."
+msgstr "핸들을 사용하여 친구를 검색할 수 있고 캠페인에 참여할 수 있습니다."
+
+msgid "Now that you are signed in, you should have access to your saved campaigns."
+msgstr "이제 로그인을 했으므로 저장된 캠페인에 접근할 수 있습니다."
+
+msgid ""
+"Campaigns can now be 'uploaded' so they can be synced between devices or "
+"shared with friendns."
+msgstr "이제 캠페인을 '업로드' 할 수 있고, 이를 통해 장치 또는 공유된 친구 간에 캠페인을 동기화할 수 있습니다. "
+
+msgid "Welcome"
+msgstr "환영합니다"
+
+msgid "Download print and play cards"
+msgstr "프린트 앤 플레이 카드를 다운로드"
+
+#, javascript-format
+msgid "${ section.title } (from XP)"
 msgstr ""
 
-msgid "Fan-Made Campaigns"
+msgid " (New Total: ${ newTotal })"
+msgstr "(새로운 합계): ${ newTotal })"
+
+msgid "Exiled story cards"
+msgstr "추방된 이야기 카드"
+
+msgid "Exile story cards"
+msgstr "이야기 카드 추방"
+
+msgid "Fan-made scenario by ${ custom.creator }"
+msgstr "${ custom.creator }의 팬메이드 시나리오"
+
+msgid ""
+"If you are a custom content creator who has a \"finished\" campaign you'd "
+"like to see in the app, contact me at arkhamcards@gmail.com. Custom "
+"campaigns are a fair amount of work, but I'd love to support the community "
+"in anyway I can."
 msgstr ""
+"당신이 앱에서 보고 싶은 \"완료\" 캠페인을 가진 커스텀 콘텐츠 제작자라면, arkhamcards@gmail.com으로 연락주세요. "
+"커스텀 캠페인은 상당한 양의 작업이지만 어쨌든 가능한 커뮤니티를 지원하고 싶습니다."
+
+msgid "Alice in Wonderland"
+msgstr "이상한 나라의 앨리스"
+
+msgid "Fragments of Alilce"
+msgstr ""
+
+msgid "Wonderland Boons"
+msgstr ""
+
+msgid "Wonderland Banes"
+msgstr ""
+
+msgid "Strength of Wonderland"
+msgstr ""
+
+msgid "Fan-made campaign by Axolotl"
+msgstr "팬메이드 캠페인 (제작자: Axolotl)"
+
+msgid "Fan-made campiagn by The Beard"
+msgstr "팬메이드 캠페인 (제작자: Beard)"
 
 #, javascript-format
 msgctxt "masculine"
@@ -4315,63 +4407,63 @@ msgstr "${ investigator.name } 조사자는 <b>${ sectionName }</b> 항목을 �
 
 msgctxt "trait"
 msgid "???"
-msgstr ""
+msgstr "???"
 
 msgctxt "trait"
 msgid "Abomination"
-msgstr ""
+msgstr "흉물"
 
 msgctxt "trait"
 msgid "Abyss"
-msgstr ""
+msgstr "심연"
 
 msgctxt "trait"
 msgid "Act 1"
-msgstr ""
+msgstr "주요목적 1"
 
 msgctxt "trait"
 msgid "Act 2"
-msgstr ""
+msgstr "주요목적 2"
 
 msgctxt "trait"
 msgid "Agency"
-msgstr ""
+msgstr "요원"
 
 msgctxt "trait"
 msgid "Ally"
-msgstr ""
+msgstr "조력자"
 
 msgctxt "trait"
 msgid "Altered"
-msgstr ""
+msgstr "달라진"
 
 msgctxt "trait"
 msgid "Ancient"
-msgstr ""
+msgstr "고대"
 
 msgctxt "trait"
 msgid "Ancient One"
-msgstr ""
+msgstr "고대의 존재"
 
 msgctxt "trait"
 msgid "Arkham"
-msgstr ""
+msgstr "아컴"
 
 msgctxt "trait"
 msgid "Arkham Asylum"
-msgstr ""
+msgstr "아컴 정신병원"
 
 msgctxt "trait"
 msgid "Armor"
-msgstr ""
+msgstr "방어구"
 
 msgctxt "trait"
 msgid "Artist"
-msgstr ""
+msgstr "예술가"
 
 msgctxt "trait"
 msgid "Assistant"
-msgstr ""
+msgstr "조수"
 
 msgctxt "trait"
 msgid "Attack"
@@ -4379,11 +4471,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Augury"
-msgstr ""
+msgstr "예지"
 
 msgctxt "trait"
 msgid "Avatar"
-msgstr ""
+msgstr "화신"
 
 msgctxt "trait"
 msgid "Basement"
@@ -4391,75 +4483,75 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Bayou"
-msgstr ""
+msgstr "늪지대"
 
 msgctxt "trait"
 msgid "Believer"
-msgstr ""
+msgstr "신자"
 
 msgctxt "trait"
 msgid "Blessed"
-msgstr ""
+msgstr "축복받은"
 
 msgctxt "trait"
 msgid "Blunder"
-msgstr ""
+msgstr "실수"
 
 msgctxt "trait"
 msgid "Boat"
-msgstr ""
+msgstr "배"
 
 msgctxt "trait"
 msgid "Bold"
-msgstr ""
+msgstr "대담한"
 
 msgctxt "trait"
 msgid "Boon"
-msgstr ""
+msgstr "이익"
 
 msgctxt "trait"
 msgid "Bridge"
-msgstr ""
+msgstr "다리"
 
 msgctxt "trait"
 msgid "Brotherhood"
-msgstr ""
+msgstr "형제단"
 
 msgctxt "trait"
 msgid "Byakhee"
-msgstr ""
+msgstr "비야키"
 
 msgctxt "trait"
 msgid "Bystander"
-msgstr ""
+msgstr "주변인"
 
 msgctxt "trait"
 msgid "Cairo"
-msgstr ""
+msgstr "카이로"
 
 msgctxt "trait"
 msgid "Campsite"
-msgstr ""
+msgstr "야영지"
 
 msgctxt "trait"
 msgid "Carnevale"
-msgstr ""
+msgstr "사육제"
 
 msgctxt "trait"
 msgid "Cave"
-msgstr ""
+msgstr "동굴"
 
 msgctxt "trait"
 msgid "Central"
-msgstr ""
+msgstr "중심부"
 
 msgctxt "trait"
 msgid "Charm"
-msgstr ""
+msgstr "부적"
 
 msgctxt "trait"
 msgid "Chosen"
-msgstr ""
+msgstr "선택받은 자"
 
 msgctxt "trait"
 msgid "Circle"
@@ -4471,19 +4563,19 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Civic"
-msgstr ""
+msgstr "공공근로자"
 
 msgctxt "trait"
 msgid "Clairvoyant"
-msgstr ""
+msgstr "선지자"
 
 msgctxt "trait"
 msgid "Clothing"
-msgstr ""
+msgstr "옷"
 
 msgctxt "trait"
 msgid "Clover Club"
-msgstr ""
+msgstr "클로버 클럽"
 
 msgctxt "trait"
 msgid "Coastal"
@@ -4491,19 +4583,19 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Composure"
-msgstr ""
+msgstr "침착"
 
 msgctxt "trait"
 msgid "Condition"
-msgstr ""
+msgstr "상태"
 
 msgctxt "trait"
 msgid "Connection"
-msgstr ""
+msgstr "인맥"
 
 msgctxt "trait"
 msgid "Conspirator"
-msgstr ""
+msgstr "음모"
 
 msgctxt "trait"
 msgid "Construct"
@@ -4515,35 +4607,35 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Creature"
-msgstr ""
+msgstr "생물"
 
 msgctxt "trait"
 msgid "Crime Scene"
-msgstr ""
+msgstr "범죄 현장"
 
 msgctxt "trait"
 msgid "Criminal"
-msgstr ""
+msgstr "범죄자"
 
 msgctxt "trait"
 msgid "Cultist"
-msgstr ""
+msgstr "추종자"
 
 msgctxt "trait"
 msgid "Curse"
-msgstr ""
+msgstr "저주"
 
 msgctxt "trait"
 msgid "Cursed"
-msgstr ""
+msgstr "저주받은"
 
 msgctxt "trait"
 msgid "Dark Young"
-msgstr ""
+msgstr "암흑의 자손"
 
 msgctxt "trait"
 msgid "Deep One"
-msgstr ""
+msgstr "심해인"
 
 msgctxt "trait"
 msgid "Depths"
@@ -4551,83 +4643,83 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Desert"
-msgstr ""
+msgstr "사막"
 
 msgctxt "trait"
 msgid "Desperate"
-msgstr ""
+msgstr "절박함"
 
 msgctxt "trait"
 msgid "Detective"
-msgstr ""
+msgstr "탐정"
 
 msgctxt "trait"
 msgid "Developed"
-msgstr ""
+msgstr "단련된"
 
 msgctxt "trait"
 msgid "Dhole"
-msgstr ""
+msgstr "드홀"
 
 msgctxt "trait"
 msgid "Distortion"
-msgstr ""
+msgstr "왜곡"
 
 msgctxt "trait"
 msgid "Dreamer"
-msgstr ""
+msgstr "꿈꾸는 자"
 
 msgctxt "trait"
 msgid "Dreamlands"
-msgstr ""
+msgstr "몽환의 땅"
 
 msgctxt "trait"
 msgid "Drifter"
-msgstr ""
+msgstr "방랑자"
 
 msgctxt "trait"
 msgid "Dunwich"
-msgstr ""
+msgstr "던위치"
 
 msgctxt "trait"
 msgid "Eldritch"
-msgstr ""
+msgstr "섬뜩한"
 
 msgctxt "trait"
 msgid "Elite"
-msgstr ""
+msgstr "정예"
 
 msgctxt "trait"
 msgid "Endtimes"
-msgstr ""
+msgstr "종말"
 
 msgctxt "trait"
 msgid "Evidence"
-msgstr ""
+msgstr "증거"
 
 msgctxt "trait"
 msgid "Exhibit"
-msgstr ""
+msgstr "전시실"
 
 msgctxt "trait"
 msgid "Expedition"
-msgstr ""
+msgstr "탐사"
 
 msgctxt "trait"
 msgid "Expert"
-msgstr ""
+msgstr "전문화"
 
 msgctxt "trait"
 msgid "Extradimensional"
-msgstr ""
+msgstr "초차원"
 
 msgctxt "trait"
 msgid "Extraterrestrial"
-msgstr ""
+msgstr "외계"
 
 msgctxt "trait"
 msgid "Eztli"
-msgstr ""
+msgstr "에스틀리"
 
 msgctxt "trait"
 msgid "Familiar"
@@ -4635,27 +4727,27 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Fated"
-msgstr ""
+msgstr "숙명"
 
 msgctxt "trait"
 msgid "Favor"
-msgstr ""
+msgstr "호의"
 
 msgctxt "trait"
 msgid "Firearm"
-msgstr ""
+msgstr "총"
 
 msgctxt "trait"
 msgid "Flaw"
-msgstr ""
+msgstr "결함"
 
 msgctxt "trait"
 msgid "Flora"
-msgstr ""
+msgstr "식물"
 
 msgctxt "trait"
 msgid "Footwear"
-msgstr ""
+msgstr "신발"
 
 msgctxt "trait"
 msgid "Forbidden"
@@ -4663,23 +4755,23 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Forgotten"
-msgstr ""
+msgstr "잊힌"
 
 msgctxt "trait"
 msgid "Fortune"
-msgstr ""
+msgstr "행운"
 
 msgctxt "trait"
 msgid "Future"
-msgstr ""
+msgstr "미래"
 
 msgctxt "trait"
 msgid "Gambit"
-msgstr ""
+msgstr "도박수"
 
 msgctxt "trait"
 msgid "Geist"
-msgstr ""
+msgstr "유령"
 
 msgctxt "trait"
 msgid "Ghast"
@@ -4687,15 +4779,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Ghoul"
-msgstr ""
+msgstr "구울"
 
 msgctxt "trait"
 msgid "Government"
-msgstr ""
+msgstr "정부"
 
 msgctxt "trait"
 msgid "Grant"
-msgstr ""
+msgstr "기금"
 
 msgctxt "trait"
 msgid "Graveyard"
@@ -4703,27 +4795,27 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Ground Floor"
-msgstr ""
+msgstr "1층"
 
 msgctxt "trait"
 msgid "Guest"
-msgstr ""
+msgstr "손님"
 
 msgctxt "trait"
 msgid "Gug"
-msgstr ""
+msgstr "구그"
 
 msgctxt "trait"
 msgid "Hall"
-msgstr ""
+msgstr "복도"
 
 msgctxt "trait"
 msgid "Hazard"
-msgstr ""
+msgstr "위기"
 
 msgctxt "trait"
 msgid "Hex"
-msgstr ""
+msgstr "사술"
 
 msgctxt "trait"
 msgid "Hideout"
@@ -4731,19 +4823,19 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Historical Society"
-msgstr ""
+msgstr "사학회"
 
 msgctxt "trait"
 msgid "Human"
-msgstr ""
+msgstr "인간형"
 
 msgctxt "trait"
 msgid "Humanoid"
-msgstr ""
+msgstr "인간형"
 
 msgctxt "trait"
 msgid "Hunter"
-msgstr ""
+msgstr "사냥꾼"
 
 msgctxt "trait"
 msgid "Hybrid"
@@ -4751,27 +4843,27 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Illicit"
-msgstr ""
+msgstr "불법"
 
 msgctxt "trait"
 msgid "Improvised"
-msgstr ""
+msgstr "즉흥"
 
 msgctxt "trait"
 msgid "Injury"
-msgstr ""
+msgstr "부상"
 
 msgctxt "trait"
 msgid "Innate"
-msgstr ""
+msgstr "본성"
 
 msgctxt "trait"
 msgid "Innocent"
-msgstr ""
+msgstr "무고한"
 
 msgctxt "trait"
 msgid "Innsmouth"
-msgstr ""
+msgstr "인스머스"
 
 msgctxt "trait"
 msgid "Insect"
@@ -4779,11 +4871,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Insight"
-msgstr ""
+msgstr "통찰"
 
 msgctxt "trait"
 msgid "Instrument"
-msgstr ""
+msgstr "악기"
 
 msgctxt "trait"
 msgid "Island"
@@ -4791,27 +4883,27 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Item"
-msgstr ""
+msgstr "물품"
 
 msgctxt "trait"
 msgid "Job"
-msgstr ""
+msgstr "작업"
 
 msgctxt "trait"
 msgid "Jungle"
-msgstr ""
+msgstr "밀림"
 
 msgctxt "trait"
 msgid "Kadath"
-msgstr ""
+msgstr "카다스"
 
 msgctxt "trait"
 msgid "Key"
-msgstr ""
+msgstr "열쇠"
 
 msgctxt "trait"
 msgid "Lead"
-msgstr ""
+msgstr "실마리"
 
 msgctxt "trait"
 msgid "Leng"
@@ -4819,15 +4911,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Lodge"
-msgstr ""
+msgstr "교단"
 
 msgctxt "trait"
 msgid "Lunatic"
-msgstr ""
+msgstr "광인"
 
 msgctxt "trait"
 msgid "Madness"
-msgstr ""
+msgstr "정신이상"
 
 msgctxt "trait"
 msgid "Manifold"
@@ -4835,23 +4927,23 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Mask"
-msgstr ""
+msgstr "가면"
 
 msgctxt "trait"
 msgid "Medic"
-msgstr ""
+msgstr "치료사"
 
 msgctxt "trait"
 msgid "Melee"
-msgstr ""
+msgstr "근접"
 
 msgctxt "trait"
 msgid "Mexico City"
-msgstr ""
+msgstr "멕시코시티"
 
 msgctxt "trait"
 msgid "Mi-Go"
-msgstr ""
+msgstr "미고"
 
 msgctxt "trait"
 msgid "Midtown"
@@ -4859,7 +4951,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Miskatonic"
-msgstr ""
+msgstr "미스캐토닉"
 
 msgctxt "trait"
 msgid "Mnar"
@@ -4867,7 +4959,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Monster"
-msgstr ""
+msgstr "괴물"
 
 msgctxt "trait"
 msgid "Montréal"
@@ -4883,11 +4975,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Mystery"
-msgstr ""
+msgstr "불가사의"
 
 msgctxt "trait"
 msgid "New Orleans"
-msgstr ""
+msgstr "뉴올리언스"
 
 msgctxt "trait"
 msgid "New York City"
@@ -4895,15 +4987,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Nightgaunt"
-msgstr ""
+msgstr "나이트건트"
 
 msgctxt "trait"
 msgid "Obstacle"
-msgstr ""
+msgstr "장애물"
 
 msgctxt "trait"
 msgid "Occult"
-msgstr ""
+msgstr "비술"
 
 msgctxt "trait"
 msgid "Ocean"
@@ -4911,7 +5003,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Omen"
-msgstr ""
+msgstr "징조"
 
 msgctxt "trait"
 msgid "Ooth-Nargai"
@@ -4931,19 +5023,19 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Otherworld"
-msgstr ""
+msgstr "다른 세계"
 
 msgctxt "trait"
 msgid "Pact"
-msgstr ""
+msgstr "계약"
 
 msgctxt "trait"
 msgid "Paradox"
-msgstr ""
+msgstr "역설"
 
 msgctxt "trait"
 msgid "Paris"
-msgstr ""
+msgstr "파리"
 
 msgctxt "trait"
 msgid "Part 1"
@@ -4951,27 +5043,27 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Passageway"
-msgstr ""
+msgstr "통로"
 
 msgctxt "trait"
 msgid "Patron"
-msgstr ""
+msgstr "후원가"
 
 msgctxt "trait"
 msgid "Performer"
-msgstr ""
+msgstr "공연자"
 
 msgctxt "trait"
 msgid "Pnakotus"
-msgstr ""
+msgstr "프나코투스"
 
 msgctxt "trait"
 msgid "Poison"
-msgstr ""
+msgstr "독"
 
 msgctxt "trait"
 msgid "Police"
-msgstr ""
+msgstr "경찰"
 
 msgctxt "trait"
 msgid "Port"
@@ -4983,23 +5075,23 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Power"
-msgstr ""
+msgstr "권능"
 
 msgctxt "trait"
 msgid "Practiced"
-msgstr ""
+msgstr "숙련"
 
 msgctxt "trait"
 msgid "Present-Day"
-msgstr ""
+msgstr "오늘날"
 
 msgctxt "trait"
 msgid "Prison"
-msgstr ""
+msgstr "감옥"
 
 msgctxt "trait"
 msgid "Private"
-msgstr ""
+msgstr "일반인 출입금지"
 
 msgctxt "trait"
 msgid "Providence"
@@ -5007,23 +5099,23 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Rail"
-msgstr ""
+msgstr "철로"
 
 msgctxt "trait"
 msgid "Ranged"
-msgstr ""
+msgstr "원거리"
 
 msgctxt "trait"
 msgid "Relic"
-msgstr ""
+msgstr "유물"
 
 msgctxt "trait"
 msgid "Reporter"
-msgstr ""
+msgstr "기자"
 
 msgctxt "trait"
 msgid "Research"
-msgstr ""
+msgstr "연구"
 
 msgctxt "trait"
 msgid "Return"
@@ -5031,7 +5123,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Ritual"
-msgstr ""
+msgstr "의식"
 
 msgctxt "trait"
 msgid "Ritual Site"
@@ -5043,7 +5135,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Riverside"
-msgstr ""
+msgstr "강변"
 
 msgctxt "trait"
 msgid "Road"
@@ -5051,7 +5143,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Ruins"
-msgstr ""
+msgstr "유적"
 
 msgctxt "trait"
 msgid "Salem"
@@ -5063,47 +5155,47 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Scheme"
-msgstr ""
+msgstr "모략"
 
 msgctxt "trait"
 msgid "Scholar"
-msgstr ""
+msgstr "학자"
 
 msgctxt "trait"
 msgid "Science"
-msgstr ""
+msgstr "과학"
 
 msgctxt "trait"
 msgid "Script"
-msgstr ""
+msgstr "글귀"
 
 msgctxt "trait"
 msgid "Second Floor"
-msgstr ""
+msgstr "2층"
 
 msgctxt "trait"
 msgid "Sentinel Hill"
-msgstr ""
+msgstr "파수꾼 언덕"
 
 msgctxt "trait"
 msgid "Serpent"
-msgstr ""
+msgstr "뱀"
 
 msgctxt "trait"
 msgid "Service"
-msgstr ""
+msgstr "서비스"
 
 msgctxt "trait"
 msgid "Servitor"
-msgstr ""
+msgstr "시종"
 
 msgctxt "trait"
 msgid "Shantak"
-msgstr ""
+msgstr "샨타크"
 
 msgctxt "trait"
 msgid "Shattered"
-msgstr ""
+msgstr "산산조각난"
 
 msgctxt "trait"
 msgid "Ship"
@@ -5111,11 +5203,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Shoggoth"
-msgstr ""
+msgstr "쇼고스"
 
 msgctxt "trait"
 msgid "Silver Twilight"
-msgstr ""
+msgstr "은빛 황혼회"
 
 msgctxt "trait"
 msgid "Skai"
@@ -5123,15 +5215,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Socialite"
-msgstr ""
+msgstr "유명인사"
 
 msgctxt "trait"
 msgid "Song"
-msgstr ""
+msgstr "노래"
 
 msgctxt "trait"
 msgid "Sorcerer"
-msgstr ""
+msgstr "주술사"
 
 msgctxt "trait"
 msgid "Spectral"
@@ -5139,7 +5231,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Spell"
-msgstr ""
+msgstr "마법"
 
 msgctxt "trait"
 msgid "Spider"
@@ -5147,7 +5239,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Spirit"
-msgstr ""
+msgstr "영혼"
 
 msgctxt "trait"
 msgid "St Mary's"
@@ -5155,7 +5247,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Staff"
-msgstr ""
+msgstr "직원"
 
 msgctxt "trait"
 msgid "Steps"
@@ -5163,11 +5255,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Summon"
-msgstr ""
+msgstr "소환"
 
 msgctxt "trait"
 msgid "Supply"
-msgstr ""
+msgstr "보급"
 
 msgctxt "trait"
 msgid "Surface"
@@ -5179,23 +5271,23 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Syndicate"
-msgstr ""
+msgstr "신디케이트"
 
 msgctxt "trait"
 msgid "Tactic"
-msgstr ""
+msgstr "전술"
 
 msgctxt "trait"
 msgid "Talent"
-msgstr ""
+msgstr "재능"
 
 msgctxt "trait"
 msgid "Tarot"
-msgstr ""
+msgstr "타로"
 
 msgctxt "trait"
 msgid "Task"
-msgstr ""
+msgstr "과업"
 
 msgctxt "trait"
 msgid "Temple"
@@ -5203,31 +5295,31 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Tenochtitlán"
-msgstr ""
+msgstr "테노치티틀란"
 
 msgctxt "trait"
 msgid "Tentacle"
-msgstr ""
+msgstr "촉수"
 
 msgctxt "trait"
 msgid "Terror"
-msgstr ""
+msgstr "두려움"
 
 msgctxt "trait"
 msgid "Third Floor"
-msgstr ""
+msgstr "3층"
 
 msgctxt "trait"
 msgid "Tindalos"
-msgstr ""
+msgstr "틴달로스"
 
 msgctxt "trait"
 msgid "Tome"
-msgstr ""
+msgstr "서적"
 
 msgctxt "trait"
 msgid "Tool"
-msgstr ""
+msgstr "도구"
 
 msgctxt "trait"
 msgid "Town"
@@ -5235,23 +5327,23 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Train"
-msgstr ""
+msgstr "열차"
 
 msgctxt "trait"
 msgid "Trap"
-msgstr ""
+msgstr "함정"
 
 msgctxt "trait"
 msgid "Trick"
-msgstr ""
+msgstr "속임수"
 
 msgctxt "trait"
 msgid "Unhallowed"
-msgstr ""
+msgstr "부정한 땅"
 
 msgctxt "trait"
 msgid "Upgrade"
-msgstr ""
+msgstr "향상"
 
 msgctxt "trait"
 msgid "Vale"
@@ -5263,11 +5355,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Venice"
-msgstr ""
+msgstr "베네치아"
 
 msgctxt "trait"
 msgid "Veteran"
-msgstr ""
+msgstr "참전용사"
 
 msgctxt "trait"
 msgid "Void"
@@ -5275,7 +5367,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Warden"
-msgstr ""
+msgstr "파수꾼"
 
 msgctxt "trait"
 msgid "Wastes"
@@ -5283,19 +5375,19 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Wayfarer"
-msgstr ""
+msgstr "여행자"
 
 msgctxt "trait"
 msgid "Weapon"
-msgstr ""
+msgstr "무기"
 
 msgctxt "trait"
 msgid "Wilderness"
-msgstr ""
+msgstr "험지"
 
 msgctxt "trait"
 msgid "Witch"
-msgstr ""
+msgstr "마녀"
 
 msgctxt "trait"
 msgid "Witch House"
@@ -5303,7 +5395,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Woods"
-msgstr ""
+msgstr "숲"
 
 msgctxt "trait"
 msgid "Y'ha-nthlei"
@@ -5311,11 +5403,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Yithian"
-msgstr ""
+msgstr "이스인"
 
 msgctxt "trait"
 msgid "Yoth"
-msgstr ""
+msgstr "요스"
 
 msgctxt "trait"
 msgid "Zoog"
@@ -5427,4 +5519,4 @@ msgstr "모두"
 
 msgctxt "trauma"
 msgid "None"
-msgstr ""
+msgstr "없음"

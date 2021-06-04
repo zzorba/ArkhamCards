@@ -13,9 +13,10 @@ interface Props {
   onChange: (card: Card, count: number) => void;
   onPress?: (card: Card) => void;
   limit: number;
+  locked?: boolean;
 }
 
-export default function CardToggleRow({ card, count, onChange, onPress, limit }: Props) {
+export default function CardToggleRow({ card, count, onChange, onPress, limit, locked }: Props) {
   const [one, toggleOne] = useFlag(count > 0);
   const [two, toggleTwo] = useFlag(count > 1);
   const [three, toggleThree] = useFlag(count > 2);
@@ -27,6 +28,22 @@ export default function CardToggleRow({ card, count, onChange, onPress, limit }:
 
   if (limit === 0) {
     return null;
+  }
+  if (locked) {
+    if (count <= 0) {
+      return null;
+    }
+    return (
+      <CardSearchResult
+        card={card}
+        onPress={onPress}
+        backgroundColor="transparent"
+        control={{
+          type: 'count',
+          count,
+        }}
+      />
+    );
   }
   return (
     <View>

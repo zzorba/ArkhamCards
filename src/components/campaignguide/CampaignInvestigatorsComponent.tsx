@@ -171,7 +171,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
                       first
                     />
                     <Text style={[space.marginLeftS, typography.gameFont]}>
-                      {countEntry?.type === 'count' ? countEntry.count : 0}
+                      { countEntry?.type === 'count' ? countEntry.count : 0 }
                     </Text>
                   </View>
                 );

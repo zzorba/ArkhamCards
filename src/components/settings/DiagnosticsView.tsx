@@ -196,6 +196,7 @@ export default function DiagnosticsView() {
       </>
     );
   }, [crash, addDebugCard, setDissonantVoicesToken]);
+  const cardsLoading = useSelector((state: AppState) => state.cards.loading);
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.L20 }]}>
@@ -211,8 +212,9 @@ export default function DiagnosticsView() {
           text={t`Clear cache`}
         />
         <SettingsItem
+          disabled={cardsLoading}
           onPress={clearCardCache}
-          text={t`Clear card cache`}
+          text={cardsLoading ? t`Loading` : t`Clear card cache`}
         />
         { debugSection }
       </ScrollView>

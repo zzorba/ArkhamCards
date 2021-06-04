@@ -16,7 +16,7 @@ import ArkhamButton from '@components/core/ArkhamButton';
 import space from '@styles/space';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 
-const SHOW_CUSTOM = false;
+const SHOW_CUSTOM = true;
 
 export type CampaignSelection = {
   type: 'campaign';
@@ -74,7 +74,7 @@ function SelectCampaignDialog({ selectionChanged, componentId }: SelectCampagaig
                 includeCustom
               />
               <Text style={[space.marginSideM, space.marginTopM, space.marginBottomL, typography.text]}>
-                { t`If you are a custom content creator who has a "finished" campaign you'd like to see in the app, contact me at arkhamcards@gmail.com. Adding custom campaigns is a great deal of work, but I'd love to support the community in anyway I can.` }
+                { t`If you are a custom content creator who has a "finished" campaign you'd like to see in the app, contact me at arkhamcards@gmail.com. Custom campaigns are a fair amount of work, but I'd love to support the community in anyway I can.` }
               </Text>
             </>
           ) }

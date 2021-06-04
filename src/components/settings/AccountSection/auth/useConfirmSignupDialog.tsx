@@ -1,120 +1,126 @@
-import React, { useCallback, useContext, useEffect, useMemo, useReducer } from 'react';
-import { filter, map } from 'lodash';
-import { StyleSheet, Text, View } from 'react-native';
-import { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import { useDispatch, useSelector } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
-import { Action } from 'redux';
-// @ts-ignore TS7016
-import ProgressBar from 'react-native-progress/Bar';
+import React, { useCallback, useContext, useMemo, useRef, useState } from 'react';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { t } from 'ttag';
 
 import StyleContext from '@styles/StyleContext';
 import { useDialog } from '@components/deck/dialogs';
 import space from '@styles/space';
-import { useToggles } from '@components/core/hooks';
-import { AppState, getCampaigns } from '@reducers';
-import { uploadCampaign } from '@components/campaignguide/actions';
-import { useCreateCampaignActions } from '@data/remote/campaigns';
-import { useDeckActions } from '@data/remote/decks';
 import { useMyProfile } from '@data/remote/hooks';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import LoadingSpinner from '@components/core/LoadingSpinner';
+import NewDialog from '@components/core/NewDialog';
+import { useUpdateHandle } from '@data/remote/api';
+import DeckButton from '@components/deck/controls/DeckButton';
 
-interface UploadState {
-  total: number;
-  finished: number;
-  completed: boolean;
-}
-
-type UploadDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
-
-export default function useConfirmSignupDialog(user?: FirebaseAuthTypes.User): [React.ReactNode, () => void] {
-  const localCampaigns = useSelector(getCampaigns);
-  const dispatch: UploadDispatch = useDispatch();
-  const { colors, typography, width } = useContext(StyleContext);
-  const [noUpload,, setNoUpload] = useToggles({});
-  const [myProfile, loadingMyProfile, refetchMyProfile] = useMyProfile(true);
-  /*
+export default function useConfirmSignupDialog(): [React.ReactNode, () => void] {
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const { typography } = useContext(StyleContext);
+  const [myProfile, loadingMyProfile, refreshMyProfile] = useMyProfile(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [liveValue, setLiveValue] = useState('');
+  const [error, setError] = useState<string | undefined>(undefined);
+  const textInputRef = useRef<TextInput>(null);
+  const updateHandle = useUpdateHandle();
+  const doSubmit = useCallback(async(submitValue: string) => {
+    setSubmitting(true);
+    const error = await updateHandle(submitValue);
+    if (error) {
+      setError(error);
+      setSubmitting(false);
+    }
+    setSubmitting(false);
+    refreshMyProfile();
+  }, [updateHandle, setError, setSubmitting, refreshMyProfile]);
+  const submitButtonPressed = useCallback(() => {
+    doSubmit(liveValue);
+  }, [doSubmit, liveValue]);
+  const setVisibleRef = useRef<(visible: boolean) => void>();
+  const closeDialog = useCallback(() => {
+    if (setVisibleRef.current) {
+      setVisibleRef.current(false);
+    }
+  }, []);
   const content = useMemo(() => {
-    if (uploadState) {
+    if (!user || loadingMyProfile || !myProfile) {
       return (
-        <View style={[styles.column, space.paddingBottomS, styles.center]}>
-          <View style={space.paddingS}>
-            <Text style={typography.large}>{t`Uploading`}</Text>
+        <View style={[styles.column, space.paddingM, styles.center]}>
+          <View style={space.paddingBottomM}>
+            <Text style={typography.text}>
+              { t`Fetching account details...` }
+            </Text>
           </View>
-          <View style={[styles.row, space.paddingBottomS]}>
-            <ProgressBar progress={uploadState.finished / uploadState.total} color={colors.D30} width={width * 0.6} />
-          </View>
+          <LoadingSpinner inline />
         </View>
       );
+    }
+    if (!myProfile.handle) {
+      return (
+        <View style={space.marginS}>
+          <View style={[space.paddingS, space.paddingBottomM]}>
+            <Text style={typography.text}>
+              { t`Thanks for signing up for Arkham Cards.\n\nFirst of all, you'll need to create a handle for your account.` }
+            </Text>
+          </View>
+          <View style={space.paddingBottomS}>
+            <NewDialog.TextInput
+              textInputRef={textInputRef}
+              value={liveValue}
+              error={error}
+              disabled={submitting}
+              placeholder={t`Choose a handle for your account`}
+              onChangeText={setLiveValue}
+              onSubmit={doSubmit}
+            />
+          </View>
+          <DeckButton
+            key="save"
+            icon="check-thin"
+            title={t`Save`}
+            thin
+            loading={submitting}
+            onPress={submitButtonPressed}
+          />
+          <View style={[space.paddingS, space.paddingTopM]}>
+            <Text style={typography.text}>
+              { t`People will be able to search for friends using their handle so you can join their campaigns.` }
+            </Text>
+          </View>
+        </View>
+      )
     }
     return (
       <View style={styles.column}>
         <View style={space.paddingS}>
-          <Text style={typography.text}>
-            { t`Campaigns can be uploaded to your Arkham Cards account.` }
-            { '\n' }
-            { t`Uploaded campaigns will be synced between devices.` }
+          <Text style={[typography.text, space.paddingBottomM]}>
+            { t`Now that you are signed in, you should have access to your saved campaigns.` }
+            { '\n\n' }
+            { t`Campaigns can now be 'uploaded' so they can be synced between devices or shared with friendns.` }
           </Text>
-        </View>
-        { map(localCampaigns, (campaign, idx) => (
-          <CampaignRow
-            key={campaign.uuid}
-            campaign={campaign}
-            value={!!noUpload[campaign.uuid]}
-            onChange={setNoUpload}
-            last={idx === localCampaigns.length - 1}
+          <DeckButton
+            key="save"
+            icon="check-thin"
+            title={t`Okay`}
+            thin
+            onPress={closeDialog}
           />
-        )) }
+        </View>
       </View>
     );
-  }, [localCampaigns, setNoUpload, noUpload, typography, uploadState, width, colors]);
-  const createCampaignActions = useCreateCampaignActions();
-  const deckActions = useDeckActions();
-  const uploadCampaigns = useCallback(async() => {
-    if (user) {
-      const uploadCampaigns = filter(localCampaigns, c => !noUpload[c.uuid]);
-      updateUploadState({ type: 'start', total: uploadCampaigns.length });
-      await Promise.all(
-        map(uploadCampaigns, c => {
-          return dispatch(uploadCampaign(createCampaignActions, deckActions, c.id)).then(
-            () => updateUploadState({ type: 'finish' }),
-            () => updateUploadState({ type: 'error' }),
-          );
-        }),
-      );
-    }
-    return true;
-  }, [user, localCampaigns, noUpload, dispatch, updateUploadState, createCampaignActions, deckActions]);
-  const uploading = !!uploadState?.completed;
+  }, [typography, doSubmit, setLiveValue, submitButtonPressed, closeDialog, submitting, liveValue, textInputRef, error, loadingMyProfile, user, myProfile]);
   const { dialog, showDialog, setVisible } = useDialog({
-    title: t`Upload campaigns`,
+    title: t`Welcome`,
     alignment: 'center',
     content,
-    allowDismiss: false,
-    confirm: {
-      title: uploading ? t`Uploading` : t`Upload`,
-      onPress: uploadCampaigns,
-      loading: uploading,
-    },
-    dismiss: {
-      title: t`Later`,
-    },
+    allowDismiss: !!myProfile?.handle,
   });
+  setVisibleRef.current = setVisible;
 
-  useEffect(() => {
-    if (uploadState && uploadState.completed) {
-      setVisible(false);
-    }
-  }, [setVisible, uploadState]);
   const maybeShowDialog = useCallback(() => {
-    if (localCampaigns.length) {
-      setTimeout(() => {
-        showDialog();
-      }, 500);
-    }
-  }, [localCampaigns, showDialog]);
-*/
-  return [null, () => {}];
+    setTimeout(() => {
+      showDialog();
+    }, 250);
+  }, [showDialog]);
+  return [dialog, maybeShowDialog];
 }
 
 
@@ -123,9 +129,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  row: {
-    flexDirection: 'row',
   },
   column: {
     flexDirection: 'column',

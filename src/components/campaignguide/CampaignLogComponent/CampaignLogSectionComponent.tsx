@@ -79,7 +79,10 @@ export default function CampaignLogSectionComponent({ sectionId, campaignGuide, 
         );
       case 'investigator_count':
         return (
-          <Text>investigator   count</Text>
+          <TextEntryComponent
+            entry={entry}
+            text={`${title}: #X#`}
+          />
         );
       case 'section_count':
         return (

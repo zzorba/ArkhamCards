@@ -38,7 +38,7 @@ function BreakTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
 
 function ArkhamIconRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithIconName, State> {
   return {
-    match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\]')),
+    match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]…]+)\\]')),
     order: 1,
     parse: (capture) => {
       return { name: capture[1] };

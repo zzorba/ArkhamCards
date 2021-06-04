@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useRef, useState } from 'react';
 import Carousel from 'react-native-snap-carousel';
 import { Platform } from 'react-native';
-import { findIndex } from 'lodash';
+import { findIndex, findLastIndex } from 'lodash';
 
 import { ProcessedCampaign, ProcessedScenario } from '@data/scenario';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
@@ -25,6 +25,10 @@ function getActiveIndex(scenarios: ProcessedScenario[]) {
     s.type === 'playable' || s.type === 'started' || s.type === 'placeholder');
   if (index !== -1) {
     return index;
+  }
+  const lastIndex = findLastIndex(scenarios, s => s.type === 'completed');
+  if (lastIndex !== -1) {
+    return lastIndex;
   }
   return scenarios.length - 1;
 }
@@ -74,7 +78,8 @@ export default function ScenarioCarouselComponent({
       if (scenarioPressed.current) {
         scenarioPressed.current = false;
         if (carousel.current) {
-          carousel.current.snapToItem(getActiveIndex(processedCampaign.scenarios));
+          const activeIndex = getActiveIndex(processedCampaign.scenarios)
+          carousel.current.snapToItem(activeIndex);
         }
       }
     }
@@ -107,6 +112,7 @@ export default function ScenarioCarouselComponent({
       useExperimentalSnap={Platform.OS === 'android'}
       useScrollView
       disableIntervalMomentum
+      initialNumToRender={processedCampaign.scenarios.length}
       data={processedCampaign.scenarios}
       renderItem={renderScenario}
       onScrollIndexChanged={setIndex}

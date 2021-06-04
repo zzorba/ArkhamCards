@@ -3998,10 +3998,82 @@ msgstr ""
 msgid "Memories"
 msgstr ""
 
-msgid "By Axolotl"
+msgid "Fan-Made Campaigns"
 msgstr ""
 
-msgid "Fan-Made Campaigns"
+msgid "Fan-Made Content"
+msgstr ""
+
+msgid "Fetching account details..."
+msgstr ""
+
+msgid ""
+"Thanks for signing up for Arkham Cards.\n"
+"\n"
+"First of all, you'll need to create a handle for your account."
+msgstr ""
+
+msgid ""
+"People will be able to search for friends using their handle so you can "
+"join their campaigns."
+msgstr ""
+
+msgid "Now that you are signed in, you should have access to your saved campaigns."
+msgstr ""
+
+msgid ""
+"Campaigns can now be 'uploaded' so they can be synced between devices or "
+"shared with friendns."
+msgstr ""
+
+msgid "Welcome"
+msgstr ""
+
+msgid "Download print and play cards"
+msgstr ""
+
+#, javascript-format
+msgid "${ section.title } (from XP)"
+msgstr ""
+
+msgid " (New Total: ${ newTotal })"
+msgstr ""
+
+msgid "Exiled story cards"
+msgstr ""
+
+msgid "Exile story cards"
+msgstr ""
+
+msgid "Fan-made scenario by ${ custom.creator }"
+msgstr ""
+
+msgid ""
+"If you are a custom content creator who has a \"finished\" campaign you'd "
+"like to see in the app, contact me at arkhamcards@gmail.com. Custom "
+"campaigns are a fair amount of work, but I'd love to support the community "
+"in anyway I can."
+msgstr ""
+
+msgid "Alice in Wonderland"
+msgstr ""
+
+msgid "Fragments of Alilce"
+msgstr ""
+
+msgid "Wonderland Boons"
+msgstr ""
+
+msgid "Wonderland Banes"
+msgstr ""
+
+msgid "Strength of Wonderland"
+msgstr ""
+
+msgid "Fan-made campaign by Axolotl"
+msgstr ""
+
+msgid "Fan-made campiagn by The Beard"
 msgstr ""
 
 #, javascript-format

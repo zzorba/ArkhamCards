@@ -53,7 +53,7 @@ export default function AddSideScenarioButton({ componentId, processedCampaign, 
       processedCampaign.scenarios,
       scenario =>
         scenario.type === 'completed' &&
-        scenario.scenarioGuide.scenarioType() === 'scenario'
+        (scenario.scenarioGuide.scenarioType() === 'scenario')
     );
     if (!completedActualScenario) {
       return false;
@@ -64,7 +64,7 @@ export default function AddSideScenarioButton({ componentId, processedCampaign, 
       processedCampaign.campaignLog,
       false
     );
-    if (nextScenario && nextScenario.scenario.type === 'interlude') {
+    if (nextScenario && (nextScenario.scenario.type === 'interlude' && !nextScenario.scenario.allow_side_scenario)) {
       // Can't break up an interlude and a scenario.
       return false;
     }

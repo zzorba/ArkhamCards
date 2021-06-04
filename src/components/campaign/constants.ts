@@ -21,6 +21,7 @@ import {
   CustomCampaignLog,
   ScenarioResult,
   STANDALONE,
+  ALICE_IN_WONDERLAND,
   DARK_MATTER,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
@@ -59,6 +60,7 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case CUSTOM: return null;
     case STANDALONE: return t`Standalone`;
     case DARK_MATTER: return t`Dark Matter`;
+    case ALICE_IN_WONDERLAND: return t`Alice in Wonderland`;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -268,6 +270,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Into the Maelstrom`, code: 'into_the_maelstrom', pack_code: 'itm' },
       { name: t`Epilogue`, code: 'epligoue', pack_code: 'itm', interlude: true },
     ];
+    case ALICE_IN_WONDERLAND: return [];
     case DARK_MATTER: return [];
     case TDE: return [];
     case CUSTOM: return [];
@@ -296,6 +299,7 @@ export function campaignNames() {
     tcu: t`The Circle Undone`,
     tic: t`The Innsmouth Conspiracy`,
     zdm: t`Dark Matter`,
+    zaw: t`Alice in Wonderland`,
     standalone: t`Standalone`,
   };
 }
@@ -320,6 +324,7 @@ export function campaignColor(cycle: CampaignCycleCode, colors: ThemeColors) {
     case RTTFA:
       return colors.campaign.green;
     case TIC:
+    case ALICE_IN_WONDERLAND:
       return colors.campaign.red;
     case DWL:
     case RTDWL:
@@ -418,6 +423,16 @@ export function getCampaignLog(
         counts: [t`Impending Doom`],
         investigatorCounts: [t`Memories`],
       };
+    case ALICE_IN_WONDERLAND:
+      return {
+        sections: [
+          t`Campaign Notes`,
+          t`Fragments of Alilce`,
+          t`Wonderland Boons`,
+          t`Wonderland Banes`,
+        ],
+        counts: [t`Strength of Wonderland`],
+      };
     case CUSTOM:
       return {
         sections: [
@@ -499,6 +514,13 @@ const DARK_MATTER_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 1, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
 };
 
+const ALICE_IN_WONDERLAND_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '+1': 1, '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, '-6': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 1, '-3': 1, '-4': 1, '-5': 1, '-6': 1, '-7': 1, '-8': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+};
+
 function basicScenarioRewards(encounterCode: string) {
   switch (encounterCode) {
     case 'blood_on_the_altar':
@@ -572,6 +594,8 @@ export function getChaosBag(
       return TIC_BAG[difficulty];
     case DARK_MATTER:
       return DARK_MATTER_BAG[difficulty];
+    case ALICE_IN_WONDERLAND:
+      return ALICE_IN_WONDERLAND_BAG[difficulty];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;

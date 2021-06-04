@@ -10,7 +10,7 @@ import Database from '@data/sqlite/Database';
 import TabooSet from '@data/types/TabooSet';
 import FaqEntry from '@data/types/FaqEntry';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
-import { GetCustomCardsDocument, GetCustomCardsQueryResult, GetCustomCardsQueryVariables } from '@generated/graphql/apollo-schema';
+import { GetCustomCardsDocument, GetCustomCardsQuery, GetCustomCardsQueryVariables } from '@generated/graphql/apollo-schema';
 
 const VERBOSE = false;
 export const syncTaboos = async function(
@@ -135,12 +135,16 @@ async function insertChunk<T>(things: T[], insert: (things: T[]) => Promise<any>
 
 function rulesJson(lang?: string) {
   switch (lang) {
+    case 'fr':
+      return require('../../assets/rules_fr.json');
     case 'es':
       return require('../../assets/rules_es.json');
     case 'ru':
       return require('../../assets/rules_ru.json');
     case 'de':
       return require('../../assets/rules_de.json');
+    case 'ko':
+      return require('../../assets/rules_ko.json');
     case 'en':
     default:
       return require('../../assets/rules.json');
@@ -176,12 +180,6 @@ export const syncCards = async function(
   cache?: CardCache
 ): Promise<CardCache | null> {
   VERBOSE && console.log('syncCards called');
-  const customCardsPromise = anonClient.query<GetCustomCardsQueryResult, GetCustomCardsQueryVariables>({
-    query: GetCustomCardsDocument,
-    variables: {
-      locale: lang || 'en',
-    },
-  });
   try {
     VERBOSE && console.log('Starting sync of cards from ArkhamDB');
     const langPrefix = lang && !NON_LOCALIZED_CARDS.has(lang) ? `${lang}.` : '';
@@ -218,11 +216,29 @@ export const syncCards = async function(
       }
     }
     try {
+      const customCardsPromise = anonClient.query<GetCustomCardsQuery, GetCustomCardsQueryVariables>({
+        query: GetCustomCardsDocument,
+        variables: {
+          locale: lang || 'en',
+        },
+        fetchPolicy: 'network-only',
+      });
       const response = await fetch(uri, {
         method: 'GET',
         headers,
       });
       if (response.status === 304 && cache) {
+        const customCardsResponse = await customCardsPromise;
+        const customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
+
+        const queryRunner = await db.startTransaction();
+
+        await insertChunk(customCards, async(c: Card[]) => {
+          await queryRunner.manager.delete(Card, map(c, c => c.id));
+          await queryRunner.manager.insert(Card, c);
+        });
+        await queryRunner.commitTransaction();
+        await queryRunner.release();
         return cache;
       }
       VERBOSE && console.log('Got results from ArkhamDB');
@@ -365,7 +381,8 @@ export const syncCards = async function(
           });
         }
       });
-
+      const customCardsResponse = await customCardsPromise;
+      const customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
       const [linkedCards, normalCards] = partition(dedupedCards, card => !!card.linked_card);
       const queryRunner = await db.startTransaction();
       VERBOSE && console.log('Parsed all cards');
@@ -380,12 +397,17 @@ export const syncCards = async function(
       await insertChunk(normalCards, async(c: Card[]) => {
         await queryRunner.manager.insert(Card, c);
       });
+      await insertChunk(customCards, async(c: Card[]) => {
+        await queryRunner.manager.insert(Card, c);
+      });
       await queryRunner.commitTransaction();
       await queryRunner.release();
       VERBOSE && console.log('Inserted normal cards');
+
       const cardCount = await cards.createQueryBuilder('card')
         .where('card.taboo_set_id is null OR card.taboo_set_id = 0')
         .getCount();
+
       return {
         cardCount,
         lastModified,

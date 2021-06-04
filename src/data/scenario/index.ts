@@ -53,6 +53,7 @@ export interface DisplayChoice {
   description?: string;
   steps?: string[] | null;
   effects?: Effect[] | null;
+  pre_border_effects?: Effect[] | null;
 }
 
 export interface DisplayChoiceWithId extends DisplayChoice {

@@ -24,6 +24,6 @@ export default function FlavorFancyNode({ typography, fontScale }: StyleContextT
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: 'AnkeCalligraphicFG',
+    fontFamily: 'Caveat',
   },
 });

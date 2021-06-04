@@ -1,6 +1,6 @@
 import { Store } from 'redux';
 import { stringify } from 'flatted';
-import { ApolloClient, ApolloLink, HttpLink, InMemoryCache, NormalizedCache, NormalizedCacheObject, split } from '@apollo/client';
+import { ApolloClient, ApolloLink, HttpLink, InMemoryCache, NormalizedCacheObject, split } from '@apollo/client';
 import { SubscriptionClient } from 'subscriptions-transport-ws';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { setContext } from '@apollo/client/link/context';
@@ -249,6 +249,7 @@ export default function createApolloClient(store: Store): [ApolloClient<Normaliz
       ...links,
       errorLink,
       retryLink,
+      httpsLink,
     ]),
     assumeImmutableResults: true,
   });

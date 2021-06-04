@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { flatMap, find, forEach, keys, map, sortBy } from 'lodash';
+import { flatMap, find, forEach, keys, map, omit, sortBy } from 'lodash';
 import { t } from 'ttag';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -19,7 +19,7 @@ import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import StyleContext from '@styles/StyleContext';
-import { useCounter, useEffectUpdate, useFlag } from '@components/core/hooks';
+import { useCounter, useEffectUpdate, useFlag, useSlots } from '@components/core/hooks';
 import useCardList from '@components/card/useCardList';
 import DeckButton from '@components/deck/controls/DeckButton';
 import space from '@styles/space';
@@ -31,6 +31,7 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import ShowDeckButton from '../ShowDeckButton';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { SpecialXp } from '@data/scenario/types';
+import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
 
 interface Props {
   componentId: string;
@@ -52,9 +53,14 @@ function computeChoiceId(stepId: string, investigator: Card) {
   return `${stepId}#${investigator.code}`;
 }
 
+
+function isExile(card: Card) {
+  return !!card.exile;
+}
+
 function UpgradeDeckRow({
   componentId,
-  investigatorCounter,
+  investigatorCounter: originalInvestigatorCounter,
   skipDeckSave,
   specialXp,
   id,
@@ -67,6 +73,7 @@ function UpgradeDeckRow({
   setUnsavedEdits,
   editable,
 }: Props) {
+  const investigatorCounter = originalInvestigatorCounter || campaignLog.campaignData.redirect_experience || undefined;
   const { colors, typography } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
   const { campaignGuide } = useContext(CampaignGuideContext);
@@ -77,6 +84,21 @@ function UpgradeDeckRow({
     }
     return campaignLog.earnedXp(investigator.code);
   }, [campaignLog, investigator, specialXp]);
+
+  const choiceId = useMemo(() => {
+    return computeChoiceId(id, investigator);
+  }, [id, investigator]);
+  const [choices, deckChoice] = useMemo(() => scenarioState.numberAndDeckChoices(choiceId), [scenarioState, choiceId]);
+  const initialSpecialExile = useMemo(() => {
+    const slots: Slots = {};
+    forEach(omit(choices, ['insane', 'killed', 'count', 'physical', 'mental', 'xp']), (count, exile_code) => {
+      if (count.length) {
+        slots[exile_code] = count[0];
+      }
+    });
+    return slots;
+  }, [choices]);
+  const [specialExile, updateSpecialExile] = useSlots(initialSpecialExile);
   const [xpAdjust, incXp, decXp] = useCounter(earnedXp, {});
   const [physicalAdjust, incPhysical, decPhysical] = useCounter(0, {});
   const [mentalAdjust, incMental, decMental] = useCounter(0, {});
@@ -98,16 +120,13 @@ function UpgradeDeckRow({
       xpAdjust !== earnedXp ||
       killedAdjust ||
       insaneAdjust ||
-      countAdjust !== 0;
-  }, [earnedXp, xpAdjust, physicalAdjust, mentalAdjust, killedAdjust, insaneAdjust, countAdjust]);
+      countAdjust !== 0 ||
+      !!find(specialExile, count => count > 0);
+  }, [earnedXp, specialExile, xpAdjust, physicalAdjust, mentalAdjust, killedAdjust, insaneAdjust, countAdjust]);
 
   useEffectUpdate(() => {
     setUnsavedEdits(investigator.code, unsavedEdits);
   }, [setUnsavedEdits, investigator, unsavedEdits]);
-
-  const choiceId = useMemo(() => {
-    return computeChoiceId(id, investigator);
-  }, [id, investigator]);
 
   const saveCampaignLog = useCallback((xp: number, deck?: Deck) => {
     const choices: NumberChoices = {
@@ -120,12 +139,16 @@ function UpgradeDeckRow({
     if (investigatorCounter) {
       choices.count = [countAdjust];
     }
+    forEach(specialExile, (count, code) => {
+      if (count) {
+        choices[code] = [count];
+      }
+    });
     scenarioState.setNumberChoices(choiceId, choices, !skipDeckSave && deck ? getDeckId(deck) : undefined);
-  }, [scenarioState, skipDeckSave, investigatorCounter,
+  }, [scenarioState, skipDeckSave, investigatorCounter, specialExile,
     countAdjust, earnedXp, choiceId, physicalAdjust, mentalAdjust, killedAdjust, insaneAdjust,
   ]);
 
-  const [choices, deckChoice] = useMemo(() => scenarioState.numberAndDeckChoices(choiceId), [scenarioState, choiceId]);
   const xp: number = useMemo(() => {
     if (choices === undefined) {
       return xpAdjust;
@@ -198,7 +221,9 @@ function UpgradeDeckRow({
   const storyAssetDeltas = useMemo(() => campaignLog.storyAssetChanges(investigator.code), [campaignLog, investigator]);
   const storyAssets = useMemo(() => campaignLog.storyAssets(investigator.code), [campaignLog, investigator]);
   const storyAssetCodes = useMemo(() => flatMap(storyAssetDeltas, (count, code) => count !== 0 ? code : []), [storyAssetDeltas]);
+  const allStoryAssetCodes = useMemo(() => flatMap(storyAssets, (count, code) => count > 0 ? code : []), [storyAssets]);
   const [storyAssetCards] = useCardList(storyAssetCodes, 'player');
+  const [allStoryAssetCards] = useCardList(allStoryAssetCodes, 'player');
   const storyAssetSection = useMemo(() => {
     if (!storyAssetCards.length) {
       return null;
@@ -402,14 +427,16 @@ function UpgradeDeckRow({
       <>
         <CardSectionHeader
           investigator={investigator}
-          section={{ superTitle: section.title }}
+          section={{
+            superTitle: campaignLog.campaignData.redirect_experience ? t`${section.title} (from XP)` : section.title,
+          }}
         />
         <BasicListRow>
           <Text style={[typography.text]}>
             { deltaString }
           </Text>
           { !locked && (
-            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end'}}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
               <Text style={[typography.text, { color: colors.lightText }, space.marginRightS]}>
                 { t` (New Total: ${newTotal})` }
               </Text>
@@ -424,20 +451,58 @@ function UpgradeDeckRow({
         </BasicListRow>
       </>
     );
-  }, [investigatorCounter, editable, investigator, incCount, decCount,
+  }, [investigatorCounter, editable, investigator, incCount, decCount, campaignLog.campaignData,
     choices, count, existingCount, campaignGuide, colors, typography]);
+  const updateSpecialExileCount = useCallback((card: Card, value: number) => {
+    updateSpecialExile({
+      type: 'set-slot',
+      code: card.code,
+      value,
+    });
+  }, [updateSpecialExile]);
+  const specialExileSlots = useMemo(() => {
+    const slots: Slots = {};
+    forEach(allStoryAssetCards, (card) => {
+      if ((!deck || card.custom()) && !!card.exile && storyAssets[card.code]) {
+        slots[card.code] = storyAssets[card.code];
+      }
+    });
+    return slots;
+  }, [allStoryAssetCards, storyAssets, deck]);
+  const exileSection = useMemo(() => {
+    if (!keys(specialExileSlots).length) {
+      return null;
+    }
+    return (
+      <CardSelectorComponent
+        componentId={componentId}
+        slots={specialExileSlots}
+        counts={specialExile}
+        filterCard={isExile}
+        updateCount={updateSpecialExileCount}
+        header={(choices !== undefined || !deck) && (
+          <CardSectionHeader
+            section={{ superTitle: choices !== undefined ? t`Exiled story cards` : t`Exile story cards` }}
+            investigator={investigator}
+          />
+        )}
+        locked={!!choices}
+      />
+    );
+  }, [componentId, investigator, choices, specialExile, updateSpecialExileCount, specialExileSlots, deck]);
 
   const campaignSection = useMemo(() => {
     return (
       <>
-        { (choices !== undefined || skipDeckSave || !deck) && xpSection }
+        { (choices !== undefined || skipDeckSave || !deck) && (!campaignLog.campaignData.redirect_experience) && xpSection }
         { customCountsSection }
         { traumaSection }
         { storyAssetSection }
+        { (choices !== undefined || !deck) && exileSection }
         { saveButton }
       </>
     );
-  }, [deck, skipDeckSave, choices, xpSection, traumaSection, storyAssetSection, customCountsSection, saveButton]);
+  }, [deck, skipDeckSave, campaignLog.campaignData.redirect_experience, exileSection, choices, xpSection, traumaSection, storyAssetSection, customCountsSection, saveButton]);
 
   const selectDeck = useCallback(() => {
     campaignState.showChooseDeck(investigator);
@@ -532,7 +597,6 @@ function UpgradeDeckRow({
     return newSlots;
   }, [deck, storyAssets, storyAssetDeltas]);
 
-
   const detailsSection = useMemo(() => {
     if (!deck || skipDeckSave) {
       return campaignSection;
@@ -545,8 +609,10 @@ function UpgradeDeckRow({
         componentId={componentId}
         ref={deckUpgradeComponent}
         deck={deck}
+        hideXp={!!campaignLog.campaignData.redirect_experience}
         investigator={investigator}
         campaignSection={campaignSection}
+        exileSection={exileSection}
         startingXp={campaignLog.earnedXp(investigator.code)}
         storyCounts={storyCountsForDeck}
         ignoreStoryCounts={campaignLog.ignoreStoryAssets(investigator.code)}
@@ -556,7 +622,7 @@ function UpgradeDeckRow({
       />
     );
   }, [componentId, deck, investigator, campaignLog, editable, skipDeckSave,
-    choices, storyCountsForDeck, saving, error, saveDeckUpgrade,
+    exileSection, choices, storyCountsForDeck, saving, error, saveDeckUpgrade,
     deckUpgradeComponent, campaignSection]);
 
   const isYithian = storyAssets && (storyAssets[BODY_OF_A_YITHIAN] || 0) > 0;

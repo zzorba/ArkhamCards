@@ -2392,14 +2392,22 @@ export type Card = {
   encounter_position?: Maybe<Scalars['Int']>;
   exceptional?: Maybe<Scalars['Boolean']>;
   exile?: Maybe<Scalars['Boolean']>;
+  faction_code: Scalars['String'];
   health?: Maybe<Scalars['Int']>;
   is_unique?: Maybe<Scalars['Boolean']>;
   myriad?: Maybe<Scalars['Boolean']>;
   pack_code: Scalars['String'];
+  pack_position: Scalars['Int'];
+  /** An array relationship */
+  packs: Array<Card_Pack>;
+  /** An aggregate relationship */
+  packs_aggregate: Card_Pack_Aggregate;
   permanent?: Maybe<Scalars['Boolean']>;
   position: Scalars['Int'];
   quantity: Scalars['Int'];
+  real_flavor?: Maybe<Scalars['String']>;
   real_name: Scalars['String'];
+  real_pack_name: Scalars['String'];
   real_slot?: Maybe<Scalars['String']>;
   real_subname?: Maybe<Scalars['String']>;
   real_text: Scalars['String'];
@@ -2416,6 +2424,26 @@ export type Card = {
   /** An aggregate relationship */
   translations_aggregate: Card_Text_Aggregate;
   type_code: Scalars['String'];
+};
+
+
+/** columns and relationships of "card" */
+export type CardPacksArgs = {
+  distinct_on?: Maybe<Array<Card_Pack_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Card_Pack_Order_By>>;
+  where?: Maybe<Card_Pack_Bool_Exp>;
+};
+
+
+/** columns and relationships of "card" */
+export type CardPacks_AggregateArgs = {
+  distinct_on?: Maybe<Array<Card_Pack_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Card_Pack_Order_By>>;
+  where?: Maybe<Card_Pack_Bool_Exp>;
 };
 
 
@@ -2475,6 +2503,7 @@ export type Card_Avg_Fields = {
   deck_limit?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   sanity?: Maybe<Scalars['Float']>;
@@ -2497,14 +2526,19 @@ export type Card_Bool_Exp = {
   encounter_position?: Maybe<Int_Comparison_Exp>;
   exceptional?: Maybe<Boolean_Comparison_Exp>;
   exile?: Maybe<Boolean_Comparison_Exp>;
+  faction_code?: Maybe<String_Comparison_Exp>;
   health?: Maybe<Int_Comparison_Exp>;
   is_unique?: Maybe<Boolean_Comparison_Exp>;
   myriad?: Maybe<Boolean_Comparison_Exp>;
   pack_code?: Maybe<String_Comparison_Exp>;
+  pack_position?: Maybe<Int_Comparison_Exp>;
+  packs?: Maybe<Card_Pack_Bool_Exp>;
   permanent?: Maybe<Boolean_Comparison_Exp>;
   position?: Maybe<Int_Comparison_Exp>;
   quantity?: Maybe<Int_Comparison_Exp>;
+  real_flavor?: Maybe<String_Comparison_Exp>;
   real_name?: Maybe<String_Comparison_Exp>;
+  real_pack_name?: Maybe<String_Comparison_Exp>;
   real_slot?: Maybe<String_Comparison_Exp>;
   real_subname?: Maybe<String_Comparison_Exp>;
   real_text?: Maybe<String_Comparison_Exp>;
@@ -2532,6 +2566,7 @@ export type Card_Inc_Input = {
   deck_limit?: Maybe<Scalars['Int']>;
   encounter_position?: Maybe<Scalars['Int']>;
   health?: Maybe<Scalars['Int']>;
+  pack_position?: Maybe<Scalars['Int']>;
   position?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
   sanity?: Maybe<Scalars['Int']>;
@@ -2551,14 +2586,19 @@ export type Card_Insert_Input = {
   encounter_position?: Maybe<Scalars['Int']>;
   exceptional?: Maybe<Scalars['Boolean']>;
   exile?: Maybe<Scalars['Boolean']>;
+  faction_code?: Maybe<Scalars['String']>;
   health?: Maybe<Scalars['Int']>;
   is_unique?: Maybe<Scalars['Boolean']>;
   myriad?: Maybe<Scalars['Boolean']>;
   pack_code?: Maybe<Scalars['String']>;
+  pack_position?: Maybe<Scalars['Int']>;
+  packs?: Maybe<Card_Pack_Arr_Rel_Insert_Input>;
   permanent?: Maybe<Scalars['Boolean']>;
   position?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
+  real_flavor?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
+  real_pack_name?: Maybe<Scalars['String']>;
   real_slot?: Maybe<Scalars['String']>;
   real_subname?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
@@ -2582,11 +2622,15 @@ export type Card_Max_Fields = {
   deck_limit?: Maybe<Scalars['Int']>;
   encounter_code?: Maybe<Scalars['String']>;
   encounter_position?: Maybe<Scalars['Int']>;
+  faction_code?: Maybe<Scalars['String']>;
   health?: Maybe<Scalars['Int']>;
   pack_code?: Maybe<Scalars['String']>;
+  pack_position?: Maybe<Scalars['Int']>;
   position?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
+  real_flavor?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
+  real_pack_name?: Maybe<Scalars['String']>;
   real_slot?: Maybe<Scalars['String']>;
   real_subname?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
@@ -2609,11 +2653,15 @@ export type Card_Min_Fields = {
   deck_limit?: Maybe<Scalars['Int']>;
   encounter_code?: Maybe<Scalars['String']>;
   encounter_position?: Maybe<Scalars['Int']>;
+  faction_code?: Maybe<Scalars['String']>;
   health?: Maybe<Scalars['Int']>;
   pack_code?: Maybe<Scalars['String']>;
+  pack_position?: Maybe<Scalars['Int']>;
   position?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
+  real_flavor?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
+  real_pack_name?: Maybe<Scalars['String']>;
   real_slot?: Maybe<Scalars['String']>;
   real_subname?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
@@ -2653,14 +2701,19 @@ export type Card_Order_By = {
   encounter_position?: Maybe<Order_By>;
   exceptional?: Maybe<Order_By>;
   exile?: Maybe<Order_By>;
+  faction_code?: Maybe<Order_By>;
   health?: Maybe<Order_By>;
   is_unique?: Maybe<Order_By>;
   myriad?: Maybe<Order_By>;
   pack_code?: Maybe<Order_By>;
+  pack_position?: Maybe<Order_By>;
+  packs_aggregate?: Maybe<Card_Pack_Aggregate_Order_By>;
   permanent?: Maybe<Order_By>;
   position?: Maybe<Order_By>;
   quantity?: Maybe<Order_By>;
+  real_flavor?: Maybe<Order_By>;
   real_name?: Maybe<Order_By>;
+  real_pack_name?: Maybe<Order_By>;
   real_slot?: Maybe<Order_By>;
   real_subname?: Maybe<Order_By>;
   real_text?: Maybe<Order_By>;
@@ -2675,6 +2728,159 @@ export type Card_Order_By = {
   translations_aggregate?: Maybe<Card_Text_Aggregate_Order_By>;
   type_code?: Maybe<Order_By>;
 };
+
+/** columns and relationships of "card_pack" */
+export type Card_Pack = {
+  __typename?: 'card_pack';
+  code: Scalars['String'];
+  locale: Scalars['String'];
+  name: Scalars['String'];
+};
+
+/** aggregated selection of "card_pack" */
+export type Card_Pack_Aggregate = {
+  __typename?: 'card_pack_aggregate';
+  aggregate?: Maybe<Card_Pack_Aggregate_Fields>;
+  nodes: Array<Card_Pack>;
+};
+
+/** aggregate fields of "card_pack" */
+export type Card_Pack_Aggregate_Fields = {
+  __typename?: 'card_pack_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Card_Pack_Max_Fields>;
+  min?: Maybe<Card_Pack_Min_Fields>;
+};
+
+
+/** aggregate fields of "card_pack" */
+export type Card_Pack_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Card_Pack_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "card_pack" */
+export type Card_Pack_Aggregate_Order_By = {
+  count?: Maybe<Order_By>;
+  max?: Maybe<Card_Pack_Max_Order_By>;
+  min?: Maybe<Card_Pack_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "card_pack" */
+export type Card_Pack_Arr_Rel_Insert_Input = {
+  data: Array<Card_Pack_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: Maybe<Card_Pack_On_Conflict>;
+};
+
+/** Boolean expression to filter rows from the table "card_pack". All fields are combined with a logical 'AND'. */
+export type Card_Pack_Bool_Exp = {
+  _and?: Maybe<Array<Card_Pack_Bool_Exp>>;
+  _not?: Maybe<Card_Pack_Bool_Exp>;
+  _or?: Maybe<Array<Card_Pack_Bool_Exp>>;
+  code?: Maybe<String_Comparison_Exp>;
+  locale?: Maybe<String_Comparison_Exp>;
+  name?: Maybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "card_pack" */
+export enum Card_Pack_Constraint {
+  /** unique or primary key constraint */
+  CardPackPkey = 'card_pack_pkey'
+}
+
+/** input type for inserting data into table "card_pack" */
+export type Card_Pack_Insert_Input = {
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Card_Pack_Max_Fields = {
+  __typename?: 'card_pack_max_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "card_pack" */
+export type Card_Pack_Max_Order_By = {
+  code?: Maybe<Order_By>;
+  locale?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Card_Pack_Min_Fields = {
+  __typename?: 'card_pack_min_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "card_pack" */
+export type Card_Pack_Min_Order_By = {
+  code?: Maybe<Order_By>;
+  locale?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
+};
+
+/** response of any mutation on the table "card_pack" */
+export type Card_Pack_Mutation_Response = {
+  __typename?: 'card_pack_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Card_Pack>;
+};
+
+/** on conflict condition type for table "card_pack" */
+export type Card_Pack_On_Conflict = {
+  constraint: Card_Pack_Constraint;
+  update_columns: Array<Card_Pack_Update_Column>;
+  where?: Maybe<Card_Pack_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "card_pack". */
+export type Card_Pack_Order_By = {
+  code?: Maybe<Order_By>;
+  locale?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: card_pack */
+export type Card_Pack_Pk_Columns_Input = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "card_pack" */
+export enum Card_Pack_Select_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+/** input type for updating data in table "card_pack" */
+export type Card_Pack_Set_Input = {
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** update columns of table "card_pack" */
+export enum Card_Pack_Update_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
 
 /** primary key columns input for table: card */
 export type Card_Pk_Columns_Input = {
@@ -2698,6 +2904,8 @@ export enum Card_Select_Column {
   /** column name */
   Exile = 'exile',
   /** column name */
+  FactionCode = 'faction_code',
+  /** column name */
   Health = 'health',
   /** column name */
   IsUnique = 'is_unique',
@@ -2706,13 +2914,19 @@ export enum Card_Select_Column {
   /** column name */
   PackCode = 'pack_code',
   /** column name */
+  PackPosition = 'pack_position',
+  /** column name */
   Permanent = 'permanent',
   /** column name */
   Position = 'position',
   /** column name */
   Quantity = 'quantity',
   /** column name */
+  RealFlavor = 'real_flavor',
+  /** column name */
   RealName = 'real_name',
+  /** column name */
+  RealPackName = 'real_pack_name',
   /** column name */
   RealSlot = 'real_slot',
   /** column name */
@@ -2748,14 +2962,18 @@ export type Card_Set_Input = {
   encounter_position?: Maybe<Scalars['Int']>;
   exceptional?: Maybe<Scalars['Boolean']>;
   exile?: Maybe<Scalars['Boolean']>;
+  faction_code?: Maybe<Scalars['String']>;
   health?: Maybe<Scalars['Int']>;
   is_unique?: Maybe<Scalars['Boolean']>;
   myriad?: Maybe<Scalars['Boolean']>;
   pack_code?: Maybe<Scalars['String']>;
+  pack_position?: Maybe<Scalars['Int']>;
   permanent?: Maybe<Scalars['Boolean']>;
   position?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
+  real_flavor?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
+  real_pack_name?: Maybe<Scalars['String']>;
   real_slot?: Maybe<Scalars['String']>;
   real_subname?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
@@ -2777,6 +2995,7 @@ export type Card_Stddev_Fields = {
   deck_limit?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   sanity?: Maybe<Scalars['Float']>;
@@ -2794,6 +3013,7 @@ export type Card_Stddev_Pop_Fields = {
   deck_limit?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   sanity?: Maybe<Scalars['Float']>;
@@ -2811,6 +3031,7 @@ export type Card_Stddev_Samp_Fields = {
   deck_limit?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   sanity?: Maybe<Scalars['Float']>;
@@ -2828,6 +3049,7 @@ export type Card_Sum_Fields = {
   deck_limit?: Maybe<Scalars['Int']>;
   encounter_position?: Maybe<Scalars['Int']>;
   health?: Maybe<Scalars['Int']>;
+  pack_position?: Maybe<Scalars['Int']>;
   position?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
   sanity?: Maybe<Scalars['Int']>;
@@ -2842,7 +3064,6 @@ export type Card_Sum_Fields = {
 export type Card_Text = {
   __typename?: 'card_text';
   code: Scalars['String'];
-  code_locale: Scalars['String'];
   encounter_name?: Maybe<Scalars['String']>;
   flavor?: Maybe<Scalars['String']>;
   locale: Scalars['String'];
@@ -2895,7 +3116,6 @@ export type Card_Text_Bool_Exp = {
   _not?: Maybe<Card_Text_Bool_Exp>;
   _or?: Maybe<Array<Card_Text_Bool_Exp>>;
   code?: Maybe<String_Comparison_Exp>;
-  code_locale?: Maybe<String_Comparison_Exp>;
   encounter_name?: Maybe<String_Comparison_Exp>;
   flavor?: Maybe<String_Comparison_Exp>;
   locale?: Maybe<String_Comparison_Exp>;
@@ -2917,7 +3137,6 @@ export enum Card_Text_Constraint {
 /** input type for inserting data into table "card_text" */
 export type Card_Text_Insert_Input = {
   code?: Maybe<Scalars['String']>;
-  code_locale?: Maybe<Scalars['String']>;
   encounter_name?: Maybe<Scalars['String']>;
   flavor?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
@@ -2932,7 +3151,6 @@ export type Card_Text_Insert_Input = {
 export type Card_Text_Max_Fields = {
   __typename?: 'card_text_max_fields';
   code?: Maybe<Scalars['String']>;
-  code_locale?: Maybe<Scalars['String']>;
   encounter_name?: Maybe<Scalars['String']>;
   flavor?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
@@ -2946,7 +3164,6 @@ export type Card_Text_Max_Fields = {
 /** order by max() on columns of table "card_text" */
 export type Card_Text_Max_Order_By = {
   code?: Maybe<Order_By>;
-  code_locale?: Maybe<Order_By>;
   encounter_name?: Maybe<Order_By>;
   flavor?: Maybe<Order_By>;
   locale?: Maybe<Order_By>;
@@ -2961,7 +3178,6 @@ export type Card_Text_Max_Order_By = {
 export type Card_Text_Min_Fields = {
   __typename?: 'card_text_min_fields';
   code?: Maybe<Scalars['String']>;
-  code_locale?: Maybe<Scalars['String']>;
   encounter_name?: Maybe<Scalars['String']>;
   flavor?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
@@ -2975,7 +3191,6 @@ export type Card_Text_Min_Fields = {
 /** order by min() on columns of table "card_text" */
 export type Card_Text_Min_Order_By = {
   code?: Maybe<Order_By>;
-  code_locale?: Maybe<Order_By>;
   encounter_name?: Maybe<Order_By>;
   flavor?: Maybe<Order_By>;
   locale?: Maybe<Order_By>;
@@ -3005,7 +3220,6 @@ export type Card_Text_On_Conflict = {
 /** Ordering options when selecting data from "card_text". */
 export type Card_Text_Order_By = {
   code?: Maybe<Order_By>;
-  code_locale?: Maybe<Order_By>;
   encounter_name?: Maybe<Order_By>;
   flavor?: Maybe<Order_By>;
   locale?: Maybe<Order_By>;
@@ -3018,15 +3232,14 @@ export type Card_Text_Order_By = {
 
 /** primary key columns input for table: card_text */
 export type Card_Text_Pk_Columns_Input = {
-  code_locale: Scalars['String'];
+  code: Scalars['String'];
+  locale: Scalars['String'];
 };
 
 /** select columns of table "card_text" */
 export enum Card_Text_Select_Column {
   /** column name */
   Code = 'code',
-  /** column name */
-  CodeLocale = 'code_locale',
   /** column name */
   EncounterName = 'encounter_name',
   /** column name */
@@ -3048,7 +3261,6 @@ export enum Card_Text_Select_Column {
 /** input type for updating data in table "card_text" */
 export type Card_Text_Set_Input = {
   code?: Maybe<Scalars['String']>;
-  code_locale?: Maybe<Scalars['String']>;
   encounter_name?: Maybe<Scalars['String']>;
   flavor?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
@@ -3063,8 +3275,6 @@ export type Card_Text_Set_Input = {
 export enum Card_Text_Update_Column {
   /** column name */
   Code = 'code',
-  /** column name */
-  CodeLocale = 'code_locale',
   /** column name */
   EncounterName = 'encounter_name',
   /** column name */
@@ -3100,6 +3310,8 @@ export enum Card_Update_Column {
   /** column name */
   Exile = 'exile',
   /** column name */
+  FactionCode = 'faction_code',
+  /** column name */
   Health = 'health',
   /** column name */
   IsUnique = 'is_unique',
@@ -3108,13 +3320,19 @@ export enum Card_Update_Column {
   /** column name */
   PackCode = 'pack_code',
   /** column name */
+  PackPosition = 'pack_position',
+  /** column name */
   Permanent = 'permanent',
   /** column name */
   Position = 'position',
   /** column name */
   Quantity = 'quantity',
   /** column name */
+  RealFlavor = 'real_flavor',
+  /** column name */
   RealName = 'real_name',
+  /** column name */
+  RealPackName = 'real_pack_name',
   /** column name */
   RealSlot = 'real_slot',
   /** column name */
@@ -3148,6 +3366,7 @@ export type Card_Var_Pop_Fields = {
   deck_limit?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   sanity?: Maybe<Scalars['Float']>;
@@ -3165,6 +3384,7 @@ export type Card_Var_Samp_Fields = {
   deck_limit?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   sanity?: Maybe<Scalars['Float']>;
@@ -3182,6 +3402,7 @@ export type Card_Variance_Fields = {
   deck_limit?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   sanity?: Maybe<Scalars['Float']>;
@@ -5645,6 +5866,10 @@ export type Mutation_Root = {
   delete_card?: Maybe<Card_Mutation_Response>;
   /** delete single row from the table: "card" */
   delete_card_by_pk?: Maybe<Card>;
+  /** delete data from the table: "card_pack" */
+  delete_card_pack?: Maybe<Card_Pack_Mutation_Response>;
+  /** delete single row from the table: "card_pack" */
+  delete_card_pack_by_pk?: Maybe<Card_Pack>;
   /** delete data from the table: "card_text" */
   delete_card_text?: Maybe<Card_Text_Mutation_Response>;
   /** delete single row from the table: "card_text" */
@@ -5717,6 +5942,10 @@ export type Mutation_Root = {
   insert_card?: Maybe<Card_Mutation_Response>;
   /** insert a single row into the table: "card" */
   insert_card_one?: Maybe<Card>;
+  /** insert data into the table: "card_pack" */
+  insert_card_pack?: Maybe<Card_Pack_Mutation_Response>;
+  /** insert a single row into the table: "card_pack" */
+  insert_card_pack_one?: Maybe<Card_Pack>;
   /** insert data into the table: "card_text" */
   insert_card_text?: Maybe<Card_Text_Mutation_Response>;
   /** insert a single row into the table: "card_text" */
@@ -5797,6 +6026,10 @@ export type Mutation_Root = {
   update_card?: Maybe<Card_Mutation_Response>;
   /** update single row of the table: "card" */
   update_card_by_pk?: Maybe<Card>;
+  /** update data of the table: "card_pack" */
+  update_card_pack?: Maybe<Card_Pack_Mutation_Response>;
+  /** update single row of the table: "card_pack" */
+  update_card_pack_by_pk?: Maybe<Card_Pack>;
   /** update data of the table: "card_text" */
   update_card_text?: Maybe<Card_Text_Mutation_Response>;
   /** update single row of the table: "card_text" */
@@ -5918,6 +6151,19 @@ export type Mutation_RootDelete_Card_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_Card_PackArgs = {
+  where: Card_Pack_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Card_Pack_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_Card_TextArgs = {
   where: Card_Text_Bool_Exp;
 };
@@ -5925,7 +6171,8 @@ export type Mutation_RootDelete_Card_TextArgs = {
 
 /** mutation root */
 export type Mutation_RootDelete_Card_Text_By_PkArgs = {
-  code_locale: Scalars['String'];
+  code: Scalars['String'];
+  locale: Scalars['String'];
 };
 
 
@@ -6144,6 +6391,20 @@ export type Mutation_RootInsert_CardArgs = {
 export type Mutation_RootInsert_Card_OneArgs = {
   object: Card_Insert_Input;
   on_conflict?: Maybe<Card_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Card_PackArgs = {
+  objects: Array<Card_Pack_Insert_Input>;
+  on_conflict?: Maybe<Card_Pack_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Card_Pack_OneArgs = {
+  object: Card_Pack_Insert_Input;
+  on_conflict?: Maybe<Card_Pack_On_Conflict>;
 };
 
 
@@ -6448,6 +6709,20 @@ export type Mutation_RootUpdate_Card_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Card_PackArgs = {
+  _set?: Maybe<Card_Pack_Set_Input>;
+  where: Card_Pack_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Pack_By_PkArgs = {
+  _set?: Maybe<Card_Pack_Set_Input>;
+  pk_columns: Card_Pack_Pk_Columns_Input;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Card_TextArgs = {
   _set?: Maybe<Card_Text_Set_Input>;
   where: Card_Text_Bool_Exp;
@@ -6697,6 +6972,12 @@ export type Query_Root = {
   card_aggregate: Card_Aggregate;
   /** fetch data from the table: "card" using primary key columns */
   card_by_pk?: Maybe<Card>;
+  /** fetch data from the table: "card_pack" */
+  card_pack: Array<Card_Pack>;
+  /** fetch aggregated fields from the table: "card_pack" */
+  card_pack_aggregate: Card_Pack_Aggregate;
+  /** fetch data from the table: "card_pack" using primary key columns */
+  card_pack_by_pk?: Maybe<Card_Pack>;
   /** fetch data from the table: "card_text" */
   card_text: Array<Card_Text>;
   /** fetch aggregated fields from the table: "card_text" */
@@ -6924,6 +7205,30 @@ export type Query_RootCard_By_PkArgs = {
 };
 
 
+export type Query_RootCard_PackArgs = {
+  distinct_on?: Maybe<Array<Card_Pack_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Card_Pack_Order_By>>;
+  where?: Maybe<Card_Pack_Bool_Exp>;
+};
+
+
+export type Query_RootCard_Pack_AggregateArgs = {
+  distinct_on?: Maybe<Array<Card_Pack_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Card_Pack_Order_By>>;
+  where?: Maybe<Card_Pack_Bool_Exp>;
+};
+
+
+export type Query_RootCard_Pack_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
 export type Query_RootCard_TextArgs = {
   distinct_on?: Maybe<Array<Card_Text_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -6943,7 +7248,8 @@ export type Query_RootCard_Text_AggregateArgs = {
 
 
 export type Query_RootCard_Text_By_PkArgs = {
-  code_locale: Scalars['String'];
+  code: Scalars['String'];
+  locale: Scalars['String'];
 };
 
 
@@ -7259,6 +7565,12 @@ export type Subscription_Root = {
   card_aggregate: Card_Aggregate;
   /** fetch data from the table: "card" using primary key columns */
   card_by_pk?: Maybe<Card>;
+  /** fetch data from the table: "card_pack" */
+  card_pack: Array<Card_Pack>;
+  /** fetch aggregated fields from the table: "card_pack" */
+  card_pack_aggregate: Card_Pack_Aggregate;
+  /** fetch data from the table: "card_pack" using primary key columns */
+  card_pack_by_pk?: Maybe<Card_Pack>;
   /** fetch data from the table: "card_text" */
   card_text: Array<Card_Text>;
   /** fetch aggregated fields from the table: "card_text" */
@@ -7486,6 +7798,30 @@ export type Subscription_RootCard_By_PkArgs = {
 };
 
 
+export type Subscription_RootCard_PackArgs = {
+  distinct_on?: Maybe<Array<Card_Pack_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Card_Pack_Order_By>>;
+  where?: Maybe<Card_Pack_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Pack_AggregateArgs = {
+  distinct_on?: Maybe<Array<Card_Pack_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Card_Pack_Order_By>>;
+  where?: Maybe<Card_Pack_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Pack_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
 export type Subscription_RootCard_TextArgs = {
   distinct_on?: Maybe<Array<Card_Text_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -7505,7 +7841,8 @@ export type Subscription_RootCard_Text_AggregateArgs = {
 
 
 export type Subscription_RootCard_Text_By_PkArgs = {
-  code_locale: Scalars['String'];
+  code: Scalars['String'];
+  locale: Scalars['String'];
 };
 
 
@@ -8783,11 +9120,14 @@ export type GetCustomCardsQuery = (
   { __typename?: 'query_root' }
   & { card: Array<(
     { __typename?: 'card' }
-    & Pick<Card, 'code' | 'cost' | 'deck_limit' | 'encounter_code' | 'encounter_position' | 'exile' | 'health' | 'is_unique' | 'pack_code' | 'permanent' | 'position' | 'quantity' | 'real_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_willpower' | 'skill_wild' | 'subtype_code' | 'type_code'>
-    & { translations: Array<(
+    & { packs: Array<(
+      { __typename?: 'card_pack' }
+      & Pick<Card_Pack, 'name'>
+    )>, translations: Array<(
       { __typename?: 'card_text' }
-      & Pick<Card_Text, 'flavor' | 'encounter_name' | 'name' | 'slot' | 'subname' | 'text' | 'traits'>
+      & CoreCardTextFragment
     )> }
+    & CoreCardFragment
   )> }
 );
 
@@ -9122,6 +9462,16 @@ export type GetDeckHistoryQuery = (
     { __typename?: 'campaign_deck' }
     & HistoryDeckFragment
   )> }
+);
+
+export type CoreCardFragment = (
+  { __typename?: 'card' }
+  & Pick<Card, 'code' | 'cost' | 'deck_limit' | 'encounter_code' | 'encounter_position' | 'exile' | 'faction_code' | 'health' | 'is_unique' | 'pack_code' | 'pack_position' | 'permanent' | 'position' | 'quantity' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_willpower' | 'skill_wild' | 'subtype_code' | 'type_code'>
+);
+
+export type CoreCardTextFragment = (
+  { __typename?: 'card_text' }
+  & Pick<Card_Text, 'flavor' | 'encounter_name' | 'name' | 'slot' | 'subname' | 'text' | 'traits'>
 );
 
 export type UserInfoFragment = (
@@ -9952,6 +10302,50 @@ export type RemoveCampaignInvestigatorMutation = (
   )> }
 );
 
+export const CoreCardFragmentDoc = gql`
+    fragment CoreCard on card {
+  code
+  cost
+  deck_limit
+  encounter_code
+  encounter_position
+  exile
+  faction_code
+  health
+  is_unique
+  pack_code
+  pack_position
+  permanent
+  position
+  quantity
+  real_flavor
+  real_name
+  real_pack_name
+  real_slot
+  real_subname
+  real_text
+  real_traits
+  sanity
+  skill_agility
+  skill_combat
+  skill_intellect
+  skill_willpower
+  skill_wild
+  subtype_code
+  type_code
+}
+    `;
+export const CoreCardTextFragmentDoc = gql`
+    fragment CoreCardText on card_text {
+  flavor
+  encounter_name
+  name
+  slot
+  subname
+  text
+  traits
+}
+    `;
 export const FullChaosBagResultFragmentDoc = gql`
     fragment FullChaosBagResult on chaos_bag_result {
   id
@@ -10177,43 +10571,17 @@ ${GuideAchievementFragmentDoc}`;
 export const GetCustomCardsDocument = gql`
     query getCustomCards($locale: String!) {
   card {
-    code
-    cost
-    deck_limit
-    encounter_code
-    encounter_position
-    exile
-    health
-    is_unique
-    pack_code
-    permanent
-    position
-    quantity
-    real_name
-    real_slot
-    real_subname
-    real_text
-    real_traits
-    sanity
-    skill_agility
-    skill_combat
-    skill_intellect
-    skill_willpower
-    skill_wild
-    subtype_code
-    type_code
-    translations(where: {locale: {_eq: $locale}}) {
-      flavor
-      encounter_name
+    ...CoreCard
+    packs(where: {locale: {_eq: $locale}}) {
       name
-      slot
-      subname
-      text
-      traits
+    }
+    translations(where: {locale: {_eq: $locale}}) {
+      ...CoreCardText
     }
   }
 }
-    `;
+    ${CoreCardFragmentDoc}
+${CoreCardTextFragmentDoc}`;
 
 /**
  * __useGetCustomCardsQuery__

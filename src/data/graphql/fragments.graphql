@@ -1,3 +1,43 @@
+fragment CoreCard on card {
+  code
+  cost
+  deck_limit
+  encounter_code
+  encounter_position
+  exile
+  faction_code
+  health
+  is_unique
+  pack_code
+  pack_position
+  permanent
+  position
+  quantity
+  real_flavor
+  real_name
+  real_pack_name
+  real_slot
+  real_subname
+  real_text
+  real_traits
+  sanity
+  skill_agility
+  skill_combat
+  skill_intellect
+  skill_willpower
+  skill_wild
+  subtype_code
+  type_code
+}
+fragment CoreCardText on card_text {
+  flavor
+  encounter_name
+  name
+  slot
+  subname
+  text
+  traits
+}
 fragment UserInfo on users {
   id
   handle

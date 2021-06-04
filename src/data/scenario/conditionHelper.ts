@@ -554,8 +554,9 @@ export function multiConditionResult(
               return campaignDataConditionResult(subCondition, campaignLog).option ? 1 : 0;
             case 'version':
               return campaignDataVersionConditionResult(subCondition, campaignLog).option ? 1 : 0;
-            default:
-              return 0;
+            case 'scenario_completed':
+            case 'scenario_replayed':
+              return campaignDataScenarioConditionResult(subCondition, campaignLog).option ? 1 : 0;
           }
         }
         case 'scenario_data': {
@@ -587,10 +588,7 @@ export function campaignLogCountConditionResult(condition: CampaignLogCountCondi
 
 
 export function campaignLogInvestigatorCountConditionResult(condition: CampaignLogInvestigatorCountCondition, campaignLog: GuidedCampaignLog): InvestigatorResult | BinaryResult {
-  const section = campaignLog.investigatorSections[condition.section];
-  if (!section) {
-    throw new Error(`Unknown section: ${condition.section}`);
-  }
+  const section = campaignLog.investigatorSections[condition.section] || {};
   const investigators = campaignLog.investigatorCodes(false);
   switch (condition.investigator) {
     case 'any': {

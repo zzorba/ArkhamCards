@@ -24,7 +24,9 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 interface DeckUpgradeProps extends NavigationProps{
   investigator: Card;
   deck: LatestDeckT;
+  hideXp?: boolean;
   startingXp?: number;
+  exileSection?: React.ReactNode;
   campaignSection?: React.ReactNode;
   storyCounts: Slots;
   ignoreStoryCounts: Slots;
@@ -44,12 +46,14 @@ function DeckUpgradeComponent({
   deck,
   startingXp,
   campaignSection,
+  exileSection,
   storyCounts,
   ignoreStoryCounts,
   saveDeckUpgrade,
   saveButtonText,
   saving,
   error,
+  hideXp,
 }: DeckUpgradeProps, ref: any) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const [xp, incXp, decXp] = useCounter(startingXp || 0, { min: 0 });
@@ -89,20 +93,24 @@ function DeckUpgradeComponent({
   return (
     <View style={styles.container}>
       { !!error && <Text style={[typography.text, typography.error]}>{ error }</Text> }
-      <CardSectionHeader
-        investigator={investigator}
-        section={{ superTitle: t`Experience points` }}
-      />
-      <BasicListRow>
-        <Text style={typography.text}>
-          { xpString }
-        </Text>
-        <PlusMinusButtons
-          count={xp}
-          onIncrement={incXp}
-          onDecrement={decXp}
-        />
-      </BasicListRow>
+      { !hideXp && (
+        <>
+          <CardSectionHeader
+            investigator={investigator}
+            section={{ superTitle: t`Experience points` }}
+          />
+          <BasicListRow>
+            <Text style={typography.text}>
+              { xpString }
+            </Text>
+            <PlusMinusButtons
+              count={xp}
+              onIncrement={incXp}
+              onDecrement={decXp}
+            />
+          </BasicListRow>
+        </>
+      ) }
       <ExileCardSelectorComponent
         componentId={componentId}
         deck={deck}
@@ -114,7 +122,9 @@ function DeckUpgradeComponent({
         )}
         exileCounts={exileCounts}
         updateExileCount={onExileCountChange}
-      />
+      >
+        { exileSection }
+      </ExileCardSelectorComponent>
       { !!campaignSection && campaignSection }
       { !!saveButtonText && (
         <View style={space.paddingM}>
