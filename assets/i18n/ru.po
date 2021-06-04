@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2021-05-16 12:21+0300\n"
+"PO-Revision-Date: 2021-06-05 00:37+0300\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1989,7 +1989,7 @@ msgstr[2] ""
 #, javascript-format
 msgid "${ investigators } must read <b>${ prompt }</b>."
 msgid_plural "${ investigators } must read <b>${ prompt }</b>."
-msgstr[0] "${ investigators } должен прочитать <b>${ prompt }</b>."
+msgstr[0] "${ investigators } читает <b>${ prompt }</b>."
 msgstr[1] "${ investigators } должны прочитать <b>${ prompt }</b>."
 msgstr[2] "${ investigators } должны прочитать <b>${ prompt }</b>."
 
