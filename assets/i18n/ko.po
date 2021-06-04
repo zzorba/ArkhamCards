@@ -1201,7 +1201,7 @@ msgid "All Investigators"
 msgstr "모든 조사자"
 
 msgid "Investigating for clues"
-msgstr "단서를 얻기위해 조사하는 중"
+msgstr "단서를 얻기 위해 조사하는 중"
 
 msgid "Cursing at the tentacle token"
 msgstr "혼돈 주머니에서 5번 연속으로 촉수를 뽑는 중"
@@ -1601,7 +1601,7 @@ msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
 "logEntry.text }</i>"
 msgstr ""
-"당신의 캠페인 기록지 중 \"${ logEntry.section }\" 항목에, <i>${ logEntry.text }</i> 항목에 "
+"당신의 캠페인 기록지 중 \"${ logEntry.section }\" 항목 아래의 <i>${ logEntry.text }</i> 항목에 "
 "X표시를 합니다."
 
 msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
@@ -1611,7 +1611,7 @@ msgstr "당신의 캠페인 기록지에 <i>${ logEntry.text }</i>라고 기록�
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>."
-msgstr "당신의 캠페인 기록지 중 \"${ logEntry.section }\" 항목에, ${ logEntry.text }라고 기록합니다."
+msgstr "당신의 캠페인 기록지 중 \"${ logEntry.section }\" 항목 아래에 ${ logEntry.text }라고 기록합니다."
 
 #, javascript-format
 msgid "Add ${ tokenString } to the chaos bag."
@@ -1628,7 +1628,7 @@ msgid "Who will remove ${ card.name } from their deck?"
 msgstr "어떤 조사자가 ${ card.name } 카드를 덱에서 제거하시겠습니까?"
 
 msgid "You suffer 1 physical or mental trauma <i>(your choice)</i>."
-msgstr "당신은 육체적 트라우마를 1 또는 정신적 트라우마를 1 받습니다 <i>(당신이 선택합니다)</i>."
+msgstr "당신은 육체적 트라우마를 1 또는 정신적 트라우마를 1 받습니다<i>(당신이 선택합니다)</i>."
 
 msgid "All weaknesses have been assigned."
 msgstr "모든 약점이 할당되어 있습니다."
@@ -2596,10 +2596,10 @@ msgid " (Per Investigator)"
 msgstr " (조사자 당)"
 
 msgid "Use app for scenario setup & resolutions"
-msgstr "시나리오 정리 & 결말을 위해 앱을 활용합니다 (영어입니다)"
+msgstr "시나리오 준비와 결말에 앱을 활용합니다(번역이 제공되지 않을 수 있습니다)."
 
 msgid "Track campaign log and resolutions manually"
-msgstr "수동으로 캠페인 기록지와 결말을 추적합니다 (영어입니다)"
+msgstr "수동으로 캠페인 기록지와 결말을 추적합니다(번역이 제공되지 않을 수 있습니다)."
 
 msgid "Investigators"
 msgstr "조사자"
@@ -2608,8 +2608,8 @@ msgid ""
 "If you encounter any problems with the campaign guide system, please let me "
 "know at arkhamcards@gmail.com."
 msgstr ""
-"캠페인 가이드를 사용하는데 있어서 문제에 직면하셨다면, arkhamcards@gmail.com 로 연락바랍니다. (역자 주: 앱 "
-"제작자의 연락처이며, 번역과는 무관합니다.)"
+"캠페인 가이드를 사용하는데 있어서 문제에 직면하셨다면, arkhamcards@gmail.com 로 연락바랍니다(한국어판의 경우, "
+"https://cafe.naver.com/arkhamfiles 카페의 버그 제보 게시판을 이용바랍니다)."
 
 #, javascript-format
 msgid "${ spentXp } of ${ totalXp } spent"
@@ -2816,7 +2816,7 @@ msgid "Limit 1 Covenant per deck."
 msgstr "덱당 Covenant 1장 한정."
 
 msgid "Checking for FAQ"
-msgstr "FAQ 확인 (영문)"
+msgstr "FAQ 확인 (번역이 제공되지 않을 수 있음)"
 
 msgid "No entries at this time."
 msgstr "현재 아무 항목도 없습니다."
@@ -3365,8 +3365,8 @@ msgid ""
 "Dissonant Voices is an ongoing project by Mythos Busters to narrate the "
 "english scenario text for each Arkham Horror campaign."
 msgstr ""
-"Dissonant Voices는 Mythos Busters에서 진행 중인 프로젝트로 아컴 호러 캠페인의 영어 시나리오 지문을 읽어주는 "
-"것 입니다."
+"Dissonant Voices는 Mythos Busters에서 진행 중인 프로젝트로 아컴 호러 캠페인의 "
+"시나리오 지문을 영문으로 읽어줍니다."
 
 msgid "Are you sure you want to delete this standalone?"
 msgstr "독립 시나리오를 삭제하기를 원합니까?"
@@ -4126,7 +4126,7 @@ msgid "Justify text"
 msgstr "텍스트 행 맞추기"
 
 msgid "${ tokens[0] } and ${ tokens[1] }"
-msgstr "${ tokens[0] } 토큰과 ${ tokens[1] } 토큰"
+msgstr "${ tokens[0] } 및 ${ tokens[1] }"
 
 msgid "Dark Matter"
 msgstr "암흑 물질"
