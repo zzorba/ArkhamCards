@@ -3,17 +3,15 @@ import { Alert, StyleSheet, View } from 'react-native';
 import { forEach, flatMap, map, keys, range, values, sumBy } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import { StringChoices, WeaknessSet } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { drawWeakness } from '@lib/weaknessHelper';
-import InvestigatorButton from '@components/core/InvestigatorButton';
+import InvestigatorButton from '@components/campaignguide/InvestigatorButton';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import StyleContext from '@styles/StyleContext';
 import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
-import SaveDecksInput from '../../InputStepComponent/SaveDecksInput';
 
 interface OwnProps {
   id: string;
