@@ -4,7 +4,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
-import CompactInvestigatorRow from './CompactInvestigatorRow';
+import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import space, { s } from '@styles/space';
 import COLORS from '@styles/colors';
 
