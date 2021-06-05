@@ -124,6 +124,8 @@ export default function TraumaEffectComponent({ id, effect, border, input }: Pro
           ) }
           <InvestigatorChoicePrompt
             id={`${id}_trauma`}
+            text={t`Choose Trauma`}
+            promptType="header"
             investigators={investigators}
             bulletType="none"
             options={{
@@ -131,10 +133,14 @@ export default function TraumaEffectComponent({ id, effect, border, input }: Pro
               choices: [
                 {
                   id: 'physical',
+                  icon: 'physical',
+                  selected_text: t`Physical trauma`,
                   text: t`Physical trauma`,
                 },
                 {
                   id: 'mental',
+                  icon: 'mental',
+                  selected_text: t`Mental trauma`,
                   text: t`Mental trauma`,
                 },
               ],

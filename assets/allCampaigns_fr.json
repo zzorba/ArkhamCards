@@ -27704,6 +27704,24 @@
       "text": "Mélangez les cartes Rencontre restantes pour former le deck Rencontre."
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "type": "input",
       "text": "Laquelle des propositions suivantes est vraie ?",
@@ -28012,7 +28030,7 @@
       "title": "Conclusion 1",
       "text": "« Enfin ! Yoth, la caverne des serpents ! Les maudits qui ont fui la destruction de Valusia ! » Alejandro examine l'entrée ; les yeux étincelants et les bras levés, il exulte. Vous ignorez de quoi il parle et vous commencez à vous inquiéter. C'est alors que quelque chose surgit derrière vous et qu'un son semblable au claquement d'une pince vous prend par surprise. De terribles créatures extraterrestres émergent des ténèbres derrière vous, des êtes tels que vous n'en avez jamais vus : dix pieds de haut, avec des corps coniques qui se terminent en quatre étranges appendices de taille variable. « Vous êtes là », dit calmement Alejandro. L'une des créatures lui répond en claquant ses pinces l une contre l'autre selon un rythme délibéré. « Emparez-vous de leurs esprits », ordonne Alejandro aux créatures. « Nous n'avons plus besoin d'eux. » Vos souvenirs humains s'arrêtent ici.",
       "steps": [
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned",
@@ -28028,7 +28046,7 @@
       "title": "Conclusion 2",
       "text": "Avant que vous ne puissiez atteindre le niveau suivant de la caverne, un son semblable au claquement d'une pince vous prend par surprise. De terribles créatures extraterrestres émergent des ténèbres derrière vous, des êtes tels que vous n'en avez jamais vus : dix pieds de haut, avec des corps coniques qui se terminent en quatre étranges appendices de taille variable. Vous êtes estomaqué de voir un être humain à la tête de ce groupe : nul autre qu'Alejandro Vela en personne. « Emparez-vous de leurs esprits », ordonne Alejandro aux créatures. « Nous n'avons plus besoin d'eux. » Vos souvenirs humains s'arrêtent ici.",
       "steps": [
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned",
@@ -28272,7 +28290,7 @@
     },
     {
       "id": "lose",
-      "text": "Comme tous les investigateurs ont été tués par le traumatisme de la chute, les enquêteurs <b>perdent</b> la campagne.",
+      "text": "Les investigateur ont perdu la campagne.",
       "effects": [
         {
           "type": "campaign_data",
@@ -29188,6 +29206,24 @@
       ]
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "type": "input",
       "text": "Laquelle des propositions suivantes est vraie ?",
@@ -29366,7 +29402,7 @@
       "steps": [
         "check_act_2",
         "record_x_paths_known",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -29383,7 +29419,7 @@
       "steps": [
         "record_x_paths_known",
         "check_if_ichtaca_has_confidence",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -29400,7 +29436,7 @@
       "steps": [
         "check_act_2",
         "record_x_paths_known",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -30883,6 +30919,24 @@
       ]
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "text": "Laquelle des propositions suivantes est vraie ?",
       "type": "input",
@@ -31223,7 +31277,7 @@
         "record_final_depth",
         "check_final_depth",
         "ask_collected_strange_liquid",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -31235,7 +31289,7 @@
       "text": "Même si ce n'était pas gagné d'avance, vous avez atteint votre destination. La lumière rouge qui vous enveloppe depuis que vous êtes entré dans Yoth recule, remplacée par une profonde obscurité. Le Nexus ne doit pas être loin… Vous pouvez le sentir.",
       "steps": [
         "nexus_is_near",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "ask_collected_strange_liquid",
         "record_yigs_fury",
         "earn_xp_full_depth",
@@ -33863,6 +33917,24 @@
       "text": "Ce scénario contient quatre decks Acte différents – un deck « a/b », un deck « c/d », un deck « e/f » et un deck « g/h ». Chacun de ces decks Acte est construit séparément en suivant l'ordre numérique, comme d'habitude. Lors du scénario, les trois decks Acte seront en jeu et les joueurs auront le droit de choisir quels actes avancer et lesquels ignorer. Les textes des trois actes sont considérés comme actifs à tout moment. Vous n'aurez peut-être pas le temps d'accomplir les trois tâches, alors choisissez judicieusement quelles pistes suivre.\nLe contenu de chaque deck Acte est modifié en fonction des circonstances suivantes :"
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "type": "input",
       "text": "Laquelle des propositions suivantes est vraie ?",
@@ -33957,7 +34029,7 @@
         "check_act_ef",
         "check_act_gh",
         "earn_expedition_journal",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "earn_act_xp",
@@ -66929,6 +67001,24 @@
       "text": "Mélangez les cartes Rencontre restantes pour former le deck Rencontre."
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "type": "input",
       "text": "Laquelle des propositions suivantes est vraie ?",
@@ -67125,7 +67215,7 @@
       "title": "Conclusion 1",
       "text": "« Enfin ! Yoth, la caverne des serpents ! Les maudits qui ont fui la destruction de Valusia ! » Alejandro examine l'entrée ; les yeux étincelants et les bras levés, il exulte. Vous ignorez de quoi il parle et vous commencez à vous inquiéter. C'est alors que quelque chose surgit derrière vous et qu'un son semblable au claquement d'une pince vous prend par surprise. De terribles créatures extraterrestres émergent des ténèbres derrière vous, des êtes tels que vous n'en avez jamais vus : dix pieds de haut, avec des corps coniques qui se terminent en quatre étranges appendices de taille variable. « Vous êtes là », dit calmement Alejandro. L'une des créatures lui répond en claquant ses pinces l une contre l'autre selon un rythme délibéré. « Emparez-vous de leurs esprits », ordonne Alejandro aux créatures. « Nous n'avons plus besoin d'eux. » Vos souvenirs humains s'arrêtent ici.",
       "steps": [
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned",
@@ -67141,7 +67231,7 @@
       "title": "Conclusion 2",
       "text": "Avant que vous ne puissiez atteindre le niveau suivant de la caverne, un son semblable au claquement d'une pince vous prend par surprise. De terribles créatures extraterrestres émergent des ténèbres derrière vous, des êtes tels que vous n'en avez jamais vus : dix pieds de haut, avec des corps coniques qui se terminent en quatre étranges appendices de taille variable. Vous êtes estomaqué de voir un être humain à la tête de ce groupe : nul autre qu'Alejandro Vela en personne. « Emparez-vous de leurs esprits », ordonne Alejandro aux créatures. « Nous n'avons plus besoin d'eux. » Vos souvenirs humains s'arrêtent ici.",
       "steps": [
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned",
@@ -68323,7 +68413,7 @@
     },
     {
       "id": "lose",
-      "text": "Comme tous les investigateurs ont été tués par le traumatisme de la chute, les enquêteurs <b>perdent</b> la campagne.",
+      "text": "Les investigateur ont perdu la campagne.",
       "effects": [
         {
           "type": "campaign_data",
@@ -69229,6 +69319,24 @@
       ]
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "type": "input",
       "text": "Laquelle des propositions suivantes est vraie ?",
@@ -69366,7 +69474,7 @@
       "steps": [
         "check_act_2",
         "record_x_paths_known",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -69383,7 +69491,7 @@
       "steps": [
         "record_x_paths_known",
         "check_if_ichtaca_has_confidence",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -69400,7 +69508,7 @@
       "steps": [
         "check_act_2",
         "record_x_paths_known",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -71460,6 +71568,24 @@
       ]
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "text": "Laquelle des propositions suivantes est vraie ?",
       "type": "input",
@@ -71688,7 +71814,7 @@
         "fell_into_depths",
         "record_final_depth",
         "check_final_depth",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -71704,7 +71830,7 @@
       "text": "Même si ce n'était pas gagné d'avance, vous avez atteint votre destination. La lumière rouge qui vous enveloppe depuis que vous êtes entré dans Yoth recule, remplacée par une profonde obscurité. Le Nexus ne doit pas être loin… Vous pouvez le sentir.",
       "steps": [
         "nexus_is_near",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp_full_depth",
         "check_investigators_poisoned"

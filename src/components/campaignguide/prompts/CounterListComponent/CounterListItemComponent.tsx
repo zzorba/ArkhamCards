@@ -67,7 +67,6 @@ export default function CounterListItemComponent({ code, investigator, name, des
   return (
     <View style={[
       styles.promptRow,
-      borderStyle,
       color ? { backgroundColor: color } : {},
     ]}>
       <View style={styles.column}>
@@ -90,6 +89,8 @@ export default function CounterListItemComponent({ code, investigator, name, des
           countRender={count}
           color={color ? 'light' : 'dark'}
           hideDisabledMinus
+          dialogStyle
+          rounded
         />
       ) : (
         count
@@ -105,7 +106,6 @@ const styles = StyleSheet.create({
     minWidth: 40,
   },
   promptRow: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
     padding: m,
     paddingTop: s,
     paddingBottom: s,

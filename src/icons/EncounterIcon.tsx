@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ArkhamIcon from './ArkhamIcon';
+import AppIcon from './AppIcon';
 import CarcosaIcon from './CarcosaIcon';
 import CircleIcon from './CircleIcon';
 import CoreSetIcon from './CoreSetIcon';
@@ -25,7 +26,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
   arkhamIcon(name: string, size: number, color: string) {
     return (<ArkhamIcon name={name} size={size} color={color} />);
   }
-
+  appIcon(name: string, size: number, color: string) {
+    return (<AppIcon name={name} size={size} color={color} />);
+  }
   coreIcon(name: string, size: number, color: string) {
     return (<CoreSetIcon name={name} size={size} color={color} />);
   }
@@ -240,7 +243,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'bad_blood':
         return this.standaloneIcon('bad_blood', size, color);
       case 'parallel':
-        return this.standaloneIcon('parallel', size, color);
+        return this.appIcon('parallel', size, color);
       case 'cotr':
       case 'curse_of_the_rougarou':
       case 'rougarou':

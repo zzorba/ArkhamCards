@@ -27704,6 +27704,24 @@
       "text": "Die übrigen Begegnungskarten werden zum Begegnungsdeck zusammengemischt."
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "type": "input",
       "text": "Welche der folgenden Bedingungen ist wahr?",
@@ -28012,7 +28030,7 @@
       "title": "Auflösung 1",
       "text": "„Endlich! Yoth, Höhle der Schlangen! Die Verfluchten, die vor der Zerstörung von Valusia geflüchtet sind!“ Alejandro untersucht mit erstauntem Blick und offensichtlicher Freude den Eingang. Du hast keine Ahnung, wovon er spricht, aber langsam fängst du an dir Sorgen zu machen. In dem Moment huscht etwas hinter dir entlang und du wirst von dem klackenden Geräusch einer Kralle überrascht. Aus der Dunkelheit hinter dir treten einige fremdartige Kreaturen hervor. So etwas hast du noch nie gesehen: Drei Meter hohe, konische Körper, die in 4 verschiedenen Gliedmaßen unterschiedlicher Länge enden. „Da seid ihr ja“, sagt Alejandro ruhig. Eine der Kreaturen antwortet, indem sie ihre Krallen in einer offensichtlich wohlüberlegten Art gegeneinander schlägt. „Übernehmt ihre Geister“, befiehlt Alejandro den Kreaturen. „Sie haben keinen weiteren Nutzen für uns.“ Das ist deine letzte Erinnerung an deine Existenz als Mensch.",
       "steps": [
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned",
@@ -28028,7 +28046,7 @@
       "title": "Auflösung 2",
       "text": "Bevor du in die nächste Ebene der Höhle wechseln kannst, wirst du vom Klacken von Krallen hinter dir überrascht. Aus der Dunkelheit hinter dir treten einige fremdartige Kreaturen. So etwas hast du noch nie gesehen: Drei Meter hohe, konische Körper, die in 4 verschiedenen Gliedmaßen unterschiedlicher Länge enden. Erstaunt stellst du fest, dass es sich bei der menschlichen Gestalt hinter ihnen um niemand anderen als Alejandro Vela handelt. „Übernehmt ihre Geister“, befiehlt Alejandro den Kreaturen. „Sie haben keinen weiteren Nutzen für uns.“ Das ist deine letzte Erinnerung an deine Existenz als Mensch.",
       "steps": [
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned",
@@ -28272,7 +28290,7 @@
     },
     {
       "id": "lose",
-      "text": "Da alle Ermittler durch Traumata durch den Fall getötet wurden, <b>verlieren</b> die Ermittler die Kampagne.",
+      "text": "Die Ermittler verlieren die Kampagne!",
       "effects": [
         {
           "type": "campaign_data",
@@ -29188,6 +29206,24 @@
       ]
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "type": "input",
       "text": "Welche der folgenden Bedingungen ist wahr?",
@@ -29366,7 +29402,7 @@
       "steps": [
         "check_act_2",
         "record_x_paths_known",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -29383,7 +29419,7 @@
       "steps": [
         "record_x_paths_known",
         "check_if_ichtaca_has_confidence",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -29400,7 +29436,7 @@
       "steps": [
         "check_act_2",
         "record_x_paths_known",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -30883,6 +30919,24 @@
       ]
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "text": "Welche der folgenden Bedingungen ist wahr?",
       "type": "input",
@@ -31223,7 +31277,7 @@
         "record_final_depth",
         "check_final_depth",
         "ask_collected_strange_liquid",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -31235,7 +31289,7 @@
       "text": "Auch wenn alles gegen dich zu stehen schien, schaffst du es irgendwie, dein Ziel zu erreichen. Das verräterische rote Leuchten, das dich seit deiner Ankunft in Yoth umgeben hat, verblasst und wird durch eine undurchdringliche tintenschwarze Dunkelheit ersetzt. Der Nexus muss ganz nah sein … du fühlst es.",
       "steps": [
         "nexus_is_near",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "ask_collected_strange_liquid",
         "record_yigs_fury",
         "earn_xp_full_depth",
@@ -33863,6 +33917,24 @@
       "text": "Dieses Szenario enthält vier verschiedene Szenendecks – ein „a/b“-Deck, ein „c/d“-Deck, ein „e/f “-Deck und ein “g/h” Deck. Jedes dieser Szenendecks wird separat nach den üblichen Regeln in numerischer Reihenfolge erstellt. Während des Szenarios sind alle vier Szenendecks im Spiel und die Spieler dürfen wählen, welche Szenen sie weiterverfolgen und welche sie vorerst ignorieren. Der Text aller vier Szenen gilt zu jedem Zeitpunkt als aktiv. Möglicherweise haben die Spieler nicht ausreichend Zeit, um alle vier Aufgaben zu erledigen. Deshalb sollten sie wohlüberlegte Entscheidungen treffen, welchen Spuren sie folgen wollen! \nDer Inhalt der vier Szenendecks wird abhängig von den unten angegebenen Umständen verändert."
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "type": "input",
       "text": "Welche der folgenden Bedingungen ist wahr?",
@@ -33957,7 +34029,7 @@
         "check_act_ef",
         "check_act_gh",
         "earn_expedition_journal",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "earn_act_xp",
@@ -66929,6 +67001,24 @@
       "text": "Die übrigen Begegnungskarten werden zum Begegnungsdeck zusammengemischt."
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "type": "input",
       "text": "Welche der folgenden Bedingungen ist wahr?",
@@ -67125,7 +67215,7 @@
       "title": "Auflösung 1",
       "text": "„Endlich! Yoth, Höhle der Schlangen! Die Verfluchten, die vor der Zerstörung von Valusia geflüchtet sind!“ Alejandro untersucht mit erstauntem Blick und offensichtlicher Freude den Eingang. Du hast keine Ahnung, wovon er spricht, aber langsam fängst du an dir Sorgen zu machen. In dem Moment huscht etwas hinter dir entlang und du wirst von dem klackenden Geräusch einer Kralle überrascht. Aus der Dunkelheit hinter dir treten einige fremdartige Kreaturen hervor. So etwas hast du noch nie gesehen: Drei Meter hohe, konische Körper, die in 4 verschiedenen Gliedmaßen unterschiedlicher Länge enden. „Da seid ihr ja“, sagt Alejandro ruhig. Eine der Kreaturen antwortet, indem sie ihre Krallen in einer offensichtlich wohlüberlegten Art gegeneinander schlägt. „Übernehmt ihre Geister“, befiehlt Alejandro den Kreaturen. „Sie haben keinen weiteren Nutzen für uns.“ Das ist deine letzte Erinnerung an deine Existenz als Mensch.",
       "steps": [
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned",
@@ -67141,7 +67231,7 @@
       "title": "Auflösung 2",
       "text": "Bevor du in die nächste Ebene der Höhle wechseln kannst, wirst du vom Klacken von Krallen hinter dir überrascht. Aus der Dunkelheit hinter dir treten einige fremdartige Kreaturen. So etwas hast du noch nie gesehen: Drei Meter hohe, konische Körper, die in 4 verschiedenen Gliedmaßen unterschiedlicher Länge enden. Erstaunt stellst du fest, dass es sich bei der menschlichen Gestalt hinter ihnen um niemand anderen als Alejandro Vela handelt. „Übernehmt ihre Geister“, befiehlt Alejandro den Kreaturen. „Sie haben keinen weiteren Nutzen für uns.“ Das ist deine letzte Erinnerung an deine Existenz als Mensch.",
       "steps": [
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned",
@@ -68323,7 +68413,7 @@
     },
     {
       "id": "lose",
-      "text": "Da alle Ermittler durch Traumata durch den Fall getötet wurden, <b>verlieren</b> die Ermittler die Kampagne.",
+      "text": "Die Ermittler verlieren die Kampagne!",
       "effects": [
         {
           "type": "campaign_data",
@@ -69229,6 +69319,24 @@
       ]
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "type": "input",
       "text": "Welche der folgenden Bedingungen ist wahr?",
@@ -69366,7 +69474,7 @@
       "steps": [
         "check_act_2",
         "record_x_paths_known",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -69383,7 +69491,7 @@
       "steps": [
         "record_x_paths_known",
         "check_if_ichtaca_has_confidence",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -69400,7 +69508,7 @@
       "steps": [
         "check_act_2",
         "record_x_paths_known",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -71460,6 +71568,24 @@
       ]
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "text": "Welche der folgenden Bedingungen ist wahr?",
       "type": "input",
@@ -71688,7 +71814,7 @@
         "fell_into_depths",
         "record_final_depth",
         "check_final_depth",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -71704,7 +71830,7 @@
       "text": "Auch wenn alles gegen dich zu stehen schien, schaffst du es irgendwie, dein Ziel zu erreichen. Das verräterische rote Leuchten, das dich seit deiner Ankunft in Yoth umgeben hat, verblasst und wird durch eine undurchdringliche tintenschwarze Dunkelheit ersetzt. Der Nexus muss ganz nah sein … du fühlst es.",
       "steps": [
         "nexus_is_near",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp_full_depth",
         "check_investigators_poisoned"

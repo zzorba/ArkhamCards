@@ -119,7 +119,7 @@ export default function ChoiceListComponent({ id, promptType, investigator, bull
           choices={choices}
           choice={getChoice(item.code, choices, inputChoices)}
           onChoiceChange={onChoiceChange}
-          noInvestigatorItems
+          noInvestigatorItems={!detailed}
           optional={!!optional}
           editable={inputChoices === undefined}
           detailed={detailed}
