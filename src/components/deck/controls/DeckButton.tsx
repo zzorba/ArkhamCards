@@ -67,6 +67,7 @@ interface Props {
 }
 
 const ICON_SIZE: { [icon: string]: number | undefined } = {
+  faq: 24,
   trauma: 32,
   backup: 24,
   'plus-button': 32,
@@ -102,7 +103,7 @@ const ICON_STYLE: { [icon: string]: ViewStyle | undefined } = {
 };
 
 const MATERIAL_ICONS = new Set(['email', 'delete', 'login', 'backup']);
-const ARKHAM_ICONS = new Set(['per_investigator', 'elder_sign', 'weakness']);
+const ARKHAM_ICONS = new Set(['per_investigator', 'faq', 'elder_sign', 'weakness']);
 const ENCOUNTER_ICONS = new Set(['tdea', 'tdeb']);
 export default function DeckButton({
   disabled,
@@ -186,7 +187,7 @@ export default function DeckButton({
       return <MaterialIcons name={icon} size={size} color={theIconColor} />;
     }
     if (ARKHAM_ICONS.has(icon)) {
-      return <ArkhamIcon name={icon} size={size} color={theIconColor} />;
+      return <ArkhamIcon name={icon === 'faq' ? 'wild' : icon} size={size} color={theIconColor} />;
     }
     if (ENCOUNTER_ICONS.has(icon)) {
       return <EncounterIcon encounter_code={icon} size={size} color={theIconColor} />;

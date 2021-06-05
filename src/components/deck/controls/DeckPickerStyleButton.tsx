@@ -70,7 +70,7 @@ export default function DeckPickerStyleButton({
         <View style={styles.leftRow}>
           { !!icon && (
             <View style={styles.icon}>
-              { icon === 'per_investigator' ? (
+              { icon === 'per_investigator'? (
                 <ArkhamIcon name={icon} size={iconSize(icon)} color={colors.M} />
               ) : (
                 <AppIcon name={icon} size={iconSize(icon)} color={colors.M} />

@@ -217,7 +217,10 @@ function UpgradeDeckRow({
       )
     );
   }, [onCardPress]);
-
+  const [health, sanity] = useMemo(() => {
+    const traumaAndCardData = campaignLog.traumaAndCardData(investigator.code);
+    return [investigator.getHealth(traumaAndCardData), investigator.getSanity(traumaAndCardData)];
+  }, [campaignLog, investigator]);
   const storyAssetDeltas = useMemo(() => campaignLog.storyAssetChanges(investigator.code), [campaignLog, investigator]);
   const storyAssets = useMemo(() => campaignLog.storyAssets(investigator.code), [campaignLog, investigator]);
   const storyAssetCodes = useMemo(() => flatMap(storyAssetDeltas, (count, code) => count !== 0 ? code : []), [storyAssetDeltas]);
@@ -302,7 +305,7 @@ function UpgradeDeckRow({
                   count={totalPhysical}
                   onIncrement={incPhysical}
                   onDecrement={decPhysical}
-                  max={investigator.health || 0}
+                  max={health}
                   disabled={killedAdjust || insaneAdjust}
                 />
               ) }
@@ -350,7 +353,7 @@ function UpgradeDeckRow({
                   count={totalMental}
                   onIncrement={incMental}
                   onDecrement={decMental}
-                  max={(investigator.sanity || 0)}
+                  max={sanity}
                   disabled={killedAdjust || insaneAdjust}
                 />
               ) }
@@ -381,6 +384,7 @@ function UpgradeDeckRow({
       </>
     );
   }, [incMental, decMental, incPhysical, decPhysical, toggleInsane, toggleKilled, investigator,
+    health, sanity,
     colors, typography, baseTrauma, choices, editable, insane, killed, physicalTrauma, mentalTrauma,
     insaneAdjust, killedAdjust, traumaDelta]);
   const [saving, error, saveDeckUpgrade] = useDeckUpgrade(deck, actions, onUpgrade);

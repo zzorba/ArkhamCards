@@ -143,7 +143,7 @@ export default function CheckListComponent({ extraSave, id, choiceId, defaultSta
           );
         }) }
         { ((items.length === 0 && !loading) || (choiceList !== undefined && keys(choiceList).length === 0)) && (
-          <View style={[styles.row, borderStyle]}>
+          <View style={styles.row}>
             <Text style={[typography.mediumGameFont, styles.nameText]}>
               { t`None` }
             </Text>
@@ -156,7 +156,6 @@ export default function CheckListComponent({ extraSave, id, choiceId, defaultSta
 
 const styles = StyleSheet.create({
   row: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
     padding: s,
     paddingLeft: m,
     paddingRight: m,

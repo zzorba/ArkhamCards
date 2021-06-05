@@ -27704,6 +27704,24 @@
       "text": "Baraja el resto de cartas de Encuentro para formar el mazo de Encuentros."
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "type": "input",
       "text": "¿Cuál de los siguientes es cierto?",
@@ -28012,7 +28030,7 @@
       "title": "Resolución 1",
       "text": "–¡Por fin! ¡Yoth, la caverna de las serpientes! ¡Las malditas, que huyeron de la destrucción de Valusia! –exclama Alejandro mientras examina la entrada, con los ojos jubilosos y los brazos levantados de emoción. No sabes de qué habla, y estás empezando a preocuparte. En ese momento, algo corretea detrás de ti, y un sonido similar al claqueteo de unas garras te pilla por sorpresa. De la oscuridad que tienes a tu espalda surgen varias criaturas alienígenas con un aspecto como nada que hayas visto en tu vida: miden tres metros de alto y tienen cuerpos cónicos que acaban en cuatro extraños apéndices de distinta longitud. –Por fin llegáis –dice Alejandro con toda tranquilidad. Una de las criaturas responde haciendo claquetear sus garras siguiendo un patrón intencionado–. Haceos con sus mentes –les ordena Alejandro–. Ya no nos sirven de nada. Es el último recuerdo humano que tienes.",
       "steps": [
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned",
@@ -28028,7 +28046,7 @@
       "title": "Resolución 2",
       "text": "Antes de poder cruzar a la siguiente sección de la caverna, un sonido similar al claqueteo de unas garras te pilla por sorpresa. De la oscuridad que tienes a tu espalda surgen varias criaturas alienígenas con un aspecto como nada que hayas visto en tu vida: miden tres metros de alto y tienen cuerpos cónicos que acaban en cuatro extraños apéndices de distinta longitud. Te asombra ver una silueta humana a la cabeza del grupo: ni más ni menos que Alejandro Vela. –Haceos con sus mentes –ordena Alejandro a las criaturas–. Ya no nos sirven de nada. Es el último recuerdo humano que tienes.",
       "steps": [
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned",
@@ -28272,7 +28290,7 @@
     },
     {
       "id": "lose",
-      "text": "Como todos los investigadores han muerto por el trauma de la caída, los investigadores <b>pierden</b> la campaña.",
+      "text": "Los investigadores pierden la campaña.",
       "effects": [
         {
           "type": "campaign_data",
@@ -29188,6 +29206,24 @@
       ]
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "type": "input",
       "text": "¿Cuál de los siguientes es cierto?",
@@ -29366,7 +29402,7 @@
       "steps": [
         "check_act_2",
         "record_x_paths_known",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -29383,7 +29419,7 @@
       "steps": [
         "record_x_paths_known",
         "check_if_ichtaca_has_confidence",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -29400,7 +29436,7 @@
       "steps": [
         "check_act_2",
         "record_x_paths_known",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -30883,6 +30919,24 @@
       ]
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "text": "¿Cuál de los siguientes es cierto?",
       "type": "input",
@@ -31223,7 +31277,7 @@
         "record_final_depth",
         "check_final_depth",
         "ask_collected_strange_liquid",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -31235,7 +31289,7 @@
       "text": "De algún modo, y contra todo pronóstico, has llegado a tu destino. El revelador brillo rojo que os ha rodeado desde que entrasteis en Yoth desaparece, sustituido por una impenetrable oscuridad de negrura absoluta. El Nexo debe de estar cerca… Lo notas.",
       "steps": [
         "nexus_is_near",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "ask_collected_strange_liquid",
         "record_yigs_fury",
         "earn_xp_full_depth",
@@ -33863,6 +33917,24 @@
       "text": "Este escenario contiene cuatro mazos de Acto distintos: un mazo “a/b”, un mazo “c/d”, un mazo “e/f ” y un mazo “g/h ”. Cada uno de estos mazos de Acto se crea por separado y en orden numérico, como de costumbre. A lo largo de este escenario, estarán en juego los cuatro mazos de Acto, y los jugadores pueden elegir en qué Actos actuar y cuáles ignorar. El texto de los cuatro Actos se considera activo en todo momento. Puede que no tengas tiempo de completar las cuatro tareas, ¡así que elige bien cuál quieres emprender!\nEl contenido de cada uno de estos mazos de Acto se modifica en función de las siguientes circunstancias."
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "type": "input",
       "text": "¿Cuál de los siguientes es cierto?",
@@ -33957,7 +34029,7 @@
         "check_act_ef",
         "check_act_gh",
         "earn_expedition_journal",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "earn_act_xp",
@@ -66929,6 +67001,24 @@
       "text": "Baraja el resto de cartas de Encuentro para formar el mazo de Encuentros."
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "type": "input",
       "text": "¿Cuál de los siguientes es cierto?",
@@ -67125,7 +67215,7 @@
       "title": "Resolución 1",
       "text": "–¡Por fin! ¡Yoth, la caverna de las serpientes! ¡Las malditas, que huyeron de la destrucción de Valusia! –exclama Alejandro mientras examina la entrada, con los ojos jubilosos y los brazos levantados de emoción. No sabes de qué habla, y estás empezando a preocuparte. En ese momento, algo corretea detrás de ti, y un sonido similar al claqueteo de unas garras te pilla por sorpresa. De la oscuridad que tienes a tu espalda surgen varias criaturas alienígenas con un aspecto como nada que hayas visto en tu vida: miden tres metros de alto y tienen cuerpos cónicos que acaban en cuatro extraños apéndices de distinta longitud. –Por fin llegáis –dice Alejandro con toda tranquilidad. Una de las criaturas responde haciendo claquetear sus garras siguiendo un patrón intencionado–. Haceos con sus mentes –les ordena Alejandro–. Ya no nos sirven de nada. Es el último recuerdo humano que tienes.",
       "steps": [
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned",
@@ -67141,7 +67231,7 @@
       "title": "Resolución 2",
       "text": "Antes de poder cruzar a la siguiente sección de la caverna, un sonido similar al claqueteo de unas garras te pilla por sorpresa. De la oscuridad que tienes a tu espalda surgen varias criaturas alienígenas con un aspecto como nada que hayas visto en tu vida: miden tres metros de alto y tienen cuerpos cónicos que acaban en cuatro extraños apéndices de distinta longitud. Te asombra ver una silueta humana a la cabeza del grupo: ni más ni menos que Alejandro Vela. –Haceos con sus mentes –ordena Alejandro a las criaturas–. Ya no nos sirven de nada. Es el último recuerdo humano que tienes.",
       "steps": [
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned",
@@ -68323,7 +68413,7 @@
     },
     {
       "id": "lose",
-      "text": "Como todos los investigadores han muerto por el trauma de la caída, los investigadores <b>pierden</b> la campaña.",
+      "text": "Los investigadores pierden la campaña.",
       "effects": [
         {
           "type": "campaign_data",
@@ -69229,6 +69319,24 @@
       ]
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "type": "input",
       "text": "¿Cuál de los siguientes es cierto?",
@@ -69366,7 +69474,7 @@
       "steps": [
         "check_act_2",
         "record_x_paths_known",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -69383,7 +69491,7 @@
       "steps": [
         "record_x_paths_known",
         "check_if_ichtaca_has_confidence",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -69400,7 +69508,7 @@
       "steps": [
         "check_act_2",
         "record_x_paths_known",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -71460,6 +71568,24 @@
       ]
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "text": "¿Cuál de los siguientes es cierto?",
       "type": "input",
@@ -71688,7 +71814,7 @@
         "fell_into_depths",
         "record_final_depth",
         "check_final_depth",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -71704,7 +71830,7 @@
       "text": "De algún modo, y contra todo pronóstico, has llegado a tu destino. El revelador brillo rojo que os ha rodeado desde que entrasteis en Yoth desaparece, sustituido por una impenetrable oscuridad de negrura absoluta. El Nexo debe de estar cerca… Lo notas.",
       "steps": [
         "nexus_is_near",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp_full_depth",
         "check_investigators_poisoned"
