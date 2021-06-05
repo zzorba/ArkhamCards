@@ -57,6 +57,24 @@ export default class DeckOption {
 
   public dynamic?: boolean;
 
+  localizedError(): undefined | string {
+    if (!this.error) {
+      return undefined;
+    }
+    const LOCALIZED_OPTIONS: { [key: string]: string | undefined } = {
+      'You cannot have more than 5 cards that are not Guardian or Neutral': t`You cannot have more than 5 cards that are not Guardian or Neutral`,
+      'You cannot have more than 5 cards that are not Seeker or Neutral': t`You cannot have more than 5 cards that are not Seeker or Neutral`,
+      'You cannot have more than 5 cards that are not Rogue or Neutral': t`You cannot have more than 5 cards that are not Rogue or Neutral`,
+      'You cannot have more than 5 cards that are not Mystic or Neutral': t`You cannot have more than 5 cards that are not Mystic or Neutral`,
+      'You cannot have more than 5 cards that are not Survivor or Neutral': t`You cannot have more than 5 cards that are not Survivor or Neutral`,
+      'You must have at least 7 cards from 3 different factions': t`You must have at least 7 cards from 3 different factions`,
+      'You cannot have more than 15 level 0-1 Seeker and/or Mystic cards': t`You cannot have more than 15 level 0-1 Seeker and/or Mystic cards`,
+      'You cannot have more than 5 Guardian and/or Mystic cards': t`You cannot have more than 5 Guardian and/or Mystic cards`,
+      'You cannot have more than 5 level 0 Mystic cards': t`You cannot have more than 5 level 0 Mystic cards`,
+    };
+    return LOCALIZED_OPTIONS[this.error] || this.error;
+  }
+
   static optionName(option: DeckOption) {
     switch (option.real_name) {
       case 'Secondary Class':

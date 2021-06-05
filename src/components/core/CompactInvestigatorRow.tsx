@@ -17,8 +17,9 @@ interface Props {
   transparent?: boolean;
   width: number;
   children?: React.ReactNode;
+  description?: string;
 }
-export default function CompactInvestigatorRow({ eliminated, investigator, transparent, yithian, open, upgradeBadge, leftContent, children, width }: Props) {
+export default function CompactInvestigatorRow({ eliminated, description, investigator, transparent, yithian, open, upgradeBadge, leftContent, children, width }: Props) {
   const { colors, typography } = useContext(StyleContext);
   return (
     <RoundedFactionHeader
@@ -47,7 +48,7 @@ export default function CompactInvestigatorRow({ eliminated, investigator, trans
             { investigator.name }
           </Text>
           <Text style={[typography.cardTraits, !transparent ? typography.white : { color: colors.D20 }, eliminated ? typography.strike : undefined]}>
-            { investigator.subname }
+            { description || investigator.subname }
           </Text>
         </View>
         { !!children && <View style={[styles.rightRow, space.paddingLeftS]}>{ children }</View> }

@@ -2,8 +2,9 @@ import { StyleContextType } from '@styles/StyleContext';
 import React from 'react';
 import {
   Text,
+  TextStyle,
 } from 'react-native';
-import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
+import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
 import { WithText } from '../CardTextComponent/types';
 
@@ -14,9 +15,13 @@ export default function FlavorBoldNode({ typography }: StyleContextType) {
     state: RenderState
   ) => {
     return (
-      <Text key={state.key} style={typography.boldItalic}>
+      <MarkdownText key={state.key} style={{
+        fontFamily: 'Alegreya',
+        fontWeight: '700',
+        fontStyle: 'italic',
+      }}>
         { node.text }
-      </Text>
+      </MarkdownText>
     );
   };
 }

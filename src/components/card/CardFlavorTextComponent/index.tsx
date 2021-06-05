@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import SimpleMarkdown from 'simple-markdown';
 import {
   MarkdownView,
@@ -23,6 +23,7 @@ import GameTextNode from './GameTextNode';
 import CiteTagNode from './CiteTagNode';
 import { xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { TextStyle } from 'react-native';
 
 function BreakTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
   return {
@@ -179,6 +180,19 @@ export default function CardFlavorTextComponent(
   { text, onLinkPress, color, width, sizeScale = 1 }: Props
 ) {
   const context = useContext(StyleContext);
+  const textStyle: TextStyle = useMemo(() => {
+    return {
+      fontFamily: 'Alegreya',
+      fontStyle: 'italic',
+      fontWeight: 'normal',
+      fontSize: 16 * context.fontScale * sizeScale,
+      lineHeight: 20 * context.fontScale * sizeScale,
+      marginTop: 4,
+      marginBottom: 4,
+      color: color || context.colors.darkText,
+      textAlign: context.justifyContent ? 'justify' : 'left',
+    };
+  }, [context, sizeScale, color]);
   // Text that has hyperlinks uses a different style for the icons.
   return (
     <MarkdownView
@@ -202,14 +216,23 @@ export default function CardFlavorTextComponent(
       }}
       onLinkPress={onLinkPress}
       styles={{
-        paragraph: {
-          fontFamily: context.italicFont,
-          fontSize: 16 * context.fontScale * sizeScale,
-          lineHeight: 20 * context.fontScale * sizeScale,
-          marginTop: 4,
-          marginBottom: 4,
-          color: color || context.colors.darkText,
-          textAlign: context.justifyContent ? 'justify' : 'left',
+        paragraph: textStyle,
+      }}
+      fonts={{
+        Alegreya: {
+          fontWeights: {
+            300: 'Light',
+            400: 'Regular',
+            700: 'Bold',
+            800: 'ExtraBold',
+            900: 'Black',
+            normal: 'Regular',
+            bold: 'Bold',
+          },
+          fontStyles: {
+            normal: '',
+            italic: 'Italic',
+          },
         },
       }}
     >

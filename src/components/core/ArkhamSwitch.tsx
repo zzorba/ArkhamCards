@@ -14,11 +14,12 @@ interface Props extends TouchableOpacityProps {
   accessibilityLabel?: string;
   large?: boolean;
   color?: 'light' | 'dark';
+  circleColor?: 'light'
 }
-function getCircleColor(value: boolean, color: 'light' | 'dark' | undefined, colors: ThemeColors) {
+function getCircleColor(value: boolean, color: 'light' | 'dark' | undefined, circleColor: 'light' | undefined, colors: ThemeColors) {
   switch (color) {
     case 'light':
-      return !value ? colors.D10 : COLORS.L15;
+      return !value && circleColor !== 'light' ? colors.D10 : COLORS.L15;
     case 'dark':
       return colors.D10;
     default:
@@ -35,14 +36,14 @@ function getCheckColor(color: 'light' | 'dark' | undefined, colors: ThemeColors)
       return colors.M;
   }
 }
-export default function ArkhamSwitch({ useGestureHandler, value, onValueChange, accessibilityLabel, disabled, large, color, ...props }: Props) {
+export default function ArkhamSwitch({ useGestureHandler, value, onValueChange, accessibilityLabel, disabled, large, color, circleColor, ...props }: Props) {
   const { colors } = useContext(StyleContext);
 
   const onPress = useCallback(() => {
     onValueChange?.(!value);
   }, [value, onValueChange]);
 
-  const circleColor = getCircleColor(value, color, colors);
+  const theCircleColor = getCircleColor(value, color, circleColor, colors);
   const checkColor = getCheckColor(color, colors);
   const content = useMemo(() => {
     return (
@@ -50,7 +51,7 @@ export default function ArkhamSwitch({ useGestureHandler, value, onValueChange, 
         <AppIcon
           size={large ? 34 : 28}
           name={large ? 'circle-thin' : 'check-circle'}
-          color={disabled ? colors.L20 : circleColor}
+          color={disabled ? colors.L20 : theCircleColor}
         />
         { !!value && (
           <View style={large ? styles.largeCheck : styles.check}>
@@ -63,7 +64,7 @@ export default function ArkhamSwitch({ useGestureHandler, value, onValueChange, 
         )}
       </View>
     );
-  }, [disabled, large, value, colors, circleColor, checkColor]);
+  }, [disabled, large, value, colors, theCircleColor, checkColor]);
   if (!onValueChange) {
     return content;
   }

@@ -6,7 +6,6 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext from '../ScenarioGuideContext';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
@@ -98,7 +97,7 @@ export default function NumberPrompt({
         editable={count === undefined}
         onSubmit={submit}
       >
-        <View style={styles.promptRow}>
+        <View style={[styles.promptRow, count === undefined ? undefined : space.paddingS]}>
           <View style={styles.text}>
             <Text style={[space.marginLeftS, typography.mediumGameFont]}>{prompt}</Text>
             { count !== undefined && (
@@ -129,9 +128,6 @@ export default function NumberPrompt({
           ) }
         </View>
       </InputWrapper>
-      { (count === undefined) && (
-        <BasicButton title={t`Proceed`} onPress={submit} />
-      ) }
     </View>
   );
 }

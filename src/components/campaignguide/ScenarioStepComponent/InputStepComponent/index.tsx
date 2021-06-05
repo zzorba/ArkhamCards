@@ -25,6 +25,8 @@ import SuppliesPrompt from '@components/campaignguide/prompts/SuppliesPrompt';
 import { InputStep } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import { chooseOneInputChoices } from '@data/scenario/inputHelper';
+import StyleContext from '@styles/StyleContext';
+import { s } from '@styles/space';
 
 interface Props {
   step: InputStep;
@@ -35,6 +37,7 @@ interface Props {
 
 export default function InputStepComponent({ step, componentId, campaignLog, switchCampaignScenario }: Props) {
   const { campaignId } = useContext(CampaignGuideContext);
+  const { width } = useContext(StyleContext);
   switch (step.input.type) {
     case 'choose_one':
       if (step.input.choices.length === 1) {
@@ -95,6 +98,7 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
           bulletType={step.bullet_type}
           text={step.text}
           input={step.input}
+          width={width - s * 2}
         />
       );
     case 'card_choice':

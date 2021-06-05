@@ -26,6 +26,7 @@ interface Props {
   componentId: string;
   id: string;
   text?: string;
+  promptType?: 'header' | 'setup';
   input: CardChoiceInput;
 }
 
@@ -103,7 +104,7 @@ function mainQuery(
   );
 }
 
-export default function CardChoicePrompt({ componentId, id, text, input }: Props) {
+export default function CardChoicePrompt({ componentId, id, text, input, promptType }: Props) {
   const [extraCards, setExtraCards] = useState<string[]>([]);
   const { latestDecks } = useContext(CampaignGuideContext);
   const { scenarioState, processedScenario } = useContext(ScenarioGuideContext);
@@ -219,6 +220,7 @@ export default function CardChoicePrompt({ componentId, id, text, input }: Props
         <ChoiceListComponent
           id={id}
           text={text}
+          promptType={promptType}
           items={map(filteredCards, card => {
             return {
               code: card.code,

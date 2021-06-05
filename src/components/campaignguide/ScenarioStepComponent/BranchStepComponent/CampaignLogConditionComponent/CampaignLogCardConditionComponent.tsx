@@ -33,11 +33,11 @@ export default function CampaignLogCardConditionComponent({ step, entry, conditi
     );
   }
   const negatedPrompt = card.grammarGenderMasculine() ?
-    c('masculine').t`If <i>${card.name}</i> is not listed under Check ‘${entry.section}’ in your Campaign Log.` :
-    c('feminine').t`If <i>${card.name}</i> is not listed under Check ‘${entry.section}’ in your Campaign Log.`;
+    c('masculine').t`If <i>${card.name}</i> is not listed under ‘${entry.section}’ in your Campaign Log.` :
+    c('feminine').t`If <i>${card.name}</i> is not listed under ‘${entry.section}’ in your Campaign Log.`;
   const positivePrompt = card.grammarGenderMasculine() ?
-    c('masculine').t`If <i>${card.name}</i> is listed under Check ‘${entry.section}’ in your Campaign Log.` :
-    c('feminine').t`If <i>${card.name}</i> is listed under Check ‘${entry.section}’ in your Campaign Log.`;
+    c('masculine').t`If <i>${card.name}</i> is listed under ‘${entry.section}’ in your Campaign Log.` :
+    c('feminine').t`If <i>${card.name}</i> is listed under ‘${entry.section}’ in your Campaign Log.`;
   const trueResult = find(condition.options, option => option.boolCondition === true);
   const falseResult = find(condition.options, option => option.boolCondition === false);
   const result = campaignLog.check(condition.section, condition.id);

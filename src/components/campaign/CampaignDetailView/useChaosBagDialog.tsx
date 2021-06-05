@@ -26,6 +26,8 @@ interface Props {
   chaosBag: ChaosBag;
   guided?: boolean;
   setChaosBag?: SetCampaignChaosBagAction;
+
+  customEditPressed?: () => void;
 }
 
 export function useSimpleChaosBagDialog(chaosBag: ChaosBag): [React.ReactNode, () => void] {
@@ -58,7 +60,8 @@ export default function useChaosBagDialog({
   guided,
   scenarioId,
   setChaosBag,
-}: Props): [React.ReactNode, () => void] {
+  customEditPressed,
+}: Props): [React.ReactNode, () => void, (visible: boolean) => void] {
   const { width } = useContext(StyleContext);
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const oddsCalculatorPressed = useCallback(() => {
@@ -109,14 +112,14 @@ export default function useChaosBagDialog({
   }, [componentId, chaosBag, updateChaosBag]);
   const customButtons = useMemo(() => {
     const result: React.ReactNode[] = [];
-    if (!guided && setChaosBag) {
+    if (customEditPressed || (!guided && setChaosBag)) {
       result.push(
         <DeckButton
           key="edit"
           thin
           icon="edit"
           title={t`Edit chaos bag`}
-          onPress={editChaosBagDialog}
+          onPress={customEditPressed || editChaosBagDialog}
         />
       );
     }
@@ -139,7 +142,7 @@ export default function useChaosBagDialog({
       />
     );
     return result;
-  }, [oddsCalculatorPressed, drawChaosBagPressed, editChaosBagDialog, setChaosBag, guided]);
+  }, [oddsCalculatorPressed, drawChaosBagPressed, editChaosBagDialog, setChaosBag, customEditPressed, guided]);
   const content = useMemo(() => {
     return (
       <>
@@ -163,5 +166,5 @@ export default function useChaosBagDialog({
     customButtons,
   });
   setVisibleRef.current = setVisible;
-  return [dialog, showDialog];
+  return [dialog, showDialog, setVisible];
 }

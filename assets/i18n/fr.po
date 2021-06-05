@@ -785,7 +785,7 @@ msgid "Campaign Notes"
 msgstr "Notes de campagne"
 
 msgid "Cultists We Interrogated"
-msgstr "Cultistes interrogés"
+msgstr "Cultistes Interrogés"
 
 msgid "Cultists Who Got Away"
 msgstr "Cultistes enfuis"
@@ -794,10 +794,10 @@ msgid "Sacrificed to Yog-Sothoth"
 msgstr "Sacrifiés à Yog-Sothoth"
 
 msgid "VIPs Interviewed"
-msgstr "Personnalités interrogées"
+msgstr "Personnalités Interrogées"
 
 msgid "VIPs Slain"
-msgstr "Personnalités tuées"
+msgstr "Personnalités Tuées"
 
 msgid "Doubt"
 msgstr "Doute"
@@ -2011,15 +2011,15 @@ msgstr[1] "Mettez les sets de rencontre ${ encounterSetString } de côté."
 msgid "Gather all cards from the ${ encounterSetString } encounter set."
 msgid_plural "Gather all cards from the following encounter sets: ${ encounterSetString }."
 msgstr[0] ""
-"Réunissez toutes les cartes du set de rencontre suivant : ${ encounterSetString }"
+"Réunissez toutes les cartes du set de rencontre suivant : ${ encounterSetString }."
 msgstr[1] ""
-"Réunissez toutes les cartes des sets de rencontre suivants : ${ encounterSetString }"
+"Réunissez toutes les cartes des sets de rencontre suivants : ${ encounterSetString }."
 
 #, javascript-format
 msgid "${ startText } This set is indicated by the following icon:"
 msgid_plural "${ startText } These sets are indicated by the following icons:"
 msgstr[0] "${ startText } Ce set est reconnaissable à l'icône suivante :"
-msgstr[1] "${ startText } Ces sets sont reconnaissables aux icônes suivantes:"
+msgstr[1] "${ startText } Ces sets sont reconnaissables aux icônes suivantes :"
 
 msgid "Choose Investigators"
 msgstr "Choisir les investigateurs"
@@ -2116,25 +2116,25 @@ msgid "Check Campaign Log. Because there is ${ count } mark under '${ logEntry.s
 msgid_plural ""
 "Check Campaign Log. Because there are ${ count } marks under '${ logEntry.section }'"
 msgstr[0] ""
-"Vérifiez votre Carnet de Campagne. Parce qu'il y a ${ count } marque sous la mention « "
-"${ logEntry.section } »"
+"Vérifiez votre Carnet de Campagne. Étant donné qu'il y a ${ count } trait sous la "
+"mention « ${ logEntry.section } »"
 msgstr[1] ""
-"Vérifiez votre Carnet de campagne. Parce qu'il y a ${ count } marques sous la mention « "
-"${ logEntry.section } »"
+"Vérifiez votre Carnet de Campagne. Étant donné qu'il y a ${ count } traits sous la "
+"mention « ${ logEntry.section } »"
 
 msgid "Check Campaign Log. Because there is ${ count } entry under '${ logEntry.section }'"
 msgid_plural ""
 "Check Campaign Log. Because there are ${ count } entries under '${ logEntry.section }'"
 msgstr[0] ""
-"Vérifiez votre Carnet de Campagne. Parce qu'il y a ${ count } entrée sous la mention « "
-"${ logEntry.section } »"
+"Vérifiez votre Carnet de Campagne. Étant donné qu'il y a ${ count } entrée sous la "
+"mention « ${ logEntry.section } »"
 msgstr[1] ""
-"Vérifiez votre Carnet de campagne. Parce qu'il y a ${ count } entrées sous la mention « "
-"${ logEntry.section } »"
+"Vérifiez votre Carnet de Campagne. Étant donné qu'il y a ${ count } entrées sous la "
+"mention « ${ logEntry.section } »"
 
 #, javascript-format
 msgid "Check Campaign Log. Because <i>${ entry }</i>"
-msgstr "Vérifiez votre Carnet de Campagne. Parce que  <i>${ entry }</i>"
+msgstr "Vérifiez votre Carnet de Campagne. Étant donné que <i>${ entry }</i>"
 
 msgid "Check Campaign Log, is the <i>${ logEntry.section }</i> not crossed off?"
 msgstr ""
@@ -2220,7 +2220,7 @@ msgid "Edit name"
 msgstr "Modifier le nom"
 
 msgid "Guided Campaign"
-msgstr "Campagne avec guide"
+msgstr "Campagne avec Guide"
 
 #. This is a deck upgrade action.
 msgid ""
@@ -2666,7 +2666,7 @@ msgid " (Per Investigator)"
 msgstr " (Par Investigateur)"
 
 msgid "Use app for scenario setup & resolutions"
-msgstr "Utiliser l'application pour la mise en place et les conclusions."
+msgstr "Utilisez l'application pour les mises en place et les conclusions"
 
 msgid "Track campaign log and resolutions manually"
 msgstr "Gérer le Carnet de Campagne et les conclusions manuellement"
@@ -4007,7 +4007,7 @@ msgid "Uploaded campaigns will be synced between devices."
 msgstr "Les campagnes envoyées seront synchronisées entre les appareils."
 
 msgid "Review records"
-msgstr "Examiner vos notes"
+msgstr "Examinez vos Notes de Campagne"
 
 msgid "Note campaign achievements"
 msgstr "Noter les résultats de la campagne"
@@ -4016,7 +4016,7 @@ msgid "Complete campaign setup"
 msgstr "Terminer la mise en place de la campagne"
 
 msgid "Review and draw tokens"
-msgstr "Examiner et piocher des pions Chaos"
+msgstr "Examinez et piochez des pions Chaos"
 
 msgid "Spent experience"
 msgstr "Expérience dépensée"
@@ -4098,7 +4098,7 @@ msgid "${ _spentXp } of ${ _totalXp } spent"
 msgstr "${ _spentXp } sur ${ _totalXp } dépensée(s)"
 
 msgid "Save your changes to the campaign log"
-msgstr "Enregistrer vos modifications dans le carnet de campagne."
+msgstr "Enregistrer vos modifications dans le Carnet de Campagne."
 
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr "Les decks avec la Connaissance Ancestrale doivent inclure au moins 10 compétences."
@@ -4352,7 +4352,7 @@ msgstr "${ investigator.name } est devenu <b>dément</b>."
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
-msgstr "${ investigator.name } a été<b>tué</b>."
+msgstr "${ investigator.name } a été <b>tué</b>."
 
 #, javascript-format
 msgctxt "masculine"

@@ -1046,7 +1046,8 @@ export default class Card {
     const sort_by_faction_header = Card.factionSortHeader(json);
     const sort_by_faction = Card.factionHeaderOrder().indexOf(sort_by_faction_header);
     const pack = packsByCode[json.pack_code] || null;
-    const sort_by_faction_pack = sort_by_faction * 100 + (pack ? pack.cycle_position : 0);
+    const cycle_position = pack?.cycle_position || 0;
+    const sort_by_faction_pack = sort_by_faction * 1000 + (cycle_position * 20) + (cycle_position >= 50 ? pack.position : 0);
     const sort_by_faction_pack_header = `${sort_by_faction_header} - ${json.pack_name}`;
 
     const basic_type_header = Card.typeSortHeader(json, true);

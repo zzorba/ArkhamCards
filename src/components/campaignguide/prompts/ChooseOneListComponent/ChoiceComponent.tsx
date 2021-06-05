@@ -5,6 +5,8 @@ import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideT
 import { DisplayChoice } from '@data/scenario';
 import space, { m, s, xs } from '@styles/space';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
+import { map } from 'lodash';
+import { isSpecialToken, SPECIAL_TOKENS } from '@app_constants';
 
 interface Props {
   choice: DisplayChoice;

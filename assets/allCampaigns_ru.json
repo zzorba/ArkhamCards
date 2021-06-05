@@ -64,8 +64,25 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Лёгкий <i>(чтобы познакомиться с сюжетом):</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Лёгкий",
+            "description": "<i>чтобы познакомиться с сюжетом</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -96,8 +113,25 @@
           },
           {
             "id": "standard",
-            "text": "Обычный <i>(чтобы испытать вызов):</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Обычный",
+            "description": "<i>чтобы испытать вызов</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -128,8 +162,26 @@
           },
           {
             "id": "hard",
-            "text": "Сложный <i>(чтобы погрузиться в кошмар):</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Сложный",
+            "description": "<i>чтобы погрузиться в кошмар</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -161,8 +213,27 @@
           },
           {
             "id": "expert",
-            "text": "Экстремальный <i>(чтобы познать истинный ужас Аркхэма):</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Экстремальный",
+            "description": "<i>(чтобы познать истинный ужас Аркхэма):</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -2842,6 +2913,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -3903,8 +3977,26 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Лёгкий <i>(чтобы познакомиться с сюжетом):</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Лёгкий",
+            "description": "<i>чтобы познакомиться с сюжетом</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -3936,8 +4028,26 @@
           },
           {
             "id": "standard",
-            "text": "Обычный <i>(чтобы испытать вызов):</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
+            "text": "Обычный",
+            "description": "<i>чтобы испытать вызов</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -3969,8 +4079,27 @@
           },
           {
             "id": "hard",
-            "text": "Сложный <i>(чтобы погрузиться в кошмар):</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Сложный",
+            "description": "<i>чтобы погрузиться в кошмар</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -4003,8 +4132,28 @@
           },
           {
             "id": "expert",
-            "text": "Экстремальный <i>(чтобы познать истинный ужас Аркхэма):</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Экстремальный",
+            "description": "<i>(чтобы познать истинный ужас Аркхэма):</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -4089,8 +4238,26 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Лёгкий <i>(чтобы познакомиться с сюжетом):</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Лёгкий",
+            "description": "<i>чтобы познакомиться с сюжетом</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -4122,8 +4289,26 @@
           },
           {
             "id": "standard",
-            "text": "Обычный <i>(чтобы испытать вызов):</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
+            "text": "Обычный",
+            "description": "<i>чтобы испытать вызов</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -4155,8 +4340,27 @@
           },
           {
             "id": "hard",
-            "text": "Сложный <i>(чтобы погрузиться в кошмар):</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Сложный",
+            "description": "<i>чтобы погрузиться в кошмар</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -4189,8 +4393,28 @@
           },
           {
             "id": "expert",
-            "text": "Экстремальный <i>(чтобы познать истинный ужас Аркхэма):</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Экстремальный",
+            "description": "<i>(чтобы познать истинный ужас Аркхэма):</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -5522,8 +5746,25 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Лёгкий <i>(чтобы посмотреть спектакль):</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Лёгкий",
+            "description": "<i>чтобы посмотреть спектакль</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -5554,8 +5795,25 @@
           },
           {
             "id": "standard",
-            "text": "Обычный <i>(чтобы прочесть знаки):</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Обычный",
+            "description": "<i>чтобы прочесть знаки</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -5586,8 +5844,26 @@
           },
           {
             "id": "hard",
-            "text": "Сложный <i>(чтобы произнести клятву):</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Сложный",
+            "description": "<i>чтобы произнести клятву</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -5619,8 +5895,27 @@
           },
           {
             "id": "expert",
-            "text": "Экстремальный <i>(чтобы встретиться с Королём в жёлтом):</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Экстремальный",
+            "description": "<i>чтобы встретиться с Королём в жёлтом</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -7633,6 +7928,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -10215,7 +10513,8 @@
   "resolutions": [
     {
       "id": "no_resolution_resigned",
-      "title": "Исход не был достигнут и хотя бы один сыщик совершил побег",
+      "title": "Исход не достигнут, так как все сыщики побеждены",
+      "description": "Aat least one investigator resigned",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -10228,7 +10527,8 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "Исход не был достигнут и все сыщики побеждены",
+      "title": "Исход не достигнут, так как все сыщики побеждены",
+      "description": "All investigators were defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -12124,8 +12424,25 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Лёгкий <i>(чтобы познакомиться с сюжетом):</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Лёгкий",
+            "description": "<i>чтобы познакомиться с сюжетом</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -12156,8 +12473,25 @@
           },
           {
             "id": "standard",
-            "text": "Обычный <i>(чтобы испытать вызов):</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Обычный",
+            "description": "<i>чтобы испытать вызов</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -12188,8 +12522,26 @@
           },
           {
             "id": "hard",
-            "text": "Сложный <i>(чтобы погрузиться в кошмар):</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Сложный",
+            "description": "<i>чтобы погрузиться в кошмар</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -12221,8 +12573,27 @@
           },
           {
             "id": "expert",
-            "text": "Экстремальный <i>(чтобы познать истинный ужас Аркхэма):</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Экстремальный",
+            "description": "<i>(чтобы познать истинный ужас Аркхэма):</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -14706,6 +15077,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -16182,8 +16556,26 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Лёгкий <i>(чтобы познакомиться с сюжетом):</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Лёгкий",
+            "description": "<i>чтобы познакомиться с сюжетом</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -16215,8 +16607,26 @@
           },
           {
             "id": "standard",
-            "text": "Обычный <i>(чтобы испытать вызов):</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
+            "text": "Обычный",
+            "description": "<i>чтобы испытать вызов</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -16248,8 +16658,27 @@
           },
           {
             "id": "hard",
-            "text": "Сложный <i>(чтобы погрузиться в кошмар):</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Сложный",
+            "description": "<i>чтобы погрузиться в кошмар</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -16282,8 +16711,28 @@
           },
           {
             "id": "expert",
-            "text": "Экстремальный <i>(чтобы познать истинный ужас Аркхэма):</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Экстремальный",
+            "description": "<i>(чтобы познать истинный ужас Аркхэма):</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -17230,8 +17679,26 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Лёгкий <i>(чтобы познакомиться с сюжетом):</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Лёгкий",
+            "description": "<i>чтобы познакомиться с сюжетом</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -17263,8 +17730,26 @@
           },
           {
             "id": "standard",
-            "text": "Обычный <i>(чтобы испытать вызов):</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
+            "text": "Обычный",
+            "description": "<i>чтобы испытать вызов</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -17296,8 +17781,27 @@
           },
           {
             "id": "hard",
-            "text": "Сложный <i>(чтобы погрузиться в кошмар):</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Сложный",
+            "description": "<i>чтобы погрузиться в кошмар</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -17330,8 +17834,28 @@
           },
           {
             "id": "expert",
-            "text": "Экстремальный <i>(чтобы познать истинный ужас Аркхэма):</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Экстремальный",
+            "description": "<i>(чтобы познать истинный ужас Аркхэма):</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -17952,8 +18476,25 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Лёгкий <i>(чтобы посмотреть спектакль):</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Лёгкий",
+            "description": "<i>чтобы посмотреть спектакль</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -17984,8 +18525,25 @@
           },
           {
             "id": "standard",
-            "text": "Обычный <i>(чтобы прочесть знаки):</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Обычный",
+            "description": "<i>чтобы прочесть знаки</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -18016,8 +18574,26 @@
           },
           {
             "id": "hard",
-            "text": "Сложный <i>(чтобы произнести клятву):</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Сложный",
+            "description": "<i>чтобы произнести клятву</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -18049,8 +18625,27 @@
           },
           {
             "id": "expert",
-            "text": "Экстремальный <i>(чтобы встретиться с Королём в жёлтом):</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Экстремальный",
+            "description": "<i>чтобы встретиться с Королём в жёлтом</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -20825,6 +21420,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -22869,7 +23467,8 @@
   "resolutions": [
     {
       "id": "no_resolution_resigned",
-      "title": "Исход не был достигнут и хотя бы один сыщик совершил побег",
+      "title": "Исход не достигнут, так как все сыщики побеждены",
+      "description": "Aat least one investigator resigned",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -22882,7 +23481,8 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "Исход не был достигнут и все сыщики побеждены",
+      "title": "Исход не достигнут, так как все сыщики побеждены",
+      "description": "All investigators were defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -24874,8 +25474,24 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Лёгкий <i>(чтобы познакомиться с сюжетом):</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -2, -3, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Лёгкий",
+            "description": "<i>чтобы познакомиться с сюжетом</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -24905,8 +25521,24 @@
           },
           {
             "id": "standard",
-            "text": "Обычный <i>(чтобы испытать вызов):</i>",
-            "description": "+1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Обычный",
+            "description": "<i>чтобы испытать вызов</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-5",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -24936,8 +25568,24 @@
           },
           {
             "id": "hard",
-            "text": "Сложный <i>(чтобы погрузиться в кошмар):</i>",
-            "description": "+1, 0, 0, -1, -2, -3, -3, -4, -6, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Сложный",
+            "description": "<i>чтобы погрузиться в кошмар</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-6",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -24967,8 +25615,25 @@
           },
           {
             "id": "expert",
-            "text": "Экстремальный <i>(чтобы познать истинный ужас Аркхэма):</i>",
-            "description": "0, -1, -2, -2, -3, -3, -4, -4, -6, -8, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Экстремальный",
+            "description": "<i>(чтобы познать истинный ужас Аркхэма):</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -28457,7 +29122,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Число локаций [[Теночтитлана]] на победном счету:",
+        "text": "Число локаций Теночтитлана на победном счету:",
         "max": 6,
         "effects": [
           {
@@ -31481,6 +32146,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -34128,7 +34796,7 @@
     },
     {
       "id": "check_investigators_recovered_relic",
-      "text": "Сверьтесь с журналом. Если <i>сыщики добыли Реликвию веков<i> и </i>вы идёте собственным путём</i>, читайте <b>«Последнее прозрение»</b>.",
+      "text": "Сверьтесь с журналом. Если <i>сыщики добыли Реликвию веков</i> и <i>вы идёте собственным путём</i>, читайте <b>«Последнее прозрение»</b>.",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -34317,7 +34985,7 @@
     },
     {
       "id": "check_map_no_braziers",
-      "text": "Сверьтесь с журналом. Если <i>светильники зажглись<i>, проверьте припасы. Если у любого сыщика есть карта, он читает <b>«Изучая знаки»</b>.",
+      "text": "Сверьтесь с журналом. Если <i>светильники зажглись</i>, проверьте припасы. Если у любого сыщика есть карта, он читает <b>«Изучая знаки»</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -34333,7 +35001,7 @@
         "name": "Map Section"
       },
       "type": "branch",
-      "text": "Сверьтесь с журналом. Если <i>светильники зажглись<i>, проверьте припасы. Если у любого сыщика есть карта, он читает <b>«Изучая знаки»</b>.",
+      "text": "Сверьтесь с журналом. Если <i>светильники зажглись</i>, проверьте припасы. Если у любого сыщика есть карта, он читает <b>«Изучая знаки»</b>.",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
@@ -35138,7 +35806,25 @@
           {
             "id": "easy",
             "text": "Лёгкий",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35172,7 +35858,25 @@
           {
             "id": "standard",
             "text": "Обычный",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35206,7 +35910,25 @@
           {
             "id": "hard",
             "text": "Сложный",
-            "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35240,7 +35962,24 @@
           {
             "id": "expert",
             "text": "Экстремальный",
-            "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35733,7 +36472,25 @@
           {
             "id": "easy",
             "text": "Лёгкий",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35767,7 +36524,25 @@
           {
             "id": "standard",
             "text": "Обычный",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35801,7 +36576,25 @@
           {
             "id": "hard",
             "text": "Сложный",
-            "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35835,7 +36628,24 @@
           {
             "id": "expert",
             "text": "Экстремальный",
-            "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -36292,7 +37102,25 @@
           {
             "id": "standard",
             "text": "Обычный",
-            "description": "+1, 0, 0, 0, -1, -2, -2, -3, -4, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -36326,7 +37154,25 @@
           {
             "id": "hard",
             "text": "Сложный",
-            "description": "0, 0, 0, -1, -1, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -37702,7 +38548,27 @@
           {
             "id": "standard",
             "text": "Обычный",
-            "description": "+1, 0, 0, 0, -1, -1, -1, -2, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-6",
+              "skull",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -37738,7 +38604,27 @@
           {
             "id": "hard",
             "text": "Сложный",
-            "description": "+1, 0, 0, 0, -1, -1, -3, -4, -5, -6, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "skull",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -38135,7 +39021,27 @@
           {
             "id": "standard",
             "text": "Обычный",
-            "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -4, -4, -5, -6, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -38171,7 +39077,27 @@
           {
             "id": "hard",
             "text": "Сложный",
-            "description": "+1, 0, 0, 0, -1, -1, -2, -2, -3, -4, -4, -5, -6, -7, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -38628,6 +39554,9 @@
               "add_chaos_token"
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -38891,7 +39820,32 @@
           {
             "id": "standard",
             "text": "Обычный",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, [skull], [skull], [cultist], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -38932,7 +39886,33 @@
           {
             "id": "hard",
             "text": "Сложный",
-            "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -4, -5, -5, -6, -8, [skull], [skull], [cultist], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -39163,7 +40143,24 @@
           {
             "id": "standard",
             "text": "Обычный",
-            "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -4, -5, [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -39196,7 +40193,24 @@
           {
             "id": "hard",
             "text": "Сложный",
-            "description": "+1, 0, -1, -1, -1, -2, -2, -2, -3, -4, -5, -6, [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -40013,7 +41027,25 @@
           {
             "id": "easy",
             "text": "Лёгкий",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -40047,7 +41079,25 @@
           {
             "id": "standard",
             "text": "Обычный",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -40081,7 +41131,26 @@
           {
             "id": "hard",
             "text": "Сложный",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -40116,7 +41185,27 @@
           {
             "id": "expert",
             "text": "Экстремальный",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -40572,7 +41661,23 @@
           {
             "id": "standard",
             "text": "Обычный",
-            "description": "+1, 0, -1, -1, -2, -3, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -40604,7 +41709,23 @@
           {
             "id": "hard",
             "text": "Сложный",
-            "description": "0, -1, -2, -3, -4, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -42343,7 +43464,25 @@
           {
             "id": "easy",
             "text": "Лёгкий",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -42377,7 +43516,25 @@
           {
             "id": "standard",
             "text": "Обычный",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -42411,7 +43568,25 @@
           {
             "id": "hard",
             "text": "Сложный",
-            "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -42445,7 +43620,24 @@
           {
             "id": "expert",
             "text": "Экстремальный",
-            "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -42899,7 +44091,29 @@
           {
             "id": "standard",
             "text": "Обычный",
-            "description": "+1, +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-6",
+              "skull",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -42937,7 +44151,31 @@
           {
             "id": "hard",
             "text": "Сложный",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-7",
+              "skull",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -43392,7 +44630,29 @@
           {
             "id": "standard",
             "text": "Обычный",
-            "description": "+1, +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-6",
+              "skull",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -43430,7 +44690,31 @@
           {
             "id": "hard",
             "text": "Сложный",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-7",
+              "skull",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -43893,7 +45177,23 @@
           {
             "id": "easy",
             "text": "Лёгкий",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -43925,7 +45225,23 @@
           {
             "id": "standard",
             "text": "Обычный",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -43957,7 +45273,23 @@
           {
             "id": "hard",
             "text": "Сложный",
-            "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -43989,7 +45321,22 @@
           {
             "id": "expert",
             "text": "Экстремальный",
-            "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "-8",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -44739,8 +46086,23 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Лёгкий <i>(чтобы познакомиться с сюжетом):</i>",
-            "description": "+1, +1, 0, 0, 0, −1, −1, −2, −3, [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Лёгкий",
+            "description": "<i>чтобы познакомиться с сюжетом</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -44769,8 +46131,23 @@
           },
           {
             "id": "standard",
-            "text": "Обычный <i>(чтобы испытать вызов):</i>",
-            "description": "+1, 0, 0, −1, −1, −2, −2, −3, −4, [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Обычный",
+            "description": "<i>чтобы испытать вызов</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -44799,8 +46176,23 @@
           },
           {
             "id": "hard",
-            "text": "Сложный <i>(чтобы погрузиться в кошмар):</i>",
-            "description": "0, 0, −1, −1, −2, −2, −3, −4, −5, [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Сложный",
+            "description": "<i>чтобы погрузиться в кошмар</i>",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -44829,8 +46221,23 @@
           },
           {
             "id": "expert",
-            "text": "Экстремальный <i>(чтобы познать истинный ужас Аркхэма):</i>",
-            "description": "0, −1, −1, −2, −2, −3, −4, −6, −8, [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Экстремальный",
+            "description": "<i>(чтобы познать истинный ужас Аркхэма):</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -45557,7 +46964,7 @@
         "name": "Resolution 2"
       },
       "title": "Исход 2",
-      "text": "Вы выходите из особняка на свежий вечерний воздух. После расследования вы утомлены и болезненно подозрительны. Что-то в этом вечере показалось вам необычным, но вы не знаете почему. Гости вели себя как ни в чём не бывало, зато прислуга казалась нервной и напряжённой, да и члены Ложи были на взводе. Вы не раз ловили на себе их взгляды, наблюдавшие за каждым вашим шагом. В иной ситуации вы бы решили, что Ложа Серебряных \nСумерек зачем-то за вами следит. Как бы там ни было, вы не смогли узнать ничего интересного о четвёрке пропавших и сомневаетесь, что сможете. Возможно, в этих исчезновениях действительно нет ничего особенного.",
+      "text": "Вы выходите из особняка на свежий вечерний воздух. После расследования вы утомлены и болезненно подозрительны. Что-то в этом вечере показалось вам необычным, но вы не знаете почему. Гости вели себя как ни в чём не бывало, зато прислуга казалась нервной и напряжённой, да и члены Ложи были на взводе. Вы не раз ловили на себе их взгляды, наблюдавшие за каждым вашим шагом. В иной ситуации вы бы решили, что Ложа Серебряных Сумерек зачем-то за вами следит. Как бы там ни было, вы не смогли узнать ничего интересного о четвёрке пропавших и сомневаетесь, что сможете. Возможно, в этих исчезновениях действительно нет ничего особенного.",
       "steps": [
         "learned_nothing_of_the_lodges_schemes",
         "earn_xp",
@@ -47187,7 +48594,7 @@
         "name": "Resolution 2"
       },
       "title": "Исход 2",
-      "text": "Шкатулка пытается затащить вас внутрь, растягивая каждую фибру вашего существа. Но прежде чем ей это удаётся, вы протягиваете руку и захлопываете крышку. Вас трясёт, пока вы медленно приходите в себя. Эта шкатулка куда опаснее, чем вы могли представить. В руках Ложи она могла бы стать мощным оружием, хотя вы и не знаете, что именно они собирались с ней делать. Вдруг вы слышите приближающиеся шаги нескольких членов Ложи. Быстро отодвинув один из книжных шкафов, вы прячетесь за ним, пока они не вошли. «Уверен, что ты слышал шум здесь? Я никого тут не вижу», — говорит один из них.\n«Хм… — задумывается другой, видимо пытаясь найти следы незваных гостей. — Наверное, показалось». \n«Ничего. Мы все не в себе из-за пропажи шкатулки-ловушки. Пойдём, нельзя опаздывать на церемонию. Сегодня знаменательная ночь». Их удаляющиеся шаги растворяются в тишине. Последняя фраза задерживается у вас в голове. Что он имел в виду, назвав эту ночь знаменательной? Это может быть так же важно, как и шкатулка, которую они пытались открыть. Вы осторожно следуете за мужчинами, которые спускаются глубже в туннели под особняком. Вы едва поспеваете за ними, пытаясь беззвучно ступать по каменному полу коридоров. Наконец они входят в большую дверь, отмеченную тремя стрелами — знакомым символом Серебряных Сумерек. С той стороны двери слышатся ритуальные песнопения. Вы на цыпочках подходите и прижимаете ухо к двери.\n«Братья и сестры! — произносит старческий голос. — Спасибо, что собрались здесь в этот великий момент. Близок час, которого мы так долго ждали». Вы узнаёте голос. Это Карл Сэнфорд, президент Ложи Серебряных Сумерек. «Многие десятилетия Орден Серебряных Сумерек искал знания, способные возвысить человечество. Мы защищались от угроз самому нашему существованию. Мы жертвовали всем во имя этой священной цели. Сегодня одна из таких угроз нависла над нашим городом, и снова мы обязаны сделать то, что должно, чтобы защитить его». Остальные отвечают благоговейным согласием. «Сегодня мы завершим ритуал, начатый много ночей назад в центре Безлюдного острова. Сегодня мы наконец скуём призрака и допросим его. Нельзя, чтобы тайны АЗАТОТА попали в руки тем, кто хочет навредить людскому роду».\nВ ответ сектанты затягивают монотонное песнопение, и вы пользуетесь моментом, чтобы сбежать из Ложи, пока вас не заметили. Заговор, о котором вы узнали, вызывает ещё больше вопросов. Если мистер Сэнфорд собирается сковать того призрака, о котором вы \nдумаете, это, несомненно, защитит Аркхэм, как он и утверждает. Но что за сведения они хотят от него получить?.. И что вообще такое этот АЗАТОТ?",
+      "text": "Шкатулка пытается затащить вас внутрь, растягивая каждую фибру вашего существа. Но прежде чем ей это удаётся, вы протягиваете руку и захлопываете крышку. Вас трясёт, пока вы медленно приходите в себя. Эта шкатулка куда опаснее, чем вы могли представить. В руках Ложи она могла бы стать мощным оружием, хотя вы и не знаете, что именно они собирались с ней делать. Вдруг вы слышите приближающиеся шаги нескольких членов Ложи. Быстро отодвинув один из книжных шкафов, вы прячетесь за ним, пока они не вошли. «Уверен, что ты слышал шум здесь? Я никого тут не вижу», — говорит один из них.\n«Хм… — задумывается другой, видимо пытаясь найти следы незваных гостей. — Наверное, показалось». \n«Ничего. Мы все не в себе из-за пропажи шкатулки-ловушки. Пойдём, нельзя опаздывать на церемонию. Сегодня знаменательная ночь». Их удаляющиеся шаги растворяются в тишине. Последняя фраза задерживается у вас в голове. Что он имел в виду, назвав эту ночь знаменательной? Это может быть так же важно, как и шкатулка, которую они пытались открыть. Вы осторожно следуете за мужчинами, которые спускаются глубже в туннели под особняком. Вы едва поспеваете за ними, пытаясь беззвучно ступать по каменному полу коридоров. Наконец они входят в большую дверь, отмеченную тремя стрелами — знакомым символом Серебряных Сумерек. С той стороны двери слышатся ритуальные песнопения. Вы на цыпочках подходите и прижимаете ухо к двери.\n«Братья и сестры! — произносит старческий голос. — Спасибо, что собрались здесь в этот великий момент. Близок час, которого мы так долго ждали». Вы узнаёте голос. Это Карл Сэнфорд, президент Ложи Серебряных Сумерек. «Многие десятилетия Орден Серебряных Сумерек искал знания, способные возвысить человечество. Мы защищались от угроз самому нашему существованию. Мы жертвовали всем во имя этой священной цели. Сегодня одна из таких угроз нависла над нашим городом, и снова мы обязаны сделать то, что должно, чтобы защитить его». Остальные отвечают благоговейным согласием. «Сегодня мы завершим ритуал, начатый много ночей назад в центре Безлюдного острова. Сегодня мы наконец скуём призрака и допросим его. Нельзя, чтобы тайны АЗАТОТА попали в руки тем, кто хочет навредить людскому роду».\nВ ответ сектанты затягивают монотонное песнопение, и вы пользуетесь моментом, чтобы сбежать из Ложи, пока вас не заметили. Заговор, о котором вы узнали, вызывает ещё больше вопросов. Если мистер Сэнфорд собирается сковать того призрака, о котором вы думаете, это, несомненно, защитит Аркхэм, как он и утверждает. Но что за сведения они хотят от него получить?.. И что вообще такое этот АЗАТОТ?",
       "steps": [
         "discovered_how_to_open_the_puzzle_box",
         "earn_xp",
@@ -47989,7 +49396,7 @@
         "name": "The Inner Circle 1"
       },
       "type": "story",
-      "text": "Вас привели в Святую святых, куда допускаются лишь самые высокопоставленные члены Ложи. Мистер Сэнфорд рассказывает, что Орден Серебряных Сумерек намного старше и важнее, чем его публичный фасад в виде Ложи Серебряных Сумерек, и что их знания охватывают области магического и тайного. «Многие десятилетия Орден Серебряных Сумерек искал знания, способные возвысить человечество. Мы защищались от угроз самому нашему существованию. Мы жертвовали всем во имя этой священной цели. Сегодня одна из таких угроз нависла над нашим городом, и только мы способны её остановить. Вы знаете, о какой сущности я говорю». \nВы утвердительно киваете.\n«Вот что нам известно: это исчадие призвали в Аркхэм ведьмы. Мы пытались остановить их обряд, но к сожалению, нам не удалось сковать призрака. Теперь он на свободе, и мы должны завершить свой ритуал, пока ведьмы не завершат свой. Но сперва покажите, пожалуйста, что вам удалось \nнайти, — полагаю, вам есть чем поделиться. Чтобы понимать происходящее, нам нужно работать сообща»."
+      "text": "Вас привели в Святую святых, куда допускаются лишь самые высокопоставленные члены Ложи. Мистер Сэнфорд рассказывает, что Орден Серебряных Сумерек намного старше и важнее, чем его публичный фасад в виде Ложи Серебряных Сумерек, и что их знания охватывают области магического и тайного. «Многие десятилетия Орден Серебряных Сумерек искал знания, способные возвысить человечество. Мы защищались от угроз самому нашему существованию. Мы жертвовали всем во имя этой священной цели. Сегодня одна из таких угроз нависла над нашим городом, и только мы способны её остановить. Вы знаете, о какой сущности я говорю». \nВы утвердительно киваете.\n«Вот что нам известно: это исчадие призвали в Аркхэм ведьмы. Мы пытались остановить их обряд, но к сожалению, нам не удалось сковать призрака. Теперь он на свободе, и мы должны завершить свой ритуал, пока ведьмы не завершат свой. Но сперва покажите, пожалуйста, что вам удалось найти, — полагаю, вам есть чем поделиться. Чтобы понимать происходящее, нам нужно работать сообща»."
     },
     {
       "id": "choose_to_share_info",
@@ -49712,7 +51119,7 @@
         "name": "Intro"
       },
       "type": "story",
-      "text": "Встреча с призраком в Ведьмином доме заставила вас переосмыслить всё, что вы знаете о жизни и смерти. Кассия Мейсон умерла больше двухсот лет назад, но её дух остался в призрачной мгле — той самой, что приходила в особняк Джозефа Майгера. Обдумывая последние события, вы задаётесь одним вопросом: призрак Кассии существует благодаря мгле или же мгла — следствие его присутствия? Что из этого болезнь, а что симптом?\nЧем глубже вы погружаетесь в историю аркхэмских ведьм и их гонений, тем хуже вам спится. Каждую ночь вас терзают ужасные сны о смерти и разложении, о грехах и преступлениях. Зло живёт в этом городе, зло, которое долго скрывалось во тьме аркхэмского прошлого. Но что хуже всего, ваше расследование зашло в тупик. Вы приходите к выводу, что, если вам удастся найти ковен, с которым вы столкнулись той судьбоносной ночью в лесу, вы сможете больше узнать о Кассии Мейсон или об этом невыразимом зле.\nОдним утром, пока вы занимаетесь привычными делами, ваш взгляд цепляется за небольшой заголовок в свежей газете: «Привидения на Висельном холме? Жители Аптауна сообщают о человеческих силуэтах в густом тумане над Висельным ручьём…» Это ведь не может быть простым совпадением?\nВас осеняет: раз вам нужны ведьмы, их нужно искать в шести футах под \nземлёй — там, где когда-то проходили казни по обвинениям в ведьмовстве. Погоня за призраками на кладбище — занятие небезопасное, но может ли теперь хоть кто-то в этом городе считать себя в безопасности?"
+      "text": "Встреча с призраком в Ведьмином доме заставила вас переосмыслить всё, что вы знаете о жизни и смерти. Кассия Мейсон умерла больше двухсот лет назад, но её дух остался в призрачной мгле — той самой, что приходила в особняк Джозефа Майгера. Обдумывая последние события, вы задаётесь одним вопросом: призрак Кассии существует благодаря мгле или же мгла — следствие его присутствия? Что из этого болезнь, а что симптом?\nЧем глубже вы погружаетесь в историю аркхэмских ведьм и их гонений, тем хуже вам спится. Каждую ночь вас терзают ужасные сны о смерти и разложении, о грехах и преступлениях. Зло живёт в этом городе, зло, которое долго скрывалось во тьме аркхэмского прошлого. Но что хуже всего, ваше расследование зашло в тупик. Вы приходите к выводу, что, если вам удастся найти ковен, с которым вы столкнулись той судьбоносной ночью в лесу, вы сможете больше узнать о Кассии Мейсон или об этом невыразимом зле.\nОдним утром, пока вы занимаетесь привычными делами, ваш взгляд цепляется за небольшой заголовок в свежей газете: «Привидения на Висельном холме? Жители Аптауна сообщают о человеческих силуэтах в густом тумане над Висельным ручьём…» Это ведь не может быть простым совпадением?\nВас осеняет: раз вам нужны ведьмы, их нужно искать в шести футах под землёй — там, где когда-то проходили казни по обвинениям в ведьмовстве. Погоня за призраками на кладбище — занятие небезопасное, но может ли теперь хоть кто-то в этом городе считать себя в безопасности?"
     },
     {
       "id": "gather_encounter_sets",
@@ -51514,6 +52921,9 @@
               "valentino_alive"
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -52699,8 +54109,24 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Лёгкий <i>(чтобы познакомиться с сюжетом):</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -2, -2, [cultist], [tablet], [tablet], [auto_fail], [elder_sign]",
+            "text": "Лёгкий",
+            "description": "<i>чтобы познакомиться с сюжетом</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "cultist",
+              "tablet",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -52730,8 +54156,24 @@
           },
           {
             "id": "standard",
-            "text": "Обычный <i>(чтобы испытать вызов):</i>",
-            "description": "+1, 0, 0, -1, -1, -2, -2, -3, -4, [cultist], [tablet], [tablet], [auto_fail], [elder_sign]",
+            "text": "Обычный",
+            "description": "<i>чтобы испытать вызов</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "cultist",
+              "tablet",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -52761,8 +54203,25 @@
           },
           {
             "id": "hard",
-            "text": "Сложный <i>(чтобы погрузиться в кошмар):</i>",
-            "description": "0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [cultist], [tablet], [tablet], [auto_fail], [elder_sign]",
+            "text": "Сложный",
+            "description": "<i>чтобы погрузиться в кошмар</i>",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "cultist",
+              "tablet",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -52793,8 +54252,26 @@
           },
           {
             "id": "expert",
-            "text": "Экстремальный <i>(чтобы познать истинный ужас Аркхэма):</i>",
-            "description": "0, -1, -1, -2, -2, -3, -4, -4, -5, -6, -8, [cultist], [tablet], [tablet], [auto_fail], [elder_sign]",
+            "text": "Экстремальный",
+            "description": "<i>(чтобы познать истинный ужас Аркхэма):</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "cultist",
+              "tablet",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -56178,6 +57655,9 @@
               "add_chaos_token_2"
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -58877,8 +60357,27 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Лёгкий <i>(чтобы познакомиться с сюжетом):</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Лёгкий",
+            "description": "<i>чтобы познакомиться с сюжетом</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -58911,8 +60410,27 @@
           },
           {
             "id": "standard",
-            "text": "Обычный <i>(чтобы испытать вызов):</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Обычный",
+            "description": "<i>чтобы испытать вызов</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -58945,8 +60463,28 @@
           },
           {
             "id": "hard",
-            "text": "Сложный <i>(чтобы погрузиться в кошмар):</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Сложный",
+            "description": "<i>чтобы погрузиться в кошмар</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -58980,8 +60518,29 @@
           },
           {
             "id": "expert",
-            "text": "Экстремальный <i>(чтобы познать истинный ужас Аркхэма):</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Экстремальный",
+            "description": "<i>(чтобы познать истинный ужас Аркхэма):</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -63832,8 +65391,24 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Лёгкий <i>(чтобы познакомиться с сюжетом):</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -2, -3, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Лёгкий",
+            "description": "<i>чтобы познакомиться с сюжетом</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -63863,8 +65438,24 @@
           },
           {
             "id": "standard",
-            "text": "Обычный <i>(чтобы испытать вызов):</i>",
-            "description": "+1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Обычный",
+            "description": "<i>чтобы испытать вызов</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-5",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -63894,8 +65485,24 @@
           },
           {
             "id": "hard",
-            "text": "Сложный <i>(чтобы погрузиться в кошмар):</i>",
-            "description": "+1, 0, 0, -1, -2, -3, -3, -4, -6, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Сложный",
+            "description": "<i>чтобы погрузиться в кошмар</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-6",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -63925,8 +65532,25 @@
           },
           {
             "id": "expert",
-            "text": "Экстремальный <i>(чтобы познать истинный ужас Аркхэма):</i>",
-            "description": "0, -1, -2, -2, -3, -3, -4, -4, -6, -8, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Экстремальный",
+            "description": "<i>(чтобы познать истинный ужас Аркхэма):</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -67539,7 +69163,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Число локаций [[Теночтитлана]] на победном счету:",
+        "text": "Число локаций Теночтитлана на победном счету:",
         "max": 6,
         "effects": [
           {
@@ -68537,7 +70161,7 @@
     },
     {
       "id": "check_investigators_recovered_relic",
-      "text": "Сверьтесь с журналом. Если <i>сыщики добыли Реликвию веков<i> и </i>вы идёте собственным путём</i>, читайте <b>«Последнее прозрение»</b>.",
+      "text": "Сверьтесь с журналом. Если <i>сыщики добыли Реликвию веков</i> и <i>вы идёте собственным путём</i>, читайте <b>«Последнее прозрение»</b>.",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -68726,7 +70350,7 @@
     },
     {
       "id": "check_map_no_braziers",
-      "text": "Сверьтесь с журналом. Если <i>светильники зажглись<i>, проверьте припасы. Если у любого сыщика есть карта, он читает <b>«Изучая знаки»</b>.",
+      "text": "Сверьтесь с журналом. Если <i>светильники зажглись</i>, проверьте припасы. Если у любого сыщика есть карта, он читает <b>«Изучая знаки»</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -68742,7 +70366,7 @@
         "name": "Map Section"
       },
       "type": "branch",
-      "text": "Сверьтесь с журналом. Если <i>светильники зажглись<i>, проверьте припасы. Если у любого сыщика есть карта, он читает <b>«Изучая знаки»</b>.",
+      "text": "Сверьтесь с журналом. Если <i>светильники зажглись</i>, проверьте припасы. Если у любого сыщика есть карта, он читает <b>«Изучая знаки»</b>.",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
@@ -71804,6 +73428,7 @@
           {
             "id": "remove_physical",
             "text": "Избавиться от физической травмы",
+            "icon": "physical",
             "condition": {
               "type": "trauma",
               "investigator": "each",
@@ -71831,6 +73456,7 @@
           {
             "id": "remove_mental",
             "text": "Избавиться от ментальной травмы",
+            "icon": "mental",
             "condition": {
               "type": "trauma",
               "investigator": "each",
@@ -72745,6 +74371,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -73064,8 +74693,30 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Лёгкий <i>(чтобы познакомиться с сюжетом):</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Лёгкий",
+            "description": "<i>чтобы познакомиться с сюжетом</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "tablet",
+              "tablet",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -73101,8 +74752,30 @@
           },
           {
             "id": "standard",
-            "text": "Обычный <i>(чтобы испытать вызов):</i>",
-            "description": "+1, 0, 0, -1, -1, -1 -2, -2, -3, -4, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Обычный",
+            "description": "<i>чтобы испытать вызов</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "tablet",
+              "tablet",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -73138,8 +74811,31 @@
           },
           {
             "id": "hard",
-            "text": "Сложный <i>(чтобы погрузиться в кошмар):</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Сложный",
+            "description": "<i>чтобы погрузиться в кошмар</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "tablet",
+              "tablet",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -73176,8 +74872,32 @@
           },
           {
             "id": "expert",
-            "text": "Экстремальный <i>(чтобы познать истинный ужас Аркхэма):</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Экстремальный",
+            "description": "<i>(чтобы познать истинный ужас Аркхэма):</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "tablet",
+              "tablet",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -82341,8 +84061,25 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Easy <i>(I want to be sane)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Лёгкий",
+            "description": "<i>I want to be sane</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -82373,8 +84110,25 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(I want to be mad as a march hare)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Обычный",
+            "description": "<i>I want to be mad as a march hare</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -82405,8 +84159,25 @@
           },
           {
             "id": "hard",
-            "text": "Hard <i>(I want to be mad as a hatter)</i>",
-            "description": "+1, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Сложный",
+            "description": "<i>I want to be mad as a hatter</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -82437,8 +84208,25 @@
           },
           {
             "id": "expert",
-            "text": "Expert <i>(I want to go where no one has ever gone before)</i>",
-            "description": "0, -1, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Экстремальный",
+            "description": "<i>I want to go where no one has ever gone before</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "-8",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -88963,8 +90751,25 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Easy <i>(I want to go to the Moon)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -2, -3, [skull], [skull], [cultist], [cultist], [auto_fail], [elder_sign]",
+            "text": "Лёгкий",
+            "description": "<i>I want to go to the Moon</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -88995,8 +90800,26 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(I want to go to Mars)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [cultist], [auto_fail], [elder_sign]",
+            "text": "Обычный",
+            "description": "<i>I want to go to Mars</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -89028,8 +90851,27 @@
           },
           {
             "id": "hard",
-            "text": "Hard <i>(I want interstellar travel)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [cultist], [auto_fail], [elder_sign]",
+            "text": "Сложный",
+            "description": "<i>I want interstellar travel</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -89062,8 +90904,27 @@
           },
           {
             "id": "expert",
-            "text": "Expert <i>(I want to go where no one has ever gone before)</i>",
-            "description": "0, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [cultist], [auto_fail], [elder_sign]",
+            "text": "Экстремальный",
+            "description": "<i>I want to go where no one has ever gone before</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -90167,6 +92028,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "adjust_chaos_bag"
         ],
         "campaign_log": [
           {

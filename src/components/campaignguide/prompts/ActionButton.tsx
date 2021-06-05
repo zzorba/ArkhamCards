@@ -26,6 +26,16 @@ function getBackgroundColor(color: 'dark' | 'light' | 'green' | 'red', colors: T
   }
 }
 
+
+function getRippleColor(color: 'dark' | 'light' | 'green' | 'red', colors: ThemeColors): string {
+  switch (color) {
+    case 'dark': return colors.M;
+    case 'light': return colors.L30;
+    case 'green': return colors.faction.rogue.lightBackground;
+    case 'red': return colors.faction.survivor.lightBackground;
+  }
+}
+
 const LEFT_ICON_SIZE = {
   'undo': 24,
   'plus-thin': 18,
@@ -80,7 +90,7 @@ export default function ActionButton({ color, onPress, title, leftIcon, rightIco
         },
       ]}
       onPress={onPress}
-      rippleColor={colors.M}
+      rippleColor={getRippleColor(color, colors)}
       rippleSize={48}
     >
       { content }

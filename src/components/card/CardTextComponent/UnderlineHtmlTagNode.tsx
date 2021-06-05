@@ -1,9 +1,6 @@
 import { StyleContextType } from '@styles/StyleContext';
 import React from 'react';
-import {
-  Text,
-} from 'react-native';
-import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
+import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
 import { WithText } from './types';
 
@@ -14,9 +11,13 @@ export default function UnderlineHtmlTagNode({ typography }: StyleContextType) {
     state: RenderState
   ) => {
     return (
-      <Text key={state.key} style={[typography.bold, typography.underline]}>
+      <MarkdownText key={state.key} style={[{
+        fontFamily: 'Alegreya',
+        fontStyle: 'normal',
+        fontWeight: '700',
+      }, typography.underline]}>
         { node.text }
-      </Text>
+      </MarkdownText>
     );
   };
 }

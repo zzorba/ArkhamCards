@@ -34,7 +34,7 @@ export const DEFAULLT_STYLE_CONTEXT: StyleContextType = {
   italicFont: 'Alegreya-Italic',
   gameFont: 'Teutonic',
   fontScale: 1,
-  typography: typography(1.0, LIGHT_THEME, 'Alegreya-Italic', 'Alegreya-ExtraBoldItalic', 'Teutonic', 'en'),
+  typography: typography(1.0, LIGHT_THEME, 'Alegreya-Italic', 'Alegreya-ExtraBold-Italic', 'Teutonic', 'en'),
   backgroundStyle: {
     backgroundColor: LIGHT_THEME.background,
   },

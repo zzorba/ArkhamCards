@@ -97,6 +97,7 @@ export type ChaosToken =
   | "elder_sign"
   | "auto_fail";
 export type DefaultOption = Option;
+export type ChoiceIcon = "mental" | "physical" | "resign" | "dismiss" | "accept";
 export type MathCondition = MathCompareCondition | MathSumCondition | MathEqualsCondition;
 export type Operand = CampaignLogCountOperand | ChaosBagOperand | ConstantOperand;
 export type CardCondition = InvestigatorCardCondition | BinaryCardCondition;
@@ -397,6 +398,7 @@ export interface CampaignLogCountCondition {
   defaultOption?: DefaultOption;
 }
 export interface Option {
+  icon?: ChoiceIcon;
   boolCondition?: boolean;
   numCondition?: number;
   condition?: string;
@@ -576,6 +578,7 @@ export interface InputStep {
   text?: string;
   input: Input;
   bullet_type?: BulletType;
+  prompt_type?: "header" | "setup";
   narration?: Narration;
 }
 export interface UpgradeDecksInput {
@@ -654,8 +657,10 @@ export interface InvestigatorChoiceInput {
   choices: InvestigatorConditionalChoice[];
 }
 export interface InvestigatorConditionalChoice {
+  icon?: ChoiceIcon;
   id: string;
   text: string;
+  selected_text?: string;
   description?: string;
   condition?: InvestigatorChoiceCondition;
   border?: boolean;
@@ -684,6 +689,7 @@ export interface BinaryConditionalChoice {
   id: string;
   large?: boolean;
   text: string;
+  tokens?: ChaosToken[];
   description?: string;
   condition?: BinaryChoiceCondition;
   repeatable?: boolean;
@@ -736,6 +742,7 @@ export interface PlayScenarioInput {
   type: "play_scenario";
   branches?: BinaryConditionalChoice[];
   campaign_log?: BinaryConditionalChoice[];
+  chaos_bag_branches?: string[];
   no_resolutions?: boolean;
 }
 export interface TextBoxInput {
