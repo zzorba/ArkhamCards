@@ -12,6 +12,8 @@ import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import StyleContext from '@styles/StyleContext';
+import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
+import SaveDecksInput from '../../InputStepComponent/SaveDecksInput';
 
 interface OwnProps {
   id: string;
@@ -102,23 +104,22 @@ export default function DrawRandomWeaknessComponent({ id, investigators, cards, 
   }, [id, scenarioState, choices, setChoices]);
 
   const scenarioChoices = scenarioState.stringChoices(`${id}_weakness`);
-  const saveButton = useMemo(() => {
+  const saveDisabled = useMemo(() => {
     if (scenarioChoices !== undefined) {
-      return null;
+      return false;
     }
-    return (
-      <BasicButton
-        disabled={investigators.length !== sumBy(keys(choices), investigator => {
-          const investigatorChoices = choices[investigator];
-          return values(investigatorChoices).length === count ? 1 : 0;
-        })}
-        onPress={save}
-        title={t`Proceed`}
-      />
-    );
-  }, [investigators, save, choices, scenarioChoices, count]);
+    return investigators.length !== sumBy(keys(choices), investigator => {
+      const investigatorChoices = choices[investigator];
+      return values(investigatorChoices).length === count ? 1 : 0;
+    });
+  }, [scenarioChoices, count, investigators, choices]);
   return (
-    <>
+    <InputWrapper
+      title={scenarioChoices === undefined ? t`Tap to draw` : t`Random results`}
+      onSubmit={save}
+      disabledText={saveDisabled ? t`Continue` : undefined}
+      editable={scenarioChoices === undefined}
+    >
       <View style={[styles.wrapper, borderStyle]}>
         { map(investigators, investigator => (
           map(range(0, count), idx => {
@@ -139,8 +140,7 @@ export default function DrawRandomWeaknessComponent({ id, investigators, cards, 
           })
         )) }
       </View>
-      { saveButton }
-    </>
+    </InputWrapper>
   );
 }
 

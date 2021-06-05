@@ -1,13 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { TouchableOpacity, Text, View } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Card from '@data/types/Card';
-import PickerStyleButton from './PickerStyleButton';
 import StyleContext from '@styles/StyleContext';
+import CompactInvestigatorRow from './CompactInvestigatorRow';
+import space, { s } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   investigator: Card;
   value: string;
-  widget?: 'shuffle' | 'nav';
+  widget?: 'shuffle';
   disabled?: boolean;
   onPress: (code: string) => void;
   hideName?: boolean;
@@ -21,19 +25,40 @@ export default function InvestigatorButton({
   disabled,
   hideName,
 }: Props) {
-  const { colors } = useContext(StyleContext);
+  const { typography, width } = useContext(StyleContext);
+  const onTouchablePress = useCallback(() => {
+    onPress(investigator.code);
+  }, [onPress, investigator.code]);
+  const widgetIcon = useMemo(() => {
+    if (!widget || disabled) {
+      return null;
+    }
+    switch (widget) {
+      case 'shuffle':
+        return (
+          <View style={[space.marginRightS, space.marginLeftS]}>
+            <MaterialCommunityIcons
+              name="shuffle-variant"
+              size={24}
+              color={COLORS.white}
+            />
+          </View>
+        );
+      default:
+        return null;
+    }
+  }, [widget, disabled]);
   return (
-    <PickerStyleButton
-      title={hideName ? '' : investigator.name}
-      value={value}
-      id={investigator.code}
-      onPress={onPress}
-      disabled={disabled}
-      colors={{
-        backgroundColor: colors.faction[investigator.factionCode()].background,
-        textColor: 'white',
-      }}
-      widget={widget}
-    />
+    <View style={space.paddingXs}>
+      <TouchableOpacity onPress={onTouchablePress} disabled={disabled}>
+        <CompactInvestigatorRow
+          investigator={investigator}
+          width={width - s * (disabled ? 2 : 4)}
+        >
+          { !!value && <Text style={[typography.text, typography.white]}>{value}</Text>}
+          { widgetIcon }
+        </CompactInvestigatorRow>
+      </TouchableOpacity>
+    </View>
   );
 }
