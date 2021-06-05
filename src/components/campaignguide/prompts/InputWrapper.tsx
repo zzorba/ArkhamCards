@@ -33,8 +33,8 @@ function TitleRow({ title, titleNode, titleStyle, titleButton, editable, bulletT
     if (!title) {
       return null;
     }
-    return titleStyle === 'setup' ? <CampaignGuideTextComponent text={title} /> : <Text style={typography.bigGameFont}>{title}</Text>;
-  }, [title, titleStyle, typography]);
+    return titleStyle === 'setup' ? <CampaignGuideTextComponent text={title} /> : <Text style={[typography.bigGameFont, editable ? space.paddingSideXs : undefined]}>{title}</Text>;
+  }, [title, titleStyle, typography, editable]);
   const content = useMemo(() => {
     if (!titleText && !titleNode) {
       return null;
@@ -64,7 +64,7 @@ function TitleRow({ title, titleNode, titleStyle, titleButton, editable, bulletT
   return (
     <View style={[
       (editable || !bulletType) ? space.paddingXs : undefined,
-      editable ? { marginLeft: xs, marginRight: xs, borderBottomWidth: 1, borderColor: colors.L10 } : undefined,
+      editable ? { marginLeft: xs, marginRight: xs, borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined,
     ]}>
       { content }
     </View>
@@ -80,7 +80,7 @@ function ButtonRow({ buttons, onSubmit, disabledText }: { buttons?: React.ReactN
     <View style={[
       styles.row,
       (buttons && onSubmit) ? styles.spaceBetween : styles.flexEnd,
-      { borderTopWidth: 1, borderColor: colors.L10 },
+      { borderTopWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 },
       space.paddingTopXs,
       space.marginXs,
     ]}>
@@ -111,7 +111,7 @@ export default function InputWrapper({
   onSubmit,
   disabledText,
 }: Props) {
-  const { colors, shadow, width } = useContext(StyleContext);
+  const { colors, borderStyle, shadow, width } = useContext(StyleContext);
   if (investigator) {
     return (
       <View style={[space.paddingSideS, space.marginBottomL]}>
@@ -145,9 +145,13 @@ export default function InputWrapper({
     );
   }
   return (
-    <View style={bulletType ? undefined : space.paddingS}>
-      <TitleRow bulletType={bulletType} titleStyle={titleStyle} title={title} titleNode={titleNode} titleButton={titleButton}/>
+    <View style={[
+      bulletType ? undefined : space.paddingS,
+    ]}>
+      <View style={[bulletType ? space.marginSideS : undefined, { borderTopWidth: StyleSheet.hairlineWidth }, borderStyle]} />
+      <TitleRow bulletType={bulletType} titleStyle={titleStyle} title={title} titleNode={titleNode} titleButton={titleButton} />
       <View style={bulletType ? space.paddingSideS : undefined}>{ children }</View>
+      <View style={[bulletType ? space.marginSideS : undefined, { borderBottomWidth: StyleSheet.hairlineWidth }, borderStyle]} />
     </View>
   );
 }

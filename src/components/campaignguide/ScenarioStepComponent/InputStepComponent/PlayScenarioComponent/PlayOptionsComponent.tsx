@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { flatMap, map } from 'lodash';
+import { findIndex, flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
 import BranchButton from './BranchButton';
@@ -20,7 +20,6 @@ import CampaignLogComponent from '@components/campaignguide/CampaignLogComponent
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import { calculateBinaryConditionResult } from '@data/scenario/inputHelper';
 import StyleContext from '@styles/StyleContext';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import BorderWrapper from '@components/campaignguide/BorderWrapper';
 
 
@@ -37,25 +36,57 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
   const { campaignLog } = useContext(ScenarioStepContext);
   const { colors, typography, width } = useContext(StyleContext);
   const allInvestigators = useMemo(() => processedScenario.latestCampaignLog.investigators(false), [processedScenario.latestCampaignLog]);
-  const [chaosBagDialog, showChaosBagDialog] = useChaosBagDialog({
-    componentId,
-    allInvestigators,
-    campaignId,
-    chaosBag: processedScenario.latestCampaignLog.chaosBag,
-    guided: true,
-    scenarioId: processedScenario.id.scenarioId,
-  });
+  const setChaosBagDialogVisibleRef = useRef<(visible: boolean) => void>();
   const standalone = !!campaign.standaloneId;
 
   const branchPress = useCallback((index: number) => {
     scenarioState.setChoice(id, index);
   }, [scenarioState, id]);
   const setCampaignLogDialogVisibleRef = useRef<(visible: boolean) => void>();
+
   const editCampaignLogPressed = useCallback(() => {
     setCampaignLogDialogVisibleRef.current?.(false);
     branchPress(PlayingScenarioBranch.CAMPAIGN_LOG);
   }, [branchPress]);
+  const branches = useMemo(() => {
+    return flatMap(input.branches || [], choice => {
+      if (choice.condition) {
+        const result = calculateBinaryConditionResult(choice.condition, campaignLog);
+        if (!result.option) {
+          return [];
+        }
+      }
+      return choice;
+    });
+  }, [input.branches, campaignLog]);
+  const chaosBagIndex = useMemo(() => {
+    if (!input.chaos_bag_branches) {
+      return undefined;
+    }
+    const chaosBagBranches = new Set(input.chaos_bag_branches);
+    const index = findIndex(branches, b => chaosBagBranches.has(b.id));
+    if (index === -1) {
+      return undefined;
+    }
+    return index;
+  }, [branches, input.chaos_bag_branches]);
+  const editChaosBagPressed = useCallback(() => {
+    if (chaosBagIndex !== undefined) {
+      setChaosBagDialogVisibleRef.current?.(false);
+      branchPress(chaosBagIndex);
+    }
+  }, [chaosBagIndex, branchPress]);
 
+  const [chaosBagDialog, showChaosBagDialog, setChaosBagDialogVisible] = useChaosBagDialog({
+    componentId,
+    allInvestigators,
+    campaignId,
+    chaosBag: processedScenario.latestCampaignLog.chaosBag,
+    guided: true,
+    scenarioId: processedScenario.id.scenarioId,
+    customEditPressed: chaosBagIndex !== undefined ? editChaosBagPressed : undefined,
+  });
+  setChaosBagDialogVisibleRef.current = setChaosBagDialogVisible;
 
   const { dialog: campaignLogDialog, showDialog: showCampaignLogDialog, setVisible: setCampaignLogDialogVisible } = useDialog({
     title: t`Campaign log`,
@@ -105,17 +136,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
     });
   }, [componentId, campaignId, processedScenario]);
   const hasFaq = processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;
-  const branches = useMemo(() => {
-    return flatMap(input.branches || [], choice => {
-      if (choice.condition) {
-        const result = calculateBinaryConditionResult(choice.condition, campaignLog);
-        if (!result.option) {
-          return [];
-        }
-      }
-      return choice;
-    });
-  }, [input.branches, campaignLog]);
+
   return (
     <>
       <InputWrapper editable>

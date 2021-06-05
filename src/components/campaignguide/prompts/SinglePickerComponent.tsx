@@ -5,11 +5,13 @@ import { t } from 'ttag';
 import { usePickerDialog, Item } from '@components/deck/dialogs';
 import Card from '@data/types/Card';
 import { map } from 'lodash';
-import PickerStyleButton from './PickerStyleButton';
-import CompactInvestigatorRow from './CompactInvestigatorRow';
+import PickerStyleButton from '@components/core/PickerStyleButton';
+import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import { DisplayChoice } from '@data/scenario';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { ChoiceIcon } from '@data/scenario/types';
+import RadioButton from './RadioButton';
 
 interface Props {
   title: string;
@@ -24,6 +26,16 @@ interface Props {
   defaultLabel?: string;
   optional?: boolean;
   firstItem?: boolean;
+}
+
+function getIcon(icon?: ChoiceIcon): React.ReactNode {
+  if (!icon) {
+    return null;
+  }
+
+  return (
+    <RadioButton icon={icon} color="dark" selected />
+  );
 }
 
 export default function SinglePickerComponent({
@@ -47,6 +59,7 @@ export default function SinglePickerComponent({
       ...map(choices, (c, idx) => {
         return {
           title: c.text || '',
+          iconNode: getIcon(c.icon),
           value: idx,
         };
       }),
@@ -63,20 +76,25 @@ export default function SinglePickerComponent({
     onValueChange,
     selectedValue: selectedIndex,
   });
-  const selectedLabel = (selectedIndex === undefined || selectedIndex === -1) ? defaultLabel : choices[selectedIndex].text;
+  const selectedLabel = (selectedIndex === undefined || selectedIndex === -1) ? defaultLabel : choices[selectedIndex].selected_text;
+  const selectedIcon = (selectedIndex === undefined || selectedIndex === -1) ? undefined : choices[selectedIndex].icon;
   const selection = useMemo(() => {
     return (
-      <View style={[{ flexDirection: 'row' }]}>
+      <View style={[{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }]}>
         <Text numberOfLines={2} ellipsizeMode="head" style={[typography.button, investigator ? typography.white : undefined]} >
           { selectedLabel }
         </Text>
+        { !!selectedIcon && <View style={space.paddingLeftS}>{ getIcon(selectedIcon) }</View> }
       </View>
     );
-  }, [typography, investigator, selectedLabel]);
+  }, [typography, investigator, selectedLabel, selectedIcon]);
   const button = useMemo(() => {
     if (investigator) {
       return (
-        <View style={!firstItem ? space.paddingTopXs : undefined}>
+        <View style={[
+          editable && !firstItem ? space.paddingTopXs : undefined,
+          editable ? undefined : space.paddingBottomXs,
+        ]}>
           <TouchableOpacity
             onPress={showDialog}
             disabled={!editable}

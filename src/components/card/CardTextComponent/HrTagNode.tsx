@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
-import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
+import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 import { m } from '@styles/space';
 
 export default function HrTagNode(
@@ -12,9 +12,9 @@ export default function HrTagNode(
   state: RenderState
 ) {
   return (
-    <Text key={state.key} style={styles.hrTag}>
+    <MarkdownText key={state.key} style={styles.hrTag}>
       { '\n━━━━━━━━━━━━━━━━━━\n\n' }
-    </Text>
+    </MarkdownText>
   );
 }
 

@@ -35,7 +35,9 @@ export default function CampaignLogConditionComponent({ step, condition, campaig
       switch (logEntry.type) {
         case 'text': {
           const prompt = step.text ||
-            t`Check ${logEntry.section}. <i>If ${logEntry.text}</i>`;
+            (logEntry.section === 'campaign_notes' ?
+              t`Check Campaign Log. <i>If ${logEntry.text}</i>` :
+              t`Check ${logEntry.section}. <i>If ${logEntry.text}</i>`);
 
           const result = campaignLog.check(condition.section, condition.id);
           return (

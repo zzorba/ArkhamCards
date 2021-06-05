@@ -10,9 +10,12 @@ import { NumberChoices } from '@actions/types';
 import space, { m } from '@styles/space';
 import { useCounters } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
+import Card from '@data/types/Card';
+import InputWrapper from '../InputWrapper';
 
 export interface CounterItem {
   code: string;
+  investigator?: Card;
   name: string;
   description?: string;
   color?: string;
@@ -49,26 +52,16 @@ export default function CounterListComponent({ id, items, countText, requiredTot
   const choiceList = scenarioState.numberChoices(id);
   const hasDecision = choiceList !== undefined;
 
-  const saveButton = useMemo(() => {
-    if (hasDecision) {
-      return null;
+  const disabledText = useMemo(() => {
+    if (hasDecision || !requiredTotal) {
+      return undefined;
     }
     const currentTotal = sum(map(counts));
-    const disabled = (requiredTotal !== undefined) && currentTotal !== requiredTotal;
-    return disabled && requiredTotal !== undefined ? (
-      <BasicButton
-        title={currentTotal > requiredTotal ? t`Too many` : t`Not enough`}
-        onPress={save}
-        disabled
-      />
-    ) : (
-      <BasicButton
-        title={t`Proceed`}
-        onPress={save}
-        disabled={disabled}
-      />
-    );
-  }, [hasDecision, requiredTotal, counts, save]);
+    if (currentTotal !== requiredTotal) {
+      return currentTotal > requiredTotal ? t`Too many` : t`Not enough`;
+    }
+    return undefined;
+  }, [hasDecision, requiredTotal, counts]);
 
   const getValue = useCallback((code: string): number => {
     if (choiceList === undefined) {
@@ -80,28 +73,23 @@ export default function CounterListComponent({ id, items, countText, requiredTot
     }
     return investigatorCount[0] || 0;
   }, [counts, choiceList]);
-
   return (
-    <View>
-      <View style={[
-        styles.prompt,
-        borderStyle,
-        space.paddingTopS,
-        space.paddingRightM,
-      ]}>
-        <Text style={typography.mediumGameFont}>
-          { countText }
-        </Text>
-      </View>
+    <InputWrapper
+      title={countText}
+      onSubmit={save}
+      disabledText={disabledText}
+      editable={!hasDecision}
+    >
       { loading ? (
         <View style={[styles.loadingRow, borderStyle]}>
           <ActivityIndicator size="small" animating color={colors.lightText} />
         </View>
-      ) : map(items, ({ code, name, description, limit, min, color }, idx) => {
+      ) : map(items, ({ code, name, investigator, description, limit, min, color }, idx) => {
         const value = getValue(code);
         return (
           <CounterListItemComponent
             key={idx}
+            investigator={investigator}
             value={value}
             code={code}
             name={name}
@@ -116,17 +104,11 @@ export default function CounterListComponent({ id, items, countText, requiredTot
           />
         );
       }) }
-      { saveButton }
-    </View>
+    </InputWrapper>
   );
 }
 
 const styles = StyleSheet.create({
-  prompt: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
   loadingRow: {
     flexDirection: 'row',
     padding: m,

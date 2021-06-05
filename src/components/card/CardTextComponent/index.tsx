@@ -266,7 +266,6 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
   return (
     <MarkdownView
       rules={rules}
-      style={{ width: '100%' }}
       styles={{
         list: {
           marginLeft: 4,
@@ -279,7 +278,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
           color: context.colors.navButton,
         },
         paragraph: {
-          fontFamily: 'Alegreya-Regular',
+          fontFamily: 'Alegreya',
           color: context.colors.darkText,
           fontSize: 16 * context.fontScale * sizeScale,
           lineHeight: 20 * context.fontScale * sizeScale,
@@ -293,6 +292,8 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
         tableHeaderCellContent: {
           ...context.typography.small,
           ...context.typography.bold,
+          fontFamily: 'Alegreya',
+          fontWeight: '700',
           minHeight: 50,
           paddingTop: 8,
           paddingBottom: 8,
@@ -306,10 +307,28 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
         },
         tableCellContent: {
           ...context.typography.small,
+          fontFamily: 'Alegreya',
           margin: 0,
           padding: 16,
           paddingTop: 16,
           paddingBottom: 16,
+        },
+      }}
+      fonts={{
+        Alegreya: {
+          fontWeights: {
+            300: 'Light',
+            400: 'Regular',
+            700: 'Bold',
+            800: 'ExtraBold',
+            900: 'Black',
+            normal: 'Regular',
+            bold: 'Bold',
+          },
+          fontStyles: {
+            normal: '',
+            italic: 'Italic',
+          },
         },
       }}
       onLinkPress={onLinkPress ? wrappedOnLinkPress : undefined}

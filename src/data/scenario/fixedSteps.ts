@@ -11,6 +11,7 @@ import {
   InputStep,
   Step,
   Scenario,
+  ChoiceIcon,
 } from '@data/scenario/types';
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
@@ -337,6 +338,21 @@ function statusToString(
   }
 }
 
+function statusToSelectedString(status: InvestigatorStatus): string {
+  switch (status) {
+    case 'alive':
+      return t`Alive`;
+    case 'resigned':
+      return t`Resigned`;
+    case 'physical':
+      return t`Physical trauma`;
+    case 'mental':
+      return t`Mental trauma`;
+    case 'eliminated':
+      return t`Defeated`;
+  }
+}
+
 function investigatorStatusStep(
   id: string,
   resolutions: Resolution[]
@@ -354,6 +370,16 @@ function investigatorStatusStep(
   }
   return createInvestigatorStatusStep(id, resolution.investigator_status);
 }
+
+const STATUS_ICON: {
+  [key: string]: ChoiceIcon;
+} = {
+  alive: 'accept',
+  resigned: 'resign',
+  physical: 'physical',
+  mental: 'mental',
+  eliminated: 'dismiss',
+};
 
 export function createInvestigatorStatusStep(
   id: string,
@@ -388,7 +414,9 @@ export function createInvestigatorStatusStep(
       }
       return {
         id: status,
+        icon: STATUS_ICON[status],
         text: statusToString(status),
+        selected_text: statusToSelectedString(status),
         masculine_text: statusToString(status, 'masculine'),
         feminine_text: statusToString(status, 'feminine'),
         effects,
@@ -400,6 +428,7 @@ export function createInvestigatorStatusStep(
     id,
     type: 'input',
     text: t`Status of investigators`,
+    prompt_type: 'header',
     input: {
       type: 'investigator_choice',
       investigator: 'all',

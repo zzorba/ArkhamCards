@@ -31,6 +31,7 @@ export default function InvestigatorCounterComponent({
       items={map(scenarioInvestigators, investigator => {
         return {
           code: investigator.code,
+          investigator,
           name: investigator.name,
           color: colors.faction[investigator.factionCode()].background,
           limit: maxLimits ? maxLimits[investigator.code] : undefined,

@@ -3,7 +3,7 @@ import React from 'react';
 import {
   Text,
 } from 'react-native';
-import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
+import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
 import { WithChildren } from '../CardTextComponent/types';
 
@@ -14,12 +14,12 @@ export default function FlavorItalicNode({ typography }: StyleContextType) {
     state: RenderState
   ) => {
     return (
-      <Text
+      <MarkdownText
         key={state.key}
-        style={typography.regular}
+        style={{ fontFamily: 'Alegreya', fontStyle: 'normal' }}
       >
         { output(node.children, state) }
-      </Text>
+      </MarkdownText>
     );
   };
 }

@@ -63,6 +63,7 @@ function InvesigatorCheckListItemComponent({
           value={selected}
           large
           color="light"
+          circleColor="light"
         />
       </View>
     );
@@ -71,7 +72,6 @@ function InvesigatorCheckListItemComponent({
         width={width - s * (editable ? 4 : 2)}
         leftContent={onSecondaryChoice ? switchContent : undefined}
         investigator={investigator}
-        transparent={editable && !selected}
       >
         { onSecondaryChoice ? secondaryButton : switchContent }
       </CompactInvestigatorRow>
@@ -99,7 +99,7 @@ export default function CheckListItemComponent({
   onSecondaryChoice,
   editable,
 }: Props) {
-  const { borderStyle, colors, typography } = useContext(StyleContext);
+  const { typography } = useContext(StyleContext);
   const toggle = useCallback((value: boolean) => {
     onChoiceToggle(code, value);
   }, [onChoiceToggle, code]);
@@ -117,17 +117,18 @@ export default function CheckListItemComponent({
         onSecondaryChoice={onSecondaryChoice}
         editable={editable}
       />
-    )
+    );
   }
   return (
     <View style={[
       styles.row,
-      borderStyle,
-      space.paddingS,
-      space.paddingSideM,
+      space.paddingTopS,
+      space.paddingBottomS,
       color ? { backgroundColor: color } : {},
     ]}>
+
       <Text style={[
+        space.paddingLeftS,
         typography.mediumGameFont,
         styles.nameText,
         color ? { color: 'white' } : {},
@@ -135,18 +136,13 @@ export default function CheckListItemComponent({
         { name }
       </Text>
       { editable ? (
-        <Switch
+        <ArkhamSwitch
           onValueChange={toggle}
-          customColor="white"
-          customTrackColor={color ? '#ccc' : undefined}
           value={selected}
+          large
         />
       ) : (
-        <MaterialCommunityIcons
-          name="check"
-          size={18}
-          color={color ? 'white' : colors.darkText}
-        />
+        <ArkhamSwitch value large />
       ) }
     </View>
   );
@@ -157,7 +153,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   row: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

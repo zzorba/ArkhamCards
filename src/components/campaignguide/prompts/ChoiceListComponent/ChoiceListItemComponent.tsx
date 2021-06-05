@@ -3,9 +3,9 @@ import { map } from 'lodash';
 import { StyleSheet, Text, View } from 'react-native';
 
 import ChooseOneListComponent from '../ChooseOneListComponent';
-import SinglePickerComponent from '@components/core/SinglePickerComponent';
+import SinglePickerComponent from '../SinglePickerComponent';
 import { DisplayChoice } from '@data/scenario';
-import space, { s } from '@styles/space';
+import space from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import Card from '@data/types/Card';
@@ -107,7 +107,7 @@ export default function ChoiceListItemComponent({
       optional={optional}
       title={name}
       onChoiceChange={onSelect}
-      width={width - s * (editable ? 4 : 2)}
+      width={width}
       firstItem={firstItem}
     />
   );

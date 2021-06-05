@@ -158,8 +158,9 @@ export default class DeckValidation {
       }
       if (this.deck_options_counts[i].limit && option.limit){
         if (this.deck_options_counts[i].limit > option.limit){
-          if (option.error) {
-            this.problem_list.push(option.error);
+          const error = option.localizedError();
+          if (error) {
+            this.problem_list.push(error);
           }
           return 'investigator';
         }
@@ -173,9 +174,10 @@ export default class DeckValidation {
               faction_count++;
             }
           })
-          if (faction_count < atleast.factions){
-            if (option.error){
-              this.problem_list.push(option.error);
+          if (faction_count < atleast.factions) {
+            const error = option.localizedError();
+            if (error){
+              this.problem_list.push(error);
             }
             return 'investigator';
           }
@@ -187,8 +189,9 @@ export default class DeckValidation {
             }
           })
           if (type_count < atleast.types){
-            if (option.error){
-              this.problem_list.push(option.error);
+            const error = option.localizedError();
+            if (error){
+              this.problem_list.push(error);
             }
             return 'investigator';
           }
@@ -275,6 +278,7 @@ export default class DeckValidation {
       limit: 1,
       trait: ['Covenant'],
       error: t`Limit 1 Covenant per deck.`,
+      localizedError: () => t`Limit 1 Covenant per deck.`,
       dynamic: true,
     });
     if (specialCards.ancestralKnowledge) {

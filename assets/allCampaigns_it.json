@@ -64,8 +64,25 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Facile <i>(voglio godermi la storia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Facile",
+            "description": "<i>I want to experience the story</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -96,8 +113,25 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(voglio una sfida)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Standard",
+            "description": "<i>I want a challenge</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -128,8 +162,26 @@
           },
           {
             "id": "hard",
-            "text": "Difficile <i>(voglio un vero incubo)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Difficile",
+            "description": "<i>I want a true nightmare</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -161,8 +213,27 @@
           },
           {
             "id": "expert",
-            "text": "Esperto <i>(voglio tutto Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Esperto",
+            "description": "<i>I want Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -2842,6 +2913,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -3903,8 +3977,26 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Facile <i>(voglio godermi la storia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Facile",
+            "description": "<i>I want to experience the story</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -3936,8 +4028,26 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(voglio una sfida)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
+            "text": "Standard",
+            "description": "<i>I want a challenge</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -3969,8 +4079,27 @@
           },
           {
             "id": "hard",
-            "text": "Difficile <i>(voglio un vero incubo)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Difficile",
+            "description": "<i>I want a true nightmare</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -4003,8 +4132,28 @@
           },
           {
             "id": "expert",
-            "text": "Esperto <i>(voglio tutto Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Esperto",
+            "description": "<i>I want Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -4089,8 +4238,26 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Facile <i>(voglio godermi la storia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Facile",
+            "description": "<i>I want to experience the story</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -4122,8 +4289,26 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(voglio una sfida)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
+            "text": "Standard",
+            "description": "<i>I want a challenge</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -4155,8 +4340,27 @@
           },
           {
             "id": "hard",
-            "text": "Difficile <i>(voglio un vero incubo)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Difficile",
+            "description": "<i>I want a true nightmare</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -4189,8 +4393,28 @@
           },
           {
             "id": "expert",
-            "text": "Esperto <i>(voglio tutto Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Esperto",
+            "description": "<i>I want Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -5522,8 +5746,25 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Easy <i>(I want to watch the play)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Facile",
+            "description": "<i>I want to watch the play</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -5554,8 +5795,25 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(I want to read the signs)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Standard",
+            "description": "<i>I want to read the signs</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -5586,8 +5844,26 @@
           },
           {
             "id": "hard",
-            "text": "Hard <i>(I want to speak the oath)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Difficile",
+            "description": "<i>I want to speak the oath</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -5619,8 +5895,27 @@
           },
           {
             "id": "expert",
-            "text": "Expert <i>(I want <u>The King in Yellow</u>)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Esperto",
+            "description": "<i>I want <u>The King in Yellow</u></i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -7633,6 +7928,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -10215,7 +10513,8 @@
   "resolutions": [
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution\n(at least one investigator resigned)",
+      "title": "No resolution",
+      "description": "Aat least one investigator resigned",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -10228,7 +10527,8 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution\n(all investigators defeated)",
+      "title": "No resolution",
+      "description": "All investigators were defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -12124,8 +12424,25 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Facile <i>(voglio godermi la storia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Facile",
+            "description": "<i>I want to experience the story</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -12156,8 +12473,25 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(voglio una sfida)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Standard",
+            "description": "<i>I want a challenge</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -12188,8 +12522,26 @@
           },
           {
             "id": "hard",
-            "text": "Difficile <i>(voglio un vero incubo)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Difficile",
+            "description": "<i>I want a true nightmare</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -12221,8 +12573,27 @@
           },
           {
             "id": "expert",
-            "text": "Esperto <i>(voglio tutto Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Esperto",
+            "description": "<i>I want Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -14706,6 +15077,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -16182,8 +16556,26 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Facile <i>(voglio godermi la storia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Facile",
+            "description": "<i>I want to experience the story</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -16215,8 +16607,26 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(voglio una sfida)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
+            "text": "Standard",
+            "description": "<i>I want a challenge</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -16248,8 +16658,27 @@
           },
           {
             "id": "hard",
-            "text": "Difficile <i>(voglio un vero incubo)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Difficile",
+            "description": "<i>I want a true nightmare</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -16282,8 +16711,28 @@
           },
           {
             "id": "expert",
-            "text": "Esperto <i>(voglio tutto Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Esperto",
+            "description": "<i>I want Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -17230,8 +17679,26 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Facile <i>(voglio godermi la storia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Facile",
+            "description": "<i>I want to experience the story</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -17263,8 +17730,26 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(voglio una sfida)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
+            "text": "Standard",
+            "description": "<i>I want a challenge</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -17296,8 +17781,27 @@
           },
           {
             "id": "hard",
-            "text": "Difficile <i>(voglio un vero incubo)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Difficile",
+            "description": "<i>I want a true nightmare</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -17330,8 +17834,28 @@
           },
           {
             "id": "expert",
-            "text": "Esperto <i>(voglio tutto Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Esperto",
+            "description": "<i>I want Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -17952,8 +18476,25 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Easy <i>(I want to watch the play)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Facile",
+            "description": "<i>I want to watch the play</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -17984,8 +18525,25 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(I want to read the signs)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Standard",
+            "description": "<i>I want to read the signs</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -18016,8 +18574,26 @@
           },
           {
             "id": "hard",
-            "text": "Hard <i>(I want to speak the oath)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Difficile",
+            "description": "<i>I want to speak the oath</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -18049,8 +18625,27 @@
           },
           {
             "id": "expert",
-            "text": "Expert <i>(I want <u>The King in Yellow</u>)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Esperto",
+            "description": "<i>I want <u>The King in Yellow</u></i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -20825,6 +21420,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -22869,7 +23467,8 @@
   "resolutions": [
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution\n(at least one investigator resigned)",
+      "title": "No resolution",
+      "description": "Aat least one investigator resigned",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -22882,7 +23481,8 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution\n(all investigators defeated)",
+      "title": "No resolution",
+      "description": "All investigators were defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -24874,8 +25474,24 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Facile <i>(voglio godermi la storia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -2, -3, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Facile",
+            "description": "<i>I want to experience the story</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -24905,8 +25521,24 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(voglio una sfida)</i>",
-            "description": "+1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Standard",
+            "description": "<i>I want a challenge</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-5",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -24936,8 +25568,24 @@
           },
           {
             "id": "hard",
-            "text": "Difficile <i>(voglio un vero incubo)</i>",
-            "description": "+1, 0, 0, -1, -2, -3, -3, -4, -6, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Difficile",
+            "description": "<i>I want a true nightmare</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-6",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -24967,8 +25615,25 @@
           },
           {
             "id": "expert",
-            "text": "Esperto <i>(voglio tutto Arkham Horror)</i>",
-            "description": "0, -1, -2, -2, -3, -3, -4, -4, -6, -8, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Esperto",
+            "description": "<i>I want Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -28453,11 +29118,11 @@
     },
     {
       "id": "record_x_paths_known",
-      "text": "In your Campaign Log, record that <i>X paths are known to you</i>. X is the number of Tenochtitlán locations in the victory display.",
+      "text": "In your Campaign Log, record that <i>X paths are known to you</i>. X is the number of [[Tenochtitlán]] locations in the victory display.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "[[Tenochtitlán]] locations in victory display:",
+        "text": "Tenochtitlán locations in victory display:",
         "max": 6,
         "effects": [
           {
@@ -31481,6 +32146,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -35138,7 +35806,25 @@
           {
             "id": "easy",
             "text": "Facile",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35172,7 +35858,25 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35206,7 +35910,25 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35240,7 +35962,24 @@
           {
             "id": "expert",
             "text": "Esperto",
-            "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35733,7 +36472,25 @@
           {
             "id": "easy",
             "text": "Facile",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35767,7 +36524,25 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35801,7 +36576,25 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35835,7 +36628,24 @@
           {
             "id": "expert",
             "text": "Esperto",
-            "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -36292,7 +37102,25 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "+1, 0, 0, 0, -1, -2, -2, -3, -4, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -36326,7 +37154,25 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "0, 0, 0, -1, -1, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -37702,7 +38548,27 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "+1, 0, 0, 0, -1, -1, -1, -2, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-6",
+              "skull",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -37738,7 +38604,27 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "+1, 0, 0, 0, -1, -1, -3, -4, -5, -6, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "skull",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -38135,7 +39021,27 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -4, -4, -5, -6, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -38171,7 +39077,27 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "+1, 0, 0, 0, -1, -1, -2, -2, -3, -4, -4, -5, -6, -7, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -38628,6 +39554,9 @@
               "add_chaos_token"
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -38891,7 +39820,32 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, [skull], [skull], [cultist], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -38932,7 +39886,33 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -4, -5, -5, -6, -8, [skull], [skull], [cultist], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -39163,7 +40143,24 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -4, -5, [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -39196,7 +40193,24 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "+1, 0, -1, -1, -1, -2, -2, -2, -3, -4, -5, -6, [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -40013,7 +41027,25 @@
           {
             "id": "easy",
             "text": "Facile",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -40047,7 +41079,25 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -40081,7 +41131,26 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -40116,7 +41185,27 @@
           {
             "id": "expert",
             "text": "Esperto",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -40572,7 +41661,23 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "+1, 0, -1, -1, -2, -3, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -40604,7 +41709,23 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "0, -1, -2, -3, -4, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -42343,7 +43464,25 @@
           {
             "id": "easy",
             "text": "Facile",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -42377,7 +43516,25 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -42411,7 +43568,25 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -42445,7 +43620,24 @@
           {
             "id": "expert",
             "text": "Esperto",
-            "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -42899,7 +44091,29 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "+1, +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-6",
+              "skull",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -42937,7 +44151,31 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-7",
+              "skull",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -43392,7 +44630,29 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "+1, +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-6",
+              "skull",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -43430,7 +44690,31 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-7",
+              "skull",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -43893,7 +45177,23 @@
           {
             "id": "easy",
             "text": "Facile",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -43925,7 +45225,23 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -43957,7 +45273,23 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -43989,7 +45321,22 @@
           {
             "id": "expert",
             "text": "Esperto",
-            "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "-8",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -44739,8 +46086,23 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Facile <i>(voglio godermi la storia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -2, -3, [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Facile",
+            "description": "<i>I want to experience the story</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -44769,8 +46131,23 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(voglio una sfida)</i>",
-            "description": "+1, 0, 0, -1, -1, -2, -2, -3, -4, [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Standard",
+            "description": "<i>I want a challenge</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -44799,8 +46176,23 @@
           },
           {
             "id": "hard",
-            "text": "Difficile <i>(voglio un vero incubo)</i>",
-            "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Difficile",
+            "description": "<i>I want a true nightmare</i>",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -44829,8 +46221,23 @@
           },
           {
             "id": "expert",
-            "text": "Esperto <i>(voglio tutto Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -4, -6, -8, [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Esperto",
+            "description": "<i>I want Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -51514,6 +52921,9 @@
               "valentino_alive"
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -52699,8 +54109,24 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Facile <i>(voglio godermi la storia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -2, -2, [cultist], [tablet], [tablet], [auto_fail], [elder_sign]",
+            "text": "Facile",
+            "description": "<i>I want to experience the story</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "cultist",
+              "tablet",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -52730,8 +54156,24 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(voglio una sfida)</i>",
-            "description": "+1, 0, 0, -1, -1, -2, -2, -3, -4, [cultist], [tablet], [tablet], [auto_fail], [elder_sign]",
+            "text": "Standard",
+            "description": "<i>I want a challenge</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "cultist",
+              "tablet",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -52761,8 +54203,25 @@
           },
           {
             "id": "hard",
-            "text": "Difficile <i>(voglio un vero incubo)</i>",
-            "description": "0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [cultist], [tablet], [tablet], [auto_fail], [elder_sign]",
+            "text": "Difficile",
+            "description": "<i>I want a true nightmare</i>",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "cultist",
+              "tablet",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -52793,8 +54252,26 @@
           },
           {
             "id": "expert",
-            "text": "Esperto <i>(voglio tutto Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -4, -4, -5, -6, -8, [cultist], [tablet], [tablet], [auto_fail], [elder_sign]",
+            "text": "Esperto",
+            "description": "<i>I want Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "cultist",
+              "tablet",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -56178,6 +57655,9 @@
               "add_chaos_token_2"
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -58877,8 +60357,27 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Facile <i>(voglio godermi la storia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Facile",
+            "description": "<i>I want to experience the story</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -58911,8 +60410,27 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(voglio una sfida)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Standard",
+            "description": "<i>I want a challenge</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -58945,8 +60463,28 @@
           },
           {
             "id": "hard",
-            "text": "Difficile <i>(voglio un vero incubo)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Difficile",
+            "description": "<i>I want a true nightmare</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -58980,8 +60518,29 @@
           },
           {
             "id": "expert",
-            "text": "Esperto <i>(voglio tutto Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Esperto",
+            "description": "<i>I want Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -63832,8 +65391,24 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Facile <i>(voglio godermi la storia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -2, -3, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Facile",
+            "description": "<i>I want to experience the story</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -63863,8 +65438,24 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(voglio una sfida)</i>",
-            "description": "+1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Standard",
+            "description": "<i>I want a challenge</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-5",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -63894,8 +65485,24 @@
           },
           {
             "id": "hard",
-            "text": "Difficile <i>(voglio un vero incubo)</i>",
-            "description": "+1, 0, 0, -1, -2, -3, -3, -4, -6, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Difficile",
+            "description": "<i>I want a true nightmare</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-6",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -63925,8 +65532,25 @@
           },
           {
             "id": "expert",
-            "text": "Esperto <i>(voglio tutto Arkham Horror)</i>",
-            "description": "0, -1, -2, -2, -3, -3, -4, -4, -6, -8, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Esperto",
+            "description": "<i>I want Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -67535,11 +69159,11 @@
     },
     {
       "id": "record_x_paths_known",
-      "text": "In your Campaign Log, record that <i>X paths are known to you</i>. X is the number of Tenochtitlán locations in the victory display.",
+      "text": "In your Campaign Log, record that <i>X paths are known to you</i>. X is the number of [[Tenochtitlán]] locations in the victory display.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "[[Tenochtitlán]] locations in victory display:",
+        "text": "Tenochtitlán locations in victory display:",
         "max": 6,
         "effects": [
           {
@@ -71804,6 +73428,7 @@
           {
             "id": "remove_physical",
             "text": "Remove Physical Trauma",
+            "icon": "physical",
             "condition": {
               "type": "trauma",
               "investigator": "each",
@@ -71831,6 +73456,7 @@
           {
             "id": "remove_mental",
             "text": "Remove Mental Trauma",
+            "icon": "mental",
             "condition": {
               "type": "trauma",
               "investigator": "each",
@@ -72745,6 +74371,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -73064,8 +74693,30 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Facile <i>(voglio godermi la storia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Facile",
+            "description": "<i>I want to experience the story</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "tablet",
+              "tablet",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -73101,8 +74752,30 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(voglio una sfida)</i>",
-            "description": "+1, 0, 0, -1, -1, -1 -2, -2, -3, -4, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Standard",
+            "description": "<i>I want a challenge</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "tablet",
+              "tablet",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -73138,8 +74811,31 @@
           },
           {
             "id": "hard",
-            "text": "Difficile <i>(voglio un vero incubo)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Difficile",
+            "description": "<i>I want a true nightmare</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "tablet",
+              "tablet",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -73176,8 +74872,32 @@
           },
           {
             "id": "expert",
-            "text": "Esperto <i>(voglio tutto Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Esperto",
+            "description": "<i>I want Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "tablet",
+              "tablet",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -82341,8 +84061,25 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Easy <i>(I want to be sane)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Facile",
+            "description": "<i>I want to be sane</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -82373,8 +84110,25 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(I want to be mad as a march hare)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Standard",
+            "description": "<i>I want to be mad as a march hare</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -82405,8 +84159,25 @@
           },
           {
             "id": "hard",
-            "text": "Hard <i>(I want to be mad as a hatter)</i>",
-            "description": "+1, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Difficile",
+            "description": "<i>I want to be mad as a hatter</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -82437,8 +84208,25 @@
           },
           {
             "id": "expert",
-            "text": "Expert <i>(I want to go where no one has ever gone before)</i>",
-            "description": "0, -1, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Esperto",
+            "description": "<i>I want to go where no one has ever gone before</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "-8",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -88963,8 +90751,25 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Easy <i>(I want to go to the Moon)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -2, -3, [skull], [skull], [cultist], [cultist], [auto_fail], [elder_sign]",
+            "text": "Facile",
+            "description": "<i>I want to go to the Moon</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -88995,8 +90800,26 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(I want to go to Mars)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [cultist], [auto_fail], [elder_sign]",
+            "text": "Standard",
+            "description": "<i>I want to go to Mars</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -89028,8 +90851,27 @@
           },
           {
             "id": "hard",
-            "text": "Hard <i>(I want interstellar travel)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [cultist], [auto_fail], [elder_sign]",
+            "text": "Difficile",
+            "description": "<i>I want interstellar travel</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -89062,8 +90904,27 @@
           },
           {
             "id": "expert",
-            "text": "Expert <i>(I want to go where no one has ever gone before)</i>",
-            "description": "0, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [cultist], [auto_fail], [elder_sign]",
+            "text": "Esperto",
+            "description": "<i>I want to go where no one has ever gone before</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -90167,6 +92028,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "adjust_chaos_bag"
         ],
         "campaign_log": [
           {
