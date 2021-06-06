@@ -1,190 +1,102 @@
-import React, { ReactNode } from 'react';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
+import React, { useCallback, useContext, useMemo } from 'react';
 
 import { showDeckModal } from '@components/nav/helper';
 import DeckListRow from '../decklist/DeckListRow';
 import { Deck } from '@actions/types';
-import Card, { CardsMap } from '@data/Card';
-import { fetchPrivateDeck } from '@components/deck/actions';
-import { getDeck, AppState } from '@reducers';
+import Card, { CardsMap } from '@data/types/Card';
+import StyleContext from '@styles/StyleContext';
+import { useInvestigatorCards, usePlayerCards, usePressCallback } from '@components/core/hooks';
+import { DeckActions } from '@data/remote/decks';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 type RenderDeckDetails = (
   deck: Deck,
   cards: CardsMap,
   investigator: Card,
   previousDeck?: Deck
-) => ReactNode;
+) => React.ReactNode | null;
 
 export interface DeckRowProps {
-  componentId: string;
-  id: number;
+  deck: LatestDeckT;
+  campaign: MiniCampaignT;
   lang: string;
-  deckRemoved?: (id: number, deck?: Deck, investigator?: Card) => void;
-  investigators: CardsMap;
-  cards: CardsMap;
   renderSubDetails?: RenderDeckDetails;
   renderDetails?: RenderDeckDetails;
   killedOrInsane?: boolean;
   skipRender?: (deck: Deck, investigator: Card) => boolean;
+  actions: DeckActions;
 }
 
-interface OwnProps extends DeckRowProps {
+interface Props extends DeckRowProps {
   compact?: boolean;
   viewDeckButton?: boolean;
-  otherProps?: any;
 }
 
-interface ReduxProps {
-  theDeck?: Deck;
-  thePreviousDeck?: Deck;
-}
-
-interface ReduxActionProps {
-  fetchPrivateDeck: (deckId: number) => void;
-}
-
-type Props =
-  OwnProps &
-  ReduxProps &
-  ReduxActionProps;
-
-class DeckRow extends React.Component<Props> {
-  _onDeckPress = () => {
-    const {
-      componentId,
-      theDeck,
-      investigators,
-    } = this.props;
-    if (theDeck) {
-      showDeckModal(componentId, theDeck, investigators[theDeck.investigator_code]);
-    }
-  };
-
-  _onRemove = () => {
-    const {
-      deckRemoved,
-      id,
-      theDeck,
-      investigators,
-    } = this.props;
-    deckRemoved && deckRemoved(id, theDeck, theDeck ? investigators[theDeck.investigator_code] : undefined);
-  };
-
-  componentDidMount() {
-    const {
-      id,
-      theDeck,
-      fetchPrivateDeck,
-    } = this.props;
-    if (!theDeck) {
-      fetchPrivateDeck(id);
-    }
-  }
-
-  renderSubDetails() {
-    const {
-      theDeck,
-      cards,
-      thePreviousDeck,
-      investigators,
-      renderSubDetails,
-    } = this.props;
-    if (theDeck && renderSubDetails) {
-      const card = investigators[theDeck.investigator_code];
-      if (!card) {
+export default function DeckRow({
+  deck: { deck, previousDeck, id },
+  campaign,
+  lang,
+  renderSubDetails,
+  renderDetails,
+  killedOrInsane,
+  skipRender,
+  compact,
+  viewDeckButton,
+}: Props) {
+  const { colors } = useContext(StyleContext);
+  const cards = usePlayerCards(deck.taboo_id);
+  const investigators = useInvestigatorCards(deck.taboo_id);
+  const investigator = deck && investigators && investigators[deck.investigator_code] || undefined;
+  const onDeckPressFunction = useCallback(() => {
+    showDeckModal(id, deck, campaign.id, colors, investigator);
+  }, [id, deck, campaign, colors, investigator]);
+  const onDeckPress = usePressCallback(onDeckPressFunction);
+  const subDetails = useMemo(() => {
+    if (deck && renderSubDetails) {
+      if (!investigator || !cards) {
         return null;
       }
       return renderSubDetails(
-        theDeck,
+        deck,
         cards,
-        card,
-        thePreviousDeck
+        investigator,
+        previousDeck
       );
     }
     return null;
+  }, [deck, cards, investigator, previousDeck, renderSubDetails]);
+  const details = useMemo(() => {
+    if (!deck || !renderDetails) {
+      return null;
+    }
+    if (!investigator || !cards) {
+      return null;
+    }
+    return renderDetails(deck, cards, investigator, previousDeck);
+  }, [deck, cards, investigator, previousDeck, renderDetails]);
+
+  if (!deck) {
+    return null;
   }
-
-  renderDetails() {
-    const {
-      theDeck,
-      cards,
-      thePreviousDeck,
-      investigators,
-      renderDetails,
-    } = this.props;
-    if (!theDeck || !renderDetails) {
-      return null;
-    }
-    const card = investigators[theDeck.investigator_code];
-    if (!card) {
-      return null;
-    }
-    return renderDetails(
-      theDeck,
-      cards,
-      card,
-      thePreviousDeck
-    );
+  if (!investigator) {
+    return null;
   }
-
-  render() {
-    const {
-      theDeck,
-      thePreviousDeck,
-      cards,
-      compact,
-      viewDeckButton,
-      killedOrInsane,
-      skipRender,
-      lang,
-    } = this.props;
-    if (!theDeck) {
-      return null;
-    }
-    const investigator = cards[theDeck.investigator_code];
-    if (!investigator) {
-      return null;
-    }
-    if (skipRender && skipRender(theDeck, investigator)) {
-      return null;
-    }
-    return (
-      <DeckListRow
-        deck={theDeck}
-        lang={lang}
-        previousDeck={thePreviousDeck}
-        cards={cards}
-        onPress={this._onDeckPress}
-        investigator={investigator}
-        details={this.renderDetails()}
-        subDetails={this.renderSubDetails()}
-        compact={compact}
-        viewDeckButton={viewDeckButton}
-        killedOrInsane={killedOrInsane}
-      />
-    );
+  if (skipRender && skipRender(deck, investigator)) {
+    return null;
   }
+  return (
+    <DeckListRow
+      deck={deck}
+      previousDeck={previousDeck}
+      lang={lang}
+      onPress={onDeckPress}
+      investigator={investigator}
+      details={details}
+      subDetails={subDetails}
+      compact={compact}
+      viewDeckButton={viewDeckButton}
+      killedOrInsane={killedOrInsane}
+    />
+  );
 }
-
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
-  const deck = getDeck(props.id)(state);
-  const previousDeck = deck &&
-    deck.previous_deck &&
-    getDeck(deck.previous_deck)(state);
-  return {
-    theDeck: deck || undefined,
-    thePreviousDeck: previousDeck || undefined,
-  };
-}
-
-function mapDispatchToProps(
-  dispatch: Dispatch<Action>
-): ReduxActionProps {
-  return bindActionCreators({ fetchPrivateDeck }, dispatch);
-}
-
-export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
-)(DeckRow);

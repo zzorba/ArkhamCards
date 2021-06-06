@@ -1,113 +1,36 @@
-import React from 'react';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import { forEach, flatMap } from 'lodash';
-import { connect } from 'react-redux';
+import React, { useMemo } from 'react';
+import { flatMap } from 'lodash';
 
 import OddsCalculatorComponent from '@components/campaign/OddsCalculatorComponent';
-import { NavigationProps } from '@components/nav/types';
-import CardQueryWrapper from '@components/card/CardQueryWrapper';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
-import { campaignScenarios, Scenario } from '@components/campaign/constants';
-import { Campaign } from '@actions/types';
 import { ChaosBag } from '@app_constants';
-import Card from '@data/Card';
-import { SCENARIO_CARDS_QUERY } from '@data/query';
-import { AppState, getCampaign } from '@reducers';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import Card from '@data/types/Card';
+import { useCycleScenarios, useInvestigatorCards } from '@components/core/hooks';
+import { useCampaign } from '@data/hooks';
+import { CampaignId } from '@actions/types';
 
 export interface GuideOddsCalculatorProps {
-  campaignId: number;
+  campaignId: CampaignId;
   investigatorIds: string[];
   chaosBag: ChaosBag;
 }
 
-interface ReduxProps {
-  campaign?: Campaign;
-  cycleScenarios?: Scenario[];
-  scenarioByCode?: { [code: string]: Scenario };
-}
+export default function GuideOddsCalculatorView({ campaignId, investigatorIds, chaosBag }: GuideOddsCalculatorProps) {
+  const campaign = useCampaign(campaignId);
+  const cycleScenarios = useCycleScenarios(campaign?.cycleCode);
 
-type Props = NavigationProps & GuideOddsCalculatorProps & ReduxProps & PlayerCardProps & DimensionsProps;
-
-class GuideOddsCalculatorView extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  allInvestigators(): Card[] {
-    const {
-      investigators,
-      investigatorIds,
-    } = this.props;
-    return flatMap(investigatorIds, code => investigators[code] || []);
-  }
-  render() {
-    const {
-      campaign,
-      chaosBag,
-      cycleScenarios,
-      scenarioByCode,
-    } = this.props;
-    const { colors } = this.context;
-    if (!campaign) {
-      return null;
-    }
-    const allInvestigators = this.allInvestigators();
-    return (
-      <CardQueryWrapper name="guide-odds" query={SCENARIO_CARDS_QUERY}>
-        { scenarioCards => scenarioCards.length ? (
-          <OddsCalculatorComponent
-            campaign={campaign}
-            chaosBag={chaosBag}
-            cycleScenarios={cycleScenarios}
-            scenarioByCode={scenarioByCode}
-            allInvestigators={allInvestigators}
-            scenarioCards={scenarioCards}
-          />
-        ) : (
-          <View style={styles.loading}>
-            <ActivityIndicator size="small" color={colors.lightText} />
-          </View>
-        ) }
-      </CardQueryWrapper>
-    );
-  }
-}
-
-function mapStateToProps(
-  state: AppState,
-  props: GuideOddsCalculatorProps
-): ReduxProps {
-  const campaign = getCampaign(state, props.campaignId);
+  const investigators = useInvestigatorCards();
+  const allInvestigators: Card[] = useMemo(() => {
+    return flatMap(investigatorIds, code => (investigators && investigators[code]) || []);
+  }, [investigators, investigatorIds]);
   if (!campaign) {
-    return {
-      cycleScenarios: [],
-      scenarioByCode: {},
-    };
+    return null;
   }
-  const cycleScenarios = campaignScenarios(campaign.cycleCode);
-  const scenarioByCode: { [code: string]: Scenario } = {};
-  forEach(cycleScenarios, scenario => {
-    scenarioByCode[scenario.code] = scenario;
-  });
-  return {
-    campaign,
-    cycleScenarios,
-    scenarioByCode,
-  };
+  return (
+    <OddsCalculatorComponent
+      campaign={campaign}
+      chaosBag={chaosBag}
+      cycleScenarios={cycleScenarios}
+      allInvestigators={allInvestigators}
+    />
+  );
 }
-
-export default connect(mapStateToProps)(
-  withPlayerCards<NavigationProps & GuideOddsCalculatorProps & ReduxProps>(
-    withDimensions(GuideOddsCalculatorView)
-  )
-);
-
-const styles = StyleSheet.create({
-  loading: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-  },
-});

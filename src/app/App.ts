@@ -5,6 +5,7 @@ import { TouchableOpacity, Platform, Linking, LogBox } from 'react-native';
 import { Appearance } from 'react-native-appearance';
 import DeepLinking from 'react-native-deep-linking';
 import { Action, Store } from 'redux';
+import { addEventListener as addLangEventListener } from 'react-native-localize';
 import { t } from 'ttag';
 
 import { changeLocale } from './i18n';
@@ -30,13 +31,13 @@ export default class App {
   currentLang: string;
   currentThemeOverride?: 'light' | 'dark';
 
-  constructor(store: Store<AppState, Action>) {
+  constructor(store: Store<AppState, Action<string>>) {
     this.started = false;
     this.currentLang = 'en';
     this.currentThemeOverride = undefined;
 
     store.subscribe(this.onStoreUpdate.bind(this, store));
-
+    addLangEventListener('change', () => this.onStoreUpdate(store));
     this.initialAppStart(store).then(safeMode => {
       if (!safeMode) {
         this.setupAppEventHandlers(true);
@@ -49,6 +50,7 @@ export default class App {
 
     // We handle arkham cards schema-ref
     DeepLinking.addScheme('arkhamcards://');
+    DeepLinking.addScheme('dissonantvoices://');
 
     Appearance.addChangeListener(({ colorScheme }) => {
       this.setDefaultOptions(colorScheme, true);
@@ -75,7 +77,7 @@ export default class App {
     return 0;
   }
 
-  async initialAppStart(store: Store<AppState, Action>): Promise<boolean> {
+  async initialAppStart(store: Store<AppState, Action<string>>): Promise<boolean> {
     try {
       const previousCrash = await Crashes.hasCrashedInLastSession();
       if (previousCrash && !__DEV__) {
@@ -95,7 +97,7 @@ export default class App {
     return false;
   }
 
-  onStoreUpdate(store: Store<AppState, Action>, appStart?: boolean) {
+  onStoreUpdate(store: Store<AppState, Action<string>>, appStart?: boolean) {
     if (this.started || appStart) {
       const state = store.getState();
       const lang = getLangPreference(state);
@@ -109,6 +111,7 @@ export default class App {
         iconsLoaded.then(() => {
           this.startApp(lang);
         }).catch(error => console.log(error));
+        // tslint:disable-next-line
       } else if (this.currentThemeOverride !== themeOverride) {
         this.currentThemeOverride = themeOverride;
         this.setDefaultOptions(Appearance.getColorScheme(), true);
@@ -133,7 +136,6 @@ export default class App {
     const darkMode = system ? colorScheme === 'dark' : this.currentThemeOverride === 'dark';
     const colors = darkMode ? DARK_THEME : LIGHT_THEME;
 
-    const ios12 = Platform.OS === 'ios' && parseInt(`${Platform.Version}`, 10) < 13;
     const defaultOptions: Options = {
       statusBar: {
         backgroundColor: colors.background,
@@ -156,7 +158,7 @@ export default class App {
         },
         background: {
           translucent: false,
-          color: ios12 ? colors.ios12Background : colors.L30,
+          color: colors.L30,
           clipToBounds: false,
         },
         backButton: {
@@ -180,7 +182,7 @@ export default class App {
         backgroundColor: colors.background,
         barStyle: darkMode ? 'black' : 'default',
         // Bug with RNN, translucent always inherits the system setting.
-        translucent: ios12 || systemPreference === darkMode,
+        translucent: systemPreference === darkMode,
       },
       bottomTab: {
         iconColor: colors.M,
@@ -197,7 +199,7 @@ export default class App {
     }
   }
 
-  startSafeMode(store: Store<AppState, Action>) {
+  startSafeMode(store: Store<AppState, Action<string>>) {
     const state = store.getState();
     const lang = getLangPreference(state);
     changeLocale(lang || 'en');
@@ -260,6 +262,7 @@ export default class App {
             title: {
               text: t`Decks`,
             },
+            rightButtonColor: COLORS.M,
             rightButtons: [{
               icon: iconsMap.add,
               id: 'add',
@@ -278,6 +281,7 @@ export default class App {
             title: {
               text: t`Campaigns`,
             },
+            rightButtonColor: COLORS.M,
             rightButtons: [{
               icon: iconsMap.add,
               id: 'add',
@@ -346,7 +350,7 @@ export default class App {
           bottomTab: {
             text: t`Settings`,
             icon: iconsMap.settings,
-            testId: 'Bottom_Settings',
+            testId: 'Bottom_Account',
           },
         },
       },

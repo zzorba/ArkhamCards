@@ -1,62 +1,52 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import { last } from 'lodash';
 import { StyleSheet, Text, View } from 'react-native';
 import { t } from 'ttag';
 
-import { CAMPAIGN_COLORS, campaignNames } from './constants';
-import { Campaign, CUSTOM } from '@actions/types';
+import { campaignNames, campaignColor } from './constants';
+import { CUSTOM, STANDALONE } from '@actions/types';
 import Difficulty from './Difficulty';
 import GameHeader from './GameHeader';
 import BackgroundIcon from './BackgroundIcon';
 import space from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 interface Props {
-  campaign: Campaign;
+  campaign: SingleCampaignT;
   name?: string;
   hideScenario?: boolean;
+  standaloneName?: string;
+  children?: React.ReactNode
 }
 
-export default class CampaignSummaryComponent extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  latestScenario() {
-    return last(this.props.campaign.scenarioResults);
-  }
-
-  renderCampaign() {
-    const {
-      campaign,
-      name,
-    } = this.props;
-    const { gameFont, typography } = this.context;
+export default function CampaignSummaryComponent({ campaign, name, hideScenario, standaloneName, children }: Props) {
+  const { colors, typography } = useContext(StyleContext);
+  const latestScenario = useMemo(() => last(campaign.scenarioResults), [campaign.scenarioResults]);
+  const campaignSection = useMemo(() => {
     const text = campaign.cycleCode === CUSTOM ? campaign.name : campaignNames()[campaign.cycleCode];
+    const campaignName = (campaign.cycleCode === STANDALONE && standaloneName) || text;
     return (
       <>
-        <GameHeader text={text} />
+        <GameHeader text={campaignName} />
         { !!name && (
-          <Text style={[typography.gameFont, { fontFamily: gameFont }]}>
+          <Text style={typography.gameFont}>
             { name }
           </Text>
         ) }
       </>
     );
-  }
-
-  renderLastScenario() {
-    const { hideScenario, campaign } = this.props;
-    const { gameFont, typography } = this.context;
+  }, [campaign, name, typography, standaloneName]);
+  const lastScenarioSection = useMemo(() => {
     if (hideScenario) {
       return null;
     }
-    const latestScenario = this.latestScenario();
     if (latestScenario && latestScenario.scenario) {
       const resolution = latestScenario.resolution && !campaign.guided ?
         `: ${latestScenario.resolution}` : '';
       return (
         <View style={space.marginTopXs}>
-          <Text style={[typography.gameFont, { fontFamily: gameFont }]}>
+          <Text style={typography.gameFont}>
             { `${latestScenario.scenario}${resolution}` }
           </Text>
         </View>
@@ -64,17 +54,14 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
     }
     return (
       <View style={space.marginTopXs}>
-        <Text style={[typography.gameFont, { fontFamily: gameFont }]}>
+        <Text style={typography.gameFont}>
           { t`Not yet started` }
         </Text>
       </View>
     );
-  }
+  }, [hideScenario, campaign, typography, latestScenario]);
 
-  renderDifficulty() {
-    const {
-      campaign,
-    } = this.props;
+  const difficultySection = useMemo(() => {
     if (!campaign.difficulty) {
       return null;
     }
@@ -83,37 +70,50 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
         <Difficulty difficulty={campaign.difficulty} />
       </View>
     );
-  }
+  }, [campaign]);
 
-  render() {
-    const {
-      campaign,
-    } = this.props;
+  const color = useMemo(() => campaignColor(campaign.cycleCode, colors), [campaign.cycleCode, colors]);
+  const backgroundIcon = useMemo(() => {
+    if (campaign.cycleCode === CUSTOM) {
+      return null;
+    }
+    if (campaign.cycleCode === STANDALONE && campaign.standaloneId) {
+      return (
+        <BackgroundIcon
+          code={campaign.standaloneId.scenarioId}
+          color={colors.L30}
+        />
+      );
+    }
     return (
-      <View style={styles.row}>
-        { campaign.cycleCode !== CUSTOM && (
-          <BackgroundIcon
-            code={campaign.cycleCode}
-            color={CAMPAIGN_COLORS[campaign.cycleCode]}
-          />
-        ) }
-        <View>
-          { this.renderCampaign() }
-          <View style={styles.textRow}>
-            { this.renderDifficulty() }
-            { this.renderLastScenario() }
-          </View>
-        </View>
-      </View>
+      <BackgroundIcon
+        code={campaign.cycleCode}
+        color={colors.L30}
+      />
     );
-  }
+  }, [colors, campaign.cycleCode, campaign.standaloneId]);
+
+  return (
+    <View style={[styles.row, space.paddingS, { backgroundColor: color }]}>
+      { backgroundIcon }
+      <View>
+        { campaignSection }
+        <View style={styles.textRow}>
+          { difficultySection }
+          { lastScenarioSection }
+        </View>
+        { !!children && children }
+      </View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
-    width: '100%',
     position: 'relative',
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
   },
   textRow: {
     flexDirection: 'row',

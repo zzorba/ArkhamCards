@@ -1,100 +1,102 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import { BulletType } from '@data/scenario/types';
-import { m, s, xs } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import space, { m, s, xs } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
+import Card from '@data/types/Card';
+import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 
 interface Props {
   code: string;
   name: string;
+  investigator?: Card;
   description?: string;
   color?: string;
-  bulletType?: BulletType;
   value: number;
-  limit?: number;
-  onInc: (code: string, limit?: number) => void;
-  onDec: (code: string) => void;
+  max?: number;
+  min?: number;
+  onInc: (code: string, max?: number) => void;
+  onDec: (code: string, min?: number) => void;
   editable: boolean;
+  showDelta: boolean;
 }
 
-export default class CounterListItemComponent extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function CounterListItemComponent({ code, investigator, name, description, color, value, max, min, onInc, onDec, editable, showDelta }: Props) {
+  const { typography, width } = useContext(StyleContext);
+  const inc = useCallback(() => onInc(code, max), [onInc, code, max]);
+  const dec = useCallback(() => onDec(code, min), [onDec, code, min]);
 
-  _inc = () => {
-    const {
-      onInc,
-      code,
-      limit,
-    } = this.props;
-    onInc(code, limit);
-  };
-
-  _dec = () => {
-    const {
-      onDec,
-      code,
-    } = this.props;
-    onDec(code);
-  };
-
-  renderCount() {
-    const { color } = this.props;
-    const { gameFont, typography } = this.context;
+  const count = useMemo(() => {
     return (
       <View style={styles.count}>
-        <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.center, color ? typography.white : {}]}>
-          { this.props.value }
+        <Text style={[typography.bigGameFont, typography.center, color ? typography.white : {}]}>
+          { showDelta && value > 0 ? `+${value}` : `${value}` }
         </Text>
       </View>
     );
-  }
-
-  render() {
-    const {
-      name,
-      description,
-      limit,
-      color,
-      value,
-      editable,
-    } = this.props;
-    const { gameFont, borderStyle, typography } = this.context;
+  }, [color, value, showDelta, typography]);
+  if (investigator) {
     return (
-      <View style={[
-        styles.promptRow,
-        borderStyle,
-        color ? { backgroundColor: color } : {},
-      ]}>
-        <View style={styles.column}>
-          <Text style={[typography.mediumGameFont, { fontFamily: gameFont }, color ? typography.white : {}]}>
-            { name }
-          </Text>
-          { editable && !!description && (
-            <Text style={[typography.text, color ? typography.white : {}]}>
-              { description }
-            </Text>
+      <View style={space.paddingBottomXs}>
+        <CompactInvestigatorRow
+          investigator={investigator}
+          width={width - s * (editable ? 4 : 2)}
+          description={editable && !!description ? description : undefined}
+        >
+          { editable ? (
+            <PlusMinusButtons
+              count={value}
+              max={max}
+              min={min}
+              onIncrement={inc}
+              onDecrement={dec}
+              countRender={count}
+              color={color ? 'light' : 'dark'}
+              hideDisabledMinus
+              dialogStyle
+              rounded
+            />
+          ) : (
+            count
           ) }
-        </View>
-        { editable ? (
-          <PlusMinusButtons
-            count={value}
-            max={limit}
-            onIncrement={this._inc}
-            onDecrement={this._dec}
-            countRender={this.renderCount()}
-            color={color ? 'light' : 'dark'}
-            hideDisabledMinus
-          />
-        ) : (
-          this.renderCount()
-        ) }
+        </CompactInvestigatorRow>
       </View>
     );
-
   }
+  return (
+    <View style={[
+      styles.promptRow,
+      color ? { backgroundColor: color } : {},
+    ]}>
+      <View style={styles.column}>
+        <Text style={[typography.mediumGameFont, color ? typography.white : {}]}>
+          { name }
+        </Text>
+        { editable && !!description && (
+          <Text style={[typography.text, color ? typography.white : {}]}>
+            { description }
+          </Text>
+        ) }
+      </View>
+      { editable ? (
+        <PlusMinusButtons
+          count={value}
+          max={max}
+          min={min}
+          onIncrement={inc}
+          onDecrement={dec}
+          countRender={count}
+          color={color ? 'light' : 'dark'}
+          hideDisabledMinus
+          dialogStyle
+          rounded
+        />
+      ) : (
+        count
+      ) }
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -104,7 +106,6 @@ const styles = StyleSheet.create({
     minWidth: 40,
   },
   promptRow: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
     padding: m,
     paddingTop: s,
     paddingBottom: s,

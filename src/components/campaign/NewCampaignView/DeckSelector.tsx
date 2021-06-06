@@ -2,13 +2,15 @@ import React, { useCallback } from 'react';
 
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import InvestigatorDeckRow from '../InvestigatorDeckRow';
-import DeckList, { DeckListProps } from '../DeckList';
-import { Deck } from '@actions/types';
-import Card, { CardsMap } from '@data/Card';
+import CampaignDeckList, { CampaignDeckListProps } from '../CampaignDeckList';
+import { Deck, DeckId } from '@actions/types';
+import Card from '@data/types/Card';
+import { useInvestigatorCards } from '@components/core/hooks';
+import { useDeckActions } from '@data/remote/decks';
 
-interface Props extends DeckListProps {
+interface Props extends CampaignDeckListProps {
   deckRemoved?: (
-    id: number,
+    id: DeckId,
     deck?: Deck,
     investigator?: Card
   ) => void;
@@ -18,63 +20,47 @@ interface Props extends DeckListProps {
   ) => void;
 }
 
-export default function DeckSelector(props: Props) {
-  const {
-    investigatorRemoved,
-    deckRemoved,
-    componentId,
-    deckIds,
-    investigatorIds,
-    deckAdded,
-    investigatorAdded,
-    campaignId,
-  } = props;
-  const renderDeck = useCallback(
-    (
-      deckId: number,
-      cards: CardsMap,
-      investigators: CardsMap
-    ) => {
-      return (
-        <InvestigatorDeckRow
-          key={deckId}
-          id={deckId}
-          investigators={investigators}
-          deckRemoved={deckRemoved}
-        />
-      );
-    }, [deckRemoved]);
+export default function DeckSelector({
+  investigatorRemoved,
+  deckRemoved,
+  componentId,
+  deckIds,
+  investigatorIds,
+}: Props) {
+  const investigators = useInvestigatorCards();
+  const actions = useDeckActions();
+  const renderDeck = useCallback((deckId: DeckId) => {
+    return (
+      <InvestigatorDeckRow
+        key={deckId.uuid}
+        id={deckId}
+        deckRemoved={deckRemoved}
+        actions={actions}
+      />
+    );
+  }, [deckRemoved, actions]);
 
-  const renderInvestigator = useCallback(
-    (
-      code: string,
-      investigators: CardsMap
-    ) => {
-      const investigator = investigators[code];
-      if (!investigator) {
-        return null;
-      }
-      return (
-        <InvestigatorRow
-          key={code}
-          investigator={investigator}
-          onRemove={investigatorRemoved}
-        />
-      );
-    }, [investigatorRemoved]
-  );
+  const renderInvestigator = useCallback((code: string) => {
+    const investigator = investigators && investigators[code];
+    if (!investigator) {
+      return null;
+    }
+    return (
+      <InvestigatorRow
+        key={code}
+        investigator={investigator}
+        onRemove={investigatorRemoved}
+      />
+    );
+  }, [investigatorRemoved, investigators]);
 
   return (
-    <DeckList
+    <CampaignDeckList
       renderDeck={renderDeck}
       renderInvestigator={renderInvestigator}
       componentId={componentId}
-      campaignId={campaignId}
       deckIds={deckIds}
       investigatorIds={investigatorIds}
-      deckAdded={deckAdded}
-      investigatorAdded={investigatorAdded}
-      otherProps={props}
     />
   );
 }

@@ -1,270 +1,193 @@
-import React from 'react';
-import { concat, filter, find, findIndex, forEach, head, last, map } from 'lodash';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { concat, filter, find, forEach, head, map } from 'lodash';
 import { View } from 'react-native';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { Campaign, SingleCampaign, DecksMap, Pack, ScenarioResult, CUSTOM } from '@actions/types';
-import connectDb from '@components/data/connectDb';
+import { ScenarioResult, CUSTOM } from '@actions/types';
 import SettingsSwitch from '@components/core/SettingsSwitch';
-import EditText from '@components/core/EditText';
-import { updateCampaign } from '../actions';
-import { completedScenario, campaignScenarios, scenarioFromCard, Scenario } from '../constants';
-import SinglePickerComponent from '@components/core/SinglePickerComponent';
-import { ShowTextEditDialog } from '@components/core/withDialogs';
-import Database from '@data/Database';
-import { getAllDecks, getAllCyclePacks, getAllStandalonePacks, getPack, getTabooSet, AppState } from '@reducers';
+import { updateCampaignShowInterludes } from '../actions';
+import { completedScenario, scenarioFromCard, Scenario } from '../constants';
+import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
+import { makeAllCyclePacksSelector, getAllStandalonePacks, makePackSelector, AppState } from '@reducers';
+import useCardsFromQuery from '@components/card/useCardsFromQuery';
+import { where } from '@data/sqlite/query';
+import space from '@styles/space';
+import { useCycleScenarios } from '@components/core/hooks';
+import { usePickerDialog } from '@components/deck/dialogs';
+import { QuerySort } from '@data/sqlite/types';
+import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
+import EncounterIcon from '@icons/EncounterIcon';
+import StyleContext from '@styles/StyleContext';
+import AppIcon from '@icons/AppIcon';
+import { useSetCampaignShowInterludes } from '@data/remote/campaigns';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 interface OwnProps {
-  componentId: string;
-  campaign: SingleCampaign;
+  campaign: SingleCampaignT;
   scenarioChanged: (result: ScenarioResult) => void;
   showTextEditDialog: ShowTextEditDialog;
+  initialScenarioCode?: string;
 }
 
-interface ReduxProps {
-  showInterludes: boolean;
-  cycleScenarios: Scenario[];
-  cyclePacks: Pack[];
-  standalonePacks: Pack[];
-  decks: DecksMap;
-  latestScenario?: ScenarioResult;
-  tabooSetId?: number;
-}
+const SCENARIO_QUERY = where('c.type_code = "scenario"');
+const SCENARIO_SORT: QuerySort[] = [{ s: 'c.position', direction: 'ASC' }];
 
-interface ReduxActionProps {
-  updateCampaign: (id: number, sparseCampaign: Partial<Campaign>) => void;
-}
-
-interface Data {
-  allScenarios: Scenario[];
-}
-
-type Props = OwnProps & ReduxProps & ReduxActionProps & Data;
-
-interface State {
-  selectedScenario: typeof CUSTOM | Scenario;
-  customScenario: string;
-  resolution: string;
-}
-
-class ScenarioSection extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    const nextScenario = head(props.allScenarios);
-    this.state = {
-      selectedScenario: nextScenario || CUSTOM,
-      customScenario: '',
-      resolution: '',
-    };
-  }
-
-  componentDidMount() {
-    this._updateManagedScenario();
-  }
-
-  _toggleShowInterludes = () => {
-    const {
-      campaign,
-      showInterludes,
-      updateCampaign,
-    } = this.props;
-    const campaignUpdate: Campaign = { showInterludes: !showInterludes } as any;
-    updateCampaign(campaign.id, campaignUpdate);
-  };
-
-  _showCustomCampaignDialog = () => {
-    const {
-      showTextEditDialog,
-    } = this.props;
-    showTextEditDialog(
-      t`Custom Scenario Name`,
-      this.state.customScenario,
-      this._customScenarioTextChanged
+export default function ScenarioSection({ campaign, initialScenarioCode, scenarioChanged, showTextEditDialog }: OwnProps) {
+  const [allScenarioCards, loading] = useCardsFromQuery({
+    query: SCENARIO_QUERY,
+    sort: SCENARIO_SORT,
+  });
+  const { colors } = useContext(StyleContext);
+  const getPack = useMemo(makePackSelector, []);
+  const cyclePack = useSelector((state: AppState) => getPack(state, campaign.cycleCode));
+  const getAllCyclePacks = useMemo(makeAllCyclePacksSelector, []);
+  const cyclePacks = useSelector((state: AppState) => getAllCyclePacks(state, cyclePack));
+  const standalonePacks = useSelector(getAllStandalonePacks);
+  const fixedCycleScenarios = useCycleScenarios(campaign.cycleCode);
+  const showInterludes = !!campaign.showInterludes;
+  const allScenarios = useMemo(() => {
+    const hasCompletedScenario = completedScenario(campaign.scenarioResults);
+    const finishedScenarios = new Set(map(campaign.scenarioResults, r => r.scenarioCode));
+    const cyclePackCodes = new Set(map(cyclePacks, pack => pack.code));
+    const standalonePackCodes = new Set(map(standalonePacks, pack => pack.code));
+    const cycleScenarios: Scenario[] = [];
+    const standaloneScenarios: Scenario[] = [];
+    forEach(allScenarioCards, card => {
+      if (cyclePackCodes.has(card.pack_code)) {
+        const scenario = scenarioFromCard(card);
+        if (scenario) {
+          cycleScenarios.push(scenario);
+        }
+      }
+      if (standalonePackCodes.has(card.pack_code) && !finishedScenarios.has(card.name)) {
+        const scenario = scenarioFromCard(card);
+        if (scenario) {
+          standaloneScenarios.push(scenario);
+        }
+      }
+    });
+    return concat(
+      filter(
+        fixedCycleScenarios || cycleScenarios,
+        scenario => !finishedScenarios.has(scenario.name) && !hasCompletedScenario(scenario)),
+      standaloneScenarios
     );
-  };
+  }, [allScenarioCards, fixedCycleScenarios, campaign.scenarioResults, cyclePacks, standalonePacks]);
 
-  _updateManagedScenario = () => {
-    const {
-      selectedScenario,
-      customScenario,
-      resolution,
-    } = this.state;
+  const [selectedScenario, setSelectedScenario] = useState<Scenario | typeof CUSTOM>(head(allScenarios) || CUSTOM);
+  const [customScenario, setCustomScenario] = useState('');
+  const [resolution, setResolution] = useState('');
+  const dispatch = useDispatch();
 
-    this.props.scenarioChanged({
+  const setShowInterludes = useSetCampaignShowInterludes();
+  const toggleShowInterludes = useCallback(() => {
+    dispatch(updateCampaignShowInterludes(setShowInterludes, campaign.id, !showInterludes));
+  }, [campaign, showInterludes, setShowInterludes, dispatch]);
+
+  useEffect(() => {
+    scenarioChanged({
       scenario: selectedScenario !== CUSTOM ? selectedScenario.name : customScenario,
       scenarioCode: selectedScenario !== CUSTOM ? selectedScenario.code : CUSTOM,
       scenarioPack: selectedScenario !== CUSTOM ? selectedScenario.pack_code : CUSTOM,
       interlude: selectedScenario !== CUSTOM && !!selectedScenario.interlude,
       resolution: resolution,
     });
-  };
+  }, [selectedScenario, customScenario, resolution, scenarioChanged]);
 
-  _scenarioChanged = (index: number) => {
-    const {
-      allScenarios,
-    } = this.props;
-    const scenarioName = this.possibleScenarios()[index];
-    this.setState({
-      selectedScenario: find(
-        allScenarios,
-        scenario => scenario.name === scenarioName,
-      ) || CUSTOM,
-    }, this._updateManagedScenario);
-  };
-
-  _customScenarioTextChanged = (value?: string) => {
-    this.setState({
-      customScenario: value || '',
-    }, this._updateManagedScenario);
-  };
-
-  _resolutionChanged = (value?: string) => {
-    this.setState({
-      resolution: value || '',
-    }, this._updateManagedScenario);
-  };
-
-  possibleScenarios() {
-    const {
-      allScenarios,
-      showInterludes,
-    } = this.props;
-    const scenarios = map(
+  useEffect(() => {
+    // tslint:disable-next-line
+    if (!loading && allScenarios.length) {
+      if (initialScenarioCode) {
+        const initialScenario = find(allScenarios, s => s.code === initialScenarioCode);
+        if (initialScenario) {
+          setSelectedScenario(initialScenario);
+          return;
+        }
+      }
+      if (selectedScenario !== 'custom' && allScenarios[0].code !== selectedScenario.code) {
+        setSelectedScenario(allScenarios[0]);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [allScenarioCards]);
+  const possibleScenarios = useMemo(() => {
+    const scenarios: { title: string, value: Scenario | typeof CUSTOM }[] = map(
       filter(allScenarios, scenario => showInterludes || !scenario.interlude),
-      card => card.name);
-    scenarios.push(CUSTOM);
+      scenario => {
+        return {
+          iconNode: scenario.interlude ? <AppIcon name="log" size={24} color={colors.M} /> : <EncounterIcon encounter_code={scenario.code} size={24} color={colors.M} />,
+          title: scenario.name,
+          value: scenario,
+        };
+      });
+    scenarios.push({
+      title: t`Custom`,
+      value: CUSTOM,
+    });
     return scenarios;
-  }
+  }, [allScenarios, showInterludes, colors]);
+  const { dialog, showDialog } = usePickerDialog({
+    title: showInterludes ? t`Scenario or Interlude` : t`Scenario`,
+    items: possibleScenarios,
+    selectedValue: selectedScenario,
+    onValueChange: setSelectedScenario,
+  });
+  const customScenarioTextChanged = useCallback((value?: string) => {
+    setCustomScenario(value || '');
+  }, [setCustomScenario]);
+  const showCustomScenarioDialog = useCallback(() => {
+    showTextEditDialog(t`Scenario name`, customScenario || '', customScenarioTextChanged);
+  }, [showTextEditDialog, customScenario, customScenarioTextChanged]);
+  const resolutionChanged = useCallback((value?: string) => {
+    setResolution(value || '');
+  }, [setResolution]);
+  const showResolutionDialog = useCallback(() => {
+    showTextEditDialog(t`Resolution`, resolution || '', resolutionChanged);
+  }, [showTextEditDialog, resolution, resolutionChanged]);
 
-  render() {
-    const { showInterludes } = this.props;
-    const {
-      selectedScenario,
-      customScenario,
-      resolution,
-    } = this.state;
-
-    const possibleScenarios = this.possibleScenarios();
-    return (
-      <View>
-        <SettingsSwitch
-          title={t`Show Interludes`}
-          value={showInterludes}
-          onValueChange={this._toggleShowInterludes}
-          settingsStyle
-        />
-        <SinglePickerComponent
-          title={selectedScenario !== CUSTOM && selectedScenario.interlude ? t`Interlude` : t`Scenario`}
-          modalTitle={showInterludes ? t`Scenario or Interlude` : t`Scenario`}
-          choices={map(possibleScenarios, name => {
-            return {
-              text: name,
-            };
-          })}
-          onChoiceChange={this._scenarioChanged}
-          selectedIndex={findIndex(possibleScenarios, name => name === (selectedScenario === CUSTOM ? CUSTOM : selectedScenario.name))}
+  const scenarioName = useMemo(() => {
+    if (loading) {
+      return '   ';
+    }
+    return selectedScenario === CUSTOM ? t`Custom` : selectedScenario.name;
+  }, [loading, selectedScenario]);
+  return (
+    <View style={space.paddingSideS}>
+      { dialog }
+      <SettingsSwitch
+        title={t`Show Interludes`}
+        value={showInterludes}
+        onValueChange={toggleShowInterludes}
+        settingsStyle
+        last
+      />
+      <DeckPickerStyleButton
+        icon="book"
+        title={selectedScenario !== CUSTOM && selectedScenario.interlude ? t`Interlude` : t`Scenario`}
+        valueLabel={scenarioName}
+        editable
+        first
+        onPress={showDialog}
+      />
+      { !loading && selectedScenario === CUSTOM && (
+        <DeckPickerStyleButton
+          icon="name"
+          title={t`Name`}
+          valueLabel={customScenario || t`(required)`}
+          onPress={showCustomScenarioDialog}
           editable
         />
-        { selectedScenario === CUSTOM && (
-          <EditText
-            title={t`Name`}
-            placeholder={t`(required)`}
-            onValueChange={this._customScenarioTextChanged}
-            value={customScenario}
-          />
-        ) }
-        { (selectedScenario === CUSTOM || !selectedScenario.interlude) && (
-          <EditText
-            title={t`Resolution`}
-            placeholder={t`(required)`}
-            onValueChange={this._resolutionChanged}
-            value={resolution}
-          />
-        ) }
-      </View>
-    );
-  }
+      ) }
+      { (selectedScenario === CUSTOM || !selectedScenario.interlude) && (
+        <DeckPickerStyleButton
+          icon="finish"
+          title={t`Resolution`}
+          valueLabel={resolution || t`(required)`}
+          onPress={showResolutionDialog}
+          editable
+        />
+      ) }
+    </View>
+  );
 }
-
-function mapStateToPropsFix(state: AppState, props: OwnProps): ReduxProps {
-  const latestScenario = last(props.campaign.scenarioResults || []);
-  const cyclePack = getPack(state, props.campaign.cycleCode);
-  const cyclePacks = getAllCyclePacks(state, cyclePack);
-  const standalonePacks = getAllStandalonePacks(state);
-  return {
-    showInterludes: !!props.campaign.showInterludes,
-    cycleScenarios: campaignScenarios(props.campaign.cycleCode),
-    cyclePacks,
-    standalonePacks,
-    decks: getAllDecks(state),
-    latestScenario,
-    tabooSetId: getTabooSet(state),
-  };
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    updateCampaign,
-  }, dispatch);
-}
-
-interface DbProps {
-  scenarioResults: ScenarioResult[];
-  finishedScenarios: string[];
-  cyclePacks: Pack[];
-  standalonePacks: Pack[];
-  cycleScenarios: Scenario[];
-}
-
-export default connect(mapStateToPropsFix, mapDispatchToProps)(
-  connectDb<OwnProps & ReduxProps & ReduxActionProps, Data, DbProps>(
-    ScenarioSection,
-    (props: OwnProps & ReduxProps & ReduxActionProps) => {
-      return {
-        scenarioResults: props.campaign.scenarioResults,
-        finishedScenarios: props.campaign.finishedScenarios,
-        cyclePacks: props.cyclePacks,
-        standalonePacks: props.standalonePacks,
-        cycleScenarios: props.cycleScenarios,
-      };
-    },
-    async(db: Database, props) => {
-      const hasCompletedScenario = completedScenario(props.scenarioResults);
-      const finishedScenarios = new Set(props.finishedScenarios);
-      const cyclePackCodes = new Set(map(props.cyclePacks, pack => pack.code));
-      const standalonePackCodes = new Set(map(props.standalonePacks, pack => pack.code));
-      const allScenarioCards = await (await db.cardsQuery())
-        .where('c.type_code = "scenario"')
-        .orderBy('c.position', 'ASC')
-        .getMany();
-
-      const cycleScenarios: Scenario[] = [];
-      const standaloneScenarios: Scenario[] = [];
-      forEach(allScenarioCards, card => {
-        if (cyclePackCodes.has(card.pack_code)) {
-          const scenario = scenarioFromCard(card);
-          if (scenario) {
-            cycleScenarios.push(scenario);
-          }
-        }
-        if (standalonePackCodes.has(card.pack_code) && !finishedScenarios.has(card.name)) {
-          const scenario = scenarioFromCard(card);
-          if (scenario) {
-            standaloneScenarios.push(scenario);
-          }
-        }
-      });
-      return {
-        allScenarios: concat(
-          filter(
-            props.cycleScenarios || cycleScenarios,
-            scenario => !finishedScenarios.has(scenario.name) && !hasCompletedScenario(scenario)),
-          standaloneScenarios
-        ),
-      };
-    }
-  )
-);

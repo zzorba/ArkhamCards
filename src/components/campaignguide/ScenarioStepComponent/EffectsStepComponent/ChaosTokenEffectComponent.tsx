@@ -11,19 +11,24 @@ interface Props {
   effect: AddRemoveChaosTokenEffect;
 }
 
-export default class ChaosTokenEffectComponent extends React.Component<Props> {
-  render() {
-    const { effect } = this.props;
-    const tokenString = map(effect.tokens, token =>
-      isSpecialToken(token) ? `[${token}]` : `${token}`
-    ).join(' ');
-    const text = effect.type === 'add_chaos_token' ?
-      t`Add ${tokenString} to the chaos bag.` :
-      t`Remove ${tokenString} from the chaos bag.`;
-    return (
-      <SetupStepWrapper bulletType="small">
-        <CampaignGuideTextComponent text={text} />
-      </SetupStepWrapper>
-    );
+function formatTokenString(tokens: string[]): string {
+  if (tokens.length === 2) {
+    return t`${tokens[0]} and ${tokens[1]}`;
   }
+  return tokens.join(' ');
+}
+
+export default function ChaosTokenEffectComponent({ effect }: Props) {
+  const tokens = map(effect.tokens, token =>
+    isSpecialToken(token) ? `[${token}]` : `${token}`
+  );
+  const tokenString = formatTokenString(tokens);
+  const text = effect.type === 'add_chaos_token' ?
+    t`Add ${tokenString} to the chaos bag.` :
+    t`Remove ${tokenString} from the chaos bag.`;
+  return (
+    <SetupStepWrapper bulletType="small">
+      <CampaignGuideTextComponent text={text} />
+    </SetupStepWrapper>
+  );
 }

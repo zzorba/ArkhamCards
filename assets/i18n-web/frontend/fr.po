@@ -1,0 +1,975 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2021-01-04 20:20-0500\n"
+"PO-Revision-Date: 2021-02-04 20:04-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"mime-version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"x-generator: Poedit 2.4.2\n"
+"x-poedit-basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: fr\n"
+
+msgid ""
+"This website is dedicated to providing a way for players of the Arkham "
+"Horror LCG to connect when far apart."
+msgstr ""
+"Ce site web est dédié à fournir un moyen pour les joueurs de Horreur à "
+"Arkham : Le Jeu de Cartes de se connecter lorsqu'ils sont éloignés les uns "
+"des autres."
+
+#, javascript-format
+msgid ""
+"Costs to maintain the site are provided by the generous support of fans on "
+"${ patreon }. If you like what we are doing, consider supporting us."
+msgstr ""
+"Les coûts de maintenance du site sont assurés par le généreux soutien des "
+"fans sur ${ patreon}. Si vous aimez ce que nous faisons, pensez à nous "
+"soutenir."
+
+msgid "Host your own Epic Multiplayer event"
+msgstr "Organisez votre propre Événement Multijoueur Épique"
+
+msgid ""
+"This site allows you to host an Epic Multiplayer events for Arkham Horror: "
+"The Card Game."
+msgstr ""
+"Ce site vous permet d'accueillir un Événement Multijoueur Épique pour "
+"Horreur à Arkham : Le Jeu de Cartes."
+
+msgid ""
+"As the organizer, you will be need to setup communication channels with "
+"your players (we suggest Discord)."
+msgstr ""
+"En tant qu'organisateur, vous devrez mettre en place des canaux de "
+"communication avec vos joueurs (nous suggérons Discordance)."
+
+msgid "This site will allow players to:"
+msgstr "Ce site permettra aux joueurs de :"
+
+msgid "Pre-register for the event with tentative table size."
+msgstr "De s'inscrire à l'avance à l'événement en indiquant la taille de la table."
+
+msgid "Confirm registration up to an hour before the event."
+msgstr "Confirmer leur inscription jusqu'à une heure avant l'événement."
+
+msgid ""
+"Start the game and keep track of time, while also reporting shared game "
+"state."
+msgstr ""
+"De commencer le jeu et de suivre le temps, tout en signalant également le "
+"statut commun du jeu."
+
+msgid "Event scenario"
+msgstr "Scénario de l'événement"
+
+msgid "The Blob That Ate Everything"
+msgstr "Le Dévoreur de Toute Chose"
+
+msgid "War of the Outer Gods"
+msgstr "La Guerre des Dieux Extérieurs"
+
+msgid "Event name"
+msgstr "Nom de l'événement"
+
+msgid "Public event"
+msgstr "Événement public"
+
+msgid "Registration password"
+msgstr "Code d'enregistrement"
+
+msgid "Description (supports markdown)"
+msgstr "Description (prend en charge Markdown)"
+
+msgid "Discord webhook (for announcements)"
+msgstr "Discord webhook (pour les annonces)"
+
+msgid "Scheduled start time"
+msgstr "Heure de début programmée"
+
+msgid "Create event"
+msgstr "Créer un événement"
+
+msgid "Events you are hosting"
+msgstr "Événements que vous organisez"
+
+msgid "Schedule an event"
+msgstr "Programmer un événement"
+
+msgid "Upcoming event you are registered for"
+msgstr "Prochain événement auquel vous êtes inscrit"
+
+msgid "Upcoming events"
+msgstr "Événements à venir"
+
+msgid "Scheduled events"
+msgstr "Événements programmés"
+
+msgid ""
+"Site under construction while we prepare for War of the Outer Gods. Check "
+"back soon!"
+msgstr ""
+"Site en construction pendant que nous préparons la guerre des dieux "
+"extérieurs. Revenez nous voir bientôt !"
+
+msgid "(video walkthrough of the interface)"
+msgstr "(visite vidéo de l'interface)"
+
+msgid "Arkham Horror: Epic Multiplayer Events"
+msgstr "Horreur à Arkham : Événements Multijoueur épiques"
+
+msgid ""
+"This website allows you to participate in Arkham Horror scenarios that "
+"utilize the epic multiplayer format with players around the world. These "
+"are timed events where you can play an Arkham game as you normally do, "
+"while using the website to share progress and receive updates from the "
+"organizers. The website currently supports two scenarios:"
+msgstr ""
+"Ce site web vous permet de participer à des scénarios de Horreurs à Arkham "
+": Le Jeu de Carte qui utilisent le format Multijoueur Épique avec des "
+"joueurs du monde entier. Il s'agit d'événements chronométrés où vous pouvez "
+"jouer une partie comme vous le faites habituellement, tout en utilisant le "
+"site web pour partager les avancées et recevoir les mises à jour des "
+"organisateurs. Le site web prend actuellement en charge deux scénarios :"
+
+#, javascript-format
+msgid "• The Blob That Ate Everything ${ blobVideoLink }"
+msgstr "• Le Dévoreur de Toute Chose ${ blobVideoLink }"
+
+msgid "• War of the Outer Gods ${ warVideoLink }."
+msgstr "• La Guerre des Dieux Extérieurs ${ warVideoLink }."
+
+msgid "You are more than welcome to use this site to host your own events."
+msgstr "Vous pouvez utiliser ce site pour organiser vos propres événements."
+
+msgid "Become a Patron!"
+msgstr "Devenez mécène !"
+
+msgid ""
+"Hosting costs for this site and the Arkham Cards app comes from the "
+"generous support of fans on Patreon."
+msgstr ""
+"Les frais d'hébergement de ce site et de l'application Arkham Cards "
+"proviennent du généreux soutien des supporters de Patreon."
+
+#, javascript-format
+msgid "Language (${ language })"
+msgstr "Langue (${ language })"
+
+msgid "Login"
+msgstr "Connexion"
+
+msgid "Home"
+msgstr "Accueil"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Logout"
+msgstr "Déconnexion"
+
+msgid "About"
+msgstr "À propos de"
+
+msgid "Friend Requests"
+msgstr "Demandes d'amis"
+
+msgid "Accept"
+msgstr "Accepter"
+
+msgid "Reject"
+msgstr "Refuser"
+
+msgid "Pending Requests"
+msgstr "Demandes en attente"
+
+msgid "Revoke"
+msgstr "Annuler"
+
+msgid "Friends"
+msgstr "Amis"
+
+msgid "Send Friend Request"
+msgstr "Envoyer une demande d'ami"
+
+msgid "Confirm Friend"
+msgstr "Confirmez un ami"
+
+msgid "Cancel Friend Request"
+msgstr "Annuler la demande d'ami"
+
+msgid "Cancel Friendship"
+msgstr "Annuler une relation avec un ami"
+
+msgid "Blank handles are not allowed"
+msgstr "Les pseudonymes vides ne sont pas autorisés"
+
+msgid "Account name"
+msgstr "Nom du compte"
+
+msgid "Choose a handle"
+msgstr "Choisissez vous un pseudonyme"
+
+msgid "Update"
+msgstr "Mise à jour"
+
+msgid "Handle"
+msgstr "Pseudonyme"
+
+msgid "No handle chosen yet."
+msgstr "Aucun pseudonyme n'a encore été choisie."
+
+msgid "Update Description"
+msgstr "Mise à jour de la description"
+
+#, javascript-format
+msgid "${ participant.groupSize } player"
+msgid_plural "${ participant.groupSize } players"
+msgstr[0] "${ participant.groupSize } joueur"
+msgstr[1] "${ participant.groupSize } joueurs"
+
+msgid "Confirmed groups"
+msgstr "Groupes confirmés"
+
+msgid "Unconfirmed groups"
+msgstr "Groupes à confirmer"
+
+msgid "All groups are confirmed."
+msgstr "Tous les groupes sont confirmés."
+
+msgid "Done"
+msgstr "Terminé"
+
+msgid "View participants"
+msgstr "Voir les participants"
+
+msgid "Time remaining"
+msgstr "Temps restant"
+
+#, javascript-format
+msgid "${ groupCount } group"
+msgid_plural "${ groupCount } groups"
+msgstr[0] "${ groupCount } groupe"
+msgstr[1] "${ groupCount } groupes"
+
+#, javascript-format
+msgid "${ playerCount } player"
+msgid_plural "${ playerCount } players"
+msgstr[0] "${ playerCount } joueur"
+msgstr[1] "${ playerCount } joueurs"
+
+msgid "Permanently Delete Event"
+msgstr "Supprimer définitivement un événement"
+
+msgid "Are you sure you want to delete this event?"
+msgstr "Êtes-vous sûr de vouloir supprimer cet événement ?"
+
+msgid "This action cannot be undone and all data will be removed."
+msgstr ""
+"Cette action ne peut pas être annulée et toutes les données seront "
+"supprimées."
+
+msgid "Delete Event"
+msgstr "Supprimer l'événement"
+
+msgid "Archive Event"
+msgstr "Archiver l'événement"
+
+msgid "Are you sure you want to archive this event?"
+msgstr "Êtes-vous sûr de vouloir archiver cet événement ?"
+
+msgid ""
+"The event will no longer be visible on the homepage, but it can still be "
+"visited by URL or have its stats accessed by the admins."
+msgstr ""
+"L'événement ne sera plus visible sur la page d'accueil, mais il peut "
+"toujours être visité par URL ou ses statistiques peuvent être consultées "
+"par les administrateurs."
+
+msgid "Ding dong the Blob is dead!"
+msgstr "Ding dong le Dévoreur est mort !"
+
+msgid ""
+"Red agenda 1a has advanced. Please advance to red agenda 1b during your "
+"next Mythos Phase"
+msgstr ""
+"L'intrigue rouge 1a a progressée. Veuillez avancer à l'intrigue rouge 1b "
+"lors de votre prochaine Phase du Mythe"
+
+msgid ""
+"Red agenda 2a has advanced. Please advance to red agenda 2b during your "
+"next Mythos Phase"
+msgstr ""
+"L'intrigue rouge 2a a progressée. Veuillez avancer à l'intrigue rouge 2b "
+"lors de votre prochaine Phase du Mythe"
+
+msgid ""
+"Red agenda 3a has advanced. Please advance to red agenda 3b during your "
+"next Mythos Phase and prepare for the arrival of Ezel-zen-rezl!"
+msgstr ""
+"L'intrigue rouge 3a a progressée. Veuillez avancer à l'intrigue rouge 3b "
+"lors de votre prochaine Phase du Mythe et préparez-vous à l'arrivée "
+"d'Ezel-zen-rezl !"
+
+msgid ""
+"Green agenda 1a has advanced. Please advance to green agenda 1b during your "
+"next Mythos Phase"
+msgstr ""
+"L'intrigue verte 1a a progressée. Veuillez avancer à l'intrigue verte 1b "
+"lors de votre prochaine Phase du Mythe"
+
+msgid ""
+"Green agenda 2a has advanced. Please advance to green agenda 2b during your "
+"next Mythos Phase"
+msgstr ""
+"L'intrigue verte 2a a progressée. Veuillez avancer à l'intrigue verte 2b "
+"lors de votre prochaine Phase du Mythe"
+
+msgid ""
+"Green agenda 3a has advanced. Please advance to green agenda 3b during your "
+"next Mythos Phase and prepare for the arrival of Magh’an Ark’at!"
+msgstr ""
+"L'intrigue verte 3a a progressée. Veuillez avancer à l'intrigue verte 3b "
+"lors de votre prochaine Phase du Mythe et préparez-vous à l'arrivée de "
+"Magh’an Ark’at !"
+
+msgid ""
+"Blue agenda 1a has advanced. Please advance to blue agenda 1b during your "
+"next Mythos Phase"
+msgstr ""
+"L'intrigue bleue 1a a progressée. Veuillez avancer à l'intrigue bleue 1b "
+"lors de votre prochaine Phase du Mythe"
+
+msgid ""
+"Blue agenda 2a has advanced. Please advance to blue agenda 2b during your "
+"next Mythos Phase"
+msgstr ""
+"L'intrigue bleue 2a a progressée. Veuillez avancer à l'intrigue bleue 2b "
+"lors de votre prochaine Phase du Mythe"
+
+msgid ""
+"Blue agenda 3a has advanced. Please advance to blue agenda 3b during your "
+"next Mythos Phase and prepare for the arrival of Silenus!"
+msgstr ""
+"L'intrigue bleue 3a a progressée. Veuillez avancer à l'intrigue bleue 3b "
+"lors de votre prochaine Phase du Mythe et préparez-vous à l'arrivée de "
+"Silenus !"
+
+msgid "Ezel-zen-rezl has been defeated! The investigators win the game!"
+msgstr "Ezel-zen-rezl a été battu ! Les enquêteurs gagnent la partie !"
+
+msgid "Magh’an Ark’at has been defeated! The investigators win the game!"
+msgstr "Magh’an Ark’at a été battu ! Les enquêteurs gagnent la partie !"
+
+msgid "Announcement sent to players."
+msgstr "Annonce envoyée aux joueurs."
+
+msgid "Send Announcement"
+msgstr "Envoyer une annonce"
+
+#, javascript-format
+msgid ""
+"Received a clue from ${ groupName }. Please add to your copy of Hub "
+"Dimension."
+msgstr ""
+"Réception d'un indice de ${ groupName }. Veuillez l'ajouter à votre copie "
+"de Nexus Dimensionnel."
+
+msgid "Received a clue to add to your copy of Hub Dimension."
+msgstr "Réception d'un indice à ajouter à votre exemplaire de Nexus Dimensionnel."
+
+#, javascript-format
+msgid ""
+"Received help in New York from ${ groupName }. Deal 3 damage to a "
+"non-Ancient One enemy at a \"New York\" location."
+msgstr ""
+"Aide reçue à New York de ${ groupName }. Infligez 3 dommages à un ennemi "
+"non Grand Ancien dans un lieu « New York »."
+
+msgid ""
+"Received help in New York. Deal 3 damage to a non-Ancient One enemy at a "
+"\"New York\" location."
+msgstr ""
+"Aide reçue à New York. Infligez 3 dommages à un ennemi non Grand Ancien "
+"dans un lieu « New York »."
+
+#, javascript-format
+msgid ""
+"Received help in Montréal from ${ groupName }. Deal 3 damage to a "
+"non-Ancient One enemy at a \"Montréal\" location."
+msgstr ""
+"Aide reçue à Montréal de ${ groupName }. Infligez 3 dommages à un ennemi "
+"non Grand Ancien dans un lieu « Montréal »."
+
+msgid ""
+"Received help in Montréal. Deal 3 damage to a non-Ancient One enemy at a "
+"\"Montréal\" location."
+msgstr ""
+"Aide reçue à Montréal. Infligez 3 dommages à un ennemi non Grand Ancien "
+"dans un lieu « Montréal »."
+
+#, javascript-format
+msgid ""
+"Received help in Providence from ${ groupName }. Deal 3 damage to a "
+"non-Ancient One enemy at a \"Providence\" location."
+msgstr ""
+"Aide reçue à Providence de ${ groupName }. Infligez 3 dommages à un ennemi "
+"non Grand Ancien dans un lieu « Providence »."
+
+msgid ""
+"Received help in Providence. Deal 3 damage to a non-Ancient One enemy at a "
+"\"Providence\" location."
+msgstr ""
+"Aide reçue à Providence. Infligez 3 dommages à un ennemi non Grand Ancien "
+"dans un lieu « Providence »."
+
+msgid "A worried man and women look towards the sky."
+msgstr "Un homme et des femmes inquiets regardent vers le ciel."
+
+msgid "A man and women runs from a looming blob."
+msgstr "Un homme et des femmes fuient un blob qui se profile."
+
+msgid "Announcements"
+msgstr "Annonces"
+
+msgid "Rescue the Chemist"
+msgstr "Secourir la Chimiste"
+
+msgid "Recover the Sample"
+msgstr "Récupérer le Fragment"
+
+msgid "Drive Off the Mi-Go"
+msgstr "Repousser les Mi-Go"
+
+msgid "Diffuse the Explosives"
+msgstr "Désamorcer les Explosifs"
+
+msgid "Inside the Blob"
+msgstr ""
+
+msgid "Dance of the Bricks"
+msgstr ""
+
+msgid "The Great Ooze Flood"
+msgstr ""
+
+msgid "Devourer of Ages"
+msgstr ""
+
+msgid "Reveal Act 3b story"
+msgstr "Révélez l'histoire de l'acte 3b"
+
+msgid "Act 3b Story Cards"
+msgstr "Carte Histoire de l'acte 3b"
+
+msgid "Choose Act 3b Story"
+msgstr "Choisissez une Histoire de l'acte 3b"
+
+msgid "Send Selection"
+msgstr "Envoyer votre choix"
+
+msgid ""
+"Act 1 global clue threshold has been reached! Make sure to advance act 1 "
+"when you start your next round."
+msgstr ""
+"Le seuil d'indice global de l'Acte 1 est atteint ! Veillez à faire avancer "
+"l'acte 1 lorsque vous commencerez votre prochain tour."
+
+msgid "Blob being examined with scientified instruments."
+msgstr "Blob examiné avec des instruments scientifiques."
+
+msgid "Act 1 Clues"
+msgstr "Indices de l'Acte 1"
+
+msgid "Send announcement to advance act 1"
+msgstr "Envoyer l'annonce pour avancer l'Acte 1"
+
+msgid "Add act 1 clues"
+msgstr "Ajouter des indices à l'acte 1"
+
+msgid "No current shared clue goal"
+msgstr "Objectif commun actuel sans indice"
+
+msgid "Reset shared act 1 clue goal"
+msgstr "Réinitialiser l'objectif d'indice commun de l'acte 1"
+
+msgid "A blob consuming a car and a house."
+msgstr "Un blob dévorant une voiture et une maison."
+
+msgid "8L-08 Damage"
+msgstr "Dégât du Sujet 8L-08"
+
+msgid "Deal damage"
+msgstr "Infliger des dégâts"
+
+msgid "A man tries to escape the grasp of a blob."
+msgstr "Un homme tente d'échapper à l'emprise d'un blob."
+
+msgid "Available Countermeasures"
+msgstr "Contre-mesures disponibles"
+
+msgid "Add countermeasures"
+msgstr "Ajouter des contre-mesures"
+
+msgid "No countermeasures available"
+msgstr "Aucune contre-mesure disponible"
+
+msgid "Use a countermeasure"
+msgstr "Utiliser une contre-mesure"
+
+msgid "Show all"
+msgstr "Tout afficher"
+
+msgid "Registration saved."
+msgstr "Inscription enregistrée."
+
+msgid "Login to register"
+msgstr "Connexion pour s'inscrire"
+
+msgid "Register group"
+msgstr "Enregistrer le groupe"
+
+msgid ""
+"Please confirm your registration an hour before the event starts, so the "
+"event organizer has an accurate player count."
+msgstr ""
+"Veuillez confirmer votre inscription une heure avant le début de "
+"l'événement, afin que l'organisateur de l'événement dispose du nombre exact "
+"de joueurs."
+
+msgid "Player Count"
+msgstr "Nombre de joueurs"
+
+msgid "Group name"
+msgstr "Nom du groupe"
+
+msgid "Discord handle (or other identifier for organizer)"
+msgstr "Pseudonyme Discord (ou autre identifiant pour l'organisateur)"
+
+msgid "Sign-up has been disabled"
+msgstr "L'inscription a été désactivée"
+
+msgid "Register"
+msgstr "S'inscrire"
+
+msgid "Confirm cancellation"
+msgstr "Confirmer l'annulation"
+
+msgid "Are you sure you want to cancel your registration for this event?"
+msgstr "Êtes-vous sûr de vouloir annuler votre inscription à cet événement ?"
+
+msgid "Cancel registration"
+msgstr "Annuler l'inscription"
+
+msgid "Confirm registration"
+msgstr "Confirmer l'inscription"
+
+#, javascript-format
+msgid ""
+"Your current investigator count is ${ groupSizeString }. You may update "
+"this before confirming if that is incorrect."
+msgstr ""
+"Votre nombre d'investigateurs actuel est de ${ groupSizeString }. Vous "
+"pouvez le mettre à jour avant de confirmer si cela est incorrect."
+
+msgid "Try again later."
+msgstr "Réessayez plus tard."
+
+msgid "Registration can only be confirmed an hour before the event starts."
+msgstr ""
+"L'inscription ne peut être confirmée qu'une heure avant le début de "
+"l'événement."
+
+msgid "Please try again closer to the scheduled start time."
+msgstr "Veuillez réessayer à une heure plus proche de l'heure de début prévue."
+
+msgid "Okay"
+msgstr "Ok"
+
+msgid "Your group's player count"
+msgstr "Le nombre de joueurs de votre groupe"
+
+msgid "Update registration"
+msgstr "Mettre à jour l'enregistrement"
+
+msgid ""
+"Group confirmation is now open, you can confirm your group's player count "
+"now."
+msgstr ""
+"La confirmation de groupe est maintenant ouverte, vous pouvez confirmer le "
+"nombre de joueurs de votre groupe maintenant."
+
+msgid ""
+"You will need to confirm your group one hour before the scheduled start "
+"time."
+msgstr "Vous devrez confirmer votre groupe une heure avant l'heure de début prévue."
+
+msgid ""
+"If the event starts before you confirm, it will not be possible to join "
+"late."
+msgstr ""
+"Si l'événement commence avant votre confirmation, il ne sera pas possible "
+"de participer ultérieurement."
+
+msgid "Start event"
+msgstr "Démarrer l'événement"
+
+msgid ""
+"Warning: unconfirmed players will not be able to join the game once it has "
+"begun."
+msgstr ""
+"Attention : les joueurs non confirmés ne pourront pas rejoindre le jeu une "
+"fois qu'il aura commencé."
+
+msgid "All registered groups are confirmed"
+msgstr "Tous les groupes enregistrés sont confirmés"
+
+msgid "Player count"
+msgstr "Nombre de joueurs"
+
+msgid "Group count"
+msgstr "Nombre de groupes"
+
+msgid "Duration (minutes)"
+msgstr "Durée (minutes)"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Yes"
+msgstr "Oui"
+
+msgid "Send"
+msgstr "Envoyer"
+
+msgid "Cult of Magh’an Ark’at"
+msgstr "Culte de Magh’an Ark’at"
+
+msgid "Magh’an Ark’at"
+msgstr "Magh’an Ark’at"
+
+msgid "Cult of Silenus"
+msgstr "Culte de Silenus"
+
+msgid "Silenus"
+msgstr "Silenus"
+
+msgid "Cult of Ezel-zen-rezl"
+msgstr "Culte de Ezel-zen-rezl"
+
+msgid "Ezel-zen-rezl"
+msgstr "Ezel-zen-rezl"
+
+msgid "Cult of Magh’an Ark’at (Green)"
+msgstr "Culte de Magh’an Ark’at (vert)"
+
+msgid "Cult of Silenus (Blue)"
+msgstr "Culte de Silenus (Bleu)"
+
+msgid "Cult of Ezel-zen-rezl (Red)"
+msgstr "Culte de Ezel-zen-rezl (Rouge)"
+
+#, javascript-format
+msgid ""
+"${ leadingFactions[0] } and ${ leadingFactions[1] } are tied. If needed, "
+"use whichever one has more enemies on your board as the \"Faction in the "
+"lead\"."
+msgstr ""
+"${ leadingFactions[0] } et ${ leadingFactions[1] } sont à égalité. Si "
+"nécessaire, utilisez celle qui a le plus d'ennemis sur votre table comme  « "
+"Faction en tête »."
+
+msgid ""
+"All factions are tied. If needed, use whichever one has more enemies on "
+"your board as the \"Faction in the lead\"."
+msgstr ""
+"Toutes les factions sont à égalité. Si nécessaire, utilisez celle qui a le "
+"plus d'ennemis sur votre table comme « Faction en tête »."
+
+msgid "Add Green Doom"
+msgstr "Ajoutez une Fatalité sur l'intrigue verte"
+
+msgid "Add Blue Doom"
+msgstr "Ajoutez une Fatalité sur l'intrigue bleue"
+
+msgid "Add Red Doom"
+msgstr "Ajoutez une Fatalité sur l'intrigue rouge"
+
+#, javascript-format
+msgid "Agenda ${ agendaNumber }"
+msgid_plural "Agenda ${ agendaNumber }"
+msgstr[0] "Intrigue ${ agendaNumber }"
+msgstr[1] "Intrigue ${ agendaNumber }"
+
+msgid "Doom ${ doom } / ${ doomLimit }"
+msgstr "Fatalité ${ doom } / ${ doomLimit }"
+
+msgid "Factions"
+msgstr "Factions"
+
+msgid "Faction in the Lead:"
+msgstr "Faction en tête :"
+
+msgid "Place Mythos Doom (1 per faction)"
+msgstr "Placez une fatalité sur chaque faction"
+
+#, javascript-format
+msgid "Damage: ${ gameState.damage } / ${ gameState.healthLimit }"
+msgstr "Dégât : ${ gameState.damage } / ${ gameState.healthLimit }"
+
+msgid "Share a clue with this group"
+msgstr "Partager un indice avec ce groupe"
+
+msgid ""
+"Are you sure you want to share a clue with this group using the abiliity on "
+"Act 3?"
+msgstr ""
+"Êtes-vous sûr de vouloir partager un indice avec ce groupe en utilisant la "
+"capacité de l'acte 3 ?"
+
+msgid "Advance group"
+msgstr "Avancer un groupe"
+
+#, javascript-format
+msgid "Advance this group to Act ${ nextAct }"
+msgstr "Avancer ce groupe à l'acte ${ nextAct }"
+
+#, javascript-format
+msgid "Is your group ready to advance to Act ${ nextAct }?"
+msgstr "Votre groupe est-il prêt à avancer à l'acte ${ nextAct } ?"
+
+msgid "Mark this group as eliminated?"
+msgstr "Marquer ce groupe comme éliminé ?"
+
+msgid "Has your entire group been eliminated?"
+msgstr "Votre groupe entier a-t-il été éliminé ?"
+
+#, javascript-format
+msgid ""
+"Because you are still in Act 1 / Act 2, this will add ${ "
+"participant.groupSize } doom to the faction in the lead equal."
+msgstr ""
+"Comme vous êtes toujours dans l'Acte 1 / Acte 2, cela ajoutera ${ "
+"participant.groupSize } fatalité à la faction en tête."
+
+msgid "Elminate group"
+msgstr "Éliminer un groupe"
+
+msgid "share clue"
+msgstr "partager un indice"
+
+msgid "advance"
+msgstr "avancer"
+
+msgid "eliminate group"
+msgstr "éliminer un groupe"
+
+msgid "Requested help in Montéal"
+msgstr "Aide demandée à Montéal"
+
+msgid "Give help in Montéal"
+msgstr "Apporter de l'aide à Montéal"
+
+msgid ""
+"Are you ready to help this group using the action ability on the \"Streets "
+"of Montéal\" location (group limit once per game)?"
+msgstr ""
+"Êtes-vous prêt à aider ce groupe en utilisant la capacité d'action sur le "
+"site « Rues de Montéal » (limite collective d'une fois par partie) ?"
+
+msgid "Requested help in New York"
+msgstr "Aide demandée à New York"
+
+msgid "Give help in New York"
+msgstr "Apporter de l'aide à New York"
+
+msgid ""
+"Are you ready to help this group using the action ability on the \"Streets "
+"of New York\" location (group limit once per game)?"
+msgstr ""
+"Êtes-vous prêt à aider ce groupe en utilisant la capacité d'action sur le "
+"site « Rues de New York » (limite collective d'une fois par partie) ?"
+
+msgid "Requested help in Providence"
+msgstr "Aide demandée à Providence"
+
+msgid "Give help in Providence"
+msgstr "Apporter de l'aide à Providence"
+
+msgid ""
+"Are you ready to help this group using the action ability on the \"Streets "
+"of Providence\" location (group limit once per game)?"
+msgstr ""
+"Êtes-vous prêt à aider ce groupe en utilisant la capacité d'action sur le "
+"site « Rues de Providence » (limite collective d'une fois par partie) ?"
+
+msgid "Requested help closing Hub Dimension"
+msgstr "Aide demandée pour sceller le NexusDimensionnel"
+
+msgid "Give clue"
+msgstr "Donner indice"
+
+msgid "Give help"
+msgstr "Apporter de l'aide"
+
+msgid "Groups"
+msgstr "Groupes"
+
+msgid "Still fighting"
+msgstr "Toujours en train de se battre"
+
+msgid "Act 1"
+msgstr "Acte 1"
+
+msgid "Act 2"
+msgstr "Acte 2"
+
+msgid "Act 3"
+msgstr "Acte 3"
+
+msgid "Eliminated"
+msgstr "Éliminé"
+
+#, javascript-format
+msgid "Advance to Act ${ nextAct }"
+msgstr "Avancez la l'acte ${ nextAct }"
+
+msgid "Group eliminated?"
+msgstr "Groupe éliminé ?"
+
+msgid ""
+"Has your entire party been eliminated? If you are in Act 1 or Act 2, this "
+"will automatically add doom to handle your elimination."
+msgstr ""
+"Votre groupe a-t-il été entièrement éliminé ? Si vous êtes dans l'acte 1 ou "
+"l'acte 2, cela ajoutera automatiquement le malheur pour faire face à votre "
+"élimination."
+
+msgid "Your group"
+msgstr "Votre groupe"
+
+msgid "Place Mythos Phase Doom (1 per faction)"
+msgstr "Placez une fatalité de la Phase du Mythe (1 par faction)"
+
+msgid "Your group has been eliminated."
+msgstr "Votre groupe a été éliminé."
+
+#, javascript-format
+msgid "Group act progress: Act ${ act }a"
+msgstr "Progression des actes de groupe : Acte ${ act }a"
+
+#, javascript-format
+msgid "Hub Dimension clues received from other groups: ${ receivedClues }"
+msgstr "Indices du Nexus Dimensionnel reçus d'autres groupes : ${ receivedClues }"
+
+msgid "Cancel request for help closing Hub Dimension"
+msgstr "Annuler la demande d'aide pour la fermeture du Nexus Dimensionnel"
+
+msgid "Request help closing Hub Dimension"
+msgstr "Demande d'aide pour la fermeture du Nexus Dimensionnel"
+
+msgid "Group eliminated"
+msgstr "Groupe éliminé"
+
+msgid "Ask for help from other groups to damage enemies at these locations."
+msgstr ""
+"Demandez de l'aide aux autres groupes pour faire des dégâts aux ennemis "
+"dans ces lieux."
+
+msgid "Cancel request for help in Montréal"
+msgstr "Annuler la demande d'aide à Montréal"
+
+msgid "Request help in Montréal"
+msgstr "Demander de l'aide à Montréal"
+
+msgid "Cancel request for help in New York"
+msgstr "Annuler la demande d'aide à New York"
+
+msgid "Request help in New York"
+msgstr "Demander de l'aide à New York"
+
+msgid "Cancel request for help in Providence"
+msgstr "Annuler la demande d'aide à Providence"
+
+msgid "Request help in Providence"
+msgstr "Demander de l'aide à Providence"
+
+msgid "Groups:"
+msgstr "Groupes :"
+
+msgid "Players:"
+msgstr "Joueurs :"
+
+msgid "Start time"
+msgstr "Heure de début"
+
+msgid "Event start"
+msgstr "Début de l'événement"
+
+msgid "Update scheduled start"
+msgstr "Mise à jour du planning de démarrage"
+
+msgid "Registered groups"
+msgstr "Groupes enregistrés"
+
+msgid "Players"
+msgstr "Joueurs"
+
+msgid "Update Webhook"
+msgstr "Mise à jour de Webhook"
+
+msgid "Participants"
+msgstr "Participants"
+
+msgid "Use the Arkham Cards app to manage your decks and campaigns."
+msgstr "Utilisez l'application Arkham Cards pour gérer vos jeux et vos campagnes."
+
+#, javascript-format
+msgid ""
+"• Keep decks locally on your phone, or integrate directly with decks on ${ "
+"arkhamDbLink }."
+msgstr ""
+"• Conservez vos jeux en local sur votre téléphone, ou intégrez-les "
+"directement aux jeux sur ${ arkhamDbLink }."
+
+msgid ""
+"• Handles all scenario setup and resolution, while maintaining the campaign "
+"log and chaos bag automatically."
+msgstr ""
+"• Gèrez la mise en place et la résolution de tous les scénarios, tout en "
+"conservant automatiquement le carnet de campagne et la réserve du chaos."
+
+msgid "• Edit and upgrade your investigator's decks."
+msgstr "• Modifiez et mettez à jour les decks de vos investigateurs."
+
+msgid ""
+"• Draw tokens from the digital chaos bag, and calculate the odds of success "
+"before you do."
+msgstr ""
+"• Tirez des pions de la réserve du chaos numérique, et calculez les chances "
+"de succès avant de le faire."
+
+msgid "• Use the advanced card search to search by trait, health, shroud etc."
+msgstr ""
+"• Utilisez la recherche avancée de cartes pour effectuer des recherches par "
+"trait, santé, valeur occulte, etc."
+
+msgid "• Completely free to download and use, with zero ads."
+msgstr "• Entièrement gratuit à télécharger et à utiliser, avec zéro publicité."
+
+msgid ""
+"The app does not yet support Epic Multiplayer events, so you will still "
+"need to use the website. App support is coming soon though."
+msgstr ""
+"L'application ne prend pas encore en charge les événements Multijoueur "
+"Épique, vous devrez donc continuer à utiliser le site web. La prise en "
+"charge de l'application est cependant imminente."
+
+msgid "Download on the App Store"
+msgstr "Téléchargement sur l'App Store"
+
+msgid "Get it on Google Play"
+msgstr "Obtenez-le sur Google Play"

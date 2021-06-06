@@ -1,85 +1,71 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { every, findIndex, forEach, flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import ChoiceListItemComponent from './ChoiceListItemComponent';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
-import SetupStepWrapper from '../../SetupStepWrapper';
+import ScenarioGuideContext from '../../ScenarioGuideContext';
 import { StringChoices } from '@actions/types';
-import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType } from '@data/scenario/types';
 import { Choices, DisplayChoiceWithId } from '@data/scenario';
-import space from '@styles/space';
+import { m, s } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
+import Card from '@data/types/Card';
+import InputWrapper from '../InputWrapper';
 
 export interface ListItem {
   code: string;
+  investigator?: Card;
   name: string;
   color?: string;
+  masculine?: boolean;
 }
 
 export interface ChoiceListComponentProps {
   id: string;
+  investigator?: Card;
   bulletType?: BulletType;
-  title?: string;
+  promptType?: 'header' | 'setup';
   text?: string;
+  confirmText?: string;
   optional?: boolean;
   detailed?: boolean;
   options: Choices;
+  loading?: boolean;
 }
 interface Props extends ChoiceListComponentProps {
   items: ListItem[];
 }
 
-interface State {
-  selectedChoice: {
-    [code: string]: number | undefined;
-  };
-}
-
-export default class InvestigatorChoicePrompt extends React.Component<Props, State> {
-  static contextType = ScenarioGuideContext;
-  context!: ScenarioGuideContextType;
-
-  constructor(props: Props) {
-    super(props);
-
+export default function ChoiceListComponent({ id, promptType, investigator, bulletType, text, confirmText, optional, detailed, options, loading, items }: Props) {
+  const { scenarioState } = useContext(ScenarioGuideContext);
+  const { borderStyle, colors, width } = useContext(StyleContext);
+  const [selectedChoice, setSelectedChoice] = useState(() => {
     const selectedChoice: {
       [code: string]: number | undefined;
     } = {};
-    if (!props.optional) {
-      forEach(props.items, item => {
-        if (props.options.type === 'universal') {
+    if (!optional) {
+      forEach(items, item => {
+        if (options.type === 'universal') {
           selectedChoice[item.code] = 0;
         } else {
-          const personalized = props.options.perCode[item.code];
+          const personalized = options.perCode[item.code];
           if (personalized && personalized.length) {
             selectedChoice[item.code] = 0;
           }
         }
       });
     }
-    this.state = {
-      selectedChoice,
-    };
-  }
-
-  _onChoiceChange = (
-    code: string,
-    choice: number
-  ) => {
-    this.setState({
-      selectedChoice: {
-        ...this.state.selectedChoice,
-        [code]: choice === -1 ? undefined : choice,
-      },
+    return selectedChoice;
+  });
+  const onChoiceChange = useCallback((code: string, choice: number) => {
+    setSelectedChoice({
+      ...selectedChoice,
+      [code]: choice === -1 ? undefined : choice,
     });
-  };
+  }, [selectedChoice, setSelectedChoice]);
 
-  _save = () => {
-    const { id, options } = this.props;
-    const { selectedChoice } = this.state;
+  const save = useCallback(() => {
     const choices: StringChoices = {};
     forEach(selectedChoice, (idx, code) => {
       if (idx !== undefined && idx !== -1) {
@@ -91,39 +77,21 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
         }
       }
     });
-    this.context.scenarioState.setStringChoices(
+    scenarioState.setStringChoices(
       id,
       choices
     );
-  };
+  }, [id, options, scenarioState, selectedChoice]);
+  const inputChoices = scenarioState.stringChoices(id);
+  const hasDecision = inputChoices !== undefined;
 
-  renderSaveButton(hasDecision: boolean) {
-    const { items, detailed } = this.props;
-    const { selectedChoice } = this.state;
-    if (hasDecision) {
-      return <View style={space.marginBottomM} />;
-    }
-    return (
-      <BasicButton
-        title={t`Proceed`}
-        onPress={this._save}
-        disabled={detailed && !every(
-          items,
-          item => selectedChoice[item.code] !== undefined)
-        }
-      />
-    );
-
-  }
-
-  getChoice(
+  const getChoice = useCallback((
     code: string,
     choices: DisplayChoiceWithId[],
     inputChoices?: StringChoices
-  ): number | undefined {
-    const { detailed } = this.props;
+  ): number | undefined => {
     if (inputChoices === undefined) {
-      const choice = this.state.selectedChoice[code];
+      const choice = selectedChoice[code];
       if (choice !== undefined) {
         return choice;
       }
@@ -134,10 +102,9 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
       }
     }
     return detailed ? undefined : -1;
-  }
+  }, [detailed, selectedChoice]);
 
-  renderChoices(inputChoiceList?: StringChoices) {
-    const { items, detailed, options, optional } = this.props;
+  const choicesComponent = useMemo(() => {
     const results = flatMap(items, (item, idx) => {
       const choices = options.type === 'universal' ?
         options.choices :
@@ -150,12 +117,14 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
           key={idx}
           {...item}
           choices={choices}
-          choice={this.getChoice(item.code, choices, inputChoiceList)}
-          onChoiceChange={this._onChoiceChange}
+          choice={getChoice(item.code, choices, inputChoices)}
+          onChoiceChange={onChoiceChange}
+          noInvestigatorItems={!detailed}
           optional={!!optional}
-          editable={inputChoiceList === undefined}
+          editable={inputChoices === undefined}
           detailed={detailed}
           firstItem={idx === 0}
+          width={width - s * (inputChoices === undefined ? 4 : 2)}
         />
       );
     });
@@ -168,31 +137,42 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
           choices={[]}
           editable={false}
           optional={false}
-          onChoiceChange={this._onChoiceChange}
+          onChoiceChange={onChoiceChange}
+          width={width - s * (inputChoices === undefined ? 4 : 2)}
           firstItem
         />
       );
     }
     return results;
-  }
+  }, [inputChoices, items, detailed, options, optional, width, getChoice, onChoiceChange]);
 
-  render() {
-    const { id, bulletType, text } = this.props;
-    return (
-      <ScenarioGuideContext.Consumer>
-        { ({ scenarioState }: ScenarioGuideContextType) => {
-          const inputChoices = scenarioState.stringChoices(id);
-          return (
-            <>
-              <SetupStepWrapper bulletType={bulletType}>
-                { !!text && <CampaignGuideTextComponent text={text} /> }
-              </SetupStepWrapper>
-              { this.renderChoices(inputChoices) }
-              { this.renderSaveButton(inputChoices !== undefined) }
-            </>
-          );
-        } }
-      </ScenarioGuideContext.Consumer>
-    );
-  }
+  return (
+    <InputWrapper
+      editable={!hasDecision}
+      investigator={investigator}
+      onSubmit={save}
+      disabledText={detailed && !every(
+        items,
+        item => selectedChoice[item.code] !== undefined) ? t`Continue` : undefined}
+      title={(inputChoices !== undefined ? confirmText : undefined) || text}
+      titleStyle={promptType || 'setup'}
+      bulletType={bulletType}
+    >
+      { loading ? (
+        <View style={[styles.loadingRow, borderStyle]}>
+          <ActivityIndicator size="small" animating color={colors.lightText} />
+        </View>
+      ) : choicesComponent }
+    </InputWrapper>
+  );
 }
+
+const styles = StyleSheet.create({
+  loadingRow: {
+    flexDirection: 'row',
+    padding: m,
+    justifyContent: 'center',
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+});

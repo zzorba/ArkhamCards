@@ -1,43 +1,56 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
-import ChooserButton from '@components/core/ChooserButton';
+import DbChooserButton from '@components/core/DbChooserButton';
+import { Brackets } from 'typeorm';
 
 interface Props {
   componentId: string;
   title: string;
-  values: string[];
   selection?: string[];
+  field: string;
   setting: string;
   onFilterChange: (setting: string, selection: string[]) => void;
   indent?: boolean;
+  processValue?: (value: string) => string[];
+  query?: Brackets;
+  tabooSetId?: number;
+  capitalize?: boolean;
+  fixedTranslations?: {
+    [key: string]: string;
+  };
 }
 
-export default class FilterChooserButton extends React.Component<Props> {
-  _onChange = (values: string[]) => {
-    const {
-      onFilterChange,
-      setting,
-    } = this.props;
+export default function FilterChooserButton({
+  componentId,
+  title,
+  field,
+  selection,
+  setting,
+  onFilterChange,
+  indent,
+  processValue,
+  tabooSetId,
+  query,
+  capitalize,
+  fixedTranslations,
+}: Props) {
+  const onChange = useCallback((values: string[]) => {
     onFilterChange(setting, values);
-  }
+  }, [onFilterChange, setting]);
 
-  render() {
-    const {
-      componentId,
-      title,
-      values,
-      selection,
-      indent,
-    } = this.props;
-    return (
-      <ChooserButton
-        componentId={componentId}
-        title={title}
-        values={values}
-        selection={selection}
-        onChange={this._onChange}
-        indent={indent}
-      />
-    );
-  }
+  return (
+    <DbChooserButton
+      componentId={componentId}
+      title={title}
+      field={field}
+      selection={selection}
+      onChange={onChange}
+      processValue={processValue}
+      indent={indent}
+      query={query}
+      tabooSetId={tabooSetId}
+      capitalize={capitalize}
+      fixedTranslations={fixedTranslations}
+    />
+  );
 }

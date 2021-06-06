@@ -1,34 +1,33 @@
-import React, { ReactNode } from 'react';
-import { debounce } from 'throttle-debounce';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import { Brackets } from 'typeorm/browser';
 import RegexEscape from 'regex-escape';
+import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
+import { useDebounceCallback } from '@react-hook/debounce';
 
-import {
-  SORT_BY_ENCOUNTER_SET,
-  SortType,
-  Slots,
-} from '@actions/types';
-import QueryProvider from '@components/data/QueryProvider';
+import { SORT_BY_ENCOUNTER_SET, SortType, DeckId } from '@actions/types';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
-import CardResultList from './CardResultList';
 import FilterBuilder, { FilterState } from '@lib/filters';
-import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY, where, combineQueries, BASIC_QUERY } from '@data/query';
-import Card from '@data/Card';
+import { MYTHOS_CARDS_QUERY, where, combineQueries, BASIC_QUERY, BROWSE_CARDS_QUERY, combineQueriesOpt, BROWSE_CARDS_WITH_DUPLICATES_QUERY, BASIC_WITH_DUPLICATES_QUERY } from '@data/sqlite/query';
+import Card from '@data/types/Card';
 import { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import DbCardResultList from './DbCardResultList';
+import DeckNavFooter from '@components/deck/DeckNavFooter';
+import ActionButton from 'react-native-action-button';
+import AppIcon from '@icons/AppIcon';
+import { useFilterButton } from '../hooks';
+import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
 interface Props {
   componentId: string;
+  deckId?: DeckId;
   baseQuery?: Brackets;
   mythosToggle?: boolean;
   showNonCollection?: boolean;
@@ -38,432 +37,391 @@ interface Props {
   visible: boolean;
   toggleMythosMode: () => void;
   clearSearchFilters: () => void;
-  tabooSetOverride?: number;
 
   investigator?: Card;
-  originalDeckSlots?: Slots;
-  deckCardCounts?: Slots;
-  onDeckCountChange?: (code: string, count: number) => void;
-  limits?: Slots;
-  renderHeader?: () => React.ReactElement;
-  renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
+  header?: React.ReactElement;
   storyOnly?: boolean;
 
   initialSort?: SortType;
-}
-
-interface State {
-  headerVisible: boolean;
-  searchText: boolean;
-  searchFlavor: boolean;
-  searchBack: boolean;
-  searchTerm?: string;
-  searchCode?: number;
-  searchQuery?: RegExp;
+  includeDuplicates?: boolean;
 }
 
 function searchOptionsHeight(fontScale: number) {
   return 20 + (fontScale * 20 + 8) * 3 + 12;
 }
 
-type QueryProps = Pick<Props, 'baseQuery' | 'mythosToggle' | 'selectedSort' | 'mythosMode'>;
-type FilterQueryProps = Pick<Props, 'filters'>
-export default class CardSearchResultsComponent extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+const FILTER_BUILDER = new FilterBuilder('filters');
 
-  static filterBuilder = new FilterBuilder('filters');
+interface SearchState {
+  searchCode?: number;
+  searchQuery?: RegExp;
+}
 
-  static filterQuery({
-    filters,
-  }: FilterQueryProps): Brackets | undefined {
-    return filters && CardSearchResultsComponent.filterBuilder.filterToQuery(filters);
+function SearchOptions({
+  searchText,
+  searchFlavor,
+  searchBack,
+  toggleSearchText,
+  toggleSearchFlavor,
+  toggleSearchBack,
+}: {
+  searchText: boolean;
+  searchFlavor: boolean;
+  searchBack: boolean;
+  toggleSearchText: () => void;
+  toggleSearchFlavor: () => void;
+  toggleSearchBack: () => void;
+}) {
+  const { colors, fontScale, typography } = useContext(StyleContext);
+  return (
+    <>
+      <View style={[styles.column, { alignItems: 'center', flex: 1 }]}>
+        <Text style={[typography.large, { color: colors.M, fontSize: 20 * fontScale, fontFamily: 'Alegreya-Bold' }]}>
+          { t`Search in:` }
+        </Text>
+      </View>
+      <View style={styles.column}>
+        <View style={styles.row}>
+          <Text style={[typography.searchLabel, styles.searchOption, typography.dark]}>
+            { t`Game Text` }
+          </Text>
+          <ArkhamSwitch
+            useGestureHandler
+            value={searchText}
+            onValueChange={toggleSearchText}
+          />
+        </View>
+        <View style={styles.row}>
+          <Text style={[typography.searchLabel, styles.searchOption, typography.dark]}>
+            { t`Flavor Text` }
+          </Text>
+          <ArkhamSwitch
+            useGestureHandler
+            value={searchFlavor}
+            onValueChange={toggleSearchFlavor}
+          />
+        </View>
+        <View style={styles.row}>
+          <Text style={[typography.searchLabel, styles.searchOption, typography.dark]}>
+            { t`Card Backs` }
+          </Text>
+          <ArkhamSwitch
+            useGestureHandler
+            value={searchBack}
+            onValueChange={toggleSearchBack}
+          />
+        </View>
+      </View>
+    </>
+  );
+}
+
+function ExpandModesButtons({
+  hasFilters,
+  mythosToggle,
+  toggleMythosMode,
+  clearSearchFilters,
+  mythosMode,
+}: {
+  hasFilters: boolean;
+  mythosToggle?: boolean;
+  toggleMythosMode: () => void;
+  clearSearchFilters: () => void;
+  mythosMode?: boolean;
+}) {
+  if (!mythosToggle && !hasFilters) {
+    return null;
   }
+  return (
+    <View>
+      { !!mythosToggle && (
+        <ArkhamButton
+          icon="search"
+          onPress={toggleMythosMode}
+          title={mythosMode ? t`Search player cards` : t`Search encounter cards`}
+        />
+      ) }
+      { !!hasFilters && (
+        <ArkhamButton
+          icon="search"
+          onPress={clearSearchFilters}
+          title={t`Clear search filters`}
+        />
+      ) }
+    </View>
+  );
+}
 
-  static query({
-    baseQuery,
-    mythosToggle,
-    selectedSort,
-    mythosMode,
-  }: QueryProps): Brackets {
+function ExpandSearchButtons({
+  hasFilters,
+  mythosToggle,
+  toggleMythosMode,
+  clearSearchFilters,
+  mythosMode,
+  searchTerm,
+  searchText,
+  searchBack,
+  clearSearchTerm,
+  toggleSearchText,
+  toggleSearchBack,
+}: {
+  hasFilters: boolean;
+  mythosToggle?: boolean;
+  toggleMythosMode: () => void;
+  clearSearchFilters: () => void;
+  searchText: boolean;
+  searchTerm?: string;
+  searchBack: boolean;
+  mythosMode?: boolean;
+  clearSearchTerm: () => void;
+  toggleSearchText: () => void;
+  toggleSearchBack: () => void;
+}) {
+  if (!searchTerm) {
+    return (
+      <ExpandModesButtons
+        hasFilters={hasFilters}
+        mythosToggle={mythosToggle}
+        toggleMythosMode={toggleMythosMode}
+        clearSearchFilters={clearSearchFilters}
+        mythosMode={mythosMode}
+      />
+    );
+  }
+  return (
+    <View>
+      { !!searchTerm && (
+        <ArkhamButton
+          icon="search"
+          onPress={clearSearchTerm}
+          title={t`Clear "${searchTerm}" search`}
+        />
+      ) }
+      { !searchText && (
+        <ArkhamButton
+          icon="search"
+          onPress={toggleSearchText}
+          title={t`Search game text`}
+        />
+      ) }
+      { !searchBack && (
+        <ArkhamButton
+          icon="search"
+          onPress={toggleSearchBack}
+          title={t`Search card backs`}
+        />
+      ) }
+      <ExpandModesButtons
+        hasFilters={hasFilters}
+        mythosToggle={mythosToggle}
+        toggleMythosMode={toggleMythosMode}
+        clearSearchFilters={clearSearchFilters}
+        mythosMode={mythosMode}
+      />
+    </View>
+  );
+}
+
+export default function({
+  componentId,
+  deckId,
+  baseQuery,
+  mythosToggle,
+  showNonCollection,
+  selectedSort,
+  filters,
+  mythosMode,
+  toggleMythosMode,
+  clearSearchFilters,
+  investigator,
+  header,
+  storyOnly,
+  initialSort,
+  includeDuplicates,
+}: Props) {
+  const { fontScale, colors } = useContext(StyleContext);
+  const { lang, useCardTraits } = useContext(LanguageContext);
+  const [searchText, setSearchText] = useState(false);
+  const [searchFlavor, setSearchFlavor] = useState(false);
+  const [searchBack, setSearchBack] = useState(false);
+  const [searchTerm, setSearchTerm] = useState<string | undefined>(undefined);
+  const [searchState, setSearchState] = useState<SearchState>({});
+  const toggleSearchText = useCallback(() => setSearchText(!searchText), [searchText]);
+  const toggleSearchFlavor = useCallback(() => setSearchFlavor(!searchFlavor), [searchFlavor]);
+  const toggleSearchBack = useCallback(() => setSearchBack(!searchBack), [searchBack]);
+  const clearSearchTerm = useCallback(() => setSearchTerm(''), []);
+  const updateSearch = useCallback((searchTerm: string) => {
+    if (!searchTerm) {
+      setSearchState({});
+      return;
+    }
+    const searchCode = DIGIT_REGEX.test(searchTerm) ? parseInt(searchTerm, 10) : undefined;
+    const term = searchTerm.replace(/“|”/g, '"').replace(/‘|’/, '\'');
+    setSearchState({
+      searchQuery: new RegExp(`.*${RegexEscape(term)}.*`, 'i'),
+      searchCode,
+    });
+  }, []);
+  const debouncedUpdateSearch = useDebounceCallback(updateSearch, 50);
+  const searchUpdated = useCallback((text: string) => {
+    setSearchTerm(text);
+    debouncedUpdateSearch(text);
+  }, [setSearchTerm, debouncedUpdateSearch]);
+
+  const textQuery = useMemo(() => {
+    const {
+      searchCode,
+    } = searchState;
+    const parts: Brackets[] = [];
+    if (searchCode) {
+      parts.push(where(`c.position = :searchCode`, { searchCode }));
+    }
+    if (searchTerm === '' || !searchTerm) {
+      return combineQueriesOpt(parts, 'and');
+    }
+    const safeSearchTerm = `%${searchTerm.toLocaleLowerCase(lang)}%`;
+    parts.push(where('c.s_search_name like :searchTerm', { searchTerm: safeSearchTerm }));
+    if (searchBack) {
+      parts.push(where([
+        'c.s_search_name_back like :searchTerm',
+        '(c.linked_card is not null AND linked_card.s_search_name like :searchTerm)',
+        '(c.linked_card is not null AND linked_card.s_search_name_back like :searchTerm)',
+      ].join(' OR '), { searchTerm: safeSearchTerm }
+      ));
+    }
+    if (searchText) {
+      parts.push(where('c.s_search_game like :searchTerm', { searchTerm: safeSearchTerm }));
+      if (searchBack) {
+        parts.push(where([
+          'c.s_search_game_back like :searchTerm',
+          '(c.linked_card is not null AND linked_card.s_search_game like :searchTerm)',
+          '(c.linked_card is not null AND linked_card.s_search_game_back like :searchTerm)',
+        ].join(' OR '), { searchTerm: safeSearchTerm }));
+      }
+    }
+    if (searchFlavor) {
+      parts.push(where('(c.s_search_flavor like :searchTerm)', { searchTerm: safeSearchTerm }));
+      if (searchBack) {
+        parts.push(where([
+          '(c.s_search_flavor_back like :searchTerm)',
+          '(c.linked_card is not null AND linked_card.s_search_flavor like :searchTerm)',
+          '(c.linked_card is not null AND linked_card.s_search_flavor_back like :searchTerm)',
+        ].join(' OR '), { searchTerm: safeSearchTerm }));
+      }
+    }
+    return combineQueriesOpt(parts, 'or');
+  }, [searchState, searchBack, searchFlavor, searchText, searchTerm, lang]);
+
+  const controls = (
+    <SearchOptions
+      searchText={searchText}
+      searchFlavor={searchFlavor}
+      searchBack={searchBack}
+      toggleSearchText={toggleSearchText}
+      toggleSearchFlavor={toggleSearchFlavor}
+      toggleSearchBack={toggleSearchBack}
+    />
+  );
+
+  const query = useMemo(() => {
     const queryParts: Brackets[] = [];
+    const actuallyIncludeDuplicates = includeDuplicates || (filters?.packCodes.length);
     if (mythosToggle) {
       if (mythosMode) {
         queryParts.push(MYTHOS_CARDS_QUERY);
       } else {
-        queryParts.push(PLAYER_CARDS_QUERY);
+        if (actuallyIncludeDuplicates) {
+          queryParts.push(BROWSE_CARDS_WITH_DUPLICATES_QUERY);
+        } else {
+          queryParts.push(BROWSE_CARDS_QUERY);
+        }
       }
     }
     if (baseQuery) {
       queryParts.push(baseQuery);
     }
     if (selectedSort === SORT_BY_ENCOUNTER_SET) {
-      queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));
+      // queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));
     }
     return combineQueries(
-      BASIC_QUERY,
+      actuallyIncludeDuplicates ? BASIC_WITH_DUPLICATES_QUERY : BASIC_QUERY,
       queryParts,
       'and'
     );
-  }
-
-  _debouncedUpdateSeacrh: () => void;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      headerVisible: true,
-      searchText: false,
-      searchFlavor: false,
-      searchBack: false,
-    };
-
-    this._debouncedUpdateSeacrh = debounce(50, this._updateTermSearch);
-  }
-
-  _showHeader = () => {
-    if (!this.state.headerVisible) {
-      this.setState({
-        headerVisible: true,
-      });
-    }
-  };
-
-  _hideHeader = () => {
-    const {
-      headerVisible,
-      searchTerm,
-    } = this.state;
-    if (headerVisible && !searchTerm) {
-      this.setState({
-        headerVisible: false,
-      });
-    }
-  }
-
-  _toggleSearchText = () => {
-    const searchText = !this.state.searchText;
-    this.setState({
-      searchText,
-    });
-  };
-
-  _toggleSearchFlavor = () => {
-    const searchFlavor = !this.state.searchFlavor;
-    this.setState({
-      searchFlavor,
-    });
-  };
-
-  _toggleSearchBack = () => {
-    const searchBack = !this.state.searchBack;
-    this.setState({
-      searchBack,
-    });
-  };
-
-  _searchUpdated = (text: string) => {
-    this.setState({
-      searchTerm: text,
-    }, () => {
-      this._debouncedUpdateSeacrh();
-    });
-  };
-
-  _clearSearchTerm = () => {
-    this._searchUpdated('');
-  };
-
-  _updateTermSearch = async() => {
-    const {
-      searchTerm,
-    } = this.state;
-    if (!searchTerm) {
-      this.setState({
-        searchQuery: undefined,
-        searchCode: undefined,
-      });
-      return;
-    }
-    const searchCode = DIGIT_REGEX.test(searchTerm) ? parseInt(searchTerm, 10) : undefined;
-    const term = searchTerm.replace(/“|”/g, '"').replace(/‘|’/, '\'');
-    this.setState({
-      searchQuery: new RegExp(`.*${RegexEscape(term)}.*`, 'i'),
-      searchCode,
-    });
-  };
-
-  renderSearchOptions() {
-    const {
-      searchText,
-      searchFlavor,
-      searchBack,
-    } = this.state;
-    const { colors, fontScale, typography } = this.context;
-    return (
-      <>
-        <View style={[styles.column, { alignItems: 'center', flex: 1 }]}>
-          <Text style={[typography.large, { color: colors.M, fontSize: 20 * fontScale, fontFamily: 'Alegreya-Bold' }]}>
-            { t`Search in:` }
-          </Text>
-        </View>
-        <View style={styles.column}>
-          <View style={styles.row}>
-            <Text style={[typography.searchLabel, styles.searchOption, typography.dark]}>
-              { t`Game Text` }
-            </Text>
-            <ArkhamSwitch
-              value={searchText}
-              onValueChange={this._toggleSearchText}
-            />
-          </View>
-          <View style={styles.row}>
-            <Text style={[typography.searchLabel, styles.searchOption, typography.dark]}>
-              { t`Flavor Text` }
-            </Text>
-            <ArkhamSwitch
-              value={searchFlavor}
-              onValueChange={this._toggleSearchFlavor}
-            />
-          </View>
-          <View style={styles.row}>
-            <Text style={[typography.searchLabel, styles.searchOption, typography.dark]}>
-              { t`Card Backs` }
-            </Text>
-            <ArkhamSwitch
-              value={searchBack}
-              onValueChange={this._toggleSearchBack}
-            />
-          </View>
-        </View>
-      </>
-    );
-  }
-
-  renderExpandModesButtons(hasFilters: boolean) {
-    const {
-      mythosToggle,
-      toggleMythosMode,
-      clearSearchFilters,
-      mythosMode,
-    } = this.props;
-    if (!mythosToggle && !hasFilters) {
-      return null;
-    }
-    return (
-      <View>
-        { !!mythosToggle && (
-          <ArkhamButton
-            icon="search"
-            onPress={toggleMythosMode}
-            title={mythosMode ? t`Search player cards` : t`Search encounter cards`}
-          />
-        ) }
-        { !!hasFilters && (
-          <ArkhamButton
-            icon="search"
-            onPress={clearSearchFilters}
-            title={t`Clear search filters`}
-          />
-        ) }
-      </View>
-    );
-  }
-
-  renderExpandSearchButtons(hasFilters: boolean) {
-    const {
-      searchTerm,
-      searchText,
-      searchBack,
-    } = this.state;
-    if (!searchTerm) {
-      return this.renderExpandModesButtons(hasFilters);
-    }
-    return (
-      <View>
-        { !!searchTerm && (
-          <ArkhamButton
-            icon="search"
-            onPress={this._clearSearchTerm}
-            title={t`Clear "${searchTerm}" search`}
-          />
-        ) }
-        { !searchText && (
-          <ArkhamButton
-            icon="search"
-            onPress={this._toggleSearchText}
-            title={t`Search game text`}
-          />
-        ) }
-        { !searchBack && (
-          <ArkhamButton
-            icon="search"
-            onPress={this._toggleSearchBack}
-            title={t`Search card backs`}
-          />
-        ) }
-        { this.renderExpandModesButtons(hasFilters) }
-      </View>
-    );
-  }
-
-  _filterCardText = (card: Card): boolean => {
-    const {
-      searchText,
-      searchFlavor,
-      searchBack,
-      searchTerm,
-      searchQuery,
-      searchCode,
-    } = this.state;
-    if (searchCode && card.position === searchCode) {
-      return true;
-    }
-    if (!searchQuery || searchTerm === '' || !searchTerm) {
-      return true;
-    }
-    if (searchBack) {
-      if (searchQuery.test(card.name) ||
-        (card.linked_card && searchQuery.test(card.linked_card.name)) ||
-        (card.back_name && searchQuery.test(card.back_name)) ||
-        (card.linked_card && card.linked_card.back_name && searchQuery.test(card.linked_card.back_name)) ||
-        (card.subname && searchQuery.test(card.subname)) ||
-        (card.linked_card && card.linked_card.subname && searchQuery.test(card.linked_card.subname))
-      ) {
-        return true;
-      }
-    } else {
-      if (searchQuery.test(card.renderName) || (card.renderSubname && searchQuery.test(card.renderSubname))) {
-        return true;
-      }
-    }
-    if (searchText) {
-      if (
-        (card.real_text && searchQuery.test(card.real_text)) ||
-        (card.linked_card && card.linked_card.real_text && searchQuery.test(card.linked_card.real_text)) ||
-        (card.traits && searchQuery.test(card.traits)) ||
-        (card.linked_card && card.linked_card.traits && searchQuery.test(card.linked_card.traits))
-      ) {
-        return true;
-      }
-      if (searchBack && (
-        (card.back_text && searchQuery.test(card.back_text)) ||
-        (card.linked_card && card.linked_card.back_text && searchQuery.test(card.linked_card.back_text))
-      )) {
-        return true;
-      }
-    }
-    if (searchFlavor) {
-      if (
-        (card.flavor && searchQuery.test(card.flavor)) ||
-        (card.linked_card && card.linked_card.flavor && searchQuery.test(card.linked_card.flavor))
-      ) {
-        return true;
-      }
-      if (searchBack && (
-        (card.back_flavor && searchQuery.test(card.back_flavor)) ||
-        (card.linked_card && card.linked_card.back_flavor && searchQuery.test(card.linked_card.back_flavor))
-      )) {
-        return true;
-      }
-    }
-    return false;
-  };
-
-  render() {
-    const {
-      componentId,
-      originalDeckSlots,
-      deckCardCounts,
-      onDeckCountChange,
-      limits,
-      renderHeader,
-      renderFooter,
-      showNonCollection,
-      selectedSort,
-      visible,
-      tabooSetOverride,
-      investigator,
-      storyOnly,
-      initialSort,
-      mythosToggle,
-      baseQuery,
-      mythosMode,
-      filters,
-    } = this.props;
-    const { fontScale } = this.context;
-    const { searchTerm } = this.state;
-    return (
-      <CollapsibleSearchBox
-        prompt={t`Search for a card`}
-        advancedOptions={{
-          controls: this.renderSearchOptions(),
-          height: searchOptionsHeight(fontScale),
-        }}
-        searchTerm={searchTerm || ''}
-        onSearchChange={this._searchUpdated}
-      >
-        { (handleScroll) => (
-          <QueryProvider<QueryProps, Brackets>
-            baseQuery={baseQuery}
+  }, [baseQuery, mythosToggle, selectedSort, mythosMode, includeDuplicates, filters]);
+  const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters, useCardTraits), [filters, useCardTraits]);
+  const [hasFilters, showFiltersPress] = useFilterButton(componentId, baseQuery);
+  const renderFabIcon = useCallback(() => (
+    <View style={styles.relative}>
+      <AppIcon name="filter" color={colors.L30} size={24} />
+      { hasFilters && <View style={styles.chiclet} /> }
+    </View>
+  ), [colors, hasFilters]);
+  const backPressed = useCallback(() => Navigation.pop(componentId), [componentId]);
+  return (
+    <CollapsibleSearchBox
+      prompt={t`Search for a card`}
+      advancedOptions={{
+        controls,
+        height: searchOptionsHeight(fontScale),
+      }}
+      searchTerm={searchTerm || ''}
+      onSearchChange={searchUpdated}
+    >
+      { (handleScroll, showHeader) => (
+        <>
+          <DbCardResultList
+            componentId={componentId}
+            deckId={deckId}
+            query={query}
+            filterQuery={filterQuery || undefined}
+            textQuery={textQuery}
+            searchTerm={searchTerm}
+            sort={selectedSort}
+            investigator={investigator}
+            handleScroll={handleScroll}
+            showHeader={showHeader}
+            expandSearchControls={(
+              <ExpandSearchButtons
+                hasFilters={!!filterQuery}
+                mythosToggle={mythosToggle}
+                toggleMythosMode={toggleMythosMode}
+                clearSearchFilters={clearSearchFilters}
+                mythosMode={mythosMode}
+                searchTerm={searchTerm}
+                searchText={searchText}
+                searchBack={searchBack}
+                clearSearchTerm={clearSearchTerm}
+                toggleSearchText={toggleSearchText}
+                toggleSearchBack={toggleSearchBack}
+              />
+            )}
+            header={header}
+            showNonCollection={showNonCollection}
+            storyOnly={storyOnly}
             mythosToggle={mythosToggle}
-            selectedSort={selectedSort}
-            mythosMode={mythosToggle && mythosMode}
-            getQuery={CardSearchResultsComponent.query}
-          >
-            { query => (
-              <QueryProvider<FilterQueryProps, Brackets | undefined>
-                filters={filters}
-                getQuery={CardSearchResultsComponent.filterQuery}
-              >
-                { filterQuery => (
-                  <>
-                    <CardResultList
-                      componentId={componentId}
-                      tabooSetOverride={tabooSetOverride}
-                      query={query}
-                      filterQuery={filterQuery || undefined}
-                      filterCard={this._filterCardText}
-                      searchTerm={searchTerm}
-                      sort={selectedSort}
-                      investigator={investigator}
-                      originalDeckSlots={originalDeckSlots}
-                      deckCardCounts={deckCardCounts}
-                      onDeckCountChange={onDeckCountChange}
-                      limits={limits}
-                      handleScroll={handleScroll}
-                      expandSearchControls={this.renderExpandSearchButtons(!!filterQuery)}
-                      visible={visible}
-                      renderHeader={renderHeader}
-                      renderFooter={renderFooter}
-                      showNonCollection={showNonCollection}
-                      storyOnly={storyOnly}
-                      mythosToggle={mythosToggle}
-                      mythosMode={mythosToggle && mythosMode}
-                      initialSort={initialSort}
-                    />
-                    { !!renderFooter && <View style={styles.footer}>
-                      { renderFooter() }
-                    </View> }
-                  </>
-                ) }
-              </QueryProvider>
-            ) }
-          </QueryProvider>
-        ) }
-      </CollapsibleSearchBox>
-    );
-  }
+            //            mythosMode={mythosToggle && mythosMode}
+            initialSort={initialSort}
+          />
+          { deckId !== undefined && (
+            <>
+              <DeckNavFooter deckId={deckId} componentId={componentId} control="fab" onPress={backPressed} />
+              <ActionButton
+                buttonColor={colors.D10}
+                renderIcon={renderFabIcon}
+                onPress={showFiltersPress}
+                offsetX={s + xs}
+                offsetY={NOTCH_BOTTOM_PADDING + s + xs}
+              />
+            </>
+          ) }
+        </>
+      ) }
+    </CollapsibleSearchBox>
+  );
 }
 
 const styles = StyleSheet.create({
-  footer: {
-    position: 'absolute',
-    left: 0,
-    bottom: 0,
-    width: '100%',
-  },
   column: {
     flexDirection: 'column',
     alignItems: 'flex-end',
@@ -477,5 +435,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
+  },
+  relative: {
+    position: 'relative',
+  },
+  chiclet: {
+    position: 'absolute',
+    top: -12,
+    right: -14,
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    backgroundColor: 'red',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

@@ -1,141 +1,101 @@
-import React from 'react';
-import { filter, throttle } from 'lodash';
+import React, { useContext, useMemo, useState } from 'react';
+import { flatMap, forEach, throttle } from 'lodash';
 import {
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { connect } from 'react-redux';
-import { Navigation, EventSubscription, Options } from 'react-native-navigation';
+import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
-import { CUSTOM, Campaign, DecksMap } from '@actions/types';
+import { CUSTOM, STANDALONE } from '@actions/types';
 import CampaignList from './CampaignList';
 import { campaignNames } from '@components/campaign/constants';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
 import { iconsMap } from '@app/NavIcons';
-import { getAllDecks, getCampaigns, AppState } from '@reducers';
 import COLORS from '@styles/colors';
-import { m } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import space, { m } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
+import { useNavigationButtonPressed } from '@components/core/hooks';
+import { NavigationProps } from '@components/nav/types';
+import { getStandaloneScenarios } from '@data/scenario';
+import LanguageContext from '@lib/i18n/LanguageContext';
+import { useCampaigns } from '@data/hooks';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
+import withApolloGate from '@components/core/withApolloGate';
 
-interface OwnProps {
-  componentId: string;
-}
-
-interface ReduxProps {
-  campaigns: Campaign[];
-  decks: DecksMap;
-}
-
-type Props = OwnProps & ReduxProps & DimensionsProps;
-
-interface State {
-  search: string;
-}
-
-class MyCampaignsView extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  static options(): Options {
-    return {
-      topBar: {
-        title: {
-          text: t`Campaigns`,
-        },
-        rightButtons: [{
-          icon: iconsMap.add,
-          id: 'add',
-          color: COLORS.M,
-          accessibilityLabel: t`New Campaign`,
-        }],
-      },
-    };
-  }
-
-  _navEventListener?: EventSubscription;
-  _showNewCampaignDialog!: () => void;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      search: '',
-    };
-
-    this._showNewCampaignDialog = throttle(this.showNewCampaignDialog.bind(this), 200);
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  componentWillUnmount() {
-    this._navEventListener && this._navEventListener.remove();
-  }
-
-  _searchChanged = (text: string) => {
-    this.setState({
-      search: text,
+function MyCampaignsView({ componentId }: NavigationProps) {
+  const [search, setSearch] = useState('');
+  const { lang } = useContext(LanguageContext);
+  const standalonesById = useMemo(() => {
+    const scenarios = getStandaloneScenarios(lang);
+    const result: {
+      [campaign: string]: {
+        [scenario: string]: string;
+      };
+    } = {};
+    forEach(scenarios, scenario => {
+      if (!result[scenario.id.campaignId]) {
+        result[scenario.id.campaignId] = {};
+      }
+      result[scenario.id.campaignId][scenario.id.scenarioId] = scenario.name;
     });
-  };
-
-  showNewCampaignDialog() {
-    const {
-      componentId,
-    } = this.props;
-    Navigation.push(componentId, {
-      component: {
-        name: 'Campaign.New',
-        options: {
-          topBar: {
-            title: {
-              text: t`New Campaign`,
-            },
-            backButton: {
-              title: t`Cancel`,
+    return result;
+  }, [lang]);
+  const { typography } = useContext(StyleContext);
+  const [campaigns, refreshing, refreshCampaigns] = useCampaigns();
+  const showNewCampaignDialog = useMemo(() => {
+    return throttle(() => {
+      Navigation.push(componentId, {
+        component: {
+          name: 'Campaign.New',
+          options: {
+            topBar: {
+              title: {
+                text: t`New Campaign`,
+              },
+              backButton: {
+                title: t`Cancel`,
+              },
             },
           },
         },
-      },
+      });
     });
-  }
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
+  }, [componentId]);
+  useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'add') {
-      this._showNewCampaignDialog();
+      showNewCampaignDialog();
     }
-  }
+  }, componentId, [showNewCampaignDialog]);
 
-
-  filteredCampaigns(): Campaign[] {
-    const {
-      campaigns,
-    } = this.props;
-    const {
-      search,
-    } = this.state;
-
-    return filter<Campaign>(campaigns, campaign => {
+  const filteredCampaigns: MiniCampaignT[] = useMemo(() => {
+    return flatMap(campaigns, (campaign) => {
       const parts = [campaign.name];
-      if (campaign.cycleCode !== CUSTOM) {
-        parts.push(campaignNames()[campaign.cycleCode]);
+      const cycleCode = campaign.cycleCode;
+      if (cycleCode === STANDALONE) {
+        const standaloneId = campaign.standaloneId;
+        if (standaloneId) {
+          parts.push(standalonesById[standaloneId.campaignId][standaloneId.scenarioId]);
+        }
+      } else if (cycleCode !== CUSTOM) {
+        parts.push(campaignNames()[cycleCode] || '');
       }
-      return searchMatchesText(search, parts);
+      if (!searchMatchesText(search, parts)) {
+        return [];
+      }
+      return campaign;
     });
-  }
+  }, [campaigns, search, standalonesById]);
 
-  renderConditionalFooter(campaigns: Campaign[]) {
-    const { typography } = this.context;
-    const {
-      search,
-    } = this.state;
-    if (campaigns.length === 0) {
+  const conditionalFooter = useMemo(() => {
+    if (filteredCampaigns.length === 0) {
       if (search) {
         return (
-          <View style={styles.footer}>
+          <View style={[styles.footer, space.paddingTopS]}>
             <Text style={[typography.text]}>
               { t`No matching campaigns for "${search}".` }
             </Text>
@@ -143,7 +103,7 @@ class MyCampaignsView extends React.Component<Props, State> {
         );
       }
       return (
-        <View style={styles.footer}>
+        <View style={[styles.footer, space.paddingTopS]}>
           <Text style={[typography.text]}>
             { t`No campaigns yet.\n\nUse the + button to create a new one.\n\nYou can use this app to keep track of campaigns, including investigator trauma, the chaos bag, basic weaknesses, campaign notes and the experience values for all decks.` }
           </Text>
@@ -153,61 +113,72 @@ class MyCampaignsView extends React.Component<Props, State> {
     return (
       <View style={styles.footer} />
     );
-  }
-
-  renderFooter(campaigns: Campaign[]) {
+  }, [filteredCampaigns, search, typography]);
+  const footer = useMemo(() => {
     return (
       <View>
-        { this.renderConditionalFooter(campaigns) }
+        { conditionalFooter }
         <ArkhamButton
           icon="campaign"
           title={t`New Campaign`}
-          onPress={this._showNewCampaignDialog}
+          onPress={showNewCampaignDialog}
         />
         <View style={styles.gutter} />
       </View>
     );
-  }
+  }, [conditionalFooter, showNewCampaignDialog]);
 
-  render() {
-    const { componentId } = this.props;
-    const { search } = this.state;
-    const campaigns = this.filteredCampaigns();
-    return (
-      <CollapsibleSearchBox
-        prompt={t`Search campaigns`}
-        searchTerm={search}
-        onSearchChange={this._searchChanged}
-      >
-        { onScroll => (
-          <CampaignList
-            onScroll={onScroll}
-            componentId={componentId}
-            campaigns={campaigns}
-            footer={this.renderFooter(campaigns)}
-          />
-        ) }
-      </CollapsibleSearchBox>
-    );
-  }
+  return (
+    <CollapsibleSearchBox
+      prompt={t`Search campaigns`}
+      searchTerm={search}
+      onSearchChange={setSearch}
+    >
+      { onScroll => (
+        <CampaignList
+          onScroll={onScroll}
+          componentId={componentId}
+          campaigns={filteredCampaigns}
+          standalonesById={standalonesById}
+          onRefresh={refreshCampaigns}
+          refreshing={refreshing}
+          footer={footer}
+        />
+      ) }
+    </CollapsibleSearchBox>
+  );
 }
 
-function mapStateToProps(state: AppState): ReduxProps {
+MyCampaignsView.options = (): Options => {
   return {
-    campaigns: getCampaigns(state),
-    decks: getAllDecks(state),
+    topBar: {
+      title: {
+        text: t`Campaigns`,
+      },
+      rightButtons: [{
+        icon: iconsMap.add,
+        id: 'add',
+        color: COLORS.M,
+        accessibilityLabel: t`New Campaign`,
+      }],
+    },
   };
-}
+};
 
-export default withFetchCardsGate<OwnProps>(
-  connect(mapStateToProps)(withDimensions(MyCampaignsView)),
-  { promptForUpdate: false },
+export default withApolloGate(
+  withFetchCardsGate<NavigationProps>(
+    MyCampaignsView,
+    { promptForUpdate: false },
+  )
 );
 
 const styles = StyleSheet.create({
   footer: {
-    margin: m,
-    alignItems: 'center',
+    marginLeft: m,
+    marginRight: m,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
   },
   gutter: {
     marginBottom: 60,

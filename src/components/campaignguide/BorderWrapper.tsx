@@ -8,9 +8,10 @@ interface Props {
   width: number;
   border: boolean;
   children: React.ReactNode | React.ReactNode[];
+  resolution?: boolean;
 }
 
-export default function BorderWrapper({ border, children, width }: Props) {
+export default function BorderWrapper({ border, children, width, resolution }: Props) {
   if (!border) {
     return (
       <>
@@ -20,11 +21,11 @@ export default function BorderWrapper({ border, children, width }: Props) {
   }
   return (
     <View style={styles.wrapper}>
-      <StepBorder type="top" width={width} margin={16} />
+      <StepBorder type="top" width={width} margin={16} resolution={resolution} />
       <View style={styles.innerWrapper}>
         { children }
       </View>
-      <StepBorder type="bottom" width={width} margin={16} />
+      <StepBorder type="bottom" width={width} margin={16} resolution={resolution} />
     </View>
   );
 }

@@ -1,99 +1,59 @@
-import React from 'react';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { t } from 'ttag';
-import { Campaign, Slots, WeaknessSet } from '@actions/types';
+import { CampaignId, Slots } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import EditAssignedWeaknessComponent from '../weakness/EditAssignedWeaknessComponent';
-import { updateCampaign } from './actions';
-import { getCampaign, AppState } from '@reducers';
+import { updateCampaignWeaknessSet } from './actions';
+import { useCampaign } from '@data/hooks';
+import { useSetCampaignWeaknessSet } from '@data/remote/campaigns';
 
 export interface CampaignEditWeaknessProps {
-  campaignId: number;
+  campaignId: CampaignId;
 }
 
-interface ReduxProps {
-  weaknessSet?: WeaknessSet;
-}
-
-interface ReduxActionProps {
-  updateCampaign: (id: number, campaign: Partial<Campaign>) => void;
-}
-
-type Props = NavigationProps &
-  CampaignEditWeaknessProps &
-  ReduxProps &
-  ReduxActionProps &
-  DimensionsProps;
-
-class CampaignEditWeaknessDialog extends React.Component<Props> {
-  static options() {
-    return {
-      topBar: {
-        title: {
-          text: t`Available weaknesses`,
-        },
-        backButton: {
-          title: t`Back`,
-        },
-      },
-    };
-  }
-
-  _updateAssignedCards = (assignedCards: Slots) => {
-    const {
-      campaignId,
-      weaknessSet,
-      updateCampaign,
-    } = this.props;
+function CampaignEditWeaknessDialog({ componentId, campaignId }: CampaignEditWeaknessProps & NavigationProps) {
+  const dispatch = useDispatch();
+  const campaign = useCampaign(campaignId);
+  const weaknessSet = campaign?.weaknessSet;
+  const setCampaignWeaknessSet = useSetCampaignWeaknessSet();
+  const updateAssignedCards = useCallback((assignedCards: Slots) => {
     if (weaknessSet) {
       const updatedWeaknessSet = {
         ...weaknessSet,
         assignedCards,
       };
-      updateCampaign(
+      dispatch(updateCampaignWeaknessSet(
+        setCampaignWeaknessSet,
         campaignId,
-        { weaknessSet: updatedWeaknessSet } as Campaign
-      );
+        updatedWeaknessSet
+      ));
     }
-  };
-
-  render() {
-    const {
-      componentId,
-      weaknessSet,
-    } = this.props;
-    if (!weaknessSet) {
-      return null;
-    }
-    return (
-      <EditAssignedWeaknessComponent
-        componentId={componentId}
-        weaknessSet={weaknessSet}
-        updateAssignedCards={this._updateAssignedCards}
-      />
-    );
+  }, [dispatch, setCampaignWeaknessSet, campaignId, weaknessSet]);
+  if (!weaknessSet) {
+    return null;
   }
+  return (
+    <EditAssignedWeaknessComponent
+      componentId={componentId}
+      weaknessSet={weaknessSet}
+      updateAssignedCards={updateAssignedCards}
+    />
+  );
 }
 
-function mapStateToProps(state: AppState, props: NavigationProps & CampaignEditWeaknessProps): ReduxProps {
-  const campaign = getCampaign(state, props.campaignId);
+CampaignEditWeaknessDialog.options = () => {
   return {
-    weaknessSet: campaign && campaign.weaknessSet,
+    topBar: {
+      title: {
+        text: t`Available weaknesses`,
+      },
+      backButton: {
+        title: t`Back`,
+      },
+    },
   };
-}
+};
 
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    updateCampaign,
-  }, dispatch);
-}
-
-export default connect<ReduxProps, ReduxActionProps, NavigationProps & CampaignEditWeaknessProps, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
-)(
-  withDimensions(CampaignEditWeaknessDialog)
-);
+export default CampaignEditWeaknessDialog;

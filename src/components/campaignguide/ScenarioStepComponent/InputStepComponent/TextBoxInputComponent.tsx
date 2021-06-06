@@ -1,87 +1,72 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { NativeSyntheticEvent, TextInput, TextInputSubmitEditingEventData, StyleSheet } from 'react-native';
+import { throttle } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
-import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
-import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
-import ScenarioStepContext, { ScenarioStepContextType } from '@components/campaignguide/ScenarioStepContext';
 import { m, s } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
+import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
+import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
+import ActionButton from '@components/campaignguide/prompts/ActionButton';
 
 interface Props {
   id: string;
+  showUndo: boolean;
   prompt?: string;
 }
 
-interface State {
-  text: string;
-}
+export default function TextBoxInputComponent({ id, prompt, showUndo }: Props) {
+  const { scenarioState } = useContext(ScenarioGuideContext);
+  const { borderStyle, colors, typography } = useContext(StyleContext);
+  const [text, setText] = useState('');
 
-export default class TextBoxInputComponent extends React.Component<Props, State> {
-  static contextType = ScenarioStepContext;
-  context!: ScenarioStepContextType;
+  const undo = useMemo(() => throttle(() => {
+    scenarioState.undo();
+  }, 300, { leading: true, trailing: false }), [scenarioState]);
 
-  state: State = {
-    text: '',
-  };
+  const saveText = useCallback((text: string) => {
+    if (text) {
+      scenarioState.setText(id, text);
+    }
+  }, [id, scenarioState]);
 
-  _submit = (
+  const onSubmit = useCallback((
     { nativeEvent: { text } }: NativeSyntheticEvent<TextInputSubmitEditingEventData>
   ) => {
-    this.saveText(text);
-  };
+    saveText(text);
+  }, [saveText]);
+  const onSavePress = useCallback(() => {
+    saveText(text);
+  }, [saveText, text]);
 
-  _onChangeText = (text: string) => {
-    this.setState({
-      text,
-    });
-  };
-
-  _save = () => {
-    this.saveText(this.state.text);
-  };
-
-  saveText(text: string) {
-    const { id } = this.props;
-    if (text) {
-      this.context.scenarioState.setText(id, text);
-    }
+  const textDecision = scenarioState.text(id);
+  if (textDecision !== undefined) {
+    return null;
   }
-
-  render() {
-    const { id, prompt } = this.props;
-    const {
-      style: { borderStyle, typography },
-    } = this.context;
-    return (
-      <ScenarioStepContext.Consumer>
-        { ({ scenarioState }: ScenarioStepContextType) => {
-          const text = scenarioState.text(id);
-          if (text !== undefined) {
-            return null;
-          }
-          return (
-            <>
-              <SetupStepWrapper>
-                { !!prompt && <CampaignGuideTextComponent text={prompt} /> }
-                <TextInput
-                  style={[styles.textInput, borderStyle, typography.dark]}
-                  onChangeText={this._onChangeText}
-                  onSubmitEditing={this._submit}
-                  returnKeyType="done"
-                />
-              </SetupStepWrapper>
-              <BasicButton
-                title={t`Proceed`}
-                onPress={this._save}
-                disabled={!this.state.text}
-              />
-            </>
-          );
-        } }
-      </ScenarioStepContext.Consumer>
-    );
-  }
+  return (
+    <InputWrapper
+      title={prompt}
+      titleStyle="setup"
+      titleButton={showUndo ? (
+        <ActionButton
+          color="light"
+          leftIcon="undo"
+          title={t`Undo`}
+          onPress={undo}
+        />
+      ) : undefined}
+      onSubmit={onSavePress}
+      disabledText={!text ? t`Continue` : undefined}
+      editable
+    >
+      <TextInput
+        style={[styles.textInput, borderStyle, typography.dark, { backgroundColor: colors.L30 }]}
+        onChangeText={setText}
+        onSubmitEditing={onSubmit}
+        returnKeyType="done"
+      />
+    </InputWrapper>
+  );
 }
 
 const styles = StyleSheet.create({

@@ -5,8 +5,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {
   SettingsButton,
@@ -16,19 +15,18 @@ import StyleContext from '@styles/StyleContext';
 
 interface Props {
   loading?: boolean;
+  disabled?: boolean;
   navigation?: boolean;
   text: string;
   onPress?: () => void;
 }
-export default function SettingsItem({ loading, navigation, text, onPress }: Props) {
-  const dummyOnPress = () => {
-    // Ignore me
-  };
+
+export default function SettingsItem({ loading, disabled, navigation, text, onPress }: Props) {
   const { colors, typography } = useContext(StyleContext);
   if (loading) {
     return (
       <View style={[styles.wrapper, space.paddingXs]}>
-        <Text style={[typography.text, space.marginLeftS]}>{ text }</Text>
+        <Text style={[typography.text, disabled ? typography.light : undefined, space.marginLeftS]}>{ text }</Text>
         <ActivityIndicator
           style={[styles.spinner, space.marginLeftM]}
           color={colors.lightText}
@@ -41,7 +39,7 @@ export default function SettingsItem({ loading, navigation, text, onPress }: Pro
   }
   return (
     <SettingsButton
-      onPress={onPress || dummyOnPress}
+      onPress={onPress}
       title={text}
       titleStyle={typography.text}
       containerStyle={{

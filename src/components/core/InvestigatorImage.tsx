@@ -1,78 +1,87 @@
-import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { Sepia } from 'react-native-color-matrix-image-filters';
+import {
+  Placeholder,
+  PlaceholderMedia,
+  Fade,
+} from 'rn-placeholder';
 
 import { showCard, showCardImage } from '@components/nav/helper';
 import { toggleButtonMode } from '@components/cardlist/CardSearchResult/constants';
 import FactionIcon from '@icons/FactionIcon';
-import Card from '@data/Card';
-import { isBig } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
-
-const scaleFactor = isBig ? 1.2 : 1.0;
+import Card from '@data/types/Card';
+import StyleContext from '@styles/StyleContext';
+import AppIcon from '@icons/AppIcon';
+import COLORS from '@styles/colors';
 
 interface Props {
   card?: Card;
   componentId?: string;
   border?: boolean;
-  small?: boolean;
+  size?: 'large' | 'small' | 'tiny';
   killedOrInsane?: boolean;
   yithian?: boolean;
   imageLink?: boolean;
+  badge?: 'upgrade';
 }
 
-export default class InvestigatorImage extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+const IMAGE_SIZE = {
+  tiny: 40,
+  small: 65,
+  large: 110,
+};
 
-  _onPress = () => {
-    const {
-      card,
-      componentId,
-      imageLink,
-    } = this.props;
-    const { colors } = this.context;
+const ICON_SIZE = {
+  tiny: 26,
+  small: 40,
+  large: 65,
+};
+
+export default function InvestigatorImage({
+  card,
+  componentId,
+  border,
+  size = 'large',
+  killedOrInsane,
+  yithian,
+  imageLink,
+  badge,
+}: Props) {
+  const { colors, fontScale, shadow } = useContext(StyleContext);
+
+  const onPress = useCallback(() => {
     if (componentId && card) {
       if (imageLink) {
         showCardImage(componentId, card, colors);
       } else {
-        showCard(componentId, card.code, card, true);
+        showCard(componentId, card.code, card, colors, true);
       }
     }
-  };
+  }, [card, componentId, imageLink, colors]);
 
-  small() {
-    const { small } = this.props;
-    const { fontScale } = this.context;
-    return small || toggleButtonMode(fontScale);
-  }
-
-  imageStyle() {
-    const {
-      yithian,
-    } = this.props;
-    if (yithian) {
-      return this.small() ? styles.smallYithianImage : styles.bigImage;
+  const impliedSize = useMemo(() => {
+    if (size === 'small' || size === 'tiny') {
+      return size;
     }
-    return this.small() ? styles.image : styles.bigImage;
-  }
+    return toggleButtonMode(fontScale) ? 'small' : 'large';
+  }, [size, fontScale]);
 
-  renderInvestigatorImage() {
-    const {
-      card,
-      yithian,
-    } = this.props;
-    const { colors } = this.context;
+
+  const imageStyle = useMemo(() => {
+    switch (impliedSize) {
+      case 'tiny': return yithian ? styles.yithianTiny : styles.tiny;
+      case 'small': return yithian ? styles.yithianSmall : styles.small;
+      case 'large': return yithian ? styles.yithianLarge : styles.large;
+    }
+  }, [impliedSize, yithian]);
+
+  const investigatorImage = useMemo(() => {
     if (card) {
       return (
         <FastImage
-          style={this.imageStyle()}
+          style={imageStyle}
           source={{
             uri: `https://arkhamdb.com/${yithian ? 'bundles/cards/04244.jpg' : card.imagesrc}`,
           }}
@@ -81,138 +90,142 @@ export default class InvestigatorImage extends React.Component<Props> {
       );
     }
     return (
-      <View style={[this.imageStyle(), { backgroundColor: colors.L20 }]} />
+      <View style={[imageStyle, { backgroundColor: colors.L20 }]} />
     );
-  }
+  }, [card, yithian, colors, imageStyle]);
 
-  renderStyledImage() {
-    const {
-      killedOrInsane,
-    } = this.props;
+  const styledImage = useMemo(() => {
     if (killedOrInsane) {
       return (
         <Sepia>
-          { this.renderInvestigatorImage() }
+          { investigatorImage }
         </Sepia>
       );
     }
-    return this.renderInvestigatorImage();
-  }
+    return investigatorImage;
+  }, [killedOrInsane, investigatorImage]);
 
-  renderImage() {
-    const {
-      card,
-      killedOrInsane,
-      border,
-    } = this.props;
-    const { colors } = this.context;
-    const small = this.small();
-    const size = (small ? 65 : 110) * scaleFactor;
+  const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} duration={1000} />, [colors]);
+
+  const image = useMemo(() => {
+    const size = IMAGE_SIZE[impliedSize];
     if (!card) {
       return (
         <View style={[styles.container, { width: size, height: size }]}>
-          <View style={styles.relative}>
-            { this.renderStyledImage()}
-          </View>
-          <View style={styles.relative}>
-            { !!border && (
-              <View style={[
-                styles.border,
-                {
-                  borderColor: colors.faction.neutral.background,
-                  width: size,
-                  height: size,
-                },
-              ]} />
-            ) }
-          </View>
+          <Placeholder Animation={loadingAnimation}>
+            <PlaceholderMedia
+              color={colors.L10}
+              style={[styles.container, { width: size, height: size }, styles.border, { borderColor: border ? colors.M : colors.L10 }]}
+            />
+          </Placeholder>
         </View>
       );
     }
     return (
-      <View style={[styles.container, { width: size, height: size }]}>
-        <View style={styles.relative}>
-          <View style={[
-            styles.placeholder,
-            {
-              width: size,
-              height: size,
-              backgroundColor: colors.faction[killedOrInsane ? 'dead' : card.factionCode()].background,
-            },
-          ]}>
-            <Text style={styles.placeholderIcon} allowFontScaling={false}>
-              <FactionIcon faction={card.factionCode()} defaultColor="#FFFFFF" size={small ? 40 : 55} />
-            </Text>
-          </View>
-        </View>
-        { !!card.imagesrc && (
+      <View style={[{ width: size, height: size, position: 'relative' }, border && impliedSize === 'tiny' ? shadow.large : undefined]}>
+        <View style={[
+          styles.container,
+          border ? styles.border : undefined,
+          {
+            width: size,
+            height: size,
+            borderColor: colors.faction[card.factionCode()].border,
+            overflow: 'hidden',
+          },
+        ]}>
           <View style={styles.relative}>
-            { this.renderStyledImage() }
-          </View>
-        ) }
-        <View style={styles.relative}>
-          { !!border && (
             <View style={[
-              styles.border,
+              styles.placeholder,
               {
-                borderColor: colors.faction[killedOrInsane ? 'dead' : card.factionCode()].background,
+                top: border ? -2 : 0,
+                left: border ? -2 : 0,
                 width: size,
                 height: size,
+                backgroundColor: colors.faction[killedOrInsane ? 'dead' : card.factionCode()].background,
               },
-            ]} />
+            ]}>
+              <View style={styles.icon}>
+                <FactionIcon faction={card.factionCode()} defaultColor="#FFFFFF" size={ICON_SIZE[impliedSize]} />
+              </View>
+            </View>
+          </View>
+          { !!card.imagesrc && (
+            <View style={styles.relative}>
+              { styledImage }
+            </View>
           ) }
         </View>
+        { !!badge && (
+          <View style={{ position: 'absolute', bottom: - size / 8 + 2, right: -size / 8, width: size / 2, height: size / 2, borderRadius: size / 4, backgroundColor: colors.upgrade, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+            <AppIcon size={size / 2.3} color={COLORS.D20} name="upgrade" />
+          </View>
+        ) }
       </View>
     );
-  }
+  }, [card, killedOrInsane, badge, border, colors, impliedSize, styledImage, loadingAnimation, shadow]);
 
-  render() {
-    const { componentId, card } = this.props;
-    if (componentId && card) {
-      return (
-        <TouchableOpacity onPress={this._onPress}>
-          { this.renderImage() }
-        </TouchableOpacity>
-      );
-    }
-    return this.renderImage();
+  if (componentId && card) {
+    return (
+      <TouchableOpacity onPress={onPress}>
+        { image }
+      </TouchableOpacity>
+    );
   }
+  return image;
 }
 
 const styles = StyleSheet.create({
+  yithianTiny: {
+    position: 'absolute',
+    top: -18,
+    left: -8,
+    width: (166 + 44) * 0.5,
+    height: (136 + 34) * 0.5,
+  },
+  yithianSmall: {
+    position: 'absolute',
+    top: -36,
+    left: -20,
+    width: (166 + 24),
+    height: (136 + 14),
+  },
+  yithianLarge: {
+    position: 'absolute',
+    top: -44,
+    left: -20,
+    width: (166 + 44) * 1.25,
+    height: (136 + 34) * 1.25,
+  },
   container: {
     position: 'relative',
-    overflow: 'hidden',
     borderRadius: 6,
   },
   relative: {
     position: 'relative',
   },
-  smallYithianImage: {
+  tiny: {
     position: 'absolute',
-    top: -36 * scaleFactor,
-    left: -20 * scaleFactor,
-    width: (166 + 24) * scaleFactor,
-    height: (136 + 14) * scaleFactor,
+    top: -18,
+    left: -8,
+    width: (166 + 44) * 0.5,
+    height: (136 + 34) * 0.5,
   },
-  image: {
+  small: {
     position: 'absolute',
-    top: -36 * scaleFactor,
-    left: -20 * scaleFactor,
-    width: (166 + 44) * scaleFactor,
-    height: (136 + 34) * scaleFactor,
+    top: -36,
+    left: -20,
+    width: (166 + 44),
+    height: (136 + 34),
   },
-  bigImage: {
+  large: {
     position: 'absolute',
-    top: -44 * scaleFactor,
-    left: -20 * scaleFactor,
-    width: (166 + 44) * 1.25 * scaleFactor,
-    height: (136 + 34) * 1.25 * scaleFactor,
+    top: -44,
+    left: -20,
+    width: (166 + 44) * 1.25,
+    height: (136 + 34) * 1.25,
   },
   placeholder: {
     position: 'absolute',
-    top: 0,
-    left: 0,
     borderRadius: 6,
     flexDirection: 'row',
     alignItems: 'center',
@@ -223,7 +236,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     backgroundColor: 'transparent',
   },
-  placeholderIcon: {
-    textAlign: 'center',
+  icon: {
+    marginTop: -6,
   },
 });

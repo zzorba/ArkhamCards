@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Text, View } from 'react-native';
 import { map } from 'lodash';
 
@@ -11,10 +11,11 @@ interface Props {
   sectionId: string;
   campaignGuide: CampaignGuide;
   section: EntrySection;
+  title?: string;
 }
 
-export default class CampaignLogSectionComponent extends React.Component<Props> {
-  renderEntry(entry: CampaignLogEntry) {
+export default function CampaignLogSectionComponent({ sectionId, campaignGuide, section, title }: Props) {
+  const renderEntry = useCallback((entry: CampaignLogEntry) => {
     if (entry.type === 'freeform') {
       return (
         <TextEntryComponent
@@ -24,8 +25,6 @@ export default class CampaignLogSectionComponent extends React.Component<Props> 
         />
       );
     }
-    const { section } = this.props;
-    const { campaignGuide, sectionId } = this.props;
     const logEntry = campaignGuide.logEntry(sectionId, entry.id);
     const crossedOut = section.crossedOut[entry.id];
     const decoration = (section.decoration || {})[entry.id];
@@ -40,7 +39,7 @@ export default class CampaignLogSectionComponent extends React.Component<Props> 
           }
           return (
             <TextEntryComponent
-              text={`${logEntry.supply.name}: #X#`}
+              text={`${title || logEntry.supply.name}: #X#`}
               entry={entry}
             />
           );
@@ -65,6 +64,7 @@ export default class CampaignLogSectionComponent extends React.Component<Props> 
               count={card.count}
               entry={entry}
               text={logEntry.text}
+              feminineText={logEntry.feminineText}
               crossedOut={crossedOut}
             />
           ));
@@ -75,6 +75,13 @@ export default class CampaignLogSectionComponent extends React.Component<Props> 
             crossedOut={crossedOut}
             entry={entry}
             decoration={decoration}
+          />
+        );
+      case 'investigator_count':
+        return (
+          <TextEntryComponent
+            entry={entry}
+            text={`${title}: #X#`}
           />
         );
       case 'section_count':
@@ -91,14 +98,15 @@ export default class CampaignLogSectionComponent extends React.Component<Props> 
           />
         );
     }
-  }
+  }, [sectionId, campaignGuide, section, title]);
 
-  render() {
-    const { section } = this.props;
-    return map(section.entries, (entry, idx) => (
-      <View key={`${entry.id}_${idx}`}>
-        { this.renderEntry(entry) }
-      </View>
-    ));
-  }
+  return (
+    <>
+      { map(section.entries, (entry, idx) => (
+        <View key={`${entry.id}_${idx}`}>
+          { renderEntry(entry) }
+        </View>
+      )) }
+    </>
+  );
 }

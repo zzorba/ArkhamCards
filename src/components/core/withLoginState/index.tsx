@@ -20,31 +20,19 @@ export default function withLoginState<P>(
   WrappedComponent: React.ComponentType<P & LoginStateProps>,
   options?: Options
 ) {
-  class LoginStateWrapper extends React.Component<P> {
-    _renderWrappedComponent = (
-      login: () => void,
-      signedIn: boolean,
-      signInError?: string,
-    ) => {
-      return (
-        <WrappedComponent
-          {...this.props}
-          login={login}
-          signedIn={signedIn}
-          signInError={signInError}
-        />
-      );
-    };
-
-    render() {
-      return (
-        <LoginStateComponent
-          noWrapper={!!(options && options.noWrapper)}
-          render={this._renderWrappedComponent}
-          otherProps={this.props}
-        />
-      );
-    }
+  function LoginStateWrapper(props: P) {
+    return (
+      <LoginStateComponent noWrapper={!!(options && options.noWrapper)}>
+        { (login: () => void, signedIn: boolean, signInError?: string) => (
+          <WrappedComponent
+            {...props}
+            login={login}
+            signedIn={signedIn}
+            signInError={signInError}
+          />
+        ) }
+      </LoginStateComponent>
+    );
   }
 
   hoistNonReactStatics(LoginStateWrapper, WrappedComponent);

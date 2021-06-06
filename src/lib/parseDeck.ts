@@ -26,13 +26,14 @@ import {
   DeckChanges,
   DeckMeta,
   FactionCounts,
+  getDeckId,
   ParsedDeck,
   SkillCounts,
   SlotCounts,
   Slots,
   SplitCards,
 } from '@actions/types';
-import Card, { CardKey, CardsMap } from '@data/Card';
+import Card, { CardKey, CardsMap } from '@data/types/Card';
 import {
   ARCANE_RESEARCH_CODE,
   ADAPTABLE_CODE,
@@ -56,6 +57,7 @@ function filterBy(
 ): CardId[] {
   return cardIds.filter(c => {
     const card = cards[c.id];
+    // tslint:disable-next-line
     return card && card[field] === value;
   });
 }
@@ -115,7 +117,7 @@ export function isSpecialCard(card?: Card): boolean {
       card.permanent ||
       card.subtype_code === 'weakness' ||
       card.subtype_code === 'basicweakness' ||
-      card.spoiler ||
+      card.mythos_card ||
       card.has_restrictions
     )
   );
@@ -273,7 +275,7 @@ function getDeckChanges(
   const exiledCards = deck.exile_string ? mapValues(
     groupBy(deck.exile_string.split(',')),
     items => items.length) : {};
-  if (!deck.previous_deck || !previousDeck) {
+  if (!deck.previousDeckId || !previousDeck) {
     return undefined;
   }
   const previous_investigator_code = (previousDeck.meta || {}).alternate_back ||
@@ -284,11 +286,11 @@ function getDeckChanges(
   }
   const oldDeckSize = new DeckValidation(
     previousInvestigator,
-    previousDeck.slots,
+    previousDeck.slots || {},
     previousDeck.meta
   ).getDeckSize();
   const previousDeckCards: Card[] = getCards(cards,
-    previousDeck.slots,
+    previousDeck.slots || {},
     previousDeck.ignoreDeckLimitSlots || {}
   );
   const invalidCards = validation.getInvalidCards(previousDeckCards);
@@ -303,7 +305,7 @@ function getDeckChanges(
       const ignoreDelta = (ignoreDeckLimitSlots[code] || 0) - (previousIgnoreDeckLimitSlots[code] || 0);
       const exiledCount = exiledCards[code] || 0;
       const newCount = slots[code] || 0;
-      const oldCount = previousDeck.slots[code] || 0;
+      const oldCount = previousDeck.slots?.[code] || 0;
       const delta = (newCount + exiledCount) - oldCount - (code === ACE_OF_RODS_CODE ? ignoreDelta : 0);
       if (delta !== 0) {
         changedCards[code] = delta;
@@ -369,7 +371,7 @@ function getDeckChanges(
     ),
     addedCard => {
       if (addedCard.myriad) {
-        const myriadKey = `${addedCard.real_text}_${addedCard.xp}`;
+        const myriadKey = `${addedCard.real_name}_${addedCard.xp}`;
         if (myriadBuys[myriadKey]) {
           // Already paid for a myriad of this level
           // So this one is free.
@@ -450,7 +452,7 @@ function getDeckChanges(
       for (let i = 0; i < removedCards.length; i++) {
         const removedCard = removedCards[i];
         if (
-          addedCard.name === removedCard.name &&
+          addedCard.real_name === removedCard.real_name &&
           addedCard.xp !== undefined &&
           removedCard.xp !== undefined &&
           addedCard.xp > removedCard.xp
@@ -531,10 +533,11 @@ export function parseBasicDeck(
   return parseDeck(
     deck,
     deck.meta || {},
-    deck.slots,
+    deck.slots || {},
     deck.ignoreDeckLimitSlots || {},
     cards,
-    previousDeck
+    previousDeck,
+    deck.xp_adjustment
   );
 }
 
@@ -559,7 +562,7 @@ export function parseDeck(
   const cardIds = flatMap(
     sortBy(
       sortBy(
-        filter(keys(slots), id => !!cards[id]),
+        filter(uniq([...keys(slots), ...keys(deck.slots)]), id => !!cards[id]),
         id => {
           const card = cards[id];
           return (card && card.xp) || 0;
@@ -577,15 +580,19 @@ export function parseDeck(
       }
       return {
         id,
-        quantity: slots[id],
-        invalid: !validation.canIncludeCard(card, false),
+        quantity: slots[id] || 0,
+        invalid: !validation.canIncludeCard(card, false) || (card.deck_limit !== undefined && slots[id] > card.deck_limit),
         limited: validation.isCardLimited(card),
       };
     });
   const specialCards = cardIds.filter(c =>
-    (isSpecialCard(cards[c.id]) && slots[c.id] > 0) || ignoreDeckLimitSlots[c.id] > 0);
+    (isSpecialCard(cards[c.id]) && c.quantity >= 0) || ignoreDeckLimitSlots[c.id] > 0);
   const normalCards = cardIds.filter(c =>
-    !isSpecialCard(cards[c.id]) && slots[c.id] > (ignoreDeckLimitSlots[c.id] || 0));
+    !isSpecialCard(cards[c.id]) && ((
+      c.quantity > (ignoreDeckLimitSlots[c.id] || 0)
+    ) || (
+      (ignoreDeckLimitSlots[c.id] || 0) === 0 && c.quantity >= 0
+    )));
 
   const deckCards = getCards(cards, slots, ignoreDeckLimitSlots);
   const problem = validation.getProblem(deckCards) || undefined;
@@ -612,11 +619,13 @@ export function parseDeck(
     slotCounts[slot] = slotCount(cardIds, cards, slot);
   });
   return {
+    id: getDeckId(deck),
     investigator,
     deck,
     slots,
     normalCardCount: sum(normalCards.map(c =>
       c.quantity - (ignoreDeckLimitSlots[c.id] || 0))),
+    deckSize: validation.getDeckSize(),
     totalCardCount: sum(cardIds.map(c => c.quantity)),
     experience: totalXp,
     availableExperience: (deck.xp || 0) + (xpAdjustment || 0),

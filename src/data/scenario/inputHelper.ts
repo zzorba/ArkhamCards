@@ -1,11 +1,12 @@
 import { filter, find, forEach } from 'lodash';
 
-import { NumberChoices } from '@actions/types';
+import { NumberChoices, StringChoices } from '@actions/types';
 import {
   BinaryChoiceCondition,
   InvestigatorChoiceCondition,
   InvestigatorChoiceInput,
   BinaryConditionalChoice,
+  CampaignLogCardsCondition,
 } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import {
@@ -20,6 +21,7 @@ import {
   BinaryResult,
   InvestigatorResult,
   campaignLogCountConditionResult,
+  campaignDataScenarioConditionResult,
 } from '@data/scenario/conditionHelper';
 import { PersonalizedChoices, UniversalChoices, DisplayChoiceWithId } from '@data/scenario';
 
@@ -49,7 +51,10 @@ export function investigatorChoiceInputChoices(
       choices: input.choices,
     };
   }
-  const codes = campaignLog.investigatorCodes(false);
+  const codes = filter(
+    campaignLog.investigatorCodes(false),
+    code => input.investigator !== 'resigned' || campaignLog.resigned(code)
+  );
   const result: NumberChoices = {};
   forEach(
     input.choices,
@@ -84,6 +89,18 @@ export function investigatorChoiceInputChoices(
   };
 }
 
+export function calculateCardChoiceResult(
+  condition: CampaignLogCardsCondition,
+  campaignLog: GuidedCampaignLog,
+  code: string
+) {
+  if (condition.id === '$input_value') {
+    const result = !!find(campaignLog.allCards(condition.section), card => card === code);
+    return !!find(condition.options, option => option.boolCondition === result);
+  }
+  return true;
+}
+
 export function calculateBinaryConditionResult(
   condition: BinaryChoiceCondition,
   campaignLog: GuidedCampaignLog
@@ -92,15 +109,21 @@ export function calculateBinaryConditionResult(
     case 'has_card':
       return binaryCardConditionResult(condition, campaignLog);
     case 'campaign_data': {
-      if (condition.campaign_data === 'investigator') {
-        return campaignDataInvestigatorConditionResult(condition, campaignLog);
+      switch (condition.campaign_data) {
+        case 'investigator':
+          return campaignDataInvestigatorConditionResult(condition, campaignLog);
+        case 'scenario_completed':
+        case 'scenario_replayed':
+          return campaignDataScenarioConditionResult(condition, campaignLog);
+        case 'chaos_bag': {
+          const numericResult = campaignDataChaosBagConditionResult(condition, campaignLog);
+          return {
+            type: 'binary',
+            decision: !!numericResult.option,
+            option: numericResult.option,
+          };
+        }
       }
-      const numericResult = campaignDataChaosBagConditionResult(condition, campaignLog);
-      return {
-        type: 'binary',
-        decision: !!numericResult.option,
-        option: numericResult.option,
-      };
     }
     case 'campaign_log':
       return campaignLogConditionResult(condition, campaignLog);
@@ -124,7 +147,7 @@ export function calculateBinaryConditionResult(
 function calculateInvestigatorConditionResult(
   condition: InvestigatorChoiceCondition,
   campaignLog: GuidedCampaignLog
-): InvestigatorResult {
+): Omit<InvestigatorResult, 'options'> {
   switch (condition.type) {
     case 'has_card':
       return investigatorCardConditionResult(condition, campaignLog);
@@ -132,5 +155,18 @@ function calculateInvestigatorConditionResult(
       return basicTraumaConditionResult(condition, campaignLog);
     case 'investigator':
       return investigatorConditionResult(condition, campaignLog);
+    case 'campaign_log': {
+      const result = campaignLogConditionResult(condition, campaignLog);
+      const investigators = campaignLog.investigatorCodes(false);
+      const investigatorChoices: StringChoices = {};
+      forEach(investigators, code => {
+        investigatorChoices[code] = result.option ? [condition.id] : [];
+      });
+      return {
+        type: 'investigator',
+        investigatorChoices,
+      };
+    }
   }
 }
+

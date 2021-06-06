@@ -1,36 +1,30 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { map } from 'lodash';
 import { msgid, ngettext } from 'ttag';
 
 import { XpCountStep } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ChoiceListItemComponent from '@components/campaignguide/prompts/ChoiceListComponent/ChoiceListItemComponent';
-import Card, { CardsMap } from '@data/Card';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import Card, { CardsMap } from '@data/types/Card';
+import StyleContext from '@styles/StyleContext';
 import CampaignGuideContext from '../CampaignGuideContext';
 import { Deck } from '@actions/types';
-import { useSelector } from 'react-redux';
-import { getDeck } from '@reducers';
 import { parseBasicDeck } from '@lib/parseDeck';
+import { s } from '@styles/space';
 
 interface Props {
   step: XpCountStep;
   campaignLog: GuidedCampaignLog;
 }
 
-function SpentDeckXpComponent({ deck, campaignLog, previousDeckId, playerCards, children }: {
+function SpentDeckXpComponent({ deck, campaignLog, previousDeck, playerCards, children }: {
   deck: Deck;
   campaignLog: GuidedCampaignLog;
-  previousDeckId: number;
+  previousDeck: Deck;
   playerCards: CardsMap;
   children: (xp: number) => JSX.Element | null;
 }) {
-  const previousDeck = useSelector(getDeck(previousDeckId)) || undefined;
-  const parsedDeck = parseBasicDeck(
-    deck,
-    playerCards,
-    previousDeck
-  );
+  const parsedDeck = useMemo(() => parseBasicDeck(deck, playerCards, previousDeck), [deck, playerCards, previousDeck]);
   const earnedXp = campaignLog.earnedXp(deck.investigator_code);
   if (!parsedDeck) {
     return children(earnedXp);
@@ -45,39 +39,35 @@ function SpentXpComponent({ investigator, campaignLog, children }: {
   campaignLog: GuidedCampaignLog;
   children: (xp: number) => JSX.Element | null;
 }) {
-  const { latestDecks, playerCards, adjustedInvestigatorData } = useContext(CampaignGuideContext);
+  const { latestDecks, playerCards, spentXp } = useContext(CampaignGuideContext);
 
   const deck = latestDecks[investigator.code];
   const earnedXp = campaignLog.earnedXp(investigator.code);
   if (deck) {
-    if (!deck.previous_deck) {
+    if (!deck.previousDeck) {
       return children(earnedXp);
     }
     return (
       <SpentDeckXpComponent
-        deck={deck}
+        deck={deck.deck}
         campaignLog={campaignLog}
         playerCards={playerCards}
-        previousDeckId={deck.previous_deck}
+        previousDeck={deck.previousDeck}
       >
         { children }
       </SpentDeckXpComponent>
     );
   }
-  const adjustedData = adjustedInvestigatorData[investigator.code];
-  return children(earnedXp + campaignLog.totalXp(investigator.code) - (adjustedData ? adjustedData.spentXp || 0 : 0));
+  return children(earnedXp + campaignLog.totalXp(investigator.code) - (spentXp[investigator.code] || 0));
 }
 
-export default class XpCountComponent extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+function onChoiceChange() {
+  // intentionally empty.
+}
 
-  _onChoiceChange = () => {
-    // intentionally empty.
-  };
-
-  specialString(investigator: Card) {
-    const { step, campaignLog } = this.props;
+export default function XpCountComponent({ step, campaignLog }: Props) {
+  const { colors, width } = useContext(StyleContext);
+  const specialString = useCallback((investigator: Card) => {
     const count = campaignLog.specialXp(investigator.code, step.special_xp);
     switch (step.special_xp) {
       case 'resupply_points':
@@ -89,40 +79,38 @@ export default class XpCountComponent extends React.Component<Props> {
           `${count} supply points`,
           count);
     }
-  }
-  render() {
-    const { campaignLog } = this.props;
-    const { colors } = this.context;
-    return (
-      <>
-        { map(campaignLog.investigators(false), (investigator, idx) => {
-          const resupplyPointsString = this.specialString(investigator);
-          return (
-            <SpentXpComponent investigator={investigator} campaignLog={campaignLog}>
-              { (xp: number) => (
-                <ChoiceListItemComponent
-                  key={investigator.code}
-                  code={investigator.code}
-                  name={investigator.name}
-                  color={colors.faction[investigator.factionCode()].background}
-                  choices={[{
-                    text: ngettext(
-                      msgid`${xp} general / ${resupplyPointsString} XP`,
-                      `${xp} general / ${resupplyPointsString} XP`,
-                      xp
-                    ),
-                  }]}
-                  onChoiceChange={this._onChoiceChange}
-                  choice={0}
-                  editable={false}
-                  optional={false}
-                  firstItem={idx === 0}
-                />
-              ) }
-            </SpentXpComponent>
-          );
-        })}
-      </>
-    );
-  }
+  }, [step, campaignLog]);
+  return (
+    <>
+      { map(campaignLog.investigators(false), (investigator, idx) => {
+        const resupplyPointsString = specialString(investigator);
+        return (
+          <SpentXpComponent investigator={investigator} campaignLog={campaignLog}>
+            { (xp: number) => (
+              <ChoiceListItemComponent
+                key={investigator.code}
+                investigator={investigator}
+                code={investigator.code}
+                name={investigator.name}
+                color={colors.faction[investigator.factionCode()].background}
+                choices={[{
+                  text: ngettext(
+                    msgid`${xp} general / ${resupplyPointsString} XP`,
+                    `${xp} general / ${resupplyPointsString} XP`,
+                    xp
+                  ),
+                }]}
+                onChoiceChange={onChoiceChange}
+                choice={0}
+                editable={false}
+                optional={false}
+                width={width - s * 2}
+                firstItem={idx === 0}
+              />
+            ) }
+          </SpentXpComponent>
+        );
+      })}
+    </>
+  );
 }

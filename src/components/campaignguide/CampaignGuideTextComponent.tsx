@@ -7,21 +7,24 @@ import StyleContext from '@styles/StyleContext';
 interface Props {
   text: string;
   flavor?: boolean;
+  sizeScale?: number;
 }
 
-export default function CampaignGuideTextComponent({ text, flavor }: Props) {
+export default function CampaignGuideTextComponent({ text, flavor, sizeScale }: Props) {
   const { colors } = useContext(StyleContext);
   if (flavor) {
     return (
       <CardFlavorTextComponent
         text={text.replace(/\n/g, '\n\n')}
         color={colors.darkText}
+        sizeScale={sizeScale}
       />
     );
   }
   return (
     <CardTextComponent
       text={text.replace(/\n/g, '\n\n')}
+      sizeScale={sizeScale}
     />
   );
 }

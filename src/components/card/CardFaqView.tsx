@@ -1,209 +1,114 @@
-import React from 'react';
-import { head, startsWith } from 'lodash';
-import { connect } from 'react-redux';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { head } from 'lodash';
 import {
-  Linking,
   RefreshControl,
   ScrollView,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { InAppBrowser } from '@matt-block/react-native-in-app-browser';
 import { t } from 'ttag';
 
 import CardTextComponent from './CardTextComponent';
-import Database from '@data/Database';
-import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
-import { where } from '@data/query';
-import FaqEntry from '@data/FaqEntry';
-import connectDb from '@components/data/connectDb';
-import { showCard } from '@components/nav/helper';
+import Database from '@data/sqlite/Database';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
+import { openUrl } from '@components/nav/helper';
 import { NavigationProps } from '@components/nav/types';
 import { getFaqEntry } from '@lib/publicApi';
-import { getTabooSet, AppState } from '@reducers';
 import space, { m } from '@styles/space';
-import StyleContext from '@styles/StyleContext';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { useTabooSetId } from '@components/core/hooks';
+import useDbData from '@components/core/useDbData';
 
 export interface CardFaqProps {
   id: string;
 }
 
-interface ReduxProps {
-  tabooSetId?: number;
-}
+type Props = NavigationProps & CardFaqProps;
 
-interface Data {
-  faqEntries: FaqEntry[];
-}
+export default function CardFaqView({ id, componentId }: Props) {
+  const { db } = useContext(DatabaseContext);
+  const { backgroundStyle, colors, typography } = useContext(StyleContext);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | undefined>();
+  const fetchFaqEntries = useCallback(async(db: Database) => {
+    const qb = await db.faqEntries();
+    const faqEntries = await qb.createQueryBuilder('faq')
+      .where('faq.code = :code', { code: id })
+      .getMany();
+    return faqEntries;
+  }, [id]);
+  const faqEntries = useDbData(fetchFaqEntries);
 
-type Props = NavigationProps & CardFaqProps & ReduxProps & Data;
+  const loadFaq = useCallback(() => {
+    if (!loading) {
+      setLoading(true);
 
-interface State {
-  faqLoading: boolean;
-  faqError?: string;
-}
-
-class CardFaqView extends React.Component<Props, State> {
-  static contextType = DatabaseContext;
-  context!: DatabaseContextType;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      faqLoading: false,
-    };
-  }
-
-  componentDidMount() {
-    if (!head(this.props.faqEntries)) {
-      this._loadFaq();
-    }
-  }
-
-  openUrl(url: string) {
-    InAppBrowser.open(url).catch(() => {
-      Linking.openURL(url);
-    });
-  }
-
-  async openCard(code: string) {
-    const { componentId, tabooSetId } = this.props;
-    const card = await this.context.db.getCard(
-      where('c.code = :code', { code }),
-      tabooSetId
-    );
-    if (card) {
-      showCard(componentId, code, card);
-    }
-  }
-
-  _linkPressed = (url: string) => {
-    const regex = /\/card\/(\d+)/;
-    const match = url.match(regex);
-    if (match) {
-      this.openCard(match[1]);
-    } else if (url.indexOf('arkhamdb.com') !== -1) {
-      this.openUrl(url);
-    } else if (startsWith(url, '/')) {
-      this.openUrl(`https://arkhamdb.com${url}`);
-    }
-  };
-
-  _loadFaq = () => {
-    const {
-      id,
-    } = this.props;
-    if (!this.state.faqLoading) {
-      this.setState({
-        faqLoading: true,
-      });
-
-      getFaqEntry(this.context.db, id).then(() => {
-        this.setState({
-          faqLoading: false,
-          faqError: undefined,
-        });
+      getFaqEntry(db, id).then(() => {
+        setLoading(false);
+        setError(undefined);
       }).catch(() => {
-        this.setState({
-          faqLoading: false,
-          faqError: 'Problem loading FAQ, please try again later.',
-        });
+        setLoading(false);
+        setError('Problem loading FAQ, please try again later.');
       });
     }
-  };
+  }, [id, db, loading, setLoading, setError]);
 
-  renderFaqContent() {
-    const {
-      faqEntries,
-    } = this.props;
-    const {
-      faqLoading,
-      faqError,
-    } = this.state;
+  useEffect(() => {
+    // Initial load on mount.
+    if (!head(faqEntries)) {
+      loadFaq();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const tabooSetId = useTabooSetId();
+  const linkPressed = useCallback(async(url: string, context: StyleContextType) => {
+    await openUrl(url, context, db, componentId, tabooSetId);
+  }, [componentId, tabooSetId, db]);
 
-    const faqEntry = head(faqEntries);
-    const lastUpdated = faqEntry && faqEntry.fetched && faqEntry.fetched.toISOString().slice(0, 10);
-    return (
-      <StyleContext.Consumer>
-        { ({ typography }) => (
-          <View>
-            { !!faqError && (
-              <Text style={[typography.text, styles.error]}>
-                { faqError }
-              </Text>
-            ) }
-            <View>
-              { (faqEntry && faqEntry.text) ? (
-                <CardTextComponent
-                  text={faqEntry.text}
-                  onLinkPress={this._linkPressed}
-                />
-              ) : (
-                <Text style={typography.text}>
-                  { faqLoading ? t`Checking for FAQ` : t`No entries at this time.` }
-                </Text>
-              ) }
-            </View>
-            { !!lastUpdated && (
-              <View style={space.marginTopS}>
-                <Text style={typography.text}>
-                  { t`Last Updated: ${lastUpdated}` }
-                </Text>
-              </View>
-            ) }
+  const faqEntry = head(faqEntries);
+  const lastUpdated = useMemo(() => faqEntry && faqEntry.fetched && faqEntry.fetched.toISOString().slice(0, 10), [faqEntry]);
+
+  return (
+    <ScrollView
+      contentContainerStyle={[styles.container, backgroundStyle]}
+      refreshControl={
+        <RefreshControl
+          refreshing={loading}
+          onRefresh={loadFaq}
+          tintColor={colors.lightText}
+        />
+      }
+    >
+      <View>
+        { !!error && (
+          <Text style={[typography.text, styles.error]}>
+            { error }
+          </Text>
+        ) }
+        <View>
+          { (faqEntry && faqEntry.text) ? (
+            <CardTextComponent
+              text={faqEntry.text}
+              onLinkPress={linkPressed}
+            />
+          ) : (
+            <Text style={typography.text}>
+              { loading ? t`Checking for FAQ` : t`No entries at this time.` }
+            </Text>
+          ) }
+        </View>
+        { !!lastUpdated && (
+          <View style={space.marginTopS}>
+            <Text style={typography.text}>
+              { t`Last Updated: ${lastUpdated}` }
+            </Text>
           </View>
         ) }
-      </StyleContext.Consumer>
-    );
-  }
-
-  render() {
-    return (
-      <StyleContext.Consumer>
-        { ({ backgroundStyle, colors }) => (
-          <ScrollView
-            contentContainerStyle={[styles.container, backgroundStyle]}
-            refreshControl={
-              <RefreshControl
-                refreshing={this.state.faqLoading}
-                onRefresh={this._loadFaq}
-                tintColor={colors.lightText}
-              />
-            }
-          >
-            { this.renderFaqContent() }
-          </ScrollView>
-        ) }
-      </StyleContext.Consumer>
-    );
-  }
+      </View>
+    </ScrollView>
+  );
 }
-
-function mapStateToProps(state: AppState): ReduxProps {
-  return {
-    tabooSetId: getTabooSet(state),
-  };
-}
-
-export default connect<ReduxProps, unknown, NavigationProps & CardFaqProps, AppState>(
-  mapStateToProps
-)(
-  connectDb<NavigationProps & CardFaqProps & ReduxProps, Data, string>(
-    CardFaqView,
-    (props: NavigationProps & CardFaqProps & ReduxProps) => props.id,
-    async(db: Database, code: string) => {
-      const qb = await db.faqEntries();
-      const faqEntries = await qb.createQueryBuilder('faq')
-        .where('faq.code = :code', { code })
-        .getMany();
-      return {
-        faqEntries,
-      };
-    }
-  )
-);
 
 const styles = StyleSheet.create({
   container: {

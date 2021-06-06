@@ -5,12 +5,14 @@ import {
   forEach,
   groupBy,
   keys,
+  omit,
   map,
   mapValues,
   partition,
   range,
   sortBy,
   sum,
+  values,
 } from 'lodash';
 
 import { StringChoices } from '@actions/types';
@@ -22,6 +24,7 @@ import {
   Step,
   Effect,
   EffectsWithInput,
+  EffectsStep,
 } from '@data/scenario/types';
 import { getSpecialEffectChoiceList } from './effectHelper';
 import { investigatorChoiceInputChoices, chooseOneInputChoices } from '@data/scenario/inputHelper';
@@ -29,7 +32,7 @@ import { conditionResult } from '@data/scenario/conditionHelper';
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID } from '@data/scenario/fixedSteps';
+import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, PLAY_SCENARIO_STEP_ID, LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
 
 export default class ScenarioStep {
   step: Step;
@@ -69,14 +72,19 @@ export default class ScenarioStep {
     scenarioState: ScenarioStateHelper
   ): GuidedCampaignLog | undefined {
     if (this.step.type === 'effects') {
-      const flatEffects = flatMap(this.step.effectsWithInput, effects => effects.effects);
-      const specialInputs = flatMap(flatEffects, effect => {
-        const specialInput = getSpecialEffectChoiceList(this.step.id, effect);
-        if (specialInput) {
-          return [specialInput];
-        }
-        return [];
-      });
+      const step: EffectsStep = this.step;
+      const specialInputs = flatMap(
+        this.step.effectsWithInput,
+        (effects, idx) => {
+          const stepId = step.syntheticId ? `${step.id}_${idx}` : step.id;
+          return flatMap(effects.effects, effect => {
+            const specialInput = getSpecialEffectChoiceList(stepId, effect);
+            if (specialInput) {
+              return [specialInput];
+            }
+            return [];
+          });
+        });
       const stillNeedsInput = find(specialInputs, id =>
         id !== '$fixed_investigator' &&
         scenarioState.stringChoices(id) === undefined
@@ -86,11 +94,12 @@ export default class ScenarioStep {
         return undefined;
       }
 
-      const effects = flatMap(this.step.effectsWithInput, effects => {
+      const effects = flatMap(this.step.effectsWithInput, (effects, idx) => {
+        const stepId = (step.syntheticId) ? `${step.id}_${idx}` : step.id;
         const result: EffectsWithInput[] = [];
         const [specialEffects, normalEffects] = partition(
           effects.effects,
-          effect => !!getSpecialEffectChoiceList(this.step.id, effect)
+          effect => !!getSpecialEffectChoiceList(stepId, effect)
         );
         if (normalEffects.length) {
           result.push({
@@ -99,7 +108,7 @@ export default class ScenarioStep {
           });
         }
         forEach(specialEffects, specialEffect => {
-          const input = getSpecialEffectChoiceList(this.step.id, specialEffect);
+          const input = getSpecialEffectChoiceList(stepId, specialEffect);
           if (!input) {
             // Impossible
             return;
@@ -237,7 +246,8 @@ export default class ScenarioStep {
               this.step.id,
               this.remainingStepIds,
               effectsWithInput,
-              scenarioState
+              scenarioState,
+              {}
             );
           }
         }
@@ -283,7 +293,8 @@ export default class ScenarioStep {
           [{
             effects: this.step.effects || [],
           }],
-          scenarioState
+          scenarioState,
+          {}
         );
       }
       case 'effects': {
@@ -304,7 +315,8 @@ export default class ScenarioStep {
           [{
             effects: this.step.effects || [],
           }],
-          scenarioState
+          scenarioState,
+          {}
         );
     }
   }
@@ -324,13 +336,23 @@ export default class ScenarioStep {
             ...((result.option && result.option.steps) || []),
             ...this.remainingStepIds,
           ],
-          [{
-            border: (result.option && result.option.border),
-            numberInput: result.type === 'number' ? [result.number] : undefined,
-            input: result.type === 'binary' ? result.input : undefined,
-            effects: (result.option && result.option.effects) || [],
-          }],
-          scenarioState
+          [
+            ...(result.option?.pre_border_effects ? [
+              {
+                effects: result.option.pre_border_effects,
+                numberInput: result.type === 'number' ? [result.number] : undefined,
+                input: result.type === 'binary' ? result.input : undefined,
+              },
+            ] : []),
+            {
+              border: (result.option && result.option.border),
+              numberInput: result.type === 'number' ? [result.number] : undefined,
+              input: result.type === 'binary' ? result.input : undefined,
+              effects: (result.option && result.option.effects) || [],
+            },
+          ],
+          scenarioState,
+          {}
         );
       case 'investigator': {
         const {
@@ -347,7 +369,8 @@ export default class ScenarioStep {
           step.id,
           [...stepIds, ...this.remainingStepIds],
           effectsWithInput,
-          scenarioState
+          scenarioState,
+          {},
         );
       }
     }
@@ -356,7 +379,10 @@ export default class ScenarioStep {
   private processListChoices(
     choiceList: StringChoices,
     theChoices: Choices
-  ) {
+  ): {
+    effectsWithInput: EffectsWithInput[];
+    stepIds: string[];
+  } {
     const groupedEffects = groupBy(
       flatMap(choiceList, (choices, code) => {
         return choices.map(choiceId => {
@@ -385,7 +411,15 @@ export default class ScenarioStep {
           effects: (selectedChoice && selectedChoice.effects) || [],
           border: (selectedChoice && selectedChoice.border),
         };
-        return result;
+        return [
+          ...(selectedChoice?.pre_border_effects ? [
+            {
+              effects: selectedChoice.pre_border_effects,
+              input: map(group, item => item.code),
+            },
+          ] : []),
+          result,
+        ];
       });
     return {
       effectsWithInput,
@@ -436,7 +470,8 @@ export default class ScenarioStep {
             choice ? [{
               effects: choice.effects || [],
             }] : [],
-            scenarioState
+            scenarioState,
+            {}
           );
         }
 
@@ -459,7 +494,8 @@ export default class ScenarioStep {
           choice ? [{
             effects: choice.effects || [],
           }] : [],
-          scenarioState
+          scenarioState,
+          {}
         );
       }
       case 'text_box': {
@@ -474,7 +510,8 @@ export default class ScenarioStep {
             input: [text],
             effects: input.effects,
           }],
-          scenarioState
+          scenarioState,
+          {}
         );
       }
       case 'play_scenario': {
@@ -492,11 +529,12 @@ export default class ScenarioStep {
               step.id,
               [
                 `${fixedStep}#${nextIteration}`,
-                `$play_scenario#${nextIteration}`,
+                `${PLAY_SCENARIO_STEP_ID}#${nextIteration}`,
                 ...this.remainingStepIds,
               ],
               [],
-              scenarioState
+              scenarioState,
+              {}
             );
           }
           case PlayingScenarioBranch.RESOLUTION: {
@@ -511,7 +549,8 @@ export default class ScenarioStep {
                 ...this.remainingStepIds,
               ],
               [],
-              scenarioState
+              scenarioState,
+              {}
             );
           }
           case PlayingScenarioBranch.CAMPAIGN_LOG: {
@@ -536,7 +575,7 @@ export default class ScenarioStep {
                     step.id,
                     [
                       ...choiceSteps,
-                      `$play_scenario#${nextIteration}`,
+                      `${PLAY_SCENARIO_STEP_ID}#${nextIteration}`,
                       ...this.remainingStepIds,
                     ],
                     [
@@ -544,7 +583,8 @@ export default class ScenarioStep {
                         effects: campaignLogChoice.effects || [],
                       },
                     ],
-                    scenarioState
+                    scenarioState,
+                    {}
                   );
                 }
               }
@@ -553,11 +593,12 @@ export default class ScenarioStep {
               step.id,
               [
                 `$campaign_log#${nextIteration}`,
-                `$play_scenario#${nextIteration}`,
+                `${PLAY_SCENARIO_STEP_ID}#${nextIteration}`,
                 ...this.remainingStepIds,
               ],
               [],
-              scenarioState
+              scenarioState,
+              {}
             );
           }
           default: {
@@ -572,15 +613,17 @@ export default class ScenarioStep {
               step.id,
               [
                 ...branchSteps,
-                `$play_scenario#${nextIteration}`,
+                `${PLAY_SCENARIO_STEP_ID}#${nextIteration}`,
                 ...this.remainingStepIds,
               ],
               [{
                 effects: branch.effects || [],
               }],
               scenarioState,
-              'small',
-              true
+              {
+                bulletType: 'small',
+                hiddenResult: true,
+              }
             );
           }
         }
@@ -597,7 +640,8 @@ export default class ScenarioStep {
             numberInput: [count],
             effects: input.effects,
           }],
-          scenarioState
+          scenarioState,
+          {}
         );
       }
       case 'investigator_counter': {
@@ -605,36 +649,27 @@ export default class ScenarioStep {
         if (choiceList === undefined) {
           return undefined;
         }
-        const groupedEffects = groupBy(
-          flatMap(choiceList, (choices, code) => {
-            return choices.map(choice => {
-              return {
-                code,
-                choice,
-              };
-            });
-          }),
-          element => element.choice
-        );
         const effectsWithInput: EffectsWithInput[] = flatMap(
-          sortBy(groupedEffects, group => group[0].choice),
-          group => {
-            if (group[0].choice === -1) {
+          keys(choiceList), investigator => {
+            const count = choiceList[investigator];
+            if (!count || count[0] === -1 || count[0] === 0) {
               return [];
             }
             const effectWithInput: EffectsWithInput = {
-              input: map(group, item => item.code),
-              numberInput: [group[0].choice],
+              input: [investigator],
+              numberInput: [count[0]],
               effects: input.effects,
             };
             return effectWithInput;
-          }
-        );
+          });
         return this.maybeCreateEffectsStep(
           step.id,
           this.remainingStepIds,
-          effectsWithInput,
-          scenarioState
+          sortBy(effectsWithInput, e => e.input && e.input[0]),
+          scenarioState,
+          {
+            syntheticId: true,
+          }
         );
       }
       case 'checklist': {
@@ -657,7 +692,8 @@ export default class ScenarioStep {
           step.id,
           [...stepIds, ...this.remainingStepIds],
           effectsWithInput,
-          scenarioState
+          scenarioState,
+          {}
         );
       }
       case 'scenario_investigators': {
@@ -666,7 +702,14 @@ export default class ScenarioStep {
           return undefined;
         }
         const investigators: string[] = keys(choices);
-        const effectsWithInput: EffectsWithInput = {
+        if (!investigators.length && input.choose_none_steps) {
+          return this.proceedToNextStep(
+            [...input.choose_none_steps, ...this.remainingStepIds],
+            scenarioState,
+            this.campaignLog
+          );
+        }
+        const effectsWithInput: EffectsWithInput[] = [{
           input: investigators,
           effects: [
             {
@@ -675,12 +718,25 @@ export default class ScenarioStep {
               investigator: '$input_value',
             },
           ],
-        };
+        }];
+
+        const lead_invesigator_choices = scenarioState.stringChoices(LEAD_INVESTIGATOR_STEP_ID);
+        if (input.lead_investigator_effects) {
+          if (!lead_invesigator_choices) {
+            return undefined;
+          }
+          effectsWithInput.push({
+            input: keys(lead_invesigator_choices),
+            effects: input.lead_investigator_effects,
+          });
+        }
+
         return this.maybeCreateEffectsStep(
           step.id,
           this.remainingStepIds,
-          [effectsWithInput],
-          scenarioState
+          effectsWithInput,
+          scenarioState,
+          {}
         );
       }
       case 'investigator_choice_supplies': {
@@ -730,7 +786,8 @@ export default class ScenarioStep {
           step.id,
           [...stepIds, ...followOnStepIds, ...this.remainingStepIds],
           effectsWithInput,
-          scenarioState
+          scenarioState,
+          {}
         );
       }
       case 'card_choice': {
@@ -756,7 +813,8 @@ export default class ScenarioStep {
                 effects: choice.effects || [],
               },
             ],
-            scenarioState
+            scenarioState,
+            {}
           );
         }
         const choices = scenarioState.stringChoices(step.id);
@@ -778,7 +836,8 @@ export default class ScenarioStep {
           step.id,
           [...stepIds, ...this.remainingStepIds],
           effectsWithInput,
-          scenarioState
+          scenarioState,
+          {}
         );
       }
       case 'supplies': {
@@ -786,25 +845,29 @@ export default class ScenarioStep {
         if (supplies === undefined) {
           return undefined;
         }
-        const effects: Effect[] = flatMap(supplies, (investigatorSupplies, code) =>
+        const effectsWithInput: EffectsWithInput[] = flatMap(supplies, (investigatorSupplies, code) =>
           flatMap(investigatorSupplies, (count, supplyId) => {
             return {
-              type: 'campaign_log_count',
-              section: input.section,
-              investigator: code,
-              operation: 'add',
-              id: supplyId,
-              value: count,
+              effects: [
+                {
+                  type: 'campaign_log_investigator_count',
+                  section: input.section,
+                  investigator: '$input_value',
+                  operation: 'add',
+                  id: supplyId,
+                  value: count,
+                },
+              ],
+              input: [code],
             };
           })
         );
         return this.maybeCreateEffectsStep(
           step.id,
           this.remainingStepIds,
-          [{
-            effects,
-          }],
-          scenarioState
+          effectsWithInput,
+          scenarioState,
+          {}
         );
       }
       case 'choose_one': {
@@ -831,7 +894,32 @@ export default class ScenarioStep {
             effects: choice.effects || [],
           }],
           scenarioState,
-          'small'
+          { bulletType: 'small' }
+        );
+      }
+      case 'save_decks': {
+        const hasDeckChanges = find(this.campaignLog.investigatorCodes(false), (code: string) => {
+          return !!find(values(this.campaignLog.storyAssetChanges(code)), count => count !== 0);
+        });
+        if (!hasDeckChanges) {
+          return this.proceedToNextStep(
+            this.remainingStepIds,
+            scenarioState,
+            this.campaignLog
+          );
+        }
+        const choice = scenarioState.decision(this.step.id);
+        if (choice === undefined) {
+          return undefined;
+        }
+
+        // Finally do the deck 'save' to bank it.
+        return this.maybeCreateEffectsStep(
+          this.step.id,
+          this.remainingStepIds,
+          [{ effects: [{ type: 'save_decks' }] }],
+          scenarioState,
+          {}
         );
       }
       case 'upgrade_decks': {
@@ -846,11 +934,24 @@ export default class ScenarioStep {
           if (choices !== undefined) {
             const effects: Effect[] = [];
             const xpAdjust = (choices.xp && choices.xp[0]) || 0;
+            const count = (choices.count && choices.count[0] || 0);
+            const section = (input.counter || this.campaignLog.campaignData.redirect_experience);
+            if (count && section) {
+              effects.push({
+                type: 'campaign_log_investigator_count',
+                section,
+                id: '$count',
+                investigator: '$input_value',
+                operation: 'add',
+                value: count,
+              });
+            }
             if (xpAdjust !== 0) {
               effects.push({
                 type: 'earn_xp',
                 investigator: '$input_value',
                 bonus: xpAdjust,
+                special_xp: input.special_xp,
               });
             }
             const physicalAdjust = (choices.physical && choices.physical[0]) || 0;
@@ -887,6 +988,17 @@ export default class ScenarioStep {
                 hidden: true,
               });
             }
+            forEach(omit(choices, ['insane', 'killed', 'count', 'physical', 'mental', 'xp', 'deckId']), (count, exile_code) => {
+              if (count.length) {
+                for (let i = 0; i < count[0]; i++) {
+                  effects.push({
+                    type: 'remove_card',
+                    investigator: '$input_value',
+                    card: exile_code,
+                  });
+                }
+              }
+            });
 
             if (effects.length) {
               effectsWithInput.push({
@@ -909,7 +1021,8 @@ export default class ScenarioStep {
           this.step.id,
           this.remainingStepIds,
           effectsWithInput,
-          scenarioState
+          scenarioState,
+          {}
         );
       }
       case 'use_supplies': {
@@ -919,14 +1032,17 @@ export default class ScenarioStep {
             if (choice === undefined) {
               return undefined;
             }
-            const consumeSuppliesEffects: Effect[] = map(choice, ([count], code) => {
+            const effectsWithInput: EffectsWithInput[] = map(choice, ([count], code) => {
               return {
-                type: 'campaign_log_count',
-                section: input.section,
-                investigator: code,
-                operation: 'add',
-                id: input.id,
-                value: -(input.investigator === 'all' ? count : 1),
+                input: [code],
+                effects: [{
+                  type: 'campaign_log_investigator_count',
+                  section: input.section,
+                  investigator: '$input_value',
+                  operation: 'add',
+                  id: input.id,
+                  value: -(input.investigator === 'all' ? count : 1),
+                }],
               };
             });
             const useCount = sum(map(choice, count => count[0]));
@@ -936,10 +1052,9 @@ export default class ScenarioStep {
               return this.maybeCreateEffectsStep(
                 this.step.id,
                 this.remainingStepIds,
-                [{
-                  effects: consumeSuppliesEffects,
-                }],
-                scenarioState
+                effectsWithInput,
+                scenarioState,
+                {}
               );
             }
             const secondChoice = scenarioState.stringChoices(this.step.id);
@@ -953,15 +1068,16 @@ export default class ScenarioStep {
                 ...(theBadThing && theBadThing.steps) || [],
                 ...this.remainingStepIds,
               ],
-              [{
-                effects: consumeSuppliesEffects,
-              },
-              {
-                border: true,
-                input: keys(secondChoice),
-                effects: (theBadThing && theBadThing.effects) || [],
-              }],
-              scenarioState
+              [
+                ...effectsWithInput,
+                {
+                  border: true,
+                  input: keys(secondChoice),
+                  effects: (theBadThing && theBadThing.effects) || [],
+                },
+              ],
+              scenarioState,
+              {}
             );
           }
           case 'choice': {
@@ -973,14 +1089,17 @@ export default class ScenarioStep {
             if (numberChoice === undefined) {
               return undefined;
             }
-            const consumeSuppliesEffects: Effect[] = map(numberChoice, (counts, code) => {
+            const effectsWithInput: EffectsWithInput[] = map(numberChoice, (counts, code) => {
               return {
-                type: 'campaign_log_count',
-                section: input.section,
-                investigator: code,
-                operation: 'add',
-                id: input.id,
-                value: -counts[0],
+                effects: [{
+                  type: 'campaign_log_investigator_count',
+                  section: input.section,
+                  investigator: '$input_value',
+                  operation: 'add',
+                  id: input.id,
+                  value: -counts[0],
+                }],
+                input: [code],
               };
             });
             const hasAny = keys(numberChoice).length > 0;
@@ -992,10 +1111,9 @@ export default class ScenarioStep {
               return this.maybeCreateEffectsStep(
                 this.step.id,
                 this.remainingStepIds,
-                [{
-                  effects: consumeSuppliesEffects,
-                }],
-                scenarioState
+                effectsWithInput,
+                scenarioState,
+                {}
               );
             }
             const effectsInput: string[] = [];
@@ -1010,16 +1128,21 @@ export default class ScenarioStep {
                 ...this.remainingStepIds,
               ],
               [
-                {
-                  effects: consumeSuppliesEffects,
-                },
+                ...effectsWithInput,
+                ...(branchChoice.pre_border_effects ? [
+                  {
+                    effects: branchChoice.pre_border_effects,
+                    input: effectsInput,
+                  },
+                ] : []),
                 {
                   border: branchChoice && branchChoice.border,
                   input: effectsInput,
                   effects: (branchChoice && branchChoice.effects) || [],
                 },
               ],
-              scenarioState
+              scenarioState,
+              {}
             );
           }
         }
@@ -1058,11 +1181,13 @@ export default class ScenarioStep {
     scenarioState: ScenarioStateHelper,
     ifTrue?: {
       border?: boolean;
+      pre_border_effects?: null | Effect[];
       steps?: null | string[];
       effects?: null | Effect[];
     },
     ifFalse?: {
       border?: boolean;
+      pre_border_effects?: null | Effect[];
       steps?: null | string[];
       effects?: null | Effect[];
     },
@@ -1075,12 +1200,21 @@ export default class ScenarioStep {
         ...((resultCondition && resultCondition.steps) || []),
         ...remainingStepIds,
       ],
-      [{
-        border: (resultCondition && resultCondition.border),
-        input,
-        effects: (resultCondition && resultCondition.effects) || [],
-      }],
-      scenarioState
+      [
+        ...(resultCondition?.pre_border_effects ? [
+          {
+            effects: resultCondition.pre_border_effects,
+            input,
+          },
+        ] : []),
+        {
+          border: (resultCondition && resultCondition.border),
+          input,
+          effects: (resultCondition && resultCondition.effects) || [],
+        },
+      ],
+      scenarioState,
+      {}
     );
   }
 
@@ -1089,8 +1223,11 @@ export default class ScenarioStep {
     remainingStepIds: string[],
     effectsWithInput: EffectsWithInput[],
     scenarioState: ScenarioStateHelper,
-    bulletType?: BulletType,
-    hiddenResult?: boolean
+    { bulletType, hiddenResult, syntheticId }: {
+      bulletType?: BulletType;
+      hiddenResult?: boolean;
+      syntheticId?: boolean;
+    },
   ): ScenarioStep | undefined {
     const flatEffects = flatMap(effectsWithInput, effects => effects.effects);
     if (flatEffects.length) {
@@ -1101,6 +1238,7 @@ export default class ScenarioStep {
           effectsWithInput,
           stepText: !!this.step.text || !!hiddenResult,
           bullet_type: this.step.bullet_type || bulletType,
+          syntheticId,
         },
         this.scenarioGuide,
         this.campaignLog,

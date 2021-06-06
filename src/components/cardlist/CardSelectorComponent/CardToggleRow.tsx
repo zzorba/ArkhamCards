@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
 } from 'react-native';
 
 import CardSearchResult from '../../cardlist/CardSearchResult';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
+import { useFlag } from '@components/core/hooks';
 
 interface Props {
   card: Card;
@@ -12,104 +13,79 @@ interface Props {
   onChange: (card: Card, count: number) => void;
   onPress?: (card: Card) => void;
   limit: number;
-  value?: number;
+  locked?: boolean;
+  last?: boolean;
 }
 
-interface State {
-  one: boolean;
-  two: boolean;
-  three: boolean;
-}
+export default function CardToggleRow({ card, count, onChange, onPress, limit, locked, last }: Props) {
+  const [one, toggleOne] = useFlag(count > 0);
+  const [two, toggleTwo] = useFlag(count > 1);
+  const [three, toggleThree] = useFlag(count > 2);
 
-export default class CardToggleRow extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      one: props.count > 0,
-      two: props.count > 1,
-      three: props.count > 2,
-    };
-  }
-
-  _syncChange = () => {
-    const {
-      card,
-      onChange,
-    } = this.props;
-    const {
-      one,
-      two,
-      three,
-    } = this.state;
+  useEffect(() => {
     onChange(card, (one ? 1 : 0) + (two ? 1 : 0) + (three ? 1 : 0));
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [one, two, three]);
 
-  _onCardOneToggle = () => {
-    this.setState({
-      one: !this.state.one,
-    }, this._syncChange);
-  };
-
-  _onCardTwoToggle = () => {
-    this.setState({
-      two: !this.state.two,
-    }, this._syncChange);
-  };
-
-  _onCardThreeToggle = () => {
-    this.setState({
-      three: !this.state.three,
-    }, this._syncChange);
-  };
-
-  render() {
-    const {
-      card,
-      limit,
-      onPress,
-      value,
-    } = this.props;
-    const {
-      one,
-      two,
-      three,
-    } = this.state;
-
-    if (limit === 0) {
+  if (limit === 0) {
+    return null;
+  }
+  if (locked) {
+    if (count <= 0) {
       return null;
     }
     return (
-      <View>
-        <CardSearchResult
-          card={card}
-          count={value}
-          onToggleChange={this._onCardOneToggle}
-          onPress={onPress}
-          toggleValue={one}
-          backgroundColor="transparent"
-        />
-        { (limit > 1) && (
-          <CardSearchResult
-            card={card}
-            count={value}
-            onToggleChange={this._onCardTwoToggle}
-            onPress={onPress}
-            toggleValue={two}
-            backgroundColor="transparent"
-          />
-        ) }
-        { (limit > 2) && (
-          <CardSearchResult
-            card={card}
-            count={value}
-            onToggleChange={this._onCardThreeToggle}
-            onPress={onPress}
-            toggleValue={three}
-            backgroundColor="transparent"
-          />
-        ) }
-      </View>
+      <CardSearchResult
+        card={card}
+        onPress={onPress}
+        backgroundColor="transparent"
+        control={{
+          type: 'count',
+          count,
+        }}
+        noBorder={last}
+      />
     );
   }
+  return (
+    <View>
+      <CardSearchResult
+        card={card}
+        onPress={onPress}
+        backgroundColor="transparent"
+        control={{
+          type: 'toggle',
+          value: one,
+          toggleValue: toggleOne,
+        }}
+        noBorder={last && limit === 1}
+      />
+      { (limit > 1) && (
+        <CardSearchResult
+          card={card}
+          onPress={onPress}
+          backgroundColor="transparent"
+          control={{
+            type: 'toggle',
+            value: two,
+            toggleValue: toggleTwo,
+          }}
+          noBorder={last && limit === 2}
+        />
+      ) }
+      { (limit > 2) && (
+        <CardSearchResult
+          card={card}
+          onPress={onPress}
+          backgroundColor="transparent"
+          control={{
+            type: 'toggle',
+            value: three,
+            toggleValue: toggleThree,
+          }}
+          noBorder={last && limit === 3}
+        />
+      ) }
+    </View>
+  );
 }

@@ -5,6 +5,7 @@ project.ext.envConfigFiles = [
     release: ".env",
 ]
 
+
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 import com.android.build.OutputFile
@@ -91,8 +92,11 @@ project.ext.react = [
 apply from: "../../node_modules/react-native/react.gradle"
 
 project.ext.vectoricons = [
-    iconFontNames: [ 'AnkeCalligraphicFG.ttf', 'arkhamicons.ttf', 'coreset.ttf', 'AboutDead.ttf', 'Alegreya-ExtraBoldItalic.ttf', 'Alegreya-ExtraBold.ttf', 'Alegreya-BoldItalic.ttf', 'Alegreya-MediumItalic.ttf', 'Alegreya-Bold.ttf', 'Alegreya-Medium.ttf', 'Alegreya-Regular.ttf', 'Alegreya-Italic', 'Conkordia.ttf', 'circle.ttf', 'dreameaters.ttf', 'dunwich.ttf', 'innsmouth.ttf', 'carcosa.ttf', 'forgotten.ttf', 'standalone.ttf', 'app.ttf', 'Teutonic.ttf' ]
+    iconFontsDir: 'android/app/src/main/assets/fonts',
+    iconFontNames: ['MaterialIcons.ttf', 'Caveat.ttf', 'alice.ttf', 'dark_matter.ttf', 'Teutonic RU.ttf', 'MaterialCommunityIcons.ttf', 'AnkeCalligraphicFG.ttf', 'arkhamicons.ttf', 'tokens.ttf', 'coreset.ttf', 'AboutDead.ttf', 'Alegreya-ExtraBoldItalic.ttf', 'Alegreya-ExtraBold.ttf', 'Alegreya-BoldItalic.ttf', 'Alegreya-MediumItalic.ttf', 'Alegreya-Bold.ttf', 'Alegreya-Medium.ttf', 'Alegreya-Regular.ttf', 'Alegreya-Italic', 'Conkordia.ttf', 'circle.ttf', 'dreameaters.ttf', 'dunwich.ttf', 'innsmouth.ttf', 'carcosa.ttf', 'forgotten.ttf', 'standalone.ttf', 'app.ttf', 'Teutonic.ttf' ]
 ]
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -132,6 +136,7 @@ def jscFlavor = 'org.webkit:android-jsc-intl:+'
 def enableHermes = project.ext.react.get("enableHermes", false);
 
 android {
+    ndkVersion rootProject.ext.ndkVersion
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     compileOptions {
@@ -143,15 +148,11 @@ android {
         applicationId "com.arkhamcards"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 232
-        versionName "2.6.6"
+        versionCode 423
+        versionName "2.12.5"
         manifestPlaceholders = [
             appAuthRedirectScheme: 'arkhamcards'
         ]
-        multiDexEnabled true
-    }
-    dexOptions {
-        javaMaxHeapSize "4g"
     }
     splits {
         abi {
@@ -184,6 +185,7 @@ android {
         variant.outputs.each { output ->
             // For each separate APK per architecture, set a unique version code as described here:
             // https://developer.android.com/studio/build/configure-apk-splits.html
+            // Example: versionCode 1 will generate 1001 for armeabi-v7a, 1002 for x86, etc.
             def versionCodes = ["armeabi-v7a": 1, "x86": 2, "arm64-v8a": 3, "x86_64": 4]
             def abi = output.getFilter(OutputFile.ABI)
             if (abi != null) {  // null for the universal-debug, universal-release variants
@@ -195,11 +197,10 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:multidex:1.0.3'
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'
     }
@@ -228,9 +229,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
-
-project.afterEvaluate {
-    apply from: '../../node_modules/react-native-zss-rich-text-editor/htmlCopy.gradle';
-    copyEditorHtmlToAppAssets(file('../../node_modules/react-native-zss-rich-text-editor'))
-}
+apply plugin: 'com.google.gms.google-services' 
 

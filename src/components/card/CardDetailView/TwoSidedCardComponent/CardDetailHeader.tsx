@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import FactionPattern from './FactionPattern';
+import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import { CORE_FACTION_CODES } from '@app_constants';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import CardCostIcon from '@components/core/CardCostIcon';
-import space, { s, xs } from '@styles/space';
+import space, { xs } from '@styles/space';
 import EncounterIcon from '@icons/EncounterIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
+import { useSelector } from 'react-redux';
+import { AppState } from '@reducers';
 
 interface Props {
   card: Card;
@@ -18,17 +20,19 @@ interface Props {
 }
 
 const ICON_SIZE = 28;
-const HEIGHT = 48;
 
 function DualFactionIcons({ card }: { card: Card }) {
-  if (!card.faction2_code || !card.faction_code) {
+  const faction_code = card.factionCode();
+  const colorblind = useSelector((state: AppState) => !!state.settings.colorblind);
+  if (!card.faction_code ||
+    (!card.faction2_code && (!colorblind || faction_code === 'mythos' || card.type_code === 'investigator' || card.type_code === 'skill'))) {
     return null;
   }
   return (
-    <>
+    <View style={[space.paddingBottomS, styles.row]}>
       <ArkhamIcon name={card.faction_code} size={36} color="white" />
-      <ArkhamIcon name={card.faction2_code} size={36} color="white" />
-    </>
+      { !!card.faction2_code && <ArkhamIcon name={card.faction2_code} size={36} color="white" /> }
+    </View>
   );
 }
 function FactionIcon({ card, linked }: { card: Card, linked: boolean }) {
@@ -48,9 +52,9 @@ function FactionIcon({ card, linked }: { card: Card, linked: boolean }) {
     );
   }
 
-  if (card.spoiler) {
-    const encounter_code = card.encounter_code ||
-      (card.linked_card && card.linked_card.encounter_code);
+  const encounter_code = card.encounter_code ||
+    (card.linked_card && card.linked_card.encounter_code);
+  if (encounter_code) {
     return (
       <View>
         { !!encounter_code && (
@@ -121,13 +125,15 @@ function HeaderContent({ card, back }: { card: Card, back: boolean}) {
   const subname = (card.type_code !== 'location' && back) ? undefined : card.subname;
   return (
     <>
-      <View style={styles.titleRow} removeClippedSubviews>
+      <View style={styles.titleRow}>
         <View style={styles.column}>
-          <Text style={[typography.large, space.marginLeftS, { color: '#FFFFFF' }]}>
-            { `${name}${card.is_unique ? ' ✷' : ''}` }
-          </Text>
+          <View style={[styles.row, space.marginLeftS, space.paddingTopXs]}>
+            <Text style={[typography.cardName, { color: '#FFFFFF' }]}>
+              { `${name}${card.is_unique ? ' ✷' : ''}` }
+            </Text>
+          </View>
           { !!subname && (
-            <Text style={[typography.small, typography.italic, typography.light, space.marginLeftS, { color: '#FFFFFF' }]}>
+            <Text style={[typography.cardTraits, space.marginLeftS, { color: '#FFFFFF' }]}>
               { card.subname }
             </Text>
           ) }
@@ -138,38 +144,25 @@ function HeaderContent({ card, back }: { card: Card, back: boolean}) {
 }
 
 export default function CardDetailHeader({ card, width, back, linked }: Props) {
-  const { colors, fontScale } = useContext(StyleContext);
-  const color = colors.faction[card.faction2_code ? 'dual' : card.factionCode()].background;
-
   return (
-    <View style={[styles.cardTitle, {
-      backgroundColor: color,
-      borderColor: color,
-    }]} removeClippedSubviews>
-      <FactionPattern faction={card.factionCode()} width={width} height={30 + 18 * fontScale} />
+    <RoundedFactionHeader faction={card.factionCode()} width={width} dualFaction={!!card.faction2_code}>
       <HeaderContent card={card} back={!!back} />
       <FactionIcon card={card} linked={linked} />
-    </View>
+    </RoundedFactionHeader>
   );
 }
 
 const styles = StyleSheet.create({
-  cardTitle: {
-    paddingRight: s,
-    paddingTop: xs,
-    paddingBottom: xs,
-    minHeight: HEIGHT,
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
   titleRow: {
     flexDirection: 'row',
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
   costIcon: {
     marginLeft: xs,

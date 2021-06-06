@@ -1,282 +1,229 @@
-import React from 'react';
-import { Button, Text, View } from 'react-native';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { View, StyleSheet } from 'react-native';
 import { find , map } from 'lodash';
 import { t } from 'ttag';
+import { useSelector } from 'react-redux';
 
-import BasicButton from '@components/core/BasicButton';
-import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import DeckXpSection from './DeckXpSection';
-import BasicListRow from '@components/core/BasicListRow';
 import { showCard, showDeckModal } from '@components/nav/helper';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { Deck, TraumaAndCardData } from '@actions/types';
-import CardSectionHeader from '@components/core/CardSectionHeader';
-import InvestigatorRow from '@components/core/InvestigatorRow';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
-import Card, { CardsMap } from '@data/Card';
-import SingleCardWrapper from '@components/card/SingleCardWrapper';
-import COLORS from '@styles/colors';
-import PickerStyleButton from '@components/core/PickerStyleButton';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import Card, { CardsMap } from '@data/types/Card';
+import StyleContext from '@styles/StyleContext';
+import useSingleCard from '@components/card/useSingleCard';
+import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
+import space, { s } from '@styles/space';
+import { useFlag } from '@components/core/hooks';
+import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';
+import TraumaSummary from '../TraumaSummary';
+import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
+import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
+import useXpSection from './useXpSection';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import RoundedFooterButton from '@components/core/RoundedFooterButton';
+import { AppState, makeUploadingDeckSelector } from '@reducers';
+import { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
 
 interface Props {
   componentId: string;
-  campaignId: number;
+  campaign: MiniCampaignT;
   investigator: Card;
   spentXp: number;
   totalXp: number;
-  incSpentXp: (code: string) => void;
-  decSpentXp: (code: string) => void;
+  unspentXp: number;
   traumaAndCardData: TraumaAndCardData;
   playerCards: CardsMap;
   chooseDeckForInvestigator?: (investigator: Card) => void;
-  deck?: Deck;
+  deck?: LatestDeckT;
+  showXpDialog: (investigator: Card) => void;
   removeInvestigator?: (investigator: Card) => void;
   // For legacy system
   showDeckUpgrade?: (investigator: Card, deck: Deck) => void;
   showTraumaDialog?: (investigator: Card, traumaData: TraumaAndCardData) => void;
+  miniButtons?: React.ReactNode;
+
+  children?: React.ReactNode;
 }
 
-export default class InvestigatorCampaignRow extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  _onCardPress = (card: Card) => {
-    const { componentId } = this.props;
-    showCard(componentId, card.code, card, true);
-  };
-
-  _renderStoryAsset = (card: Card) => {
-    return (
-      <CardSearchResult
-        key={card.code}
-        onPress={this._onCardPress}
-        card={card}
-      />
-    );
-  };
-
-  _incXp = () => {
-    const { investigator, incSpentXp } = this.props;
-    incSpentXp(investigator.code);
-  };
-
-  _decXp = () => {
-    const { investigator, decSpentXp } = this.props;
-    decSpentXp(investigator.code);
-  };
-
-  renderXp() {
-    const {
-      investigator,
-      componentId,
-      deck,
-      playerCards,
-      spentXp,
-      totalXp,
-      showDeckUpgrade,
-    } = this.props;
-    const { typography } = this.context;
-    if (deck) {
-      return (
-        <DeckXpSection
-          componentId={componentId}
-          deck={deck}
-          cards={playerCards}
-          investigator={investigator}
-          showDeckUpgrade={showDeckUpgrade}
-        />
-      );
-    }
-    if (totalXp === 0) {
-      return null;
-    }
-    return (
-      <>
-        <CardSectionHeader
-          investigator={investigator}
-          section={{ superTitle: t`Experience points` }}
-        />
-        <BasicListRow>
-          <Text style={typography.text}>
-            { t`${spentXp} of ${totalXp} spent` }
-          </Text>
-          <PlusMinusButtons
-            count={spentXp}
-            max={totalXp}
-            onIncrement={this._incXp}
-            onDecrement={this._decXp}
-          />
-        </BasicListRow>
-      </>
-    );
+function StoryAssetRow({ code, onCardPress, last }: { code: string; last: boolean; onCardPress: (card: Card) => void }) {
+  const [card, loading] = useSingleCard(code, 'player');
+  if (loading || !card) {
+    return <LoadingCardSearchResult />;
   }
+  return (
+    <CardSearchResult
+      key={card.code}
+      onPress={onCardPress}
+      card={card}
+      noBorder={last}
+    />
+  );
+}
 
-  _showTraumaDialog = () => {
-    const { traumaAndCardData, investigator, showTraumaDialog } = this.props;
+export default function InvestigatorCampaignRow({
+  componentId,
+  campaign,
+  investigator,
+  spentXp,
+  totalXp,
+  unspentXp,
+  traumaAndCardData,
+  playerCards,
+  deck,
+  children,
+  miniButtons,
+  showXpDialog,
+  chooseDeckForInvestigator,
+  removeInvestigator,
+  showDeckUpgrade,
+  showTraumaDialog,
+}: Props) {
+  const uploadingSelector = useMemo(makeUploadingDeckSelector, []);
+  const uploading = useSelector((state: AppState) => uploadingSelector(state, campaign.id, investigator.code));
+  const { colors, width } = useContext(StyleContext);
+  const { userId } = useContext(ArkhamCardsAuthContext);
+  const onCardPress = useCallback((card: Card) => {
+    showCard(componentId, card.code, card, colors, true);
+  }, [componentId, colors]);
+  const eliminated = useMemo(() => investigator.eliminated(traumaAndCardData), [investigator, traumaAndCardData]);
+
+  const editXpPressed = useCallback(() => {
+    showXpDialog(investigator);
+  }, [showXpDialog, investigator]);
+  const canRemoveDeck = !deck?.owner || (userId && deck.owner.id === userId);
+
+  const [xpButton, upgradeBadge] = useXpSection({
+    deck,
+    campaign,
+    cards: playerCards,
+    investigator,
+    last: !miniButtons,
+    totalXp,
+    spentXp,
+    unspentXp,
+    uploading,
+    isDeckOwner: !!canRemoveDeck,
+    showDeckUpgrade,
+    editXpPressed,
+  });
+
+  const onTraumaPress = useCallback(() => {
     if (showTraumaDialog) {
       showTraumaDialog(investigator, traumaAndCardData);
     }
-  };
+  }, [traumaAndCardData, investigator, showTraumaDialog]);
 
-  renderTrauma() {
-    const { traumaAndCardData, investigator, showTraumaDialog } = this.props;
-    return (
-      <PickerStyleButton
-        id="trauma"
-        onPress={this._showTraumaDialog}
-        disabled={!showTraumaDialog}
-        title={investigator.traumaString(traumaAndCardData)}
-        widget="nav"
-        noBorder
-        settingsStyle
-      />
-    );
-  }
-
-  renderStoryAssets() {
-    const { traumaAndCardData, investigator } = this.props;
+  const storyAssetSection = useMemo(() => {
     const storyAssets = traumaAndCardData.storyAssets || [];
     if (!storyAssets.length) {
       return null;
     }
     return (
-      <>
-        <CardSectionHeader
-          investigator={investigator}
-          section={{ superTitle: t`Campaign cards` }}
-        />
-        { map(storyAssets, asset => (
-          <SingleCardWrapper
-            key={asset}
-            code={asset}
-            type="player"
-          >
-            { this._renderStoryAsset }
-          </SingleCardWrapper>
+      <View style={space.paddingBottomS}>
+        <DeckSlotHeader title={t`Campaign cards`} first />
+        { map(storyAssets, (asset, idx) => (
+          <StoryAssetRow key={asset} code={asset} onCardPress={onCardPress} last={idx === storyAssets.length - 1} />
         )) }
-      </>
+      </View>
     );
-  }
+  }, [traumaAndCardData, onCardPress]);
 
-  _removePressed = () => {
-    const {
-      investigator,
-      removeInvestigator,
-    } = this.props;
+  const removePressed = useCallback(() => {
     if (removeInvestigator) {
       removeInvestigator(investigator);
     }
-  };
+  }, [investigator, removeInvestigator]);
 
-  renderDetail() {
-    const {
-      investigator,
-      removeInvestigator,
-      deck,
-    } = this.props;
-    if (removeInvestigator) {
-      return (
-        <BasicButton
-          title={deck ? t`Remove deck` : t`Remove investigator`}
-          onPress={this._removePressed}
-          color={COLORS.red}
-        />
-      );
-    }
-    return (
-      <>
-        { this.renderXp() }
-        <CardSectionHeader
-          investigator={investigator}
-          section={{ superTitle: t`Trauma` }}
-        />
-        { this.renderTrauma() }
-        { this.renderStoryAssets() }
-      </>
-    );
-  }
-
-  _viewDeck = () => {
-    const {
-      campaignId,
-      componentId,
-      investigator,
-      deck,
-    } = this.props;
+  const viewDeck = useCallback(() => {
     if (deck) {
       showDeckModal(
-        componentId,
-        deck,
+        deck.id,
+        deck.deck,
+        campaign?.id,
+        colors,
         investigator,
-        campaignId,
-        true
       );
     }
-  };
+  }, [campaign, investigator, deck, colors]);
 
-  _selectDeck = () => {
-    const {
-      investigator,
-      chooseDeckForInvestigator,
-    } = this.props;
+  const selectDeck = useCallback(() => {
     chooseDeckForInvestigator && chooseDeckForInvestigator(investigator);
-  };
+  }, [investigator, chooseDeckForInvestigator]);
 
-  renderButton(eliminated: boolean) {
-    const {
-      deck,
-      chooseDeckForInvestigator,
-      showTraumaDialog,
-    } = this.props;
-    const traumaNode = (!!showTraumaDialog && eliminated) && (
-      <Button
-        title={t`Edit Trauma`}
-        onPress={this._showTraumaDialog}
-      />
-    );
-
-    if (deck) {
+  const yithian = useMemo(() => !!find(traumaAndCardData.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN), [traumaAndCardData.storyAssets]);
+  const [open, toggleOpen] = useFlag(false);
+  const footerButton = useMemo(() => {
+    if (uploading) {
       return (
-        <>
-          <Button
-            title={t`View Deck`}
-            onPress={this._viewDeck}
-          />
-          { traumaNode }
-        </>
+        <RoundedFooterButton
+          icon="spinner"
+          title={t`Uploading...`}
+        />
       );
     }
-    if (!chooseDeckForInvestigator) {
-      return traumaNode || <View />;
+    if (deck && !canRemoveDeck) {
+      return (
+        <RoundedFooterButton
+          onPress={viewDeck}
+          icon="deck"
+          title={t`View deck`}
+        />
+      );
     }
     return (
-      <>
-        <Button
-          title={t`Select Deck`}
-          onPress={this._selectDeck}
-        />
-        { traumaNode }
-      </>
-    );
-  }
-
-  render() {
-    const {
-      investigator,
-      traumaAndCardData,
-    } = this.props;
-    const eliminated = investigator.eliminated(traumaAndCardData);
-    return (
-      <InvestigatorRow
+      <RoundedFooterDoubleButton
+        onPressA={deck ? viewDeck : selectDeck}
+        iconA="deck"
+        titleA={deck ? t`View deck` : t`Select deck`}
+        onPressB={removePressed}
+        iconB="dismiss"
+        titleB={deck ? t`Remove deck` : t`Remove`}
+      />
+    )
+  }, [uploading, deck, canRemoveDeck, viewDeck, selectDeck, removePressed]);
+  return (
+    <View style={space.marginBottomS}>
+      <AnimatedCompactInvestigatorRow
+        toggleOpen={toggleOpen}
         investigator={investigator}
-        description={eliminated ? investigator.traumaString(traumaAndCardData) : undefined}
-        button={this.renderButton(eliminated)}
         eliminated={eliminated}
-        yithian={!!find(traumaAndCardData.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN)}
+        yithian={yithian}
+        open={open}
+        upgradeBadge={upgradeBadge}
+        width={width - s * 2}
+        headerContent={!open && <View style={styles.trauma}><TraumaSummary trauma={traumaAndCardData} investigator={investigator} whiteText /></View>}
       >
-        { eliminated ? undefined : this.renderDetail() }
-      </InvestigatorRow>
-    );
-  }
+        <View style={[space.paddingSideS]}>
+          <View style={space.paddingBottomS}>
+            <MiniPickerStyleButton
+              title={t`Trauma`}
+              valueLabel={<TraumaSummary trauma={traumaAndCardData} investigator={investigator} />}
+              first
+              last={!xpButton && !miniButtons}
+              editable={!!showTraumaDialog}
+              onPress={onTraumaPress}
+            />
+            { xpButton }
+            { !!miniButtons && miniButtons }
+          </View>
+          { eliminated ? undefined : (
+            <>
+              { storyAssetSection }
+              { children }
+            </>
+          ) }
+        </View>
+        { footerButton }
+      </AnimatedCompactInvestigatorRow>
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  trauma: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+});

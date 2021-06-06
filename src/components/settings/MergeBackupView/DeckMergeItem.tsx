@@ -1,27 +1,25 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { msgid, ngettext } from 'ttag';
 import SettingsSwitch from '@components/core/SettingsSwitch';
 import { Deck } from '@actions/types';
-import { CardsMap } from '@data/Card';
+import { CardsMap } from '@data/types/Card';
 
 interface Props {
   deck: Deck;
   value: boolean;
   inverted: boolean;
   onValueChange: (deck: Deck, value: boolean) => void;
-  investigators: CardsMap;
+  investigators?: CardsMap;
   scenarioCount: number;
 }
 
-export default class DeckMergeItem extends React.Component<Props> {
-  _onValueChange = (value: boolean) => {
-    const { deck, inverted, onValueChange } = this.props;
+export default function DeckMergeItem({ deck, value, inverted, onValueChange, investigators, scenarioCount }: Props) {
+  const handleOnValueChange = useCallback((value: boolean) => {
     onValueChange(deck, inverted ? !value : value);
-  };
+  }, [deck, inverted, onValueChange]);
 
-  description() {
-    const { deck, investigators, scenarioCount } = this.props;
-    const investigator = investigators[deck.investigator_code];
+  const description = useMemo(() => {
+    const investigator = investigators && investigators[deck.investigator_code];
     if (!investigator) {
       return undefined;
     }
@@ -33,17 +31,14 @@ export default class DeckMergeItem extends React.Component<Props> {
       `${investigator.name} - ${scenarioCount} scenarios`,
       scenarioCount
     );
-  }
+  }, [deck, investigators, scenarioCount]);
 
-  render() {
-    const { deck, inverted, value } = this.props;
-    return (
-      <SettingsSwitch
-        title={deck.name}
-        description={this.description()}
-        value={inverted ? !value : value}
-        onValueChange={this._onValueChange}
-      />
-    );
-  }
+  return (
+    <SettingsSwitch
+      title={deck.name}
+      description={description}
+      value={inverted ? !value : value}
+      onValueChange={handleOnValueChange}
+    />
+  );
 }

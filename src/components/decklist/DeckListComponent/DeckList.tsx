@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import { filter, map } from 'lodash';
 import {
   FlatList,
@@ -7,130 +7,136 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import { Campaign, Deck, DecksMap } from '@actions/types';
+import { Campaign } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
-import DeckListRow from '@components/decklist/DeckListRow';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useInvestigatorCards } from '@components/core/hooks';
+import NewDeckListRow from './NewDeckListRow';
+import MiniDeckT from '@data/interfaces/MiniDeckT';
+import LanguageContext from '@lib/i18n/LanguageContext';
+import { useLatestDeck } from '@data/hooks';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
+import { useDebounce } from '@react-hook/debounce';
 
-interface OwnProps {
-  lang: string;
-  deckIds: number[];
+interface Props {
+  deckIds: MiniDeckT[];
   header?: React.ReactElement;
   footer: (empty: boolean) => React.ReactElement;
   searchTerm: string;
-  deckToCampaign?: { [id: number]: Campaign };
+  deckToCampaign?: { [uuid: string]: Campaign };
   onRefresh?: () => void;
   refreshing?: boolean;
-  decks: DecksMap;
   onScroll: (...args: any[]) => void;
-  deckClicked: (deck: Deck, investigator?: Card) => void;
+  deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
 }
-
-type Props = OwnProps & PlayerCardProps;
 
 interface Item {
   key: string;
-  deckId: number;
+  deckId: MiniDeckT;
 }
 
-class DeckList extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+function keyExtractor(item: Item) {
+  return item.deckId.id.uuid;
+}
 
-  _renderItem = ({ item: { deckId } }: { item: Item }) => {
-    const {
-      investigators,
-      decks,
-      cards,
-      deckToCampaign,
-      deckClicked,
-      lang,
-    } = this.props;
+function DeckListItem({
+  deckId,
+  deckClicked,
+  deckToCampaign,
+}: {
+  deckId: MiniDeckT;
+  deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
+  deckToCampaign?: { [uuid: string]: Campaign };
+}) {
+  const { width } = useContext(StyleContext);
+  const { lang } = useContext(LanguageContext);
+  const investigators = useInvestigatorCards();
+  const deck = useLatestDeck(deckId, deckToCampaign);
+  if (!deck) {
+    return null;
+  }
+  const investigator = deck && investigators && investigators[deck.investigator];
+  return (
+    <NewDeckListRow
+      lang={lang}
+      key={deckId.id.uuid}
+      deck={deck}
+      investigator={investigator}
+      onPress={deckClicked}
+      width={width}
+    />
+  );
+}
 
-    const deck = decks[deckId];
-    if (!deck) {
-      return null;
-    }
-    return (
-      <DeckListRow
-        lang={lang}
-        key={deckId}
-        deck={deck}
-        previousDeck={deck.previous_deck ? decks[deck.previous_deck] : undefined}
-        cards={cards}
-        deckToCampaign={deckToCampaign}
-        investigator={deck ? investigators[deck.investigator_code] : undefined}
-        onPress={deckClicked}
-      />
-    );
-  };
+const MemoDeckListItem = React.memo(DeckListItem);
 
-  getItems() {
-    const {
-      deckIds,
-      decks,
-      investigators,
-      searchTerm,
-    } = this.props;
-
+export default function DeckList({
+  deckIds, header, searchTerm, refreshing, deckToCampaign,
+  footer, onRefresh, onScroll, deckClicked,
+}: Props) {
+  const { colors, backgroundStyle } = useContext(StyleContext);
+  const investigators = useInvestigatorCards();
+  const items = useMemo(() => {
     return map(
       filter(deckIds, deckId => {
-        const deck = decks[deckId];
-        const investigator = deck && investigators[deck.investigator_code];
-        if (!deck || !investigator) {
+        const investigator = investigators && investigators[deckId.investigator];
+        if (!investigator) {
           return true;
         }
-        return searchMatchesText(searchTerm, [deck.name, investigator.name]);
+        return searchMatchesText(searchTerm, [deckId.name, investigator.name]);
       }), deckId => {
         return {
-          key: `${deckId}`,
-          deckId,
+          key: `${deckId.id.uuid}`,
+          deckId: deckId,
+          deckClicked,
         };
       });
-  }
+  }, [deckIds, deckClicked, investigators, searchTerm]);
 
-  render() {
-    const {
-      onScroll,
-      onRefresh,
-      refreshing,
-      decks,
-      header,
-      footer,
-    } = this.props;
-    const { backgroundStyle, colors } = this.context;
-    const items = this.getItems();
+  const renderItem = useCallback(({ item: { deckId } }: {
+    item: Item;
+  }) => {
     return (
-      <FlatList
-        refreshControl={
-          <RefreshControl
-            refreshing={!!refreshing}
-            onRefresh={onRefresh}
-            tintColor={colors.lightText}
-            progressViewOffset={SEARCH_BAR_HEIGHT}
-          />
-        }
-        contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
-        contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
-        onScroll={onScroll}
-        keyboardShouldPersistTaps="always"
-        keyboardDismissMode="on-drag"
-        style={[styles.container, backgroundStyle]}
-        data={items}
-        renderItem={this._renderItem}
-        extraData={decks}
-        ListHeaderComponent={header}
-        ListFooterComponent={footer(items.length === 0)}
+      <MemoDeckListItem
+        key={deckId.id.uuid}
+        deckId={deckId}
+        deckClicked={deckClicked}
+        deckToCampaign={deckToCampaign}
       />
     );
-  }
+  }, [deckClicked, deckToCampaign]);
+  const [debouncedRefreshing, setDebouncedRefreshing] = useDebounce(!!refreshing, 500, true);
+  useEffect(() => {
+    setDebouncedRefreshing(!!refreshing);
+  }, [refreshing, setDebouncedRefreshing]);
+  return (
+    <FlatList
+      refreshControl={
+        <RefreshControl
+          refreshing={debouncedRefreshing}
+          onRefresh={onRefresh}
+          tintColor={colors.lightText}
+          progressViewOffset={SEARCH_BAR_HEIGHT}
+        />
+      }
+      initialNumToRender={8}
+      contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
+      contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
+      onScroll={onScroll}
+      keyboardShouldPersistTaps="always"
+      keyboardDismissMode="on-drag"
+      style={[styles.container, backgroundStyle]}
+      data={items}
+      renderItem={renderItem}
+      keyExtractor={keyExtractor}
+      ListHeaderComponent={header}
+      removeClippedSubviews
+      ListFooterComponent={footer(items.length === 0)}
+    />
+  );
 }
-
-export default withPlayerCards(DeckList);
-
 
 const styles = StyleSheet.create({
   container: {

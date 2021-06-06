@@ -1,0 +1,17 @@
+query getCustomCards(
+  $locale: String!
+) {
+  card {
+    ...CoreCard
+    packs(
+      where: { locale: { _eq: $locale }}
+    ) {
+      name
+    }
+    translations(
+      where: { locale: { _eq: $locale }}
+    ) {
+      ...CoreCardText
+    }
+  }
+}

@@ -1,21 +1,26 @@
-import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import { find, forEach, keys, map, sum } from 'lodash';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { ActivityIndicator, Text, View, StyleSheet } from 'react-native';
+import { forEach, keyBy, keys, map, mapValues, sum } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import CheckListItemComponent from './CheckListItemComponent';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
+import ScenarioGuideContext from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import { StringChoices } from '@actions/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType } from '@data/scenario/types';
 import { m, s } from '@styles/space';
+import { Toggles, useEffectUpdate, useToggles } from '@components/core/hooks';
+import StyleContext from '@styles/StyleContext';
+import Card from '@data/types/Card';
+import InputWrapper from '../InputWrapper';
 
 export interface ListItem {
   code: string;
   name: string;
   color?: string;
+  investigator?: Card;
+  investigatorButton?: React.ReactNode;
 }
 
 export interface CheckListComponentProps {
@@ -23,191 +28,134 @@ export interface CheckListComponentProps {
   choiceId: string;
   defaultState?: boolean;
   bulletType?: BulletType;
-  title?: string;
   text?: string;
   checkText: string;
+  confirmText?: string;
   fixedMin?: boolean;
   min?: number;
   max?: number;
   button?: React.ReactNode;
+  loading?: boolean;
+  extraSelected?: string[];
+
+  titleNode?: React.ReactNode;
+  extraSave?: () => void;
+  onSecondaryChoice?: (code: string) => void;
+  syncSelection?: (selection: Toggles) => void;
 }
 
 interface Props extends CheckListComponentProps {
   items: ListItem[];
 }
 
-interface State {
-  selectedChoice: {
-    [code: string]: number | undefined;
-  };
-}
+export default function CheckListComponent({ extraSave, id, choiceId, defaultState, bulletType, text, checkText, confirmText, fixedMin, min, max, button, loading, items, extraSelected, titleNode, onSecondaryChoice, syncSelection }: Props) {
+  const { scenarioState } = useContext(ScenarioGuideContext);
+  const { borderStyle, colors, typography } = useContext(StyleContext);
+  const [selectedChoice, , onChoiceToggle, ,removeToggle] = useToggles(
+    mapValues(keyBy(items, i => i.code), () => defaultState ? true : false),
+    syncSelection
+  );
 
-export default class CheckListComponent extends React.Component<Props, State> {
-  static contextType = ScenarioGuideContext;
-  context!: ScenarioGuideContextType;
-
-  constructor(props: Props) {
-    super(props);
-
-    const selectedChoice: {
-      [code: string]: number | undefined;
-    } = {};
-    forEach(props.items, item => {
-      selectedChoice[item.code] = props.defaultState ? 0 : undefined;
+  useEffectUpdate(() => {
+    const extraSelectedSet = new Set(extraSelected || []);
+    const knownItems = new Set(map(items, item => item.code));
+    forEach(items, item => {
+      if (selectedChoice[item.code] === undefined) {
+        onChoiceToggle(item.code, defaultState || extraSelectedSet.has(item.code));
+      }
     });
-
-    this.state = {
-      selectedChoice,
-    };
-  }
-
-  componentDidUpdate(previousProps: Props) {
-    if (this.props.items !== previousProps.items) {
-      forEach(this.props.items, item => {
-        if (!find(previousProps.items, oldItem => item.code === oldItem.code)) {
-          this.setState({
-            selectedChoice: {
-              ...this.state.selectedChoice,
-              [item.code]: 0,
-            },
-          });
-        }
-      });
-    }
-  }
-
-  _onChoiceToggle = (
-    code: string
-  ) => {
-    this.setState(state => {
-      const selected = state.selectedChoice[code] !== undefined;
-      return {
-        selectedChoice: {
-          ...this.state.selectedChoice,
-          [code]: selected ? undefined : 0,
-        },
-      };
+    forEach(selectedChoice, (value, code) => {
+      if (value !== undefined && !knownItems.has(code)) {
+        removeToggle(code);
+      }
     });
-  };
-
-  _save = () => {
-    const { id, choiceId } = this.props;
-    const { selectedChoice } = this.state;
+  }, [items]);
+  const save = useCallback(() => {
     const choices: StringChoices = {};
-    forEach(selectedChoice, (idx, code) => {
-      if (idx !== undefined && idx !== -1) {
+    forEach(selectedChoice, (checked, code) => {
+      if (checked) {
         choices[code] = [choiceId];
       }
     });
-    this.context.scenarioState.setStringChoices(
-      id,
-      choices
-    );
-  };
+    scenarioState.setStringChoices(id, choices);
+    extraSave?.();
+  }, [selectedChoice, id, choiceId, scenarioState, extraSave]);
+  const choiceList = scenarioState.stringChoices(id);
+  const hasDecision = choiceList !== undefined;
 
-  renderSaveButton(hasDecision: boolean) {
+  const disabledText = useMemo(() => {
     if (hasDecision) {
-      return null;
+      return undefined;
     }
-    const { items, max, fixedMin } = this.props;
-    const min = (!fixedMin && this.props.min) ? Math.min(this.props.min, items.length) : this.props.min;
-    if (min === undefined && max === undefined) {
-      return (
-        <BasicButton
-          title={t`Proceed`}
-          onPress={this._save}
-        />
-      );
+    const effectiveMin = (!fixedMin && min) ? Math.min(min, items.length) : min;
+    if (effectiveMin === undefined && max === undefined) {
+      return undefined;
     }
-    const { selectedChoice } = this.state;
     const currentTotal = sum(
       map(
         selectedChoice,
-        choice => (choice !== undefined && choice !== -1) ? 1 : 0
+        choice => choice ? 1 : 0
       )
     );
-    const hasMin = (min === undefined || currentTotal >= min);
+    const hasMin = (effectiveMin === undefined || currentTotal >= effectiveMin);
     const hasMax = (max === undefined || currentTotal <= max);
     const enabled = hasMin && hasMax;
-    return !enabled ? (
-      <BasicButton
-        title={hasMin ? t`Too many` : t`Not enough`}
-        onPress={this._save}
-        disabled
-      />
-    ) : (
-      <BasicButton
-        title={t`Proceed`}
-        onPress={this._save}
-      />
-    );
-  }
+    if (!enabled) {
+      return hasMin ? t`Too many` : t`Not enough`;
+    }
+    return undefined;
+  }, [hasDecision, items, max, fixedMin, selectedChoice, min]);
 
-  render() {
-    const { id, items, bulletType, text, checkText, button } = this.props;
-    const {
-      style: { gameFont, borderStyle, typography },
-      scenarioState,
-    } = this.context;
-    const { selectedChoice } = this.state;
-    const choiceList = scenarioState.stringChoices(id);
-    const hasDecision = choiceList !== undefined;
-    return (
-      <>
-        { !!text && (
-          <SetupStepWrapper bulletType={bulletType}>
-            <CampaignGuideTextComponent text={text} />
-          </SetupStepWrapper>
-        ) }
-        <View style={[styles.prompt, borderStyle]}>
-          <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
-            { checkText }
-          </Text>
-        </View>
-        { map(items, (item, idx) => {
+  return (
+    <>
+      { !!text && (
+        <SetupStepWrapper bulletType={bulletType}>
+          <CampaignGuideTextComponent text={text} />
+        </SetupStepWrapper>
+      ) }
+      <InputWrapper
+        title={(hasDecision && confirmText) || checkText}
+        titleNode={!hasDecision && titleNode}
+        editable={!hasDecision}
+        disabledText={disabledText}
+        buttons={!hasDecision && !!button ? button : undefined}
+        onSubmit={save}
+      >
+        { loading ? (
+          <View style={[styles.loadingRow, borderStyle]}>
+            <ActivityIndicator size="small" animating color={colors.lightText} />
+          </View>
+        ) : map(items, (item, idx) => {
           const selected = choiceList !== undefined ? (
             choiceList[item.code] !== undefined
           ) : (
-            selectedChoice[item.code] !== undefined
+            !!selectedChoice[item.code]
           );
           return (
             <CheckListItemComponent
               key={idx}
               {...item}
               selected={selected}
-              onChoiceToggle={this._onChoiceToggle}
+              onChoiceToggle={onChoiceToggle}
+              onSecondaryChoice={onSecondaryChoice}
               editable={!hasDecision}
             />
           );
         }) }
-        { ((items.length === 0) || (choiceList !== undefined && keys(choiceList).length === 0)) && (
-          <View style={[styles.row, borderStyle]}>
-            <Text style={[typography.mediumGameFont, { fontFamily: gameFont }, styles.nameText]}>
+        { ((items.length === 0 && !loading) || (choiceList !== undefined && keys(choiceList).length === 0)) && (
+          <View style={styles.row}>
+            <Text style={[typography.mediumGameFont, styles.nameText]}>
               { t`None` }
             </Text>
           </View>
         ) }
-        { !hasDecision && !!button && (
-          <View style={[styles.bottomBorder, borderStyle]}>
-            { button }
-          </View>
-        ) }
-        { this.renderSaveButton(hasDecision) }
-      </>
-    );
-  }
+      </InputWrapper>
+    </>
+  );
 }
 
 const styles = StyleSheet.create({
-  prompt: {
-    flexDirection: 'row',
-    paddingTop: m,
-    paddingRight: m,
-    justifyContent: 'flex-end',
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
   row: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
     padding: s,
     paddingLeft: m,
     paddingRight: m,
@@ -215,10 +163,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  bottomBorder: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
   nameText: {
     fontWeight: '600',
+  },
+  loadingRow: {
+    flexDirection: 'row',
+    padding: m,
+    justifyContent: 'center',
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });

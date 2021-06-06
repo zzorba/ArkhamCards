@@ -1,5 +1,6 @@
 import { Action } from 'redux';
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { ThunkAction } from 'redux-thunk';
+import { values } from 'lodash';
 
 import {
   CLEAR_DECKS,
@@ -9,31 +10,36 @@ import {
   MY_DECKS_ERROR,
   SET_IN_COLLECTION,
   SET_PACK_SPOILER,
-  LOGIN_STARTED,
-  LOGIN,
-  LOGIN_ERROR,
-  LOGOUT,
+  ARKHAMDB_LOGIN_STARTED,
+  ARKHAMDB_LOGIN,
+  ARKHAMDB_LOGIN_ERROR,
+  ARKHAMDB_LOGOUT,
+  DISSONANT_VOICES_LOGIN_STARTED,
+  DISSONANT_VOICES_LOGIN,
+  DISSONANT_VOICES_LOGIN_ERROR,
+  DISSONANT_VOICES_LOGOUT,
+  ArkhamDbDeck,
 } from './types';
-import { AppState } from '@reducers';
+import { AppState, getArkhamDbDecks } from '@reducers';
 
 import { getAccessToken, signInFlow, signOutFlow } from '@lib/auth';
-// @ts-ignore
+import * as dissonantVoices from '@lib/dissonantVoices';
 import { decks } from '@lib/authApi';
 
-export function login(): ThunkAction<void, AppState, unknown, Action> {
-  return (dispatch: ThunkDispatch<AppState, unknown, Action>): void => {
+export function login(): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch): void => {
     dispatch({
-      type: LOGIN_STARTED,
+      type: ARKHAMDB_LOGIN_STARTED,
     });
     signInFlow().then(response => {
       if (response.success) {
         dispatch({
-          type: LOGIN,
+          type: ARKHAMDB_LOGIN,
         });
-        dispatch(refreshMyDecks());
+        dispatch(refreshMyDecks(false));
       } else {
         dispatch({
-          type: LOGIN_ERROR,
+          type: ARKHAMDB_LOGIN_ERROR,
           error: response.error,
         });
       }
@@ -41,29 +47,78 @@ export function login(): ThunkAction<void, AppState, unknown, Action> {
   };
 }
 
-export function logout(): ThunkAction<void, AppState, null, Action<string>> {
+export function logout(): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {
     dispatch({
-      type: LOGIN_STARTED,
+      type: ARKHAMDB_LOGIN_STARTED,
     });
     signOutFlow().then(() => {
       dispatch({
-        type: LOGOUT,
+        type: ARKHAMDB_LOGOUT,
       });
     });
   };
 }
 
-export function verifyLogin(): ThunkAction<void, AppState, null, Action<string>> {
+export function verifyLogin(): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {
     getAccessToken().then(accessToken => {
       if (accessToken) {
         dispatch({
-          type: LOGIN,
+          type: ARKHAMDB_LOGIN,
         });
       } else {
         dispatch({
-          type: LOGOUT,
+          type: ARKHAMDB_LOGOUT,
+        });
+      }
+    });
+  };
+}
+
+export function dissonantVoicesLogin(): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch): void => {
+    dispatch({
+      type: DISSONANT_VOICES_LOGIN_STARTED,
+    });
+    dissonantVoices.signInFlow().then(response => {
+      if (response.success) {
+        dispatch({
+          type: DISSONANT_VOICES_LOGIN,
+        });
+      } else {
+        dispatch({
+          type: DISSONANT_VOICES_LOGIN_ERROR,
+          error: response.error,
+        });
+      }
+    });
+  };
+}
+
+export function dissonantVoicesLogout(): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch) => {
+    dispatch({
+      type: DISSONANT_VOICES_LOGIN_STARTED,
+    });
+    dissonantVoices.signOutFlow().then(() => {
+      dispatch({
+        type: DISSONANT_VOICES_LOGOUT,
+      });
+    });
+  };
+}
+
+export function dissonantVoicesVerifyLogin(): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch) => {
+    dissonantVoices.getAccessToken().then(accessToken => {
+      if (accessToken) {
+        dispatch({
+          type: DISSONANT_VOICES_LOGIN,
+        });
+      } else {
+        dispatch({
+          type: DISSONANT_VOICES_LOGOUT,
         });
       }
     });
@@ -77,70 +132,85 @@ export function clearDecks(): Action<string> {
 }
 
 function getDecksLastModified(state: AppState): string | undefined {
-  return (state.decks.myDecks && state.decks.myDecks.length) ?
+  return values(state.decks.all) ?
     state.decks.lastModified :
     undefined;
 }
 
-export function refreshMyDecks(): ThunkAction<void, AppState, unknown, Action> {
-  return (dispatch: ThunkDispatch<AppState, unknown, Action>, getState: () => AppState) => {
+export function refreshMyDecks(cacheArkhamDb: boolean): ThunkAction<Promise<ArkhamDbDeck[]>, AppState, unknown, Action<string>> {
+  return async(dispatch, getState) => {
+    if (cacheArkhamDb) {
+      const [arkhamDbDecks] = getArkhamDbDecks(getState());
+      return arkhamDbDecks;
+    }
     dispatch({
       type: MY_DECKS_START_REFRESH,
     });
-    decks(getDecksLastModified(getState())).then(response => {
+    try {
+      const response = await decks(getDecksLastModified(getState()));
       if (response.cacheHit) {
         dispatch({
           type: MY_DECKS_CACHE_HIT,
           timestamp: new Date(),
         });
-      } else {
-        dispatch({
-          type: SET_MY_DECKS,
-          decks: response.decks,
-          lastModified: response.lastModified,
-          timestamp: new Date(),
-        });
+        const [arkhamDbDecks] = getArkhamDbDecks(getState());
+        return arkhamDbDecks;
       }
-    },
-    error => {
+      dispatch({
+        type: SET_MY_DECKS,
+        decks: response.decks,
+        lastModified: response.lastModified,
+        timestamp: new Date(),
+      });
+      return response.decks || [];
+    } catch(error) {
       console.log(`ERROR: ${error.message || error}`);
       dispatch({
         type: MY_DECKS_ERROR,
         error: error.message || error,
       });
+      throw new Error(error.message);
+    }
+  };
+}
+
+export function setInCollection(code: string, value: boolean): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch) => {
+    dispatch({
+      type: SET_IN_COLLECTION,
+      code,
+      value,
     });
   };
 }
 
-export function setInCollection(code: string, value: boolean) {
-  return {
-    type: SET_IN_COLLECTION,
-    code,
-    value,
+export function setCycleInCollection(cycle_code: string, value: boolean): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch) => {
+    dispatch({
+      type: SET_IN_COLLECTION,
+      cycle_code,
+      value,
+    });
   };
 }
 
-export function setCycleInCollection(cycle: number, value: boolean) {
-  return {
-    type: SET_IN_COLLECTION,
-    cycle,
-    value,
+export function setPackSpoiler(code: string, value: boolean): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch) => {
+    dispatch({
+      type: SET_PACK_SPOILER,
+      code,
+      value,
+    });
   };
 }
 
-export function setPackSpoiler(code: string, value: boolean) {
-  return {
-    type: SET_PACK_SPOILER,
-    code,
-    value,
-  };
-}
-
-export function setCyclePackSpoiler(cycle: number, value: boolean) {
-  return {
-    type: SET_PACK_SPOILER,
-    cycle,
-    value,
+export function setCyclePackSpoiler(cycle_code: string, value: boolean): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch) => {
+    dispatch({
+      type: SET_PACK_SPOILER,
+      cycle_code,
+      value,
+    });
   };
 }
 

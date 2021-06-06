@@ -1,11 +1,12 @@
-import { find } from 'lodash';
+import { find, flatMap, sortBy } from 'lodash';
 
-import { Deck, NumberChoices } from '@actions/types';
-import { FullCampaign, Effect, Errata } from './types';
-import CampaignGuide, { CampaignLog } from './CampaignGuide';
+import { NumberChoices, StandaloneId } from '@actions/types';
+import { FullCampaign, Effect, Errata, Scenario, ChoiceIcon, ChaosToken } from './types';
+import CampaignGuide, { CampaignLog, CampaignLogSection } from './CampaignGuide';
 import ScenarioGuide from './ScenarioGuide';
 import ScenarioStep from './ScenarioStep';
 import GuidedCampaignLog from './GuidedCampaignLog';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 export interface ScenarioId {
   scenarioId: string;
@@ -41,15 +42,22 @@ export interface ProcessedCampaign {
 }
 
 export interface LatestDecks {
-  [code: string]: Deck | undefined;
+  [code: string]: LatestDeckT | undefined;
 }
 
 export interface DisplayChoice {
   border?: boolean;
+  large?: boolean;
   text?: string;
+  tokens?: ChaosToken[];
+  selected_text?: string;
+  icon?: ChoiceIcon;
+  masculine_text?: string;
+  feminine_text?: string;
   description?: string;
   steps?: string[] | null;
   effects?: Effect[] | null;
+  pre_border_effects?: Effect[] | null;
 }
 
 export interface DisplayChoiceWithId extends DisplayChoice {
@@ -93,13 +101,47 @@ function load(lang: string): {
         encounterSets: require('../../../assets/encounterSets_ru.json'),
         errata: require('../../../assets/campaignErrata_ru.json'),
       };
-
+    case 'fr':
+      return {
+        allLogEntries: require('../../../assets/campaignLogs_fr.json'),
+        allCampaigns: require('../../../assets/allCampaigns_fr.json'),
+        encounterSets: require('../../../assets/encounterSets_fr.json'),
+        errata: require('../../../assets/campaignErrata_fr.json'),
+      };
     case 'de':
       return {
         allLogEntries: require('../../../assets/campaignLogs_de.json'),
         allCampaigns: require('../../../assets/allCampaigns_de.json'),
         encounterSets: require('../../../assets/encounterSets_de.json'),
         errata: require('../../../assets/campaignErrata_de.json'),
+      };
+    case 'it':
+      return {
+        allLogEntries: require('../../../assets/campaignLogs_it.json'),
+        allCampaigns: require('../../../assets/allCampaigns_it.json'),
+        encounterSets: require('../../../assets/encounterSets_it.json'),
+        errata: require('../../../assets/campaignErrata_it.json'),
+      };
+    case 'pt':
+      return {
+        allLogEntries: require('../../../assets/campaignLogs_pt.json'),
+        allCampaigns: require('../../../assets/allCampaigns_pt.json'),
+        encounterSets: require('../../../assets/encounterSets_pt.json'),
+        errata: require('../../../assets/campaignErrata_pt.json'),
+      };
+    case 'zh':
+      return {
+        allLogEntries: require('../../../assets/campaignLogs_zh.json'),
+        allCampaigns: require('../../../assets/allCampaigns_zh.json'),
+        encounterSets: require('../../../assets/encounterSets_zh.json'),
+        errata: require('../../../assets/campaignErrata_zh.json'),
+      };
+    case 'ko':
+      return {
+        allLogEntries: require('../../../assets/campaignLogs_ko.json'),
+        allCampaigns: require('../../../assets/allCampaigns_ko.json'),
+        encounterSets: require('../../../assets/encounterSets_ko.json'),
+        errata: require('../../../assets/campaignErrata_ko.json'),
       };
     default:
     case 'en':
@@ -110,6 +152,39 @@ function load(lang: string): {
         errata: require('../../../assets/campaignErrata.json'),
       };
   }
+}
+
+function combineCampaignLog(
+  campaignLog: CampaignLog,
+  sideCampaign: CampaignLog
+): CampaignLog {
+  const sections: CampaignLogSection[] = [];
+  const usedSideSections: string[] = [];
+  campaignLog.sections.forEach(section => {
+    const sideSection = sideCampaign.sections.find(side => side.section === section.section);
+    if (sideSection) {
+      usedSideSections.push(section.section);
+      sections.push({
+        section: section.section,
+        entries: [
+          ...section.entries,
+          ...sideSection.entries,
+        ],
+      });
+    } else {
+      sections.push(section);
+    }
+  });
+  const usedSideSectionsSet = new Set(usedSideSections);
+  sideCampaign.sections.forEach(side => {
+    if (!usedSideSectionsSet.has(side.section)) {
+      sections.push(side);
+    }
+  });
+  return {
+    ...campaignLog,
+    sections,
+  };
 }
 
 export function getCampaignGuide(
@@ -127,16 +202,69 @@ export function getCampaignGuide(
     campaign.campaign.id === id
   );
   const logEntries = find(allLogEntries, log => log.campaignId === id);
+  const sideLogEntries = find(allLogEntries, log => log.campaignId === 'side');
   const sideCampaign = find(allCampaigns, campaign => campaign.campaign.id === 'side');
 
-  return campaign && logEntries && sideCampaign &&
-    new CampaignGuide(
-      campaign,
-      logEntries,
-      encounterSets,
-      sideCampaign,
-      errata,
-    );
+  if (!campaign || !logEntries || !sideCampaign || !sideLogEntries) {
+    return undefined;
+  }
+  return new CampaignGuide(
+    campaign,
+    combineCampaignLog(logEntries, sideLogEntries),
+    encounterSets,
+    sideCampaign,
+    errata,
+  );
+}
+
+function findStandaloneScenario(id: StandaloneId, allCampaigns: FullCampaign[], allLogEntries: CampaignLog[]): undefined | {
+  logEntries: CampaignLog;
+  campaign: FullCampaign;
+  scenario: Scenario;
+} {
+  const campaign = find(allCampaigns, campaign => campaign.campaign.id === id.campaignId);
+  const logEntries = find(allLogEntries, log => log.campaignId === id.campaignId);
+  const scenario = campaign && find(campaign.scenarios, scenario => scenario.id === id.scenarioId);
+  if (!campaign || !scenario || !logEntries) {
+    return undefined;
+  }
+  return {
+    campaign,
+    scenario,
+    logEntries,
+  };
+}
+
+export interface StandaloneScenarioInfo {
+  id: StandaloneId;
+  name: string;
+  code: string;
+  campaign: string;
+  campaignPosition: number;
+}
+
+export function getStandaloneScenarios(
+  lang: string
+): StandaloneScenarioInfo[] {
+  const {
+    allLogEntries,
+    allCampaigns,
+  } = load(lang);
+  const standalones = require('../../../assets/standaloneScenarios.json');
+  return sortBy(flatMap(standalones, (id: StandaloneId) => {
+    const data = findStandaloneScenario(id, allCampaigns, allLogEntries);
+    if (!data) {
+      console.log(`Could not find ${JSON.stringify(id)}`);
+      return [];
+    }
+    return {
+      id,
+      name: data.scenario.scenario_name,
+      code: data.scenario.id,
+      campaign: data.campaign.campaign.id,
+      campaignPosition: data.campaign.campaign.position,
+    };
+  }), scenario => scenario.name);
 }
 
 export default {

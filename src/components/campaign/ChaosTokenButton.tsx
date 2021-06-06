@@ -8,17 +8,17 @@ interface Props {
   iconKey: ChaosTokenType;
   selected: boolean;
   onPress: () => void;
+  tiny?: boolean;
 }
 
-export default function ChaosTokenButton({ iconKey, selected, onPress }: Props) {
+export default function ChaosTokenButton({ iconKey, selected, onPress, tiny }: Props) {
   return (
     <TouchableHighlight
-      style={selected && { opacity: 0.2 }}
       onPress={onPress}
       underlayColor="transparent"
       delayPressIn={0}
     >
-      <ChaosToken iconKey={iconKey} small />
+      <ChaosToken iconKey={iconKey} size={tiny ? 'tiny' : 'small'} sealed={selected} />
     </TouchableHighlight>
   );
 }

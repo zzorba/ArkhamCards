@@ -1,69 +1,79 @@
-import React from 'react';
-import { ActionSheetIOS, Platform } from 'react-native';
+import { ActionSheetIOS, Platform, Linking } from 'react-native';
 import { Navigation, OptionsTopBar, Options, OptionsModalPresentationStyle } from 'react-native-navigation';
 import AndroidDialogPicker from 'react-native-android-dialog-picker';
+import { InAppBrowser } from '@matt-block/react-native-in-app-browser';
+import { startsWith } from 'lodash';
 import { t } from 'ttag';
 
 import { DeckChartsProps } from '@components/deck/DeckChartsView';
 import { DrawSimulatorProps } from '@components/deck/DrawSimulatorView';
 import { DeckDetailProps } from '@components/deck/DeckDetailView';
 import { CardDetailProps } from '@components/card/CardDetailView';
-import { CardDetailSwipeProps } from '@components/card/CardDetailSwipeView';
-import { Deck, ParsedDeck, Slots } from '@actions/types';
-import Card from '@data/Card';
+import { CardDetailSwipeProps } from '@components/card/DbCardDetailSwipeView';
+import { CampaignId, Deck, DeckId, ParsedDeck } from '@actions/types';
+import Card from '@data/types/Card';
 import { iconsMap } from '@app/NavIcons';
-import COLORS from '@styles/colors';
 import { CardImageProps } from '@components/card/CardImageView';
 import { ThemeColors } from '@styles/theme';
+import { StyleContextType } from '@styles/StyleContext';
+import Database from '@data/sqlite/Database';
+import { where } from '@data/sqlite/query';
+import COLORS from '@styles/colors';
 
 export function getDeckOptions(
+  colors: ThemeColors,
   {
     inputOptions = {},
     modal,
     title,
     noTitle,
+    initialMode,
   }: {
     inputOptions?: Options;
     modal?: boolean;
     title?: string;
     noTitle?: boolean;
+    initialMode?: 'upgrade' | 'edit';
   } = {},
   investigator?: Card,
 ): Options {
   const topBarOptions: OptionsTopBar = inputOptions.topBar || {};
+  const textColor = initialMode === 'upgrade' ? COLORS.D30 : '#FFFFFF';
+  const backgroundColor = initialMode === 'upgrade' ? colors.upgrade : colors.faction[
+    (investigator ? investigator.faction_code : null) || 'neutral'
+  ].background;
   const options: Options = {
     statusBar: {
-      style: 'light',
+      style: initialMode === 'upgrade' ? 'dark' : 'light',
+      backgroundColor,
     },
     modalPresentationStyle: Platform.OS === 'ios' ?
-      OptionsModalPresentationStyle.overFullScreen :
+      OptionsModalPresentationStyle.fullScreen :
       OptionsModalPresentationStyle.overCurrentContext,
     topBar: {
       backButton: {
         title: t`Back`,
-        color: '#FFFFFF',
+        color: textColor,
         ...topBarOptions.backButton,
       },
       leftButtons: modal ? [
         Platform.OS === 'ios' ? {
           text: t`Done`,
           id: 'back',
-          color: 'white',
+          color: textColor,
         } : {
           icon: iconsMap['arrow-left'],
           id: 'androidBack',
-          color: 'white',
+          color: textColor,
         },
       ] : topBarOptions.leftButtons || [],
       background: {
-        color: COLORS.faction[
-          (investigator ? investigator.faction_code : null) || 'neutral'
-        ].darkBackground,
+        color: backgroundColor,
       },
       rightButtons: topBarOptions.rightButtons,
     },
     layout: {
-      backgroundColor: COLORS.L30,
+      backgroundColor: colors.L30,
     },
     bottomTabs: {
       visible: false,
@@ -76,45 +86,47 @@ export function getDeckOptions(
       fontFamily: 'Alegreya-Medium',
       fontSize: 20,
       text: (investigator ? investigator.name : t`Deck`),
-      color: '#FFFFFF',
+      color: textColor,
     };
     options.topBar.subtitle = {
       text: title,
       fontFamily: 'Alegreya-Medium',
       fontSize: 14,
-      color: '#FFFFFF',
+      color: textColor,
     };
   }
   return options;
 }
 
 export function showDeckModal(
-  componentId: string,
+  id: DeckId,
   deck: Deck,
+  campaignId: CampaignId | undefined,
+  colors: ThemeColors,
   investigator?: Card,
-  campaignId?: number,
-  hideCampaign?: boolean,
+  initialMode?: 'upgrade' | 'edit'
 ) {
   const passProps: DeckDetailProps = {
-    id: deck.id,
-    isPrivate: true,
+    id,
     modal: true,
     campaignId,
     title: investigator ? investigator.name : t`Deck`,
     subtitle: deck.name,
-    hideCampaign,
+    initialMode,
   };
 
-  Navigation.showModal({
+  const options = getDeckOptions(colors, {
+    modal: true,
+    title: deck.name,
+    initialMode,
+  }, investigator);
+  Navigation.showModal<DeckDetailProps>({
     stack: {
       children: [{
         component: {
           name: 'Deck',
           passProps,
-          options: getDeckOptions({
-            modal: true,
-            title: deck.name,
-          }, investigator),
+          options,
         },
       }],
     },
@@ -125,6 +137,7 @@ export function showCard(
   componentId: string,
   code: string,
   card: Card,
+  colors: ThemeColors,
   showSpoilers?: boolean,
   tabooSetId?: number
 ) {
@@ -141,7 +154,7 @@ export function showCard(
         topBar: {
           backButton: {
             title: t`Back`,
-            color: COLORS.M,
+            color: colors.M,
           },
         },
       },
@@ -151,7 +164,8 @@ export function showCard(
 
 export function showCardCharts(
   componentId: string,
-  parsedDeck: ParsedDeck
+  parsedDeck: ParsedDeck,
+  colors: ThemeColors
 ) {
   Navigation.push<DeckChartsProps>(componentId, {
     component: {
@@ -159,7 +173,7 @@ export function showCardCharts(
       passProps: {
         parsedDeck,
       },
-      options: getDeckOptions({
+      options: getDeckOptions(colors, {
         title: t`Charts`,
       }, parsedDeck.investigator),
     },
@@ -168,7 +182,8 @@ export function showCardCharts(
 
 export function showDrawSimulator(
   componentId: string,
-  parsedDeck: ParsedDeck
+  parsedDeck: ParsedDeck,
+  colors: ThemeColors
 ) {
   const {
     slots,
@@ -180,31 +195,34 @@ export function showDrawSimulator(
       passProps: {
         slots,
       },
-      options: getDeckOptions({
-        title: t`Draw Simulator`,
-      }, investigator),
+      options: getDeckOptions(
+        colors,
+        {
+          title: t`Draw Simulator`,
+        },
+        investigator),
     },
   });
 }
 
 export function showCardSwipe(
   componentId: string,
-  cards: Card[],
+  codes: string[],
   index: number,
+  colors: ThemeColors,
+  initialCards?: Card[],
   showSpoilers?: boolean,
   tabooSetId?: number,
-  deckCardCounts?: Slots,
-  onDeckCountChange?: (code: string, count: number) => void,
-  investigator?: Card,
-  renderFooter?: (slots?: Slots, controls?: React.ReactNode) => React.ReactNode,
+  deckId?: DeckId,
+  investigator?: Card
 ) {
   const options = investigator ?
-    getDeckOptions({ title: '' }, investigator) :
+    getDeckOptions(colors, { title: '' }, investigator) :
     {
       topBar: {
         backButton: {
           title: t`Back`,
-          color: COLORS.M,
+          color: colors.M,
         },
       },
     };
@@ -212,14 +230,14 @@ export function showCardSwipe(
     component: {
       name: 'Card.Swipe',
       passProps: {
-        cards,
+        cardCodes: codes,
+        initialCards,
         initialIndex: index,
-        showSpoilers: !!showSpoilers,
+        showAllSpoilers: !!showSpoilers,
         tabooSetId,
-        deckCardCounts,
-        onDeckCountChange,
-        renderFooter,
+        deckId,
         whiteNav: !!investigator,
+        faction: investigator?.factionCode(),
       },
       options,
     },
@@ -289,9 +307,71 @@ export function showCardImage(componentId: string, card: Card, colors: ThemeColo
   });
 }
 
+export async function openUrl(
+  url: string,
+  context: StyleContextType,
+  db: Database,
+  componentId: string,
+  tabooSetId?: number,
+) {
+  const card_regex = /\/card\/(\d+)/;
+  const card_match = url.match(card_regex);
+
+  if (card_match) {
+    const code = card_match[1];
+    const card = await db.getCard(
+      where('c.code = :code', { code }),
+      tabooSetId
+    );
+    if (card) {
+      showCard(componentId, code, card, context.colors);
+      return;
+    }
+  }
+
+  const rule_regex = /^((https:\/\/arkhamdb.com)?\/rules)?#(.+)$/;
+  const rule_match = url.match(rule_regex);
+  if (rule_match) {
+    const rule_id = rule_match[3];
+    const rules = await db.getRulesPaged(0, 1, where('r.id = :rule_id', { rule_id }));
+    if (rules.length) {
+      Navigation.push(componentId, {
+        component: {
+          name: 'Rule',
+          passProps: {
+            rule: rules[0],
+          },
+          options: {
+            topBar: {
+              backButton: {
+                title: t`Back`,
+              },
+              title: {
+                text: rules[0].title,
+              },
+            },
+          },
+        },
+      });
+      return;
+    }
+  }
+
+  if (startsWith(url, '/')) {
+    url = `https://arkhamdb.com${url}`;
+  }
+
+  if (url.indexOf('arkhamdb.com') !== -1) {
+    InAppBrowser.open(url).catch(() => {
+      Linking.openURL(url);
+    });
+  }
+}
+
 export default {
   showDeckModal,
   getDeckOptions,
   showCard,
   showOptionDialog,
+  openUrl,
 };

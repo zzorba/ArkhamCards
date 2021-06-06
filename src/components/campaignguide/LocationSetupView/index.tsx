@@ -1,22 +1,22 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { map } from 'lodash';
+import { forEach, map } from 'lodash';
 import PinchZoomView from 'react-native-pinch-zoom-view';
 
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { NavigationProps } from '@components/nav/types';
 import { LocationSetupStep } from '@data/scenario/types';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import LocationCard from './LocationCard';
 import { CARD_RATIO } from '@styles/sizes';
 import { isTablet } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
 
 export interface LocationSetupProps {
   step: LocationSetupStep;
 }
 
-type Props = LocationSetupProps & NavigationProps & DimensionsProps;
+type Props = LocationSetupProps & NavigationProps;
 
 const TOP_PADDING = 8;
 const SIDE_PADDING = 8;
@@ -28,15 +28,20 @@ interface CardSizes {
   betweenPadding: number;
 }
 
-class LocationSetupView extends React.Component<Props> {
-  heightConstrained(rowCount: number): CardSizes {
-    const {
-      height,
-      step: {
-        vertical,
-        horizontal,
-      },
-    } = this.props;
+export default function LocationSetupView({ step: { locations, vertical, horizontal, note, location_names, resource_dividers } }: Props) {
+  const { width, height } = useContext(StyleContext);
+  const rowCount = locations.length;
+  const rowSize = locations[0].length;
+
+  const names = useMemo(() => {
+    const result: { [code: string]: string | undefined } = {};
+    forEach(location_names || [], entry => {
+      result[entry.code] = entry.name;
+    });
+    return result;
+  }, [location_names]);
+
+  const heightConstrained: CardSizes = useMemo(() => {
     const cardsPerColumn = rowCount / (vertical === 'half' ? 2 : 1);
     const betweenPadding = horizontal === 'tight' ? 8 : 12;
     const effectiveScreenHeight = height - TOP_PADDING * 2 - GUTTER_SIZE * 2;
@@ -48,15 +53,9 @@ class LocationSetupView extends React.Component<Props> {
       cardHeight,
       betweenPadding,
     };
-  }
+  }, [vertical, horizontal, rowCount, height]);
 
-  widthConstrained(rowSize: number): CardSizes {
-    const {
-      width,
-      step: {
-        horizontal,
-      },
-    } = this.props;
+  const widthConstrained: CardSizes = useMemo(() => {
     const realCardsPerRow = rowSize / (horizontal === 'half' ? 2 : 1);
     const cardsPerRow = (!isTablet && realCardsPerRow > 3) ? 3.5 : realCardsPerRow;
     const betweenPadding = horizontal === 'tight' ? 8 : 12;
@@ -69,96 +68,69 @@ class LocationSetupView extends React.Component<Props> {
       cardHeight,
       betweenPadding,
     };
-  }
+  }, [rowSize, horizontal, width]);
 
-  cardDimensions(
-    rowCount: number,
-    rowSize: number,
-  ): CardSizes {
-    const widthLimited = this.widthConstrained(rowSize);
+  const cardDimensions = useMemo(() => {
     if (!isTablet) {
-      return widthLimited;
+      return widthConstrained;
     }
-    const heightLimited = this.heightConstrained(rowCount);
-    if (widthLimited.cardWidth < heightLimited.cardWidth) {
-      return widthLimited;
+    if (widthConstrained.cardWidth < heightConstrained.cardWidth) {
+      return widthConstrained;
     }
-    return heightLimited;
-  }
+    return heightConstrained;
+  }, [widthConstrained, heightConstrained]);
 
-  _renderRow = (
-    locationsRow: string[],
-    rowNumber: number
-  ) => {
-    const {
-      step: {
-        vertical,
-        horizontal,
-        locations,
-      },
-    } = this.props;
-    const rowSize = locationsRow.length;
+  const renderRow = useCallback((locationsRow: string[], rowNumber: number) => {
     const {
       betweenPadding,
       cardWidth,
       cardHeight,
-    } = this.cardDimensions(locations.length, rowSize);
-    const top = vertical === 'half' ?
-      ((cardHeight + TOP_PADDING) / 2) * rowNumber :
-      (cardHeight + TOP_PADDING) * rowNumber;
+    } = cardDimensions;
+
+    const cardHeightWithPadding = (cardHeight + TOP_PADDING);
+    const top = (vertical === 'half' ? (cardHeightWithPadding / 2) * rowNumber : cardHeightWithPadding * rowNumber) + (
+      resource_dividers ? 50 * rowNumber : 0
+    );
     return map(locationsRow, (item, x) => {
-      const left = horizontal === 'half' ?
-        ((cardWidth + betweenPadding) / 2) * x :
-        (cardWidth + betweenPadding) * x;
+      const cardWidthWithPadding = (cardWidth + betweenPadding);
+      const left = (horizontal === 'half' ? (cardWidthWithPadding / 2) * x : cardWidthWithPadding * x) + (
+        resource_dividers ? 50 * x : 0
+      );
       return (
         <LocationCard
           key={`${rowNumber}x${x}`}
           code={item}
+          name={names[item]}
           top={TOP_PADDING + top}
           left={SIDE_PADDING + left}
           height={cardHeight}
           width={cardWidth}
+          resource_dividers={resource_dividers ? resource_dividers[rowNumber][x] : undefined}
         />
       );
     });
-  }
+  }, [vertical, horizontal, cardDimensions, names, resource_dividers]);
 
-  render() {
-    const {
-      step,
-      width,
-    } = this.props;
-    if (!step) {
-      return null;
-    }
-    const {
-      locations,
-      vertical,
-      note,
-    } = step;
-    const {
-      cardHeight,
-    } = this.cardDimensions(locations.length, locations[0].length);
+  const {
+    cardHeight,
+  } = cardDimensions;
 
-    const height = TOP_PADDING * 2 + cardHeight * (locations.length / (vertical === 'half' ? 2 : 1)) + GUTTER_SIZE;
-    return (
-      <PinchZoomView style={{ width: 500 }}>
-        { !!note && (
-          <View style={{ width: width }}>
-            <SetupStepWrapper bulletType="none">
-              <CampaignGuideTextComponent text={note} />
-            </SetupStepWrapper>
-          </View>
-        ) }
-        <View style={[styles.container, { height }]}>
-          { map(locations, this._renderRow) }
+  const rowHeight = TOP_PADDING * 2 + cardHeight * (locations.length / (vertical === 'half' ? 2 : 1)) + GUTTER_SIZE;
+  return (
+    <PinchZoomView style={{ width: 500 }}>
+      { !!note && (
+        <View style={{ width: width }}>
+          <SetupStepWrapper bulletType="none">
+            <CampaignGuideTextComponent text={note} />
+          </SetupStepWrapper>
         </View>
-      </PinchZoomView>
-    );
-  }
+      ) }
+      <View style={[styles.container, { height: rowHeight }]}>
+        { map(locations, renderRow) }
+      </View>
+    </PinchZoomView>
+  );
 }
-
-export default withDimensions(LocationSetupView);
 
 const styles = StyleSheet.create({
   container: {

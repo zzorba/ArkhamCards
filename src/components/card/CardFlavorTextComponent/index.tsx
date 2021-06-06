@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import SimpleMarkdown from 'simple-markdown';
 import {
   MarkdownView,
@@ -23,51 +23,54 @@ import GameTextNode from './GameTextNode';
 import CiteTagNode from './CiteTagNode';
 import { xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { TextStyle } from 'react-native';
 
-function BreakTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
+function BreakTagRule(): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<br\\/*>')),
     order: 1,
     parse: () => {
       return { text: '\n' };
     },
-    render: FlavorUnderlineNode(style),
+    render: FlavorUnderlineNode(),
   };
 }
 
 
-function ArkhamIconRule(style: StyleContextType): MarkdownRule<WithIconName, State> {
+function ArkhamIconRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithIconName, State> {
   return {
-    match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\]')),
+    match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]…]+)\\]')),
     order: 1,
     parse: (capture) => {
       return { name: capture[1] };
     },
-    render: ArkhamIconNode(style),
+    render: ArkhamIconNode(style, sizeScale),
   };
 }
 
-const CiteTagRule: MarkdownRule<WithText, State> = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<cite>(.+?)<\\/cite>')),
-  order: 1,
-  parse: (capture) => {
-    return { text: `  — ${capture[1]}` };
-  },
-  render: CiteTagNode,
-};
+function CiteTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<cite>(.+?)<\\/cite>')),
+    order: 1,
+    parse: (capture) => {
+      return { text: `  — ${capture[1]}` };
+    },
+    render: CiteTagNode(style),
+  };
+}
 
-function UnderlineHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
+function UnderlineHtmlTagRule(): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<u>(.+?)<\\/u>')),
     order: 1,
     parse: (capture) => {
       return { text: capture[1] };
     },
-    render: FlavorUnderlineNode(style),
+    render: FlavorUnderlineNode(),
   };
 }
 
-function ItalicHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+function ItalicHtmlTagRule(): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<i>([\\s\\S]+?)<\\/i>')),
     order: 2,
@@ -76,18 +79,18 @@ function ItalicHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, 
         children: nestedParse(capture[1], state),
       };
     },
-    render: FlavorItalicNode(style),
+    render: FlavorItalicNode(),
   };
 }
 
-function BoldHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
+function BoldHtmlTagRule(): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<b>(.+?)<\\/b>')),
     order: 1,
     parse: (capture) => {
       return { text: capture[1] };
     },
-    render: FlavorBoldNode(style),
+    render: FlavorBoldNode(),
   };
 }
 
@@ -169,41 +172,67 @@ interface Props {
   text: string;
   onLinkPress?: (url: string) => void;
   color?: string;
+  width?: string | number;
+  sizeScale?: number;
 }
 
 export default function CardFlavorTextComponent(
-  { text, onLinkPress, color }: Props
+  { text, onLinkPress, color, width, sizeScale = 1 }: Props
 ) {
   const context = useContext(StyleContext);
+  const textStyle: TextStyle = useMemo(() => {
+    return {
+      fontFamily: 'Alegreya',
+      fontStyle: 'italic',
+      fontWeight: 'normal',
+      fontSize: 16 * context.fontScale * sizeScale,
+      lineHeight: 20 * context.fontScale * sizeScale,
+      marginTop: 4,
+      marginBottom: 4,
+      color: color || context.colors.darkText,
+      textAlign: context.justifyContent ? 'justify' : 'left',
+    };
+  }, [context, sizeScale, color]);
   // Text that has hyperlinks uses a different style for the icons.
   return (
     <MarkdownView
       style={{
         marginBottom: xs,
+        width,
       }}
       rules={{
-        iconTag: ArkhamIconRule(context),
-        bTag: BoldHtmlTagRule(context),
-        uTag: UnderlineHtmlTagRule(context),
-        brTag: BreakTagRule(context),
-        citeTag: CiteTagRule,
+        iconTag: ArkhamIconRule(context, sizeScale),
+        bTag: BoldHtmlTagRule(),
+        uTag: UnderlineHtmlTagRule(),
+        brTag: BreakTagRule(),
+        citeTag: CiteTagRule(context),
         fancyTag: FancyHtmlTagRule(context),
         centerTag: CenterHtmlTagRule,
         rightTag: RightHtmlTagRule,
-        iTag: ItalicHtmlTagRule(context),
+        iTag: ItalicHtmlTagRule(),
         smallCapsTag: SmallCapsHtmlTagRule(context),
         innsmouthTag: InnsmouthTagRule(context),
         gameTag: GameTagRule(context),
       }}
       onLinkPress={onLinkPress}
       styles={{
-        paragraph: {
-          fontFamily: 'Alegreya-Italic',
-          fontSize: 16 * context.fontScale,
-          lineHeight: 20 * context.fontScale,
-          marginTop: 4,
-          marginBottom: 4,
-          color: color || context.colors.darkText,
+        paragraph: textStyle,
+      }}
+      fonts={{
+        Alegreya: {
+          fontWeights: {
+            300: 'Light',
+            400: 'Regular',
+            700: 'Bold',
+            800: 'ExtraBold',
+            900: 'Black',
+            normal: 'Regular',
+            bold: 'Bold',
+          },
+          fontStyles: {
+            normal: '',
+            italic: 'Italic',
+          },
         },
       }}
     >

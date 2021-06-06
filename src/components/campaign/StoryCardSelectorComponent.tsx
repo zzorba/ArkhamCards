@@ -1,75 +1,89 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { flatMap, forEach } from 'lodash';
-import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import Database from '@data/Database';
-import DbRender from '@components/data/DbRender';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import { scenarioRewards } from '@components/campaign/constants';
-import { Deck, Slots } from '@actions/types';
-import Card from '@data/Card';
-import { PLAYER_CARDS_QUERY, combineQueries, where } from '@data/query';
-import { getDeck, getTabooSet, AppState } from '@reducers';
+import { Slots } from '@actions/types';
+import Card from '@data/types/Card';
+import { PLAYER_CARDS_QUERY, combineQueries, MYTHOS_CARDS_QUERY } from '@data/sqlite/query';
 import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
+import { useSlots } from '@components/core/hooks';
+import useCardsFromQuery from '@components/card/useCardsFromQuery';
+import { QuerySort } from '@data/sqlite/types';
+import StyleContext from '@styles/StyleContext';
+import space from '@styles/space';
+import { ActivityIndicator } from 'react-native';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
-interface OwnProps {
+interface Props {
   componentId: string;
   investigator: Card;
-  deckId: number;
+  deck: LatestDeckT;
   encounterCodes: string[];
   scenarioName?: string;
   updateStoryCounts: (exileCounts: Slots) => void;
 }
 
-interface ReduxProps {
-  deck?: Deck;
-  tabooSetId?: number;
-}
+const QUERY = combineQueries(MYTHOS_CARDS_QUERY, [PLAYER_CARDS_QUERY], 'and');
+const SORT: QuerySort[] = [
+  { s: 'c.renderName', direction: 'ASC' },
+  { s: 'c.xp', direction: 'ASC' },
+];
 
-interface StoryCards {
-  storyCards: Card[];
-  deckStoryCards: Card[];
-}
-type Props = OwnProps & ReduxProps;
-interface State {
-  initialized: boolean;
-  storyCounts: Slots;
-}
-
-class StoryCardSelectorComponent extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      initialized: false,
-      storyCounts: {},
-    };
-  }
-
-  componentDidMount() {
-    this.props.updateStoryCounts(this.state.storyCounts);
-  }
-
-  _updateStoryCounts = (storyCounts: Slots) => {
-    this.setState({
-      storyCounts,
-    }, () => this.props.updateStoryCounts(storyCounts));
-  };
-
-  renderScenarioStoryCards(storyCards: Card[]) {
-    const {
-      componentId,
-      scenarioName,
-      investigator,
-    } = this.props;
-    const {
-      storyCounts,
-    } = this.state;
+export default function StoryCardSelectorComponent({
+  componentId,
+  investigator,
+  deck,
+  encounterCodes,
+  scenarioName,
+  updateStoryCounts,
+}: Props) {
+  const { colors } = useContext(StyleContext);
+  const [initialized, setInitialized] = useState(false);
+  const [storyCounts, setStoryCounts] = useSlots({}, updateStoryCounts, true);
+  const tabooSetId = deck.deck.taboo_id || 0;
+  const updateCount = useCallback((card: Card, count: number) => {
+    setStoryCounts({ type: 'set-slot', code: card.code, value: count });
+  }, [setStoryCounts]);
+  const [allStoryCards, loading] = useCardsFromQuery({
+    query: QUERY,
+    sort: SORT,
+    tabooSetOverride: tabooSetId,
+  });
+  const encounterCodesSet = useMemo(() => {
+    return new Set(flatMap(encounterCodes, encounterCode => {
+      return [
+        encounterCode,
+        ...scenarioRewards(encounterCode),
+      ];
+    }));
+  }, [encounterCodes]);
+  const [storyCards, deckStoryCards] = useMemo(() => {
+    if (!allStoryCards.length) {
+      return [[], []];
+    }
+    const deckStorySlots: Slots = {};
+    const storyCards: Card[] = [];
+    const deckStoryCards: Card[] = [];
+    forEach(allStoryCards, card => {
+      if (deck && card.code && deck.deck.slots && (deck.deck.slots?.[card.code] || 0) > 0) {
+        deckStoryCards.push(card);
+        deckStorySlots[card.code] = deck.deck.slots[card.code];
+      } else if (card.encounter_code && encounterCodesSet.has(card.encounter_code)) {
+        storyCards.push(card);
+      }
+    });
+    if (!initialized) {
+      setInitialized(true);
+      setStoryCounts({ type: 'sync', slots: deckStorySlots });
+    }
+    return [storyCards, deckStoryCards];
+  }, [allStoryCards, deck, encounterCodesSet, initialized, setStoryCounts, setInitialized]);
+  const storyCardsSection = useMemo(() => {
     if (!storyCards.length) {
       return null;
     }
-
     const header = (
       <CardSectionHeader
         investigator={investigator}
@@ -87,21 +101,13 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
         componentId={componentId}
         slots={slots}
         counts={storyCounts}
-        updateCounts={this._updateStoryCounts}
+        updateCount={updateCount}
         header={header}
       />
     );
-  }
+  }, [componentId, scenarioName, investigator, storyCards, storyCounts, updateCount]);
 
-
-  renderDeckStoryCards(deckStoryCards: Card[]) {
-    const {
-      componentId,
-      investigator,
-    } = this.props;
-    const {
-      storyCounts,
-    } = this.state;
+  const deckStoryCardsSection = useMemo(() => {
     if (!deckStoryCards.length) {
       return null;
     }
@@ -123,91 +129,26 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
         componentId={componentId}
         slots={slots}
         counts={storyCounts}
-        updateCounts={this._updateStoryCounts}
+        updateCount={updateCount}
         header={header}
       />
     );
-  }
+  }, [deckStoryCards, componentId, investigator, storyCounts, updateCount]);
 
-  _render = (storyCards?: StoryCards) => {
-    if (!storyCards) {
-      return null;
-    }
+  if (loading) {
     return (
-      <>
-        { this.renderScenarioStoryCards(storyCards.storyCards) }
-        { this.renderDeckStoryCards(storyCards.deckStoryCards) }
-      </>
-    );
-  };
-
-  _getStoryCards = async(db: Database): Promise<StoryCards> => {
-    const {
-      deck,
-      tabooSetId,
-    } = this.props;
-    const allStoryCards = await db.getCards(
-      combineQueries(
-        where('c.encounter_code is not null'),
-        [PLAYER_CARDS_QUERY],
-        'and'
-      ),
-      tabooSetId,
-      [
-        { s: 'c.renderName', direction: 'ASC' },
-        { s: 'c.xp', direction: 'ASC' },
-      ]
-    );
-    const deckStorySlots: Slots = {};
-    const storyCards: Card[] = [];
-    const deckStoryCards: Card[] = [];
-    const encounterCodes = new Set(flatMap(this.props.encounterCodes, encounterCode => {
-      return [
-        encounterCode,
-        ...scenarioRewards(encounterCode),
-      ];
-    }));
-    forEach(allStoryCards, card => {
-      if (deck && card.code && deck.slots[card.code] > 0) {
-        deckStoryCards.push(card);
-        deckStorySlots[card.code] = deck.slots[card.code];
-      } else if (card.encounter_code && encounterCodes.has(card.encounter_code)) {
-        storyCards.push(card);
-      }
-    });
-    if (!this.state.initialized) {
-      this.setState({
-        initialized: true,
-        storyCounts: { ...deckStorySlots },
-      });
-    }
-    return {
-      storyCards,
-      deckStoryCards,
-    };
-  };
-
-  render() {
-    const { deck } = this.props;
-    return (
-      <DbRender name="story-cards" getData={this._getStoryCards} ids={[deck && deck.slots]}>
-        { this._render }
-      </DbRender>
+      <ActivityIndicator
+        style={space.paddingM}
+        color={colors.lightText}
+        size="large"
+        animating
+      />
     );
   }
+  return (
+    <>
+      { storyCardsSection }
+      { deckStoryCardsSection }
+    </>
+  );
 }
-
-
-function mapStateToProps(
-  state: AppState,
-  props: OwnProps
-): ReduxProps {
-  return {
-    deck: getDeck(props.deckId)(state) || undefined,
-    tabooSetId: getTabooSet(state),
-  };
-}
-
-export default connect<ReduxProps, unknown, OwnProps, AppState>(
-  mapStateToProps
-)(StoryCardSelectorComponent);

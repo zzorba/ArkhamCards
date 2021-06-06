@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import { map, sumBy } from 'lodash';
-// @ts-ignore
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import DeckMergeItem from './DeckMergeItem';
-import { Deck } from '@actions/types';
+import { Deck, getDeckId } from '@actions/types';
 import space from '@styles/space';
-import { CardsMap } from '@data/Card';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { CardsMap } from '@data/types/Card';
+import StyleContext from '@styles/StyleContext';
+import { useFlag } from '@components/core/hooks';
 
 interface Props {
   title: string;
@@ -17,57 +17,44 @@ interface Props {
   values: { [id: string]: boolean | undefined };
   inverted?: boolean;
   onValueChange: (deck: Deck, value: boolean) => void;
-  investigators: CardsMap;
+  investigators?: CardsMap;
   scenarioCount: {
     [key: string]: number;
   };
 }
 
-interface State {
-  open: boolean;
-}
-export default class DeckMergeSection extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function DeckMergeSection({ title, decks, values, inverted, onValueChange, investigators, scenarioCount }: Props) {
+  const { colors, borderStyle, typography } = useContext(StyleContext);
+  const [open, toggleOpen] = useFlag(false);
 
-  state: State = {
-    open: false,
-  };
-
-  renderItems() {
-    const { decks, inverted, scenarioCount, onValueChange, values, investigators } = this.props;
+  const items = useMemo(() => {
     return (
       <>
-        { map(decks, deck => (
-          <DeckMergeItem
-            key={deck.uuid || deck.id}
-            deck={deck}
-            investigators={investigators}
-            inverted={!!inverted}
-            value={!!values[deck.id]}
-            onValueChange={onValueChange}
-            scenarioCount={scenarioCount[deck.id] || 1}
-          />
-        )) }
+        { map(decks, deck => {
+          const id = getDeckId(deck);
+          return (
+            <DeckMergeItem
+              key={id.uuid}
+              deck={deck}
+              investigators={investigators}
+              inverted={!!inverted}
+              value={!!values[id.uuid]}
+              onValueChange={onValueChange}
+              scenarioCount={scenarioCount[id.uuid] || 1}
+            />
+          );
+        }) }
       </>
     );
-  }
+  }, [decks, inverted, scenarioCount, onValueChange, values, investigators]);
 
-  _toggleOpen = () => {
-    this.setState({
-      open: !this.state.open,
-    });
-  };
-
-  renderHeader() {
-    const { title, decks, values, inverted } = this.props;
-    const { open } = this.state;
-    const { colors, borderStyle, typography } = this.context;
+  const header = useMemo(() => {
     const selected = sumBy(decks, deck => {
+      const id = getDeckId(deck);
       if (inverted) {
-        return values[deck.id] ? 0 : 1;
+        return values[id.uuid] ? 0 : 1;
       }
-      return values[deck.id] ? 1 : 0;
+      return values[id.uuid] ? 1 : 0;
     });
     return (
       <View style={[styles.headerRow, { backgroundColor: colors.L10 }, borderStyle, space.paddingS, space.paddingLeftM]}>
@@ -85,33 +72,29 @@ export default class DeckMergeSection extends React.Component<Props, State> {
         ) }
       </View>
     );
-  }
+  }, [title, decks, values, inverted, open, borderStyle, colors, typography]);
 
-  render() {
-    const { decks, inverted } = this.props;
-    const { open } = this.state;
-    if (!decks.length) {
-      return null;
-    }
-    if (!inverted) {
-      return (
-        <>
-          <TouchableOpacity onPress={this._toggleOpen}>
-            { this.renderHeader() }
-          </TouchableOpacity>
-          <Collapsible collapsed={!open}>
-            { this.renderItems() }
-          </Collapsible>
-        </>
-      );
-    }
+  if (!decks.length) {
+    return null;
+  }
+  if (!inverted) {
     return (
       <>
-        { this.renderHeader() }
-        { this.renderItems() }
+        <TouchableOpacity onPress={toggleOpen}>
+          { header }
+        </TouchableOpacity>
+        <Collapsible collapsed={!open}>
+          { items }
+        </Collapsible>
       </>
     );
   }
+  return (
+    <>
+      { header }
+      { items }
+    </>
+  );
 }
 
 const styles = StyleSheet.create({

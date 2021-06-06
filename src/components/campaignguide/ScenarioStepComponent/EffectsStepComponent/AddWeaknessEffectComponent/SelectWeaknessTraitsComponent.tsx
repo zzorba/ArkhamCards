@@ -1,40 +1,26 @@
-import React from 'react';
-import { filter, flatMap, map, range, uniq, sortBy } from 'lodash';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { filter, flatMap, map, uniq, sortBy } from 'lodash';
+import { Text } from 'react-native';
 import { c, t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
-import MultiPickerComponent from '@components/core/MultiPickerComponent';
-import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
-import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
+import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
+import { useMultiPickerDialog } from '@components/deck/dialogs';
+import { useToggles } from '@components/core/hooks';
+import ActionButton from '@components/campaignguide/prompts/ActionButton';
+import StyleContext from '@styles/StyleContext';
+import space from '@styles/space';
 
 interface Props {
-  scenarioState: ScenarioStateHelper;
   choices?: string[];
   save: (traits: string[]) => void;
   weaknessCards: Card[];
 }
 
-interface State {
-  selectedIndex: number[];
-}
-
-export default class SelectWeaknessTraitsComponent extends React.Component<Props, State> {
-  static contextType = CampaignGuideContext;
-  context!: CampaignGuideContextType;
-
-  state: State = {
-    selectedIndex: [],
-  };
-
-  _onChoiceChange = (selectedIndex: number[]) => {
-    this.setState({
-      selectedIndex,
-    });
-  };
-
-  allTraits(): string[] {
-    const { weaknessCards } = this.props;
+export default function SelectWeaknessTraitsComponent({ choices, save, weaknessCards }: Props) {
+  const { typography } = useContext(StyleContext);
+  const [selectedTraits, setSelectedTrait] = useToggles({});
+  const allTraits = useMemo(() => {
     return sortBy(
       uniq(
         flatMap(weaknessCards, card => {
@@ -50,52 +36,48 @@ export default class SelectWeaknessTraitsComponent extends React.Component<Props
         })
       )
     );
-  }
+  }, [weaknessCards]);
+  const selection = useMemo(() => {
+    return filter(allTraits, t => !!selectedTraits[t]);
+  }, [allTraits, selectedTraits]);
 
-  _save = () => {
-    const { save } = this.props;
-    const { selectedIndex } = this.state;
-    const traits = this.allTraits();
-    save(
-      map(selectedIndex, index => traits[index])
-    );
-  };
-
-  renderButton() {
-    const { choices } = this.props;
-    if (choices !== undefined) {
-      return null;
+  const savePress = useCallback(() => {
+    save(selection);
+  }, [save, selection]);
+  const selectedValues = useMemo(() => {
+    return new Set(selection);
+  }, [selection]);
+  const items = useMemo(() => map(allTraits, trait => {
+    return {
+      title: trait,
+      value: trait,
+    };
+  }), [allTraits]);
+  const description = useMemo(() => {
+    if (!selection.length) {
+      return c('Weakness Card').t`All`;
     }
-    return (
-      <BasicButton
-        title={t`Proceed`}
-        onPress={this._save}
-      />
-    );
-  }
+    return selection.join(', ');
+  }, [selection]);
+  const { dialog, showDialog } = useMultiPickerDialog({
+    title: t`Select Traits`,
+    description: t`Random weaknesses will be drawn that match these traits.`,
+    selectedValues,
+    items,
+    onValueChange: setSelectedTrait,
+  });
 
-  render() {
-    const { choices } = this.props;
-    return (
-      <>
-        <MultiPickerComponent
-          title={t`Traits`}
-          editable={choices === undefined}
-          topBorder
-          selectedIndex={
-            choices ? range(0, choices.length) : this.state.selectedIndex}
-          onChoiceChange={this._onChoiceChange}
-          choices={map(choices || this.allTraits(),
-            trait => {
-              return {
-                text: trait,
-              };
-            }
-          )}
-          defaultLabel={c('Weakness Card').t`All`}
-        />
-        { this.renderButton() }
-      </>
-    );
-  }
+  return (
+    <InputWrapper
+      title={choices === undefined ? t`Select Traits` : t`Traits`}
+      onSubmit={savePress}
+      editable={choices === undefined}
+    >
+      <Text style={[space.paddingS, typography.mediumGameFont]}>
+        { description }
+      </Text>
+      <ActionButton color="dark" title={t`Edit selection`} onPress={showDialog} leftIcon="edit" />
+      { dialog }
+    </InputWrapper>
+  );
 }

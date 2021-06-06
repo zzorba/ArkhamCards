@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useCallback, useMemo } from 'react';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import { t } from 'ttag';
 
@@ -19,63 +19,53 @@ interface Props {
   children?: ReactNode;
 }
 
-export default class SliderChooser extends React.Component<Props> {
-  _onChange = (values: number[]) => {
-    const {
-      onFilterChange,
-      setting,
-    } = this.props;
+export default function SliderChooser({
+  label,
+  width,
+  height,
+  max,
+  values,
+  enabled,
+  setting,
+  onFilterChange,
+  toggleName,
+  onToggleChange,
+  children,
+}: Props) {
+  const onChange = useCallback((values: number[]) => {
     onFilterChange(setting, values);
-  };
+  }, [onFilterChange, setting]);
 
-  label() {
-    const {
-      label,
-      values,
-      enabled,
-    } = this.props;
+  const formattedLabel = useMemo(() => {
     if (!enabled) {
       return t`${label}: All`;
     }
     const rangeText = values[0] === values[1] ? values[0] : `${values[0]} - ${values[1]}`;
     return `${label}: ${rangeText}`;
-  }
+  }, [label, values, enabled]);
 
-  render() {
-    const {
-      width,
-      max,
-      values,
-      enabled,
-      onToggleChange,
-      toggleName,
-      children,
-      height,
-    } = this.props;
-
-    return (
-      <AccordionItem
-        label={this.label()}
-        height={40 + (children && height ? (height * 48) : 10)}
-        enabled={enabled}
-        toggleName={toggleName}
-        onToggleChange={onToggleChange}
-      >
-        { !!enabled && (
-          <MultiSlider
-            values={values}
-            labels={values}
-            containerStyle={space.marginSideL}
-            min={0}
-            max={max}
-            onValuesChange={this._onChange}
-            sliderLength={width - 64}
-            snapped
-            allowOverlap
-          />
-        ) }
-        { enabled && children }
-      </AccordionItem>
-    );
-  }
+  return (
+    <AccordionItem
+      label={formattedLabel}
+      height={40 + (children && height ? (height * 48) : 10)}
+      enabled={enabled}
+      toggleName={toggleName}
+      onToggleChange={onToggleChange}
+    >
+      { !!enabled && (
+        <MultiSlider
+          values={values}
+          labels={values}
+          containerStyle={space.marginSideL}
+          min={0}
+          max={max}
+          onValuesChange={onChange}
+          sliderLength={width - 64}
+          snapped
+          allowOverlap
+        />
+      ) }
+      { enabled && children }
+    </AccordionItem>
+  );
 }

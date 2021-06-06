@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  TextStyle,
-} from 'react-native';
+import { Text, TextStyle } from 'react-native';
 
 import { SPECIAL_TOKENS, ChaosTokenType } from '@app_constants';
 import ArkhamIcon from '@icons/ArkhamIcon';
@@ -34,20 +30,10 @@ export default function ChaosTokenIcon({ icon, size, color, fontFamily }: Props)
   };
   return (
     <Text
-      style={[styles.label, textStyle]}
+      style={textStyle}
       allowFontScaling={false}
     >
       { icon }
     </Text>
   );
 }
-
-interface Styles {
-  label: TextStyle;
-}
-
-const styles = StyleSheet.create<Styles>({
-  label: {
-    fontSize: 28,
-  },
-});

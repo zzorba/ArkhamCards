@@ -1,71 +1,53 @@
-import React from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { throttle } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
-import { Navigation, EventSubscription } from 'react-native-navigation';
-
+import { useDispatch } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
-import { ScenarioResult, CUSTOM } from '@actions/types';
-import LabeledTextBox from '@components/core/LabeledTextBox';
-import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
+
+import { ScenarioResult, CUSTOM, CampaignId } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
-import XpComponent from './XpComponent';
 import { editScenarioResult } from './actions';
-import { getCampaign, AppState } from '@reducers';
 import COLORS from '@styles/colors';
 import space, { s } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useNavigationButtonPressed } from '@components/core/hooks';
+import { useCampaign } from '@data/hooks';
+import { useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
+import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 export interface EditScenarioResultProps {
-  campaignId: number;
+  campaignId: CampaignId;
   index: number;
 }
 
-interface ReduxProps {
-  scenarioResult?: ScenarioResult;
-}
+type Props = NavigationProps & EditScenarioResultProps;
 
-interface ReduxActionProps {
-  editScenarioResult: (id: number, index: number, scenarioResult: ScenarioResult) => void;
-}
+export default function EditScenarioResultView({ campaignId, index, componentId }: Props) {
+  const { backgroundStyle } = useContext(StyleContext);
+  const campaign = useCampaign(campaignId);
+  const dispatch = useDispatch();
+  const existingScenarioResult = campaign && campaign.scenarioResults?.[index];
+  const [scenarioResult, setScenarioResult] = useState<ScenarioResult | undefined>(existingScenarioResult);
+  const doSave = useMemo(() => throttle(() => {
+    if (scenarioResult) {
+      dispatch(editScenarioResult(campaignId, index, scenarioResult));
+    }
+    Navigation.pop(componentId);
+  }, 200), [campaignId, index, scenarioResult, componentId, dispatch]);
+  useNavigationButtonPressed(({ buttonId }) => {
+    if (buttonId === 'save') {
+      doSave();
+    }
+  }, componentId, [doSave]);
 
-type Props = NavigationProps & EditScenarioResultProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
-interface State {
-  scenarioResult?: ScenarioResult;
-}
-
-class AddScenarioResultView extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  _navEventListener?: EventSubscription;
-  _doSave!: () => void;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      scenarioResult: props.scenarioResult,
-    };
-
-    this._updateNavigationButtons();
-    this._navEventListener = Navigation.events().bindComponent(this);
-    this._doSave = throttle(this.doSave.bind(this), 200);
-  }
-
-  componentWillUnmount() {
-    this._navEventListener && this._navEventListener.remove();
-  }
-
-  _updateNavigationButtons = () => {
-    const { scenarioResult } = this.state;
-    Navigation.mergeOptions(this.props.componentId, {
+  useEffect(() => {
+    Navigation.mergeOptions(componentId, {
       topBar: {
         rightButtons: [{
           text: t`Save`,
@@ -77,130 +59,106 @@ class AddScenarioResultView extends React.Component<Props, State> {
         }],
       },
     });
-  }
+  }, [componentId, scenarioResult]);
 
-  navigationButtonPressed({ buttonId }: { buttonId: string}) {
-    if (buttonId === 'save') {
-      this._doSave();
-    }
-  }
-
-  doSave() {
-    const {
-      componentId,
-      campaignId,
-      index,
-      editScenarioResult,
-    } = this.props;
-    const {
-      scenarioResult,
-    } = this.state;
-    if (scenarioResult) {
-      editScenarioResult(campaignId, index, scenarioResult);
-    }
-    Navigation.pop(componentId);
-  }
-
-  _showResolutionDialog = () => {
-    const {
-      showTextEditDialog,
-      scenarioResult,
-    } = this.props;
-    showTextEditDialog(
-      'Resolution',
-      scenarioResult ? scenarioResult.resolution : '',
-      this._resolutionChanged
-    );
-  };
-
-  _resolutionChanged = (value: string) => {
-    const {
-      scenarioResult,
-    } = this.state;
-    if (scenarioResult) {
-      this.setState({
-        scenarioResult: {
-          ...scenarioResult,
-          resolution: value,
-        },
-      }, this._updateNavigationButtons);
-    }
-  };
-
-  _xpChanged = (xp: number) => {
-    const {
-      scenarioResult,
-    } = this.state;
-    if (scenarioResult) {
-      this.setState({
-        scenarioResult: {
-          ...scenarioResult,
-          xp,
-        },
+  const nameChanged = useCallback((value: string) => {
+    if (scenarioResult && scenarioResult.scenarioCode === CUSTOM) {
+      setScenarioResult({
+        ...scenarioResult,
+        scenario: value,
       });
     }
-  };
+  }, [scenarioResult, setScenarioResult]);
 
-  render() {
-    const { backgroundStyle, typography } = this.context;
-    const {
-      scenarioResult,
-    } = this.state;
-    if (!scenarioResult) {
-      return null;
+  const { dialog: nameDialog, showDialog: showNameDialog } = useSimpleTextDialog({
+    title: t`Scenario`,
+    value: existingScenarioResult?.scenario || '',
+    onValueChange: nameChanged,
+  });
+
+  const resolutionChanged = useCallback((value: string) => {
+    if (scenarioResult) {
+      setScenarioResult({
+        ...scenarioResult,
+        resolution: value,
+      });
     }
-    const {
-      xp,
-      scenario,
-      scenarioCode,
-      interlude,
-      resolution,
-    } = scenarioResult;
-    return (
+  }, [scenarioResult, setScenarioResult]);
+
+  const { dialog: resolutionDialog, showDialog: showResolutionDialog } = useSimpleTextDialog({
+    title: t`Resolution`,
+    value: existingScenarioResult?.resolution || '',
+    onValueChange: resolutionChanged,
+  });
+
+  const xpChanged = useCallback((xp: number) => {
+    if (scenarioResult) {
+      setScenarioResult({
+        ...scenarioResult,
+        xp,
+      });
+    }
+  }, [scenarioResult, setScenarioResult]);
+  const [countDialog, showCountDialog] = useCountDialog();
+  const showExperienceDialog = useCallback(() => {
+    showCountDialog({
+      title: t`Experience`,
+      label: t`Earned experience:`,
+      value: scenarioResult?.xp || 0,
+      update: xpChanged,
+    });
+  }, [xpChanged, showCountDialog, scenarioResult]);
+  if (!scenarioResult) {
+    return null;
+  }
+  const {
+    xp,
+    scenario,
+    scenarioCode,
+    interlude,
+    resolution,
+  } = scenarioResult;
+  return (
+    <View style={styles.wrapper}>
       <ScrollView contentContainerStyle={[styles.container, backgroundStyle]}>
-        <View style={space.marginSideS}>
-          <Text style={typography.smallLabel}>
-            { (interlude ? t`Interlude` : t`Scenario`).toUpperCase() }
-          </Text>
-          <Text style={typography.text}>
-            { scenario }
-          </Text>
+        <View style={space.paddingS}>
+          <DeckPickerStyleButton
+            title={interlude ? t`Interlude` : t`Scenario`}
+            valueLabel={scenario}
+            editable={scenarioCode === CUSTOM}
+            icon="name"
+            onPress={showNameDialog}
+            first
+          />
           { (scenarioCode === CUSTOM || !interlude) && (
-            <LabeledTextBox
-              label={t`Resolution`}
-              onPress={this._showResolutionDialog}
-              value={resolution}
-              column
+            <DeckPickerStyleButton
+              title={t`Resolution`}
+              valueLabel={resolution}
+              onPress={showResolutionDialog}
+              icon="book"
+              editable
             />
           ) }
+          <DeckPickerStyleButton
+            title={t`Experience`}
+            icon="xp"
+            editable
+            onPress={showExperienceDialog}
+            valueLabel={`${xp || 0}`}
+            last
+          />
         </View>
-        <XpComponent xp={xp || 0} onChange={this._xpChanged} />
-        <View style={styles.footer} />
+        <View style={[space.paddingS, styles.row]}>
+          <DeckButton icon="check-thin" title={t`Save`} onPress={doSave} thin />
+        </View>
       </ScrollView>
-    );
-  }
+      { nameDialog }
+      { resolutionDialog }
+      { countDialog }
+    </View>
+  );
 }
 
-function mapStateToProps(
-  state: AppState,
-  props: NavigationProps & EditScenarioResultProps
-): ReduxProps {
-  const campaign = getCampaign(state, props.campaignId);
-  const scenarioResult = campaign && campaign.scenarioResults[props.index];
-  return {
-    scenarioResult,
-  };
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    editScenarioResult,
-  }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(
-  withDialogs(AddScenarioResultView)
-);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -209,7 +167,10 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
   },
-  footer: {
-    height: 100,
+  wrapper: {
+    flex: 1,
+  },
+  row: {
+    flexDirection: 'row',
   },
 });

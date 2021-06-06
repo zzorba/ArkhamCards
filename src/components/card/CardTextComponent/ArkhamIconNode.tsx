@@ -15,19 +15,21 @@ const BAD_ICON_NAMES: { [key: string]: string | undefined} = {
   will: 'willpower',
   willlpower: 'willpower',
   'auto-fail': 'auto_fail',
+  autofail: 'auto_fail',
 };
 
-export default function ArkhamIconNode({ colors, fontScale }: StyleContextType) {
+export default function ArkhamIconNode({ colors, fontScale }: StyleContextType, sizeScale: number) {
   return (
     node: Node & WithIconName,
     output: OutputFunction,
     state: RenderState
   ) => {
+    const icon_name = BAD_ICON_NAMES[node.name] || node.name
     return (
       <ArkhamIcon
         key={state.key}
-        name={BAD_ICON_NAMES[node.name] || node.name}
-        size={16 * fontScale}
+        name={icon_name}
+        size={16 * fontScale * sizeScale}
         color={colors.darkText}
       />
     );

@@ -1,61 +1,41 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
-import { Deck, Slots } from '@actions/types';
-import Card from '@data/Card';
-import { getDeck, AppState } from '@reducers';
+import { Slots } from '@actions/types';
+import Card from '@data/types/Card';
 import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
-interface OwnProps {
+interface Props {
   componentId: string;
-  id: number;
+  deck?: LatestDeckT;
   exileCounts: Slots;
-  updateExileCounts: (exileCounts: Slots) => void;
+  updateExileCount: (card: Card, count: number) => void;
   label?: React.ReactNode;
+  children: React.ReactNode;
+  disabled?: boolean;
 }
 
-interface ReduxProps {
-  deck?: Deck;
+function isExile(card: Card) {
+  return !!card.exile;
 }
 
-type Props = OwnProps & ReduxProps;
-
-class ExileCardSelectorComponent extends React.Component<Props> {
-  _isExile = (card: Card) => {
-    return !!card.exile;
-  };
-
-  render() {
-    const {
-      componentId,
-      deck,
-      exileCounts,
-      updateExileCounts,
-      label,
-    } = this.props;
-    if (!deck) {
-      return null;
-    }
-    return (
+export default function ExileCardSelectorComponent({ componentId, disabled, deck, exileCounts, updateExileCount, label, children }: Props) {
+  if (!deck) {
+    return <>{children}</>;
+  }
+  return (
+    <>
       <CardSelectorComponent
         componentId={componentId}
-        slots={deck.slots}
+        slots={deck.deck.slots || {}}
         counts={exileCounts}
-        updateCounts={updateExileCounts}
-        filterCard={this._isExile}
+        updateCount={updateExileCount}
+        filterCard={isExile}
         header={label}
+        forceHeader={!!children}
+        locked={disabled}
       />
-    );
-  }
+      { children }
+    </>
+  );
 }
-
-
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
-  return {
-    deck: getDeck(props.id)(state) || undefined,
-  };
-}
-
-export default connect<ReduxProps, unknown, OwnProps, AppState>(
-  mapStateToProps
-)(ExileCardSelectorComponent);

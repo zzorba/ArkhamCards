@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   StyleSheet,
   View,
@@ -17,83 +17,71 @@ interface Props {
   onToggleChange: (setting: string, value: boolean) => void;
 }
 
-export default class SkillIconChooser extends React.Component<Props> {
-  _onToggleChange = (key: string) => {
-    const {
-      onFilterChange,
-      skillIcons,
-    } = this.props;
-
+export default function SkillIconChooser({ onFilterChange, skillIcons, enabled, onToggleChange }: Props) {
+  const handleToggleChange = useCallback((key: string) => {
     onFilterChange('skillIcons', {
       ...skillIcons,
       [key]: !skillIcons[key as keyof SkillIconsFilters],
     });
-  };
-
-  render() {
-    const {
-      skillIcons: {
-        willpower,
-        intellect,
-        combat,
-        agility,
-        wild,
-        doubleIcons,
-      },
-      enabled,
-      onToggleChange,
-    } = this.props;
-    return (
-      <AccordionItem
-        label={enabled ? t`Skill Icons` : t`Skill Icons: All`}
-        height={90}
-        enabled={enabled}
-        toggleName="skillEnabled"
-        onToggleChange={onToggleChange}
-      >
-        <View style={styles.toggleRow}>
-          <ToggleFilter
-            icon="willpower"
-            setting="willpower"
-            value={willpower}
-            onChange={this._onToggleChange}
-          />
-          <ToggleFilter
-            icon="intellect"
-            setting="intellect"
-            value={intellect}
-            onChange={this._onToggleChange}
-          />
-          <ToggleFilter
-            label="2+"
-            setting="doubleIcons"
-            value={doubleIcons}
-            onChange={this._onToggleChange}
-          />
-        </View>
-        <View style={styles.toggleRow}>
-          <ToggleFilter
-            icon="combat"
-            setting="combat"
-            value={combat}
-            onChange={this._onToggleChange}
-          />
-          <ToggleFilter
-            icon="agility"
-            setting="agility"
-            value={agility}
-            onChange={this._onToggleChange}
-          />
-          <ToggleFilter
-            icon="wild"
-            setting="wild"
-            value={wild}
-            onChange={this._onToggleChange}
-          />
-        </View>
-      </AccordionItem>
-    );
-  }
+  }, [onFilterChange, skillIcons]);
+  const {
+    willpower,
+    intellect,
+    combat,
+    agility,
+    wild,
+    doubleIcons,
+  } = skillIcons;
+  return (
+    <AccordionItem
+      label={enabled ? t`Skill Icons` : t`Skill Icons: All`}
+      height={90}
+      enabled={enabled}
+      toggleName="skillEnabled"
+      onToggleChange={onToggleChange}
+    >
+      <View style={styles.toggleRow}>
+        <ToggleFilter
+          icon="willpower"
+          setting="willpower"
+          value={willpower}
+          onChange={handleToggleChange}
+        />
+        <ToggleFilter
+          icon="intellect"
+          setting="intellect"
+          value={intellect}
+          onChange={handleToggleChange}
+        />
+        <ToggleFilter
+          label="2+"
+          setting="doubleIcons"
+          value={doubleIcons}
+          onChange={handleToggleChange}
+        />
+      </View>
+      <View style={styles.toggleRow}>
+        <ToggleFilter
+          icon="combat"
+          setting="combat"
+          value={combat}
+          onChange={handleToggleChange}
+        />
+        <ToggleFilter
+          icon="agility"
+          setting="agility"
+          value={agility}
+          onChange={handleToggleChange}
+        />
+        <ToggleFilter
+          icon="wild"
+          setting="wild"
+          value={wild}
+          onChange={handleToggleChange}
+        />
+      </View>
+    </AccordionItem>
+  );
 }
 
 

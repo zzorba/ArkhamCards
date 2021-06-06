@@ -3,13 +3,14 @@ import { capitalize, flatMap, forEach, keys, map, range, sortBy, values } from '
 import { CUSTOM, Campaign, DecksMap } from '@actions/types';
 import { campaignNames } from './constants';
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '@app_constants';
-import { CardsMap } from '@data/Card';
+import { CardsMap } from '@data/types/Card';
 
 export function campaignToText(
   campaign: Campaign,
   latestDeckIds: number[],
   decks: DecksMap,
-  investigators: CardsMap
+  investigators: CardsMap,
+  listSeperator: string
 ) {
   const lines: string[] = [];
   lines.push(campaign.name);
@@ -34,7 +35,7 @@ export function campaignToText(
     unsortedTokens,
     token => CHAOS_TOKEN_ORDER[token]);
   const tokenParts = flatMap(tokens,
-    token => map(range(0, campaign.chaosBag[token]), () => token));
+    token => map(range(0, campaign.chaosBag?.[token] || 0), () => token));
   lines.push(tokenParts.join(', '));
 
   lines.push('');
@@ -51,9 +52,13 @@ export function campaignToText(
       return;
     }
     lines.push(`${investigator.name}:`);
-    lines.push(`Deck: https://arkhamdb.com/deck/view/${deck.id}`);
-    lines.push(`Trauma: ${investigator.traumaString(campaign.investigatorData[investigator.code])}`);
-    forEach(campaignNotes.investigatorNotes.sections || [], section => {
+    if (deck.local) {
+      lines.push(`Deck: ${deck.name}`);
+    } else {
+      lines.push(`Deck: https://arkhamdb.com/deck/view/${deck.id}`);
+    }
+    lines.push(`Trauma: ${investigator.traumaString(listSeperator, campaign.investigatorData?.[investigator.code])}`);
+    forEach(campaignNotes?.investigatorNotes?.sections || [], section => {
       lines.push(`${section.title}:`);
       const notes = section.notes[investigator.code] || [];
       if (notes.length > 0) {
@@ -62,14 +67,14 @@ export function campaignToText(
         lines.push('None');
       }
     });
-    forEach(campaignNotes.investigatorNotes.counts || [], section => {
+    forEach(campaignNotes?.investigatorNotes?.counts || [], section => {
       lines.push(`${section.title}: ${section.counts[investigator.code] || 0}`);
     });
     lines.push('');
   });
 
   lines.push('');
-  forEach(campaignNotes.sections || [], section => {
+  forEach(campaignNotes?.sections || [], section => {
     lines.push(`${section.title}:`);
     if (section.notes.length > 0) {
       forEach(section.notes, note => lines.push(note));
@@ -78,7 +83,7 @@ export function campaignToText(
     }
     lines.push('');
   });
-  forEach(campaignNotes.counts || [], section => {
+  forEach(campaignNotes?.counts || [], section => {
     lines.push(`${section.title}: ${section.count || 0}`);
   });
 

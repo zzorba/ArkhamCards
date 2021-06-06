@@ -49,7 +49,7 @@
       "cards": [
         {
           "code": ["03102"],
-          "text": "La capacidad <b>Revelación</b> de esta carta debería decir: “Descarta Apoyos [[Objeto]] de tu zona de juego y/o de tu mano...”"
+          "text": "La capacidad <b>Revelación</b> de esta carta debería decir: “Descarta Apoyos [[Objeto]] de tu zona de juego y/o de tu mano…”"
         }
       ]
     },
@@ -80,11 +80,11 @@
       "cards": [
         {
           "code": ["03252"],
-          "text": "La capacidad de este Enemigo debería decir: “... Si tienes éxito, mira el lado revelado de cualquier Lugar Catacumbas que esté en juego”."
+          "text": "La capacidad de este Enemigo debería decir: “… Si tienes éxito, mira el lado revelado de cualquier Lugar Catacumbas que esté en juego”."
         },
         {
           "code": ["03258"],
-          "text": "La capacidad de este Enemigo debería decir: “... Si tienes éxito, mira el lado revelado de cualquier Lugar Catacumbas que esté en juego”."
+          "text": "La capacidad de este Enemigo debería decir: “… Si tienes éxito, mira el lado revelado de cualquier Lugar Catacumbas que esté en juego”."
         }
       ]
     },
@@ -97,7 +97,7 @@
         },
         {
           "code": ["03338"],
-          "text": "La capacidad Revelación de esta carta debería decir: “Descarta cartas de tu zona de juego y/o de tu mano...”."
+          "text": "La capacidad Revelación de esta carta debería decir: “Descarta cartas de tu zona de juego y/o de tu mano…”."
         }
       ]
     },
@@ -151,7 +151,7 @@
       "scenario_code": "the_unspeakable_oath",
       "questions": [
         {
-          "question": "¿Es correcta la instrucción de preparación en cuanto a qué versión del Acto 2 – Los realmente graves deben usar los investigadores? ¿Cómo voy a poder activar la capacidad de negociar de Daniel Chesterfield (...O al menos, lo que queda de él)?",
+          "question": "¿Es correcta la instrucción de preparación en cuanto a qué versión del Acto 2 – Los realmente graves deben usar los investigadores? ¿Cómo voy a poder activar la capacidad de negociar de Daniel Chesterfield (…O al menos, lo que queda de él)?",
           "answer": "Sí, es correcta; y no, no hay forma de poder activarla (al menos en esta realidad)."
         }
       ]
@@ -214,7 +214,7 @@
         },
         {
           "question": "¿Se activan los efectos del Óbolo de Caronte ( 308) si una resolución me indica que vuelva a jugar un escenario?",
-          "answer": "Los efectos del Óbolo de Caronte tienen lugar “Al obtener experiencia durante la resolución de un escenario...”. Por lo tanto, el Óbolo de Caronte no se activará cuando debas volver a jugar un escenario, ya que esas resoluciones indican que “No se obtienen puntos de experiencia por la partida anterior.”"
+          "answer": "Los efectos del Óbolo de Caronte tienen lugar “Al obtener experiencia durante la resolución de un escenario…”. Por lo tanto, el Óbolo de Caronte no se activará cuando debas volver a jugar un escenario, ya que esas resoluciones indican que “No se obtienen puntos de experiencia por la partida anterior.”"
         }
       ]
     },
@@ -236,7 +236,7 @@
         },
         {
           "question": "¿Se activan los efectos del Óbolo de Caronte ( 308) si una resolución me indica que vuelva a jugar un escenario? ¿Y entre los escenarios V-A y V-B?",
-          "answer": "Los efectos del Óbolo de Caronte tienen lugar “Al obtener experiencia durante la resolución de un escenario...”. Por lo tanto, el Óbolo de Caronte no se activará cuando debas volver a jugar un escenario, ya que esas resoluciones indican que “No se obtienen puntos de experiencia por la partida anterior.”\nSin embargo, entre los escenarios V-A y V-B se obtiene experiencia, por lo que el Óbolo de Caronte sí que se activaría, aunque los jugadores no pueden gastar esos puntos de experiencia hasta después de haber jugado el Escenario V-B."
+          "answer": "Los efectos del Óbolo de Caronte tienen lugar “Al obtener experiencia durante la resolución de un escenario…”. Por lo tanto, el Óbolo de Caronte no se activará cuando debas volver a jugar un escenario, ya que esas resoluciones indican que “No se obtienen puntos de experiencia por la partida anterior.”\nSin embargo, entre los escenarios V-A y V-B se obtiene experiencia, por lo que el Óbolo de Caronte sí que se activaría, aunque los jugadores no pueden gastar esos puntos de experiencia hasta después de haber jugado el Escenario V-B."
         },
         {
           "question": "Si se me indica que vuelva a jugar un escenario, ¿se aplican los efectos de cualquier resolución o interludio anterior que hagan referencia al “siguiente escenario” (o una expresión similar)? ¿Y los efectos de la introducción que hagan referencia a “este escenario”?",

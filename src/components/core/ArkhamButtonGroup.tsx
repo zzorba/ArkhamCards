@@ -1,9 +1,10 @@
 import StyleContext from '@styles/StyleContext';
-import React, { useContext } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
+import { InteractionManager, StyleSheet, View } from 'react-native';
 import { filter, map } from 'lodash';
 
 import Ripple from '@lib/react-native-material-ripple';
+import { useEffectUpdate } from './hooks';
 
 interface RenderButton {
   element: (selected: boolean) => React.ReactNode;
@@ -24,22 +25,30 @@ export function SingleButton({ idx, content, last, onPressIndex, height, selecte
   selected: boolean;
 }) {
   const { colors } = useContext(StyleContext);
-  const onPress = () => {
+  const onPress = useCallback(() => {
     onPressIndex(idx);
-  };
+  }, [onPressIndex, idx]);
 
   return (
-    <Ripple
-      onPress={onPress}
-      style={[
-        styles.button,
-        { height, backgroundColor: selected ? colors.L10 : colors.M },
-        idx === 0 ? { borderTopLeftRadius: height / 2, borderBottomLeftRadius: height / 2 } : {},
-        last ? { borderBottomRightRadius: height / 2, borderTopRightRadius: height / 2 } : {},
-      ]}
-    >
-      { content.element(selected) }
-    </Ripple>
+    <>
+      <Ripple
+        onPress={onPress}
+        style={[
+          styles.button,
+          { height, backgroundColor: selected ? colors.L10 : colors.M },
+          idx === 0 ? { borderTopLeftRadius: height / 2, borderBottomLeftRadius: height / 2 } : {},
+          last ? { borderBottomRightRadius: height / 2, borderTopRightRadius: height / 2 } : {},
+        ]}
+      >
+        { content.element(selected) }
+      </Ripple>
+      { !last && (
+        <View
+          key={`divider-${idx}`}
+          style={[styles.divider, { marginLeft: -1.5, height: height - 16, backgroundColor: colors.L10 }]}
+        />
+      ) }
+    </>
   );
 }
 
@@ -48,38 +57,33 @@ export default function ArkhamButtonGroup({
   selectedIndexes,
   onPress,
 }: Props) {
-  const { colors, fontScale } = useContext(StyleContext);
-  const selection = new Set(selectedIndexes);
-  const onPressIndex = (idx: number) => {
-    if (selection.has(idx)) {
-      onPress(filter(selectedIndexes, x => x !== idx));
-    } else {
-      onPress([...selectedIndexes, idx]);
-    }
-  };
+  const { colors, fontScale, shadow } = useContext(StyleContext);
+  const [localSelectedIndexes, setLocalSelectedIndexes] = useState(selectedIndexes);
+  useEffectUpdate(() => {
+    setLocalSelectedIndexes(selectedIndexes);
+  }, [selectedIndexes]);
+  const onPressIndex = useCallback((idx: number) => {
+    const selection = new Set(selectedIndexes);
+    const newSelection = selection.has(idx) ? filter(selectedIndexes, x => x !== idx) : [...selectedIndexes, idx];
+    setLocalSelectedIndexes(newSelection);
+    InteractionManager.runAfterInteractions(() => onPress(newSelection));
+  }, [selectedIndexes, setLocalSelectedIndexes, onPress]);
+  const selection = useMemo(() => new Set(localSelectedIndexes), [localSelectedIndexes]);
   const height = 18 * fontScale + 20;
   return (
     <View style={styles.wrapper}>
-      <View style={[styles.buttonWrapper, { borderRadius: height / 2, height, backgroundColor: colors.M }]}>
+      <View style={[styles.buttonWrapper, shadow.medium, { borderRadius: height / 2, height, backgroundColor: colors.M }]}>
         { map(buttons, (button, idx) => {
           const last = idx === (buttons.length - 1);
           return (
-            <>
-              <SingleButton
-                idx={idx}
-                key={idx}
-                content={button}
-                selected={selection.has(idx)}
-                last={last}
-                onPressIndex={onPressIndex} height={height}
-              />
-              { !last && (
-                <View
-                  key={`divider-${idx}`}
-                  style={[styles.divider, { marginLeft: -1.5, height: height - 16, backgroundColor: colors.L10 }]}
-                />
-              ) }
-            </>
+            <SingleButton
+              idx={idx}
+              key={idx}
+              content={button}
+              selected={selection.has(idx)}
+              last={last}
+              onPressIndex={onPressIndex} height={height}
+            />
           );
         })}
       </View>
@@ -94,10 +98,6 @@ const styles = StyleSheet.create({
   buttonWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    shadowColor: '#000000',
-    shadowOpacity: 0.25,
   },
   button: {
     flex: 1,

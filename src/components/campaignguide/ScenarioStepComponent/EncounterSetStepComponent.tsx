@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import {
   StyleSheet,
   View,
@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux';
 import { msgid, ngettext, t } from 'ttag';
 
 import { AppState } from '@reducers';
-import BasicButton from '@components/core/BasicButton';
 import { stringList } from '@lib/stringHelper';
 import SetupStepWrapper from '../SetupStepWrapper';
 import { EncounterSetsStep } from '@data/scenario/types';
@@ -19,10 +18,18 @@ import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import space from '@styles/space';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import StyleContext from '@styles/StyleContext';
+import { CampaignId } from '@actions/types';
+import ArkhamButton from '@components/core/ArkhamButton';
+
+const CORE_SET_ICONS = new Set([
+  'torch', 'arkham', 'cultists', 'tentacles', 'rats', 'ghouls', 'striking_fear',
+  'ancient_evils', 'chilling_cold', 'pentagram', 'nightgaunts', 'locked_doors',
+  'agents_of_hastur', 'agents_of_yog', 'agents_of_shub','agents_of_cthulhu',
+]);
 
 interface Props {
   componentId: string;
-  campaignId: number;
+  campaignId: CampaignId;
   step: EncounterSetsStep;
   campaignGuide: CampaignGuide
 }
@@ -31,7 +38,7 @@ export default function EncounterSetStepComponent({ componentId, campaignId, ste
   const alphabetizeEncounterSets = useSelector<AppState>(state => state.settings.alphabetizeEncounterSets || false);
   const { colors } = useContext(StyleContext);
 
-  const _viewEncounterErrata = () => {
+  const _viewEncounterErrata = useCallback(() => {
     Navigation.push<EncounterCardErrataProps>(componentId, {
       component: {
         name: 'Guide.CardErrata',
@@ -41,9 +48,9 @@ export default function EncounterSetStepComponent({ componentId, campaignId, ste
         },
       },
     });
-  };
+  }, [step, campaignId, componentId]);
 
-  const rawEncounterSets = map(
+  const rawEncounterSets = useMemo(() => map(
     step.encounter_sets,
     encounter_set => {
       return {
@@ -51,9 +58,9 @@ export default function EncounterSetStepComponent({ componentId, campaignId, ste
         name: campaignGuide.encounterSet(encounter_set),
       };
     }
-  );
-  const encounterSets = alphabetizeEncounterSets ? sortBy(rawEncounterSets, set => set.name || '???') : rawEncounterSets;
-  const encounterSetString = stringList(map(encounterSets, set => set.name ? `<i>${set.name}</i>` : 'Missing Set Name'));
+  ), [step.encounter_sets, campaignGuide]);
+  const encounterSets = useMemo(() => alphabetizeEncounterSets ? sortBy(rawEncounterSets, set => set.name || '???') : rawEncounterSets, [alphabetizeEncounterSets, rawEncounterSets]);
+  const encounterSetString = useMemo(() => stringList(map(encounterSets, set => set.name ? `<i>${set.name}</i>` : 'Missing Set Name')), [encounterSets]);
   const leadText = step.aside ?
     ngettext(
       msgid`Set the ${encounterSetString} encounter set aside, out of play.`,
@@ -70,7 +77,7 @@ export default function EncounterSetStepComponent({ componentId, campaignId, ste
   ngettext(msgid`${startText} This set is indicated by the following icon:`,
     `${startText} These sets are indicated by the following icons:`,
     encounterSets.length);
-  const errata = campaignGuide.cardErrata(step.encounter_sets);
+  const errata = useMemo(() => campaignGuide.cardErrata(step.encounter_sets), [campaignGuide, step.encounter_sets]);
   return (
     <>
       <SetupStepWrapper bulletType={step.bullet_type}>
@@ -82,7 +89,7 @@ export default function EncounterSetStepComponent({ componentId, campaignId, ste
                 <EncounterIcon
                   encounter_code={set.code}
                   size={48}
-                  color={colors.darkText}
+                  color={CORE_SET_ICONS.has(set.code) ? colors.skill.combat.icon : colors.darkText}
                 />
               </View>
             )) }
@@ -93,7 +100,7 @@ export default function EncounterSetStepComponent({ componentId, campaignId, ste
         ) }
       </SetupStepWrapper>
       { !!errata.length && (
-        <BasicButton title={t`Encounter Card Errata`} onPress={_viewEncounterErrata} />
+        <ArkhamButton icon="faq" title={t`Encounter Card Errata`} onPress={_viewEncounterErrata} />
       ) }
     </>
   );

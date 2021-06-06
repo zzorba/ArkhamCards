@@ -1,0 +1,37 @@
+diff --git a/node_modules/react-native-snap-carousel/lib/typescript/carousel/Carousel.d.ts b/node_modules/react-native-snap-carousel/lib/typescript/carousel/Carousel.d.ts
+index 398a9b4..5928c9a 100644
+--- a/node_modules/react-native-snap-carousel/lib/typescript/carousel/Carousel.d.ts
++++ b/node_modules/react-native-snap-carousel/lib/typescript/carousel/Carousel.d.ts
+@@ -27,6 +27,7 @@ export declare class Carousel<TData> extends React.Component<CarouselProps<TData
+         shouldOptimizeUpdates: boolean;
+         useExperimentalSnap: boolean;
+         useScrollView: boolean;
++        disableIntervalMomentum: boolean;
+     };
+     _activeItem: number;
+     _onScrollActiveItem: number;
+diff --git a/node_modules/react-native-snap-carousel/lib/typescript/carousel/types.d.ts b/node_modules/react-native-snap-carousel/lib/typescript/carousel/types.d.ts
+index af4a94f..a6dd93c 100644
+--- a/node_modules/react-native-snap-carousel/lib/typescript/carousel/types.d.ts
++++ b/node_modules/react-native-snap-carousel/lib/typescript/carousel/types.d.ts
+@@ -34,7 +34,7 @@ declare type CarouselBaseProps<TData> = {
+     onScrollIndexChanged?: (index: number) => void;
+     onSnapToItem?: (index: number) => void;
+ };
+-declare type InheritedPropsFromFlatlist<TData> = Pick<FlatListProps<TData>, 'onTouchStart' | 'onTouchEnd' | 'onMomentumScrollEnd' | 'onLayout' | 'keyExtractor' | 'CellRendererComponent' | 'getItemLayout' | 'style'>;
++declare type InheritedPropsFromFlatlist<TData> = Pick<FlatListProps<TData>, 'onTouchStart' | 'onTouchEnd' | 'onMomentumScrollEnd' | 'onLayout' | 'keyExtractor' | 'initialNumToRender' | 'maxToRenderPerBatch' | 'CellRendererComponent' | 'getItemLayout' | 'style'>;
+ declare type VerticalCarouselProps<TData> = {
+     vertical: true;
+     itemHeight: number;
+diff --git a/node_modules/react-native-snap-carousel/src/carousel/types.ts b/node_modules/react-native-snap-carousel/src/carousel/types.ts
+index 46c1e5e..fa4fb02 100644
+--- a/node_modules/react-native-snap-carousel/src/carousel/types.ts
++++ b/node_modules/react-native-snap-carousel/src/carousel/types.ts
+@@ -21,6 +21,7 @@ type CarouselBaseProps<TData> = {
+   callbackOffsetMargin: number;
+   containerCustomStyle: StyleProp<ViewStyle>;
+   contentContainerCustomStyle: StyleProp<ViewStyle>;
++  disableIntervalMomentum?: boolean;
+   enableSnap: boolean;
+   firstItem: number;
+   inactiveSlideOpacity: number;

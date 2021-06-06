@@ -1,5 +1,5 @@
 import { filter, find, map } from 'lodash';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import {
   BinaryConditionalChoice,
@@ -11,10 +11,12 @@ import {
   InputStep,
   Step,
   Scenario,
+  ChoiceIcon,
 } from '@data/scenario/types';
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
+import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 
 export enum PlayingScenarioBranch {
   CAMPAIGN_LOG = -1,
@@ -46,7 +48,7 @@ function checkInvestigatorDefeatStep(resolutions: Resolution[]): BranchStep {
   };
 }
 
-const CHOOSE_RESOLUTION_STEP_ID = '$choose_resolution';
+export const CHOOSE_RESOLUTION_STEP_ID = '$choose_resolution';
 function chooseResolutionStep(resolutions: Resolution[]): InputStep {
   const hasInvestigatorDefeat = !!find(
     resolutions,
@@ -55,18 +57,19 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
   const step: InputStep = {
     id: CHOOSE_RESOLUTION_STEP_ID,
     type: 'input',
-    title: t`Resolutions`,
-    text: t`Select resolution`,
+    text: t`Choose resolution`,
     bullet_type: 'none',
     input: {
       type: 'choose_one',
-      style: 'picker',
+      confirm_text: t`Resolution`,
       choices: map(
         filter(resolutions, resolution => resolution.id !== 'investigator_defeat'),
         resolution => {
           const choice: BinaryConditionalChoice = {
             id: resolution.id,
-            text: resolution.title,
+            large: true,
+            text: `<b>${resolution.title}</b>`,
+            description: resolution.description ? `<i>${resolution.description}</i>` : undefined,
             steps: [
               investigatorStatusStepId(resolution),
               ...(hasInvestigatorDefeat ? [CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID] : []),
@@ -93,26 +96,73 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
 const PROCEED_STEP_ID = '$proceed';
 
 const CHOOSE_INVESTIGATORS_STEP_ID = '$choose_investigators';
-function chooseInvestigatorsStep(): InputStep {
+const chooseInvestigatorsStep: InputStep = {
+  id: CHOOSE_INVESTIGATORS_STEP_ID,
+  type: 'input',
+  input: {
+    type: 'scenario_investigators',
+    lead_investigator_effects: [
+      {
+        type: 'scenario_data',
+        setting: 'lead_investigator',
+        investigator: '$input_value',
+      },
+      {
+        type: 'scenario_data',
+        setting: 'scenario_status',
+        status: 'started',
+      },
+    ],
+  },
+};
+
+const UPGRADE_DECKS_STEP_ID = '$upgrade_decks';
+const upgradeDecksStep: InputStep = {
+  id: UPGRADE_DECKS_STEP_ID,
+  type: 'input',
+  input: {
+    type: 'upgrade_decks',
+  },
+};
+
+const DRAW_STANDALONE_WEAKNESS_STEP_ID = '$draw_standalone_weakness';
+function drawStandaloneWeaknessStep(): InputStep {
   return {
-    id: CHOOSE_INVESTIGATORS_STEP_ID,
+    id: DRAW_STANDALONE_WEAKNESS_STEP_ID,
     type: 'input',
+    bullet_type: 'none',
     input: {
-      type: 'scenario_investigators',
+      type: 'investigator_counter',
+      text: t`Draw Random Basic Weakness`,
+      max: 5,
+      effects: [
+        {
+          type: 'add_weakness',
+          investigator: '$input_value',
+          count: '$input_value',
+          weakness_traits: [],
+          select_traits: false,
+          standalone: true,
+        },
+        {
+          type: 'remove_card',
+          investigator: '$input_value',
+          card: RANDOM_BASIC_WEAKNESS,
+          non_story: true,
+        },
+      ],
     },
   };
 }
 
-const UPGRADE_DECKS_STEP_ID = '$upgrade_decks';
-function upgradeDecksStep(): InputStep {
-  return {
-    id: UPGRADE_DECKS_STEP_ID,
-    type: 'input',
-    input: {
-      type: 'upgrade_decks',
-    },
-  };
-}
+const SAVE_STANDALONE_DECKS_ID = '$save_standalone_decks';
+const saveStandaloneDecksStep: InputStep = {
+  id: SAVE_STANDALONE_DECKS_ID,
+  type: 'input',
+  input: {
+    type: 'save_decks',
+  },
+};
 
 const DRAW_WEAKNESS_STEP_ID = '$draw_weakness';
 function drawWeaknessStep(): InputStep {
@@ -155,7 +205,8 @@ function recordTraumaStep(): InputStep {
       choices: [
         {
           id: 'record_trauma',
-          text: t`Record Trauma`,
+          text: t`Choose investigator to record trauma`,
+          selected_text: t`Record trauma`,
           effects: [
             {
               type: 'trauma',
@@ -170,16 +221,14 @@ function recordTraumaStep(): InputStep {
   };
 }
 
-const PLAY_SCENARIO_STEP_ID = '$play_scenario';
-function playScenarioStep(): InputStep {
-  return {
-    id: PLAY_SCENARIO_STEP_ID,
-    type: 'input',
-    input: {
-      type: 'play_scenario',
-    },
-  };
-}
+export const PLAY_SCENARIO_STEP_ID = '$play_scenario';
+const playScenarioStep: InputStep = {
+  id: PLAY_SCENARIO_STEP_ID,
+  type: 'input',
+  input: {
+    type: 'play_scenario',
+  },
+};
 
 const EDIT_CAMPAIGN_LOG_STEP_ID = '$campaign_log';
 function editCampaignLogStep(): InputStep {
@@ -189,6 +238,7 @@ function editCampaignLogStep(): InputStep {
     text: t`In your Campaign Log, record that:`,
     input: {
       type: 'text_box',
+      undo: true,
       effects: [
         {
           type: 'freeform_campaign_log',
@@ -199,7 +249,7 @@ function editCampaignLogStep(): InputStep {
   };
 }
 
-const LEAD_INVESTIGATOR_STEP_ID = '$lead_investigator';
+export const LEAD_INVESTIGATOR_STEP_ID = '$lead_investigator';
 function leadInvestigatorStep(): InputStep {
   return {
     id: LEAD_INVESTIGATOR_STEP_ID,
@@ -257,19 +307,50 @@ function investigatorStatusStepId(resolution: Resolution): string {
 }
 
 function statusToString(
-  status: InvestigatorStatus
+  status: InvestigatorStatus,
+  gender?: 'masculine' | 'feminine'
 ): string {
+  switch (status) {
+    case 'alive':
+      if (gender) {
+        return (gender === 'masculine') ? c('masculine').t`Alive` : c('feminine').t`Alive`;
+      }
+      return t`Alive`;
+    case 'resigned':
+      if (gender) {
+        return (gender === 'masculine') ? c('masculine').t`Resigned` : c('feminine').t`Resigned`;
+      }
+      return t`Resigned`;
+    case 'physical':
+      if (gender) {
+        return (gender === 'masculine') ? c('masculine').t`Defeated: physical trauma` : c('feminine').t`Defeated: physical trauma`;
+      }
+      return t`Defeated: physical trauma`;
+    case 'mental':
+      if (gender) {
+        return (gender === 'masculine') ? c('masculine').t`Defeated: mental trauma` : c('feminine').t`Defeated: mental trauma`;
+      }
+      return t`Defeated: mental trauma`;
+    case 'eliminated':
+      if (gender) {
+        return (gender === 'masculine') ? c('masculine').t`Defeated: no trauma` : c('feminine').t`Defeated: no trauma`;
+      }
+      return t`Defeated: no trauma`;
+  }
+}
+
+function statusToSelectedString(status: InvestigatorStatus): string {
   switch (status) {
     case 'alive':
       return t`Alive`;
     case 'resigned':
       return t`Resigned`;
     case 'physical':
-      return t`Defeated: physical trauma`;
+      return t`Physical trauma`;
     case 'mental':
-      return t`Defeated: mental trauma`;
+      return t`Mental trauma`;
     case 'eliminated':
-      return t`Defeated: no trauma`;
+      return t`Defeated`;
   }
 }
 
@@ -290,6 +371,16 @@ function investigatorStatusStep(
   }
   return createInvestigatorStatusStep(id, resolution.investigator_status);
 }
+
+const STATUS_ICON: {
+  [key: string]: ChoiceIcon;
+} = {
+  alive: 'accept',
+  resigned: 'resign',
+  physical: 'physical',
+  mental: 'mental',
+  eliminated: 'dismiss',
+};
 
 export function createInvestigatorStatusStep(
   id: string,
@@ -324,7 +415,11 @@ export function createInvestigatorStatusStep(
       }
       return {
         id: status,
+        icon: STATUS_ICON[status],
         text: statusToString(status),
+        selected_text: statusToSelectedString(status),
+        masculine_text: statusToString(status, 'masculine'),
+        feminine_text: statusToString(status, 'feminine'),
         effects,
       };
     }
@@ -333,7 +428,8 @@ export function createInvestigatorStatusStep(
   return {
     id,
     type: 'input',
-    text: t`Investigator status at end of scenario:`,
+    text: t`Status of investigators`,
+    prompt_type: 'header',
     input: {
       type: 'investigator_choice',
       investigator: 'all',
@@ -344,13 +440,11 @@ export function createInvestigatorStatusStep(
 }
 
 export const INTER_SCENARIO_CHANGES_STEP_ID = '$inter_scenario_changes';
-function interScenarioChangesStep(): Step {
-  return {
-    id: INTER_SCENARIO_CHANGES_STEP_ID,
-    type: 'internal',
-    hidden: true,
-  };
-}
+const interScenarioChangesStep: Step = {
+  id: INTER_SCENARIO_CHANGES_STEP_ID,
+  type: 'internal',
+  hidden: true,
+};
 
 export function getFixedStep(
   id: string,
@@ -394,19 +488,23 @@ export function getFixedStep(
       };
     }
     case INTER_SCENARIO_CHANGES_STEP_ID:
-      return interScenarioChangesStep();
+      return interScenarioChangesStep;
     case EDIT_CAMPAIGN_LOG_STEP_ID:
       return editCampaignLogStep();
     case DRAW_WEAKNESS_STEP_ID:
       return drawWeaknessStep();
+    case DRAW_STANDALONE_WEAKNESS_STEP_ID:
+      return drawStandaloneWeaknessStep();
     case PLAY_SCENARIO_STEP_ID:
-      return playScenarioStep();
+      return playScenarioStep;
     case CHOOSE_INVESTIGATORS_STEP_ID:
-      return chooseInvestigatorsStep();
+      return chooseInvestigatorsStep;
     case UPGRADE_DECKS_STEP_ID:
-      return upgradeDecksStep();
+      return upgradeDecksStep;
     case LEAD_INVESTIGATOR_STEP_ID:
       return leadInvestigatorStep();
+    case SAVE_STANDALONE_DECKS_ID:
+      return saveStandaloneDecksStep;
     case RECORD_TRAUMA_STEP_ID:
       return recordTraumaStep();
     default:
@@ -414,7 +512,7 @@ export function getFixedStep(
   }
 }
 
-export function scenarioStepIds(scenario: Scenario) {
+export function scenarioStepIds(scenario: Scenario, standalone?: boolean) {
   return (scenario.type === 'interlude' || scenario.type === 'epilogue') ?
     [
       ...scenario.setup,
@@ -422,7 +520,7 @@ export function scenarioStepIds(scenario: Scenario) {
       PROCEED_STEP_ID,
     ] : [
       CHOOSE_INVESTIGATORS_STEP_ID,
-      LEAD_INVESTIGATOR_STEP_ID,
-      ...scenario.setup,
+      ...(standalone ? [DRAW_STANDALONE_WEAKNESS_STEP_ID, SAVE_STANDALONE_DECKS_ID] : []),
+      ...((standalone && scenario.standalone_setup) || scenario.setup),
     ];
 }

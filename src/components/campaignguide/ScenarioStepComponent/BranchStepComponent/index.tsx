@@ -12,6 +12,7 @@ import HasCardConditionComponent from './HasCardConditionComponent';
 import CampaignLogConditionComponent from './CampaignLogConditionComponent';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import { BranchStep } from '@data/scenario/types';
+import CampaignLogInvestigatorCountConditionComponent from './CampaignLogInvestigatorCountConditionComponent';
 
 interface Props {
   step: BranchStep;
@@ -35,6 +36,14 @@ export default function BranchStepComponent({ step, campaignLog }: Props) {
     case 'campaign_log_count':
       return (
         <CampaignLogCountConditionComponent
+          step={step}
+          campaignLog={campaignLog}
+          condition={condition}
+        />
+      );
+    case 'campaign_log_investigator_count':
+      return (
+        <CampaignLogInvestigatorCountConditionComponent
           step={step}
           campaignLog={campaignLog}
           condition={condition}

@@ -1,120 +1,63 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { find, filter, throttle } from 'lodash';
 import { Platform, Text, StyleSheet, View } from 'react-native';
-import { Navigation, EventSubscription, OptionsModalPresentationStyle } from 'react-native-navigation';
-import { connect } from 'react-redux';
+import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
+import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { Deck } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { iconsMap } from '@app/NavIcons';
 import { showDeckModal } from '@components/nav/helper';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
 import MyDecksComponent from './MyDecksComponent';
-import { getMyDecksState, AppState } from '@reducers';
+import { getMyDecksState } from '@reducers';
 import COLORS from '@styles/colors';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
-
-interface OwnProps {
-  componentId: string;
-}
-
-interface ReduxProps {
-  myDecks: number[];
-}
-
-type Props = OwnProps & ReduxProps;
-
-interface State {
-  localDecksOnly: boolean;
-}
+import { NavigationProps } from '@components/nav/types';
+import { useFlag, useNavigationButtonPressed } from '@components/core/hooks';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 function searchOptionsHeight(fontScale: number) {
   return 20 + (fontScale * 20 + 8) + 12;
 }
 
-class MyDecksView extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  static options() {
-    return {
-      topBar: {
-        title: {
-          text: t`Decks`,
-        },
-        rightButtons: [{
-          icon: iconsMap.add,
-          id: 'add',
-          color: COLORS.M,
-          accessibilityLabel: t`New Deck`,
-        }],
-      },
-    };
-  }
-
-  _navEventListener?: EventSubscription;
-
-  _showNewDeckDialog!: () => void;
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      localDecksOnly: false,
-    };
-    this._showNewDeckDialog = throttle(this.showNewDeckDialog.bind(this), 200);
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  componentWillUnmount() {
-    this._navEventListener && this._navEventListener.remove();
-  }
-
-  showNewDeckDialog() {
-    Navigation.showModal({
-      stack: {
-        children: [{
-          component: {
-            name: 'Deck.New',
-            options: {
-              modalPresentationStyle: Platform.OS === 'ios' ?
-                OptionsModalPresentationStyle.overFullScreen :
-                OptionsModalPresentationStyle.overCurrentContext,
+function MyDecksView({ componentId }: NavigationProps) {
+  const { colors, fontScale, typography } = useContext(StyleContext);
+  const { myDecks } = useSelector(getMyDecksState);
+  const [localDecksOnly, toggleLocalDecksOnly] = useFlag(false);
+  const showNewDeckDialog = useMemo(() => {
+    return throttle(() => {
+      Navigation.showModal({
+        stack: {
+          children: [{
+            component: {
+              name: 'Deck.New',
+              options: {
+                modalPresentationStyle: Platform.OS === 'ios' ?
+                  OptionsModalPresentationStyle.fullScreen :
+                  OptionsModalPresentationStyle.overCurrentContext,
+              },
             },
-          },
-        }],
-      },
-    });
-  }
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
+          }],
+        },
+      });
+    }, 200);
+  }, []);
+  useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'add') {
-      this._showNewDeckDialog();
+      showNewDeckDialog();
     }
-  }
+  }, componentId, [showNewDeckDialog]);
 
-  _deckNavClicked = (deck: Deck, investigator?: Card) => {
-    showDeckModal(this.props.componentId, deck, investigator);
-  };
+  const deckNavClicked = useCallback((deck: LatestDeckT, investigator: Card | undefined) => {
+    showDeckModal(deck.id, deck.deck, deck.campaign?.id, colors, investigator);
+  }, [colors]);
 
-  _toggleLocalDecksOnly = () => {
-    this.setState({
-      localDecksOnly: !this.state.localDecksOnly,
-    });
-  };
-
-  renderCustomHeader() {
-    const {
-      myDecks,
-    } = this.props;
-    const {
-      localDecksOnly,
-    } = this.state;
-    const { typography } = this.context;
-    const hasLocalDeck = find(myDecks, deckId => deckId < 0) !== null;
-    const hasOnlineDeck = find(myDecks, deckId => deckId > 0) !== null;
+  const searchOptionControls = useMemo(() => {
+    const hasLocalDeck = !!find(myDecks, deckId => deckId.id.local);
+    const hasOnlineDeck = !!find(myDecks, deckId => !deckId.id.local);
     if (!localDecksOnly && !(hasLocalDeck && hasOnlineDeck)) {
       // need to have both to show the toggle.
       return null;
@@ -125,59 +68,64 @@ class MyDecksView extends React.Component<Props, State> {
           { t`Hide ArkhamDB Decks` }
         </Text>
         <ArkhamSwitch
+          useGestureHandler
           value={localDecksOnly}
-          onValueChange={this._toggleLocalDecksOnly}
+          onValueChange={toggleLocalDecksOnly}
         />
       </View>
     );
-  }
+  }, [myDecks, localDecksOnly, typography, toggleLocalDecksOnly]);
 
-  renderCustomFooter() {
+  const customFooter = useMemo(() => {
     return (
       <View style={styles.button}>
         <ArkhamButton
           icon="deck"
           title={t`New Deck`}
-          onPress={this._showNewDeckDialog}
+          onPress={showNewDeckDialog}
         />
       </View>
     );
-  }
+  }, [showNewDeckDialog]);
 
-  onlyDeckIds() {
-    const {
-      myDecks,
-    } = this.props;
-    if (this.state.localDecksOnly) {
-      // @ts-ignore
-      return filter(myDecks, deckId => parseInt(deckId, 10) < 0);
+  const onlyDecks = useMemo(() => {
+    if (localDecksOnly) {
+      return filter(myDecks, deckId => deckId.id.local);
     }
     return undefined;
-  }
+  }, [myDecks, localDecksOnly]);
 
-  render() {
-    const { fontScale } = this.context;
-    return (
-      <MyDecksComponent
-        componentId={this.props.componentId}
-        searchOptions={{
-          controls: this.renderCustomHeader(),
-          height: searchOptionsHeight(fontScale),
-        }}
-        customFooter={this.renderCustomFooter()}
-        deckClicked={this._deckNavClicked}
-        onlyDeckIds={this.onlyDeckIds()}
-      />
-    );
-  }
+  return (
+    <MyDecksComponent
+      searchOptions={{
+        controls: searchOptionControls,
+        height: searchOptionsHeight(fontScale),
+      }}
+      customFooter={customFooter}
+      deckClicked={deckNavClicked}
+      onlyDecks={onlyDecks}
+    />
+  );
 }
 
-function mapStateToProps(state: AppState): ReduxProps {
-  return getMyDecksState(state);
-}
+MyDecksView.options = () => {
+  return {
+    topBar: {
+      title: {
+        text: t`Decks`,
+      },
+      rightButtons: [{
+        icon: iconsMap.add,
+        id: 'add',
+        color: COLORS.M,
+        accessibilityLabel: t`New Deck`,
+      }],
+    },
+  };
+};
 
 export default withFetchCardsGate(
-  connect<ReduxProps, unknown, OwnProps, AppState>(mapStateToProps)(MyDecksView),
+  MyDecksView,
   { promptForUpdate: false },
 );
 

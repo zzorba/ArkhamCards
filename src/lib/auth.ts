@@ -3,6 +3,7 @@ import * as Keychain from 'react-native-keychain';
 
 import { authorize, refresh, revoke, AppAuthConfig } from './OAuthWrapper';
 
+// @ts-ignore
 const config: AppAuthConfig = {
   issuer: Config.OAUTH_SITE,
   clientId: Config.OAUTH_CLIENT_ID,

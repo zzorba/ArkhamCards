@@ -1,217 +1,104 @@
-import React from 'react';
-import { find, flatMap, filter, map, partition } from 'lodash';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { find, flatMap, partition } from 'lodash';
 import {
-  Alert,
+  InteractionManager,
   StyleSheet,
   Text,
-  Platform,
   View,
 } from 'react-native';
-import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
+import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog';
-import BasicButton from '@components/core/BasicButton';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
-import { maybeShowWeaknessPrompt } from '../campaignHelper';
-import { Campaign, Deck, DecksMap, InvestigatorData, Slots, Trauma, WeaknessSet } from '@actions/types';
+import { CampaignId, CampaignNotes, InvestigatorNotes, Deck, DeckId, getDeckId, Trauma } from '@actions/types';
 import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
-import Card, { CardsMap } from '@data/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import space from '@styles/space';
-import COLORS from '@styles/colors';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
+import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
+import InvestigatorSectionRow from '../CampaignLogSection/InvestigatorSectionRow';
+import InvestigatorCountsSection from '../CampaignLogSection/InvestigatorCountsSection';
+import { useDispatch } from 'react-redux';
+import { updateCampaignNotes } from '../actions';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import { SetCampaignNotesAction } from '@data/remote/campaigns';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
+import LoadingSpinner from '@components/core/LoadingSpinner';
 
 interface Props {
   componentId: string;
-  campaign: Campaign;
-  latestDeckIds: number[];
-  decks: DecksMap;
+  campaignId: CampaignId;
+  campaign: SingleCampaignT;
+  loading: boolean;
+  latestDecks: LatestDeckT[];
   cards: CardsMap;
   allInvestigators: Card[];
-  investigatorData: InvestigatorData;
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
-  weaknessSet: WeaknessSet;
-  updateLatestDeckIds: (latestDeckIds: number[]) => void;
-  updateNonDeckInvestigators: (nonDeckInvestigators: string[]) => void;
-  updateWeaknessSet: (weaknessSet: WeaknessSet) => void;
-  incSpentXp: (code: string) => void;
-  decSpentXp: (code: string) => void;
+  removeInvestigator: (investigator: Card, removedDeckId?: DeckId) => void;
+  showChooseDeck: (investigator?: Card) => void;
+  showXpDialog: (investigator: Card) => void;
+  setCampaignNotes: SetCampaignNotesAction;
+  showAlert: ShowAlert;
+  showTextEditDialog: ShowTextEditDialog;
+  showCountDialog: ShowCountDialog;
 }
 
-interface State {
-  removeMode: boolean;
-}
-export default class DecksSection extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  state: State = {
-    removeMode: false,
-  };
-
-  _showChooseDeck = (
-    singleInvestigator?: Card,
-  ) => {
-    const { campaign, latestDeckIds, decks, cards } = this.props;
-    const campaignInvestigators = flatMap(latestDeckIds, deckId => {
-      const deck = decks[deckId];
-      return (deck && cards[deck.investigator_code]) || [];
+export default function DecksSection({
+  componentId,
+  campaignId,
+  campaign,
+  latestDecks,
+  cards,
+  allInvestigators,
+  loading,
+  setCampaignNotes,
+  showXpDialog,
+  showTraumaDialog,
+  removeInvestigator,
+  showChooseDeck,
+  showAlert,
+  showTextEditDialog,
+  showCountDialog,
+}: Props) {
+  const { borderStyle, colors, typography } = useContext(StyleContext);
+  const removeDeckPrompt = useCallback((investigator: Card) => {
+    const deck = find(latestDecks, deck => {
+      return !!(deck && deck.investigator === investigator.code);
     });
-
-    const passProps: MyDecksSelectorProps = singleInvestigator ? {
-      campaignId: campaign.id,
-      singleInvestigator: singleInvestigator.code,
-      onDeckSelect: this._addDeck,
-    } : {
-      campaignId: campaign.id,
-      selectedInvestigatorIds: map(
-        campaignInvestigators,
-        investigator => investigator.code
-      ),
-      onDeckSelect: this._addDeck,
-      onInvestigatorSelect: this._addInvestigator,
-      simpleOptions: true,
-    };
-    Navigation.showModal({
-      stack: {
-        children: [{
-          component: {
-            name: 'Dialog.DeckSelector',
-            passProps,
-            options: {
-              modalPresentationStyle: Platform.OS === 'ios' ?
-                OptionsModalPresentationStyle.overFullScreen :
-                OptionsModalPresentationStyle.overCurrentContext,
-            },
-          },
-        }],
-      },
-    });
-  };
-
-  _updateWeaknessAssignedCards = (weaknessCards: Slots) => {
-    const {
-      updateWeaknessSet,
-      weaknessSet,
-    } = this.props;
-    updateWeaknessSet({
-      ...weaknessSet,
-      assignedCards: weaknessCards,
-    });
-  };
-
-  maybeShowWeaknessPrompt(deck: Deck) {
-    const {
-      cards,
-    } = this.props;
-    const {
-      weaknessSet,
-    } = this.props;
-    maybeShowWeaknessPrompt(
-      deck,
-      cards,
-      weaknessSet.assignedCards,
-      this._updateWeaknessAssignedCards
-    );
-  }
-
-  _addInvestigator = (card: Card) => {
-    const {
-      allInvestigators,
-      updateNonDeckInvestigators,
-    } = this.props;
-    const newInvestigators = [
-      ...map(allInvestigators, investigator => investigator.code),
-      card.code,
-    ];
-    updateNonDeckInvestigators(newInvestigators);
-  };
-
-  _addDeck = (deck: Deck) => {
-    const {
-      latestDeckIds,
-      updateLatestDeckIds,
-    } = this.props;
-    const newLatestDeckIds = [...(latestDeckIds || []), deck.id];
-    updateLatestDeckIds(newLatestDeckIds);
-    this.maybeShowWeaknessPrompt(deck);
-  };
-
-  removeInvestigator(investigator: Card, removedDeckId?: number) {
-    const {
-      latestDeckIds,
-      allInvestigators,
-      updateLatestDeckIds,
-      updateNonDeckInvestigators,
-      decks,
-    } = this.props;
-    if (removedDeckId) {
-      const newLatestDeckIds = filter(
-        latestDeckIds,
-        deckId => deckId !== removedDeckId
-      );
-      const deck = decks[removedDeckId];
-      if (deck && !find(allInvestigators, card => card.code === investigator.code)) {
-        updateNonDeckInvestigators(map(allInvestigators, card => card.code));
-      }
-      updateLatestDeckIds(newLatestDeckIds);
-    } else {
-      updateNonDeckInvestigators(
-        filter(
-          map(allInvestigators, card => card.code),
-          code => code !== investigator.code
-        )
-      );
-    }
-  }
-
-  _removeDeckPrompt = (
-    investigator: Card
-  ) => {
-    const { latestDeckIds, decks } = this.props;
-    const deckId = find(latestDeckIds, deckId => {
-      const deck = decks[deckId];
-      return deck && deck.investigator_code === investigator.code;
-    });
-    Alert.alert(
+    showAlert(
       t`Remove ${investigator.name}?`,
-      deckId ?
+      deck ?
         t`Are you sure you want to remove this deck from the campaign?\n\nThe deck will remain on ArkhamDB.` :
         t`Are you sure you want to remove ${investigator.name} from this campaign?\n\nCampaign log data associated with them may be lost.`,
       [
         {
-          text: t`Remove`,
-          onPress: () => this.removeInvestigator(investigator, deckId),
-          style: 'destructive',
-        },
-        {
           text: t`Cancel`,
           style: 'cancel',
         },
+        {
+          text: t`Remove`,
+          onPress: () => removeInvestigator(investigator, deck?.id),
+          style: 'destructive',
+        },
       ],
     );
-  };
+  }, [latestDecks, removeInvestigator, showAlert]);
 
-  _showDeckUpgradeDialog = (
-    investigator: Card,
-    deck: Deck
-  ) => {
-    const {
-      componentId,
-      campaign,
-    } = this.props;
-    const { colors } = this.context;
+  const showDeckUpgradeDialog = useCallback((investigator: Card, deck: Deck) => {
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<UpgradeDeckProps>(componentId, {
       component: {
         name: 'Deck.Upgrade',
         passProps: {
-          id: deck.id,
+          id: getDeckId(deck),
           campaignId: campaign.id,
           showNewDeck: false,
         },
         options: {
           statusBar: {
             style: 'light',
+            backgroundColor,
           },
           topBar: {
             title: {
@@ -223,124 +110,106 @@ export default class DecksSection extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: backgroundColor,
             },
           },
         },
       },
     });
-  };
+  }, [componentId, campaign, colors]);
 
-  _showChooseDeckForInvestigator = (investigator: Card) => {
-    this._showChooseDeck(investigator);
-  };
+  const showChooseDeckForInvestigator = useCallback((investigator: Card) => {
+    showChooseDeck(investigator);
+  }, [showChooseDeck]);
+  const dispatch = useDispatch();
+  const saveCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
+    dispatch(updateCampaignNotes(setCampaignNotes, campaignId, campaignNotes));
+  }, [dispatch, setCampaignNotes, campaignId]);
 
-  renderInvestigator(investigator: Card, eliminated: boolean, deck?: Deck) {
-    const {
-      componentId,
-      campaign,
-      cards,
-      showTraumaDialog,
-      incSpentXp,
-      decSpentXp,
-    } = this.props;
-    const { removeMode } = this.state;
-    const traumaAndCardData = campaign.investigatorData[investigator.code] || {};
+  const delayedUpdateCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
+    InteractionManager.runAfterInteractions(() => {
+      saveCampaignNotes(campaignNotes);
+    });
+  }, [saveCampaignNotes]);
+  const updateInvestigatorNotes = useCallback((investigatorNotes: InvestigatorNotes) => {
+    delayedUpdateCampaignNotes({
+      ...campaign.campaignNotes,
+      investigatorNotes,
+    });
+  }, [delayedUpdateCampaignNotes, campaign.campaignNotes]);
+
+  const renderInvestigator = useCallback((investigator: Card, eliminated: boolean, deck?: LatestDeckT) => {
+    const traumaAndCardData = campaign.getInvestigatorData(investigator.code);
     return (
       <InvestigatorCampaignRow
         key={investigator.code}
         componentId={componentId}
-        campaignId={campaign.id}
+        campaign={campaign}
         investigator={investigator}
         spentXp={traumaAndCardData.spentXp || 0}
         totalXp={traumaAndCardData.availableXp || 0}
-        incSpentXp={incSpentXp}
-        decSpentXp={decSpentXp}
+        unspentXp={0}
+        showXpDialog={showXpDialog}
         traumaAndCardData={traumaAndCardData}
         showTraumaDialog={showTraumaDialog}
-        showDeckUpgrade={this._showDeckUpgradeDialog}
+        showDeckUpgrade={showDeckUpgradeDialog}
         playerCards={cards}
-        chooseDeckForInvestigator={this._showChooseDeckForInvestigator}
+        chooseDeckForInvestigator={showChooseDeckForInvestigator}
         deck={deck}
-        removeInvestigator={removeMode ? this._removeDeckPrompt : undefined}
-      />
+        removeInvestigator={removeDeckPrompt}
+        miniButtons={campaign.campaignNotes.investigatorNotes?.counts?.length ?
+          <InvestigatorCountsSection
+            investigator={investigator}
+            updateInvestigatorNotes={updateInvestigatorNotes}
+            investigatorNotes={campaign.campaignNotes.investigatorNotes}
+            showCountDialog={showCountDialog}
+          /> : undefined}
+      >
+        <InvestigatorSectionRow
+          investigator={investigator}
+          investigatorNotes={campaign.campaignNotes.investigatorNotes}
+          updateInvestigatorNotes={updateInvestigatorNotes}
+          showDialog={showTextEditDialog}
+          showCountDialog={showCountDialog}
+          inline
+          hideCounts
+        />
+      </InvestigatorCampaignRow>
     );
-  }
+  }, [componentId, campaign, cards,
+    showTextEditDialog, updateInvestigatorNotes, showCountDialog,
+    showTraumaDialog, showXpDialog, removeDeckPrompt, showDeckUpgradeDialog, showChooseDeckForInvestigator]);
 
-  _toggleRemoveMode = () => {
-    this.setState(state => {
-      return {
-        removeMode: !state.removeMode,
-      };
+  const [killedInvestigators, aliveInvestigators] = useMemo(() => {
+    return partition(allInvestigators, investigator => {
+      console.log(investigator.code);
+      return investigator.eliminated(campaign.getInvestigatorData(investigator.code));
     });
-  };
-
-  renderRemoveButton(aliveInvestigators: Card[]) {
-    if (!aliveInvestigators.length) {
-      return null;
-    }
-
-    return (
-      <BasicButton
-        title={t`Remove investigators`}
-        color={COLORS.red}
-        onPress={this._toggleRemoveMode}
-      />
-    );
+  }, [allInvestigators, campaign]);
+  if (loading) {
+    return <LoadingSpinner inline />;
   }
-
-  _showAddInvestigator = () => {
-    this._showChooseDeck();
-  };
-
-  render() {
-    const {
-      allInvestigators,
-      latestDeckIds,
-      investigatorData,
-      decks,
-    } = this.props;
-    const { borderStyle, typography } = this.context;
-    const latestDecks: Deck[] = flatMap(latestDeckIds, deckId => decks[deckId] || []);
-    const { removeMode } = this.state;
-    const [killedInvestigators, aliveInvestigators] = partition(allInvestigators, investigator => {
-      return investigator.eliminated(investigatorData[investigator.code]);
-    });
-    return (
-      <View style={[styles.underline, borderStyle]}>
-        { flatMap(aliveInvestigators, investigator => {
-          const deck = find(latestDecks, deck => deck.investigator_code === investigator.code);
-          return this.renderInvestigator(investigator, false, deck);
-        }) }
-        { !removeMode && (
-          <BasicButton
-            title={t`Add Investigator`}
-            onPress={this._showAddInvestigator}
-          />
-        ) }
-        { removeMode ?
-          <BasicButton
-            title={t`Finished removing investigators`}
-            color={COLORS.red}
-            onPress={this._toggleRemoveMode}
-          /> : this.renderRemoveButton(aliveInvestigators)
-        }
-        { killedInvestigators.length > 0 && (
-          <View style={[styles.underline, borderStyle]}>
-            <View style={space.paddingS}>
-              <Text style={typography.text}>
-                { t`Killed and Insane Investigators` }
-              </Text>
-            </View>
-            { flatMap(killedInvestigators, investigator => {
-              const deck = find(latestDecks, deck => deck.investigator_code === investigator.code);
-              return this.renderInvestigator(investigator, true, deck);
-            }) }
+  return (
+    <>
+      { flatMap(aliveInvestigators, investigator => {
+        const deck = find(latestDecks, deck => deck.investigator === investigator.code);
+        return renderInvestigator(investigator, false, deck);
+      }) }
+      { killedInvestigators.length > 0 && (
+        <View style={[styles.underline, borderStyle]}>
+          <View style={space.paddingS}>
+            <Text style={[typography.large, typography.center, typography.light]}>
+              { `— ${t`Killed and Insane Investigators`} · ${killedInvestigators.length} —` }
+            </Text>
           </View>
-        ) }
-      </View>
-    );
-  }
+          { flatMap(killedInvestigators, investigator => {
+            const deck = find(latestDecks, deck => deck.investigator === investigator.code);
+            return renderInvestigator(investigator, true, deck);
+          }) }
+        </View>
+      ) }
+    </>
+  );
 }
 
 const styles = StyleSheet.create({

@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { TINY_PHONE } from '@styles/sizes';
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';

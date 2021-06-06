@@ -1,0 +1,622 @@
+mutation deleteInvestigatorDecks(
+  $campaign_id: Int!,
+  $investigator: String!,
+  $user_id: String!,
+) {
+  delete_campaign_deck(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      investigator: { _eq: $investigator }
+      owner_id: { _eq: $user_id }
+    }
+  ) {
+    returning {
+      id
+      campaign_id
+      arkhamdb_id
+      local_uuid
+      investigator
+    }
+  }
+}
+
+mutation chaosBagClearTokens(
+  $campaign_id: Int!,
+  $bless: Int!,
+  $curse: Int!
+) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      drawn: []
+      bless: $bless
+      curse: $curse
+    }
+  ) {
+    id
+    drawn
+    bless
+    curse
+  }
+}
+
+mutation chaosBagDrawToken(
+  $campaign_id: Int!,
+  $drawn: jsonb!
+) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      drawn: $drawn
+    }
+    _inc: {
+      totalDrawn: 1
+    }
+  ) {
+    id
+    drawn
+    totalDrawn
+  }
+}
+
+mutation chaosBagResetBlessCurse(
+  $campaign_id: Int!,
+  $drawn: jsonb!,
+  $sealed: jsonb!
+) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      bless: 0
+      curse: 0
+      drawn: $drawn
+      sealed: $sealed
+    }
+  ) {
+    id
+    bless
+    curse
+    drawn
+    sealed
+  }
+}
+
+mutation chaosBagSealTokens(
+  $campaign_id: Int!,
+  $sealed: jsonb!
+) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      sealed: $sealed
+    }
+  ) {
+    id
+    sealed
+  }
+}
+
+mutation chaosBagReleaseAllSealed($campaign_id: Int!) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      sealed: []
+    }
+  ) {
+    id
+    sealed
+  }
+}
+
+mutation chaosBagIncBless($campaign_id: Int!) {
+  update_chaos_bag_result(
+    where: {
+      id: { _eq: $campaign_id }
+      bless: { _lt: 10 }
+    }
+    _inc: {
+      bless: 1
+    }
+  ) {
+    returning {
+    	id
+      bless
+	  }
+  }
+}
+
+mutation chaosBagDecBless($campaign_id: Int!) {
+  update_chaos_bag_result(
+    where: {
+      id: { _eq: $campaign_id }
+      bless: { _gt: 0 }
+    }
+    _inc: {
+      bless: -1
+    }
+  ) {
+    returning {
+    	id
+      bless
+	  }
+  }
+}
+
+mutation chaosBagIncCurse($campaign_id: Int!) {
+  update_chaos_bag_result(
+    where: {
+      id: { _eq: $campaign_id }
+      curse: { _lt: 10 }
+    }
+    _inc: {
+      curse: 1
+    }
+  ) {
+    returning {
+    	id
+      curse
+	  }
+  }
+}
+
+mutation chaosBagDecCurse($campaign_id: Int!) {
+  update_chaos_bag_result(
+    where: {
+      id: { _eq: $campaign_id }
+      curse: { _gt: 0 }
+    }
+    _inc: {
+      curse: -1
+    }
+  ) {
+    returning {
+    	id
+      curse
+	  }
+  }
+}
+
+mutation setBinaryAchievement(
+  $campaign_id: Int!,
+  $id: String!,
+  $value: Boolean!
+) {
+  insert_guide_achievement_one(
+    object: {
+      campaign_id: $campaign_id
+      id: $id
+      type: "binary"
+      bool_value: $value
+    }
+    on_conflict: {
+      constraint: guide_achievement_pkey
+      update_columns: [bool_value]
+    }
+  ) {
+    ...GuideAchievement
+  }
+}
+
+mutation incCountAchievementMax(
+  $campaign_id: Int!,
+  $id: String!,
+  $max: Int!
+) {
+  insert_guide_achievement_one(
+    object: {
+      campaign_id:$campaign_id
+      id: $id
+      type: "count"
+      value: 1
+    }
+    on_conflict: {
+      constraint: guide_achievement_pkey
+      update_columns: []
+    }
+  ) {
+    id
+    campaign_id
+    id
+    type
+    value
+  }
+  update_guide_achievement(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      id: { _eq: $id }
+      value: { _lt: $max }
+    }
+    _inc: { value: 1 }
+  ) {
+    returning {
+      ...GuideAchievement
+    }
+  }
+}
+
+mutation incCountAchievement(
+  $campaign_id: Int!,
+  $id: String!
+) {
+  insert_guide_achievement_one(
+    object: {
+      campaign_id:$campaign_id
+      id: $id
+      type: "count"
+      value: 1
+    }
+    on_conflict: {
+      constraint: guide_achievement_pkey
+      update_columns: []
+    }
+  ) {
+    ...GuideAchievement
+  }
+  update_guide_achievement(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      id: { _eq: $id }
+    }
+    _inc: { value: 1 }
+  ) {
+    returning {
+      ...GuideAchievement
+    }
+  }
+}
+
+mutation decCountAchievement(
+  $campaign_id: Int!,
+  $id: String!
+) {
+  insert_guide_achievement_one(
+    object: {
+      campaign_id:$campaign_id
+      id: $id
+      type: "count"
+      value: 0
+    }
+    on_conflict: {
+      constraint: guide_achievement_pkey
+      update_columns: []
+    }
+  ) {
+    ...GuideAchievement
+  }
+  update_guide_achievement(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      id: { _eq: $id }
+      value: { _gt: 0 }
+    }
+    _inc: { value: -1 }
+  ) {
+    returning {
+      ...GuideAchievement
+    }
+  }
+}
+mutation addGuideInput(
+  $id: String!,
+  $campaign_id: Int!,
+  $type: String!,
+  $scenario: String,
+  $step: String,
+  $payload: jsonb
+) {
+  insert_guide_input_one(
+    object: {
+      id: $id
+      campaign_id: $campaign_id
+      scenario: $scenario
+      step: $step
+      type: $type
+      payload: $payload
+    }
+    on_conflict: {
+      constraint: guide_input_pkey
+      update_columns: [payload]
+    }
+  ) {
+    ...GuideInput
+  }
+}
+
+mutation removeGuideInputs(
+  $campaign_id: Int!,
+  $ids: [String!]!,
+) {
+  delete_guide_input(
+    where:{
+      campaign_id: { _eq: $campaign_id }
+      id: { _in: $ids }
+    }
+  ) {
+    affected_rows
+    returning {
+      id
+      campaign_id
+    }
+  }
+}
+
+mutation updateInvestigatorTrauma(
+  $campaign_id: Int!,
+  $investigator: String!,
+  $physical: Int,
+  $mental: Int,
+  $killed: Boolean,
+  $insane: Boolean,
+) {
+  insert_investigator_data_one(
+    object: {
+      campaign_id: $campaign_id
+      investigator: $investigator
+      physical: $physical
+      mental: $mental
+      killed: $killed
+      insane: $insane
+    }
+    on_conflict: {
+      constraint: investigator_data_pkey
+      update_columns: [physical, mental, killed, insane]
+    }
+  ) {
+    ...MiniInvestigatorData
+  }
+}
+
+
+mutation updateInvestigatorData(
+  $campaign_id: Int!,
+  $investigator: String!,
+  $physical: Int,
+  $mental: Int,
+  $killed: Boolean,
+  $insane: Boolean,
+  $addedCards: jsonb,
+  $availableXp: Int,
+  $storyAssets: jsonb,
+  $ignoreStoryAssets: jsonb,
+  $removedCards: jsonb
+) {
+  insert_investigator_data_one(
+    object: {
+      campaign_id: $campaign_id
+      investigator: $investigator
+      physical: $physical
+      mental: $mental
+      killed: $killed
+      insane: $insane
+      addedCards: $addedCards
+      storyAssets: $storyAssets
+      ignoreStoryAssets: $ignoreStoryAssets
+      removedCards: $removedCards
+      availableXp: $availableXp
+    }
+    on_conflict: {
+      constraint: investigator_data_pkey
+      update_columns: [
+        physical, mental, killed, insane,
+        addedCards, removedCards, storyAssets, ignoreStoryAssets,
+	      availableXp
+      ]
+    }
+  ) {
+    ...FullInvestigatorData
+  }
+}
+
+mutation updateSpentXp(
+  $campaign_id: Int!,
+  $investigator: String!,
+  $spent_xp: Int!
+) {
+  insert_investigator_data_one(
+    object: {
+      campaign_id: $campaign_id
+      investigator: $investigator
+      spentXp: $spent_xp
+    }
+    on_conflict: {
+      constraint: investigator_data_pkey
+      update_columns: [spentXp]
+    }
+  ) {
+    id
+    campaign_id
+    investigator
+    spentXp
+  }
+}
+
+
+mutation updateAvailableXp(
+  $campaign_id: Int!,
+  $investigator: String!,
+  $available_xp: Int!
+) {
+  insert_investigator_data_one(
+    object: {
+      campaign_id: $campaign_id
+      investigator: $investigator
+      availableXp: $available_xp
+    }
+    on_conflict: {
+      constraint: investigator_data_pkey
+      update_columns: [availableXp]
+    }
+  ) {
+    id
+    campaign_id
+    investigator
+    availableXp
+  }
+}
+
+mutation updateWeaknessSet(
+  $campaign_id: Int!,
+  $weakness_set: jsonb!
+) {
+  update_campaign_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      weaknessSet: $weakness_set,
+    },
+  ) {
+    id
+    uuid
+    weaknessSet
+  }
+}
+
+mutation updateCampaignDifficulty(
+  $campaign_id: Int!,
+  $difficulty: String
+) {
+  update_campaign_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      difficulty: $difficulty,
+    },
+  ) {
+    id
+    uuid
+    difficulty
+  }
+}
+
+mutation updateCampaignScenarioResults(
+  $campaign_id: Int!,
+  $scenarioResults: jsonb!
+) {
+  update_campaign_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      scenarioResults: $scenarioResults,
+    },
+  ) {
+    id
+    uuid
+    scenarioResults
+  }
+}
+
+mutation updateCampaignGuideVersion(
+  $campaign_id: Int!,
+  $guideVersion: Int!
+) {
+  update_campaign_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      guide_version: $guideVersion,
+    },
+  ) {
+    id
+    uuid
+    guide_version
+  }
+}
+
+mutation updateCampaignNotes(
+  $campaign_id: Int!,
+  $campaign_notes: jsonb!
+) {
+  update_campaign_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      campaignNotes: $campaign_notes,
+    },
+  ) {
+    id
+    uuid
+    campaignNotes
+  }
+}
+
+mutation updateCampaignShowInterludes(
+  $campaign_id: Int!,
+  $show_interludes: Boolean!
+) {
+  update_campaign_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      showInterludes: $show_interludes,
+    },
+  ) {
+    id
+    uuid
+    showInterludes
+  }
+}
+
+
+mutation updateChaosBag(
+  $campaign_id: Int!,
+  $chaos_bag: jsonb!
+) {
+  update_campaign_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      chaosBag: $chaos_bag,
+    },
+  ) {
+    id
+    uuid
+    chaosBag
+  }
+}
+
+mutation updateCampaignName(
+  $campaign_id: Int!,
+  $name: String!
+) {
+  update_campaign_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      name: $name
+    }
+  ) {
+    id
+    uuid
+    name
+  }
+}
+
+mutation addCampaignInvestigator(
+  $campaign_id: Int!,
+  $investigator: String!
+) {
+  insert_campaign_investigator_one(
+    object: {
+      campaign_id: $campaign_id
+      investigator: $investigator
+    }
+    on_conflict: {
+      constraint: campaign_investigator_campaign_id_investigator_key
+      update_columns: [investigator]
+    }
+  ) {
+    id
+    investigator
+    campaign_id
+  }
+}
+
+mutation removeCampaignInvestigator(
+  $campaign_id: Int!,
+  $investigator: String!
+) {
+  delete_campaign_investigator(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      investigator: {_eq: $investigator }
+    }
+  ) {
+    returning {
+      id
+      campaign_id
+      investigator
+    }
+  }
+}

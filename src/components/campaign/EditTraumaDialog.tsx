@@ -1,12 +1,11 @@
-import React from 'react';
-import { View } from 'react-native';
-import DialogComponent from '@lib/react-native-dialog';
+import React, { useCallback, useEffect, useState, useMemo } from 'react';
 
 import EditTraumaDialogContent from './EditTraumaDialogContent';
-import Dialog from '@components/core/Dialog';
+import NewDialog from '@components/core/NewDialog';
 import { t } from 'ttag';
 import { Trauma } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 interface Props {
   visible: boolean;
@@ -14,91 +13,69 @@ interface Props {
   trauma?: Trauma;
   updateTrauma: (investigator_code: string, trauma: Trauma) => void;
   hideDialog: () => void;
-  viewRef?: View;
   hideKilledInsane?: boolean;
 }
 
-interface State {
-  trauma: Trauma;
-  visible: boolean;
-}
-
-export default class EditTraumaDialog extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      trauma: {},
-      visible: false,
-    };
-  }
-
-  static getDerivedStateFromProps(props: Props, state: State) {
-    if (props.visible !== state.visible) {
-      if (props.visible) {
-        return {
-          visible: props.visible,
-          trauma: props.trauma,
-        };
-      }
-      return {
-        visible: props.visible,
-      };
+export default function EditTraumaDialog({ visible, investigator, trauma, updateTrauma, hideDialog, hideKilledInsane }: Props) {
+  const [traumaState, setTraumaState] = useState<Trauma>({});
+  useEffect(() => {
+    if (visible) {
+      setTraumaState(trauma || {});
     }
-    return null;
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visible]);
 
-  _onSubmit = () => {
-    const {
-      investigator,
-      updateTrauma,
-      hideDialog,
-    } = this.props;
+  const onSubmit = useCallback(() => {
     if (investigator) {
-      updateTrauma(investigator.code, this.state.trauma);
+      updateTrauma(investigator.code, traumaState);
     }
     hideDialog();
-  };
+  }, [investigator, updateTrauma, hideDialog, traumaState]);
 
-  _onCancel = () => {
-    this.props.hideDialog();
-  };
+  const onCancel = useCallback(() => {
+    hideDialog();
+  }, [hideDialog]);
 
-  _mutateTrauma = (mutate: (trauma: Trauma) => Trauma) => {
-    this.setState(state => {
-      return {
-        trauma: mutate(state.trauma),
-      };
-    });
-  };
+  const mutateTrauma = useCallback((mutate: (trauma: Trauma) => Trauma) => {
+    setTraumaState(mutate(traumaState));
+  }, [setTraumaState, traumaState]);
 
-  render() {
-    const {
-      investigator,
-      viewRef,
-      hideKilledInsane,
-    } = this.props;
-    const {
-      visible,
-      trauma,
-    } = this.state;
-    return (
-      <Dialog
-        title={investigator ?
-          t`${investigator.firstName}’s Trauma` :
-          t`Trauma`}
-        visible={visible}
-        viewRef={viewRef}
-      >
-        <EditTraumaDialogContent
-          investigator={investigator}
-          trauma={trauma}
-          mutateTrauma={this._mutateTrauma}
-          hideKilledInsane={hideKilledInsane}
-        />
-        <DialogComponent.Button label={t`Cancel`} onPress={this._onCancel} />
-        <DialogComponent.Button label={t`Save`} onPress={this._onSubmit} />
-      </Dialog>
-    );
-  }
+  const buttons = useMemo(() => {
+    return [(
+      <DeckButton
+        key="cancel"
+        icon="dismiss"
+        color="red"
+        title={t`Cancel`}
+        thin
+        onPress={onCancel}
+      />
+    ), (
+      <DeckButton
+        key="save"
+        icon="check-thin"
+        title={t`Save`}
+        thin
+        onPress={onSubmit}
+      />
+    )];
+  }, [onCancel, onSubmit]);
+  return (
+    <NewDialog
+      title={investigator ?
+        t`${investigator.firstName}’s Trauma` :
+        t`Trauma`}
+      visible={visible}
+      dismissable
+      onDismiss={onCancel}
+      buttons={buttons}
+    >
+      <EditTraumaDialogContent
+        investigator={investigator}
+        trauma={traumaState}
+        mutateTrauma={mutateTrauma}
+        hideKilledInsane={hideKilledInsane}
+      />
+    </NewDialog>
+  );
 }

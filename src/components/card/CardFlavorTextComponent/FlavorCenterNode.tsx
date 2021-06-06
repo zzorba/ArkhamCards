@@ -1,9 +1,6 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-} from 'react-native';
-import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
+import { StyleSheet } from 'react-native';
+import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
 import { WithChildren } from '../CardTextComponent/types';
 
@@ -13,9 +10,9 @@ export default function FlavorCenterNode(
   state: RenderState
 ) {
   return (
-    <Text key={state.key} style={styles.text}>
+    <MarkdownText key={state.key} style={styles.text}>
       { output(node.children, state) }
-    </Text>
+    </MarkdownText>
   );
 }
 

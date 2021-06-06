@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import { map } from 'lodash';
 import { c, t, msgid } from 'ttag';
@@ -6,7 +6,7 @@ import { c, t, msgid } from 'ttag';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
 import InvestigatorChoicePrompt from '../../prompts/InvestigatorChoicePrompt';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { TraumaEffect } from '@data/scenario/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import space from '@styles/space';
@@ -16,13 +16,11 @@ interface Props {
   effect: TraumaEffect;
   border?: boolean;
   input?: string[];
-  skipCampaignLog?: boolean;
 }
 
-export default class TraumaEffectComponent extends React.Component<Props> {
-  message(investigator: Card): string {
+export default function TraumaEffectComponent({ id, effect, border, input }: Props) {
+  const message = useCallback((investigator: Card): string => {
     const male = investigator.grammarGenderMasculine();
-    const { effect } = this.props;
     if (effect.insane) {
       return male ?
         c('masculine').t`${investigator.name} is driven <b>insane</b>.` :
@@ -106,12 +104,11 @@ export default class TraumaEffectComponent extends React.Component<Props> {
         );
     }
     return 'Unknown trauma type';
-  }
+  }, [effect]);
 
-  _renderInvestigators = (
+  const renderInvestigators = useCallback((
     investigators: Card[]
   ) => {
-    const { id, effect, border } = this.props;
     if (effect.mental_or_physical) {
       if (effect.mental_or_physical !== 1) {
         throw new Error('Always should be 1 mental_or_physical');
@@ -127,17 +124,23 @@ export default class TraumaEffectComponent extends React.Component<Props> {
           ) }
           <InvestigatorChoicePrompt
             id={`${id}_trauma`}
+            text={t`Choose trauma type`}
+            confirmText={t`Chosen trauma type`}
+            promptType="header"
             investigators={investigators}
-            bulletType="none"
             options={{
               type: 'universal',
               choices: [
                 {
                   id: 'physical',
+                  icon: 'physical',
+                  selected_text: t`Physical trauma`,
                   text: t`Physical trauma`,
                 },
                 {
                   id: 'mental',
+                  icon: 'mental',
+                  selected_text: t`Mental trauma`,
                   text: t`Mental trauma`,
                 },
               ],
@@ -151,26 +154,23 @@ export default class TraumaEffectComponent extends React.Component<Props> {
       <View key={investigator.code} style={border ? space.paddingSideL : undefined}>
         <SetupStepWrapper key={idx} bulletType="small">
           <CampaignGuideTextComponent
-            text={this.message(investigator)}
+            text={message(investigator)}
           />
         </SetupStepWrapper>
       </View>
     ));
-  };
+  }, [id, effect, border, message]);
 
-  render() {
-    const { id, effect, input } = this.props;
-    if (effect.hidden && !effect.mental_or_physical) {
-      return null;
-    }
-    return (
-      <InvestigatorSelectorWrapper
-        id={id}
-        investigator={effect.investigator}
-        input={input}
-        render={this._renderInvestigators}
-        extraArg={undefined}
-      />
-    );
+  if (effect.hidden && !effect.mental_or_physical) {
+    return null;
   }
+  return (
+    <InvestigatorSelectorWrapper
+      id={id}
+      investigator={effect.investigator}
+      input={input}
+      render={renderInvestigators}
+      extraArg={undefined}
+    />
+  );
 }

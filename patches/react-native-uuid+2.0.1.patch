@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-uuid/dist/index.d.ts b/node_modules/react-native-uuid/dist/index.d.ts
+index 28f59da..e1d672a 100644
+--- a/node_modules/react-native-uuid/dist/index.d.ts
++++ b/node_modules/react-native-uuid/dist/index.d.ts
+@@ -15,7 +15,7 @@ declare const _default: {
+     v4: (options?: string | {
+         random: number[];
+         rng?: (() => number[]) | undefined;
+-    } | undefined, buf?: number[] | undefined, offset?: number | undefined) => string | number[];
++    } | undefined, buf?: number[] | undefined, offset?: number | undefined) => string;
+     v5: import("./v35").GenerateUUID;
+     NIL: string;
+     DNS: string;

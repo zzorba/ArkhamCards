@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { flatMap, flatten, map, range } from 'lodash';
 import {
   StyleSheet,
@@ -14,32 +14,26 @@ import {
 import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
 import HealthSanityLine from '@components/core/HealthSanityLine';
 import { isTablet, xs, s, m } from '@styles/space';
-import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
 import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
 import CardTextComponent from '@components/card/CardTextComponent';
 import { CardFaqProps } from '@components/card/CardFaqView';
 import { CardTabooProps } from '@components/card/CardTabooView';
-import { InvestigatorCardsProps } from '@components/cardlist/InvestigatorCardsView';
-import Button from '@components/core/Button';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import SkillIcon from '@components/core/SkillIcon';
 
 import PlayerCardImage from '../PlayerCardImage';
 import EnemyStatLine from './EnemyStatLine';
 import SlotIcon from './SlotIcon';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import CardDetailHeader from './CardDetailHeader';
 import CardFooterInfo from './CardFooterInfo';
 import CardFooterButton from './CardFooterButton';
 import ArkhamButton from '@components/core/ArkhamButton';
 import InvestigatorImage from '@components/core/InvestigatorImage';
+import { useFlag } from '@components/core/hooks';
 
-const BLURRED_ACT = require('../../../../../assets/blur-act.jpeg');
-const BLURRED_AGENDA = require('../../../../../assets/blur-agenda.jpeg');
-const PLAYER_BACK = require('../../../../../assets/player-back.png');
-const ENCOUNTER_BACK = require('../../../../../assets/encounter-back.png');
 const SKILL_ICON_SIZE = 24;
 const MAX_WIDTH = 768;
 
@@ -70,38 +64,18 @@ interface Props {
   width: number;
 }
 
-interface State {
-  showBack: boolean;
-}
+export default function TwoSidedCardComponent(props: Props) {
+  const { componentId, card, linked, notFirst, simple, width } = props;
+  const { backgroundStyle, shadow, colors, typography } = useContext(StyleContext);
+  const [showBack, toggleShowBack] = useFlag(false);
+  const isHorizontal = card.type_code === 'act' ||
+    card.type_code === 'agenda' ||
+    card.type_code === 'investigator';
+  const flavorFirst = card.type_code === 'story' ||
+    card.type_code === 'act' ||
+    card.type_code === 'agenda';
 
-export default class TwoSidedCardComponent extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      showBack: false,
-    };
-  }
-
-  editSpoilersPressed() {
-    const { componentId } = this.props;
-    if (componentId) {
-      Navigation.push(componentId, {
-        component: {
-          name: 'My.Spoilers',
-        },
-      });
-    }
-  }
-
-  _showTaboo = () => {
-    const {
-      componentId,
-      card,
-    } = this.props;
+  const showTaboo = useCallback(() => {
     if (componentId) {
       Navigation.push<CardTabooProps>(componentId, {
         component: {
@@ -122,13 +96,9 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         },
       });
     }
-  };
+  }, [componentId, card]);
 
-  _showFaq = () => {
-    const {
-      componentId,
-      card,
-    } = this.props;
+  const showFaq = useCallback(() => {
     if (componentId) {
       Navigation.push<CardFaqProps>(componentId, {
         component: {
@@ -149,43 +119,9 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         },
       });
     }
-  };
+  }, [componentId, card]);
 
-  showInvestigatorCards() {
-    const {
-      componentId,
-      card,
-    } = this.props;
-    if (componentId) {
-      Navigation.push<InvestigatorCardsProps>(componentId, {
-        component: {
-          name: 'Browse.InvestigatorCards',
-          passProps: {
-            investigatorCode: card.code,
-          },
-          options: {
-            topBar: {
-              title: {
-                text: t`Allowed Cards`,
-              },
-              backButton: {
-                title: t`Back`,
-              },
-            },
-          },
-        },
-      });
-    }
-  }
-
-  _toggleShowBack = () => {
-    this.setState({
-      showBack: !this.state.showBack,
-    });
-  };
-
-  renderType(card: Card) {
-    const { typography } = this.context;
+  const typeLine = useMemo(() => {
     if (card.type_code === 'investigator') {
       return null;
     }
@@ -201,46 +137,10 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         ]).join(' · ') }
       </Text>
     );
-  }
+  }, [card, typography]);
 
-  renderMetadata(card: Card) {
-    const { typography } = this.context;
-    return (
-      <View style={styles.metadataBlock}>
-        <View style={styles.column}>
-          { this.renderType(card) }
-          { !!card.traits && (
-            <Text style={[typography.small, typography.boldItalic]}>
-              { card.traits }
-            </Text>
-          ) }
-        </View>
-        <View style={styles.row}>
-          { this.renderTestIcons(card) }
-          { this.renderSlot(card) }
-        </View>
-        { card.type_code === 'investigator' && (
-          <View style={styles.statLineRow}>
-            <InvestigatorStatLine
-              investigator={card}
-            />
-          </View>
-        ) }
-        { (card.type_code === 'investigator' || (
-          card.type_code === 'asset' && ((card.health || 0) !== 0 || (card.sanity || 0) !== 0)
-        )) && (
-          <View style={card.type_code === 'asset' ? styles.statLineRow : undefined}>
-            <HealthSanityLine
-              investigator={card}
-            />
-          </View>
-        ) }
-      </View>
-    );
-  }
 
-  renderTestIcons(card: Card) {
-    const { colors } = this.context;
+  const testIcons = useMemo(() => {
     if (card.type_code === 'investigator') {
       return null;
     }
@@ -279,19 +179,55 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         }
       </View>
     );
-  }
+  }, [colors, card]);
 
-  renderSlot(card: Card) {
+  const slotIcon = useMemo(() => {
     if (!card.real_slot) {
       return null;
     }
     return (
-      <SlotIcon slot={card.real_slot} />
+      <View style={styles.iconRow} accessibilityLabel={t`Slot: ${card.slot}`}>
+        { map(card.real_slot.split('.'), slot => <SlotIcon key={slot} slot={slot.trim()} />) }
+      </View>
     );
-  }
+  }, [card]);
 
-  renderPlaydata(card: Card) {
-    const { colors, typography } = this.context;
+  const metadataBlock = useMemo(() => {
+    return (
+      <View style={[styles.metadataBlock, { width: '100%' }]}>
+        <View style={styles.column}>
+          { typeLine }
+          { !!card.traits && (
+            <Text style={[typography.small, typography.boldItalic]} numberOfLines={2} ellipsizeMode="tail">
+              { card.traits }
+            </Text>
+          ) }
+        </View>
+        <View style={styles.row}>
+          { testIcons }
+          { slotIcon }
+        </View>
+        { card.type_code === 'investigator' && (
+          <View style={styles.statLineRow}>
+            <InvestigatorStatLine
+              investigator={card}
+            />
+          </View>
+        ) }
+        { (card.type_code === 'investigator' || (
+          card.type_code === 'asset' && ((card.health || 0) !== 0 || (card.sanity || 0) !== 0)
+        )) && (
+          <View style={card.type_code === 'asset' ? styles.statLineRow : undefined}>
+            <HealthSanityLine
+              investigator={card}
+            />
+          </View>
+        ) }
+      </View>
+    );
+  }, [card, typography, typeLine, slotIcon, testIcons]);
+
+  const playdataBlock = useMemo(() => {
     if (card.type_code === 'scenario') {
       return null;
     }
@@ -313,7 +249,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             { jt`Clues: ${clues}${perInvestigatorClues}` }
           </Text>
         ) }
-        { this.renderHealthAndSanity(card) }
+        { card.type_code === 'enemy' && <EnemyStatLine enemy={card} /> }
         { card.type_code === 'location' && (
           <Text style={typography.small}>
             { jt`Shroud: ${shroud}. Clues: ${clues}${perInvestigatorClues}.` }
@@ -321,53 +257,20 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         }
       </View>
     );
-  }
+  }, [colors, typography, card]);
 
-  renderHealthAndSanity(card: Card) {
-    if (card.type_code === 'enemy') {
-      return (
-        <EnemyStatLine enemy={card} />
-      );
-    }
-    return null;
-  }
 
-  backSource(card: Card, isHorizontal: boolean) {
-    if (card.double_sided) {
-      if (isHorizontal) {
-        if (card.type_code === 'act') {
-          return BLURRED_ACT;
-        }
-        if (card.type_code === 'agenda') {
-          return BLURRED_AGENDA;
-        }
-        return {
-          uri: `https://arkhamdb.com${card.imagesrc}`,
-          cache: 'force-cache',
-        };
-      }
-      return {
-        uri: `https://arkhamdb.com${card.backimagesrc}`,
-        cache: 'force-cache',
-      };
-    }
-    return card.deck_limit && card.deck_limit > 0 ? PLAYER_BACK : ENCOUNTER_BACK;
-  }
+  const cardFooter = useMemo(() => (
+    <View style={[styles.column, styles.flex]}>
+      <CardFooterInfo card={card} />
+    </View>
+  ), [card]);
 
-  renderCardBack(
-    card: Card,
+  const renderCardBack = useCallback((
     backFirst: boolean,
-    isHorizontal: boolean,
-    flavorFirst: boolean,
     isFirst: boolean,
     key: string
-  ) {
-    const {
-      componentId,
-      simple,
-      width,
-    } = this.props;
-    const { colors, backgroundStyle, typography } = this.context;
+  ) => {
     if (card.linked_card) {
       return (
         <View key={key}>
@@ -387,11 +290,11 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       return null;
     }
 
-    if (!backFirst && card.spoiler && !this.state.showBack) {
+    if (!backFirst && card.mythos_card && !showBack) {
       return (
         <ArkhamButton
           title={t`Show back`}
-          onPress={this._toggleShowBack}
+          onPress={toggleShowBack}
           icon="expand"
         />
       );
@@ -399,13 +302,13 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     const noHeader = (card.name === card.back_name || !card.back_name) && !backFirst;
     return (
       <View style={[styles.container, styles.containerPadding, { width }]} key={key}>
-        <View style={[styles.card, backgroundStyle, {
+        <View style={[styles.card, shadow.large, backgroundStyle, {
           borderColor: colors.faction[
             card.faction2_code ? 'dual' : card.factionCode()
           ].background,
           borderTopWidth: noHeader ? 1 : 0,
         }]}>
-          { !noHeader && <CardDetailHeader card={card} back width={Math.min(768, width - s * 2)} linked={!!this.props.linked} /> }
+          { !noHeader && <CardDetailHeader card={card} back width={Math.min(768, width - s * 2)} linked={!!linked} /> }
           <View removeClippedSubviews style={[
             styles.cardBody,
             {
@@ -419,9 +322,9 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             <View style={styles.typeBlock}>
               { card.type_code !== 'investigator' && (
                 <View style={styles.metadataBlock}>
-                  { this.renderType(card) }
+                  { typeLine }
                   { !!card.traits && (
-                    <Text style={[typography.small, typography.boldItalic]}>
+                    <Text style={[typography.small, typography.boldItalic]} numberOfLines={2} ellipsizeMode="tail">
                       { card.traits }
                     </Text>
                   ) }
@@ -441,58 +344,24 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                 <CardFlavorTextComponent text={card.back_flavor} />
               }
             </View>
-            { isFirst && this.renderCardFooter(card) }
+            { isFirst && cardFooter }
           </View>
           { isFirst && (
             <CardFooterButton
-              onPressFaq={this._showFaq}
+              onPressFaq={showFaq}
               onPressTaboo={
-                (card.taboo_set_id === 0 || card.taboo_placeholder) ? this._showTaboo : undefined
+                (card.taboo_set_id === 0 || card.taboo_placeholder) ? showTaboo : undefined
               }
             />
           ) }
         </View>
       </View>
     );
-  }
+  }, [card, componentId, simple, width, linked, shadow.large,
+    colors, backgroundStyle, typography, showBack, typeLine, cardFooter, flavorFirst,
+    toggleShowBack, showTaboo, showFaq]);
 
-  renderTabooButton() {
-    const { fontScale } = this.context;
-    return (
-      <Button
-        grow
-        color="purple"
-        text={t`Taboo`}
-        onPress={this._showTaboo}
-        icon={<ArkhamIcon name="tablet" size={20 * fontScale} color="white" />}
-      />
-    );
-  }
-
-  renderFaqButton() {
-    const { fontScale } = this.context;
-    return (
-      <Button
-        grow
-        text={t`FAQ`}
-        onPress={this._showFaq}
-        icon={<AppIcon name="faq" size={24 * fontScale} color="white" />}
-      />
-    );
-  }
-
-  renderCardFooter(card: Card) {
-    return (
-      <>
-        <View style={[styles.column, styles.flex]}>
-          <CardFooterInfo card={card} />
-        </View>
-      </>
-    );
-  }
-
-  renderImage(card: Card) {
-    const { componentId } = this.props;
+  const image = useMemo(() => {
     if (card.type_code === 'story' || card.type_code === 'scenario') {
       return null;
     }
@@ -510,16 +379,9 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         </View>
       </View>
     );
-  }
+  }, [card, componentId]);
 
-  renderCardText(
-    card: Card,
-    backFirst: boolean,
-    isHorizontal: boolean,
-    flavorFirst: boolean
-  ) {
-    const { simple } = this.props;
-    const { colors, typography } = this.context;
+  const cardText = useMemo(() => {
     return (
       <>
         { !!card.text && (
@@ -545,30 +407,22 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         <CardTabooTextBlock card={card} />
       </>
     );
-  }
+  }, [card, simple, colors, typography, flavorFirst]);
 
-  renderCardFront(
-    card: Card,
+  const renderCardFront = useCallback((
     backFirst: boolean,
-    isHorizontal: boolean,
-    flavorFirst: boolean,
     isFirst: boolean,
     key: string
-  ) {
-    const {
-      simple,
-      width,
-    } = this.props;
-    const { colors, backgroundStyle } = this.context;
+  ) => {
     if ((card.hidden || backFirst) &&
-      ((card.hidden && card.type_code !== 'investigator') || card.spoiler) &&
-      !this.state.showBack &&
+      ((card.hidden && card.type_code !== 'investigator') || card.mythos_card) &&
+      !showBack &&
       card.code !== RANDOM_BASIC_WEAKNESS
     ) {
       return (
         <ArkhamButton
           title={(card.hidden || backFirst) ? t`Show back` : t`Show front`}
-          onPress={this._toggleShowBack}
+          onPress={toggleShowBack}
           icon="expand"
         />
       );
@@ -579,6 +433,8 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       <View style={[styles.container, styles.containerPadding]} key={key}>
         <View style={[
           styles.card,
+          shadow.large,
+          backgroundStyle,
           {
             borderColor: colors.faction[
               card.faction2_code ? 'dual' : card.factionCode()
@@ -586,7 +442,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             borderTopWidth: noHeader ? 1 : 0,
           },
         ]}>
-          { !noHeader && <CardDetailHeader card={card} width={Math.min(768, width - s * 2)} linked={!!this.props.linked} /> }
+          { !noHeader && <CardDetailHeader card={card} width={Math.min(768, width - s * 2)} linked={!!linked} /> }
           <View style={[
             styles.cardBody,
             {
@@ -598,18 +454,18 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             } : undefined,
           ]}>
             <View style={[styles.typeBlock, backgroundStyle]}>
-              <View style={styles.row}>
-                <View style={styles.mainColumn}>
-                  { this.renderMetadata(card) }
-                  { this.renderPlaydata(card) }
+              <View style={[styles.row, styles.flex]}>
+                <View style={[styles.mainColumn, styles.flex]}>
+                  { metadataBlock }
+                  { playdataBlock }
                   { !!card.flavor && (simple || flavorFirst) &&
                     <CardFlavorTextComponent text={card.flavor} />
                   }
-                  { isTablet && this.renderCardText(card, backFirst, isHorizontal, flavorFirst) }
+                  { isTablet && cardText }
                 </View>
-                { this.renderImage(card) }
+                { image }
               </View>
-              { !isTablet && this.renderCardText(card, backFirst, isHorizontal, flavorFirst) }
+              { !isTablet && cardText }
               { card.type_code === 'scenario' && !!card.back_text && (
                 <View style={[styles.gameTextBlock, {
                   marginTop: m,
@@ -618,55 +474,43 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                   <CardTextComponent text={card.back_text} />
                 </View>)
               }
-              { isFirst && !simple && this.renderCardFooter(card) }
+              { isFirst && !simple && cardFooter }
             </View>
           </View>
           { isFirst && !simple && (
             <CardFooterButton
-              onPressFaq={this._showFaq}
+              onPressFaq={showFaq}
               onPressTaboo={
-                (card.taboo_set_id === 0 || card.taboo_placeholder) ? this._showTaboo : undefined
+                (card.taboo_set_id === 0 || card.taboo_placeholder) ? showTaboo : undefined
               }
             />
           ) }
         </View>
       </View>
     );
-  }
+  }, [card, simple, width, linked, cardText, shadow.large,
+    cardFooter, colors, backgroundStyle, showBack, flavorFirst, image, metadataBlock, playdataBlock,
+    toggleShowBack, showFaq, showTaboo]);
 
-  render() {
-    const {
-      card,
-      linked,
-      notFirst,
-    } = this.props;
-    const isHorizontal = card.type_code === 'act' ||
-      card.type_code === 'agenda' ||
-      card.type_code === 'investigator';
-    const flavorFirst = card.type_code === 'story' ||
-      card.type_code === 'act' ||
-      card.type_code === 'agenda';
-    const backFirst = !linked &&
-      (!!card.double_sided || (card.linked_card && !card.linked_card.hidden)) &&
-      !(isHorizontal || !card.spoiler) &&
-      card.type_code !== 'scenario';
+  const backFirst = !linked &&
+    (!!card.double_sided || (card.linked_card && !card.linked_card.hidden)) &&
+    !(isHorizontal || !card.mythos_card) &&
+    card.type_code !== 'scenario';
 
-    const sideA = backFirst && this.renderCardBack(card, backFirst, isHorizontal, flavorFirst, !notFirst, 'sideA');
-    const sideB = this.renderCardFront(card, !!backFirst, isHorizontal, flavorFirst, !notFirst && !sideA, 'sideB');
-    const sideC = !backFirst && this.renderCardBack(card, !!backFirst, isHorizontal, flavorFirst, !notFirst && !sideA && !sideB, 'sideC');
-    return (
-      <View>
-        { sideA }
-        { sideB }
-        { sideC }
-      </View>
-    );
-  }
+  const sideA = backFirst && renderCardBack(backFirst, !notFirst, 'sideA');
+  const sideB = renderCardFront(!!backFirst, !notFirst && !sideA, 'sideB');
+  const sideC = !backFirst && renderCardBack(!!backFirst, !notFirst && !sideA && !sideB, 'sideC');
+  return (
+    <View>
+      { sideA }
+      { sideB }
+      { sideC }
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   row: {
-    width: '100%',
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'space-between',
@@ -713,10 +557,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     borderTopWidth: 0,
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 8,
-    shadowColor: '#000000',
-    shadowOpacity: 0.25,
   },
   cardBody: {
     paddingTop: xs,
@@ -748,5 +588,9 @@ const styles = StyleSheet.create({
     padding: 4,
     paddingTop: 2,
     borderRadius: 8,
+  },
+  iconRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
   },
 });

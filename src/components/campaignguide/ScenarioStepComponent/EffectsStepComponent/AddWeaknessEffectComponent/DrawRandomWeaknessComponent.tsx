@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
-import { forEach, keys, map, values } from 'lodash';
+import { forEach, flatMap, map, keys, range, values, sumBy } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import { StringChoices, WeaknessSet } from '@actions/types';
-import Card, { CardsMap } from '@data/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import { drawWeakness } from '@lib/weaknessHelper';
-import InvestigatorButton from '@components/core/InvestigatorButton';
-import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
+import InvestigatorButton from '@components/campaignguide/InvestigatorButton';
+import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
+import StyleContext from '@styles/StyleContext';
+import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
 
 interface OwnProps {
   id: string;
@@ -18,126 +19,126 @@ interface OwnProps {
   cards: CardsMap;
   weaknessCards: Card[];
   traits: string[];
+  standalone: boolean;
   realTraits: boolean;
   campaignLog: GuidedCampaignLog;
   scenarioState: ScenarioStateHelper;
-}
-
-interface State {
-  choices: {
-    [code: string]: string;
-  };
+  count: number;
 }
 
 type Props = OwnProps;
 
-export default class DrawRandomWeaknessComponent extends React.Component<Props, State> {
-  static contextType = CampaignGuideContext;
-  context!: CampaignGuideContextType;
+function DrawRandomWeaknessButton({ investigator, choice, choiceCard, drawRandomWeakness, index, disabled }: {
+  investigator: Card;
+  choice?: string;
+  choiceCard?: Card;
+  index: number;
+  disabled: boolean;
+  drawRandomWeakness: (investigator: string, index: number) => void;
+}) {
+  const onPress = useCallback((code: string) => {
+    drawRandomWeakness(code, index);
+  }, [index, drawRandomWeakness]);
+  return (
+    <InvestigatorButton
+      investigator={investigator}
+      value={choice === undefined ?
+        t`Draw random weakness` :
+        (choiceCard?.name || 'Missing Card')
+      }
+      onPress={onPress}
+      disabled={disabled}
+      widget="shuffle"
+    />
+  );
+}
 
-  state: State = {
-    choices: {},
-  };
-
-  effectiveWeaknessSet(): WeaknessSet {
-    const { cards, campaignLog } = this.props;
-    const {
-      campaignInvestigators,
-      latestDecks,
-      weaknessSet,
-    } = this.context;
-    const { choices } = this.state;
+export default function DrawRandomWeaknessComponent({ id, investigators, cards, weaknessCards, standalone, traits, realTraits, campaignLog, scenarioState, count }: Props) {
+  const { campaignInvestigators, latestDecks, weaknessSet } = useContext(CampaignGuideContext);
+  const { borderStyle } = useContext(StyleContext);
+  const [choices, setChoices] = useState<{ [code: string]: { [index: string]: string }}>({});
+  const effectiveWeaknessSet: WeaknessSet = useMemo(() => {
     return campaignLog.effectiveWeaknessSet(
       campaignInvestigators,
       latestDecks,
       weaknessSet,
       cards,
-      values(choices)
+      flatMap(values(choices), x => values(x))
     );
-  }
+  }, [cards, campaignLog, choices, campaignInvestigators, latestDecks, weaknessSet]);
 
-  _drawRandomWeakness = (
-    code: string
-  ) => {
-    const { weaknessCards, traits, campaignLog, realTraits } = this.props;
-    const weaknessSet = this.effectiveWeaknessSet();
+  const drawRandomWeakness = useCallback((code: string, index: number) => {
     const card = drawWeakness(
-      weaknessSet,
+      effectiveWeaknessSet,
       weaknessCards,
       {
         traits,
         multiplayer: campaignLog.playerCount() > 1,
-        standalone: false,
+        standalone,
       },
       realTraits
     );
     if (!card) {
       Alert.alert(t`All weaknesses have been assigned.`);
     } else {
-      this.setState({
-        choices: {
-          ...this.state.choices,
-          [code]: card.code,
+      setChoices({
+        ...choices,
+        [code]: {
+          ...(choices[code] || {}),
+          [index]: [card.code],
         },
       });
     }
-  };
+  }, [weaknessCards, traits, campaignLog, realTraits, standalone, effectiveWeaknessSet, choices, setChoices]);
 
-  _save = () => {
-    const { id, scenarioState } = this.props;
-    const choices: StringChoices = {};
-    forEach(this.state.choices, (card, code) => {
-      choices[code] = [card];
+  const save = useCallback(() => {
+    const stringChoices: StringChoices = {};
+    forEach(choices, (drawnCards, code) => {
+      stringChoices[code] = values(drawnCards);
     });
-    scenarioState.setStringChoices(`${id}_weakness`, choices);
-  };
+    scenarioState.setStringChoices(`${id}_weakness`, stringChoices);
+    setChoices({});
+  }, [id, scenarioState, choices, setChoices]);
 
-  renderSaveButton(choices?: StringChoices) {
-    const { investigators } = this.props;
-    if (choices !== undefined) {
-      return null;
+  const scenarioChoices = scenarioState.stringChoices(`${id}_weakness`);
+  const saveDisabled = useMemo(() => {
+    if (scenarioChoices !== undefined) {
+      return false;
     }
-    return (
-      <BasicButton
-        disabled={keys(this.state.choices).length !== investigators.length}
-        onPress={this._save}
-        title={t`Proceed`}
-      />
-    );
-  }
-
-  render() {
-    const { id, investigators, cards, scenarioState } = this.props;
-    const {
-      style: { borderStyle },
-    } = this.context;
-    const choices = scenarioState.stringChoices(`${id}_weakness`);
-    return (
-      <>
-        <View style={[styles.wrapper, borderStyle]}>
-          { map(investigators, investigator => {
-            const choice = choices !== undefined ? choices[investigator.code][0] :
-              this.state.choices[investigator.code];
+    return investigators.length !== sumBy(keys(choices), investigator => {
+      const investigatorChoices = choices[investigator];
+      return values(investigatorChoices).length === count ? 1 : 0;
+    });
+  }, [scenarioChoices, count, investigators, choices]);
+  return (
+    <InputWrapper
+      title={scenarioChoices === undefined ? t`Tap to draw` : t`Random results`}
+      onSubmit={save}
+      disabledText={saveDisabled ? t`Continue` : undefined}
+      editable={scenarioChoices === undefined}
+    >
+      <View style={[styles.wrapper, borderStyle]}>
+        { map(investigators, investigator => (
+          map(range(0, count), idx => {
+            const choice = scenarioChoices !== undefined ? scenarioChoices[investigator.code][idx] :
+              choices[investigator.code]?.[idx];
             const choiceCard = choice ? cards[choice] : undefined;
             return (
-              <InvestigatorButton
-                key={investigator.code}
+              <DrawRandomWeaknessButton
+                key={`${investigator.code}_${idx}`}
                 investigator={investigator}
-                value={choice === undefined ?
-                  t`Draw random weakness` :
-                  (choiceCard?.name || 'Missing Card')
-                }
-                onPress={this._drawRandomWeakness}
-                disabled={choice !== undefined}
-                widget="shuffle"
+                choice={choice}
+                choiceCard={choiceCard}
+                drawRandomWeakness={drawRandomWeakness}
+                index={idx}
+                disabled={scenarioChoices !== undefined}
               />
             );
-          }) }
-        </View>
-        { this.renderSaveButton(choices) }
-      </>
-    );
-  }
+          })
+        )) }
+      </View>
+    </InputWrapper>
+  );
 }
 
 const styles = StyleSheet.create({

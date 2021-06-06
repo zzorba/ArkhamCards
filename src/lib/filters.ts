@@ -1,133 +1,33 @@
-import { filter, findIndex, flatMap, forEach, keys, map, values } from 'lodash';
+import { findIndex, forEach, map } from 'lodash';
 
-import { QueryParams } from '@data/types';
-import { BASIC_QUERY, combineQueries, combineQueriesOpt, where } from '@data/query';
-import { CARD_FACTION_CODES, SKILLS, FactionCodeType } from '@app_constants';
-import Card from '@data/Card';
+import { QueryParams } from '@data/sqlite/types';
+import { BASIC_QUERY, combineQueries, combineQueriesOpt, where } from '@data/sqlite/query';
+import { SKILLS, FactionCodeType, CARD_FACTION_CODES } from '@app_constants';
 import { Brackets } from 'typeorm/browser';
-import Database from '@data/Database';
 
 export interface CardFilterData {
   hasCost: boolean;
   hasXp: boolean;
   hasSkill: boolean;
-  allUses: string[];
+  hasSlot: boolean;
+  hasUses: boolean;
+  hasLocation: boolean;
+  hasEnemy: boolean;
+  hasWeakness: boolean;
   allFactions: FactionCodeType[];
-  allTraits: string[];
-  allTypes: string[];
-  allTypeCodes: string[];
-  allSubTypes: string[];
-  allPacks: string[];
-  allSlots: string[];
-  allEncounters: string[];
-  allIllustrators: string[];
-}
-export async function calculateAllCardFilterData(cards: Card[], db: Database): Promise<CardFilterData> {
-  const result = calculateCardFilterData(cards);
-  const encounterCards = await (await db.cardsQuery())
-    .select('c.encounter_name')
-    .distinct(true)
-    .getRawMany();
-  return {
-    ...result,
-    allEncounters: flatMap(encounterCards, c => values(c)).sort(),
-  };
 }
 
-export function calculateCardFilterData(cards: Card[]): CardFilterData {
-  const factionsMap: { [key: string]: boolean } = {};
-  let hasCost = false;
-  let hasXp = false;
-  let hasSkill = false;
-  const typesMap: { [key: string]: boolean } = {};
-  const typeCodesMap: { [key: string]: boolean } = {};
-  const usesMap: { [key: string]: boolean } = {};
-  const subTypesMap: { [key: string]: boolean } = {};
-  const traitsMap: { [key: string]: boolean } = {};
-  const packsMap: { [key: string]: boolean } = {};
-  const slotsMap: { [key: string]: boolean } = {};
-  const encountersMap: { [key: string]: boolean } = {};
-  const illustratorsMap: { [key: string]: boolean } = {};
-  forEach(cards, card => {
-    if (card.faction_code) {
-      factionsMap[card.faction_code] = true;
-    }
-    if (card.faction2_code) {
-      factionsMap[card.faction2_code] = true;
-    }
-    if (card.cost !== null) {
-      hasCost = true;
-    }
-    if (card.xp !== null) {
-      hasXp = true;
-    }
-    if (!hasSkill && (
-      card.skill_willpower ||
-      card.skill_intellect ||
-      card.skill_combat ||
-      card.skill_agility ||
-      card.skill_wild
-    )) {
-      hasSkill = true;
-    }
-    if (card.traits) {
-      forEach(
-        filter(map(card.traits.split('.'), t => t.trim()), t => !!t),
-        t => {
-          traitsMap[t] = true;
-        });
-    }
-    if (card.subtype_name) {
-      subTypesMap[card.subtype_name] = true;
-    }
-    if (card.uses) {
-      usesMap[card.uses] = true;
-    }
-    if (card.pack_name) {
-      packsMap[card.pack_name] = true;
-    }
-    if (card.slot) {
-      if (card.slot.indexOf('.') !== -1) {
-        forEach(
-          map(card.slot.split('.'), s => s.trim()),
-          s => {
-            slotsMap[s] = true;
-          }
-        );
-      } else {
-        slotsMap[card.slot] = true;
-      }
-    }
-    if (card.encounter_name) {
-      encountersMap[card.encounter_name] = true;
-    }
-    if (card.illustrator) {
-      illustratorsMap[card.illustrator] = true;
-    }
-    typesMap[card.type_name] = true;
-    typeCodesMap[card.type_code] = true;
-  });
-  const allFactions: FactionCodeType[] = filter(
-    CARD_FACTION_CODES,
-    factionCode => !!factionsMap[factionCode]
-  );
-  return {
-    allFactions,
-    hasCost,
-    hasXp,
-    hasSkill,
-    allUses: keys(usesMap).sort(),
-    allTraits: keys(traitsMap).sort(),
-    allTypes: keys(typesMap).sort(),
-    allTypeCodes: keys(typeCodesMap).sort(),
-    allSubTypes: keys(subTypesMap).sort(),
-    allPacks: keys(packsMap).sort(),
-    allSlots: keys(slotsMap).sort(),
-    allEncounters: keys(encountersMap).sort(),
-    allIllustrators: keys(illustratorsMap).sort(),
-  };
-}
-
+export const DefaultCardFilterData: CardFilterData = {
+  hasCost: true,
+  hasXp: true,
+  hasSkill: true,
+  hasSlot: true,
+  hasUses: true,
+  hasLocation: true,
+  hasEnemy: true,
+  hasWeakness: true,
+  allFactions: CARD_FACTION_CODES,
+};
 
 export interface SkillIconsFilters {
   willpower: boolean;
@@ -137,15 +37,27 @@ export interface SkillIconsFilters {
   wild: boolean;
   doubleIcons: boolean;
 }
+
+export interface SkillModifierFilters {
+  willpower: boolean;
+  intellect: boolean;
+  combat: boolean;
+  agility: boolean;
+}
+
 export interface FilterState {
-  [key: string]: string[] | boolean | [number, number] | SkillIconsFilters;
+  [key: string]: string[] | boolean | [number, number] | SkillIconsFilters | SkillModifierFilters;
   factions: FactionCodeType[];
   uses: string[];
   types: string[];
   subTypes: string[];
   xpLevels: string[];
   traits: string[];
-  packs: string[];
+  actions: string[];
+  skillModifiers: SkillModifierFilters;
+  skillModifiersEnabled: boolean;
+  packCodes: string[];
+  packNames: string[];
   cycleNames: string[];
   slots: string[];
   encounters: string[];
@@ -201,7 +113,23 @@ export interface FilterState {
   enemyHorror: [number, number];
   enemyFight: [number, number];
   enemyEvade: [number, number];
+
+  assetHealthEnabled: boolean;
+  assetHealth: [number, number];
+  assetSanityEnabled: boolean;
+  assetSanity: [number, number];
 }
+
+const ACTION_TEXT: { [key: string]: string } = {
+  fight: '<b>Fight.</b>',
+  engage: '<b>Engage.</b>',
+  investigate: '<b>Investigate.</b>',
+  play: '<b>Play.</b>',
+  draw: '<b>Draw.</b>',
+  move: '<b>Move.</b>',
+  evade: '<b>Evade.</b>',
+  resource: '<b>Resource.</b>',
+};
 
 export const defaultFilterState: FilterState = {
   factions: [],
@@ -209,8 +137,17 @@ export const defaultFilterState: FilterState = {
   types: [],
   subTypes: [],
   xpLevels: [],
+  actions: [],
   traits: [],
-  packs: [],
+  skillModifiers: {
+    willpower: false,
+    intellect: false,
+    combat: false,
+    agility: false,
+  },
+  skillModifiersEnabled: false,
+  packCodes: [],
+  packNames: [],
   cycleNames: [],
   slots: [],
   encounters: [],
@@ -273,6 +210,10 @@ export const defaultFilterState: FilterState = {
   enemyHorror: [0, 5],
   enemyFight: [0, 6],
   enemyEvade: [0, 6],
+  assetHealthEnabled: false,
+  assetHealth: [0, 4],
+  assetSanityEnabled: false,
+  assetSanity: [0, 4],
 };
 
 
@@ -341,15 +282,16 @@ export default class FilterBuilder {
     return this.complexVectorClause(
       'slot',
       map(slots, slot => `%#${slot}#%`),
-      (valueName: string) => `c.slots_normalized LIKE :${valueName}`
+      (valueName: string) => `c.real_slots_normalized LIKE :${valueName}`
     );
   }
 
-  traitFilter(traits: string[]): Brackets[] {
+  traitFilter(traits: string[], localizedTraits: boolean): Brackets[] {
+    const traits_field = localizedTraits ? 'traits_normalized' : 'real_traits_normalized';
     return this.complexVectorClause(
       'trait',
-      map(traits, trait => `%#${trait}#%`),
-      (valueName: string) => `c.real_traits_normalized LIKE :${valueName} OR (linked_card.real_traits_normalized is not null AND linked_card.real_traits_normalized LIKE :${valueName})`
+      map(traits, trait => `%#${trait.toLowerCase()}#%`),
+      (valueName: string) => `c.${traits_field} LIKE :${valueName} OR (linked_card.${traits_field} is not null AND linked_card.${traits_field} LIKE :${valueName})`
     );
   }
 
@@ -405,6 +347,57 @@ export default class FilterBuilder {
       result.push(where(`c.type_code = 'location' OR linked_card.type_code = 'location'`));
     }
     return result;
+  }
+
+  skillModifierFilters(skillModifiers: SkillModifierFilters): Brackets[] {
+    const result: Brackets[] = [];
+
+    if (skillModifiers.agility) {
+      result.push(where(`c.real_text LIKE '%+_ [agility]%'`));
+    }
+    if (skillModifiers.combat) {
+      result.push(where(`c.real_text LIKE '%+_ [combat]%'`));
+    }
+    if (skillModifiers.willpower) {
+      result.push(where(`c.real_text LIKE '%+_ [willpower]%'`));
+    }
+    if (skillModifiers.intellect) {
+      result.push(where(`c.real_text LIKE '%+_ [intellect]%'`));
+    }
+    if (skillModifiers.agility || skillModifiers.combat || skillModifiers.willpower || skillModifiers.intellect) {
+      result.push(where(`c.real_text LIKE '%+_ skill value%'`));
+    }
+    const combinedResult = combineQueriesOpt(result, 'or');
+    if (combinedResult) {
+      return [combinedResult];
+    }
+    return [];
+  }
+
+  assetFilters(filters: FilterState): Brackets[] {
+    const {
+      assetHealthEnabled,
+      assetHealth,
+      assetSanityEnabled,
+      assetSanity,
+      skillModifiersEnabled,
+      skillModifiers,
+    } = filters;
+    const result: Brackets[] = [
+      ...(assetHealthEnabled ? this.rangeFilter('health', assetHealth, true) : []),
+      ...(assetSanityEnabled ? this.rangeFilter('sanity', assetSanity, true) : []),
+      ...(skillModifiersEnabled ? this.skillModifierFilters(skillModifiers) : []),
+    ];
+    if (!result.length) {
+      return [];
+    }
+    return [
+      combineQueries(
+        where(`c.type_code = 'asset' OR linked_card.type_code = 'asset'`),
+        result,
+        'and'
+      ),
+    ];
   }
 
   enemyFilters(filters: FilterState): Brackets[] {
@@ -550,7 +543,6 @@ export default class FilterBuilder {
     return [];
   }
 
-
   playerCardFilters(filters: FilterState): Brackets[] {
     const {
       uses,
@@ -565,6 +557,7 @@ export default class FilterBuilder {
       permanent,
       exile,
       slots,
+      actions,
     } = filters;
     const result: Brackets[] = [
       ...this.slotFilter(slots),
@@ -600,6 +593,18 @@ export default class FilterBuilder {
     if (myriad) {
       result.push(where(`c.real_text LIKE '%Myriad.%' or linked_card.real_text LIKE '%Myriad.%'`));
     }
+    if (actions.length) {
+      const parts: Brackets[] = [];
+      forEach(actions, action => {
+        if (ACTION_TEXT[action]) {
+          parts.push(where(`c.real_text like '%${ACTION_TEXT[action]}%' or linked_card.real_text like '%${ACTION_TEXT[action]}%'`));
+        }
+      });
+      const combined = combineQueriesOpt(parts, 'or');
+      if (combined) {
+        result.push(combined);
+      }
+    }
     return result;
   }
 
@@ -624,20 +629,21 @@ export default class FilterBuilder {
     );
   }
 
-  filterToQuery(filters: FilterState): Brackets | undefined {
+  filterToQuery(filters: FilterState, localizedTraits: boolean): Brackets | undefined {
     return combineQueriesOpt(
       [
         ...this.factionFilter(filters.factions),
-        ...this.equalsVectorClause(filters.types, 'type_name'),
-        ...this.equalsVectorClause(filters.subTypes, 'subtype_name'),
+        ...this.equalsVectorClause(filters.types, 'type_code'),
+        ...this.equalsVectorClause(filters.subTypes, 'subtype_code'),
         ...this.playerCardFilters(filters),
-        ...this.equalsVectorClause(filters.packs, 'pack_name'),
+        ...this.equalsVectorClause(filters.packCodes, 'pack_code'),
         ...this.equalsVectorClause(filters.encounters, 'encounter_name'),
         ...this.equalsVectorClause(filters.illustrators, 'illustrator'),
         ...this.miscFilter(filters),
         ...this.levelFilter(filters),
         ...this.costFilter(filters),
-        ...this.traitFilter(filters.traits),
+        ...this.traitFilter(filters.traits, localizedTraits),
+        ...this.assetFilters(filters),
         ...this.enemyFilters(filters),
         ...this.locationFilters(filters),
         ...this.skillIconFilter(filters),

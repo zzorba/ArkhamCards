@@ -1,30 +1,30 @@
 import React from 'react';
 
-import { WeaknessSet, InvestigatorData } from '@actions/types';
+import { WeaknessSet, CampaignId } from '@actions/types';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import CampaignGuide from '@data/scenario/CampaignGuide';
-import { LatestDecks } from '@data/scenario';
-import Card, { CardsMap } from '@data/Card';
-import { DEFAULLT_STYLE_CONTEXT, StyleContextType } from '@styles/StyleContext';
+import { LatestDecks, ProcessedCampaign } from '@data/scenario';
+import Card, { CardsMap } from '@data/types/Card';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 export interface CampaignGuideContextType {
-  campaignId: number;
+  campaignId: CampaignId;
+  campaign: SingleCampaignT;
+
   campaignGuideVersion: number;
-  campaignName: string;
   campaignGuide: CampaignGuide;
   campaignState: CampaignStateHelper;
+  spentXp: { [code: string]: number | undefined };
   campaignInvestigators: Card[];
   weaknessSet: WeaknessSet;
   latestDecks: LatestDecks;
-  adjustedInvestigatorData: InvestigatorData;
   playerCards: CardsMap;
-  lastUpdated: Date;
-  style: StyleContextType;
+  syncCampaignChanges: (campaignLog: ProcessedCampaign) => Promise<void>;
 }
 
 export const CampaignGuideContext = React.createContext<CampaignGuideContextType>(
   // @ts-ignore TS2345
-  { style: DEFAULLT_STYLE_CONTEXT }
+  { }
 );
 
 export default CampaignGuideContext;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import {
   StyleSheet,
   View,
@@ -7,7 +7,9 @@ import {
 import ArkhamIcon from '@icons/ArkhamIcon';
 import { BulletType } from '@data/scenario/types';
 import space, { s, m, xs } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import ScenarioStepContext from './ScenarioStepContext';
+import ScenarioGuideContext from './ScenarioGuideContext';
 
 interface Props {
   bulletType?: BulletType;
@@ -15,14 +17,17 @@ interface Props {
   children: React.ReactNode | React.ReactNode[];
   border?: boolean;
   hasTitle?: boolean;
+
+  noPadding?: boolean;
 }
 
-export default class SetupStepWrapper extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function SetupStepWrapper({ bulletType, noPadding, reverseSpacing, children, border, hasTitle }: Props) {
+  const { colors } = useContext(StyleContext);
+  const { campaignLog } = useContext(ScenarioStepContext);
+  const { processedScenario } = useContext(ScenarioGuideContext);
+  const resolution = campaignLog.scenarioStatus(processedScenario.id.encodedScenarioId) === 'resolution';
 
-  renderBalancedSpacing() {
-    const { bulletType } = this.props;
+  const balancedSpacing = useMemo(() => {
     switch (bulletType) {
       case 'small':
         return s + m + 20;
@@ -31,20 +36,19 @@ export default class SetupStepWrapper extends React.Component<Props> {
       default:
         return s + 22;
     }
-  }
-  renderBullet() {
-    const { bulletType } = this.props;
-    const { colors } = this.context;
+  }, [bulletType]);
+
+  const bulletNode = useMemo(() => {
     switch (bulletType) {
       case 'none':
         return <View style={styles.bullet} />;
       case 'small':
         return (
-          <View style={[styles.smallBullet, { width: 20 }]}>
+          <View style={[noPadding ? undefined : styles.smallBullet, { width: 20 }]}>
             <ArkhamIcon
               name="bullet"
               size={20}
-              color={colors.darkText}
+              color={resolution ? colors.campaign.resolution : colors.campaign.setup}
             />
           </View>
         );
@@ -54,56 +58,47 @@ export default class SetupStepWrapper extends React.Component<Props> {
             <ArkhamIcon
               name="guide_bullet"
               size={22}
-              color={colors.scenarioGreen}
+              color={resolution ? colors.campaign.resolution : colors.campaign.setup}
             />
           </View>
         );
     }
-  }
+  }, [bulletType, resolution, noPadding, colors]);
 
-  render() {
-    const {
-      children,
-      border,
-      hasTitle,
-      reverseSpacing,
-    } = this.props;
-    const { colors } = this.context;
-    if (reverseSpacing) {
-      return (
-        <View style={[
-          styles.step,
-          {
-            alignItems: 'center',
-            justifyContent: 'center',
-            paddingRight: this.renderBalancedSpacing(),
-          },
-        ]}>
-          { children }
-        </View>
-      );
-    }
-
+  if (reverseSpacing) {
     return (
       <View style={[
         styles.step,
-        space.paddingS,
-        space.paddingSideM,
-        border ? {
-          borderTopWidth: StyleSheet.hairlineWidth,
-          borderBottomWidth: StyleSheet.hairlineWidth,
-          borderColor: colors.divider,
-          backgroundColor: colors.background,
-        } : {},
-        hasTitle ? { paddingTop: 0, paddingBottom: 0 } : {},
+        {
+          alignItems: 'center',
+          justifyContent: 'center',
+          paddingRight: balancedSpacing,
+        },
       ]}>
-        { this.renderBullet() }
-        <View style={styles.mainText}>
-          { children }
-        </View>
+        { children }
       </View>
     );
   }
+
+  return (
+    <View style={[
+      styles.step,
+      noPadding ? undefined : space.paddingS,
+      noPadding ? undefined : space.paddingSideM,
+      border ? {
+        borderTopWidth: StyleSheet.hairlineWidth,
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        borderColor: colors.divider,
+        backgroundColor: colors.background,
+      } : {},
+      hasTitle ? { paddingTop: 0, paddingBottom: 0 } : {},
+    ]}>
+      { bulletNode }
+      <View style={styles.mainText}>
+        { children }
+      </View>
+    </View>
+  );
 }
 
 

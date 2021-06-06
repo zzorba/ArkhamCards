@@ -1,47 +1,94 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
+import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
 
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
+import COLORS from '@styles/colors';
+import { ThemeColors } from '@styles/theme';
 
 interface Props extends TouchableOpacityProps {
+  useGestureHandler?: boolean;
   value: boolean;
-  onValueChange: (checked: boolean) => void;
+  onValueChange?: (checked: boolean) => void;
   accessibilityLabel?: string;
+  large?: boolean;
+  color?: 'light' | 'dark';
+  circleColor?: 'light'
 }
-export default class ArkhamSwitch extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+function getCircleColor(value: boolean, color: 'light' | 'dark' | undefined, circleColor: 'light' | undefined, colors: ThemeColors) {
+  switch (color) {
+    case 'light':
+      return !value && circleColor !== 'light' ? colors.D10 : COLORS.L15;
+    case 'dark':
+      return colors.D10;
+    default:
+      return colors.L10;
+  }
+}
+function getCheckColor(color: 'light' | 'dark' | undefined, colors: ThemeColors) {
+  switch (color) {
+    case 'light':
+      return COLORS.L30;
+    case 'dark':
+      return colors.D20;
+    default:
+      return colors.M;
+  }
+}
+export default function ArkhamSwitch({ useGestureHandler, value, onValueChange, accessibilityLabel, disabled, large, color, circleColor, ...props }: Props) {
+  const { colors } = useContext(StyleContext);
 
-  _onPress = () => {
-    const { value, onValueChange } = this.props;
-    onValueChange(!value);
-  }
-  render() {
-    const { value, onValueChange, accessibilityLabel, disabled, ...props } = this.props;
-    const { colors } = this.context;
+  const onPress = useCallback(() => {
+    onValueChange?.(!value);
+  }, [value, onValueChange]);
+
+  const theCircleColor = getCircleColor(value, color, circleColor, colors);
+  const checkColor = getCheckColor(color, colors);
+  const content = useMemo(() => {
     return (
-      <TouchableOpacity
-        onPress={this._onPress}
-        accessibilityRole="switch"
-        accessibilityLabel={accessibilityLabel}
-        accessibilityState={{ checked: value }}
-        disabled={disabled} {...props}
-      >
-        <View style={styles.icon}>
-          <AppIcon size={28} name="check-circle" color={disabled ? colors.L20 : colors.L10} />
-          { !!value && (
-            <View style={styles.check}>
-              <AppIcon size={20} name="check" color={disabled ? colors.L20 : colors.M} />
-            </View>
-          )}
-        </View>
-      </TouchableOpacity>
+      <View style={[styles.icon, large ? styles.largeIcon : undefined]}>
+        <AppIcon
+          size={large ? 34 : 28}
+          name={large ? 'circle-thin' : 'check-circle'}
+          color={disabled ? colors.L20 : theCircleColor}
+        />
+        { !!value && (
+          <View style={large ? styles.largeCheck : styles.check}>
+            <AppIcon
+              size={large ? 26 : 20}
+              name="check"
+              color={disabled ? colors.L20 : checkColor}
+            />
+          </View>
+        )}
+      </View>
     );
+  }, [disabled, large, value, colors, theCircleColor, checkColor]);
+  if (!onValueChange) {
+    return content;
   }
+
+  const TouchableComponent = useGestureHandler ? GestureHandlerTouchableOpacity : TouchableOpacity;
+  return (
+    <TouchableComponent
+      onPress={onPress}
+      accessibilityRole="switch"
+      accessibilityLabel={accessibilityLabel}
+      accessibilityState={{ checked: value }}
+      disabled={disabled}
+      {...props}
+    >
+      { content }
+    </TouchableComponent>
+  );
 }
 
 const styles = StyleSheet.create({
+  largeIcon: {
+    width: 40,
+    height: 40,
+  },
   icon: {
     width: 32,
     height: 32,
@@ -54,6 +101,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 2,
     right: 3,
+  },
+  largeCheck: {
+    position: 'absolute',
+    top: 3,
+    right: 4,
   },
 });
 

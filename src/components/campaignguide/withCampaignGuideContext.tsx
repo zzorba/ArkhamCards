@@ -1,82 +1,52 @@
 import React from 'react';
-import { Text } from 'react-native';
-import { connect } from 'react-redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
-import {
-  AppState,
-} from '@reducers';
-import withUniversalCampaignData, { UniversalCampaignProps } from '@components/campaignguide/withUniversalCampaignData';
-import { CampaignGuideReduxData, campaignGuideReduxData, constructCampaignGuideContext } from '@components/campaignguide/contextHelper';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { useSingleCampaignGuideData } from '@components/campaignguide/contextHelper';
+import useCampaignGuideContextFromActions from './useCampaignGuideContextFromActions';
+import { useInvestigatorCards } from '@components/core/hooks';
+import LoadingSpinner from '@components/core/LoadingSpinner';
+import { CampaignId } from '@actions/types';
+import { useCampaignId } from '@components/campaign/hooks';
+import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useDeckActions } from '@data/remote/decks';
 
 export interface CampaignGuideInputProps {
-  campaignId: number;
+  campaignId: CampaignId;
 }
 
-interface ReduxProps {
-  campaignData?: CampaignGuideReduxData;
+export interface InjectedCampaignGuideContextProps {
+  setCampaignServerId: (serverId: number) => void;
 }
 
-export interface CampaignGuideProps {
-  campaignData: CampaignGuideContextType;
+export function useCampaignGuideContext(oCampaignId: CampaignId, live: boolean): [CampaignGuideContextType | undefined, (serverId: number) => void] {
+  const [campaignId, setCampaignServerId] = useCampaignId(oCampaignId);
+  const investigators = useInvestigatorCards();
+  const campaignData = useSingleCampaignGuideData(campaignId, investigators, live);
+  const updateCampaignActions = useUpdateCampaignActions();
+  const deckActions = useDeckActions();
+  const context = useCampaignGuideContextFromActions(campaignId, deckActions, updateCampaignActions, campaignData);
+  return [context, setCampaignServerId];
 }
 
 export default function withCampaignGuideContext<Props>(
-  WrappedComponent: React.ComponentType<Props & CampaignGuideProps>
+  WrappedComponent: React.ComponentType<Props & InjectedCampaignGuideContextProps>,
+  { rootView }: { rootView: boolean }
 ): React.ComponentType<Props & CampaignGuideInputProps> {
-  const mapStateToProps = (
-    state: AppState,
-    props: Props & CampaignGuideInputProps & UniversalCampaignProps
-  ): ReduxProps => {
-    return {
-      campaignData: campaignGuideReduxData(props.campaignId, props.investigators, state),
-    };
-  };
-
-  class CampaignDataComponent extends React.Component<
-    Props &
-    CampaignGuideInputProps &
-    UniversalCampaignProps &
-    ReduxProps
-  > {
-    static contextType = StyleContext;
-    context!: StyleContextType;
-
-    render() {
-      const {
-        campaignData,
-      } = this.props;
-      if (!campaignData) {
-        return (
-          <Text>Unknown Campaign</Text>
-        );
-      }
-      const context = constructCampaignGuideContext(
-        campaignData as CampaignGuideReduxData,
-        this.props,
-        this.context
-      );
+  function CampaignDataComponent(props: Props & CampaignGuideInputProps) {
+    const [context, setCampaignServerId] = useCampaignGuideContext(props.campaignId, rootView);
+    if (!context) {
       return (
-        <CampaignGuideContext.Provider value={context}>
-          <WrappedComponent
-            {...this.props as Props}
-            campaignData={context}
-          />
-        </CampaignGuideContext.Provider>
+        <LoadingSpinner />
       );
     }
+    return (
+      <CampaignGuideContext.Provider value={context}>
+        <WrappedComponent {...props as Props} setCampaignServerId={setCampaignServerId} />
+      </CampaignGuideContext.Provider>
+    );
   }
-  const result = withUniversalCampaignData<Props & CampaignGuideInputProps>(
-    // @ts-ignore TS  2345
-    connect<ReduxProps, unknown, Props & UniversalCampaignProps & CampaignGuideInputProps, AppState>(
-      mapStateToProps
-    )(
-      // @ts-ignore TS2345
-      CampaignDataComponent
-    )
-  );
-  hoistNonReactStatic(result, WrappedComponent);
-  return result as React.ComponentType<Props & CampaignGuideInputProps>;
+
+  hoistNonReactStatic(CampaignDataComponent, WrappedComponent);
+  return CampaignDataComponent;
 }

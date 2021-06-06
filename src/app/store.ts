@@ -4,9 +4,10 @@ import thunk from 'redux-thunk';
 import { createOffline } from '@redux-offline/redux-offline';
 import offlineConfig from '@redux-offline/redux-offline/lib/defaults';
 import { createMigrate, persistStore, persistReducer } from 'redux-persist';
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import reducers, { AppState } from '@reducers';
+
 // import Reactotron from './ReactotronConfig';
 
 /**
@@ -33,7 +34,7 @@ export default function configureStore(initialState: AppState) {
 
   const migrations = {
     0: (state: any) => {
-      const newState = Object.assign({}, state);
+      const newState = { ...state };
       if (newState.weaknesses) {
         delete newState.weaknesses;
       }
@@ -49,8 +50,13 @@ export default function configureStore(initialState: AppState) {
     // WHY is that the default behavior?!?!?
     timeout: 0,
     // These all have some transient fields and are handled separately.
-    blacklist: ['cards', 'decks', 'packs', 'signedIn', 'filters'],
-    migrate: createMigrate(migrations, { debug: false }),
+    blacklist: [
+      'cards', 'signedIn', 'filters', 'deckEdits', 'packs', 'dissonantVoices',
+      // These are replacement fields.
+      'guides_2', 'campaigns_2', 'decks_2',
+      // These are the legacy fields (campaigns as well, but it didn't have its own persistor)
+      'decks', 'guides'],
+    migrate: createMigrate(migrations, { debug: true }),
   };
 
   const reducer = persistReducer(

@@ -5,7 +5,7 @@ import {
   isAfter,
   startOfDay,
 } from 'date-fns';
-import { de, es, ru, it, fr, ko, uk, pl } from 'date-fns/locale';
+import { de, es, ru, it, fr, ko, uk, pl, ptBR, zhTW } from 'date-fns/locale';
 import { t } from 'ttag';
 
 const LOCALE_MAP: {
@@ -20,7 +20,10 @@ const LOCALE_MAP: {
   ko: { locale: ko },
   uk: { locale: uk },
   pl: { locale: pl },
-}
+  pt: { locale: ptBR },
+  zh: { locale: zhTW },
+};
+
 /**
  * Formats a timestamp into a string with year and month, e.g. "2017-2".
  */
@@ -66,7 +69,13 @@ export function toDateStringMonthName(timestamp: number) {
   return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 }
 
-export function toRelativeDateString(date: Date, locale: string) {
+export function toRelativeDateString(date: Date | string, locale: string) {
+  if (date === undefined) {
+    return '???';
+  }
+  if (typeof date === 'string') {
+    date = new Date(Date.parse(date));
+  }
   const nowDate = new Date();
   const startOfNowDate = startOfDay(nowDate);
   if (isAfter(date, startOfNowDate)) {
@@ -75,9 +84,18 @@ export function toRelativeDateString(date: Date, locale: string) {
   if (isAfter(date, addDays(startOfNowDate, -1))) {
     return t`Updated yesterday`;
   }
-  if (isAfter(date, addDays(startOfNowDate, -7))) {
-    const dayOfWeek = format(date, 'EEEE', LOCALE_MAP[locale]);
-    return t`Updated ${dayOfWeek}`;
+  if (isAfter(date, addDays(startOfNowDate, -6))) {
+    const dayOfWeek = format(date, 'EEEE');
+    switch (dayOfWeek) {
+      case 'Monday': return t`Updated Monday`;
+      case 'Tuesday': return t`Updated Tuesday`;
+      case 'Wednesday': return t`Updated Wednesday`;
+      case 'Thursday': return t`Updated Thursday`;
+      case 'Friday': return t`Updated Friday`;
+      case 'Saturday': return t`Updated Saturday`;
+      case 'Sunday': return t`Updated Sunday`;
+      default: return t`Updated ${dayOfWeek}`;
+    }
   }
   const dateString = format(date, 'MMMM d, yyyy', LOCALE_MAP[locale]);
   return t`Updated ${dateString}`;

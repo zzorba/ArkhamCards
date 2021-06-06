@@ -1,14 +1,17 @@
 import React from 'react';
 
 import ArkhamIcon from './ArkhamIcon';
+import AppIcon from './AppIcon';
 import CarcosaIcon from './CarcosaIcon';
 import CircleIcon from './CircleIcon';
 import CoreSetIcon from './CoreSetIcon';
+import DarkMatterIcon from './DarkMatterIcon';
 import DreamEatersIcon from './DreamEatersIcon';
 import DunwichIcon from './DunwichIcon';
 import ForgottenIcon from './ForgottenIcon';
 import StandaloneIcon from './StandaloneIcon';
 import InnsmouthIcon from './InnsmouthIcon';
+import AliceIcon from './AliceIcon';
 
 interface Props {
   encounter_code: string;
@@ -17,16 +20,25 @@ interface Props {
 }
 
 export default class EncounterIcon extends React.PureComponent<Props> {
+  aliceIcon(name: string, size: number, color: string) {
+    return (<AliceIcon name={name} size={size} color={color} />);
+  }
   arkhamIcon(name: string, size: number, color: string) {
     return (<ArkhamIcon name={name} size={size} color={color} />);
   }
-
+  appIcon(name: string, size: number, color: string) {
+    return (<AppIcon name={name} size={size} color={color} />);
+  }
   coreIcon(name: string, size: number, color: string) {
     return (<CoreSetIcon name={name} size={size} color={color} />);
   }
 
   innsmouthIcon(name: string, size: number, color: string) {
     return (<InnsmouthIcon name={name} size={size} color={color} />);
+  }
+
+  darkMatterIcon(name: string, size: number, color: string) {
+    return (<DarkMatterIcon name={name} size={size} color={color} />);
   }
 
   dunwichIcon(name: string, size: number, color: string) {
@@ -70,6 +82,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.standaloneIcon('jacqueline', size, color);
       case 'ste':
         return this.standaloneIcon('stella', size, color);
+      case 'meddling_of_meowlathotep':
+        return this.standaloneIcon('meddling', size, color);
       case 'rtnotz':
       case 'core':
       case 'agents_of_hastur':
@@ -136,10 +150,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'sorcery':
       case 'the_beyond':
       case 'whippoorwills':
-      case 'return_to_extracurricular_activities':
       case 'return_to_the_house_always_wins':
       case 'return_to_the_miskatonic_museum':
-      case 'return_to_the_essex_county_express':
       case 'return_to_blood_on_the_altar':
       case 'return_to_undimensioned_and_unseen':
       case 'return_to_where_doom_awaits':
@@ -151,6 +163,12 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'yog_sothoths_emissaries':
       case 'beyond_the_threshold':
         return this.dunwichIcon(encounter_code, size, color);
+      case 'return_to_the_essex_county_express':
+      case 'return_to_essex_county_express':
+        return this.dunwichIcon('return_to_the_essex_county_express', size, color);
+      case 'return_to_extracurricular_activities':
+      case 'return_to_extracurricular_activity':
+        return this.dunwichIcon('return_to_extracurricular_activities', size, color);
 
       case 'ptc': // THE PATH TO CARCOSA
         return this.carcosaIcon('carcosa', size, color);
@@ -205,6 +223,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.carcosaIcon('return_to_the_phantom_of_truth', size, color);
       case 'decay':
         return this.carcosaIcon('decay_and_filth', size, color);
+      case 'the_stranger':
       case 'stranger':
         return this.carcosaIcon('the_stranger', size, color);
       case 'promo': // PROMO
@@ -220,8 +239,11 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'aon':
       case 'all_or_nothing':
         return this.standaloneIcon('all_or_nothing', size, color);
+      case 'bad':
+      case 'bad_blood':
+        return this.standaloneIcon('bad_blood', size, color);
       case 'parallel':
-        return this.standaloneIcon('parallel', size, color);
+        return this.appIcon('parallel', size, color);
       case 'cotr':
       case 'curse_of_the_rougarou':
       case 'rougarou':
@@ -286,15 +308,19 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'eztli':
         return this.forgottenIcon('the_doom_of_eztli', size, color);
       case 'traps':
+      case 'deadly_traps':
         return this.forgottenIcon('deadly_traps', size, color);
       case 'flux':
+      case 'temporal_flux':
         return this.forgottenIcon('temporal_flux', size, color);
       case 'ruins':
         return this.forgottenIcon('forgotten_ruins', size, color);
       case 'venom':
         return this.forgottenIcon('yigs_venom', size, color);
       case 'k\'n-yan':
+      case 'heart_of_the_elders_part_2':
         return this.forgottenIcon('knyan', size, color);
+      case 'heart_of_the_elders_part_1':
       case 'pillars_of_judgment':
         return this.forgottenIcon('pillars_of_judgement', size, color);
       case 'rttfa':
@@ -321,59 +347,91 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'return_to_the_doom_of_eztli':
       case 'return_to_threads_of_fate':
       case 'return_to_the_boundary_beyond':
-      case 'return_to_knyan':
       case 'return_to_the_depths_of_yoth':
       case 'return_to_shattered_aeons':
       case 'return_to_turn_back_time':
       case 'return_to_the_forgotten_age':
         return this.forgottenIcon(encounter_code, size, color);
+      case 'return_to_heart_of_the_elders_part_1':
       case 'return_to_pillars_of_judgement':
       case 'return_to_pillars_of_judgment':
         return this.forgottenIcon('return_to_pillars_of_judgement', size, color);
+      case 'return_to_heart_of_the_elders_part_2':
+      case 'return_to_knyan':
+        return this.forgottenIcon('return_to_knyan', size, color);
       case 'return_to_heart_of_the_elders':
       case 'return_to_the_heart_of_the_elders':
         return this.forgottenIcon('return_to_the_heart_of_the_elders', size, color);
+      case 'wog':
+      case 'war_of_the_outer_gods':
+        return this.standaloneIcon('war_of_the_outer_gods', size, color);
+      case 'children_of_paradise':
+        return this.standaloneIcon('children_of_paradise', size, color);
+      case 'swarm_of_assimilation':
+      case 'assimilating_swarm':
+        return this.standaloneIcon('assimilating_swarm', size, color);
+      case 'death_of_stars':
+      case 'death_of_the_stars':
+        return this.standaloneIcon('death_of_the_stars', size, color);
       case 'tcu':
         return this.circleIcon('the_circle_undone', size, color);
+      case 'rttcu':
+        return this.circleIcon('rttcu', size, color);
       case 'tsn':
+      case 'the_secret_name':
         return this.circleIcon('the_secret_name', size, color);
       case 'wos':
+      case 'the_wages_of_sin':
         return this.circleIcon('the_wages_of_sin', size, color);
       case 'fgg':
+      case 'for_the_greater_good':
         return this.circleIcon('for_the_greater_good', size, color);
       case 'uad':
+      case 'union_and_disillusion':
         return this.circleIcon('union_and_disillusion', size, color);
       case 'icc':
+      case 'in_the_clutches_of_chaos':
         return this.circleIcon('in_the_clutches_of_chaos', size, color);
       case 'bbt':
+      case 'before_the_black_throne':
         return this.circleIcon('before_the_black_throne', size, color);
+      case 'disappearance_at_the_twilight_estate':
+      case 'return_to_disappearance_at_the_twilight_estate':
+      case 'the_witching_hour':
+      case 'return_to_the_witching_hour':
+      case 'at_deaths_doorstep':
+      case 'return_to_at_deaths_doorstep':
+      case 'return_to_the_secret_name':
+      case 'return_to_the_wages_of_sin':
+      case 'return_to_for_the_greater_good':
+      case 'return_to_union_and_disillusion':
+      case 'return_to_in_the_clutches_of_chaos':
+      case 'return_to_before_the_black_throne':
       case 'the_circle_undone':
       case 'agents_of_azathoth':
       case 'anettes_coven':
-      case 'at_deaths_doorstep':
       case 'city_of_sins':
-      case 'disappearance_at_the_twilight_estate':
       case 'inexorable_fate':
       case 'realm_of_death':
       case 'silver_twilight_lodge':
       case 'spectral_predators':
       case 'the_watcher':
-      case 'the_witching_hour':
       case 'trapped_spirits':
       case 'witchcraft':
       case 'music_of_the_damned':
       case 'secrets_of_the_universe':
-      case 'the_secret_name':
-      case 'the_wages_of_sin':
-      case 'for_the_greater_good':
-      case 'union_and_disillusion':
-      case 'in_the_clutches_of_chaos':
-      case 'before_the_black_throne':
+      case 'witchwork': // real return names tba
+      case 'unspeakable_fate':
+      case 'threatening_evil':
+      case 'spectral_realm':
+      case 'cold_fog':
+      case 'city_of_the_damned':
+      case 'bloodthirsty_spirits':
         return this.circleIcon(encounter_code, size, color);
       case 'tdeb':
         return this.dreamIcon('agents_of_atlach_nacha', size, color);
       case 'tdea':
-        return this.dreamIcon('the_search_for_kadath', size, color);
+        return this.dreamIcon('dreamers_curse', size, color);
       case 'tde':
       case 'the_dream_eaters':
         return this.dreamIcon('dream', size, color);
@@ -413,16 +471,16 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.dreamIcon('point_of_no_return', size, color);
       case 'in_too_deep':
       case 'itd':
-      case 'devils_reef':
+        return this.innsmouthIcon('in_too_deep', size, color);
+      case 'devil_reef':
       case 'def':
-      case 'hhg':
+        return this.innsmouthIcon('devil_reef', size, color);
       case 'horror_in_high_gear':
-      case 'a_light_in_the_fog':
-      case 'lif':
-      case 'lair_of_dagon':
-      case 'lod':
+      case 'hhg':
+        return this.innsmouthIcon('horror_in_high_gear', size, color);
       case 'itm':
       case 'into_the_maelstrom':
+        return this.innsmouthIcon('into_the_maelstrom', size, color);
       case 'tic':
       case 'the_innsmouth_conspiracy':
         return this.innsmouthIcon('tic', size, color);
@@ -437,7 +495,13 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.innsmouthIcon('grotto_of_despair', size, color);
       case 'flooded_caverns':
         return this.innsmouthIcon('flooded_caves', size, color);
-
+      case 'a_light_in_the_fog':
+      case 'lif':
+        return this.innsmouthIcon('a_light_in_the_fog', size, color);
+      case 'the_lair_of_dagon':
+      case 'lair_of_dagon':
+      case 'lod':
+        return this.innsmouthIcon('lair_of_dagon', size, color);
       case 'agents_of_dagon':
       case 'agents_of_hydra':
       case 'rising_tide':
@@ -446,7 +510,64 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'syzygy':
       case 'malfunction':
         return this.innsmouthIcon(encounter_code, size, color);
-
+      case 'the_tatterdemalion':
+      case 'electric_nightmare':
+      case 'lost_quantum':
+      case 'in_the_shadow_of_earth':
+      case 'strange_moons':
+      case 'the_machine_in_yellow':
+      case 'fragment_of_carcosa':
+      case 'starfall':
+      case 'deep_space':
+      case 'anachronism':
+      case 'dark_past':
+      case 'artificial_intelligence':
+      case 'endtimes':
+      case 'the_boogeyman':
+      case 'interstellar_predators':
+      case 'hasturs_gaze':
+        return this.darkMatterIcon(encounter_code, size, color);
+      case 'dark_matter':
+      case 'zdm':
+        return this.darkMatterIcon('the_tatterdemalion', size, color);
+      case 'a_sea_of_troubles':
+      case 'gurathnakas_shadows':
+      case 'arkham_in_wonderland':
+      case 'warped_reality':
+      case 'bleeding_hearts':
+      case 'card_guards':
+      case 'riddles_and_games':
+      case 'wonderland_boons':
+      case 'wonderland_banes':
+      case 'fools_mate':
+      case 'chessmen':
+      case 'lucid_nightmare':
+      case 'alice_in_arkham':
+      case 'sibling_rivalry':
+      case 'tempest_in_a_teapot':
+      case 'walrus_and_carpenter':
+      case 'wild_snark_chase':
+      case 'dodo':
+      case 'caterpillar':
+      case 'white_queen':
+      case 'gryphon_and_mock_turtle':
+      case 'duchess':
+      case 'humpty_dumpty':
+      case 'lion_and_unicorn':
+        return this.aliceIcon(encounter_code, size, color);
+      case 'chesire_cat':
+        return this.aliceIcon('cheshire_cat', size, color);
+      case 'jabberwocky':
+        return this.aliceIcon('jabberwock', size, color);
+      case 'alice_in_wonderland':
+      case 'zaw':
+        return this.aliceIcon('alice_in_wonderland', size, color);
+      case 'deep_ones':
+      case 'sinking_ship':
+        return this.standaloneIcon(encounter_code, size, color);
+      case 'consternation_on_the_constellation':
+      case 'zcc':
+        return this.standaloneIcon('consternation_on_the_constellation', size, color);
       default:
         return this.coreIcon('core', size, color);
     }

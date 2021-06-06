@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { forwardRef, useCallback, useContext, useImperativeHandle, useMemo, useRef } from 'react';
 import {
+  NativeSyntheticEvent,
+  Platform,
   StyleSheet,
+  TextInputSubmitEditingEventData,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -9,107 +12,117 @@ import { t } from 'ttag';
 
 import AppIcon from '@icons/AppIcon';
 import ToggleButton from '@components/core/ToggleButton';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 
 export const SEARCH_BAR_HEIGHT = 60;
 export const SEARCH_BAR_INPUT_HEIGHT = SEARCH_BAR_HEIGHT - 20;
+
 interface Props {
-  onChangeText: (search: string) => void;
+  onChangeText: (search: string, submit: boolean) => void;
   placeholder: string;
   value?: string;
   toggleAdvanced?: () => void;
   advancedOpen?: boolean;
 }
 
-export default class SearchBox extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
 
-  _clear = () => {
-    this.props.onChangeText('');
-  };
+export interface SearchBoxHandles {
+  focus: () => void;
+}
 
-  renderClearButton(rightPadding?: boolean) {
-    const { value } = this.props;
-    const { colors } = this.context;
+function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedOpen }: Props, ref: any) {
+  const { colors } = useContext(StyleContext);
+  const textInputRef = useRef<Input>(null);
+  const clear = useCallback(() => {
+    onChangeText('', true);
+  }, [onChangeText]);
+
+  const onSearchUpdated = useCallback((value: string) => {
+    onChangeText(value, false);
+  }, [onChangeText]);
+  const onSubmit = useCallback((e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
+    onChangeText(e.nativeEvent.text, true);
+  }, [onChangeText]);
+
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      textInputRef.current?.focus();
+    },
+  }), [textInputRef]);
+
+  const clearButton = useMemo(() => {
     if (!value) {
-      return undefined;
+      return null;
     }
     return (
-      <TouchableOpacity style={rightPadding ? space.marginRightS : undefined} onPress={this._clear}>
+      <TouchableOpacity style={space.marginRightS} onPress={clear}>
         <View style={styles.dismissIcon}>
           <AppIcon name="dismiss" size={18} color={colors.D20} />
         </View>
       </TouchableOpacity>
     );
-  }
-  renderToggleButton() {
-    const {
-      toggleAdvanced,
-      advancedOpen,
-    } = this.props;
+  }, [value, colors, clear]);
+
+  const toggleButton = useMemo(() => {
     if (!toggleAdvanced) {
       return (
         <View style={styles.rightButtons}>
-          { this.renderClearButton() }
+          { clearButton }
         </View>
       );
     }
     return (
       <View style={styles.rightButtons}>
-        { this.renderClearButton(true) }
+        { clearButton }
         <ToggleButton accessibilityLabel={t`Search options`} value={!!advancedOpen} onPress={toggleAdvanced} icon="dots" />
       </View>
     );
-  }
+  }, [toggleAdvanced, advancedOpen, clearButton]);
 
-  render() {
-    const {
-      placeholder,
-      onChangeText,
-      toggleAdvanced,
-      value,
-    } = this.props;
-    const { colors, borderStyle } = this.context;
-
-    return (
-      <Input
-        clearButtonMode="never"
-        autoCorrect={false}
-        autoCapitalize="none"
-        multiline={false}
-        containerStyle={[styles.container, borderStyle, { backgroundColor: colors.L20 }, !toggleAdvanced ? styles.underline : {}]}
-        inputContainerStyle={[
-          styles.searchInput,
-          {
-            backgroundColor: colors.L20,
-            borderColor: colors.L10,
-          },
-        ]}
-        inputStyle={{
-          marginTop: 6,
-          fontFamily: 'Alegreya-Regular',
-          fontSize: 20,
-          lineHeight: 24,
-          color: colors.darkText,
-          textAlignVertical: 'center',
-        }}
-        underlineColorAndroid="rgba(0,0,0,0)"
-        allowFontScaling={false}
-        onChangeText={onChangeText}
-        placeholder={placeholder}
-        placeholderTextColor={colors.D20}
-        leftIcon={<View style={styles.searchIcon}><AppIcon name="search" color={colors.M} size={18} /></View>}
-        rightIcon={this.renderToggleButton()}
-        rightIconContainerStyle={{
-          marginRight: -13,
-        }}
-        value={value}
-      />
-    );
-  }
+  return (
+    <Input
+      ref={textInputRef}
+      clearButtonMode="never"
+      autoCorrect={false}
+      autoCapitalize="none"
+      multiline={false}
+      containerStyle={[styles.container, { borderColor: colors.L10, backgroundColor: colors.L20 }, !toggleAdvanced ? styles.underline : undefined]}
+      inputContainerStyle={[
+        styles.searchInput,
+        {
+          backgroundColor: colors.L20,
+          borderColor: colors.L10,
+        },
+      ]}
+      inputStyle={{
+        marginTop: 6,
+        fontFamily: 'Alegreya-Regular',
+        fontSize: Platform.OS === 'android' ? 16 : 20,
+        lineHeight: 24,
+        color: colors.darkText,
+        textAlignVertical: 'center',
+      }}
+      underlineColorAndroid="rgba(0,0,0,0)"
+      allowFontScaling={false}
+      onChangeText={onSearchUpdated}
+      placeholder={placeholder}
+      placeholderTextColor={colors.D20}
+      leftIcon={<View style={styles.searchIcon}><AppIcon name="search" color={colors.M} size={18} /></View>}
+      rightIcon={toggleButton}
+      returnKeyType="search"
+      onSubmitEditing={onSubmit}
+      blurOnSubmit
+      rightIconContainerStyle={{
+        marginRight: -13,
+      }}
+      value={value}
+    />
+  );
 }
+
+
+export default forwardRef(SearchBox);
 
 const styles = StyleSheet.create({
   underline: {

@@ -3,22 +3,30 @@ import { ngettext, msgid, t } from 'ttag';
 
 import { GuideStartCustomSideScenarioInput } from '@actions/types';
 import { ProcessedCampaign, ProcessedScenario, ScenarioId } from '@data/scenario';
-import { createInvestigatorStatusStep } from './fixedSteps';
+import { createInvestigatorStatusStep, PLAY_SCENARIO_STEP_ID } from './fixedSteps';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import CampaignStateHelper from './CampaignStateHelper';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import ScenarioGuide from './ScenarioGuide';
-import { FullCampaign, Scenario, Supply, Errata, CardErrata, Question } from './types';
+import { FullCampaign, Scenario, Supply, Errata, CardErrata, Question, Achievement } from './types';
 
+type CampaignLogEntry = {
+  id: string;
+  text: string;
+} | {
+  id: string;
+  text: undefined;
+  masculine_text: string;
+  feminine_text: string;
+};
+
+export interface CampaignLogSection {
+  section: string;
+  entries: CampaignLogEntry[];
+}
 export interface CampaignLog {
   campaignId: string;
-  sections: {
-    section: string;
-    entries: {
-      id: string;
-      text: string;
-    }[];
-  }[];
+  sections: CampaignLogSection[];
   supplies: Supply[];
 }
 
@@ -38,6 +46,7 @@ interface LogEntrySectionCount extends LogSection {
 interface LogEntryText extends LogSection {
   type: 'text';
   text: string;
+  feminineText?: string;
 }
 
 interface LogEntrySupplies extends LogSection {
@@ -45,7 +54,11 @@ interface LogEntrySupplies extends LogSection {
   supply: Supply;
 }
 
-type LogEntry = LogEntrySectionCount | LogEntryCard | LogEntryText | LogEntrySupplies;
+interface LogEntryInvestigatorCount extends LogSection {
+  type: 'investigator_count';
+}
+
+type LogEntry = LogEntrySectionCount | LogEntryCard | LogEntryText | LogEntrySupplies | LogEntryInvestigatorCount;
 const CARD_REGEX = /\d\d\d\d\d[a-z]?/;
 export const CAMPAIGN_SETUP_ID = '$campaign_setup';
 
@@ -96,8 +109,16 @@ export default class CampaignGuide {
     );
   }
 
+  achievements(): Achievement[] {
+    return this.campaign.campaign.achievements || [];
+  }
+
   campaignCycleCode() {
     return this.campaign.campaign.id;
+  }
+
+  campaignCustomData() {
+    return this.campaign.campaign.custom;
   }
 
   campaignName() {
@@ -134,10 +155,11 @@ export default class CampaignGuide {
 
   getScenario(
     id: string,
-    campaignState: CampaignStateHelper
+    campaignState: CampaignStateHelper,
+    standalone?: boolean
   ): ProcessedScenario | undefined {
     return find(
-      this.processAllScenarios(campaignState).scenarios,
+      this.processAllScenarios(campaignState, standalone).scenarios,
       scenario => scenario.scenarioGuide.id === id
     );
   }
@@ -156,6 +178,7 @@ export default class CampaignGuide {
 
   processAllScenarios(
     campaignState: CampaignStateHelper,
+    standalone?: boolean
   ): ProcessedCampaign {
     const scenarios: ProcessedScenario[] = [];
     let campaignLog: GuidedCampaignLog = new GuidedCampaignLog(
@@ -170,7 +193,8 @@ export default class CampaignGuide {
           scenario.id,
           scenario.scenario,
           campaignState,
-          campaignLog
+          campaignLog,
+          standalone
         );
         forEach(nextScenarios, scenario => {
           scenarios.push(scenario);
@@ -265,8 +289,10 @@ export default class CampaignGuide {
         scenario: {
           id: CAMPAIGN_SETUP_ID,
           type: 'interlude',
+          icon: this.campaign.campaign.id,
           scenario_name: t`Campaign Setup`,
           full_name: t`Campaign Setup`,
+          header: '',
           setup: this.campaign.campaign.setup,
           steps: this.campaign.campaign.steps,
         },
@@ -321,7 +347,8 @@ export default class CampaignGuide {
     id: ScenarioId,
     scenario: Scenario,
     campaignState: CampaignStateHelper,
-    campaignLog: GuidedCampaignLog
+    campaignLog: GuidedCampaignLog,
+    standalone?: boolean
   ): ProcessedScenario[] {
     const scenarioGuide = new ScenarioGuide(
       id.encodedScenarioId,
@@ -355,7 +382,7 @@ export default class CampaignGuide {
       }];
     }
     const scenarioState = new ScenarioStateHelper(id.encodedScenarioId, campaignState);
-    const executedScenario = scenarioGuide.setupSteps(scenarioState);
+    const executedScenario = scenarioGuide.setupSteps(scenarioState, standalone);
     const firstResult: ProcessedScenario = {
       type: executedScenario.inProgress ? 'started' : 'completed',
       id,
@@ -393,9 +420,10 @@ export default class CampaignGuide {
       id: entry.scenario,
       scenario_name: entry.name,
       full_name: entry.name,
+      header: '',
       setup: [
         'spend_xp_cost',
-        '$play_scenario',
+        PLAY_SCENARIO_STEP_ID,
         '$end_of_scenario_status',
         '$earn_xp',
         '$upgrade_decks',
@@ -419,7 +447,7 @@ export default class CampaignGuide {
           },
         },
         {
-          id: '$play_scenario',
+          id: PLAY_SCENARIO_STEP_ID,
           type: 'input',
           input: {
             type: 'play_scenario',
@@ -450,7 +478,7 @@ export default class CampaignGuide {
   ): Scenario {
     const campaignPlayScenarioStep = find(
       this.campaign.campaign.side_scenario_steps,
-      step => step.id === '$play_scenario'
+      step => step.id === PLAY_SCENARIO_STEP_ID
     );
     if (!campaignPlayScenarioStep ||
       campaignPlayScenarioStep.type !== 'input' ||
@@ -460,7 +488,7 @@ export default class CampaignGuide {
     }
     const scenarioPlayScenarioStep = find(
       scenario.steps,
-      step => step.id === '$play_scenario'
+      step => step.id === PLAY_SCENARIO_STEP_ID
     );
     if (!scenarioPlayScenarioStep ||
       scenarioPlayScenarioStep.type !== 'input' ||
@@ -478,13 +506,14 @@ export default class CampaignGuide {
     return {
       ...scenario,
       steps: [
-        ...filter(scenario.steps, step => step.id !== '$play_scenario'),
-        ...filter(this.campaign.campaign.side_scenario_steps, step => step.id !== '$play_scenario'),
+        ...filter(scenario.steps, step => step.id !== PLAY_SCENARIO_STEP_ID),
+        ...filter(this.campaign.campaign.side_scenario_steps, step => step.id !== PLAY_SCENARIO_STEP_ID),
         {
-          id: '$play_scenario',
+          id: PLAY_SCENARIO_STEP_ID,
           type: 'input',
           input: {
             type: 'play_scenario',
+            no_resolutions: scenarioPlayScenarioStep.input.no_resolutions,
             branches: [
               ...(campaignPlayScenarioStep.input.branches || []),
               ...(scenarioPlayScenarioStep.input.branches || []),
@@ -543,6 +572,12 @@ export default class CampaignGuide {
         supply,
       };
     }
+    if (section.type === 'investigator_count') {
+      return {
+        type: 'investigator_count',
+        section: section.title,
+      }
+    }
     if (id === '$count') {
       return {
         type: 'section_count',
@@ -565,6 +600,14 @@ export default class CampaignGuide {
         entry => entry.id === id
       );
       if (entry) {
+        if (entry.text === undefined) {
+          return {
+            type: 'text',
+            section: section.title,
+            text: entry.masculine_text,
+            feminineText: entry.feminine_text,
+          };
+        }
         return {
           type: 'text',
           section: section.title,

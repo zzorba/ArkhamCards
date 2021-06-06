@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import SimpleMarkdown from 'simple-markdown';
 import {
   MarkdownView,
@@ -23,9 +23,10 @@ import SmallCapsNode from './SmallCapsNode';
 import CenterNode from './CenterNode';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
+const BASE_ORDER = 0;
 const ParagraphTagRule: MarkdownRule<WithChildren, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<p>(.+?)<\\/p>')),
-  order: 0,
+  order: BASE_ORDER + 0,
   parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
     return {
       children: nestedParse(capture[1], state),
@@ -34,32 +35,45 @@ const ParagraphTagRule: MarkdownRule<WithChildren, State> = {
   render: ParagraphHtmlTagNode,
 };
 
-function ArkhamIconRule(style: StyleContextType): MarkdownRule<WithIconName, State> {
+function ArkhamIconRule(style: StyleContextType, sizeScale: number, avoidLinks: boolean): MarkdownRule<WithIconName, State> {
   return {
-    match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\]')),
-    order: 1,
+    match: SimpleMarkdown.inlineRegex(
+      avoidLinks ? new RegExp('^\\[([^\\]]+)\\](?=$|[^(])') : new RegExp('^\\[([^\\]]+)\\]')
+    ),
+    order: BASE_ORDER + 1,
     parse: (capture) => {
       return { name: capture[1] };
     },
-    render: ArkhamIconNode(style),
+    render: ArkhamIconNode(style, sizeScale),
   };
 }
 
-function ArkahmIconSpanRule(style: StyleContextType): MarkdownRule<WithIconName, State> {
+function ArkhamIconSkillTextRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithIconName, State> {
   return {
-    match: SimpleMarkdown.inlineRegex(new RegExp('^<span class="icon-(.+?)"( title="[^"]*")?></span>')),
-    order: 1,
+    match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\](?=\\([0-9X]+\\))')),
+    order: BASE_ORDER + 1,
     parse: (capture) => {
       return { name: capture[1] };
     },
-    render: ArkhamIconNode(style),
+    render: ArkhamIconNode(style, sizeScale),
+  };
+}
+
+function ArkahmIconSpanRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithIconName, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<span class="icon-([^"]+)"( title="[^"]*")?><\\/span>')),
+    order: BASE_ORDER + 1,
+    parse: (capture) => {
+      return { name: capture[1] };
+    },
+    render: ArkhamIconNode(style, sizeScale),
   };
 }
 
 function BreakTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<br\\/>')),
-    order: 1,
+    order: BASE_ORDER + 1,
     parse: () => {
       return { text: '\n' };
     },
@@ -70,7 +84,7 @@ function BreakTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
 function SmallCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<smallcaps>([\\s\\S]+?)<\\/smallcaps>')),
-    order: 2,
+    order: BASE_ORDER + 2,
     parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
       return {
         children: nestedParse(capture[1], state),
@@ -83,7 +97,7 @@ function SmallCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildre
 function EmphasisMarkdownTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^\\[\\[([\\s\\S]+?)\\]\\]')),
-    order: 0,
+    order: BASE_ORDER + 0,
     parse: (capture) => {
       return { text: capture[1] };
     },
@@ -94,7 +108,7 @@ function EmphasisMarkdownTagRule(style: StyleContextType): MarkdownRule<WithText
 function MalformedBoldItalicHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<b><i>([^<]+?)<\\/b><\\/i>')),
-    order: 1,
+    order: BASE_ORDER + 1,
     parse: (capture) => {
       return { text: capture[1] };
     },
@@ -105,7 +119,7 @@ function MalformedBoldItalicHtmlTagRule(style: StyleContextType): MarkdownRule<W
 function DelHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<del>([^<]+?)<\\/del>')),
-    order: 1,
+    order: BASE_ORDER + 1,
     parse: (capture) => {
       return { text: capture[1] };
     },
@@ -114,8 +128,8 @@ function DelHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, State> 
 }
 
 const HrTagRule: MarkdownRule<WithChildren, State> = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<hr>')),
-  order: 1,
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<hr[/]?>')),
+  order: BASE_ORDER + 1,
   parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
     return { children: nestedParse(capture[1], state) };
   },
@@ -124,7 +138,7 @@ const HrTagRule: MarkdownRule<WithChildren, State> = {
 
 const BlockquoteHtmlTagRule: MarkdownRule<WithChildren, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<blockquote>([\\s\\S]+?)<\\/blockquote>')),
-  order: 1,
+  order: BASE_ORDER + 1,
   parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
     return {
       children: nestedParse(capture[1], state),
@@ -136,7 +150,7 @@ const BlockquoteHtmlTagRule: MarkdownRule<WithChildren, State> = {
 function BoldItalicHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<b><i>([\\s\\S]+?)<\\/i><\\/b>')),
-    order: 1,
+    order: BASE_ORDER + 1,
     parse: (capture) => {
       return { text: capture[1] };
     },
@@ -144,22 +158,22 @@ function BoldItalicHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, 
   };
 }
 
-function BoldHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+function BoldHtmlTagRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<b>([\\s\\S]+?)<\\/b>')),
-    order: 2,
+    order: BASE_ORDER + 2,
     parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
       return {
         children: nestedParse(capture[1], state),
       };
     },
-    render: BoldHtmlTagNode(style),
+    render: BoldHtmlTagNode(style, sizeScale),
   };
 }
 
 const CenterHtmlTagRule: MarkdownRule<WithChildren, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<center>([\\s\\S]+?)<\\/center>')),
-  order: 2,
+  order: BASE_ORDER + 2,
   parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
     return {
       children: nestedParse(capture[1], state),
@@ -171,7 +185,7 @@ const CenterHtmlTagRule: MarkdownRule<WithChildren, State> = {
 function UnderlineHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<u>([\\s\\S]+?)<\\/u>')),
-    order: 2,
+    order: BASE_ORDER + 2,
     parse: (capture) => {
       return { text: capture[1] };
     },
@@ -182,7 +196,7 @@ function UnderlineHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, S
 function EmphasisHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<em>([\\s\\S]+?)<\\/em>')),
-    order: 1,
+    order: BASE_ORDER + 1,
     parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
       return {
         children: nestedParse(capture[1], state),
@@ -195,7 +209,7 @@ function EmphasisHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren
 function ItalicHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<i>([\\s\\S]+?)<\\/i>')),
-    order: 2,
+    order: BASE_ORDER + 2,
     parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
       return {
         children: nestedParse(capture[1], state),
@@ -207,39 +221,51 @@ function ItalicHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, 
 
 interface Props {
   text: string;
-  onLinkPress?: (url: string) => void;
+  onLinkPress?: (url: string, context: StyleContextType) => void;
+  sizeScale?: number;
 }
 
-export default function CardText({ text, onLinkPress }: Props) {
+export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: Props) {
   const context = useContext(StyleContext);
   const cleanText = text
+    .replace(/\\u2022/g, '•')
+    .replace(/<span class="icon-([^"]+?)"><\/span>/g, '[$1]')
     .replace(/&rarr;/g, '→')
     .replace(/\/n/g, '\n')
+    .replace(/^---*$/gm, '<hr>')
     .replace(/(^\s?-|^—\s+)(.+)$/gm,
       onLinkPress ? '<span class="icon-bullet"></span> $2' : '[bullet] $2'
-    );
+    )
+    .replace(/(<p>- )|(<p>–)/gm, onLinkPress ? '<p><span class="icon-bullet"></span> ' : '<p>[bullet] ');
 
+  const wrappedOnLinkPress = useCallback((url: string) => {
+    onLinkPress && onLinkPress(url, context);
+  }, [onLinkPress, context]);
+  const rules = useMemo(() => {
+    return {
+      emMarkdown: EmphasisMarkdownTagRule(context),
+      arkhamIconSpan: ArkahmIconSpanRule(context, sizeScale),
+      hrTag: HrTagRule,
+      blockquoteTag: BlockquoteHtmlTagRule,
+      delTag: DelHtmlTagRule(context),
+      brTag: BreakTagRule(context),
+      biTag: BoldItalicHtmlTagRule(context),
+      badBiTag: MalformedBoldItalicHtmlTagRule(context),
+      bTag: BoldHtmlTagRule(context, sizeScale),
+      pTag: ParagraphTagRule,
+      uTag: UnderlineHtmlTagRule(context),
+      emTag: EmphasisHtmlTagRule(context),
+      iTag: ItalicHtmlTagRule(context),
+      smallcapsTag: SmallCapsHtmlTagRule(context),
+      center: CenterHtmlTagRule,
+      arkhamIcon: ArkhamIconRule(context, sizeScale, !!onLinkPress),
+      arkhamIconSkillTestRule: ArkhamIconSkillTextRule(context, sizeScale),
+    };
+  }, [context, sizeScale, onLinkPress]);
   // Text that has hyperlinks uses a different style for the icons.
   return (
     <MarkdownView
-      rules={{
-        emMarkdown: EmphasisMarkdownTagRule(context),
-        arkhamIconSpan: ArkahmIconSpanRule(context),
-        hrTag: HrTagRule,
-        blockquoteTag: BlockquoteHtmlTagRule,
-        delTag: DelHtmlTagRule(context),
-        brTag: BreakTagRule(context),
-        biTag: BoldItalicHtmlTagRule(context),
-        badBiTag: MalformedBoldItalicHtmlTagRule(context),
-        bTag: BoldHtmlTagRule(context),
-        pTag: ParagraphTagRule,
-        uTag: UnderlineHtmlTagRule(context),
-        emTag: EmphasisHtmlTagRule(context),
-        iTag: ItalicHtmlTagRule(context),
-        smallcapsTag: SmallCapsHtmlTagRule(context),
-        center: CenterHtmlTagRule,
-        ...(onLinkPress ? {} : { arkhamIcon: ArkhamIconRule(context) }),
-      }}
+      rules={rules}
       styles={{
         list: {
           marginLeft: 4,
@@ -248,15 +274,64 @@ export default function CardText({ text, onLinkPress }: Props) {
           minWidth: 12,
           marginRight: 4,
         },
+        link: {
+          color: context.colors.navButton,
+        },
         paragraph: {
-          ...context.typography.small,
-          fontSize: 16 * context.fontScale,
-          lineHeight: 20 * context.fontScale,
+          fontFamily: 'Alegreya',
+          color: context.colors.darkText,
+          fontSize: 16 * context.fontScale * sizeScale,
+          lineHeight: 20 * context.fontScale * sizeScale,
           marginTop: 4,
           marginBottom: 4,
+          textAlign: context.justifyContent ? 'justify' : 'left',
+        },
+        tableHeaderCell: {
+          minHeight: 40,
+        },
+        tableHeaderCellContent: {
+          ...context.typography.small,
+          ...context.typography.bold,
+          fontFamily: 'Alegreya',
+          fontWeight: '700',
+          minHeight: 50,
+          paddingTop: 8,
+          paddingBottom: 8,
+        },
+        tableCell: {
+          minHeight: 40,
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          padding: 8,
+          margin: 0,
+        },
+        tableCellContent: {
+          ...context.typography.small,
+          fontFamily: 'Alegreya',
+          margin: 0,
+          padding: 16,
+          paddingTop: 16,
+          paddingBottom: 16,
         },
       }}
-      onLinkPress={onLinkPress}
+      fonts={{
+        Alegreya: {
+          fontWeights: {
+            300: 'Light',
+            400: 'Regular',
+            700: 'Bold',
+            800: 'ExtraBold',
+            900: 'Black',
+            normal: 'Regular',
+            bold: 'Bold',
+          },
+          fontStyles: {
+            normal: '',
+            italic: 'Italic',
+          },
+        },
+      }}
+      onLinkPress={onLinkPress ? wrappedOnLinkPress : undefined}
     >
       { cleanText }
     </MarkdownView>

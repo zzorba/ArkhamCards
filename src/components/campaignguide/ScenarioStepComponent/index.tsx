@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,13 +8,12 @@ import { Navigation } from 'react-native-navigation';
 import { filter } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import LocationSetupButton from './LocationSetupButton';
 import TableStepComponent from './TableStepComponent';
 import EffectsStepComponent from './EffectsStepComponent';
 import ResolutionStepComponent from './ResolutionStepComponent';
-import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
+import CampaignGuideContext from '../CampaignGuideContext';
+import { CHOOSE_RESOLUTION_STEP_ID } from '@data/scenario/fixedSteps';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 import XpCountComponent from './XpCountComponent';
 import BranchStepComponent from './BranchStepComponent';
@@ -25,10 +24,11 @@ import InputStepComponent from './InputStepComponent';
 import RuleReminderStepComponent from './RuleReminderStepComponent';
 import StoryStepComponent from './StoryStepComponent';
 import ScenarioStep from '@data/scenario/ScenarioStep';
-import COLORS from '@styles/colors';
 import space, { m, s } from '@styles/space';
-import CampaignGuide from '@data/scenario/CampaignGuide';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import NarrationStepComponent from './NarrationStepComponent';
+import ScenarioGuideContext from '../ScenarioGuideContext';
+import ActionButton from '../prompts/ActionButton';
 
 interface Props {
   componentId: string;
@@ -38,151 +38,164 @@ interface Props {
   switchCampaignScenario: () => void;
 }
 
-export default class ScenarioStepComponent extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  renderContent(campaignGuide: CampaignGuide, campaignId: number): React.ReactNode {
-    const {
-      componentId,
-      step: { step, campaignLog },
-      width,
-      border,
-      switchCampaignScenario,
-    } = this.props;
-    if (!step.type) {
-      return <GenericStepComponent step={step} />;
-    }
-    switch (step.type) {
-      case 'table':
-        return (
-          <TableStepComponent step={step} />
-        );
-      case 'branch':
-        return (
+function ScenarioStepComponentContent({
+  componentId,
+  step: { step, campaignLog },
+  border,
+  width,
+  switchCampaignScenario,
+}: Props) {
+  const { campaignGuide, campaignId } = useContext(CampaignGuideContext);
+  if (!step.type) {
+    return <GenericStepComponent step={step} />;
+  }
+  switch (step.type) {
+    case 'table':
+      return (
+        <TableStepComponent step={step} />
+      );
+    case 'branch':
+      return (
+        <NarrationStepComponent narration={step.narration}>
           <BranchStepComponent
             step={step}
             campaignLog={campaignLog}
           />
-        );
-      case 'story':
-        return (
+        </NarrationStepComponent>
+      );
+    case 'story':
+      return (
+        <NarrationStepComponent narration={step.narration}>
           <View style={border && !step.title ? styles.extraTopPadding : {}}>
             <StoryStepComponent
               step={step}
               width={width}
             />
           </View>
-        );
-      case 'encounter_sets':
-        return (
-          <EncounterSetStepComponent
-            step={step}
-            campaignGuide={campaignGuide}
-            campaignId={campaignId}
-            componentId={componentId}
-          />
-        );
-      case 'location_connectors':
-        return <LocationConnectorsStepComponent step={step} />;
-      case 'rule_reminder':
-        return <RuleReminderStepComponent step={step} />;
-      case 'resolution':
-        return <ResolutionStepComponent step={step} />;
-      case 'campaign_log_count':
-        return null;
-      case 'xp_count':
-        return (
-          <XpCountComponent
-            step={step}
-            campaignLog={campaignLog}
-          />
-        );
-      case 'input':
-        return (
+        </NarrationStepComponent>
+      );
+    case 'encounter_sets':
+      return (
+        <EncounterSetStepComponent
+          step={step}
+          campaignGuide={campaignGuide}
+          campaignId={campaignId}
+          componentId={componentId}
+        />
+      );
+    case 'location_connectors':
+      return <LocationConnectorsStepComponent step={step} />;
+    case 'rule_reminder':
+      return <RuleReminderStepComponent step={step} />;
+    case 'resolution':
+      return <ResolutionStepComponent step={step} />;
+    case 'campaign_log_count':
+      return null;
+    case 'xp_count':
+      return (
+        <XpCountComponent
+          step={step}
+          campaignLog={campaignLog}
+        />
+      );
+    case 'input':
+      return (
+        <NarrationStepComponent narration={step.narration}>
           <InputStepComponent
             componentId={componentId}
             step={step}
             campaignLog={campaignLog}
             switchCampaignScenario={switchCampaignScenario}
           />
-        );
-      case 'effects':
-        return (
-          <EffectsStepComponent
-            componentId={componentId}
-            width={width}
-            step={step}
-            campaignLog={campaignLog}
-            switchCampaignScenario={switchCampaignScenario}
-          />
-        );
-      case 'location_setup':
-        return (
-          <LocationSetupButton
-            step={step}
-            componentId={componentId}
-          />
-        );
-    }
+        </NarrationStepComponent>
+      );
+    case 'effects':
+      return (
+        <EffectsStepComponent
+          componentId={componentId}
+          width={width}
+          step={step}
+          campaignLog={campaignLog}
+          switchCampaignScenario={switchCampaignScenario}
+        />
+      );
+    case 'location_setup':
+      return (
+        <LocationSetupButton
+          step={step}
+          componentId={componentId}
+        />
+      );
+    default:
+      return null;
   }
+}
 
-  _proceed = () => {
-    Navigation.pop(this.props.componentId);
-  }
+export default function ScenarioStepComponent({
+  componentId,
+  step,
+  width,
+  border,
+  switchCampaignScenario,
+}: Props) {
+  const { typography, colors } = useContext(StyleContext);
+  const { campaignInvestigators } = useContext(CampaignGuideContext);
+  const { processedScenario } = useContext(ScenarioGuideContext);
 
-  render() {
-    const { step, border } = this.props;
-    const { gameFont, typography, colors } = this.context;
-    return (
-      <CampaignGuideContext.Consumer>
-        { ({ campaignInvestigators, campaignGuide, campaignId }: CampaignGuideContextType) => (
-          <ScenarioGuideContext.Consumer>
-            { (scenarioGuideContext: ScenarioGuideContextType) => {
-              const safeCodes = new Set(step.campaignLog.investigatorCodesSafe());
-              const investigators = filter(
-                campaignInvestigators,
-                investigator => safeCodes.has(investigator.code)
-              );
-              const context: ScenarioStepContextType = {
-                ...scenarioGuideContext,
-                campaignLog: step.campaignLog,
-                scenarioInvestigators: investigators,
-              };
-              return (
-                <ScenarioStepContext.Provider value={context}>
-                  { !!step.step.title && (
-                    <View style={styles.titleWrapper}>
-                      <Text style={[
-                        typography.bigGameFont,
-                        { fontFamily: gameFont, color: colors.scenarioGreen },
-                        space.paddingTopL,
-                        border ? typography.center : {},
-                      ]}>
-                        { step.step.title }
-                      </Text>
-                    </View>
-                  ) }
-                  { this.renderContent(campaignGuide, campaignId) }
-                  { (step.step.id === '$proceed') && (
-                    <BasicButton
-                      onPress={this._proceed}
-                      title={t`Done`}
-                    />
-                  ) }
-                </ScenarioStepContext.Provider>
-              );
-            } }
-          </ScenarioGuideContext.Consumer>
-        ) }
-      </CampaignGuideContext.Consumer>
+  const context: ScenarioStepContextType = useMemo(() => {
+    const safeCodes = new Set(step.campaignLog.investigatorCodesSafe());
+    const investigators = filter(
+      campaignInvestigators,
+      investigator => safeCodes.has(investigator.code)
     );
-  }
+    return {
+      campaignLog: step.campaignLog,
+      scenarioInvestigators: investigators,
+    };
+  }, [step.campaignLog, campaignInvestigators]);
+  const resolution = step.step.id === CHOOSE_RESOLUTION_STEP_ID || context.campaignLog.scenarioStatus(processedScenario.id.encodedScenarioId) === 'resolution';
+  const proceed = useCallback(() => {
+    Navigation.pop(componentId);
+  }, [componentId]);
+
+  return (
+    <ScenarioStepContext.Provider value={context}>
+      { !!step.step.title && (
+        <View style={styles.titleWrapper}>
+          <Text style={[
+            typography.bigGameFont,
+            { color: resolution ? colors.campaign.resolution : colors.campaign.setup },
+            space.paddingTopL,
+            border ? typography.center : {},
+          ]}>
+            { step.step.title }
+          </Text>
+        </View>
+      ) }
+      <ScenarioStepComponentContent
+        componentId={componentId}
+        step={step}
+        border={border}
+        width={width}
+        switchCampaignScenario={switchCampaignScenario}
+      />
+      { (step.step.id === '$proceed') && (
+        <View style={space.paddingS}>
+          <ActionButton
+            leftIcon="check"
+            onPress={proceed}
+            color="light"
+            title={t`Done`}
+          />
+        </View>
+      ) }
+    </ScenarioStepContext.Provider>
+  );
 }
 
 const styles = StyleSheet.create({
   titleWrapper: {
-    marginLeft: m + s,
+    marginLeft: m,
     marginRight: m + s,
   },
   extraTopPadding: {

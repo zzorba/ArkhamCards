@@ -1,33 +1,42 @@
-import React from 'react';
-import DeviceInfo from 'react-native-device-info';
-import { EventSubscription } from 'react-native';
-import { connect } from 'react-redux';
-import { Appearance, ColorSchemeName, AppearancePreferences } from 'react-native-appearance';
+import React, { useContext, useMemo } from 'react';
+import { Appearance, Dimensions, Platform, useWindowDimensions } from 'react-native';
+import { useSelector } from 'react-redux';
 import { ThemeProvider } from 'react-native-elements';
+import { throttle } from 'lodash';
 
-import StyleContext from './StyleContext';
-import { AppState, getAppFontScale, getLangPreference, getThemeOverride } from '@reducers';
+import StyleContext, { DEFAULLT_STYLE_CONTEXT } from './StyleContext';
+import { AppState, getAppFontScale, getThemeOverride } from '@reducers';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 import typography from './typography';
-import COLORS from './colors';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
-interface OwnProps {
+const EXTRA_BOLD_ITALIC = 'Alegreya-ExtraBoldItalic';
+function useColorScheme(delay = 2000) {
+  const [colorScheme, setColorScheme] = React.useState(
+    Appearance.getColorScheme()
+  );
+  const onColorSchemeChange = useMemo(() =>
+    throttle(({ colorScheme }) => {
+      setColorScheme(colorScheme);
+    },
+    delay,
+    {
+      leading: false,
+      trailing: true,
+    })
+  , [setColorScheme, delay]);
+  React.useEffect(() => {
+    Appearance.addChangeListener(onColorSchemeChange);
+    return () => {
+      onColorSchemeChange.cancel();
+      Appearance.removeChangeListener(onColorSchemeChange);
+    };
+  }, [onColorSchemeChange]);
+  return colorScheme;
+}
+interface Props {
   children: React.ReactNode;
 }
-
-interface ReduxProps {
-  lang: string;
-  themeOverride?: 'dark' | 'light';
-  appFontScale: number;
-}
-
-type Props = OwnProps & ReduxProps;
-
-interface State {
-  colorScheme: ColorSchemeName;
-  fontScale: number;
-}
-
 
 const LIGHT_ELEMENTS_THEME = {
   Button: {
@@ -53,75 +62,69 @@ const DARK_ELEMENTS_THEME = {
   },
 };
 
-export let RECENT_FONT_SCALE = 1.0;
+export default function StyleProvider({ children } : Props) {
+  const { lang } = useContext(LanguageContext);
+  const themeOverride = useSelector(getThemeOverride);
+  const appFontScale = useSelector(getAppFontScale);
+  const colorScheme = useColorScheme();
+  const justifyContent = useSelector((state: AppState) => !!state.settings.justifyContent);
+  const { fontScale, width: windowWidth, height: windowHeight, scale: windowScale } = useWindowDimensions();
+  const { scale: screenScale } = useMemo(() => Dimensions.get('screen'), []);
+  const { width, height } = useMemo(() => {
+    if (windowScale !== 0) {
+      const scaleFactor = screenScale / windowScale;
+      return {
+        width: windowWidth * scaleFactor,
+        height: windowHeight * scaleFactor,
+      };
+    }
+    return {
+      width: windowWidth,
+      height: windowHeight,
+    };
+  }, [windowWidth, windowHeight, windowScale, screenScale]);
+  const darkMode = (themeOverride ? themeOverride === 'dark' : colorScheme === 'dark');
+  const colors = darkMode ? DARK_THEME : LIGHT_THEME;
+  const gameFont = lang === 'ru' ? 'Teutonic RU' : 'Teutonic';
+  const italicFont = (lang === 'zh' && Platform.OS === 'ios') ? 'PingFangTC-Light' : 'Alegreya-Italic';
+  const boldItalicFont = (lang === 'zh' && Platform.OS === 'ios') ? 'PingFangTC-Semibold' : EXTRA_BOLD_ITALIC;
+  const styleTypography = useMemo(() => typography(
+    appFontScale,
+    colors,
+    italicFont,
+    boldItalicFont,
+    gameFont,
+    lang
+  ), [appFontScale, colors, gameFont, boldItalicFont, italicFont, lang]);
 
-class StyleProvider extends React.Component<Props, State> {
-  state = {
-    colorScheme: Appearance.getColorScheme(),
-    fontScale: RECENT_FONT_SCALE,
-  };
-
-  _changeListener?: EventSubscription;
-
-  _appearanceChanged = (preferences: AppearancePreferences) => {
-    this.setState({
-      colorScheme: preferences.colorScheme,
-    });
-  }
-
-  componentDidMount() {
-    this._changeListener = Appearance.addChangeListener(this._appearanceChanged);
-    DeviceInfo.getFontScale().then(fontScale => {
-      RECENT_FONT_SCALE = fontScale;
-      this.setState({
-        fontScale,
-      });
-    });
-  }
-
-  componentWillUnmount() {
-    this._changeListener && this._changeListener.remove();
-  }
-
-  render() {
-    const { lang, themeOverride, appFontScale } = this.props;
-    const { colorScheme } = this.state;
-    const fontScale = appFontScale * this.state.fontScale;
-    const darkMode = (themeOverride ? themeOverride === 'dark' : colorScheme === 'dark');
-    const colors = darkMode ? DARK_THEME : LIGHT_THEME;
-    const gameFont = lang === 'ru' ? 'Conkordia' : 'Teutonic';
-    return (
-      <StyleContext.Provider value={{
-        darkMode,
-        fontScale,
-        typography: typography(appFontScale, colors, gameFont),
-        colors,
-        gameFont,
-        backgroundStyle: {
-          backgroundColor: colors.background,
-        },
-        borderStyle: {
-          borderColor: colors.divider,
-        },
-        disabledStyle: {
-          backgroundColor: colors.disableOverlay,
-        },
-      }}>
-        <ThemeProvider theme={darkMode ? DARK_ELEMENTS_THEME : LIGHT_ELEMENTS_THEME}>
-          { this.props.children }
-        </ThemeProvider>
-      </StyleContext.Provider>
-    );
-  }
+  const context = useMemo(() => {
+    return {
+      ...DEFAULLT_STYLE_CONTEXT,
+      darkMode,
+      fontScale: fontScale * appFontScale,
+      width,
+      height,
+      typography: styleTypography,
+      colors,
+      gameFont,
+      justifyContent,
+      italicFont,
+      backgroundStyle: {
+        backgroundColor: colors.background,
+      },
+      borderStyle: {
+        borderColor: colors.divider,
+      },
+      disabledStyle: {
+        backgroundColor: colors.disableOverlay,
+      },
+    };
+  }, [darkMode, fontScale, appFontScale, styleTypography, italicFont, colors, gameFont, width, height, justifyContent]);
+  return (
+    <StyleContext.Provider value={context}>
+      <ThemeProvider theme={darkMode ? DARK_ELEMENTS_THEME : LIGHT_ELEMENTS_THEME}>
+        { children }
+      </ThemeProvider>
+    </StyleContext.Provider>
+  );
 }
-
-
-function mapStateToProps(state: AppState): ReduxProps {
-  return {
-    lang: getLangPreference(state),
-    themeOverride: getThemeOverride(state),
-    appFontScale: getAppFontScale(state),
-  };
-}
-
-export default connect(mapStateToProps)(StyleProvider);

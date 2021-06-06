@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { find, forEach, map, sum } from 'lodash';
 import { t } from 'ttag';
 
@@ -6,48 +6,21 @@ import SetupStepWrapper from '../SetupStepWrapper';
 import InvestigatorCheckListComponent from './InvestigatorCheckListComponent';
 import InvestigatorCounterComponent from './InvestigatorCounterComponent';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
-import { BulletType, UseSuppliesInput, UseSuppliesAllInput } from '@data/scenario/types';
-import Card from '@data/Card';
+import ScenarioGuideContext from '../ScenarioGuideContext';
+import { UseSuppliesInput, UseSuppliesAllInput } from '@data/scenario/types';
+import Card from '@data/types/Card';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 
 interface Props {
   id: string;
-  bulletType?: BulletType;
   text?: string;
   input: UseSuppliesInput;
   campaignLog: GuidedCampaignLog;
 }
 
-interface State {
-  counts: {
-    [code: string]: {
-      [id: string]: number ;
-    };
-  };
-}
-
-export default class UseSuppliesPrompt extends React.Component<Props, State> {
-  static contextType = ScenarioGuideContext;
-  context!: ScenarioGuideContextType;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      counts: {},
-    };
-  }
-
-  _save = () => {
-    const { id } = this.props;
-    const { counts } = this.state;
-    this.context.scenarioState.setSupplies(id, counts);
-  };
-
-  supplyLimits() {
-    const { input, campaignLog } = this.props;
+export default function UseSuppliesPrompt({ id, text, input, campaignLog }: Props) {
+  const { scenarioState } = useContext(ScenarioGuideContext);
+  const supplyLimits = useMemo(() => {
     const investigagorSupplies = campaignLog.investigatorSections[input.section] || {};
     const limits: { [code: string]: number } = {};
     const investigators = campaignLog.investigators(false);
@@ -64,30 +37,26 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
       limits[investigator.code] = (entry && entry.type === 'count') ? entry.count : 0;
     });
     return limits;
-  }
+  }, [input, campaignLog]);
 
-  renderFirstAllPrompt(input: UseSuppliesAllInput) {
-    const { id, campaignLog } = this.props;
-    const limits = this.supplyLimits();
-
+  const renderFirstAllPrompt = useCallback((input: UseSuppliesAllInput) => {
     // Basically 2 sequential choices.
     // 1) How many "supply" to consume
     // 2) If count != players, who doesn't get any?
     const supplyName = input.name;
     const desiredCount = campaignLog.playerCount();
-    const totalProvisionCount = sum(map(limits, count => count));
+    const totalProvisionCount = sum(map(supplyLimits, count => count));
     return (
       <InvestigatorCounterComponent
         id={`${id}_used`}
         countText={t`${supplyName} to use (${desiredCount})`}
-        limits={limits}
+        maxLimits={supplyLimits}
         requiredTotal={Math.min(totalProvisionCount, desiredCount)}
       />
     );
-  }
+  }, [id, campaignLog, supplyLimits]);
 
-  renderSecondAllPrompt(input: UseSuppliesAllInput, scenarioState: ScenarioStateHelper) {
-    const { id, campaignLog } = this.props;
+  const renderSecondAllPrompt = useCallback((input: UseSuppliesAllInput) => {
     const choiceList = scenarioState.numberChoices(`${id}_used`);
     if (choiceList === undefined) {
       return null;
@@ -106,71 +75,60 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
       <InvestigatorCheckListComponent
         id={id}
         choiceId="bad_thing"
-        checkText={badThing ? t`Reads "${badThing.condition}"` : t`Doesn't get any`}
+        checkText={badThing ? t`Reads "${badThing.prompt}"` : t`Doesn't get any`}
         min={target}
         max={target}
       />
     );
-  }
+  }, [id, campaignLog, scenarioState]);
 
-  _filterInvestigatorChoice = (investigator: Card) => {
-    const limits = this.supplyLimits();
-    const count = limits[investigator.code] || 0;
+  const filterInvestigatorChoice = useCallback((investigator: Card) => {
+    const count = supplyLimits[investigator.code] || 0;
     return count > 0;
-  };
+  }, [supplyLimits]);
 
-  render() {
-    const { id, input, text } = this.props;
-    return (
-      <ScenarioGuideContext.Consumer>
-        { ({ scenarioState }: ScenarioGuideContextType) => {
-          switch (input.investigator) {
-            case 'all':
-              return (
-                <>
-                  { !!text && (
-                    <SetupStepWrapper>
-                      <CampaignGuideTextComponent text={text} />
-                    </SetupStepWrapper>
-                  ) }
-                  { this.renderFirstAllPrompt(input) }
-                  { this.renderSecondAllPrompt(input, scenarioState) }
-                </>
-              );
-            case 'choice': {
-              // Single choice of players with Gasoline/Medicine, must choose one.
-              const useChecklist = input.max === 1 ||
-                scenarioState.stringChoices(id) !== undefined;
-              const limits = this.supplyLimits();
-              return (
-                <>
-                  { !!text && (
-                    <SetupStepWrapper>
-                      <CampaignGuideTextComponent text={text} />
-                    </SetupStepWrapper>
-                  ) }
-                  { useChecklist ? (
-                    <InvestigatorCheckListComponent
-                      id={id}
-                      choiceId="use_supply"
-                      checkText={`Use ${input.id}`}
-                      min={input.min}
-                      max={input.max}
-                      filter={this._filterInvestigatorChoice}
-                    />
-                  ) : (
-                    <InvestigatorCounterComponent
-                      id={id}
-                      countText={`Use ${input.id}`}
-                      limits={limits}
-                    />
-                  ) }
-                </>
-              );
-            }
-          }
-        } }
-      </ScenarioGuideContext.Consumer>
-    );
+  switch (input.investigator) {
+    case 'all':
+      return (
+        <>
+          { !!text && (
+            <SetupStepWrapper>
+              <CampaignGuideTextComponent text={text} />
+            </SetupStepWrapper>
+          ) }
+          { renderFirstAllPrompt(input) }
+          { renderSecondAllPrompt(input) }
+        </>
+      );
+    case 'choice': {
+      // Single choice of players with Gasoline/Medicine, must choose one.
+      const useChecklist = input.max === 1 ||
+        scenarioState.stringChoices(id) !== undefined;
+      return (
+        <>
+          { !!text && (
+            <SetupStepWrapper>
+              <CampaignGuideTextComponent text={text} />
+            </SetupStepWrapper>
+          ) }
+          { useChecklist ? (
+            <InvestigatorCheckListComponent
+              id={id}
+              choiceId="use_supply"
+              checkText={input.prompt}
+              min={input.min}
+              max={input.max}
+              filter={filterInvestigatorChoice}
+            />
+          ) : (
+            <InvestigatorCounterComponent
+              id={id}
+              countText={input.prompt}
+              maxLimits={supplyLimits}
+            />
+          ) }
+        </>
+      );
+    }
   }
 }

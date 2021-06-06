@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useCallback, useContext } from 'react';
 import {
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-// @ts-ignore
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import Ripple from '@lib/react-native-material-ripple';
-import Card from '@data/Card';
-import { m, s, xs, iconSizeScale } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import Card from '@data/types/Card';
+import { m, s, xs } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
 
 export interface CardSectionHeaderData {
   superTitle?: string;
@@ -37,16 +36,11 @@ export function cardSectionHeaderHeight(section: CardSectionHeaderData, fontScal
   return fontScale * 24 + s * 2;
 }
 
-export default class CardSectionHeader extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function CardSectionHeader({ investigator, section }: Props) {
+  const { colors, borderStyle, backgroundStyle, fontScale, typography } = useContext(StyleContext);
 
-  renderSuperTitle(investigator: Card, superTitle: string, noIcon?: boolean) {
-    const { fontScale, typography } = this.context;
-    const {
-      section,
-    } = this.props;
-    const SMALL_EDIT_ICON_SIZE = 30 * iconSizeScale * fontScale;
+  const renderSuperTitle = useCallback((superTitle: string, noIcon?: boolean) => {
+    const SMALL_EDIT_ICON_SIZE = 30 * fontScale;
     return (
       <>
         <View style={styles.superHeaderPadding}>
@@ -68,94 +62,87 @@ export default class CardSectionHeader extends React.Component<Props> {
         ) }
       </>
     );
+  }, [fontScale, typography, section]);
+  const height = cardSectionHeaderHeight(section, fontScale);
+  if (section.placeholder) {
+    return (
+      <View style={[styles.placeholder, backgroundStyle, { height }]} />
+    );
+  }
+  if (section.superTitle) {
+    if (!investigator) {
+      return null;
+    }
+    if (section.onPress) {
+      return (
+        <Ripple
+          onPress={section.onPress}
+          style={[
+            styles.superHeaderRow,
+            borderStyle,
+            {
+              height,
+              backgroundColor: colors.faction[investigator.factionCode()].background,
+            },
+          ]}
+          rippleColor={colors.faction[investigator.factionCode()].text}
+        >
+          { renderSuperTitle(section.superTitle) }
+        </Ripple>
+      );
+    }
+    return (
+      <View style={[
+        styles.superHeaderRow,
+        borderStyle,
+        {
+          height,
+          backgroundColor: colors.faction[investigator.factionCode()].background,
+        },
+      ]}>
+        { renderSuperTitle(section.superTitle, true) }
+      </View>
+    );
+  }
+  if (section.subTitle) {
+    return (
+      <View style={[
+        styles.subHeaderRow,
+        borderStyle,
+        {
+          backgroundColor: colors.L10,
+          height,
+        },
+      ]}>
+        <Text style={[typography.subHeaderText, styles.subHeaderText]}>
+          { section.subTitle }
+        </Text>
+        { !!section.subTitleDetail && (
+          <Text style={[typography.subHeaderText, styles.subHeaderText]}>
+            { section.subTitleDetail }
+          </Text>
+        )}
+      </View>
+    );
   }
 
-  render() {
-    const { colors, borderStyle, backgroundStyle, fontScale, typography } = this.context;
-    const {
-      investigator,
-      section,
-    } = this.props;
-    if (section.placeholder) {
-      return (
-        <View style={[styles.placeholder, backgroundStyle, { height: cardSectionHeaderHeight(section, fontScale) }]} />
-      );
-    }
-    if (section.superTitle) {
-      if (!investigator) {
-        return null;
-      }
-      if (section.onPress) {
-        return (
-          <Ripple
-            onPress={section.onPress}
-            style={[
-              styles.superHeaderRow,
-              borderStyle,
-              {
-                height: cardSectionHeaderHeight(section, fontScale),
-                backgroundColor: colors.faction[investigator.factionCode()].darkBackground,
-              },
-            ]}
-            rippleColor={colors.faction[investigator.factionCode()].text}
-          >
-            { this.renderSuperTitle(investigator, section.superTitle) }
-          </Ripple>
-        );
-      }
-      return (
-        <View style={[
-          styles.superHeaderRow,
-          borderStyle,
-          {
-            height: cardSectionHeaderHeight(section, fontScale),
-            backgroundColor: colors.faction[investigator.factionCode()].darkBackground,
-          },
-        ]}>
-          { this.renderSuperTitle(investigator, section.superTitle, true) }
-        </View>
-      );
-    }
-    if (section.subTitle) {
-      return (
-        <View style={[
-          styles.subHeaderRow,
-          borderStyle,
-          {
-            backgroundColor: colors.L10,
-            height: cardSectionHeaderHeight(section, fontScale),
-          },
-        ]}>
-          <Text style={[typography.subHeaderText, styles.subHeaderText]}>
-            { section.subTitle }
-          </Text>
-          { !!section.subTitleDetail && (
-            <Text style={[typography.subHeaderText, styles.subHeaderText]}>
-              { section.subTitleDetail }
-            </Text>
-          )}
-        </View>
-      );
-    }
-
-    if (section.title) {
-      return (
-        <View style={[
-          styles.subHeaderRow,
-          borderStyle,
-          {
-            backgroundColor: colors.L20,
-            height: cardSectionHeaderHeight(section, fontScale),
-          },
-        ]}>
-          <Text style={[typography.subHeaderText, styles.subHeaderText]}>
-            { section.title }
-          </Text>
-        </View>
-      );
-    }
-    return null;
+  if (section.title) {
+    return (
+      <View style={[
+        styles.subHeaderRow,
+        borderStyle,
+        {
+          backgroundColor: colors.L20,
+          height,
+        },
+      ]}>
+        <Text style={[typography.subHeaderText, styles.subHeaderText]}>
+          { section.title }
+        </Text>
+      </View>
+    );
   }
+  return null;
 }
 
 const styles = StyleSheet.create({

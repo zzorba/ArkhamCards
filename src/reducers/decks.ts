@@ -1,9 +1,8 @@
-import { concat, uniq, flatMap, filter, forEach, map, reverse, sortBy, values } from 'lodash';
+import { filter, find, forEach, keys, flatMap, head, omit, uniq } from 'lodash';
 import uuid from 'react-native-uuid';
 
 import {
-  LOGOUT,
-  RESTORE_BACKUP,
+  ARKHAMDB_LOGOUT,
   MY_DECKS_START_REFRESH,
   MY_DECKS_CACHE_HIT,
   MY_DECKS_ERROR,
@@ -15,26 +14,30 @@ import {
   REPLACE_LOCAL_DECK,
   ENSURE_UUID,
   RESTORE_COMPLEX_BACKUP,
-  RESET_DECK_CHECKLIST,
-  SET_DECK_CHECKLIST_CARD,
   DecksActions,
   NewDeckAvailableAction,
   ReplaceLocalDeckAction,
   UpdateDeckAction,
   Deck,
   DecksMap,
+  getDeckId,
+  DeckId,
+  REDUX_MIGRATION,
+  UPLOAD_DECK,
+  SET_UPLOADED_DECKS,
+  REMOVE_UPLOAD_DECK,
+  UploadedDeck,
+  GroupedUploadedDecks,
 } from '@actions/types';
-import deepDiff from 'deep-diff';
+import deepEqual from 'deep-equal';
 
 interface DecksState {
   all: DecksMap;
-  checklist?: {
-    [id: number]: string[] | undefined;
-  };
-  myDecks: number[];
+  syncedDecks?: GroupedUploadedDecks;
   replacedLocalIds?: {
-    [id: number]: number;
+    [uuid: string]: DeckId;
   };
+  arkhamDbUser: number | undefined;
   dateUpdated: number | null;
   refreshing: boolean;
   error: string | null;
@@ -43,91 +46,52 @@ interface DecksState {
 
 const DEFAULT_DECK_STATE: DecksState = {
   all: {},
-  checklist: {},
-  myDecks: [],
   replacedLocalIds: {},
+  arkhamDbUser: undefined,
   dateUpdated: null,
   refreshing: false,
   error: null,
   lastModified: undefined,
 };
 
-function updateDeck(
+export function updateDeck(
   state: DecksState,
   action: NewDeckAvailableAction | UpdateDeckAction | ReplaceLocalDeckAction
 ): Deck {
-  const deck = Object.assign({}, action.deck);
+  const deck = { ...action.deck };
   let scenarioCount = 0;
   let currentDeck = deck;
-  while (currentDeck && currentDeck.previous_deck) {
+  while (currentDeck && currentDeck.previousDeckId) {
     scenarioCount ++;
-    currentDeck = state.all[currentDeck.previous_deck];
+    currentDeck = state.all[currentDeck.previousDeckId.uuid];
   }
   deck.scenarioCount = scenarioCount;
   return deck;
-}
-
-function sortMyDecks(myDecks: number[], allDecks: DecksMap): number[] {
-  return reverse(
-    sortBy(
-      myDecks,
-      deckId => allDecks[deckId].date_update || allDecks[deckId].date_creation
-    )
-  );
 }
 
 export default function(
   state = DEFAULT_DECK_STATE,
   action: DecksActions
 ): DecksState {
-  if (action.type === RESET_DECK_CHECKLIST) {
-    return {
-      ...state,
-      checklist: {
-        ...(state.checklist || {}),
-        [`${action.id}`]: [],
-      },
-    };
-  }
-  if (action.type === SET_DECK_CHECKLIST_CARD) {
-    const currentChecklist = (state.checklist || {})[action.id] || [];
-    const checklist = action.value ? [
-      ...currentChecklist,
-      action.card,
-    ] : filter(currentChecklist, card => card !== action.card);
-    return {
-      ...state,
-      checklist: {
-        ...(state.checklist || {}),
-        [action.id]: checklist,
-      },
-    };
-  }
   if (action.type === RESTORE_COMPLEX_BACKUP) {
     const all: DecksMap = { ...state.all };
     forEach(action.decks, deck => {
-      const remappedDeck = {
-        ...deck,
-        id: action.deckRemapping[deck.id],
-        previous_deck: deck.previous_deck ? action.deckRemapping[deck.previous_deck] : undefined,
-        next_deck: deck.next_deck ? action.deckRemapping[deck.next_deck] : undefined,
-      };
-      all[remappedDeck.id] = remappedDeck;
+      all[getDeckId(deck).uuid] = deck;
     });
-    const myDecks = flatMap(
-      values(all),
-      deck => {
-        if (deck.previous_deck) {
-          return [];
-        }
-        return [deck.id];
-      }
-    );
     return {
       ...state,
       all,
-      myDecks,
-      replacedLocalIds: [],
+      replacedLocalIds: {},
+    };
+  }
+  if (action.type === REDUX_MIGRATION) {
+    const all: DecksMap = { ...state.all };
+    forEach(action.decks, deck => {
+      all[getDeckId(deck).uuid] = deck;
+    });
+    return {
+      ...DEFAULT_DECK_STATE,
+      all,
     };
   }
   if (action.type === ENSURE_UUID) {
@@ -147,53 +111,64 @@ export default function(
       all,
     };
   }
-  if (action.type === LOGOUT || action.type === CLEAR_DECKS) {
-    const checklist: { [id: number]: string[] } = {};
+  if (action.type === SET_UPLOADED_DECKS) {
+    return {
+      ...state,
+      syncedDecks: action.uploadedDecks,
+    };
+  }
+  if (action.type === UPLOAD_DECK) {
+    const syncedDecks = state.syncedDecks || {};
+    const newUploadedDeck: UploadedDeck = {
+      deckId: action.deckId,
+      hash: action.hash,
+      nextDeckId: action.nextDeckId,
+      campaignId: uniq([
+        ...(syncedDecks[action.deckId.uuid]?.campaignId || []),
+        action.campaignId,
+      ]),
+    };
+
+    return {
+      ...state,
+      syncedDecks: {
+        ...syncedDecks,
+        [action.deckId.uuid]: newUploadedDeck,
+      },
+    };
+  }
+  if (action.type === REMOVE_UPLOAD_DECK) {
+    const syncedDecks: { [key: string]: UploadedDeck | undefined } = {
+      ...(state.syncedDecks || {}),
+    };
+    const existingUploadedDeck = syncedDecks[action.deckId.uuid];
+    const uploadedDeck = existingUploadedDeck && find(existingUploadedDeck.campaignId, id => id.serverId !== action.campaignId.serverId) ? {
+      deckId: existingUploadedDeck.deckId,
+      hash: existingUploadedDeck.hash,
+      nextDeckId: existingUploadedDeck.nextDeckId,
+      campaignId: filter(existingUploadedDeck.campaignId, campaignId => campaignId.serverId !== action.campaignId.serverId),
+    } : undefined;
+    if (uploadedDeck) {
+      syncedDecks[action.deckId.uuid] = uploadedDeck;
+    } else {
+      delete syncedDecks[action.deckId.uuid];
+    }
+    return {
+      ...state,
+      syncedDecks,
+    };
+  }
+  if (action.type === ARKHAMDB_LOGOUT || action.type === CLEAR_DECKS) {
     const all: DecksMap = {};
-    forEach(state.all, (deck, id: any) => {
+    forEach(state.all, (deck, id: string) => {
       if (deck && deck.local) {
         all[id] = deck;
       }
     });
-    forEach(state.checklist || {}, (c, id: any) => {
-      if (all[id] && c) {
-        checklist[id] = c;
-      }
-    });
-    const myDecks = filter(state.myDecks, id => !!all[id]);
     return {
       ...DEFAULT_DECK_STATE,
+      arkhamDbUser: action.type === ARKHAMDB_LOGOUT ? undefined : state.arkhamDbUser,
       all,
-      checklist,
-      myDecks,
-    };
-  }
-  if (action.type === RESTORE_BACKUP) {
-    const all: DecksMap = {};
-    forEach(state.all, (deck, id: any) => {
-      if (deck && !deck.local) {
-        all[id] = deck;
-      }
-    });
-    forEach(action.decks, deck => {
-      if (deck) {
-        all[deck.id] = deck;
-      }
-    });
-    const myDecks = flatMap(
-      values(all),
-      deck => {
-        if (deck.previous_deck) {
-          return [];
-        }
-        return [deck.id];
-      }
-    );
-    return {
-      ...DEFAULT_DECK_STATE,
-      all,
-      myDecks,
-      replacedLocalIds: [],
     };
   }
   if (action.type === MY_DECKS_START_REFRESH) {
@@ -220,31 +195,43 @@ export default function(
     };
   }
   if (action.type === SET_MY_DECKS) {
-    const allDecks: DecksMap = { ...state.all };
+    const all: DecksMap = { ...state.all };
+    const remoteDecks: { [uuid: string]: boolean | undefined } = {};
+    forEach(state.all, deck => {
+      if (deck) {
+        const deckId = getDeckId(deck);
+        if (!deckId.local) {
+          remoteDecks[deckId.uuid] = true;
+        }
+      }
+    });
+    const arkhamDbUser = head(flatMap(action.decks, d => d.user_id ? [d.user_id] : []));
     forEach(action.decks, deck => {
-      allDecks[deck.id] = deck;
+      const deckId = getDeckId(deck);
+      all[deckId.uuid] = deck;
+      if (remoteDecks[deckId.uuid]) {
+        delete remoteDecks[deckId.uuid];
+      }
+    });
+    // Remove decks that are now missing.
+    forEach(keys(remoteDecks), uuid => {
+      if (all[uuid]) {
+        delete all[uuid];
+      }
     });
     forEach(action.decks, deck => {
       let scenarioCount = 0;
-      let currentDeck = deck;
-      while (currentDeck && currentDeck.previous_deck) {
+      let currentDeck: Deck = deck;
+      while (currentDeck && currentDeck.previousDeckId) {
         scenarioCount ++;
-        currentDeck = allDecks[currentDeck.previous_deck];
+        currentDeck = all[currentDeck.previousDeckId.uuid];
       }
       deck.scenarioCount = scenarioCount;
     });
-    const localDeckIds: number[] = filter(
-      state.myDecks,
-      id => allDecks[id] ? !!allDecks[id].local : false);
-
-    const actionDeckIds: number[] = map(
-      filter(action.decks, (deck: Deck) => !deck.next_deck),
-      deck => deck.id
-    );
     return {
       ...state,
-      all: allDecks,
-      myDecks: sortMyDecks(concat(localDeckIds, actionDeckIds), allDecks),
+      all,
+      arkhamDbUser,
       dateUpdated: action.timestamp.getTime(),
       lastModified: action.lastModified,
       refreshing: false,
@@ -255,83 +242,41 @@ export default function(
     const deck = updateDeck(state, action);
     const all = {
       ...state.all,
-      [deck.id]: deck,
+      [getDeckId(deck).uuid]: deck,
     };
-    delete all[action.localId];
-    const myDecks = uniq(map(state.myDecks || [], deckId => {
-      if (deckId === action.localId) {
-        return deck.id;
-      }
-      return deckId;
-    }));
-
+    delete all[action.localId.uuid];
     const replacedLocalIds = {
       ...(state.replacedLocalIds || {}),
-      [action.localId]: deck.id,
+      [action.localId.uuid]: getDeckId(deck),
     };
-    const checklist = {
-      ...(state.checklist || {}),
-    };
-    if (checklist[action.localId]) {
-      checklist[deck.id] = checklist[action.localId];
-      delete checklist[action.localId];
-    }
     return {
       ...state,
       all,
-      checklist,
-      myDecks: sortMyDecks(myDecks, all),
       replacedLocalIds,
     };
   }
   if (action.type === DELETE_DECK) {
     const all = { ...state.all };
-    let deck = all[action.id];
-    const toDelete = [action.id];
+    let deck = all[action.id.uuid];
+    const toDelete = [action.id.uuid];
     if (deck) {
       if (action.deleteAllVersions) {
-        while (deck.previous_deck && all[deck.previous_deck]) {
-          const id = deck.previous_deck;
-          toDelete.push(id);
-          deck = all[id];
-          delete all[id];
+        while (deck.previousDeckId && all[deck.previousDeckId.uuid]) {
+          const uuid = deck.previousDeckId.uuid;
+          toDelete.push(uuid);
+          deck = all[uuid];
+          delete all[uuid];
         }
       } else {
-        if (deck.previous_deck && all[deck.previous_deck]) {
-          const previousDeck = {
-            ...all[deck.previous_deck],
-          };
-          delete previousDeck.next_deck;
-          all[deck.previous_deck] = previousDeck;
+        if (deck.previousDeckId && all[deck.previousDeckId.uuid]) {
+          all[deck.previousDeckId.uuid] = omit(all[deck.previousDeckId.uuid], ['nextDeckId']) as Deck;
         }
       }
     }
-    delete all[action.id];
-    const toDeleteSet = new Set(toDelete);
-    const myDecks = (action.deleteAllVersions || !deck || !deck.previous_deck) ?
-      filter(state.myDecks, deckId => !toDeleteSet.has(deckId)) :
-      flatMap(state.myDecks,
-        deckId => {
-          if (deckId === action.id) {
-            if (deck.previous_deck) {
-              return deck.previous_deck;
-            }
-            return [];
-          }
-          return deckId;
-        }
-      );
-    const checklist = {
-      ...(state.checklist || {}),
-    };
-    if (checklist[action.id]) {
-      delete checklist[action.id];
-    }
+    delete all[action.id.uuid];
     return {
       ...state,
       all,
-      myDecks,
-      checklist,
       // There's a bug on ArkhamDB cache around deletes,
       // so drop lastModified when we detect a delete locally.
       lastModified: undefined,
@@ -339,8 +284,7 @@ export default function(
   }
   if (action.type === UPDATE_DECK) {
     const deck = updateDeck(state, action);
-    const diff = deepDiff(state.all[action.deck.id] || {}, deck);
-    if (!diff || !diff.length) {
+    if (deepEqual(state.all[action.id.uuid] || {}, deck)) {
       return state;
     }
 
@@ -348,21 +292,13 @@ export default function(
       return state;
     }
 
-    const newState = {
+    return {
       ...state,
       all: {
         ...state.all,
-        [action.id]: deck,
+        [action.id.uuid]: deck,
       },
     };
-    if (action.isWrite) {
-      // Writes get moved to the head of the list.
-      newState.myDecks = [
-        action.id,
-        ...filter(state.myDecks, deckId => deckId !== action.id),
-      ];
-    }
-    return newState;
   }
   if (action.type === NEW_DECK_AVAILABLE) {
     const deck = updateDeck(state, action);
@@ -370,12 +306,8 @@ export default function(
       ...state,
       all: {
         ...state.all,
-        [action.id]: deck,
+        [action.id.uuid]: deck,
       },
-      myDecks: [
-        action.id,
-        ...filter(state.myDecks, deckId => deck.previous_deck !== deckId),
-      ],
     };
   }
   return state;

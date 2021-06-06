@@ -1,45 +1,14 @@
-import {
-  ColorValue,
-  Platform,
-  PlatformColor,
-  DynamicColorIOS,
-} from 'react-native';
+import { Platform, PlatformColor } from 'react-native';
 
 const medium = '#9B9B9B';
-const L30: ColorValue = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#FFFBF2', dark: '#24303C' }) : PlatformColor('@color/L30')) as any as string;
 
 export default {
-  L30,
+  L30: '#FFFBF2',
+  L15: '#E6E1D3',
+  D10: '#656C6F',
+  D20: '#475259',
+  D30: '#24303C',
   M: medium,
-  faction: {
-    guardian: {
-      darkBackground: '#2b80c5',
-    },
-    seeker: {
-      darkBackground: '#db7c07',
-    },
-    rogue: {
-      darkBackground: '#107116',
-    },
-    mystic: {
-      darkBackground: '#4331b9',
-    },
-    survivor: {
-      darkBackground: '#cc3038',
-    },
-    neutral: {
-      darkBackground: '#444444',
-    },
-    dual: {
-      darkBackground: '#c0c000',
-    },
-    dead: {
-      darkBackground: '#5a3510',
-    },
-    mythos: {
-      darkBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#000000', dark: '#444444' }) : PlatformColor('@color/factionMythosDarkBackgroundColor')) as any as string,
-    },
-  },
   skill: {
     willpower: {
       default: '#165385',
@@ -66,7 +35,6 @@ export default {
       light: '#8A7D5A',
     },
   },
-  veryLightBlue: '#cce4ff',
   lightBlue: '#007AFF',
   darkBlue: 'rgb(0, 78, 100)',
   white: 'rgb(247, 247, 255)',
@@ -79,6 +47,6 @@ export default {
   green: '#498D35',
   button: Platform.OS === 'ios' ? '#bbb' : '#000',
   navButton: (Platform.OS === 'ios' ? PlatformColor('linkColor') : '#007AFF') as any as string,
-  black: '#000',
+  black: '#24303C',
   switchTrackColor: Platform.OS === 'ios' ? { false: '#bbb', true: '#222' } : undefined,
 };

@@ -1,8 +1,7 @@
-import { map } from 'lodash';
+import { filter, forEach, map } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
 
 import {
-  RESTORE_BACKUP,
   NEW_CAMPAIGN,
   NEW_LINKED_CAMPAIGN,
   DELETE_CAMPAIGN,
@@ -12,7 +11,6 @@ import {
   EDIT_CAMPAIGN_SCENARIO_RESULT,
   CAMPAIGN_ADD_INVESTIGATOR,
   CAMPAIGN_REMOVE_INVESTIGATOR,
-  UPDATE_CAMPAIGN_SPENT_XP,
   CLEAN_BROKEN_CAMPAIGNS,
   RESTORE_COMPLEX_BACKUP,
   CleanBrokenCampaignsAction,
@@ -34,58 +32,64 @@ import {
   NewCampaignAction,
   NewLinkedCampaignAction,
   UpdateCampaignAction,
-  UpdateCampaignSpentXpAction,
+  UpdateCampaignXpAction,
   UpdateChaosBagResultsAction,
   DeleteCampaignAction,
-  RestoreBackupAction,
   AdjustBlessCurseAction,
   ADJUST_BLESS_CURSE,
+  StandaloneId,
+  NewStandaloneCampaignAction,
+  NEW_STANDALONE,
+  CampaignId,
+  DeckId,
+  getDeckId,
+  RemoveUploadDeckAction,
+  REMOVE_UPLOAD_DECK,
+  CampaignSyncRequiredAction,
+  getCampaignId,
+  UPDATE_CAMPAIGN_XP,
+  Trauma,
+  UpdateCampaignTraumaAction,
+  UPDATE_CAMPAIGN_TRAUMA,
+  TraumaAndCardData,
+  LocalCampaignId,
+  SealedToken,
 } from '@actions/types';
-import { ChaosBag } from '@app_constants';
-import { AppState, getCampaign } from '@reducers';
+import { ChaosBag, ChaosTokenType } from '@app_constants';
+import { AppState, makeCampaignSelector, getDeck, makeDeckSelector } from '@reducers';
+import { DeckActions, uploadCampaignDeckHelper } from '@data/remote/decks';
+import { SetCampaignChaosBagAction, SetCampaignNotesAction, SetCampaignShowInterludes, SetCampaignWeaknessSetAction, UpdateCampaignActions } from '@data/remote/campaigns';
+import { ChaosBagActions } from '@data/remote/chaosBag';
+import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 
 function getBaseDeckIds(
   state: AppState,
-  latestDeckIds: number[]
-): number[] {
+  deckIds: DeckId[]
+): DeckId[] {
   const decks = state.decks.all || {};
-  return map(latestDeckIds, deckId => {
-    let deck = decks[deckId];
-    while (deck && deck.previous_deck && deck.previous_deck in decks) {
-      deck = decks[deck.previous_deck];
+  return map(deckIds, deckId => {
+    let deck = getDeck(decks, deckId);
+    while (deck && deck.previousDeckId) {
+      const previousDeck = getDeck(decks, deck.previousDeckId);
+      if (!previousDeck) {
+        break;
+      }
+      deck = previousDeck;
     }
-    return deck ? deck.id : deckId;
+    return deck ? getDeckId(deck) : deckId;
   });
 }
 
-export function restoreBackup(
-  campaigns: Campaign[],
-  guides: { [id: string]: CampaignGuideState },
-  decks: Deck[]
-): RestoreBackupAction {
-  return {
-    type: RESTORE_BACKUP,
-    campaigns,
-    guides,
-    decks,
-  };
-}
-
-
 export function restoreComplexBackup(
   campaigns: Campaign[],
-  guides: { [id: string]: CampaignGuideState },
-  campaignRemapping: { [id: string]: number },
+  guides: CampaignGuideState[],
   decks: Deck[],
-  deckRemapping: { [id: string]: number }
 ): RestoreComplexBackupAction {
   return {
     type: RESTORE_COMPLEX_BACKUP,
     campaigns,
     guides,
     decks,
-    deckRemapping,
-    campaignRemapping,
   };
 }
 
@@ -96,47 +100,68 @@ export function cleanBrokenCampaigns(): CleanBrokenCampaignsAction {
 }
 
 export function addInvestigator(
-  campaignId: number,
+  userId: string | undefined,
+  deckActions: DeckActions,
+  updateCampaignActions: UpdateCampaignActions,
+  id: CampaignId,
   investigator: string,
-  deckId?: number
-): ThunkAction<void, AppState, null, CampaignAddInvestigatorAction> {
-  return (dispatch, getState: () => AppState) => {
+  deckId?: DeckId,
+): ThunkAction<Promise<void>, AppState, unknown, CampaignAddInvestigatorAction> {
+  return async(dispatch, getState: () => AppState) => {
     const baseDeckId = deckId ?
       getBaseDeckIds(getState(), [deckId])[0] :
       undefined;
-    const action: CampaignAddInvestigatorAction = {
-      type: CAMPAIGN_ADD_INVESTIGATOR,
-      id: campaignId,
-      investigator,
-      baseDeckId,
-      now: new Date(),
-    };
-    dispatch(action);
+    if (userId && id.serverId) {
+      await updateCampaignActions.addInvestigator(id, investigator);
+    } else {
+      const action: CampaignAddInvestigatorAction = {
+        type: CAMPAIGN_ADD_INVESTIGATOR,
+        id,
+        investigator,
+        deckId: baseDeckId,
+        now: new Date(),
+      };
+      dispatch(action);
+    }
+    if (baseDeckId && id.serverId && userId) {
+      await dispatch(uploadCampaignDeckHelper(id, baseDeckId, deckActions));
+    }
   };
 }
 
 export function removeInvestigator(
-  campaignId: number,
+  userId: string | undefined,
+  actions: UpdateCampaignActions,
+  id: CampaignId,
   investigator: string,
-  deckId?: number
-): ThunkAction<void, AppState, null, CampaignRemoveInvestigatorAction> {
-  return (dispatch, getState: () => AppState) => {
+  deckId?: DeckId
+): ThunkAction<void, AppState, unknown, CampaignRemoveInvestigatorAction> {
+  return async(dispatch, getState: () => AppState) => {
     const baseDeckId = deckId ?
       getBaseDeckIds(getState(), [deckId])[0] :
       undefined;
-    const action: CampaignRemoveInvestigatorAction = {
-      type: CAMPAIGN_REMOVE_INVESTIGATOR,
-      id: campaignId,
-      investigator,
-      removeDeckId: baseDeckId,
-      now: new Date(),
-    };
-    dispatch(action);
+    if (userId && id.serverId) {
+      if (deckId) {
+        // First removal is only for the deck
+        await actions.removeInvestigatorDeck(id, investigator);
+      } else {
+        await actions.removeInvestigator(id, investigator);
+      }
+    } else {
+      const action: CampaignRemoveInvestigatorAction = {
+        type: CAMPAIGN_REMOVE_INVESTIGATOR,
+        id,
+        investigator,
+        removeDeckId: baseDeckId,
+        now: new Date(),
+      };
+      dispatch(action);
+    }
   };
 }
 
 export function newLinkedCampaign(
-  id: number,
+  userId: string | undefined,
   name: string,
   cycleCode: CampaignCycleCode,
   cycleCodeA: CampaignCycleCode,
@@ -145,7 +170,6 @@ export function newLinkedCampaign(
 ): NewLinkedCampaignAction {
   return {
     type: NEW_LINKED_CAMPAIGN,
-    id,
     name,
     cycleCode,
     cycleCodeA,
@@ -156,29 +180,50 @@ export function newLinkedCampaign(
   };
 }
 
+export function newStandalone(
+  userId: string | undefined,
+  name: string,
+  standaloneId: StandaloneId,
+  deckIds: DeckId[],
+  investigatorIds: string[],
+  weaknessSet: WeaknessSet
+): ThunkAction<void, AppState, unknown, NewStandaloneCampaignAction> {
+  return (dispatch, getState: () => AppState) => {
+    const action: NewStandaloneCampaignAction = {
+      type: NEW_STANDALONE,
+      name: name,
+      standaloneId,
+      weaknessSet,
+      deckIds: getBaseDeckIds(getState(), deckIds),
+      investigatorIds,
+      now: new Date(),
+    };
+    dispatch(action);
+  };
+}
+
 export function newCampaign(
-  id: number,
+  userId: string | undefined,
   name: string,
   pack_code: CampaignCycleCode,
   difficulty: CampaignDifficulty | undefined,
-  deckIds: number[],
+  deckIds: DeckId[],
   investigatorIds: string[],
   chaosBag: ChaosBag,
   campaignLog: CustomCampaignLog,
   weaknessSet: WeaknessSet,
   guided: boolean
-): ThunkAction<void, AppState, null, NewCampaignAction> {
+): ThunkAction<void, AppState, unknown, NewCampaignAction> {
   return (dispatch, getState: () => AppState) => {
     const action: NewCampaignAction = {
       type: NEW_CAMPAIGN,
-      id,
       name: name,
       cycleCode: pack_code,
       difficulty,
       chaosBag,
       campaignLog,
       weaknessSet,
-      baseDeckIds: getBaseDeckIds(getState(), deckIds),
+      deckIds: getBaseDeckIds(getState(), deckIds),
       investigatorIds,
       guided,
       now: new Date(),
@@ -187,17 +232,196 @@ export function newCampaign(
   };
 }
 
-export function updateCampaignSpentXp(
-  id: number,
+export function updateCampaignXp(
+  actions: UpdateCampaignActions,
+  id: CampaignId,
   investigator: string,
-  operation: 'inc' | 'dec'
-): UpdateCampaignSpentXpAction {
-  return {
-    type: UPDATE_CAMPAIGN_SPENT_XP,
-    id,
-    investigator,
-    operation,
-    now: new Date(),
+  value: number,
+  xpType: 'spentXp' | 'availableXp'
+): ThunkAction<void, AppState, unknown, UpdateCampaignXpAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await actions.setXp(id, investigator, xpType, value);
+    } else {
+      dispatch({
+        type: UPDATE_CAMPAIGN_XP,
+        id,
+        investigator,
+        operation: 'set',
+        value,
+        xpType,
+        now: new Date(),
+      });
+    }
+  };
+}
+
+export function updateCampaignInvestigatorTrauma(
+  actions: UpdateCampaignActions,
+  id: CampaignId,
+  investigator: string,
+  trauma: Trauma,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignTraumaAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await actions.setInvestigatorTrauma(id, investigator, trauma);
+    } else {
+      dispatch({
+        type: UPDATE_CAMPAIGN_TRAUMA,
+        id,
+        investigator,
+        trauma,
+        now: now || new Date(),
+      });
+    }
+  };
+}
+
+
+export function updateCampaignInvestigatorData(
+  userId: string | undefined,
+  actions: UpdateCampaignActions,
+  id: CampaignId,
+  investigator: string,
+  data: TraumaAndCardData,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignTraumaAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await actions.setInvestigatorData(id, investigator, data);
+    } else {
+      dispatch({
+        type: UPDATE_CAMPAIGN_TRAUMA,
+        id,
+        investigator,
+        trauma: data,
+        now: now || new Date(),
+      });
+    }
+  };
+}
+
+export function updateCampaignWeaknessSet(
+  setWeaknessSet: SetCampaignWeaknessSetAction,
+  id: CampaignId,
+  weaknessSet: WeaknessSet,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await setWeaknessSet(id, weaknessSet);
+    } else {
+      dispatch(updateCampaign(id, { weaknessSet }, now));
+    }
+  };
+}
+
+export function updateCampaignChaosBag(
+  setChaosBag: SetCampaignChaosBagAction,
+  id: CampaignId,
+  chaosBag: ChaosBag,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await setChaosBag(id, chaosBag);
+    } else {
+      dispatch(updateCampaign(id, { chaosBag }, now));
+    }
+  };
+}
+
+
+export function updateCampaignNotes(
+  setCampaignNotes: SetCampaignNotesAction,
+  id: CampaignId,
+  campaignNotes: CampaignNotes,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await setCampaignNotes(id, campaignNotes);
+    } else {
+      dispatch(updateCampaign(id, { campaignNotes }, now));
+    }
+  };
+}
+
+
+export function updateCampaignShowInterludes(
+  setShowInterludes: SetCampaignShowInterludes,
+  id: CampaignId,
+  showInterludes: boolean,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await setShowInterludes(id, showInterludes);
+    } else {
+      dispatch(updateCampaign(id, { showInterludes }, now));
+    }
+  };
+}
+
+
+export function updateCampaignName(
+  actions: UpdateCampaignActions,
+  id: CampaignId,
+  name: string,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await actions.setCampaigName(id, name);
+    } else {
+      dispatch(updateCampaign(id, { name }, now));
+    }
+  };
+}
+
+export function updateCampaignDifficulty(
+  actions: UpdateCampaignActions,
+  id: CampaignId,
+  difficulty?: CampaignDifficulty,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await actions.setDifficulty(id, difficulty);
+    } else {
+      dispatch(updateCampaign(id, { difficulty }, now));
+    }
+  };
+}
+
+export function updateCampaignScenarioResults(
+  actions: UpdateCampaignActions,
+  id: CampaignId,
+  scenarioResults: ScenarioResult[],
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await actions.setScenarioResults(id, scenarioResults);
+    } else {
+      dispatch(updateCampaign(id, { scenarioResults }, now));
+    }
+  };
+}
+
+export function updateCampaignGuideVersion(
+  actions: UpdateCampaignActions,
+  id: CampaignId,
+  guideVersion: number,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await actions.setGuideVersion(id, guideVersion);
+    } else {
+      dispatch(updateCampaign(id, { guideVersion }, now));
+    }
   };
 }
 
@@ -211,30 +435,25 @@ export function updateCampaignSpentXp(
  *   weaknessSet,
  * }
  */
-export function updateCampaign(
-  id: number,
+function updateCampaign(
+  id: LocalCampaignId,
   sparseCampaign: Partial<Campaign>,
   now?: Date
-): ThunkAction<void, AppState, null, UpdateCampaignAction> {
-  return (dispatch, getState: () => AppState) => {
-    const campaign: Partial<Campaign> = { ...sparseCampaign };
-    if (campaign.latestDeckIds) {
-      campaign.baseDeckIds = getBaseDeckIds(getState(), campaign.latestDeckIds);
-      delete campaign.latestDeckIds;
-    }
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction | CampaignSyncRequiredAction> {
+  return async(dispatch) => {
     dispatch({
       type: UPDATE_CAMPAIGN,
       id,
-      campaign,
+      campaign: sparseCampaign,
       now: (now || new Date()),
     });
   };
 }
 
-export function updateChaosBagResults(
-  id: number,
+function updateChaosBagResults(
+  id: CampaignId,
   chaosBagResults: ChaosBagResults
-): ThunkAction<void, AppState, null, UpdateChaosBagResultsAction> {
+): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
   return (dispatch) => {
     dispatch({
       type: UPDATE_CHAOS_BAG_RESULTS,
@@ -245,66 +464,209 @@ export function updateChaosBagResults(
   };
 }
 
+export function updateChaosBagClearTokens(
+  actions: ChaosBagActions,
+  id: CampaignId,
+  bless: number,
+  curse: number,
+  chaosBagResults: ChaosBagResultsT
+): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
+  return (dispatch) => {
+    if (id.serverId) {
+      actions.clearTokens(id, bless, curse);
+    } else {
+      dispatch(updateChaosBagResults(id, {
+        drawnTokens: [],
+        blessTokens: bless,
+        curseTokens: curse,
+        sealedTokens: chaosBagResults.sealedTokens,
+        totalDrawnTokens: chaosBagResults.totalDrawnTokens,
+      }));
+    }
+  };
+}
+
+export function updateChaosBagDrawToken(
+  actions: ChaosBagActions,
+  id: CampaignId,
+  drawn: ChaosTokenType[],
+  chaosBagResults: ChaosBagResultsT
+): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
+  return (dispatch) => {
+    if (id.serverId) {
+      actions.drawToken(id, drawn);
+    } else {
+      dispatch(updateChaosBagResults(id, {
+        ...chaosBagResults,
+        drawnTokens: drawn,
+        totalDrawnTokens: chaosBagResults.totalDrawnTokens + 1,
+      }));
+    }
+  };
+}
+
+export function updateChaosBagReleaseAllSealed(
+  actions: ChaosBagActions,
+  id: CampaignId,
+  chaosBagResults: ChaosBagResultsT
+): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
+  return (dispatch) => {
+    if (id.serverId) {
+      actions.releaseAllSealed(id);
+    } else {
+      dispatch(updateChaosBagResults(id, {
+        ...chaosBagResults,
+        sealedTokens: [],
+      }));
+    }
+  };
+}
+
+export function updateChaosBagResetBlessCurse(
+  actions: ChaosBagActions,
+  id: CampaignId,
+  chaosBagResults: ChaosBagResultsT
+): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
+  return (dispatch) => {
+    const drawnTokens = filter(chaosBagResults.drawnTokens, t => t !== 'bless' && t !== 'curse');
+    const sealedTokens = filter(chaosBagResults.sealedTokens, t => t.icon !== 'bless' && t.icon !== 'curse');
+    if (id.serverId) {
+      actions.resetBlessCurse(id, drawnTokens, sealedTokens);
+    } else {
+      dispatch(updateChaosBagResults(id, {
+        ...chaosBagResults,
+        blessTokens: 0,
+        curseTokens: 0,
+        drawnTokens,
+        sealedTokens,
+      }));
+    }
+  };
+}
+
+
+export function updateChaosBagSealTokens(
+  actions: ChaosBagActions,
+  id: CampaignId,
+  chaosBagResults: ChaosBagResultsT,
+  sealedTokens: SealedToken[]
+): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
+  return (dispatch) => {
+    if (id.serverId) {
+      actions.sealTokens(id, sealedTokens);
+    } else {
+      dispatch(updateChaosBagResults(id, {
+        ...chaosBagResults,
+        sealedTokens,
+      }));
+    }
+  };
+}
+
 export function adjustBlessCurseChaosBagResults(
-  id: number,
+  actions: ChaosBagActions,
+  id: CampaignId,
   type: 'bless' | 'curse',
   direction: 'inc' | 'dec'
-): ThunkAction<void, AppState, null, AdjustBlessCurseAction> {
+): ThunkAction<void, AppState, unknown, AdjustBlessCurseAction> {
   return (dispatch) => {
+    if (id.serverId) {
+      actions.adjustBlessCurse(id, type, direction);
+    } else {
+      dispatch({
+        type: ADJUST_BLESS_CURSE,
+        id,
+        bless: type === 'bless',
+        direction,
+        now: new Date(),
+      });
+    }
+  };
+}
+
+export function removeLocalCampaign(
+  campaign: Campaign
+): ThunkAction<void, AppState, unknown, DeleteCampaignAction | RemoveUploadDeckAction> {
+  return (dispatch, getState) => {
+    if (campaign.serverId) {
+      const campaignId = {
+        campaignId: campaign.uuid,
+        serverId: campaign.serverId,
+      };
+      // Delink all of the decks.
+      const state = getState();
+      const getDeck = makeDeckSelector();
+      forEach(campaign.deckIds || [], deckId => {
+        let deck = getDeck(state, deckId);
+        while (deck) {
+          dispatch({
+            type: REMOVE_UPLOAD_DECK,
+            deckId: getDeckId(deck),
+            campaignId,
+          });
+          if (!deck.nextDeckId) {
+            break;
+          }
+          deck = getDeck(state, deck.nextDeckId);
+        }
+      });
+    }
     dispatch({
-      type: ADJUST_BLESS_CURSE,
-      id,
-      bless: type === 'bless',
-      direction,
-      now: new Date(),
+      type: DELETE_CAMPAIGN,
+      id: getCampaignId(campaign),
     });
   };
 }
 
 export function deleteCampaign(
-  id: number
-): ThunkAction<void, AppState, null, DeleteCampaignAction> {
-  return (dispatch, getState: () => AppState) => {
-    const campaign = getCampaign(getState(), id);
-    if (campaign && campaign.link) {
-      dispatch({
-        type: DELETE_CAMPAIGN,
-        id: campaign.link.campaignIdA,
-      });
-      dispatch({
-        type: DELETE_CAMPAIGN,
-        id: campaign.link.campaignIdB,
-      });
+  userId: string | undefined,
+  { campaignId }: CampaignId
+): ThunkAction<void, AppState, unknown, DeleteCampaignAction | RemoveUploadDeckAction> {
+  return (dispatch, getState) => {
+    const state = getState();
+    const getCampaign = makeCampaignSelector();
+    const campaign = getCampaign(getState(), campaignId);
+    if (campaign) {
+      if (campaign.linkUuid) {
+        const campaignA = getCampaign(state, campaign.linkUuid.campaignIdA);
+        if (campaignA) {
+          dispatch(removeLocalCampaign(campaignA));
+        }
+        const campaignB = getCampaign(state, campaign.linkUuid.campaignIdB);
+        if (campaignB) {
+          dispatch(removeLocalCampaign(campaignB));
+        }
+      }
+      dispatch(removeLocalCampaign(campaign));
     }
-    dispatch({
-      type: DELETE_CAMPAIGN,
-      id,
-    });
   };
 }
 
 export function addScenarioResult(
-  id: number,
+  userId: string | undefined,
+  campaignId: CampaignId,
   scenarioResult: ScenarioResult,
   campaignNotes?: CampaignNotes
-): AddCampaignScenarioResultAction {
-  return {
-    type: ADD_CAMPAIGN_SCENARIO_RESULT,
-    id,
-    scenarioResult,
-    campaignNotes,
-    now: new Date(),
+): ThunkAction<void, AppState, unknown, AddCampaignScenarioResultAction> {
+  return async(dispatch) => {
+    dispatch({
+      type: ADD_CAMPAIGN_SCENARIO_RESULT,
+      campaignId,
+      scenarioResult,
+      campaignNotes,
+      now: new Date(),
+    });
   };
 }
 
 export function editScenarioResult(
-  id: number,
+  campaignId: CampaignId,
   index: number,
   scenarioResult: ScenarioResult
 ): EditCampaignScenarioResultAction {
   return {
     type: EDIT_CAMPAIGN_SCENARIO_RESULT,
-    id,
+    campaignId,
     index,
     scenarioResult,
     now: new Date(),
@@ -312,9 +674,10 @@ export function editScenarioResult(
 }
 
 export default {
-  restoreBackup,
   newCampaign,
   updateCampaign,
   deleteCampaign,
   addScenarioResult,
+  addInvestigator,
+  removeInvestigator,
 };

@@ -1,50 +1,172 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { flatMap, map } from 'lodash';
-import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
-import Collapsible from 'react-native-collapsible';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import React, { useCallback, useContext, useEffect, useMemo, useState, useReducer, Reducer, ReducerWithoutAction } from 'react';
+import { flatMap, keys, map, sortBy } from 'lodash';
+import { TouchableOpacity, ListRenderItemInfo, FlatList, View, Platform, StyleSheet } from 'react-native';
+import { t } from 'ttag';
+import { Brackets } from 'typeorm/browser';
 
-import { Rule } from '@data/scenario/types';
-import StyleContext from '@styles/StyleContext';
+import Rule from '@data/types/Rule';
 import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
 import CardTextComponent from '@components/card/CardTextComponent';
-import { s } from '@styles/space';
+import { s, m } from '@styles/space';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
+import { Navigation } from 'react-native-navigation';
+import { RuleViewProps } from './RuleView';
+import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
+import { where } from '@data/sqlite/query';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   componentId: string;
 }
 
-function RuleComponent({ rule, level }: { rule: Rule; level: number }) {
-  const [collapsed, setCollapsed] = useState(true);
-  const toggleCollapsed = useCallback(() => setCollapsed(!collapsed), [collapsed]);
-  const { typography } = useContext(StyleContext);
+function RuleComponent({ componentId, rule, level }: { componentId: string; rule: Rule; level: number }) {
+  const { listSeperator } = useContext(LanguageContext);
+  const onPress = useCallback(() =>{
+    Navigation.push<RuleViewProps>(componentId, {
+      component: {
+        name: 'Rule',
+        passProps: {
+          rule,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: rule.title,
+            },
+          },
+        },
+      },
+    });
+  }, [componentId, rule]);
   return (
-    <View style={{ paddingLeft: s * (level + 1)}}>
-      <TouchableOpacity onPress={toggleCollapsed}>
+    <View key={rule.id} style={{ paddingLeft: s + s * (level + 1), paddingRight: m, marginTop: s }}>
+      <TouchableOpacity onPress={onPress}>
         <CardFlavorTextComponent text={`<game>${rule.title}</game>`} />
+        { rule.rules && rule.rules.length > 0 && (
+          <CardTextComponent text={map(rule.rules || [], subRule => subRule.title).join(listSeperator)} />
+        ) }
       </TouchableOpacity>
-      <Collapsible collapsed={collapsed}>
-        { !!rule.text && <CardTextComponent text={rule.text} /> }
-        { map(rule.rules || [], (rule, idx) => <RuleComponent key={idx} rule={rule} level={level + 1} />) }
-      </Collapsible>
     </View>
   );
 }
 
-interface State {
-  rules: Rule[];
+const PAGE_SIZE = 50;
+interface PagedRules {
+  rules: { [page: string]: Rule[] };
+  endReached: boolean;
 }
+
+interface AppendPagedRules {
+  rules: Rule[];
+  page: number;
+}
+
+interface SearchResults {
+  rules: Rule[];
+  term: string;
+}
+
+
 export default function RulesView({ componentId }: Props) {
-  const [rules, setRules] = useState([]);
-  const { colors } = useContext(StyleContext);
-  useEffect(() => setRules(require('../../../assets/rules.json')), [setRules]);
+  const { db } = useContext(DatabaseContext);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState<SearchResults>({
+    term: '',
+    rules: [],
+  });
+  const updateSearch = useCallback((searchTerm: string) => {
+    setSearchTerm(searchTerm);
+    if (searchTerm === searchResults.term) {
+      return;
+    }
+    if (!searchTerm) {
+      setSearchResults({
+        term: '',
+        rules: [],
+      });
+    }
+    db.getRulesPaged(
+      0,
+      100,
+      where(`r.parentRule is null AND (r.title LIKE '%' || :searchTerm || '%' OR r.text LIKE '%' || :searchTerm || '%' OR (sub_rules_title is not null AND sub_rules_title LIKE '%' || :searchTerm || '%') OR (sub_rules_text is not null AND sub_rules_text LIKE '%' || :searchTerm || '%'))`, { searchTerm })
+    ).then((rules: Rule[]) => setSearchResults({
+      term: searchTerm,
+      rules,
+    }), console.log);
+  }, [db, searchResults.term]);
+  const [rules, appendRules] = useReducer<Reducer<PagedRules, AppendPagedRules>>(
+    (state: PagedRules, action: AppendPagedRules): PagedRules => {
+      return {
+        rules: {
+          ...state.rules,
+          [action.page]: action.rules,
+        },
+        endReached: state.endReached || action.rules.length < PAGE_SIZE,
+      };
+    }, {
+      rules: {},
+      endReached: false,
+    });
+  const [, fetchPage] = useReducer<ReducerWithoutAction<number>>((page: number) => {
+    if (!rules.endReached) {
+      db.getRulesPaged(
+        page,
+        PAGE_SIZE,
+        new Brackets(qb => qb.where('r.parentRule is null'))
+      ).then((rules: Rule[]) => appendRules({ rules, page }), console.log);
+      return page + 1;
+    }
+    return page;
+  }, 0);
+
+  useEffect(() => {
+    // Fetch the initial page.
+    fetchPage();
+  }, []);
+
+  const fetchMore = useCallback(() => {
+    if (!rules.endReached) {
+      fetchPage();
+    }
+  }, [rules.endReached, fetchPage]);
+  const renderItem = useCallback(({ item, index }: ListRenderItemInfo<Rule>) => {
+    return <RuleComponent componentId={componentId} key={index} rule={item} level={0} />;
+  }, [componentId]);
+  const data = useMemo(() => searchTerm ? searchResults.rules : flatMap(
+    sortBy(keys(rules.rules), parseInt),
+    idx => rules.rules[idx]
+  ), [searchTerm, searchResults, rules]);
   return (
-    <ScrollView>
-      { !rules.length ? <ActivityIndicator size="small" animating color={colors.lightText} /> : (
-        flatMap(rules, (rule, idx) => (
-          rule ? <RuleComponent key={idx} rule={rule} level={0} /> : null
-        ))
-      )}
-    </ScrollView>
+    <CollapsibleSearchBox
+      prompt={t`Search rules`}
+      searchTerm={searchTerm}
+      onSearchChange={updateSearch}
+    >
+      { (onScroll) => (
+        <FlatList
+          onScroll={onScroll}
+          data={data}
+          contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
+          contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
+          renderItem={renderItem}
+          onEndReachedThreshold={2}
+          onEndReached={fetchMore}
+          updateCellsBatchingPeriod={50}
+          initialNumToRender={30}
+          maxToRenderPerBatch={30}
+          windowSize={30}
+          ListHeaderComponent={(Platform.OS === 'android') ? (
+            <View style={styles.searchBarPadding} />
+          ) : undefined}
+        />
+      ) }
+    </CollapsibleSearchBox>
   );
 }
+
+const styles = StyleSheet.create({
+  searchBarPadding: {
+    height: SEARCH_BAR_HEIGHT,
+  },
+});

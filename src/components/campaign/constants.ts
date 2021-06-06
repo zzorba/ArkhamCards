@@ -1,4 +1,3 @@
-import { Platform, PlatformColor, DynamicColorIOS } from 'react-native';
 import { find, map } from 'lodash';
 import { t } from 'ttag';
 
@@ -21,9 +20,13 @@ import {
   CampaignCycleCode,
   CustomCampaignLog,
   ScenarioResult,
+  STANDALONE,
+  ALICE_IN_WONDERLAND,
+  DARK_MATTER,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
+import { ThemeColors } from '@styles/theme';
 
 export function difficultyString(difficulty: CampaignDifficulty): string {
   switch (difficulty) {
@@ -55,6 +58,9 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case TDEB: return t`The Web of Dreams`;
     case TIC: return t`The Innsmouth Conspiracy`;
     case CUSTOM: return null;
+    case STANDALONE: return t`Standalone`;
+    case DARK_MATTER: return t`Dark Matter`;
+    case ALICE_IN_WONDERLAND: return t`Alice in Wonderland`;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -264,8 +270,11 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Into the Maelstrom`, code: 'into_the_maelstrom', pack_code: 'itm' },
       { name: t`Epilogue`, code: 'epligoue', pack_code: 'itm', interlude: true },
     ];
+    case ALICE_IN_WONDERLAND: return [];
+    case DARK_MATTER: return [];
     case TDE: return [];
     case CUSTOM: return [];
+    case STANDALONE: return [];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -289,29 +298,39 @@ export function campaignNames() {
     tdeb: t`The Web of Dreams`,
     tcu: t`The Circle Undone`,
     tic: t`The Innsmouth Conspiracy`,
+    zdm: t`Dark Matter`,
+    zaw: t`Alice in Wonderland`,
+    standalone: t`Standalone`,
   };
 }
 
-const BLUE = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#00408033', dark: '#00408088' }) : PlatformColor('?attr/campaignBlueColor')) as any as string;
-const TEAL = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#00666633', dark: '#00666688' }) : PlatformColor('?attr/campaignTealColor')) as any as string;
-const PURPLE = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cc990033', dark: '#cc990088' }) : PlatformColor('?attr/campaignPurpleColor')) as any as string;
-const GREEN = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#33660033', dark: '#33660088' }) : PlatformColor('?attr/campaignGreenColor')) as any as string;
-export const CAMPAIGN_COLORS = {
-  core: BLUE,
-  rtnotz: BLUE,
-  dwl: TEAL,
-  rtdwl: TEAL,
-  ptc: PURPLE,
-  rtptc: PURPLE,
-  tfa: GREEN,
-  rttfa: GREEN,
-  tcu: BLUE,
-  tde: BLUE,
-  tdea: BLUE,
-  tdeb: BLUE,
-  tic: GREEN,
-  custom: BLUE,
-};
+export function campaignColor(cycle: CampaignCycleCode, colors: ThemeColors) {
+  switch (cycle) {
+    case CORE:
+    case RTNOTZ:
+    case TCU:
+    case 'custom':
+    case STANDALONE:
+      return colors.campaign.blue;
+    case PTC:
+    case RTPTC:
+      return colors.campaign.gold;
+    case TDEA:
+    case TDEB:
+    case TDE:
+    case DARK_MATTER:
+      return colors.campaign.purple;
+    case TFA:
+    case RTTFA:
+      return colors.campaign.green;
+    case TIC:
+    case ALICE_IN_WONDERLAND:
+      return colors.campaign.red;
+    case DWL:
+    case RTDWL:
+      return colors.campaign.teal;
+  }
+}
 
 export function getCampaignLog(
   cycleCode: CampaignCycleCode
@@ -396,12 +415,32 @@ export function getCampaignLog(
           t`Possible Hideouts`,
         ],
       };
+    case DARK_MATTER:
+      return {
+        sections: [
+          t`Campaign Notes`,
+        ],
+        counts: [t`Impending Doom`],
+        investigatorCounts: [t`Memories`],
+      };
+    case ALICE_IN_WONDERLAND:
+      return {
+        sections: [
+          t`Campaign Notes`,
+          t`Fragments of Alilce`,
+          t`Wonderland Boons`,
+          t`Wonderland Banes`,
+        ],
+        counts: [t`Strength of Wonderland`],
+      };
     case CUSTOM:
       return {
         sections: [
           t`Campaign Notes`,
         ],
       };
+    case STANDALONE:
+      return {};
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -468,6 +507,20 @@ const TIC_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
 };
 
+const DARK_MATTER_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 2, '-2': 2, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 1, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
+};
+
+const ALICE_IN_WONDERLAND_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '+1': 1, '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, '-6': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 1, '-3': 1, '-4': 1, '-5': 1, '-6': 1, '-7': 1, '-8': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+};
+
 function basicScenarioRewards(encounterCode: string) {
   switch (encounterCode) {
     case 'blood_on_the_altar':
@@ -518,6 +571,7 @@ export function getChaosBag(
     case CORE:
     case RTNOTZ:
     case CUSTOM:
+    case STANDALONE:
       return NOTZ_BAG[difficulty];
     case DWL:
     case RTDWL:
@@ -538,6 +592,10 @@ export function getChaosBag(
       return TDEB_BAG[difficulty];
     case TIC:
       return TIC_BAG[difficulty];
+    case DARK_MATTER:
+      return DARK_MATTER_BAG[difficulty];
+    case ALICE_IN_WONDERLAND:
+      return ALICE_IN_WONDERLAND_BAG[difficulty];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;

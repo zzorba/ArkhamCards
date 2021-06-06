@@ -1,27 +1,8 @@
 import React from 'react';
-import {
-  Alert,
-  KeyboardAvoidingView,
-  ScrollView,
-  StyleSheet,
-  View,
-} from 'react-native';
-import { last } from 'lodash';
-import { EventSubscription, Navigation } from 'react-native-navigation';
-import { t } from 'ttag';
-import KeepAwake from 'react-native-keep-awake';
 
-import CampaignGuideContext, { CampaignGuideContextType } from './CampaignGuideContext';
-import { ScenarioGuideContextType } from './ScenarioGuideContext';
-import StepsComponent from './StepsComponent';
-import { CampaignLogProps } from './CampaignLogView';
 import withScenarioGuideContext, { ScenarioGuideInputProps } from './withScenarioGuideContext';
-import { iconsMap } from '@app/NavIcons';
-import BasicButton from '@components/core/BasicButton';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { NavigationProps } from '@components/nav/types';
-import COLORS from '@styles/colors';
-import { ScenarioFaqProps } from '@components/campaignguide/ScenarioFaqView';
+import ScenarioComponent, { dynamicOptions } from './ScenarioComponent';
 
 interface OwnProps {
   showLinkedScenario?: (
@@ -30,213 +11,22 @@ interface OwnProps {
 }
 type InputProps = NavigationProps & ScenarioGuideInputProps & OwnProps;
 
-type Props = InputProps & DimensionsProps & ScenarioGuideContextType;
+type Props = InputProps;
 
 export type ScenarioProps = ScenarioGuideInputProps & OwnProps;
 
-const RESET_ENABLED = false;
-
-class ScenarioView extends React.Component<Props> {
-  static contextType = CampaignGuideContext;
-  context!: CampaignGuideContextType;
-
-  undoEnabled: boolean;
-
-  static options() {
-    return ScenarioView.dynamicOptions(false);
-  }
-
-  static dynamicOptions(undo: boolean) {
-    const rightButtons = RESET_ENABLED ? [{
-      icon: iconsMap.replay,
-      id: 'reset',
-      color: COLORS.M,
-    }] : [{
-      icon: iconsMap.menu,
-      id: 'log',
-      color: COLORS.M,
-      accessibilityLabel: t`Campaign Log`,
-    }];
-    if (undo) {
-      rightButtons.push({
-        icon: iconsMap.undo,
-        id: 'undo',
-        color: COLORS.M,
-        accessibilityLabel: t`Undo`,
-      });
-    }
-    return {
-      topBar: {
-        rightButtons,
-      },
-    };
-  }
-  _navEventListener: EventSubscription;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.undoEnabled = props.processedScenario.canUndo;
-    Navigation.mergeOptions(props.componentId, ScenarioView.dynamicOptions(this.undoEnabled));
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  componentDidUpdate() {
-    const {
-      processedScenario: { canUndo },
-      componentId,
-    } = this.props;
-    if (canUndo !== this.undoEnabled) {
-      Navigation.mergeOptions(componentId, ScenarioView.dynamicOptions(canUndo));
-    }
-  }
-
-  componentWillUnmount() {
-    this._navEventListener.remove();
-  }
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
-    switch (buttonId) {
-      case 'reset': {
-        this.resetPressed();
-        break;
-      }
-      case 'log': {
-        this.menuPressed();
-        break;
-      }
-      case 'undo': {
-        this.undoPressed();
-        break;
-      }
-    }
-  }
-
-  undoPressed() {
-    const {
-      componentId,
-      scenarioId,
-      processedScenario: { closeOnUndo },
-    } = this.props;
-    this.context.campaignState.undo(scenarioId);
-    if (closeOnUndo) {
-      Navigation.pop(componentId);
-    }
-  }
-
-  _switchCampaignScenario = () => {
-    const {
-      componentId,
-      showLinkedScenario,
-      processedScenario,
-    } = this.props;
-    Navigation.pop(componentId).then(() => {
-      if (showLinkedScenario) {
-        showLinkedScenario(processedScenario.id.encodedScenarioId);
-      }
-    });
-  };
-
-  menuPressed() {
-    const { componentId, processedScenario, campaignId } = this.props;
-    const log = last(processedScenario.steps);
-    if (!log) {
-      return;
-    }
-    Navigation.push<CampaignLogProps>(componentId, {
-      component: {
-        name: 'Guide.Log',
-        passProps: {
-          campaignId,
-          campaignLog: log.campaignLog,
-          campaignGuide: processedScenario.scenarioGuide.campaignGuide,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Campaign Log`,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
-    });
-  }
-
-  resetPressed() {
-    Alert.alert(
-      t`Reset Scenario?`,
-      t`Are you sure you want to reset this scenario?\n\nAll data you have entered will be lost.`,
-      [{
-        text: t`Nevermind`,
-      }, {
-        text: t`Reset`,
-        style: 'destructive',
-        onPress: () => {
-          this.context.campaignState.resetScenario(this.props.scenarioId);
-        },
-      }]
-    );
-  }
-
-  _showScenarioFaq = () => {
-    const { componentId, campaignId, processedScenario } = this.props;
-    Navigation.push<ScenarioFaqProps>(componentId, {
-      component: {
-        name: 'Guide.ScenarioFaq',
-        passProps: {
-          scenario: processedScenario.id.scenarioId,
-          campaignId,
-        },
-      },
-    });
-  };
-
-  render() {
-    const { componentId, width, processedScenario, style: { backgroundStyle } } = this.props;
-    const hasInterludeFaq = processedScenario.scenarioGuide.scenarioType() !== 'scenario' &&
-      processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;
-    return (
-      <KeyboardAvoidingView
-        style={[styles.keyboardView, backgroundStyle]}
-        behavior="position"
-        enabled
-        keyboardVerticalOffset={100}
-      >
-        <KeepAwake />
-        <ScrollView contentContainerStyle={backgroundStyle}>
-          { !!hasInterludeFaq && (
-            <BasicButton
-              title={t`Interlude FAQ`}
-              onPress={this._showScenarioFaq}
-            />
-          ) }
-          <StepsComponent
-            componentId={componentId}
-            width={width}
-            steps={processedScenario.steps}
-            switchCampaignScenario={this._switchCampaignScenario}
-          />
-          <View style={styles.footer} />
-        </ScrollView>
-      </KeyboardAvoidingView>
-    );
-  }
+function ScenarioView({ componentId, showLinkedScenario }: Props) {
+  return (
+    <ScenarioComponent
+      componentId={componentId}
+      standalone={false}
+      showLinkedScenario={showLinkedScenario}
+    />
+  );
 }
 
-export default withScenarioGuideContext<InputProps>(
-  withDimensions<InputProps & ScenarioGuideContextType>(ScenarioView)
-);
+ScenarioView.options = () => {
+  return dynamicOptions(false);
+};
 
-const styles = StyleSheet.create({
-  footer: {
-    marginTop: 64,
-  },
-  keyboardView: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-  },
-});
+export default withScenarioGuideContext<InputProps>(ScenarioView);

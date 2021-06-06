@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import {
   StyleSheet,
   Text,
@@ -37,9 +37,9 @@ function Label({ label, icon }: { label?: string; icon?: string }) {
 }
 
 export default function ToggleFilter({ onChange, setting, label, value, icon, style }: Props) {
-  const onToggle = () => {
+  const onToggle = useCallback(() => {
     onChange(setting, !value);
-  };
+  }, [setting, onChange, value]);
   return (
     <View style={[styles.row, style]}>
       <View style={styles.label}>

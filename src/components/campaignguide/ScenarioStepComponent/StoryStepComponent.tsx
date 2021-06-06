@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   StyleSheet,
   View,
@@ -15,9 +15,8 @@ interface Props {
   width: number;
 }
 
-export default class StoryStepComponent extends React.Component<Props> {
-  renderText() {
-    const { step } = this.props;
+export default function StoryStepComponent({ step, width }: Props) {
+  const text = useMemo(() => {
     return (
       <View style={
         step.border ? [space.paddingSideL, space.paddingTopM] : []
@@ -33,18 +32,15 @@ export default class StoryStepComponent extends React.Component<Props> {
         <BulletsComponent bullets={step.bullets} />
       </View>
     );
+  }, [step]);
+  if (step.border) {
+    return (
+      <BorderWrapper border width={width}>
+        { text }
+      </BorderWrapper>
+    );
   }
-  render() {
-    const { step, width } = this.props;
-    if (step.border) {
-      return (
-        <BorderWrapper border width={width}>
-          { this.renderText() }
-        </BorderWrapper>
-      );
-    }
-    return this.renderText();
-  }
+  return text;
 }
 
 const styles = StyleSheet.create({

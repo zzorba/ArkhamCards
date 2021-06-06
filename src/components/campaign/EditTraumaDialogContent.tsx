@@ -1,125 +1,131 @@
-import React from 'react';
-import {
-  View,
-} from 'react-native';
-import DialogComponent from '@lib/react-native-dialog';
-
-import DialogPlusMinusButtons from '@components/core/DialogPlusMinusButtons';
+import React, { useCallback, useMemo } from 'react';
+import { View } from 'react-native';
 import { t } from 'ttag';
-import { Trauma } from '@actions/types';
-import Card from '@data/Card';
-import COLORS from '@styles/colors';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+
+import NewDialog from '@components/core/NewDialog';
+import { Trauma, TraumaAndCardData } from '@actions/types';
+import Card from '@data/types/Card';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
+import { s } from '@styles/space';
 
 interface Props {
   investigator?: Card;
-  trauma: Trauma;
+  trauma: TraumaAndCardData;
   mutateTrauma: (updateTrauma: (trauma: Trauma) => Trauma) => void;
   hideKilledInsane?: boolean;
 }
 
-export default class EditTraumaDialogContent extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function EditTraumaDialogContent({
+  investigator,
+  trauma,
+  mutateTrauma,
+  hideKilledInsane,
+}: Props) {
+  const {
+    killed,
+    insane,
+    physical,
+    mental,
+  } = trauma;
 
-  _incPhysical = () => {
-    const {
-      investigator,
-    } = this.props;
-    const health = investigator ? (investigator.health || 0) : 0;
-    this.props.mutateTrauma(trauma =>
-      Object.assign({}, trauma, { physical: Math.min((trauma.physical || 0) + 1, health) })
-    );
-  };
+  const health = useMemo(() => investigator ? (investigator.getHealth(trauma) || 0) : 0, [investigator, trauma]);
+  const sanity = useMemo(() => investigator ? (investigator.getSanity(trauma) || 0) : 0, [investigator, trauma]);
 
-  _decPhysical = () => {
-    this.props.mutateTrauma(trauma =>
-      Object.assign({}, trauma, { physical: Math.max((trauma.physical || 0) - 1, 0) })
-    );
-  };
+  const incPhysical = useCallback(() => {
+    mutateTrauma(t => {
+      return { ...t, physical: Math.min((t.physical || 0) + 1, health) };
+    });
+  }, [health, mutateTrauma]);
 
-  _incMental = () => {
-    const {
-      investigator,
-    } = this.props;
-    const sanity = investigator ? (investigator.sanity || 0) : 0;
-    this.props.mutateTrauma(trauma =>
-      Object.assign({}, trauma, { mental: Math.min((trauma.mental || 0) + 1, sanity) })
-    );
-  };
+  const decPhysical = useCallback(() => {
+    mutateTrauma(t => {
+      return { ...t, physical: Math.max((t.physical || 0) - 1, 0) };
+    });
+  }, [mutateTrauma]);
 
-  _decMental = () => {
-    this.props.mutateTrauma(trauma =>
-      Object.assign({}, trauma, { mental: Math.max((trauma.mental || 0) - 1, 0) })
-    );
-  };
+  const incMental = useCallback(() => {
+    mutateTrauma(t => {
+      return { ...t, mental: Math.min((t.mental || 0) + 1, sanity) };
+    });
+  }, [sanity, mutateTrauma]);
 
-  _toggleKilled = () => {
-    this.props.mutateTrauma(trauma =>
-      Object.assign({}, trauma, { killed: !trauma.killed })
-    );
-  };
+  const decMental = useCallback(() => {
+    mutateTrauma(t => {
+      return { ...t, mental: Math.max((t.mental || 0) - 1, 0) };
+    });
+  }, [mutateTrauma]);
 
-  _toggleInsane = () => {
-    this.props.mutateTrauma(trauma =>
-      Object.assign({}, trauma, { insane: !trauma.insane })
-    );
-  };
+  const toggleKilled = useCallback(() => {
+    mutateTrauma(t => {
+      return { ...t, killed: !t.killed };
+    });
+  }, [mutateTrauma]);
 
-  render() {
-    const {
-      investigator,
-      trauma: {
-        killed,
-        insane,
-        physical,
-        mental,
-      },
-      hideKilledInsane,
-    } = this.props;
-    const { typography } = this.context;
-    const health = investigator ? (investigator.health || 0) : 0;
-    const sanity = investigator ? (investigator.sanity || 0) : 0;
+  const toggleInsane = useCallback(() => {
+    mutateTrauma(t => {
+      return { ...t, insane: !t.insane };
+    });
+  }, [mutateTrauma]);
 
-    const impliedKilled = (physical === health);
-    const impliedInsane = (mental === sanity);
-    return (
-      <View>
-        <DialogPlusMinusButtons
-          label={t`Physical Trauma`}
-          value={physical || 0}
-          inc={this._incPhysical}
-          dec={this._decPhysical}
-          max={health}
-        />
-        <DialogPlusMinusButtons
-          label={t`Mental Trauma`}
-          value={mental || 0}
-          inc={this._incMental}
-          dec={this._decMental}
-          max={sanity}
-        />
-        { !hideKilledInsane && (
-          <DialogComponent.Switch
-            label={t`Killed`}
-            labelStyle={typography.dialogLabel}
-            value={killed || impliedKilled}
-            disabled={impliedKilled}
-            onValueChange={this._toggleKilled}
-            trackColor={COLORS.switchTrackColor}
+  const impliedKilled = (physical === health);
+  const impliedInsane = (mental === sanity);
+  return (
+    <View>
+      <NewDialog.ContentLine
+        text={t`Physical Trauma`}
+        paddingBottom={s}
+        control={(
+          <PlusMinusButtons
+            onIncrement={incPhysical}
+            onDecrement={decPhysical}
+            count={physical || 0}
+            showZeroCount
+            max={health}
+            dialogStyle
           />
-        ) }
-        { !hideKilledInsane && (
-          <DialogComponent.Switch
-            label={t`Insane`}
-            labelStyle={typography.dialogLabel}
-            value={insane || impliedInsane}
-            disabled={impliedInsane}
-            onValueChange={this._toggleInsane}
-            trackColor={COLORS.switchTrackColor}
+        )}
+      />
+      <NewDialog.ContentLine
+        text={t`Mental Trauma`}
+        paddingBottom={s}
+        control={(
+          <PlusMinusButtons
+            onIncrement={incMental}
+            onDecrement={decMental}
+            count={mental || 0}
+            showZeroCount
+            max={sanity}
+            dialogStyle
           />
-        ) }
-      </View>
-    );
-  }
+        )}
+      />
+      { !hideKilledInsane && (
+        <NewDialog.ContentLine
+          text={t`Killed`}
+          paddingBottom={s}
+          control={(
+            <ArkhamSwitch
+              value={killed || impliedKilled}
+              disabled={impliedKilled}
+              onValueChange={toggleKilled}
+            />
+          )}
+        />
+      ) }
+      { !hideKilledInsane && (
+        <NewDialog.ContentLine
+          text={t`Insane`}
+          paddingBottom={s}
+          control={(
+            <ArkhamSwitch
+              value={insane || impliedInsane}
+              disabled={impliedInsane}
+              onValueChange={toggleInsane}
+            />
+          )}
+        />
+      ) }
+    </View>
+  );
 }

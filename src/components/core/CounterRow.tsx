@@ -15,10 +15,10 @@ interface Props {
 }
 
 export default function CounterRow({ inc, dec, value, label, max, min }: Props) {
-  const { typography, gameFont, fontScale } = useContext(StyleContext);
+  const { typography, fontScale } = useContext(StyleContext);
   const count = (
     <View style={[styles.count, { width: 40 * fontScale }]}>
-      <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>{value}</Text>
+      <Text style={typography.mediumGameFont}>{value}</Text>
     </View>
   );
   return (

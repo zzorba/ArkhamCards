@@ -1,393 +1,294 @@
-import React from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { filter, forEach, map, throttle } from 'lodash';
 import {
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { useDispatch } from 'react-redux';
+import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
-import PickerStyleButton from '@components/core/PickerStyleButton';
-import EditText from '@components/core/EditText';
 import {
   CORE,
   CUSTOM,
   TDE,
   TDEA,
   TDEB,
-  CampaignCycleCode,
   CampaignDifficulty,
   CustomCampaignLog,
   Deck,
   Slots,
-  WeaknessSet,
   INCOMPLETE_GUIDED_CAMPAIGNS,
+  DIFFICULTIES,
+  DeckId,
+  getDeckId,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import CampaignSelector from './CampaignSelector';
 import CampaignNoteSectionRow from './CampaignNoteSectionRow';
-import {
-  getCampaignLog,
-  getChaosBag,
-  difficultyString,
-} from '../constants';
+import { getCampaignLog, getChaosBag, difficultyString } from '../constants';
 import { maybeShowWeaknessPrompt } from '../campaignHelper';
-import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
-import NavButton from '@components/core/NavButton';
 import SettingsSwitch from '@components/core/SettingsSwitch';
-import ChaosBagLine from '@components/core/ChaosBagLine';
-import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPackChooserComponent';
-import { showCampaignDifficultyDialog } from '@components/campaign/CampaignDifficultyDialog';
-import { getNextCampaignId, AppState } from '@reducers';
-import { newCampaign, newLinkedCampaign } from '@components/campaign/actions';
+import { newCampaign, newLinkedCampaign, newStandalone } from '@components/campaign/actions';
 import { NavigationProps } from '@components/nav/types';
-import Card from '@data/Card';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
+import Card from '@data/types/Card';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
 import COLORS from '@styles/colors';
 import space, { m, s } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useFlag, useNavigationButtonPressed, usePlayerCards, useSlots } from '@components/core/hooks';
+import { CampaignSelection } from '../SelectCampaignDialog';
+import { useAlertDialog, usePickerDialog, useSimpleTextDialog } from '@components/deck/dialogs';
+import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
+import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
+import RoundedFooterButton from '@components/core/RoundedFooterButton';
+import DeckButton from '@components/deck/controls/DeckButton';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import ChaosBagTextLine from './ChaosBagTextLine';
+import useAddCampaignNoteSectionDialog from '@components/campaign/useAddCampaignNoteSectionDialog';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
+import { LatestDeckRedux } from '@data/local/types';
 
-type OwnProps = NavigationProps & PlayerCardProps & InjectedDialogProps;
-
-interface ReduxProps {
-  nextId: number;
-}
-
-interface ReduxActionProps {
-  newCampaign: (
-    id: number,
-    name: string,
-    pack_code: CampaignCycleCode,
-    difficulty: CampaignDifficulty | undefined,
-    deckIds: number[],
-    investigatorIds: string[],
-    chaosBag: ChaosBag,
-    campaignLog: CustomCampaignLog,
-    weaknessSet: WeaknessSet,
-    guided: boolean
-  ) => void;
-  newLinkedCampaign: (
-    id: number,
-    name: string,
-    cycleCode: CampaignCycleCode,
-    cycleCodeA: CampaignCycleCode,
-    cycleCodeB: CampaignCycleCode,
-    weaknessSet: WeaknessSet
-  ) => void;
-}
-
-type Props = OwnProps &
-  ReduxProps &
-  ReduxActionProps;
-
-interface State {
-  hasGuide: boolean;
-  guided: boolean;
-  name: string;
+interface CampaignChoice {
+  selection: CampaignSelection;
   campaign: string;
-  campaignCode: CampaignCycleCode;
-  difficulty: CampaignDifficulty;
-  deckIds: number[];
-  investigatorIds: string[];
-  investigatorToDeck: {
-     [code: string]: number;
-  };
-  weaknessPacks: string[];
-  weaknessAssignedCards: Slots;
-  customChaosBag: ChaosBag;
-  customCampaignLog: CustomCampaignLog;
-  campaignLogDialogVisible: boolean;
+  hasGuide: boolean;
 }
 
-class NewCampaignView extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  static options() {
-    return {
-      topBar: {
-        title: {
-          text: t`New Campaign`,
-        },
-      },
-    };
-  }
-
-  _navEventListener?: EventSubscription;
-  _onSave!: () => void;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      name: '',
-      campaign: '',
-      guided: true,
-      hasGuide: true,
-      campaignCode: CORE,
-      difficulty: CampaignDifficulty.STANDARD,
-      deckIds: [],
-      investigatorIds: [],
-      investigatorToDeck: {},
-      weaknessPacks: [],
-      weaknessAssignedCards: {},
-      customChaosBag: Object.assign({}, getChaosBag(CORE, CampaignDifficulty.STANDARD)),
-      customCampaignLog: { sections: [t`Campaign Notes`] },
-      campaignLogDialogVisible: false,
-    };
-
-    this._updateNavigationButtons();
-    this._navEventListener = Navigation.events().bindComponent(this);
-
-    this._onSave = throttle(this.onSave.bind(this), 200);
-  }
-
-  componentWillUnmount() {
-    this._navEventListener && this._navEventListener.remove();
-  }
-
-  _onWeaknessPackChange = (packs: string[]) => {
-    this.setState({
-      weaknessPacks: packs,
-    });
-  };
-
-  static getKeyName(
-    isCount?: boolean,
-    perInvestigator?: boolean
-  ): keyof CustomCampaignLog {
-    if (perInvestigator) {
-      if (isCount) {
-        return 'investigatorCounts';
-      }
-      return 'investigatorSections';
-    }
+function getKeyName(
+  isCount?: boolean,
+  perInvestigator?: boolean
+): keyof CustomCampaignLog {
+  if (perInvestigator) {
     if (isCount) {
-      return 'counts';
+      return 'investigatorCounts';
     }
-    return 'sections';
+    return 'investigatorSections';
   }
-
-  _addCampaignNoteSection = (
-    name: string,
-    isCount?: boolean,
-    perInvestigator?: boolean
-  ) => {
-    const customCampaignLog = Object.assign({}, this.state.customCampaignLog);
-    const keyName: keyof CustomCampaignLog = NewCampaignView.getKeyName(isCount, perInvestigator);
-    customCampaignLog[keyName] = [
-      ...(customCampaignLog[keyName] || []),
-      name,
-    ];
-    this.setState({
-      customCampaignLog,
-    });
-  };
-
-  _deleteCampaignNoteSection = (
-    name: string,
-    isCount?: boolean,
-    perInvestigator?: boolean
-  ) => {
-    const customCampaignLog = Object.assign({}, this.state.customCampaignLog);
-    const keyName = NewCampaignView.getKeyName(isCount, perInvestigator);
-    customCampaignLog[keyName] = filter(
-      customCampaignLog[keyName] || [],
-      sectionName => name !== sectionName);
-
-    this.setState({
-      customCampaignLog,
-    });
-  };
-
-  _toggleCampaignLogDialog = () => {
-    this.setState({
-      campaignLogDialogVisible: !this.state.campaignLogDialogVisible,
-    });
-  };
-
-  _onNameChange = (name?: string) => {
-    this.setState({
-      name: name || '',
-    }, this._updateNavigationButtons);
-  };
-
-  _updateWeaknessAssignedCards = (weaknessAssignedCards: Slots) => {
-    this.setState({
-      weaknessAssignedCards,
-    });
-  };
-
-  maybeShowWeaknessPrompt(deck: Deck) {
-    const {
-      cards,
-    } = this.props;
-    const {
-      weaknessAssignedCards,
-    } = this.state;
-    maybeShowWeaknessPrompt(deck, cards, weaknessAssignedCards, this._updateWeaknessAssignedCards);
+  if (isCount) {
+    return 'counts';
   }
+  return 'sections';
+}
 
-  _investigatorAdded = (card: Card) => {
-    this.setState({
-      investigatorIds: [...this.state.investigatorIds, card.code],
-    });
-  };
+function NewCampaignView({ componentId }: NavigationProps) {
+  const { backgroundStyle, colors, typography } = useContext(StyleContext);
+  const cards = usePlayerCards();
+  const dispatch = useDispatch();
+  const { userId } = useContext(ArkhamCardsAuthContext);
 
-  _investigatorRemoved = (card: Card) => {
-    this.setState({
-      investigatorIds: filter(this.state.investigatorIds, id => id !== card.code),
-    });
-  };
+  const [name, setName] = useState('');
+  const [{ selection, campaign, hasGuide }, setCampaignChoice] = useState<CampaignChoice>({
+    selection: {
+      type: 'campaign',
+      code: CORE,
+    },
+    campaign: t`The Night of the Zealot`,
+    hasGuide: true,
+  });
+  const [guided, toggleGuided] = useFlag(true);
+  const [difficulty, setDifficulty] = useState<CampaignDifficulty>(CampaignDifficulty.STANDARD);
+  const [selectedDecks, setSelectedDecks] = useState<LatestDeckT[]>([]);
+  const [investigatorIds, setInvestigatorIds] = useState<string[]>([]);
+  const [investigatorToDeck, setInvestigatorToDeck] = useState<{ [code: string]: DeckId }>({});
+  const [weaknessPacks, setWeaknessPacks] = useState<string[]>([]);
+  const [weaknessAssignedCards, updateWeaknessAssignedCards] = useSlots({});
+  const [customChaosBag, setCustomChaosBag] = useState<ChaosBag>(getChaosBag(CORE, CampaignDifficulty.STANDARD));
+  const [customCampaignLog, setCustomCampaignLog] = useState<CustomCampaignLog>({ sections: [t`Campaign Notes`] });
+  const isGuided = hasGuide && (guided || (selection.type === 'campaign' && selection.code === 'tde'));
 
-  _deckAdded = (deck: Deck) => {
-    this.setState({
-      deckIds: [...this.state.deckIds, deck.id],
-      investigatorIds: [...this.state.investigatorIds, deck.investigator_code],
-      investigatorToDeck: {
-        ...this.state.investigatorToDeck,
-        [deck.investigator_code]: deck.id,
-      },
-    });
-    this.maybeShowWeaknessPrompt(deck);
-  };
+  const [addSectionDialog, showAddSectionDialog] = useAddCampaignNoteSectionDialog();
+  const hasDefinedChaosBag = useMemo(() => {
+    return selection.type === 'campaign' && selection.code !== CUSTOM && !!getChaosBag(selection.code, difficulty);
+  }, [selection, difficulty]);
+  const chaosBag: ChaosBag = useMemo(() => {
+    if (hasDefinedChaosBag && selection.type === 'campaign') {
+      return getChaosBag(selection.code, difficulty);
+    }
+    return customChaosBag;
+  }, [selection, difficulty, customChaosBag, hasDefinedChaosBag]);
 
-  _deckRemoved = (
-    id: number,
-    deck?: Deck
-  ) => {
-    const investigatorToDeck: { [code: string]: number } = {};
-    forEach(this.state.investigatorToDeck, (deckId, code) => {
-      if (deckId !== id) {
-        investigatorToDeck[code] = deckId;
-      }
-    });
-    this.setState({
-      deckIds: filter([...this.state.deckIds], deckId => deckId !== id),
-      investigatorIds: !deck ? this.state.investigatorIds : filter([...this.state.investigatorIds], code => deck.investigator_code !== code),
-      investigatorToDeck,
-    });
-  };
+  const hasDefinedCampaignLog = useMemo(() => {
+    return (selection.type === 'campaign' && selection.code !== CUSTOM && !!getCampaignLog(selection.code));
+  }, [selection]);
 
-  _updateNavigationButtons = () => {
-    const {
-      componentId,
-    } = this.props;
-    const {
-      name,
-      campaignCode,
-    } = this.state;
+  const campaignLog = useMemo(() => {
+    if (hasDefinedCampaignLog && selection.type === 'campaign') {
+      return getCampaignLog(selection.code);
+    }
+    return customCampaignLog;
+  }, [selection, customCampaignLog, hasDefinedCampaignLog]);
+
+  useEffect(() => {
     Navigation.mergeOptions(componentId, {
       topBar: {
+        title: {
+          text: selection.type === 'campaign' ? t`New Campaign` : t`New Standalone`,
+        },
         rightButtons: [{
           text: t`Done`,
           id: 'save',
-          enabled: campaignCode !== CUSTOM || !!name,
           color: COLORS.M,
           accessibilityLabel: t`Done`,
         }],
       },
     });
-  };
+  }, [componentId, name, selection]);
 
-  navigationButtonPressed({ buttonId }: { buttonId: string}) {
-    if (buttonId === 'save') {
-      this._onSave();
+  const addCampaignNoteSection = useCallback((name: string, isCount?: boolean, perInvestigator?: boolean) => {
+    if (!name) {
+      return;
     }
-  }
+    const updatedCustomCampaignLog = { ...customCampaignLog };
+    const keyName: keyof CustomCampaignLog = getKeyName(isCount, perInvestigator);
+    updatedCustomCampaignLog[keyName] = [
+      ...(updatedCustomCampaignLog[keyName] || []),
+      name,
+    ];
+    setCustomCampaignLog(updatedCustomCampaignLog);
+  }, [customCampaignLog, setCustomCampaignLog]);
 
-  placeholderName() {
-    const {
-      campaign,
-      campaignCode,
-    } = this.state;
-    if (campaignCode === CUSTOM) {
+  const deleteCampaignNoteSection = useCallback((name: string, isCount?: boolean, perInvestigator?: boolean) => {
+    const updatedCustomCampaignLog = { ...customCampaignLog };
+    const keyName = getKeyName(isCount, perInvestigator);
+    updatedCustomCampaignLog[keyName] = filter(
+      updatedCustomCampaignLog[keyName] || [],
+      sectionName => name !== sectionName);
+    setCustomCampaignLog(updatedCustomCampaignLog);
+  }, [customCampaignLog, setCustomCampaignLog]);
+
+  const showCampaignLogDialog = useCallback(() => {
+    showAddSectionDialog(addCampaignNoteSection);
+  }, [showAddSectionDialog, addCampaignNoteSection]);
+
+  const onNameChange = useCallback((name?: string) => {
+    setName(name || '');
+  }, [setName]);
+
+  const updateWeaknessAssigned = useCallback((weaknessAssignedCards: Slots) => {
+    updateWeaknessAssignedCards({ type: 'sync', slots: weaknessAssignedCards });
+  }, [updateWeaknessAssignedCards]);
+  const [alertDialog, showAlert] = useAlertDialog();
+  const checkDeckForWeaknessPrompt = useCallback((deck: Deck) => {
+    if (cards) {
+      maybeShowWeaknessPrompt(deck, cards, weaknessAssignedCards, updateWeaknessAssigned, showAlert);
+    }
+  }, [cards, weaknessAssignedCards, updateWeaknessAssigned, showAlert]);
+
+  const investigatorAdded = useCallback((card: Card) => {
+    setInvestigatorIds([...investigatorIds, card.code]);
+  }, [investigatorIds, setInvestigatorIds]);
+
+  const investigatorRemoved = useCallback((card: Card) => {
+    setInvestigatorIds(filter(investigatorIds, id => id !== card.code));
+  }, [investigatorIds, setInvestigatorIds]);
+
+  const deckAdded = useCallback(async(deck: Deck) => {
+    setSelectedDecks([...selectedDecks, new LatestDeckRedux(deck, undefined, undefined)]);
+    setInvestigatorIds([...investigatorIds, deck.investigator_code]);
+    setInvestigatorToDeck({
+      ...investigatorToDeck,
+      [deck.investigator_code]: getDeckId(deck),
+    });
+    checkDeckForWeaknessPrompt(deck);
+  }, [setSelectedDecks, setInvestigatorIds, setInvestigatorToDeck, checkDeckForWeaknessPrompt, selectedDecks, investigatorIds, investigatorToDeck]);
+
+  const deckRemoved = useCallback((id: DeckId, deck?: Deck) => {
+    const updatedInvestigatorToDeck: { [code: string]: DeckId } = {};
+    forEach(investigatorToDeck, (deckId, code) => {
+      if (deckId.uuid !== id.uuid) {
+        updatedInvestigatorToDeck[code] = deckId;
+      }
+    });
+    setSelectedDecks(filter(selectedDecks, deck => deck.id.uuid !== id.uuid));
+    setInvestigatorIds(!deck ? investigatorIds : filter([...investigatorIds], code => deck.investigator_code !== code));
+    setInvestigatorToDeck(updatedInvestigatorToDeck);
+  }, [investigatorToDeck, selectedDecks, investigatorIds, setSelectedDecks, setInvestigatorIds, setInvestigatorToDeck]);
+
+  const placeholderName = useMemo(() => {
+    if (selection.type === 'campaign' && selection.code === CUSTOM) {
       return t`(required)`;
     }
+    if (selection.type === 'standalone') {
+      return campaign;
+    }
     return t`My ${campaign} Campaign`;
-  }
+  }, [campaign, selection]);
 
-  onSave() {
-    const {
-      nextId,
-      newCampaign,
-      newLinkedCampaign,
-      componentId,
-    } = this.props;
-    const {
-      name,
-      campaignCode,
-      difficulty,
-      deckIds,
-      investigatorIds,
-      weaknessPacks,
-      weaknessAssignedCards,
-    } = this.state;
-    const guided = this.isGuided();
-    if (campaignCode === TDE) {
-      newLinkedCampaign(
-        nextId,
-        name || this.placeholderName(),
-        TDE,
-        TDEA,
-        TDEB,
+  const onSave = useCallback(() => {
+    if (selection.type === 'campaign' && selection.code === CUSTOM && !name) {
+      showAlert(t`Name required`, t`You must specify a name for custom campaigns.`);
+      return;
+    }
+    const deckIds = map(selectedDecks, d => d.id);
+    if (selection.type === 'campaign') {
+      if (selection.code === TDE) {
+        dispatch(newLinkedCampaign(
+          userId,
+          name || placeholderName,
+          TDE,
+          TDEA,
+          TDEB,
+          {
+            packCodes: weaknessPacks,
+            assignedCards: weaknessAssignedCards,
+          }
+        ));
+      } else {
+        // Save to redux.
+        dispatch(newCampaign(
+          userId,
+          name || placeholderName,
+          selection.code,
+          isGuided ? undefined : difficulty,
+          deckIds,
+          investigatorIds,
+          chaosBag,
+          campaignLog,
+          {
+            packCodes: weaknessPacks,
+            assignedCards: weaknessAssignedCards,
+          },
+          isGuided
+        ));
+      }
+    } else {
+      dispatch(newStandalone(
+        userId,
+        name || placeholderName,
+        selection.id,
+        deckIds,
+        investigatorIds,
         {
           packCodes: weaknessPacks,
           assignedCards: weaknessAssignedCards,
-        }
-      );
-      Navigation.pop(componentId);
-      return;
+        },
+      ));
     }
-    // Save to redux.
-    newCampaign(
-      nextId,
-      name || this.placeholderName(),
-      campaignCode,
-      guided ? undefined : difficulty,
-      deckIds,
-      investigatorIds,
-      this.getChaosBag(),
-      this.getCampaignLog(),
-      {
-        packCodes: weaknessPacks,
-        assignedCards: weaknessAssignedCards,
-      },
-      guided
-    );
     Navigation.pop(componentId);
-  }
+  }, [dispatch, showAlert, componentId, campaignLog, chaosBag, placeholderName, name, selection, userId,
+    difficulty, selectedDecks, investigatorIds, weaknessPacks, weaknessAssignedCards, isGuided]);
 
-  _updateChaosBag = (chaosBag: ChaosBag) => {
-    this.setState({
-      customChaosBag: chaosBag,
-    });
-  };
+  const savePressed = useMemo(() => throttle(onSave, 200), [onSave]);
+  useNavigationButtonPressed(({ buttonId }) => {
+    if (buttonId === 'save') {
+      savePressed();
+    }
+  }, componentId, [savePressed]);
 
-  _updateDifficulty = (value: CampaignDifficulty) => {
-    this.setState({
-      difficulty: value,
-    }, this._updateNavigationButtons);
-  };
-
-  _showChaosBagDialog = () => {
-    const {
-      componentId,
-    } = this.props;
+  const showChaosBagDialog = useCallback(() => {
     Navigation.push<EditChaosBagProps>(componentId, {
       component: {
         name: 'Dialog.EditChaosBag',
         passProps: {
-          chaosBag: this.state.customChaosBag,
-          updateChaosBag: this._updateChaosBag,
+          chaosBag: customChaosBag,
+          updateChaosBag: setCustomChaosBag,
         },
         options: {
           topBar: {
@@ -401,349 +302,271 @@ class NewCampaignView extends React.Component<Props, State> {
         },
       },
     });
-  };
-
-  _showDifficultyDialog = () => {
-    showCampaignDifficultyDialog(this._updateDifficulty);
-  };
-
-  _campaignChanged = (campaignCode: CampaignCycleCode, campaign: string, hasGuide: boolean) => {
-    this.setState({
-      campaign,
-      campaignCode,
-      hasGuide,
-    }, this._updateNavigationButtons);
-  };
-
-  hasDefinedChaosBag(): boolean {
-    const {
-      campaignCode,
-      difficulty,
-    } = this.state;
-
-    return campaignCode !== CUSTOM && !!getChaosBag(campaignCode, difficulty);
-  }
-
-  getChaosBag(): ChaosBag {
-    const {
-      campaignCode,
-      difficulty,
-      customChaosBag,
-    } = this.state;
-    if (this.hasDefinedChaosBag()) {
-      return getChaosBag(campaignCode, difficulty);
-    }
-
-    return customChaosBag;
-  }
-
-  hasDefinedCampaignLog(): boolean {
-    const {
-      campaignCode,
-    } = this.state;
-    return (campaignCode !== CUSTOM && !!getCampaignLog(campaignCode));
-  }
-
-  getCampaignLog() {
-    const {
-      campaignCode,
-      customCampaignLog,
-    } = this.state;
-    if (this.hasDefinedCampaignLog()) {
-      return getCampaignLog(campaignCode);
-    }
-    return customCampaignLog;
-  }
-
-  renderChaosBagSection() {
-    const { gameFont, typography } = this.context;
-    const chaosBag = this.getChaosBag();
-    return (
-      <View style={styles.block}>
-        <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
-          { t`Chaos Bag` }
-        </Text>
-        <View style={space.marginTopS}>
-          <ChaosBagLine chaosBag={chaosBag} />
-        </View>
-      </View>
-    );
-  }
-
-  _showCampaignNameDialog = () => {
-    const {
-      name,
-    } = this.state;
-    this.props.showTextEditDialog(
-      t`Campaign Name`,
-      name,
-      this._onNameChange
-    );
-  };
-
-  renderWeaknessSetSection() {
-    const {
-      componentId,
-    } = this.props;
-    const {
-      gameFont,
-      borderStyle,
-      typography,
-    } = this.context;
-    return (
-      <View style={[space.paddingBottomS, styles.underline, borderStyle]}>
-        <View style={styles.block}>
-          <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
-            { t`Weakness Set` }
-          </Text>
-          <Text style={typography.small}>
-            { t`Include all basic weaknesses from these expansions` }
-          </Text>
-        </View>
-        <View style={[space.paddingXs, space.paddingRightS]}>
-          <WeaknessSetPackChooserComponent
-            componentId={componentId}
-            compact
-            onSelectedPacksChanged={this._onWeaknessPackChange}
-          />
-        </View>
-      </View>
-    );
-  }
-
-  renderCampaignSectionDialog() {
-    const {
-      viewRef,
-    } = this.props;
-    const {
-      campaignLogDialogVisible,
-    } = this.state;
-    return (
-      <AddCampaignNoteSectionDialog
-        viewRef={viewRef}
-        visible={campaignLogDialogVisible}
-        addSection={this._addCampaignNoteSection}
-        toggleVisible={this._toggleCampaignLogDialog}
-      />
-    );
-  }
-
-  renderChaosBag() {
-    const { borderStyle, colors } = this.context;
-    const { guided } = this.state;
-    if (guided) {
-      return null;
-    }
-    const hasDefinedChaosBag = this.hasDefinedChaosBag();
-    return hasDefinedChaosBag ? (
-      <View style={[styles.underline, borderStyle]}>
-        { this.renderChaosBagSection() }
-      </View>
-    ) : (
-      <NavButton onPress={this._showChaosBagDialog} color={colors.background}>
-        { this.renderChaosBagSection() }
-      </NavButton>
-    );
-  }
-
-  renderCampaignLogSection() {
-    const { gameFont, borderStyle, typography } = this.context;
-    if (this.isGuided()) {
-      return null;
-    }
-    const campaignLog = this.getCampaignLog();
-    const onPress = this.hasDefinedCampaignLog() ?
-      undefined :
-      this._deleteCampaignNoteSection;
-    return (
-      <View style={[styles.underline, borderStyle]}>
-        <View style={styles.block}>
-          <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
-            { t`Campaign Log` }
-          </Text>
-        </View>
-        { map(campaignLog.sections || [], section => (
-          <CampaignNoteSectionRow
-            key={section}
-            name={section}
-            onPress={onPress}
-          />
-        )) }
-        { map(campaignLog.counts || [], section => (
-          <CampaignNoteSectionRow
-            key={section}
-            name={section}
-            isCount
-            onPress={onPress}
-          />
-        )) }
-        { map(campaignLog.investigatorSections || [], section => (
-          <CampaignNoteSectionRow
-            key={section}
-            name={section}
-            perInvestigator
-            onPress={onPress}
-          />
-        )) }
-        { map(campaignLog.investigatorCounts || [], section => (
-          <CampaignNoteSectionRow
-            key={section}
-            name={section}
-            perInvestigator
-            isCount
-            onPress={onPress}
-          />
-        )) }
-        { !this.hasDefinedChaosBag() && (
-          <View style={space.marginTopS}>
-            <BasicButton title={t`Add Log Section`} onPress={this._toggleCampaignLogDialog} />
-          </View>
-        ) }
-      </View>
-    );
-  }
-
-  _toggleGuided = () =>{
-    this.setState(state => {
+  }, [componentId, customChaosBag, setCustomChaosBag]);
+  const { dialog: difficultyDialog, showDialog: showDifficultyDialog } = usePickerDialog({
+    title: t`Difficulty`,
+    items: map(DIFFICULTIES, difficulty => {
       return {
-        guided: !state.guided,
+        title: difficultyString(difficulty),
+        value: difficulty,
       };
-    });
-  };
+    }),
+    selectedValue: difficulty,
+    onValueChange: setDifficulty,
+  });
 
-  isGuided() {
-    const { guided, hasGuide } = this.state;
-    return hasGuide && guided;
-  }
-
-  render() {
-    const {
-      componentId,
-      captureViewRef,
-      nextId,
-    } = this.props;
-    const {
-      gameFont,
-      backgroundStyle,
-      borderStyle,
-      typography,
-    } = this.context;
-    const {
-      guided,
-      deckIds,
-      investigatorIds,
-      investigatorToDeck,
-      campaignCode,
-      name,
-      difficulty,
+  const campaignChanged = useCallback((selection: CampaignSelection, campaign: string, hasGuide: boolean) => {
+    setCampaignChoice({
+      selection,
+      campaign,
       hasGuide,
-    } = this.state;
-
+    });
+  }, [setCampaignChoice]);
+  const weaknessSetSection = useMemo(() => {
     return (
-      <View ref={captureViewRef} style={backgroundStyle}>
-        <ScrollView contentContainerStyle={backgroundStyle}>
+      <View style={space.paddingS}>
+        <RoundedFactionBlock
+          faction="neutral"
+          header={(
+            <View style={[styles.block, { backgroundColor: colors.L20 }]}>
+              <Text style={[typography.mediumGameFont, typography.center]}>
+                { t`Weakness Set` }
+              </Text>
+              <Text style={typography.small}>
+                { t`Include all basic weaknesses from these expansions` }
+              </Text>
+            </View>
+          )}
+          noSpace
+        >
+          <View style={[space.paddingXs, space.paddingRightS]}>
+            <WeaknessSetPackChooserComponent
+              componentId={componentId}
+              compact
+              onSelectedPacksChanged={setWeaknessPacks}
+            />
+          </View>
+        </RoundedFactionBlock>
+      </View>
+    );
+  }, [componentId, typography, colors, setWeaknessPacks]);
+
+  const campaignLogSection = useMemo(() => {
+    if (isGuided || selection.type === 'standalone') {
+      return null;
+    }
+    const onPress = hasDefinedCampaignLog ?
+      undefined :
+      deleteCampaignNoteSection;
+    return (
+      <View style={space.paddingS}>
+        <RoundedFactionBlock
+          faction="neutral"
+          header={(
+            <View style={[styles.block, { backgroundColor: colors.L20 }]}>
+              <Text style={[typography.mediumGameFont, typography.center]}>
+                { t`Campaign Log` }
+              </Text>
+            </View>
+          )}
+          footer={!hasDefinedChaosBag ? <RoundedFooterButton icon="expand" title={t`Add Log Section`} onPress={showCampaignLogDialog} /> : undefined}
+        >
+          { map(campaignLog.sections || [], (section, idx) => (
+            <CampaignNoteSectionRow
+              key={idx}
+              name={section}
+              onPress={onPress}
+            />
+          )) }
+          { map(campaignLog.counts || [], (section, idx) => (
+            <CampaignNoteSectionRow
+              key={idx}
+              name={section}
+              isCount
+              onPress={onPress}
+            />
+          )) }
+          { map(campaignLog.investigatorSections || [], (section, idx) => (
+            <CampaignNoteSectionRow
+              key={idx}
+              name={section}
+              perInvestigator
+              onPress={onPress}
+            />
+          )) }
+          { map(campaignLog.investigatorCounts || [], (section, idx) => (
+            <CampaignNoteSectionRow
+              key={idx}
+              name={section}
+              perInvestigator
+              isCount
+              onPress={onPress}
+            />
+          )) }
+        </RoundedFactionBlock>
+      </View>
+    );
+  }, [typography, colors, hasDefinedChaosBag, hasDefinedCampaignLog, isGuided, campaignLog, selection,
+    showCampaignLogDialog, deleteCampaignNoteSection]);
+
+  const showDeckSelector = useCallback(() => {
+    if (deckAdded) {
+      const passProps: MyDecksSelectorProps = {
+        campaignId: { campaignId: 'new-deck' },
+        onDeckSelect: deckAdded,
+        onInvestigatorSelect: investigatorAdded,
+        selectedDecks,
+        selectedInvestigatorIds: investigatorIds,
+      };
+      Navigation.showModal<MyDecksSelectorProps>({
+        stack: {
+          children: [{
+            component: {
+              name: 'Dialog.DeckSelector',
+              passProps,
+              options: {
+                modalPresentationStyle: Platform.OS === 'ios' ?
+                  OptionsModalPresentationStyle.fullScreen :
+                  OptionsModalPresentationStyle.overCurrentContext,
+              },
+            },
+          }],
+        },
+      });
+    }
+  }, [selectedDecks, investigatorIds, deckAdded, investigatorAdded]);
+  const { dialog, showDialog } = useSimpleTextDialog({
+    title: t`Name`,
+    placeholder: placeholderName,
+    value: name,
+    onValueChange: onNameChange,
+  });
+  return (
+    <View style={backgroundStyle}>
+      <ScrollView contentContainerStyle={backgroundStyle}>
+        <View style={space.paddingS}>
           <CampaignSelector
             componentId={componentId}
-            campaignChanged={this._campaignChanged}
+            campaignChanged={campaignChanged}
           />
-          <EditText
+          <DeckPickerStyleButton
+            icon="name"
             title={t`Name`}
-            placeholder={this.placeholderName()}
-            onValueChange={this._onNameChange}
-            value={name}
+            valueLabel={name || placeholderName}
+            onPress={showDialog}
+            editable
+            last
           />
-          { hasGuide && (
-            <SettingsSwitch
-              title={t`Guided Campaign`}
-              description={guided ? t`Use app for scenario setup & resolutions` : t`Track campaign log and resolutions manually`}
-              onValueChange={this._toggleGuided}
-              value={guided}
-            />
-          ) }
-          { hasGuide && guided && INCOMPLETE_GUIDED_CAMPAIGNS.has(campaignCode) && (
-            <View style={[styles.block, styles.underline, borderStyle]}>
-              <Text style={typography.text}>
-                { t`Note: this campaign is still being released and so the guide is incomplete (and may contain some mistakes).\nAs new scenarios are released, I will try to update the app promptly but there may be some slight delays.` }</Text>
-            </View>
-          ) }
-          { !this.isGuided() && (
-            <PickerStyleButton
+        </View>
+        { hasGuide && selection.type === 'campaign' && (
+          <SettingsSwitch
+            title={t`Guided Campaign`}
+            description={(selection.code === 'tde' || guided) ? t`Use app for scenario setup & resolutions` : t`Track campaign log and resolutions manually`}
+            onValueChange={toggleGuided}
+            disabled={selection.code === 'tde'}
+            noDisableText
+            value={selection.code === 'tde' || guided}
+            last
+          />
+        ) }
+        { selection.type === 'campaign' && !isGuided && (
+          <View style={space.paddingS}>
+            <DeckPickerStyleButton
+              icon="difficulty"
               title={t`Difficulty`}
-              id="difficulty"
-              onPress={this._showDifficultyDialog}
-              value={difficultyString(difficulty)}
-              widget="nav"
+              onPress={showDifficultyDialog}
+              valueLabel={difficultyString(difficulty)}
+              editable
+              first
             />
-          ) }
-          { this.renderChaosBag() }
-          { this.renderCampaignLogSection() }
-          { campaignCode !== TDE && (
-            <View style={[styles.underline, borderStyle]}>
-              <View style={styles.block}>
-                <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
-                  { t`Investigators` }
-                </Text>
-              </View>
+            <DeckPickerStyleButton
+              icon="chaos_bag"
+              editable={!hasDefinedChaosBag}
+              title={t`Chaos Bag`}
+              valueLabel={<ChaosBagTextLine chaosBag={chaosBag} />}
+              onPress={showChaosBagDialog}
+              last
+            />
+          </View>
+        ) }
+        { hasGuide && guided && selection.type === 'campaign' && INCOMPLETE_GUIDED_CAMPAIGNS.has(selection.code) && (
+          <View style={styles.block}>
+            <Text style={typography.text}>
+              { t`Note: this campaign is still being released and so the guide is incomplete (and may contain some mistakes).\nAs new scenarios are released, I will try to update the app promptly but there may be some slight delays.` }
+            </Text>
+          </View>
+        ) }
+        { campaignLogSection }
+        { (selection.type !== 'campaign' || selection.code !== TDE) && (
+          <View style={space.paddingS}>
+            <RoundedFactionBlock
+              faction="neutral"
+              header={(
+                <View style={[styles.block, { backgroundColor: colors.L20 }]}>
+                  <Text style={[typography.mediumGameFont, typography.center]}>
+                    { t`Investigators` }
+                  </Text>
+                </View>
+              )}
+              footer={(
+                <RoundedFooterButton
+                  icon="expand"
+                  title={guided ? t`Add Investigator` : t`Add Investigator Deck`}
+                  onPress={showDeckSelector}
+                />
+              )}
+              noSpace
+            >
               <DeckSelector
                 componentId={componentId}
-                campaignId={nextId}
-                deckIds={deckIds}
+                deckIds={map(selectedDecks, d => d.id)}
                 investigatorIds={filter(investigatorIds, code => !investigatorToDeck[code])}
-                deckAdded={this._deckAdded}
-                deckRemoved={this._deckRemoved}
-                investigatorAdded={guided ? this._investigatorAdded : undefined}
-                investigatorRemoved={guided ? this._investigatorRemoved : undefined}
+                deckRemoved={deckRemoved}
+                investigatorRemoved={guided ? investigatorRemoved : undefined}
               />
+            </RoundedFactionBlock>
+          </View>
+        ) }
+        { weaknessSetSection }
+        <View style={space.paddingS}>
+          <DeckButton
+            icon="check-thin"
+            disabled={selection.type === 'campaign' && selection.code === CUSTOM && !name}
+            title={selection.type === 'campaign' ? t`Create Campaign` : t`Create Standalone`}
+            onPress={savePressed}
+          />
+        </View>
+        <View style={styles.footer}>
+          { isGuided && (
+            <View style={styles.block}>
+              <Text style={typography.small}>
+                { t`If you encounter any problems with the campaign guide system, please let me know at arkhamcards@gmail.com.` }
+              </Text>
             </View>
           ) }
-          { this.renderWeaknessSetSection() }
-          <BasicButton
-            disabled={campaignCode === CUSTOM && !name}
-            title={t`Create Campaign`}
-            onPress={this._onSave}
-          />
-          <View style={styles.footer}>
-            { this.isGuided() && (
-              <View style={styles.block}>
-                <Text style={typography.small}>
-                  { t`If you encounter any problems with the campaign guide system, please let me know at arkhamcards@gmail.com.` }
-                </Text>
-              </View>
-            ) }
-          </View>
-        </ScrollView>
-        { this.renderCampaignSectionDialog() }
-      </View>
-    );
-  }
+        </View>
+      </ScrollView>
+      { addSectionDialog }
+      { difficultyDialog }
+      { dialog }
+      { alertDialog }
+    </View>
+  );
 }
 
-
-function mapStateToProps(state: AppState): ReduxProps {
+NewCampaignView.options = () => {
   return {
-    nextId: getNextCampaignId(state),
+    topBar: {
+      title: {
+        text: t`New Campaign`,
+      },
+    },
   };
-}
+};
 
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    newCampaign,
-    newLinkedCampaign,
-  }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(
-  withPlayerCards(
-    withDialogs(
-      NewCampaignView
-    )
-  )
-);
+export default NewCampaignView;
 
 const styles = StyleSheet.create({
-  underline: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
   footer: {
     minHeight: 100,
   },
@@ -751,5 +574,7 @@ const styles = StyleSheet.create({
     padding: s,
     paddingLeft: m,
     paddingRight: m,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
   },
 });

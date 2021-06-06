@@ -1,131 +1,86 @@
-import React from 'react';
-import { flatMap } from 'lodash';
+import React, { useCallback, useContext, useRef } from 'react';
+import { map } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { Campaign, Deck, DecksMap, SingleCampaign, ScenarioResult } from '@actions/types';
+import { CampaignId, Deck, getDeckId, ScenarioResult } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
-import Card from '@data/Card';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
-import { getAllDecks, getLatestCampaignInvestigators, getLatestCampaignDeckIds, getCampaign, AppState, getLangPreference } from '@reducers';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
+import Card from '@data/types/Card';
+import { getLangPreference } from '@reducers';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
-import { updateCampaign } from '@components/campaign/actions';
+import { updateCampaignXp } from '@components/campaign/actions';
 import UpgradeDecksList from './UpgradeDecksList';
 import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import space, { s } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
+import { useCampaign, useCampaignInvestigators } from '@data/hooks';
+import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 export interface UpgradeDecksProps {
-  id: number;
+  id: CampaignId;
   scenarioResult: ScenarioResult;
 }
 
-interface ReduxProps {
-  lang: string;
-  campaign?: SingleCampaign;
-  decks: DecksMap;
-  allInvestigators: Card[];
-  latestDeckIds: number[];
-}
+const EMPTY_DECKS: LatestDeckT[] = [];
 
-interface ReduxActionProps {
-  updateCampaign: (id: number, sparseCampaign: Partial<Campaign>) => void;
-}
-
-type Props = NavigationProps & UpgradeDecksProps & PlayerCardProps & ReduxProps & ReduxActionProps & DimensionsProps;
-
-class UpgradeDecksView extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  static options(passProps: UpgradeDecksProps) {
-    return {
-      topBar: {
-        title: {
-          text: passProps.scenarioResult.scenario,
-        },
-        subtitle: {
-          text: t`Update investigator decks`,
-        },
-        leftButtons: [{
-          icon: iconsMap.close,
-          id: 'close',
-          color: COLORS.M,
-          accessibilityLabel: t`Cancel`,
-        }],
-      },
-    };
-  }
-
-  _navEventListener?: EventSubscription;
-  _originalDeckIds: Set<number>;
-
-  constructor(props: Props) {
-    super(props);
-
-    this._originalDeckIds = new Set(this.props.latestDeckIds);
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  componentWillUnmount() {
-    this._navEventListener && this._navEventListener.remove();
-  }
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
+function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationProps) {
+  const { backgroundStyle, colors, typography } = useContext(StyleContext);
+  const dispatch = useDispatch();
+  const investigators = useInvestigatorCards();
+  const campaign = useCampaign(id);
+  const [allInvestigators] = useCampaignInvestigators(campaign, investigators);
+  const latestDecks = campaign?.latestDecks() || EMPTY_DECKS;
+  const lang = useSelector(getLangPreference);
+  const updateCampaignActions = useUpdateCampaignActions();
+  const originalDeckUuids = useRef(new Set(map(latestDecks, deck => deck.id.uuid)));
+  const close = useCallback(() => {
+    Navigation.dismissModal(componentId);
+  }, [componentId]);
+  useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'close') {
-      this._close();
+      close();
     }
-  }
+  }, componentId, [close]);
 
-  _updateInvestigatorXp = (investigator: Card, xp: number) => {
-    const { updateCampaign, campaign } = this.props;
+  const updateInvestigatorXp = useCallback((investigator: Card, xp: number) => {
     if (campaign) {
-      const investigatorData = campaign.investigatorData[investigator.code] || {};
+      const investigatorData = campaign.getInvestigatorData(investigator.code);
       const oldXp = investigatorData.availableXp || 0;
-      updateCampaign(campaign.id, {
-        investigatorData: {
-          ...campaign.investigatorData || {},
-          [investigator.code]: {
-            ...investigatorData,
-            availableXp: oldXp + xp,
-          },
-        },
-      });
+      dispatch(updateCampaignXp(
+        updateCampaignActions,
+        id,
+        investigator.code,
+        oldXp + xp,
+        'availableXp'
+      ));
     }
-  };
+  }, [campaign, id, updateCampaignActions, dispatch]);
 
-  _close = () => {
-    Navigation.dismissModal(this.props.componentId);
-  };
-
-  _showDeckUpgradeDialog = (deck: Deck, investigator?: Card) => {
-    const {
-      componentId,
-      id,
-    } = this.props;
-    const { colors } = this.context;
+  const showDeckUpgradeDialog = useCallback((deck: Deck, investigator?: Card) => {
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<UpgradeDeckProps>(componentId, {
       component: {
         name: 'Deck.Upgrade',
         passProps: {
-          id: deck.id,
+          id: getDeckId(deck),
           campaignId: id,
           showNewDeck: false,
         },
         options: {
           statusBar: {
             style: 'light',
+            backgroundColor,
           },
           topBar: {
             title: {
@@ -137,87 +92,57 @@ class UpgradeDecksView extends React.Component<Props> {
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: backgroundColor,
             },
           },
         },
       },
     });
-  };
-
-  render() {
-    const {
-      latestDeckIds,
-      id,
-      campaign,
-      componentId,
-      allInvestigators,
-      decks,
-      cards,
-      investigators,
-      lang,
-    } = this.props;
-    const { backgroundStyle, typography } = this.context;
-    if (!campaign) {
-      return null;
-    }
-    return (
-      <ScrollView contentContainerStyle={[styles.container, backgroundStyle]}>
-        <View style={space.marginS}>
-          <Text style={typography.small}>
-            { t`By upgrading a deck, you can track XP and story card upgrades as your campaign develops.\n\nPrevious versions of your deck will still be accessible.` }
-          </Text>
-        </View>
-        <UpgradeDecksList
-          componentId={componentId}
-          campaignId={id}
-          lang={lang}
-          investigatorData={campaign.investigatorData}
-          allInvestigators={allInvestigators}
-          decks={flatMap(latestDeckIds, deckId => decks[deckId] || [])}
-          originalDeckIds={this._originalDeckIds}
-          showDeckUpgradeDialog={this._showDeckUpgradeDialog}
-          updateInvestigatorXp={this._updateInvestigatorXp}
-          cards={cards}
-          investigators={investigators}
-        />
-        <BasicButton title={t`Done`} onPress={this._close} />
-        <View style={styles.footer} />
-      </ScrollView>
-    );
+  }, [componentId, id, colors]);
+  if (!campaign) {
+    return null;
   }
+  return (
+    <ScrollView contentContainerStyle={[styles.container, backgroundStyle]}>
+      <View style={space.marginS}>
+        <Text style={typography.small}>
+          { t`By upgrading a deck, you can track XP and story card upgrades as your campaign develops.\n\nPrevious versions of your deck will still be accessible.` }
+        </Text>
+      </View>
+      <UpgradeDecksList
+        lang={lang}
+        campaign={campaign}
+        allInvestigators={allInvestigators}
+        decks={latestDecks}
+        originalDeckUuids={originalDeckUuids.current}
+        showDeckUpgradeDialog={showDeckUpgradeDialog}
+        updateInvestigatorXp={updateInvestigatorXp}
+      />
+      <BasicButton title={t`Done`} onPress={close} />
+      <View style={styles.footer} />
+    </ScrollView>
+  );
 }
 
-function mapStateToPropsFix(
-  state: AppState,
-  props: NavigationProps & UpgradeDecksProps & PlayerCardProps
-): ReduxProps {
-  const campaign = getCampaign(state, props.id);
-  const latestDeckIds = getLatestCampaignDeckIds(state, campaign);
-  const allInvestigators = getLatestCampaignInvestigators(state, props.investigators, campaign);
+UpgradeDecksView.options = (passProps: UpgradeDecksProps) => {
   return {
-    campaign,
-    decks: getAllDecks(state),
-    latestDeckIds,
-    allInvestigators,
-    lang: getLangPreference(state),
+    topBar: {
+      title: {
+        text: passProps.scenarioResult.scenario,
+      },
+      subtitle: {
+        text: t`Update investigator decks`,
+      },
+      leftButtons: [{
+        icon: iconsMap.close,
+        id: 'close',
+        color: COLORS.M,
+        accessibilityLabel: t`Cancel`,
+      }],
+    },
   };
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    updateCampaign,
-  }, dispatch);
-}
-
-export default withPlayerCards(
-  connect<ReduxProps, ReduxActionProps, NavigationProps & UpgradeDecksProps & PlayerCardProps, AppState>(
-    mapStateToPropsFix,
-    mapDispatchToProps
-  )(
-    withDimensions(UpgradeDecksView)
-  )
-);
+};
+export default UpgradeDecksView;
 
 const styles = StyleSheet.create({
   container: {

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { forEach, keys, map, sortBy } from 'lodash';
-import { Alert, ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { connect } from 'react-redux';
 import { t } from 'ttag';
+import { useDispatch } from 'react-redux';
 
 import { EditDeckProps } from './DeckEditView';
 import { CampaignDrawWeaknessProps } from '@components/campaign/CampaignDrawWeaknessDialog';
@@ -11,68 +11,36 @@ import { CardDetailProps } from '@components/card/CardDetailView';
 import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { DrawWeaknessProps } from '@components/weakness/WeaknessDrawDialog';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import { NavigationProps } from '@components/nav/types';
-import { Campaign, Deck, DeckMeta, Slots } from '@actions/types';
 import { RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from '@app_constants';
-import Card from '@data/Card';
-import { getCampaign, AppState } from '@reducers';
+import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import ArkhamButton from '@components/core/ArkhamButton';
+import { usePlayerCards } from '@components/core/hooks';
+import { useCampaignDeck } from '@data/hooks';
+import { setIgnoreDeckSlot } from './actions';
+import { useDeckEdits } from './hooks';
+import { useAlertDialog } from './dialogs';
+import { CampaignId, DeckId } from '@actions/types';
 
 export interface EditSpecialCardsProps {
-  deck: Deck;
-  meta: DeckMeta;
-  previousDeck?: Deck;
-  xpAdjustment?: number;
-  campaignId?: number;
-  updateSlots: (slots: Slots) => void;
-  updateIgnoreDeckLimitSlots: (slots: Slots) => void;
-  slots: Slots;
-  ignoreDeckLimitSlots: Slots;
+  id: DeckId;
+  campaignId?: CampaignId;
   assignedWeaknesses?: string[];
 }
 
-interface ReduxProps {
-  campaign?: Campaign;
-}
+function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps) {
+  const { backgroundStyle, colors } = useContext(StyleContext);
+  const { componentId, campaignId, assignedWeaknesses, id } = props;
+  const [unsavedAssignedWeaknesses, setUnsavedAssignedWeaknesses] = useState<string[]>(assignedWeaknesses || []);
+  const deck = useCampaignDeck(id, campaignId);
+  const dispatch = useDispatch();
+  const [deckEdits, deckEditsRef] = useDeckEdits(id);
 
-type Props = NavigationProps & EditSpecialCardsProps & ReduxProps & PlayerCardProps;
-
-interface State {
-  slots: Slots;
-  ignoreDeckLimitSlots: Slots;
-  unsavedAssignedWeaknesses: string[];
-}
-
-class EditSpecialDeckCardsView extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  static options() {
-    return {
-      topBar: {
-        backButton: {
-          title: t`Back`,
-        },
-      },
-    };
-  }
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      slots: props.slots,
-      ignoreDeckLimitSlots: props.ignoreDeckLimitSlots,
-      unsavedAssignedWeaknesses: props.assignedWeaknesses || [],
-    };
-  }
-
-  _cardPressed = (card: Card) => {
-    Navigation.push<CardDetailProps>(this.props.componentId, {
+  const cardPressed = useCallback((card: Card) => {
+    Navigation.push<CardDetailProps>(componentId, {
       component: {
         name: 'Card',
         passProps: {
@@ -82,39 +50,23 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
         },
       },
     });
-  };
+  }, [componentId]);
+  const cards = usePlayerCards();
 
-  _editStoryPressed = () => {
-    const {
-      componentId,
-      deck,
-      meta,
-      previousDeck,
-      cards,
-      xpAdjustment,
-    } = this.props;
-    const { colors } = this.context;
-    const {
-      slots,
-      ignoreDeckLimitSlots,
-    } = this.state;
-    const investigator = cards[deck.investigator_code];
+  const editStoryPressed = useCallback(() => {
+    const investigator = deck && cards && cards[deck.deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<EditDeckProps>(componentId, {
       component: {
-        name: 'Deck.Edit',
+        name: 'Deck.EditAddCards',
         passProps: {
-          deck,
-          meta,
-          previousDeck,
-          slots,
-          ignoreDeckLimitSlots,
-          updateSlots: this._updateSlots,
-          xpAdjustment: xpAdjustment,
+          id,
           storyOnly: true,
         },
         options: {
           statusBar: {
             style: 'light',
+            backgroundColor,
           },
           topBar: {
             title: {
@@ -126,92 +78,54 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: backgroundColor,
             },
           },
         },
       },
     });
-  };
+  }, [componentId, deck, cards, colors, id]);
 
-  _isSpecial = (card: Card) => {
-    const {
-      ignoreDeckLimitSlots,
-    } = this.state;
-    return card.code === ACE_OF_RODS_CODE || ignoreDeckLimitSlots[card.code] > 0;
-  };
+  const isSpecial = useCallback((card: Card) => {
+    return !!(card.code === ACE_OF_RODS_CODE || (deckEditsRef.current && deckEditsRef.current.ignoreDeckLimitSlots[card.code] > 0));
+  }, [deckEditsRef]);
 
-  _updateSlots = (newSlots: Slots) => {
-    this.setState({
-      slots: newSlots,
-    });
-    this.props.updateSlots(newSlots);
-  };
-
-  _saveWeakness = (code: string, replaceRandomBasicWeakness: boolean) => {
-    const {
-      updateSlots,
-    } = this.props;
-    const {
-      slots,
-      unsavedAssignedWeaknesses,
-    } = this.state;
-    const newSlots = Object.assign({}, slots);
-    if (replaceRandomBasicWeakness && slots[RANDOM_BASIC_WEAKNESS] > 0) {
-      newSlots[RANDOM_BASIC_WEAKNESS]--;
-      if (!newSlots[RANDOM_BASIC_WEAKNESS]) {
-        delete newSlots[RANDOM_BASIC_WEAKNESS];
-      }
+  const saveWeakness = useCallback((code: string, replaceRandomBasicWeakness: boolean) => {
+    if (!deckEditsRef.current) {
+      return;
     }
-    newSlots[code] = (newSlots[code] || 0) + 1;
-    updateSlots(newSlots);
+    if (replaceRandomBasicWeakness && deckEditsRef.current.slots[RANDOM_BASIC_WEAKNESS] > 0) {
+      dispatch({ type: 'UPDATE_DECK_EDIT_COUNTS', countType: 'slots', operation: 'dec', id, code: RANDOM_BASIC_WEAKNESS });
+    }
+    dispatch({ type: 'UPDATE_DECK_EDIT_COUNTS', countType: 'slots', operation: 'inc', id, code });
+    setUnsavedAssignedWeaknesses([...unsavedAssignedWeaknesses, code]);
+  }, [unsavedAssignedWeaknesses, id, deckEditsRef, dispatch, setUnsavedAssignedWeaknesses]);
 
-    this.setState({
-      slots: newSlots,
-      unsavedAssignedWeaknesses: [...unsavedAssignedWeaknesses, code],
-    });
-  };
-
-  _editCollection = () => {
-    Navigation.push(this.props.componentId, {
+  const editCollection = useCallback(() => {
+    Navigation.push(componentId, {
       component: {
         name: 'My.Collection',
       },
     });
-  };
+  }, [componentId]);
 
-  _drawWeakness = () => {
-    Alert.alert(
-      t`Draw Basic Weakness`,
-      t`This deck does not seem to be part of a campaign yet.\n\nIf you add this deck to a campaign, the app can keep track of the available weaknesses between multiple decks.\n\nOtherwise, you can draw random weaknesses from your entire collection.`,
-      [
-        { text: t`Draw From Collection`, style: 'default', onPress: this._showWeaknessDialog },
-        { text: t`Edit Collection`, onPress: this._editCollection },
-        { text: t`Cancel`, style: 'cancel' },
-      ]);
-  };
-
-  _showWeaknessDialog = () => {
-    const {
-      componentId,
-      cards,
-      deck,
-    } = this.props;
-    const { colors } = this.context;
-    const {
-      slots,
-    } = this.state;
-    const investigator = cards[deck.investigator_code];
+  const showWeaknessDialog = useCallback(() => {
+    if (!deckEditsRef.current) {
+      return;
+    }
+    const investigator = deck && cards && cards[deck.deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<DrawWeaknessProps>(componentId, {
       component: {
         name: 'Weakness.Draw',
         passProps: {
-          slots,
-          saveWeakness: this._saveWeakness,
+          slots: deckEditsRef.current.slots,
+          saveWeakness,
         },
         options: {
           statusBar: {
             style: 'light',
+            backgroundColor,
           },
           topBar: {
             title: {
@@ -223,37 +137,38 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: backgroundColor,
             },
           },
         },
       },
     });
-  };
+  }, [componentId, cards, deck, colors, deckEditsRef, saveWeakness]);
+  const [alertDialog, showAlert] = useAlertDialog();
+  const drawWeakness = useCallback(() => {
+    showAlert(
+      t`Draw Basic Weakness`,
+      t`This deck does not seem to be part of a campaign yet.\n\nIf you add this deck to a campaign, the app can keep track of the available weaknesses between multiple decks.\n\nOtherwise, you can draw random weaknesses from your entire collection.`,
+      [
+        { text: t`Draw From Collection`, icon: 'draw', style: 'default', onPress: showWeaknessDialog },
+        { text: t`Edit Collection`, icon: 'edit', onPress: editCollection },
+        { text: t`Cancel`, style: 'cancel' },
+      ]);
+  }, [showWeaknessDialog, editCollection, showAlert]);
 
-  _showCampaignWeaknessDialog = () => {
-    const {
-      componentId,
-      campaignId,
-      deck,
-      cards,
-    } = this.props;
-    const { colors } = this.context;
-    const {
-      slots,
-      unsavedAssignedWeaknesses,
-    } = this.state;
-    if (!campaignId) {
+  const showCampaignWeaknessDialog = useCallback(() => {
+    if (!campaignId || !deckEditsRef.current) {
       return;
     }
-    const investigator = cards[deck.investigator_code];
+    const investigator = deck && cards && cards[deck.deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<CampaignDrawWeaknessProps>(componentId, {
       component: {
         name: 'Dialog.CampaignDrawWeakness',
         passProps: {
           campaignId,
-          deckSlots: slots,
-          saveWeakness: this._saveWeakness,
+          deckSlots: deckEditsRef.current.slots,
+          saveWeakness,
           unsavedAssignedCards: unsavedAssignedWeaknesses,
         },
         options: {
@@ -270,153 +185,143 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: backgroundColor,
             },
           },
         },
       },
     });
-  };
+  }, [componentId, campaignId, deck, cards, colors, deckEditsRef, unsavedAssignedWeaknesses, saveWeakness]);
 
-  _onIgnoreDeckLimitSlotsChange = (ignoreDeckLimitSlots: Slots) => {
-    this.props.updateIgnoreDeckLimitSlots(ignoreDeckLimitSlots);
-    this.setState({
-      ignoreDeckLimitSlots,
-    });
-  };
-
-  renderDrawWeaknessButton() {
-    const {
-      campaignId,
-    } = this.props;
+  const drawWeaknessButton = useMemo(() => {
     return (
       <ArkhamButton
         icon="card"
         title={t`Draw Basic Weakness`}
-        onPress={campaignId ? this._showCampaignWeaknessDialog : this._drawWeakness}
+        onPress={campaignId ? showCampaignWeaknessDialog : drawWeakness}
       />
     );
-  }
+  }, [campaignId, showCampaignWeaknessDialog, drawWeakness]);
 
-  renderBasicWeaknessSection() {
-    const {
-      cards,
-    } = this.props;
-    const {
-      slots,
-    } = this.state;
+  const weaknesses = useMemo(() => {
+    if (!deckEdits) {
+      return [];
+    }
     const weaknesses: Card[] = [];
-    forEach(keys(slots), code => {
-      const card = cards[code];
+    forEach(keys(deckEdits.slots), code => {
+      const card = cards && cards[code];
       if (card && card.subtype_code === 'basicweakness') {
         weaknesses.push(card);
       }
     });
+    return weaknesses;
+  }, [deckEdits, cards]);
 
+  const basicWeaknessSection = useMemo(() => {
+    if (!deckEdits) {
+      return null;
+    }
     return (
-      <React.Fragment>
+      <>
         <CardSectionHeader section={{ title: t`Basic weakness` }} />
         { map(sortBy(weaknesses, card => card.name), card => (
           <CardSearchResult
             key={card.code}
             card={card}
-            count={slots[card.code]}
-            onPress={this._cardPressed}
+            onPress={cardPressed}
+            control={{
+              type: 'count',
+              count: deckEdits.slots[card.code] || 0,
+            }}
           />
         )) }
-        { this.renderDrawWeaknessButton() }
-      </React.Fragment>
+        { drawWeaknessButton }
+      </>
     );
-  }
+  }, [weaknesses, deckEdits, drawWeaknessButton, cardPressed]);
 
-  renderStorySection() {
-    const {
-      cards,
-    } = this.props;
-    const {
-      slots,
-    } = this.state;
+
+  const storyCards = useMemo(() => {
+    if (!deckEdits) {
+      return [];
+    }
     const storyCards: Card[] = [];
-    forEach(keys(slots), code => {
-      const card = cards[code];
-      if (card && card.spoiler) {
+    forEach(keys(deckEdits.slots), code => {
+      const card = cards && cards[code];
+      if (card && card.mythos_card) {
         storyCards.push(card);
       }
     });
-
+    return storyCards;
+  }, [deckEdits, cards]);
+  const storySection = useMemo(() => {
+    if (!deckEdits) {
+      return null;
+    }
     return (
-      <React.Fragment>
+      <>
         <CardSectionHeader section={{ title: t`Story` }} />
         { map(sortBy(storyCards, card => card.name), card => (
           <CardSearchResult
             key={card.code}
             card={card}
-            count={slots[card.code]}
-            onPress={this._cardPressed}
+            onPress={cardPressed}
+            control={{
+              type: 'count',
+              count: deckEdits.slots[card.code],
+            }}
           />
         )) }
         <ArkhamButton
           icon="edit"
           title={t`Edit Story Cards`}
-          onPress={this._editStoryPressed}
+          onPress={editStoryPressed}
         />
-      </React.Fragment>
+      </>
     );
-  }
-
-  renderIgnoreCardsSection() {
-    const {
-      componentId,
-    } = this.props;
-
-    const {
-      ignoreDeckLimitSlots,
-      slots,
-    } = this.state;
-
-    const header = (
-      <CardSectionHeader section={{ title: t`Do not count towards deck size` }} />
-    );
+  }, [deckEdits, storyCards, cardPressed, editStoryPressed]);
+  const setIgnoreCardCount = useCallback((card: Card, count: number) => {
+    dispatch(setIgnoreDeckSlot(id, card.code, count));
+  }, [dispatch, id]);
+  const ignoreCardsSection = useMemo(() => {
+    if (!deckEdits) {
+      return null;
+    }
     return (
       <CardSelectorComponent
         componentId={componentId}
-        slots={slots}
-        counts={ignoreDeckLimitSlots}
-        updateCounts={this._onIgnoreDeckLimitSlotsChange}
-        filterCard={this._isSpecial}
-        header={header}
+        slots={deckEdits.slots}
+        counts={deckEdits.ignoreDeckLimitSlots}
+        updateCount={setIgnoreCardCount}
+        filterCard={isSpecial}
+        header={<CardSectionHeader section={{ title: t`Do not count towards deck size` }} />}
       />
     );
-  }
+  }, [componentId, setIgnoreCardCount, deckEdits, isSpecial]);
 
-  render() {
-    const { backgroundStyle } = this.context;
-    return (
+  return (
+    <>
       <ScrollView style={[styles.wrapper, backgroundStyle]}>
-        { this.renderIgnoreCardsSection() }
-        { this.renderStorySection() }
-        { this.renderBasicWeaknessSection() }
+        { ignoreCardsSection }
+        { storySection }
+        { basicWeaknessSection }
       </ScrollView>
-    );
-  }
+      { alertDialog }
+    </>
+  );
 }
 
-function mapStateToProps(
-  state: AppState,
-  props: NavigationProps & EditSpecialCardsProps
-): ReduxProps {
+EditSpecialDeckCardsView.options = () => {
   return {
-    campaign: (props.campaignId && getCampaign(state, props.campaignId)) || undefined,
+    topBar: {
+      backButton: {
+        title: t`Back`,
+      },
+    },
   };
-}
+};
 
-export default withPlayerCards<NavigationProps & EditSpecialCardsProps>(
-  connect<ReduxProps, unknown, NavigationProps & EditSpecialCardsProps & PlayerCardProps, AppState>(
-    mapStateToProps
-  )(
-    EditSpecialDeckCardsView
-  )
-);
+export default EditSpecialDeckCardsView;
 
 const styles = StyleSheet.create({
   wrapper: {

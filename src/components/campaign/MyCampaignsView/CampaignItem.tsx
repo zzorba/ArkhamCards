@@ -1,50 +1,33 @@
-import React, { useContext } from 'react';
-import {
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import React, { useCallback } from 'react';
 
-import { Campaign, CUSTOM } from '@actions/types';
-import CampaignSummaryComponent from '../CampaignSummaryComponent';
+import { CUSTOM } from '@actions/types';
+import MiniCampaignSummaryComponent from '../MiniCampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
-import { m, s } from '@styles/space';
-import StyleContext from '@styles/StyleContext';
+import GenericCampaignItem from './GenericCampaignItem';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 
 interface Props {
-  campaign: Campaign;
-  onPress: (id: number, campaign: Campaign) => void;
+  campaign: MiniCampaignT;
+  onPress: (id: string, campaign: MiniCampaignT) => void;
 }
 
-export default function CampaignItem({ campaign, onPress }: Props) {
-  const { borderStyle } = useContext(StyleContext);
-  const handleOnPress = () => {
-    onPress(campaign.id, campaign);
-  };
-
+function CampaignItem({ campaign, onPress }: Props) {
+  const handleOnPress = useCallback(() => {
+    onPress(campaign.uuid, campaign);
+  }, [onPress, campaign]);
   return (
-    <TouchableOpacity onPress={handleOnPress}>
-      <View style={[styles.container, borderStyle]}>
-        <CampaignSummaryComponent
-          campaign={campaign}
-          name={campaign.cycleCode !== CUSTOM ? campaign.name : undefined}
-        />
-        <CampaignInvestigatorRow
-          campaigns={[campaign]}
-        />
-      </View>
-    </TouchableOpacity>
+    <GenericCampaignItem
+      lastUpdated={campaign.updatedAt}
+      onPress={handleOnPress}
+    >
+      <MiniCampaignSummaryComponent
+        campaign={campaign}
+        name={campaign.cycleCode !== CUSTOM ? campaign.name : undefined}
+      >
+        <CampaignInvestigatorRow campaign={campaign} />
+      </MiniCampaignSummaryComponent>
+    </GenericCampaignItem>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    paddingLeft: m,
-    paddingRight: s,
-    paddingTop: s,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    position: 'relative',
-  },
-});
+export default React.memo(CampaignItem);

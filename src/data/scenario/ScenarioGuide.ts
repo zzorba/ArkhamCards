@@ -1,9 +1,10 @@
-import { find, flatMap, last } from 'lodash';
+import { find, last } from 'lodash';
 
 import {
   Step,
   Scenario,
   Resolution,
+  CustomData,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import ScenarioStep from './ScenarioStep';
@@ -14,6 +15,7 @@ import {
   getFixedStep,
   scenarioStepIds,
 } from './fixedSteps';
+import { CampaignDifficulty } from '@actions/types';
 
 interface ExecutedScenario {
   steps: ScenarioStep[];
@@ -46,8 +48,31 @@ export default class ScenarioGuide {
     return this.scenario.id;
   }
 
+  scenarioIcon(): string {
+    return this.scenario.icon || this.scenario.id;
+  }
+
   scenarioName(): string {
     return this.scenario.scenario_name;
+  }
+
+  scenarioCard(): string | undefined {
+    return this.scenario.chaos_bag_card;
+  }
+
+  scenarioCustomData(): CustomData | undefined {
+    return this.scenario.custom;
+  }
+
+  scenarioCardText(difficulty: CampaignDifficulty): string | undefined {
+    if (difficulty === CampaignDifficulty.EASY || difficulty === CampaignDifficulty.STANDARD) {
+      return this.scenario.chaos_bag_card_text;
+    }
+    return this.scenario.chaos_bag_card_back_text;
+  }
+
+  scenarioHeader(): string {
+    return this.scenario.header;
   }
 
   fullScenarioName(): string {
@@ -56,6 +81,10 @@ export default class ScenarioGuide {
 
   scenarioType(): 'scenario' | 'epilogue' | 'interlude' | 'placeholder' {
     return this.scenario.type || 'scenario';
+  }
+
+  allowSideScenario(): boolean {
+    return !!this.scenario.allow_side_scenario;
   }
 
   resolutions(): Resolution[] {
@@ -115,24 +144,12 @@ export default class ScenarioGuide {
     return find(this.scenario.resolutions || [], resolution => resolution.id === id);
   }
 
-  encounterSets(scenarioState: ScenarioStateHelper): string[] {
-    return flatMap(
-      this.setupSteps(scenarioState).steps,
-      step => {
-        if (step.step.type === 'encounter_sets') {
-          return step.step.encounter_sets;
-        }
-        return [];
-      }
-    );
-  }
-
   setupSteps(
-    scenarioState: ScenarioStateHelper
+    scenarioState: ScenarioStateHelper,
+    standalone?: boolean
   ): ExecutedScenario {
-    const stepIds = scenarioStepIds(this.scenario);
+    const stepIds = scenarioStepIds(this.scenario, standalone);
     const steps = this.expandSteps(stepIds, scenarioState, this.scenarioStartCampaignLog);
-
     const lastStep = last(steps);
     if (!lastStep) {
       // Every scenario has at least one step.

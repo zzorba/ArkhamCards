@@ -1,90 +1,115 @@
-import React from 'react';
-import { head, forEach, map, sum, throttle } from 'lodash';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { head, find, forEach, map, sum, throttle } from 'lodash';
 import { Alert, Platform, StyleSheet, View } from 'react-native';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
-import { Navigation, EventSubscription, OptionsModalPresentationStyle } from 'react-native-navigation';
-
+import { Action } from 'redux';
+import { useDispatch } from 'react-redux';
+import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
+import { ThunkDispatch } from 'redux-thunk';
 import { t } from 'ttag';
-import { Campaign, Deck, DecksMap, Slots, WeaknessSet } from '@actions/types';
-import { updateCampaign } from './actions';
+
+import { CampaignId, Deck, getDeckId, Slots } from '@actions/types';
+import { updateCampaignWeaknessSet } from './actions';
 import { NavigationProps } from '@components/nav/types';
 import BasicButton from '@components/core/BasicButton';
 import NavButton from '@components/core/NavButton';
 import ToggleFilter from '@components/core/ToggleFilter';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
-import { saveDeckChanges, DeckChanges } from '@components/deck/actions';
+import { saveDeckChanges } from '@components/deck/actions';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import { iconsMap } from '@app/NavIcons';
 import { parseDeck } from '@lib/parseDeck';
-import { getCampaign, getAllDecks, getLatestCampaignDeckIds, AppState } from '@reducers';
+import { AppState } from '@reducers';
 import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog';
-import WeaknessDrawComponent from '../weakness/WeaknessDrawComponent';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
+import WeaknessDrawComponent from '@components/weakness/WeaknessDrawComponent';
 import { CampaignEditWeaknessProps } from './CampaignEditWeaknessDialog';
 import { xs } from '@styles/space';
 import COLORS from '@styles/colors';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards, useSlots } from '@components/core/hooks';
+import { useCampaign } from '@data/hooks';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { useDeckActions } from '@data/remote/decks';
+import { useSetCampaignWeaknessSet } from '@data/remote/campaigns';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 export interface CampaignDrawWeaknessProps {
-  campaignId: number;
+  campaignId: CampaignId;
   deckSlots?: Slots;
   unsavedAssignedCards?: string[];
   saveWeakness?: (code: string, replaceRandomBasicWeakness: boolean) => void;
 }
 
-interface ReduxProps {
-  weaknessSet: WeaknessSet;
-  latestDeckIds: number[];
-  decks: DecksMap;
-  playerCount: number;
+type Props = NavigationProps & CampaignDrawWeaknessProps;
+
+type DeckDispatch = ThunkDispatch<AppState, unknown, Action>;
+
+function updateSlots(slots: Slots, pendingNextCard: string, replaceRandomBasicWeakness: boolean) {
+  const newSlots = { ...slots };
+  if (!newSlots[pendingNextCard]) {
+    newSlots[pendingNextCard] = 0;
+  }
+  newSlots[pendingNextCard]++;
+  if (replaceRandomBasicWeakness && newSlots[RANDOM_BASIC_WEAKNESS] > 0) {
+    newSlots[RANDOM_BASIC_WEAKNESS]--;
+    if (!newSlots[RANDOM_BASIC_WEAKNESS]) {
+      delete newSlots[RANDOM_BASIC_WEAKNESS];
+    }
+  }
+  return newSlots;
 }
 
-interface ReduxActionProps {
-  updateCampaign: (id: number, campaign: Partial<Campaign>) => void;
-  saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
-}
+export default function CampaignDrawWeaknessDialog(props: Props) {
+  const { saveWeakness, componentId, campaignId } = props;
+  const { borderStyle } = useContext(StyleContext);
+  const dispatch: DeckDispatch = useDispatch();
+  const deckActions = useDeckActions();
+  const { userId } = useContext(ArkhamCardsAuthContext);
+  const campaign = useCampaign(campaignId);
+  campaign?.latestDecks
+  const investigators = useInvestigatorCards();
+  const cards = usePlayerCards();
+  const latestDecks = campaign?.latestDecks();
+  const playerCount = useMemo(() => {
+    if (!campaign) {
+      return 0;
+    }
+    return sum(map(campaign.latestDecks(), deck => {
+      if (deck) {
+        const investigator = investigators && investigators[deck.investigator];
+        if (!investigator) {
+          return 0;
+        }
+        if (!investigator.eliminated(campaign.investigatorTrauma(deck.investigator))) {
+          return 1;
+        }
+      }
+      return 0;
+    }));
+  }, [investigators, campaign]);
+  const weaknessSet = campaign?.weaknessSet;
 
-type Props = NavigationProps &
-  CampaignDrawWeaknessProps &
-  ReduxProps &
-  ReduxActionProps &
-  PlayerCardProps &
-  DimensionsProps;
+  const [selectedDeck, setSelectedDeck] = useState<LatestDeckT | undefined>(props.deckSlots ? undefined : head(latestDecks));
+  const [replaceRandomBasicWeakness, toggleReplaceRandomBasicWeakness] = useFlag(true);
+  const [saving, setSaving] = useState(false);
+  const [pendingNextCard, setPendingNextCard] = useState<string | undefined>();
+  const [pendingAssignedCards, updatePendingAssignedCards] = useSlots({});
+  const [unsavedAssignedCards, setUnsavedAssignedCards] = useState<string[]>(props.unsavedAssignedCards || []);
+  const [deckSlots, updateDeckSlots] = useSlots(props.deckSlots || {});
 
-interface State {
-  selectedDeckId?: number;
-  replaceRandomBasicWeakness: boolean;
-  saving: boolean;
-  pendingNextCard?: string;
-  pendingAssignedCards: Slots;
-  unsavedAssignedCards: string[];
-  deckSlots?: Slots;
-}
+  const showEditWeaknessDialog = useCallback(() => {
+    Navigation.push<CampaignEditWeaknessProps>(componentId, {
+      component: {
+        name: 'Dialog.CampaignEditWeakness',
+        passProps: {
+          campaignId: props.campaignId,
+        },
+      },
+    });
+  }, [componentId, props.campaignId]);
 
-class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  _navEventListener: EventSubscription;
-  _showEditWeaknessDialog!: () => void;
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      selectedDeckId: props.deckSlots ? undefined : head(props.latestDeckIds),
-      replaceRandomBasicWeakness: true,
-      saving: false,
-      pendingAssignedCards: {},
-      unsavedAssignedCards: props.unsavedAssignedCards || [],
-      deckSlots: props.deckSlots,
-    };
-
-    this._showEditWeaknessDialog = throttle(this.showEditWeaknessDialog.bind(this), 200);
-    this._navEventListener = Navigation.events().bindComponent(this);
-
+  const showEditWeaknessDialogPressed = useMemo(() => throttle(showEditWeaknessDialog, 200), [showEditWeaknessDialog]);
+  useEffect(() => {
     if (!props.deckSlots) {
-      Navigation.mergeOptions(props.componentId, {
+      Navigation.mergeOptions(componentId, {
         topBar: {
           rightButtons: [{
             icon: iconsMap.edit,
@@ -95,55 +120,24 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
         },
       });
     }
-  }
-
-  componentWillUnmount() {
-    this._navEventListener.remove();
-  }
-
-  showEditWeaknessDialog() {
-    const {
-      componentId,
-      campaignId,
-    } = this.props;
-    Navigation.push<CampaignEditWeaknessProps>(componentId, {
-      component: {
-        name: 'Dialog.CampaignEditWeakness',
-        passProps: {
-          campaignId: campaignId,
-        },
-      },
-    });
-
-  }
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
+  }, [props.deckSlots, componentId]);
+  useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'edit') {
-      this._showEditWeaknessDialog();
+      showEditWeaknessDialogPressed();
     }
-  }
+  }, componentId, [showEditWeaknessDialogPressed]);
 
-  _toggleReplaceRandomBasicWeakness = () => {
-    this.setState({
-      replaceRandomBasicWeakness: !this.state.replaceRandomBasicWeakness,
-    });
-  };
+  const selectDeck = useCallback(async(deck: Deck) => {
+    const id = getDeckId(deck);
+    const theDeck = find(latestDecks, d => d.id.uuid === id.uuid);
+    setSelectedDeck(theDeck);
+  }, [setSelectedDeck, latestDecks]);
 
-  _selectDeck = (deck: Deck) => {
-    this.setState({
-      selectedDeckId: deck.id,
-    });
-  };
-
-  _onPressInvestigator = () => {
-    const {
-      latestDeckIds,
-      campaignId,
-    } = this.props;
+  const onPressInvestigator = useCallback(() => {
     const passProps: MyDecksSelectorProps = {
-      campaignId: campaignId,
-      onDeckSelect: this._selectDeck,
-      selectedDeckIds: latestDeckIds,
+      campaignId: props.campaignId,
+      onDeckSelect: selectDeck,
+      selectedDecks: latestDecks,
       onlyShowSelected: true,
     };
     Navigation.showModal({
@@ -154,142 +148,88 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
             passProps,
             options: {
               modalPresentationStyle: Platform.OS === 'ios' ?
-                OptionsModalPresentationStyle.overFullScreen :
+                OptionsModalPresentationStyle.fullScreen :
                 OptionsModalPresentationStyle.overCurrentContext,
             },
           },
         }],
       },
     });
-  };
+  }, [latestDecks, props.campaignId, selectDeck]);
 
-  _updateDrawnCard = (nextCard: string, assignedCards: Slots) => {
-    this.setState({
-      pendingNextCard: nextCard,
-      pendingAssignedCards: assignedCards,
-    });
-  };
-
-  static updateSlots(slots: Slots, pendingNextCard: string, replaceRandomBasicWeakness: boolean) {
-    const newSlots = Object.assign({}, slots);
-    if (!newSlots[pendingNextCard]) {
-      newSlots[pendingNextCard] = 0;
-    }
-    newSlots[pendingNextCard]++;
-    if (replaceRandomBasicWeakness && newSlots[RANDOM_BASIC_WEAKNESS] > 0) {
-      newSlots[RANDOM_BASIC_WEAKNESS]--;
-      if (!newSlots[RANDOM_BASIC_WEAKNESS]) {
-        delete newSlots[RANDOM_BASIC_WEAKNESS];
-      }
-    }
-    return newSlots;
-  }
-
-  _saveDrawnCard = () => {
-    const {
-      pendingNextCard,
-      pendingAssignedCards,
-    } = this.state;
-    const {
-      campaignId,
-      weaknessSet,
-      saveDeckChanges,
-      decks,
-      cards,
-      saveWeakness,
-      updateCampaign,
-    } = this.props;
-    const {
-      selectedDeckId,
-      replaceRandomBasicWeakness,
-    } = this.state;
+  const updateDrawnCard = useCallback((nextCard: string, assignedCards: Slots) => {
+    setPendingNextCard(nextCard);
+    updatePendingAssignedCards({ type: 'sync', slots: assignedCards });
+  }, [setPendingNextCard, updatePendingAssignedCards]);
+  const setCampaignWeaknessSet = useSetCampaignWeaknessSet();
+  const saveDrawnCard = useCallback(() => {
     if (!pendingNextCard) {
       return;
     }
     if (saveWeakness) {
       // We are in 'pending' mode to don't save it immediately.
       saveWeakness(pendingNextCard, replaceRandomBasicWeakness);
-      const newSlots = this.state.deckSlots && CampaignDrawWeaknessDialog.updateSlots(
-        this.state.deckSlots,
+      const newSlots = deckSlots && updateSlots(
+        deckSlots,
         pendingNextCard,
         replaceRandomBasicWeakness
       );
-      this.setState({
-        pendingAssignedCards: {},
-        pendingNextCard: undefined,
-        unsavedAssignedCards: [...this.state.unsavedAssignedCards, pendingNextCard],
-        deckSlots: newSlots,
-      });
+      updatePendingAssignedCards({ type: 'sync', slots: {} });
+      setPendingNextCard(undefined);
+      setUnsavedAssignedCards([...unsavedAssignedCards, pendingNextCard]);
+      updateDeckSlots({ type: 'sync', slots: newSlots });
       return;
     }
-    const deck = selectedDeckId && decks[selectedDeckId];
-    if (deck) {
-      const previousDeck = deck.previous_deck ? decks[deck.previous_deck] : undefined;
-      const newSlots = CampaignDrawWeaknessDialog.updateSlots(
-        deck.slots,
+    if (selectedDeck && cards) {
+      const newSlots = updateSlots(
+        selectedDeck.deck.slots || {},
         pendingNextCard,
         replaceRandomBasicWeakness
       );
       const parsedDeck = parseDeck(
-        deck,
-        deck.meta || {},
+        selectedDeck.deck,
+        selectedDeck.deck.meta || {},
         newSlots,
-        deck.ignoreDeckLimitSlots || {},
+        selectedDeck.deck.ignoreDeckLimitSlots || {},
         cards,
-        previousDeck
+        selectedDeck. previousDeck
       );
       const problem = parsedDeck && parsedDeck.problem ? parsedDeck.problem.reason : '';
 
-      this.setState({
-        saving: true,
-      });
-      saveDeckChanges(deck, {
+      setSaving(true);
+      dispatch(saveDeckChanges(userId, deckActions, selectedDeck.deck, {
         slots: newSlots,
         problem,
         spentXp: parsedDeck && parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
-      }).then(() => {
+      })).then(() => {
         const newWeaknessSet = {
-          ...weaknessSet,
+          packCodes: weaknessSet?.packCodes || [],
           assignedCards: pendingAssignedCards,
         };
-        updateCampaign(campaignId, { weaknessSet: newWeaknessSet });
-        this.setState({
-          saving: false,
-          pendingAssignedCards: {},
-          pendingNextCard: undefined,
-        });
+        dispatch(updateCampaignWeaknessSet(setCampaignWeaknessSet, campaignId, newWeaknessSet));
+        setSaving(false);
+        updatePendingAssignedCards({ type: 'sync', slots: {} });
+        setPendingNextCard(undefined);
       }, err => {
-        this.setState({
-          saving: false,
-        });
+        setSaving(false);
         Alert.alert(err);
       });
     }
-  };
+  }, [pendingNextCard, pendingAssignedCards, campaignId, weaknessSet, cards, selectedDeck, replaceRandomBasicWeakness, deckSlots,
+    unsavedAssignedCards, userId, deckActions, setCampaignWeaknessSet, updateDeckSlots, saveWeakness, dispatch, setSaving, updatePendingAssignedCards, setPendingNextCard]);
 
-  renderInvestigatorChooser() {
-    const {
-      decks,
-      investigators,
-    } = this.props;
-    const {
-      selectedDeckId,
-      replaceRandomBasicWeakness,
-      deckSlots,
-    } = this.state;
-    const { borderStyle } = this.context;
-    const deck = selectedDeckId && decks[selectedDeckId];
-    const investigator = deck && investigators[deck.investigator_code];
+  const investigatorChooser = useMemo(() => {
+    const investigator = selectedDeck && investigators && investigators[selectedDeck.investigator];
     const investigatorName = investigator ? investigator.name : '';
     const message = t`Investigator: ${investigatorName}`;
-    const slots = (deckSlots || (deck && deck.slots)) || {};
+    const slots = (deckSlots || (selectedDeck && selectedDeck.deck.slots)) || {};
     const hasRandomBasicWeakness = slots[RANDOM_BASIC_WEAKNESS] > 0;
     return (
       <View>
-        { !!selectedDeckId && (
+        { !!selectedDeck && (
           <NavButton
             text={message}
-            onPress={this._onPressInvestigator}
+            onPress={onPressInvestigator}
           />
         ) }
         { hasRandomBasicWeakness && (
@@ -298,121 +238,64 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
             label={t`Replace Random Weakness`}
             setting="replaceRandomBasicWeakness"
             value={replaceRandomBasicWeakness}
-            onChange={this._toggleReplaceRandomBasicWeakness}
+            onChange={toggleReplaceRandomBasicWeakness}
           />
         ) }
       </View>
     );
-  }
+  }, [toggleReplaceRandomBasicWeakness, onPressInvestigator, borderStyle, investigators, selectedDeck, replaceRandomBasicWeakness, deckSlots]);
 
-  renderFlippedHeader() {
-    const {
-      decks,
-      investigators,
-    } = this.props;
-    const {
-      pendingNextCard,
-      selectedDeckId,
-    } = this.state;
+  const flippedHeader = useMemo(() => {
     if (!pendingNextCard) {
       return null;
     }
-    const deck = selectedDeckId && decks[selectedDeckId];
-    const investigator = deck && investigators[deck.investigator_code];
+    const investigator = selectedDeck && investigators && investigators[selectedDeck.investigator];
     const buttonText = investigator ?
       t`Save to ${investigator.name}’s Deck` :
       t`Save to Deck`;
     return (
       <BasicButton
-        onPress={this._saveDrawnCard}
+        onPress={saveDrawnCard}
         title={buttonText}
       />
     );
-  }
+  }, [saveDrawnCard, investigators, pendingNextCard, selectedDeck]);
 
-  render() {
-    const {
-      componentId,
-      weaknessSet,
-      playerCount,
-    } = this.props;
-
+  const assignedCards = useMemo(() => {
     if (!weaknessSet) {
-      return null;
+      return {};
     }
-
-    const {
-      unsavedAssignedCards,
-    } = this.state;
     const assignedCards = { ...weaknessSet.assignedCards };
     forEach(unsavedAssignedCards, code => {
       assignedCards[code] = (assignedCards[code] || 0) + 1;
     });
+    return assignedCards;
+  }, [weaknessSet, unsavedAssignedCards]);
 
-    const dynamicWeaknessSet = {
-      ...weaknessSet,
+  const dynamicWeaknessSet = useMemo(() => {
+    return {
+      packCodes: weaknessSet?.packCodes || [],
       assignedCards,
     };
+  }, [weaknessSet, assignedCards]);
 
-    return (
-      <WeaknessDrawComponent
-        componentId={componentId}
-        playerCount={playerCount}
-        campaignMode
-        customHeader={this.renderInvestigatorChooser()}
-        customFlippedHeader={this.renderFlippedHeader()}
-        weaknessSet={dynamicWeaknessSet}
-        updateDrawnCard={this._updateDrawnCard}
-        saving={this.state.saving}
-      />
-    );
+  if (!weaknessSet) {
+    return null;
   }
-}
 
-const EMPTY_WEAKNESS_SET = { packCodes: [], assignedCards: {} };
-function mapStateToProps(
-  state: AppState,
-  props: NavigationProps & CampaignDrawWeaknessProps & PlayerCardProps
-): ReduxProps {
-  const campaign = getCampaign(state, props.campaignId);
-  const latestDeckIds = getLatestCampaignDeckIds(state, campaign);
-  const decks = getAllDecks(state);
-  const playerCount = campaign ? sum(map(latestDeckIds, deckId => {
-    const deck = decks[deckId];
-    if (deck) {
-      const investigator = props.cards[deck.investigator_code];
-      if (!investigator) {
-        return 0;
-      }
-      if (!investigator.eliminated(campaign.investigatorData[deck.investigator_code])) {
-        return 1;
-      }
-    }
-    return 0;
-  })) : 0;
-  return {
-    weaknessSet: campaign ? campaign.weaknessSet : EMPTY_WEAKNESS_SET,
-    latestDeckIds,
-    decks,
-    playerCount,
-  };
+  return (
+    <WeaknessDrawComponent
+      componentId={componentId}
+      playerCount={playerCount}
+      campaignMode
+      customHeader={investigatorChooser}
+      customFlippedHeader={flippedHeader}
+      weaknessSet={dynamicWeaknessSet}
+      updateDrawnCard={updateDrawnCard}
+      saving={saving}
+    />
+  );
 }
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    saveDeckChanges,
-    updateCampaign,
-  } as any, dispatch);
-}
-
-export default withPlayerCards<NavigationProps & CampaignDrawWeaknessProps>(
-  connect<ReduxProps, ReduxActionProps, NavigationProps & CampaignDrawWeaknessProps & PlayerCardProps, AppState>(
-    mapStateToProps,
-    mapDispatchToProps
-  )(
-    withDimensions(CampaignDrawWeaknessDialog)
-  )
-);
 
 const styles = StyleSheet.create({
   toggleRow: {

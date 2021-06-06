@@ -7,7 +7,9 @@ export interface ThemeFonts {
 
 
 export interface FactionColors {
+  invertedText: string;
   text: string;
+  border: string;
   background: string;
   darkBackground: string;
   lightBackground: string;
@@ -18,10 +20,10 @@ export interface SkillColor {
 }
 
 export interface ThemeColors {
-  ios12Background: string;
   fight: string;
   evade: string;
   L10: string;
+  L15: string;
   L20: string;
   L30: string;
   D10: string;
@@ -51,24 +53,79 @@ export interface ThemeColors {
     agility: SkillColor;
     wild: SkillColor;
   };
+  token: {
+    skull: string;
+    cultist: string;
+    tablet: string;
+    elder_thing: string;
+    elder_sign: string;
+    auto_fail: string;
+    bless: string;
+    curse: string;
+    [token: string]: string | undefined;
+  };
   health: string;
   sanity: string;
   disableOverlay: string;
-  scenarioGreen: string;
+  campaign:{
+    setup: string;
+    resolution: string;
+    resolutionBackground: string;
+    gold: string;
+    blue: string;
+    teal: string;
+    green: string;
+    purple: string;
+    red: string;
+  };
+  navButton: string;
+  warn: string;
+  upgrade: string;
+  warnText: string;
+  table: {
+    header: string;
+    light: string;
+    dark: string;
+  };
 }
 const light10 = '#D7D3C6';
+const light15 = '#E6E1D3';
 const light20 = '#F5F0E1';
 const light30 = '#FFFBF2';
 const dark10 = '#656C6F';
+const dark15 = '#4F5A60';
 const dark20 = '#475259';
 const dark30 = '#24303C';
 const medium = '#9B9B9B';
 
+const neutralBorder = medium;
+
+const guardianLightText = '#1072C2';
+const seekerLightText = '#DB7C07';
+const rogueLightText = '#219428';
+const mysticLightText = '#7554AB';
+const survivorLightText = '#CC3038';
+const neutralLightText = dark20;
+const dualLightText = '#868600';
+const deadLightText = '#704214';
+const mythosLightText = dark30;
+
+const guardianDarkText = '#5CB4FD';
+const seekerDarkText = '#EFA345';
+const rogueDarkText = '#48B14F';
+const mysticDarkText = '#BA81F2';
+const survivorDarkText = '#EE4A53';
+const neutralDarkText = light20;
+
+const dualDarkText = '#E9D06C';
+const deadDarkText = '#704214';
+const mythosDarkText = light30;
+
 export const LIGHT_THEME: ThemeColors = {
-  ios12Background: '#FFFFFF',
   fight: '#8D181E',
   evade: '#0D6813',
   L10: light10,
+  L15: light15,
   L20: light20,
   L30: light30,
   D10: dark10,
@@ -83,60 +140,79 @@ export const LIGHT_THEME: ThemeColors = {
   M: medium,
   faction: {
     guardian: {
-      text: '#1072C2',
-      background: '#1072C2',
+      invertedText: guardianDarkText,
+      text: guardianLightText,
+      background: guardianLightText,
       darkBackground: '#2b80c5',
       lightBackground: '#d5e6f3',
+      border: guardianDarkText,
     },
     seeker: {
-      text: '#DB7C07',
+      invertedText: seekerDarkText,
+      text: seekerLightText,
       background: '#DB7C07',
       darkBackground: '#db7c07',
       lightBackground: '#fbe6d4',
+      border: seekerDarkText,
     },
     rogue: {
-      text: '#219428',
+      invertedText: rogueDarkText,
+      text: rogueLightText,
       background: '#219428',
       darkBackground: '#107116',
       lightBackground: '#cfe3d0',
+      border: rogueDarkText,
     },
     mystic: {
-      text: '#7554AB',
+      invertedText: mysticDarkText,
+      text: mysticLightText,
       background: '#7554AB',
       darkBackground: '#4331B9',
       lightBackground: '#d9d6f1',
+      border: mysticDarkText,
     },
     survivor: {
-      text: '#CC3038',
+      invertedText: survivorDarkText,
+      text: survivorLightText,
       background: '#CC3038',
       darkBackground: '#cc3038',
       lightBackground: '#f5d6d7',
+      border: survivorDarkText,
     },
     neutral: {
-      text: dark20,
+      invertedText: neutralDarkText,
+      text: neutralLightText,
       background: dark20,
       darkBackground: '#444444',
       lightBackground: '#e6e6e6',
+      border: neutralBorder,
     },
     dual: {
-      text: '#868600',
-      background: '#9a9a00',
+      invertedText: dualDarkText,
+      text: dualLightText,
+      background: '#cfb13a',
       darkBackground: '#c0c000',
       lightBackground: '#f2f2cc',
+      border: dualLightText,
     },
     dead: {
-      text: '#704214',
+      invertedText: deadDarkText,
+      text: deadLightText,
       background: '#704214',
       darkBackground: '#5a3510',
       lightBackground: '#d4c6b9',
+      border: deadLightText,
     },
     mythos: {
-      text: dark30,
+      invertedText: mythosDarkText,
+      text: mythosLightText,
       background: dark30,
       darkBackground: '#000000',
       lightBackground: '#000000',
+      border: mythosLightText,
     },
   },
+  upgrade: '#cfb13a',
   skill: {
     willpower: {
       icon: '#165385',
@@ -156,17 +232,45 @@ export const LIGHT_THEME: ThemeColors = {
   },
   health: '#8D181E',
   sanity: '#165385',
-  scenarioGreen: '#2E5344',
+  campaign: {
+    setup: '#128C60',
+    resolution: '#E75122',
+    resolutionBackground: '#E7512233',
+    gold: '#c99b3833',
+    blue: '#00408033',
+    teal: '#00666633',
+    purple: '#46088733',
+    green: '#325c0933',
+    red: '#96000333',
+  },
+  navButton: '#007AFF',
+  warn: '#FB4135',
+  warnText: '#C50707',
+  table: {
+    header: '#a0dba3',
+    light: '#e3fce4',
+    dark: '#c7ebc9',
+  },
+  token: {
+    skull: '#552D2D',
+    cultist: '#314629',
+    tablet: '#294146',
+    elder_thing: '#442946',
+    auto_fail: '#7D1318',
+    elder_sign: '#4477A1',
+    bless: '#9D702A',
+    curse: '#3A2342',
+  },
 };
 
 export const DARK_THEME: ThemeColors = {
-  ios12Background: '#000000',
   fight: '#EE4A53',
   evade: '#48B14F',
   D10: light10,
   D20: light20,
   D30: light30,
   L10: dark10,
+  L15: dark15,
   L20: dark20,
   L30: dark30,
   background: dark30,
@@ -178,60 +282,80 @@ export const DARK_THEME: ThemeColors = {
   disableOverlay: '#24303C99',
   faction: {
     guardian: {
-      text: '#5CB4FD',
-      background: '#1072C2',
+      invertedText: guardianLightText,
+      text: guardianDarkText,
+      background: guardianLightText,
       darkBackground: '#2b80c5',
       lightBackground: '#004880',
+      border: guardianDarkText,
     },
     seeker: {
-      text: '#EFA345',
+      invertedText: seekerLightText,
+      text: seekerDarkText,
       background: '#DB7C07',
       darkBackground: '#db7c07',
       lightBackground: '#bf5c00',
+      border: seekerDarkText,
     },
     rogue: {
-      text: '#48B14F',
+      invertedText: rogueLightText,
+      text: rogueDarkText,
       background: '#219428',
       darkBackground: '#107116',
       lightBackground: '#015906',
+      border: rogueDarkText,
     },
     mystic: {
-      text: '#BA81F2',
+      invertedText: mysticLightText,
+      text: mysticDarkText,
       background: '#7554AB',
       darkBackground: '#7554AB',
       lightBackground: '#46018f',
+      border: mysticDarkText,
     },
     survivor: {
-      text: '#EE4A53',
+      invertedText: survivorLightText,
+      text: survivorDarkText,
       background: '#CC3038',
       darkBackground: '#cc3038',
       lightBackground: '#7a0105',
+      border: survivorDarkText,
     },
     neutral: {
-      text: light20,
+      invertedText: neutralLightText,
+      text: neutralDarkText,
       background: dark20,
       darkBackground: '#444444',
       lightBackground: '#292929',
+      border: neutralBorder,
     },
     dual: {
-      text: '#bfbf4d',
-      background: '#9a9a00',
+      invertedText: dualLightText,
+      text: dualDarkText,
+      background: '#cfb13a',
       darkBackground: '#c0c000',
       lightBackground: '#f2f2cc',
+      border: dualDarkText,
     },
     dead: {
-      text: '#704214',
+      invertedText: deadLightText,
+      text: deadDarkText,
       background: '#704214',
       darkBackground: '#5a3510',
       lightBackground: '#d4c6b9',
+      border: deadDarkText,
     },
     mythos: {
-      text: light30,
+      invertedText: mythosLightText,
+      text: mythosDarkText,
       background: '#444',
       darkBackground: '#000000',
       lightBackground: '#000000',
+      border: mythosDarkText,
     },
   },
+
+  upgrade: '#cfb13a',
   skill: {
     willpower: {
       icon: '#2C7FC0',
@@ -251,5 +375,33 @@ export const DARK_THEME: ThemeColors = {
   },
   health: '#AE4236',
   sanity: '#2C7FC0',
-  scenarioGreen: '#1fab73',
+  campaign: {
+    setup: '#07AF73',
+    resolution: '#F04932',
+    resolutionBackground: '#F0493233',
+    gold: '#755a2088',
+    blue: '#395c8088',
+    teal: '#2a666688',
+    purple: '#7c559e88',
+    green: '#33660088',
+    red: '#8f474988',
+  },
+  navButton: '#4aa1ff',
+  warn: '#C50707',
+  warnText: '#FB4135',
+  table: {
+    header: '#293d2a',
+    light: '#455245',
+    dark: '#203021',
+  },
+  token: {
+    skull: '#915c5c',
+    cultist: '#669154',
+    tablet: '#548994',
+    elder_thing: '#a661ab',
+    auto_fail: '#bf2128',
+    elder_sign: '#5496cc',
+    bless: '#ebaa42',
+    curse: '#b069c9',
+  },
 };

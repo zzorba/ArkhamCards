@@ -1,98 +1,33 @@
-import React from 'react';
-import { flatMap, forEach } from 'lodash';
-import { connect } from 'react-redux';
+import React, { useMemo } from 'react';
+import { flatMap } from 'lodash';
 
 import OddsCalculatorComponent from './OddsCalculatorComponent';
-import { NavigationProps } from '@components/nav/types';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
-import CardQueryWrapper from '@components/card/CardQueryWrapper';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
-import { campaignScenarios, Scenario } from '@components/campaign/constants';
-import { Campaign } from '@actions/types';
-import { ChaosBag } from '@app_constants';
-import Card from '@data/Card';
-import { SCENARIO_CARDS_QUERY } from '@data/query';
-import { AppState, getCampaign } from '@reducers';
+import { useCycleScenarios, useInvestigatorCards } from '@components/core/hooks';
+import { useCampaign } from '@data/hooks';
+
+import { CampaignId } from '@actions/types';
 
 export interface OddsCalculatorProps {
-  campaignId: number;
+  campaignId: CampaignId;
   investigatorIds: string[];
 }
 
-interface ReduxProps {
-  campaign?: Campaign;
-  chaosBag?: ChaosBag;
-  cycleScenarios?: Scenario[];
-  scenarioByCode?: { [code: string]: Scenario };
-}
-
-type Props = NavigationProps & OddsCalculatorProps & ReduxProps & PlayerCardProps & DimensionsProps;
-
-class OddsCalculatorView extends React.Component<Props> {
-  allInvestigators(): Card[] {
-    const {
-      investigators,
-      investigatorIds,
-    } = this.props;
-    return flatMap(investigatorIds, code => investigators[code] || []);
-  }
-
-  render() {
-    const {
-      campaign,
-      chaosBag,
-      cycleScenarios,
-      scenarioByCode,
-    } = this.props;
-    if (!campaign) {
-      return null;
-    }
-
-    const allInvestigators = this.allInvestigators();
-    return (
-      <CardQueryWrapper name="odds" query={SCENARIO_CARDS_QUERY}>
-        { scenarioCards => (
-          <OddsCalculatorComponent
-            campaign={campaign}
-            chaosBag={chaosBag || {}}
-            cycleScenarios={cycleScenarios}
-            scenarioByCode={scenarioByCode}
-            allInvestigators={allInvestigators}
-            scenarioCards={scenarioCards}
-          />
-        ) }
-      </CardQueryWrapper>
-    );
-  }
-}
-
-function mapStateToProps(
-  state: AppState,
-  props: OddsCalculatorProps
-): ReduxProps {
-  const campaign = getCampaign(state, props.campaignId);
+const EMPTY_CHAOS_BAG = {};
+export default function OddsCalculatorView({ campaignId, investigatorIds }: OddsCalculatorProps) {
+  const campaign = useCampaign(campaignId);
+  const chaosBag = campaign?.chaosBag || EMPTY_CHAOS_BAG;
+  const cycleScenarios = useCycleScenarios(campaign?.cycleCode);
+  const investigators = useInvestigatorCards();
+  const allInvestigators = useMemo(() => flatMap(investigatorIds, code => investigators?.[code] || []), [investigatorIds, investigators]);
   if (!campaign) {
-    return {
-      chaosBag: {},
-      cycleScenarios: [],
-      scenarioByCode: {},
-    };
+    return null;
   }
-  const cycleScenarios = campaignScenarios(campaign.cycleCode);
-  const scenarioByCode: { [code: string]: Scenario } = {};
-  forEach(cycleScenarios, scenario => {
-    scenarioByCode[scenario.code] = scenario;
-  });
-  return {
-    campaign,
-    chaosBag: campaign.chaosBag || {},
-    cycleScenarios,
-    scenarioByCode,
-  };
+  return (
+    <OddsCalculatorComponent
+      campaign={campaign}
+      chaosBag={chaosBag || {}}
+      cycleScenarios={cycleScenarios}
+      allInvestigators={allInvestigators}
+    />
+  );
 }
-
-export default connect(mapStateToProps)(
-  withPlayerCards<NavigationProps & OddsCalculatorProps & ReduxProps>(
-    withDimensions(OddsCalculatorView)
-  )
-);

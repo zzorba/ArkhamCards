@@ -1,90 +1,61 @@
-import React from 'react';
-import { debounce } from 'lodash';
-import {
-  StyleSheet,
-  Text,
-} from 'react-native';
+import React, { useCallback } from 'react';
 
-import BasicListRow from '@components/core/BasicListRow';
-import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { ShowCountDialog } from '@components/deck/dialogs';
+import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';
+import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 
 interface Props {
   countChanged: (index: number, count: number) => void;
+  showCountDialog: ShowCountDialog;
   index: number;
   title: string;
+  icon?: string;
   count?: number;
-  isInvestigator?: boolean;
+  first?: boolean;
+  last?: boolean;
 }
 
-interface State {
-  count?: number;
-}
-
-export default class EditCountComponent extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  _countChanged!: (index: number, count: number) => void;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      count: props.count,
-    };
-
-    this._countChanged = debounce(props.countChanged, 200, { trailing: true });
-  }
-
-  _increment = () => {
-    this.setState(state => {
-      const count = (state.count || 0) + 1;
-      this._countChanged(this.props.index, count);
-      return { count };
-    });
-  };
-
-  _decrement = () => {
-    this.setState(state => {
-      const count = Math.max((state.count || 0) - 1, 0);
-      this._countChanged(this.props.index, count);
-      return { count };
-    });
-  };
-
-  render() {
-    const {
+export default function EditCountComponent({
+  countChanged,
+  showCountDialog,
+  index,
+  icon,
+  title,
+  count: initialCount,
+  first,
+  last,
+}: Props) {
+  const updateCount = useCallback((value: number) => {
+    countChanged(index, value);
+  }, [index, countChanged]);
+  const onPress = useCallback(() => {
+    showCountDialog({
       title,
-    } = this.props;
-    const { gameFont, typography } = this.context;
-    const {
-      count,
-    } = this.state;
-    return (
-      <BasicListRow>
-        <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
-          { title }
-        </Text>
-        <PlusMinusButtons
-          count={count || 0}
-          onIncrement={this._increment}
-          onDecrement={this._decrement}
-          countRender={(
-            <Text style={[styles.margin, typography.text]}>
-              { count }
-            </Text>
-          )}
-          size={36}
-        />
-      </BasicListRow>
-    );
-  }
-}
+      label: title,
+      value: initialCount || 0,
+      update: updateCount,
+      min: 0,
+    });
+  }, [title, initialCount, updateCount, showCountDialog]);
 
-const styles = StyleSheet.create({
-  margin: {
-    minWidth: 40,
-    textAlign: 'center',
-  },
-});
+  return icon ? (
+    <DeckPickerStyleButton
+      icon={icon}
+      title={title}
+      valueLabel={`${initialCount || 0}`}
+      first={first}
+      last={last}
+      editable
+      onPress={onPress}
+    />
+  ) : (
+    <MiniPickerStyleButton
+      title={title}
+      valueLabel={`${initialCount || 0}`}
+      first={first}
+      last={last}
+      editable
+      onPress={onPress}
+    />
+  );
+}

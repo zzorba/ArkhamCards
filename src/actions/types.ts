@@ -1,10 +1,12 @@
 import { ChaosBag, ChaosTokenType, FactionCodeType, SkillCodeType, SlotCodeType } from '@app_constants';
 import { CardFilterData, FilterState } from '@lib/filters';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
+import { LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
 
 export const SORT_BY_TYPE = 'type';
 export const SORT_BY_FACTION = 'faction';
 export const SORT_BY_FACTION_PACK = 'faction_pack';
+export const SORT_BY_FACTION_XP = 'faction_xp';
 export const SORT_BY_COST = 'cost';
 export const SORT_BY_PACK = 'pack';
 export const SORT_BY_TITLE = 'title';
@@ -14,6 +16,7 @@ export type SortType =
   typeof SORT_BY_TYPE |
   typeof SORT_BY_FACTION |
   typeof SORT_BY_FACTION_PACK |
+  typeof SORT_BY_FACTION_XP |
   typeof SORT_BY_COST |
   typeof SORT_BY_PACK |
   typeof SORT_BY_TITLE |
@@ -49,21 +52,58 @@ export interface DeckMeta {
   alternate_back?: string;
 }
 
-export interface Deck {
+export interface LocalDeckId {
+  id: undefined;
+  local: true;
+  uuid: string;
+  serverId?: number;
+  arkhamdb_user: undefined;
+}
+export interface ArkhamDbDeckId {
   id: number;
-  uuid?: string;
+  local: false;
+  uuid: string;
+  serverId?: number;
+  arkhamdb_user: number;
+}
+export type DeckId = LocalDeckId | ArkhamDbDeckId;
+
+export interface ArkhamDbApiDeck {
+  id: number;
   name: string;
   description_md?: string;
   taboo_id?: number;
   investigator_code: string;
-  next_deck?: number;
-  previous_deck?: number;
-  local?: boolean;
   meta?: DeckMeta;
   date_update: string;
   date_creation: string;
   scenarioCount?: number;
   slots: Slots;
+  ignoreDeckLimitSlots: Slots;
+  sideSlots?: Slots;
+  user_id: number;
+  exile_string?: string;
+  problem?: DeckProblemType;
+  version?: string;
+  xp?: number;
+  xp_adjustment?: number;
+  spentXp?: number;
+  next_deck?: number;
+  previous_deck?: number;
+  tags?: string;
+}
+
+interface BaseDeck {
+  name: string;
+  description_md?: string;
+  taboo_id?: number;
+  investigator_code: string;
+  meta?: DeckMeta;
+  date_update: string;
+  date_creation: string;
+  scenarioCount?: number;
+  slots?: Slots;
+  sideSlots?: Slots;
   ignoreDeckLimitSlots: Slots;
   exile_string?: string;
   problem?: DeckProblemType;
@@ -71,10 +111,50 @@ export interface Deck {
   xp?: number;
   xp_adjustment?: number;
   spentXp?: number;
+  nextDeckId?: DeckId;
+  previousDeckId?: DeckId;
+  tags?: string;
+}
+
+export interface ArkhamDbDeck extends BaseDeck {
+  id: number;
+  local: undefined;
+  uuid: undefined;
+  user_id: number;
+}
+
+export interface LocalDeck extends BaseDeck {
+  local: true;
+  uuid: string;
+}
+
+export function getDeckId(deck: Deck): DeckId {
+  if (deck.local) {
+    return {
+      id: undefined,
+      arkhamdb_user: undefined,
+      local: true,
+      uuid: deck.uuid,
+    };
+  }
+  return {
+    id: deck.id,
+    arkhamdb_user: deck.user_id,
+    local: false,
+    uuid: `${deck.id}`,
+  };
+}
+
+export type Deck = ArkhamDbDeck | LocalDeck;
+
+export interface LegacyDeck extends BaseDeck {
+  id: number;
+  local?: string;
+  uuid?: string;
 }
 
 export interface DecksMap {
-  [id: number]: Deck;
+  [uuid: string]: Deck;
 }
 
 export type FactionCounts = {
@@ -119,9 +199,11 @@ export interface SplitCards {
 export type CardSplitType = keyof SplitCards;
 
 export interface ParsedDeck {
+  id: DeckId;
   investigator: Card;
   deck: Deck;
   slots: Slots;
+  deckSize: number;
   normalCardCount: number;
   totalCardCount: number;
   experience: number;
@@ -219,12 +301,14 @@ export const NEW_CHAOS_BAG_RESULTS = {
   totalDrawnTokens: 0,
 };
 
+export interface SealedToken {
+  id: string;
+  icon: ChaosTokenType;
+}
+
 export interface ChaosBagResults {
   drawnTokens: ChaosTokenType[];
-  sealedTokens: {
-    id: string;
-    icon: ChaosTokenType;
-  }[];
+  sealedTokens: SealedToken[];
   blessTokens?: number;
   curseTokens?: number;
   totalDrawnTokens: number;
@@ -239,12 +323,20 @@ export interface ScenarioResult {
   interlude?: boolean;
 }
 
-export interface BackupState {
-  campaigns: Campaign[];
-  decks: Deck[];
-  guides: { [id: string]: CampaignGuideState };
+export interface LegacyBackupState {
+  version: undefined;
+  campaigns: LegacyCampaign[];
+  decks: LegacyDeck[];
+  guides: { [id: string]: LegacyCampaignGuideState };
   deckIds: { [id: string]: string };
   campaignIds: { [id: string]: string };
+}
+
+export interface BackupState {
+  version: 1;
+  campaigns: Campaign[];
+  decks: LocalDeck[];
+  guides: CampaignGuideState[];
 }
 
 export enum CampaignDifficulty {
@@ -275,6 +367,9 @@ export const TDE = 'tde';
 export const TDEA = 'tdea';
 export const TDEB = 'tdeb';
 export const TIC = 'tic';
+export const STANDALONE = 'standalone';
+export const DARK_MATTER = 'zdm';
+export const ALICE_IN_WONDERLAND = 'zaw';
 
 export type CampaignCycleCode =
   typeof CUSTOM |
@@ -290,7 +385,10 @@ export type CampaignCycleCode =
   typeof TDE |
   typeof TDEA |
   typeof TDEB |
-  typeof TIC;
+  typeof TIC |
+  typeof STANDALONE |
+  typeof DARK_MATTER |
+  typeof ALICE_IN_WONDERLAND;
 
 export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   CORE,
@@ -307,6 +405,10 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TDEB,
   TIC,
 ];
+export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
+  ALICE_IN_WONDERLAND,
+  DARK_MATTER,
+];
 
 export const GUIDED_CAMPAIGNS = new Set([
   CORE,
@@ -322,11 +424,11 @@ export const GUIDED_CAMPAIGNS = new Set([
   TDEA,
   TDEB,
   TIC,
+  ALICE_IN_WONDERLAND,
+  DARK_MATTER,
 ]);
 
-export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set([
-  TIC,
-]);
+export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
 
 export interface CustomCampaignLog {
   sections?: string[];
@@ -336,41 +438,97 @@ export interface CustomCampaignLog {
 }
 
 export interface InvestigatorNotes {
-  sections: InvestigatorCampaignNoteSection[];
-  counts: InvestigatorCampaignNoteCount[];
+  sections?: InvestigatorCampaignNoteSection[];
+  counts?: InvestigatorCampaignNoteCount[];
 }
 
 export interface CampaignNotes {
-  sections: CampaignNoteSection[];
-  counts: CampaignNoteCount[];
-  investigatorNotes: InvestigatorNotes;
+  sections?: CampaignNoteSection[];
+  counts?: CampaignNoteCount[];
+  investigatorNotes?: InvestigatorNotes;
 }
 
-export interface Campaign {
-  id: number;
-  uuid?: string;
+export interface LocalCampaignId {
+  campaignId: string;
+  serverId?: undefined;
+}
+
+export interface UploadedCampaignId {
+  campaignId: string;
+  serverId: number;
+}
+
+export type CampaignId = LocalCampaignId | UploadedCampaignId;
+
+interface BaseCampaign {
+  serverId?: number;
   name: string;
   difficulty?: CampaignDifficulty;
   cycleCode: CampaignCycleCode;
+  standaloneId?: StandaloneId;
   lastUpdated: Date | string;
   showInterludes?: boolean;
-  baseDeckIds?: number[];
-  latestDeckIds?: number[]; // deprecated
+  deckIds?: DeckId[];
   nonDeckInvestigators?: string[];
   guided?: boolean;
   guideVersion?: number;
-  investigatorData: InvestigatorData;
   adjustedInvestigatorData?: InvestigatorData;
-  chaosBag: ChaosBag;
-  weaknessSet: WeaknessSet;
-  campaignNotes: CampaignNotes;
-  scenarioResults: ScenarioResult[];
+
+  // All 'objects' might be optional
+  investigatorData?: InvestigatorData;
+  chaosBag?: ChaosBag;
+  weaknessSet?: WeaknessSet;
+  campaignNotes?: CampaignNotes;
+  scenarioResults?: ScenarioResult[];
   // Used for Dream-Eaters and other nonsense.
+  linkUuid?: {
+    campaignIdA: string;
+    campaignIdB: string;
+  };
+  linkedCampaignUuid?: string;
+}
+
+export interface Campaign extends BaseCampaign {
+  uuid: string;
+}
+
+export function getCampaignId(campaign: Campaign): CampaignId {
+  return {
+    campaignId: campaign.uuid,
+    serverId: campaign.serverId,
+  };
+}
+
+export function getLastUpdated(campaign: { lastUpdated?: Date | string | number }): number {
+  if (!campaign.lastUpdated) {
+    return 0;
+  }
+  if (typeof campaign.lastUpdated === 'string') {
+    return (new Date(Date.parse(campaign.lastUpdated)).getTime());
+  }
+  if (typeof campaign.lastUpdated === 'number') {
+    return (new Date(campaign.lastUpdated).getTime());
+  }
+  return (campaign.lastUpdated.getTime());
+}
+
+export function getCampaignLastUpdated(campaign: Campaign, guide?: { lastUpdated?: Date | string | number }): Date {
+  if (campaign.guided && guide) {
+    return new Date(Math.min(getLastUpdated(campaign), getLastUpdated(guide)));
+  }
+  return new Date(getLastUpdated(campaign));
+}
+
+export interface LegacyCampaign extends BaseCampaign {
+  id: number;
+  latestDeckIds?: number[]; // deprecated
+  baseDeckIds?: number[];
+  uuid: string | undefined;
+  linkedCampaignId?: number;
   link?: {
     campaignIdA: number;
     campaignIdB: number;
   };
-  linkedCampaignId?: number;
 }
 
 export interface SingleCampaign extends Campaign {
@@ -397,16 +555,11 @@ export interface SetTabooSetAction {
   tabooId?: number;
 }
 
-export const SET_SINGLE_CARD_VIEW = 'SET_SINGLE_CARD_VIEW';
-export interface SetSingleCardViewAction {
-  type: typeof SET_SINGLE_CARD_VIEW;
-  singleCardView: boolean;
-}
-
-export const SET_ALPHABETIZE_ENCOUNTER_SETS = 'SET_ALPHABETIZE_ENCOUNTER_SETS';
-export interface SetAlphabetizeEncounterSetsAction {
-  type: typeof SET_ALPHABETIZE_ENCOUNTER_SETS;
-  alphabetizeEncounterSets: boolean;
+export const SET_MISC_SETTING = 'SET_MISC_SETTING';
+export interface SetMiscSettingAction {
+  type: typeof SET_MISC_SETTING;
+  setting: 'single_card' | 'alphabetize' | 'colorblind' | 'justify';
+  value: boolean;
 }
 
 export const PACKS_FETCH_START = 'PACKS_FETCH_START';
@@ -484,36 +637,128 @@ export interface UpdatePromptDismissedAction {
 export const NEW_DECK_AVAILABLE = 'NEW_DECK_AVAILABLE';
 export interface NewDeckAvailableAction {
   type: typeof NEW_DECK_AVAILABLE;
-  id: number;
+  id: DeckId;
   deck: Deck;
 }
 export const REPLACE_LOCAL_DECK = 'REPLACE_LOCAL_DECK';
 export interface ReplaceLocalDeckAction {
   type: typeof REPLACE_LOCAL_DECK;
-  localId: number;
-  deck: Deck;
+  localId: DeckId;
+  deck: ArkhamDbDeck;
 }
 export const UPDATE_DECK = 'UPDATE_DECK';
 export interface UpdateDeckAction {
   type: typeof UPDATE_DECK;
-  id: number;
+  id: DeckId;
   deck: Deck;
   isWrite: boolean;
 }
+
+export const CAMPAIGN_SYNC_REQUIRED = 'CAMPAIGN_SYNC_REQUIRED';
+export interface CampaignSyncRequiredAction {
+  type: typeof CAMPAIGN_SYNC_REQUIRED;
+  campaignId: CampaignId;
+}
+
+export interface UploadedDeck {
+  deckId: DeckId;
+  hash: string;
+  nextDeckId: DeckId | undefined;
+  campaignId: UploadedCampaignId[];
+}
+export interface GroupedUploadedDecks {
+  [uuid: string]: UploadedDeck | undefined;
+}
+export const UPLOAD_DECK = 'UPLOAD_DECK';
+export interface UploadDeckAction {
+  type: typeof UPLOAD_DECK;
+  deckId: DeckId;
+  nextDeckId: DeckId | undefined;
+  hash: string;
+  campaignId: UploadedCampaignId;
+}
+
+export const REMOVE_UPLOAD_DECK = 'REMOVE_UPLOAD_DECK';
+export interface RemoveUploadDeckAction {
+  type: typeof REMOVE_UPLOAD_DECK;
+  deckId: DeckId;
+  campaignId: UploadedCampaignId;
+}
+
+export const SET_UPLOADED_DECKS = 'SET_UPLOADED_DECKS';
+export interface SetUploadedDecksAction {
+  type: typeof SET_UPLOADED_DECKS;
+  uploadedDecks: GroupedUploadedDecks;
+}
+
 export const DELETE_DECK = 'DELETE_DECK';
 export interface DeleteDeckAction {
   type: typeof DELETE_DECK;
-  id: number;
+  id: DeckId;
   deleteAllVersions: boolean;
 }
 export const CLEAR_DECKS = 'CLEAR_DECKS';
 export interface ClearDecksAction {
   type: typeof CLEAR_DECKS;
 }
+
+export interface EditDeckState {
+  nameChange?: string;
+  descriptionChange?: string;
+  tabooSetChange?: number;
+  xpAdjustment: number;
+  slots: Slots;
+  ignoreDeckLimitSlots: Slots;
+  meta: DeckMeta;
+  mode: 'edit' | 'upgrade' | 'view';
+  editable: boolean;
+}
+export const START_DECK_EDIT = 'START_DECK_EDIT';
+export interface StartDeckEditAction {
+  type: typeof START_DECK_EDIT;
+  id: DeckId;
+  deck?: Deck;
+  mode?: 'edit' | 'upgrade' | 'view';
+  editable: boolean;
+}
+
+export const UPDATE_DECK_EDIT = 'UPDATE_DECK_EDIT';
+export interface UpdateDeckEditAction {
+  type: typeof UPDATE_DECK_EDIT;
+  id: DeckId;
+  updates: Partial<EditDeckState>;
+}
+
+export const UPDATE_DECK_EDIT_COUNTS = 'UPDATE_DECK_EDIT_COUNTS';
+
+interface UpdateDeckEditCountsSetAction {
+  type: typeof UPDATE_DECK_EDIT_COUNTS;
+  id: DeckId;
+  code: string;
+  operation: 'set';
+  value: number;
+  countType: 'slots' | 'ignoreDeckLimitSlots' | 'xpAdjustment';
+}
+interface UpdateDeckEditCountsAdjustAction {
+  type: typeof UPDATE_DECK_EDIT_COUNTS;
+  id: DeckId;
+  code: string;
+  operation: 'inc' | 'dec';
+  limit?: number;
+  countType: 'slots' | 'ignoreDeckLimitSlots' | 'xpAdjustment';
+}
+export type UpdateDeckEditCountsAction = UpdateDeckEditCountsSetAction | UpdateDeckEditCountsAdjustAction;
+
+export const FINISH_DECK_EDIT = 'FINISH_DECK_EDIT';
+export interface FinishDeckEditAction {
+  type: typeof FINISH_DECK_EDIT;
+  id: DeckId;
+}
+
 export const SET_MY_DECKS = 'SET_MY_DECKS';
 export interface SetMyDecksAction {
   type: typeof SET_MY_DECKS;
-  decks: Deck[];
+  decks: ArkhamDbDeck[];
   lastModified: string;
   timestamp: Date;
 }
@@ -536,36 +781,50 @@ export const SET_IN_COLLECTION = 'SET_IN_COLLECTION';
 export interface SetInCollectionAction {
   type: typeof SET_IN_COLLECTION;
   code?: string;
-  cycle?: number;
+  cycle_code?: string;
   value: boolean;
 }
 export const SET_PACK_SPOILER = 'SET_PACK_SPOILER';
 export interface SetPackSpoilerAction {
   type: typeof SET_PACK_SPOILER;
   code?: string;
-  cycle?: number;
+  cycle_code?: string;
   value: boolean;
 }
 export const NEW_CAMPAIGN = 'NEW_CAMPAIGN';
 export interface NewCampaignAction {
   type: typeof NEW_CAMPAIGN;
   now: Date;
-  id: number;
   name: string;
   difficulty?: CampaignDifficulty;
   cycleCode: CampaignCycleCode;
-  baseDeckIds: number[];
+  deckIds: DeckId[];
   investigatorIds: string[];
   chaosBag: ChaosBag;
   weaknessSet: WeaknessSet;
   campaignLog: CustomCampaignLog;
   guided: boolean;
 }
+
+export interface StandaloneId {
+  campaignId: string;
+  scenarioId: string;
+}
+
+export const NEW_STANDALONE = 'NEW_STANDALONE';
+export interface NewStandaloneCampaignAction {
+  type: typeof NEW_STANDALONE;
+  now: Date;
+  name: string;
+  standaloneId: StandaloneId;
+  deckIds: DeckId[];
+  investigatorIds: string[];
+  weaknessSet: WeaknessSet;
+}
 export const NEW_LINKED_CAMPAIGN = 'NEW_LINKED_CAMPAIGN';
 export interface NewLinkedCampaignAction {
   type: typeof NEW_LINKED_CAMPAIGN;
   now: Date;
-  id: number;
   name: string;
   weaknessSet: WeaknessSet;
   cycleCode: CampaignCycleCode;
@@ -573,54 +832,50 @@ export interface NewLinkedCampaignAction {
   cycleCodeB: CampaignCycleCode;
   guided: true;
 }
-export const RESTORE_BACKUP = 'RESTORE_BACKUP';
-export interface RestoreBackupAction {
-  type: typeof RESTORE_BACKUP;
-  campaigns: Campaign[];
-  decks: Deck[];
-  guides: {
-    [id: string]: CampaignGuideState;
-  };
-}
-
 
 export const RESTORE_COMPLEX_BACKUP = 'RESTORE_COMPLEX_BACKUP';
 export interface RestoreComplexBackupAction {
   type: typeof RESTORE_COMPLEX_BACKUP;
   campaigns: Campaign[];
   decks: Deck[];
-  guides: {
-    [id: string]: CampaignGuideState;
-  };
-  deckRemapping: {
-    [key: string]: number;
-  };
-  campaignRemapping: {
-    [key: string]: number;
-  };
+  guides: CampaignGuideState[];
 }
 
 export const UPDATE_CAMPAIGN = 'UPDATE_CAMPAIGN';
+type CampaignUpdate = Partial<Campaign>;
+
 export interface UpdateCampaignAction {
   type: typeof UPDATE_CAMPAIGN;
-  id: number;
-  campaign: Partial<Campaign>;
+  id: CampaignId;
+  campaign: CampaignUpdate;
   now: Date;
 }
 
-export const UPDATE_CAMPAIGN_SPENT_XP = 'UPDATE_CAMPAIGN_SPENT_XP';
-export interface UpdateCampaignSpentXpAction {
-  type: typeof UPDATE_CAMPAIGN_SPENT_XP;
-  id: number;
+export const UPDATE_CAMPAIGN_TRAUMA = 'UPDATE_CAMPAIGN_TRAUMA';
+
+export interface UpdateCampaignTraumaAction {
+  type: typeof UPDATE_CAMPAIGN_TRAUMA;
+  id: CampaignId;
   investigator: string;
-  operation: 'inc' | 'dec';
+  trauma: TraumaAndCardData;
+  now: Date;
+}
+
+export const UPDATE_CAMPAIGN_XP = 'UPDATE_CAMPAIGN_XP';
+export interface UpdateCampaignXpAction {
+  type: typeof UPDATE_CAMPAIGN_XP;
+  id: CampaignId;
+  investigator: string;
+  operation: 'set';
+  xpType: 'spentXp' | 'availableXp';
+  value: number;
   now: Date;
 }
 
 export const UPDATE_CHAOS_BAG_RESULTS = 'UPDATE_CHAOS_BAG_RESULTS';
 export interface UpdateChaosBagResultsAction {
   type: typeof UPDATE_CHAOS_BAG_RESULTS;
-  id: number;
+  id: CampaignId;
   chaosBagResults: ChaosBagResults;
   now: Date;
 }
@@ -628,7 +883,7 @@ export interface UpdateChaosBagResultsAction {
 export const ADJUST_BLESS_CURSE = 'ADJUST_BLESS_CURSE';
 export interface AdjustBlessCurseAction {
   type: typeof ADJUST_BLESS_CURSE;
-  id: number;
+  id: CampaignId;
   bless: boolean;
   direction: 'inc' | 'dec';
   now: Date;
@@ -642,31 +897,31 @@ export interface CleanBrokenCampaignsAction {
 export const DELETE_CAMPAIGN = 'DELETE_CAMPAIGN';
 export interface DeleteCampaignAction {
   type: typeof DELETE_CAMPAIGN;
-  id: number;
+  id: CampaignId;
 }
 
 export const CAMPAIGN_ADD_INVESTIGATOR = 'CAMPAIGN_ADD_INVESTIGATOR';
 export interface CampaignAddInvestigatorAction {
   type: typeof CAMPAIGN_ADD_INVESTIGATOR;
-  id: number;
+  id: CampaignId;
   investigator: string;
-  baseDeckId?: number;
+  deckId?: DeckId;
   now: Date;
 }
 
 export const CAMPAIGN_REMOVE_INVESTIGATOR = 'CAMPAIGN_REMOVE_INVESTIGATOR';
 export interface CampaignRemoveInvestigatorAction {
   type: typeof CAMPAIGN_REMOVE_INVESTIGATOR;
-  id: number;
+  id: CampaignId;
   investigator: string;
-  removeDeckId?: number;
+  removeDeckId?: DeckId;
   now: Date;
 }
 
 export const ADD_CAMPAIGN_SCENARIO_RESULT = 'ADD_CAMPAIGN_SCENARIO_RESULT';
 export interface AddCampaignScenarioResultAction {
   type: typeof ADD_CAMPAIGN_SCENARIO_RESULT;
-  id: number;
+  campaignId: CampaignId;
   scenarioResult: ScenarioResult;
   campaignNotes?: CampaignNotes;
   now: Date;
@@ -674,7 +929,7 @@ export interface AddCampaignScenarioResultAction {
 export const EDIT_CAMPAIGN_SCENARIO_RESULT = 'EDIT_CAMPAIGN_SCENARIO_RESULT';
 export interface EditCampaignScenarioResultAction {
   type: typeof EDIT_CAMPAIGN_SCENARIO_RESULT;
-  id: number;
+  campaignId: CampaignId;
   index: number;
   scenarioResult: ScenarioResult;
   now: Date;
@@ -683,25 +938,36 @@ export const NEW_WEAKNESS_SET = 'NEW_WEAKNESS_SET';
 export const EDIT_WEAKNESS_SET = 'EDIT_WEAKNESS_SET';
 export const DELETE_WEAKNESS_SET = 'DELETE_WEAKNESS_SET';
 
-export const LOGIN_STARTED = 'LOGIN_STARTED';
-interface LoginStartedAction {
-  type: typeof LOGIN_STARTED;
+export const ARKHAM_CARDS_LOGIN = 'ARKHAM_CARDS_LOGIN';
+interface ArkhamCardsLoginAction {
+  type: typeof ARKHAM_CARDS_LOGIN;
+  user: string;
 }
 
-export const LOGIN = 'LOGIN';
-interface LoginAction {
-  type: typeof LOGIN;
+export const ARKHAM_CARDS_LOGOUT = 'ARKHAM_CARDS_LOGOUT';
+interface ArkhamCardsLogoutAction {
+  type: typeof ARKHAM_CARDS_LOGOUT;
 }
 
-export const LOGIN_ERROR = 'LOGIN_ERROR';
-interface LoginErrorAction {
-  type: typeof LOGIN_ERROR;
+export const ARKHAMDB_LOGIN_STARTED = 'ARKHAMDB_LOGIN_STARTED';
+interface ArkhamDbLoginStartedAction {
+  type: typeof ARKHAMDB_LOGIN_STARTED;
+}
+
+export const ARKHAMDB_LOGIN = 'ARKHAMDB_LOGIN';
+interface ArkhamDbLoginAction {
+  type: typeof ARKHAMDB_LOGIN;
+}
+
+export const ARKHAMDB_LOGIN_ERROR = 'ARKHAMDB_LOGIN_ERROR';
+interface ArkhamDbLoginErrorAction {
+  type: typeof ARKHAMDB_LOGIN_ERROR;
   error: Error | string;
 }
 
-export const LOGOUT = 'LOGOUT';
-interface LogoutAction {
-  type: typeof LOGOUT;
+export const ARKHAMDB_LOGOUT = 'ARKHAMDB_LOGOUT';
+interface ArkhamDbLogoutAction {
+  type: typeof ARKHAMDB_LOGOUT;
 }
 
 export const CLEAR_FILTER = 'CLEAR_FILTER';
@@ -717,6 +983,7 @@ export interface ToggleFilterAction {
   key: keyof FilterState;
   value: boolean;
 }
+
 export const UPDATE_FILTER = 'UPDATE_FILTER';
 export interface UpdateFilterAction {
   type: typeof UPDATE_FILTER;
@@ -760,6 +1027,14 @@ export interface RemoveFilterSetAction {
   id: string;
 }
 
+export const SYNC_DECK = 'SYNC_DECK';
+export interface SyncDeckAction {
+  type: typeof SYNC_DECK;
+  campaignId: UploadedCampaignId;
+  investigator: string;
+  uploading: boolean;
+}
+
 interface BasicInput {
   scenario?: string;
 }
@@ -784,6 +1059,7 @@ export interface GuideNumberChoicesInput extends BasicInput {
   type: 'choice_list';
   step: string;
   choices: NumberChoices;
+  deckId?: DeckId;
 }
 
 export interface GuideStringChoicesInput extends BasicInput {
@@ -843,6 +1119,9 @@ export interface GuideCampaignLinkInput extends BasicInput {
   decision: string;
 }
 
+export const SYSTEM_BASED_GUIDE_INPUT_IDS = new Set([LEAD_INVESTIGATOR_STEP_ID]);
+export const SYSTEM_BASED_GUIDE_INPUT_TYPES = new Set(['campaign_link', 'inter_scenario']);
+
 export type GuideInput =
   GuideSuppliesInput |
   GuideDecisionInput |
@@ -857,10 +1136,19 @@ export type GuideInput =
   GuideStartCustomSideScenarioInput |
   GuideInterScenarioInput;
 
+export function guideInputToId(input: GuideInput) {
+  return `${input.scenario || ''}***${input.step || ''}***${input.type}`.replace(/[.$[\]#\\/]/g, '_');
+}
+
+
+export function guideAchievementToId(input: GuideAchievement) {
+  return `${input.id}***${input.type}`.replace(/[.$[\]#\\/]/g, '_');
+}
+
 export const GUIDE_RESET_SCENARIO = 'GUIDE_RESET_SCENARIO';
 export interface GuideResetScenarioAction {
   type: typeof GUIDE_RESET_SCENARIO;
-  campaignId: number;
+  campaignId: CampaignId;
   scenarioId: string;
   now: Date;
 }
@@ -868,7 +1156,7 @@ export interface GuideResetScenarioAction {
 export const GUIDE_SET_INPUT = 'GUIDE_SET_INPUT';
 export interface GuideSetInputAction {
   type: typeof GUIDE_SET_INPUT;
-  campaignId: number;
+  campaignId: CampaignId;
   input: GuideInput;
   now: Date;
 }
@@ -876,8 +1164,19 @@ export interface GuideSetInputAction {
 export const GUIDE_UNDO_INPUT = 'GUIDE_UNDO_INPUT';
 export interface GuideUndoInputAction {
   type: typeof GUIDE_UNDO_INPUT;
-  campaignId: number;
+  campaignId: CampaignId;
   scenarioId: string;
+  now: Date;
+}
+
+
+export const GUIDE_UPDATE_ACHIEVEMENT = 'GUIDE_UPDATE_ACHIEVEMENT';
+export interface GuideUpdateAchievementAction {
+  type: typeof GUIDE_UPDATE_ACHIEVEMENT;
+  campaignId: CampaignId;
+  id: string;
+  operation: 'set' | 'clear' | 'inc' | 'dec';
+  max?: number;
   now: Date;
 }
 
@@ -895,14 +1194,30 @@ export interface StringChoices {
   [code: string]: string[];
 }
 
-export interface CampaignGuideState {
+export interface GuideBinaryAchievement {
+  id: string;
+  type: 'binary';
+  value: boolean;
+}
+export interface GuideCountAchievement {
+  id: string;
+  type: 'count';
+  value: number;
+}
+export type GuideAchievement = GuideBinaryAchievement | GuideCountAchievement;
+
+interface BaseCampaignGuideState {
   inputs: GuideInput[];
+  undo?: string[];
+  achievements?: GuideAchievement[];
   lastUpdated?: Date;
 }
-
-export const DEFAULT_CAMPAIGN_GUIDE_STATE: CampaignGuideState = {
-  inputs: [],
-};
+export interface CampaignGuideState extends BaseCampaignGuideState {
+  uuid: string;
+}
+export interface LegacyCampaignGuideState extends BaseCampaignGuideState {
+  uuid: undefined;
+}
 
 export const ENSURE_UUID = 'ENSURE_UUID';
 export interface EnsureUuidAction {
@@ -912,16 +1227,30 @@ export interface EnsureUuidAction {
 export const RESET_DECK_CHECKLIST = 'RESET_DECK_CHECKLIST';
 export interface ResetDeckChecklistAction {
   type: typeof RESET_DECK_CHECKLIST;
-  id: number;
+  id: DeckId;
 }
 
 export const SET_DECK_CHECKLIST_CARD = 'SET_DECK_CHECKLIST_CARD';
 export interface SetDeckChecklistCardAction {
   type: typeof SET_DECK_CHECKLIST_CARD;
-  id: number;
+  id: DeckId;
   card: string;
   value: boolean;
 }
+
+export const REDUX_MIGRATION = 'REDUX_MIGRATION';
+interface ReduxMigrationV1Action {
+  type: typeof REDUX_MIGRATION;
+  version: 1;
+  campaigns: Campaign[];
+  decks: Deck[];
+  guides: CampaignGuideState[];
+  chaosBags: {
+    [uuid: string]: ChaosBagResults;
+  };
+}
+
+export type ReduxMigrationAction = ReduxMigrationV1Action;
 
 export type FilterActions =
   ClearFilterAction |
@@ -943,17 +1272,16 @@ export type PacksActions =
   UpdatePromptDismissedAction;
 
 export type SignInActions =
-  LoginAction |
-  LoginStartedAction |
-  LoginErrorAction |
-  LogoutAction;
+  ArkhamCardsLoginAction |
+  ArkhamCardsLogoutAction |
+  ArkhamDbLoginAction |
+  ArkhamDbLoginStartedAction |
+  ArkhamDbLoginErrorAction |
+  ArkhamDbLogoutAction;
 
 export type DecksActions =
-  ResetDeckChecklistAction |
-  SetDeckChecklistCardAction |
-  LogoutAction |
+  ArkhamDbLogoutAction |
   RestoreComplexBackupAction |
-  RestoreBackupAction |
   MyDecksStartRefreshAction |
   MyDecksCacheHitAction |
   MyDecksErrorAction |
@@ -963,32 +1291,101 @@ export type DecksActions =
   UpdateDeckAction |
   ClearDecksAction |
   ReplaceLocalDeckAction |
-  EnsureUuidAction;
+  EnsureUuidAction |
+  ReduxMigrationAction |
+  UploadDeckAction |
+  RemoveUploadDeckAction |
+  SetUploadedDecksAction;
+
+export type DeckEditsActions =
+  DeleteDeckAction |
+  ReplaceLocalDeckAction |
+  ResetDeckChecklistAction |
+  SetDeckChecklistCardAction |
+  DeleteDeckAction |
+  UpdateDeckAction |
+  StartDeckEditAction |
+  UpdateDeckEditAction |
+  FinishDeckEditAction |
+  UpdateDeckEditCountsAction |
+  SyncDeckAction;
 
 export type CampaignActions =
-  LogoutAction |
+  ArkhamDbLogoutAction |
   RestoreComplexBackupAction |
   ReplaceLocalDeckAction |
   CleanBrokenCampaignsAction |
   NewCampaignAction |
+  NewStandaloneCampaignAction |
   NewLinkedCampaignAction |
   UpdateCampaignAction |
-  UpdateCampaignSpentXpAction |
+  UpdateCampaignXpAction |
+  UpdateCampaignTraumaAction |
   DeleteCampaignAction |
   AddCampaignScenarioResultAction |
   EditCampaignScenarioResultAction |
-  RestoreBackupAction |
   UpdateChaosBagResultsAction |
   CampaignAddInvestigatorAction |
   CampaignRemoveInvestigatorAction |
   AdjustBlessCurseAction |
-  EnsureUuidAction;
+  EnsureUuidAction |
+  ReduxMigrationAction;
 
 export type GuideActions =
   DeleteCampaignAction |
   RestoreComplexBackupAction |
-  RestoreBackupAction |
-  LogoutAction |
+  ArkhamDbLogoutAction |
   GuideSetInputAction |
   GuideUndoInputAction |
-  GuideResetScenarioAction;
+  GuideResetScenarioAction |
+  GuideUpdateAchievementAction |
+  ReduxMigrationAction;
+
+export const DISSONANT_VOICES_LOGIN_STARTED = 'DISSONANT_VOICES_LOGIN_STARTED';
+interface DissonantVoicesLoginStartedAction {
+  type: typeof DISSONANT_VOICES_LOGIN_STARTED;
+}
+
+export const DISSONANT_VOICES_LOGIN = 'DISSONANT_VOICES_LOGIN';
+interface DissonantVoicesLoginAction {
+  type: typeof DISSONANT_VOICES_LOGIN;
+}
+
+export const DISSONANT_VOICES_LOGIN_ERROR = 'DISSONANT_VOICES_LOGIN_ERROR';
+interface DissonantVoicesLoginErrorAction {
+  type: typeof DISSONANT_VOICES_LOGIN_ERROR;
+  error: Error | string;
+}
+
+export const DISSONANT_VOICES_LOGOUT = 'DISSONANT_VOICES_LOGOUT';
+interface DissonantVoicesLogoutAction {
+  type: typeof DISSONANT_VOICES_LOGOUT;
+}
+
+export type DissonantVoicesActions =
+  DissonantVoicesLoginAction |
+  DissonantVoicesLoginStartedAction |
+  DissonantVoicesLoginErrorAction |
+  DissonantVoicesLogoutAction;
+
+export const TRACKED_QUERIES_ADD = 'TRACKED_QUERIES_ADD';
+export const TRACKED_QUERIES_REMOVE = 'TRACKED_QUERIES_REMOVE';
+
+export interface TrackedQuery {
+  contextJSON: string;
+  id: string;
+  name: string;
+  variablesJSON: string;
+}
+
+export interface TrackedQueriesAddAction {
+  type: typeof TRACKED_QUERIES_ADD;
+  payload: TrackedQuery;
+}
+
+export interface TrackedQueriesRemoveAction {
+  type: typeof TRACKED_QUERIES_REMOVE;
+  payload: string;
+}
+
+export type TrackedQueriesAction = TrackedQueriesAddAction | TrackedQueriesRemoveAction;

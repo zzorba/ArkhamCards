@@ -1,9 +1,11 @@
-import React from 'react';
-import { Button } from 'react-native';
+import React, { useCallback } from 'react';
+import { View } from 'react-native';
 import { t } from 'ttag';
 
 import { Deck } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
+import DeckButton from '@components/deck/controls/DeckButton';
+import space from '@styles/space';
 
 interface Props {
   deck: Deck;
@@ -11,18 +13,20 @@ interface Props {
   onPress: (deck: Deck, investigator: Card) => void;
 }
 
-export default class UpgradeDeckButton extends React.Component<Props> {
-  _onPress = () => {
-    const { deck, investigator, onPress } = this.props;
+export default function UpgradeDeckButton({ deck, investigator, onPress }: Props) {
+  const buttonOnPress = useCallback(() => {
     onPress(deck, investigator);
-  };
+  }, [deck, investigator, onPress]);
 
-  render() {
-    return (
-      <Button
+  return (
+    <View style={[space.paddingTopS, space.paddingBottomS, space.paddingRightM]}>
+      <DeckButton
+        thin
+        icon="upgrade"
+        color="gold"
         title={t`Upgrade deck`}
-        onPress={this._onPress}
+        onPress={buttonOnPress}
       />
-    );
-  }
+    </View>
+  );
 }

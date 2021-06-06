@@ -1,51 +1,38 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Navigation } from 'react-native-navigation';
 
 import MyDecksComponent from '@components/decklist/MyDecksComponent';
 import { Deck } from '@actions/types';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
+import MiniDeckT from '@data/interfaces/MiniDeckT';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 interface Props {
   componentId: string;
-  onDeckSelect: (deck: Deck) => void;
+  onDeckSelect: (deck: Deck) => Promise<void>;
   searchOptions?: SearchOptions;
 
-  onlyDeckIds?: number[];
-  onlyInvestigators?: string[];
-  filterDeckIds: number[];
-  filterInvestigators: string[];
+  onlyDecks?: MiniDeckT[];
+  filterDeck?: (deck: MiniDeckT) => boolean;
 }
 
-export default class DeckSelectorTab extends React.Component<Props> {
-  _deckSelected = (deck: Deck) => {
-    const {
-      onDeckSelect,
-      componentId,
-    } = this.props;
-    onDeckSelect(deck);
+export default function DeckSelectorTab({
+  componentId,
+  searchOptions,
+  filterDeck,
+  onlyDecks,
+  onDeckSelect,
+}: Props) {
+  const deckSelected = useCallback(async(deck: LatestDeckT) => {
+    onDeckSelect(deck.deck);
     Navigation.dismissModal(componentId);
-  }
-
-  render() {
-    const {
-      componentId,
-      searchOptions,
-      filterInvestigators,
-      filterDeckIds,
-      onlyDeckIds,
-      onlyInvestigators,
-    } = this.props;
-
-    return (
-      <MyDecksComponent
-        componentId={componentId}
-        searchOptions={searchOptions}
-        deckClicked={this._deckSelected}
-        onlyDeckIds={onlyDeckIds}
-        onlyInvestigators={onlyInvestigators}
-        filterDeckIds={filterDeckIds}
-        filterInvestigators={filterInvestigators}
-      />
-    );
-  }
+  }, [onDeckSelect, componentId]);
+  return (
+    <MyDecksComponent
+      searchOptions={searchOptions}
+      deckClicked={deckSelected}
+      onlyDecks={onlyDecks}
+      filterDeck={filterDeck}
+    />
+  );
 }

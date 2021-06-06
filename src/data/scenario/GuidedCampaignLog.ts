@@ -10,6 +10,7 @@ import {
   sumBy,
   uniq,
   zip,
+  concat,
 } from 'lodash';
 
 import {
@@ -40,9 +41,10 @@ import {
   ScenarioStatus,
   TraumaEffect,
   GainSuppliesEffect,
+  CampaignLogInvestigatorCountEffect,
 } from './types';
 import CampaignGuide, { CAMPAIGN_SETUP_ID } from './CampaignGuide';
-import Card, { CardsMap } from '@data/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import { LatestDecks } from '@data/scenario';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 
@@ -124,6 +126,7 @@ interface CampaignData {
   lastSavedInvestigatorData: {
     [code: string]: TraumaAndCardData | undefined;
   };
+  redirect_experience: string;
 }
 
 export default class GuidedCampaignLog {
@@ -144,6 +147,7 @@ export default class GuidedCampaignLog {
   campaignData: CampaignData;
   campaignGuide: CampaignGuide;
   chaosBag: ChaosBag;
+  swapChaosBag: ChaosBag;
   investigatorCards: CardsMap;
   linked: boolean;
   guideVersion: number;
@@ -152,6 +156,7 @@ export default class GuidedCampaignLog {
     switch (effect.type) {
       case 'campaign_log':
       case 'campaign_log_count':
+      case 'campaign_log_investigator_count':
       case 'campaign_log_cards':
       case 'freeform_campaign_log':
       case 'scenario_data':
@@ -164,6 +169,7 @@ export default class GuidedCampaignLog {
       case 'replace_card':
       case 'earn_xp':
       case 'upgrade_decks':
+      case 'save_decks':
       case 'gain_supplies':
         return true;
       default:
@@ -204,8 +210,10 @@ export default class GuidedCampaignLog {
         investigatorData: {},
         lastSavedInvestigatorData: {},
         everyStoryAsset: [],
+        redirect_experience: '',
       };
       this.chaosBag = {};
+      this.swapChaosBag = {};
       this.latestScenarioData = {
         investigatorStatus: {},
       };
@@ -235,6 +243,7 @@ export default class GuidedCampaignLog {
       this.scenarioData = readThrough.scenarioData;
       this.campaignData = readThrough.campaignData;
       this.chaosBag = readThrough.chaosBag;
+      this.swapChaosBag = readThrough.swapChaosBag;
       this.latestScenarioData = readThrough.latestScenarioData;
     } else {
       this.sections = cloneDeep(readThrough.sections);
@@ -242,6 +251,7 @@ export default class GuidedCampaignLog {
       this.investigatorSections = cloneDeep(readThrough.investigatorSections);
       this.scenarioData = cloneDeep(readThrough.scenarioData);
       this.chaosBag = cloneDeep(readThrough.chaosBag);
+      this.swapChaosBag = cloneDeep(readThrough.swapChaosBag);
       this.campaignData = cloneDeep(readThrough.campaignData);
       this.latestScenarioData = cloneDeep(readThrough.latestScenarioData);
 
@@ -267,6 +277,13 @@ export default class GuidedCampaignLog {
               break;
             case 'campaign_log':
               this.handleCampaignLogEffect(effect, input);
+              break;
+            case 'campaign_log_investigator_count':
+              this.handleCampaignLogInvestigatorCountEffect(
+                effect,
+                input,
+                numberInput && numberInput.length ? numberInput[0] : undefined
+              );
               break;
             case 'campaign_log_count': {
               this.handleCampaignLogCountEffect(
@@ -295,10 +312,26 @@ export default class GuidedCampaignLog {
               this.handleReplaceCardEffect(effect);
               break;
             case 'earn_xp':
-              this.handleEarnXpEffect(effect, input, numberInput);
+              if (this.campaignData.redirect_experience) {
+                const count_effect: CampaignLogInvestigatorCountEffect = {
+                  type: 'campaign_log_investigator_count',
+                  section: this.campaignData.redirect_experience,
+                  id: '$count',
+                  investigator: effect.investigator,
+                  fixed_investigator: effect.fixed_investigator,
+                  operation: 'add',
+                  value: (effect.bonus || 0) + (numberInput?.length ? numberInput[0] : 0),
+                };
+                this.handleCampaignLogInvestigatorCountEffect(count_effect);
+              } else {
+                this.handleEarnXpEffect(effect, input, numberInput);
+              }
               break;
             case 'upgrade_decks':
               this.handleUpgradeDecksEffect();
+              break;
+            case 'save_decks':
+              this.handleSaveDecksEffect();
               break;
             default:
               break;
@@ -442,10 +475,18 @@ export default class GuidedCampaignLog {
     return !section.sectionCrossedOut;
   }
 
-  allCards(sectionId: string, id: string): string[] | undefined {
+  allCards(sectionId: string, id?: string): string[] | undefined {
     const section = this.sections[sectionId];
     if (!section) {
       return undefined;
+    }
+    if (!id) {
+      return flatMap(section.entries, entry => {
+        if (entry.type === 'card') {
+          return map(entry.cards || [], card => card.card);
+        }
+        return [];
+      });
     }
     if (section.crossedOut[id]) {
       return undefined;
@@ -594,7 +635,7 @@ export default class GuidedCampaignLog {
       case 'choice':
       case '$fixed_investigator':
         // These are rewritten in ScenarioStep
-        throw new Error('should not happen');
+        throw new Error(`should not happen: ${investigator}`);
     }
   }
 
@@ -611,7 +652,8 @@ export default class GuidedCampaignLog {
   earnedXp(code: string): number {
     const data = this.campaignData.investigatorData[code] || {};
     const lastSavedData = this.campaignData.lastSavedInvestigatorData[code] || {};
-    return (data.availableXp || 0) - (lastSavedData.availableXp || 0);
+    const earnedXp = (data.availableXp || 0) - (lastSavedData.availableXp || 0);
+    return earnedXp;
   }
 
   private baseSlots(): Slots {
@@ -656,7 +698,7 @@ export default class GuidedCampaignLog {
       const investigatorAssignedCards: Slots = {};
       const deck = latestDecks[investigator.code];
       if (deck) {
-        forEach(deck.slots, (count, code) => {
+        forEach(deck.deck.slots, (count, code) => {
           const card = cards[code];
           if (card && card.isBasicWeakness()) {
             investigatorAssignedCards[code] = count;
@@ -728,7 +770,6 @@ export default class GuidedCampaignLog {
     const previousSlots = this.storyAssetSlots(this.campaignData.lastSavedInvestigatorData[code] || {});
     const currentNonStorySlots = this.nonStoryCards(code);
     const previousNonStorySlots = this.nonStoryCardSlots(this.campaignData.lastSavedInvestigatorData[code] || {});
-
     const slotDelta: Slots = {};
     forEach(
       uniq([...keys(currentSlots), ...keys(previousSlots), ...keys(currentNonStorySlots), ...keys(previousNonStorySlots)]),
@@ -742,6 +783,21 @@ export default class GuidedCampaignLog {
       }
     );
     return slotDelta;
+  }
+
+
+  private handleSaveDecksEffect() {
+    const investigatorData = cloneDeep(this.campaignData.lastSavedInvestigatorData || {});
+    forEach(this.campaignData.investigatorData, (data, code) => {
+      investigatorData[code] = {
+        ...(investigatorData[code] || {}),
+        storyAssets: [...(data?.storyAssets || [])],
+        ignoreStoryAssets: [...(data?.ignoreStoryAssets || [])],
+        addedCards: [...(data?.addedCards || [])],
+        removedCards: [...(data?.removedCards || [])],
+      };
+    });
+    this.campaignData.lastSavedInvestigatorData = investigatorData;
   }
 
   private handleUpgradeDecksEffect() {
@@ -866,7 +922,7 @@ export default class GuidedCampaignLog {
       new Set(this.getInvestigators(effect.investigator, input)) :
       undefined;
     forEach(
-      keys(this.campaignData.investigatorData),
+      uniq(concat(keys(this.campaignData.investigatorData), this.investigatorCodes(true))),
       investigator => {
         if (!investigatorRestriction || investigatorRestriction.has(investigator)) {
           const data: TraumaAndCardData = this.campaignData.investigatorData[investigator] || {};
@@ -956,15 +1012,15 @@ export default class GuidedCampaignLog {
     }
     forEach(input, investigator => {
       forEach(effect.supplies, supply => {
-        const countEffect: CampaignLogCountEffect = {
-          type: 'campaign_log_count',
+        const countEffect: CampaignLogInvestigatorCountEffect = {
+          type: 'campaign_log_investigator_count',
           section: effect.section,
-          investigator: investigator,
+          investigator: '$input_value',
           operation: 'add',
           id: supply.id,
           value: 1,
         };
-        this.handleCampaignLogCountEffect(countEffect);
+        this.handleCampaignLogInvestigatorCountEffect(countEffect, [investigator]);
       });
     });
   }
@@ -1001,6 +1057,20 @@ export default class GuidedCampaignLog {
       case 'next_scenario':
         this.campaignData.nextScenario = effect.scenario;
         break;
+      case 'swap_chaos_bag': {
+        const swap = this.swapChaosBag;
+        this.swapChaosBag = this.chaosBag;
+        if (effect.initialize) {
+          this.chaosBag = {};
+        } else {
+          this.chaosBag = swap;
+        }
+        break;
+      }
+      case 'redirect_experience': {
+        this.campaignData.redirect_experience = effect.investigator_count;
+        break;
+      }
     }
   }
 
@@ -1112,13 +1182,24 @@ export default class GuidedCampaignLog {
   private updateSectionWithCount(
     section: EntrySection,
     id: string,
-    effect: CampaignLogCountEffect,
+    operation: 'add' | 'add_input' | 'subtract_input' | 'set' | 'set_input',
     value: number
   ): EntrySection {
     // Normal entry
-    const entry = find(section.entries, entry => entry.id === effect.id);
+    const entry = find(section.entries, entry => entry.id === id);
     const count = (entry && entry.type === 'count') ? entry.count : 0;
-    switch (effect.operation) {
+    switch (operation) {
+      case 'subtract_input':
+        if (entry && entry.type === 'count') {
+          entry.count = count - value;
+        } else {
+          section.entries.push({
+            type: 'count',
+            id,
+            count: count - value,
+          });
+        }
+        break;
       case 'add':
       case 'add_input':
         if (entry && entry.type === 'count') {
@@ -1147,6 +1228,28 @@ export default class GuidedCampaignLog {
     return section;
   }
 
+  private handleCampaignLogInvestigatorCountEffect(
+    effect: CampaignLogInvestigatorCountEffect,
+    input?: string[],
+    numberInput?: number
+  ) {
+    const value: number = (
+      (effect.operation === 'add_input' || effect.operation === 'set_input') ?
+        numberInput :
+        effect.value
+    ) || 0;
+    const investigatorSection = this.investigatorSections[effect.section] || {};
+    const investigators = this.getInvestigators(effect.investigator, input);
+    forEach(investigators, investigator => {
+      const section = investigatorSection[investigator] || {
+        entries: [],
+        crossedOut: {},
+      };
+      investigatorSection[investigator] = this.updateSectionWithCount(section, effect.id, effect.operation, value);
+    })
+    this.investigatorSections[effect.section] = investigatorSection;
+  }
+
   private handleCampaignLogCountEffect(effect: CampaignLogCountEffect, numberInput?: number) {
     const value: number = (
       (effect.operation === 'add_input' || effect.operation === 'set_input') ?
@@ -1170,31 +1273,13 @@ export default class GuidedCampaignLog {
           break;
       }
       this.countSections[effect.section] = section;
-    } else if (effect.investigator) {
-      const investigatorSection = this.investigatorSections[effect.section] || {};
-      const section = investigatorSection[effect.investigator] || {
-        entries: [],
-        crossedOut: {},
-      };
-      investigatorSection[effect.investigator] = this.updateSectionWithCount(
-        section,
-        effect.id,
-        effect,
-        value
-      );
-      this.investigatorSections[effect.section] = investigatorSection;
     } else {
       const section = this.sections[effect.section] || {
         entries: [],
         crossedOut: {},
       };
 
-      this.sections[effect.section] = this.updateSectionWithCount(
-        section,
-        effect.id,
-        effect,
-        value
-      );
+      this.sections[effect.section] = this.updateSectionWithCount(section, effect.id, effect.operation, value);
     }
   }
 
@@ -1271,6 +1356,11 @@ export default class GuidedCampaignLog {
                   count: 1,
                 });
                 break;
+              }
+              case '$all_investigators': {
+                forEach(this.investigatorCodes(true), code => {
+                  cards.push({ card: code, count: 1 });
+                })
               }
               case '$defeated_investigators': {
                 forEach(

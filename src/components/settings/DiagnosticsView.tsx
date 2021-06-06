@@ -1,120 +1,57 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { forEach } from 'lodash';
 import {
   Alert,
-  InteractionManager,
   Keyboard,
   SafeAreaView,
   ScrollView,
   Share,
   StyleSheet,
 } from 'react-native';
+import database from '@react-native-firebase/database';
 import Crashes from 'appcenter-crashes';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { Campaign, CampaignGuideState, Deck, Pack } from '@actions/types';
-import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
+import { DISSONANT_VOICES_LOGIN, Pack } from '@actions/types';
 import { clearDecks } from '@actions';
-import Database from '@data/Database';
-import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
-import Card from '@data/Card';
-import { getBackupData, getAllPacks, AppState, getLangPreference, getLangChoice } from '@reducers';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
+import Card from '@data/types/Card';
+import { getBackupData, getAllPacks, getLangChoice, AppState } from '@reducers';
 import { fetchCards } from '@components/card/actions';
-import { restoreBackup } from '@components/campaign/actions';
 import SettingsItem from './SettingsItem';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import StyleContext from '@styles/StyleContext';
+import { saveAuthResponse } from '@lib/dissonantVoices';
+import LanguageContext from '@lib/i18n/LanguageContext';
+import useTextEditDialog from '@components/core/useTextEditDialog';
+import { useApolloClient } from '@apollo/client';
+import ApolloClientContext from '@data/apollo/ApolloClientContext';
 
-interface ReduxProps {
-  backupData: {
-    campaigns: Campaign[];
-    decks: Deck[];
-    guides: {
-      [id: string]: CampaignGuideState;
-    };
-  };
-  packs: Pack[];
-  lang: string;
-  langChoice: string;
+
+function goOffline() {
+  database().goOffline();
 }
 
-interface ReduxActionProps {
-  fetchCards: (db: Database, cardLang: string, choiceLang: string) => void;
-  restoreBackup: (
-    campaigns: Campaign[],
-    guides: {
-      [id: string]: CampaignGuideState;
-    },
-    decks: Deck[]
-  ) => void;
-  clearDecks: () => void;
+function goOnline() {
+  database().goOnline();
 }
 
-type Props = ReduxProps & ReduxActionProps & InjectedDialogProps;
+export default function DiagnosticsView() {
+  const [dialog, showTextEditDialog] = useTextEditDialog();
+  const { db } = useContext(DatabaseContext);
+  const { colors } = useContext(StyleContext);
+  const { lang } = useContext(LanguageContext);
+  const dispatch = useDispatch();
+  const backupData = useSelector(getBackupData);
+  const state = useSelector((state: AppState) => state);
+  const packs = useSelector(getAllPacks);
+  const langChoice = useSelector(getLangChoice);
 
-class DiagnosticsView extends React.Component<Props> {
-  static contextType = DatabaseContext;
-  context!: DatabaseContextType;
-
-  _importBackupDataJson = (json: any) => {
-    try {
-      const backupData = JSON.parse(json) || {};
-      const campaigns: Campaign[] = backupData.campaigns || [];
-      const guides: { [id: string]: CampaignGuideState } = backupData.guides || {};
-      const decks: Deck[] = backupData.decks || [];
-      this.props.restoreBackup(
-        campaigns,
-        guides,
-        decks
-      );
-      return;
-    } catch (e) {
-      console.log(e);
-      Alert.alert(
-        t`Problem with import`,
-        t`We were not able to parse any campaigns from that pasted data.\n\nMake sure its an exact copy of the text provided by the Backup feature of an Arkham Cards app.`,
-      );
-    }
-  };
-
-  _importCampaignData = () => {
-    const {
-      showTextEditDialog,
-    } = this.props;
-    const erasedCopy = t`All local decks and campaigns will be overridden`;
+  const exportCampaignData = useCallback(() => {
     Alert.alert(
-      t`Restore campaign data?`,
-      t`This feature is intended for advanced diagnostics or to import data from another app.\n\n${erasedCopy}`,
-      [{
-        text: t`Nevermind`,
-        style: 'cancel',
-      }, {
-        text: t`Import data`,
-        style: 'destructive',
-        onPress: () => {
-          showTextEditDialog(
-            t`Paste Backup Here`,
-            '',
-            (json) => {
-              Keyboard.dismiss();
-              InteractionManager.runAfterInteractions(
-                () => this._importBackupDataJson(json)
-              );
-            },
-            false,
-            4
-          );
-        },
-      }],
-    );
-  };
-
-  _exportCampaignData = () => {
-    Alert.alert(
-      t`Backup campaign data?`,
-      t`This feature is intended for advanced diagnostics or if you are trying to move your campaign data from one device to another. Just copy the data and paste it into the other app.`,
+      t`Export diagnostic data`,
+      t`This feature is intended for advanced diagnostics. Just copy the data presented here and email it to arkhamcards@gmail.com`,
       [{
         text: t`Cancel`,
         style: 'cancel',
@@ -122,44 +59,52 @@ class DiagnosticsView extends React.Component<Props> {
         text: t`Export Campaign Data`,
         onPress: () => {
           Share.share({
-            message: JSON.stringify(this.props.backupData),
+            message: JSON.stringify(backupData),
+          });
+        },
+      }, {
+        text: t`Export Diagnostic Data`,
+        onPress: () => {
+          Share.share({
+            message: JSON.stringify({
+              legacyDecks: state.legacyDecks,
+              legacyCampaigns: state.campaigns,
+              legacyGuides: state.legacyGuides,
+              decks: state.decks,
+              campaigns: state.campaigns_2,
+              guides: state.guides,
+            }),
           });
         },
       }],
     );
-  };
+  }, [backupData, state]);
 
-  async clearDatabase() {
-    await (await this.context.db.cardsQuery()).delete().execute();
-    await (await this.context.db.encounterSets()).createQueryBuilder().delete().execute();
-    await (await this.context.db.faqEntries()).createQueryBuilder().delete().execute();
-    await (await this.context.db.tabooSets()).createQueryBuilder().delete().execute();
-  }
+  const clearDatabase = useCallback(async() => {
+    await (await db.cardsQuery()).delete().execute();
+    await (await db.encounterSets()).createQueryBuilder().delete().execute();
+    await (await db.faqEntries()).createQueryBuilder().delete().execute();
+    await (await db.tabooSets()).createQueryBuilder().delete().execute();
+  }, [db]);
+  const apollo = useApolloClient();
+  const { anonClient } = useContext(ApolloClientContext);
+  const doSyncCards = useCallback(() => {
+    dispatch(fetchCards(db, anonClient, lang, langChoice));
+  }, [dispatch, lang, langChoice, db, anonClient]);
 
-  _clearCache = () => {
-    const {
-      clearDecks,
-    } = this.props;
-    clearDecks();
-    this.clearDatabase().then(() => {
-      this._doSyncCards();
+  const clearCache = useCallback(async() => {
+    dispatch(clearDecks());
+    await apollo.cache.reset();
+    await apollo.resetStore();
+  }, [apollo, dispatch]);
+
+  const clearCardCache = useCallback(() => {
+    clearDatabase().then(() => {
+      doSyncCards();
     });
-  };
+  }, [clearDatabase, doSyncCards]);
 
-  _doSyncCards = () => {
-    const {
-      lang,
-      langChoice,
-      fetchCards,
-    } = this.props;
-    fetchCards(this.context.db, lang, langChoice);
-  };
-
-  addDebugCardJson(json: string) {
-    const {
-      packs,
-      lang,
-    } = this.props;
+  const addDebugCardJson = useCallback((json: string) => {
     const packsByCode: { [code: string]: Pack } = {};
     const cycleNames: {
       [cycle_position: number]: {
@@ -173,43 +118,51 @@ class DiagnosticsView extends React.Component<Props> {
         cycleNames[pack.cycle_position] = pack;
       }
     });
-    cycleNames[50] = {
-      name: t`Return to...`,
-    };
-    cycleNames[70] = {
-      name: t`Investigator Starter Decks`,
-    };
-    cycleNames[80] = {
-      name: t`Side stories`,
-    };
-    this.context.db.cards().then(cards => {
+    cycleNames[8] = { name: t`Edge of the Earth`, code: 'eoe' };
+    cycleNames[50] = { name: t`Return to...`, code: 'return' };
+    cycleNames[60] = { name: t`Investigator Starter Decks`, code: 'investigator' };
+    cycleNames[70] = { name: t`Promotional`, code: 'promotional' };
+    cycleNames[80] = { name: t`Side stories`, code: 'side_stories' };
+    cycleNames[90] = { name: t`Parallel`, code: 'parallel' };
+    db.cards().then(cards => {
       cards.insert(
         Card.fromJson(JSON.parse(json), packsByCode, cycleNames, lang)
       );
     });
-  }
+  }, [packs, lang, db]);
 
-  _addDebugCard = () => {
-    const {
-      showTextEditDialog,
-    } = this.props;
+  const addDebugCard = useCallback(() => {
     showTextEditDialog(
       t`Debug Card Json`,
       '',
-      (json) => {
+      (json: string) => {
         Keyboard.dismiss();
-        setTimeout(() => this.addDebugCardJson(json), 1000);
+        setTimeout(() => addDebugCardJson(json), 1000);
       },
       false,
       4
     );
-  };
+  }, [showTextEditDialog, addDebugCardJson]);
 
-  _crash = () => {
+  const crash = useCallback(() => {
     Crashes.generateTestCrash();
-  };
+  }, []);
 
-  renderDebugSection() {
+  const setDissonantVoicesToken = useCallback(() => {
+    showTextEditDialog(
+      'Dissonant Voices token',
+      '',
+      (token: string) => {
+        Keyboard.dismiss();
+        saveAuthResponse(token);
+        dispatch({
+          type: DISSONANT_VOICES_LOGIN,
+        });
+      }
+    );
+  }, [showTextEditDialog, dispatch]);
+
+  const debugSection = useMemo(() => {
     if (!__DEV__) {
       return null;
     }
@@ -217,70 +170,55 @@ class DiagnosticsView extends React.Component<Props> {
       <>
         <CardSectionHeader section={{ title: t`Debug` }} />
         <SettingsItem
-          onPress={this._crash}
+          onPress={crash}
           text={'Crash'}
         />
         <SettingsItem
-          onPress={this._addDebugCard}
+          onPress={addDebugCard}
           text={'Add Debug Card'}
+        />
+        <SettingsItem
+          onPress={setDissonantVoicesToken}
+          text={'Set Dissonant Voices Token'}
+        />
+        <CardSectionHeader section={{ title: 'Firebase' }} />
+        <SettingsItem
+          onPress={goOffline}
+          text={'Go offline'}
+        />
+        <SettingsItem
+          onPress={goOnline}
+          text={'Go online'}
         />
       </>
     );
-  }
+  }, [crash, addDebugCard, setDissonantVoicesToken]);
+  const cardsLoading = useSelector((state: AppState) => state.cards.loading);
 
-  render() {
-    return (
-      <StyleContext.Consumer>
-        { ({ colors }) => (
-          <SafeAreaView style={[styles.container, { backgroundColor: colors.L20 }]}>
-            <ScrollView style={{ backgroundColor: colors.L20 }}>
-              <CardSectionHeader section={{ title: t`Backup` }} />
-              <SettingsItem
-                onPress={this._exportCampaignData}
-                text={t`Backup Campaign Data`}
-              />
-              <SettingsItem
-                onPress={this._importCampaignData}
-                text={t`Restore Campaign Data`}
-              />
-              <CardSectionHeader section={{ title: t`Caches` }} />
-              <SettingsItem
-                onPress={this._clearCache}
-                text={t`Clear cache`}
-              />
-              { this.renderDebugSection() }
-            </ScrollView>
-          </SafeAreaView>
-        ) }
-      </StyleContext.Consumer>
-
-    );
-  }
+  return (
+    <SafeAreaView style={[styles.container, { backgroundColor: colors.L20 }]}>
+      <ScrollView style={{ backgroundColor: colors.L20 }}>
+        <CardSectionHeader section={{ title: t`Backup` }} />
+        <SettingsItem
+          onPress={exportCampaignData}
+          text={t`Export diagnostic data`}
+        />
+        <CardSectionHeader section={{ title: t`Caches` }} />
+        <SettingsItem
+          onPress={clearCache}
+          text={t`Clear cache`}
+        />
+        <SettingsItem
+          disabled={cardsLoading}
+          onPress={clearCardCache}
+          text={cardsLoading ? t`Loading` : t`Clear card cache`}
+        />
+        { debugSection }
+      </ScrollView>
+      { dialog }
+    </SafeAreaView>
+  );
 }
-
-function mapStateToProps(state: AppState): ReduxProps {
-  return {
-    backupData: getBackupData(state),
-    packs: getAllPacks(state),
-    lang: getLangPreference(state),
-    langChoice: getLangChoice(state),
-  };
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    clearDecks,
-    fetchCards,
-    restoreBackup,
-  }, dispatch);
-}
-
-export default withDialogs(
-  connect<ReduxProps, ReduxActionProps, InjectedDialogProps, AppState>(
-    mapStateToProps,
-    mapDispatchToProps
-  )(DiagnosticsView)
-);
 
 const styles = StyleSheet.create({
   container: {

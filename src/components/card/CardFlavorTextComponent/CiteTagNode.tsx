@@ -1,28 +1,19 @@
+import { StyleContextType } from '@styles/StyleContext';
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-} from 'react-native';
-import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
+import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
 import { WithText } from '../CardTextComponent/types';
 
-export default function CiteTagNode(
-  node: Node & WithText,
-  output: OutputFunction,
-  state: RenderState
-) {
+export default function CiteTagNode({ typography }: StyleContextType) {
   return (
-    <Text key={state.key} style={styles.text}>
-      { node.text }
-    </Text>
-  );
+    node: Node & WithText,
+    output: OutputFunction,
+    state: RenderState
+  ) => {
+    return (
+      <MarkdownText key={state.key} style={[typography.tiny, typography.regular, { fontFamily: 'Alegreya' }]}>
+        { node.text }
+      </MarkdownText>
+    );
+  };
 }
-
-const styles = StyleSheet.create({
-  text: {
-    fontSize: 11,
-    fontWeight: '400',
-    fontStyle: 'normal',
-  },
-});

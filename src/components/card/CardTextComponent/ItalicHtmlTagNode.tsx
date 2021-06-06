@@ -1,23 +1,26 @@
 import React from 'react';
-import { Text } from 'react-native';
-import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
+import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
-import { WithChildren } from './types';
+import { WithChildren, State } from './types';
 import { StyleContextType } from '@styles/StyleContext';
 
-export default function ItalicHtmlTagNode({ typography }: StyleContextType) {
+export default function ItalicHtmlTagNode({}: StyleContextType) {
   return (
     node: Node & WithChildren,
     output: OutputFunction,
-    state: RenderState
+    state: RenderState & State
   ) => {
     return (
-      <Text
+      <MarkdownText
         key={state.key}
-        style={[typography.italic, typography.dark]}
+        style={{
+          fontFamily: 'Alegreya',
+          fontStyle: 'italic',
+          fontWeight: state.bold ? '700' : '400',
+        }}
       >
-        { output(node.children, state) }
-      </Text>
+        { output(node.children, { ...state, italic: true }) }
+      </MarkdownText>
     );
   };
 }

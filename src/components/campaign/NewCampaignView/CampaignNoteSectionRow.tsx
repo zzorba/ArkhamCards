@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { t } from 'ttag';
 
 import PickerStyleButton from '@components/core/PickerStyleButton';
@@ -10,24 +10,12 @@ interface Props {
   onPress?: (name: string, isCount?: boolean, perInvestigator?: boolean) => void;
 }
 
-export default class CampaignNoteSectionRow extends React.Component<Props> {
-  _onPress = () => {
-    const {
-      name,
-      isCount,
-      perInvestigator,
-      onPress,
-    } = this.props;
+export default function CampaignNoteSectionRow({ name, isCount, perInvestigator, onPress }: Props) {
+  const pickerOnPress = useCallback(() => {
     onPress && onPress(name, isCount, perInvestigator);
-  };
+  }, [name, isCount, perInvestigator, onPress]);
 
-  text() {
-    const {
-      name,
-      isCount,
-      perInvestigator,
-    } = this.props;
-
+  const title = useMemo(() => {
     let result = name;
     if (perInvestigator) {
       result += t` (Per Investigator)`;
@@ -36,22 +24,17 @@ export default class CampaignNoteSectionRow extends React.Component<Props> {
       result += ': 0';
     }
     return result;
-  }
+  }, [name, isCount, perInvestigator]);
 
-  render() {
-    const {
-      onPress,
-    } = this.props;
-    return (
-      <PickerStyleButton
-        id="delete"
-        onPress={this._onPress}
-        disabled={!onPress}
-        title={this.text()}
-        widget="delete"
-        settingsStyle
-        noBorder
-      />
-    );
-  }
+  return (
+    <PickerStyleButton
+      id="delete"
+      onPress={pickerOnPress}
+      disabled={!onPress}
+      title={title}
+      widget="delete"
+      settingsStyle
+      noBorder
+    />
+  );
 }

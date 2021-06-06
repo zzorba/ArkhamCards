@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import AppIcon from '@icons/AppIcon';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import EncounterIcon from '@icons/EncounterIcon';
 import { TINY_PHONE } from '@styles/sizes';
@@ -25,7 +25,7 @@ export default function CardFooterInfo({ card }: Props) {
         ) }
       </View>
       <View style={styles.cardNumber}>
-        { !!card.encounter_name && !!card.encounter_code && !!card.encounter_position && (
+        { (!!card.encounter_name && !!card.encounter_code && !!card.encounter_position) && (
           <View style={[styles.row, styles.encounterRow]}>
             <Text style={typography.tiny}>
               { card.encounter_name }
@@ -59,6 +59,16 @@ export default function CardFooterInfo({ card }: Props) {
             { (card.position || 0) % 1000 }
           </Text>
         </View>
+        {
+          // tslint:disable-next-line
+          !card.encounter_name && card.pack_name !== card.cycle_name && (
+            <View style={[styles.row, styles.encounterRow]}>
+              <Text style={typography.tiny}>
+                { card.pack_name }
+              </Text>
+            </View>
+          )
+        }
       </View>
     </View>
   );

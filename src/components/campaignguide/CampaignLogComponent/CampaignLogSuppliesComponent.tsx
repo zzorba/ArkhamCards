@@ -1,61 +1,65 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { map } from 'lodash';
 
-import SingleCardWrapper from '@components/card/SingleCardWrapper';
-import InvestigatorNameRow from '../prompts/InvestigatorNameRow';
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { InvestigatorSection } from '@data/scenario/GuidedCampaignLog';
-import Card from '@data/Card';
-import { l, m, s } from '@styles/space';
+import space from '@styles/space';
+import useSingleCard from '@components/card/useSingleCard';
+import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
+import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 
 interface Props {
   sectionId: string;
   campaignGuide: CampaignGuide;
   section: InvestigatorSection;
+  title?: string;
+  width: number;
 }
 
-export default class CampaignLogSuppliesComponent extends React.Component<Props> {
-  _renderInvestigator = (investigator: Card) => {
-    const { sectionId, section, campaignGuide } = this.props;
-    const investigatorSection = section[investigator.code];
-    return (
-      <View key={investigator.code}>
-        <InvestigatorNameRow investigator={investigator} />
-        <View style={styles.container}>
-          { !!investigatorSection && (
-            <CampaignLogSectionComponent
-              sectionId={sectionId}
-              campaignGuide={campaignGuide}
-              section={investigatorSection}
-            />
-          ) }
-        </View>
-      </View>
-    );
+function CampaignLogSuppliesInvestigatorSection({ sectionId, campaignGuide, section, code, title, width }: Props & { code: string }) {
+  const [investigator] = useSingleCard(code, 'player');
+  if (!investigator) {
+    return null;
   }
+  const investigatorSection = section[investigator.code];
+  return (
+    <RoundedFactionBlock
+      key={investigator.code}
+      header={<CompactInvestigatorRow investigator={investigator} width={width} open />}
+      faction={investigator.factionCode()}
+      noSpace
+      noShadow
+    >
+      <View style={[space.paddingSideS, space.paddingTopM]}>
+        { !!investigatorSection && (
+          <CampaignLogSectionComponent
+            sectionId={sectionId}
+            campaignGuide={campaignGuide}
+            section={investigatorSection}
+            title={title}
+          />
+        ) }
+      </View>
+    </RoundedFactionBlock>
+  );
+}
 
-  render() {
-    const { section } = this.props;
-    return map(section, (investigatorSection, code) => {
-      return (
-        <SingleCardWrapper
+export default function CampaignLogSuppliesComponent({ sectionId, campaignGuide, section, title, width }: Props) {
+  return (
+    <>
+      { map(section, (investigatorSection, code) => (
+        <CampaignLogSuppliesInvestigatorSection
+          sectionId={sectionId}
+          campaignGuide={campaignGuide}
+          section={section}
+          title={title}
           key={code}
           code={code}
-          type="player"
-        >
-          { this._renderInvestigator }
-        </SingleCardWrapper>
-      );
-    });
-  }
+          width={width}
+        />
+      )) }
+    </>
+  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: s,
-    paddingLeft: m,
-    paddingRight: l,
-  },
-});

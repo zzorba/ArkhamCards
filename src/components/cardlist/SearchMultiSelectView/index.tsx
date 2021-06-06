@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { filter, map } from 'lodash';
 import {
   FlatList,
@@ -7,28 +7,23 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import { NavigationProps } from '@components/nav/types';
 import SelectRow from './SelectRow';
 import COLORS from '@styles/colors';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import { useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface SearchSelectProps {
   placeholder: string;
   onChange: (selection: string[]) => void;
   values: string[];
   selection?: string[];
-}
-
-type Props = NavigationProps & SearchSelectProps;
-
-interface State {
-  search: string;
-  selection: string[];
+  capitalize?: boolean;
 }
 
 interface Item {
@@ -36,34 +31,27 @@ interface Item {
   selected: boolean;
 }
 
-export default class SearchMultiSelectView extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+function keyExtractor(item: Item) {
+  return item.value;
+}
 
-  _navEventListener?: EventSubscription;
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      search: '',
-      selection: props.selection || [],
-    };
-
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  componentWillUnmount() {
-    this._navEventListener && this._navEventListener.remove();
-  }
-
-  _syncSelection = () => {
-    const {
-      selection,
-    } = this.state;
-    this.props.onChange(selection);
-    Navigation.mergeOptions(this.props.componentId, {
+export default function SearchMultiSelectView({ componentId, placeholder, onChange, values, selection: initialSelection, capitalize }: NavigationProps & SearchSelectProps) {
+  const { backgroundStyle } = useContext(StyleContext);
+  const [selection, setSelection] = useState<string[]>(initialSelection || []);
+  const [search, setSearch] = useState('');
+  useNavigationButtonPressed(({ buttonId }) => {
+    if (buttonId === 'clear') {
+      setSelection([]);
+    }
+  }, componentId, [setSelection]);
+  const hasSelection = selection.length > 0;
+  useEffect(() => {
+    onChange(selection);
+  }, [selection, onChange]);
+  useEffect(() => {
+    Navigation.mergeOptions(componentId, {
       topBar: {
-        rightButtons: selection && selection.length > 0 ?
+        rightButtons: hasSelection ?
           [{
             text: t`Clear`,
             id: 'clear',
@@ -72,113 +60,75 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
           }] : [],
       },
     });
-  };
+  }, [hasSelection, componentId]);
 
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
-    if (buttonId === 'clear') {
-      this.setState({
-        selection: [],
-      }, this._syncSelection);
-    }
-  }
-
-  _onSelectChanged = (value: string, selected: boolean) => {
-    const {
-      selection,
-    } = this.state;
+  const onSelectChanged = useCallback((value: string, selected: boolean) => {
     Keyboard.dismiss();
     const newSelection = selected ?
       [...selection, value] :
       filter(selection, v => v !== value);
 
-    this.setState({
-      selection: newSelection,
-    }, this._syncSelection);
-  };
+    setSelection(newSelection);
+  }, [setSelection, selection]);
 
-  _keyExtractor = (item: Item) => {
-    return item.value;
-  };
-
-  _renderItem = ({ item }: { item: Item }) => {
+  const renderItem = useCallback(({ item }: { item: Item }) => {
     return (
       <SelectRow
         value={item.value}
         selected={item.selected}
-        onSelectChanged={this._onSelectChanged}
+        onSelectChanged={onSelectChanged}
+        capitalize={capitalize}
       />
     );
-  };
-
-  _onChangeText = (text: string) => {
-    this.setState({
-      search: text,
-    });
-  };
-
-  getValues(): string[] {
-    const {
-      values,
-    } = this.props;
-    const {
-      search,
-    } = this.state;
+  }, [capitalize, onSelectChanged]);
+  const filteredValues = useMemo(() => {
     if (!search) {
       return values;
     }
     const lowerCaseSearch = search.toLowerCase();
     return filter(values, value =>
       search === '' || (!!value && value.toLowerCase().includes(lowerCaseSearch)));
-  }
+  }, [values, search]);
 
-  _renderHeader = () => {
+  const header = useMemo(() => {
     if (Platform.OS === 'android') {
       return <View style={styles.searchBarPadding} />;
     }
     return null;
-  };
+  }, []);
 
-  render() {
-    const {
-      placeholder,
-    } = this.props;
-    const {
-      selection,
-      search,
-    } = this.state;
-    const { backgroundStyle } = this.context;
-
-    const selectedSet = new Set(selection);
-    const values = this.getValues();
-    const data = map(values, value => {
-      return {
-        value,
-        selected: selectedSet.has(value),
-      };
-    });
-    return (
-      <CollapsibleSearchBox
-        prompt={placeholder}
-        searchTerm={search}
-        onSearchChange={this._onChangeText}
-      >
-        { onScroll => (
-          <FlatList
-            contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
-            contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
-            contentContainerStyle={backgroundStyle}
-            data={data}
-            onScroll={onScroll}
-            renderItem={this._renderItem}
-            keyExtractor={this._keyExtractor}
-            keyboardShouldPersistTaps="always"
-            keyboardDismissMode="on-drag"
-            ListHeaderComponent={this._renderHeader}
-          />
-        ) }
-      </CollapsibleSearchBox>
-    );
-  }
+  const selectedSet = useMemo(() => new Set(selection), [selection]);
+  const data = useMemo(() => map(filteredValues, value => {
+    return {
+      value,
+      selected: selectedSet.has(value),
+    };
+  }), [filteredValues, selectedSet]);
+  return (
+    <CollapsibleSearchBox
+      prompt={placeholder}
+      searchTerm={search}
+      onSearchChange={setSearch}
+    >
+      { onScroll => (
+        <FlatList
+          contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
+          contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
+          contentContainerStyle={backgroundStyle}
+          data={data}
+          onScroll={onScroll}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+          maxToRenderPerBatch={30}
+          initialNumToRender={30}
+          onEndReachedThreshold={0.5}
+          keyboardShouldPersistTaps="always"
+          keyboardDismissMode="on-drag"
+          ListHeaderComponent={header}
+        />
+      ) }
+    </CollapsibleSearchBox>
+  );
 }
 
 const styles = StyleSheet.create({
