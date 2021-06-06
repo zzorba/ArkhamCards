@@ -8,7 +8,6 @@ import { Navigation } from 'react-native-navigation';
 import { filter } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import LocationSetupButton from './LocationSetupButton';
 import TableStepComponent from './TableStepComponent';
 import EffectsStepComponent from './EffectsStepComponent';
@@ -29,6 +28,7 @@ import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import NarrationStepComponent from './NarrationStepComponent';
 import ScenarioGuideContext from '../ScenarioGuideContext';
+import ActionButton from '../prompts/ActionButton';
 
 interface Props {
   componentId: string;
@@ -180,10 +180,14 @@ export default function ScenarioStepComponent({
         switchCampaignScenario={switchCampaignScenario}
       />
       { (step.step.id === '$proceed') && (
-        <BasicButton
-          onPress={proceed}
-          title={t`Done`}
-        />
+        <View style={space.paddingS}>
+          <ActionButton
+            leftIcon="check"
+            onPress={proceed}
+            color="light"
+            title={t`Done`}
+          />
+        </View>
       ) }
     </ScenarioStepContext.Provider>
   );

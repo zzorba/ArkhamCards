@@ -20,6 +20,7 @@ export interface Typography {
   menuText: TextStyle;
   cardName: TextStyle;
   cardTraits: TextStyle;
+  counter: TextStyle;
   large: TextStyle;
   header: TextStyle;
   button: TextStyle;
@@ -110,6 +111,12 @@ export default function(
       fontSize: Math.ceil(18 * fontScale),
       lineHeight: Math.ceil((lang === 'zh' ? 22 : 20) * fontScale),
       color: colors.darkText,
+    },
+    counter: {
+      fontFamily: 'Alegreya-Medium',
+      fontSize: Math.ceil(24 * fontScale),
+      lineHeight: Math.ceil(26 * fontScale),
+      color: colors.D10,
     },
     header: {
       fontFamily: 'Alegreya-Medium',

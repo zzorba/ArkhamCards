@@ -205,7 +205,8 @@ function recordTraumaStep(): InputStep {
       choices: [
         {
           id: 'record_trauma',
-          text: t`Record Trauma`,
+          text: t`Choose investigator to record trauma`,
+          selected_text: t`Record trauma`,
           effects: [
             {
               type: 'trauma',

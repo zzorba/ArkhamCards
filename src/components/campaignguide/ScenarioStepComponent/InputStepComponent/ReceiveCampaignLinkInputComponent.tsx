@@ -1,4 +1,5 @@
 import React, { useCallback, useContext } from 'react';
+import { View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -6,9 +7,10 @@ import ChooseOnePrompt from '@components/campaignguide/prompts/ChooseOnePrompt';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { ReceiveCampaignLinkInput } from '@data/scenario/types';
-import BasicButton from '@components/core/BasicButton';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
+import ActionButton from '@components/campaignguide/prompts/ActionButton';
+import space from '@styles/space';
 
 interface Props {
   componentId: string;
@@ -40,17 +42,23 @@ export default function ReceiveCampaignLinkInputComponent({
               <CampaignGuideTextComponent text={input.linked_prompt} />
             </SetupStepWrapper>
           ) }
-          { input.flip_campaign ? (
-            <BasicButton
-              title={t`Switch campaign`}
-              onPress={switchCampaignScenario}
-            />
-          ) : (
-            <BasicButton
-              title={t`Close`}
-              onPress={close}
-            />
-          ) }
+          <View style={space.paddingS}>
+            { input.flip_campaign ? (
+              <ActionButton
+                leftIcon="shuffle"
+                color="light"
+                title={t`Switch campaign`}
+                onPress={switchCampaignScenario}
+              />
+            ) : (
+              <ActionButton
+                leftIcon="check"
+                title={t`Close`}
+                onPress={close}
+                color="light"
+              />
+            ) }
+          </View>
         </>
       );
     }

@@ -55,7 +55,6 @@ export default function ChallengeScenarioView({ componentId, scenario, challenge
         <SetupStepWrapper bulletType="none">
           <CampaignGuideTextComponent text={t`The app does not enforce Challenge Scenario prerequisites, so please confirm that they apply manually.`} />
         </SetupStepWrapper>
-
         <BasicButton title={t`Play this scenario`} onPress={handleOnPress} />
       </ScrollView>
     </View>
