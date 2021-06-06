@@ -4,6 +4,7 @@ import { TouchableOpacity, StyleSheet, View, Text } from 'react-native';
 import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
 import space, { s } from '@styles/space';
+import ArkhamSwitch from '../ArkhamSwitch';
 
 interface Props<T> {
   iconName?: string;
@@ -13,8 +14,9 @@ interface Props<T> {
   onValueChange: (value: T) => void;
   selected: boolean;
   last: boolean;
+  indicator?: 'check' | 'radio'
 }
-export default function ItemPickerLine<T>({ iconName, iconNode, text, selected, last, value, onValueChange }: Props<T>) {
+export default function ItemPickerLine<T>({ iconName, iconNode, text, selected, last, value, indicator = 'radio', onValueChange }: Props<T>) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
   const onPress = useCallback(() => onValueChange(value), [onValueChange, value]);
   const icon = useMemo(() => {
@@ -40,9 +42,13 @@ export default function ItemPickerLine<T>({ iconName, iconNode, text, selected, 
               { text }
             </Text>
           </View>
-          <View style={[styles.circle, { borderColor: colors.L10 }]}>
-            { !!selected && <View style={[styles.circleFill, { backgroundColor: colors.M }]} />}
-          </View>
+          { indicator === 'radio' ? (
+            <View style={[styles.circle, { borderColor: colors.L10 }]}>
+              { !!selected && <View style={[styles.circleFill, { backgroundColor: colors.M }]} />}
+            </View>
+          ) : (
+            <ArkhamSwitch value={selected} color="dark" />
+          ) }
         </View>
       </View>
     </TouchableOpacity>

@@ -4,7 +4,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import ArkhamButton from '@components/core/ArkhamButton';
 import Card from '@data/types/Card';
 import BondedCardsComponent from './BondedCardsComponent';
@@ -104,8 +103,12 @@ function SpoilersComponent({ componentId, card, width, toggleShowSpoilers }: Pro
       <Text style={[typography.text, space.paddingM]}>
         { t`Warning: this card contains possible spoilers for '${ card.pack_name }'.` }
       </Text>
-      <BasicButton onPress={toggleShowSpoilersPressed} title="Show card" />
-      <BasicButton onPress={editSpoilersPressed} title="Edit my spoiler settings" />
+      <View style={[styles.row, space.paddingSideS]}>
+        <ArkhamButton grow icon="show" onPress={toggleShowSpoilersPressed} title="Show card" />
+      </View>
+      <View style={[styles.row, space.paddingSideS]}>
+        <ArkhamButton grow icon="edit" onPress={editSpoilersPressed} title="Edit my spoiler settings" />
+      </View>
     </View>
   );
 }
@@ -182,5 +185,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

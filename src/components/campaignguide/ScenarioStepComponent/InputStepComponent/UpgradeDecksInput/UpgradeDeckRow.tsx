@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useRef } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { flatMap, find, forEach, keys, map, omit, sortBy } from 'lodash';
 import { t } from 'ttag';
@@ -6,7 +6,7 @@ import { t } from 'ttag';
 import { Deck, Slots, NumberChoices, getDeckId } from '@actions/types';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import { showDeckModal, showCard } from '@components/nav/helper';
+import { showCard } from '@components/nav/helper';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import Card from '@data/types/Card';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
@@ -445,11 +445,6 @@ function UpgradeDeckRow({
   }, [campaignState, investigator]);
 
   const { campaign } = useContext(CampaignGuideContext);
-  const viewDeck = useCallback(() => {
-    if (deck) {
-      showDeckModal(deck.id, deck.deck, campaign?.id, colors, investigator);
-    }
-  }, [colors, investigator, deck, campaign]);
   const footer = useMemo(() => {
     if (deck && deck.owner && userId && deck.owner.id !== userId) {
       return (
@@ -521,7 +516,7 @@ function UpgradeDeckRow({
         ) }
       </View>
     );
-  }, [choices, skipDeckSave, userId, error, selectDeck, viewDeck, editable, deck, typography, save, colors, saving, unsavedEdits]);
+  }, [choices, deckChoice, investigator, skipDeckSave, userId, error, selectDeck, editable, deck, typography, save, colors, saving, unsavedEdits]);
 
   const count: number = useMemo(() => {
     if (choices === undefined) {

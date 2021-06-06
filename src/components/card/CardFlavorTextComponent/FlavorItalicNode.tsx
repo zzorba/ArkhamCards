@@ -1,13 +1,9 @@
-import { StyleContextType } from '@styles/StyleContext';
 import React from 'react';
-import {
-  Text,
-} from 'react-native';
 import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
 import { WithChildren } from '../CardTextComponent/types';
 
-export default function FlavorItalicNode({ typography }: StyleContextType) {
+export default function FlavorItalicNode() {
   return (
     node: Node & WithChildren,
     output: OutputFunction,

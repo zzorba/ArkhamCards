@@ -5,7 +5,6 @@ import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
-import BasicButton from '@components/core/BasicButton';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import CardToggleRow from '@components/cardlist/CardSelectorComponent/CardToggleRow';
 import { NavigationProps } from '@components/nav/types';
@@ -16,6 +15,7 @@ import space from '@styles/space';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 export interface CardSelectorProps {
   query?: Brackets;
@@ -47,12 +47,12 @@ export default function CardSelectorView({ query, selection: initialSelection, o
   }, [selection, onSelect]);
 
   const renderCards = useCallback((cards: Card[], loading: boolean) => {
-    if (loading) {
+    if (loading || cards.length === 0) {
       return (
         <ActivityIndicator
           style={space.paddingM}
-          color={colors.lightText}
-          size="large"
+          color={colors.darkText}
+          size="small"
           animating
         />
       );
@@ -92,7 +92,8 @@ export default function CardSelectorView({ query, selection: initialSelection, o
     }
     if (!storyToggle) {
       return (
-        <BasicButton
+        <ArkhamButton
+          icon="show"
           title={t`Show story assets from other campaigns`}
           onPress={toggleStoryCards}
         />

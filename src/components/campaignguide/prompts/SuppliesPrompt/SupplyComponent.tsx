@@ -71,11 +71,6 @@ export default function SupplyComponent({
             onIncrement={onIncrement}
             onDecrement={onDecrement}
             max={supply.multiple ? undefined : 1}
-            countRender={(
-              <Text style={[styles.count, typography.text, typography.bold, typography.center]}>
-                { count }
-              </Text>
-            )}
             disablePlus={remainingPoints < supply.cost}
             hideDisabledMinus
             dialogStyle

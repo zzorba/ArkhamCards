@@ -1,13 +1,12 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { Text, View, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { forEach, map, sum } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import CounterListItemComponent from './CounterListItemComponent';
 import ScenarioGuideContext from '../../ScenarioGuideContext';
 import { NumberChoices } from '@actions/types';
-import space, { m } from '@styles/space';
+import { m } from '@styles/space';
 import { useCounters } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
 import Card from '@data/types/Card';
@@ -34,7 +33,7 @@ interface Props {
 
 export default function CounterListComponent({ id, items, countText, requiredTotal, loading, showDelta }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
-  const { colors, borderStyle, typography } = useContext(StyleContext);
+  const { colors, borderStyle } = useContext(StyleContext);
   const [counts, onInc, onDec] = useCounters({});
 
   const save = useCallback(() => {

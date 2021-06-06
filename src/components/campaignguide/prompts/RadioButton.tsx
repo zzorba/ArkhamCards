@@ -26,9 +26,10 @@ export default function RadioButton({ color, icon, selected }: Props) {
   const selectedColor = color === 'light' ? '#FFFBF2' : colors.L20;
   const iconColor = color === 'light' ? COLORS.D30 : colors.D30;
   if (icon === 'radio') {
+    const radioColor = color === 'light' ? COLORS.L30 : colors.D20;
     return (
-      <View style={[styles.button, styles.radioButton]}>
-        { selected && <View style={styles.radioFillButton} /> }
+      <View style={[styles.button, styles.radioButton, { borderColor: radioColor }]}>
+        { selected && <View style={[styles.radioFillButton, { backgroundColor: radioColor }]} /> }
       </View>
     );
   }

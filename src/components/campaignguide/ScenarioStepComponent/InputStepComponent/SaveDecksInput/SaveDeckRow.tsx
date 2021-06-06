@@ -8,7 +8,6 @@ import { ThunkDispatch } from 'redux-thunk';
 
 import { Deck, Slots, getDeckId, DeckId } from '@actions/types';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
-import BasicButton from '@components/core/BasicButton';
 import { useFlag } from '@components/core/hooks';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { showCard } from '@components/nav/helper';

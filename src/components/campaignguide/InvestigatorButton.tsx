@@ -14,7 +14,6 @@ interface Props {
   widget?: 'shuffle';
   disabled?: boolean;
   onPress: (code: string) => void;
-  hideName?: boolean;
 }
 
 export default function InvestigatorButton({
@@ -23,7 +22,6 @@ export default function InvestigatorButton({
   widget,
   onPress,
   disabled,
-  hideName,
 }: Props) {
   const { typography, width } = useContext(StyleContext);
   const onTouchablePress = useCallback(() => {

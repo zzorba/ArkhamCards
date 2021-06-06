@@ -1,5 +1,5 @@
 import React, { useCallback, useContext } from 'react';
-import { Alert, TouchableOpacity } from 'react-native';
+import { Alert } from 'react-native';
 import { find, map } from 'lodash';
 import { t } from 'ttag';
 
@@ -14,7 +14,6 @@ import { SpecialXp } from '@data/scenario/types';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
 import CardTextComponent from '@components/card/CardTextComponent';
-import ActionButton from '@components/campaignguide/prompts/ActionButton';
 import ArkhamButton from '@components/core/ArkhamButton';
 
 interface Props {

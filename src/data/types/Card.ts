@@ -557,7 +557,7 @@ export default class Card {
     return isYithian ? 7 : (this.health || 0);
   }
 
-  getSanity(traumaData: TraumaAndCardData  | undefined) {
+  getSanity(traumaData: TraumaAndCardData | undefined) {
     if (!traumaData) {
       return this.sanity || 0;
     }
