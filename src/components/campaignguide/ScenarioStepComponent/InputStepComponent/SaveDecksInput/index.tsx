@@ -1,23 +1,16 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import {
-  Alert,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { Alert } from 'react-native';
 import { find, map } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import SaveDeckRow from './SaveDeckRow';
 import Card from '@data/types/Card';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
-import { m, s, xs } from '@styles/space';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
-import StyleContext from '@styles/StyleContext';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 import { useToggles } from '@components/core/hooks';
 import { useDeckActions } from '@data/remote/decks';
+import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
 
 interface Props {
   componentId: string;
@@ -36,6 +29,11 @@ export default function SaveDecksInput({ componentId, id }: Props) {
       scenarioInvestigators,
       investigator => {
         if (campaignLog.isEliminated(investigator)) {
+          return false;
+        }
+        const storyAssetDeltas = campaignLog.storyAssetChanges(investigator.code);
+        if (!find(storyAssetDeltas, (count: number) => count !== 0)) {
+          // Doesn't have relevant changes
           return false;
         }
         const choiceId = SaveDeckRow.choiceId(id, investigator);
@@ -98,7 +96,6 @@ export default function SaveDecksInput({ componentId, id }: Props) {
       actuallySave();
     }
   }, [proceedMessage, actuallySave]);
-  const { borderStyle, typography } = useContext(StyleContext);
   const hasChanges = useMemo(() => !!find(scenarioInvestigators, (investigator: Card) => {
     const storyAssetDeltas = campaignLog.storyAssetChanges(investigator.code);
     return !!find(storyAssetDeltas, (count: number) => count !== 0);
@@ -109,12 +106,12 @@ export default function SaveDecksInput({ componentId, id }: Props) {
 
   const hasDecision = scenarioState.decision(id) !== undefined;
   return (
-    <View>
-      <View style={[styles.header, borderStyle]}>
-        <Text style={[typography.bigGameFont, typography.right]}>
-          { t`Save deck changes` }
-        </Text>
-      </View>
+    <InputWrapper
+      onSubmit={save}
+      title={t`Save deck changes`}
+      titleStyle="header"
+      editable={!hasDecision}
+    >
       { map(scenarioInvestigators, investigator => {
         if (campaignLog.isEliminated(investigator)) {
           return null;
@@ -134,21 +131,6 @@ export default function SaveDecksInput({ componentId, id }: Props) {
           />
         );
       }) }
-      { !hasDecision && (
-        <BasicButton
-          title={t`Proceed`}
-          onPress={save}
-        />
-      ) }
-    </View>
+    </InputWrapper>
   );
 }
-
-const styles = StyleSheet.create({
-  header: {
-    paddingRight: m,
-    paddingBottom: xs,
-    paddingTop: s + m,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-});

@@ -8,6 +8,7 @@ import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
+import ActionButton from '@components/campaignguide/prompts/ActionButton';
 
 interface ShowDeckButtonProps {
   deckId: DeckId;
@@ -28,10 +29,9 @@ export default function ShowDeckButton({ deckId, investigator }: ShowDeckButtonP
     return null;
   }
   return (
-    <ArkhamButton
-      variant="outline"
-      icon="deck"
-      grow
+    <ActionButton
+      leftIcon="deck"
+      color="dark"
       title={t`View deck`}
       onPress={onPress}
     />

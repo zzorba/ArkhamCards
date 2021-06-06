@@ -70,7 +70,8 @@ export default function CardSelectorComponent({ componentId, slots, counts, togg
   return (
     <>
       { header }
-      { flatMap(matchingCards, code => {
+      { flatMap(matchingCards, (code, idx) => {
+        const last = idx === (matchingCards.length - 1);
         const card = cards[code];
         if (!card) {
           return null;
@@ -84,6 +85,7 @@ export default function CardSelectorComponent({ componentId, slots, counts, togg
             count={counts[code] || 0}
             limit={toggleCard ? 1 : slots[code]}
             locked={locked}
+            last={last}
           />
         );
       }) }

@@ -12,13 +12,14 @@ interface Props {
   updateExileCount: (card: Card, count: number) => void;
   label?: React.ReactNode;
   children: React.ReactNode;
+  disabled?: boolean;
 }
 
 function isExile(card: Card) {
   return !!card.exile;
 }
 
-export default function ExileCardSelectorComponent({ componentId, deck, exileCounts, updateExileCount, label, children }: Props) {
+export default function ExileCardSelectorComponent({ componentId, disabled, deck, exileCounts, updateExileCount, label, children }: Props) {
   if (!deck) {
     return <>{children}</>;
   }
@@ -32,6 +33,7 @@ export default function ExileCardSelectorComponent({ componentId, deck, exileCou
         filterCard={isExile}
         header={label}
         forceHeader={!!children}
+        locked={disabled}
       />
       { children }
     </>

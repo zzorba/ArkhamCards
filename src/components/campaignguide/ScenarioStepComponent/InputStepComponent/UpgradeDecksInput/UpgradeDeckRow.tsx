@@ -1,18 +1,12 @@
-import React, { useCallback, useContext, useMemo, useRef } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useRef } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { flatMap, find, forEach, keys, map, omit, sortBy } from 'lodash';
 import { t } from 'ttag';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import Switch from '@components/core/Switch';
 import { Deck, Slots, NumberChoices, getDeckId } from '@actions/types';
-import BasicListRow from '@components/core/BasicListRow';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import CardSectionHeader from '@components/core/CardSectionHeader';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { showDeckModal, showCard } from '@components/nav/helper';
-import InvestigatorRow from '@components/core/InvestigatorRow';
-import DeckUpgradeComponent, { DeckUpgradeHandles } from '@components/deck/DeckUpgradeComponent';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import Card from '@data/types/Card';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
@@ -21,9 +15,7 @@ import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import StyleContext from '@styles/StyleContext';
 import { useCounter, useEffectUpdate, useFlag, useSlots } from '@components/core/hooks';
 import useCardList from '@components/card/useCardList';
-import DeckButton from '@components/deck/controls/DeckButton';
-import space from '@styles/space';
-import ArkhamButton from '@components/core/ArkhamButton';
+import space, { s, xs } from '@styles/space';
 import useDeckUpgrade from '@components/deck/useDeckUpgrade';
 import { DeckActions } from '@data/remote/decks';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
@@ -32,6 +24,16 @@ import ShowDeckButton from '../ShowDeckButton';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { SpecialXp } from '@data/scenario/types';
 import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
+import { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
+import HealthSanityIcon from '@components/core/HealthSanityIcon';
+import AppIcon from '@icons/AppIcon';
+import COLORS from '@styles/colors';
+import ActionButton from '@components/campaignguide/prompts/ActionButton';
+import ExileCardSelectorComponent from '@components/campaign/ExileCardSelectorComponent';
+import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
+import { fetchPrivateDeck } from '@components/deck/actions';
+import EncounterIcon from '@icons/EncounterIcon';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
 
 interface Props {
   componentId: string;
@@ -58,6 +60,104 @@ function isExile(card: Card) {
   return !!card.exile;
 }
 
+function deckMessage(saved: boolean, hasDeck: boolean, hasChanges: boolean) {
+  if (saved) {
+    return t`Changes have been recorded.`;
+  }
+  if (!hasDeck) {
+    if (!hasChanges) {
+      return t`No adjustments need saving.`;
+    }
+    return t`When you have finished making adjustments, press the 'Save' button to record your changes.`;
+  }
+  return t`This deck will be upgraded with XP and any new story cards will be added or removed as specified.`;
+}
+
+function CounterRow({
+  icon,
+  title,
+  count,
+  total,
+  inc,
+  dec,
+  max,
+  min,
+  editable,
+  disabled,
+  bottomBorder,
+  hideTotal,
+}: {
+  editable: boolean;
+  icon?: React.ReactNode;
+  title: string;
+  count: number;
+  total: number;
+  inc: () => void;
+  dec: () => void;
+  max?: number;
+  min?: number;
+  disabled?: boolean;
+  bottomBorder?: boolean;
+  hideTotal?: boolean;
+}) {
+  const { borderStyle, colors, typography } = useContext(StyleContext);
+  return (
+    <View style={[
+      styles.betweenRow,
+      space.paddingTopS,
+      space.paddingBottomS,
+      space.paddingLeftXs,
+      space.paddingRightXs,
+      space.marginSideS,
+      bottomBorder ? { borderBottomWidth: StyleSheet.hairlineWidth } : undefined,
+      borderStyle,
+    ]}>
+      <View style={styles.startRow}>
+        { icon }
+        <Text style={[typography.small, typography.italic]}>
+          { title }
+        </Text>
+      </View>
+      <View style={styles.endRow}>
+        { editable && (
+          <View style={[styles.startRow, space.paddingRightS]}>
+            <Text style={typography.text}>
+              { count }
+            </Text>
+            { !hideTotal && (
+              <Text style={[typography.small, { color: colors.lightText }]}>
+                { t` (new total: ${total})` }
+              </Text>
+            ) }
+          </View>
+        ) }
+        { editable ? (
+          <PlusMinusButtons
+            count={total}
+            countRender={(
+              <Text style={[typography.counter, typography.center, { minWidth: 28 }]}>
+                { count }
+              </Text>
+            )}
+            onIncrement={inc}
+            onDecrement={dec}
+            showZeroCount
+            min={min}
+            max={max}
+            disabled={disabled}
+            rounded
+            dialogStyle
+          />
+        ) : (
+          <Text style={[typography.counter, { color: colors.lightText }]}>
+            { total }
+          </Text>
+        ) }
+      </View>
+    </View>
+  );
+}
+
 function UpgradeDeckRow({
   componentId,
   investigatorCounter: originalInvestigatorCounter,
@@ -74,10 +174,9 @@ function UpgradeDeckRow({
   editable,
 }: Props) {
   const investigatorCounter = originalInvestigatorCounter || campaignLog.campaignData.redirect_experience || undefined;
-  const { colors, typography } = useContext(StyleContext);
-  const { userId } = useContext(ArkhamCardsAuthContext);
+  const { colors, typography, width } = useContext(StyleContext);
+  const { userId, arkhamDbUser } = useContext(ArkhamCardsAuthContext);
   const { campaignGuide } = useContext(CampaignGuideContext);
-  const deckUpgradeComponent = useRef<DeckUpgradeHandles>();
   const earnedXp = useMemo(() => {
     if (specialXp) {
       return campaignLog.specialXp(investigator.code, specialXp);
@@ -90,6 +189,9 @@ function UpgradeDeckRow({
   }, [id, investigator]);
   const [choices, deckChoice] = useMemo(() => scenarioState.numberAndDeckChoices(choiceId), [scenarioState, choiceId]);
   const initialSpecialExile = useMemo(() => {
+    if (!choices) {
+      return {};
+    }
     const slots: Slots = {};
     forEach(omit(choices, ['insane', 'killed', 'count', 'physical', 'mental', 'xp']), (count, exile_code) => {
       if (count.length) {
@@ -98,43 +200,32 @@ function UpgradeDeckRow({
     });
     return slots;
   }, [choices]);
-  const [specialExile, updateSpecialExile] = useSlots(initialSpecialExile);
-  const [xpAdjust, incXp, decXp] = useCounter(earnedXp, {});
-  const [physicalAdjust, incPhysical, decPhysical] = useCounter(0, {});
-  const [mentalAdjust, incMental, decMental] = useCounter(0, {});
-  const [killedAdjust, toggleKilled] = useFlag(false);
-  const [insaneAdjust, toggleInsane] = useFlag(false);
-  const investigatorSection = investigatorCounter ? campaignLog.investigatorSections[investigatorCounter] : undefined;
   const existingCount = useMemo(() => {
     if (!investigatorCounter) {
       return 0;
     }
+    const investigatorSection = investigatorCounter ? campaignLog.investigatorSections[investigatorCounter] : undefined;
     const entry = find(investigatorSection?.[investigator.code]?.entries || [], e => e.id === '$count' && e.type === 'count');
     return entry?.type === 'count' ? entry.count : 0;
-  }, [investigatorSection, investigator, investigatorCounter]);
+  }, [campaignLog.investigatorSections, investigator, investigatorCounter]);
   const [countAdjust, incCount, decCount] = useCounter(0, { min: -existingCount });
-
-  const unsavedEdits = useMemo(() => {
-    return physicalAdjust !== 0 ||
-      mentalAdjust !== 0 ||
-      xpAdjust !== earnedXp ||
-      killedAdjust ||
-      insaneAdjust ||
-      countAdjust !== 0 ||
-      !!find(specialExile, count => count > 0);
-  }, [earnedXp, specialExile, xpAdjust, physicalAdjust, mentalAdjust, killedAdjust, insaneAdjust, countAdjust]);
-
-  useEffectUpdate(() => {
-    setUnsavedEdits(investigator.code, unsavedEdits);
-  }, [setUnsavedEdits, investigator, unsavedEdits]);
+  const [physicalAdjust, incPhysical, decPhysical] = useCounter(0, {});
+  const [mentalAdjust, incMental, decMental] = useCounter(0, {});
+  const [xpAdjust, incXp, decXp] = useCounter(earnedXp, { min: 0 });
+  const [specialExile, updateSpecialExile] = useSlots(initialSpecialExile);
+  const [exileCounts, updateExileCounts] = useSlots({});
+  const onExileCountChange = useCallback((card: Card, count: number) => {
+    updateExileCounts({ type: 'set-slot', code: card.code, value: count });
+  }, [updateExileCounts]);
 
   const saveCampaignLog = useCallback((xp: number, deck?: Deck) => {
     const choices: NumberChoices = {
       xp: [xp - earnedXp],
       physical: [physicalAdjust],
       mental: [mentalAdjust],
-      killed: [killedAdjust ? 1 : 0],
-      insane: [insaneAdjust ? 1 : 0],
+      // Removed fields:
+      // killed: [0 / 1],
+      // insane: [0 / 1],
     };
     if (investigatorCounter) {
       choices.count = [countAdjust];
@@ -145,9 +236,30 @@ function UpgradeDeckRow({
       }
     });
     scenarioState.setNumberChoices(choiceId, choices, !skipDeckSave && deck ? getDeckId(deck) : undefined);
-  }, [scenarioState, skipDeckSave, investigatorCounter, specialExile,
-    countAdjust, earnedXp, choiceId, physicalAdjust, mentalAdjust, killedAdjust, insaneAdjust,
-  ]);
+  }, [scenarioState, skipDeckSave, investigatorCounter, specialExile, countAdjust, earnedXp, choiceId, physicalAdjust, mentalAdjust]);
+
+  const onUpgrade = useCallback((deck: Deck, xp: number) => {
+    saveCampaignLog(xp, deck);
+  }, [saveCampaignLog]);
+  const [saving, error, saveDeckUpgrade] = useDeckUpgrade(deck, actions, onUpgrade);
+  useEffect(() => {
+    // We only want to save once.
+    if (choices === undefined && !skipDeckSave && deck && !deck.id.local && deck.id.arkhamdb_user === arkhamDbUser) {
+      fetchPrivateDeck(userId, actions, deck.id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const unsavedEdits = useMemo(() => {
+    return physicalAdjust !== 0 ||
+      mentalAdjust !== 0 ||
+      xpAdjust !== earnedXp ||
+      countAdjust !== 0 ||
+      !!find(specialExile, count => count > 0);
+  }, [earnedXp, specialExile, xpAdjust, physicalAdjust, mentalAdjust, countAdjust]);
+
+  useEffectUpdate(() => {
+    setUnsavedEdits(investigator.code, unsavedEdits);
+  }, [setUnsavedEdits, investigator, unsavedEdits]);
 
   const xp: number = useMemo(() => {
     if (choices === undefined) {
@@ -169,412 +281,8 @@ function UpgradeDeckRow({
     }
     return (choices.mental && choices.mental[0]) || 0;
   }, [choices, mentalAdjust]);
-  const killed = useMemo(() => {
-    if (choices === undefined) {
-      return killedAdjust;
-    }
-    return !!(choices.killed && choices.killed[0]);
-  }, [choices, killedAdjust]);
-  const insane = useMemo(() => {
-    if (choices === undefined) {
-      return insaneAdjust;
-    }
-    return !!(choices.insane && choices.insane[0]);
-  }, [choices, insaneAdjust]);
-  const onUpgrade = useCallback((deck: Deck, xp: number) => {
-    saveCampaignLog(xp, deck);
-  }, [saveCampaignLog]);
-
-  const save = useCallback(() => {
-    if (deck && !skipDeckSave) {
-      if (deckUpgradeComponent.current) {
-        deckUpgradeComponent.current.save();
-      }
-    } else {
-      saveCampaignLog(xpAdjust);
-    }
-  }, [deck, skipDeckSave, saveCampaignLog, xpAdjust]);
-
-  const onCardPress = useCallback((card: Card) => {
-    showCard(componentId, card.code, card, colors, true);
-  }, [componentId, colors]);
-
-  const renderDeltas = useCallback((cards: Card[], deltas: Slots) => {
-    return map(
-      sortBy(cards, card => card.name),
-      card => (
-        <CardSearchResult
-          key={card.code}
-          onPress={onCardPress}
-          card={card}
-          backgroundColor="transparent"
-          control={{
-            type: 'count',
-            count: deltas[card.code],
-            deltaCountMode: true,
-          }}
-        />
-      )
-    );
-  }, [onCardPress]);
-  const [health, sanity] = useMemo(() => {
-    const traumaAndCardData = campaignLog.traumaAndCardData(investigator.code);
-    return [investigator.getHealth(traumaAndCardData), investigator.getSanity(traumaAndCardData)];
-  }, [campaignLog, investigator]);
-  const storyAssetDeltas = useMemo(() => campaignLog.storyAssetChanges(investigator.code), [campaignLog, investigator]);
   const storyAssets = useMemo(() => campaignLog.storyAssets(investigator.code), [campaignLog, investigator]);
-  const storyAssetCodes = useMemo(() => flatMap(storyAssetDeltas, (count, code) => count !== 0 ? code : []), [storyAssetDeltas]);
-  const allStoryAssetCodes = useMemo(() => flatMap(storyAssets, (count, code) => count > 0 ? code : []), [storyAssets]);
-  const [storyAssetCards] = useCardList(storyAssetCodes, 'player');
-  const [allStoryAssetCards] = useCardList(allStoryAssetCodes, 'player');
-  const storyAssetSection = useMemo(() => {
-    if (!storyAssetCards.length) {
-      return null;
-    }
-    return (
-      <>
-        <CardSectionHeader
-          investigator={investigator}
-          section={{ superTitle: t`Campaign cards` }}
-        />
-        { renderDeltas(storyAssetCards, storyAssetDeltas) }
-      </>
-    );
-  }, [storyAssetDeltas, storyAssetCards, renderDeltas, investigator]);
-
-  const xpSection = useMemo(() => {
-    const xpString = xp >= 0 ? `+${xp}` : `${xp}`;
-    return (
-      <>
-        <CardSectionHeader
-          investigator={investigator}
-          section={{ superTitle: t`Experience points` }}
-        />
-        <BasicListRow>
-          <Text style={typography.text}>
-            { xpString }
-          </Text>
-          { choices === undefined && editable && (
-            <PlusMinusButtons
-              count={xpAdjust}
-              onIncrement={incXp}
-              onDecrement={decXp}
-            />
-          ) }
-        </BasicListRow>
-      </>
-    );
-  }, [typography, xp, investigator, editable, xpAdjust, incXp, decXp, choices]);
-  const baseTrauma = useMemo(() => campaignLog.baseTrauma(investigator.code), [campaignLog, investigator]);
-  const traumaDelta = useMemo(() => campaignLog.traumaChanges(investigator.code), [campaignLog, investigator]);
-
-  const traumaSection = useMemo(() => {
-    const physical = (traumaDelta.physical || 0) + physicalTrauma;
-    const mental = (traumaDelta.mental || 0) + mentalTrauma;
-    const totalPhysical = (baseTrauma.physical || 0) + physical;
-    const totalMental = (baseTrauma.mental || 0) + mental;
-
-    const physicalDeltaString = physical >= 0 ? `+${physical}` : `${physical}`;
-    const mentalDeltaString = mental >= 0 ? `+${mental}` : `${mental}`;
-    const locked = (choices !== undefined) || !editable;
-    return (
-      <>
-        { (!locked || physical !== 0 || mental !== 0 || killed || insane) && (
-          <CardSectionHeader
-            investigator={investigator}
-            section={{ superTitle: t`Trauma` }}
-          />
-        ) }
-        { (!locked || physical !== 0) && (
-          <>
-            <CardSectionHeader
-              investigator={investigator}
-              section={{ subTitle: t`Physical` }}
-            />
-            <BasicListRow>
-              <Text style={[typography.text]}>
-                { physicalDeltaString }
-                { !locked && (
-                  <Text style={[typography.text, { color: colors.lightText }]}>
-                    { t` (New Total: ${totalPhysical})` }
-                  </Text>
-                ) }
-              </Text>
-              { !locked && (
-                <PlusMinusButtons
-                  count={totalPhysical}
-                  onIncrement={incPhysical}
-                  onDecrement={decPhysical}
-                  max={health}
-                  disabled={killedAdjust || insaneAdjust}
-                />
-              ) }
-            </BasicListRow>
-          </>
-        ) }
-        { (!locked || killedAdjust) && (
-          <BasicListRow>
-            <Text style={[typography.text]}>
-              { t`Killed` }
-            </Text>
-            { !locked ? (
-              <Switch
-                value={killedAdjust}
-                customColor={colors.faction[investigator.factionCode()].background}
-                onValueChange={toggleKilled}
-                disabled={insaneAdjust}
-              />
-            ) : (
-              <MaterialCommunityIcons
-                name="check"
-                size={18}
-                color={colors.darkText}
-              />
-            ) }
-          </BasicListRow>
-        ) }
-        { (!locked || mental !== 0) && (
-          <>
-            <CardSectionHeader
-              investigator={investigator}
-              section={{ subTitle: t`Mental` }}
-            />
-            <BasicListRow>
-              <Text style={typography.text}>
-                { mentalDeltaString }
-                { !locked && (
-                  <Text style={[typography.text, { color: colors.lightText }]}>
-                    { t` (New Total: ${totalMental})` }
-                  </Text>
-                ) }
-              </Text>
-              { !locked && (
-                <PlusMinusButtons
-                  count={totalMental}
-                  onIncrement={incMental}
-                  onDecrement={decMental}
-                  max={sanity}
-                  disabled={killedAdjust || insaneAdjust}
-                />
-              ) }
-            </BasicListRow>
-          </>
-        ) }
-        { (!locked || insaneAdjust) && (
-          <BasicListRow>
-            <Text style={[typography.text]}>
-              { t`Insane` }
-            </Text>
-            { !locked ? (
-              <Switch
-                customColor={colors.faction[investigator.factionCode()].background}
-                value={insaneAdjust}
-                onValueChange={toggleInsane}
-                disabled={killedAdjust}
-              />
-            ) : (
-              <MaterialCommunityIcons
-                name="check"
-                size={18}
-                color={colors.darkText}
-              />
-            ) }
-          </BasicListRow>
-        ) }
-      </>
-    );
-  }, [incMental, decMental, incPhysical, decPhysical, toggleInsane, toggleKilled, investigator,
-    health, sanity,
-    colors, typography, baseTrauma, choices, editable, insane, killed, physicalTrauma, mentalTrauma,
-    insaneAdjust, killedAdjust, traumaDelta]);
-  const [saving, error, saveDeckUpgrade] = useDeckUpgrade(deck, actions, onUpgrade);
-  const saveButton = useMemo(() => {
-    if (choices !== undefined || !editable || (!skipDeckSave && deck)) {
-      return null;
-    }
-    if (!unsavedEdits) {
-      return null;
-    }
-    return (
-      <View style={space.paddingS}>
-        <DeckButton
-          icon="upgrade"
-          color="gold"
-          title={t`Save adjustments`}
-          detail={t`Save your changes to the campaign log`}
-          onPress={save}
-          loading={saving}
-        />
-      </View>
-    );
-  }, [choices, skipDeckSave, editable, deck, save, saving, unsavedEdits]);
-
-  const count: number = useMemo(() => {
-    if (choices === undefined) {
-      return countAdjust;
-    }
-    return (choices.count && choices.count[0]) || 0;
-  }, [choices, countAdjust]);
-
-  const customCountsSection = useMemo(() => {
-    if (!investigatorCounter) {
-      return null;
-    }
-    const section = find(campaignGuide.campaignLogSections(), s => s.id === investigatorCounter);
-    if (!section) {
-      return null;
-    }
-    const newTotal = count + existingCount;
-    const locked = (choices !== undefined) || !editable;
-    const deltaString = count >= 0 ? `+${count}` : `${count}`;
-    return (
-      <>
-        <CardSectionHeader
-          investigator={investigator}
-          section={{
-            superTitle: campaignLog.campaignData.redirect_experience ? t`${section.title} (from XP)` : section.title,
-          }}
-        />
-        <BasicListRow>
-          <Text style={[typography.text]}>
-            { deltaString }
-          </Text>
-          { !locked && (
-            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
-              <Text style={[typography.text, { color: colors.lightText }, space.marginRightS]}>
-                { t` (New Total: ${newTotal})` }
-              </Text>
-              <PlusMinusButtons
-                count={newTotal}
-                onIncrement={incCount}
-                onDecrement={decCount}
-                min={0}
-              />
-            </View>
-          ) }
-        </BasicListRow>
-      </>
-    );
-  }, [investigatorCounter, editable, investigator, incCount, decCount, campaignLog.campaignData,
-    choices, count, existingCount, campaignGuide, colors, typography]);
-  const updateSpecialExileCount = useCallback((card: Card, value: number) => {
-    updateSpecialExile({
-      type: 'set-slot',
-      code: card.code,
-      value,
-    });
-  }, [updateSpecialExile]);
-  const specialExileSlots = useMemo(() => {
-    const slots: Slots = {};
-    forEach(allStoryAssetCards, (card) => {
-      if ((!deck || card.custom()) && !!card.exile && storyAssets[card.code]) {
-        slots[card.code] = storyAssets[card.code];
-      }
-    });
-    return slots;
-  }, [allStoryAssetCards, storyAssets, deck]);
-  const exileSection = useMemo(() => {
-    if (!keys(specialExileSlots).length) {
-      return null;
-    }
-    return (
-      <CardSelectorComponent
-        componentId={componentId}
-        slots={specialExileSlots}
-        counts={specialExile}
-        filterCard={isExile}
-        updateCount={updateSpecialExileCount}
-        header={(choices !== undefined || !deck) && (
-          <CardSectionHeader
-            section={{ superTitle: choices !== undefined ? t`Exiled story cards` : t`Exile story cards` }}
-            investigator={investigator}
-          />
-        )}
-        locked={!!choices}
-      />
-    );
-  }, [componentId, investigator, choices, specialExile, updateSpecialExileCount, specialExileSlots, deck]);
-
-  const campaignSection = useMemo(() => {
-    return (
-      <>
-        { (choices !== undefined || skipDeckSave || !deck) && (!campaignLog.campaignData.redirect_experience) && xpSection }
-        { customCountsSection }
-        { traumaSection }
-        { storyAssetSection }
-        { (choices !== undefined || !deck) && exileSection }
-        { saveButton }
-      </>
-    );
-  }, [deck, skipDeckSave, campaignLog.campaignData.redirect_experience, exileSection, choices, xpSection, traumaSection, storyAssetSection, customCountsSection, saveButton]);
-
-  const selectDeck = useCallback(() => {
-    campaignState.showChooseDeck(investigator);
-  }, [campaignState, investigator]);
-
-  const { campaign } = useContext(CampaignGuideContext);
-  const viewDeck = useCallback(() => {
-    if (deck) {
-      showDeckModal(deck.id, deck.deck, campaign?.id, colors, investigator);
-    }
-  }, [colors, investigator, deck, campaign]);
-
-  const deckButton = useMemo(() => {
-    if (deck && !skipDeckSave && deckChoice !== undefined) {
-      return (
-        <View style={styles.row}>
-          <ShowDeckButton
-            deckId={deckChoice}
-            investigator={investigator}
-          />
-        </View>
-      );
-    }
-    if (!editable || skipDeckSave) {
-      return null;
-    }
-    if (!deck) {
-      return (
-        <View style={styles.row}>
-          <ArkhamButton variant="outline" grow icon="deck" title={t`Select deck`} onPress={selectDeck} />
-        </View>
-      );
-    }
-    if (choices === undefined) {
-      if (deck.owner && userId && deck.owner.id !== userId) {
-        return (
-          <View style={[styles.row, space.paddingBottomS]}>
-            <DeckButton
-              icon="upgrade"
-              color="light_gray"
-              title={t`Save deck upgrade`}
-              detail={deck.owner.handle ? t`${deck.owner.handle} must save this upgrade` : t`Your friend must save this upgrade`}
-              disabled
-            />
-          </View>
-        );
-      }
-      return (
-        <View style={[styles.row, space.paddingBottomS]}>
-          <DeckButton
-            icon="upgrade"
-            color="gold"
-            title={t`Save deck upgrade`}
-            detail={saving ? t`Saving` : t`Save XP to deck after making adjustments`}
-            onPress={save}
-            loading={saving}
-            disabled={saving}
-          />
-        </View>
-      );
-    }
-    return (
-      <View style={styles.row}>
-        <ArkhamButton variant="outline" grow icon="deck" title={t`View deck`} onPress={viewDeck} />
-      </View>
-    );
-  }, [deck, editable, investigator, skipDeckSave, userId, deckChoice, choices, saving, save, selectDeck, viewDeck]);
-
+  const storyAssetDeltas = useMemo(() => campaignLog.storyAssetChanges(investigator.code), [campaignLog, investigator]);
   const storyCountsForDeck = useMemo(() => {
     if (!deck) {
       return {};
@@ -600,45 +308,332 @@ function UpgradeDeckRow({
     });
     return newSlots;
   }, [deck, storyAssets, storyAssetDeltas]);
-
-  const detailsSection = useMemo(() => {
-    if (!deck || skipDeckSave) {
-      return campaignSection;
+  const saveDeck = useCallback(() => {
+    saveDeckUpgrade(xp, storyCountsForDeck, campaignLog.ignoreStoryAssets(investigator.code), exileCounts);
+  }, [saveDeckUpgrade, xp, storyCountsForDeck, campaignLog, exileCounts, investigator.code]);
+  const save = useCallback(() => {
+    if (deck && !skipDeckSave) {
+      saveDeck();
+    } else {
+      saveCampaignLog(xpAdjust);
     }
-    if (choices !== undefined || !editable) {
-      return campaignSection;
+  }, [deck, skipDeckSave, saveCampaignLog, xpAdjust, saveDeck]);
+
+
+  const onCardPress = useCallback((card: Card) => {
+    showCard(componentId, card.code, card, colors, true);
+  }, [componentId, colors]);
+
+  const renderDeltas = useCallback((cards: Card[], deltas: Slots) => {
+    return map(
+      sortBy(cards, card => card.name),
+      (card, idx) => (
+        <CardSearchResult
+          key={card.code}
+          onPress={onCardPress}
+          card={card}
+          backgroundColor="transparent"
+          control={{
+            type: 'count',
+            count: deltas[card.code],
+            deltaCountMode: true,
+          }}
+          noBorder={idx === cards.length - 1}
+        />
+      )
+    );
+  }, [onCardPress]);
+  const [health, sanity] = useMemo(() => {
+    const traumaAndCardData = campaignLog.traumaAndCardData(investigator.code);
+    return [investigator.getHealth(traumaAndCardData), investigator.getSanity(traumaAndCardData)];
+  }, [campaignLog, investigator]);
+  const storyAssetCodes = useMemo(() => flatMap(storyAssetDeltas, (count, code) => count !== 0 ? code : []), [storyAssetDeltas]);
+  const allStoryAssetCodes = useMemo(() => flatMap(storyAssets, (count, code) => count > 0 ? code : []), [storyAssets]);
+  const [storyAssetCards] = useCardList(storyAssetCodes, 'player');
+  const [allStoryAssetCards] = useCardList(allStoryAssetCodes, 'player');
+  const storyAssetSection = useMemo(() => {
+    if (!storyAssetCards.length) {
+      return null;
     }
     return (
-      <DeckUpgradeComponent
-        componentId={componentId}
-        ref={deckUpgradeComponent}
-        deck={deck}
-        hideXp={!!campaignLog.campaignData.redirect_experience}
+      <>
+        <View style={space.paddingSideS}><DeckSlotHeader title={t`Campaign cards`} first /></View>
+        { renderDeltas(storyAssetCards, storyAssetDeltas) }
+      </>
+    );
+  }, [storyAssetDeltas, storyAssetCards, renderDeltas]);
+
+  const xpSection = useMemo(() => {
+    const xpString = xp >= 0 ? `+${xp}` : `${xp}`;
+    return (
+      <View style={[space.marginS, styles.xpBlock, styles.betweenRow, { backgroundColor: colors.upgrade }]}>
+        <View style={styles.startRow}>
+          <View style={space.paddingS}>
+            <AppIcon name="upgrade" size={32} color={COLORS.D20} />
+          </View>
+          <Text style={[typography.large, { color: COLORS.D30 }]}>
+            { t`Earned XP:` }
+          </Text>
+        </View>
+        { (choices === undefined && editable) ? (
+          <View style={space.marginRightXs}>
+            <PlusMinusButtons
+              count={xpAdjust}
+              countRender={(
+                <Text style={[typography.counter, typography.center, { color: COLORS.D30, minWidth: 28 }]}>
+                  { xp }
+                </Text>
+              )}
+              onIncrement={incXp}
+              onDecrement={decXp}
+              color="light"
+              dialogStyle
+              rounded
+              disabled={saving}
+            />
+          </View>
+        ) : (
+          <Text style={[typography.counter, { color: COLORS.D30 }, space.paddingRightS]}>
+            { xpString }
+          </Text>
+        )}
+      </View>
+    );
+  }, [typography, xp, colors, editable, xpAdjust, incXp, decXp, choices, saving]);
+  const baseTrauma = useMemo(() => campaignLog.baseTrauma(investigator.code), [campaignLog, investigator]);
+  const traumaDelta = useMemo(() => campaignLog.traumaChanges(investigator.code), [campaignLog, investigator]);
+
+  const traumaSection = useMemo(() => {
+    const physical = (traumaDelta.physical || 0) + physicalTrauma;
+    const mental = (traumaDelta.mental || 0) + mentalTrauma;
+    const totalPhysical = (baseTrauma.physical || 0) + physical;
+    const totalMental = (baseTrauma.mental || 0) + mental;
+    const locked = (choices !== undefined) || !editable;
+    return (
+      <>
+        <CounterRow
+          editable={!locked}
+          bottomBorder
+          disabled={saving}
+          icon={<View style={{ paddingLeft: 2, paddingRight: 1 }}><HealthSanityIcon type="health" size={24} /></View>}
+          title={t`Physical`}
+          count={physical}
+          total={totalPhysical}
+          inc={incPhysical}
+          dec={decPhysical}
+          max={health}
+        />
+        <CounterRow
+          editable={!locked}
+          disabled={saving}
+          icon={<View style={space.paddingRightXs}><HealthSanityIcon type="sanity" size={20} /></View>}
+          title={t`Mental`}
+          count={mental}
+          total={totalMental}
+          inc={incMental}
+          dec={decMental}
+          max={sanity}
+        />
+      </>
+    );
+  }, [incMental, decMental, incPhysical, decPhysical, editable, saving,
+    health, sanity, baseTrauma, choices, physicalTrauma, mentalTrauma, traumaDelta]);
+
+
+  const selectDeck = useCallback(() => {
+    campaignState.showChooseDeck(investigator);
+  }, [campaignState, investigator]);
+
+  const { campaign } = useContext(CampaignGuideContext);
+  const viewDeck = useCallback(() => {
+    if (deck) {
+      showDeckModal(deck.id, deck.deck, campaign?.id, colors, investigator);
+    }
+  }, [colors, investigator, deck, campaign]);
+  const footer = useMemo(() => {
+    if (deck && deck.owner && userId && deck.owner.id !== userId) {
+      return (
+        <View style={[space.paddingS, { flexDirection: 'column', backgroundColor: colors.L10, borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }]}>
+          <View style={styles.startRow}>
+            <ActionButton
+              color={choices !== undefined ? 'green' : 'dark'}
+              leftIcon="check"
+              title={choices !== undefined ? t`Not deck owner` : t`Saved`}
+              onPress={save}
+              disabled
+            />
+            <View style={[styles.column, { flex: 1 }, space.paddingLeftS]}>
+              <Text style={[typography.small, typography.italic, typography.light]}>
+                { deck.owner?.handle ?
+                  t`This deck is owned by ${deck.owner.handle}. They must open the app on their own device to save the upgrade` :
+                  t`This deck is owned by another user. They must open the app on their own device to save the upgrade` }
+              </Text>
+            </View>
+          </View>
+        </View>
+      );
+    }
+    const currentMessage = saving ? t`Saving` : t`Save`;
+    const secondSection = !skipDeckSave && (deck ? choices !== undefined : choices === undefined);
+    const deckButton = deck && choices !== undefined && deckChoice && (
+      <ShowDeckButton
+        deckId={deckChoice}
         investigator={investigator}
-        campaignSection={campaignSection}
-        exileSection={exileSection}
-        startingXp={campaignLog.earnedXp(investigator.code)}
-        storyCounts={storyCountsForDeck}
-        ignoreStoryCounts={campaignLog.ignoreStoryAssets(investigator.code)}
-        saveDeckUpgrade={saveDeckUpgrade}
-        saving={saving}
-        error={error}
       />
     );
-  }, [componentId, deck, investigator, campaignLog, editable, skipDeckSave,
-    exileSection, choices, storyCountsForDeck, saving, error, saveDeckUpgrade,
-    deckUpgradeComponent, campaignSection]);
+    return (
+      <View style={[space.paddingS, { flexDirection: 'column', backgroundColor: colors.L10, borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }]}>
+        <View style={[styles.startRow, secondSection ? { paddingBottom: xs, borderBottomWidth: 1, borderColor: colors.L30 } : undefined]}>
+          <ActionButton
+            color="green"
+            leftIcon="check"
+            title={choices !== undefined ? t`Saved` : currentMessage}
+            onPress={save}
+            disabled={choices !== undefined || (!deck && !unsavedEdits)}
+            loading={saving}
+          />
+          <View style={[styles.column, { flex: 1 }, space.paddingLeftS]}>
+            { !!error && (
+              <Text style={[typography.small, typography.italic, typography.light]}>
+                { error }
+              </Text>
+            ) }
+            <Text style={[typography.small, typography.italic, typography.light]}>
+              { deckMessage(choices !== undefined || !editable, !!deck && !skipDeckSave, unsavedEdits) }
+            </Text>
+          </View>
+        </View>
+        { secondSection && (
+          <View style={[styles.column, space.paddingTopXs]}>
+            <Text style={[typography.small, typography.italic, typography.light]}>
+              { !deck ?
+                t`This investigator does not have a deck associated with it.\nIf you choose a deck, the app can help track spent experience, story asset changes, and deckbuilding requirements.` :
+                t`Now that your upgrade has been saved, when visiting the deck be sure to use the 'Edit' button when making card changes.`
+              }
+            </Text>
+            <View style={[space.paddingTopS, styles.startRow]}>
+              { !deck ?
+                <ActionButton leftIcon="deck" color="dark" title={t`Choose a deck for this investigator`} onPress={selectDeck} /> :
+                deckButton
+              }
+            </View>
+          </View>
+        ) }
+      </View>
+    );
+  }, [choices, skipDeckSave, userId, error, selectDeck, viewDeck, editable, deck, typography, save, colors, saving, unsavedEdits]);
+
+  const count: number = useMemo(() => {
+    if (choices === undefined) {
+      return countAdjust;
+    }
+    return (choices.count && choices.count[0]) || 0;
+  }, [choices, countAdjust]);
+
+  const customCountsSection = useMemo(() => {
+    if (!investigatorCounter) {
+      return null;
+    }
+    const section = find(campaignGuide.campaignLogSections(), s => s.id === investigatorCounter);
+    if (!section) {
+      return null;
+    }
+    const newTotal = count + existingCount;
+    const locked = (choices !== undefined) || !editable;
+    return (
+      <CounterRow
+        editable={!locked}
+        icon={<View style={space.paddingRightXs}><EncounterIcon encounter_code={campaign.cycleCode} size={22} color={colors.D10} /></View>}
+        title={campaignLog.campaignData.redirect_experience ? t`${section.title} (from XP)` : section.title}
+        count={newTotal}
+        total={newTotal}
+        inc={incCount}
+        dec={decCount}
+        min={0}
+        bottomBorder
+        hideTotal
+        disabled={saving}
+      />
+    );
+  }, [investigatorCounter, campaign.cycleCode, colors, incCount, decCount, saving, campaignLog.campaignData, editable, choices, count, existingCount, campaignGuide]);
+  const updateSpecialExileCount = useCallback((card: Card, value: number) => {
+    updateSpecialExile({
+      type: 'set-slot',
+      code: card.code,
+      value,
+    });
+  }, [updateSpecialExile]);
+  const specialExileSlots = useMemo(() => {
+    const slots: Slots = {};
+    forEach(allStoryAssetCards, (card) => {
+      if ((!deck || card.custom()) && !!card.exile && storyAssets[card.code]) {
+        slots[card.code] = storyAssets[card.code];
+      }
+    });
+    return slots;
+  }, [allStoryAssetCards, storyAssets, deck]);
+  const exileSection = useMemo(() => {
+    return (
+      <>
+        { !!deck && (
+          <ExileCardSelectorComponent
+            componentId={componentId}
+            deck={deck}
+            label={<View style={space.paddingSideS}><DeckSlotHeader title={t`Exiled cards` } /></View>}
+            exileCounts={exileCounts}
+            updateExileCount={onExileCountChange}
+            disabled={saving}
+          >
+            { exileSection }
+          </ExileCardSelectorComponent>
+        )}
+        { (choices === undefined ? keys(specialExileSlots).length : keys(specialExile).length) > 0 && (
+          <CardSelectorComponent
+            componentId={componentId}
+            slots={specialExileSlots}
+            counts={specialExile}
+            filterCard={isExile}
+            updateCount={updateSpecialExileCount}
+            header={(choices !== undefined || !deck) && (
+              <View style={space.paddingSideS}>
+                <DeckSlotHeader title={choices !== undefined ? t`Exiled story cards` : t`Exile story cards` } />
+              </View>
+            )}
+            locked={saving || !!choices}
+          />
+        ) }
+      </>
+    );
+  }, [deck, componentId, saving, onExileCountChange, updateSpecialExileCount, specialExileSlots, exileCounts, choices, specialExile]);
+  const campaignSection = useMemo(() => {
+    return (
+      <>
+        { customCountsSection }
+        { traumaSection }
+        { (!campaignLog.campaignData.redirect_experience) && xpSection }
+        { storyAssetSection }
+        { exileSection }
+        { footer }
+      </>
+    );
+  }, [exileSection, campaignLog.campaignData.redirect_experience, xpSection, traumaSection, storyAssetSection, customCountsSection, footer]);
 
   const isYithian = storyAssets && (storyAssets[BODY_OF_A_YITHIAN] || 0) > 0;
+  const [open, toggleOpen] = useFlag(choices === undefined);
   return (
-    <InvestigatorRow
-      investigator={investigator}
-      yithian={isYithian}
-      button={deckButton}
-      noFactionIcon
-    >
-      { !saving && detailsSection }
-    </InvestigatorRow>
+    <View style={space.paddingBottomS}>
+      <AnimatedCompactInvestigatorRow
+        yithian={isYithian}
+        investigator={investigator}
+        open={choices === undefined || open}
+        toggleOpen={toggleOpen}
+        disabled={choices === undefined}
+        headerContent={!open && editable && <ArkhamSwitch value large color="light" />}
+        width={width - s * (editable ? 4 : 2)}
+      >
+        { campaignSection }
+      </AnimatedCompactInvestigatorRow>
+    </View>
   );
 }
 
@@ -646,8 +641,26 @@ UpgradeDeckRow.choiceId = computeChoiceId;
 export default UpgradeDeckRow;
 
 const styles = StyleSheet.create({
-  row: {
+  startRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  betweenRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  endRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  xpBlock: {
+    borderRadius: 4,
+  },
+  column: {
     flexDirection: 'column',
-    flex: 1,
+    alignItems: 'flex-start',
   },
 });

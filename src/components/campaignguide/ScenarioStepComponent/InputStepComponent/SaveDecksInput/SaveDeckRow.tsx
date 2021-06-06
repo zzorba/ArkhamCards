@@ -1,5 +1,5 @@
-import React, { useCallback, useContext, useMemo } from 'react';
-import { AppState, StyleSheet, View } from 'react-native';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { AppState, StyleSheet, Text, View } from 'react-native';
 import { flatMap, find, forEach, map, sortBy } from 'lodash';
 import { t } from 'ttag';
 import { Action } from 'redux';
@@ -9,24 +9,25 @@ import { ThunkDispatch } from 'redux-thunk';
 import { Deck, Slots, getDeckId, DeckId } from '@actions/types';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import BasicButton from '@components/core/BasicButton';
-import CardSectionHeader from '@components/core/CardSectionHeader';
+import { useFlag } from '@components/core/hooks';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import { showDeckModal, showCard } from '@components/nav/helper';
-import InvestigatorRow from '@components/core/InvestigatorRow';
+import { showCard } from '@components/nav/helper';
 import useCardList from '@components/card/useCardList';
-import { saveDeckChanges, SaveDeckChanges } from '@components/deck/actions';
+import { fetchPrivateDeck, saveDeckChanges, SaveDeckChanges } from '@components/deck/actions';
 import Card from '@data/types/Card';
+import space, { s, xs } from '@styles/space';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import StyleContext from '@styles/StyleContext';
-import ArkhamButton from '@components/core/ArkhamButton';
-import { TINY_PHONE } from '@styles/sizes';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { DeckActions } from '@data/remote/decks';
-import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import ShowDeckButton from '../ShowDeckButton';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
+import { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
+import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
+import ActionButton from '@components/campaignguide/prompts/ActionButton';
 
 interface Props {
   componentId: string;
@@ -56,22 +57,23 @@ function SaveDeckRow({
   editable,
   actions,
 }: Props) {
-  const { colors } = useContext(StyleContext);
-  const { userId } = useContext(ArkhamCardsAuthContext);
+  const { colors, typography, width } = useContext(StyleContext);
+  const { userId, arkhamDbUser } = useContext(ArkhamCardsAuthContext);
   const deckDispatch: DeckDispatch = useDispatch();
   const choiceId = useMemo(() => {
     return computeChoiceId(id, investigator);
   }, [id, investigator]);
-
+  const [saving, setSaving] = useState(false);
   const saveCampaignLog = useCallback((deckId?: DeckId) => {
     scenarioState.setNumberChoices(choiceId, {}, deckId);
-  }, [scenarioState, choiceId]);
-
+    setSaving(false);
+  }, [scenarioState, choiceId, setSaving]);
   const [choices, deckChoice] = useMemo(() => scenarioState.numberAndDeckChoices(choiceId), [scenarioState, choiceId]);
   const storyAssetDeltas = useMemo(() => campaignLog.storyAssetChanges(investigator.code), [campaignLog, investigator]);
 
   const save = useCallback(() => {
     if (deck) {
+      setSaving(true);
       const slots: Slots = { ...deck.deck.slots };
       const allowedChanges = !!find(storyAssetDeltas, (delta, code) => !code.startsWith('z'));
       if (!allowedChanges) {
@@ -92,7 +94,7 @@ function SaveDeckRow({
         );
       }
     }
-  }, [deck, userId, actions, deckDispatch, storyAssetDeltas, saveCampaignLog]);
+  }, [deck, userId, actions, deckDispatch, storyAssetDeltas, saveCampaignLog, setSaving]);
 
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);
@@ -116,7 +118,13 @@ function SaveDeckRow({
       )
     );
   }, [onCardPress]);
-
+  useEffect(() => {
+    // We only want to save once.
+    if (choices === undefined && deck && !deck.id.local && deck.id.arkhamdb_user === arkhamDbUser) {
+      fetchPrivateDeck(userId, actions, deck.id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const storyAssets = useMemo(() => campaignLog.storyAssets(investigator.code), [campaignLog, investigator]);
   const storyAssetCodes = useMemo(() => flatMap(storyAssetDeltas, (count, code) => count !== 0 ? code : []), [storyAssetDeltas]);
   const [storyAssetCards] = useCardList(storyAssetCodes, 'player');
@@ -126,101 +134,103 @@ function SaveDeckRow({
     }
     return (
       <>
-        <CardSectionHeader
-          investigator={investigator}
-          section={{ superTitle: t`Campaign cards` }}
-        />
+        <View style={space.paddingSideS}><DeckSlotHeader title={t`Campaign cards` } /></View>
         { renderDeltas(storyAssetCards, storyAssetDeltas) }
       </>
     );
-  }, [storyAssetDeltas, storyAssetCards, renderDeltas, investigator]);
-
-  const saveButton = useMemo(() => {
-    if (choices !== undefined || !editable) {
-      return null;
-    }
-    if (deck) {
-      if (deck.owner && userId && deck.owner.id !== userId) {
-        return (
-          <BasicButton
-            title={deck.owner.handle ? t`${deck.owner.handle} must save this deck` : t`Your friend must save this deck`}
-            onPress={save}
-            disabled
-          />
-        );
-      }
-
-      return (
-        <BasicButton
-          title={t`Save deck changes`}
-          onPress={save}
-        />
-      );
-    }
-    return null;
-  }, [choices, editable, deck, userId, save]);
-
-  const campaignSection = useMemo(() => {
-    return (
-      <>
-        { storyAssetSection }
-        { saveButton }
-      </>
-    );
-  }, [storyAssetSection, saveButton]);
+  }, [storyAssetDeltas, storyAssetCards, renderDeltas]);
 
   const selectDeck = useCallback(() => {
     campaignState.showChooseDeck(investigator);
   }, [campaignState, investigator]);
-  const { campaign } = useContext(CampaignGuideContext);
 
-  const viewDeck = useCallback(() => {
-    if (deck) {
-      showDeckModal(deck.id, deck.deck, campaign?.id, colors, investigator);
-    }
-  }, [colors, campaign, investigator, deck]);
-
-  const deckButton = useMemo(() => {
-    if (deck && deckChoice !== undefined) {
+  const footer = useMemo(() => {
+    if (deck && deck.owner && userId && deck.owner.id !== userId) {
       return (
-        <View style={styles.row}>
-          <ShowDeckButton
-            deckId={deckChoice}
-            investigator={investigator}
-          />
+        <View style={[space.paddingS, { flexDirection: 'column', backgroundColor: colors.L10, borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }]}>
+          <View style={styles.startRow}>
+            <ActionButton
+              color={choices !== undefined ? 'green' : 'dark'}
+              leftIcon="check"
+              title={choices !== undefined ? t`Not deck owner` : t`Saved`}
+              onPress={save}
+              disabled
+            />
+            <View style={[styles.column, { flex: 1 }, space.paddingLeftS]}>
+              <Text style={[typography.small, typography.italic, typography.light]}>
+                { deck.owner?.handle ?
+                  t`This deck is owned by ${deck.owner.handle}. They must open the app on their own device to save the upgrade` :
+                  t`This deck is owned by another user. They must open the app on their own device to save the upgrade` }
+              </Text>
+            </View>
+          </View>
         </View>
       );
     }
-    if (!editable) {
-      return null;
-    }
-    if (!deck) {
-      return (
-        <View style={styles.row}>
-          <ArkhamButton variant="outline" icon="deck" grow title={t`Select deck`} onPress={selectDeck} />
-        </View>
-      );
-    }
+    const currentMessage = saving ? t`Saving` : t`Save`;
+    const secondSection = !deck ? (choices === undefined && editable) : choices !== undefined;
+    const deckButton = deck && choices !== undefined && deckChoice && (
+      <ShowDeckButton
+        deckId={deckChoice}
+        investigator={investigator}
+      />
+    );
     return (
-      <View style={styles.row}>
-        <ArkhamButton variant="outline" icon="deck" title={t`View deck`} onPress={viewDeck} />
+      <View style={[space.paddingS, { flexDirection: 'column', backgroundColor: colors.L10, borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }]}>
+        { !!deck && (
+          <View style={[styles.startRow, secondSection ? { paddingBottom: xs, borderBottomWidth: 1, borderColor: colors.L30 } : undefined]}>
+            <ActionButton
+              color="green"
+              leftIcon="check"
+              title={choices !== undefined ? t`Saved` : currentMessage}
+              onPress={save}
+              disabled={choices !== undefined || !deck}
+              loading={saving}
+            />
+            <View style={[styles.column, { flex: 1 }, space.paddingLeftS]}>
+              <Text style={[typography.small, typography.italic, typography.light]}>
+                { choices === undefined ? t`Save will update your deck with the card changes listed above.` : t`Changes have been recorded.` }
+              </Text>
+            </View>
+          </View>
+        ) }
+        { secondSection && (
+          <View style={[styles.column, space.paddingTopXs]}>
+            { !deck ? (
+              <>
+                <Text style={[typography.small, typography.italic, typography.light]}>
+                  { t`This investigator does not have a deck associated with it.\nIf you choose a deck, the app can help track spent experience, story asset changes, and deckbuilding requirements.` }
+                </Text>
+                <View style={[space.paddingTopS, styles.startRow]}>
+                  <ActionButton leftIcon="deck" color="dark" title={t`Choose a deck for this investigator`} onPress={selectDeck} />
+                </View>
+              </>
+            ) : deckButton}
+          </View>
+        ) }
       </View>
     );
-  }, [deck, editable, investigator, deckChoice, selectDeck, viewDeck]);
-
+  }, [choices, colors, deck, deckChoice, editable, investigator, save, saving, selectDeck, typography, userId]);
+  const [open, toggleOpen] = useFlag(choices === undefined);
   if (!find(storyAssetDeltas, (count: number) => count !== 0)) {
     return null;
   }
   const isYithian = storyAssets && (storyAssets[BODY_OF_A_YITHIAN] || 0) > 0;
   return (
-    <InvestigatorRow
-      investigator={investigator}
-      yithian={isYithian}
-      button={deckButton}
-      noFactionIcon={TINY_PHONE}
-    >
-      { campaignSection }
-    </InvestigatorRow>
+    <View style={space.paddingBottomS}>
+      <AnimatedCompactInvestigatorRow
+        yithian={isYithian}
+        investigator={investigator}
+        open={choices === undefined || open}
+        toggleOpen={toggleOpen}
+        disabled={choices === undefined}
+        headerContent={!open && editable && <ArkhamSwitch value large color="light" />}
+        width={width - s * (editable ? 4 : 2)}
+      >
+        { storyAssetSection }
+        { footer }
+      </AnimatedCompactInvestigatorRow>
+    </View>
   );
 }
 
@@ -228,8 +238,13 @@ SaveDeckRow.choiceId = computeChoiceId;
 export default SaveDeckRow;
 
 const styles = StyleSheet.create({
-  row: {
+  column: {
     flexDirection: 'column',
     flex: 1,
+  },
+  startRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
 });

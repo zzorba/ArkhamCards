@@ -388,7 +388,7 @@ function NewDeckOptionsDialog({
     return null;
   }
   const okDisabled = saving || !(starterDeck || !!find(optionSelected, selected => selected));
-  const footerSize = s + m + NOTCH_BOTTOM_PADDING + 42 * fontScale;
+  const footerSize = s + m + NOTCH_BOTTOM_PADDING + 54 * fontScale;
   if (saving) {
     return (
       <LoadingSpinner large />

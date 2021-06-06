@@ -195,7 +195,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
                 key="campaign"
                 index={-1}
                 text={t`Edit campaign log`}
-                onPress={showCampaignLogDialog}
+                onPress={editCampaignLogPressed}
               />
             ) }
             { map(

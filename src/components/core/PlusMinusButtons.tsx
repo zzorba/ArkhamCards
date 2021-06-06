@@ -50,12 +50,34 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       default: return colors.M;
     }
   }
-
-  enabledColor() {
+  roundedColor() {
     const {
       color,
     } = this.props;
     const { colors } = this.context;
+    return color === 'light' ? '#39485240' : colors.L15;
+  }
+  enabledColor() {
+    const {
+      color,
+      rounded,
+      dialogStyle,
+    } = this.props;
+    const { colors } = this.context;
+    if (dialogStyle) {
+      if (rounded) {
+        switch (color) {
+          case 'light':
+            return colors.L30;
+          case 'dark':
+          default:
+            return colors.D10;
+          case 'white':
+            return 'red';
+        }
+      }
+      return colors.M;
+    }
     switch (color) {
       case 'dark': return colors.darkText;
       case 'light': return colors.background;
@@ -77,26 +99,27 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
     const width = rounded ? 40 : size * 0.8;
     if (this.incrementEnabled()) {
       return (
-        <TouchableOpacity
-          onPress={onIncrement}
-          style={[
-            dialogStyle ? { width, height: width } : undefined,
-            rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20, backgroundColor: colors.L15 } : undefined,
-          ]}
-        >
-          { dialogStyle ? (
-            <AppIcon
-              name="plus-button"
-              size={rounded ? 36 : 28}
-              color={rounded ? colors.D10 : colors.M}
-            />
-          ) : (
-            <MaterialCommunityIcons
-              name={noFill ? 'plus-box-outline' : 'plus-box'}
-              size={size}
-              color={this.enabledColor()}
-            />
-          ) }
+        <TouchableOpacity onPress={onIncrement}>
+          <View
+            style={[
+              dialogStyle ? { width, height: width } : undefined,
+              rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20, backgroundColor: this.roundedColor() } : undefined,
+            ]}
+          >
+            { dialogStyle ? (
+              <AppIcon
+                name="plus-button"
+                size={rounded ? 36 : 28}
+                color={this.enabledColor()}
+              />
+            ) : (
+              <MaterialCommunityIcons
+                name={noFill ? 'plus-box-outline' : 'plus-box'}
+                size={size}
+                color={this.enabledColor()}
+              />
+            ) }
+          </View>
         </TouchableOpacity>
       );
     }
@@ -107,27 +130,27 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       );
     }
     return (
-      <TouchableOpacity
-        disabled
-        style={[
+      <TouchableOpacity disabled>
+        <View style={[
           dialogStyle ? { width, height: width } : undefined,
           rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20 } : undefined,
         ]}>
-        { dialogStyle ? (
-          <View opacity={0.3}>
-            <AppIcon
-              name="plus-button"
-              size={rounded ? 36 : 28}
-              color={colors.M}
+          { dialogStyle ? (
+            <View opacity={0.3}>
+              <AppIcon
+                name="plus-button"
+                size={rounded ? 36 : 28}
+                color={colors.M}
+              />
+            </View>
+          ) : (
+            <MaterialCommunityIcons
+              name="plus-box-outline"
+              size={size}
+              color={this.disabledColor()}
             />
-          </View>
-        ) : (
-          <MaterialCommunityIcons
-            name="plus-box-outline"
-            size={size}
-            color={this.disabledColor()}
-          />
-        ) }
+          ) }
+        </View>
       </TouchableOpacity>
     );
   }
@@ -169,26 +192,25 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
     const width = rounded ? 40 : size * 0.8;
     if (this.decrementEnabled()) {
       return (
-        <TouchableOpacity
-          onPress={onDecrement}
-          style={[
+        <TouchableOpacity onPress={onDecrement}>
+          <View style={[
             dialogStyle ? { width, height: width } : undefined,
-            rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20, backgroundColor: colors.L15 } : undefined,
-          ]}
-        >
-          { dialogStyle ? (
-            <AppIcon
-              name="minus-button"
-              size={rounded ? 36 : 28}
-              color={rounded ? colors.D10 : colors.M}
-            />
-          ) : (
-            <MaterialCommunityIcons
-              name={noFill ? 'minus-box-outline' : 'minus-box'}
-              size={size}
-              color={this.enabledColor()}
-            />
-          ) }
+            rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20, backgroundColor: this.roundedColor() } : undefined,
+          ]}>
+            { dialogStyle ? (
+              <AppIcon
+                name="minus-button"
+                size={rounded ? 36 : 28}
+                color={this.enabledColor()}
+              />
+            ) : (
+              <MaterialCommunityIcons
+                name={noFill ? 'minus-box-outline' : 'minus-box'}
+                size={size}
+                color={this.enabledColor()}
+              />
+            ) }
+          </View>
         </TouchableOpacity>
       );
     }
@@ -198,29 +220,27 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       );
     }
     return (
-      <TouchableOpacity
-        disabled
-        style={[
+      <TouchableOpacity disabled>
+        <View style={[
           dialogStyle ? { width, height: width } : undefined,
           rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20 } : undefined,
-        ]}
-      >
-        { dialogStyle ? (
-          <View opacity={0.3}>
-            <AppIcon
-              name="minus-button"
-              size={rounded ? 36 : 28}
-              color={colors.M}
+        ]}>
+          { dialogStyle ? (
+            <View opacity={0.3}>
+              <AppIcon
+                name="minus-button"
+                size={rounded ? 36 : 28}
+                color={colors.M}
+              />
+            </View>
+          ) : (
+            <MaterialCommunityIcons
+              name="minus-box-outline"
+              size={size}
+              color={this.disabledColor()}
             />
-          </View>
-        ) : (
-          <MaterialCommunityIcons
-            name="minus-box-outline"
-            size={size}
-            color={this.disabledColor()}
-          />
-        )}
-
+          )}
+        </View>
       </TouchableOpacity>
     );
   }
