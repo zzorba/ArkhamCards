@@ -68,7 +68,7 @@ msgid "Asset: Hand x2"
 msgstr "Vorteil: Hand x2"
 
 msgid "Asset: Hand. Arcane"
-msgstr "Vorteil: Hand. Arkane"
+msgstr "Vorteil: Hand. Arkan"
 
 msgid "Asset: Body. Hand x2"
 msgstr "Vorteil: Körper. Hand x2"
@@ -80,10 +80,10 @@ msgid "Asset: Ally"
 msgstr "Vorteil: Verbündeter"
 
 msgid "Asset: Arcane"
-msgstr "Vorteil: Arkane"
+msgstr "Vorteil: Arkan"
 
 msgid "Asset: Arcane x2"
-msgstr "Vorteil: Arkane x2"
+msgstr "Vorteil: Arkan x2"
 
 msgid "Asset: Body"
 msgstr "Vorteil: Körper"
