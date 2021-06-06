@@ -1,8 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import Switch from '@components/core/Switch';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import Card from '@data/types/Card';

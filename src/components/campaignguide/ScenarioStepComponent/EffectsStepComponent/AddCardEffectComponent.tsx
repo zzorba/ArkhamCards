@@ -53,7 +53,6 @@ export default function AddCardEffectComponent({ id, effect, input }: Props) {
       render={renderInvestigators}
       optional={effect.optional}
       input={input}
-      description={t`Who will add ${card.name} to their deck?`}
       extraArg={card}
     />
   );

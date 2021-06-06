@@ -86,7 +86,6 @@ function RemoveCardEffectNonInputComponent({ id, effect, input, campaignLog, inv
       investigator={investigator}
       fixedInvestigator={effect.fixed_investigator}
       render={renderInvestigators}
-      description={t`Who will remove ${card.name} from their deck?`}
       extraArg={card}
     />
   );

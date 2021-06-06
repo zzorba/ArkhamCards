@@ -1,12 +1,7 @@
 import React, { useContext } from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
   Linking,
   Text,
-  View,
-  Platform,
 } from 'react-native';
 
 import { t } from 'ttag';

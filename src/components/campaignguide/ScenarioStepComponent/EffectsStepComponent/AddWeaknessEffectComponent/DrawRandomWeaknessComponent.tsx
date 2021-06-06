@@ -41,7 +41,6 @@ function DrawRandomWeaknessButton({ investigator, choice, choiceCard, drawRandom
   }, [index, drawRandomWeakness]);
   return (
     <InvestigatorButton
-      hideName={index > 0}
       investigator={investigator}
       value={choice === undefined ?
         t`Draw random weakness` :

@@ -52,7 +52,7 @@ export default function CompactInvestigatorRow({ eliminated, description, invest
             { investigator.name }
           </Text>
           <Text style={[typography.cardTraits, !transparent ? typography.white : { color: colors.D20 }, eliminated ? typography.strike : undefined]}>
-            { description || investigator.subname }
+            { description !== undefined ? description : investigator.subname }
           </Text>
         </View>
         { !!children && <View style={[styles.rightRow, space.paddingLeftS]}>{ children }</View> }

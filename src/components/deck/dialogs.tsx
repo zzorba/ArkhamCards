@@ -421,6 +421,74 @@ export function usePickerDialog<T>({
   };
 }
 
+interface MultiPickerDialogOptions<T> {
+  title: string;
+  investigator?: Card;
+  description?: string;
+  items: Item<T>[];
+  selectedValues?: Set<T>;
+  onValueChange: (value: T, selected: boolean) => void;
+}
+export function useMultiPickerDialog<T>({
+  title,
+  investigator,
+  description,
+  items,
+  selectedValues,
+  onValueChange,
+}: MultiPickerDialogOptions<T>): {
+  dialog: React.ReactNode;
+  showDialog: () => void;
+} {
+  const { borderStyle, typography } = useContext(StyleContext);
+  const setVisibleRef = useRef<(visible: boolean) => void>();
+  const onValuePress = useCallback((value: T) => {
+    onValueChange(value, !selectedValues?.has(value));
+  }, [onValueChange, selectedValues]);
+  const content = useMemo(() => {
+    return (
+      <View>
+        { !!description && (
+          <View style={[space.marginS, space.paddingBottomS, { borderBottomWidth: StyleSheet.hairlineWidth }, borderStyle]}>
+            <Text style={typography.text}>{ description } </Text>
+          </View>
+        )}
+        { map(items, (item, idx) => item.type === 'header' ? (
+          <DeckBubbleHeader title={item.title} key={idx} />
+        ) : (
+          <NewDialog.PickerItem<T>
+            key={idx}
+            iconName={item.icon}
+            iconNode={item.iconNode}
+            text={item.title}
+            value={item.value}
+            indicator="check"
+            onValueChange={onValuePress}
+            // tslint:disable-next-line
+            selected={!!selectedValues?.has(item.value)}
+            last={idx === items.length - 1 || items[idx + 1].type === 'header'}
+          />
+        )) }
+      </View>
+    );
+  }, [items, onValuePress, borderStyle, typography, description, selectedValues]);
+  const { setVisible, dialog } = useDialog({
+    title,
+    investigator,
+    allowDismiss: true,
+    content,
+    alignment: 'bottom',
+  });
+  useEffect(() => {
+    setVisibleRef.current = setVisible;
+  }, [setVisible]);
+  const showDialog = useCallback(() => setVisible(true), [setVisible]);
+  return {
+    dialog,
+    showDialog,
+  };
+}
+
 
 interface BasicDialogResult {
   savingDialog: React.ReactNode;

@@ -1,7 +1,6 @@
-import React, { useCallback, useContext, useMemo, useRef } from 'react';
-import { Animated, Easing, View, StyleSheet } from 'react-native';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { View, StyleSheet } from 'react-native';
 import { find , map } from 'lodash';
-import Collapsible from 'react-native-collapsible';
 import { t } from 'ttag';
 import { useSelector } from 'react-redux';
 
@@ -14,9 +13,7 @@ import StyleContext from '@styles/StyleContext';
 import useSingleCard from '@components/card/useSingleCard';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 import space, { s } from '@styles/space';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { useEffectUpdate, useFlag } from '@components/core/hooks';
-import AppIcon from '@icons/AppIcon';
+import { useFlag } from '@components/core/hooks';
 import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';
 import TraumaSummary from '../TraumaSummary';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
@@ -157,23 +154,6 @@ export default function InvestigatorCampaignRow({
 
   const yithian = useMemo(() => !!find(traumaAndCardData.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN), [traumaAndCardData.storyAssets]);
   const [open, toggleOpen] = useFlag(false);
-  const openAnim = useRef(new Animated.Value(0));
-  useEffectUpdate(() => {
-    Animated.timing(
-      openAnim.current,
-      {
-        toValue: open ? 1 : 0,
-        duration: 200,
-        useNativeDriver: false,
-        easing: Easing.ease,
-      }
-    ).start();
-  }, [open]);
-  const iconRotate = openAnim.current.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['-90deg', '-180deg'],
-    extrapolate: 'clamp',
-  });
   const footerButton = useMemo(() => {
     if (uploading) {
       return (

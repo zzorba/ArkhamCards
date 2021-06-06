@@ -23,7 +23,7 @@ interface Props {
 }
 
 export default function CounterListItemComponent({ code, investigator, name, description, color, value, max, min, onInc, onDec, editable, showDelta }: Props) {
-  const { borderStyle, typography, width } = useContext(StyleContext);
+  const { typography, width } = useContext(StyleContext);
   const inc = useCallback(() => onInc(code, max), [onInc, code, max]);
   const dec = useCallback(() => onDec(code, min), [onDec, code, min]);
 

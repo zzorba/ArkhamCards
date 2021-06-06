@@ -1,7 +1,4 @@
 import React from 'react';
-import {
-  Text,
-} from 'react-native';
 import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
 import { WithChildren } from './types';

@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-} from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
 import { WithChildren } from '../CardTextComponent/types';

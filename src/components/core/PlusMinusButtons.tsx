@@ -262,7 +262,7 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
   };
 
   countBlock() {
-    const { countRender, count, dialogStyle, allowNegative, showZeroCount } = this.props;
+    const { countRender, rounded, count, dialogStyle, allowNegative, showZeroCount } = this.props;
     const { typography } = this.context;
     if (countRender) {
       return countRender;
@@ -270,6 +270,13 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
     if (dialogStyle) {
       if (!showZeroCount && count === 0) {
         return null;
+      }
+      if (rounded) {
+        return (
+          <Text style={[typography.counter, typography.center, { minWidth: 28 }]}>
+            { count }
+          </Text>
+        );
       }
       return (
         <View style={styles.count}>

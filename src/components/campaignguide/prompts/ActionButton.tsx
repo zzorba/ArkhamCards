@@ -8,7 +8,7 @@ import AppIcon from '@icons/AppIcon';
 import space from '@styles/space';
 import { ThemeColors } from '@styles/theme';
 
-type LEFT_ICON = 'plus-thin' | 'check' | 'close' | 'undo' | 'shuffle' | 'deck';
+type LEFT_ICON = 'plus-thin' | 'check' | 'close' | 'undo' | 'shuffle' | 'deck' | 'edit';
 interface Props {
   color: 'dark' | 'light' | 'green' | 'red';
   onPress: () => void;
@@ -39,6 +39,7 @@ function getRippleColor(color: 'dark' | 'light' | 'green' | 'red', colors: Theme
 }
 
 const LEFT_ICON_SIZE = {
+  edit: 24,
   shuffle: 24,
   deck: 24,
   undo: 24,

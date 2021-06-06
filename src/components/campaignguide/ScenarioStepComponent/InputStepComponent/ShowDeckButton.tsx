@@ -6,7 +6,6 @@ import { showDeckModal } from '@components/nav/helper';
 import { useCampaignDeck } from '@data/hooks';
 import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
-import ArkhamButton from '@components/core/ArkhamButton';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import ActionButton from '@components/campaignguide/prompts/ActionButton';
 

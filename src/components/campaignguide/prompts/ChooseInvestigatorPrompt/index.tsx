@@ -15,7 +15,6 @@ interface Props {
   id: string;
   title: string;
   choiceId: string;
-  description?: string;
   defaultLabel?: string;
   required?: boolean;
   investigators?: string[];
@@ -27,7 +26,6 @@ export default function ChooseInvestigatorPrompt({
   id,
   title,
   choiceId,
-  description,
   defaultLabel,
   required,
   investigators,
@@ -36,7 +34,7 @@ export default function ChooseInvestigatorPrompt({
 }: Props): JSX.Element {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { scenarioInvestigators } = useContext(ScenarioStepContext);
-  const { borderStyle, width } = useContext(StyleContext);
+  const { width } = useContext(StyleContext);
   const [selectedInvestigator, setSelectedInvestigator] = useState(required && scenarioInvestigators.length > 0 ? scenarioInvestigators[0].code : undefined);
   const theInvestigators = useMemo(() => {
     const investigatorSet = investigators && new Set(investigators);
@@ -99,6 +97,7 @@ export default function ChooseInvestigatorPrompt({
             key={investigator.code}
             type="investigator"
             investigator={investigator}
+            description={investigatorToValue?.(investigator)}
             index={index}
             onSelect={onChoiceChange}
             editable={choice === undefined}

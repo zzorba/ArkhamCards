@@ -25,14 +25,14 @@ import { xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import { TextStyle } from 'react-native';
 
-function BreakTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
+function BreakTagRule(): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<br\\/*>')),
     order: 1,
     parse: () => {
       return { text: '\n' };
     },
-    render: FlavorUnderlineNode(style),
+    render: FlavorUnderlineNode(),
   };
 }
 
@@ -59,18 +59,18 @@ function CiteTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
   };
 }
 
-function UnderlineHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
+function UnderlineHtmlTagRule(): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<u>(.+?)<\\/u>')),
     order: 1,
     parse: (capture) => {
       return { text: capture[1] };
     },
-    render: FlavorUnderlineNode(style),
+    render: FlavorUnderlineNode(),
   };
 }
 
-function ItalicHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+function ItalicHtmlTagRule(): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<i>([\\s\\S]+?)<\\/i>')),
     order: 2,
@@ -79,18 +79,18 @@ function ItalicHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, 
         children: nestedParse(capture[1], state),
       };
     },
-    render: FlavorItalicNode(style),
+    render: FlavorItalicNode(),
   };
 }
 
-function BoldHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
+function BoldHtmlTagRule(): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<b>(.+?)<\\/b>')),
     order: 1,
     parse: (capture) => {
       return { text: capture[1] };
     },
-    render: FlavorBoldNode(style),
+    render: FlavorBoldNode(),
   };
 }
 
@@ -202,14 +202,14 @@ export default function CardFlavorTextComponent(
       }}
       rules={{
         iconTag: ArkhamIconRule(context, sizeScale),
-        bTag: BoldHtmlTagRule(context),
-        uTag: UnderlineHtmlTagRule(context),
-        brTag: BreakTagRule(context),
+        bTag: BoldHtmlTagRule(),
+        uTag: UnderlineHtmlTagRule(),
+        brTag: BreakTagRule(),
         citeTag: CiteTagRule(context),
         fancyTag: FancyHtmlTagRule(context),
         centerTag: CenterHtmlTagRule,
         rightTag: RightHtmlTagRule,
-        iTag: ItalicHtmlTagRule(context),
+        iTag: ItalicHtmlTagRule(),
         smallCapsTag: SmallCapsHtmlTagRule(context),
         innsmouthTag: InnsmouthTagRule(context),
         gameTag: GameTagRule(context),

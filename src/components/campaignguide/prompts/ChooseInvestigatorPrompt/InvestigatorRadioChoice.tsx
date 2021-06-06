@@ -14,6 +14,7 @@ interface BasicProps {
   onSelect: (index: number) => void;
   width: number;
   editable: boolean;
+  description?: string;
 }
 interface InvestigatorProps extends BasicProps {
   type: 'investigator';
@@ -27,7 +28,7 @@ interface PlaceholderProps extends BasicProps {
 
 type Props = PlaceholderProps | InvestigatorProps;
 
-export default function InvestigatorRadioChoice({ selected, index, onSelect, editable, width, ...props }: Props) {
+export default function InvestigatorRadioChoice({ description, selected, index, onSelect, editable, width, ...props }: Props) {
   const onPress = useCallback(() => onSelect(index), [onSelect, index]);
   const { colors, typography } = useContext(StyleContext);
 
@@ -36,6 +37,7 @@ export default function InvestigatorRadioChoice({ selected, index, onSelect, edi
       return (
         <CompactInvestigatorRow
           investigator={props.investigator}
+          description={description}
           width={width}
         >
           <RadioButton color="light" icon="radio" selected={selected} />
@@ -43,7 +45,7 @@ export default function InvestigatorRadioChoice({ selected, index, onSelect, edi
       );
     }
     return (
-      <View style={[styles.spreadRow, space.paddingSideS]}>
+      <View style={[styles.spreadRow, space.paddingSideS, space.paddingTopS]}>
         <View style={styles.row}>
           <View style={[space.paddingLeftXs, space.paddingRightM]}>
             <AppIcon name="dismiss" size={20} color={colors.D30} />
@@ -52,10 +54,10 @@ export default function InvestigatorRadioChoice({ selected, index, onSelect, edi
             { props.label }
           </Text>
         </View>
-        <RadioButton color="light" icon="radio" selected={selected} />
+        <RadioButton color="dark" icon="radio" selected={selected} />
       </View>
     );
-  }, [selected, props, width, colors, typography]);
+  }, [selected, props, width, description, colors, typography]);
   return (
     <View style={space.paddingBottomXs}>
       { editable ? <TouchableOpacity onPress={onPress}>{content}</TouchableOpacity> : content }

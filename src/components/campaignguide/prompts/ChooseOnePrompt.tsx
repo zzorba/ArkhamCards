@@ -2,7 +2,6 @@ import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import ChooseOneListComponent from './ChooseOneListComponent';
 import ScenarioGuideContext from '../ScenarioGuideContext';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
@@ -92,7 +91,7 @@ export default function ChooseOnePrompt({
         titleNode={confirmText ? undefined : <View style={{ flex: 1 }}><CampaignGuideTextComponent text={prompt} /></View>}
         titleButton={(showUndo && editable) ? (
           <ActionButton
-            color="dark"
+            color="light"
             leftIcon="undo"
             title={t`Undo`}
             onPress={undo}
