@@ -23,6 +23,7 @@ export interface ListItem {
 
 export interface ChoiceListComponentProps {
   id: string;
+  hideInvestigatorSection?: boolean;
   investigator?: Card;
   bulletType?: BulletType;
   promptType?: 'header' | 'setup';
@@ -37,7 +38,7 @@ interface Props extends ChoiceListComponentProps {
   items: ListItem[];
 }
 
-export default function ChoiceListComponent({ id, promptType, investigator, bulletType, text, confirmText, optional, detailed, options, loading, items }: Props) {
+export default function ChoiceListComponent({ id, promptType, investigator, bulletType, text, confirmText, optional, detailed, options, loading, items, hideInvestigatorSection }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { borderStyle, colors, width } = useContext(StyleContext);
   const [selectedChoice, setSelectedChoice] = useState(() => {
@@ -119,7 +120,7 @@ export default function ChoiceListComponent({ id, promptType, investigator, bull
           choices={choices}
           choice={getChoice(item.code, choices, inputChoices)}
           onChoiceChange={onChoiceChange}
-          noInvestigatorItems={!detailed}
+          noInvestigatorItems={hideInvestigatorSection || !detailed}
           optional={!!optional}
           editable={inputChoices === undefined}
           detailed={detailed}
