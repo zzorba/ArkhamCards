@@ -1,16 +1,17 @@
 import React, { useContext } from 'react';
-import { Text } from 'react-native';
+import { Text, TextStyle } from 'react-native';
 
 import StyleContext from '@styles/StyleContext';
 
 interface Props {
   text: string;
+  style?: TextStyle;
 }
 
-export default function GameHeader({ text }: Props) {
+export default function GameHeader({ text, style }: Props) {
   const { typography } = useContext(StyleContext);
   return (
-    <Text style={typography.bigGameFont}>
+    <Text style={[typography.bigGameFont, style]}>
       { text }
     </Text>
   );

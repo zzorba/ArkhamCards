@@ -21,12 +21,12 @@ export default function GenericCampaignItem({ lastUpdated, children, onPress }: 
     <View style={[space.paddingSideS, space.paddingBottomS]}>
       <TouchableOpacity onPress={debouncedOnPress}>
         <RoundedFactionBlock
-          header={undefined}
+          header={children}
           faction="neutral"
+          footer={<RoundedFooterButton color="light" icon="world" title={lastUpdated ? toRelativeDateString(lastUpdated, lang) : `???`} onPress={debouncedOnPress} />}
           noSpace
-          footer={<RoundedFooterButton icon="campaign" title={lastUpdated ? toRelativeDateString(lastUpdated, lang) : `???`} onPress={debouncedOnPress} />}
         >
-          { children }
+          { null }
         </RoundedFactionBlock>
       </TouchableOpacity>
     </View>

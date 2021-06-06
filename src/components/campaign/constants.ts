@@ -308,27 +308,29 @@ export function campaignColor(cycle: CampaignCycleCode, colors: ThemeColors) {
   switch (cycle) {
     case CORE:
     case RTNOTZ:
-    case TCU:
     case 'custom':
-    case STANDALONE:
       return colors.campaign.blue;
     case PTC:
     case RTPTC:
-      return colors.campaign.gold;
+      return colors.campaign.purple;
+    case TFA:
+    case RTTFA:
+      return colors.campaign.pink;
+    case STANDALONE:
+      return colors.campaign.tan;
+    case TCU:
+      return colors.campaign.darkBlue;
     case TDEA:
     case TDEB:
     case TDE:
     case DARK_MATTER:
-      return colors.campaign.purple;
-    case TFA:
-    case RTTFA:
-      return colors.campaign.green;
+      return colors.campaign.red;
     case TIC:
     case ALICE_IN_WONDERLAND:
       return colors.campaign.red;
     case DWL:
     case RTDWL:
-      return colors.campaign.teal;
+      return colors.campaign.green;
   }
 }
 

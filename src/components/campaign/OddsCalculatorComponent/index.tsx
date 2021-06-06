@@ -1,17 +1,16 @@
 import React, { useContext, useMemo, useState } from 'react';
-import { filter, find, flatMap, forEach, head, keys, map } from 'lodash';
+import { filter, find, flatMap, forEach, keys, map } from 'lodash';
 import { ScrollView, StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
 
-import BasicButton from '@components/core/BasicButton';
 import InvestigatorOddsComponent from './InvestigatorOddsComponent';
 import SkillOddsRow from './SkillOddsRow';
 import VariableTokenInput from './VariableTokenInput';
 import CardTextComponent from '@components/card/CardTextComponent';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import { campaignColor, Scenario, completedScenario, scenarioFromCard } from '@components/campaign/constants';
+import { campaignColor, Scenario, scenarioFromCard } from '@components/campaign/constants';
 import Difficulty from '@components/campaign/Difficulty';
 import GameHeader from '@components/campaign/GameHeader';
 import BackgroundIcon from '@components/campaign/BackgroundIcon';
@@ -30,101 +29,113 @@ import { getAllStandalonePacks } from '@reducers';
 import { Item, usePickerDialog } from '@components/deck/dialogs';
 import EncounterIcon from '@icons/EncounterIcon';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 interface Props {
   campaign: SingleCampaignT;
   chaosBag: ChaosBag;
   cycleScenarios?: Scenario[];
   allInvestigators: Card[];
+  scenarioName: string | undefined;
+  scenarioCard: Card | undefined;
+  scenarioCode: string | undefined;
+  scenarioCardText: string | undefined;
+  difficulty: CampaignDifficulty | undefined;
 }
 
-const SCENARIO_CODE_FIXER: {
+export const SCENARIO_CODE_FIXER: {
   [key: string]: string | undefined;
 } = {
+  the_gathering: 'torch',
+  the_midnight_masks: 'arkham',
+  the_devourer_below: 'tentacles',
   the_untamed_wilds: 'wilds',
   the_doom_of_eztli: 'eztli',
 };
 
-function parseSpecialTokenValues(currentScenarioCard?: Card, difficulty?: string): SpecialTokenValue[] {
+function parseSpecialTokenValuesText(scenarioText: string | undefined): SpecialTokenValue[] {
   const scenarioTokens: SpecialTokenValue[] = [];
-  if (currentScenarioCard) {
-    let scenarioText = currentScenarioCard.text;
-    if (difficulty === CampaignDifficulty.HARD ||
-      difficulty === CampaignDifficulty.EXPERT) {
-      scenarioText = currentScenarioCard.back_text;
-    }
-    if (scenarioText) {
-      const linesByToken: { [token: string]: string } = {};
-      forEach(
-        scenarioText.replace(/<br\/>/g, '\n').split('\n'),
-        line => {
-          const token = find(SPECIAL_TOKENS, token =>
-            line.startsWith(`[${token}]`));
-          if (token) {
-            linesByToken[token] = line;
-          }
-        });
-      SPECIAL_TOKENS.forEach(token => {
-        switch (token) {
-          case 'elder_sign':
-            scenarioTokens.push({
-              token,
-              value: 0,
-            });
-            break;
-          case 'auto_fail':
-            scenarioTokens.push({
-              token,
-              value: 'auto_fail',
-            });
-            break;
-          default: {
-            const line = linesByToken[token];
-            if (line) {
-              const valueRegex = new RegExp(`\\[(${token})\\]\\s*:?\\s([-+][0-9X])(\\. )?(.*)`);
-              if (valueRegex.test(line)) {
-                const match = line.match(valueRegex);
-                if (match) {
-                  if (match[2] === '-X') {
-                    scenarioTokens.push({
-                      token,
-                      value: 'X',
-                      xText: match[4],
-                    });
-                  } else {
-                    scenarioTokens.push({
-                      token,
-                      value: parseFloat(match[2]) || 0,
-                      // revealAnother: match[4].toLowerCase().indexOf('reveal another') !== -1,
-                    });
-                  }
-                }
-              } else {
-                const revealAnotherRegex = new RegExp(`\\[(${token})\\]\\s*:?\\sReveal another (chaos )?token.`);
-                if (revealAnotherRegex.test(line)) {
+  if (scenarioText) {
+    const linesByToken: { [token: string]: string } = {};
+    forEach(
+      scenarioText.replace(/<br\/>/g, '\n').split('\n'),
+      line => {
+        const token = find(SPECIAL_TOKENS, token =>
+          line.startsWith(`[${token}]`));
+        if (token) {
+          linesByToken[token] = line;
+        }
+      });
+    SPECIAL_TOKENS.forEach(token => {
+      switch (token) {
+        case 'elder_sign':
+          scenarioTokens.push({
+            token,
+            value: 0,
+          });
+          break;
+        case 'auto_fail':
+          scenarioTokens.push({
+            token,
+            value: 'auto_fail',
+          });
+          break;
+        default: {
+          const line = linesByToken[token];
+          if (line) {
+            const valueRegex = new RegExp(`\\[(${token})\\]\\s*:?\\s([-+][0-9X])(\\. )?(.*)`);
+            if (valueRegex.test(line)) {
+              const match = line.match(valueRegex);
+              if (match) {
+                if (match[2] === '-X') {
                   scenarioTokens.push({
                     token,
-                    value: 'reveal_another',
-                    // revealAnother: true,
+                    value: 'X',
+                    xText: match[4],
+                  });
+                } else {
+                  scenarioTokens.push({
+                    token,
+                    value: parseFloat(match[2]) || 0,
+                    // revealAnother: match[4].toLowerCase().indexOf('reveal another') !== -1,
                   });
                 }
+              }
+            } else {
+              const revealAnotherRegex = new RegExp(`\\[(${token})\\]\\s*:?\\sReveal another (chaos )?token.`);
+              if (revealAnotherRegex.test(line)) {
+                scenarioTokens.push({
+                  token,
+                  value: 'reveal_another',
+                  // revealAnother: true,
+                });
               }
             }
           }
         }
-      });
-    }
+      }
+    });
   }
   return scenarioTokens;
 }
 
+interface CurrentScenario {
+  card: Card;
+  text: string;
+}
 export default function OddsCalculatorComponent({
   campaign,
   chaosBag: originalChaosBag,
   cycleScenarios,
   allInvestigators,
+  scenarioName,
+  scenarioCard,
+  scenarioCardText,
+  scenarioCode,
+  difficulty,
 }: Props) {
   const [scenarioCards, loading] = useCardsFromQuery({ query: SCENARIO_CARDS_QUERY });
+  const [currentScenario, setCurrentScenario] = useState<Scenario | undefined>(undefined);
   const chaosBagResults = useChaosBagResults(campaign.id);
   const [chaosBag, sealedChaosBag] = useMemo(() => {
     const sealed: ChaosBag = {};
@@ -149,25 +160,7 @@ export default function OddsCalculatorComponent({
   const { backgroundStyle, borderStyle, colors, typography, width } = useContext(StyleContext);
   const [testDifficulty, incTestDifficulty, decTestDifficulty] = useCounter(3, { min: 0 });
   const standalonePacks = useSelector(getAllStandalonePacks);
-  const [currentScenario, setCurrentScenario] = useState<Scenario | undefined>(() => {
-    const hasCompletedScenario = completedScenario(campaign ? campaign.scenarioResults : []);
-    return head(
-      filter(cycleScenarios, scenario =>
-        !scenario.interlude &&
-        !hasCompletedScenario(scenario)
-      )
-    ) || undefined;
-  });
-  const encounterCode = useMemo(() => {
-    const encounterCode = currentScenario && (
-      currentScenario.code.startsWith('return_to_') ?
-        currentScenario.code.substring('return_to_'.length) :
-        currentScenario.code);
-    if (encounterCode && SCENARIO_CODE_FIXER[encounterCode]) {
-      return SCENARIO_CODE_FIXER[encounterCode];
-    }
-    return encounterCode;
-  }, [currentScenario]);
+
   const standaloneScenarios = useMemo(() => {
     const standalonePackCodes = new Set(map(standalonePacks, pack => pack.code));
     return flatMap(scenarioCards, card => {
@@ -180,18 +173,7 @@ export default function OddsCalculatorComponent({
       return [];
     });
   }, [standalonePacks, scenarioCards]);
-  const { currentScenarioCard, specialTokenValues, difficulty } = useMemo(() => {
-    const difficulty = campaign ? campaign.difficulty : undefined;
-    const currentScenarioCard = (scenarioCards && encounterCode) ?
-      find(scenarioCards, card => card.encounter_code === encounterCode) :
-      undefined;
-    const specialTokenValues = parseSpecialTokenValues(currentScenarioCard, difficulty);
-    return {
-      currentScenarioCard,
-      specialTokenValues,
-      difficulty,
-    };
-  }, [encounterCode, scenarioCards, campaign]);
+
   const [xValue, incXValue, decXValue] = useCounters({
     skull: 0,
     cultist: 0,
@@ -199,9 +181,16 @@ export default function OddsCalculatorComponent({
     elder_thing: 0,
   });
 
-  const items: Item<Scenario>[] = useMemo(() => {
+  const items: Item<Scenario | undefined>[] = useMemo(() => {
     return [
-      ...map(filter(cycleScenarios, scenario => !scenario.interlude), scenario => {
+      ...(scenarioName && scenarioCard && scenarioCode ? [
+        {
+          title: scenarioName,
+          value: undefined,
+          iconNode: <EncounterIcon encounter_code={scenarioCode} size={24} color={colors.M} />,
+        },
+      ] : []),
+      ...map(filter(cycleScenarios, scenario => !scenario.interlude && scenario.code !== scenarioCode), scenario => {
         return {
           title: scenario.name,
           value: scenario,
@@ -209,7 +198,7 @@ export default function OddsCalculatorComponent({
         };
       }),
       { type: 'header', title: t`Standalone` },
-      ...map(standaloneScenarios, scenario => {
+      ...map(filter(standaloneScenarios, scenario => scenario.code !== scenarioCode), scenario => {
         return {
           title: scenario.name,
           value: scenario,
@@ -217,14 +206,35 @@ export default function OddsCalculatorComponent({
         };
       }),
     ];
-  }, [colors, cycleScenarios, standaloneScenarios]);
-  const { dialog, showDialog } = usePickerDialog<Scenario>({
+  }, [colors, cycleScenarios, standaloneScenarios, scenarioCode, scenarioCard, scenarioName]);
+  const { dialog, showDialog } = usePickerDialog<Scenario | undefined>({
     title: t`Scenario`,
     items,
     onValueChange: setCurrentScenario,
     selectedValue: currentScenario,
   });
 
+  const encounterCode = useMemo(() => {
+    const encounterCode = currentScenario && (
+      currentScenario.code.startsWith('return_to_') ?
+        currentScenario.code.substring('return_to_'.length) :
+        currentScenario.code);
+    if (encounterCode && SCENARIO_CODE_FIXER[encounterCode]) {
+      return SCENARIO_CODE_FIXER[encounterCode];
+    }
+    return encounterCode;
+  }, [currentScenario]);
+  const scenarioText = useMemo(() => {
+    if (!currentScenario) {
+      return scenarioCardText;
+    }
+    const difficulty = campaign ? campaign.difficulty : undefined;
+    const scenarioCard = (scenarioCards && currentScenario && encounterCode) ?
+      find(scenarioCards, card => card.encounter_code === encounterCode) :
+      undefined;
+    return difficulty === CampaignDifficulty.HARD || difficulty === CampaignDifficulty.EXPERT ? scenarioCard?.back_text : scenarioCard?.text;
+  }, [campaign, currentScenario, encounterCode, scenarioCardText, scenarioCards]);
+  const specialTokenValues = useMemo(() => parseSpecialTokenValuesText(scenarioText), [scenarioText]);
   const allSpecialTokenValues = useMemo(() => {
     return map(specialTokenValues, tokenValue => {
       if (tokenValue.value === 'X') {
@@ -238,7 +248,7 @@ export default function OddsCalculatorComponent({
   }, [specialTokenValues, xValue]);
 
   const investigatorRows = useMemo(() => {
-    if (!chaosBag || !currentScenarioCard) {
+    if (!chaosBag) {
       return;
     }
     return (
@@ -261,7 +271,7 @@ export default function OddsCalculatorComponent({
         }
       </>
     );
-  }, [allInvestigators, chaosBag, currentScenarioCard, testDifficulty, allSpecialTokenValues]);
+  }, [allInvestigators, chaosBag, testDifficulty, allSpecialTokenValues]);
 
   const specialTokenInputs = useMemo(() => {
     if (!find(specialTokenValues, value => value.value === 'X')) {
@@ -289,36 +299,33 @@ export default function OddsCalculatorComponent({
     );
   }, [specialTokenValues, xValue, incXValue, decXValue]);
 
-  const scenarioText = currentScenarioCard && (
-    (difficulty === CampaignDifficulty.HARD || difficulty === CampaignDifficulty.EXPERT) ?
-      currentScenarioCard.back_text :
-      currentScenarioCard.text
-  );
-
   if (loading) {
     return (
       <LoadingSpinner />
     );
   }
+  const name = currentScenario?.name || scenarioName;
+  const code = currentScenario?.code || scenarioCode;
   return (
     <View style={[styles.container, backgroundStyle]}>
       <KeepAwake />
       <ScrollView style={[styles.container, backgroundStyle]}>
         <View style={[styles.sectionRow, borderStyle]}>
-          { campaign.cycleCode !== CUSTOM && !!currentScenario && (
+          { campaign.cycleCode !== CUSTOM && !!code && (
             <BackgroundIcon
-              code={currentScenario.code}
+              code={code}
               color={campaignColor(campaign.cycleCode, colors)}
             />
           ) }
           <View style={styles.button}>
-            { !!campaign.difficulty && <Difficulty difficulty={campaign.difficulty} /> }
-            { !!currentScenario && <View style={space.marginTopXs}><GameHeader text={currentScenario.name} /></View> }
+            { !!difficulty && <Difficulty difficulty={difficulty} /> }
+            { !!name && <View style={space.marginTopXs}><GameHeader text={name} /></View> }
             { !!scenarioText && (
               <CardTextComponent text={scenarioText} />
             ) }
           </View>
-          <BasicButton
+          <ArkhamButton
+            icon="campaign"
             title={t`Change Scenario`}
             onPress={showDialog}
           />

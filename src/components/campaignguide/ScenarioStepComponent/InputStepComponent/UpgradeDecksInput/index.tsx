@@ -1,10 +1,9 @@
 import React, { useCallback, useContext } from 'react';
-import { Alert } from 'react-native';
+import { Alert, Text, View } from 'react-native';
 import { find, map } from 'lodash';
 import { t } from 'ttag';
 
 import UpgradeDeckRow from './UpgradeDeckRow';
-import InvestigatorRow from '@components/core/InvestigatorRow';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
@@ -15,6 +14,9 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
 import CardTextComponent from '@components/card/CardTextComponent';
 import ArkhamButton from '@components/core/ArkhamButton';
+import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
+import StyleContext from '@styles/StyleContext';
+import space, { s } from '@styles/space';
 
 interface Props {
   componentId: string;
@@ -26,6 +28,7 @@ interface Props {
 
 export default function UpgradeDecksInput({ componentId, id, skipDeckSave, specialXp, investigatorCounter }: Props) {
   const { latestDecks, campaignState } = useContext(CampaignGuideContext);
+  const { typography, width } = useContext(StyleContext);
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { listSeperator } = useContext(LanguageContext);
   const { scenarioInvestigators, campaignLog } = useContext(ScenarioStepContext);
@@ -122,12 +125,18 @@ export default function UpgradeDecksInput({ componentId, id, skipDeckSave, speci
       { map(scenarioInvestigators, investigator => {
         if (campaignLog.isEliminated(investigator)) {
           return (
-            <InvestigatorRow
-              key={investigator.code}
-              investigator={investigator}
-              description={investigator.traumaString(listSeperator, campaignLog.traumaAndCardData(investigator.code))}
-              eliminated
-            />
+            <View style={[space.paddingSideS, space.paddingVerticalXs]}>
+              <CompactInvestigatorRow
+                key={investigator.code}
+                investigator={investigator}
+                eliminated
+                width={width - s * (hasDecision ? 4 : 2)}
+              >
+                <Text style={[typography.mediumGameFont, typography.white]}>
+                  {investigator.traumaString(listSeperator, campaignLog.traumaAndCardData(investigator.code))}
+                </Text>
+              </CompactInvestigatorRow>
+            </View>
           );
         }
         return (

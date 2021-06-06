@@ -90,8 +90,8 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
   }, [campaignLog, campaignGuide, width]);
 
   const oddsCalculatorPressed = useCallback(() => {
-    showGuideChaosBagOddsCalculator(componentId, campaignId, campaignLog.chaosBag, campaignLog.investigatorCodesSafe());
-  }, [componentId, campaignId, campaignLog]);
+    showGuideChaosBagOddsCalculator(componentId, campaignId, campaignLog.chaosBag, campaignLog.investigatorCodesSafe(), scenarioId, standalone);
+  }, [componentId, campaignId, campaignLog, scenarioId, standalone]);
 
   const chaosBagSimulatorPressed = useCallback(() => {
     showGuideDrawChaosBag(

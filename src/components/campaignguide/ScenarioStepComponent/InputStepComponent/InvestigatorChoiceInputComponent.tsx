@@ -35,6 +35,7 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
         confirmText={input.confirm_text}
         bulletType={step.bullet_type}
         options={investigatorChoiceInputChoices(input, campaignLog)}
+        hideInvestigatorSection
         detailed
         investigator={campaignLog.investigators(false)[investigatorOffset]}
         investigators={slice(
