@@ -6,6 +6,7 @@ import {
   Pattern,
   Path,
 } from 'react-native-svg';
+import CampaignPattern from '../../../../assets/campaign_pattern.svg';
 import MysticPattern from '../../../../assets/mystic_pattern.svg';
 import SeekerPattern from '../../../../assets/seeker_pattern.svg';
 import MythosPattern from '../../../../assets/mythos_pattern.svg';
@@ -75,6 +76,12 @@ function StretchPattern({
 
 function HeaderPattern({ faction, width, height, transparent }: { faction : string; width: number; height: number; transparent?: boolean }) {
   switch (faction) {
+    case 'campaign':
+      return (
+        <StretchPattern patternWidth={344} width={width} height={height}>
+          <CampaignPattern color={'black'} />
+        </StretchPattern>
+      );
     case 'guardian':
       return (
         <StretchPattern patternWidth={344} width={width} height={height}>
@@ -152,8 +159,14 @@ function HeaderPath({ width, height, opacity, fullRound }: { width: number; heig
   );
 }
 
+function getOpacity(faction: string, transparent?: boolean) {
+  if (faction === 'campaign') {
+    return 0.15;
+  }
+  return transparent || (faction === 'seeker' || faction === 'neutral') ? 0.07 : 0.1;
+}
 const FactionPatternComponent = React.memo(function FactionPattern({ width, height, faction, transparent, fullRound }: Props) {
-  const opacity = transparent || (faction === 'seeker' || faction === 'neutral') ? 0.07 : 0.1;
+  const opacity = getOpacity(faction, transparent);
   return (
     <View style={[styles.pattern, { width, height }, Platform.OS === 'android' ? { opacity } : {}]}>
       <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>

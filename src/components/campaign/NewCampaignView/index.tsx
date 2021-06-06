@@ -54,6 +54,7 @@ import ChaosBagTextLine from './ChaosBagTextLine';
 import useAddCampaignNoteSectionDialog from '@components/campaign/useAddCampaignNoteSectionDialog';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { LatestDeckRedux } from '@data/local/types';
+import ActionButton from '@components/campaignguide/prompts/ActionButton';
 
 interface CampaignChoice {
   selection: CampaignSelection;
@@ -328,11 +329,11 @@ function NewCampaignView({ componentId }: NavigationProps) {
         <RoundedFactionBlock
           faction="neutral"
           header={(
-            <View style={[styles.block, { backgroundColor: colors.L20 }]}>
-              <Text style={[typography.mediumGameFont, typography.center]}>
+            <View style={[styles.block, { backgroundColor: colors.D10 }]}>
+              <Text style={[typography.mediumGameFont, { color: colors.L20 }, typography.center]}>
                 { t`Weakness Set` }
               </Text>
-              <Text style={typography.small}>
+              <Text style={[typography.small, typography.italic, { color: colors.L20 }, typography.center]}>
                 { t`Include all basic weaknesses from these expansions` }
               </Text>
             </View>
@@ -502,18 +503,11 @@ function NewCampaignView({ componentId }: NavigationProps) {
             <RoundedFactionBlock
               faction="neutral"
               header={(
-                <View style={[styles.block, { backgroundColor: colors.L20 }]}>
-                  <Text style={[typography.mediumGameFont, typography.center]}>
+                <View style={[styles.block, { backgroundColor: colors.D10 }]}>
+                  <Text style={[typography.mediumGameFont, { color: colors.L20 }, typography.center]}>
                     { t`Investigators` }
                   </Text>
                 </View>
-              )}
-              footer={(
-                <RoundedFooterButton
-                  icon="expand"
-                  title={guided ? t`Add Investigator` : t`Add Investigator Deck`}
-                  onPress={showDeckSelector}
-                />
               )}
               noSpace
             >
@@ -524,6 +518,15 @@ function NewCampaignView({ componentId }: NavigationProps) {
                 deckRemoved={deckRemoved}
                 investigatorRemoved={guided ? investigatorRemoved : undefined}
               />
+              <View style={[styles.centerRow, space.paddingXs]}>
+                <ActionButton
+                  leftIcon="plus-thin"
+                  color="light"
+                  title={guided ? t`Add Investigator` : t`Add Investigator Deck`}
+                  onPress={showDeckSelector}
+                />
+              </View>
+
             </RoundedFactionBlock>
           </View>
         ) }
@@ -531,6 +534,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
         <View style={space.paddingS}>
           <DeckButton
             icon="check-thin"
+            thin
             disabled={selection.type === 'campaign' && selection.code === CUSTOM && !name}
             title={selection.type === 'campaign' ? t`Create Campaign` : t`Create Standalone`}
             onPress={savePressed}
@@ -576,5 +580,11 @@ const styles = StyleSheet.create({
     paddingRight: m,
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
+  },
+  centerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
   },
 });

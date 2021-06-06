@@ -70,7 +70,7 @@ export function AnimatedCompactInvestigatorRow({
   investigator,
   ...props
 }: Props & {
-  toggleOpen: () => void;
+  toggleOpen?: () => void;
   disabled?: boolean;
   headerContent?: React.ReactNode;
 }) {

@@ -71,12 +71,15 @@ export interface ThemeColors {
     setup: string;
     resolution: string;
     resolutionBackground: string;
-    gold: string;
+
     blue: string;
-    teal: string;
     green: string;
     purple: string;
+    pink: string;
     red: string;
+    darkBlue: string;
+    teal: string;
+    tan: string;
   };
   navButton: string;
   warn: string;
@@ -236,12 +239,15 @@ export const LIGHT_THEME: ThemeColors = {
     setup: '#128C60',
     resolution: '#E75122',
     resolutionBackground: '#E7512233',
-    gold: '#c99b3833',
-    blue: '#00408033',
-    teal: '#00666633',
-    purple: '#46088733',
-    green: '#325c0933',
-    red: '#96000333',
+
+    blue: '#00759C',
+    green: '#6D9548',
+    purple: '#5B579C',
+    pink: '#A45F9C',
+    red: '#593B5D',
+    darkBlue: '#45559C',
+    teal: '#2A7D7F',
+    tan: '#AC9788',
   },
   navButton: '#007AFF',
   warn: '#FB4135',
@@ -379,12 +385,15 @@ export const DARK_THEME: ThemeColors = {
     setup: '#07AF73',
     resolution: '#F04932',
     resolutionBackground: '#F0493233',
-    gold: '#755a2088',
-    blue: '#395c8088',
-    teal: '#2a666688',
-    purple: '#7c559e88',
-    green: '#33660088',
-    red: '#8f474988',
+
+    blue: '#006385',
+    green: '#57783A',
+    purple: '#524F8D',
+    pink: '#96558E',
+    red: '#96558E',
+    darkBlue: '#3D4B8A',
+    teal: '#236A6B',
+    tan: '#A18978',
   },
   navButton: '#4aa1ff',
   warn: '#C50707',

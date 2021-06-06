@@ -9,28 +9,33 @@ interface Props {
   onPress?: () => void;
   icon: ArkhamButtonIconType | 'spinner';
   title: string;
+  color?: 'light' | 'dark';
 }
 
-export default function RoundedFooterButton({ onPress, icon, title }: Props) {
+
+export default function RoundedFooterButton({ onPress, icon, title, color = 'dark' }: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
   const height = (18 * fontScale) + 22;
+  const backgroundColor = color === 'dark' ? colors.L10 : colors.L20;
+  const rippleColor = color === 'dark' ? colors.L20 : colors.L30;
+  const textColor = color === 'dark' ? colors.D20 : colors.M;
   return (
     <Ripple
       style={[
         styles.buttonStyle,
         {
-          backgroundColor: colors.L10,
+          backgroundColor,
           height,
-          borderColor: colors.L10,
+          borderColor: backgroundColor,
         },
       ]}
-      rippleColor={colors.L20}
+      rippleColor={rippleColor}
       onPress={onPress}
       disabled={!onPress}
     >
       <View pointerEvents="box-none" style={styles.row}>
-        { icon === 'spinner' ? <ActivityIndicator size="small" color={colors.D20} animating /> : <ArkhamButtonIcon icon={icon} color="dark" /> }
-        <Text style={[typography.button, { marginLeft: height / 4, color: colors.D20 }]}>
+        { icon === 'spinner' ? <ActivityIndicator size="small" color={textColor} animating /> : <ArkhamButtonIcon icon={icon} color={color === 'dark' ? 'dark' : 'faded'} /> }
+        <Text style={[typography.button, { marginLeft: height / 4, color: textColor }]}>
           { title }
         </Text>
       </View>
