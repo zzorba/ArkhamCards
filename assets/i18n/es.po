@@ -1916,9 +1916,6 @@ msgstr "Vivo"
 msgid "Resigned"
 msgstr "Desistido"
 
-msgid "Investigator status at end of scenario:"
-msgstr "Estado del investigador al final del escenario:"
-
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
 msgstr "Continua en <b>${ nextScenarioName }</b>."
@@ -1953,14 +1950,8 @@ msgstr "Elegir investigador"
 msgid "No one"
 msgstr "Ninguno"
 
-msgid "Proceed"
-msgstr "Continuar"
-
 msgid "The investigators must decide (choose one):"
 msgstr "Los investigadores deben elegir (elige una):"
-
-msgid "Add new investigator"
-msgstr "Añadir nuevo investigador"
 
 #, javascript-format
 msgid "${ supplyName } to use (${ desiredCount })"
@@ -2033,22 +2024,8 @@ msgstr "Cartas de la Campaña"
 msgid "Physical trauma"
 msgstr "Traumas físicos"
 
-#, javascript-format
-msgid " (New Total: ${ totalPhysical })"
-msgstr " (Nuevo Total: ${ totalPhysical })"
-
 msgid "Mental trauma"
 msgstr "Trauma mental"
-
-#, javascript-format
-msgid " (New Total: ${ totalMental })"
-msgstr " (Nuevo Total: ${ totalMental })"
-
-msgid "Save deck upgrade"
-msgstr "Guardar mejora del mazo"
-
-msgid "Save adjustments"
-msgstr "Guardar ajustes"
 
 msgid "Select deck"
 msgstr "Seleccionar mazo"
@@ -2058,10 +2035,6 @@ msgstr "Ver mazo"
 
 msgid "Update decks with scenario results"
 msgstr "Actualizar mazos con los resultados del escenario"
-
-#, javascript-format
-msgid "Who will add ${ card.name } to their deck?"
-msgstr "¿Quién agregará ${ card.name } a su mazo?"
 
 #, javascript-format
 msgid "In your Campaign Log, under \"${ section }\", record ${ card.name }. "
@@ -2087,9 +2060,6 @@ msgstr "En el Registro de Campaña, anota que <i>${ logEntry.text }</i>"
 #, javascript-format
 msgid "Remove ${ card.name } (${ input.length })"
 msgstr "Retira ${ card.name } (${ input.length })"
-
-msgid "Who will remove ${ card.name } from their deck?"
-msgstr "¿Quién retirará ${ card.name } de su mazo?"
 
 msgid "You suffer 1 physical or mental trauma <i>(your choice)</i>."
 msgstr "Sufres 1 trauma físico o mental <i>(tu eliges)</i>."
@@ -2204,6 +2174,7 @@ msgstr "Si el investigador jefe ha <b>muerto</b>."
 msgid "If all investigators were <b>killed</b>."
 msgstr "Si todos los investigadores han <b>muerto</b>."
 
+#, javascript-format
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
 msgstr "Revisa en las ${ logEntry.section } si <i>${ logEntry.text }</i>"
 
@@ -2316,9 +2287,6 @@ msgstr "Robar fichas de caos"
 
 msgid "Draw random basic weakness"
 msgstr "Robar una debilidad básica aleatoria"
-
-msgid "Resolutions"
-msgstr "Resoluciones"
 
 msgid "Start playing the scenario now."
 msgstr "Empieza a jugar el escenario ahora."
@@ -2461,9 +2429,6 @@ msgstr ""
 "pero no has guardado los cambios todavía. Por favor, vuelve atrás y "
 "selección \"Guardar ajustes\" para asegurarte de que tus cambios son "
 "guardados."
-
-msgid "Scenario completed"
-msgstr "Escenario completado"
 
 msgid "Choose Side-Scenario"
 msgstr "Elige una Historia secundaria"
@@ -2750,9 +2715,6 @@ msgstr ""
 "<b>Nota:</b> Los traumas por derrotas de los investigadores se añaden "
 "durante la resolución del escenario."
 
-msgid "Record Trauma"
-msgstr "Guardar Trauma"
-
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of "
 "an <i>Arkham Horror: The Card Game</i> campaign. Playing a side-story costs "
@@ -2772,9 +2734,6 @@ msgstr ""
 "secundaria solo puede jugarse una vez por campaña.\n"
 "La experiencia requerida para jugar estos escenarios será restada "
 "automáticamente al final del escenario."
-
-msgid "Select resolution"
-msgstr "Selecciona resolución"
 
 msgid "Contact us"
 msgstr "Contacta con nosotros"
@@ -4129,15 +4088,9 @@ msgstr "Ver bolsa de Caos"
 msgid "Sealed tokens"
 msgstr "Fichas de Caos selladas"
 
-msgid "Save XP to deck after making adjustments"
-msgstr "Guarda la XP después de hacer los ajustes"
-
 #, javascript-format
 msgid "${ _spentXp } of ${ _totalXp } spent"
 msgstr "${ _spentXp } de ${ _totalXp } gastada"
-
-msgid "Save your changes to the campaign log"
-msgstr "Guardar tus cambios en el registro de campaña"
 
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr "Los mazos con Conocimiento ancestral deben incluir al menos 10 Habilidades."
@@ -4181,20 +4134,6 @@ msgstr "Silbatos"
 
 msgid "Loading..."
 msgstr "Cargando..."
-
-#, javascript-format
-msgid "${ deck.owner.handle } must save this upgrade"
-msgstr "${ deck.owner.handle } debe guardar esta mejora"
-
-msgid "Your friend must save this upgrade"
-msgstr "Tu amigo debe guardar esta mejora"
-
-#, javascript-format
-msgid "${ deck.owner.handle } must save this deck"
-msgstr "${ deck.owner.handle } debe guardar este mazo"
-
-msgid "Your friend must save this deck"
-msgstr "Tu amigo debe guardar este mazo"
 
 msgid "Campaign players"
 msgstr "Jugadores de la campaña"
@@ -4335,9 +4274,6 @@ msgstr ""
 msgid "${ section.title } (from XP)"
 msgstr ""
 
-msgid " (New Total: ${ newTotal })"
-msgstr ""
-
 msgid "Exiled story cards"
 msgstr ""
 
@@ -4375,17 +4311,203 @@ msgstr ""
 msgid "Fan-made campiagn by The Beard"
 msgstr ""
 
+msgid "Edge of the Earth"
+msgstr ""
+
+msgid "Promotional"
+msgstr ""
+
+msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
+msgstr ""
+
+msgid "You cannot have more than 5 cards that are not Seeker or Neutral"
+msgstr ""
+
+msgid "You cannot have more than 5 cards that are not Rogue or Neutral"
+msgstr ""
+
+msgid "You cannot have more than 5 cards that are not Mystic or Neutral"
+msgstr ""
+
+msgid "You cannot have more than 5 cards that are not Survivor or Neutral"
+msgstr ""
+
+msgid "You must have at least 7 cards from 3 different factions"
+msgstr ""
+
+msgid "You cannot have more than 15 level 0-1 Seeker and/or Mystic cards"
+msgstr ""
+
+msgid "You cannot have more than 5 Guardian and/or Mystic cards"
+msgstr ""
+
+msgid "You cannot have more than 5 level 0 Mystic cards"
+msgstr ""
+
+msgid "Choose resolution"
+msgstr ""
+
+msgid "Choose investigator to record trauma"
+msgstr ""
+
+msgid "Defeated"
+msgstr ""
+
+msgid "Status of investigators"
+msgstr ""
+
+msgid "Social"
+msgstr ""
+
+msgid "Connect with other fans of Arkham Horror: The Card Game."
+msgstr ""
+
+msgid "Add new"
+msgstr ""
+
+msgid "Lead"
+msgstr ""
+
+msgid "Changes have been recorded."
+msgstr ""
+
+msgid "No adjustments need saving."
+msgstr ""
+
+msgid ""
+"When you have finished making adjustments, press the 'Save' button to "
+"record your changes."
+msgstr ""
+
+msgid ""
+"This deck will be upgraded with XP and any new story cards will be added or "
+"removed as specified."
+msgstr ""
+
 #, javascript-format
+msgid " (new total: ${ total })"
+msgstr ""
+
+msgid "Earned XP:"
+msgstr ""
+
+msgid "Not deck owner"
+msgstr ""
+
+msgid "Saved"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"This deck is owned by ${ deck.owner.handle }. They must open the app on "
+"their own device to save the upgrade"
+msgstr ""
+
+msgid ""
+"This deck is owned by another user. They must open the app on their own "
+"device to save the upgrade"
+msgstr ""
+
+msgid ""
+"This investigator does not have a deck associated with it.\n"
+"If you choose a deck, the app can help track spent experience, story asset "
+"changes, and deckbuilding requirements."
+msgstr ""
+
+msgid ""
+"Now that your upgrade has been saved, when visiting the deck be sure to use "
+"the 'Edit' button when making card changes."
+msgstr ""
+
+msgid "Choose a deck for this investigator"
+msgstr ""
+
+msgid "What exactly does the app handle?"
+msgstr ""
+
+msgid ""
+"Generally speaking, the app handles anything that you see mentioned in the "
+"digital campaign log.\n"
+"If you are building your deck with the app, it will also handle cards like "
+"Arcane Research and Shrewd Analysis (if you allow the app to randomize your "
+"upgrades).\n"
+"If you find that you made a mistake after you upgraded your deck, you can "
+"'adjust' the available experience when editing a deck."
+msgstr ""
+
+msgid ""
+"The numbers below already include all the trauma, victory points, and "
+"stotry assets you may have earned during the resolution.\n"
+"\n"
+"If you have any other cards or effects that the app does not take care of, "
+"you can make adjustments below before saving each investigator."
+msgstr ""
+
+msgid "Learn more"
+msgstr ""
+
+msgid "Save will update your deck with the card changes listed above."
+msgstr ""
+
+msgid "Campaign log"
+msgstr ""
+
+msgid "Record in campaign log"
+msgstr ""
+
+msgid "Review and add records"
+msgstr ""
+
+msgid "Chaos bag"
+msgstr ""
+
+msgid "Review and simulate draw"
+msgstr ""
+
+msgid "Draw random"
+msgstr ""
+
+msgid "Record"
+msgstr ""
+
+msgid "Scenario effects"
+msgstr ""
+
+msgid "Scenario Ended"
+msgstr ""
+
+msgid "Proceed to Resolutions"
+msgstr ""
+
+msgid "Choose trauma type"
+msgstr ""
+
+msgid "Chosen trauma type"
+msgstr ""
+
+msgid "Random results"
+msgstr ""
+
+msgid "Select Traits"
+msgstr ""
+
+msgid "Random weaknesses will be drawn that match these traits."
+msgstr ""
+
+msgid "Edit selection"
+msgstr ""
+
+msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } se ha vuelto <b>loco</b>."
 
-#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } ha <b>muerto</b>."
 
-#, javascript-format
 msgctxt "masculine"
 msgid ""
 "${ investigator.name } suffers 1 physical or mental trauma <i>(their "
@@ -4457,35 +4579,34 @@ msgstr "Derrotado: sin traumas"
 
 #, javascript-format
 msgctxt "masculine"
-msgid ""
-"If <i>${ card.name }</i> is not listed under Check ‘${ entry.section }’ in "
-"your Campaign Log."
-msgstr ""
-"Si <i>${ card.name }</i> no aparece en la sección ‘${ entry.section }’ de "
-"tu Registro de Campaña."
-
-#, javascript-format
-msgctxt "masculine"
-msgid ""
-"If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your "
-"Campaign Log."
-msgstr ""
-"Si <i>${ card.name }</i> aparece en la sección ‘${ entry.section }’ de tu "
-"Registro de Campaña."
-
-#, javascript-format
-msgctxt "masculine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } lee <b>${ sectionName }</b>"
 
+#, javascript-format
+msgctxt "masculine"
+msgid ""
+"If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr ""
+
+#, javascript-format
+msgctxt "masculine"
+msgid ""
+"If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr ""
+
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } se ha vuelto <b>loca</b>."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } ha <b>muerto</b>."
 
+#, javascript-format
 msgctxt "feminine"
 msgid ""
 "${ investigator.name } suffers 1 physical or mental trauma <i>(their "
@@ -4556,27 +4677,23 @@ msgctxt "feminine"
 msgid "Defeated: no trauma"
 msgstr "Derrotada: sin traumas"
 
-msgctxt "feminine"
-msgid ""
-"If <i>${ card.name }</i> is not listed under Check ‘${ entry.section }’ in "
-"your Campaign Log."
-msgstr ""
-"Si <i>${ card.name }</i> no aparece en la sección ‘${ entry.section }’ de "
-"tu Registro de Campaña."
-
-#, javascript-format
-msgctxt "feminine"
-msgid ""
-"If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your "
-"Campaign Log."
-msgstr ""
-"Si <i>${ card.name }</i> aparece en la sección ‘${ entry.section }’ de tu "
-"Registro de Campaña."
-
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } lee <b>${ sectionName }</b>"
+
+msgctxt "feminine"
+msgid ""
+"If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr ""
+
+#, javascript-format
+msgctxt "feminine"
+msgid ""
+"If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr ""
 
 msgctxt "trait"
 msgid "???"
@@ -5696,6 +5813,10 @@ msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] "Escenario"
 msgstr[1] "Escenarios"
+
+msgctxt "campaign_log_entry"
+msgid "Other."
+msgstr ""
 
 msgctxt "Weakness Card"
 msgid "All"

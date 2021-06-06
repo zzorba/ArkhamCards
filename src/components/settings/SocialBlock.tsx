@@ -39,18 +39,18 @@ export default function SocialBlock() {
         topMargin={s}
         bottomMargin={s}
         onPress={discordPressed}
-        title={t`Discord`}
+        title={`Discord`}
       />
       <DeckButton
         bottomMargin={s}
         icon="wrench"
         onPress={vkPressed}
-        title={t`VK`}
+        title={`VK`}
       />
       <DeckButton
         icon="email"
         onPress={telegramPressed}
-        title={t`Telegram`}
+        title={`Telegram`}
       />
     </RoundedFactionBlock>
   );

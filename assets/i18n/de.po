@@ -1922,9 +1922,6 @@ msgstr "Am Leben"
 msgid "Resigned"
 msgstr "Aufgegeben"
 
-msgid "Investigator status at end of scenario:"
-msgstr "Zustand der Ermittler am Ende des Szenarios:"
-
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
 msgstr "Fahre mit <b>${ nextScenarioName }</b> fort."
@@ -1959,14 +1956,8 @@ msgstr "Ermittler wählen"
 msgid "No one"
 msgstr "Niemand"
 
-msgid "Proceed"
-msgstr "Fortfahren"
-
 msgid "The investigators must decide (choose one):"
 msgstr "Die Ermittler müssen entscheiden (wähle eins):"
-
-msgid "Add new investigator"
-msgstr "Neuen Ermittler hinzufügen"
 
 #, javascript-format
 msgid "${ supplyName } to use (${ desiredCount })"
@@ -2039,22 +2030,8 @@ msgstr "Kampagnenkarten"
 msgid "Physical trauma"
 msgstr "Körperliches Trauma"
 
-#, javascript-format
-msgid " (New Total: ${ totalPhysical })"
-msgstr " (Neue Gesamtsumme: ${ totalPhysical })"
-
 msgid "Mental trauma"
 msgstr "Geistiges Trauma"
-
-#, javascript-format
-msgid " (New Total: ${ totalMental })"
-msgstr " (Neue Gesamtsumme: ${ totalMental })"
-
-msgid "Save deck upgrade"
-msgstr "Deck-Upgrade speichern"
-
-msgid "Save adjustments"
-msgstr "Anpassungen speichern"
 
 msgid "Select deck"
 msgstr "Deck auswählen"
@@ -2064,10 +2041,6 @@ msgstr "Deck anzeigen"
 
 msgid "Update decks with scenario results"
 msgstr "Deck mit den Szenario-Ergebnissen verbessern"
-
-#, javascript-format
-msgid "Who will add ${ card.name } to their deck?"
-msgstr "Wer fügt ${ card.name } seinem Deck hinzu?"
 
 #, javascript-format
 msgid "In your Campaign Log, under \"${ section }\", record ${ card.name }. "
@@ -2091,9 +2064,6 @@ msgstr "Notiere im Kampagnenlogbuch, dass <i>${ logEntry.text }</i>"
 #, javascript-format
 msgid "Remove ${ card.name } (${ input.length })"
 msgstr "Entferne ${ card.name } (${ input.length })"
-
-msgid "Who will remove ${ card.name } from their deck?"
-msgstr "Wer entfernt ${ card.name } aus seinem Deck?"
 
 msgid "You suffer 1 physical or mental trauma <i>(your choice)</i>."
 msgstr "Du erleidest 1 körperliches oder seelisches Trauma <i>(du entscheidest)</i>."
@@ -2210,6 +2180,7 @@ msgstr "Falls der Ermittlungsleiter <b>getötet</b> wurde."
 msgid "If all investigators were <b>killed</b>."
 msgstr "Falls alle Ermittler <b>getötet</b> wurden."
 
+#, javascript-format
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
 msgstr "Überprüfe ${ logEntry.section }. <i>ob ${ logEntry.text }</i>"
 
@@ -2322,9 +2293,6 @@ msgstr "Chaosmarker ziehen"
 
 msgid "Draw random basic weakness"
 msgstr "Zufällige Grundschwäche ziehen"
-
-msgid "Resolutions"
-msgstr "Auflösungen"
 
 msgid "Start playing the scenario now."
 msgstr "Ein neues Szenario starten."
@@ -2466,9 +2434,6 @@ msgstr ""
 "Scheinbar wurden Erfahrungspunkte oder Traumata für einen Ermittler "
 "geändert aber nicht gespeichert. Bitte gehe zurück und wähle 'Anpassungen "
 "speichern' um sicherzustellen, dass die Änderungen gespeichert wurden."
-
-msgid "Scenario completed"
-msgstr "Szenario abgeschlossen"
 
 msgid "Choose Side-Scenario"
 msgstr "Nebengeschichte wählen"
@@ -2757,9 +2722,6 @@ msgstr ""
 "<b>Hinweis:</b> Trauma von besiegten Ermittlern wird in der Szenario "
 "Auflösung abgehandelt."
 
-msgid "Record Trauma"
-msgstr "Traumata erfassen"
-
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of "
 "an <i>Arkham Horror: The Card Game</i> campaign. Playing a side-story costs "
@@ -2779,9 +2741,6 @@ msgstr ""
 "normalerweise nur ein Mal pro Kampagne gespielt werden.\n"
 "Die benötigten Erfahrungspunkte werden automatisch am Ende des Szenarios "
 "berechnet."
-
-msgid "Select resolution"
-msgstr "Auflösung wählen"
 
 msgid "Contact us"
 msgstr "Kontaktinformationen"
@@ -4134,9 +4093,6 @@ msgstr "Alle freigeben"
 msgid "Remove all bless & curse tokens"
 msgstr "Alle Segen und Fluch Token entfernen"
 
-msgid "Save XP to deck after making adjustments"
-msgstr ""
-
 msgid "do not remove"
 msgstr ""
 
@@ -4152,9 +4108,6 @@ msgstr ""
 
 #, javascript-format
 msgid "${ _spentXp } of ${ _totalXp } spent"
-msgstr ""
-
-msgid "Save your changes to the campaign log"
 msgstr ""
 
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
@@ -4198,20 +4151,6 @@ msgid "Whistles"
 msgstr ""
 
 msgid "Loading..."
-msgstr ""
-
-#, javascript-format
-msgid "${ deck.owner.handle } must save this upgrade"
-msgstr ""
-
-msgid "Your friend must save this upgrade"
-msgstr ""
-
-#, javascript-format
-msgid "${ deck.owner.handle } must save this deck"
-msgstr ""
-
-msgid "Your friend must save this deck"
 msgstr ""
 
 msgid "Campaign players"
@@ -4353,9 +4292,6 @@ msgstr ""
 msgid "${ section.title } (from XP)"
 msgstr ""
 
-msgid " (New Total: ${ newTotal })"
-msgstr ""
-
 msgid "Exiled story cards"
 msgstr ""
 
@@ -4393,17 +4329,203 @@ msgstr ""
 msgid "Fan-made campiagn by The Beard"
 msgstr ""
 
+msgid "Edge of the Earth"
+msgstr ""
+
+msgid "Promotional"
+msgstr ""
+
+msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
+msgstr ""
+
+msgid "You cannot have more than 5 cards that are not Seeker or Neutral"
+msgstr ""
+
+msgid "You cannot have more than 5 cards that are not Rogue or Neutral"
+msgstr ""
+
+msgid "You cannot have more than 5 cards that are not Mystic or Neutral"
+msgstr ""
+
+msgid "You cannot have more than 5 cards that are not Survivor or Neutral"
+msgstr ""
+
+msgid "You must have at least 7 cards from 3 different factions"
+msgstr ""
+
+msgid "You cannot have more than 15 level 0-1 Seeker and/or Mystic cards"
+msgstr ""
+
+msgid "You cannot have more than 5 Guardian and/or Mystic cards"
+msgstr ""
+
+msgid "You cannot have more than 5 level 0 Mystic cards"
+msgstr ""
+
+msgid "Choose resolution"
+msgstr ""
+
+msgid "Choose investigator to record trauma"
+msgstr ""
+
+msgid "Defeated"
+msgstr ""
+
+msgid "Status of investigators"
+msgstr ""
+
+msgid "Social"
+msgstr ""
+
+msgid "Connect with other fans of Arkham Horror: The Card Game."
+msgstr ""
+
+msgid "Add new"
+msgstr ""
+
+msgid "Lead"
+msgstr ""
+
+msgid "Changes have been recorded."
+msgstr ""
+
+msgid "No adjustments need saving."
+msgstr ""
+
+msgid ""
+"When you have finished making adjustments, press the 'Save' button to "
+"record your changes."
+msgstr ""
+
+msgid ""
+"This deck will be upgraded with XP and any new story cards will be added or "
+"removed as specified."
+msgstr ""
+
 #, javascript-format
+msgid " (new total: ${ total })"
+msgstr ""
+
+msgid "Earned XP:"
+msgstr ""
+
+msgid "Not deck owner"
+msgstr ""
+
+msgid "Saved"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"This deck is owned by ${ deck.owner.handle }. They must open the app on "
+"their own device to save the upgrade"
+msgstr ""
+
+msgid ""
+"This deck is owned by another user. They must open the app on their own "
+"device to save the upgrade"
+msgstr ""
+
+msgid ""
+"This investigator does not have a deck associated with it.\n"
+"If you choose a deck, the app can help track spent experience, story asset "
+"changes, and deckbuilding requirements."
+msgstr ""
+
+msgid ""
+"Now that your upgrade has been saved, when visiting the deck be sure to use "
+"the 'Edit' button when making card changes."
+msgstr ""
+
+msgid "Choose a deck for this investigator"
+msgstr ""
+
+msgid "What exactly does the app handle?"
+msgstr ""
+
+msgid ""
+"Generally speaking, the app handles anything that you see mentioned in the "
+"digital campaign log.\n"
+"If you are building your deck with the app, it will also handle cards like "
+"Arcane Research and Shrewd Analysis (if you allow the app to randomize your "
+"upgrades).\n"
+"If you find that you made a mistake after you upgraded your deck, you can "
+"'adjust' the available experience when editing a deck."
+msgstr ""
+
+msgid ""
+"The numbers below already include all the trauma, victory points, and "
+"stotry assets you may have earned during the resolution.\n"
+"\n"
+"If you have any other cards or effects that the app does not take care of, "
+"you can make adjustments below before saving each investigator."
+msgstr ""
+
+msgid "Learn more"
+msgstr ""
+
+msgid "Save will update your deck with the card changes listed above."
+msgstr ""
+
+msgid "Campaign log"
+msgstr ""
+
+msgid "Record in campaign log"
+msgstr ""
+
+msgid "Review and add records"
+msgstr ""
+
+msgid "Chaos bag"
+msgstr ""
+
+msgid "Review and simulate draw"
+msgstr ""
+
+msgid "Draw random"
+msgstr ""
+
+msgid "Record"
+msgstr ""
+
+msgid "Scenario effects"
+msgstr ""
+
+msgid "Scenario Ended"
+msgstr ""
+
+msgid "Proceed to Resolutions"
+msgstr ""
+
+msgid "Choose trauma type"
+msgstr ""
+
+msgid "Chosen trauma type"
+msgstr ""
+
+msgid "Random results"
+msgstr ""
+
+msgid "Select Traits"
+msgstr ""
+
+msgid "Random weaknesses will be drawn that match these traits."
+msgstr ""
+
+msgid "Edit selection"
+msgstr ""
+
+msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } wird <b>wahnsinnig</b>."
 
-#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } wird <b>getötet</b>."
 
-#, javascript-format
 msgctxt "masculine"
 msgid ""
 "${ investigator.name } suffers 1 physical or mental trauma <i>(their "
@@ -4475,35 +4597,34 @@ msgstr "Besiegt: Kein Trauma"
 
 #, javascript-format
 msgctxt "masculine"
-msgid ""
-"If <i>${ card.name }</i> is not listed under Check ‘${ entry.section }’ in "
-"your Campaign Log."
-msgstr ""
-"Falls <i>${ card.name }</i> nicht unter \\\"Überprüfe ‘${ entry.section }’ "
-"im Kampagnenlogbuch\\\" aufgeführt ist."
-
-#, javascript-format
-msgctxt "masculine"
-msgid ""
-"If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your "
-"Campaign Log."
-msgstr ""
-"Falls <i>${ card.name }</i> unter \\\"Überprüfe ‘${ entry.section }’ im "
-"Kampagnenlogbuch\\\" aufgeführt ist."
-
-#, javascript-format
-msgctxt "masculine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } liest <b>${ sectionName }</b>"
 
+#, javascript-format
+msgctxt "masculine"
+msgid ""
+"If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr ""
+
+#, javascript-format
+msgctxt "masculine"
+msgid ""
+"If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr ""
+
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } wird <b>wahnsinnig</b>."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } wird <b>getötet</b>."
 
+#, javascript-format
 msgctxt "feminine"
 msgid ""
 "${ investigator.name } suffers 1 physical or mental trauma <i>(their "
@@ -4574,27 +4695,23 @@ msgctxt "feminine"
 msgid "Defeated: no trauma"
 msgstr "Besiegt: Kein Trauma"
 
-msgctxt "feminine"
-msgid ""
-"If <i>${ card.name }</i> is not listed under Check ‘${ entry.section }’ in "
-"your Campaign Log."
-msgstr ""
-"Falls <i>${ card.name }</i> nicht unter \\\"Überprüfe ‘${ entry.section }’ "
-"im Kampagnenlogbuch\\\" aufgeführt ist."
-
-#, javascript-format
-msgctxt "feminine"
-msgid ""
-"If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your "
-"Campaign Log."
-msgstr ""
-"Falls <i>${ card.name }</i> unter \\\"Überprüfe ‘${ entry.section }’ im "
-"Kampagnenlogbuch\\\" aufgeführt ist."
-
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } liest <b>${ sectionName }</b>"
+
+msgctxt "feminine"
+msgid ""
+"If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr ""
+
+#, javascript-format
+msgctxt "feminine"
+msgid ""
+"If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr ""
 
 msgctxt "trait"
 msgid "???"
@@ -5714,6 +5831,10 @@ msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] "Szenario"
 msgstr[1] "Szenarien"
+
+msgctxt "campaign_log_entry"
+msgid "Other."
+msgstr ""
 
 msgctxt "Weakness Card"
 msgid "All"
