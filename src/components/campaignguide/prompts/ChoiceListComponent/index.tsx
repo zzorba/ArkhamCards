@@ -145,7 +145,7 @@ export default function ChoiceListComponent({ id, promptType, investigator, bull
       );
     }
     return results;
-  }, [inputChoices, items, detailed, options, optional, width, getChoice, onChoiceChange]);
+  }, [inputChoices, hideInvestigatorSection, items, detailed, options, optional, width, getChoice, onChoiceChange]);
 
   return (
     <InputWrapper

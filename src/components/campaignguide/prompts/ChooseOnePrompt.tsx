@@ -6,9 +6,9 @@ import ChooseOneListComponent from './ChooseOneListComponent';
 import ScenarioGuideContext from '../ScenarioGuideContext';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { BulletType } from '@data/scenario/types';
-import { DisplayChoice } from '@data/scenario';
+import { DisplayChoiceWithId } from '@data/scenario';
 import space, { s } from '@styles/space';
-import { forEach, throttle } from 'lodash';
+import { findIndex, forEach, throttle } from 'lodash';
 import InputWrapper from './InputWrapper';
 import ActionButton from './ActionButton';
 import ChaosBagLine from '@components/core/ChaosBagLine';
@@ -21,12 +21,9 @@ interface Props {
   text?: string;
   confirmText?: string;
   showUndo?: boolean;
-  choices: DisplayChoice[];
+  choices: DisplayChoiceWithId[];
   largePrompt?: boolean;
-}
-
-interface State {
-  selectedChoice?: number;
+  defaultChoice?: string;
 }
 
 export default function ChooseOnePrompt({
@@ -36,10 +33,13 @@ export default function ChooseOnePrompt({
   confirmText,
   choices,
   showUndo,
+  defaultChoice,
 }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { colors, width } = useContext(StyleContext);
-  const [currentSelectedChoice, setSelectedChoice] = useState<number | undefined>();
+  const [currentSelectedChoice, setSelectedChoice] = useState<number | undefined>(
+    defaultChoice ? findIndex(choices, item => item.id === defaultChoice) : undefined
+  );
 
   const undo = useMemo(() => throttle(() => {
     scenarioState.undo();

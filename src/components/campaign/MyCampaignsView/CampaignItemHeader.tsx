@@ -9,7 +9,6 @@ import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import EncounterIcon from '@icons/EncounterIcon';
-import ArkhamIcon from '@icons/ArkhamIcon';
 import AppIcon from '@icons/AppIcon';
 import FactionPattern from '@components/core/RoundedFactionHeader/FactionPattern';
 

@@ -1,8 +1,6 @@
 import React, { useCallback } from 'react';
-import { Text } from 'react-native';
 
 import { CUSTOM } from '@actions/types';
-import MiniCampaignSummaryComponent from '../MiniCampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 
 import GenericCampaignItem from './GenericCampaignItem';

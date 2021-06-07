@@ -11,6 +11,8 @@ import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import Card from '@data/types/Card';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
+import ScenarioGuideContext from '../ScenarioGuideContext';
+import { throttle } from 'lodash';
 
 interface Props {
   bulletType?: BulletType;
@@ -33,7 +35,17 @@ function TitleRow({ title, titleNode, titleStyle, titleButton, editable, bulletT
     if (!title) {
       return null;
     }
-    return titleStyle === 'setup' ? <CampaignGuideTextComponent text={title} /> : <Text style={[typography.bigGameFont, editable ? space.paddingSideXs : undefined]}>{title}</Text>;
+    return (
+      <View style={{ flex: 1 }}>
+        { titleStyle === 'setup' ? (
+          <CampaignGuideTextComponent text={title} />
+        ) : (
+          <Text style={[typography.bigGameFont, editable ? space.paddingSideXs : undefined]}>
+            {title}
+          </Text>
+        ) }
+      </View>
+    );
   }, [title, titleStyle, typography, editable]);
   const content = useMemo(() => {
     if (!titleText && !titleNode) {
@@ -112,6 +124,19 @@ export default function InputWrapper({
   disabledText,
 }: Props) {
   const { colors, borderStyle, shadow, width } = useContext(StyleContext);
+  const { scenarioState } = useContext(ScenarioGuideContext);
+  const undo = useMemo(() => throttle(() => {
+    scenarioState.undo();
+  }, 500, { leading: true, trailing: false }), [scenarioState]);
+  const undoButton = editable && !titleButton && (!title || !titleNode) ? (
+    <ActionButton
+      color="light"
+      leftIcon="undo"
+      title={t`Undo`}
+      onPress={undo}
+    />
+  ) : undefined;
+
   if (investigator) {
     return (
       <View style={[space.paddingSideS, space.marginBottomL]}>
@@ -121,7 +146,14 @@ export default function InputWrapper({
           faction={investigator.factionCode()}
           header={<CompactInvestigatorRow investigator={investigator} width={width - s * 2} open />}
         >
-          <TitleRow bulletType={bulletType} titleStyle={titleStyle} title={title} titleNode={titleNode} titleButton={titleButton} editable={editable} />
+          <TitleRow
+            bulletType={bulletType}
+            titleStyle={titleStyle}
+            title={title}
+            titleNode={titleNode}
+            titleButton={editable ? (titleButton || undoButton) : undefined}
+            editable={editable}
+          />
           <View style={[space.paddingSideS, space.paddingTopS, space.paddingBottomXs]}>{ children }</View>
           { editable && <ButtonRow buttons={buttons} onSubmit={onSubmit} disabledText={disabledText} /> }
         </RoundedFactionBlock>
@@ -138,7 +170,7 @@ export default function InputWrapper({
           space.marginBottomL,
           { backgroundColor: colors.L20 },
         ]}>
-        <TitleRow bulletType={bulletType} titleStyle={titleStyle} title={title} titleNode={titleNode} titleButton={titleButton} editable />
+        <TitleRow bulletType={bulletType} titleStyle={titleStyle} title={title} titleNode={titleNode} titleButton={titleButton || undoButton} editable />
         <View style={[space.paddingSideS, space.paddingTopS, space.paddingBottomXs]}>{ children }</View>
         <ButtonRow buttons={buttons} onSubmit={onSubmit} disabledText={disabledText} />
       </View>

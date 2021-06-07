@@ -28,7 +28,6 @@ export default function ChoiceComponent({
   const onPress = useCallback(() => {
     onSelect(index);
   }, [onSelect, index]);
-
   const textContent = useMemo(() => {
     return (
       <>

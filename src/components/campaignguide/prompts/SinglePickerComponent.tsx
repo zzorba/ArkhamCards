@@ -76,7 +76,7 @@ export default function SinglePickerComponent({
     onValueChange,
     selectedValue: selectedIndex,
   });
-  const selectedLabel = (selectedIndex === undefined || selectedIndex === -1) ? defaultLabel : choices[selectedIndex].selected_text;
+  const selectedLabel = (selectedIndex === undefined || selectedIndex === -1) ? defaultLabel : (choices[selectedIndex].selected_text || choices[selectedIndex].text);
   const selectedIcon = (selectedIndex === undefined || selectedIndex === -1) ? undefined : choices[selectedIndex].icon;
   const selection = useMemo(() => {
     return (

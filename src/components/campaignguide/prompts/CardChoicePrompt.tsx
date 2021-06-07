@@ -244,6 +244,7 @@ export default function CardChoicePrompt({ componentId, id, text, input, promptT
       id={id}
       choiceId={choice.id}
       text={text}
+      confirmText={choice.confirm_text}
       items={map(filteredCards, card => {
         return {
           code: card.code,

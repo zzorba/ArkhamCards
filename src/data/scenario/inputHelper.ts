@@ -125,6 +125,7 @@ export function calculateBinaryConditionResult(
         }
       }
     }
+    case 'campaign_log_section_exists':
     case 'campaign_log':
       return campaignLogConditionResult(condition, campaignLog);
     case 'campaign_log_count': {

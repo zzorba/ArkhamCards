@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react';
-import { Text } from 'react-native';
 
 import { CUSTOM } from '@actions/types';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';

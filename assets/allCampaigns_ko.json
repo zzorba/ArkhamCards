@@ -19,7 +19,7 @@
     {
       "id": "hidden",
       "type": "hidden",
-      "title": "Hidden"
+      "title": "숨김"
     }
   ],
   "scenarios": [
@@ -61,6 +61,7 @@
       "text": "난이도를 선택합니다.",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -3938,7 +3939,7 @@
     {
       "id": "hidden",
       "type": "hidden",
-      "title": "Hidden"
+      "title": "숨김"
     }
   ],
   "scenarios": [
@@ -3974,6 +3975,7 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -4235,6 +4237,7 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -5743,6 +5746,7 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -10513,8 +10517,8 @@
   "resolutions": [
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution",
-      "description": "Aat least one investigator resigned",
+      "title": "아무 결말에도 도달하지 못했다면",
+      "description": "조사자가 한 명 이상 후퇴",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -10527,8 +10531,8 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution",
-      "description": "All investigators were defeated",
+      "title": "아무 결말에도 도달하지 못했다면",
+      "description": "모든 조사자가 쓰러짐",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -12379,7 +12383,7 @@
     {
       "id": "hidden",
       "type": "hidden",
-      "title": "Hidden"
+      "title": "숨김"
     }
   ],
   "scenarios": [
@@ -12421,6 +12425,7 @@
       "text": "난이도를 선택합니다.",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -16517,7 +16522,7 @@
     {
       "id": "hidden",
       "type": "hidden",
-      "title": "Hidden"
+      "title": "숨김"
     }
   ],
   "scenarios": [
@@ -16553,6 +16558,7 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -17676,6 +17682,7 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -18473,6 +18480,7 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -23467,8 +23475,8 @@
   "resolutions": [
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution",
-      "description": "Aat least one investigator resigned",
+      "title": "아무 결말에도 도달하지 못했다면",
+      "description": "조사자가 한 명 이상 후퇴",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -23481,8 +23489,8 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution",
-      "description": "All investigators were defeated",
+      "title": "아무 결말에도 도달하지 못했다면",
+      "description": "모든 조사자가 쓰러짐",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -25471,6 +25479,7 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -32956,7 +32965,7 @@
     {
       "id": "search_for_alejandro_alone",
       "bullet_type": "small",
-      "text": "‘고위층 지인’ 사본 2장 중 무작위로 선택한 1장, ‘경찰서에서’ 사본 2장, ‘실종자들’ 사본 1장."
+      "text": "주요목적 “c/d” 덱에서 다음 카드를 제거합니다: ‘고위층 지인’ 사본 2장 중 무작위로 선택한 1장, ‘경찰서에서’ 사본 2장, ‘실종자들’ 사본 1장."
     },
     {
       "id": "setup_act_ef_prompt",
@@ -35377,7 +35386,7 @@
         "choices": [
           {
             "id": "rescued_custodian",
-            "text": "지난 시나리오가 끝날 때, ‘서고 관리자’를 조종하는 조사자가 있었다.",
+            "text": "지난 시나리오가 끝날 때, ‘서고 관리자’를 조종하는 조사자가 있었습니까?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -35801,7 +35810,7 @@
     {
       "id": "hidden",
       "type": "hidden",
-      "title": "Hidden"
+      "title": "숨김"
     }
   ],
   "scenarios": [
@@ -35874,6 +35883,7 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -36540,6 +36550,7 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -41095,6 +41106,7 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -43532,6 +43544,7 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -45245,6 +45258,7 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -46084,7 +46098,7 @@
 {
   "id": "tcu",
   "position": 4,
-  "version": 3,
+  "version": 4,
   "name": "끝맺지 못한 의식",
   "campaign_type": "campaign",
   "campaign_log": [
@@ -46115,12 +46129,12 @@
     {
       "id": "$input_value",
       "type": "hidden",
-      "title": "Hidden"
+      "title": "숨김"
     },
     {
       "id": "hidden",
       "type": "hidden",
-      "title": "Hidden"
+      "title": "숨김"
     }
   ],
   "scenarios": [
@@ -46155,6 +46169,7 @@
       "text": "난이도를 선택합니다.",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -47591,7 +47606,7 @@
     "pre_intro",
     "choose_neutral_investigators",
     "no_decks",
-    "check_unplayed_investigators",
+    "maybe_check_unplayed_investigators",
     "intro",
     "read_intros",
     "check_gavriella_intro",
@@ -47605,7 +47620,7 @@
     "setup_investigators",
     "encounter_deck",
     "no_way_out",
-    "agenda_1_results",
+    "maybe_agenda_1_resullts",
     "maybe_ask_being_hunted",
     "resolution_1"
   ],
@@ -47628,6 +47643,30 @@
       "text": "Do not assemble an investigator deck for any neutral investigator. Instead, gather the cards listed on its reverse side—these cards will be used in that investigator’s unique setup. (All listed cards are level 0 unless otherwise noted.)"
     },
     {
+      "id": "maybe_check_unplayed_investigators",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 4,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_player_count"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "check_unplayed_investigators"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_unplayed_investigators",
       "type": "input",
       "input": {
@@ -47642,6 +47681,282 @@
           }
         ]
       }
+    },
+    {
+      "id": "ask_player_count",
+      "type": "input",
+      "text": "How many players are there?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "one",
+            "text": "One",
+            "steps": [
+              "new_missing_investigators_1",
+              "cross_off_prompt",
+              "maybe_cross_off_05046",
+              "maybe_cross_off_05047",
+              "maybe_cross_off_05049",
+              "maybe_cross_off_05048"
+            ]
+          },
+          {
+            "id": "two",
+            "text": "Two",
+            "steps": [
+              "new_missing_investigators_2",
+              "cross_off_prompt",
+              "maybe_cross_off_05046",
+              "maybe_cross_off_05047",
+              "maybe_cross_off_05049",
+              "maybe_cross_off_05048"
+            ]
+          },
+          {
+            "id": "three",
+            "text": "Three",
+            "steps": [
+              "new_missing_investigators_3",
+              "cross_off_prompt",
+              "maybe_cross_off_05046",
+              "maybe_cross_off_05047",
+              "maybe_cross_off_05049",
+              "maybe_cross_off_05048"
+            ]
+          },
+          {
+            "id": "four",
+            "text": "Four"
+          }
+        ]
+      }
+    },
+    {
+      "id": "new_missing_investigators_3",
+      "type": "input",
+      "input": {
+        "type": "card_choice",
+        "query": [
+          {
+            "code": [
+              "05046",
+              "05047",
+              "05048",
+              "05049"
+            ]
+          }
+        ],
+        "min": 3,
+        "max": 3,
+        "choices": [
+          {
+            "id": "chosen",
+            "text": "Choose your prologue investigators:",
+            "confirm_text": "Chosen prologue investigators:",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "hidden",
+                "id": "$input_value",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "new_missing_investigators_1",
+      "type": "input",
+      "input": {
+        "type": "card_choice",
+        "query": [
+          {
+            "code": [
+              "05046",
+              "05047",
+              "05048",
+              "05049"
+            ]
+          }
+        ],
+        "min": 1,
+        "max": 1,
+        "choices": [
+          {
+            "id": "chosen",
+            "text": "Choose your prologue investigators:",
+            "confirm_text": "Chosen prologue investigators:",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "hidden",
+                "id": "$input_value",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "new_missing_investigators_2",
+      "type": "input",
+      "input": {
+        "type": "card_choice",
+        "query": [
+          {
+            "code": [
+              "05046",
+              "05047",
+              "05048",
+              "05049"
+            ]
+          }
+        ],
+        "min": 2,
+        "max": 2,
+        "choices": [
+          {
+            "id": "chosen",
+            "text": "Choose your prologue investigators:",
+            "confirm_text": "Chosen prologue investigators:",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "hidden",
+                "id": "$input_value",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cross_off_prompt",
+      "text": "In the “Missing Persons” section of your Campaign Log, cross off the profiles of any of the neutral investigators who were not chosen."
+    },
+    {
+      "id": "maybe_cross_off_05046",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "05046",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": [
+              "cross_off_05046"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cross_off_05046",
+      "bullet_type": "small",
+      "text": "Cross off <i>Gavriella Mizrah</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_cards",
+          "section": "05046",
+          "cross_out": true
+        }
+      ]
+    },
+    {
+      "id": "maybe_cross_off_05047",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "05047",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": [
+              "cross_off_05047"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cross_off_05047",
+      "bullet_type": "small",
+      "text": "Cross off <i>Jerome Davids</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_cards",
+          "section": "05047",
+          "cross_out": true
+        }
+      ]
+    },
+    {
+      "id": "maybe_cross_off_05048",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "05048",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": [
+              "cross_off_05048"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cross_off_05048",
+      "bullet_type": "small",
+      "text": "Cross off <i>Valentino Rivas</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_cards",
+          "section": "05048",
+          "cross_out": true
+        }
+      ]
+    },
+    {
+      "id": "maybe_cross_off_05049",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "05049",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": [
+              "cross_off_05049"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cross_off_05049",
+      "bullet_type": "small",
+      "text": "Cross off <i>Penny White</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_cards",
+          "section": "05049",
+          "cross_out": true
+        }
+      ]
     },
     {
       "id": "record_missing_investigators",
@@ -47898,6 +48213,1175 @@
       }
     },
     {
+      "id": "maybe_agenda_1_resullts",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 4,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "choose_fate_intro",
+              "choose_fate",
+              "maybe_choose_fate_2",
+              "maybe_choose_fate_3",
+              "maybe_choose_fate_4"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "agenda_1_results"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_choose_fate_2",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05046",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05047",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05048",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05049",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "choose_fate_2"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_choose_fate_3",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05046",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05047",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05048",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05049",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 3,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "choose_fate_3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_choose_fate_4",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05046",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05047",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05048",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05049",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 4,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "choose_fate_4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_fate_intro",
+      "text": "As investigators are eliminated, record their fate here:"
+    },
+    {
+      "id": "choose_fate",
+      "text": "Who was eliminated?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "05046",
+            "text": "Gavriella Mizrah",
+            "condition": {
+              "type": "campaign_log_section_exists",
+              "section": "05046",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05046_fate"
+            ]
+          },
+          {
+            "id": "05047",
+            "text": "Jerome Davids",
+            "condition": {
+              "type": "campaign_log_section_exists",
+              "section": "05047",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05047_fate"
+            ]
+          },
+          {
+            "id": "05047",
+            "text": "Valentino Rivas",
+            "condition": {
+              "type": "campaign_log_section_exists",
+              "section": "05048",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05048_fate"
+            ]
+          },
+          {
+            "id": "05049",
+            "text": "Penny White",
+            "condition": {
+              "type": "campaign_log_section_exists",
+              "section": "05049",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05049_fate"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_fate_2",
+      "type": "input",
+      "text": "Who was eliminated?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "05046",
+            "text": "Gavriella Mizrah",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05046",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05046",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05046_fate"
+            ]
+          },
+          {
+            "id": "05047",
+            "text": "Jerome Davids",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05047",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05047",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05047_fate"
+            ]
+          },
+          {
+            "id": "05047",
+            "text": "Valentino Rivas",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05048",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05048",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05048_fate"
+            ]
+          },
+          {
+            "id": "05049",
+            "text": "Penny White",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05049",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05049",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05049_fate"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_fate_3",
+      "type": "input",
+      "text": "Who was eliminated?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "05046",
+            "text": "Gavriella Mizrah",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05046",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05046",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05046_fate"
+            ]
+          },
+          {
+            "id": "05047",
+            "text": "Jerome Davids",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05047",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05047",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05047_fate"
+            ]
+          },
+          {
+            "id": "05047",
+            "text": "Valentino Rivas",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05048",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05048",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05048_fate"
+            ]
+          },
+          {
+            "id": "05049",
+            "text": "Penny White",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05049",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05049",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05049_fate"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_fate_4",
+      "type": "input",
+      "text": "Who was eliminated?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "05046",
+            "text": "Gavriella Mizrah",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05046",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05046",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05046_fate"
+            ]
+          },
+          {
+            "id": "05047",
+            "text": "Jerome Davids",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05047",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05047",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05047_fate"
+            ]
+          },
+          {
+            "id": "05047",
+            "text": "Valentino Rivas",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05048",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05048",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05048_fate"
+            ]
+          },
+          {
+            "id": "05049",
+            "text": "Penny White",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05049",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05049",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05049_fate"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_05046_fate",
+      "type": "input",
+      "text": "What happened to Gavriella Mizrah?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "taken_by_the_watcher",
+            "text": "Taken by the Watcher",
+            "gender": "feminine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05046",
+                "id": "taken_by_the_watcher",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05046"
+                ],
+                "masculine_text": "#name# was taken by the Watcher.",
+                "feminine_text": "#name# was taken by the Watcher."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05046",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "claimed_by_specters",
+            "text": "Claimed by specters",
+            "gender": "feminine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05046",
+                "id": "claimed_by_specters",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05046"
+                ],
+                "masculine_text": "#name# was claimed by specters.",
+                "feminine_text": "#name# was claimed by specters."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05046",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "text": "Disappeared into the mist",
+            "gender": "feminine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05046",
+                "id": "disappeared_into_the_mist",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05046"
+                ],
+                "masculine_text": "#name# disappeared into the mist.",
+                "feminine_text": "#name# disappeared into the mist."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05046",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "pulled_into_spectral_realm",
+            "text": "Pulled into the spectral realm",
+            "gender": "feminine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05046",
+                "id": "pulled_into_the_spectral_realm",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05046"
+                ],
+                "masculine_text": "#name# was pulled into the spectral realm.",
+                "feminine_text": "#name# was pulled into the spectral realm."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05046",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_05047_fate",
+      "text": "What happened to Jerome Davids?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "taken_by_the_watcher",
+            "text": "Taken by the Watcher",
+            "gender": "masculine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05047",
+                "id": "taken_by_the_watcher",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05047"
+                ],
+                "masculine_text": "#name# was taken by the Watcher.",
+                "feminine_text": "#name# was taken by the Watcher."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05047",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "claimed_by_specters",
+            "text": "Claimed by specters",
+            "gender": "masculine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05047",
+                "id": "claimed_by_specters",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05047"
+                ],
+                "masculine_text": "#name# was claimed by specters.",
+                "feminine_text": "#name# was claimed by specters."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05047",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "text": "Disappeared into the mist",
+            "gender": "masculine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05047",
+                "id": "disappeared_into_the_mist",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05047"
+                ],
+                "masculine_text": "#name# disappeared into the mist.",
+                "feminine_text": "#name# disappeared into the mist."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05047",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "pulled_into_spectral_realm",
+            "text": "Pulled into the spectral realm",
+            "gender": "masculine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05047",
+                "id": "pulled_into_the_spectral_realm",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05047"
+                ],
+                "masculine_text": "#name# was pulled into the spectral realm.",
+                "feminine_text": "#name# was pulled into the spectral realm."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05047",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_05048_fate",
+      "text": "What happened to Valentino Rivas?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "taken_by_the_watcher",
+            "text": "Taken by the Watcher",
+            "gender": "masculine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05048",
+                "id": "taken_by_the_watcher",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05048"
+                ],
+                "masculine_text": "#name# was taken by the Watcher.",
+                "feminine_text": "#name# was taken by the Watcher."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05048",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "claimed_by_specters",
+            "text": "Claimed by specters",
+            "gender": "masculine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05048",
+                "id": "claimed_by_specters",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05048"
+                ],
+                "masculine_text": "#name# was claimed by specters.",
+                "feminine_text": "#name# was claimed by specters."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05048",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "text": "Disappeared into the mist",
+            "gender": "masculine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05048",
+                "id": "disappeared_into_the_mist",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05048"
+                ],
+                "masculine_text": "#name# disappeared into the mist.",
+                "feminine_text": "#name# disappeared into the mist."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05048",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "pulled_into_spectral_realm",
+            "text": "Pulled into the spectral realm",
+            "gender": "masculine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05048",
+                "id": "pulled_into_the_spectral_realm",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05048"
+                ],
+                "masculine_text": "#name# was pulled into the spectral realm.",
+                "feminine_text": "#name# was pulled into the spectral realm."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05048",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_05049_fate",
+      "text": "What happened to Penny White?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "taken_by_the_watcher",
+            "text": "Taken by the Watcher",
+            "gender": "feminine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05049",
+                "id": "taken_by_the_watcher",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05049"
+                ],
+                "masculine_text": "#name# was taken by the Watcher.",
+                "feminine_text": "#name# was taken by the Watcher."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05049",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "claimed_by_specters",
+            "text": "Claimed by specters",
+            "gender": "feminine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05049",
+                "id": "claimed_by_specters",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05049"
+                ],
+                "masculine_text": "#name# was claimed by specters.",
+                "feminine_text": "#name# was claimed by specters."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05049",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "text": "Disappeared into the mist",
+            "gender": "feminine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05049",
+                "id": "disappeared_into_the_mist",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05049"
+                ],
+                "masculine_text": "#name# disappeared into the mist.",
+                "feminine_text": "#name# disappeared into the mist."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05049",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "pulled_into_spectral_realm",
+            "text": "Pulled into the spectral realm",
+            "gender": "feminine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05049",
+                "id": "pulled_into_the_spectral_realm",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05049"
+                ],
+                "masculine_text": "#name# was pulled into the spectral realm.",
+                "feminine_text": "#name# was pulled into the spectral realm."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05049",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "agenda_1_results",
       "text": "As investigators are eliminated, record their fate here:",
       "type": "input",
@@ -48011,17 +49495,24 @@
           {
             "id": "being_hunted",
             "text": "Are you being hunted?",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "being_hunted",
-                "text": "you are being hunted."
-              }
+            "steps": [
+              "being_hunted"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "being_hunted",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "being_hunted",
+          "text": "you are being hunted."
+        }
+      ]
     },
     {
       "id": "resolution_1",
@@ -54134,7 +55625,7 @@
     {
       "id": "hidden",
       "type": "hidden",
-      "title": "Hidden"
+      "title": "숨김"
     }
   ],
   "scenarios": [
@@ -54178,6 +55669,7 @@
       "text": "난이도를 선택합니다.",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -54494,7 +55986,7 @@
     {
       "id": "hidden",
       "type": "rule_reminder",
-      "title": "Hidden",
+      "title": "숨김",
       "text": "An encounter card or weakness with the hidden keyword has a revelation ability that secretly adds that card to your hand. This should be done without revealing that card or its text to the other investigators.",
       "bullets": [
         {
@@ -60382,7 +61874,7 @@
     {
       "id": "hidden",
       "type": "hidden",
-      "title": "Hidden"
+      "title": "숨김"
     }
   ],
   "scenarios": [
@@ -60426,6 +61918,7 @@
       "text": "난이도를 선택합니다.",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -60766,7 +62259,7 @@
     {
       "id": "hidden",
       "type": "rule_reminder",
-      "title": "Hidden",
+      "title": "숨김",
       "text": "An encounter card or weakness with the hidden keyword has a revelation ability that secretly adds that card to your hand. This should be done without revealing that card or its text to the other investigators.",
       "bullets": [
         {
@@ -65460,6 +66953,7 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -72069,7 +73563,7 @@
         "choices": [
           {
             "id": "rescued_custodian",
-            "text": "지난 시나리오가 끝날 때, ‘서고 관리자’를 조종하는 조사자가 있었다.",
+            "text": "지난 시나리오가 끝날 때, ‘서고 관리자’를 조종하는 조사자가 있었습니까?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -73046,7 +74540,7 @@
     {
       "id": "search_for_alejandro_alone",
       "bullet_type": "small",
-      "text": "‘고위층 지인’ 사본 2장 중 무작위로 선택한 1장, ‘경찰서에서’ 사본 2장, ‘실종자들’ 사본 1장."
+      "text": "주요목적 “c/d” 덱에서 다음 카드를 제거합니다: ‘고위층 지인’ 사본 2장 중 무작위로 선택한 1장, ‘경찰서에서’ 사본 2장, ‘실종자들’ 사본 1장."
     },
     {
       "id": "setup_act_ef_prompt",
@@ -74691,7 +76185,7 @@
     {
       "id": "hidden",
       "type": "hidden",
-      "title": "Hidden"
+      "title": "숨김"
     }
   ],
   "scenarios": [
@@ -74816,6 +76310,7 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -82176,7 +83671,7 @@
       "text": "Choose the non-kidnapper [[Suspect]] enemies that were defeated:",
       "input": {
         "type": "checklist",
-        "text": "Defeated",
+        "text": "쓰러짐",
         "choices": [
           {
             "id": "burnham",
@@ -84184,11 +85679,12 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
             "text": "쉬움",
-            "description": "<i>I want to be sane</i>",
+            "description": "<i>제정신이 되길 원합니다</i>",
             "tokens": [
               "+1",
               "+1",
@@ -84237,7 +85733,7 @@
           {
             "id": "standard",
             "text": "보통",
-            "description": "<i>I want to be mad as a march hare</i>",
+            "description": "<i>3월 토끼처럼 미치길 원합니다</i>",
             "tokens": [
               "+1",
               "0",
@@ -84286,7 +85782,7 @@
           {
             "id": "hard",
             "text": "전문가",
-            "description": "<i>I want to be mad as a hatter</i>",
+            "description": "<i>모자장수처럼 미치길 원합니다</i>",
             "tokens": [
               "+1",
               "0",
@@ -84335,7 +85831,7 @@
           {
             "id": "expert",
             "text": "어려움",
-            "description": "<i>I want to go where no one has ever gone before</i>",
+            "description": "<i>아무도 가보지 않은 곳으로 가길 원합니다</i>",
             "tokens": [
               "0",
               "-1",
@@ -90874,6 +92370,7 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
@@ -91031,7 +92528,7 @@
           {
             "id": "expert",
             "text": "어려움",
-            "description": "<i>I want to go where no one has ever gone before</i>",
+            "description": "<i>아무도 가보지 않은 곳으로 가길 원합니다</i>",
             "tokens": [
               "0",
               "-1",

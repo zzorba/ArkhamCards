@@ -1374,6 +1374,14 @@ export default class GuidedCampaignLog {
                   }
                 );
               }
+              case '$fixed_codes': {
+                forEach(effect.codes || [], code => {
+                  cards.push({
+                    card: code,
+                    count: 1,
+                  });
+                });
+              }
             }
           } else {
             cards.push({

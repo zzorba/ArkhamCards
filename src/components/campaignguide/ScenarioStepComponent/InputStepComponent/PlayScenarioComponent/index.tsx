@@ -43,6 +43,7 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
             choices={[
               ...choices,
               {
+                id: 'other',
                 text: c('campaign_log_entry').t`Other.`,
               },
             ]}

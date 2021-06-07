@@ -145,6 +145,7 @@ export type BinaryChoiceCondition =
   | CampaignDataChaosBagCondition
   | CampaignLogCondition
   | CampaignLogCountCondition
+  | CampaignLogSectionExistsCondition
   | MultiCondition;
 export type LocationConnector = "purple_moon" | "blue_triangle" | "red_square" | "orange_heart" | "green_diamond";
 export type AllCampaigns = FullCampaign[];
@@ -192,6 +193,7 @@ export interface MultiCondition {
   type: "multi";
   conditions: (
     | CampaignLogCondition
+    | CampaignLogSectionExistsCondition
     | CampaignDataChaosBagCondition
     | CampaignLogCountCondition
     | CampaignDataVersionCondition
@@ -286,7 +288,8 @@ export interface CampaignLogCardsEffect {
   text?: string;
   masculine_text?: string;
   feminine_text?: string;
-  cards?: "$lead_investigator" | "$all_investigators" | "$defeated_investigators" | "$input_value";
+  cards?: "$lead_investigator" | "$all_investigators" | "$defeated_investigators" | "$input_value" | "$fixed_codes";
+  codes?: string[];
   cross_out?: boolean;
   remove?: boolean;
 }
@@ -376,6 +379,11 @@ export interface Supply {
   description: string;
   cost: number;
   multiple?: boolean;
+}
+export interface CampaignLogSectionExistsCondition {
+  type: "campaign_log_section_exists";
+  section: string;
+  options: BoolOption[];
 }
 export interface CampaignDataChaosBagCondition {
   type: "campaign_data";
@@ -503,11 +511,6 @@ export interface CampaignDataLinkedCondition {
   campaign_data: "linked_campaign";
   options: BoolOption[];
 }
-export interface CampaignLogSectionExistsCondition {
-  type: "campaign_log_section_exists";
-  section: string;
-  options: BoolOption[];
-}
 export interface ScenarioDataInvestigatorStatusCondition {
   type: "scenario_data";
   scenario_data: "investigator_status";
@@ -612,6 +615,7 @@ export interface Choice {
   id: string;
   large?: boolean;
   text: string;
+  confirm_text?: string;
   feminine_text?: string;
   masculine_text?: string;
   description?: string;
@@ -682,6 +686,7 @@ export interface InvestigatorCondition {
 }
 export interface ChooseOneInput {
   type: "choose_one";
+  default_choice?: string;
   confirm_text?: string;
   choices: BinaryConditionalChoice[];
 }
@@ -689,6 +694,7 @@ export interface BinaryConditionalChoice {
   id: string;
   large?: boolean;
   text: string;
+  gender?: "masculine" | "feminine";
   tokens?: ChaosToken[];
   description?: string;
   condition?: BinaryChoiceCondition;
