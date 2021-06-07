@@ -3656,7 +3656,7 @@ msgid ""
 "campaign data between devices.\n"
 "More features are in the works."
 msgstr ""
-"Arkham Cards 계정을 사용하면 디바이스 사이의 캠페인 연동이 가능합니다.\n"
+"Arkham Cards 계정을 사용하면 장치 간 캠페인 연동이 가능합니다.\n"
 "추후 기능이 추가될 예정입니다."
 
 msgid "Sign in to your account"
@@ -4139,16 +4139,16 @@ msgid "Alice in Wonderland"
 msgstr "이상한 나라의 앨리스"
 
 msgid "Fragments of Alilce"
-msgstr ""
+msgstr "앨리스의 파편"
 
 msgid "Wonderland Boons"
-msgstr ""
+msgstr "이상한 나라의 유쾌한 주민"
 
 msgid "Wonderland Banes"
-msgstr ""
+msgstr "이상한 나라의 골칫거리"
 
 msgid "Strength of Wonderland"
-msgstr ""
+msgstr "이상한 나라의 힘"
 
 msgid "Fan-made campaign by Axolotl"
 msgstr "팬메이드 캠페인 (제작자: Axolotl)"
@@ -4157,118 +4157,129 @@ msgid "Fan-made campiagn by The Beard"
 msgstr "팬메이드 캠페인 (제작자: Beard)"
 
 msgid "Edge of the Earth"
-msgstr ""
+msgstr "지구의 끝자락"
 
 msgid "Promotional"
-msgstr ""
+msgstr "프로모션"
 
 msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
-msgstr ""
+msgstr "수호자나 중립이 아닌 카드를 5장보다 많이 포함할 수 없습니다."
 
 msgid "You cannot have more than 5 cards that are not Seeker or Neutral"
-msgstr ""
+msgstr "탐구자나 중립이 아닌 카드를 5장보다 많이 포함할 수 없습니다."
 
 msgid "You cannot have more than 5 cards that are not Rogue or Neutral"
-msgstr ""
+msgstr "무법자나 중립이 아닌 카드를 5장보다 많이 포함할 수 없습니다."
 
 msgid "You cannot have more than 5 cards that are not Mystic or Neutral"
-msgstr ""
+msgstr "신비주의자나 중립이 아닌 카드를 5장보다 많이 포함할 수 없습니다."
 
 msgid "You cannot have more than 5 cards that are not Survivor or Neutral"
-msgstr ""
+msgstr "생존자나 중립이 아닌 카드를 5장보다 많이 포함할 수 없습니다."
 
 msgid "You must have at least 7 cards from 3 different factions"
-msgstr ""
+msgstr "반드시 3가지 서로 다른 역할군에서 각각 7장 이상의 카드를 포함하여야 합니다."
 
 msgid "You cannot have more than 15 level 0-1 Seeker and/or Mystic cards"
-msgstr ""
+msgstr "탐구자 그리고/또는 신비주의자인 0-1 레벨 카드를 15장보다 많이 포함할 수 없습니다."
 
 msgid "You cannot have more than 5 Guardian and/or Mystic cards"
-msgstr ""
+msgstr "수호자 그리고/또는 신비주의자인 카드를 5장보다 많이 포함할 수 없습니다."
 
 msgid "You cannot have more than 5 level 0 Mystic cards"
-msgstr ""
+msgstr "신비주의자 0레벨 카드를 5장보다 많이 포함할 수 없습니다."
 
 msgid "Choose resolution"
-msgstr ""
+msgstr "결말 선택"
 
 msgid "Choose investigator to record trauma"
-msgstr ""
+msgstr "트라우마를 기록할 조사자 선택"
 
 msgid "Defeated"
-msgstr ""
+msgstr "쓰러짐"
 
 msgid "Status of investigators"
-msgstr ""
+msgstr "조사자의 상태"
 
 msgid "Social"
-msgstr ""
+msgstr "소셜"
 
 msgid "Connect with other fans of Arkham Horror: The Card Game."
-msgstr ""
+msgstr "'아컴호러: 카드게임'의 다른 팬들과 연결"
 
 msgid "Add new"
-msgstr ""
+msgstr "새로 추가"
 
 msgid "Lead"
-msgstr ""
+msgstr "대표"
 
 msgid "Changes have been recorded."
-msgstr ""
+msgstr "변경점이 기록되었습니다."
 
 msgid "No adjustments need saving."
-msgstr ""
+msgstr "저장이 필요한 변경 사항이 없습니다."
 
 msgid ""
 "When you have finished making adjustments, press the 'Save' button to "
 "record your changes."
-msgstr ""
+msgstr "변경 사항을 끝마치려면, 변경점 기록을 위해 '저장' 버튼을 누르세요."
 
 msgid ""
 "This deck will be upgraded with XP and any new story cards will be added or "
 "removed as specified."
 msgstr ""
+"이 덱은 경험치로 향상되고 새로운 이야기 카드는 "
+"지정된대로 추가 또는 제거됩니다."
 
 #, javascript-format
 msgid " (new total: ${ total })"
-msgstr ""
+msgstr " (새로운 총합: ${ total })"
 
 msgid "Earned XP:"
-msgstr ""
+msgstr "획득한 경험치:"
 
 msgid "Not deck owner"
-msgstr ""
+msgstr "덱 소유자 아님"
 
 msgid "Saved"
-msgstr ""
+msgstr "저장됨"
 
 #, javascript-format
 msgid ""
 "This deck is owned by ${ deck.owner.handle }. They must open the app on "
 "their own device to save the upgrade"
 msgstr ""
+"이 덱의 소유자는 '${ deck.owner.handle }' 님입니다. 향상 저장을 위해서는 "
+"해당 소유자의 장치에서 이 앱을 열어야 합니다."
 
 msgid ""
 "This deck is owned by another user. They must open the app on their own "
 "device to save the upgrade"
 msgstr ""
+"이 덱은 다른 사용자의 소유자입니다. 향상 저장을 위해서는 "
+"해당 소유자의 장치에서 이 앱을 열어야 합니다."
 
 msgid ""
 "This investigator does not have a deck associated with it.\n"
 "If you choose a deck, the app can help track spent experience, story asset "
 "changes, and deckbuilding requirements."
 msgstr ""
+"이 조사자는 관련된 덱이 없습니다.\n"
+"당신이 덱을 선택하면, 경험치 소비와 이야기 자산 변경점 및 덱빌딩 필요사항"
+" 추적을 도울 수 있습니다."
 
 msgid ""
 "Now that your upgrade has been saved, when visiting the deck be sure to use "
 "the 'Edit' button when making card changes."
 msgstr ""
+"이제 향상이 저장되었으므로, 카드를 변경을 위해 덱을 방문할 때는 "
+"'수정' 버튼을 사용해야 합니다."
 
 msgid "Choose a deck for this investigator"
-msgstr ""
+msgstr "이 조사자를 위한 덱을 선택하세요"
 
 msgid "What exactly does the app handle?"
-msgstr ""
+msgstr "앱은 정확히 무엇을 처리하나요?"
 
 msgid ""
 "Generally speaking, the app handles anything that you see mentioned in the "
@@ -4279,6 +4290,13 @@ msgid ""
 "If you find that you made a mistake after you upgraded your deck, you can "
 "'adjust' the available experience when editing a deck."
 msgstr ""
+"일반적으로 앱은 디지털 캠페인 로그에 언급된 모든 것을 "
+"처리합니다.\n"
+"앱으로 덱 빌딩을 한다면, '불가사의한 연구'와 '분석적 "
+"사고' 같은 카드도 처리합니다(앱에서 향상을 무작위로 "
+"지정하도록 허용 한 경우).\n"
+"덱을 향상한 후에 실수를 했다면, 덱을 수정할 때 "
+"사용 가능한 경험치를 '조정'할 수 있습니다."
 
 msgid ""
 "The numbers below already include all the trauma, victory points, and "
@@ -4287,63 +4305,68 @@ msgid ""
 "If you have any other cards or effects that the app does not take care of, "
 "you can make adjustments below before saving each investigator."
 msgstr ""
+"아래 수치에는 결말 과정에서 획득했을 수 있는 모든 트라우마, 승리 점수 및 "
+"스토리 자산이 이미 포함되어 있습니다.\n"
+"\n"
+"앱에서 처리하지 않는 다른 카드나 효과가 있는 경우, 각 조사자를 저장하기 전에 "
+"아래에서 변경할 수 있습니다."
 
 msgid "Learn more"
-msgstr ""
+msgstr "더 배워보기"
 
 msgid "Save will update your deck with the card changes listed above."
-msgstr ""
+msgstr "아래의 카드 변경점 목록을 덱에 업데이트 하기 위해 저장하세요."
 
 msgid "Campaign log"
-msgstr ""
+msgstr "캠페인 기록지"
 
 msgid "Record in campaign log"
-msgstr ""
+msgstr "캠페인 기록지에 기록"
 
 msgid "Review and add records"
-msgstr ""
+msgstr "기록 보기 및 추가"
 
 msgid "Chaos bag"
-msgstr ""
+msgstr "혼돈 주머니"
 
 msgid "Review and simulate draw"
-msgstr ""
+msgstr "뽑기 보기 및 시뮬레이션"
 
 msgid "Draw random"
-msgstr ""
+msgstr "무작위 뽑기"
 
 msgid "Record"
-msgstr ""
+msgstr "기록"
 
 msgid "Scenario effects"
-msgstr ""
+msgstr "시나리오 효과"
 
 msgid "Scenario Ended"
-msgstr ""
+msgstr "시나리오 결과"
 
 msgid "Proceed to Resolutions"
-msgstr ""
+msgstr "결말로 진행"
 
 msgid "Choose trauma type"
-msgstr ""
+msgstr "트라우마 유형 선택"
 
 msgid "Chosen trauma type"
-msgstr ""
+msgstr "선택된 트라우마 유형"
 
 msgid "Random results"
-msgstr ""
+msgstr "무작위 결과"
 
 msgid "Select Traits"
-msgstr ""
+msgstr "특성 선택"
 
 msgid "Random weaknesses will be drawn that match these traits."
-msgstr ""
+msgstr "이들 특성과 일치하는 무작위 약점을 뽑습니다."
 
 msgid "Edit selection"
-msgstr ""
+msgstr "선택 수정"
 
 msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
-msgstr ""
+msgstr "캠페인 기록지를 확인합니다. <i>만약 ${ logEntry.text }</i>"
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -4426,6 +4449,8 @@ msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> "
+"항목이 없다면"
 
 #, javascript-format
 msgctxt "masculine"
@@ -4433,6 +4458,8 @@ msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> "
+"항목이 있다면"
 
 #, javascript-format
 msgctxt "feminine"
@@ -4518,6 +4545,8 @@ msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> "
+"항목이 없다면"
 
 #, javascript-format
 msgctxt "feminine"
@@ -4525,6 +4554,8 @@ msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> "
+"항목이 있다면"
 
 msgctxt "trait"
 msgid "???"
@@ -5636,7 +5667,7 @@ msgstr[0] "시나리오"
 
 msgctxt "campaign_log_entry"
 msgid "Other."
-msgstr ""
+msgstr "기타."
 
 msgctxt "Weakness Card"
 msgid "All"
