@@ -1930,11 +1930,6 @@ msgstr ""
 msgid "Update decks with scenario results"
 msgstr ""
 
-#, javascript-format
-msgid "In your Campaign Log, under \"${ section }\", record ${ card.name }. "
-msgstr ""
-
-#, javascript-format
 msgid "In your Campaign Log, cross out <i>${ logEntry.text }</i>"
 msgstr ""
 
@@ -2167,10 +2162,10 @@ msgid ""
 "logEntry.text }</i>."
 msgstr ""
 
-#, javascript-format
 msgid "Add ${ tokenString } to the chaos bag."
 msgstr ""
 
+#, javascript-format
 msgid "Remove ${ tokenString } from the chaos bag."
 msgstr ""
 
@@ -2394,7 +2389,6 @@ msgstr ""
 msgid "${ investigator.name } removes ${ card.name } (Advanced)"
 msgstr ""
 
-#, javascript-format
 msgid "${ investigator.name } removes ${ card.name }"
 msgstr ""
 
@@ -3918,6 +3912,7 @@ msgstr ""
 msgid "Justify text"
 msgstr ""
 
+#, javascript-format
 msgid "${ tokens[0] } and ${ tokens[1] }"
 msgstr ""
 
@@ -4192,6 +4187,31 @@ msgid "Edit selection"
 msgstr ""
 
 msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
+msgstr ""
+
+msgid "Discord"
+msgstr ""
+
+msgid "VK"
+msgstr ""
+
+msgid "Telegram"
+msgstr ""
+
+#, javascript-format
+msgid "In your Campaign Log, under \"${ section }\", record #name#. "
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
+"logEntry.text }</i>."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
+"logEntry.text }</i>"
 msgstr ""
 
 msgctxt "masculine"

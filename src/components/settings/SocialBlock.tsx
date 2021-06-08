@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import {
   Linking,
   Text,
+  View,
 } from 'react-native';
 
 import { t } from 'ttag';
@@ -9,7 +10,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
 import DeckButton from '@components/deck/controls/DeckButton';
-import { s } from '@styles/space';
+import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
 function discordPressed() {
@@ -30,28 +31,30 @@ export default function SocialBlock() {
   }
 
   return (
-    <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Social`} />}>
-      <Text style={typography.text}>
-        { t`Connect with other fans of Arkham Horror: The Card Game.` }
-      </Text>
-      <DeckButton
-        icon="logo"
-        topMargin={s}
-        bottomMargin={s}
-        onPress={discordPressed}
-        title={`Discord`}
-      />
-      <DeckButton
-        bottomMargin={s}
-        icon="wrench"
-        onPress={vkPressed}
-        title={`VK`}
-      />
-      <DeckButton
-        icon="email"
-        onPress={telegramPressed}
-        title={`Telegram`}
-      />
-    </RoundedFactionBlock>
+    <View style={space.paddingS}>
+      <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Social`} />}>
+        <Text style={[typography.text, space.paddingS]}>
+          { t`Connect with other fans of Arkham Horror: The Card Game.` }
+        </Text>
+        <DeckButton
+          icon="discord"
+          topMargin={s}
+          bottomMargin={s}
+          onPress={discordPressed}
+          title={t`Discord`}
+        />
+        <DeckButton
+          bottomMargin={s}
+          icon="vk"
+          onPress={vkPressed}
+          title={t`VK`}
+        />
+        <DeckButton
+          icon="telegram"
+          onPress={telegramPressed}
+          title={t`Telegram`}
+        />
+      </RoundedFactionBlock>
+    </View>
   );
 }

@@ -1552,14 +1552,9 @@ msgstr "무작위 기본 약점 뽑기"
 msgid "Start playing the scenario now."
 msgstr "이제 시나리오를 시작합니다."
 
-#, javascript-format
-msgid "In your Campaign Log, under \"${ section }\", record ${ card.name }. "
-msgstr "당신의 캠페인 기록지 중 \"${ section }\" 항목에, ${ card.name } 항목을 기록합니다."
-
 msgid "In your Campaign Log, record that <i>${ text }</i>"
 msgstr "당신의 캠페인 기록지에 <i>${ text }</i>라고 기록합니다."
 
-#, javascript-format
 msgid "In your Campaign Log, cross out <i>${ logEntry.text }</i>"
 msgstr "당신의 캠페인 기록지에 <i>${ logEntry.text }</i> 항목에 X표시를 합니다."
 
@@ -1580,10 +1575,10 @@ msgid ""
 "logEntry.text }</i>."
 msgstr "당신의 캠페인 기록지 중 \"${ logEntry.section }\" 항목 아래에 ${ logEntry.text }라고 기록합니다."
 
-#, javascript-format
 msgid "Add ${ tokenString } to the chaos bag."
 msgstr "${ tokenString } 토큰을 혼돈 주머니에 넣습니다."
 
+#, javascript-format
 msgid "Remove ${ tokenString } from the chaos bag."
 msgstr "${ tokenString } 토큰을 혼돈 주머니에서 제거합니다."
 
@@ -2477,7 +2472,6 @@ msgstr "${ investigator.name } 조사자는 ${ card.name } 카드를 획득합�
 msgid "${ investigator.name } removes ${ card.name } (Advanced)"
 msgstr "${ investigator.name } 조사자는 ${ card.name } (강화된) 카드를 제거합니다."
 
-#, javascript-format
 msgid "${ investigator.name } removes ${ card.name }"
 msgstr "${ investigator.name } 조사자는 ${ card.name } 카드를 제거합니다."
 
@@ -4064,6 +4058,7 @@ msgstr ""
 msgid "Justify text"
 msgstr "텍스트 행 맞추기"
 
+#, javascript-format
 msgid "${ tokens[0] } and ${ tokens[1] }"
 msgstr "${ tokens[0] } 및 ${ tokens[1] }"
 
@@ -4227,9 +4222,7 @@ msgstr "변경 사항을 끝마치려면, 변경점 기록을 위해 '저장' �
 msgid ""
 "This deck will be upgraded with XP and any new story cards will be added or "
 "removed as specified."
-msgstr ""
-"이 덱은 경험치로 향상되고 새로운 이야기 카드는 "
-"지정된대로 추가 또는 제거됩니다."
+msgstr "이 덱은 경험치로 향상되고 새로운 이야기 카드는 지정된대로 추가 또는 제거됩니다."
 
 #, javascript-format
 msgid " (new total: ${ total })"
@@ -4249,15 +4242,13 @@ msgid ""
 "This deck is owned by ${ deck.owner.handle }. They must open the app on "
 "their own device to save the upgrade"
 msgstr ""
-"이 덱의 소유자는 '${ deck.owner.handle }' 님입니다. 향상 저장을 위해서는 "
-"해당 소유자의 장치에서 이 앱을 열어야 합니다."
+"이 덱의 소유자는 '${ deck.owner.handle }' 님입니다. 향상 저장을 위해서는 해당 소유자의 장치에서 이 앱을 열어야 "
+"합니다."
 
 msgid ""
 "This deck is owned by another user. They must open the app on their own "
 "device to save the upgrade"
-msgstr ""
-"이 덱은 다른 사용자의 소유자입니다. 향상 저장을 위해서는 "
-"해당 소유자의 장치에서 이 앱을 열어야 합니다."
+msgstr "이 덱은 다른 사용자의 소유자입니다. 향상 저장을 위해서는 해당 소유자의 장치에서 이 앱을 열어야 합니다."
 
 msgid ""
 "This investigator does not have a deck associated with it.\n"
@@ -4265,15 +4256,12 @@ msgid ""
 "changes, and deckbuilding requirements."
 msgstr ""
 "이 조사자는 관련된 덱이 없습니다.\n"
-"당신이 덱을 선택하면, 경험치 소비와 이야기 자산 변경점 및 덱빌딩 필요사항"
-" 추적을 도울 수 있습니다."
+"당신이 덱을 선택하면, 경험치 소비와 이야기 자산 변경점 및 덱빌딩 필요사항 추적을 도울 수 있습니다."
 
 msgid ""
 "Now that your upgrade has been saved, when visiting the deck be sure to use "
 "the 'Edit' button when making card changes."
-msgstr ""
-"이제 향상이 저장되었으므로, 카드를 변경을 위해 덱을 방문할 때는 "
-"'수정' 버튼을 사용해야 합니다."
+msgstr "이제 향상이 저장되었으므로, 카드를 변경을 위해 덱을 방문할 때는 '수정' 버튼을 사용해야 합니다."
 
 msgid "Choose a deck for this investigator"
 msgstr "이 조사자를 위한 덱을 선택하세요"
@@ -4290,13 +4278,10 @@ msgid ""
 "If you find that you made a mistake after you upgraded your deck, you can "
 "'adjust' the available experience when editing a deck."
 msgstr ""
-"일반적으로 앱은 디지털 캠페인 로그에 언급된 모든 것을 "
-"처리합니다.\n"
-"앱으로 덱 빌딩을 한다면, '불가사의한 연구'와 '분석적 "
-"사고' 같은 카드도 처리합니다(앱에서 향상을 무작위로 "
-"지정하도록 허용 한 경우).\n"
-"덱을 향상한 후에 실수를 했다면, 덱을 수정할 때 "
-"사용 가능한 경험치를 '조정'할 수 있습니다."
+"일반적으로 앱은 디지털 캠페인 로그에 언급된 모든 것을 처리합니다.\n"
+"앱으로 덱 빌딩을 한다면, '불가사의한 연구'와 '분석적 사고' 같은 카드도 처리합니다(앱에서 향상을 무작위로 지정하도록 허용 한 "
+"경우).\n"
+"덱을 향상한 후에 실수를 했다면, 덱을 수정할 때 사용 가능한 경험치를 '조정'할 수 있습니다."
 
 msgid ""
 "The numbers below already include all the trauma, victory points, and "
@@ -4305,11 +4290,9 @@ msgid ""
 "If you have any other cards or effects that the app does not take care of, "
 "you can make adjustments below before saving each investigator."
 msgstr ""
-"아래 수치에는 결말 과정에서 획득했을 수 있는 모든 트라우마, 승리 점수 및 "
-"스토리 자산이 이미 포함되어 있습니다.\n"
+"아래 수치에는 결말 과정에서 획득했을 수 있는 모든 트라우마, 승리 점수 및 스토리 자산이 이미 포함되어 있습니다.\n"
 "\n"
-"앱에서 처리하지 않는 다른 카드나 효과가 있는 경우, 각 조사자를 저장하기 전에 "
-"아래에서 변경할 수 있습니다."
+"앱에서 처리하지 않는 다른 카드나 효과가 있는 경우, 각 조사자를 저장하기 전에 아래에서 변경할 수 있습니다."
 
 msgid "Learn more"
 msgstr "더 배워보기"
@@ -4368,6 +4351,31 @@ msgstr "선택 수정"
 msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
 msgstr "캠페인 기록지를 확인합니다. <i>만약 ${ logEntry.text }</i>"
 
+msgid "Discord"
+msgstr ""
+
+msgid "VK"
+msgstr ""
+
+msgid "Telegram"
+msgstr ""
+
+#, javascript-format
+msgid "In your Campaign Log, under \"${ section }\", record #name#. "
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
+"logEntry.text }</i>."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
+"logEntry.text }</i>"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } 조사자는 <b>미칩니다</b>."
@@ -4448,18 +4456,14 @@ msgctxt "masculine"
 msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
-msgstr ""
-"캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> "
-"항목이 없다면"
+msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 없다면"
 
 #, javascript-format
 msgctxt "masculine"
 msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
-msgstr ""
-"캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> "
-"항목이 있다면"
+msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 있다면"
 
 #, javascript-format
 msgctxt "feminine"
@@ -4544,18 +4548,14 @@ msgctxt "feminine"
 msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
-msgstr ""
-"캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> "
-"항목이 없다면"
+msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 없다면"
 
 #, javascript-format
 msgctxt "feminine"
 msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
-msgstr ""
-"캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> "
-"항목이 있다면"
+msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 있다면"
 
 msgctxt "trait"
 msgid "???"

@@ -27,6 +27,7 @@ import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import { chooseOneInputChoices } from '@data/scenario/inputHelper';
 import StyleContext from '@styles/StyleContext';
 import { s } from '@styles/space';
+import PrologueRandomizerPrompt from '@components/campaignguide/prompts/PrologueRandomizerPrompt';
 
 interface Props {
   step: InputStep;
@@ -216,6 +217,10 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
           input={step.input}
         />
       );
+    case 'prologue_randomizer':
+      return (
+        <PrologueRandomizerPrompt id={step.id} input={step.input} />
+      )
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = step.input;

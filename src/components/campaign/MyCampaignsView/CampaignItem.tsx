@@ -17,6 +17,7 @@ function CampaignItem({ campaign, onPress }: Props) {
   }, [onPress, campaign]);
   return (
     <GenericCampaignItem
+      campaign={campaign}
       lastUpdated={campaign.updatedAt}
       onPress={handleOnPress}
     >

@@ -64,7 +64,7 @@ export default function CampaignItemHeader({ campaign, hideScenario, investigato
       const resolution = latestScenario.resolution && !campaign.guided ?
         `: ${latestScenario.resolution}` : '';
       return (
-        <View style={space.marginTopXs}>
+        <View style={[space.marginTopXs, { flex: 1 }]}>
           <Text style={[typography.mediumGameFont, typography.white]}>
             { `${latestScenario.scenario}${resolution}` }
           </Text>
@@ -93,7 +93,7 @@ export default function CampaignItemHeader({ campaign, hideScenario, investigato
     );
   }, [campaign.difficulty, colors, typography]);
 
-  const color = useMemo(() => campaignColor(cycleCode, colors), [cycleCode, colors]);
+  const color = campaignColor(cycleCode, colors);
   return (
     <View style={[styles.background, { backgroundColor: colors.L20 }]}>
       <View style={[styles.mainCard, space.paddingTopXs, space.paddingLeftS, space.paddingRightXs, space.paddingBottomS, { marginLeft: -1, marginTop: -1, marginRight: -1, backgroundColor: color }, shadow.large]}>

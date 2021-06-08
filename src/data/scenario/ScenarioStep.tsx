@@ -790,6 +790,36 @@ export default class ScenarioStep {
           {}
         );
       }
+      case 'prologue_randomizer': {
+        const choices = scenarioState.stringChoices(step.id);
+        if (choices === undefined) {
+          return undefined;
+        }
+        const options = input.options;
+        const effectsWithInput: EffectsWithInput[] = [];
+        forEach(input.choices, c => {
+          const value = choices[c.id];
+          if (value && value.length) {
+            const option = find(options, o => o.condition === value[0]);
+            if (option?.effects) {
+              effectsWithInput.push({
+                border: true,
+                input: [c.id],
+                effects: option.effects,
+              });
+            }
+          }
+        });
+        return this.maybeCreateEffectsStep(
+          step.id,
+          this.remainingStepIds,
+          effectsWithInput,
+          scenarioState,
+          {
+            bulletType: 'default',
+          }
+        );
+      }
       case 'card_choice': {
         if (input.include_counts) {
           const choices = scenarioState.numberChoices(step.id);

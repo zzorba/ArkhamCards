@@ -42,6 +42,20 @@ export default function EffectsStepComponent({ componentId, width, step, campaig
             numberInput={numberInput}
           />
         );
+      case 'campaign_log_cards':
+        if (step.stepText) {
+          return null;
+        }
+        return (
+          <View style={border ? space.paddingSideL : undefined}>
+            <CampaignLogEffectComponent
+              bulletType={step.bullet_type}
+              effect={effect}
+              input={input}
+              numberInput={numberInput}
+            />
+          </View>
+        );
       case 'campaign_log':
         if (step.stepText || border) {
           return null;

@@ -130,6 +130,7 @@ export type Input =
   | ReceiveCampaignLinkInput
   | SendCampaignLinkInput
   | RandomLocationInput
+  | PrologueRandomizer
   | SaveDecksInput;
 export type CardQuery = CardSearchQuery | CardCodeList;
 export type UseSuppliesInput = UseSuppliesChoiceInput | UseSuppliesAllInput;
@@ -435,6 +436,7 @@ export interface ScenarioDataResolutionCondition {
 }
 export interface StringOption {
   condition: string;
+  prompt?: string;
   border?: boolean;
   pre_border_effects?: Effect[];
   effects?: Effect[];
@@ -774,6 +776,12 @@ export interface RandomLocationInput {
   type: "random_location";
   cards: string[];
   multiple?: boolean;
+}
+export interface PrologueRandomizer {
+  type: "prologue_randomizer";
+  prompt: string;
+  choices: BinaryConditionalChoice[];
+  options: StringOption[];
 }
 export interface SaveDecksInput {
   type: "save_decks";

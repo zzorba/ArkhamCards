@@ -209,32 +209,28 @@ export default function CampaignInvestigatorsComponent(props: Props) {
           </Text>
         </View>
       ) }
-      <View style={[space.paddingBottomS]}>
-        { map(killedInvestigators, investigator => (
-          <InvestigatorCampaignRow
-            key={investigator.code}
-            playerCards={playerCards}
-            spentXp={spentXp[investigator.code] || 0}
-            totalXp={processedCampaign.campaignLog.totalXp(investigator.code)}
-            unspentXp={processedCampaign.campaignLog.specialXp(investigator.code, 'unspect_xp')}
-            showXpDialog={showXpDialogPressed}
-            campaign={campaign}
-            deck={latestDecks[investigator.code]}
-            componentId={componentId}
-            investigator={investigator}
-            traumaAndCardData={processedCampaign.campaignLog.traumaAndCardData(investigator.code)}
-          />
-        )) }
-      </View>
-      <View style={space.paddingBottomS}>
-        <DeckButton
-          icon="per_investigator"
-          title={t`Add Investigator`}
-          onPress={showAddInvestigator}
-          color="light_gray"
-          thin
+      { map(killedInvestigators, investigator => (
+        <InvestigatorCampaignRow
+          key={investigator.code}
+          playerCards={playerCards}
+          spentXp={spentXp[investigator.code] || 0}
+          totalXp={processedCampaign.campaignLog.totalXp(investigator.code)}
+          unspentXp={processedCampaign.campaignLog.specialXp(investigator.code, 'unspect_xp')}
+          showXpDialog={showXpDialogPressed}
+          campaign={campaign}
+          deck={latestDecks[investigator.code]}
+          componentId={componentId}
+          investigator={investigator}
+          traumaAndCardData={processedCampaign.campaignLog.traumaAndCardData(investigator.code)}
         />
-      </View>
+      )) }
+      <DeckButton
+        color="light_gray"
+        icon="plus-thin"
+        title={t`Add Investigator`}
+        onPress={showAddInvestigator}
+        bottomMargin={s}
+      />
     </>
   );
 }

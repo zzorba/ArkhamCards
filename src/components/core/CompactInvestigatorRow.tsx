@@ -22,8 +22,9 @@ interface Props {
   width: number;
   children?: React.ReactNode;
   description?: string;
+  color?: 'dark' | 'light';
 }
-export default function CompactInvestigatorRow({ eliminated, description, investigator, transparent, yithian, open, upgradeBadge, leftContent, children, width }: Props) {
+export default function CompactInvestigatorRow({ color, eliminated, description, investigator, transparent, yithian, open, upgradeBadge, leftContent, children, width }: Props) {
   const { colors, typography } = useContext(StyleContext);
   return (
     <RoundedFactionHeader
@@ -32,6 +33,7 @@ export default function CompactInvestigatorRow({ eliminated, description, invest
       faction={investigator.factionCode()}
       fullRound={!open}
       width={width}
+      color={color}
     >
       <View style={[styles.row, space.paddingLeftXs]}>
         { !!leftContent && <View style={space.paddingRightS}>{leftContent}</View>}

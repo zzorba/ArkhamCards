@@ -1978,11 +1978,6 @@ msgstr "檢視牌組"
 msgid "Update decks with scenario results"
 msgstr "以冒險結果更新牌組"
 
-#, javascript-format
-msgid "In your Campaign Log, under \"${ section }\", record ${ card.name }. "
-msgstr "在冒險日誌中，“${ section }”底下，記錄${ card.name }。 "
-
-#, javascript-format
 msgid "In your Campaign Log, cross out <i>${ logEntry.text }</i>"
 msgstr "將冒險日誌中的<i>${ logEntry.text }</i>劃去。 "
 
@@ -2214,10 +2209,10 @@ msgid ""
 "logEntry.text }</i>."
 msgstr "在冒險日誌中，“${ logEntry.section }”下，記錄<i>${ logEntry.text }</i>。"
 
-#, javascript-format
 msgid "Add ${ tokenString } to the chaos bag."
 msgstr "將${ tokenString }標記加入混亂袋。"
 
+#, javascript-format
 msgid "Remove ${ tokenString } from the chaos bag."
 msgstr "將${ tokenString }標記自混亂袋中移除。"
 
@@ -2457,7 +2452,6 @@ msgstr "${ investigator.name }獲得${ card.name }。"
 msgid "${ investigator.name } removes ${ card.name } (Advanced)"
 msgstr "${ investigator.name }移除${ card.name } (進階版)。"
 
-#, javascript-format
 msgid "${ investigator.name } removes ${ card.name }"
 msgstr "${ investigator.name }移除${ card.name }。"
 
@@ -4014,6 +4008,7 @@ msgstr ""
 msgid "Justify text"
 msgstr ""
 
+#, javascript-format
 msgid "${ tokens[0] } and ${ tokens[1] }"
 msgstr ""
 
@@ -4288,6 +4283,31 @@ msgid "Edit selection"
 msgstr ""
 
 msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
+msgstr ""
+
+msgid "Discord"
+msgstr ""
+
+msgid "VK"
+msgstr ""
+
+msgid "Telegram"
+msgstr ""
+
+#, javascript-format
+msgid "In your Campaign Log, under \"${ section }\", record #name#. "
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
+"logEntry.text }</i>."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
+"logEntry.text }</i>"
 msgstr ""
 
 msgctxt "masculine"

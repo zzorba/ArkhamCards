@@ -11,6 +11,9 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 
 export type DeckButtonIcon =
+  'discord' |
+  'vk' |
+  'telegram' |
   'faq' |
   'trauma' |
   'backup' |
@@ -95,7 +98,7 @@ const ICON_SIZE_THIN: { [icon: string]: number | undefined } = {
 
 const ICON_STYLE: { [icon: string]: ViewStyle | undefined } = {
   'check-thin': {
-    marginTop: -6,
+    marginTop: -2,
   },
   upgrade: {
     marginTop: 0,

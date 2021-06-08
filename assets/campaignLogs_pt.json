@@ -1796,6 +1796,10 @@
             "text": "dummy"
           },
           {
+            "id": "skip_prologue",
+            "text": "dummy"
+          },
+          {
             "id": "uad_add_chaos_token",
             "text": "dummy"
           },

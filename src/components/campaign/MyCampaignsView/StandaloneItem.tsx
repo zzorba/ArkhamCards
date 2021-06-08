@@ -19,6 +19,7 @@ function StandaloneItem({ campaign, onPress, scenarioName }: Props) {
   }, [onPress, campaign]);
   return (
     <GenericCampaignItem
+      campaign={campaign}
       lastUpdated={campaign.updatedAt}
       onPress={handleOnPress}
     >

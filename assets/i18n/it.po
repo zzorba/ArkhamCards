@@ -2041,13 +2041,6 @@ msgstr "Mostra il mazzo"
 msgid "Update decks with scenario results"
 msgstr "Aggiornare i mazzi con i risultati"
 
-#, javascript-format
-msgid "In your Campaign Log, under \"${ section }\", record ${ card.name }. "
-msgstr ""
-"Nel Diario della Campagna, sotto la voce “${ section }”, annota ${ "
-"card.name }. "
-
-#, javascript-format
 msgid "In your Campaign Log, cross out <i>${ logEntry.text }</i>"
 msgstr "Nel Diario della Campagna, cancella <i>${ logEntry.text }</i>"
 
@@ -2310,10 +2303,10 @@ msgstr ""
 "Annotate nel Diario della Campagna alla voce “${ logEntry.section }”, che "
 "<i>${ logEntry.text }</i>."
 
-#, javascript-format
 msgid "Add ${ tokenString } to the chaos bag."
 msgstr "Aggiungete ${ tokenString } al Sacchetto del Caos."
 
+#, javascript-format
 msgid "Remove ${ tokenString } from the chaos bag."
 msgstr "Rimuovete ${ tokenString } dal Sacchetto del Caos."
 
@@ -2582,7 +2575,6 @@ msgstr "${ investigator.name } ottiene ${ card.name }."
 msgid "${ investigator.name } removes ${ card.name } (Advanced)"
 msgstr "${ investigator.name } perde ${ card.name } (Migliorata)"
 
-#, javascript-format
 msgid "${ investigator.name } removes ${ card.name }"
 msgstr "${ investigator.name } perde ${ card.name }"
 
@@ -4246,6 +4238,7 @@ msgstr ""
 msgid "Justify text"
 msgstr ""
 
+#, javascript-format
 msgid "${ tokens[0] } and ${ tokens[1] }"
 msgstr ""
 
@@ -4520,6 +4513,31 @@ msgid "Edit selection"
 msgstr ""
 
 msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
+msgstr ""
+
+msgid "Discord"
+msgstr ""
+
+msgid "VK"
+msgstr ""
+
+msgid "Telegram"
+msgstr ""
+
+#, javascript-format
+msgid "In your Campaign Log, under \"${ section }\", record #name#. "
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
+"logEntry.text }</i>."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
+"logEntry.text }</i>"
 msgstr ""
 
 msgctxt "masculine"
