@@ -4290,7 +4290,7 @@ msgid ""
 "If you have any other cards or effects that the app does not take care of, "
 "you can make adjustments below before saving each investigator."
 msgstr ""
-"아래 수치에는 결말 과정에서 획득했을 수 있는 모든 트라우마, 승리 점수 및 스토리 자산이 이미 포함되어 있습니다.\n"
+"아래 수치에는 결말 과정에서 획득했을 수 있는 모든 트라우마, 승리 점수 및 이야기 자산이 이미 포함되어 있습니다.\n"
 "\n"
 "앱에서 처리하지 않는 다른 카드나 효과가 있는 경우, 각 조사자를 저장하기 전에 아래에서 변경할 수 있습니다."
 
@@ -4352,29 +4352,33 @@ msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
 msgstr "캠페인 기록지를 확인합니다. <i>만약 ${ logEntry.text }</i>"
 
 msgid "Discord"
-msgstr ""
+msgstr "디스코드"
 
 msgid "VK"
-msgstr ""
+msgstr "VK 메신저"
 
 msgid "Telegram"
-msgstr ""
+msgstr "텔레그램"
 
 #, javascript-format
 msgid "In your Campaign Log, under \"${ section }\", record #name#. "
-msgstr ""
+msgstr "캠페인 기록지 중 \"${ section }\" 항목 아래에 #name# 이름을 기록합니다."
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
 "logEntry.text }</i>."
 msgstr ""
+"캠페인 기록지 중 \"${ logEntry.section }\" 항목 아래의 <i>${logEntry.text }</i> "
+"항목에 X표시를 합니다."
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>"
 msgstr ""
+"캠페인 기록지 중 \"${ logEntry.section }\" 항목 아래의 <i>${logEntry.text }</i> "
+"라고 기록합니다."
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
