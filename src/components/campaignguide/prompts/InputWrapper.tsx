@@ -180,7 +180,6 @@ export default function InputWrapper({
     <View style={[
       bulletType ? undefined : space.paddingS,
     ]}>
-      <View style={[bulletType ? space.marginSideS : undefined, { borderTopWidth: StyleSheet.hairlineWidth }, borderStyle]} />
       <TitleRow bulletType={bulletType} titleStyle={titleStyle} title={title} titleNode={titleNode} titleButton={titleButton} />
       <View style={bulletType ? space.paddingSideS : undefined}>{ children }</View>
       <View style={[bulletType ? space.marginSideS : undefined, { borderBottomWidth: StyleSheet.hairlineWidth }, borderStyle]} />
