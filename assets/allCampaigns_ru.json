@@ -49836,7 +49836,7 @@
           },
           {
             "condition": "1",
-            "prompt": "I - The Magigician",
+            "prompt": "I - The Magician",
             "effects": [
               {
                 "type": "story_step",
@@ -84653,7 +84653,7 @@
       "text": "Choose the non-kidnapper [[Suspect]] enemies that were defeated:",
       "input": {
         "type": "checklist",
-        "text": "Defeated",
+        "text": "Побеждённые",
         "choices": [
           {
             "id": "burnham",

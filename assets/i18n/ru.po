@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2021-06-05 00:37+0300\n"
+"PO-Revision-Date: 2021-06-08 21:40+0300\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -4257,11 +4257,11 @@ msgstr ""
 "настройках приложения."
 
 msgid "Justify text"
-msgstr ""
+msgstr "Выровнять текст по ширине"
 
 #, javascript-format
 msgid "${ tokens[0] } and ${ tokens[1] }"
-msgstr ""
+msgstr "${ tokens[0] } и ${ tokens[1] }"
 
 msgid "Dark Matter"
 msgstr ""
@@ -4279,42 +4279,49 @@ msgid "Fan-Made Content"
 msgstr ""
 
 msgid "Fetching account details..."
-msgstr ""
+msgstr "Получение данных учётной записи…"
 
 msgid ""
 "Thanks for signing up for Arkham Cards.\n"
 "\n"
 "First of all, you'll need to create a handle for your account."
 msgstr ""
+"Спасибо за регистрацию в Arkham Cards\n"
+"\n"
+"Для начала придумайте имя для своего аккаунта."
 
 msgid ""
 "People will be able to search for friends using their handle so you can "
 "join their campaigns."
-msgstr ""
+msgstr "По имени можно искать и добавлять друзей к своим кампаниям."
 
 msgid "Now that you are signed in, you should have access to your saved campaigns."
 msgstr ""
+"Теперь вы вошли в аккаунт Arkham Cards, и у вас есть доступ к вашим "
+"сохранённым кампаниям."
 
 msgid ""
 "Campaigns can now be 'uploaded' so they can be synced between devices or "
 "shared with friendns."
 msgstr ""
+"Вы можете отправить данные своих кампаний на сервер, чтобы синхронизировать "
+"их между устройствами и делиться ими с друзьями."
 
 msgid "Welcome"
-msgstr ""
+msgstr "Добро пожаловать"
 
 msgid "Download print and play cards"
-msgstr ""
+msgstr "Скачать карты для самостоятельной печати"
 
 #, javascript-format
 msgid "${ section.title } (from XP)"
-msgstr ""
+msgstr "${ section.title } (от опыта)"
 
 msgid "Exiled story cards"
-msgstr ""
+msgstr "Изгнанные сюжетные карты"
 
 msgid "Exile story cards"
-msgstr ""
+msgstr "Изгнать сюжетные карты"
 
 msgid "Fan-made scenario by ${ custom.creator }"
 msgstr ""
@@ -4354,112 +4361,123 @@ msgid "Promotional"
 msgstr ""
 
 msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
-msgstr ""
+msgstr "Превышен лимит в 5 карт не из числа нейтральных и карт Хранителей"
 
 msgid "You cannot have more than 5 cards that are not Seeker or Neutral"
-msgstr ""
+msgstr "Превышен лимит в 5 карт не из числа нейтральных и карт Искателей"
 
 msgid "You cannot have more than 5 cards that are not Rogue or Neutral"
-msgstr ""
+msgstr "Превышен лимит в 5 карт не из числа нейтральных и карт Ловкачей"
 
 msgid "You cannot have more than 5 cards that are not Mystic or Neutral"
-msgstr ""
+msgstr "Превышен лимит в 5 карт не из числа нейтральных и карт Мистиков"
 
 msgid "You cannot have more than 5 cards that are not Survivor or Neutral"
-msgstr ""
+msgstr "Превышен лимит в 5 карт не из числа нейтральных и карт Выживших"
 
 msgid "You must have at least 7 cards from 3 different factions"
-msgstr ""
+msgstr "У вас должно быть хотя бы по 7 карт из 3 разных классов"
 
 msgid "You cannot have more than 15 level 0-1 Seeker and/or Mystic cards"
-msgstr ""
+msgstr "У вас не может быть больше 15 карт Искателей и/или Мистиков 0–1 уровня"
 
 msgid "You cannot have more than 5 Guardian and/or Mystic cards"
-msgstr ""
+msgstr "У вас не может быть больше 5 карт Хранителей и/или Мистиков"
 
 msgid "You cannot have more than 5 level 0 Mystic cards"
-msgstr ""
+msgstr "У вас не может быть больше 5 карт Мистиков уровня 0"
 
 msgid "Choose resolution"
-msgstr ""
+msgstr "Выберите исход"
 
 msgid "Choose investigator to record trauma"
-msgstr ""
+msgstr "Кто получил травму?"
 
 msgid "Defeated"
-msgstr ""
+msgstr "Побеждённые"
 
 msgid "Status of investigators"
-msgstr ""
+msgstr "Состояние сыщиков"
 
 msgid "Social"
-msgstr ""
+msgstr "Соцсети"
 
 msgid "Connect with other fans of Arkham Horror: The Card Game."
-msgstr ""
+msgstr "Общайтесь с другими поклонниками карточного «Ужаса Аркхэма»."
 
 msgid "Add new"
-msgstr ""
+msgstr "Новый"
 
 msgid "Lead"
-msgstr ""
+msgstr "Ведущий"
 
 msgid "Changes have been recorded."
-msgstr ""
+msgstr "Изменения сохранены."
 
 msgid "No adjustments need saving."
-msgstr ""
+msgstr "Нет правок для сохранения."
 
 msgid ""
 "When you have finished making adjustments, press the 'Save' button to "
 "record your changes."
-msgstr ""
+msgstr "По завершении правок нажмите «Сохранить»."
 
 msgid ""
 "This deck will be upgraded with XP and any new story cards will be added or "
 "removed as specified."
 msgstr ""
+"Будет создано улучшение колоды, в котором будет учтён заработанный опыт и "
+"изменения сюжетных активов, указанные выше."
 
 #, javascript-format
 msgid " (new total: ${ total })"
-msgstr ""
+msgstr " (новая сумма: ${ total })"
 
 msgid "Earned XP:"
-msgstr ""
+msgstr "Полученный опыт:"
 
 msgid "Not deck owner"
-msgstr ""
+msgstr "Нет прав"
 
 msgid "Saved"
-msgstr ""
+msgstr "Сохранено"
 
 #, javascript-format
 msgid ""
 "This deck is owned by ${ deck.owner.handle }. They must open the app on "
 "their own device to save the upgrade"
 msgstr ""
+"Эта колода принадлежит пользователю ${ deck.owner.handle }. Попросите "
+"владельца улучшить колоду в его приложении"
 
 msgid ""
 "This deck is owned by another user. They must open the app on their own "
 "device to save the upgrade"
 msgstr ""
+"Эта колода принадлежит другому пользователю. Попросите владельца улучшить "
+"колоду в его приложении"
 
 msgid ""
 "This investigator does not have a deck associated with it.\n"
 "If you choose a deck, the app can help track spent experience, story asset "
 "changes, and deckbuilding requirements."
 msgstr ""
+"К этому сыщику не привязана колода.\n"
+"После привязки приложение сможет учитывать полученный опыт, сюжетные карты "
+"и требования к составлению колоды."
 
 msgid ""
 "Now that your upgrade has been saved, when visiting the deck be sure to use "
 "the 'Edit' button when making card changes."
 msgstr ""
+"Улучшение колоды сохранено. Воспользуйтесь кнопкой «Править», чтобы "
+"потратить полученный опыт."
 
 msgid "Choose a deck for this investigator"
-msgstr ""
+msgstr "Выберите колоду для этого сыщика"
 
 msgid "What exactly does the app handle?"
-msgstr ""
+msgstr "Что именно учитывает приложение?"
 
 msgid ""
 "Generally speaking, the app handles anything that you see mentioned in the "
@@ -4470,6 +4488,13 @@ msgid ""
 "If you find that you made a mistake after you upgraded your deck, you can "
 "'adjust' the available experience when editing a deck."
 msgstr ""
+"В общих чертах, приложение отслеживает все данные, отражённые в журнале "
+"кампании.\n"
+"Если вы собираете колоду с помощью приложения, то приложение сможет учесть "
+"особенности карт вроде «Изучения магии» и «Тонкого анализа» (если вы "
+"укажете приложению выбрать улучшение случайным образом).\n"
+"Если окажется, что в сохранённой колоде неверное число опыта, "
+"скорректируйте его вручную при редактировании колоды."
 
 msgid ""
 "The numbers below already include all the trauma, victory points, and "
@@ -4478,88 +4503,97 @@ msgid ""
 "If you have any other cards or effects that the app does not take care of, "
 "you can make adjustments below before saving each investigator."
 msgstr ""
+"Числа ниже уже включают травмы, очки опыта и сюжетные активы, которые вы "
+"получили при розыгрыше исхода.\n"
+"\n"
+"Если у вас есть какие-либо неучтённые карты или эффекты, вы можете внести "
+"ручные изменения для каждого сыщика перед сохранением."
 
 msgid "Learn more"
-msgstr ""
+msgstr "Подробнее"
 
 msgid "Save will update your deck with the card changes listed above."
-msgstr ""
+msgstr "Сохранение создаст улучшенную колоду с учётом указанных изменений."
 
 msgid "Campaign log"
-msgstr ""
+msgstr "Журнал кампании"
 
 msgid "Record in campaign log"
-msgstr ""
+msgstr "Сделать запись в журнале"
 
 msgid "Review and add records"
-msgstr ""
+msgstr "Свериться и записать"
 
 msgid "Chaos bag"
-msgstr ""
+msgstr "Мешок хаоса"
 
 msgid "Review and simulate draw"
-msgstr ""
+msgstr "Состав и симулятор взятия"
 
 msgid "Draw random"
-msgstr ""
+msgstr "Взять случайную"
 
 msgid "Record"
-msgstr ""
+msgstr "Записать"
 
 msgid "Scenario effects"
-msgstr ""
+msgstr "Сценарные эффекты"
 
 msgid "Scenario Ended"
-msgstr ""
+msgstr "Сценарий завершён"
 
 msgid "Proceed to Resolutions"
-msgstr ""
+msgstr "Перейти к исходам"
 
 msgid "Choose trauma type"
-msgstr ""
+msgstr "Выберите тип травмы"
 
 msgid "Chosen trauma type"
-msgstr ""
+msgstr "Тип травмы"
 
 msgid "Random results"
-msgstr ""
+msgstr "Случайные результаты"
 
 msgid "Select Traits"
-msgstr ""
+msgstr "Выберите черты"
 
 msgid "Random weaknesses will be drawn that match these traits."
-msgstr ""
+msgstr "Будет взята случайная слабость с указанными чертами."
 
 msgid "Edit selection"
-msgstr ""
+msgstr "Править выделение"
 
 msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
-msgstr ""
+msgstr "Сверьтесь с журналом. Если <i>${ logEntry.text }</i>"
 
 msgid "Discord"
-msgstr ""
+msgstr "Дискорд"
 
 msgid "VK"
-msgstr ""
+msgstr "ВК"
 
 msgid "Telegram"
-msgstr ""
+msgstr "Телеграм"
 
 #, javascript-format
 msgid "In your Campaign Log, under \"${ section }\", record #name#. "
-msgstr ""
+msgstr "В графе «${ section }» журнала кампании запишите #name#. "
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
 "logEntry.text }</i>."
 msgstr ""
+"Вычеркните <i>${ logEntry.text }</i> из графы «${ logEntry.section }» "
+"журнала кампании."
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>"
 msgstr ""
+"Запишите <i>${ logEntry.text }</i> в графе «${ logEntry.section }» журнала "
+"кампании."
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -4656,13 +4690,15 @@ msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"<i>${ card.name }</i> не записан в графе «${ entry.section }» журнала "
+"кампании."
 
 #, javascript-format
 msgctxt "masculine"
 msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
-msgstr ""
+msgstr "<i>${ card.name }</i> записан в графе «${ entry.section }» журнала кампании."
 
 #, javascript-format
 msgctxt "feminine"
@@ -4762,6 +4798,8 @@ msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"<i>${ card.name }</i> не записана в графе «${ entry.section }» журнала "
+"кампании."
 
 #, javascript-format
 msgctxt "feminine"
@@ -4769,6 +4807,8 @@ msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"<i>${ card.name }</i> записана в графе «${ entry.section }» журнала "
+"кампании."
 
 msgctxt "trait"
 msgid "???"
@@ -5902,7 +5942,7 @@ msgstr[2] "Сценариев"
 
 msgctxt "campaign_log_entry"
 msgid "Other."
-msgstr ""
+msgstr "Другое"
 
 msgctxt "Weakness Card"
 msgid "All"

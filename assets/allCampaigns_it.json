@@ -49836,7 +49836,7 @@
           },
           {
             "condition": "1",
-            "prompt": "I - The Magigician",
+            "prompt": "I - The Magician",
             "effects": [
               {
                 "type": "story_step",
