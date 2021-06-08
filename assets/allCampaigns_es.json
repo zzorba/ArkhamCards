@@ -86330,6 +86330,7 @@
     },
     {
       "id": "check_meeting_with_thomas_dawson",
+      "text": "<i>A meeting with Thomas Dawson</i>",
       "bullet_type": "small",
       "type": "branch",
       "condition": {
@@ -86345,6 +86346,7 @@
     },
     {
       "id": "check_battle_with_a_horrifying_devil",
+      "text": "<i>A battle with a horrifying devil</i>",
       "bullet_type": "small",
       "type": "branch",
       "condition": {
@@ -86360,6 +86362,7 @@
     },
     {
       "id": "check_decision_to_stick_together",
+      "text": "<i>A decision to stick together</i>",
       "bullet_type": "small",
       "type": "branch",
       "condition": {
@@ -86375,6 +86378,7 @@
     },
     {
       "id": "check_encounter_with_a_secret_cult",
+      "text": "<i>An encounter with a secret cult</i>",
       "bullet_type": "small",
       "type": "branch",
       "condition": {
@@ -86391,6 +86395,7 @@
     {
       "id": "check_a_deal_with_joe_sargent",
       "bullet_type": "small",
+      "text": "<i>A deal with Joe Sargent</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -86406,6 +86411,7 @@
     {
       "id": "check_a_followed_lead",
       "bullet_type": "small",
+      "text": "<i>A followed lead</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -86421,6 +86427,7 @@
     {
       "id": "check_an_intervention",
       "bullet_type": "small",
+      "text": "<i>An intervention</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -86436,6 +86443,7 @@
     {
       "id": "check_a_jailbreak",
       "bullet_type": "small",
+      "text": "<i>A jailbreak</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -86451,6 +86459,7 @@
     {
       "id": "check_discovery_of_a_strange_idol",
       "bullet_type": "small",
+      "text": "<i>Discovery of a strange idol</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -86466,6 +86475,7 @@
     {
       "id": "check_discovery_of_an_unholy_mantle",
       "bullet_type": "small",
+      "text": "<i>Discovery of an unholy mantle</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -86481,6 +86491,7 @@
     {
       "id": "check_discovery_of_a_mystical_relic",
       "bullet_type": "small",
+      "text": "<i>Discovery of a mystical relic</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -86496,6 +86507,7 @@
     {
       "id": "check_conversation_with_mr_moore",
       "bullet_type": "small",
+      "text": "<i>A conversation with Mr. Moore</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -86511,6 +86523,7 @@
     {
       "id": "check_lifecycle_of_a_deep_one",
       "bullet_type": "small",
+      "text": "<i>The lifecycle of a \"Deep One\"</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -86526,6 +86539,7 @@
     {
       "id": "check_stinging_betrayal",
       "bullet_type": "small",
+      "text": "<i>A stinging betrayal</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
