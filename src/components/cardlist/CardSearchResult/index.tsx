@@ -20,6 +20,7 @@ import StyleContext from '@styles/StyleContext';
 import { AppState } from '@reducers';
 import { ControlComponent, ControlType } from './ControlComponent';
 import { usePressCallback } from '@components/core/hooks';
+import AppIcon from '@icons/AppIcon';
 
 interface Props {
   card: Card;
@@ -236,7 +237,7 @@ function CardSearchResult(props: Props) {
           { tabooBlock }
           { !!card.advanced && (
             <View style={styles.tabooBlock}>
-              <ArkhamIcon name="parallel" size={18 * fontScale} color={colors.darkText} />
+              <AppIcon name="parallel" size={18 * fontScale} color={colors.darkText} />
             </View>
           ) }
         </View>

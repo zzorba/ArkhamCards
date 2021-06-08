@@ -14,6 +14,7 @@ import { msgid, ngettext, t } from 'ttag';
 
 import ThemePicker from './ThemePicker';
 import FontSizePicker from './FontSizePicker';
+import SocialBlock from './SocialBlock';
 import LanguagePicker from './LanguagePicker';
 import SettingsTabooPicker from './SettingsTabooPicker';
 import { fetchCards } from '@components/card/actions';
@@ -223,6 +224,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
               { SHOW_DISSONANT_VOICES && <DissonantVoicesLoginButton showAlert={showAlert} last /> }
             </RoundedFactionBlock>
           </View>
+          <SocialBlock />
           <View style={[space.paddingSideS, space.paddingBottomS]}>
             <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Support`} />}>
               <DeckButton

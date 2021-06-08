@@ -29,7 +29,7 @@ export default function CampaignInvestigatorRow({ campaign }: Props) {
           killedOrInsane={killedOrInsane}
           yithian={yithian}
           border
-          size="small"
+          size="tiny"
         />
       </View>
     );

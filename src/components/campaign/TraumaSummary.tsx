@@ -22,10 +22,10 @@ export default function TraumaSummary({ trauma, investigator, whiteText }: Props
   const physical = (trauma.physical || 0);
   const mental = (trauma.mental || 0);
   const textColorStyle = whiteText ? { color: '#FFF' } : undefined;
-  if (investigator.eliminated(trauma)) {
-    if (trauma.killed || physical >= (investigator.health || 0)) {
-      return <Text style={[typography.subHeaderText, textColorStyle]}>{t`Killed`}</Text>;
-    }
+  if (investigator.killed(trauma)) {
+    return <Text style={[typography.subHeaderText, textColorStyle]}>{t`Killed`}</Text>;
+  }
+  if (investigator.insane(trauma)) {
     return <Text style={[typography.subHeaderText, textColorStyle]}>{t`Insane`}</Text>;
   }
   if (physical + mental === 0) {

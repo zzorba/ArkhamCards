@@ -18,7 +18,7 @@ export default function ChaosTokenButton({ iconKey, selected, onPress, tiny }: P
       underlayColor="transparent"
       delayPressIn={0}
     >
-      <ChaosToken iconKey={iconKey} tiny={tiny} small={!tiny} sealed={selected} />
+      <ChaosToken iconKey={iconKey} size={tiny ? 'tiny' : 'small'} sealed={selected} />
     </TouchableHighlight>
   );
 }

@@ -118,15 +118,12 @@ export default function DiagnosticsView() {
         cycleNames[pack.cycle_position] = pack;
       }
     });
-    cycleNames[50] = {
-      name: t`Return to...`,
-    };
-    cycleNames[70] = {
-      name: t`Investigator Starter Decks`,
-    };
-    cycleNames[80] = {
-      name: t`Side stories`,
-    };
+    cycleNames[8] = { name: t`Edge of the Earth`, code: 'eoe' };
+    cycleNames[50] = { name: t`Return to...`, code: 'return' };
+    cycleNames[60] = { name: t`Investigator Starter Decks`, code: 'investigator' };
+    cycleNames[70] = { name: t`Promotional`, code: 'promotional' };
+    cycleNames[80] = { name: t`Side stories`, code: 'side_stories' };
+    cycleNames[90] = { name: t`Parallel`, code: 'parallel' };
     db.cards().then(cards => {
       cards.insert(
         Card.fromJson(JSON.parse(json), packsByCode, cycleNames, lang)

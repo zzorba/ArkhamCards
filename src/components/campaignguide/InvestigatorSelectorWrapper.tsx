@@ -35,7 +35,6 @@ interface Props<T> {
   id: string;
   investigator: InvestigatorSelector;
   optional?: boolean;
-  description?: string;
   input?: string[];
   fixedInvestigator?: string;
   render: (investigators: Card[], extraArg: T) => React.ReactNode;
@@ -46,7 +45,6 @@ export default function InvestigatorSelectorWrapper<T = undefined>({
   id,
   investigator,
   optional,
-  description,
   input,
   fixedInvestigator,
   render,
@@ -130,12 +128,7 @@ export default function InvestigatorSelectorWrapper<T = undefined>({
         id={`${id}_investigator`}
         title={t`Choose Investigator`}
         choiceId="chosen_investigator"
-        description={description}
-        investigators={getInvestigatorChoices(
-          investigator,
-          scenarioInvestigators,
-          campaignLog
-        )}
+        investigators={getInvestigatorChoices(investigator, scenarioInvestigators, campaignLog)}
         defaultLabel={t`No one`}
         required={investigator === 'any' || investigator === 'any_resigned'}
       />

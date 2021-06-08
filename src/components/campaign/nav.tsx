@@ -162,7 +162,14 @@ export function showChaosBagOddsCalculator(componentId: string, campaignId: Camp
 }
 
 
-export function showGuideChaosBagOddsCalculator(componentId: string, campaignId: CampaignId, chaosBag: ChaosBag, investigatorIds: string[]) {
+export function showGuideChaosBagOddsCalculator(
+  componentId: string,
+  campaignId: CampaignId,
+  chaosBag: ChaosBag,
+  investigatorIds: string[],
+  scenarioId: string | undefined,
+  standalone: boolean | undefined
+) {
   Navigation.push<GuideOddsCalculatorProps>(componentId, {
     component: {
       name: 'Guide.OddsCalculator',
@@ -170,6 +177,8 @@ export function showGuideChaosBagOddsCalculator(componentId: string, campaignId:
         campaignId,
         investigatorIds,
         chaosBag,
+        scenarioId,
+        standalone,
       },
       options: {
         topBar: {

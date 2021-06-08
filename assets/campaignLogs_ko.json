@@ -1123,6 +1123,13 @@
         "multiple": true
       },
       {
+        "id": "provisions",
+        "name": "비상식량",
+        "description": "1인분의 음식과 물입니다. 어딜 가더라도 식량이야말로 필수품입니다.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
         "id": "gasoline",
         "name": "휘발유",
         "description": "차를 타고 장거리 이동을 하려면 필요합니다.",
@@ -1438,6 +1445,26 @@
         "section": "05046",
         "entries": [
           {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# disappeared into the mist.",
+            "feminine_text": "#name# disappeared into the mist."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# was claimed by specters.",
+            "feminine_text": "#name# was claimed by specters."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# was pulled into the spectral realm.",
+            "feminine_text": "#name# was pulled into the spectral realm."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# was taken by the Watcher.",
+            "feminine_text": "#name# was taken by the Watcher."
+          },
+          {
             "id": "alive",
             "text": "Gavriella is alive."
           },
@@ -1454,6 +1481,26 @@
       {
         "section": "05047",
         "entries": [
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# disappeared into the mist.",
+            "feminine_text": "#name# disappeared into the mist."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# was claimed by specters.",
+            "feminine_text": "#name# was claimed by specters."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# was pulled into the spectral realm.",
+            "feminine_text": "#name# was pulled into the spectral realm."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# was taken by the Watcher.",
+            "feminine_text": "#name# was taken by the Watcher."
+          },
           {
             "id": "alive",
             "text": "Jerome is alive."
@@ -1472,6 +1519,26 @@
         "section": "05048",
         "entries": [
           {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# disappeared into the mist.",
+            "feminine_text": "#name# disappeared into the mist."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# was claimed by specters.",
+            "feminine_text": "#name# was claimed by specters."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# was pulled into the spectral realm.",
+            "feminine_text": "#name# was pulled into the spectral realm."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# was taken by the Watcher.",
+            "feminine_text": "#name# was taken by the Watcher."
+          },
+          {
             "id": "alive",
             "text": "Valentino is alive."
           },
@@ -1488,6 +1555,26 @@
       {
         "section": "05049",
         "entries": [
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# disappeared into the mist.",
+            "feminine_text": "#name# disappeared into the mist."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# was claimed by specters.",
+            "feminine_text": "#name# was claimed by specters."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# was pulled into the spectral realm.",
+            "feminine_text": "#name# was pulled into the spectral realm."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# was taken by the Watcher.",
+            "feminine_text": "#name# was taken by the Watcher."
+          },
           {
             "id": "alive",
             "text": "Penny is alive."
@@ -1680,6 +1767,10 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "$input_value",
+            "text": "dummy"
+          },
+          {
             "id": "a_record_of_those_lost",
             "text": "dummy"
           },
@@ -1692,7 +1783,27 @@
             "text": "dummy"
           },
           {
+            "id": "prologue_05046",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05047",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05048",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05049",
+            "text": "dummy"
+          },
+          {
             "id": "right_column",
+            "text": "dummy"
+          },
+          {
+            "id": "skip_prologue",
             "text": "dummy"
           },
           {
@@ -2318,6 +2429,13 @@
         "multiple": true
       },
       {
+        "id": "provisions",
+        "name": "비상식량",
+        "description": "1인분의 음식과 물입니다. 어딜 가더라도 식량이야말로 필수품입니다.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
         "id": "gasoline",
         "name": "휘발유",
         "description": "차를 타고 장거리 이동을 하려면 필요합니다.",
@@ -2799,151 +2917,151 @@
         "entries": [
           {
             "id": "alice_perished_and_wonderland_has_been_lost_forever",
-            "text": "Alice perished and Wonderland has been lost forever."
+            "text": "앨리스는 비명횡사했고 이상한 나라는 영원히 소실되었다."
           },
           {
             "id": "controlled_the_snark",
-            "text": "the investigators controlled the Snark."
+            "text": "조사자들은 스나크를 조종했다."
           },
           {
             "id": "gurathnaka_and_its_shadows_consumed_the_earth",
-            "text": "Gurathnaka and its shadows consumed the earth."
+            "text": "구라트나카와 그림자가 지구를 먹어 치웠다."
           },
           {
             "id": "gurathnaka_and_its_shadows_were_banished_from_arkham",
-            "text": "Gurathnaka and its shadows were banished from Arkham."
+            "text": "구라트나카와 그의 그림자는 아컴에서 추방되었다."
           },
           {
             "id": "hare_and_hatter_enjoyed_your_company",
-            "text": "the Hare and  Hatter thoroughly enjoyed your company."
+            "text": "3월 토끼와 모자장수가 당신과 함께한 순간을 즐겼다."
           },
           {
             "id": "hare_and_hatter_were_cast_into_the_shadows",
-            "text": "the Hare and the Hatter were cast into the shadows."
+            "text": "3월 토끼 와 모자장수는 그림자로 내던져졌다."
           },
           {
             "id": "hare_couldnt_cope_with_hatters_death",
-            "text": "the Hare couldn't cope with the Hatter's death."
+            "text": "3월 토끼는 모자장수의 죽음을 견딜 수 없었다."
           },
           {
             "id": "hare_hatter_and_dormouse_were_consumed_by_shadows",
-            "text": "the Hare, Hatter, and Dormouse were consumed by shadows."
+            "text": "3월 토끼, 모자장수, 그리고 겨울잠 쥐가 어둠에 흡수되었다."
           },
           {
             "id": "hatter_couldnt_cope_with_hares_death",
-            "text": "the Hatter couldn't cope with the Hare's death."
+            "text": "모자장수는 3월 토끼의 죽음을 견딜 수 없었다."
           },
           {
             "id": "intimidated_the_snark",
-            "text": "the investigators intimidated the Snark."
+            "text": "조사자들은 스나크 에게 겁을 주었다."
           },
           {
             "id": "intrigued_the_snark",
-            "text": "the investigators intrigued the Snark."
+            "text": "스나크의 흥미를 끌었다."
           },
           {
             "id": "jabberwock_still_haunts_the_tulgey_wood",
-            "text": "the Jabberwock still haunts the Tulgey Wood."
+            "text": "재버워크가 아직 털진 숲에 출몰한다."
           },
           {
             "id": "one_of_the_tweedles_learned_about_the_cost_of_war",
-            "text": "one of the Tweedles learned about the cost of war."
+            "text": "트위들 쌍둥이의 한쪽은 전쟁의 대가에 대해 배웠다."
           },
           {
             "id": "puzzled_the_snark",
-            "text": "the investigators puzzled the Snark."
+            "text": "조사자들은 스나크를 혼란하게 했다."
           },
           {
             "id": "queen_destroyed_the_shadows_in_a_fit_of_rage",
-            "text": "the Queen destroyed the shadows in a fit of rage."
+            "text": "하트 여왕 이 그림자를 분노에 차 박살냈다."
           },
           {
             "id": "queens_castle_was_consumed_by_shadows",
-            "text": "the Queen's castle was consumed by shadows."
+            "text": "여왕의 성이 어둠에 흡수되었다."
           },
           {
             "id": "separated_alices_dreams_from_the_real_world",
-            "text": "the investigators separated Alice's dreams from the real world."
+            "text": "조사자들은 현실 세계를 앨리스의 꿈에서 분리해냈다."
           },
           {
             "id": "shadows_grow_stronger_with_each_passing_moment",
-            "text": "the shadows grow stronger with each passing moment."
+            "text": "그림자가 당신이 지나온 곳마다 강해졌다."
           },
           {
             "id": "shadows_maintain_their_grip_on_alices_dreams",
-            "text": "the shadows maintain their grip on Alice's dreams."
+            "text": "그림자가 앨리스의 꿈에 대한 손아귀를 유지하고 있다."
           },
           {
             "id": "shadows_weakened_by_wonderlands_instability",
-            "text": "the shadows have been weakened by Wonderland's instability."
+            "text": "그림자가 당신의 행동에 의해 매우 약해졌다."
           },
           {
             "id": "snark_and_its_hunters_were_never_met_with_again",
-            "text": "the Snark and its hunters were never met with again."
+            "text": "스나크와 스나크 사냥꾼들은 이제 다시는 조우하지 못한다."
           },
           {
             "id": "took_the_jabberwocks_head",
-            "text": "the investigators took the Jabberwock's head."
+            "text": "조사자들은 재버워크의 머리를 취했다."
           },
           {
             "id": "tricked_the_snark",
-            "text": "the investigators tricked the Snark."
+            "text": "조사자들은 스나크를 속여 넘겼다."
           },
           {
             "id": "tweedles_learned_that_there_are_worse_things_than_fighting_each_other",
-            "text": "the Tweedles learned that there are worse things than fighting each other."
+            "text": "트위들 쌍둥이는 서로 싸우는 것보다 더 나쁜 것도 있다는 것을\t배웠다."
           },
           {
             "id": "tweedles_perished_in_their_bloody_battle",
-            "text": "the Tweedles perished in their bloody battle."
+            "text": "트위들 쌍둥이가 피 튀기는 전투에서 비명횡사했다."
           },
           {
             "id": "tweedles_war_war_brought_to_an_end",
-            "text": "the Tweedles' war was brought to an end."
+            "text": "트위들 쌍둥이의 전쟁은 종말을 불러왔다."
           },
           {
             "id": "walrus_and_carpenter_ate_their_last_meal",
-            "text": "the Walrus and the Carpenter ate their last meal."
+            "text": "바다코끼리와 목수가 마지막 식사를 했다."
           },
           {
             "id": "walrus_and_carpenter_have_lost_their_appetites",
-            "text": "the Walrus and the Carpenter have lost their appetites."
+            "text": "바다코끼리와 목수가 식탐을 잃었다."
           },
           {
             "id": "walrus_and_carpenter_were_completely_obliterated",
-            "text": "the Walrus and the Carpenter were completely obliterated."
+            "text": "바다코끼리와 목수가 완전히 소멸되었다."
           },
           {
             "id": "went_down_the_rabbit_hole",
-            "text": "the investigators went down the rabbit hole."
+            "text": "조사자들은 토끼굴로 뛰어들었다"
           },
           {
             "id": "went_through_the_looking_glass",
-            "text": "the investigators went through the looking glass."
+            "text": "조사자들이 거울을 통과했다."
           },
           {
             "id": "white_king_celebrates_a_grand_victory",
-            "text": "the White King celebrates a grand victory."
+            "text": "하얀 왕이 장대한 승리를 기념하였다."
           },
           {
             "id": "white_king_was_slain_by_the_red_pieces",
-            "text": "the White King was slain by the red pieces."
+            "text": "하얀 왕은 붉은 기물들에게 살해당했다."
           },
           {
             "id": "white_knight_has_fallen_in_battle_to_the_red_queen",
-            "text": "the White Knight has fallen in battle to the Red Queen."
+            "text": "하얀 기사가 붉은 여왕과 의 싸움에서 쓰러졌다."
           },
           {
             "id": "white_knight_revels_in_your_victory_over_the_red_queen",
-            "text": "the White Knight revels in your victory over the Red Queen."
+            "text": "하얀 기사가 붉은 여왕에게서 당신이 승리했다고 공표했다."
           },
           {
             "id": "white_rabbit_consumed_by_shadows",
-            "text": "the White Rabbit was consumed by shadows."
+            "text": "흰 토끼가 그림자에게 흡수되었다."
           },
           {
             "id": "white_rabbit_survived_the_monsters_attack",
-            "text": "the White Rabbit survived the monster's attack."
+            "text": "흰 토끼가 괴물의 공격에서 살아남았다."
           }
         ]
       },
@@ -2952,27 +3070,27 @@
         "entries": [
           {
             "id": "compassion",
-            "text": "Compassion"
+            "text": "연민"
           },
           {
             "id": "courage",
-            "text": "Courage"
+            "text": "용기"
           },
           {
             "id": "curiosity",
-            "text": "Curiosity"
+            "text": "호기심"
           },
           {
             "id": "intuition",
-            "text": "Intuition"
+            "text": "직감"
           },
           {
             "id": "patience",
-            "text": "Patience"
+            "text": "인내"
           },
           {
             "id": "reason",
-            "text": "Reason"
+            "text": "이성"
           }
         ]
       },
@@ -2998,31 +3116,31 @@
         "entries": [
           {
             "id": "gryphon_and_mock_turtle",
-            "text": "The Gryphon and the Mock Turtle"
+            "text": "그리폰과 가짜 거북"
           },
           {
             "id": "humpty_dumpty",
-            "text": "Humpty Dumpty"
+            "text": "험프티 덤프티"
           },
           {
             "id": "lion_and_unicorn",
-            "text": "The Lion and the Unicorn"
+            "text": "사자와 유니콘"
           },
           {
             "id": "the_caterpillar",
-            "text": "The Caterpillar"
+            "text": "애벌레"
           },
           {
             "id": "the_dodo",
-            "text": "The Dodo"
+            "text": "도도새"
           },
           {
             "id": "the_duchess",
-            "text": "The Duchess"
+            "text": "공작부인"
           },
           {
             "id": "the_white_queen",
-            "text": "The White Queen"
+            "text": "하얀 여왕"
           }
         ]
       },
@@ -3031,31 +3149,31 @@
         "entries": [
           {
             "id": "gryphon_and_mock_turtle",
-            "text": "The Gryphon and the Mock Turtle"
+            "text": "그리폰과 가짜 거북"
           },
           {
             "id": "humpty_dumpty",
-            "text": "Humpty Dumpty"
+            "text": "험프티 덤프티"
           },
           {
             "id": "lion_and_unicorn",
-            "text": "The Lion and the Unicorn"
+            "text": "사자와 유니콘"
           },
           {
             "id": "the_caterpillar",
-            "text": "The Caterpillar"
+            "text": "애벌레"
           },
           {
             "id": "the_dodo",
-            "text": "The Dodo"
+            "text": "도도새"
           },
           {
             "id": "the_duchess",
-            "text": "The Duchess"
+            "text": "공작부인"
           },
           {
             "id": "the_white_queen",
-            "text": "The White Queen"
+            "text": "하얀 여왕"
           }
         ]
       }

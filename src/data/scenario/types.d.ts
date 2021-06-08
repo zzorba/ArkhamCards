@@ -97,6 +97,7 @@ export type ChaosToken =
   | "elder_sign"
   | "auto_fail";
 export type DefaultOption = Option;
+export type ChoiceIcon = "mental" | "physical" | "resign" | "dismiss" | "accept";
 export type MathCondition = MathCompareCondition | MathSumCondition | MathEqualsCondition;
 export type Operand = CampaignLogCountOperand | ChaosBagOperand | ConstantOperand;
 export type CardCondition = InvestigatorCardCondition | BinaryCardCondition;
@@ -129,6 +130,7 @@ export type Input =
   | ReceiveCampaignLinkInput
   | SendCampaignLinkInput
   | RandomLocationInput
+  | PrologueRandomizer
   | SaveDecksInput;
 export type CardQuery = CardSearchQuery | CardCodeList;
 export type UseSuppliesInput = UseSuppliesChoiceInput | UseSuppliesAllInput;
@@ -144,6 +146,7 @@ export type BinaryChoiceCondition =
   | CampaignDataChaosBagCondition
   | CampaignLogCondition
   | CampaignLogCountCondition
+  | CampaignLogSectionExistsCondition
   | MultiCondition;
 export type LocationConnector = "purple_moon" | "blue_triangle" | "red_square" | "orange_heart" | "green_diamond";
 export type AllCampaigns = FullCampaign[];
@@ -191,6 +194,7 @@ export interface MultiCondition {
   type: "multi";
   conditions: (
     | CampaignLogCondition
+    | CampaignLogSectionExistsCondition
     | CampaignDataChaosBagCondition
     | CampaignLogCountCondition
     | CampaignDataVersionCondition
@@ -285,7 +289,8 @@ export interface CampaignLogCardsEffect {
   text?: string;
   masculine_text?: string;
   feminine_text?: string;
-  cards?: "$lead_investigator" | "$all_investigators" | "$defeated_investigators" | "$input_value";
+  cards?: "$lead_investigator" | "$all_investigators" | "$defeated_investigators" | "$input_value" | "$fixed_codes";
+  codes?: string[];
   cross_out?: boolean;
   remove?: boolean;
 }
@@ -376,6 +381,11 @@ export interface Supply {
   cost: number;
   multiple?: boolean;
 }
+export interface CampaignLogSectionExistsCondition {
+  type: "campaign_log_section_exists";
+  section: string;
+  options: BoolOption[];
+}
 export interface CampaignDataChaosBagCondition {
   type: "campaign_data";
   campaign_data: "chaos_bag";
@@ -397,6 +407,7 @@ export interface CampaignLogCountCondition {
   defaultOption?: DefaultOption;
 }
 export interface Option {
+  icon?: ChoiceIcon;
   boolCondition?: boolean;
   numCondition?: number;
   condition?: string;
@@ -425,6 +436,7 @@ export interface ScenarioDataResolutionCondition {
 }
 export interface StringOption {
   condition: string;
+  prompt?: string;
   border?: boolean;
   pre_border_effects?: Effect[];
   effects?: Effect[];
@@ -501,11 +513,6 @@ export interface CampaignDataLinkedCondition {
   campaign_data: "linked_campaign";
   options: BoolOption[];
 }
-export interface CampaignLogSectionExistsCondition {
-  type: "campaign_log_section_exists";
-  section: string;
-  options: BoolOption[];
-}
 export interface ScenarioDataInvestigatorStatusCondition {
   type: "scenario_data";
   scenario_data: "investigator_status";
@@ -576,6 +583,7 @@ export interface InputStep {
   text?: string;
   input: Input;
   bullet_type?: BulletType;
+  prompt_type?: "header" | "setup";
   narration?: Narration;
 }
 export interface UpgradeDecksInput {
@@ -609,6 +617,7 @@ export interface Choice {
   id: string;
   large?: boolean;
   text: string;
+  confirm_text?: string;
   feminine_text?: string;
   masculine_text?: string;
   description?: string;
@@ -650,11 +659,14 @@ export interface InvestigatorChoiceInput {
   optional?: boolean;
   investigator: "all" | "choice" | "any" | "resigned";
   special_mode?: "detailed" | "sequential";
+  confirm_text?: string;
   choices: InvestigatorConditionalChoice[];
 }
 export interface InvestigatorConditionalChoice {
+  icon?: ChoiceIcon;
   id: string;
   text: string;
+  selected_text?: string;
   description?: string;
   condition?: InvestigatorChoiceCondition;
   border?: boolean;
@@ -676,7 +688,7 @@ export interface InvestigatorCondition {
 }
 export interface ChooseOneInput {
   type: "choose_one";
-  style?: "picker";
+  default_choice?: string;
   confirm_text?: string;
   choices: BinaryConditionalChoice[];
 }
@@ -684,6 +696,8 @@ export interface BinaryConditionalChoice {
   id: string;
   large?: boolean;
   text: string;
+  gender?: "masculine" | "feminine";
+  tokens?: ChaosToken[];
   description?: string;
   condition?: BinaryChoiceCondition;
   repeatable?: boolean;
@@ -736,6 +750,7 @@ export interface PlayScenarioInput {
   type: "play_scenario";
   branches?: BinaryConditionalChoice[];
   campaign_log?: BinaryConditionalChoice[];
+  chaos_bag_branches?: string[];
   no_resolutions?: boolean;
 }
 export interface TextBoxInput {
@@ -761,6 +776,12 @@ export interface RandomLocationInput {
   type: "random_location";
   cards: string[];
   multiple?: boolean;
+}
+export interface PrologueRandomizer {
+  type: "prologue_randomizer";
+  prompt: string;
+  choices: BinaryConditionalChoice[];
+  options: StringOption[];
 }
 export interface SaveDecksInput {
   type: "save_decks";

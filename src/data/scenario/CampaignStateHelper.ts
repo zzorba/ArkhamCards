@@ -13,6 +13,7 @@ import {
   Trauma,
   DeckId,
   SYSTEM_BASED_GUIDE_INPUT_TYPES,
+  SYSTEM_BASED_GUIDE_INPUT_IDS,
 } from '@actions/types';
 import { ScenarioId } from '@data/scenario';
 import Card, { CardsMap } from '@data/types/Card';
@@ -86,7 +87,9 @@ export default class CampaignStateHelper {
 
   closeOnUndo(scenarioId: string) {
     return this.state.countInput(input => (
-      !SYSTEM_BASED_GUIDE_INPUT_TYPES.has(input.type) && input.scenario === scenarioId
+      input.scenario === scenarioId &&
+      !SYSTEM_BASED_GUIDE_INPUT_TYPES.has(input.type) &&
+      !(input.step && SYSTEM_BASED_GUIDE_INPUT_IDS.has(input.step))
     )) === 1;
   }
 

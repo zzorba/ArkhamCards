@@ -8,7 +8,7 @@ import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext from '../ScenarioGuideContext';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { ResolutionStep } from '@data/scenario/types';
-import space, { s } from '@styles/space';
+import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { NarrationButton, useNarration } from './NarrationStepComponent';
 
@@ -37,7 +37,7 @@ export default function ResolutionStepComponent({ step }: Props) {
         <View style={space.marginTopM}>
           <View style={{ ...space.marginSideM, display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
             { narration && <NarrationButton narration={narration} />}
-            <Text style={{ ...typography.mediumGameFont, flex: 1, paddingLeft: s }}>
+            <Text style={{ ...typography.mediumGameFont, flex: 1 }}>
               { resolution.title }
             </Text>
           </View>

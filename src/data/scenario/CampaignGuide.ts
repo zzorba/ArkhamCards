@@ -43,7 +43,7 @@ interface LogEntrySectionCount extends LogSection {
   type: 'section_count';
 }
 
-interface LogEntryText extends LogSection {
+export interface LogEntryText extends LogSection {
   type: 'text';
   text: string;
   feminineText?: string;

@@ -17,7 +17,6 @@ import COLORS from '@styles/colors';
 import CampaignGuideContext from './CampaignGuideContext';
 import StepsComponent from './StepsComponent';
 import { hasDissonantVoices } from '@reducers';
-import BasicButton from '@components/core/BasicButton';
 import { NavigationProps } from '@components/nav/types';
 import { ScenarioFaqProps } from '@components/campaignguide/ScenarioFaqView';
 import { useNavigationButtonPressed } from '@components/core/hooks';
@@ -29,6 +28,7 @@ import ScenarioGuideContext from './ScenarioGuideContext';
 import { ProcessedScenario } from '@data/scenario';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import { showGuideCampaignLog } from '@components/campaign/nav';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 interface ScenarioProps {
   standalone: boolean;
@@ -243,12 +243,9 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
       <KeepAwake />
       <NarrationWrapper>
         <ScrollView contentContainerStyle={backgroundStyle}>
-          { !!customData && <BasicButton title={t`Download print and play cards`} onPress={downloadPressed} /> }
+          { !!customData && <ArkhamButton icon="world" title={t`Download print and play cards`} onPress={downloadPressed} /> }
           { !!hasInterludeFaq && (
-            <BasicButton
-              title={t`Interlude FAQ`}
-              onPress={showScenarioFaq}
-            />
+            <ArkhamButton icon="faq" title={t`Interlude FAQ`} onPress={showScenarioFaq} />
           ) }
           <StepsComponent
             componentId={componentId}

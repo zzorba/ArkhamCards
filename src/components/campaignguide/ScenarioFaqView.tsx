@@ -7,9 +7,9 @@ import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideT
 import withCampaignGuideContext, { CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
 import space from '@styles/space';
 import { Question } from '@data/scenario/types';
-import BasicButton from '@components/core/BasicButton';
 import StyleContext from '@styles/StyleContext';
 import CampaignGuideContext from './CampaignGuideContext';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 export interface ScenarioFaqProps extends CampaignGuideInputProps {
   scenario: string;
@@ -42,7 +42,7 @@ function ScenarioFaqView({ scenario }: ScenarioFaqProps) {
       </View>
       { spoilers ?
         map(errata, (e, idx) => renderErrata(e, idx)) :
-        <BasicButton title={t`Show Spoilers`} onPress={showSpoilers} /> }
+        <ArkhamButton icon="show" title={t`Show Spoilers`} onPress={showSpoilers} /> }
     </ScrollView>
   );
 }

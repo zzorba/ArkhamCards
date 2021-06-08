@@ -859,7 +859,7 @@
         "entries": [
           {
             "id": "alejandro_followed_to_ruins",
-            "text": "Alejandro a suivi les investigateurs dans les ruines"
+            "text": "Alejandro a suivi les investigateurs dans les ruines."
           },
           {
             "id": "alejandro_is_missing",
@@ -867,7 +867,7 @@
           },
           {
             "id": "alejandro_on_his_own",
-            "text": "Alejandro poursuit ses recherches de son côté"
+            "text": "Alejandro poursuit ses recherches de son côté."
           },
           {
             "id": "alejandro_recovered_relic",
@@ -875,7 +875,7 @@
           },
           {
             "id": "alejandro_remained_at_camp",
-            "text": "Alejandro a choisi de rester au campement"
+            "text": "Alejandro a choisi de rester au campement."
           },
           {
             "id": "alejandro_remembers_everything",
@@ -899,7 +899,7 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "investigateurs ont coopéré avec les Yithiens."
+            "text": "les investigateurs ont coopéré avec les Yithiens."
           },
           {
             "id": "earned_alejandros_trust",
@@ -907,7 +907,7 @@
           },
           {
             "id": "earned_ichtacas_trust",
-            "text": "investigateurs ont gagné la confiance d'Ichtaca."
+            "text": "les investigateurs ont gagné la confiance d'Ichtaca."
           },
           {
             "id": "fabric_of_time_unwoven",
@@ -919,11 +919,11 @@
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "les investigateurs ont tissé un lien avec Ichtaca"
+            "text": "les investigateurs ont tissé un lien avec Ichtaca."
           },
           {
             "id": "forging_own_path",
-            "text": "vous suivez votre propre voie"
+            "text": "vous suivez votre propre voie."
           },
           {
             "id": "found_missing_relic",
@@ -931,7 +931,7 @@
           },
           {
             "id": "gave_relic_to_alejandro",
-            "text": "les investigateurs ont conifé la relique à Alejandro."
+            "text": "les investigateurs ont confié la relique à Alejandro."
           },
           {
             "id": "gave_relic_to_harlan",
@@ -943,7 +943,7 @@
           },
           {
             "id": "harbinger_alive",
-            "text": "le Hérault est toujours vivant (#X# dégâts)"
+            "text": "le Hérault est toujours vivant (#X# dégâts)."
           },
           {
             "id": "ichtaca_has_confidence",
@@ -967,11 +967,11 @@
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "la foi d'Ichtaca est restaurée."
+            "text": "La foi d'Ichtaca est restaurée."
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "les investigateurs ont trouvé la Relique des Âges"
+            "text": "les investigateurs ont trouvé la Relique des Âges."
           },
           {
             "id": "investigators_saved_serpents",
@@ -983,15 +983,15 @@
           },
           {
             "id": "jungle_watches",
-            "text": "la jungle veille (#name# x#X#).)"
+            "text": "la jungle veille (#name# x#X#)."
           },
           {
             "id": "mapped_way_forward",
-            "text": "les investigateurs ont cartographié la voie d'accès"
+            "text": "les investigateurs ont cartographié la voie d'accès."
           },
           {
             "id": "mended_tear_in_time",
-            "text": "investigateurs ont comblé la brèche dans la structure du temps."
+            "text": "les investigateurs ont comblé la brèche dans la structure du temps."
           },
           {
             "id": "nexus_is_near",
@@ -999,23 +999,23 @@
           },
           {
             "id": "paths_known",
-            "text": "vous connaissez #X# chemins"
+            "text": "vous connaissez #X# chemins."
           },
           {
             "id": "process_backfired",
-            "text": "le processus a échoué"
+            "text": "le processus a échoué."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "le processus a échoué de manière spectaculaire"
+            "text": "le processus a échoué de manière spectaculaire."
           },
           {
             "id": "process_was_perfected",
-            "text": "le processus a parfaitement fonctionné"
+            "text": "le processus a parfaitement fonctionné."
           },
           {
             "id": "process_was_successful",
-            "text": "le processus a fonctionné"
+            "text": "le processus a fonctionné."
           },
           {
             "id": "recruited_help_of_another_expedition",
@@ -1023,7 +1023,7 @@
           },
           {
             "id": "relic_is_missing",
-            "text": "la relique a disparu"
+            "text": "la relique a disparu."
           },
           {
             "id": "rescued_alejandro",
@@ -1052,11 +1052,11 @@
         "entries": [
           {
             "id": "agenda_5",
-            "text": "cacher"
+            "text": "caché"
           },
           {
             "id": "agenda_6",
-            "text": "cacher"
+            "text": "caché"
           },
           {
             "id": "doy_cross_off_rope",
@@ -1068,11 +1068,11 @@
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca est partie sans vous"
+            "text": "Ichtaca est partie sans vous."
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "écouté l'histoire d'Ichtaca"
+            "text": "a écouté l'histoire d'Ichtaca."
           },
           {
             "id": "rtdoe_gain_mysterious_scepter",
@@ -1084,7 +1084,7 @@
           },
           {
             "id": "tasks_completed",
-            "text": "#X# ont été accomplies"
+            "text": "#X# ont été accomplies."
           },
           {
             "id": "wilds_add_chaos_token",
@@ -1116,6 +1116,13 @@
         "multiple": false
       },
       {
+        "id": "provisions",
+        "name": "Provisions",
+        "description": "De l'eau et de la nourriture pour une personne. Incontournable pour tout voyage.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
         "id": "gasoline",
         "name": "Essence",
         "description": "Suffisamment pour un long voyage en voiture.",
@@ -1123,23 +1130,16 @@
         "multiple": true
       },
       {
-        "id": "provisions",
-        "name": "Provisions",
-        "description": "de l'eau et de la nourriture pour une personne. Incontournable pour tout voyage.",
-        "cost": 1,
-        "multiple": true
-      },
-      {
         "id": "medicine",
         "name": "Médicaments",
-        "description": "pour lutter contre les maladies, les infections et les venins.",
+        "description": "Pour lutter contre les maladies, les infections et les venins.",
         "cost": 2,
         "multiple": true
       },
       {
         "id": "pendant",
         "name": "Pendentif",
-        "description": "totalement inutile, mais les souvenirs chers apportent du réconfort aux voyageurs qui sont loin de chez eux.",
+        "description": "Totalement inutile, mais les souvenirs chers apportent du réconfort aux voyageurs qui sont loin de chez eux.",
         "cost": 1
       },
       {
@@ -1149,57 +1149,57 @@
         "cost": 2
       },
       {
+        "id": "blanket",
+        "name": "Duvet",
+        "description": "Pour tenir chaud la nuit.",
+        "cost": 2
+      },
+      {
+        "id": "binoculars",
+        "name": "Jumelles",
+        "description": "Pour vous aider à observer des lieux éloignés.",
+        "cost": 2
+      },
+      {
+        "id": "compass",
+        "name": "Boussole",
+        "description": "Pour vous guider lorsque vous êtes irrémédiablement perdu.",
+        "cost": 2
+      },
+      {
+        "id": "chalk",
+        "name": "Craie",
+        "description": "Pour écrire sur de la pierre.",
+        "cost": 2
+      },
+      {
         "id": "pocketknife",
         "name": "Canif",
         "description": "Trop petit pour être utilisé comme arme, mais facile à dissimuler.",
         "cost": 2
       },
       {
-        "id": "blanket",
-        "name": "Duvet",
-        "description": "pour tenir chaud la nuit.",
-        "cost": 2
-      },
-      {
-        "id": "binoculars",
-        "name": "Jumelles",
-        "description": "pour vous aider à observer des lieux éloignés.",
-        "cost": 2
-      },
-      {
-        "id": "compass",
-        "name": "Boussole",
-        "description": "pour vous guider lorsque vous êtes irrémédiablement perdu.",
-        "cost": 2
-      },
-      {
-        "id": "chalk",
-        "name": "Craie",
-        "description": "pour écrire sur de la pierre.",
-        "cost": 2
-      },
-      {
         "id": "canteen",
         "name": "Gourde",
-        "description": "à remplir dans les ruisseaux et les rivières.",
+        "description": "À remplir dans les ruisseaux et les rivières.",
         "cost": 2
       },
       {
         "id": "map",
         "name": "Plan",
-        "description": "il n'y a rien dessus, mais avec le temps vous devriez être capable de le compléter.",
+        "description": "Il n'y a rien dessus, mais avec le temps vous devriez être capable de le compléter.",
         "cost": 3
       },
       {
         "id": "torches",
         "name": "Torches",
-        "description": "pour éclairer les lieux obscurs ou allumer des torches murales.",
+        "description": "Pour éclairer les lieux obscurs ou allumer des torches murales.",
         "cost": 3
       },
       {
         "id": "rope",
         "name": "Corde",
-        "description": "un long rouleau de solide cordage. Essentiel pour grimper ou faire de la spéléologie.",
+        "description": "Un long rouleau de solide cordage. Essentiel pour grimper ou faire de la spéléologie.",
         "cost": 3
       }
     ]
@@ -1419,13 +1419,13 @@
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# a été aspiré dans le monde spectral",
-            "feminine_text": "#name# a été aspirée dans le monde spectral"
+            "masculine_text": "#name# a été aspiré dans le monde spectral.",
+            "feminine_text": "#name# a été aspirée dans le monde spectral."
           },
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# a été emporté par le Guetteur",
-            "feminine_text": "#name# a été emportée par le Guetteur"
+            "masculine_text": "#name# a été emporté par le Guetteur.",
+            "feminine_text": "#name# a été emportée par le Guetteur."
           },
           {
             "id": "claimed_by_specters",
@@ -1438,12 +1438,32 @@
         "section": "05046",
         "entries": [
           {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# a disparu dans la brume.",
+            "feminine_text": "#name# a disparu dans la brume."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# a été aspiré dans le monde spectral.",
+            "feminine_text": "#name# a été aspirée dans le monde spectral."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# a été emporté par le Guetteur.",
+            "feminine_text": "#name# a été emportée par le Guetteur."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "les spectres se sont emparés de #name#.",
+            "feminine_text": "les spectres se sont emparés de #name#."
+          },
+          {
             "id": "alive",
-            "text": "Gavriella est vivante"
+            "text": "Gavriella est vivante."
           },
           {
             "id": "dead",
-            "text": "Gavriella Mizrah est morte"
+            "text": "Gavriella Mizrah est morte."
           },
           {
             "id": "on_gavriellas_trail",
@@ -1455,8 +1475,28 @@
         "section": "05047",
         "entries": [
           {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# a disparu dans la brume.",
+            "feminine_text": "#name# a disparu dans la brume."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# a été aspiré dans le monde spectral.",
+            "feminine_text": "#name# a été aspirée dans le monde spectral."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# a été emporté par le Guetteur.",
+            "feminine_text": "#name# a été emportée par le Guetteur."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "les spectres se sont emparés de #name#.",
+            "feminine_text": "les spectres se sont emparés de #name#."
+          },
+          {
             "id": "alive",
-            "text": "Jerome est vivant"
+            "text": "Jerome est vivant."
           },
           {
             "id": "dead",
@@ -1472,8 +1512,28 @@
         "section": "05048",
         "entries": [
           {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# a disparu dans la brume.",
+            "feminine_text": "#name# a disparu dans la brume."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# a été aspiré dans le monde spectral.",
+            "feminine_text": "#name# a été aspirée dans le monde spectral."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# a été emporté par le Guetteur.",
+            "feminine_text": "#name# a été emportée par le Guetteur."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "les spectres se sont emparés de #name#.",
+            "feminine_text": "les spectres se sont emparés de #name#."
+          },
+          {
             "id": "alive",
-            "text": "Valentino est vivant"
+            "text": "Valentino est vivant."
           },
           {
             "id": "dead",
@@ -1489,12 +1549,32 @@
         "section": "05049",
         "entries": [
           {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# a disparu dans la brume.",
+            "feminine_text": "#name# a disparu dans la brume."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# a été aspiré dans le monde spectral.",
+            "feminine_text": "#name# a été aspirée dans le monde spectral."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# a été emporté par le Guetteur.",
+            "feminine_text": "#name# a été emportée par le Guetteur."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "les spectres se sont emparés de #name#.",
+            "feminine_text": "les spectres se sont emparés de #name#."
+          },
+          {
             "id": "alive",
-            "text": "Penny est vivante"
+            "text": "Penny est vivante."
           },
           {
             "id": "dead",
-            "text": "Penny White est morte"
+            "text": "Penny White est morte."
           },
           {
             "id": "on_pennys_trail",
@@ -1507,8 +1587,8 @@
         "entries": [
           {
             "id": "lead_investigator_joins_pipers",
-            "masculine_text": "#name# a rejoint les flûtistes d’Azathoth",
-            "feminine_text": "#name# a rejoint les flûtistes d’Azathoth"
+            "masculine_text": "#name# a rejoint les flûtistes d’Azathoth.",
+            "feminine_text": "#name# a rejoint les flûtistes d’Azathoth."
           },
           {
             "id": "accepted_fate",
@@ -1568,7 +1648,7 @@
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
-            "text": "les investigateurs ontdécouvert comment ouvrir la boîte à énigme"
+            "text": "les investigateurs ont découvert comment ouvrir la boîte à énigme."
           },
           {
             "id": "doom_draws_ever_closer",
@@ -1588,7 +1668,7 @@
           },
           {
             "id": "heretics_released",
-            "text": "#X# hérétiques ont été lâchées sur Arkham"
+            "text": "#X# hérétiques ont été lâchées sur Arkham."
           },
           {
             "id": "hid_knowledge_of_coven",
@@ -1596,7 +1676,7 @@
           },
           {
             "id": "inducted_into_the_inner_circle",
-            "text": "investigateurs ont été initiés au sein du Cercle Restreint."
+            "text": "les investigateurs ont été initiés au sein du Cercle Restreint."
           },
           {
             "id": "investigators_escaped_the_spectral_realm",
@@ -1612,7 +1692,7 @@
           },
           {
             "id": "kept_mementos_hidden",
-            "text": "investigateurs ont gardé cachés leurs souvenirs."
+            "text": "les investigateurs ont gardé cachés leurs souvenirs."
           },
           {
             "id": "learned_nothing_of_the_lodges_schemes",
@@ -1632,7 +1712,7 @@
           },
           {
             "id": "pieces_of_evidence",
-            "text": "#X# preuves ont été oubliées"
+            "text": "#X# preuves ont été oubliées."
           },
           {
             "id": "rejected_fate",
@@ -1664,7 +1744,7 @@
           },
           {
             "id": "true_work_of_silver_twilight_lodge_has_begun",
-            "text": "e véritable travail de la Loge du Crépuscule d’Argent a maintenant commencé."
+            "text": "le véritable travail de la Loge du Crépuscule d’Argent a maintenant commencé."
           },
           {
             "id": "witches_spell_broken",
@@ -1680,6 +1760,10 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "$input_value",
+            "text": "leurre"
+          },
+          {
             "id": "a_record_of_those_lost",
             "text": "leurre"
           },
@@ -1692,7 +1776,27 @@
             "text": "leurre"
           },
           {
+            "id": "prologue_05046",
+            "text": "leurre"
+          },
+          {
+            "id": "prologue_05047",
+            "text": "leurre"
+          },
+          {
+            "id": "prologue_05048",
+            "text": "leurre"
+          },
+          {
+            "id": "prologue_05049",
+            "text": "leurre"
+          },
+          {
             "id": "right_column",
+            "text": "leurre"
+          },
+          {
+            "id": "skip_prologue",
             "text": "leurre"
           },
           {
@@ -1714,7 +1818,7 @@
           },
           {
             "id": "gilmans_journal",
-            "text": "Journal de Gilman."
+            "text": "Journal de Gilman"
           },
           {
             "id": "keziahs_formulae",
@@ -1753,21 +1857,21 @@
         "entries": [
           {
             "id": "broken_the_law_of_ulthar",
-            "masculine_text": "#name# a enfreint la loi d’Ulthar",
-            "feminine_text": "#name# a enfreint la loi d’Ulthar"
+            "masculine_text": "#name# a enfreint la loi d’Ulthar.",
+            "feminine_text": "#name# a enfreint la loi d’Ulthar."
           },
           {
             "id": "captured",
-            "masculine_text": "#name# a été capturé",
-            "feminine_text": "#name# a été capturée"
+            "masculine_text": "#name# a été capturé.",
+            "feminine_text": "#name# a été capturée."
           },
           {
             "id": "black_cat_at_your_side",
-            "text": "le chat noir est à vos côtés"
+            "text": "le chat noir est à vos côtés."
           },
           {
             "id": "black_cat_at_your_side_2",
-            "text": "le chat noir est à vos côtés"
+            "text": "le chat noir est à vos côtés."
           },
           {
             "id": "black_cat_delivered_news",
@@ -1775,7 +1879,7 @@
           },
           {
             "id": "black_cat_has_a_hunch",
-            "text": "le chat noir a eu un pressentiment"
+            "text": "le chat noir a eu un pressentiment."
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
@@ -1803,7 +1907,7 @@
           },
           {
             "id": "carried_to_the_cold_wastes",
-            "text": "investigateurs ont été emportés dans le Désert Glacé."
+            "text": "les investigateurs ont été emportés dans le Désert Glacé."
           },
           {
             "id": "cats_collected_their_tribute",
@@ -1823,7 +1927,7 @@
           },
           {
             "id": "dreamers_grow_weaker",
-            "text": "Les rêveurs s’affaiblissent."
+            "text": "les rêveurs s’affaiblissent."
           },
           {
             "id": "dreamers_know_of_another_path",
@@ -1843,7 +1947,7 @@
           },
           {
             "id": "nyarlathoteps_invasion_has_begun",
-            "text": "l’invasion de Nyarlathotep a commencé."
+            "text": "L’invasion de Nyarlathotep a commencé."
           },
           {
             "id": "parleyed_with_zoogs",
@@ -1855,7 +1959,7 @@
           },
           {
             "id": "randolph_did_not_survive_the_voyage",
-            "text": "Randolph n’a pas survécu au voyage"
+            "text": "Randolph n’a pas survécu au voyage."
           },
           {
             "id": "randolph_eluded_capture",
@@ -1875,7 +1979,7 @@
           },
           {
             "id": "strayed_from_the_path",
-            "text": "les rêveurs se sont écartés du chemin"
+            "text": "les rêveurs se sont écartés du chemin."
           },
           {
             "id": "threaten_black_cat",
@@ -1951,15 +2055,15 @@
         "entries": [
           {
             "id": "black_cat_at_your_side",
-            "text": "le chat noir est à vos côtés"
+            "text": "le chat noir est à vos côtés."
           },
           {
             "id": "black_cat_at_your_side_2",
-            "text": "le chat noir est à vos côtés"
+            "text": "le chat noir est à vos côtés."
           },
           {
             "id": "black_cat_has_a_hunch",
-            "text": "le chat noir a eu un pressentiment"
+            "text": "le chat noir a eu un pressentiment."
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
@@ -1971,7 +2075,7 @@
           },
           {
             "id": "black_cat_requested_aid",
-            "text": "le chat noir a requis l’aide des autres"
+            "text": "le chat noir a requis l’aide des autres."
           },
           {
             "id": "black_cat_shared_knowledge_of_the_underworld",
@@ -1995,15 +2099,15 @@
           },
           {
             "id": "doctor_is_missing",
-            "text": "Le Dr Maheswaran a disparu"
+            "text": "Le Dr Maheswaran a disparu."
           },
           {
             "id": "doctor_joined_investigation",
-            "text": "le Dr Maheswaran a rejoint l’enquête."
+            "text": "Le Dr Maheswaran a rejoint l’enquête."
           },
           {
             "id": "doctor_stayed_with_patients",
-            "text": "le Dr Maheswaran est restée avec ses patients."
+            "text": "Le Dr Maheswaran est restée avec ses patients."
           },
           {
             "id": "doctors_fate_unknown",
@@ -2011,7 +2115,7 @@
           },
           {
             "id": "found_a_way_out_of_the_underworld",
-            "text": "Les investigateurs ont trouvé un moyen de quitter le Monde Souterrain"
+            "text": "Les investigateurs ont trouvé un moyen de quitter le Monde Souterrain."
           },
           {
             "id": "never_escaped",
@@ -2027,7 +2131,7 @@
           },
           {
             "id": "randolph_did_not_survive_descent",
-            "text": "Randolph n’a pas survécu à la descente"
+            "text": "Randolph n’a pas survécu à la descente."
           },
           {
             "id": "randolph_escaped_hospital_alone",
@@ -2087,7 +2191,7 @@
         "entries": [
           {
             "id": "alejandro_followed_to_ruins",
-            "text": "Alejandro a suivi les investigateurs dans les ruines"
+            "text": "Alejandro a suivi les investigateurs dans les ruines."
           },
           {
             "id": "alejandro_is_missing",
@@ -2095,7 +2199,7 @@
           },
           {
             "id": "alejandro_on_his_own",
-            "text": "Alejandro poursuit ses recherches de son côté"
+            "text": "Alejandro poursuit ses recherches de son côté."
           },
           {
             "id": "alejandro_recovered_relic",
@@ -2103,7 +2207,7 @@
           },
           {
             "id": "alejandro_remained_at_camp",
-            "text": "Alejandro a choisi de rester au campement"
+            "text": "Alejandro a choisi de rester au campement."
           },
           {
             "id": "alejandro_remembers_everything",
@@ -2127,7 +2231,7 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "investigateurs ont coopéré avec les Yithiens."
+            "text": "les investigateurs ont coopéré avec les Yithiens."
           },
           {
             "id": "earned_alejandros_trust",
@@ -2135,7 +2239,7 @@
           },
           {
             "id": "earned_ichtacas_trust",
-            "text": "investigateurs ont gagné la confiance d'Ichtaca."
+            "text": "les investigateurs ont gagné la confiance d'Ichtaca."
           },
           {
             "id": "fabric_of_time_unwoven",
@@ -2147,11 +2251,11 @@
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "les investigateurs ont tissé un lien avec Ichtaca"
+            "text": "les investigateurs ont tissé un lien avec Ichtaca."
           },
           {
             "id": "forging_own_path",
-            "text": "vous suivez votre propre voie"
+            "text": "vous suivez votre propre voie."
           },
           {
             "id": "found_missing_relic",
@@ -2159,7 +2263,7 @@
           },
           {
             "id": "gave_relic_to_alejandro",
-            "text": "les investigateurs ont conifé la relique à Alejandro."
+            "text": "les investigateurs ont confié la relique à Alejandro."
           },
           {
             "id": "gave_relic_to_harlan",
@@ -2171,7 +2275,7 @@
           },
           {
             "id": "harbinger_alive",
-            "text": "le Hérault est toujours vivant (#X# dégâts)"
+            "text": "le Hérault est toujours vivant (#X# dégâts)."
           },
           {
             "id": "ichtaca_has_confidence",
@@ -2195,11 +2299,11 @@
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "la foi d'Ichtaca est restaurée."
+            "text": "La foi d'Ichtaca est restaurée."
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "les investigateurs ont trouvé la Relique des Âges"
+            "text": "les investigateurs ont trouvé la Relique des Âges."
           },
           {
             "id": "investigators_saved_serpents",
@@ -2211,15 +2315,15 @@
           },
           {
             "id": "jungle_watches",
-            "text": "la jungle veille (#name# x#X#).)"
+            "text": "la jungle veille (#name# x#X#)."
           },
           {
             "id": "mapped_way_forward",
-            "text": "les investigateurs ont cartographié la voie d'accès"
+            "text": "les investigateurs ont cartographié la voie d'accès."
           },
           {
             "id": "mended_tear_in_time",
-            "text": "investigateurs ont comblé la brèche dans la structure du temps."
+            "text": "les investigateurs ont comblé la brèche dans la structure du temps."
           },
           {
             "id": "nexus_is_near",
@@ -2227,27 +2331,27 @@
           },
           {
             "id": "paths_known",
-            "text": "vous connaissez #X# chemins"
+            "text": "vous connaissez #X# chemins."
           },
           {
             "id": "process_backfired",
-            "text": "le processus a échoué"
+            "text": "le processus a échoué."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "le processus a échoué de manière spectaculaire"
+            "text": "le processus a échoué de manière spectaculaire."
           },
           {
             "id": "process_was_perfected",
-            "text": "le processus a parfaitement fonctionné"
+            "text": "le processus a parfaitement fonctionné."
           },
           {
             "id": "process_was_successful",
-            "text": "le processus a fonctionné"
+            "text": "le processus a fonctionné."
           },
           {
             "id": "relic_is_missing",
-            "text": "la relique a disparu"
+            "text": "la relique a disparu."
           },
           {
             "id": "rescued_alejandro",
@@ -2276,11 +2380,11 @@
         "entries": [
           {
             "id": "agenda_5",
-            "text": "cacher"
+            "text": "caché"
           },
           {
             "id": "agenda_6",
-            "text": "cacher"
+            "text": "caché"
           },
           {
             "id": "doy_cross_off_rope",
@@ -2292,15 +2396,15 @@
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca est partie sans vous"
+            "text": "Ichtaca est partie sans vous."
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "écouté l'histoire d'Ichtaca"
+            "text": "a écouté l'histoire d'Ichtaca."
           },
           {
             "id": "tasks_completed",
-            "text": "#X# ont été accomplies"
+            "text": "#X# ont été accomplies."
           },
           {
             "id": "wilds_add_chaos_token",
@@ -2311,6 +2415,13 @@
     ],
     "supplies": [
       {
+        "id": "provisions",
+        "name": "Provisions",
+        "description": "De l'eau et de la nourriture pour une personne. Incontournable pour tout voyage.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
         "id": "gasoline",
         "name": "Essence",
         "description": "Suffisamment pour un long voyage en voiture.",
@@ -2318,23 +2429,16 @@
         "multiple": true
       },
       {
-        "id": "provisions",
-        "name": "Provisions",
-        "description": "de l'eau et de la nourriture pour une personne. Incontournable pour tout voyage.",
-        "cost": 1,
-        "multiple": true
-      },
-      {
         "id": "medicine",
         "name": "Médicaments",
-        "description": "pour lutter contre les maladies, les infections et les venins.",
+        "description": "Pour lutter contre les maladies, les infections et les venins.",
         "cost": 2,
         "multiple": true
       },
       {
         "id": "pendant",
         "name": "Pendentif",
-        "description": "totalement inutile, mais les souvenirs chers apportent du réconfort aux voyageurs qui sont loin de chez eux.",
+        "description": "Totalement inutile, mais les souvenirs chers apportent du réconfort aux voyageurs qui sont loin de chez eux.",
         "cost": 1
       },
       {
@@ -2344,57 +2448,57 @@
         "cost": 2
       },
       {
+        "id": "blanket",
+        "name": "Duvet",
+        "description": "Pour tenir chaud la nuit.",
+        "cost": 2
+      },
+      {
+        "id": "binoculars",
+        "name": "Jumelles",
+        "description": "Pour vous aider à observer des lieux éloignés.",
+        "cost": 2
+      },
+      {
+        "id": "compass",
+        "name": "Boussole",
+        "description": "Pour vous guider lorsque vous êtes irrémédiablement perdu.",
+        "cost": 2
+      },
+      {
+        "id": "chalk",
+        "name": "Craie",
+        "description": "Pour écrire sur de la pierre.",
+        "cost": 2
+      },
+      {
         "id": "pocketknife",
         "name": "Canif",
         "description": "Trop petit pour être utilisé comme arme, mais facile à dissimuler.",
         "cost": 2
       },
       {
-        "id": "blanket",
-        "name": "Duvet",
-        "description": "pour tenir chaud la nuit.",
-        "cost": 2
-      },
-      {
-        "id": "binoculars",
-        "name": "Jumelles",
-        "description": "pour vous aider à observer des lieux éloignés.",
-        "cost": 2
-      },
-      {
-        "id": "compass",
-        "name": "Boussole",
-        "description": "pour vous guider lorsque vous êtes irrémédiablement perdu.",
-        "cost": 2
-      },
-      {
-        "id": "chalk",
-        "name": "Craie",
-        "description": "pour écrire sur de la pierre.",
-        "cost": 2
-      },
-      {
         "id": "canteen",
         "name": "Gourde",
-        "description": "à remplir dans les ruisseaux et les rivières.",
+        "description": "À remplir dans les ruisseaux et les rivières.",
         "cost": 2
       },
       {
         "id": "map",
         "name": "Plan",
-        "description": "il n'y a rien dessus, mais avec le temps vous devriez être capable de le compléter.",
+        "description": "Il n'y a rien dessus, mais avec le temps vous devriez être capable de le compléter.",
         "cost": 3
       },
       {
         "id": "torches",
         "name": "Torches",
-        "description": "pour éclairer les lieux obscurs ou allumer des torches murales.",
+        "description": "Pour éclairer les lieux obscurs ou allumer des torches murales.",
         "cost": 3
       },
       {
         "id": "rope",
         "name": "Corde",
-        "description": "un long rouleau de solide cordage. Essentiel pour grimper ou faire de la spéléologie.",
+        "description": "Un long rouleau de solide cordage. Essentiel pour grimper ou faire de la spéléologie.",
         "cost": 3
       }
     ]

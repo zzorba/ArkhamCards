@@ -197,11 +197,13 @@ export const syncCards = async function(
         cycleNames[pack.cycle_position] = pack;
       }
     });
-    cycleNames[50] = {};
-    cycleNames[60] = {};
-    cycleNames[70] = {};
-    cycleNames[80] = {};
-    cycleNames[90] = {};
+    cycleNames[8] = { name: t`Edge of the Earth`, code: 'eoe' };
+    cycleNames[50] = { name: t`Return to...`, code: 'return' };
+    cycleNames[60] = { name: t`Investigator Starter Decks`, code: 'investigator' };
+    cycleNames[70] = { name: t`Promotional`, code: 'promotional' };
+    cycleNames[80] = { name: t`Side stories`, code: 'side_stories' };
+    cycleNames[90] = { name: t`Parallel`, code: 'parallel' };
+
     const headers = new Headers();
     if (cache &&
       cache.lastModified &&
@@ -228,17 +230,19 @@ export const syncCards = async function(
         headers,
       });
       if (response.status === 304 && cache) {
-        const customCardsResponse = await customCardsPromise;
-        const customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
-
-        const queryRunner = await db.startTransaction();
-
-        await insertChunk(customCards, async(c: Card[]) => {
-          await queryRunner.manager.delete(Card, map(c, c => c.id));
-          await queryRunner.manager.insert(Card, c);
-        });
-        await queryRunner.commitTransaction();
-        await queryRunner.release();
+        try {
+          const customCardsResponse = await customCardsPromise;
+          const customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
+          const queryRunner = await db.startTransaction();
+          await insertChunk(customCards, async(c: Card[]) => {
+            await queryRunner.manager.delete(Card, map(c, c => c.id));
+            await queryRunner.manager.insert(Card, c);
+          });
+          await queryRunner.commitTransaction();
+          await queryRunner.release();
+        } catch (e) {
+          console.log(e);
+        }
         return cache;
       }
       VERBOSE && console.log('Got results from ArkhamDB');
@@ -306,6 +310,16 @@ export const syncCards = async function(
         try {
           const card = Card.fromJson(cardJson, packsByCode, cycleNames, lang || 'en');
           if (card) {
+            /*
+            // Code to spit out investigator deck_options localization strings.
+            if (card.type_code === 'investigator' && card.deck_options) {
+              forEach(card.deck_options, option => {
+                if (option.error) {
+                  console.log(`'${option.error}': t\`${option.error}\`,`);
+                }
+              });
+            }
+            */
             if (card.duplicate_of_code) {
               if (!dupes[card.duplicate_of_code]) {
                 dupes[card.duplicate_of_code] = [];
@@ -381,8 +395,13 @@ export const syncCards = async function(
           });
         }
       });
-      const customCardsResponse = await customCardsPromise;
-      const customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
+      let customCards: Card[] = [];
+      try {
+        const customCardsResponse = await customCardsPromise;
+        customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
+      } catch (e) {
+        console.log(e);
+      }
       const [linkedCards, normalCards] = partition(dedupedCards, card => !!card.linked_card);
       const queryRunner = await db.startTransaction();
       VERBOSE && console.log('Parsed all cards');
@@ -397,9 +416,11 @@ export const syncCards = async function(
       await insertChunk(normalCards, async(c: Card[]) => {
         await queryRunner.manager.insert(Card, c);
       });
-      await insertChunk(customCards, async(c: Card[]) => {
-        await queryRunner.manager.insert(Card, c);
-      });
+      if (customCards.length) {
+        await insertChunk(customCards, async(c: Card[]) => {
+          await queryRunner.manager.insert(Card, c);
+        });
+      }
       await queryRunner.commitTransaction();
       await queryRunner.release();
       VERBOSE && console.log('Inserted normal cards');

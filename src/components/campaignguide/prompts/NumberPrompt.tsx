@@ -6,7 +6,6 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext from '../ScenarioGuideContext';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
@@ -15,6 +14,7 @@ import { BulletType } from '@data/scenario/types';
 import space from '@styles/space';
 import { useCounter } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
+import InputWrapper from './InputWrapper';
 
 interface Props {
   id: string;
@@ -79,41 +79,6 @@ export default function NumberPrompt({
   }, [id, currentValue, scenarioState]);
 
   const count = scenarioState.count(id);
-  const promptSection = useMemo(() => {
-    return (
-      <View style={styles.promptRow}>
-        <View style={styles.text}>
-          <View>
-            <CampaignGuideTextComponent text={prompt} />
-          </View>
-          { count !== undefined && (
-            <View style={[space.paddingLeftS, space.paddingRightM]}>
-              <Text style={[typography.gameFont, typography.bold]}>
-                { count }
-              </Text>
-            </View>
-          ) }
-        </View>
-        { count === undefined && (
-          <PlusMinusButtons
-            count={value}
-            min={min}
-            max={max}
-            onIncrement={inc}
-            onDecrement={dec}
-            countRender={(
-              <View style={[styles.count, space.paddingSideXs, delta ? styles.countDelta : {}]}>
-                <Text style={[typography.bigGameFont, typography.center]}>
-                  { delta && currentValue >= 0 ? '+ ' : '' }{ currentValue }
-                </Text>
-              </View>
-            )}
-          />
-        ) }
-      </View>
-    );
-  }, [count, prompt, typography, currentValue, delta, value, min, max, inc, dec]);
-
   return (
     <View style={space.paddingTopS}>
       { !!text && (
@@ -128,17 +93,41 @@ export default function NumberPrompt({
           />
         </SetupStepWrapper>
       ) }
-      <SetupStepWrapper
-        bulletType={count === undefined ? 'none' : 'small'}
-        border={count === undefined}
+      <InputWrapper
+        editable={count === undefined}
+        onSubmit={submit}
       >
-        <View style={styles.content}>
-          { promptSection }
+        <View style={[styles.promptRow, count === undefined ? undefined : space.paddingS]}>
+          <View style={styles.text}>
+            <Text style={[space.marginLeftS, typography.mediumGameFont]}>{prompt}</Text>
+            { count !== undefined && (
+              <View style={[space.paddingLeftS, space.paddingRightM]}>
+                <Text style={[typography.mediumGameFont, typography.regular]}>
+                  { delta && currentValue >= 0 ? '+ ' : '' }{ count }
+                </Text>
+              </View>
+            ) }
+          </View>
+          { count === undefined && (
+            <PlusMinusButtons
+              count={value}
+              dialogStyle
+              rounded
+              min={min}
+              max={max}
+              onIncrement={inc}
+              onDecrement={dec}
+              countRender={(
+                <View style={[styles.count, space.paddingSideXs, delta ? styles.countDelta : {}]}>
+                  <Text style={[typography.counter, typography.center, { minWidth: 28 }]}>
+                    { delta && currentValue >= 0 ? '+ ' : '' }{ currentValue }
+                  </Text>
+                </View>
+              )}
+            />
+          ) }
         </View>
-      </SetupStepWrapper>
-      { (count === undefined) && (
-        <BasicButton title={t`Proceed`} onPress={submit} />
-      ) }
+      </InputWrapper>
     </View>
   );
 }
@@ -149,9 +138,6 @@ const styles = StyleSheet.create({
   },
   countDelta: {
     minWidth: 50,
-  },
-  content: {
-    flexDirection: 'column',
   },
   promptRow: {
     flexDirection: 'row',

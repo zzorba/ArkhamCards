@@ -1,9 +1,9 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { View } from 'react-native';
 import { t } from 'ttag';
 
 import NewDialog from '@components/core/NewDialog';
-import { Trauma } from '@actions/types';
+import { Trauma, TraumaAndCardData } from '@actions/types';
 import Card from '@data/types/Card';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
@@ -11,28 +11,32 @@ import { s } from '@styles/space';
 
 interface Props {
   investigator?: Card;
-  trauma: Trauma;
+  trauma: TraumaAndCardData;
   mutateTrauma: (updateTrauma: (trauma: Trauma) => Trauma) => void;
   hideKilledInsane?: boolean;
 }
 
 export default function EditTraumaDialogContent({
   investigator,
-  trauma: {
+  trauma,
+  mutateTrauma,
+  hideKilledInsane,
+}: Props) {
+  const {
     killed,
     insane,
     physical,
     mental,
-  },
-  mutateTrauma,
-  hideKilledInsane,
-}: Props) {
+  } = trauma;
+
+  const health = useMemo(() => investigator ? (investigator.getHealth(trauma) || 0) : 0, [investigator, trauma]);
+  const sanity = useMemo(() => investigator ? (investigator.getSanity(trauma) || 0) : 0, [investigator, trauma]);
+
   const incPhysical = useCallback(() => {
-    const health = investigator ? (investigator.health || 0) : 0;
     mutateTrauma(t => {
       return { ...t, physical: Math.min((t.physical || 0) + 1, health) };
     });
-  }, [investigator, mutateTrauma]);
+  }, [health, mutateTrauma]);
 
   const decPhysical = useCallback(() => {
     mutateTrauma(t => {
@@ -41,11 +45,10 @@ export default function EditTraumaDialogContent({
   }, [mutateTrauma]);
 
   const incMental = useCallback(() => {
-    const sanity = investigator ? (investigator.sanity || 0) : 0;
     mutateTrauma(t => {
       return { ...t, mental: Math.min((t.mental || 0) + 1, sanity) };
     });
-  }, [investigator, mutateTrauma]);
+  }, [sanity, mutateTrauma]);
 
   const decMental = useCallback(() => {
     mutateTrauma(t => {
@@ -64,9 +67,6 @@ export default function EditTraumaDialogContent({
       return { ...t, insane: !t.insane };
     });
   }, [mutateTrauma]);
-
-  const health = investigator ? (investigator.health || 0) : 0;
-  const sanity = investigator ? (investigator.sanity || 0) : 0;
 
   const impliedKilled = (physical === health);
   const impliedInsane = (mental === sanity);

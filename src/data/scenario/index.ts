@@ -1,7 +1,7 @@
 import { find, flatMap, sortBy } from 'lodash';
 
 import { NumberChoices, StandaloneId } from '@actions/types';
-import { FullCampaign, Effect, Errata, Scenario } from './types';
+import { FullCampaign, Effect, Errata, Scenario, ChoiceIcon, ChaosToken } from './types';
 import CampaignGuide, { CampaignLog, CampaignLogSection } from './CampaignGuide';
 import ScenarioGuide from './ScenarioGuide';
 import ScenarioStep from './ScenarioStep';
@@ -47,7 +47,11 @@ export interface LatestDecks {
 
 export interface DisplayChoice {
   border?: boolean;
+  large?: boolean;
   text?: string;
+  tokens?: ChaosToken[];
+  selected_text?: string;
+  icon?: ChoiceIcon;
   masculine_text?: string;
   feminine_text?: string;
   description?: string;

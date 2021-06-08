@@ -10,6 +10,7 @@ import { DARK_THEME, LIGHT_THEME } from './theme';
 import typography from './typography';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
+const EXTRA_BOLD_ITALIC = 'Alegreya-ExtraBoldItalic';
 function useColorScheme(delay = 2000) {
   const [colorScheme, setColorScheme] = React.useState(
     Appearance.getColorScheme()
@@ -85,9 +86,16 @@ export default function StyleProvider({ children } : Props) {
   const darkMode = (themeOverride ? themeOverride === 'dark' : colorScheme === 'dark');
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
   const gameFont = lang === 'ru' ? 'Teutonic RU' : 'Teutonic';
-  const italicFont = lang === 'zh' && Platform.OS === 'ios' ? 'PingFangTC-Light' : 'Alegreya-Italic';
-  const boldItalicFont = lang === 'zh' && Platform.OS === 'ios' ? 'PingFangTC-Semibold' : 'Alegreya-ExtraBoldItalic';
-  const styleTypography = useMemo(() => typography(appFontScale, colors, italicFont, boldItalicFont, gameFont, lang), [appFontScale, colors, gameFont, boldItalicFont, italicFont, lang]);
+  const italicFont = (lang === 'zh' && Platform.OS === 'ios') ? 'PingFangTC-Light' : 'Alegreya-Italic';
+  const boldItalicFont = (lang === 'zh' && Platform.OS === 'ios') ? 'PingFangTC-Semibold' : EXTRA_BOLD_ITALIC;
+  const styleTypography = useMemo(() => typography(
+    appFontScale,
+    colors,
+    italicFont,
+    boldItalicFont,
+    gameFont,
+    lang
+  ), [appFontScale, colors, gameFont, boldItalicFont, italicFont, lang]);
 
   const context = useMemo(() => {
     return {

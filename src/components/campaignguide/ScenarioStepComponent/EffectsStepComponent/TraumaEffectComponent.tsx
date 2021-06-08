@@ -124,17 +124,23 @@ export default function TraumaEffectComponent({ id, effect, border, input }: Pro
           ) }
           <InvestigatorChoicePrompt
             id={`${id}_trauma`}
+            text={t`Choose trauma type`}
+            confirmText={t`Chosen trauma type`}
+            promptType="header"
             investigators={investigators}
-            bulletType="none"
             options={{
               type: 'universal',
               choices: [
                 {
                   id: 'physical',
+                  icon: 'physical',
+                  selected_text: t`Physical trauma`,
                   text: t`Physical trauma`,
                 },
                 {
                   id: 'mental',
+                  icon: 'mental',
+                  selected_text: t`Mental trauma`,
                   text: t`Mental trauma`,
                 },
               ],

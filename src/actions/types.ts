@@ -1,6 +1,7 @@
 import { ChaosBag, ChaosTokenType, FactionCodeType, SkillCodeType, SlotCodeType } from '@app_constants';
 import { CardFilterData, FilterState } from '@lib/filters';
 import Card from '@data/types/Card';
+import { LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
 
 export const SORT_BY_TYPE = 'type';
 export const SORT_BY_FACTION = 'faction';
@@ -362,10 +363,12 @@ export const RTPTC = 'rtptc';
 export const TFA = 'tfa';
 export const RTTFA = 'rttfa';
 export const TCU = 'tcu';
+export const RTTCU = 'rttcu';
 export const TDE = 'tde';
 export const TDEA = 'tdea';
 export const TDEB = 'tdeb';
 export const TIC = 'tic';
+export const EOE = 'eoe';
 export const STANDALONE = 'standalone';
 export const DARK_MATTER = 'zdm';
 export const ALICE_IN_WONDERLAND = 'zaw';
@@ -1118,6 +1121,7 @@ export interface GuideCampaignLinkInput extends BasicInput {
   decision: string;
 }
 
+export const SYSTEM_BASED_GUIDE_INPUT_IDS = new Set([LEAD_INVESTIGATOR_STEP_ID]);
 export const SYSTEM_BASED_GUIDE_INPUT_TYPES = new Set(['campaign_link', 'inter_scenario']);
 
 export type GuideInput =

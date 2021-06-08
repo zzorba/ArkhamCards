@@ -3,14 +3,18 @@ import { map } from 'lodash';
 import { StyleSheet, Text, View } from 'react-native';
 
 import ChooseOneListComponent from '../ChooseOneListComponent';
-import SinglePickerComponent from '@components/core/SinglePickerComponent';
+import SinglePickerComponent from '../SinglePickerComponent';
 import { DisplayChoice } from '@data/scenario';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
+import Card from '@data/types/Card';
+import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 
 interface Props {
   code: string;
+  noInvestigatorItems?: boolean;
+  investigator?: Card;
   name: string;
   color?: string;
   masculine?: boolean;
@@ -21,10 +25,13 @@ interface Props {
   editable: boolean;
   detailed?: boolean;
   firstItem: boolean;
+  width: number;
 }
 
 export default function ChoiceListItemComponent({
   code,
+  investigator,
+  noInvestigatorItems,
   name,
   color,
   masculine,
@@ -35,9 +42,9 @@ export default function ChoiceListItemComponent({
   editable,
   detailed,
   firstItem,
+  width,
 }: Props) {
   const { borderStyle, typography } = useContext(StyleContext);
-
   const onSelect = useCallback((idx: number | null) => {
     if (idx === null) {
       return;
@@ -59,24 +66,27 @@ export default function ChoiceListItemComponent({
   if (detailed) {
     return (
       <>
-        <View style={[
-          styles.headerRow,
-          borderStyle,
-          space.paddingS,
-          space.paddingLeftM,
-          color ? { backgroundColor: color } : {},
-        ]}>
-          <View>
-            <Text style={[
-              typography.mediumGameFont,
-              styles.nameText,
-              color ? { color: COLORS.white } : {},
-            ]}>
-              { name }
-            </Text>
+        { !noInvestigatorItems && (investigator ? (
+          <CompactInvestigatorRow investigator={investigator} width={width} />
+        ) : (
+          <View style={[
+            styles.headerRow,
+            borderStyle,
+            space.paddingS,
+            space.paddingLeftM,
+            color ? { backgroundColor: color } : {},
+          ]}>
+            <View>
+              <Text style={[
+                typography.mediumGameFont,
+                styles.nameText,
+                color ? { color: COLORS.white } : {},
+              ]}>
+                { name }
+              </Text>
+            </View>
           </View>
-          <View />
-        </View>
+        )) }
         <ChooseOneListComponent
           choices={genderedChoices}
           selectedIndex={choice}
@@ -90,19 +100,15 @@ export default function ChoiceListItemComponent({
   }
   return (
     <SinglePickerComponent
+      investigator={investigator}
       choices={genderedChoices}
       selectedIndex={choice === undefined ? -1 : choice}
       editable={editable}
       optional={optional}
       title={name}
       onChoiceChange={onSelect}
-      colors={color ? {
-        backgroundColor: color,
-        textColor: 'white',
-        modalColor: color,
-        modalTextColor: 'white',
-      } : undefined}
-      topBorder={firstItem}
+      width={width}
+      firstItem={firstItem}
     />
   );
 }

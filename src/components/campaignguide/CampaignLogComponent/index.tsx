@@ -23,10 +23,11 @@ interface Props {
   scenarioId?: string;
   standalone?: boolean;
   hideChaosBag?: boolean;
+  width: number;
 }
 
-export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, scenarioId, standalone, hideChaosBag }: Props) {
-  const { backgroundStyle, width } = useContext(StyleContext);
+export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, scenarioId, standalone, hideChaosBag, width }: Props) {
+  const { backgroundStyle } = useContext(StyleContext);
   const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'investigator_count' | 'count' | 'supplies') => {
     switch (type) {
       case 'count': {
@@ -47,6 +48,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
                 title={title}
                 section={section}
                 campaignGuide={campaignGuide}
+                width={width - s * 2}
               />
             ) }
           </View>
@@ -61,6 +63,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
                 sectionId={id}
                 section={section}
                 campaignGuide={campaignGuide}
+                width={width - s * 2}
               />
             ) }
           </View>
@@ -84,11 +87,11 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
         );
       }
     }
-  }, [campaignLog, campaignGuide]);
+  }, [campaignLog, campaignGuide, width]);
 
   const oddsCalculatorPressed = useCallback(() => {
-    showGuideChaosBagOddsCalculator(componentId, campaignId, campaignLog.chaosBag, campaignLog.investigatorCodesSafe());
-  }, [componentId, campaignId, campaignLog]);
+    showGuideChaosBagOddsCalculator(componentId, campaignId, campaignLog.chaosBag, campaignLog.investigatorCodesSafe(), scenarioId, standalone);
+  }, [componentId, campaignId, campaignLog, scenarioId, standalone]);
 
   const chaosBagSimulatorPressed = useCallback(() => {
     showGuideDrawChaosBag(

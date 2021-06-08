@@ -94,7 +94,7 @@ function DeckUpgradeComponent({
     <View style={styles.container}>
       { !!error && <Text style={[typography.text, typography.error]}>{ error }</Text> }
       { !hideXp && (
-        <>
+        <View style={[styles.xpBlock, { backgroundColor: colors.upgrade }]}>
           <CardSectionHeader
             investigator={investigator}
             section={{ superTitle: t`Experience points` }}
@@ -109,7 +109,7 @@ function DeckUpgradeComponent({
               onDecrement={decXp}
             />
           </BasicListRow>
-        </>
+        </View>
       ) }
       <ExileCardSelectorComponent
         componentId={componentId}
@@ -147,5 +147,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: m,
     paddingBottom: m,
+  },
+  xpBlock: {
+    borderRadius: 4,
   },
 });

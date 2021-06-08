@@ -545,6 +545,7 @@ export function multiConditionResult(
         case 'has_card':
           return binaryCardConditionResult(subCondition, campaignLog).option ? 1 : 0;
         case 'campaign_log':
+        case 'campaign_log_section_exists':
           return campaignLogConditionResult(subCondition, campaignLog).option ? 1 : 0;
         case 'campaign_log_count':
           return campaignLogCountConditionResult(subCondition, campaignLog).option ? 1 : 0;

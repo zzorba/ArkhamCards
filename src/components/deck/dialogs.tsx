@@ -22,9 +22,11 @@ import DeckBubbleHeader from './section/DeckBubbleHeader';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { DeckActions, useDeckActions } from '@data/remote/decks';
 import { useUploadLocalDeckRequest } from '@data/remote/campaigns';
+import Card from '@data/types/Card';
 
 interface DialogOptions {
   title: string;
+  investigator?: Card;
   confirm?: {
     title: string;
     disabled?: boolean;
@@ -44,6 +46,7 @@ interface DialogOptions {
 
 export function useDialog({
   title,
+  investigator,
   confirm,
   dismiss,
   content,
@@ -111,6 +114,7 @@ export function useDialog({
     return (
       <NewDialog
         title={title}
+        investigator={investigator}
         dismissable={!!dismiss || allowDismiss}
         onDismiss={onDismiss}
         visible={visible}
@@ -122,7 +126,7 @@ export function useDialog({
         { content }
       </NewDialog>
     );
-  }, [title, dismiss, visible, alignment, customButtons, onDismiss, buttons, content, allowDismiss, avoidKeyboard]);
+  }, [title, dismiss, visible, alignment, customButtons, onDismiss, buttons, investigator, content, allowDismiss, avoidKeyboard]);
   const showDialog = useCallback(() => setVisible(true), [setVisible]);
   return {
     visible,
@@ -349,6 +353,7 @@ interface PickerItem<T> {
 export type Item<T> = PickerItemHeader | PickerItem<T>;
 interface PickerDialogOptions<T> {
   title: string;
+  investigator?: Card;
   description?: string;
   items: Item<T>[];
   selectedValue?: T;
@@ -356,6 +361,7 @@ interface PickerDialogOptions<T> {
 }
 export function usePickerDialog<T>({
   title,
+  investigator,
   description,
   items,
   selectedValue,
@@ -400,6 +406,75 @@ export function usePickerDialog<T>({
   }, [items, onValuePress, borderStyle, typography, description, selectedValue]);
   const { setVisible, dialog } = useDialog({
     title,
+    investigator,
+    allowDismiss: true,
+    content,
+    alignment: 'bottom',
+  });
+  useEffect(() => {
+    setVisibleRef.current = setVisible;
+  }, [setVisible]);
+  const showDialog = useCallback(() => setVisible(true), [setVisible]);
+  return {
+    dialog,
+    showDialog,
+  };
+}
+
+interface MultiPickerDialogOptions<T> {
+  title: string;
+  investigator?: Card;
+  description?: string;
+  items: Item<T>[];
+  selectedValues?: Set<T>;
+  onValueChange: (value: T, selected: boolean) => void;
+}
+export function useMultiPickerDialog<T>({
+  title,
+  investigator,
+  description,
+  items,
+  selectedValues,
+  onValueChange,
+}: MultiPickerDialogOptions<T>): {
+  dialog: React.ReactNode;
+  showDialog: () => void;
+} {
+  const { borderStyle, typography } = useContext(StyleContext);
+  const setVisibleRef = useRef<(visible: boolean) => void>();
+  const onValuePress = useCallback((value: T) => {
+    onValueChange(value, !selectedValues?.has(value));
+  }, [onValueChange, selectedValues]);
+  const content = useMemo(() => {
+    return (
+      <View>
+        { !!description && (
+          <View style={[space.marginS, space.paddingBottomS, { borderBottomWidth: StyleSheet.hairlineWidth }, borderStyle]}>
+            <Text style={typography.text}>{ description } </Text>
+          </View>
+        )}
+        { map(items, (item, idx) => item.type === 'header' ? (
+          <DeckBubbleHeader title={item.title} key={idx} />
+        ) : (
+          <NewDialog.PickerItem<T>
+            key={idx}
+            iconName={item.icon}
+            iconNode={item.iconNode}
+            text={item.title}
+            value={item.value}
+            indicator="check"
+            onValueChange={onValuePress}
+            // tslint:disable-next-line
+            selected={!!selectedValues?.has(item.value)}
+            last={idx === items.length - 1 || items[idx + 1].type === 'header'}
+          />
+        )) }
+      </View>
+    );
+  }, [items, onValuePress, borderStyle, typography, description, selectedValues]);
+  const { setVisible, dialog } = useDialog({
+    title,
+    investigator,
     allowDismiss: true,
     content,
     alignment: 'bottom',

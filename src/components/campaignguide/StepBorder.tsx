@@ -7,32 +7,34 @@ interface Props {
   type: 'top' | 'bottom';
   width: number;
   margin: number;
+  resolution?: boolean;
 }
 
 const SCALE = 0.1;
-export default function StepBorder({ type, width, margin }: Props) {
+export default function StepBorder({ type, width, margin, resolution }: Props) {
   const { colors } = useContext(StyleContext);
   const lineWidth = width * (1 - 2.3 * SCALE) - margin * 2;
+  const backgroundColor = resolution ? colors.campaign.resolution : colors.campaign.setup;
   return (
     <View style={styles.wrapper}>
       { type === 'top' ? (
         <>
           <View style={[styles.topLeft, { left: margin }]}>
-            <AppIcon size={width * SCALE} color={colors.scenarioGreen} name="fleur_top_left" />
+            <AppIcon size={width * SCALE} color={backgroundColor} name="fleur_top_left" />
           </View>
-          <View style={[styles.topLine, { backgroundColor: colors.scenarioGreen, width: lineWidth, left: (width - lineWidth) / 2 }]} />
+          <View style={[styles.topLine, { backgroundColor, width: lineWidth, left: (width - lineWidth) / 2 }]} />
           <View style={[styles.topRight, { right: margin }]}>
-            <AppIcon size={width * SCALE} color={colors.scenarioGreen} name="fleur_top_right" />
+            <AppIcon size={width * SCALE} color={backgroundColor} name="fleur_top_right" />
           </View>
         </>
       ) : (
         <>
           <View style={[styles.bottomLeft, { left: margin }]}>
-            <AppIcon size={width * SCALE} color={colors.scenarioGreen} name="fleur_bottom_left" />
+            <AppIcon size={width * SCALE} color={backgroundColor} name="fleur_bottom_left" />
           </View>
-          <View style={[styles.bottomLine, { backgroundColor: colors.scenarioGreen, width: lineWidth, left: (width - lineWidth) / 2 }]} />
+          <View style={[styles.bottomLine, { backgroundColor, width: lineWidth, left: (width - lineWidth) / 2 }]} />
           <View style={[styles.bottomRight, { right: margin }]}>
-            <AppIcon size={width * SCALE} color={colors.scenarioGreen} name="fleur_bottom_right" />
+            <AppIcon size={width * SCALE} color={backgroundColor} name="fleur_bottom_right" />
           </View>
         </>
       ) }

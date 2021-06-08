@@ -11,6 +11,7 @@ import {
   InputStep,
   Step,
   Scenario,
+  ChoiceIcon,
 } from '@data/scenario/types';
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
@@ -47,7 +48,7 @@ function checkInvestigatorDefeatStep(resolutions: Resolution[]): BranchStep {
   };
 }
 
-const CHOOSE_RESOLUTION_STEP_ID = '$choose_resolution';
+export const CHOOSE_RESOLUTION_STEP_ID = '$choose_resolution';
 function chooseResolutionStep(resolutions: Resolution[]): InputStep {
   const hasInvestigatorDefeat = !!find(
     resolutions,
@@ -56,16 +57,17 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
   const step: InputStep = {
     id: CHOOSE_RESOLUTION_STEP_ID,
     type: 'input',
-    title: t`Resolutions`,
-    text: t`Select resolution`,
+    text: t`Choose resolution`,
     bullet_type: 'none',
     input: {
       type: 'choose_one',
+      confirm_text: t`Resolution`,
       choices: map(
         filter(resolutions, resolution => resolution.id !== 'investigator_defeat'),
         resolution => {
           const choice: BinaryConditionalChoice = {
             id: resolution.id,
+            large: true,
             text: `<b>${resolution.title}</b>`,
             description: resolution.description ? `<i>${resolution.description}</i>` : undefined,
             steps: [
@@ -203,7 +205,8 @@ function recordTraumaStep(): InputStep {
       choices: [
         {
           id: 'record_trauma',
-          text: t`Record Trauma`,
+          text: t`Choose investigator to record trauma`,
+          selected_text: t`Record trauma`,
           effects: [
             {
               type: 'trauma',
@@ -336,6 +339,21 @@ function statusToString(
   }
 }
 
+function statusToSelectedString(status: InvestigatorStatus): string {
+  switch (status) {
+    case 'alive':
+      return t`Alive`;
+    case 'resigned':
+      return t`Resigned`;
+    case 'physical':
+      return t`Physical trauma`;
+    case 'mental':
+      return t`Mental trauma`;
+    case 'eliminated':
+      return t`Defeated`;
+  }
+}
+
 function investigatorStatusStep(
   id: string,
   resolutions: Resolution[]
@@ -353,6 +371,16 @@ function investigatorStatusStep(
   }
   return createInvestigatorStatusStep(id, resolution.investigator_status);
 }
+
+const STATUS_ICON: {
+  [key: string]: ChoiceIcon;
+} = {
+  alive: 'accept',
+  resigned: 'resign',
+  physical: 'physical',
+  mental: 'mental',
+  eliminated: 'dismiss',
+};
 
 export function createInvestigatorStatusStep(
   id: string,
@@ -387,7 +415,9 @@ export function createInvestigatorStatusStep(
       }
       return {
         id: status,
+        icon: STATUS_ICON[status],
         text: statusToString(status),
+        selected_text: statusToSelectedString(status),
         masculine_text: statusToString(status, 'masculine'),
         feminine_text: statusToString(status, 'feminine'),
         effects,
@@ -398,7 +428,8 @@ export function createInvestigatorStatusStep(
   return {
     id,
     type: 'input',
-    text: t`Investigator status at end of scenario:`,
+    text: t`Status of investigators`,
+    prompt_type: 'header',
     input: {
       type: 'investigator_choice',
       investigator: 'all',
@@ -489,7 +520,6 @@ export function scenarioStepIds(scenario: Scenario, standalone?: boolean) {
       PROCEED_STEP_ID,
     ] : [
       CHOOSE_INVESTIGATORS_STEP_ID,
-      LEAD_INVESTIGATOR_STEP_ID,
       ...(standalone ? [DRAW_STANDALONE_WEAKNESS_STEP_ID, SAVE_STANDALONE_DECKS_ID] : []),
       ...((standalone && scenario.standalone_setup) || scenario.setup),
     ];

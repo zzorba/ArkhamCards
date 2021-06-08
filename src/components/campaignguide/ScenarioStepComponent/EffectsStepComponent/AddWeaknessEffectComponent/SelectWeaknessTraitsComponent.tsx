@@ -1,10 +1,15 @@
-import React, { useCallback, useMemo, useState } from 'react';
-import { filter, flatMap, map, range, uniq, sortBy } from 'lodash';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { filter, flatMap, map, uniq, sortBy } from 'lodash';
+import { Text } from 'react-native';
 import { c, t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
-import MultiPickerComponent from '@components/core/MultiPickerComponent';
 import Card from '@data/types/Card';
+import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
+import { useMultiPickerDialog } from '@components/deck/dialogs';
+import { useToggles } from '@components/core/hooks';
+import ActionButton from '@components/campaignguide/prompts/ActionButton';
+import StyleContext from '@styles/StyleContext';
+import space from '@styles/space';
 
 interface Props {
   choices?: string[];
@@ -13,7 +18,8 @@ interface Props {
 }
 
 export default function SelectWeaknessTraitsComponent({ choices, save, weaknessCards }: Props) {
-  const [selectedIndex, setSelectedIndex] = useState<number[]>([]);
+  const { typography } = useContext(StyleContext);
+  const [selectedTraits, setSelectedTrait] = useToggles({});
   const allTraits = useMemo(() => {
     return sortBy(
       uniq(
@@ -31,44 +37,47 @@ export default function SelectWeaknessTraitsComponent({ choices, save, weaknessC
       )
     );
   }, [weaknessCards]);
+  const selection = useMemo(() => {
+    return filter(allTraits, t => !!selectedTraits[t]);
+  }, [allTraits, selectedTraits]);
 
   const savePress = useCallback(() => {
-    save(
-      map(selectedIndex, index => allTraits[index])
-    );
-  }, [save, selectedIndex, allTraits]);
-
-  const saveButton = useMemo(() => {
-    if (choices !== undefined) {
-      return null;
+    save(selection);
+  }, [save, selection]);
+  const selectedValues = useMemo(() => {
+    return new Set(selection);
+  }, [selection]);
+  const items = useMemo(() => map(allTraits, trait => {
+    return {
+      title: trait,
+      value: trait,
+    };
+  }), [allTraits]);
+  const description = useMemo(() => {
+    if (!selection.length) {
+      return c('Weakness Card').t`All`;
     }
-    return (
-      <BasicButton
-        title={t`Proceed`}
-        onPress={savePress}
-      />
-    );
-  }, [choices, savePress]);
+    return selection.join(', ');
+  }, [selection]);
+  const { dialog, showDialog } = useMultiPickerDialog({
+    title: t`Select Traits`,
+    description: t`Random weaknesses will be drawn that match these traits.`,
+    selectedValues,
+    items,
+    onValueChange: setSelectedTrait,
+  });
 
   return (
-    <>
-      <MultiPickerComponent
-        title={t`Traits`}
-        editable={choices === undefined}
-        topBorder
-        selectedIndex={
-          choices ? range(0, choices.length) : selectedIndex}
-        onChoiceChange={setSelectedIndex}
-        choices={map(choices || allTraits,
-          trait => {
-            return {
-              text: trait,
-            };
-          }
-        )}
-        defaultLabel={c('Weakness Card').t`All`}
-      />
-      { saveButton }
-    </>
+    <InputWrapper
+      title={choices === undefined ? t`Select Traits` : t`Traits`}
+      onSubmit={savePress}
+      editable={choices === undefined}
+    >
+      <Text style={[space.paddingS, typography.mediumGameFont]}>
+        { description }
+      </Text>
+      <ActionButton color="dark" title={t`Edit selection`} onPress={showDialog} leftIcon="edit" />
+      { dialog }
+    </InputWrapper>
   );
 }

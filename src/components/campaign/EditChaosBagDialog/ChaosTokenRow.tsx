@@ -24,7 +24,7 @@ function renderTokens(id: ChaosTokenType, count: number, status?: 'added' | 'rem
     <View style={styles.row}>
       { map(range(0, count), (idx) => (
         <ChaosToken
-          tiny
+          size="tiny"
           key={`${status}-${idx}`}
           iconKey={id}
           status={status}
@@ -67,7 +67,7 @@ export default function ChaosTokenRow({ id, mutateCount, originalCount, count, l
   return (
     <View style={[styles.mainRow, borderStyle]}>
       <View style={styles.row}>
-        <ChaosToken iconKey={id} tiny />
+        <ChaosToken iconKey={id} size="tiny" />
         <PlusMinusButtons
           count={count}
           onIncrement={increment}

@@ -3,19 +3,19 @@ import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { every, findIndex, forEach, flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import ChoiceListItemComponent from './ChoiceListItemComponent';
 import ScenarioGuideContext from '../../ScenarioGuideContext';
-import SetupStepWrapper from '../../SetupStepWrapper';
 import { StringChoices } from '@actions/types';
-import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType } from '@data/scenario/types';
 import { Choices, DisplayChoiceWithId } from '@data/scenario';
-import space, { m } from '@styles/space';
+import { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import Card from '@data/types/Card';
+import InputWrapper from '../InputWrapper';
 
 export interface ListItem {
   code: string;
+  investigator?: Card;
   name: string;
   color?: string;
   masculine?: boolean;
@@ -23,8 +23,12 @@ export interface ListItem {
 
 export interface ChoiceListComponentProps {
   id: string;
+  hideInvestigatorSection?: boolean;
+  investigator?: Card;
   bulletType?: BulletType;
+  promptType?: 'header' | 'setup';
   text?: string;
+  confirmText?: string;
   optional?: boolean;
   detailed?: boolean;
   options: Choices;
@@ -34,9 +38,9 @@ interface Props extends ChoiceListComponentProps {
   items: ListItem[];
 }
 
-export default function InvestigatorChoicePrompt({ id, bulletType, text, optional, detailed, options, loading, items }: Props) {
+export default function ChoiceListComponent({ id, promptType, investigator, bulletType, text, confirmText, optional, detailed, options, loading, items, hideInvestigatorSection }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
-  const { borderStyle, colors } = useContext(StyleContext);
+  const { borderStyle, colors, width } = useContext(StyleContext);
   const [selectedChoice, setSelectedChoice] = useState(() => {
     const selectedChoice: {
       [code: string]: number | undefined;
@@ -81,21 +85,6 @@ export default function InvestigatorChoicePrompt({ id, bulletType, text, optiona
   }, [id, options, scenarioState, selectedChoice]);
   const inputChoices = scenarioState.stringChoices(id);
   const hasDecision = inputChoices !== undefined;
-  const saveButton = useMemo(() => {
-    if (hasDecision) {
-      return <View style={space.marginBottomM} />;
-    }
-    return (
-      <BasicButton
-        title={t`Proceed`}
-        onPress={save}
-        disabled={detailed && !every(
-          items,
-          item => selectedChoice[item.code] !== undefined)
-        }
-      />
-    );
-  }, [hasDecision, items, detailed, selectedChoice, save]);
 
   const getChoice = useCallback((
     code: string,
@@ -131,10 +120,12 @@ export default function InvestigatorChoicePrompt({ id, bulletType, text, optiona
           choices={choices}
           choice={getChoice(item.code, choices, inputChoices)}
           onChoiceChange={onChoiceChange}
+          noInvestigatorItems={hideInvestigatorSection || !detailed}
           optional={!!optional}
           editable={inputChoices === undefined}
           detailed={detailed}
           firstItem={idx === 0}
+          width={width - s * (inputChoices === undefined ? 4 : 2)}
         />
       );
     });
@@ -148,25 +139,32 @@ export default function InvestigatorChoicePrompt({ id, bulletType, text, optiona
           editable={false}
           optional={false}
           onChoiceChange={onChoiceChange}
+          width={width - s * (inputChoices === undefined ? 4 : 2)}
           firstItem
         />
       );
     }
     return results;
-  }, [inputChoices, items, detailed, options, optional, getChoice, onChoiceChange]);
+  }, [inputChoices, hideInvestigatorSection, items, detailed, options, optional, width, getChoice, onChoiceChange]);
 
   return (
-    <>
-      <SetupStepWrapper bulletType={bulletType}>
-        { !!text && <CampaignGuideTextComponent text={text} /> }
-      </SetupStepWrapper>
+    <InputWrapper
+      editable={!hasDecision}
+      investigator={investigator}
+      onSubmit={save}
+      disabledText={detailed && !every(
+        items,
+        item => selectedChoice[item.code] !== undefined) ? t`Continue` : undefined}
+      title={(inputChoices !== undefined ? confirmText : undefined) || text}
+      titleStyle={promptType || 'setup'}
+      bulletType={bulletType}
+    >
       { loading ? (
         <View style={[styles.loadingRow, borderStyle]}>
           <ActivityIndicator size="small" animating color={colors.lightText} />
         </View>
       ) : choicesComponent }
-      { saveButton }
-    </>
+    </InputWrapper>
   );
 }
 

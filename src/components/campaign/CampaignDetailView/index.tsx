@@ -341,11 +341,10 @@ function CampaignDetailView(props: Props) {
               />
             ) }
             <DeckButton
+              color="light_gray"
               icon="plus-thin"
               title={t`Add Investigator`}
               onPress={showAddInvestigator}
-              color="light_gray"
-              thin
               bottomMargin={s}
             />
             <DeckButton

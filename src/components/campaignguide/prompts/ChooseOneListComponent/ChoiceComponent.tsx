@@ -1,12 +1,10 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import BinaryResult from '../../BinaryResult';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { DisplayChoice } from '@data/scenario';
-import { m, s } from '@styles/space';
-import StyleContext from '@styles/StyleContext';
+import space, { m, s, xs } from '@styles/space';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
 
 interface Props {
   choice: DisplayChoice;
@@ -27,64 +25,32 @@ export default function ChoiceComponent({
   noBullet,
   color,
 }: Props) {
-  const { borderStyle } = useContext(StyleContext);
   const onPress = useCallback(() => {
     onSelect(index);
   }, [onSelect, index]);
-
   const textContent = useMemo(() => {
     return (
       <>
-        { choice.text && <CampaignGuideTextComponent text={choice.text} /> }
+        { choice.text && <CampaignGuideTextComponent text={choice.text} sizeScale={choice.large ? 1.2 : 1} /> }
         { choice.description && <CampaignGuideTextComponent text={choice.description} /> }
       </>
     );
   }, [choice]);
 
   const content = useMemo(() => {
-    if (editable) {
-      return (
-        <View style={[
-          styles.row,
-          borderStyle,
-          index === 0 ? { borderTopWidth: StyleSheet.hairlineWidth } : {},
-        ]}>
-          <View style={styles.padding}>
-            <View style={[styles.bullet, styles.radioButton]}>
-              <MaterialCommunityIcons
-                name={selected ? 'radiobox-marked' : 'radiobox-blank'}
-                size={30}
-                color={color ? color : 'rgb(0, 122,255)'}
-              />
-            </View>
-            <View style={styles.textBlock}>
-              { textContent }
-            </View>
+    return (
+      <View style={[styles.row, !editable ? space.paddingLeftS : undefined]}>
+        <View style={styles.padding}>
+          <View style={[styles.bullet, styles.radioButton]}>
+            <ArkhamSwitch large value={selected} color="dark" />
+          </View>
+          <View style={styles.textBlock}>
+            { textContent }
           </View>
         </View>
-      );
-    }
-    if (noBullet) {
-      return (
-        <View style={[styles.bottomBorder, borderStyle]}>
-          <BinaryResult
-            result={selected}
-            bulletType="none"
-          >
-            { textContent }
-          </BinaryResult>
-        </View>
-      );
-    }
-    return (
-      <BinaryResult
-        result={selected}
-        bulletType="small"
-      >
-        { textContent }
-      </BinaryResult>
+      </View>
     );
-  }, [selected, editable, index, color, noBullet, textContent, borderStyle]);
+  }, [selected, editable, textContent]);
 
   if (editable) {
     return (
@@ -99,24 +65,22 @@ export default function ChoiceComponent({
 const styles = StyleSheet.create({
   textBlock: {
     flex: 1,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    marginRight: s,
   },
   row: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
     flexDirection: 'row',
   },
   padding: {
-    paddingLeft: m,
-    paddingRight: s + m,
-    paddingTop: s,
-    paddingBottom: s,
+    paddingTop: xs,
+    paddingBottom: xs,
     flexDirection: 'row',
     flex: 1,
   },
-  bottomBorder: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
   bullet: {
-    marginRight: m,
+    marginRight: s,
     minWidth: s + m,
   },
   radioButton: {

@@ -32,7 +32,7 @@ import { conditionResult } from '@data/scenario/conditionHelper';
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, PLAY_SCENARIO_STEP_ID } from '@data/scenario/fixedSteps';
+import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, PLAY_SCENARIO_STEP_ID, LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
 
 export default class ScenarioStep {
   step: Step;
@@ -709,7 +709,7 @@ export default class ScenarioStep {
             this.campaignLog
           );
         }
-        const effectsWithInput: EffectsWithInput = {
+        const effectsWithInput: EffectsWithInput[] = [{
           input: investigators,
           effects: [
             {
@@ -718,11 +718,23 @@ export default class ScenarioStep {
               investigator: '$input_value',
             },
           ],
-        };
+        }];
+
+        const lead_invesigator_choices = scenarioState.stringChoices(LEAD_INVESTIGATOR_STEP_ID);
+        if (input.lead_investigator_effects) {
+          if (!lead_invesigator_choices) {
+            return undefined;
+          }
+          effectsWithInput.push({
+            input: keys(lead_invesigator_choices),
+            effects: input.lead_investigator_effects,
+          });
+        }
+
         return this.maybeCreateEffectsStep(
           step.id,
           this.remainingStepIds,
-          [effectsWithInput],
+          effectsWithInput,
           scenarioState,
           {}
         );
@@ -776,6 +788,36 @@ export default class ScenarioStep {
           effectsWithInput,
           scenarioState,
           {}
+        );
+      }
+      case 'prologue_randomizer': {
+        const choices = scenarioState.stringChoices(step.id);
+        if (choices === undefined) {
+          return undefined;
+        }
+        const options = input.options;
+        const effectsWithInput: EffectsWithInput[] = [];
+        forEach(input.choices, c => {
+          const value = choices[c.id];
+          if (value && value.length) {
+            const option = find(options, o => o.condition === value[0]);
+            if (option?.effects) {
+              effectsWithInput.push({
+                border: true,
+                input: [c.id],
+                effects: option.effects,
+              });
+            }
+          }
+        });
+        return this.maybeCreateEffectsStep(
+          step.id,
+          this.remainingStepIds,
+          effectsWithInput,
+          scenarioState,
+          {
+            bulletType: 'default',
+          }
         );
       }
       case 'card_choice': {

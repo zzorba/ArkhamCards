@@ -3,14 +3,15 @@ import { StyleSheet, View } from 'react-native';
 import { filter, flatMap, map, throttle, shuffle } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import PickerStyleButton from '@components/core/PickerStyleButton';
 import { RandomLocationInput } from '@data/scenario/types';
-import { m, l } from '@styles/space';
+import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import useCardList from '@components/card/useCardList';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
+import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
+import ActionButton from '@components/campaignguide/prompts/ActionButton';
 
 interface Props {
   input: RandomLocationInput;
@@ -23,7 +24,7 @@ interface State {
 
 export default function RandomLocationInputComponent({ input }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
-  const { borderStyle } = useContext(StyleContext);
+  const { borderStyle, colors } = useContext(StyleContext);
   const [choices, updateChoices] = useReducer((state: number[], action: 'draw' | 'clear') => {
     switch (action) {
       case 'draw': {
@@ -66,41 +67,42 @@ export default function RandomLocationInputComponent({ input }: Props) {
 
   const selectedCards = flatMap(choices, idx => cards[idx] || []);
   return (
-    <View style={styles.container}>
+    <InputWrapper editable onSubmit={done}>
       { !input.multiple ? (
-        <View style={[styles.wrapper, borderStyle]}>
-          <PickerStyleButton
-            id="single"
-            title={t`Random location`}
-            value={selectedCards.length ? selectedCards[0].name : ''}
-            onPress={drawLocation}
-            widget="shuffle"
-          />
-        </View>
+        <PickerStyleButton
+          id="single"
+          noBorder
+          title={t`Random location`}
+          value={selectedCards.length ? selectedCards[0].name : ''}
+          onPress={drawLocation}
+          widget="shuffle"
+        />
       ) : (
         <>
-          <BasicButton
-            title={t`Draw location`}
-            disabled={selectedCards.length >= cards.length}
-            onPress={drawLocation}
-          />
-          <BasicButton
-            title={t`Reshuffle`}
-            disabled={choices.length === 0}
-            onPress={clearLocations}
-          />
+          <View style={[styles.row, space.paddingBottomXs]}>
+            <ActionButton
+              color="light"
+              leftIcon="plus-thin"
+              title={t`Draw location`}
+              disabled={selectedCards.length >= cards.length}
+              onPress={drawLocation}
+            />
+            <ActionButton
+              color="light"
+              title={t`Reshuffle`}
+              leftIcon="shuffle"
+              disabled={choices.length === 0}
+              onPress={clearLocations}
+            />
+          </View>
           <View style={[selectedCards.length ? styles.wrapper : {}, borderStyle]}>
             { map(selectedCards, card => (
-              <CardSearchResult key={card.code} card={card} />
+              <CardSearchResult noBorder backgroundColor={colors.L20} key={card.code} card={card} />
             )) }
           </View>
         </>
       ) }
-      <BasicButton
-        title={t`Done`}
-        onPress={done}
-      />
-    </View>
+    </InputWrapper>
   );
 }
 
@@ -108,8 +110,8 @@ const styles = StyleSheet.create({
   wrapper: {
     borderTopWidth: StyleSheet.hairlineWidth,
   },
-  container: {
-    marginTop: m,
-    marginBottom: l * 3,
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });

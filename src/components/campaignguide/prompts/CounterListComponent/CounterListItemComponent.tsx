@@ -2,12 +2,15 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import { m, s, xs } from '@styles/space';
+import space, { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import Card from '@data/types/Card';
+import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 
 interface Props {
   code: string;
   name: string;
+  investigator?: Card;
   description?: string;
   color?: string;
   value: number;
@@ -19,8 +22,8 @@ interface Props {
   showDelta: boolean;
 }
 
-export default function CounterListItemComponent({ code, name, description, color, value, max, min, onInc, onDec, editable, showDelta }: Props) {
-  const { borderStyle, typography } = useContext(StyleContext);
+export default function CounterListItemComponent({ code, investigator, name, description, color, value, max, min, onInc, onDec, editable, showDelta }: Props) {
+  const { typography, width } = useContext(StyleContext);
   const inc = useCallback(() => onInc(code, max), [onInc, code, max]);
   const dec = useCallback(() => onDec(code, min), [onDec, code, min]);
 
@@ -33,10 +36,37 @@ export default function CounterListItemComponent({ code, name, description, colo
       </View>
     );
   }, [color, value, showDelta, typography]);
+  if (investigator) {
+    return (
+      <View style={space.paddingBottomXs}>
+        <CompactInvestigatorRow
+          investigator={investigator}
+          width={width - s * (editable ? 4 : 2)}
+          description={editable && !!description ? description : undefined}
+        >
+          { editable ? (
+            <PlusMinusButtons
+              count={value}
+              max={max}
+              min={min}
+              onIncrement={inc}
+              onDecrement={dec}
+              countRender={count}
+              color={color ? 'light' : 'dark'}
+              hideDisabledMinus
+              dialogStyle
+              rounded
+            />
+          ) : (
+            count
+          ) }
+        </CompactInvestigatorRow>
+      </View>
+    );
+  }
   return (
     <View style={[
       styles.promptRow,
-      borderStyle,
       color ? { backgroundColor: color } : {},
     ]}>
       <View style={styles.column}>
@@ -59,6 +89,8 @@ export default function CounterListItemComponent({ code, name, description, colo
           countRender={count}
           color={color ? 'light' : 'dark'}
           hideDisabledMinus
+          dialogStyle
+          rounded
         />
       ) : (
         count
@@ -74,7 +106,6 @@ const styles = StyleSheet.create({
     minWidth: 40,
   },
   promptRow: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
     padding: m,
     paddingTop: s,
     paddingBottom: s,

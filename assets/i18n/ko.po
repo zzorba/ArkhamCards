@@ -275,9 +275,6 @@ msgstr "생존"
 msgid "Resigned"
 msgstr "후퇴"
 
-msgid "Investigator status at end of scenario:"
-msgstr "시나리오 종료시 조사자 상태"
-
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
 msgstr "<b>${ nextScenarioName }</b>으로 진행합니다."
@@ -1201,7 +1198,7 @@ msgid "All Investigators"
 msgstr "모든 조사자"
 
 msgid "Investigating for clues"
-msgstr "단서를 얻기위해 조사하는 중"
+msgstr "단서를 얻기 위해 조사하는 중"
 
 msgid "Cursing at the tentacle token"
 msgstr "혼돈 주머니에서 5번 연속으로 촉수를 뽑는 중"
@@ -1434,14 +1431,8 @@ msgstr "카드 선택"
 msgid "Choose additional card"
 msgstr "추가 카드 선택"
 
-msgid "Proceed"
-msgstr "진행"
-
 msgid "The investigators must decide (choose one):"
 msgstr "조사자들은 결정해야만 합니다 (하나를 선택합니다):"
-
-msgid "Add new investigator"
-msgstr "새로운 조사자 추가"
 
 #, javascript-format
 msgid "${ supplyName } to use (${ desiredCount })"
@@ -1501,22 +1492,8 @@ msgstr "캠페인 카드"
 msgid "Physical trauma"
 msgstr "육체적 트라우마"
 
-#, javascript-format
-msgid " (New Total: ${ totalPhysical })"
-msgstr " (갱신된 합계: ${ totalPhysical })"
-
 msgid "Mental trauma"
 msgstr "정신적 트라우마"
-
-#, javascript-format
-msgid " (New Total: ${ totalMental })"
-msgstr " (갱신된 합계: ${ totalMental })"
-
-msgid "Save deck upgrade"
-msgstr "향상 덱 저장"
-
-msgid "Save adjustments"
-msgstr "변경사항 저장"
 
 msgid "Select deck"
 msgstr "덱 선택"
@@ -1572,27 +1549,12 @@ msgstr "혼돈 토큰 뽑기"
 msgid "Draw random basic weakness"
 msgstr "무작위 기본 약점 뽑기"
 
-msgid "Scenario completed"
-msgstr "완료된 시나리오"
-
-msgid "Resolutions"
-msgstr "결말"
-
 msgid "Start playing the scenario now."
 msgstr "이제 시나리오를 시작합니다."
-
-#, javascript-format
-msgid "Who will add ${ card.name } to their deck?"
-msgstr "어떤 조사자가 ${ card.name } 카드를 덱에 추가하시겠습니까?"
-
-#, javascript-format
-msgid "In your Campaign Log, under \"${ section }\", record ${ card.name }. "
-msgstr "당신의 캠페인 기록지 중 \"${ section }\" 항목에, ${ card.name } 항목을 기록합니다."
 
 msgid "In your Campaign Log, record that <i>${ text }</i>"
 msgstr "당신의 캠페인 기록지에 <i>${ text }</i>라고 기록합니다."
 
-#, javascript-format
 msgid "In your Campaign Log, cross out <i>${ logEntry.text }</i>"
 msgstr "당신의 캠페인 기록지에 <i>${ logEntry.text }</i> 항목에 X표시를 합니다."
 
@@ -1601,8 +1563,8 @@ msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
 "logEntry.text }</i>"
 msgstr ""
-"당신의 캠페인 기록지 중 \"${ logEntry.section }\" 항목에, <i>${ logEntry.text }</i> 항목에 "
-"X표시를 합니다."
+"당신의 캠페인 기록지 중 \"${ logEntry.section }\" 항목 아래의 <i>${ logEntry.text }</i> "
+"항목에 X표시를 합니다."
 
 msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
 msgstr "당신의 캠페인 기록지에 <i>${ logEntry.text }</i>라고 기록합니다."
@@ -1611,12 +1573,12 @@ msgstr "당신의 캠페인 기록지에 <i>${ logEntry.text }</i>라고 기록�
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>."
-msgstr "당신의 캠페인 기록지 중 \"${ logEntry.section }\" 항목에, ${ logEntry.text }라고 기록합니다."
+msgstr "당신의 캠페인 기록지 중 \"${ logEntry.section }\" 항목 아래에 ${ logEntry.text }라고 기록합니다."
 
-#, javascript-format
 msgid "Add ${ tokenString } to the chaos bag."
 msgstr "${ tokenString } 토큰을 혼돈 주머니에 넣습니다."
 
+#, javascript-format
 msgid "Remove ${ tokenString } from the chaos bag."
 msgstr "${ tokenString } 토큰을 혼돈 주머니에서 제거합니다."
 
@@ -1624,11 +1586,8 @@ msgstr "${ tokenString } 토큰을 혼돈 주머니에서 제거합니다."
 msgid "Remove ${ card.name } (${ input.length })"
 msgstr "${ card.name } 카드를 제거합니다 (${ input.length })"
 
-msgid "Who will remove ${ card.name } from their deck?"
-msgstr "어떤 조사자가 ${ card.name } 카드를 덱에서 제거하시겠습니까?"
-
 msgid "You suffer 1 physical or mental trauma <i>(your choice)</i>."
-msgstr "당신은 육체적 트라우마를 1 또는 정신적 트라우마를 1 받습니다 <i>(당신이 선택합니다)</i>."
+msgstr "당신은 육체적 트라우마를 1 또는 정신적 트라우마를 1 받습니다<i>(당신이 선택합니다)</i>."
 
 msgid "All weaknesses have been assigned."
 msgstr "모든 약점이 할당되어 있습니다."
@@ -1724,6 +1683,7 @@ msgstr "대표 조사자가 <b>사망하면</b>."
 msgid "If all investigators were <b>killed</b>."
 msgstr "모든 조사자가 <b>사망하면</b>."
 
+#, javascript-format
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
 msgstr ""
 "${ logEntry.section } 항목을 확인합니다. <i>${ logEntry.text }</i> 항목이 있으면, 다음 지시를 "
@@ -2512,7 +2472,6 @@ msgstr "${ investigator.name } 조사자는 ${ card.name } 카드를 획득합�
 msgid "${ investigator.name } removes ${ card.name } (Advanced)"
 msgstr "${ investigator.name } 조사자는 ${ card.name } (강화된) 카드를 제거합니다."
 
-#, javascript-format
 msgid "${ investigator.name } removes ${ card.name }"
 msgstr "${ investigator.name } 조사자는 ${ card.name } 카드를 제거합니다."
 
@@ -2596,10 +2555,10 @@ msgid " (Per Investigator)"
 msgstr " (조사자 당)"
 
 msgid "Use app for scenario setup & resolutions"
-msgstr "시나리오 정리 & 결말을 위해 앱을 활용합니다 (영어입니다)"
+msgstr "시나리오 준비와 결말에 앱을 활용합니다(번역이 제공되지 않을 수 있습니다)."
 
 msgid "Track campaign log and resolutions manually"
-msgstr "수동으로 캠페인 기록지와 결말을 추적합니다 (영어입니다)"
+msgstr "수동으로 캠페인 기록지와 결말을 추적합니다(번역이 제공되지 않을 수 있습니다)."
 
 msgid "Investigators"
 msgstr "조사자"
@@ -2608,8 +2567,8 @@ msgid ""
 "If you encounter any problems with the campaign guide system, please let me "
 "know at arkhamcards@gmail.com."
 msgstr ""
-"캠페인 가이드를 사용하는데 있어서 문제에 직면하셨다면, arkhamcards@gmail.com 로 연락바랍니다. (역자 주: 앱 "
-"제작자의 연락처이며, 번역과는 무관합니다.)"
+"캠페인 가이드를 사용하는데 있어서 문제에 직면하셨다면, arkhamcards@gmail.com 로 연락바랍니다(한국어판의 경우, "
+"https://cafe.naver.com/arkhamfiles 카페의 버그 제보 게시판을 이용바랍니다)."
 
 #, javascript-format
 msgid "${ spentXp } of ${ totalXp } spent"
@@ -2662,12 +2621,6 @@ msgid ""
 "<b>Note:</b> Trauma from investigator defeat is handled during scenario "
 "resolution."
 msgstr "<b>참고:</b> 조사자가 쓰러져서 발생한 트라우마는 시나리오 결말 도중 처리됩니다."
-
-msgid "Record Trauma"
-msgstr "트라우마 기록"
-
-msgid "Select resolution"
-msgstr "결말 선택"
 
 msgid "Contact us"
 msgstr "연락하기"
@@ -2816,7 +2769,7 @@ msgid "Limit 1 Covenant per deck."
 msgstr "덱당 Covenant 1장 한정."
 
 msgid "Checking for FAQ"
-msgstr "FAQ 확인 (영문)"
+msgstr "FAQ 확인 (번역이 제공되지 않을 수 있음)"
 
 msgid "No entries at this time."
 msgstr "현재 아무 항목도 없습니다."
@@ -3365,8 +3318,8 @@ msgid ""
 "Dissonant Voices is an ongoing project by Mythos Busters to narrate the "
 "english scenario text for each Arkham Horror campaign."
 msgstr ""
-"Dissonant Voices는 Mythos Busters에서 진행 중인 프로젝트로 아컴 호러 캠페인의 영어 시나리오 지문을 읽어주는 "
-"것 입니다."
+"Dissonant Voices는 Mythos Busters에서 진행 중인 프로젝트로 아컴 호러 캠페인의 시나리오 지문을 영문으로 "
+"읽어줍니다."
 
 msgid "Are you sure you want to delete this standalone?"
 msgstr "독립 시나리오를 삭제하기를 원합니까?"
@@ -3606,7 +3559,7 @@ msgid "Account Name"
 msgstr "계정명"
 
 msgid "Choose a handle for your account"
-msgstr "계정 처리 방식 선택"
+msgstr "계정 별명 선택"
 
 msgid "Your Friends"
 msgstr "당신의 친구"
@@ -3632,7 +3585,7 @@ msgid "Account name"
 msgstr "계정명"
 
 msgid "Choose a handle"
-msgstr "처리 방식 선택"
+msgstr "별명 선택"
 
 msgid "ArkhamDB Account"
 msgstr "ArkhamDB 계정"
@@ -3697,7 +3650,7 @@ msgid ""
 "campaign data between devices.\n"
 "More features are in the works."
 msgstr ""
-"Arkham Cards 계정을 사용하면 디바이스 사이의 캠페인 연동이 가능합니다.\n"
+"Arkham Cards 계정을 사용하면 장치 간 캠페인 연동이 가능합니다.\n"
 "추후 기능이 추가될 예정입니다."
 
 msgid "Sign in to your account"
@@ -3959,15 +3912,9 @@ msgstr "혼돈 주머니 보기"
 msgid "Sealed tokens"
 msgstr "봉인된 토큰"
 
-msgid "Save XP to deck after making adjustments"
-msgstr "조정 후 경험치를 덱에 저장하십시오"
-
 #, javascript-format
 msgid "${ _spentXp } of ${ _totalXp } spent"
 msgstr "${ _totalXp } 경험치 중 ${ _spentXp } 소비"
-
-msgid "Save your changes to the campaign log"
-msgstr "변경 사항을 캠페인 기록지에 저장"
 
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr "Ancestral Knowledge 카드가 있는 덱은 반드시 10장 이상의 능력 카드를 포함하여야 합니다."
@@ -4011,20 +3958,6 @@ msgstr "호각"
 
 msgid "Loading..."
 msgstr "불러오는 중..."
-
-#, javascript-format
-msgid "${ deck.owner.handle } must save this upgrade"
-msgstr "${ deck.owner.handle }도 반드시 향상을 저장해야 합니다"
-
-msgid "Your friend must save this upgrade"
-msgstr "당신의 친구도 반드시 향상을 저장해야 합니다"
-
-#, javascript-format
-msgid "${ deck.owner.handle } must save this deck"
-msgstr "${ deck.owner.handle }도 반드시 덱을 저장해야 합니다"
-
-msgid "Your friend must save this deck"
-msgstr "당신의 친구도 덱을 반드시 저장해야 합니다"
 
 msgid "Campaign players"
 msgstr "캠페인 플레이어"
@@ -4125,8 +4058,9 @@ msgstr ""
 msgid "Justify text"
 msgstr "텍스트 행 맞추기"
 
+#, javascript-format
 msgid "${ tokens[0] } and ${ tokens[1] }"
-msgstr "${ tokens[0] } 토큰과 ${ tokens[1] } 토큰"
+msgstr "${ tokens[0] } 및 ${ tokens[1] }"
 
 msgid "Dark Matter"
 msgstr "암흑 물질"
@@ -4153,12 +4087,12 @@ msgid ""
 msgstr ""
 "아컴 카드에 가입해 주셔서 감사합니다.\n"
 "\n"
-"첫 번쨰로, 당신의 계정에 대한 핸들을 만들어야 합니다."
+"첫 번쨰로, 당신의 계정에 대한 별명을 만들어야 합니다."
 
 msgid ""
 "People will be able to search for friends using their handle so you can "
 "join their campaigns."
-msgstr "핸들을 사용하여 친구를 검색할 수 있고 캠페인에 참여할 수 있습니다."
+msgstr "별명을 사용하여 친구를 검색할 수 있고 캠페인에 참여할 수 있습니다."
 
 msgid "Now that you are signed in, you should have access to your saved campaigns."
 msgstr "이제 로그인을 했으므로 저장된 캠페인에 접근할 수 있습니다."
@@ -4177,9 +4111,6 @@ msgstr "프린트 앤 플레이 카드를 다운로드"
 #, javascript-format
 msgid "${ section.title } (from XP)"
 msgstr ""
-
-msgid " (New Total: ${ newTotal })"
-msgstr "(새로운 합계): ${ newTotal })"
 
 msgid "Exiled story cards"
 msgstr "추방된 이야기 카드"
@@ -4203,16 +4134,16 @@ msgid "Alice in Wonderland"
 msgstr "이상한 나라의 앨리스"
 
 msgid "Fragments of Alilce"
-msgstr ""
+msgstr "앨리스의 파편"
 
 msgid "Wonderland Boons"
-msgstr ""
+msgstr "이상한 나라의 유쾌한 주민"
 
 msgid "Wonderland Banes"
-msgstr ""
+msgstr "이상한 나라의 골칫거리"
 
 msgid "Strength of Wonderland"
-msgstr ""
+msgstr "이상한 나라의 힘"
 
 msgid "Fan-made campaign by Axolotl"
 msgstr "팬메이드 캠페인 (제작자: Axolotl)"
@@ -4220,17 +4151,243 @@ msgstr "팬메이드 캠페인 (제작자: Axolotl)"
 msgid "Fan-made campiagn by The Beard"
 msgstr "팬메이드 캠페인 (제작자: Beard)"
 
+msgid "Edge of the Earth"
+msgstr "지구의 끝자락"
+
+msgid "Promotional"
+msgstr "프로모션"
+
+msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
+msgstr "수호자나 중립이 아닌 카드를 5장보다 많이 포함할 수 없습니다."
+
+msgid "You cannot have more than 5 cards that are not Seeker or Neutral"
+msgstr "탐구자나 중립이 아닌 카드를 5장보다 많이 포함할 수 없습니다."
+
+msgid "You cannot have more than 5 cards that are not Rogue or Neutral"
+msgstr "무법자나 중립이 아닌 카드를 5장보다 많이 포함할 수 없습니다."
+
+msgid "You cannot have more than 5 cards that are not Mystic or Neutral"
+msgstr "신비주의자나 중립이 아닌 카드를 5장보다 많이 포함할 수 없습니다."
+
+msgid "You cannot have more than 5 cards that are not Survivor or Neutral"
+msgstr "생존자나 중립이 아닌 카드를 5장보다 많이 포함할 수 없습니다."
+
+msgid "You must have at least 7 cards from 3 different factions"
+msgstr "반드시 3가지 서로 다른 역할군에서 각각 7장 이상의 카드를 포함하여야 합니다."
+
+msgid "You cannot have more than 15 level 0-1 Seeker and/or Mystic cards"
+msgstr "탐구자 그리고/또는 신비주의자인 0-1 레벨 카드를 15장보다 많이 포함할 수 없습니다."
+
+msgid "You cannot have more than 5 Guardian and/or Mystic cards"
+msgstr "수호자 그리고/또는 신비주의자인 카드를 5장보다 많이 포함할 수 없습니다."
+
+msgid "You cannot have more than 5 level 0 Mystic cards"
+msgstr "신비주의자 0레벨 카드를 5장보다 많이 포함할 수 없습니다."
+
+msgid "Choose resolution"
+msgstr "결말 선택"
+
+msgid "Choose investigator to record trauma"
+msgstr "트라우마를 기록할 조사자 선택"
+
+msgid "Defeated"
+msgstr "쓰러짐"
+
+msgid "Status of investigators"
+msgstr "조사자의 상태"
+
+msgid "Social"
+msgstr "소셜"
+
+msgid "Connect with other fans of Arkham Horror: The Card Game."
+msgstr "'아컴호러: 카드게임'의 다른 팬들과 연결"
+
+msgid "Add new"
+msgstr "새로 추가"
+
+msgid "Lead"
+msgstr "대표"
+
+msgid "Changes have been recorded."
+msgstr "변경점이 기록되었습니다."
+
+msgid "No adjustments need saving."
+msgstr "저장이 필요한 변경 사항이 없습니다."
+
+msgid ""
+"When you have finished making adjustments, press the 'Save' button to "
+"record your changes."
+msgstr "변경 사항을 끝마치려면, 변경점 기록을 위해 '저장' 버튼을 누르세요."
+
+msgid ""
+"This deck will be upgraded with XP and any new story cards will be added or "
+"removed as specified."
+msgstr "이 덱은 경험치로 향상되고 새로운 이야기 카드는 지정된대로 추가 또는 제거됩니다."
+
 #, javascript-format
+msgid " (new total: ${ total })"
+msgstr " (새로운 총합: ${ total })"
+
+msgid "Earned XP:"
+msgstr "획득한 경험치:"
+
+msgid "Not deck owner"
+msgstr "덱 소유자 아님"
+
+msgid "Saved"
+msgstr "저장됨"
+
+#, javascript-format
+msgid ""
+"This deck is owned by ${ deck.owner.handle }. They must open the app on "
+"their own device to save the upgrade"
+msgstr ""
+"이 덱의 소유자는 '${ deck.owner.handle }' 님입니다. 향상 저장을 위해서는 해당 소유자의 장치에서 이 앱을 열어야 "
+"합니다."
+
+msgid ""
+"This deck is owned by another user. They must open the app on their own "
+"device to save the upgrade"
+msgstr "이 덱은 다른 사용자의 소유자입니다. 향상 저장을 위해서는 해당 소유자의 장치에서 이 앱을 열어야 합니다."
+
+msgid ""
+"This investigator does not have a deck associated with it.\n"
+"If you choose a deck, the app can help track spent experience, story asset "
+"changes, and deckbuilding requirements."
+msgstr ""
+"이 조사자는 관련된 덱이 없습니다.\n"
+"당신이 덱을 선택하면, 경험치 소비와 이야기 자산 변경점 및 덱빌딩 필요사항 추적을 도울 수 있습니다."
+
+msgid ""
+"Now that your upgrade has been saved, when visiting the deck be sure to use "
+"the 'Edit' button when making card changes."
+msgstr "이제 향상이 저장되었으므로, 카드를 변경을 위해 덱을 방문할 때는 '수정' 버튼을 사용해야 합니다."
+
+msgid "Choose a deck for this investigator"
+msgstr "이 조사자를 위한 덱을 선택하세요"
+
+msgid "What exactly does the app handle?"
+msgstr "앱은 정확히 무엇을 처리하나요?"
+
+msgid ""
+"Generally speaking, the app handles anything that you see mentioned in the "
+"digital campaign log.\n"
+"If you are building your deck with the app, it will also handle cards like "
+"Arcane Research and Shrewd Analysis (if you allow the app to randomize your "
+"upgrades).\n"
+"If you find that you made a mistake after you upgraded your deck, you can "
+"'adjust' the available experience when editing a deck."
+msgstr ""
+"일반적으로 앱은 디지털 캠페인 로그에 언급된 모든 것을 처리합니다.\n"
+"앱으로 덱 빌딩을 한다면, '불가사의한 연구'와 '분석적 사고' 같은 카드도 처리합니다(앱에서 향상을 무작위로 지정하도록 허용 한 "
+"경우).\n"
+"덱을 향상한 후에 실수를 했다면, 덱을 수정할 때 사용 가능한 경험치를 '조정'할 수 있습니다."
+
+msgid ""
+"The numbers below already include all the trauma, victory points, and "
+"stotry assets you may have earned during the resolution.\n"
+"\n"
+"If you have any other cards or effects that the app does not take care of, "
+"you can make adjustments below before saving each investigator."
+msgstr ""
+"아래 수치에는 결말 과정에서 획득했을 수 있는 모든 트라우마, 승리 점수 및 이야기 자산이 이미 포함되어 있습니다.\n"
+"\n"
+"앱에서 처리하지 않는 다른 카드나 효과가 있는 경우, 각 조사자를 저장하기 전에 아래에서 변경할 수 있습니다."
+
+msgid "Learn more"
+msgstr "더 배워보기"
+
+msgid "Save will update your deck with the card changes listed above."
+msgstr "아래의 카드 변경점 목록을 덱에 업데이트 하기 위해 저장하세요."
+
+msgid "Campaign log"
+msgstr "캠페인 기록지"
+
+msgid "Record in campaign log"
+msgstr "캠페인 기록지에 기록"
+
+msgid "Review and add records"
+msgstr "기록 보기 및 추가"
+
+msgid "Chaos bag"
+msgstr "혼돈 주머니"
+
+msgid "Review and simulate draw"
+msgstr "뽑기 보기 및 시뮬레이션"
+
+msgid "Draw random"
+msgstr "무작위 뽑기"
+
+msgid "Record"
+msgstr "기록"
+
+msgid "Scenario effects"
+msgstr "시나리오 효과"
+
+msgid "Scenario Ended"
+msgstr "시나리오 결과"
+
+msgid "Proceed to Resolutions"
+msgstr "결말로 진행"
+
+msgid "Choose trauma type"
+msgstr "트라우마 유형 선택"
+
+msgid "Chosen trauma type"
+msgstr "선택된 트라우마 유형"
+
+msgid "Random results"
+msgstr "무작위 결과"
+
+msgid "Select Traits"
+msgstr "특성 선택"
+
+msgid "Random weaknesses will be drawn that match these traits."
+msgstr "이들 특성과 일치하는 무작위 약점을 뽑습니다."
+
+msgid "Edit selection"
+msgstr "선택 수정"
+
+msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
+msgstr "캠페인 기록지를 확인합니다. <i>만약 ${ logEntry.text }</i>"
+
+msgid "Discord"
+msgstr "디스코드"
+
+msgid "VK"
+msgstr "VK 메신저"
+
+msgid "Telegram"
+msgstr "텔레그램"
+
+#, javascript-format
+msgid "In your Campaign Log, under \"${ section }\", record #name#. "
+msgstr "캠페인 기록지 중 \"${ section }\" 항목 아래에 #name# 이름을 기록합니다."
+
+#, javascript-format
+msgid ""
+"In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
+"logEntry.text }</i>."
+msgstr ""
+"캠페인 기록지 중 \"${ logEntry.section }\" 항목 아래의 <i>${logEntry.text }</i> 항목에 "
+"X표시를 합니다."
+
+#, javascript-format
+msgid ""
+"In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
+"logEntry.text }</i>"
+msgstr ""
+"캠페인 기록지 중 \"${ logEntry.section }\" 항목 아래의 <i>${logEntry.text }</i> 라고 "
+"기록합니다."
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } 조사자는 <b>미칩니다</b>."
 
-#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } 조사자는 <b>사망합니다</b>."
 
-#, javascript-format
 msgctxt "masculine"
 msgid ""
 "${ investigator.name } suffers 1 physical or mental trauma <i>(their "
@@ -4295,33 +4452,34 @@ msgstr "쓰러짐: 트라우마 없음"
 
 #, javascript-format
 msgctxt "masculine"
-msgid ""
-"If <i>${ card.name }</i> is not listed under Check ‘${ entry.section }’ in "
-"your Campaign Log."
-msgstr "당신의 캠페인 기록지의 ‘${ entry.section }’ 항목에 <i>${ card.name }</i> 항목이 없으면."
-
-#, javascript-format
-msgctxt "masculine"
-msgid ""
-"If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your "
-"Campaign Log."
-msgstr ""
-"당신의 캠페인 기록지의 ‘${ entry.section }’ 항목에 <i>${ card.name }</i> 항목이 있으면, 다음 지시를 "
-"수행합니다."
-
-#, javascript-format
-msgctxt "masculine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } 조사자는 <b>${ sectionName }</b> 항목을 읽습니다."
 
+#, javascript-format
+msgctxt "masculine"
+msgid ""
+"If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 없다면"
+
+#, javascript-format
+msgctxt "masculine"
+msgid ""
+"If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 있다면"
+
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } 조사자는 <b>미칩니다</b>."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } 조사자는 <b>사망합니다</b>."
 
+#, javascript-format
 msgctxt "feminine"
 msgid ""
 "${ investigator.name } suffers 1 physical or mental trauma <i>(their "
@@ -4385,25 +4543,23 @@ msgctxt "feminine"
 msgid "Defeated: no trauma"
 msgstr "쓰러짐: 트라우마 없음"
 
-msgctxt "feminine"
-msgid ""
-"If <i>${ card.name }</i> is not listed under Check ‘${ entry.section }’ in "
-"your Campaign Log."
-msgstr "당신의 캠페인 기록지의 ‘${ entry.section }’ 항목에 <i>${ card.name }</i> 항목이 없으면."
-
-#, javascript-format
-msgctxt "feminine"
-msgid ""
-"If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your "
-"Campaign Log."
-msgstr ""
-"당신의 캠페인 기록지의 ‘${ entry.section }’ 항목에 <i>${ card.name }</i> 항목이 있으면, 다음 지시를 "
-"수행합니다."
-
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } 조사자는 <b>${ sectionName }</b> 항목을 읽습니다."
+
+msgctxt "feminine"
+msgid ""
+"If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 없다면"
+
+#, javascript-format
+msgctxt "feminine"
+msgid ""
+"If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 있다면"
 
 msgctxt "trait"
 msgid "???"
@@ -5512,6 +5668,10 @@ msgctxt "header"
 msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] "시나리오"
+
+msgctxt "campaign_log_entry"
+msgid "Other."
+msgstr "기타."
 
 msgctxt "Weakness Card"
 msgid "All"

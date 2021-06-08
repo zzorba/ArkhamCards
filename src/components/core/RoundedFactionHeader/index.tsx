@@ -18,11 +18,13 @@ interface Props {
   children: React.ReactNode | React.ReactNode[];
   fullRound?: boolean;
   eliminated?: boolean;
+  transparent?: boolean;
+  color?: 'dark' | 'light';
 }
 
 const HEIGHT = 48;
 
-function RoundedFactionHeader({ faction, width, dualFaction, children, fullRound, eliminated }: Props) {
+function RoundedFactionHeader({ faction, width, dualFaction, children, fullRound, eliminated, transparent, ...props }: Props) {
   const { colors, fontScale } = useContext(StyleContext);
   const fadeAnim = useCallback((props: any) => {
     return <Fade {...props} style={{ backgroundColor: colors.M }} duration={1000} />;
@@ -44,18 +46,23 @@ function RoundedFactionHeader({ faction, width, dualFaction, children, fullRound
       </View>
     );
   }
-  const color = colors.faction[dualFaction ? 'dual' : faction].background;
-
+  const color = colors.faction[dualFaction ? 'dual' : faction][props.color === 'dark' ? 'darkBackground' : 'background'];
   return (
     <View style={[
       styles.cardTitle,
       fullRound ? styles.fullRound : undefined,
-      {
+      !transparent ? {
         backgroundColor: color,
         borderColor: color,
-      },
+      } : undefined,
     ]} opacity={eliminated ? 0.6 : undefined}>
-      <FactionPattern faction={faction} width={width} height={30 + 18 * fontScale} />
+      <FactionPattern
+        faction={faction}
+        width={width}
+        height={30 + 18 * fontScale}
+        transparent={transparent}
+        fullRound={fullRound}
+      />
       { children }
     </View>
   );

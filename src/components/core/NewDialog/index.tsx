@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Platform, StyleSheet, Text, TouchableOpacity, ScrollView, View } from 'react-native';
 import Modal from 'react-native-modal';
 import { map } from 'lodash';
@@ -10,9 +10,12 @@ import TextInputLine from './TextInputLine';
 import space, { m, s } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
 import { NOTCH_BOTTOM_PADDING, TINY_PHONE } from '@styles/sizes';
+import Card from '@data/types/Card';
+import CompactInvestigatorRow from '../CompactInvestigatorRow';
 
 interface Props {
   title: string;
+  investigator?: Card;
   visible: boolean;
   dismissable?: boolean;
   onDismiss?: () => void;
@@ -24,6 +27,7 @@ interface Props {
 }
 function NewDialog({
   title,
+  investigator,
   visible,
   dismissable,
   onDismiss,
@@ -35,6 +39,22 @@ function NewDialog({
 }: Props) {
   const { backgroundStyle, darkMode, colors, shadow, typography, width, height } = useContext(StyleContext);
   const verticalButtons = forceVerticalButtons || buttons.length > 2 || TINY_PHONE;
+  const dismissButton = useMemo(() => {
+    if (!dismissable) {
+      return null;
+    }
+    return (
+      <View style={investigator ? space.paddingRightS : styles.closeButton}>
+        <TouchableOpacity onPress={onDismiss}>
+          <AppIcon
+            name="dismiss"
+            size={18}
+            color={colors.L30}
+          />
+        </TouchableOpacity>
+      </View>
+    );
+  }, [dismissable, investigator, onDismiss, colors]);
   return (
     <Modal
       avoidKeyboard={avoidKeyboard}
@@ -55,21 +75,26 @@ function NewDialog({
         padding: s,
       }]}
     >
-      <View style={[shadow.large, styles.dialog, { width: width - s * 2 }]}>
-        <View style={[styles.header, { backgroundColor: colors.D20 }]}>
-          <Text style={[typography.large, typography.inverted]}>{title}</Text>
-          { !!dismissable && (
-            <View style={styles.closeButton}>
-              <TouchableOpacity onPress={onDismiss}>
-                <AppIcon
-                  name="dismiss"
-                  size={18}
-                  color={colors.L30}
-                />
-              </TouchableOpacity>
-            </View>
-          ) }
-        </View>
+      <View style={[
+        shadow.large,
+        styles.dialog,
+        investigator ? { borderTopLeftRadius: 0, borderTopRightRadius: 0 } : undefined,
+        { width: width - s * 2 },
+      ]}>
+        { investigator ? (
+          <CompactInvestigatorRow
+            investigator={investigator}
+            width={width - s * 2}
+            open
+          >
+            { dismissButton }
+          </CompactInvestigatorRow>
+        ) : (
+          <View style={[styles.header, { backgroundColor: colors.D20 }]}>
+            <Text style={[typography.large, typography.inverted]}>{title}</Text>
+            { dismissButton }
+          </View>
+        ) }
         <View style={[styles.body, backgroundStyle]}>
           <ScrollView
             overScrollMode="never"

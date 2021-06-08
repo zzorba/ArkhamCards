@@ -11,8 +11,7 @@ import { TINY_PHONE } from '@styles/sizes';
 
 interface OwnProps {
   iconKey?: ChaosTokenType | 'tap' | 'another' | 'return' | 'odds' | 'bag';
-  small?: boolean;
-  tiny?: boolean;
+  size?: 'small' | 'tiny' | 'extraTiny';
   sealed?: boolean;
   shadow?: boolean;
   status?: 'added' | 'removed';
@@ -23,6 +22,7 @@ type Props = OwnProps;
 const CIRCLE_LARGE = TINY_PHONE ? 100 : 150;
 export const SMALL_TOKEN_SIZE = TINY_PHONE ? 48 : 64;
 export const TINY_TOKEN_SIZE = 48;
+export const EXTRA_TINY_TOKEN_SIZE = 36;
 
 const GRADIENTS: { [token: string]: {
   colors: string[];
@@ -210,16 +210,20 @@ const SPECIAL_COLORS: { [token: string]: string | undefined } = {
   curse: '#3A2342',
 };
 
-function getSize(small?: boolean, tiny?: boolean) {
-  if (tiny) {
-    return TINY_TOKEN_SIZE;
+function getSize(iconSize?: 'small' | 'tiny' | 'extraTiny') {
+  if (!iconSize) {
+    return CIRCLE_LARGE;
   }
-  return small ? SMALL_TOKEN_SIZE : CIRCLE_LARGE;
+  switch (iconSize) {
+    case 'tiny': return TINY_TOKEN_SIZE;
+    case 'small': return SMALL_TOKEN_SIZE;
+    case 'extraTiny': return EXTRA_TINY_TOKEN_SIZE;
+  }
 }
 
-export default function ChaosToken({ iconKey, small, tiny, sealed, status, shadow: useShadow }: Props) {
+export default function ChaosToken({ iconKey, size: iconSize, sealed, status, shadow: useShadow }: Props) {
   const { colors, typography, shadow } = useContext(StyleContext);
-  const size = getSize(small, tiny);
+  const size = getSize(iconSize);
   if (!iconKey) {
     return <View style={[{ width: size, height: size }, styles.tapCircle]} />;
   }

@@ -29,7 +29,7 @@ export default function CampaignLogView({
   standalone,
   hideChaosBag = false,
 }: Props) {
-  const { backgroundStyle } = useContext(StyleContext);
+  const { backgroundStyle, width } = useContext(StyleContext);
   const [, scenarioContext] = useScenarioGuideContext(campaignId, scenarioId, false, standalone);
   const liveCampaignLog = scenarioContext?.processedScenario?.latestCampaignLog || campaignLog;
   return (
@@ -42,6 +42,7 @@ export default function CampaignLogView({
         scenarioId={scenarioId}
         standalone={standalone}
         hideChaosBag={hideChaosBag}
+        width={width}
       />
     </ScrollView>
   );

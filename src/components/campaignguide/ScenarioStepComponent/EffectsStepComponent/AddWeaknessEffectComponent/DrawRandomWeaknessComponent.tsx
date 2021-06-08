@@ -3,15 +3,15 @@ import { Alert, StyleSheet, View } from 'react-native';
 import { forEach, flatMap, map, keys, range, values, sumBy } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import { StringChoices, WeaknessSet } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { drawWeakness } from '@lib/weaknessHelper';
-import InvestigatorButton from '@components/core/InvestigatorButton';
+import InvestigatorButton from '@components/campaignguide/InvestigatorButton';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import StyleContext from '@styles/StyleContext';
+import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
 
 interface OwnProps {
   id: string;
@@ -41,7 +41,6 @@ function DrawRandomWeaknessButton({ investigator, choice, choiceCard, drawRandom
   }, [index, drawRandomWeakness]);
   return (
     <InvestigatorButton
-      hideName={index > 0}
       investigator={investigator}
       value={choice === undefined ?
         t`Draw random weakness` :
@@ -102,23 +101,22 @@ export default function DrawRandomWeaknessComponent({ id, investigators, cards, 
   }, [id, scenarioState, choices, setChoices]);
 
   const scenarioChoices = scenarioState.stringChoices(`${id}_weakness`);
-  const saveButton = useMemo(() => {
+  const saveDisabled = useMemo(() => {
     if (scenarioChoices !== undefined) {
-      return null;
+      return false;
     }
-    return (
-      <BasicButton
-        disabled={investigators.length !== sumBy(keys(choices), investigator => {
-          const investigatorChoices = choices[investigator];
-          return values(investigatorChoices).length === count ? 1 : 0;
-        })}
-        onPress={save}
-        title={t`Proceed`}
-      />
-    );
-  }, [investigators, save, choices, scenarioChoices, count]);
+    return investigators.length !== sumBy(keys(choices), investigator => {
+      const investigatorChoices = choices[investigator];
+      return values(investigatorChoices).length === count ? 1 : 0;
+    });
+  }, [scenarioChoices, count, investigators, choices]);
   return (
-    <>
+    <InputWrapper
+      title={scenarioChoices === undefined ? t`Tap to draw` : t`Random results`}
+      onSubmit={save}
+      disabledText={saveDisabled ? t`Continue` : undefined}
+      editable={scenarioChoices === undefined}
+    >
       <View style={[styles.wrapper, borderStyle]}>
         { map(investigators, investigator => (
           map(range(0, count), idx => {
@@ -139,8 +137,7 @@ export default function DrawRandomWeaknessComponent({ id, investigators, cards, 
           })
         )) }
       </View>
-      { saveButton }
-    </>
+    </InputWrapper>
   );
 }
 

@@ -1445,6 +1445,26 @@
         "section": "05046",
         "entries": [
           {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# ist im Nebel verschwunden.",
+            "feminine_text": "#name# ist im Nebel verschwunden."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# ist von Geistern beansprucht worden.",
+            "feminine_text": "#name# ist von Geistern beansprucht worden."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# wurde in das Reich der Geister gezogen.",
+            "feminine_text": "#name# wurde in das Reich der Geister gezogen."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# wurde vom Beobachter entführt.",
+            "feminine_text": "#name# wurde vom Beobachter entführt."
+          },
+          {
             "id": "alive",
             "text": "Gavriella ist am Leben."
           },
@@ -1461,6 +1481,26 @@
       {
         "section": "05047",
         "entries": [
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# ist im Nebel verschwunden.",
+            "feminine_text": "#name# ist im Nebel verschwunden."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# ist von Geistern beansprucht worden.",
+            "feminine_text": "#name# ist von Geistern beansprucht worden."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# wurde in das Reich der Geister gezogen.",
+            "feminine_text": "#name# wurde in das Reich der Geister gezogen."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# wurde vom Beobachter entführt.",
+            "feminine_text": "#name# wurde vom Beobachter entführt."
+          },
           {
             "id": "alive",
             "text": "Jerome ist am Leben."
@@ -1479,6 +1519,26 @@
         "section": "05048",
         "entries": [
           {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# ist im Nebel verschwunden.",
+            "feminine_text": "#name# ist im Nebel verschwunden."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# ist von Geistern beansprucht worden.",
+            "feminine_text": "#name# ist von Geistern beansprucht worden."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# wurde in das Reich der Geister gezogen.",
+            "feminine_text": "#name# wurde in das Reich der Geister gezogen."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# wurde vom Beobachter entführt.",
+            "feminine_text": "#name# wurde vom Beobachter entführt."
+          },
+          {
             "id": "alive",
             "text": "Valentino ist am Leben."
           },
@@ -1495,6 +1555,26 @@
       {
         "section": "05049",
         "entries": [
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# ist im Nebel verschwunden.",
+            "feminine_text": "#name# ist im Nebel verschwunden."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# ist von Geistern beansprucht worden.",
+            "feminine_text": "#name# ist von Geistern beansprucht worden."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# wurde in das Reich der Geister gezogen.",
+            "feminine_text": "#name# wurde in das Reich der Geister gezogen."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# wurde vom Beobachter entführt.",
+            "feminine_text": "#name# wurde vom Beobachter entführt."
+          },
           {
             "id": "alive",
             "text": "Penny ist am Leben."
@@ -1687,6 +1767,10 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "$input_value",
+            "text": "dummy"
+          },
+          {
             "id": "a_record_of_those_lost",
             "text": "dummy"
           },
@@ -1699,7 +1783,27 @@
             "text": "dummy"
           },
           {
+            "id": "prologue_05046",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05047",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05048",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05049",
+            "text": "dummy"
+          },
+          {
             "id": "right_column",
+            "text": "dummy"
+          },
+          {
+            "id": "skip_prologue",
             "text": "dummy"
           },
           {

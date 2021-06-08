@@ -1,19 +1,21 @@
 import React, { useCallback, useContext, useMemo, useReducer } from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import { forEach, keys, map, sumBy } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
-import InvestigatorNameRow from '../InvestigatorNameRow';
 import SupplyComponent from './SupplyComponent';
 import ScenarioGuideContext from '../../ScenarioGuideContext';
 import ScenarioStepContext from '../../ScenarioStepContext';
-import SetupStepWrapper from '../../SetupStepWrapper';
-import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType, Supply, SuppliesInput } from '@data/scenario/types';
+import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
+import StyleContext from '@styles/StyleContext';
+import space, { s } from '@styles/space';
+import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import InputWrapper from '../InputWrapper';
 
 interface Props {
   id: string;
+  width: number;
   bulletType?: BulletType;
   text?: string;
   input: SuppliesInput;
@@ -33,6 +35,7 @@ interface Action {
 
 export default function SuppliesPrompt({ id, bulletType, text, input }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
+  const { colors, typography, width } = useContext(StyleContext);
   const { campaignLog, scenarioInvestigators } = useContext(ScenarioStepContext);
   const [counts, updateCounts] = useReducer((state: Counts, action: Action) => {
     const investigatorCounts = state[action.code] || {};
@@ -83,10 +86,13 @@ export default function SuppliesPrompt({ id, bulletType, text, input }: Props) {
   const suppliesInput = useMemo(() => scenarioState.supplies(id), [scenarioState, id]);
   const supplyCounts = suppliesInput !== undefined ? suppliesInput : counts;
   return (
-    <>
-      <SetupStepWrapper bulletType={bulletType}>
-        { !!text && <CampaignGuideTextComponent text={text} /> }
-      </SetupStepWrapper>
+    <InputWrapper
+      bulletType={bulletType || 'default'}
+      title={text}
+      titleStyle="setup"
+      editable={suppliesInput === undefined}
+      onSubmit={save}
+    >
       { map(scenarioInvestigators, (investigator, idx) => {
         const total = baseTotal + (input.special_xp ? campaignLog.specialXp(investigator.code, input.special_xp) : 0);
         const counts = supplyCounts[investigator.code] || {};
@@ -96,35 +102,41 @@ export default function SuppliesPrompt({ id, bulletType, text, input }: Props) {
           return count * (supply ? supply.cost : 1);
         });
         return (
-          <View key={idx}>
-            <InvestigatorNameRow
-              investigator={investigator}
-              detail={suppliesInput !== undefined ? undefined : t`${spent} of ${total}`}
-            />
-            { map(input.supplies, (supply, idx2) => {
-              const count = counts[supply.id] || 0;
-              return (suppliesInput === undefined || count > 0) && (
-                <SupplyComponent
-                  key={idx2}
+          <View style={space.paddingBottomXs} key={idx}>
+            <RoundedFactionBlock
+              faction={investigator.factionCode()}
+              header={
+                <CompactInvestigatorRow
                   investigator={investigator}
-                  supply={supply}
-                  count={count}
-                  inc={incrementSupply}
-                  dec={decrementSupply}
-                  remainingPoints={Math.max(total - spent, 0)}
-                  editable={suppliesInput === undefined}
-                />
-              );
-            }) }
+                  width={width - s * (suppliesInput === undefined ? 4 : 2)}
+                  open
+                >
+                  { <Text style={[typography.button, typography.white]}>{t`${spent} of ${total}`}</Text> }
+                </CompactInvestigatorRow>
+              }
+              footer={<View style={{ borderBottomLeftRadius: 8, borderBottomRightRadius: 8, height: 16, backgroundColor: colors.faction[investigator.factionCode()]?.lightBackground }} /> }
+              noSpace
+              noShadow
+            >
+              { map(input.supplies, (supply, idx2) => {
+                const count = counts[supply.id] || 0;
+                return (suppliesInput === undefined || count > 0) && (
+                  <SupplyComponent
+                    key={idx2}
+                    investigator={investigator}
+                    supply={supply}
+                    count={count}
+                    inc={incrementSupply}
+                    dec={decrementSupply}
+                    remainingPoints={Math.max(total - spent, 0)}
+                    editable={suppliesInput === undefined}
+                  />
+                );
+              }) }
+            </RoundedFactionBlock>
           </View>
         );
       }) }
-      { (suppliesInput === undefined) && (
-        <BasicButton
-          title={t`Proceed`}
-          onPress={save}
-        />
-      ) }
-    </>
+    </InputWrapper>
   );
 }

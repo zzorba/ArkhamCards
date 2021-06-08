@@ -1438,6 +1438,26 @@
         "section": "05046",
         "entries": [
           {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# затянут в потусторонний мир.",
+            "feminine_text": "#name# затянута в потусторонний мир."
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# исчез во мгле.",
+            "feminine_text": "#name# исчезла во мгле."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# унесён призраками.",
+            "feminine_text": "#name# унесена призраками."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name#: забрал Страж.",
+            "feminine_text": "#name#: забрал Страж."
+          },
+          {
             "id": "alive",
             "text": "Гавриэла жива."
           },
@@ -1454,6 +1474,26 @@
       {
         "section": "05047",
         "entries": [
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# затянут в потусторонний мир.",
+            "feminine_text": "#name# затянута в потусторонний мир."
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# исчез во мгле.",
+            "feminine_text": "#name# исчезла во мгле."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# унесён призраками.",
+            "feminine_text": "#name# унесена призраками."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name#: забрал Страж.",
+            "feminine_text": "#name#: забрал Страж."
+          },
           {
             "id": "alive",
             "text": "Джером жив."
@@ -1472,6 +1512,26 @@
         "section": "05048",
         "entries": [
           {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# затянут в потусторонний мир.",
+            "feminine_text": "#name# затянута в потусторонний мир."
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# исчез во мгле.",
+            "feminine_text": "#name# исчезла во мгле."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# унесён призраками.",
+            "feminine_text": "#name# унесена призраками."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name#: забрал Страж.",
+            "feminine_text": "#name#: забрал Страж."
+          },
+          {
             "id": "alive",
             "text": "Валентино жив."
           },
@@ -1488,6 +1548,26 @@
       {
         "section": "05049",
         "entries": [
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# затянут в потусторонний мир.",
+            "feminine_text": "#name# затянута в потусторонний мир."
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# исчез во мгле.",
+            "feminine_text": "#name# исчезла во мгле."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# унесён призраками.",
+            "feminine_text": "#name# унесена призраками."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name#: забрал Страж.",
+            "feminine_text": "#name#: забрал Страж."
+          },
           {
             "id": "alive",
             "text": "Пенни жива."
@@ -1507,8 +1587,8 @@
         "entries": [
           {
             "id": "lead_investigator_joins_pipers",
-            "masculine_text": "#name# joins the pipers of Azathoth.",
-            "feminine_text": "#name# joins the pipers of Azathoth."
+            "masculine_text": "#name# присоединился к флейтистам Азатота.",
+            "feminine_text": "#name# присоединилась к флейтистам Азатота."
           },
           {
             "id": "accepted_fate",
@@ -1544,11 +1624,11 @@
           },
           {
             "id": "azathoth_devoured_the_universe",
-            "text": "Azathoth devoured the universe."
+            "text": "Азатот поглотил Вселенную."
           },
           {
             "id": "azathoth_slumbers",
-            "text": "Azathoth slumbers… for now."
+            "text": "Азатот дремлет… пока."
           },
           {
             "id": "being_hunted",
@@ -1652,7 +1732,7 @@
           },
           {
             "id": "signed_the_black_book",
-            "text": "the investigators signed the Black Book of Azathoth."
+            "text": "сыщики подписали Чёрную книгу Азатота."
           },
           {
             "id": "survived_the_watchers_embrace",
@@ -1680,6 +1760,10 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "$input_value",
+            "text": "dummy"
+          },
+          {
             "id": "a_record_of_those_lost",
             "text": "dummy"
           },
@@ -1692,7 +1776,27 @@
             "text": "dummy"
           },
           {
+            "id": "prologue_05046",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05047",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05048",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05049",
+            "text": "dummy"
+          },
+          {
             "id": "right_column",
+            "text": "dummy"
+          },
+          {
+            "id": "skip_prologue",
             "text": "dummy"
           },
           {

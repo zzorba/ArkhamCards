@@ -14,4 +14,6 @@ export interface WithIconName {
 
 export interface State {
   blockquote?: boolean;
+  bold?: boolean;
+  italic?: boolean;
 }

@@ -23,6 +23,8 @@ import {
   STANDALONE,
   ALICE_IN_WONDERLAND,
   DARK_MATTER,
+  RTTCU,
+  EOE,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import Card from '@data/types/Card';
@@ -304,31 +306,36 @@ export function campaignNames() {
   };
 }
 
-export function campaignColor(cycle: CampaignCycleCode, colors: ThemeColors) {
+export function campaignColor(cycle: CampaignCycleCode | typeof RTTCU | typeof EOE, colors: ThemeColors) {
   switch (cycle) {
     case CORE:
     case RTNOTZ:
-    case TCU:
     case 'custom':
-    case STANDALONE:
-      return colors.campaign.blue;
+      return colors.campaign.core;
+    case DWL:
+    case RTDWL:
+      return colors.campaign.dwl;
     case PTC:
     case RTPTC:
-      return colors.campaign.gold;
+      return colors.campaign.ptc;
+    case TFA:
+    case RTTFA:
+    case ALICE_IN_WONDERLAND:
+      return colors.campaign.tfa;
+    case STANDALONE:
+      return colors.campaign.standalone;
+    case TCU:
+    case RTTCU:
+      return colors.campaign.tcu;
     case TDEA:
     case TDEB:
     case TDE:
     case DARK_MATTER:
-      return colors.campaign.purple;
-    case TFA:
-    case RTTFA:
-      return colors.campaign.green;
+      return colors.campaign.tde;
     case TIC:
-    case ALICE_IN_WONDERLAND:
-      return colors.campaign.red;
-    case DWL:
-    case RTDWL:
-      return colors.campaign.teal;
+      return colors.campaign.tic;
+    case EOE:
+      return colors.campaign.eoe;
   }
 }
 

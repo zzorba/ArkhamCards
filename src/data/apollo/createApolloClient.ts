@@ -249,7 +249,9 @@ export default function createApolloClient(store: Store): [ApolloClient<Normaliz
       ...links,
       errorLink,
       retryLink,
-      httpsLink,
+      new HttpLink({
+        uri: `https://${GRAPHQL_SERVER}/graphql`,
+      }),
     ]),
     assumeImmutableResults: true,
   });

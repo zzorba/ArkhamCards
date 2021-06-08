@@ -5,17 +5,28 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import AppIcon from './AppIcon';
 import ArkhamIcon from './ArkhamIcon';
 import StyleContext from '@styles/StyleContext';
+import { ThemeColors } from '@styles/theme';
 
-export type ArkhamButtonIconType = 'world' | 'check' | 'search' | 'edit' | 'expand' | 'deck' | 'card' | 'up' | 'campaign' | 'faq' | 'xp' | 'show' | 'hide' | 'dismiss' | 'confirm' | 'taboo';
+export type ArkhamButtonIconType = 'date' | 'world' | 'check' | 'search' | 'edit' | 'expand' | 'deck' | 'card' | 'up' | 'campaign' | 'faq' | 'xp' | 'show' | 'hide' | 'dismiss' | 'confirm' | 'taboo';
 interface Props {
   icon: ArkhamButtonIconType;
-  color: 'light' | 'dark';
+  color: 'light' | 'dark' | 'faded';
+}
+
+function getColor(color: 'light' | 'dark' | 'faded', colors: ThemeColors) {
+  switch (color) {
+    case 'light': return colors.L20;
+    case 'dark': return colors.D20;
+    case 'faded': return colors.M;
+  }
 }
 
 export default function ArkhamButtonIcon({ icon, color }: Props) {
   const { colors, fontScale } = useContext(StyleContext);
-  const iconColor = color === 'light' ? colors.L20 : colors.D20;
+  const iconColor = getColor(color, colors);
   switch (icon) {
+    case 'date':
+      return <View style={styles.dateIcon}><AppIcon name="date" size={24 * fontScale} color={iconColor} /></View>;
     case 'world':
       return <View style={styles.worldIcon}><AppIcon name="world" size={24 * fontScale} color={iconColor} /></View>;
     case 'check':
@@ -76,5 +87,8 @@ const styles = StyleSheet.create({
   },
   bookIcon: {
     marginTop: -3,
+  },
+  dateIcon: {
+    marginTop: -4,
   },
 });

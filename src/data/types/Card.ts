@@ -3,7 +3,7 @@ import { forEach, filter, keys, map, min, omit, find } from 'lodash';
 import { t } from 'ttag';
 
 import { SortType, SORT_BY_COST, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData } from '@actions/types';
-import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, FactionCodeType, TypeCodeType, SkillCodeType } from '@app_constants';
+import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, FactionCodeType, TypeCodeType, SkillCodeType, BODY_OF_A_YITHIAN } from '@app_constants';
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
 import { QuerySort } from '../sqlite/types';
@@ -549,46 +549,62 @@ export default class Card {
     return this.faction_code || 'neutral';
   }
 
-  killed(traumaData?: TraumaAndCardData) {
+  getHealth(traumaData: TraumaAndCardData | undefined) {
+    if (!traumaData) {
+      return this.health || 0;
+    }
+    const isYithian = !!(traumaData.storyAssets && find(traumaData.storyAssets, code => code === BODY_OF_A_YITHIAN));
+    return isYithian ? 7 : (this.health || 0);
+  }
+
+  getSanity(traumaData: TraumaAndCardData | undefined) {
+    if (!traumaData) {
+      return this.sanity || 0;
+    }
+    const isYithian = !!(traumaData.storyAssets && find(traumaData.storyAssets, code => code === BODY_OF_A_YITHIAN));
+    return isYithian ? 7 : (this.sanity || 0);
+  }
+
+  killed(traumaData: TraumaAndCardData | undefined) {
     if (!traumaData) {
       return false;
     }
     if (traumaData.killed) {
       return true;
     }
-    return (this.health || 0) <= (traumaData.physical || 0);
+    return this.getHealth(traumaData) <= (traumaData.physical || 0);
   }
 
-  insane(traumaData?: TraumaAndCardData) {
+  insane(traumaData: TraumaAndCardData | undefined) {
     if (!traumaData) {
       return false;
     }
     if (traumaData.insane) {
       return true;
     }
-    return (this.sanity || 0) <= (traumaData.mental || 0);
+    return this.getSanity(traumaData) <= (traumaData.mental || 0);
   }
 
-  eliminated(traumaData?: TraumaAndCardData) {
+  eliminated(traumaData: TraumaAndCardData | undefined) {
     return this.killed(traumaData) || this.insane(traumaData);
   }
 
-  hasTrauma(traumaData?: TraumaAndCardData) {
+  hasTrauma(traumaData: TraumaAndCardData | undefined) {
     return this.eliminated(traumaData) || (traumaData && (
       (traumaData.physical || 0) > 0 ||
       (traumaData.mental || 0) > 0
     ));
   }
 
-  traumaString(listSeperator: string, traumaData?: TraumaAndCardData) {
+  traumaString(listSeperator: string, traumaData: TraumaAndCardData | undefined) {
     if (!traumaData) {
       return t`None`;
     }
     const parts = [];
-    if (traumaData.killed || (this.health || 0) <= (traumaData.physical || 0)) {
+    if (this.killed(traumaData)) {
       return t`Killed`;
     }
-    if (traumaData.insane || (this.sanity || 0) <= (traumaData.mental || 0)) {
+    if (this.insane(traumaData)) {
       return t`Insane`;
     }
     if (traumaData.physical && traumaData.physical !== 0) {
@@ -1046,7 +1062,8 @@ export default class Card {
     const sort_by_faction_header = Card.factionSortHeader(json);
     const sort_by_faction = Card.factionHeaderOrder().indexOf(sort_by_faction_header);
     const pack = packsByCode[json.pack_code] || null;
-    const sort_by_faction_pack = sort_by_faction * 100 + (pack ? pack.cycle_position : 0);
+    const cycle_position = pack?.cycle_position || 0;
+    const sort_by_faction_pack = sort_by_faction * 1000 + (cycle_position * 20) + (cycle_position >= 50 ? pack.position : 0);
     const sort_by_faction_pack_header = `${sort_by_faction_header} - ${json.pack_name}`;
 
     const basic_type_header = Card.typeSortHeader(json, true);

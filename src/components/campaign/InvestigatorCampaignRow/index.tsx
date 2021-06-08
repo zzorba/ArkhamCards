@@ -1,7 +1,6 @@
-import React, { useCallback, useContext, useMemo, useRef } from 'react';
-import { Animated, Easing, Text, View, StyleSheet } from 'react-native';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { View, StyleSheet } from 'react-native';
 import { find , map } from 'lodash';
-import Collapsible from 'react-native-collapsible';
 import { t } from 'ttag';
 import { useSelector } from 'react-redux';
 
@@ -13,12 +12,8 @@ import Card, { CardsMap } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import useSingleCard from '@components/card/useSingleCard';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
-import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
-import InvestigatorImage from '@components/core/InvestigatorImage';
 import space, { s } from '@styles/space';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { useEffectUpdate, useFlag } from '@components/core/hooks';
-import AppIcon from '@icons/AppIcon';
+import { useFlag } from '@components/core/hooks';
 import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';
 import TraumaSummary from '../TraumaSummary';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
@@ -29,6 +24,7 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import { AppState, makeUploadingDeckSelector } from '@reducers';
+import { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
 
 interface Props {
   componentId: string;
@@ -86,7 +82,7 @@ export default function InvestigatorCampaignRow({
 }: Props) {
   const uploadingSelector = useMemo(makeUploadingDeckSelector, []);
   const uploading = useSelector((state: AppState) => uploadingSelector(state, campaign.id, investigator.code));
-  const { colors, typography, width } = useContext(StyleContext);
+  const { colors, width } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);
@@ -158,23 +154,6 @@ export default function InvestigatorCampaignRow({
 
   const yithian = useMemo(() => !!find(traumaAndCardData.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN), [traumaAndCardData.storyAssets]);
   const [open, toggleOpen] = useFlag(false);
-  const openAnim = useRef(new Animated.Value(0));
-  useEffectUpdate(() => {
-    Animated.timing(
-      openAnim.current,
-      {
-        toValue: open ? 1 : 0,
-        duration: 200,
-        useNativeDriver: false,
-        easing: Easing.ease,
-      }
-    ).start();
-  }, [open]);
-  const iconRotate = openAnim.current.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['-90deg', '-180deg'],
-    extrapolate: 'clamp',
-  });
   const footerButton = useMemo(() => {
     if (uploading) {
       return (
@@ -206,89 +185,43 @@ export default function InvestigatorCampaignRow({
   }, [uploading, deck, canRemoveDeck, viewDeck, selectDeck, removePressed]);
   return (
     <View style={space.marginBottomS}>
-      <TouchableWithoutFeedback onPress={toggleOpen}>
-        <RoundedFactionHeader eliminated={eliminated} faction={investigator.factionCode()} width={width - s * 2} fullRound={!open}>
-          <View style={[styles.row, space.paddingLeftXs]}>
-            <InvestigatorImage
-              card={investigator}
-              size="tiny"
-              border
-              yithian={yithian}
-              killedOrInsane={eliminated}
-              badge={upgradeBadge ? 'upgrade' : undefined}
+      <AnimatedCompactInvestigatorRow
+        toggleOpen={toggleOpen}
+        investigator={investigator}
+        eliminated={eliminated}
+        yithian={yithian}
+        open={open}
+        upgradeBadge={upgradeBadge}
+        width={width - s * 2}
+        headerContent={!open && <View style={styles.trauma}><TraumaSummary trauma={traumaAndCardData} investigator={investigator} whiteText /></View>}
+      >
+        <View style={[space.paddingSideS]}>
+          <View style={space.paddingBottomS}>
+            <MiniPickerStyleButton
+              title={t`Trauma`}
+              valueLabel={<TraumaSummary trauma={traumaAndCardData} investigator={investigator} />}
+              first
+              last={!xpButton && !miniButtons}
+              editable={!!showTraumaDialog}
+              onPress={onTraumaPress}
             />
-            <View style={[space.paddingLeftXs, styles.textColumn]}>
-              <Text
-                style={[typography.cardName, typography.white, eliminated ? typography.strike : undefined]}
-                numberOfLines={1}
-                ellipsizeMode="tail"
-              >
-                { investigator.name }
-              </Text>
-              <Text style={[typography.cardTraits, typography.white, eliminated ? typography.strike : undefined]}>
-                { investigator.subname }
-              </Text>
-            </View>
-            { !open && <View style={styles.trauma}><TraumaSummary trauma={traumaAndCardData} investigator={investigator} whiteText /></View> }
-            <Animated.View style={{ width: 36, height: 36, transform: [{ rotate: iconRotate }] }}>
-              <AppIcon name="expand_less" size={36} color="#FFF" />
-            </Animated.View>
+            { xpButton }
+            { !!miniButtons && miniButtons }
           </View>
-        </RoundedFactionHeader>
-      </TouchableWithoutFeedback>
-      <Collapsible collapsed={!open}>
-        <View style={[
-          styles.block,
-          {
-            borderColor: colors.faction[investigator.factionCode()].background,
-            backgroundColor: colors.background,
-          },
-          space.paddingTopS,
-        ]}>
-          <View style={[space.paddingSideS]}>
-            <View style={space.paddingBottomS}>
-              <MiniPickerStyleButton
-                title={t`Trauma`}
-                valueLabel={<TraumaSummary trauma={traumaAndCardData} investigator={investigator} />}
-                first
-                last={!xpButton && !miniButtons}
-                editable={!!showTraumaDialog}
-                onPress={onTraumaPress}
-              />
-              { xpButton }
-              { !!miniButtons && miniButtons }
-            </View>
-            { eliminated ? undefined : (
-              <>
-                { storyAssetSection }
-                { children }
-              </>
-            ) }
-          </View>
-          { footerButton }
+          { eliminated ? undefined : (
+            <>
+              { storyAssetSection }
+              { children }
+            </>
+          ) }
         </View>
-      </Collapsible>
+        { footerButton }
+      </AnimatedCompactInvestigatorRow>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  block: {
-    borderBottomLeftRadius: 8,
-    borderBottomRightRadius: 8,
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderBottomWidth: 1,
-  },
-  textColumn: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
-  row: {
-    flexDirection: 'row',
-  },
   trauma: {
     flexDirection: 'row',
     alignItems: 'center',

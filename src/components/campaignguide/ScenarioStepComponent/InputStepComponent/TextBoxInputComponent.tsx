@@ -3,12 +3,11 @@ import { NativeSyntheticEvent, TextInput, TextInputSubmitEditingEventData, Style
 import { throttle } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
-import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
-import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
+import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
+import ActionButton from '@components/campaignguide/prompts/ActionButton';
 
 interface Props {
   id: string;
@@ -18,12 +17,12 @@ interface Props {
 
 export default function TextBoxInputComponent({ id, prompt, showUndo }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
-  const { borderStyle, typography } = useContext(StyleContext);
+  const { borderStyle, colors, typography } = useContext(StyleContext);
   const [text, setText] = useState('');
 
   const undo = useMemo(() => throttle(() => {
     scenarioState.undo();
-  }, 500, { leading: true, trailing: false }), [scenarioState]);
+  }, 300, { leading: true, trailing: false }), [scenarioState]);
 
   const saveText = useCallback((text: string) => {
     if (text) {
@@ -45,28 +44,28 @@ export default function TextBoxInputComponent({ id, prompt, showUndo }: Props) {
     return null;
   }
   return (
-    <>
-      <SetupStepWrapper>
-        { !!prompt && <CampaignGuideTextComponent text={prompt} /> }
-        <TextInput
-          style={[styles.textInput, borderStyle, typography.dark]}
-          onChangeText={setText}
-          onSubmitEditing={onSubmit}
-          returnKeyType="done"
-        />
-      </SetupStepWrapper>
-      <BasicButton
-        title={t`Proceed`}
-        onPress={onSavePress}
-        disabled={!text}
-      />
-      { showUndo && (
-        <BasicButton
-          title={t`Cancel`}
+    <InputWrapper
+      title={prompt}
+      titleStyle="setup"
+      titleButton={showUndo ? (
+        <ActionButton
+          color="light"
+          leftIcon="undo"
+          title={t`Undo`}
           onPress={undo}
         />
-      ) }
-    </>
+      ) : undefined}
+      onSubmit={onSavePress}
+      disabledText={!text ? t`Continue` : undefined}
+      editable
+    >
+      <TextInput
+        style={[styles.textInput, borderStyle, typography.dark, { backgroundColor: colors.L30 }]}
+        onChangeText={setText}
+        onSubmitEditing={onSubmit}
+        returnKeyType="done"
+      />
+    </InputWrapper>
   );
 }
 

@@ -31,9 +31,13 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
       <InvestigatorChoicePrompt
         id={step.id}
         text={step.text}
+        promptType={step.prompt_type}
+        confirmText={input.confirm_text}
         bulletType={step.bullet_type}
         options={investigatorChoiceInputChoices(input, campaignLog)}
+        hideInvestigatorSection
         detailed
+        investigator={campaignLog.investigators(false)[investigatorOffset]}
         investigators={slice(
           campaignLog.investigators(false),
           investigatorOffset,
@@ -71,6 +75,7 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
           id={step.id}
           choiceId={choice.id}
           checkText={choice.text}
+          confirmText={choice.selected_text}
           investigators={choices.type === 'personalized' ? keys(choices.perCode) : undefined}
           min={input.investigator === 'choice' && !input.optional ? 1 : 0}
           max={4}
@@ -83,6 +88,7 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
     <InvestigatorChoicePrompt
       id={step.id}
       text={step.text}
+      promptType={step.prompt_type}
       bulletType={step.bullet_type}
       investigators={input.investigator === 'resigned' ? filter(campaignLog.investigators(false), card => campaignLog.resigned(card.code)) : undefined}
       options={options}

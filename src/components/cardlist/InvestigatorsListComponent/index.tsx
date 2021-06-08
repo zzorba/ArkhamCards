@@ -15,19 +15,20 @@ import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
-import InvestigatorRow from '@components/core/InvestigatorRow';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '@actions/types';
 import Card, { cardInCollection } from '@data/types/Card';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import ShowNonCollectionFooter from '@components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
 import { getPacksInCollection } from '@reducers';
-import space from '@styles/space';
+import space, { s } from '@styles/space';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
-import CardSectionHeader from '@components/core/CardSectionHeader';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
 import { useInvestigatorCards, usePlayerCards, useToggles } from '@components/core/hooks';
+import CompactInvestigatorRow, { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
 
 interface Props {
   componentId: string;
@@ -67,7 +68,11 @@ function headerForInvestigator(
 }
 
 function renderSectionHeader({ section }: { section: SectionListData<Card> }) {
-  return <CardSectionHeader section={{ title: section.title }} />;
+  return (
+    <View style={space.paddingS} key={section.title}>
+      <CardDetailSectionHeader title={section.title} color="dark" normalCase />
+    </View>
+  );
 }
 
 function investigatorToCode(investigator: Card) {
@@ -79,6 +84,39 @@ function renderHeader() {
     return <View style={styles.searchBarPadding} />;
   }
   return null;
+}
+
+function CustomInvestigatorRow({ investigator, onInvestigatorPress, children }: { investigator: Card; onInvestigatorPress: (card: Card) => void; children: React.ReactNode }) {
+  const { width } = useContext(StyleContext);
+  const onPress = useCallback(() => {
+    onInvestigatorPress(investigator);
+  }, [onInvestigatorPress, investigator]);
+  if (!children) {
+    return (
+      <View style={[space.paddingSideS, space.paddingVerticalXs]}>
+        <TouchableOpacity onPress={onPress}>
+          <CompactInvestigatorRow
+            investigator={investigator}
+            width={width - s * 2}
+          />
+        </TouchableOpacity>
+      </View>
+    );
+  }
+  return (
+    <View style={[space.paddingSideS, space.paddingVerticalXs]}>
+      <TouchableOpacity onPress={onPress}>
+        <AnimatedCompactInvestigatorRow
+          disabled
+          open
+          investigator={investigator}
+          width={width - s * 2}
+        >
+          { children }
+        </AnimatedCompactInvestigatorRow>
+      </TouchableOpacity>
+    </View>
+  );
 }
 
 export default function InvestigatorsListComponent({
@@ -124,7 +162,7 @@ export default function InvestigatorsListComponent({
       return null;
     }
     return (
-      <View style={[styles.column, space.paddingBottomS]}>
+      <View style={[styles.column, space.paddingBottomS, space.paddingLeftS]}>
         <Text style={typography.text}>
           { t`${investigator.deck_requirements.size} Cards` }
         </Text>
@@ -149,15 +187,11 @@ export default function InvestigatorsListComponent({
 
   const renderItem = useCallback(({ item }: SectionListRenderItemInfo<Card>) => {
     return (
-      <InvestigatorRow
-        key={item.code}
-        investigator={item}
-        onPress={onInvestigatorPress}
-        button={deckbuildingDetails(item)}
-        bigImage={!hideDeckbuildingRules}
-      />
+      <CustomInvestigatorRow key={item.code} investigator={item} onInvestigatorPress={onInvestigatorPress}>
+        { deckbuildingDetails(item) }
+      </CustomInvestigatorRow>
     );
-  }, [hideDeckbuildingRules, onInvestigatorPress, deckbuildingDetails]);
+  }, [onInvestigatorPress, deckbuildingDetails]);
 
   const groupedInvestigators = useMemo((): Section[] => {
     const onlyInvestigatorsSet = onlyInvestigators ? new Set(onlyInvestigators) : undefined;
@@ -167,6 +201,9 @@ export default function InvestigatorsListComponent({
         investigators,
         i => {
           if (!i) {
+            return false;
+          }
+          if (i.code === CUSTOM_INVESTIGATOR) {
             return false;
           }
           if (i.altArtInvestigator || i.mythos_card) {
@@ -273,6 +310,7 @@ export default function InvestigatorsListComponent({
     return (
       <ShowNonCollectionFooter
         id={section.id}
+        noBorder
         title={ngettext(
           msgid`Show ${section.nonCollectionCount} non-collection investigator`,
           `Show ${section.nonCollectionCount} non-collection investigators`,

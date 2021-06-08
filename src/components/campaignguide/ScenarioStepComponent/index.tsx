@@ -8,12 +8,12 @@ import { Navigation } from 'react-native-navigation';
 import { filter } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import LocationSetupButton from './LocationSetupButton';
 import TableStepComponent from './TableStepComponent';
 import EffectsStepComponent from './EffectsStepComponent';
 import ResolutionStepComponent from './ResolutionStepComponent';
 import CampaignGuideContext from '../CampaignGuideContext';
+import { CHOOSE_RESOLUTION_STEP_ID } from '@data/scenario/fixedSteps';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 import XpCountComponent from './XpCountComponent';
 import BranchStepComponent from './BranchStepComponent';
@@ -27,6 +27,8 @@ import ScenarioStep from '@data/scenario/ScenarioStep';
 import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import NarrationStepComponent from './NarrationStepComponent';
+import ScenarioGuideContext from '../ScenarioGuideContext';
+import ActionButton from '../prompts/ActionButton';
 
 interface Props {
   componentId: string;
@@ -138,6 +140,8 @@ export default function ScenarioStepComponent({
 }: Props) {
   const { typography, colors } = useContext(StyleContext);
   const { campaignInvestigators } = useContext(CampaignGuideContext);
+  const { processedScenario } = useContext(ScenarioGuideContext);
+
   const context: ScenarioStepContextType = useMemo(() => {
     const safeCodes = new Set(step.campaignLog.investigatorCodesSafe());
     const investigators = filter(
@@ -149,6 +153,7 @@ export default function ScenarioStepComponent({
       scenarioInvestigators: investigators,
     };
   }, [step.campaignLog, campaignInvestigators]);
+  const resolution = step.step.id === CHOOSE_RESOLUTION_STEP_ID || context.campaignLog.scenarioStatus(processedScenario.id.encodedScenarioId) === 'resolution';
   const proceed = useCallback(() => {
     Navigation.pop(componentId);
   }, [componentId]);
@@ -159,7 +164,7 @@ export default function ScenarioStepComponent({
         <View style={styles.titleWrapper}>
           <Text style={[
             typography.bigGameFont,
-            { color: colors.scenarioGreen },
+            { color: resolution ? colors.campaign.resolution : colors.campaign.setup },
             space.paddingTopL,
             border ? typography.center : {},
           ]}>
@@ -175,10 +180,14 @@ export default function ScenarioStepComponent({
         switchCampaignScenario={switchCampaignScenario}
       />
       { (step.step.id === '$proceed') && (
-        <BasicButton
-          onPress={proceed}
-          title={t`Done`}
-        />
+        <View style={space.paddingS}>
+          <ActionButton
+            leftIcon="check"
+            onPress={proceed}
+            color="light"
+            title={t`Done`}
+          />
+        </View>
       ) }
     </ScenarioStepContext.Provider>
   );
@@ -186,7 +195,7 @@ export default function ScenarioStepComponent({
 
 const styles = StyleSheet.create({
   titleWrapper: {
-    marginLeft: m + s,
+    marginLeft: m,
     marginRight: m + s,
   },
   extraTopPadding: {

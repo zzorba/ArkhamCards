@@ -4,7 +4,6 @@ import { filter, find, flatMap, keys, map, partition, uniq, uniqBy } from 'lodas
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import CounterListComponent from './CounterListComponent';
 import CheckListComponent from './CheckListComponent';
 import ChoiceListComponent from './ChoiceListComponent';
@@ -21,11 +20,13 @@ import Card from '@data/types/Card';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { calculateCardChoiceResult } from '@data/scenario/inputHelper';
 import ScenarioGuideContext from '../ScenarioGuideContext';
+import ActionButton from './ActionButton';
 
 interface Props {
   componentId: string;
   id: string;
   text?: string;
+  promptType?: 'header' | 'setup';
   input: CardChoiceInput;
 }
 
@@ -103,7 +104,7 @@ function mainQuery(
   );
 }
 
-export default function CardChoicePrompt({ componentId, id, text, input }: Props) {
+export default function CardChoicePrompt({ componentId, id, text, input, promptType }: Props) {
   const [extraCards, setExtraCards] = useState<string[]>([]);
   const { latestDecks } = useContext(CampaignGuideContext);
   const { scenarioState, processedScenario } = useContext(ScenarioGuideContext);
@@ -219,6 +220,7 @@ export default function CardChoicePrompt({ componentId, id, text, input }: Props
         <ChoiceListComponent
           id={id}
           text={text}
+          promptType={promptType}
           items={map(filteredCards, card => {
             return {
               code: card.code,
@@ -242,6 +244,7 @@ export default function CardChoicePrompt({ componentId, id, text, input }: Props
       id={id}
       choiceId={choice.id}
       text={text}
+      confirmText={choice.confirm_text}
       items={map(filteredCards, card => {
         return {
           code: card.code,
@@ -254,7 +257,9 @@ export default function CardChoicePrompt({ componentId, id, text, input }: Props
       checkText={choice.text}
       loading={loading}
       button={(nonDeckButton && selectedCards === undefined) ? (
-        <BasicButton
+        <ActionButton
+          color="light"
+          leftIcon="plus-thin"
           title={t`Choose additional card`}
           onPress={showOtherCardSelector}
         />

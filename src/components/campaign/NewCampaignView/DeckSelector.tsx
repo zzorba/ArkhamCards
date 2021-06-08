@@ -1,12 +1,17 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext } from 'react';
+import { View } from 'react-native';
 
-import InvestigatorRow from '@components/core/InvestigatorRow';
-import InvestigatorDeckRow from '../InvestigatorDeckRow';
 import CampaignDeckList, { CampaignDeckListProps } from '../CampaignDeckList';
 import { Deck, DeckId } from '@actions/types';
 import Card from '@data/types/Card';
-import { useInvestigatorCards } from '@components/core/hooks';
-import { useDeckActions } from '@data/remote/decks';
+import { useDeckWithFetch, useInvestigatorCards } from '@components/core/hooks';
+import { DeckActions, useDeckActions } from '@data/remote/decks';
+import space, { s } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
+import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import AppIcon from '@icons/AppIcon';
+import COLORS from '@styles/colors';
 
 interface Props extends CampaignDeckListProps {
   deckRemoved?: (
@@ -19,6 +24,57 @@ interface Props extends CampaignDeckListProps {
     investigator: Card
   ) => void;
 }
+
+function CustomInvestigatorRow({ investigator, onRemove }: { investigator: Card, onRemove?: () => void }) {
+  const { width } = useContext(StyleContext);
+  return (
+    <View style={[space.paddingSideS, space.paddingVerticalXs]}>
+      <CompactInvestigatorRow
+        investigator={investigator}
+        width={width - s * 4}
+      >
+        { !!onRemove && (
+          <TouchableOpacity onPress={onRemove}>
+            <AppIcon name="trash" size={40} color={COLORS.L30} />
+          </TouchableOpacity>
+        ) }
+      </CompactInvestigatorRow>
+    </View>
+  );
+}
+
+function InvestigatorOnlyRow({ investigator, investigatorRemoved }: { investigator: Card; investigatorRemoved?: (card: Card) => void }) {
+  const onRemove = useCallback(() => {
+    investigatorRemoved && investigatorRemoved(investigator);
+  }, [investigatorRemoved, investigator]);
+  return (
+    <CustomInvestigatorRow investigator={investigator} onRemove={investigatorRemoved ? onRemove : undefined} />
+  );
+}
+
+function InvestigatorDeckRow({ id, actions, deckRemoved }: {
+  id: DeckId;
+  actions: DeckActions;
+  deckRemoved?: (
+    id: DeckId,
+    deck?: Deck,
+    investigator?: Card
+  ) => void;
+}) {
+  const deck = useDeckWithFetch(id, actions);
+  const investigators = useInvestigatorCards(deck?.deck.taboo_id || 0);
+  const investigator = deck && investigators && investigators[deck.deck.investigator_code];
+  const onRemove = useCallback(() => {
+    deckRemoved && deckRemoved(id, deck?.deck, investigator);
+  }, [deckRemoved, id, deck, investigator]);
+  if (!deck || !investigator) {
+    return null;
+  }
+  return (
+    <CustomInvestigatorRow investigator={investigator} onRemove={deckRemoved ? onRemove : undefined} />
+  );
+}
+
 
 export default function DeckSelector({
   investigatorRemoved,
@@ -46,10 +102,10 @@ export default function DeckSelector({
       return null;
     }
     return (
-      <InvestigatorRow
+      <InvestigatorOnlyRow
         key={code}
         investigator={investigator}
-        onRemove={investigatorRemoved}
+        investigatorRemoved={investigatorRemoved}
       />
     );
   }, [investigatorRemoved, investigators]);

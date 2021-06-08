@@ -10,6 +10,7 @@ import StyleContext from '@styles/StyleContext';
 import CampaignGuideContext from '../CampaignGuideContext';
 import { Deck } from '@actions/types';
 import { parseBasicDeck } from '@lib/parseDeck';
+import { s } from '@styles/space';
 
 interface Props {
   step: XpCountStep;
@@ -65,7 +66,7 @@ function onChoiceChange() {
 }
 
 export default function XpCountComponent({ step, campaignLog }: Props) {
-  const { colors } = useContext(StyleContext);
+  const { colors, width } = useContext(StyleContext);
   const specialString = useCallback((investigator: Card) => {
     const count = campaignLog.specialXp(investigator.code, step.special_xp);
     switch (step.special_xp) {
@@ -88,6 +89,7 @@ export default function XpCountComponent({ step, campaignLog }: Props) {
             { (xp: number) => (
               <ChoiceListItemComponent
                 key={investigator.code}
+                investigator={investigator}
                 code={investigator.code}
                 name={investigator.name}
                 color={colors.faction[investigator.factionCode()].background}
@@ -102,6 +104,7 @@ export default function XpCountComponent({ step, campaignLog }: Props) {
                 choice={0}
                 editable={false}
                 optional={false}
+                width={width - s * 2}
                 firstItem={idx === 0}
               />
             ) }

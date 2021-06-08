@@ -1,22 +1,19 @@
-import React, { useCallback, useContext, useMemo } from 'react';
-import { Navigation } from 'react-native-navigation';
-import { map } from 'lodash';
-import { t } from 'ttag';
+import React, { useContext, useMemo } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { c, t } from 'ttag';
 
-import BranchButton from './BranchButton';
 import ChooseOnePrompt from '@components/campaignguide/prompts/ChooseOnePrompt';
-import BasicButton from '@components/core/BasicButton';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
-import { ScenarioFaqProps } from '@components/campaignguide/ScenarioFaqView';
 import { PlayScenarioInput } from '@data/scenario/types';
 import { PlayingScenarioBranch, PLAY_SCENARIO_STEP_ID } from '@data/scenario/fixedSteps';
 import { chooseOneInputChoices } from '@data/scenario/inputHelper';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 import { CampaignId } from '@actions/types';
-import { showGuideDrawChaosBag } from '@components/campaign/nav';
-import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
+import PlayOptionsComponent from './PlayOptionsComponent';
+import StyleContext from '@styles/StyleContext';
+import space from '@styles/space';
 
 interface Props {
   componentId: string;
@@ -26,50 +23,9 @@ interface Props {
 }
 
 export default function PlayScenarioComponent({ componentId, campaignId, id, input }: Props) {
-  const { campaign } = useContext(CampaignGuideContext);
-  const { scenarioState, processedScenario } = useContext(ScenarioGuideContext);
+  const { scenarioState } = useContext(ScenarioGuideContext);
   const { campaignLog } = useContext(ScenarioStepContext);
-
-  const branchPress = useCallback((index: number) => {
-    scenarioState.setChoice(id, index);
-  }, [scenarioState, id]);
-
-  const campaignLogPressed = useCallback(() => {
-    branchPress(PlayingScenarioBranch.CAMPAIGN_LOG);
-  }, [branchPress]);
-
-  const resolutionPressed = useCallback(() => {
-    branchPress(PlayingScenarioBranch.RESOLUTION);
-  }, [branchPress]);
-  const drawWeaknessPressed = useCallback(() => {
-    branchPress(PlayingScenarioBranch.DRAW_WEAKNESS);
-  }, [branchPress]);
-  const recordTraumaPressed = useCallback(() => {
-    branchPress(PlayingScenarioBranch.RECORD_TRAUMA);
-  }, [branchPress]);
-
-  const showScenarioFaq = useCallback(() => {
-    Navigation.push<ScenarioFaqProps>(componentId, {
-      component: {
-        name: 'Guide.ScenarioFaq',
-        passProps: {
-          scenario: processedScenario.id.scenarioId,
-          campaignId,
-        },
-      },
-    });
-  }, [componentId, campaignId, processedScenario]);
-  const standalone = !!campaign.standaloneId;
-  const chaosBagSimulatorPressed = useCallback(() => {
-    showGuideDrawChaosBag(
-      componentId,
-      campaignId,
-      campaignLog.chaosBag,
-      processedScenario.latestCampaignLog.investigatorCodes(false),
-      processedScenario.id.encodedScenarioId,
-      standalone
-    );
-  }, [componentId, campaignId, campaignLog, processedScenario.latestCampaignLog, standalone, processedScenario.id]);
+  const { colors, typography } = useContext(StyleContext);
 
   const mainContent = useMemo(() => {
     const firstDecision = scenarioState.choice(id);
@@ -87,7 +43,8 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
             choices={[
               ...choices,
               {
-                text: 'Other.',
+                id: 'other',
+                text: c('campaign_log_entry').t`Other.`,
               },
             ]}
           />
@@ -95,52 +52,26 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
       }
     }
     if (firstDecision === undefined) {
-      const hasFaq = processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;
       return (
-        <>
-          { map(
-            input.branches || [],
-            (choice, index) => (
-              <BranchButton
-                key={index}
-                index={index}
-                choice={choice}
-                campaignLog={campaignLog}
-                onPress={branchPress}
-              />
-            )
-          ) }
-          <BasicButton
-            title={t`Edit campaign log`}
-            onPress={campaignLogPressed}
-          />
-          <BasicButton
-            title={t`Draw chaos tokens`}
-            onPress={chaosBagSimulatorPressed}
-          />
-          <BasicButton
-            title={t`Draw random basic weakness`}
-            onPress={drawWeaknessPressed}
-          />
-          <BasicButton
-            title={t`Record trauma`}
-            onPress={recordTraumaPressed}
-          />
-          { !!hasFaq && (
-            <BasicButton
-              title={t`Scenario FAQ`}
-              onPress={showScenarioFaq}
-            />
-          ) }
-          <BasicButton
-            title={input.no_resolutions ? t`Scenario completed` : t`Resolutions`}
-            onPress={resolutionPressed}
-          />
-        </>
+        <PlayOptionsComponent
+          componentId={componentId}
+          id={id}
+          campaignId={campaignId}
+          input={input}
+        />
       );
     }
+    if (firstDecision === PlayingScenarioBranch.RESOLUTION) {
+      return (
+        <View style={[styles.resolutionBlock, space.marginS, { backgroundColor: colors.campaign.resolutionBackground }]}>
+          <View style={[styles.resolutionContent, space.paddingS]}>
+            <Text style={[typography.bigGameFont, { color: colors.campaign.resolution }]}>{t`Scenario Ended`}</Text>
+          </View>
+        </View>
+      )
+    }
     return null;
-  }, [scenarioState, processedScenario, campaignLog, id, input, branchPress, campaignLogPressed, chaosBagSimulatorPressed, drawWeaknessPressed, recordTraumaPressed, showScenarioFaq, resolutionPressed]);
+  }, [scenarioState, campaignLog, typography, colors, componentId, campaignId, id, input]);
 
   return (
     <>
@@ -156,3 +87,14 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  resolutionBlock: {
+    borderRadius: 8,
+  },
+  resolutionContent: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+});

@@ -8,21 +8,23 @@ import space, { s } from '@styles/space';
 interface Props {
   faction: FactionCodeType;
   header: React.ReactNode;
+  color?: string;
   children: React.ReactNode | React.ReactNode[];
   footer?: React.ReactNode;
   noSpace?: boolean;
+  noShadow?: boolean;
 }
 
-export default function RoundedFactionBlock({ header, footer, children, faction, noSpace }: Props) {
+export default function RoundedFactionBlock({ header, footer, children, faction, noSpace, noShadow, color }: Props) {
   const { colors, shadow } = useContext(StyleContext);
   return (
     <View style={[
       styles.block,
-      shadow.large,
+      noShadow ? undefined : shadow.large,
       {
-        borderColor: colors.faction[faction].background,
+        borderColor: color || colors.faction[faction].background,
         backgroundColor: colors.background,
-        paddingBottom: footer ? 0 : s,
+        paddingBottom: (noSpace || footer) ? 0 : s,
       },
     ]}>
       { header }

@@ -1,9 +1,8 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
 } from 'react-native';
-import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
+import { MarkdownText, Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
 import { WithText } from './types';
 import { StyleContextType } from '@styles/StyleContext';
@@ -15,12 +14,12 @@ export default function StrikethroughTextNode({ colors }: StyleContextType) {
     state: RenderState
   ) => {
     return (
-      <Text
+      <MarkdownText
         key={state.key}
         style={[styles.strikeText, { textDecorationColor: colors.darkText }]}
       >
         { node.text }
-      </Text>
+      </MarkdownText>
     );
   };
 }

@@ -61,11 +61,29 @@
       "text": "Elige el nivel de dificultad:",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
-            "text": "Fácil <i>(quiero experimentar la historia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Fácil",
+            "description": "<i>quiero experimentar la historia</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -96,8 +114,25 @@
           },
           {
             "id": "standard",
-            "text": "Normal <i>(quiero un reto)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Normal",
+            "description": "<i>quiero un reto</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -128,8 +163,26 @@
           },
           {
             "id": "hard",
-            "text": "Difícil <i>(quiero una verdadera pesadilla)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Difícil",
+            "description": "<i>quiero una verdadera pesadilla</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -161,8 +214,27 @@
           },
           {
             "id": "expert",
-            "text": "Experto <i>(quiero descubrir el verdadero Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Experto",
+            "description": "<i>quiero descubrir el verdadero Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -2842,6 +2914,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -2993,7 +3068,6 @@
     },
     {
       "id": "warn_or_calm_choice",
-      "text": "Los investigadores deben decidir (elige una opción):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -3901,11 +3975,30 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
-            "text": "Fácil <i>(quiero experimentar la historia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Fácil",
+            "description": "<i>quiero experimentar la historia</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -3937,8 +4030,26 @@
           },
           {
             "id": "standard",
-            "text": "Normal <i>(quiero un reto)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
+            "text": "Normal",
+            "description": "<i>quiero un reto</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -3970,8 +4081,27 @@
           },
           {
             "id": "hard",
-            "text": "Difícil <i>(quiero una verdadera pesadilla)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Difícil",
+            "description": "<i>quiero una verdadera pesadilla</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -4004,8 +4134,28 @@
           },
           {
             "id": "expert",
-            "text": "Experto <i>(quiero descubrir el verdadero Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Experto",
+            "description": "<i>quiero descubrir el verdadero Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -4087,11 +4237,30 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
-            "text": "Fácil <i>(quiero experimentar la historia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Fácil",
+            "description": "<i>quiero experimentar la historia</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -4123,8 +4292,26 @@
           },
           {
             "id": "standard",
-            "text": "Normal <i>(quiero un reto)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
+            "text": "Normal",
+            "description": "<i>quiero un reto</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -4156,8 +4343,27 @@
           },
           {
             "id": "hard",
-            "text": "Difícil <i>(quiero una verdadera pesadilla)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Difícil",
+            "description": "<i>quiero una verdadera pesadilla</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -4190,8 +4396,28 @@
           },
           {
             "id": "expert",
-            "text": "Experto <i>(quiero descubrir el verdadero Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Experto",
+            "description": "<i>quiero descubrir el verdadero Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -5520,11 +5746,29 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
-            "text": "Fácil <i>(quiero ver la obra)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Fácil",
+            "description": "<i>quiero ver la obra</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -5555,8 +5799,25 @@
           },
           {
             "id": "standard",
-            "text": "Normal <i>(quiero leer los signos)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Normal",
+            "description": "<i>quiero leer los signos</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -5587,8 +5848,26 @@
           },
           {
             "id": "hard",
-            "text": "Difícil <i>(quiero pronunciar el juramento)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Difícil",
+            "description": "<i>quiero pronunciar el juramento</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -5620,8 +5899,27 @@
           },
           {
             "id": "expert",
-            "text": "Experto <i>(quiero <u>El Rey de Amarillo</u>)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Experto",
+            "description": "<i>quiero <u>El Rey de Amarillo</u></i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -7634,6 +7932,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -10216,7 +10517,8 @@
   "resolutions": [
     {
       "id": "no_resolution_resigned",
-      "title": "No se llegó a ninguna resolución\n(al menos un investigador desistió)",
+      "title": "No se ha llegado a ninguna resolución porque todos los investigadores fueron derrotados",
+      "description": "Aat least one investigator resigned",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -10229,7 +10531,8 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No se llegó a ninguna resolución\n(todos los investigadores fueron derrotados)",
+      "title": "No se ha llegado a ninguna resolución porque todos los investigadores fueron derrotados",
+      "description": "All investigators were defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -12122,11 +12425,29 @@
       "text": "Elige el nivel de dificultad:",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
-            "text": "Fácil <i>(quiero experimentar la historia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Fácil",
+            "description": "<i>quiero experimentar la historia</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -12157,8 +12478,25 @@
           },
           {
             "id": "standard",
-            "text": "Normal <i>(quiero un reto)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Normal",
+            "description": "<i>quiero un reto</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -12189,8 +12527,26 @@
           },
           {
             "id": "hard",
-            "text": "Difícil <i>(quiero una verdadera pesadilla)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Difícil",
+            "description": "<i>quiero una verdadera pesadilla</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -12222,8 +12578,27 @@
           },
           {
             "id": "expert",
-            "text": "Experto <i>(quiero descubrir el verdadero Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "text": "Experto",
+            "description": "<i>quiero descubrir el verdadero Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -14707,6 +15082,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -14893,7 +15271,6 @@
     },
     {
       "id": "warn_or_calm_choice",
-      "text": "Los investigadores deben decidir (elige una opción):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -16181,11 +16558,30 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
-            "text": "Fácil <i>(quiero experimentar la historia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Fácil",
+            "description": "<i>quiero experimentar la historia</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -16217,8 +16613,26 @@
           },
           {
             "id": "standard",
-            "text": "Normal <i>(quiero un reto)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
+            "text": "Normal",
+            "description": "<i>quiero un reto</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -16250,8 +16664,27 @@
           },
           {
             "id": "hard",
-            "text": "Difícil <i>(quiero una verdadera pesadilla)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Difícil",
+            "description": "<i>quiero una verdadera pesadilla</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -16284,8 +16717,28 @@
           },
           {
             "id": "expert",
-            "text": "Experto <i>(quiero descubrir el verdadero Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Experto",
+            "description": "<i>quiero descubrir el verdadero Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -17229,11 +17682,30 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
-            "text": "Fácil <i>(quiero experimentar la historia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Fácil",
+            "description": "<i>quiero experimentar la historia</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -17265,8 +17737,26 @@
           },
           {
             "id": "standard",
-            "text": "Normal <i>(quiero un reto)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
+            "text": "Normal",
+            "description": "<i>quiero un reto</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -17298,8 +17788,27 @@
           },
           {
             "id": "hard",
-            "text": "Difícil <i>(quiero una verdadera pesadilla)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Difícil",
+            "description": "<i>quiero una verdadera pesadilla</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -17332,8 +17841,28 @@
           },
           {
             "id": "expert",
-            "text": "Experto <i>(quiero descubrir el verdadero Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "text": "Experto",
+            "description": "<i>quiero descubrir el verdadero Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -17951,11 +18480,29 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
-            "text": "Fácil <i>(quiero ver la obra)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Fácil",
+            "description": "<i>quiero ver la obra</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -17986,8 +18533,25 @@
           },
           {
             "id": "standard",
-            "text": "Normal <i>(quiero leer los signos)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Normal",
+            "description": "<i>quiero leer los signos</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -18018,8 +18582,26 @@
           },
           {
             "id": "hard",
-            "text": "Difícil <i>(quiero pronunciar el juramento)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Difícil",
+            "description": "<i>quiero pronunciar el juramento</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -18051,8 +18633,27 @@
           },
           {
             "id": "expert",
-            "text": "Experto <i>(quiero <u>El Rey de Amarillo</u>)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Experto",
+            "description": "<i>quiero <u>El Rey de Amarillo</u></i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -20827,6 +21428,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -22871,7 +23475,8 @@
   "resolutions": [
     {
       "id": "no_resolution_resigned",
-      "title": "No se llegó a ninguna resolución\n(al menos un investigador desistió)",
+      "title": "No se ha llegado a ninguna resolución porque todos los investigadores fueron derrotados",
+      "description": "Aat least one investigator resigned",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -22884,7 +23489,8 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No se llegó a ninguna resolución\n(todos los investigadores fueron derrotados)",
+      "title": "No se ha llegado a ninguna resolución porque todos los investigadores fueron derrotados",
+      "description": "All investigators were defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -24873,11 +25479,28 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
-            "text": "Fácil <i>(quiero experimentar la historia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -2, -3, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Fácil",
+            "description": "<i>quiero experimentar la historia</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -24907,8 +25530,24 @@
           },
           {
             "id": "standard",
-            "text": "Normal <i>(quiero un reto)</i>",
-            "description": "+1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Normal",
+            "description": "<i>quiero un reto</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-5",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -24938,8 +25577,24 @@
           },
           {
             "id": "hard",
-            "text": "Difícil <i>(quiero una verdadera pesadilla)</i>",
-            "description": "+1, 0, 0, -1, -2, -3, -3, -4, -6, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Difícil",
+            "description": "<i>quiero una verdadera pesadilla</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-6",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -24969,8 +25624,25 @@
           },
           {
             "id": "expert",
-            "text": "Experto <i>(quiero descubrir el verdadero Arkham Horror)</i>",
-            "description": "0, -1, -2, -2, -3, -3, -4, -4, -6, -8, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Experto",
+            "description": "<i>quiero descubrir el verdadero Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -25325,6 +25997,7 @@
     },
     {
       "id": "maybe_earn_alejandro",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "has_card",
@@ -27040,6 +27713,24 @@
       "text": "Baraja el resto de cartas de Encuentro para formar el mazo de Encuentros."
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "type": "input",
       "text": "¿Cuál de los siguientes es cierto?",
@@ -27348,7 +28039,7 @@
       "title": "Resolución 1",
       "text": "–¡Por fin! ¡Yoth, la caverna de las serpientes! ¡Las malditas, que huyeron de la destrucción de Valusia! –exclama Alejandro mientras examina la entrada, con los ojos jubilosos y los brazos levantados de emoción. No sabes de qué habla, y estás empezando a preocuparte. En ese momento, algo corretea detrás de ti, y un sonido similar al claqueteo de unas garras te pilla por sorpresa. De la oscuridad que tienes a tu espalda surgen varias criaturas alienígenas con un aspecto como nada que hayas visto en tu vida: miden tres metros de alto y tienen cuerpos cónicos que acaban en cuatro extraños apéndices de distinta longitud. –Por fin llegáis –dice Alejandro con toda tranquilidad. Una de las criaturas responde haciendo claquetear sus garras siguiendo un patrón intencionado–. Haceos con sus mentes –les ordena Alejandro–. Ya no nos sirven de nada. Es el último recuerdo humano que tienes.",
       "steps": [
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned",
@@ -27364,7 +28055,7 @@
       "title": "Resolución 2",
       "text": "Antes de poder cruzar a la siguiente sección de la caverna, un sonido similar al claqueteo de unas garras te pilla por sorpresa. De la oscuridad que tienes a tu espalda surgen varias criaturas alienígenas con un aspecto como nada que hayas visto en tu vida: miden tres metros de alto y tienen cuerpos cónicos que acaban en cuatro extraños apéndices de distinta longitud. Te asombra ver una silueta humana a la cabeza del grupo: ni más ni menos que Alejandro Vela. –Haceos con sus mentes –ordena Alejandro a las criaturas–. Ya no nos sirven de nada. Es el último recuerdo humano que tienes.",
       "steps": [
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned",
@@ -27608,7 +28299,7 @@
     },
     {
       "id": "lose",
-      "text": "Como todos los investigadores han muerto por el trauma de la caída, los investigadores <b>pierden</b> la campaña.",
+      "text": "Los investigadores pierden la campaña.",
       "effects": [
         {
           "type": "campaign_data",
@@ -28458,7 +29149,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Lugares [[Tenochtitlán]] en la zona de victoria:",
+        "text": "Lugares Tenochtitlán en la zona de victoria:",
         "max": 6,
         "effects": [
           {
@@ -28522,6 +29213,24 @@
           "text": "Ichtaca tiene confianza en los investigadores."
         }
       ]
+    },
+    {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "check_harbinger",
@@ -28702,7 +29411,7 @@
       "steps": [
         "check_act_2",
         "record_x_paths_known",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -28719,7 +29428,7 @@
       "steps": [
         "record_x_paths_known",
         "check_if_ichtaca_has_confidence",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -28736,7 +29445,7 @@
       "steps": [
         "check_act_2",
         "record_x_paths_known",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -30219,6 +30928,24 @@
       ]
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "text": "¿Cuál de los siguientes es cierto?",
       "type": "input",
@@ -30559,7 +31286,7 @@
         "record_final_depth",
         "check_final_depth",
         "ask_collected_strange_liquid",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -30571,7 +31298,7 @@
       "text": "De algún modo, y contra todo pronóstico, has llegado a tu destino. El revelador brillo rojo que os ha rodeado desde que entrasteis en Yoth desaparece, sustituido por una impenetrable oscuridad de negrura absoluta. El Nexo debe de estar cerca… Lo notas.",
       "steps": [
         "nexus_is_near",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "ask_collected_strange_liquid",
         "record_yigs_fury",
         "earn_xp_full_depth",
@@ -31482,6 +32209,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -31724,6 +32454,7 @@
     "encounter_deck",
     "three_acts_three_decks",
     "setup_act_ab",
+    "setup_act_ab_actual",
     "setup_act_cd",
     "setup_act_ef_prompt",
     "setup_act_ef",
@@ -32166,7 +32897,11 @@
     },
     {
       "id": "setup_act_ab",
-      "text": "Ajusta el contenido del mazo “a/b” de la siguiente forma:",
+      "text": "Ajusta el contenido del mazo “a/b” de la siguiente forma:"
+    },
+    {
+      "id": "setup_act_ab_actual",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -33191,6 +33926,24 @@
       "text": "Este escenario contiene cuatro mazos de Acto distintos: un mazo “a/b”, un mazo “c/d”, un mazo “e/f ” y un mazo “g/h ”. Cada uno de estos mazos de Acto se crea por separado y en orden numérico, como de costumbre. A lo largo de este escenario, estarán en juego los cuatro mazos de Acto, y los jugadores pueden elegir en qué Actos actuar y cuáles ignorar. El texto de los cuatro Actos se considera activo en todo momento. Puede que no tengas tiempo de completar las cuatro tareas, ¡así que elige bien cuál quieres emprender!\nEl contenido de cada uno de estos mazos de Acto se modifica en función de las siguientes circunstancias."
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "type": "input",
       "text": "¿Cuál de los siguientes es cierto?",
@@ -33285,7 +34038,7 @@
         "check_act_ef",
         "check_act_gh",
         "earn_expedition_journal",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "earn_act_xp",
@@ -35130,11 +35883,30 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
             "text": "Fácil",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35168,7 +35940,25 @@
           {
             "id": "standard",
             "text": "Normal",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35202,7 +35992,25 @@
           {
             "id": "hard",
             "text": "Difícil",
-            "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35236,7 +36044,24 @@
           {
             "id": "expert",
             "text": "Experto",
-            "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35725,11 +36550,30 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
             "text": "Fácil",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35763,7 +36607,25 @@
           {
             "id": "standard",
             "text": "Normal",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35797,7 +36659,25 @@
           {
             "id": "hard",
             "text": "Difícil",
-            "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -35831,7 +36711,24 @@
           {
             "id": "expert",
             "text": "Experto",
-            "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -36288,7 +37185,25 @@
           {
             "id": "standard",
             "text": "Normal",
-            "description": "+1, 0, 0, 0, -1, -2, -2, -3, -4, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -36322,7 +37237,25 @@
           {
             "id": "hard",
             "text": "Difícil",
-            "description": "0, 0, 0, -1, -1, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -37698,7 +38631,27 @@
           {
             "id": "standard",
             "text": "Normal",
-            "description": "+1, 0, 0, 0, -1, -1, -1, -2, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-6",
+              "skull",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -37734,7 +38687,27 @@
           {
             "id": "hard",
             "text": "Difícil",
-            "description": "+1, 0, 0, 0, -1, -1, -3, -4, -5, -6, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "skull",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -38131,7 +39104,27 @@
           {
             "id": "standard",
             "text": "Normal",
-            "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -4, -4, -5, -6, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -38167,7 +39160,27 @@
           {
             "id": "hard",
             "text": "Difícil",
-            "description": "+1, 0, 0, 0, -1, -1, -2, -2, -3, -4, -4, -5, -6, -7, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -38624,6 +39637,9 @@
               "add_chaos_token"
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -38887,7 +39903,32 @@
           {
             "id": "standard",
             "text": "Normal",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, [skull], [skull], [cultist], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -38928,7 +39969,33 @@
           {
             "id": "hard",
             "text": "Difícil",
-            "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -4, -5, -5, -6, -8, [skull], [skull], [cultist], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -39159,7 +40226,24 @@
           {
             "id": "standard",
             "text": "Normal",
-            "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -4, -5, [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -39192,7 +40276,24 @@
           {
             "id": "hard",
             "text": "Difícil",
-            "description": "+1, 0, -1, -1, -1, -2, -2, -2, -3, -4, -5, -6, [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -40005,11 +41106,30 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
             "text": "Fácil",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -40043,7 +41163,25 @@
           {
             "id": "standard",
             "text": "Normal",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -40077,7 +41215,26 @@
           {
             "id": "hard",
             "text": "Difícil",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -40112,7 +41269,27 @@
           {
             "id": "expert",
             "text": "Experto",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -40568,7 +41745,23 @@
           {
             "id": "standard",
             "text": "Normal",
-            "description": "+1, 0, -1, -1, -2, -3, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -40600,7 +41793,23 @@
           {
             "id": "hard",
             "text": "Difícil",
-            "description": "0, -1, -2, -3, -4, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -42335,11 +43544,30 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
             "text": "Fácil",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -42373,7 +43601,25 @@
           {
             "id": "standard",
             "text": "Normal",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -42407,7 +43653,25 @@
           {
             "id": "hard",
             "text": "Difícil",
-            "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -42441,7 +43705,24 @@
           {
             "id": "expert",
             "text": "Experto",
-            "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -42895,7 +44176,29 @@
           {
             "id": "standard",
             "text": "Normal",
-            "description": "+1, +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-6",
+              "skull",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -42933,7 +44236,31 @@
           {
             "id": "hard",
             "text": "Difícil",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-7",
+              "skull",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -43388,7 +44715,29 @@
           {
             "id": "standard",
             "text": "Normal",
-            "description": "+1, +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-6",
+              "skull",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -43426,7 +44775,31 @@
           {
             "id": "hard",
             "text": "Difícil",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-7",
+              "skull",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -43885,11 +45258,28 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
             "text": "Fácil",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -43921,7 +45311,23 @@
           {
             "id": "standard",
             "text": "Normal",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -43953,7 +45359,23 @@
           {
             "id": "hard",
             "text": "Difícil",
-            "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -43985,7 +45407,22 @@
           {
             "id": "expert",
             "text": "Experto",
-            "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "-8",
+              "skull",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -44661,7 +46098,7 @@
 {
   "id": "tcu",
   "position": 4,
-  "version": 3,
+  "version": 4,
   "name": "El círculo roto",
   "campaign_type": "campaign",
   "campaign_log": [
@@ -44732,11 +46169,27 @@
       "text": "Elige el nivel de dificultad:",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
-            "text": "Fácil <i>(quiero experimentar la historia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -2, -3, [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Fácil",
+            "description": "<i>quiero experimentar la historia</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -44765,8 +46218,23 @@
           },
           {
             "id": "standard",
-            "text": "Normal <i>(quiero un reto)</i>",
-            "description": "+1, 0, 0, -1, -1, -2, -2, -3, -4, [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Normal",
+            "description": "<i>quiero un reto</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -44795,8 +46263,23 @@
           },
           {
             "id": "hard",
-            "text": "Difícil <i>(quiero una verdadera pesadilla)</i>",
-            "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Difícil",
+            "description": "<i>quiero una verdadera pesadilla</i>",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -44825,8 +46308,23 @@
           },
           {
             "id": "expert",
-            "text": "Experto <i>(quiero descubrir el verdadero Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -4, -6, -8, [skull], [skull], [auto_fail], [elder_sign]",
+            "text": "Experto",
+            "description": "<i>quiero descubrir el verdadero Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -46108,23 +47606,7 @@
     "pre_intro",
     "choose_neutral_investigators",
     "no_decks",
-    "check_unplayed_investigators",
-    "intro",
-    "read_intros",
-    "check_gavriella_intro",
-    "check_jerome_intro",
-    "check_penny_intro",
-    "check_valentino_intro",
-    "gather_encounter_sets",
-    "setup_locations",
-    "location_layout",
-    "spectral_watcher",
-    "setup_investigators",
-    "encounter_deck",
-    "no_way_out",
-    "agenda_1_results",
-    "maybe_ask_being_hunted",
-    "resolution_1"
+    "maybe_check_unplayed_investigators"
   ],
   "steps": [
     {
@@ -46145,6 +47627,115 @@
       "text": "No crees un mazo de investigador para ninguno de los investigadores neutrales. En lugar de eso, reúne las cartas indicadas en su dorso, porque son las que se usarán en la preparación única de ese investigador. Todas las cartas indicadas son de nivel 0 salvo que se indique algo distinto."
     },
     {
+      "id": "maybe_check_unplayed_investigators",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 4,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_player_count",
+              "explain_skip_prologue",
+              "ask_skip_prologue",
+              "check_skip_prologue"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "check_unplayed_investigators",
+              "intro",
+              "read_intros",
+              "check_gavriella_intro",
+              "check_jerome_intro",
+              "check_penny_intro",
+              "check_valentino_intro",
+              "gather_encounter_sets",
+              "setup_locations",
+              "location_layout",
+              "spectral_watcher",
+              "setup_investigators",
+              "encounter_deck",
+              "no_way_out",
+              "maybe_agenda_1_results",
+              "maybe_ask_being_hunted",
+              "resolution_1"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "explain_skip_prologue",
+      "text": "As an alternative to playing the Prologue, you may have each character draw a random tarot card to determine their fate."
+    },
+    {
+      "id": "ask_skip_prologue",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "yes",
+            "text": "Would you like to use the app to randomize the results of the prologue?",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "skip_prologue",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_skip_prologue",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "skip_prologue",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "randomizer",
+              "maybe_ask_being_hunted",
+              "choose_investigators"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "intro",
+              "read_intros",
+              "check_gavriella_intro",
+              "check_jerome_intro",
+              "check_penny_intro",
+              "check_valentino_intro",
+              "gather_encounter_sets",
+              "setup_locations",
+              "location_layout",
+              "spectral_watcher",
+              "setup_investigators",
+              "encounter_deck",
+              "no_way_out",
+              "maybe_agenda_1_results",
+              "maybe_ask_being_hunted",
+              "resolution_1"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_unplayed_investigators",
       "type": "input",
       "input": {
@@ -46159,6 +47750,282 @@
           }
         ]
       }
+    },
+    {
+      "id": "ask_player_count",
+      "type": "input",
+      "text": "How many players are there?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "one",
+            "text": "One",
+            "steps": [
+              "new_missing_investigators_1",
+              "cross_off_prompt",
+              "maybe_cross_off_05046",
+              "maybe_cross_off_05047",
+              "maybe_cross_off_05049",
+              "maybe_cross_off_05048"
+            ]
+          },
+          {
+            "id": "two",
+            "text": "Two",
+            "steps": [
+              "new_missing_investigators_2",
+              "cross_off_prompt",
+              "maybe_cross_off_05046",
+              "maybe_cross_off_05047",
+              "maybe_cross_off_05049",
+              "maybe_cross_off_05048"
+            ]
+          },
+          {
+            "id": "three",
+            "text": "Tres",
+            "steps": [
+              "new_missing_investigators_3",
+              "cross_off_prompt",
+              "maybe_cross_off_05046",
+              "maybe_cross_off_05047",
+              "maybe_cross_off_05049",
+              "maybe_cross_off_05048"
+            ]
+          },
+          {
+            "id": "four",
+            "text": "Four"
+          }
+        ]
+      }
+    },
+    {
+      "id": "new_missing_investigators_3",
+      "type": "input",
+      "input": {
+        "type": "card_choice",
+        "query": [
+          {
+            "code": [
+              "05046",
+              "05047",
+              "05048",
+              "05049"
+            ]
+          }
+        ],
+        "min": 3,
+        "max": 3,
+        "choices": [
+          {
+            "id": "chosen",
+            "text": "Choose your prologue investigators:",
+            "confirm_text": "Chosen prologue investigators:",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "hidden",
+                "id": "$input_value",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "new_missing_investigators_1",
+      "type": "input",
+      "input": {
+        "type": "card_choice",
+        "query": [
+          {
+            "code": [
+              "05046",
+              "05047",
+              "05048",
+              "05049"
+            ]
+          }
+        ],
+        "min": 1,
+        "max": 1,
+        "choices": [
+          {
+            "id": "chosen",
+            "text": "Choose your prologue investigators:",
+            "confirm_text": "Chosen prologue investigators:",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "hidden",
+                "id": "$input_value",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "new_missing_investigators_2",
+      "type": "input",
+      "input": {
+        "type": "card_choice",
+        "query": [
+          {
+            "code": [
+              "05046",
+              "05047",
+              "05048",
+              "05049"
+            ]
+          }
+        ],
+        "min": 2,
+        "max": 2,
+        "choices": [
+          {
+            "id": "chosen",
+            "text": "Choose your prologue investigators:",
+            "confirm_text": "Chosen prologue investigators:",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "hidden",
+                "id": "$input_value",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cross_off_prompt",
+      "text": "Tacha en la sección “Personas desaparecidas” del registro de campaña los perfiles de todos los investigadores neutrales que no fueran elegidos."
+    },
+    {
+      "id": "maybe_cross_off_05046",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "05046",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": [
+              "cross_off_05046"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cross_off_05046",
+      "bullet_type": "small",
+      "text": "Cross off <i>Gavriella Mizrah</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_cards",
+          "section": "05046",
+          "cross_out": true
+        }
+      ]
+    },
+    {
+      "id": "maybe_cross_off_05047",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "05047",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": [
+              "cross_off_05047"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cross_off_05047",
+      "bullet_type": "small",
+      "text": "Cross off <i>Jerome Davids</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_cards",
+          "section": "05047",
+          "cross_out": true
+        }
+      ]
+    },
+    {
+      "id": "maybe_cross_off_05048",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "05048",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": [
+              "cross_off_05048"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cross_off_05048",
+      "bullet_type": "small",
+      "text": "Cross off <i>Valentino Rivas</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_cards",
+          "section": "05048",
+          "cross_out": true
+        }
+      ]
+    },
+    {
+      "id": "maybe_cross_off_05049",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "05049",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": [
+              "cross_off_05049"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cross_off_05049",
+      "bullet_type": "small",
+      "text": "Cross off <i>Penny White</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_cards",
+          "section": "05049",
+          "cross_out": true
+        }
+      ]
     },
     {
       "id": "record_missing_investigators",
@@ -46197,6 +48064,7 @@
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.intro",
         "name": "Intro"
       },
+      "title": "Intro",
       "type": "story",
       "text": "–Damas y caballeros –anuncia Josef Meiger mientras levanta una copa de champán para brindar. En la sala se va haciendo el silencio, hasta que sólo se oye el chisporroteo de la chimenea y los cuchicheos de la gente–. Permítanme que les dé la bienvenida a todos a mi hogar para la gala benéfica de este año. Esta noche tenemos entre nosotros a ciudadanos muy prominentes, y les agradezco a todos su duro trabajo y su generosidad. La sala se llena con vítores y murmullos de asentimiento. Muchos de los invitados levantan las copas hacia Valentino, uno de los miembros de la Logia más estimados este año, que está sentado en la mesa de invitados de honor, la más cercana a la chimenea.\nJerome, el asistente de Josef, está disimulando junto a la pared, detrás de Josef, mirando de forma discreta su reloj de bolsillo. En otro rincón de la estancia, el ama de llaves de la mansión, Penny, camina de mesa en mesa, llenando copas vacías y recogiendo platos de ensalada sucios. –Todos han realizado grandes actos en nombre de la Logia del Crepúsculo de Plata y nuestra histórica ciudad –prosigue diciendo Josef–. El año que viene, seguiremos soportando esta carga entre todos y haremos lo que haya que hacer en pos del progreso. Jerome da un paso adelante en silencio, interrumpiendo el discurso de Josef con la modesta confianza que otorgan años de servicio fiel. Le da un ligero golpecito a Josef en el hombro y le enseña la hora. –Me temo que ya me he quedado sin tiempo. Gracias a todos por su asistencia –concluye Josef con una inclinación. El público le dedica un educado aplauso, y Josef camina a buen paso hacia el salón, seguido de cerca por su asistente. Dos criados cogen los abrigos de los tardones que siguen llegando poco a poco a la mansión, y Gavriella, la jefa de seguridad de Josef, vigila la entrada con mirada adusta y la mandíbula tensa. –¿Ha llegado ya el Sr. Sanford? –pregunta secamente Josef mientras golpetea en el suelo con su brillante zapato de cuero.\n–Me temo que no –contesta Jerome, que hojea las últimas páginas del libro de invitados de la finca–. Pero debería de llegar en cualquier momento, Sr. Meiger.\n–Bien. No quiero que haya el más mínimo problema cuando llegue. ¿Ha quedado claro? –Y añade, dirigiéndose a Gavriella–: Asegúrate de que esté bien protegido. Gavriella asiente, dando una palmadita sobre la culata del calibre 45 que lleva en su sobaquera. Josef vuelve a dirigirse a su asistente: –Y que Penny se asegure de que el plato principal siga caliente y en perfecto estado mientras esperamos la llegada del Sr. Sanford. Que no se sirva ni una porción sin su presencia.\n–¿Ni siquiera para el Sr. Rivas, señor? –pregunta Jerome, mirando a Josef por encima de sus gruesas gafas. Josef se queda parado por un instante mientras lo piensa.\n–Que le sirvan otra copa de champán al Sr. Rivas, y así seguro que no se queja. Además, aún espero esas cuentas que te pedí hoy. No lo olvides –dice Josef, y le da una palmadita en el hombro a su asistente antes de regresar a la sala de banquetes. Jerome asiente sumisamente y se dirige al piso de arriba.\nPoco después apareció la niebla oscura, y nada volvió a ser igual."
     },
@@ -46415,6 +48283,1175 @@
       }
     },
     {
+      "id": "maybe_agenda_1_results",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 4,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "choose_fate_intro",
+              "choose_fate",
+              "maybe_choose_fate_2",
+              "maybe_choose_fate_3",
+              "maybe_choose_fate_4"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "agenda_1_results"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_choose_fate_2",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05046",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05047",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05048",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05049",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "choose_fate_2"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_choose_fate_3",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05046",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05047",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05048",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05049",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 3,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "choose_fate_3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_choose_fate_4",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05046",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05047",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05048",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log_section_exists",
+            "section": "05049",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 4,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "choose_fate_4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_fate_intro",
+      "text": "A medida que los investigadores son eliminados, registra aquí su destino:"
+    },
+    {
+      "id": "choose_fate",
+      "text": "Who was eliminated?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "05046",
+            "text": "Gavriella Mizrah",
+            "condition": {
+              "type": "campaign_log_section_exists",
+              "section": "05046",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05046_fate"
+            ]
+          },
+          {
+            "id": "05047",
+            "text": "Jerome Davids",
+            "condition": {
+              "type": "campaign_log_section_exists",
+              "section": "05047",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05047_fate"
+            ]
+          },
+          {
+            "id": "05047",
+            "text": "Valentino Rivas",
+            "condition": {
+              "type": "campaign_log_section_exists",
+              "section": "05048",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05048_fate"
+            ]
+          },
+          {
+            "id": "05049",
+            "text": "Penny White",
+            "condition": {
+              "type": "campaign_log_section_exists",
+              "section": "05049",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05049_fate"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_fate_2",
+      "type": "input",
+      "text": "Who was eliminated?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "05046",
+            "text": "Gavriella Mizrah",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05046",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05046",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05046_fate"
+            ]
+          },
+          {
+            "id": "05047",
+            "text": "Jerome Davids",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05047",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05047",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05047_fate"
+            ]
+          },
+          {
+            "id": "05047",
+            "text": "Valentino Rivas",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05048",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05048",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05048_fate"
+            ]
+          },
+          {
+            "id": "05049",
+            "text": "Penny White",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05049",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05049",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05049_fate"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_fate_3",
+      "type": "input",
+      "text": "Who was eliminated?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "05046",
+            "text": "Gavriella Mizrah",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05046",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05046",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05046_fate"
+            ]
+          },
+          {
+            "id": "05047",
+            "text": "Jerome Davids",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05047",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05047",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05047_fate"
+            ]
+          },
+          {
+            "id": "05047",
+            "text": "Valentino Rivas",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05048",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05048",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05048_fate"
+            ]
+          },
+          {
+            "id": "05049",
+            "text": "Penny White",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05049",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05049",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05049_fate"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_fate_4",
+      "type": "input",
+      "text": "Who was eliminated?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "05046",
+            "text": "Gavriella Mizrah",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05046",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05046",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05046_fate"
+            ]
+          },
+          {
+            "id": "05047",
+            "text": "Jerome Davids",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05047",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05047",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05047_fate"
+            ]
+          },
+          {
+            "id": "05047",
+            "text": "Valentino Rivas",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05048",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05048",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05048_fate"
+            ]
+          },
+          {
+            "id": "05049",
+            "text": "Penny White",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_section_exists",
+                  "section": "05049",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "prologue_05049",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "steps": [
+              "choose_05049_fate"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_05046_fate",
+      "type": "input",
+      "text": "What happened to Gavriella Mizrah?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "taken_by_the_watcher",
+            "text": "Atrapada por el vigilante",
+            "gender": "feminine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05046",
+                "id": "taken_by_the_watcher",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05046"
+                ],
+                "masculine_text": "el vigilante se llevó a #name#.",
+                "feminine_text": "el vigilante se llevó a #name#."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05046",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "claimed_by_specters",
+            "text": "Arrebatada por espectros",
+            "gender": "feminine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05046",
+                "id": "claimed_by_specters",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05046"
+                ],
+                "masculine_text": "#name# fue arrebatado por espectros.",
+                "feminine_text": "#name# fue arrebatada por espectros."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05046",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "text": "Desapareció en la niebla",
+            "gender": "feminine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05046",
+                "id": "disappeared_into_the_mist",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05046"
+                ],
+                "masculine_text": "#name# desapareció en la niebla.",
+                "feminine_text": "#name# desapareció en la niebla."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05046",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "pulled_into_spectral_realm",
+            "text": "Absorbida al reino espectral",
+            "gender": "feminine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05046",
+                "id": "pulled_into_the_spectral_realm",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05046"
+                ],
+                "masculine_text": "#name# fue absorbido al reino espectral.",
+                "feminine_text": "#name# fue absorbida al reino espectral."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05046",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_05047_fate",
+      "text": "What happened to Jerome Davids?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "taken_by_the_watcher",
+            "text": "Atrapado por el vigilante",
+            "gender": "masculine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05047",
+                "id": "taken_by_the_watcher",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05047"
+                ],
+                "masculine_text": "el vigilante se llevó a #name#.",
+                "feminine_text": "el vigilante se llevó a #name#."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05047",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "claimed_by_specters",
+            "text": "Arrebatado por espectros",
+            "gender": "masculine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05047",
+                "id": "claimed_by_specters",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05047"
+                ],
+                "masculine_text": "#name# fue arrebatado por espectros.",
+                "feminine_text": "#name# fue arrebatada por espectros."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05047",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "text": "Desapareció en la niebla",
+            "gender": "masculine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05047",
+                "id": "disappeared_into_the_mist",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05047"
+                ],
+                "masculine_text": "#name# desapareció en la niebla.",
+                "feminine_text": "#name# desapareció en la niebla."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05047",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "pulled_into_spectral_realm",
+            "text": "Absorbido al reino espectral",
+            "gender": "masculine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05047",
+                "id": "pulled_into_the_spectral_realm",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05047"
+                ],
+                "masculine_text": "#name# fue absorbido al reino espectral.",
+                "feminine_text": "#name# fue absorbida al reino espectral."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05047",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_05048_fate",
+      "text": "What happened to Valentino Rivas?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "taken_by_the_watcher",
+            "text": "Atrapado por el vigilante",
+            "gender": "masculine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05048",
+                "id": "taken_by_the_watcher",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05048"
+                ],
+                "masculine_text": "el vigilante se llevó a #name#.",
+                "feminine_text": "el vigilante se llevó a #name#."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05048",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "claimed_by_specters",
+            "text": "Arrebatado por espectros",
+            "gender": "masculine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05048",
+                "id": "claimed_by_specters",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05048"
+                ],
+                "masculine_text": "#name# fue arrebatado por espectros.",
+                "feminine_text": "#name# fue arrebatada por espectros."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05048",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "text": "Desapareció en la niebla",
+            "gender": "masculine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05048",
+                "id": "disappeared_into_the_mist",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05048"
+                ],
+                "masculine_text": "#name# desapareció en la niebla.",
+                "feminine_text": "#name# desapareció en la niebla."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05048",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "pulled_into_spectral_realm",
+            "text": "Absorbido al reino espectral",
+            "gender": "masculine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05048",
+                "id": "pulled_into_the_spectral_realm",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05048"
+                ],
+                "masculine_text": "#name# fue absorbido al reino espectral.",
+                "feminine_text": "#name# fue absorbida al reino espectral."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05048",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_05049_fate",
+      "text": "What happened to Penny White?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "taken_by_the_watcher",
+            "text": "Atrapada por el vigilante",
+            "gender": "feminine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05049",
+                "id": "taken_by_the_watcher",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05049"
+                ],
+                "masculine_text": "el vigilante se llevó a #name#.",
+                "feminine_text": "el vigilante se llevó a #name#."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05049",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "claimed_by_specters",
+            "text": "Arrebatada por espectros",
+            "gender": "feminine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05049",
+                "id": "claimed_by_specters",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05049"
+                ],
+                "masculine_text": "#name# fue arrebatado por espectros.",
+                "feminine_text": "#name# fue arrebatada por espectros."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05049",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "text": "Desapareció en la niebla",
+            "gender": "feminine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05049",
+                "id": "disappeared_into_the_mist",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05049"
+                ],
+                "masculine_text": "#name# desapareció en la niebla.",
+                "feminine_text": "#name# desapareció en la niebla."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05049",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "pulled_into_spectral_realm",
+            "text": "Absorbida al reino espectral",
+            "gender": "feminine",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05049",
+                "id": "pulled_into_the_spectral_realm",
+                "cards": "$fixed_codes",
+                "codes": [
+                  "05049"
+                ],
+                "masculine_text": "#name# fue absorbido al reino espectral.",
+                "feminine_text": "#name# fue absorbida al reino espectral."
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "prologue_05049",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "agenda_1_results",
       "text": "A medida que los investigadores son eliminados, registra aquí su destino:",
       "type": "input",
@@ -46528,17 +49565,24 @@
           {
             "id": "being_hunted",
             "text": "¿Los investigadores están siendo cazados?",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "being_hunted",
-                "text": "los investigadores están siendo cazados."
-              }
+            "steps": [
+              "being_hunted"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "being_hunted",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "being_hunted",
+          "text": "los investigadores están siendo cazados."
+        }
+      ]
     },
     {
       "id": "resolution_1",
@@ -46552,6 +49596,918 @@
           "resolution": "no_resolution"
         }
       ]
+    },
+    {
+      "id": "manual_randomizer",
+      "bullets": [
+        {
+          "text": "0: (character name) disappeared into the mist. 2 pieces of evidence were left behind."
+        },
+        {
+          "text": "I - II: (character name) disappeared into the mist. 0 pieces of evidence were left behind."
+        },
+        {
+          "text": "III - VI: (character name) was claimed by specters. 3 pieces of evidence were left behind."
+        },
+        {
+          "text": "VII - IX: (character name) was claimed by specters. 5 pieces of evidence were left behind."
+        },
+        {
+          "text": "X - XII: (character name) was pulled into the spectral realm. 2 pieces of evidence were left behind."
+        },
+        {
+          "text": "XIII - XVI: (character name) was pulled into the spectral realm. 4 pieces of evidence were left behind."
+        },
+        {
+          "text": "XVII - XIII: (character name) was pulled into the spectral realm. 6 pieces of evidence were left behind."
+        },
+        {
+          "text": "XIX - XX: (character name) was taken by the Watcher. 3 pieces of evidence were left behind."
+        },
+        {
+          "text": "XXI: (character name) was taken by the Watcher. 5 pieces of evidence were left behind."
+        }
+      ]
+    },
+    {
+      "id": "0_pieces_of_evidence",
+      "text": "0 pieces of evidence were left behind."
+    },
+    {
+      "id": "2_pieces_of_evidence",
+      "text": "2 pieces of evidence were left behind."
+    },
+    {
+      "id": "3_pieces_of_evidence",
+      "text": "3 pieces of evidence were left behind."
+    },
+    {
+      "id": "4_pieces_of_evidence",
+      "text": "4 pieces of evidence were left behind."
+    },
+    {
+      "id": "5_pieces_of_evidence",
+      "text": "5 pieces of evidence were left behind."
+    },
+    {
+      "id": "6_pieces_of_evidence",
+      "text": "6 pieces of evidence were left behind."
+    },
+    {
+      "id": "the_fool",
+      "title": "0 - The Fool"
+    },
+    {
+      "id": "the_magician",
+      "title": "I - The Magician"
+    },
+    {
+      "id": "the_high_priestess",
+      "title": "II - The High Priestess"
+    },
+    {
+      "id": "the_empress",
+      "title": "III - The Empress"
+    },
+    {
+      "id": "the_emperor",
+      "title": "IV - The Emperor"
+    },
+    {
+      "id": "the_hierophant",
+      "title": "V - The Hierophant"
+    },
+    {
+      "id": "the_lovers",
+      "title": "VI - The Lovers"
+    },
+    {
+      "id": "the_chariot",
+      "title": "VII - The Chariot"
+    },
+    {
+      "id": "strength",
+      "title": "VIII - Strength"
+    },
+    {
+      "id": "the_hermit",
+      "title": "IX - The Hermit"
+    },
+    {
+      "id": "wheel_of_fortune",
+      "title": "X - Wheel of Fortune"
+    },
+    {
+      "id": "justice",
+      "title": "XI - Justice"
+    },
+    {
+      "id": "the_hanged_man",
+      "title": "XII - The Hanged Man"
+    },
+    {
+      "id": "death",
+      "title": "XIII - Death"
+    },
+    {
+      "id": "temperance",
+      "title": "XIV - Temperance"
+    },
+    {
+      "id": "the_devil",
+      "title": "XV - The Devil"
+    },
+    {
+      "id": "the_tower",
+      "title": "XVI - The Tower"
+    },
+    {
+      "id": "the_star",
+      "title": "XVII - The Star"
+    },
+    {
+      "id": "the_moon",
+      "title": "XVIII - The Moon"
+    },
+    {
+      "id": "the_sun",
+      "title": "XIX - The Sun"
+    },
+    {
+      "id": "judgement",
+      "title": "XX - Judgement"
+    },
+    {
+      "id": "the_world",
+      "title": "XXI - The World"
+    },
+    {
+      "id": "randomizer",
+      "type": "input",
+      "input": {
+        "type": "prologue_randomizer",
+        "prompt": "Draw tarot cards:",
+        "choices": [
+          {
+            "id": "05046",
+            "text": "Gavriella Mizrah",
+            "condition": {
+              "type": "campaign_log_section_exists",
+              "section": "05046",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            }
+          },
+          {
+            "id": "05047",
+            "text": "Jerome Davids",
+            "condition": {
+              "type": "campaign_log_section_exists",
+              "section": "05047",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            }
+          },
+          {
+            "id": "05048",
+            "text": "Valentino Rivas",
+            "condition": {
+              "type": "campaign_log_section_exists",
+              "section": "05048",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            }
+          },
+          {
+            "id": "05049",
+            "text": "Penny White",
+            "condition": {
+              "type": "campaign_log_section_exists",
+              "section": "05049",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            }
+          }
+        ],
+        "options": [
+          {
+            "condition": "0",
+            "prompt": "0 - The Fool",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "the_fool"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "disappeared_into_the_mist",
+                "masculine_text": "#name# desapareció en la niebla.",
+                "feminine_text": "#name# desapareció en la niebla."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 2
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "2_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "1",
+            "prompt": "I - The Magician",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "the_magician"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "disappeared_into_the_mist",
+                "masculine_text": "#name# desapareció en la niebla.",
+                "feminine_text": "#name# desapareció en la niebla."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 0
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "0_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "2",
+            "prompt": "II - The High Priestess",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "the_high_priestess"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "disappeared_into_the_mist",
+                "masculine_text": "#name# desapareció en la niebla.",
+                "feminine_text": "#name# desapareció en la niebla."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 0
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "0_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "3",
+            "prompt": "III - The Empress",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "the_empress"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "claimed_by_specters",
+                "masculine_text": "#name# fue arrebatado por espectros.",
+                "feminine_text": "#name# fue arrebatada por espectros."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 3
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "3_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "4",
+            "prompt": "IV - The Emperor",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "the_emperor"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "claimed_by_specters",
+                "masculine_text": "#name# fue arrebatado por espectros.",
+                "feminine_text": "#name# fue arrebatada por espectros."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 3
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "3_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "5",
+            "prompt": "V - The Hierophant",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "the_hierophant"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "claimed_by_specters",
+                "masculine_text": "#name# fue arrebatado por espectros.",
+                "feminine_text": "#name# fue arrebatada por espectros."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 3
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "3_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "6",
+            "prompt": "VI - The Lovers",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "the_lovers"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "claimed_by_specters",
+                "masculine_text": "#name# fue arrebatado por espectros.",
+                "feminine_text": "#name# fue arrebatada por espectros."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 3
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "3_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "7",
+            "prompt": "VII - The Chariot",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "the_chariot"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "claimed_by_specters",
+                "masculine_text": "#name# fue arrebatado por espectros.",
+                "feminine_text": "#name# fue arrebatada por espectros."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 5
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "5_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "8",
+            "prompt": "VIII - Strength",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "strength"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "claimed_by_specters",
+                "masculine_text": "#name# fue arrebatado por espectros.",
+                "feminine_text": "#name# fue arrebatada por espectros."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 5
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "5_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "9",
+            "prompt": "IX - The Hermit",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "the_hermit"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "claimed_by_specters",
+                "masculine_text": "#name# fue arrebatado por espectros.",
+                "feminine_text": "#name# fue arrebatada por espectros."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 5
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "5_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "10",
+            "prompt": "X - Wheel of Fortune",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "wheel_of_fortune"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "pulled_into_the_spectral_realm",
+                "masculine_text": "#name# fue absorbido al reino espectral.",
+                "feminine_text": "#name# fue absorbida al reino espectral."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 2
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "2_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "11",
+            "prompt": "XI - Justice",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "justice"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "pulled_into_the_spectral_realm",
+                "masculine_text": "#name# fue absorbido al reino espectral.",
+                "feminine_text": "#name# fue absorbida al reino espectral."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 2
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "2_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "12",
+            "prompt": "XII - The Hanged Man",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "the_hanged_man"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "pulled_into_the_spectral_realm",
+                "masculine_text": "#name# fue absorbido al reino espectral.",
+                "feminine_text": "#name# fue absorbida al reino espectral."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 2
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "2_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "13",
+            "prompt": "XIII - Death",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "death"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "pulled_into_the_spectral_realm",
+                "masculine_text": "#name# fue absorbido al reino espectral.",
+                "feminine_text": "#name# fue absorbida al reino espectral."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 4
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "4_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "14",
+            "prompt": "XIV - Temperance",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "temperance"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "pulled_into_the_spectral_realm",
+                "masculine_text": "#name# fue absorbido al reino espectral.",
+                "feminine_text": "#name# fue absorbida al reino espectral."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 4
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "4_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "15",
+            "prompt": "XV - The Devil",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "the_devil"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "pulled_into_the_spectral_realm",
+                "masculine_text": "#name# fue absorbido al reino espectral.",
+                "feminine_text": "#name# fue absorbida al reino espectral."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 4
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "4_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "16",
+            "prompt": "XVI - The Tower",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "the_tower"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "pulled_into_the_spectral_realm",
+                "masculine_text": "#name# fue absorbido al reino espectral.",
+                "feminine_text": "#name# fue absorbida al reino espectral."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 4
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "4_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "17",
+            "prompt": "XVII - The Star",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "the_star"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "pulled_into_the_spectral_realm",
+                "masculine_text": "#name# fue absorbido al reino espectral.",
+                "feminine_text": "#name# fue absorbida al reino espectral."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 6
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "6_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "18",
+            "prompt": "XVIII - The Moon",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "the_moon"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "pulled_into_the_spectral_realm",
+                "masculine_text": "#name# fue absorbido al reino espectral.",
+                "feminine_text": "#name# fue absorbida al reino espectral."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 6
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "6_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "19",
+            "prompt": "XIX - The Sun",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "the_sun"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "taken_by_the_watcher",
+                "masculine_text": "el vigilante se llevó a #name#.",
+                "feminine_text": "el vigilante se llevó a #name#."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 3
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "3_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "20",
+            "prompt": "XX - Judgement",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "judgement"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "taken_by_the_watcher",
+                "masculine_text": "el vigilante se llevó a #name#.",
+                "feminine_text": "el vigilante se llevó a #name#."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 3
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "3_pieces_of_evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "21",
+            "prompt": "XXI - The World",
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": [
+                  "the_world"
+                ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "$input_value",
+                "id": "taken_by_the_watcher",
+                "masculine_text": "el vigilante se llevó a #name#.",
+                "feminine_text": "el vigilante se llevó a #name#."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "campaign_notes",
+                "id": "pieces_of_evidence",
+                "operation": "add",
+                "value": 5
+              },
+              {
+                "type": "story_step",
+                "steps": [
+                  "5_pieces_of_evidence"
+                ]
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -51510,6 +55466,9 @@
               "valentino_alive"
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -52692,11 +56651,28 @@
       "text": "Elige el nivel de dificultad:",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
-            "text": "Fácil <i>(quiero experimentar la historia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -2, -2, [cultist], [tablet], [tablet], [auto_fail], [elder_sign]",
+            "text": "Fácil",
+            "description": "<i>quiero experimentar la historia</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "cultist",
+              "tablet",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -52726,8 +56702,24 @@
           },
           {
             "id": "standard",
-            "text": "Normal <i>(quiero un reto)</i>",
-            "description": "+1, 0, 0, -1, -1, -2, -2, -3, -4, [cultist], [tablet], [tablet], [auto_fail], [elder_sign]",
+            "text": "Normal",
+            "description": "<i>quiero un reto</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "cultist",
+              "tablet",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -52757,8 +56749,25 @@
           },
           {
             "id": "hard",
-            "text": "Difícil <i>(quiero una verdadera pesadilla)</i>",
-            "description": "0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [cultist], [tablet], [tablet], [auto_fail], [elder_sign]",
+            "text": "Difícil",
+            "description": "<i>quiero una verdadera pesadilla</i>",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "cultist",
+              "tablet",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -52789,8 +56798,26 @@
           },
           {
             "id": "expert",
-            "text": "Experto <i>(quiero descubrir el verdadero Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -4, -4, -5, -6, -8, [cultist], [tablet], [tablet], [auto_fail], [elder_sign]",
+            "text": "Experto",
+            "description": "<i>quiero descubrir el verdadero Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "cultist",
+              "tablet",
+              "tablet",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -55489,10 +59516,12 @@
     },
     {
       "id": "choose_dreams",
+      "bullet_type": "default",
       "text": "Elige un sueño (distinto si es posible):",
       "type": "input",
       "input": {
         "type": "investigator_choice",
+        "confirm_text": "Chosen dream:",
         "source": "scenario",
         "investigator": "all",
         "special_mode": "sequential",
@@ -56172,6 +60201,9 @@
               "add_chaos_token_2"
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -58868,11 +62900,31 @@
       "text": "Elige el nivel de dificultad:",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
-            "text": "Fácil <i>(quiero experimentar la historia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Fácil",
+            "description": "<i>quiero experimentar la historia</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -58905,8 +62957,27 @@
           },
           {
             "id": "standard",
-            "text": "Normal <i>(quiero un reto)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Normal",
+            "description": "<i>quiero un reto</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -58939,8 +63010,28 @@
           },
           {
             "id": "hard",
-            "text": "Difícil <i>(quiero una verdadera pesadilla)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Difícil",
+            "description": "<i>quiero una verdadera pesadilla</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -58974,8 +63065,29 @@
           },
           {
             "id": "expert",
-            "text": "Experto <i>(quiero descubrir el verdadero Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Experto",
+            "description": "<i>quiero descubrir el verdadero Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -63823,11 +67935,28 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
-            "text": "Fácil <i>(quiero experimentar la historia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -2, -3, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Fácil",
+            "description": "<i>quiero experimentar la historia</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -63857,8 +67986,24 @@
           },
           {
             "id": "standard",
-            "text": "Normal <i>(quiero un reto)</i>",
-            "description": "+1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Normal",
+            "description": "<i>quiero un reto</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-5",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -63888,8 +68033,24 @@
           },
           {
             "id": "hard",
-            "text": "Difícil <i>(quiero una verdadera pesadilla)</i>",
-            "description": "+1, 0, 0, -1, -2, -3, -3, -4, -6, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Difícil",
+            "description": "<i>quiero una verdadera pesadilla</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-6",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -63919,8 +68080,25 @@
           },
           {
             "id": "expert",
-            "text": "Experto <i>(quiero descubrir el verdadero Arkham Horror)</i>",
-            "description": "0, -1, -2, -2, -3, -3, -4, -4, -6, -8, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Experto",
+            "description": "<i>quiero descubrir el verdadero Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -64149,6 +68327,7 @@
     },
     {
       "id": "maybe_earn_alejandro",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "has_card",
@@ -65298,6 +69477,24 @@
       "text": "Baraja el resto de cartas de Encuentro para formar el mazo de Encuentros."
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "type": "input",
       "text": "¿Cuál de los siguientes es cierto?",
@@ -65494,7 +69691,7 @@
       "title": "Resolución 1",
       "text": "–¡Por fin! ¡Yoth, la caverna de las serpientes! ¡Las malditas, que huyeron de la destrucción de Valusia! –exclama Alejandro mientras examina la entrada, con los ojos jubilosos y los brazos levantados de emoción. No sabes de qué habla, y estás empezando a preocuparte. En ese momento, algo corretea detrás de ti, y un sonido similar al claqueteo de unas garras te pilla por sorpresa. De la oscuridad que tienes a tu espalda surgen varias criaturas alienígenas con un aspecto como nada que hayas visto en tu vida: miden tres metros de alto y tienen cuerpos cónicos que acaban en cuatro extraños apéndices de distinta longitud. –Por fin llegáis –dice Alejandro con toda tranquilidad. Una de las criaturas responde haciendo claquetear sus garras siguiendo un patrón intencionado–. Haceos con sus mentes –les ordena Alejandro–. Ya no nos sirven de nada. Es el último recuerdo humano que tienes.",
       "steps": [
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned",
@@ -65510,7 +69707,7 @@
       "title": "Resolución 2",
       "text": "Antes de poder cruzar a la siguiente sección de la caverna, un sonido similar al claqueteo de unas garras te pilla por sorpresa. De la oscuridad que tienes a tu espalda surgen varias criaturas alienígenas con un aspecto como nada que hayas visto en tu vida: miden tres metros de alto y tienen cuerpos cónicos que acaban en cuatro extraños apéndices de distinta longitud. Te asombra ver una silueta humana a la cabeza del grupo: ni más ni menos que Alejandro Vela. –Haceos con sus mentes –ordena Alejandro a las criaturas–. Ya no nos sirven de nada. Es el último recuerdo humano que tienes.",
       "steps": [
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned",
@@ -66692,7 +70889,7 @@
     },
     {
       "id": "lose",
-      "text": "Como todos los investigadores han muerto por el trauma de la caída, los investigadores <b>pierden</b> la campaña.",
+      "text": "Los investigadores pierden la campaña.",
       "effects": [
         {
           "type": "campaign_data",
@@ -67532,7 +71729,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Lugares [[Tenochtitlán]] en la zona de victoria:",
+        "text": "Lugares Tenochtitlán en la zona de victoria:",
         "max": 6,
         "effects": [
           {
@@ -67596,6 +71793,24 @@
           "text": "Ichtaca tiene confianza en los investigadores."
         }
       ]
+    },
+    {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "check_harbinger",
@@ -67735,7 +71950,7 @@
       "steps": [
         "check_act_2",
         "record_x_paths_known",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -67752,7 +71967,7 @@
       "steps": [
         "record_x_paths_known",
         "check_if_ichtaca_has_confidence",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -67769,7 +71984,7 @@
       "steps": [
         "check_act_2",
         "record_x_paths_known",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -69829,6 +74044,24 @@
       ]
     },
     {
+      "id": "maybe_check_harbinger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_harbinger"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_harbinger",
       "text": "¿Cuál de los siguientes es cierto?",
       "type": "input",
@@ -70057,7 +74290,7 @@
         "fell_into_depths",
         "record_final_depth",
         "check_final_depth",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp",
         "check_investigators_poisoned"
@@ -70073,7 +74306,7 @@
       "text": "De algún modo, y contra todo pronóstico, has llegado a tu destino. El revelador brillo rojo que os ha rodeado desde que entrasteis en Yoth desaparece, sustituido por una impenetrable oscuridad de negrura absoluta. El Nexo debe de estar cerca… Lo notas.",
       "steps": [
         "nexus_is_near",
-        "check_harbinger",
+        "maybe_check_harbinger",
         "record_yigs_fury",
         "earn_xp_full_depth",
         "check_investigators_poisoned"
@@ -70757,6 +74990,7 @@
     "encounter_deck",
     "three_acts_three_decks",
     "setup_act_ab",
+    "setup_act_ab_actual",
     "setup_act_cd",
     "setup_act_ef_prompt",
     "setup_act_ef",
@@ -71220,7 +75454,11 @@
     },
     {
       "id": "setup_act_ab",
-      "text": "Ajusta el contenido del mazo “a/b” de la siguiente forma:",
+      "text": "Ajusta el contenido del mazo “a/b” de la siguiente forma:"
+    },
+    {
+      "id": "setup_act_ab_actual",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -71792,6 +76030,7 @@
           {
             "id": "remove_physical",
             "text": "Retirar trauma físico",
+            "icon": "physical",
             "condition": {
               "type": "trauma",
               "investigator": "each",
@@ -71819,6 +76058,7 @@
           {
             "id": "remove_mental",
             "text": "Retirar trauma mental",
+            "icon": "mental",
             "condition": {
               "type": "trauma",
               "investigator": "each",
@@ -72733,6 +76973,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "add_chaos_token"
         ]
       }
     },
@@ -73049,11 +77292,34 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
-            "text": "Fácil <i>(quiero experimentar la historia)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Fácil",
+            "description": "<i>quiero experimentar la historia</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "tablet",
+              "tablet",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -73089,8 +77355,30 @@
           },
           {
             "id": "standard",
-            "text": "Normal <i>(quiero un reto)</i>",
-            "description": "+1, 0, 0, -1, -1, -1 -2, -2, -3, -4, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Normal",
+            "description": "<i>quiero un reto</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "tablet",
+              "tablet",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -73126,8 +77414,31 @@
           },
           {
             "id": "hard",
-            "text": "Difícil <i>(quiero una verdadera pesadilla)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Difícil",
+            "description": "<i>quiero una verdadera pesadilla</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "tablet",
+              "tablet",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -73164,8 +77475,32 @@
           },
           {
             "id": "expert",
-            "text": "Experto <i>(quiero descubrir el verdadero Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Experto",
+            "description": "<i>quiero descubrir el verdadero Arkham Horror</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "tablet",
+              "tablet",
+              "elder_thing",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -81995,6 +86330,7 @@
     },
     {
       "id": "check_meeting_with_thomas_dawson",
+      "text": "<i>A meeting with Thomas Dawson</i>",
       "bullet_type": "small",
       "type": "branch",
       "condition": {
@@ -82010,6 +86346,7 @@
     },
     {
       "id": "check_battle_with_a_horrifying_devil",
+      "text": "<i>A battle with a horrifying devil</i>",
       "bullet_type": "small",
       "type": "branch",
       "condition": {
@@ -82025,6 +86362,7 @@
     },
     {
       "id": "check_decision_to_stick_together",
+      "text": "<i>A decision to stick together</i>",
       "bullet_type": "small",
       "type": "branch",
       "condition": {
@@ -82040,6 +86378,7 @@
     },
     {
       "id": "check_encounter_with_a_secret_cult",
+      "text": "<i>An encounter with a secret cult</i>",
       "bullet_type": "small",
       "type": "branch",
       "condition": {
@@ -82056,6 +86395,7 @@
     {
       "id": "check_a_deal_with_joe_sargent",
       "bullet_type": "small",
+      "text": "<i>A deal with Joe Sargent</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -82071,6 +86411,7 @@
     {
       "id": "check_a_followed_lead",
       "bullet_type": "small",
+      "text": "<i>A followed lead</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -82086,6 +86427,7 @@
     {
       "id": "check_an_intervention",
       "bullet_type": "small",
+      "text": "<i>An intervention</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -82101,6 +86443,7 @@
     {
       "id": "check_a_jailbreak",
       "bullet_type": "small",
+      "text": "<i>A jailbreak</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -82116,6 +86459,7 @@
     {
       "id": "check_discovery_of_a_strange_idol",
       "bullet_type": "small",
+      "text": "<i>Discovery of a strange idol</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -82131,6 +86475,7 @@
     {
       "id": "check_discovery_of_an_unholy_mantle",
       "bullet_type": "small",
+      "text": "<i>Discovery of an unholy mantle</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -82146,6 +86491,7 @@
     {
       "id": "check_discovery_of_a_mystical_relic",
       "bullet_type": "small",
+      "text": "<i>Discovery of a mystical relic</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -82161,6 +86507,7 @@
     {
       "id": "check_conversation_with_mr_moore",
       "bullet_type": "small",
+      "text": "<i>A conversation with Mr. Moore</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -82176,6 +86523,7 @@
     {
       "id": "check_lifecycle_of_a_deep_one",
       "bullet_type": "small",
+      "text": "<i>The lifecycle of a \"Deep One\"</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -82191,6 +86539,7 @@
     {
       "id": "check_stinging_betrayal",
       "bullet_type": "small",
+      "text": "<i>A stinging betrayal</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -82258,7 +86607,7 @@
   "id": "zaw",
   "position": 20,
   "version": 1,
-  "name": "Alice in Wonderland",
+  "name": "Alicia en el país de las maravillas",
   "custom": {
     "creator": "The Beard",
     "download_link": "https://mysteriouschanting.wordpress.com/2020/10/30/alice-in-wonderland-campaign/"
@@ -82275,16 +86624,16 @@
     },
     {
       "id": "strength_of_wonderland",
-      "title": "Strength of Wonderland",
+      "title": "Fuerza del país de las maravillas",
       "type": "count"
     },
     {
       "id": "wonderland_boons",
-      "title": "Wonderland Boons"
+      "title": "Don del país de las maravillas"
     },
     {
       "id": "wonderland_banes",
-      "title": "Wonderland Banes"
+      "title": "Decadencia del país de las maravillas"
     },
     {
       "id": "hidden",
@@ -82326,11 +86675,29 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
-            "text": "Easy <i>(I want to be sane)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Fácil",
+            "description": "<i>I want to be sane</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -82361,8 +86728,25 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(I want to be mad as a march hare)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Normal",
+            "description": "<i>I want to be mad as a march hare</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -82393,8 +86777,25 @@
           },
           {
             "id": "hard",
-            "text": "Hard <i>(I want to be mad as a hatter)</i>",
-            "description": "+1, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Difícil",
+            "description": "<i>I want to be mad as a hatter</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -82425,8 +86826,25 @@
           },
           {
             "id": "expert",
-            "text": "Expert <i>(I want to go where no one has ever gone before)</i>",
-            "description": "0, -1, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+            "text": "Experto",
+            "description": "<i>I want to go where no one has ever gone before</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "-8",
+              "skull",
+              "skull",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -88872,12 +93290,12 @@
     },
     {
       "id": "impending_doom",
-      "title": "Impending Doom",
+      "title": "Perdición inminente",
       "type": "count"
     },
     {
       "id": "memories",
-      "title": "Memories",
+      "title": "Recuerdos",
       "type": "investigator_count"
     },
     {
@@ -88933,7 +93351,7 @@
     {
       "id": "memories",
       "type": "rule_reminder",
-      "title": "Memories",
+      "title": "Recuerdos",
       "text": "Some scenario cards, story resolutions and interludes may refer to your \"Memories\". Each investigator has a section in the Campaign Log to mark their individual \"Memories\". <b>These \"Memories\" are tied to specific investigators, and are not shared among all of the investigators.\nYou may be instructed to add tally marks or cross out tally marks to specific investigator's \"Memories\". This is done by marking a line in that investigator's \"Memories\" section in the Campaign Log, or crossing out one of the above lines, respectively. The number of \"Memories\" each investigator has is equal to the number of tally marks in their respective sections that have not been crossed out."
     },
     {
@@ -88948,11 +93366,29 @@
       "type": "input",
       "input": {
         "type": "choose_one",
+        "default_choice": "standard",
         "choices": [
           {
             "id": "easy",
-            "text": "Easy <i>(I want to go to the Moon)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -2, -3, [skull], [skull], [cultist], [cultist], [auto_fail], [elder_sign]",
+            "text": "Fácil",
+            "description": "<i>I want to go to the Moon</i>",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-3",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -88983,8 +93419,26 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(I want to go to Mars)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [cultist], [auto_fail], [elder_sign]",
+            "text": "Normal",
+            "description": "<i>I want to go to Mars</i>",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -89016,8 +93470,27 @@
           },
           {
             "id": "hard",
-            "text": "Hard <i>(I want interstellar travel)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [cultist], [auto_fail], [elder_sign]",
+            "text": "Difícil",
+            "description": "<i>I want interstellar travel</i>",
+            "tokens": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-5",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -89050,8 +93523,27 @@
           },
           {
             "id": "expert",
-            "text": "Expert <i>(I want to go where no one has ever gone before)</i>",
-            "description": "0, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [cultist], [auto_fail], [elder_sign]",
+            "text": "Experto",
+            "description": "<i>I want to go where no one has ever gone before</i>",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-3",
+              "-4",
+              "-4",
+              "-5",
+              "-6",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "cultist",
+              "auto_fail",
+              "elder_sign"
+            ],
             "effects": [
               {
                 "type": "campaign_data",
@@ -89817,7 +94309,7 @@
       "text": "Add or remove \"Memories\":",
       "input": {
         "type": "investigator_counter",
-        "text": "Memories",
+        "text": "Recuerdos",
         "investigator_count_min": "memories",
         "effects": [
           {
@@ -90078,7 +94570,7 @@
       "text": "Add or remove \"Memories\":",
       "input": {
         "type": "investigator_counter",
-        "text": "Memories",
+        "text": "Recuerdos",
         "investigator_count_min": "memories",
         "effects": [
           {
@@ -90155,6 +94647,9 @@
               }
             ]
           }
+        ],
+        "chaos_bag_branches": [
+          "adjust_chaos_bag"
         ],
         "campaign_log": [
           {
@@ -91147,7 +95642,7 @@
       "text": "Add or remove \"Memories\":",
       "input": {
         "type": "investigator_counter",
-        "text": "Memories",
+        "text": "Recuerdos",
         "investigator_count_min": "memories",
         "effects": [
           {
@@ -92221,7 +96716,7 @@
       "text": "Add or remove \"Memories\":",
       "input": {
         "type": "investigator_counter",
-        "text": "Memories",
+        "text": "Recuerdos",
         "investigator_count_min": "memories",
         "effects": [
           {
@@ -92233,18 +96728,6 @@
           }
         ]
       }
-    },
-    {
-      "id": "add_impending_doom",
-      "text": "Add 1 tally mark under \"Impending Doom\" in your Campaign Log.",
-      "effects": [
-        {
-          "type": "campaign_log_count",
-          "section": "impending_doom",
-          "operation": "add",
-          "value": 1
-        }
-      ]
     },
     {
       "id": "$play_scenario",
@@ -93339,7 +97822,7 @@
       "text": "Add or remove \"Memories\":",
       "input": {
         "type": "investigator_counter",
-        "text": "Memories",
+        "text": "Recuerdos",
         "investigator_count_min": "memories",
         "effects": [
           {
@@ -93870,7 +98353,7 @@
       "text": "Add or remove \"Memories\":",
       "input": {
         "type": "investigator_counter",
-        "text": "Memories",
+        "text": "Recuerdos",
         "investigator_count_min": "memories",
         "effects": [
           {
@@ -94154,7 +98637,7 @@
       "text": "Add or remove \"Memories\":",
       "input": {
         "type": "investigator_counter",
-        "text": "Memories",
+        "text": "Recuerdos",
         "investigator_count_min": "memories",
         "effects": [
           {
@@ -94564,7 +99047,7 @@
       "text": "Add or remove \"Memories\":",
       "input": {
         "type": "investigator_counter",
-        "text": "Memories",
+        "text": "Recuerdos",
         "investigator_count_min": "memories",
         "effects": [
           {

@@ -23,6 +23,7 @@ export interface ThemeColors {
   fight: string;
   evade: string;
   L10: string;
+  L15: string;
   L20: string;
   L30: string;
   D10: string;
@@ -66,14 +67,20 @@ export interface ThemeColors {
   health: string;
   sanity: string;
   disableOverlay: string;
-  scenarioGreen: string;
   campaign:{
-    gold: string;
-    blue: string;
-    teal: string;
-    green: string;
-    purple: string;
-    red: string;
+    setup: string;
+    resolution: string;
+    resolutionBackground: string;
+
+    core: string;
+    dwl: string;
+    ptc: string;
+    tfa: string;
+    tcu: string;
+    tde: string;
+    tic: string;
+    eoe: string
+    standalone: string;
   };
   navButton: string;
   warn: string;
@@ -86,9 +93,11 @@ export interface ThemeColors {
   };
 }
 const light10 = '#D7D3C6';
+const light15 = '#E6E1D3';
 const light20 = '#F5F0E1';
 const light30 = '#FFFBF2';
 const dark10 = '#656C6F';
+const dark15 = '#4F5A60';
 const dark20 = '#475259';
 const dark30 = '#24303C';
 const medium = '#9B9B9B';
@@ -120,6 +129,7 @@ export const LIGHT_THEME: ThemeColors = {
   fight: '#8D181E',
   evade: '#0D6813',
   L10: light10,
+  L15: light15,
   L20: light20,
   L30: light30,
   D10: dark10,
@@ -226,14 +236,20 @@ export const LIGHT_THEME: ThemeColors = {
   },
   health: '#8D181E',
   sanity: '#165385',
-  scenarioGreen: '#2E5344',
   campaign: {
-    gold: '#c99b3833',
-    blue: '#00408033',
-    teal: '#00666633',
-    purple: '#46088733',
-    green: '#325c0933',
-    red: '#96000333',
+    setup: '#128C60',
+    resolution: '#E75122',
+    resolutionBackground: '#E7512233',
+
+    core: '#00759C',
+    dwl: '#6D9548',
+    ptc: '#5B579C',
+    tfa: '#A45F9C',
+    tcu: '#593B5D',
+    tde: '#45559C',
+    tic: '#2A7D7F',
+    eoe: '#25B7CB',
+    standalone: '#AC9788',
   },
   navButton: '#007AFF',
   warn: '#FB4135',
@@ -262,6 +278,7 @@ export const DARK_THEME: ThemeColors = {
   D20: light20,
   D30: light30,
   L10: dark10,
+  L15: dark15,
   L20: dark20,
   L30: dark30,
   background: dark30,
@@ -366,14 +383,20 @@ export const DARK_THEME: ThemeColors = {
   },
   health: '#AE4236',
   sanity: '#2C7FC0',
-  scenarioGreen: '#1fab73',
   campaign: {
-    gold: '#755a2088',
-    blue: '#395c8088',
-    teal: '#2a666688',
-    purple: '#7c559e88',
-    green: '#33660088',
-    red: '#8f474988',
+    setup: '#07AF73',
+    resolution: '#F04932',
+    resolutionBackground: '#F0493233',
+
+    core: '#006385',
+    dwl: '#57783A',
+    ptc: '#524F8D',
+    tfa: '#96558E',
+    tcu: '#96558E',
+    tde: '#3D4B8A',
+    tic: '#236A6B',
+    eoe: '#179BAD',
+    standalone: '#A18978',
   },
   navButton: '#4aa1ff',
   warn: '#C50707',

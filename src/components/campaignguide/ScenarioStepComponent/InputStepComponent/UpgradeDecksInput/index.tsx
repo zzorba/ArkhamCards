@@ -1,25 +1,22 @@
 import React, { useCallback, useContext } from 'react';
-import {
-  Alert,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { Alert, Text, View } from 'react-native';
 import { find, map } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import UpgradeDeckRow from './UpgradeDeckRow';
-import InvestigatorRow from '@components/core/InvestigatorRow';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
-import { m, s, xs } from '@styles/space';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
-import StyleContext from '@styles/StyleContext';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 import { useToggles } from '@components/core/hooks';
 import { useDeckActions } from '@data/remote/decks';
 import { SpecialXp } from '@data/scenario/types';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
+import CardTextComponent from '@components/card/CardTextComponent';
+import ArkhamButton from '@components/core/ArkhamButton';
+import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
+import StyleContext from '@styles/StyleContext';
+import space, { s } from '@styles/space';
 
 interface Props {
   componentId: string;
@@ -31,6 +28,7 @@ interface Props {
 
 export default function UpgradeDecksInput({ componentId, id, skipDeckSave, specialXp, investigatorCounter }: Props) {
   const { latestDecks, campaignState } = useContext(CampaignGuideContext);
+  const { typography, width } = useContext(StyleContext);
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { listSeperator } = useContext(LanguageContext);
   const { scenarioInvestigators, campaignLog } = useContext(ScenarioStepContext);
@@ -104,24 +102,41 @@ export default function UpgradeDecksInput({ componentId, id, skipDeckSave, speci
       actuallySave();
     }
   }, [proceedMessage, actuallySave]);
-  const { borderStyle, typography } = useContext(StyleContext);
+  const whatDoesAppHandle = useCallback(() => {
+    Alert.alert(
+      t`What exactly does the app handle?`,
+      t`Generally speaking, the app handles anything that you see mentioned in the digital campaign log.\nIf you are building your deck with the app, it will also handle cards like Arcane Research and Shrewd Analysis (if you allow the app to randomize your upgrades).\nIf you find that you made a mistake after you upgraded your deck, you can 'adjust' the available experience when editing a deck.`
+    );
+  }, []);
   const hasDecision = scenarioState.decision(id) !== undefined;
   return (
-    <View>
-      <View style={[styles.header, borderStyle]}>
-        <Text style={[typography.bigGameFont, typography.right]}>
-          { skipDeckSave ? t`Adjust scenario XP and trauma` : t`Update decks with scenario results` }
-        </Text>
-      </View>
+    <InputWrapper
+      title={skipDeckSave ? t`Adjust scenario XP and trauma` : t`Update decks with scenario results`}
+      titleStyle="header"
+      onSubmit={save}
+      editable={!hasDecision}
+    >
+      { !hasDecision && (
+        <>
+          <CardTextComponent text={t`The numbers below already include all the trauma, victory points, and stotry assets you may have earned during the resolution.\n\nIf you have any other cards or effects that the app does not take care of, you can make adjustments below before saving each investigator.`} />
+          <ArkhamButton title={t`Learn more`} icon="faq" onPress={whatDoesAppHandle} />
+        </>
+      )}
       { map(scenarioInvestigators, investigator => {
         if (campaignLog.isEliminated(investigator)) {
           return (
-            <InvestigatorRow
-              key={investigator.code}
-              investigator={investigator}
-              description={investigator.traumaString(listSeperator, campaignLog.traumaAndCardData(investigator.code))}
-              eliminated
-            />
+            <View style={[space.paddingSideS, space.paddingVerticalXs]}>
+              <CompactInvestigatorRow
+                key={investigator.code}
+                investigator={investigator}
+                eliminated
+                width={width - s * (hasDecision ? 4 : 2)}
+              >
+                <Text style={[typography.mediumGameFont, typography.white]}>
+                  {investigator.traumaString(listSeperator, campaignLog.traumaAndCardData(investigator.code))}
+                </Text>
+              </CompactInvestigatorRow>
+            </View>
           );
         }
         return (
@@ -143,21 +158,6 @@ export default function UpgradeDecksInput({ componentId, id, skipDeckSave, speci
           />
         );
       }) }
-      { !hasDecision && (
-        <BasicButton
-          title={t`Proceed`}
-          onPress={save}
-        />
-      ) }
-    </View>
+    </InputWrapper>
   );
 }
-
-const styles = StyleSheet.create({
-  header: {
-    paddingRight: m,
-    paddingBottom: xs,
-    paddingTop: s + m,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-});
