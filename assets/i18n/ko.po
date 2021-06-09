@@ -1576,11 +1576,11 @@ msgid ""
 msgstr "당신의 캠페인 기록지 중 \"${ logEntry.section }\" 항목 아래에 ${ logEntry.text }라고 기록합니다."
 
 msgid "Add ${ tokenString } to the chaos bag."
-msgstr "${ tokenString } 토큰을 혼돈 주머니에 넣습니다."
+msgstr "혼돈 주머니에 ${ tokenString } 토큰을 추가합니다."
 
 #, javascript-format
 msgid "Remove ${ tokenString } from the chaos bag."
-msgstr "${ tokenString } 토큰을 혼돈 주머니에서 제거합니다."
+msgstr "혼돈 주머니에서 ${ tokenString } 토큰을 제거합니다."
 
 #, javascript-format
 msgid "Remove ${ card.name } (${ input.length })"
