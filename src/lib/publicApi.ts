@@ -145,6 +145,8 @@ function rulesJson(lang?: string) {
       return require('../../assets/rules_de.json');
     case 'ko':
       return require('../../assets/rules_ko.json');
+    case 'zh':
+      return require('../../assets/rules_zh.json');
     case 'en':
     default:
       return require('../../assets/rules.json');
