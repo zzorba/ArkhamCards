@@ -4394,7 +4394,7 @@ msgstr ""
 "disponible editando tu mazo."
 
 msgid ""
-"The numbers below already include all the trauma, victory points, and stotry assets you "
+"The numbers below already include all the trauma, victory points, and story assets you "
 "may have earned during the resolution.\n"
 "\n"
 "If you have any other cards or effects that the app does not take care of, you can make "

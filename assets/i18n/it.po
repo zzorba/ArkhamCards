@@ -868,19 +868,19 @@ msgstr "Sacchetto del Caos"
 msgid "Adjust Weakness Set"
 msgstr "Correggi Debolezze Base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Questo mazzo contiene numerose debolezze Base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Questo mazzo contiene una debolezza base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Vuoi rimuoverle dal set di debolezze base della campagna?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Vuoi rimuoverla dal set di debolezze base della campagna?"
 
@@ -4452,7 +4452,7 @@ msgstr ""
 
 msgid ""
 "The numbers below already include all the trauma, victory points, and "
-"stotry assets you may have earned during the resolution.\n"
+"story assets you may have earned during the resolution.\n"
 "\n"
 "If you have any other cards or effects that the app does not take care of, "
 "you can make adjustments below before saving each investigator."

@@ -1,13 +1,13 @@
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { findIndex, flatMap, map } from 'lodash';
+import { findIndex, find, map, flatMap } from 'lodash';
 import { t } from 'ttag';
 
 import BranchButton from './BranchButton';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import { ScenarioFaqProps } from '@components/campaignguide/ScenarioFaqView';
-import { PlayScenarioInput } from '@data/scenario/types';
+import { BinaryConditionalChoice, PlayScenarioInput } from '@data/scenario/types';
 import { PlayingScenarioBranch } from '@data/scenario/fixedSteps';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 import { CampaignId } from '@actions/types';
@@ -21,6 +21,7 @@ import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext
 import { calculateBinaryConditionResult } from '@data/scenario/inputHelper';
 import StyleContext from '@styles/StyleContext';
 import BorderWrapper from '@components/campaignguide/BorderWrapper';
+import { vi } from 'date-fns/locale';
 
 
 interface Props {
@@ -28,6 +29,11 @@ interface Props {
   campaignId: CampaignId;
   id: string;
   input: PlayScenarioInput;
+}
+
+interface ConditionalBranch {
+  choice: BinaryConditionalChoice;
+  visible: boolean;
 }
 
 export default function PlayOptionsComponent({ input, componentId, campaignId, id }: Props) {
@@ -48,23 +54,18 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
     setCampaignLogDialogVisibleRef.current?.(false);
     branchPress(PlayingScenarioBranch.CAMPAIGN_LOG);
   }, [branchPress]);
-  const branches = useMemo(() => {
-    return flatMap(input.branches || [], choice => {
-      if (choice.condition) {
-        const result = calculateBinaryConditionResult(choice.condition, campaignLog);
-        if (!result.option) {
-          return [];
-        }
-      }
-      return choice;
-    });
-  }, [input.branches, campaignLog]);
+  const branches: ConditionalBranch[] = useMemo(() => map(input.branches || [], choice => {
+    return {
+      choice,
+      visible: !choice.condition || !!(calculateBinaryConditionResult(choice.condition, campaignLog)?.option),
+    };
+  }), [input.branches, campaignLog]);
   const chaosBagIndex = useMemo(() => {
     if (!input.chaos_bag_branches) {
       return undefined;
     }
     const chaosBagBranches = new Set(input.chaos_bag_branches);
-    const index = findIndex(branches, b => chaosBagBranches.has(b.id));
+    const index = findIndex(branches, b => b.visible && chaosBagBranches.has(b.choice.id));
     if (index === -1) {
       return undefined;
     }
@@ -184,7 +185,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
             bottomMargin={s}
           />
         ) }
-        { !!branches.length && (
+        { !!find(branches, b => b.visible) && (
           <>
             <Text style={[space.paddingS, typography.cardName, typography.center, typography.italic, typography.light]}>
               { t`Scenario effects` }
@@ -198,17 +199,22 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
                 onPress={editCampaignLogPressed}
               />
             ) }
-            { map(
+            { flatMap(
               branches || [],
-              (choice, index) => (
-                <BranchButton
-                  icon={processedScenario.id.scenarioId}
-                  key={index}
-                  index={index}
-                  text={choice.text}
-                  onPress={branchPress}
-                />
-              )
+              ({ choice, visible }, index) => {
+                if (!visible) {
+                  return null;
+                }
+                return (
+                  <BranchButton
+                    icon={processedScenario.id.scenarioId}
+                    key={index}
+                    index={index}
+                    text={choice.text}
+                    onPress={branchPress}
+                  />
+                );
+              }
             ) }
           </>
         ) }

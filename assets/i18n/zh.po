@@ -4233,7 +4233,7 @@ msgstr ""
 "如果你升級完牌組後，發現有誤，你也能在編輯牌組時'調整'可用的經驗值。"
 
 msgid ""
-"The numbers below already include all the trauma, victory points, and stotry assets you "
+"The numbers below already include all the trauma, victory points, and story assets you "
 "may have earned during the resolution.\n"
 "\n"
 "If you have any other cards or effects that the app does not take care of, you can make "
