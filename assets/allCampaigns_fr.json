@@ -79915,6 +79915,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_4.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Sitôt votre esprit revenu dans le présent, vous commencez à élaborer un plan. Un plan pour entrer dans le royaume des Profonds et mettre un terme à leur conspiration une bonne fois pour toutes. « C'est ridicule, vous savez ? » déclare Harper. Vous hochez la tête. Bien sûr que c'est ridicule. Vous avez passé les deux derniers jours en cavale. Pourchassés. Traqués.\nMais vous en avez également profité pour retrouver les souvenirs que vous aviez oubliés. Et ce que vous avez découvert ne peut être ignoré, Vous avez aperçu la divinité qui a donné son nom à l'Ordre Ésotérique de Dagon et vous comprenez les plans de l'Ordre. L'alignement des astres dans le ciel, les mers qui montent indéfiniment, le changement climatique, les créatures qui surgissent des profondeurs, tout est lié. Vous l'avez vu. Un déluge va se produire, un immense désastre qui engloutira l'humanité tout entière afin que seuls demeurent les Profonds. La grande cité sous le rétif s’élèvera de nouveau et deviendra le nouveau cœur battant de toute la vie sur Terre.\nIl y a toujours des trous dans vos souvenirs, mais vous êtes au moins sûr de cela. Innsmouth tout entière est consumée par cette conspiration. L'Ordre contrôle toute la ville via ses serments et les richesses cachées qu'il tire des profondeurs. Pas étonnant qu'ils traitent les étrangers de cette façon.\nVous jetez à Harper un regard entendu. Elle soupire et hoche la tête. « Je sais. C'est le seul moyen. » Ensemble, vous déterminez la marche à suivre. On trouve encore des embarcations abandonnées dans le port d'Innsmouth. À la faveur de la nuit, vous devez vous emparer de l'une d’entre elles, naviguer jusqu'au Récif du Diable et descendre une fois de plus dans les ruines antédiluviennes qui se trouvent sous ces îles maudites. C'est là que se trouve l'entrée de la cité. Y'ha-nthlei.\nDes frissons parcourent votre peau chaque fois que vous prononcez ce mot à voix haute. Harper grimace, mais vous pouvez deviner la détermination qui se cache derrière son regard d'acier. « Je vais achever cette mission pour toi Dawson. »\nVous rassemblez toutes les informations que vous avez découvertes et toutes les reliques que vous avez obtenues malgré les horreurs liguées contre vous. Vous savez que l'accès à Y'ha-nthlei sera fermé. Il doit y avoir un moyen d'entrer. Peut-être même possédez-vous déjà la réponse que vous cherchez…"
     },
@@ -79965,6 +79969,10 @@
     },
     {
       "id": "story_1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_4.the_terror_of_devil_reef_is_dead_and_the_lifecycle_of_a_deep_one",
+        "name": "The Terror of Devil Reef is Dead and The Lifecycle of a Deep One"
+      },
       "type": "story",
       "text": "Vous étudiez le trophée que vous avez découvert dans le gouffre sacrificiel où vous vous êtes réveillé il y a quelques jours ; un morceau de la créature que vous avez combattue dans le Récif du Diable, C'était une créature d'une nature différente des « Profonds » que vénère l'Ordre Ésotérique de Dagon, mais qui comporte quand même des similitudes. Vous vous rappelez que les poissons ne cessent jamais de grandir en vieillissant. Peut-être est-ce pareil pour les Profonds ? Un être si vieux qu'il est devenu incroyablement grand ? Si tel est le cas, que faisait-il dans le Récif du Diable ? Gardait-il Y'ha-nthlei ? En quoi cela pourrait-il vous aider ? Vous décidez de prendre le trophée avec vous, dans l'espoir qu'il vous soit d'une quelconque utilité…"
     },
@@ -80088,6 +80096,10 @@
     },
     {
       "id": "story_2",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_4.gatekeeper_defeated",
+        "name": "Gatekeeper defeated"
+      },
       "type": "story",
       "text": "Vous comprenez désormais l'utilité de la relique que vous avez trouvée dans le Récif du Diable, Ce n'est pas juste un objet de pouvoir. C'est un emblème, une sorte de signe de reconnaissance porté par ceux qui gardent l'accès à la ville des Profonds. Vous avez vaincu celui qui s'apprêtait à devenir le prochain protecteur. Maintenant, la relique vous reconnaît comme Son héritier légitime. Grâce à elle, vous serez peut-être en mesure d'entrer dans Y'ha-nthlei…"
     },
@@ -80105,6 +80117,10 @@
     },
     {
       "id": "remove_thomas_dawson",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_4.outro",
+        "name": "Outro"
+      },
       "text": "Remettez Thomas Dawson dans la collection. Si un investigateur a gagné Elina Harper (à n'importe quel point de cette campagne), il peut l'ajouter à son deck."
     },
     {
@@ -82890,6 +82906,10 @@
   "steps": [
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "<center><game>JEUDI 15 SEPTEMBRE 1927</game></center>\n<center><game>UNE SEMAINE PLUS TÔT</game></center>\nVous vous tenez devant les marches de marbre craquelées menant à la loge maçonnique de l'Ordre Ésotérique de Dagon. Toutes les preuves que vous avez réunies vous mènent ici. Quoi qu'il se passe dans cette ville, l'Ordre en est à l'origine, Vous en êtes certain…  mais leur objectif final demeure un mystère.\nLa ville est étrangement calme pendant que vous attendez devant l'entrée du bâtiment. Jadis, l'opulence de ce lieu devait être impressionnante. Mais, des années de délabrement et dégâts liés aux inondations l'ont réduit à l'état de quasi-ruine. Sa peinture autrefois blanche est désormais grisâtre et s'écaille. Plusieurs piliers devant l'entrée commencent à s'écrouler. Ce lieu demeure cependant l'un des plus impressionnants d'Innsmouth, dégageant quelque autorité malgré son état de décrépitude. Non, pas d'autorité… quelque chose de plus sombre. Comme une menace rampante, indicible.\n« Êtes-vous prêt ? » demande l'agent Dawson. Son calme habituel a disparu, remplacé par une gravité qui vous prend au dépourvu. « Nous y sommes. C'est ici que nous trouverons des réponses. »\nVous n'en êtes pas sûr. Toutes les pistes que vous avez suivies jusqu'ici, n'ont mené qu'à plus de questions."
     },
@@ -82918,11 +82938,19 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "L'agent Harper a été capturée quand elle s'est rapprochée de l'Ordre, mais l'interrogatoire de son ravisseur n 'a pas été très fructueux. Tout ce que vous savez, c'est que l'influence de l'Ordre imprègne chaque aspect de la vie des habitants d'Innsmouth, des plus puissants notables aux simples citoyens. Finance, religion, politique tout est lié à ce culte, d 'une manière ou d 'une autre. Le pire est que nombre d'habitants d'Innsmouth semblent être d'une dévotion fanatique envers l'Ordre. Si bien que vous ne savez même plus s'il s'agit encore d'une vraie ville. Inutile de se demander pourquoi les habitants sont si hostiles vis-à-vis des étrangers.\nCe n'est qu'en enquêtant dans le Récif du Diable que vous avez commencé à comprendre à quel point Innsmouth était corrompue. C'est là que vous avez découvert ce que cachait l'ordre : les créatures monstrueuses qui émergent des profondeurs, arpentent les îles et prient quelque immonde divinité. Peut-être ce « Dagon » vénéré par l'Ordre."
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "Vous êtes persuadé que l'agent Harper a été enlevée quand elle a commencé à enquêter sur l'Ordre. Votre propre enquête aurait probablement fini de la même manière si vous n'aviez pas fait profil bas pendant une semaine après le soulèvement de la population. C'est comme si l'influence de l'Ordre imprégnait chaque aspect de la vie des habitants d 'Innsmouth, des plus puissants notables aux simples citoyens. Finance, religion, politique… tout est lié à ce culte, d'une manière ou d'une autre. Le pire est que nombre d'habitants d'Innsmouth semblent être d'une dévotion fanatique envers l'Ordre. Si bien que vous ne savez même plus s'il s'agit encore d'une vraie ville. Inutile de se demander pourquoi les habitants sont si hostiles vis-à-vis des étrangers.\nCe n'est qu'en enquêtant dans le Récif du Diable que vous avez commencé à comprendre à quel point Innsmouth était corrompue. C'est là que vous avez découvert ce que cachait l'ordre : les créatures monstrueuses qui émergent des profondeurs, arpentent les îles et prient quelque immonde divinité. Peut-être ce « Dagon » vénéré par l'Ordre."
     },
@@ -82952,11 +82980,19 @@
     },
     {
       "id": "intro_4",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_4",
+        "name": "Intro 4"
+      },
       "type": "story",
       "text": "<i>Crac.</i> L'agent Dawson ouvre en grand les portes d'entrée du bâtiment et vous le suivez de près. À l'intérieur, les couloirs sont sombres et étrangement silencieux, seulement brisé par un bruit ténu d'eau qui coule. « Je n'aime pas ça », déclare Dawson tandis que les portes se referment derrière vous. Il dégaine son arme, allume sa lampe-torche et balaye la pièce. « Nous devrions rester groupés. L'union fait la force. » Vous hochez la tête. L'Ordre s'est révélé particulièrement dangereux et ils n'aimeraient certainement pas vous voir fureter dans leur quartier général."
     },
     {
       "id": "intro_5",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_5",
+        "name": "Intro 5"
+      },
       "type": "story",
       "text": "<i>Crac.</i> L'agent Dawson enfonce en grand les portes d'entrée du bâtiment et vous e suivez près. À l'intérieur, les couloirs sont sombres et étrangement silencieux, seulement brisé par un bruit ténu d'eau qui coule. « C'est plutôt calme. Pas de cérémonie ce soir, je suppose. Tant mieux », déclare Dawson tandis que les portes se referment derrière vous. Il allume sa lampe-torche et éclaire une porte adjacente « Nous devrions nous séparer pour couvrir plus de terrain. Essayez de découvrir ce qui se trame ici. On se retrouve plus tard. » Vous acquiescez et vous dirigez dans la direction opposée."
     },
@@ -83608,6 +83644,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No resolution was reached",
       "description": "Tous les investigateurs ont abandonné ou été vaincus",
       "investigator_status": [
@@ -83624,6 +83664,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Conclusion 1",
       "investigator_status": [
         "alive",
@@ -83642,6 +83686,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "investigator_status": [
         "alive",
@@ -83657,6 +83705,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Conclusion 3",
       "investigator_status": [
         "alive",
@@ -83672,6 +83724,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Conclusion 4",
       "investigator_status": [
         "alive",

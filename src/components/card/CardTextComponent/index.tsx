@@ -233,7 +233,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
     .replace(/&rarr;/g, '→')
     .replace(/\/n/g, '\n')
     .replace(/^---*$/gm, '<hr>')
-    .replace(/(^\s?-|^—\s+)(.+)$/gm,
+    .replace(/(^\s?-|^—\s+)([^0-9].+)$/gm,
       onLinkPress ? '<span class="icon-bullet"></span> $2' : '[bullet] $2'
     )
     .replace(/(<p>- )|(<p>–)/gm, onLinkPress ? '<p><span class="icon-bullet"></span> ' : '<p>[bullet] ');

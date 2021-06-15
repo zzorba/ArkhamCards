@@ -1212,13 +1212,13 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss."
+            "masculine_text": "#name#墜入深淵。",
+            "feminine_text": "#name#墜入深淵。"
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss."
+            "masculine_text": "#name#墜入深淵。",
+            "feminine_text": "#name#墜入深淵。"
           },
           {
             "id": "blob_contained",
@@ -1286,23 +1286,23 @@
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "你發現了伊扎法拉的計劃。"
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "兄弟會的密謀順利無阻。"
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "沉睡詛咒已破除。"
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "深淵中的沉夢者 (#X#)"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
+            "text": "逃走的兄弟會成員：#name#"
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
