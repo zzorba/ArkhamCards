@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2021-06-08 21:40+0300\n"
+"PO-Revision-Date: 2021-06-15 09:54+0300\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -264,7 +264,7 @@ msgid ""
 "You can view the deck and delete the most recent 'upgrade' to put things "
 "back the way they were."
 msgstr ""
-"Кажется, вы собираетесь сбросить улучшение колоды.\n"
+"Кажется, вы собираетесь откатить улучшение колоды.\n"
 "\n"
 "Обратите внимание: это действие НЕ УДАЛИТ улучшение с ArkhamDB, так что "
 "ваша колода сохранит внесённые ранее изменения.\n"
@@ -273,11 +273,11 @@ msgstr ""
 "вернуть её к прежнему виду."
 
 msgid "Undo"
-msgstr "Да, сбросить"
+msgstr "Откатить"
 
 #. This is a deck upgrade action.
 msgid "Cancel"
-msgstr "Отменить"
+msgstr "Отмена"
 
 msgid "Draw Weakness"
 msgstr "Взять слабость"
@@ -2617,19 +2617,19 @@ msgstr "Новая кампания"
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
@@ -4496,19 +4496,6 @@ msgstr ""
 "Если окажется, что в сохранённой колоде неверное число опыта, "
 "скорректируйте его вручную при редактировании колоды."
 
-msgid ""
-"The numbers below already include all the trauma, victory points, and "
-"story assets you may have earned during the resolution.\n"
-"\n"
-"If you have any other cards or effects that the app does not take care of, "
-"you can make adjustments below before saving each investigator."
-msgstr ""
-"Числа ниже уже включают травмы, очки опыта и сюжетные активы, которые вы "
-"получили при розыгрыше исхода.\n"
-"\n"
-"Если у вас есть какие-либо неучтённые карты или эффекты, вы можете внести "
-"ручные изменения для каждого сыщика перед сохранением."
-
 msgid "Learn more"
 msgstr "Подробнее"
 
@@ -4594,6 +4581,23 @@ msgid ""
 msgstr ""
 "Запишите <i>${ logEntry.text }</i> в графе «${ logEntry.section }» журнала "
 "кампании."
+
+msgid ""
+"The numbers below already include all the trauma, victory points, and story "
+"assets you may have earned during the resolution.\n"
+"\n"
+"If you have any other cards or effects that the app does not take care of, "
+"you can make adjustments below before saving each investigator."
+msgstr ""
+
+msgid "Unarchive campaign"
+msgstr ""
+
+msgid "Archive campaign"
+msgstr ""
+
+msgid "Show archived campaigns"
+msgstr ""
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
