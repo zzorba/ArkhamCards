@@ -1185,7 +1185,7 @@
     },
     {
       "id": "remove_francis_morgan",
-      "text": "‘헨리 아미티지 박사’를 해당 조사자의 덱에서 제거해야 합니다.",
+      "text": "‘프랜시스 모건 박사’를 해당 조사자의 덱에서 제거해야 합니다.",
       "bullet_type": "small",
       "effects": [
         {
@@ -1783,7 +1783,7 @@
     },
     {
       "id": "all_killed",
-      "text": "모든 조사자는 <b>사망합니다.</b>",
+      "text": "모든 생존한 조사자는 <b>사망합니다</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -7577,7 +7577,7 @@
     },
     {
       "id": "all_insane",
-      "text": "모든 생존한 조사자는 <b>미칩니다.</b>",
+      "text": "모든 조사자는 <b>미칩니다.</b>",
       "effects": [
         {
           "type": "trauma",
@@ -8706,7 +8706,7 @@
     },
     {
       "id": "all_insane",
-      "text": "모든 생존한 조사자는 <b>미칩니다.</b>",
+      "text": "모든 조사자는 <b>미칩니다.</b>",
       "effects": [
         {
           "type": "trauma",
@@ -13657,7 +13657,7 @@
     },
     {
       "id": "remove_francis_morgan",
-      "text": "‘헨리 아미티지 박사’를 해당 조사자의 덱에서 제거해야 합니다.",
+      "text": "‘프랜시스 모건 박사’를 해당 조사자의 덱에서 제거해야 합니다.",
       "bullet_type": "small",
       "effects": [
         {
@@ -14291,7 +14291,7 @@
     },
     {
       "id": "all_killed",
-      "text": "모든 조사자는 <b>사망합니다.</b>",
+      "text": "모든 생존한 조사자는 <b>사망합니다</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -21051,7 +21051,7 @@
     },
     {
       "id": "all_insane",
-      "text": "모든 생존한 조사자는 <b>미칩니다.</b>",
+      "text": "모든 조사자는 <b>미칩니다.</b>",
       "effects": [
         {
           "type": "trauma",
@@ -22218,7 +22218,7 @@
     },
     {
       "id": "all_insane",
-      "text": "모든 생존한 조사자는 <b>미칩니다.</b>",
+      "text": "모든 조사자는 <b>미칩니다.</b>",
       "effects": [
         {
           "type": "trauma",
@@ -28375,7 +28375,7 @@
     },
     {
       "id": "all_insane",
-      "text": "모든 생존한 조사자는 <b>미칩니다.</b>",
+      "text": "모든 조사자는 <b>미칩니다.</b>",
       "effects": [
         {
           "type": "trauma",
@@ -70965,7 +70965,7 @@
     },
     {
       "id": "all_insane",
-      "text": "모든 생존한 조사자는 <b>미칩니다.</b>",
+      "text": "모든 조사자는 <b>미칩니다.</b>",
       "effects": [
         {
           "type": "trauma",

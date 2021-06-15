@@ -16,6 +16,7 @@ import { InjectedCampaignGuideContextProps } from './withCampaignGuideContext';
 import space from '@styles/space';
 import ScenarioGuideContext from './ScenarioGuideContext';
 import StyleContext from '@styles/StyleContext';
+import { useUpdateCampaignActions } from '@data/remote/campaigns';
 
 export interface StandaloneGuideProps extends ScenarioGuideInputProps {
   campaignId: CampaignId;
@@ -28,6 +29,7 @@ function StandaloneGuideView({ campaignId, componentId, setCampaignServerId }: S
   useStopAudioOnUnmount();
   const [alertDialog, showAlert] = useAlertDialog();
   const deckActions = useDeckActions();
+  const updateCampaignActions = useUpdateCampaignActions();
   const footer = useMemo(() => {
     return (
       <View style={space.paddingSideS}>
@@ -47,6 +49,7 @@ function StandaloneGuideView({ campaignId, componentId, setCampaignServerId }: S
         />
         <DeleteCampaignButton
           componentId={componentId}
+          actions={updateCampaignActions}
           campaignId={campaignId}
           campaign={campaign}
           showAlert={showAlert}
@@ -54,7 +57,7 @@ function StandaloneGuideView({ campaignId, componentId, setCampaignServerId }: S
         />
       </View>
     );
-  }, [componentId, campaignId, setCampaignServerId, showAlert, deckActions, campaign, typography]);
+  }, [componentId, campaignId, setCampaignServerId, showAlert, updateCampaignActions, deckActions, campaign, typography]);
 
   return (
     <>

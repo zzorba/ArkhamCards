@@ -40,6 +40,7 @@ import {
   useUpdateCampaignDifficultyMutation,
   useUpdateCampaignGuideVersionMutation,
   useUploadNewCampaignMutation,
+  useUpdateCampaignArchivedMutation,
   Guide_Input_Insert_Input,
   Guide_Achievement_Insert_Input,
   Investigator_Data_Insert_Input,
@@ -447,6 +448,7 @@ export function useSetCampaignShowInterludes(): SetCampaignShowInterludes {
 }
 
 export interface UpdateCampaignActions {
+  setArchived: (campaignId: UploadedCampaignId, archived: boolean) => Promise<void>;
   setScenarioResults: (campaignId: UploadedCampaignId, scenarioResults: ScenarioResult[]) => Promise<void>;
   setGuideVersion: (campaignId: UploadedCampaignId, guideVersion: number) => Promise<void>;
   setDifficulty: (campaignId: UploadedCampaignId, difficulty?: CampaignDifficulty) => Promise<void>
@@ -463,6 +465,7 @@ export interface UpdateCampaignActions {
 }
 
 export function useUpdateCampaignActions(): UpdateCampaignActions {
+  const [updateArchived] = useUpdateCampaignArchivedMutation();
   const [updateInvestigatorTrauma] = useUpdateInvestigatorTraumaMutation();
   const [updateInvestigatorData] = useUpdateInvestigatorDataMutation();
   const [updateCampaignName] = useUpdateCampaignNameMutation();
@@ -479,6 +482,28 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
   const setWeaknessSet = useSetCampaignWeaknessSet();
   const setChaosBag = useSetCampaignChaosBag();
   const setCampaignNotes = useSetCampaignNotes();
+
+
+  const setArchived = useCallback(async(campaignId: UploadedCampaignId, archived: boolean) => {
+    await updateArchived({
+      optimisticResponse: {
+        __typename: 'mutation_root',
+        update_campaign_by_pk: {
+          __typename: 'campaign',
+          id: campaignId.serverId,
+          uuid: campaignId.campaignId,
+          archived,
+        },
+      },
+      variables: {
+        campaign_id: campaignId.serverId,
+        archived,
+      },
+      context: {
+        serializationKey: campaignId.serverId,
+      },
+    });
+  }, [updateArchived]);
 
   const setDifficulty = useCallback(async(campaignId: UploadedCampaignId, difficulty?: CampaignDifficulty) => {
     await updateDifficulty({
@@ -748,6 +773,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
   }, [updateSpentXp, updateAvailableXp]);
   return useMemo(() => {
     return {
+      setArchived,
       setInvestigatorTrauma,
       setInvestigatorData,
       setWeaknessSet,
@@ -763,7 +789,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
       setGuideVersion,
     };
   }, [
-    setInvestigatorTrauma, setInvestigatorData, addInvestigator, removeInvestigatorDeck, removeInvestigator,
+    setInvestigatorTrauma, setInvestigatorData, addInvestigator, removeInvestigatorDeck, removeInvestigator, setArchived,
     setChaosBag, setWeaknessSet, setCampaignNotes, setCampaigName, setXp, setScenarioResults, setDifficulty, setGuideVersion]);
 }
 

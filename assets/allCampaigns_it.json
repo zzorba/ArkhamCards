@@ -1772,7 +1772,7 @@
     },
     {
       "id": "all_insane",
-      "text": "Each investigator is driven <b>insane</b>.",
+      "text": "Each surviving investigator is driven <b>insane</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -1783,7 +1783,7 @@
     },
     {
       "id": "all_killed",
-      "text": "Each investigator is <b>killed</b>.",
+      "text": "Ogni investigatore sopravvissuto è ucciso.",
       "effects": [
         {
           "type": "trauma",
@@ -14280,7 +14280,7 @@
     },
     {
       "id": "all_insane",
-      "text": "Each investigator is driven <b>insane</b>.",
+      "text": "Each surviving investigator is driven <b>insane</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -14291,7 +14291,7 @@
     },
     {
       "id": "all_killed",
-      "text": "Each investigator is <b>killed</b>.",
+      "text": "Ogni investigatore sopravvissuto è ucciso.",
       "effects": [
         {
           "type": "trauma",

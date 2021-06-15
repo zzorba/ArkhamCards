@@ -1772,7 +1772,7 @@
     },
     {
       "id": "all_insane",
-      "text": "所有調查員<b>發瘋</b>。",
+      "text": "Each surviving investigator is driven <b>insane</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -1783,7 +1783,7 @@
     },
     {
       "id": "all_killed",
-      "text": "所有調查員<b>陣亡</b>。",
+      "text": "所有依然活著的調查員都<b>陣亡</b>。",
       "effects": [
         {
           "type": "trauma",
@@ -14280,7 +14280,7 @@
     },
     {
       "id": "all_insane",
-      "text": "所有調查員<b>發瘋</b>。",
+      "text": "Each surviving investigator is driven <b>insane</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -14291,7 +14291,7 @@
     },
     {
       "id": "all_killed",
-      "text": "所有調查員<b>陣亡</b>。",
+      "text": "所有依然活著的調查員都<b>陣亡</b>。",
       "effects": [
         {
           "type": "trauma",

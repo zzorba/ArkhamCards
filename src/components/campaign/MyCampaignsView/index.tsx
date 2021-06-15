@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState } from 'react';
-import { flatMap, forEach, throttle } from 'lodash';
+import { concat, filter, flatMap, forEach, partition, throttle } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -16,20 +16,47 @@ import { searchMatchesText } from '@components/core/searchHelpers';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
-import space, { m } from '@styles/space';
+import space, { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
-import { useNavigationButtonPressed } from '@components/core/hooks';
+import { useFlag, useNavigationButtonPressed } from '@components/core/hooks';
 import { NavigationProps } from '@components/nav/types';
 import { getStandaloneScenarios } from '@data/scenario';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useCampaigns } from '@data/hooks';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import withApolloGate from '@components/core/withApolloGate';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
+
+
+function SearchOptions({
+  showArchived,
+  toggleShowArchived,
+}: {
+  showArchived: boolean;
+  toggleShowArchived: () => void;
+}) {
+  const { typography } = useContext(StyleContext);
+  return (
+    <View style={styles.searchOptions}>
+      <View style={styles.row} key={2}>
+        <Text style={[typography.small, styles.searchOption]}>
+          { t`Show archived campaigns` }
+        </Text>
+        <ArkhamSwitch
+          useGestureHandler
+          value={showArchived}
+          onValueChange={toggleShowArchived}
+        />
+      </View>
+    </View>
+  );
+}
 
 function MyCampaignsView({ componentId }: NavigationProps) {
   const [search, setSearch] = useState('');
   const { lang } = useContext(LanguageContext);
+  const { fontScale } = useContext(StyleContext);
   const standalonesById = useMemo(() => {
     const scenarios = getStandaloneScenarios(lang);
     const result: {
@@ -47,6 +74,7 @@ function MyCampaignsView({ componentId }: NavigationProps) {
   }, [lang]);
   const { typography } = useContext(StyleContext);
   const [campaigns, refreshing, refreshCampaigns] = useCampaigns();
+  const [showArchived, toggleShowArchived] = useFlag(false);
   const showNewCampaignDialog = useMemo(() => {
     return throttle(() => {
       Navigation.push(componentId, {
@@ -73,7 +101,7 @@ function MyCampaignsView({ componentId }: NavigationProps) {
   }, componentId, [showNewCampaignDialog]);
 
   const filteredCampaigns: MiniCampaignT[] = useMemo(() => {
-    return flatMap(campaigns, (campaign) => {
+    const [archived, unarchived] = partition(flatMap(campaigns, (campaign) => {
       const parts = [campaign.name];
       const cycleCode = campaign.cycleCode;
       if (cycleCode === STANDALONE) {
@@ -88,8 +116,14 @@ function MyCampaignsView({ componentId }: NavigationProps) {
         return [];
       }
       return campaign;
-    });
+    }), c => !!c.archived);
+    return concat(unarchived, archived);
   }, [campaigns, search, standalonesById]);
+
+  const [realFilteredCampaigns, hiddenArchived] = useMemo(() => {
+    const result = filter(filteredCampaigns, f => showArchived || !f.archived);
+    return [result, result.length !== filteredCampaigns.length];
+  }, [filteredCampaigns, showArchived]);
 
   const conditionalFooter = useMemo(() => {
     if (filteredCampaigns.length === 0) {
@@ -117,6 +151,9 @@ function MyCampaignsView({ componentId }: NavigationProps) {
   const footer = useMemo(() => {
     return (
       <View>
+        { !!hiddenArchived && (
+          <ArkhamButton icon="expand" title={t`Show archived campaigns`} onPress={toggleShowArchived} />
+        )}
         { conditionalFooter }
         <ArkhamButton
           icon="campaign"
@@ -126,19 +163,22 @@ function MyCampaignsView({ componentId }: NavigationProps) {
         <View style={styles.gutter} />
       </View>
     );
-  }, [conditionalFooter, showNewCampaignDialog]);
-
+  }, [conditionalFooter, showNewCampaignDialog, hiddenArchived, toggleShowArchived]);
   return (
     <CollapsibleSearchBox
       prompt={t`Search campaigns`}
       searchTerm={search}
       onSearchChange={setSearch}
+      advancedOptions={{
+        controls: <SearchOptions showArchived={showArchived} toggleShowArchived={toggleShowArchived} />,
+        height: 20 + (fontScale * 20 + 8) + 12,
+      }}
     >
       { onScroll => (
         <CampaignList
           onScroll={onScroll}
           componentId={componentId}
-          campaigns={filteredCampaigns}
+          campaigns={realFilteredCampaigns}
           standalonesById={standalonesById}
           onRefresh={refreshCampaigns}
           refreshing={refreshing}
@@ -182,5 +222,23 @@ const styles = StyleSheet.create({
   },
   gutter: {
     marginBottom: 60,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingTop: xs,
+    paddingBottom: xs,
+    paddingLeft: s,
+    paddingRight: s,
+  },
+  searchOptions: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-end',
+    width: '100%',
+  },
+  searchOption: {
+    marginRight: 2,
   },
 });

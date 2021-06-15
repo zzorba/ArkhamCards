@@ -1772,7 +1772,7 @@
     },
     {
       "id": "all_insane",
-      "text": "Jeder Ermittler wird <b>wahnsinnig</b>.",
+      "text": "Each surviving investigator is driven <b>insane</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -1783,7 +1783,7 @@
     },
     {
       "id": "all_killed",
-      "text": "Jeder Ermittler wird <b>getötet</b>.",
+      "text": "Jeder überlebende Ermittler wird <b>getötet<\\b>.",
       "effects": [
         {
           "type": "trauma",
@@ -14280,7 +14280,7 @@
     },
     {
       "id": "all_insane",
-      "text": "Jeder Ermittler wird <b>wahnsinnig</b>.",
+      "text": "Each surviving investigator is driven <b>insane</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -14291,7 +14291,7 @@
     },
     {
       "id": "all_killed",
-      "text": "Jeder Ermittler wird <b>getötet</b>.",
+      "text": "Jeder überlebende Ermittler wird <b>getötet<\b>.",
       "effects": [
         {
           "type": "trauma",

@@ -95,13 +95,14 @@ function CampaignGuideView(props: Props) {
         />
         <DeleteCampaignButton
           componentId={componentId}
+          actions={updateCampaignActions}
           campaignId={campaignId}
           campaign={campaign}
           showAlert={showAlert}
         />
       </View>
     );
-  }, [componentId, campaign, campaignId, deckActions, typography, customData, downloadPressed, setCampaignServerId, showAlert]);
+  }, [componentId, campaign, campaignId, deckActions, typography, customData, updateCampaignActions, downloadPressed, setCampaignServerId, showAlert]);
   return (
     <View style={styles.wrapper}>
       <CampaignDetailTab

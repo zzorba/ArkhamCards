@@ -1772,7 +1772,7 @@
     },
     {
       "id": "all_insane",
-      "text": "Все сыщики <b>сошли с ума</b>.",
+      "text": "Each surviving investigator is driven <b>insane</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -1783,7 +1783,7 @@
     },
     {
       "id": "all_killed",
-      "text": "Все сыщики <b>убиты</b>.",
+      "text": "Все выжившие сыщики <b>убиты</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -14280,7 +14280,7 @@
     },
     {
       "id": "all_insane",
-      "text": "Все сыщики <b>сошли с ума</b>.",
+      "text": "Each surviving investigator is driven <b>insane</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -14291,7 +14291,7 @@
     },
     {
       "id": "all_killed",
-      "text": "Все сыщики <b>убиты</b>.",
+      "text": "Все выжившие сыщики <b>убиты</b>.",
       "effects": [
         {
           "type": "trauma",

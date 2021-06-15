@@ -476,6 +476,8 @@ interface BaseCampaign {
   guideVersion?: number;
   adjustedInvestigatorData?: InvestigatorData;
 
+  archived?: boolean;
+
   // All 'objects' might be optional
   investigatorData?: InvestigatorData;
   chaosBag?: ChaosBag;
