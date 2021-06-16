@@ -1,5 +1,5 @@
 diff --git a/node_modules/react-native/scripts/find-node.sh b/node_modules/react-native/scripts/find-node.sh
-index c111e70..c52e4a6 100755
+index 2ef8cf8..3ba8c6b 100755
 --- a/node_modules/react-native/scripts/find-node.sh
 +++ b/node_modules/react-native/scripts/find-node.sh
 @@ -6,6 +6,8 @@

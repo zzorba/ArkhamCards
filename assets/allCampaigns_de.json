@@ -1772,7 +1772,7 @@
     },
     {
       "id": "all_insane",
-      "text": "Jeder Ermittler wird <b>wahnsinnig</b>.",
+      "text": "Each surviving investigator is driven <b>insane</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -1783,7 +1783,7 @@
     },
     {
       "id": "all_killed",
-      "text": "Jeder Ermittler wird <b>getötet</b>.",
+      "text": "Jeder überlebende Ermittler wird <b>getötet<\\b>.",
       "effects": [
         {
           "type": "trauma",
@@ -14280,7 +14280,7 @@
     },
     {
       "id": "all_insane",
-      "text": "Jeder Ermittler wird <b>wahnsinnig</b>.",
+      "text": "Each surviving investigator is driven <b>insane</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -14291,7 +14291,7 @@
     },
     {
       "id": "all_killed",
-      "text": "Jeder Ermittler wird <b>getötet</b>.",
+      "text": "Jeder überlebende Ermittler wird <b>getötet<\b>.",
       "effects": [
         {
           "type": "trauma",
@@ -79915,6 +79915,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_4.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Sofort nachdem dein Verstand wieder in der Gegenwart angekommen ist, beginnst du einen Plan zu schmieden. Einen Plan, das Reich der Tiefen Wesen zu betreten und ihre Verschwörung ein für alle Mal zu beenden. „Das ist doch lächerlich und das wissen Sie auch“, stellt Harper fest. Du nickst. Natürlich ist das lächerlich. Du hast die letzten zwei Tage auf der Flucht verbracht. Du wurdest verfolgt, gejagt und gequält. \nAber die letzten zwei Tage hast du auch damit verbracht, deine vergessenen Erinnerungen zurückzuerlangen. Und was du gesehen hast, kannst du nicht einfach so ignorieren. Du hast die Gottheit gesehen, nach welcher der Esoterische Orden von Dagon benannt ist, und du weißt nun, was der Orden plant. Die Konstellation der Himmelskörper, die stetig ansteigende Flut, das stürmische, wechselhafte Wetter, die aus der Tiefe emporkommenden Kreaturen – all das hängt miteinander zusammen. Du hast es mit eigenen Augen gesehen. Es steht eine Flut bevor, eine große Katastrophe, welche die Menschheit auslöschen wird, und es wird nur noch die Tiefe selbst zurückbleiben. Die große Stadt im Riff wird sich erneut erheben und zum Zentrum allen Lebens auf der Erde werden. \nDeine Erinnerungen sind an manchen Stellen noch lückenhaft, aber du weißt, dass all das wahr ist. Dass ganz Innsmouth in die Verschwörung verstrickt ist. Dass der Orden die Stadt mithilfe von Eiden und geheimen Schätzen, die in der Tiefe gehortet werden, kontrolliert. Kein Wunder, dass die Einwohner mit einer solchen Verachtung auf dich und Fremde im Allgemeinen reagiert haben. \nDu wirfst Harper einen wissenden Blick zu. Sie seufzt und nickt. „Ich weiß. Uns bleibt kein anderer Weg.“ Zusammen schmiedet ihr beide einen Schlachtplan. Im Hafen von Innsmouth liegen noch immer vereinzelt verlassene Schiffe vor Anker. Im Schutze der Nacht müsst ihr mit einem davon zum Teufelsriff fahren und einmal mehr in die vorsintflutlichen Ruinen in den Tiefen unter den verlorenen Inseln hinabsteigen. Dort befindet sich der Eingang zur Stadt Y’ha-nthlei. \nDu bekommst am ganzen Körper eine Gänsehaut, als du die Worte laut aussprichst. Harper verzieht das Gesicht, aber ihr harter Blick zeigt Entschlossenheit. „Ich werde die Mission erfolgreich abschließen, Dawson. Für dich.“ \nDu teilst mit ihr alle Informationen, die du gesammelt hast, und zeigst ihr die Relikte, die du trotz der Schrecken, denen du ausgesetzt warst, bergen konntest. Du weißt, dass der Weg nach Y’ha-nthlei fest versiegelt ist. Es muss jedoch einen Weg geben, sich Zugang zu verschaffen. Vielleicht besitzt du bereits die Antworten, nach denen du suchst …"
     },
@@ -79965,6 +79969,10 @@
     },
     {
       "id": "story_1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_4.the_terror_of_devil_reef_is_dead_and_the_lifecycle_of_a_deep_one",
+        "name": "The Terror of Devil Reef is Dead and The Lifecycle of a Deep One"
+      },
       "type": "story",
       "text": "Du untersuchst die Trophäe, die du in der Opfergrotte gefunden hast, in der du vor ein paar Tagen cht bist. Sie ist ein Teil der Kreatur, die du beim Teufelsriff bekämpft hast. Es handelt sich nicht um die gleiche Art wie die „Tiefen Wesen“, die der Orden von Dagon verehrt, aber die Ähnlichkeiten dieser beiden Arten bringen dich ins Grübeln. Du meinst dich zu erinnern, dass Fische niemals zu wachsen aufhören, und fragst dich, ob das auch bei den Tiefen Wesen der Fall ist. Vielleicht war es ein uraltes Exemplar der Tiefen Wesen – so alt, dass es zu so etwas unvorstellbar Riesigem angewachsen ist. Wenn das stimmt, was hat es dann beim Teufelsriff zu suchen gehabt? Hat es etwa Y’ha-nthlei bewacht? Und wenn ja, was heißt das nun für dich? Du entschließt dich, die Trophäe mitzunehmen, und hoffst, dass sie dir auf deiner Mission helfen wird …"
     },
@@ -80088,6 +80096,10 @@
     },
     {
       "id": "story_2",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_4.gatekeeper_defeated",
+        "name": "Gatekeeper defeated"
+      },
       "type": "story",
       "text": "So langsam verstehst du den Zweck des Relikts, das du beim Teufelsriff gefunden hast. Es handelt sich nicht nur um ein Objekt der Macht. Es ist viel mehr auch ein Zeichen – gewissermaßen ein Erbstück, das von demjenigen getragen wird, der Wache vor dem Tor steht, das zur Stadt der Tiefen Wesen führt. Du hast denjenigen besiegt, der als sein nächster Beschützer auserkoren war, und nun erkennt das Relikt dich als seinen rechtmäßigen Erben an. Vielleicht schaffst du es damit, dir Zugang nach Y’ha-nthlei zu verschaffen …"
     },
@@ -80105,6 +80117,10 @@
     },
     {
       "id": "remove_thomas_dawson",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_4.outro",
+        "name": "Outro"
+      },
       "text": "Thomas Dawson wird in die Sammlung zurückgelegt. Falls ein Ermittler (zu einem beliebigen Zeitpunkt in der Kampagne) Elina Harper verdient hat, darf er sie wieder seinem Deck hinzufügen."
     },
     {
@@ -82890,6 +82906,10 @@
   "steps": [
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "<center><game>DONNERSTAG, 15. SEPTEMBER 1927</game></center>\n<center><game>EINE WOCHE ZUVOR</game></center>\nDu stehst vor der brüchigen Marmortreppe, die zum Freimaurertempel hinaufführt, dem Sitz des Esoterischen Ordens von Dagon. Alle Spuren haben dich hierhergeführt. Was auch immer in dieser Stadt vor sich geht, der Orden hat seine Finger im Spiel … da bist du dir sicher. Seine Beweggründe allerdings sind dir immer noch ein Rätsel. \nIn der Stadt Innsmouth herrscht eine unheimliche Stille, während du deinen Blick über die Gebäude schweifen lässt. Dies war bestimmt einmal ein beeindruckender und wohlhabender Ort. Aber jahrelange Vernachlässigung und die Schäden durch das Hochwasser haben es fast zu einer Ruine verkommen lassen. Die ursprünglich wohl weiß getünchte Fassade ist jetzt grau und blättert an vielen Stellen ab. Und die meisten Säulen vor dem Eingang beginnen zu zerbröckeln. Dennoch ist es noch immer eines der furchteinflößenderen Gebäude in Innsmouth, von dem trotz seiner Baufälligkeit eine gewisse Autorität ausgeht. Nein, Autorität ist das falsche Wort – es ist etwas Dunkleres. Eine unausgesprochene, lauernde Bedrohung. \n„Sind Sie bereit?“, fragt Agent Dawson und reißt dich damit aus deinen Gedanken. Sein normalerweise so gelassenes Auftreten ist verschwunden und hat sich in eine humorlose Ernsthaftigkeit verwandelt. „Das ist es. Hier werden wir Antworten finden.“ \nDu bist dir da nicht so sicher. Jede Spur, der du bisher gefolgt bist, hat dich nur mit noch mehr Fragen zurückgelassen."
     },
@@ -82918,11 +82938,19 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Agent Harper wurde entführt, als sie dem Orden zu nahe gekommen war. Aber die Befragung ihres Entführers hat nicht die Antworten gebracht, die du brauchst. Was du jetzt aber weißt, ist, dass sich der Einfluss des Ordens über ganz Innsmouth erstreckt, von einflussreichen öffentlichen Personen bis hin zu den einfachen Bürgern. Finanzen, Religion, Politik … in allen Bereichen hat der Orden auf die eine oder andere Weise seine Finger im Spiel. Und das Schlimmste ist, dass viele der Stadtbewohner diesem Kult mit blinder, fanatischer Hingabe folgen. Wahrscheinlich sind es sogar so viele, dass man gar nicht mehr von einer normal funktionierenden Stadt sprechen kann. Da ist es nicht verwunderlich, dass die Leute Fremden mit einer solchen Feindseligkeit begegnen. \nAber erst nachdem du deine Untersuchungen auf das Teufelsriff ausgeweitet hattest, war es dir gelungen, die äußersten Schichten von Innsmouth abzuziehen und die Fäulnis darunter aufzudecken. Dort hast du gefunden, was der Orden versteckt hatte: die monströsen Kreaturen, die aus den Tiefen hervorgekommen sind, auf den Gezeiteninseln herumschleichen und sich im Gebet zusammenschließen, um einer schrecklichen Gottheit zu huldigen. Vielleicht ist es sogar der gleiche „Dagon“, den der Orden verehrt."
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "Du bist dir sicher, dass Agent Harper entführt wurde, nachdem sie mit ihren Ermittlungen über den Orden begonnen hatte. Wenn du dich nicht eine Woche lang vor den aufgebrachten Stadtbewohnern versteckt hättest, wäre dir womöglich das Gleiche zugestoßen. Wie es aussieht, erstreckt sich der Einfluss des Ordens über ganz Innsmouth, von einflussreichen öffentlichen Personen bis hin zu den einfachen Bürgern. Finanzen, Religion, Politik … in allen Bereichen hat der Orden auf die eine oder andere Weise seine Finger im Spiel. Aber warum? \nErst nachdem du deine Untersuchungen auf das Teufelsriff ausgeweitet hattest, war es dir gelungen, die äußersten Schichten von Innsmouth abzuziehen und die Fäulnis darunter aufzudecken. Dort hast du gefunden, was der Orden versteckt hatte: die monströsen Kreaturen, die aus den Tiefen hervorgekommen sind, auf den Gezeiteninseln herumschleichen und sich im Gebet zusammenschließen, um einer schrecklichen Gottheit zu huldigen. Vielleicht ist es sogar der gleiche „Dagon“, den der Orden verehrt."
     },
@@ -82952,11 +82980,19 @@
     },
     {
       "id": "intro_4",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_4",
+        "name": "Intro 4"
+      },
       "type": "story",
       "text": "Mit einem Knarren öffnet Agent Dawson die großen Türen, die dem Gebäude als Eingang dienen. Du folgst ihm ins Innere. Hier ist es dunkel und unheimlich still. Nur das leise Tropfen von Wasser ist aus der Ferne zu hören. „Das gefällt mir gar nicht“, meint Agent Dawson, als sich die Vordertüren hinter dir schließen. Er zieht seine Waffe, schaltet seine Taschenlampe ein und untersucht den Raum. „Wir sollten zusammenbleiben. Gemeinsam sind wir sicherer.“ Du nickst zustimmend. Der Orden hat sich als äußerst gefährlich erwiesen. Ihm wird es nicht gefallen, wenn in seinem Hauptquartier herumgeschnüffelt wird …"
     },
     {
       "id": "intro_5",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_5",
+        "name": "Intro 5"
+      },
       "type": "story",
       "text": "Mit einem Knarren öffnet Agent Dawson die großen Türen, die dem Gebäude als Eingang dienen. Du folgst ihm ins Innere. Hier ist es dunkel und unheimlich still. Nur das leise Tropfen von Wasser ist aus der Ferne zu hören. „Es ist ruhig hier. Ich denke, dass heute keine Zeremonie stattfindet. Sehr gut“, meint Agent Dawson, als sich die Vordertüren hinter dir schließen. Er schaltet seine Taschenlampe ein und beleuchtet damit den nächsten Durchgang. „Wir sollten uns aufteilen. Auf diese Weise kommen wir schneller voran. Mal sehen, ob wir herausfinden können, was sie hier verstecken. Ich treffe mich mit Ihnen später wieder.“ Du nickst und gehst in die entgegengesetzte Richtung …"
     },
@@ -83608,6 +83644,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No resolution was reached",
       "description": "Alle Ermittler haben aufgegeben oder wurden besiegt",
       "investigator_status": [
@@ -83624,6 +83664,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "investigator_status": [
         "alive",
@@ -83642,6 +83686,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "investigator_status": [
         "alive",
@@ -83657,6 +83705,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Auflösung 3",
       "investigator_status": [
         "alive",
@@ -83672,6 +83724,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Auflösung 4",
       "investigator_status": [
         "alive",

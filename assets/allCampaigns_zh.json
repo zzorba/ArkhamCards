@@ -1772,7 +1772,7 @@
     },
     {
       "id": "all_insane",
-      "text": "所有調查員<b>發瘋</b>。",
+      "text": "Each surviving investigator is driven <b>insane</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -1783,7 +1783,7 @@
     },
     {
       "id": "all_killed",
-      "text": "所有調查員<b>陣亡</b>。",
+      "text": "所有依然活著的調查員都<b>陣亡</b>。",
       "effects": [
         {
           "type": "trauma",
@@ -5849,7 +5849,7 @@
           {
             "id": "hard",
             "text": "困難",
-            "description": "大聲說出誓言</i>",
+            "description": "<i>大聲說出誓言</i>",
             "tokens": [
               "0",
               "0",
@@ -10517,8 +10517,8 @@
   "resolutions": [
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution",
-      "description": "Aat least one investigator resigned",
+      "title": "未達成任何結局",
+      "description": "至少一位調查員撤退",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -10531,8 +10531,8 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution",
-      "description": "All investigators were defeated",
+      "title": "未達成任何結局",
+      "description": "所有調查員被擊敗",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -14280,7 +14280,7 @@
     },
     {
       "id": "all_insane",
-      "text": "所有調查員<b>發瘋</b>。",
+      "text": "Each surviving investigator is driven <b>insane</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -14291,7 +14291,7 @@
     },
     {
       "id": "all_killed",
-      "text": "所有調查員<b>陣亡</b>。",
+      "text": "所有依然活著的調查員都<b>陣亡</b>。",
       "effects": [
         {
           "type": "trauma",
@@ -16502,7 +16502,7 @@
   "campaign":
 {
   "id": "rtnotz",
-  "name": "Return to The Night of the Zealot",
+  "name": "重返狂熱之夜",
   "position": 0,
   "version": 1,
   "campaign_type": "campaign",
@@ -16777,95 +16777,95 @@
   "achievements": [
     {
       "id": "zealots_revent",
-      "title": "The Zealot's Revenge",
-      "text": "Have Lita Chantler’s [reaction] ability deal the killing blow to the Ghoul Priest.",
+      "title": "狂熱者的復仇",
+      "text": "利用麗塔·錢德勒的[reaction]能力對食屍鬼祭司造成致命的一擊。",
       "type": "binary"
     },
     {
       "id": "dont_trust_her",
-      "title": "I Don't Trust Her",
-      "text": "When given the option to add Lita Chantler to your deck, refuse to do so.",
+      "title": "我不信任她",
+      "text": "當被指示可以將麗塔·錢德勒加入牌組時，拒絕這麼做。",
       "type": "binary"
     },
     {
       "id": "insurance",
-      "title": "Insurance Doesn’t Cover Ghouls",
-      "text": "Burn your house to the ground in “The Gathering.”",
+      "title": "保險理賠範圍不包括食屍鬼",
+      "text": "在“聚集與此”將你的房子燒毀。",
       "type": "binary"
     },
     {
       "id": "do_i_have_to",
-      "title": "…But Do I Have To?",
-      "text": "In “The Midnight Masks,” have each investigator remain in Your House for the first three rounds.",
+      "title": "……真的得做嗎？",
+      "text": "在“午夜假面”的前三輪，所有調查員都待在你的房子。",
       "type": "binary"
     },
     {
       "id": "conspiracy_of_silence",
-      "title": "Conspiracy of Silence",
-      "text": "Find and interrogate all six unique cultists in “The Midnight Masks.”",
+      "title": "沉默的陰謀",
+      "text": "在“午夜假面”中，找出並盤問所有6個獨特[[異教徒]]。",
       "type": "binary"
     },
     {
       "id": "tour_of_arkham",
-      "title": "Tour of Arkham",
-      "text": "Trigger each of the “once per game” abilities on all of the locations in play in “The Midnight Masks.”",
+      "title": "阿卡姆之旅",
+      "text": "在“午夜假面”中，觸發場上所有地點的“每場遊戲限制1次”能力。",
       "type": "binary"
     },
     {
       "id": "do_you_get_it_now",
-      "title": "Do You Get It Now?",
-      "text": "Trigger the <b>Forced</b> ability on Billy Cooper by defeating the Ghoul Priest at his location.",
+      "title": "現在你懂了嗎？",
+      "text": "在比利·庫珀的所在地點擊敗食屍鬼祭司，觸發他的<b>強制</b>能力。",
       "type": "binary"
     },
     {
       "id": "pinch_hitter",
-      "title": "Pinch Hitter",
-      "text": "Defeat three [[Ghoul]] enemies with a Baseball Bat without it breaking.",
+      "title": "代打上陣",
+      "text": "用球棒擊敗3個[[食屍鬼]]敵人，球棒沒有壞掉。",
       "type": "binary"
     },
     {
       "id": "even_death_may_die",
-      "title": "Even Death May Die",
-      "text": "Defeat Umôrdhoth while the Vault of Earthly Demise is attached to it.",
+      "title": "死亡本身也會死去",
+      "text": "擊敗疊加有塵世覆滅之穹的烏默爾多斯。",
       "type": "binary"
     },
     {
       "id": "break_the_circle",
-      "title": "Break the Circle",
-      "text": "Complete “The Devourer Below” without Umôrdhoth spawning.",
+      "title": "打破循環",
+      "text": "在烏默爾多斯沒有生成的情況下完成“地底噬魔”。",
       "type": "binary"
     },
     {
       "id": "theyre_just_misunderstood",
-      "title": "They’re Just Misunderstood",
-      "text": "Win the <i>Night of the Zealot</i> campaign without defeating a single unique [[Cultist]] enemy.",
+      "title": "他們只是誤會了",
+      "text": "在沒有擊敗任何獨特[[異教徒]]敵人的情況下贏得<i>狂熱之夜</i>劇本的勝利。",
       "type": "binary"
     },
     {
       "id": "umordhoths_favor",
-      "title": "Umôrdhoth’s Favor",
-      "text": "Win the <i>Night of the Zealot</i> campaign without defeating a single [[Ghoul]] enemy.",
+      "title": "烏默爾多斯的恩惠",
+      "text": "在沒有擊敗任何[[異教徒]]敵人的情況下贏得<i>狂熱之夜</i>劇本的勝利。",
       "type": "binary"
     },
     {
       "id": "notz_line_in_the_sand",
       "title": "Line in the Sand",
-      "text": " Win the <i>Night of the Zealot</i> campaign with at least three Ultimatums active.",
+      "text": "在至少有3個最後通牒啟動的情況下贏得<i>狂熱之夜</i>劇本的勝利。",
       "type": "binary"
     },
     {
       "id": "arkham_expertise",
-      "title": "Arkham Expertise",
-      "text": "Win the <i>Night of the Zealot</i> campaign on Expert difficulty.",
+      "title": "阿卡姆專家",
+      "text": "以專家難度贏得<i>狂熱之夜</i>劇本的勝利。",
       "type": "binary"
     }
   ]
 }, "scenarios": [
 {
   "id": "return_to_the_devourer_below",
-  "scenario_name": "Return to The Devourer Below",
+  "scenario_name": "重返地底噬魔",
   "header": "冒險III",
-  "full_name": "Scenario III: Return to The Devourer Below",
+  "full_name": "冒險III：重返地底噬魔",
   "chaos_bag_card": "01142",
   "setup": [
     "intro",
@@ -17227,11 +17227,11 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the Main Path location into play. Shuffle the 10 copies of Arkham Woods, choose 4 of them at random, and put them into play without looking at their revealed sides. Remove the other 6 from the game. Each investigator begins play at the Main Path."
+      "text": "將主道路放置入場。將10張阿卡姆密林混洗，隨機抽出4張放置入場，請不要查看已揭示面。然後將另外6張移出遊戲。每位調查員從主道路開始遊戲。"
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the Ritual Site and Umôrdhoth cards aside, out of play. Flip over the \"Return to The Devourer Below\" scenario card and attach it to Umôrdhoth"
+      "text": "將儀式場所地點和烏默爾多斯敵人放在一邊，位於場外。將“重返地底噬魔”冒險卡翻面並疊加到烏默爾多斯。"
     }
   ],
   "resolutions": [
@@ -17311,7 +17311,7 @@
   "id": "return_to_the_gathering",
   "scenario_name": "重返聚集於此",
   "header": "冒險I",
-  "full_name": "Scenario I: Return to the Gathering",
+  "full_name": "冒險I：重返聚集於此",
   "chaos_bag_card": "01104",
   "setup": [
     "prologue",
@@ -17506,26 +17506,26 @@
     },
     {
       "id": "remove_cards",
-      "text": "When gathering cards, make the following changes:"
+      "text": "在找出卡牌時，進行以下的改變："
     },
     {
       "id": "remove_act_1a",
       "bullet_type": "small",
-      "text": "Remove Act 1a- \"Trapped\" from the game and replace it with the new Act 1a- \"Mysterious Gateway.\""
+      "text": "從遊戲中移除場景1a - ”被困於此”，將其替換為新的場景1a - “神祕通道”。"
     },
     {
       "id": "remove_study",
       "bullet_type": "small",
-      "text": "Remove the original Study location from the game and replace it with the new Study <i>Aberrant Gateway</i>."
+      "text": "從遊戲中移除原版的書房地點，將其替換為新版的書房(異樣通道)。"
     },
     {
       "id": "remove_hallway",
       "bullet_type": "small",
-      "text": "Remove the Hallway location from the game."
+      "text": "將走廊地點移出遊戲。"
     },
     {
       "id": "setup_locations",
-      "text": "Put Guest Hall, Bedroom, Bathroom and the new Study <i>(Aberrant Gateway)</i> into play. Each investigator begins play in the Study <i>(Aberrant Gateway)</i>."
+      "text": "將門廳、臥室、浴室和書房(<i>異樣通道</i>)地點放置入場。每位調查員從書房(<i>異樣通道</i>)開始遊戲。"
     },
     {
       "id": "location_layout",
@@ -17551,7 +17551,7 @@
     },
     {
       "id": "randomize_locations",
-      "text": "Choose one of the two Attic locations and one of the two Cellar locations at random, and set them aside, out of play. Remove the other versions of Attic and Cellar from the game."
+      "text": "隨機選擇2個閣樓地點之一，2個地窖地點之一。將所選地點放在一邊，位於場外。將這些地點的其他所有版本移出遊戲。"
     },
     {
       "id": "set_aside_locations",
@@ -17638,9 +17638,9 @@
 },
 {
   "id": "return_to_the_midnight_masks",
-  "scenario_name": "Return to The Midnight Masks",
+  "scenario_name": "重返午夜假面",
   "header": "冒險II",
-  "full_name": "Scenario II: Return to The Midnight Masks",
+  "full_name": "冒險II：重返午夜假面",
   "chaos_bag_card": "01120",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -18296,29 +18296,29 @@
         "cultists",
         "return_cult"
       ],
-      "text": "Set the <i>Cult of Umôrdhoth</i> encounter sets aside as a separate “Cultist deck.” Shuffle this deck and remove 3 random cards from it, without looking at them. <i>(You should be left with a 5-card Cultist deck.)</i>"
+      "text": "將<i>烏默爾多斯的崇拜者</i>遭遇組放在一邊，作為獨立的“異教徒牌堆”。混洗異教徒牌堆後，隨機移除3張卡牌，不要查看。(<i>剩下的異教徒牌堆應有5張卡牌。</i>)"
     },
     {
       "id": "construct_act_deck",
-      "text": "Construct the act deck using one of the two copies of Agenda 1a- \"Predator or Prey\" at random, without looking at their other sides. Remove the other version of Agenda 1a from the game."
+      "text": "構建場景與密謀牌堆時，隨機選擇2個密謀1a - “獵人還是獵物？”其中之一，不要查看另一面。將密謀1a的另一個版本移出遊戲。"
     },
     {
       "id": "setup_locations",
-      "text": "Randomly put 1 of each of the following locations into play: Downtown, Southside, Easttown, Northside, Rivertown, and Miskatonic University. Remove the other versions of those locations from the game. Then, put Graveyeard, St. Mary's Hospital, and Your House into play."
+      "text": "從以下地點的多種版本中各隨機選擇一個放置入場：商業區、南區、東城區、北區、河岸城和米斯卡塔尼克大學。將這些地點的其他所有版本移出遊戲。然後，將墓地、聖瑪麗醫院和你的房子放置入場。"
     },
     {
       "id": "one_cultist",
-      "text": "Search the gathered encounter sets for any 1-health [[Cultist]] enemy and spawn it at Southside.",
+      "text": "在找出的遭遇組中，查找任意一個生命值為1的[[異教徒]]敵人，並生成在南區。",
       "bullet_type": "small"
     },
     {
       "id": "two_cultists",
-      "text": "Search the gathered encounter sets for 2 1-health [[Cultist]] enemies. Spawn 1 at Southside and 1 at Downtown.",
+      "text": "在找出的遭遇組中，查找2個生命值為1的[[異教徒]]敵人。將其分別生成在南區和商業區。",
       "bullet_type": "small"
     },
     {
       "id": "three_cultists",
-      "text": "Search the gathered encounter sets for 3 1-health [[Cultist]] enemies. Spawn 1 at Southside, 1 at Downtown, and 1 at the Graveyard.",
+      "text": "在找出的遭遇組中，查找3個生命值為1的[[異教徒]]敵人。將其分別生成在南區、商業區和墓地。",
       "bullet_type": "small"
     }
   ],
@@ -18583,7 +18583,7 @@
           {
             "id": "hard",
             "text": "困難",
-            "description": "大聲說出誓言</i>",
+            "description": "<i>大聲說出誓言</i>",
             "tokens": [
               "0",
               "0",
@@ -23475,8 +23475,8 @@
   "resolutions": [
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution",
-      "description": "Aat least one investigator resigned",
+      "title": "未達成任何結局",
+      "description": "至少一位調查員撤退",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -23489,8 +23489,8 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution",
-      "description": "All investigators were defeated",
+      "title": "未達成任何結局",
+      "description": "所有調查員被擊敗",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -25677,17 +25677,17 @@
     {
       "id": "explore",
       "type": "rule_reminder",
-      "title": "Explore",
+      "title": "探索",
       "text": "這個劇本中的某些能力帶有<b>探索</b>行動標識。此類能力通常會通過“啟動”行動發動，用於找出新的地點並將這一地點放置入場。\n<b>探索</b>能力會指示你抽取“探索牌堆”頂上的1張卡牌。探索牌堆是一個獨立的牌堆，在某些冒險的設置階段構成該牌堆，包含多張單面地點卡和詭計卡。",
       "bullets": [
         {
-          "text": "Each <b>Explore</b> ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a “successful” exploration."
+          "text": "每個<b>探索</b>能力會聲明你正在尋找並要抽出的一類地點。<b>抽出一個該類地點後，將其放置入場，然後你移動到該地點。</b>這視為一次“成功”的探索。"
         },
         {
-          "text": "If any other location is drawn, place it next to the exploration deck, and draw the next card from the exploration deck. Repeat this process until a location of the indicated type is drawn, or a treachery is drawn. After this action has ended, shuffle each location next to the exploration deck back into the exploration deck."
+          "text": "如果抽出了其他任何地點，將其放在探索牌堆旁邊，然後抽取探索牌堆的下一張卡牌。重複此流程，直到抽出指定類型的地點，或抽出詭計卡。在此行動結束後，將探索牌堆旁的所有地點混洗並放回探索牌堆。"
         },
         {
-          "text": "If a treachery card is drawn, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. There is no discard pile for the exploration deck. This is considered an “unsuccessful” exploration."
+          "text": "如果抽出了詭計卡，如常結算。如果該卡牌被棄掉，如常將它放到遭遇棄牌堆。探索牌堆沒有棄牌堆。這視為一次“失敗”的探索。"
         },
         {
           "text": "單面地點從探索牌堆放置入場時，在該地點上放置線索，數量等於其線索值。"
@@ -35237,7 +35237,7 @@
         "choices": [
           {
             "id": "elder_sign",
-            "text": "[elder_sign]或+1標記",
+            "text": "[elder_sign]或+1標記。",
             "description": "不受負面效果。",
             "effects": []
           },
@@ -35285,7 +35285,7 @@
         "choices": [
           {
             "id": "elder_sign",
-            "text": "[elder_sign]或+1標記",
+            "text": "[elder_sign]或+1標記。",
             "description": "不受負面效果。",
             "effects": []
           },
@@ -35386,7 +35386,7 @@
         "choices": [
           {
             "id": "rescued_custodian",
-            "text": "在上一場冒險結束時，看管人受調查員控制。",
+            "text": "在上一場冒險結束時，看管人受調查員控制嗎？",
             "effects": [
               {
                 "type": "campaign_log",
@@ -44128,8 +44128,8 @@
 },
 {
   "id": "the_eternal_slumber",
-  "scenario_name": "The Eternal Slumber",
-  "full_name": "The Eternal Slumber",
+  "scenario_name": "永恆沉睡",
+  "full_name": "永恆沉睡",
   "header": "",
   "chaos_bag_card": "83001",
   "xp_cost": 2,
@@ -44312,50 +44312,50 @@
     },
     {
       "id": "explore_rule",
-      "title": "Explore",
+      "title": "探索",
       "type": "rule_reminder",
-      "text": "Some abilities in <i>Guardians of the Abyss</i> are identified with an <b>Explore</b> action designator. Such abilities are generally used to find new locations to put into play, and are initiated using the “activate” action.\n<b>Explore</b> abilities instruct you to draw the top card of the “exploration deck,” which is a separate deck that will be constructed during this scenario. This deck consists of several single-sided locations and treachery cards.",
+      "text": "<i>深淵守衛</i>中的某些能力帶有<b>探索</b>行動標識。此類能力通常會通過“啟動”行動發動，用於找出新的地點並將這一地點放置入場。\n<b>探索</b>能力會指示你抽取“探索牌堆”頂上的1張卡牌。探索牌堆是一個獨立的牌堆，在某些冒險的設置階段構成該牌堆，包含多張單面地點卡和詭計卡。",
       "bullets": [
         {
-          "text": "Each <b>Explore</b> ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a “successful” exploration."
+          "text": "每個<b>探索</b>能力會聲明你正在尋找並要抽出的一類地點。<b>抽出一個該類地點後，將其放置入場，然後你移動到該地點。</b>這視為一次“成功”的探索。"
         },
         {
-          "text": "If any other location is drawn, place it next to the exploration deck, and draw the next card from the exploration deck. Repeat this process until a location of the indicated type is drawn, or a treachery is drawn. After this action has ended, shuffle each location next to the exploration deck back into the exploration deck."
+          "text": "如果抽出了其他任何地點，將其放在探索牌堆旁邊，然後抽取探索牌堆的下一張卡牌。重複此流程，直到抽出指定類型的地點，或抽出詭計卡。在此行動結束後，將探索牌堆旁的所有地點混洗並放回探索牌堆。"
         },
         {
-          "text": "If a treachery card is drawn, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. There is no discard pile for the exploration deck. This is considered an “unsuccessful” exploration."
+          "text": "如果抽出了詭計卡，如常結算。如果該卡牌被棄掉，如常將它放到遭遇棄牌堆。探索牌堆沒有棄牌堆。這視為一次“失敗”的探索。"
         },
         {
-          "text": "When a single-sided location is put into play from the exploration deck, place clues on that location equal to its clue value."
+          "text": "單面地點從探索牌堆放置入場時，在該地點上放置線索，數量等於其線索值。"
         },
         {
-          "text": "If the entire exploration deck is revealed without finding either a treachery card or a location specified by the explore ability, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+          "text": "如果探索牌堆抽完時沒有抽到詭計卡或是探索能力聲明的一類地點，探索結束。這種情況不視為成功或失敗的探索。將探索牌堆旁的所有地點混洗並放回探索牌堆，然後調查員的行動結束。"
         }
       ],
-      "example": "<i>Example: Act 1a—“Search for the Gate” has the following ability: “[action]: <b>Explore</b>. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Desert Oasis. Because Desert Oasis is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Sandstorm treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Desert Oasis that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Nile River, which is connected to the Expedition Camp. Her exploration is successful. Nile River is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Nile River.</i>"
+      "example": "<i>示例：場景1a—“搜尋入口”有著以下能力：“[action]：<b>探索</b>。抽取探索牌堆頂上的1張卡牌。如果該卡牌是一個連接地點，將它放置入場，並移動到該地點。”厄休拉·唐斯位於探險營地，希望找到並前往一個新的地點。她用自己的第一個行動來探索，抽取探索牌堆頂上的1張卡牌，抽出的卡牌是沙漠綠洲。因為沙漠綠洲不與探險營地連接，將其放在探索牌堆旁邊，然後厄休拉從探索牌堆抽取下一張卡牌。這次她抽出了沙塵暴詭計卡，如常結算並將該卡牌放到遭遇棄牌堆。她的探索失敗了，必須將先前抽出的沙漠綠洲洗回探索牌堆。厄休拉決定用第二個行動來再次探索。這次她抽出了尼羅河，這個地點與探險營地是連接的，探索成功。將尼羅河放置入場，在該卡牌上方放置線索，數量等於其線索值，然後厄休拉立即從探險營地移動到尼羅河。</i>"
     },
     {
       "id": "story_cards",
       "title": "劇情卡",
       "type": "rule_reminder",
-      "text": "Story cards are a new cardtype in this scenario. These cards serve as an avenue for additional narrative and typically appear as the reverse side of another scenario card. When you are instructed to resolve a story card, simply read its story text and resolve its game text, if any.\n<i>(Note: When a location or enemy that is in play is flipped over to a story card on its other side, that location or enemy is still considered to be in play while that story card is being resolved.)</i>"
+      "text": "劇情卡是在本冒險出現的一種新的卡牌類型。此類卡牌只出現在另一冒險卡的背面，作為另一種敘述的形式出現。在你收到指示要結算一張劇情卡時，閱讀該卡上的劇情文本然後結算其遊戲文本(如果有的話)。\n<i>(注意：當一個在場的地點或敵人翻至劇情卡一面時，該地點或敵人在劇情卡結算時依然視為在場。)</i>"
     },
     {
       "id": "strength_of_the_abyss",
-      "title": "Strength of the Abyss",
+      "title": "深淵之力",
       "type": "rule_reminder",
-      "text": "During this scenario, resources on the scenario reference card represent the current strength of the abyss. When you are instructed to add strength to the abyss or remove strength from the abyss, adjust the number of resource tokens on the scenario reference card accordingly. The strength of the abyss has no inherent game effect on its own, though certain encounter card effects may grow stronger or change depending on the current strength of the abyss. Beware—as the abyss grows in strength, so too will the forces set against you. Should it grow too powerful, you will surely fail as Guardians of the Abyss."
+      "text": "在本場冒險中，冒險輔助卡上的資源數量表示當前深淵之力的強度。當你受到指示，要增強或減弱深淵之力時，相應地調整冒險輔助卡上的資源標記數目。深淵之力本身沒有效果；但是，某些遭遇卡的效果根據當前的深淵之力，可能會改變或變得更強。要當心——深淵之力越是強大，你要面臨的阻力也會越大。要是它變得過於強大，你就會敗在深淵守衛的手上。"
     },
     {
       "id": "taken_by_the_abyss",
-      "title": "“Taken by the Abyss”",
+      "title": "“墜入深淵”",
       "type": "rule_reminder",
-      "text": "If an effect states that a defeated investigator or [[Ally]] asset has been <i>“taken by the abyss,”</i> that character has been afflicted by a curse which puts them in a comatose state. When an investigator or [[Ally]] asset is <i>taken by the abyss</i>, first add 1 strength to the abyss. Then, if that card was unique, record in the campaign log that <i>“(card name) was taken by the abyss.”</i> An investigator who has been <i>taken by the abyss</i> is treated as if he or she was killed or driven <b>insane</b>. Additionally, for the remainder of the campaign, players cannot play copies of any unique [[Ally]] asset who has been <i>taken by the abyss.</i>"
+      "text": "如果一個效果聲明一位被擊敗的調查員或一個被擊敗的[[盟友]]支援<i>“墜入深淵”</i>，該角色慘遭詛咒，陷入長久的沉睡。每有一位調查員或一個[[盟友]]支援<i>“墜入深淵”</i> ，深淵之力增強1點。然後，如果這是一張獨特卡牌，在冒險日誌上記錄下<i>“(卡牌名)墜入深淵。”</i>墜入深淵的調查員視為陣亡或發瘋。此外，玩家不能再打出<i>墜入深淵</i>的任何獨特[[盟友]]支援，直到該劇本結束。"
     },
     {
       "id": "intro_1",
       "type": "story",
-      "text": "<fancy>Greetings,</fancy>\n<fancy>I'm sorry. I know it has been some time since my last correspondence. I am writing to you now because there is nobody I can trust here in Cairo. I don't even know if this letter will make it to you safely. I can only hope it does, for all our sakes.</fancy>\n<fancy>There's something wrong in this city. It started a few weeks ago. The head curator of the Museum of Egyptian Antiquities fell asleep and simply never awoke. I thought nothing of it at first; just a medical curiosity, a mystery the doctors would solve in due time. But then it happened again. And again. More and more, people all across the city started falling into comas. Now it's happening every night. . . And as I write to you, they are taking my husband John to the hospital.</fancy>\n<fancy>I'm scared. I don't want to fall asleep and never wake up again. But more than that, I'm worried that there are people purposely inflicting this curse on others. And if so, why?</fancy>\n<fancy>Please, I am begging you. I need your help.</fancy>\n<fancy>Yours sincerely,</fancy>\n<fancy>Jessie Burk</fancy>"
+      "text": "<fancy>見信好：</fancy>\n<fancy>很抱歉。我知道自己已經有些時候沒寫信了。我現在寫信給你，是因為在開羅，我壓根沒人可以相信。我甚至不知道這封信能不能安全抵達你處。我只能期望它能到，這是為了我們所有人好。</fancy>\n<fancy>這座城市裡有什麼地方不對勁。一切是從幾週前開始的。埃及博物館的館長一覺睡去，就再也沒有醒來。一開始，我還不以為意：這只是一種怪病，只要假以時日，醫生總歸能治好的。但隨後這樣的事又發生了。層出不窮。越來越多了，整個開羅都有人陷入了昏睡。現在每晚都有更多的人一覺不起……就在我寫信給你的時候，他們把我的丈夫約翰帶去了醫院。</fancy>\n<fancy>我怕極了。我不想這樣一覺睡過去，就再也不會醒來。此外，我還擔心是有人故意對他人施以詛咒。如果真是這樣，又是為了什麼？</fancy>\n<fancy>拜託，我懇求你。我需要你的幫助。</fancy>\n<fancy>你真誠的，</fancy>\n<fancy>傑西·伯克</fancy>"
     },
     {
       "id": "gather_encounter_sets",
@@ -44370,7 +44370,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the following locations into play: Streets of Cairo, Outskirts of Cairo, Temple Courtyard, Museum of Egyptian Antiquities, Cairo Bazaar, and Expedition Camp. Each investigator begins play in the Streets of Cairo."
+      "text": "將以下地點放置入場：開羅街道、開羅市郊、神廟庭院、埃及博物館、開羅巴扎、探險營地。每位調查員從開羅街道開始遊戲。"
     },
     {
       "id": "location_layout",
@@ -44401,15 +44401,15 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Neith, John & Jessie Burke, Ancient Ankh, both copies of Abyssal Revenant, and each of the 7 single-sided locations (Nile River, Sands of Dashur, Dunes of the Sahara, Untouched Vault, Faceless Sphinx, Desert Oasis, and Sandswept Ruins)."
+      "text": "將下列卡牌放在一邊，位於場外：奈斯、約翰＆傑西·伯克、古代安可架、2張深淵亡魂，以及所有7張單面地點(尼羅河、代赫舒爾沙漠、撒哈拉沙丘、避世墓穴、獅身無面像、沙漠綠洲、沙塵遺跡)。"
     },
     {
       "id": "create_brotherhood_deck",
-      "text": "Find the 6 double-sided [[Brotherhood]] enemies (Professor Nathaniel Taylor, Dr. Layla El Masri, Dr. Wentworth Moore, Nadia Nimr, Farid, and Nassor). These enemies have story cards on their reverse sides <i>(see “Story Cards” on page 6).</i> For the best experience, do not look at the story cards on their reverse sides. Shuffle these 6 enemies together and place them beneath the scenario reference card."
+      "text": "找出6張雙面的[[兄弟會]]敵人卡(納撒尼爾·泰勒教授、萊拉·艾爾·馬斯瑞博士、溫特沃斯·摩爾博士、納迪婭·尼姆爾、法利得、納賽爾)。這些敵人卡的另一面均為劇情卡(見第6頁的“劇情卡”)。為了獲得最佳的遊戲體驗，請勿查看背面的劇情卡。將這6張敵人卡混洗，放在冒險輔助卡底下。"
     },
     {
       "id": "set_strength_of_the_abyss",
-      "text": "For each investigator in the game, place 1 resource token on the scenario reference card, under “Strength of the Abyss.” For the remainder of this scenario, resources on the scenario reference card represent the current strength of the abyss <i>(see “Strength of the Abyss”).</i>"
+      "text": "遊戲中每有一位調查員，在冒險輔助卡的“深淵之力”下方放置1個資源標記。在本場冒險中，冒險輔助卡上的資源數量表示當前深淵之力的強度<i>(見“深淵之力”)。</i>"
     },
     {
       "id": "encounter_deck",
@@ -44432,18 +44432,18 @@
     },
     {
       "id": "record_dreamers_in_abyss",
-      "text": "In your Campaign Log, record <i>dreamers in the abyss (X)</i>. X is the strength of the abyss when the scenario ended.",
+      "text": "在冒險日誌中，記錄下<i>深淵中的沉夢者(X)</i>。X為本場冒險結束時深淵之力的強度。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Strength of the Abyss:",
+        "text": "深淵之力：",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "tes_dreamers_in_the_abyss",
             "operation": "set_input",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "深淵中的沉夢者 (#X#)"
           }
         ]
       }
@@ -44451,7 +44451,7 @@
     {
       "id": "record_escaped_brotherhood",
       "type": "input",
-      "text": "In your Campaign Log, record <i>Brotherhood Agents Who Escaped:</i> and list the names of each unique [[Cultist]] enemy that was in play or beneath the scenario reference card when the game ended.",
+      "text": "在冒險日誌中，記錄下<i>逃走的兄弟會成員：</i>列出遊戲結束時，場上和冒險輔助卡下方所有獨特[[異教徒]]敵人的名稱。",
       "input": {
         "type": "card_choice",
         "query": [
@@ -44464,13 +44464,13 @@
         "choices": [
           {
             "id": "escaped",
-            "text": "Escaped",
+            "text": "逃走",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "tes_escaped_brotherhood",
-                "text": "Brotherhood Agents Who Escaped: #name#",
+                "text": "逃走的兄弟會成員：#name#",
                 "cards": "$input_value"
               }
             ]
@@ -44480,7 +44480,7 @@
     },
     {
       "id": "earn_ancient_ankh",
-      "text": "Any one investigator may choose to add the Ancient Ankh to their deck. It does not count toward that investigator’s deck size.",
+      "text": "任何一位調查員可以選擇將古代安可架加入牌組。這張卡牌不計入該調查員的牌組張數上限。",
       "effects": [
         {
           "type": "add_card",
@@ -44491,7 +44491,7 @@
     },
     {
       "id": "earn_john_and_jessie",
-      "text": "Any one investigator may choose to add John & Jessie Burke to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "任何一位調查員可以選擇將約翰＆傑西·伯克加入其牌組。這張卡牌不計入該調查員的牌組張數上限。",
       "effects": [
         {
           "type": "add_card",
@@ -44507,7 +44507,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tes_brotherhood_schemes_continue",
-          "text": "the Brotherhood’s schemes continue unabated."
+          "text": "兄弟會的密謀順利無阻。"
         }
       ]
     },
@@ -44518,19 +44518,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tes_aware_of_xzharahs_plan",
-          "text": "you are aware of Xzharah’s plans."
+          "text": "你發現了伊扎法拉的計劃。"
         }
       ]
     },
     {
       "id": "curse_of_slumber_lifted",
-      "text": "In your Campaign Log, record that <i>the curse of slumber was lifted</i>. Cross off all <i>“(card name) was taken by the abyss”</i> notes in your Campaign Log.",
+      "text": "在冒險日誌中，記錄下<i>沉睡詛咒已破除</i>。在冒險日誌中，劃掉所有的<i>“(卡牌名)墜入深淵”</i>。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tes_curse_of_slumber_lifted",
-          "text": "the curse of slumber was lifted."
+          "text": "沉睡詛咒已破除。"
         },
         {
           "type": "campaign_log",
@@ -44555,15 +44555,15 @@
         "choices": [
           {
             "id": "taken_by_the_abyss",
-            "text": "Taken by the Abyss",
+            "text": "墜入深淵",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "tes_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name# was taken by the abyss.",
-                "feminine_text": "#name# was taken by the abyss."
+                "masculine_text": "#name#墜入深淵。",
+                "feminine_text": "#name#墜入深淵。"
               }
             ]
           }
@@ -44580,15 +44580,15 @@
         "choices": [
           {
             "id": "taken_by_the_abyss",
-            "text": "Taken by the Abyss",
+            "text": "墜入深淵",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "tes_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name# was taken by the abyss.",
-                "feminine_text": "#name# was taken by the abyss."
+                "masculine_text": "#name#墜入深淵。",
+                "feminine_text": "#name#墜入深淵。"
               }
             ]
           }
@@ -44603,14 +44603,14 @@
         "branches": [
           {
             "id": "record_ally_taken_by_the_abyss",
-            "text": "Unique ally was taken by the abyss.",
+            "text": "墜入深淵的獨特盟友。",
             "steps": [
               "record_ally_taken_by_the_abyss"
             ]
           },
           {
             "id": "record_investigator_taken_by_the_abyss",
-            "text": "Investigator was taken by the abyss.",
+            "text": "墜入深淵的調查員。",
             "steps": [
               "record_investigator_taken_by_the_abyss"
             ]
@@ -44630,7 +44630,7 @@
         "physical",
         "mental"
       ],
-      "text": "The city of Cairo sleeps and will never wake. In the west, the Brotherhood rejoices, fortheir prophecy is about to be fulfilled. And deep in the landof dreams, their Chosen grips his weapon for the first time.",
+      "text": "開羅陷入沉睡，再也不會醒來。兄弟會在西方慶祝，他們的預言就要實現。在幻夢的國度深處，他們的天選第一次握起了武器。",
       "steps": [
         "earn_xp",
         "record_dreamers_in_abyss",
@@ -44642,7 +44642,7 @@
     {
       "id": "R1",
       "title": "結局1",
-      "text": "Jessie Burke cries with joy as her husband opens his eyes for the first time in weeks. “J… Jessie?” John trembles as he tries and fails to stand. His wife places a hand on his shoulder to steady him. “I thought you would never wake,” she admits, wiping tears from her eyes. “If it weren’t for our friends here, you’d still be under.” John turns to you, his expression dire. “Then you’re the only ones who can stop what is coming,” he says cryptically. “In my dreams, I saw him. The one they called Xzharah.” He swallows hard. “And he is like nothing we’ve ever seen before.”",
+      "text": "傑西·伯克看到自己的丈夫幾週來第一次睜開了眼，驚喜地叫出了聲。“傑……傑西？”約翰試著站起來，但沒能成功，還在發抖。傑西把手放在丈夫肩上，想穩住他。“我還以為你再也不會醒來了。”她擦去眼裡的淚花承認道，“要不是多虧了我們的這位朋友，你現在還昏睡著吶。”約翰轉向了你，臉色慘淡。“這麼說，只有你才能阻止將要發生的事情。”他神神祕祕地說道，“在夢裡，我看見他了。那個他們稱為伊扎法拉的存在。”他艱難地嚥了一口，“他和我們之前見過的任何存在都不同。”",
       "steps": [
         "curse_of_slumber_lifted",
         "earn_john_and_jessie",
@@ -44655,7 +44655,7 @@
     {
       "id": "R2",
       "title": "結局2",
-      "text": "Neith rises to her feet. Most of her power has been drained, but the strength of several dreamers still sustains her. “They have planned for centuries. Their day of reckoning is coming. Nothing can stop that. Not I. Certainly not you.” You notice she speaks as if she were a third party, and you press further. “Do you think I had a choice?” She scoffs. “None can withstand Xzharah. You will see. He will bend your will just as he did mine.” Her shadow grows and warps , misshapen. “It is the Abyss he wants. If you wish to stop him, head west. Xzharah awaits beyond the Gate.” Neith’s shadow consumes her body whole, and she vanishes from sight. Only her amulet remains.",
+      "text": "奈斯站了起來。她的力量大部分都已被抽走，但還有鮮少幾個沉夢者的力量支撐著她。“他們已經計劃了好幾個世紀。清算之日就要到來。什麼都不能阻止。我不行，你肯定也不行。”你注意到她說話的口氣就好像自己是置身事外的第三方一樣，於是你逼問得更緊了。“你認為我還有的選嗎？”她嘲笑道，“沒人能反抗伊扎法拉，你自己會看到的。他會讓你屈服，就像對我一樣。”她的影子越變越大，扭曲了起來。“這就是他想要的深淵。 要是你想阻止他，就往西去。伊紮法拉在入口彼端等著。”奈斯的影子完全吞沒了她的身軀，她從你的視線裡消失了。只有她的護身符還留了下來。",
       "steps": [
         "aware_of_xzharahs_plan",
         "earn_ancient_ankh",
@@ -44851,45 +44851,45 @@
     },
     {
       "id": "explore_rule",
-      "title": "Explore",
+      "title": "探索",
       "type": "rule_reminder",
-      "text": "Some abilities in <i>Guardians of the Abyss</i> are identified with an <b>Explore</b> action designator. Such abilities are generally used to find new locations to put into play, and are initiated using the “activate” action.\n<b>Explore</b> abilities instruct you to draw the top card of the “exploration deck,” which is a separate deck that will be constructed during this scenario. This deck consists of several single-sided locations and treachery cards.",
+      "text": "<i>深淵守衛</i>中的某些能力帶有<b>探索</b>行動標識。此類能力通常會通過“啟動”行動發動，用於找出新的地點並將這一地點放置入場。\n<b>探索</b>能力會指示你抽取“探索牌堆”頂上的1張卡牌。探索牌堆是一個獨立的牌堆，在某些冒險的設置階段構成該牌堆，包含多張單面地點卡和詭計卡。",
       "bullets": [
         {
-          "text": "Each <b>Explore</b> ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a “successful” exploration."
+          "text": "每個<b>探索</b>能力會聲明你正在尋找並要抽出的一類地點。<b>抽出一個該類地點後，將其放置入場，然後你移動到該地點。</b>這視為一次“成功”的探索。"
         },
         {
-          "text": "If any other location is drawn, place it next to the exploration deck, and draw the next card from the exploration deck. Repeat this process until a location of the indicated type is drawn, or a treachery is drawn. After this action has ended, shuffle each location next to the exploration deck back into the exploration deck."
+          "text": "如果抽出了其他任何地點，將其放在探索牌堆旁邊，然後抽取探索牌堆的下一張卡牌。重複此流程，直到抽出指定類型的地點，或抽出詭計卡。在此行動結束後，將探索牌堆旁的所有地點混洗並放回探索牌堆。"
         },
         {
-          "text": "If a treachery card is drawn, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. There is no discard pile for the exploration deck. This is considered an “unsuccessful” exploration."
+          "text": "如果抽出了詭計卡，如常結算。如果該卡牌被棄掉，如常將它放到遭遇棄牌堆。探索牌堆沒有棄牌堆。這視為一次“失敗”的探索。"
         },
         {
-          "text": "When a single-sided location is put into play from the exploration deck, place clues on that location equal to its clue value."
+          "text": "單面地點從探索牌堆放置入場時，在該地點上放置線索，數量等於其線索值。"
         },
         {
-          "text": "If the entire exploration deck is revealed without finding either a treachery card or a location specified by the explore ability, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+          "text": "如果探索牌堆抽完時沒有抽到詭計卡或是探索能力聲明的一類地點，探索結束。這種情況不視為成功或失敗的探索。將探索牌堆旁的所有地點混洗並放回探索牌堆，然後調查員的行動結束。"
         }
       ],
-      "example": "<i>Example: Act 1a—“Search for the Gate” has the following ability: “[action]: <b>Explore</b>. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Desert Oasis. Because Desert Oasis is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Sandstorm treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Desert Oasis that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Nile River, which is connected to the Expedition Camp. Her exploration is successful. Nile River is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Nile River.</i>"
+      "example": "<i>示例：場景1a—“搜尋入口”有著以下能力：“[action]：<b>探索</b>。抽取探索牌堆頂上的1張卡牌。如果該卡牌是一個連接地點，將它放置入場，並移動到該地點。”厄休拉·唐斯位於探險營地，希望找到並前往一個新的地點。她用自己的第一個行動來探索，抽取探索牌堆頂上的1張卡牌，抽出的卡牌是沙漠綠洲。因為沙漠綠洲不與探險營地連接，將其放在探索牌堆旁邊，然後厄休拉從探索牌堆抽取下一張卡牌。這次她抽出了沙塵暴詭計卡，如常結算並將該卡牌放到遭遇棄牌堆。她的探索失敗了，必須將先前抽出的沙漠綠洲洗回探索牌堆。厄休拉決定用第二個行動來再次探索。這次她抽出了尼羅河，這個地點與探險營地是連接的，探索成功。將尼羅河放置入場，在該卡牌上方放置線索，數量等於其線索值，然後厄休拉立即從探險營地移動到尼羅河。</i>"
     },
     {
       "id": "strength_of_the_abyss",
-      "title": "Strength of the Abyss",
+      "title": "深淵之力",
       "type": "rule_reminder",
-      "text": "During this scenario, resources on the scenario reference card represent the current strength of the abyss. When you are instructed to add strength to the abyss or remove strength from the abyss, adjust the number of resource tokens on the scenario reference card accordingly. The strength of the abyss has no inherent game effect on its own, though certain encounter card effects may grow stronger or change depending on the current strength of the abyss. Beware—as the abyss grows in strength, so too will the forces set against you. Should it grow too powerful, you will surely fail as Guardians of the Abyss."
+      "text": "在本場冒險中，冒險輔助卡上的資源數量表示當前深淵之力的強度。當你受到指示，要增強或減弱深淵之力時，相應地調整冒險輔助卡上的資源標記數目。深淵之力本身沒有效果；但是，某些遭遇卡的效果根據當前的深淵之力，可能會改變或變得更強。要當心——深淵之力越是強大，你要面臨的阻力也會越大。要是它變得過於強大，你就會敗在深淵守衛的手上。"
     },
     {
       "id": "taken_by_the_abyss",
-      "title": "“Taken by the Abyss”",
+      "title": "“墜入深淵”",
       "type": "rule_reminder",
-      "text": "If an effect states that a defeated investigator or [[Ally]] asset has been <i>“taken by the abyss,”</i> that character has been afflicted by a curse which puts them in a comatose state. When an investigator or [[Ally]] asset is <i>taken by the abyss</i>, first add 1 strength to the abyss. Then, if that card was unique, record in the campaign log that <i>“(card name) was taken by the abyss.”</i> An investigator who has been <i>taken by the abyss</i> is treated as if he or she was killed or driven <b>insane</b>. Additionally, for the remainder of the campaign, players cannot play copies of any unique [[Ally]] asset who has been <i>taken by the abyss.</i>"
+      "text": "如果一個效果聲明一位被擊敗的調查員或一個被擊敗的[[盟友]]支援<i>“墜入深淵”</i>，該角色慘遭詛咒，陷入長久的沉睡。每有一位調查員或一個[[盟友]]支援<i>“墜入深淵”</i> ，深淵之力增強1點。然後，如果這是一張獨特卡牌，在冒險日誌上記錄下<i>“(卡牌名)墜入深淵。”</i>墜入深淵的調查員視為陣亡或發瘋。此外，玩家不能再打出<i>墜入深淵</i>的任何獨特[[盟友]]支援，直到該劇本結束。"
     },
     {
       "id": "story_cards",
       "title": "劇情卡",
       "type": "rule_reminder",
-      "text": "Story cards are a new cardtype in this scenario. These cards serve as an avenue for additional narrative and typically appear as the reverse side of another scenario card. When you are instructed to resolve a story card, simply read its story text and resolve its game text, if any.\n<i>(Note: When a location or enemy that is in play is flipped over to a story card on its other side, that location or enemy is still considered to be in play while that story card is being resolved.)</i>"
+      "text": "劇情卡是在本冒險出現的一種新的卡牌類型。此類卡牌只出現在另一冒險卡的背面，作為另一種敘述的形式出現。在你收到指示要結算一張劇情卡時，閱讀該卡上的劇情文本然後結算其遊戲文本(如果有的話)。\n<i>(注意：當一個在場的地點或敵人翻至劇情卡一面時，該地點或敵人在劇情卡結算時依然視為在場。)</i>"
     },
     {
       "id": "intro_1",
@@ -45088,15 +45088,15 @@
         "choices": [
           {
             "id": "taken_by_the_abyss",
-            "text": "Taken by the Abyss",
+            "text": "墜入深淵",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name# was taken by the abyss.",
-                "feminine_text": "#name# was taken by the abyss."
+                "masculine_text": "#name#墜入深淵。",
+                "feminine_text": "#name#墜入深淵。"
               }
             ]
           }
@@ -45113,15 +45113,15 @@
         "choices": [
           {
             "id": "taken_by_the_abyss",
-            "text": "Taken by the Abyss",
+            "text": "墜入深淵",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name# was taken by the abyss.",
-                "feminine_text": "#name# was taken by the abyss."
+                "masculine_text": "#name#墜入深淵。",
+                "feminine_text": "#name#墜入深淵。"
               }
             ]
           }
@@ -45136,14 +45136,14 @@
         "branches": [
           {
             "id": "record_ally_taken_by_the_abyss",
-            "text": "Unique ally was taken by the abyss.",
+            "text": "墜入深淵的獨特盟友。",
             "steps": [
               "record_ally_taken_by_the_abyss"
             ]
           },
           {
             "id": "record_investigator_taken_by_the_abyss",
-            "text": "Investigator was taken by the abyss.",
+            "text": "墜入深淵的調查員。",
             "steps": [
               "record_investigator_taken_by_the_abyss"
             ]
@@ -51015,7 +51015,7 @@
     {
       "id": "keys",
       "type": "rule_reminder",
-      "title": "Keys",
+      "title": "鑰匙",
       "text": "The setup of this scenario instructs the players to set aside 1 [skull] token, 1 [cultist] token, 1 [tablet] token, and 1 [elder_thing] token, as keys. These keys are never placed in the chaos bag and do not act as traditional chaos tokens. Instead, they represent keys which investigators can recover and use throughout the scenario.\nKeys can enter play via several different card effects, and are usually placed on an enemy, location, or story asset. Keys can be acquired in one of three ways:",
       "bullets": [
         {
@@ -67908,23 +67908,23 @@
     {
       "id": "explore",
       "type": "rule_reminder",
-      "title": "Explore",
+      "title": "探索",
       "text": "這個劇本中的某些能力帶有<b>探索</b>行動標識。此類能力通常會通過“啟動”行動發動，用於找出新的地點並將這一地點放置入場。\n<b>探索</b>能力會指示你抽取“探索牌堆”頂上的1張卡牌。探索牌堆是一個獨立的牌堆，在某些冒險的設置階段構成該牌堆，包含多張單面地點卡和詭計卡。",
       "bullets": [
         {
-          "text": "Each <b>Explore</b> ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a “successful” exploration."
+          "text": "每個<b>探索</b>能力會聲明你正在尋找並要抽出的一類地點。<b>抽出一個該類地點後，將其放置入場，然後你移動到該地點。</b>這視為一次“成功”的探索。"
         },
         {
-          "text": "If any other location is drawn, place it next to the exploration deck, and draw the next card from the exploration deck. Repeat this process until a location of the indicated type is drawn, or a treachery is drawn. After this action has ended, shuffle each location next to the exploration deck back into the exploration deck."
+          "text": "如果抽出了其他任何地點，將其放在探索牌堆旁邊，然後抽取探索牌堆的下一張卡牌。重複此流程，直到抽出指定類型的地點，或抽出詭計卡。在此行動結束後，將探索牌堆旁的所有地點混洗並放回探索牌堆。"
         },
         {
-          "text": "If a treachery card is drawn, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. There is no discard pile for the exploration deck. This is considered an “unsuccessful” exploration."
+          "text": "如果抽出了詭計卡，如常結算。如果該卡牌被棄掉，如常將它放到遭遇棄牌堆。探索牌堆沒有棄牌堆。這視為一次“失敗”的探索。"
         },
         {
           "text": "單面地點從探索牌堆放置入場時，在該地點上放置線索，數量等於其線索值。"
         },
         {
-          "text": "If the entire exploration deck is revealed without finding either a treachery card or a location specified by the explore ability, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+          "text": "如果探索牌堆抽完時沒有抽到詭計卡或是探索能力聲明的一類地點，探索結束。這種情況不視為成功或失敗的探索。將探索牌堆旁的所有地點混洗並放回探索牌堆，然後調查員的行動結束。"
         }
       ],
       "example": "<i>範例：密謀1a—“荒野探險”有著以下能力：“[action]：<b>探索</b>。抽取探索牌堆頂上的1張卡牌。如果該卡牌是一個連接地點，放置入場並移動到該地點。”厄休拉·唐斯位於探險營地，希望找到並前往一個新的地點。她用自己的第一個行動來探索，抽取探索牌堆頂上的1張卡牌，抽出的卡牌是曲折小道。 因為曲折小道不與探險營地連接，將其放在探索牌堆旁邊，然後厄休拉從探索牌堆抽取下一張卡牌。這次她抽出了補給短缺詭計卡，如常結算並將該卡牌放到遭遇棄牌堆。她的探索失敗了，必須將先前抽出的曲折小道洗回探索牌堆。厄休拉決定用第二個行動來再次探索。這次她抽出了荊棘之路，這個地點與探險營地是連接的，探索成功。將荊棘之路放置入場，在該卡牌上方放置線索，數量等於其線索值，然後厄休拉立即從探險營地移動到荊棘之路。</i>"
@@ -74396,7 +74396,7 @@
         "choices": [
           {
             "id": "elder_sign",
-            "text": "[elder_sign]或+1標記",
+            "text": "[elder_sign]或+1標記。",
             "description": "不受負面效果。",
             "effects": []
           },
@@ -74444,7 +74444,7 @@
         "choices": [
           {
             "id": "elder_sign",
-            "text": "[elder_sign]或+1標記",
+            "text": "[elder_sign]或+1標記。",
             "description": "不受負面效果。",
             "effects": []
           },
@@ -74545,7 +74545,7 @@
         "choices": [
           {
             "id": "rescued_custodian",
-            "text": "在上一場冒險結束時，看管人受調查員控制。",
+            "text": "在上一場冒險結束時，看管人受調查員控制嗎？",
             "effects": [
               {
                 "type": "campaign_log",
@@ -77154,7 +77154,7 @@
     },
     {
       "id": "memories_recovered",
-      "title": "Memories Recovered"
+      "title": "找回的記憶"
     },
     {
       "id": "possible_suspects",
@@ -77541,7 +77541,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "鑰匙",
       "type": "rule_reminder",
       "text": "This expansion introduces key tokens that represent important objects or pieces of information that can be claimed and used during scenarios.\nKey tokens have two sides. When facedown, all seven keys have the same universal key symbol, so they can be randomized without the investigators knowing which is which. When faceup, each key is color coded with a unique color.\nIf a scenario uses one or more keys, the setup of that scenario indicates how many are set aside and whether they should be faceup or randomized facedown. Keys can enter play via several different card effects, and they are usually placed on enemy, location, or story asset. Keys can be acquired in any of three ways:",
       "bullets": [
@@ -77791,7 +77791,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "鑰匙",
       "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
     },
     {
@@ -77938,7 +77938,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "鑰匙",
             "steps": [
               "ask_keys"
             ]
@@ -79495,7 +79495,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "鑰匙",
             "steps": [
               "ask_keys"
             ]
@@ -79915,6 +79915,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_4.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "As soon as your mind returned to the present, you began formulating your plan. A plan to enter the realm of the Deep Ones and end their conspiracy once and for all. \"This is ridiculous, you know that, right?\" Harper asks. You nod. Of course it's ridiculous. You've spent the last two days on the run. Chased. Hunted. Tormented.\nBut you've also spend the last two days recovering the memories you've forgotten. And what you've seen is something you can't possibly ignore. You have seen the deity the Esoteric Order of Dagon is named for, and you understand what the Order plans to do. The alignment of the celestial bodies in the sky, the steadily rising tides, the tumultuous fluctuating weather, the creatures emerging from the deep, all of it is tied together. You have seen it. There will come a flood, a great disaster to wipe out humanity, so only the deep remains. The great city in the reef shall rise once more and become the beating heart of all life on Earth.\nThere are still gaps in your memory, but all this you know to be true. All of Innsmouthis consumed by this conspiracy. The Order controlled the town through its oaths and the secret wealth it hoarded from the deep. It was no wonder they treated outsiders like yourself with such scorn.\nYou give Harper a knowing glare. She sighs and nods. \"I know. It's the only way.\" Together, the two of you plot your course. Abandoned ships still litter the harbor of Innsmouth. Under the cover of night, you must commandeer one of them, sail to Devil Reef, and descend once more into the antediluvian ruins in the depths below the forsaken islands. That is where the other entrance to the city lies. Y'ha-nthlei.\nYour skin prickles with cold shivers as you utter the word aloud. Harper grimaces, though you can sense the determination behind her steely gaze. \"I'm going to see this mission through, Dawson. For you.\"\nYou lay out all of the information you've uncovered and the relics you've obtained despite the horrors arrayed against you. You know the way to Y'ha-nthlei is sealed tight. There must be a way to gain entrance. Perhaps you already have the answers you seek…"
     },
@@ -79965,6 +79969,10 @@
     },
     {
       "id": "story_1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_4.the_terror_of_devil_reef_is_dead_and_the_lifecycle_of_a_deep_one",
+        "name": "The Terror of Devil Reef is Dead and The Lifecycle of a Deep One"
+      },
       "type": "story",
       "text": "You study the trophy you found in the sacrificial pit in which you awoke several days ago—part of what was once the creature that you fought in Devil Reef. It wasn't the same kind of creature as the \"Deep Ones\" that the Esoteric Order of Dagon worships, but you cannot help ruminating over the similarities between them. You recall that fish never cease growing as they age, and wonder if the same may be true for Deep Ones. Perhaps it was an ancient breed of Deep Ones—something so old, it grew enormous and twisted beyond imagination. If so what was it doing in Devil Reef? Was it guarding Y'ha-nthlei? And if so, what does that bode for you? You decide to take the trophy with you, hoping it is important enough to aid in your mission…"
     },
@@ -80088,6 +80096,10 @@
     },
     {
       "id": "story_2",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_4.gatekeeper_defeated",
+        "name": "Gatekeeper defeated"
+      },
       "type": "story",
       "text": "You understand now the purpose of the relic you found in Devil Reef. It isn't just an object of power. It is a badge—an heirloom of sorts, worn by the one who stands guard over the gateway to the Deep Ones' city. You defeated the one groomed to be its next protector. Now the relic recognizes you as its rightful heir. Perhaps with this, you will be able to gain entrance to Y'ha-nthlei…"
     },
@@ -80105,6 +80117,10 @@
     },
     {
       "id": "remove_thomas_dawson",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_4.outro",
+        "name": "Outro"
+      },
       "text": "Return Thomas Dawson to the collection. If an investigator earned Elina Harper (at any point during this campaign), they may add her back to their deck."
     },
     {
@@ -80652,7 +80668,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "鑰匙",
       "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
     },
     {
@@ -80663,7 +80679,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "鑰匙",
             "steps": [
               "ask_keys"
             ]
@@ -81679,7 +81695,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "鑰匙",
             "steps": [
               "ask_keys"
             ]
@@ -82012,7 +82028,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "鑰匙",
       "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
     },
     {
@@ -82890,6 +82906,10 @@
   "steps": [
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "<center><game>THURSDAY, SEPTEMBER 15, 1927</game></center>\n<center><game>ONE WEEK EARLIER</game></center>\nYou stand outside the cracked marble steps leading up to the masonic hall of the Esoteric Order of Dagon. All of the evidence has lead you here. Whatever is going on in this town, this Order is behind it. You're sure of it… though their ultimate goal remains a mystery.\nThe town is eerily quiet as you stand before the building's entrance. Once, this place might have been impressive and opulent. Years of disrepair and flood damage have reduced it to a near-ruin. Its once-white paint is gray and peeling, and many of the pillars outside the entryway are beginning to crumble. Still, it is one of the more intimidating places in Innsmouth, projecting authority despite its decrepitude. No, not authority—something darker. A looming, unspoken threat.\n\"Are you ready?\" Agent Dawson asks. His usually calm demeanor has vanished, replaced with a humorless gravity that throws you off guard. \"This is it. This is where we'll find answers.\"\nYou're not so sure. Every other lead you've followed has led to only more questions."
     },
@@ -82918,11 +82938,19 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Agent Harper was kidnapped when she got too close to the Order, but interrogating her kidnapper didn't exactly yield the answers you needed. What you know now is that the Order's influence pervades Innsmouth, from important civic figures to everyday citizens. Finances, religion, politics… everything is wrapped up in this cult's business in some way or another. What's worse, many of the town's inhabitants seem to follow the Order with blind, fanatical devotion. So many that you're not sure this is even a functioning town anymore. It's no wonder the people are so hostile towards outsiders.\nIt wasn't until your investigation of Devil Reef that you truly began to peel away the outer layers of Innsmouth and reveal the rot beneath. There, you found what the Order was hiding: the monstrous creatures that emerged from the depths and prowled the tidal islands, congregating in prayers to some horrific deity. Perhaps it is even the same \"Dagon\" worshipped by the Order."
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "You are sure that Agent Harper was kidnapped after she began investigating the Order. Your own investigation might have ended the same way had you not laid low for a week after the townsfolk got riled up. It seems that the Order's influence pervades Innsmouth, from important civic figures to everyday citizens. Finances, religion, politics… everything is wrapped up in this cult's business in some way or another. But why?\nIt wasn't until your investigation of Devil Reef that you truly began to peel away the outer layers of Innsmouth and reveal the rot beneath. There, you found what the Order was hiding: the monstrous creatures that emerged from the depths and prowled the tidal islands, congregating in prayers to some horrific deity. Perhaps it is even the same \"Dagon\" worshipped by the Order."
     },
@@ -82952,11 +82980,19 @@
     },
     {
       "id": "intro_4",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_4",
+        "name": "Intro 4"
+      },
       "type": "story",
       "text": "<i>Creeeak.</i> Agent Dawson opens the large doors serving as the entrance to the building, and you follow close behind. Inside, the halls are dark and eerily still. Only the faint sound of trickling water lingers in the air. \"I don't like this one bit,\" Dawson says as the front door closes behind you. He unholsters his gun, turns on his flashlight, and scans the room. \"We should stay together. Safety in numbers.\" You nod in agreement. The Order has proven to be very dangerous, and they surely don't want you poking around in their headquarters…"
     },
     {
       "id": "intro_5",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_5",
+        "name": "Intro 5"
+      },
       "type": "story",
       "text": "<i>Creeeak.</i> Agent Dawson creaks open the large doors serving as the entrance to the building, and you follow close behind. Inside, the halls are dark and eerily still. Only the faint sound of trickling water lingers in the air. \"It's quiet. I guess there are no ceremonies going on tonight. That's good,\" Dawson says as the front door closes behind you. He turns on his flashlight and illuminates a nearby doorway. \"We should split up. We'll be able to cover more ground that way. See if you can figure out what they're hiding here. I'll meet up with you later.\" You nod and head in the opposite direction…"
     },
@@ -83252,7 +83288,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "鑰匙",
             "steps": [
               "ask_keys"
             ]
@@ -83511,7 +83547,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "鑰匙",
       "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
     },
     {
@@ -83608,6 +83644,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No resolution was reached",
       "description": "所有調查員都撤退或被擊敗",
       "investigator_status": [
@@ -83624,6 +83664,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "結局1",
       "investigator_status": [
         "alive",
@@ -83642,6 +83686,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "結局2",
       "investigator_status": [
         "alive",
@@ -83657,6 +83705,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "結局3",
       "investigator_status": [
         "alive",
@@ -83672,6 +83724,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "結局4",
       "investigator_status": [
         "alive",
@@ -83842,7 +83898,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "鑰匙",
       "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
     },
     {
@@ -83869,7 +83925,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "鑰匙",
             "steps": [
               "ask_keys"
             ]
@@ -84653,7 +84709,7 @@
       "text": "Choose the non-kidnapper [[Suspect]] enemies that were defeated:",
       "input": {
         "type": "checklist",
-        "text": "Defeated",
+        "text": "被擊敗",
         "choices": [
           {
             "id": "burnham",
@@ -86607,7 +86663,7 @@
   "id": "zaw",
   "position": 20,
   "version": 1,
-  "name": "Alice in Wonderland",
+  "name": "愛麗絲夢遊仙境",
   "custom": {
     "creator": "The Beard",
     "download_link": "https://mysteriouschanting.wordpress.com/2020/10/30/alice-in-wonderland-campaign/"
@@ -86624,7 +86680,7 @@
     },
     {
       "id": "strength_of_wonderland",
-      "title": "Strength of Wonderland",
+      "title": "仙境之力",
       "type": "count"
     },
     {
@@ -93295,7 +93351,7 @@
     },
     {
       "id": "memories",
-      "title": "Memories",
+      "title": "記憶",
       "type": "investigator_count"
     },
     {
@@ -93351,7 +93407,7 @@
     {
       "id": "memories",
       "type": "rule_reminder",
-      "title": "Memories",
+      "title": "記憶",
       "text": "Some scenario cards, story resolutions and interludes may refer to your \"Memories\". Each investigator has a section in the Campaign Log to mark their individual \"Memories\". <b>These \"Memories\" are tied to specific investigators, and are not shared among all of the investigators.\nYou may be instructed to add tally marks or cross out tally marks to specific investigator's \"Memories\". This is done by marking a line in that investigator's \"Memories\" section in the Campaign Log, or crossing out one of the above lines, respectively. The number of \"Memories\" each investigator has is equal to the number of tally marks in their respective sections that have not been crossed out."
     },
     {
@@ -94309,7 +94365,7 @@
       "text": "Add or remove \"Memories\":",
       "input": {
         "type": "investigator_counter",
-        "text": "Memories",
+        "text": "記憶",
         "investigator_count_min": "memories",
         "effects": [
           {
@@ -94570,7 +94626,7 @@
       "text": "Add or remove \"Memories\":",
       "input": {
         "type": "investigator_counter",
-        "text": "Memories",
+        "text": "記憶",
         "investigator_count_min": "memories",
         "effects": [
           {
@@ -95642,7 +95698,7 @@
       "text": "Add or remove \"Memories\":",
       "input": {
         "type": "investigator_counter",
-        "text": "Memories",
+        "text": "記憶",
         "investigator_count_min": "memories",
         "effects": [
           {
@@ -96716,7 +96772,7 @@
       "text": "Add or remove \"Memories\":",
       "input": {
         "type": "investigator_counter",
-        "text": "Memories",
+        "text": "記憶",
         "investigator_count_min": "memories",
         "effects": [
           {
@@ -97822,7 +97878,7 @@
       "text": "Add or remove \"Memories\":",
       "input": {
         "type": "investigator_counter",
-        "text": "Memories",
+        "text": "記憶",
         "investigator_count_min": "memories",
         "effects": [
           {
@@ -98353,7 +98409,7 @@
       "text": "Add or remove \"Memories\":",
       "input": {
         "type": "investigator_counter",
-        "text": "Memories",
+        "text": "記憶",
         "investigator_count_min": "memories",
         "effects": [
           {
@@ -98637,7 +98693,7 @@
       "text": "Add or remove \"Memories\":",
       "input": {
         "type": "investigator_counter",
-        "text": "Memories",
+        "text": "記憶",
         "investigator_count_min": "memories",
         "effects": [
           {
@@ -99047,7 +99103,7 @@
       "text": "Add or remove \"Memories\":",
       "input": {
         "type": "investigator_counter",
-        "text": "Memories",
+        "text": "記憶",
         "investigator_count_min": "memories",
         "effects": [
           {

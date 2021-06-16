@@ -63,6 +63,7 @@ export class MiniCampaignRemote implements MiniCampaignT {
   public id: CampaignId;
   public uuid: string;
   public guided: boolean;
+  public archived: boolean;
   public name: string;
   public cycleCode: CampaignCycleCode;
   public difficulty: CampaignDifficulty | undefined;
@@ -85,6 +86,7 @@ export class MiniCampaignRemote implements MiniCampaignT {
       campaignId: campaign.uuid,
       serverId: campaign.id,
     };
+    this.archived = !!campaign.archived;
     this.uuid = campaign.uuid;
     this.name = campaign.name || '';
     this.guided = !!campaign.guided;

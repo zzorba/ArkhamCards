@@ -730,7 +730,7 @@
         "id": "the_dunwich_legacy.blood_on_the_altar.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -1274,7 +1274,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -1590,7 +1590,7 @@
         "id": "the_dunwich_legacy.extracurricular_activity.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -1772,7 +1772,7 @@
     },
     {
       "id": "all_insane",
-      "text": "Todos los investigadores se vuelven <b>locos</b>.",
+      "text": "Each surviving investigator is driven <b>insane</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -1783,7 +1783,7 @@
     },
     {
       "id": "all_killed",
-      "text": "Todos los investigadores han <b>muerto</b>.",
+      "text": "Todos los investigadores supervivientes han <b>muerto</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -1922,7 +1922,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -2620,7 +2620,7 @@
         "id": "the_dunwich_legacy.the_house_always_wins.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron antes del Acto 3 o fueron derrotado",
       "investigator_status": [
         "resigned",
@@ -2986,7 +2986,7 @@
         "id": "the_dunwich_legacy.the_miskatonic_museum.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -3374,7 +3374,7 @@
         "id": "the_dunwich_legacy.undimensioned_and_unseen.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -3872,7 +3872,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -4878,7 +4878,7 @@
         "id": "the_night_of_the_zealot.the_midnight_masks.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -5305,7 +5305,7 @@
         "id": "the_night_of_the_zealot.the_devourer_below.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -5572,7 +5572,7 @@
         "id": "the_night_of_the_zealot.the_gathering.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -6896,7 +6896,7 @@
         "id": "the_path_to_carcosa.a_phantom_of_truth.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -7615,7 +7615,7 @@
         "id": "the_path_to_carcosa.black_stars_rise.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -7998,7 +7998,7 @@
         "id": "the_path_to_carcosa.curtain_call.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -8796,7 +8796,7 @@
         "id": "the_path_to_carcosa.dim_carcosa.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -9399,7 +9399,7 @@
         "id": "the_path_to_carcosa.echoes_of_the_past.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -10518,7 +10518,7 @@
     {
       "id": "no_resolution_resigned",
       "title": "No se ha llegado a ninguna resolución porque todos los investigadores fueron derrotados",
-      "description": "Aat least one investigator resigned",
+      "description": "Al menos un investigador desistió",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -10532,7 +10532,7 @@
     {
       "id": "no_resolution_defeated",
       "title": "No se ha llegado a ninguna resolución porque todos los investigadores fueron derrotados",
-      "description": "All investigators were defeated",
+      "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -11468,7 +11468,7 @@
         "id": "the_path_to_carcosa.the_pallid_mask.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -12299,7 +12299,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -13329,7 +13329,7 @@
         "id": "the_dunwich_legacy.blood_on_the_altar.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -13771,7 +13771,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -14111,7 +14111,7 @@
         "id": "the_dunwich_legacy.extracurricular_activity.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -14280,7 +14280,7 @@
     },
     {
       "id": "all_insane",
-      "text": "Todos los investigadores se vuelven <b>locos</b>.",
+      "text": "Each surviving investigator is driven <b>insane</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -14291,7 +14291,7 @@
     },
     {
       "id": "all_killed",
-      "text": "Todos los investigadores han <b>muerto</b>.",
+      "text": "Todos los investigadores supervivientes han <b>muerto</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -14477,7 +14477,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -14812,7 +14812,7 @@
         "id": "the_dunwich_legacy.the_house_always_wins.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron antes del Acto 3 o fueron derrotado",
       "investigator_status": [
         "resigned",
@@ -15187,7 +15187,7 @@
         "id": "the_dunwich_legacy.the_miskatonic_museum.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -15587,7 +15587,7 @@
         "id": "the_dunwich_legacy.undimensioned_and_unseen.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -16091,7 +16091,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -17241,7 +17241,7 @@
         "id": "the_night_of_the_zealot.the_devourer_below.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -17565,7 +17565,7 @@
         "id": "the_night_of_the_zealot.the_gathering.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -18329,7 +18329,7 @@
         "id": "the_night_of_the_zealot.the_midnight_masks.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -20387,7 +20387,7 @@
         "id": "the_path_to_carcosa.a_phantom_of_truth.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -21123,7 +21123,7 @@
         "id": "the_path_to_carcosa.black_stars_rise.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -21559,7 +21559,7 @@
         "id": "the_path_to_carcosa.curtain_call.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -22368,7 +22368,7 @@
         "id": "the_path_to_carcosa.dim_carcosa.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -22982,7 +22982,7 @@
         "id": "the_path_to_carcosa.echoes_of_the_past.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -23476,7 +23476,7 @@
     {
       "id": "no_resolution_resigned",
       "title": "No se ha llegado a ninguna resolución porque todos los investigadores fueron derrotados",
-      "description": "Aat least one investigator resigned",
+      "description": "Al menos un investigador desistió",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -23490,7 +23490,7 @@
     {
       "id": "no_resolution_defeated",
       "title": "No se ha llegado a ninguna resolución porque todos los investigadores fueron derrotados",
-      "description": "All investigators were defeated",
+      "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -24435,7 +24435,7 @@
         "id": "the_path_to_carcosa.the_pallid_mask.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -25314,7 +25314,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -27624,7 +27624,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -28018,7 +28018,7 @@
         "id": "the_forgotten_age.heart_of_the_elders_part_2.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -28516,7 +28516,7 @@
         "id": "the_forgotten_age.shattered_aeons.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -29400,7 +29400,7 @@
         "id": "the_forgotten_age.the_boundary_beyond.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -29903,7 +29903,7 @@
         "id": "the_forgotten_age.the_city_of_archives.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -31265,7 +31265,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -31860,7 +31860,7 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -31871,7 +31871,7 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron antes del acto 3",
       "investigator_status": [
         "resigned",
@@ -32360,7 +32360,7 @@
         "id": "the_forgotten_age.the_untamed_wilds.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -34016,7 +34016,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -34561,7 +34561,7 @@
         "id": "the_forgotten_age.turn_back_time.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -36460,7 +36460,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -37092,7 +37092,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -38548,7 +38548,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -39012,7 +39012,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -39058,8 +39058,8 @@
 },
 {
   "id": "consternation_on_the_constellation",
-  "scenario_name": "Consternation on the Constellation",
-  "full_name": "Consternation on the Constellation",
+  "scenario_name": "Consternación en el Constellation",
+  "full_name": "Consternación en el Constellation",
   "header": "",
   "xp_cost": 2,
   "custom": {
@@ -39802,7 +39802,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -40156,7 +40156,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -41032,7 +41032,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -41661,7 +41661,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -43427,7 +43427,7 @@
   "resolutions": [
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -43442,7 +43442,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Al menos un investigador desistió",
       "investigator_status": [
         "resigned",
@@ -44087,7 +44087,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -44622,7 +44622,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -45155,7 +45155,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -45809,7 +45809,7 @@
       "input": {
         "type": "counter",
         "text": "Zona de victoria:",
-        "confirm_text": "Each investigator earns 2 bonus experience as they have prevented all of the Outer Gods from completing their schemes",
+        "confirm_text": "Cada investigador obtiene 2 puntos de experiencia adicionales por haber evitado que todos los Dioses Exteriores completaran sus planes.",
         "effects": [
           {
             "type": "earn_xp",
@@ -46008,7 +46008,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -47014,7 +47014,7 @@
         "id": "the_circle_undone.at_deaths_doorstep.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -47493,7 +47493,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -47671,7 +47671,7 @@
     },
     {
       "id": "explain_skip_prologue",
-      "text": "As an alternative to playing the Prologue, you may have each character draw a random tarot card to determine their fate."
+      "text": "Como alternativa a jugar el Prólogo, puedes hacer que cada jugador robe una carta aleatoria de tarot para determinar su destino."
     },
     {
       "id": "ask_skip_prologue",
@@ -47681,7 +47681,7 @@
         "choices": [
           {
             "id": "yes",
-            "text": "Would you like to use the app to randomize the results of the prologue?",
+            "text": "¿Quieres utilizar la aplicación para aleatorizar los resultados del prólogo?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -47754,13 +47754,13 @@
     {
       "id": "ask_player_count",
       "type": "input",
-      "text": "How many players are there?",
+      "text": "¿Cuántos jugadores hay?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "one",
-            "text": "One",
+            "text": "Uno",
             "steps": [
               "new_missing_investigators_1",
               "cross_off_prompt",
@@ -47772,7 +47772,7 @@
           },
           {
             "id": "two",
-            "text": "Two",
+            "text": "Dos",
             "steps": [
               "new_missing_investigators_2",
               "cross_off_prompt",
@@ -47796,7 +47796,7 @@
           },
           {
             "id": "four",
-            "text": "Four"
+            "text": "Cuatro"
           }
         ]
       }
@@ -47821,8 +47821,8 @@
         "choices": [
           {
             "id": "chosen",
-            "text": "Choose your prologue investigators:",
-            "confirm_text": "Chosen prologue investigators:",
+            "text": "Elige tus investigadores para el prólogo:",
+            "confirm_text": "Investigadores del prólogo elegidos:",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -47855,8 +47855,8 @@
         "choices": [
           {
             "id": "chosen",
-            "text": "Choose your prologue investigators:",
-            "confirm_text": "Chosen prologue investigators:",
+            "text": "Elige tus investigadores para el prólogo:",
+            "confirm_text": "Investigadores del prólogo elegidos:",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -47889,8 +47889,8 @@
         "choices": [
           {
             "id": "chosen",
-            "text": "Choose your prologue investigators:",
-            "confirm_text": "Chosen prologue investigators:",
+            "text": "Elige tus investigadores para el prólogo:",
+            "confirm_text": "Investigadores del prólogo elegidos:",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -47928,7 +47928,7 @@
     {
       "id": "cross_off_05046",
       "bullet_type": "small",
-      "text": "Cross off <i>Gavriella Mizrah</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "text": "Tacha a <i>Gavriella Mizrah</i> en la sección <i>Personas desaparecidas</i> del registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -47958,7 +47958,7 @@
     {
       "id": "cross_off_05047",
       "bullet_type": "small",
-      "text": "Cross off <i>Jerome Davids</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "text": "Tacha a <i>Jerome Davids</i> en la sección <i>Personas desaparecidas</i> del registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -47988,7 +47988,7 @@
     {
       "id": "cross_off_05048",
       "bullet_type": "small",
-      "text": "Cross off <i>Valentino Rivas</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "text": "Tacha a <i>Valentino Rivas</i> en la sección <i>Personas desaparecidas</i> del registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -48018,7 +48018,7 @@
     {
       "id": "cross_off_05049",
       "bullet_type": "small",
-      "text": "Cross off <i>Penny White</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "text": "Tacha a <i>Penny White</i> en la sección <i>Personas desaparecidas</i> del registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -48064,7 +48064,7 @@
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.intro",
         "name": "Intro"
       },
-      "title": "Intro",
+      "title": "Introducción",
       "type": "story",
       "text": "–Damas y caballeros –anuncia Josef Meiger mientras levanta una copa de champán para brindar. En la sala se va haciendo el silencio, hasta que sólo se oye el chisporroteo de la chimenea y los cuchicheos de la gente–. Permítanme que les dé la bienvenida a todos a mi hogar para la gala benéfica de este año. Esta noche tenemos entre nosotros a ciudadanos muy prominentes, y les agradezco a todos su duro trabajo y su generosidad. La sala se llena con vítores y murmullos de asentimiento. Muchos de los invitados levantan las copas hacia Valentino, uno de los miembros de la Logia más estimados este año, que está sentado en la mesa de invitados de honor, la más cercana a la chimenea.\nJerome, el asistente de Josef, está disimulando junto a la pared, detrás de Josef, mirando de forma discreta su reloj de bolsillo. En otro rincón de la estancia, el ama de llaves de la mansión, Penny, camina de mesa en mesa, llenando copas vacías y recogiendo platos de ensalada sucios. –Todos han realizado grandes actos en nombre de la Logia del Crepúsculo de Plata y nuestra histórica ciudad –prosigue diciendo Josef–. El año que viene, seguiremos soportando esta carga entre todos y haremos lo que haya que hacer en pos del progreso. Jerome da un paso adelante en silencio, interrumpiendo el discurso de Josef con la modesta confianza que otorgan años de servicio fiel. Le da un ligero golpecito a Josef en el hombro y le enseña la hora. –Me temo que ya me he quedado sin tiempo. Gracias a todos por su asistencia –concluye Josef con una inclinación. El público le dedica un educado aplauso, y Josef camina a buen paso hacia el salón, seguido de cerca por su asistente. Dos criados cogen los abrigos de los tardones que siguen llegando poco a poco a la mansión, y Gavriella, la jefa de seguridad de Josef, vigila la entrada con mirada adusta y la mandíbula tensa. –¿Ha llegado ya el Sr. Sanford? –pregunta secamente Josef mientras golpetea en el suelo con su brillante zapato de cuero.\n–Me temo que no –contesta Jerome, que hojea las últimas páginas del libro de invitados de la finca–. Pero debería de llegar en cualquier momento, Sr. Meiger.\n–Bien. No quiero que haya el más mínimo problema cuando llegue. ¿Ha quedado claro? –Y añade, dirigiéndose a Gavriella–: Asegúrate de que esté bien protegido. Gavriella asiente, dando una palmadita sobre la culata del calibre 45 que lleva en su sobaquera. Josef vuelve a dirigirse a su asistente: –Y que Penny se asegure de que el plato principal siga caliente y en perfecto estado mientras esperamos la llegada del Sr. Sanford. Que no se sirva ni una porción sin su presencia.\n–¿Ni siquiera para el Sr. Rivas, señor? –pregunta Jerome, mirando a Josef por encima de sus gruesas gafas. Josef se queda parado por un instante mientras lo piensa.\n–Que le sirvan otra copa de champán al Sr. Rivas, y así seguro que no se queja. Además, aún espero esas cuentas que te pedí hoy. No lo olvides –dice Josef, y le da una palmadita en el hombro a su asistente antes de regresar a la sala de banquetes. Jerome asiente sumisamente y se dirige al piso de arriba.\nPoco después apareció la niebla oscura, y nada volvió a ser igual."
     },
@@ -48481,7 +48481,7 @@
     },
     {
       "id": "choose_fate",
-      "text": "Who was eliminated?",
+      "text": "¿Quién fue eliminado?",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -48556,7 +48556,7 @@
     {
       "id": "choose_fate_2",
       "type": "input",
-      "text": "Who was eliminated?",
+      "text": "¿Quién fue eliminado?",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -48714,7 +48714,7 @@
     {
       "id": "choose_fate_3",
       "type": "input",
-      "text": "Who was eliminated?",
+      "text": "¿Quién fue eliminado?",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -48872,7 +48872,7 @@
     {
       "id": "choose_fate_4",
       "type": "input",
-      "text": "Who was eliminated?",
+      "text": "¿Quién fue eliminado?",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -49030,7 +49030,7 @@
     {
       "id": "choose_05046_fate",
       "type": "input",
-      "text": "What happened to Gavriella Mizrah?",
+      "text": "¿Qué le ocurrió a Gavriella Mizrah?",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -49135,7 +49135,7 @@
     },
     {
       "id": "choose_05047_fate",
-      "text": "What happened to Jerome Davids?",
+      "text": "¿Qué le ocurrió a Jerome Davids?",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -49241,7 +49241,7 @@
     },
     {
       "id": "choose_05048_fate",
-      "text": "What happened to Valentino Rivas?",
+      "text": "¿Qué le ocurrió a Valentino Rivas?",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -49347,7 +49347,7 @@
     },
     {
       "id": "choose_05049_fate",
-      "text": "What happened to Penny White?",
+      "text": "¿Qué le ocurrió a Penny White?",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -49601,152 +49601,152 @@
       "id": "manual_randomizer",
       "bullets": [
         {
-          "text": "0: (character name) disappeared into the mist. 2 pieces of evidence were left behind."
+          "text": "0: (nombre del personaje) desapareció en la niebla. Se dejaron 2 pruebas."
         },
         {
-          "text": "I - II: (character name) disappeared into the mist. 0 pieces of evidence were left behind."
+          "text": "I - II: (nombre del personaje) desapareció en la niebla. Se dejaron 0 pruebas."
         },
         {
-          "text": "III - VI: (character name) was claimed by specters. 3 pieces of evidence were left behind."
+          "text": "III - VI: (nombre del personaje) fue arrebatado por espectros. Se dejaron 3 pruebas."
         },
         {
-          "text": "VII - IX: (character name) was claimed by specters. 5 pieces of evidence were left behind."
+          "text": "VII - IX: (nombre del personaje) fue arrebatado por espectros. Se dejaron 5 pruebas."
         },
         {
-          "text": "X - XII: (character name) was pulled into the spectral realm. 2 pieces of evidence were left behind."
+          "text": "X - XII: (nombre del personaje) fue absorbido al reino espectral. Se dejaron 2 pruebas."
         },
         {
-          "text": "XIII - XVI: (character name) was pulled into the spectral realm. 4 pieces of evidence were left behind."
+          "text": "XIII - XVI: (nombre del personaje) fue absorbido al reino espectral. Se dejaron 4 pruebas."
         },
         {
-          "text": "XVII - XIII: (character name) was pulled into the spectral realm. 6 pieces of evidence were left behind."
+          "text": "XVII - XIII:  (nombre del personaje) fue absorbido al reino espectral. Se dejaron 6 pruebas."
         },
         {
-          "text": "XIX - XX: (character name) was taken by the Watcher. 3 pieces of evidence were left behind."
+          "text": "XIX - XX: El vigilante se llevó a (nombre del personaje). Se dejaron 3 pruebas."
         },
         {
-          "text": "XXI: (character name) was taken by the Watcher. 5 pieces of evidence were left behind."
+          "text": "XXI: El vigilante se llevó a (nombre del personaje). Se dejaron 5 pruebas."
         }
       ]
     },
     {
       "id": "0_pieces_of_evidence",
-      "text": "0 pieces of evidence were left behind."
+      "text": "Se dejaron 0 pruebas."
     },
     {
       "id": "2_pieces_of_evidence",
-      "text": "2 pieces of evidence were left behind."
+      "text": "Se dejaron 2 pruebas."
     },
     {
       "id": "3_pieces_of_evidence",
-      "text": "3 pieces of evidence were left behind."
+      "text": "Se dejaron 3 pruebas."
     },
     {
       "id": "4_pieces_of_evidence",
-      "text": "4 pieces of evidence were left behind."
+      "text": "Se dejaron 4 pruebas."
     },
     {
       "id": "5_pieces_of_evidence",
-      "text": "5 pieces of evidence were left behind."
+      "text": "Se dejaron 5 pruebas."
     },
     {
       "id": "6_pieces_of_evidence",
-      "text": "6 pieces of evidence were left behind."
+      "text": "Se dejaron 6 pruebas."
     },
     {
       "id": "the_fool",
-      "title": "0 - The Fool"
+      "title": "0 - El Loco"
     },
     {
       "id": "the_magician",
-      "title": "I - The Magician"
+      "title": "I - El Mago"
     },
     {
       "id": "the_high_priestess",
-      "title": "II - The High Priestess"
+      "title": "II - La Sacerdotisa"
     },
     {
       "id": "the_empress",
-      "title": "III - The Empress"
+      "title": "III - La Emperatriz"
     },
     {
       "id": "the_emperor",
-      "title": "IV - The Emperor"
+      "title": "IV - El Emperador"
     },
     {
       "id": "the_hierophant",
-      "title": "V - The Hierophant"
+      "title": "V - El Hierofante"
     },
     {
       "id": "the_lovers",
-      "title": "VI - The Lovers"
+      "title": "VI - Los Enamorados"
     },
     {
       "id": "the_chariot",
-      "title": "VII - The Chariot"
+      "title": "VII - El Carro"
     },
     {
       "id": "strength",
-      "title": "VIII - Strength"
+      "title": "VIII - La Fuerza"
     },
     {
       "id": "the_hermit",
-      "title": "IX - The Hermit"
+      "title": "IX - El Ermitaño"
     },
     {
       "id": "wheel_of_fortune",
-      "title": "X - Wheel of Fortune"
+      "title": "X - La Rueda de la Fortuna"
     },
     {
       "id": "justice",
-      "title": "XI - Justice"
+      "title": "XI - La Justicia"
     },
     {
       "id": "the_hanged_man",
-      "title": "XII - The Hanged Man"
+      "title": "XII - El Colgado"
     },
     {
       "id": "death",
-      "title": "XIII - Death"
+      "title": "XIII - La Muerte"
     },
     {
       "id": "temperance",
-      "title": "XIV - Temperance"
+      "title": "XIV - La Templanza"
     },
     {
       "id": "the_devil",
-      "title": "XV - The Devil"
+      "title": "XV - El Diablo"
     },
     {
       "id": "the_tower",
-      "title": "XVI - The Tower"
+      "title": "XVI - La Torre"
     },
     {
       "id": "the_star",
-      "title": "XVII - The Star"
+      "title": "XVII - La Estrella"
     },
     {
       "id": "the_moon",
-      "title": "XVIII - The Moon"
+      "title": "XVIII - La Luna"
     },
     {
       "id": "the_sun",
-      "title": "XIX - The Sun"
+      "title": "XIX - El Sol"
     },
     {
       "id": "judgement",
-      "title": "XX - Judgement"
+      "title": "XX - El Juicio"
     },
     {
       "id": "the_world",
-      "title": "XXI - The World"
+      "title": "XXI - El Mundo"
     },
     {
       "id": "randomizer",
       "type": "input",
       "input": {
         "type": "prologue_randomizer",
-        "prompt": "Draw tarot cards:",
+        "prompt": "Robar cartas de tarot:",
         "choices": [
           {
             "id": "05046",
@@ -49804,7 +49804,7 @@
         "options": [
           {
             "condition": "0",
-            "prompt": "0 - The Fool",
+            "prompt": "0 - El Loco",
             "effects": [
               {
                 "type": "story_step",
@@ -49836,7 +49836,7 @@
           },
           {
             "condition": "1",
-            "prompt": "I - The Magician",
+            "prompt": "I - El Mago",
             "effects": [
               {
                 "type": "story_step",
@@ -49868,7 +49868,7 @@
           },
           {
             "condition": "2",
-            "prompt": "II - The High Priestess",
+            "prompt": "II - La Sacerdotisa",
             "effects": [
               {
                 "type": "story_step",
@@ -49900,7 +49900,7 @@
           },
           {
             "condition": "3",
-            "prompt": "III - The Empress",
+            "prompt": "III - La Emperatriz",
             "effects": [
               {
                 "type": "story_step",
@@ -49932,7 +49932,7 @@
           },
           {
             "condition": "4",
-            "prompt": "IV - The Emperor",
+            "prompt": "IV - El Emperador",
             "effects": [
               {
                 "type": "story_step",
@@ -49964,7 +49964,7 @@
           },
           {
             "condition": "5",
-            "prompt": "V - The Hierophant",
+            "prompt": "V - El Hierofante",
             "effects": [
               {
                 "type": "story_step",
@@ -49996,7 +49996,7 @@
           },
           {
             "condition": "6",
-            "prompt": "VI - The Lovers",
+            "prompt": "VI - Los Enamorados",
             "effects": [
               {
                 "type": "story_step",
@@ -50028,7 +50028,7 @@
           },
           {
             "condition": "7",
-            "prompt": "VII - The Chariot",
+            "prompt": "VII - El Carro",
             "effects": [
               {
                 "type": "story_step",
@@ -50060,7 +50060,7 @@
           },
           {
             "condition": "8",
-            "prompt": "VIII - Strength",
+            "prompt": "VIII - La Fuerza",
             "effects": [
               {
                 "type": "story_step",
@@ -50092,7 +50092,7 @@
           },
           {
             "condition": "9",
-            "prompt": "IX - The Hermit",
+            "prompt": "IX - El Ermitaño",
             "effects": [
               {
                 "type": "story_step",
@@ -50124,7 +50124,7 @@
           },
           {
             "condition": "10",
-            "prompt": "X - Wheel of Fortune",
+            "prompt": "X - La Rueda de la Fortuna",
             "effects": [
               {
                 "type": "story_step",
@@ -50156,7 +50156,7 @@
           },
           {
             "condition": "11",
-            "prompt": "XI - Justice",
+            "prompt": "XI - La Justicia",
             "effects": [
               {
                 "type": "story_step",
@@ -50188,7 +50188,7 @@
           },
           {
             "condition": "12",
-            "prompt": "XII - The Hanged Man",
+            "prompt": "XII - El Colgado",
             "effects": [
               {
                 "type": "story_step",
@@ -50220,7 +50220,7 @@
           },
           {
             "condition": "13",
-            "prompt": "XIII - Death",
+            "prompt": "XIII - La Muerte",
             "effects": [
               {
                 "type": "story_step",
@@ -50252,7 +50252,7 @@
           },
           {
             "condition": "14",
-            "prompt": "XIV - Temperance",
+            "prompt": "XIV - La Templanza",
             "effects": [
               {
                 "type": "story_step",
@@ -50284,7 +50284,7 @@
           },
           {
             "condition": "15",
-            "prompt": "XV - The Devil",
+            "prompt": "XV - El Diablo",
             "effects": [
               {
                 "type": "story_step",
@@ -50316,7 +50316,7 @@
           },
           {
             "condition": "16",
-            "prompt": "XVI - The Tower",
+            "prompt": "XVI - La Torre",
             "effects": [
               {
                 "type": "story_step",
@@ -50348,7 +50348,7 @@
           },
           {
             "condition": "17",
-            "prompt": "XVII - The Star",
+            "prompt": "XVII - La Estrella",
             "effects": [
               {
                 "type": "story_step",
@@ -50380,7 +50380,7 @@
           },
           {
             "condition": "18",
-            "prompt": "XVIII - The Moon",
+            "prompt": "XVIII - La Luna",
             "effects": [
               {
                 "type": "story_step",
@@ -50412,7 +50412,7 @@
           },
           {
             "condition": "19",
-            "prompt": "XIX - The Sun",
+            "prompt": "XIX - El Sol",
             "effects": [
               {
                 "type": "story_step",
@@ -50444,7 +50444,7 @@
           },
           {
             "condition": "20",
-            "prompt": "XX - Judgement",
+            "prompt": "XX - El Juicio",
             "effects": [
               {
                 "type": "story_step",
@@ -50476,7 +50476,7 @@
           },
           {
             "condition": "21",
-            "prompt": "XXI - The World",
+            "prompt": "XXI - El Mundo",
             "effects": [
               {
                 "type": "story_step",
@@ -50517,7 +50517,7 @@
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.resolution",
         "name": "Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -51103,7 +51103,7 @@
         "id": "the_circle_undone.for_the_greater_good.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -51855,7 +51855,7 @@
         "id": "the_circle_undone.in_the_clutches_of_chaos.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -53591,7 +53591,7 @@
         "id": "the_circle_undone.the_secret_name.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -54309,7 +54309,7 @@
         "id": "the_circle_undone.the_witching_hour.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -56453,7 +56453,7 @@
         "id": "the_circle_undone.union_and_disillusion.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -59521,7 +59521,7 @@
       "type": "input",
       "input": {
         "type": "investigator_choice",
-        "confirm_text": "Chosen dream:",
+        "confirm_text": "Sueño elegido:",
         "source": "scenario",
         "investigator": "all",
         "special_mode": "sequential",
@@ -60423,7 +60423,7 @@
         "id": "the_dreameaters.beyond_the_gates_of_sleep.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -60862,7 +60862,7 @@
         "id": "the_dreameaters.dark_side_of_the_moon.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -61929,7 +61929,7 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Al menos un investigador desistió",
       "investigator_status": [
         "resigned",
@@ -61943,7 +61943,7 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -62747,7 +62747,7 @@
         "id": "the_dreameaters.where_the_gods_dwell.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -63569,7 +63569,7 @@
         "id": "the_dreameaters.a_thousand_shapes_of_horror.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -66217,7 +66217,7 @@
         "id": "the_dreameaters.point_of_no_return.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -66719,7 +66719,7 @@
         "id": "the_dreameaters.waking_nightmare.no_resolution_resigned",
         "name": "No Resolution (Resigned)"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Al menos un investigador desistió",
       "investigator_status": [
         "resigned",
@@ -66742,7 +66742,7 @@
         "id": "the_dreameaters.waking_nightmare.no_resolution_defeated",
         "name": "No Resolution (Resigned)"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -67723,7 +67723,7 @@
         "id": "the_dreameaters.weaver_of_the_cosmos.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "text": "Despertáis atrapados dentro de algo pegajoso y ajustado. Tenéis los brazos atados a los costados, y da igual lo mucho que os debatáis, porque no parecéis poder moveros más allá de agitar los dedos desesperadamente. Lentamente, el temor invade vuestra mente al daros cuenta de la situación en la que os encontráis. Como no podéis mover la cabeza, os veis obligados a contemplar cómo la criatura de ocho patas surge de la oscuridad. No hace ningún sonido mientras se coloca sobre la red. Su multitud de ojos reflejan vuestra expresión aterrada. Sus mandíbulas gotean hambrientas. Ojalá pudierais apartar la vista.",
       "steps": [
@@ -68880,7 +68880,7 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -68891,7 +68891,7 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron antes del acto 3",
       "investigator_status": [
         "resigned",
@@ -69380,7 +69380,7 @@
         "id": "the_forgotten_age.heart_of_the_elders_part_1.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -69670,7 +69670,7 @@
         "id": "the_forgotten_age.heart_of_the_elders_part_2.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -71061,7 +71061,7 @@
         "id": "the_forgotten_age.shattered_aeons.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -71939,7 +71939,7 @@
         "id": "the_forgotten_age.the_boundary_beyond.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -72431,7 +72431,7 @@
         "id": "the_forgotten_age.the_city_of_archives.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -74266,7 +74266,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -76175,7 +76175,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -76674,7 +76674,7 @@
         "id": "the_forgotten_age.turn_back_time.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -77083,7 +77083,7 @@
         "id": "the_forgotten_age.the_untamed_wilds.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -78657,7 +78657,7 @@
         "id": "the_innsmouth_conspiracy.a_light_in_the_fog.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -79867,7 +79867,7 @@
         "id": "the_innsmouth_conspiracy.devil_reef.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -79915,6 +79915,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_4.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "As soon as your mind returned to the present, you began formulating your plan. A plan to enter the realm of the Deep Ones and end their conspiracy once and for all. \"This is ridiculous, you know that, right?\" Harper asks. You nod. Of course it's ridiculous. You've spent the last two days on the run. Chased. Hunted. Tormented.\nBut you've also spend the last two days recovering the memories you've forgotten. And what you've seen is something you can't possibly ignore. You have seen the deity the Esoteric Order of Dagon is named for, and you understand what the Order plans to do. The alignment of the celestial bodies in the sky, the steadily rising tides, the tumultuous fluctuating weather, the creatures emerging from the deep, all of it is tied together. You have seen it. There will come a flood, a great disaster to wipe out humanity, so only the deep remains. The great city in the reef shall rise once more and become the beating heart of all life on Earth.\nThere are still gaps in your memory, but all this you know to be true. All of Innsmouthis consumed by this conspiracy. The Order controlled the town through its oaths and the secret wealth it hoarded from the deep. It was no wonder they treated outsiders like yourself with such scorn.\nYou give Harper a knowing glare. She sighs and nods. \"I know. It's the only way.\" Together, the two of you plot your course. Abandoned ships still litter the harbor of Innsmouth. Under the cover of night, you must commandeer one of them, sail to Devil Reef, and descend once more into the antediluvian ruins in the depths below the forsaken islands. That is where the other entrance to the city lies. Y'ha-nthlei.\nYour skin prickles with cold shivers as you utter the word aloud. Harper grimaces, though you can sense the determination behind her steely gaze. \"I'm going to see this mission through, Dawson. For you.\"\nYou lay out all of the information you've uncovered and the relics you've obtained despite the horrors arrayed against you. You know the way to Y'ha-nthlei is sealed tight. There must be a way to gain entrance. Perhaps you already have the answers you seek…"
     },
@@ -79965,6 +79969,10 @@
     },
     {
       "id": "story_1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_4.the_terror_of_devil_reef_is_dead_and_the_lifecycle_of_a_deep_one",
+        "name": "The Terror of Devil Reef is Dead and The Lifecycle of a Deep One"
+      },
       "type": "story",
       "text": "You study the trophy you found in the sacrificial pit in which you awoke several days ago—part of what was once the creature that you fought in Devil Reef. It wasn't the same kind of creature as the \"Deep Ones\" that the Esoteric Order of Dagon worships, but you cannot help ruminating over the similarities between them. You recall that fish never cease growing as they age, and wonder if the same may be true for Deep Ones. Perhaps it was an ancient breed of Deep Ones—something so old, it grew enormous and twisted beyond imagination. If so what was it doing in Devil Reef? Was it guarding Y'ha-nthlei? And if so, what does that bode for you? You decide to take the trophy with you, hoping it is important enough to aid in your mission…"
     },
@@ -80088,6 +80096,10 @@
     },
     {
       "id": "story_2",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_4.gatekeeper_defeated",
+        "name": "Gatekeeper defeated"
+      },
       "type": "story",
       "text": "You understand now the purpose of the relic you found in Devil Reef. It isn't just an object of power. It is a badge—an heirloom of sorts, worn by the one who stands guard over the gateway to the Deep Ones' city. You defeated the one groomed to be its next protector. Now the relic recognizes you as its rightful heir. Perhaps with this, you will be able to gain entrance to Y'ha-nthlei…"
     },
@@ -80105,6 +80117,10 @@
     },
     {
       "id": "remove_thomas_dawson",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_4.outro",
+        "name": "Outro"
+      },
       "text": "Return Thomas Dawson to the collection. If an investigator earned Elina Harper (at any point during this campaign), they may add her back to their deck."
     },
     {
@@ -80411,7 +80427,7 @@
         "id": "the_innsmouth_conspiracy.horror_in_high_gear.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -81089,7 +81105,7 @@
         "id": "the_innsmouth_conspiracy.in_too_deep.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -82471,7 +82487,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "text": "The chanting of the Deep Ones rises to a crescendo. The alien walls of Y'ha-nthlei twist and contort before your eyes, like lungs desperately clawing for breath. The air becomes thin. Water seeps through the walls. Nothing can stop the pull of the tide now. Nothing can stop the great flood. A triumphant roar sounds throughout the city, and the citizens of the deep rise to meet the cry in their jubilance. You collapse in exhaustion and resignation. Your part is over, now. The part of humanity will be soon to follow.",
       "investigator_status": [
@@ -82890,6 +82906,10 @@
   "steps": [
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "<center><game>THURSDAY, SEPTEMBER 15, 1927</game></center>\n<center><game>ONE WEEK EARLIER</game></center>\nYou stand outside the cracked marble steps leading up to the masonic hall of the Esoteric Order of Dagon. All of the evidence has lead you here. Whatever is going on in this town, this Order is behind it. You're sure of it… though their ultimate goal remains a mystery.\nThe town is eerily quiet as you stand before the building's entrance. Once, this place might have been impressive and opulent. Years of disrepair and flood damage have reduced it to a near-ruin. Its once-white paint is gray and peeling, and many of the pillars outside the entryway are beginning to crumble. Still, it is one of the more intimidating places in Innsmouth, projecting authority despite its decrepitude. No, not authority—something darker. A looming, unspoken threat.\n\"Are you ready?\" Agent Dawson asks. His usually calm demeanor has vanished, replaced with a humorless gravity that throws you off guard. \"This is it. This is where we'll find answers.\"\nYou're not so sure. Every other lead you've followed has led to only more questions."
     },
@@ -82918,11 +82938,19 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Agent Harper was kidnapped when she got too close to the Order, but interrogating her kidnapper didn't exactly yield the answers you needed. What you know now is that the Order's influence pervades Innsmouth, from important civic figures to everyday citizens. Finances, religion, politics… everything is wrapped up in this cult's business in some way or another. What's worse, many of the town's inhabitants seem to follow the Order with blind, fanatical devotion. So many that you're not sure this is even a functioning town anymore. It's no wonder the people are so hostile towards outsiders.\nIt wasn't until your investigation of Devil Reef that you truly began to peel away the outer layers of Innsmouth and reveal the rot beneath. There, you found what the Order was hiding: the monstrous creatures that emerged from the depths and prowled the tidal islands, congregating in prayers to some horrific deity. Perhaps it is even the same \"Dagon\" worshipped by the Order."
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "You are sure that Agent Harper was kidnapped after she began investigating the Order. Your own investigation might have ended the same way had you not laid low for a week after the townsfolk got riled up. It seems that the Order's influence pervades Innsmouth, from important civic figures to everyday citizens. Finances, religion, politics… everything is wrapped up in this cult's business in some way or another. But why?\nIt wasn't until your investigation of Devil Reef that you truly began to peel away the outer layers of Innsmouth and reveal the rot beneath. There, you found what the Order was hiding: the monstrous creatures that emerged from the depths and prowled the tidal islands, congregating in prayers to some horrific deity. Perhaps it is even the same \"Dagon\" worshipped by the Order."
     },
@@ -82952,11 +82980,19 @@
     },
     {
       "id": "intro_4",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_4",
+        "name": "Intro 4"
+      },
       "type": "story",
       "text": "<i>Creeeak.</i> Agent Dawson opens the large doors serving as the entrance to the building, and you follow close behind. Inside, the halls are dark and eerily still. Only the faint sound of trickling water lingers in the air. \"I don't like this one bit,\" Dawson says as the front door closes behind you. He unholsters his gun, turns on his flashlight, and scans the room. \"We should stay together. Safety in numbers.\" You nod in agreement. The Order has proven to be very dangerous, and they surely don't want you poking around in their headquarters…"
     },
     {
       "id": "intro_5",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.intro_5",
+        "name": "Intro 5"
+      },
       "type": "story",
       "text": "<i>Creeeak.</i> Agent Dawson creaks open the large doors serving as the entrance to the building, and you follow close behind. Inside, the halls are dark and eerily still. Only the faint sound of trickling water lingers in the air. \"It's quiet. I guess there are no ceremonies going on tonight. That's good,\" Dawson says as the front door closes behind you. He turns on his flashlight and illuminates a nearby doorway. \"We should split up. We'll be able to cover more ground that way. See if you can figure out what they're hiding here. I'll meet up with you later.\" You nod and head in the opposite direction…"
     },
@@ -83608,7 +83644,11 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.no_resolution",
+        "name": "No Resolution"
+      },
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -83624,6 +83664,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolución 1",
       "investigator_status": [
         "alive",
@@ -83642,6 +83686,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolución 2",
       "investigator_status": [
         "alive",
@@ -83657,6 +83705,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Resolución 3",
       "investigator_status": [
         "alive",
@@ -83672,6 +83724,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_lair_of_dagon.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Resolución 4",
       "investigator_status": [
         "alive",
@@ -84187,7 +84243,7 @@
         "id": "the_innsmouth_conspiracy.the_pit_of_despair.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -86186,7 +86242,7 @@
         "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -87196,7 +87252,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -87487,7 +87543,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -88374,7 +88430,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -88787,7 +88843,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -90951,7 +91007,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -91341,7 +91397,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -91737,7 +91793,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -93221,7 +93277,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -94343,7 +94399,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -95122,7 +95178,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores fueron derrotados",
       "investigator_status": [
         "eliminated",
@@ -95805,7 +95861,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -96777,7 +96833,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -97856,7 +97912,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -98419,7 +98475,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -98671,7 +98727,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",
@@ -99075,7 +99131,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "No se ha llegado a ninguna resolución",
       "description": "Todos los investigadores desistieron o fueron derrotados",
       "investigator_status": [
         "resigned",

@@ -7,7 +7,7 @@ import AppIcon from '@icons/AppIcon';
 import COLORS from '@styles/colors';
 import { ThemeColors } from '@styles/theme';
 
-interface Props extends TouchableOpacityProps {
+interface Props extends Omit<TouchableOpacityProps, 'onValueChange'> {
   useGestureHandler?: boolean;
   value: boolean;
   onValueChange?: (checked: boolean) => void;

@@ -27,6 +27,7 @@ export class MiniCampaignRedux implements MiniCampaignT {
   public investigators: string[];
   public updatedAt: Date;
   public linked: undefined | CampaignLink = undefined;
+  public archived: boolean;
 
   constructor(
     campaign: Campaign,
@@ -47,6 +48,7 @@ export class MiniCampaignRedux implements MiniCampaignT {
     this.id = getCampaignId(campaign);
     this.uuid = campaign.uuid;
     this.guided = !!campaign.guided;
+    this.archived = !!campaign.archived;
     this.name = campaign.name;
     this.difficulty = campaign.difficulty;
     this.latestScenarioResult = last(campaign.scenarioResults || []) || undefined;

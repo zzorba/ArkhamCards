@@ -25,7 +25,7 @@ export default function SetupStepWrapper({ bulletType, noPadding, reverseSpacing
   const { colors } = useContext(StyleContext);
   const { campaignLog } = useContext(ScenarioStepContext);
   const { processedScenario } = useContext(ScenarioGuideContext);
-  const resolution = campaignLog.scenarioStatus(processedScenario.id.encodedScenarioId) === 'resolution';
+  const resolution = !!(campaignLog && processedScenario) && campaignLog.scenarioStatus(processedScenario.id.encodedScenarioId) === 'resolution';
 
   const balancedSpacing = useMemo(() => {
     switch (bulletType) {

@@ -1576,11 +1576,11 @@ msgid ""
 msgstr "당신의 캠페인 기록지 중 \"${ logEntry.section }\" 항목 아래에 ${ logEntry.text }라고 기록합니다."
 
 msgid "Add ${ tokenString } to the chaos bag."
-msgstr "${ tokenString } 토큰을 혼돈 주머니에 넣습니다."
+msgstr "혼돈 주머니에 ${ tokenString } 토큰을 추가합니다."
 
 #, javascript-format
 msgid "Remove ${ tokenString } from the chaos bag."
-msgstr "${ tokenString } 토큰을 혼돈 주머니에서 제거합니다."
+msgstr "혼돈 주머니에서 ${ tokenString } 토큰을 제거합니다."
 
 #, javascript-format
 msgid "Remove ${ card.name } (${ input.length })"
@@ -4284,8 +4284,8 @@ msgstr ""
 "덱을 향상한 후에 실수를 했다면, 덱을 수정할 때 사용 가능한 경험치를 '조정'할 수 있습니다."
 
 msgid ""
-"The numbers below already include all the trauma, victory points, and "
-"stotry assets you may have earned during the resolution.\n"
+"The numbers below already include all the trauma, victory points, and story "
+"assets you may have earned during the resolution.\n"
 "\n"
 "If you have any other cards or effects that the app does not take care of, "
 "you can make adjustments below before saving each investigator."
@@ -4379,6 +4379,15 @@ msgid ""
 msgstr ""
 "캠페인 기록지 중 \"${ logEntry.section }\" 항목 아래의 <i>${logEntry.text }</i> 라고 "
 "기록합니다."
+
+msgid "Unarchive campaign"
+msgstr ""
+
+msgid "Archive campaign"
+msgstr ""
+
+msgid "Show archived campaigns"
+msgstr ""
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."

@@ -14,7 +14,7 @@ import { t } from 'ttag';
 import { DeckMeta, DeckProblem, DeckProblemType, Slots } from '@actions/types';
 import { ANCESTRAL_KNOWLEDGE_CODE, ON_YOUR_OWN_CODE, VERSATILE_CODE } from '@app_constants';
 import Card from '@data/types/Card';
-import DeckOption from '@data/types/DeckOption';
+import DeckOption, { localizeDeckOptionError } from '@data/types/DeckOption';
 
 
 interface SpecialCardCounts {
@@ -158,7 +158,7 @@ export default class DeckValidation {
       }
       if (this.deck_options_counts[i].limit && option.limit){
         if (this.deck_options_counts[i].limit > option.limit){
-          const error = option.localizedError();
+          const error = localizeDeckOptionError(option.error);
           if (error) {
             this.problem_list.push(error);
           }
@@ -175,7 +175,7 @@ export default class DeckValidation {
             }
           })
           if (faction_count < atleast.factions) {
-            const error = option.localizedError();
+            const error = localizeDeckOptionError(option.error);
             if (error){
               this.problem_list.push(error);
             }
@@ -189,7 +189,7 @@ export default class DeckValidation {
             }
           })
           if (type_count < atleast.types){
-            const error = option.localizedError();
+            const error = localizeDeckOptionError(option.error);
             if (error){
               this.problem_list.push(error);
             }
@@ -278,19 +278,20 @@ export default class DeckValidation {
       limit: 1,
       trait: ['Covenant'],
       error: t`Limit 1 Covenant per deck.`,
-      localizedError: () => t`Limit 1 Covenant per deck.`,
       dynamic: true,
     });
     if (specialCards.ancestralKnowledge) {
-      deck_options.push(DeckOption.parse({
-        type: ['skill'],
-        ignore_match: true,
-        atleast: {
-          types: 1,
-          min: 10,
-        },
-        error: t`Decks with Ancestral Knowledge must include at least 10 skills.`,
-      }));
+      deck_options.push(
+        DeckOption.parse({
+          type: ['skill'],
+          ignore_match: true,
+          atleast: {
+            types: 1,
+            min: 10,
+          },
+          error: t`Decks with Ancestral Knowledge must include at least 10 skills.`,
+        })
+      );
     }
     if (this.investigator &&
         this.investigator.deck_options &&
@@ -300,14 +301,16 @@ export default class DeckValidation {
       });
     }
     if (specialCards.versatile > 0) {
-      deck_options.push(DeckOption.parse({
-        level: {
-          min: 0,
-          max: 0
-        },
-        limit: specialCards.versatile,
-        error: t`Too many off-class cards for Versatile`,
-      }));
+      deck_options.push(
+        DeckOption.parse({
+          level: {
+            min: 0,
+            max: 0
+          },
+          limit: specialCards.versatile,
+          error: t`Too many off-class cards for Versatile`,
+        })
+      );
     }
     return deck_options;
   }

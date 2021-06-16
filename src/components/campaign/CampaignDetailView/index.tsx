@@ -368,6 +368,7 @@ function CampaignDetailView(props: Props) {
               deckActions={deckActions}
             />
             <DeleteCampaignButton
+              actions={updateCampaignActions}
               componentId={componentId}
               campaignId={campaignId}
               campaign={campaign}

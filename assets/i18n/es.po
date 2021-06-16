@@ -499,7 +499,7 @@ msgid "Check for updates"
 msgstr "Buscar actualizaciones"
 
 msgid "Add Campaign Log Section"
-msgstr "Añadir Sección al Registro de Campaña"
+msgstr "Añadir sección al registro de campaña"
 
 msgid "Section Name"
 msgstr "Nombre de Sección"
@@ -852,7 +852,7 @@ msgid "New Campaign"
 msgstr "Nueva Campaña"
 
 msgid "Chaos Bag"
-msgstr "Bolsa de Caos"
+msgstr "Bolsa de caos"
 
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Debilidades"
@@ -1384,7 +1384,7 @@ msgstr ""
 "Utiliza el botón + para crear una nueva.\n"
 "\n"
 "Puedes utilizar esta aplicación para realizar un seguimiento de las "
-"campañas, incluyendo los traumas de los investigadores, la Bolsa de Caos, "
+"campañas, incluyendo los traumas de los investigadores, la bolsa de caos, "
 "debilidades básicas, notas de campaña y los valores de experiencia para "
 "todos los mazos."
 
@@ -1685,7 +1685,7 @@ msgid "At Death's Doorstep"
 msgstr "En la puerta de la muerte (Acto 1)"
 
 msgid "Sealed Tokens"
-msgstr "Fichas de Caos selladas"
+msgstr "Fichas de caos selladas"
 
 msgid "XP Discount: ${ card.extra_xp }."
 msgstr "Descuento de XP: ${ card.extra_xp }."
@@ -2037,18 +2037,18 @@ msgid "Update decks with scenario results"
 msgstr "Actualizar mazos con los resultados del escenario"
 
 msgid "In your Campaign Log, cross out <i>${ logEntry.text }</i>"
-msgstr "En el Registro de Campaña, tacha <i>${ logEntry.text }</i>"
+msgstr "En el registro de campaña, tacha <i>${ logEntry.text }</i>"
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
 "logEntry.text }</i>"
 msgstr ""
-"En el Registro de Campaña, tacha <i>${ logEntry.text }</i> en la sección "
+"En el registro de campaña, tacha <i>${ logEntry.text }</i> en la sección "
 "\"${ logEntry.section }\""
 
 msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
-msgstr "En el Registro de Campaña, anota que <i>${ logEntry.text }</i>"
+msgstr "En el registro de campaña, anota que <i>${ logEntry.text }</i>"
 
 #, javascript-format
 msgid "Remove ${ card.name } (${ input.length })"
@@ -2085,10 +2085,10 @@ msgid_plural ""
 "Check Campaign Log. Because there are ${ count } marks under '${ "
 "logEntry.section }'"
 msgstr[0] ""
-"Revisa el Registro de Campaña. Como hay ${ count } marca en '${ "
+"Revisa el registro de campaña. Como hay ${ count } marca en '${ "
 "logEntry.section }':"
 msgstr[1] ""
-"Revisa el Registro de Campaña. Como hay ${ count } marcas en '${ "
+"Revisa el registro de campaña. Como hay ${ count } marcas en '${ "
 "logEntry.section }':"
 
 msgid ""
@@ -2098,19 +2098,19 @@ msgid_plural ""
 "Check Campaign Log. Because there are ${ count } entries under '${ "
 "logEntry.section }'"
 msgstr[0] ""
-"Revisa el Registro de Campaña. Como hay ${ count } entrada en '${ "
+"Revisa el registro de campaña. Como hay ${ count } entrada en '${ "
 "logEntry.section }':"
 msgstr[1] ""
-"Revisa el Registro de Campaña. Como hay ${ count } entradas en '${ "
+"Revisa el registro de campaña. Como hay ${ count } entradas en '${ "
 "logEntry.section }':"
 
 #, javascript-format
 msgid "Check Campaign Log. Because <i>${ entry }</i>"
-msgstr "Revisa el Registro de Campaña. Como <i>${ entry }</i>:"
+msgstr "Revisa el registro de campaña. Como <i>${ entry }</i>:"
 
 msgid "Check Campaign Log, is the <i>${ logEntry.section }</i> not crossed off?"
 msgstr ""
-"Revisa el Registro de Campaña, ¿está <i>${ logEntry.section }</i> sin "
+"Revisa el registro de campaña, ¿está <i>${ logEntry.section }</i> sin "
 "tachar?"
 
 #, javascript-format
@@ -2225,7 +2225,7 @@ msgid "Undo"
 msgstr "Deshacer"
 
 msgid "In your Campaign Log, record that:"
-msgstr "En el Registro de Campaña, anota que:"
+msgstr "En el registro de campaña, anota que:"
 
 msgid "Enter a name for this deck."
 msgstr "Inserta un nombre para este mazo."
@@ -2267,13 +2267,13 @@ msgid "Choose additional card"
 msgstr "Elige una carta adicional"
 
 msgid "Campaign Log"
-msgstr "Registro de Campaña"
+msgstr "Registro de campaña"
 
 msgid "Choose entry to add to campaign log:"
-msgstr "Elige una entrada para añadir al Registro de Campaña:"
+msgstr "Elige una entrada para añadir al registro de campaña:"
 
 msgid "Edit campaign log"
-msgstr "Editar Registro de Campaña"
+msgstr "Editar registro de campaña"
 
 msgid "Draw chaos tokens"
 msgstr "Robar fichas de caos"
@@ -2285,22 +2285,22 @@ msgid "Start playing the scenario now."
 msgstr "Empieza a jugar el escenario ahora."
 
 msgid "In your Campaign Log, record that <i>${ text }</i>"
-msgstr "En tu Registro de Campaña, anota que <i>${ text }</i>"
+msgstr "En tu registro de campaña, anota que <i>${ text }</i>"
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>."
 msgstr ""
-"En tu Registro de Campaña, anota <i>${ logEntry.text }</i> en \"${ "
+"En tu registro de campaña, anota <i>${ logEntry.text }</i> en \"${ "
 "logEntry.section }\"."
 
 msgid "Add ${ tokenString } to the chaos bag."
-msgstr "Añade ${ tokenString } a la Bolsa de Caos."
+msgstr "Añade ${ tokenString } a la bolsa de caos."
 
 #, javascript-format
 msgid "Remove ${ tokenString } from the chaos bag."
-msgstr "Quita ${ tokenString } de la Bolsa de Caos."
+msgstr "Quita ${ tokenString } de la bolsa de caos."
 
 msgid "Odds calculator"
 msgstr "Calculadora de probabilidades"
@@ -2656,7 +2656,7 @@ msgid "Use app for scenario setup & resolutions"
 msgstr "Usa la aplicación para la preparación de escenarios y resoluciones"
 
 msgid "Track campaign log and resolutions manually"
-msgstr "Controla manualmente el Registro de Campaña y las resoluciones"
+msgstr "Controla manualmente el registro de campaña y las resoluciones"
 
 msgid "Investigators"
 msgstr "Investigadores"
@@ -2689,7 +2689,7 @@ msgid ""
 msgstr ""
 "¿Estás seguro de querer eliminar a ${ investigator.name } de esta campaña?\n"
 "\n"
-"Los datos del Registro de Campaña asociados pueden perderse."
+"Los datos del registro de campaña asociados pueden perderse."
 
 msgid "Scenario or Interlude"
 msgstr "Escenario o Interludio"
@@ -3127,10 +3127,10 @@ msgid "Wild: ${ count }"
 msgstr "Comodín: ${ count }"
 
 msgid "Edit Chaos Bag"
-msgstr "Editar Bolsa de Caos"
+msgstr "Editar bolsa de caos"
 
 msgid "Chaos bag is empty"
-msgstr "Bolsa de Caos vacía"
+msgstr "Bolsa de caos vacía"
 
 msgid "Bless"
 msgstr "Bendición"
@@ -3891,7 +3891,7 @@ msgstr "No pueden añadirse ahora"
 
 #, javascript-format
 msgid "Chaos Bag (${ tokenCount })"
-msgstr "Bolsa de Caos (${ tokenCount })"
+msgstr "Bolsa de caos (${ tokenCount })"
 
 msgid "Save upgrade"
 msgstr "Guardar mejora"
@@ -3997,7 +3997,7 @@ msgid "Uploaded campaigns will be synced between devices."
 msgstr "Las campañas que hayas subido estarán sincronizadas entre dispositivos."
 
 msgid "Review records"
-msgstr "Revisa tu Registro de Campaña"
+msgstr "Revisa tu registro de campaña"
 
 msgid "Note campaign achievements"
 msgstr "Anota los logros de campaña"
@@ -4039,7 +4039,7 @@ msgid "Review scenario results"
 msgstr "Revisar resultados del escenario"
 
 msgid "Edit chaos bag"
-msgstr "Editar Bolsa de Caos"
+msgstr "Editar bolsa de caos"
 
 msgid "Scenario name"
 msgstr "Nombre del escenario"
@@ -4075,7 +4075,7 @@ msgid "Return, but ${ doNotRemove } Bless/Curse"
 msgstr "Devolver, pero ${ doNotRemove } Bendición/Maldición"
 
 msgid "View chaos bag"
-msgstr "Ver Bolsa de Caos"
+msgstr "Ver bolsa de caos"
 
 msgid "Sealed tokens"
 msgstr "Fichas de Caos selladas"
@@ -4330,7 +4330,7 @@ msgid "Fan-made campiagn by The Beard"
 msgstr "Campaña fanmade de The Beard"
 
 msgid "Edge of the Earth"
-msgstr "En los confines de la tierra"
+msgstr "Los confines de la tierra"
 
 msgid "Promotional"
 msgstr "Promocional"
@@ -4466,7 +4466,7 @@ msgid ""
 "'adjust' the available experience when editing a deck."
 msgstr ""
 "En general, la aplicación gestiona todo lo que aparece mencionado en el "
-"Registro de Campaña digital.\n"
+"registro de campaña digital.\n"
 "Si estás construyendo tu mazo con la aplicación, también gestionará efectos "
 "de cartas como Investigación arcana y Análisis astuto (si permites a la "
 "aplicación aleatorizar tus mejoras).\n"
@@ -4474,8 +4474,8 @@ msgstr ""
 "experiencia disponible editando tu mazo."
 
 msgid ""
-"The numbers below already include all the trauma, victory points, and "
-"stotry assets you may have earned during the resolution.\n"
+"The numbers below already include all the trauma, victory points, and story "
+"assets you may have earned during the resolution.\n"
 "\n"
 "If you have any other cards or effects that the app does not take care of, "
 "you can make adjustments below before saving each investigator."
@@ -4494,16 +4494,16 @@ msgid "Save will update your deck with the card changes listed above."
 msgstr "Guardar actualizará tu mazo con los cambios listados arriba."
 
 msgid "Campaign log"
-msgstr "Registro de Campaña"
+msgstr "Registro de campaña"
 
 msgid "Record in campaign log"
-msgstr "Guardar en el Registro de Campaña"
+msgstr "Guardar en el registro de campaña"
 
 msgid "Review and add records"
 msgstr "Revisar y añadir registros"
 
 msgid "Chaos bag"
-msgstr "Bolsa de Caos"
+msgstr "Bolsa de caos"
 
 msgid "Review and simulate draw"
 msgstr "Revisa y simula robos"
@@ -4542,31 +4542,44 @@ msgid "Edit selection"
 msgstr "Editar selección"
 
 msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
-msgstr "Comprueba en el Registro de Campaña si <i>${ logEntry.text }</i>"
+msgstr "Comprueba en el registro de campaña si <i>${ logEntry.text }</i>"
 
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 msgid "VK"
-msgstr ""
+msgstr "VK"
 
 msgid "Telegram"
-msgstr ""
+msgstr "Telegram"
 
 #, javascript-format
 msgid "In your Campaign Log, under \"${ section }\", record #name#. "
-msgstr ""
+msgstr "Anota #name# en la sección \"${ section }\" del registro de campaña."
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
 "logEntry.text }</i>."
 msgstr ""
+"En la sección \"${ logEntry.section }\" del registro de campaña, tacha "
+"<i>${ logEntry.text }</i>."
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>"
+msgstr ""
+"En la sección \"${ logEntry.section }\" del registro de campaña, anota "
+"<i>${ logEntry.text }</i>"
+
+msgid "Unarchive campaign"
+msgstr ""
+
+msgid "Archive campaign"
+msgstr ""
+
+msgid "Show archived campaigns"
 msgstr ""
 
 msgctxt "masculine"
@@ -4658,7 +4671,7 @@ msgid ""
 "Campaign Log."
 msgstr ""
 "Si el <i>${ card.name }</i> no aparece bajo ‘${ entry.section }’ en tu "
-"Registro de Campaña."
+"registro de campaña."
 
 #, javascript-format
 msgctxt "masculine"
@@ -4667,7 +4680,7 @@ msgid ""
 "Campaign Log."
 msgstr ""
 "Si el <i>${ card.name }</i> aparece bajo ‘${ entry.section }’ en tu "
-"Registro de Campaña."
+"registro de campaña."
 
 #, javascript-format
 msgctxt "feminine"
@@ -4761,7 +4774,7 @@ msgid ""
 "Campaign Log."
 msgstr ""
 "Si la <i>${ card.name }</i> no aparece bajo ‘${ entry.section }’ en tu "
-"Registro de Campaña."
+"registro de campaña."
 
 #, javascript-format
 msgctxt "feminine"
@@ -4770,7 +4783,7 @@ msgid ""
 "Campaign Log."
 msgstr ""
 "Si la <i>${ card.name }</i> aparece bajo ‘${ entry.section }’ en tu "
-"Registro de Campaña."
+"registro de campaña."
 
 msgctxt "trait"
 msgid "???"

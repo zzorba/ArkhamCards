@@ -4495,8 +4495,8 @@ msgstr ""
 "Wenn dir auffällt, dass du bei einer Deckverbesserung einen Fehler"
 
 msgid ""
-"The numbers below already include all the trauma, victory points, and "
-"stotry assets you may have earned during the resolution.\n"
+"The numbers below already include all the trauma, victory points, and story "
+"assets you may have earned during the resolution.\n"
 "\n"
 "If you have any other cards or effects that the app does not take care of, "
 "you can make adjustments below before saving each investigator."
@@ -4587,6 +4587,15 @@ msgstr ""
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>"
+msgstr ""
+
+msgid "Unarchive campaign"
+msgstr ""
+
+msgid "Archive campaign"
+msgstr ""
+
+msgid "Show archived campaigns"
 msgstr ""
 
 msgctxt "masculine"

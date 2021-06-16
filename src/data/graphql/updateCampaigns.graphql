@@ -454,6 +454,24 @@ mutation updateAvailableXp(
   }
 }
 
+
+mutation updateCampaignArchived(
+  $campaign_id: Int!,
+  $archived: Boolean!
+) {
+
+  update_campaign_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      archived: $archived,
+    },
+  ) {
+    id
+    uuid
+    archived
+  }
+}
+
 mutation updateWeaknessSet(
   $campaign_id: Int!,
   $weakness_set: jsonb!

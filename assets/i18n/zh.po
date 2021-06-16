@@ -8,7 +8,7 @@ msgstr ""
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
-"x-generator: Poedit 2.4.2\n"
+"x-generator: Poedit 3.0\n"
 "Last-Translator: \n"
 "Language: zh\n"
 
@@ -60,16 +60,16 @@ msgid "Investigator"
 msgstr "調查員"
 
 msgid "Asset: Hand"
-msgstr "支援: 手持"
+msgstr "支援: 手部"
 
 msgid "Asset: Hand x2"
-msgstr "支援: 手持x2"
+msgstr "支援: 手部x2"
 
 msgid "Asset: Hand. Arcane"
-msgstr "支援: 手持. 法術"
+msgstr "支援: 手部. 法術"
 
 msgid "Asset: Body. Hand x2"
-msgstr "支援: 服裝. 手持x2"
+msgstr "支援: 服裝. 手部x2"
 
 msgid "Asset: Accessory"
 msgstr "支援: 飾品"
@@ -225,7 +225,7 @@ msgid "Available weaknesses"
 msgstr "可用弱點"
 
 msgid "Saving"
-msgstr "保存中"
+msgstr "儲存中"
 
 msgid "Draw a Different Weakness"
 msgstr "抽另一張弱點卡"
@@ -477,7 +477,7 @@ msgid "All"
 msgstr "全部"
 
 msgid "Note: This entry is crossed out"
-msgstr "Note: This entry is crossed out"
+msgstr "注意: 這個項目被劃掉了"
 
 msgid "Uncross Out"
 msgstr "復原"
@@ -908,13 +908,13 @@ msgid "Search campaigns"
 msgstr "搜尋劇本"
 
 msgid "Save changes?"
-msgstr "是否保存？"
+msgstr "是否儲存？"
 
 msgid "Looks like you have made some changes that have not been saved."
-msgstr "有變更尚未保存。"
+msgstr "有變更尚未儲存。"
 
 msgid "Save Changes"
-msgstr "保存變更"
+msgstr "儲存變更"
 
 msgid "Discard Changes"
 msgstr "放棄變更"
@@ -1065,10 +1065,10 @@ msgid "Are you sure you want to delete this deck?"
 msgstr "確定要刪除牌組嗎？"
 
 msgid "Save Local Changes"
-msgstr "保存本地的變更"
+msgstr "儲存本地的變更"
 
 msgid "Please save any local edits to this deck before sharing to ArkhamDB"
-msgstr "分享到ArkhamDB之前，請先保存牌組的編輯結果"
+msgstr "分享到ArkhamDB之前，請先儲存牌組的編輯結果"
 
 msgid "Unsupported Operation"
 msgstr "不支援的操作"
@@ -1083,7 +1083,7 @@ msgid "View on ArkhamDB"
 msgstr "在ArkhamDB上檢視"
 
 msgid "Save deck changes?"
-msgstr "是否保存牌組？"
+msgstr "是否儲存牌組？"
 
 msgid "Edit Special Cards"
 msgstr "編輯特殊卡牌"
@@ -1136,7 +1136,7 @@ msgid "Trying to make sense of the Time Warp FAQ"
 msgstr "正在查閱時空旅行的FAQ"
 
 msgid "Taking three damage and three horror"
-msgstr "準備承受3點傷害和3點恐懼"
+msgstr "受到3點傷害和3點恐懼"
 
 #, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
@@ -1240,7 +1240,7 @@ msgstr ""
 "不能只挑選其中一些限制而忽略其他限制)。"
 
 msgid "Note: not all cards have translations available."
-msgstr "注意：並非所有卡牌都有可用的翻譯。"
+msgstr "注意: 並非所有卡牌都有可用的翻譯。"
 
 msgid "Taboo List"
 msgstr "禁卡表"
@@ -1264,10 +1264,10 @@ msgid "Card Factions"
 msgstr "卡牌職階分析"
 
 msgid "Bonded"
-msgstr "Bonded"
+msgstr "綁定"
 
 msgid "Bound Cards"
-msgstr "Bound Cards"
+msgstr "綁定卡牌"
 
 msgid "Taboo"
 msgstr "禁卡表"
@@ -1336,7 +1336,7 @@ msgid ""
 "\n"
 "If you are having trouble with your account you can also reconnect."
 msgstr ""
-"在ArkhamDB上的資料將被保留，但所有的劇本資料以及任何沒有網路連線時所做的編輯將無法保存。\n"
+"在ArkhamDB上的資料將被保留，但所有的劇本資料以及任何沒有網路連線時所做的編輯將無法儲存。\n"
 "\n"
 "如果你的帳戶發生任何問題，可以嘗試重新連線。"
 
@@ -1414,7 +1414,7 @@ msgid "Share"
 msgstr "分享"
 
 msgid "Exiled cards"
-msgstr "已放逐卡牌"
+msgstr "被放逐的卡牌"
 
 #, javascript-format
 msgid "Story cards to add - ${ scenarioName }"
@@ -1430,7 +1430,7 @@ msgid "Upgrade deck"
 msgstr "升級牌組"
 
 msgid "Saving..."
-msgstr "保存中…"
+msgstr "儲存中…"
 
 msgid "Flip Card"
 msgstr "將卡牌翻面"
@@ -1460,10 +1460,10 @@ msgstr ""
 "Previous versions of your deck will still be accessible."
 
 msgid "Save and Upgrade Decks"
-msgstr "保存並升級牌組"
+msgstr "儲存並升級牌組"
 
 msgid "Only Save"
-msgstr "僅保存"
+msgstr "僅儲存"
 
 msgid ""
 "You can opt-in to always seeing taboos and buiding decks with them in "
@@ -1485,7 +1485,7 @@ msgstr "構建牌組"
 
 #, javascript-format
 msgid "Warning: this card contains possible spoilers for '${ card.pack_name }'."
-msgstr "警告：這張卡牌可能含有“${ card.pack_name }”的劇透。"
+msgstr "警告: 這張卡牌可能含有“${ card.pack_name }”的劇透。"
 
 msgid "Pack Filters"
 msgstr "擴充篩選器"
@@ -1515,7 +1515,7 @@ msgid "Deck Size"
 msgstr "卡牌張數"
 
 msgid "Unable to update: you appear to be offline."
-msgstr "無法上傳：無網路連線。"
+msgstr "無法上傳: 無網路連線。"
 
 msgid ""
 "We're having trouble updating your decks at this time. If the problem "
@@ -1535,13 +1535,13 @@ msgid "Debug"
 msgstr "Debug"
 
 msgid "Swarm"
-msgstr "Swarm"
+msgstr "蜂擁"
 
 msgid "Seal"
 msgstr "封印"
 
 msgid "Myriad"
-msgstr "Myriad"
+msgstr "無數"
 
 msgid "Return to The Path to Carcosa"
 msgstr "重返卡爾克薩之路"
@@ -1630,7 +1630,7 @@ msgstr "選擇牌組大小"
 
 #, javascript-format
 msgid "Bonded Cards (${ count })"
-msgstr "Bonded Cards (${ count })"
+msgstr "綁定卡牌(${ count })"
 
 msgid "New Name"
 msgstr "新名稱"
@@ -1665,12 +1665,12 @@ msgstr "新增調查員牌組"
 msgid ""
 "Note: Deck size should only be selected at deck creation time, not between "
 "scenarios."
-msgstr "注意：卡牌張數限制僅需在卡牌創建時遵守，在每場冒險之間不用檢查。"
+msgstr "注意: 卡牌張數限制僅需在卡牌創建時遵守，在每場冒險之間不用檢查。"
 
 msgid ""
 "Note: Secondary faction should only be selected at deck creation time, not "
 "between scenarios."
-msgstr "注意：第二職階僅能在卡牌創建時選擇，在每場冒險之間不能改變。"
+msgstr "注意: 第二職階僅能在卡牌創建時選擇，在每場冒險之間不能改變。"
 
 msgid ""
 "This deck contains next/previous versions with upgrades, so we cannot "
@@ -1697,19 +1697,19 @@ msgid "Odds Calculator"
 msgstr "概率計算器"
 
 msgid "Fail By 2 or Less"
-msgstr "失敗2點或以內"
+msgstr "失敗2點以內"
 
 msgid "Fail By 1 or Less"
-msgstr "失敗1點或以內"
+msgstr "失敗1點以內"
 
 msgid "Succeed By 1 or More"
-msgstr "成功1點或以上"
+msgstr "至少成功1點"
 
 msgid "Succeed By 2 or More"
-msgstr "成功2點或以上"
+msgstr "至少成功2點"
 
 msgid "Succeed By 3 or More"
-msgstr "成功3點或以上"
+msgstr "至少成功3點"
 
 msgid "Change Scenario"
 msgstr "變更冒險"
@@ -1724,7 +1724,7 @@ msgid "Deck Cards"
 msgstr "玩家卡牌"
 
 msgid "Save changes before upgrading"
-msgstr "在升級前保存變更"
+msgstr "在升級前儲存變更"
 
 msgid "Number of clues on your location"
 msgstr "你所在地點的線索數量"
@@ -1754,19 +1754,19 @@ msgid ""
 "Note: chaos tokens that cause additional tokens to be revealed does not "
 "show correct odds for the \"Draw Two Pick One\" and similar multi-draw "
 "situations."
-msgstr "注意：需要抽取多個混亂標記的效果(例如抽取兩個標記選擇一個，或類似的混亂標記或卡牌效果)，其概率沒有被計算。"
+msgstr "注意: 需要抽取多個混亂標記的效果(例如抽取兩個標記選擇一個，或類似的混亂標記或卡牌效果)，其概率沒有被計算。"
 
 msgid "Deleting"
 msgstr "刪除中"
 
 msgid "Hand"
-msgstr "手持"
+msgstr "手部"
 
 msgid "Hand. Arcane"
-msgstr "手持，法術"
+msgstr "手部，法術"
 
 msgid "Hand x2"
-msgstr "手持 x2"
+msgstr "手部 x2"
 
 msgid "Arcane"
 msgstr "法術"
@@ -1778,7 +1778,7 @@ msgid "Body"
 msgstr "服裝"
 
 msgid "Body. Hand x2"
-msgstr "服裝，手持 x2"
+msgstr "服裝，手部 x2"
 
 msgid "Ally"
 msgstr "盟友"
@@ -1816,10 +1816,10 @@ msgstr "原始牌組"
 
 #, javascript-format
 msgid "Latest Deck: ${ deck.changes.spentXp } of ${ deck.availableExperience } XP"
-msgstr "最新牌組：已花費${ deck.changes.spentXp }點經驗，總共${ deck.availableExperience }點經驗"
+msgstr "最新牌組: 已花費${ deck.changes.spentXp }點經驗，總共${ deck.availableExperience }點經驗"
 
 msgid "Latest Deck: ${ deck.availableExperience } XP"
-msgstr "最新牌組：${ deck.availableExperience }點經驗"
+msgstr "最新牌組: ${ deck.availableExperience }點經驗"
 
 msgid "No assets that take up the ally slot are allowed by On Your Own."
 msgstr "使用自食其力時，不允許使用占用盟友槽位的支援卡。"
@@ -1906,7 +1906,7 @@ msgid "No one"
 msgstr "無"
 
 msgid "The investigators must decide (choose one):"
-msgstr "調查員必須選擇(一項)："
+msgstr "調查員必須選擇(一項):"
 
 #, javascript-format
 msgid "${ supplyName } to use (${ desiredCount })"
@@ -1950,12 +1950,12 @@ msgstr[0] "將${ encounterSetString }遭遇組放在一邊。"
 
 msgid "Gather all cards from the ${ encounterSetString } encounter set."
 msgid_plural "Gather all cards from the following encounter sets: ${ encounterSetString }."
-msgstr[0] "將下列遭遇組中，所有遭遇卡找出：${ encounterSetString }。"
+msgstr[0] "將下列遭遇組中，所有遭遇卡找出: ${ encounterSetString }。"
 
 #, javascript-format
 msgid "${ startText } This set is indicated by the following icon:"
 msgid_plural "${ startText } These sets are indicated by the following icons:"
-msgstr[0] "${ startText }這些遭遇組的圖標為："
+msgstr[0] "${ startText }這些遭遇組的圖標為:"
 
 msgid "Choose Investigators"
 msgstr "選擇調查員"
@@ -1995,7 +1995,7 @@ msgid "Remove ${ card.name } (${ input.length })"
 msgstr "移除${ card.name } (${ input.length })"
 
 msgid "You suffer 1 physical or mental trauma <i>(your choice)</i>."
-msgstr "你承受1點肉體創傷或1點精神創傷<i>(自行選擇)</i>。"
+msgstr "你受到1點肉體創傷或1點精神創傷<i>(自行選擇)</i>。"
 
 msgid "All weaknesses have been assigned."
 msgstr "所有弱點卡都已經被選擇了。"
@@ -2008,14 +2008,14 @@ msgstr "你是否想使用此APP隨機挑選弱點？"
 
 #, javascript-format
 msgid "Because you are playing on <b>${ difficulty }</b> difficulty:"
-msgstr "由於你正在進行的遊戲難度為<b>${ difficulty }</b>："
+msgstr "由於你正在進行的遊戲難度為<b>${ difficulty }</b>:"
 
 msgid "Because you have already completed <b>${ scenarioName }</b>:"
-msgstr "由於你已完成<b>${ scenarioName }</b>："
+msgstr "由於你已完成<b>${ scenarioName }</b>:"
 
 #, javascript-format
 msgid "Because you have not yet completed <b>${ scenarioName }</b>:"
-msgstr "由於你尚未完成<b>${ scenarioName }</b>："
+msgstr "由於你尚未完成<b>${ scenarioName }</b>:"
 
 #, javascript-format
 msgid ""
@@ -2072,12 +2072,12 @@ msgid "Was an investigator with \"${ cardName }\" in their deck defeated?"
 msgstr "持有“${ cardName }”的調查員是否被擊敗了？"
 
 msgid "For each investigator with \"${ cardName }\" in their deck:"
-msgstr "每位持有“${ cardName }”的調查員："
+msgstr "每位持有“${ cardName }”的調查員:"
 
 #, javascript-format
 msgid "Because there is ${ playerCount } player in the game:"
 msgid_plural "Because there are ${ playerCount } players in the game:"
-msgstr[0] "由於總共有${ playerCount }名玩家："
+msgstr[0] "由於總共有${ playerCount }名玩家:"
 
 msgid "If the lead investigator was <b>killed</b>."
 msgstr "如果隊長<b>陣亡</b>。"
@@ -2091,7 +2091,7 @@ msgstr "檢查${ logEntry.section }。如果<i>${ logEntry.text }</i>"
 
 #, javascript-format
 msgid "Are you sure you want to delete the campaign: ${ campaignName }"
-msgstr "你是否確定要刪除劇本：${ campaignName }"
+msgstr "你是否確定要刪除劇本: ${ campaignName }"
 
 #, javascript-format
 msgid "${ scenarioName } (Attempt ${ attempt })"
@@ -2133,7 +2133,7 @@ msgid ""
 msgstr ""
 "你正試著復原牌組升級。\n"
 "\n"
-"注意：此APP將不會從ArkhamDB上刪除你最新的牌組更新，你的牌組依然會是上次更新的結果。\n"
+"注意: 此APP將不會從ArkhamDB上刪除你最新的牌組更新，你的牌組依然會是上次更新的結果。\n"
 "\n"
 "你可以檢視牌組並且刪除最近的一次更新，來修正牌組。"
 
@@ -2141,7 +2141,7 @@ msgid "Undo"
 msgstr "復原"
 
 msgid "In your Campaign Log, record that:"
-msgstr "在冒險日誌中，記錄下："
+msgstr "在冒險日誌中，記錄下:"
 
 msgid "Enter a name for this deck."
 msgstr "為此牌組輸入名稱。"
@@ -2186,7 +2186,7 @@ msgid "Campaign Log"
 msgstr "冒險日誌"
 
 msgid "Choose entry to add to campaign log:"
-msgstr "選擇一個項目新增至冒險日誌："
+msgstr "選擇一個項目新增至冒險日誌:"
 
 msgid "Edit campaign log"
 msgstr "編輯冒險日誌"
@@ -2235,7 +2235,7 @@ msgid ""
 msgstr "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。"
 
 msgid "Victory display:"
-msgstr "勝利牌區："
+msgstr "勝利牌區:"
 
 #, javascript-format
 msgid ""
@@ -2257,12 +2257,12 @@ msgid ""
 "Upgrade ${ humanVersionNumber }: ${ deck.changes.spentXp } of ${ "
 "deck.availableExperience } XP"
 msgstr ""
-"升級${ humanVersionNumber }：${ deck.changes.spentXp } / ${ "
+"升級${ humanVersionNumber }: ${ deck.changes.spentXp } / ${ "
 "deck.availableExperience }點經驗"
 
 #, javascript-format
 msgid "Upgrade ${ humanVersionNumber }: ${ deck.availableExperience } XP"
-msgstr "升級${ humanVersionNumber }：${ deck.availableExperience }點經驗"
+msgstr "升級${ humanVersionNumber }: ${ deck.availableExperience }點經驗"
 
 msgid "Delete broken deck"
 msgstr "刪除毀損的牌組"
@@ -2295,7 +2295,7 @@ msgid "Close"
 msgstr "關閉"
 
 msgid "Proceed without saving"
-msgstr "繼續(不保存)"
+msgstr "繼續(不儲存)"
 
 msgid "Proceed anyway"
 msgstr "仍要繼續"
@@ -2310,15 +2310,15 @@ msgid ""
 "will properly track the experience cost for any changes you make (the "
 "original versions of the deck can still be viewed from the deck's menu)."
 msgstr ""
-"有牌組的升級尚未保存。如果你希望此APP追蹤你牌組變化時花費的經驗，請在進入下一個冒險之前，按下每位調查員的“保存牌組升級”的按鈕。\n"
+"有牌組的升級尚未儲存。如果你希望此APP追蹤你牌組變化時花費的經驗，請在進入下一個冒險之前，按下每位調查員的“儲存牌組升級”的按鈕。\n"
 "\n"
-"當有升級被保存時，你可以正常地編輯牌組；此APP將會自動追蹤任何改變所花費的經驗值。(原始版本的牌組仍然可以從牌組選單中瀏覽)。"
+"當有升級被儲存時，你可以正常地編輯牌組；此APP將會自動追蹤任何改變所花費的經驗值。(原始版本的牌組仍然可以從牌組選單中瀏覽)。"
 
 msgid ""
 "It looks like you edited the experience or trauma for an investigator, but "
 "have not saved it yet. Please go back and select ‘Save adjustments’ to "
 "ensure your changes are saved."
-msgstr "你編輯了一位調查員的創傷或經驗值，但尚未保存。請按下“保存調整”的按鈕以保存你的變化。"
+msgstr "你編輯了一位調查員的創傷或經驗值，但尚未儲存。請按下“除存調整”的按鈕以保留你的變化。"
 
 msgid "Choose Side-Scenario"
 msgstr "選擇支線冒險"
@@ -2341,7 +2341,7 @@ msgid ""
 msgstr ""
 "你是否確定要從劇本中移除此牌組？\n"
 "\n"
-"移除牌組後，你可以選擇一個不同的牌組，但是只有完成新冒險後的經驗值與故事支援卡才會保存。"
+"移除牌組後，你可以選擇一個不同的牌組，但是經驗值與故事支援卡只有在完成新冒險時才會儲存。"
 
 msgid "Cannot remove"
 msgstr "無法移除"
@@ -2359,7 +2359,7 @@ msgstr ""
 
 #, javascript-format
 msgid "Experience cost: ${ xpCost }"
-msgstr "經驗花費：${ xpCost }"
+msgstr "經驗花費: ${ xpCost }"
 
 msgid "Custom side scenario"
 msgstr "自訂支線劇情"
@@ -2377,22 +2377,22 @@ msgid ""
 "Campaign A and Campaign B\n"
 "Eight-part campaign"
 msgstr ""
-"Campaign A and Campaign B\n"
-"Eight-part campaign"
+"劇本A和劇本B\n"
+"8場冒險的劇本"
 
 msgid ""
 "Campaign A\n"
 "Four-part campaign"
 msgstr ""
-"Campaign A\n"
-"Four-part campaign"
+"劇本A\n"
+"4場冒險的劇本"
 
 msgid ""
 "Campaign B\n"
 "Four-part campaign"
 msgstr ""
-"Campaign B\n"
-"Four-part campaign"
+"劇本B\n"
+"4場冒險的劇本"
 
 msgid ""
 "Parallel investigator options should only be selected at deck creation "
@@ -2412,20 +2412,20 @@ msgid "Record trauma"
 msgstr "記錄創傷"
 
 msgid "Defeated: physical trauma"
-msgstr "被擊敗：肉體創傷"
+msgstr "被擊敗: 肉體創傷"
 
 msgid "Defeated: mental trauma"
-msgstr "被擊敗：精神創傷"
+msgstr "被擊敗: 精神創傷"
 
 msgid "Defeated: no trauma"
-msgstr "被擊敗：沒有創傷"
+msgstr "被擊敗: 沒有創傷"
 
 #, javascript-format
 msgid ""
 "The <i>${ scenario.scenario_name }</i> challenge scenario centers around "
 "the investigator ${ investigator.name }, and therefore has the following "
 "prerequisites:"
-msgstr "挑戰劇情《${ scenario.scenario_name }》 以調查員${ investigator.name }為中心，因此具有以下先決條件："
+msgstr "挑戰劇情《${ scenario.scenario_name }》 以調查員${ investigator.name }為核心，因此具有以下先決條件:"
 
 msgid ""
 "${ investigator.name } must be chosen as one of the investigators when "
@@ -2466,7 +2466,7 @@ msgstr "${ investigator.name }挑戰劇情"
 msgid ""
 "Experience cost: ${ challengeCost } for ${ investigator.name }, ${ xpCost } "
 "for each other investigator"
-msgstr "經驗花費：${ investigator.name }必須花費${ challengeCost }經驗，其他調查員則必須花費${ xpCost }經驗"
+msgstr "經驗花費: ${ investigator.name }必須花費${ challengeCost }經驗，其他調查員則必須花費${ xpCost }經驗"
 
 msgid "Side"
 msgstr "支線"
@@ -2521,7 +2521,7 @@ msgid "Return to The Depths of Yoth"
 msgstr "重返幽嘶之城"
 
 msgid "Save XP"
-msgstr "保存經驗"
+msgstr "儲存經驗"
 
 #, javascript-format
 msgid "${ xp } available experience, (${ parsedDeck.changes.spentXp } spent)"
@@ -2593,7 +2593,7 @@ msgstr "抽取弱點"
 msgid ""
 "<b>Note:</b> Trauma from investigator defeat is handled during scenario "
 "resolution."
-msgstr "<b>注意</b>：被擊敗的調查員的創傷在冒險結局的階段處理。"
+msgstr "<b>注意</b>: 被擊敗的調查員的創傷在冒險結局的階段處理。"
 
 msgid "Contact us"
 msgstr "聯絡我們"
@@ -2652,7 +2652,7 @@ msgid ""
 msgstr "備份本機的牌組與劇本資料。可以將資料移至另一裝置。"
 
 msgid "Save backup"
-msgstr "保存備份"
+msgstr "儲存備份"
 
 msgid "Cannot request access"
 msgstr "無法要求存取"
@@ -2684,16 +2684,16 @@ msgid "Import anyway"
 msgstr "仍要匯入"
 
 msgid "New:"
-msgstr "新："
+msgstr "新的:"
 
 msgid "Updated:"
-msgstr "更新："
+msgstr "更新:"
 
 msgid "No changes:"
-msgstr "無變化："
+msgstr "無變化:"
 
 msgid "Local version appears to be newer:"
-msgstr "本機的版本較新："
+msgstr "本機的版本較新:"
 
 msgid "Import selected data"
 msgstr "匯入選取的資料"
@@ -2744,7 +2744,7 @@ msgstr "目前沒有項目。"
 
 #, javascript-format
 msgid "Last Updated: ${ lastUpdated }"
-msgstr "最後更新：${ lastUpdated }"
+msgstr "最後更新: ${ lastUpdated }"
 
 #, javascript-format
 msgid "Default (${ systemLanguage })"
@@ -2922,7 +2922,7 @@ msgid "Search options"
 msgstr "搜尋選項"
 
 msgid "Search in:"
-msgstr "搜尋於："
+msgstr "搜尋於: "
 
 msgid "Encounter Card Toggle"
 msgstr "Encounter Card Toggle"
@@ -3061,7 +3061,7 @@ msgid_plural ""
 "\n"
 "${ upgradeCards }"
 msgstr[0] ""
-"在以下選擇中將隨機挑選兩張卡牌：\n"
+"在以下選擇中將隨機挑選兩張卡牌:\n"
 "\n"
 "${ upgradeCards }"
 
@@ -3074,8 +3074,8 @@ msgid ""
 "version and leave the lower level version in your deck (it does not count "
 "towards your deck size or the number of copies of that card in your deck)."
 msgstr ""
-"<b>額外選項</b>：當你升級[[幸運]]或[[局勢]]卡牌時，你可以選擇支付較高等卡牌的全額經驗，並且將低等級卡牌留在你的牌組中("
-"不計入卡牌張數限制或同名卡牌張數上限)。"
+"<b>額外選項</b>: "
+"當你升級[[幸運]]或[[局勢]]卡牌時，你可以選擇支付較高等卡牌的全額經驗，並且將低等級卡牌留在你的牌組中(不計入卡牌張數限制或同名卡牌張數上限)。"
 
 msgid ""
 "<b>Shrewd Analysis</b>: If you meet the campaign conditions, you may use "
@@ -3084,9 +3084,9 @@ msgid ""
 "<i>Note: the app handles this by adjusting experience to account for the "
 "'free' upgrade.</i>"
 msgstr ""
-"<b>老練分析</b>：如果你已滿足劇本的要求，可以使用老練分析從可用選項中隨機選擇該卡牌的2張升級版本，僅需支付1次經驗。\n"
+"<b>老練分析</b>: 如果你已滿足劇本的要求，可以使用老練分析從可用選項中隨機選擇該卡牌的2張升級版本，僅需支付1次經驗。\n"
 "\n"
-"<i>注意：此APP可以藉由調整經驗來處理“免費”的升級。</i>"
+"<i>注意: 此APP可以藉由調整經驗來處理“免費”的升級。</i>"
 
 msgid "Upgrade results"
 msgstr "升級結果"
@@ -3107,7 +3107,7 @@ msgid "Beneath the Waves"
 msgstr "Beneath the Waves"
 
 msgid "Memories Recovered"
-msgstr "Memories Recovered"
+msgstr "找回的記憶"
 
 msgid ""
 "Note: this campaign is still being released and so the guide is incomplete "
@@ -3115,7 +3115,7 @@ msgid ""
 "As new scenarios are released, I will try to update the app promptly but "
 "there may be some slight delays."
 msgstr ""
-"注意：這個劇本仍在發表，因此劇本手冊未完成(可能會導致某些錯誤)。\n"
+"注意: 這個劇本仍在發表，因此劇本手冊未完成(可能會導致某些錯誤)。\n"
 "當新冒險推出時，此APP將盡快更新。"
 
 msgid "Slot: ${ card.slot }"
@@ -3315,7 +3315,7 @@ msgid ""
 "[elder_sign]: +X where X is whatever you want it to be."
 msgstr ""
 "這是自定義的調查員，允許創建任意無限制的牌組。\n"
-"[elder_sign]：+X。X是你想要多少就多少。"
+"[elder_sign]: +X。X是你想要多少就多少。"
 
 msgid "Asset Filters"
 msgstr "支援卡篩選"
@@ -3361,8 +3361,8 @@ msgid ""
 "lower level version in your deck (it does not count towards your deck size "
 "or the number of copies of that card in your deck)."
 msgstr ""
-"<b>額外選項</b>：當你升級一個[[法術]]卡牌時，你可以選擇支付較高等卡牌的全額經驗，並且將低等級卡牌留在你的牌組中("
-"不計入卡牌張數限制或同名卡牌張數上限)。"
+"<b>額外選項</b>: "
+"當你升級一個[[法術]]卡牌時，你可以選擇支付較高等卡牌的全額經驗，並且將低等級卡牌留在你的牌組中(不計入卡牌張數限制或同名卡牌張數上限)。"
 
 msgid "${ spentXP } of ${ _adjustedXp } XP spent"
 msgstr "${ spentXP } / ${ _adjustedXp }點經驗已花費"
@@ -3385,7 +3385,7 @@ msgid "XP earned"
 msgstr "獲得經驗"
 
 msgid "Adjustment:"
-msgstr "調整："
+msgstr "調整:"
 
 msgid "Adjust XP"
 msgstr "調整經驗"
@@ -3453,19 +3453,19 @@ msgid ""
 "changes might be applied twice. You should view the deck and manually undo "
 "the edits before reapplying the changes."
 msgstr ""
-"嘗試復原牌組的保存。\n"
+"嘗試復原儲存的牌組。\n"
 "\n"
-"此APP無法復原這些變化，當你再次按下繼續時，這些變化可能會再次被計算。在重新改變牌組之前請先手動檢驗牌組。"
+"此APP無法復原這些變化，當你再次按下繼續時，這些變化可能會重複被計算。在重新改變牌組之前請先手動檢驗牌組。"
 
 #. This is a deck upgrade action.
 msgid "Undo anyway"
 msgstr "仍要復原"
 
 msgid "Save deck changes"
-msgstr "保存牌組變化"
+msgstr "儲存牌組變化"
 
 msgid "It looks like one or more deck changes are unsaved."
-msgstr "牌組變化尚未保存。"
+msgstr "牌組變化尚未儲存。"
 
 #, javascript-format
 msgid "${ handle }'s Friends"
@@ -3694,13 +3694,13 @@ msgid "Chaos Bag (${ tokenCount })"
 msgstr "混亂袋(${ tokenCount })"
 
 msgid "Save upgrade"
-msgstr "保存升級"
+msgstr "儲存升級"
 
 msgid "Sorry, you don't seem to be a Mythos Buster patron."
-msgstr "Sorry, you don't seem to be a Mythos Buster patron."
+msgstr "很抱歉，你似乎不是Mythos Buster的客戶。"
 
 msgid "Earned experience:"
-msgstr "獲得經驗："
+msgstr "獲得經驗:"
 
 msgid "Sign out of Arkham Cards?"
 msgstr "是否登出Arkham Cards？"
@@ -3717,7 +3717,7 @@ msgstr ""
 "\n"
 "你上傳的劇本或下載的劇本將從本裝置中移除。再次登入時可以重新同步。\n"
 "\n"
-"注意：未登入時所做的改變可能會遺失。"
+"注意: 未登入時所做的改變可能會遺失。"
 
 msgid "Name required"
 msgstr "必須輸入名稱"
@@ -3877,196 +3877,205 @@ msgid "${ _spentXp } of ${ _totalXp } spent"
 msgstr "已花費${ _spentXp } / ${ _totalXp }點經驗"
 
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
-msgstr "Decks with Ancestral Knowledge must include at least 10 skills."
+msgstr "包含Ancestral Knowledge的牌組必須含有至少10張技能。"
 
 msgid "Faction, Level, Type"
 msgstr "職階，等級，種類"
 
 #, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
-msgstr ""
+msgstr "${ normalCardCount } / ${ deckSize }張卡牌"
 
 msgid "Ammo"
-msgstr ""
+msgstr "子彈"
 
 msgid "Bounties"
-msgstr ""
+msgstr "Bounties"
 
 msgid "Charges"
-msgstr ""
+msgstr "充能"
 
 msgid "Keys"
-msgstr ""
+msgstr "鑰匙"
 
 msgid "Locks"
-msgstr ""
+msgstr "Locks"
 
 msgid "Resources"
-msgstr ""
+msgstr "資源"
 
 msgid "Secrets"
-msgstr ""
+msgstr "秘密"
 
 msgid "Tickets"
-msgstr ""
+msgstr "Tickets"
 
 msgid "Tries"
-msgstr ""
+msgstr "次數"
 
 msgid "Whistles"
-msgstr ""
+msgstr "哨聲"
 
 msgid "Loading..."
-msgstr ""
+msgstr "讀取中…"
 
 msgid "Campaign players"
-msgstr ""
+msgstr "劇本玩家"
 
 msgid "Add friends to campaign"
-msgstr ""
+msgstr "加入朋友到劇本中"
 
 msgid "Add friends"
-msgstr ""
+msgstr "加入朋友"
 
 msgid "Access"
-msgstr ""
+msgstr "存取"
 
 msgid "Later"
-msgstr ""
+msgstr "稍後再說"
 
 msgid "Searching cards..."
-msgstr ""
+msgstr "搜尋卡牌…"
 
 msgid ""
 "This appears to be one of your decks from ArkhamDB, however you are not "
 "currently logged in. If you wish to make edits, please login through the "
 "app settings."
-msgstr ""
+msgstr "這似乎是你在ArkhamDB上的牌組之一，但你現在尚未登入。如果你想編輯牌組，請從'設定'處登入ArkhamDB。"
 
 msgid "Leave campaign"
-msgstr ""
+msgstr "離開劇本"
 
 msgid ""
 "Are you sure you want to leave this campaign?\n"
 "\n"
 "Your decks will be removed from the campaign, but you can rejoin it later."
 msgstr ""
+"你確定要離開這個劇本嗎？\n"
+"\n"
+"你的牌組將從劇本中移除，但你之後可以再次加入。"
 
 msgid "Leave"
-msgstr ""
+msgstr "離開"
 
 msgid "Edit players"
-msgstr ""
+msgstr "編輯玩家"
 
 msgid "View players"
-msgstr ""
+msgstr "檢視玩家"
 
 msgid "Clear card cache"
-msgstr ""
+msgstr "清除卡牌暫存"
 
 msgid "Uploading..."
-msgstr ""
+msgstr "上傳中…"
 
 msgid "Leave standalone"
-msgstr ""
+msgstr "離開獨立冒險"
 
 msgid ""
 "Are you sure you want to leave this standalone?\n"
 "\n"
 "Your decks will be removed from the standalone, but you can rejoin it later."
 msgstr ""
+"你確定要離開這場獨立冒險嗎？\n"
+"\n"
+"你的牌組將從獨立冒險中移除，但你之後可以再次加入。"
 
 msgid "Upload standalone"
-msgstr ""
+msgstr "上傳獨立冒險"
 
 msgid "You must be online to upload"
-msgstr ""
+msgstr "你必須在線上才能上傳"
 
 msgid "Adjust scenario XP and trauma"
-msgstr ""
+msgstr "調整冒險經驗和創傷"
 
 msgid "Unspent XP"
-msgstr ""
+msgstr "未花費的經驗"
 
 #, javascript-format
 msgid "${ unspentXp } saved"
-msgstr ""
+msgstr "${ unspentXp }已儲存"
 
 #, javascript-format
 msgid "Scenario Card - ${ difficultyStr }"
-msgstr ""
+msgstr "冒險卡 - ${ difficultyStr }"
 
 msgid "Scenario Card"
-msgstr ""
+msgstr "冒險卡"
 
 msgid ""
 "This appears to be one of your decks from ArkhamDB, however you seem to be "
 "logged into a differen ArkhamDB account? If you wish to make edits, please "
 "login through the app settings."
-msgstr ""
+msgstr "這似乎是你在ArkhamDB上的牌組之一，但你現在登入的帳號不符。如果你想編輯牌組，請從'設定'處登入ArkhamDB。"
 
 msgid "Justify text"
-msgstr ""
+msgstr "調整文字"
 
 #, javascript-format
 msgid "${ tokens[0] } and ${ tokens[1] }"
-msgstr ""
+msgstr "${ tokens[0] }和${ tokens[1] }"
 
 msgid "Dark Matter"
-msgstr ""
+msgstr "Dark Matter"
 
 msgid "Impending Doom"
-msgstr ""
+msgstr "Impending Doom"
 
 msgid "Memories"
-msgstr ""
+msgstr "記憶"
 
 msgid "Fan-Made Campaigns"
-msgstr ""
+msgstr "非官方劇本"
 
 msgid "Fan-Made Content"
-msgstr ""
+msgstr "非官方內容"
 
 msgid "Fetching account details..."
-msgstr ""
+msgstr "取得帳戶資料…"
 
 msgid ""
 "Thanks for signing up for Arkham Cards.\n"
 "\n"
 "First of all, you'll need to create a handle for your account."
 msgstr ""
+"感謝您登入Arkham Cards。\n"
+"\n"
+"首先，您需要為您的帳戶創建一個暱稱。"
 
 msgid ""
 "People will be able to search for friends using their handle so you can "
 "join their campaigns."
-msgstr ""
+msgstr "玩家將透過暱稱搜尋好友，互相加入劇本。"
 
 msgid "Now that you are signed in, you should have access to your saved campaigns."
-msgstr ""
+msgstr "您已經登入，可以存取已儲存的劇本。"
 
 msgid ""
 "Campaigns can now be 'uploaded' so they can be synced between devices or "
 "shared with friendns."
-msgstr ""
+msgstr "劇本現在可以'上傳'，在不同裝置之間同步，或者與朋友共享。"
 
 msgid "Welcome"
-msgstr ""
+msgstr "歡迎"
 
 msgid "Download print and play cards"
-msgstr ""
+msgstr "下載可列印卡牌"
 
 #, javascript-format
 msgid "${ section.title } (from XP)"
-msgstr ""
+msgstr "${ section.title } (從XP)"
 
 msgid "Exiled story cards"
-msgstr ""
+msgstr "被放逐的故事卡"
 
 msgid "Exile story cards"
-msgstr ""
+msgstr "放逐故事卡"
 
 msgid "Fan-made scenario by ${ custom.creator }"
-msgstr ""
+msgstr "${ custom.creator }製作的非官方劇本"
 
 msgid ""
 "If you are a custom content creator who has a \"finished\" campaign you'd "
@@ -4074,141 +4083,145 @@ msgid ""
 "campaigns are a fair amount of work, but I'd love to support the community "
 "in anyway I can."
 msgstr ""
+"如果你是創作者，並且有\"已完成\"的劇本，希望APP能夠支援，請通過arkhamcards@gmail."
+"com聯繫我。非官方劇本的支援並不容易，但我會盡己所能的為社群提供支援。"
 
 msgid "Alice in Wonderland"
-msgstr ""
+msgstr "愛麗絲夢遊仙境"
 
 msgid "Fragments of Alilce"
-msgstr ""
+msgstr "Fragments of Alilce"
 
 msgid "Wonderland Boons"
-msgstr ""
+msgstr "Wonderland Boons"
 
 msgid "Wonderland Banes"
-msgstr ""
+msgstr "Wonderland Banes"
 
 msgid "Strength of Wonderland"
-msgstr ""
+msgstr "仙境之力"
 
 msgid "Fan-made campaign by Axolotl"
-msgstr ""
+msgstr "Axolotl製作的非官方劇本"
 
 msgid "Fan-made campiagn by The Beard"
-msgstr ""
+msgstr "The Beard製作的非官方劇本"
 
 msgid "Edge of the Earth"
-msgstr ""
+msgstr "Edge of the Earth"
 
 msgid "Promotional"
-msgstr ""
+msgstr "推廣"
 
 msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
-msgstr ""
+msgstr "你不能加入超過5張守衛者和中立以外的卡牌"
 
 msgid "You cannot have more than 5 cards that are not Seeker or Neutral"
-msgstr ""
+msgstr "你不能加入超過5張探求者和中立以外的卡牌"
 
 msgid "You cannot have more than 5 cards that are not Rogue or Neutral"
-msgstr ""
+msgstr "你不能加入超過5張流浪者和中立以外的卡牌"
 
 msgid "You cannot have more than 5 cards that are not Mystic or Neutral"
-msgstr ""
+msgstr "你不能加入超過5張潛修者和中立以外的卡牌"
 
 msgid "You cannot have more than 5 cards that are not Survivor or Neutral"
-msgstr ""
+msgstr "你不能加入超過5張求生者和中立以外的卡牌"
 
 msgid "You must have at least 7 cards from 3 different factions"
-msgstr ""
+msgstr "你必須加入3種不同職階，每個職階至少7張卡牌"
 
 msgid "You cannot have more than 15 level 0-1 Seeker and/or Mystic cards"
-msgstr ""
+msgstr "你不能加入超過15張等級0-1的探求者和潛修者卡牌"
 
 msgid "You cannot have more than 5 Guardian and/or Mystic cards"
-msgstr ""
+msgstr "你不能加入超過5張守衛者和潛修者以外的卡牌"
 
 msgid "You cannot have more than 5 level 0 Mystic cards"
-msgstr ""
+msgstr "你不能加入超過5張等級0的潛修者卡牌"
 
 msgid "Choose resolution"
-msgstr ""
+msgstr "選擇結局"
 
 msgid "Choose investigator to record trauma"
-msgstr ""
+msgstr "選擇要紀錄創傷的調查員"
 
 msgid "Defeated"
-msgstr ""
+msgstr "被擊敗"
 
 msgid "Status of investigators"
-msgstr ""
+msgstr "調查員的狀態"
 
 msgid "Social"
-msgstr ""
+msgstr "社交"
 
 msgid "Connect with other fans of Arkham Horror: The Card Game."
-msgstr ""
+msgstr "與其他《詭鎮奇談：卡牌版》的玩家連線。"
 
 msgid "Add new"
-msgstr ""
+msgstr "新增"
 
 msgid "Lead"
-msgstr ""
+msgstr "隊長"
 
 msgid "Changes have been recorded."
-msgstr ""
+msgstr "變更已被記錄"
 
 msgid "No adjustments need saving."
-msgstr ""
+msgstr "沒有變更。"
 
 msgid ""
 "When you have finished making adjustments, press the 'Save' button to "
 "record your changes."
-msgstr ""
+msgstr "調整完成時，按下'儲存'按鈕來記錄你的變更。"
 
 msgid ""
 "This deck will be upgraded with XP and any new story cards will be added or "
 "removed as specified."
-msgstr ""
+msgstr "這副牌組將會記錄獲得經驗值、卡牌升級以及任何故事卡的加入/移除。"
 
 #, javascript-format
 msgid " (new total: ${ total })"
-msgstr ""
+msgstr " (新的總數: ${ total })"
 
 msgid "Earned XP:"
-msgstr ""
+msgstr "已獲得XP:"
 
 msgid "Not deck owner"
-msgstr ""
+msgstr "非牌組的持有者"
 
 msgid "Saved"
-msgstr ""
+msgstr "已儲存"
 
 #, javascript-format
 msgid ""
 "This deck is owned by ${ deck.owner.handle }. They must open the app on "
 "their own device to save the upgrade"
-msgstr ""
+msgstr "這副牌組屬於${ deck.owner.handle }。他們必須在自己的裝置上打開APP才能儲存升級。"
 
 msgid ""
 "This deck is owned by another user. They must open the app on their own "
 "device to save the upgrade"
-msgstr ""
+msgstr "這副牌組屬於其他玩家。他們必須在自己的裝置上打開APP才能儲存升級。"
 
 msgid ""
 "This investigator does not have a deck associated with it.\n"
 "If you choose a deck, the app can help track spent experience, story asset "
 "changes, and deckbuilding requirements."
 msgstr ""
+"這位調查員沒有相對應的牌組。\n"
+"如果你選擇一副牌組，本APP可以協助你追蹤花費過的經驗、故事支援的變化以及牌組構建需求。"
 
 msgid ""
 "Now that your upgrade has been saved, when visiting the deck be sure to use "
 "the 'Edit' button when making card changes."
-msgstr ""
+msgstr "你的升級已經儲存完畢，如果要變更卡牌，請使用'編輯'按鈕。"
 
 msgid "Choose a deck for this investigator"
-msgstr ""
+msgstr "為這位調查員選擇一副牌組"
 
 msgid "What exactly does the app handle?"
-msgstr ""
+msgstr "這個APP能做哪些事情？"
 
 msgid ""
 "Generally speaking, the app handles anything that you see mentioned in the "
@@ -4219,95 +4232,110 @@ msgid ""
 "If you find that you made a mistake after you upgraded your deck, you can "
 "'adjust' the available experience when editing a deck."
 msgstr ""
+"具體來說，這個APP包含電子冒險日誌的所有功能。\n"
+"如果你使用APP構建牌組，能夠替你處理類似奧術研究和老練分析(如果你允許APP隨機挑選你的升級)的卡牌效果。\n"
+"如果你升級完牌組後，發現有誤，你也能在編輯牌組時'調整'可用的經驗值。"
 
 msgid ""
-"The numbers below already include all the trauma, victory points, and "
-"stotry assets you may have earned during the resolution.\n"
+"The numbers below already include all the trauma, victory points, and story "
+"assets you may have earned during the resolution.\n"
 "\n"
 "If you have any other cards or effects that the app does not take care of, "
 "you can make adjustments below before saving each investigator."
 msgstr ""
+"以下數字已經包含了在結局中你可能獲得的任何創傷、勝利點數和故事支援卡。\n"
+"\n"
+"如果你有任何其他APP沒有處理到的卡牌或效果，你也能在下方儲存每個調查員的結果之前做調整。"
 
 msgid "Learn more"
-msgstr ""
+msgstr "瞭解更多"
 
 msgid "Save will update your deck with the card changes listed above."
-msgstr ""
+msgstr "以上的變更將會儲存到你的牌組。"
 
 msgid "Campaign log"
-msgstr ""
+msgstr "冒險日誌"
 
 msgid "Record in campaign log"
-msgstr ""
+msgstr "記錄在冒險日誌中"
 
 msgid "Review and add records"
-msgstr ""
+msgstr "查看或新增紀錄"
 
 msgid "Chaos bag"
-msgstr ""
+msgstr "混亂袋"
 
 msgid "Review and simulate draw"
-msgstr ""
+msgstr "查看或模擬抽取"
 
 msgid "Draw random"
-msgstr ""
+msgstr "隨機抽取"
 
 msgid "Record"
-msgstr ""
+msgstr "紀錄"
 
 msgid "Scenario effects"
-msgstr ""
+msgstr "冒險效果"
 
 msgid "Scenario Ended"
-msgstr ""
+msgstr "冒險結束"
 
 msgid "Proceed to Resolutions"
-msgstr ""
+msgstr "進入結局"
 
 msgid "Choose trauma type"
-msgstr ""
+msgstr "選擇創傷的種類"
 
 msgid "Chosen trauma type"
-msgstr ""
+msgstr "選擇創傷的種類"
 
 msgid "Random results"
-msgstr ""
+msgstr "隨機結果"
 
 msgid "Select Traits"
-msgstr ""
+msgstr "選擇屬性"
 
 msgid "Random weaknesses will be drawn that match these traits."
-msgstr ""
+msgstr "抽取符合這些屬性的隨機弱點。"
 
 msgid "Edit selection"
-msgstr ""
+msgstr "編輯選擇"
 
 msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
-msgstr ""
+msgstr "查看冒險日誌。<i>如果${ logEntry.text }</i>"
 
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 msgid "VK"
-msgstr ""
+msgstr "VK"
 
 msgid "Telegram"
-msgstr ""
+msgstr "Telegram"
 
 #, javascript-format
 msgid "In your Campaign Log, under \"${ section }\", record #name#. "
-msgstr ""
+msgstr "在冒險日誌中，\"${ section }\"下，紀錄下#name#。"
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
 "logEntry.text }</i>."
-msgstr ""
+msgstr "在冒險日誌中，\"${ logEntry.section }\"下，劃掉<i>${ logEntry.text }</i>。"
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>"
+msgstr "在冒險日誌中，\"${ logEntry.section }\"下，記錄下<i>${ logEntry.text }</i>。"
+
+msgid "Unarchive campaign"
+msgstr ""
+
+msgid "Archive campaign"
+msgstr ""
+
+msgid "Show archived campaigns"
 msgstr ""
 
 msgctxt "masculine"
@@ -4322,7 +4350,7 @@ msgctxt "masculine"
 msgid ""
 "${ investigator.name } suffers 1 physical or mental trauma <i>(their "
 "choice)</i>."
-msgstr "${ investigator.name }承受1點肉體或精神創傷<i>(自行選擇)</i>。"
+msgstr "${ investigator.name }受到1點肉體或精神創傷<i>(自行選擇)</i>。"
 
 #, javascript-format
 msgctxt "masculine"
@@ -4332,7 +4360,7 @@ msgid ""
 msgid_plural ""
 "${ investigator.name } suffers ${ effect.mental } mental and ${ "
 "effect.physical } physical trauma."
-msgstr[0] "${ investigator.name }承受${ effect.mental }點精神創傷和${ effect.physical }點肉體創傷。"
+msgstr[0] "${ investigator.name }受到${ effect.mental }點精神創傷和${ effect.physical }點肉體創傷。"
 
 msgctxt "masculine"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
@@ -4343,7 +4371,7 @@ msgstr[0] "${ investigator.name }治癒${ mental }點精神創傷。"
 msgctxt "masculine"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgstr[0] "${ investigator.name }承受${ effect.mental }點精神創傷。"
+msgstr[0] "${ investigator.name }受到${ effect.mental }點精神創傷。"
 
 #, javascript-format
 msgctxt "masculine"
@@ -4354,7 +4382,7 @@ msgstr[0] "${ investigator.name }治癒${ physical }點肉體創傷。"
 msgctxt "masculine"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name }承受${ effect.physical }點肉體創傷。"
+msgstr[0] "${ investigator.name }受到${ effect.physical }點肉體創傷。"
 
 msgctxt "masculine"
 msgid "Alive"
@@ -4366,15 +4394,15 @@ msgstr "已投降"
 
 msgctxt "masculine"
 msgid "Defeated: physical trauma"
-msgstr "被擊敗：肉體創傷"
+msgstr "被擊敗: 肉體創傷"
 
 msgctxt "masculine"
 msgid "Defeated: mental trauma"
-msgstr "被擊敗：精神創傷"
+msgstr "被擊敗: 精神創傷"
 
 msgctxt "masculine"
 msgid "Defeated: no trauma"
-msgstr "被擊敗：沒有創傷"
+msgstr "被擊敗: 沒有創傷"
 
 #, javascript-format
 msgctxt "masculine"
@@ -4386,14 +4414,14 @@ msgctxt "masculine"
 msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
-msgstr ""
+msgstr "如果<i>${ card.name }</i>不在冒險日誌中的‘${ entry.section }’底下。"
 
 #, javascript-format
 msgctxt "masculine"
 msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
-msgstr ""
+msgstr "如果<i>${ card.name }</i>在冒險日誌中的‘${ entry.section }’底下。"
 
 #, javascript-format
 msgctxt "feminine"
@@ -4410,7 +4438,7 @@ msgctxt "feminine"
 msgid ""
 "${ investigator.name } suffers 1 physical or mental trauma <i>(their "
 "choice)</i>."
-msgstr "${ investigator.name }承受1點肉體或精神創傷<i>(自行選擇)</i>。"
+msgstr "${ investigator.name }受到1點肉體或精神創傷<i>(自行選擇)</i>。"
 
 #, javascript-format
 msgctxt "feminine"
@@ -4420,7 +4448,7 @@ msgid ""
 msgid_plural ""
 "${ investigator.name } suffers ${ effect.mental } mental and ${ "
 "effect.physical } physical trauma."
-msgstr[0] "${ investigator.name }承受${ effect.mental }點精神創傷和${ effect.physical }點肉體創傷。"
+msgstr[0] "${ investigator.name }受到${ effect.mental }點精神創傷和${ effect.physical }點肉體創傷。"
 
 #, javascript-format
 msgctxt "feminine"
@@ -4431,7 +4459,7 @@ msgstr[0] "${ investigator.name }治癒${ mental }點精神創傷。"
 msgctxt "feminine"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgstr[0] "${ investigator.name }承受${ effect.mental }點精神創傷。"
+msgstr[0] "${ investigator.name }受到${ effect.mental }點精神創傷。"
 
 #, javascript-format
 msgctxt "feminine"
@@ -4443,7 +4471,7 @@ msgstr[0] "${ investigator.name }治癒${ physical }點肉體創傷。"
 msgctxt "feminine"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name }承受${ effect.physical }點肉體創傷。"
+msgstr[0] "${ investigator.name }受到${ effect.physical }點肉體創傷。"
 
 msgctxt "feminine"
 msgid "Alive"
@@ -4455,15 +4483,15 @@ msgstr "已投降"
 
 msgctxt "feminine"
 msgid "Defeated: physical trauma"
-msgstr "被擊敗：肉體創傷"
+msgstr "被擊敗: 肉體創傷"
 
 msgctxt "feminine"
 msgid "Defeated: mental trauma"
-msgstr "被擊敗：精神創傷"
+msgstr "被擊敗: 精神創傷"
 
 msgctxt "feminine"
 msgid "Defeated: no trauma"
-msgstr "被擊敗：沒有創傷"
+msgstr "被擊敗: 沒有創傷"
 
 #, javascript-format
 msgctxt "feminine"
@@ -4474,1022 +4502,1022 @@ msgctxt "feminine"
 msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
-msgstr ""
+msgstr "如果<i>${ card.name }</i>不在冒險日誌中的‘${ entry.section }’底下。"
 
 #, javascript-format
 msgctxt "feminine"
 msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
-msgstr ""
+msgstr "如果<i>${ card.name }</i>在冒險日誌中的‘${ entry.section }’底下。"
 
 msgctxt "trait"
 msgid "???"
-msgstr ""
+msgstr "???"
 
 msgctxt "trait"
 msgid "Abomination"
-msgstr ""
+msgstr "異形"
 
 msgctxt "trait"
 msgid "Abyss"
-msgstr ""
+msgstr "深淵"
 
 msgctxt "trait"
 msgid "Act 1"
-msgstr ""
+msgstr "第一幕"
 
 msgctxt "trait"
 msgid "Act 2"
-msgstr ""
+msgstr "第二幕"
 
 msgctxt "trait"
 msgid "Agency"
-msgstr ""
+msgstr "特工"
 
 msgctxt "trait"
 msgid "Ally"
-msgstr ""
+msgstr "盟友"
 
 msgctxt "trait"
 msgid "Altered"
-msgstr ""
+msgstr "幻境"
 
 msgctxt "trait"
 msgid "Ancient"
-msgstr ""
+msgstr "古代"
 
 msgctxt "trait"
 msgid "Ancient One"
-msgstr ""
+msgstr "古神"
 
 msgctxt "trait"
 msgid "Arkham"
-msgstr ""
+msgstr "阿卡姆"
 
 msgctxt "trait"
 msgid "Arkham Asylum"
-msgstr ""
+msgstr "阿卡姆瘋人院"
 
 msgctxt "trait"
 msgid "Armor"
-msgstr ""
+msgstr "護甲"
 
 msgctxt "trait"
 msgid "Artist"
-msgstr ""
+msgstr "藝術家"
 
 msgctxt "trait"
 msgid "Assistant"
-msgstr ""
+msgstr "助理"
 
 msgctxt "trait"
 msgid "Attack"
-msgstr ""
+msgstr "攻擊"
 
 msgctxt "trait"
 msgid "Augury"
-msgstr ""
+msgstr "預言"
 
 msgctxt "trait"
 msgid "Avatar"
-msgstr ""
+msgstr "化身"
 
 msgctxt "trait"
 msgid "Basement"
-msgstr ""
+msgstr "Basement"
 
 msgctxt "trait"
 msgid "Bayou"
-msgstr ""
+msgstr "河口"
 
 msgctxt "trait"
 msgid "Believer"
-msgstr ""
+msgstr "信徒"
 
 msgctxt "trait"
 msgid "Blessed"
-msgstr ""
+msgstr "祝福"
 
 msgctxt "trait"
 msgid "Blunder"
-msgstr ""
+msgstr "疏忽"
 
 msgctxt "trait"
 msgid "Boat"
-msgstr ""
+msgstr "Boat"
 
 msgctxt "trait"
 msgid "Bold"
-msgstr ""
+msgstr "果斷"
 
 msgctxt "trait"
 msgid "Boon"
-msgstr ""
+msgstr "福祉"
 
 msgctxt "trait"
 msgid "Bridge"
-msgstr ""
+msgstr "Bridge"
 
 msgctxt "trait"
 msgid "Brotherhood"
-msgstr ""
+msgstr "兄弟會"
 
 msgctxt "trait"
 msgid "Byakhee"
-msgstr ""
+msgstr "拜亞基"
 
 msgctxt "trait"
 msgid "Bystander"
-msgstr ""
+msgstr "旁人"
 
 msgctxt "trait"
 msgid "Cairo"
-msgstr ""
+msgstr "開羅"
 
 msgctxt "trait"
 msgid "Campsite"
-msgstr ""
+msgstr "營地"
 
 msgctxt "trait"
 msgid "Carnevale"
-msgstr ""
+msgstr "嘉年華"
 
 msgctxt "trait"
 msgid "Cave"
-msgstr ""
+msgstr "洞穴"
 
 msgctxt "trait"
 msgid "Central"
-msgstr ""
+msgstr "中心"
 
 msgctxt "trait"
 msgid "Charm"
-msgstr ""
+msgstr "守護"
 
 msgctxt "trait"
 msgid "Chosen"
-msgstr ""
+msgstr "天選"
 
 msgctxt "trait"
 msgid "Circle"
-msgstr ""
+msgstr "Circle"
 
 msgctxt "trait"
 msgid "City"
-msgstr ""
+msgstr "City"
 
 msgctxt "trait"
 msgid "Civic"
-msgstr ""
+msgstr "公務員"
 
 msgctxt "trait"
 msgid "Clairvoyant"
-msgstr ""
+msgstr "Clairvoyant"
 
 msgctxt "trait"
 msgid "Clothing"
-msgstr ""
+msgstr "服裝"
 
 msgctxt "trait"
 msgid "Clover Club"
-msgstr ""
+msgstr "四葉草俱樂部"
 
 msgctxt "trait"
 msgid "Coastal"
-msgstr ""
+msgstr "Coastal"
 
 msgctxt "trait"
 msgid "Composure"
-msgstr ""
+msgstr "沉穩"
 
 msgctxt "trait"
 msgid "Condition"
-msgstr ""
+msgstr "狀態"
 
 msgctxt "trait"
 msgid "Connection"
-msgstr ""
+msgstr "人脈"
 
 msgctxt "trait"
 msgid "Conspirator"
-msgstr ""
+msgstr "同謀"
 
 msgctxt "trait"
 msgid "Construct"
-msgstr ""
+msgstr "Construct"
 
 msgctxt "trait"
 msgid "Covenant"
-msgstr ""
+msgstr "Covenant"
 
 msgctxt "trait"
 msgid "Creature"
-msgstr ""
+msgstr "生物"
 
 msgctxt "trait"
 msgid "Crime Scene"
-msgstr ""
+msgstr "犯罪現場"
 
 msgctxt "trait"
 msgid "Criminal"
-msgstr ""
+msgstr "罪犯"
 
 msgctxt "trait"
 msgid "Cultist"
-msgstr ""
+msgstr "異教徒"
 
 msgctxt "trait"
 msgid "Curse"
-msgstr ""
+msgstr "詛咒"
 
 msgctxt "trait"
 msgid "Cursed"
-msgstr ""
+msgstr "詛咒縈繞"
 
 msgctxt "trait"
 msgid "Dark Young"
-msgstr ""
+msgstr "黑山羊幼崽"
 
 msgctxt "trait"
 msgid "Deep One"
-msgstr ""
+msgstr "深潛者"
 
 msgctxt "trait"
 msgid "Depths"
-msgstr ""
+msgstr "Depths"
 
 msgctxt "trait"
 msgid "Desert"
-msgstr ""
+msgstr "沙漠"
 
 msgctxt "trait"
 msgid "Desperate"
-msgstr ""
+msgstr "絕望"
 
 msgctxt "trait"
 msgid "Detective"
-msgstr ""
+msgstr "偵探"
 
 msgctxt "trait"
 msgid "Developed"
-msgstr ""
+msgstr "熟練"
 
 msgctxt "trait"
 msgid "Dhole"
-msgstr ""
+msgstr "Dhole"
 
 msgctxt "trait"
 msgid "Distortion"
-msgstr ""
+msgstr "Distortion"
 
 msgctxt "trait"
 msgid "Dreamer"
-msgstr ""
+msgstr "Dreamer"
 
 msgctxt "trait"
 msgid "Dreamlands"
-msgstr ""
+msgstr "幻夢境"
 
 msgctxt "trait"
 msgid "Drifter"
-msgstr ""
+msgstr "漂泊者"
 
 msgctxt "trait"
 msgid "Dunwich"
-msgstr ""
+msgstr "敦威治"
 
 msgctxt "trait"
 msgid "Eldritch"
-msgstr ""
+msgstr "Eldritch"
 
 msgctxt "trait"
 msgid "Elite"
-msgstr ""
+msgstr "精英"
 
 msgctxt "trait"
 msgid "Endtimes"
-msgstr ""
+msgstr "終結"
 
 msgctxt "trait"
 msgid "Evidence"
-msgstr ""
+msgstr "證據"
 
 msgctxt "trait"
 msgid "Exhibit"
-msgstr ""
+msgstr "展覽"
 
 msgctxt "trait"
 msgid "Expedition"
-msgstr ""
+msgstr "探險"
 
 msgctxt "trait"
 msgid "Expert"
-msgstr ""
+msgstr "專家"
 
 msgctxt "trait"
 msgid "Extradimensional"
-msgstr ""
+msgstr "異次元"
 
 msgctxt "trait"
 msgid "Extraterrestrial"
-msgstr ""
+msgstr "Extraterrestrial"
 
 msgctxt "trait"
 msgid "Eztli"
-msgstr ""
+msgstr "埃茲特里"
 
 msgctxt "trait"
 msgid "Familiar"
-msgstr ""
+msgstr "Familiar"
 
 msgctxt "trait"
 msgid "Fated"
-msgstr ""
+msgstr "定命"
 
 msgctxt "trait"
 msgid "Favor"
-msgstr ""
+msgstr "恩惠"
 
 msgctxt "trait"
 msgid "Firearm"
-msgstr ""
+msgstr "槍械"
 
 msgctxt "trait"
 msgid "Flaw"
-msgstr ""
+msgstr "缺陷"
 
 msgctxt "trait"
 msgid "Flora"
-msgstr ""
+msgstr "植物"
 
 msgctxt "trait"
 msgid "Footwear"
-msgstr ""
+msgstr "鞋子"
 
 msgctxt "trait"
 msgid "Forbidden"
-msgstr ""
+msgstr "Forbidden"
 
 msgctxt "trait"
 msgid "Forgotten"
-msgstr ""
+msgstr "失落"
 
 msgctxt "trait"
 msgid "Fortune"
-msgstr ""
+msgstr "幸運"
 
 msgctxt "trait"
 msgid "Future"
-msgstr ""
+msgstr "未來"
 
 msgctxt "trait"
 msgid "Gambit"
-msgstr ""
+msgstr "局勢"
 
 msgctxt "trait"
 msgid "Geist"
-msgstr ""
+msgstr "靈怪"
 
 msgctxt "trait"
 msgid "Ghast"
-msgstr ""
+msgstr "Ghast"
 
 msgctxt "trait"
 msgid "Ghoul"
-msgstr ""
+msgstr "食屍鬼"
 
 msgctxt "trait"
 msgid "Government"
-msgstr ""
+msgstr "政府"
 
 msgctxt "trait"
 msgid "Grant"
-msgstr ""
+msgstr "撥款"
 
 msgctxt "trait"
 msgid "Graveyard"
-msgstr ""
+msgstr "Graveyard"
 
 msgctxt "trait"
 msgid "Ground Floor"
-msgstr ""
+msgstr "一樓"
 
 msgctxt "trait"
 msgid "Guest"
-msgstr ""
+msgstr "客人"
 
 msgctxt "trait"
 msgid "Gug"
-msgstr ""
+msgstr "Gug"
 
 msgctxt "trait"
 msgid "Hall"
-msgstr ""
+msgstr "Hall"
 
 msgctxt "trait"
 msgid "Hazard"
-msgstr ""
+msgstr "危險"
 
 msgctxt "trait"
 msgid "Hex"
-msgstr ""
+msgstr "巫術"
 
 msgctxt "trait"
 msgid "Hideout"
-msgstr ""
+msgstr "Hideout"
 
 msgctxt "trait"
 msgid "Historical Society"
-msgstr ""
+msgstr "歷史協會"
 
 msgctxt "trait"
 msgid "Human"
-msgstr ""
+msgstr "人類"
 
 msgctxt "trait"
 msgid "Humanoid"
-msgstr ""
+msgstr "類人"
 
 msgctxt "trait"
 msgid "Hunter"
-msgstr ""
+msgstr "獵人"
 
 msgctxt "trait"
 msgid "Hybrid"
-msgstr ""
+msgstr "Hybrid"
 
 msgctxt "trait"
 msgid "Illicit"
-msgstr ""
+msgstr "違法"
 
 msgctxt "trait"
 msgid "Improvised"
-msgstr ""
+msgstr "臨時製品"
 
 msgctxt "trait"
 msgid "Injury"
-msgstr ""
+msgstr "損傷"
 
 msgctxt "trait"
 msgid "Innate"
-msgstr ""
+msgstr "天性"
 
 msgctxt "trait"
 msgid "Innocent"
-msgstr ""
+msgstr "清白"
 
 msgctxt "trait"
 msgid "Innsmouth"
-msgstr ""
+msgstr "Innsmouth"
 
 msgctxt "trait"
 msgid "Insect"
-msgstr ""
+msgstr "昆蟲"
 
 msgctxt "trait"
 msgid "Insight"
-msgstr ""
+msgstr "洞察"
 
 msgctxt "trait"
 msgid "Instrument"
-msgstr ""
+msgstr "樂器"
 
 msgctxt "trait"
 msgid "Island"
-msgstr ""
+msgstr "Island"
 
 msgctxt "trait"
 msgid "Item"
-msgstr ""
+msgstr "道具"
 
 msgctxt "trait"
 msgid "Job"
-msgstr ""
+msgstr "Job"
 
 msgctxt "trait"
 msgid "Jungle"
-msgstr ""
+msgstr "叢林"
 
 msgctxt "trait"
 msgid "Kadath"
-msgstr ""
+msgstr "Kadath"
 
 msgctxt "trait"
 msgid "Key"
-msgstr ""
+msgstr "鑰匙"
 
 msgctxt "trait"
 msgid "Lead"
-msgstr ""
+msgstr "Lead"
 
 msgctxt "trait"
 msgid "Leng"
-msgstr ""
+msgstr "Leng"
 
 msgctxt "trait"
 msgid "Lodge"
-msgstr ""
+msgstr "Lodge"
 
 msgctxt "trait"
 msgid "Lunatic"
-msgstr ""
+msgstr "狂人"
 
 msgctxt "trait"
 msgid "Madness"
-msgstr ""
+msgstr "瘋狂"
 
 msgctxt "trait"
 msgid "Manifold"
-msgstr ""
+msgstr "複體"
 
 msgctxt "trait"
 msgid "Mask"
-msgstr ""
+msgstr "面具"
 
 msgctxt "trait"
 msgid "Medic"
-msgstr ""
+msgstr "醫師"
 
 msgctxt "trait"
 msgid "Melee"
-msgstr ""
+msgstr "近戰"
 
 msgctxt "trait"
 msgid "Mexico City"
-msgstr ""
+msgstr "墨西哥城"
 
 msgctxt "trait"
 msgid "Mi-Go"
-msgstr ""
+msgstr "米戈"
 
 msgctxt "trait"
 msgid "Midtown"
-msgstr ""
+msgstr "Midtown"
 
 msgctxt "trait"
 msgid "Miskatonic"
-msgstr ""
+msgstr "米斯卡塔尼克"
 
 msgctxt "trait"
 msgid "Mnar"
-msgstr ""
+msgstr "Mnar"
 
 msgctxt "trait"
 msgid "Monster"
-msgstr ""
+msgstr "怪物"
 
 msgctxt "trait"
 msgid "Montréal"
-msgstr ""
+msgstr "蒙特利爾"
 
 msgctxt "trait"
 msgid "Mountain"
-msgstr ""
+msgstr "Mountain"
 
 msgctxt "trait"
 msgid "Mutated"
-msgstr ""
+msgstr "突變"
 
 msgctxt "trait"
 msgid "Mystery"
-msgstr ""
+msgstr "神秘"
 
 msgctxt "trait"
 msgid "New Orleans"
-msgstr ""
+msgstr "紐奧良"
 
 msgctxt "trait"
 msgid "New York City"
-msgstr ""
+msgstr "紐約城"
 
 msgctxt "trait"
 msgid "Nightgaunt"
-msgstr ""
+msgstr "夜魘"
 
 msgctxt "trait"
 msgid "Obstacle"
-msgstr ""
+msgstr "屏障"
 
 msgctxt "trait"
 msgid "Occult"
-msgstr ""
+msgstr "密教"
 
 msgctxt "trait"
 msgid "Ocean"
-msgstr ""
+msgstr "Ocean"
 
 msgctxt "trait"
 msgid "Omen"
-msgstr ""
+msgstr "徵兆"
 
 msgctxt "trait"
 msgid "Ooth-Nargai"
-msgstr ""
+msgstr "Ooth-Nargai"
 
 msgctxt "trait"
 msgid "Ooze"
-msgstr ""
+msgstr "軟泥"
 
 msgctxt "trait"
 msgid "Oozified"
-msgstr ""
+msgstr "軟泥汙染"
 
 msgctxt "trait"
 msgid "Oriab"
-msgstr ""
+msgstr "Oriab"
 
 msgctxt "trait"
 msgid "Otherworld"
-msgstr ""
+msgstr "異界"
 
 msgctxt "trait"
 msgid "Pact"
-msgstr ""
+msgstr "契約"
 
 msgctxt "trait"
 msgid "Paradox"
-msgstr ""
+msgstr "悖論"
 
 msgctxt "trait"
 msgid "Paris"
-msgstr ""
+msgstr "巴黎"
 
 msgctxt "trait"
 msgid "Part 1"
-msgstr ""
+msgstr "第一章"
 
 msgctxt "trait"
 msgid "Passageway"
-msgstr ""
+msgstr "通道"
 
 msgctxt "trait"
 msgid "Patron"
-msgstr ""
+msgstr "贊助人"
 
 msgctxt "trait"
 msgid "Performer"
-msgstr ""
+msgstr "藝人"
 
 msgctxt "trait"
 msgid "Pnakotus"
-msgstr ""
+msgstr "納克特"
 
 msgctxt "trait"
 msgid "Poison"
-msgstr ""
+msgstr "毒藥"
 
 msgctxt "trait"
 msgid "Police"
-msgstr ""
+msgstr "警察"
 
 msgctxt "trait"
 msgid "Port"
-msgstr ""
+msgstr "Port"
 
 msgctxt "trait"
 msgid "Portal"
-msgstr ""
+msgstr "次元門"
 
 msgctxt "trait"
 msgid "Power"
-msgstr ""
+msgstr "力量"
 
 msgctxt "trait"
 msgid "Practiced"
-msgstr ""
+msgstr "精通"
 
 msgctxt "trait"
 msgid "Present-Day"
-msgstr ""
+msgstr "現代"
 
 msgctxt "trait"
 msgid "Prison"
-msgstr ""
+msgstr "Prison"
 
 msgctxt "trait"
 msgid "Private"
-msgstr ""
+msgstr "私密"
 
 msgctxt "trait"
 msgid "Providence"
-msgstr ""
+msgstr "普羅維登斯"
 
 msgctxt "trait"
 msgid "Rail"
-msgstr ""
+msgstr "軌道沿線"
 
 msgctxt "trait"
 msgid "Ranged"
-msgstr ""
+msgstr "遠程"
 
 msgctxt "trait"
 msgid "Relic"
-msgstr ""
+msgstr "遺物"
 
 msgctxt "trait"
 msgid "Reporter"
-msgstr ""
+msgstr "記者"
 
 msgctxt "trait"
 msgid "Research"
-msgstr ""
+msgstr "Research"
 
 msgctxt "trait"
 msgid "Return"
-msgstr ""
+msgstr "重返"
 
 msgctxt "trait"
 msgid "Ritual"
-msgstr ""
+msgstr "儀式"
 
 msgctxt "trait"
 msgid "Ritual Site"
-msgstr ""
+msgstr "儀式地"
 
 msgctxt "trait"
 msgid "River"
-msgstr ""
+msgstr "River"
 
 msgctxt "trait"
 msgid "Riverside"
-msgstr ""
+msgstr "Riverside"
 
 msgctxt "trait"
 msgid "Road"
-msgstr ""
+msgstr "Road"
 
 msgctxt "trait"
 msgid "Ruins"
-msgstr ""
+msgstr "遺跡"
 
 msgctxt "trait"
 msgid "Salem"
-msgstr ""
+msgstr "Salem"
 
 msgctxt "trait"
 msgid "Sanctum"
-msgstr ""
+msgstr "Sanctum"
 
 msgctxt "trait"
 msgid "Scheme"
-msgstr ""
+msgstr "陰謀"
 
 msgctxt "trait"
 msgid "Scholar"
-msgstr ""
+msgstr "Scholar"
 
 msgctxt "trait"
 msgid "Science"
-msgstr ""
+msgstr "科學"
 
 msgctxt "trait"
 msgid "Script"
-msgstr ""
+msgstr "Script"
 
 msgctxt "trait"
 msgid "Second Floor"
-msgstr ""
+msgstr "二樓"
 
 msgctxt "trait"
 msgid "Sentinel Hill"
-msgstr ""
+msgstr "哨兵山"
 
 msgctxt "trait"
 msgid "Serpent"
-msgstr ""
+msgstr "蛇族"
 
 msgctxt "trait"
 msgid "Service"
-msgstr ""
+msgstr "服務"
 
 msgctxt "trait"
 msgid "Servitor"
-msgstr ""
+msgstr "僕從"
 
 msgctxt "trait"
 msgid "Shantak"
-msgstr ""
+msgstr "夏塔克鳥"
 
 msgctxt "trait"
 msgid "Shattered"
-msgstr ""
+msgstr "破碎"
 
 msgctxt "trait"
 msgid "Ship"
-msgstr ""
+msgstr "Ship"
 
 msgctxt "trait"
 msgid "Shoggoth"
-msgstr ""
+msgstr "修格斯"
 
 msgctxt "trait"
 msgid "Silver Twilight"
-msgstr ""
+msgstr "銀暮秘社"
 
 msgctxt "trait"
 msgid "Skai"
-msgstr ""
+msgstr "Skai"
 
 msgctxt "trait"
 msgid "Socialite"
-msgstr ""
+msgstr "社會名流"
 
 msgctxt "trait"
 msgid "Song"
-msgstr ""
+msgstr "歌曲"
 
 msgctxt "trait"
 msgid "Sorcerer"
-msgstr ""
+msgstr "法師"
 
 msgctxt "trait"
 msgid "Spectral"
-msgstr ""
+msgstr "Spectral"
 
 msgctxt "trait"
 msgid "Spell"
-msgstr ""
+msgstr "法術"
 
 msgctxt "trait"
 msgid "Spider"
-msgstr ""
+msgstr "蜘蛛"
 
 msgctxt "trait"
 msgid "Spirit"
-msgstr ""
+msgstr "勇氣"
 
 msgctxt "trait"
 msgid "St Mary's"
-msgstr ""
+msgstr "St Mary's"
 
 msgctxt "trait"
 msgid "Staff"
-msgstr ""
+msgstr "員工"
 
 msgctxt "trait"
 msgid "Steps"
-msgstr ""
+msgstr "Steps"
 
 msgctxt "trait"
 msgid "Summon"
-msgstr ""
+msgstr "Summon"
 
 msgctxt "trait"
 msgid "Supply"
-msgstr ""
+msgstr "供給"
 
 msgctxt "trait"
 msgid "Surface"
-msgstr ""
+msgstr "Surface"
 
 msgctxt "trait"
 msgid "Suspect"
-msgstr ""
+msgstr "Suspect"
 
 msgctxt "trait"
 msgid "Syndicate"
-msgstr ""
+msgstr "犯罪團夥"
 
 msgctxt "trait"
 msgid "Tactic"
-msgstr ""
+msgstr "策略"
 
 msgctxt "trait"
 msgid "Talent"
-msgstr ""
+msgstr "才能"
 
 msgctxt "trait"
 msgid "Tarot"
-msgstr ""
+msgstr "塔羅"
 
 msgctxt "trait"
 msgid "Task"
-msgstr ""
+msgstr "任務"
 
 msgctxt "trait"
 msgid "Temple"
-msgstr ""
+msgstr "Temple"
 
 msgctxt "trait"
 msgid "Tenochtitlán"
-msgstr ""
+msgstr "特諾奇蒂特蘭"
 
 msgctxt "trait"
 msgid "Tentacle"
-msgstr ""
+msgstr "觸手"
 
 msgctxt "trait"
 msgid "Terror"
-msgstr ""
+msgstr "恐怖"
 
 msgctxt "trait"
 msgid "Third Floor"
-msgstr ""
+msgstr "三樓"
 
 msgctxt "trait"
 msgid "Tindalos"
-msgstr ""
+msgstr "廷達洛斯"
 
 msgctxt "trait"
 msgid "Tome"
-msgstr ""
+msgstr "書籍"
 
 msgctxt "trait"
 msgid "Tool"
-msgstr ""
+msgstr "工具"
 
 msgctxt "trait"
 msgid "Town"
-msgstr ""
+msgstr "城鎮"
 
 msgctxt "trait"
 msgid "Train"
-msgstr ""
+msgstr "火車"
 
 msgctxt "trait"
 msgid "Trap"
-msgstr ""
+msgstr "陷阱"
 
 msgctxt "trait"
 msgid "Trick"
-msgstr ""
+msgstr "技巧"
 
 msgctxt "trait"
 msgid "Unhallowed"
-msgstr ""
+msgstr "Unhallowed"
 
 msgctxt "trait"
 msgid "Upgrade"
-msgstr ""
+msgstr "升級"
 
 msgctxt "trait"
 msgid "Vale"
-msgstr ""
+msgstr "Vale"
 
 msgctxt "trait"
 msgid "Vehicle"
-msgstr ""
+msgstr "Vehicle"
 
 msgctxt "trait"
 msgid "Venice"
-msgstr ""
+msgstr "威尼斯"
 
 msgctxt "trait"
 msgid "Veteran"
-msgstr ""
+msgstr "老兵"
 
 msgctxt "trait"
 msgid "Void"
-msgstr ""
+msgstr "Void"
 
 msgctxt "trait"
 msgid "Warden"
-msgstr ""
+msgstr "監守"
 
 msgctxt "trait"
 msgid "Wastes"
-msgstr ""
+msgstr "Wastes"
 
 msgctxt "trait"
 msgid "Wayfarer"
-msgstr ""
+msgstr "旅人"
 
 msgctxt "trait"
 msgid "Weapon"
-msgstr ""
+msgstr "武器"
 
 msgctxt "trait"
 msgid "Wilderness"
-msgstr ""
+msgstr "Wilderness"
 
 msgctxt "trait"
 msgid "Witch"
-msgstr ""
+msgstr "女巫"
 
 msgctxt "trait"
 msgid "Witch House"
-msgstr ""
+msgstr "Witch House"
 
 msgctxt "trait"
 msgid "Woods"
-msgstr ""
+msgstr "樹林"
 
 msgctxt "trait"
 msgid "Y'ha-nthlei"
-msgstr ""
+msgstr "Y'ha-nthlei"
 
 msgctxt "trait"
 msgid "Yithian"
-msgstr ""
+msgstr "伊斯"
 
 msgctxt "trait"
 msgid "Yoth"
-msgstr ""
+msgstr "幽嘶"
 
 msgctxt "trait"
 msgid "Zoog"
-msgstr ""
+msgstr "Zoog"
 
 #, javascript-format
 msgctxt "filter"
@@ -5593,7 +5621,7 @@ msgstr[0] "冒險"
 
 msgctxt "campaign_log_entry"
 msgid "Other."
-msgstr ""
+msgstr "其他"
 
 msgctxt "Weakness Card"
 msgid "All"

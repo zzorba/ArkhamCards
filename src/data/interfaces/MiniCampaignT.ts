@@ -17,6 +17,7 @@ export default interface MiniCampaignT {
   latestScenarioResult: ScenarioResult | undefined;
   investigators: string[];
   updatedAt: Date;
+  archived: boolean;
   linked: undefined | CampaignLink;
 
   investigatorTrauma: (code: string) => TraumaAndCardData;

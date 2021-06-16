@@ -302,6 +302,22 @@ export function updateCampaignInvestigatorData(
   };
 }
 
+export function updateCampaignArchived(
+  userId: string | undefined,
+  actions: UpdateCampaignActions,
+  id: CampaignId,
+  archived: boolean,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await actions.setArchived(id, archived);
+    } else {
+      dispatch(updateCampaign(id, { archived }, now));
+    }
+  };
+}
+
 export function updateCampaignWeaknessSet(
   setWeaknessSet: SetCampaignWeaknessSetAction,
   id: CampaignId,
