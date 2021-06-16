@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  Text,
-} from 'react-native';
-import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
+import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
 import { WithChildren } from '../CardTextComponent/types';
 import { StyleContextType } from '@styles/StyleContext';
@@ -14,14 +11,14 @@ export default function GameTextNode({ typography, fontScale, gameFont }: StyleC
     state: RenderState
   ) => {
     return (
-      <Text key={state.key} style={[{
+      <MarkdownText key={state.key} style={[{
         fontFamily: gameFont,
         fontStyle: 'normal',
         fontSize: 24 * fontScale,
-        lineHeight: 32 * fontScale,
+        lineHeight: 28 * fontScale,
       }, typography.dark]}>
         { output(node.children, state) }
-      </Text>
+      </MarkdownText>
     );
   };
 }
