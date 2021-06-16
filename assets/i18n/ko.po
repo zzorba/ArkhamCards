@@ -4381,13 +4381,13 @@ msgstr ""
 "기록합니다."
 
 msgid "Unarchive campaign"
-msgstr ""
+msgstr "캠페인 보관 취소"
 
 msgid "Archive campaign"
-msgstr ""
+msgstr "캠페인 보관"
 
 msgid "Show archived campaigns"
-msgstr ""
+msgstr "보관된 캠페인 보기"
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
