@@ -32706,7 +32706,7 @@
     },
     {
       "id": "add_cultist",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "캠페인이 끝날 때까지 혼돈 주머니에 [cultist] 토큰을 1개 추가합니다.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -46074,7 +46074,7 @@
     },
     {
       "id": "R6",
-      "title": "Resolution 6",
+      "title": "결말 6",
       "text": "The Earth is just the first planet to be engulfed by Silenus, embodiment of the Empty Sky, the ravenous end of all things. As the planet's core plunges to absolute zero, all life is instantly snuffed out. From the opening made by the nexus on Earth, the entity then stretches out to all corners of the solar system, devouring all warmth along the way. Nothing can stop it now.",
       "steps": [
         "all_killed",
@@ -46083,7 +46083,7 @@
     },
     {
       "id": "R7",
-      "title": "Resolution 7",
+      "title": "결말 7",
       "text": "The beast's rampage is impossible to stop. You were the only ones with any knowledge of how to defeat the thing. One by one, as it makes its way across continents and through the oceans, cities fall. Armies are obliterated. Governments collapse. The monstrous creatures hatched by the cult of Ark'at continue their ravenous war until there is nothing left to rule over but the vast wastes of Earth and the crumbling ruins of human civilization. The \"paradise\" they so willingly killed for has come.",
       "steps": [
         "all_killed",
@@ -53174,7 +53174,7 @@
     },
     {
       "id": "add_cultist_token",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "캠페인이 끝날 때까지 혼돈 주머니에 [cultist] 토큰을 1개 추가합니다.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -56544,7 +56544,7 @@
         "id": "the_circle_undone.union_and_disillusion.resolution_6",
         "name": "Resolution 6"
       },
-      "title": "Resolution 6",
+      "title": "결말 6",
       "text": "When you come to your senses, the wind has subsided and the dark mist has vanished. With the ritual concluded, the island seems to have returned to normal—but was the ritual successful, or did it fail? You make your way to the center of the island to find out what happened. As you arrive, you find Anette and her coven heavily wounded, and the Lodge stands victorious. Carl Sanford holds a thick leather tome in his hands, its pages glowing with arcane power. “What have you done?!” Anette yells. Several members of her coven surround her. They are embattled, but you have no doubt they would lay down their life to protect their high priestess from harm.\n“What have I done? Why, I have cheated the Devil,” Sanford responds with a sinister grin. You notice the words of his tome are now glowing with a spectral radiance. “Keziah signed the Black Book of Azathoth in order to learn the secrets of the universe. A fatal error, in my estimation, for it put her in the clutches of one far more powerful than she.” He begins to read from the pages as he explains further. “She paid the price, but I shall reap the harvest.”\nAnette clenches her jaw and turns toward you. “Listen to me. You cannot even begin to fathom the secrets this monster now possesses. You must stop him, no matter the cost.”\nYou hold your tongue, but in the back of your mind, you suspect Anette is right. Sanford has tricked you. This is what he was after all along. Perhaps he considers this “protecting humanity,” but the truth is that he has endangered the lives of others over and over again in order to serve his own greed and lust for power. However, before you can confront Sanford, he turns to the other members of his Order and points to you. “This one is no longer useful,” he explains. “Kill them all.”\n“Erynn, give us cover!” Anette barks to the red-haired witch next to her. The witch nods in response and waves a wooden rod in front of her, creating a cloud of mist that masks your presence. “We have to get out of here. Go!” Anette yells.\nYour escape is a blur. Robed members of the Silver Twilight cult chase you relentlessly throughout the forsaken woods. You are only barely able to make it back to the shore before they catch up to you. You motion for Anette and the others to join you, but she shakes her head. “We’ll meet again soon.” The edges of the witches’ cloaks bleed into the night sky, and with a swirl of darkness, they vanish one by one.",
       "steps": [
         "carl_sanford_possesses_the_secrets_of_the_universe",
@@ -56557,7 +56557,7 @@
         "id": "the_circle_undone.union_and_disillusion.resolution_7",
         "name": "Resolution 7"
       },
-      "title": "Resolution 7",
+      "title": "결말 7",
       "text": "When you come to your senses, the wind has subsided and the dark mist has vanished. With the ritual concluded, the island seems to have returned to normal—but was the ritual successful, or did it fail? You make your way to the center of the island to find out what happened. As you arrive, you find Carl Sanford and the other members of his Order heavily wounded, and Anette and her coven stand victorious. Anette stands at the center of the clearing, her eyes aglow with mystical power. When she speaks, it is not her voice. “Sisters. Rejoice, for I am reborn,” Keziah says.\nCarl Sanford taps you with his cane. You were so transfixed by the events occurring in front of you that you hadn’t noticed the Lodge members slinking toward the edges of the clearing. One of the Lodge’s inner circle raises a revolver and attempts to fire, but the high priestess simply glares at him, and his arm withers and rots before your eyes. His gun clatters to the ground and he makes one final croak before he is nothing but a decayed husk on the ground. “We must leave this place at once,” Sanford says stoically. “This being possesses power over life and death itself. It will not suffer our presence any longer.”\nAnette—no, Keziah—turns her attention to you, and her eyes brighten. “You look familiar, child. Come, come. Do not be afraid. You have nothing to fear from me.” She grins wickedly. Her voice is like knives driving into your soul. You hate to admit it, but Sanford is right. You turn and flee with the rest of the Lodge, hoping you are fast enough to escape the witch’s magic.\nYour escape is a blur. Witches and spirits chase you relentlessly throughout the forsaken woods. You are only barely able to make it back to the shore before they catch up to you. Other members of the Lodge are perhaps not so fortunate. Having scattered in many directions, you’re not sure how many of them escaped, and you don’t see Carl Sanford anywhere, though you suspect he had a plan for this outcome.",
       "steps": [
         "anette_mason_is_possessed_by_evil",
@@ -75241,7 +75241,7 @@
     },
     {
       "id": "add_cultist",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "캠페인이 끝날 때까지 혼돈 주머니에 [cultist] 토큰을 1개 추가합니다.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -78844,7 +78844,7 @@
     },
     {
       "id": "purple_key_token",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "캠페인이 끝날 때까지 혼돈 주머니에 [cultist] 토큰을 1개 추가합니다.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -78972,7 +78972,7 @@
     },
     {
       "id": "black_key_token",
-      "text": "Add 1 [elder_thing] token to the chaos bag for the remainder of the campaign.",
+      "text": "캠페인이 끝날 때까지 혼돈 주머니에 [elder_thing] 토큰을 1개 추가합니다.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -82589,7 +82589,7 @@
         "physical",
         "mental"
       ],
-      "title": "Resolution 6",
+      "title": "결말 6",
       "text": "Agent Harper is the first to speak. \"Well. Mission accomplished, I suppose.\" You bite your lip. She may have accomplished her mission, but the toll of the Deep Ones' ritual on the world will never fade. She digs through her belongings for a bright orange firearm with a large barrel, loads a flare into it, and launches the bright light into the sky with a victorious smirk. \"They'll be coming for us any minute now. Then we'll blow that city apart, and hopefully, this will all be over,\" she says. You aren't so sure. Much of the damage has already been done. Will it ever truly end? Or are you just delaying the inevitable?",
       "steps": [
         "agent_harpers_mission_is_complete_at_what_cost",
@@ -82607,7 +82607,7 @@
         "physical",
         "mental"
       ],
-      "title": "Resolution 7",
+      "title": "결말 7",
       "text": "There is no sign of Agent Harper anywhere. Perhaps she never made it out of the city alive. You hold out hope that she is out there, somewhere. Still, you are relieved that at the very least, nobody will ever be able to use the riches of Y'ha-nthlei to manipulate humanity ever again. Not the government, not the Deep Ones-nobody. You peer out once more to the waves thrashing across the horizon. The flood seems to have halted. Perhaps you have harmed the Deep Ones and their masters enough that their ritual",
       "steps": [
         "riches_of_the_deep_are_destroyed_at_what_cost",
@@ -83511,7 +83511,7 @@
     },
     {
       "id": "add_elder_thing",
-      "text": "Add 1 [elder_thing] token to the chaos bag for the remainder of the campaign.",
+      "text": "캠페인이 끝날 때까지 혼돈 주머니에 [elder_thing] 토큰을 1개 추가합니다.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -83535,7 +83535,7 @@
     },
     {
       "id": "add_cultist",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "캠페인이 끝날 때까지 혼돈 주머니에 [cultist] 토큰을 1개 추가합니다.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -86326,7 +86326,7 @@
         "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.resolution_6",
         "name": "Resolution 6"
       },
-      "title": "Resolution 6",
+      "title": "결말 6",
       "text": "\"Heh, heh, heh, heh… ye startin' to see haow rott'n this town's got, ain't ye?\" Zadok hollers, a crazed look in his wide eyes. He clutches desperately at your arm, not seeming to care about your attempts to bind him. \"We're all in their clutches now, we are! Heh, heh, heh!\"\n\"What's this blotto have to laugh about?\" Agent Harper mocks. \"Hey, Zadok. Stop it with the nonsense and tell us what your game is.\"\nZadok rocks back and forth, his voice growing louder and bolder. \"My game? My game?\" he roils with manic laughter. \"Yeh think I'm to blame, but them fish devils are in our midst, they are! Haven't ye seen them?\" He grins. \"Haven't ye seen them monsters crawlin' an' bleatin' an' barkin' an' hoppin' araoun' the black streets? Haven't ye heard the haowlin' errey night from the churches an' the Order o' Dagon Hall? Don'tcha know what's doin' the haowlin'? Eh? Well?\" His voice rises to a shriek, then descends into a fit of laughter.\n\"No, I haven't,\" Harper replies, her eyes narrow. \"Why don't you tell us all about it?\"",
       "steps": [
         "earn_xp",
@@ -86339,7 +86339,7 @@
         "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.resolution_7",
         "name": "Resolution 7"
       },
-      "title": "Resolution 7",
+      "title": "결말 7",
       "text": "Robert refruses to say a word until you get him a cigar. You begrudgingly oblige, hoping that your generosity yields dividends. \"I was investigating the docks when he and his cronies nabbed me,\" Agent Harper recounts bitterly. You ask who these \"cronies\" were, and she shrugs. \"Not sure. Dockworkers and sailors, I imagine. Whoever hired Mr. Friendly over here must have a lot of influence over the locals.\"\nAfter handing Robert the cigar he demanded, you are surprised to find him a little more compliant, though no more friendly despite his name. \"Doesn't matter,\" he mutters, blowing out a puff of rank cigar smoke. \"You're all dead men walking. No offense, miss.\"\n\"Offense taken,\" she bites back. \"Care to tell us what you mean by that?\"\n\"The Order,\" he replies with a quiet, unwavering resolve. \"They know everything that happens in this town. Probably out lookin' for me right now. You sure you wanna be here when they find me?\" He flashes a sadistic grin.\nHarper doesn't flinch. \"Yeah, actually. I think I do,\" she replies, cracking her knuckles. \"Now start talking.\"",
       "steps": [
         "earn_xp",
@@ -86716,7 +86716,7 @@
     },
     {
       "id": "intro",
-      "text": "<i>이상한 나라의 앨리스</i>는 여덟 장으로 구성된 <i>아컴호러 카드게임</i>의 1-4 인용 캠페인입니다. 이 캠페인은 <i>루이스 캐럴의 이상한 나라의 앨리스, 거울 나라의 앨리스</i> 그리고 몇몇 시들 과 <i>아컴호러</i>에서 나오는 신화들과 연관된 것들을 조금 비틀고 변주한 것들에 기반합니다. (번역: 광기 깎는 노인 / laqed@naver.com)"
+      "text": "<i>이상한 나라의 앨리스</i>는 여덟 장으로 구성된 <i>아컴호러 카드게임</i>의 1-4 인용 캠페인입니다. 이 캠페인은 <i>루이스 캐럴의 이상한 나라의 앨리스, 거울 나라의 앨리스</i> 그리고 몇몇 시들 과 <i>아컴호러</i>에서 나오는 신화들과 연관된 것들을 조금 비틀고 변주한 것들에 기반합니다.\n(번역: 광기 깎는 노인 / laqed@naver.com)"
     },
     {
       "id": "choose_investigators",
@@ -88494,7 +88494,7 @@
     },
     {
       "id": "R6",
-      "title": "Resolution 6",
+      "title": "결말 6",
       "text": "그림자들이 갈갈이 찢어진 후에도, 여왕은 그녀의 타르트를 언급하며 분노에 찬 공격을 지속해 그것들을 깍뚝 썰어버립니다. 당신과 잭은 여왕이 당신에게 다가오기 전에 스스로 지칠 때까지 기다리기로 합니다. 그녀는 뒤돌아서 당신을 만나러 왔지만 이번에 그녀의 얼굴에는 미소가 피어 있습니다. “하찮은 벌레들…, 내 추측으로는 그것들이 내 사랑스러운 타르트를 훔쳐간 것 같구나!” 잭은 재빨리 그녀의 잘못된 의심을 지지했고, 당신 또한 그녀가 더 이상 의심하지 않도록 동의하며 끄덕입니다. “내가 그들을 스스로 처리하지만 않았다면 좋았을 것인데, 새 처형인이 필요하구나!” 여왕의 눈은 당신에게 고정되었고, 그녀는 당신의 손에 도끼를 쥐여줍니다. 넌 내 감사를 받을 자격이 있다.” 그녀는 새로운 타르트를 요구하며, 되돌아 가버립니다.\n여왕이 시야에서 사라지자 잭이 당신을 옆으로 나자빠집니다. “이 정도 규모로 성공할 줄은 몰랐는데… 진짜로. 나는 그림자가 끌려 나오면 그저 도망칠 생각만 하고 있었는데, 내가 분명히 말하지만 너는 복잡한 일을 더 좋은 방향으로 해냈어. 내가 말한 대로 진행되었으니 나도 공이 조금은 있지만. 내가 너를 도울 수 있다면, 물론 아무 이유 없이는 아니지만, 내가 너의 에그- 렘이 되어줄게. 정말 그러고 싶어.” 그는 그러한 연유로 말합니다. 이상한 나라에서는 누구도 믿을 수 없지만 당신은 잭이 숨겨놓은 재능을 이용할 많은 기회가 있을 것입니다.",
       "steps": [
         "add_1_strength_of_wonderland",
@@ -88505,7 +88505,7 @@
     },
     {
       "id": "R7",
-      "title": "Resolution 7",
+      "title": "결말 7",
       "text": "당신은 여왕의 장원에서 당신의 허리띠 아래 그림자가 어디에 잠복해 있든 당신의 싸움을 도와줄 경험과 지식을 얻고 떠납니다.",
       "steps": [
         "proceed_interlude"
@@ -91461,7 +91461,7 @@
     },
     {
       "id": "R6",
-      "title": "Resolution 6",
+      "title": "결말 6",
       "text": "왕방울은 매우 평범해 보이지만, 아직도 당신은 그 안에 잠재한 기이한 힘을 느낄 수 있습 니다. 어린이의 물건이 당신의 공포와 악몽을 추방할 수 있다는 사실은 평이한 느낌이지만, 앨리스의 꿈에서는, 아마도 분명한 사실인 것 같습니다. 차후에도, 그림자를 물리칠 수 있는 다른 어떤 무기라도 들고 갈 가치가 있어 보입니다.",
       "steps": [
         "earn_tweedles_rattle",
@@ -91860,7 +91860,7 @@
     },
     {
       "id": "R6",
-      "title": "Resolution 6",
+      "title": "결말 6",
       "text": "당신의 뒤에는 또다른 시련이 있으며 가야할 길도 머나멉니다. 당신이 다과회 정원을 떠나려고 하자 겨울잠 쥐가 당신의 어깨를 타고 올라옵니다. “이상한 나라가 평소보다 더 비체계적이 되었어.” 당신의 새로운 동행이 설명합니다. “그리고 너는 그러한 것을 정리하는데 내 도움이 필요할거야. 너의 생각은 비슷하게 어수선해질 것이 분명하고 나는 그런 상황을 정리하는데 도움을 줄 수 있어.” 당신은 말하는 쥐의 도움에 감사하게 될 상황이 올 것이라고 별로 믿지 않으며 고개를 끄덕이지만, 이 앨리스의 꿈에서 당신의 적이 의도하지 않은 무엇이든지 이미 크나큰 도움입니다.",
       "steps": [
         "earn_dormouse",
@@ -92335,7 +92335,7 @@
     },
     {
       "id": "add_1_cultist",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "캠페인이 끝날 때까지 혼돈 주머니에 [cultist] 토큰을 1개 추가합니다.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -92720,7 +92720,7 @@
     },
     {
       "id": "add_1_elder_thing",
-      "text": "Add 1 [elder_thing] token to the chaos bag for the remainder of the campaign.",
+      "text": "캠페인이 끝날 때까지 혼돈 주머니에 [elder_thing] 토큰을 1개 추가합니다.",
       "effects": [
         {
           "type": "add_chaos_token",

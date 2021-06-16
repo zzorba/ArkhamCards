@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { head, find, forEach, map, shuffle, values, filter } from 'lodash';
 import { t } from 'ttag';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -9,7 +9,6 @@ import { PrologueRandomizer, StringOption } from '@data/scenario/types';
 import ScenarioGuideContext from '../ScenarioGuideContext';
 import ScenarioStepContext from '../ScenarioStepContext';
 import InputWrapper from './InputWrapper';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { DisplayChoiceWithId } from '@data/scenario';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import useSingleCard from '@components/card/useSingleCard';

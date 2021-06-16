@@ -40,10 +40,6 @@ export async function setNarrationQueue(queue: NarrationTrack[]) {
 
   const oldTrackIds = oldTracks.map((track) => track.id);
   const newTracks = queue.map((track) => {
-    console.log(`https://north101.co.uk/api/scene/${track.id}/listen`)
-    console.log({
-      Authorization: `Bearer ${accessToken}`,
-    })
     return {
       id: track.id,
       title: track.name,

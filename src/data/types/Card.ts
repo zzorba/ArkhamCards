@@ -1092,6 +1092,7 @@ export default class Card {
       json.code === '98010' || // Carolyn
       json.code === '98013' || // Silas
       json.code === '98016' || // Dexter
+      // json.code === '98007' || // Norman
       json.code === '99001'; // PROMO Marie
 
     const s_search_name = filter([
