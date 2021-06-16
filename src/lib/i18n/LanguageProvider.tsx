@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { Platform } from 'react-native';
 import { EventEmitter } from 'events';
 import * as RNLocalize from 'react-native-localize';
 import LanguageContext from './LanguageContext';
@@ -51,6 +52,7 @@ export default function LanguageProvider({ children }: Props) {
       lang,
       useCardTraits: !LOCALIZED_CARD_TRAITS.has(lang),
       listSeperator: getListSeperator(lang),
+      usePingFang: (lang === 'zh' && Platform.OS === 'ios'),
     };
   }, [lang]);
   return (

@@ -39064,7 +39064,9 @@
   "xp_cost": 2,
   "custom": {
     "creator": "Mythos Busters",
-    "download_link": "https://mythosbusters.com/custom-scenarios/"
+    "download_link": {
+      "en": "https://mythosbusters.com/custom-scenarios/"
+    }
   },
   "standalone_setup": [
     "choose_difficulty",
@@ -86666,7 +86668,10 @@
   "name": "이상한 나라의 앨리스",
   "custom": {
     "creator": "The Beard",
-    "download_link": "https://mysteriouschanting.wordpress.com/2020/10/30/alice-in-wonderland-campaign/"
+    "download_link": {
+      "en": "https://mysteriouschanting.wordpress.com/2020/10/30/alice-in-wonderland-campaign/",
+      "ko": "https://cafe.naver.com/arkhamfiles/2254"
+    }
   },
   "campaign_type": "campaign",
   "campaign_log": [
@@ -93336,7 +93341,9 @@
   "name": "암흑 물질",
   "custom": {
     "creator": "Axolotl",
-    "download_link": "https://mysteriouschanting.wordpress.com/2020/10/17/dark-matter-campaign/"
+    "download_link": {
+      "en": "https://mysteriouschanting.wordpress.com/2020/10/17/dark-matter-campaign/"
+    }
   },
   "campaign_type": "campaign",
   "campaign_log": [
