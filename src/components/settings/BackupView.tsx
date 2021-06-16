@@ -171,6 +171,7 @@ export default function BackupView({ componentId, safeMode }: BackupProps & Navi
                 url: `file://${path}`,
                 saveToFiles: true,
                 filename,
+                title: filename,
                 type: 'text/json',
               });
             } else {

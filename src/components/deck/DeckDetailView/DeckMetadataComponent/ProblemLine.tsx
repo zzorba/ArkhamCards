@@ -30,8 +30,6 @@ export default function ProblemLine({ problem }: Props) {
       { t`Deck is invalid` }
     </Text>
   );
-  const icon = <WarningIcon size={32} />;
-
   const description = (
     <View style={styles.row}>
       <Text style={[typography.small, typography.italic, { color: colors.M, lineHeight: 24 * fontScale }]}>
@@ -42,7 +40,7 @@ export default function ProblemLine({ problem }: Props) {
 
   return (
     <MetadataLineComponent
-      icon={icon}
+      icon={<WarningIcon size={32} />}
       title={title}
       description={description}
     />

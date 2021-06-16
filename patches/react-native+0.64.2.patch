@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native/scripts/find-node.sh b/node_modules/react-native/scripts/find-node.sh
+index 2ef8cf8..3ba8c6b 100755
+--- a/node_modules/react-native/scripts/find-node.sh
++++ b/node_modules/react-native/scripts/find-node.sh
+@@ -6,6 +6,8 @@
+ 
+ set -e
+ 
++unset PREFIX
++
+ # Define NVM_DIR and source the nvm.sh setup script
+ [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
+ 

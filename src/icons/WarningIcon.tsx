@@ -7,6 +7,7 @@ import StyleContext from '@styles/StyleContext';
 interface Props {
   size: number;
 }
+
 export default function WarningIcon({ size }: Props) {
   const { colors } = useContext(StyleContext);
   return (
