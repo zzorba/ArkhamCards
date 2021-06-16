@@ -234,6 +234,26 @@ export default function CardFlavorTextComponent(
             italic: 'Italic',
           },
         },
+        'Teutonic RU': {
+          fontWeights: {
+            400: 'Regular',
+            normal: 'Regular',
+          },
+          fontStyles: {
+            normal: '',
+            italic: '',
+          },
+        },
+        Teutonic: {
+          fontWeights: {
+            400: 'Regular',
+            normal: 'Regular',
+          },
+          fontStyles: {
+            normal: '',
+            italic: '',
+          },
+        },
       }}
     >
       { text.replace(/\/n/g,'\n') }
