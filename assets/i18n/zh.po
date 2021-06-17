@@ -4007,7 +4007,7 @@ msgstr "冒險卡"
 
 msgid ""
 "This appears to be one of your decks from ArkhamDB, however you seem to be "
-"logged into a differen ArkhamDB account? If you wish to make edits, please "
+"logged into a different ArkhamDB account? If you wish to make edits, please "
 "login through the app settings."
 msgstr "這似乎是你在ArkhamDB上的牌組之一，但你現在登入的帳號不符。如果你想編輯牌組，請從'設定'處登入ArkhamDB。"
 
@@ -4154,9 +4154,6 @@ msgstr "調查員的狀態"
 
 msgid "Social"
 msgstr "社交"
-
-msgid "Connect with other fans of Arkham Horror: The Card Game."
-msgstr "與其他《詭鎮奇談：卡牌版》的玩家連線。"
 
 msgid "Add new"
 msgstr "新增"

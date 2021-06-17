@@ -4049,7 +4049,7 @@ msgstr "시나리오 카드"
 
 msgid ""
 "This appears to be one of your decks from ArkhamDB, however you seem to be "
-"logged into a differen ArkhamDB account? If you wish to make edits, please "
+"logged into a different ArkhamDB account? If you wish to make edits, please "
 "login through the app settings."
 msgstr ""
 "아컴디비로부터 당신의 덱 중에 하나를 이곳에 표시하려 했지만, 당신은 현재 다른 아컴디비 계정에 로그인되어 있는 것으로 보입니다. 만약 "
@@ -4198,9 +4198,6 @@ msgstr "조사자의 상태"
 
 msgid "Social"
 msgstr "소셜"
-
-msgid "Connect with other fans of Arkham Horror: The Card Game."
-msgstr "'아컴호러: 카드게임'의 다른 팬들과 연결"
 
 msgid "Add new"
 msgstr "새로 추가"

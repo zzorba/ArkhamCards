@@ -2532,11 +2532,11 @@
           },
           {
             "id": "dagon_has_awakened",
-            "text": "Dagon s'est réveillé."
+            "text": "Dagon est réveillé."
           },
           {
             "id": "dagon_still_slumbers",
-            "text": "Dagon still slumbers."
+            "text": "Dagon dort toujours."
           },
           {
             "id": "deep_ones_have_flooded_the_earth",
@@ -2608,7 +2608,7 @@
           },
           {
             "id": "orders_ritual_was_disrupted",
-            "text": "the Order's ritual was disrupted."
+            "text": "le rituel de l'Ordre a été interrompu."
           },
           {
             "id": "plot_of_the_deep_ones_was_thwarted",
