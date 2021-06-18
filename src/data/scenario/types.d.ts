@@ -927,7 +927,16 @@ export interface InternalStep {
 }
 export interface CustomData {
   creator: string;
-  download_link: string;
+  download_link: {
+    en: string;
+    ko?: string;
+    de?: string;
+    es?: string;
+    fr?: string;
+    zh?: string;
+    ru?: string;
+    it?: string;
+  };
 }
 export interface Achievement {
   id: string;

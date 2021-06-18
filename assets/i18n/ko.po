@@ -2289,19 +2289,19 @@ msgstr "새로운 캠페인"
 msgid "Adjust Weakness Set"
 msgstr "약점 세트 조정"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "이 덱은 여러개의 기본 약점이 포함되어 있습니다"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "이 덱은 하나의 기본 약점이 포함되어 있습니다"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "이러한 약점들을 이 캠페인의 기본 약점 세트에서 제거하기를 원하십니까?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "이 약점을 이 캠페인의 기본 약점 세트에서 제거하기를 원하십니까?"
 
@@ -4049,7 +4049,7 @@ msgstr "시나리오 카드"
 
 msgid ""
 "This appears to be one of your decks from ArkhamDB, however you seem to be "
-"logged into a differen ArkhamDB account? If you wish to make edits, please "
+"logged into a different ArkhamDB account? If you wish to make edits, please "
 "login through the app settings."
 msgstr ""
 "아컴디비로부터 당신의 덱 중에 하나를 이곳에 표시하려 했지만, 당신은 현재 다른 아컴디비 계정에 로그인되어 있는 것으로 보입니다. 만약 "
@@ -4199,9 +4199,6 @@ msgstr "조사자의 상태"
 msgid "Social"
 msgstr "소셜"
 
-msgid "Connect with other fans of Arkham Horror: The Card Game."
-msgstr "'아컴호러: 카드게임'의 다른 팬들과 연결"
-
 msgid "Add new"
 msgstr "새로 추가"
 
@@ -4284,8 +4281,8 @@ msgstr ""
 "덱을 향상한 후에 실수를 했다면, 덱을 수정할 때 사용 가능한 경험치를 '조정'할 수 있습니다."
 
 msgid ""
-"The numbers below already include all the trauma, victory points, and "
-"story assets you may have earned during the resolution.\n"
+"The numbers below already include all the trauma, victory points, and story "
+"assets you may have earned during the resolution.\n"
 "\n"
 "If you have any other cards or effects that the app does not take care of, "
 "you can make adjustments below before saving each investigator."
@@ -4379,6 +4376,15 @@ msgid ""
 msgstr ""
 "캠페인 기록지 중 \"${ logEntry.section }\" 항목 아래의 <i>${logEntry.text }</i> 라고 "
 "기록합니다."
+
+msgid "Unarchive campaign"
+msgstr "캠페인 보관 취소"
+
+msgid "Archive campaign"
+msgstr "캠페인 보관"
+
+msgid "Show archived campaigns"
+msgstr "보관된 캠페인 보기"
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."

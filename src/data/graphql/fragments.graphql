@@ -170,6 +170,7 @@ fragment MiniCampaign on campaign {
   difficulty
   scenarioResults
   guided
+  archived
   owner_id
   latest_decks(order_by: { owner_id: asc }) {
     deck {

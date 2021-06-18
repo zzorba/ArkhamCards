@@ -115,13 +115,14 @@ export default function LinkedCampaignGuideView(props: Props) {
         />
         <DeleteCampaignButton
           componentId={componentId}
+          actions={updateCampaignActions}
           campaignId={campaignId}
           campaign={campaign}
           showAlert={showAlert}
         />
       </View>
     );
-  }, [showAlert, setCampaignLinkedServerId, typography, campaign, deckActions, componentId, campaignId]);
+  }, [showAlert, setCampaignLinkedServerId, updateCampaignActions, typography, campaign, deckActions, componentId, campaignId]);
 
   const campaignATab = useMemo(() => {
     if (!campaignDataA) {

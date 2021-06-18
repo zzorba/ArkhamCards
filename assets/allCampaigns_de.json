@@ -1772,7 +1772,7 @@
     },
     {
       "id": "all_insane",
-      "text": "Jeder Ermittler wird <b>wahnsinnig</b>.",
+      "text": "Each surviving investigator is driven <b>insane</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -1783,7 +1783,7 @@
     },
     {
       "id": "all_killed",
-      "text": "Jeder Ermittler wird <b>getötet</b>.",
+      "text": "Jeder überlebende Ermittler wird <b>getötet<\\b>.",
       "effects": [
         {
           "type": "trauma",
@@ -14280,7 +14280,7 @@
     },
     {
       "id": "all_insane",
-      "text": "Jeder Ermittler wird <b>wahnsinnig</b>.",
+      "text": "Each surviving investigator is driven <b>insane</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -14291,7 +14291,7 @@
     },
     {
       "id": "all_killed",
-      "text": "Jeder Ermittler wird <b>getötet</b>.",
+      "text": "Jeder überlebende Ermittler wird <b>getötet<\b>.",
       "effects": [
         {
           "type": "trauma",
@@ -39064,7 +39064,9 @@
   "xp_cost": 2,
   "custom": {
     "creator": "Mythos Busters",
-    "download_link": "https://mythosbusters.com/custom-scenarios/"
+    "download_link": {
+      "en": "https://mythosbusters.com/custom-scenarios/"
+    }
   },
   "standalone_setup": [
     "choose_difficulty",
@@ -49655,91 +49657,91 @@
     },
     {
       "id": "the_fool",
-      "title": "0 - The Fool"
+      "title": "The Fool · 0"
     },
     {
       "id": "the_magician",
-      "title": "I - The Magician"
+      "title": "The Magician · I"
     },
     {
       "id": "the_high_priestess",
-      "title": "II - The High Priestess"
+      "title": "The High Priestess · II"
     },
     {
       "id": "the_empress",
-      "title": "III - The Empress"
+      "title": "The Empress · III"
     },
     {
       "id": "the_emperor",
-      "title": "IV - The Emperor"
+      "title": "The Emperor · IV"
     },
     {
       "id": "the_hierophant",
-      "title": "V - The Hierophant"
+      "title": "The Hierophant · V"
     },
     {
       "id": "the_lovers",
-      "title": "VI - The Lovers"
+      "title": "The Lovers · VI"
     },
     {
       "id": "the_chariot",
-      "title": "VII - The Chariot"
+      "title": "The Chariot · VII"
     },
     {
       "id": "strength",
-      "title": "VIII - Strength"
+      "title": "Strength · VIII"
     },
     {
       "id": "the_hermit",
-      "title": "IX - The Hermit"
+      "title": "The Hermit · IX"
     },
     {
       "id": "wheel_of_fortune",
-      "title": "X - Wheel of Fortune"
+      "title": "Wheel of Fortune · X"
     },
     {
       "id": "justice",
-      "title": "XI - Justice"
+      "title": "Justice · XI"
     },
     {
       "id": "the_hanged_man",
-      "title": "XII - The Hanged Man"
+      "title": "The Hanged Man · XII"
     },
     {
       "id": "death",
-      "title": "XIII - Death"
+      "title": "Death · XIII"
     },
     {
       "id": "temperance",
-      "title": "XIV - Temperance"
+      "title": "Temperance · XIV"
     },
     {
       "id": "the_devil",
-      "title": "XV - The Devil"
+      "title": "The Devil · XV"
     },
     {
       "id": "the_tower",
-      "title": "XVI - The Tower"
+      "title": "The Tower · XVI"
     },
     {
       "id": "the_star",
-      "title": "XVII - The Star"
+      "title": "The Star · XVII"
     },
     {
       "id": "the_moon",
-      "title": "XVIII - The Moon"
+      "title": "The Moon · XVIII"
     },
     {
       "id": "the_sun",
-      "title": "XIX - The Sun"
+      "title": "The Sun · XIX"
     },
     {
       "id": "judgement",
-      "title": "XX - Judgement"
+      "title": "Judgement · XX"
     },
     {
       "id": "the_world",
-      "title": "XXI - The World"
+      "title": "The World · XXI"
     },
     {
       "id": "randomizer",
@@ -49804,7 +49806,7 @@
         "options": [
           {
             "condition": "0",
-            "prompt": "0 - The Fool",
+            "prompt": "The Fool · 0",
             "effects": [
               {
                 "type": "story_step",
@@ -49836,7 +49838,7 @@
           },
           {
             "condition": "1",
-            "prompt": "I - The Magician",
+            "prompt": "The Magician · I",
             "effects": [
               {
                 "type": "story_step",
@@ -49868,7 +49870,7 @@
           },
           {
             "condition": "2",
-            "prompt": "II - The High Priestess",
+            "prompt": "The High Priestess · II",
             "effects": [
               {
                 "type": "story_step",
@@ -49900,7 +49902,7 @@
           },
           {
             "condition": "3",
-            "prompt": "III - The Empress",
+            "prompt": "The Empress · III",
             "effects": [
               {
                 "type": "story_step",
@@ -49932,7 +49934,7 @@
           },
           {
             "condition": "4",
-            "prompt": "IV - The Emperor",
+            "prompt": "The Emperor · IV",
             "effects": [
               {
                 "type": "story_step",
@@ -49964,7 +49966,7 @@
           },
           {
             "condition": "5",
-            "prompt": "V - The Hierophant",
+            "prompt": "The Hierophant · V",
             "effects": [
               {
                 "type": "story_step",
@@ -49996,7 +49998,7 @@
           },
           {
             "condition": "6",
-            "prompt": "VI - The Lovers",
+            "prompt": "The Lovers · VI",
             "effects": [
               {
                 "type": "story_step",
@@ -50028,7 +50030,7 @@
           },
           {
             "condition": "7",
-            "prompt": "VII - The Chariot",
+            "prompt": "The Chariot · VII",
             "effects": [
               {
                 "type": "story_step",
@@ -50060,7 +50062,7 @@
           },
           {
             "condition": "8",
-            "prompt": "VIII - Strength",
+            "prompt": "Strength · VIII",
             "effects": [
               {
                 "type": "story_step",
@@ -50092,7 +50094,7 @@
           },
           {
             "condition": "9",
-            "prompt": "IX - The Hermit",
+            "prompt": "The Hermit · IX",
             "effects": [
               {
                 "type": "story_step",
@@ -50124,7 +50126,7 @@
           },
           {
             "condition": "10",
-            "prompt": "X - Wheel of Fortune",
+            "prompt": "Wheel of Fortune · X",
             "effects": [
               {
                 "type": "story_step",
@@ -50156,7 +50158,7 @@
           },
           {
             "condition": "11",
-            "prompt": "XI - Justice",
+            "prompt": "Justice · XI",
             "effects": [
               {
                 "type": "story_step",
@@ -50188,7 +50190,7 @@
           },
           {
             "condition": "12",
-            "prompt": "XII - The Hanged Man",
+            "prompt": "The Hanged Man · XII",
             "effects": [
               {
                 "type": "story_step",
@@ -50220,7 +50222,7 @@
           },
           {
             "condition": "13",
-            "prompt": "XIII - Death",
+            "prompt": "Death · XIII",
             "effects": [
               {
                 "type": "story_step",
@@ -50252,7 +50254,7 @@
           },
           {
             "condition": "14",
-            "prompt": "XIV - Temperance",
+            "prompt": "Temperance · XIV",
             "effects": [
               {
                 "type": "story_step",
@@ -50284,7 +50286,7 @@
           },
           {
             "condition": "15",
-            "prompt": "XV - The Devil",
+            "prompt": "The Devil · XV",
             "effects": [
               {
                 "type": "story_step",
@@ -50316,7 +50318,7 @@
           },
           {
             "condition": "16",
-            "prompt": "XVI - The Tower",
+            "prompt": "The Tower · XVI",
             "effects": [
               {
                 "type": "story_step",
@@ -50348,7 +50350,7 @@
           },
           {
             "condition": "17",
-            "prompt": "XVII - The Star",
+            "prompt": "The Star · XVII",
             "effects": [
               {
                 "type": "story_step",
@@ -50380,7 +50382,7 @@
           },
           {
             "condition": "18",
-            "prompt": "XVIII - The Moon",
+            "prompt": "The Moon · XVIII",
             "effects": [
               {
                 "type": "story_step",
@@ -50412,7 +50414,7 @@
           },
           {
             "condition": "19",
-            "prompt": "XIX - The Sun",
+            "prompt": "The Sun · XIX",
             "effects": [
               {
                 "type": "story_step",
@@ -50444,7 +50446,7 @@
           },
           {
             "condition": "20",
-            "prompt": "XX - Judgement",
+            "prompt": "Judgement · XX",
             "effects": [
               {
                 "type": "story_step",
@@ -50476,7 +50478,7 @@
           },
           {
             "condition": "21",
-            "prompt": "XXI - The World",
+            "prompt": "The World · XXI",
             "effects": [
               {
                 "type": "story_step",
@@ -86666,7 +86668,10 @@
   "name": "Alice in Wonderland",
   "custom": {
     "creator": "The Beard",
-    "download_link": "https://mysteriouschanting.wordpress.com/2020/10/30/alice-in-wonderland-campaign/"
+    "download_link": {
+      "en": "https://mysteriouschanting.wordpress.com/2020/10/30/alice-in-wonderland-campaign/",
+      "ko": "https://cafe.naver.com/arkhamfiles/2254"
+    }
   },
   "campaign_type": "campaign",
   "campaign_log": [
@@ -93336,7 +93341,9 @@
   "name": "Dark Matter",
   "custom": {
     "creator": "Axolotl",
-    "download_link": "https://mysteriouschanting.wordpress.com/2020/10/17/dark-matter-campaign/"
+    "download_link": {
+      "en": "https://mysteriouschanting.wordpress.com/2020/10/17/dark-matter-campaign/"
+    }
   },
   "campaign_type": "campaign",
   "campaign_log": [

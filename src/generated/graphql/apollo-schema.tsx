@@ -330,6 +330,7 @@ export type Campaign = {
   access: Array<Campaign_Access>;
   /** An aggregate relationship */
   access_aggregate: Campaign_Access_Aggregate;
+  archived?: Maybe<Scalars['Boolean']>;
   /** An array relationship */
   base_decks: Array<Base_Decks>;
   /** An aggregate relationship */
@@ -881,6 +882,7 @@ export type Campaign_Bool_Exp = {
   _not?: Maybe<Campaign_Bool_Exp>;
   _or?: Maybe<Array<Campaign_Bool_Exp>>;
   access?: Maybe<Campaign_Access_Bool_Exp>;
+  archived?: Maybe<Boolean_Comparison_Exp>;
   base_decks?: Maybe<Base_Decks_Bool_Exp>;
   campaignNotes?: Maybe<Jsonb_Comparison_Exp>;
   campaign_guide?: Maybe<Campaign_Guide_Bool_Exp>;
@@ -1778,6 +1780,7 @@ export type Campaign_Inc_Input = {
 /** input type for inserting data into table "campaign" */
 export type Campaign_Insert_Input = {
   access?: Maybe<Campaign_Access_Arr_Rel_Insert_Input>;
+  archived?: Maybe<Scalars['Boolean']>;
   base_decks?: Maybe<Base_Decks_Arr_Rel_Insert_Input>;
   campaignNotes?: Maybe<Scalars['jsonb']>;
   campaign_guide?: Maybe<Campaign_Guide_Obj_Rel_Insert_Input>;
@@ -2154,6 +2157,7 @@ export type Campaign_On_Conflict = {
 /** Ordering options when selecting data from "campaign". */
 export type Campaign_Order_By = {
   access_aggregate?: Maybe<Campaign_Access_Aggregate_Order_By>;
+  archived?: Maybe<Order_By>;
   base_decks_aggregate?: Maybe<Base_Decks_Aggregate_Order_By>;
   campaignNotes?: Maybe<Order_By>;
   campaign_guide?: Maybe<Campaign_Guide_Order_By>;
@@ -2203,6 +2207,8 @@ export type Campaign_Prepend_Input = {
 /** select columns of table "campaign" */
 export enum Campaign_Select_Column {
   /** column name */
+  Archived = 'archived',
+  /** column name */
   CampaignNotes = 'campaignNotes',
   /** column name */
   ChaosBag = 'chaosBag',
@@ -2246,6 +2252,7 @@ export enum Campaign_Select_Column {
 
 /** input type for updating data in table "campaign" */
 export type Campaign_Set_Input = {
+  archived?: Maybe<Scalars['Boolean']>;
   campaignNotes?: Maybe<Scalars['jsonb']>;
   chaosBag?: Maybe<Scalars['jsonb']>;
   created_at?: Maybe<Scalars['timestamptz']>;
@@ -2310,6 +2317,8 @@ export type Campaign_Sum_Fields = {
 
 /** update columns of table "campaign" */
 export enum Campaign_Update_Column {
+  /** column name */
+  Archived = 'archived',
   /** column name */
   CampaignNotes = 'campaignNotes',
   /** column name */
@@ -3830,6 +3839,244 @@ export type Chaos_Bag_Result_Variance_Order_By = {
   id?: Maybe<Order_By>;
   totalDrawn?: Maybe<Order_By>;
 };
+
+/** columns and relationships of "faq" */
+export type Faq = {
+  __typename?: 'faq';
+  code: Scalars['String'];
+  text: Scalars['String'];
+};
+
+/** aggregated selection of "faq" */
+export type Faq_Aggregate = {
+  __typename?: 'faq_aggregate';
+  aggregate?: Maybe<Faq_Aggregate_Fields>;
+  nodes: Array<Faq>;
+};
+
+/** aggregate fields of "faq" */
+export type Faq_Aggregate_Fields = {
+  __typename?: 'faq_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Faq_Max_Fields>;
+  min?: Maybe<Faq_Min_Fields>;
+};
+
+
+/** aggregate fields of "faq" */
+export type Faq_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Faq_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "faq". All fields are combined with a logical 'AND'. */
+export type Faq_Bool_Exp = {
+  _and?: Maybe<Array<Faq_Bool_Exp>>;
+  _not?: Maybe<Faq_Bool_Exp>;
+  _or?: Maybe<Array<Faq_Bool_Exp>>;
+  code?: Maybe<String_Comparison_Exp>;
+  text?: Maybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "faq" */
+export enum Faq_Constraint {
+  /** unique or primary key constraint */
+  FaqPkey = 'faq_pkey'
+}
+
+/** input type for inserting data into table "faq" */
+export type Faq_Insert_Input = {
+  code?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Faq_Max_Fields = {
+  __typename?: 'faq_max_fields';
+  code?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Faq_Min_Fields = {
+  __typename?: 'faq_min_fields';
+  code?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "faq" */
+export type Faq_Mutation_Response = {
+  __typename?: 'faq_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Faq>;
+};
+
+/** on conflict condition type for table "faq" */
+export type Faq_On_Conflict = {
+  constraint: Faq_Constraint;
+  update_columns: Array<Faq_Update_Column>;
+  where?: Maybe<Faq_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "faq". */
+export type Faq_Order_By = {
+  code?: Maybe<Order_By>;
+  text?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: faq */
+export type Faq_Pk_Columns_Input = {
+  code: Scalars['String'];
+};
+
+/** select columns of table "faq" */
+export enum Faq_Select_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Text = 'text'
+}
+
+/** input type for updating data in table "faq" */
+export type Faq_Set_Input = {
+  code?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+};
+
+/** columns and relationships of "faq_text" */
+export type Faq_Text = {
+  __typename?: 'faq_text';
+  code: Scalars['String'];
+  locale: Scalars['String'];
+  text: Scalars['String'];
+};
+
+/** aggregated selection of "faq_text" */
+export type Faq_Text_Aggregate = {
+  __typename?: 'faq_text_aggregate';
+  aggregate?: Maybe<Faq_Text_Aggregate_Fields>;
+  nodes: Array<Faq_Text>;
+};
+
+/** aggregate fields of "faq_text" */
+export type Faq_Text_Aggregate_Fields = {
+  __typename?: 'faq_text_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Faq_Text_Max_Fields>;
+  min?: Maybe<Faq_Text_Min_Fields>;
+};
+
+
+/** aggregate fields of "faq_text" */
+export type Faq_Text_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Faq_Text_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "faq_text". All fields are combined with a logical 'AND'. */
+export type Faq_Text_Bool_Exp = {
+  _and?: Maybe<Array<Faq_Text_Bool_Exp>>;
+  _not?: Maybe<Faq_Text_Bool_Exp>;
+  _or?: Maybe<Array<Faq_Text_Bool_Exp>>;
+  code?: Maybe<String_Comparison_Exp>;
+  locale?: Maybe<String_Comparison_Exp>;
+  text?: Maybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "faq_text" */
+export enum Faq_Text_Constraint {
+  /** unique or primary key constraint */
+  FaqTextPkey = 'faq_text_pkey'
+}
+
+/** input type for inserting data into table "faq_text" */
+export type Faq_Text_Insert_Input = {
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Faq_Text_Max_Fields = {
+  __typename?: 'faq_text_max_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Faq_Text_Min_Fields = {
+  __typename?: 'faq_text_min_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "faq_text" */
+export type Faq_Text_Mutation_Response = {
+  __typename?: 'faq_text_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Faq_Text>;
+};
+
+/** on conflict condition type for table "faq_text" */
+export type Faq_Text_On_Conflict = {
+  constraint: Faq_Text_Constraint;
+  update_columns: Array<Faq_Text_Update_Column>;
+  where?: Maybe<Faq_Text_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "faq_text". */
+export type Faq_Text_Order_By = {
+  code?: Maybe<Order_By>;
+  locale?: Maybe<Order_By>;
+  text?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: faq_text */
+export type Faq_Text_Pk_Columns_Input = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "faq_text" */
+export enum Faq_Text_Select_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Text = 'text'
+}
+
+/** input type for updating data in table "faq_text" */
+export type Faq_Text_Set_Input = {
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+};
+
+/** update columns of table "faq_text" */
+export enum Faq_Text_Update_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Text = 'text'
+}
+
+/** update columns of table "faq" */
+export enum Faq_Update_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Text = 'text'
+}
 
 /** columns and relationships of "friend_status" */
 export type Friend_Status = {
@@ -5878,6 +6125,14 @@ export type Mutation_Root = {
   delete_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
   /** delete single row from the table: "chaos_bag_result" */
   delete_chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
+  /** delete data from the table: "faq" */
+  delete_faq?: Maybe<Faq_Mutation_Response>;
+  /** delete single row from the table: "faq" */
+  delete_faq_by_pk?: Maybe<Faq>;
+  /** delete data from the table: "faq_text" */
+  delete_faq_text?: Maybe<Faq_Text_Mutation_Response>;
+  /** delete single row from the table: "faq_text" */
+  delete_faq_text_by_pk?: Maybe<Faq_Text>;
   /** delete data from the table: "friend_status" */
   delete_friend_status?: Maybe<Friend_Status_Mutation_Response>;
   /** delete single row from the table: "friend_status" */
@@ -5954,6 +6209,14 @@ export type Mutation_Root = {
   insert_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
   /** insert a single row into the table: "chaos_bag_result" */
   insert_chaos_bag_result_one?: Maybe<Chaos_Bag_Result>;
+  /** insert data into the table: "faq" */
+  insert_faq?: Maybe<Faq_Mutation_Response>;
+  /** insert a single row into the table: "faq" */
+  insert_faq_one?: Maybe<Faq>;
+  /** insert data into the table: "faq_text" */
+  insert_faq_text?: Maybe<Faq_Text_Mutation_Response>;
+  /** insert a single row into the table: "faq_text" */
+  insert_faq_text_one?: Maybe<Faq_Text>;
   /** insert data into the table: "friend_status" */
   insert_friend_status?: Maybe<Friend_Status_Mutation_Response>;
   /** insert a single row into the table: "friend_status" */
@@ -6038,6 +6301,14 @@ export type Mutation_Root = {
   update_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
   /** update single row of the table: "chaos_bag_result" */
   update_chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
+  /** update data of the table: "faq" */
+  update_faq?: Maybe<Faq_Mutation_Response>;
+  /** update single row of the table: "faq" */
+  update_faq_by_pk?: Maybe<Faq>;
+  /** update data of the table: "faq_text" */
+  update_faq_text?: Maybe<Faq_Text_Mutation_Response>;
+  /** update single row of the table: "faq_text" */
+  update_faq_text_by_pk?: Maybe<Faq_Text>;
   /** update data of the table: "friend_status" */
   update_friend_status?: Maybe<Friend_Status_Mutation_Response>;
   /** update single row of the table: "friend_status" */
@@ -6185,6 +6456,31 @@ export type Mutation_RootDelete_Chaos_Bag_ResultArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Chaos_Bag_Result_By_PkArgs = {
   id: Scalars['Int'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_FaqArgs = {
+  where: Faq_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Faq_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Faq_TextArgs = {
+  where: Faq_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Faq_Text_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
 };
 
 
@@ -6433,6 +6729,34 @@ export type Mutation_RootInsert_Chaos_Bag_ResultArgs = {
 export type Mutation_RootInsert_Chaos_Bag_Result_OneArgs = {
   object: Chaos_Bag_Result_Insert_Input;
   on_conflict?: Maybe<Chaos_Bag_Result_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_FaqArgs = {
+  objects: Array<Faq_Insert_Input>;
+  on_conflict?: Maybe<Faq_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Faq_OneArgs = {
+  object: Faq_Insert_Input;
+  on_conflict?: Maybe<Faq_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Faq_TextArgs = {
+  objects: Array<Faq_Text_Insert_Input>;
+  on_conflict?: Maybe<Faq_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Faq_Text_OneArgs = {
+  object: Faq_Text_Insert_Input;
+  on_conflict?: Maybe<Faq_Text_On_Conflict>;
 };
 
 
@@ -6763,6 +7087,34 @@ export type Mutation_RootUpdate_Chaos_Bag_Result_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_FaqArgs = {
+  _set?: Maybe<Faq_Set_Input>;
+  where: Faq_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Faq_By_PkArgs = {
+  _set?: Maybe<Faq_Set_Input>;
+  pk_columns: Faq_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Faq_TextArgs = {
+  _set?: Maybe<Faq_Text_Set_Input>;
+  where: Faq_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Faq_Text_By_PkArgs = {
+  _set?: Maybe<Faq_Text_Set_Input>;
+  pk_columns: Faq_Text_Pk_Columns_Input;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Friend_StatusArgs = {
   _set?: Maybe<Friend_Status_Set_Input>;
   where: Friend_Status_Bool_Exp;
@@ -6990,6 +7342,18 @@ export type Query_Root = {
   chaos_bag_result_aggregate: Chaos_Bag_Result_Aggregate;
   /** fetch data from the table: "chaos_bag_result" using primary key columns */
   chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
+  /** fetch data from the table: "faq" */
+  faq: Array<Faq>;
+  /** fetch aggregated fields from the table: "faq" */
+  faq_aggregate: Faq_Aggregate;
+  /** fetch data from the table: "faq" using primary key columns */
+  faq_by_pk?: Maybe<Faq>;
+  /** fetch data from the table: "faq_text" */
+  faq_text: Array<Faq_Text>;
+  /** fetch aggregated fields from the table: "faq_text" */
+  faq_text_aggregate: Faq_Text_Aggregate;
+  /** fetch data from the table: "faq_text" using primary key columns */
+  faq_text_by_pk?: Maybe<Faq_Text>;
   /** fetch data from the table: "friend_status" */
   friend_status: Array<Friend_Status>;
   /** fetch aggregated fields from the table: "friend_status" */
@@ -7273,6 +7637,53 @@ export type Query_RootChaos_Bag_Result_AggregateArgs = {
 
 export type Query_RootChaos_Bag_Result_By_PkArgs = {
   id: Scalars['Int'];
+};
+
+
+export type Query_RootFaqArgs = {
+  distinct_on?: Maybe<Array<Faq_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Faq_Order_By>>;
+  where?: Maybe<Faq_Bool_Exp>;
+};
+
+
+export type Query_RootFaq_AggregateArgs = {
+  distinct_on?: Maybe<Array<Faq_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Faq_Order_By>>;
+  where?: Maybe<Faq_Bool_Exp>;
+};
+
+
+export type Query_RootFaq_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
+export type Query_RootFaq_TextArgs = {
+  distinct_on?: Maybe<Array<Faq_Text_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Faq_Text_Order_By>>;
+  where?: Maybe<Faq_Text_Bool_Exp>;
+};
+
+
+export type Query_RootFaq_Text_AggregateArgs = {
+  distinct_on?: Maybe<Array<Faq_Text_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Faq_Text_Order_By>>;
+  where?: Maybe<Faq_Text_Bool_Exp>;
+};
+
+
+export type Query_RootFaq_Text_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
 };
 
 
@@ -7583,6 +7994,18 @@ export type Subscription_Root = {
   chaos_bag_result_aggregate: Chaos_Bag_Result_Aggregate;
   /** fetch data from the table: "chaos_bag_result" using primary key columns */
   chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
+  /** fetch data from the table: "faq" */
+  faq: Array<Faq>;
+  /** fetch aggregated fields from the table: "faq" */
+  faq_aggregate: Faq_Aggregate;
+  /** fetch data from the table: "faq" using primary key columns */
+  faq_by_pk?: Maybe<Faq>;
+  /** fetch data from the table: "faq_text" */
+  faq_text: Array<Faq_Text>;
+  /** fetch aggregated fields from the table: "faq_text" */
+  faq_text_aggregate: Faq_Text_Aggregate;
+  /** fetch data from the table: "faq_text" using primary key columns */
+  faq_text_by_pk?: Maybe<Faq_Text>;
   /** fetch data from the table: "friend_status" */
   friend_status: Array<Friend_Status>;
   /** fetch aggregated fields from the table: "friend_status" */
@@ -7866,6 +8289,53 @@ export type Subscription_RootChaos_Bag_Result_AggregateArgs = {
 
 export type Subscription_RootChaos_Bag_Result_By_PkArgs = {
   id: Scalars['Int'];
+};
+
+
+export type Subscription_RootFaqArgs = {
+  distinct_on?: Maybe<Array<Faq_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Faq_Order_By>>;
+  where?: Maybe<Faq_Bool_Exp>;
+};
+
+
+export type Subscription_RootFaq_AggregateArgs = {
+  distinct_on?: Maybe<Array<Faq_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Faq_Order_By>>;
+  where?: Maybe<Faq_Bool_Exp>;
+};
+
+
+export type Subscription_RootFaq_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
+export type Subscription_RootFaq_TextArgs = {
+  distinct_on?: Maybe<Array<Faq_Text_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Faq_Text_Order_By>>;
+  where?: Maybe<Faq_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootFaq_Text_AggregateArgs = {
+  distinct_on?: Maybe<Array<Faq_Text_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Faq_Text_Order_By>>;
+  where?: Maybe<Faq_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootFaq_Text_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
 };
 
 
@@ -9572,7 +10042,7 @@ export type FullInvestigatorDataFragment = (
 
 export type MiniCampaignFragment = (
   { __typename?: 'campaign' }
-  & Pick<Campaign, 'id' | 'uuid' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'scenarioResults' | 'guided' | 'owner_id' | 'updated_at'>
+  & Pick<Campaign, 'id' | 'uuid' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'scenarioResults' | 'guided' | 'archived' | 'owner_id' | 'updated_at'>
   & { latest_decks: Array<(
     { __typename?: 'latest_decks' }
     & { deck?: Maybe<(
@@ -10159,6 +10629,20 @@ export type UpdateAvailableXpMutation = (
   )> }
 );
 
+export type UpdateCampaignArchivedMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  archived: Scalars['Boolean'];
+}>;
+
+
+export type UpdateCampaignArchivedMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_campaign_by_pk?: Maybe<(
+    { __typename?: 'campaign' }
+    & Pick<Campaign, 'id' | 'uuid' | 'archived'>
+  )> }
+);
+
 export type UpdateWeaknessSetMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
   weakness_set: Scalars['jsonb'];
@@ -10439,6 +10923,7 @@ export const MiniCampaignFragmentDoc = gql`
   difficulty
   scenarioResults
   guided
+  archived
   owner_id
   latest_decks(order_by: {owner_id: asc}) {
     deck {
@@ -12525,6 +13010,45 @@ export function useUpdateAvailableXpMutation(baseOptions?: Apollo.MutationHookOp
 export type UpdateAvailableXpMutationHookResult = ReturnType<typeof useUpdateAvailableXpMutation>;
 export type UpdateAvailableXpMutationResult = Apollo.MutationResult<UpdateAvailableXpMutation>;
 export type UpdateAvailableXpMutationOptions = Apollo.BaseMutationOptions<UpdateAvailableXpMutation, UpdateAvailableXpMutationVariables>;
+export const UpdateCampaignArchivedDocument = gql`
+    mutation updateCampaignArchived($campaign_id: Int!, $archived: Boolean!) {
+  update_campaign_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {archived: $archived}
+  ) {
+    id
+    uuid
+    archived
+  }
+}
+    `;
+export type UpdateCampaignArchivedMutationFn = Apollo.MutationFunction<UpdateCampaignArchivedMutation, UpdateCampaignArchivedMutationVariables>;
+
+/**
+ * __useUpdateCampaignArchivedMutation__
+ *
+ * To run a mutation, you first call `useUpdateCampaignArchivedMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateCampaignArchivedMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateCampaignArchivedMutation, { data, loading, error }] = useUpdateCampaignArchivedMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      archived: // value for 'archived'
+ *   },
+ * });
+ */
+export function useUpdateCampaignArchivedMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCampaignArchivedMutation, UpdateCampaignArchivedMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateCampaignArchivedMutation, UpdateCampaignArchivedMutationVariables>(UpdateCampaignArchivedDocument, options);
+      }
+export type UpdateCampaignArchivedMutationHookResult = ReturnType<typeof useUpdateCampaignArchivedMutation>;
+export type UpdateCampaignArchivedMutationResult = Apollo.MutationResult<UpdateCampaignArchivedMutation>;
+export type UpdateCampaignArchivedMutationOptions = Apollo.BaseMutationOptions<UpdateCampaignArchivedMutation, UpdateCampaignArchivedMutationVariables>;
 export const UpdateWeaknessSetDocument = gql`
     mutation updateWeaknessSet($campaign_id: Int!, $weakness_set: jsonb!) {
   update_campaign_by_pk(

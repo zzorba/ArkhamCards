@@ -23,7 +23,8 @@ import GameTextNode from './GameTextNode';
 import CiteTagNode from './CiteTagNode';
 import { xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
-import { TextStyle } from 'react-native';
+import { Platform, TextStyle } from 'react-native';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 function BreakTagRule(): MarkdownRule<WithText, State> {
   return {
@@ -83,14 +84,14 @@ function ItalicHtmlTagRule(): MarkdownRule<WithChildren, State> {
   };
 }
 
-function BoldHtmlTagRule(): MarkdownRule<WithText, State> {
+function BoldHtmlTagRule(usePingFang: boolean): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<b>(.+?)<\\/b>')),
     order: 1,
     parse: (capture) => {
       return { text: capture[1] };
     },
-    render: FlavorBoldNode(),
+    render: FlavorBoldNode(usePingFang),
   };
 }
 
@@ -180,9 +181,11 @@ export default function CardFlavorTextComponent(
   { text, onLinkPress, color, width, sizeScale = 1 }: Props
 ) {
   const context = useContext(StyleContext);
+  const { usePingFang } = useContext(LanguageContext);
+
   const textStyle: TextStyle = useMemo(() => {
     return {
-      fontFamily: 'Alegreya',
+      fontFamily: usePingFang ? 'PingFangTC' : 'Alegreya',
       fontStyle: 'italic',
       fontWeight: 'normal',
       fontSize: 16 * context.fontScale * sizeScale,
@@ -192,7 +195,7 @@ export default function CardFlavorTextComponent(
       color: color || context.colors.darkText,
       textAlign: context.justifyContent ? 'justify' : 'left',
     };
-  }, [context, sizeScale, color]);
+  }, [context, usePingFang, sizeScale, color]);
   // Text that has hyperlinks uses a different style for the icons.
   return (
     <MarkdownView
@@ -202,7 +205,7 @@ export default function CardFlavorTextComponent(
       }}
       rules={{
         iconTag: ArkhamIconRule(context, sizeScale),
-        bTag: BoldHtmlTagRule(),
+        bTag: BoldHtmlTagRule(usePingFang),
         uTag: UnderlineHtmlTagRule(),
         brTag: BreakTagRule(),
         citeTag: CiteTagRule(context),
@@ -219,6 +222,21 @@ export default function CardFlavorTextComponent(
         paragraph: textStyle,
       }}
       fonts={{
+        PingFangTC: {
+          fontWeights: {
+            300: 'Light',
+            400: 'Regular',
+            700: 'Semibold',
+            800: 'ExtraBold',
+            900: 'Black',
+            normal: 'Regular',
+            bold: 'Bold',
+          },
+          fontStyles: {
+            normal: '',
+            italic: 'Light',
+          },
+        },
         Alegreya: {
           fontWeights: {
             300: 'Light',
@@ -232,6 +250,26 @@ export default function CardFlavorTextComponent(
           fontStyles: {
             normal: '',
             italic: 'Italic',
+          },
+        },
+        'Teutonic RU': {
+          fontWeights: {
+            400: 'Regular',
+            normal: 'Regular',
+          },
+          fontStyles: {
+            normal: '',
+            italic: '',
+          },
+        },
+        Teutonic: {
+          fontWeights: {
+            400: 'Regular',
+            normal: 'Regular',
+          },
+          fontStyles: {
+            normal: '',
+            italic: '',
           },
         },
       }}

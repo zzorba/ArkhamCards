@@ -730,7 +730,7 @@
         "id": "the_dunwich_legacy.blood_on_the_altar.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -1274,7 +1274,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -1590,7 +1590,7 @@
         "id": "the_dunwich_legacy.extracurricular_activity.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -1772,7 +1772,7 @@
     },
     {
       "id": "all_insane",
-      "text": "Все сыщики <b>сошли с ума</b>.",
+      "text": "Все выжившие сыщики <b>сошли с ума</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -1783,7 +1783,7 @@
     },
     {
       "id": "all_killed",
-      "text": "Все сыщики <b>убиты</b>.",
+      "text": "Все выжившие сыщики <b>убиты</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -1922,7 +1922,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -2620,7 +2620,7 @@
         "id": "the_dunwich_legacy.the_house_always_wins.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег до наступления сцены 3 или побеждены",
       "investigator_status": [
         "resigned",
@@ -2986,7 +2986,7 @@
         "id": "the_dunwich_legacy.the_miskatonic_museum.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -3374,7 +3374,7 @@
         "id": "the_dunwich_legacy.undimensioned_and_unseen.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -3872,7 +3872,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -4454,7 +4454,7 @@
     },
     {
       "id": "house_burned",
-      "text": "<i>Your house has burned to the ground.</i>",
+      "text": "<i>Ваш дом сгорел дотла.</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -4878,7 +4878,7 @@
         "id": "the_night_of_the_zealot.the_midnight_masks.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -5305,7 +5305,7 @@
         "id": "the_night_of_the_zealot.the_devourer_below.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -5572,7 +5572,7 @@
         "id": "the_night_of_the_zealot.the_gathering.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -6896,7 +6896,7 @@
         "id": "the_path_to_carcosa.a_phantom_of_truth.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -7615,7 +7615,7 @@
         "id": "the_path_to_carcosa.black_stars_rise.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -7998,7 +7998,7 @@
         "id": "the_path_to_carcosa.curtain_call.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -8796,7 +8796,7 @@
         "id": "the_path_to_carcosa.dim_carcosa.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -9399,7 +9399,7 @@
         "id": "the_path_to_carcosa.echoes_of_the_past.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -10145,7 +10145,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "text": "Соберите мешок хаоса из следующих жетонов: +1, 0, 0, –1, –1, –1, –2, –2, –3, –4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -10175,13 +10175,13 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "Не меняйте состав мешка хаоса во время подготовки."
         }
       ]
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "text": "Случайным образом выберите один из символов на жетонах хаоса: [cultist], [tablet] или [elder_thing]. Добавьте в мешок хаоса 2 жетона с выбранным символом.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -10230,7 +10230,7 @@
     },
     {
       "id": "lead_investigator_mitpm",
-      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "text": "Ведущий сыщик включает в свою колоду слабость «Человек в бледной маске».",
       "effects": [
         {
           "type": "add_card",
@@ -10518,7 +10518,7 @@
     {
       "id": "no_resolution_resigned",
       "title": "Исход не достигнут, так как все сыщики побеждены",
-      "description": "Aat least one investigator resigned",
+      "description": "Хотя бы один сыщик совершил побег",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -10532,7 +10532,7 @@
     {
       "id": "no_resolution_defeated",
       "title": "Исход не достигнут, так как все сыщики побеждены",
-      "description": "All investigators were defeated",
+      "description": "Все сыщики побеждены",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -10670,13 +10670,13 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "Не меняйте состав мешка хаоса во время подготовки."
         }
       ]
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "text": "Случайным образом выберите один из символов на жетонах хаоса: [cultist], [tablet] или [elder_thing]. Добавьте в мешок хаоса 2 жетона с выбранным символом.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -10725,7 +10725,7 @@
     },
     {
       "id": "lead_investigator_mitpm",
-      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "text": "Ведущий сыщик включает в свою колоду слабость «Человек в бледной маске».",
       "effects": [
         {
           "type": "add_card",
@@ -11468,7 +11468,7 @@
         "id": "the_path_to_carcosa.the_pallid_mask.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -11603,13 +11603,13 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "Не меняйте состав мешка хаоса во время подготовки."
         }
       ]
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "text": "Случайным образом выберите один из символов на жетонах хаоса: [cultist], [tablet] или [elder_thing]. Добавьте в мешок хаоса 2 жетона с выбранным символом.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -11658,11 +11658,11 @@
     },
     {
       "id": "no_constance",
-      "text": "<i>Constance Dumaine is not listed under VIPs Interviewed or VIPs Slain.</i>"
+      "text": "<i>Констанс Дюмен не записана ни в графе «Убитые гости», ни в графе «Опрошенные гости».</i>"
     },
     {
       "id": "no_onyx_clasp",
-      "text": "<i>You did not take the onyx clasp.</i>"
+      "text": "<i>Вы не стали брать ониксовую застёжку.</i>"
     },
     {
       "id": "check_followers_of_the_sign_found_way",
@@ -12299,7 +12299,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -13329,7 +13329,7 @@
         "id": "the_dunwich_legacy.blood_on_the_altar.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -13771,7 +13771,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -14111,7 +14111,7 @@
         "id": "the_dunwich_legacy.extracurricular_activity.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -14280,7 +14280,7 @@
     },
     {
       "id": "all_insane",
-      "text": "Все сыщики <b>сошли с ума</b>.",
+      "text": "Все выжившие сыщики <b>сошли с ума</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -14291,7 +14291,7 @@
     },
     {
       "id": "all_killed",
-      "text": "Все сыщики <b>убиты</b>.",
+      "text": "Все выжившие сыщики <b>убиты</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -14477,7 +14477,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -14812,7 +14812,7 @@
         "id": "the_dunwich_legacy.the_house_always_wins.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег до наступления сцены 3 или побеждены",
       "investigator_status": [
         "resigned",
@@ -15187,7 +15187,7 @@
         "id": "the_dunwich_legacy.the_miskatonic_museum.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -15587,7 +15587,7 @@
         "id": "the_dunwich_legacy.undimensioned_and_unseen.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -16091,7 +16091,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -17241,7 +17241,7 @@
         "id": "the_night_of_the_zealot.the_devourer_below.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -17565,7 +17565,7 @@
         "id": "the_night_of_the_zealot.the_gathering.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -17899,7 +17899,7 @@
     },
     {
       "id": "house_burned",
-      "text": "<i>Your house has burned to the ground.</i>",
+      "text": "<i>Ваш дом сгорел дотла.</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -18329,7 +18329,7 @@
         "id": "the_night_of_the_zealot.the_midnight_masks.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -20387,7 +20387,7 @@
         "id": "the_path_to_carcosa.a_phantom_of_truth.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -21123,7 +21123,7 @@
         "id": "the_path_to_carcosa.black_stars_rise.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -21559,7 +21559,7 @@
         "id": "the_path_to_carcosa.curtain_call.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -22368,7 +22368,7 @@
         "id": "the_path_to_carcosa.dim_carcosa.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -22982,7 +22982,7 @@
         "id": "the_path_to_carcosa.echoes_of_the_past.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -23098,7 +23098,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "text": "Соберите мешок хаоса из следующих жетонов: +1, 0, 0, –1, –1, –1, –2, –2, –3, –4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -23128,13 +23128,13 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "Не меняйте состав мешка хаоса во время подготовки."
         }
       ]
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "text": "Случайным образом выберите один из символов на жетонах хаоса: [cultist], [tablet] или [elder_thing]. Добавьте в мешок хаоса 2 жетона с выбранным символом.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -23183,7 +23183,7 @@
     },
     {
       "id": "lead_investigator_mitpm",
-      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "text": "Ведущий сыщик включает в свою колоду слабость «Человек в бледной маске».",
       "effects": [
         {
           "type": "add_card",
@@ -23476,7 +23476,7 @@
     {
       "id": "no_resolution_resigned",
       "title": "Исход не достигнут, так как все сыщики побеждены",
-      "description": "Aat least one investigator resigned",
+      "description": "Хотя бы один сыщик совершил побег",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -23490,7 +23490,7 @@
     {
       "id": "no_resolution_defeated",
       "title": "Исход не достигнут, так как все сыщики побеждены",
-      "description": "All investigators were defeated",
+      "description": "Все сыщики побеждены",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -23629,13 +23629,13 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "Не меняйте состав мешка хаоса во время подготовки."
         }
       ]
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "text": "Случайным образом выберите один из символов на жетонах хаоса: [cultist], [tablet] или [elder_thing]. Добавьте в мешок хаоса 2 жетона с выбранным символом.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -23684,7 +23684,7 @@
     },
     {
       "id": "lead_investigator_mitpm",
-      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "text": "Ведущий сыщик включает в свою колоду слабость «Человек в бледной маске».",
       "effects": [
         {
           "type": "add_card",
@@ -24435,7 +24435,7 @@
         "id": "the_path_to_carcosa.the_pallid_mask.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -24570,13 +24570,13 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "Не меняйте состав мешка хаоса во время подготовки."
         }
       ]
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "text": "Случайным образом выберите один из символов на жетонах хаоса: [cultist], [tablet] или [elder_thing]. Добавьте в мешок хаоса 2 жетона с выбранным символом.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -24625,11 +24625,11 @@
     },
     {
       "id": "no_constance",
-      "text": "<i>Constance Dumaine is not listed under VIPs Interviewed or VIPs Slain.</i>"
+      "text": "<i>Констанс Дюмен не записана ни в графе «Убитые гости», ни в графе «Опрошенные гости».</i>"
     },
     {
       "id": "no_onyx_clasp",
-      "text": "<i>You did not take the onyx clasp.</i>"
+      "text": "<i>Вы не стали брать ониксовую застёжку.</i>"
     },
     {
       "id": "check_followers_of_the_sign_found_way",
@@ -25314,7 +25314,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -27624,7 +27624,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -28018,7 +28018,7 @@
         "id": "the_forgotten_age.heart_of_the_elders_part_2.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -28516,7 +28516,7 @@
         "id": "the_forgotten_age.shattered_aeons.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -29400,7 +29400,7 @@
         "id": "the_forgotten_age.the_boundary_beyond.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -29903,7 +29903,7 @@
         "id": "the_forgotten_age.the_city_of_archives.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -29985,7 +29985,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+      "text": "Соберите мешок хаоса из следующих жетонов: +1, 0, 0, 0, –1, –2, –2, –3, –5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign].",
       "effects": [
         {
           "type": "campaign_data",
@@ -30017,15 +30017,15 @@
     },
     {
       "id": "setup_standalone_log_1",
-      "text": "<i>You are not forging your own path.</i>"
+      "text": "<i>Вы не идёте собственным путём.</i>"
     },
     {
       "id": "setup_standalone_log_2",
-      "text": "<i>Ichtaca's faith is not restored.</i>"
+      "text": "<i>Вера Ичтаки не восстановлена.</i>"
     },
     {
       "id": "setup_standalone_log_3",
-      "text": "<i>The relic is missing.</i>",
+      "text": "<i>Реликвия пропала.</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -30037,25 +30037,25 @@
     },
     {
       "id": "explain_difficulty",
-      "text": "The investigators may choose how many tally marks are under “Yig’s Fury.” The lower the number chosen, the safer and easier the scenario will be.",
+      "text": "Сыщики могут выбрать, сколько отметок стоит в графе журнала «Ярость Йига». Чем меньше там отметок, тем проще будет сценарий.",
       "bullets": [
         {
-          "text": "For a safer and easier experience, choose 0 or 5."
+          "text": "Для простой игры выберите 0 или 5."
         },
         {
-          "text": "For an average experience, choose 10 or 14."
+          "text": "Для средней сложности выберите 10 или 14."
         },
         {
-          "text": "For a more brutal experience, choose 17 or 20."
+          "text": "Для тяжёлого испытания выберите 17 или 20."
         },
         {
-          "text": "For the ultimate challenge, choose 21 or higher."
+          "text": "Для серьёзного вызова выберите 21 или больше."
         }
       ]
     },
     {
       "id": "choose_yigs_fury",
-      "text": "Choose the amount of \"Yig's Fury\" to start with:",
+      "text": "Выберите число отметок в графе «Ярость Йига»:",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -30149,11 +30149,11 @@
     },
     {
       "id": "setup_standalone_supplies",
-      "text": "<i>You have no supplies.</i>"
+      "text": "<i>У вас нет припасов.</i>"
     },
     {
       "id": "standalone_unwinnable",
-      "text": "This scenario is <b>unwinnable</b> in Standalone Mode. Your goal is to continue playing for as long as you can. Once each investigator has been defeated, the current depth level will determine how well you performed."
+      "text": "В одиночном режиме в этом сценарии <b>нельзя выиграть</b>. Ваша задача — продолжать игру как можно дольше. Когда все сыщики будут побеждены, оцените свой успех в зависимости от достигнутой глубины."
     },
     {
       "id": "intro_1",
@@ -31265,7 +31265,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -31860,7 +31860,7 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -31871,7 +31871,7 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег до наступления сцены 3",
       "investigator_status": [
         "resigned",
@@ -32360,7 +32360,7 @@
         "id": "the_forgotten_age.the_untamed_wilds.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -32464,7 +32464,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+      "text": "Соберите мешок хаоса из следующих жетонов: +1, 0, 0, 0, –1, –2, –2, –3, –5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign].",
       "effects": [
         {
           "type": "campaign_data",
@@ -32495,7 +32495,7 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "Не меняйте состав мешка хаоса во время подготовки."
         }
       ]
     },
@@ -32516,7 +32516,7 @@
         "choices": [
           {
             "id": "gave_relic_to_alejandro",
-            "text": "<i>The investigators gave the relic to Alejandro.</i>",
+            "text": "<i>Сыщики передали реликвию Алехандро</i>",
             "steps": [
               "intro_2"
             ],
@@ -32531,7 +32531,7 @@
           },
           {
             "id": "gave_relic_to_harlan",
-            "text": "<i>The investigators gave the relic to Harlan Earnstone.</i>",
+            "text": "<i>Сыщики передали реликвию Харлану.</i>",
             "steps": [
               "check_alejandro_recovered_relic"
             ],
@@ -32834,7 +32834,7 @@
           {
             "id": "on_your_own",
             "text": "«Нельзя доверять им».",
-            "description": "For the remainder of the campaign, each investigator cannot include Alejandro Vela or Ichtaca in their deck. Anytime an investigator would be given the option to include either of them, each investigator earns 2 experience instead.",
+            "description": "До конца кампании ни один сыщик не может включить в свою колоду ни «Алехандро Велу», ни «Ичтаку». Всякий раз, когда сыщик получает возможность включить в колоду одну из этих карт, вместо этого он получает 2 опыта.",
             "effects": [
               {
                 "type": "campaign_log",
@@ -34016,7 +34016,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -34561,7 +34561,7 @@
         "id": "the_forgotten_age.turn_back_time.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -36460,7 +36460,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "resigned",
@@ -37092,7 +37092,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -38548,7 +38548,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -39012,7 +39012,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -39064,7 +39064,9 @@
   "xp_cost": 2,
   "custom": {
     "creator": "Mythos Busters",
-    "download_link": "https://mythosbusters.com/custom-scenarios/"
+    "download_link": {
+      "en": "https://mythosbusters.com/custom-scenarios/"
+    }
   },
   "standalone_setup": [
     "choose_difficulty",
@@ -39802,7 +39804,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -40156,7 +40158,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -41032,7 +41034,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -41661,7 +41663,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -43427,7 +43429,7 @@
   "resolutions": [
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -43442,7 +43444,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "At least one investigator resigned",
       "investigator_status": [
         "resigned",
@@ -44087,7 +44089,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -44622,7 +44624,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -45155,7 +45157,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -46008,7 +46010,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -47014,7 +47016,7 @@
         "id": "the_circle_undone.at_deaths_doorstep.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -47493,7 +47495,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -47671,7 +47673,7 @@
     },
     {
       "id": "explain_skip_prologue",
-      "text": "As an alternative to playing the Prologue, you may have each character draw a random tarot card to determine their fate."
+      "text": "В качестве альтернативного способа разыграть пролог, вы можете взять случайную карту таро для каждого персонажа, чтобы определить его участь."
     },
     {
       "id": "ask_skip_prologue",
@@ -47681,7 +47683,7 @@
         "choices": [
           {
             "id": "yes",
-            "text": "Would you like to use the app to randomize the results of the prologue?",
+            "text": "Вы желаете выбрать результаты пролога случайным образом?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -47754,13 +47756,13 @@
     {
       "id": "ask_player_count",
       "type": "input",
-      "text": "How many players are there?",
+      "text": "Сколько у вас игроков?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "one",
-            "text": "One",
+            "text": "Один",
             "steps": [
               "new_missing_investigators_1",
               "cross_off_prompt",
@@ -47772,7 +47774,7 @@
           },
           {
             "id": "two",
-            "text": "Two",
+            "text": "Два",
             "steps": [
               "new_missing_investigators_2",
               "cross_off_prompt",
@@ -47796,7 +47798,7 @@
           },
           {
             "id": "four",
-            "text": "Four"
+            "text": "Четыре"
           }
         ]
       }
@@ -47821,8 +47823,8 @@
         "choices": [
           {
             "id": "chosen",
-            "text": "Choose your prologue investigators:",
-            "confirm_text": "Chosen prologue investigators:",
+            "text": "Выберите сыщиков пролога:",
+            "confirm_text": "Выбранные сыщики пролога:",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -47855,8 +47857,8 @@
         "choices": [
           {
             "id": "chosen",
-            "text": "Choose your prologue investigators:",
-            "confirm_text": "Chosen prologue investigators:",
+            "text": "Выберите сыщиков пролога:",
+            "confirm_text": "Выбранные сыщики пролога:",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -47889,8 +47891,8 @@
         "choices": [
           {
             "id": "chosen",
-            "text": "Choose your prologue investigators:",
-            "confirm_text": "Chosen prologue investigators:",
+            "text": "Выберите сыщиков пролога:",
+            "confirm_text": "Выбранные сыщики пролога:",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -47928,7 +47930,7 @@
     {
       "id": "cross_off_05046",
       "bullet_type": "small",
-      "text": "Cross off <i>Gavriella Mizrah</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "text": "В графе <i>«Пропавшие без вести»</i> журнала кампании вычеркните <i>Гавриэлу Мизру</i>.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -47958,7 +47960,7 @@
     {
       "id": "cross_off_05047",
       "bullet_type": "small",
-      "text": "Cross off <i>Jerome Davids</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "text": "В графе <i>«Пропавшие без вести»</i> журнала кампании вычеркните <i>Джерома Дэвидса</i>.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -47988,7 +47990,7 @@
     {
       "id": "cross_off_05048",
       "bullet_type": "small",
-      "text": "Cross off <i>Valentino Rivas</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "text": "В графе <i>«Пропавшие без вести»</i> журнала кампании вычеркните <i>Валентино Риваса</i>.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -48018,7 +48020,7 @@
     {
       "id": "cross_off_05049",
       "bullet_type": "small",
-      "text": "Cross off <i>Penny White</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "text": "В графе <i>«Пропавшие без вести»</i> журнала кампании вычеркните <i>Пенни Уайт</i>.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -48064,7 +48066,7 @@
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.intro",
         "name": "Intro"
       },
-      "title": "Intro",
+      "title": "Вступление",
       "type": "story",
       "text": "«Дамы и господа, — объявляет Джозеф Майгер, поднимая бокал. Постепенно шум стихает, и остаётся слышен лишь треск камина да шёпот сплетен. — Позвольте приветствовать вас в моём доме на очередном ежегодном благотворительном вечере. Сегодня здесь присутствуют очень уважаемые горожане. Благодарю вас всех за ваш упорный труд и щедрость». Одобрительный гул заполняет комнату. Многие гости поднимают бокалы за Валентино, одного из самых высокочтимых членов Ложи в этом году, который сегодня занимает место почётного гостя, ближе всех к камину. \nДжером, помощник Джозефа, сливается со стеной, поглядывая на карманные часы. В другом углу комнаты главная экономка Пенни ходит между столами, наполняя пустые бокалы и собирая грязные тарелки. «Каждый из вас совершил великие дела во имя Ложи Серебряных Сумерек и нашего древнего города, — продолжает Джозеф. — В следующем году мы продолжим нести это бремя и делать, что должно, на благо прогресса». Джером бесшумно шагает вперёд, прерывая речь с той непринуждённой уверенностью, что возникает за годы безупречной службы. Он слегка касается плеча Джозефа и показывает ему часы. «Но боюсь, моё время вышло. Большое спасибо за то, что пришли», — Джозеф завершает речь и кланяется. Под вежливые аплодисменты хозяин и его помощник быстрыми шагами направляются в сторону вестибюля. Пара слуг принимают пальто у запоздалых гостей, а Гавриэла, начальница охраны Джозефа, крепко стиснув зубы, внимательно наблюдает за входной дверью. «Мистер Сэнфорд прибыл?» — кратко осведомляется Джозеф, постукивая по паркету блестящей кожаной туфлей.\n«Боюсь, что нет, — отвечает Джером, просматривая последние страницы гостевой книги особняка. — Но должен быть здесь с минуты на минуту, мистер Майгер».\n«Хорошо. Когда он появится, не должно возникнуть никаких проблем. Понятно? — обращается Джозеф к Гавриэле. — Убедитесь, что он под надёжной охраной». Гавриэла кивает, похлопывая по плечевой кобуре с пистолетом 45-го калибра. Джозеф снова обращается к помощнику: «И пусть Пенни проследит, чтобы горячее не остыло, пока мы ждём мистера Сэнфорда. Без него никому не подавать ни единой порции».\n«Даже мистеру Ривасу, сэр?» — уточняет Джером, глядя на Джозефа поверх очков с толстыми стёклами. Джозеф задумывается.\n«Налейте мистеру Ривасу ещё бокал. Уверен, он не будет жаловаться. Кстати, я всё ещё жду отчёты, о которых говорил сегодня. Не забудь», — Джозеф хлопает помощника по плечу и возвращается в банкетный зал. Джером покорно кивает и идёт наверх.\nВскоре придёт тёмная мгла, и всё изменится."
     },
@@ -48481,14 +48483,14 @@
     },
     {
       "id": "choose_fate",
-      "text": "Who was eliminated?",
+      "text": "Кто побеждён?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "05046",
-            "text": "Gavriella Mizrah",
+            "text": "Гавриэла Мизра",
             "condition": {
               "type": "campaign_log_section_exists",
               "section": "05046",
@@ -48504,7 +48506,7 @@
           },
           {
             "id": "05047",
-            "text": "Jerome Davids",
+            "text": "Джером Дэвидс",
             "condition": {
               "type": "campaign_log_section_exists",
               "section": "05047",
@@ -48520,7 +48522,7 @@
           },
           {
             "id": "05047",
-            "text": "Valentino Rivas",
+            "text": "Валентино Ривас",
             "condition": {
               "type": "campaign_log_section_exists",
               "section": "05048",
@@ -48536,7 +48538,7 @@
           },
           {
             "id": "05049",
-            "text": "Penny White",
+            "text": "Пенни Уайт",
             "condition": {
               "type": "campaign_log_section_exists",
               "section": "05049",
@@ -48556,13 +48558,13 @@
     {
       "id": "choose_fate_2",
       "type": "input",
-      "text": "Who was eliminated?",
+      "text": "Кто побеждён?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "05046",
-            "text": "Gavriella Mizrah",
+            "text": "Гавриэла Мизра",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48599,7 +48601,7 @@
           },
           {
             "id": "05047",
-            "text": "Jerome Davids",
+            "text": "Джером Дэвидс",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48636,7 +48638,7 @@
           },
           {
             "id": "05047",
-            "text": "Valentino Rivas",
+            "text": "Валентино Ривас",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48673,7 +48675,7 @@
           },
           {
             "id": "05049",
-            "text": "Penny White",
+            "text": "Пенни Уайт",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48714,13 +48716,13 @@
     {
       "id": "choose_fate_3",
       "type": "input",
-      "text": "Who was eliminated?",
+      "text": "Кто побеждён?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "05046",
-            "text": "Gavriella Mizrah",
+            "text": "Гавриэла Мизра",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48757,7 +48759,7 @@
           },
           {
             "id": "05047",
-            "text": "Jerome Davids",
+            "text": "Джером Дэвидс",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48794,7 +48796,7 @@
           },
           {
             "id": "05047",
-            "text": "Valentino Rivas",
+            "text": "Валентино Ривас",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48831,7 +48833,7 @@
           },
           {
             "id": "05049",
-            "text": "Penny White",
+            "text": "Пенни Уайт",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48872,13 +48874,13 @@
     {
       "id": "choose_fate_4",
       "type": "input",
-      "text": "Who was eliminated?",
+      "text": "Кто побеждён?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "05046",
-            "text": "Gavriella Mizrah",
+            "text": "Гавриэла Мизра",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48915,7 +48917,7 @@
           },
           {
             "id": "05047",
-            "text": "Jerome Davids",
+            "text": "Джером Дэвидс",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48952,7 +48954,7 @@
           },
           {
             "id": "05047",
-            "text": "Valentino Rivas",
+            "text": "Валентино Ривас",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48989,7 +48991,7 @@
           },
           {
             "id": "05049",
-            "text": "Penny White",
+            "text": "Пенни Уайт",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -49030,7 +49032,7 @@
     {
       "id": "choose_05046_fate",
       "type": "input",
-      "text": "What happened to Gavriella Mizrah?",
+      "text": "Что случилось с Гавриэлой Мизрой?",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -49135,7 +49137,7 @@
     },
     {
       "id": "choose_05047_fate",
-      "text": "What happened to Jerome Davids?",
+      "text": "Что случилось с Джеромом Дэвидсом?",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -49241,7 +49243,7 @@
     },
     {
       "id": "choose_05048_fate",
-      "text": "What happened to Valentino Rivas?",
+      "text": "Что случилось с Валентино Ривасом?",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -49347,7 +49349,7 @@
     },
     {
       "id": "choose_05049_fate",
-      "text": "What happened to Penny White?",
+      "text": "Что случилось с Пенни Уайт?",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -49601,156 +49603,156 @@
       "id": "manual_randomizer",
       "bullets": [
         {
-          "text": "0: (character name) disappeared into the mist. 2 pieces of evidence were left behind."
+          "text": "0: Этот персонаж исчез во мгле. Оставлено 2 вещественных доказательства."
         },
         {
-          "text": "I - II: (character name) disappeared into the mist. 0 pieces of evidence were left behind."
+          "text": "I - II: Этот персонаж исчез во мгле. Оставлено 0 вещественных доказательств."
         },
         {
-          "text": "III - VI: (character name) was claimed by specters. 3 pieces of evidence were left behind."
+          "text": "III - VI: Этот персонаж унесён призраками. Оставлено 3 вещественных доказательства."
         },
         {
-          "text": "VII - IX: (character name) was claimed by specters. 5 pieces of evidence were left behind."
+          "text": "VII - IX: Этот персонаж унесён призраками. Оставлено 5 вещественных доказательств."
         },
         {
-          "text": "X - XII: (character name) was pulled into the spectral realm. 2 pieces of evidence were left behind."
+          "text": "X - XII: Этот персонаж затянут в потусторонний мир. Оставлено 2 вещественных доказательства."
         },
         {
-          "text": "XIII - XVI: (character name) was pulled into the spectral realm. 4 pieces of evidence were left behind."
+          "text": "XIII - XVI: Этот персонаж затянут в потусторонний мир. Оставлено 4 вещественных доказательства."
         },
         {
-          "text": "XVII - XIII: (character name) was pulled into the spectral realm. 6 pieces of evidence were left behind."
+          "text": "XVII - XIII: Этот персонаж затянут в потусторонний мир. Оставлено 6 вещественных доказательств."
         },
         {
-          "text": "XIX - XX: (character name) was taken by the Watcher. 3 pieces of evidence were left behind."
+          "text": "XIX - XX: Этого персонажа забрал Страж. Оставлено 3 вещественных доказательств."
         },
         {
-          "text": "XXI: (character name) was taken by the Watcher. 5 pieces of evidence were left behind."
+          "text": "XXI: Этого персонажа забрал Страж. Оставлено 5 вещественных доказательств."
         }
       ]
     },
     {
       "id": "0_pieces_of_evidence",
-      "text": "0 pieces of evidence were left behind."
+      "text": "Оставлено 0 вещественных доказательств."
     },
     {
       "id": "2_pieces_of_evidence",
-      "text": "2 pieces of evidence were left behind."
+      "text": "Оставлено 2 вещественных доказательства."
     },
     {
       "id": "3_pieces_of_evidence",
-      "text": "3 pieces of evidence were left behind."
+      "text": "Оставлено 3 вещественных доказательства."
     },
     {
       "id": "4_pieces_of_evidence",
-      "text": "4 pieces of evidence were left behind."
+      "text": "Оставлено 4 вещественных доказательства."
     },
     {
       "id": "5_pieces_of_evidence",
-      "text": "5 pieces of evidence were left behind."
+      "text": "Оставлено 5 вещественных доказательств."
     },
     {
       "id": "6_pieces_of_evidence",
-      "text": "6 pieces of evidence were left behind."
+      "text": "Оставлено 6 вещественных доказательств."
     },
     {
       "id": "the_fool",
-      "title": "0 - The Fool"
+      "title": "Шут · 0"
     },
     {
       "id": "the_magician",
-      "title": "I - The Magician"
+      "title": "Маг · I"
     },
     {
       "id": "the_high_priestess",
-      "title": "II - The High Priestess"
+      "title": "Верховная жрица · II"
     },
     {
       "id": "the_empress",
-      "title": "III - The Empress"
+      "title": "Императрица · III"
     },
     {
       "id": "the_emperor",
-      "title": "IV - The Emperor"
+      "title": "Император · IV"
     },
     {
       "id": "the_hierophant",
-      "title": "V - The Hierophant"
+      "title": "Первосвященник · V"
     },
     {
       "id": "the_lovers",
-      "title": "VI - The Lovers"
+      "title": "Влюблённые · VI"
     },
     {
       "id": "the_chariot",
-      "title": "VII - The Chariot"
+      "title": "Колесница · VII"
     },
     {
       "id": "strength",
-      "title": "VIII - Strength"
+      "title": "Сила · VIII"
     },
     {
       "id": "the_hermit",
-      "title": "IX - The Hermit"
+      "title": "Отшельник · IX"
     },
     {
       "id": "wheel_of_fortune",
-      "title": "X - Wheel of Fortune"
+      "title": "Колесо фортуны · X"
     },
     {
       "id": "justice",
-      "title": "XI - Justice"
+      "title": "Правосудие · XI"
     },
     {
       "id": "the_hanged_man",
-      "title": "XII - The Hanged Man"
+      "title": "Повешенный · XII"
     },
     {
       "id": "death",
-      "title": "XIII - Death"
+      "title": "Смерть · XIII"
     },
     {
       "id": "temperance",
-      "title": "XIV - Temperance"
+      "title": "Умеренность · XIV"
     },
     {
       "id": "the_devil",
-      "title": "XV - The Devil"
+      "title": "Дьявол · XV"
     },
     {
       "id": "the_tower",
-      "title": "XVI - The Tower"
+      "title": "Башня · XVI"
     },
     {
       "id": "the_star",
-      "title": "XVII - The Star"
+      "title": "Звезда · XVII"
     },
     {
       "id": "the_moon",
-      "title": "XVIII - The Moon"
+      "title": "Луна · XVIII"
     },
     {
       "id": "the_sun",
-      "title": "XIX - The Sun"
+      "title": "Солнце · XIX"
     },
     {
       "id": "judgement",
-      "title": "XX - Judgement"
+      "title": "Суд · XX"
     },
     {
       "id": "the_world",
-      "title": "XXI - The World"
+      "title": "Мир · XXI"
     },
     {
       "id": "randomizer",
       "type": "input",
       "input": {
         "type": "prologue_randomizer",
-        "prompt": "Draw tarot cards:",
+        "prompt": "Возьмите карты таро:",
         "choices": [
           {
             "id": "05046",
-            "text": "Gavriella Mizrah",
+            "text": "Гавриэла Мизра",
             "condition": {
               "type": "campaign_log_section_exists",
               "section": "05046",
@@ -49763,7 +49765,7 @@
           },
           {
             "id": "05047",
-            "text": "Jerome Davids",
+            "text": "Джером Дэвидс",
             "condition": {
               "type": "campaign_log_section_exists",
               "section": "05047",
@@ -49776,7 +49778,7 @@
           },
           {
             "id": "05048",
-            "text": "Valentino Rivas",
+            "text": "Валентино Ривас",
             "condition": {
               "type": "campaign_log_section_exists",
               "section": "05048",
@@ -49789,7 +49791,7 @@
           },
           {
             "id": "05049",
-            "text": "Penny White",
+            "text": "Пенни Уайт",
             "condition": {
               "type": "campaign_log_section_exists",
               "section": "05049",
@@ -49804,7 +49806,7 @@
         "options": [
           {
             "condition": "0",
-            "prompt": "0 - The Fool",
+            "prompt": "Шут · 0",
             "effects": [
               {
                 "type": "story_step",
@@ -49836,7 +49838,7 @@
           },
           {
             "condition": "1",
-            "prompt": "I - The Magician",
+            "prompt": "Маг · I",
             "effects": [
               {
                 "type": "story_step",
@@ -49868,7 +49870,7 @@
           },
           {
             "condition": "2",
-            "prompt": "II - The High Priestess",
+            "prompt": "Верховная жрица · II",
             "effects": [
               {
                 "type": "story_step",
@@ -49900,7 +49902,7 @@
           },
           {
             "condition": "3",
-            "prompt": "III - The Empress",
+            "prompt": "Императрица · III",
             "effects": [
               {
                 "type": "story_step",
@@ -49932,7 +49934,7 @@
           },
           {
             "condition": "4",
-            "prompt": "IV - The Emperor",
+            "prompt": "Император · IV",
             "effects": [
               {
                 "type": "story_step",
@@ -49964,7 +49966,7 @@
           },
           {
             "condition": "5",
-            "prompt": "V - The Hierophant",
+            "prompt": "Первосвященник · V",
             "effects": [
               {
                 "type": "story_step",
@@ -49996,7 +49998,7 @@
           },
           {
             "condition": "6",
-            "prompt": "VI - The Lovers",
+            "prompt": "Влюблённые · VI",
             "effects": [
               {
                 "type": "story_step",
@@ -50028,7 +50030,7 @@
           },
           {
             "condition": "7",
-            "prompt": "VII - The Chariot",
+            "prompt": "Колесница · VII",
             "effects": [
               {
                 "type": "story_step",
@@ -50060,7 +50062,7 @@
           },
           {
             "condition": "8",
-            "prompt": "VIII - Strength",
+            "prompt": "Сила · VIII",
             "effects": [
               {
                 "type": "story_step",
@@ -50092,7 +50094,7 @@
           },
           {
             "condition": "9",
-            "prompt": "IX - The Hermit",
+            "prompt": "Отшельник · IX",
             "effects": [
               {
                 "type": "story_step",
@@ -50124,7 +50126,7 @@
           },
           {
             "condition": "10",
-            "prompt": "X - Wheel of Fortune",
+            "prompt": "Колесо фортуны · X",
             "effects": [
               {
                 "type": "story_step",
@@ -50156,7 +50158,7 @@
           },
           {
             "condition": "11",
-            "prompt": "XI - Justice",
+            "prompt": "Правосудие · XI",
             "effects": [
               {
                 "type": "story_step",
@@ -50188,7 +50190,7 @@
           },
           {
             "condition": "12",
-            "prompt": "XII - The Hanged Man",
+            "prompt": "Повешенный · XII",
             "effects": [
               {
                 "type": "story_step",
@@ -50220,7 +50222,7 @@
           },
           {
             "condition": "13",
-            "prompt": "XIII - Death",
+            "prompt": "Смерть · XIII",
             "effects": [
               {
                 "type": "story_step",
@@ -50252,7 +50254,7 @@
           },
           {
             "condition": "14",
-            "prompt": "XIV - Temperance",
+            "prompt": "Умеренность · XIV",
             "effects": [
               {
                 "type": "story_step",
@@ -50284,7 +50286,7 @@
           },
           {
             "condition": "15",
-            "prompt": "XV - The Devil",
+            "prompt": "Дьявол · XV",
             "effects": [
               {
                 "type": "story_step",
@@ -50316,7 +50318,7 @@
           },
           {
             "condition": "16",
-            "prompt": "XVI - The Tower",
+            "prompt": "Башня · XVI",
             "effects": [
               {
                 "type": "story_step",
@@ -50348,7 +50350,7 @@
           },
           {
             "condition": "17",
-            "prompt": "XVII - The Star",
+            "prompt": "Звезда · XVII",
             "effects": [
               {
                 "type": "story_step",
@@ -50380,7 +50382,7 @@
           },
           {
             "condition": "18",
-            "prompt": "XVIII - The Moon",
+            "prompt": "Луна · XVIII",
             "effects": [
               {
                 "type": "story_step",
@@ -50412,7 +50414,7 @@
           },
           {
             "condition": "19",
-            "prompt": "XIX - The Sun",
+            "prompt": "Солнце · XIX",
             "effects": [
               {
                 "type": "story_step",
@@ -50444,7 +50446,7 @@
           },
           {
             "condition": "20",
-            "prompt": "XX - Judgement",
+            "prompt": "Суд · XX",
             "effects": [
               {
                 "type": "story_step",
@@ -50476,7 +50478,7 @@
           },
           {
             "condition": "21",
-            "prompt": "XXI - The World",
+            "prompt": "Мир · XXI",
             "effects": [
               {
                 "type": "story_step",
@@ -50517,7 +50519,7 @@
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.resolution",
         "name": "Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -51103,7 +51105,7 @@
         "id": "the_circle_undone.for_the_greater_good.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -51855,7 +51857,7 @@
         "id": "the_circle_undone.in_the_clutches_of_chaos.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -53591,7 +53593,7 @@
         "id": "the_circle_undone.the_secret_name.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -54309,7 +54311,7 @@
         "id": "the_circle_undone.the_witching_hour.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -56453,7 +56455,7 @@
         "id": "the_circle_undone.union_and_disillusion.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -60423,7 +60425,7 @@
         "id": "the_dreameaters.beyond_the_gates_of_sleep.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -60862,7 +60864,7 @@
         "id": "the_dreameaters.dark_side_of_the_moon.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -61929,7 +61931,7 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "At least one investigator resigned",
       "investigator_status": [
         "resigned",
@@ -61943,7 +61945,7 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -62747,7 +62749,7 @@
         "id": "the_dreameaters.where_the_gods_dwell.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -63569,7 +63571,7 @@
         "id": "the_dreameaters.a_thousand_shapes_of_horror.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -66217,7 +66219,7 @@
         "id": "the_dreameaters.point_of_no_return.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -66719,7 +66721,7 @@
         "id": "the_dreameaters.waking_nightmare.no_resolution_resigned",
         "name": "No Resolution (Resigned)"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "At least one investigator resigned",
       "investigator_status": [
         "resigned",
@@ -66742,7 +66744,7 @@
         "id": "the_dreameaters.waking_nightmare.no_resolution_defeated",
         "name": "No Resolution (Resigned)"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -67723,7 +67725,7 @@
         "id": "the_dreameaters.weaver_of_the_cosmos.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "text": "You awaken trapped inside something tight and sticky. Your arms are bound to your sides, and no matter how fiercely you struggle, you cannot seem to move except to wiggle your fingers helplessly. Slowly, dread creeps its way through your mind as you realize the situation you are in. As you cannot move your head, you are forced to watch as the eight-legged creature emerges from the darkness. It makes no sound as it steps onto the web. Its many eyes reflect your terrified expression. Its mandibles drip with hunger. You only wish you could look away.",
       "steps": [
@@ -68880,7 +68882,7 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -68891,7 +68893,7 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег до наступления сцены 3",
       "investigator_status": [
         "resigned",
@@ -69380,7 +69382,7 @@
         "id": "the_forgotten_age.heart_of_the_elders_part_1.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -69670,7 +69672,7 @@
         "id": "the_forgotten_age.heart_of_the_elders_part_2.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -71061,7 +71063,7 @@
         "id": "the_forgotten_age.shattered_aeons.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -71939,7 +71941,7 @@
         "id": "the_forgotten_age.the_boundary_beyond.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -72431,7 +72433,7 @@
         "id": "the_forgotten_age.the_city_of_archives.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -73074,7 +73076,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+      "text": "Соберите мешок хаоса из следующих жетонов: +1, 0, 0, 0, –1, –2, –2, –3, –5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign].",
       "effects": [
         {
           "type": "campaign_data",
@@ -73106,15 +73108,15 @@
     },
     {
       "id": "setup_standalone_log_1",
-      "text": "<i>You are not forging your own path.</i>"
+      "text": "<i>Вы не идёте собственным путём.</i>"
     },
     {
       "id": "setup_standalone_log_2",
-      "text": "<i>Ichtaca's faith is not restored.</i>"
+      "text": "<i>Вера Ичтаки не восстановлена.</i>"
     },
     {
       "id": "setup_standalone_log_3",
-      "text": "<i>The relic is missing.</i>",
+      "text": "<i>Реликвия пропала.</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -73126,25 +73128,25 @@
     },
     {
       "id": "explain_difficulty",
-      "text": "The investigators may choose how many tally marks are under “Yig’s Fury.” The lower the number chosen, the safer and easier the scenario will be.",
+      "text": "Сыщики могут выбрать, сколько отметок стоит в графе журнала «Ярость Йига». Чем меньше там отметок, тем проще будет сценарий.",
       "bullets": [
         {
-          "text": "For a safer and easier experience, choose 0 or 5."
+          "text": "Для простой игры выберите 0 или 5."
         },
         {
-          "text": "For an average experience, choose 10 or 14."
+          "text": "Для средней сложности выберите 10 или 14."
         },
         {
-          "text": "For a more brutal experience, choose 17 or 20."
+          "text": "Для тяжёлого испытания выберите 17 или 20."
         },
         {
-          "text": "For the ultimate challenge, choose 21 or higher."
+          "text": "Для серьёзного вызова выберите 21 или больше."
         }
       ]
     },
     {
       "id": "choose_yigs_fury",
-      "text": "Choose the amount of \"Yig's Fury\" to start with:",
+      "text": "Выберите число отметок в графе «Ярость Йига»:",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -73238,11 +73240,11 @@
     },
     {
       "id": "setup_standalone_supplies",
-      "text": "<i>You have no supplies.</i>"
+      "text": "<i>У вас нет припасов.</i>"
     },
     {
       "id": "standalone_unwinnable",
-      "text": "This scenario is <b>unwinnable</b> in Standalone Mode. Your goal is to continue playing for as long as you can. Once each investigator has been defeated, the current depth level will determine how well you performed."
+      "text": "В одиночном режиме в этом сценарии <b>нельзя выиграть</b>. Ваша задача — продолжать игру как можно дольше. Когда все сыщики будут побеждены, оцените свой успех в зависимости от достигнутой глубины."
     },
     {
       "id": "intro_1",
@@ -74266,7 +74268,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -74999,7 +75001,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+      "text": "Соберите мешок хаоса из следующих жетонов: +1, 0, 0, 0, –1, –2, –2, –3, –5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign].",
       "effects": [
         {
           "type": "campaign_data",
@@ -75030,7 +75032,7 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "Не меняйте состав мешка хаоса во время подготовки."
         }
       ]
     },
@@ -75051,7 +75053,7 @@
         "choices": [
           {
             "id": "gave_relic_to_alejandro",
-            "text": "<i>The investigators gave the relic to Alejandro.</i>",
+            "text": "<i>Сыщики передали реликвию Алехандро</i>",
             "steps": [
               "intro_2"
             ],
@@ -75066,7 +75068,7 @@
           },
           {
             "id": "gave_relic_to_harlan",
-            "text": "<i>The investigators gave the relic to Harlan Earnstone.</i>",
+            "text": "<i>Сыщики передали реликвию Харлану.</i>",
             "steps": [
               "check_alejandro_recovered_relic"
             ],
@@ -75369,7 +75371,7 @@
           {
             "id": "on_your_own",
             "text": "«Нельзя доверять им».",
-            "description": "For the remainder of the campaign, each investigator cannot include Alejandro Vela or Ichtaca in their deck. Anytime an investigator would be given the option to include either of them, each investigator earns 2 experience instead.",
+            "description": "До конца кампании ни один сыщик не может включить в свою колоду ни «Алехандро Велу», ни «Ичтаку». Всякий раз, когда сыщик получает возможность включить в колоду одну из этих карт, вместо этого он получает 2 опыта.",
             "effects": [
               {
                 "type": "campaign_log",
@@ -76175,7 +76177,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -76674,7 +76676,7 @@
         "id": "the_forgotten_age.turn_back_time.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -77083,7 +77085,7 @@
         "id": "the_forgotten_age.the_untamed_wilds.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -78657,7 +78659,7 @@
         "id": "the_innsmouth_conspiracy.a_light_in_the_fog.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -79867,7 +79869,7 @@
         "id": "the_innsmouth_conspiracy.devil_reef.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -80427,7 +80429,7 @@
         "id": "the_innsmouth_conspiracy.horror_in_high_gear.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -81105,7 +81107,7 @@
         "id": "the_innsmouth_conspiracy.in_too_deep.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -82487,7 +82489,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "text": "The chanting of the Deep Ones rises to a crescendo. The alien walls of Y'ha-nthlei twist and contort before your eyes, like lungs desperately clawing for breath. The air becomes thin. Water seeps through the walls. Nothing can stop the pull of the tide now. Nothing can stop the great flood. A triumphant roar sounds throughout the city, and the citizens of the deep rise to meet the cry in their jubilance. You collapse in exhaustion and resignation. Your part is over, now. The part of humanity will be soon to follow.",
       "investigator_status": [
@@ -83648,7 +83650,7 @@
         "id": "the_innsmouth_conspiracy.the_lair_of_dagon.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -84243,7 +84245,7 @@
         "id": "the_innsmouth_conspiracy.the_pit_of_despair.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -86242,7 +86244,7 @@
         "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -86666,7 +86668,10 @@
   "name": "Alice in Wonderland",
   "custom": {
     "creator": "The Beard",
-    "download_link": "https://mysteriouschanting.wordpress.com/2020/10/30/alice-in-wonderland-campaign/"
+    "download_link": {
+      "en": "https://mysteriouschanting.wordpress.com/2020/10/30/alice-in-wonderland-campaign/",
+      "ko": "https://cafe.naver.com/arkhamfiles/2254"
+    }
   },
   "campaign_type": "campaign",
   "campaign_log": [
@@ -87252,7 +87257,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -87543,7 +87548,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -88430,7 +88435,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -88843,7 +88848,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -91007,7 +91012,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -91397,7 +91402,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -91793,7 +91798,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -93277,7 +93282,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -93336,7 +93341,9 @@
   "name": "Dark Matter",
   "custom": {
     "creator": "Axolotl",
-    "download_link": "https://mysteriouschanting.wordpress.com/2020/10/17/dark-matter-campaign/"
+    "download_link": {
+      "en": "https://mysteriouschanting.wordpress.com/2020/10/17/dark-matter-campaign/"
+    }
   },
   "campaign_type": "campaign",
   "campaign_log": [
@@ -94399,7 +94406,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -95178,7 +95185,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики побеждены",
       "investigator_status": [
         "eliminated",
@@ -95861,7 +95868,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -96833,7 +96840,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -97912,7 +97919,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -98475,7 +98482,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -98727,7 +98734,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",
@@ -99131,7 +99138,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Исход не достигнут",
       "description": "все сыщики совершили побег или побеждены",
       "investigator_status": [
         "resigned",

@@ -1772,7 +1772,7 @@
     },
     {
       "id": "all_insane",
-      "text": "所有調查員<b>發瘋</b>。",
+      "text": "Each surviving investigator is driven <b>insane</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -1783,7 +1783,7 @@
     },
     {
       "id": "all_killed",
-      "text": "所有調查員<b>陣亡</b>。",
+      "text": "所有依然活著的調查員都<b>陣亡</b>。",
       "effects": [
         {
           "type": "trauma",
@@ -14280,7 +14280,7 @@
     },
     {
       "id": "all_insane",
-      "text": "所有調查員<b>發瘋</b>。",
+      "text": "Each surviving investigator is driven <b>insane</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -14291,7 +14291,7 @@
     },
     {
       "id": "all_killed",
-      "text": "所有調查員<b>陣亡</b>。",
+      "text": "所有依然活著的調查員都<b>陣亡</b>。",
       "effects": [
         {
           "type": "trauma",
@@ -29136,7 +29136,7 @@
     {
       "id": "replacing_locations_reminder",
       "type": "rule_reminder",
-      "title": "Replacing Locations",
+      "title": "替代地點",
       "text": "在本場冒險中，可能有指示讓你在現有地點上放置新的地點。當有地點放置在現有地點上方時，所放置的地點替代原有地點。原有地點的所有標記、疊加的卡牌、調查員、敵人和其他卡牌均視作位於新替代的地點上(這些卡牌和標記沒有“移動”——僅改變地點)。當有地點離場且該地點下方有另一地點，則由下方地點替代離場地點。離場地點的所有標記、疊加的卡牌、調查員、敵人和其他卡牌均視作位於原有地點上(這些卡牌和標記沒有“移動”——僅改變地點)。"
     },
     {
@@ -39064,7 +39064,9 @@
   "xp_cost": 2,
   "custom": {
     "creator": "Mythos Busters",
-    "download_link": "https://mythosbusters.com/custom-scenarios/"
+    "download_link": {
+      "en": "https://mythosbusters.com/custom-scenarios/"
+    }
   },
   "standalone_setup": [
     "choose_difficulty",
@@ -46359,7 +46361,7 @@
 {
   "id": "at_deaths_doorstep",
   "scenario_name": "At Death's Doorstep",
-  "full_name": "Scenario II: At Death's Doorstep",
+  "full_name": "冒險 II：死亡門前",
   "header": "冒險II",
   "chaos_bag_card": "05065",
   "setup": [
@@ -46389,7 +46391,7 @@
         "name": "Intro Article"
       },
       "bullet_type": "none",
-      "text": "<b>Four Missing, Whereabouts Unknown</b>\n\nResidents of French Hill are still in a tizzy after the sudden disappearance of several guests and house staff from the home of Mr. Josef Meiger during the night of the annual Silver Twilight charity gala last Sunday. “We are absolutely baffled as to how this could have happened,” said Mr. Meiger the day after the disappearances. “That said, we are confident that Sheriff Engle and the Arkham Police will do their due diligence in finding the missing persons.”\nThere is still no evidence whatsoever as to the whereabouts of Miss Gavriella Mizrah, Mr. Jerome Davids, Mr. Valentino Rivas, and Mrs. Penny White, all of whom vanished halfway through the event and have not been seen since. The police are offering a substantial reward for any person or persons who come forward with information related to these disappearances. When asked whether the police were considering the case a homicide, Sheriff Engle had this to say: “There’s no reason to suspect foul play is involved just yet. However, given the circumstances, we have to consider every possibility.” No other attendees have come forward with statements concerning the gala, which seemed to finish without a hitch despite the disappearances.\nSo far, none of the prominent members of the Silver Twilight Lodge have expressed any concern about the Lodge’s upcoming benefit dinner, which was recently moved to the same location: Josef Meiger’s estate in French Hill. “I am certain that this event will be a smashing success,” Mr. Meiger told the Arkham Advertiser in an interview yesterday. “There is no reason for the fair residents of Arkham to worry.”\n\n–Minnie Klein"
+      "text": "<b>四人失蹤，下落不明</b>\n\n上週日的銀暮秘社週年慈善夜活動期間，數名賓客及約瑟夫·梅吉爾先生家的工作人員突然消失，法蘭西山的居民們至今仍人心惶惶。“W我們完全搞不懂這事情怎麼可能會發生。”梅吉爾先生在失蹤事件發生的第二天說道，“即便如此，我們仍然對恩格爾警長和阿卡姆警局抱有信心，相信他們會盡最大努力尋找失蹤人口。”\n目前仍然沒有任何與加弗瑞拉·米兹拉克女士、傑羅姆·戴維斯先生、瓦倫蒂諾·里瓦斯先生和佩妮·懷特夫人有關的證據，他們在宴會進行到一半時消失，再也沒有出現。如有任何人士提供上述失蹤事件的有關信息，警方將予以豐厚酬勞。當問及警方是否將這宗案件視為兇殺案時，恩格爾警長說道：“現在還沒有理由懷疑這是一宗謀殺案。但是，根據目前情況，我們必須考慮到每種可能性。”沒有其他與會者就慈善宴會作出聲明，儘管有人失蹤，宴會依然圓滿結束。至今為止，銀暮秘社的傑出成員無一人對秘社即將在同一地點舉行的慈善晚宴表示擔心：位於法蘭西山的約瑟夫·梅吉爾莊園。\"我相信這次活動一定會取得圆滿成功。\"梅吉爾先生在昨天的採訪中對阿卡姆報社記者如是說，\"各位阿卡姆市民無須擔心。”\n–明妮·克莱因"
     },
     {
       "id": "intro",
@@ -46398,7 +46400,7 @@
         "name": "Intro"
       },
       "type": "story",
-      "text": "You fold up the newspaper and shove it aside on your desk, examining the other files you’ve collected over the last few days concerning the missing persons. It has been several days since your experience in the woods. You have tried to put it all out of mind, but it is impossible. Every night, you dream of a nameless place in the void of space, a faint discordant melody of hypnotizing flutes pulling you forward. Now there are others disappearing from the town without a trace. The disappearances dance along the edges of your thoughts. <i>No reason to worry</i>, you ponder, turning the man’s words over in your head. You think of the card reader and her warning, and you wonder if you are simply imagining devils where there are none. Regardless, there is only one way to know for sure. You pick up the invitation, examining the silver-embossed stationary and perfect calligraphy.\n<center><fancy>The Silver Twilight Lodge</fancy></center>\n<i>requests the pleasure of your company on the evening of November the twenty-ninth at eight o’clock at the estate of Josef Ekhard Meiger, Esq. for the benefit of The Fairchild Foundation</i>\nAs you prepare for the night ahead, you cannot help but wonder: Are you taking action to remedy your fate, as the soothsayer advised? Or are you walking willingly into the jaws of a grim destiny?"
+      "text": "你叠起手中的報紙，将它放在桌上，翻查近幾天你收集到的其他關於失蹤人口的資料。距離你在樹林裡的那次經歷，已經過去了好幾天。你想要忘掉那段經歷，但卻做不到。在每個夜晚，你都會夢到虚空中的一處無名之地，一首催人入眠的不諧笛曲微弱地傳來，鼓動著你前進。如今城裡又有更多人失蹤。一宗宗失蹤事件榮繞在你腦海，揮之不去。“<i>無須擔心</i>”，你陷於沉思，腦子裡翻來覆去地想著那名男子說的話。你想起占卜師的解牌與警告，好奇是不是自己只是疑心生暗鬼。不論如何，只有一個辨法能够確認。你拿起邀請函，仔細查看銀色壓花底紋和精美的筆跡。<center><fancy>銀暮祕社</fancy></center>\n<i>晚宴將於11月29日晚8點在約瑟夫·埃克哈·德梅吉爾先生的莊園舉行，為好孩子基金會籌納善款，誠邀關下屆時參加。</i>\n就在你為即將到來的慈善夜做準備時，你不由得想：你是聽取了占卜師的進言，在採取行動挽救自己的命重？遭是說你正自投羅網地走進鬼門關？"
     },
     {
       "id": "gather_encounter_sets",
@@ -46424,20 +46426,20 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the seven [[Spectral]] locations aside, out of play."
+      "text": "將7個[[幽靈]]地點放在一邊，位於場外。"
     },
     {
       "id": "set_aside_josef",
-      "text": "Set the Josef Meiger enemy aside, out of play.",
+      "text": "將約瑟夫·梅吉爾敵人放在一邊，位於場外。",
       "bullets": [
         {
-          "text": "<i>Note: This card is double-sided and has a story card on its other side. For the best experience, do not look at the other side unless an effect instructs you to do so.</i>"
+          "text": "<i>注意：這是一張雙面卡，另一面為劇情卡。為了獲得最佳的遊戲體驗，請勿翻開背面内容，除非有效果指示你如此做。</i>"
         }
       ]
     },
     {
       "id": "setup_locations",
-      "text": "Put each of the seven non-[[Spectral]] locations into play (Entry Hall, Victorian Halls, Trophy Room, Billiards Room, Master Bedroom, Balcony, and Office). Each investigator begins play in the Entry Hall."
+      "text": "將所有7個非[[幽靈]]地點放置入場（入口大廳、維多利亞式宴會廳、紀念品陳列室、檯球室、主臥、露臺、辦公室）。每位調查員從入口大廳開始遊戲。"
     },
     {
       "id": "location_layout",
@@ -46471,7 +46473,7 @@
     },
     {
       "id": "check_missing_persons",
-      "text": "Check the “Missing Persons” section of the Campaign Log:"
+      "text": "查看冒險日誌的“失蹤人口”區域："
     },
     {
       "id": "check_gavriella_clues",
@@ -46544,36 +46546,36 @@
     {
       "id": "gavriella_clues",
       "bullet_type": "small",
-      "text": "Place 6 clues on the Entry Hall because Gavriella Mizrah’s profile is not crossed off."
+      "text": "加弗瑞拉·米兹拉克未被劃掉，在入口大廳放置6個線索。"
     },
     {
       "id": "jerome_clues",
       "bullet_type": "small",
-      "text": "Place 6 clues on the Office because Jerome Davids’s profile is not crossed off."
+      "text": "傑羅姆·戴維斯未被劃掉，在辦公室放置6個線索。"
     },
     {
       "id": "valentino_clues",
       "bullet_type": "small",
-      "text": "Place 6 clues on the Billiards Room because Valentino Rivas’s profile is not crossed off."
+      "text": "瓦倫蒂諾·里瓦斯未被劃掉，在檯球室放置6個編索。"
     },
     {
       "id": "penny_clues",
       "bullet_type": "small",
-      "text": "Place 6 clues on the Balcony because Penny White’s profile is not crossed off."
+      "text": "佩妮·懷特未被劃掉，在露臺放置6個線索。"
     },
     {
       "id": "remove_pieces_of_evidence",
-      "text": "As evenly as possible, remove a total number of clues from the above locations equal to the number of <i>pieces of evidence that were left behind</i> in your Campaign Log."
+      "text": "盡可能平均地移除上述地點的總計x個線索，其中X等於冒險日誌記錄的“<i>留下的證據</i>”数量。"
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "混洗剩餘遭遇卡牌來創建遭遇牌堆。"
     },
     {
       "id": "replacing_locations",
       "type": "rule_reminder",
-      "title": "Replacing Locations",
-      "text": "Throughout this scenario, you may be instructed to swap set-aside locations with existing ones. When a location is swapped with one that is already in play, it takes its place. All tokens, attachments, investigators, enemies, and other cards at the former location are considered to now be at the new location (attached cards remain attached, for example). No game element is considered to have moved during such a swap."
+      "title": "替代地點",
+      "text": "在本場冒險中，可能有指示讓你將放在一邊的地點與場上地點互換。地點與已在場上的地點互換，表示其替代了該場上地點。原有地點的所有標記、疊加的卡牌、調查員、敵人和其他卡牌均視作位於新替代的地點上（例如，被疊加的卡牌仍被疊加）。地點發生互換期間，遊戲配件不視為發生了移動。"
     },
     {
       "id": "$play_scenario",
@@ -46593,7 +46595,7 @@
                 }
               ]
             },
-            "text": "Scenario Interlude: A Record of Those Lost",
+            "text": "冒險幕間故事：失蹤人口記錄",
             "steps": [
               "a_record_of_those_lost",
               "check_gavriella_fate",
@@ -46620,7 +46622,7 @@
         "id": "the_circle_undone.interlude_1.a_record_of_those_lost",
         "name": "A Record of Those Lost"
       },
-      "title": "Interlude 1: A Record of Those Lost",
+      "title": "幕間故事 1：失蹤人口記錄",
       "effects": [
         {
           "type": "campaign_log",
@@ -46706,7 +46708,7 @@
         "choices": [
           {
             "id": "no_clues",
-            "text": "Are there no clues on the Entry Hall?",
+            "text": "入口大廳上沒有綫索嗎？",
             "steps": [
               "gavriella_fate",
               "on_gavriellas_trail"
@@ -46722,7 +46724,7 @@
         "name": "Record of Gavriella"
       },
       "type": "story",
-      "text": "The entry hall to the manor is beautifully decorated, but you find it odd that the grand staircase’s wooden balustrade has been recently repaired and, by the looks of it, hastily so. While nobody is looking, you follow the handrail up and down the stairs until you spot what you are looking for: several splinters of wood, perhaps dislodged by a bullet. You ascend the staircase once more and position yourself where one would need to be standing in order to fire such a shot. After a moment of observation, a faint glimmer near one of the decorative ferns on the second floor catches your eye. There, you find proof: a bullet casing from a .45 handgun. A gun was indeed fired in the entry hall of the manor—but if that is true, how did nobody hear the shots?"
+      "text": "莊園的入口大廳有著華美的雕飾，但令人感到古怪的是，主樓梯的木質欄杆最近受過維修，從外觀看來，維修工作匆忙了事。趁著沒人看見，你順著扶手上下樓梯，終於發現了你要找的東西：幾片木頭碎屑，多半是被子弹打落的。你再次上樓，試著找出開槍人當時所站的位置。觀察片刻後，二樓一株蕨類植物旁邊一抹微弱的閃光吸引了你的注意。在那兒你找到了證物：來自點45手槍的一颗彈殼。莊園的入口大廳確實有人開過槍——但如果這是真的，為什麼沒人聽到槍聲呢？"
     },
     {
       "id": "on_gavriellas_trail",
@@ -46732,7 +46734,7 @@
           "type": "campaign_log",
           "section": "05046",
           "id": "on_gavriellas_trail",
-          "text": "the investigators are on Gavriella’s trail."
+          "text": "調查員正在追查加弗瑞拉。"
         }
       ]
     },
@@ -46744,7 +46746,7 @@
         "choices": [
           {
             "id": "no_clues",
-            "text": "Are there no clues on the Office?",
+            "text": "辦公室上沒有綫索嗎？",
             "steps": [
               "jerome_fate",
               "on_jeromes_trail"
@@ -46760,7 +46762,7 @@
         "name": "Record of Jerome"
       },
       "type": "story",
-      "text": "Josef Meiger’s personal office is pretty tidy for somebody whose personal secretary just went missing. Perhaps he’s just a fastidious person…or perhaps he’s been scrubbing evidence of some wrongdoing. You find nothing of note in any of Josef’s files, but after some perusing, you realize there is one place you haven’t checked: the trash. Rooting through the garbage bin yields fruit. Near the bottom is a small pocket journal belonging to Jerome Davids, probably tossed there carelessly by the cleaning staff. You turn to the last page. There, Jerome had recorded a list of names, perhaps transcribed from Josef ’s records. You don’t know what it means yet, but it must be important."
+      "text": "約瑟夫·梅吉爾的個人辦公室相當整潔，但他的秘書刚刚才失蹤。或許他只是個一絲不苟的人……又或許他是在掩蓋罪證。你在約瑟夫的檔案裡找不到任何值得注意的地方，但仔细研讀過後，你發現你少找了一處地方：垃圾桶。垃圾桶總能翻到寶的。垃圾桶深處有一本小小的随身日記，它的主人是傑羅姆·戴維斯，大概是被清潔工不小心扔到這裡來的。你翻到了最後一頁。傑羅姆在這貢上記錄了一排名字，或許是從約瑟夫的文件裡抄錄的。你暫時還不知道這些名字有什麼意義，但這一定很重要。"
     },
     {
       "id": "on_jeromes_trail",
@@ -46770,7 +46772,7 @@
           "type": "campaign_log",
           "section": "05047",
           "id": "on_jeromes_trail",
-          "text": "the investigators are on Jerome’s trail."
+          "text": "調查員正在追查傑羅姆。"
         }
       ]
     },
@@ -46782,7 +46784,7 @@
         "choices": [
           {
             "id": "no_clues",
-            "text": "Are there no clues on the Balcony?",
+            "text": "露臺上沒有綫索嗎？",
             "steps": [
               "penny_fate",
               "on_pennys_trail"
@@ -46798,7 +46800,7 @@
         "name": "Record of Penny"
       },
       "type": "story",
-      "text": "The balcony outside Josef Meiger’s bedroom overlooks the rainy streets and somber spires of French Hill. According to eyewitnesses, Penny was last seen entering Josef ’s bedroom, presumably to tidy it up, or perhaps to look for one of his personal belongings. The cigarette butt on the floor of the balcony tells a different story. Penny came here for a break, and judging from how busy the rest of the staff is, it was probably a much-needed one. If she had been in any danger, could she have climbed or jumped down from the balcony? You peer over the edge. It’s possible, but unlikely. A fall from here could break a leg, or worse. She likely would have retreated back into the manor, where she could have called for help…only, nobody saw her exit from the bedroom. Something doesn’t add up. You tuck the cigarette butt into your coat pocket, hoping it’s actually a lead and not a wild goose chase."
+      "text": "站在約瑟夫·梅吉丽卧室外的露臺，能將下著雨的街道與法蘭西山那昏暗的尖顶盡收眼底。據目擊者所說，他最後一次看見佩妮時，她走進了約瑟夫的卧室，猜想她是去打掃整理，或者是去找約瑟夫的個人物品。露臺地面的菸屁股表明，情况並非如此。佩妮是到道兒透透氣的，從其他工作人员的忙碌不難看出，今晚可能真的需要休息。要是她遇到了危險，她會不會從露臺往上爬，或往下跳呢？你探頭往外看。確實有這樣的可能性，但是不大。從這兒掉下去至少會断條腿。她更可能原路返回……本來她能回到莊圃求救，但是，沒有一人看到她從那間臥室裡出来。這有點說不通。你将菸屁股放入大衣口袋，期望這會是一條線索，別讓你撲個空。"
     },
     {
       "id": "on_pennys_trail",
@@ -46808,7 +46810,7 @@
           "type": "campaign_log",
           "section": "05049",
           "id": "on_pennys_trail",
-          "text": "the investigators are on Penny's trail."
+          "text": "調查員正在追查佩妮。"
         }
       ]
     },
@@ -46820,7 +46822,7 @@
         "choices": [
           {
             "id": "no_clues",
-            "text": "Are there no clues on the Billiards Room?",
+            "text": "檯球室上沒有綫索嗎？",
             "steps": [
               "valentino_fate",
               "on_valentinos_trail"
@@ -46836,7 +46838,7 @@
         "name": "Record of Valentino"
       },
       "type": "story",
-      "text": "Tracing Valentino’s steps isn’t difficult. As the guest of honor (and life of the party, from what you hear) there was always a crowd around him. This makes the story that he “vanished when they weren’t looking” all the more unbelievable. In the billiards room, where Valentino was last seen, you corner Adam Gensler, the man he was playing billiards with just before his disappearance. “Look, I already told the cops and the reporters what I saw,” he explains, fidgeting and tapping his toes repeatedly. “Tino and I were playing billiards, I looked away, next thing I know he’s gone,” he insists angrily, returning to his billiards game. “Now where is that damned one ball?” he mutters. It might be nothing, but it looks like Valentino wasn’t the only thing to go missing that night."
+      "text": "追尋瓦倫蒂諾的足跡算不上什麼難事。作為主賓（從你聽到的消息看來，他還是整塌宴會的主角），他總是前擁後簇。從這一點看來，“他在無人注意的情况下消失”的說法完全站不住腳。在檯球室，瓦倫蒂諾最後被目擊的地點，你将亞當·詹斯勒堵在角落，瓦偷蒂諾消失之前就在和他打檯球。“聽著，我早就把我看到的事情都告訴警察和記者了。”他煩躁地解釋道，腳尖不耐煩地點著地。“我和蒂諾當時在打檯球，我一轉頭他就不見了。”他情怒地說著，續打檯球。“那颗混脹球哪去了？”他抱怨道。這或許說明不了什麽，但似乎那天夜裡消失的不止瓦偷蒂諾。"
     },
     {
       "id": "on_valentinos_trail",
@@ -46846,18 +46848,18 @@
           "type": "campaign_log",
           "section": "05048",
           "id": "on_valentinos_trail",
-          "text": "the investigators are on Valentino's trail."
+          "text": "調查員正在追查瓦倫蒂諾。"
         }
       ]
     },
     {
       "id": "advance_act_1b",
-      "text": "Remove all clues from each location in play, and advance to act 1b."
+      "text": "移除場上所有地點的全部綫索，推進到場景1b。"
     },
     {
       "id": "check_final_act",
       "type": "input",
-      "text": "What act was in play when the scenario ended?",
+      "text": "本場冒險結束時的當前場景是哪張？",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -46907,7 +46909,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "investigators_escaped_the_spectral_realm",
-          "text": "the investigators escaped the spectral realm."
+          "text": "調查員逃出了幽靈國度。"
         }
       ]
     },
@@ -46918,7 +46920,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "learned_nothing_of_the_lodges_schemes",
-          "text": "the investigators learned nothing of the Lodge’s schemes."
+          "text": "調查員沒有發現祕社的陰謀。"
         }
       ]
     },
@@ -46929,7 +46931,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "never_seen_again",
-          "text": "the investigators are never seen or heard from again."
+          "text": "調查員就此音訊全無。"
         }
       ]
     },
@@ -46950,7 +46952,7 @@
     },
     {
       "id": "kill_not_resigned",
-      "text": "Each investigator who has not resigned is <b>killed</b>. If there are not enough investigators in the pool of available investigators to continue the campaign, the campaign is over, and the players lose.",
+      "text": "未撤退的所有調查員<b>陣亡<b/>。如果沒有足夠的調查員繼續遊戲，那麼這個劇本結束並且玩家失敗。玩家的調查員如已陣亡，則他必須從可用的調查員中選擇一位新的調查員。",
       "effects": [
         {
           "type": "trauma",
@@ -46969,7 +46971,7 @@
     },
     {
       "id": "skip_price_of_progress",
-      "text": "Skip <b>Interlude II: The Price of Progress</b>.",
+      "text": "跳過<b>幕間故事 II：進步的代價</b>。",
       "effects": [
         {
           "type": "campaign_data",
@@ -47004,7 +47006,7 @@
     {
       "id": "being_hunted",
       "type": "story",
-      "text": "You are startled from your reverie by the sensation of something crawling up your chest, an icy hand that clasps around your throat. It grips until your breath is trapped and your windpipe starts to crack. Only there is nothing there—just a chilly draft entering the room through the open window. The wind shrill, whistling wind rattles your window frame, penetrating the safety of your home. It almost sounds like the dissonant notes of a dreadful flute: a mindless, haunting music that fills you with inexplicable terror. You rush to the window and slam it shut, hands trembling. Still, the thin, discordant notes echo around you. <i>This can’t be real</i>, you think. <i>Not here, not now</i>. But denial provides no asylum.\nThe cold creeps its way up your back once again. A thin, grey mist pours into the room, seeping beneath your front door and through the cracks around your window. It crawls along the ground and coils slowly around your ankles, sending shivers up your body. You run into your bedroom, slam the door, and lock it. A few seconds of respite are all you receive before the invader resumes its assault. Over and over, a heavy force slams against the door, shaking the entire room. You press against the door, trying to hold it shut. With each pounding crash, dark mist seeps through cracks appearing in the wood. With a final crash, the door shatters. You are hurled back, landing not on the floor but in a cloud of mist, gripped by a hundred spectral arms that cling into your flesh and tear you limb from limb.\nNO!—That can’t be right. You are here, reading this very text. A wave of relief washes over you as you realize it is all in your head. Even so, the words compel your mind to torment you with visions of a macabre death. You find yourself glancing at your window, searching for dark mist that is not there. What if the text is trying to tell you something? Maybe—no, that’s impossible.\n“Real or imagined, your fate approaches all the same.”"
+      "text": "你感覺某物爬上胸口，從幻想之中驚醒，一雙冰冷的手緊緊扣住了你的喉嚨。它繼續攥緊，讓你沒法呼吸，氣管開始破裂。眼前空無—物——只從敞開的窗戶吹進了一股冷風。風凄厲地呼啸著，撼動著你的窗框，你的家中不再安全。風聲聽起來像是恐怖長笛吹奏出的不諧笛聲，這縈繞心頭的樂聲讓你心頭載满不可言說的恐耀。你衝到窗口，猛地關上窗戶，雙手顫抖不已。然而，不諧樂聲仍然微弱地迴蕩在你周圍。<i>這不可能是真的</i>，你如此想道。<i>不是此時，也不是此地</i>。但是否認它的存在並不能保護你。\n寒意再次爬上了你的背脊。一股灰色薄霧湧入房間，從前門下方和窗戶周圍的裂缝裡鑚了進來。它沿著地面爬行，慢慢在你腳踝周圍盤繞，令你全身發颤。你跑進卧室，猛地把門關上並上鎖。在入侵者繼續襲擊之前，你只有幾秒鐘喘息的時間。一股強大的力量一次次地撞擊房門，撼動整個房間。你頂住門，試圖不讓門被撞開。伴隨著每一次撞擊，黑霧從木板的裂縫中漸漸渗入。最後門被撞破。你被撞飛回來，迎接你下墜身驅的並不是地板，而是一團黑霧，墜入其中的你被上百隻幽靈般的手臂抓住，緊貼著你的皮肉，將你撕成碎片\n不！——這不可能。你站在原地，逐字讀著這篇文字。當你意識到這一切都是在你腦内上演的，一股如釋重負的感覺湧上心頭。即便如此，這篇文字仍會令你的頭腦浮現出恐怖的死亡畫面，讓你備受折磨。你發現自己的視線望著窗戶，尋找著不存在於此的黑霧。如果說這篇文字是想告訴你某些信息呢？可能——不這是不可能的。\n“不論是真是假，你的合運都一樣。”"
     }
   ],
   "resolutions": [
@@ -47038,7 +47040,7 @@
         "physical",
         "mental"
       ],
-      "text": "As soon as you emerge onto the patio, you are surrounded by grim men in trench coats. Several of them reach into their coat pockets: a warning not to do anything too hasty. Before any threats can be fulfilled, the silence is broken by an icy voice. “Now gentlemen, there is no need for that.” The men withdraw to reveal an elderly man you recognize as Carl Sanford, the president of the Silver Twilight Lodge. Despite the dangerous situation, his expression is almost too casual. The complete lack of fear in his posture and his actions suggests a confidence backed by substantial power. His bodyguards take several steps back, allowing you to speak with Mr. Sanford in private.",
+      "text": "你剛一來到庭院，幾名身著戰壕風衣的冷酷男子把你團團圍住。其中幾人伸手摸向自己的大衣口袋：這是一個警告，讓你别輕翠妄動。在他們掏出口袋裡的東西之前，一道冰冷的聲音打破了沉默。“先生們，沒必要這麼做。”風衣男子們齊齊退下，給一名老人讓出道路，你認出他就是銀暮秘社會長卡雨·桑福德。儘管處境危險，但他的表情極為從容。他的姿態全然不見懼色，舉止流露出的自信來自於他強大的势力。他的保镖後退幾步，讓你與桑福德單獨談話。",
       "steps": [
         "investigators_escaped_the_spectral_realm",
         "earn_xp"
@@ -47051,7 +47053,7 @@
         "name": "Resolution 2"
       },
       "title": "結局2",
-      "text": "You head out of the manor and are embraced by the brisk evening air. Your investigation has left you exhausted and strangely paranoid. Something about that event felt peculiar to you, though you aren’t sure why. Although the guests seemed oblivious, you noticed that the staff was sweaty and jittery, and the Lodge members seemed tense as well. More than once, you noticed their gaze drawn to you, watching your every move. If you didn’t know any better, you’d think the Silver Twilight Lodge was having you tailed for some reason. Regardless, you weren’t able to find much information about the four disappearances, and you doubt you ever will. Perhaps it was nothing, after all.",
+      "text": "你走出莊園，凍冽的晚風將你擁入懷中。這場調查讓你筋疲力盡、疑神疑鬼。那場晚宴有某些地方讓你感覺很奇怪，但你說不出來為什麼。儘管賓客們似乎並不在意，你發現宴曾的工作人員汗流浃背、緊張不安，秘社成員看起來也同樣緊張。除此之外，你發現他們總是向你投來視線，盯著你的一舉一動。要是不知道，你還以為银暮秘社在跟蹤你。無論如何，關於這四起失嚴事件，你沒能找到什麽信息，你甚至懷疑自己永速也找不到。或許這壓根沒什麼。",
       "steps": [
         "learned_nothing_of_the_lodges_schemes",
         "earn_xp",
@@ -47067,7 +47069,7 @@
         "name": "Resolution 3"
       },
       "title": "結局3",
-      "text": "You flee toward the manor’s entry hall, but the wall of spectral mist still blocks your way. Emerging from the mist are several ghostly faces and arms, writhing and screaming in torment. You turn and are confronted by the empty visage of the hooded Watcher. Before you even realize your doom, the creature’s ethereal body is swirling and swooping through the air as though composed of mist itself. The creature reconstitutes before you, and its charred hand grips your throat, holding you aloft with tremendous strength. You kick and dig your nails into the creature’s hand, struggling with the ferocity of a cornered animal, but it is no use. The last thing you see is the red glare of the thing’s eyes as it drills into your mind.",
+      "text": "你逃往莊園的入口大廳，但鬼靈迷霧形成的障壁仍然堵著你的去路。從霧裡浮現出好些如幽露般的面龐在痛苦地尖叫，還有扭曲的手臂。你轉過身來，對上一張空空如也的面龐，正是頭戴兜帽的看守人。看著這隻生物虚無的身驅在空中旋轉、下沉，仿佛它自身就是由霧構成的，你馬上意識到自己死期已至。它在你面前再次聚成形，随後用燒焦的手攥紧了你的喉嚨，用巨大的力量将你舉了起来。你用脚踢打、用指尖抓撓它的手，像一頭被逼入絕路的動物一般拼命掙扎，但這都無濟於事。它鑚入你腦海，你最後看到的景象是它眼睛裡的红光。",
       "steps": [
         "never_seen_again",
         "earn_xp",
@@ -47156,7 +47158,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "混洗剩餘遭遇卡牌來創建遭遇牌堆。"
     },
     {
       "id": "the_cosmos",
@@ -47597,7 +47599,7 @@
 },
 {
   "id": "disappearance_at_the_twilight_estate",
-  "scenario_name": "Disappearance at the Twilight Estate",
+  "scenario_name": "暮色莊園失蹤事件",
   "full_name": "Prologue: Disappearance at the Twilight Estate",
   "header": "引導故事",
   "type": "interlude",
@@ -47616,15 +47618,15 @@
         "name": "Prologue"
       },
       "type": "story",
-      "text": "Sunday, November 22nd, 1925. Arkham, Massachusetts.\nThough All Hallows’ Eve is nearly a month past, a grim melancholy lingers throughout the town. Each morning, a thick fog permeates the streets. Nights are beginning to grow longer, and if you ask around town, you’ll hear people swear that it’s getting darker, too. But despite the gloomy mood, progress continues in the sleepy town of Arkham. The election of Nathaniel Rhodes to the United States Senate has upstanding members of the community feeling optimistic about the town’s future. And tonight, at his well-appointed estate in French Hill, a man named Josef Meiger hosts the Silver Twilight Lodge’s charity gala, an annual members-only event that will turn deadly for several attendees…"
+      "text": "1925年11月22日，星期天 馬薩諸塞州阿卡姆\n雖然萬聖節已經過去了接近一個月，但整座小鎮裡仍有著一種可怖的陰鬱。每天早晨，街道上灞漫著濃雾。夜晚逐渐變長，要是你到鎮上問間，人們會信誓旦旦地告訴你，不光如此，夜晚還變得更暗了。儘管氛围陰鬱，阿卡姆這座冷清的小鎮裡還在繼續進行著選舉。納撒尼爾：羅兹競選美國參議員，此事使社區裡正派的民眾對小鎮的未來充滿希望。今晚，在納撒尼繭位於法蘭西山的豪華莊圆裡，一位名叫約瑟夫梅吉爾的男子在此舉辦銀暮秘社一年一度的慈善募捐晚會，僅限社員參加。而對於其中幾位與會者來說，這個夜晚將會要了他們的命.."
     },
     {
       "id": "choose_neutral_investigators",
-      "text": "Each player must choose one of the following neutral investigators to control for the duration of this prologue: Gavriella Mizrah, Jerome Davids, Penny White, or Valentino Rivas. Throughout this prologue, you will play through this character’s story and make choices that will determine their fate. Your choice of investigator has no direct effect on your standard investigator deck, though the results of the prologue will influence the story."
+      "text": "每位玩家必須從以下中立調查員中選擇一位，在序章遊戲期間控制該調查員：加弗瑞拉·米兹拉克、傑羅姆·戴維斯、佩妮·懷特，或者瓦倫蒂諾·里瓦斯。在序章中，玩家將體驗自己所選角色的劇情，作出影響該角色命運的決定。你選擇的調查員對你的普通調查員牌組不產生直接影響，但序章的結局會影響接下來的劇情。"
     },
     {
       "id": "no_decks",
-      "text": "Do not assemble an investigator deck for any neutral investigator. Instead, gather the cards listed on its reverse side—these cards will be used in that investigator’s unique setup. (All listed cards are level 0 unless otherwise noted.)"
+      "text": "不要為任何一位中立調查員組建調查員牌組，而是找出該調查員背面列出的卡牌一該調查員獨特的設置步驟將會用到這些卡牌。（除非有特殊說明，所有列出的卡牌均為等級0.）"
     },
     {
       "id": "maybe_check_unplayed_investigators",
@@ -47671,7 +47673,7 @@
     },
     {
       "id": "explain_skip_prologue",
-      "text": "As an alternative to playing the Prologue, you may have each character draw a random tarot card to determine their fate."
+      "text": "作爲另一種序章的玩法，你可以讓每個角色隨機抽一張塔羅牌來决定他們的命運。"
     },
     {
       "id": "ask_skip_prologue",
@@ -47681,7 +47683,7 @@
         "choices": [
           {
             "id": "yes",
-            "text": "Would you like to use the app to randomize the results of the prologue?",
+            "text": "你希望使用app隨機設置結果嗎？",
             "effects": [
               {
                 "type": "campaign_log",
@@ -47743,7 +47745,7 @@
         "choices": [
           {
             "id": "fewer_than_4_players",
-            "text": "Are there fewer than 4 players in this campaign?",
+            "text": "本次冒險的玩家少於四人嗎？",
             "steps": [
               "record_missing_investigators"
             ]
@@ -47754,13 +47756,13 @@
     {
       "id": "ask_player_count",
       "type": "input",
-      "text": "How many players are there?",
+      "text": "有多少位玩家進行游戲?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "one",
-            "text": "One",
+            "text": "一位",
             "steps": [
               "new_missing_investigators_1",
               "cross_off_prompt",
@@ -47772,7 +47774,7 @@
           },
           {
             "id": "two",
-            "text": "Two",
+            "text": "兩位",
             "steps": [
               "new_missing_investigators_2",
               "cross_off_prompt",
@@ -47796,7 +47798,7 @@
           },
           {
             "id": "four",
-            "text": "Four"
+            "text": "四位"
           }
         ]
       }
@@ -47821,8 +47823,8 @@
         "choices": [
           {
             "id": "chosen",
-            "text": "Choose your prologue investigators:",
-            "confirm_text": "Chosen prologue investigators:",
+            "text": "選擇你在序章的調查員",
+            "confirm_text": "選擇你在序章的調查員",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -47855,8 +47857,8 @@
         "choices": [
           {
             "id": "chosen",
-            "text": "Choose your prologue investigators:",
-            "confirm_text": "Chosen prologue investigators:",
+            "text": "選擇你在序章的調查員",
+            "confirm_text": "選擇你在序章的調查員",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -47889,8 +47891,8 @@
         "choices": [
           {
             "id": "chosen",
-            "text": "Choose your prologue investigators:",
-            "confirm_text": "Chosen prologue investigators:",
+            "text": "選擇你在序章的調查員",
+            "confirm_text": "選擇你在序章的調查員",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -47905,7 +47907,7 @@
     },
     {
       "id": "cross_off_prompt",
-      "text": "In the “Missing Persons” section of your Campaign Log, cross off the profiles of any of the neutral investigators who were not chosen."
+      "text": "在你冒險日誌的 “失離人口” 區域劃掉所有未被選擇的中立調查員。"
     },
     {
       "id": "maybe_cross_off_05046",
@@ -47928,7 +47930,7 @@
     {
       "id": "cross_off_05046",
       "bullet_type": "small",
-      "text": "Cross off <i>Gavriella Mizrah</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "text": "在你冒險日誌的 <i>失離人口</i> 區域劃掉 <i>加弗瑞拉·米兹拉克</i> 。",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -47958,7 +47960,7 @@
     {
       "id": "cross_off_05047",
       "bullet_type": "small",
-      "text": "Cross off <i>Jerome Davids</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "text": "在你冒險日誌的 <i>失離人口</i> 區域劃掉 <i>傑羅姆·戴維斯</i> 。",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -47988,7 +47990,7 @@
     {
       "id": "cross_off_05048",
       "bullet_type": "small",
-      "text": "Cross off <i>Valentino Rivas</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "text": "在你冒險日誌的 <i>失離人口</i> 區域劃掉 <i>佩妮·懷特</i> 。",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -48018,7 +48020,7 @@
     {
       "id": "cross_off_05049",
       "bullet_type": "small",
-      "text": "Cross off <i>Penny White</i> from the <i>Missing Persons</i> section of your Campaign Log.",
+      "text": "在你冒險日誌的 <i>失離人口</i> 區域劃掉 <i>瓦倫蒂諾·里瓦斯</i> 。",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -48029,7 +48031,7 @@
     },
     {
       "id": "record_missing_investigators",
-      "text": "In the “Missing Persons” section of your Campaign Log, cross off the profiles of any of the neutral investigators who were not chosen.",
+      "text": "在你冒險日誌的 “失離人口” 區域劃掉所有未被選擇的中立調查員。",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -48046,7 +48048,7 @@
         "choices": [
           {
             "id": "not_chosen",
-            "text": "Not Chosen",
+            "text": "未選擇",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -48064,13 +48066,13 @@
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.intro",
         "name": "Intro"
       },
-      "title": "Intro",
+      "title": "引言",
       "type": "story",
-      "text": "“Ladies and gentlemen,” Josef Meiger announces, raising a glass of champagne in a toast. A hush descends on the room, until only the crackle of the fireplace and whispers of gossip can be heard. “Allow me to welcome you all into my home for this year’s charity gala. We have some very upstanding citizens here tonight, and I thank all of you for your hard work and generosity.” Cheers and murmurs of agreement fill the room. Many of the guests raise their glasses to Valentino, one of the most esteemed members of the Lodge this year, who sits at the Guest of Honor table, which is nearest to the fireplace.\nJosef ’s assistant, Jerome, blends into the wall behind Josef, discreetly checking his pocket watch. In another corner of the room, the head housekeeper, Penny, walks from table to table, filling empty glasses and collecting dirty salad plates. “Each of you has done great deeds in the name of the Silver Twilight Lodge and our historic city,” Josef continues. “Next year, we will continue to shoulder this burden and do what must be done for the sake of progress.” Jerome steps forward quietly, interrupting Josef ’s speech with the unassuming confidence that comes from years of trusted service. He taps Josef lightly on his shoulder and shows him the time. “I’m afraid I am already out of time. Thank you all very much for attending,” Josef concludes, bowing. Polite applause rises from the audience, and Josef walks briskly toward the parlor, followed closely by his assistant. Two servants collect coats as latecomers trickle into the manor, and Gavriella—Josef ’s head of security—watches over the entrance with hard eyes and a clenched jaw. “Has Mr. Sanford arrived?” Josef asks curtly, tapping his polished leather shoe on the floor.\nI’m afraid not,” Jerome replies, flipping through the last pages of the estate’s guest book. “But he should be here any minute, Mr. Meiger.”\n“Good. I want there to be no problems whatsoever when he arrives; am I understood?” Josef calls out to Gavriella: “Make sure he is well protected.” Gavriella nods, patting the handle of her .45 in her shoulder holster. Josef turns his attention back to his assistant. “And have Penny make sure the main course is kept good and hot while we wait for Mr. Sanford’s arrival. Not a single slice is to be served without his presence.”\n“Not even for Mr. Rivas, sir?” Jerome asks, glancing at Josef over the rim of his thick glasses. Josef pauses for a moment, considering.\n“Pour Mr. Rivas another glass of champagne, and I am sure he will not complain. Also, I’m still waiting on those accounts I asked you about earlier today. Don’t forget,” Josef says, clapping his assistant on the shoulder before walking back into the banquet hall. Jerome nods obediently and heads upstairs.\nSoon after, the dark mist would appear, and nothing would be the same."
+      "text": "“女士們先生們。”約瑟夫·梅吉爾舉起一杯香檳敬酒致辭。房間裡突然一片寂静，只剩下壁爐的噼啪聲和低聲聞聊。“歡迎各位蒞臨寒舍，参加今年的慈善募捐晚會。今晚到場的各位良好市民，我在此對你們的辛勞與慷慨表示由衷的感謝。”歡呼聲與讚同的低語聲充斥著整個房間。秘社今年最受尊敬的成員瓦倫蒂諾就坐在壁爐旁邊的主賓席，許多賓客向他舉杯致敬。\n約瑟夫的助理傑羅姆躲到約瑟夫身後的墙邊，小心翼翼地查看自己的懷錶。在房間的另一角，管家領班佩妮在餐桌之間走動，為空杯子添酒並且收走髒的沙拉盤。“在座的每個人都以銀暮秘社和這座古老城市的名羲，作出了偉大的貢獻。”約瑟夫繼續說道，“明年，我們將繼續肩負重擔，為成大計不惜一切。”傑羅姆静静地走上前來，憑藉著作為可靠助理的多年經驗，不卑不亢地打斷了約瑟夫的講話。他輕輕地拍了拍約瑟夫的肩膀，給他看時間。“恐怕我已經沒時間了。非常感謝各位的出席。”約瑟夫一邊鞠著躬一邊總結道。在觀眾禮貌的掌聲中，約瑟夫快步向會客室走去，身後緊跟著他的助理。遅到的賓客陸續進入莊園，两名侍者正在為他們收起大衣，約瑟夫的保安總管加弗瑞拉下頜緊閉，用嚴厲的眼光盯緊門口。“桑福德先生到了嗎？”約瑟夫簡短地問道，擦得锃亮的皮鞋脚尖敲打著地面。\n“我恐怕他還沒到，”傑羅姆翻到莊園的賓客簿最後一頁，回答道，“但他随時可能會到，梅吉雨先生。”\n“說得好。不管他什麼時候到，這兒都不能有任何問題；知道了嗎？”約瑟夫對加弗瑞拉命令道：“千萬要保護好他。”加弗瑞拉點點頭，拍了拍她肩套裡的點45手槍。約瑟夫將注意力轉向自己的助理：“還有，在桑福德先生到來之前，讓佩妮一定要保持主菜妥妥富當、熱氟腾腾。他没到之前，一盤菜都不能上。”\n“先生，即使是里瓦斯先生也不能上菜嗎？”傑耀姆透遇他那厚厚的鏡片看了約瑟夫一眼，問道。約瑟夫停下來思考片刻。\n“再給里瓦斯先生倒杯香檳吧，我相信他不會再抱怨的。還有，我還在等著今天早些時候問你要的賬目呢。別忘了。”約瑟夫拍拍他助理的肩膀說道，然後走回宴會廳。傑羅姆順從地點點頭，朝樓上走去。\n很快，黑霧就會出現，一切都會改變。"
     },
     {
       "id": "read_intros",
-      "text": "One at a time, each player must proceed to the intro for their chosen character and read that section aloud."
+      "text": "每位玩家必須依次進入所選角色的引言並大聲朗讀。"
     },
     {
       "id": "check_gavriella_intro",
@@ -48096,8 +48098,8 @@
         "name": "Gavriella Intro"
       },
       "type": "story",
-      "title": "Gavriella Intro",
-      "text": "You stand guard as instructed, waiting for Mr. Sanford to appear. By now, the remaining guests have filed into the banquet hall, and you can hear the sounds of merriment and drinking coming from beyond the wooden door behind you. You pay them no mind, remaining vigilant. Years of fighting and discipline have taught you to be ready for anything, even at a harmless banquet like this. Just as you begin to ponder whether your talents are being wasted under Mr. Meiger’s employ, a dark mist invades the parlor through the front door and the window frames, flooding the room. At first, you believe it to be only the evening fog seeping through the manor’s entryway, until you begin to notice that everything the mist touches seems to have decayed as though aged hundreds of years.\nYou step back cautiously, keeping a hand on the grip of your weapon just in case. Never in all your years have you seen something like this. An unnatural chill spreads throughout the room, and shivers run up your spine. As the ashen mist finishes pouring in, it coalesces into a singular form: a humanoid figure wrapped in shadows. It raises its hand and points at you with a charred, blackened finger.\nYou unholster your firearm and point it at the creature, allowing your training to take over. “Don’t come any closer!” you shout. The thing watching you from the entrance is unfazed. Its ethereal form begins to glide toward you, dark mist crawling over the carpet in its wake. “I warned you,” you growl, and a thunderous shot echoes through the parlor as you squeeze the trigger. The bullet rips a hole in the figure’s head like a rush of air billowing through a column of smoke. The mist stitches itself together, and the thing continues to drift your way, reaching out menacingly.\nNothing could have prepared you for combat with such an unnatural enemy. Faced with no other option, you turn and flee up the staircase nearby, pausing to squeeze off several more shots at the top. The bullets that make their target simply pass harmlessly through the ghostly figure, striking the door behind it. A few stray shots shatter a column of the staircase’s wooden balustrade."
+      "title": "加弗瑞拉的引言",
+      "text": "你遵循指示站崗，等待著桑福德先生出現。現在，其餘的賓客擠滿了整個宴會應，你能聽到身後木門另一邊傳來的歡笑聲與碰杯聲。你對這全不在意，保持警覺。多年的實戰與訓練教會了你要做好一切準備，哪怕只是這樣一場和諧的宴會。正當你開始思考接受梅吉爾先生的雇傭是不是在浪費自己的才華時，一團黑霧通過前門和窗戶進入會客室，淹沒了整個房間。一開始，你認為那只是夜晚的霧氣竄進了莊園門口，但你發覺那團黑霧觸碰過的一切事物似乎都已衰敗，仿佛過了数百年。\n你謹慎地後退，一隻手始終紧握著武器以防萬一。你長這麼大從來沒有見到過這樣的景象。一股不自然的寒意擴散到整個房間，你的脊梁骨都在颤抖。當灰白色的雾氣徹底灌入，它凝聚成了奇異的形状：一個包覆在陰影中的人形。它抬起了手，用一根焦黑的手指指著你。\n你從槍套中取出你的手槍，對準那頭生物，讓過往的訓練經驗接管你的身體。“别再靠近了！”你大喊。從門口進來的生物正看著你，似乎未受影響。它虚無的形體朝你滑行靠近，黑霧沿著它的尾跡爬過地毯。“我警告逼你了。”你咆哮著扣動扳機，一聲雷鳴般的槍聲迥蕩在會客腐裡。子彈在它的腦袋上撕開了一個洞，仿佛一道氣流從一柱濃煙中翻腾穿過。你作足一切準備也不是這個诡異敞人的對手。你别無選擇，轉身從旁邊的樓梯往上逃，從上方再開幾槍。子彈只是穿過了那個幽靈般的人形，打在它身後的門上，未對目標造成絲毫損傷。零星幾發打偏的子彈擊碎了樓梯木欄杆的一根柱子。\n"
     },
     {
       "id": "check_jerome_intro",
@@ -48123,8 +48125,8 @@
         "name": "Jerome Intro"
       },
       "type": "story",
-      "title": "Jerome Intro",
-      "text": "You carefully flip through the pages of Mr. Meiger’s ledger, looking for the accounts he inquired about. You have served Mr. Meiger faithfully for almost a decade, and he trusts you with sensitive information like this—a point of pride for you. While you are often curious about your employer’s business, you have never pried into his personal matters. Not until tonight, anyway.\nYou adjust your glasses and lean forward as you turn to the page regarding Mr. Meiger’s request. Some of the names on the list you recognize: Rivas, Gensler, Fairmont, Rhodes, Wick. But many are names you have never heard of before, let alone seen affiliated with Mr. Meiger’s work: Lindquist, Konstantinov, Magro, Atkinson, Lamar…Just how deep do Mr. Meiger’s connections go?\nStrange as that may seem, it is the list of names on the page afterward that raises your hackles. While it was clear that the names on the previous page are associates of Mr. Meiger’s, or at least prominent members of the Lodge, you can only assume that this next series of names is of people your employer is…targeting. For what, you cannot say.\nYou stand next to Josef ’s desk and record the list in your pocket journal carefully, making sure to keep the names in the exact order they appear in Mr. Meiger’s ledger. You hope that your suspicion is nothing more than the absurd imagination of an overworked secretary. Still, something about all of this has you concerned. That, and the sudden draft of frigid air that has somehow wafted into the room. Your gaze naturally drifts to the window, at which point you scream out in shock and lose your balance, stumbling backward into Mr. Meiger’s desk.\nPressed up against the office window is a host of screaming faces emerging from the mist, or perhaps composed of it. Their ghostly hands press against the glass, their eyes hollow and empty. Your reading glasses clatter to the ground and shatter under your heel as you scramble to the other side of the office. You don’t realize that you dropped your pocket journal in the chaos until it is too late."
+      "title": "傑羅姆的引言",
+      "text": "你仔細翻看梅吉爾先生的賬本，查找他之前詢問的眼目。你忠心耿耿地為梅吉酮先生服務了接近十年，他将如此敏感的信息託付给你——是你的驕傲。儘管你常常對自己老闊的生意感到好奇，但你從來没有窥探遇他的私事。至少，在今晚之前是的。\n你翻到梅吉爾先生問到的那頁賬目，你扶了扶眼鏡，向前湊近。你認出了列表上的一些姓名：里瓦斯、詹斯勒、費爾蒙特、羅兹、威克。但還有很多名字你從未聽遇，更不知道他們與梅吉爾先生的工作有何關聯：林奎斯特、康斯坦丁諾夫、瑪格羅、阿特金森、拉馬爾……梅吉爾先生和他們的關係有多深厚呢？\n雖然這聽起來很奇怪，後一頁列出的名字讓你汗毛倒豎。前一頁的姓名明顯是梅吉爾先生的生意夥伴，或至少是秘社的傑出成員，你只能設想下一串名字曾是你老間的…”目標。你說不上來自己為什麽這麼想。\n你站在約瑟夫的桌子旁邊，確保自己按照梅吉爾賬本裡列出的順序，仔细地在自己的日記上記下了這些名宇。你希望自己的懷疑只是一個秘書勞累過度之後的荒谬想像。儘管如此，這一切之中還是有什麼引起了你的擔憂。擔憂的除了那串名字，還有突然不知何故灌進房間裡的冷空氣。你的目光自然地飄向窗戶，就在這時你嚇得尖叫出聲，身體失去了平衡，跌跌撞撞後退靠在梅吉繭先生的桌子上。\n緊貼著辦公室窗戶的是一群尖叫著的面龐，它們從霧裡湧現，抑或是由霧形成。它們幽靈般的手絮貼著玻璃，眼眶裡全是空洞。就在你朝這間辨公室的另一邊爬去時，近視眼镜咔嗒一聲掉落在地，在你腳邊裂成碎片。最後你才意裁到自己的隨身日記已經在混亂中丟失，但已經來不及了。"
     },
     {
       "id": "check_penny_intro",
@@ -48150,8 +48152,8 @@
         "name": "Penny Intro"
       },
       "type": "story",
-      "title": "Penny Intro",
-      "text": "You sigh as the cool New England air embraces you. It has been a very stressful night: stressful enough that you’ve decided to sneak away from the clamor to grab a quick smoke before heading back to work. You rest your arms along the metal railing of the balcony, your fingers trembling as they hold your cigarette. The dreary gambrel rooftops and Victorian manors of French Hill span the view below you, the unlit windows hiding countless secrets.\nYou can’t remember a night in which your employer was as concerned with every little detail as he is tonight. He is normally so calm, so collected. There’s something special about tonight that has him on edge. Is it Mr. Sanford? A shudder crawls through you. For some reason, something about that man gives you the creeps. But Josef has interacted with Mr. Sanford many times before, so that cannot be the reason. What could it be that has Mr. Meiger so worried?\nYou are torn from your thoughts by the gathering of grey clouds overhead, swiftly blotting out the night sky. As the clouds grow ever closer, you begin to see shapes emerging from the vapor. You squint and lean over the railing for a better view. That is when you notice the true forms of the shapes in the mist: their screaming faces, their clawing hands, all writhing in torment and coming straight for you. You cry out in terror and back up against the wall as the mist envelops the building. A spectral shape emerges from the haze beyond the railing, dressed in bloodstained rags. It begs for rest in a croaking, gasping voice. Your only hope for escape is to retreat back into the manor and call for help…"
+      "title": "佩妮的引言",
+      "text": "新英格蘭的冷空氣將你擁入懷中，你歎了一口氣。今晚壓力很大：壓力大到你決定要從這嘈雜聲中溜出去，抽一小會煙再回來工作。你将手臂靠在露臺的金屬欄杆上稍作歇息，手指颤抖著夾紧香煙。向下望去是乏味的復折式屋頂和法蘭西山的維多利亞式莊圈，没有亮起的窗戶暗藏著數不盡的秘密。\n在你的記憶中，老闆約瑟夫梅·吉爾從沒像今晚這樣在意每一個細節。他平時是那麼地冷靜、沉穩。今晚有些特別的事情讓他焦躁不安。是桑福德先生嗎？一股戰慄爬上你的脊梁。因為某些原因，那人身上的某些東西讓你毛骨悚然。但老闆之前與桑福德先生有過幾次接觸，所以這不是他緊張的原因。究竟是什麼讓梅吉爾先生這麼緊張？\n你的思緒被頭頂凝聚的烏雲打破，它們迅速遮蔽了整片夜空。随著烏雲的靠近，你逐渐看見要霧裡浮現出一些身影。你瞇起眼睛俯在欄杆上，想看得更清楚些。這時你發現了雲霧理那些身影的真面目：它們尖叫著的面龐、向外攫奪的手臂都在痛苦地扭曲著，直直向你逼近。霧氣籠罩了整幢建梁，你驚恐大叫，後退到墙壁前。欄杆外的薄霧裡湧現出—個幽靈的身影，身披血跡斑斑的破布。它用嘶啞、喘息的聲音祈求得到安息。你逃跑的唯一希望就是返回莊围，寻求幫助……"
     },
     {
       "id": "check_valentino_intro",
@@ -48177,8 +48179,8 @@
         "name": "Valentino Intro"
       },
       "type": "story",
-      "title": "Valentino Intro",
-      "text": "“Are you going to break, or are you going to sit there admiring the cue ball all night?” you ask with a mocking smile. Your opponent sets the ivory ball back on the table with a sigh.\n“I can’t help myself around ivory. You know that, Tino,” Adam replies. You rarely see Adam Gensler except during Lodge functions, but you prefer his company to that of the stuffy business types who make up most of the Lodge these days. He makes his shot, the sudden clattering interrupting the din of conversation. “Your shot, Tino. And do try to avoid hitting the nine ball first. You’re always so overeager.” Adam chuckles as he moves to the other side of the table, making way for you.\n“That was one time, my friend, one time.” You roll your eyes. Truth be told, you’ve enjoyed coming to these events for the opportunity to give back to the community, not to hobnob with Arkham’s gentry. But hobnobbing has had its perks.\nYou lean over the table and clear your mind as you line up your shot. The room falls silent as you block out the clamor and the music, focusing all of your attention on the one ball and the corner pocket. You hold your breath and strike the cue ball. It clacks as it hits its target, and the one ball drops effortlessly into the corner pocket. “There, you see?”\nIt is only then that you realize the silence around you is not just in your mind. All of the light and warmth has been sucked out of the room. Adam is gone, along with everyone else who was present just moments before you took your shot. “Hello?” you call out. A dark mist coils about your ankles as you walk around the billiards table. “If this is a practical joke of some kind, it’s in awfully poor taste,” you remark. The only response is the deep growl that emerges from beneath the table. Morbid curiosity compels you to look underneath it, at which point a dark hound pounces onto your chest, savagely clawing at your torso. You react instinctively, pushing it off of your body as hard as you can. It lands on the billiards table, causing it to collapse under the creature’s weight. You slowly back up as the creature rises to its feet once again and jumps off the broken table, its hollow eyes gazing into your soul."
+      "title": "瓦倫蒂諾的引言",
+      "text": "“你是要休息一會兒，還是說繼續坐在這兒，用整晚的時間來觀賞這顆白球？”你面帶識諷，笑著問道。你的對手将象牙白的檯球放回桌面，歎了口氣。\n“我控制不住自己想著那顆球。你知道的，蒂諾。”亞當回答說。除了秘社活動，你很少見到亞當·詹斯勒，但你更喜歡亞當的陪伴，因為比起他來，秘社裡大部分成員都是些古板的生意人。他打了一桿球，這突然的碰擊聲打斷了談話的嘈雜聲。“输到你了，蒂諾。試試先别打中九號球。你總是太遏心急。”亞當輕笑著走到桌子的另一邊，给你讓出了位子。\n“我的朋友，我就幹過一次這事，就一次。”你翻了涸白眼。老實說，你参加這樣的活動是為了回饋社會，而不是為了跟阿卡姆的上流社會碰杯的。但喝酒也有它的好處。\n你俯身靠近桌子，讓腦子保持清醒，瞄準好球桿。你把注意力集中到一顆檯球和角袋，將喧鬧聲和音樂聲屏退，整個房間陷入寂靜。你屏住呼吸，球桿向白球擊去。它命中了目標，輕輕鬆鬆地将目標撞入角袋。“喏，看見了沒？”\n在這時你才意識到周圍的寂静不僅存在於你的腦海中。這房間裡的全部光照與温度都被抽走了。亞當不見了，在你撃球之前還在的所有人都不見了。“喂？”你大聲叫喊。你繞著檯球桌走動，同時一團黑霧纏上了你的脚踝。“要是這是在開玩笑，那這玩笑的品味真是糟糕透真。”你說道。只有桌子底下傅來的低沉咆哮聲回你。病態的好奇心驅使你向下望，這時一頭黑色的邋犬撲向你的胸口，野蠻地抓著你的身體。你本能地作出反應，用盡全力将它從你的身上推開。它落在檯球桌上，重量把桌子都壓塌了。你慢慢後退，此時那頭生物再次起身，從垮塌的球桌躍起，它空洞的雙眼凝視盯著你的靈魂。"
     },
     {
       "id": "gather_encounter_sets",
@@ -48194,11 +48196,11 @@
         "the_watcher",
         "chilling_cold"
       ],
-      "subtext": "When gathering the <i>At Death’s Doorstep</i> encounter set, only gather the seven [[Spectral]] locations from that encounter set. Do not gather any of the other cards from that encounter set."
+      "subtext": "找出<i>死亡門前<i>遭遇組時，只從該遭遇組拿取七張[[幽靈]]地點。不要拿取該遭遇組的其他任何卡牌。"
     },
     {
       "id": "setup_locations",
-      "text": "Put the seven [[Spectral]] locations into play."
+      "text": "將這七張[[幽靈]]地點放置入場。"
     },
     {
       "id": "location_layout",
@@ -48232,51 +48234,51 @@
     },
     {
       "id": "spectral_watcher",
-      "text": "Put The Spectral Watcher enemy into play in the Entry Hall."
+      "text": "將幽靈看守人敵人放置入場，放到入口大廳。"
     },
     {
       "id": "setup_investigators",
-      "text": "Each player follows the setup instructions on the back of their investigator card."
+      "text": "每位玩家按照自己調查員卡背面的設置指示執行。"
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remaining encounter cards to build the encounter deck."
+      "text": "混洗剩餘遭遇卡來創建遭遇牌堆。"
     },
     {
       "id": "no_way_out",
       "type": "rule_reminder",
-      "title": "No Way Out",
-      "text": "There is no positive resolution for this scenario. Investigators should strive to last as long as they can and gather as many clues as they can before their inevitable demise. Note that while cards can still be added to the victory display during this scenario, experience and victory points will not be gathered for this scenario.\nSince these investigators do not have decks, ignore any instruction or effect that would cause them to draw cards or interact with player decks. Additionally, since these investigators do not have discard piles, <b>each player card that would be placed in their discard pile is removed from the game, instead.</b>\nGood luck. You’ll need it."
+      "title": "無路可逃",
+      "text": "本場冒險無正面結局。調查員在無法避免的死亡來臨前，應掙扎存活盡可能長的時間，並收集到盡可能多的線索。請注意，本場冒險期間卡牌仍能加入勝利牌區，但無法得到經驗值和勝利點數。\n因為本場冒險的調查員沒有牌組，如有任何指示或效果會導致這些調查員抽取卡牌或與玩家牌組互動，忽略該指示或效果。此外，因為這些調查員沒有棄牌堆，<b>所有將被放入棄牌堆的玩家卡都改為移出遊戲。</b>\n祝你好運。你確實需要運氣。"
     },
     {
       "id": "no_experience",
-      "text": "No experience is earned for this prologue."
+      "text": "調查員不會在本序章獲得經驗值。"
     },
     {
       "id": "pieces_of_evidence",
-      "text": "In your Campaign Log, record <i>X pieces of evidence were left behind</i>. X is the total number of clues on Act 1a—“The Disappearance.”",
+      "text": "在冒險日誌記錄下留下了<i>X個證據<i>。其中X為場景1a“失蹤事件”上的線索總數。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Clues on Act 1a:",
+        "text": "場景1a上的線索總數。",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "pieces_of_evidence",
             "operation": "set_input",
-            "text": "#X# pieces of evidence were left behind."
+            "text": "留下了#X#個證據"
           }
         ]
       }
     },
     {
       "id": "return_player_cards",
-      "text": "Return each of the player cards used in this scenario to the collection."
+      "text": "將本場冒險用到的所有玩家卡放回收藏中。"
     },
     {
       "id": "choose_investigators",
-      "text": "Each player chooses an investigator from the standard pool of investigators and assembles their investigator deck, as usual.",
+      "text": "每位玩家從可選的普通調查員中選擇一名調查員，如常組建該調查員的牌組。",
       "type": "input",
       "input": {
         "type": "scenario_investigators"
@@ -48477,18 +48479,18 @@
     },
     {
       "id": "choose_fate_intro",
-      "text": "As investigators are eliminated, record their fate here:"
+      "text": "在調查員退場后，在這裏記錄下他們的命運："
     },
     {
       "id": "choose_fate",
-      "text": "Who was eliminated?",
+      "text": "哪些調查員退場了？",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "05046",
-            "text": "Gavriella Mizrah",
+            "text": "加弗瑞拉·米兹拉克",
             "condition": {
               "type": "campaign_log_section_exists",
               "section": "05046",
@@ -48504,7 +48506,7 @@
           },
           {
             "id": "05047",
-            "text": "Jerome Davids",
+            "text": "傑羅姆·戴維斯",
             "condition": {
               "type": "campaign_log_section_exists",
               "section": "05047",
@@ -48520,7 +48522,7 @@
           },
           {
             "id": "05047",
-            "text": "Valentino Rivas",
+            "text": "瓦倫蒂諾·里瓦斯",
             "condition": {
               "type": "campaign_log_section_exists",
               "section": "05048",
@@ -48536,7 +48538,7 @@
           },
           {
             "id": "05049",
-            "text": "Penny White",
+            "text": "佩妮·懷特",
             "condition": {
               "type": "campaign_log_section_exists",
               "section": "05049",
@@ -48556,13 +48558,13 @@
     {
       "id": "choose_fate_2",
       "type": "input",
-      "text": "Who was eliminated?",
+      "text": "哪些調查員退場了？",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "05046",
-            "text": "Gavriella Mizrah",
+            "text": "加弗瑞拉·米兹拉克",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48599,7 +48601,7 @@
           },
           {
             "id": "05047",
-            "text": "Jerome Davids",
+            "text": "傑羅姆·戴維斯",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48636,7 +48638,7 @@
           },
           {
             "id": "05047",
-            "text": "Valentino Rivas",
+            "text": "瓦倫蒂諾·里瓦斯",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48673,7 +48675,7 @@
           },
           {
             "id": "05049",
-            "text": "Penny White",
+            "text": "佩妮·懷特",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48714,13 +48716,13 @@
     {
       "id": "choose_fate_3",
       "type": "input",
-      "text": "Who was eliminated?",
+      "text": "哪些調查員退場了？",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "05046",
-            "text": "Gavriella Mizrah",
+            "text": "加弗瑞拉·米兹拉克",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48757,7 +48759,7 @@
           },
           {
             "id": "05047",
-            "text": "Jerome Davids",
+            "text": "傑羅姆·戴維斯",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48794,7 +48796,7 @@
           },
           {
             "id": "05047",
-            "text": "Valentino Rivas",
+            "text": "瓦倫蒂諾·里瓦斯",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48831,7 +48833,7 @@
           },
           {
             "id": "05049",
-            "text": "Penny White",
+            "text": "佩妮·懷特",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48872,13 +48874,13 @@
     {
       "id": "choose_fate_4",
       "type": "input",
-      "text": "Who was eliminated?",
+      "text": "哪些調查員退場了？",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "05046",
-            "text": "Gavriella Mizrah",
+            "text": "加弗瑞拉·米兹拉克",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48915,7 +48917,7 @@
           },
           {
             "id": "05047",
-            "text": "Jerome Davids",
+            "text": "傑羅姆·戴維斯",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48952,7 +48954,7 @@
           },
           {
             "id": "05047",
-            "text": "Valentino Rivas",
+            "text": "瓦倫蒂諾·里瓦斯",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -48989,7 +48991,7 @@
           },
           {
             "id": "05049",
-            "text": "Penny White",
+            "text": "佩妮·懷特",
             "condition": {
               "type": "multi",
               "conditions": [
@@ -49030,13 +49032,13 @@
     {
       "id": "choose_05046_fate",
       "type": "input",
-      "text": "What happened to Gavriella Mizrah?",
+      "text": "加弗瑞拉·米兹拉克發生了什麽？",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "taken_by_the_watcher",
-            "text": "Taken by the Watcher",
+            "text": "被看守人抓走",
             "gender": "feminine",
             "effects": [
               {
@@ -49047,8 +49049,8 @@
                 "codes": [
                   "05046"
                 ],
-                "masculine_text": "#name# was taken by the Watcher.",
-                "feminine_text": "#name# was taken by the Watcher."
+                "masculine_text": "#name#被看守人抓走。",
+                "feminine_text": "#name#被看守人抓走。"
               },
               {
                 "type": "campaign_log",
@@ -49060,7 +49062,7 @@
           },
           {
             "id": "claimed_by_specters",
-            "text": "Claimed by specters",
+            "text": "被幽靈奪走性命",
             "gender": "feminine",
             "effects": [
               {
@@ -49071,8 +49073,8 @@
                 "codes": [
                   "05046"
                 ],
-                "masculine_text": "#name# was claimed by specters.",
-                "feminine_text": "#name# was claimed by specters."
+                "masculine_text": "#name#被幽靈奪走性命。",
+                "feminine_text": "#name#被幽靈奪走性命。"
               },
               {
                 "type": "campaign_log",
@@ -49084,7 +49086,7 @@
           },
           {
             "id": "disappeared_into_the_mist",
-            "text": "Disappeared into the mist",
+            "text": "消失在迷霧之中",
             "gender": "feminine",
             "effects": [
               {
@@ -49095,8 +49097,8 @@
                 "codes": [
                   "05046"
                 ],
-                "masculine_text": "#name# disappeared into the mist.",
-                "feminine_text": "#name# disappeared into the mist."
+                "masculine_text": "#name#消失在迷霧之中。",
+                "feminine_text": "#name#消失在迷霧之中。"
               },
               {
                 "type": "campaign_log",
@@ -49108,7 +49110,7 @@
           },
           {
             "id": "pulled_into_spectral_realm",
-            "text": "Pulled into the spectral realm",
+            "text": "被拉入幽靈國度",
             "gender": "feminine",
             "effects": [
               {
@@ -49119,8 +49121,8 @@
                 "codes": [
                   "05046"
                 ],
-                "masculine_text": "#name# was pulled into the spectral realm.",
-                "feminine_text": "#name# was pulled into the spectral realm."
+                "masculine_text": "#name#被拉入幽靈國度。",
+                "feminine_text": "#name#被拉入幽靈國度。"
               },
               {
                 "type": "campaign_log",
@@ -49135,14 +49137,14 @@
     },
     {
       "id": "choose_05047_fate",
-      "text": "What happened to Jerome Davids?",
+      "text": "傑羅姆·戴維斯發生了什麽？",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "taken_by_the_watcher",
-            "text": "Taken by the Watcher",
+            "text": "被看守人抓走",
             "gender": "masculine",
             "effects": [
               {
@@ -49153,8 +49155,8 @@
                 "codes": [
                   "05047"
                 ],
-                "masculine_text": "#name# was taken by the Watcher.",
-                "feminine_text": "#name# was taken by the Watcher."
+                "masculine_text": "#name#被看守人抓走。",
+                "feminine_text": "#name#被看守人抓走。"
               },
               {
                 "type": "campaign_log",
@@ -49166,7 +49168,7 @@
           },
           {
             "id": "claimed_by_specters",
-            "text": "Claimed by specters",
+            "text": "被幽靈奪走性命",
             "gender": "masculine",
             "effects": [
               {
@@ -49177,8 +49179,8 @@
                 "codes": [
                   "05047"
                 ],
-                "masculine_text": "#name# was claimed by specters.",
-                "feminine_text": "#name# was claimed by specters."
+                "masculine_text": "#name#被幽靈奪走性命。",
+                "feminine_text": "#name#被幽靈奪走性命。"
               },
               {
                 "type": "campaign_log",
@@ -49190,7 +49192,7 @@
           },
           {
             "id": "disappeared_into_the_mist",
-            "text": "Disappeared into the mist",
+            "text": "消失在迷霧之中",
             "gender": "masculine",
             "effects": [
               {
@@ -49201,8 +49203,8 @@
                 "codes": [
                   "05047"
                 ],
-                "masculine_text": "#name# disappeared into the mist.",
-                "feminine_text": "#name# disappeared into the mist."
+                "masculine_text": "#name#消失在迷霧之中。",
+                "feminine_text": "#name#消失在迷霧之中。"
               },
               {
                 "type": "campaign_log",
@@ -49214,7 +49216,7 @@
           },
           {
             "id": "pulled_into_spectral_realm",
-            "text": "Pulled into the spectral realm",
+            "text": "被拉入幽靈國度",
             "gender": "masculine",
             "effects": [
               {
@@ -49225,8 +49227,8 @@
                 "codes": [
                   "05047"
                 ],
-                "masculine_text": "#name# was pulled into the spectral realm.",
-                "feminine_text": "#name# was pulled into the spectral realm."
+                "masculine_text": "#name#被拉入幽靈國度。",
+                "feminine_text": "#name#被拉入幽靈國度。"
               },
               {
                 "type": "campaign_log",
@@ -49241,14 +49243,14 @@
     },
     {
       "id": "choose_05048_fate",
-      "text": "What happened to Valentino Rivas?",
+      "text": "瓦倫蒂諾·里瓦斯發生了什麽？",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "taken_by_the_watcher",
-            "text": "Taken by the Watcher",
+            "text": "被看守人抓走",
             "gender": "masculine",
             "effects": [
               {
@@ -49259,8 +49261,8 @@
                 "codes": [
                   "05048"
                 ],
-                "masculine_text": "#name# was taken by the Watcher.",
-                "feminine_text": "#name# was taken by the Watcher."
+                "masculine_text": "#name#被看守人抓走。",
+                "feminine_text": "#name#被看守人抓走。"
               },
               {
                 "type": "campaign_log",
@@ -49272,7 +49274,7 @@
           },
           {
             "id": "claimed_by_specters",
-            "text": "Claimed by specters",
+            "text": "被幽靈奪走性命",
             "gender": "masculine",
             "effects": [
               {
@@ -49283,8 +49285,8 @@
                 "codes": [
                   "05048"
                 ],
-                "masculine_text": "#name# was claimed by specters.",
-                "feminine_text": "#name# was claimed by specters."
+                "masculine_text": "#name#被幽靈奪走性命。",
+                "feminine_text": "#name#被幽靈奪走性命。"
               },
               {
                 "type": "campaign_log",
@@ -49296,7 +49298,7 @@
           },
           {
             "id": "disappeared_into_the_mist",
-            "text": "Disappeared into the mist",
+            "text": "消失在迷霧之中",
             "gender": "masculine",
             "effects": [
               {
@@ -49307,8 +49309,8 @@
                 "codes": [
                   "05048"
                 ],
-                "masculine_text": "#name# disappeared into the mist.",
-                "feminine_text": "#name# disappeared into the mist."
+                "masculine_text": "#name#消失在迷霧之中。",
+                "feminine_text": "#name#消失在迷霧之中。"
               },
               {
                 "type": "campaign_log",
@@ -49320,7 +49322,7 @@
           },
           {
             "id": "pulled_into_spectral_realm",
-            "text": "Pulled into the spectral realm",
+            "text": "被拉入幽靈國度",
             "gender": "masculine",
             "effects": [
               {
@@ -49331,8 +49333,8 @@
                 "codes": [
                   "05048"
                 ],
-                "masculine_text": "#name# was pulled into the spectral realm.",
-                "feminine_text": "#name# was pulled into the spectral realm."
+                "masculine_text": "#name#被拉入幽靈國度。",
+                "feminine_text": "#name#被拉入幽靈國度。"
               },
               {
                 "type": "campaign_log",
@@ -49347,14 +49349,14 @@
     },
     {
       "id": "choose_05049_fate",
-      "text": "What happened to Penny White?",
+      "text": "佩妮·懷特發生了什麽？",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "taken_by_the_watcher",
-            "text": "Taken by the Watcher",
+            "text": "被看守人抓走",
             "gender": "feminine",
             "effects": [
               {
@@ -49365,8 +49367,8 @@
                 "codes": [
                   "05049"
                 ],
-                "masculine_text": "#name# was taken by the Watcher.",
-                "feminine_text": "#name# was taken by the Watcher."
+                "masculine_text": "#name#被看守人抓走。",
+                "feminine_text": "#name#被看守人抓走。"
               },
               {
                 "type": "campaign_log",
@@ -49378,7 +49380,7 @@
           },
           {
             "id": "claimed_by_specters",
-            "text": "Claimed by specters",
+            "text": "被幽靈奪走性命",
             "gender": "feminine",
             "effects": [
               {
@@ -49389,8 +49391,8 @@
                 "codes": [
                   "05049"
                 ],
-                "masculine_text": "#name# was claimed by specters.",
-                "feminine_text": "#name# was claimed by specters."
+                "masculine_text": "#name#被幽靈奪走性命。",
+                "feminine_text": "#name#被幽靈奪走性命。"
               },
               {
                 "type": "campaign_log",
@@ -49402,7 +49404,7 @@
           },
           {
             "id": "disappeared_into_the_mist",
-            "text": "Disappeared into the mist",
+            "text": "消失在迷霧之中",
             "gender": "feminine",
             "effects": [
               {
@@ -49413,8 +49415,8 @@
                 "codes": [
                   "05049"
                 ],
-                "masculine_text": "#name# disappeared into the mist.",
-                "feminine_text": "#name# disappeared into the mist."
+                "masculine_text": "#name#消失在迷霧之中。",
+                "feminine_text": "#name#消失在迷霧之中。"
               },
               {
                 "type": "campaign_log",
@@ -49426,7 +49428,7 @@
           },
           {
             "id": "pulled_into_spectral_realm",
-            "text": "Pulled into the spectral realm",
+            "text": "被拉入幽靈國度",
             "gender": "feminine",
             "effects": [
               {
@@ -49437,8 +49439,8 @@
                 "codes": [
                   "05049"
                 ],
-                "masculine_text": "#name# was pulled into the spectral realm.",
-                "feminine_text": "#name# was pulled into the spectral realm."
+                "masculine_text": "#name#被拉入幽靈國度。",
+                "feminine_text": "#name#被拉入幽靈國度。"
               },
               {
                 "type": "campaign_log",
@@ -49453,7 +49455,7 @@
     },
     {
       "id": "agenda_1_results",
-      "text": "As investigators are eliminated, record their fate here:",
+      "text": "在調查員退場后，在這裏記錄下他們的命運：",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -49470,68 +49472,68 @@
         "choices": [
           {
             "id": "not_chosen",
-            "text": "Not chosen",
-            "masculine_text": "Not chosen",
-            "feminine_text": "Not chosen",
+            "text": "未選擇",
+            "masculine_text": "未選擇",
+            "feminine_text": "未選擇",
             "effects": []
           },
           {
             "id": "taken_by_the_watcher",
-            "text": "Taken by the Watcher",
-            "masculine_text": "Taken by the Watcher",
-            "feminine_text": "Taken by the Watcher",
+            "text": "被看守人抓走",
+            "masculine_text": "被看守人抓走",
+            "feminine_text": "被看守人抓走",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "taken_by_the_watcher",
-                "masculine_text": "#name# was taken by the Watcher.",
-                "feminine_text": "#name# was taken by the Watcher."
+                "masculine_text": "#name#被看守人抓走。",
+                "feminine_text": "#name#被看守人抓走。"
               }
             ]
           },
           {
             "id": "claimed_by_specters",
-            "text": "Claimed by specters",
-            "masculine_text": "Claimed by specters",
-            "feminine_text": "Claimed by specters",
+            "text": "被幽靈奪走性命",
+            "masculine_text": "被幽靈奪走性命",
+            "feminine_text": "被幽靈奪走性命",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "claimed_by_specters",
-                "masculine_text": "#name# was claimed by specters.",
-                "feminine_text": "#name# was claimed by specters."
+                "masculine_text": "#name#被幽靈奪走性命。",
+                "feminine_text": "#name#被幽靈奪走性命。"
               }
             ]
           },
           {
             "id": "disappeared_into_the_mist",
-            "text": "Disappeared into the mist",
-            "masculine_text": "Disappeared into the mist",
-            "feminine_text": "Disappeared into the mist",
+            "text": "消失在迷霧之中",
+            "masculine_text": "消失在迷霧之中",
+            "feminine_text": "消失在迷霧之中",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "disappeared_into_the_mist",
-                "masculine_text": "#name# disappeared into the mist.",
-                "feminine_text": "#name# disappeared into the mist."
+                "masculine_text": "#name#消失在迷霧之中。",
+                "feminine_text": "#name#消失在迷霧之中。"
               }
             ]
           },
           {
             "id": "pulled_into_spectral_realm",
-            "text": "Pulled into the spectral realm",
-            "masculine_text": "Pulled into the spectral realm",
-            "feminine_text": "Pulled into the spectral realm",
+            "text": "被拉入幽靈國度",
+            "masculine_text": "被拉入幽靈國度",
+            "feminine_text": "被拉入幽靈國度",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "pulled_into_the_spectral_realm",
-                "masculine_text": "#name# was pulled into the spectral realm.",
-                "feminine_text": "#name# was pulled into the spectral realm."
+                "masculine_text": "#name#被拉入幽靈國度。",
+                "feminine_text": "#name#被拉入幽靈國度。"
               }
             ]
           }
@@ -49564,7 +49566,7 @@
         "choices": [
           {
             "id": "being_hunted",
-            "text": "Are you being hunted?",
+            "text": "你被追捕了嗎？",
             "steps": [
               "being_hunted"
             ]
@@ -49580,7 +49582,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "being_hunted",
-          "text": "you are being hunted."
+          "text": "你被追捕。"
         }
       ]
     },
@@ -49607,150 +49609,150 @@
           "text": "I - II: (character name) disappeared into the mist. 0 pieces of evidence were left behind."
         },
         {
-          "text": "III - VI: (character name) was claimed by specters. 3 pieces of evidence were left behind."
+          "text": "III - VI: (character name) 被幽靈奪走性命。留下了3個證據。"
         },
         {
-          "text": "VII - IX: (character name) was claimed by specters. 5 pieces of evidence were left behind."
+          "text": "VII - IX: (character name) 被幽靈奪走性命。留下了5個證據。"
         },
         {
-          "text": "X - XII: (character name) was pulled into the spectral realm. 2 pieces of evidence were left behind."
+          "text": "X - XII: (character name) 被拉入幽靈國度。留下了2個證據。"
         },
         {
-          "text": "XIII - XVI: (character name) was pulled into the spectral realm. 4 pieces of evidence were left behind."
+          "text": "XIII - XVI: (character name) 被拉入幽靈國度。留下了4個證據。"
         },
         {
-          "text": "XVII - XIII: (character name) was pulled into the spectral realm. 6 pieces of evidence were left behind."
+          "text": "XVII - XIII: (character name) 被拉入幽靈國度。留下了6個證據。"
         },
         {
-          "text": "XIX - XX: (character name) was taken by the Watcher. 3 pieces of evidence were left behind."
+          "text": "XIX - XX: (character name) 被看守人抓走。留下了3個證據。"
         },
         {
-          "text": "XXI: (character name) was taken by the Watcher. 5 pieces of evidence were left behind."
+          "text": "XXI: (character name) 被看守人抓走。留下了5個證據。"
         }
       ]
     },
     {
       "id": "0_pieces_of_evidence",
-      "text": "0 pieces of evidence were left behind."
+      "text": "留下了0個證據。"
     },
     {
       "id": "2_pieces_of_evidence",
-      "text": "2 pieces of evidence were left behind."
+      "text": "留下了2個證據。"
     },
     {
       "id": "3_pieces_of_evidence",
-      "text": "3 pieces of evidence were left behind."
+      "text": "留下了3個證據。"
     },
     {
       "id": "4_pieces_of_evidence",
-      "text": "4 pieces of evidence were left behind."
+      "text": "留下了4個證據。"
     },
     {
       "id": "5_pieces_of_evidence",
-      "text": "5 pieces of evidence were left behind."
+      "text": "留下了5個證據。"
     },
     {
       "id": "6_pieces_of_evidence",
-      "text": "6 pieces of evidence were left behind."
+      "text": "留下了6個證據。"
     },
     {
       "id": "the_fool",
-      "title": "0 - The Fool"
+      "title": "愚者"
     },
     {
       "id": "the_magician",
-      "title": "I - The Magician"
+      "title": "魔術師"
     },
     {
       "id": "the_high_priestess",
-      "title": "II - The High Priestess"
+      "title": "女祭司"
     },
     {
       "id": "the_empress",
-      "title": "III - The Empress"
+      "title": "女皇"
     },
     {
       "id": "the_emperor",
-      "title": "IV - The Emperor"
+      "title": "皇帝"
     },
     {
       "id": "the_hierophant",
-      "title": "V - The Hierophant"
+      "title": "教皇"
     },
     {
       "id": "the_lovers",
-      "title": "VI - The Lovers"
+      "title": "戀人"
     },
     {
       "id": "the_chariot",
-      "title": "VII - The Chariot"
+      "title": "戰車"
     },
     {
       "id": "strength",
-      "title": "VIII - Strength"
+      "title": "力量"
     },
     {
       "id": "the_hermit",
-      "title": "IX - The Hermit"
+      "title": "隱者"
     },
     {
       "id": "wheel_of_fortune",
-      "title": "X - Wheel of Fortune"
+      "title": "命運之輪"
     },
     {
       "id": "justice",
-      "title": "XI - Justice"
+      "title": "正義"
     },
     {
       "id": "the_hanged_man",
-      "title": "XII - The Hanged Man"
+      "title": "倒吊人"
     },
     {
       "id": "death",
-      "title": "XIII - Death"
+      "title": "死神"
     },
     {
       "id": "temperance",
-      "title": "XIV - Temperance"
+      "title": "節制"
     },
     {
       "id": "the_devil",
-      "title": "XV - The Devil"
+      "title": "惡魔"
     },
     {
       "id": "the_tower",
-      "title": "XVI - The Tower"
+      "title": "高塔"
     },
     {
       "id": "the_star",
-      "title": "XVII - The Star"
+      "title": "星星"
     },
     {
       "id": "the_moon",
-      "title": "XVIII - The Moon"
+      "title": "月亮"
     },
     {
       "id": "the_sun",
-      "title": "XIX - The Sun"
+      "title": "太陽"
     },
     {
       "id": "judgement",
-      "title": "XX - Judgement"
+      "title": "審判"
     },
     {
       "id": "the_world",
-      "title": "XXI - The World"
+      "title": "世界"
     },
     {
       "id": "randomizer",
       "type": "input",
       "input": {
         "type": "prologue_randomizer",
-        "prompt": "Draw tarot cards:",
+        "prompt": "抓取塔羅牌",
         "choices": [
           {
             "id": "05046",
-            "text": "Gavriella Mizrah",
+            "text": "加弗瑞拉·米兹拉克",
             "condition": {
               "type": "campaign_log_section_exists",
               "section": "05046",
@@ -49763,7 +49765,7 @@
           },
           {
             "id": "05047",
-            "text": "Jerome Davids",
+            "text": "傑羅姆·戴維斯",
             "condition": {
               "type": "campaign_log_section_exists",
               "section": "05047",
@@ -49776,7 +49778,7 @@
           },
           {
             "id": "05048",
-            "text": "Valentino Rivas",
+            "text": "瓦倫蒂諾·里瓦斯",
             "condition": {
               "type": "campaign_log_section_exists",
               "section": "05048",
@@ -49789,7 +49791,7 @@
           },
           {
             "id": "05049",
-            "text": "Penny White",
+            "text": "佩妮·懷特",
             "condition": {
               "type": "campaign_log_section_exists",
               "section": "05049",
@@ -49804,7 +49806,7 @@
         "options": [
           {
             "condition": "0",
-            "prompt": "0 - The Fool",
+            "prompt": "愚者",
             "effects": [
               {
                 "type": "story_step",
@@ -49816,8 +49818,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "disappeared_into_the_mist",
-                "masculine_text": "#name# disappeared into the mist.",
-                "feminine_text": "#name# disappeared into the mist."
+                "masculine_text": "#name#消失在迷霧之中。",
+                "feminine_text": "#name#消失在迷霧之中。"
               },
               {
                 "type": "campaign_log_count",
@@ -49836,7 +49838,7 @@
           },
           {
             "condition": "1",
-            "prompt": "I - The Magician",
+            "prompt": "魔術師",
             "effects": [
               {
                 "type": "story_step",
@@ -49848,8 +49850,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "disappeared_into_the_mist",
-                "masculine_text": "#name# disappeared into the mist.",
-                "feminine_text": "#name# disappeared into the mist."
+                "masculine_text": "#name#消失在迷霧之中。",
+                "feminine_text": "#name#消失在迷霧之中。"
               },
               {
                 "type": "campaign_log_count",
@@ -49868,7 +49870,7 @@
           },
           {
             "condition": "2",
-            "prompt": "II - The High Priestess",
+            "prompt": "女祭司",
             "effects": [
               {
                 "type": "story_step",
@@ -49880,8 +49882,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "disappeared_into_the_mist",
-                "masculine_text": "#name# disappeared into the mist.",
-                "feminine_text": "#name# disappeared into the mist."
+                "masculine_text": "#name#消失在迷霧之中。",
+                "feminine_text": "#name#消失在迷霧之中。"
               },
               {
                 "type": "campaign_log_count",
@@ -49900,7 +49902,7 @@
           },
           {
             "condition": "3",
-            "prompt": "III - The Empress",
+            "prompt": "女皇",
             "effects": [
               {
                 "type": "story_step",
@@ -49912,8 +49914,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "claimed_by_specters",
-                "masculine_text": "#name# was claimed by specters.",
-                "feminine_text": "#name# was claimed by specters."
+                "masculine_text": "#name#被幽靈奪走性命。",
+                "feminine_text": "#name#被幽靈奪走性命。"
               },
               {
                 "type": "campaign_log_count",
@@ -49932,7 +49934,7 @@
           },
           {
             "condition": "4",
-            "prompt": "IV - The Emperor",
+            "prompt": "皇帝",
             "effects": [
               {
                 "type": "story_step",
@@ -49944,8 +49946,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "claimed_by_specters",
-                "masculine_text": "#name# was claimed by specters.",
-                "feminine_text": "#name# was claimed by specters."
+                "masculine_text": "#name#被幽靈奪走性命。",
+                "feminine_text": "#name#被幽靈奪走性命。"
               },
               {
                 "type": "campaign_log_count",
@@ -49964,7 +49966,7 @@
           },
           {
             "condition": "5",
-            "prompt": "V - The Hierophant",
+            "prompt": "教皇",
             "effects": [
               {
                 "type": "story_step",
@@ -49976,8 +49978,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "claimed_by_specters",
-                "masculine_text": "#name# was claimed by specters.",
-                "feminine_text": "#name# was claimed by specters."
+                "masculine_text": "#name#被幽靈奪走性命。",
+                "feminine_text": "#name#被幽靈奪走性命。"
               },
               {
                 "type": "campaign_log_count",
@@ -49996,7 +49998,7 @@
           },
           {
             "condition": "6",
-            "prompt": "VI - The Lovers",
+            "prompt": "戀人",
             "effects": [
               {
                 "type": "story_step",
@@ -50008,8 +50010,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "claimed_by_specters",
-                "masculine_text": "#name# was claimed by specters.",
-                "feminine_text": "#name# was claimed by specters."
+                "masculine_text": "#name#被幽靈奪走性命。",
+                "feminine_text": "#name#被幽靈奪走性命。"
               },
               {
                 "type": "campaign_log_count",
@@ -50028,7 +50030,7 @@
           },
           {
             "condition": "7",
-            "prompt": "VII - The Chariot",
+            "prompt": "戰車",
             "effects": [
               {
                 "type": "story_step",
@@ -50040,8 +50042,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "claimed_by_specters",
-                "masculine_text": "#name# was claimed by specters.",
-                "feminine_text": "#name# was claimed by specters."
+                "masculine_text": "#name#被幽靈奪走性命。",
+                "feminine_text": "#name#被幽靈奪走性命。"
               },
               {
                 "type": "campaign_log_count",
@@ -50060,7 +50062,7 @@
           },
           {
             "condition": "8",
-            "prompt": "VIII - Strength",
+            "prompt": "力量",
             "effects": [
               {
                 "type": "story_step",
@@ -50072,8 +50074,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "claimed_by_specters",
-                "masculine_text": "#name# was claimed by specters.",
-                "feminine_text": "#name# was claimed by specters."
+                "masculine_text": "#name#被幽靈奪走性命。",
+                "feminine_text": "#name#被幽靈奪走性命。"
               },
               {
                 "type": "campaign_log_count",
@@ -50092,7 +50094,7 @@
           },
           {
             "condition": "9",
-            "prompt": "IX - The Hermit",
+            "prompt": "隱者",
             "effects": [
               {
                 "type": "story_step",
@@ -50104,8 +50106,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "claimed_by_specters",
-                "masculine_text": "#name# was claimed by specters.",
-                "feminine_text": "#name# was claimed by specters."
+                "masculine_text": "#name#被幽靈奪走性命。",
+                "feminine_text": "#name#被幽靈奪走性命。"
               },
               {
                 "type": "campaign_log_count",
@@ -50124,7 +50126,7 @@
           },
           {
             "condition": "10",
-            "prompt": "X - Wheel of Fortune",
+            "prompt": "命運之輪",
             "effects": [
               {
                 "type": "story_step",
@@ -50136,8 +50138,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "pulled_into_the_spectral_realm",
-                "masculine_text": "#name# was pulled into the spectral realm.",
-                "feminine_text": "#name# was pulled into the spectral realm."
+                "masculine_text": "#name#被拉入幽靈國度。",
+                "feminine_text": "#name#被拉入幽靈國度。"
               },
               {
                 "type": "campaign_log_count",
@@ -50156,7 +50158,7 @@
           },
           {
             "condition": "11",
-            "prompt": "XI - Justice",
+            "prompt": "正義",
             "effects": [
               {
                 "type": "story_step",
@@ -50168,8 +50170,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "pulled_into_the_spectral_realm",
-                "masculine_text": "#name# was pulled into the spectral realm.",
-                "feminine_text": "#name# was pulled into the spectral realm."
+                "masculine_text": "#name#被拉入幽靈國度。",
+                "feminine_text": "#name#被拉入幽靈國度。"
               },
               {
                 "type": "campaign_log_count",
@@ -50188,7 +50190,7 @@
           },
           {
             "condition": "12",
-            "prompt": "XII - The Hanged Man",
+            "prompt": "倒吊人",
             "effects": [
               {
                 "type": "story_step",
@@ -50200,8 +50202,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "pulled_into_the_spectral_realm",
-                "masculine_text": "#name# was pulled into the spectral realm.",
-                "feminine_text": "#name# was pulled into the spectral realm."
+                "masculine_text": "#name#被拉入幽靈國度。",
+                "feminine_text": "#name#被拉入幽靈國度。"
               },
               {
                 "type": "campaign_log_count",
@@ -50220,7 +50222,7 @@
           },
           {
             "condition": "13",
-            "prompt": "XIII - Death",
+            "prompt": "死神",
             "effects": [
               {
                 "type": "story_step",
@@ -50232,8 +50234,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "pulled_into_the_spectral_realm",
-                "masculine_text": "#name# was pulled into the spectral realm.",
-                "feminine_text": "#name# was pulled into the spectral realm."
+                "masculine_text": "#name#被拉入幽靈國度。",
+                "feminine_text": "#name#被拉入幽靈國度。"
               },
               {
                 "type": "campaign_log_count",
@@ -50252,7 +50254,7 @@
           },
           {
             "condition": "14",
-            "prompt": "XIV - Temperance",
+            "prompt": "節制",
             "effects": [
               {
                 "type": "story_step",
@@ -50264,8 +50266,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "pulled_into_the_spectral_realm",
-                "masculine_text": "#name# was pulled into the spectral realm.",
-                "feminine_text": "#name# was pulled into the spectral realm."
+                "masculine_text": "#name#被拉入幽靈國度。",
+                "feminine_text": "#name#被拉入幽靈國度。"
               },
               {
                 "type": "campaign_log_count",
@@ -50284,7 +50286,7 @@
           },
           {
             "condition": "15",
-            "prompt": "XV - The Devil",
+            "prompt": "惡魔",
             "effects": [
               {
                 "type": "story_step",
@@ -50296,8 +50298,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "pulled_into_the_spectral_realm",
-                "masculine_text": "#name# was pulled into the spectral realm.",
-                "feminine_text": "#name# was pulled into the spectral realm."
+                "masculine_text": "#name#被拉入幽靈國度。",
+                "feminine_text": "#name#被拉入幽靈國度。"
               },
               {
                 "type": "campaign_log_count",
@@ -50316,7 +50318,7 @@
           },
           {
             "condition": "16",
-            "prompt": "XVI - The Tower",
+            "prompt": "高塔",
             "effects": [
               {
                 "type": "story_step",
@@ -50328,8 +50330,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "pulled_into_the_spectral_realm",
-                "masculine_text": "#name# was pulled into the spectral realm.",
-                "feminine_text": "#name# was pulled into the spectral realm."
+                "masculine_text": "#name#被拉入幽靈國度。",
+                "feminine_text": "#name#被拉入幽靈國度。"
               },
               {
                 "type": "campaign_log_count",
@@ -50348,7 +50350,7 @@
           },
           {
             "condition": "17",
-            "prompt": "XVII - The Star",
+            "prompt": "星星",
             "effects": [
               {
                 "type": "story_step",
@@ -50360,8 +50362,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "pulled_into_the_spectral_realm",
-                "masculine_text": "#name# was pulled into the spectral realm.",
-                "feminine_text": "#name# was pulled into the spectral realm."
+                "masculine_text": "#name#被拉入幽靈國度。",
+                "feminine_text": "#name#被拉入幽靈國度。"
               },
               {
                 "type": "campaign_log_count",
@@ -50380,7 +50382,7 @@
           },
           {
             "condition": "18",
-            "prompt": "XVIII - The Moon",
+            "prompt": "月亮",
             "effects": [
               {
                 "type": "story_step",
@@ -50392,8 +50394,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "pulled_into_the_spectral_realm",
-                "masculine_text": "#name# was pulled into the spectral realm.",
-                "feminine_text": "#name# was pulled into the spectral realm."
+                "masculine_text": "#name#被拉入幽靈國度。",
+                "feminine_text": "#name#被拉入幽靈國度。"
               },
               {
                 "type": "campaign_log_count",
@@ -50412,7 +50414,7 @@
           },
           {
             "condition": "19",
-            "prompt": "XIX - The Sun",
+            "prompt": "太陽",
             "effects": [
               {
                 "type": "story_step",
@@ -50424,8 +50426,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "taken_by_the_watcher",
-                "masculine_text": "#name# was taken by the Watcher.",
-                "feminine_text": "#name# was taken by the Watcher."
+                "masculine_text": "#name#被看守人抓走。",
+                "feminine_text": "#name#被看守人抓走。"
               },
               {
                 "type": "campaign_log_count",
@@ -50444,7 +50446,7 @@
           },
           {
             "condition": "20",
-            "prompt": "XX - Judgement",
+            "prompt": "審判",
             "effects": [
               {
                 "type": "story_step",
@@ -50456,8 +50458,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "taken_by_the_watcher",
-                "masculine_text": "#name# was taken by the Watcher.",
-                "feminine_text": "#name# was taken by the Watcher."
+                "masculine_text": "#name#被看守人抓走。",
+                "feminine_text": "#name#被看守人抓走。"
               },
               {
                 "type": "campaign_log_count",
@@ -50476,7 +50478,7 @@
           },
           {
             "condition": "21",
-            "prompt": "XXI - The World",
+            "prompt": "世界",
             "effects": [
               {
                 "type": "story_step",
@@ -50488,8 +50490,8 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "taken_by_the_watcher",
-                "masculine_text": "#name# was taken by the Watcher.",
-                "feminine_text": "#name# was taken by the Watcher."
+                "masculine_text": "#name#被看守人抓走。",
+                "feminine_text": "#name#被看守人抓走。"
               },
               {
                 "type": "campaign_log_count",
@@ -50524,7 +50526,7 @@
         "physical",
         "mental"
       ],
-      "text": "“Mr. Sanford, thank you so much for coming. I know you are a busy man. Your presence at tonight’s meeting is very much appreciated.” Josef shakes Carl Sanford’s hand firmly as he speaks. Sanford merely nods. “I know you’ve only just arrived, but I have some…private matters to discuss with you, if that is all right,” Josef continues, his narrow eyes shifting back and forth between the men flanking Mr. Sanford.\n“Very well.” The elderly man nods to his two enforcers, who step aside to give him privacy. He cradles his hands behind his back, his stature impressive for his age. His discerning eyes fall on Josef. “What is the matter?”\nJosef leans closer. “It’s here, sir. It’s here in this very house.”\nThere is a quiet pause between the two men, and then Carl Sanford smiles.",
+      "text": "因為所有調查員被擊敗，未達成任何結局：“桑福德先生，非常感謝您的到来。我知道您是個大忙人。非常感谢您来出席今晚的會議。”約瑟夫紧紧握住卡爾·桑福德的手對他說。桑福德只是點點頭。“我知道您刚到遣兒來，但我有些……私人問題想跟您討論，如果您不介意的話。”約瑟夫繼續說道，他狹長的眼睛望向桑福德身側的幾名男子，目光在他們之周迅速移動。“好的。”年邁的桑福德對自己的两名保镖點頭示意，令他們走到一邊去，給他一些私人空間。他雙手在身後輕輕交握，在如此年紀仍然保持著挺拔的身姿。他锐利的目光落在約瑟夫身上：“什麼事？”約瑟夫俯身靠近：“就在這兒，先生。就在這幢房子裡。”两人沉默片刻，随即卡爾·桑福德展露出一抹微笑。",
       "steps": [
         "no_experience",
         "pieces_of_evidence",
@@ -51010,7 +51012,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "混洗剩餘遭遇卡牌來創建遭遇牌堆。"
     },
     {
       "id": "keys",
@@ -51460,7 +51462,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "混洗剩餘遭遇卡牌來創建遭遇牌堆。"
     },
     {
       "id": "choosing_a_random_location",
@@ -52659,7 +52661,7 @@
   "id": "the_price_of_progress",
   "type": "interlude",
   "scenario_name": "The Price of Progress",
-  "full_name": "Interlude II: The Price of Progress",
+  "full_name": "幕间故事 Ⅱ：進步的代價",
   "header": "幕間故事II",
   "icon": "silver_twilight_lodge",
   "setup": [
@@ -52696,11 +52698,11 @@
     },
     {
       "id": "is_silver_twilight",
-      "text": "Because at least one investigator has the [[Silver Twilight]] trait:"
+      "text": "至少一位调查員擁有[[银暮秘社]]屬性："
     },
     {
       "id": "no_silver_twilight",
-      "text": "Because no investigators have the [[Silver Twilight]] trait:"
+      "text": "没有调查員擁有[[银暮秘社]]屬性："
     },
     {
       "id": "progress_1",
@@ -52709,7 +52711,7 @@
         "name": "The Price of Progress 1"
       },
       "type": "story",
-      "text": "“Ah, it’s you. I did not expect you to be here, though perhaps I should have,” Mr. Sanford says with a hint of surprise in his voice. “I regret that you had to be involved in this unfortunate affair. I did not plan for you to be a part of any of this.” You narrow your eyes. You suspect fortune had nothing to do with it. You ask him what will happen to those still trapped inside. “Human progress requires sacrifice,” he recites stoically. “It is lamentable when that sacrifice is in blood, but the price in lamentation does not outweigh the yield of our labor.”"
+      "text": "“原來是你啊。我早該想到你會在這見的。”桑福德略帶驚訝地說道，“我很抱歉你被捲入到這場不幸的事件中来。你根本不在我的計劃之中。”你瞇起了自己的眼睛。你覺得這不是“不幸”，幸運在這件事上派不上用塌。你向他詢問，仍被困在辉面的人會遭遇些什麼。“人類的進步需要有所犧牲。”他堅忍地叙述道，“以鮮血為代價的犧牲固然引人悲憫，但與我們辛勞的成果相比，這種悲憫不值一文。”"
     },
     {
       "id": "progress_2",
@@ -52718,7 +52720,7 @@
         "name": "The Price of Progress 2"
       },
       "type": "story",
-      "text": "“I regret that we must meet under such… unfortunate circumstances,” Mr. Sanford says offhandedly. You narrow your eyes. You suspect fortune had nothing to do with it. You ask him what will happen to those still trapped inside. “Human progress requires sacrifice,” he recites stoically. “It is lamentable when that sacrifice is in blood, but the price in lamentation does not outweigh the yield of our labor.”"
+      "text": "“我很抱歉我們得在這樣……不幸的情况下見面。”桑福德不客氣地說道。你瞇起了自己的眼睛。你覺得這不是“不幸”，幸運在這件事上派不上用場。你向他詢問，仍被困在裡面的人會遭遇些什麼。“人類的進步需要有所犠性。”他堅忍地叙述道，“以鮮血為代價的犧牲固然引人悲惘，但與我們辛勞的成果相比，這種悲惘不值一文。”"
     },
     {
       "id": "progress_3",
@@ -52727,18 +52729,18 @@
         "name": "The Price of Progress 3"
       },
       "type": "story",
-      "text": "You didn’t come here to listen to Mr. Sanford proselytize about sacrifice. You came here for answers. You demand an explanation, but the elderly man cuts you off with a scowl. “Yes, yes. You speak of the incident last week. That was the creature’s first manifestation, and the arrival of the dark mist, which you encountered inside.” He glances at the front door to the manor and clears his throat. “The Lodge was not involved in the disappearances that occurred that night,” he explains after a short pause. “But we couldn’t exactly go to the police and tell them a creature made of mist kidnapped four people in Mr. Meiger’s household, could we? So, we had to take matters into our own hands. We suspected that creature was drawn to the crowd, so we recreated the incident in order to understand what happened—to discern its motives.” The decision to host another event at Mr. Meiger’s estate so soon after the disappearances makes sense to you now. As much as you hate to admit it, there is some logic to the plan the Lodge put into action, although you don’t particularly like being used as bait. Who knows how many innocent bystanders were put in mortal danger? Even if the goal was noble, was it worth the sacrifice?\n“I hope you understand that our organization only seeks the betterment of humankind. There are harsh truths that lie beyond our five senses,” Mr. Sanford says, his expression grim. “If we are to survive and prosper, we must adapt. We must learn. We must understand. That is what our order seeks to achieve—a greater understanding of the world around us. A worthy pursuit, don’t you agree?”"
+      "text": "你不是來這兒聽桑福德傳教，聽他那些關於犠性的鬼話的。你來這兒為的是答案。你讓這位老人解释，但他一臉怒容打斷了你。“行行行。你問的是上週的那件事。那是怪物第一次現身，就是你在黑霧裡遇到的那隻。”他瞥了一眼莊園前門，清清嗓子。他停了片刻，解釋道：“那晚發生的失蹤事件舆秘社無關。但我們不能直接跑到警局去，告訴他們一個霧做的怪物從梅吉爾家綁走了四個人，不是嗎？所以，我們得自己解决這事。我們懷疑它被人群所吸引，所以我們将那個事件重現，只為搞明白那晚發生了什麼——從而了解那隻怪物的目的。”你現在明白了，為什麼在失蹤事件後會這麼快決定再在梅吉爾莊園舉辦一次活動。儘管你不願意承認，秘社實施這個計劃是有理可循的，但你不太喜歡被人當成誘餌。誰知道有多少無辜的人被置於危險的境地呢？即使目標是崇高的，它值得藏牲嗎？\n“我希望你能理解，我們組織只為造福人類。在我們五感之外有一些殘酷的存在，”桑福德表情冷峻地說道，“如果我們要生存、要繁榮發展，我們必須適應、研究並理解它們。這就是我們秘社所追求的——更多地了解我們周圍的世界。這是一份值得追求的事業，你不這麼認爲嗎？”"
     },
     {
       "id": "check_josef_meiger",
       "type": "input",
-      "text": "Where is Josef Meiger?",
+      "text": "約瑟夫·梅吉爾在哪裏？",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "victory_display",
-            "text": "Victory display.",
+            "text": "在勝利牌區。",
             "steps": [
               "progress_4",
               "progress_4_effects"
@@ -52746,7 +52748,7 @@
           },
           {
             "id": "entry_hall",
-            "text": "Beneath the Entry Hall.",
+            "text": "在入口大廳底下。",
             "steps": [
               "progress_5",
               "rescued_josef",
@@ -52756,7 +52758,7 @@
           },
           {
             "id": "neither",
-            "text": "Neither.",
+            "text": "以上情況都不是。",
             "steps": [
               "check_silver_twilight"
             ]
@@ -52767,13 +52769,13 @@
     {
       "id": "check_silver_twilight",
       "type": "input",
-      "text": "Compare the number of [[Silver Twilight]] enemies in the victory display and beneath the Entry Hall:",
+      "text": "比較勝利牌區和入口大廳底下[[银暮秘社]]敵人的數量：",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "victory_display",
-            "text": "More in the victory display.",
+            "text": "勝利牌區的數量更多。",
             "steps": [
               "progress_4",
               "progress_4_effects"
@@ -52781,7 +52783,7 @@
           },
           {
             "id": "equal",
-            "text": "Equal number in each.",
+            "text": "兩者數量相等。",
             "steps": [
               "progress_4",
               "progress_4_effects"
@@ -52789,7 +52791,7 @@
           },
           {
             "id": "entry_hall",
-            "text": "More beneath the Entry Hall.",
+            "text": "入口大廳底下的數量更多。",
             "steps": [
               "progress_6",
               "josef_is_alive",
@@ -52806,7 +52808,7 @@
         "name": "The Price of Progress 4"
       },
       "type": "story",
-      "text": "Before you can reply, one of Sanford’s men emerges from the house behind you. He sheathes a long silver blade as he addresses Mr. Sanford. “There is no sign of Josef inside, sir.” The man eyes you suspiciously, keeping his hand on the hilt of his sword. His posture reminds you of that of a knight, stoic and rigidly disciplined. “I see,” Sanford replies. He closes his eyes and takes a deep breath before continuing. “A great loss for our order, but one we anticipated. Gather the Lodge’s belongings from inside the estate, and I will deal with the consequences.” The knight nods and heads back inside. Carl’s cold blue eyes turn back toward you. “As for you, I would ask you to leave this place at once. You have done enough harm as it is.” Before you can protest, he commands the other men nearby to escort you off the premises, and you have little choice but to comply."
+      "text": "你還沒回答，桑福德手下的一名男子從你身後的房子走出。他一邊把一柄銀質長刀入鞘，一邊對桑福德說道：“先生，約瑟夫不在裡面。”那人手握著劍柄，狐疑地看著你。他的姿势讓你想到了堅忍克己、恪守紀律的骑士。“我知道了。”桑福德回應。他閉上眼睛，深吸一口氣然後繼續說道：“這是我社的重大損失，但我們早有預料。把屬於秘社的東西都從莊園裡取出來，我來承檐後果。”那位骑士點點頭，返回莊園。卡繭藍色的眼眸重新望向你：“至於你，我會讓你馬上離開這裡。你造成的傷害已經夠多了。”你還沒來得及抗議，他命令身邊的其他手下護送你離開此地，你别無選擇，只得服從。"
     },
     {
       "id": "progress_4_effects",
@@ -52815,13 +52817,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "josef_disappeared_into_the_mist",
-          "text": "Josef disappeared into the mist."
+          "text": "約瑟夫消失在迷霧之中。"
         },
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "enemies_of_the_lodge",
-          "text": "the investigators are enemies of the Lodge."
+          "text": "調查員與银暮秘社爲敵。"
         }
       ]
     },
@@ -52832,7 +52834,7 @@
         "name": "The Price of Progress 5"
       },
       "type": "story",
-      "text": "You consider Mr. Sanford’s words carefully. You believe that he is telling the truth, but you’re not sure if the ends justify his means. Before you can reply, Josef steps forward. “I believe our new comrades understand the value of working together,” he says politely, standing at your side. “They could have escaped on their own, but they stayed behind to make sure members of the Lodge were safe. Surely we are of the same mind.”\n“Courage is not the same as sacrifice, Josef,” Carl Sanford intones patiently. “Do they have the will to do what is truly right for all of humanity?” The elderly man turns his attention back to you, his cold eyes glinting in the moonlight. He approaches calmly, extending his hand. “Regardless, you have experienced firsthand the danger that we all face. Join us, and we can face it together. With our knowledge combined, we can protect Arkham from this threat.”"
+      "text": "你仔細思考桑福德所說的話。你相信他說的是實話，但為了達到目的是否可以不擇手段，你不知道。你還沒開口回答，約瑟夫邁步向前。“我認為，我們的新同志明白攜手合作有多重要。”他站在你身邊，恭敬地說道，“他本來可以自己逃走，卻留下來確保秘社成員的安全。我們想必是一路人。”\n“有勇氣，不意味著敢於犧牲，約瑟夫。”卡爾·桑福德耐心地說道，“他願意為全人類的福祉做出正確的事嗎？”老人將注意力放回到你身上，他冷酷的眼睛在月光下閃爍著光芒。他平静地向你走來，伸出手。“不論如何，你親身經歷了我們所面臨的險境。加入我們，一起面對吧。結合我們的知識，我們就能保護阿卡姆不受此次的威脅。”"
     },
     {
       "id": "rescued_josef",
@@ -52841,13 +52843,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "rescued_josef",
-          "text": "the investigators rescued Josef."
+          "text": "調查員救出約瑟夫。"
         }
       ]
     },
     {
       "id": "bonus_xp",
-      "text": "Each investigator earns 2 bonus experience, as they gain insight into the inner workings of the Silver Twilight Lodge.",
+      "text": "調查員了解了銀暮秘社的内部運作，每位調查員額外獲得2點經驗值。",
       "effects": [
         {
           "type": "earn_xp",
@@ -52864,7 +52866,7 @@
         "choices": [
           {
             "id": "refuse",
-            "text": "<i>“I refuse to be a part of this.”</i>",
+            "text": "<i>“我拒絕參與。”</i>",
             "steps": [
               "progress_7",
               "enemies_of_the_lodge"
@@ -52872,7 +52874,7 @@
           },
           {
             "id": "agree",
-            "text": "<i>“I agree.”</i>",
+            "text": "<i>“我同意。”</i>",
             "steps": [
               "progress_8",
               "members_of_the_lodge"
@@ -52880,7 +52882,7 @@
           },
           {
             "id": "lie",
-            "text": "<i>“I agree.”</i> (You are lying.)",
+            "text": "<i>“我同意。”</i> (你在撒謊。)",
             "steps": [
               "progress_9",
               "members_of_the_lodge",
@@ -52897,7 +52899,7 @@
         "name": "The Price of Progress 6"
       },
       "type": "story",
-      "text": "You consider Mr. Sanford’s words carefully. You believe that he is telling the truth, but you’re not sure if the ends justify his means. Before you can reply, Josef Meiger emerges from the house behind you, flanked by two guards wearing expensive suits. One wields a long silver blade as he stands guard. The other observes the situation vigilantly, keeping one hand on the grip of a revolver holstered at his side. Josef recognizes you and addresses you curtly. “You have been poking your head where you don’t belong,” he threatens, narrowing his dark eyes.\n“Stay your tongue, Josef,” Sanford interjects. He approaches calmly, extending his hand toward you. “You have experienced firsthand the danger that we all face. Join us, and we can face it together. With our knowledge combined, we can protect Arkham from this threat.”"
+      "text": "你仔細思考桑福德所說的話。你相信他說的是實話，但為了達到目的是否可以不擇手段，你不知道。你還沒回答，約瑟夫·梅吉爾從你身後的房子走出，他左右两側是兩名身著貴價西裝的護衛。其中一名站著護衛時還擺弄著一柄銀質長刀。另一名則警惕地觀察情勢，一隻手握緊了身側的左輪手槍。約瑟夫認出了你，對你簡短地說明：“你一直在窥探不屬於你的地方，”他隧起漆黑如墨的雙眼對你出言威醉。\n“注意言辭，約瑟夫。”桑福德突然開口。他平靜地走來，向你伸出手，“你親身經歷了我們所面臨的險境。加入我們，一起面對吧。结合我們的知識，我們就能保護阿卡姆不受此次的威脅。"
     },
     {
       "id": "josef_is_alive",
@@ -52906,7 +52908,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "josef_is_alive",
-          "text": "Josef is alive and well."
+          "text": "約瑟夫依然健在。"
         }
       ]
     },
@@ -52917,7 +52919,7 @@
         "name": "The Price of Progress 7"
       },
       "type": "story",
-      "text": "Mr. Sanford scowls, returning his hand to his side and narrowing his gaze. “I see. I cannot say I am not disappointed. I thought you would be insightful enough to see the value in working together. But I realize now that my confidence was misplaced.” He sighs and gazes past you, toward Josef ’s manor. “Very well. The Lodge will handle this problem on our own. Return to your state of ignorance. But I warn you: do not get in our way. I am not an enemy you want to have.” Before you can protest, Sanford commands the other men nearby to escort you off the premises, and you have little choice but to comply."
+      "text": "桑福德皺起眉頭，將手放回身側，瞇起了眼睛。“我明白了。說寶話，我有些失望。我本以為你有足夠的洞察力，明白攜手合作有多重要。但現在我意識到，我信錯了人。”他歉了口氣，視線越過你，望著約瑟夫的莊園，“好得很。秘社會自己解決問题。把這些都忘了，回去過你無知的日子吧。但我警告你：别擋我們的道。你不曾想要舆我為敵的。”你還没來得及抗議，桑福德命令身邊的其他手下護送你離開此地，你別無選擇，只得服從。"
     },
     {
       "id": "enemies_of_the_lodge",
@@ -52926,7 +52928,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "enemies_of_the_lodge",
-          "text": "the investigators are enemies of the Lodge."
+          "text": "調查員與银暮秘社爲敵。"
         }
       ]
     },
@@ -52937,17 +52939,17 @@
         "name": "The Price of Progress 8"
       },
       "type": "story",
-      "text": "You shake Mr. Sanford’s hand. His grip is cold, but strong. The other members of the Lodge seem to relax around you. “We will do great works together, my friends,” says Sanford. “Great works indeed.”"
+      "text": "你與桑福德握手。他的手掌冰冷，但很有力。秘社其他成員在你周围似乎很從容。“諸位，我們将共襄盛舉。”桑福德說道，“名副其實的盛舉。”"
     },
     {
       "id": "members_of_the_lodge",
-      "text": "In your Campaign Log, record that <i>the investigators are members of the Lodge.</i> Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "在冒險日誌中，記錄下<i>調查員成為了秘社一員</i>。將1個[cultist]標記加入混亂袋，持續到這個劇本結束。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "members_of_the_lodge",
-          "text": "the investigators are members of the Lodge."
+          "text": "調查員成為了秘社一員。"
         },
         {
           "type": "add_chaos_token",
@@ -52973,7 +52975,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "deceiving_the_lodge",
-          "text": "the investigators are deceiving the Lodge."
+          "text": "調查員在欺騙秘社。"
         }
       ]
     },
@@ -53007,7 +53009,7 @@
         "name": "If You Are Being Hunted"
       },
       "type": "story",
-      "text": "You are startled from your reverie by the sensation of something crawling up your chest, an icy hand that clasps around your throat. It grips until your breath is trapped and your windpipe starts to crack. Only there is nothing there—just a chilly draft entering the room through the open window. The wind shrill, whistling wind rattles your window frame, penetrating the safety of your home. It almost sounds like the dissonant notes of a dreadful flute: a mindless, haunting music that fills you with inexplicable terror. You rush to the window and slam it shut, hands trembling. Still, the thin, discordant notes echo around you. <i>This can’t be real</i>, you think. <i>Not here, not now</i>. But denial provides no asylum.\nThe cold creeps its way up your back once again. A thin, grey mist pours into the room, seeping beneath your front door and through the cracks around your window. It crawls along the ground and coils slowly around your ankles, sending shivers up your body. You run into your bedroom, slam the door, and lock it. A few seconds of respite are all you receive before the invader resumes its assault. Over and over, a heavy force slams against the door, shaking the entire room. You press against the door, trying to hold it shut. With each pounding crash, dark mist seeps through cracks appearing in the wood. With a final crash, the door shatters. You are hurled back, landing not on the floor but in a cloud of mist, gripped by a hundred spectral arms that cling into your flesh and tear you limb from limb.\nNO!—That can’t be right. You are here, reading this very text. A wave of relief washes over you as you realize it is all in your head. Even so, the words compel your mind to torment you with visions of a macabre death. You find yourself glancing at your window, searching for dark mist that is not there. What if the text is trying to tell you something? Maybe—no, that’s impossible.\n“Real or imagined, your fate approaches all the same.”"
+      "text": "你感覺某物爬上胸口，從幻想之中驚醒，一雙冰冷的手緊緊扣住了你的喉嚨。它繼續攥緊，讓你沒法呼吸，氣管開始破裂。眼前空無—物——只從敞開的窗戶吹進了一股冷風。風凄厲地呼啸著，撼動著你的窗框，你的家中不再安全。風聲聽起來像是恐怖長笛吹奏出的不諧笛聲，這縈繞心頭的樂聲讓你心頭載满不可言說的恐耀。你衝到窗口，猛地關上窗戶，雙手顫抖不已。然而，不諧樂聲仍然微弱地迴蕩在你周圍。<i>這不可能是真的</i>，你如此想道。<i>不是此時，也不是此地</i>。但是否認它的存在並不能保護你。\n寒意再次爬上了你的背脊。一股灰色薄霧湧入房間，從前門下方和窗戶周圍的裂缝裡鑚了進來。它沿著地面爬行，慢慢在你腳踝周圍盤繞，令你全身發颤。你跑進卧室，猛地把門關上並上鎖。在入侵者繼續襲擊之前，你只有幾秒鐘喘息的時間。一股強大的力量一次次地撞擊房門，撼動整個房間。你頂住門，試圖不讓門被撞開。伴隨著每一次撞擊，黑霧從木板的裂縫中漸漸渗入。最後門被撞破。你被撞飛回來，迎接你下墜身驅的並不是地板，而是一團黑霧，墜入其中的你被上百隻幽靈般的手臂抓住，緊貼著你的皮肉，將你撕成碎片\n不！——這不可能。你站在原地，逐字讀著這篇文字。當你意識到這一切都是在你腦内上演的，一股如釋重負的感覺湧上心頭。即便如此，這篇文字仍會令你的頭腦浮現出恐怖的死亡畫面，讓你備受折磨。你發現自己的視線望著窗戶，尋找著不存在於此的黑霧。如果說這篇文字是想告訴你某些信息呢？可能——不這是不可能的。\n“不論是真是假，你的合運都一樣。”"
     }
   ]
 },
@@ -53339,7 +53341,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "混洗剩餘遭遇卡牌來創建遭遇牌堆。"
     },
     {
       "id": "earn_xp",
@@ -53936,7 +53938,7 @@
 {
   "id": "the_witching_hour",
   "scenario_name": "The Witching Hour",
-  "full_name": "Scenario I: The Witching Hour",
+  "full_name": "冒險 I：巫異時刻",
   "header": "冒險I",
   "chaos_bag_card": "05050",
   "setup": [
@@ -53959,7 +53961,7 @@
         "name": "Intro 1"
       },
       "type": "story",
-      "text": "It is a breezy November evening in Arkham—the perfect night for a walk through Independence Square, or so you had thought, up until the moment Anna Kaslow offered to tell your fortune. You agreed, though you would soon come to regret this decision. For each of the cards the Romani soothsayer draws from her deck, she weaves a tale of despair and misfortune. Judgment. Temperance. Justice. The Hermit. The Hanged Man. The Hierophant. The Lovers. The Chariot. The Wheel of Fortune. To complete her tale, Anna draws the top card and lays it in the center of the formation. Dominating the old, worn card is the ominous image of a towering construct of black onyx. A hellish storm rages over the tower, lightning coursing through the dark clouds. It reads: THE TOWER · XVI. Even if the rest of the reading had gone swimmingly, the sight of the center card would have sent a shiver down your spine. As it stands now, it feels more like the closing of a casket over your body.\n“You did tell me to give it to you straight,” the soothsayer says. She sits cross-legged in front of you, wearing a stony, grim expression. From her unwavering gaze and her cold eyes, you can tell Anna derives no satisfaction from this reading. “Simple misfortune is the least of your concerns,” she explains. “This is a matter of life and death.” She motions to the cards surrounding The Tower—each of them laid in the reverse position—and stares at them intently. “Arrayed against you is everything that you cannot see. You alone stand in their way,” she says enigmatically."
+      "text": "這夜涼風習習，是阿卡姆十一月的一個夜晚——這個晚上在獨立廣場散個步再好不遇，或者說在安娜·卡斯洛主動給你算命之前，你是這麼認為的。你答應讓她給你算命，但你很快就後悔了遭個決定。吉普賽占卜師從牌庫裡抽出的每一張牌，都编織出—個絕望與不幸的故事。審判。節制。正義。隱士。倒吊人。教皇。戀人。戰車。命運之输。安娜即将完成占卜，她抽出最顶上的塔羅牌，将它放在牌陣中央。牌陣中最為重要的這張牌残破、考舊，上面畫有不样的圖紧：高聳的黑璃瑙建築。暴風雨如同地獄股在塔頂肆虐，高雲裡一道閃電落下。這張牌寫著：高塔·XV。雖然接下來的解牌都很顺利，但看到中央的那張牌還是讓你打了個寒颤。此時此刻，它就像一副合上棺蓋的棺材，盛装著你的屁體。\n“你跟我說過，讓我直接把它給你。”占卜師說道。她盤腿坐在你面前，表情冷酷。從她堅定的目光和冷酷的眼神，你看得出安娜並不满足於這次解牌。“如果只是不幸，你是不會紧張的。”她解釋說，“這關係生死。”她望向高塔周圍的塔羅牌——它們全都呈現逆位——專注地盯著這些牌。“你看不見的一切都與你對立。唯揭你一人擋了它們的路。”她神秘兮兮地說。"
     },
     {
       "id": "choose_fate",
@@ -53970,7 +53972,7 @@
         "choices": [
           {
             "id": "accept_fate",
-            "text": "<i>“What can I do to avoid this fate?”</i>",
+            "text": "<i>“我怎樣才能避免這樣的命運呢？”</i>",
             "steps": [
               "intro_2",
               "accepted_fate",
@@ -53979,7 +53981,7 @@
           },
           {
             "id": "reject_fate",
-            "text": "<i>“This is bullshit.”</i>",
+            "text": "<i>“一派胡言”</i>",
             "steps": [
               "intro_3",
               "rejected_fate"
@@ -53995,17 +53997,17 @@
         "name": "Intro 2"
       },
       "type": "story",
-      "text": "The woman nods and draws the top card of the deck with a steady hand, revealing it to you without looking at it herself. Depicted on the card is a single wooden wand, surrounded by a pattern of broken stained glass. It reads: ACE OF RODS. “You must be ready to act,” she advises. “Without hesitation. Without regret. When the opportunity arises, you must set into motion the events that will change this fate.”"
+      "text": "安娜點了點頭，沉穩地抽出了牌庫最頂上的牌，沒有看那張牌的内容，直接對你亮牌。那張牌上畫的是一根木質權杖，周圍是破損的彩繪玻璃。遣張牌寫著：權杖王牌。“你必須準備好探取行動。”她提出建議，“别猶豫。别後悔。機會來臨的时候，你必須行動起來改斐命運。”"
     },
     {
       "id": "accepted_fate",
-      "text": "In your Campaign Log, record that <i>you have accepted your fate</i>. Add 2 [tablet] tokens to the chaos bag for the remainder of the campaign.",
+      "text": "在冒險日誌記錄下<i>你接受了自己的命運</i>。將2個[tablet]標記加入混亂袋，持續到這個劇本結束。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "accepted_fate",
-          "text": "you have accepted your fate."
+          "text": "你接受了自己的命運。"
         },
         {
           "type": "add_chaos_token",
@@ -54018,7 +54020,7 @@
     },
     {
       "id": "add_tarot",
-      "text": "Before drawing their opening hand for this scenario, the lead investigator searches the collection for 1 copy of The Tower · XVI and 1 copy of Ace of Rods and adds each of them to their deck, if able. The lead investigator has earned these cards. They do not count toward their deck size. (If one or both of these cards are not available, skip this step.)",
+      "text": "在調查員隊長抽取本場冒險的起始手牌前，如可能，該調查員從收藏中找出1張 高塔·XVI 和1張 權杖王牌",
       "effects": [
         {
           "type": "add_card",
@@ -54040,17 +54042,17 @@
         "name": "Intro 3"
       },
       "type": "story",
-      "text": "The woman smirks. “Yes, in a sense, I suppose it is,” she responds. With a single swift motion, she picks up each of the cards displayed before you, save for The Tower card, and shuffles them back into the deck. “The cards only reveal and advise. They cannot influence or impose.” She locks eyes with you, and her smile vanishes from her face. “In other words, though your fate is not set in stone, I assure you the danger you face is not ‘bullshit.’ It is real.” Her eyes narrow. “It is very real.”"
+      "text": "安娜得意地笑了。“沒錯，在某種意義上說，我希望這是一派胡言。”她重複道。她快速地拿起所有擺在你面前的塔羅牌，留下高塔牌在桌面，将其餘塔羅牌洗回了牌庫。“塔羅牌只會揭示和建議，不會影響，也不會強加。”她的眼神鎖定了你，笑容從她臉上消失。“換句話來說，雖然你的命運未成定数，但我向你保證，你面臨的危險可不是什麽‘一派胡言’，而是真寶存在的。”她的眼睛眯了起来，“非常真實。”"
     },
     {
       "id": "rejected_fate",
-      "text": "In your Campaign Log, record that <i>you have rejected your fate</i>. Add 2 [elder_thing] tokens to the chaos bag for the remainder of the campaign.",
+      "text": "在冒險日誌記錄下<i>你拒絕了自己的命運<i>。將2個[elder_thing]標記加入混亂袋，持續到這個劇本結束。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "rejected_fate",
-          "text": "you have rejected your fate."
+          "text": "你拒絕了自己的命運。"
         },
         {
           "type": "add_chaos_token",
@@ -54068,7 +54070,7 @@
         "name": "Intro 4"
       },
       "type": "story",
-      "text": "Silence hangs in the air as you peer into The Tower card. The world around you dissolves into emptiness as your eyes fixate on the onyx tower. Rolling thunder echoes in the distance. “Do you understand now?” Anna asks. There is no other sign of the soothsayer: only her strained voice. A bolt of lightning streaks across the sky. “Do you see your fate before you, as I do?”\nAnother resounding crack of thunder, and you are suddenly awake. Icy rain pelts your body, soaking you through to the bone. You are lying in the mud beside a wooded trail, and there is no other soul in sight…"
+      "text": "你看著高塔牌的時候，空氣中籠罩著寂靜。你的雙眼凝視著黑瑪瑙高塔，周圍的世界溶為虚空。遠方迥響著滚滚的雷聲。“你現在懂了嗎？”安娜問道。你不見占卜師的跳影：只聽見她紧張的聲音。一道閃電劃遇夜空。“你是不是跟我一樣，也看見了自己未來的命運？”\n又一道雷聲巨響，你突然醒來。冰冷的雨水打在你身上，將你徹底淋濕。你躺在泥地裡，旁邊是一條樹木繁茂的小路，視野裡—個人都没有……"
     },
     {
       "id": "gather_encounter_sets",
@@ -54083,7 +54085,7 @@
         "striking_fear",
         "tentacles"
       ],
-      "subtext": "When gathering <i>The Devourer Below</i> encounter set, only gather the 6 Arkham Woods locations. Do not gather any of the other cards from that encounter set."
+      "subtext": "在找出<i>地底噬魔</i>遭遇組時，只找出其中6張阿卡姆密林地點。不要拿取該遭遇組的其他任何卡牌。"
     },
     {
       "id": "gather_agents",
@@ -54096,37 +54098,37 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put 5 Witch‐Haunted Woods locations into play as follows:",
+      "text": "按照以下指示，將5張女巫作崇之林地點放置入場：",
       "bullets": [
         {
-          "text": "In player order, each investigator puts 1 random Witch‐ Haunted Woods location into play <i>in front of them</i>, until there are exactly 5 Witch‐Haunted Woods locations in play (see “Lost and Separated,” below). <i>For example: In a 1-player game, there should be 5 Witch-Haunted Woods in front of that investigator. In a 2-player game, there should be 3 Witch-Haunted Woods in front of the lead investigator and 2 Witch-Haunted Woods in front of the other investigator. In a 3-player game, there should be 2 Witch-Haunted Woods in front of the lead investigator, 2 Witch-Haunted Woods in front of the next investigator, and 1 Witch-Haunted Woods in front of the final investigator. In a 4-player game, there should be 2 Witch-Haunted Woods in front of the lead investigator, and 1 Witch-Haunted Woods in front of each other investigator.</i>"
+          "text": "按照玩家順序，每位調查員將1張隨機的女巫作祟之林放置入場，<i>放在自己面前<i>，直到場上有正好5張女巫作祟之林地點（詳見下文“迷途失散”）。<i>示例：在單人遊戲中，調查員面前會有5張女巫作祟之林地點。在雙人遊戲中，一位調查員面前會有3張女巫作祟之林地點，另一位調查員面前會有2張女巫作祟之林地點。在三人遊戲中，調查員隊長和另一位調查員面前會各有2張女巫作祟之林地點，而第三位調查員面前會有1張女巫作祟之林地點。在四人遊戲中，調查員隊長面前會有2張女巫作祟之林地點，其他每位調查員面前各會有1張女巫作祟之林地點。</i>"
         },
         {
-          "text": "Remove each other Witch‐Haunted Woods from the game."
+          "text": "將其他所有的女巫作崇之林地點從遊戲中移除。"
         },
         {
-          "text": "Each investigator begins play at one of the locations in front of them, chosen at random."
+          "text": "每位調查員隨機選擇自己面前的一個地點，從該地點開始遊戲。"
         }
       ]
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: each of the Arkham Woods locations and Anette Mason."
+      "text": "將下列卡牌放在遊戲區域旁邊，位於場外：所有阿卡姆密林地點和安妮特·梅森。"
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "混洗剩餘遭遇卡牌來創建遭遇牌堆。"
     },
     {
       "id": "lost_and_separated",
       "type": "rule_reminder",
-      "title": "Lost and Separated",
-      "text": "During this scenario, the investigators begin play separated and cut off from one another. This is represented by locations entering play “in front of ” each investigator (placed just above their play area).\nAct 1a—“Lost in the Woods” has the text: “Locations in front of you are connected to one another.” This text means that regardless of location/connection symbols, the locations in front of you are considered to be connected to one another, and enemies and investigators may move between them. Locations remain connected to one another via their location/connection symbols, as well.\nHowever, Lost in the Woods also has the text: “You cannot enter locations in front of other investigators.” This means that you cannot move to a location in front of another investigator, even if the two locations are connected or if you are moving via a card effect. Note that this restriction does not apply to enemies, who are free to move between connected locations regardless of which investigator those locations are in front of."
+      "title": "迷途失散",
+      "text": "在本場冒險期間，調查員失散在各個地點開始遊戲，與其他調查員隔絕。調查員迷途表現為：地點入場時放在每位調查員“面前”（分別放在每位調查員的遊戲區域上方）。\n場景1a—“森林迷途”帶有文字：“你面前的地點均相互連接。”這行文字意味著無視地點/連接符號，視作你面前的地點相互連接，並且敵人和調查員均可在這些地點之間移動。地點同時仍通過其地點/連接符號與另一個地點連接。\n然而\"森林迷途\"還有一行文字：“你不能進入其他調查員面前的地點。”這意味著你不能移動進入其他調查員面前的地點，即便你在卡牌效果的作用下移動或者這兩個地點有連接。注意上述限制對敵人無效，敵人可自由在連接地點之間移動，不論這些地點是哪些調查員面前的。"
     },
     {
       "id": "check_final_act",
       "type": "input",
-      "text": "What act was in play when the scenario ended?",
+      "text": "本場冒險結束時的當前場景是哪張？",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -54178,7 +54180,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "witches_spell_broken",
-          "text": "the witches' spell was broken."
+          "text": "女巫的法術被破壞"
         }
       ]
     },
@@ -54189,25 +54191,25 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "witches_spell_cast",
-          "text": "the witches' spell was cast."
+          "text": "女巫的法術成功施放"
         }
       ]
     },
     {
       "id": "mementos_flute_and_ritual_components",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Mesmerizing Flute</i> and <i>Ritual Components</i>. Each investigator earns 1 bonus experience, as they gain insight into Arkham’s mysterious past.",
+      "text": "在冒險日誌“遺留記憶”下方記錄下<i>催眠長笛</i>和<i>儀式道具</i>。調查員得知阿卡姆神秘的往昔，每位調查員獲得1點獎勵經驗值。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "mesmerizing_flute",
-          "text": "Mesmerizing Flute"
+          "text": "催眠長笛"
         },
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "ritual_components",
-          "text": "Ritual Components"
+          "text": "儀式道具"
         },
         {
           "type": "earn_xp",
@@ -54233,19 +54235,19 @@
     },
     {
       "id": "mementos_flute_and_scrap_of_torn_shadow",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Mesmerizing Flute</i> and <i>Scrap of Torn Shadow</i>. Each investigator earns 1 bonus experience, as they gain insight into Arkham’s mysterious past.",
+      "text": "在冒險日誌“遺留記憶”下方記錄下<i>催眠長笛</i>和<i>殘影碎片</i>。調查員得知阿卡姆神秘的往昔，每位調查員獲得1點獎勵經驗值。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "mesmerizing_flute",
-          "text": "Mesmerizing Flute"
+          "text": "催眠長笛"
         },
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "scrap_of_torn_shadow",
-          "text": "Scrap of Torn Shadow"
+          "text": "殘影碎片"
         },
         {
           "type": "earn_xp",
@@ -54257,20 +54259,20 @@
     {
       "id": "mementos_check_act",
       "type": "input",
-      "text": "Check the act deck.",
+      "text": "檢查場景牌堆。",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "act_1_or_2",
-            "text": "It was act 1 or 2 when the scenario ended.",
+            "text": "本場冒險結束時的場景為場景1或場景2。",
             "steps": [
               "no_record"
             ]
           },
           {
             "id": "act_3",
-            "text": "It was act 3 when the scenario ended.",
+            "text": "本場冒險結束時的場景為場景3。",
             "steps": [
               "mementos_flute"
             ]
@@ -54281,13 +54283,13 @@
     {
       "id": "mementos_flute",
       "bullet_type": "small",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Mesmerizing Flute</i>. Each investigator earns 1 bonus experience, as they gain insight into Arkham’s mysterious past.",
+      "text": "在冒險日誌“遺留記憶”下方記錄下<i>催眠長笛</i>。調查員得知阿卡姆神秘的往昔，每位調查員獲得1點獎勵經驗值。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "mesmerizing_flute",
-          "text": "Mesmerizing Flute"
+          "text": "催眠長笛"
         },
         {
           "type": "earn_xp",
@@ -54299,7 +54301,7 @@
     {
       "id": "no_record",
       "bullet_type": "small",
-      "text": "No record is made."
+      "text": "不作記錄。"
     }
   ],
   "resolutions": [
@@ -54327,7 +54329,7 @@
         "name": "Resolution 1"
       },
       "title": "結局1",
-      "text": "Despite her wounds, the leader of the coven rises to her feet. More of the hooded figures emerge from the tree line, eager to defend their leader. “Interloper!” one calls you, pulling off her hood and pointing a gnarled wooden rod in your direction. Her bright-red hair glows in the firelight, embers dancing about her extended hand. “They’re the ones from before, High Priestess: the ones who interfered with our great work.”\nThe “High Priestess” holds up a single hand, and a hush falls over the other witches. “As always, I admire your perseverance, sister. But I do not believe these are the ones you speak of,” she replies to the red-haired accuser. You lower your weapons as several of the hooded figures approach and surround their leader. They begin chanting in a soft tone as they examine her wounds. The red-haired witch crosses her arms and watches you with a hard glare, her gaze never straying far from you. “I am Anette,” says the leader of the coven, “and these are my sisters. Tell me: Who are you, and why are you here?”\nYou explain how you awoke in the woods, how you were attacked by terrible creatures, and how you came to the center of this circle in order to break the spell surrounding the woods. Anette’s eyes narrow as she hears your story. “That is impossible. The circle was closed. None could enter the woods while we were completing our spell.” She grits her teeth. “You must go at once. This is not your place.”\n“But, High Priestess!—” the red-haired witch exclaims, only to be interrupted by Anette’s gaze. The two lock eyes, a battle of wills that quickly proves Anette victorious.\n“Stand down, Erynn,” Anette says with a firm, motherly tone, as though admonishing a child. She turns her attention back to you as the witch named Erynn lowers her head in defeat. “Go. You’ve broken the spell, just as you desired. You can leave the woods now. But I give you one final warning: cross us again, and we will not be so merciful.”\nYou begin to protest, but before you are able to utter a single word, a dark gale snuffs out the fire at the center of the clearing. Shadows from beyond the tree line suddenly twist and coil into the clearing, tugging at the edges of the witches’ cloaks. One by one, the shadows twist and pull each of the witches into the darkness beyond. In moments, they are gone. You are left with only the soft glow of moonlight to guide you home.",
+      "text": "儘嘗遍體麟傷，女巫集會的領導者還是站起身來。越來越多兜帽覆面的人影從樹林裡現身，想要保護她們的镇導者。“入侵者！”其中一人朝你喊道，同時摘下自己的兜帽，用一根粗糙的木杖指著你。她鮮亮的紅髮在火光中閃動，伸出的手上有灰燼在飛舞。“女祭司大人，他們就是來自遇去之人，曾妨礙我們的大事。”\n“女祭司”舉起一手，其他女巫都缄口不語。“妹妹，我一向佩服你的坚持。但我相信他們不是你所說的人。”她向紅女子答道。你放低了自己的武器，數名戴著兜帽的人靠近領袖，圍在她周圍。她們開始輕聲誦咒，同時檢查她的傷勢。紅髮女巫雙手交叉，用嚴属的目光注視著你，視線片刻不離。“我是安妮特。”女巫集會的領導者說道，“而這些是我的姐妹。告訴我：你是誰，你為什麼到這兒來？”\n你解释說，你是如何在樹林裡醒來，如何被恐怖的生物襲擊，又是如何為了破壞籠罩樹林的法術而來到圆環中央。安妮特聽著你的描述，眼睛瞇了起來：“那是不可能的。圆環已經關閉了。在我們施術的時候沒人能夠踏入這片樹林。”她咬紧牙關說道，“你必須馬上離開。這不是你該來的地方。”\n“但是，女祭司大人——！”這名红女巫大叫喊，被安妮特看了一眼後閉上了嘴。她們四目相對，很快紅髮女巫就在安妮特的目光下敗下陣来。\n“别闹了，伊琳。”安妮特的語氣堅定，像母亲一般，仿佛在教導一個小孩子。名叫伊琳的女巫挫敗地低下了頭，安妮特将注意力轉回到你身上。“走吧，如你所願，法術已种被你破壞，現在你可以離開這片樹林了，但我最後警告你一句：要是再跟我們作對，我們就不會這麽仁慈了。”\n你想要抗議，但你還沒来得及說出一個字，一陣黑風就把空地中央的火焰吹熄了。樹林以外的黑影突然纏繞、旋入地面，应扯著女巫們的披風邊緣。一個接一個，黑影將所有女巫都拖入了另一頭的黑睛之中。轉瞬之間，她們消失得無影無蹤。你留在原地，只有温柔的月光指引你回家的路。",
       "steps": [
         "witches_spell_broken",
         "mementos_flute_and_ritual_components",
@@ -54342,7 +54344,7 @@
         "name": "Resolution 2"
       },
       "title": "結局2",
-      "text": "With the spell broken, the hooded figures turn their attention to you. More of them emerge from the tree line, eager to take vengeance upon you for destroying their plans. “Interloper!” one of them calls you, pulling off her hood and pointing a gnarled wooden rod in your direction. Her bright-red hair glows in the firelight, embers dancing about her extended hand. “You will not escape this time!” she cries, prepared to strike you down.\n“Stop!” the leader of the coven yells in a commanding voice, holding up her hand. The red-haired accuser stops in her tracks, and there is a sudden stillness in the clearing around the circle.\n“But High Priestess,” the witch persists, “they’re the ones from before. The ones who interfered with our great work.”\nThe High Priestess places a hand on the red-haired witch’s shoulder. “As always, I admire your perseverance, sister. But I do not believe these are the ones you speak of,” she replies.\nThe red-haired witch lowers her rod as the High Priestess approaches you, her arms crossed. She watches you with a hard glare, her gaze never straying far from you. “I am Anette, and these are my sisters,” she says. “Tell me: who are you, and why are you here?”\nYou explain how you awoke in the woods, how you were attacked by terrible creatures, and how you came to the center of this circle in order to break the spell surrounding the woods. Anette’s eyes narrow as she hears your story. “That is impossible. The circle was closed. None could enter the woods while we were completing our spell.” She grits her teeth. “You must go at once. This is not your place.”\n“But, High Priestess!—” the red-haired witch exclaims, only to be interrupted by Anette’s gaze. The two lock eyes, a battle of wills that quickly proves Anette victorious.\n“Stand down, Erynn,” Anette says with a firm, motherly tone, as though admonishing a child. She turns her attention back to you as the witch named Erynn lowers her head in defeat. “Go. You’ve broken the spell, just as you desired. You can leave the woods now. But I give you one final warning: cross us again, and we will not be so merciful.”\nYou begin to protest, but before you are able to utter a single word, a dark gale snuffs out the fire at the center of the clearing. Shadows from beyond the tree line suddenly twist and coil into the clearing, tugging at the edges of the witches’ cloaks. One by one, the shadows twist and pull each of the witches into the darkness beyond. In moments, they are gone. You are left with only the soft glow of moonlight to guide you home.",
+      "text": "法術遭到破壞，越來越多面覆兜帽的人影把注意力轉向你。她們從樹林裡現身，想要報復你破壞了她們的計劃。“入侵者！”其中一人朝你喊道，同時摘下自己的兜帽，用一根粗糙的木杖指著你。她鮮亮的紅髮在火光中閃動，伸出的手上有灰燼在飛舞。“你逃不出這個時空！”她尖叫著，想要将你擊倒。“往手！”女巫集會的领導者用命令式的口吻喊道，單手舉起。紅髮女子停下了脚步，圆環四周突然陷入了寂靜。\n“但女祭司大人。”紅髮女巫堅持說，“他們就是來自過去之人。普妨礙我們的大事。”\n女祭司將一隻手放在紅髮女巫的肩膀上。“妹妹，我一向佩服你的坚持。但我相信他們不是你所說的人。她回答道。”\n女祭司朝你走來時，紅髮女巫放下了手裡的木杖，雙臂交叉。她用嚴厲的目光注視著你，視線片刻不雕。“我是安妮特，而這些是我的姐妹。”女祭司說道，“告訴我：你是誰，你為什麼到這兒來？”\n你解釋說，你是如何在樹林裡醒來，如何被恐怖的生物襲擊，又是如何為了破壞籠罩樹林的法術而來到圆環中央。安妮特聽著你的描述，眼睛瞇了起來：“那是不可能的。圆環已經關閉了。在我們施術的時候沒人能夠踏入這片樹林。”她咬緊牙關說道，“你必須馬上離開。這不是你該來的地方。”\n但是，女祭司大人——！這名紅髮女巫大聲叫喊，被安妮特看了一眼後閉上了嘴。她們四目相對，很快紅髮女巫就在安妮特的目光下敗下陣來。\n“别鬧了，伊琳。”安妮特的語氣堅定，像母貌一般，仿佛在教導一個小孩子。名叫伊琳的女巫挫敗地低下了頭，安妮特將注意力轉回到你身上。“走吧。如你所願，法術已經被你破壞。現在你可以離開這片樹林了。但我最後警告你一句：要是再跟我們作對，我們就不會這麼仁慈了。”\n你想要抗議，但你還沒來得及說出一個字，一陣黑風就把空地中央的火焰吹熄了。樹林以外的黑影突然纏鏡、旋入地面，拉扯著女巫們的披風邊綠。一個接一個，黑影將所有女巫都拖入了另一頭的黑暗之中。轉瞬之間，她們消失得無影無蹤。你留在原地，只有温柔的月光指引你回家的路。",
       "steps": [
         "witches_spell_broken",
         "mementos_flute_and_scrap_of_torn_shadow",
@@ -54357,7 +54359,7 @@
         "name": "Resolution 3"
       },
       "title": "結局3",
-      "text": "You collapse to the ground in exhaustion, your head swimming with otherworldly voices and the high- pitched piping of a hundred discordant flutes. Your entire body rattles with the sensation. Blood trickles from your ears, and tears well in your eyes. You try to crawl to safety, but it is to no avail. The piping only grows in volume, the discordant cacophony shattering your eardrums and turning your thoughts to sludge. Eventually, after what feels like hours, weariness claims your consciousness.\nWhen you next awaken, it is by the side of Hangman’s Brook, where a small child is shaking you vigorously by the shoulders. “Get back here; don’t touch them!” the child’s mother calls to the boy, and he recoils from you. Considering the state you’re in, you wouldn’t be surprised if she thought you some kind of rummy. You brush some of the caked dirt off of your coat and rise begrudgingly to your feet, wandering toward Uptown.",
+      "text": "你體力不支，癱倒在地，你的頭腦在異界的歌聲、上百支長笛奏出尖厲的不諧之音中陷入眩暈。這感覺讀你全身颤抖。血液從你耳道滴落，雙眼裡噙满了淚水。你試圖爬到安全的地方，但這只是徒券。笛聲愈發響亮，這不和谐的噪音擊碎你的鼓膜，瓦解你的思維。終於，感覺像是經過了數個小時，疲憊占據了你的意識。\n當你再次醒來已在絞刑者河邊，一個小孩用力地摇晃著你的肩膀。他的母親對他喊道：“回來，別碰他！”小孩從你身邊溜遠。考慮到你現在的情况，要是她把你當成了酒鬼之類的，這一點也不意外。你拂去外套上厚厚的灰塵，勉強地站了起來，向住宅區走去。",
       "steps": [
         "witches_spell_cast",
         "mementos_check_act",
@@ -54372,7 +54374,7 @@
         "name": "Resolution 4"
       },
       "title": "結局4",
-      "text": "You collapse to the ground in exhaustion, your head swimming with otherworldly voices and the high-pitched piping of a hundred discordant flutes. The sensation fades as the circle’s leader approaches, her powerful form looming over you. “We cannot allow the spell to fail. Take them to the edge of the woods and make sure we are not interrupted,” she commands several of the other hooded women. They grab you by the arms and hoist you up, dragging you away from the central clearing. You try to resist, but your limbs are numb and sluggish, and the cacophony of sound and sensations assaulting your mind has turned your thoughts to sludge. Eventually, after what feels like hours, you are hurled to the ground, and weariness claims your consciousness.\nWhen you next awaken, it is by the side of Hangman’s Brook, where a small child is shaking you vigorously by the shoulders. “Get back here; don’t touch them!” the child’s mother calls to the boy, and he recoils from you. Considering the state you’re in, you wouldn’t be surprised if she thought you some kind of rummy. You brush some of the caked dirt off of your coat and rise begrudgingly to your feet, wandering toward Uptown.",
+      "text": "你體力不支，癱倒在地，你的頭腦在異界的歌聲、上百支長笛奏出尖厲的不諧之聲中陷入眩暈。當女巫會的領導者靠近時，這股感覺消散了，她強壮的身形向你逼近。“我們不能讓法術功虧一篇。把他带到叢林邊缘，别讓他打断我們。”她命令其他幾個戴著兜帽的女子。她們抓起你的手臂把你抬了起來，將你從中央空地拖走。你試圆反抗，但你四肢行動遲緩，刺耳的聲音和擾亂思緒的感覺讓你的思維瓦解。終於，感覺像是經過了數個小時，你被扔在地上，疲憊占據了你的意識。\n當你再次醒來已在絞刑者河邊，一個小孩用力地摇晃著你的肩膀。他的母貌對他喊道：“回来，别碰他！”小孩從你身邊溜遠。考虑到你現在的情况，要是她把你當成了酒鬼之類的，這一點也不意外。你拂去外套上厚厚的灰塵，勉強地站了起来，向住宅匾走去。",
       "steps": [
         "witches_spell_cast",
         "mementos_flute",
@@ -55316,7 +55318,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "混洗剩餘遭遇卡牌來創建遭遇牌堆。"
     },
     {
       "id": "circle_braziers",
@@ -60306,7 +60308,7 @@
     {
       "id": "check_final_act",
       "type": "input",
-      "text": "What act was in play when the scenario ended?",
+      "text": "本場冒險結束時的當前場景是哪張？",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -67004,7 +67006,7 @@
     },
     {
       "id": "shuffle_encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "混洗剩餘遭遇卡牌來創建遭遇牌堆。"
     },
     {
       "id": "stop_rule",
@@ -71716,7 +71718,7 @@
     {
       "id": "replacing_locations_reminder",
       "type": "rule_reminder",
-      "title": "Replacing Locations",
+      "title": "替代地點",
       "text": "在本場冒險中，可能有指示讓你在現有地點上放置新的地點。當有地點放置在現有地點上方時，所放置的地點替代原有地點。原有地點的所有標記、疊加的卡牌、調查員、敵人和其他卡牌均視作位於新替代的地點上(這些卡牌和標記沒有“移動”——僅改變地點)。當有地點離場且該地點下方有另一地點，則由下方地點替代離場地點。離場地點的所有標記、疊加的卡牌、調查員、敵人和其他卡牌均視作位於原有地點上(這些卡牌和標記沒有“移動”——僅改變地點)。"
     },
     {
@@ -77928,7 +77930,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "混洗剩餘遭遇卡牌來創建遭遇牌堆。"
     },
     {
       "id": "$play_scenario",
@@ -79415,7 +79417,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "混洗剩餘遭遇卡牌來創建遭遇牌堆。"
     },
     {
       "id": "location_adjacency_rule",
@@ -80325,7 +80327,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "混洗剩餘遭遇卡牌來創建遭遇牌堆。"
     },
     {
       "id": "vehicles_rule",
@@ -80633,7 +80635,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "混洗剩餘遭遇卡牌來創建遭遇牌堆。"
     },
     {
       "id": "barriers_rule",
@@ -81671,7 +81673,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "混洗剩餘遭遇卡牌來創建遭遇牌堆。"
     },
     {
       "id": "neighboring_locations_rule",
@@ -83278,7 +83280,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "混洗剩餘遭遇卡牌來創建遭遇牌堆。"
     },
     {
       "id": "$play_scenario",
@@ -83853,7 +83855,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "混洗剩餘遭遇卡牌來創建遭遇牌堆。"
     },
     {
       "id": "tidal_tunnel_rule",
@@ -84576,7 +84578,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "混洗剩餘遭遇卡牌來創建遭遇牌堆。"
     },
     {
       "id": "find_agent_harper_rule",
@@ -86666,7 +86668,10 @@
   "name": "愛麗絲夢遊仙境",
   "custom": {
     "creator": "The Beard",
-    "download_link": "https://mysteriouschanting.wordpress.com/2020/10/30/alice-in-wonderland-campaign/"
+    "download_link": {
+      "en": "https://mysteriouschanting.wordpress.com/2020/10/30/alice-in-wonderland-campaign/",
+      "ko": "https://cafe.naver.com/arkhamfiles/2254"
+    }
   },
   "campaign_type": "campaign",
   "campaign_log": [
@@ -93336,7 +93341,9 @@
   "name": "Dark Matter",
   "custom": {
     "creator": "Axolotl",
-    "download_link": "https://mysteriouschanting.wordpress.com/2020/10/17/dark-matter-campaign/"
+    "download_link": {
+      "en": "https://mysteriouschanting.wordpress.com/2020/10/17/dark-matter-campaign/"
+    }
   },
   "campaign_type": "campaign",
   "campaign_log": [
