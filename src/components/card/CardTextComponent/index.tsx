@@ -357,7 +357,11 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
         },
         'Teutonic RU': {
           fontWeights: {
+            300: 'Regular',
             400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
             normal: 'Regular',
           },
           fontStyles: {
@@ -367,7 +371,11 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
         },
         Teutonic: {
           fontWeights: {
+            300: 'Regular',
             400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
             normal: 'Regular',
           },
           fontStyles: {

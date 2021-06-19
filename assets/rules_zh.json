@@ -89,7 +89,7 @@
   {
     "id": "Agenda_Deck",
     "title": "密謀牌堆",
-    "text": "\"[場景牌堆和密謀牌堆](#Act_Deck_and_Agenda_Deck)\"。"
+    "text": "詳見\"[場景牌堆和密謀牌堆](#Act_Deck_and_Agenda_Deck)\"。"
   },
   {
     "id": "Alert",
@@ -282,7 +282,7 @@
   },
   {
     "id": "Deckbuilding",
-    "title": "牌組構",
+    "title": "牌組構建",
     "text": "建當玩家構建自定義牌組時，請遵守以下規則：\n- 玩家必須選擇1張調查員卡。\n- 玩家牌組中卡牌數量，必須等於調查員卡背面的\"“卡牌張數\"。弱點卡、調查員專用卡、冒險卡不算在該數量限制之内。\n- 玩家的調查員牌組中，同名卡牌最多2張。\n- 每個標準的調查員牌組中，卡牌必須從調查員卡背面的\"牌組構建選項\"中選擇。\n- 在劇本開始時，大部分調查員只有0點經驗值。這意味著他們只能包括等級0的卡牌。部分調查員和/或劇本中，可能會在劇本開始時為調查員提供一定的經驗值，他可以立刻用來購買高等級卡牌(詳見\"[劇本模式遊戲](#Campaign_Play)\")。\n- 調查員卡背面的其他\"牌組構建需求\"也必須遵守。\n- 在牌組構建結束時，需要額外加入一張隨機的基礎弱點卡。\n- 劇情支援卡不能加入玩家的牌組中，除非遊戲設置或冒險結局允許玩家如此。這些支援卡沒有等級，並有遭遇組符號(詳見第4頁\"[支援卡](#Asset_Cards)\")。\n- 在劇本模式中，玩家需要在第一次冒險前構建自己的牌組。在冒險中，玩家可以購買新的卡牌，或者的升級原有的卡牌(詳見\"[劇本模式遊戲](#Campaign_Play)\"。\nIf 1 or more cards are forcibly removed from an investigator’s deck and returned to the collection (such as when a card is exiled, or when a campaign effect forces an investigator to remove cards from their deck), that investigator must purchase cards so that a legal deck size is maintained. When purchasing cards in this manner, that investigator may purchase level 0 cards at 0 experience cost until a legal deck size is reached.\n- This rule also applies if an effect alters an investigator’s deck size, deckbuilding restrictions, or deckbuilding options such that 1 or more cards must be removed from or added to their deck as a result.",
     "rules": [
       {

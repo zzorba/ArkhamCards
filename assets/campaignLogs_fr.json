@@ -852,6 +852,473 @@
     "supplies": []
   },
   {
+    "campaignId": "rttcu",
+    "sections": [
+      {
+        "section": "$input_value",
+        "entries": [
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# a disparu dans la brume.",
+            "feminine_text": "#name# a disparu dans la brume."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# a été aspiré dans le monde spectral.",
+            "feminine_text": "#name# a été aspirée dans le monde spectral."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# a été emporté par le Guetteur.",
+            "feminine_text": "#name# a été emportée par le Guetteur."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "les spectres se sont emparés de #name#.",
+            "feminine_text": "les spectres se sont emparés de #name#."
+          }
+        ]
+      },
+      {
+        "section": "05046",
+        "entries": [
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# a disparu dans la brume.",
+            "feminine_text": "#name# a disparu dans la brume."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# a été aspiré dans le monde spectral.",
+            "feminine_text": "#name# a été aspirée dans le monde spectral."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# a été emporté par le Guetteur.",
+            "feminine_text": "#name# a été emportée par le Guetteur."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "les spectres se sont emparés de #name#.",
+            "feminine_text": "les spectres se sont emparés de #name#."
+          },
+          {
+            "id": "alive",
+            "text": "Gavriella est vivante."
+          },
+          {
+            "id": "dead",
+            "text": "Gavriella Mizrah est morte."
+          },
+          {
+            "id": "on_gavriellas_trail",
+            "text": "les investigateurs sont sur la piste de Gavriella."
+          }
+        ]
+      },
+      {
+        "section": "05047",
+        "entries": [
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# a disparu dans la brume.",
+            "feminine_text": "#name# a disparu dans la brume."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# a été aspiré dans le monde spectral.",
+            "feminine_text": "#name# a été aspirée dans le monde spectral."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# a été emporté par le Guetteur.",
+            "feminine_text": "#name# a été emportée par le Guetteur."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "les spectres se sont emparés de #name#.",
+            "feminine_text": "les spectres se sont emparés de #name#."
+          },
+          {
+            "id": "alive",
+            "text": "Jerome est vivant."
+          },
+          {
+            "id": "dead",
+            "text": "Jerome Davids est mort."
+          },
+          {
+            "id": "on_jeromes_trail",
+            "text": "les investigateurs sont sur la piste de Jerome."
+          }
+        ]
+      },
+      {
+        "section": "05048",
+        "entries": [
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# a disparu dans la brume.",
+            "feminine_text": "#name# a disparu dans la brume."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# a été aspiré dans le monde spectral.",
+            "feminine_text": "#name# a été aspirée dans le monde spectral."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# a été emporté par le Guetteur.",
+            "feminine_text": "#name# a été emportée par le Guetteur."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "les spectres se sont emparés de #name#.",
+            "feminine_text": "les spectres se sont emparés de #name#."
+          },
+          {
+            "id": "alive",
+            "text": "Valentino est vivant."
+          },
+          {
+            "id": "dead",
+            "text": "Valentino Rivas est mort."
+          },
+          {
+            "id": "on_valentinos_trail",
+            "text": "les investigateurs sont sur la piste de Valentino."
+          }
+        ]
+      },
+      {
+        "section": "05049",
+        "entries": [
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# a disparu dans la brume.",
+            "feminine_text": "#name# a disparu dans la brume."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# a été aspiré dans le monde spectral.",
+            "feminine_text": "#name# a été aspirée dans le monde spectral."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# a été emporté par le Guetteur.",
+            "feminine_text": "#name# a été emportée par le Guetteur."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "les spectres se sont emparés de #name#.",
+            "feminine_text": "les spectres se sont emparés de #name#."
+          },
+          {
+            "id": "alive",
+            "text": "Penny est vivante."
+          },
+          {
+            "id": "dead",
+            "text": "Penny White est morte."
+          },
+          {
+            "id": "on_pennys_trail",
+            "text": "les investigateurs sont sur la piste de Penny."
+          }
+        ]
+      },
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "lead_investigator_joins_pipers",
+            "masculine_text": "#name# a rejoint les flûtistes d’Azathoth.",
+            "feminine_text": "#name# a rejoint les flûtistes d’Azathoth."
+          },
+          {
+            "id": "accepted_fate",
+            "text": "vous avez accepté votre destin."
+          },
+          {
+            "id": "anette_mason_is_possessed_by_evil",
+            "text": "Anette Mason est possédée par le démon."
+          },
+          {
+            "id": "anette_taught_you_the_spells_of_old",
+            "text": "Anette vous a appris les sorts d’autrefois."
+          },
+          {
+            "id": "arrested_anette",
+            "text": "les investigateurs ont arrêté Anette."
+          },
+          {
+            "id": "arrested_sanford",
+            "text": "les investigateurs ont arrêté Sanford."
+          },
+          {
+            "id": "asked_anette_for_assistance",
+            "text": "les investigateurs ont requis l’aide d’Anette."
+          },
+          {
+            "id": "asked_sanford_for_assistance",
+            "text": "les investigateurs ont requis l’aide de Sanford."
+          },
+          {
+            "id": "assumed_control_of_the_silver_twilight_lodge",
+            "text": "les investigateurs ont pris le contrôle de la Loge du Crépuscule d’Argent."
+          },
+          {
+            "id": "azathoth_devoured_the_universe",
+            "text": "Azathoth a dévoré l’univers."
+          },
+          {
+            "id": "azathoth_slumbers",
+            "text": "Azathoth dort… pour l’instant."
+          },
+          {
+            "id": "being_hunted",
+            "text": "vous êtes pris en chasse."
+          },
+          {
+            "id": "carl_sanford_possesses_the_secrets_of_the_universe",
+            "text": "Carl Sanford possède les secrets de l’univers."
+          },
+          {
+            "id": "continued_alone",
+            "text": "les investigateurs ont continué seuls."
+          },
+          {
+            "id": "coven_of_keziah_holds_the_world_in_its_grasp",
+            "text": "the coven of Keziah holds the world in its grasp."
+          },
+          {
+            "id": "deceiving_the_lodge",
+            "text": "les investigateurs sont membres de la Loge."
+          },
+          {
+            "id": "discovered_how_to_open_the_puzzle_box",
+            "text": "les investigateurs ont découvert comment ouvrir la boîte à énigme."
+          },
+          {
+            "id": "doom_draws_ever_closer",
+            "text": "la fin est de plus en plus proche."
+          },
+          {
+            "id": "enemies_of_the_lodge",
+            "text": "les investigateurs sont des ennemis de la Loge."
+          },
+          {
+            "id": "erryn_wants_to_meet",
+            "text": "Erynn wants to meet you."
+          },
+          {
+            "id": "erynn_joined_investigators",
+            "text": "Erynn joined the investigators."
+          },
+          {
+            "id": "guardian_of_the_trap_defeated",
+            "text": "le gardien du piège a émergé et a été vaincu."
+          },
+          {
+            "id": "guardian_of_the_trap_emerged",
+            "text": "le gardien du piège a émergé."
+          },
+          {
+            "id": "heretics_released",
+            "text": "#X# hérétiques ont été lâchées sur Arkham."
+          },
+          {
+            "id": "hid_knowledge_of_coven",
+            "text": "les investigateurs ont caché qu’ils connaissaient la congrégation."
+          },
+          {
+            "id": "inducted_into_the_inner_circle",
+            "text": "les investigateurs ont été initiés au sein du Cercle Restreint."
+          },
+          {
+            "id": "investigators_escaped_the_spectral_realm",
+            "text": "les investigateurs se sont échappés du monde spectral."
+          },
+          {
+            "id": "josef_disappeared_into_the_mist",
+            "text": "Josef a disparu dans la brume."
+          },
+          {
+            "id": "josef_is_alive",
+            "text": "Josef est bel et bien vivant."
+          },
+          {
+            "id": "kept_mementos_hidden",
+            "text": "les investigateurs ont gardé cachés leurs souvenirs."
+          },
+          {
+            "id": "learned_nothing_of_the_lodges_schemes",
+            "text": "les investigateurs n’ont rien appris sur les plans de la Loge."
+          },
+          {
+            "id": "members_of_the_lodge",
+            "text": "les investigateurs sont membres de la Loge."
+          },
+          {
+            "id": "never_seen_again",
+            "text": "les investigateurs ont disparu et n’ont jamais été retrouvés."
+          },
+          {
+            "id": "path_winds_before_you",
+            "text": "la voie s’ouvre devant vous : #X#"
+          },
+          {
+            "id": "pieces_of_evidence",
+            "text": "#X# preuves ont été oubliées."
+          },
+          {
+            "id": "rejected_fate",
+            "text": "vous avez rejeté votre destin."
+          },
+          {
+            "id": "rescued_josef",
+            "text": "les investigateurs ont secouru Josef."
+          },
+          {
+            "id": "sided_with_the_coven",
+            "text": "les investigateurs ont choisi le camp de la congrégation."
+          },
+          {
+            "id": "sided_with_the_lodge",
+            "text": "les investigateurs ont choisi le camp de la Loge."
+          },
+          {
+            "id": "signed_the_black_book",
+            "text": "les investigateurs ont signé le Livre Noir d’Azathoth."
+          },
+          {
+            "id": "survived_the_watchers_embrace",
+            "text": "les investigateurs ont survécu à l’étreinte du guetteur."
+          },
+          {
+            "id": "told_lodge_about_coven",
+            "text": "les investigateurs ont parlé de la congrégation à la Loge."
+          },
+          {
+            "id": "true_work_of_silver_twilight_lodge_has_begun",
+            "text": "le véritable travail de la Loge du Crépuscule d’Argent a maintenant commencé."
+          },
+          {
+            "id": "witches_spell_broken",
+            "text": "le sort des sorcières a été brisé."
+          },
+          {
+            "id": "witches_spell_cast",
+            "text": "le sort des sorcières a été lancé."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "leurre"
+          },
+          {
+            "id": "a_record_of_those_lost",
+            "text": "leurre"
+          },
+          {
+            "id": "act_3_v2",
+            "text": "leurre"
+          },
+          {
+            "id": "campaign_reading",
+            "text": "leurre"
+          },
+          {
+            "id": "left_column",
+            "text": "leurre"
+          },
+          {
+            "id": "prologue_05046",
+            "text": "leurre"
+          },
+          {
+            "id": "prologue_05047",
+            "text": "leurre"
+          },
+          {
+            "id": "prologue_05048",
+            "text": "leurre"
+          },
+          {
+            "id": "prologue_05049",
+            "text": "leurre"
+          },
+          {
+            "id": "right_column",
+            "text": "leurre"
+          },
+          {
+            "id": "skip_prologue",
+            "text": "leurre"
+          },
+          {
+            "id": "uad_add_chaos_token",
+            "text": "leurre"
+          },
+          {
+            "id": "uad_no_investigators_alive",
+            "text": "leurre"
+          }
+        ]
+      },
+      {
+        "section": "mementos",
+        "entries": [
+          {
+            "id": "bloody_tree_carvings",
+            "text": "Bloody Tree Carvings"
+          },
+          {
+            "id": "corn_husk_doll",
+            "text": "Poupée en épi de maïs"
+          },
+          {
+            "id": "gilmans_journal",
+            "text": "Journal de Gilman"
+          },
+          {
+            "id": "keziahs_formulae",
+            "text": "Formule de Keziah"
+          },
+          {
+            "id": "mesmerizing_flute",
+            "text": "Flûte Envoûtante"
+          },
+          {
+            "id": "ritual_components",
+            "text": "Ingrédients du Rituel"
+          },
+          {
+            "id": "scrap_of_torn_shadow",
+            "text": "Lambeaux d’Ombre Déchirée"
+          },
+          {
+            "id": "strange_incantation",
+            "text": "Strange Incantation"
+          },
+          {
+            "id": "wisp_of_spectral_mist",
+            "text": "Poignée de Brume Spectrale"
+          },
+          {
+            "id": "worn_crucific",
+            "text": "Crucifix Usagé"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "rttfa",
     "sections": [
       {

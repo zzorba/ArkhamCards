@@ -11208,9 +11208,9 @@ react-native-localize@2.1.1:
   resolved "https://registry.yarnpkg.com/react-native-localize/-/react-native-localize-2.1.1.tgz#da8f8776991d2b748708c408db05152602cefb38"
   integrity sha512-+uyz2/b0vyLq19fcb7r1qU1gqmzbp3aC6EMTvOVXwfBuiN+aJXR/fDdFOJJ8D7+bLccKeuS2zBDrazh+ZayX/g==
 
-"react-native-markdown-view@https://github.com/zzorba/react-native-markdown-view#1.1.14":
+"react-native-markdown-view@https://github.com/zzorba/react-native-markdown-view#1.1.15":
   version "1.1.4"
-  resolved "https://github.com/zzorba/react-native-markdown-view#e926ad6e141a8e3a91a2e9130dfa5b0e82575a59"
+  resolved "https://github.com/zzorba/react-native-markdown-view#6c44de0d3c179a1bb962a4ad1b278f792099d009"
   dependencies:
     prop-types "^15.5.10"
     react-native-table-component "^1.2.1"

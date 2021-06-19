@@ -248,6 +248,7 @@ export interface AddWeaknessEffect {
   select_traits?: boolean;
   count?: "$input_value";
   standalone?: boolean;
+  choose_only?: boolean;
 }
 export interface RemoveCardEffect {
   type: "remove_card";

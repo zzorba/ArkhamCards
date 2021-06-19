@@ -143,7 +143,7 @@ function SmallCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildre
   };
 }
 
-function InnsmouthTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+function InnsmouthTagRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<innsmouth>([\\s\\S]+?)<\\/innsmouth>')),
     order: 2,
@@ -152,11 +152,11 @@ function InnsmouthTagRule(style: StyleContextType): MarkdownRule<WithChildren, S
         children: nestedParse(capture[1], state),
       };
     },
-    render: InnsmouthNode(style),
+    render: InnsmouthNode(sizeScale, style),
   };
 }
 
-function GameTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+function GameTagRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<game>([\\s\\S]+?)<\\/game>')),
     order: 2,
@@ -165,7 +165,7 @@ function GameTagRule(style: StyleContextType): MarkdownRule<WithChildren, State>
         children: nestedParse(capture[1], state),
       };
     },
-    render: GameTextNode(style),
+    render: GameTextNode(style, sizeScale),
   };
 }
 
@@ -193,7 +193,7 @@ export default function CardFlavorTextComponent(
       marginTop: 4,
       marginBottom: 4,
       color: color || context.colors.darkText,
-      textAlign: context.justifyContent ? 'justify' : 'left',
+      textAlign: context.justifyContent ? 'justify' : undefined,
     };
   }, [context, usePingFang, sizeScale, color]);
   // Text that has hyperlinks uses a different style for the icons.
@@ -214,8 +214,8 @@ export default function CardFlavorTextComponent(
         rightTag: RightHtmlTagRule,
         iTag: ItalicHtmlTagRule(),
         smallCapsTag: SmallCapsHtmlTagRule(context),
-        innsmouthTag: InnsmouthTagRule(context),
-        gameTag: GameTagRule(context),
+        innsmouthTag: InnsmouthTagRule(context, sizeScale),
+        gameTag: GameTagRule(context, sizeScale),
       }}
       onLinkPress={onLinkPress}
       styles={{
@@ -252,9 +252,27 @@ export default function CardFlavorTextComponent(
             italic: 'Italic',
           },
         },
+        AboutDead: {
+          fontWeights: {
+            300: 'Regular',
+            400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
+            normal: 'Regular',
+          },
+          fontStyles: {
+            normal: '',
+            italic: '',
+          },
+        },
         'Teutonic RU': {
           fontWeights: {
+            300: 'Regular',
             400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
             normal: 'Regular',
           },
           fontStyles: {
@@ -264,7 +282,11 @@ export default function CardFlavorTextComponent(
         },
         Teutonic: {
           fontWeights: {
+            300: 'Regular',
             400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
             normal: 'Regular',
           },
           fontStyles: {
