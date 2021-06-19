@@ -14,7 +14,7 @@ import CampaignTab from './CampaignTab';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import space from '@styles/space';
-import CardSectionHeader from '@components/core/CardSectionHeader';
+import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
 
 const SHOW_CUSTOM = true;
 
@@ -67,7 +67,7 @@ function SelectCampaignDialog({ selectionChanged, componentId }: SelectCampagaig
           />
           { !!SHOW_CUSTOM && (
             <>
-              <CardSectionHeader section={{ title: t`Fan-Made Campaigns` }} />
+              <CardDetailSectionHeader normalCase color="dark" title={t`Fan-Made Campaigns` } />
               <CampaignTab
                 campaignChanged={campaignChanged}
                 campaigns={CUSTOM_CAMPAIGNS}

@@ -4240,7 +4240,7 @@ msgstr "Szenariokarte"
 
 msgid ""
 "This appears to be one of your decks from ArkhamDB, however you seem to be "
-"logged into a differen ArkhamDB account? If you wish to make edits, please "
+"logged into a different ArkhamDB account? If you wish to make edits, please "
 "login through the app settings."
 msgstr ""
 "Dies scheint eines deiner Decks auf ArkhamDB zu sein, allerdings scheinst "
@@ -4400,9 +4400,6 @@ msgstr "Zustand der Ermittler"
 
 msgid "Social"
 msgstr "Sozial"
-
-msgid "Connect with other fans of Arkham Horror: The Card Game."
-msgstr "Verbinde dich mit anderen Fans von Arkham Horror: Das Kartenspiel"
 
 msgid "Add new"
 msgstr "Neu"

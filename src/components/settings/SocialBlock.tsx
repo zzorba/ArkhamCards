@@ -34,7 +34,7 @@ export default function SocialBlock() {
     <View style={space.paddingS}>
       <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Social`} />}>
         <Text style={[typography.text, space.paddingS]}>
-          { t`Connect with other fans of Arkham Horror: The Card Game.` }
+          Общайтесь с другими поклонниками карточного «Ужаса Аркхэма» в русскоязычных сообществах:
         </Text>
         <DeckButton
           icon="discord"

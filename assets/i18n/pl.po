@@ -3912,7 +3912,7 @@ msgstr ""
 
 msgid ""
 "This appears to be one of your decks from ArkhamDB, however you seem to be "
-"logged into a differen ArkhamDB account? If you wish to make edits, please "
+"logged into a different ArkhamDB account? If you wish to make edits, please "
 "login through the app settings."
 msgstr ""
 
@@ -4053,9 +4053,6 @@ msgid "Status of investigators"
 msgstr ""
 
 msgid "Social"
-msgstr ""
-
-msgid "Connect with other fans of Arkham Horror: The Card Game."
 msgstr ""
 
 msgid "Add new"

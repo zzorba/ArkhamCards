@@ -242,6 +242,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'bad':
       case 'bad_blood':
         return this.standaloneIcon('bad_blood', size, color);
+      case 'btb':
+      case 'by_the_book':
+        return this.standaloneIcon('by_the_book', size, color);
       case 'parallel':
         return this.appIcon('parallel', size, color);
       case 'cotr':
@@ -420,14 +423,23 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'witchcraft':
       case 'music_of_the_damned':
       case 'secrets_of_the_universe':
-      case 'witchwork': // real return names tba
       case 'unspeakable_fate':
-      case 'threatening_evil':
-      case 'spectral_realm':
-      case 'cold_fog':
       case 'city_of_the_damned':
       case 'bloodthirsty_spirits':
         return this.circleIcon(encounter_code, size, color);
+      case 'witchwork':
+      case 'hexcraft':
+        return this.circleIcon('witchwork', size, color);
+      case 'spectral_realm':
+      case 'unstable_realm':
+        return this.circleIcon('spectral_realm', size, color);
+      case 'chilling_mists':
+      case 'cold_fog':
+        return this.circleIcon('cold_fog', size, color);
+      case 'threatening_evils':
+      case 'threatening_evil':
+      case 'impending_evils':
+        return this.circleIcon('threatening_evil', size, color);
       case 'tdeb':
         return this.dreamIcon('agents_of_atlach_nacha', size, color);
       case 'tdea':

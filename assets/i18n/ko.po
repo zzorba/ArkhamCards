@@ -1553,7 +1553,7 @@ msgid "Start playing the scenario now."
 msgstr "이제 시나리오를 시작합니다."
 
 msgid "In your Campaign Log, record that <i>${ text }</i>"
-msgstr "당신의 캠페인 기록지에 <i>${ text }</i>라고 기록합니다."
+msgstr "당신의 캠페인 기록지에 <i>${ text }</i> 라고 기록합니다."
 
 msgid "In your Campaign Log, cross out <i>${ logEntry.text }</i>"
 msgstr "당신의 캠페인 기록지에 <i>${ logEntry.text }</i> 항목에 X표시를 합니다."
@@ -1567,13 +1567,14 @@ msgstr ""
 "항목에 X표시를 합니다."
 
 msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
-msgstr "당신의 캠페인 기록지에 <i>${ logEntry.text }</i>라고 기록합니다."
+msgstr "당신의 캠페인 기록지에 <i>${ logEntry.text }</i> 라고 기록합니다."
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>."
-msgstr "당신의 캠페인 기록지 중 \"${ logEntry.section }\" 항목 아래에 ${ logEntry.text }라고 기록합니다."
+msgstr "당신의 캠페인 기록지 중 \"${ logEntry.section }\" 항목 아래에 <i>${ "
+"logEntry.text }</i> 라고 기록합니다."
 
 msgid "Add ${ tokenString } to the chaos bag."
 msgstr "혼돈 주머니에 ${ tokenString } 토큰을 추가합니다."
@@ -1654,7 +1655,7 @@ msgid_plural ""
 "Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
-"${ list } 조사자가 ${ supplyName } 탐험 물자를 가지고 있지 않으므로, 해당 조사자는<b>${ sectionName "
+"${ list } 조사자가 ${ supplyName } 탐험 물자를 가지고 있지 않으므로, 해당 조사자는 <b>${ sectionName "
 "}</b> 항목을 읽어야만 합니다."
 
 #, javascript-format
@@ -2508,7 +2509,7 @@ msgstr ""
 "도전 시나리오는 기존 <아컴호러 카드게임> 제품을 활용하여 즐길 수 있는 프린트 앤 플레이(실물 없이 인쇄용 자료만 배포되는) 시나리오 "
 "입니다. 도전 시나리오는 기존 시나리오와는 달리 도전적인 퍼즐 같 은 경험을 주고자 특정한 전제 조건을 염두에 두고 설계되었습니다. "
 "인쇄 가능한 카드들은 Fantasy Flight Games에서 \"Parallel Investigators\" 항목에서 다운받을 수 "
-"있습니다."
+"있습니다(한국어판의 경우, https://cafe.naver.com/arkhamfiles 카페의 배포 자료 게시판을 이용바랍니다)."
 
 msgid "Download printable cards"
 msgstr "인쇄가능한 카드 받기"
@@ -3836,10 +3837,10 @@ msgid "Note campaign achievements"
 msgstr "캠페인 업적 기록"
 
 msgid "Complete campaign setup"
-msgstr "캠페인 준비 완료"
+msgstr "캠페인 준비를 완료하세요."
 
 msgid "Review and draw tokens"
-msgstr "토큰 보기 및 뽑기"
+msgstr "열람 및 토큰 뽑기"
 
 msgid "Spent experience"
 msgstr "경험치 소비"
@@ -4049,7 +4050,7 @@ msgstr "시나리오 카드"
 
 msgid ""
 "This appears to be one of your decks from ArkhamDB, however you seem to be "
-"logged into a differen ArkhamDB account? If you wish to make edits, please "
+"logged into a different ArkhamDB account? If you wish to make edits, please "
 "login through the app settings."
 msgstr ""
 "아컴디비로부터 당신의 덱 중에 하나를 이곳에 표시하려 했지만, 당신은 현재 다른 아컴디비 계정에 로그인되어 있는 것으로 보입니다. 만약 "
@@ -4198,9 +4199,6 @@ msgstr "조사자의 상태"
 
 msgid "Social"
 msgstr "소셜"
-
-msgid "Connect with other fans of Arkham Horror: The Card Game."
-msgstr "'아컴호러: 카드게임'의 다른 팬들과 연결"
 
 msgid "Add new"
 msgstr "새로 추가"

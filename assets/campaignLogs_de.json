@@ -852,6 +852,473 @@
     "supplies": []
   },
   {
+    "campaignId": "rttcu",
+    "sections": [
+      {
+        "section": "$input_value",
+        "entries": [
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# ist im Nebel verschwunden.",
+            "feminine_text": "#name# ist im Nebel verschwunden."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# ist von Geistern beansprucht worden.",
+            "feminine_text": "#name# ist von Geistern beansprucht worden."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# wurde in das Reich der Geister gezogen.",
+            "feminine_text": "#name# wurde in das Reich der Geister gezogen."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# wurde vom Beobachter entführt.",
+            "feminine_text": "#name# wurde vom Beobachter entführt."
+          }
+        ]
+      },
+      {
+        "section": "05046",
+        "entries": [
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# ist im Nebel verschwunden.",
+            "feminine_text": "#name# ist im Nebel verschwunden."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# ist von Geistern beansprucht worden.",
+            "feminine_text": "#name# ist von Geistern beansprucht worden."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# wurde in das Reich der Geister gezogen.",
+            "feminine_text": "#name# wurde in das Reich der Geister gezogen."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# wurde vom Beobachter entführt.",
+            "feminine_text": "#name# wurde vom Beobachter entführt."
+          },
+          {
+            "id": "alive",
+            "text": "Gavriella ist am Leben."
+          },
+          {
+            "id": "dead",
+            "text": "Gavriella ist tot."
+          },
+          {
+            "id": "on_gavriellas_trail",
+            "text": "Die Ermittler sind Gavriella auf der Spur."
+          }
+        ]
+      },
+      {
+        "section": "05047",
+        "entries": [
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# ist im Nebel verschwunden.",
+            "feminine_text": "#name# ist im Nebel verschwunden."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# ist von Geistern beansprucht worden.",
+            "feminine_text": "#name# ist von Geistern beansprucht worden."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# wurde in das Reich der Geister gezogen.",
+            "feminine_text": "#name# wurde in das Reich der Geister gezogen."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# wurde vom Beobachter entführt.",
+            "feminine_text": "#name# wurde vom Beobachter entführt."
+          },
+          {
+            "id": "alive",
+            "text": "Jerome ist am Leben."
+          },
+          {
+            "id": "dead",
+            "text": "Jerome ist tot."
+          },
+          {
+            "id": "on_jeromes_trail",
+            "text": "Die Ermittler sind Jerome auf der Spur."
+          }
+        ]
+      },
+      {
+        "section": "05048",
+        "entries": [
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# ist im Nebel verschwunden.",
+            "feminine_text": "#name# ist im Nebel verschwunden."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# ist von Geistern beansprucht worden.",
+            "feminine_text": "#name# ist von Geistern beansprucht worden."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# wurde in das Reich der Geister gezogen.",
+            "feminine_text": "#name# wurde in das Reich der Geister gezogen."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# wurde vom Beobachter entführt.",
+            "feminine_text": "#name# wurde vom Beobachter entführt."
+          },
+          {
+            "id": "alive",
+            "text": "Valentino ist am Leben."
+          },
+          {
+            "id": "dead",
+            "text": "Valentino ist tot."
+          },
+          {
+            "id": "on_valentinos_trail",
+            "text": "Die Ermittler sind Valentino auf der Spur."
+          }
+        ]
+      },
+      {
+        "section": "05049",
+        "entries": [
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# ist im Nebel verschwunden.",
+            "feminine_text": "#name# ist im Nebel verschwunden."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# ist von Geistern beansprucht worden.",
+            "feminine_text": "#name# ist von Geistern beansprucht worden."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# wurde in das Reich der Geister gezogen.",
+            "feminine_text": "#name# wurde in das Reich der Geister gezogen."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# wurde vom Beobachter entführt.",
+            "feminine_text": "#name# wurde vom Beobachter entführt."
+          },
+          {
+            "id": "alive",
+            "text": "Penny ist am Leben."
+          },
+          {
+            "id": "dead",
+            "text": "Penny ist tot."
+          },
+          {
+            "id": "on_pennys_trail",
+            "text": "Die Ermittler sind Penny auf der Spur."
+          }
+        ]
+      },
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "lead_investigator_joins_pipers",
+            "masculine_text": "#name# schließt sich den Pfeifern von Azathoth an.",
+            "feminine_text": "#name# schließt sich den Pfeifern von Azathoth an."
+          },
+          {
+            "id": "accepted_fate",
+            "text": "Die Ermittler haben ihr Schicksal akzeptiert."
+          },
+          {
+            "id": "anette_mason_is_possessed_by_evil",
+            "text": "Anette Mason ist vom Bösen besessen."
+          },
+          {
+            "id": "anette_taught_you_the_spells_of_old",
+            "text": "Anette hat dich die alten Zauber gelehrt."
+          },
+          {
+            "id": "arrested_anette",
+            "text": "Die Ermittler haben Anette verhaftet."
+          },
+          {
+            "id": "arrested_sanford",
+            "text": "Die Ermittler haben Sanford verhaftet."
+          },
+          {
+            "id": "asked_anette_for_assistance",
+            "text": "Die Ermittler haben Anette um Hilfe gebeten."
+          },
+          {
+            "id": "asked_sanford_for_assistance",
+            "text": "Die Ermittler haben Sanford um Hilfe gebeten."
+          },
+          {
+            "id": "assumed_control_of_the_silver_twilight_lodge",
+            "text": "Die Ermittler haben die Kontrolle über die Silberloge der Dämmerung übernommen."
+          },
+          {
+            "id": "azathoth_devoured_the_universe",
+            "text": "Azathoth hat das Universum verschlungen."
+          },
+          {
+            "id": "azathoth_slumbers",
+            "text": "Azathoth schlummert… noch."
+          },
+          {
+            "id": "being_hunted",
+            "text": "Die Ermittler werden gejagt."
+          },
+          {
+            "id": "carl_sanford_possesses_the_secrets_of_the_universe",
+            "text": "Carl Sanford verfügt über die Geheimnisse des Universums."
+          },
+          {
+            "id": "continued_alone",
+            "text": "Die Ermittler machen alleine weiter"
+          },
+          {
+            "id": "coven_of_keziah_holds_the_world_in_its_grasp",
+            "text": "the coven of Keziah holds the world in its grasp."
+          },
+          {
+            "id": "deceiving_the_lodge",
+            "text": "Die Ermittler täuschen die Loge."
+          },
+          {
+            "id": "discovered_how_to_open_the_puzzle_box",
+            "text": "Die Ermittler haben herausgefunden, wie die Rätselkiste geöffnet wird."
+          },
+          {
+            "id": "doom_draws_ever_closer",
+            "text": "Das Verderben rückt immer näher."
+          },
+          {
+            "id": "enemies_of_the_lodge",
+            "text": "Die Ermittler sind Feinde der Loge."
+          },
+          {
+            "id": "erryn_wants_to_meet",
+            "text": "Erynn wants to meet you."
+          },
+          {
+            "id": "erynn_joined_investigators",
+            "text": "Erynn joined the investigators."
+          },
+          {
+            "id": "guardian_of_the_trap_defeated",
+            "text": "Der Wächter der Falle ist entwichen und wurde besiegt."
+          },
+          {
+            "id": "guardian_of_the_trap_emerged",
+            "text": "Der Wächter der Falle ist entwichen."
+          },
+          {
+            "id": "heretics_released",
+            "text": "#X# Ketzer wurden auf Arkham losgelassen."
+          },
+          {
+            "id": "hid_knowledge_of_coven",
+            "text": "Die Ermittler haben ihr Wissen über den Hexenzirkel verheimlicht."
+          },
+          {
+            "id": "inducted_into_the_inner_circle",
+            "text": "Die Ermittler wurden in den inneren Kreis eingeführt."
+          },
+          {
+            "id": "investigators_escaped_the_spectral_realm",
+            "text": "Die Ermittler sind dem Reich der Geister entkommen."
+          },
+          {
+            "id": "josef_disappeared_into_the_mist",
+            "text": "Josef Meiger ist im Nebel verschwunden."
+          },
+          {
+            "id": "josef_is_alive",
+            "text": "Josef lebt und es geht ihm gut."
+          },
+          {
+            "id": "kept_mementos_hidden",
+            "text": "Die Ermittler haben ihre Andenken geheim gehalten."
+          },
+          {
+            "id": "learned_nothing_of_the_lodges_schemes",
+            "text": "Die Ermittler haben nichts über die Pläne der Loge in Erfahrung gebracht."
+          },
+          {
+            "id": "members_of_the_lodge",
+            "text": "Die Ermittler sind Mitglieder der Loge."
+          },
+          {
+            "id": "never_seen_again",
+            "text": "Niemand hat je wieder etwas von den Ermittlern gesehen oder gehört."
+          },
+          {
+            "id": "path_winds_before_you",
+            "text": "Der Pfad windet sich vor dir: #X#"
+          },
+          {
+            "id": "pieces_of_evidence",
+            "text": "#X# Beweismittel wurden zurückgelassen."
+          },
+          {
+            "id": "rejected_fate",
+            "text": "Die Ermittler haben ihr Schicksal nicht akzeptiert."
+          },
+          {
+            "id": "rescued_josef",
+            "text": "Die Ermittler haben Josef gerettet."
+          },
+          {
+            "id": "sided_with_the_coven",
+            "text": "Die Ermittler haben sich auf die Seite des Hexenzirkels geschlagen."
+          },
+          {
+            "id": "sided_with_the_lodge",
+            "text": "Die Ermittler haben sich auf die Seite der Loge geschlagen."
+          },
+          {
+            "id": "signed_the_black_book",
+            "text": "Die Ermittler haben im Schwarzen Buch von Azathoth unterschrieben."
+          },
+          {
+            "id": "survived_the_watchers_embrace",
+            "text": "Die Ermittler haben die Umarmung des Beobachters überlebt."
+          },
+          {
+            "id": "told_lodge_about_coven",
+            "text": "Die Ermittler haben der Loge vom Hexenzirkel erzählt."
+          },
+          {
+            "id": "true_work_of_silver_twilight_lodge_has_begun",
+            "text": "Das wahre Wirken der Silberloge der Dämmerung hat begonnen."
+          },
+          {
+            "id": "witches_spell_broken",
+            "text": "Der Zauber der Hexen wurde gebrochen."
+          },
+          {
+            "id": "witches_spell_cast",
+            "text": "Der Zauber der Hexen wurde vollendet."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "dummy"
+          },
+          {
+            "id": "a_record_of_those_lost",
+            "text": "dummy"
+          },
+          {
+            "id": "act_3_v2",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading",
+            "text": "dummy"
+          },
+          {
+            "id": "left_column",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05046",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05047",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05048",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05049",
+            "text": "dummy"
+          },
+          {
+            "id": "right_column",
+            "text": "dummy"
+          },
+          {
+            "id": "skip_prologue",
+            "text": "dummy"
+          },
+          {
+            "id": "uad_add_chaos_token",
+            "text": "dummy"
+          },
+          {
+            "id": "uad_no_investigators_alive",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "mementos",
+        "entries": [
+          {
+            "id": "bloody_tree_carvings",
+            "text": "Bloody Tree Carvings"
+          },
+          {
+            "id": "corn_husk_doll",
+            "text": "Strohpuppe"
+          },
+          {
+            "id": "gilmans_journal",
+            "text": "Gilmans Tagebuch"
+          },
+          {
+            "id": "keziahs_formulae",
+            "text": "Keziahs Formeln"
+          },
+          {
+            "id": "mesmerizing_flute",
+            "text": "Hypnotisierende Flöte"
+          },
+          {
+            "id": "ritual_components",
+            "text": "Ritualkomponenten"
+          },
+          {
+            "id": "scrap_of_torn_shadow",
+            "text": "Lumpen aus zerrissenem Schatten"
+          },
+          {
+            "id": "strange_incantation",
+            "text": "Strange Incantation"
+          },
+          {
+            "id": "wisp_of_spectral_mist",
+            "text": "Hauch des geisterhaften Nebels"
+          },
+          {
+            "id": "worn_crucific",
+            "text": "Abgegriffenes Kruzifix"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "rttfa",
     "sections": [
       {

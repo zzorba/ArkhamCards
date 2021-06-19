@@ -23,7 +23,8 @@ import GameTextNode from './GameTextNode';
 import CiteTagNode from './CiteTagNode';
 import { xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
-import { TextStyle } from 'react-native';
+import { Platform, TextStyle } from 'react-native';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 function BreakTagRule(): MarkdownRule<WithText, State> {
   return {
@@ -83,14 +84,14 @@ function ItalicHtmlTagRule(): MarkdownRule<WithChildren, State> {
   };
 }
 
-function BoldHtmlTagRule(): MarkdownRule<WithText, State> {
+function BoldHtmlTagRule(usePingFang: boolean): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<b>(.+?)<\\/b>')),
     order: 1,
     parse: (capture) => {
       return { text: capture[1] };
     },
-    render: FlavorBoldNode(),
+    render: FlavorBoldNode(usePingFang),
   };
 }
 
@@ -142,7 +143,7 @@ function SmallCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildre
   };
 }
 
-function InnsmouthTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+function InnsmouthTagRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<innsmouth>([\\s\\S]+?)<\\/innsmouth>')),
     order: 2,
@@ -151,11 +152,11 @@ function InnsmouthTagRule(style: StyleContextType): MarkdownRule<WithChildren, S
         children: nestedParse(capture[1], state),
       };
     },
-    render: InnsmouthNode(style),
+    render: InnsmouthNode(sizeScale, style),
   };
 }
 
-function GameTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+function GameTagRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<game>([\\s\\S]+?)<\\/game>')),
     order: 2,
@@ -164,7 +165,7 @@ function GameTagRule(style: StyleContextType): MarkdownRule<WithChildren, State>
         children: nestedParse(capture[1], state),
       };
     },
-    render: GameTextNode(style),
+    render: GameTextNode(style, sizeScale),
   };
 }
 
@@ -180,9 +181,11 @@ export default function CardFlavorTextComponent(
   { text, onLinkPress, color, width, sizeScale = 1 }: Props
 ) {
   const context = useContext(StyleContext);
+  const { usePingFang } = useContext(LanguageContext);
+
   const textStyle: TextStyle = useMemo(() => {
     return {
-      fontFamily: 'Alegreya',
+      fontFamily: usePingFang ? 'PingFangTC' : 'Alegreya',
       fontStyle: 'italic',
       fontWeight: 'normal',
       fontSize: 16 * context.fontScale * sizeScale,
@@ -190,9 +193,9 @@ export default function CardFlavorTextComponent(
       marginTop: 4,
       marginBottom: 4,
       color: color || context.colors.darkText,
-      textAlign: context.justifyContent ? 'justify' : 'left',
+      textAlign: context.justifyContent ? 'justify' : undefined,
     };
-  }, [context, sizeScale, color]);
+  }, [context, usePingFang, sizeScale, color]);
   // Text that has hyperlinks uses a different style for the icons.
   return (
     <MarkdownView
@@ -202,7 +205,7 @@ export default function CardFlavorTextComponent(
       }}
       rules={{
         iconTag: ArkhamIconRule(context, sizeScale),
-        bTag: BoldHtmlTagRule(),
+        bTag: BoldHtmlTagRule(usePingFang),
         uTag: UnderlineHtmlTagRule(),
         brTag: BreakTagRule(),
         citeTag: CiteTagRule(context),
@@ -211,14 +214,29 @@ export default function CardFlavorTextComponent(
         rightTag: RightHtmlTagRule,
         iTag: ItalicHtmlTagRule(),
         smallCapsTag: SmallCapsHtmlTagRule(context),
-        innsmouthTag: InnsmouthTagRule(context),
-        gameTag: GameTagRule(context),
+        innsmouthTag: InnsmouthTagRule(context, sizeScale),
+        gameTag: GameTagRule(context, sizeScale),
       }}
       onLinkPress={onLinkPress}
       styles={{
         paragraph: textStyle,
       }}
       fonts={{
+        PingFangTC: {
+          fontWeights: {
+            300: 'Light',
+            400: 'Regular',
+            700: 'Semibold',
+            800: 'ExtraBold',
+            900: 'Black',
+            normal: 'Regular',
+            bold: 'Bold',
+          },
+          fontStyles: {
+            normal: '',
+            italic: 'Light',
+          },
+        },
         Alegreya: {
           fontWeights: {
             300: 'Light',
@@ -234,9 +252,27 @@ export default function CardFlavorTextComponent(
             italic: 'Italic',
           },
         },
+        AboutDead: {
+          fontWeights: {
+            300: 'Regular',
+            400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
+            normal: 'Regular',
+          },
+          fontStyles: {
+            normal: '',
+            italic: '',
+          },
+        },
         'Teutonic RU': {
           fontWeights: {
+            300: 'Regular',
             400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
             normal: 'Regular',
           },
           fontStyles: {
@@ -246,7 +282,11 @@ export default function CardFlavorTextComponent(
         },
         Teutonic: {
           fontWeights: {
+            300: 'Regular',
             400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
             normal: 'Regular',
           },
           fontStyles: {

@@ -1,29 +1,26 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-} from 'react-native';
-import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
+import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
 import { WithChildren } from '../CardTextComponent/types';
 import { StyleContextType } from '@styles/StyleContext';
 
-export default function InnsmouthNode({ typography, fontScale }: StyleContextType) {
+export default function InnsmouthNode(sizeScale: number, { typography, fontScale }: StyleContextType) {
   return (
     node: Node & WithChildren,
     output: OutputFunction,
     state: RenderState
   ) => {
     return (
-      <Text key={state.key} style={[styles.text, { fontSize: 28 * fontScale, lineHeight: 28 * fontScale }, typography.dark]}>
+      <MarkdownText key={state.key} style={[{
+        fontFamily: 'AboutDead',
+        fontStyle: 'normal',
+        fontWeight: '600',
+        fontSize: 24 * fontScale * sizeScale,
+        lineHeight: 28 * fontScale * sizeScale,
+      }, typography.dark]}>
         { output(node.children, state) }
-      </Text>
+      </MarkdownText>
     );
   };
 }
 
-const styles = StyleSheet.create({
-  text: {
-    fontFamily: 'AboutDead',
-  },
-});

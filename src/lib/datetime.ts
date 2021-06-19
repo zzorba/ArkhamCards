@@ -97,7 +97,7 @@ export function toRelativeDateString(date: Date | string, locale: string) {
       default: return t`Updated ${dayOfWeek}`;
     }
   }
-  const dateString = format(date, 'MMMM d, yyyy', LOCALE_MAP[locale]);
+  const dateString = format(date, locale === 'fr' ? 'iiii d MMMM yyyy' : 'MMMM d, yyyy', LOCALE_MAP[locale]);
   return t`Updated ${dateString}`;
 }
 

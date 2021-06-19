@@ -17,6 +17,7 @@ import CycleItem from './CycleItem';
 import { campaignName } from '../constants';
 import { getPacksInCollection } from '@reducers';
 import CardSectionHeader from '@components/core/CardSectionHeader';
+import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
 
 export interface SelectCampagaignProps {
   campaigns: CampaignCycleCode[];
@@ -75,12 +76,12 @@ export default function CampaignTab({ campaignChanged, campaigns, segment, inclu
   return (
     <>
       { !!segment && myCampaigns.length > 0 && (
-        <CardSectionHeader section={{ title: t`My Campaigns` }} />
+        <CardDetailSectionHeader normalCase color="dark" title={t`My Campaigns` } />
       ) }
       { map(myCampaigns, pack_code => renderCampaign(pack_code)) }
       { includeCustom && renderCampaign(CUSTOM) }
       { !!segment && otherCampaigns.length > 0 && (
-        <CardSectionHeader section={{ title: t`Other Campaigns` }} />
+        <CardDetailSectionHeader normalCase color="dark" title={t`Other Campaigns`} />
       ) }
       { map(otherCampaigns, pack_code => renderCampaign(pack_code)) }
     </>

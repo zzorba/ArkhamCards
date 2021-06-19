@@ -22,6 +22,8 @@ import StrikethroughTextNode from './StrikethroughTextNode';
 import SmallCapsNode from './SmallCapsNode';
 import CenterNode from './CenterNode';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import LanguageContext from '@lib/i18n/LanguageContext';
+import { Platform, TextStyle } from 'react-native';
 
 const BASE_ORDER = 0;
 const ParagraphTagRule: MarkdownRule<WithChildren, State> = {
@@ -70,14 +72,14 @@ function ArkahmIconSpanRule(style: StyleContextType, sizeScale: number): Markdow
   };
 }
 
-function BreakTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
+function BreakTagRule(usePingFang: boolean, style: StyleContextType): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<br\\/>')),
     order: BASE_ORDER + 1,
     parse: () => {
       return { text: '\n' };
     },
-    render: BoldItalicHtmlTagNode(style),
+    render: BoldItalicHtmlTagNode(usePingFang, style),
   };
 }
 
@@ -94,25 +96,25 @@ function SmallCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildre
   };
 }
 
-function EmphasisMarkdownTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
+function EmphasisMarkdownTagRule(usePingFang: boolean, style: StyleContextType): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^\\[\\[([\\s\\S]+?)\\]\\]')),
     order: BASE_ORDER + 0,
     parse: (capture) => {
       return { text: capture[1] };
     },
-    render: BoldItalicHtmlTagNode(style),
+    render: BoldItalicHtmlTagNode(usePingFang, style),
   };
 }
 
-function MalformedBoldItalicHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
+function MalformedBoldItalicHtmlTagRule(usePingFang: boolean, style: StyleContextType): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<b><i>([^<]+?)<\\/b><\\/i>')),
     order: BASE_ORDER + 1,
     parse: (capture) => {
       return { text: capture[1] };
     },
-    render: BoldItalicHtmlTagNode(style),
+    render: BoldItalicHtmlTagNode(usePingFang, style),
   };
 }
 
@@ -147,18 +149,18 @@ const BlockquoteHtmlTagRule: MarkdownRule<WithChildren, State> = {
   render: BlockquoteHtmlTagNode,
 };
 
-function BoldItalicHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
+function BoldItalicHtmlTagRule(usePingFang: boolean, style: StyleContextType): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<b><i>([\\s\\S]+?)<\\/i><\\/b>')),
     order: BASE_ORDER + 1,
     parse: (capture) => {
       return { text: capture[1] };
     },
-    render: BoldItalicHtmlTagNode(style),
+    render: BoldItalicHtmlTagNode(usePingFang, style),
   };
 }
 
-function BoldHtmlTagRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithChildren, State> {
+function BoldHtmlTagRule(usePingFang: boolean, style: StyleContextType, sizeScale: number): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<b>([\\s\\S]+?)<\\/b>')),
     order: BASE_ORDER + 2,
@@ -167,7 +169,7 @@ function BoldHtmlTagRule(style: StyleContextType, sizeScale: number): MarkdownRu
         children: nestedParse(capture[1], state),
       };
     },
-    render: BoldHtmlTagNode(style, sizeScale),
+    render: BoldHtmlTagNode(usePingFang, style, sizeScale),
   };
 }
 
@@ -182,18 +184,18 @@ const CenterHtmlTagRule: MarkdownRule<WithChildren, State> = {
   render: CenterNode,
 };
 
-function UnderlineHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
+function UnderlineHtmlTagRule(usePingFang: boolean, style: StyleContextType): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<u>([\\s\\S]+?)<\\/u>')),
     order: BASE_ORDER + 2,
     parse: (capture) => {
       return { text: capture[1] };
     },
-    render: UnderlineHtmlTagNode(style),
+    render: UnderlineHtmlTagNode(usePingFang, style),
   };
 }
 
-function EmphasisHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+function EmphasisHtmlTagRule(usePingFang: boolean, style: StyleContextType): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<em>([\\s\\S]+?)<\\/em>')),
     order: BASE_ORDER + 1,
@@ -202,11 +204,11 @@ function EmphasisHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren
         children: nestedParse(capture[1], state),
       };
     },
-    render: EmphasisHtmlTagNode(style),
+    render: EmphasisHtmlTagNode(usePingFang, style),
   };
 }
 
-function ItalicHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+function ItalicHtmlTagRule(usePingFang: boolean, style: StyleContextType): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<i>([\\s\\S]+?)<\\/i>')),
     order: BASE_ORDER + 2,
@@ -215,7 +217,7 @@ function ItalicHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, 
         children: nestedParse(capture[1], state),
       };
     },
-    render: ItalicHtmlTagNode(style),
+    render: ItalicHtmlTagNode(usePingFang, style),
   };
 }
 
@@ -226,6 +228,7 @@ interface Props {
 }
 
 export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: Props) {
+  const { usePingFang } = useContext(LanguageContext);
   const context = useContext(StyleContext);
   const cleanText = text
     .replace(/\\u2022/g, '•')
@@ -243,25 +246,38 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
   }, [onLinkPress, context]);
   const rules = useMemo(() => {
     return {
-      emMarkdown: EmphasisMarkdownTagRule(context),
+      emMarkdown: EmphasisMarkdownTagRule(usePingFang, context),
       arkhamIconSpan: ArkahmIconSpanRule(context, sizeScale),
       hrTag: HrTagRule,
       blockquoteTag: BlockquoteHtmlTagRule,
       delTag: DelHtmlTagRule(context),
-      brTag: BreakTagRule(context),
-      biTag: BoldItalicHtmlTagRule(context),
-      badBiTag: MalformedBoldItalicHtmlTagRule(context),
-      bTag: BoldHtmlTagRule(context, sizeScale),
+      brTag: BreakTagRule(usePingFang, context),
+      biTag: BoldItalicHtmlTagRule(usePingFang, context),
+      badBiTag: MalformedBoldItalicHtmlTagRule(usePingFang, context),
+      bTag: BoldHtmlTagRule(usePingFang, context, sizeScale),
       pTag: ParagraphTagRule,
-      uTag: UnderlineHtmlTagRule(context),
-      emTag: EmphasisHtmlTagRule(context),
-      iTag: ItalicHtmlTagRule(context),
+      uTag: UnderlineHtmlTagRule(usePingFang, context),
+      emTag: EmphasisHtmlTagRule(usePingFang, context),
+      iTag: ItalicHtmlTagRule(usePingFang, context),
       smallcapsTag: SmallCapsHtmlTagRule(context),
       center: CenterHtmlTagRule,
       arkhamIcon: ArkhamIconRule(context, sizeScale, !!onLinkPress),
       arkhamIconSkillTestRule: ArkhamIconSkillTextRule(context, sizeScale),
     };
-  }, [context, sizeScale, onLinkPress]);
+  }, [usePingFang, context, sizeScale, onLinkPress]);
+  const textStyle: TextStyle = useMemo(() => {
+    return {
+      fontFamily: usePingFang ? 'PingFangTC' : 'Alegreya',
+      fontStyle: 'normal',
+      fontWeight: 'normal',
+      fontSize: 16 * context.fontScale * sizeScale,
+      lineHeight: 20 * context.fontScale * sizeScale,
+      marginTop: 4,
+      marginBottom: 4,
+      color: context.colors.darkText,
+      textAlign: context.justifyContent ? 'justify' : 'left',
+    };
+  }, [context, usePingFang, sizeScale]);
   // Text that has hyperlinks uses a different style for the icons.
   return (
     <MarkdownView
@@ -277,15 +293,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
         link: {
           color: context.colors.navButton,
         },
-        paragraph: {
-          fontFamily: 'Alegreya',
-          color: context.colors.darkText,
-          fontSize: 16 * context.fontScale * sizeScale,
-          lineHeight: 20 * context.fontScale * sizeScale,
-          marginTop: 4,
-          marginBottom: 4,
-          textAlign: context.justifyContent ? 'justify' : 'left',
-        },
+        paragraph: textStyle,
         tableHeaderCell: {
           minHeight: 40,
         },
@@ -293,6 +301,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
           ...context.typography.small,
           ...context.typography.bold,
           fontFamily: 'Alegreya',
+          fontStyle: 'normal',
           fontWeight: '700',
           minHeight: 50,
           paddingTop: 8,
@@ -308,6 +317,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
         tableCellContent: {
           ...context.typography.small,
           fontFamily: 'Alegreya',
+          fontStyle: 'normal',
           margin: 0,
           padding: 16,
           paddingTop: 16,
@@ -315,6 +325,21 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
         },
       }}
       fonts={{
+        PingFangTC: {
+          fontWeights: {
+            300: 'Light',
+            400: 'Regular',
+            700: 'Semibold',
+            800: 'ExtraBold',
+            900: 'Black',
+            normal: 'Regular',
+            bold: 'Bold',
+          },
+          fontStyles: {
+            normal: '',
+            italic: 'Light',
+          },
+        },
         Alegreya: {
           fontWeights: {
             300: 'Light',
@@ -328,6 +353,34 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
           fontStyles: {
             normal: '',
             italic: 'Italic',
+          },
+        },
+        'Teutonic RU': {
+          fontWeights: {
+            300: 'Regular',
+            400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
+            normal: 'Regular',
+          },
+          fontStyles: {
+            normal: '',
+            italic: '',
+          },
+        },
+        Teutonic: {
+          fontWeights: {
+            300: 'Regular',
+            400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
+            normal: 'Regular',
+          },
+          fontStyles: {
+            normal: '',
+            italic: '',
           },
         },
       }}

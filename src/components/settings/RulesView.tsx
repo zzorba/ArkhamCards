@@ -42,7 +42,7 @@ function RuleComponent({ componentId, rule, level }: { componentId: string; rule
   return (
     <View key={rule.id} style={{ paddingLeft: s + s * (level + 1), paddingRight: m, marginTop: s }}>
       <TouchableOpacity onPress={onPress}>
-        <CardFlavorTextComponent text={`<game>${rule.title}</game>`} />
+        <CardFlavorTextComponent text={`<game>${rule.title}</game>`} sizeScale={1.2} />
         { rule.rules && rule.rules.length > 0 && (
           <CardTextComponent text={map(rule.rules || [], subRule => subRule.title).join(listSeperator)} />
         ) }

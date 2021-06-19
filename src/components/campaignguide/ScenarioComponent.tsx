@@ -29,6 +29,8 @@ import { ProcessedScenario } from '@data/scenario';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import { showGuideCampaignLog } from '@components/campaign/nav';
 import ArkhamButton from '@components/core/ArkhamButton';
+import { CustomData } from '@data/scenario/types';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface ScenarioProps {
   standalone: boolean;
@@ -38,6 +40,25 @@ interface ScenarioProps {
   footer?: React.ReactNode;
 }
 type Props = NavigationProps & ScenarioProps;
+
+export function getDownloadLink(lang: string, customData?: CustomData) {
+  if (!customData?.download_link) {
+    return undefined;
+  }
+  switch (lang) {
+    case 'ko':
+    case 'en':
+    case 'zh':
+    case 'fr':
+    case 'es':
+    case 'de':
+    case 'it':
+    case 'ru':
+      return customData.download_link[lang] || customData.download_link.en;
+    default:
+      return customData.download_link.en;
+  }
+}
 
 function getNarrationQueue(processedScenario: ProcessedScenario, scenarioState: ScenarioStateHelper) {
   const campaignCode = processedScenario.scenarioGuide.campaignGuide.campaignCycleCode();
@@ -129,6 +150,7 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
   const { campaignState, campaignId } = useContext(CampaignGuideContext);
   const { processedScenario, scenarioState } = useContext(ScenarioGuideContext);
   const { backgroundStyle, width } = useContext(StyleContext);
+  const { lang } = useContext(LanguageContext);
   const scenarioId = processedScenario.id.encodedScenarioId;
   useEffect(() => {
     if (standalone && processedScenario.type !== 'started' && processedScenario.type !== 'completed') {
@@ -229,10 +251,11 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
     processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;
   const customData = processedScenario.scenarioGuide.scenarioCustomData();
   const downloadPressed = useCallback(() => {
-    if (customData) {
-      Linking.openURL(customData.download_link);
+    const link = getDownloadLink(lang, customData);
+    if (link) {
+      Linking.openURL(link);
     }
-  }, [customData]);
+  }, [customData, lang]);
   return (
     <KeyboardAvoidingView
       style={[styles.keyboardView, backgroundStyle]}

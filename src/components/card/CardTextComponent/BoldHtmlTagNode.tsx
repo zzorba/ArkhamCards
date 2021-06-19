@@ -1,9 +1,11 @@
+import LanguageContext from '@lib/i18n/LanguageContext';
 import { StyleContextType } from '@styles/StyleContext';
-import React from 'react';
+import React, { useContext } from 'react';
+import { Platform } from 'react-native';
 import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
 import { WithChildren, State } from './types';
-export default function BoldHtmlTagNode({ fontScale }: StyleContextType, sizeScale: number) {
+export default function BoldHtmlTagNode(usePingFang: boolean, { fontScale }: StyleContextType, sizeScale: number) {
   return (
     node: Node & WithChildren,
     output: OutputFunction,
@@ -14,9 +16,9 @@ export default function BoldHtmlTagNode({ fontScale }: StyleContextType, sizeSca
         key={state.key}
         allowFontScaling
         style={{
-          fontFamily: 'Alegreya',
+          fontFamily: usePingFang ? 'PingFangTC' : 'Alegreya',
           fontWeight: '700',
-          fontStyle: state.italic ? 'italic' : 'normal',
+          fontStyle: state.italic && !usePingFang ? 'italic' : 'normal',
           fontSize: 16 * fontScale * sizeScale,
           lineHeight: 20 * fontScale * sizeScale,
         }}

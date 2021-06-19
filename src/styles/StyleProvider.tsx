@@ -63,7 +63,7 @@ const DARK_ELEMENTS_THEME = {
 };
 
 export default function StyleProvider({ children } : Props) {
-  const { lang } = useContext(LanguageContext);
+  const { lang, usePingFang } = useContext(LanguageContext);
   const themeOverride = useSelector(getThemeOverride);
   const appFontScale = useSelector(getAppFontScale);
   const colorScheme = useColorScheme();
@@ -86,8 +86,8 @@ export default function StyleProvider({ children } : Props) {
   const darkMode = (themeOverride ? themeOverride === 'dark' : colorScheme === 'dark');
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
   const gameFont = lang === 'ru' ? 'Teutonic RU' : 'Teutonic';
-  const italicFont = (lang === 'zh' && Platform.OS === 'ios') ? 'PingFangTC-Light' : 'Alegreya-Italic';
-  const boldItalicFont = (lang === 'zh' && Platform.OS === 'ios') ? 'PingFangTC-Semibold' : EXTRA_BOLD_ITALIC;
+  const italicFont = usePingFang ? 'PingFangTC-Light' : 'Alegreya-Italic';
+  const boldItalicFont = usePingFang ? 'PingFangTC-Semibold' : EXTRA_BOLD_ITALIC;
   const styleTypography = useMemo(() => typography(
     appFontScale,
     colors,

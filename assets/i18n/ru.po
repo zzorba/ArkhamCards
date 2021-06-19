@@ -4171,9 +4171,9 @@ msgid "Scenario Card"
 msgstr "Карта сценария"
 
 msgid ""
-"This appears to be one of your decks from ArkhamDB, however you seem to be logged into a "
-"differen ArkhamDB account? If you wish to make edits, please login through the app "
-"settings."
+"This appears to be one of your decks from ArkhamDB, however you seem to be "
+"logged into a different ArkhamDB account? If you wish to make edits, please "
+"login through the app settings."
 msgstr ""
 "Похоже, это одна из ваших колод с Arkhamdb, однако, похоже, вы вошли в другой аккаунт. "
 "Если желаете редактировать колоду, войдите в свой аккаунт в настройках приложения."
@@ -4322,9 +4322,6 @@ msgstr "Состояние сыщиков"
 
 msgid "Social"
 msgstr "Соцсети"
-
-msgid "Connect with other fans of Arkham Horror: The Card Game."
-msgstr "Общайтесь с другими поклонниками карточного «Ужаса Аркхэма»."
 
 msgid "Add new"
 msgstr "Новый"

@@ -19,6 +19,8 @@ import { useUpdateCampaignActions } from '@data/remote/campaigns';
 import { useDeckActions } from '@data/remote/decks';
 import StyleContext from '@styles/StyleContext';
 import DeckButton from '@components/deck/controls/DeckButton';
+import LanguageContext from '@lib/i18n/LanguageContext';
+import { getDownloadLink } from './ScenarioComponent';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -29,6 +31,7 @@ function CampaignGuideView(props: Props) {
   const { componentId, setCampaignServerId } = props;
   const campaignData = useContext(CampaignGuideContext);
   const { typography } = useContext(StyleContext);
+  const { lang } = useContext(LanguageContext);
   const { campaignId } = campaignData;
   const dispatch = useDispatch();
   const deckActions = useDeckActions();
@@ -61,10 +64,11 @@ function CampaignGuideView(props: Props) {
   const [alertDialog, showAlert] = useAlertDialog();
   const customData = campaignGuide.campaignCustomData();
   const downloadPressed = useCallback(() => {
-    if (customData) {
-      Linking.openURL(customData.download_link);
+    const link = getDownloadLink(lang, customData);
+    if (link) {
+      Linking.openURL(link);
     }
-  }, [customData]);
+  }, [customData, lang]);
   const footerButtons = useMemo(() => {
     return (
       <View style={space.paddingSideS}>
