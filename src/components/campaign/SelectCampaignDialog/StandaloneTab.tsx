@@ -4,7 +4,7 @@ import { forEach, map, sortBy, head } from 'lodash';
 import { t } from 'ttag';
 
 import { CampaignCycleCode, StandaloneId } from '@actions/types';
-import CardSectionHeader from '@components/core/CardSectionHeader';
+import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
 import { getStandaloneScenarios, StandaloneScenarioInfo } from '@data/scenario';
 import StandaloneItem from './StandaloneItem';
 import { campaignName } from '../constants';
@@ -73,7 +73,7 @@ export default function StandaloneTab({ standaloneChanged }: SelectCampagaignPro
       { map(sections, (section, idx) => {
         return (
           <View key={idx}>
-            <CardSectionHeader section={{ title: section.header }} />
+            <CardDetailSectionHeader normalCase color="dark" title={section.header } />
             { map(section.scenarios, pack_code => renderStandalone(pack_code)) }
           </View>
         );

@@ -23,7 +23,7 @@ import SmallCapsNode from './SmallCapsNode';
 import CenterNode from './CenterNode';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { Platform, TextStyle } from 'react-native';
+import { TextStyle } from 'react-native';
 
 const BASE_ORDER = 0;
 const ParagraphTagRule: MarkdownRule<WithChildren, State> = {
@@ -357,7 +357,11 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
         },
         'Teutonic RU': {
           fontWeights: {
+            300: 'Regular',
             400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
             normal: 'Regular',
           },
           fontStyles: {
@@ -367,7 +371,11 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
         },
         Teutonic: {
           fontWeights: {
+            300: 'Regular',
             400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
             normal: 'Regular',
           },
           fontStyles: {

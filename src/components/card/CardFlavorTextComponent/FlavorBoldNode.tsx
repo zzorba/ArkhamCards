@@ -1,6 +1,4 @@
-import LanguageContext from '@lib/i18n/LanguageContext';
-import React, { useContext } from 'react';
-import { Platform } from 'react-native';
+import React from 'react';
 import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
 import { WithText } from '../CardTextComponent/types';

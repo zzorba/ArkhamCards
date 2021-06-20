@@ -17,12 +17,11 @@ export default function ItemContent({ packCode, text, disabled, description }: P
     colors,
     fontScale,
     backgroundStyle,
-    borderStyle,
     disabledStyle,
     typography,
   } = useContext(StyleContext);
   return (
-    <View style={[styles.campaignRow, backgroundStyle, borderStyle, disabled ? disabledStyle : {}]}>
+    <View style={[styles.campaignRow, backgroundStyle, disabled ? disabledStyle : {}]}>
       <View style={styles.campaignIcon}>
         <EncounterIcon
           encounter_code={packCode}
@@ -49,7 +48,6 @@ const styles = StyleSheet.create({
   campaignRow: {
     paddingTop: s,
     paddingBottom: s,
-    borderBottomWidth: StyleSheet.hairlineWidth,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',

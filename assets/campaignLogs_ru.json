@@ -852,6 +852,473 @@
     "supplies": []
   },
   {
+    "campaignId": "rttcu",
+    "sections": [
+      {
+        "section": "$input_value",
+        "entries": [
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# затянут в потусторонний мир.",
+            "feminine_text": "#name# затянута в потусторонний мир."
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# исчез во мгле.",
+            "feminine_text": "#name# исчезла во мгле."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# унесён призраками.",
+            "feminine_text": "#name# унесена призраками."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name#: забрал Страж.",
+            "feminine_text": "#name#: забрал Страж."
+          }
+        ]
+      },
+      {
+        "section": "05046",
+        "entries": [
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# затянут в потусторонний мир.",
+            "feminine_text": "#name# затянута в потусторонний мир."
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# исчез во мгле.",
+            "feminine_text": "#name# исчезла во мгле."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# унесён призраками.",
+            "feminine_text": "#name# унесена призраками."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name#: забрал Страж.",
+            "feminine_text": "#name#: забрал Страж."
+          },
+          {
+            "id": "alive",
+            "text": "Гавриэла жива."
+          },
+          {
+            "id": "dead",
+            "text": "Гавриэла погибла."
+          },
+          {
+            "id": "on_gavriellas_trail",
+            "text": "сыщики напали на след Гавриэлы."
+          }
+        ]
+      },
+      {
+        "section": "05047",
+        "entries": [
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# затянут в потусторонний мир.",
+            "feminine_text": "#name# затянута в потусторонний мир."
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# исчез во мгле.",
+            "feminine_text": "#name# исчезла во мгле."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# унесён призраками.",
+            "feminine_text": "#name# унесена призраками."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name#: забрал Страж.",
+            "feminine_text": "#name#: забрал Страж."
+          },
+          {
+            "id": "alive",
+            "text": "Джером жив."
+          },
+          {
+            "id": "dead",
+            "text": "Джером погиб."
+          },
+          {
+            "id": "on_jeromes_trail",
+            "text": "сыщики напали на след Джерома."
+          }
+        ]
+      },
+      {
+        "section": "05048",
+        "entries": [
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# затянут в потусторонний мир.",
+            "feminine_text": "#name# затянута в потусторонний мир."
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# исчез во мгле.",
+            "feminine_text": "#name# исчезла во мгле."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# унесён призраками.",
+            "feminine_text": "#name# унесена призраками."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name#: забрал Страж.",
+            "feminine_text": "#name#: забрал Страж."
+          },
+          {
+            "id": "alive",
+            "text": "Валентино жив."
+          },
+          {
+            "id": "dead",
+            "text": "Валентино погиб."
+          },
+          {
+            "id": "on_valentinos_trail",
+            "text": "сыщики напали на след Валентино."
+          }
+        ]
+      },
+      {
+        "section": "05049",
+        "entries": [
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# затянут в потусторонний мир.",
+            "feminine_text": "#name# затянута в потусторонний мир."
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# исчез во мгле.",
+            "feminine_text": "#name# исчезла во мгле."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# унесён призраками.",
+            "feminine_text": "#name# унесена призраками."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name#: забрал Страж.",
+            "feminine_text": "#name#: забрал Страж."
+          },
+          {
+            "id": "alive",
+            "text": "Пенни жива."
+          },
+          {
+            "id": "dead",
+            "text": "Пенни погибла."
+          },
+          {
+            "id": "on_pennys_trail",
+            "text": "сыщики напали на след Пенни."
+          }
+        ]
+      },
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "lead_investigator_joins_pipers",
+            "masculine_text": "#name# присоединился к флейтистам Азатота.",
+            "feminine_text": "#name# присоединилась к флейтистам Азатота."
+          },
+          {
+            "id": "accepted_fate",
+            "text": "вы приняли свою судьбу."
+          },
+          {
+            "id": "anette_mason_is_possessed_by_evil",
+            "text": "Анетта Мейсон одержима злом."
+          },
+          {
+            "id": "anette_taught_you_the_spells_of_old",
+            "text": "Анетта обучила вас заклинаниям былых дней."
+          },
+          {
+            "id": "arrested_anette",
+            "text": "сыщики арестовали Анетту."
+          },
+          {
+            "id": "arrested_sanford",
+            "text": "сыщики арестовали Сэнфорда."
+          },
+          {
+            "id": "asked_anette_for_assistance",
+            "text": "сыщики попросили Анетту о помощи."
+          },
+          {
+            "id": "asked_sanford_for_assistance",
+            "text": "попросили Сэнфорда о помощи."
+          },
+          {
+            "id": "assumed_control_of_the_silver_twilight_lodge",
+            "text": "сыщики захватили контроль над Ложей Серебряных Сумерек."
+          },
+          {
+            "id": "azathoth_devoured_the_universe",
+            "text": "Азатот поглотил Вселенную."
+          },
+          {
+            "id": "azathoth_slumbers",
+            "text": "Азатот дремлет… пока."
+          },
+          {
+            "id": "being_hunted",
+            "text": "за вами охотятся."
+          },
+          {
+            "id": "carl_sanford_possesses_the_secrets_of_the_universe",
+            "text": "Карл Сэнфорд овладел тайнами Вселенной."
+          },
+          {
+            "id": "continued_alone",
+            "text": "сыщики идут дальше сами."
+          },
+          {
+            "id": "coven_of_keziah_holds_the_world_in_its_grasp",
+            "text": "the coven of Keziah holds the world in its grasp."
+          },
+          {
+            "id": "deceiving_the_lodge",
+            "text": "сыщики обманывают Ложу."
+          },
+          {
+            "id": "discovered_how_to_open_the_puzzle_box",
+            "text": "сыщики узнали, как открыть шкатулку."
+          },
+          {
+            "id": "doom_draws_ever_closer",
+            "text": "погибель приближается."
+          },
+          {
+            "id": "enemies_of_the_lodge",
+            "text": "сыщики враждуют с Ложей."
+          },
+          {
+            "id": "erryn_wants_to_meet",
+            "text": "Erynn wants to meet you."
+          },
+          {
+            "id": "erynn_joined_investigators",
+            "text": "Erynn joined the investigators."
+          },
+          {
+            "id": "guardian_of_the_trap_defeated",
+            "text": "хранитель ловушки явился и был побеждён."
+          },
+          {
+            "id": "guardian_of_the_trap_emerged",
+            "text": "хранитель ловушки явился."
+          },
+          {
+            "id": "heretics_released",
+            "text": "В Аркхэм проникли #X# еретичек."
+          },
+          {
+            "id": "hid_knowledge_of_coven",
+            "text": "сыщики скрыли информацию о ковене."
+          },
+          {
+            "id": "inducted_into_the_inner_circle",
+            "text": "сыщики посвящены во Внутренний круг."
+          },
+          {
+            "id": "investigators_escaped_the_spectral_realm",
+            "text": "сыщики сбежали из потустороннего мира."
+          },
+          {
+            "id": "josef_disappeared_into_the_mist",
+            "text": "Джозеф исчез во мгле."
+          },
+          {
+            "id": "josef_is_alive",
+            "text": "Джозеф жив и здоров."
+          },
+          {
+            "id": "kept_mementos_hidden",
+            "text": "сыщики скрыли собранные свидетельства."
+          },
+          {
+            "id": "learned_nothing_of_the_lodges_schemes",
+            "text": "сыщики ничего не узнали о планах Ложи."
+          },
+          {
+            "id": "members_of_the_lodge",
+            "text": "сыщики приняты в Ложу."
+          },
+          {
+            "id": "never_seen_again",
+            "text": "сыщики бесследно исчезли."
+          },
+          {
+            "id": "path_winds_before_you",
+            "text": "Путь лежит перед вами: #X#"
+          },
+          {
+            "id": "pieces_of_evidence",
+            "text": "Оставлено #X# вещественных доказательств."
+          },
+          {
+            "id": "rejected_fate",
+            "text": "вы отвергли свою судьбу."
+          },
+          {
+            "id": "rescued_josef",
+            "text": "сыщики спасли Джозефа."
+          },
+          {
+            "id": "sided_with_the_coven",
+            "text": "сыщики приняли сторону ковена."
+          },
+          {
+            "id": "sided_with_the_lodge",
+            "text": "сыщики приняли сторону Ложи."
+          },
+          {
+            "id": "signed_the_black_book",
+            "text": "сыщики подписали Чёрную книгу Азатота."
+          },
+          {
+            "id": "survived_the_watchers_embrace",
+            "text": "сыщики пережили объятия Стража."
+          },
+          {
+            "id": "told_lodge_about_coven",
+            "text": "сыщики рассказали Ложе о ковене."
+          },
+          {
+            "id": "true_work_of_silver_twilight_lodge_has_begun",
+            "text": "Ложа Серебряных Сумерек взялась за своё дело."
+          },
+          {
+            "id": "witches_spell_broken",
+            "text": "заклятие ведьм снято."
+          },
+          {
+            "id": "witches_spell_cast",
+            "text": "заклятье ведьм завершено."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "dummy"
+          },
+          {
+            "id": "a_record_of_those_lost",
+            "text": "dummy"
+          },
+          {
+            "id": "act_3_v2",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading",
+            "text": "dummy"
+          },
+          {
+            "id": "left_column",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05046",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05047",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05048",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05049",
+            "text": "dummy"
+          },
+          {
+            "id": "right_column",
+            "text": "dummy"
+          },
+          {
+            "id": "skip_prologue",
+            "text": "dummy"
+          },
+          {
+            "id": "uad_add_chaos_token",
+            "text": "dummy"
+          },
+          {
+            "id": "uad_no_investigators_alive",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "mementos",
+        "entries": [
+          {
+            "id": "bloody_tree_carvings",
+            "text": "Bloody Tree Carvings"
+          },
+          {
+            "id": "corn_husk_doll",
+            "text": "Соломенная кукла"
+          },
+          {
+            "id": "gilmans_journal",
+            "text": "Дневник Гилмана"
+          },
+          {
+            "id": "keziahs_formulae",
+            "text": "Формула Кассии"
+          },
+          {
+            "id": "mesmerizing_flute",
+            "text": "Гипнотическая флейта"
+          },
+          {
+            "id": "ritual_components",
+            "text": "Компоненты ритуала"
+          },
+          {
+            "id": "scrap_of_torn_shadow",
+            "text": "Лоскут изорванной тени"
+          },
+          {
+            "id": "strange_incantation",
+            "text": "Strange Incantation"
+          },
+          {
+            "id": "wisp_of_spectral_mist",
+            "text": "Клок потусторонней мглы"
+          },
+          {
+            "id": "worn_crucific",
+            "text": "Потёртое распятие"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "rttfa",
     "sections": [
       {
@@ -1043,7 +1510,7 @@
           },
           {
             "id": "wait_for_additional_supplies",
-            "text": "что сыщики вынуждены ждать новых припасов."
+            "text": "сыщики вынуждены ждать новых припасов."
           }
         ]
       },
@@ -2371,7 +2838,7 @@
           },
           {
             "id": "wait_for_additional_supplies",
-            "text": "что сыщики вынуждены ждать новых припасов."
+            "text": "сыщики вынуждены ждать новых припасов."
           }
         ]
       },
