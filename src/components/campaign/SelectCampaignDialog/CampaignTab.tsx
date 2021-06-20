@@ -16,7 +16,6 @@ import {
 import CycleItem from './CycleItem';
 import { campaignName } from '../constants';
 import { getPacksInCollection } from '@reducers';
-import CardSectionHeader from '@components/core/CardSectionHeader';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
 
 export interface SelectCampagaignProps {
