@@ -1772,7 +1772,7 @@
     },
     {
       "id": "all_insane",
-      "text": "Each surviving investigator is driven <b>insane</b>.",
+      "text": "所有倖存的調查員<b>發瘋</b>。",
       "effects": [
         {
           "type": "trauma",
@@ -10929,7 +10929,7 @@
     },
     {
       "id": "place_investigators",
-      "text": "每位調查員從起始地點開始遊戲。(注意在地點翻至已揭示面時，觸發該地點上的<b>強制</b>效果。)\n如果“你開啟了一條秘密通道”，選擇一個地下墓穴地點放在起始地點的相鄰位置，翻開該地點卡牌。"
+      "text": "每位調查員從起始地點開始遊戲。<i>(注意在地點翻至已揭示面時，觸發該地點上的<b>強制</b>效果)</i>。如果“你開啟了一條秘密通道”，選擇一個地下墓穴地點放在起始地點的相鄰位置，翻開該地點卡牌。"
     },
     {
       "id": "set_aside_pallid_mask",
@@ -14280,7 +14280,7 @@
     },
     {
       "id": "all_insane",
-      "text": "Each surviving investigator is driven <b>insane</b>.",
+      "text": "所有倖存的調查員<b>發瘋</b>。",
       "effects": [
         {
           "type": "trauma",
@@ -23865,7 +23865,7 @@
     },
     {
       "id": "place_investigators",
-      "text": "每位調查員從起始地點開始遊戲。(注意在地點翻至已揭示面時，觸發該地點上的<b>強制</b>效果。)\n如果“你開啟了一條秘密通道”，選擇一個地下墓穴地點放在起始地點的相鄰位置，翻開該地點卡牌。"
+      "text": "每位調查員從起始地點開始遊戲。<i>(注意在地點翻至已揭示面時，觸發該地點上的<b>強制</b>效果)</i>。如果“你開啟了一條秘密通道”，選擇一個地下墓穴地點放在起始地點的相鄰位置，翻開該地點卡牌。"
     },
     {
       "id": "set_aside_pallid_mask",
@@ -34966,7 +34966,7 @@
         "id": "the_circle_undone.union_and_disillusion.resolution_8",
         "name": "Resolution 8"
       },
-      "title": "Resolution 8",
+      "title": "結局8",
       "text": "When you finally return to the banks of the Miskatonic River, you take stock of the situation…",
       "steps": [
         "remove_puzzle_box",
@@ -35817,7 +35817,7 @@
         "name": "The Price of Progress 3"
       },
       "type": "story",
-      "text": "你不是來這兒聽桑福德傳教，聽他那些關於犠性的鬼話的。你來這兒為的是答案。你讓這位老人解释，但他一臉怒容打斷了你。“行行行。你問的是上週的那件事。那是怪物第一次現身，就是你在黑霧裡遇到的那隻。”他瞥了一眼莊園前門，清清嗓子。他停了片刻，解釋道：“那晚發生的失蹤事件舆秘社無關。但我們不能直接跑到警局去，告訴他們一個霧做的怪物從梅吉爾家綁走了四個人，不是嗎？所以，我們得自己解决這事。我們懷疑它被人群所吸引，所以我們将那個事件重現，只為搞明白那晚發生了什麼——從而了解那隻怪物的目的。”你現在明白了，為什麼在失蹤事件後會這麼快決定再在梅吉爾莊園舉辦一次活動。儘管你不願意承認，秘社實施這個計劃是有理可循的，但你不太喜歡被人當成誘餌。誰知道有多少無辜的人被置於危險的境地呢？即使目標是崇高的，它值得藏牲嗎？\n“我希望你能理解，我們組織只為造福人類。在我們五感之外有一些殘酷的存在，”桑福德表情冷峻地說道，“如果我們要生存、要繁榮發展，我們必須適應、研究並理解它們。這就是我們秘社所追求的——更多地了解我們周圍的世界。這是一份值得追求的事業，你不這麼認爲嗎？”"
+      "text": "你不是來這兒聽桑福德傳教，聽他那些關於犠性的鬼話的。你來這兒為的是答案。你讓這位老人解释，但他一臉怒容打斷了你。“行行行。你問的是上週的那件事。那是怪物第一次現身，就是你在黑霧裡遇到的那隻。”他瞥了一眼莊園前門，清清嗓子。他停了片刻，解釋道：“那晚發生的失蹤事件舆秘社無關。但我們不能直接跑到警局去，告訴他們一個霧做的怪物從梅吉爾家綁走了四個人，不是嗎？所以，我們得自己解决這事。我們懷疑它被人群所吸引，所以我們将那個事件重現，只為搞明白那晚發生了什麼——從而了解那隻怪物的目的。”你現在明白了，為什麼在失蹤事件後會這麼快決定再在梅吉爾莊園舉辦一次活動。儘管你不願意承認，秘社實施這個計劃是有理可循的，但你不太喜歡被人當成誘餌。誰知道有多少無辜的人被置於危險的境地呢？即使目標是崇高的，它值得犧牲嗎？\n“我希望你能理解，我們組織只為造福人類。在我們五感之外有一些殘酷的存在，”桑福德表情冷峻地說道，“如果我們要生存、要繁榮發展，我們必須適應、研究並理解它們。這就是我們秘社所追求的——更多地了解我們周圍的世界。這是一份值得追求的事業，你不這麼認爲嗎？”"
     },
     {
       "id": "check_josef_meiger",
@@ -39011,7 +39011,7 @@
           },
           {
             "id": "victory_display",
-            "text": "預示者在勝利牌區",
+            "text": "預示者在勝利牌區。",
             "effects": [
               {
                 "type": "campaign_log",
@@ -40513,7 +40513,7 @@
           },
           {
             "id": "victory_display",
-            "text": "預示者在勝利牌區",
+            "text": "預示者在勝利牌區。",
             "effects": [
               {
                 "type": "campaign_log",
@@ -42226,7 +42226,7 @@
           },
           {
             "id": "victory_display",
-            "text": "預示者在勝利牌區",
+            "text": "預示者在勝利牌區。",
             "effects": [
               {
                 "type": "campaign_log",
@@ -45224,7 +45224,7 @@
           },
           {
             "id": "victory_display",
-            "text": "預示者在勝利牌區",
+            "text": "預示者在勝利牌區。",
             "effects": [
               {
                 "type": "campaign_log",
@@ -55938,8 +55938,8 @@
 },
 {
   "id": "the_nights_usurper",
-  "scenario_name": "The Night's Usurper",
-  "full_name": "The Night's Usurper",
+  "scenario_name": "夜之亂臣",
+  "full_name": "夜之亂臣",
   "header": "",
   "chaos_bag_card": "83016",
   "xp_cost": 2,
@@ -56163,7 +56163,7 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "Winlock fiddles with his mustache for a moment while he considers your words. As the leader of the expedition currently scouring through Dashur, the decision of whether or not to let you join the expedition is up to him. “Look, I read through the evidence you gathered. I know about what happened in Cairo. I believe your story. But, still…” He lets out an exasperated sigh. “I just don’t know how I’m going to convince the rest of the expedition crew. Ancient temples is one thing, but a gate to another dimension? This ‘Xzharah’ fellow? None of this can be real, right?”\nYour research and your experience says otherwise. The threat is real. There is a secret organization operating within Egypt—The Brotherhood of the Beast—and if they are not stopped, their newfound “Chosen One” will begin a campaign of destruction that ends with the Earth.\nYou insist one last time to be allowed access to the expedition’s resources. “Alright, alright,” Winlock relents. “I don’t know what it is you’re looking for out there in the desert, but I hope you find it.” You shake your head in reply. You’d rather come up empty‑handed."
+      "text": "溫洛克摩挲著自己的鬍子，思索著你的話。身為本次勘察代赫舒爾的領隊，你能不能加入探險隊完全取決於他。“瞧，你這些證據我都看了。我知道開羅發生了什麼。我也相信你說的。可是……”他惱火地嘆了一聲，“我只是不知道要怎麼說服探險隊的其它人。古代神廟是一回事，但要說通往另一個維度的入口？這個稱為伊扎法拉的傢伙？這些都不可能是真的，對吧？”\n但你的研究和經驗得出的答案並不是這樣。威脅是確實存在的。這個神祕組織——惡獸兄弟會——在全埃及活動，要是不阻止他們，他們新發現的“天選”就會帶來毀滅，危害整個地球。\n你又堅持了一次，一定要探險隊對你打開大門。“好吧，好吧。”溫洛克最終還是服軟了。“我不知道你到底要在沙漠裡找什麼，但我希望你能找到它。”你搖搖頭作為回應。那你情願空手而歸。"
     },
     {
       "id": "gather_encounter_sets",
@@ -56178,15 +56178,15 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the Expedition Camp into play. Each investigator begins play in the Expedition Camp."
+      "text": "將探險營地放置入場。每位調查員從探險營地開始遊戲。"
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Khopesh of the Abyss, Summoned Nightgaunt, the single-sided Eldritch Gate location, the double-sided Xzharah enemy, each of the 5 double-sided [[Otherworld]] locations, and both copies of Dreaded Shantak. Xzharah and the [[Otherworld]] locations have story cards on their reverse sides. For the best experience, do not look at the story cards on their reverse sides <i>(see “Story Cards”)</i>."
+      "text": "將下列卡牌放在一邊，位於場外：深淵鐮形劍、召來的夜魘、單面驚悚入口地點、雙面伊扎法拉敵人、5張雙面[[異界]]地點、2張駭人的夏塔克鳥。伊扎法拉和[[異界]]地點卡的背面為劇情卡。為了獲得最佳的遊戲體驗，請勿查看背面的劇情卡<i>(詳見“劇情卡”)</i>。"
     },
     {
       "id": "create_exploration_deck",
-      "text": "Create the exploration deck. This is done by shuffling together each of the 7 remaining single-sided locations, along with 1 copy each of the following treachery cards: Abyssal Reach, The Black Wind, Terror Under the Pyramids, and Swarm of Locusts."
+      "text": "創建探索牌堆。拿取7張剩餘的單面地點，將這些地點與遭遇卡一同混洗形成探索牌堆，所混洗的遭遇卡為以下每種1張：深淵領域、黑風、金字塔下的恐怖、蝗蟲成群。"
     },
     {
       "id": "check_played_eternal_slumber",
@@ -56216,37 +56216,37 @@
     },
     {
       "id": "create_brotherhood_deck_without_eternal_slumber",
-      "text": "Find the 6 double-sided [[Brotherhood]] enemies. These enemies have story cards on their reverse sides <i>(see “Story Cards”)</i>. Some of these enemies are placed beneath the scenario reference card, as follows. The rest are removed from the game.",
+      "text": "找出6張雙面[[兄弟會]]敵人卡。這些敵人卡的另一面均為劇情卡<i>(詳見“劇情卡”)</i>。其中一些敵人會放在冒險輔助卡底下，具體見下。將其餘敵人移出遊戲。",
       "bullets": [
         {
-          "text": "Because you have not played <b>The Eternal Slumber</b>, shuffle these 6 enemies together and place 3 of them beneath the scenario reference card without looking at them."
+          "text": "因為你沒有完成<b>永恆沉睡</b>，混洗這6個敵人，將其中3個放在冒險輔助卡底下，不要查看。"
         }
       ]
     },
     {
       "id": "create_brotherhood_deck",
-      "text": "Find the 6 double-sided [[Brotherhood]] enemies. These enemies have story cards on their reverse sides <i>(see “Story Cards”)</i>. Some of these enemies are placed beneath the scenario reference card, as follows. The rest are removed from the game.",
+      "text": "找出6張雙面[[兄弟會]]敵人卡。這些敵人卡的另一面均為劇情卡<i>(詳見“劇情卡”)</i>。其中一些敵人會放在冒險輔助卡底下，具體見下。將其餘敵人移出遊戲。",
       "bullets": [
         {
-          "text": "Place each of the enemies listed next to <i>“Brotherhood Agents Who Escaped”</i> in your Campaign Log beneath the scenario reference card."
+          "text": "將冒險日誌上 <i>“逃走的兄弟會成員”</i>下列出的敵人放在冒險輔助卡底下。"
         }
       ]
     },
     {
       "id": "set_strength_of_the_abyss_without_eternal_slumber",
-      "text": "Place a number of resource tokens on the scenario reference card (under “Strength of the Abyss”), as follows. <i>(see “Strength of the Abyss”)</i>",
+      "text": "將一定數量的資源標記放在冒險輔助卡上(放在“深淵之力”下方)，具體見下<i>(參見的“深淵之力”)</i>。",
       "bullets": [
         {
-          "text": "Because you have not played The Eternal Slumber, place 1 resource for each investigator in the game."
+          "text": "因為你沒有完成<b>永恆沉睡</b>，每有一位調查員，放置1個資源標記。"
         }
       ]
     },
     {
       "id": "set_strength_of_the_abyss",
-      "text": "Place a number of resource tokens on the scenario reference card (under “Strength of the Abyss”), as follows. <i>(see “Strength of the Abyss”)</i>",
+      "text": "將一定數量的資源標記放在冒險輔助卡上(放在“深淵之力”下方)，具體見下<i>(參見的“深淵之力”)</i>。",
       "bullets": [
         {
-          "text": "Place resources equal to the number listed in parentheses next to <i>“dreamers in the abyss”</i> in your Campaign Log."
+          "text": "放置的資源標記數量等於冒險日誌上所記的<i>“深淵中的沉夢者”</i>旁括號內所列的數字。"
         }
       ]
     },
@@ -56281,19 +56281,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tnu_day_of_reckoning_is_coming",
-          "text": "the Day of Reckoning is coming."
+          "text": "清算之日將至。"
         }
       ]
     },
     {
       "id": "abyss_was_saved",
-      "text": "In your Campaign Log, record that <i>the Abyss was saved</i>. Cross off all <i>“(card name) was taken by the abyss”</i> notes in your Campaign Log.",
+      "text": "在冒險日誌中，記錄下<i>深淵得到拯救</i>。在冒險日誌中，劃掉所有的<i>“(卡牌名)墜入深淵”</i>。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tnu_the_abyss_was_saved",
-          "text": "the Abyss was saved."
+          "text": "深淵得到拯救。"
         },
         {
           "type": "campaign_log",
@@ -56316,13 +56316,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tnu_joined_xzharah",
-          "text": "you joined forces with Xzharah."
+          "text": "你加入了伊扎法拉的勢力。"
         }
       ]
     },
     {
       "id": "earn_summoned_nightgaunt",
-      "text": "Any one investigator may choose to add Summoned Nightgaunt to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "任何一位調查員可以選擇將召來的夜魘加入其牌組。這張卡牌不計入該調查員的牌組張數上限。",
       "effects": [
         {
           "type": "add_card",
@@ -56333,7 +56333,7 @@
     },
     {
       "id": "earn_kopesh_of_the_abyss",
-      "text": "Any one investigator may choose to add Khopesh of the Abyss to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "任何一位調查員可以選擇將深淵鐮形劍加入其牌組。這張卡牌不計入該調查員的牌組張數上限。",
       "effects": [
         {
           "type": "add_card",
@@ -56439,7 +56439,7 @@
     {
       "id": "R1",
       "title": "結局1",
-      "text": "“It’s just an arch. Why’re you so worked up, boss?” Winlock crossed his arms. Something about all of this felt wrong. He was sure that this was the place those folks from Arkham were looking for—a delicately patterned archway that led nowhere at all—and yet, Winlock was certain there was something <i>on the other side</i>. “It’s not Egyptian,” he noted, staring at the thing with narrow eyes. “It doesn’t even look…human.”\n“You believed those loons? Look boss, it’s nothing!” one of his men laughed.\n“Is it?” Winlock snapped, eyes wide. “Is it?”",
+      "text": "“這就是個拱門。你幹嘛這麼激動，老大？”溫洛克叉著手。這東西渾身上下都透著一股不對勁。他確信這地方就是那群阿卡姆來的人要找的地方——繪有精妙圖文的拱門——很明顯不通往任何地方——但是，溫洛克確定在另一端一定有著什麼。“這不是埃及的東西。”他眯起眼凝視著拱門，“這看起來甚至都不是……不是人類的東西。”\n“你相信那些傻瓜？看啊老大，<b>這什麼都不是！</b>”其中一個隊員笑道。\n“嗯？”溫洛克瞪大了眼睛厲聲說道，“是嗎？”",
       "steps": [
         "day_of_reckoning_is_coming",
         "earn_xp",
@@ -56449,7 +56449,7 @@
     {
       "id": "R2",
       "title": "結局2",
-      "text": "The essence fades from Xzharah’s body. Swirling clouds of mist surround him and force him to his knees. Creatures of the abyss appear wordlessly at your side, surrounding Xzharah with a quiet, expressionless hate. Xzharah’s sword betrays him and falls from his grip, the blade fracturing as it clatters to the ground. “…The prophecy must be fulfilled…” It is the last of his vile whispers. His physical form vanishes into the realm’s ethereal mist, and all is silent in the Great Abyss.",
+      "text": "伊扎法拉的實體開始消散。團團雲霧環繞著他，迫使他跪下。深淵的生物無聲無息地出現在你周圍，帶著寂靜而面無表情的恨意包圍住了伊扎法拉。就連伊扎法拉的劍都不聽他的使喚，掉在了地上，劍刀碎裂開來。“預言必須被實現……”這是伊扎法拉邪惡聲音留下的最後一句。他的實體消散在這片領域的薄霧中。大深淵裡只留一片寂靜。",
       "steps": [
         "abyss_was_saved",
         "earn_summoned_nightgaunt",
@@ -56460,7 +56460,7 @@
     {
       "id": "R3",
       "title": "結局3",
-      "text": "Xzharah places an ice-cold hand on your shoulder as you kneel before him. “You have proven your loyalty,” he decrees. Creatures of the abyss surround you, heads bowed in reverence to their new master. There are none left to oppose him. “Few of your kind have the wit or the will to see beyond the present. To see our prophecy fulfilled. But you are worthy enough to have your eyes opened. Far worthier than the fools I have trusted in the past.” He bids you to stand, and places the handle of his blood-soaked sword in your hands. “Now arise, Servant of the Beast, and take your place among us.”",
+      "text": "你跪在伊扎法拉面前，他將冰冷的手放在你肩上。“你已經證明了自己的忠誠。”他宣佈道。深淵中的生物環繞著你，低頭向新主人致意。再也沒有誰敢反抗他了。“你的族裔中很少有人能具備足夠的智慧或意志能看到未來。看到我們的預言實現。但你很有價值，打開了自己的眼界。比我過去信任的蠢貨都更有價值。”他讓你站起身，將自己那把染血彎劍的劍柄交到了你的手裡，“現在起身吧，惡獸之僕。你在我們之中赢得了一席之地。”",
       "steps": [
         "joined_xzharah",
         "earn_kopesh_of_the_abyss",
@@ -64002,7 +64002,7 @@
         "name": "The Price of Progress 3"
       },
       "type": "story",
-      "text": "你不是來這兒聽桑福德傳教，聽他那些關於犠性的鬼話的。你來這兒為的是答案。你讓這位老人解释，但他一臉怒容打斷了你。“行行行。你問的是上週的那件事。那是怪物第一次現身，就是你在黑霧裡遇到的那隻。”他瞥了一眼莊園前門，清清嗓子。他停了片刻，解釋道：“那晚發生的失蹤事件舆秘社無關。但我們不能直接跑到警局去，告訴他們一個霧做的怪物從梅吉爾家綁走了四個人，不是嗎？所以，我們得自己解决這事。我們懷疑它被人群所吸引，所以我們将那個事件重現，只為搞明白那晚發生了什麼——從而了解那隻怪物的目的。”你現在明白了，為什麼在失蹤事件後會這麼快決定再在梅吉爾莊園舉辦一次活動。儘管你不願意承認，秘社實施這個計劃是有理可循的，但你不太喜歡被人當成誘餌。誰知道有多少無辜的人被置於危險的境地呢？即使目標是崇高的，它值得藏牲嗎？\n“我希望你能理解，我們組織只為造福人類。在我們五感之外有一些殘酷的存在，”桑福德表情冷峻地說道，“如果我們要生存、要繁榮發展，我們必須適應、研究並理解它們。這就是我們秘社所追求的——更多地了解我們周圍的世界。這是一份值得追求的事業，你不這麼認爲嗎？”"
+      "text": "你不是來這兒聽桑福德傳教，聽他那些關於犠性的鬼話的。你來這兒為的是答案。你讓這位老人解释，但他一臉怒容打斷了你。“行行行。你問的是上週的那件事。那是怪物第一次現身，就是你在黑霧裡遇到的那隻。”他瞥了一眼莊園前門，清清嗓子。他停了片刻，解釋道：“那晚發生的失蹤事件舆秘社無關。但我們不能直接跑到警局去，告訴他們一個霧做的怪物從梅吉爾家綁走了四個人，不是嗎？所以，我們得自己解决這事。我們懷疑它被人群所吸引，所以我們将那個事件重現，只為搞明白那晚發生了什麼——從而了解那隻怪物的目的。”你現在明白了，為什麼在失蹤事件後會這麼快決定再在梅吉爾莊園舉辦一次活動。儘管你不願意承認，秘社實施這個計劃是有理可循的，但你不太喜歡被人當成誘餌。誰知道有多少無辜的人被置於危險的境地呢？即使目標是崇高的，它值得犧牲嗎？\n“我希望你能理解，我們組織只為造福人類。在我們五感之外有一些殘酷的存在，”桑福德表情冷峻地說道，“如果我們要生存、要繁榮發展，我們必須適應、研究並理解它們。這就是我們秘社所追求的——更多地了解我們周圍的世界。這是一份值得追求的事業，你不這麼認爲嗎？”"
     },
     {
       "id": "check_josef_meiger",
@@ -67845,7 +67845,7 @@
         "id": "the_circle_undone.union_and_disillusion.resolution_8",
         "name": "Resolution 8"
       },
-      "title": "Resolution 8",
+      "title": "結局8",
       "text": "When you finally return to the banks of the Miskatonic River, you take stock of the situation…",
       "steps": [
         "remove_puzzle_box",
@@ -80783,7 +80783,7 @@
           },
           {
             "id": "victory_display",
-            "text": "預示者在勝利牌區",
+            "text": "預示者在勝利牌區。",
             "effects": [
               {
                 "type": "campaign_log",
@@ -83101,7 +83101,7 @@
           },
           {
             "id": "victory_display",
-            "text": "預示者在勝利牌區",
+            "text": "預示者在勝利牌區。",
             "effects": [
               {
                 "type": "campaign_log",
@@ -85350,7 +85350,7 @@
           },
           {
             "id": "victory_display",
-            "text": "預示者在勝利牌區",
+            "text": "預示者在勝利牌區。",
             "effects": [
               {
                 "type": "campaign_log",
@@ -93944,7 +93944,7 @@
         "physical",
         "mental"
       ],
-      "title": "Resolution 8",
+      "title": "結局8",
       "text": "As the ritual concludes, the eastern seaboard becomes the first coastline drowned by the rising sea. The rest of the continent is swift to follow. The icecaps melt, consuming the remainder of the Earth. Cities fall. Humanity is no longer. All that is left is the ocean and the ever-static alignment of celestial bodies that looms overhead. And of course, the inheritors of this new Earth: Hydra, Dagon, and their children.",
       "steps": [
         "deep_ones_have_flooded_the_earth",

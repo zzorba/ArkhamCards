@@ -23,7 +23,7 @@ import GameTextNode from './GameTextNode';
 import CiteTagNode from './CiteTagNode';
 import { xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
-import { Platform, TextStyle } from 'react-native';
+import { TextStyle } from 'react-native';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
 function BreakTagRule(): MarkdownRule<WithText, State> {

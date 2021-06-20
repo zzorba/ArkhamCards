@@ -66,7 +66,7 @@
           {
             "id": "easy",
             "text": "Facile",
-            "description": "<i>I want to experience the story</i>",
+            "description": "<i>Voglio godermi la storia</i>",
             "tokens": [
               "+1",
               "+1",
@@ -115,7 +115,7 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "<i>I want a challenge</i>",
+            "description": "<i>Voglio una sfida</i>",
             "tokens": [
               "+1",
               "0",
@@ -164,7 +164,7 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "<i>I want a true nightmare</i>",
+            "description": "<i>Voglio un vero incubo</i>",
             "tokens": [
               "0",
               "0",
@@ -215,7 +215,7 @@
           {
             "id": "expert",
             "text": "Esperto",
-            "description": "<i>I want Arkham Horror</i>",
+            "description": "<i>Voglio tutto Arkham Horror</i>",
             "tokens": [
               "0",
               "-1",
@@ -272,9 +272,9 @@
 }, "scenarios": [
 {
   "id": "armitages_fate",
-  "scenario_name": "Armitage's Fate",
-  "header": "Interlude I",
-  "full_name": "Interlude I: Armitage's Fate",
+  "scenario_name": "Il Destino di Armitage",
+  "header": "Interludio I",
+  "full_name": "Interludio I: Il Destino di Armitage",
   "type": "interlude",
   "icon": "armitages_fate",
   "setup": [
@@ -316,7 +316,7 @@
         "name": "Armitage's Fate 1"
       },
       "type": "story",
-      "text": "You are more than a little rattled by your experiences in the university and the Clover Club. You’re not sure what to make of whoever—or whatever—was after Rice and Morgan. Worried about Dr. Armitage, you swiftly make your way back to his home. When you arrive, you find that the latches of his front door have been busted open, and his living area and study have been ransacked. Dr. Armitage is nowhere to be found. Searching his home, you find a journal the intruders didn’t steal tucked beneath several other documents in the bottom drawer of Armitage’s desk.\nThe journal appears to be written in a strange language you cannot decode, using a script you’ve never seen in your entire life. Fortunately, it seems Dr. Armitage had already gone through the trouble of translating it into English. Apparently, it belongs to one “Wilbur Whateley.” The journal—along with Armitage’s many notes—tells a startling tale, one you would scarcely believe had it not been for your harrowing experiences earlier tonight…"
+      "text": "Le vostre esperienze all’università e al Clover Club vi hanno lasciato profondamente scossi. Non sapete dire con certezza chi (o cosa) desse la caccia a Rice e a Morgan. Preoccupati per il dottor Armitage, vi affrettate a tornare alla sua abitazione, ma quando arrivate scoprite che la porta d’ingresso è stata sfondata e che sia il soggiorno che lo studio sono stati messi a soqquadro: del dottor Armitage in persona non c’è traccia. Setacciando l’abitazione, trovate un diario che gli intrusi non sono riusciti a rubare, nascosto in mezzo a un cumulo di documenti nell’ultimo cassetto della scrivania: il diario sembra essere scritto in uno strano linguaggio che non siete in grado di decodificare e usa una forma di scrittura che non avete mail visto in vita vostra. Fortunatamente, sembra che il dottor Armitage si fosse già preso la briga di tradurlo in inglese. A quanto pare appartiene a un certo Wilbur Whateley. Il diario, assieme ai molti appunti di Armitage, narra una storia stupefacente, una a cui fareste molta fatica a credere se non fosse per le orripilanti esperienze che avete appena vissuto stanotte…"
     },
     {
       "id": "fate_2",
@@ -325,7 +325,7 @@
         "name": "Armitage's Fate 2"
       },
       "type": "story",
-      "text": "When you arrive at Dr. Armitage’s home in Southside, you find him sitting at his desk, pale-faced and sweating with worry. He is grateful to you for searching for his colleagues, but he doesn’t look relieved. With a long pause, he straightens his glasses and explains:\n“I’m afraid I must apologize. There’s something I didn’t mention to you earlier.” Dr. Armitage then spins a tale you would scarcely believe had it not been for your harrowing experiences earlier that night…"
+      "text": "Quando arrivate all’abitazione del dottor Armitage nel Southside, lo trovate seduto alla sua scrivania: è pallido, preoccupato e ha la fronte imperlata di sudore: vi è grato per le ricerche che avete condotto sui suoi colleghi, ma non sembra affatto sollevato. Dopo una lunga pausa, si aggiusta gli occhiali e spiega: “Temo di dovermi scusare. C’è qualcosa che avrei dovuto spiegarvi in precedenza.” Il dottor Armitage vi narra una storia stupefacente, una a cui fareste molta fatica a credere, se non fosse per le orripilanti esperienze che avete appena vissuto stanotte…"
     },
     {
       "id": "henry_armitage_kidnapped",
@@ -334,7 +334,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "henry_armitage_kidnapped",
-          "text": "Dr. Henry Armitage was kidnapped."
+          "text": "il dottor Henry Armitage è stato rapito."
         }
       ]
     },
@@ -345,13 +345,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "henry_armitage_rescued",
-          "text": "the investigators rescued Dr. Henry Armitage."
+          "text": "il dottor Henry Armitage è stato salvato."
         }
       ]
     },
     {
       "id": "earn_henry_armitage",
-      "text": "Any one investigator may choose to add Dr. Henry Armitage to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Un investigatore può scegliere di aggiungere il Dott. Henry Armitage al suo mazzo (non considerandolo nella dimensione del suo mazzo).",
       "effects": [
         {
           "type": "add_card",
@@ -362,7 +362,7 @@
     },
     {
       "id": "bonus_xp",
-      "text": "Each investigator earns 2 bonus experience as reading Wilbur’s journal gives them insight into the hidden world of the mythos.",
+      "text": "Ogni investigatore guadagna 2 punti esperienza mentre apprende nuove conoscenze sul mondo nascosto dei miti grazie alla lettura del diario di Wilbur.",
       "effects": [
         {
           "type": "earn_xp",
@@ -672,7 +672,7 @@
       "input": {
         "type": "counter",
         "text": "Galleria delle vittorie:",
-        "confirm_text": "Ogni investigatore guadagna 2 punti esperienza mentre apprende nuove conoscenza sul mondo nascosto dei miti.",
+        "confirm_text": "Ogni investigatore guadagna 2 punti esperienza mentre apprende nuove conoscenze sul mondo nascosto dei miti.",
         "effects": [
           {
             "type": "earn_xp",
@@ -730,7 +730,7 @@
         "id": "the_dunwich_legacy.blood_on_the_altar.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -1138,7 +1138,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "henry_armitage_kidnapped",
-          "text": "Dr. Henry Armitage was kidnapped."
+          "text": "il dottor Henry Armitage è stato rapito."
         }
       ]
     },
@@ -1179,7 +1179,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "francis_morgan_kidnapped",
-          "text": "Dr. Francis Morgan was kidnapped."
+          "text": "il dottor Francis Morgan è stato rapito."
         }
       ]
     },
@@ -1219,7 +1219,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "warren_rice_kidnapped",
-          "text": "Professor Warren Rice was kidnapped."
+          "text": "il professor Warren Rice è stato rapito."
         }
       ]
     },
@@ -1274,7 +1274,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -1351,7 +1351,7 @@
         "name": "Intro"
       },
       "type": "story",
-      "text": "Il dottor Armitage teme che il suo collega, il professor Warren Rice, sia nei guai, quindi vi ha chiesto di rintracciare il suo amico. Sembra irrazionalmente nervoso riguardo alla scomparsa del collega, se si considera che il professo Rice è “scomparso” soltanto da poche ore…"
+      "text": "Il dottor Armitage teme che il suo collega, il professor Warren Rice, sia nei guai, quindi vi ha chiesto di rintracciare il suo amico. Sembra irrazionalmente nervoso riguardo alla scomparsa del collega, se si considera che il professor Rice è “scomparso” soltanto da poche ore…"
     },
     {
       "id": "gather_encounter_sets",
@@ -1439,7 +1439,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "warren_rice_kidnapped",
-          "text": "Professor Warren Rice was kidnapped."
+          "text": "il professor Warren Rice è stato rapito."
         }
       ]
     },
@@ -1450,7 +1450,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "students_rescued",
-          "text": "the students were rescued."
+          "text": "gli studenti sono stati salvati."
         }
       ]
     },
@@ -1461,7 +1461,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "experiment_defeated",
-          "text": "the Experiment was defeated."
+          "text": "l’Esperimento è stato sconfitto."
         }
       ]
     },
@@ -1472,7 +1472,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "unconscious_for_several_hours",
-          "text": "the investigators were unconscious for several hours."
+          "text": "siete rimasti privi di sensi per molte ore."
         }
       ]
     },
@@ -1483,13 +1483,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "warren_rice_rescued",
-          "text": "the investigators rescued Professor Warren Rice."
+          "text": "il professor Warren Rice è stato salvato."
         }
       ]
     },
     {
       "id": "earn_warren_rice",
-      "text": "Any one investigator may choose to add Professor Warren Rice to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Un investigatore può scegliere di aggiungere il Professor Warren Rice al suo mazzo (non considerandolo nella dimensione del suo mazzo).",
       "effects": [
         {
           "type": "add_card",
@@ -1515,7 +1515,7 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 1 experience as they reflects on the night’s events.",
+      "text": "Ogni investigatore guadagna un ammontare di punti esperienza pari al valore di Vittoria di ogni carta nella galleria delle vittorie. Ogni investigatore guadagna 1 punto esperienza mentre riflette sugli eventi di quella notte.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -1531,13 +1531,13 @@
     },
     {
       "id": "failed_to_save_students",
-      "text": "In your Campaign Log, record that <i>the investigators failed to save the students</i>. You are haunted by guilt. Add 1 [tablet] token to the chaos bag for the remainder of the campaign.",
+      "text": "Annotate nel Diario della Campagna che <i>gli studenti non sono stati salvati</i>. Siete tormentati dal senso di colpa. Aggiungete 1 segnalino [tablet] al sacchetto del caos per il resto della campagna.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "failed_to_save_students",
-          "text": "the investigators failed to save the students."
+          "text": "gli studenti non sono stati salvati."
         },
         {
           "type": "add_chaos_token",
@@ -1590,7 +1590,7 @@
         "id": "the_dunwich_legacy.extracurricular_activity.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -1598,7 +1598,7 @@
         "physical",
         "mental"
       ],
-      "text": "As you flee from the university, you hear screaming from the northern end of the campus. An ambulance passes you by, and you fear the worst. Hours later, you learn that a ‘rabid dog of some sort’ found its way into the university dormitories. The creature attacked the students inside and many were mauled or killed in the attack.",
+      "text": "Mentre fuggite dall’università, sentite alcune grida provenire dal lato nord del campus. Un’ambulanza vi oltrepassa di corsa e temete il peggio. Alcune ore dopo, venite a sapere che “un cane rabbioso di qualche tipo” si è fatto strada fino al dormitorio dell’università: la creatura ha attaccato gli studenti, ferendone e uccidendone molti.",
       "steps": [
         "warren_rice_kidnapped",
         "failed_to_save_students",
@@ -1613,7 +1613,7 @@
         "name": "Resolution 1"
       },
       "title": "Risoluzione 1",
-      "text": "You find Professor Rice bound and gagged in the closet of his office. When you free him, he informs you that the strange men and women wandering around the campus had been stalking him for hours. They cornered him in his office and tied him up, although for what purpose, Rice isn’t sure. You inform him that Dr. Armitage sent you, and Rice looks relieved, although he suspects that Dr. Morgan might be in danger as well. Because the strangers on campus seem to have been targeting Professor Rice, you decide that the best course of action is to escort him away from the campus as quickly as possible. As you leave the university, you hear screaming from the northern end of the campus. An ambulance passes you by, and you fear the worst. Hours later, you learn that a ‘rabid dog of some sort’ found its way into the university dormitories. The creature attacked the students inside, and many were mauled or killed in the attack.",
+      "text": "Trovate il professor Rice legato e imbavagliato nel ripostiglio del suo ufficio. Quando lo liberate, vi spiega che gli strani uomini e donne che si aggiravano per il campus lo avevano pedinato per ore, poi lo hanno affrontato nel suo ufficio e legato, anche se Rice non sa dire con certezza per quale motivo. Gli spiegate che è stato il dottor Armitage a mandarvi e Rice sembra sollevato, sebbene sospetti che anche il dottor Morgan possa essere in pericolo. Dato che gli sconosciuti del campus sembrano aver preso di mira il professor Rice, decidete che la strategia migliore è scortarlo fuori dal campus al più presto possibile. Mentre fuggite dall’università, sentite alcune grida provenire dal lato nord del campus. Un’ambulanza vi oltrepassa di corsa e temete il peggio. Alcune ore dopo, venite a sapere che “un cane rabbioso di qualche tipo” si è fatto strada fino al dormitorio dell’università: la creatura ha attaccato gli studenti, ferendone e uccidendone molti.",
       "steps": [
         "warren_rice_rescued",
         "earn_warren_rice",
@@ -1629,7 +1629,7 @@
         "name": "Resolution 2"
       },
       "title": "Risoluzione 2",
-      "text": "You pull each of the dormitory’s fire alarms and usher the students out of the building’s north exit, hoping to make your way off campus. Many of the students are confused and exhausted, but you believe an attempt to explain the situation will do more harm than good. Minutes later, a terrible screech echoes across the campus, piercing and shrill. You tell the students to wait and head back to the dormitories to investigate. Oddly, you find no trace of the strange creature—a prospect that worries you more than it relieves you. You hurry to the faculty offices to find Professor Rice, but there is no sign of him anywhere.",
+      "text": "Attivate tutti gli allarmi antincendio del dormitorio e dirigete gli studenti verso l’uscita nord dell’edificio, nella speranza che riescano ad allontanarsi dal campus: molti sono confusi ed esausti, ma sapete che ogni tentativo di spiegare la soluzione farebbe soltanto danni peggiori. Alcuni minuti dopo, un verso stridulo e acuto echeggia per tutto il campus. Ordinate agli studenti di aspettare e rientrate nel dormitorio per indagare. Stranamente, non trovate nessuna traccia della creatura, cosa che vi inquieta più che tranquillizzarvi. Vi affrettate a tornare negli uffici della facoltà per trovare il professor Rice, ma quando arrivate nel suo ufficio di lui non c’è traccia.",
       "steps": [
         "warren_rice_kidnapped",
         "students_rescued",
@@ -1644,7 +1644,7 @@
         "name": "Resolution 3"
       },
       "title": "Risoluzione 3",
-      "text": "After defeating the strange and terrifying creature from the Department of Alchemy, you rush to the faculty offices to find Professor Rice. By the time you get to his office, there is no sign of him anywhere.",
+      "text": "Dopo aver sconfitto la strana e terrificante creatura della facoltà di Chimica, vi affrettate a tornare negli uffici della facoltà per trovare il professor Rice, ma quando arrivate nel suo ufficio di lui non c’è traccia.",
       "steps": [
         "warren_rice_kidnapped",
         "experiment_defeated",
@@ -1659,7 +1659,7 @@
         "name": "Resolution 4"
       },
       "title": "Risoluzione 4",
-      "text": "You awaken hours later, exhausted and injured. You’re not sure what you saw, but the sight of it filled your mind with terror. From other survivors, you learn that a ‘rabid dog of some sort’ found its way into the university dormitories. The creature attacked the students inside, and many were mauled or killed in the attack.",
+      "text": "Vi svegliate alcune ore dopo, sfiniti ed esausti. Non ricordate con esattezza ciò che avete visto, ma di qualunque cosa si trattasse ha sconvolto la vostra mente. Apprendete dagli altri sopravvissuti che “un cane rabbioso di qualche tipo” si è fatto strada fino al dormitorio dell’università: la creatura ha attaccato gli studenti, ferendone e uccidendone molti.",
       "steps": [
         "unconscious_for_several_hours",
         "warren_rice_kidnapped",
@@ -1922,7 +1922,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -2077,7 +2077,7 @@
     },
     {
       "id": "earn_henry_armitage",
-      "text": "Any one investigator may choose to add Dr. Henry Armitage to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Un investigatore può scegliere di aggiungere il Dott. Henry Armitage al suo mazzo (non considerandolo nella dimensione del suo mazzo).",
       "effects": [
         {
           "type": "add_card",
@@ -2146,7 +2146,7 @@
     },
     {
       "id": "earn_warren_rice",
-      "text": "Any one investigator may choose to add Professor Warren Rice to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Un investigatore può scegliere di aggiungere il Professor Warren Rice al suo mazzo (non considerandolo nella dimensione del suo mazzo).",
       "effects": [
         {
           "type": "add_card",
@@ -2456,7 +2456,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "bone_to_pick",
-          "text": "the O'Bannion gang has a bone to pick with the investigators."
+          "text": "gli O’Bannion hanno un conto da regolare con voi."
         }
       ]
     },
@@ -2467,7 +2467,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "francis_morgan_kidnapped",
-          "text": "Dr. Francis Morgan was kidnapped."
+          "text": "il dottor Francis Morgan è stato rapito."
         }
       ]
     },
@@ -2478,7 +2478,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "naomi_has_back",
-          "text": "Naomi has the investigators' back."
+          "text": "Naomi vi copre le spalle."
         }
       ]
     },
@@ -2490,7 +2490,7 @@
         "choices": [
           {
             "id": "cheat",
-            "text": "Did any player “cheat”?",
+            "text": "Un investigatore ha “barato”?",
             "steps": [
               "add_elder_thing"
             ]
@@ -2513,7 +2513,7 @@
     },
     {
       "id": "physical_trauma",
-      "text": "Each investigator suffers 1 physical trauma.",
+      "text": "Ogni investigatore subisce 1 trauma fisico.",
       "effects": [
         {
           "type": "trauma",
@@ -2529,19 +2529,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "unconscious_for_several_hours",
-          "text": "the investigators were unconscious for several hours."
+          "text": "siete rimasti privi di sensi per molte ore."
         }
       ]
     },
     {
       "id": "francis_morgan_rescued",
-      "text": "In your Campaign Log, record that <i>the investigators rescued Dr. Francis Morgan</i>. Any one investigator may choose to add Dr. Francis Morgan to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Annotate nel Diario della Campagna che <i>il dottor Francis Morgan è stato salvato</i>. Un investigatore può scegliere di aggiungere il Dott. Francis Morgan al suo mazzo (non considerandolo nella dimensione del suo mazzo).",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "francis_morgan_rescued",
-          "text": "the investigators rescued Dr. Francis Morgan."
+          "text": "il dottor Francis Morgan è stato salvato."
         },
         {
           "type": "add_card",
@@ -2572,7 +2572,7 @@
       "input": {
         "type": "counter",
         "text": "Galleria delle vittorie:",
-        "confirm_text": "Each investigator earns 1 bonus experience as they reflect on the night’s events.",
+        "confirm_text": "Ogni investigatore guadagna 1 punto esperienza mentre riflette sugli eventi di quella notte.",
         "effects": [
           {
             "type": "earn_xp",
@@ -2620,15 +2620,15 @@
         "id": "the_dunwich_legacy.the_house_always_wins.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
-      "description": "Each investigator resigned before Act 3 or was defeated",
+      "title": "Nessuna risoluzione è stata raggiunta",
+      "description": "Ogni investigatore ha abbandonato prima del Capitolo 3 o è stato sconfitto",
       "investigator_status": [
         "resigned",
         "eliminated",
         "physical",
         "mental"
       ],
-      "text": "You barely made it out of the club alive.",
+      "text": "Ce l’avete fatta a malapena a uscire vivi dal club.",
       "steps": [
         "resolution_1"
       ]
@@ -2640,7 +2640,7 @@
         "name": "Resolution 1"
       },
       "title": "Risoluzione 1",
-      "text": "You flee to the end of the block and pause to recover. Before you can catch your breath, the ground shakes with a thunderous crash. People emerge from their homes and storefronts to see what the ruckus is, and a crowd forms on the street. You head to the front of the crowd and are horrified to see the building from which you fled just minutes earlier reduced to rubble. There is no sign of Dr. Morgan anywhere.",
+      "text": "Fuggite fino ai confini dell’isolato prima di fermarvi per recuperare le forze, ma prima che possiate riprendere fiato la terra trema e nell’aria echeggia un boato assordante: la gente esce dalle abitazioni per vedere cosa è successo e presto la via si fa affollata. Vi fate strada oltre la folla e scoprite con orrore che l’edificio da cui siete fuggiti soltanto pochi minuti fa ora è ridotto in macerie. Del dottor Morgan non c’è nessuna traccia.",
       "steps": [
         "bone_to_pick",
         "francis_morgan_kidnapped",
@@ -2656,7 +2656,7 @@
         "name": "Resolution 2"
       },
       "title": "Risoluzione 2",
-      "text": "“What in the world…?” Dr. Morgan finally breaks out of his daze as you make your way to safety. You ask him what he remembers, and he sputters and shakes his head. “It’s all a haze,” he explains, visibly exhausted. “I was having the run of my life! Perhaps I had one too many shots. But, those creatures—I haven’t seen anything like that since…” He trails off, and you can tell that his mind is racing. His eyes widen with realization and his face pales. “I may not be in the best shape, but I’ll help with your investigation. Whatever it takes.”",
+      "text": "“Ma che diavolo…?” Il dottor Morgan si riscuote finalmente dal suo torpore mentre lo trascinate in salvo. Gli chiedete cosa si ricorda, e dopo aver balbettato qualcosa di incomprensibile scuote la testa. “È tutto così confuso”, spiega, visibilmente sfinito, “era la partita della mia vita! Forse ho bevuto troppi drink. Ma quelle creature… Non ho mai visto niente del genere fin dai tempi di…” Non aggiunge altro, ma è evidente che la sua mente cerca freneticamente una risposta. Poi i suoi occhi si spalancano di colpo e il suo volto impallidisce: deve aver ricordato qualcosa. “Non sarò nella migliore delle forme, ma vi aiuterò nelle vostre indagini. Costi quel che costi.”",
       "steps": [
         "bone_to_pick",
         "francis_morgan_rescued",
@@ -2672,7 +2672,7 @@
         "name": "Resolution 3"
       },
       "title": "Risoluzione 3",
-      "text": "Although you were unable to find Dr. Morgan in the club, the man you rescued is grateful for your help. He introduces himself as Peter Clover, the owner of the establishment you’d just left. Despite the situation, he maintains an air of quiet professionalism. As you make your way towards the street, a well-polished Chrysler B-70 rolls up to you, and a gorgeous woman with long brown hair and narrow eyes exits. She is flanked by dangerous-looking men who slip their hands under their suit jackets when they see you. “Peter,” she says with a sigh of relief, “Good, you’re okay. I heard there was trouble?” She turns and glares at you with deadly eyes. “Who are they?”\nMr. Clover dusts off his vest, unworried. “Naomi, my dear, these are friends of mine. They…” he clears his throat. “They escorted me off the premises,” he explains after a short pause. “They have earned our gratitude.” The woman crosses her arms and takes a moment to size you up before giving you a smirk.\n“Very well then. I must thank you for taking care of Peter. Run along now; we’ll handle things from here.” She nods to the goons flanking her and they walk past you toward the club’s rear entrance, pulling firearms out from underneath their coats. You’re not sure what ‘handling things’ means, but you’re pretty sure you don’t want to be here when the gunfire starts. You thank Naomi and Peter, and head off.",
+      "text": "Anche se non siete riusciti a trovare il dottor Morgan nel club, l’uomo che avete salvato vi è grato per il vostro aiuto: si presenta a voi come Peter Clover, il proprietario del locale da cui siete appena usciti; nonostante la situazione, mantiene un atteggiamento distaccato e professionale. Mentre vi incamminate assieme a lui lungo la strada, una Chrysler B-70 tirata a lucido vi raggiunge e si ferma al vostro fianco. Dall’auto esce una splendida donna dai lunghi capelli castani che esamina la scena socchiudendo gli occhi: è accompagnata da alcuni uomini dall’aspetto minaccioso che infilano la mano nel taschino della giacca quando vi vedono. “Peter”, esclama lei con un sospiro di sollievo, “per fortuna stai bene. Ho sentito che ci sono stati dei problemi.” Poi si ferma e vi scocca un’occhiata ostile. “Chi sono questi?”\nMr. Clover si spolvera la giacca, senza battere ciglio. “Naomi, mia cara, questi sono amici miei. Mi hanno…” si schiarisce la gola con una pausa, “mi hanno scortato fuori dal locale. Si sono guadagnati la nostra gratitudine.” La donna incrocia le braccia al petto e si prende un istante per squadrarvi, prima di accennare un sorriso.\n“Molto bene, allora. Devo ringraziarvi per avere dato una mano a Peter. Ora potere andare, qui ci penseremo noi.” Fa un cenno col capo agli sgherri che la circondano e tutti si incamminano verso l’entrata sul retro del club, sfoderando le armi da fuoco che tenevano nascoste sotto le giacche. Non siete sicuri di cosa intendano con “ci penseremo noi”, ma di certo non vi conviene farvi trovare nei paraggi quando lo scontro a fuoco avrà inizio. Ringraziate Naomi e Peter e vi allontanate in tutta fretta.",
       "steps": [
         "naomi_has_back",
         "francis_morgan_kidnapped",
@@ -2688,7 +2688,7 @@
         "name": "Resolution 4"
       },
       "title": "Risoluzione 4",
-      "text": "You are pulled from the debris by several firefighters, one of whom exclaims, “We’ve got a live one!” A few of them patch you up, and the cops ask you what happened. You’re certain they wouldn’t believe your story about horrible monstrosities demolishing the building from within. Unsure of what to say, you give a vague statement about not remembering much. “We’re bringing you to St. Mary’s,” one of the nurses says, pointing to a nearby ambulance. Knowing now how dire the situation is, you slip away while she is distracted by something else in the rubble…",
+      "text": "Venite estratti dalle macerie da una squadra di vigili del fuoco, uno dei quali esclama: “Quaggiù! Questi sono ancora vivi!” Altri soccorritori vi prestano la prime cure e i poliziotti vi chiedono cosa è successo. Non sapendo cosa dire, rispondete con affermazioni vaghe, aggiungendo che ricordate poco o nulla; siete sicuri che non crederebbero mai alla storia di un gruppo di creature mostruose che demoliscono l’edificio dall’interno. “Vi portiamo al St. Mary” dice una delle infermiere. Ben sapendo quanto sia critica la situazione, sgusciate via non appena la sua attenzione è attirata da qualcos’altro tra le macerie…",
       "steps": [
         "bone_to_pick",
         "francis_morgan_kidnapped",
@@ -2986,7 +2986,7 @@
         "id": "the_dunwich_legacy.the_miskatonic_museum.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -3374,7 +3374,7 @@
         "id": "the_dunwich_legacy.undimensioned_and_unseen.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -3872,7 +3872,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -3980,7 +3980,7 @@
           {
             "id": "easy",
             "text": "Facile",
-            "description": "<i>I want to experience the story</i>",
+            "description": "<i>Voglio godermi la storia</i>",
             "tokens": [
               "+1",
               "+1",
@@ -4031,7 +4031,7 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "<i>I want a challenge</i>",
+            "description": "<i>Voglio una sfida</i>",
             "tokens": [
               "+1",
               "0",
@@ -4082,7 +4082,7 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "<i>I want a true nightmare</i>",
+            "description": "<i>Voglio un vero incubo</i>",
             "tokens": [
               "0",
               "0",
@@ -4135,7 +4135,7 @@
           {
             "id": "expert",
             "text": "Esperto",
-            "description": "<i>I want Arkham Horror</i>",
+            "description": "<i>Voglio tutto Arkham Horror</i>",
             "tokens": [
               "0",
               "-1",
@@ -4242,7 +4242,7 @@
           {
             "id": "easy",
             "text": "Facile",
-            "description": "<i>I want to experience the story</i>",
+            "description": "<i>Voglio godermi la storia</i>",
             "tokens": [
               "+1",
               "+1",
@@ -4293,7 +4293,7 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "<i>I want a challenge</i>",
+            "description": "<i>Voglio una sfida</i>",
             "tokens": [
               "+1",
               "0",
@@ -4344,7 +4344,7 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "<i>I want a true nightmare</i>",
+            "description": "<i>Voglio un vero incubo</i>",
             "tokens": [
               "0",
               "0",
@@ -4397,7 +4397,7 @@
           {
             "id": "expert",
             "text": "Esperto",
-            "description": "<i>I want Arkham Horror</i>",
+            "description": "<i>Voglio tutto Arkham Horror</i>",
             "tokens": [
               "0",
               "-1",
@@ -4878,7 +4878,7 @@
         "id": "the_night_of_the_zealot.the_midnight_masks.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -5305,7 +5305,7 @@
         "id": "the_night_of_the_zealot.the_devourer_below.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -5493,7 +5493,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "confirm_text": "Ogni investigatore guadagna 2 punti esperienza mentre apprende nuove conoscenza sul mondo nascosto dei miti.",
+        "confirm_text": "Ogni investigatore guadagna 2 punti esperienza mentre apprende nuove conoscenze sul mondo nascosto dei miti.",
         "text": "Galleria delle vittorie:",
         "effects": [
           {
@@ -5572,7 +5572,7 @@
         "id": "the_night_of_the_zealot.the_gathering.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -6896,7 +6896,7 @@
         "id": "the_path_to_carcosa.a_phantom_of_truth.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -7615,7 +7615,7 @@
         "id": "the_path_to_carcosa.black_stars_rise.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -7998,7 +7998,7 @@
         "id": "the_path_to_carcosa.curtain_call.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -8796,7 +8796,7 @@
         "id": "the_path_to_carcosa.dim_carcosa.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -9399,7 +9399,7 @@
         "id": "the_path_to_carcosa.echoes_of_the_past.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -9714,7 +9714,7 @@
   "id": "ptc_interlude1",
   "scenario_name": "Lunacy's Reward",
   "full_name": "Interlude I: Lunacy's Reward",
-  "header": "Interlude I",
+  "header": "Interludio I",
   "type": "interlude",
   "icon": "hasturs_gift",
   "setup": [
@@ -11468,7 +11468,7 @@
         "id": "the_path_to_carcosa.the_pallid_mask.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -12299,7 +12299,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -12430,7 +12430,7 @@
           {
             "id": "easy",
             "text": "Facile",
-            "description": "<i>I want to experience the story</i>",
+            "description": "<i>Voglio godermi la storia</i>",
             "tokens": [
               "+1",
               "+1",
@@ -12479,7 +12479,7 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "<i>I want a challenge</i>",
+            "description": "<i>Voglio una sfida</i>",
             "tokens": [
               "+1",
               "0",
@@ -12528,7 +12528,7 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "<i>I want a true nightmare</i>",
+            "description": "<i>Voglio un vero incubo</i>",
             "tokens": [
               "0",
               "0",
@@ -12579,7 +12579,7 @@
           {
             "id": "expert",
             "text": "Esperto",
-            "description": "<i>I want Arkham Horror</i>",
+            "description": "<i>Voglio tutto Arkham Horror</i>",
             "tokens": [
               "0",
               "-1",
@@ -12750,9 +12750,9 @@
 }, "scenarios": [
 {
   "id": "armitages_fate",
-  "scenario_name": "Armitage's Fate",
-  "header": "Interlude I",
-  "full_name": "Interlude I: Armitage's Fate",
+  "scenario_name": "Il Destino di Armitage",
+  "header": "Interludio I",
+  "full_name": "Interludio I: Il Destino di Armitage",
   "type": "interlude",
   "icon": "armitages_fate",
   "setup": [
@@ -12794,7 +12794,7 @@
         "name": "Armitage's Fate 1"
       },
       "type": "story",
-      "text": "You are more than a little rattled by your experiences in the university and the Clover Club. You’re not sure what to make of whoever—or whatever—was after Rice and Morgan. Worried about Dr. Armitage, you swiftly make your way back to his home. When you arrive, you find that the latches of his front door have been busted open, and his living area and study have been ransacked. Dr. Armitage is nowhere to be found. Searching his home, you find a journal the intruders didn’t steal tucked beneath several other documents in the bottom drawer of Armitage’s desk.\nThe journal appears to be written in a strange language you cannot decode, using a script you’ve never seen in your entire life. Fortunately, it seems Dr. Armitage had already gone through the trouble of translating it into English. Apparently, it belongs to one “Wilbur Whateley.” The journal—along with Armitage’s many notes—tells a startling tale, one you would scarcely believe had it not been for your harrowing experiences earlier tonight…"
+      "text": "Le vostre esperienze all’università e al Clover Club vi hanno lasciato profondamente scossi. Non sapete dire con certezza chi (o cosa) desse la caccia a Rice e a Morgan. Preoccupati per il dottor Armitage, vi affrettate a tornare alla sua abitazione, ma quando arrivate scoprite che la porta d’ingresso è stata sfondata e che sia il soggiorno che lo studio sono stati messi a soqquadro: del dottor Armitage in persona non c’è traccia. Setacciando l’abitazione, trovate un diario che gli intrusi non sono riusciti a rubare, nascosto in mezzo a un cumulo di documenti nell’ultimo cassetto della scrivania: il diario sembra essere scritto in uno strano linguaggio che non siete in grado di decodificare e usa una forma di scrittura che non avete mail visto in vita vostra. Fortunatamente, sembra che il dottor Armitage si fosse già preso la briga di tradurlo in inglese. A quanto pare appartiene a un certo Wilbur Whateley. Il diario, assieme ai molti appunti di Armitage, narra una storia stupefacente, una a cui fareste molta fatica a credere se non fosse per le orripilanti esperienze che avete appena vissuto stanotte…"
     },
     {
       "id": "fate_2",
@@ -12803,7 +12803,7 @@
         "name": "Armitage's Fate 2"
       },
       "type": "story",
-      "text": "When you arrive at Dr. Armitage’s home in Southside, you find him sitting at his desk, pale-faced and sweating with worry. He is grateful to you for searching for his colleagues, but he doesn’t look relieved. With a long pause, he straightens his glasses and explains:\n“I’m afraid I must apologize. There’s something I didn’t mention to you earlier.” Dr. Armitage then spins a tale you would scarcely believe had it not been for your harrowing experiences earlier that night…"
+      "text": "Quando arrivate all’abitazione del dottor Armitage nel Southside, lo trovate seduto alla sua scrivania: è pallido, preoccupato e ha la fronte imperlata di sudore: vi è grato per le ricerche che avete condotto sui suoi colleghi, ma non sembra affatto sollevato. Dopo una lunga pausa, si aggiusta gli occhiali e spiega: “Temo di dovermi scusare. C’è qualcosa che avrei dovuto spiegarvi in precedenza.” Il dottor Armitage vi narra una storia stupefacente, una a cui fareste molta fatica a credere, se non fosse per le orripilanti esperienze che avete appena vissuto stanotte…"
     },
     {
       "id": "henry_armitage_kidnapped",
@@ -12812,7 +12812,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "henry_armitage_kidnapped",
-          "text": "Dr. Henry Armitage was kidnapped."
+          "text": "il dottor Henry Armitage è stato rapito."
         }
       ]
     },
@@ -12823,13 +12823,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "henry_armitage_rescued",
-          "text": "the investigators rescued Dr. Henry Armitage."
+          "text": "il dottor Henry Armitage è stato salvato."
         }
       ]
     },
     {
       "id": "earn_henry_armitage",
-      "text": "Any one investigator may choose to add Dr. Henry Armitage to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Un investigatore può scegliere di aggiungere il Dott. Henry Armitage al suo mazzo (non considerandolo nella dimensione del suo mazzo).",
       "effects": [
         {
           "type": "add_card",
@@ -12840,7 +12840,7 @@
     },
     {
       "id": "bonus_xp",
-      "text": "Each investigator earns 2 bonus experience as reading Wilbur’s journal gives them insight into the hidden world of the mythos.",
+      "text": "Ogni investigatore guadagna 2 punti esperienza mentre apprende nuove conoscenze sul mondo nascosto dei miti grazie alla lettura del diario di Wilbur.",
       "effects": [
         {
           "type": "earn_xp",
@@ -13169,7 +13169,7 @@
       "input": {
         "type": "counter",
         "text": "Galleria delle vittorie:",
-        "confirm_text": "Ogni investigatore guadagna 2 punti esperienza mentre apprende nuove conoscenza sul mondo nascosto dei miti.",
+        "confirm_text": "Ogni investigatore guadagna 2 punti esperienza mentre apprende nuove conoscenze sul mondo nascosto dei miti.",
         "effects": [
           {
             "type": "earn_xp",
@@ -13329,7 +13329,7 @@
         "id": "the_dunwich_legacy.blood_on_the_altar.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -13610,7 +13610,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "henry_armitage_kidnapped",
-          "text": "Dr. Henry Armitage was kidnapped."
+          "text": "il dottor Henry Armitage è stato rapito."
         }
       ]
     },
@@ -13651,7 +13651,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "francis_morgan_kidnapped",
-          "text": "Dr. Francis Morgan was kidnapped."
+          "text": "il dottor Francis Morgan è stato rapito."
         }
       ]
     },
@@ -13691,7 +13691,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "warren_rice_kidnapped",
-          "text": "Professor Warren Rice was kidnapped."
+          "text": "il professor Warren Rice è stato rapito."
         }
       ]
     },
@@ -13771,7 +13771,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -13849,7 +13849,7 @@
         "name": "Intro"
       },
       "type": "story",
-      "text": "Il dottor Armitage teme che il suo collega, il professor Warren Rice, sia nei guai, quindi vi ha chiesto di rintracciare il suo amico. Sembra irrazionalmente nervoso riguardo alla scomparsa del collega, se si considera che il professo Rice è “scomparso” soltanto da poche ore…"
+      "text": "Il dottor Armitage teme che il suo collega, il professor Warren Rice, sia nei guai, quindi vi ha chiesto di rintracciare il suo amico. Sembra irrazionalmente nervoso riguardo alla scomparsa del collega, se si considera che il professor Rice è “scomparso” soltanto da poche ore…"
     },
     {
       "id": "faculty_office_night_is_young",
@@ -13895,7 +13895,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "warren_rice_kidnapped",
-          "text": "Professor Warren Rice was kidnapped."
+          "text": "il professor Warren Rice è stato rapito."
         }
       ]
     },
@@ -13906,7 +13906,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "students_rescued",
-          "text": "the students were rescued."
+          "text": "gli studenti sono stati salvati."
         }
       ]
     },
@@ -13917,7 +13917,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "experiment_defeated",
-          "text": "the Experiment was defeated."
+          "text": "l’Esperimento è stato sconfitto."
         }
       ]
     },
@@ -13928,7 +13928,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "unconscious_for_several_hours",
-          "text": "the investigators were unconscious for several hours."
+          "text": "siete rimasti privi di sensi per molte ore."
         }
       ]
     },
@@ -13939,13 +13939,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "warren_rice_rescued",
-          "text": "the investigators rescued Professor Warren Rice."
+          "text": "il professor Warren Rice è stato salvato."
         }
       ]
     },
     {
       "id": "earn_warren_rice",
-      "text": "Any one investigator may choose to add Professor Warren Rice to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Un investigatore può scegliere di aggiungere il Professor Warren Rice al suo mazzo (non considerandolo nella dimensione del suo mazzo).",
       "effects": [
         {
           "type": "add_card",
@@ -13971,7 +13971,7 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 1 experience as they reflects on the night’s events.",
+      "text": "Ogni investigatore guadagna un ammontare di punti esperienza pari al valore di Vittoria di ogni carta nella galleria delle vittorie. Ogni investigatore guadagna 1 punto esperienza mentre riflette sugli eventi di quella notte.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -13987,13 +13987,13 @@
     },
     {
       "id": "failed_to_save_students",
-      "text": "In your Campaign Log, record that <i>the investigators failed to save the students</i>. You are haunted by guilt. Add 1 [tablet] token to the chaos bag for the remainder of the campaign.",
+      "text": "Annotate nel Diario della Campagna che <i>gli studenti non sono stati salvati</i>. Siete tormentati dal senso di colpa. Aggiungete 1 segnalino [tablet] al sacchetto del caos per il resto della campagna.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "failed_to_save_students",
-          "text": "the investigators failed to save the students."
+          "text": "gli studenti non sono stati salvati."
         },
         {
           "type": "add_chaos_token",
@@ -14111,7 +14111,7 @@
         "id": "the_dunwich_legacy.extracurricular_activity.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -14119,7 +14119,7 @@
         "physical",
         "mental"
       ],
-      "text": "As you flee from the university, you hear screaming from the northern end of the campus. An ambulance passes you by, and you fear the worst. Hours later, you learn that a ‘rabid dog of some sort’ found its way into the university dormitories. The creature attacked the students inside and many were mauled or killed in the attack.",
+      "text": "Mentre fuggite dall’università, sentite alcune grida provenire dal lato nord del campus. Un’ambulanza vi oltrepassa di corsa e temete il peggio. Alcune ore dopo, venite a sapere che “un cane rabbioso di qualche tipo” si è fatto strada fino al dormitorio dell’università: la creatura ha attaccato gli studenti, ferendone e uccidendone molti.",
       "steps": [
         "warren_rice_kidnapped",
         "failed_to_save_students",
@@ -14134,7 +14134,7 @@
         "name": "Resolution 1"
       },
       "title": "Risoluzione 1",
-      "text": "You find Professor Rice bound and gagged in the closet of his office. When you free him, he informs you that the strange men and women wandering around the campus had been stalking him for hours. They cornered him in his office and tied him up, although for what purpose, Rice isn’t sure. You inform him that Dr. Armitage sent you, and Rice looks relieved, although he suspects that Dr. Morgan might be in danger as well. Because the strangers on campus seem to have been targeting Professor Rice, you decide that the best course of action is to escort him away from the campus as quickly as possible. As you leave the university, you hear screaming from the northern end of the campus. An ambulance passes you by, and you fear the worst. Hours later, you learn that a ‘rabid dog of some sort’ found its way into the university dormitories. The creature attacked the students inside, and many were mauled or killed in the attack.",
+      "text": "Trovate il professor Rice legato e imbavagliato nel ripostiglio del suo ufficio. Quando lo liberate, vi spiega che gli strani uomini e donne che si aggiravano per il campus lo avevano pedinato per ore, poi lo hanno affrontato nel suo ufficio e legato, anche se Rice non sa dire con certezza per quale motivo. Gli spiegate che è stato il dottor Armitage a mandarvi e Rice sembra sollevato, sebbene sospetti che anche il dottor Morgan possa essere in pericolo. Dato che gli sconosciuti del campus sembrano aver preso di mira il professor Rice, decidete che la strategia migliore è scortarlo fuori dal campus al più presto possibile. Mentre fuggite dall’università, sentite alcune grida provenire dal lato nord del campus. Un’ambulanza vi oltrepassa di corsa e temete il peggio. Alcune ore dopo, venite a sapere che “un cane rabbioso di qualche tipo” si è fatto strada fino al dormitorio dell’università: la creatura ha attaccato gli studenti, ferendone e uccidendone molti.",
       "steps": [
         "warren_rice_rescued",
         "earn_warren_rice",
@@ -14150,7 +14150,7 @@
         "name": "Resolution 2"
       },
       "title": "Risoluzione 2",
-      "text": "You pull each of the dormitory’s fire alarms and usher the students out of the building’s north exit, hoping to make your way off campus. Many of the students are confused and exhausted, but you believe an attempt to explain the situation will do more harm than good. Minutes later, a terrible screech echoes across the campus, piercing and shrill. You tell the students to wait and head back to the dormitories to investigate. Oddly, you find no trace of the strange creature—a prospect that worries you more than it relieves you. You hurry to the faculty offices to find Professor Rice, but there is no sign of him anywhere.",
+      "text": "Attivate tutti gli allarmi antincendio del dormitorio e dirigete gli studenti verso l’uscita nord dell’edificio, nella speranza che riescano ad allontanarsi dal campus: molti sono confusi ed esausti, ma sapete che ogni tentativo di spiegare la soluzione farebbe soltanto danni peggiori. Alcuni minuti dopo, un verso stridulo e acuto echeggia per tutto il campus. Ordinate agli studenti di aspettare e rientrate nel dormitorio per indagare. Stranamente, non trovate nessuna traccia della creatura, cosa che vi inquieta più che tranquillizzarvi. Vi affrettate a tornare negli uffici della facoltà per trovare il professor Rice, ma quando arrivate nel suo ufficio di lui non c’è traccia.",
       "steps": [
         "warren_rice_kidnapped",
         "students_rescued",
@@ -14165,7 +14165,7 @@
         "name": "Resolution 3"
       },
       "title": "Risoluzione 3",
-      "text": "After defeating the strange and terrifying creature from the Department of Alchemy, you rush to the faculty offices to find Professor Rice. By the time you get to his office, there is no sign of him anywhere.",
+      "text": "Dopo aver sconfitto la strana e terrificante creatura della facoltà di Chimica, vi affrettate a tornare negli uffici della facoltà per trovare il professor Rice, ma quando arrivate nel suo ufficio di lui non c’è traccia.",
       "steps": [
         "warren_rice_kidnapped",
         "experiment_defeated",
@@ -14180,7 +14180,7 @@
         "name": "Resolution 4"
       },
       "title": "Risoluzione 4",
-      "text": "You awaken hours later, exhausted and injured. You’re not sure what you saw, but the sight of it filled your mind with terror. From other survivors, you learn that a ‘rabid dog of some sort’ found its way into the university dormitories. The creature attacked the students inside, and many were mauled or killed in the attack.",
+      "text": "Vi svegliate alcune ore dopo, sfiniti ed esausti. Non ricordate con esattezza ciò che avete visto, ma di qualunque cosa si trattasse ha sconvolto la vostra mente. Apprendete dagli altri sopravvissuti che “un cane rabbioso di qualche tipo” si è fatto strada fino al dormitorio dell’università: la creatura ha attaccato gli studenti, ferendone e uccidendone molti.",
       "steps": [
         "unconscious_for_several_hours",
         "warren_rice_kidnapped",
@@ -14477,7 +14477,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -14619,7 +14619,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "bone_to_pick",
-          "text": "the O'Bannion gang has a bone to pick with the investigators."
+          "text": "gli O’Bannion hanno un conto da regolare con voi."
         }
       ]
     },
@@ -14630,7 +14630,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "francis_morgan_kidnapped",
-          "text": "Dr. Francis Morgan was kidnapped."
+          "text": "il dottor Francis Morgan è stato rapito."
         }
       ]
     },
@@ -14641,7 +14641,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "naomi_has_back",
-          "text": "Naomi has the investigators' back."
+          "text": "Naomi vi copre le spalle."
         }
       ]
     },
@@ -14653,7 +14653,7 @@
         "choices": [
           {
             "id": "cheat",
-            "text": "Did any player “cheat”?",
+            "text": "Un investigatore ha “barato”?",
             "steps": [
               "add_elder_thing"
             ]
@@ -14676,7 +14676,7 @@
     },
     {
       "id": "physical_trauma",
-      "text": "Each investigator suffers 1 physical trauma.",
+      "text": "Ogni investigatore subisce 1 trauma fisico.",
       "effects": [
         {
           "type": "trauma",
@@ -14692,19 +14692,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "unconscious_for_several_hours",
-          "text": "the investigators were unconscious for several hours."
+          "text": "siete rimasti privi di sensi per molte ore."
         }
       ]
     },
     {
       "id": "francis_morgan_rescued",
-      "text": "In your Campaign Log, record that <i>the investigators rescued Dr. Francis Morgan</i>. Any one investigator may choose to add Dr. Francis Morgan to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Annotate nel Diario della Campagna che <i>il dottor Francis Morgan è stato salvato</i>. Un investigatore può scegliere di aggiungere il Dott. Francis Morgan al suo mazzo (non considerandolo nella dimensione del suo mazzo).",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "francis_morgan_rescued",
-          "text": "the investigators rescued Dr. Francis Morgan."
+          "text": "il dottor Francis Morgan è stato salvato."
         },
         {
           "type": "add_card",
@@ -14735,7 +14735,7 @@
       "input": {
         "type": "counter",
         "text": "Galleria delle vittorie:",
-        "confirm_text": "Each investigator earns 1 bonus experience as they reflect on the night’s events.",
+        "confirm_text": "Ogni investigatore guadagna 1 punto esperienza mentre riflette sugli eventi di quella notte.",
         "effects": [
           {
             "type": "earn_xp",
@@ -14812,15 +14812,15 @@
         "id": "the_dunwich_legacy.the_house_always_wins.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
-      "description": "Each investigator resigned before Act 3 or was defeated",
+      "title": "Nessuna risoluzione è stata raggiunta",
+      "description": "Ogni investigatore ha abbandonato prima del Capitolo 3 o è stato sconfitto",
       "investigator_status": [
         "resigned",
         "eliminated",
         "physical",
         "mental"
       ],
-      "text": "You barely made it out of the club alive.",
+      "text": "Ce l’avete fatta a malapena a uscire vivi dal club.",
       "steps": [
         "resolution_1"
       ]
@@ -14832,7 +14832,7 @@
         "name": "Resolution 1"
       },
       "title": "Risoluzione 1",
-      "text": "You flee to the end of the block and pause to recover. Before you can catch your breath, the ground shakes with a thunderous crash. People emerge from their homes and storefronts to see what the ruckus is, and a crowd forms on the street. You head to the front of the crowd and are horrified to see the building from which you fled just minutes earlier reduced to rubble. There is no sign of Dr. Morgan anywhere.",
+      "text": "Fuggite fino ai confini dell’isolato prima di fermarvi per recuperare le forze, ma prima che possiate riprendere fiato la terra trema e nell’aria echeggia un boato assordante: la gente esce dalle abitazioni per vedere cosa è successo e presto la via si fa affollata. Vi fate strada oltre la folla e scoprite con orrore che l’edificio da cui siete fuggiti soltanto pochi minuti fa ora è ridotto in macerie. Del dottor Morgan non c’è nessuna traccia.",
       "steps": [
         "bone_to_pick",
         "francis_morgan_kidnapped",
@@ -14848,7 +14848,7 @@
         "name": "Resolution 2"
       },
       "title": "Risoluzione 2",
-      "text": "“What in the world…?” Dr. Morgan finally breaks out of his daze as you make your way to safety. You ask him what he remembers, and he sputters and shakes his head. “It’s all a haze,” he explains, visibly exhausted. “I was having the run of my life! Perhaps I had one too many shots. But, those creatures—I haven’t seen anything like that since…” He trails off, and you can tell that his mind is racing. His eyes widen with realization and his face pales. “I may not be in the best shape, but I’ll help with your investigation. Whatever it takes.”",
+      "text": "“Ma che diavolo…?” Il dottor Morgan si riscuote finalmente dal suo torpore mentre lo trascinate in salvo. Gli chiedete cosa si ricorda, e dopo aver balbettato qualcosa di incomprensibile scuote la testa. “È tutto così confuso”, spiega, visibilmente sfinito, “era la partita della mia vita! Forse ho bevuto troppi drink. Ma quelle creature… Non ho mai visto niente del genere fin dai tempi di…” Non aggiunge altro, ma è evidente che la sua mente cerca freneticamente una risposta. Poi i suoi occhi si spalancano di colpo e il suo volto impallidisce: deve aver ricordato qualcosa. “Non sarò nella migliore delle forme, ma vi aiuterò nelle vostre indagini. Costi quel che costi.”",
       "steps": [
         "bone_to_pick",
         "francis_morgan_rescued",
@@ -14864,7 +14864,7 @@
         "name": "Resolution 3"
       },
       "title": "Risoluzione 3",
-      "text": "Although you were unable to find Dr. Morgan in the club, the man you rescued is grateful for your help. He introduces himself as Peter Clover, the owner of the establishment you’d just left. Despite the situation, he maintains an air of quiet professionalism. As you make your way towards the street, a well-polished Chrysler B-70 rolls up to you, and a gorgeous woman with long brown hair and narrow eyes exits. She is flanked by dangerous-looking men who slip their hands under their suit jackets when they see you. “Peter,” she says with a sigh of relief, “Good, you’re okay. I heard there was trouble?” She turns and glares at you with deadly eyes. “Who are they?”\nMr. Clover dusts off his vest, unworried. “Naomi, my dear, these are friends of mine. They…” he clears his throat. “They escorted me off the premises,” he explains after a short pause. “They have earned our gratitude.” The woman crosses her arms and takes a moment to size you up before giving you a smirk.\n“Very well then. I must thank you for taking care of Peter. Run along now; we’ll handle things from here.” She nods to the goons flanking her and they walk past you toward the club’s rear entrance, pulling firearms out from underneath their coats. You’re not sure what ‘handling things’ means, but you’re pretty sure you don’t want to be here when the gunfire starts. You thank Naomi and Peter, and head off.",
+      "text": "Anche se non siete riusciti a trovare il dottor Morgan nel club, l’uomo che avete salvato vi è grato per il vostro aiuto: si presenta a voi come Peter Clover, il proprietario del locale da cui siete appena usciti; nonostante la situazione, mantiene un atteggiamento distaccato e professionale. Mentre vi incamminate assieme a lui lungo la strada, una Chrysler B-70 tirata a lucido vi raggiunge e si ferma al vostro fianco. Dall’auto esce una splendida donna dai lunghi capelli castani che esamina la scena socchiudendo gli occhi: è accompagnata da alcuni uomini dall’aspetto minaccioso che infilano la mano nel taschino della giacca quando vi vedono. “Peter”, esclama lei con un sospiro di sollievo, “per fortuna stai bene. Ho sentito che ci sono stati dei problemi.” Poi si ferma e vi scocca un’occhiata ostile. “Chi sono questi?”\nMr. Clover si spolvera la giacca, senza battere ciglio. “Naomi, mia cara, questi sono amici miei. Mi hanno…” si schiarisce la gola con una pausa, “mi hanno scortato fuori dal locale. Si sono guadagnati la nostra gratitudine.” La donna incrocia le braccia al petto e si prende un istante per squadrarvi, prima di accennare un sorriso.\n“Molto bene, allora. Devo ringraziarvi per avere dato una mano a Peter. Ora potere andare, qui ci penseremo noi.” Fa un cenno col capo agli sgherri che la circondano e tutti si incamminano verso l’entrata sul retro del club, sfoderando le armi da fuoco che tenevano nascoste sotto le giacche. Non siete sicuri di cosa intendano con “ci penseremo noi”, ma di certo non vi conviene farvi trovare nei paraggi quando lo scontro a fuoco avrà inizio. Ringraziate Naomi e Peter e vi allontanate in tutta fretta.",
       "steps": [
         "naomi_has_back",
         "francis_morgan_kidnapped",
@@ -14880,7 +14880,7 @@
         "name": "Resolution 4"
       },
       "title": "Risoluzione 4",
-      "text": "You are pulled from the debris by several firefighters, one of whom exclaims, “We’ve got a live one!” A few of them patch you up, and the cops ask you what happened. You’re certain they wouldn’t believe your story about horrible monstrosities demolishing the building from within. Unsure of what to say, you give a vague statement about not remembering much. “We’re bringing you to St. Mary’s,” one of the nurses says, pointing to a nearby ambulance. Knowing now how dire the situation is, you slip away while she is distracted by something else in the rubble…",
+      "text": "Venite estratti dalle macerie da una squadra di vigili del fuoco, uno dei quali esclama: “Quaggiù! Questi sono ancora vivi!” Altri soccorritori vi prestano la prime cure e i poliziotti vi chiedono cosa è successo. Non sapendo cosa dire, rispondete con affermazioni vaghe, aggiungendo che ricordate poco o nulla; siete sicuri che non crederebbero mai alla storia di un gruppo di creature mostruose che demoliscono l’edificio dall’interno. “Vi portiamo al St. Mary” dice una delle infermiere. Ben sapendo quanto sia critica la situazione, sgusciate via non appena la sua attenzione è attirata da qualcos’altro tra le macerie…",
       "steps": [
         "bone_to_pick",
         "francis_morgan_kidnapped",
@@ -15187,7 +15187,7 @@
         "id": "the_dunwich_legacy.the_miskatonic_museum.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -15587,7 +15587,7 @@
         "id": "the_dunwich_legacy.undimensioned_and_unseen.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -16091,7 +16091,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -16219,7 +16219,7 @@
     },
     {
       "id": "earn_henry_armitage",
-      "text": "Any one investigator may choose to add Dr. Henry Armitage to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Un investigatore può scegliere di aggiungere il Dott. Henry Armitage al suo mazzo (non considerandolo nella dimensione del suo mazzo).",
       "effects": [
         {
           "type": "add_card",
@@ -16288,7 +16288,7 @@
     },
     {
       "id": "earn_warren_rice",
-      "text": "Any one investigator may choose to add Professor Warren Rice to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Un investigatore può scegliere di aggiungere il Professor Warren Rice al suo mazzo (non considerandolo nella dimensione del suo mazzo).",
       "effects": [
         {
           "type": "add_card",
@@ -16563,7 +16563,7 @@
           {
             "id": "easy",
             "text": "Facile",
-            "description": "<i>I want to experience the story</i>",
+            "description": "<i>Voglio godermi la storia</i>",
             "tokens": [
               "+1",
               "+1",
@@ -16614,7 +16614,7 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "<i>I want a challenge</i>",
+            "description": "<i>Voglio una sfida</i>",
             "tokens": [
               "+1",
               "0",
@@ -16665,7 +16665,7 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "<i>I want a true nightmare</i>",
+            "description": "<i>Voglio un vero incubo</i>",
             "tokens": [
               "0",
               "0",
@@ -16718,7 +16718,7 @@
           {
             "id": "expert",
             "text": "Esperto",
-            "description": "<i>I want Arkham Horror</i>",
+            "description": "<i>Voglio tutto Arkham Horror</i>",
             "tokens": [
               "0",
               "-1",
@@ -17241,7 +17241,7 @@
         "id": "the_night_of_the_zealot.the_devourer_below.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -17419,7 +17419,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "confirm_text": "Ogni investigatore guadagna 2 punti esperienza mentre apprende nuove conoscenza sul mondo nascosto dei miti.",
+        "confirm_text": "Ogni investigatore guadagna 2 punti esperienza mentre apprende nuove conoscenze sul mondo nascosto dei miti.",
         "text": "Galleria delle vittorie:",
         "effects": [
           {
@@ -17565,7 +17565,7 @@
         "id": "the_night_of_the_zealot.the_gathering.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -17687,7 +17687,7 @@
           {
             "id": "easy",
             "text": "Facile",
-            "description": "<i>I want to experience the story</i>",
+            "description": "<i>Voglio godermi la storia</i>",
             "tokens": [
               "+1",
               "+1",
@@ -17738,7 +17738,7 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "<i>I want a challenge</i>",
+            "description": "<i>Voglio una sfida</i>",
             "tokens": [
               "+1",
               "0",
@@ -17789,7 +17789,7 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "<i>I want a true nightmare</i>",
+            "description": "<i>Voglio un vero incubo</i>",
             "tokens": [
               "0",
               "0",
@@ -17842,7 +17842,7 @@
           {
             "id": "expert",
             "text": "Esperto",
-            "description": "<i>I want Arkham Horror</i>",
+            "description": "<i>Voglio tutto Arkham Horror</i>",
             "tokens": [
               "0",
               "-1",
@@ -18329,7 +18329,7 @@
         "id": "the_night_of_the_zealot.the_midnight_masks.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -19075,7 +19075,7 @@
   "id": "ptc_interlude1",
   "scenario_name": "Lunacy's Reward",
   "full_name": "Interlude I: Lunacy's Reward",
-  "header": "Interlude I",
+  "header": "Interludio I",
   "type": "interlude",
   "icon": "hasturs_gift",
   "setup": [
@@ -20387,7 +20387,7 @@
         "id": "the_path_to_carcosa.a_phantom_of_truth.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -21123,7 +21123,7 @@
         "id": "the_path_to_carcosa.black_stars_rise.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -21559,7 +21559,7 @@
         "id": "the_path_to_carcosa.curtain_call.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -22368,7 +22368,7 @@
         "id": "the_path_to_carcosa.dim_carcosa.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -22982,7 +22982,7 @@
         "id": "the_path_to_carcosa.echoes_of_the_past.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -24435,7 +24435,7 @@
         "id": "the_path_to_carcosa.the_pallid_mask.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -25314,7 +25314,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -25459,7 +25459,7 @@
           {
             "id": "easy",
             "text": "Facile",
-            "description": "<i>I want to experience the story</i>",
+            "description": "<i>Voglio godermi la storia</i>",
             "tokens": [
               "+1",
               "+1",
@@ -25504,7 +25504,7 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "<i>I want a challenge</i>",
+            "description": "<i>Voglio una sfida</i>",
             "tokens": [
               "+1",
               "0",
@@ -25549,7 +25549,7 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "<i>I want a true nightmare</i>",
+            "description": "<i>Voglio un vero incubo</i>",
             "tokens": [
               "0",
               "0",
@@ -25594,7 +25594,7 @@
           {
             "id": "expert",
             "text": "Esperto",
-            "description": "<i>I want Arkham Horror</i>",
+            "description": "<i>Voglio tutto Arkham Horror</i>",
             "tokens": [
               "0",
               "-1",
@@ -28730,7 +28730,7 @@
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.resolution",
         "name": "Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -29586,7 +29586,7 @@
         "id": "the_circle_undone.at_deaths_doorstep.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -30093,7 +30093,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -30625,7 +30625,7 @@
         "id": "the_circle_undone.for_the_greater_good.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -31378,7 +31378,7 @@
         "id": "the_circle_undone.in_the_clutches_of_chaos.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -32031,7 +32031,7 @@
         "id": "the_circle_undone.the_secret_name.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -32917,7 +32917,7 @@
         "id": "the_circle_undone.the_witching_hour.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -34854,7 +34854,7 @@
         "id": "the_circle_undone.union_and_disillusion.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -36751,7 +36751,7 @@
           {
             "id": "easy",
             "text": "Facile",
-            "description": "<i>I want to experience the story</i>",
+            "description": "<i>Voglio godermi la storia</i>",
             "tokens": [
               "+1",
               "+1",
@@ -36798,7 +36798,7 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "<i>I want a challenge</i>",
+            "description": "<i>Voglio una sfida</i>",
             "tokens": [
               "+1",
               "0",
@@ -36845,7 +36845,7 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "<i>I want a true nightmare</i>",
+            "description": "<i>Voglio un vero incubo</i>",
             "tokens": [
               "+1",
               "0",
@@ -36892,7 +36892,7 @@
           {
             "id": "expert",
             "text": "Esperto",
-            "description": "<i>I want Arkham Horror</i>",
+            "description": "<i>Voglio tutto Arkham Horror</i>",
             "tokens": [
               "0",
               "-1",
@@ -37974,7 +37974,7 @@
   "id": "tfa_interlude1",
   "scenario_name": "Notti Irrequiete",
   "full_name": "Interlude I: Restless Nights",
-  "header": "Interlude I",
+  "header": "Interludio I",
   "type": "interlude",
   "icon": "deadly_traps",
   "setup": [
@@ -38891,7 +38891,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -39285,7 +39285,7 @@
         "id": "the_forgotten_age.heart_of_the_elders_part_2.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -39783,7 +39783,7 @@
         "id": "the_forgotten_age.shattered_aeons.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -40667,7 +40667,7 @@
         "id": "the_forgotten_age.the_boundary_beyond.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -41170,7 +41170,7 @@
         "id": "the_forgotten_age.the_city_of_archives.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -42532,7 +42532,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -43127,7 +43127,7 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -43138,7 +43138,7 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator resigned before act 3",
       "investigator_status": [
         "resigned",
@@ -43627,7 +43627,7 @@
         "id": "the_forgotten_age.the_untamed_wilds.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -45283,7 +45283,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -45828,7 +45828,7 @@
         "id": "the_forgotten_age.turn_back_time.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -47727,7 +47727,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "resigned",
@@ -48359,7 +48359,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -49815,7 +49815,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -50279,7 +50279,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -51071,7 +51071,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -51425,7 +51425,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -52301,7 +52301,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -52930,7 +52930,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -54696,7 +54696,7 @@
   "resolutions": [
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -54711,7 +54711,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "At least one investigator resigned",
       "investigator_status": [
         "resigned",
@@ -55356,7 +55356,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -55891,7 +55891,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -56424,7 +56424,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -57277,7 +57277,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -57443,7 +57443,7 @@
           {
             "id": "easy",
             "text": "Facile",
-            "description": "<i>I want to experience the story</i>",
+            "description": "<i>Voglio godermi la storia</i>",
             "tokens": [
               "+1",
               "+1",
@@ -57488,7 +57488,7 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "<i>I want a challenge</i>",
+            "description": "<i>Voglio una sfida</i>",
             "tokens": [
               "+1",
               "0",
@@ -57533,7 +57533,7 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "<i>I want a true nightmare</i>",
+            "description": "<i>Voglio un vero incubo</i>",
             "tokens": [
               "0",
               "0",
@@ -57578,7 +57578,7 @@
           {
             "id": "expert",
             "text": "Esperto",
-            "description": "<i>I want Arkham Horror</i>",
+            "description": "<i>Voglio tutto Arkham Horror</i>",
             "tokens": [
               "0",
               "-1",
@@ -58283,7 +58283,7 @@
         "id": "the_circle_undone.at_deaths_doorstep.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -58762,7 +58762,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -61792,7 +61792,7 @@
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.resolution",
         "name": "Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -62378,7 +62378,7 @@
         "id": "the_circle_undone.for_the_greater_good.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -63130,7 +63130,7 @@
         "id": "the_circle_undone.in_the_clutches_of_chaos.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -64866,7 +64866,7 @@
         "id": "the_circle_undone.the_secret_name.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -65584,7 +65584,7 @@
         "id": "the_circle_undone.the_witching_hour.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -67728,7 +67728,7 @@
         "id": "the_circle_undone.union_and_disillusion.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -67931,7 +67931,7 @@
           {
             "id": "easy",
             "text": "Facile",
-            "description": "<i>I want to experience the story</i>",
+            "description": "<i>Voglio godermi la storia</i>",
             "tokens": [
               "+1",
               "+1",
@@ -67978,7 +67978,7 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "<i>I want a challenge</i>",
+            "description": "<i>Voglio una sfida</i>",
             "tokens": [
               "+1",
               "0",
@@ -68025,7 +68025,7 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "<i>I want a true nightmare</i>",
+            "description": "<i>Voglio un vero incubo</i>",
             "tokens": [
               "0",
               "0",
@@ -68074,7 +68074,7 @@
           {
             "id": "expert",
             "text": "Esperto",
-            "description": "<i>I want Arkham Horror</i>",
+            "description": "<i>Voglio tutto Arkham Horror</i>",
             "tokens": [
               "0",
               "-1",
@@ -68264,7 +68264,7 @@
   "id": "the_black_cat",
   "scenario_name": "Il Gatto Nero",
   "full_name": "Interlude I: The Black Cat",
-  "header": "Interlude I",
+  "header": "Interludio I",
   "type": "interlude",
   "icon": "tde",
   "setup": [
@@ -71698,7 +71698,7 @@
         "id": "the_dreameaters.beyond_the_gates_of_sleep.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -72137,7 +72137,7 @@
         "id": "the_dreameaters.dark_side_of_the_moon.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -73204,7 +73204,7 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "At least one investigator resigned",
       "investigator_status": [
         "resigned",
@@ -73218,7 +73218,7 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -74022,7 +74022,7 @@
         "id": "the_dreameaters.where_the_gods_dwell.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -74180,7 +74180,7 @@
           {
             "id": "easy",
             "text": "Facile",
-            "description": "<i>I want to experience the story</i>",
+            "description": "<i>Voglio godermi la storia</i>",
             "tokens": [
               "+1",
               "+1",
@@ -74233,7 +74233,7 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "<i>I want a challenge</i>",
+            "description": "<i>Voglio una sfida</i>",
             "tokens": [
               "+1",
               "0",
@@ -74286,7 +74286,7 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "<i>I want a true nightmare</i>",
+            "description": "<i>Voglio un vero incubo</i>",
             "tokens": [
               "0",
               "0",
@@ -74341,7 +74341,7 @@
           {
             "id": "expert",
             "text": "Esperto",
-            "description": "<i>I want Arkham Horror</i>",
+            "description": "<i>Voglio tutto Arkham Horror</i>",
             "tokens": [
               "0",
               "-1",
@@ -74844,7 +74844,7 @@
         "id": "the_dreameaters.a_thousand_shapes_of_horror.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -74927,7 +74927,7 @@
   "id": "the_black_cat",
   "scenario_name": "Il Gatto Nero",
   "full_name": "Interlude I: The Black Cat",
-  "header": "Interlude I",
+  "header": "Interludio I",
   "type": "interlude",
   "icon": "tde",
   "setup": [
@@ -77492,7 +77492,7 @@
         "id": "the_dreameaters.point_of_no_return.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -77994,7 +77994,7 @@
         "id": "the_dreameaters.waking_nightmare.no_resolution_resigned",
         "name": "No Resolution (Resigned)"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "At least one investigator resigned",
       "investigator_status": [
         "resigned",
@@ -78017,7 +78017,7 @@
         "id": "the_dreameaters.waking_nightmare.no_resolution_defeated",
         "name": "No Resolution (Resigned)"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -78998,7 +78998,7 @@
         "id": "the_dreameaters.weaver_of_the_cosmos.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "text": "You awaken trapped inside something tight and sticky. Your arms are bound to your sides, and no matter how fiercely you struggle, you cannot seem to move except to wiggle your fingers helplessly. Slowly, dread creeps its way through your mind as you realize the situation you are in. As you cannot move your head, you are forced to watch as the eight-legged creature emerges from the darkness. It makes no sound as it steps onto the web. Its many eyes reflect your terrified expression. Its mandibles drip with hunger. You only wish you could look away.",
       "steps": [
@@ -79215,7 +79215,7 @@
           {
             "id": "easy",
             "text": "Facile",
-            "description": "<i>I want to experience the story</i>",
+            "description": "<i>Voglio godermi la storia</i>",
             "tokens": [
               "+1",
               "+1",
@@ -79262,7 +79262,7 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "<i>I want a challenge</i>",
+            "description": "<i>Voglio una sfida</i>",
             "tokens": [
               "+1",
               "0",
@@ -79309,7 +79309,7 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "<i>I want a true nightmare</i>",
+            "description": "<i>Voglio un vero incubo</i>",
             "tokens": [
               "+1",
               "0",
@@ -79356,7 +79356,7 @@
           {
             "id": "expert",
             "text": "Esperto",
-            "description": "<i>I want Arkham Horror</i>",
+            "description": "<i>Voglio tutto Arkham Horror</i>",
             "tokens": [
               "0",
               "-1",
@@ -80155,7 +80155,7 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -80166,7 +80166,7 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator resigned before act 3",
       "investigator_status": [
         "resigned",
@@ -80655,7 +80655,7 @@
         "id": "the_forgotten_age.heart_of_the_elders_part_1.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -80945,7 +80945,7 @@
         "id": "the_forgotten_age.heart_of_the_elders_part_2.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -81607,7 +81607,7 @@
   "id": "tfa_interlude1",
   "scenario_name": "Notti Irrequiete",
   "full_name": "Interlude I: Restless Nights",
-  "header": "Interlude I",
+  "header": "Interludio I",
   "type": "interlude",
   "icon": "deadly_traps",
   "setup": [
@@ -82336,7 +82336,7 @@
         "id": "the_forgotten_age.shattered_aeons.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -83214,7 +83214,7 @@
         "id": "the_forgotten_age.the_boundary_beyond.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -83706,7 +83706,7 @@
         "id": "the_forgotten_age.the_city_of_archives.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -85541,7 +85541,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -87450,7 +87450,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -87949,7 +87949,7 @@
         "id": "the_forgotten_age.turn_back_time.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -88358,7 +88358,7 @@
         "id": "the_forgotten_age.the_untamed_wilds.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -88572,7 +88572,7 @@
           {
             "id": "easy",
             "text": "Facile",
-            "description": "<i>I want to experience the story</i>",
+            "description": "<i>Voglio godermi la storia</i>",
             "tokens": [
               "+1",
               "+1",
@@ -88631,7 +88631,7 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "<i>I want a challenge</i>",
+            "description": "<i>Voglio una sfida</i>",
             "tokens": [
               "+1",
               "0",
@@ -88690,7 +88690,7 @@
           {
             "id": "hard",
             "text": "Difficile",
-            "description": "<i>I want a true nightmare</i>",
+            "description": "<i>Voglio un vero incubo</i>",
             "tokens": [
               "0",
               "0",
@@ -88751,7 +88751,7 @@
           {
             "id": "expert",
             "text": "Esperto",
-            "description": "<i>I want Arkham Horror</i>",
+            "description": "<i>Voglio tutto Arkham Horror</i>",
             "tokens": [
               "0",
               "-1",
@@ -89932,7 +89932,7 @@
         "id": "the_innsmouth_conspiracy.a_light_in_the_fog.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -91142,7 +91142,7 @@
         "id": "the_innsmouth_conspiracy.devil_reef.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -91702,7 +91702,7 @@
         "id": "the_innsmouth_conspiracy.horror_in_high_gear.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -92380,7 +92380,7 @@
         "id": "the_innsmouth_conspiracy.in_too_deep.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -93774,7 +93774,7 @@
         "id": "the_innsmouth_conspiracy.into_the_maelstrom.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "text": "The chanting of the Deep Ones rises to a crescendo. The alien walls of Y'ha-nthlei twist and contort before your eyes, like lungs desperately clawing for breath. The air becomes thin. Water seeps through the walls. Nothing can stop the pull of the tide now. Nothing can stop the great flood. A triumphant roar sounds throughout the city, and the citizens of the deep rise to meet the cry in their jubilance. You collapse in exhaustion and resignation. Your part is over, now. The part of humanity will be soon to follow.",
       "investigator_status": [
@@ -93959,7 +93959,7 @@
   "id": "puzzle_pieces",
   "scenario_name": "I Pezzi del Puzzle",
   "full_name": "Interlude I: Puzzle Pieces",
-  "header": "Interlude I",
+  "header": "Interludio I",
   "type": "interlude",
   "icon": "shattered_memories",
   "setup": [
@@ -94967,7 +94967,7 @@
         "id": "the_innsmouth_conspiracy.the_lair_of_dagon.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -95562,7 +95562,7 @@
         "id": "the_innsmouth_conspiracy.the_pit_of_despair.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -97561,7 +97561,7 @@
         "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.no_resolution",
         "name": "No Resolution"
       },
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -98586,7 +98586,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -98877,7 +98877,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -99764,7 +99764,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -100177,7 +100177,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -102341,7 +102341,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -102731,7 +102731,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -103127,7 +103127,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -104611,7 +104611,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -105735,7 +105735,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -106514,7 +106514,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
@@ -107197,7 +107197,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -108169,7 +108169,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -108227,7 +108227,7 @@
   "id": "mission_briefing",
   "scenario_name": "Mission Briefing",
   "full_name": "Interlude I: Mission Briefing",
-  "header": "Interlude I",
+  "header": "Interludio I",
   "type": "interlude",
   "icon": "anachronism",
   "setup": [
@@ -109248,7 +109248,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -109811,7 +109811,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -110063,7 +110063,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",
@@ -110467,7 +110467,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached",
+      "title": "Nessuna risoluzione è stata raggiunta",
       "description": "Ogni investigatore ha abbandonato o è stato sconfitto",
       "investigator_status": [
         "resigned",

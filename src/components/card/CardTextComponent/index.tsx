@@ -23,7 +23,7 @@ import SmallCapsNode from './SmallCapsNode';
 import CenterNode from './CenterNode';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { Platform, TextStyle } from 'react-native';
+import { TextStyle } from 'react-native';
 
 const BASE_ORDER = 0;
 const ParagraphTagRule: MarkdownRule<WithChildren, State> = {
