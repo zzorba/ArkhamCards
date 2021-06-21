@@ -21,7 +21,6 @@ import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext
 import { calculateBinaryConditionResult } from '@data/scenario/inputHelper';
 import StyleContext from '@styles/StyleContext';
 import BorderWrapper from '@components/campaignguide/BorderWrapper';
-import { vi } from 'date-fns/locale';
 
 
 interface Props {
@@ -86,6 +85,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
     guided: true,
     scenarioId: processedScenario.id.scenarioId,
     customEditPressed: chaosBagIndex !== undefined ? editChaosBagPressed : undefined,
+    standalone: !!campaign.standaloneId,
   });
   setChaosBagDialogVisibleRef.current = setChaosBagDialogVisible;
 
