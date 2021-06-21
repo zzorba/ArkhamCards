@@ -57222,7 +57222,8 @@
             "text": "Ajusta la bolsa de caos",
             "steps": [
               "add_chaos_token"
-            ]
+            ],
+            "repeatable": true
           }
         ]
       }

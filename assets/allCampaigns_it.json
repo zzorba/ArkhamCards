@@ -57222,7 +57222,8 @@
             "text": "Adjust chaos bag",
             "steps": [
               "add_chaos_token"
-            ]
+            ],
+            "repeatable": true
           }
         ]
       }

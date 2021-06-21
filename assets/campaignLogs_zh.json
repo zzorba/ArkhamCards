@@ -1129,7 +1129,7 @@
           },
           {
             "id": "hid_knowledge_of_coven",
-            "text": "the investigators hid their knowledge of the coven."
+            "text": "調查員隱瞞了自己知道女巫集會一事。"
           },
           {
             "id": "inducted_into_the_inner_circle",
@@ -1197,7 +1197,7 @@
           },
           {
             "id": "told_lodge_about_coven",
-            "text": "the investigators told the Lodge about the coven."
+            "text": "調查員將女巫集會的事情告訴社。"
           },
           {
             "id": "true_work_of_silver_twilight_lodge_has_begun",
@@ -1283,11 +1283,11 @@
           },
           {
             "id": "gilmans_journal",
-            "text": "Gilman's Journal"
+            "text": "吉爾曼的日記"
           },
           {
             "id": "keziahs_formulae",
-            "text": "Keziah's Formulae"
+            "text": "凱夏的公式"
           },
           {
             "id": "mesmerizing_flute",
@@ -1311,7 +1311,7 @@
           },
           {
             "id": "worn_crucific",
-            "text": "Worn Crucifix"
+            "text": "磨損的十字架"
           }
         ]
       }
@@ -2139,7 +2139,7 @@
           },
           {
             "id": "hid_knowledge_of_coven",
-            "text": "the investigators hid their knowledge of the coven."
+            "text": "調查員隱瞞了自己知道女巫集會一事。"
           },
           {
             "id": "inducted_into_the_inner_circle",
@@ -2207,7 +2207,7 @@
           },
           {
             "id": "told_lodge_about_coven",
-            "text": "the investigators told the Lodge about the coven."
+            "text": "調查員將女巫集會的事情告訴社。"
           },
           {
             "id": "true_work_of_silver_twilight_lodge_has_begun",
@@ -2285,11 +2285,11 @@
           },
           {
             "id": "gilmans_journal",
-            "text": "Gilman's Journal"
+            "text": "吉爾曼的日記"
           },
           {
             "id": "keziahs_formulae",
-            "text": "Keziah's Formulae"
+            "text": "凱夏的公式"
           },
           {
             "id": "mesmerizing_flute",
@@ -2309,7 +2309,7 @@
           },
           {
             "id": "worn_crucific",
-            "text": "Worn Crucifix"
+            "text": "磨損的十字架"
           }
         ]
       }
