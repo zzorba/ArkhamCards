@@ -12,7 +12,7 @@ msgstr ""
 "Last-Translator: \n"
 "Language: zh\n"
 "MIME-Version: 1.0\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 2.4.3\n"
 
 msgid "Guardian / Rogue"
 msgstr "守衛者 / 流浪者"
@@ -4326,6 +4326,36 @@ msgstr "歸檔劇本"
 msgid "Show archived campaigns"
 msgstr "顯示已歸檔劇本"
 
+msgid "Return to The Circle Undone"
+msgstr ""
+
+msgid "Prologue: Return to Disappearance at the Twilight Estate"
+msgstr ""
+
+msgid "Return to The Witching Hour"
+msgstr ""
+
+msgid "Return to At Death's Doorstep"
+msgstr ""
+
+msgid "Return to The Secret Name"
+msgstr ""
+
+msgid "Return to The Wages of Sin"
+msgstr ""
+
+msgid "Return to For the Greater Good"
+msgstr ""
+
+msgid "Return to Union and Disillusion"
+msgstr ""
+
+msgid "Return to In the Clutches of Chaos"
+msgstr ""
+
+msgid "Return to Before the Black Throne"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name }已<b>發瘋</b>。"
@@ -4490,6 +4520,18 @@ msgstr "如果<i>${ card.name }</i>不在冒險日誌中的‘${ entry.section }
 msgctxt "feminine"
 msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
 msgstr "如果<i>${ card.name }</i>在冒險日誌中的‘${ entry.section }’底下。"
+
+msgctxt "feminine"
+msgid "Physical trauma"
+msgstr "肉體創傷"
+
+msgctxt "feminine"
+msgid "Mental trauma"
+msgstr "精神創傷"
+
+msgctxt "feminine"
+msgid "Defeated"
+msgstr "被擊敗"
 
 msgctxt "trait"
 msgid "???"
