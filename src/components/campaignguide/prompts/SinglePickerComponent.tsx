@@ -76,7 +76,10 @@ export default function SinglePickerComponent({
     onValueChange,
     selectedValue: selectedIndex,
   });
-  const selectedLabel = (selectedIndex === undefined || selectedIndex === -1) ? defaultLabel : (choices[selectedIndex].selected_text || choices[selectedIndex].text);
+  const selectedLabel = (selectedIndex === undefined || selectedIndex === -1) ? defaultLabel : (
+    (!investigator?.grammarGenderMasculine() && (choices[selectedIndex].selected_feminine_text || choices[selectedIndex].feminine_text)) ||
+    choices[selectedIndex].selected_text || choices[selectedIndex].text
+  );
   const selectedIcon = (selectedIndex === undefined || selectedIndex === -1) ? undefined : choices[selectedIndex].icon;
   const selection = useMemo(() => {
     return (

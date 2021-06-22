@@ -4220,6 +4220,36 @@ msgstr ""
 msgid "Show archived campaigns"
 msgstr ""
 
+msgid "Return to The Circle Undone"
+msgstr ""
+
+msgid "Prologue: Return to Disappearance at the Twilight Estate"
+msgstr ""
+
+msgid "Return to The Witching Hour"
+msgstr ""
+
+msgid "Return to At Death's Doorstep"
+msgstr ""
+
+msgid "Return to The Secret Name"
+msgstr ""
+
+msgid "Return to The Wages of Sin"
+msgstr ""
+
+msgid "Return to For the Greater Good"
+msgstr ""
+
+msgid "Return to Union and Disillusion"
+msgstr ""
+
+msgid "Return to In the Clutches of Chaos"
+msgstr ""
+
+msgid "Return to Before the Black Throne"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr ""
@@ -4401,6 +4431,18 @@ msgctxt "feminine"
 msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
+msgstr ""
+
+msgctxt "feminine"
+msgid "Physical trauma"
+msgstr ""
+
+msgctxt "feminine"
+msgid "Mental trauma"
+msgstr ""
+
+msgctxt "feminine"
+msgid "Defeated"
 msgstr ""
 
 msgctxt "trait"

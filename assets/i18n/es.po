@@ -12,7 +12,7 @@ msgstr ""
 "Language-Team: \n"
 "x-generator: Poedit 3.0\n"
 "MIME-Version: 1.0\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 2.4.3\n"
 
 msgid "Guardian / Rogue"
 msgstr "Guardián / Rebelde"
@@ -4497,6 +4497,36 @@ msgstr "Archivar campaña"
 msgid "Show archived campaigns"
 msgstr "Mostrar campañas archivadas"
 
+msgid "Return to The Circle Undone"
+msgstr ""
+
+msgid "Prologue: Return to Disappearance at the Twilight Estate"
+msgstr ""
+
+msgid "Return to The Witching Hour"
+msgstr ""
+
+msgid "Return to At Death's Doorstep"
+msgstr ""
+
+msgid "Return to The Secret Name"
+msgstr ""
+
+msgid "Return to The Wages of Sin"
+msgstr ""
+
+msgid "Return to For the Greater Good"
+msgstr ""
+
+msgid "Return to Union and Disillusion"
+msgstr ""
+
+msgid "Return to In the Clutches of Chaos"
+msgstr ""
+
+msgid "Return to Before the Black Throne"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } se ha vuelto <b>loco</b>."
@@ -4652,7 +4682,7 @@ msgstr "Viva"
 
 msgctxt "feminine"
 msgid "Resigned"
-msgstr "Desistido"
+msgstr "Desistida"
 
 msgctxt "feminine"
 msgid "Defeated: physical trauma"
@@ -4683,6 +4713,18 @@ msgctxt "feminine"
 msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
 msgstr ""
 "Si la <i>${ card.name }</i> aparece bajo ‘${ entry.section }’ en tu registro de campaña."
+
+msgctxt "feminine"
+msgid "Physical trauma"
+msgstr "Trauma físico"
+
+msgctxt "feminine"
+msgid "Mental trauma"
+msgstr "Trauma mental"
+
+msgctxt "feminine"
+msgid "Defeated"
+msgstr "Derrotada"
 
 msgctxt "trait"
 msgid "???"

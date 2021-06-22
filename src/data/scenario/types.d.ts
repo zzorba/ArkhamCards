@@ -668,6 +668,7 @@ export interface InvestigatorConditionalChoice {
   id: string;
   text: string;
   selected_text?: string;
+  selected_text_feminine?: string;
   description?: string;
   condition?: InvestigatorChoiceCondition;
   border?: boolean;

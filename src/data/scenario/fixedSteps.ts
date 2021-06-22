@@ -354,6 +354,22 @@ function statusToSelectedString(status: InvestigatorStatus): string {
   }
 }
 
+
+function statusToSelectedFeminineString(status: InvestigatorStatus): string {
+  switch (status) {
+    case 'alive':
+      return c('feminine').t`Alive`;
+    case 'resigned':
+      return c('feminine').t`Resigned`;
+    case 'physical':
+      return c('feminine').t`Physical trauma`;
+    case 'mental':
+      return c('feminine').t`Mental trauma`;
+    case 'eliminated':
+      return c('feminine').t`Defeated`;
+  }
+}
+
 function investigatorStatusStep(
   id: string,
   resolutions: Resolution[]
@@ -418,6 +434,7 @@ export function createInvestigatorStatusStep(
         icon: STATUS_ICON[status],
         text: statusToString(status),
         selected_text: statusToSelectedString(status),
+        selected_feminine_text: statusToSelectedFeminineString(status),
         masculine_text: statusToString(status, 'masculine'),
         feminine_text: statusToString(status, 'feminine'),
         effects,

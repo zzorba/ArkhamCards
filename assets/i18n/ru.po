@@ -1,20 +1,20 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2021-06-19 23:03+0300\n"
+"PO-Revision-Date: 2021-06-21 21:13-0400\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "mime-version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"x-generator: Poedit 2.4.1\n"
+"x-generator: Poedit 3.0\n"
 "x-poedit-basepath: .\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n"
 "%100<12 || n%100>14) ? 1 : 2);\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 2.4.3\n"
 
 #, javascript-format
 msgid "${ action.name } (Campaign A)"
@@ -4171,9 +4171,9 @@ msgid "Scenario Card"
 msgstr "Карта сценария"
 
 msgid ""
-"This appears to be one of your decks from ArkhamDB, however you seem to be "
-"logged into a different ArkhamDB account? If you wish to make edits, please "
-"login through the app settings."
+"This appears to be one of your decks from ArkhamDB, however you seem to be logged into a "
+"different ArkhamDB account? If you wish to make edits, please login through the app "
+"settings."
 msgstr ""
 "Похоже, это одна из ваших колод с Arkhamdb, однако, похоже, вы вошли в другой аккаунт. "
 "Если желаете редактировать колоду, войдите в свой аккаунт в настройках приложения."
@@ -4517,6 +4517,36 @@ msgstr "Архивировать кампанию"
 msgid "Show archived campaigns"
 msgstr "Показать архивные кампании"
 
+msgid "Return to The Circle Undone"
+msgstr ""
+
+msgid "Prologue: Return to Disappearance at the Twilight Estate"
+msgstr ""
+
+msgid "Return to The Witching Hour"
+msgstr ""
+
+msgid "Return to At Death's Doorstep"
+msgstr ""
+
+msgid "Return to The Secret Name"
+msgstr ""
+
+msgid "Return to The Wages of Sin"
+msgstr ""
+
+msgid "Return to For the Greater Good"
+msgstr ""
+
+msgid "Return to Union and Disillusion"
+msgstr ""
+
+msgid "Return to In the Clutches of Chaos"
+msgstr ""
+
+msgid "Return to Before the Black Throne"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } <b>сошёл с ума</b>."
@@ -4713,6 +4743,18 @@ msgstr "<i>${ card.name }</i> не записана в графе «${ entry.sec
 msgctxt "feminine"
 msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
 msgstr "<i>${ card.name }</i> записана в графе «${ entry.section }» журнала кампании."
+
+msgctxt "feminine"
+msgid "Physical trauma"
+msgstr "физическая травма"
+
+msgctxt "feminine"
+msgid "Mental trauma"
+msgstr "ментальная травма"
+
+msgctxt "feminine"
+msgid "Defeated"
+msgstr "Побеждён"
 
 msgctxt "trait"
 msgid "???"
