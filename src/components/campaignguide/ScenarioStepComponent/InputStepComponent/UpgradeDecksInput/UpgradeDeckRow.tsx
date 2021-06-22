@@ -476,6 +476,9 @@ function UpgradeDeckRow({
         investigator={investigator}
       />
     );
+    if (choices === undefined && !editable) {
+      return null;
+    }
     return (
       <View style={[space.paddingS, { flexDirection: 'column', backgroundColor: colors.L10, borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }]}>
         <View style={[styles.startRow, secondSection ? { paddingBottom: xs, borderBottomWidth: 1, borderColor: colors.L30 } : undefined]}>

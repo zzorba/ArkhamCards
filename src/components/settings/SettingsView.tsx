@@ -42,6 +42,7 @@ function contactPressed() {
   Linking.openURL('mailto:arkhamcards@gmail.com');
 }
 
+const SHOW_JUSTIFY = false;
 export default function SettingsView({ componentId }: NavigationProps) {
   const { db } = useContext(DatabaseContext);
   const { backgroundStyle, colors } = useContext(StyleContext);
@@ -195,16 +196,16 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 <FontSizePicker />
               </View>
               <DeckCheckboxButton
-                icon="copy"
-                title={t`Swipe between card results`}
-                value={!showCardsingleCardView}
-                onValueChange={swipeBetweenCardsChanged}
-              />
-              <DeckCheckboxButton
                 icon="show"
                 title={t`Color blind friendly icons`}
                 value={colorblind}
                 onValueChange={colorblindChanged}
+              />
+              <DeckCheckboxButton
+                icon="copy"
+                title={t`Swipe between card results`}
+                value={!showCardsingleCardView}
+                onValueChange={swipeBetweenCardsChanged}
               />
               <DeckCheckboxButton
                 icon="sort-by-alpha"
@@ -212,7 +213,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 value={alphabetizeEncounterSets}
                 onValueChange={alphabetizeEncounterSetsChanged}
               />
-              { (Platform.OS === 'ios' || (typeof Platform.Version !== 'string' && Platform.Version >= 26)) && (
+              { SHOW_JUSTIFY && (Platform.OS === 'ios' || (typeof Platform.Version !== 'string' && Platform.Version >= 26)) && (
                 <DeckCheckboxButton
                   icon="menu"
                   title={t`Justify text`}

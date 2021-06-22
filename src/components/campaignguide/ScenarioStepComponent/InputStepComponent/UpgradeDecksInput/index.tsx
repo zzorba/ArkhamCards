@@ -119,7 +119,7 @@ export default function UpgradeDecksInput({ componentId, id, skipDeckSave, speci
       { !hasDecision && (
         <>
           <CardTextComponent text={t`The numbers below already include all the trauma, victory points, and story assets you may have earned during the resolution.\n\nIf you have any other cards or effects that the app does not take care of, you can make adjustments below before saving each investigator.`} />
-          <ArkhamButton title={t`Learn more`} icon="faq" onPress={whatDoesAppHandle} />
+          <ArkhamButton noShadow title={t`Learn more`} icon="faq" onPress={whatDoesAppHandle} />
         </>
       )}
       { map(scenarioInvestigators, investigator => {

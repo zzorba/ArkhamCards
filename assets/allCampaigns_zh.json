@@ -28934,6 +28934,7 @@
     "check_valentino_clues",
     "check_penny_clues",
     "remove_pieces_of_evidence",
+    "check_campaign_reading_reminder",
     "encounter_deck",
     "act_b_note",
     "extra_rule",
@@ -29122,7 +29123,8 @@
                 }
               ]
             },
-            "text": "冒險幕間故事：失蹤人口記錄",
+            "text": "Scenario Interlude",
+            "description": "A Record of Those Lost",
             "steps": [
               "a_record_of_those_lost",
               "check_gavriella_fate",
@@ -29577,6 +29579,56 @@
     {
       "id": "extra_rule",
       "text": "For the duration of this scenario, the following additional rule applies:\n\"While resolving The Watcher's Grasp treachery, The Spectral Watcher does not exhaust after it attacks.\"\nAttach the Return to At Death's Doorstep card to the scenario reference card as a reminder."
+    },
+    {
+      "id": "check_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_scenario_campaign_reading_reminder"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_scenario_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading_justice_reversed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "campaign_reading_reversed"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "campaign_reading_upright"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "campaign_reading_reversed",
+      "text": "As part of the tarot campaign reading you performed, place \"Justice · XI\" in the reversed position."
+    },
+    {
+      "id": "campaign_reading_upright",
+      "text": "As part of the tarot campaign reading you performed, place \"Justice · XI\" in the upright position."
     }
   ],
   "resolutions": [
@@ -29669,6 +29721,7 @@
     "setup_act_deck",
     "put_azathoth_in_play",
     "add_path_winds_before_you_resources",
+    "check_campaign_reading_reminder",
     "encounter_deck",
     "nightmare_steed",
     "the_cosmos",
@@ -30088,6 +30141,56 @@
     {
       "id": "nightmare_steed",
       "text": "When the game begins, the investigators may remove 2 resources from the scenario reference card to have each investigator begin the game with the Nightgaunt Steed story asset in play. Remove each remaining Nightgaunt Steed from the game."
+    },
+    {
+      "id": "check_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_scenario_campaign_reading_reminder"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_scenario_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading_wheel_of_fortune_reversed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "campaign_reading_reversed"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "campaign_reading_upright"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "campaign_reading_reversed",
+      "text": "As part of the tarot campaign reading you performed, place \"Wheel of Fortune · X\" in the reversed position."
+    },
+    {
+      "id": "campaign_reading_upright",
+      "text": "As part of the tarot campaign reading you performed, place \"Wheel of Fortune · X\" in the upright position."
     }
   ],
   "resolutions": [
@@ -30221,6 +30324,7 @@
     "setup_locations",
     "set_aside_cards",
     "set_aside_keys",
+    "check_campaign_reading_reminder",
     "encounter_deck",
     "extra_rule",
     "keys",
@@ -30616,6 +30720,56 @@
     {
       "id": "extra_rule",
       "text": "For the duratio of the scenario, the following additional rules apply:\n\"The <b>Objective</b> on Act 3a is optional.\nAfter all other ([skull]/[cultist]/[tablet]/[elder_thing]) keys have been put into play, if another effect would cause a set-aside key to be put into play, use another unused (+/-) chaos token instead of putting no key into play.\nAt the end of the scenario, add each (+/-) chaos token controlled by an investigator to the victory display. Each one is worth <b>Victory 1</b>.\"\nAttach the Return to For the Greater Good card to the scenario reference card as a reminder."
+    },
+    {
+      "id": "check_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_scenario_campaign_reading_reminder"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_scenario_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading_hierophant_reversed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "campaign_reading_reversed"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "campaign_reading_upright"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "campaign_reading_reversed",
+      "text": "As part of the tarot campaign reading you performed, place \"The Hierophant · V\" in the reversed position."
+    },
+    {
+      "id": "campaign_reading_upright",
+      "text": "As part of the tarot campaign reading you performed, place \"The Hierophant · V\" in the upright position."
     }
   ],
   "resolutions": [
@@ -30701,6 +30855,7 @@
     "check_anette_mason_is_possessed_by_evil",
     "set_aside_cards",
     "choose_random_breaches",
+    "check_campaign_reading_reminder",
     "encounter_deck",
     "choosing_a_random_location",
     "breaches_and_incursions",
@@ -31369,6 +31524,56 @@
     {
       "id": "setup_locations",
       "text": "Choose at random one of the three copies of each of the following locations: French Hill, Rivertown, Southside, South Church, and Merchant District. Place each of these locations into play and remove the other copies from the game. Each investigator begins play in Southside."
+    },
+    {
+      "id": "check_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_scenario_campaign_reading_reminder"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_scenario_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading_chariot_reversed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "campaign_reading_reversed"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "campaign_reading_upright"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "campaign_reading_reversed",
+      "text": "As part of the tarot campaign reading you performed, place \"The Chariot · VII\" in the reversed position."
+    },
+    {
+      "id": "campaign_reading_upright",
+      "text": "As part of the tarot campaign reading you performed, place \"The Chariot · VII\" in the upright position."
     }
   ],
   "resolutions": [
@@ -31457,6 +31662,7 @@
     "location_layout",
     "create_unknown_place_deck",
     "set_aside_cards",
+    "check_campaign_reading_reminder",
     "encounter_deck",
     "$play_scenario"
   ],
@@ -32022,6 +32228,56 @@
           "text": "隨後，將其他3張“未知地點”卡牌混洗後隨機擺放在牌堆頂部。“未知地點”牌堆的全部7張卡牌只以未揭示面朝上放置，使得玩家無法分辨哪張“未知地點”是“巫宅遺址”。"
         }
       ]
+    },
+    {
+      "id": "check_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_scenario_campaign_reading_reminder"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_scenario_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading_hermit_reversed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "campaign_reading_reversed"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "campaign_reading_upright"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "campaign_reading_reversed",
+      "text": "As part of the tarot campaign reading you performed, place \"The Hermit · IX\" in the reversed position."
+    },
+    {
+      "id": "campaign_reading_upright",
+      "text": "As part of the tarot campaign reading you performed, place \"The Hermit · IX\" in the upright position."
     }
   ],
   "resolutions": [
@@ -32093,6 +32349,7 @@
     "set_aside_spectral_web",
     "set_aside_erynn",
     "shuffle_heretics",
+    "check_campaign_reading_reminder",
     "create_encounter_decks",
     "extra_rule",
     "spectral_encounter_deck",
@@ -32364,6 +32621,56 @@
     {
       "id": "extra_rule",
       "text": "For the duration of this scenario, the following additional rule applies:\n\"While resolving The Watcher's Grasp treachery, The Spectral Watcher does not exhaust after it attacks.\"\nAttach the Return to The Wages of Sin card to the scenario reference card as a reminder."
+    },
+    {
+      "id": "check_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_scenario_campaign_reading_reminder"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_scenario_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading_hanged_man_reversed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "campaign_reading_reversed"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "campaign_reading_upright"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "campaign_reading_reversed",
+      "text": "As part of the tarot campaign reading you performed, place \"The Hanged Man · XII\" in the reversed position."
+    },
+    {
+      "id": "campaign_reading_upright",
+      "text": "As part of the tarot campaign reading you performed, place \"The Hanged Man · XII\" in the upright position."
     }
   ],
   "resolutions": [
@@ -32453,6 +32760,7 @@
     "setup_locations",
     "set_aside_cards",
     "setup_act_deck",
+    "check_campaign_reading_reminder",
     "encounter_deck",
     "lost_and_separated",
     "$play_scenario"
@@ -32758,6 +33066,7 @@
             "steps": [
               "intro_2",
               "accepted_fate",
+              "campaign_reading_intro",
               "ask_campaign_reading",
               "check_campaign_reading"
             ]
@@ -32774,6 +33083,10 @@
       }
     },
     {
+      "id": "campaign_reading_intro",
+      "text": "Instead of adding 1 copy of The Tower · XVI and 1 copy of Ace of Rods to your deck, the lead investigator may decide to perform a Campaign Reading (\"Destiny\") with a predetermined set of cards from the Tarot Deck."
+    },
+    {
       "id": "ask_campaign_reading",
       "type": "input",
       "input": {
@@ -32781,7 +33094,7 @@
         "choices": [
           {
             "id": "tarot_reading",
-            "text": "Instead of adding 1 copy of The Tower · XVI and 1 copy of Ace of Rods to their deck, the lead investigator may decide to perform a Campaign Reading with a predetermined set of cards from the Tarot Deck.",
+            "text": "Would you like to perform a campaign reading?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -32806,7 +33119,8 @@
           {
             "boolCondition": true,
             "steps": [
-              "perform_campaign_reading"
+              "perform_campaign_reading",
+              "ask_reversed"
             ]
           },
           {
@@ -32821,7 +33135,183 @@
     {
       "id": "perform_campaign_reading",
       "bullet_type": "small",
-      "text": "Using the Tarot Deck, perform an 8-card Campaign Reading with these specific 8 cards, in this order: Temperance, Justice, Hermit, Hanged Man, Hierophant, Lovers, Chariot, Wheel of Fortune."
+      "text": "Using the Tarot Deck, perform an 8-card Campaign Reading with these specific 8 cards, in this order: Temperance, Justice, Hermit, Hanged Man, Hierophant, Lovers, Chariot, Wheel of Fortune.",
+      "bullets": [
+        {
+          "text": "Place each card in a horizontal line, in the upgright position."
+        },
+        {
+          "text": "Each of these cards applies to one scenario in the campaign, with the leftmost card corresponding to the first scenario, and the rightmost card corresponding to the final scenario."
+        }
+      ]
+    },
+    {
+      "id": "ask_reversed",
+      "bullet_type": "small",
+      "type": "input",
+      "text": "Choose and reverse four of the cards:",
+      "input": {
+        "type": "checklist",
+        "text": "Reversed cards (4)",
+        "min": 4,
+        "max": 4,
+        "choices": [
+          {
+            "id": "temperance",
+            "text": "節制",
+            "description": "巫異時刻",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "campaign_reading_temperance_reversed",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "justice",
+            "text": "正義",
+            "description": "死亡門前",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "campaign_reading_justice_reversed",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "hermit",
+            "text": "隱者",
+            "description": "隱秘之名",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "campaign_reading_hermit_reversed",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "hanged_man",
+            "text": "倒吊人",
+            "description": "惡罪報應",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "campaign_reading_hanged_man_reversed",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "hierophant",
+            "text": "教皇",
+            "description": "崇高利益",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "campaign_reading_hierophant_reversed",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "lovers",
+            "text": "戀人",
+            "description": "聚合幻滅",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "campaign_reading_lovers_reversed",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "chariot",
+            "text": "戰車",
+            "description": "混沌魔掌",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "campaign_reading_chariot_reversed",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "wheel_of_fortune",
+            "text": "命運之輪",
+            "description": "黑色王座",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "campaign_reading_wheel_of_fortune_reversed",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_scenario_campaign_reading_reminder"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_scenario_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading_temperance_reversed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "campaign_reading_reversed"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "campaign_reading_upright"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "campaign_reading_reversed",
+      "text": "As part of the tarot campaign reading you performed, place \"Temperance · XIV\" in the reversed position."
+    },
+    {
+      "id": "campaign_reading_upright",
+      "text": "As part of the tarot campaign reading you performed, place \"Temperance · XIV\" in the upright position."
     },
     {
       "id": "add_tarot",
@@ -33027,6 +33517,7 @@
     "select_act_3_4",
     "check_sided_with_lodge_and_erynn",
     "check_heretics_released",
+    "check_campaign_reading_reminder",
     "encounter_deck",
     "extra_rule",
     "circle_braziers",
@@ -34845,6 +35336,56 @@
     {
       "id": "extra_rule",
       "text": "For the duration of this scenario, the following additional rule applies:\n\"While resolving The Watcher's Grasp treachery, The Spectral Watcher does not exhaust after it attacks.\"\nAttach the Return to Union and Disillusion card to the scenario reference card as a reminder."
+    },
+    {
+      "id": "check_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_scenario_campaign_reading_reminder"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_scenario_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading_lovers_reversed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "campaign_reading_reversed"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "campaign_reading_upright"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "campaign_reading_reversed",
+      "text": "As part of the tarot campaign reading you performed, place \"The Lovers · VI\" in the reversed position."
+    },
+    {
+      "id": "campaign_reading_upright",
+      "text": "As part of the tarot campaign reading you performed, place \"The Lovers · VI\" in the upright position."
     }
   ],
   "resolutions": [
@@ -53482,7 +54023,8 @@
                 }
               ]
             },
-            "text": "插曲：真相",
+            "text": "Scenario Interlude",
+            "description": "The Truth",
             "steps": [
               "the_truth_1",
               "choose_inspector_monroe",
@@ -53506,6 +54048,7 @@
     {
       "id": "the_truth_1",
       "type": "story",
+      "title": "The Truth",
       "text": "你的調查遭到門羅警佐阻止——就是一開始對你關於埃賽希爾酒店的警告不理不睬的那名警佐。顯然，他對於發生在這棟建築物中一切古怪的事情十分震怒，而且要求一個解釋。“給我聽著，”他說道，他的手顫抖的伸向槍套中的手槍。“我是個講道理的人，但你現在看起來真的非常可疑，你最好把所有發生的事告訴我，懂嗎？不然你就準備要坐牢了。”"
     },
     {
@@ -57863,7 +58406,8 @@
                 }
               ]
             },
-            "text": "冒險幕間故事：失蹤人口記錄",
+            "text": "Scenario Interlude",
+            "description": "A Record of Those Lost",
             "steps": [
               "a_record_of_those_lost",
               "check_gavriella_fate",
@@ -73435,7 +73979,8 @@
                 }
               ]
             },
-            "text": "Scenario Interlude: Grand Design",
+            "text": "Scenario Interlude",
+            "description": "Grand Design",
             "steps": [
               "grand_design_1",
               "reveal_onyx_castle",
@@ -73467,6 +74012,7 @@
         "name": "Grand Design 1"
       },
       "type": "story",
+      "title": "Grand Design",
       "text": "Higher and higher, you scale the mountains far to the north. Pale light shines from atop a great black peak piercing the vibrant firmament, and you know that you approach the end of your quest. You spend untold hours ascending the snow-covered slopes until finally you reach the forbidden steps leading to the castle’s great hall. The castle stands astride a precipice that overlooks the entire continent and the ocean beyond. It is a majestic sight. Above, countless tenebrous towers loom, swathed in a vortex of snow and hail. You break a trail through the crusted snow before the castle, and it soon gives way to smooth, polished onyx. The biting wind quiets to a whistle. You are bathed in a prodigious darkness that fills the vast space. Soon there is nothing but the echoing of your footsteps on the onyx floor and the quiet, lonely stillness of the great hall. Though you have crossed no doorway, you realize now where you stand: inside the halls of the Great Ones. You expected to be met by guards, servants of the gods, or perhaps even those powerful beings themselves, but you are met only by loneliness and foreboding as chilling as the piercing winds outside. You continue forward until at last you reach the end of the hall. Here, flanked by smooth onyx pillars, you find…nothing.\nThere are no gods here. This place is long abandoned.\nVirgil is agape. “I…I don’t understand.”"
     },
     {
@@ -78306,7 +78852,8 @@
                 }
               ]
             },
-            "text": "Scenario Interlude: The Spider Queen",
+            "text": "Scenario Interlude",
+            "description": "The Spider Queen",
             "steps": [
               "spider_queen_1",
               "check_campaign_log",
@@ -78338,6 +78885,7 @@
         "name": "The Spider Queen 1"
       },
       "type": "story",
+      "title": "The Spider Queen",
       "text": "You climb a precipice of stone and behold the enormity of the spider's bridge and the <i>thing</i> astride it: Atlach-Nacha, god of spiders, accompanied by its horde of weavers. The many-legged monstrosities continuously intertwine strands of cosmic web, toiling endlessly with nightmarish fervor. As the awful creatures weave each thread, you feel reality and dreams distort, collide, and crash together. In the distance, waves of dream break upon the rocks of reality, and reality collapses upon itself into the surging, amorphous dream. You can barely comprehend the strange, shifting vistas. A sticky web hangs off the side of your vantage point, like a silken ladder leading down to your doom."
     },
     {
@@ -96001,7 +96549,8 @@
                 }
               ]
             },
-            "text": "Scenario Interlude: The Accusation",
+            "text": "Scenario Interlude",
+            "description": "The Accusation",
             "steps": [
               "accusation_story",
               "ask_suspect",

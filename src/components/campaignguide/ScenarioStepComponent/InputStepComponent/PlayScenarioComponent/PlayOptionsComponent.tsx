@@ -211,6 +211,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
                     key={index}
                     index={index}
                     text={choice.text}
+                    description={choice.description}
                     onPress={branchPress}
                   />
                 );

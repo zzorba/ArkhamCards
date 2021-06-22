@@ -12,6 +12,7 @@ interface Props {
   investigator?: Card;
   investigatorButton?: React.ReactNode;
   name: string;
+  description?: string;
   color?: string;
   selected: boolean;
   onChoiceToggle: (code: string, value: boolean) => void;
@@ -91,6 +92,7 @@ export default function CheckListItemComponent({
   investigator,
   investigatorButton,
   name,
+  description,
   color,
   selected,
   onChoiceToggle,
@@ -124,15 +126,20 @@ export default function CheckListItemComponent({
       space.paddingBottomS,
       color ? { backgroundColor: color } : {},
     ]}>
-
-      <Text style={[
-        space.paddingLeftS,
-        typography.mediumGameFont,
-        styles.nameText,
-        color ? { color: 'white' } : {},
-      ]}>
-        { name }
-      </Text>
+      <View style={[styles.column, space.paddingLeftS]}>
+        <Text style={[
+          typography.mediumGameFont,
+          styles.nameText,
+          color ? { color: 'white' } : {},
+        ]}>
+          { name }
+        </Text>
+        { !!description && (
+          <Text style={[typography.cardTraits, color ? { color: 'white' } : {}]}>
+            { description }
+          </Text>
+        )}
+      </View>
       { editable ? (
         <ArkhamSwitch
           onValueChange={toggle}
@@ -154,6 +161,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  column: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
   },
   switch: {
     flexDirection: 'column',

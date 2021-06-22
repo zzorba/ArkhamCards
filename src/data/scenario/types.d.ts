@@ -711,6 +711,8 @@ export interface ChecklistInput {
   type: "checklist";
   choices: BinaryConditionalChoice[];
   text: string;
+  min?: number;
+  max?: number;
 }
 export interface CounterInput {
   type: "counter";

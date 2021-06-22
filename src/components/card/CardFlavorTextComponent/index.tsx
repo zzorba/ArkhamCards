@@ -110,7 +110,7 @@ const FancyHtmlTagRule = (style: StyleContextType): MarkdownRule<WithChildren, S
 
 const CenterHtmlTagRule: MarkdownRule<WithChildren, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<center>([\\s\\S]+?)<\\/center>')),
-  order: 2,
+  order: 3,
   parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
     return {
       children: nestedParse(capture[1], state),
@@ -120,8 +120,8 @@ const CenterHtmlTagRule: MarkdownRule<WithChildren, State> = {
 };
 
 const RightHtmlTagRule: MarkdownRule<WithChildren, State> = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<right>([\\s\\S]+?)<\\/right>')),
-  order: 2,
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<right>(([\\s\\S]+?))<\\/right>')),
+  order: 3,
   parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
     return {
       children: nestedParse(capture[1], state),
@@ -281,6 +281,20 @@ export default function CardFlavorTextComponent(
           },
         },
         Teutonic: {
+          fontWeights: {
+            300: 'Regular',
+            400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
+            normal: 'Regular',
+          },
+          fontStyles: {
+            normal: '',
+            italic: '',
+          },
+        },
+        Caveat: {
           fontWeights: {
             300: 'Regular',
             400: 'Regular',

@@ -22,10 +22,13 @@ export default function CheckListPrompt({ id, bulletType, text, input }: Props) 
       choiceId="checked"
       text={text}
       bulletType={bulletType}
+      min={input.min}
+      max={input.max}
       items={map(choices, choice => {
         return {
           code: choice.id,
           name: choice.text || '',
+          description: choice.description,
         };
       })}
       checkText={input.text}
