@@ -4682,7 +4682,7 @@ msgstr "Viva"
 
 msgctxt "feminine"
 msgid "Resigned"
-msgstr "Desistido"
+msgstr "Desistida"
 
 msgctxt "feminine"
 msgid "Defeated: physical trauma"
