@@ -185,7 +185,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
             bottomMargin={s}
           />
         ) }
-        { !!find(branches, b => b.visible) && (
+        { !!(find(branches, b => b.visible) || input.campaign_log?.length) && (
           <>
             <Text style={[space.paddingS, typography.cardName, typography.center, typography.italic, typography.light]}>
               { t`Scenario effects` }

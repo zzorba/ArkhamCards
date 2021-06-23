@@ -240,6 +240,7 @@ export interface AddCardEffect {
   card: string;
   ignore_deck_limit?: boolean;
   non_story?: boolean;
+  show_prompt?: boolean;
 }
 export interface AddWeaknessEffect {
   type: "add_weakness";

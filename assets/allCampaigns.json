@@ -8988,8 +8988,8 @@
   "resolutions": [
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution",
-      "description": "Aat least one investigator resigned",
+      "title": "No resolution was reached",
+      "description": "At least one investigator resigned",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -9000,8 +9000,8 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution",
-      "description": "All investigators were defeated",
+      "title": "No resolution was reached",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -21719,8 +21719,8 @@
   "resolutions": [
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution",
-      "description": "Aat least one investigator resigned",
+      "title": "No resolution was reached",
+      "description": "At least one investigator resigned",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -21733,8 +21733,8 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution",
-      "description": "All investigators were defeated",
+      "title": "No resolution was reached",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -23638,6 +23638,10 @@
     {
       "id": "mementos",
       "title": "Mementos Discovered"
+    },
+    {
+      "id": "missing_persons",
+      "title": "Missing Persons"
     },
     {
       "id": "05046",
@@ -28963,7 +28967,7 @@
     },
     {
       "id": "extra_rule",
-      "text": "For the duratio of the scenario, the following additional rules apply:\n\"The <b>Objective</b> on Act 3a is optional.\nAfter all other ([skull]/[cultist]/[tablet]/[elder_thing]) keys have been put into play, if another effect would cause a set-aside key to be put into play, use another unused (+/-) chaos token instead of putting no key into play.\nAt the end of the scenario, add each (+/-) chaos token controlled by an investigator to the victory display. Each one is worth <b>Victory 1</b>.\"\nAttach the Return to For the Greater Good card to the scenario reference card as a reminder."
+      "text": "For the duration of the scenario, the following additional rules apply:\n\"The <b>Objective</b> on Act 3a is optional.\nAfter all other ([skull]/[cultist]/[tablet]/[elder_thing]) keys have been put into play, if another effect would cause a set-aside key to be put into play, use another unused (+/-) chaos token instead of putting no key into play.\nAt the end of the scenario, add each (+/-) chaos token controlled by an investigator to the victory display. Each one is worth <b>Victory 1</b>.\"\nAttach the Return to For the Greater Good card to the scenario reference card as a reminder."
     },
     {
       "id": "check_campaign_reading_reminder",
@@ -29099,6 +29103,7 @@
     "check_anette_mason_is_possessed_by_evil",
     "set_aside_cards",
     "choose_random_breaches",
+    "check_players_random_breaches",
     "check_campaign_reading_reminder",
     "encounter_deck",
     "choosing_a_random_location",
@@ -29352,18 +29357,51 @@
     },
     {
       "id": "choose_random_breaches",
-      "text": "Choose 2 different random locations. Place 1 breach on each of those locations <i>(see Breaches and Incursions)</i>.",
-      "bullets": [
-        {
-          "text": "If there are 2 investigators in the game, perform this step twice."
-        },
-        {
-          "text": "If there are 3 investigators in the game, perform this step three times."
-        },
-        {
-          "text": "If there are 4 investigators in the game, perform this step three times, choosing 3 different random locations each time, instead of 2."
-        }
-      ]
+      "text": "Choose 2 different random locations. Place 1 breach on each of those locations <i>(see Breaches and Incursions)</i>."
+    },
+    {
+      "id": "check_players_random_breaches",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "scenario_data",
+        "scenario_data": "player_count",
+        "options": [
+          {
+            "numCondition": 2,
+            "steps": [
+              "choose_random_breaches_2"
+            ]
+          },
+          {
+            "numCondition": 3,
+            "steps": [
+              "choose_random_breaches_3"
+            ]
+          },
+          {
+            "numCondition": 4,
+            "steps": [
+              "choose_random_breaches_4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_random_breaches_2",
+      "bullet_type": "small",
+      "text": "Because there are 2 investigators in the game, perform this step twice."
+    },
+    {
+      "id": "choose_random_breaches_3",
+      "bullet_type": "small",
+      "text": "Because there are 3 investigators in the game, perform this step three times."
+    },
+    {
+      "id": "choose_random_breaches_4",
+      "bullet_type": "small",
+      "text": "Because there are 4 investigators in the game, perform this step three times, choosing 3 different random locations each time, instead of 2."
     },
     {
       "id": "encounter_deck",
@@ -29767,7 +29805,12 @@
     },
     {
       "id": "setup_locations",
-      "text": "Choose at random one of the three copies of each of the following locations: French Hill, Rivertown, Southside, South Church, and Merchant District. Place each of these locations into play and remove the other copies from the game. Each investigator begins play in Southside."
+      "text": "Choose at random one of the three copies of each of the following locations: French Hill, Rivertown, Southside, South Church, and Merchant District. Place each of these locations into play and remove the other copies from the game.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play in Southside."
+        }
+      ]
     },
     {
       "id": "check_campaign_reading_reminder",
@@ -30382,7 +30425,8 @@
               {
                 "type": "add_card",
                 "investigator": "any",
-                "card": "05150"
+                "card": "05150",
+                "show_prompt": true
               }
             ]
           }
@@ -30412,7 +30456,8 @@
               {
                 "type": "add_card",
                 "investigator": "any",
-                "card": "05150"
+                "card": "05150",
+                "show_prompt": true
               }
             ]
           }
@@ -30720,21 +30765,38 @@
       "text": "If 3 or fewer <i>heretics were unleashed unto Arkham</i>…",
       "type": "branch",
       "condition": {
-        "type": "campaign_log_count",
-        "section": "campaign_notes",
-        "id": "heretics_released",
-        "max": 4,
-        "options": [
+        "type": "multi",
+        "conditions": [
           {
-            "numCondition": 4,
-            "steps": []
+            "type": "campaign_log_count",
+            "section": "campaign_notes",
+            "id": "heretics_released",
+            "max": 4,
+            "options": [
+              {
+                "numCondition": 0
+              },
+              {
+                "numCondition": 1
+              },
+              {
+                "numCondition": 2
+              },
+              {
+                "numCondition": 3
+              }
+            ]
           }
         ],
-        "defaultOption": {
-          "steps": [
-            "record_wisp_of_spectral_mist"
-          ]
-        }
+        "count": 1,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "record_wisp_of_spectral_mist"
+            ]
+          }
+        ]
       }
     },
     {
@@ -30920,7 +30982,8 @@
   "resolutions": [
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution\n(each investigator defeated)",
+      "title": "No resolution was reached",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -30932,7 +30995,8 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution\n(at least one investigator resigned)",
+      "title": "No resolution was reached",
+      "description": "At least one investigator resigned",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -30977,7 +31041,7 @@
     },
     {
       "id": "R3",
-      "title": "Resolution 2",
+      "title": "Resolution 3",
       "text": "As you depart Hangman's Hill, the unnatural mist lingers behind—a reminder that you chose information and power over the safety of the city. The last thing you see as you cross the brook is the blood streaking down the bark of the trees flanking the bridge. The sight is repulsive, and yet… perhaps there is information to be gathered here, as well. Hoping you've done the right thing, you study the strange carving for a moment before continuing to your next destination.",
       "steps": [
         "1_heretic_released",
@@ -32819,8 +32883,7 @@
     },
     {
       "id": "check_gavriella_alive",
-      "bullet_type": "small",
-      "text": "<i>If Gavriella Mizrah is alive</i>, any one investigator may choose to add the Gavriella Mizrah asset to their deck. She does not count toward that investigator’s deck size. Otherwise, next to Gavriella Mizrah’s profile, record <i>Gavriella Mizrah is dead</i>.",
+      "text": "<i>If Gavriella Mizrah is alive</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -32865,25 +32928,45 @@
             ],
             "effects": [
               {
+                "type": "story_step",
+                "steps": [
+                  "add_gavriella_prompt"
+                ]
+              },
+              {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "05258"
+                "card": "05258",
+                "show_prompt": true
               }
             ]
           },
           {
             "boolCondition": false,
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "05046",
-                "id": "dead",
-                "text": "Gavriella Mizrah is dead."
-              }
+            "steps": [
+              "gavriella_is_dead"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "add_gavriella_prompt",
+      "bullet_type": "small",
+      "text": "Any one investigator may choose to add the Gavriella Mizrah asset to their deck. She does not count toward that investigator’s deck size."
+    },
+    {
+      "id": "gavriella_is_dead",
+      "bullet_type": "small",
+      "text": "Record that <i>Gavriella Mizrah is dead</i>.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "05046",
+          "id": "dead",
+          "text": "Gavriella Mizrah is dead."
+        }
+      ]
     },
     {
       "id": "check_jerome_in_game",
@@ -32904,8 +32987,7 @@
     },
     {
       "id": "check_jerome_alive",
-      "bullet_type": "small",
-      "text": "<i>If Jerome Davids is alive</i>, any one investigator may choose to add the Jerome Davids asset to their deck. He does not count toward that investigator’s deck size. Otherwise, next to Jerome Davids’s profile, record <i>Jerome Davids is dead</i>.",
+      "text": "<i>If Jerome Davids is alive</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -32950,25 +33032,45 @@
             ],
             "effects": [
               {
+                "type": "story_step",
+                "steps": [
+                  "add_jerome_prompt"
+                ]
+              },
+              {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "05259"
+                "card": "05259",
+                "show_prompt": true
               }
             ]
           },
           {
             "boolCondition": false,
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "05047",
-                "id": "dead",
-                "text": "Jerome Davids is dead."
-              }
+            "steps": [
+              "jerome_is_dead"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "add_jerome_prompt",
+      "bullet_type": "small",
+      "text": "Any one investigator may choose to add the Jerome Davids asset to their deck. He does not count toward that investigator’s deck size."
+    },
+    {
+      "id": "jerome_is_dead",
+      "text": "Record that <i>Jerome Davids is dead</i>.",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "05047",
+          "id": "dead",
+          "text": "Jerome Davids is dead."
+        }
+      ]
     },
     {
       "id": "check_penny_in_game",
@@ -32989,8 +33091,7 @@
     },
     {
       "id": "check_penny_alive",
-      "bullet_type": "small",
-      "text": "<i>If Penny White is alive</i>, any one investigator may choose to add the Penny White asset to their deck. She does not count toward that investigator’s deck size. Otherwise, next to Penny White’s profile, record <i>Penny White is dead</i>.",
+      "text": "<i>If Penny White is alive</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -33035,25 +33136,45 @@
             ],
             "effects": [
               {
+                "type": "story_step",
+                "steps": [
+                  "add_penny_prompt"
+                ]
+              },
+              {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "05260"
+                "card": "05260",
+                "show_prompt": true
               }
             ]
           },
           {
             "boolCondition": false,
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "05049",
-                "id": "dead",
-                "text": "Penny White is dead."
-              }
+            "steps": [
+              "penny_is_dead"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "add_penny_prompt",
+      "bullet_type": "small",
+      "text": "Any one investigator may choose to add the Penny White asset to their deck. She does not count toward that investigator’s deck size."
+    },
+    {
+      "id": "penny_is_dead",
+      "text": "Record that <i>Penny White is dead</i>.",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "05049",
+          "id": "dead",
+          "text": "Penny White is dead."
+        }
+      ]
     },
     {
       "id": "check_valentino_in_game",
@@ -33074,8 +33195,7 @@
     },
     {
       "id": "check_valentino_alive",
-      "bullet_type": "small",
-      "text": "<i>If Valentino Rivas is alive</i>, any one investigator may choose to add the Valentino Rivas asset to their deck. He does not count toward that investigator’s deck size. Otherwise, next to Valentino Rivas’s profile, record <i>Valentino Rivas</i> is dead.",
+      "text": "<i>If Valentino Rivas is alive</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -33120,25 +33240,45 @@
             ],
             "effects": [
               {
+                "type": "story_step",
+                "steps": [
+                  "add_valentino_prompt"
+                ]
+              },
+              {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "05261"
+                "card": "05261",
+                "show_prompt": true
               }
             ]
           },
           {
             "boolCondition": false,
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "05048",
-                "id": "dead",
-                "text": "Valentino Rivas is dead."
-              }
+            "steps": [
+              "valentino_is_dead"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "add_valentino_prompt",
+      "bullet_type": "small",
+      "text": "Any one investigator may choose to add the Valentino Rivas asset to their deck. He does not count toward that investigator’s deck size."
+    },
+    {
+      "id": "valentino_is_dead",
+      "text": "Record that <i>Valentino Rivas is dead</i>.",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "05048",
+          "id": "dead",
+          "text": "Valentino Rivas is dead."
+        }
+      ]
     },
     {
       "id": "maybe_record_gavriella_alive",
@@ -33400,7 +33540,7 @@
     {
       "id": "check_sided_with_coven_and_erynn",
       "type": "branch",
-      "text": "If <i>the investigators sided with the coven</i> and <i>Erynn joined the investigators</i>:",
+      "text": "If <i>Erynn joined the investigators</i> and <i>the investigators sided with the coven</i>:",
       "condition": {
         "type": "multi",
         "conditions": [
@@ -53302,7 +53442,17 @@
         "choices": [
           {
             "id": "cultist",
-            "text": "[cultist]",
+            "text": "Cultist ([cultist])",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "cultist",
+              "options": [
+                { "numCondition": 0 },
+                { "numCondition": 1 },
+                { "numCondition": 2 }
+              ]
+            },
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -53310,10 +53460,19 @@
               }
             ]
           },
-
           {
             "id": "tablet",
-            "text": "[tablet]",
+            "text": "Tablet ([tablet])",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "tablet",
+              "options": [
+                { "numCondition": 0 },
+                { "numCondition": 1 },
+                { "numCondition": 2 }
+              ]
+            },
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -53323,7 +53482,17 @@
           },
           {
             "id": "elder_thing",
-            "text": "[elder_thing]",
+            "text": "Elder-Thing ([elder_thing])",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "elder_thing",
+              "options": [
+                { "numCondition": 0 },
+                { "numCondition": 1 },
+                { "numCondition": 2 }
+              ]
+            },
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -53409,6 +53578,10 @@
     {
       "id": "mementos",
       "title": "Mementos Discovered"
+    },
+    {
+      "id": "missing_persons",
+      "title": "Missing Persons"
     },
     {
       "id": "05046",
@@ -57749,6 +57922,7 @@
     "check_anette_mason_is_possessed_by_evil",
     "set_aside_cards",
     "choose_random_breaches",
+    "check_players_random_breaches",
     "encounter_deck",
     "choosing_a_random_location",
     "breaches_and_incursions",
@@ -57933,18 +58107,45 @@
     },
     {
       "id": "choose_random_breaches",
-      "text": "Choose 2 different random locations. Place 1 breach on each of those locations <i>(see Breaches and Incursions)</i>.",
-      "bullets": [
-        {
-          "text": "If there are 2 investigators in the game, perform this step twice."
-        },
-        {
-          "text": "If there are 3 investigators in the game, perform this step three times."
-        },
-        {
-          "text": "If there are 4 investigators in the game, perform this step three times, choosing 3 different random locations each time, instead of 2."
-        }
-      ]
+      "text": "Choose 2 different random locations. Place 1 breach on each of those locations <i>(see Breaches and Incursions)</i>."
+    },
+    {
+      "id": "check_players_random_breaches",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "scenario_data",
+        "scenario_data": "player_count",
+        "options": [
+          {
+            "numCondition": 2,
+            "steps": ["choose_random_breaches_2"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["choose_random_breaches_3"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["choose_random_breaches_4"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_random_breaches_2",
+      "bullet_type": "small",
+      "text": "Because there are 2 investigators in the game, perform this step twice."
+    },
+    {
+      "id": "choose_random_breaches_3",
+      "bullet_type": "small",
+      "text": "Because there are 3 investigators in the game, perform this step three times."
+    },
+    {
+      "id": "choose_random_breaches_4",
+      "bullet_type": "small",
+      "text": "Because there are 4 investigators in the game, perform this step three times, choosing 3 different random locations each time, instead of 2."
     },
     {
       "id": "encounter_deck",
@@ -59771,7 +59972,8 @@
               {
                 "type": "add_card",
                 "investigator": "any",
-                "card": "05150"
+                "card": "05150",
+                "show_prompt": true
               }
             ]
           }
@@ -59799,7 +60001,8 @@
               {
                 "type": "add_card",
                 "investigator": "any",
-                "card": "05150"
+                "card": "05150",
+                "show_prompt": true
               }
             ]
           }
@@ -60018,19 +60221,36 @@
       "text": "If 3 or fewer <i>heretics were unleashed unto Arkham</i>…",
       "type": "branch",
       "condition": {
-        "type": "campaign_log_count",
-        "section": "campaign_notes",
-        "id": "heretics_released",
-        "max": 4,
-        "options": [
+        "type": "multi",
+        "conditions": [
           {
-            "numCondition": 4,
-            "steps": []
+            "type": "campaign_log_count",
+            "section": "campaign_notes",
+            "id": "heretics_released",
+            "max": 4,
+            "options": [
+              {
+                "numCondition": 0
+              },
+              {
+                "numCondition": 1
+              },
+              {
+                "numCondition": 2
+              },
+              {
+                "numCondition": 3
+              }
+            ]
           }
         ],
-        "defaultOption": {
-          "steps": ["record_wisp_of_spectral_mist"]
-        }
+        "count": 1,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["record_wisp_of_spectral_mist"]
+          }
+        ]
       }
     },
     {
@@ -60085,7 +60305,8 @@
   "resolutions": [
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution\n(each investigator defeated)",
+      "title": "No resolution was reached",
+      "description": "Each investigator was defeated",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -60095,7 +60316,8 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution\n(at least one investigator resigned)",
+      "title": "No resolution was reached",
+      "description": "At least one investigator resigned",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -61880,8 +62102,7 @@
     },
     {
       "id": "check_gavriella_alive",
-      "bullet_type": "small",
-      "text": "<i>If Gavriella Mizrah is alive</i>, any one investigator may choose to add the Gavriella Mizrah asset to their deck. She does not count toward that investigator’s deck size. Otherwise, next to Gavriella Mizrah’s profile, record <i>Gavriella Mizrah is dead</i>.",
+      "text": "<i>If Gavriella Mizrah is alive</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -61924,25 +62145,39 @@
             "steps": ["maybe_record_gavriella_alive"],
             "effects": [
               {
+                "type": "story_step",
+                "steps": ["add_gavriella_prompt"]
+              },
+              {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "05258"
+                "card": "05258",
+                "show_prompt": true
               }
             ]
           },
           {
             "boolCondition": false,
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "05046",
-                "id": "dead",
-                "text": "Gavriella Mizrah is dead."
-              }
-            ]
+            "steps": ["gavriella_is_dead"]
           }
         ]
       }
+    },
+    {
+      "id": "add_gavriella_prompt",
+      "bullet_type": "small",
+      "text": "Any one investigator may choose to add the Gavriella Mizrah asset to their deck. She does not count toward that investigator’s deck size."
+    },
+    {
+      "id": "gavriella_is_dead",
+      "bullet_type": "small",
+      "text": "Record that <i>Gavriella Mizrah is dead</i>.",
+      "effects": [{
+        "type": "campaign_log",
+        "section": "05046",
+        "id": "dead",
+        "text": "Gavriella Mizrah is dead."
+      }]
     },
     {
       "id": "check_jerome_in_game",
@@ -61961,8 +62196,7 @@
     },
     {
       "id": "check_jerome_alive",
-      "bullet_type": "small",
-      "text": "<i>If Jerome Davids is alive</i>, any one investigator may choose to add the Jerome Davids asset to their deck. He does not count toward that investigator’s deck size. Otherwise, next to Jerome Davids’s profile, record <i>Jerome Davids is dead</i>.",
+      "text": "<i>If Jerome Davids is alive</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -62005,25 +62239,41 @@
             "steps": ["maybe_record_jerome_alive"],
             "effects": [
               {
+                "type": "story_step",
+                "steps": ["add_jerome_prompt"]
+              },
+              {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "05259"
+                "card": "05259",
+                "show_prompt": true
               }
             ]
           },
           {
             "boolCondition": false,
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "05047",
-                "id": "dead",
-                "text": "Jerome Davids is dead."
-              }
-            ]
+            "steps": ["jerome_is_dead"]
           }
         ]
       }
+    },
+    {
+      "id": "add_jerome_prompt",
+      "bullet_type": "small",
+      "text": "Any one investigator may choose to add the Jerome Davids asset to their deck. He does not count toward that investigator’s deck size."
+    },
+    {
+      "id": "jerome_is_dead",
+      "text": "Record that <i>Jerome Davids is dead</i>.",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "05047",
+          "id": "dead",
+          "text": "Jerome Davids is dead."
+        }
+      ]
     },
     {
       "id": "check_penny_in_game",
@@ -62042,8 +62292,7 @@
     },
     {
       "id": "check_penny_alive",
-      "bullet_type": "small",
-      "text": "<i>If Penny White is alive</i>, any one investigator may choose to add the Penny White asset to their deck. She does not count toward that investigator’s deck size. Otherwise, next to Penny White’s profile, record <i>Penny White is dead</i>.",
+      "text": "<i>If Penny White is alive</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -62086,25 +62335,41 @@
             "steps": ["maybe_record_penny_alive"],
             "effects": [
               {
+                "type": "story_step",
+                "steps": ["add_penny_prompt"]
+              },
+              {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "05260"
+                "card": "05260",
+                "show_prompt": true
               }
             ]
           },
           {
             "boolCondition": false,
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "05049",
-                "id": "dead",
-                "text": "Penny White is dead."
-              }
-            ]
+            "steps": ["penny_is_dead"]
           }
         ]
       }
+    },
+    {
+      "id": "add_penny_prompt",
+      "bullet_type": "small",
+      "text": "Any one investigator may choose to add the Penny White asset to their deck. She does not count toward that investigator’s deck size."
+    },
+    {
+      "id": "penny_is_dead",
+      "text": "Record that <i>Penny White is dead</i>.",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "05049",
+          "id": "dead",
+          "text": "Penny White is dead."
+        }
+      ]
     },
     {
       "id": "check_valentino_in_game",
@@ -62123,8 +62388,7 @@
     },
     {
       "id": "check_valentino_alive",
-      "bullet_type": "small",
-      "text": "<i>If Valentino Rivas is alive</i>, any one investigator may choose to add the Valentino Rivas asset to their deck. He does not count toward that investigator’s deck size. Otherwise, next to Valentino Rivas’s profile, record <i>Valentino Rivas</i> is dead.",
+      "text": "<i>If Valentino Rivas is alive</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -62167,25 +62431,41 @@
             "steps": ["maybe_record_valentino_alive"],
             "effects": [
               {
+                "type": "story_step",
+                "steps": ["add_valentino_prompt"]
+              },
+              {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "05261"
+                "card": "05261",
+                "show_prompt": true
               }
             ]
           },
           {
             "boolCondition": false,
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "05048",
-                "id": "dead",
-                "text": "Valentino Rivas is dead."
-              }
-            ]
+            "steps": ["valentino_is_dead"]
           }
         ]
       }
+    },
+    {
+      "id": "add_valentino_prompt",
+      "bullet_type": "small",
+      "text": "Any one investigator may choose to add the Valentino Rivas asset to their deck. He does not count toward that investigator’s deck size."
+    },
+    {
+      "id": "valentino_is_dead",
+      "text": "Record that <i>Valentino Rivas is dead</i>.",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "05048",
+          "id": "dead",
+          "text": "Valentino Rivas is dead."
+        }
+      ]
     },
     {
       "id": "maybe_record_gavriella_alive",

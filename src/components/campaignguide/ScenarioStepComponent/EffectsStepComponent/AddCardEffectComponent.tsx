@@ -48,6 +48,7 @@ export default function AddCardEffectComponent({ id, effect, input }: Props) {
   return (
     <InvestigatorSelectorWrapper
       id={id}
+      title={effect.show_prompt ? t`Choose an investigator to add ${card.name} to their deck:` : undefined}
       investigator={effect.investigator}
       fixedInvestigator={effect.fixed_investigator}
       render={renderInvestigators}

@@ -263,24 +263,33 @@ function UpgradeDeckRow({
 
   const xp: number = useMemo(() => {
     if (choices === undefined) {
+      if (!editable) {
+        return earnedXp;
+      }
       return xpAdjust;
     }
     return earnedXp + ((choices.xp && choices.xp[0]) || 0);
-  }, [xpAdjust, choices, earnedXp]);
+  }, [xpAdjust, choices, earnedXp, editable]);
 
   const physicalTrauma: number = useMemo(() => {
     if (choices === undefined) {
+      if (!editable) {
+        return 0;
+      }
       return physicalAdjust;
     }
     return (choices.physical && choices.physical[0]) || 0;
-  }, [choices, physicalAdjust]);
+  }, [choices, physicalAdjust, editable]);
 
   const mentalTrauma: number = useMemo(() => {
     if (choices === undefined) {
+      if (!editable) {
+        return 0;
+      }
       return mentalAdjust;
     }
     return (choices.mental && choices.mental[0]) || 0;
-  }, [choices, mentalAdjust]);
+  }, [choices, mentalAdjust, editable]);
   const storyAssets = useMemo(() => campaignLog.storyAssets(investigator.code), [campaignLog, investigator]);
   const storyAssetDeltas = useMemo(() => campaignLog.storyAssetChanges(investigator.code), [campaignLog, investigator]);
   const storyCountsForDeck = useMemo(() => {
@@ -523,10 +532,13 @@ function UpgradeDeckRow({
 
   const count: number = useMemo(() => {
     if (choices === undefined) {
+      if (!editable) {
+        return 0;
+      }
       return countAdjust;
     }
     return (choices.count && choices.count[0]) || 0;
-  }, [choices, countAdjust]);
+  }, [choices, countAdjust, editable]);
 
   const customCountsSection = useMemo(() => {
     if (!investigatorCounter) {
