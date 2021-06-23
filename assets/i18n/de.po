@@ -2152,7 +2152,7 @@ msgstr "Überprüfe ${ logEntry.section }. <i>ob ${ logEntry.text }</i>"
 
 #, javascript-format
 msgid "Are you sure you want to delete the campaign: ${ campaignName }"
-msgstr "Bist du sicher, dass du die Kampagne <i>${ campaignName }</i> löschen willst"
+msgstr "Bist du sicher, dass du die Kampagne ${ campaignName } löschen willst"
 
 #, javascript-format
 msgid "${ scenarioName } (Attempt ${ attempt })"
