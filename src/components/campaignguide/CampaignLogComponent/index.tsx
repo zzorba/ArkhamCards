@@ -6,14 +6,17 @@ import { t } from 'ttag';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import CampaignLogSuppliesComponent from './CampaignLogSuppliesComponent';
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
-import CampaignGuide from '@data/scenario/CampaignGuide';
-import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import CampaignGuide, { CARD_REGEX } from '@data/scenario/CampaignGuide';
+import GuidedCampaignLog, { EntrySection } from '@data/scenario/GuidedCampaignLog';
+import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import space, { s, m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
 import DeckButton from '@components/deck/controls/DeckButton';
 import { CampaignId } from '@actions/types';
 import { showGuideChaosBagOddsCalculator, showGuideDrawChaosBag } from '@components/campaign/nav';
+import useSingleCard from '@components/card/useSingleCard';
+import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 
 interface Props {
   componentId: string;
@@ -24,6 +27,40 @@ interface Props {
   standalone?: boolean;
   hideChaosBag?: boolean;
   width: number;
+}
+
+interface CardSectionProps {
+  code: string;
+  section?: EntrySection;
+  campaignGuide: CampaignGuide;
+}
+
+function CardSection({ code, section, campaignGuide }: CardSectionProps) {
+  const { width } = useContext(StyleContext);
+  const [card] = useSingleCard(code, 'encounter');
+  const eliminated = !!section?.sectionCrossedOut;
+  const header = useMemo(() => {
+    return <CompactInvestigatorRow transparent investigator={card} eliminated={eliminated} width={width} open={!eliminated} />
+  }, [card, eliminated, width]);
+  if (eliminated) {
+    return header;
+  }
+  return (
+    <RoundedFactionBlock
+      header={header}
+      faction="neutral"
+    >
+      { !!section && (
+        <View style={[space.paddingTopM, space.paddingSideS]}>
+          <CampaignLogSectionComponent
+            sectionId={code}
+            campaignGuide={campaignGuide}
+            section={section}
+          />
+        </View>
+      ) }
+    </RoundedFactionBlock>
+  )
 }
 
 export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, scenarioId, standalone, hideChaosBag, width }: Props) {
@@ -71,11 +108,18 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
       }
       default: {
         const section = campaignLog.sections[id];
+        if (CARD_REGEX.test(id)) {
+          return (
+            <View style={[space.paddingTopS, space.paddingSideS]}>
+              <CardSection code={id} campaignGuide={campaignGuide} section={section} />
+            </View>
+          );
+        }
         return (
-          <View style={[space.paddingSideS, space.paddingBottomS]}>
+          <View style={space.paddingSideS}>
             <DeckBubbleHeader title={title} crossedOut={section && section.sectionCrossedOut} />
             { !!section && (
-              <View style={[space.paddingTopS, space.paddingSideS]}>
+              <View style={[space.paddingTopS, space.paddingSideS, space.paddingBottomS]}>
                 <CampaignLogSectionComponent
                   sectionId={id}
                   campaignGuide={campaignGuide}

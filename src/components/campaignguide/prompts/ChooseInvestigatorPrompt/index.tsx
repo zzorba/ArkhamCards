@@ -10,10 +10,13 @@ import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext
 import InputWrapper from '../InputWrapper';
 import InvestigatorRadioChoice from './InvestigatorRadioChoice';
 import { s } from '@styles/space';
+import { BulletType } from '@data/scenario/types';
 
 interface Props {
   id: string;
   title: string;
+  titleStyle?: 'setup' | 'header';
+  bulletType?: BulletType;
   choiceId: string;
   defaultLabel?: string;
   required?: boolean;
@@ -25,6 +28,8 @@ interface Props {
 export default function ChooseInvestigatorPrompt({
   id,
   title,
+  titleStyle,
+  bulletType,
   choiceId,
   defaultLabel,
   required,
@@ -87,6 +92,8 @@ export default function ChooseInvestigatorPrompt({
   return (
     <InputWrapper
       title={title}
+      titleStyle={titleStyle}
+      bulletType={bulletType}
       onSubmit={save}
       editable={choice === undefined}
       disabledText={required && selectedInvestigator === undefined ? t`Continue` : undefined}

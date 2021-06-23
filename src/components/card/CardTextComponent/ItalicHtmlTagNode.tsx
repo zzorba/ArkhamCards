@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
-import { Platform } from 'react-native';
+import React from 'react';
 import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
 import { WithChildren, State } from './types';
 import { StyleContextType } from '@styles/StyleContext';
-import LanguageContext from '@lib/i18n/LanguageContext';
 
 export default function ItalicHtmlTagNode(usePingFang: boolean, {}: StyleContextType) {
   return (

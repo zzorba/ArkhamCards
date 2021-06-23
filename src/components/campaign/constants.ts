@@ -55,6 +55,7 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case TFA: return t`The Forgotten Age`;
     case RTTFA: return t`Return to The Forgotten Age`;
     case TCU: return t`The Circle Undone`;
+    case RTTCU: return t`Return to The Circle Undone`;
     case TDE: return t`The Dream-Eaters`;
     case TDEA: return t`The Dream-Quest`;
     case TDEB: return t`The Web of Dreams`;
@@ -230,6 +231,31 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Before the Black Throne`, code: 'before_the_black_throne', pack_code: 'bbt' },
       { name: t`Epilogue`, code: 'tcu_epilogue', interlude: true },
     ];
+    case RTTCU: return [
+      {
+        name: t`Prologue: Return to Disappearance at the Twilight Estate`,
+        code: 'disappearance_at_the_twilight_estate',
+        legacy_codes: ['tcu_prologue'],
+        pack_code: 'tcu',
+      },
+      { name: t`Return to The Witching Hour`, code: 'return_to_the_witching_hour', pack_code: 'tcu' },
+      {
+        name: t`Return to At Death's Doorstep`,
+        legacy_codes: ['at_deaths_doorstep_23', 'at_deaths_doorstep_1'],
+        code: 'return_to_at_deaths_doorstep',
+        pack_code: 'tcu',
+      },
+      { name: t`The Price of Progress`, code: 'tcu_interlude_2', interlude: true },
+      { name: t`Return to The Secret Name`, code: 'return_to_the_secret_name', pack_code: 'tsn' },
+      { name: t`Return to The Wages of Sin`, code: 'return_to_the_wages_of_sin', pack_code: 'tws' },
+      { name: t`Return to For the Greater Good`, code: 'return_to_for_the_greater_good', pack_code: 'fgg' },
+      { name: t`The Inner Circle`, code: 'tcu_interlude_3', interlude: true },
+      { name: t`Return to Union and Disillusion`, code: 'return_to_union_and_disillusion', pack_code: 'uad' },
+      { name: t`Return to In the Clutches of Chaos`, code: 'return_to_in_the_clutches_of_chaos', pack_code: 'icc' },
+      { name: t`Twist of Fate`, code: 'tcu_interlude_4', interlude: true },
+      { name: t`Return to Before the Black Throne`, code: 'return_to_before_the_black_throne', pack_code: 'bbt' },
+      { name: t`Epilogue`, code: 'tcu_epilogue', interlude: true },
+    ];
     case RTNOTZ: return [
       { name: t`Return to The Gathering`, code: 'return_to_the_gathering', pack_code: 'rtnotz' },
       { name: t`Return to the Midnight Masks`, code: 'return_to_the_midnight_masks', pack_code: 'rtnotz' },
@@ -295,10 +321,11 @@ export function campaignNames() {
     rtptc: t`Return to The Path to Carcosa`,
     tfa: t`The Forgotten Age`,
     rttfa: t`Return to The Forgotten Age`,
+    tcu: t`The Circle Undone`,
+    rttcu: t`Return to The Circle Undone`,
     tde: t`The Dream-Eaters`,
     tdea: t`The Dream-Quest`,
     tdeb: t`The Web of Dreams`,
-    tcu: t`The Circle Undone`,
     tic: t`The Innsmouth Conspiracy`,
     zdm: t`Dark Matter`,
     zaw: t`Alice in Wonderland`,
@@ -383,6 +410,7 @@ export function getCampaignLog(
         // investigatorCounts
       };
     case TCU:
+    case RTTCU:
       return {
         sections: [
           t`Campaign Notes`,
@@ -590,6 +618,7 @@ export function getChaosBag(
     case RTTFA:
       return TFA_BAG[difficulty];
     case TCU:
+    case RTTCU:
       return TCU_BAG[difficulty];
     case TDE:
       return {};

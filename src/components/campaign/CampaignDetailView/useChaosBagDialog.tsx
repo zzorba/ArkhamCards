@@ -26,6 +26,7 @@ interface Props {
   chaosBag: ChaosBag;
   guided?: boolean;
   setChaosBag?: SetCampaignChaosBagAction;
+  standalone?: boolean;
 
   customEditPressed?: () => void;
 }
@@ -61,6 +62,7 @@ export default function useChaosBagDialog({
   scenarioId,
   setChaosBag,
   customEditPressed,
+  standalone,
 }: Props): [React.ReactNode, () => void, (visible: boolean) => void] {
   const { width } = useContext(StyleContext);
   const setVisibleRef = useRef<(visible: boolean) => void>();
@@ -75,11 +77,11 @@ export default function useChaosBagDialog({
   const drawChaosBagPressed = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);
     if (guided) {
-      showGuideDrawChaosBag(componentId, campaignId, chaosBag, map(allInvestigators, c => c.code), scenarioId, false);
+      showGuideDrawChaosBag(componentId, campaignId, chaosBag, map(allInvestigators, c => c.code), scenarioId, !!standalone);
     } else {
       showDrawChaosBag(componentId, campaignId, allInvestigators);
     }
-  }, [campaignId, componentId, guided, chaosBag, allInvestigators, scenarioId]);
+  }, [campaignId, componentId, guided, chaosBag, allInvestigators, scenarioId, standalone]);
   const dispatch = useDispatch();
   const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
     if (setChaosBag) {

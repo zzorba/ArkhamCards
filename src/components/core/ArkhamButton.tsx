@@ -12,16 +12,18 @@ interface Props {
   onPress: () => void;
   grow?: boolean;
   variant?: 'outline' | 'fill';
+  noShadow?: boolean;
 }
 
-function ArkhamButton({ icon, title, onPress, grow, variant = 'fill' }: Props) {
+function ArkhamButton({ icon, title, onPress, grow, variant = 'fill', noShadow }: Props) {
   const { colors, fontScale, shadow, typography } = useContext(StyleContext);
   const height = (18 * fontScale) + 20;
+  const shadowClass = variant === 'fill' ? shadow.medium : shadow.small;
   return (
     <View style={[styles.wrapper, grow ? { flexDirection: 'row' } : styles.inline]}>
       <Ripple
         style={[
-          variant === 'fill' ? shadow.medium : shadow.small,
+          noShadow ? undefined : shadowClass,
           grow ? styles.grow : undefined,
           {
             backgroundColor: variant === 'fill' ? colors.M : colors.background,

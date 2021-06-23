@@ -59,7 +59,7 @@ interface LogEntryInvestigatorCount extends LogSection {
 }
 
 type LogEntry = LogEntrySectionCount | LogEntryCard | LogEntryText | LogEntrySupplies | LogEntryInvestigatorCount;
-const CARD_REGEX = /\d\d\d\d\d[a-z]?/;
+export const CARD_REGEX = /\d\d\d\d\d[a-z]?/;
 export const CAMPAIGN_SETUP_ID = '$campaign_setup';
 
 /**

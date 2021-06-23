@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  Text,
-} from 'react-native';
-import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
+import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
 import { WithChildren } from './types';
 
@@ -12,10 +9,10 @@ export default function BlockquoteHtmlTagNode(
   state: RenderState
 ) {
   return (
-    <Text key={state.key}>
+    <MarkdownText key={state.key}>
       { '\n\n' }
       { output(node.children, { ...state, blockquote: true }) }
       { '\n\n' }
-    </Text>
+    </MarkdownText>
   );
 }

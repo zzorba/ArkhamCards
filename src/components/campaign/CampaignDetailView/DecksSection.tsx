@@ -182,7 +182,6 @@ export default function DecksSection({
 
   const [killedInvestigators, aliveInvestigators] = useMemo(() => {
     return partition(allInvestigators, investigator => {
-      console.log(investigator.code);
       return investigator.eliminated(campaign.getInvestigatorData(investigator.code));
     });
   }, [allInvestigators, campaign]);

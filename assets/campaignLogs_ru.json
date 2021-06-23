@@ -1233,6 +1233,38 @@
             "text": "dummy"
           },
           {
+            "id": "campaign_reading_chariot_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_hanged_man_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_hermit_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_hierophant_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_justice_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_lovers_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_temperance_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_wheel_of_fortune_reversed",
+            "text": "dummy"
+          },
+          {
             "id": "left_column",
             "text": "dummy"
           },

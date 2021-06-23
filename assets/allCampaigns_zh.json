@@ -2501,7 +2501,7 @@
     {
       "id": "add_elder_thing",
       "bullet_type": "small",
-      "text": "向混亂袋中加入一個 [elder_thing] 混亂標記，並持續到劇本結束。",
+      "text": "向混亂袋中加入一個[elder_thing]混亂標記，並持續到劇本結束。",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -5054,7 +5054,7 @@
     },
     {
       "id": "add_elder_thing",
-      "text": "向混亂袋中加入一個 [elder_thing] 混亂標記，並持續到劇本結束。",
+      "text": "向混亂袋中加入一個[elder_thing]混亂標記，並持續到劇本結束。",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -10532,7 +10532,7 @@
     {
       "id": "no_resolution_defeated",
       "title": "未達成任何結局",
-      "description": "所有調查員被擊敗",
+      "description": "所有調查員都被擊敗",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -14664,7 +14664,7 @@
     {
       "id": "add_elder_thing",
       "bullet_type": "small",
-      "text": "向混亂袋中加入一個 [elder_thing] 混亂標記，並持續到劇本結束。",
+      "text": "向混亂袋中加入一個[elder_thing]混亂標記，並持續到劇本結束。",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -16969,7 +16969,7 @@
     },
     {
       "id": "add_elder_thing",
-      "text": "向混亂袋中加入一個 [elder_thing] 混亂標記，並持續到劇本結束。",
+      "text": "向混亂袋中加入一個[elder_thing]混亂標記，並持續到劇本結束。",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -17555,7 +17555,7 @@
     },
     {
       "id": "set_aside_locations",
-      "text": "將其他地點卡放在一邊，位於遊戲場外。"
+      "text": "將其他地點卡放在一邊，位於場外。"
     }
   ],
   "resolutions": [
@@ -23490,7 +23490,7 @@
     {
       "id": "no_resolution_defeated",
       "title": "未達成任何結局",
-      "description": "所有調查員被擊敗",
+      "description": "所有調查員都被擊敗",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -25396,6 +25396,10 @@
       "title": "遺留記憶"
     },
     {
+      "id": "missing_persons",
+      "title": "Missing Persons"
+    },
+    {
       "id": "05046",
       "title": "失蹤人口 - 加弗瑞拉·米兹拉克"
     },
@@ -25715,15 +25719,15 @@
         },
         {
           "id": "gilmans_journal",
-          "text": "Gilman's Journal"
+          "text": "吉爾曼的日記"
         },
         {
           "id": "keziahs_formulae",
-          "text": "Keziah's Formulae"
+          "text": "凱夏的公式"
         },
         {
           "id": "worn_crucifix",
-          "text": "Worn Crucifix"
+          "text": "磨損的十字架"
         },
         {
           "id": "wisp_of_spectral_mist",
@@ -25830,7 +25834,7 @@
     },
     {
       "id": "no_decks",
-      "text": "不要為任何一位中立調查員組建調查員牌組，而是找出該調查員背面列出的卡牌一該調查員獨特的設置步驟將會用到這些卡牌。（除非有特殊說明，所有列出的卡牌均為等級0.）"
+      "text": "不要為任何一位中立調查員組建調查員牌組，而是找出該調查員背面列出的卡牌一該調查員獨特的設置步驟將會用到這些卡牌。（除非有特殊說明，所有列出的卡牌均為等級0。）"
     },
     {
       "id": "maybe_check_unplayed_investigators",
@@ -25888,7 +25892,7 @@
         "choices": [
           {
             "id": "yes",
-            "text": "你希望使用app隨機設置結果嗎？",
+            "text": "你希望使用app隨機設置序章結果嗎？",
             "effects": [
               {
                 "type": "campaign_log",
@@ -25992,7 +25996,7 @@
           },
           {
             "id": "three",
-            "text": "Three",
+            "text": "三位",
             "steps": [
               "new_missing_investigators_3",
               "cross_off_prompt",
@@ -28712,7 +28716,7 @@
         "the_watcher",
         "chilling_mists"
       ],
-      "subtext": "找出<i>死亡門前<i>遭遇組時，只從該遭遇組拿取七張[[幽靈]]地點。不要拿取該遭遇組的其他任何卡牌。"
+      "subtext": "找出<i>死亡門前</i>遭遇組時，只從該遭遇組拿取七張[[幽靈]]地點。不要拿取該遭遇組的其他任何卡牌。"
     },
     {
       "id": "setup_locations",
@@ -28934,6 +28938,7 @@
     "check_valentino_clues",
     "check_penny_clues",
     "remove_pieces_of_evidence",
+    "check_campaign_reading_reminder",
     "encounter_deck",
     "act_b_note",
     "extra_rule",
@@ -29122,7 +29127,8 @@
                 }
               ]
             },
-            "text": "冒險幕間故事：失蹤人口記錄",
+            "text": "Scenario Interlude",
+            "description": "A Record of Those Lost",
             "steps": [
               "a_record_of_those_lost",
               "check_gavriella_fate",
@@ -29577,6 +29583,56 @@
     {
       "id": "extra_rule",
       "text": "For the duration of this scenario, the following additional rule applies:\n\"While resolving The Watcher's Grasp treachery, The Spectral Watcher does not exhaust after it attacks.\"\nAttach the Return to At Death's Doorstep card to the scenario reference card as a reminder."
+    },
+    {
+      "id": "check_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_scenario_campaign_reading_reminder"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_scenario_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading_justice_reversed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "campaign_reading_reversed"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "campaign_reading_upright"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "campaign_reading_reversed",
+      "text": "As part of the tarot campaign reading you performed, place \"Justice · XI\" in the reversed position."
+    },
+    {
+      "id": "campaign_reading_upright",
+      "text": "As part of the tarot campaign reading you performed, place \"Justice · XI\" in the upright position."
     }
   ],
   "resolutions": [
@@ -29669,6 +29725,7 @@
     "setup_act_deck",
     "put_azathoth_in_play",
     "add_path_winds_before_you_resources",
+    "check_campaign_reading_reminder",
     "encounter_deck",
     "nightmare_steed",
     "the_cosmos",
@@ -30088,6 +30145,56 @@
     {
       "id": "nightmare_steed",
       "text": "When the game begins, the investigators may remove 2 resources from the scenario reference card to have each investigator begin the game with the Nightgaunt Steed story asset in play. Remove each remaining Nightgaunt Steed from the game."
+    },
+    {
+      "id": "check_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_scenario_campaign_reading_reminder"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_scenario_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading_wheel_of_fortune_reversed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "campaign_reading_reversed"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "campaign_reading_upright"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "campaign_reading_reversed",
+      "text": "As part of the tarot campaign reading you performed, place \"Wheel of Fortune · X\" in the reversed position."
+    },
+    {
+      "id": "campaign_reading_upright",
+      "text": "As part of the tarot campaign reading you performed, place \"Wheel of Fortune · X\" in the upright position."
     }
   ],
   "resolutions": [
@@ -30221,6 +30328,7 @@
     "setup_locations",
     "set_aside_cards",
     "set_aside_keys",
+    "check_campaign_reading_reminder",
     "encounter_deck",
     "extra_rule",
     "keys",
@@ -30615,7 +30723,57 @@
     },
     {
       "id": "extra_rule",
-      "text": "For the duratio of the scenario, the following additional rules apply:\n\"The <b>Objective</b> on Act 3a is optional.\nAfter all other ([skull]/[cultist]/[tablet]/[elder_thing]) keys have been put into play, if another effect would cause a set-aside key to be put into play, use another unused (+/-) chaos token instead of putting no key into play.\nAt the end of the scenario, add each (+/-) chaos token controlled by an investigator to the victory display. Each one is worth <b>Victory 1</b>.\"\nAttach the Return to For the Greater Good card to the scenario reference card as a reminder."
+      "text": "For the duration of the scenario, the following additional rules apply:\n\"The <b>Objective</b> on Act 3a is optional.\nAfter all other ([skull]/[cultist]/[tablet]/[elder_thing]) keys have been put into play, if another effect would cause a set-aside key to be put into play, use another unused (+/-) chaos token instead of putting no key into play.\nAt the end of the scenario, add each (+/-) chaos token controlled by an investigator to the victory display. Each one is worth <b>Victory 1</b>.\"\nAttach the Return to For the Greater Good card to the scenario reference card as a reminder."
+    },
+    {
+      "id": "check_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_scenario_campaign_reading_reminder"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_scenario_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading_hierophant_reversed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "campaign_reading_reversed"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "campaign_reading_upright"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "campaign_reading_reversed",
+      "text": "As part of the tarot campaign reading you performed, place \"The Hierophant · V\" in the reversed position."
+    },
+    {
+      "id": "campaign_reading_upright",
+      "text": "As part of the tarot campaign reading you performed, place \"The Hierophant · V\" in the upright position."
     }
   ],
   "resolutions": [
@@ -30701,6 +30859,8 @@
     "check_anette_mason_is_possessed_by_evil",
     "set_aside_cards",
     "choose_random_breaches",
+    "check_players_random_breaches",
+    "check_campaign_reading_reminder",
     "encounter_deck",
     "choosing_a_random_location",
     "breaches_and_incursions",
@@ -30953,18 +31113,51 @@
     },
     {
       "id": "choose_random_breaches",
-      "text": "Choose 2 different random locations. Place 1 breach on each of those locations <i>(see Breaches and Incursions)</i>.",
-      "bullets": [
-        {
-          "text": "If there are 2 investigators in the game, perform this step twice."
-        },
-        {
-          "text": "If there are 3 investigators in the game, perform this step three times."
-        },
-        {
-          "text": "If there are 4 investigators in the game, perform this step three times, choosing 3 different random locations each time, instead of 2."
-        }
-      ]
+      "text": "Choose 2 different random locations. Place 1 breach on each of those locations <i>(see Breaches and Incursions)</i>."
+    },
+    {
+      "id": "check_players_random_breaches",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "scenario_data",
+        "scenario_data": "player_count",
+        "options": [
+          {
+            "numCondition": 2,
+            "steps": [
+              "choose_random_breaches_2"
+            ]
+          },
+          {
+            "numCondition": 3,
+            "steps": [
+              "choose_random_breaches_3"
+            ]
+          },
+          {
+            "numCondition": 4,
+            "steps": [
+              "choose_random_breaches_4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_random_breaches_2",
+      "bullet_type": "small",
+      "text": "Because there are 2 investigators in the game, perform this step twice."
+    },
+    {
+      "id": "choose_random_breaches_3",
+      "bullet_type": "small",
+      "text": "Because there are 3 investigators in the game, perform this step three times."
+    },
+    {
+      "id": "choose_random_breaches_4",
+      "bullet_type": "small",
+      "text": "Because there are 4 investigators in the game, perform this step three times, choosing 3 different random locations each time, instead of 2."
     },
     {
       "id": "encounter_deck",
@@ -31368,7 +31561,62 @@
     },
     {
       "id": "setup_locations",
-      "text": "Choose at random one of the three copies of each of the following locations: French Hill, Rivertown, Southside, South Church, and Merchant District. Place each of these locations into play and remove the other copies from the game. Each investigator begins play in Southside."
+      "text": "Choose at random one of the three copies of each of the following locations: French Hill, Rivertown, Southside, South Church, and Merchant District. Place each of these locations into play and remove the other copies from the game.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play in Southside."
+        }
+      ]
+    },
+    {
+      "id": "check_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_scenario_campaign_reading_reminder"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_scenario_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading_chariot_reversed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "campaign_reading_reversed"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "campaign_reading_upright"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "campaign_reading_reversed",
+      "text": "As part of the tarot campaign reading you performed, place \"The Chariot · VII\" in the reversed position."
+    },
+    {
+      "id": "campaign_reading_upright",
+      "text": "As part of the tarot campaign reading you performed, place \"The Chariot · VII\" in the upright position."
     }
   ],
   "resolutions": [
@@ -31457,6 +31705,7 @@
     "location_layout",
     "create_unknown_place_deck",
     "set_aside_cards",
+    "check_campaign_reading_reminder",
     "encounter_deck",
     "$play_scenario"
   ],
@@ -31555,7 +31804,7 @@
         "name": "Intro 1"
       },
       "type": "story",
-      "text": "The upstairs study of the Silver Twilight Lodge is cozy, if a little cramped. The floor is covered in a plush carpet, and several comfortable sofas and small round tables fill the warmly lit room. Portraits of world-weary Lodge members line the walls around you. Carl Sanford, president of the Lodge, sits across from you, idly swirling a glass of Merlot in his wrinkled hand.\n“The Silver Twilight Lodge pursues knowledge that can help us elevate our understanding of the universe,” Mr. Sanford explains, pausing to take a sip from his wine. “The creature you encountered in Josef Meiger’s estate—its appearance is not the only peculiar happening in Arkham as of late. Tell me: have you experienced anything else recently that might be connected to these events?”"
+      "text": "樓上的書房雖然稍顯侷促，但卻很舒適。在這間温暖的房間裡，地板上铺著一塊绒毛地毯，還擺著幾張舒適的沙發和一張小圆桌。你周圍的墙上掛著一排肖像，是厭世的秘社成員。秘社的會長卡爾·桑福德坐在你對面，皺巴巴的手裡悠閑地轉著一杯梅洛葡萄酒。\n“银暮秘社追求的知識，能夠提高我們對於宇宙的理解，”桑福德解釋說，停下來小酌一口：“你在約瑟夫·梅吉爾的莊園遇到的那雙怪物——它的出現不是阿卡姆最近發生的唯一一件怪事。告訴我：你最近經歷的事情中，有沒有可能與這幾起事件有關的？”"
     },
     {
       "id": "choose_tell_lodge_about_witches",
@@ -31565,7 +31814,7 @@
         "choices": [
           {
             "id": "tell_lodge",
-            "text": "Tell the Lodge of the witches in the woods.",
+            "text": "把森林裡的女巫告訴秘社。",
             "steps": [
               "intro_2",
               "told_lodge_about_coven",
@@ -31574,7 +31823,7 @@
           },
           {
             "id": "lie",
-            "text": "Tell him you know of no possible connection. (You are lying.)",
+            "text": "回答他“没有”。（你在撒谎。）",
             "steps": [
               "intro_3",
               "check_mystic_investigator",
@@ -31592,7 +31841,7 @@
         "name": "Intro 2"
       },
       "type": "story",
-      "text": "You tell Mr. Sanford about your experience last week—waking up in the middle of the woods, the strange mist that weaved throughout the trees, the witches and their spell. He leans forward and listens intently as you explain the night’s strange events, your memories still somewhat of a haze. You conclude your story, and the elderly man considers your words. “Interesting,” he says at last. “I know of this coven. They are led by a witch named Anette Mason. Their magic is no trivial thing. They have passed down arcane secrets that can manipulate the energies of the universe. It is dangerous knowledge they possess—knowledge I believe they derived from a powerful witch who fled from Salem over two hundred years ago. Does the name ‘Keziah’ mean anything to you?”\nYou nod. Everyone in Arkham has at least some passing knowledge of the witch whose ghost supposedly haunts the old condemned “Witch House” in French Hill. Most believe her to be a work of fiction; a tall tale meant to scare young children away from the decrepit house. Mr. Sanford’s steely gaze and humorless tone makes it clear to you that this is not the case. “Perhaps this Anette is a true descendant of Keziah, or perhaps she is simply using her name. In any event, I believe these events are connected. To that end, I have a task for you, on behalf of the Silver Twilight Lodge.” Carl Sanford rises to his feet, using his cane more for show than for balance. You rise as well, ready to perform whatever duties are necessary to get to the bottom of this mystery.\n“We need as much information about this coven as we can obtain. If there is any place that will have these answers, it is the house where Keziah herself lived all those years ago.” You nod in agreement—there are too many questions you need answered. What spell were the witches casting that night in the woods? What is their motive? And what is their connection to the creature that kidnapped those four unfortunate souls? You shake Mr. Sanford’s hand and depart for the Witch House."
+      "text": "你告訴桑福德你上週的經歷——在樹林裡醒來、樹林裡彌漫著的怪霧、女巫和她們的法術。你說到那天夜裡發生的怪事時，你的記憶仍然有些模糊，他俯身專心聆聽。你說完之後，這位老人思考你說的話。“有趣。”最後他說道，“我知道這個集會。領導者是一位名叫安妮特·梅森的女巫。她們的魔法可不是鬧著玩的，她們所傳承的奥秘能夠操控宇宙的力量。這是一種危險的知識——我相信這源於两百多年前從塞勒姆逃出来的強大女巫。你聽過“凯夏”這個名字嗎？\n你點點頭。阿卡姆的每一個人多少都對那位女巫有所了解，據説她的幽靈常常在法蘭西山的“巫宅”出没。大多数人覺得她是虚構的；一個為了讓小孩子遠離那幢老房子而編出來的故事。桑福德先生冷冰冰的視線和毫無幽默感的語氣，讓你清楚地認識到事實並非如此。“安妮特可能是凯夏真正的後裔，或者她可能只是借用了凯夏的名頭。無論如何，我相信這些事件之間是有關聯的。為此，我代表銀暮秘社交给你一個任務。”卡爾桑·福德站起身來，他的手杖更像是用來炫耀的，而不是用來保持平衡。你也站了起來，不論任務是什麼，你勢在必行，定要把這謎團弄個水落石出。\n“我們需要知道更多關於女巫集會的信息。你要找的答案，一定就在凯夏多年前居住的那幢小屋裡。”你點頭表示同意——你心中有太多的問題需要答案。那晚女巫們在樹林裡施放的是什麼法術？她們的目的是什麼？和绑走四個可憐人的怪物有什麼關係？你與桑福德握手，出發前往巫宅。"
     },
     {
       "id": "told_lodge_about_coven",
@@ -31601,13 +31850,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "told_lodge_about_coven",
-          "text": "the investigators told the Lodge about the coven."
+          "text": "調查員將女巫集會的事情告訴社。"
         }
       ]
     },
     {
       "id": "add_cultist_token",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "將1個 [cultist] 標記 入混亂袋，持續到這個劇本結束.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -31624,7 +31873,7 @@
         "name": "Intro 3"
       },
       "type": "story",
-      "text": "You shake your head. You’re not sure if the events that took place in the woods are connected, or if they even really happened—some part of you still believes it was all a strange dream. Mr. Sanford examines you with a cold, piercing glare. You get the feeling that he is looking directly through you. “Very well,” he says. “Out of curiosity, does the name ‘Keziah Mason’ mean anything to you?”\nYou nod. Everyone in Arkham has at least some passing knowledge of the witch whose ghost supposedly haunts the old condemned “Witch House” in French Hill. Most believe her to be a work of fiction; a tall tale meant to scare young children away from the decrepit house. Mr. Sanford’s steely gaze and humorless tone makes it clear to you that this is not the case. He motions to an old, worn tome which lies on the table in front of you, open to a page filled with strange inscriptions and arcane glyphs. “I believe the creature you encountered in Josef ’s manor is tied to Keziah and the secret knowledge she possessed. See for yourself.” You pick up the tome and examine the markings on the page closely."
+      "text": "你搖搖頭。你不確定樹林裡發生的事情是否有關，也不確定它是不是真實發生的——你心底裡仍然覺得那一切不過是場怪夢。桑福德用冰冷而貌利的目光審視你。你感覺他看穿了你的一切。“好的。”他说道，“好奇問一句，你聽過‘凱夏·梅森’這個名字嗎？”\n你點點頭。阿卡姆的每一個人多少都對那位女巫有所了解，據説她的幽靈常常在法蘭西山的“巫宅”出没。大多数人覺得她是虚構的；為了讓小孩子遠雕那幢老房子而編出來的故事。桑福德先生冷冰冰的視線和毫無幽默感的語氣，讓你清楚地認識到事寶並非如此。他指向你面前桌上一本破舊的書籍，翻開的一頁上满是古怪文字和神秘圖形。“我想，你在約瑟夫莊園裡遇到的那隻怪物，舆凯夏和她的神秘知識有關。你自己來看看。”你拿起這本書，仔细查看上面所記戴的内容。"
     },
     {
       "id": "check_mystic_investigator",
@@ -31652,28 +31901,28 @@
     },
     {
       "id": "has_mystic",
-      "text": "Because at least one investigator is a Mystic ([mystic]):"
+      "text": "至少有一位調查員是潛修者 ([mystic]):"
     },
     {
       "id": "no_mystic",
-      "text": "Because no investigator is a Mystic ([mystic]):"
+      "text": "沒有調查員是潛修者 ([mystic]):"
     },
     {
       "id": "read_mystic_text",
       "border": true,
       "type": "story",
-      "text": "The markings on the tome form the basis for some kind of spell or ritual. It involves calling out to the dead – beseeching them for power, for secrets, or perhaps for aid. But who was beseeching whom, and for what purpose?"
+      "text": "書上記錄的是某種法術或儀式的原理。其呼唤死者——祈求他們的力量，探求未知的秘密，或者是為了救命。但是誰在祈求他們，又是出於什麼目的呢？"
     },
     {
       "id": "read_gibberish",
       "border": true,
       "type": "story",
-      "text": "It all looks like gibberish to you."
+      "text": "在你看來上面寫的都是些胡話。"
     },
     {
       "id": "intro_3_continued",
       "type": "story",
-      "text": "“To this end, I have a task for you, on behalf of the Silver Twilight Lodge.” Carl Sanford rises to his feet, using his cane more for show than for balance. You rise as well, ready to perform whatever duties are necessary to get to the bottom of this mystery.\n“We need as much information about this creature as we can obtain. If there is any place that will have these answers, it is the house where Keziah herself lived all those years ago.” You nod in agreement—there are too many questions you need answered. Perhaps this is connected to the spell the witches were casting that night in the woods, after all. If so, what is their motive? And what does this have to do with the creature that kidnapped those four unfortunate souls? You nod to Mr. Sanford and depart for the Witch House."
+      "text": "“為此，我代表銀暮秘社交给你一個任務。”卡爾桑·福德站起身來，他的手杖更像是用來炫耀的，而不是用來保持平衡。你也站了起來，不論任務是什麼，你勢在必行，定要把這謎團弄個水落石出。\n“我們需要知道更多關於那隻怪物的信息。你要找的答案，一定就在凯夏多年前居住的那幢小屋裡。”你點頭表示同意——你心中有太多的問題需要答案。或許歸根結底，這與那晚女巫們在樹林裡施放的是法術有關。如果真是這樣，她們的目的是什麼？她們和绑走四個可憐人的怪物有什麼關係？你對桑福德點點頭，出發前往巫宅。"
     },
     {
       "id": "hid_knowledge_of_coven",
@@ -31682,7 +31931,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "hid_knowledge_of_coven",
-          "text": "the investigators hid their knowledge of the coven."
+          "text": "調查員隱瞞了自己知道女巫集會一事。"
         }
       ]
     },
@@ -31693,7 +31942,7 @@
         "name": "Intro 4"
       },
       "type": "story",
-      "text": "After your confrontation with the president of the Silver Twilight Lodge, you travel to the manor of the Arkham Historical Society in Southside. You are positive that the events you experienced in the woods last week have something to do with the creature that kidnapped those four unfortunate souls. It’s just a hunch—a feeling that crawls along the back of your neck, imploring you to look away—but you’re sure that everything is connected. You’re just not sure how.\nAs you enter, one of the Historical Society’s many researchers greets you and asks if she can help in any way. You give a cursory description of the information you’re looking for; just enough that she can direct you where to look, but vague enough to leave your motives at the door. “I don’t know why you are researching such morbid affairs, but the records you are looking for should be in the library on the third floor,” the researcher says.\nYou thank her and head to the third floor, where you begin to study the history of witchcraft in Arkham. In the late 17th century, Arkham was one of the New England towns caught up in the hysteria of witch trials. Accusations of witchcraft spread like wildfire, and many of the accused were executed by hanging or burning, guilty and innocent alike. But there was one witch whose infamy rose above the rest, and whose mystical power was never in question: Keziah Mason.\nYou recognize the name as the ghost who supposedly haunts the old Witch House in French Hill. You had always thought her to be a work of fiction; a tall tale meant to scare young children away from the condemned house. But the Historical Society’s records indicate that Keziah was a real person: a powerful witch who had fled from Salem over two hundred years ago.\nYou are no stranger to real witchcraft. If Keziah Mason has anything to do with the coven you encountered in the woods, you must discover that connection. You leave the manor and head toward French Hill, where the Witch House awaits…"
+      "text": "你與织幕秘社的會長對峙過後，前往南區的阿卡姆歴史協會，你確信上週在樹林裡發生的事件，和绑走四個可憐人的怪物有關，你心裡有種感覺——它爬上你的後頸，哀求你轉開視線——但你知道一切都有關聯，你只是不知道那是怎樣的關聯。n你進入時，歷史協會的其中一名研究員向你問好，詢問你是否需要她的幫助。你粗略地說明要找的信息，詳细程度剛剛好能讓她告诉你到哪查找，避免暴露你的動機。“我不知道你有什麼在調查這麽恐怖的事情，但你要找的資料應該在圖書館的三樓。”研究員說道。\n你向她道谢，往三樓走去，開始研究巫術在阿卡姆的歷史。在17世纪末，阿卡姆跟其他新英格蘭城市一樣，陷入了女巫審判的狂潮。有關巫術的罪名如同野火一般蔓延，许多被冠上罪名的人被判以絞刑或火刑，不論是否無辜，一概論處。但有一個女巫，污名遠超衆人，拥有毋庸置疑的神秘力量：凯夏·梅森。\n你記得這固名字，她就是傅聞中的那個幽靈，出沒於法蘭西山古老的巫宅。你一直覺得她是虛構的；一個為了讓小孩子遠離那幢老房子而编出來的故事。但據歷史協會記載，凱夏是真實存在的人物：一位在兩百多年前逃出塞勒姆的強大女巫。\n你對真正的巫術並不陌生。如果凯夏·梅森和你在樹林裡遭遇的事情有関，你得找出兩者之間的聯係。你離開了歷史協會，前往法蘭西山，巫宅在那兒静候你的到來……"
     },
     {
       "id": "intro_5",
@@ -31702,7 +31951,7 @@
         "name": "Intro 5"
       },
       "type": "story",
-      "text": "Your lead regarding the Silver Twilight Lodge’s charity gala turned out to be a bust, but Anna Kaslow’s reading still plays out over and over in your mind. You cannot help but feel as though you are missing a piece of this puzzle—something you can use to avoid the dire fate the tarot reader described. Turning your attention back to the coven of witches you encountered in the woods last week, you travel to the manor of the Arkham Historical Society in Southside. Perhaps there is some piece of information you have overlooked that will shed light on their identity, or their motives.\nAs you enter, one of the Historical Society’s many researchers greets you and asks if she can help in any way. You give a cursory description of the information you’re looking for; just enough that she can direct you where to look, but vague enough to leave your motives at the door. “I don’t know why you are researching such morbid affairs, but the records you are looking for should be in the library on the third floor,” the researcher says.\nYou thank her and head to the third floor, where you begin to study the history of witchcraft in Arkham. In the late 17th century, Arkham was one of the New England towns caught up in the hysteria of witch trials. Accusations of witchcraft spread like wildfire, and many of the accused were executed by hanging or burning, guilty and innocent alike. But there was one witch whose infamy rose above the rest, and whose mystical power was never in question: Keziah Mason.\nYou recognize the name as the ghost who supposedly haunts the old Witch House in French Hill. You had always thought her to be a work of fiction; a tall tale meant to scare young children away from the condemned house. But the Historical Society’s records indicate that Keziah was a real person: a powerful witch who had fled from Salem over two hundred years ago.\nYou are no stranger to real witchcraft. If Keziah Mason has anything to do with the coven you encountered in the woods, you must discover that connection. You leave the manor and head toward French Hill, where the Witch House awaits…"
+      "text": "你追查有關根暮秘社慈善晚宴的線索以失敗告終，但安娜·卡斯洛解牌的畫面仍然在你腦海中重複上演。你忍不住覺得像是丢失了其中一片拼圖——能夠避免塔羅占卜師所說的凄慘命運的關键。你將注意力放回到上週在樹林裡遭遇的女巫集會，前往南區的阿卡姆歴史協會。或許這裡能找到你之前忽略掉的一些信息，能夠解釋她們的身份或者動機。\n你進入時，歷史協會的其中一名研究員向你問好，詢問你是否需要她的幫助。你粗略地說明要找的信息，詳细程度剛剛好能讓她告訴你到哪查找，避免暴露你的動機。“我不知道你為什麼在調查這麼恐怖的事情，但你要找的資料應該在圖書館的三樓。”研究員說道。\n你向她道谢，往三樓走去，開始研究巫術在阿卡姆的歷史。在十七世纪末，阿卡姆跟其他新英格蘭城市一樣，陷入了女巫審判的狂潮，有關巫街的罪名如同野火一般蔓延，許多被冠上罪名的人被判以絞刑或火刑，不論是否無辜，一般論處。但有一個女巫，污名遠超衆人，拥有毋庸置疑的神秘力量：凯夏·悔森。\n你記得這個名字，她就是傳間中的那個幽靈，出沒於法蘭西山古老的巫宅。你一直覺得她是虚構的：一個為了讓小孩子遠離那幢房子而編出來的故事。但據歷史協會記載，凱夏是真實存在的人物：一位在兩百多年前逃出塞勒姆的強大女巫。\n你對真正的巫術並不陌生。如果凯夏·梅森和你在樹林裡遭遇的事情有關，你得找出兩者之間的聯係。你離開了歷史協書，前往法蘭西山，巫宅在那兒静候你的到來……"
     },
     {
       "id": "intro_6",
@@ -31711,11 +31960,11 @@
         "name": "Intro 6"
       },
       "type": "story",
-      "text": "You pin the newspaper article up on your wall along with the rest of the evidence you’ve found. Whatever is happening in Josef Meiger’s manor, it’s getting out of hand. First, there were the four disappearances on the twenty-second, at the Silver Twilight Lodge’s annual charity gala. Now more have gone missing after a second event at the same estate. Is the Lodge somehow involved? Why else would they move this dinner to Mr. Meiger’s estate?\nThat’s not the only headline, either. Strange sightings have been occuring throughout the city: ghostly figures, an ashen mist, and a hunched, cloaked figure whose identity is hotly debated by the community. The name on the tips of everybody’s tongues is Keziah Mason—the ghost who supposedly haunts the old Witch House in French Hill. You had always thought her to be a work of fiction; a tall tale meant to scare young children away from the condemned house. But with all of the disappearances and odd sightings occuring throughout town, you’re not so sure. Perhaps there is something to this old ghost story, after all."
+      "text": "你將報纸上的文章盯在墙上，和你找到的其他證據放在一起。不管約瑟夫·梅吉爾的莊團裡發生的是什麼事情，那都超出了能夠控制的範圃。首先，在銀暮秘社的週年慈普晚宴上，二十秒内發生了四起失蹤事件。現在在同一座莊團裡舉辦的第二次活動後更多的人失蹤了。秘社是否參與其中？不然他們為什麼要將院宴改在梅吉爾先生的莊圃舉辦？\n不止這一件大新聞。整座城市裡出現了奇怪的景象：許多鬼影，一團灰霧，以及一個駝背的斗篷客，其身份在市民之中引起熱議。每個人嘴邊念叨的名字都是“凯夏·梅森”——傳聞中的幽靈，出沒於法蘭西山古老的巫宅。你一直覺得她是虚構的，一個為了讓小孩子遠離那幢老房子而编出來的故事。但隨著城裡出現請怪異的景象和一椿椿的失蹤事件，你現在不確定了。或許這個古者的鬼故事到底跟這一切還是有關聯的。"
     },
     {
       "id": "setup_locations",
-      "text": "Put Moldy Halls, Walter Gilman’s Room, and the three Decrepit Door locations into play. Each investigator begins play in the Moldy Halls."
+      "text": "將發霉的走道、沃爾特·吉爾曼的房間，以及3張破舊房門地點左置入場。每位調查員從發霉的走道開始遊戲。"
     },
     {
       "id": "location_layout",
@@ -31743,7 +31992,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Nahab, Site of the Sacrifice, Keziah’s Room, The Black Book, both copies of Strange Geometry, and both copies of Ghostly Presence."
+      "text": "將下列卡牌放在一邊，位於場外：那赫卜、獻祭場所、凱夏的房間、黑書、2張古怪圖形、2張鬼影驟現。"
     },
     {
       "id": "encounter_deck",
@@ -31772,7 +32021,7 @@
         "choices": [
           {
             "id": "brown_jenkin_defeated",
-            "text": "Was Brown Jenkin defeated at least once?",
+            "text": "調查員至少擊敗過布朗·詹金1次嗎？",
             "steps": [
               "brown_jenkin_xp"
             ]
@@ -31783,7 +32032,7 @@
     {
       "id": "brown_jenkin_xp",
       "bullet_type": "small",
-      "text": "Each investigator earns 1 bonus experience.",
+      "text": "每位調查員獲得1點獎勵經驗值。",
       "effects": [
         {
           "type": "earn_xp",
@@ -31800,7 +32049,7 @@
         "choices": [
           {
             "id": "nehab_defeated",
-            "text": "Was Nahab defeated at least once?",
+            "text": "調查員至少擊敗過那赫卜1次嗎？",
             "steps": [
               "nahab_xp"
             ]
@@ -31811,7 +32060,7 @@
     {
       "id": "nahab_xp",
       "bullet_type": "small",
-      "text": "Each investigator earns 1 bonus experience.",
+      "text": "每位調查員獲得1點獎勵經驗值。",
       "effects": [
         {
           "type": "earn_xp",
@@ -31823,7 +32072,7 @@
     {
       "id": "check_act_deck",
       "type": "input",
-      "text": "Check the act deck. What act was in play when the scenario ended?",
+      "text": "檢查場景牌堆。本場冒險結束時的場景是哪張？",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -31861,56 +32110,56 @@
           "type": "campaign_log",
           "section": "mementos",
           "id": "gilmans_journal",
-          "text": "Gilman's Journal"
+          "text": "吉爾曼的日記"
         }
       ]
     },
     {
       "id": "record_journal_and_formulae",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Gilman’s Journal</i> and <i>Keziah’s Formulae</i>.",
+      "text": "在你的冒險日誌“遺留記憶”下方記錄下<i>吉爾曼的日記</i>和<i>凱夏的公式</i>。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "gilmans_journal",
-          "text": "Gilman's Journal"
+          "text": "吉爾曼的日記"
         },
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "keziahs_formulae",
-          "text": "Keziah's Formulae"
+          "text": "凱夏的公式"
         }
       ]
     },
     {
       "id": "all_mementos",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Gilman’s Journal</i>, <i>Keziah’s Formulae</i>, and <i>Worn Crucifix</i>.",
+      "text": "在你的冒險日誌“遺留記憶”下方記錄下<i>吉爾曼的日記</i>和<i>凱夏的公式</i>和<i>磨損的十字架</i>。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "gilmans_journal",
-          "text": "Gilman's Journal"
+          "text": "吉爾曼的日記"
         },
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "keziahs_formulae",
-          "text": "Keziah's Formulae"
+          "text": "凱夏的公式"
         },
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "worn_crucific",
-          "text": "Worn Crucifix"
+          "text": "磨損的十字架"
         }
       ]
     },
     {
       "id": "choose_black_book_small_prompt",
       "bullet_type": "small",
-      "text": "Additionally, any one investigator may choose to add The Black Book story asset to their deck. This card does not count toward that investigator’s deck size. If an investigator chooses to include The Black Book in their deck, add 1 [skull] token to the chaos bag for the remainder of the campaign."
+      "text": "任意一位調查員可以選擇將“黑書”支援加入其牌組。這張卡牌不計入該調查員的卡牌張數。如果調查員選擇將“黑書”加入其牌組，將1個 [skull] 標記加入混亂袋，持續到這個劇本結束。"
     },
     {
       "id": "choose_black_book_small",
@@ -31921,7 +32170,7 @@
         "choices": [
           {
             "id": "keep_book",
-            "text": "Keep the Black Book?",
+            "text": "玩家保留了黑書嗎？",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -31932,7 +32181,8 @@
               {
                 "type": "add_card",
                 "investigator": "any",
-                "card": "05150"
+                "card": "05150",
+                "show_prompt": true
               }
             ]
           }
@@ -31941,7 +32191,7 @@
     },
     {
       "id": "choose_black_book_prompt",
-      "text": "Additionally, any one investigator may choose to add The Black Book story asset to their deck. This card does not count toward that investigator’s deck size. If an investigator chooses to include The Black Book in their deck, add 1 [skull] token to the chaos bag for the remainder of the campaign."
+      "text": "任意一位調查員可以選擇將“黑書”支援加入其牌組。這張卡牌不計入該調查員的卡牌張數。如果調查員選擇將“黑書”加入其牌組，將1個 [skull] 標記加入混亂袋，持續到這個劇本結束。"
     },
     {
       "id": "choose_black_book",
@@ -31951,7 +32201,7 @@
         "choices": [
           {
             "id": "keep_book",
-            "text": "Keep the Black Book?",
+            "text": "玩家保留了黑書嗎？",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -31962,7 +32212,8 @@
               {
                 "type": "add_card",
                 "investigator": "any",
-                "card": "05150"
+                "card": "05150",
+                "show_prompt": true
               }
             ]
           }
@@ -31975,7 +32226,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "confirm_text": "Each investigator earns 2 bonus experience as they gain insight into Arkham’s mysterious past.",
+        "confirm_text": "調查員得知阿卡姆神秘的往昔，每位調查員獲得2點獎勵經驗值。",
         "text": "勝利牌區：",
         "effects": [
           {
@@ -32007,7 +32258,7 @@
     },
     {
       "id": "create_unknown_place_deck",
-      "text": "Set the seven “Unknown Places” locations aside as a separate “Unknown Places Deck.” To do this, perform the following:",
+      "text": "將7張“未知地點”卡牌放在一邊，作為單獨的“未知地點牌堆”。要創建“未知地點牌堆”時按照以下步驟執行：",
       "bullets": [
         {
           "text": "Add the 4 new \"Unknown Places\" locations to the original 7."
@@ -32016,12 +32267,62 @@
           "text": "Set the Witch House Ruins aside and randomly remove 4 Unknown Places locations from the game."
         },
         {
-          "text": "Shuffle the Unknown Places with Witch House Ruins on its revealed side and three other random Unknown Places locations together to form the bottom four cards of the Unknown Places Deck, unrevealed side faceup."
+          "text": "將已揭示面為“巫宅遺址”的“未知地點”和其他3張隨機的“未知地點”一同混洗，將這4張卡牌以未揭示面朝上，放在“未知地點牌堆”底部。"
         },
         {
-          "text": "Then, place the other three Unknown Places locations on top, in a random order. All seven cards of the Unknown Places deck should be showing only the unrevealed side, so the players do not know which of the Unknown Places is the Witch House Ruins."
+          "text": "隨後，將其他3張“未知地點”卡牌混洗後隨機擺放在牌堆頂部。“未知地點”牌堆的全部7張卡牌只以未揭示面朝上放置，使得玩家無法分辨哪張“未知地點”是“巫宅遺址”。"
         }
       ]
+    },
+    {
+      "id": "check_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_scenario_campaign_reading_reminder"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_scenario_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading_hermit_reversed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "campaign_reading_reversed"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "campaign_reading_upright"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "campaign_reading_reversed",
+      "text": "As part of the tarot campaign reading you performed, place \"The Hermit · IX\" in the reversed position."
+    },
+    {
+      "id": "campaign_reading_upright",
+      "text": "As part of the tarot campaign reading you performed, place \"The Hermit · IX\" in the upright position."
     }
   ],
   "resolutions": [
@@ -32039,7 +32340,7 @@
         "physical",
         "mental"
       ],
-      "text": "Flashes of vision spark your memory as you are dragged along the dirty wooden floor. A foul ceremony—the house—Nahab—a rhythmic chant—the spiraling black vortex—a dark revelry—the Primal Chaos—a child’s cries—a writhing tunnel inside your chest.",
+      "text": "你被拖行在骯髒的木質地板上，此時一些畫面閃通你的腦海。一場污穢的儀式——那幢房子——那赫卜——有節奏的脉唱——盤旋的黑色漩洞———黑暗狂歡——原初混沌——孩童的啼哭聲——你五臟六腑擰作一圈。",
       "steps": [
         "resolution_1"
       ]
@@ -32051,7 +32352,7 @@
         "name": "Resolution 1"
       },
       "title": "結局1",
-      "text": "You awaken in the muddy lawn at the base of some crooked wooden steps, the front door of the Witch House looming above you. Every fiber of your being is filled with regret. You know you have failed to prevent something awful, though you are not sure exactly what. The evidence of your eyes and ears suggests what you saw inside the Witch House was not concurrent with here and now. Regardless, you’ve learned several things about Keziah Mason, the witch who once inhabited this old and forsaken house. With your spirit diminished and your body aching, this information will have to suffice. You dare not venture back into this infernal house.",
+      "text": "你在泥濘的草地上醒來，面前是歪歪斜斜的木質樓梯，頂上赫然是巫宅的前門。悔恨充斥你身上每一個角落。你知道自己没能阻止某些可怕的事情發生，但你不確定那是什麼。據你雙眼所見、雙耳所聞來推测，你在巫宅裡所見的景象並不是此時此地發生的。不論如何，你知道了一些關於曾經住在這幢破舊老房子裡的女巫，凱夏·梅森的信息。就你虚弱的精神和痛苦的身躯而言，收集到這些信息已經心滿意足。你再也不敢冒險回到這幢可怕的屋子。",
       "steps": [
         "earn_xp",
         "check_brown_jenkin_xp",
@@ -32067,7 +32368,7 @@
         "name": "Resolution 2"
       },
       "title": "結局2",
-      "text": "When you come to, you are lying on the wooden floor of Walter Gilman’s room. The trappings of Keziah’s foul practices are nowhere to be found, nor is the fanged, bearded rat – Keziah’s “ familiar,” as you now understand. Just as you are about to rise to your feet, you spot something glinting in a corner of the room. Crawling underneath Gilman’s bed, you reach out and grab the trinket. It is a worn nickel crucifix, similar to the ones you saw in the loomfixer’s room. You shove it into your pocket before leaving the troubling room and its strange angles behind. You’ve learned as much as you care to uncover about Keziah Mason, the witch who once inhabited this old and forsaken house. As you step out into the chilly November air, you turn and take one last look at the decrepit Witch House. You fear that though you may never enter this place again, in your thoughts and your dreams, you will never truly leave it behind.",
+      "text": "你醒來時躺在沃爾特·吉爾曼房間的木地板上。凯夏的穢行所留下的印記、長著利齒和長鬚的老鼠都已無跡可尋，你正要站起來的時候，發現房間的角落裡有什麽柬西在閃光。你爬到吉爾曼的床下，伸手去抓那件飾品。那是一個磨損的镀镍十字架，跟你在織布機修理工房間裡看見的很相似。你将它塞進自己的口袋，随後雕開了這個令人不安、角度奇詭的房間。你知道了一些關於曾經住在這幢破舊老房子裡的女巫，凯夏·梅森的信息，一如你的預期。你步入十一月寒冷的空氣中，同時轉身最後看一眼這幢破舊的巫宅。健管可能再也不會踏入此地，你依然感到害怕，在你的頭腦和夢境中，你永遠都無法真正地離開它。",
       "steps": [
         "earn_xp_bonus_2",
         "all_mementos",
@@ -32093,6 +32394,7 @@
     "set_aside_spectral_web",
     "set_aside_erynn",
     "shuffle_heretics",
+    "check_campaign_reading_reminder",
     "create_encounter_decks",
     "extra_rule",
     "spectral_encounter_deck",
@@ -32219,21 +32521,38 @@
       "text": "If 3 or fewer <i>heretics were unleashed unto Arkham</i>…",
       "type": "branch",
       "condition": {
-        "type": "campaign_log_count",
-        "section": "campaign_notes",
-        "id": "heretics_released",
-        "max": 4,
-        "options": [
+        "type": "multi",
+        "conditions": [
           {
-            "numCondition": 4,
-            "steps": []
+            "type": "campaign_log_count",
+            "section": "campaign_notes",
+            "id": "heretics_released",
+            "max": 4,
+            "options": [
+              {
+                "numCondition": 0
+              },
+              {
+                "numCondition": 1
+              },
+              {
+                "numCondition": 2
+              },
+              {
+                "numCondition": 3
+              }
+            ]
           }
         ],
-        "defaultOption": {
-          "steps": [
-            "record_wisp_of_spectral_mist"
-          ]
-        }
+        "count": 1,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "record_wisp_of_spectral_mist"
+            ]
+          }
+        ]
       }
     },
     {
@@ -32364,12 +32683,63 @@
     {
       "id": "extra_rule",
       "text": "For the duration of this scenario, the following additional rule applies:\n\"While resolving The Watcher's Grasp treachery, The Spectral Watcher does not exhaust after it attacks.\"\nAttach the Return to The Wages of Sin card to the scenario reference card as a reminder."
+    },
+    {
+      "id": "check_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_scenario_campaign_reading_reminder"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_scenario_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading_hanged_man_reversed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "campaign_reading_reversed"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "campaign_reading_upright"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "campaign_reading_reversed",
+      "text": "As part of the tarot campaign reading you performed, place \"The Hanged Man · XII\" in the reversed position."
+    },
+    {
+      "id": "campaign_reading_upright",
+      "text": "As part of the tarot campaign reading you performed, place \"The Hanged Man · XII\" in the upright position."
     }
   ],
   "resolutions": [
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution\n(each investigator defeated)",
+      "title": "未達成任何結局",
+      "description": "所有調查員都被擊敗",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -32381,7 +32751,8 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "未達成任何結局(至少一位調查員撤退)",
+      "title": "未達成任何結局",
+      "description": "至少有一位調查員撤退",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -32426,7 +32797,7 @@
     },
     {
       "id": "R3",
-      "title": "結局2",
+      "title": "結局3",
       "text": "As you depart Hangman's Hill, the unnatural mist lingers behind—a reminder that you chose information and power over the safety of the city. The last thing you see as you cross the brook is the blood streaking down the bark of the trees flanking the bridge. The sight is repulsive, and yet… perhaps there is information to be gathered here, as well. Hoping you've done the right thing, you study the strange carving for a moment before continuing to your next destination.",
       "steps": [
         "1_heretic_released",
@@ -32453,6 +32824,7 @@
     "setup_locations",
     "set_aside_cards",
     "setup_act_deck",
+    "check_campaign_reading_reminder",
     "encounter_deck",
     "lost_and_separated",
     "$play_scenario"
@@ -32758,6 +33130,7 @@
             "steps": [
               "intro_2",
               "accepted_fate",
+              "campaign_reading_intro",
               "ask_campaign_reading",
               "check_campaign_reading"
             ]
@@ -32774,6 +33147,10 @@
       }
     },
     {
+      "id": "campaign_reading_intro",
+      "text": "Instead of adding 1 copy of The Tower · XVI and 1 copy of Ace of Rods to your deck, the lead investigator may decide to perform a Campaign Reading (\"Destiny\") with a predetermined set of cards from the Tarot Deck."
+    },
+    {
       "id": "ask_campaign_reading",
       "type": "input",
       "input": {
@@ -32781,7 +33158,7 @@
         "choices": [
           {
             "id": "tarot_reading",
-            "text": "Instead of adding 1 copy of The Tower · XVI and 1 copy of Ace of Rods to their deck, the lead investigator may decide to perform a Campaign Reading with a predetermined set of cards from the Tarot Deck.",
+            "text": "Would you like to perform a campaign reading?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -32806,7 +33183,8 @@
           {
             "boolCondition": true,
             "steps": [
-              "perform_campaign_reading"
+              "perform_campaign_reading",
+              "ask_reversed"
             ]
           },
           {
@@ -32821,7 +33199,183 @@
     {
       "id": "perform_campaign_reading",
       "bullet_type": "small",
-      "text": "Using the Tarot Deck, perform an 8-card Campaign Reading with these specific 8 cards, in this order: Temperance, Justice, Hermit, Hanged Man, Hierophant, Lovers, Chariot, Wheel of Fortune."
+      "text": "Using the Tarot Deck, perform an 8-card Campaign Reading with these specific 8 cards, in this order: Temperance, Justice, Hermit, Hanged Man, Hierophant, Lovers, Chariot, Wheel of Fortune.",
+      "bullets": [
+        {
+          "text": "Place each card in a horizontal line, in the upgright position."
+        },
+        {
+          "text": "Each of these cards applies to one scenario in the campaign, with the leftmost card corresponding to the first scenario, and the rightmost card corresponding to the final scenario."
+        }
+      ]
+    },
+    {
+      "id": "ask_reversed",
+      "bullet_type": "small",
+      "type": "input",
+      "text": "Choose and reverse four of the cards:",
+      "input": {
+        "type": "checklist",
+        "text": "Reversed cards (4)",
+        "min": 4,
+        "max": 4,
+        "choices": [
+          {
+            "id": "temperance",
+            "text": "節制",
+            "description": "巫異時刻",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "campaign_reading_temperance_reversed",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "justice",
+            "text": "正義",
+            "description": "死亡門前",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "campaign_reading_justice_reversed",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "hermit",
+            "text": "隱者",
+            "description": "隱秘之名",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "campaign_reading_hermit_reversed",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "hanged_man",
+            "text": "倒吊人",
+            "description": "惡罪報應",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "campaign_reading_hanged_man_reversed",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "hierophant",
+            "text": "教皇",
+            "description": "崇高利益",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "campaign_reading_hierophant_reversed",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "lovers",
+            "text": "戀人",
+            "description": "聚合幻滅",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "campaign_reading_lovers_reversed",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "chariot",
+            "text": "戰車",
+            "description": "混沌魔掌",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "campaign_reading_chariot_reversed",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "wheel_of_fortune",
+            "text": "命運之輪",
+            "description": "黑色王座",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "campaign_reading_wheel_of_fortune_reversed",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_scenario_campaign_reading_reminder"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_scenario_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading_temperance_reversed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "campaign_reading_reversed"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "campaign_reading_upright"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "campaign_reading_reversed",
+      "text": "As part of the tarot campaign reading you performed, place \"Temperance · XIV\" in the reversed position."
+    },
+    {
+      "id": "campaign_reading_upright",
+      "text": "As part of the tarot campaign reading you performed, place \"Temperance · XIV\" in the upright position."
     },
     {
       "id": "add_tarot",
@@ -33027,6 +33581,7 @@
     "select_act_3_4",
     "check_sided_with_lodge_and_erynn",
     "check_heretics_released",
+    "check_campaign_reading_reminder",
     "encounter_deck",
     "extra_rule",
     "circle_braziers",
@@ -34084,8 +34639,7 @@
     },
     {
       "id": "check_gavriella_alive",
-      "bullet_type": "small",
-      "text": "<i>If Gavriella Mizrah is alive</i>, any one investigator may choose to add the Gavriella Mizrah asset to their deck. She does not count toward that investigator’s deck size. Otherwise, next to Gavriella Mizrah’s profile, record <i>Gavriella Mizrah is dead</i>.",
+      "text": "<i>If Gavriella Mizrah is alive</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -34130,25 +34684,45 @@
             ],
             "effects": [
               {
+                "type": "story_step",
+                "steps": [
+                  "add_gavriella_prompt"
+                ]
+              },
+              {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "05258"
+                "card": "05258",
+                "show_prompt": true
               }
             ]
           },
           {
             "boolCondition": false,
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "05046",
-                "id": "dead",
-                "text": "Gavriella Mizrah is dead."
-              }
+            "steps": [
+              "gavriella_is_dead"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "add_gavriella_prompt",
+      "bullet_type": "small",
+      "text": "Any one investigator may choose to add the Gavriella Mizrah asset to their deck. She does not count toward that investigator’s deck size."
+    },
+    {
+      "id": "gavriella_is_dead",
+      "bullet_type": "small",
+      "text": "Record that <i>Gavriella Mizrah is dead</i>.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "05046",
+          "id": "dead",
+          "text": "Gavriella Mizrah is dead."
+        }
+      ]
     },
     {
       "id": "check_jerome_in_game",
@@ -34169,8 +34743,7 @@
     },
     {
       "id": "check_jerome_alive",
-      "bullet_type": "small",
-      "text": "<i>If Jerome Davids is alive</i>, any one investigator may choose to add the Jerome Davids asset to their deck. He does not count toward that investigator’s deck size. Otherwise, next to Jerome Davids’s profile, record <i>Jerome Davids is dead</i>.",
+      "text": "<i>If Jerome Davids is alive</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -34215,25 +34788,45 @@
             ],
             "effects": [
               {
+                "type": "story_step",
+                "steps": [
+                  "add_jerome_prompt"
+                ]
+              },
+              {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "05259"
+                "card": "05259",
+                "show_prompt": true
               }
             ]
           },
           {
             "boolCondition": false,
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "05047",
-                "id": "dead",
-                "text": "Jerome Davids is dead."
-              }
+            "steps": [
+              "jerome_is_dead"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "add_jerome_prompt",
+      "bullet_type": "small",
+      "text": "Any one investigator may choose to add the Jerome Davids asset to their deck. He does not count toward that investigator’s deck size."
+    },
+    {
+      "id": "jerome_is_dead",
+      "text": "Record that <i>Jerome Davids is dead</i>.",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "05047",
+          "id": "dead",
+          "text": "Jerome Davids is dead."
+        }
+      ]
     },
     {
       "id": "check_penny_in_game",
@@ -34254,8 +34847,7 @@
     },
     {
       "id": "check_penny_alive",
-      "bullet_type": "small",
-      "text": "<i>If Penny White is alive</i>, any one investigator may choose to add the Penny White asset to their deck. She does not count toward that investigator’s deck size. Otherwise, next to Penny White’s profile, record <i>Penny White is dead</i>.",
+      "text": "<i>If Penny White is alive</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -34300,25 +34892,45 @@
             ],
             "effects": [
               {
+                "type": "story_step",
+                "steps": [
+                  "add_penny_prompt"
+                ]
+              },
+              {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "05260"
+                "card": "05260",
+                "show_prompt": true
               }
             ]
           },
           {
             "boolCondition": false,
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "05049",
-                "id": "dead",
-                "text": "Penny White is dead."
-              }
+            "steps": [
+              "penny_is_dead"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "add_penny_prompt",
+      "bullet_type": "small",
+      "text": "Any one investigator may choose to add the Penny White asset to their deck. She does not count toward that investigator’s deck size."
+    },
+    {
+      "id": "penny_is_dead",
+      "text": "Record that <i>Penny White is dead</i>.",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "05049",
+          "id": "dead",
+          "text": "Penny White is dead."
+        }
+      ]
     },
     {
       "id": "check_valentino_in_game",
@@ -34339,8 +34951,7 @@
     },
     {
       "id": "check_valentino_alive",
-      "bullet_type": "small",
-      "text": "<i>If Valentino Rivas is alive</i>, any one investigator may choose to add the Valentino Rivas asset to their deck. He does not count toward that investigator’s deck size. Otherwise, next to Valentino Rivas’s profile, record <i>Valentino Rivas</i> is dead.",
+      "text": "<i>If Valentino Rivas is alive</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -34385,25 +34996,45 @@
             ],
             "effects": [
               {
+                "type": "story_step",
+                "steps": [
+                  "add_valentino_prompt"
+                ]
+              },
+              {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "05261"
+                "card": "05261",
+                "show_prompt": true
               }
             ]
           },
           {
             "boolCondition": false,
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "05048",
-                "id": "dead",
-                "text": "Valentino Rivas is dead."
-              }
+            "steps": [
+              "valentino_is_dead"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "add_valentino_prompt",
+      "bullet_type": "small",
+      "text": "Any one investigator may choose to add the Valentino Rivas asset to their deck. He does not count toward that investigator’s deck size."
+    },
+    {
+      "id": "valentino_is_dead",
+      "text": "Record that <i>Valentino Rivas is dead</i>.",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "05048",
+          "id": "dead",
+          "text": "Valentino Rivas is dead."
+        }
+      ]
     },
     {
       "id": "maybe_record_gavriella_alive",
@@ -34665,7 +35296,7 @@
     {
       "id": "check_sided_with_coven_and_erynn",
       "type": "branch",
-      "text": "If <i>the investigators sided with the coven</i> and <i>Erynn joined the investigators</i>:",
+      "text": "If <i>Erynn joined the investigators</i> and <i>the investigators sided with the coven</i>:",
       "condition": {
         "type": "multi",
         "conditions": [
@@ -34845,6 +35476,56 @@
     {
       "id": "extra_rule",
       "text": "For the duration of this scenario, the following additional rule applies:\n\"While resolving The Watcher's Grasp treachery, The Spectral Watcher does not exhaust after it attacks.\"\nAttach the Return to Union and Disillusion card to the scenario reference card as a reminder."
+    },
+    {
+      "id": "check_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "check_scenario_campaign_reading_reminder"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_scenario_campaign_reading_reminder",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "campaign_reading_lovers_reversed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "campaign_reading_reversed"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "campaign_reading_upright"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "campaign_reading_reversed",
+      "text": "As part of the tarot campaign reading you performed, place \"The Lovers · VI\" in the reversed position."
+    },
+    {
+      "id": "campaign_reading_upright",
+      "text": "As part of the tarot campaign reading you performed, place \"The Lovers · VI\" in the upright position."
     }
   ],
   "resolutions": [
@@ -43973,7 +44654,7 @@
     },
     {
       "id": "add_cultist",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "將1個 [cultist] 標記 入混亂袋，持續到這個劇本結束.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -47429,11 +48110,11 @@
     },
     {
       "id": "new_scenario_card",
-      "text": "將原本<i>百賭百勝</i>遭遇組中的冒險參考卡牌移出遊戲。使用下載的<i>孤注一擲</i>遭遇組中提供的新冒險參考卡牌。"
+      "text": "將<i>百賭百勝</i>遭遇組中原本的冒險參考卡牌移出遊戲。使用下載的<i>孤注一擲</i>遭遇組中提供的新冒險參考卡牌。"
     },
     {
       "id": "new_act_agenda",
-      "text": "將原本<i>百賭百勝</i>遭遇組中的場景與密謀卡牌移出遊戲。僅用下載的<i>孤注一擲</i>遭遇組中提供的新場景與密謀卡牌構建場景和密謀牌堆。"
+      "text": "將<i>百賭百勝</i>遭遇組中原本的場景與密謀卡牌移出遊戲。僅用下載的<i>孤注一擲</i>遭遇組中提供的新場景與密謀卡牌構建場景和密謀牌堆。"
     },
     {
       "id": "remove_misc_cards",
@@ -48067,7 +48748,7 @@
     },
     {
       "id": "new_scenario_card",
-      "text": "將原本<i>命運之線</i>遭遇組中的冒險參考卡牌移出遊戲。使用下載的<i>血業輪迴</i>遭遇組中提供的新冒險參考卡牌。"
+      "text": "將<i>命運之線</i>遭遇組中原本的冒險參考卡牌移出遊戲。使用下載的<i>血業輪迴</i>遭遇組中提供的新冒險參考卡牌。"
     },
     {
       "id": "setup_locations",
@@ -50203,7 +50884,7 @@
           },
           {
             "id": "three",
-            "text": "Three",
+            "text": "三位",
             "steps": [
               "abbess_satisfied",
               "earn_abbess"
@@ -53160,7 +53841,7 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "一個多月以來，坐落於阿卡姆的「埃賽希爾酒店」已經傳出了多起奇怪事件的報導。失蹤事件、奇異的目擊事件、有時忽然無預警的閉館數日。雖然聽起來就像是一則鬼故事，但你知道最好不要輕忽這些傳聞。已經有太多人到處議論著這件事了……而更糟的是，這些詭異的故事在過去一個禮拜反而越演越烈，該是有人介入調查的時候了。\n你曾試著連絡警方，但是頭髮蒼白又厭倦世事的門羅警長每次都將你的請求打了回票，你只能獨自展開調查。在當地各處熱點訪查並沒有讓你得到太多線索，維爾瑪餐館、希伯酒館、月下美人；每一次的訪查都只讓你徙增了更多疑問，至到今天。\n當你今日漫步在市中心的中央大道，正想著自己的事情時，你迎面撞上了一名身穿長風衣的男子。你開口道歉，但他只是自顧自地走了。直到你回到家，才發現你的口袋中有著一張原本並不存在的紙條。\n<center><fancy>我有你想要的答案。</fancy></center>\n<center><fancy>225號房，今晚，一個人來。</fancy></center>\n<center><fancy>有人正在監視！</fancy></center>\n此時你也沒別的辦法了，於是你開始準備要去和這位神秘人見面。"
+      "text": "一個多月以來，坐落於阿卡姆的「埃賽希爾酒店」已經傳出了多起奇怪事件的報導。失蹤事件、奇異的目擊事件、有時忽然無預警的閉館數日。雖然聽起來就像是一則鬼故事，但你知道最好不要輕忽這些傳聞。已經有太多人到處議論著這件事了……而更糟的是，這些詭異的故事在過去一個禮拜反而越演越烈，該是有人介入調查的時候了。\n你曾試著連絡警方，但是頭髮蒼白又厭倦世事的門羅警佐每次都將你的請求打了回票，你只能獨自展開調查。在當地各處熱點訪查並沒有讓你得到太多線索，維爾瑪餐館、希伯酒館、月下美人；每一次的訪查都只讓你徙增了更多疑問，至到今天。\n當你今日漫步在市中心的中央大道，正想著自己的事情時，你迎面撞上了一名身穿長風衣的男子。你開口道歉，但他只是自顧自地走了。直到你回到家，才發現你的口袋中有著一張原本並不存在的紙條。\n<center><fancy>我有你想要的答案。</fancy></center>\n<center><fancy>225號房，今晚，一個人來。</fancy></center>\n<center><fancy>有人正在監視！</fancy></center>\n此時你也沒別的辦法了，於是你開始準備要去和這位神秘人見面。"
     },
     {
       "id": "check_player_count",
@@ -53209,7 +53890,7 @@
     {
       "id": "intro_4",
       "type": "story",
-      "text": "你坐在套房客廳的一張椅子上，看著那名偷偷塞給你紙條的男子焦急地踱步。他喋喋不休的談著各種祕密集會與充滿警覺的員工。這段時間，你不斷的偷瞄著你面前的咖啡桌，桌上躺著一把彎曲的匕首。他暫停了一下，給自己倒了一杯飲料，搖搖晃晃地湊到嘴巴前。然後，他倒了第二杯飲料拿給你。“接下來的一切聽起來會很瘋狂”他說道，聲音只比耳語稍微大聲一點。他像是驚弓之鳥一般警惕地四處張望，“我開始覺得我瘋了，但已經發生太多無法忽視的事情了。而我已經深陷其中……”。你小心翼翼地聽著，但他的語句開始含糊不清，聲音變得飄忽不定，就像是隧道盡頭的風聲一樣。你快速地眨眼，你的視線變得模糊。接著你意識到你已經倒下，手上的杯子掉落在地，之後——"
+      "text": "你坐在套房客廳的一張椅子上，看著那名偷偷塞給你紙條的男子焦急地踱步。他喋喋不休地談著各種祕密集會與充滿警覺的員工。這段時間，你不斷的偷瞄著你面前的咖啡桌，桌上躺著一把彎曲的匕首。他暫停了一下，給自己倒了一杯飲料，搖搖晃晃地湊到嘴巴前。然後，他倒了第二杯飲料拿給你。“接下來的一切聽起來會很瘋狂”他說道，聲音只比耳語稍微大聲一點。他像是驚弓之鳥一般警惕地四處張望，“我開始覺得我瘋了，但已經發生太多無法忽視的事情了。而我已經深陷其中……”。你小心翼翼地聽著，但他的語句開始含糊不清，聲音變得飄忽不定，就像是隧道盡頭的風聲一樣。你快速地眨眼，你的視線變得模糊。接著你意識到你已經倒下，手上的杯子掉落在地，之後——"
     },
     {
       "id": "gather_encounter_sets",
@@ -53245,20 +53926,20 @@
     },
     {
       "id": "create_leads_deck",
-      "text": "從5個放在一旁的遭遇組中找出以下劇情支援卡(Alien Device、Tome of Rituals、Sinister Solution、Manager’s Key和Time-Worn Locket)，將它們混洗並組成一個獨立的牌堆，稱為線索牌堆。將此牌堆置於冒險參考卡旁。"
+      "text": "從5個放在一旁的遭遇組中找出以下劇情支援卡(外星裝置Alien Device、儀式之書Tome of Rituals、不祥溶液Sinister Solution、經理鑰匙Manager’s Key和陳舊掛墜Time-Worn Locket)，將它們混洗並組成一個獨立的牌堆，稱為“事件線索牌堆”。將此牌堆置於冒險參考卡旁。"
     },
     {
       "id": "setup_locations",
-      "text": "將以下地點放置入場：Room 225、Suite Balcony、Second Floor Hall、Restaurant和Foyer。",
+      "text": "將以下地點放置入場：225號房(Room 225)、套房陽台(Suite Balcony)、二樓大廳(Second Floor Hall)、餐廳(Restaurant)和酒店大廳(Foyer)。",
       "bullets": [
         {
-          "text": "隊長在Room 225開始遊戲。"
+          "text": "隊長在225號房(Room 225)開始遊戲。"
         },
         {
-          "text": "其他調查員在Foyer開始遊戲。"
+          "text": "其他調查員在酒店大廳(Foyer)開始遊戲。"
         },
         {
-          "text": "將其他地點卡放在一邊，位於遊戲場外。"
+          "text": "將其他地點卡放在一邊，位於場外。"
         }
       ]
     },
@@ -53297,7 +53978,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "將以下的卡牌放到一旁，位於遊戲場外：全部3張Arkham Officer、Sergeant Monroe劇情支援卡、What Have You Done? 弱點卡。"
+      "text": "將以下的卡牌放到一旁，位於場外：全部3張阿卡姆警員(Arkham Officer)、門羅警佐(Sergeant Monroe)劇情支援卡、What Have You Done? 弱點卡。"
     },
     {
       "id": "encounter_deck",
@@ -53342,7 +54023,7 @@
     },
     {
       "id": "excelsior_is_quiet_for_now",
-      "text": "在冒險日誌中記下<i>埃賽希爾酒店暫時恢復寧靜</i>。隊長必須將What Have You Done? 弱點卡加入牌組。他可以選擇是否將染血匕首(Bloodstained Dagger)故事支援卡加入他的牌組。這兩張卡牌都不計入卡牌張數限制。",
+      "text": "在冒險日誌中記下<i>埃賽希爾酒店暫時恢復寧靜</i>。隊長必須將你做了什麼？(What Have You Done?)弱點卡加入牌組。他可以選擇是否將染血匕首(Bloodstained Dagger)故事支援卡加入他的牌組。這兩張卡牌都不計入卡牌張數限制。",
       "effects": [
         {
           "type": "campaign_log",
@@ -53365,7 +54046,7 @@
     },
     {
       "id": "earn_story_cards",
-      "text": "隊長必須將What Have You Done? 弱點卡加入牌組。他可以選擇是否將染血匕首(Bloodstained Dagger)故事支援卡加入他的牌組。這兩張卡牌都不計入卡牌張數限制。",
+      "text": "隊長必須將你做了什麼？(What Have You Done?)弱點卡加入牌組。他可以選擇是否將染血匕首(Bloodstained Dagger)故事支援卡加入他的牌組。這兩張卡牌都不計入卡牌張數限制。",
       "effects": [
         {
           "type": "add_card",
@@ -53401,7 +54082,7 @@
     {
       "id": "earn_sergeant_monroe",
       "bullet_type": "small",
-      "text": "任一名調查員可以選擇將門羅警長(Sergeant Monroe)加入他的牌組。這張卡牌不計入卡牌張數限制。",
+      "text": "任一名調查員可以選擇將門羅警佐(Sergeant Monroe)加入他的牌組。這張卡牌不計入卡牌張數限制。",
       "effects": [
         {
           "type": "add_card",
@@ -53432,7 +54113,7 @@
     {
       "id": "do_not_earn_sergeant_monroe",
       "bullet_type": "small",
-      "text": "不要將門羅警長(Sergeant Monroe)加入任何調查員的牌組。"
+      "text": "不要將門羅警佐(Sergeant Monroe)加入任何調查員的牌組。"
     },
     {
       "id": "ask_police_in_victory_display",
@@ -53482,7 +54163,8 @@
                 }
               ]
             },
-            "text": "插曲：真相",
+            "text": "Scenario Interlude",
+            "description": "The Truth",
             "steps": [
               "the_truth_1",
               "choose_inspector_monroe",
@@ -53506,7 +54188,8 @@
     {
       "id": "the_truth_1",
       "type": "story",
-      "text": "你的調查遭到門羅警長阻止——就是一開始對你關於埃賽希爾酒店的警告不理不睬的那名警長。顯然，他對於發生在這棟建築物中一切古怪的事情十分震怒，而且要求一個解釋。“給我聽著，”他說道，他的手顫抖的伸向槍套中的手槍。“我是個講道理的人，但你現在看起來真的非常可疑，你最好把所有發生的事告訴我，懂嗎？不然你就準備要坐牢了。”"
+      "title": "The Truth",
+      "text": "你的調查遭到門羅警佐阻止——就是一開始對你關於埃賽希爾酒店的警告不理不睬的那名警佐。顯然，他對於發生在這棟建築物中一切古怪的事情十分震怒，而且要求一個解釋。“給我聽著，”他說道，他的手顫抖的伸向槍套中的手槍。“我是個講道理的人，但你現在看起來真的非常可疑，你最好把所有發生的事告訴我，懂嗎？不然你就準備要坐牢了。”"
     },
     {
       "id": "choose_inspector_monroe",
@@ -53516,7 +54199,7 @@
         "choices": [
           {
             "id": "tell_truth",
-            "text": "<i>告訴門羅警長真相。</i>",
+            "text": "<i>告訴門羅警佐真相。</i>",
             "steps": [
               "the_truth_2",
               "truth_intro",
@@ -53543,11 +54226,11 @@
     {
       "id": "the_truth_2",
       "type": "story",
-      "text": "你對門羅警長從頭解釋了一切，關於那些傳聞、紙條與謀殺事件。你解釋得越多，就越意識到這件事聽起來有多麼瘋狂，但你知道這些都是真的。你知道自己是無辜的，但你有證據可以證明嗎？"
+      "text": "你對門羅警佐從頭解釋了一切，關於那些傳聞、紙條與謀殺事件。你解釋得越多，就越意識到這件事聽起來有多麼瘋狂，但你知道這些都是真的。你知道自己是無辜的，但你有證據可以證明嗎？"
     },
     {
       "id": "truth_intro",
-      "text": "只有在你收集了足夠的證據以及你沒有試圖掩飾你對此案的涉入，門羅警長才會相信你。如果以下所有的條件都達成："
+      "text": "只有在你收集了足夠的證據以及你沒有試圖掩飾你對此案的涉入，門羅警佐才會相信你。如果以下所有的條件都達成："
     },
     {
       "id": "ask_did_not_cover_evidence",
@@ -53558,7 +54241,7 @@
         "choices": [
           {
             "id": "cleared_evidence",
-            "text": "調查員是否未曾“清除了血跡cleaned up the blood”、“隱藏了屍體hid the body”或“清理了房間tidied up theroom”？",
+            "text": "調查員是否未曾“清除了血跡cleaned up the blood”、“隱藏了屍體hid the body”或“整理了房間tidied up theroom”？",
             "effects": [
               {
                 "type": "campaign_log",
@@ -53580,7 +54263,7 @@
         "choices": [
           {
             "id": "have_clues",
-            "text": "場上每個[[Lead]]支援卡上至少各有2個線索。",
+            "text": "場上每個[[事件線索]](Lead)支援卡上至少各有2[per_investigator]個線索嗎？",
             "effects": [
               {
                 "type": "campaign_log",
@@ -53679,7 +54362,7 @@
     },
     {
       "id": "lie_intro",
-      "text": "只有在你成功掩飾了你對於此案的涉入，門羅警長才會相信你。如果以下所有的條件都達成："
+      "text": "只有在你成功掩飾了你對於此案的涉入，門羅警佐才會相信你。如果以下所有的條件都達成："
     },
     {
       "id": "ask_cleared_evidence",
@@ -53690,7 +54373,7 @@
         "choices": [
           {
             "id": "cleared_evidence",
-            "text": "調查員是否已“清除了血跡cleaned up the blood”、“隱藏了屍體hid the body”和“清理了房間tidied up theroom”？",
+            "text": "調查員是否已“清除了血跡cleaned up the blood”、“隱藏了屍體hid the body”和“整理了房間tidied up theroom”？",
             "effects": [
               {
                 "type": "campaign_log",
@@ -53753,11 +54436,11 @@
     {
       "id": "the_truth_4",
       "type": "story",
-      "text": "“不，不，我壓根不信。”，警長一邊掏出他的配槍一邊說，“這完全說不通。你得跟我走。你要瞎掰可以到警局來瞎掰。”你舉高雙手，當他押著你走出房間時，酒店的某處發生一聲巨響。整棟建築從地基開始震動，你聽到客人在尖叫。“搞什麼鬼？”警長看向門口，然後又看了看你。他警告你：“給我待著，否則我發誓，下次見到你時，你就得上銬了。”他向著噪音的方向跑去，一邊喃喃的抱怨自己已經太老了，受不起這種折騰。"
+      "text": "“不，不，我壓根不信。”，警佐一邊掏出他的配槍一邊說，“這完全說不通。你得跟我走。你要瞎掰可以到警局來瞎掰。”你舉高雙手，當他押著你走出房間時，酒店的某處發生一聲巨響。整棟建築從地基開始震動，你聽到客人在尖叫。“搞什麼鬼？”警佐看向門口，然後又看了看你。他警告你：“給我待著，否則我發誓，下次見到你時，你就得上銬了。”他向著噪音的方向跑去，一邊喃喃的抱怨自己已經太老了，受不起這種折騰。"
     },
     {
       "id": "the_truth_4_consequences",
-      "text": "記住“警察不相信你。”將門羅警長移出遊戲。搜索遭遇牌堆、棄牌堆以及所有遊戲區域，找出所有阿卡姆警員(Arkham Officer)卡牌，並將其移出遊戲。將遭遇棄牌堆與遭遇牌堆混洗。",
+      "text": "記住“警察不相信你。”將門羅警佐移出遊戲。搜索遭遇牌堆、棄牌堆以及所有遊戲區域，找出所有阿卡姆警員(Arkham Officer)卡牌，並將其移出遊戲。將遭遇棄牌堆與遭遇牌堆混洗。",
       "effects": [
         {
           "type": "campaign_log",
@@ -53770,11 +54453,11 @@
     {
       "id": "the_truth_5",
       "type": "story",
-      "text": "門羅警長懷疑地聽著你所訴說的故事，但隨著你攤出越來越多的證據，他似乎就越來越被說服。“好吧，”警長在你解釋完後說道。“所以你受到脅迫，還可能被下了藥。雖然聽起來很瘋狂，但證據都很合理。我相信你說的是實話，但這件事背後如果有人在操弄，我們必須要找出是誰，不然沒有人會相信我們的。”一滴汗水從他的前額滑落，“來，走吧。”"
+      "text": "門羅警佐懷疑地聽著你所訴說的故事，但隨著你攤出越來越多的證據，他似乎就越來越被說服。“好吧，”警佐在你解釋完後說道。“所以你受到脅迫，還可能被下了藥。雖然聽起來很瘋狂，但證據都很合理。我相信你說的是實話，但這件事背後如果有人在操弄，我們必須要找出是誰，不然沒有人會相信我們的。”一滴汗水從他的前額滑落，“來，走吧。”"
     },
     {
       "id": "the_truth_5_consequences",
-      "text": "記住“警方站在你這邊”，選擇一名調查員控制門羅警長故事支援卡<i>(將他移動至該調查員的威脅區)</i>。搜尋遭遇牌堆、棄牌堆與所有的遊戲區域，將所有阿卡姆警員(Arkham Officer)移出遊戲。將遭遇棄牌堆與遭遇牌堆混洗。",
+      "text": "記住“警方站在你這邊”，選擇一名調查員控制門羅警佐故事支援卡<i>(將他移動至該調查員的威脅區)</i>。搜尋遭遇牌堆、棄牌堆與所有的遊戲區域，將所有阿卡姆警員(Arkham Officer)移出遊戲。將遭遇棄牌堆與遭遇牌堆混洗。",
       "effects": [
         {
           "type": "campaign_log",
@@ -53787,11 +54470,11 @@
     {
       "id": "the_truth_6",
       "type": "story",
-      "text": "門羅警長點了點頭，相信了你的故事。“好吧，”他說，“聽起來你的確跟這件事無關，但也許你可以幫我找到真正的兇手。這間該死的酒店裡有個殺人兇手，我們一定要把他揪出來。”你鬆了一口氣，至少警察不再是個麻煩了。"
+      "text": "門羅警佐點了點頭，相信了你的故事。“好吧，”他說，“聽起來你的確跟這件事無關，但也許你可以幫我找到真正的兇手。這間該死的酒店裡有個殺人兇手，我們一定要把他揪出來。”你鬆了一口氣，至少警察不再是個麻煩了。"
     },
     {
       "id": "the_truth_6_consequences",
-      "text": "記住“警方站在你這邊”，選擇一名調查員控制門羅警長故事支援卡<i>(將他移動至該調查員的威脅區)</i>。搜尋遭遇牌堆、棄牌堆與所有的遊戲區域，將所有阿卡姆警員(Arkham Officer)移出遊戲。將遭遇棄牌堆與遭遇牌堆混洗。",
+      "text": "記住“警方站在你這邊”，選擇一名調查員控制門羅警佐故事支援卡<i>(將他移動至該調查員的威脅區)</i>。搜尋遭遇牌堆、棄牌堆與所有的遊戲區域，將所有阿卡姆警員(Arkham Officer)移出遊戲。將遭遇棄牌堆與遭遇牌堆混洗。",
       "effects": [
         {
           "type": "campaign_log",
@@ -53808,7 +54491,7 @@
     },
     {
       "id": "choose_lead_assets",
-      "text": "根據玩家控制了哪兩個[[Lead]]支援卡，結算以下文字。",
+      "text": "根據玩家控制了哪兩個[[事件線索]](Lead)支援卡，結算以下文字。",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -53896,15 +54579,15 @@
     },
     {
       "id": "true_culprit_1",
-      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到置於一旁的“The True Culprit (v. I)”。該卡同時作為當前的場景與密謀卡。"
+      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到放在一邊的“真正的犯人(版本一)”。該卡同時作為當前的場景與密謀卡。"
     },
     {
       "id": "move_clues_1",
-      "text": "將Time-Worn Locket上的所有線索標記移至Alien Device上。"
+      "text": "將陳舊掛墜上的所有線索標記移至外星裝置上。"
     },
     {
       "id": "boss_1",
-      "text": "將置於一旁的Vengeful Specter生成於Room 245。"
+      "text": "將放在一邊的復仇的幽靈(Vengeful Specter)生成於245號房。"
     },
     {
       "id": "lead_asset_branch_2",
@@ -53961,15 +54644,15 @@
     },
     {
       "id": "true_culprit_2",
-      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到置於一旁的“The True Culprit (v. II)”。該卡同時作為當前的場景與密謀卡。"
+      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到放在一邊的“真正的犯人(版本二)”。該卡同時作為當前的場景與密謀卡。"
     },
     {
       "id": "move_clues_2",
-      "text": "將Alien Device上的所有線索標記移至Sinister Solution上。"
+      "text": "將外星裝置上的所有線索標記移至不祥溶液上。"
     },
     {
       "id": "boss_2",
-      "text": "將置於一旁的Otherworldly Meddler生成於Hotel Roof，並在該卡上放置1[per_investigator]個毀滅標記。"
+      "text": "將放在一邊的異界干預者(Otherworldly Meddler)生成於酒店屋頂(Hotel Roof)，並在該卡上放置1[per_investigator]個毀滅標記。"
     },
     {
       "id": "lead_asset_branch_3",
@@ -54022,19 +54705,19 @@
     {
       "id": "alien_device_and_managers_key",
       "type": "story",
-      "text": "不論這件外星裝置原本的用途為何，它根本不應該出現在這個世界上。當這個裝置與人類接觸時，它將會改變他們，讓他們對血肉產生巨大的渴望。你的“被害者”就是這樣一個怪物，一點也不無辜，當你得知\n真相後你也被迫必須保護自己。現在，你已經找回了記憶，你可以將這一切終結。"
+      "text": "不論這件外星裝置原本的用途為何，它根本不應該出現在這個世界上。當這個裝置與人類接觸時，它將會改變他們，讓他們對血肉產生巨大的渴望。你的“被害者”就是這樣一個怪物，一點也不無辜，當你得知真相後你也被迫必須保護自己。現在，你已經找回了記憶，你可以將這一切終結。"
     },
     {
       "id": "true_culprit_3",
-      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到置於一旁的“The True Culprit (v. III)”。該卡同時作為當前的場景與密謀卡。"
+      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到放在一邊的“真正的犯人(版本三)”。該卡同時作為當前的場景與密謀卡。"
     },
     {
       "id": "move_clues_3",
-      "text": "將 Manager’s Key上的所有線索標記移至Alien Device上。"
+      "text": "將經理鑰匙上的所有線索標記移至外星裝置上。"
     },
     {
       "id": "boss_3",
-      "text": "將置於一旁的Hotel Manager生成於Restaurant。"
+      "text": "將放在一邊的酒店經理(Hotel Manager)生成於餐廳(Restaurant)。"
     },
     {
       "id": "lead_asset_branch_4",
@@ -54087,19 +54770,19 @@
     {
       "id": "alien_device_and_tome_of_rituals",
       "type": "story",
-      "text": "Enclave教團使用奇怪的發射器把主人召喚到了旅館。現在，他們希望通過鮮血儀式來控制這個生物。由於強迫其他客人替他們做骯髒的事，他們惡行的證據仍然被隱藏著……但你知道真相。現在，你可以阻止儀式，並把這個可怕的生物送回它的世界。"
+      "text": "英克雷教團使用奇怪的發射器把主人召喚到了旅館。現在，他們希望通過鮮血儀式來控制這個生物。由於強迫其他賓客替他們做骯髒的事，他們惡行的證據仍然被隱藏著……但你知道真相。現在，你可以阻止儀式，並把這個可怕的生物送回它的世界。"
     },
     {
       "id": "true_culprit_4",
-      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到置於一旁的“The True Culprit (v. IV)”。該卡同時作為當前的場景與密謀卡。"
+      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到放在一邊的“真正的犯人(版本四)”。該卡同時作為當前的場景與密謀卡。"
     },
     {
       "id": "move_clues_4",
-      "text": "將Alien Device上的所有線索標記移至Tome of Rituals上。"
+      "text": "將外星裝置上的所有線索標記移至儀式之書上。"
     },
     {
       "id": "boss_4",
-      "text": "將置於一旁的Otherworldly Meddler生成於Hotel Roof，在該卡上放置2加上2[per_investigator]個毀滅標記。"
+      "text": "將放在一邊的異界干預者(Otherworldly Meddler)生成於酒店屋頂(Hotel Roof)，在該卡上放置2加上2[per_investigator]個毀滅標記。"
     },
     {
       "id": "lead_asset_branch_5",
@@ -54156,15 +54839,15 @@
     },
     {
       "id": "true_culprit_5",
-      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到置於一旁的“The True Culprit (v. V)”。該卡同時作為當前的場景與密謀卡。"
+      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到放在一邊的“真正的犯人(版本五)”。該卡同時作為當前的場景與密謀卡。"
     },
     {
       "id": "move_clues_5",
-      "text": "將Time-Worn Locket上的所有線索標記移至Sinister Solution上。"
+      "text": "將陳舊掛墜上的所有線索標記移至不祥溶液上。"
     },
     {
       "id": "boss_5",
-      "text": "將置於一旁的Vengeful Specter生成於Room 245。"
+      "text": "將放在一邊的復仇的幽靈(Vengeful Specter)生成於245號房。"
     },
     {
       "id": "lead_asset_branch_6",
@@ -54221,15 +54904,15 @@
     },
     {
       "id": "true_culprit_6",
-      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到置於一旁的“The True Culprit (v. VI)”。該卡同時作為當前的場景與密謀卡。"
+      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到放在一邊的“真正的犯人(版本六)”。該卡同時作為當前的場景與密謀卡。"
     },
     {
       "id": "move_clues_6",
-      "text": "將Manager’s Key上的所有線索標記移至Time-Worn Locket上。"
+      "text": "將經理鑰匙上的所有線索標記移至陳舊掛墜上。"
     },
     {
       "id": "boss_6",
-      "text": "將置於一旁的Hotel Manager生成於Restaurant。"
+      "text": "將放在一邊的酒店經理(Hotel Manager)生成於餐廳(Restaurant)。"
     },
     {
       "id": "lead_asset_branch_7",
@@ -54283,23 +54966,23 @@
     {
       "id": "time_worn_locket_and_tome_of_rituals",
       "type": "story",
-      "text": "這個盒墜中的女人在多年前被殺害了。作為Enclave教團血祭儀式的眾多犧牲者之一，對於邪教的憎惡與懷恨驅使她附身在你身上，也驅使她進行殺戮。她的憤怒必須透過你來平息。你可以決定是否將其怒火導向始作俑者：潛伏在酒店裡的邪教。"
+      "text": "這個盒墜中的女人在多年前被殺害了。作為英克雷教團血祭儀式的眾多犧牲者之一，對於邪教的憎惡與懷恨驅使她附身在你身上，也驅使她進行殺戮。她的憤怒必須透過你來平息。你可以決定是否將其怒火導向始作俑者：潛伏在酒店裡的邪教。"
     },
     {
       "id": "true_culprit_7",
-      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到置於一旁的“The True Culprit (v. VII)”。該卡同時作為當前的場景與密謀卡。"
+      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到放在一邊的“真正的犯人(版本七)”。該卡同時作為當前的場景與密謀卡。"
     },
     {
       "id": "move_clues_7",
-      "text": "將置於一旁的Dimensional Shambler生成於Basement。"
+      "text": "將放在一邊的次元蔓生怪(Dimensional Shambler)生成於地下室(Basement)。"
     },
     {
       "id": "shuffle_guests_7",
-      "text": "將勝利牌區的所有[[客人]](Guest)敵人卡和遭遇棄牌堆與遭遇牌堆混洗。"
+      "text": "將勝利牌區的所有[[賓客]](Guest)敵人卡和遭遇棄牌堆與遭遇牌堆混洗。"
     },
     {
       "id": "boss_7",
-      "text": "從遭遇牌堆頂部棄牌，直到棄掉1加上1[per_investigator]個[[客人]](Guest)或[[異教徒]](Cultist)敵人。隨機將這些敵人生成在不同的Crime Scene地點卡上(盡可能生成在無人地點)。"
+      "text": "從遭遇牌堆頂部棄牌，直到棄掉1加上1[per_investigator]個[[賓客]](Guest)或[[異教徒]](Cultist)敵人。隨機將這些敵人生成在不同的[[犯罪現場]](Crime Scene)地點卡上(盡可能生成在無人地點)。"
     },
     {
       "id": "lead_asset_branch_8",
@@ -54357,7 +55040,7 @@
     },
     {
       "id": "true_culprit_8",
-      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到置於一旁的“The True Culprit (v. VIII)”。該卡同時作為當前的場景與密謀卡。"
+      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到放在一邊的“真正的犯人(版本八)”。該卡同時作為當前的場景與密謀卡。"
     },
     {
       "id": "shuffle_staff_8",
@@ -54365,11 +55048,11 @@
     },
     {
       "id": "spawn_staff_8",
-      "text": "從遭遇牌堆頂部棄牌，直到棄掉1個[[員工]](Staff)敵人(若有3到4位調查員則改為棄掉2個)。將這些敵人生成在Foyer。"
+      "text": "從遭遇牌堆頂部棄牌，直到棄掉1個[[員工]](Staff)敵人(若有3到4位調查員則改為棄掉2個)。將這些敵人生成在酒店大廳。"
     },
     {
       "id": "boss_8",
-      "text": "將置於一旁的Harvested Brain疊加到Room 212。"
+      "text": "將放在一邊的收割的大腦(Harvested Brain)疊加到212號房。"
     },
     {
       "id": "lead_asset_branch_9",
@@ -54426,40 +55109,40 @@
     {
       "id": "sinister_solution_and_tome_of_rituals",
       "type": "story",
-      "text": "Enclave教團透過邪惡的血祭儀式，控制了一個非人生物的大腦。現在，這個邪教打算利用這個大腦的超級智能和奇怪的分泌物來控制其他人，而你就是他們最新的受害者。阻止他們計劃的唯一方法就是一勞永逸地破壞他們對這個大腦的控制。"
+      "text": "英克雷教團透過邪惡的血祭儀式，控制了一個非人生物的大腦。現在，這個邪教打算利用這個大腦的超級智能和奇怪的分泌物來控制其他人，而你就是他們最新的受害者。阻止他們計劃的唯一方法就是一勞永逸地破壞他們對這個大腦的控制。"
     },
     {
       "id": "true_culprit_9",
-      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到置於一旁的“The True Culprit (v. IX)”。該卡同時作為當前的場景與密謀卡。"
+      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到放在一邊的“真正的犯人(版本九)”。該卡同時作為當前的場景與密謀卡。"
     },
     {
       "id": "move_clues_9",
-      "text": "將Sinister Solution上的所有線索標記移至Tome of Rituals上。"
+      "text": "將不祥溶液上的所有線索標記移至儀式之書上。"
     },
     {
       "id": "boss_9",
-      "text": "將置於一旁的Harvested Brain疊加到Room 212。"
+      "text": "將放在一邊的收割的大腦(Harvested Brain)疊加到212號房。"
     },
     {
       "id": "managers_key_and_tome_of_rituals",
       "type": "story",
-      "text": "Enclave教團執行一種可怕的儀式已經好幾天了，他們打算把埃賽希爾酒店裡面的每個人都變成悲慘的怪物，首先從員工們開始。而如果你不快點採取行動，那你就會是下一個。轉化已經開始了……"
+      "text": "英克雷教團執行一種可怕的儀式已經好幾天了，他們打算把埃賽希爾酒店裡面的每個人都變成悲慘的怪物，首先從員工們開始。而如果你不快點採取行動，那你就會是下一個。轉化已經開始了……"
     },
     {
       "id": "true_culprit_10",
-      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到置於一旁的“The True Culprit (v. X)”。該卡同時作為當前的場景與密謀卡。"
+      "text": "將場上所有毀滅標記移除。將場景與密謀牌堆推進到放在一邊的“真正的犯人(版本十)”。該卡同時作為當前的場景與密謀卡。"
     },
     {
       "id": "boss_10",
-      "text": "將置於一旁的Dimensional Shambler生成於Basement。"
+      "text": "將放在一邊的次元蔓生怪(Dimensional Shambler)生成於地下室(Basement)。"
     },
     {
       "id": "shuffle_guest_10",
-      "text": "將勝利牌區的所有[[客人]](Guest)敵人卡和遭遇棄牌堆與遭遇牌堆混洗。"
+      "text": "將勝利牌區的所有[[賓客]](Guest)敵人卡和遭遇棄牌堆與遭遇牌堆混洗。"
     },
     {
       "id": "place_doom_10",
-      "text": "在“The True Culprit (v. X)”上放置2[per_investigator]個毀滅標記。"
+      "text": "在“真正的犯人(版本十)”上放置2[per_investigator]個毀滅標記。"
     },
     {
       "id": "continue_playing",
@@ -54712,7 +55395,7 @@
     {
       "id": "no_resolution",
       "title": "未達成任何結局",
-      "description": "At least one investigator resigned",
+      "description": "至少一位調查員撤退",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -55070,7 +55753,7 @@
     },
     {
       "id": "new_scenario_card",
-      "text": "將原本<i>課外活動</i>遭遇組中的冒險參考卡牌移出遊戲。使用下載的<i>死亡閱讀</i>遭遇組中提供的新冒險參考卡牌。"
+      "text": "將<i>課外活動</i>遭遇組中原本的冒險參考卡牌移出遊戲。使用下載的<i>死亡閱讀</i>遭遇組中提供的新冒險參考卡牌。"
     },
     {
       "id": "new_act_agenda",
@@ -57222,7 +57905,8 @@
             "text": "調整混亂袋",
             "steps": [
               "add_chaos_token"
-            ]
+            ],
+            "repeatable": true
           }
         ]
       }
@@ -57236,7 +57920,23 @@
         "choices": [
           {
             "id": "cultist",
-            "text": "[cultist]",
+            "text": "Cultist ([cultist])",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "cultist",
+              "options": [
+                {
+                  "numCondition": 0
+                },
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                }
+              ]
+            },
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -57248,7 +57948,23 @@
           },
           {
             "id": "tablet",
-            "text": "[tablet]",
+            "text": "Tablet ([tablet])",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "tablet",
+              "options": [
+                {
+                  "numCondition": 0
+                },
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                }
+              ]
+            },
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -57260,7 +57976,23 @@
           },
           {
             "id": "elder_thing",
-            "text": "[elder_thing]",
+            "text": "Elder-Thing ([elder_thing])",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "elder_thing",
+              "options": [
+                {
+                  "numCondition": 0
+                },
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                }
+              ]
+            },
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -57378,6 +58110,10 @@
     {
       "id": "mementos",
       "title": "遺留記憶"
+    },
+    {
+      "id": "missing_persons",
+      "title": "Missing Persons"
     },
     {
       "id": "05046",
@@ -57862,7 +58598,8 @@
                 }
               ]
             },
-            "text": "冒險幕間故事：失蹤人口記錄",
+            "text": "Scenario Interlude",
+            "description": "A Record of Those Lost",
             "steps": [
               "a_record_of_those_lost",
               "check_gavriella_fate",
@@ -58893,7 +59630,7 @@
     },
     {
       "id": "no_decks",
-      "text": "不要為任何一位中立調查員組建調查員牌組，而是找出該調查員背面列出的卡牌一該調查員獨特的設置步驟將會用到這些卡牌。（除非有特殊說明，所有列出的卡牌均為等級0.）"
+      "text": "不要為任何一位中立調查員組建調查員牌組，而是找出該調查員背面列出的卡牌一該調查員獨特的設置步驟將會用到這些卡牌。（除非有特殊說明，所有列出的卡牌均為等級0。）"
     },
     {
       "id": "maybe_check_unplayed_investigators",
@@ -58955,7 +59692,7 @@
         "choices": [
           {
             "id": "yes",
-            "text": "你希望使用app隨機設置結果嗎？",
+            "text": "你希望使用app隨機設置序章結果嗎？",
             "effects": [
               {
                 "type": "campaign_log",
@@ -59059,7 +59796,7 @@
           },
           {
             "id": "three",
-            "text": "Three",
+            "text": "三位",
             "steps": [
               "new_missing_investigators_3",
               "cross_off_prompt",
@@ -59469,7 +60206,7 @@
         "the_watcher",
         "chilling_cold"
       ],
-      "subtext": "找出<i>死亡門前<i>遭遇組時，只從該遭遇組拿取七張[[幽靈]]地點。不要拿取該遭遇組的其他任何卡牌。"
+      "subtext": "找出<i>死亡門前</i>遭遇組時，只從該遭遇組拿取七張[[幽靈]]地點。不要拿取該遭遇組的其他任何卡牌。"
     },
     {
       "id": "setup_locations",
@@ -62454,6 +63191,7 @@
     "check_anette_mason_is_possessed_by_evil",
     "set_aside_cards",
     "choose_random_breaches",
+    "check_players_random_breaches",
     "encounter_deck",
     "choosing_a_random_location",
     "breaches_and_incursions",
@@ -62720,18 +63458,51 @@
     },
     {
       "id": "choose_random_breaches",
-      "text": "Choose 2 different random locations. Place 1 breach on each of those locations <i>(see Breaches and Incursions)</i>.",
-      "bullets": [
-        {
-          "text": "If there are 2 investigators in the game, perform this step twice."
-        },
-        {
-          "text": "If there are 3 investigators in the game, perform this step three times."
-        },
-        {
-          "text": "If there are 4 investigators in the game, perform this step three times, choosing 3 different random locations each time, instead of 2."
-        }
-      ]
+      "text": "Choose 2 different random locations. Place 1 breach on each of those locations <i>(see Breaches and Incursions)</i>."
+    },
+    {
+      "id": "check_players_random_breaches",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "scenario_data",
+        "scenario_data": "player_count",
+        "options": [
+          {
+            "numCondition": 2,
+            "steps": [
+              "choose_random_breaches_2"
+            ]
+          },
+          {
+            "numCondition": 3,
+            "steps": [
+              "choose_random_breaches_3"
+            ]
+          },
+          {
+            "numCondition": 4,
+            "steps": [
+              "choose_random_breaches_4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_random_breaches_2",
+      "bullet_type": "small",
+      "text": "Because there are 2 investigators in the game, perform this step twice."
+    },
+    {
+      "id": "choose_random_breaches_3",
+      "bullet_type": "small",
+      "text": "Because there are 3 investigators in the game, perform this step three times."
+    },
+    {
+      "id": "choose_random_breaches_4",
+      "bullet_type": "small",
+      "text": "Because there are 4 investigators in the game, perform this step three times, choosing 3 different random locations each time, instead of 2."
     },
     {
       "id": "encounter_deck",
@@ -64289,7 +65060,7 @@
 {
   "id": "the_secret_name",
   "scenario_name": "隱秘之名",
-  "full_name": "Scenario III: The Secret Name",
+  "full_name": "冒險 III: 隱秘之名",
   "header": "冒險III",
   "chaos_bag_card": "05120",
   "setup": [
@@ -64397,7 +65168,7 @@
         "name": "Intro 1"
       },
       "type": "story",
-      "text": "The upstairs study of the Silver Twilight Lodge is cozy, if a little cramped. The floor is covered in a plush carpet, and several comfortable sofas and small round tables fill the warmly lit room. Portraits of world-weary Lodge members line the walls around you. Carl Sanford, president of the Lodge, sits across from you, idly swirling a glass of Merlot in his wrinkled hand.\n“The Silver Twilight Lodge pursues knowledge that can help us elevate our understanding of the universe,” Mr. Sanford explains, pausing to take a sip from his wine. “The creature you encountered in Josef Meiger’s estate—its appearance is not the only peculiar happening in Arkham as of late. Tell me: have you experienced anything else recently that might be connected to these events?”"
+      "text": "樓上的書房雖然稍顯侷促，但卻很舒適。在這間温暖的房間裡，地板上铺著一塊绒毛地毯，還擺著幾張舒適的沙發和一張小圆桌。你周圍的墙上掛著一排肖像，是厭世的秘社成員。秘社的會長卡爾·桑福德坐在你對面，皺巴巴的手裡悠閑地轉著一杯梅洛葡萄酒。\n“银暮秘社追求的知識，能夠提高我們對於宇宙的理解，”桑福德解釋說，停下來小酌一口：“你在約瑟夫·梅吉爾的莊園遇到的那雙怪物——它的出現不是阿卡姆最近發生的唯一一件怪事。告訴我：你最近經歷的事情中，有沒有可能與這幾起事件有關的？”"
     },
     {
       "id": "choose_tell_lodge_about_witches",
@@ -64407,7 +65178,7 @@
         "choices": [
           {
             "id": "tell_lodge",
-            "text": "Tell the Lodge of the witches in the woods.",
+            "text": "把森林裡的女巫告訴秘社。",
             "steps": [
               "intro_2",
               "told_lodge_about_coven",
@@ -64416,7 +65187,7 @@
           },
           {
             "id": "lie",
-            "text": "Tell him you know of no possible connection. (You are lying.)",
+            "text": "回答他“没有”。（你在撒谎。）",
             "steps": [
               "intro_3",
               "check_mystic_investigator",
@@ -64434,7 +65205,7 @@
         "name": "Intro 2"
       },
       "type": "story",
-      "text": "You tell Mr. Sanford about your experience last week—waking up in the middle of the woods, the strange mist that weaved throughout the trees, the witches and their spell. He leans forward and listens intently as you explain the night’s strange events, your memories still somewhat of a haze. You conclude your story, and the elderly man considers your words. “Interesting,” he says at last. “I know of this coven. They are led by a witch named Anette Mason. Their magic is no trivial thing. They have passed down arcane secrets that can manipulate the energies of the universe. It is dangerous knowledge they possess—knowledge I believe they derived from a powerful witch who fled from Salem over two hundred years ago. Does the name ‘Keziah’ mean anything to you?”\nYou nod. Everyone in Arkham has at least some passing knowledge of the witch whose ghost supposedly haunts the old condemned “Witch House” in French Hill. Most believe her to be a work of fiction; a tall tale meant to scare young children away from the decrepit house. Mr. Sanford’s steely gaze and humorless tone makes it clear to you that this is not the case. “Perhaps this Anette is a true descendant of Keziah, or perhaps she is simply using her name. In any event, I believe these events are connected. To that end, I have a task for you, on behalf of the Silver Twilight Lodge.” Carl Sanford rises to his feet, using his cane more for show than for balance. You rise as well, ready to perform whatever duties are necessary to get to the bottom of this mystery.\n“We need as much information about this coven as we can obtain. If there is any place that will have these answers, it is the house where Keziah herself lived all those years ago.” You nod in agreement—there are too many questions you need answered. What spell were the witches casting that night in the woods? What is their motive? And what is their connection to the creature that kidnapped those four unfortunate souls? You shake Mr. Sanford’s hand and depart for the Witch House."
+      "text": "你告訴桑福德你上週的經歷——在樹林裡醒來、樹林裡彌漫著的怪霧、女巫和她們的法術。你說到那天夜裡發生的怪事時，你的記憶仍然有些模糊，他俯身專心聆聽。你說完之後，這位老人思考你說的話。“有趣。”最後他說道，“我知道這個集會。領導者是一位名叫安妮特·梅森的女巫。她們的魔法可不是鬧著玩的，她們所傳承的奥秘能夠操控宇宙的力量。這是一種危險的知識——我相信這源於两百多年前從塞勒姆逃出来的強大女巫。你聽過“凯夏”這個名字嗎？\n你點點頭。阿卡姆的每一個人多少都對那位女巫有所了解，據説她的幽靈常常在法蘭西山的“巫宅”出没。大多数人覺得她是虚構的；一個為了讓小孩子遠離那幢老房子而編出來的故事。桑福德先生冷冰冰的視線和毫無幽默感的語氣，讓你清楚地認識到事實並非如此。“安妮特可能是凯夏真正的後裔，或者她可能只是借用了凯夏的名頭。無論如何，我相信這些事件之間是有關聯的。為此，我代表銀暮秘社交给你一個任務。”卡爾桑·福德站起身來，他的手杖更像是用來炫耀的，而不是用來保持平衡。你也站了起來，不論任務是什麼，你勢在必行，定要把這謎團弄個水落石出。\n“我們需要知道更多關於女巫集會的信息。你要找的答案，一定就在凯夏多年前居住的那幢小屋裡。”你點頭表示同意——你心中有太多的問題需要答案。那晚女巫們在樹林裡施放的是什麼法術？她們的目的是什麼？和绑走四個可憐人的怪物有什麼關係？你與桑福德握手，出發前往巫宅。"
     },
     {
       "id": "told_lodge_about_coven",
@@ -64443,13 +65214,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "told_lodge_about_coven",
-          "text": "the investigators told the Lodge about the coven."
+          "text": "調查員將女巫集會的事情告訴社。"
         }
       ]
     },
     {
       "id": "add_cultist_token",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "將1個 [cultist] 標記 入混亂袋，持續到這個劇本結束.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -64466,7 +65237,7 @@
         "name": "Intro 3"
       },
       "type": "story",
-      "text": "You shake your head. You’re not sure if the events that took place in the woods are connected, or if they even really happened—some part of you still believes it was all a strange dream. Mr. Sanford examines you with a cold, piercing glare. You get the feeling that he is looking directly through you. “Very well,” he says. “Out of curiosity, does the name ‘Keziah Mason’ mean anything to you?”\nYou nod. Everyone in Arkham has at least some passing knowledge of the witch whose ghost supposedly haunts the old condemned “Witch House” in French Hill. Most believe her to be a work of fiction; a tall tale meant to scare young children away from the decrepit house. Mr. Sanford’s steely gaze and humorless tone makes it clear to you that this is not the case. He motions to an old, worn tome which lies on the table in front of you, open to a page filled with strange inscriptions and arcane glyphs. “I believe the creature you encountered in Josef ’s manor is tied to Keziah and the secret knowledge she possessed. See for yourself.” You pick up the tome and examine the markings on the page closely."
+      "text": "你搖搖頭。你不確定樹林裡發生的事情是否有關，也不確定它是不是真實發生的——你心底裡仍然覺得那一切不過是場怪夢。桑福德用冰冷而貌利的目光審視你。你感覺他看穿了你的一切。“好的。”他说道，“好奇問一句，你聽過‘凱夏·梅森’這個名字嗎？”\n你點點頭。阿卡姆的每一個人多少都對那位女巫有所了解，據説她的幽靈常常在法蘭西山的“巫宅”出没。大多数人覺得她是虚構的；為了讓小孩子遠雕那幢老房子而編出來的故事。桑福德先生冷冰冰的視線和毫無幽默感的語氣，讓你清楚地認識到事寶並非如此。他指向你面前桌上一本破舊的書籍，翻開的一頁上满是古怪文字和神秘圖形。“我想，你在約瑟夫莊園裡遇到的那隻怪物，舆凯夏和她的神秘知識有關。你自己來看看。”你拿起這本書，仔细查看上面所記戴的内容。"
     },
     {
       "id": "check_mystic_investigator",
@@ -64494,28 +65265,28 @@
     },
     {
       "id": "has_mystic",
-      "text": "Because at least one investigator is a Mystic ([mystic]):"
+      "text": "至少有一位調查員是潛修者 ([mystic]):"
     },
     {
       "id": "no_mystic",
-      "text": "Because no investigator is a Mystic ([mystic]):"
+      "text": "沒有調查員是潛修者 ([mystic]):"
     },
     {
       "id": "read_mystic_text",
       "border": true,
       "type": "story",
-      "text": "The markings on the tome form the basis for some kind of spell or ritual. It involves calling out to the dead – beseeching them for power, for secrets, or perhaps for aid. But who was beseeching whom, and for what purpose?"
+      "text": "書上記錄的是某種法術或儀式的原理。其呼唤死者——祈求他們的力量，探求未知的秘密，或者是為了救命。但是誰在祈求他們，又是出於什麼目的呢？"
     },
     {
       "id": "read_gibberish",
       "border": true,
       "type": "story",
-      "text": "It all looks like gibberish to you."
+      "text": "在你看來上面寫的都是些胡話。"
     },
     {
       "id": "intro_3_continued",
       "type": "story",
-      "text": "“To this end, I have a task for you, on behalf of the Silver Twilight Lodge.” Carl Sanford rises to his feet, using his cane more for show than for balance. You rise as well, ready to perform whatever duties are necessary to get to the bottom of this mystery.\n“We need as much information about this creature as we can obtain. If there is any place that will have these answers, it is the house where Keziah herself lived all those years ago.” You nod in agreement—there are too many questions you need answered. Perhaps this is connected to the spell the witches were casting that night in the woods, after all. If so, what is their motive? And what does this have to do with the creature that kidnapped those four unfortunate souls? You nod to Mr. Sanford and depart for the Witch House."
+      "text": "“為此，我代表銀暮秘社交给你一個任務。”卡爾桑·福德站起身來，他的手杖更像是用來炫耀的，而不是用來保持平衡。你也站了起來，不論任務是什麼，你勢在必行，定要把這謎團弄個水落石出。\n“我們需要知道更多關於那隻怪物的信息。你要找的答案，一定就在凯夏多年前居住的那幢小屋裡。”你點頭表示同意——你心中有太多的問題需要答案。或許歸根結底，這與那晚女巫們在樹林裡施放的是法術有關。如果真是這樣，她們的目的是什麼？她們和绑走四個可憐人的怪物有什麼關係？你對桑福德點點頭，出發前往巫宅。"
     },
     {
       "id": "hid_knowledge_of_coven",
@@ -64524,7 +65295,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "hid_knowledge_of_coven",
-          "text": "the investigators hid their knowledge of the coven."
+          "text": "調查員隱瞞了自己知道女巫集會一事。"
         }
       ]
     },
@@ -64535,7 +65306,7 @@
         "name": "Intro 4"
       },
       "type": "story",
-      "text": "After your confrontation with the president of the Silver Twilight Lodge, you travel to the manor of the Arkham Historical Society in Southside. You are positive that the events you experienced in the woods last week have something to do with the creature that kidnapped those four unfortunate souls. It’s just a hunch—a feeling that crawls along the back of your neck, imploring you to look away—but you’re sure that everything is connected. You’re just not sure how.\nAs you enter, one of the Historical Society’s many researchers greets you and asks if she can help in any way. You give a cursory description of the information you’re looking for; just enough that she can direct you where to look, but vague enough to leave your motives at the door. “I don’t know why you are researching such morbid affairs, but the records you are looking for should be in the library on the third floor,” the researcher says.\nYou thank her and head to the third floor, where you begin to study the history of witchcraft in Arkham. In the late 17th century, Arkham was one of the New England towns caught up in the hysteria of witch trials. Accusations of witchcraft spread like wildfire, and many of the accused were executed by hanging or burning, guilty and innocent alike. But there was one witch whose infamy rose above the rest, and whose mystical power was never in question: Keziah Mason.\nYou recognize the name as the ghost who supposedly haunts the old Witch House in French Hill. You had always thought her to be a work of fiction; a tall tale meant to scare young children away from the condemned house. But the Historical Society’s records indicate that Keziah was a real person: a powerful witch who had fled from Salem over two hundred years ago.\nYou are no stranger to real witchcraft. If Keziah Mason has anything to do with the coven you encountered in the woods, you must discover that connection. You leave the manor and head toward French Hill, where the Witch House awaits…"
+      "text": "你與织幕秘社的會長對峙過後，前往南區的阿卡姆歴史協會，你確信上週在樹林裡發生的事件，和绑走四個可憐人的怪物有關，你心裡有種感覺——它爬上你的後頸，哀求你轉開視線——但你知道一切都有關聯，你只是不知道那是怎樣的關聯。n你進入時，歷史協會的其中一名研究員向你問好，詢問你是否需要她的幫助。你粗略地說明要找的信息，詳细程度剛剛好能讓她告诉你到哪查找，避免暴露你的動機。“我不知道你有什麼在調查這麽恐怖的事情，但你要找的資料應該在圖書館的三樓。”研究員說道。\n你向她道谢，往三樓走去，開始研究巫術在阿卡姆的歷史。在17世纪末，阿卡姆跟其他新英格蘭城市一樣，陷入了女巫審判的狂潮。有關巫術的罪名如同野火一般蔓延，许多被冠上罪名的人被判以絞刑或火刑，不論是否無辜，一概論處。但有一個女巫，污名遠超衆人，拥有毋庸置疑的神秘力量：凯夏·梅森。\n你記得這固名字，她就是傅聞中的那個幽靈，出沒於法蘭西山古老的巫宅。你一直覺得她是虛構的；一個為了讓小孩子遠離那幢老房子而编出來的故事。但據歷史協會記載，凱夏是真實存在的人物：一位在兩百多年前逃出塞勒姆的強大女巫。\n你對真正的巫術並不陌生。如果凯夏·梅森和你在樹林裡遭遇的事情有関，你得找出兩者之間的聯係。你離開了歷史協會，前往法蘭西山，巫宅在那兒静候你的到來……"
     },
     {
       "id": "intro_5",
@@ -64544,7 +65315,7 @@
         "name": "Intro 5"
       },
       "type": "story",
-      "text": "Your lead regarding the Silver Twilight Lodge’s charity gala turned out to be a bust, but Anna Kaslow’s reading still plays out over and over in your mind. You cannot help but feel as though you are missing a piece of this puzzle—something you can use to avoid the dire fate the tarot reader described. Turning your attention back to the coven of witches you encountered in the woods last week, you travel to the manor of the Arkham Historical Society in Southside. Perhaps there is some piece of information you have overlooked that will shed light on their identity, or their motives.\nAs you enter, one of the Historical Society’s many researchers greets you and asks if she can help in any way. You give a cursory description of the information you’re looking for; just enough that she can direct you where to look, but vague enough to leave your motives at the door. “I don’t know why you are researching such morbid affairs, but the records you are looking for should be in the library on the third floor,” the researcher says.\nYou thank her and head to the third floor, where you begin to study the history of witchcraft in Arkham. In the late 17th century, Arkham was one of the New England towns caught up in the hysteria of witch trials. Accusations of witchcraft spread like wildfire, and many of the accused were executed by hanging or burning, guilty and innocent alike. But there was one witch whose infamy rose above the rest, and whose mystical power was never in question: Keziah Mason.\nYou recognize the name as the ghost who supposedly haunts the old Witch House in French Hill. You had always thought her to be a work of fiction; a tall tale meant to scare young children away from the condemned house. But the Historical Society’s records indicate that Keziah was a real person: a powerful witch who had fled from Salem over two hundred years ago.\nYou are no stranger to real witchcraft. If Keziah Mason has anything to do with the coven you encountered in the woods, you must discover that connection. You leave the manor and head toward French Hill, where the Witch House awaits…"
+      "text": "你追查有關根暮秘社慈善晚宴的線索以失敗告終，但安娜·卡斯洛解牌的畫面仍然在你腦海中重複上演。你忍不住覺得像是丢失了其中一片拼圖——能夠避免塔羅占卜師所說的凄慘命運的關键。你將注意力放回到上週在樹林裡遭遇的女巫集會，前往南區的阿卡姆歴史協會。或許這裡能找到你之前忽略掉的一些信息，能夠解釋她們的身份或者動機。\n你進入時，歷史協會的其中一名研究員向你問好，詢問你是否需要她的幫助。你粗略地說明要找的信息，詳细程度剛剛好能讓她告訴你到哪查找，避免暴露你的動機。“我不知道你為什麼在調查這麼恐怖的事情，但你要找的資料應該在圖書館的三樓。”研究員說道。\n你向她道谢，往三樓走去，開始研究巫術在阿卡姆的歷史。在十七世纪末，阿卡姆跟其他新英格蘭城市一樣，陷入了女巫審判的狂潮，有關巫街的罪名如同野火一般蔓延，許多被冠上罪名的人被判以絞刑或火刑，不論是否無辜，一般論處。但有一個女巫，污名遠超衆人，拥有毋庸置疑的神秘力量：凯夏·悔森。\n你記得這個名字，她就是傳間中的那個幽靈，出沒於法蘭西山古老的巫宅。你一直覺得她是虚構的：一個為了讓小孩子遠離那幢房子而編出來的故事。但據歷史協會記載，凱夏是真實存在的人物：一位在兩百多年前逃出塞勒姆的強大女巫。\n你對真正的巫術並不陌生。如果凯夏·梅森和你在樹林裡遭遇的事情有關，你得找出兩者之間的聯係。你離開了歷史協書，前往法蘭西山，巫宅在那兒静候你的到來……"
     },
     {
       "id": "intro_6",
@@ -64553,7 +65324,7 @@
         "name": "Intro 6"
       },
       "type": "story",
-      "text": "You pin the newspaper article up on your wall along with the rest of the evidence you’ve found. Whatever is happening in Josef Meiger’s manor, it’s getting out of hand. First, there were the four disappearances on the twenty-second, at the Silver Twilight Lodge’s annual charity gala. Now more have gone missing after a second event at the same estate. Is the Lodge somehow involved? Why else would they move this dinner to Mr. Meiger’s estate?\nThat’s not the only headline, either. Strange sightings have been occuring throughout the city: ghostly figures, an ashen mist, and a hunched, cloaked figure whose identity is hotly debated by the community. The name on the tips of everybody’s tongues is Keziah Mason—the ghost who supposedly haunts the old Witch House in French Hill. You had always thought her to be a work of fiction; a tall tale meant to scare young children away from the condemned house. But with all of the disappearances and odd sightings occuring throughout town, you’re not so sure. Perhaps there is something to this old ghost story, after all."
+      "text": "你將報纸上的文章盯在墙上，和你找到的其他證據放在一起。不管約瑟夫·梅吉爾的莊團裡發生的是什麼事情，那都超出了能夠控制的範圃。首先，在銀暮秘社的週年慈普晚宴上，二十秒内發生了四起失蹤事件。現在在同一座莊團裡舉辦的第二次活動後更多的人失蹤了。秘社是否參與其中？不然他們為什麼要將院宴改在梅吉爾先生的莊圃舉辦？\n不止這一件大新聞。整座城市裡出現了奇怪的景象：許多鬼影，一團灰霧，以及一個駝背的斗篷客，其身份在市民之中引起熱議。每個人嘴邊念叨的名字都是“凯夏·梅森”——傳聞中的幽靈，出沒於法蘭西山古老的巫宅。你一直覺得她是虚構的，一個為了讓小孩子遠離那幢老房子而编出來的故事。但隨著城裡出現請怪異的景象和一椿椿的失蹤事件，你現在不確定了。或許這個古者的鬼故事到底跟這一切還是有關聯的。"
     },
     {
       "id": "gather_encounter_sets",
@@ -64570,7 +65341,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put Moldy Halls, Walter Gilman’s Room, and the three Decrepit Door locations into play. Each investigator begins play in the Moldy Halls."
+      "text": "將發霉的走道、沃爾特·吉爾曼的房間，以及3張破舊房門地點左置入場。每位調查員從發霉的走道開始遊戲。"
     },
     {
       "id": "location_layout",
@@ -64598,19 +65369,19 @@
     },
     {
       "id": "create_unknown_place_deck",
-      "text": "Set the seven “Unknown Places” locations aside as a separate “Unknown Places Deck.” To do this, perform the following:",
+      "text": "將7張“未知地點”卡牌放在一邊，作為單獨的“未知地點牌堆”。要創建“未知地點牌堆”時按照以下步驟執行：",
       "bullets": [
         {
-          "text": "Shuffle the Unknown Places with Witch House Ruins on its revealed side and three other random Unknown Places locations together to form the bottom four cards of the Unknown Places Deck, unrevealed side faceup."
+          "text": "將已揭示面為“巫宅遺址”的“未知地點”和其他3張隨機的“未知地點”一同混洗，將這4張卡牌以未揭示面朝上，放在“未知地點牌堆”底部。"
         },
         {
-          "text": "Then, place the other three Unknown Places locations on top, in a random order. All seven cards of the Unknown Places deck should be showing only the unrevealed side, so the players do not know which of the Unknown Places is the Witch House Ruins."
+          "text": "隨後，將其他3張“未知地點”卡牌混洗後隨機擺放在牌堆頂部。“未知地點”牌堆的全部7張卡牌只以未揭示面朝上放置，使得玩家無法分辨哪張“未知地點”是“巫宅遺址”。"
         }
       ]
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Nahab, Site of the Sacrifice, Keziah’s Room, The Black Book, both copies of Strange Geometry, and both copies of Ghostly Presence."
+      "text": "將下列卡牌放在一邊，位於場外：那赫卜、獻祭場所、凱夏的房間、黑書、2張古怪圖形、2張鬼影驟現。"
     },
     {
       "id": "encounter_deck",
@@ -64639,7 +65410,7 @@
         "choices": [
           {
             "id": "brown_jenkin_defeated",
-            "text": "Was Brown Jenkin defeated at least once?",
+            "text": "調查員至少擊敗過布朗·詹金1次嗎？",
             "steps": [
               "brown_jenkin_xp"
             ]
@@ -64650,7 +65421,7 @@
     {
       "id": "brown_jenkin_xp",
       "bullet_type": "small",
-      "text": "Each investigator earns 1 bonus experience.",
+      "text": "每位調查員獲得1點獎勵經驗值。",
       "effects": [
         {
           "type": "earn_xp",
@@ -64667,7 +65438,7 @@
         "choices": [
           {
             "id": "nehab_defeated",
-            "text": "Was Nahab defeated at least once?",
+            "text": "調查員至少擊敗過那赫卜1次嗎？",
             "steps": [
               "nahab_xp"
             ]
@@ -64678,7 +65449,7 @@
     {
       "id": "nahab_xp",
       "bullet_type": "small",
-      "text": "Each investigator earns 1 bonus experience.",
+      "text": "每位調查員獲得1點獎勵經驗值。",
       "effects": [
         {
           "type": "earn_xp",
@@ -64690,7 +65461,7 @@
     {
       "id": "check_act_deck",
       "type": "input",
-      "text": "Check the act deck. What act was in play when the scenario ended?",
+      "text": "檢查場景牌堆。本場冒險結束時的場景是哪張？",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -64728,56 +65499,56 @@
           "type": "campaign_log",
           "section": "mementos",
           "id": "gilmans_journal",
-          "text": "Gilman's Journal"
+          "text": "吉爾曼的日記"
         }
       ]
     },
     {
       "id": "record_journal_and_formulae",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Gilman’s Journal</i> and <i>Keziah’s Formulae</i>.",
+      "text": "在你的冒險日誌“遺留記憶”下方記錄下<i>吉爾曼的日記</i>和<i>凱夏的公式</i>。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "gilmans_journal",
-          "text": "Gilman's Journal"
+          "text": "吉爾曼的日記"
         },
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "keziahs_formulae",
-          "text": "Keziah's Formulae"
+          "text": "凱夏的公式"
         }
       ]
     },
     {
       "id": "all_mementos",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Gilman’s Journal</i>, <i>Keziah’s Formulae</i>, and <i>Worn Crucifix</i>.",
+      "text": "在你的冒險日誌“遺留記憶”下方記錄下<i>吉爾曼的日記</i>和<i>凱夏的公式</i>和<i>磨損的十字架</i>。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "gilmans_journal",
-          "text": "Gilman's Journal"
+          "text": "吉爾曼的日記"
         },
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "keziahs_formulae",
-          "text": "Keziah's Formulae"
+          "text": "凱夏的公式"
         },
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "worn_crucific",
-          "text": "Worn Crucifix"
+          "text": "磨損的十字架"
         }
       ]
     },
     {
       "id": "choose_black_book_small_prompt",
       "bullet_type": "small",
-      "text": "Additionally, any one investigator may choose to add The Black Book story asset to their deck. This card does not count toward that investigator’s deck size. If an investigator chooses to include The Black Book in their deck, add 1 [skull] token to the chaos bag for the remainder of the campaign."
+      "text": "任意一位調查員可以選擇將“黑書”支援加入其牌組。這張卡牌不計入該調查員的卡牌張數。如果調查員選擇將“黑書”加入其牌組，將1個 [skull] 標記加入混亂袋，持續到這個劇本結束。"
     },
     {
       "id": "choose_black_book_small",
@@ -64788,7 +65559,7 @@
         "choices": [
           {
             "id": "keep_book",
-            "text": "Keep the Black Book?",
+            "text": "玩家保留了黑書嗎？",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -64799,7 +65570,8 @@
               {
                 "type": "add_card",
                 "investigator": "any",
-                "card": "05150"
+                "card": "05150",
+                "show_prompt": true
               }
             ]
           }
@@ -64808,7 +65580,7 @@
     },
     {
       "id": "choose_black_book_prompt",
-      "text": "Additionally, any one investigator may choose to add The Black Book story asset to their deck. This card does not count toward that investigator’s deck size. If an investigator chooses to include The Black Book in their deck, add 1 [skull] token to the chaos bag for the remainder of the campaign."
+      "text": "任意一位調查員可以選擇將“黑書”支援加入其牌組。這張卡牌不計入該調查員的卡牌張數。如果調查員選擇將“黑書”加入其牌組，將1個 [skull] 標記加入混亂袋，持續到這個劇本結束。"
     },
     {
       "id": "choose_black_book",
@@ -64818,7 +65590,7 @@
         "choices": [
           {
             "id": "keep_book",
-            "text": "Keep the Black Book?",
+            "text": "玩家保留了黑書嗎？",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -64829,7 +65601,8 @@
               {
                 "type": "add_card",
                 "investigator": "any",
-                "card": "05150"
+                "card": "05150",
+                "show_prompt": true
               }
             ]
           }
@@ -64842,7 +65615,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "confirm_text": "Each investigator earns 2 bonus experience as they gain insight into Arkham’s mysterious past.",
+        "confirm_text": "調查員得知阿卡姆神秘的往昔，每位調查員獲得2點獎勵經驗值。",
         "text": "勝利牌區：",
         "effects": [
           {
@@ -64874,7 +65647,7 @@
         "physical",
         "mental"
       ],
-      "text": "Flashes of vision spark your memory as you are dragged along the dirty wooden floor. A foul ceremony—the house—Nahab—a rhythmic chant—the spiraling black vortex—a dark revelry—the Primal Chaos—a child’s cries—a writhing tunnel inside your chest.",
+      "text": "你被拖行在骯髒的木質地板上，此時一些畫面閃通你的腦海。一場污穢的儀式——那幢房子——那赫卜——有節奏的脉唱——盤旋的黑色漩洞———黑暗狂歡——原初混沌——孩童的啼哭聲——你五臟六腑擰作一圈。",
       "steps": [
         "resolution_1"
       ]
@@ -64886,7 +65659,7 @@
         "name": "Resolution 1"
       },
       "title": "結局1",
-      "text": "You awaken in the muddy lawn at the base of some crooked wooden steps, the front door of the Witch House looming above you. Every fiber of your being is filled with regret. You know you have failed to prevent something awful, though you are not sure exactly what. The evidence of your eyes and ears suggests what you saw inside the Witch House was not concurrent with here and now. Regardless, you’ve learned several things about Keziah Mason, the witch who once inhabited this old and forsaken house. With your spirit diminished and your body aching, this information will have to suffice. You dare not venture back into this infernal house.",
+      "text": "你在泥濘的草地上醒來，面前是歪歪斜斜的木質樓梯，頂上赫然是巫宅的前門。悔恨充斥你身上每一個角落。你知道自己没能阻止某些可怕的事情發生，但你不確定那是什麼。據你雙眼所見、雙耳所聞來推测，你在巫宅裡所見的景象並不是此時此地發生的。不論如何，你知道了一些關於曾經住在這幢破舊老房子裡的女巫，凱夏·梅森的信息。就你虚弱的精神和痛苦的身躯而言，收集到這些信息已經心滿意足。你再也不敢冒險回到這幢可怕的屋子。",
       "steps": [
         "earn_xp",
         "check_brown_jenkin_xp",
@@ -64902,7 +65675,7 @@
         "name": "Resolution 2"
       },
       "title": "結局2",
-      "text": "When you come to, you are lying on the wooden floor of Walter Gilman’s room. The trappings of Keziah’s foul practices are nowhere to be found, nor is the fanged, bearded rat – Keziah’s “ familiar,” as you now understand. Just as you are about to rise to your feet, you spot something glinting in a corner of the room. Crawling underneath Gilman’s bed, you reach out and grab the trinket. It is a worn nickel crucifix, similar to the ones you saw in the loomfixer’s room. You shove it into your pocket before leaving the troubling room and its strange angles behind. You’ve learned as much as you care to uncover about Keziah Mason, the witch who once inhabited this old and forsaken house. As you step out into the chilly November air, you turn and take one last look at the decrepit Witch House. You fear that though you may never enter this place again, in your thoughts and your dreams, you will never truly leave it behind.",
+      "text": "你醒來時躺在沃爾特·吉爾曼房間的木地板上。凯夏的穢行所留下的印記、長著利齒和長鬚的老鼠都已無跡可尋，你正要站起來的時候，發現房間的角落裡有什麽柬西在閃光。你爬到吉爾曼的床下，伸手去抓那件飾品。那是一個磨損的镀镍十字架，跟你在織布機修理工房間裡看見的很相似。你将它塞進自己的口袋，随後雕開了這個令人不安、角度奇詭的房間。你知道了一些關於曾經住在這幢破舊老房子裡的女巫，凯夏·梅森的信息，一如你的預期。你步入十一月寒冷的空氣中，同時轉身最後看一眼這幢破舊的巫宅。健管可能再也不會踏入此地，你依然感到害怕，在你的頭腦和夢境中，你永遠都無法真正地離開它。",
       "steps": [
         "earn_xp_bonus_2",
         "all_mementos",
@@ -65082,21 +65855,38 @@
       "text": "If 3 or fewer <i>heretics were unleashed unto Arkham</i>…",
       "type": "branch",
       "condition": {
-        "type": "campaign_log_count",
-        "section": "campaign_notes",
-        "id": "heretics_released",
-        "max": 4,
-        "options": [
+        "type": "multi",
+        "conditions": [
           {
-            "numCondition": 4,
-            "steps": []
+            "type": "campaign_log_count",
+            "section": "campaign_notes",
+            "id": "heretics_released",
+            "max": 4,
+            "options": [
+              {
+                "numCondition": 0
+              },
+              {
+                "numCondition": 1
+              },
+              {
+                "numCondition": 2
+              },
+              {
+                "numCondition": 3
+              }
+            ]
           }
         ],
-        "defaultOption": {
-          "steps": [
-            "record_wisp_of_spectral_mist"
-          ]
-        }
+        "count": 1,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "record_wisp_of_spectral_mist"
+            ]
+          }
+        ]
       }
     },
     {
@@ -65151,7 +65941,8 @@
   "resolutions": [
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution\n(each investigator defeated)",
+      "title": "未達成任何結局",
+      "description": "所有調查員都被擊敗",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -65163,7 +65954,8 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "未達成任何結局(至少一位調查員撤退)",
+      "title": "未達成任何結局",
+      "description": "至少有一位調查員撤退",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -67156,8 +67948,7 @@
     },
     {
       "id": "check_gavriella_alive",
-      "bullet_type": "small",
-      "text": "<i>If Gavriella Mizrah is alive</i>, any one investigator may choose to add the Gavriella Mizrah asset to their deck. She does not count toward that investigator’s deck size. Otherwise, next to Gavriella Mizrah’s profile, record <i>Gavriella Mizrah is dead</i>.",
+      "text": "<i>If Gavriella Mizrah is alive</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -67202,25 +67993,45 @@
             ],
             "effects": [
               {
+                "type": "story_step",
+                "steps": [
+                  "add_gavriella_prompt"
+                ]
+              },
+              {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "05258"
+                "card": "05258",
+                "show_prompt": true
               }
             ]
           },
           {
             "boolCondition": false,
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "05046",
-                "id": "dead",
-                "text": "Gavriella Mizrah is dead."
-              }
+            "steps": [
+              "gavriella_is_dead"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "add_gavriella_prompt",
+      "bullet_type": "small",
+      "text": "Any one investigator may choose to add the Gavriella Mizrah asset to their deck. She does not count toward that investigator’s deck size."
+    },
+    {
+      "id": "gavriella_is_dead",
+      "bullet_type": "small",
+      "text": "Record that <i>Gavriella Mizrah is dead</i>.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "05046",
+          "id": "dead",
+          "text": "Gavriella Mizrah is dead."
+        }
+      ]
     },
     {
       "id": "check_jerome_in_game",
@@ -67241,8 +68052,7 @@
     },
     {
       "id": "check_jerome_alive",
-      "bullet_type": "small",
-      "text": "<i>If Jerome Davids is alive</i>, any one investigator may choose to add the Jerome Davids asset to their deck. He does not count toward that investigator’s deck size. Otherwise, next to Jerome Davids’s profile, record <i>Jerome Davids is dead</i>.",
+      "text": "<i>If Jerome Davids is alive</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -67287,25 +68097,45 @@
             ],
             "effects": [
               {
+                "type": "story_step",
+                "steps": [
+                  "add_jerome_prompt"
+                ]
+              },
+              {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "05259"
+                "card": "05259",
+                "show_prompt": true
               }
             ]
           },
           {
             "boolCondition": false,
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "05047",
-                "id": "dead",
-                "text": "Jerome Davids is dead."
-              }
+            "steps": [
+              "jerome_is_dead"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "add_jerome_prompt",
+      "bullet_type": "small",
+      "text": "Any one investigator may choose to add the Jerome Davids asset to their deck. He does not count toward that investigator’s deck size."
+    },
+    {
+      "id": "jerome_is_dead",
+      "text": "Record that <i>Jerome Davids is dead</i>.",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "05047",
+          "id": "dead",
+          "text": "Jerome Davids is dead."
+        }
+      ]
     },
     {
       "id": "check_penny_in_game",
@@ -67326,8 +68156,7 @@
     },
     {
       "id": "check_penny_alive",
-      "bullet_type": "small",
-      "text": "<i>If Penny White is alive</i>, any one investigator may choose to add the Penny White asset to their deck. She does not count toward that investigator’s deck size. Otherwise, next to Penny White’s profile, record <i>Penny White is dead</i>.",
+      "text": "<i>If Penny White is alive</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -67372,25 +68201,45 @@
             ],
             "effects": [
               {
+                "type": "story_step",
+                "steps": [
+                  "add_penny_prompt"
+                ]
+              },
+              {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "05260"
+                "card": "05260",
+                "show_prompt": true
               }
             ]
           },
           {
             "boolCondition": false,
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "05049",
-                "id": "dead",
-                "text": "Penny White is dead."
-              }
+            "steps": [
+              "penny_is_dead"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "add_penny_prompt",
+      "bullet_type": "small",
+      "text": "Any one investigator may choose to add the Penny White asset to their deck. She does not count toward that investigator’s deck size."
+    },
+    {
+      "id": "penny_is_dead",
+      "text": "Record that <i>Penny White is dead</i>.",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "05049",
+          "id": "dead",
+          "text": "Penny White is dead."
+        }
+      ]
     },
     {
       "id": "check_valentino_in_game",
@@ -67411,8 +68260,7 @@
     },
     {
       "id": "check_valentino_alive",
-      "bullet_type": "small",
-      "text": "<i>If Valentino Rivas is alive</i>, any one investigator may choose to add the Valentino Rivas asset to their deck. He does not count toward that investigator’s deck size. Otherwise, next to Valentino Rivas’s profile, record <i>Valentino Rivas</i> is dead.",
+      "text": "<i>If Valentino Rivas is alive</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -67457,25 +68305,45 @@
             ],
             "effects": [
               {
+                "type": "story_step",
+                "steps": [
+                  "add_valentino_prompt"
+                ]
+              },
+              {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "05261"
+                "card": "05261",
+                "show_prompt": true
               }
             ]
           },
           {
             "boolCondition": false,
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "05048",
-                "id": "dead",
-                "text": "Valentino Rivas is dead."
-              }
+            "steps": [
+              "valentino_is_dead"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "add_valentino_prompt",
+      "bullet_type": "small",
+      "text": "Any one investigator may choose to add the Valentino Rivas asset to their deck. He does not count toward that investigator’s deck size."
+    },
+    {
+      "id": "valentino_is_dead",
+      "text": "Record that <i>Valentino Rivas is dead</i>.",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "05048",
+          "id": "dead",
+          "text": "Valentino Rivas is dead."
+        }
+      ]
     },
     {
       "id": "maybe_record_gavriella_alive",
@@ -71851,7 +72719,7 @@
       "text": "Put City of the Moon-Beasts, Temple of the Moon Lizard, Moon-Forest, and The Dark Crater into play.",
       "bullets": [
         {
-          "text": "將其他地點卡放在一邊，位於遊戲場外。"
+          "text": "將其他地點卡放在一邊，位於場外。"
         }
       ]
     },
@@ -72649,7 +73517,7 @@
     },
     {
       "id": "set_aside_locations",
-      "text": "將其他地點卡放在一邊，位於遊戲場外。"
+      "text": "將其他地點卡放在一邊，位於場外。"
     },
     {
       "id": "set_aside_cards",
@@ -73205,7 +74073,7 @@
     {
       "id": "no_resolution_resigned",
       "title": "未達成任何結局",
-      "description": "At least one investigator resigned",
+      "description": "至少有一位調查員撤退",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -73434,7 +74302,8 @@
                 }
               ]
             },
-            "text": "Scenario Interlude: Grand Design",
+            "text": "Scenario Interlude",
+            "description": "Grand Design",
             "steps": [
               "grand_design_1",
               "reveal_onyx_castle",
@@ -73466,6 +74335,7 @@
         "name": "Grand Design 1"
       },
       "type": "story",
+      "title": "Grand Design",
       "text": "Higher and higher, you scale the mountains far to the north. Pale light shines from atop a great black peak piercing the vibrant firmament, and you know that you approach the end of your quest. You spend untold hours ascending the snow-covered slopes until finally you reach the forbidden steps leading to the castle’s great hall. The castle stands astride a precipice that overlooks the entire continent and the ocean beyond. It is a majestic sight. Above, countless tenebrous towers loom, swathed in a vortex of snow and hail. You break a trail through the crusted snow before the castle, and it soon gives way to smooth, polished onyx. The biting wind quiets to a whistle. You are bathed in a prodigious darkness that fills the vast space. Soon there is nothing but the echoing of your footsteps on the onyx floor and the quiet, lonely stillness of the great hall. Though you have crossed no doorway, you realize now where you stand: inside the halls of the Great Ones. You expected to be met by guards, servants of the gods, or perhaps even those powerful beings themselves, but you are met only by loneliness and foreboding as chilling as the piercing winds outside. You continue forward until at last you reach the end of the hall. Here, flanked by smooth onyx pillars, you find…nothing.\nThere are no gods here. This place is long abandoned.\nVirgil is agape. “I…I don’t understand.”"
     },
     {
@@ -77160,7 +78030,7 @@
           "text": "Each investigator begins play at the Vaults of Zin."
         },
         {
-          "text": "將其他地點卡放在一邊，位於遊戲場外。"
+          "text": "將其他地點卡放在一邊，位於場外。"
         }
       ]
     },
@@ -77995,7 +78865,7 @@
         "name": "No Resolution (Resigned)"
       },
       "title": "未達成任何結局",
-      "description": "At least one investigator resigned",
+      "description": "至少有一位調查員撤退",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -78305,7 +79175,8 @@
                 }
               ]
             },
-            "text": "Scenario Interlude: The Spider Queen",
+            "text": "Scenario Interlude",
+            "description": "The Spider Queen",
             "steps": [
               "spider_queen_1",
               "check_campaign_log",
@@ -78337,6 +79208,7 @@
         "name": "The Spider Queen 1"
       },
       "type": "story",
+      "title": "The Spider Queen",
       "text": "You climb a precipice of stone and behold the enormity of the spider's bridge and the <i>thing</i> astride it: Atlach-Nacha, god of spiders, accompanied by its horde of weavers. The many-legged monstrosities continuously intertwine strands of cosmic web, toiling endlessly with nightmarish fervor. As the awful creatures weave each thread, you feel reality and dreams distort, collide, and crash together. In the distance, waves of dream break upon the rocks of reality, and reality collapses upon itself into the surging, amorphous dream. You can barely comprehend the strange, shifting vistas. A sticky web hangs off the side of your vantage point, like a silken ladder leading down to your doom."
     },
     {
@@ -86516,7 +87388,7 @@
     },
     {
       "id": "add_cultist",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "將1個 [cultist] 標記 入混亂袋，持續到這個劇本結束.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -88922,7 +89794,7 @@
           "text": "From among the Tidal Tunnel locations, remove the 2 Underground River locations from the game."
         },
         {
-          "text": "將其他地點卡放在一邊，位於遊戲場外。"
+          "text": "將其他地點卡放在一邊，位於場外。"
         }
       ]
     },
@@ -90119,7 +90991,7 @@
     },
     {
       "id": "purple_key_token",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "將1個 [cultist] 標記 入混亂袋，持續到這個劇本結束.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -92890,7 +93762,7 @@
           "text": "Each investigator begins play at the Gateway to Y'ha-nthlei."
         },
         {
-          "text": "將其他地點卡放在一邊，位於遊戲場外。"
+          "text": "將其他地點卡放在一邊，位於場外。"
         }
       ]
     },
@@ -94854,7 +95726,7 @@
     },
     {
       "id": "add_cultist",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "將1個 [cultist] 標記 入混亂袋，持續到這個劇本結束.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -96000,7 +96872,8 @@
                 }
               ]
             },
-            "text": "Scenario Interlude: The Accusation",
+            "text": "Scenario Interlude",
+            "description": "The Accusation",
             "steps": [
               "accusation_story",
               "ask_suspect",
@@ -103669,7 +104542,7 @@
     },
     {
       "id": "add_1_cultist",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "將1個 [cultist] 標記 入混亂袋，持續到這個劇本結束.",
       "effects": [
         {
           "type": "add_chaos_token",

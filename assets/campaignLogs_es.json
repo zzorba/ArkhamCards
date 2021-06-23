@@ -1233,6 +1233,38 @@
             "text": "dummy"
           },
           {
+            "id": "campaign_reading_chariot_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_hanged_man_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_hermit_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_hierophant_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_justice_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_lovers_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_temperance_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_wheel_of_fortune_reversed",
+            "text": "dummy"
+          },
+          {
             "id": "left_column",
             "text": "dummy"
           },
@@ -1717,19 +1749,19 @@
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "el Excelsior se cobra otra víctima."
+            "text": "the Excelsior claims another victim."
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "el Excelsior está tranquilo, por ahora."
+            "text": "the Excelsior is quiet, for now."
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "los investigadores huyeron de la escena del crimen."
+            "text": "the investigators fled the scene of the crime."
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "los asesinatos continúan sin resolver."
+            "text": "the murders continue, unsolved."
           },
           {
             "id": "ritual_at_sea_was_completed",

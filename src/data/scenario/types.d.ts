@@ -240,6 +240,7 @@ export interface AddCardEffect {
   card: string;
   ignore_deck_limit?: boolean;
   non_story?: boolean;
+  show_prompt?: boolean;
 }
 export interface AddWeaknessEffect {
   type: "add_weakness";
@@ -668,6 +669,7 @@ export interface InvestigatorConditionalChoice {
   id: string;
   text: string;
   selected_text?: string;
+  selected_text_feminine?: string;
   description?: string;
   condition?: InvestigatorChoiceCondition;
   border?: boolean;
@@ -711,6 +713,8 @@ export interface ChecklistInput {
   type: "checklist";
   choices: BinaryConditionalChoice[];
   text: string;
+  min?: number;
+  max?: number;
 }
 export interface CounterInput {
   type: "counter";

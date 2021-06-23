@@ -1,6 +1,5 @@
-import LanguageContext from '@lib/i18n/LanguageContext';
 import { StyleContextType } from '@styles/StyleContext';
-import React, { useContext } from 'react';
+import React from 'react';
 import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
 import { WithChildren, State } from './types';

@@ -54,7 +54,11 @@ function TitleRow({ title, titleNode, titleStyle, titleButton, editable, bulletT
     if (bulletType) {
       return (
         <SetupStepWrapper bulletType={bulletType} noPadding={editable}>
-          <View style={[styles.row, (elementCount >= 2) ? styles.spaceBetween : undefined]}>
+          <View style={[
+            styles.row,
+            (elementCount >= 2) ? styles.spaceBetween : undefined,
+            bulletType === 'small' ? space.paddingSideS : undefined,
+          ]}>
             { titleText }
             { !!titleNode && titleNode }
             { !!titleButton && titleButton }

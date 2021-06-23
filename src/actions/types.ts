@@ -384,6 +384,7 @@ export type CampaignCycleCode =
   typeof TFA |
   typeof RTTFA |
   typeof TCU |
+  typeof RTTCU |
   typeof TDE |
   typeof TDEA |
   typeof TDEB |
@@ -402,6 +403,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TFA,
   RTTFA,
   TCU,
+  // RTTCU,
   TDE,
   TDEA,
   TDEB,
@@ -422,6 +424,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   RTDWL,
   RTPTC,
   RTTFA,
+  RTTCU,
   TDE,
   TDEA,
   TDEB,

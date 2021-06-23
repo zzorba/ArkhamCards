@@ -7,10 +7,11 @@ interface Props {
   index: number;
   icon: string;
   text: string;
+  description?: string,
   onPress: (index: number) => void;
 }
 
-export default function BranchButton({ index, text, icon, onPress }: Props) {
+export default function BranchButton({ index, text, description, icon, onPress }: Props) {
   const handleOnPress = useCallback(() => {
     onPress(index);
   }, [index, onPress]);
@@ -18,6 +19,7 @@ export default function BranchButton({ index, text, icon, onPress }: Props) {
     <DeckButton
       color="dark_gray"
       title={text}
+      detail={description}
       encounterIcon={icon}
       onPress={handleOnPress}
       bottomMargin={s}

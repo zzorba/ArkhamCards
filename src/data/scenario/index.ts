@@ -51,6 +51,7 @@ export interface DisplayChoice {
   text?: string;
   tokens?: ChaosToken[];
   selected_text?: string;
+  selected_feminine_text?: string;
   icon?: ChoiceIcon;
   masculine_text?: string;
   feminine_text?: string;

@@ -32,7 +32,7 @@ import { conditionResult } from '@data/scenario/conditionHelper';
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, PLAY_SCENARIO_STEP_ID, LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
+import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
 
 export default class ScenarioStep {
   step: Step;
@@ -516,6 +516,7 @@ export default class ScenarioStep {
       }
       case 'play_scenario': {
         const choice = scenarioState.choice(step.id);
+        const base_step_id = step.id.split('#')[0];
         if (choice === undefined) {
           return undefined;
         }
@@ -529,7 +530,7 @@ export default class ScenarioStep {
               step.id,
               [
                 `${fixedStep}#${nextIteration}`,
-                `${PLAY_SCENARIO_STEP_ID}#${nextIteration}`,
+                `${base_step_id}#${nextIteration}`,
                 ...this.remainingStepIds,
               ],
               [],
@@ -575,7 +576,7 @@ export default class ScenarioStep {
                     step.id,
                     [
                       ...choiceSteps,
-                      `${PLAY_SCENARIO_STEP_ID}#${nextIteration}`,
+                      `${base_step_id}#${nextIteration}`,
                       ...this.remainingStepIds,
                     ],
                     [
@@ -593,7 +594,7 @@ export default class ScenarioStep {
               step.id,
               [
                 `$campaign_log#${nextIteration}`,
-                `${PLAY_SCENARIO_STEP_ID}#${nextIteration}`,
+                `${base_step_id}#${nextIteration}`,
                 ...this.remainingStepIds,
               ],
               [],
@@ -613,7 +614,7 @@ export default class ScenarioStep {
               step.id,
               [
                 ...branchSteps,
-                `${PLAY_SCENARIO_STEP_ID}#${nextIteration}`,
+                `${base_step_id}#${nextIteration}`,
                 ...this.remainingStepIds,
               ],
               [{

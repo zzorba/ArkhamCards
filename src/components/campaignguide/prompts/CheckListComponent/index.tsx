@@ -18,6 +18,7 @@ import InputWrapper from '../InputWrapper';
 export interface ListItem {
   code: string;
   name: string;
+  description?: string;
   color?: string;
   investigator?: Card;
   investigatorButton?: React.ReactNode;

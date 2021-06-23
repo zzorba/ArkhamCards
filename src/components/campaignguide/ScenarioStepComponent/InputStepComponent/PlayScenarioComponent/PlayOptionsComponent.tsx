@@ -21,7 +21,6 @@ import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext
 import { calculateBinaryConditionResult } from '@data/scenario/inputHelper';
 import StyleContext from '@styles/StyleContext';
 import BorderWrapper from '@components/campaignguide/BorderWrapper';
-import { vi } from 'date-fns/locale';
 
 
 interface Props {
@@ -86,6 +85,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
     guided: true,
     scenarioId: processedScenario.id.scenarioId,
     customEditPressed: chaosBagIndex !== undefined ? editChaosBagPressed : undefined,
+    standalone: !!campaign.standaloneId,
   });
   setChaosBagDialogVisibleRef.current = setChaosBagDialogVisible;
 
@@ -185,7 +185,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
             bottomMargin={s}
           />
         ) }
-        { !!find(branches, b => b.visible) && (
+        { !!(find(branches, b => b.visible) || input.campaign_log?.length) && (
           <>
             <Text style={[space.paddingS, typography.cardName, typography.center, typography.italic, typography.light]}>
               { t`Scenario effects` }
@@ -211,6 +211,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
                     key={index}
                     index={index}
                     text={choice.text}
+                    description={choice.description}
                     onPress={branchPress}
                   />
                 );

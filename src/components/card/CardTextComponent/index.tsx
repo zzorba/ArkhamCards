@@ -17,6 +17,7 @@ import ItalicHtmlTagNode from './ItalicHtmlTagNode';
 import EmphasisHtmlTagNode from './EmphasisHtmlTagNode';
 import HrTagNode from './HrTagNode';
 import ParagraphHtmlTagNode from './ParagraphHtmlTagNode';
+import RightNode from './RightNode';
 import UnderlineHtmlTagNode from './UnderlineHtmlTagNode';
 import StrikethroughTextNode from './StrikethroughTextNode';
 import SmallCapsNode from './SmallCapsNode';
@@ -175,13 +176,25 @@ function BoldHtmlTagRule(usePingFang: boolean, style: StyleContextType, sizeScal
 
 const CenterHtmlTagRule: MarkdownRule<WithChildren, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<center>([\\s\\S]+?)<\\/center>')),
-  order: BASE_ORDER + 2,
+  order: BASE_ORDER + 3,
   parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
     return {
       children: nestedParse(capture[1], state),
     };
   },
   render: CenterNode,
+};
+
+
+const RightHtmlTagRule: MarkdownRule<WithChildren, State> = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<right>(([\\s\\S]+?))<\\/right>')),
+  order: BASE_ORDER + 3,
+  parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+    return {
+      children: nestedParse(capture[1], state),
+    };
+  },
+  render: RightNode,
 };
 
 function UnderlineHtmlTagRule(usePingFang: boolean, style: StyleContextType): MarkdownRule<WithText, State> {
@@ -261,6 +274,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
       iTag: ItalicHtmlTagRule(usePingFang, context),
       smallcapsTag: SmallCapsHtmlTagRule(context),
       center: CenterHtmlTagRule,
+      right: RightHtmlTagRule,
       arkhamIcon: ArkhamIconRule(context, sizeScale, !!onLinkPress),
       arkhamIconSkillTestRule: ArkhamIconSkillTextRule(context, sizeScale),
     };
@@ -275,7 +289,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
       marginTop: 4,
       marginBottom: 4,
       color: context.colors.darkText,
-      textAlign: context.justifyContent ? 'justify' : 'left',
+      textAlign: context.justifyContent ? 'justify' : undefined,
     };
   }, [context, usePingFang, sizeScale]);
   // Text that has hyperlinks uses a different style for the icons.
@@ -293,7 +307,6 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
         link: {
           color: context.colors.navButton,
         },
-        paragraph: textStyle,
         tableHeaderCell: {
           minHeight: 40,
         },
@@ -314,6 +327,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
           padding: 8,
           margin: 0,
         },
+        paragraph: textStyle,
         tableCellContent: {
           ...context.typography.small,
           fontFamily: 'Alegreya',

@@ -52,7 +52,6 @@ const typePolicies: TypedTypePolicies = {
           if (deepEqual(existing, incoming)) {
             return existing;
           }
-          console.log({ existing, incoming });
           return incoming;
         },
       },

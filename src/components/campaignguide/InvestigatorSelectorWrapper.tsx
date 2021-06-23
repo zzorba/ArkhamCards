@@ -33,6 +33,7 @@ function getInvestigatorChoices(
 
 interface Props<T> {
   id: string;
+  title?: string;
   investigator: InvestigatorSelector;
   optional?: boolean;
   input?: string[];
@@ -43,6 +44,7 @@ interface Props<T> {
 
 export default function InvestigatorSelectorWrapper<T = undefined>({
   id,
+  title,
   investigator,
   optional,
   input,
@@ -126,7 +128,9 @@ export default function InvestigatorSelectorWrapper<T = undefined>({
     return (
       <ChooseInvestigatorPrompt
         id={`${id}_investigator`}
-        title={t`Choose Investigator`}
+        title={title || t`Choose Investigator`}
+        titleStyle={title ? 'setup' : 'header'}
+        bulletType={title ? 'small' : undefined}
         choiceId="chosen_investigator"
         investigators={getInvestigatorChoices(investigator, scenarioInvestigators, campaignLog)}
         defaultLabel={t`No one`}

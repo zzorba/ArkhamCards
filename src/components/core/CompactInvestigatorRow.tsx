@@ -12,7 +12,7 @@ import { useEffectUpdate } from './hooks';
 import Collapsible from 'react-native-collapsible';
 
 interface Props {
-  investigator: Card;
+  investigator?: Card;
   eliminated?: boolean;
   yithian?: boolean;
   open?: boolean;
@@ -30,7 +30,7 @@ export default function CompactInvestigatorRow({ color, eliminated, description,
     <RoundedFactionHeader
       transparent={transparent}
       eliminated={eliminated}
-      faction={investigator.factionCode()}
+      faction={investigator?.factionCode() || 'neutral'}
       fullRound={!open}
       width={width}
       color={color}
@@ -51,10 +51,10 @@ export default function CompactInvestigatorRow({ color, eliminated, description,
             numberOfLines={1}
             ellipsizeMode="tail"
           >
-            { investigator.name }
+            { investigator?.name }
           </Text>
           <Text style={[typography.cardTraits, !transparent ? typography.white : { color: colors.D20 }, eliminated ? typography.strike : undefined]}>
-            { description !== undefined ? description : investigator.subname }
+            { description !== undefined ? description : investigator?.subname }
           </Text>
         </View>
         { !!children && <View style={[styles.rightRow, space.paddingLeftS]}>{ children }</View> }
