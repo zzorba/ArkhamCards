@@ -40,7 +40,7 @@ function CardSection({ code, section, campaignGuide }: CardSectionProps) {
   const [card] = useSingleCard(code, 'encounter');
   const eliminated = !!section?.sectionCrossedOut;
   const header = useMemo(() => {
-    return <CompactInvestigatorRow investigator={card} eliminated={eliminated} width={width} open={!eliminated} />
+    return <CompactInvestigatorRow transparent investigator={card} eliminated={eliminated} width={width} open={!eliminated} />
   }, [card, eliminated, width]);
   if (eliminated) {
     return header;
@@ -51,7 +51,7 @@ function CardSection({ code, section, campaignGuide }: CardSectionProps) {
       faction="neutral"
     >
       { !!section && (
-        <View style={[space.paddingTopS, space.paddingSideS]}>
+        <View style={[space.paddingTopM, space.paddingSideS]}>
           <CampaignLogSectionComponent
             sectionId={code}
             campaignGuide={campaignGuide}
