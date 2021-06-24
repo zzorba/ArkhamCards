@@ -134,6 +134,7 @@ export default function ActionButton({ color, loading, onPress, title, leftIcon,
       onPress={onPress}
       rippleColor={getRippleColor(color, colors)}
       rippleSize={48}
+      accessibilityLabel={title}
     >
       { content }
     </Ripple>
