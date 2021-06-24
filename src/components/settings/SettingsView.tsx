@@ -147,7 +147,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
   const rulesPressed = useCallback(() => {
     navButtonPressed('Rules', t`Rules`);
   }, [navButtonPressed]);
-  const [alertDialog, showAlert] = useAlertDialog();
+  const [alertDialog, showAlert] = useAlertDialog(true);
   return (
     <>
       <SafeAreaView style={[styles.container, backgroundStyle]}>

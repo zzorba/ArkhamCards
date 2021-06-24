@@ -67,6 +67,7 @@ interface Props {
   topMargin?: number;
   disabled?: boolean;
   noShadow?: boolean;
+  numberOfLines?: number;
 }
 
 const ICON_SIZE: { [icon: string]: number | undefined } = {
@@ -124,6 +125,7 @@ export default function DeckButton({
   loading,
   bottomMargin,
   noShadow,
+  numberOfLines,
 }: Props) {
   const { colors, fontScale, typography, shadow } = useContext(StyleContext);
   const backgroundColors = {
@@ -238,9 +240,20 @@ export default function DeckButton({
           </View>
         ) }
         <View style={[styles.column, space.paddingRightS, !icon ? space.paddingLeftS : undefined, shrink ? undefined : styles.grow, space.paddingTopXs]}>
-          <Text numberOfLines={1} ellipsizeMode="clip" style={[detail ? typography.large : typography.cardName, { minHeight: topTextHeight, color: disabled ? disabledTextColor[color] : textColor[color] }]}>
-            { title }
-          </Text>
+          <View style={styles.row}>
+            <Text
+              numberOfLines={1}
+              ellipsizeMode="tail"
+              adjustsFontSizeToFit
+              style={[
+                { textAlignVertical: 'center' },
+                detail ? typography.large : typography.cardName,
+                { minHeight: topTextHeight, color: disabled ? disabledTextColor[color] : textColor[color] },
+              ]}
+            >
+              { title }
+            </Text>
+          </View>
           { !!detail && (
             <Text style={[typography.smallButtonLabel, { marginTop: 1, color: detailTextColor[color] }]} numberOfLines={2}>
               { detail }

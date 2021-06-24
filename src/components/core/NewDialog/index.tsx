@@ -12,6 +12,7 @@ import AppIcon from '@icons/AppIcon';
 import { NOTCH_BOTTOM_PADDING, TINY_PHONE } from '@styles/sizes';
 import Card from '@data/types/Card';
 import CompactInvestigatorRow from '../CompactInvestigatorRow';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   title: string;
@@ -37,8 +38,9 @@ function NewDialog({
   avoidKeyboard,
   forceVerticalButtons,
 }: Props) {
+  const { lang } = useContext(LanguageContext);
   const { backgroundStyle, darkMode, colors, shadow, typography, width, height } = useContext(StyleContext);
-  const verticalButtons = forceVerticalButtons || buttons.length > 2 || TINY_PHONE;
+  const verticalButtons = forceVerticalButtons || buttons.length > 2 || TINY_PHONE || lang === 'de';
   const dismissButton = useMemo(() => {
     if (!dismissable) {
       return null;
