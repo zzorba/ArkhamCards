@@ -476,6 +476,10 @@ function getDeckChanges(
             }
             return xpCost;
           }
+          if (addedCard.permanent && !removedCard.permanent) {
+            // If we added in a permanent upgrade, let swaps happen for free.
+            extraDeckSize++;
+          }
           // Upgrade of the same name, so you only pay the delta.
           return (computeXp(addedCard) - computeXp(removedCard));
         }

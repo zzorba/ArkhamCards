@@ -24,7 +24,6 @@ export default function BranchButton({ index, text, description, icon, onPress }
       onPress={handleOnPress}
       bottomMargin={s}
       noShadow
-      numberOfLines={2}
     />
   );
 }

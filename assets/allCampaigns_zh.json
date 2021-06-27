@@ -7867,17 +7867,24 @@
           {
             "id": "steal",
             "text": "有任何人“從售票處偷竊”嗎？",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "police_are_suspicious",
-                "text": "警方對你抱有懷疑。"
-              }
+            "steps": [
+              "police_are_suspicious"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "police_are_suspicious",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "police_are_suspicious",
+          "text": "警方對你抱有懷疑。"
+        }
+      ]
     },
     {
       "id": "wise_not_to_warn",
@@ -21363,17 +21370,24 @@
           {
             "id": "steal",
             "text": "有任何人“從售票處偷竊”嗎？",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "police_are_suspicious",
-                "text": "警方對你抱有懷疑。"
-              }
+            "steps": [
+              "police_are_suspicious"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "police_are_suspicious",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "police_are_suspicious",
+          "text": "警方對你抱有懷疑。"
+        }
+      ]
     },
     {
       "id": "wise_not_to_warn",
@@ -47771,6 +47785,7 @@
     "read_or_die",
     "all_or_nothing",
     "bad_blood",
+    "by_the_book",
     "in_the_labyrinths_of_lunacy",
     "war_of_the_outer_gods",
     "meddling_of_meowlathotep",
@@ -50528,6 +50543,920 @@
         "maybe_earn_asset_85031",
         "maybe_earn_asset_85032",
         "earn_xp",
+        "$upgrade_decks"
+      ]
+    }
+  ]
+},
+{
+  "id": "by_the_book",
+  "scenario_name": "照章行事(暫譯)",
+  "full_name": "照章行事(暫譯)",
+  "header": "",
+  "chaos_bag_card": "90032",
+  "xp_cost": 1,
+  "side_scenario_type": "challenge",
+  "challenge": {
+    "investigator": "01001",
+    "xp_cost": 2,
+    "requirements": []
+  },
+  "standalone_setup": [
+    "choose_difficulty",
+    "intro",
+    "gather_encounter_sets",
+    "new_scenario_card",
+    "new_act_agenda",
+    "remove_misc_cards",
+    "setup_locations",
+    "location_layout",
+    "setup_cultist_deck",
+    "setup_cultist_deck_alt",
+    "setup_cultist_deck_alt_continued",
+    "roland_clue",
+    "encounter_deck",
+    "$play_scenario"
+  ],
+  "setup": [
+    "xp_cost",
+    "intro",
+    "gather_encounter_sets",
+    "new_scenario_card",
+    "new_act_agenda",
+    "remove_misc_cards",
+    "setup_locations",
+    "location_layout",
+    "location_layout",
+    "setup_cultist_deck",
+    "setup_cultist_deck_alt",
+    "setup_cultist_deck_alt_continued",
+    "roland_clue",
+    "encounter_deck",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "choose_difficulty",
+      "text": "選擇難度等級。",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "default_choice": "standard",
+        "choices": [
+          {
+            "id": "easy",
+            "text": "簡單",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "easy"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "+1",
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "standard",
+            "text": "普通",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hard",
+            "text": "困難",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "expert",
+            "text": "專家",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "expert"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "-1",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "-7",
+                  "-8",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "xp_cost",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": -1
+        },
+        {
+          "type": "earn_xp",
+          "investigator": "$fixed_investigator",
+          "fixed_investigator": "01001",
+          "bonus": -2
+        }
+      ]
+    },
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "繁文縟節簡直令人窒息。自從你來到阿卡姆後，你的案件變得越來越難處理。你以為你會對付走私者和暴徒，而不是虛構的怪物。但是，隨著這些荒謬案件懸而未決的時間拖得越長，你漸漸開始覺得這些案件沒這麼荒謬了。也許這意味著怪物不是憑空想像出來的。\n當局有無數的指導方針，能夠處理各種案件，但是出奇地缺了獻祭人類的方面。所以，當你被通知在黑暗洞窟裡發現了屍體時，你不太確定該怎麼開始。詢問當地人和死者的親人沒有什麼結果。洞穴中留下的證據也沒甚麼價值——供品和文字宣稱說這場獻祭是贈禮，還描繪了一棵怪物般的樹。所以你只能盡你所擅長的事情：嗅出線索，尋找連接所有死亡事件的共通點。\n所有受害者的交集是一名男子：國會議員戴米恩·格雷先生。他不是阿卡姆本地人，在本地沒有親戚或家人，鎮上也沒有需要他出席的會議。然而，過去幾個月他一直待在阿卡姆，目的不明。而且他與每個受害者相連的分隔度都不超過兩度，這對你來說相當蹊撬。儘管國會議員沒有受到任何威脅，但仍然有位警察——費希爾——全天候貼身護送格雷先生在鎮上的行動。\n您得盡快解開這個謎團的真相。現在你到處都看到那棵該死的樹。每天都有更多的人失蹤，甚至有人聲稱看到了像山羊一樣的怪物在小巷裡徘徊。但如果格雷先生真的是這件事的幕後黑手，你就得十分小心。要是錯誤地指控一個政客，你的職業生涯肯定就完了。該是時候盡你的職責了：挖掘證據、找出真相，把罪魁禍首帶回來審問。每個細節都必須一絲不苟。"
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "冒險設置",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "by_the_book",
+        "arkham",
+        "agents_of_shub",
+        "cultists",
+        "chilling_cold",
+        "pentagram",
+        "nightgaunts",
+        "striking_fear"
+      ]
+    },
+    {
+      "id": "new_scenario_card",
+      "text": "將<i>午夜假面</i>遭遇組之中原本的冒險參考卡移出遊戲。使用下載的<i>照章行事</i>遭遇組中提供的新冒險參考卡牌。"
+    },
+    {
+      "id": "new_act_agenda",
+      "text": "將<i>午夜假面</i>遭遇組中原本的場景與密謀卡牌移出遊戲。僅用下載的<i>照章行事</i>遭遇組中提供的新場景與密謀卡牌構建場景和密謀牌堆。"
+    },
+    {
+      "id": "remove_misc_cards",
+      "text": "將你的房子地點卡和全部2張的神秘咏唱詭計卡從遊戲中移除。這些卡牌不會在挑戰冒險中使用。"
+    },
+    {
+      "id": "setup_locations",
+      "text": "將2張商業區和2張南住宅區中，各隨機選擇一張放置入場，將另一張同名卡牌移出遊戲。然後。將北工業區、東住宅區、河岸城、聖瑪麗醫院、墓地、米斯卡塔尼克大學和阿卡姆警察局放置入場。",
+      "bullets": [
+        {
+          "text": "所有調查員從阿卡姆警察局開始遊戲。"
+        }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "參考擺放位置",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "svg": "the_midnight_masks",
+      "locations": [
+        [
+          "01134_back",
+          "01131_back",
+          "90032_back"
+        ],
+        [
+          "01129_back",
+          "01125_back",
+          "01132_back"
+        ],
+        [
+          "01128_back",
+          "01126_back",
+          "01133_back"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "90032_back",
+          "name": "阿卡姆警察局"
+        }
+      ]
+    },
+    {
+      "id": "setup_cultist_deck",
+      "text": "將<i>烏默爾多斯的崇拜者</i>和<i>黑暗異教徒</i>遭遇組之中的9個[[異教徒]]敵人混洗，在場上每個地點底下各放置一個敵人，面朝下，作為 a conspirator。"
+    },
+    {
+      "id": "setup_cultist_deck_alt",
+      "type": "encounter_sets",
+      "bullet_type": "small",
+      "encounter_sets": [
+        "return_to_the_devourer_below"
+      ],
+      "text": "You may optionally decide to gather the cards included in the <i>Return to the Cult of Umôrdhoth</i> encounter set, as well, if your collection includes them."
+    },
+    {
+      "id": "setup_cultist_deck_alt_continued",
+      "bullet_type": "small",
+      "text": "If you do, shuffle the 3 cards from this encounter set with the 9 [[Cultist]] enemies from above, and remove 3 of the 12 cards at random from the game without looking at them. Then place one of the remaining enemies facedown underneath each location in play, as a conspirator."
+    },
+    {
+      "id": "roland_clue",
+      "text": "羅蘭·班克斯開始遊戲時帶有1個線索<i>(從供應堆拿取)</i>。"
+    },
+    {
+      "id": "encounter_deck",
+      "text": "將24張剩餘的遭遇牌混洗，組成遭遇牌堆。"
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "roland_bad_swap",
+      "text": "羅蘭·班克斯必需將掩蓋罪證升級到其進階版，或者將進階版的羅蘭的.38特製手槍還原成其原始版。",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "necronomicon",
+            "text": "升級到進階版的掩蓋罪證",
+            "effects": [
+              {
+                "type": "remove_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01001",
+                "non_story": true,
+                "card": "01007"
+              },
+              {
+                "type": "add_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01001",
+                "non_story": true,
+                "card": "90031"
+              }
+            ]
+          },
+          {
+            "id": "tote_bag",
+            "text": "還原成原始版的羅蘭的.38特製手槍",
+            "effects": [
+              {
+                "type": "remove_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01001",
+                "non_story": true,
+                "card": "90030"
+              },
+              {
+                "type": "add_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01001",
+                "non_story": true,
+                "card": "01006"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "roland_good_swap",
+      "text": "羅蘭·班克斯可以將羅蘭的.38特製手槍升級到其進階版，或者將進階版的掩蓋罪證還原成其原始版。",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "gun",
+            "text": "升級到進階版的羅蘭的.38特製手槍",
+            "effects": [
+              {
+                "type": "remove_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01001",
+                "non_story": true,
+                "card": "01006"
+              },
+              {
+                "type": "add_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01001",
+                "non_story": true,
+                "card": "90030"
+              }
+            ]
+          },
+          {
+            "id": "crime",
+            "text": "還原成原始版的掩蓋罪證",
+            "effects": [
+              {
+                "type": "remove_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01001",
+                "non_story": true,
+                "card": "90031"
+              },
+              {
+                "type": "add_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01001",
+                "non_story": true,
+                "card": "01007"
+              }
+            ]
+          },
+          {
+            "id": "neither",
+            "text": "沒有變化"
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_roland_xp",
+      "text": "羅蘭·班克斯獲得等同於勝利牌區中所有敵人的勝利點數總值的經驗。",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "勝利牌區(敵人)：",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "$fixed_investigator",
+            "fixed_investigator": "01001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_location_xp",
+      "text": "每位其他調查員獲得等同於勝利牌區中所有地點的勝利點數總值的經驗。",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "勝利牌區(地點)：",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          },
+          {
+            "type": "earn_xp",
+            "investigator": "$fixed_investigator",
+            "fixed_investigator": "01001",
+            "input_scale": -1
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_cultist_enemies",
+      "type": "input",
+      "text": "如果勝利牌區中的[[異教徒]]敵人數量為(選擇一項)……",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "4_5",
+            "text": "4–5",
+            "steps": [
+              "1_additional_card"
+            ]
+          },
+          {
+            "id": "6_7",
+            "text": "6–7",
+            "steps": [
+              "2_additional_cards"
+            ]
+          },
+          {
+            "id": "8_9",
+            "text": "8–9",
+            "steps": [
+              "3_additional_cards"
+            ]
+          },
+          {
+            "id": "10",
+            "text": "10",
+            "steps": [
+              "3_additional_cards",
+              "remove_non_symbol_token"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "1_additional_card",
+      "bullet_type": "small",
+      "text": "羅蘭·班克斯下一場冒險開始時有額外1張手牌。"
+    },
+    {
+      "id": "2_additional_cards",
+      "bullet_type": "small",
+      "text": "羅蘭·班克斯下一場冒險開始時有額外2張手牌。"
+    },
+    {
+      "id": "3_additional_cards",
+      "bullet_type": "small",
+      "text": "羅蘭·班克斯下一場冒險開始時有額外3張手牌。"
+    },
+    {
+      "id": "remove_non_symbol_token",
+      "bullet_type": "small",
+      "type": "input",
+      "text": "從混亂袋中選擇並移除任意一個數字標記，持續到劇本結束。",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "+1",
+            "text": "+1",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "+1"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "+1",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                }
+              ]
+            }
+          },
+          {
+            "id": "0",
+            "text": "0",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "0"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "0",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            }
+          },
+          {
+            "id": "-1",
+            "text": "−1",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "-1"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "-1",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                },
+                {
+                  "numCondition": 5
+                }
+              ]
+            }
+          },
+          {
+            "id": "-2",
+            "text": "−2",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "-2"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "-2",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            }
+          },
+          {
+            "id": "-3",
+            "text": "−3",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "-3"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "-3",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                }
+              ]
+            }
+          },
+          {
+            "id": "-4",
+            "text": "−4",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "-4"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "-4",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                }
+              ]
+            }
+          },
+          {
+            "id": "-5",
+            "text": "−5",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "-5"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "-5",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                }
+              ]
+            }
+          },
+          {
+            "id": "-6",
+            "text": "−6",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "-6"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "-6",
+              "options": [
+                {
+                  "numCondition": 1
+                }
+              ]
+            }
+          },
+          {
+            "id": "-7",
+            "text": "−7",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "-7"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "-7",
+              "options": [
+                {
+                  "numCondition": 1
+                }
+              ]
+            }
+          },
+          {
+            "id": "-8",
+            "text": "−8",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "-8"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "-8",
+              "options": [
+                {
+                  "numCondition": 1
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_mr_grey",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "yes",
+            "text": "格雷先生在勝利牌區嗎？",
+            "steps": [
+              "roland_good_swap"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "未達成任何結局，且羅蘭已撤退",
+      "description": "Each other investigator was defeated",
+      "investigator_status": [
+        "resigned",
+        "physical",
+        "mental"
+      ],
+      "steps": [
+        "resolution_1"
+      ]
+    },
+    {
+      "id": "R1",
+      "title": "結局1",
+      "text": "你展示了證據，偵破了案件，然後又再次回到了調查走私犯和普通罪犯的典型日常工作中。那些犯下謀殺的人——至少那些你能抓住的——都被安全地關在監獄裡了。按照你收集到的證據，即使像是格雷先生這樣有影響力的人，也無法開脫他們的罪行。\n但事實是，回到日常的情況是很困難的。你的思緒被各種煩擾憂慮牽動著。究竟是什麼迫使格雷先生和其他人犯下了這些令人髮指的罪行？為了追求什麼黑暗、邪惡的目的，能犧牲人的生命？\n在這座城市的表象下，有一些腐爛的東西，就像破敗的老房子地基中的黴菌。還有這麼多的未知之處，你怎麼能確定當局的指導方針能解釋你所看到的？如果下一次，你必須打破規則才能了解真相怎麼辦？你該怎麼做？",
+      "steps": [
+        "earn_roland_xp",
+        "earn_location_xp",
+        "ask_cultist_enemies",
+        "ask_mr_grey",
+        "$upgrade_decks"
+      ]
+    },
+    {
+      "id": "R2",
+      "title": "結局2",
+      "text": "再多的手續或培訓都無法讓你為調查期間出現的怪物做好準備——無論是披著人皮的或是真正的怪物。儘管盡了最大的努力，你還是被迫結案並保持低調。哪怕再涉入一步，都可能是你的末日。格雷先生和他的暴徒們也許永遠不用為他們的令人髮指的行為負責，承擔適當的後果。但至少現在你知道這個城鎮表面之下真正的醜惡。不管依照或不依照規則，下次你會準備得更好。",
+      "steps": [
+        "earn_roland_xp",
+        "earn_location_xp",
+        "roland_bad_swap",
         "$upgrade_decks"
       ]
     }
@@ -90686,7 +91615,8 @@
               {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "07179"
+                "card": "07179",
+                "show_prompt": true
               }
             ]
           }
@@ -90724,7 +91654,8 @@
               {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "07180"
+                "card": "07180",
+                "show_prompt": true
               }
             ]
           }
@@ -90762,7 +91693,8 @@
               {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "07181"
+                "card": "07181",
+                "show_prompt": true
               }
             ]
           }
@@ -93267,6 +94199,12 @@
     },
     {
       "id": "R1",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
       "narration": {
         "id": "the_innsmouth_conspiracy.in_too_deep.resolution_1",
         "name": "Resolution 1"

@@ -67,7 +67,6 @@ interface Props {
   topMargin?: number;
   disabled?: boolean;
   noShadow?: boolean;
-  numberOfLines?: number;
 }
 
 const ICON_SIZE: { [icon: string]: number | undefined } = {
@@ -125,7 +124,6 @@ export default function DeckButton({
   loading,
   bottomMargin,
   noShadow,
-  numberOfLines,
 }: Props) {
   const { colors, fontScale, typography, shadow } = useContext(StyleContext);
   const backgroundColors = {

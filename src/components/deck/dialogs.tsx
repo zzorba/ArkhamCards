@@ -225,7 +225,7 @@ export function useAlertDialog(forceVerticalButtons?: boolean): [React.ReactNode
         </View>
       </NewDialog>
     );
-  }, [state, buttons, onDismiss, typography]);
+  }, [state, buttons, onDismiss, typography, forceVerticalButtons]);
 
   const showAlert = useCallback((title: string, description: string, buttons: AlertButton[] = [{ text: t`Okay` }]) => {
     setState({

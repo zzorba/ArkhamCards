@@ -29,6 +29,10 @@
   },
   {
     "campaignId": "side",
+    "scenarioId": "by_the_book"
+  },
+  {
+    "campaignId": "side",
     "scenarioId": "carnevale_of_horrors"
   },
   {
