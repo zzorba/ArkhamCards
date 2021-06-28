@@ -3359,7 +3359,7 @@ msgid ""
 "and I'll see about including it in a future release."
 msgstr ""
 "좋아하는 독립 시나리오가 여기 없습니까? arkhamcards@gmail.com로 메일을 주시면 이후에 추가"
-"해보겠습니다. (참고: 영문으로 보내야 합니다)."
+"해보겠습니다(참고: 영문으로 보내야 합니다)."
 
 msgid "New Standalone"
 msgstr "새로운 독립 시나리오"
@@ -3625,7 +3625,7 @@ msgid "That doesn't look like a valid email address"
 msgstr "유효한 이메일 주소가 아닌 것으로 보입니다."
 
 msgid "That password seems to be too weak."
-msgstr "비밀번호가 너무 간단합니ㅏ."
+msgstr "비밀번호가 너무 간단합니다."
 
 msgid "Your account has been disabled."
 msgstr "당신의 계정이 비활성화 상태입니다."
@@ -4422,7 +4422,7 @@ msgid "Show archived campaigns"
 msgstr "보관된 캠페인 보기"
 
 msgid "Return to The Circle Undone"
-msgstr ""
+msgstr "돌아온 끝맺지 못한 의식"
 
 msgid "Prologue: Return to Disappearance at the Twilight Estate"
 msgstr ""
@@ -4434,22 +4434,22 @@ msgid "Return to At Death's Doorstep"
 msgstr ""
 
 msgid "Return to The Secret Name"
-msgstr ""
+msgstr "돌아온 비밀 이름"
 
 msgid "Return to The Wages of Sin"
-msgstr ""
+msgstr "돌아온 죄악의 응보"
 
 msgid "Return to For the Greater Good"
-msgstr ""
+msgstr "돌아온 대의를 위하여"
 
 msgid "Return to Union and Disillusion"
-msgstr ""
+msgstr "돌아온 합일과 환멸"
 
 msgid "Return to In the Clutches of Chaos"
-msgstr ""
+msgstr "돌아온 혼돈의 손아귀에서"
 
 msgid "Return to Before the Black Throne"
-msgstr ""
+msgstr "돌아온 검은 옥좌 앞에"
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
