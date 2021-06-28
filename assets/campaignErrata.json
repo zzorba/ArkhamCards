@@ -140,6 +140,24 @@
           "text": "This card’s first ability should read: “<b>Forced</b> – When Otherworldly Meddler would take damage from an attack: Remove 1 doom from Otherworldly Meddler. Then, reduce the damage dealt by 1.”"
         }
       ]
+    },
+    {
+      "encounter_code": "point_of_no_return",
+      "cards": [
+        {
+          "code": ["06253"],
+          "text": "This card’s <b>Forced</b> ability should read: “After an enemy with 1 or more clues on it is defeated: Take control of each of those clues.”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "into_the_maelstrom",
+      "cards": [
+        {
+          "code": ["07315"],
+          "text": "This card’s <b>Objective</b> ability should read: “...you may choose to advance” instead of “...advance.”"
+        }
+      ]
     }
   ],
   "faq": [

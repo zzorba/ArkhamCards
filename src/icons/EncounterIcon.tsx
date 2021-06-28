@@ -228,7 +228,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.carcosaIcon('the_stranger', size, color);
       case 'promo': // PROMO
       case 'books': // NOVELLAS
-        return this.coreIcon('core', size, color);
+        return this.standaloneIcon('novella', size, color);
       case 'coh':
       case 'venice':
       case 'carnevale_of_horrors':
