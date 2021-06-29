@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, View } from 'react-native';
 import { ngettext, msgid, t } from 'ttag';
 
@@ -46,6 +46,18 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
   }, [componentId, userId]);
   const friendCount = profile?.friends?.length || 0;
   const pendingFriendCount = profile?.receivedRequests?.length || 0;
+  const accountNameLabel = useMemo(() => {
+    if (loading) {
+      return t`Loading account`;
+    }
+    if (profile?.handle) {
+      return profile.handle;
+    }
+    if (loadingProfile) {
+      return t`Loading`;
+    }
+    return t`Choose a handle`;
+  }, [loading, loadingProfile, profile])
   if (!userId) {
     return (
       <View style={[space.paddingBottomS, space.paddingTopS, space.paddingSideS]}>
@@ -61,7 +73,7 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
         icon="name"
         editable
         title={t`Account name`}
-        valueLabel={loading || loadingProfile ? t`Loading` : (profile?.handle || t`Choose a handle`)}
+        valueLabel={accountNameLabel}
         onPress={showDialog}
         first
       />

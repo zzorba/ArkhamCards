@@ -280,20 +280,21 @@ export interface UserProfile {
 
 export function useProfile(profileUserId: string | undefined, useCached?: boolean): [UserProfile | undefined, boolean, () => void] {
   const { userId, loading: userLoading } = useContext(ArkhamCardsAuthContext);
-  const { data, loading: dataLoading, refetch } = useGetProfileQuery({
+  const { data, previousData, loading: dataLoading, refetch } = useGetProfileQuery({
     variables: { userId: profileUserId || '' },
     skip: !userId || !profileUserId,
     fetchPolicy: useCached ? 'cache-only' : 'cache-and-network',
   });
 
   const profile = useMemo(() => {
-    if (!data?.users_by_pk) {
+    const theData = data || previousData;
+    if (!theData?.users_by_pk) {
       return undefined;
     }
     return {
-      id: data.users_by_pk.id,
-      handle: data.users_by_pk.handle || undefined,
-      friends: flatMap(data.users_by_pk.friends, f => {
+      id: theData.users_by_pk.id,
+      handle: theData.users_by_pk.handle || undefined,
+      friends: flatMap(theData.users_by_pk.friends, f => {
         if (!f.user) {
           return [];
         }
@@ -303,7 +304,7 @@ export function useProfile(profileUserId: string | undefined, useCached?: boolea
           status: FriendStatus.FRIEND,
         };
       }),
-      sentRequests: flatMap(data.users_by_pk.sent_requests, f => {
+      sentRequests: flatMap(theData.users_by_pk.sent_requests, f => {
         if (!f.user) {
           return [];
         }
@@ -313,7 +314,7 @@ export function useProfile(profileUserId: string | undefined, useCached?: boolea
           status: FriendStatus.SENT,
         };
       }),
-      receivedRequests: flatMap(data.users_by_pk.received_requests, f => {
+      receivedRequests: flatMap(theData.users_by_pk.received_requests, f => {
         if (!f.user) {
           return [];
         }
@@ -324,7 +325,7 @@ export function useProfile(profileUserId: string | undefined, useCached?: boolea
         };
       }),
     };
-  }, [data]);
+  }, [data, previousData]);
   const doRefetch = useCallback(() => {
     refetch?.({
       userId: profileUserId,
