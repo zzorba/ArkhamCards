@@ -4537,7 +4537,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "將2張商業區和2張南住宅區中，各隨機選擇一張放置入場，將另一張同名卡牌移出遊戲。然後。將北工業區、東住宅區、河岸城、聖瑪麗醫院、墓地、米斯卡塔尼克大學和你的房子放置入場。"
+      "text": "將2張商業區和2張南區中，各隨機選擇一張放置入場，將另一張同名卡牌移出遊戲。然後。將北區、東城區、河岸城、聖瑪麗醫院、墓地、米斯卡塔尼克大學和你的房子放置入場。"
     },
     {
       "id": "location_layout",
@@ -4605,17 +4605,17 @@
     },
     {
       "id": "one_cultist",
-      "text": "查找遭遇組中1張祭司，並生成在南住宅區。",
+      "text": "查找遭遇組中1張祭司，並生成在南區。",
       "bullet_type": "small"
     },
     {
       "id": "two_cultists",
-      "text": "查找遭遇組中2張祭司，在南住宅區和商業區中，各生成1張。",
+      "text": "查找遭遇組中2張祭司，在南區和商業區中，各生成1張。",
       "bullet_type": "small"
     },
     {
       "id": "three_cultists",
-      "text": "查找遭遇組中3張祭司，在南住宅區、商業區和墓地中，各生成1張。",
+      "text": "查找遭遇組中3張祭司，在南區、商業區和墓地中，各生成1張。",
       "bullet_type": "small"
     },
     {
@@ -12643,114 +12643,114 @@
   "achievements": [
     {
       "id": "what_is_this_stuff",
-      "title": "What Is This Stuff, Anyway?",
-      "text": "Defeat The Experiment using the Alchemical Concoction in “Extracurricular Activities”.",
+      "title": "這到底是什麼玩意？",
+      "text": "在“課外活動”裡使用煉金試劑擊敗實驗體。",
       "type": "binary"
     },
     {
       "id": "no_void_for_you",
-      "title": "No Void For You",
-      "text": "Complete “The Miskatonic Museum” without ever defeating the Hunting Horror.",
+      "title": "別想去混沌",
+      "text": "在從未擊敗追獵恐魔的情況下完成“博物館之夜”。",
       "type": "binary"
     },
     {
       "id": "first_rule_of_arkham",
-      "title": "First Rule of Arkham",
-      "text": "Burn The Necronomicon in “The Miskatonic Museum.”",
+      "title": "阿卡姆首要規則",
+      "text": "在“博物館之夜”裡將《死靈之書》燒毀。",
       "type": "binary"
     },
     {
       "id": "all_aboard",
-      "title": "All Aboard",
-      "text": "Complete “The Essex County Express” without letting any Helpless Passengers leave play.",
+      "title": "大哥沒有輸",
+      "text": "在沒有任何無助的旅客離場的情況下完成“瘋狂列車”。",
       "type": "binary"
     },
     {
       "id": "gangs_all_here",
-      "title": "The Gang’s All Here",
-      "text": "In “The Survivors,” the following characters <i>survived The Dunwich Legacy</i>:",
+      "title": "大夥兒都在",
+      "text": "在“倖存者”裡，以下角色<i>在敦威治事件中存活</i>：",
       "type": "list",
       "items": [
         {
           "id": "armitage",
-          "text": "Dr. Henry Armitage"
+          "text": "亨利·阿米蒂奇博士"
         },
         {
           "id": "morgan",
-          "text": "Dr. Francis Morgan"
+          "text": "佛朗西斯·摩爾根博士"
         },
         {
           "id": "rice",
-          "text": "Professor Warren Rice"
+          "text": "沃倫·萊斯教授"
         },
         {
           "id": "whateley",
-          "text": "Zebulon Whateley"
+          "text": "西布倫·沃特雷"
         },
         {
           "id": "sawyer",
-          "text": "Earl Sawyer"
+          "text": "厄爾·索耶"
         }
       ]
     },
     {
       "id": "no_brood_left_behind",
-      "title": "No Brood Left Behind",
-      "text": "Have no Broods of Yog-Sothoth escape into the wild in “Undimensioned and Unseen.”",
+      "title": "不留後患",
+      "text": "在“無人知曉”裡沒有猶格·索托斯之子逃跑。",
       "type": "binary"
     },
     {
       "id": "remind_me_not_to_piss_her_off",
-      "title": "Remind Me Not To Piss Her Off",
-      "text": "Defeat either version of Seth Bishop while Naomi O’Bannion is under your control.",
+      "title": "千萬別惹她",
+      "text": "在你控制娜奧米·歐巴尼恩時擊敗任意版本的賽斯·畢曉普。",
       "type": "binary"
     },
     {
       "id": "eureka",
-      "title": "Eureka!",
-      "text": "Identify the Strange Solution.",
+      "title": "靈光乍現",
+      "text": "確認奇怪的溶液成分。",
       "type": "binary"
     },
     {
       "id": "beyond_what_veil",
-      "title": "Beyond What Veil?",
-      "text": "Take 10 damage from Beyond the Veil without being defeated.",
+      "title": "什麼幻象？",
+      "text": "受到轉生幻象造成的10點傷害，且沒有被擊敗。",
       "type": "binary"
     },
     {
       "id": "here_we_go_again",
-      "title": "Here We Go Again",
-      "text": "Have Dr. Henry Armitage, Dr. Francis Morgan, and Professor Warren Rice in play at the same time.",
+      "title": "三人成眾",
+      "text": "讓亨利·阿米蒂奇博士、佛朗西斯·摩爾根博士和沃倫·萊斯教授同時在場上。",
       "type": "binary"
     },
     {
       "id": "bird_hunting",
-      "title": "Bird Hunting",
-      "text": "Defeat 3 Whippoorwills in a single turn.",
+      "title": "捕鳥大師",
+      "text": "在一回合內擊敗3隻夜鷹。",
       "type": "binary"
     },
     {
       "id": "they_arent_getting_away_with_this",
-      "title": "They Aren’t Getting Away With This",
-      "text": "Win <i>The Dunwich Legacy</i> campaign as “Ashcan” Pete with Duke listed under “Sacrificed to Yog-Sothoth.”",
+      "title": "他們跑不掉的",
+      "text": "以“灰堆”皮特進行遊戲，在杜克成為“猶格·索托斯的祭品”的情況下贏得<i>敦威治遺產</i>劇本的勝利。",
       "type": "binary"
     },
     {
       "id": "tabula_rasa",
-      "title": "Tabula Rasa",
-      "text": "Win The Dunwich Legacy campaign with no [tablet] or [elder_thing] tokens in the chaos bag.",
+      "title": "純潔無瑕",
+      "text": "在混亂袋之中沒有[tablet]或[elder_thing]的情況下贏得<i>敦威治遺產</i>劇本的勝利。",
       "type": "binary"
     },
     {
       "id": "dwl_line_in_the_sand",
-      "title": "Line in the Sand",
-      "text": "Win <i>The Dunwich Legacy</i> campaign with at least three Ultimatums active.",
+      "title": "不歸路的界線",
+      "text": "在至少有3個最後通牒啟動的情況下贏得<i>敦威治遺產</i>劇本的勝利。",
       "type": "binary"
     },
     {
       "id": "dunwich_expertise",
-      "title": "Dunwich Expertise",
-      "text": "Win <i>The Dunwich Legacy</i> campaign on Expert difficulty.",
+      "title": "敦威治專家",
+      "text": "以專家難度贏得<i>敦威治遺產</i>劇本的勝利。",
       "type": "binary"
     }
   ]
@@ -13404,9 +13404,9 @@
 },
 {
   "id": "return_to_essex_county_express",
-  "scenario_name": "Return to The Essex County Express",
+  "scenario_name": "重返瘋狂列車",
   "header": "冒險III",
-  "full_name": "Scenario III: Return to The Essex County Express",
+  "full_name": "冒險III：重返瘋狂列車",
   "chaos_bag_card": "02159",
   "setup": [
     "prologue",
@@ -13747,15 +13747,15 @@
     },
     {
       "id": "remove_agenda_1a",
-      "text": "Remove Agenda 1a - \"A Tear in Reality,\" from the game and replace it with the new Agenda 0a - \"Where There's Smoke\" and the new agenda 1a - \"A Tear in Reality (v.II).\" (When you construct the agenda deck, agenda 0a should be on top.)"
+      "text": "將密謀1a - “現實的裂口”移出遊戲，並以新的密謀0a - “無火不生煙”和新的密謀1a - “現實的裂口(版本二)”代替。(在構建密謀牌堆時，密謀0a應該在牌堆最上面)。"
     },
     {
       "id": "setup_locations",
-      "text": "Put one of the four Engine Car locations into play at random. Remove the other three versions of Engine Car from the game. Then, put six of the ten Train Car locations into play at random, in a straight line to the left of the Engine Car. Remove the remaining four Train Car locations from the game."
+      "text": "在4張車頭中，隨機選擇一張放置入場，將另外3張同名卡牌移出遊戲。然後，將10張車廂卡混洗後，隨機移除4張，剩餘6張排成一直線放在車頭左邊。"
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the Engineer story asset and all 4 copies of Across Space and Time aside, out of play."
+      "text": "將機工師故事支援卡和4張跨越時空放在一邊，位於場外。"
     }
   ],
   "resolutions": [
@@ -13835,7 +13835,7 @@
   "id": "return_to_extracurricular_activity",
   "scenario_name": "重返課外活動",
   "header": "冒險 I–A",
-  "full_name": "Scenario I–A: Return to Extracurricular Activity",
+  "full_name": "冒險I–A：重返課外活動",
   "chaos_bag_card": "02041",
   "setup": [
     "prologue",
@@ -14051,7 +14051,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Randomly choose between Orne Library and Warren Observatory. Put the chosen location into play, and remove the other location from the game. Then, put the Miskatonic Quad, Humanities Building, Student Union, Science Building, and Administration Building locations into play. Each investigator begins play at the Miskatonic Quad."
+      "text": "隨機選擇奧恩圖書館或沃倫天文台。將所選地點放置入場，並把另一個地點移出遊戲。然後，將大學廣場、人文學大樓、學生會、科學大樓、管理大樓放置入場。每位調查員從大學廣場開始遊戲。"
     },
     {
       "id": "maybe_spawn_security_guard",
@@ -14073,7 +14073,7 @@
     },
     {
       "id": "spawn_security_guard",
-      "text": "Because you have already completed <b>Return to The House Always Wins</b>, search the gathered encounter sets for 1 copy of Enthralled Security Guard, and spawn it at the Administration Building."
+      "text": "因為你已完成了<b>重返百賭百勝</b>，查找找出的遭遇組中1張著魔的保全，將其生成在管理大樓。"
     },
     {
       "id": "proceed_either",
@@ -14202,7 +14202,7 @@
   "id": "return_to_lost_in_time_and_space",
   "scenario_name": "重返迷失時空",
   "header": "冒險VII",
-  "full_name": "Scenario VII: Return to Lost in Time and Space",
+  "full_name": "冒險VII：重返迷失時空",
   "chaos_bag_card": "02311",
   "setup": [
     "prologue",
@@ -14436,7 +14436,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: The Edge of the Universe, Tear Through Time, and Seth Bishop <i>(Thrall of Yog-Sothoth)</i>."
+      "text": "將下列卡牌放在一邊，位於場外：宇宙的邊緣、時間縫隙、賽斯·畢曉普<i>(猶格·索托斯的奴僕)</i>。"
     },
     {
       "id": "check_ritual_completed",
@@ -14458,15 +14458,15 @@
     {
       "id": "replace_act_2",
       "bullet_type": "small",
-      "text": "Replace Act 2a - \"Into the Beyond\" with the new Act 2a - \"Into the Beyond (v. II)\" from the <i>Return to Lost in Time and Space</i> encounter set."
+      "text": "將場景2a - “超越領域”替換為<i>重返迷失時空</i>遭遇組中新的場景2a - “超越領域(版本二)”。"
     },
     {
       "id": "replace_agenda_3",
-      "text": "Replace Agenda 3a - \"Breaking Through\" with the new Agenda 3a - \"Breaking Through (v. II)\" included in this encounter set."
+      "text": "將密謀3a - “突破”替換為此遭遇組中新的密謀3a - “突破(版本二)”。"
     },
     {
       "id": "setup_realms_beyond",
-      "text": "Put the single-sided Realms Beyond location into play and spawn Yog-Sothoth there."
+      "text": "將單面的異界領域地點放置入場，並將猶格·索托斯生成於此。"
     }
   ],
   "resolutions": [
@@ -14557,7 +14557,7 @@
   "id": "return_to_the_house_always_wins",
   "scenario_name": "重返百賭百勝",
   "header": "冒險 I–B",
-  "full_name": "Scenario I–B: Return to The House Always Wins",
+  "full_name": "冒險I–B：重返百賭百勝",
   "chaos_bag_card": "02062",
   "setup": [
     "prologue",
@@ -14780,11 +14780,11 @@
     },
     {
       "id": "setup_locations",
-      "text": "Choose one of the two Clover Club Lounge locations at random. Put the chosen location into play, and remove the other version from the game. Then, put the Clover Club Bar, Clover Club Cardroom, and La Bella Luna locations into play. Each investigator begins play in La Bella Luna."
+      "text": "隨機選擇2個俱樂部大廳地點之一。將所選地點放置入場，並把另一個版本的俱樂部大廳地點移出遊戲。然後，將俱樂部酒吧、俱樂部卡牌室、月下美人放置入場。每位調查員從月下美人開始遊戲。"
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Clover Club Stage, Darkened Hall, Peter Clover, Dr. Francis Morgan, and each copy of Back Hall Doorway."
+      "text": "將下列卡牌放在一邊，位於場外：俱樂部舞台、黑暗走廊、彼得·克勞佛、佛朗西斯·摩爾根博士，以及所有走廊後門。"
     },
     {
       "id": "proceed_either",
@@ -14904,7 +14904,7 @@
   "id": "return_to_the_miskatonic_museum",
   "scenario_name": "重返博物館之夜",
   "header": "冒險II",
-  "full_name": "Scenario II: Return to The Miskatonic Museum",
+  "full_name": "冒險II：重返博物館之夜",
   "chaos_bag_card": "02118",
   "setup": [
     "prologue",
@@ -15169,13 +15169,13 @@
     },
     {
       "id": "exhibit_halls",
-      "text": "Set the “Exhibit Hall” locations aside as a separate 6 card “Exhibit Deck.” To do this, perform the following:",
+      "text": "將“展廳”地點組成6張卡牌的展廳牌堆。請按以下步驟執行：",
       "bullets": [
         {
-          "text": "Gather the 8 “Exhibit Hall” locations. Set Exhibit Hall <i>(Restricted Hall)</i> aside and randomly remove 2 Exhibit Hall locations from the game."
+          "text": "找出所有8張展廳地點。將展廳<i>(禁止入內)</i>放在一邊，並隨機將2個展廳地點移出遊戲。"
         },
         {
-          "text": "Shuffle the Exhibit Hall <i>(Restricted Hall)</i> and 2 other random Exhibit Hall locations together to form the bottom 3 cards of the Exhibit Deck, unrevealed side faceup."
+          "text": "將展廳<i>(禁止入內)</i>和其他隨機2張展廳混洗，未揭示面朝上，放在展廳牌堆底部。"
         },
         {
           "text": "然後，將剩餘3張展廳混洗，放在展廳牌堆頂部。6張展廳卡都必須以未揭示面朝上。"
@@ -15184,7 +15184,7 @@
     },
     {
       "id": "attach_scenario_reference",
-      "text": "For the duration of this scenario, the following additional rule applies:\n\"While an investigator is resolving the text on agenda 1b and agenda 2b, the <b>Forced</b> ability on the next agenda in the agenda deck is considered to be active.\"\nAttach the Return to The Miskatonic Museum scenario reference card to the scenario reference card as a reminder."
+      "text": "這場冒險期間，請遵守以下額外規則：\n“調查員結算密謀1b和密謀2b上的文本時，密謀牌堆中下一張密謀卡上的<b>強制</b>能力視為啟動。”\n將重返博物館之夜冒險參考卡疊加到原冒險參考卡，作為提醒。\""
     }
   ],
   "resolutions": [
@@ -15248,7 +15248,7 @@
   "id": "return_to_undimensioned_and_unseen",
   "scenario_name": "重返無人知曉",
   "header": "冒險V",
-  "full_name": "Scenario V: Return to Undimensioned and Unseen",
+  "full_name": "冒險V：重返無人知曉",
   "chaos_bag_card": "02236",
   "setup": [
     "prologue",
@@ -15559,32 +15559,32 @@
     },
     {
       "id": "remove_old_broods",
-      "text": "Remove 4 copies of Brood of Yog-Sothoth from the original scenario and replace them with the 4 new versions of Brood of Yog-Sothoth from the <i>Return to Undimensioned and Unseen</i> encounter set."
+      "text": "移除4張原本的猶格·索托斯之子，並以4張<i>重返無人知曉</i>遭遇組中新的猶格·索托斯之子取代。"
     },
     {
       "id": "randomize_broods_note",
       "bullet_type": "small",
-      "text": "For the duration of this scenario, the following additional rule applies:\n\"If a Brood of Yog-Sothoth would be put into play, it is chosen at random from among the set-aside versions of Brood of Yog-Sothoth.\"\nAttach the Return to Undimensioned and Unseen scenario reference card to the scenario reference card as a reminder."
+      "text": "這場冒險期間，請遵守以下額外規則：\n“如果有猶格·索托斯之子將要放置入場，從放在一邊的猶格·索托斯之子中隨機選擇一個版本的猶格·索托斯之子放置入場。”\n將此卡疊加到冒險參考卡，作為提醒。"
     },
     {
       "id": "spawn_two_brood",
       "bullet_type": "small",
-      "text": "Put 1 random copy of Brood of Yog‐Sothoth into play in Cold Spring Glen and put 1 random copy of Brood of Yog‐Sothoth into play in Blasted Heath. Then, set the final 3 copies of Brood of Yog‐Sothoth aside, out of play."
+      "text": "將隨機的1張猶格·索托斯之子生成在冷泉幽谷，將隨機的1張生成在憎惡荒野，將剩餘3張放在一邊，位於場外。"
     },
     {
       "id": "spawn_one_remove_one_brood",
       "bullet_type": "small",
-      "text": "Put 1 random copy of Brood of Yog‐Sothoth into play in Cold Spring Glen, and set 3 random copies of Brood of Yog‐Sothoth aside, out of play. Then, remove the final copy of Brood of Yog‐Sothoth from the game."
+      "text": "將隨機的1張猶格·索托斯之子生成在冷泉幽谷，將隨機的3張放在一邊，位於場外。然後，將最後1張移出遊戲。"
     },
     {
       "id": "spawn_one_remove_two_brood",
       "bullet_type": "small",
-      "text": "Put 1 random copy of Brood of Yog‐Sothoth into play in Cold Spring Glen, and set 2 random copies of Brood of Yog‐Sothoth aside, out of play. Then, remove the final 2 copies of Brood of Yog‐Sothoth from the game."
+      "text": "將隨機的1張猶格·索托斯之子生成在冷泉幽谷，將隨機的2張放在一邊，位於場外。然後，將剩餘2張移出遊戲。"
     },
     {
       "id": "spawn_zero_remove_three_brood",
       "bullet_type": "small",
-      "text": "Set 2 random copies of Brood of Yog‐Sothoth aside, out of play. Then, remove the final 3 random copies of Brood of Yog‐Sothoth from the game."
+      "text": "將隨機的2張猶格·索托斯之子放在一邊，位於場外。然後，將剩餘3張移出遊戲。"
     }
   ],
   "resolutions": [
@@ -15643,7 +15643,7 @@
   "id": "return_to_where_doom_awaits",
   "scenario_name": "重返毀滅之地",
   "header": "冒險VI",
-  "full_name": "Scenario VI: Return to Where Doom Awaits",
+  "full_name": "冒險VI：重返毀滅之地",
   "chaos_bag_card": "02274",
   "setup": [
     "prologue",
@@ -16031,7 +16031,7 @@
     {
       "id": "gain_naomi_award",
       "bullet_type": "small",
-      "text": "The lead investigator may choose an investigator to add the Naomi O'Bannion asset to their deck. This card does not count toward that investigator's deck size.",
+      "text": "隊長可以選擇一位調查員將娜奧米·歐巴尼恩支援卡加入其牌組。該卡牌不計入調查員的卡牌張數。",
       "effects": [
         {
           "type": "add_card",
@@ -16057,15 +16057,15 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put Base of the Hill <i>(Warped and Twisted)</i>, Ascending Path <i>(Warped and Twisted)</i>, and Sentinel Peak into play. Remove the original Base of the Hill and Ascending Path locations from the game. Each investigator begins play at Base of the Hill."
+      "text": "將山腳<i>(扭轉曲折)</i>、上山道路<i>(扭轉曲折)</i>和哨兵峰放置入場。將原版的山腳和上山道路地點移出遊戲。每位調查員從山腳開始遊戲。"
     },
     {
       "id": "remove_diverging_path",
-      "text": "Remove 2 copies of Diverging Path from the game, at random. Set the other 3 copies of Diverging Path aside, out of play."
+      "text": "隨機選擇2張分岔路移出遊戲。將剩餘3張放在一邊，位於場外。"
     },
     {
       "id": "remove_altered_path",
-      "text": "Remove 2 copies of Altered Path from the game, at random. Set the other 3 copies of Altered Path aside, out of play."
+      "text": "隨機選擇2張迷幻小路移出遊戲。將剩餘3張放在一邊，位於場外。"
     },
     {
       "id": "check_set_aside_naomi",
@@ -16092,7 +16092,7 @@
     },
     {
       "id": "set_aside_cards_and_naomi",
-      "text": "Set Seth Bishop and Naomi O'Bannion aside, out of play."
+      "text": "將賽斯·畢曉普、娜奧米·歐巴尼恩放在一邊，位於場外。"
     }
   ],
   "resolutions": [
@@ -16856,7 +16856,7 @@
     },
     {
       "id": "notz_line_in_the_sand",
-      "title": "Line in the Sand",
+      "title": "不歸路的界線",
       "text": "在至少有3個最後通牒啟動的情況下贏得<i>狂熱之夜</i>劇本的勝利。",
       "type": "binary"
     },
@@ -18834,7 +18834,7 @@
     },
     {
       "id": "ptc_line_in_the_sand",
-      "title": "Line in the Sand",
+      "title": "不歸路的界線",
       "text": "Win <i>The Path to Carcosa</i> campaign with at least three Ultimatums active.",
       "type": "binary"
     },
@@ -25398,7 +25398,7 @@
   "id": "rttcu",
   "position": 4,
   "version": 4,
-  "name": "Return to The Circle Undone",
+  "name": "重返萬象無終",
   "campaign_type": "campaign",
   "campaign_log": [
     {
@@ -25807,8 +25807,8 @@
     },
     {
       "id": "eureka",
-      "title": "Eureka!",
-      "text": "Identify the Strange Solution.",
+      "title": "靈光乍現",
+      "text": "確認奇怪的溶液成分。",
       "type": "binary"
     },
     {
@@ -25822,7 +25822,7 @@
 {
   "id": "disappearance_at_the_twilight_estate",
   "scenario_name": "Return to Disappearance at the Twilight Estate",
-  "full_name": "Prologue: Return to Disappearance at the Twilight Estate",
+  "full_name": "序章：重返暮色莊園失蹤事件",
   "header": "引導故事",
   "type": "interlude",
   "chaos_bag_card": "05043",
@@ -28932,7 +28932,7 @@
 },
 {
   "id": "return_to_at_deaths_doorstep",
-  "scenario_name": "Return to At Death's Doorstep",
+  "scenario_name": "重返死亡門前",
   "full_name": "Scenario II: Return to At Death's Doorstep",
   "header": "冒險II",
   "chaos_bag_card": "05065",
@@ -29724,7 +29724,7 @@
 },
 {
   "id": "return_to_before_the_black_throne",
-  "scenario_name": "Return to Before the Black Throne",
+  "scenario_name": "重返黑色王座",
   "full_name": "Scenario VIII: Return to Before the Black Throne",
   "header": "冒險VIII",
   "chaos_bag_card": "05325",
@@ -30330,7 +30330,7 @@
 },
 {
   "id": "return_to_for_the_greater_good",
-  "scenario_name": "Return to For the Greater Good",
+  "scenario_name": "重返崇高利益",
   "full_name": "Scenario V: Return to For the Greater Good",
   "header": "冒險V",
   "chaos_bag_card": "05197",
@@ -30860,7 +30860,7 @@
 },
 {
   "id": "return_to_in_the_clutches_of_chaos",
-  "scenario_name": "Return to In the Clutches of Chaos",
+  "scenario_name": "重返混沌魔掌",
   "full_name": "Scenario VII: Return to In the Clutches of Chaos",
   "header": "冒險VII",
   "chaos_bag_card": "05284",
@@ -31708,7 +31708,7 @@
 },
 {
   "id": "return_to_the_secret_name",
-  "scenario_name": "Return to The Secret Name",
+  "scenario_name": "重返隱密之名",
   "full_name": "Scenario III: Return to The Secret Name",
   "header": "冒險III",
   "chaos_bag_card": "05120",
@@ -32395,7 +32395,7 @@
 },
 {
   "id": "return_to_the_wages_of_sin",
-  "scenario_name": "Return to The Wages of Sin",
+  "scenario_name": "重返惡罪報應",
   "full_name": "Scenario IV: Return to The Wages of Sin",
   "header": "冒險IV",
   "chaos_bag_card": "05161",
@@ -32825,7 +32825,7 @@
 },
 {
   "id": "return_to_the_witching_hour",
-  "scenario_name": "Return to The Witching Hour",
+  "scenario_name": "重返巫異時刻",
   "full_name": "Scenario I: Return to The Witching Hour",
   "header": "冒險I",
   "chaos_bag_card": "05050",
@@ -33572,7 +33572,7 @@
 },
 {
   "id": "return_to_union_and_disillusion",
-  "scenario_name": "Return to Union and Disillusion",
+  "scenario_name": "重返聚合幻滅",
   "full_name": "Scenario VI: Return to Union and Disillusion",
   "header": "冒險VI",
   "chaos_bag_card": "05238",
@@ -50863,7 +50863,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "將2張商業區和2張南住宅區中，各隨機選擇一張放置入場，將另一張同名卡牌移出遊戲。然後。將北工業區、東住宅區、河岸城、聖瑪麗醫院、墓地、米斯卡塔尼克大學和阿卡姆警察局放置入場。",
+      "text": "將2張商業區和2張南區中，各隨機選擇一張放置入場，將另一張同名卡牌移出遊戲。然後。將北區、東城區、河岸城、聖瑪麗醫院、墓地、米斯卡塔尼克大學和阿卡姆警察局放置入場。",
       "bullets": [
         {
           "text": "所有調查員從阿卡姆警察局開始遊戲。"
@@ -50903,7 +50903,7 @@
     },
     {
       "id": "setup_cultist_deck",
-      "text": "將<i>烏默爾多斯的崇拜者</i>和<i>黑暗異教徒</i>遭遇組之中的9個[[異教徒]]敵人混洗，在場上每個地點底下各放置一個敵人，面朝下，作為 a conspirator。"
+      "text": "將<i>烏默爾多斯的崇拜者</i>和<i>黑暗異教徒</i>遭遇組之中的9個[[異教徒]]敵人混洗，在場上每個地點底下各放置一個面朝下的敵人，作為同謀。"
     },
     {
       "id": "setup_cultist_deck_alt",
@@ -50912,12 +50912,12 @@
       "encounter_sets": [
         "return_to_the_devourer_below"
       ],
-      "text": "You may optionally decide to gather the cards included in the <i>Return to the Cult of Umôrdhoth</i> encounter set, as well, if your collection includes them."
+      "text": "如果你的收藏中包含<i>烏默爾多斯的崇拜者(重返)</i>遭遇組，你可以選擇一同找出並加入此遭遇組之中的卡牌。"
     },
     {
       "id": "setup_cultist_deck_alt_continued",
       "bullet_type": "small",
-      "text": "If you do, shuffle the 3 cards from this encounter set with the 9 [[Cultist]] enemies from above, and remove 3 of the 12 cards at random from the game without looking at them. Then place one of the remaining enemies facedown underneath each location in play, as a conspirator."
+      "text": "如果你這麼做，將此遭遇組中的3張卡牌與上面的9個[[異教徒]]敵人混洗，並隨機將12張卡牌之中的3張移出遊戲，不要查看。然後在場上每個地點底下各放置一個面朝下的敵人，作為同謀。"
     },
     {
       "id": "roland_clue",
@@ -51427,7 +51427,7 @@
     {
       "id": "no_resolution",
       "title": "未達成任何結局，且羅蘭已撤退",
-      "description": "Each other investigator was defeated",
+      "description": "所有其他的調查員都被擊敗",
       "investigator_status": [
         "resigned",
         "physical",
@@ -52746,8 +52746,8 @@
 },
 {
   "id": "curse_of_the_rougarou",
-  "scenario_name": "Curse of the Rougarou",
-  "full_name": "Curse of the Rougarou",
+  "scenario_name": "狼人詛咒",
+  "full_name": "狼人詛咒",
   "header": "",
   "chaos_bag_card": "81001",
   "xp_cost": 1,
@@ -58849,7 +58849,7 @@
         "choices": [
           {
             "id": "cultist",
-            "text": "Cultist ([cultist])",
+            "text": "異教徒([cultist])",
             "condition": {
               "type": "campaign_data",
               "campaign_data": "chaos_bag",
@@ -58877,7 +58877,7 @@
           },
           {
             "id": "tablet",
-            "text": "Tablet ([tablet])",
+            "text": "碎石版([tablet])",
             "condition": {
               "type": "campaign_data",
               "campaign_data": "chaos_bag",
@@ -58905,7 +58905,7 @@
           },
           {
             "id": "elder_thing",
-            "text": "Elder-Thing ([elder_thing])",
+            "text": "古神([elder_thing])",
             "condition": {
               "type": "campaign_data",
               "campaign_data": "chaos_bag",
