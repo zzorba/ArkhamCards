@@ -100091,6 +100091,7 @@
     "gather_walrus",
     "set_aside_cards",
     "setup_locations",
+    "location_layout",
     "bill_the_lizard",
     "chesire_cat",
     "encounter_deck",
@@ -100136,6 +100137,62 @@
     {
       "id": "setup_locations",
       "text": "Put the White Rabbit's House, Sandy Strand, Tidal Pools, Sheltered Shallows, Twining Reef, and Rocky Outcropping locations into play. Each investigator begins play at White Rabbit's House."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "white_rabbit",
+          "blank",
+          "blank"
+        ],
+        [
+          "pools",
+          "blank",
+          "strand",
+          "blank",
+          "outcropping"
+        ],
+        [
+          "blank",
+          "shallows",
+          "blank",
+          "reef",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "white_rabbit",
+          "name": "White Rabbit's House"
+        },
+        {
+          "code": "pools",
+          "name": "Tidal Pools"
+        },
+        {
+          "code": "strand",
+          "name": "Sandy Strand"
+        },
+        {
+          "code": "outcropping",
+          "name": "Rocky Outcropping"
+        },
+        {
+          "code": "shallows",
+          "name": "Sheltered Shallows"
+        },
+        {
+          "code": "reef",
+          "name": "Twining Reef"
+        }
+      ]
     },
     {
       "id": "bill_the_lizard",
@@ -100475,6 +100532,7 @@
     "set_aside_chesire_cat",
     "set_aside_cards",
     "setup_locations",
+    "location_layout",
     "encounter_deck",
     "$play_scenario"
   ],
@@ -100509,6 +100567,59 @@
     {
       "id": "setup_locations",
       "text": "Put the Arkham Asylum, Bank of Arkham, Independence Square, Newspaper Office, Curiositie Shoppe, and Train Station locations into play with their non-[[Wonderland]] sides revealed. Each investigator begins play at Arkham Asylum."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "train_station",
+          "blank",
+          "blank",
+          "blank",
+          "asylum",
+          "blank"
+        ],
+        [
+          "shoppe",
+          "blank",
+          "office",
+          "blank",
+          "bank",
+          "blank",
+          "square"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "train_station",
+          "name": "Train Station"
+        },
+        {
+          "code": "asylum",
+          "name": "Arkham Asylum"
+        },
+        {
+          "code": "shoppe",
+          "name": "Curiosite Shoppe"
+        },
+        {
+          "code": "office",
+          "name": "Newspaper Office"
+        },
+        {
+          "code": "bank",
+          "name": "Bank of Arkham"
+        },
+        {
+          "code": "square",
+          "name": "Independence Square"
+        }
+      ]
     },
     {
       "id": "encounter_deck",
@@ -101240,6 +101351,7 @@
     "gather_boons_and_banes",
     "set_aside_cards",
     "setup_locations",
+    "location_layout",
     "queen_and_king",
     "royal_suspicion",
     "chesire_cat",
@@ -101279,6 +101391,77 @@
     {
       "id": "setup_locations",
       "text": "Put the Rose Garden, Croquet Grounds, Hedge Maze, Throne Room, Courtroom, Dungeons, Kitchens, and Guard Barracks locations into play. Each investigator begins play at Rose Garden."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "court_room",
+          "blank",
+          "kitchens",
+          "blank"
+        ],
+        [
+          "dungeons",
+          "blank",
+          "throne_room",
+          "blank",
+          "guard_barracks"
+        ],
+        [
+          "blank",
+          "crochet_grounds",
+          "blank",
+          "hedge_maze",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "rose_garden",
+          "blank",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "court_room",
+          "name": "Court Room"
+        },
+        {
+          "code": "kitchens",
+          "name": "Kitchens"
+        },
+        {
+          "code": "dungeons",
+          "name": "Dungeons"
+        },
+        {
+          "code": "throne_room",
+          "name": "Throne Room"
+        },
+        {
+          "code": "guard_barracks",
+          "name": "Guard Barracks"
+        },
+        {
+          "code": "crochet_grounds",
+          "name": "Crochet Grounds"
+        },
+        {
+          "code": "hedge_maze",
+          "name": "Hedge Maze"
+        },
+        {
+          "code": "rose_garden",
+          "name": "Rose Garden"
+        }
+      ]
     },
     {
       "id": "queen_and_king",
@@ -101669,6 +101852,7 @@
     "gather_boons_and_banes",
     "set_aside_cards",
     "setup_locations",
+    "location_layout",
     "white_king",
     "chesire_cat",
     "encounter_deck",
@@ -101708,6 +101892,133 @@
     {
       "id": "setup_locations",
       "text": "Put the First Row, Second Row, Third Row, Fourth Row, Fifth Row, Sixth Row, Seventh Row, Eighth Row, and Distant Square locations into play.  Each investigator begins play at Second Row."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "normal",
+      "vertical": "half",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "distant_square"
+        ],
+        [
+          "eighth_row_rotate",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "seventh_row_rotate",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "sixth_row_rotate",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "fifth_row_rotate",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "fourth_row_rotate",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "third_row_rotate",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "second_row_rotate",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "first_row_rotate",
+          "blank",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "distant_square",
+          "name": "Distant Square"
+        },
+        {
+          "code": "eighth_row_rotate",
+          "name": "Eighth Row"
+        },
+        {
+          "code": "seventh_row_rotate",
+          "name": "Seventh Row"
+        },
+        {
+          "code": "sixth_row_rotate",
+          "name": "Sixth Row"
+        },
+        {
+          "code": "fifth_row_rotate",
+          "name": "Fifth Row"
+        },
+        {
+          "code": "fourth_row_rotate",
+          "name": "Fourth Row"
+        },
+        {
+          "code": "third_row_rotate",
+          "name": "Third Row"
+        },
+        {
+          "code": "second_row_rotate",
+          "name": "Second Row"
+        },
+        {
+          "code": "first_row_rotate",
+          "name": "First Row"
+        }
+      ]
     },
     {
       "id": "white_king",
@@ -102643,6 +102954,7 @@
     "gather_boons_and_banes",
     "setup_alice",
     "setup_locations",
+    "location_layout",
     "setup_strength_of_wonderland",
     "remove_other_boss",
     "setup_chesire_cat",
@@ -103137,6 +103449,53 @@
     {
       "id": "setup_locations",
       "text": "Set the following locations aside, out of play: Northside, Downtown, Easttown, and Vacuous Void.  Put the Merchant District, Rivertown, Miskatonic University, French Hill, Uptown, and Southside locations into play [[Wonderland]] side revealed.  Each investigator (including Alice) begins play at Merchant District."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "merchant",
+          "rivertown"
+        ],
+        [
+          "university",
+          "french_hill"
+        ],
+        [
+          "uptown",
+          "southside"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "merchant",
+          "name": "Merchant District"
+        },
+        {
+          "code": "rivertown",
+          "name": "Rivertown"
+        },
+        {
+          "code": "university",
+          "name": "Miskatonic University"
+        },
+        {
+          "code": "french_hill",
+          "name": "French Hill"
+        },
+        {
+          "code": "uptown",
+          "name": "Uptown"
+        },
+        {
+          "code": "southside",
+          "name": "Southside"
+        }
+      ]
     },
     {
       "id": "setup_strength_of_wonderland",
@@ -104265,6 +104624,7 @@
     "gather_boons_and_banes",
     "set_aside_cards",
     "setup_locations",
+    "location_layout",
     "dum_and_dee",
     "soldiers",
     "chesire_cat",
@@ -104304,6 +104664,65 @@
     {
       "id": "setup_locations",
       "text": "Choose one of the two Northeast Slope, Northwest Slope, Southeast Slope, and Southwest Slope locations at random and put them into play. Remove the other versions of Northeast Slope, Northwest Slope, Southeast Slope, and Southwest Slope from the game.  Then, put the Overgrown Dell, West Hill, and East Hill locations into play.  Each investigator begins play at Overgrown Dell."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "northwest",
+          "blank",
+          "northeast",
+          "blank"
+        ],
+        [
+          "west",
+          "blank",
+          "dell",
+          "blank",
+          "east"
+        ],
+        [
+          "blank",
+          "southwest",
+          "blank",
+          "southeast"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "northwest",
+          "name": "Northwest Slope"
+        },
+        {
+          "code": "northeast",
+          "name": "Northeast Slope"
+        },
+        {
+          "code": "west",
+          "name": "West Hill"
+        },
+        {
+          "code": "dell",
+          "name": "Overgrown Dell"
+        },
+        {
+          "code": "east",
+          "name": "East Hill"
+        },
+        {
+          "code": "southwest",
+          "name": "Southwest Slope"
+        },
+        {
+          "code": "southeast",
+          "name": "Southeast Slope"
+        }
+      ]
     },
     {
       "id": "dum_and_dee",
@@ -104685,25 +105104,29 @@
           {
             "numCondition": 1,
             "steps": [
-              "five_seats"
+              "five_seats",
+              "location_layout_1"
             ]
           },
           {
             "numCondition": 2,
             "steps": [
-              "seven_seats"
+              "seven_seats",
+              "location_layout_2"
             ]
           },
           {
             "numCondition": 3,
             "steps": [
-              "nine_seats"
+              "nine_seats",
+              "location_layout_3"
             ]
           },
           {
             "numCondition": 4,
             "steps": [
-              "eleven_seats"
+              "eleven_seats",
+              "location_layout_4"
             ]
           }
         ]
@@ -104728,6 +105151,434 @@
       "id": "eleven_seats",
       "bullet_type": "small",
       "text": "For 4 players, put eleven Empty Seat locations into play."
+    },
+    {
+      "id": "location_layout_1",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "half",
+      "vertical": "half",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "blank",
+          "head_of_the_table",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "center_of_the_table",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat",
+          "blank",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "head_of_the_table",
+          "name": "Head of the Table"
+        },
+        {
+          "code": "center_of_the_table",
+          "name": "Center of the Table"
+        },
+        {
+          "code": "empty_seat",
+          "name": "Empty Seat"
+        },
+        {
+          "code": "empty_seat_rotate",
+          "name": "Empty Seat"
+        }
+      ]
+    },
+    {
+      "id": "location_layout_2",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "half",
+      "vertical": "half",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "blank",
+          "head_of_the_table",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "center_of_the_table",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat",
+          "blank",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "head_of_the_table",
+          "name": "Head of the Table"
+        },
+        {
+          "code": "center_of_the_table",
+          "name": "Center of the Table"
+        },
+        {
+          "code": "empty_seat",
+          "name": "Empty Seat"
+        },
+        {
+          "code": "empty_seat_rotate",
+          "name": "Empty Seat"
+        }
+      ]
+    },
+    {
+      "id": "location_layout_3",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "half",
+      "vertical": "half",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "blank",
+          "head_of_the_table",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "center_of_the_table",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat",
+          "blank",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "head_of_the_table",
+          "name": "Head of the Table"
+        },
+        {
+          "code": "center_of_the_table",
+          "name": "Center of the Table"
+        },
+        {
+          "code": "empty_seat",
+          "name": "Empty Seat"
+        },
+        {
+          "code": "empty_seat_rotate",
+          "name": "Empty Seat"
+        }
+      ]
+    },
+    {
+      "id": "location_layout_4",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "half",
+      "vertical": "half",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "blank",
+          "head_of_the_table",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "center_of_the_table",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat",
+          "blank",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "head_of_the_table",
+          "name": "Head of the Table"
+        },
+        {
+          "code": "center_of_the_table",
+          "name": "Center of the Table"
+        },
+        {
+          "code": "empty_seat",
+          "name": "Empty Seat"
+        },
+        {
+          "code": "empty_seat_rotate",
+          "name": "Empty Seat"
+        }
+      ]
     },
     {
       "id": "hare_and_hatter",
@@ -105957,6 +106808,7 @@
     "set_aside_cards",
     "create_trail_deck",
     "setup_locations",
+    "location_layout",
     "bellman",
     "chesire_cat",
     "encounter_deck",
@@ -106007,6 +106859,52 @@
     {
       "id": "setup_locations",
       "text": "Put the Tumtum Tree, Field of Chasms, Mound of Crags, Narrow Valley, and The Wabe locations into play.  Each investigator begins play at Tumtum Tree."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "mound_of_crags",
+          "blank"
+        ],
+        [
+          "the_wabe",
+          "tumtum_tree",
+          "narrow_valey"
+        ],
+        [
+          "blank",
+          "field_of_chasms",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "mound_of_crags",
+          "name": "Mound of Crags"
+        },
+        {
+          "code": "the_wabe",
+          "name": "The Wabe"
+        },
+        {
+          "code": "tumtum_tree",
+          "name": "Tumtum Tree"
+        },
+        {
+          "code": "narrow_valley",
+          "name": "Narrow Valley"
+        },
+        {
+          "code": "field_of_chasms",
+          "name": "Field of Chasms"
+        }
+      ]
     },
     {
       "id": "bellman",
@@ -108379,6 +109277,7 @@
     "create_scanning_deck",
     "create_evidence_deck",
     "setup_locations",
+    "location_layout",
     "set_aside_evidence",
     "encounter_deck",
     "cards_removed_from_game_rule",
@@ -108415,6 +109314,79 @@
     {
       "id": "setup_locations",
       "text": "Put all remaining locations into play. Each investigator begins play at the Airlocks."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "normal",
+      "vertical": "half",
+      "locations": [
+        [
+          "airlocks",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "hydroponics",
+          "infirmary",
+          "blank"
+        ],
+        [
+          "mainframe",
+          "blank",
+          "blank",
+          "flight_deck"
+        ],
+        [
+          "blank",
+          "quarters",
+          "telecoms",
+          "blank"
+        ],
+        [
+          "engine",
+          "blank",
+          "blank",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "airlocks",
+          "name": "Airlocks"
+        },
+        {
+          "code": "infirmary",
+          "name": "Infirmary"
+        },
+        {
+          "code": "hydroponics",
+          "name": "Hydroponics"
+        },
+        {
+          "code": "mainframe",
+          "name": "Ship's Mainframe"
+        },
+        {
+          "code": "flight_deck",
+          "name": "Flight Deck"
+        },
+        {
+          "code": "engine",
+          "name": "Engine Room"
+        },
+        {
+          "code": "quarters",
+          "name": "Crew Quarters"
+        },
+        {
+          "code": "telecoms",
+          "name": "Telecoms"
+        }
+      ]
     },
     {
       "id": "set_aside_evidence",
@@ -111119,6 +112091,7 @@
     "set_aside_feaster",
     "create_scanning_deck",
     "setup_locations",
+    "location_layout",
     "spawn_greys",
     "encounter_deck",
     "seal_rule",
@@ -111165,6 +112138,56 @@
     {
       "id": "setup_locations",
       "text": " Put all remaining locations into play. Each investigator begins play at the Entrance Tunnel."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "alien_chambers_green",
+          "alien_chambers_yellow",
+          "alien_chambers_blue"
+        ],
+        [
+          "alien_chambers_hourglass",
+          "alien_chambers_moon",
+          "blank"
+        ],
+        [
+          "blank",
+          "entrance_tunnel",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "alien_chambers_green",
+          "name": "Alien Chambers (Clover)"
+        },
+        {
+          "code": "alien_chambers_yellow",
+          "name": "Alien Chambers (Circle)"
+        },
+        {
+          "code": "alien_chambers_blue",
+          "name": "Alien Chambers (Triangle)"
+        },
+        {
+          "code": "alien_chambers_hourglass",
+          "name": "Alien Chambers (Hourglass)"
+        },
+        {
+          "code": "alien_chambers_moon",
+          "name": "Alien Chambers (Moon)"
+        },
+        {
+          "code": "entrance_tunnel",
+          "name": "Entrance Tunnels"
+        }
+      ]
     },
     {
       "id": "spawn_greys",
@@ -111675,6 +112698,7 @@
     "gather_maddening_delusions",
     "ask_add_memories",
     "setup_locations",
+    "location_layout",
     "set_aside_locations",
     "set_aside_cards",
     "encounter_deck",
@@ -111743,6 +112767,31 @@
     {
       "id": "setup_locations",
       "text": "將劇院、前廳、樓座、後台地點放置入場。每位調查員從劇院開始遊戲。"
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "參考擺放位置",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "03051_back",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "03050_back",
+          "blank",
+          "03049_back",
+          "blank",
+          "03052_back",
+          "blank"
+        ]
+      ]
     },
     {
       "id": "set_aside_locations",
@@ -111921,6 +112970,7 @@
     "set_aside_cards",
     "create_scanning_deck",
     "setup_locations",
+    "location_layout",
     "encounter_deck",
     "$play_scenario"
   ],
@@ -111959,6 +113009,69 @@
     {
       "id": "setup_locations",
       "text": "Put all remaining locations into play. Each investigator begins play at the Cryosleep Quarters."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        [
+          "escape_pod",
+          "blank",
+          "blank",
+          "infirmary",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "cargo_hold",
+          "blank",
+          "mess_hall",
+          "blank",
+          "bridge"
+        ],
+        [
+          "engine",
+          "blank",
+          "blank",
+          "quarters",
+          "blank",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "escape_pod",
+          "name": "Escape Pod Bay"
+        },
+        {
+          "code": "infirmary",
+          "name": "Infirmary"
+        },
+        {
+          "code": "cargo_hold",
+          "name": "Cargo Hold"
+        },
+        {
+          "code": "mess_hall",
+          "name": "Mess Hall"
+        },
+        {
+          "code": "bridge",
+          "name": "Ship's Bridge"
+        },
+        {
+          "code": "engine",
+          "name": "Engine Room"
+        },
+        {
+          "code": "quarters",
+          "name": "Cryosleep Quarters"
+        }
+      ]
     },
     {
       "id": "encounter_deck",
