@@ -4324,10 +4324,10 @@ msgid "${ section.title } (from XP)"
 msgstr "${ section.title } (from XP)"
 
 msgid "Exiled story cards"
-msgstr ""
+msgstr "Cartes histoire Bannies"
 
 msgid "Exile story cards"
-msgstr ""
+msgstr "Bannir des Cartes histoire"
 
 msgid "Fan-made scenario by ${ custom.creator }"
 msgstr "Scénario Fan-made de ${ custom.creator }"
@@ -4660,11 +4660,11 @@ msgid "Return to Before the Black Throne"
 msgstr "Renouveau - Dans les Griffes du Chaos"
 
 msgid "Loading account"
-msgstr ""
+msgstr "Chargement du compte"
 
 #, javascript-format
 msgid "Choose an investigator to add ${ card.name } to their deck:"
-msgstr ""
+msgstr "Choisissez un investigateur pour ajouter ${ card.name } dans son deck :"
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -6006,7 +6006,7 @@ msgstr[1] "Scénarios"
 
 msgctxt "campaign_log_entry"
 msgid "Other."
-msgstr ""
+msgstr "Autre."
 
 msgctxt "Weakness Card"
 msgid "All"
