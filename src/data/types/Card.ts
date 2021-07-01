@@ -999,7 +999,7 @@ export default class Card {
     } else if (json.type_code === 'scenario') {
       renderSubname = t`Scenario`;
     }
-    const linked_card = json.linked_card ?
+    const linked_card = json.linked_card && json.code !== '86024' ?
       Card.fromJson(json.linked_card, packsByCode, cycleNames, lang) :
       null;
     if (linked_card) {

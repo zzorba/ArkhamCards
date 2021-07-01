@@ -8,11 +8,11 @@ msgstr ""
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
-"x-generator: Poedit 3.0\n"
+"x-generator: Poedit 2.4.3\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "MIME-Version: 1.0\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.0\n"
 
 msgid "Guardian / Rogue"
 msgstr "守衛者 / 流浪者"
@@ -1875,7 +1875,7 @@ msgid "Alive"
 msgstr "倖存"
 
 msgid "Resigned"
-msgstr "已投降"
+msgstr "已撤退"
 
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
@@ -4001,7 +4001,7 @@ msgid ""
 "different ArkhamDB account? If you wish to make edits, please login through the app "
 "settings."
 msgstr ""
-"這似乎是你在ArkhamDB上的牌組之一，但你現在登入的帳號不符。如果你想編輯牌組，請從'設定'處"
+"這似乎是你在ArkhamDB上的牌組之一，但你現在登入的帳戶不符。如果你想編輯牌組，請從'設定'處"
 "登入ArkhamDB。"
 
 msgid "Justify text"
@@ -4154,7 +4154,7 @@ msgid "Lead"
 msgstr "隊長"
 
 msgid "Changes have been recorded."
-msgstr "變更已被記錄"
+msgstr "變更已被記錄。"
 
 msgid "No adjustments need saving."
 msgstr "沒有變更。"
@@ -4327,34 +4327,41 @@ msgid "Show archived campaigns"
 msgstr "顯示已歸檔劇本"
 
 msgid "Return to The Circle Undone"
-msgstr ""
+msgstr "重返萬象無終"
 
 msgid "Prologue: Return to Disappearance at the Twilight Estate"
-msgstr ""
+msgstr "序章：重返暮色莊園失蹤事件"
 
 msgid "Return to The Witching Hour"
-msgstr ""
+msgstr "重返巫異時刻"
 
 msgid "Return to At Death's Doorstep"
-msgstr ""
+msgstr "重返死亡門前"
 
 msgid "Return to The Secret Name"
-msgstr ""
+msgstr "重返隱密之名"
 
 msgid "Return to The Wages of Sin"
-msgstr ""
+msgstr "重返惡罪報應"
 
 msgid "Return to For the Greater Good"
-msgstr ""
+msgstr "重返崇高利益"
 
 msgid "Return to Union and Disillusion"
-msgstr ""
+msgstr "重返聚合幻滅"
 
 msgid "Return to In the Clutches of Chaos"
-msgstr ""
+msgstr "重返混沌魔掌"
 
 msgid "Return to Before the Black Throne"
-msgstr ""
+msgstr "重返黑色王座"
+
+msgid "Loading account"
+msgstr "讀取帳戶"
+
+#, javascript-format
+msgid "Choose an investigator to add ${ card.name } to their deck:"
+msgstr "選擇一位調查員，將${ card.name }加入其牌組:"
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -4407,7 +4414,7 @@ msgstr "倖存"
 
 msgctxt "masculine"
 msgid "Resigned"
-msgstr "已投降"
+msgstr "已撤退"
 
 msgctxt "masculine"
 msgid "Defeated: physical trauma"
@@ -4492,7 +4499,7 @@ msgstr "倖存"
 
 msgctxt "feminine"
 msgid "Resigned"
-msgstr "已投降"
+msgstr "已撤退"
 
 msgctxt "feminine"
 msgid "Defeated: physical trauma"

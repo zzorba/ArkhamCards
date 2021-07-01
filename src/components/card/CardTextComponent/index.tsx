@@ -354,6 +354,22 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
             italic: 'Light',
           },
         },
+        Courier: {
+          fontWeights: {
+            300: 'Light',
+            400: 'Regular',
+            500: 'Regular',
+            700: 'Bold',
+            800: 'ExtraBold',
+            900: 'Black',
+            normal: 'Regular',
+            bold: 'Bold',
+          },
+          fontStyles: {
+            normal: '',
+            italic: 'Italic',
+          },
+        },
         Alegreya: {
           fontWeights: {
             300: 'Light',

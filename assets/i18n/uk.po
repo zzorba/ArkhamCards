@@ -4257,6 +4257,13 @@ msgstr ""
 msgid "Return to Before the Black Throne"
 msgstr ""
 
+msgid "Loading account"
+msgstr ""
+
+#, javascript-format
+msgid "Choose an investigator to add ${ card.name } to their deck:"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr ""

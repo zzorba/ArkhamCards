@@ -187,7 +187,7 @@ function AlertButtonComponent({ button, onClose }: { button: AlertButton; onClos
   );
 }
 export type ShowAlert = (title: string, description: string, buttons?: AlertButton[]) => void;
-export function useAlertDialog(): [React.ReactNode, ShowAlert] {
+export function useAlertDialog(forceVerticalButtons?: boolean): [React.ReactNode, ShowAlert] {
   const { typography } = useContext(StyleContext);
   const [state, setState] = useState<AlertState | undefined>();
   const onClose = useCallback(() => {
@@ -218,13 +218,14 @@ export function useAlertDialog(): [React.ReactNode, ShowAlert] {
         visible={!!state}
         buttons={buttons}
         alignment="center"
+        forceVerticalButtons={forceVerticalButtons}
       >
         <View style={space.paddingS}>
           <Text style={typography.small}>{ state?.description || '' }</Text>
         </View>
       </NewDialog>
     );
-  }, [state, buttons, onDismiss, typography]);
+  }, [state, buttons, onDismiss, typography, forceVerticalButtons]);
 
   const showAlert = useCallback((title: string, description: string, buttons: AlertButton[] = [{ text: t`Okay` }]) => {
     setState({

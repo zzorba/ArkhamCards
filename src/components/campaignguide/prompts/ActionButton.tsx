@@ -7,6 +7,7 @@ import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
 import space from '@styles/space';
 import { ThemeColors } from '@styles/theme';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 type LEFT_ICON = 'plus-thin' | 'check' | 'close' | 'undo' | 'shuffle' | 'deck' | 'edit';
 interface Props {
@@ -50,6 +51,7 @@ const LEFT_ICON_SIZE = {
 
 export default function ActionButton({ color, loading, onPress, title, leftIcon, rightIcon, disabled }: Props) {
   const { colors, typography } = useContext(StyleContext);
+  const { lang } = useContext(LanguageContext);
   const enabledColor = color === 'light' ? colors.D20 : colors.L30;
   const textColor = disabled ? colors.D10 : enabledColor;
 
@@ -59,13 +61,13 @@ export default function ActionButton({ color, loading, onPress, title, leftIcon,
     }
     if (loading) {
       return (
-        <View style={space.paddingRightS}>
+        <View>
           <ActivityIndicator animating color={textColor} size="small" />
         </View>
       );
     }
     return (
-      <View style={space.paddingRightS}>
+      <View style={{ width: 24 }}>
         { leftIcon === 'shuffle' ? (
           <MaterialCommunityIcons
             name="shuffle-variant"
@@ -78,17 +80,26 @@ export default function ActionButton({ color, loading, onPress, title, leftIcon,
       </View>
     );
   }, [leftIcon, loading, textColor]);
+  const hideText = (lang === 'de' && leftIcon === 'undo');
   const content = useMemo(() => {
     return (
       <View style={styles.button}>
         { leftIconContent}
-        <Text style={[space.paddingTopXs, typography.cardName, { color: textColor }]}>
-          { title }
-        </Text>
+        { !hideText && (
+          <Text style={[
+            leftIcon ? space.marginLeftS : undefined,
+            space.paddingTopXs,
+            typography.cardName,
+            { color: textColor },
+          ]}>
+            { title }
+          </Text>
+        ) }
         { rightIcon && <View style={space.paddingLeftS}><AppIcon size={28} name={rightIcon} color={textColor} /></View> }
       </View>
     );
-  }, [leftIconContent, rightIcon, textColor, typography, title]);
+  }, [leftIconContent, rightIcon, textColor, typography, title, hideText, leftIcon]);
+  const rightPadding = hideText ? 12 : 20;
   if (disabled) {
     return (
       <View style={[
@@ -101,7 +112,7 @@ export default function ActionButton({ color, loading, onPress, title, leftIcon,
           borderStyle: color === 'green' ? 'solid' : 'dashed',
           height: 40,
           paddingLeft: leftIcon ? 12 : 20,
-          paddingRight: rightIcon ? 8 : 20,
+          paddingRight: rightIcon ? 8 : rightPadding,
         },
       ]}>
         { content }
@@ -117,12 +128,13 @@ export default function ActionButton({ color, loading, onPress, title, leftIcon,
           height: 40,
           borderRadius: 24,
           paddingLeft: leftIcon ? 12 : 20,
-          paddingRight: rightIcon ? 8 : 20,
+          paddingRight: rightIcon ? 8 : rightPadding,
         },
       ]}
       onPress={onPress}
       rippleColor={getRippleColor(color, colors)}
       rippleSize={48}
+      accessibilityLabel={title}
     >
       { content }
     </Ripple>

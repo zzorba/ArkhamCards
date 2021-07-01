@@ -7867,17 +7867,24 @@
           {
             "id": "steal",
             "text": "Did anyone “steal from the box office?”",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "police_are_suspicious",
-                "text": "the police are suspicious of you."
-              }
+            "steps": [
+              "police_are_suspicious"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "police_are_suspicious",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "police_are_suspicious",
+          "text": "the police are suspicious of you."
+        }
+      ]
     },
     {
       "id": "wise_not_to_warn",
@@ -21363,17 +21370,24 @@
           {
             "id": "steal",
             "text": "Did anyone “steal from the box office?”",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "police_are_suspicious",
-                "text": "the police are suspicious of you."
-              }
+            "steps": [
+              "police_are_suspicious"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "police_are_suspicious",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "police_are_suspicious",
+          "text": "the police are suspicious of you."
+        }
+      ]
     },
     {
       "id": "wise_not_to_warn",
@@ -47771,6 +47785,7 @@
     "read_or_die",
     "all_or_nothing",
     "bad_blood",
+    "by_the_book",
     "in_the_labyrinths_of_lunacy",
     "war_of_the_outer_gods",
     "meddling_of_meowlathotep",
@@ -50528,6 +50543,920 @@
         "maybe_earn_asset_85031",
         "maybe_earn_asset_85032",
         "earn_xp",
+        "$upgrade_decks"
+      ]
+    }
+  ]
+},
+{
+  "id": "by_the_book",
+  "scenario_name": "By the Book",
+  "full_name": "By the Book",
+  "header": "",
+  "chaos_bag_card": "90032",
+  "xp_cost": 1,
+  "side_scenario_type": "challenge",
+  "challenge": {
+    "investigator": "01001",
+    "xp_cost": 2,
+    "requirements": []
+  },
+  "standalone_setup": [
+    "choose_difficulty",
+    "intro",
+    "gather_encounter_sets",
+    "new_scenario_card",
+    "new_act_agenda",
+    "remove_misc_cards",
+    "setup_locations",
+    "location_layout",
+    "setup_cultist_deck",
+    "setup_cultist_deck_alt",
+    "setup_cultist_deck_alt_continued",
+    "roland_clue",
+    "encounter_deck",
+    "$play_scenario"
+  ],
+  "setup": [
+    "xp_cost",
+    "intro",
+    "gather_encounter_sets",
+    "new_scenario_card",
+    "new_act_agenda",
+    "remove_misc_cards",
+    "setup_locations",
+    "location_layout",
+    "location_layout",
+    "setup_cultist_deck",
+    "setup_cultist_deck_alt",
+    "setup_cultist_deck_alt_continued",
+    "roland_clue",
+    "encounter_deck",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "choose_difficulty",
+      "text": "Scegliere il livello di difficoltà:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "default_choice": "standard",
+        "choices": [
+          {
+            "id": "easy",
+            "text": "Facile",
+            "tokens": [
+              "+1",
+              "+1",
+              "0",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "easy"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "+1",
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "standard",
+            "text": "Standard",
+            "tokens": [
+              "+1",
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hard",
+            "text": "Difficile",
+            "tokens": [
+              "0",
+              "0",
+              "-1",
+              "-1",
+              "-2",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "expert",
+            "text": "Esperto",
+            "tokens": [
+              "0",
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6",
+              "-7",
+              "-8",
+              "skull",
+              "skull",
+              "cultist",
+              "tablet",
+              "elder_thing",
+              "auto_fail",
+              "elder_sign"
+            ],
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "expert"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "-1",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "-7",
+                  "-8",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "xp_cost",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": -1
+        },
+        {
+          "type": "earn_xp",
+          "investigator": "$fixed_investigator",
+          "fixed_investigator": "01001",
+          "bonus": -2
+        }
+      ]
+    },
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "Red tape is stifling. Ever since you arrived in Arkham, your cases have gotten harder and harder to navigate. You thought you would be tracking down smugglers and mobsters, not imaginary monsters. But the longer your absurd cases remain open, the more you begin to think maybe they aren’t so absurd, after all. And perhaps that means the monsters aren’t imaginary, either.\nThe Bureau has countless guidelines for handling cases of all sorts, but it is eerily silent on the matter of human sacrifices. So when you were told about the bodies found inside the Black Cave, you weren’t sure where to begin. Questioning the locals and loved ones of the deceased yielded nothing of value. The evidence left behind in the cave was unhelpful, to say the least—offerings and writings proclaiming the sacrifices to be gifts, along with depictions of a monstrous tree. So you did what you do best: you put your nose to the ground and found the thread connecting all of the deaths.\nOne man lies at the center of all of the victims: Mr. Damien Grey. The congressman is not from Arkham, has no relatives or loved ones in the area, and is on no committee that would require his presence in town. And yet, he’s been staying in Arkham for the past few months, his purpose unknown. And he is connected to each of the victims through no more than two degrees of separation, which smells fishy to you. Fishier still is the police escort that follows Mr. Grey through town 24/7, despite the fact that there have been no threats on the congressman’s well-being.\nYou have to get to the bottom of this mystery, and soon. Now you see that damned tree everywhere. More people go missing by the day, and some have even claimed to see goatlike monsters prowling the alleyways. But if Mr. Grey is indeed behind this, you’ll have to be careful. Falsely accusing a politician would certainly spell the end of your career. Time to do what you came to do: dig up the proof, discover the truth, and bring the culprits in for questioning. Every “i” dotted, every “t” crossed."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Scenario Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "by_the_book",
+        "arkham",
+        "agents_of_shub",
+        "cultists",
+        "chilling_cold",
+        "pentagram",
+        "nightgaunts",
+        "striking_fear"
+      ]
+    },
+    {
+      "id": "new_scenario_card",
+      "text": "Remove the original scenario reference card from <i>The Midnight Masks</i> encounter set from the game. Use the new scenario reference card provided in the downloadable <i>By the Book</i> encounter set."
+    },
+    {
+      "id": "new_act_agenda",
+      "text": "Remove the original act and agenda deck from <i>The Midnight Masks</i> encounter set from the game. Build the act and agenda decks using only the new act and agenda cards provided in the downloadable <i>By the Book</i> encounter set."
+    },
+    {
+      "id": "remove_misc_cards",
+      "text": "Remove the Your House location and both copies of the Mysterious Chanting treachery from the game. These cards are not used in this challenge scenario."
+    },
+    {
+      "id": "setup_locations",
+      "text": "Choose one of the two Downtown locations and one of the two Southside locations at random and put them into play. Remove the other versions of Downtown and Southside from the game. Then, put the Northside, Easttown, Rivertown, St. Mary’s Hospital, Graveyard, Miskatonic University, and Arkham Police Station locations into play.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play at the Arkham Police Station."
+        }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Disposizione dei Luoghi",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "svg": "the_midnight_masks",
+      "locations": [
+        [
+          "01134_back",
+          "01131_back",
+          "90032_back"
+        ],
+        [
+          "01129_back",
+          "01125_back",
+          "01132_back"
+        ],
+        [
+          "01128_back",
+          "01126_back",
+          "01133_back"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "90032_back",
+          "name": "Arkham Police Station"
+        }
+      ]
+    },
+    {
+      "id": "setup_cultist_deck",
+      "text": "Shuffle the 9 [[Cultist]] enemies from <i>the Cult of Umôrdhoth</i> and <i>Dark Cult</i> encounter sets together, then place one of those enemies facedown underneath each location in play, as a conspirator."
+    },
+    {
+      "id": "setup_cultist_deck_alt",
+      "type": "encounter_sets",
+      "bullet_type": "small",
+      "encounter_sets": [
+        "return_to_the_devourer_below"
+      ],
+      "text": "You may optionally decide to gather the cards included in the <i>Return to the Cult of Umôrdhoth</i> encounter set, as well, if your collection includes them."
+    },
+    {
+      "id": "setup_cultist_deck_alt_continued",
+      "bullet_type": "small",
+      "text": "If you do, shuffle the 3 cards from this encounter set with the 9 [[Cultist]] enemies from above, and remove 3 of the 12 cards at random from the game without looking at them. Then place one of the remaining enemies facedown underneath each location in play, as a conspirator."
+    },
+    {
+      "id": "roland_clue",
+      "text": "Roland Banks begins the game with 1 clue <i>(from the token pool)</i>."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the 24 remaining encounter cards to build the encounter deck."
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "roland_bad_swap",
+      "text": "Roland Banks either upgrade Cover Up to its advanced version, or downgrade the advanced version of Roland's .38 Special to its original version.",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "necronomicon",
+            "text": "Upgrade to advanced Cover Up",
+            "effects": [
+              {
+                "type": "remove_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01001",
+                "non_story": true,
+                "card": "01007"
+              },
+              {
+                "type": "add_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01001",
+                "non_story": true,
+                "card": "90031"
+              }
+            ]
+          },
+          {
+            "id": "tote_bag",
+            "text": "Downgrade from advanced Roland's .38 Special",
+            "effects": [
+              {
+                "type": "remove_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01001",
+                "non_story": true,
+                "card": "90030"
+              },
+              {
+                "type": "add_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01001",
+                "non_story": true,
+                "card": "01006"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "roland_good_swap",
+      "text": "Roland Banks may either upgrade Roland's .38 Special to its advanced version, or downgrade the advanced version of Cover Up to its original version.",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "gun",
+            "text": "Upgrade to advanced Roland's .38 Special",
+            "effects": [
+              {
+                "type": "remove_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01001",
+                "non_story": true,
+                "card": "01006"
+              },
+              {
+                "type": "add_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01001",
+                "non_story": true,
+                "card": "90030"
+              }
+            ]
+          },
+          {
+            "id": "crime",
+            "text": "Downgrade advanced Cover Up",
+            "effects": [
+              {
+                "type": "remove_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01001",
+                "non_story": true,
+                "card": "90031"
+              },
+              {
+                "type": "add_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01001",
+                "non_story": true,
+                "card": "01007"
+              }
+            ]
+          },
+          {
+            "id": "neither",
+            "text": "No change"
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_roland_xp",
+      "text": "Roland Banks earns experience equal to the combined Victory X value of each enemy in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display (enemies only):",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "$fixed_investigator",
+            "fixed_investigator": "01001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_location_xp",
+      "text": "Each other investigator earns experience equal to the combined Victory X value of each location in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display (locations only):",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          },
+          {
+            "type": "earn_xp",
+            "investigator": "$fixed_investigator",
+            "fixed_investigator": "01001",
+            "input_scale": -1
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_cultist_enemies",
+      "type": "input",
+      "text": "If the number of [[Cultist]] enemies in the victory display is (choose one)…",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "4_5",
+            "text": "4–5",
+            "steps": [
+              "1_additional_card"
+            ]
+          },
+          {
+            "id": "6_7",
+            "text": "6–7",
+            "steps": [
+              "2_additional_cards"
+            ]
+          },
+          {
+            "id": "8_9",
+            "text": "8–9",
+            "steps": [
+              "3_additional_cards"
+            ]
+          },
+          {
+            "id": "10",
+            "text": "10",
+            "steps": [
+              "3_additional_cards",
+              "remove_non_symbol_token"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "1_additional_card",
+      "bullet_type": "small",
+      "text": "Roland Banks begins the next scenario with 1 additional card in hand."
+    },
+    {
+      "id": "2_additional_cards",
+      "bullet_type": "small",
+      "text": "Roland Banks begins the next scenario with 2 additional cards in hand."
+    },
+    {
+      "id": "3_additional_cards",
+      "bullet_type": "small",
+      "text": "Roland Banks begins the next scenario with 3 additional cards in hand."
+    },
+    {
+      "id": "remove_non_symbol_token",
+      "bullet_type": "small",
+      "type": "input",
+      "text": "Choose and remove any non-symbol token from the chaos bag, for the remainder of the campaign.",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "+1",
+            "text": "+1",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "+1"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "+1",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                }
+              ]
+            }
+          },
+          {
+            "id": "0",
+            "text": "0",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "0"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "0",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            }
+          },
+          {
+            "id": "-1",
+            "text": "−1",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "-1"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "-1",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                },
+                {
+                  "numCondition": 5
+                }
+              ]
+            }
+          },
+          {
+            "id": "-2",
+            "text": "−2",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "-2"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "-2",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            }
+          },
+          {
+            "id": "-3",
+            "text": "−3",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "-3"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "-3",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                }
+              ]
+            }
+          },
+          {
+            "id": "-4",
+            "text": "−4",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "-4"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "-4",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                }
+              ]
+            }
+          },
+          {
+            "id": "-5",
+            "text": "−5",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "-5"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "-5",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                }
+              ]
+            }
+          },
+          {
+            "id": "-6",
+            "text": "−6",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "-6"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "-6",
+              "options": [
+                {
+                  "numCondition": 1
+                }
+              ]
+            }
+          },
+          {
+            "id": "-7",
+            "text": "−7",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "-7"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "-7",
+              "options": [
+                {
+                  "numCondition": 1
+                }
+              ]
+            }
+          },
+          {
+            "id": "-8",
+            "text": "−8",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "-8"
+                ]
+              }
+            ],
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "-8",
+              "options": [
+                {
+                  "numCondition": 1
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_mr_grey",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "yes",
+            "text": "Is Mr. Grey in the victory display?",
+            "steps": [
+              "roland_good_swap"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached and Roland resigned",
+      "description": "Each other investigator was defeated",
+      "investigator_status": [
+        "resigned",
+        "physical",
+        "mental"
+      ],
+      "steps": [
+        "resolution_1"
+      ]
+    },
+    {
+      "id": "R1",
+      "title": "Risoluzione 1",
+      "text": "Your evidence presented and the case closed, you return to your typical day-to-day of investigating bootleggers and common criminals. Those responsible for the murders—those you could catch, anyway—are safely behind bars. With the proof you collected, not even Mr. Grey’s extensive influence can pardon their crimes.\nBut returning to your usual cases has proven difficult. Nagging worries pull at your thoughts. Something compelled Mr. Grey and the others to commit these heinous crimes. To sacrifice human lives in the pursuit of some dark, sinister purpose.\nA rot lies beneath the surface of this town like mold hides in the foundations of an old, rotting house. With so much left unknown, how can you be sure the guidelines of the Bureau account for what you’ve seen? What if next time, you have to break the rules to get to the truth? What will you do then?",
+      "steps": [
+        "earn_roland_xp",
+        "earn_location_xp",
+        "ask_cultist_enemies",
+        "ask_mr_grey",
+        "$upgrade_decks"
+      ]
+    },
+    {
+      "id": "R2",
+      "title": "Risoluzione 2",
+      "text": "No amount of procedure or training could have prepared you for the monsters that emerged during your investigation—both the human ones and the literal ones. Despite your best efforts, you were forced to close the case and lay low. Any further involvement might have been the very end of you. Mr. Grey and his goons may never face the proper consequences for their heinous acts. But at least now you know of the true rot that lies beneath the surface of this town. You’ll be better prepared next time. Rules or no rules.",
+      "steps": [
+        "earn_roland_xp",
+        "earn_location_xp",
+        "roland_bad_swap",
         "$upgrade_decks"
       ]
     }
@@ -90686,7 +91615,8 @@
               {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "07179"
+                "card": "07179",
+                "show_prompt": true
               }
             ]
           }
@@ -90724,7 +91654,8 @@
               {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "07180"
+                "card": "07180",
+                "show_prompt": true
               }
             ]
           }
@@ -90762,7 +91693,8 @@
               {
                 "type": "add_card",
                 "investigator": "choice",
-                "card": "07181"
+                "card": "07181",
+                "show_prompt": true
               }
             ]
           }
@@ -93267,6 +94199,12 @@
     },
     {
       "id": "R1",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
       "narration": {
         "id": "the_innsmouth_conspiracy.in_too_deep.resolution_1",
         "name": "Resolution 1"
@@ -99153,6 +100091,7 @@
     "gather_walrus",
     "set_aside_cards",
     "setup_locations",
+    "location_layout",
     "bill_the_lizard",
     "chesire_cat",
     "encounter_deck",
@@ -99198,6 +100137,62 @@
     {
       "id": "setup_locations",
       "text": "Put the White Rabbit's House, Sandy Strand, Tidal Pools, Sheltered Shallows, Twining Reef, and Rocky Outcropping locations into play. Each investigator begins play at White Rabbit's House."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "white_rabbit",
+          "blank",
+          "blank"
+        ],
+        [
+          "pools",
+          "blank",
+          "strand",
+          "blank",
+          "outcropping"
+        ],
+        [
+          "blank",
+          "shallows",
+          "blank",
+          "reef",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "white_rabbit",
+          "name": "White Rabbit's House"
+        },
+        {
+          "code": "pools",
+          "name": "Tidal Pools"
+        },
+        {
+          "code": "strand",
+          "name": "Sandy Strand"
+        },
+        {
+          "code": "outcropping",
+          "name": "Rocky Outcropping"
+        },
+        {
+          "code": "shallows",
+          "name": "Sheltered Shallows"
+        },
+        {
+          "code": "reef",
+          "name": "Twining Reef"
+        }
+      ]
     },
     {
       "id": "bill_the_lizard",
@@ -99537,6 +100532,7 @@
     "set_aside_chesire_cat",
     "set_aside_cards",
     "setup_locations",
+    "location_layout",
     "encounter_deck",
     "$play_scenario"
   ],
@@ -99571,6 +100567,59 @@
     {
       "id": "setup_locations",
       "text": "Put the Arkham Asylum, Bank of Arkham, Independence Square, Newspaper Office, Curiositie Shoppe, and Train Station locations into play with their non-[[Wonderland]] sides revealed. Each investigator begins play at Arkham Asylum."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "train_station",
+          "blank",
+          "blank",
+          "blank",
+          "asylum",
+          "blank"
+        ],
+        [
+          "shoppe",
+          "blank",
+          "office",
+          "blank",
+          "bank",
+          "blank",
+          "square"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "train_station",
+          "name": "Train Station"
+        },
+        {
+          "code": "asylum",
+          "name": "Arkham Asylum"
+        },
+        {
+          "code": "shoppe",
+          "name": "Curiosite Shoppe"
+        },
+        {
+          "code": "office",
+          "name": "Newspaper Office"
+        },
+        {
+          "code": "bank",
+          "name": "Bank of Arkham"
+        },
+        {
+          "code": "square",
+          "name": "Independence Square"
+        }
+      ]
     },
     {
       "id": "encounter_deck",
@@ -100302,6 +101351,7 @@
     "gather_boons_and_banes",
     "set_aside_cards",
     "setup_locations",
+    "location_layout",
     "queen_and_king",
     "royal_suspicion",
     "chesire_cat",
@@ -100341,6 +101391,77 @@
     {
       "id": "setup_locations",
       "text": "Put the Rose Garden, Croquet Grounds, Hedge Maze, Throne Room, Courtroom, Dungeons, Kitchens, and Guard Barracks locations into play. Each investigator begins play at Rose Garden."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "court_room",
+          "blank",
+          "kitchens",
+          "blank"
+        ],
+        [
+          "dungeons",
+          "blank",
+          "throne_room",
+          "blank",
+          "guard_barracks"
+        ],
+        [
+          "blank",
+          "crochet_grounds",
+          "blank",
+          "hedge_maze",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "rose_garden",
+          "blank",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "court_room",
+          "name": "Court Room"
+        },
+        {
+          "code": "kitchens",
+          "name": "Kitchens"
+        },
+        {
+          "code": "dungeons",
+          "name": "Dungeons"
+        },
+        {
+          "code": "throne_room",
+          "name": "Throne Room"
+        },
+        {
+          "code": "guard_barracks",
+          "name": "Guard Barracks"
+        },
+        {
+          "code": "crochet_grounds",
+          "name": "Crochet Grounds"
+        },
+        {
+          "code": "hedge_maze",
+          "name": "Hedge Maze"
+        },
+        {
+          "code": "rose_garden",
+          "name": "Rose Garden"
+        }
+      ]
     },
     {
       "id": "queen_and_king",
@@ -100731,6 +101852,7 @@
     "gather_boons_and_banes",
     "set_aside_cards",
     "setup_locations",
+    "location_layout",
     "white_king",
     "chesire_cat",
     "encounter_deck",
@@ -100770,6 +101892,133 @@
     {
       "id": "setup_locations",
       "text": "Put the First Row, Second Row, Third Row, Fourth Row, Fifth Row, Sixth Row, Seventh Row, Eighth Row, and Distant Square locations into play.  Each investigator begins play at Second Row."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "normal",
+      "vertical": "half",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "distant_square"
+        ],
+        [
+          "eighth_row_rotate",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "seventh_row_rotate",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "sixth_row_rotate",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "fifth_row_rotate",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "fourth_row_rotate",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "third_row_rotate",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "second_row_rotate",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "first_row_rotate",
+          "blank",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "distant_square",
+          "name": "Distant Square"
+        },
+        {
+          "code": "eighth_row_rotate",
+          "name": "Eighth Row"
+        },
+        {
+          "code": "seventh_row_rotate",
+          "name": "Seventh Row"
+        },
+        {
+          "code": "sixth_row_rotate",
+          "name": "Sixth Row"
+        },
+        {
+          "code": "fifth_row_rotate",
+          "name": "Fifth Row"
+        },
+        {
+          "code": "fourth_row_rotate",
+          "name": "Fourth Row"
+        },
+        {
+          "code": "third_row_rotate",
+          "name": "Third Row"
+        },
+        {
+          "code": "second_row_rotate",
+          "name": "Second Row"
+        },
+        {
+          "code": "first_row_rotate",
+          "name": "First Row"
+        }
+      ]
     },
     {
       "id": "white_king",
@@ -101705,6 +102954,7 @@
     "gather_boons_and_banes",
     "setup_alice",
     "setup_locations",
+    "location_layout",
     "setup_strength_of_wonderland",
     "remove_other_boss",
     "setup_chesire_cat",
@@ -102199,6 +103449,53 @@
     {
       "id": "setup_locations",
       "text": "Set the following locations aside, out of play: Northside, Downtown, Easttown, and Vacuous Void.  Put the Merchant District, Rivertown, Miskatonic University, French Hill, Uptown, and Southside locations into play [[Wonderland]] side revealed.  Each investigator (including Alice) begins play at Merchant District."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "merchant",
+          "rivertown"
+        ],
+        [
+          "university",
+          "french_hill"
+        ],
+        [
+          "uptown",
+          "southside"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "merchant",
+          "name": "Merchant District"
+        },
+        {
+          "code": "rivertown",
+          "name": "Rivertown"
+        },
+        {
+          "code": "university",
+          "name": "Miskatonic University"
+        },
+        {
+          "code": "french_hill",
+          "name": "French Hill"
+        },
+        {
+          "code": "uptown",
+          "name": "Uptown"
+        },
+        {
+          "code": "southside",
+          "name": "Southside"
+        }
+      ]
     },
     {
       "id": "setup_strength_of_wonderland",
@@ -103327,6 +104624,7 @@
     "gather_boons_and_banes",
     "set_aside_cards",
     "setup_locations",
+    "location_layout",
     "dum_and_dee",
     "soldiers",
     "chesire_cat",
@@ -103366,6 +104664,65 @@
     {
       "id": "setup_locations",
       "text": "Choose one of the two Northeast Slope, Northwest Slope, Southeast Slope, and Southwest Slope locations at random and put them into play. Remove the other versions of Northeast Slope, Northwest Slope, Southeast Slope, and Southwest Slope from the game.  Then, put the Overgrown Dell, West Hill, and East Hill locations into play.  Each investigator begins play at Overgrown Dell."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "northwest",
+          "blank",
+          "northeast",
+          "blank"
+        ],
+        [
+          "west",
+          "blank",
+          "dell",
+          "blank",
+          "east"
+        ],
+        [
+          "blank",
+          "southwest",
+          "blank",
+          "southeast"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "northwest",
+          "name": "Northwest Slope"
+        },
+        {
+          "code": "northeast",
+          "name": "Northeast Slope"
+        },
+        {
+          "code": "west",
+          "name": "West Hill"
+        },
+        {
+          "code": "dell",
+          "name": "Overgrown Dell"
+        },
+        {
+          "code": "east",
+          "name": "East Hill"
+        },
+        {
+          "code": "southwest",
+          "name": "Southwest Slope"
+        },
+        {
+          "code": "southeast",
+          "name": "Southeast Slope"
+        }
+      ]
     },
     {
       "id": "dum_and_dee",
@@ -103747,25 +105104,29 @@
           {
             "numCondition": 1,
             "steps": [
-              "five_seats"
+              "five_seats",
+              "location_layout_1"
             ]
           },
           {
             "numCondition": 2,
             "steps": [
-              "seven_seats"
+              "seven_seats",
+              "location_layout_2"
             ]
           },
           {
             "numCondition": 3,
             "steps": [
-              "nine_seats"
+              "nine_seats",
+              "location_layout_3"
             ]
           },
           {
             "numCondition": 4,
             "steps": [
-              "eleven_seats"
+              "eleven_seats",
+              "location_layout_4"
             ]
           }
         ]
@@ -103790,6 +105151,434 @@
       "id": "eleven_seats",
       "bullet_type": "small",
       "text": "For 4 players, put eleven Empty Seat locations into play."
+    },
+    {
+      "id": "location_layout_1",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "half",
+      "vertical": "half",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "blank",
+          "head_of_the_table",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "center_of_the_table",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat",
+          "blank",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "head_of_the_table",
+          "name": "Head of the Table"
+        },
+        {
+          "code": "center_of_the_table",
+          "name": "Center of the Table"
+        },
+        {
+          "code": "empty_seat",
+          "name": "Empty Seat"
+        },
+        {
+          "code": "empty_seat_rotate",
+          "name": "Empty Seat"
+        }
+      ]
+    },
+    {
+      "id": "location_layout_2",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "half",
+      "vertical": "half",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "blank",
+          "head_of_the_table",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "center_of_the_table",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat",
+          "blank",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "head_of_the_table",
+          "name": "Head of the Table"
+        },
+        {
+          "code": "center_of_the_table",
+          "name": "Center of the Table"
+        },
+        {
+          "code": "empty_seat",
+          "name": "Empty Seat"
+        },
+        {
+          "code": "empty_seat_rotate",
+          "name": "Empty Seat"
+        }
+      ]
+    },
+    {
+      "id": "location_layout_3",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "half",
+      "vertical": "half",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "blank",
+          "head_of_the_table",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "center_of_the_table",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat",
+          "blank",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "head_of_the_table",
+          "name": "Head of the Table"
+        },
+        {
+          "code": "center_of_the_table",
+          "name": "Center of the Table"
+        },
+        {
+          "code": "empty_seat",
+          "name": "Empty Seat"
+        },
+        {
+          "code": "empty_seat_rotate",
+          "name": "Empty Seat"
+        }
+      ]
+    },
+    {
+      "id": "location_layout_4",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "half",
+      "vertical": "half",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "blank",
+          "head_of_the_table",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "center_of_the_table",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "empty_seat_rotate",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat_rotate"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "empty_seat",
+          "blank",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "head_of_the_table",
+          "name": "Head of the Table"
+        },
+        {
+          "code": "center_of_the_table",
+          "name": "Center of the Table"
+        },
+        {
+          "code": "empty_seat",
+          "name": "Empty Seat"
+        },
+        {
+          "code": "empty_seat_rotate",
+          "name": "Empty Seat"
+        }
+      ]
     },
     {
       "id": "hare_and_hatter",
@@ -105019,6 +106808,7 @@
     "set_aside_cards",
     "create_trail_deck",
     "setup_locations",
+    "location_layout",
     "bellman",
     "chesire_cat",
     "encounter_deck",
@@ -105069,6 +106859,52 @@
     {
       "id": "setup_locations",
       "text": "Put the Tumtum Tree, Field of Chasms, Mound of Crags, Narrow Valley, and The Wabe locations into play.  Each investigator begins play at Tumtum Tree."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "mound_of_crags",
+          "blank"
+        ],
+        [
+          "the_wabe",
+          "tumtum_tree",
+          "narrow_valey"
+        ],
+        [
+          "blank",
+          "field_of_chasms",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "mound_of_crags",
+          "name": "Mound of Crags"
+        },
+        {
+          "code": "the_wabe",
+          "name": "The Wabe"
+        },
+        {
+          "code": "tumtum_tree",
+          "name": "Tumtum Tree"
+        },
+        {
+          "code": "narrow_valley",
+          "name": "Narrow Valley"
+        },
+        {
+          "code": "field_of_chasms",
+          "name": "Field of Chasms"
+        }
+      ]
     },
     {
       "id": "bellman",
@@ -107441,6 +109277,7 @@
     "create_scanning_deck",
     "create_evidence_deck",
     "setup_locations",
+    "location_layout",
     "set_aside_evidence",
     "encounter_deck",
     "cards_removed_from_game_rule",
@@ -107477,6 +109314,79 @@
     {
       "id": "setup_locations",
       "text": "Put all remaining locations into play. Each investigator begins play at the Airlocks."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "normal",
+      "vertical": "half",
+      "locations": [
+        [
+          "airlocks",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "hydroponics",
+          "infirmary",
+          "blank"
+        ],
+        [
+          "mainframe",
+          "blank",
+          "blank",
+          "flight_deck"
+        ],
+        [
+          "blank",
+          "quarters",
+          "telecoms",
+          "blank"
+        ],
+        [
+          "engine",
+          "blank",
+          "blank",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "airlocks",
+          "name": "Airlocks"
+        },
+        {
+          "code": "infirmary",
+          "name": "Infirmary"
+        },
+        {
+          "code": "hydroponics",
+          "name": "Hydroponics"
+        },
+        {
+          "code": "mainframe",
+          "name": "Ship's Mainframe"
+        },
+        {
+          "code": "flight_deck",
+          "name": "Flight Deck"
+        },
+        {
+          "code": "engine",
+          "name": "Engine Room"
+        },
+        {
+          "code": "quarters",
+          "name": "Crew Quarters"
+        },
+        {
+          "code": "telecoms",
+          "name": "Telecoms"
+        }
+      ]
     },
     {
       "id": "set_aside_evidence",
@@ -110181,6 +112091,7 @@
     "set_aside_feaster",
     "create_scanning_deck",
     "setup_locations",
+    "location_layout",
     "spawn_greys",
     "encounter_deck",
     "seal_rule",
@@ -110227,6 +112138,56 @@
     {
       "id": "setup_locations",
       "text": " Put all remaining locations into play. Each investigator begins play at the Entrance Tunnel."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "alien_chambers_green",
+          "alien_chambers_yellow",
+          "alien_chambers_blue"
+        ],
+        [
+          "alien_chambers_hourglass",
+          "alien_chambers_moon",
+          "blank"
+        ],
+        [
+          "blank",
+          "entrance_tunnel",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "alien_chambers_green",
+          "name": "Alien Chambers (Clover)"
+        },
+        {
+          "code": "alien_chambers_yellow",
+          "name": "Alien Chambers (Circle)"
+        },
+        {
+          "code": "alien_chambers_blue",
+          "name": "Alien Chambers (Triangle)"
+        },
+        {
+          "code": "alien_chambers_hourglass",
+          "name": "Alien Chambers (Hourglass)"
+        },
+        {
+          "code": "alien_chambers_moon",
+          "name": "Alien Chambers (Moon)"
+        },
+        {
+          "code": "entrance_tunnel",
+          "name": "Entrance Tunnels"
+        }
+      ]
     },
     {
       "id": "spawn_greys",
@@ -110737,6 +112698,7 @@
     "gather_maddening_delusions",
     "ask_add_memories",
     "setup_locations",
+    "location_layout",
     "set_aside_locations",
     "set_aside_cards",
     "encounter_deck",
@@ -110805,6 +112767,31 @@
     {
       "id": "setup_locations",
       "text": "Put the Theatre, Lobby, Balcony, and Backstage locations into play. Each investigator begins play at the Theatre."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Disposizione dei Luoghi",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "03051_back",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "03050_back",
+          "blank",
+          "03049_back",
+          "blank",
+          "03052_back",
+          "blank"
+        ]
+      ]
     },
     {
       "id": "set_aside_locations",
@@ -110983,6 +112970,7 @@
     "set_aside_cards",
     "create_scanning_deck",
     "setup_locations",
+    "location_layout",
     "encounter_deck",
     "$play_scenario"
   ],
@@ -111021,6 +113009,69 @@
     {
       "id": "setup_locations",
       "text": "Put all remaining locations into play. Each investigator begins play at the Cryosleep Quarters."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Layout",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        [
+          "escape_pod",
+          "blank",
+          "blank",
+          "infirmary",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "cargo_hold",
+          "blank",
+          "mess_hall",
+          "blank",
+          "bridge"
+        ],
+        [
+          "engine",
+          "blank",
+          "blank",
+          "quarters",
+          "blank",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "escape_pod",
+          "name": "Escape Pod Bay"
+        },
+        {
+          "code": "infirmary",
+          "name": "Infirmary"
+        },
+        {
+          "code": "cargo_hold",
+          "name": "Cargo Hold"
+        },
+        {
+          "code": "mess_hall",
+          "name": "Mess Hall"
+        },
+        {
+          "code": "bridge",
+          "name": "Ship's Bridge"
+        },
+        {
+          "code": "engine",
+          "name": "Engine Room"
+        },
+        {
+          "code": "quarters",
+          "name": "Cryosleep Quarters"
+        }
+      ]
     },
     {
       "id": "encounter_deck",
