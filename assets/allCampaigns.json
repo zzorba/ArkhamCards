@@ -24530,7 +24530,10 @@
       "id": "intro",
       "narration": {
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.intro",
-        "name": "Intro"
+        "name": "Intro",
+        "lang": [
+          "ru"
+        ]
       },
       "title": "Intro",
       "type": "story",
@@ -24561,7 +24564,10 @@
       "id": "gavriella_intro",
       "narration": {
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.gavriella_intro",
-        "name": "Gavriella Intro"
+        "name": "Gavriella Intro",
+        "lang": [
+          "ru"
+        ]
       },
       "type": "story",
       "title": "Gavriella Intro",
@@ -24588,7 +24594,10 @@
       "id": "jerome_intro",
       "narration": {
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.jerome_intro",
-        "name": "Jerome Intro"
+        "name": "Jerome Intro",
+        "lang": [
+          "ru"
+        ]
       },
       "type": "story",
       "title": "Jerome Intro",
@@ -24615,7 +24624,10 @@
       "id": "penny_intro",
       "narration": {
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.penny_intro",
-        "name": "Penny Intro"
+        "name": "Penny Intro",
+        "lang": [
+          "ru"
+        ]
       },
       "type": "story",
       "title": "Penny Intro",
@@ -24642,7 +24654,10 @@
       "id": "valentino_intro",
       "narration": {
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.valentino_intro",
-        "name": "Valentino Intro"
+        "name": "Valentino Intro",
+        "lang": [
+          "ru"
+        ]
       },
       "type": "story",
       "title": "Valentino Intro",
@@ -26988,7 +27003,10 @@
       "id": "no_resolution",
       "narration": {
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.resolution",
-        "name": "Resolution"
+        "name": "Resolution",
+        "lang": [
+          "ru"
+        ]
       },
       "title": "No resolution was reached",
       "description": "Each investigator was defeated",
@@ -30932,7 +30950,7 @@
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": "????"
+          "card": "54041"
         }
       ]
     },
@@ -55983,7 +56001,8 @@
       "id": "intro",
       "narration": {
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.intro",
-        "name": "Intro"
+        "name": "Intro",
+        "lang": ["ru"]
       },
       "title": "Intro",
       "type": "story",
@@ -56012,7 +56031,8 @@
       "id": "gavriella_intro",
       "narration": {
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.gavriella_intro",
-        "name": "Gavriella Intro"
+        "name": "Gavriella Intro",
+        "lang": ["ru"]
       },
       "type": "story",
       "title": "Gavriella Intro",
@@ -56037,7 +56057,8 @@
       "id": "jerome_intro",
       "narration": {
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.jerome_intro",
-        "name": "Jerome Intro"
+        "name": "Jerome Intro",
+        "lang": ["ru"]
       },
       "type": "story",
       "title": "Jerome Intro",
@@ -56062,7 +56083,8 @@
       "id": "penny_intro",
       "narration": {
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.penny_intro",
-        "name": "Penny Intro"
+        "name": "Penny Intro",
+        "lang": ["ru"]
       },
       "type": "story",
       "title": "Penny Intro",
@@ -56087,7 +56109,8 @@
       "id": "valentino_intro",
       "narration": {
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.valentino_intro",
-        "name": "Valentino Intro"
+        "name": "Valentino Intro",
+        "lang": ["ru"]
       },
       "type": "story",
       "title": "Valentino Intro",
@@ -58097,7 +58120,8 @@
       "id": "no_resolution",
       "narration": {
         "id": "the_circle_undone.disappearance_at_the_twilight_estate.resolution",
-        "name": "Resolution"
+        "name": "Resolution",
+        "lang": ["ru"]
       },
       "title": "No resolution was reached",
       "description": "Each investigator was defeated",
@@ -87547,7 +87571,7 @@
         "physical",
         "mental"
       ],
-      "text": "You're somewhere else now, lying on your stomach on cold, damp stone. Your arms are held tight behind your back. You have no idea how you got here. As consciousness returns, your vision comes into focus. You crane your neck up to view your surroundings, but it's too dark to see anything inside your stone cell.\n\"I'll ask you one last time. Who sent you here?\" a voice asks. It is deep and husky, like the croaking of a frog.\nYou hear the familiar, cool baritone of Agent Dawson reply: \"Your breath smells awful. Ever heard of brushing your teeth?\" Despite the sarcasm dripping from his words, his voice wavers ever so slightly.\n\"Your mockery only masks the fear that hides within,\" the voice replies. \"Very well. If you are of no use to us, you will be the first to be sacrificed.\"\nYour vision continues to adjust. You can just barely make out Dawson's silhouette on the other side of the cell. He is kneeling before a metal hatch in the stone floor. An elderly robed figure presses a curved knife against Dawson's throat. Someone lifts the hatch, and Dawson's eyes go wide. He gives you one last despairing look, shakes his head slowly and deliberately, and quietly slides something across the stone floor. Then the hooded figure pushes him in. In the scuffle and the low light, nobody notices the car key that skitters to a halt directly next to you.\nYou grab the key and stuff it into your pocket just before you are shoved forward. Two more sets of cold, clammy hands grap your shoulders, and the hooded figure slides his knife up to your neck. All you can see of his face are his wide, unblinking eyes.\n\"Oceiros, these ones were found in Dagon's lair as well,\" another voice explains to the elderly figure in the robes. \"We believe they were the ones snooping around Devil Reef.\"\nThe man with the knife to your throat nods. \"Your turn,\" he declares. \"Tell us why you have come and perhaps we will let you go. Who sent you? What have you seen?\"",
+      "text": "You're somewhere else now, lying on your stomach on cold, damp stone. Your arms are held tight behind your back. You have no idea how you got here. As consciousness returns, your vision comes into focus. You crane your neck up to view your surroundings, but it's too dark to see anything inside your stone cell.\n\"I'll ask you one last time. Who sent you here?\" a voice asks. It is deep and husky, like the croaking of a frog.\nYou hear the familiar, cool baritone of Agent Dawson reply: \"Your breath smells awful. Ever heard of brushing your teeth?\" Despite the sarcasm dripping from his words, his voice wavers ever so slightly.\n\"Your mockery only masks the fear that hides within,\" the voice replies. \"Very well. If you are of no use to us, you will be the first to be sacrificed.\"\nYour vision continues to adjust. You can just barely make out Dawson's silhouette on the other side of the cell. He is kneeling before a metal hatch in the stone floor. An elderly robed figure presses a curved knife against Dawson's throat. Someone lifts the hatch, and Dawson's eyes go wide. He gives you one last despairing look, shakes his head slowly and deliberately, and quietly slides something across the stone floor. Then the hooded figure pushes him in. In the scuffle and the low light, nobody notices the car key that skitters to a halt directly next to you.\nYou grab the key and stuff it into your pocket just before you are shoved forward. Two more sets of cold, clammy hands grasp your shoulders, and the hooded figure slides his knife up to your neck. All you can see of his face are his wide, unblinking eyes.\n\"Oceiros, these ones were found in Dagon's lair as well,\" another voice explains to the elderly figure in the robes. \"We believe they were the ones snooping around Devil Reef.\"\nThe man with the knife to your throat nods. \"Your turn,\" he declares. \"Tell us why you have come and perhaps we will let you go. Who sent you? What have you seen?\"",
       "steps": [
         "maybe_ask_act_or_agenda",
         "earn_xp",
@@ -96702,6 +96726,2456 @@
       "title": "Resolution 3",
       "text": "Before you can respond or put the Snark to use, the Bellman returns from the discussion with a bottle in one hand and his bell in the other.  He offers you the bell to drink from and sloshes the bottle around as if ringing it.  You politely decline.  \"I'll celebrate your diligence another time, after we've celebrated the catching of the Snark,\" he posits.  You urge the Bellman to save any partying at all for after you've left the increasingly darkening woods.  \"Quite sage,\" the Bellman muses, \"were I not the leader of this venture, you'd make a fine one indeed.  Your duty and honor should now be the first use of Snark!\"  He gathers the hunters around you and the creature, watching expectantly.  You ask the Snark to take you all out of the Tulgey Wood, if it can.  It nods, shrugs, twitches, twirls, and suddenly-\nYou stand at the forest's edge, with the first rays of sunlight beginning to weave through the trees.  The hunters all clap and cheer and call for grog as they marvel at the sudden change.  You look down to the Snark, but the creature has vanished away completely during the transition.  \"Masterful once again!\" the Bellman applauds.  \"We'll save the rest of it for a rainy day - or snowy, should the seasons permit - but in any case, I call an end to the hunting of the Snark!\"  The various hunters all congratulate each other and wander away from the clearing by themselves or in pairs, seemingly unconcerned about the sudden disappearance of the Snark.  Finally, only the Bellman remains standing next to you.  \"Through all the months and weeks of hunting, it never occurred what might proceed the finding of the Snark.  Should you have another expedition in mind, I would gladly pass the days as its leader.\"  Another ally would be welcome as you traverse the rest of Wonderland to save both Arkham and Alice, and so you tell the Bellman just enough about your journey to recruit him without any fuss.",
       "steps": ["add_1_strength_of_wonderland", "earn_bellman", "proceed_interlude"]
+    }
+  ]
+}
+]}
+,
+{
+  "campaign":
+{
+  "id": "zdm",
+  "position": 21,
+  "version": 1,
+  "name": "The Crown of Egil",
+  "custom": {
+    "creator": "TheMadJuggler",
+    "download_link": {
+      "en": "https://mysteriouschanting.wordpress.com/2021/05/14/the-crown-of-egil/"
+    }
+  },
+  "campaign_type": "campaign",
+  "campaign_log": [
+    {
+      "id": "campaign_notes",
+      "title": "Campaign Notes"
+    },
+    {
+      "id": "traces_of_egil",
+      "title": "Traces of Egil"
+    },
+    {
+      "id": "hidden",
+      "title": "hidden",
+      "type": "hidden"
+    }
+  ],
+  "scenarios": [
+    "ce_prologue",
+    "the_warning",
+    "traces_of_egil",
+    "the_golden_circle",
+    "egils_relics",
+    "the_fallen",
+    "barors_gifts",
+    "the_crown",
+    "ce_epilogue"
+  ],
+  "setup": [
+    "prologue",
+    "intro",
+    "choose_investigators",
+    "difficulty_choice",
+    "saga",
+    "listening"
+  ],
+  "steps": [
+    {
+      "id": "prologue",
+      "type": "story",
+      "title": "The Music of the Wolf",
+      "text": "Wolf-battening warrior,\nWield we high gleaming swords.\nIn snake-fostering summer\nSuch deeds well beseem.\nLead up to Lundr:\nLet laggards be none!\nSpear-music ungentle\nBy sunset shall sound\n<right>– <i>Egil Skallagrímsson</i>, Egil's Saga"
+    },
+    {
+      "id": "intro",
+      "text": "<i>The Crown of Egil</i> is a campaign for Arkham Horror: The Card Game for 1–4 players. The campaign contains four chapters: “The Warning,” “The Golden Circle,” “The Fallen,” and “The Crown” to form a four-part campaign."
+    },
+    {
+      "id": "choose_investigators",
+      "type": "input",
+      "input": {
+        "type": "scenario_investigators"
+      }
+    },
+    {
+      "id": "saga",
+      "type": "rule_reminder",
+      "title": "Additional Rules - Saga",
+      "text": "The [[Saga]] keyword indicates that an encounter card effect will alter the narrative of the campaign, allowing the players to write their own saga. Successful saga actions will yield experience and other rewards, but everything has a cost..."
+    },
+    {
+      "id": "listening",
+      "type": "rule_reminder",
+      "title": "Recommended Listening",
+      "text": "I have compiled a soundtrack of albums by Icelandic musicians that fit the mood of each act in the campaign:",
+      "bullets": [
+        {
+          "text": "I. Gyða Valtýsdóttir – <i>Mihkel</i>, <i>Epicycle</i>"
+        },
+        {
+          "text": "II. Sigur Rós – <i>Route One</i>, <i>Variations on Darkness</i>"
+        },
+        {
+          "text": "III. Jóhann Jóhannsson – <i>Last and First Men</i>, <i>Sicario</i>, <i>Arrival</i>"
+        },
+        {
+          "text": "IV. Skálmöld – <i>Baldur</i>, <i>Sorgir</i>, <i>Vögguvísur Yggdrasils</i>"
+        }
+      ]
+    },
+    {
+      "id": "difficulty_choice",
+      "text": "Choose difficulty level:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "default_choice": "standard",
+        "choices": [{
+          "id": "easy",
+          "text": "Easy",
+          "description": "<i>I want to experience the story</i>",
+          "tokens": [
+            "+1", "+1", "0", "0", "0", "-1", "-1", "-1", "-2", "-2", "skull", "skull", "skull", "auto_fail", "elder_sign"
+          ],
+          "effects": [
+            {
+              "type": "campaign_data",
+              "setting": "difficulty",
+              "value": "easy"
+            },
+            {
+              "type": "add_chaos_token",
+              "tokens": [
+                "+1", "+1", "0", "0", "0", "-1", "-1", "-1", "-2", "-2", "skull", "skull", "skull", "auto_fail", "elder_sign"
+              ]
+            }
+          ]
+        },{
+          "id": "standard",
+          "text": "Standard",
+          "description": "<i>I want a challenge</i>",
+          "tokens": [
+            "+1", "0", "0", "-1", "-1", "-1", "-2", "-2", "-3", "-4", "skull", "skull", "skull", "auto_fail", "elder_sign"
+          ],
+          "effects": [
+            {
+              "type": "campaign_data",
+              "setting": "difficulty",
+              "value": "standard"
+            },
+            {
+              "type": "add_chaos_token",
+              "tokens": [
+                "+1", "0", "0", "-1", "-1", "-1", "-2", "-2", "-3", "-4", "skull", "skull", "skull", "auto_fail", "elder_sign"
+              ]
+            }
+          ]
+        },{
+          "id": "hard",
+          "text": "Hard",
+          "description": "<i>I want a true nightmare</i>",
+          "tokens": [
+            "0", "0", "0", "-1", "-1", "-2", "-3", "-3", "-4", "-5", "skull", "skull", "skull", "auto_fail", "elder_sign"
+          ],
+          "effects": [
+            {
+              "type": "campaign_data",
+              "setting": "difficulty",
+              "value": "hard"
+            },
+            {
+              "type": "add_chaos_token",
+              "tokens": [
+                "0", "0", "0", "-1", "-1", "-2", "-3", "-3", "-4", "-5", "skull", "skull", "skull", "auto_fail", "elder_sign"
+              ]
+            }
+          ]
+        },{
+          "id": "expert",
+          "text": "Expert",
+          "description": "<i>I want Arkham Horror</i>",
+          "tokens": [
+            "0", "-1", "-1", "-2", "-2", "-3", "-3", "-4", "-4", "-5", "-6", "-8", "skull", "skull", "skull", "auto_fail", "elder_sign"
+          ],
+          "effects": [
+            {
+              "type": "campaign_data",
+              "setting": "difficulty",
+              "value": "expert"
+            },
+            {
+              "type": "add_chaos_token",
+              "tokens": [
+                "0", "-1", "-1", "-2", "-2", "-3", "-3", "-4", "-4", "-5", "-6", "-8", "skull", "skull", "skull", "auto_fail", "elder_sign"
+              ]
+            }
+          ]
+        }]
+      }
+    }
+  ]
+}
+, "scenarios": [
+{
+  "id": "barors_gifts",
+  "scenario_name": "Bárðr's Gifts",
+  "full_name": "Interlude III: Bárðr's Gifts",
+  "header": "Interlude III",
+  "type": "interlude",
+  "icon": "anachronism",
+  "setup": [
+    "ask_atli",
+    "ask_ljot",
+    "ask_queen_gunnhild",
+    "ask_berg_onund",
+    "check_none",
+    "$upgrade_decks"
+  ],
+  "steps": [
+    {
+      "id": "ask_atli",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "yes",
+            "text": "Was Atli the Short in the victory display?",
+            "steps": ["ward_story", "ward_effects"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ward_story",
+      "type": "story",
+      "title": "The Ward",
+      "text": "\"The power in runes... is passed down through story... as words become wards.\""
+    },
+    {
+      "id": "ward_effects",
+      "text": "In your Campaign Log, under Traces of Egil, record \"Runes of Protection.\" Additionally, any one investigator may add the Runes of Protection asset to their deck. This card does not count toward that investigator’s deck size. Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "traces_of_egil",
+          "id": "runes_of_protection",
+          "text": "Runes of Protection"
+        },
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "zce_00054"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": ["cultist"]
+        },
+        {
+          "type": "campaign_log",
+          "section": "hidden",
+          "id": "one_victory_display",
+          "text": "dummy"
+        },
+        {
+          "type": "campaign_log_count",
+          "section": "hidden",
+          "id": "chaos_tokens",
+          "operation": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "ask_ljot",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "yes",
+            "text": "Was Ljot the Pale in the victory display?",
+            "steps": ["cursed_blade_story", "cursed_blade_effects"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cursed_blade_story",
+      "type": "story",
+      "title": "The Cursed Blade",
+      "text": "\"Egil did not deserve... the generosity of noble Arinbjörn... The blade forged with honor... now yearns for blood.\""
+    },
+    {
+      "id": "cursed_blade_effects",
+      "text": "In your Campaign Log, under Traces of Egil, record \"Dragvandil.\" Additionally, any one investigator may add the Dragvandil asset to their deck. This card does not count toward that investigator’s deck size. Add 1 [tabet] token to the chaos bag for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "traces_of_egil",
+          "id": "dragvandil",
+          "text": "Dragvandil"
+        },
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "zce_00052"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": ["tablet"]
+        },
+        {
+          "type": "campaign_log",
+          "section": "hidden",
+          "id": "one_victory_display",
+          "text": "dummy"
+        },
+        {
+          "type": "campaign_log_count",
+          "section": "hidden",
+          "id": "chaos_tokens",
+          "operation": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "ask_queen_gunnhild",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "yes",
+            "text": "Was Queen Gunnhild in the victory display?",
+            "steps": ["memento_mori_story", "memento_mori_effects"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "memento_mori_story",
+      "type": "story",
+      "title": "Memento Mori",
+      "text": "\"A reminder... of the light to Egil's dark... his brother's goodness shines... centuries anon.\""
+    },
+    {
+      "id": "memento_mori_effects",
+      "text": "In your Campaign Log, under Traces of Egil, record \"Thorolf's Bracelet\" Additionally, any one investigator may add the Thorolf's Bracelet asset to their deck. This card does not count toward that investigator’s deck size. Add 1 [elder_thing] token to the chaos bag for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "traces_of_egil",
+          "id": "thorolfs_bracelet",
+          "text": "Thorolf's Bracelet"
+        },
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "zce_00055"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": ["elder_thing"]
+        },
+        {
+          "type": "campaign_log",
+          "section": "hidden",
+          "id": "one_victory_display",
+          "text": "dummy"
+        },
+        {
+          "type": "campaign_log_count",
+          "section": "hidden",
+          "id": "chaos_tokens",
+          "operation": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "ask_berg_onund",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "yes",
+            "text": "Was Berg-Onund in the victory display?",
+            "steps": ["perfect_disguise_story", "check_difficulty"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "perfect_disguise_story",
+      "type": "story",
+      "title": "Perfect Disguise",
+      "text": "\"Egil deceived many... his guile precedes him... but even the trickster may be fooled.\""
+    },
+    {
+      "id": "check_difficulty",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "difficulty",
+        "options": [
+          {
+            "condition": "easy",
+            "steps": ["perfect_disguise_effects"]
+          },
+          {
+            "condition": "standard",
+            "steps": ["perfect_disguise_effects"]
+          },
+          {
+            "condition": "hard",
+            "steps": ["perfect_disguise_effects"]
+          },
+          {
+            "condition": "expert",
+            "steps": ["perfect_disguise_effects_expert"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "perfect_disguise_effects",
+      "text": "In your Campaign Log, under Traces of Egil, record \"Egil's Hood.\" Additionally, any one investigator may add the Egil's Hood asset to their deck. This card does not count toward that investigator’s deck size. Add 1 \"-6\" token to the chaos bag for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "traces_of_egil",
+          "id": "egils_hood",
+          "text": "Egil's Hood."
+        },
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "zce_00053"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": ["-6"]
+        },
+        {
+          "type": "campaign_log",
+          "section": "hidden",
+          "id": "one_victory_display",
+          "text": "dummy"
+        },
+        {
+          "type": "campaign_log_count",
+          "section": "hidden",
+          "id": "chaos_tokens",
+          "operation": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "perfect_disguise_effects_expert",
+      "text": "In your Campaign Log, under Traces of Egil, record \"Egil's Hood.\" Additionally, any one investigator may add the Egil's Hood asset to their deck. This card does not count toward that investigator’s deck size. Add 1 \"-7\" token to the chaos bag for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "traces_of_egil",
+          "id": "egils_hood",
+          "text": "Egil's Hood."
+        },
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "zce_00053"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": ["-7"]
+        },
+        {
+          "type": "campaign_log",
+          "section": "hidden",
+          "id": "one_victory_display",
+          "text": "dummy"
+        },
+        {
+          "type": "campaign_log_count",
+          "section": "hidden",
+          "id": "chaos_tokens",
+          "operation": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "check_none",
+      "text": "If none of the above were in the victory display:",
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "one_victory_display",
+            "options": [
+              {
+                "boolCondition": false
+              }
+            ]
+          }
+        ],
+        "count": 1,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["barors_will_story", "barors_will_effects"]
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "barors_will_story",
+      "type": "story",
+      "title": "Bárðr's Will",
+      "text": "\"I cannot join you below... but you are too weak in this mortal form... Egil must meet... his equal.\""
+    },
+    {
+      "id": "barors_will_effects",
+      "text": "Choose an investigator to take 1 physical trauma and 1 mental trauma. They have acquired the Berserker's Fury weakness and must add 1 copy of it to their deck. This card does not count toward that investigator’s deck size.",
+      "type": "input",
+      "input": {
+        "type": "investigator_choice",
+        "investigator": "any",
+        "source": "scenario",
+        "choices": [
+          {
+            "id": "berserkers_fury",
+            "text": "Choice",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "$input_value",
+                "card": "zce_00075"
+              },
+              {
+                "type": "trauma",
+                "investigator": "$input_value",
+                "mental": 1,
+                "physical": 2
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
+,
+{
+  "id": "ce_epilogue",
+  "scenario_name": "Epilogue",
+  "full_name": "Epilogue",
+  "header": "",
+  "type": "epilogue",
+  "icon": "rising_tide",
+  "setup": [
+  ],
+  "steps": [
+  ]
+},
+{
+  "id": "ce_prologue",
+  "scenario_name": "Prologue",
+  "full_name": "Prologue",
+  "header": "",
+  "type": "interlude",
+  "icon": "delusions",
+  "setup": [
+    "intro"
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "As your ship nears its destination of Reykjavik, you take a moment to review the astonishing details of the case in your journal. Cult activity has increased in Iceland over the past six months with the rise of the \"Disciples of Egil,\" a group that worships one Egil Skallagrímsson, the violent warrior poet and anti-hero of the Icelandic sagas. This strikes you as odd, that a thousand year-old literary character would be the focal point of a cult, and a poet, no less. The more you read of his exploits, the less you seem to understand who he really was. While he solved most of his problems with his blade, he also escaped trouble through his epic poetry. Despite being an abnormally ugly and monstrous figure with both troll and giant lineage, his extreme emotional outbursts bely a depth of character uncommon in 10th century sagas. Most of the country had accepted Egil as a transitional symbol of the country moving on from their heathen past before conversion to Christianity at the end of the 10th century.\nIn any case, his followers have been spreading chaos in Reykjavik in traditional Viking fashion, leaving impaled horse heads on \"scorn poles\" as a warning to the city that Egil will return. Indeed, two weeks ago, one of the cultists loosed an \"arrow of war\" into the Parliament House declaring Egil the \"eternal lawspeaker of Iceland and the world at large.\" This winter, the country is preparing for the upcoming 1000th anniversary of the national parliament, the Althing, celebrating a millennium of independence. While local authorities may be content to chalk up this cultist activity to post-war, nationalist fervor, your contact at Miskatonic University, Dr. Agatha Crane, thinks the provenance could be paranormal. She has entrusted you to lead an expedition into the tundra of Iceland to get to the bottom of this mystery with the aid of her friend and former colleague, Professor Shirley Day Morris.\nYou see the idyllic coastline of Reykjavik rise into view along the horizon, and prepare to disembark."
+    }
+  ]
+}
+,
+{
+  "id": "egils_relics",
+  "scenario_name": "Egil's Relics",
+  "full_name": "Interlude II: Egil's Relics",
+  "header": "Interlude II",
+  "type": "interlude",
+  "icon": "anachronism",
+  "setup": [
+    "check_found_chest",
+    "check_opened_chest",
+    "check_noticed_ring",
+    "check_retrieved_pole",
+    "$upgrade_decks"
+  ],
+  "steps": [
+    {
+      "id": "check_found_chest",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "found_chest",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["lament_story", "lament_effects"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lament_story",
+      "type": "story",
+      "title": "The Lament",
+      "text": "Egil knew no greater loss than the death of his sons, Gunnar and Bodvar. Determined to starve and follow them into darkness, Egil sequestered himself into his room in Borg. His daughter Thorgerd tricked him to break his fast with a horn of milk he mistook for water. In his anguish he chomped off part of the horn with his teeth, and resolved to honor his sons in verse.\n<blockquote>Dwindling now my kindred\nDraw near to their end,\nEv'n as forest-saplings\nFelled or tempest-strown.\nNot gay or gladsome\nGoes he who beareth\nBody of kinsman\nOn funeral bier.</blockquote>"
+    },
+    {
+      "id": "lament_effects",
+      "text": "You gain insight into Egil's propensity for love and loss. In your Campaign Log, under Traces of Egil, record \"Gnawed Horn\" The investigators gain 1 experience.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "traces_of_egil",
+          "id": "gnawed_horn",
+          "text": "Gnawed Horn"
+        },
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 1
+        }
+      ]
+    },
+    {
+      "id": "check_opened_chest",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "opened_chest",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["gift_story", "gift_effects"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "gift_story",
+      "type": "story",
+      "title": "The Gift",
+      "text": "Arinbjörn and Egil forged a special bond among Thingmen. One Yuletide, Arinbjörn gave a beautiful silk gown lavishly embroidered with golden buttons and thread, expertly tailored to fit Egil's wide, unnatural frame.\n<blockquote>Folk bear witness\nWith wond'ring praise,\nHow to all guests\nGood gifts he gives:\nFor Bjorn of the hearth-stone\nIs blest with store\nFreely and fully\nBy Frey and Njord</blockquote>"
+    },
+    {
+      "id": "gift_effects",
+      "text": "You gain insight into Egil's sense of honor and his unusual physique. In your Campaign Log, under Traces of Egil, record \"Silk Gown.\" The investigators gain 1 experience.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "traces_of_egil",
+          "id": "silk_gown",
+          "text": "Silk Gown"
+        },
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 1
+        }
+      ]
+    },
+    {
+      "id": "check_noticed_ring",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "noticed_ring",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["kings_apology_story", "kings_apology_effects"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "kings_apology_story",
+      "type": "story",
+      "title": "A King's Apology",
+      "text": "At the Battle of Brunanbur, Egil and Thorolf helped turn the tide for King Athelstan. Unfortunately, the King's order to have Thorolf command his own force separate from Egil led to his untimely death, being exhausted from a berserk rage the day before. Thorolf was always the light to Egil's dark, and in a moment, that light was extinguished.\nAthelstan understood Egil's need for amends, and imparted a golden ring in honor of his brother's death, passed from sword to sword at that night's banquet.\n<blockquote>Dauntless the doughty champion\nDashed on, the earl's bold slayer:\nIn stormy stress of battle\nStout-hearted Thorolf fell.\nGreen grows on soil of Vin-heath\nGrass o'er my noble brother:\nBut we our woe - a sorrow\nWorse than death-pang must bear.'</blockquote>"
+    },
+    {
+      "id": "kings_apology_effects",
+      "text": "You gain insight into Egil's grief. In your Campaign Log, under Traces of Egil, record \"Athelstan's Ring.\" The investigators gain 1 experience.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "traces_of_egil",
+          "id": "athelstans_ring",
+          "text": "Athelstan's Ring"
+        },
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 1
+        }
+      ]
+    },
+    {
+      "id": "check_retrieved_pole",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "retrieved_pole",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["nithing_story", "nithing_effects"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "nithing_story",
+      "type": "story",
+      "title": "The Nithing",
+      "text": "After slaying both Berg-Onund and King Eirik's son, Rognvald, Egil's fury would not abate. In accordance with runic tradition, he proclaimed a nithing, or a curse, upon Eirik's lands and all of the spirits of Norway. He carved the runes into a maple pole, affixed the head of a horse, and planted it firmly in Norwegian soil. Egil had a seemingly endless capacity for spite that only sharpened his sense of honor.\n<blockquote>I fought, nor feared vengeance;\nFalchion there reddened\nBlood of son of Bloodaxe,\nBold king, and his queen.\nPerish'd on one pinnace\nPrince with twelve his liege-men,\nSuch stress of stern battle\nAgainst them I stirred.</blockquote>"
+    },
+    {
+      "id": "nithing_effects",
+      "text": "You gain insight into Egil's vindictive rage. In your Campaign Log, under Traces of Egil, record \"Egil's Scorn Pole.\" The investigators gain 1 experience.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "traces_of_egil",
+          "id": "egils_scorn_pole",
+          "text": "Egil's Scorn Pole"
+        },
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 1
+        }
+      ]
+    }
+  ]
+}
+,
+{
+  "id": "the_crown",
+  "scenario_name": "The Crown",
+  "full_name": "Chapter IV: Crown",
+  "header": "Chapter IV",
+  "setup": [
+    "check_earned_barors_trust",
+    "gather_encounter_sets",
+    "check_must_banish_egil",
+    "create_explore_deck",
+    "setup_locations",
+    "encounter_deck",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "check_earned_barors_trust",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "earned_barors_trust",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_1", "search_for_saga_asset"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["intro_2", "2_additional_resources"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_1",
+      "type": "story",
+      "text": "You thank Bárðr for his generosity and stare into the dark tunnel past the gate. The brutal cold outside swirls with the rising heat from the volcano's core.</i>\n\"A great evil... lies at the heart of the volcano. Descend into... the darkness... and you will find Egil.\"\nYou know how the saga must end. Whatever power lies in this crown must be destroyed, and Egil must not be brought back to the living world. Determined, you bid farewell to the mysterious half-troll and step through the gate."
+    },
+    {
+      "id": "search_for_saga_asset",
+      "text": "Each investigator may search their deck for a [[Saga]] asset and play it (paying its cost)."
+    },
+    {
+      "id": "intro_2",
+      "type": "story",
+      "text": "Bárðr stands before you, deep in thought.\n\"You may be weak... but you don't deserve the fate... of the wretched within the volcano. Take this... Harðfiskur to keep the spirit... of the sea beside you.\"\nBárðr hands you a pack of dried fish wrapped in leather. Judging from its packaging, this could be hundreds of years old."
+    },
+    {
+      "id": "2_additional_resources",
+      "text": "Each investigator begins the scenario with 2 additional resources."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "the_crown",
+        "berserkers",
+        "glacial_mists",
+        "runic_oaths"
+      ]
+    },
+    {
+      "id": "check_must_banish_egil",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "must_banish_egil",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["banish_setup_1", "banish_setup_2", "banish_setup_3"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_must_defeat_egil"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_must_defeat_egil",
+      "text": "Check Campaign Log. <i>If you must defeat Egil</i> or <i>if the investigators are on their own:</i>",
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "must_defeat_egil",
+            "options": [{ "boolCondition": true }]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "on_their_own",
+            "options": [{ "boolCondition": true }]
+          }
+        ],
+        "count": 1,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["defeat_setup_1", "defeat_setup_2", "defeat_setup_3"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_must_restore_egil"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_must_restore_egil",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "must_restore_egil",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["restore_setup_1", "restore_setup_2", "restore_setup_3"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_must_deceive_egil"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_must_deceive_egil",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "must_deceive_egil",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["deceive_setup_1", "deceive_setup_2", "deceive_setup_3"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "banish_setup_1",
+      "bullet_type": "small",
+      "text": "Set aside Thorolf (Wise Brother). All other copies of Thorolf are removed from the game."
+    },
+    {
+      "id": "banish_setup_2",
+      "bullet_type": "small",
+      "text": "During this scenario, use Act 2a—Lost Brother (v. I). The other versions of Act 2a are removed from the game."
+    },
+    {
+      "id": "banish_setup_3",
+      "bullet_type": "small",
+      "text": "During this scenario, use Act 3a—Banish Him. The other versions of Act 3a are removed from the game."
+    },
+    {
+      "id": "defeat_setup_1",
+      "bullet_type": "small",
+      "text": "Set aside Thorolf (Brother's Keeper). All other copies of Thorolf are removed from the game."
+    },
+    {
+      "id": "defeat_setup_2",
+      "bullet_type": "small",
+      "text": "During this scenario, use Act 2a—Lost Brother (v. II). The other versions of Act 2a are removed from the game."
+    },
+    {
+      "id": "defeat_setup_3",
+      "bullet_type": "small",
+      "text": "During this scenario, use Act 3a—Defeat Him. The other versions of Act 3a are removed from the game."
+    },
+
+    {
+      "id": "restore_setup_1",
+      "bullet_type": "small",
+      "text": "Set aside Thorolf (Loving Brother). All other copies of Thorolf are removed from the game."
+    },
+    {
+      "id": "restore_setup_2",
+      "bullet_type": "small",
+      "text": "During this scenario, use Act 2a—Lost Brother (v. III). The other versions of Act 2a are removed from the game."
+    },
+    {
+      "id": "restore_setup_3",
+      "bullet_type": "small",
+      "text": "During this scenario, use Act 3a—Restore Him. The other versions of Act 3a are removed from the game."
+    },
+    {
+      "id": "deceive_setup_1",
+      "bullet_type": "small",
+      "text": "Set aside Thorolf (Ambitious Brother). All other copies of Thorolf are removed from the game."
+    },
+    {
+      "id": "deceive_setup_2",
+      "bullet_type": "small",
+      "text": "During this scenario, use Act 2a—Lost Brother (v. IV). The other versions of Act 2a are removed from the game."
+    },
+    {
+      "id": "deceive_setup_3",
+      "bullet_type": "small",
+      "text": "During this scenario, use Act 3a—Deceive Him. The other versions of Act 3a are removed from the game."
+    },
+    {
+      "id": "create_explore_deck",
+      "text": "Create the exploration deck. This is done by taking the seven single-sided [[Cave]] locations and shuffling them together, along with one copy each of the following treachery cards: Disorienting Mist, Rockfall, and Uneven Footing."
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put Boulder Choke into play. Each investigator begins play at Boulder Choke. Set aside all other locations."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "confirm_text": "Each investigator earns 5 bonus experience from their harrowing ordeal.",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all",
+            "bonus": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "1_mental_trauma",
+      "text": "Each investigator suffers 1 mental trauma.",
+      "effects": [
+        {
+          "type": "trauma",
+          "investigator": "all",
+          "mental": 1
+        }
+      ]
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "lose_campaign",
+      "text": "The investigators lose the campaign.",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "ce_epilogue"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "lose"
+        }
+      ]
+    },
+    {
+      "id": "win_campaign",
+      "text": "The investigators win the campaign!",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "win"
+        }
+      ]
+    },
+    {
+      "id": "all_insane",
+      "text": "Each investigator is driven <b>insane</b>.",
+      "effects": [
+        {
+          "type": "trauma",
+          "insane": true,
+          "investigator": "all"
+        }
+      ]
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached",
+      "description": "Each investigator was defeated",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": ["resolution_1"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "text": "You collapse on the cavern floor and feel the sordid heat rising to match your body temperature. The mist that had abated at the mouth of the cave has fully replaced the stale air. Your vision dims as your eyes adjust to the darkness. Ethereal shapes emerge from the mist: a warrior with a halberd, a mother and child hand in hand, an old man (or is it a wolf?)... wielding a large hammer. You feel untethered from reality as your body rises from the hard floor. You can feel the change spreading inside your body as you become lighter than air. The people before you bring comfort, and you can only hope that you will maintain the same dignity as a denizen of the mist.",
+      "steps": ["all_insane", "lose_campaign"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "text": "After finishing his grotesque laugh, Egil procures a horn of ale, seemingly from the ether, and invites you to drink. The mist inside you demands to be sated, so you down the ale greedily, foam sloshing and sizzling on the fiery stones below. Your eyes alight with the same flame as Egil, and your insides rage with fire. You finally feel comfortable in your own skin, as you are engulfed in sickly green flame. There is no pain as the skin sloughs off your skull, revealing your true form, a lieutenant of Egil Skallagrímsson.",
+      "steps": ["all_insane", "lose_campaign"]
+    },
+    {
+      "id": "R3",
+      "title": "Resolution 3",
+      "text": "Egil's uncanny skill with runes provided a supernatural advantage over his enemies, but the power of words is a double-edged sword. Tapping an unknown reservoir of knowledge from your obsession with runic carvings, you see the opportunity for magical wordplay.\nThe words for </i>health<i> and </i>flame<i>, </i>king<i> and </i>ruin<i>, and </i>time<i> and </i>banishment<i> all are separated from each other by a few simple strokes. Using your pocket knife, you are able to rewrite the twisted missive and change the fate of the world.\nWhen he realizes what you've done, Egil snaps his head back unnaturally against the nape of his neck, peering at you upside down with his eyes on fire. You think you even read sadness in the flames. The mist in the room rushes into Egil's body, bloating and distorting it until, all at once, it explodes with light.\nUnsupported by the foul mist, Egil's skeleton collapses to the ground. His large, deformed skull, the crown of Egil, has split in two. Egil's spirit has been severed from his mortal remains, never to return.",
+      "steps": ["1_mental_trauma", "earn_xp", "win_campaign"]
+    },
+    {
+      "id": "R4",
+      "title": "Resolution 4",
+      "text": "Egil's strength came from a combination of brute force, cunning guile, and magical incantation. Yet, you are able to understand and overcome each of these obstacles with your knowledge of the past and your hope for the future.\nAs you land the killing blow, Egil lets out a ghastly shriek that embodies the voice of each of his victims screaming in unison, piercing your ear drums. Your head erupts with pain and the room falls silent as you watch Egil's limp skeleton collapse to the floor.\nYou feel warm blood trickling out of your ears as you notice on the ground the large, deformed skull of your enemy, the crown of Egil, has been split in two. Egil's mortal remains may no longer house his evil spirit.",
+      "steps": ["1_mental_trauma", "earn_xp", "win_campaign"]
+    },
+    {
+      "id": "R5",
+      "title": "Resolution 5",
+      "text": "Somehow, amidst the heat and horror of the battle, you are able to convey your knowledge of Egil's past. You show him that he was not wronged by his enemies, but that his own suffering fueled the hatred that marked his complex life. He is dumbstruck when you forgive him for the death of his sons. You know he is not to blame and that no one man can bend the will of the gods. The flames in his eyes flicker and slowly fade as he remembers.\nEgil drops his weapons and is overcome by grief. You tell him that he can finally rest knowing that his legacy will live on, the violence and the verse. He takes a final, knowing look at you before taking a gigantic breath. Egil consumes every last wisp of mist in the cavern until he suddenly explodes with light. When you can once again open your eyes, you see on the ground his deformed skull, the crown of Egil, split in two. Egil's spirit rests easy, never to return to the mortal realm.",
+      "steps": ["1_mental_trauma", "earn_xp", "win_campaign"]
+    },
+    {
+      "id": "R6",
+      "title": "Resolution 6",
+      "text": "Egil responds to each verse of your poem with sick, ghastly laughter. At first you think he must find it pathetic, but you notice him rapt with attention. He appears to be lost in his memories of glory, and even an imperfect messenger stirs his need for self-aggrandizement.\nIn his revelry, Egil gives you a twisted smile and sees your potential. You have proven yourself to be a suitable herald of his new reign. You move to embrace Egil in celebration of this bond, quickly lock your arms around his neck, and twist with your entire body weight.\nAn abortive shriek emerges from his mouth as the necrotic flesh and dry neck bones give way with the tearing sound of rotting wood. The room is bathed in mist spouting from his limp corpse, sending you into a fit of coughing.\nWhen the air clears, you see the large, deformed skull on the cavern floor, the crown of Egil, split in two. Egil's insatiable greed was the final deception. No more would his spirit threaten to return to the mortal realm.",
+      "steps": ["1_mental_trauma", "earn_xp", "win_campaign"]
+    }
+  ]
+}
+,
+{
+  "id": "the_fallen",
+  "scenario_name": "The Fallen",
+  "full_name": "Chapter III: The Fallen",
+  "header": "Chapter III",
+  "setup": [
+    "check_did_not_find_the_ritual_site",
+    "check_photographed_one_location",
+    "gather_encounter_sets",
+    "set_aside_cards",
+    "set_aside_saga",
+    "setup_locations_intro",
+    "check_thingvellir",
+    "check_gulfoss",
+    "check_long_glacier",
+    "check_kerio",
+    "setup_locations",
+    "take_brownie",
+    "encounter_deck",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "check_did_not_find_the_ritual_site",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "did_not_find_the_ritual_site",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_1", "place_2_doom"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["intro_2", "2_additional_resources"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_1",
+      "type": "story",
+      "text": "You spend much of the next morning trying to understand the purpose of these runic sites. Without any photographic evidence, you have to piece together what you saw with Professor Day Morris. The relics felt more like treasures to be guarded than keys to the ritual.\nAround noon, you hear a commotion from outside. Villagers in Borgarnes have gathered in the town square, petrified and pointing toward the east. An unusual, pale mist has begun to blanket the town, rolling in from the mountainside.\nThe professor chimes in, \"Snæfellsjökull. It all makes sense...\""
+    },
+    {
+      "id": "place_2_doom",
+      "text": "Place 2 doom on agenda 1A."
+    },
+    {
+      "id": "intro_2",
+      "type": "story",
+      "text": "A pale mist is beginning to cover the Snæfellsnes peninsula, almost completely obscuring your feet. Your companions give the eerie impression of floating atop it, untethered from the physical world. As strange as it seems, you feel no fear."
+    },
+    {
+      "id": "2_additional_resources",
+      "text": "Each investigator begins with 2 additional resources."
+    },
+    {
+      "id": "check_photographed_one_location",
+      "text": "If the investigators photographed at least one location:",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_count",
+        "section": "hidden",
+        "id": "photographs",
+        "options": [
+          {
+            "numCondition": 1,
+            "steps": ["intro_3"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["intro_3"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["intro_3"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["intro_3"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_3",
+      "type": "story",
+      "text": "The photographs you took on the Golden Circle correlate to landmarks on the peninsula. They may not lead you to the ritual site, but they could shed some light on the cultists' plans. You mark them on your map and head out into the mist."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "the_fallen",
+        "draugar",
+        "glacial_mists",
+        "hudulfolk",
+        "chilling_cold"
+      ]
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the following cards aside, out of play: each copy of Bridge to Valhalla, each copy of One Good Turn, Ravenous Polar Bear, Bárðr's Gate, Dragvandil, Egil's Hood, Protective Runes, and Thorolf's Bracelet."
+    },
+    {
+      "id": "set_aside_saga",
+      "text": "Set aside each of the four double-sided [[Saga]] story cards."
+    },
+    {
+      "id": "setup_locations_intro",
+      "text": "Gather each other location, Eerie Mist side up. Check Campaign Log. If you photographed..."
+    },
+    {
+      "id": "check_thingvellir",
+      "bullet_type": "small",
+      "text": "Thingvellir",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "thingvellir",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["flip_thingvellir"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "flip_thingvellir",
+      "bullet_type": "small",
+      "text": "Flip Lóndrangar to its revealed side and return it to the gathered locations."
+    },
+    {
+      "id": "check_gulfoss",
+      "bullet_type": "small",
+      "text": "Gulfoss",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "gulfoss",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["flip_gulfoss"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "flip_gulfoss",
+      "bullet_type": "small",
+      "text": "Flip Saxholl to its revealed side and return it to the gathered locations."
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "lose_campaign",
+      "text": "The investigators lose the campaign.",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "ce_epilogue"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "lose"
+        }
+      ]
+    },
+    {
+      "id": "check_long_glacier",
+      "bullet_type": "small",
+      "text": "Long Glacier",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "long_glacier",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["flip_long_glacier"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "flip_long_glacier",
+      "bullet_type": "small",
+      "text": "Flip Kirkjufell to its revealed side and return it to the gathered locations."
+    },
+    {
+      "id": "check_kerio",
+      "bullet_type": "small",
+      "text": "Kerið",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "kerio",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["flip_kerio"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "flip_kerio",
+      "bullet_type": "small",
+      "text": "Flip Gatklettur to its revealed side and return it to the gathered locations."
+    },
+    {
+      "id": "take_brownie",
+      "text": "Choose an investigator to take control of the Brownie 2 story asset.",
+      "bullets": [
+        {
+          "text": "These cards have an encounter card on their reverse side. For the best experience, do not look at these cards on their reverse sides."
+        }
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "Shuffle all other locations except Eldborg without looking at them, then distribute them to complete a 4x4 grid with Eldborg at the lower left.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play at Eldborg."
+        }
+      ]
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "on_their_own",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "on_their_own",
+          "text": "the investigators are on their own."
+        }
+      ]
+    },
+    {
+      "id": "became_sentinels_of_the_mist",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "became_sentinels_of_the_mist",
+          "text": "the investigators became sentinels of the mist."
+        }
+      ]
+    },
+    {
+      "id": "earned_barors_trust",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "earned_barors_trust",
+          "text": "the investigators have earned Bárðr's trust."
+        }
+      ]
+    },
+    {
+      "id": "all_insane",
+      "text": "Each investigator is driven <b>insane</b>.",
+      "effects": [
+        {
+          "type": "trauma",
+          "insane": true,
+          "investigator": "all"
+        }
+      ]
+    },
+    {
+      "id": "ask_proven",
+      "text": "Which of the following is true?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "strength",
+            "text": "You have proven your strength.",
+            "steps": ["must_defeat_egil"]
+          },
+          {
+            "id": "wisdom",
+            "text": "You have proven your wisdom.",
+            "steps": ["must_banish_egil"]
+          },
+          {
+            "id": "compassion",
+            "text": "You have proven your compassion.",
+            "steps": ["must_restore_egil"]
+          },
+          {
+            "id": "cunning",
+            "text": "You have proven your cunning.",
+            "steps": ["must_deceive_egil"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "must_defeat_egil",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "must_defeat_egil",
+          "text": "the investigators must defeat Egil."
+        }
+      ]
+    },
+    {
+      "id": "must_banish_egil",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "must_banish_egil",
+          "text": "the investigators must banish Egil."
+        }
+      ]
+    },
+    {
+      "id": "must_restore_egil",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "must_restore_egil",
+          "text": "the investigators must restore Egil."
+        }
+      ]
+    },
+    {
+      "id": "must_deceive_egil",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "must_deceive_egil",
+          "text": "the investigators must deceive Egil."
+        }
+      ]
+    },
+    {
+      "id": "skip_interlude_3",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "barors_gifts"
+        }
+      ]
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached",
+      "description": "Each investigator was defeated",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": ["resolution_1"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "investigator_status": [
+        "alive",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "You feel the dense fog thicken in your lungs until you simply breathe mist. Your lungs loosen and every shred of fear leaves your body. You remember old Norway, faithful King Harald, the sudden raid, and the loathesome Egil himself invading your farmland and cutting you down.\nYou survey the peninsula and envision yourself throttling the wretched Viking who had stolen your family's riches centuries ago. The northern lights shine above you, and you swear upon them that you will have vengeance.",
+      "steps": ["became_sentinels_of_the_mist", "all_insane", "lose_campaign"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "text": "The half-troll eyes you suspiciously as you writhe on the outcropping next to the gate.\n\"You... are weak... But you have suffered... to come here.\"\nThe gate opens inward with a loud grinding of stone and you feel warm air escape the dark recesses of the cave. You gasp it in greedily, grateful to breathe something other than the foul mist.\n\"You aren't like... the hateful ones who came... before. You will prove yourselves... within... or die... as so many of the fallen... who cross Egil.\"",
+      "steps": ["on_their_own", "earn_xp", "$upgrade_decks", "skip_interlude_3"]
+    },
+    {
+      "id": "R3",
+      "title": "Resolution 3",
+      "text": "\"So be it.\"\nBárðr leads you to an ancient stone gate, the thick walrus-rope dragging behind him in the snow. He begins to tap the rock methodically with his staff.\n\"Egil Skallagrímsson was always the dark brother... bent by rage... greed... ambition... But even he had... a heart... Those who have come... to raise him... know only hatred.\"\nYou ask about the Crown of Egil, the motif you have seen across each of the runic sites.\n\"Egil? A crown?\" A wry smile slowly spreads across the half-troll's face. \"No Icelander would bow to a king... nor would Egil dream of becoming... what he has always hated.\"\nThe gate opens inward with a loud grinding of stone and you feel warm air escape the dark recesses of the cave.\n\"I trust... you will know what to do... when you meet him.\"",
+      "steps": ["earned_barors_trust", "ask_proven", "earn_xp"]
+    }
+  ]
+}
+,
+{
+  "id": "the_golden_circle",
+  "scenario_name": "The Golden Circle",
+  "full_name": "Chapter II: The Golden Circle",
+  "header": "Chapter II",
+  "setup": [
+    "check_runes_remain_a_mystery",
+    "intro_3",
+    "gather_encounter_sets",
+    "set_aside_cards",
+    "set_aside_locations",
+    "setup_locations",
+    "take_brownie",
+    "encounter_deck",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "check_runes_remain_a_mystery",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "runes_remain_a_mystery",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_1", "place_1_doom"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_mapped_the_golden_circle"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_mapped_the_golden_circle",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "mapped_the_golden_circle",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_2"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_1",
+      "type": "story",
+      "text": "You spend the next morning trying to piece together the notes from your first day. The strange occurrences feel linked, but you don't have much to go on. At the Culture House, Professor Day Morris has a map of Reykjavik laid out.\n\"No... she says. We need to think bigger.\"\nShe approaches an ancient desk made of ashen wood and pulls out a map of the surrounding areas.\n\"The runes we found appear to indicate these geographical features in the area around Reykjavik: The Golden Circle. It's not much to go on, but we've lost enough time as it is.\""
+    },
+    {
+      "id": "place_1_doom",
+      "text": "Place 1 doom on agenda 1A."
+    },
+    {
+      "id": "intro_2",
+      "type": "story",
+      "text": "You have strange dreams that night. An enormous man slouches in an ashen wood chair that is barely able to contain him. His profile is a silhouette chiselled out of stone–his expression inscrutable in the shadow. Slowly, he pulls his sword out of its scabbard a few inches, and returns it. He repeats this, each time arching one giant eyebrow. A pulsing drumbeat gets louder and louder. You seek meaning in this absurd dance and find none. You are transfixed by the rhythm. He turns sharply and looks you in the eye, and you see his hideous, deformed face.\nYou awaken on the couch in the Culture House."
+    },
+    {
+      "id": "intro_3",
+      "type": "story",
+      "text": "Professor Day Morris outlines the plan for your excursion to the Golden Circle:\n\"If the Disciples are using Icelandic magical staves to communicate, then we need to decipher them quickly. Take my camera and capture any carved runes you see. The Golden Circle is beautiful, but save your exposures for the important stuff. Let's hop to it, daylight is wearing thin! I'm parked outside.\""
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "the_golden_circle",
+        "hudulfolk",
+        "lacuna",
+        "runic_oaths",
+        "ghouls"
+      ]
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the following cards aside, out of play: Gryla, each copy of Night Troll, each copy of One Good Turn."
+    },
+    {
+      "id": "set_aside_locations",
+      "text": "Set the following locations aside, out of play: Parliament Lake, Icy Cavern, Mossy Platform, and Lava Tunnel."
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put all other locations into play. Each investigator begins play at Borgarnes."
+    },
+    {
+      "id": "take_brownie",
+      "text": "Choose an investigator to take control of the Brownie 2 story asset."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "did_not_find_the_ritual_site",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "did_not_find_the_ritual_site",
+          "text": "the investigators did not find the ritual site."
+        }
+      ]
+    },
+    {
+      "id": "found_the_ritual_site",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "found_the_ritual_site",
+          "text": "the investigators found the ritual site."
+        }
+      ]
+    },
+    {
+      "id": "physical_trauma",
+      "text": "Each investigator suffers 1 physical trauma.",
+      "effects": [
+        {
+          "type": "trauma",
+          "physical": 1,
+          "investigator": "all"
+        }
+      ]
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "campaign_log": [
+          {
+            "id": "found_chest",
+            "condition": {
+              "type": "campaign_log",
+              "section": "campaign_notes",
+              "id": "found_chest",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "An investigator found the chest in the lake.",
+            "steps": ["found_chest", "add_cultist"]
+          },
+          {
+            "id": "opened_chest",
+            "condition": {
+              "type": "campaign_log",
+              "section": "campaign_notes",
+              "id": "opened_chest",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "An investigator forced open the frozen chest.",
+            "steps": ["opened_chest", "add_tablet"]
+          },
+          {
+            "id": "noticed_ring",
+            "condition": {
+              "type": "campaign_log",
+              "section": "campaign_notes",
+              "id": "noticed_ring",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "An investigator noticed the ring.",
+            "steps": ["noticed_ring", "add_elder_thing"]
+          },
+          {
+            "id": "retrieved_pole",
+            "condition": {
+              "type": "campaign_log",
+              "section": "campaign_notes",
+              "id": "retrieved_pole",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "An investigator retrieved the eerie pole.",
+            "steps": ["retrieved_pole", "add_minus_5"]
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "add_cultist",
+      "text": "Add 1 [cultist] to the chaos bag.",
+      "effects": [{
+        "type": "add_chaos_token",
+        "tokens": ["cultist"]
+      },
+      {
+        "type": "campaign_log_count",
+        "section": "hidden",
+        "id": "chaos_tokens",
+        "operation": "add",
+        "value": 1
+      }]
+    },
+    {
+      "id": "add_tablet",
+      "text": "Add 1 [tablet] to the chaos bag.",
+      "effects": [{
+        "type": "add_chaos_token",
+        "tokens": ["tablet"]
+      },
+      {
+        "type": "campaign_log_count",
+        "section": "hidden",
+        "id": "chaos_tokens",
+        "operation": "add",
+        "value": 1
+      }]
+    },
+    {
+      "id": "add_elder_thing",
+      "text": "Add 1 [elder_thing] to the chaos bag.",
+      "effects": [{
+        "type": "add_chaos_token",
+        "tokens": ["elder_thing"]
+      },
+      {
+        "type": "campaign_log_count",
+        "section": "hidden",
+        "id": "chaos_tokens",
+        "operation": "add",
+        "value": 1
+      }]
+    },
+    {
+      "id": "add_minus_5",
+      "text": "Add a -1 token to the chaos bag.",
+      "effects": [{
+        "type": "remove_chaos_token",
+        "tokens": ["0"]
+      },
+      {
+        "type": "campaign_log_count",
+        "section": "hidden",
+        "id": "chaos_tokens",
+        "operation": "add",
+        "value": 1
+      }]
+    },
+    {
+      "id": "found_chest",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "found_chest",
+          "text": "An investigator found the chest in the lake."
+        }
+      ]
+    },
+    {
+      "id": "opened_chest",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "opened_chest",
+          "text": "An investigator forced open the frozen chest."
+        }
+      ]
+    },
+    {
+      "id": "retrieved_pole",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "retrieved_pole",
+          "text": "An investigator retrieved the eerie pole."
+        }
+      ]
+    },
+    {
+      "id": "noticed_ring",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "noticed_ring",
+          "text": "An investigator noticed the ring."
+        }
+      ]
+    },
+    {
+      "id": "ask_photographs",
+      "type": "input",
+      "text": "In your Campaign Log, for each location with a resource on it, record that \"the investigators photographed\" that location.",
+      "input": {
+        "type": "checklist",
+        "text": "Photographed",
+        "choices": [
+          {
+            "id": "gulfoss",
+            "text": "Gulfoss",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "photographed_gulfoss",
+                "text": "the investigators photographed Gulfoss."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "photographs",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "kerio",
+            "text": "Kerið",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "photographed_kerio",
+                "text": "the investigators photographed Kerið."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "photographs",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "thingvellir",
+            "text": "Thingvellir",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "photographed_thingvellir",
+                "text": "the investigators photographed Thingvellir."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "photographs",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "glacier",
+            "text": "Long Glacier",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "photographed_glacier",
+                "text": "the investigators photographed Long Glacier."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "photographs",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached",
+      "description": "Each investigator resigned or was defeated",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "You awaken next to an impossibly small pony. Are ponies supposed to be this small?\n\"Rough night?\" a thick voice calls out from above you.\nYou look up and see a local farmer in a denim jacket and a beret. You're still on the Golden Circle, but not sure exactly where.\n\"Listen, I know Iceland is a very safe country, but you ought not sleep in the fields lest the Hudulfolk or the trolls come for ye! This is their land!\" says the farmer.\nYou thank him for his concern and ask for directions back to Borgarnes. You camera is nowhere to be seen, and you're still confused about how these runes connect to the bigger picture. ",
+      "steps": ["did_not_find_the_ritual_site", "ask_photographs", "earn_xp"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "text": "The next thing you know, you are being pulled from your car by a helpful farmer.\n\"Thank goodness you're alive,\" he says, \"I've seen quite a few cars run off these winding roads, but that was the mightiest crash I've ever seen! Do you need a doctor?\"\nYou're certainly banged up, and the car is in shambles, but you are able to walk away from the wreck with your trusted Brownie intact. As you regain your composure, you remember your purpose. If you're going to find the ritual site, you are going to have to get some new leads.",
+      "steps": ["did_not_find_the_ritual_site", "physical_trauma", "ask_photographs", "earn_xp"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "text": "Professor Day Morris ponders your discoveries in the passenger seat.\n\"These locations served to hide Egil's relics in plain sight, under the protection of trolls and spirits of the land,\" she says. \"They don't appear to be part of the ritual...\"\nYou ask why the cultists didn't follow you out of Reykjavik.\nProfessor Day Morris replies, \"It could be a diversion... or perhaps Egil has already drawn power from these relics. Most of the runes acted as signposts for the ritual at Snæfellsjökull, but one of them was more telling. It was written in fresh blood and read, 'The Crown of Egil will shine its dull brilliance atop a mountain of bone. The eternal lawspeaker will judge the world at the Althing.' This speaks to Egil's resurrection... and it's happening soon.\"",
+      "steps": ["found_the_ritual_site", "ask_photographs", "earn_xp"]
+    }
+  ]
+}
+,
+{
+  "id": "the_warning",
+  "scenario_name": "The Warning",
+  "full_name": "Chapter I: The Warning",
+  "header": "Chapter I",
+  "setup": [
+    "intro",
+    "gather_encounter_sets",
+    "set_aside_cards",
+    "setup_locations",
+    "encounter_deck",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "You step off the ship, grateful for the solid wood beneath your feet. The capital city of Reykjavik is modest, with small wooden houses lining the streets and nary a soul to be seen. The warm light of dusk bathes the pale houses in a comforting prismatic glow.\nThis otherworldly comfort lulls you nearly to sleep and almost distracts you from the task at hand: finding Professor Shirley Day Morris. She should be awaiting your arrival at the Culture House."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "the_warning",
+        "berserkers",
+        "draugar",
+        "lacuna",
+        "locked_doors"
+      ]
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the following cards aside, out of play: Professor Shirley Day Morris, Lodge Tyler."
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put all [[Reykjavik]] locations into play. Each investigator begins play at The Harbor."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+    {
+      "id": "runes_remain_a_mystery",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "runes_remain_a_mystery",
+          "text": "the runes remain a mystery."
+        }
+      ]
+    },
+    {
+      "id": "mapped_the_golden_circle",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "mapped_the_golden_circle",
+          "text": "the investigators have mapped the Golden Circle."
+        }
+      ]
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "campaign_log": [
+          {
+            "id": "read_bards_tale",
+            "condition": {
+              "type": "campaign_log",
+              "section": "campaign_notes",
+              "id": "read_bards_tale",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "An investigator read Bard's Tale.",
+            "steps": ["read_bards_tale", "add_cultist"]
+          },
+          {
+            "id": "know_where_silver_is",
+            "condition": {
+              "type": "campaign_log",
+              "section": "campaign_notes",
+              "id": "know_where_silver_is",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "An investigator knows where the silver is.",
+            "steps": ["know_where_silver_is", "remove_0_token"]
+          },
+          {
+            "id": "split_skull",
+            "condition": {
+              "type": "campaign_log",
+              "section": "campaign_notes",
+              "id": "uncovered_the_split_skill",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "An investigator uncovered the split skill.",
+            "steps": ["uncovered_the_split_skill", "add_tablet"]
+          },
+          {
+            "id": "studied_the_markings",
+            "condition": {
+              "type": "campaign_log",
+              "section": "campaign_notes",
+              "id": "studied_the_markings",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "An investigator studied the markings.",
+            "steps": ["studied_the_markings", "add_elder_thing"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_cultist",
+      "text": "Add 1 [cultist] to the chaos bag.",
+      "effects": [{
+        "type": "add_chaos_token",
+        "tokens": ["cultist"]
+      },
+      {
+        "type": "campaign_log_count",
+        "section": "hidden",
+        "id": "chaos_tokens",
+        "operation": "add",
+        "value": 1
+      }]
+    },
+    {
+      "id": "add_tablet",
+      "text": "Add 1 [tablet] to the chaos bag.",
+      "effects": [{
+        "type": "add_chaos_token",
+        "tokens": ["tablet"]
+      },
+      {
+        "type": "campaign_log_count",
+        "section": "hidden",
+        "id": "chaos_tokens",
+        "operation": "add",
+        "value": 1
+      }]
+    },
+    {
+      "id": "add_elder_thing",
+      "text": "Add 1 [elder_thing] to the chaos bag.",
+      "effects": [{
+        "type": "add_chaos_token",
+        "tokens": ["elder_thing"]
+      },
+      {
+        "type": "campaign_log_count",
+        "section": "hidden",
+        "id": "chaos_tokens",
+        "operation": "add",
+        "value": 1
+      }]
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "remove_0_token",
+      "text": "Remove a 0 token from the chaos bag.",
+      "effects": [{
+        "type": "remove_chaos_token",
+        "tokens": ["0"]
+      },
+      {
+        "type": "campaign_log_count",
+        "section": "hidden",
+        "id": "chaos_tokens",
+        "operation": "add",
+        "value": 1
+      }]
+    },
+    {
+      "id": "read_bards_tale",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "read_bards_tale",
+          "text": "an investigator read Bard's tale."
+        }
+      ]
+    },
+    {
+      "id": "know_where_silver_is",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "know_where_silver_is",
+          "text": "an investigator knows where the silver is."
+        }
+      ]
+    },
+    {
+      "id": "uncovered_the_split_skill",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "uncovered_the_split_skill",
+          "text": "an investigator uncovered the split skull."
+        }
+      ]
+    },
+    {
+      "id": "studied_the_markings",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "studied_the_markings",
+          "text": "an investigator studied the markings."
+        }
+      ]
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution_act_1",
+      "title": "No resolution was reached",
+      "description": "Each investigator resigned or was defeated and it was Act 1",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "The peaceful streets of Reykjavik have become a parade of angry cultists in grey cowls. You find safety in the winding alleys and make your way back to the Culture House, where you almost crash into a middle-aged woman clearly dressed in American fashion. \"I had begun to think you'd never show up!\" the woman says. \"I'm Professor Day Morris, but you can call me Shirley. We have a lot of catching up to do.\"",
+      "steps": ["runes_remain_a_mystery", "earn_xp"]
+    },
+    {
+      "id": "no_resolution_act_2",
+      "title": "No resolution was reached",
+      "description": "Each investigator resigned or was defeated and it was Act 2 or later",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": ["resolution_1"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "The peaceful streets of Reykjavik have become a parade of angry cultists in grey cowls. You find safety in the winding alleys and make your way back to the Culture House. \"This is about how well I thought this would go,\" says Professor Day Morris. \"The cultists must be getting more confident. They're not usually this brazen in the middle of the day. Whatever they're planning must be coming to fruition. Let's collect ourselves and figure out our next steps.\"",
+      "steps": ["runes_remain_a_mystery", "earn_xp"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "\"This is the Gulfoss Waterfall,\" Professor Day Morris says, pointing at the runic message you copied down, \"and this is the Great Geysir.\" Each of these locations sits along the famed Golden Circle, which traces a route just outside of Reykjavik, connecting some of the most important historical and geological features of Iceland. These must mean something to the cultists... but what? Egil's Saga barely mentions this part of the country. In any case, we know where we have to go.\" You've seen the violent rage of the Disciples and you know they will stop at nothing to derail your investigation. You secure the map in your pocket and set out for the Golden Circle.",
+      "steps": ["mapped_the_golden_circle", "earn_xp"]
+    }
+  ]
+}
+,
+{
+  "id": "traces_of_egil",
+  "scenario_name": "Traces of Egil",
+  "full_name": "Interlude I: Traces of Egil",
+  "header": "Interlude I",
+  "type": "interlude",
+  "icon": "anachronism",
+  "setup": [
+    "check_read_bards_tale",
+    "check_know_where_silver_is",
+    "check_studied_the_markings",
+    "check_uncovered_the_split_skill",
+    "$upgrade_decks"
+  ],
+  "steps": [
+    {
+      "id": "check_read_bards_tale",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "read_bards_tale",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["poisoned_horn_story", "poisoned_horn_effects"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "poisoned_horn_story",
+      "type": "story",
+      "title": "Poisoned Horn",
+      "text": "Nothing could slake Egil's thirst at the banquet. He cursed his host, Bard of Atley, who had withheld the ale for the arrival of King Eirik and his retinue. In response, Queen Gunnhild plotted with Bard to poison Egil's next drink, but was foiled when he sliced open his hand and wrote magic runes on the horn in his own blood:\n<blockquote>Write we runes around the horn,\nRedden all the spell with blood;\nWise words choose I for the cup\nWrought from branching horn of beast.\nDrink we then, as drink we will,\nDraught that cheerful bearer brings,\nLearn that health abides in ale,\nHoly ale that Bard hath bless'd.</blockquote>\nThe poisoned horn shattered in the ale maid's hands, and Egil ran Bard through the middle with his sword."
+    },
+    {
+      "id": "poisoned_horn_effects",
+      "text": "You gain insight into Egil's proficiency with warding magic. In your Campaign Log, under Traces of Egil, record \"Warding Runes.\" The investigators gain 1 experience.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "traces_of_egil",
+          "id": "warding_runes",
+          "text": "Warding Runes"
+        },
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 1
+        }
+      ]
+    },
+    {
+      "id": "check_know_where_silver_is",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "know_where_silver_is",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["petty_things_story", "petty_things_effects"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "petty_things_story",
+      "type": "story",
+      "title": "Petty Things",
+      "text": "At the age of 90, a blind Egil sat at home in Mosfell, feet by the fire, when he was struck by an idea:\n\"I mean to take with me to the Thing two chests that King Athelstan gave me, each of which is full of English silver. I mean to have these chests carried to the Hill of Laws just when it is most crowded. Then I mean to sow broadcast the silver, and I shall be surprized if all share it fairly between them. Kicks, I fancy, there will be and blows; nay, it may end in a general fight of all the assembled Thing.\"\nToo frail to attend himself, Egil had the silver buried, then murdered the slaves he hired to ensure it never be found."
+    },
+    {
+      "id": "petty_things_effects",
+      "text": "You gain insight into Egil's greed and pettiness. In your Campaign Log, under Traces of Egil, record \"Egil's Silver.\" The investigators gain 1 experience.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "traces_of_egil",
+          "id": "egils_silver",
+          "text": "Egil's Silver"
+        },
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 1
+        }
+      ]
+    },
+    {
+      "id": "check_studied_the_markings",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "studied_the_markings",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["bad_medicine_story", "bad_medicine_effects"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "bad_medicine_story",
+      "type": "story",
+      "title": "Bad Medicine",
+      "text": "Thorfinn's daughter, Helga, had complained of pining sickness. She could not sleep and she was getting weaker by the day. Egil decided to try his hand. Inspecting the bed, he discovered a whalebone carved with a set of ineffectual runes. He shaved them off into the fire and inscribed his own. Egil proclaimed:\n<blockquote>Runes none should grave ever\nWho knows not to read them;\nOf dark spell full many\nThe meaning may miss.\nTen spell-words writ wrongly\nOn whale-bone were graven:\nWhence to leek-tending maiden,\nLong sorrow and pain.</blockquote>\nHelga arose from where she fitfully lay to wonder at her sudden shift in mood. While still weak, she would shortly recover."
+    },
+    {
+      "id": "bad_medicine_effects",
+      "text": "You gain insight into Egil's capacity to heal through magical runes. In your Campaign Log, under Traces of Egil, record \"Healing Runes.\" The investigators gain 1 experience.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "traces_of_egil",
+          "id": "healing_runes",
+          "text": "Healing Runes"
+        },
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 1
+        }
+      ]
+    },
+    {
+      "id": "check_uncovered_the_split_skill",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "uncovered_the_split_skill",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["grims_fate_story", "grims_fate_effects"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "grims_fate_story",
+      "type": "story",
+      "title": "Grim's Fate",
+      "text": "Egil's rage could not be contained, even as a small child. After being bullied by an older boy named Grim, Egil resolved to have vengenace. With a halberd given to him by Thord, he returned and drove the blade into Grim's skull, piercing his brain. That night, Egil penned this poem requesting his family procure a ship so as to begin his Viking career:\n<blockquote>Thus counselled my mother,\nFor me should they purchase\nA galley and good oars\nTo go forth a-roving.\nSo may I high-standing,\nA noble barque steering,\nHold course for the haven,\nHew down many foemen.</blockquote>\nEgil would set sail only a few years later."
+    },
+    {
+      "id": "grims_fate_effects",
+      "text": "You gain insight into the evil that began in Egil's childhood and permeated throughout the rest of his life. In your Campaign Log, under Traces of Egil, record \"Evil Blooms.\" The investigators gain 1 experience.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "traces_of_egil",
+          "id": "evil_blooms",
+          "text": "Evil Blooms"
+        },
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 1
+        }
+      ]
     }
   ]
 }

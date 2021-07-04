@@ -1,6 +1,7 @@
 import React, { useCallback, useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Icon } from 'react-native-elements';
+import { find } from 'lodash';
 
 import { StyleContext } from '@styles/StyleContext';
 import { STATE_PLAYING, usePlaybackState } from 'react-native-track-player';
@@ -8,14 +9,12 @@ import { STATE_PLAYING, usePlaybackState } from 'react-native-track-player';
 import space from '@styles/space';
 import { playNarrationTrack } from '@components/campaignguide/NarrationWrapper';
 import { Narration } from '@data/scenario/types';
-import { useSelector } from 'react-redux';
-import { hasDissonantVoices } from '@reducers';
-import { SHOW_DISSONANT_VOICES, narrationPlayer, useCurrentTrackId } from '@lib/audio/narrationPlayer';
+import { narrationPlayer, useAudioAccess, useCurrentTrackId } from '@lib/audio/narrationPlayer';
 import { usePressCallback } from '@components/core/hooks';
 
 export function useNarration(narration?: Narration): Narration | undefined {
-  const hasDS = useSelector(hasDissonantVoices);
-  if (!SHOW_DISSONANT_VOICES || !hasDS || narration === undefined) {
+  const [hasDV, narrationLang] = useAudioAccess();
+  if (!hasDV || !narration || (narrationLang && !find(narration.lang, lang => lang === narrationLang))) {
     return undefined;
   }
   return narration;

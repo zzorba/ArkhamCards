@@ -568,6 +568,22 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'humpty_dumpty':
       case 'lion_and_unicorn':
         return this.aliceIcon(encounter_code, size, color);
+      case 'zce':
+      case 'crown_of_egil':
+        return this.aliceIcon('zce', size, color);
+      case 'golden_circle':
+      case 'the_golden_circle':
+        return this.aliceIcon('golden_circle', size, color);
+      case 'berserkers':
+      case 'draugar':
+      case 'glacial_mists':
+      case 'hudulfolk':
+      case 'lacuna':
+      case 'runic_oaths':
+      case 'the_crown':
+      case 'the_fallen':
+      case 'the_warning':
+        return this.aliceIcon(encounter_code, size, color);
       case 'chesire_cat':
         return this.aliceIcon('cheshire_cat', size, color);
       case 'jabberwocky':

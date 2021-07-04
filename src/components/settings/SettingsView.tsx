@@ -32,7 +32,6 @@ import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButt
 import DeckButton from '@components/deck/controls/DeckButton';
 import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { SHOW_DISSONANT_VOICES } from '@lib/audio/narrationPlayer';
 import DissonantVoicesLoginButton from './AccountSection/auth/DissonantVoicesLoginButton';
 import { useAlertDialog } from '@components/deck/dialogs';
 import { CURRENT_REDUX_VERSION } from '@reducers/settings';
@@ -218,11 +217,10 @@ export default function SettingsView({ componentId }: NavigationProps) {
                   icon="menu"
                   title={t`Justify text`}
                   value={justifyContent}
-                  last={!SHOW_DISSONANT_VOICES}
                   onValueChange={justifyContentChanged}
                 />
               ) }
-              { SHOW_DISSONANT_VOICES && <DissonantVoicesLoginButton showAlert={showAlert} last /> }
+              <DissonantVoicesLoginButton showAlert={showAlert} last />
             </RoundedFactionBlock>
           </View>
           <SocialBlock />
