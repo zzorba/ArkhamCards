@@ -19,6 +19,7 @@ import FlavorRightNode from './FlavorRightNode';
 import FlavorUnderlineNode from './FlavorUnderlineNode';
 import InnsmouthNode from './InnsmouthNode';
 import GameTextNode from './GameTextNode';
+import FlavorBlockquoteHtmlTagNode from './FlavorBlockquoteHtmlTagNode';
 
 import CiteTagNode from './CiteTagNode';
 import { xs } from '@styles/space';
@@ -84,6 +85,7 @@ function ItalicHtmlTagRule(): MarkdownRule<WithChildren, State> {
   };
 }
 
+
 function BoldHtmlTagRule(usePingFang: boolean): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<b>(.+?)<\\/b>')),
@@ -128,6 +130,17 @@ const RightHtmlTagRule: MarkdownRule<WithChildren, State> = {
     };
   },
   render: FlavorRightNode,
+};
+
+const BlockquoteHtmlTagRule: MarkdownRule<WithChildren, State> = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<blockquote>([\\s\\S]+?)<\\/blockquote>')),
+  order: 4,
+  parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+    return {
+      children: nestedParse(capture[1], state),
+    };
+  },
+  render: FlavorBlockquoteHtmlTagNode,
 };
 
 function SmallCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
@@ -208,6 +221,7 @@ export default function CardFlavorTextComponent(
         bTag: BoldHtmlTagRule(usePingFang),
         uTag: UnderlineHtmlTagRule(),
         brTag: BreakTagRule(),
+        blockquoteTAg: BlockquoteHtmlTagRule,
         citeTag: CiteTagRule(context),
         fancyTag: FancyHtmlTagRule(context),
         centerTag: CenterHtmlTagRule,

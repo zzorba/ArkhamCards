@@ -372,6 +372,7 @@ export const EOE = 'eoe';
 export const STANDALONE = 'standalone';
 export const DARK_MATTER = 'zdm';
 export const ALICE_IN_WONDERLAND = 'zaw';
+export const CROWN_OF_EGIL = 'zce';
 
 export type CampaignCycleCode =
   typeof CUSTOM |
@@ -389,9 +390,11 @@ export type CampaignCycleCode =
   typeof TDEA |
   typeof TDEB |
   typeof TIC |
+  typeof EOE |
   typeof STANDALONE |
   typeof DARK_MATTER |
-  typeof ALICE_IN_WONDERLAND;
+  typeof ALICE_IN_WONDERLAND |
+  typeof CROWN_OF_EGIL;
 
 export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   CORE,
@@ -412,6 +415,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
 export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
   ALICE_IN_WONDERLAND,
   DARK_MATTER,
+  // CROWN_OF_EGIL,
 ];
 
 export const GUIDED_CAMPAIGNS = new Set([
@@ -431,6 +435,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   TIC,
   ALICE_IN_WONDERLAND,
   DARK_MATTER,
+  CROWN_OF_EGIL,
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
