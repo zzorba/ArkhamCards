@@ -415,7 +415,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
 export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
   ALICE_IN_WONDERLAND,
   DARK_MATTER,
-  // CROWN_OF_EGIL,
+  CROWN_OF_EGIL,
 ];
 
 export const GUIDED_CAMPAIGNS = new Set([

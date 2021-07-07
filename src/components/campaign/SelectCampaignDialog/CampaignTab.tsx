@@ -12,6 +12,7 @@ import {
   CampaignCycleCode,
   DARK_MATTER,
   ALICE_IN_WONDERLAND,
+  CROWN_OF_EGIL,
 } from '@actions/types';
 import CycleItem from './CycleItem';
 import { campaignName } from '../constants';
@@ -25,6 +26,11 @@ export interface SelectCampagaignProps {
   includeCustom?: boolean;
 }
 
+const authors = {
+  [DARK_MATTER]: 'Axolotl',
+  [ALICE_IN_WONDERLAND]: 'The Beard',
+  [CROWN_OF_EGIL]: 'The Mad Juggler',
+}
 function campaignDescription(packCode: CampaignCycleCode): string | undefined {
   switch (packCode) {
     case TDE:
@@ -34,9 +40,10 @@ function campaignDescription(packCode: CampaignCycleCode): string | undefined {
     case TDEB:
       return t`Campaign B\nFour-part campaign`;
     case DARK_MATTER:
-      return t`Fan-made campaign by Axolotl`
     case ALICE_IN_WONDERLAND:
-      return t`Fan-made campiagn by The Beard`;
+    case CROWN_OF_EGIL:
+      const author = authors[packCode];
+      return t`Fan-made campaign by ${author}`;
     default:
       return undefined;
   }

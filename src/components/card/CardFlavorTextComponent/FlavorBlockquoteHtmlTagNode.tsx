@@ -1,5 +1,6 @@
 import React from 'react';
-import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
+import { View } from 'react-native';
+import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
 import { WithChildren } from '../CardTextComponent/types';
 import space from '@styles/space';
@@ -10,10 +11,8 @@ export default function FlavorBlockquoteHtmlTagNode(
   state: RenderState
 ) {
   return (
-    <MarkdownText key={state.key} style={space.paddingLeftS}>
-      { '\n\n' }
-      { output(node.children, { ...state, blockquote: true }) }
-      { '\n\n' }
-    </MarkdownText>
+    <View style={space.paddingLeftM}>
+      { output(node.children, state) }
+    </View>
   );
 }
