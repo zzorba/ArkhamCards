@@ -25,6 +25,7 @@ import {
   DARK_MATTER,
   RTTCU,
   EOE,
+  CROWN_OF_EGIL,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import Card from '@data/types/Card';
@@ -60,10 +61,12 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case TDEA: return t`The Dream-Quest`;
     case TDEB: return t`The Web of Dreams`;
     case TIC: return t`The Innsmouth Conspiracy`;
+    case EOE: return t`Edge of the Earth`;
     case CUSTOM: return null;
     case STANDALONE: return t`Standalone`;
     case DARK_MATTER: return t`Dark Matter`;
     case ALICE_IN_WONDERLAND: return t`Alice in Wonderland`;
+    case CROWN_OF_EGIL: return t`Crown of Egil`;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -298,11 +301,13 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Into the Maelstrom`, code: 'into_the_maelstrom', pack_code: 'itm' },
       { name: t`Epilogue`, code: 'epligoue', pack_code: 'itm', interlude: true },
     ];
-    case ALICE_IN_WONDERLAND: return [];
+    case CROWN_OF_EGIL:
+    case ALICE_IN_WONDERLAND:
     case DARK_MATTER: return [];
     case TDE: return [];
     case CUSTOM: return [];
     case STANDALONE: return [];
+    case EOE: return [];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -329,6 +334,7 @@ export function campaignNames() {
     tic: t`The Innsmouth Conspiracy`,
     zdm: t`Dark Matter`,
     zaw: t`Alice in Wonderland`,
+    zce: t`The Crown of Egil`,
     standalone: t`Standalone`,
   };
 }
@@ -341,6 +347,7 @@ export function campaignColor(cycle: CampaignCycleCode | typeof RTTCU | typeof E
       return colors.campaign.core;
     case DWL:
     case RTDWL:
+    case CROWN_OF_EGIL:
       return colors.campaign.dwl;
     case PTC:
     case RTPTC:
@@ -468,6 +475,13 @@ export function getCampaignLog(
         ],
         counts: [t`Strength of Wonderland`],
       };
+    case CROWN_OF_EGIL:
+      return {
+        sections: [
+          t`Campaign Notes`,
+          t`Traces of Egil`,
+        ],
+      };
     case CUSTOM:
       return {
         sections: [
@@ -475,6 +489,7 @@ export function getCampaignLog(
         ],
       };
     case STANDALONE:
+    case EOE:
       return {};
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -556,6 +571,13 @@ const ALICE_IN_WONDERLAND_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 1, '-3': 1, '-4': 1, '-5': 1, '-6': 1, '-7': 1, '-8': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
 };
 
+const CROWN_OF_EGIL_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 2, '-2': 2, skull: 3, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 1, '-3': 2, '-4': 1, '-5': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
+};
+
 function basicScenarioRewards(encounterCode: string) {
   switch (encounterCode) {
     case 'blood_on_the_altar':
@@ -627,11 +649,14 @@ export function getChaosBag(
     case TDEB:
       return TDEB_BAG[difficulty];
     case TIC:
+    case EOE:
       return TIC_BAG[difficulty];
     case DARK_MATTER:
       return DARK_MATTER_BAG[difficulty];
     case ALICE_IN_WONDERLAND:
       return ALICE_IN_WONDERLAND_BAG[difficulty];
+    case CROWN_OF_EGIL:
+      return CROWN_OF_EGIL_BAG[difficulty];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;

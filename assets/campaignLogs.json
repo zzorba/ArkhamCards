@@ -1108,12 +1108,12 @@
             "text": "the investigators are enemies of the Lodge."
           },
           {
-            "id": "erryn_wants_to_meet",
-            "text": "Erynn wants to meet you."
-          },
-          {
             "id": "erynn_joined_investigators",
             "text": "Erynn joined the investigators."
+          },
+          {
+            "id": "erynn_wants_to_meet",
+            "text": "Erynn wants to meet you."
           },
           {
             "id": "guardian_of_the_trap_defeated",
@@ -3659,6 +3659,175 @@
           {
             "id": "the_white_queen",
             "text": "The White Queen"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "zce",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "became_sentinels_of_the_mist",
+            "text": "the investigators became sentinels of the mist."
+          },
+          {
+            "id": "did_not_find_the_ritual_site",
+            "text": "the investigators did not find the ritual site."
+          },
+          {
+            "id": "earned_barors_trust",
+            "text": "the investigators have earned Bárðr's trust."
+          },
+          {
+            "id": "found_chest",
+            "text": "An investigator found the chest in the lake."
+          },
+          {
+            "id": "found_the_ritual_site",
+            "text": "the investigators found the ritual site."
+          },
+          {
+            "id": "know_where_silver_is",
+            "text": "an investigator knows where the silver is."
+          },
+          {
+            "id": "mapped_the_golden_circle",
+            "text": "the investigators have mapped the Golden Circle."
+          },
+          {
+            "id": "must_banish_egil",
+            "text": "the investigators must banish Egil."
+          },
+          {
+            "id": "must_deceive_egil",
+            "text": "the investigators must deceive Egil."
+          },
+          {
+            "id": "must_defeat_egil",
+            "text": "the investigators must defeat Egil."
+          },
+          {
+            "id": "must_restore_egil",
+            "text": "the investigators must restore Egil."
+          },
+          {
+            "id": "noticed_ring",
+            "text": "An investigator noticed the ring."
+          },
+          {
+            "id": "on_their_own",
+            "text": "the investigators are on their own."
+          },
+          {
+            "id": "opened_chest",
+            "text": "An investigator forced open the frozen chest."
+          },
+          {
+            "id": "photographed_glacier",
+            "text": "the investigators photographed Long Glacier."
+          },
+          {
+            "id": "photographed_gulfoss",
+            "text": "the investigators photographed Gulfoss."
+          },
+          {
+            "id": "photographed_kerio",
+            "text": "the investigators photographed Kerið."
+          },
+          {
+            "id": "photographed_thingvellir",
+            "text": "the investigators photographed Thingvellir."
+          },
+          {
+            "id": "read_bards_tale",
+            "text": "an investigator read Bard's tale."
+          },
+          {
+            "id": "retrieved_pole",
+            "text": "An investigator retrieved the eerie pole."
+          },
+          {
+            "id": "runes_remain_a_mystery",
+            "text": "the runes remain a mystery."
+          },
+          {
+            "id": "studied_the_markings",
+            "text": "an investigator studied the markings."
+          },
+          {
+            "id": "uncovered_the_split_skill",
+            "text": "an investigator uncovered the split skull."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "one_victory_display",
+            "text": "dummy"
+          },
+          {
+            "id": "win",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "traces_of_egil",
+        "entries": [
+          {
+            "id": "athelstans_ring",
+            "text": "Athelstan's Ring"
+          },
+          {
+            "id": "dragvandil",
+            "text": "Dragvandil"
+          },
+          {
+            "id": "egils_hood",
+            "text": "Egil's Hood."
+          },
+          {
+            "id": "egils_scorn_pole",
+            "text": "Egil's Scorn Pole"
+          },
+          {
+            "id": "egils_silver",
+            "text": "Egil's Silver"
+          },
+          {
+            "id": "evil_blooms",
+            "text": "Evil Blooms"
+          },
+          {
+            "id": "gnawed_horn",
+            "text": "Gnawed Horn"
+          },
+          {
+            "id": "healing_runes",
+            "text": "Healing Runes"
+          },
+          {
+            "id": "runes_of_protection",
+            "text": "Runes of Protection"
+          },
+          {
+            "id": "silk_gown",
+            "text": "Silk Gown"
+          },
+          {
+            "id": "thorolfs_bracelet",
+            "text": "Thorolf's Bracelet"
+          },
+          {
+            "id": "warding_runes",
+            "text": "Warding Runes"
           }
         ]
       }

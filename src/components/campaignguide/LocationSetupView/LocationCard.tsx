@@ -33,7 +33,7 @@ function TextCard({ name }: { name: string }) {
       borderStyle,
       { borderWidth: 1, borderRadius: 8, backgroundColor: colors.darkText },
     ]}>
-      <Text style={[typography.text, { color: colors.background }]}>
+      <Text style={[typography.text, { color: colors.background }, typography.center]}>
         { name }
       </Text>
     </View>
@@ -69,6 +69,7 @@ function LocationCardImage({ code, back, name }: { code: string; back: boolean; 
 
 export default function LocationCard({ code, height, width, left, top, name, resource_dividers }: Props) {
   const { borderStyle, colors } = useContext(StyleContext);
+  const rotate = code.indexOf('_rotate') !== -1;
   const image = useMemo(() => {
     switch (code) {
       case 'blank':
@@ -104,7 +105,7 @@ export default function LocationCard({ code, height, width, left, top, name, res
         return (
           <LocationCardImage
             name={name}
-            code={code.replace('_back', '')}
+            code={code.replace('_back', '').replace('_rotate', '')}
             back={code.indexOf('_back') !== -1}
           />
         );
@@ -141,7 +142,7 @@ export default function LocationCard({ code, height, width, left, top, name, res
 
   return (
     <>
-      <View style={[styles.card, { width, height, left, top }]}>
+      <View style={[styles.card, { width: rotate ? height : width, height: rotate ? width : height, left, top }]}>
         { image }
       </View>
       { resourceDividers }

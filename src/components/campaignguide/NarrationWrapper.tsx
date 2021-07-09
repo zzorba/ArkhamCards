@@ -10,23 +10,19 @@ import {
   ViewStyle,
 } from 'react-native';
 import { Divider, Icon } from 'react-native-elements';
-import { useSelector } from 'react-redux';
 import TrackPlayer, { EmitterSubscription, usePlaybackState, useTrackPlayerEvents, useTrackPlayerProgress } from 'react-native-track-player';
 
 import EncounterIcon from '@icons/EncounterIcon';
 import { getAccessToken } from '@lib/dissonantVoices';
-import { hasDissonantVoices } from '@reducers';
 import { StyleContext } from '@styles/StyleContext';
 import space, { m } from '@styles/space';
-import { SHOW_DISSONANT_VOICES, narrationPlayer, useCurrentTrackId, useTrackDetails, useTrackPlayerQueue } from '@lib/audio/narrationPlayer';
+import { narrationPlayer, useAudioAccess, useCurrentTrackId, useTrackDetails, useTrackPlayerQueue } from '@lib/audio/narrationPlayer';
 import { usePressCallback } from '@components/core/hooks';
 
 export async function playNarrationTrack(trackId: string) {
-  if (SHOW_DISSONANT_VOICES) {
-    const trackPlayer = await narrationPlayer();
-    await trackPlayer.skip(trackId);
-    await trackPlayer.play();
-  }
+  const trackPlayer = await narrationPlayer();
+  await trackPlayer.skip(trackId);
+  await trackPlayer.play();
 }
 
 export async function setNarrationQueue(queue: NarrationTrack[]) {
@@ -40,6 +36,16 @@ export async function setNarrationQueue(queue: NarrationTrack[]) {
 
   const oldTrackIds = oldTracks.map((track) => track.id);
   const newTracks = queue.map((track) => {
+    if (track.lang) {
+      return {
+        id: track.id,
+        title: track.name,
+        artist: 'Arkham Cards',
+        album: track.scenarioName,
+        artwork: track.campaignCode,
+        url: `https://static.arkhamcards.com/audio/${track.lang}/${track.id}.mp3`,
+      };
+    }
     return {
       id: track.id,
       title: track.name,
@@ -114,6 +120,7 @@ export interface NarrationTrack {
   campaignCode: string;
   campaignName: string;
   scenarioName: string;
+  lang: string | undefined;
 }
 
 interface PlayerProps {
@@ -417,11 +424,11 @@ interface NarratorContainerProps {
 }
 
 export default function NarrationWrapper({ children }: NarratorContainerProps) {
-  const hasDV = useSelector(hasDissonantVoices);
+  const [hasDV] = useAudioAccess();
   return (
     <SafeAreaView style={styles.container}>
       { children }
-      { !!(SHOW_DISSONANT_VOICES && hasDV) && <PlayerView /> }
+      { !!hasDV && <PlayerView /> }
     </SafeAreaView>
   );
 }

@@ -190,7 +190,7 @@
   "read_or_die": "책이 아니면 죽음을",
   "all_or_nothing": "모 아니면 도",
   "bad_blood": "악연",
-  "by_the_book": "By the Book",
+  "by_the_book": "수칙대로",
   "return_to_the_untamed_wilds": "돌아온 길들지 않은 야생",
   "return_to_the_doom_of_eztli": "돌아온 에스틀리의 몰락",
   "return_to_threads_of_fate": "돌아온 운명의 실 가닥",
@@ -267,5 +267,15 @@
   "tempest_in_a_teapot": "찻잔 속 폭풍",
   "walrus_and_carpenter": "바다코끼리와 목수",
   "wild_snark_chase": "야생의 스나크 사냥",
-  "jabberwocky": "재버워키"
+  "jabberwocky": "재버워키",
+  "the_warning": "The Warning",
+  "berserkers": "Berserkers",
+  "draugar": "Draugar",
+  "lacuna": "Lacuna",
+  "runic_oaths": "Runic Oaths",
+  "hudulfolk": "Hudulfólk",
+  "glacial_mists": "Glacial Mists",
+  "the_crown": "The Crown",
+  "the_fallen": "The Fallen",
+  "the_golden_circle": "The Golden Circle"
 }

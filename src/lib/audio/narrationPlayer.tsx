@@ -1,12 +1,20 @@
 import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { isEqual } from 'lodash';
 import TrackPlayer, { EmitterSubscription, EventType, Track, State, useTrackPlayerEvents } from 'react-native-track-player';
 
 import { useInterval } from '@components/core/hooks';
 import { hasDissonantVoices } from '@reducers';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
-export const SHOW_DISSONANT_VOICES = true;
+export function useAudioAccess(): [boolean, string | undefined] {
+  const { lang } = useContext(LanguageContext);
+  const hasDV = useSelector(hasDissonantVoices);
+  return [
+    (lang === 'ru') || hasDV,
+    hasDV ? undefined : lang,
+  ];
+}
 
 interface TrackPlayerFunctions {
   getQueue: () => Promise<Track[]>;
@@ -137,7 +145,7 @@ export function useTrackDetails(id: string | null) {
 }
 
 export function useStopAudioOnUnmount() {
-  const hasDV = useSelector(hasDissonantVoices);
+  const [hasDV] = useAudioAccess();
   useEffect(() => {
     if (hasDV) {
       return function() {
