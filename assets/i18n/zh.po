@@ -4690,7 +4690,7 @@ msgstr "天選"
 
 msgctxt "trait"
 msgid "Circle"
-msgstr "Circle"
+msgstr "圓環"
 
 msgctxt "trait"
 msgid "City"
@@ -5362,7 +5362,7 @@ msgstr "法師"
 
 msgctxt "trait"
 msgid "Spectral"
-msgstr "Spectral"
+msgstr "幽靈"
 
 msgctxt "trait"
 msgid "Spell"

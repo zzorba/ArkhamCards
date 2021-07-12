@@ -133,8 +133,8 @@ const RightHtmlTagRule: MarkdownRule<WithChildren, State> = {
 };
 
 const BlockquoteHtmlTagRule: MarkdownRule<WithChildren, State> = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<blockquote>([\\s\\S]+?)<\\/blockquote>')),
-  order: 4,
+  match: SimpleMarkdown.blockRegex(new RegExp('^<blockquote>([\\s\\S]+?)<\\/blockquote>')),
+  order: 0,
   parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
     return {
       children: nestedParse(capture[1], state),
@@ -217,11 +217,11 @@ export default function CardFlavorTextComponent(
         width,
       }}
       rules={{
+        blockquoteTag: BlockquoteHtmlTagRule,
         iconTag: ArkhamIconRule(context, sizeScale),
         bTag: BoldHtmlTagRule(usePingFang),
         uTag: UnderlineHtmlTagRule(),
         brTag: BreakTagRule(),
-        blockquoteTAg: BlockquoteHtmlTagRule,
         citeTag: CiteTagRule(context),
         fancyTag: FancyHtmlTagRule(context),
         centerTag: CenterHtmlTagRule,

@@ -92,11 +92,11 @@
           },
           {
             "id": "destroyed_necronomicon",
-            "text": "the investigators destroyed the Necronomicon."
+            "text": "avete distrutto il Necronomicon."
           },
           {
             "id": "earl_sawyer_survived",
-            "text": "Earl Sawyer survived The Dunwich Legacy."
+            "text": "Earl Sawyer è sopravvissuto all'Eredità di Dunwich."
           },
           {
             "id": "entered_the_gate",
@@ -108,7 +108,7 @@
           },
           {
             "id": "failed_to_recover_necronomicon",
-            "text": "the investigators failed to recover the Necronomicon."
+            "text": "non siete riusciti a recuperare il Necronomicon."
           },
           {
             "id": "failed_to_save_students",
@@ -124,7 +124,7 @@
           },
           {
             "id": "francis_morgan_survived",
-            "text": "Dr. Francis Morgan survived The Dunwich Legacy."
+            "text": "il dottor Francis Morgan è sopravvissuto all'Eredità di Dunwich."
           },
           {
             "id": "henry_armitage_kidnapped",
@@ -140,7 +140,7 @@
           },
           {
             "id": "investigators_delayed",
-            "text": "the investigators were delayed on their way to Dunwich."
+            "text": "siete stati trattenuti sulla strada per Dunwich."
           },
           {
             "id": "killed_silas_bishop",
@@ -172,7 +172,7 @@
           },
           {
             "id": "took_necronomicon",
-            "text": "the investigators took custody of the Necronomicon."
+            "text": "avete preso in custodia il Necronomicon."
           },
           {
             "id": "unconscious_for_several_hours",
@@ -192,7 +192,7 @@
           },
           {
             "id": "warren_rice_survived",
-            "text": "Professor Warren Rice survived The Dunwich Legacy."
+            "text": "il professor Warren Rice è sopravvissuto all'Eredità di Dunwich."
           },
           {
             "id": "yog_sothoth_became_one_with_reality",
@@ -208,7 +208,7 @@
           },
           {
             "id": "zebulon_whateley_survived",
-            "text": "Zebulon Whateley survived The Dunwich Legacy."
+            "text": "Zebulon Whateley è sopravvissuto all'Eredità di Dunwich."
           }
         ]
       },
@@ -453,11 +453,11 @@
           },
           {
             "id": "destroyed_necronomicon",
-            "text": "the investigators destroyed the Necronomicon."
+            "text": "avete distrutto il Necronomicon."
           },
           {
             "id": "earl_sawyer_survived",
-            "text": "Earl Sawyer survived The Dunwich Legacy."
+            "text": "Earl Sawyer è sopravvissuto all'Eredità di Dunwich."
           },
           {
             "id": "entered_the_gate",
@@ -469,7 +469,7 @@
           },
           {
             "id": "failed_to_recover_necronomicon",
-            "text": "the investigators failed to recover the Necronomicon."
+            "text": "non siete riusciti a recuperare il Necronomicon."
           },
           {
             "id": "failed_to_save_students",
@@ -485,7 +485,7 @@
           },
           {
             "id": "francis_morgan_survived",
-            "text": "Dr. Francis Morgan survived The Dunwich Legacy."
+            "text": "il dottor Francis Morgan è sopravvissuto all'Eredità di Dunwich."
           },
           {
             "id": "henry_armitage_kidnapped",
@@ -501,7 +501,7 @@
           },
           {
             "id": "investigators_delayed",
-            "text": "the investigators were delayed on their way to Dunwich."
+            "text": "siete stati trattenuti sulla strada per Dunwich."
           },
           {
             "id": "killed_silas_bishop",
@@ -533,7 +533,7 @@
           },
           {
             "id": "took_necronomicon",
-            "text": "the investigators took custody of the Necronomicon."
+            "text": "avete preso in custodia il Necronomicon."
           },
           {
             "id": "unconscious_for_several_hours",
@@ -553,7 +553,7 @@
           },
           {
             "id": "warren_rice_survived",
-            "text": "Professor Warren Rice survived The Dunwich Legacy."
+            "text": "il professor Warren Rice è sopravvissuto all'Eredità di Dunwich."
           },
           {
             "id": "yog_sothoth_became_one_with_reality",
@@ -569,7 +569,7 @@
           },
           {
             "id": "zebulon_whateley_survived",
-            "text": "Zebulon Whateley survived The Dunwich Legacy."
+            "text": "Zebulon Whateley è sopravvissuto all'Eredità di Dunwich."
           }
         ]
       },
@@ -1108,12 +1108,12 @@
             "text": "the investigators are enemies of the Lodge."
           },
           {
-            "id": "erryn_wants_to_meet",
-            "text": "Erynn wants to meet you."
-          },
-          {
             "id": "erynn_joined_investigators",
             "text": "Erynn joined the investigators."
+          },
+          {
+            "id": "erynn_wants_to_meet",
+            "text": "Erynn wants to meet you."
           },
           {
             "id": "guardian_of_the_trap_defeated",
@@ -3666,7 +3666,7 @@
     "supplies": []
   },
   {
-    "campaignId": "zdm",
+    "campaignId": "zce",
     "sections": [
       {
         "section": "campaign_notes",
@@ -3771,6 +3771,10 @@
           {
             "id": "one_victory_display",
             "text": "dummy"
+          },
+          {
+            "id": "win",
+            "text": "dummy"
           }
         ]
       },
@@ -3826,7 +3830,13 @@
             "text": "Warding Runes"
           }
         ]
-      },
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "zdm",
+    "sections": [
       {
         "section": "campaign_notes",
         "entries": [

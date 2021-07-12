@@ -1108,12 +1108,12 @@
             "text": "сыщики враждуют с Ложей."
           },
           {
-            "id": "erryn_wants_to_meet",
-            "text": "Erynn wants to meet you."
-          },
-          {
             "id": "erynn_joined_investigators",
             "text": "Erynn joined the investigators."
+          },
+          {
+            "id": "erynn_wants_to_meet",
+            "text": "Erynn wants to meet you."
           },
           {
             "id": "guardian_of_the_trap_defeated",
@@ -3666,7 +3666,7 @@
     "supplies": []
   },
   {
-    "campaignId": "zdm",
+    "campaignId": "zce",
     "sections": [
       {
         "section": "campaign_notes",
@@ -3771,6 +3771,10 @@
           {
             "id": "one_victory_display",
             "text": "dummy"
+          },
+          {
+            "id": "win",
+            "text": "dummy"
           }
         ]
       },
@@ -3826,7 +3830,13 @@
             "text": "Warding Runes"
           }
         ]
-      },
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "zdm",
+    "sections": [
       {
         "section": "campaign_notes",
         "entries": [
