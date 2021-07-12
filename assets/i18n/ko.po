@@ -4148,12 +4148,6 @@ msgstr "이상한 나라의 골칫거리"
 msgid "Strength of Wonderland"
 msgstr "이상한 나라의 힘"
 
-msgid "Fan-made campaign by Axolotl"
-msgstr "팬메이드 캠페인 (제작자: Axolotl)"
-
-msgid "Fan-made campiagn by The Beard"
-msgstr "팬메이드 캠페인 (제작자: Beard)"
-
 msgid "Edge of the Earth"
 msgstr "지구의 끝자락"
 
@@ -4426,6 +4420,25 @@ msgstr "계정을 불러오는 중입니다."
 #, javascript-format
 msgid "Choose an investigator to add ${ card.name } to their deck:"
 msgstr "덱에 '${ card.name }' 카드를 추가하려는 조사자를 하나 선택하세요:"
+
+msgid "Show card"
+msgstr ""
+
+msgid "Edit my spoiler settings"
+msgstr ""
+
+msgid "Crown of Egil"
+msgstr ""
+
+msgid "The Crown of Egil"
+msgstr ""
+
+msgid "Traces of Egil"
+msgstr ""
+
+#, javascript-format
+msgid "Fan-made campaign by ${ author }"
+msgstr ""
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."

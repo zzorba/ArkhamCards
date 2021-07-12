@@ -29435,17 +29435,6 @@
       ]
     },
     {
-      "id": "gather_anette_cards",
-      "bullet_type": "small",
-      "type": "encounter_sets",
-      "encounter_sets": [
-        "music_of_the_damned",
-        "anettes_coven",
-        "city_of_sins",
-        "witchcraft"
-      ]
-    },
-    {
       "id": "use_act1_v1",
       "bullet_type": "small",
       "text": "When constructing the act deck, use Act 1a—“Dark Knowledge (v. I)” and Act 2a—“Beyond the Grave.”"
@@ -29930,8 +29919,19 @@
       ]
     },
     {
+      "id": "gather_anette_cards",
+      "bullet_type": "small",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "music_of_the_damned",
+        "anettes_coven",
+        "city_of_the_damned",
+        "hexcraft"
+      ]
+    },
+    {
       "id": "setup_locations",
-      "text": "Choose at random one of the three copies of each of the following locations: French Hill, Rivertown, Southside, South Church, and Merchant District. Place each of these locations into play and remove the other copies from the game.",
+      "text": "Choose at random one of the three copies of each of the following locations: French Hill, Rivertown, Southside, South Church, Uptown, and Merchant District. Place each of these locations into play and remove the other copies from the game.",
       "bullets": [
         {
           "text": "Each investigator begins play in Southside."
@@ -34300,7 +34300,7 @@
     },
     {
       "id": "ask_first_question",
-      "text": "Choose a question to ask Card Sanford.",
+      "text": "Choose a question to ask Carl Sanford.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -34381,7 +34381,7 @@
     },
     {
       "id": "ask_second_question",
-      "text": "Choose a question to ask Card Sanford.",
+      "text": "Choose a question to ask Carl Sanford.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -34540,7 +34540,7 @@
     },
     {
       "id": "ask_third_question",
-      "text": "Choose a question to ask Card Sanford.",
+      "text": "Choose a question to ask Carl Sanford.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -35932,6 +35932,9 @@
     "tfa_interlude5",
     "return_to_shattered_aeons",
     "tfa_epilogue"
+  ],
+  "hidden_scenarios": [
+    "turn_back_time"
   ],
   "setup": [
     "prologue",
@@ -59880,7 +59883,7 @@
     },
     {
       "id": "ask_first_question",
-      "text": "Choose a question to ask Card Sanford.",
+      "text": "Choose a question to ask Carl Sanford.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -59937,7 +59940,7 @@
     },
     {
       "id": "ask_second_question",
-      "text": "Choose a question to ask Card Sanford.",
+      "text": "Choose a question to ask Carl Sanford.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -60062,7 +60065,7 @@
     },
     {
       "id": "ask_third_question",
-      "text": "Choose a question to ask Card Sanford.",
+      "text": "Choose a question to ask Carl Sanford.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -73881,6 +73884,9 @@
     "tfa_interlude5",
     "shattered_aeons",
     "tfa_epilogue"
+  ],
+  "hidden_scenarios": [
+    "turn_back_time"
   ],
   "setup": [
     "prologue",
