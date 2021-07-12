@@ -1105,7 +1105,7 @@
           },
           {
             "id": "enemies_of_the_lodge",
-            "text": "調查員與银暮秘社爲敵。"
+            "text": "調查員與秘社為敵。"
           },
           {
             "id": "erynn_joined_investigators",
@@ -1137,7 +1137,7 @@
           },
           {
             "id": "investigators_escaped_the_spectral_realm",
-            "text": "調查員逃出了幽靈國度。"
+            "text": "調查員逃出幽靈國度。"
           },
           {
             "id": "josef_disappeared_into_the_mist",
@@ -1169,7 +1169,7 @@
           },
           {
             "id": "pieces_of_evidence",
-            "text": "留下了#X#個證據"
+            "text": "留下了#X#個證據。"
           },
           {
             "id": "rejected_fate",
@@ -1205,11 +1205,11 @@
           },
           {
             "id": "witches_spell_broken",
-            "text": "女巫的法術被破壞"
+            "text": "女巫的法術被破壞。"
           },
           {
             "id": "witches_spell_cast",
-            "text": "女巫的法術成功施放"
+            "text": "女巫的法術成功施放。"
           }
         ]
       },
@@ -2155,7 +2155,7 @@
           },
           {
             "id": "enemies_of_the_lodge",
-            "text": "調查員與银暮秘社爲敵。"
+            "text": "調查員與秘社為敵。"
           },
           {
             "id": "guardian_of_the_trap_defeated",
@@ -2179,7 +2179,7 @@
           },
           {
             "id": "investigators_escaped_the_spectral_realm",
-            "text": "調查員逃出了幽靈國度。"
+            "text": "調查員逃出幽靈國度。"
           },
           {
             "id": "josef_disappeared_into_the_mist",
@@ -2211,7 +2211,7 @@
           },
           {
             "id": "pieces_of_evidence",
-            "text": "留下了#X#個證據"
+            "text": "留下了#X#個證據。"
           },
           {
             "id": "rejected_fate",
@@ -2247,11 +2247,11 @@
           },
           {
             "id": "witches_spell_broken",
-            "text": "女巫的法術被破壞"
+            "text": "女巫的法術被破壞。"
           },
           {
             "id": "witches_spell_cast",
-            "text": "女巫的法術成功施放"
+            "text": "女巫的法術成功施放。"
           }
         ]
       },
