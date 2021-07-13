@@ -392,7 +392,7 @@ export const DARK_THEME: ThemeColors = {
     dwl: '#57783A',
     ptc: '#524F8D',
     tfa: '#96558E',
-    tcu: '#96558E',
+    tcu: '#4B314E',
     tde: '#3D4B8A',
     tic: '#236A6B',
     eoe: '#179BAD',

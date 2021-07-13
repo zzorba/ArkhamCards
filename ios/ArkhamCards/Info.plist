@@ -78,6 +78,8 @@
 	<string>LaunchScreen</string>
 	<key>NSMainNibFile~ipad</key>
 	<string>LaunchScreen</string>
+	<key>RCTAsyncStorageExcludeFromBackup</key>
+	<false/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>tokens.ttf</string>
