@@ -4422,10 +4422,10 @@ msgid "Choose an investigator to add ${ card.name } to their deck:"
 msgstr "덱에 '${ card.name }' 카드를 추가하려는 조사자를 하나 선택하세요:"
 
 msgid "Show card"
-msgstr ""
+msgstr "카드 보기"
 
 msgid "Edit my spoiler settings"
-msgstr ""
+msgstr "스포일러 설정 수정하기"
 
 msgid "Crown of Egil"
 msgstr ""
@@ -4438,7 +4438,7 @@ msgstr ""
 
 #, javascript-format
 msgid "Fan-made campaign by ${ author }"
-msgstr ""
+msgstr "팬메이드 캠페인 (제작자: ${ author })"
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
