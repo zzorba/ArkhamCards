@@ -4323,12 +4323,6 @@ msgstr "Decadencia del país de las maravillas"
 msgid "Strength of Wonderland"
 msgstr "Fuerza del país de las maravillas"
 
-msgid "Fan-made campaign by Axolotl"
-msgstr "Campaña fanmade de Axolotl"
-
-msgid "Fan-made campiagn by The Beard"
-msgstr "Campaña fanmade de The Beard"
-
 msgid "Edge of the Earth"
 msgstr "Los confines de la tierra"
 
@@ -4614,6 +4608,25 @@ msgstr ""
 
 #, javascript-format
 msgid "Choose an investigator to add ${ card.name } to their deck:"
+msgstr ""
+
+msgid "Show card"
+msgstr ""
+
+msgid "Edit my spoiler settings"
+msgstr ""
+
+msgid "Crown of Egil"
+msgstr ""
+
+msgid "The Crown of Egil"
+msgstr ""
+
+msgid "Traces of Egil"
+msgstr ""
+
+#, javascript-format
+msgid "Fan-made campaign by ${ author }"
 msgstr ""
 
 msgctxt "masculine"

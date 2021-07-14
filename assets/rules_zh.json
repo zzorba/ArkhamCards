@@ -37,7 +37,7 @@
       {
         "id": "Abilities_Triggered_Abilities",
         "title": "觸發能力",
-        "text": "觸發能力在效果文字前，會有[free]圖標、[reaction]圖標或[action]圖標。如果該能力有發動費用或條件，則會寫在這些圖標之後。玩家必須滿足觸發條件，才能主動觸發這些能力。觸發能力分為三類：\n免費觸發能力([free])\n– [free]觸發能力可以在任意一位玩家的時間段觸發。(詳見\"[附錄II：時間與流程](#Appendix_II_Timing_and_Gameplay)\"中，完整的玩家時間段。)\n反應觸發能力([reaction])\n– [reaction]觸發能力會有特定的觸發條件，當這個條件被滿足時才能觸發。<i>例如：\"[reaction]在你擊敗一名敵人之後：\"</i>\n- [reaction]能力的時間點如果以\"在……時(when)\"來描述，則意味著這個條件被達成，但是在其結算之前觸發效果。\n- [reaction]能力的時間點如果以\"在……之後(after)\"來描述，則意味著這個條件達成並且完成結算之後觸發效果。\n- 每個[reaction]能力在特定條件達成時只能觸發一次。<i>例如，某能力的觸發條件為\"在X發生後\"，則每次X發生後，都可以使用一次該能力。</i>\n行動觸發能力([action])\n– [action]觸發能力可以在調查階段中，玩家的回合花費一個行動來主動觸發。並且每個[action]能力都要花費1個行動。\n所有的觸發能力都遵守以下規則：\n- 玩家控制帶有觸發能力的卡牌時，由該玩家來決定該能力是否在其指示的時機觸發。\n- 觸發能力必須在啟動後能改變遊戲，並且費用完全支付(如果有的話，並且請算入任何費用修正值)的情況下，才能觸發。支付費用造成的資源減少，或者與其他任何能力的互動，不視為改變了遊戲。\n- 當能力被啟動後，玩家必須盡可能地結算其效果，除非效果文字帶有\"可以(may)\"字樣(詳見\"[可以](#May)\")。\n調查員可以使用以下來源的觸發能力([fast]、[reaction]和[action])：\n- 如果卡牌在該調查員的場上，且處於該調查員的控制中(包括該調查員的調查員卡)，則卡牌的觸發能力可以使用。\n- 所有在場，且與調查員處於同一地點的冒險卡，卡上的觸發能力都能被使用。包括了：所在的地點卡、該地點上放置的遭遇卡、同一地點所有調查員威脅區域中的遭遇卡。\n- 當前場景卡和密謀卡上的觸發能力都可以被使用。\n- 如果一張卡牌上有特殊說明，允許玩家在特殊情況下使用卡上的觸發能力，那也可以視為是有效來源之一。"
+        "text": "觸發能力在效果文字前，會有[free]圖標、[reaction]圖標或[action]圖標。如果該能力有發動費用或條件，則會寫在這些圖標之後。玩家必須滿足觸發條件，才能主動觸發這些能力。觸發能力分為三類：\n免費觸發能力([free])\n– [free]觸發能力可以在任意一位玩家的時間段觸發。(詳見\"[附錄II：時間與流程](#Appendix_II_Timing_and_Gameplay)\"中，完整的玩家時間段。)\n反應觸發能力([reaction])\n– [reaction]觸發能力會有特定的觸發條件，當這個條件被滿足時才能觸發。<i>例如：\"[reaction]在你擊敗一名敵人之後：\"</i>\n- [reaction]能力的時間點如果以\"在……時(when)\"來描述，則意味著這個條件被達成，但是在其結算之前觸發效果。\n- [reaction]能力的時間點如果以\"在……之後(after)\"來描述，則意味著這個條件達成並且完成結算之後觸發效果。\n- 每個[reaction]能力在特定條件達成時只能觸發一次。<i>例如，某能力的觸發條件為\"在X發生後\"，則每次X發生後，都可以使用一次該能力。</i>\n行動觸發能力([action])\n- [action]觸發能力可以在調查階段中，玩家的回合花費一個行動來主動觸發。並且每個[action]能力都要花費1個行動。\n所有的觸發能力都遵守以下規則：\n- 玩家控制帶有觸發能力的卡牌時，由該玩家來決定該能力是否在其指示的時機觸發。\n- 觸發能力必須在啟動後能改變遊戲，並且費用完全支付(如果有的話，並且請算入任何費用修正值)的情況下，才能觸發。支付費用造成的資源減少，或者與其他任何能力的互動，不視為改變了遊戲。\n- 當能力被啟動後，玩家必須盡可能地結算其效果，除非效果文字帶有\"可以(may)\"字樣(詳見\"[可以](#May)\")。\n調查員可以使用以下來源的觸發能力([fast]、[reaction]和[action])：\n- 如果卡牌在該調查員的場上，且處於該調查員的控制中(包括該調查員的調查員卡)，則卡牌的觸發能力可以使用。\n- 所有在場，且與調查員處於同一地點的冒險卡，卡上的觸發能力都能被使用。包括了：所在的地點卡、該地點上放置的遭遇卡、同一地點所有調查員威脅區域中的遭遇卡。\n- 當前場景卡和密謀卡上的觸發能力都可以被使用。\n- 如果一張卡牌上有特殊說明，允許玩家在特殊情況下使用卡上的觸發能力，那也可以視為是有效來源之一。"
       },
       {
         "id": "Abilities_Keywords",
@@ -47,7 +47,7 @@
       {
         "id": "Spawn_Instructions_and_Prey_Instructions",
         "title": "生成指令和獵物指令",
-        "text": "生成指令說明了一名敵人在何處入場(詳見\"[生成](#Spawn)\")\n獵物指令說明了當一名敵人正在追趕或者處於交戰狀態時，如果有多位調查員，如何進行選擇(詳見\"[獵物](#Prey)\")。"
+        "text": "生成指令說明了一名敵人在何處入場(詳見\"[生成](#Spawn)\")\n獵物指令說明了一名敵人正在追趕和/或交戰時，如果有多位調查員可供選擇，那麼它會如何選擇(詳見\"[獵物](#Prey)\")。"
       },
       {
         "id": "Action_Designators",
@@ -100,7 +100,7 @@
   {
     "id": "Aloof",
     "title": "冷漠",
-    "text": "冷漠是一個關鍵詞能力。帶有冷漠關鍵詞的敵人，不會自動與所在地點的調查員交戰。\n- 當冷漠敵人生成時，其處於未交戰狀態。\n- 調查員可以通過交戰行動或卡牌能力來與冷漠敵人交戰。\n- 調查員如果未與一名冷漠敵人交戰，則不能攻擊它。"
+    "text": "冷漠是一個關鍵詞能力。帶有冷漠關鍵詞的敵人，不會自動與所在地點的調查員交戰。\n- 當冷漠敵人生成時不進入交戰。\n- 調查員可以通過交戰行動或卡牌能力來與冷漠敵人交戰。\n- 調查員如果未與一名冷漠敵人交戰，則不能攻擊它。"
   },
   {
     "id": "As_if",
@@ -137,12 +137,12 @@
   {
     "id": "Attack_of_Opportunity",
     "title": "趁亂攻擊",
-    "text": "如果一位調查員與至少一名處於準備狀態的敵人交戰，每當他執行攻擊除<b>攻擊</b>、<b>躲避</b>或啟動<b>談判</b>、<b>撤退</b>外的能力時，所交戰的敵人會各對該調查員執行一次趁亂攻擊，順序由該調查員選擇。每次攻擊時敵人會對該調查員造成傷害和恐懼。\n- 調查員在支付行動費用之後立即引起趁亂攻擊，在結算行動效果之前執行。\n- 如果一個能力需要花費多個行動，也只會引起每名敵人一次趁亂攻擊。\n- 一名敵人在執行完趁亂攻擊后不會消耗。\n- 所有趁亂攻擊完成後，繼續執行造成這次攻擊的行動。\n- 趁亂攻擊也視為敵人的攻擊，可以被卡牌效果影響。\n趁亂攻擊的觸發條件是：當調查員花費至少1個行動，來觸發一個能力或行動時，才會觸發敵人的趁亂攻擊。使用[free]能力不會觸發趁亂攻擊。"
+    "text": "如果一位調查員與至少一名處於準備狀態的敵人交戰，每當他執行攻擊除<b>攻擊</b>、<b>躲避</b>或啟動<b>談判</b>、<b>撤退</b>外的能力時，每名交戰的敵人會各對該調查員執行一次趁亂攻擊，順序由該調查員選擇。每次攻擊時敵人會對該調查員造成傷害和恐懼。\n- 調查員在支付行動費用之後立即引起趁亂攻擊，在結算行動效果之前執行。\n- 如果一個能力需要花費多個行動，也只會使所有交戰的敵人發動一次趁亂攻擊。\n- 一名敵人在執行完趁亂攻擊後不會消耗。\n- 所有趁亂攻擊完成後，繼續執行造成這次攻擊的行動。\n- 趁亂攻擊也視為敵人的攻擊，可以被卡牌效果影響。\n趁亂攻擊的觸發條件是：當調查員花費至少1個行動，來觸發一個能力或行動時，才會觸發敵人的趁亂攻擊。使用[free]能力不會觸發趁亂攻擊。"
   },
   {
     "id": "Automatic_Failure_Success",
     "title": "自動失敗/成功",
-    "text": "部分卡牌或標記的能力可能會造成一次技能檢定自動失敗或自動成功。如果技能檢定自動失敗或自動成功，則根據\"[技能檢定流程](#Skill_Test_Timing)\"的\"步驟6\"來結算。\n- 如果技能檢定自動失敗，則該次技能檢定調查員的技能值視為0。\n- 如果技能檢定自動成功，則該次技能檢定技能難度視為0。\nSome card effects make an investigator automatically succeed or automatically fail a skill test. If this occurs, depending on the timing of such an effect, certain steps of the skill test may be skipped in their entirety.\n- If it is known that an investigator automatically succeeds or fails at a skill test before Step 3 (\"Reveal chaos token\") occurs, that step is skipped, along with Step 4. No chaos token(s) are revealed from the chaos bag, and the investigator immediately moves to Step 5. All other steps of the skill test resolve as normal.\n- If a chaos token effect causes an investigator to automatically succeed or fail at a skill test, continue with Steps 3 and 4, as normal.\n- If an ability \"automatically evades\" 1 or more enemies, this is not the same as automatically succeeding at an evasion attempt. As per the entry on \"Evade\" in the Rules Reference (see \"[Evade](#Evade)\"), if an ability automatically evades 1 or more enemies, no skill test is made for the evasion attempt whatsoever. Consequentially, because no skill test is made, it is not considered a \"successful\" evasion. The investigator simply follows the steps for evading an enemy (exhausting it and breaking its engagement).\n<i>For example: Patrice uses the ability on Hope, which reads: \"[action] If Hope is ready, exhaust or discard him: <b>Evade.</b> Attempt to evade with a base [agility] value of 5. (If you discarded Hope, this test is automatically successful.)\" If Patrice chooses to discard Hope, the skill test automatically succeeds before chaos tokens are revealed; therefore Steps 3 and 4 of the skill test are skipped. However, the skill test still takes place. Cards may still be committed to the test, and the investigator’s total modified skill value is still determined, as it may have some bearing on other card abilities. However, if Patrice instead uses the ability on Stray Cat, which reads: \"[fast] Discard Stray Cat: Automatically evade a non-<b>Elite</b> enemy at your location,\" no skill test is made whatsoever.</i>"
+    "text": "部分卡牌或標記的能力可能會造成一次技能檢定自動失敗或自動成功。如果技能檢定自動失敗或自動成功，則根據\"[技能檢定流程](#Skill_Test_Timing)\"的\"步驟6\"來結算。\n- 如果技能檢定自動失敗，則該次技能檢定調查員的技能值視為0。\n- 如果技能檢定自動成功，則該次技能檢定技能難度視為0。\nSome card effects make an investigator automatically succeed or automatically fail a skill test. If this occurs, depending on the timing of such an effect, certain steps of the skill test may be skipped in their entirety.\n- If it is known that an investigator automatically succeeds or fails at a skill test before Step 3 (\"Reveal chaos token\") occurs, that step is skipped, along with Step 4. No chaos token(s) are revealed from the chaos bag, and the investigator immediately moves to Step 5. All other steps of the skill test resolve as normal.\n- If a chaos token effect causes an investigator to automatically succeed or fail at a skill test, continue with Steps 3 and 4, as normal.\n- If an ability \"automatically evades\" 1 or more enemies, this is not the same as automatically succeeding at an evasion attempt. As per the entry on \"Evade\" in the Rules Reference (詳見\"[躲避，躲避行動](#Evade)\"), if an ability automatically evades 1 or more enemies, no skill test is made for the evasion attempt whatsoever. Consequentially, because no skill test is made, it is not considered a \"successful\" evasion. The investigator simply follows the steps for evading an enemy (exhausting it and breaking its engagement).\n<i>For example: Patrice uses the ability on Hope, which reads: \"[action] If Hope is ready, exhaust or discard him: <b>Evade.</b> Attempt to evade with a base [agility] value of 5. (If you discarded Hope, this test is automatically successful.)\" If Patrice chooses to discard Hope, the skill test automatically succeeds before chaos tokens are revealed; therefore Steps 3 and 4 of the skill test are skipped. However, the skill test still takes place. Cards may still be committed to the test, and the investigator’s total modified skill value is still determined, as it may have some bearing on other card abilities. However, if Patrice instead uses the ability on Stray Cat, which reads: \"[fast] Discard Stray Cat: Automatically evade a non-<b>Elite</b> enemy at your location,\" no skill test is made whatsoever.</i>"
   },
   {
     "id": "Base_Value",
@@ -184,12 +184,12 @@
       {
         "id": "Trauma",
         "title": "創傷",
-        "text": "創傷表示玩家在冒險過程中，受到的永久性肉體或精神損傷。\n如果一位調查員在冒險中被擊敗，該調查員在此次冒險中被消滅，但是不會在劇本中被消滅。\n如果一位調查員由於受到大於等於其生命值的傷害而被擊敗，則其受到1點肉體創傷(記錄在冒險日誌上)。每點肉體創傷，會導致調查員在該劇本之後的冒險中，帶著1點傷害開始遊戲。如果一位調查員的肉體創傷數量大於等於其生命值則該調查員<b>陣亡</b>。\n如果一位調查員由於受到大於等於其生命值的恐懼而被擊敗，則其受到1點精神創傷(記錄在冒險日誌上)。每點精神創傷，會導致調查員在該劇本之後的冒險中，帶著1點恐懼開始遊戲。如果一位調查員的精神創傷數量大於等於其神智值，則該調查員<b>發瘋</b>。\n如果一位調查員同時因為遭受過多傷害和過多恐懼而被擊敗，他選擇受到1點肉體創傷或1點精神創傷。\n如果一位調查員陣亡或發瘋，在下一次冒險開始前，該玩家必須選擇一名新的調查員，並組建一套新牌組。陣亡或發瘋調查員在該劇本之後的冒險中不能再出現(詳見\"[陣亡/發瘋調查員](#Killed_Insane_Investigators)\")。\n如果玩家想要選擇一位新的調查員，但是已經沒有可選的調查員。那麼玩家失敗，劇本立刻終止。"
+        "text": "創傷表示玩家在冒險過程中，受到的永久性肉體或精神損傷。\n如果一位調查員在冒險中被擊敗，該調查員在此次冒險中退場，但是不會在劇本中退場。\n如果一位調查員由於受到大於等於其生命值的傷害而被擊敗，則其受到1點肉體創傷(記錄在冒險日誌上)。每點肉體創傷，會導致調查員在該劇本之後的冒險中，帶著1點傷害開始遊戲。如果一位調查員的肉體創傷數量大於等於其生命值則該調查員<b>陣亡</b>。\n如果一位調查員由於受到大於等於其生命值的恐懼而被擊敗，則其受到1點精神創傷(記錄在冒險日誌上)。每點精神創傷，會導致調查員在該劇本之後的冒險中，帶著1點恐懼開始遊戲。如果一位調查員的精神創傷數量大於等於其神智值，則該調查員<b>發瘋</b>。\n如果一位調查員同時因為遭受過多傷害和過多恐懼而被擊敗，他選擇受到1點肉體創傷或1點精神創傷。\n如果一位調查員陣亡或發瘋，在下一次冒險開始前，該玩家必須選擇一名新的調查員，並組建一套新牌組。陣亡或發瘋調查員在該劇本之後的冒險中不能再出現(詳見\"[陣亡/發瘋調查員](#Killed_Insane_Investigators)\")。\n如果玩家想要選擇一位新的調查員，但是已經沒有可選的調查員。那麼玩家失敗，劇本立刻終止。"
       },
       {
         "id": "Defeat_by_Card_Ability",
         "title": "被卡牌能力擊敗",
-        "text": "調查員有可能被卡牌效果擊敗。被擊敗的調查員被消滅(詳見\"[消滅](#Elimination)\")。這種情況發生時，請參考卡牌能力說明，來確定會不會造成長期影響。"
+        "text": "調查員有可能被卡牌效果擊敗。被擊敗的調查員退場(詳見\"[退場](#Elimination)\")。這種情況發生時，請參考卡牌能力說明，來確定會不會造成長期影響。"
       },
       {
         "id": "Advancing_to_Next_Scenario",
@@ -273,7 +273,7 @@
   {
     "id": "Dealing_Damage_Horror",
     "title": "造成傷害/恐懼",
-    "text": "遊戲中，玩家可能受到的損害主要分為兩類：傷害和恐懼。傷害降低玩家的生命值，恐懼降低玩家的神智值。\n當一位調查員或敵人受到傷害或恐懼時，根據下列步驟執行：\n1. <b>分配傷害/恐懼：</b>決定受到的傷害和/或恐懼數量。將該數量的傷害和/或恐懼標記放在遭受對象卡牌的旁邊。\n- 當一位調查員受到傷害或恐懼時，該調查員可以將其自由分配給自己控制的支援卡。該支援卡必須帶有生命值/神智值才能受到傷害/恐懼。\n- 支援卡不能承受超過其生命值/神智值上限的傷害/恐懼。\n- 支援卡無法承受的傷害/恐懼，必須分配給調查員。\n2. <b>放置傷害/恐懼：</b>傷害/恐懼在分配後，查看其是否能被抵消，如果不能抵消，就放置在其分配到的卡牌上。如果該步中，沒有傷害/恐懼被放置，則表示沒有成功造成傷害/恐懼。\n- 所有阻止，減少，重新分配傷害和/或恐懼的能力，都在步驟1和2之間結算。\n- 在放置傷害/恐懼之後，如果調查員的傷害值大於等於其生命值，或者恐懼值大於等於其神智值，則該調查員被擊敗。當調查員被擊撃敗時他在這次冒險中被消滅(詳見\"[消滅](#Elimination)\")。\n- 在放置傷害/恐懼之後，如果敵人的傷害值大於等於其生命值，或者受到的恐懼大於等於其神智值，該敵人被擊敗，並送入遭遇棄牌堆(如果是弱點卡的話，送入所屬玩家的棄牌堆)。\n- 在放置傷害/恐懼之後，如果支援卡受到的傷害大於等於其生命值，或者受到的恐懼大於等於其神智值，則該卡被擊敗並送入所屬玩家的棄牌堆。"
+    "text": "遊戲中，玩家可能受到的損害主要分為兩類：傷害和恐懼。傷害降低玩家的生命值，恐懼降低玩家的神智值。\n當一位調查員或敵人受到傷害或恐懼時，根據下列步驟執行：\n1. <b>分配傷害/恐懼：</b>決定受到的傷害和/或恐懼數量。將該數量的傷害和/或恐懼標記放在遭受對象卡牌的旁邊。\n- 當一位調查員受到傷害或恐懼時，該調查員可以將其自由分配給自己控制的支援卡。該支援卡必須帶有生命值/神智值才能受到傷害/恐懼。\n- 支援卡不能承受超過其生命值/神智值上限的傷害/恐懼。\n- 支援卡無法承受的傷害/恐懼，必須分配給調查員。\n2. <b>放置傷害/恐懼：</b>傷害/恐懼在分配後，查看其是否能被抵消，如果不能抵消，就放置在其分配到的卡牌上。如果該步中，沒有傷害/恐懼被放置，則表示沒有成功造成傷害/恐懼。\n- 所有阻止，減少，重新分配傷害和/或恐懼的能力，都在步驟1和2之間結算。\n- 在放置傷害/恐懼之後，如果調查員的傷害值大於等於其生命值，或者恐懼值大於等於其神智值，則該調查員被擊敗。當調查員被擊撃敗時他在這次冒險中退場(詳見\"[退場](#Elimination)\")。\n- 在放置傷害/恐懼之後，如果敵人的傷害值大於等於其生命值，或者受到的恐懼大於等於其神智值，該敵人被擊敗，並送入遭遇棄牌堆(如果是弱點卡的話，送入所屬玩家的棄牌堆)。\n- 在放置傷害/恐懼之後，如果支援卡受到的傷害大於等於其生命值，或者受到的恐懼大於等於其神智值，則該卡被擊敗並送入所屬玩家的棄牌堆。"
   },
   {
     "id": "Deck",
@@ -288,7 +288,7 @@
       {
         "id": "Classes",
         "title": "職階",
-        "text": "大部分玩家卡，包括調查員，都屬於五個職階之一。每個職階都有自己的特點。\n守衛者([guardian])認為自己有著守護人類的使命，並勇敢與神秘力量進行鬥爭。他們有著強大的責任感，並喜歡保護他人，同時追殺怪物。\n潛修者([mystic])被神秘的魔法力量深深吸引。他們大多都會使用咒文，並能夠操控宇宙中各種各樣的魔法能量。\n流浪者([rogue])習慣自力更生，放浪不羈。他們是機會主義者，並且詭計多端，擅於利用自身處境。\n探求者([seeker])想要學習這個世界的結構，並弄清神秘力量的來源。他們研究著被人遺忘的知識，並探索未知的領域發現奇怪的生物。\n求生者([survivor])本是普通人，在這錯誤的時間與地點，他們只是本能地想要活下來。他們並未做足準備，也未裝備齊全。當自己的生命受到威脅時，他們會站出來應對危機，哪怕他們正處於劣勢。\n部分卡牌不屬於任何職階，這些是中立卡牌。一般來說調查員只能使用所在職階的卡牌，部分調查員也可以使用其他職階的卡牌。請參考調查員卡背面的\"牌組構建選項\"，來確定可以使用哪些卡牌。"
+        "text": "大部分玩家卡，包括調查員，都屬於五個職階之一。每個職階都有自己的特點。\n守衛者([guardian])認為自己有著守護人類的使命，並勇敢與神話力量進行鬥爭。他們有著強大的責任感，並喜歡保護他人，同時追殺怪物。\n潛修者([mystic])被神話的魔法力量深深吸引。他們大多都會使用咒文，並能夠操控宇宙中各種各樣的魔法能量。\n流浪者([rogue])習慣自力更生，放浪不羈。他們是機會主義者，並且詭計多端，擅於利用自身處境。\n探求者([seeker])想要學習這個世界的結構，並弄清神話力量的來源。他們研究著被人遺忘的知識，並探索未知的領域發現奇怪的生物。\n求生者([survivor])本是普通人，在這錯誤的時間與地點，他們只是本能地想要活下來。他們並未做足準備，也未裝備齊全。當自己的生命受到威脅時，他們會站出來應對危機，哪怕他們正處於劣勢。\n部分卡牌不屬於任何職階，這些是中立卡牌。一般來說調查員只能使用所在職階的卡牌，部分調查員也可以使用其他職階的卡牌。請參考調查員卡背面的\"牌組構建選項\"，來確定可以使用哪些卡牌。"
       },
       {
         "id": "Deckbuilding_Options",
@@ -300,7 +300,7 @@
   {
     "id": "Defeat",
     "title": "擊敗",
-    "text": "受到傷害和/或恐懼，有可能導致調查員，敵人或支援卡被擊敗。\n- 如果調查員受到的傷害/恐懼大於等於其生命值/神智值，該調查員被擊敗。調查員也可能被卡牌能力擊敗。當一位調查員被擊敗時，他在本次冒險中被消滅(詳見\"[消滅](#Elimination)\")。\n- 在劇本模式下，因受到過多傷害被擊敗的調查員，受到1點肉體創傷。因受到過多恐懼被擊敗的調查員，受到1點精神創傷。受到過多的創傷可能導致調查員<b>陣亡</b>或<b>發瘋</b>(詳見\"[劇本模式遊戲](#Campaign_Play)\")。\n- 如果敵人受到的傷害值大於等於其生命值，則該敵人被擊敗，並送入遭遇棄牌堆(如果是弱點卡，則送入所屬玩家棄牌堆)。\n- 如果支援卡受到的傷害/恐懼大於等於其生命值/神智值，則該卡被擊敗，並送入所屬玩家棄牌堆。"
+    "text": "受到傷害和/或恐懼，有可能導致調查員，敵人或支援卡被擊敗。\n- 如果調查員受到的傷害/恐懼大於等於其生命值/神智值，該調查員被擊敗。調查員也可能被卡牌能力擊敗。當一位調查員被擊敗時，他在本次冒險中退場(詳見\"[退場](#Elimination)\")。\n- 在劇本模式下，因受到過多傷害被擊敗的調查員，受到1點肉體創傷。因受到過多恐懼被擊敗的調查員，受到1點精神創傷。受到過多的創傷可能導致調查員<b>陣亡</b>或<b>發瘋</b>(詳見\"[劇本模式遊戲](#Campaign_Play)\")。\n- 如果敵人受到的傷害值大於等於其生命值，則該敵人被擊敗，並送入遭遇棄牌堆(如果是弱點卡，則送入所屬玩家棄牌堆)。\n- 如果支援卡受到的傷害/恐懼大於等於其生命值/神智值，則該卡被擊敗，並送入所屬玩家棄牌堆。"
   },
   {
     "id": "Delayed_Effects",
@@ -325,12 +325,12 @@
   {
     "id": "Discard_Piles",
     "title": "棄牌堆",
-    "text": "當卡牌被丟棄時，將其面朝上放在所屬玩家棄牌堆頂部。遭遇卡歸屬於遭遇牌堆。\n- 棄牌堆屬於場外區域。\n- 每位調查員都有自己的棄牌堆，遭遇牌堆有所屬的棄牌堆。\n- 棄牌堆屬於公開信息所有玩家可以自由查看。\n- 棄牌堆中卡牌的順序不能更改，除非有卡牌能力允許如此。\n- 如果有多張卡牌同時被丟棄，則由卡牌所屬玩家選擇丟棄順序，一張一張地將其放入棄牌堆。遭遇卡牌則由隊長選擇丟棄順序。\n- 如果卡牌能力要求將棄牌堆洗回牌堆，而棄牌堆為空，則不混洗牌堆。\n- A single card cannot be shuffled into an empty player deck or encounter deck via card effect. If this shuffling would occur during the playing or revelation of a card that is typically discarded after it is resolved, such as an event or treachery card, it is discarded. Otherwise, the card remains in its current game area."
+    "text": "當卡牌被丟棄時，將其面朝上放在所屬玩家棄牌堆頂部。遭遇卡歸屬於遭遇牌堆。\n- 棄牌堆屬於場外區域。\n- 每位調查員都有自己的棄牌堆，遭遇牌堆有所屬的棄牌堆。\n- 棄牌堆屬於公開信息，所有玩家可以自由查看。\n- 棄牌堆中卡牌的順序不能更改，除非有卡牌能力允許如此。\n- 如果有多張卡牌同時被丟棄，則由卡牌所屬玩家選擇丟棄順序，一張一張地將其放入棄牌堆。遭遇卡牌則由隊長選擇丟棄順序。\n- 如果卡牌能力要求將棄牌堆洗回牌堆，而棄牌堆為空，則不混洗牌堆。\n- A single card cannot be shuffled into an empty player deck or encounter deck via card effect. If this shuffling would occur during the playing or revelation of a card that is typically discarded after it is resolved, such as an event or treachery card, it is discarded. Otherwise, the card remains in its current game area."
   },
   {
     "id": "Doom",
     "title": "毀滅",
-    "text": "毀滅象徵著神秘力量的發展歷程，可能是要完成某個邪惡儀式召喚宇宙生物，或者推動一個密謀。\n- 在每個神秘階段，在當前密謀卡上放置1個毀滅標記(詳見\"[I. 神秘階段](#Mythos_Phase)\")。\n- 如果當前密謀沒有\"<b>目標</b> – \"需求，那麼在\"檢查毀滅數量\"的步骤中，只要場上(包括密謀卡和其他打出的卡牌)毀滅標記數量大於等於密謀卡的數字，則立刻推進密謀。除非有卡牌效果說明，否則這是唯一可能推進密謀的時間點。\n- 密謀卡外，其他在場卡牌(比如敵人、盟友、地點等)的毀滅標記也算入總量。\n相關條目：\"[場景牌堆和密謀牌堆](#Act_Deck_and_Agenda_Deck)\"，\"[標記，用完](#Tokens)\"。"
+    "text": "毀滅表示神話力量完成邪惡儀式的進度，可能是要召喚宇宙生物，或者推動一個冒險的密謀。\n- 在每個神話階段，在當前密謀卡上放置1個毀滅標記(詳見\"[I. 神話階段](#Mythos_Phase)\")。\n- 如果當前密謀沒有\"<b>目標</b> – \"需求，而且場上(包括密謀卡和其他打出的卡牌)毀滅標記數量達到毀滅目標值，密謀即可在神話階段\"查看必要毀滅數量\"步驟期間推進。\n- 密謀卡外，其他在場卡牌(比如敵人、盟友、地點等)的毀滅標記也算入總量。\n相關條目：\"[場景牌堆和密謀牌堆](#Act_Deck_and_Agenda_Deck)\"，\"[標記，用完](#Tokens)\"。"
   },
   {
     "id": "Doubt_and_Conviction",
@@ -355,8 +355,8 @@
   },
   {
     "id": "Elimination",
-    "title": "消滅",
-    "text": "在冒險中被擊敗或撤退的調查員，會立刻被消減。遊戲中，唯一會與被消滅的調查員產生互動的是帶有\"調查員人數\"圖標的數值(詳見\"[調查員人數](#Per_Investigator)\")。當有玩家被消滅時：\n0. 結算被消滅玩家場上的\"在遊戲結束時\"弱點卡。此時，擁有這些弱點卡的玩家視為被消滅。在結算後，將這些弱點卡從遊戲中移除。\n1. 將他控制的卡牌，無論是否在場(例如：手牌、牌堆、棄牌堆)都移出遊戲。\n- 歸屬於該玩家，但不是該玩家控制的卡牌無需移出遊戲，但如果該卡牌需要被丟棄時，則直接將其移出遊戲。\n2. 2.該玩家擁有的所有線索，都放在該玩家被消減時所在的地點上；該玩家擁有的所有資源，都放回供應堆。\n3. 與該玩家交戰的所有敵人，放在該玩家被消滅時所在的地點上，保持其原有的狀態。\n4. 該玩家威脅區域的所有其他卡牌，都丟入對應棄牌堆。\n5. 如果隊長被消滅，則剩餘玩家選擇一名新隊長(前提是此時仍有剩餘玩家)。\n6. 如果所有玩家都被消滅則冒險立刻結束請參考《劇本手冊》中的\"未達成任何結局\"。"
+    "title": "退場",
+    "text": "在冒險中被擊敗或撤退的調查員，會立刻退場。遊戲中，只有確定帶有\"調查員人數\"圖標的數值時，退場調查員才與遊戲有關(詳見\"[調查員人數](#Per_Investigator)\")。當有玩家退場時：\n0. 退場玩家結算弱點卡時，其遊戲已結束。調查員退場時，觸發其場上所有弱點卡的\"在遊戲結束時\"能力，然後將這些弱點卡移出遊戲。\n1. 將他控制的卡牌，無論是否在場(例如：手牌、牌堆、棄牌堆)都移出遊戲。\n- 歸屬於該玩家，但不是該玩家控制的卡牌無需移出遊戲，但如果該卡牌需要被丟棄時，則直接將其移出遊戲。\n2. 2.該玩家擁有的所有線索，都放在該玩家退場時所在的地點上；該玩家擁有的所有資源，都放回供應堆。\n3. 與該玩家交戰的所有敵人，放在該玩家退場時所在的地點上，解除交戰狀態，但它們的當前遊戲狀態保持不變。\n4. 該玩家威脅區域的所有其他卡牌，都丟入對應棄牌堆。\n5. 如果隊長退場，則剩餘玩家選擇一名新隊長(前提是此時仍有剩餘玩家)。\n6. 如果所有玩家都退場，則冒險立刻結束請參考《劇本手冊》中的\"未達成任何結局\"。"
   },
   {
     "id": "Empty_Location",
@@ -376,12 +376,12 @@
   {
     "id": "Enemy_Cards",
     "title": "敵人卡",
-    "text": "敵人卡代表了反派、異教徒、街頭混混、怪獸，以及從異世界、來自其他維度或者宇宙彼方的神秘之物。當調查員抽出一張敵人卡時，必須先按照卡牌上的生成指令來放置卡牌(詳見\"[生成](#Spawn)\")。如果遭遇的敵人沒有生成指令，則該敵人立刻與抽出該牌的調查員交戰並放在該調查員的威脅區域。\n相關條目：\"[1.4 每位調查員抽取1張遭遇卡](#Mythos_Phase)\"。\n- 當準備並且未處於交戰狀態的敵人與調查員在同一地點時，立刻與該調查員交戰(詳見\"[與敵人交戰](#Enemy_Engagement)\")。\n- 如果一位調查員與至少一名敵人交戰，當他執行除<b>攻擊</b>，<b>躲避</b>或啟動<b>談判</b>，<b>撤退</b>能力外的行動時，該敵人立刻進行一次趁亂攻擊(詳見\"[趁亂攻擊](#Attack_of_Opportunity)\")。\n- 帶有獵手關鍵詞的敵人，會在敵軍階段移動一次(詳見\"[III. 敵軍階段](#Enemy_Phase)\")。\n- 處於交戰狀態的敵人，會在敵軍階段攻擊(詳見\"[III. 敵軍階段](#Enemy_Phase)\")。"
+    "text": "敵人卡代表了反派、異教徒、街頭混混、怪獸，以及從異世界、來自其他維度或者宇宙彼方的神秘之物。當調查員抽出一張敵人卡時，必須先按照卡牌上的生成指令來放置卡牌(詳見\"[生成](#Spawn)\")。如果遭遇的敵人沒有生成指令，則該敵人立刻與抽出該卡牌的調查員交戰，並放在該調查員的威脅區域。\n相關條目：\"[1.4 每位調查員抽取1張遭遇卡](#Mythos_Phase)\"。\n- 當準備並且處於非交戰狀態的敵人與調查員在同一地點時，該敵人立刻與該調查員交戰(詳見\"[與敵人交戰](#Enemy_Engagement)\")。\n- 如果一位調查員與至少一名敵人進入交戰狀態，當他執行除<b>攻擊</b>、<b>躲避</b>或啟動<b>談判</b>、<b>撤退</b>能力外的行動時，該敵人立刻進行一次趁亂攻擊(詳見\"[趁亂攻擊](#Attack_of_Opportunity)\")。\n- 帶有獵手關鍵詞的敵人，會在敵軍階段移動一次(詳見\"[III. 敵軍階段](#Enemy_Phase)\")。\n- 處於交戰狀態的敵人，會在敵軍階段攻擊(詳見\"[III. 敵軍階段](#Enemy_Phase)\")。"
   },
   {
     "id": "Enemy_Engagement",
     "title": "與敵人交戰",
-    "text": "當一張敵人卡在場時，它必須與調查員交戰(放在該調查員的威脅區域)，或者在地點卡上處於未交戰狀態(放在該地點卡上)。調查員威脅區域中的敵人，視為與該調直員在同一地點。當調查員移動時，與其交戰的怪物也一同移動。\n當準備且未交戰狀態的敵人，與調查員在同一地點時，它立刻與那位調查員交戰，並放到該調查員的威脅區域。如果準備且未交戰的敵人所在地點有多位調查員，請按照該敵人的獵物指令決定與誰交戰。一位調查員可以交戰的敵人數量無上限。\n<i>例如：一名準備且未交戰的敵人會在以下情況交戰：</i>\n- <i>在有調查員的地點生成，</i>\n- <i>移動到有調查員的地點，</i>\n- <i>有調查員移動到該敵人所在地點。</i>\n消耗且未交戰的敵人不會交戰，如果消耗敵人轉為準備狀態時所在地點有調查員，則立刻與其交戰。\n- <i>注意：帶有[冷漠](#Aloof)關鍵詞的敵人不會按照上述步驟行動</i>詳見\"[交戰行動](#Engage_Action)\"。"
+    "text": "當一張敵人卡在場時，它必須與調查員交戰(放在該調查員的威脅區域)，或者在地點卡上處於非交戰狀態(放在該地點卡上)。調查員威脅區域中的敵人，視為與該調直員在同一地點。當調查員移動時，與其交戰的怪物也一同移動。\n處於準備且非交戰狀態的敵人，與調查員在同一地點時，它立刻與那位調查員交戰，並放到該調查員的威脅區域。如果準備且非交戰狀態的敵人所在地點有多位調查員，請按照該敵人的獵物指令決定其與誰交戰。一位調查員可以交戰的敵人數量無上限。\n<i>例如：一名處於準備且非交戰的敵人會在以下情況與調查員交戰：</i>\n- <i>在有調查員的地點生成，</i>\n- <i>移動到有調查員的地點，</i>\n- <i>有調查員移動到該敵人所在地點。</i>\n處於消耗且非交戰狀態的敵人不會與調查員交戰，如果消耗敵人轉為準備狀態時所在地點有調查員，則立刻與其交戰。\n- <i>注意：帶有[冷漠](#Aloof)關鍵詞的敵人不會按照上述步驟行動</i>詳見\"[交戰行動](#Engage_Action)\"。"
   },
   {
     "id": "Enemy_Phase_Placeholder",
@@ -391,11 +391,11 @@
   {
     "id": "Engage_Action",
     "title": "交戰行動",
-    "text": "\"交戰\"是調查員在調查階段自己回合中，可以執行的行動之一。\n與所在地點的敵人交戰時<i>(例如：你可以與消耗狀態的敵人、冷漠的敵人或與其他調查員交戰的敵人交戰)</i>，調查員將所選敵人放到自己的威脅區域，現在這位調查員和所選敵人處於交戰狀態。\n- 調查員可以對同一地點其他調查員所交戰的敵人執行交戰行動。那名敵人立刻從那位調查員的威脅區域轉移到該玩家的威脅區域。\n- 調查員不能對已經與他交戰的敵人再次執行交戰行動。\nWhen an investigator engages an enemy, that enemy has also engaged that investigator, and vice-versa. There is no difference between engaging an enemy and being engaged by an enemy. Effects that trigger \"after an enemy engages you\" will trigger at the same time as effects that trigger \"after you engage an enemy.\""
+    "text": "\"交戰\"是調查員在調查階段自己回合中，可以執行的行動之一。\n與所在地點的敵人交戰時<i>(例如：你可以與消耗狀態的敵人、冷漠的敵人、與其他調查員交戰的敵人交戰)</i>，調查員將所選敵人放到自己的威脅區域，現在這位調查員和所選敵人處於交戰狀態。\n- 調查員可以對與同一地點其他調查員交戰的敵人執行交戰行動。那名敵人立刻從那位調查員的威脅區域轉移到該玩家的威脅區域。\n- 調查員不能用交戰行動來與正同自己交戰的敵人交戰。\n在一名調查員與敵人交戰時，該敵人同時也與該調查員交戰，反之亦然。\"與敵人交戰\"和\"該敵人與你交戰\"之間沒有區別。由\"在一名敵人與你交戰後\"文字而觸發的效果，與\"在你與敵人交戰後\"文字而觸發的效果會同時發生。"
   },
   {
     "id": "Enters_Play",
-    "title": "打出入場",
+    "title": "打出、入場",
     "text": "詞彙\"入場\"、\"打出時\"、\"進入遊戲\"是指當卡牌從場外進入場上時(詳見\"[場上與場外](#In_Play_and_Out_of_Play)\")。\n- 如果一個能力(無論是該卡本身還是其他卡牌)要求卡牌以規則外的狀態入場，則該卡會以能力的要求入場，而不是規則的要求。"
   },
   {
@@ -442,7 +442,7 @@
   {
     "id": "Fight_Action",
     "title": "攻擊行動",
-    "text": "\"攻擊\"是調查員在調查階段自己回合中，可以執行的行動之一。\n調查員攻擊所在地點的敵人時，進行一次戰門檢定，對抗敵人的攻擊值(詳見\"[技能檢定](#Skill_Tests)\")。\n如果檢定成功，該次攻擊成功並且對敵人造成傷害。傷害的基礎值為1，部分武器，法術或者其他特殊攻擊方式，可能會對傷害值產生修正。 (這會在技能檢定的第7步驟發生，詳見\"[步驟7 執行技能檢定結果](#Skill_Test_Timing)\"。)\n如果檢定失敗，則對敵人未造成任何傷害。然而，如果調查員在攻擊與其他調查員交戰的敵人時檢定失敗，會對那位調查員造成成功攻擊時的傷害值。\n- 調查員可以攻擊所在地點的敵人，包括：他所交戰的敵人，該地點未交戰的敵人，該地點其他調查員交戰的敵人。"
+    "text": "\"攻擊\"是調查員在調查階段自己回合中，可以執行的行動之一。\n調查員攻擊所在地點的敵人時，進行一次戰門檢定，對抗敵人的攻擊值(詳見\"[技能檢定](#Skill_Tests)\")。\n如果檢定成功，該次攻擊成功並且對敵人造成傷害。傷害的基礎值為1，部分武器，法術或者其他特殊攻擊方式，可能會對傷害值產生修正。 (這會在技能檢定的第7步驟發生，詳見\"[步驟7 執行技能檢定結果](#Skill_Test_Timing)\"。)\n如果檢定失敗，則對敵人未造成任何傷害。然而，如果調查員在攻擊與其他調查員交戰的敵人時檢定失敗，會對那位調查員造成成功攻擊時的傷害值。\n- 調查員可以攻擊所在地點的敵人，包括：與他交戰的敵人，該地點處於非交戰狀態的敵人，該地點與其他調查員交戰的敵人。"
   },
   {
     "id": "Flavor_Text",
@@ -482,14 +482,14 @@
   },
   {
     "id": "Haunted",
-    "title": "Haunted",
-    "cycle": ["tcu"],
-    "text": "Haunted is a new ability that appears on some locations. Each time an investigator fails a skill test while investigating a location, after applying all results for that skill test, that investigator must resolve all \"<b>Haunted</b> –\" abilities on that location.\nA location is \"haunted\" for the purposes of other card effects if it has at least one \"<b>Haunted</b> –\" ability (printed or otherwise)."
+    "title": "鬧鬼",
+    "cycle": [ "tcu" ],
+    "text": "鬧鬼是出現在某些地點卡牌上的一種新能力。每當調查員在調查一個地點時技能檢定失敗，在結算該技能檢定帶來的所有後果後，該調查員必須結算該地點上的所有\"<b>鬧鬼</b> –\"能力。\n卡牌效果指向的\"鬧鬼\"地點即為帶有至少一個\"<b>鬧鬼</b> –\"能力的地點(包括但不限於打印有\"<b>鬧鬼</b> –\"字樣的地點)。"
   },
   {
     "id": "Health_and_Damage",
     "title": "生命値與傷害",
-    "text": "生命值代表一位調查員的肉體強健程度。傷害是指一次冒險中，調查員所受到的肉體損傷。\n- 當卡牌受到傷害時，將等同於造成傷害點數的傷害標記放在卡牌上(詳見\"[造成傷害/恐懼](#Dealing_Damage_Horror)\")。\n- 如果調查員受到的傷害值大於等於其生命值，該調查員被擊敗。當調查員被擊敗時，他在這次冒險中被消滅(詳見\"[消滅](#Elimination)\")。\n- 在劇本模式下，由於受到過多傷害而被擊敗的調查員，會受到1點肉體創傷。受到過多肉體創傷會導致調查員<b>陣亡</b>(詳見\"[劇本模式遊戲](#Campaign_Play)\")。\n- 如果敵人受到的傷害大於等於其生命值，該敵人被擊敗，並送入遭遇棄牌堆。\n- 如果支援卡受到的傷害大於等於其生命值，該卡被擊敗並送入所屬玩家的棄牌堆。\n- 未標註生命值的支援卡，生命值視為0，不能對其分配傷害。\n- 卡牌的\"剩餘生命值\"，是指其基礎生命值減去受到的傷害，再加上或減去生命修正值，所得到的的數值。\n相關條目：\"[直接傷害，直接恐懼](#Direct_Damage_Direct_Horror)\"。"
+    "text": "生命值代表一位調查員的肉體強健程度。傷害是指一次冒險中，調查員所受到的肉體損傷。\n- 當卡牌受到傷害時，將等同於造成傷害點數的傷害標記放在卡牌上(詳見\"[造成傷害/恐懼](#Dealing_Damage_Horror)\")。\n- 如果調查員受到的傷害值大於等於其生命值，該調查員被擊敗。當調查員被擊敗時，他在這次冒險中退場(詳見\"[退場](#Elimination)\")。\n- 在劇本模式下，由於受到過多傷害而被擊敗的調查員，會受到1點肉體創傷。受到過多肉體創傷會導致調查員<b>陣亡</b>(詳見\"[劇本模式遊戲](#Campaign_Play)\")。\n- 如果敵人受到的傷害大於等於其生命值，該敵人被擊敗，並送入遭遇棄牌堆。\n- 如果支援卡受到的傷害大於等於其生命值，該卡被擊敗並送入所屬玩家的棄牌堆。\n- 未標註生命值的支援卡，生命值視為0，不能對其分配傷害。\n- 卡牌的\"剩餘生命值\"，是指其基礎生命值減去受到的傷害，再加上或減去生命修正值，所得到的的數值。\n相關條目：\"[直接傷害，直接恐懼](#Direct_Damage_Direct_Horror)\"。"
   },
   {
     "id": "Hidden",
@@ -500,7 +500,7 @@
   {
     "id": "Hunter",
     "title": "獵手",
-    "text": "獵手是一個關鍵詞能力。\n在敵軍階段([流程步驟3.2](#Enemy_Phase))，每名準備且未交戰的獵手敵人，會沿著連接地點移動一步，方向為最近的一位調查員。如果該敵人所在地點有調查員則不移動。\n- 如果有多位調查員距離與其相等，並且都為最近，則向最能滿足其\"獵物\"指令的調查員移動。如果多位調查員都能滿足，或者該敵人沒有獵物指令，則由隊長選擇向哪位調查員移動。\n- 獵手敵人在移動時，如果目標地點的連接由於卡牌效果被阻斷，那麼該敵人不移動。\n相關條目：\"[獵物](#Prey)\"。"
+    "text": "獵手是一個關鍵詞能力。\n在敵軍階段([流程步驟3.2](#Enemy_Phase))，每名處於準備且非交戰狀態的獵手敵人會移至某一相連地點，沿最短路線向距其最近的調查員移動。如果所在地點有調查員，則此處的敵人不會移動。\n- 如果有多位調查員距離與其相等，並且都為最近，則向最能滿足其\"獵物\"指令的調查員移動。如果多位調查員都能滿足，或者該敵人沒有獵物指令，則由隊長選擇向哪位調查員移動。\n- 獵手敵人在移動時，如果目標地點的連接由於卡牌效果被阻斷，那麼該敵人不移動。\n相關條目：\"[獵物](#Prey)\"。"
   },
   {
     "id": "If",
@@ -544,9 +544,9 @@
   },
   {
     "id": "Joes_Hunch_Deck",
-    "title": "Joe's \"Hunch Deck\"",
-    "cycle": ["tcu"],
-    "text": "As a private eye, Joe Diamond has learned to follow his instincts, and therefore he has a separate hunch deck, which is constructed during step 4 of the setup of each scenario. The cards in this hunch deck are chosen from Joe's 40-card deck and therefore count toward his total deck size. With the exception of these setup instructions, all references to Joe's \"deck\" refer to Joe's standard investigator deck and not his hunch deck. Joe's hunch deck has no discard pile; cards from your hunch deck are discarded to your standard discard pile when played."
+    "title": "喬的\"直覺牌組\"",
+    "cycle": [ "tcu" ],
+    "text": "作為一名私家偵探，喬·戴蒙德學會了要遵循自己的直覺行事，因此他在每場冒險設置的步驟4期間構築自己單獨的直覺牌組。直覺牌組中的卡牌均選自喬的牌組，因此直覺牌組的卡牌計入他牌組的卡牌張數(40張)。除了這些設置指示以外，凡是提到喬的\"牌組\"，指的都是喬的普通調查員牌組，而不是他的直覺牌組。喬的直覺牌組沒有棄牌堆；直覺牌組的卡牌打出後放入普通棄牌堆。"
   },
   {
     "id": "Keys",
@@ -572,17 +572,17 @@
   {
     "id": "Lead_Investigator",
     "title": "隊長",
-    "text": "隊長需要在冒險中做出一系列的重大決定。在冒險開始時，所有調查員選出一人作為隊長。如果沒有同一的選擇，則隨機選擇一人。\n- 如果遊戲中出現多個可選項時<i>(例如：獵手敵人有多個可選的移動方向)</i>，由隊長做出最終裁決。\n- 如果隊長被消滅，則剩餘調查員選出一位新隊長(前提是此時還有玩家剩餘)。"
+    "text": "隊長需要在冒險中做出一系列的重大決定。在冒險開始時，所有調查員選出一人作為隊長。如果沒有同一的選擇，則隨機選擇一人。\n- 如果遊戲中出現多個可選項時<i>(例如：獵手敵人有多個可選的移動方向)</i>，由隊長做出最終裁決。\n- 如果隊長退場，則剩餘調查員選出一位新隊長(前提是此時還有玩家剩餘)。"
   },
   {
     "id": "Leaves_Play",
     "title": "離場",
-    "text": "\"離場\"一詞，是指卡牌從場上移動到場外的行為(詳見\"場上與場外](#In_Play_and_Out_of_Play)\")。\n當卡牌離場時，按以下步驟執行：\n- 該卡牌上所有標記返回供應堆\n- 所有疊加卡牌被丟棄。\n- 該卡在場時所有影響其的持續效果和/或延時效果不再對該卡有效。"
+    "text": "\"離場\"一詞，是指卡牌從場上移動到場外的行為(詳見\"[場上與場外](#In_Play_and_Out_of_Play)\")。\n當卡牌離場時，按以下步驟執行：\n- 該卡牌上所有標記返回供應堆\n- 所有疊加卡牌被丟棄。\n- 該卡在場時所有影響其的持續效果和/或延時效果不再對該卡有效。"
   },
   {
     "id": "Limits_and_Maximums",
     "title": "限制",
-    "text": "<b>\"每【階段】限制X\"</b>是一種結算在場卡牌能力時的限制條件。帶有這種限制的能力，在每個指定的階段中，最多只能觸發X次。如果卡牌在該階段中離場後重新入場，則視為將全新的該能力能力帶入遊戲。\n<b>\"每【卡牌/遊戲配件】限制X\"</b>是一種出現在可疊加卡牌上的限制條件。限定了指定卡牌、配件上，可疊加的該卡的相同卡牌(同名卡牌)的張數。\n- 除非有特殊說明，限制只針對一位玩家。\n- \"團隊限制\"一詞，則對整個調查員團隊有效。<i>(例如：當調查員觸發\"團隊每場遊戲戲限制1次\"的能力時，在這場遊戲中，其他玩家不能再觸發該能力。)</i>\n<b>\"每【階段】最多X\"是一種對所有玩家有效的，卡牌張數的限制條件。一般來說，該詞彙限制了在指定階段中，所有玩家能打出該卡的相同卡牌(同名卡牌)的張數。如果該限制條件中帶有\"投入\"一詞<i>(例如：\"每次技能檢定最多投入1張\")</i>，則限制了在技能檢定中，能投入該卡相同卡牌的張數。如果該限制條件出現在一段能力文字之中，則同時限制了該卡所有同名卡，在指定階段中，能觸發該效果的次數。\n如果帶有限制條件的卡牌能力被取消，則仍然視為被觸發，並會計算到限制次數中去。",
+    "text": "<b>\"每【階段】限制X\"</b>是一種結算在場卡牌能力時的限制條件。帶有這種限制的能力，在每個指定的階段中，最多只能觸發X次。如果卡牌在該階段中離場後重新入場，則視為將全新的該能力能力帶入遊戲。\n<b>\"每【卡牌/遊戲配件】限制X\"</b>是一種出現在可疊加卡牌上的限制條件。限定了指定卡牌、配件上，可疊加的該卡的相同卡牌(同名卡牌)的張數。\n- 除非有特殊說明，限制只針對一位玩家。\n- \"團隊限制\"一詞，則對整個調查員團隊有效。<i>(例如：當調查員觸發\"團隊每場遊戲戲限制1次\"的能力時，在這場遊戲中，其他玩家不能再觸發該能力。)</i>\n<b>\"每【階段】最多X\"</b>是一種對所有玩家有效的，卡牌張數的限制條件。一般來說，該詞彙限制了在指定階段中，所有玩家能打出該卡的相同卡牌(同名卡牌)的張數。如果該限制條件中帶有\"投入\"一詞<i>(例如：\"每次技能檢定最多投入1張\")</i>，則限制了在技能檢定中，能投入該卡相同卡牌的張數。如果該限制條件出現在一段能力文字之中，則同時限制了該卡所有同名卡，在指定階段中，能觸發該效果的次數。\n如果帶有限制條件的卡牌能力被取消，則仍然視為被觸發，並會計算到限制次數中去。",
     "rules": [
       {
         "id": "Limits_Pertaining_to_Play_Areas",
@@ -605,7 +605,7 @@
   {
     "id": "Massive",
     "title": "龐大",
-    "text": "龐大是一個關鍵詞能力。一個帶有龐大關鍵詞的敵人，處於準備狀態時，視為與其位於同一地點的所有調查員交戰。\n- 消耗狀態的龐大敵人，不與任何調查員交戰。\n- 龐大敵人不能放置在調查員的威脅區域。\n- 在敵軍階段，當龐大敵人攻擊時，對其交戰的所有玩家各完整結算一次攻擊。隊長選擇該敵人的攻擊順序。龐大敵人在攻擊完畢所有交戰的調查員後才會消耗。\n- 當龐大敵人趁亂攻擊時，只會對引起這次攻擊的調查員進行攻擊。\n- 龐大敵人不會隨著調查員移動而移動。\n- 如果調查員攻擊龐大敵人時失敗，不會對其他與該怪物交戰的調查員造成傷害。"
+    "text": "龐大是一個關鍵詞能力。一個帶有龐大關鍵詞的敵人，處於準備狀態時，視為與其位於同一地點的所有調查員交戰。\n- 消耗狀態的龐大敵人，不與任何調查員交戰。\n- 龐大敵人不能放置在調查員的威脅區域。\n- 在敵軍階段，當龐大敵人攻擊時，依次對與其交戰的所有調查員各完整結算一次攻擊。隊長選擇該敵人的攻擊順序。龐大敵人在攻擊完畢所有與其交戰的調查員後才會消耗。\n- 當龐大敵人趁亂攻擊時，只會對引起這次攻擊的調查員進行攻擊。\n- 如果與龐大敵人交戰的一位調查員從該敵人所在地點移動，該敵人不會與該調查員一同移動。\n- 如果調查員對龐大敵人執行的戰鬥檢定失敗，與該敵人交戰的所有調查員不會受到傷害。"
   },
   {
     "id": "May",
@@ -635,7 +635,7 @@
   {
     "id": "Multiclass_Cards",
     "title": "Multi-class Cards",
-    "text": "A multi-class card is a card which bears multiple class icons instead of one, and is a card of each of those classes. For example, a card with both a Rogue ([rogue]) and a Guardian ([guardian]) icon is both a Rogue card and a Guardian card for all purposes. Generally, a multi-class card can be included in an investigator’s deck if that investigator has access to <i>either</i> of that card’s classes.\nIf an investigator has limited access to one of the classes on a multiclass card and unlimited access to one of the other classes on that card, it will still occupy one of the investigator’s limited slots unless their deckbuilding options contains the word \"other\" in it <i>(see [Deckbuilding Options](#Deckbuilding_Options))</i>.\nThe following section clarifies how multi-class cards operate depending on how an investigator’s deckbuilding options are presented.\n- <b>Investigators with unlimited access to more than one class <i>(i.e. All Core Set investigators, Minh Thi Phan, Sefina Rousseau, William Yorick, Leo Anderson, Joe Diamond, Preston Fairmont, Diana Stanley)</i>:</b> A multi-class card can be included in that investigator’s deck if it falls into <i>either</i> of the listed classes.\n- <b>Investigators from The Dunwich Legacy expansion</b> <i>(i.e. Zoey Samaras, Rex Murphy, Jenny Barnes, Jim Culver, \"Ashcan\" Pete)</i>: A multi-class card will not occupy one of these investigator’s five \"out of class\" slots if one of its classes is the class they have unlimited access to. A card cannot take up more than one \"out of class\" slot, regardless of how many class icons the card bears.\n- <b>Investigators with unlimited access to one class and limited access to one or more \"other\" classes</b> <i>(i.e. Marie Lambeau, Finn Edwards, Carolyn Fern)</i>: A multi-class card will not occupy one of the investigator’s limited slots, because it falls into the unlimited category <i>(see [Deckbuilding Options](#Deckbuilding_Options))</i>.\n- <b>Investigators with unlimited access to one class and limited access to a second class, without using the word \"other\"</b> <i>(i.e. Norman Withers)</i>: A multi-class card will occupy one of the investigator’s limited slots, even if it also falls into the unlimited category.\n- <b>Lola Hayes:</b> A multi-class card will count as a card of each of its classes toward her Deckbuilding Requirement."
+    "text": "A multi-class card is a card which bears multiple class icons instead of one, and is a card of each of those classes. For example, a card with both a Rogue ([rogue]) and a Guardian ([guardian]) icon is both a Rogue card and a Guardian card for all purposes. Generally, a multi-class card can be included in an investigator’s deck if that investigator has access to <i>either</i> of that card’s classes.\nIf an investigator has limited access to one of the classes on a multiclass card and unlimited access to one of the other classes on that card, it will still occupy one of the investigator’s limited slots unless their deckbuilding options contains the word \"other\" in it <i>(詳見[Deckbuilding Options](#Deckbuilding_Options))</i>.\nThe following section clarifies how multi-class cards operate depending on how an investigator’s deckbuilding options are presented.\n- <b>Investigators with unlimited access to more than one class <i>(i.e. All Core Set investigators, Minh Thi Phan, Sefina Rousseau, William Yorick, Leo Anderson, Joe Diamond, Preston Fairmont, Diana Stanley)</i>:</b> A multi-class card can be included in that investigator’s deck if it falls into <i>either</i> of the listed classes.\n- <b>Investigators from The Dunwich Legacy expansion</b> <i>(i.e. Zoey Samaras, Rex Murphy, Jenny Barnes, Jim Culver, \"Ashcan\" Pete)</i>: A multi-class card will not occupy one of these investigator’s five \"out of class\" slots if one of its classes is the class they have unlimited access to. A card cannot take up more than one \"out of class\" slot, regardless of how many class icons the card bears.\n- <b>Investigators with unlimited access to one class and limited access to one or more \"other\" classes</b> <i>(i.e. Marie Lambeau, Finn Edwards, Carolyn Fern)</i>: A multi-class card will not occupy one of the investigator’s limited slots, because it falls into the unlimited category <i>(詳見[Deckbuilding Options](#Deckbuilding_Options))</i>。\n- <b>Investigators with unlimited access to one class and limited access to a second class, without using the word \"other\"</b> <i>(i.e. Norman Withers)</i>: A multi-class card will occupy one of the investigator’s limited slots, even if it also falls into the unlimited category.\n- <b>Lola Hayes:</b> A multi-class card will count as a card of each of its classes toward her Deckbuilding Requirement."
   },
   {
     "id": "Must",
@@ -650,8 +650,8 @@
   },
   {
     "id": "Mythos_Phase_Placeholder",
-    "title": "神秘階段",
-    "text": "詳見\"[I. 神秘階段](#Mythos_Phase)\"。"
+    "title": "神話階段",
+    "text": "詳見\"[I. 神話階段](#Mythos_Phase)\"。"
   },
   {
     "id": "Nearest",
@@ -681,7 +681,7 @@
   {
     "id": "Per_Investigator",
     "title": "調查員人數([per_investigator])",
-    "text": "當[per_investigator]符號出現在一個數值之後時，將那個數值乘以本次冒險開始時的調查員人數。\n- \"調查員人數\"的相乘發生在數值修正之前。該數值被視為是卡牌的打印數值。\n- 使用\"調查員人數\"詞彙的文字，也都僅計算本次冒險開始時的調查員人數，並在修正之前生效。\n- 如果調查員在冒險中被消滅，仍算入\"調查員人數\"的數量之中。"
+    "text": "當[per_investigator]符號出現在一個數值之後時，將那個數值乘以本次冒險開始時的調查員人數。\n- \"調查員人數\"的相乘發生在數值修正之前。該數值被視為是卡牌的打印數值。\n- 使用\"調查員人數\"詞彙的文字，也都僅計算本次冒險開始時的調查員人數，並在修正之前生效。\n- 如果調查員在冒險中退場，仍算入\"調查員人數\"的數量之中。"
   },
   {
     "id": "Peril",
@@ -691,7 +691,7 @@
   {
     "id": "Permanent",
     "title": "永久",
-    "text": "永久是一個牌組構建關鍵詞能力。\n- 帶有永久關鍵詞的卡牌，不計入牌組的卡牌張數之中。\n- 帶有永久關鍵詞的卡牌依然視為牌組的一部分，所以需要遵守牌組構建限制。\n- 帶有永久關鍵詞的卡牌在遊戲開始時，直接入場，無需混洗入牌組。\n- 帶有永久關鍵詞的卡牌不能<b>離場</b>(除非被消減)。\n- Ruling from Maxine Newman regarding permanent cards: A card with the permanent keyword cannot be shuffled into an investigator's deck during a scenario or used to pay for the cost of any action that requires a card be discarded or returned to an investigator's deck or hand."
+    "text": "永久是一個牌組構建關鍵詞能力。\n- 帶有永久關鍵詞的卡牌，不計入牌組的卡牌張數之中。\n- 帶有永久關鍵詞的卡牌依然視為牌組的一部分，所以需要遵守牌組構建限制。\n- 帶有永久關鍵詞的卡牌在遊戲開始時，直接入場，無需混洗入牌組。\n- 帶有永久關鍵詞的卡牌不能<b>離場</b>(除非退場)。\n- Ruling from Maxine Newman regarding permanent cards: A card with the permanent keyword cannot be shuffled into an investigator's deck during a scenario or used to pay for the cost of any action that requires a card be discarded or returned to an investigator's deck or hand."
   },
   {
     "id": "Play",
@@ -713,7 +713,7 @@
   {
     "id": "Prey",
     "title": "獵物",
-    "text": "部分敵人對其攻擊對象有獨特的喜好，這樣的敵人帶有加粗的\"<b>獵物</b>\"指令，來說明其會與哪種調查員交戰。\n- 如果敵人自動與調查員交戰時，所在地點有多位調查員，該敵人被最符合其\"獵物\"指令的調查員交戰(如果有多位調查員對該指令的符合程度一致，則由隊長選擇)(詳見\"[交戰敵人](#Enemy_Engagement)\")。\n- 如果敵人要向最近的調查員移動，有多個距離一致的可選項。則向最符合\"獵物\"指令的對象移動(如果有多位調查員對該指令的符合程度一致，則由隊長選擇)(詳見\"[獵手](#Hunter)\"。)\n- 如果敵人的獵物指令帶有\"僅對\"一詞，該敵人只會向指定的調查員移動和交戰，並無視其他調查員的存在。其他調查員可以使用交戰行動和卡牌能力來主動與該敵人交戰。\n- 獵物對敵人的生成位置不會產生影響(詳見\"[生成](#Spawn)\")。"
+    "text": "部分敵人對其攻擊對象有獨特的喜好，這樣的敵人帶有加粗的\"<b>獵物</b>\"指令，來說明其會與哪種調查員交戰。\n- 如果敵人將要自動與調查員交戰，而所在地點有多位調查員，則該敵人與最符合其\"獵物\"指令的調查員交戰(如果有多位調查員對該指令的符合程度一致，則由隊長選擇)(詳見\"[交戰敵人](#Enemy_Engagement)\")。\n- 如果敵人要向最近的調查員移動，有多個距離一致的可選項。則向最符合\"獵物\"指令的對象移動(如果有多位調查員對該指令的符合程度一致，則由隊長選擇)(詳見\"[獵手](#Hunter)\"。)\n- 如果敵人的獵物指令帶有\"僅對\"一詞，該敵人只會向指定的調查員移動和交戰，並無視其他調查員的存在。其他調查員可以使用交戰行動和卡牌能力來主動與該敵人交戰。\n- 獵物對敵人的生成位置不會產生影響(詳見\"[生成](#Spawn)\")。"
   },
   {
     "id": "Printed",
@@ -727,9 +727,9 @@
   },
   {
     "id": "Prologue_Investigators",
-    "title": "Prologue Investigators",
-    "cycle": ["tcu"],
-    "text": "The four investigator cards depicted here (Gavriella Mizrah, Jerome Davids, Penny White, and Valentino Rivas) are marked with the <i>Disappearance at the Twilight Estate</i> encounter set icon and can only be used in the prologue for <i>The Circle Undone</i>. They cannot be used in other scenarios. Keep them with the rest of the scenario cards for <i>Disappearance at the Twilight Estate</i>, and do not integrate them into your collection of player cards."
+    "title": "序章調查員",
+    "cycle": [ "tcu" ],
+    "text": "圖示的四張調查員卡(加弗瑞拉·米茲拉克、杰羅姆·戴維斯、佩妮·懷特、瓦倫蒂諾·里瓦斯)均標記有<i>暮色莊園失蹤事件</i>的遭遇組圖標，只能用於《萬象無終》的序章。這些調查員不能用於其他冒險。將這些調查員與<i>暮色莊園失蹤事件</i>的剩餘冒險卡放在一起，而不要加入到你收藏的玩家卡中。"
   },
   {
     "id": "Put_into_Play",
@@ -774,7 +774,7 @@
   {
     "id": "Resign",
     "title": "撤退",
-    "text": "部分能力帶有<b>撤退</b>行動指示詞。這樣的能力需要用\"啟動\"行動來觸發(詳見\"[啟動行動](#Activate_Action)\")。\n- 當調查員撤退時，該調查員立刻被消滅(詳見\"[消滅](#Elimination)\")。撤退的調查員不視為被擊敗。"
+    "text": "部分能力帶有<b>撤退</b>行動指示詞。這樣的能力需要用\"啟動\"行動來觸發(詳見\"[啟動行動](#Activate_Action)\")。\n- 當調查員撤退時，該調查員立刻退場(詳見\"[退場](#Elimination)\")。撤退的調查員不視為被擊敗。"
   },
   {
     "id": "Resource_Action",
@@ -789,7 +789,7 @@
   {
     "id": "Retaliate",
     "title": "反擊",
-    "text": "反擊是一個關鍵詞能力。\n當調查員攻擊帶有反擊關鍵詞並且準備狀態的敵人時，如果失敗，在結算完技能檢定之後，該敵人立刻對發起攻擊的調查員攻擊一次。敵人反擊後不會進入消耗狀態。\n- 無論是否交戰，反擊敵人都會執行反擊。"
+    "text": "反擊是一個關鍵詞能力。\n當調查員攻擊帶有反擊關鍵詞並且準備狀態的敵人時，如果失敗，在結算完技能檢定之後，該敵人立刻對發起攻擊的調查員攻擊一次。敵人反擊後不會進入消耗狀態。\n- 敵人無論是否與發動攻擊的調查員交戰，都會執行反擊。"
   },
   {
     "id": "Revelation",
@@ -799,7 +799,7 @@
   {
     "id": "Sanity_and_Horror",
     "title": "神智値與恐懼",
-    "text": "神智值代表一位調查員的精神強健程度。恐懼是指一次冒險中，調查員所受到的精神損傷。\n- 當卡牌受到恐懼時，將等同於造成恐懼點數的恐懼標記放在卡牌上(詳見\"[造成傷害/恐懼](#Dealing_Damage_Horror)\")。\n- 如果調查員受到的恐懼值大於等於其神智值，該調查員被擊敗。當調查員被擊敗時，他在這次冒險中被消滅(詳見\"[消滅](#Elimination)\")。\n- 在劇本模式下，由於受到過多恐懼而被擊敗的調查員，會受到1點精神創傷。受到過多精神創傷會導致調查員<b>發瘋</b>(詳見\"[劇本模式遊戲](#Campaign_Play)\")。\n- 如果支援卡受到的恐懼大於等於其神智值，該卡被擊敗並送入所屬玩家的棄牌堆。\n- 卡牌的剩餘神智值，是指其基礎神智值減去受到的恐懼，再加上或減去神智修正值，所得到的的數值。\n- 未標註神智值的支援卡，神智值視為0，不能對其分配恐懼。\n相關條目：\"[直接傷害，直接恐懼](#Direct_Damage_Direct_Horror)\"。"
+    "text": "神智值代表一位調查員的精神強健程度。恐懼是指一次冒險中，調查員所受到的精神損傷。\n- 當卡牌受到恐懼時，將等同於造成恐懼點數的恐懼標記放在卡牌上(詳見\"[造成傷害/恐懼](#Dealing_Damage_Horror)\")。\n- 如果調查員受到的恐懼值大於等於其神智值，該調查員被擊敗。當調查員被擊敗時，他在這次冒險中退場(詳見\"[退場](#Elimination)\")。\n- 在劇本模式下，由於受到過多恐懼而被擊敗的調查員，會受到1點精神創傷。受到過多精神創傷會導致調查員<b>發瘋</b>(詳見\"[劇本模式遊戲](#Campaign_Play)\")。\n- 如果支援卡受到的恐懼大於等於其神智值，該卡被擊敗並送入所屬玩家的棄牌堆。\n- 卡牌的剩餘神智值，是指其基礎神智值減去受到的恐懼，再加上或減去神智修正值，所得到的的數值。\n- 未標註神智值的支援卡，神智值視為0，不能對其分配恐懼。\n相關條目：\"[直接傷害，直接恐懼](#Direct_Damage_Direct_Horror)\"。"
   },
   {
     "id": "Seal",
@@ -850,7 +850,7 @@
   {
     "id": "Spawn",
     "title": "生成",
-    "text": "部分敵人，在從遭遇牌堆抽出時，需要放置在特定的地點，這被稱為\"<b>生成</b>\"指令。\n- 只要敵人入場，就要按照其生成指令放置，無論該敵人以何種方式入場。\n- 如果敵人沒有生成指令，則立刻被抽出該卡的調查員吸引。\n- 如果敵人沒有可有效生成的地點(例如：如果生成指令提及的地點尚未入場，或者沒有地點滿足其生成指令)，該敵人不會生成，立刻丟棄。\n- 如果敵人的生成指令有多個可選地點，則抽出該卡的調查員決定生成地點。\n- 如果卡牌能力要求玩家在特定地點生成敵人<i>(例如：\"查找遭遇牌堆，將一個祭司生成在南區\")</i>，則該指令將會覆蓋敵人卡本身的生成指令。"
+    "text": "部分敵人，在從遭遇牌堆抽出時，需要放置在特定的地點，由文字區域加粗的\"<b>生成</b>\"指令說明。\n- 只要敵人入場，就要按照其生成指令放置，無論該敵人以何種方式入場。\n- 如果敵人沒有生成指令，則立刻與抽出該卡的調查員交戰。\n- 如果敵人沒有可有效生成的地點(例如：如果生成指令提及的地點尚未入場，或者沒有地點滿足其生成指令)，該敵人不會生成，立刻丟棄。\n- 如果敵人的生成指令有多個可選地點，則抽出該卡的調查員決定生成地點。\n- 如果卡牌能力要求玩家在特定地點生成敵人<i>(例如：\"查找遭遇牌堆，將一個祭司生成在南區\")</i>，則該指令將會覆蓋敵人卡本身的生成指令。"
   },
   {
     "id": "Standalone_Mode",
@@ -892,8 +892,8 @@
   },
   {
     "id": "Tarot Slot",
-    "title": "Tarot Slot",
-    "text": "Tarot slots are a new type of asset slot introduced in this expansion. The following symbol indicates that an asset fills a tarot slot:\nAs with other slots, tarot slots limit the number of asset cards of that slot type an investigator is permitted to have in play simultaneously.\n<b>By default, an investigator has only one tarot slot available.</b>\nAll other rules governing slots apply to tarot slots, as usual."
+    "title": "塔羅牌槽位",
+    "text": "塔羅牌槽位是《萬象無終》引入的一種新的支援槽位。以下符號表示該支援占用一個塔羅牌槽位：\n與其他槽位一樣，塔羅牌槽位限制了一位調查員場上同時能夠擁有的塔羅牌支援卡牌數量。\n<b>默認來說，一位調查員只有一個塔羅牌槽位。</b>\n影響槽位的其他所有規則也如常適用於塔羅牌槽位。"
   },
   {
     "id": "Then",
@@ -903,7 +903,7 @@
   {
     "id": "Threat_Area",
     "title": "威脅區域",
-    "text": "調查員的威脅區域是指遊戲區域中，用來放置當前被該調查員吸引，或者是影響該調查員的遭遇卡。\n- 調查員的威脅區域中的卡牌，與該調查員在同一個地點。"
+    "text": "調查員的威脅區域是指遊戲區域中，用來放置當前與該調查員交戰，或者是影響該調查員的遭遇卡。\n- 調查員的威脅區域中的卡牌，與該調查員在同一個地點。"
   },
   {
     "id": "Tokens",
@@ -933,7 +933,7 @@
   {
     "id": "Triggering_Condition",
     "title": "觸發條件",
-    "text": "觸發條件指明了一個能力在何時能夠被觸發。大部分觸發條件帶有\"在……時\"或\"在……之後\"，中間的文字就是指定的時間點。\n- 每個能力在觸發條件達成時，只能使用該能力一次。\n- 如果一個能力在多個場合都達成了觸發條件，則每個場合都只能觸發該效果一次。\n相關條目：\"[能力](#Ability)\"，\"[在……之後](#After)\"，\"[在……時]](#When)\"。"
+    "text": "觸發條件指明了一個能力在何時能夠被觸發。大部分觸發條件帶有\"在……時\"或\"在……之後\"，中間的文字就是指定的時間點。\n- 每個能力在觸發條件達成時，只能使用該能力一次。\n- 如果一個能力在多個場合都達成了觸發條件，則每個場合都只能觸發該效果一次。\n相關條目：\"[能力](#Ability)\"，\"[在……之後](#After)\"，\"[在……時](#When)\"。"
   },
   {
     "id": "Unique",
@@ -974,7 +974,7 @@
   {
     "id": "When",
     "title": "在……時",
-    "text": "\"在……時(when)\"一詞是指特定時間點或觸發條件達成之後，但是在其對遊戲產生影響之前。\"在……時(when)\"的能力會打斷目標能力的結算。<i>(例如：一個能力為\"在你抽取1張敵人卡時\"，當你抽取一張敵人卡，但是結算其顯現和生成能力之前，你會立刻結算那個\"在……時\"能力。)</i>/n相關條目：\"[能力](#Ability)\"，\"同時結算時的優先順序](#Priority_of_Simultaneous_Resolution)\"。"
+    "text": "\"在……時(when)\"一詞是指特定時間點或觸發條件達成之後，但是在其對遊戲產生影響之前。\"在……時(when)\"的能力會打斷目標能力的結算。<i>(例如：一個能力為\"在你抽取1張敵人卡時\"，當你抽取一張敵人卡，但是結算其顯現和生成能力之前，你會立刻結算那個\"在……時\"能力。)</i>\n相關條目：\"[能力](#Ability)\"，\"[同時結算時的優先順序](#Priority_of_Simultaneous_Resolution)\"。"
   },
   {
     "id": "Wild_Skill_Icons",
@@ -985,7 +985,7 @@
   {
     "id": "Winning_and_Losing",
     "title": "勝利與失敗",
-    "text": "每次冒險會有多個可能的結局。\n場景牌堆代表了玩家冒險的進程。當冒險牌堆(或者其他遭遇卡)中出現了\"<b>(→結局#)</b>。\"字樣，表示達成這個指令會出現一個結局。玩家的目標就是推進場景牌堆，直到出現一個(可能有利)的結局。當場景牌堆中的結局被達成時，冒險結束(玩家可能\"勝利\"！)。結局的秘密應藏在《劇本手冊》中，\"請勿閱讀\"的部分。\n密謀牌堆代表了遊戲中邪惡勢力的進程。當密謀牌堆(或者其他遭遇卡)中出現了\"<b>(→結局#)</b>。\"字樣，表示達成這個指令會出現一個結局。當密謀牌堆中的結局(通常是個黑暗的真相)被達成時，冒險結束，玩家失敗。結局的秘密應藏在《劇本手冊》中，\"請勿閱讀\"的部分。\n如果出現沒有達成任何結局，冒險就結束的情況<i>(例如：所有調查員都被消滅或撤退)</i>，則閱讀《劇本手冊》中，\"請勿閱讀\"的對應部分。\n- 在劇本模式下，玩家無論達成何種結局，都繼續進行下一個冒險。即使玩家冒險失敗，也依然繼續劇情(雖然部分結局會帶來負面效果)。\n- 當玩家進行獨立的冒險時，無論勝利或失敗，都沒有影響。只要達成一張場景卡的結局，就視為勝利。其他所有結局都視為失敗(詳見\"[冒險模式](#Standalone_Mode)\")。\n相關條目：\"[場景牌堆和密課謀牌堆](#Act_Deck_and_Agenda_Deck)\"。"
+    "text": "每次冒險會有多個可能的結局。\n場景牌堆代表了玩家冒險的進程。場景牌堆(以及其他遭遇卡牌)的某些指令含有結局，形式為\"<b>(→結局#)</b>\"。玩家的目標就是推進場景牌堆，直到出現一個(可能有利)的結局。當場景牌堆中的結局被達成時，冒險結束(玩家可能\"勝利\"！)。屆時，查看《劇本手冊》中，\"請勿閱讀\"部分，即可了解如何結算相應的結局了。\n一些邪惡勢力在冒險中對調查員百般阻撓，密謀牌堆表示他們的目標和相關進展。密謀牌堆(以及其他遭遇卡)上的部分指令也包含結局，形式為\"<b>(→結局#)</b>\"。如果密謀牌堆觸發(通常為黑暗)結局，本次冒險便以失敗告終。屆時，查看《劇本手冊》\"請勿閱讀\"部分，了解如何結算相應結局。\n如果出現沒有達成任何結局，冒險就結束的情況<i>(例如：所有調查員都退場或撤退)</i>，則查看《劇本手冊》\"請勿閱讀\"部分，了解如何結算相應結局。\n- 在劇本模式下，玩家無論達成何種結局，都繼續進行下一個冒險。即使玩家冒險失敗，也依然繼續劇情(雖然失敗會帶來負面效果)。\n- 當玩家進行獨立的冒險時，無論勝利或失敗，都沒有影響。只要達成一張場景卡的結局，就視為勝利。其他所有結局都視為失敗(詳見\"[冒險模式](#Standalone_Mode)\")。\n相關條目：\"[場景牌堆和密課謀牌堆](#Act_Deck_and_Agenda_Deck)\"。"
   }
   ,
   {
@@ -997,12 +997,12 @@
   {
     "id": "You_Your",
     "title": "你/你的",
-    "text": "當效果中出現\"你/你的\"一詞時，請額外遵守以下規則：\n- 在<b>顯現</b>能力中,如果出現\"你/你的\"一詞是指抽取該卡牌，且正在結算當前能力的調查員。\n- 在結算觸發能力([free]、[reaction]和[action])中，\"你/你的\"是指觸發了當前能力的調查員。\n -如果一個能力中，有部分語句說明了該能力的效果對象是誰。那麼在後面的語句中如果使用了\"你/你的\"一詞，則代指效果對象。<i>例如：固執的偵探(基礎#103)效果為：\"只要固執的偵探與你在同一個地點……\"，該語句中的\"你\"，就代指與固執的偵探在同一地點的調查員。年幼的深潛者(基礎#181)效果為：\"在年幼的深潛者被你吸引後……\"，該語句中的\"你\"，就代指吸引了年幼的深潛者的調查員。</i>\n- 除了上述三種情況以外的其他情況，\"你/你們\"都指控制該卡牌的調查員，或者是處於其威脅區域內的調查員，或者是當前正在與該卡牌互動的調查員。\n一張卡牌中可能會使用多次\"你/你的\"，而且每個詞所指代的對象都可以不同。\"你/你的\"可以在一張卡牌的不同能力中，指代不同的調查員。\n<i>例如：拉萊耶之夢(基礎#182)效果為：</i>\n<i>\"<b>顯現</b> - 將拉萊耶之夢放置入你的威脅區域。\n你獲得-1[willpower]和-1神智值。\n[action]：檢定[willpower](3)。如果成功，丟棄拉萊耶之夢。\"</i>\n在第一、第二個能力中都使用了\"你\"一詞。在<b>顯現</b>能力中，\"你\"是指抽出拉萊耶之夢的調查員。在第二個能力中，\"你\"是指威脅區域中有拉萊耶之夢的調查員。第三個能力中雖然沒使用\"你\"一詞，但默指了花費行動進行這項檢定的調查員。"
+    "text": "當效果中出現\"你/你的\"一詞時，請額外遵守以下規則：\n- 在<b>顯現</b>能力中，如果出現\"你/你的\"一詞是指抽取該卡牌，且正在結算當前能力的調查員。\n- 在結算觸發能力([free]、[reaction]和[action])中，\"你/你的\"是指觸發了當前能力的調查員。\n -如果一個能力中，有部分語句說明了該能力的效果對象是誰。那麼在後面的語句中如果使用了\"你/你的\"一詞，則代指效果對象。<i>例如：固執的偵探(基礎#103)效果為：\"只要固執的偵探與你在同一個地點……\"，該語句中的\"你\"，就代指與固執的偵探在同一地點的調查員。年幼的深潛者(基礎#181)效果為：\"在年幼的深潛者被你吸引後……\"，該語句中的\"你\"，就代指吸引了年幼的深潛者的調查員。</i>\n- 除了上述三種情況以外的其他情況，\"你/你們\"都指控制該卡牌的調查員，或者是處於其威脅區域內的調查員，或者是當前正在與該卡牌互動的調查員。\n一張卡牌中可能會使用多次\"你/你的\"，而且每個詞所指代的對象都可以不同。\"你/你的\"可以在一張卡牌的不同能力中，指代不同的調查員。\n<i>例如：拉萊耶之夢(基礎#182)效果為：</i>\n<i>\"<b>顯現</b> - 將拉萊耶之夢放置入你的威脅區域。\n你獲得-1[willpower]和-1神智值。\n[action]：檢定[willpower](3)。如果成功，丟棄拉萊耶之夢。\"</i>\n在第一、第二個能力中都使用了\"你\"一詞。在<b>顯現</b>能力中，\"你\"是指抽出拉萊耶之夢的調查員。在第二個能力中，\"你\"是指威脅區域中有拉萊耶之夢的調查員。第三個能力中雖然沒使用\"你\"一詞，但默指了花費行動進行這項檢定的調查員。"
   },
   {
     "id": "Appendix_I_Initiation_Sequence",
     "title": "附錄I：啟動順序",
-    "text": "當玩家要啟動一個觸發能力，或是打出一張卡牌時，該玩家先宣告自己要做出此行動。在啟動能力或打出卡牌之前，他必須先進行兩次檢查與確認：\n- 首先檢查卡牌打出限制：確定該卡或該能力，的確可以在該時機被打出或啟動。(這包括確認該效果在執行后的確會對遊戲產生潛在影響。)如果打出條件未滿足，則該卡無法被打出，流程立刻終止。\n- 其次檢查卡打出卡牌或啟動能力所需支付的費用如果該卡或該能力(計入修正值)的費用能被支付則繼續進行以下步驟。\n完成檢查之後，按順序執行以下步驟：\n1. 將所有修正值計入費用之中。\n2. 支付費用。如果執行這個步驟時費用無法被完全支付，則立刻終止結算流程。\n- 完成該步驟後，結算可能發生的趁亂攻擊。\n3. 打出卡牌的效果，或者能力效果開始啟動檢查是否被打斷或取消。\n4. 卡牌能力完成啟動(如未在步驟3被取消)，開始結算效果。結算後放在對應位置(場上或棄牌堆)，此時該卡牌或能力視為結算完成成。\n- 如果啟動的能力屬於一張場上的卡牌，即使該卡牌在結算過程中離場，結算步驟也不會中止。"
+    "text": "當玩家要啟動一個觸發能力，或是打出一張卡牌時，該玩家先宣告自己要做出此行動。在啟動能力或打出卡牌之前，他必須先進行兩次檢查與確認：\n- 首先檢查卡牌打出限制：確定該卡或該能力，的確可以在該時機被打出或啟動。(這包括確認該效果在執行後的確會對遊戲產生潛在影響。)如果打出條件未滿足，則該卡無法被打出，流程立刻終止。\n- 其次檢查卡打出卡牌或啟動能力所需支付的費用如果該卡或該能力(計入修正值)的費用能被支付則繼續進行以下步驟。\n完成檢查之後，按順序執行以下步驟：\n1. 將所有修正值計入費用之中。\n2. 支付費用。如果執行這個步驟時費用無法被完全支付，則立刻終止結算流程。\n- 完成該步驟後，結算可能發生的趁亂攻擊。\n3. 打出卡牌的效果，或者能力效果開始啟動檢查是否被打斷或取消。\n4. 卡牌能力完成啟動(如未在步驟3被取消)，開始結算效果。結算後放在對應位置(場上或棄牌堆)，此時該卡牌或能力視為結算完成成。\n- 如果啟動的能力屬於一張場上的卡牌，即使該卡牌在結算過程中離場，結算步驟也不會中止。"
   },
   {
     "id": "Appendix_II_Timing_and_Gameplay",
@@ -1013,12 +1013,12 @@
         "id": "Phase_Sequence_Timing",
         "title": "階段流程表",
         "table": [
-          { "row": [ { "text": "I. 神秘階段(游戲第一輪跳過過該階段)" } ] },
+          { "row": [ { "text": "I. 神話階段(游戲第一輪跳過過該階段)" } ] },
           {
             "row": [
               {
                 "color": "green",
-                "text": "1.1 一輪開始。神秘階段開始。"
+                "text": "1.1 一輪開始。神話階段開始。"
               }
             ]
           },
@@ -1026,7 +1026,7 @@
             "row": [
               {
                 "color": "green",
-                "text": "1.2 在當前密謀卡上放置1個毀減標記。"
+                "text": "1.2 在當前密謀卡上放置1個毀滅標記。"
               }
             ]
           },
@@ -1034,7 +1034,7 @@
             "row": [
               {
                 "color": "green",
-                "text": "1.3 檢查毀减數量。"
+                "text": "1.3 檢查毀滅數量。"
               }
             ]
           },
@@ -1058,7 +1058,7 @@
             "row": [
               {
                 "color": "green",
-                "text": "1.5 神秘階段結束。"
+                "text": "1.5 神話階段結束。"
               }
             ]
           },
@@ -1166,7 +1166,7 @@
             "row": [
               {
                 "color": "green",
-                "text": "3.3 下一位調查員結算所吸引敵人的攻擊。如果還有調查員未結算敵人攻擊，則返回先前的玩家時間段；如果所有調查員都完成攻擊結算，則進入下一位玩家時間段。"
+                "text": "3.3 下一位調查員結算交戰敵人的攻擊。如果還有調查員未結算敵人攻擊，則返回先前的玩家時間段；如果所有調查員都完成攻擊結算，則進入下一位玩家時間段。"
               }
             ]
           },
@@ -1256,7 +1256,7 @@
             "row": [
               {
                 "color": "grey",
-                "text": "進入下一輪的神秘階段。"
+                "text": "進入下一輪的神話階段。"
               }
             ]
           }
@@ -1269,23 +1269,23 @@
         "rules": [
           {
             "id": "Mythos_Phase",
-            "title": "I. 神秘階段",
-            "text": "<b>在遊戲第一輪，跳過神秘階段。</b>\n<b>1.1 神秘階段開始。</b>\n該步驟標誌著神秘階段開始。這是一輪中的第一個流程事件，也標誌著一輪的開始。\n一個階段開始時，可能會有部分卡牌能力在此時觸發。階段開始也常常是持續效果失效，或延時能力觸發的時間。\n<b>1.2 在當前密謀卡上放置1個毀滅標記。</b>\n從供應堆拿取1個毀滅標記，放到當前密謀卡上。\n<b>1.3 檢查毀滅標記數量。</b>\n將當前場上(當前密謀卡上以及其他所有在場卡牌)的毀滅標記數量與密謀卡的指定數字做比較。如果數值大於等於當前密謀卡指定數值，則推進密謀牌堆。\n當密謀牌堆推進時，移除場上所有毀滅標記並放回供應堆。將當前密謀卡翻面，並閱讀讀劇情文字，然後根據推進指令執行。除非推進指令有特殊要求，一般密謀牌堆的下一張卡牌就是新的當前密謀卡，並且將原本的密謀移出遊戲。\n<i>注意：除非卡牌效果特殊說明，否則該步驟是能推進密謀牌堆的唯一時間點。</i>\n<b>1.4 每位調查員抽取1張遭遇卡。</b>\n按玩家順序，每位調查員抽取遭遇牌堆頂部的卡牌，結算其顯現效果，然後根據卡牌類型來執行其指令。\n每當調查員抽取遭遇卡，根據以下步驟按順序執行：\n1. 從遭遇牌堆抽取1張卡牌。\n2. 檢查抽出的卡牌是否帶有禍害關鍵詞。(如果帶有禍害關鍵詞，則抽出該卡的調查員不能與其他玩家交流。其他玩家不能在結算禍害遭遇卡期間打出卡牌，觸發能力，在該調查員的技能檢定時投入卡牌。)\n3. 結算抽出卡牌的顯現能力。\n4. 如果抽出卡牌為<b>敵人</b>卡，根據其生成指令來放置該卡。(生成指令是指前方帶有\"生成\"字樣的效果文字。)如果遭遇的敵人沒有生成指令，則立刻與抽出該卡的調查員交戰，並放在該調查員的威脅區域。\n如果抽出卡牌為<b>詭計</b>卡，立即結算其效果，它將進入遭遇棄牌堆，除非卡牌效果要求放入其他區域。\n5. 如果抽出卡牌帶有湧動關鍵詞，調查員必須再抽取張遭遇卡。重複步驟1。\n<b>1.5 神秘階段結束。</b>\n該步驟標誌著神秘階段結束。\n一個階段結束時，可能會有部分卡牌能力可以/必須在此時觸發。階段結束也常常是持續效果失效，或延時能力觸發的時間。"
+            "title": "I. 神話階段",
+            "text": "<b>在遊戲第一輪，跳過神話階段。</b>\n<b>1.1 神話階段開始。</b>\n該步驟標誌著神話階段開始。這是一輪中的第一個流程事件，也標誌著一輪的開始。\n一個階段開始時，可能會有部分卡牌能力在此時觸發。階段開始也常常是持續效果失效，或延時能力觸發的時間。\n<b>1.2 在當前密謀卡上放置1個毀滅標記。</b>\n從供應堆拿取1個毀滅標記，放到當前密謀卡上。\n<b>1.3 檢查毀滅標記數量。</b>\n將當前場上(當前密謀卡上以及其他所有在場卡牌)的毀滅標記數量與密謀卡的指定數字做比較。如果數值大於等於當前密謀卡指定數值，則推進密謀牌堆。\n當密謀牌堆推進時，移除場上所有毀滅標記並放回供應堆。將當前密謀卡翻面，並閱讀讀劇情文字，然後根據推進指令執行。除非推進指令有特殊要求，一般密謀牌堆的下一張卡牌就是新的當前密謀卡，並且將原本的密謀移出遊戲。\n<i>注意：除非卡牌效果特殊說明，否則該步驟是能推進密謀牌堆的唯一時間點。</i>\n<b>1.4 每位調查員抽取1張遭遇卡。</b>\n按玩家順序，每位調查員抽取遭遇牌堆頂部的卡牌，結算其顯現效果，然後根據卡牌類型來執行其指令。\n每當調查員抽取遭遇卡，根據以下步驟按順序執行：\n1. 從遭遇牌堆抽取1張卡牌。\n2. 檢查抽出的卡牌是否帶有禍害關鍵詞。(如果帶有禍害關鍵詞，則抽出該卡的調查員不能與其他玩家交流。其他玩家不能在結算禍害遭遇卡期間打出卡牌，觸發能力，在該調查員的技能檢定時投入卡牌。)\n3. 結算抽出卡牌的顯現能力。\n4. 如果抽出卡牌為<b>敵人</b>卡，根據其生成指令來放置該卡。(生成指令是指前方帶有\"生成\"字樣的效果文字。)如果遭遇的敵人沒有生成指令，則立刻與抽出該卡的調查員交戰，並放在該調查員的威脅區域。\n如果抽出卡牌為<b>詭計</b>卡，立即結算其效果，它將進入遭遇棄牌堆，除非卡牌效果要求放入其他區域。\n5. 如果抽出卡牌帶有湧動關鍵詞，調查員必須再抽取張遭遇卡。重複步驟1。\n<b>1.5 神話階段結束。</b>\n該步驟標誌著神話階段結束。\n一個階段結束時，可能會有部分卡牌能力可以/必須在此時觸發。階段結束也常常是持續效果失效，或延時能力觸發的時間。"
           },
           {
             "id": "Investigation_Phase",
             "title": "調查階段",
-            "text": "<b>2.1 調查階段開始。</b>\n該步驟標誌著調查階段開始。\n<b>2.2 下一位調查員回合開始。</b>\n調查員可以任意順序執行其回合。調查員選擇擇其中一人執行回合，被選中的調查員開始回合。該調查員被稱為\"當前調查員\"。\n當調查員開始回合時，該調查員必須結束其回合後，下一位調查員才能進行回合。每位調查員一輪只進行一個回合。\n<b>2.2.1 當前調查員如果還有行動剩餘，可以執行1個行動。</b>\n在調查員回合中，他可以執行最多3個行動。行動包括：\n- <b>調查</b>所在地點。\n- <b>移動</b>到一個連接地點。\n- <b>抽取</b>1張卡牌。\n- 獲得1個<b>資源</b>。\n- <b>打出</b>手中1張支援卡或事件卡。\n- <b>啟動</b>一個[action]能力，可以來自：你控制的在場卡牌，你所在地點的遭遇卡，你威脅區域的卡牌，當前場景或密謀卡。\n- <b>攻擊</b>你所在地點的一名敵人。\n- 與你所在地點的一名敵人<b>交戰</b>。\n- <b>躲避</b>與你交戰的一名敵人。\n調查員在其回合中執行的三個行動，可以是任意順序，也可重複執行相同行動。\n<b>注意</b>：當調查員與至少一名敵人交戰，執行除<b>攻擊</b>、<b>躲避</b>或啟動除<b>談判</b>、<b>撤退</b>能力外的行動，則每名吸引的敵人會對該調查員進行一次趁亂攻擊，順序由該調查員決定。\n在玩家執行一個行動之後，返回先前的玩家時間段。當前調查員可以提前結束回合，放棄剩餘的行動。如果當前調查員不想或不能執行行動，則進入2.2.2。\n<b>2.2.2 調查員回合結束。</b>\n將當前調查員的迷你卡翻到黑白面，來提示該調查員已經執行過回合。如果該階段中，還有未執行回合的調查員，則返回2.2；如果所有調查員都已完成回合，則進入2.3。\n<b>2.3 調查階段結束。</b>\n該步驟標誌著調查階段結束。"
+            "text": "<b>2.1 調查階段開始。</b>\n該步驟標誌著調查階段開始。\n<b>2.2 下一位調查員回合開始。</b>\n調查員可以任意順序執行其回合。調查員選擇擇其中一人執行回合，被選中的調查員開始回合。該調查員被稱為\"當前調查員\"。\n當調查員開始回合時，該調查員必須結束其回合後，下一位調查員才能進行回合。每位調查員一輪只進行一個回合。\n<b>2.2.1 當前調查員如果還有行動剩餘，可以執行1個行動。</b>\n在調查員回合中，他可以執行最多3個行動。行動包括：\n- <b>調查</b>所在地點。\n- <b>移動</b>到一個連接地點。\n- <b>抽取</b>1張卡牌。\n- 獲得1個<b>資源</b>。\n- <b>打出</b>手中1張支援卡或事件卡。\n- <b>啟動</b>一個[action]能力，可以來自：你控制的在場卡牌，你所在地點的遭遇卡，你威脅區域的卡牌，當前場景或密謀卡。\n- <b>攻擊</b>你所在地點的一名敵人。\n- 與你所在地點的一名敵人<b>交戰</b>。\n- <b>躲避</b>與你交戰的一名敵人。\n調查員在其回合中執行的三個行動，可以是任意順序，也可重複執行相同行動。\n<b>注意</b>：當調查員與至少一名敵人交戰，而且執行了除<b>攻擊</b>、<b>躲避</b>或啟動除<b>談判</b>、<b>撤退</b>能力外的行動，則每名交戰的敵人會對該調查員進行一次趁亂攻擊，順序由該調查員決定。\n在玩家執行一個行動之後，返回先前的玩家時間段。當前調查員可以提前結束回合，放棄剩餘的行動。如果當前調查員不想或不能執行行動，則進入2.2.2。\n<b>2.2.2 調查員回合結束。</b>\n將當前調查員的迷你卡翻到黑白面，來提示該調查員已經執行過回合。如果該階段中，還有未執行回合的調查員，則返回2.2；如果所有調查員都已完成回合，則進入2.3。\n<b>2.3 調查階段結束。</b>\n該步驟標誌著調查階段結束。"
           },
           {
             "id": "Enemy_Phase",
             "title": "III. 敵軍階段",
-            "text": "<b>3.1 敵軍階段開始。</b>\n該步驟標誌著敵軍階段開始。\n<b>3.2 獵手敵人移動</b>。\n每名準備且未交戰狀態的獵手敵人，結算其獵手關鍵詞(詳見第12頁\"[獵手](#Hunter)\")。\n<b>3.3 下一位調查員結算所吸引敵人的攻擊。<\b>\n按玩家順序結算吸引敵人的攻擊。在一位玩家完全結算後，才能輪到下一位玩家結算。\n每名準備且交戰狀態的敵人，都會攻擊與其交戰的調查員。當一名敵人攻擊時，對調查員同時造成傷害和恐懼。在攻擊完成後(以及所有攻擊觸發的效果結算完成後)，消耗該名敵人。如果調查員同時與多名敵人交戰，由該調查員選擇結算順序。\n在一位調查員結算完所有交戰敵人的攻擊後，回到先前的玩家時間段。如果所有調查員都完成了敵人攻擊的結算，則進入之後的玩家時間段。\n<b>3.4 敵軍階段結束。</b>\n該步驟標誌著敵軍階段結束。"
+            "text": "<b>3.1 敵軍階段開始。</b>\n該步驟標誌著敵軍階段開始。\n<b>3.2 獵手敵人移動</b>。\n每名準備且非交戰狀態的獵手敵人，結算其獵手關鍵詞(詳見第12頁\"[獵手](#Hunter)\")。\n<b>3.3 下一位調查員結算交戰敵人的攻擊。<\b>\n按玩家順序結算交戰敵人的攻擊。在一位玩家完全結算後，才能輪到下一位玩家結算。\n每名準備且交戰狀態的敵人，都會攻擊與其交戰的調查員。當一名敵人攻擊時，對調查員同時造成傷害和恐懼。在攻擊完成後(以及所有攻擊觸發的效果結算完成後)，消耗該名敵人。如果調查員同時與多名敵人交戰，由該調查員選擇結算順序。\n在一位調查員結算完所有交戰敵人的攻擊後，回到先前的玩家時間段。如果所有調查員都完成了敵人攻擊的結算，則進入之後的玩家時間段。\n<b>3.4 敵軍階段結束。</b>\n該步驟標誌著敵軍階段結束。"
           },
           {
             "id": "Upkeep_Phase",
             "title": "IV. 補給階段",
-            "text": "<b>4.1 補給階段開始。</b>\n該步驟標誌著補給階段開始。\n<b>4.2 重置行動數。</b>\n將每位調查員的迷你卡翻回彩色面。表示該玩家下回合的行動數已經重置。\n<b>4.3 將所有消耗卡牌轉為準備狀態。</b>\n同時將所有消耗狀態的卡牌轉為準備狀態。\n<b>4.4 每位調查員抽取1張卡牌，並獲得1個資源。</b>\n按玩家順序，每位調查員抽取1張卡牌。在抽牌完成後，每位調查員獲得1個資源。\n<b>4.5 每位調查員檢查手牌上限。</b>\n按玩家順序，每位手牌數超過8的調意員，選擇手牌丢棄，直到剩餘手牌為8張為止。\n<b>4.6 補給階段結束。</b>\n該步驟標誌著補給階段結束。\n因為補給階段為一輪的最後一個階段，這個步驟也標誌著一輪結束。所有帶有\"直到這輪結束\"的持續效果，都在此時終止。\n在該步驟完成後，繼續進行下一輪的神秘階段。"
+            "text": "<b>4.1 補給階段開始。</b>\n該步驟標誌著補給階段開始。\n<b>4.2 重置行動數。</b>\n將每位調查員的迷你卡翻回彩色面。表示該玩家下回合的行動數已經重置。\n<b>4.3 將所有消耗卡牌轉為準備狀態。</b>\n同時將所有消耗狀態的卡牌轉為準備狀態。\n<b>4.4 每位調查員抽取1張卡牌，並獲得1個資源。</b>\n按玩家順序，每位調查員抽取1張卡牌。在抽牌完成後，每位調查員獲得1個資源。\n<b>4.5 每位調查員檢查手牌上限。</b>\n按玩家順序，每位手牌數超過8的調意員，選擇手牌丢棄，直到剩餘手牌為8張為止。\n<b>4.6 補給階段結束。</b>\n該步驟標誌著補給階段結束。\n因為補給階段為一輪的最後一個階段，這個步驟也標誌著一輪結束。所有帶有\"直到這輪結束\"的持續效果，都在此時終止。\n在該步驟完成後，繼續進行下一輪的神話階段。"
           }
         ]
       },
@@ -1389,7 +1389,7 @@
           {
             "id": "Skill_Test_3",
             "title": "步驟3 抽取混亂標記。",
-            "text": "執行技能檢定的調查員，從混亂袋中抽出一個混亂標記。\nSee also \"[Resolving Multiple Revealed Chaos Tokens](#Resolving_Multiple_Revealed_Chaos_Tokens)\" above."
+            "text": "執行技能檢定的調查員，從混亂袋中抽出一個混亂標記。\n詳見\"[Resolving Multiple Revealed Chaos Tokens](#Resolving_Multiple_Revealed_Chaos_Tokens)\" above."
           },
           {
             "id": "Skilll_Test_4",

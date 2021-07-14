@@ -332,6 +332,7 @@ export function campaignNames() {
     tdea: t`The Dream-Quest`,
     tdeb: t`The Web of Dreams`,
     tic: t`The Innsmouth Conspiracy`,
+    eoe: t`Edge of the Earth`,
     zdm: t`Dark Matter`,
     zaw: t`Alice in Wonderland`,
     zce: t`The Crown of Egil`,

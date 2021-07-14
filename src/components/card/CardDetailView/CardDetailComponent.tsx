@@ -104,10 +104,10 @@ function SpoilersComponent({ componentId, card, width, toggleShowSpoilers }: Pro
         { t`Warning: this card contains possible spoilers for '${ card.pack_name }'.` }
       </Text>
       <View style={[styles.row, space.paddingSideS]}>
-        <ArkhamButton grow icon="show" onPress={toggleShowSpoilersPressed} title="Show card" />
+        <ArkhamButton grow icon="show" onPress={toggleShowSpoilersPressed} title={t`Show card`} />
       </View>
       <View style={[styles.row, space.paddingSideS]}>
-        <ArkhamButton grow icon="edit" onPress={editSpoilersPressed} title="Edit my spoiler settings" />
+        <ArkhamButton grow icon="edit" onPress={editSpoilersPressed} title={t`Edit my spoiler settings`} />
       </View>
     </View>
   );

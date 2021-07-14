@@ -1,14 +1,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2021-06-21 21:13-0400\n"
+"PO-Revision-Date: 2021-07-12 23:20+0300\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "mime-version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"x-generator: Poedit 2.4.3\n"
+"x-generator: Poedit 3.0\n"
 "x-poedit-basepath: .\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
@@ -1079,7 +1079,7 @@ msgid "Options"
 msgstr "Опции"
 
 msgid "View on ArkhamDB"
-msgstr "Просмотреть на ArkhamDB"
+msgstr "На ArkhamDB"
 
 msgid "Delete Deck"
 msgstr "Удалить колоду"
@@ -1898,10 +1898,10 @@ msgstr[2] ""
 
 #, javascript-format
 msgid "Check Campaign Log. Because <i>${ entry }</i>"
-msgstr "Проверьте журнал кампании. Потому что <i>${ entry }</i>"
+msgstr "Сверьтесь с журналом кампании. Поскольку <i>${ entry }</i>"
 
 msgid "Check Campaign Log, is the <i>${ logEntry.section }</i> not crossed off?"
-msgstr "Проверьте журнал кампании, <i>${ logEntry.section }</i> не вычеркнута?"
+msgstr "Сверьтесь с журналом кампании, <i>${ logEntry.section }</i> не вычеркнута?"
 
 #, javascript-format
 msgid ""
@@ -1969,7 +1969,9 @@ msgstr "Если все сыщики были <b>убиты</b>."
 
 #, javascript-format
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
-msgstr "Проверьте ${ logEntry.section }. <i>Если ${ logEntry.text }</i>"
+msgstr ""
+"Проверьте ${ logEntry.section }. <i>Есть ли там запись ${ logEntry.text "
+"}</i>"
 
 msgid "Choose Side-Scenario"
 msgstr "Выберите сценарий-ответвление"
@@ -2420,7 +2422,7 @@ msgid "The Night of the Zealot"
 msgstr "Ночь фанатички"
 
 msgid "Campaign Notes"
-msgstr "Заметки"
+msgstr "Записи в журнале"
 
 msgid "Cultists We Interrogated"
 msgstr "Допрошенные культисты"
@@ -4347,12 +4349,6 @@ msgstr ""
 msgid "Strength of Wonderland"
 msgstr ""
 
-msgid "Fan-made campaign by Axolotl"
-msgstr ""
-
-msgid "Fan-made campiagn by The Beard"
-msgstr ""
-
 msgid "Edge of the Earth"
 msgstr ""
 
@@ -4511,7 +4507,7 @@ msgid "Chaos bag"
 msgstr "Мешок хаоса"
 
 msgid "Review and simulate draw"
-msgstr "Состав и симулятор взятия"
+msgstr "Посмотреть состав и тянуть жетоны"
 
 msgid "Draw random"
 msgstr "Взять случайную"
@@ -4635,6 +4631,25 @@ msgstr ""
 
 #, javascript-format
 msgid "Choose an investigator to add ${ card.name } to their deck:"
+msgstr "Выберите сыщика, который добавляет ${ card.name } в свою колоду:"
+
+msgid "Show card"
+msgstr "Показать карту"
+
+msgid "Edit my spoiler settings"
+msgstr "Настроить спойлеры"
+
+msgid "Crown of Egil"
+msgstr ""
+
+msgid "The Crown of Egil"
+msgstr ""
+
+msgid "Traces of Egil"
+msgstr ""
+
+#, javascript-format
+msgid "Fan-made campaign by ${ author }"
 msgstr ""
 
 msgctxt "masculine"

@@ -4345,12 +4345,6 @@ msgstr ""
 msgid "Strength of Wonderland"
 msgstr ""
 
-msgid "Fan-made campaign by Axolotl"
-msgstr "Fan-Szenario von Axolotl"
-
-msgid "Fan-made campiagn by The Beard"
-msgstr "Fan-Kampagne von The Beard"
-
 msgid "Edge of the Earth"
 msgstr ""
 
@@ -4630,6 +4624,25 @@ msgstr ""
 
 #, javascript-format
 msgid "Choose an investigator to add ${ card.name } to their deck:"
+msgstr ""
+
+msgid "Show card"
+msgstr ""
+
+msgid "Edit my spoiler settings"
+msgstr ""
+
+msgid "Crown of Egil"
+msgstr ""
+
+msgid "The Crown of Egil"
+msgstr ""
+
+msgid "Traces of Egil"
+msgstr ""
+
+#, javascript-format
+msgid "Fan-made campaign by ${ author }"
 msgstr ""
 
 msgctxt "masculine"
