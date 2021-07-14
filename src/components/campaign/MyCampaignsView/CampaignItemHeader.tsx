@@ -113,7 +113,9 @@ export default function CampaignItemHeader({ campaign, hideScenario, investigato
             <View style={[styles.icon, { backgroundColor: colors.L10 }, space.marginRightS]}>
               <AppIcon name="book" size={24} color={colors.D20} />
             </View>
-            <Text style={[typography.gameFont, typography.light]}>{name}</Text>
+            <View style={styles.flex}>
+              <Text style={[typography.gameFont, typography.light]}>{name}</Text>
+            </View>
           </View>
         ) }
       </View>
