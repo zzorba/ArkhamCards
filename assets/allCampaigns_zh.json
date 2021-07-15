@@ -91384,37 +91384,15 @@
         [
           "blank",
           "blank",
-          "lantern_room",
+          "07241_back",
           "blank"
         ],
         [
-          "gatehouse",
-          "cliff",
-          "lighthouse_stairwell",
-          "keepers_cottage"
+          "07239_back",
+          "07242_back",
+          "07240_back",
+          "07243_back"
         ]
-      ],
-      "location_names": [
-        {
-          "code": "lantern_room",
-          "name": "Lantern Room"
-        },
-        {
-          "code": "gatehouse",
-          "name": "Falcon Point Gatehouse"
-        },
-        {
-          "code": "cliff",
-          "name": "Falcon Point Cliffside"
-        },
-        {
-          "code": "lighthouse_stairwell",
-          "name": "Lighthouse Stairwell"
-        },
-        {
-          "code": "keepers_cottage",
-          "name": "Lighthouse Keeper's Cottage"
-        }
       ]
     },
     {
@@ -91428,67 +91406,33 @@
         [
           "blank",
           "blank",
-          "lantern_room",
+          "07241_back",
           "blank"
         ],
         [
-          "gatehouse",
-          "cliff",
-          "lighthouse_stairwell",
-          "keepers_cottage"
+          "07239_back",
+          "07242_back",
+          "07240_back",
+          "07243_back"
         ],
         [
           "07052_back",
           "07052_back",
-          "sunken_grotto_upper_depths",
+          "07244_back",
           "07052_back"
         ],
         [
           "07052_back",
           "07052_back",
-          "sunken_grotto_lower_depths",
+          "07245_back",
           "07052_back"
         ],
         [
           "07052_back",
           "07052_back",
-          "sunken_grotto_final_depths",
+          "07246_back",
           "07052_back"
         ]
-      ],
-      "location_names": [
-        {
-          "code": "lantern_room",
-          "name": "Lantern Room"
-        },
-        {
-          "code": "gatehouse",
-          "name": "Falcon Point Gatehouse"
-        },
-        {
-          "code": "cliff",
-          "name": "Falcon Point Cliffside"
-        },
-        {
-          "code": "lighthouse_stairwell",
-          "name": "Lighthouse Stairwell"
-        },
-        {
-          "code": "keepers_cottage",
-          "name": "Lighthouse Keeper's Cottage"
-        },
-        {
-          "code": "sunken_grotto_upper_depths",
-          "name": "Sunken Grotto (Upper Depths)"
-        },
-        {
-          "code": "sunken_grotto_lower_depths",
-          "name": "Sunken Grotto (Lower Depths)"
-        },
-        {
-          "code": "sunken_grotto_final_depths",
-          "name": "Sunken Grotto (Final Depths)"
-        }
       ]
     },
     {
@@ -95542,29 +95486,29 @@
           "blank"
         ],
         [
-          "sanctum",
-          "yhanthlei",
-          "yhanthlei",
-          "yhanthlei",
-          "yhanthlei",
-          "yhanthlei",
-          "sanctum"
+          "07324_back",
+          "07321_back",
+          "07321_back",
+          "07321_back",
+          "07321_back",
+          "07321_back",
+          "07324_back"
         ],
         [
           "blank",
-          "sanctum",
+          "07324_back",
           "blank",
-          "yhanthlei",
+          "07321_back",
           "blank",
-          "sanctum",
+          "07324_back",
           "blank"
         ],
         [
           "blank",
           "blank",
-          "lair_of_hydra",
-          "yhanthlei",
-          "lair_of_dagon",
+          "07329_back",
+          "07321_back",
+          "07328_back",
           "blank",
           "blank"
         ]
@@ -95573,22 +95517,6 @@
         {
           "code": "gateway",
           "name": "Gateway to Y’ha-nthlei"
-        },
-        {
-          "code": "sanctum",
-          "name": "Y'ha-nthlei Sanctum"
-        },
-        {
-          "code": "yhanthlei",
-          "name": "Y’ha-nthlei"
-        },
-        {
-          "code": "lair_of_hydra",
-          "name": "Lair of Hydra"
-        },
-        {
-          "code": "lair_of_dagon",
-          "name": "Lair of Dagon"
         }
       ]
     },
@@ -95609,21 +95537,21 @@
           "blank"
         ],
         [
-          "sanctum",
-          "yhanthlei",
-          "yhanthlei",
-          "yhanthlei",
-          "yhanthlei",
-          "yhanthlei",
-          "sanctum"
+          "07324_back",
+          "07321_back",
+          "07321_back",
+          "07321_back",
+          "07321_back",
+          "07321_back",
+          "07324_back"
         ],
         [
           "blank",
-          "sanctum",
-          "lair_of_hydra",
-          "yhanthlei",
-          "lair_of_dagon",
-          "sanctum",
+          "07324_back",
+          "07329_back",
+          "07321_back",
+          "07328_back",
+          "07324_back",
           "blank"
         ]
       ],
@@ -95631,22 +95559,6 @@
         {
           "code": "gateway",
           "name": "Gateway to Y’ha-nthlei"
-        },
-        {
-          "code": "sanctum",
-          "name": "Y'ha-nthlei Sanctum"
-        },
-        {
-          "code": "yhanthlei",
-          "name": "Y’ha-nthlei"
-        },
-        {
-          "code": "lair_of_hydra",
-          "name": "Lair of Hydra"
-        },
-        {
-          "code": "lair_of_dagon",
-          "name": "Lair of Dagon"
         }
       ]
     },
@@ -95665,24 +95577,24 @@
           "blank"
         ],
         [
-          "sanctum",
-          "yhanthlei",
-          "yhanthlei",
-          "yhanthlei",
-          "sanctum"
+          "07324_back",
+          "07321_back",
+          "07321_back",
+          "07321_back",
+          "07324_back"
         ],
         [
           "blank",
-          "sanctum",
-          "yhanthlei",
-          "sanctum",
+          "07324_back",
+          "07321_back",
+          "07324_back",
           "blank"
         ],
         [
           "blank",
-          "lair_of_hydra",
-          "yhanthlei",
-          "lair_of_dagon",
+          "07329_back",
+          "07321_back",
+          "07328_back",
           "blank"
         ]
       ],
@@ -95690,22 +95602,6 @@
         {
           "code": "gateway",
           "name": "Gateway to Y’ha-nthlei"
-        },
-        {
-          "code": "sanctum",
-          "name": "Y'ha-nthlei Sanctum"
-        },
-        {
-          "code": "yhanthlei",
-          "name": "Y’ha-nthlei"
-        },
-        {
-          "code": "lair_of_hydra",
-          "name": "Lair of Hydra"
-        },
-        {
-          "code": "lair_of_dagon",
-          "name": "Lair of Dagon"
         }
       ]
     },
@@ -95724,40 +95620,24 @@
           "blank"
         ],
         [
-          "sanctum",
-          "yhanthlei",
-          "yhanthlei",
-          "yhanthlei",
-          "sanctum"
+          "07324_back",
+          "07321_back",
+          "07321_back",
+          "07321_back",
+          "07324_back"
         ],
         [
-          "sanctum",
-          "lair_of_hydra",
-          "yhanthlei",
-          "lair_of_dagon",
-          "sanctum"
+          "07324_back",
+          "07329_back",
+          "07321_back",
+          "07328_back",
+          "07324_back"
         ]
       ],
       "location_names": [
         {
           "code": "gateway",
           "name": "Gateway to Y’ha-nthlei"
-        },
-        {
-          "code": "sanctum",
-          "name": "Y'ha-nthlei Sanctum"
-        },
-        {
-          "code": "yhanthlei",
-          "name": "Y’ha-nthlei"
-        },
-        {
-          "code": "lair_of_hydra",
-          "name": "Lair of Hydra"
-        },
-        {
-          "code": "lair_of_dagon",
-          "name": "Lair of Dagon"
         }
       ]
     },
@@ -96828,41 +96708,19 @@
       "locations": [
         [
           "blank",
-          "third_floor_hall",
+          "07289_back",
           "blank"
         ],
         [
-          "second_floor_hall",
-          "foul_corridors",
-          "second_floor_hall"
+          "07287_back",
+          "07286_back",
+          "07287_back"
         ],
         [
-          "first_floor_hall",
-          "grand_entryway",
-          "first_floor_hall"
+          "07284_back",
+          "07283_back",
+          "07284_back"
         ]
-      ],
-      "location_names": [
-        {
-          "code": "second_floor_hall",
-          "name": "Second Floor Hall"
-        },
-        {
-          "code": "foul_corridors",
-          "name": "Foul Corridors"
-        },
-        {
-          "code": "first_floor_hall",
-          "name": "First Floor Hall"
-        },
-        {
-          "code": "grand_entryway",
-          "name": "Grand Entryway"
-        },
-        {
-          "code": "third_floor_hall",
-          "name": "Third Floor Hall"
-        }
       ]
     },
     {
