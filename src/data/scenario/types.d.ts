@@ -173,6 +173,7 @@ export interface Campaign {
     type?: "investigator_count" | "count" | "supplies" | "hidden";
   }[];
   scenarios: string[];
+  hidden_scenarios?: string[];
   setup: string[];
   steps: Step[];
   side_scenario_steps?: Step[];

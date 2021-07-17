@@ -50,9 +50,11 @@ export default function CampaignItemHeader({ campaign, hideScenario, investigato
     const text = cycleCode === CUSTOM ? campaign.name : campaignNames()[cycleCode];
     const campaignName = (cycleCode === STANDALONE && standaloneName) || text;
     return (
-      <View style={styles.row}>
+      <View style={[styles.row, styles.flex]}>
         <View style={space.paddingRightS}>{ icon }</View>
-        <GameHeader text={campaignName} style={typography.white} />
+        <View style={styles.flex}>
+          <GameHeader text={campaignName} style={typography.white} />
+        </View>
       </View>
     );
   }, [campaign, cycleCode, typography, icon, standaloneName]);
@@ -111,7 +113,9 @@ export default function CampaignItemHeader({ campaign, hideScenario, investigato
             <View style={[styles.icon, { backgroundColor: colors.L10 }, space.marginRightS]}>
               <AppIcon name="book" size={24} color={colors.D20} />
             </View>
-            <Text style={[typography.gameFont, typography.light]}>{name}</Text>
+            <View style={styles.flex}>
+              <Text style={[typography.gameFont, typography.light]}>{name}</Text>
+            </View>
           </View>
         ) }
       </View>
@@ -120,6 +124,9 @@ export default function CampaignItemHeader({ campaign, hideScenario, investigato
 }
 
 const styles = StyleSheet.create({
+  flex: {
+    flex: 1,
+  },
   background: {
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,

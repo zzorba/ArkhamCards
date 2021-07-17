@@ -82574,30 +82574,8 @@
       "vertical": "normal",
       "note": "Note: The order of the locations in this row does not matter, so long as Lantern Room is directly above Lighthouse Stairwell.",
       "locations": [
-        ["blank", "blank", "lantern_room", "blank"],
-        ["gatehouse", "cliff", "lighthouse_stairwell", "keepers_cottage"]
-      ],
-      "location_names": [
-        {
-          "code": "lantern_room",
-          "name": "Lantern Room"
-        },
-        {
-          "code": "gatehouse",
-          "name": "Falcon Point Gatehouse"
-        },
-        {
-          "code": "cliff",
-          "name": "Falcon Point Cliffside"
-        },
-        {
-          "code": "lighthouse_stairwell",
-          "name": "Lighthouse Stairwell"
-        },
-        {
-          "code": "keepers_cottage",
-          "name": "Lighthouse Keeper's Cottage"
-        }
+        ["blank", "blank", "07241_back", "blank"],
+        ["07239_back", "07242_back", "07240_back", "07243_back"]
       ]
     },
     {
@@ -82608,45 +82586,11 @@
       "vertical": "normal",
       "note": "Note: The order of the locations on each row does not matter, so long as Lantern Room, Lighthouse Stairwell, and each Sunken Grotto are on the same column, as depicted.",
       "locations": [
-        ["blank", "blank", "lantern_room", "blank"],
-        ["gatehouse", "cliff", "lighthouse_stairwell", "keepers_cottage"],
-        ["07052_back", "07052_back", "sunken_grotto_upper_depths", "07052_back"],
-        ["07052_back", "07052_back", "sunken_grotto_lower_depths", "07052_back"],
-        ["07052_back", "07052_back", "sunken_grotto_final_depths", "07052_back"]
-      ],
-      "location_names": [
-        {
-          "code": "lantern_room",
-          "name": "Lantern Room"
-        },
-        {
-          "code": "gatehouse",
-          "name": "Falcon Point Gatehouse"
-        },
-        {
-          "code": "cliff",
-          "name": "Falcon Point Cliffside"
-        },
-        {
-          "code": "lighthouse_stairwell",
-          "name": "Lighthouse Stairwell"
-        },
-        {
-          "code": "keepers_cottage",
-          "name": "Lighthouse Keeper's Cottage"
-        },
-        {
-          "code": "sunken_grotto_upper_depths",
-          "name": "Sunken Grotto (Upper Depths)"
-        },
-        {
-          "code": "sunken_grotto_lower_depths",
-          "name": "Sunken Grotto (Lower Depths)"
-        },
-        {
-          "code": "sunken_grotto_final_depths",
-          "name": "Sunken Grotto (Final Depths)"
-        }
+        ["blank", "blank", "07241_back", "blank"],
+        ["07239_back", "07242_back", "07240_back", "07243_back"],
+        ["07052_back", "07052_back", "07244_back", "07052_back"],
+        ["07052_back", "07052_back", "07245_back", "07052_back"],
+        ["07052_back", "07052_back", "07246_back", "07052_back"]
       ]
     },
     {
@@ -86326,31 +86270,15 @@
       "horizontal": "normal",
       "vertical": "normal",
       "locations": [
-        ["blank",  "blank",     "blank",       "gateway",      "blank",       "blank",     "blank"],
-        ["sanctum", "yhanthlei", "yhanthlei",   "yhanthlei", "yhanthlei",   "yhanthlei", "sanctum"],
-        ["blank",  "sanctum",    "blank",       "yhanthlei", "blank",       "sanctum", "blank"],
-        ["blank",  "blank",     "lair_of_hydra", "yhanthlei", "lair_of_dagon", "blank", "blank"]
+        ["blank",      "blank",      "blank",      "gateway",    "blank",      "blank",      "blank"],
+        ["07324_back", "07321_back", "07321_back", "07321_back", "07321_back", "07321_back", "07324_back"],
+        ["blank",      "07324_back", "blank",      "07321_back", "blank",      "07324_back", "blank"],
+        ["blank",      "blank",      "07329_back", "07321_back", "07328_back", "blank",      "blank"]
       ],
       "location_names": [
         {
           "code": "gateway",
           "name": "Gateway to Y’ha-nthlei"
-        },
-        {
-          "code": "sanctum",
-          "name": "Y'ha-nthlei Sanctum"
-        },
-        {
-          "code": "yhanthlei",
-          "name": "Y’ha-nthlei"
-        },
-        {
-          "code": "lair_of_hydra",
-          "name": "Lair of Hydra"
-        },
-        {
-          "code": "lair_of_dagon",
-          "name": "Lair of Dagon"
         }
       ]
     },
@@ -86361,30 +86289,14 @@
       "horizontal": "normal",
       "vertical": "normal",
       "locations": [
-        ["blank",  "blank",     "blank",       "gateway",   "blank",       "blank",     "blank"],
-        ["sanctum", "yhanthlei", "yhanthlei",   "yhanthlei", "yhanthlei",   "yhanthlei", "sanctum"],
-        ["blank",  "sanctum",    "lair_of_hydra", "yhanthlei", "lair_of_dagon", "sanctum",    "blank"]
+        ["blank",      "blank",      "blank",      "gateway",    "blank",      "blank",      "blank"],
+        ["07324_back", "07321_back", "07321_back", "07321_back", "07321_back", "07321_back", "07324_back"],
+        ["blank",      "07324_back", "07329_back", "07321_back", "07328_back", "07324_back", "blank"]
       ],
       "location_names": [
         {
           "code": "gateway",
           "name": "Gateway to Y’ha-nthlei"
-        },
-        {
-          "code": "sanctum",
-          "name": "Y'ha-nthlei Sanctum"
-        },
-        {
-          "code": "yhanthlei",
-          "name": "Y’ha-nthlei"
-        },
-        {
-          "code": "lair_of_hydra",
-          "name": "Lair of Hydra"
-        },
-        {
-          "code": "lair_of_dagon",
-          "name": "Lair of Dagon"
         }
       ]
     },
@@ -86395,31 +86307,15 @@
       "horizontal": "normal",
       "vertical": "normal",
       "locations": [
-        ["blank",  "blank",       "gateway",   "blank",       "blank"],
-        ["sanctum", "yhanthlei",   "yhanthlei", "yhanthlei",   "sanctum"],
-        ["blank",  "sanctum",      "yhanthlei", "sanctum",      "blank"],
-        ["blank",  "lair_of_hydra", "yhanthlei", "lair_of_dagon", "blank"]
+        ["blank",      "blank",      "gateway",    "blank",      "blank"],
+        ["07324_back", "07321_back", "07321_back", "07321_back", "07324_back"],
+        ["blank",      "07324_back", "07321_back", "07324_back", "blank"],
+        ["blank",      "07329_back", "07321_back",  "07328_back", "blank"]
       ],
       "location_names": [
         {
           "code": "gateway",
           "name": "Gateway to Y’ha-nthlei"
-        },
-        {
-          "code": "sanctum",
-          "name": "Y'ha-nthlei Sanctum"
-        },
-        {
-          "code": "yhanthlei",
-          "name": "Y’ha-nthlei"
-        },
-        {
-          "code": "lair_of_hydra",
-          "name": "Lair of Hydra"
-        },
-        {
-          "code": "lair_of_dagon",
-          "name": "Lair of Dagon"
         }
       ]
     },
@@ -86430,30 +86326,14 @@
       "horizontal": "normal",
       "vertical": "normal",
       "locations": [
-        ["blank",  "blank",       "gateway",   "blank",     "blank"],
-        ["sanctum", "yhanthlei",   "yhanthlei", "yhanthlei", "sanctum"],
-        ["sanctum", "lair_of_hydra", "yhanthlei", "lair_of_dagon", "sanctum"]
+        ["blank",      "blank",      "gateway",    "blank",      "blank"],
+        ["07324_back", "07321_back", "07321_back", "07321_back", "07324_back"],
+        ["07324_back", "07329_back", "07321_back", "07328_back", "07324_back"]
       ],
       "location_names": [
         {
           "code": "gateway",
           "name": "Gateway to Y’ha-nthlei"
-        },
-        {
-          "code": "sanctum",
-          "name": "Y'ha-nthlei Sanctum"
-        },
-        {
-          "code": "yhanthlei",
-          "name": "Y’ha-nthlei"
-        },
-        {
-          "code": "lair_of_hydra",
-          "name": "Lair of Hydra"
-        },
-        {
-          "code": "lair_of_dagon",
-          "name": "Lair of Dagon"
         }
       ]
     },
@@ -87430,31 +87310,9 @@
       "horizontal": "normal",
       "vertical": "normal",
       "locations": [
-        ["blank", "third_floor_hall", "blank"],
-        ["second_floor_hall", "foul_corridors", "second_floor_hall"],
-        ["first_floor_hall", "grand_entryway", "first_floor_hall"]
-      ],
-      "location_names": [
-        {
-          "code": "second_floor_hall",
-          "name": "Second Floor Hall"
-        },
-        {
-          "code": "foul_corridors",
-          "name": "Foul Corridors"
-        },
-        {
-          "code": "first_floor_hall",
-          "name": "First Floor Hall"
-        },
-        {
-          "code": "grand_entryway",
-          "name": "Grand Entryway"
-        },
-        {
-          "code": "third_floor_hall",
-          "name": "Third Floor Hall"
-        }
+        ["blank", "07289_back", "blank"],
+        ["07287_back", "07286_back", "07287_back"],
+        ["07284_back", "07283_back", "07284_back"]
       ]
     },
     {
@@ -90546,7 +90404,7 @@
         "name": "Epilogue 1"
       },
       "type": "story",
-      "text": "The drive home to Arkham is quiet. After everything you have been through, you would have thought the quiet to be a pieceful reprieve… but you are alone with your thoughts-thoughts of Innsmouth, of Deep Ones, of enormous monsters dwelling in the depths beneath the waves. You find yourself checking your rearview mirror regularly, waiting to spot the headlights of pursuers who want you dead; the glowing, unblinking eyes of an aquatic horror in your back seat; or perhaps even the cold, dead glare of Thomas Dawson, mutated nearly beyond recognition. But you see nothing. Just an empty road.\nYou sigh and run through the events of the past few weeks once more. You believe you have a complete picture of what occurred, and yet you still feel like there is something missing. Another gap in your memories…"
+      "text": "The drive home to Arkham is quiet. After everything you have been through, you would have thought the quiet to be a peaceful reprieve… but you are alone with your thoughts-thoughts of Innsmouth, of Deep Ones, of enormous monsters dwelling in the depths beneath the waves. You find yourself checking your rearview mirror regularly, waiting to spot the headlights of pursuers who want you dead; the glowing, unblinking eyes of an aquatic horror in your back seat; or perhaps even the cold, dead glare of Thomas Dawson, mutated nearly beyond recognition. But you see nothing. Just an empty road.\nYou sigh and run through the events of the past few weeks once more. You believe you have a complete picture of what occurred, and yet you still feel like there is something missing. Another gap in your memories…"
     },
     {
       "id": "check_all_memories",

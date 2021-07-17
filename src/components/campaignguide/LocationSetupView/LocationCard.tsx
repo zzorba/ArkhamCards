@@ -53,7 +53,7 @@ function LocationCardImage({ code, back, name }: { code: string; back: boolean; 
   const image = back ? card.backimagesrc : card.imagesrc;
   if (!image) {
     return (
-      <TextCard name={card.name} />
+      <TextCard name={(back && card.back_name) || card.name} />
     );
   }
   return (
