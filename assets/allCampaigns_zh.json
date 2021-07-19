@@ -36111,7 +36111,7 @@
           {
             "id": "q6",
             "text": "<i>“…Why are you looking at me like that?”</i>",
-            "description": "You may ask this question because <i>the investigators survived the watcher's embrace</i>.",
+            "description": "You may only ask this question because <i>the investigators survived the watcher's embrace</i>.",
             "condition": {
               "type": "campaign_log",
               "section": "campaign_notes",
@@ -36247,7 +36247,7 @@
           {
             "id": "q6",
             "text": "<i>“…Why are you looking at me like that?”</i>",
-            "description": "You may ask this question because <i>the investigators survived the watcher's embrace</i>.",
+            "description": "You may only ask this question because <i>the investigators survived the watcher's embrace</i>.",
             "condition": {
               "type": "multi",
               "count": 2,
@@ -36401,7 +36401,7 @@
           {
             "id": "q6",
             "text": "<i>“…Why are you looking at me like that?”</i>",
-            "description": "You may ask this question because <i>the investigators survived the watcher's embrace</i>.",
+            "description": "You may only ask this question because <i>the investigators survived the watcher's embrace</i>.",
             "condition": {
               "type": "multi",
               "count": 2,
@@ -50893,7 +50893,6 @@
     "remove_misc_cards",
     "setup_locations",
     "location_layout",
-    "location_layout",
     "setup_cultist_deck",
     "setup_cultist_deck_alt",
     "setup_cultist_deck_alt_continued",
@@ -51387,6 +51386,10 @@
       "input": {
         "type": "choose_one",
         "choices": [
+          {
+            "id": "0_3",
+            "text": "0-3"
+          },
           {
             "id": "4_5",
             "text": "4–5",
@@ -65717,7 +65720,7 @@
           {
             "id": "q6",
             "text": "<i>“…Why are you looking at me like that?”</i>",
-            "description": "You may ask this question because <i>the investigators survived the watcher's embrace</i>.",
+            "description": "You may only ask this question because <i>the investigators survived the watcher's embrace</i>.",
             "condition": {
               "type": "campaign_log",
               "section": "campaign_notes",
@@ -65853,7 +65856,7 @@
           {
             "id": "q6",
             "text": "<i>“…Why are you looking at me like that?”</i>",
-            "description": "You may ask this question because <i>the investigators survived the watcher's embrace</i>.",
+            "description": "You may only ask this question because <i>the investigators survived the watcher's embrace</i>.",
             "condition": {
               "type": "multi",
               "count": 2,
@@ -66007,7 +66010,7 @@
           {
             "id": "q6",
             "text": "<i>“…Why are you looking at me like that?”</i>",
-            "description": "You may ask this question because <i>the investigators survived the watcher's embrace</i>.",
+            "description": "You may only ask this question because <i>the investigators survived the watcher's embrace</i>.",
             "condition": {
               "type": "multi",
               "count": 2,
