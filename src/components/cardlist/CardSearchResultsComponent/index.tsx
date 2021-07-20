@@ -11,7 +11,7 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import FilterBuilder, { FilterState } from '@lib/filters';
 import { MYTHOS_CARDS_QUERY, where, combineQueries, BASIC_QUERY, BROWSE_CARDS_QUERY, combineQueriesOpt, BROWSE_CARDS_WITH_DUPLICATES_QUERY, BASIC_WITH_DUPLICATES_QUERY } from '@data/sqlite/query';
-import Card from '@data/types/Card';
+import Card, { SEARCH_REGEX } from '@data/types/Card';
 import { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext from '@styles/StyleContext';
@@ -279,7 +279,7 @@ export default function({
     if (searchTerm === '' || !searchTerm) {
       return combineQueriesOpt(parts, 'and');
     }
-    const safeSearchTerm = `%${searchTerm.toLocaleLowerCase(lang)}%`;
+    const safeSearchTerm = `%${searchTerm.toLocaleLowerCase(lang).replace(SEARCH_REGEX, '')}%`;
     parts.push(where('c.s_search_name like :searchTerm', { searchTerm: safeSearchTerm }));
     if (searchBack) {
       parts.push(where([

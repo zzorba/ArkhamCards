@@ -18,7 +18,7 @@ import SocialBlock from './SocialBlock';
 import LanguagePicker from './LanguagePicker';
 import SettingsTabooPicker from './SettingsTabooPicker';
 import { fetchCards } from '@components/card/actions';
-import { setSingleCardView, setAlphabetizeEncounterSets, setColorblind, setJustifyContent } from './actions';
+import { setSingleCardView, setAlphabetizeEncounterSets, setColorblind, setJustifyContent, setSortQuotes } from './actions';
 import { prefetch } from '@lib/auth';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { AppState, getLangChoice, getPacksInCollection, getPackSpoilers, getAllPacks } from '@reducers';
@@ -67,6 +67,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
   const colorblind = useSelector((state: AppState) => state.settings.colorblind || false);
   const cardsLoading = useSelector((state: AppState) => state.cards.loading);
   const justifyContent = useSelector((state: AppState) => !!state.settings.justifyContent);
+  const sortIgnoreQuotes = useSelector((state: AppState) => !state.settings.sortRespectQuotes);
   const cardsError = useSelector((state: AppState) => state.cards.error || undefined);
   const { lang } = useContext(LanguageContext);
   const langChoice = useSelector(getLangChoice);
@@ -139,6 +140,10 @@ export default function SettingsView({ componentId }: NavigationProps) {
     dispatch(setColorblind(value));
   }, [dispatch]);
 
+  const sortQuotesChanged = useCallback((value: boolean) => {
+    dispatch(setSortQuotes(!value));
+  }, [dispatch]);
+
   const justifyContentChanged = useCallback((value: boolean) => {
     dispatch(setJustifyContent(value));
   }, [dispatch]);
@@ -199,6 +204,12 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 title={t`Color blind friendly icons`}
                 value={colorblind}
                 onValueChange={colorblindChanged}
+              />
+              <DeckCheckboxButton
+                icon="sort-by-alpha"
+                title={t`Sort ignores punctuation`}
+                value={sortIgnoreQuotes}
+                onValueChange={sortQuotesChanged}
               />
               <DeckCheckboxButton
                 icon="copy"

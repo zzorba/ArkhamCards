@@ -34,6 +34,9 @@ function RuleComponent({ componentId, rule, level }: { componentId: string; rule
             title: {
               text: rule.title,
             },
+            backButton: {
+              title: t`Back`,
+            },
           },
         },
       },
@@ -150,7 +153,7 @@ export default function RulesView({ componentId }: Props) {
           contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
           contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
           renderItem={renderItem}
-          onEndReachedThreshold={2}
+          onEndReachedThreshold={0.5}
           onEndReached={fetchMore}
           updateCellsBatchingPeriod={50}
           initialNumToRender={30}

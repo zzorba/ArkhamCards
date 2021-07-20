@@ -263,6 +263,7 @@ function useSectionFeed({
   deckCardCounts,
 }: SectionFeedProps): SectionFeed {
   const { db } = useContext(DatabaseContext);
+  const sortIgnoreQuotes = useSelector((state: AppState) => !state.settings.sortRespectQuotes);
   const packSpoiler = useSelector(getPackSpoilers);
   const [expandButtonPressed, setExpandButtonPressed] = useState(false);
   const packInCollection = useSelector(getPacksInCollection);
@@ -285,6 +286,7 @@ function useSectionFeed({
     } else {
       const searchTextQuery = textQuery;
       db.getPartialCards(
+        sortIgnoreQuotes,
         combineQueries(
           deckQuery,
           [
@@ -305,7 +307,7 @@ function useSectionFeed({
     return () => {
       ignore = true;
     };
-  }, [db, storyQuery, textQuery, filterQuery, deckQuery, tabooSetId, sort]);
+  }, [db, storyQuery, textQuery, filterQuery, deckQuery, sortIgnoreQuotes, tabooSetId, sort]);
   const partialCards = textQuery ? textQueryCards : mainQueryCards;
   const [showSpoilers, setShowSpoilers] = useState(false);
 
@@ -453,6 +455,7 @@ function useSectionFeed({
 
     // const start = new Date();
     db.getPartialCards(
+      sortIgnoreQuotes,
       combineQueries(query, filterQuery ? [filterQuery] : [], 'and'),
       tabooSetId,
       sort
@@ -467,7 +470,7 @@ function useSectionFeed({
       ignore = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, filterQuery, sort, tabooSetId, db]);
+  }, [query, filterQuery, sort, tabooSetId, sortIgnoreQuotes, db]);
 
   useDebouncedEffect(() => {
     if (textQuery) {
@@ -480,6 +483,7 @@ function useSectionFeed({
       // const start = new Date();
       const searchTextQuery = textQuery;
       db.getPartialCards(
+        sortIgnoreQuotes,
         combineQueries(query,
           [
             ...(filterQuery ? [filterQuery] : []),
@@ -500,7 +504,7 @@ function useSectionFeed({
       };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, filterQuery, textQuery, sort, tabooSetId], 200);
+  }, [query, filterQuery, textQuery, sort, tabooSetId, sortIgnoreQuotes], 200);
 
   const editSpoilerSettings = useCallback(() => {
     Keyboard.dismiss();

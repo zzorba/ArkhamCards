@@ -96,7 +96,7 @@ export default function(
     tiny: {
       fontFamily: 'Alegreya-Regular',
       fontSize: Math.ceil(12 * fontScale),
-      lineHeight: Math.ceil(14 * fontScale),
+      lineHeight: Math.ceil((lang === 'zh' ? 16 : 14) * fontScale),
       color: colors.darkText,
     },
     cardName: {
@@ -115,7 +115,7 @@ export default function(
     counter: {
       fontFamily: 'Alegreya-Medium',
       fontSize: Math.ceil(24 * fontScale),
-      lineHeight: Math.ceil(26 * fontScale),
+      lineHeight: Math.ceil((lang === 'zh' ? 28 : 26) * fontScale),
       color: colors.D10,
     },
     header: {
@@ -127,7 +127,7 @@ export default function(
     button: {
       fontFamily: 'Alegreya-Regular',
       fontSize: Math.ceil(18 * fontScale),
-      lineHeight: Math.ceil(20 * fontScale),
+      lineHeight: Math.ceil((lang === 'zh' ? 22 : 20) * fontScale),
       color: colors.L30,
     },
     subHeaderText: {

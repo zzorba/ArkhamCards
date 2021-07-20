@@ -4684,6 +4684,9 @@ msgstr ""
 msgid "Fan-made campaign by ${ author }"
 msgstr ""
 
+msgid "Sort ignores punctuation"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } est devenu <b>dément</b>."

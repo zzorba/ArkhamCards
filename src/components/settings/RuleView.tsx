@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { map } from 'lodash';
+import { map, sortBy } from 'lodash';
 import { ScrollView, View } from 'react-native';
 import { Table, Row, Cell } from 'react-native-table-component';
 
@@ -50,7 +50,7 @@ function RuleComponent({ componentId, rule, level, noTitle }: { componentId: str
     (url: string, context: StyleContextType) => {
       openUrl(url, context, db, componentId, tabooSetId);
     }, [componentId, db, tabooSetId]);
-
+  const rules = useMemo(() => sortBy(rule.rules || [], rule => rule.order || 0), [rule.rules]);
   return (
     <>
       <View style={{ paddingLeft: m, paddingRight: m, paddingBottom: m }}>
@@ -58,7 +58,7 @@ function RuleComponent({ componentId, rule, level, noTitle }: { componentId: str
         { !!rule.text && <CardTextComponent text={rule.text} onLinkPress={linkPressed} />}
         { !!rule.table && <RuleTable table={rule.table} /> }
       </View>
-      { map(rule.rules || [], (rule, idx) => <RuleComponent key={idx} componentId={componentId} rule={rule} level={level + 1} />) }
+      { map(rules, (rule, idx) => <RuleComponent key={idx} componentId={componentId} rule={rule} level={level + 1} />) }
     </>
   );
 }

@@ -208,6 +208,7 @@ export default class Database {
   }
 
   async getPartialCards(
+    sortIgnoreQuotes: boolean,
     query?: Brackets,
     tabooSetId?: number,
     sort?: SortType,
@@ -220,7 +221,7 @@ export default class Database {
     if (query) {
       cardsQuery = cardsQuery.andWhere(query);
     }
-    const sortQuery = Card.querySort(sort);
+    const sortQuery = Card.querySort(sortIgnoreQuotes, sort);
     if (sortQuery.length) {
       const orderBy: OrderByCondition = {};
       forEach(sortQuery, ({ s, direction }) => {

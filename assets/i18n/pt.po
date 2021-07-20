@@ -4584,6 +4584,9 @@ msgstr ""
 msgid "Fan-made campaign by ${ author }"
 msgstr ""
 
+msgid "Sort ignores punctuation"
+msgstr ""
+
 msgctxt "masculine"
 msgid "Alive"
 msgstr "Vivo"

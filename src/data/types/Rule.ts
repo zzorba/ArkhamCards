@@ -58,8 +58,8 @@ export default class Rule {
       });
       return tableRow;
     }) : undefined;
-    result.rules = rule.rules ? map(rule.rules, jsonSubRule => {
-      const subRule = Rule.parse(lang, jsonSubRule);
+    result.rules = rule.rules ? map(rule.rules, (jsonSubRule, idx) => {
+      const subRule = Rule.parse(lang, jsonSubRule, (order ? (order * 1000) : 0) +  idx);
       subRule.parentRule = result;
       return subRule;
     }) : undefined;
