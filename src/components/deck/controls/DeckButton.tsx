@@ -11,6 +11,7 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 
 export type DeckButtonIcon =
+  'headset' |
   'discord' |
   'vk' |
   'telegram' |
@@ -105,7 +106,7 @@ const ICON_STYLE: { [icon: string]: ViewStyle | undefined } = {
   },
 };
 
-const MATERIAL_ICONS = new Set(['email', 'delete', 'login', 'backup']);
+const MATERIAL_ICONS = new Set(['email', 'delete', 'login', 'backup', 'headset']);
 const ARKHAM_ICONS = new Set(['per_investigator', 'faq', 'elder_sign', 'weakness']);
 const ENCOUNTER_ICONS = new Set(['tdea', 'tdeb']);
 export default function DeckButton({

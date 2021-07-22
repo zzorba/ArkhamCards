@@ -23,6 +23,10 @@ function telegramPressed() {
   Linking.openURL('https://t.me/Arkham_Cardgame');
 }
 
+function tipPressed() {
+  Linking.openURL('https://www.tinkoff.ru/sl/6EktRkjsRap');
+}
+
 export default function SocialBlock() {
   const { typography } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
@@ -37,8 +41,16 @@ export default function SocialBlock() {
           Общайтесь с другими поклонниками карточного «Ужаса Аркхэма» в русскоязычных сообществах:
         </Text>
         <DeckButton
-          icon="discord"
+          icon="headset"
+          color="gold"
+          onPress={tipPressed}
+          title="Донат на аудио"
+          detail="Поддержать авторов аудиосопровождения"
           topMargin={s}
+          bottomMargin={s}
+        />
+        <DeckButton
+          icon="discord"
           bottomMargin={s}
           onPress={discordPressed}
           title={t`Discord`}
