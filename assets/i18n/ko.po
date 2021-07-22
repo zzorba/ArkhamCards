@@ -4122,7 +4122,7 @@ msgid "Exile story cards"
 msgstr "이야기 카드 추방"
 
 msgid "Fan-made scenario by ${ custom.creator }"
-msgstr "${ custom.creator }의 팬메이드 시나리오"
+msgstr "팬메이드 시나리오 (제작자: ${ custom.creator })"
 
 msgid ""
 "If you are a custom content creator who has a \"finished\" campaign you'd "
@@ -4441,7 +4441,7 @@ msgid "Fan-made campaign by ${ author }"
 msgstr "팬메이드 캠페인 (제작자: ${ author })"
 
 msgid "Sort ignores punctuation"
-msgstr ""
+msgstr "정렬하기 (구두점 무시)"
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
