@@ -570,7 +570,7 @@ export interface SetTabooSetAction {
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
 export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
-  setting: 'single_card' | 'alphabetize' | 'colorblind' | 'justify';
+  setting: 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes';
   value: boolean;
 }
 

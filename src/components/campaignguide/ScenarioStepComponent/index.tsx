@@ -47,7 +47,11 @@ function ScenarioStepComponentContent({
 }: Props) {
   const { campaignGuide, campaignId } = useContext(CampaignGuideContext);
   if (!step.type) {
-    return <GenericStepComponent step={step} />;
+    return (
+      <NarrationStepComponent narration={step.narration}>
+        <GenericStepComponent step={step} />
+      </NarrationStepComponent>
+    );
   }
   switch (step.type) {
     case 'table':

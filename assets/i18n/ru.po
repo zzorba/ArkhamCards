@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2021-07-12 23:20+0300\n"
+"PO-Revision-Date: 2021-07-17 13:22+0300\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2359,7 +2359,7 @@ msgid "The Wages of Sin"
 msgstr "Расплата за грехи"
 
 msgid "For the Greater Good"
-msgstr "Во имя высшего блага"
+msgstr "Ради высшего блага"
 
 msgid "The Inner Circle"
 msgstr "Внутренний круг"
@@ -4650,6 +4650,9 @@ msgstr ""
 
 #, javascript-format
 msgid "Fan-made campaign by ${ author }"
+msgstr ""
+
+msgid "Sort ignores punctuation"
 msgstr ""
 
 msgctxt "masculine"

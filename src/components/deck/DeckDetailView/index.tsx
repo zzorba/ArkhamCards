@@ -50,6 +50,9 @@ import DeckProblemBanner from '../DeckProblemBanner';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useCampaign } from '@data/hooks';
 import { useDeckActions } from '@data/remote/decks';
+import TabooSet from '@data/types/TabooSet';
+import { format } from 'date-fns';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -65,6 +68,17 @@ type Props = NavigationProps &
   LoginStateProps;
 type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
+function formatTabooStart(date_start: string | undefined, locale: string) {
+  if (!date_start) {
+    return '';
+  }
+  const date = new Date(Date.parse(date_start));
+  if (locale === 'fr') {
+    return format(date, 'dd/MM/yyyy');
+  }
+  return format(date, 'yyyy/MM/dd');
+}
+
 function DeckDetailView({
   componentId,
   id,
@@ -76,6 +90,7 @@ function DeckDetailView({
   login,
   initialMode,
 }: Props) {
+  const { lang } = useContext(LanguageContext);
   const { backgroundStyle, colors, darkMode, typography, shadow, width } = useContext(StyleContext);
   const deckActions = useDeckActions();
   const campaign = useCampaign(campaignId);
@@ -750,7 +765,7 @@ function DeckDetailView({
               title={t`Taboo`}
               onPress={showTabooPicker}
               icon="taboo_thin"
-              description={tabooSet ? tabooSet.date_start : t`None`}
+              description={tabooSet ? formatTabooStart(tabooSet.date_start, lang) : t`None`}
             />
           </>
         ) }
@@ -871,7 +886,7 @@ function DeckDetailView({
         ) }
       </ScrollView>
     );
-  }, [backgroundStyle, onAddCardsPressed, editable, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
+  }, [backgroundStyle, lang, onAddCardsPressed, editable, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
     showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB, showDescription,
     onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditNameDialog, showXpAdjustmentDialog, showTabooPicker,
     onEditSpecialPressed, onChecklistPressed,

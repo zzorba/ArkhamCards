@@ -103,9 +103,7 @@ function getNarrationQueue(processedScenario: ProcessedScenario, scenarioState: 
         }
         break;
       }
-      case 'story':
-      case 'branch':
-      case 'input': {
+      default: {
         const narration = scenarioStep.step.narration;
         if (narration && hasNarrationAccess(narration, narrationLang)) {
           queue.push({

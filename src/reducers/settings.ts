@@ -24,6 +24,7 @@ interface SettingsState {
   theme?: 'dark' | 'light';
   fontScale?: number;
   justifyContent?: boolean;
+  sortRespectQuotes?: boolean;
 
   version?: number;
 }
@@ -37,6 +38,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   lang: 'system',
   fontScale: undefined,
   justifyContent: false,
+  sortRespectQuotes: false,
   version: CURRENT_REDUX_VERSION,
 };
 
@@ -97,6 +99,11 @@ export default function(
           return {
             ...state,
             justifyContent: action.value,
+          };
+        case 'sort_quotes':
+          return {
+            ...state,
+            sortRespectQuotes: action.value,
           };
       }
       return state;

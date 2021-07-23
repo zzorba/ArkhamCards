@@ -97,8 +97,15 @@ export function toRelativeDateString(date: Date | string, locale: string) {
       default: return t`Updated ${dayOfWeek}`;
     }
   }
-  const dateString = format(date, locale === 'fr' ? 'iiii d MMMM yyyy' : 'MMMM d, yyyy', LOCALE_MAP[locale]);
+  const dateString = localizedDate(date, locale);
   return t`Updated ${dateString}`;
+}
+
+export function localizedDate(date: Date, locale: string, noDayOfWeek: boolean = false) {
+  if (noDayOfWeek) {
+    return format(date, locale === 'fr' ? 'd MMMM yyyy' : 'MMMM d, yyyy', LOCALE_MAP[locale]);
+  }
+  return format(date, !noDayOfWeek && locale === 'fr' ? 'iiii d MMMM yyyy' : 'MMMM d, yyyy', LOCALE_MAP[locale]);
 }
 
 /**

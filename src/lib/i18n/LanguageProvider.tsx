@@ -48,11 +48,12 @@ export default function LanguageProvider({ children }: Props) {
   const langChoice = useSelector(getLangChoice);
   const lang = langChoice === 'system' ? systemLang : langChoice;
   const context = useMemo(() => {
+    const majorVersionIOS = Platform.OS === 'ios' ? parseInt(Platform.Version, 10) : 0;
     return {
       lang,
       useCardTraits: !LOCALIZED_CARD_TRAITS.has(lang),
       listSeperator: getListSeperator(lang),
-      usePingFang: (lang === 'zh' && Platform.OS === 'ios'),
+      usePingFang: (lang === 'zh' && Platform.OS === 'ios' && majorVersionIOS >= 13),
     };
   }, [lang]);
   return (

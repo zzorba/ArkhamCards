@@ -306,6 +306,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: 
         },
         link: {
           color: context.colors.navButton,
+          textDecorationLine: 'underline',
         },
         tableHeaderCell: {
           minHeight: 40,

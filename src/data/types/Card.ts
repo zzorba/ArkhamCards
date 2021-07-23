@@ -14,7 +14,7 @@ const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+(\\s\\[per_investigator\\])?\\
 const BONDED_REGEX = new RegExp('.*Bonded\\s*\\((.+?)\\)\\..*');
 const SEAL_REGEX = new RegExp('.*Seal \\(.+\\)\\..*');
 const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror');
-
+export const SEARCH_REGEX = /["“”‹›‘’«»〞〝〟＂❛❜❝❞❮❯\(\)'\-\.]/g;
 
 function arkham_num(value: number | null | undefined) {
   if (value === null || value === undefined) {
@@ -1092,25 +1092,25 @@ export default class Card {
       json.code === '98010' || // Carolyn
       json.code === '98013' || // Silas
       json.code === '98016' || // Dexter
-      // json.code === '98007' || // Norman
+      json.code === '98007' || // Norman
       json.code === '99001'; // PROMO Marie
 
     const s_search_name = filter([
       renderName && renderName.toLocaleLowerCase(lang),
       renderSubname && renderSubname.toLocaleLowerCase(lang),
-    ], x => !!x).join(' ');
+    ], x => !!x).join(' ').replace(SEARCH_REGEX, '');
     const s_search_name_back = filter([
       name && name.toLocaleLowerCase(lang),
       json.subname && json.subname.toLocaleLowerCase(lang),
       json.back_name && json.back_name.toLocaleLowerCase(lang),
-    ], x => !!x).join(' ');
+    ], x => !!x).join(' ').replace(SEARCH_REGEX, '');
     const s_search_game = filter([
       json.text && json.text.toLocaleLowerCase(lang),
       json.traits && json.traits.toLocaleLowerCase(lang),
-    ]).join(' ');
-    const s_search_game_back = (json.back_text && json.back_text.toLocaleLowerCase(lang)) || '';
-    const s_search_flavor = (json.flavor && json.flavor.toLocaleLowerCase(lang)) || '';
-    const s_search_flavor_back = (json.back_flavor && json.back_flavor.toLocaleLowerCase(lang)) || '';
+    ]).join(' ').replace(SEARCH_REGEX, '');
+    const s_search_game_back = ((json.back_text && json.back_text.toLocaleLowerCase(lang)) || '').replace(SEARCH_REGEX, '');
+    const s_search_flavor = ((json.flavor && json.flavor.toLocaleLowerCase(lang)) || '').replace(SEARCH_REGEX, '');
+    const s_search_flavor_back = ((json.back_flavor && json.back_flavor.toLocaleLowerCase(lang)) || '').replace(SEARCH_REGEX, '');
     let result = {
       ...json,
       ...eskills,
@@ -1245,12 +1245,12 @@ export default class Card {
     return result;
   }
 
-  static querySort(sort?: SortType): QuerySort[] {
+  static querySort(sortIgnoreQuotes: boolean, sort?: SortType): QuerySort[] {
     switch(sort) {
       case SORT_BY_FACTION:
         return [
           { s: 'c.sort_by_faction', direction: 'ASC' },
-          { s: 'c.renderName', direction: 'ASC' },
+          { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
           { s: 'c.xp', direction: 'ASC' },
         ];
       case SORT_BY_FACTION_PACK:
@@ -1261,13 +1261,13 @@ export default class Card {
       case SORT_BY_FACTION_XP:
         return [
           { s: 'c.sort_by_faction_xp', direction: 'ASC' },
-          { s: 'c.renderName', direction: 'ASC' },
+          { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
           { s: 'c.code', direction: 'ASC' },
         ];
       case SORT_BY_COST:
         return [
           { s: 'c.cost', direction: 'ASC' },
-          { s: 'c.renderName', direction: 'ASC' },
+          { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
           { s: 'c.xp', direction: 'ASC' },
         ];
       case SORT_BY_PACK:
@@ -1283,14 +1283,14 @@ export default class Card {
         ];
       case SORT_BY_TITLE:
         return [
-          { s: 'c.renderName', direction: 'ASC' },
+          { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
           { s: 'c.xp', direction: 'ASC' },
         ];
       case SORT_BY_TYPE:
       default:
         return [
           { s: 'c.sort_by_type', direction: 'ASC' },
-          { s: 'c.renderName', direction: 'ASC' },
+          { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
           { s: 'c.xp', direction: 'ASC' },
         ];
     }

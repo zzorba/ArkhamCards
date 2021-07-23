@@ -4376,6 +4376,9 @@ msgstr "Traces of Egil"
 msgid "Fan-made campaign by ${ author }"
 msgstr "${ author }製作的非官方劇本"
 
+msgid "Sort ignores punctuation"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name }已<b>發瘋</b>。"

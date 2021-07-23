@@ -7,39 +7,39 @@
         "entries": [
           {
             "id": "arkham_succumbed",
-            "text": "우몰도스의 끔찍한 복수에 아컴이 무릎을 꿇다."
+            "text": "우몰도스의 끔찍한 복수에 아컴이 무릎을 꿇다"
           },
           {
             "id": "ghoul_priest_alive",
-            "text": "‘구울 사제’가 여전히 살아 있다."
+            "text": "‘구울 사제’가 여전히 살아 있다"
           },
           {
             "id": "house_burned",
-            "text": "당신의 집이 불타버렸다."
+            "text": "당신의 집이 불타버렸다"
           },
           {
             "id": "house_standing",
-            "text": "당신의 집이 여전히 남아 있다."
+            "text": "당신의 집이 여전히 남아 있다"
           },
           {
             "id": "lita_finds_others",
-            "text": "리타는 어쩔 수 없이 다른 사람에게 도움을 요청했다."
+            "text": "리타는 어쩔 수 없이 다른 사람에게 도움을 요청했다"
           },
           {
             "id": "lita_sacrificed",
-            "text": "조사자가 리타 챈들러를 우몰도스에게 희생시켰다."
+            "text": "조사자가 리타 챈들러를 우몰도스에게 희생시켰다"
           },
           {
             "id": "past_midnight",
-            "text": "자정이 지났다."
+            "text": "자정이 지났다"
           },
           {
             "id": "ritual_broken",
-            "text": "우몰도스를 소환하는 의식을 분쇄하다."
+            "text": "우몰도스를 소환하는 의식을 분쇄하다"
           },
           {
             "id": "umordhoth_repelled",
-            "text": "조사자들이 우몰도스를 격퇴하다."
+            "text": "조사자들이 우몰도스를 격퇴하다"
           }
         ]
       },
@@ -72,143 +72,143 @@
         "entries": [
           {
             "id": "banished_silas_bishop",
-            "text": "조사자들이 사일러스 비숍을 소멸시켰다."
+            "text": "조사자들이 사일러스 비숍을 소멸시켰다"
           },
           {
             "id": "bone_to_pick",
-            "text": "오베니언 갱이 조사자들에게 앙심을 품었다."
+            "text": "오베니언 갱이 조사자들에게 앙심을 품었다"
           },
           {
             "id": "brood_escaped",
-            "text": "요그 소토스의 새끼 #X#마리가 험지로 탈출했다."
+            "text": "요그 소토스의 새끼 #X#마리가 험지로 탈출했다"
           },
           {
             "id": "calmed_townsfolk",
-            "text": "마을 주민들을 진정시켰다."
+            "text": "마을 주민들을 진정시켰다"
           },
           {
             "id": "closed_tear",
-            "text": "조사자들이 현실에 생긴 균열을 닫았다."
+            "text": "조사자들이 현실에 생긴 균열을 닫았다"
           },
           {
             "id": "destroyed_necronomicon",
-            "text": "조사자들이 네크로노미콘을 파괴했다."
+            "text": "조사자들이 네크로노미콘을 파괴했다"
           },
           {
             "id": "earl_sawyer_survived",
-            "text": "얼 소여가 던위치의 유산에서 살아남았다."
+            "text": "얼 소여가 던위치의 유산에서 살아남았다"
           },
           {
             "id": "entered_the_gate",
-            "text": "조사자들이 차원문으로 들어갔다."
+            "text": "조사자들이 차원문으로 들어갔다"
           },
           {
             "id": "experiment_defeated",
-            "text": "실험체를 쓰러뜨렸다."
+            "text": "실험체를 쓰러뜨렸다"
           },
           {
             "id": "failed_to_recover_necronomicon",
-            "text": "조사자들이 네크로노미콘을 회수하지 못했다."
+            "text": "조사자들이 네크로노미콘을 회수하지 못했다"
           },
           {
             "id": "failed_to_save_students",
-            "text": "조사자들이 학생들을 구하지 못했다."
+            "text": "조사자들이 학생들을 구하지 못했다"
           },
           {
             "id": "francis_morgan_kidnapped",
-            "text": "‘프랜시스 모건 박사’는 납치되었다."
+            "text": "‘프랜시스 모건 박사’는 납치되었다"
           },
           {
             "id": "francis_morgan_rescued",
-            "text": "조사자들이 프랜시스 모건 박사를 구출했다."
+            "text": "조사자들이 프랜시스 모건 박사를 구출했다"
           },
           {
             "id": "francis_morgan_survived",
-            "text": "프랜시스 모건 박사가 던위치의 유산에서 살아남았다."
+            "text": "프랜시스 모건 박사가 던위치의 유산에서 살아남았다"
           },
           {
             "id": "henry_armitage_kidnapped",
-            "text": "헨리 아미티지 박사가 납치되었다."
+            "text": "헨리 아미티지 박사가 납치되었다"
           },
           {
             "id": "henry_armitage_rescued",
-            "text": "조사자들이 헨리 아미티지 박사를 구출했다."
+            "text": "조사자들이 헨리 아미티지 박사를 구출했다"
           },
           {
             "id": "henry_armitage_survived",
-            "text": "헨리 아미티지 박사가 던위치의 유산에서 살아남았다."
+            "text": "헨리 아미티지 박사가 던위치의 유산에서 살아남았다"
           },
           {
             "id": "investigators_delayed",
-            "text": "조사자들이 던위치에 예정보다 늦게 도착했다."
+            "text": "조사자들이 던위치에 예정보다 늦게 도착했다"
           },
           {
             "id": "killed_silas_bishop",
-            "text": "조사자들이 사일러스 비숍의 비극적인 삶을 끝내주었다."
+            "text": "조사자들이 사일러스 비숍의 비극적인 삶을 끝내주었다"
           },
           {
             "id": "naomi_has_back",
-            "text": "나오미가 조사자들의 뒤를 맡았다."
+            "text": "나오미가 조사자들의 뒤를 맡았다"
           },
           {
             "id": "necronomicon_stolen",
-            "text": "네크로노미콘을 도난당했다."
+            "text": "네크로노미콘을 도난당했다"
           },
           {
             "id": "no_brood_escaped",
-            "text": "요그 소토스의 새끼가 한 마리도 험지로 달아나지 못했다."
+            "text": "요그 소토스의 새끼가 한 마리도 험지로 달아나지 못했다"
           },
           {
             "id": "restored_silas_bishop",
-            "text": "조사자들이 사일러스 비숍을 본모습으로 회복시켰다."
+            "text": "조사자들이 사일러스 비숍을 본모습으로 회복시켰다"
           },
           {
             "id": "ritual_completed",
-            "text": "의식이 완전히 거행되었다."
+            "text": "의식이 완전히 거행되었다"
           },
           {
             "id": "students_rescued",
-            "text": "학생들을 구해냈다."
+            "text": "학생들을 구해냈다"
           },
           {
             "id": "took_necronomicon",
-            "text": "조사자들이 네크로노미콘을 보관했다."
+            "text": "조사자들이 네크로노미콘을 보관했다"
           },
           {
             "id": "unconscious_for_several_hours",
-            "text": "조사자들이 몇 시간 동안 의식을 잃었다."
+            "text": "조사자들이 몇 시간 동안 의식을 잃었다"
           },
           {
             "id": "warned_townsfolk",
-            "text": "마을 주민들에게 경고했다."
+            "text": "마을 주민들에게 경고했다"
           },
           {
             "id": "warren_rice_kidnapped",
-            "text": "‘워렌 라이스 박사’는 납치되었다."
+            "text": "‘워렌 라이스 박사’는 납치되었다"
           },
           {
             "id": "warren_rice_rescued",
-            "text": "조사자들이 워렌 라이스 교수를 구출했다."
+            "text": "조사자들이 워렌 라이스 교수를 구출했다"
           },
           {
             "id": "warren_rice_survived",
-            "text": "워렌 라이스 교수가 던위치의 유산에서 살아남았다."
+            "text": "워렌 라이스 교수가 던위치의 유산에서 살아남았다"
           },
           {
             "id": "yog_sothoth_became_one_with_reality",
-            "text": "요그 소토스가 세계 사이의 장막을 찢고 나와 모든 현실과 하나가 되었다."
+            "text": "요그 소토스가 세계 사이의 장막을 찢고 나와 모든 현실과 하나가 되었다"
           },
           {
             "id": "yog_sothoth_escaped",
-            "text": "요그 소토스가 세계 사이의 장막을 찢고 나와 모든 현실과 하나가 되었다."
+            "text": "요그 소토스가 세계 사이의 장막을 찢고 나와 모든 현실과 하나가 되었다"
           },
           {
             "id": "yog_sothoth_fled",
-            "text": "요그 소토스가 다른 차원으로 달아났다."
+            "text": "요그 소토스가 다른 차원으로 달아났다"
           },
           {
             "id": "zebulon_whateley_survived",
-            "text": "지블런 웨이틀리가 던위치의 유산에서 살아남았다."
+            "text": "지블런 웨이틀리가 던위치의 유산에서 살아남았다"
           }
         ]
       },
@@ -246,8 +246,8 @@
           },
           {
             "id": "possessed",
-            "masculine_text": "#name# 조사자는 꼭두각시로 전락했다.",
-            "feminine_text": "#name# 조사자는 꼭두각시로 전락했다."
+            "masculine_text": "#name# 조사자는 꼭두각시로 전락했다",
+            "feminine_text": "#name# 조사자는 꼭두각시로 전락했다"
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -255,111 +255,111 @@
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "정신을 차려보니 카타콤 안이었다."
+            "text": "정신을 차려보니 카타콤 안이었다"
           },
           {
             "id": "carcosa_merged",
-            "text": "카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다."
+            "text": "카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다"
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "당신이 경찰에게 알리지 않았다."
+            "text": "당신이 경찰에게 알리지 않았다"
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "맹세를 입에 담은 자를 쓰러뜨렸다."
+            "text": "맹세를 입에 담은 자를 쓰러뜨렸다"
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "망령의 응시에서 벗어나지 못했다."
+            "text": "망령의 응시에서 벗어나지 못했다"
           },
           {
             "id": "entered_catacombs",
-            "text": "제 발로 카타콤에 들어갔다."
+            "text": "제 발로 카타콤에 들어갔다"
           },
           {
             "id": "escaped_the_asylum",
-            "text": "조사자들이 정신병원에서 탈출했다."
+            "text": "조사자들이 정신병원에서 탈출했다"
           },
           {
             "id": "fled_dinner_party",
-            "text": "만찬회에서 달아났다."
+            "text": "만찬회에서 달아났다"
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "황색 표식의 추종자들이 나아갈 길을 찾았다."
+            "text": "황색 표식의 추종자들이 나아갈 길을 찾았다"
           },
           {
             "id": "found_nigel_engram",
-            "text": "나이젤 잉그램을 찾았다."
+            "text": "나이젤 잉그램을 찾았다"
           },
           {
             "id": "found_nigels_home",
-            "text": "나이젤의 집을 찾았다."
+            "text": "나이젤의 집을 찾았다"
           },
           {
             "id": "hastur_has_you",
-            "text": "하스터가 당신을 사로잡았다."
+            "text": "하스터가 당신을 사로잡았다"
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "대니얼의 경고를 받아들인다."
+            "text": "대니얼의 경고를 받아들였다"
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "대니얼의 경고를 무시한다."
+            "text": "대니얼의 경고를 무시했다"
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "당신이 밀회에 침범했다."
+            "text": "당신이 밀회에 침범했다"
           },
           {
             "id": "king_claimed_victims",
-            "text": "왕이 희생양을 거두었다."
+            "text": "왕이 희생양을 거두었다"
           },
           {
             "id": "know_site_of_gate",
-            "text": "관문이 있는 곳을 알아냈다."
+            "text": "관문이 있는 곳을 알아냈다"
           },
           {
             "id": "left_onyx_clasp",
-            "text": "오닉스 장식 고리를 두고 나왔다."
+            "text": "오닉스 장식 고리를 두고 나왔다"
           },
           {
             "id": "opened_path_above",
-            "text": "위의 길을 열었다."
+            "text": "위의 길을 열었다"
           },
           {
             "id": "opened_path_below",
-            "text": "아래의 길을 열었다."
+            "text": "아래의 길을 열었다"
           },
           {
             "id": "police_are_suspicious",
-            "text": "경찰이 당신을 의심한다."
+            "text": "경찰이 당신을 의심한다"
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "조사자들은 하스터가 감옥에서 탈출하지 못하도록 막았다."
+            "text": "조사자들은 하스터가 감옥에서 탈출하지 못하도록 막았다"
           },
           {
             "id": "slayed_the_monsters",
-            "text": "당신이 만찬회의 괴물을 모조리 죽였다."
+            "text": "당신이 만찬회의 괴물을 모조리 죽였다"
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "이방인이 당신을 눈여겨 본다."
+            "text": "이방인이 당신을 눈여겨 본다"
           },
           {
             "id": "took_onyx_clasp",
-            "text": "오닉스 장식 고리를 챙겼다."
+            "text": "오닉스 장식 고리를 챙겼다"
           },
           {
             "id": "tried_to_warn_police",
-            "text": "당신이 경찰에게 경고하려 했다."
+            "text": "당신이 경찰에게 경고하려 했다"
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "나이젤을 찾지 못했다."
+            "text": "나이젤을 찾지 못했다"
           }
         ]
       },
@@ -376,7 +376,7 @@
           },
           {
             "id": "possessed",
-            "text": "조사자가 한 명이라도 꼭두각시로 전락했다."
+            "text": "조사자가 한 명이라도 꼭두각시로 전락했다"
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -433,143 +433,143 @@
         "entries": [
           {
             "id": "banished_silas_bishop",
-            "text": "조사자들이 사일러스 비숍을 소멸시켰다."
+            "text": "조사자들이 사일러스 비숍을 소멸시켰다"
           },
           {
             "id": "bone_to_pick",
-            "text": "오베니언 갱이 조사자들에게 앙심을 품었다."
+            "text": "오베니언 갱이 조사자들에게 앙심을 품었다"
           },
           {
             "id": "brood_escaped",
-            "text": "요그 소토스의 새끼 #X#마리가 험지로 탈출했다."
+            "text": "요그 소토스의 새끼 #X#마리가 험지로 탈출했다"
           },
           {
             "id": "calmed_townsfolk",
-            "text": "마을 주민들을 진정시켰다."
+            "text": "마을 주민들을 진정시켰다"
           },
           {
             "id": "closed_tear",
-            "text": "조사자들이 현실에 생긴 균열을 닫았다."
+            "text": "조사자들이 현실에 생긴 균열을 닫았다"
           },
           {
             "id": "destroyed_necronomicon",
-            "text": "조사자들이 네크로노미콘을 파괴했다."
+            "text": "조사자들이 네크로노미콘을 파괴했다"
           },
           {
             "id": "earl_sawyer_survived",
-            "text": "얼 소여가 던위치의 유산에서 살아남았다."
+            "text": "얼 소여가 던위치의 유산에서 살아남았다"
           },
           {
             "id": "entered_the_gate",
-            "text": "조사자들이 차원문으로 들어갔다."
+            "text": "조사자들이 차원문으로 들어갔다"
           },
           {
             "id": "experiment_defeated",
-            "text": "실험체를 쓰러뜨렸다."
+            "text": "실험체를 쓰러뜨렸다"
           },
           {
             "id": "failed_to_recover_necronomicon",
-            "text": "조사자들이 네크로노미콘을 회수하지 못했다."
+            "text": "조사자들이 네크로노미콘을 회수하지 못했다"
           },
           {
             "id": "failed_to_save_students",
-            "text": "조사자들이 학생들을 구하지 못했다."
+            "text": "조사자들이 학생들을 구하지 못했다"
           },
           {
             "id": "francis_morgan_kidnapped",
-            "text": "‘프랜시스 모건 박사’는 납치되었다."
+            "text": "‘프랜시스 모건 박사’는 납치되었다"
           },
           {
             "id": "francis_morgan_rescued",
-            "text": "조사자들이 프랜시스 모건 박사를 구출했다."
+            "text": "조사자들이 프랜시스 모건 박사를 구출했다"
           },
           {
             "id": "francis_morgan_survived",
-            "text": "프랜시스 모건 박사가 던위치의 유산에서 살아남았다."
+            "text": "프랜시스 모건 박사가 던위치의 유산에서 살아남았다"
           },
           {
             "id": "henry_armitage_kidnapped",
-            "text": "헨리 아미티지 박사가 납치되었다."
+            "text": "헨리 아미티지 박사가 납치되었다"
           },
           {
             "id": "henry_armitage_rescued",
-            "text": "조사자들이 헨리 아미티지 박사를 구출했다."
+            "text": "조사자들이 헨리 아미티지 박사를 구출했다"
           },
           {
             "id": "henry_armitage_survived",
-            "text": "헨리 아미티지 박사가 던위치의 유산에서 살아남았다."
+            "text": "헨리 아미티지 박사가 던위치의 유산에서 살아남았다"
           },
           {
             "id": "investigators_delayed",
-            "text": "조사자들이 던위치에 예정보다 늦게 도착했다."
+            "text": "조사자들이 던위치에 예정보다 늦게 도착했다"
           },
           {
             "id": "killed_silas_bishop",
-            "text": "조사자들이 사일러스 비숍의 비극적인 삶을 끝내주었다."
+            "text": "조사자들이 사일러스 비숍의 비극적인 삶을 끝내주었다"
           },
           {
             "id": "naomi_has_back",
-            "text": "나오미가 조사자들의 뒤를 맡았다."
+            "text": "나오미가 조사자들의 뒤를 맡았다"
           },
           {
             "id": "necronomicon_stolen",
-            "text": "네크로노미콘을 도난당했다."
+            "text": "네크로노미콘을 도난당했다"
           },
           {
             "id": "no_brood_escaped",
-            "text": "요그 소토스의 새끼가 한 마리도 험지로 달아나지 못했다."
+            "text": "요그 소토스의 새끼가 한 마리도 험지로 달아나지 못했다"
           },
           {
             "id": "restored_silas_bishop",
-            "text": "조사자들이 사일러스 비숍을 본모습으로 회복시켰다."
+            "text": "조사자들이 사일러스 비숍을 본모습으로 회복시켰다"
           },
           {
             "id": "ritual_completed",
-            "text": "의식이 완전히 거행되었다."
+            "text": "의식이 완전히 거행되었다"
           },
           {
             "id": "students_rescued",
-            "text": "학생들을 구해냈다."
+            "text": "학생들을 구해냈다"
           },
           {
             "id": "took_necronomicon",
-            "text": "조사자들이 네크로노미콘을 보관했다."
+            "text": "조사자들이 네크로노미콘을 보관했다"
           },
           {
             "id": "unconscious_for_several_hours",
-            "text": "조사자들이 몇 시간 동안 의식을 잃었다."
+            "text": "조사자들이 몇 시간 동안 의식을 잃었다"
           },
           {
             "id": "warned_townsfolk",
-            "text": "마을 주민들에게 경고했다."
+            "text": "마을 주민들에게 경고했다"
           },
           {
             "id": "warren_rice_kidnapped",
-            "text": "‘워렌 라이스 박사’는 납치되었다."
+            "text": "‘워렌 라이스 박사’는 납치되었다"
           },
           {
             "id": "warren_rice_rescued",
-            "text": "조사자들이 워렌 라이스 교수를 구출했다."
+            "text": "조사자들이 워렌 라이스 교수를 구출했다"
           },
           {
             "id": "warren_rice_survived",
-            "text": "워렌 라이스 교수가 던위치의 유산에서 살아남았다."
+            "text": "워렌 라이스 교수가 던위치의 유산에서 살아남았다"
           },
           {
             "id": "yog_sothoth_became_one_with_reality",
-            "text": "요그 소토스가 세계 사이의 장막을 찢고 나와 모든 현실과 하나가 되었다."
+            "text": "요그 소토스가 세계 사이의 장막을 찢고 나와 모든 현실과 하나가 되었다"
           },
           {
             "id": "yog_sothoth_escaped",
-            "text": "요그 소토스가 세계 사이의 장막을 찢고 나와 모든 현실과 하나가 되었다."
+            "text": "요그 소토스가 세계 사이의 장막을 찢고 나와 모든 현실과 하나가 되었다"
           },
           {
             "id": "yog_sothoth_fled",
-            "text": "요그 소토스가 다른 차원으로 달아났다."
+            "text": "요그 소토스가 다른 차원으로 달아났다"
           },
           {
             "id": "zebulon_whateley_survived",
-            "text": "지블런 웨이틀리가 던위치의 유산에서 살아남았다."
+            "text": "지블런 웨이틀리가 던위치의 유산에서 살아남았다"
           }
         ]
       },
@@ -602,39 +602,39 @@
         "entries": [
           {
             "id": "arkham_succumbed",
-            "text": "우몰도스의 끔찍한 복수에 아컴이 무릎을 꿇다."
+            "text": "우몰도스의 끔찍한 복수에 아컴이 무릎을 꿇다"
           },
           {
             "id": "ghoul_priest_alive",
-            "text": "‘구울 사제’가 여전히 살아 있다."
+            "text": "‘구울 사제’가 여전히 살아 있다"
           },
           {
             "id": "house_burned",
-            "text": "당신의 집이 불타버렸다."
+            "text": "당신의 집이 불타버렸다"
           },
           {
             "id": "house_standing",
-            "text": "당신의 집이 여전히 남아 있다."
+            "text": "당신의 집이 여전히 남아 있다"
           },
           {
             "id": "lita_finds_others",
-            "text": "리타는 어쩔 수 없이 다른 사람에게 도움을 요청했다."
+            "text": "리타는 어쩔 수 없이 다른 사람에게 도움을 요청했다"
           },
           {
             "id": "lita_sacrificed",
-            "text": "조사자가 리타 챈들러를 우몰도스에게 희생시켰다."
+            "text": "조사자가 리타 챈들러를 우몰도스에게 희생시켰다"
           },
           {
             "id": "past_midnight",
-            "text": "자정이 지났다."
+            "text": "자정이 지났다"
           },
           {
             "id": "ritual_broken",
-            "text": "우몰도스를 소환하는 의식을 분쇄하다."
+            "text": "우몰도스를 소환하는 의식을 분쇄하다"
           },
           {
             "id": "umordhoth_repelled",
-            "text": "조사자들이 우몰도스를 격퇴하다."
+            "text": "조사자들이 우몰도스를 격퇴하다"
           }
         ]
       },
@@ -672,8 +672,8 @@
           },
           {
             "id": "possessed",
-            "masculine_text": "#name# 조사자는 꼭두각시로 전락했다.",
-            "feminine_text": "#name# 조사자는 꼭두각시로 전락했다."
+            "masculine_text": "#name# 조사자는 꼭두각시로 전락했다",
+            "feminine_text": "#name# 조사자는 꼭두각시로 전락했다"
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -681,111 +681,111 @@
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "정신을 차려보니 카타콤 안이었다."
+            "text": "정신을 차려보니 카타콤 안이었다"
           },
           {
             "id": "carcosa_merged",
-            "text": "카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다."
+            "text": "카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다"
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "당신이 경찰에게 알리지 않았다."
+            "text": "당신이 경찰에게 알리지 않았다"
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "맹세를 입에 담은 자를 쓰러뜨렸다."
+            "text": "맹세를 입에 담은 자를 쓰러뜨렸다"
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "망령의 응시에서 벗어나지 못했다."
+            "text": "망령의 응시에서 벗어나지 못했다"
           },
           {
             "id": "entered_catacombs",
-            "text": "제 발로 카타콤에 들어갔다."
+            "text": "제 발로 카타콤에 들어갔다"
           },
           {
             "id": "escaped_the_asylum",
-            "text": "조사자들이 정신병원에서 탈출했다."
+            "text": "조사자들이 정신병원에서 탈출했다"
           },
           {
             "id": "fled_dinner_party",
-            "text": "만찬회에서 달아났다."
+            "text": "만찬회에서 달아났다"
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "황색 표식의 추종자들이 나아갈 길을 찾았다."
+            "text": "황색 표식의 추종자들이 나아갈 길을 찾았다"
           },
           {
             "id": "found_nigel_engram",
-            "text": "나이젤 잉그램을 찾았다."
+            "text": "나이젤 잉그램을 찾았다"
           },
           {
             "id": "found_nigels_home",
-            "text": "나이젤의 집을 찾았다."
+            "text": "나이젤의 집을 찾았다"
           },
           {
             "id": "hastur_has_you",
-            "text": "하스터가 당신을 사로잡았다."
+            "text": "하스터가 당신을 사로잡았다"
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "대니얼의 경고를 받아들인다."
+            "text": "대니얼의 경고를 받아들였다"
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "대니얼의 경고를 무시한다."
+            "text": "대니얼의 경고를 무시했다"
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "당신이 밀회에 침범했다."
+            "text": "당신이 밀회에 침범했다"
           },
           {
             "id": "king_claimed_victims",
-            "text": "왕이 희생양을 거두었다."
+            "text": "왕이 희생양을 거두었다"
           },
           {
             "id": "know_site_of_gate",
-            "text": "관문이 있는 곳을 알아냈다."
+            "text": "관문이 있는 곳을 알아냈다"
           },
           {
             "id": "left_onyx_clasp",
-            "text": "오닉스 장식 고리를 두고 나왔다."
+            "text": "오닉스 장식 고리를 두고 나왔다"
           },
           {
             "id": "opened_path_above",
-            "text": "위의 길을 열었다."
+            "text": "위의 길을 열었다"
           },
           {
             "id": "opened_path_below",
-            "text": "아래의 길을 열었다."
+            "text": "아래의 길을 열었다"
           },
           {
             "id": "police_are_suspicious",
-            "text": "경찰이 당신을 의심한다."
+            "text": "경찰이 당신을 의심한다"
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "조사자들은 하스터가 감옥에서 탈출하지 못하도록 막았다."
+            "text": "조사자들은 하스터가 감옥에서 탈출하지 못하도록 막았다"
           },
           {
             "id": "slayed_the_monsters",
-            "text": "당신이 만찬회의 괴물을 모조리 죽였다."
+            "text": "당신이 만찬회의 괴물을 모조리 죽였다"
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "이방인이 당신을 눈여겨 본다."
+            "text": "이방인이 당신을 눈여겨 본다"
           },
           {
             "id": "took_onyx_clasp",
-            "text": "오닉스 장식 고리를 챙겼다."
+            "text": "오닉스 장식 고리를 챙겼다"
           },
           {
             "id": "tried_to_warn_police",
-            "text": "당신이 경찰에게 경고하려 했다."
+            "text": "당신이 경찰에게 경고하려 했다"
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "나이젤을 찾지 못했다."
+            "text": "나이젤을 찾지 못했다"
           }
         ]
       },
@@ -802,7 +802,7 @@
           },
           {
             "id": "possessed",
-            "text": "조사자가 한 명이라도 꼭두각시로 전락했다."
+            "text": "조사자가 한 명이라도 꼭두각시로 전락했다"
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -1358,87 +1358,87 @@
         "entries": [
           {
             "id": "alejandro_followed_to_ruins",
-            "text": "알레한드로가 조사자들을 따라 유적으로 들어갔다."
+            "text": "알레한드로가 조사자들을 따라 유적으로 들어갔다"
           },
           {
             "id": "alejandro_is_missing",
-            "text": "알레한드로가 실종되었다."
+            "text": "알레한드로가 실종되었다"
           },
           {
             "id": "alejandro_on_his_own",
-            "text": "알레한드로가 독자적으로 연구를 이어나간다."
+            "text": "알레한드로가 독자적으로 연구를 이어나간다"
           },
           {
             "id": "alejandro_recovered_relic",
-            "text": "알레한드로가 시대의 유물을 손에 넣었다."
+            "text": "알레한드로가 시대의 유물을 손에 넣었다"
           },
           {
             "id": "alejandro_remained_at_camp",
-            "text": "알레한드로가 야영지에 남기로 했다."
+            "text": "알레한드로가 야영지에 남기로 했다"
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "알레한드로가 기억을 되찾았다."
+            "text": "알레한드로가 기억을 되찾았다"
           },
           {
             "id": "alejandro_set_against",
-            "text": "알레한드로와 척이 졌다."
+            "text": "알레한드로와 척이 졌다"
           },
           {
             "id": "braziers_are_lit",
-            "text": "화로에 불을 밝혔다."
+            "text": "화로에 불을 밝혔다"
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "화로에 불을 밝히지 못했다."
+            "text": "화로에 불을 밝히지 못했다"
           },
           {
             "id": "cleared_path_to_temple",
-            "text": "조사자들이 에스틀리 유적으로 향하는 길을 냈다."
+            "text": "조사자들이 에스틀리 유적으로 향하는 길을 냈다"
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "조사자들이 이스인에게 협조했다."
+            "text": "조사자들이 이스인에게 협조했다"
           },
           {
             "id": "earned_alejandros_trust",
-            "text": "조사자들이 알레한드로의 신뢰를 얻었다."
+            "text": "조사자들이 알레한드로의 신뢰를 얻었다"
           },
           {
             "id": "earned_ichtacas_trust",
-            "text": "조사자들이 이츠타카의 신뢰를 얻었다."
+            "text": "조사자들이 이츠타카의 신뢰를 얻었다"
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "시간의 연속체가 한 가닥 한 가닥까지 해체되었다."
+            "text": "시간의 연속체가 한 가닥 한 가닥까지 해체되었다"
           },
           {
             "id": "fell_into_depths",
-            "text": "조사자들이 깊은 구렁텅이로 추락했다."
+            "text": "조사자들이 깊은 구렁텅이로 추락했다"
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "조사자들이 이츠타카와 유대감을 쌓았다."
+            "text": "조사자들이 이츠타카와 유대감을 쌓았다"
           },
           {
             "id": "forging_own_path",
-            "text": "조사자들이 자신만의 방법을 찾아 나섰다."
+            "text": "조사자들이 자신만의 방법을 찾아 나섰다"
           },
           {
             "id": "found_missing_relic",
-            "text": "조사자들이 잃어버린 유물을 찾아냈다."
+            "text": "조사자들이 잃어버린 유물을 찾아냈다"
           },
           {
             "id": "gave_relic_to_alejandro",
-            "text": "조사자들이 알레한드로에게 유물 관리를 맡겼다."
+            "text": "조사자들이 알레한드로에게 유물 관리를 맡겼다"
           },
           {
             "id": "gave_relic_to_harlan",
-            "text": "조사자들이 할런 언스톤에게 유물 관리를 맡겼다."
+            "text": "조사자들이 할런 언스톤에게 유물 관리를 맡겼다"
           },
           {
             "id": "had_memories_expunged",
-            "text": "조사자들의 기억이 지워졌다."
+            "text": "조사자들의 기억이 지워졌다"
           },
           {
             "id": "harbinger_alive",
@@ -1446,39 +1446,39 @@
           },
           {
             "id": "ichtaca_has_confidence",
-            "text": "이츠타카가 조사자들을 믿는다."
+            "text": "이츠타카가 조사자들을 믿는다"
           },
           {
             "id": "ichtaca_in_the_dark",
-            "text": "이츠타카의 행적을 쫓지 못했다."
+            "text": "이츠타카의 행적을 쫓지 못했다"
           },
           {
             "id": "ichtaca_is_wary",
-            "text": "이츠타카가 조사자들을 경계한다."
+            "text": "이츠타카가 조사자들을 경계한다"
           },
           {
             "id": "ichtaca_observed_progress",
-            "text": "이츠타카가 조사자들의 행보를 눈여겨봤다."
+            "text": "이츠타카가 조사자들의 행보를 눈여겨봤다"
           },
           {
             "id": "ichtaca_set_against",
-            "text": "이츠타카와 척이 졌다."
+            "text": "이츠타카와 척이 졌다"
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "조사자들이 이츠타카와 유대감을 쌓았다."
+            "text": "이츠타카의 신뢰가 회복되었다"
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "조사자들이 시대의 유물을 손에 넣었다."
+            "text": "조사자들이 시대의 유물을 손에 넣었다"
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "조사자들이 뱀의 문명을 구원했다."
+            "text": "조사자들이 뱀의 문명을 구원했다"
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "조사자들이 이스인의 문명을 구원했다."
+            "text": "조사자들이 이스인의 문명을 구원했다"
           },
           {
             "id": "jungle_watches",
@@ -1486,35 +1486,35 @@
           },
           {
             "id": "mapped_way_forward",
-            "text": "조사자들이 앞으로 갈 길을 면밀히 검토했다."
+            "text": "조사자들이 앞으로 갈 길을 면밀히 검토했다"
           },
           {
             "id": "mended_tear_in_time",
-            "text": "조사자들이 시간 연속체에 난 균열을 봉합했다."
+            "text": "조사자들이 시간 연속체에 난 균열을 봉합했다"
           },
           {
             "id": "nexus_is_near",
-            "text": "느카이의 연결점이 가까이 있다."
+            "text": "느카이의 연결점이 가까이 있다"
           },
           {
             "id": "paths_known",
-            "text": "#X#가지 길을 알아냈다."
+            "text": "#X#가지 길을 알아냈다"
           },
           {
             "id": "process_backfired",
-            "text": "의식 전이 과정이 역효과를 낳았다."
+            "text": "의식 전이 과정이 역효과를 낳았다"
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "의식 전이 과정이 어마어마한 역효과를 낳았다."
+            "text": "의식 전이 과정이 어마어마한 역효과를 낳았다"
           },
           {
             "id": "process_was_perfected",
-            "text": "의식 전이 과정이 완벽했다."
+            "text": "의식 전이 과정이 완벽했다"
           },
           {
             "id": "process_was_successful",
-            "text": "의식 전이 과정이 성공했다."
+            "text": "의식 전이 과정이 성공했다"
           },
           {
             "id": "recruited_help_of_another_expedition",
@@ -1522,27 +1522,27 @@
           },
           {
             "id": "relic_is_missing",
-            "text": "유물을 잃어버렸다."
+            "text": "유물을 잃어버렸다"
           },
           {
             "id": "rescued_alejandro",
-            "text": "조사자들이 알레한드로를 구출했다."
+            "text": "조사자들이 알레한드로를 구출했다"
           },
           {
             "id": "resisted_captivity",
-            "text": "조사자들이 나포에 저항했다."
+            "text": "조사자들이 나포에 저항했다"
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "조사자들이 시대의 유물을 영원히 봉인했다."
+            "text": "조사자들이 시대의 유물을 영원히 봉인했다"
           },
           {
             "id": "turned_back_time",
-            "text": "조사자들이 시간을 되돌렸다."
+            "text": "조사자들이 시간을 되돌렸다"
           },
           {
             "id": "wait_for_additional_supplies",
-            "text": "조사자들이 하릴없이 추가 탐험 물자가 도착하기만을 기다렸다."
+            "text": "조사자들이 하릴없이 추가 탐험 물자가 도착하기만을 기다렸다"
           }
         ]
       },
@@ -1567,11 +1567,11 @@
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "이츠타카가 당신을 두고 나가버렸다."
+            "text": "이츠타카가 당신을 두고 나가버렸다"
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "이츠타카의 이야기를 들었다."
+            "text": "이츠타카의 이야기를 들었다"
           },
           {
             "id": "rtdoe_gain_mysterious_scepter",
@@ -2697,87 +2697,87 @@
         "entries": [
           {
             "id": "alejandro_followed_to_ruins",
-            "text": "알레한드로가 조사자들을 따라 유적으로 들어갔다."
+            "text": "알레한드로가 조사자들을 따라 유적으로 들어갔다"
           },
           {
             "id": "alejandro_is_missing",
-            "text": "알레한드로가 실종되었다."
+            "text": "알레한드로가 실종되었다"
           },
           {
             "id": "alejandro_on_his_own",
-            "text": "알레한드로가 독자적으로 연구를 이어나간다."
+            "text": "알레한드로가 독자적으로 연구를 이어나간다"
           },
           {
             "id": "alejandro_recovered_relic",
-            "text": "알레한드로가 시대의 유물을 손에 넣었다."
+            "text": "알레한드로가 시대의 유물을 손에 넣었다"
           },
           {
             "id": "alejandro_remained_at_camp",
-            "text": "알레한드로가 야영지에 남기로 했다."
+            "text": "알레한드로가 야영지에 남기로 했다"
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "알레한드로가 기억을 되찾았다."
+            "text": "알레한드로가 기억을 되찾았다"
           },
           {
             "id": "alejandro_set_against",
-            "text": "알레한드로와 척이 졌다."
+            "text": "알레한드로와 척이 졌다"
           },
           {
             "id": "braziers_are_lit",
-            "text": "화로에 불을 밝혔다."
+            "text": "화로에 불을 밝혔다"
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "화로에 불을 밝히지 못했다."
+            "text": "화로에 불을 밝히지 못했다"
           },
           {
             "id": "cleared_path_to_temple",
-            "text": "조사자들이 에스틀리 유적으로 향하는 길을 냈다."
+            "text": "조사자들이 에스틀리 유적으로 향하는 길을 냈다"
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "조사자들이 이스인에게 협조했다."
+            "text": "조사자들이 이스인에게 협조했다"
           },
           {
             "id": "earned_alejandros_trust",
-            "text": "조사자들이 알레한드로의 신뢰를 얻었다."
+            "text": "조사자들이 알레한드로의 신뢰를 얻었다"
           },
           {
             "id": "earned_ichtacas_trust",
-            "text": "조사자들이 이츠타카의 신뢰를 얻었다."
+            "text": "조사자들이 이츠타카의 신뢰를 얻었다"
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "시간의 연속체가 한 가닥 한 가닥까지 해체되었다."
+            "text": "시간의 연속체가 한 가닥 한 가닥까지 해체되었다"
           },
           {
             "id": "fell_into_depths",
-            "text": "조사자들이 깊은 구렁텅이로 추락했다."
+            "text": "조사자들이 깊은 구렁텅이로 추락했다"
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "조사자들이 이츠타카와 유대감을 쌓았다."
+            "text": "조사자들이 이츠타카와 유대감을 쌓았다"
           },
           {
             "id": "forging_own_path",
-            "text": "조사자들이 자신만의 방법을 찾아 나섰다."
+            "text": "조사자들이 자신만의 방법을 찾아 나섰다"
           },
           {
             "id": "found_missing_relic",
-            "text": "조사자들이 잃어버린 유물을 찾아냈다."
+            "text": "조사자들이 잃어버린 유물을 찾아냈다"
           },
           {
             "id": "gave_relic_to_alejandro",
-            "text": "조사자들이 알레한드로에게 유물 관리를 맡겼다."
+            "text": "조사자들이 알레한드로에게 유물 관리를 맡겼다"
           },
           {
             "id": "gave_relic_to_harlan",
-            "text": "조사자들이 할런 언스톤에게 유물 관리를 맡겼다."
+            "text": "조사자들이 할런 언스톤에게 유물 관리를 맡겼다"
           },
           {
             "id": "had_memories_expunged",
-            "text": "조사자들의 기억이 지워졌다."
+            "text": "조사자들의 기억이 지워졌다"
           },
           {
             "id": "harbinger_alive",
@@ -2785,39 +2785,39 @@
           },
           {
             "id": "ichtaca_has_confidence",
-            "text": "이츠타카가 조사자들을 믿는다."
+            "text": "이츠타카가 조사자들을 믿는다"
           },
           {
             "id": "ichtaca_in_the_dark",
-            "text": "이츠타카의 행적을 쫓지 못했다."
+            "text": "이츠타카의 행적을 쫓지 못했다"
           },
           {
             "id": "ichtaca_is_wary",
-            "text": "이츠타카가 조사자들을 경계한다."
+            "text": "이츠타카가 조사자들을 경계한다"
           },
           {
             "id": "ichtaca_observed_progress",
-            "text": "이츠타카가 조사자들의 행보를 눈여겨봤다."
+            "text": "이츠타카가 조사자들의 행보를 눈여겨봤다"
           },
           {
             "id": "ichtaca_set_against",
-            "text": "이츠타카와 척이 졌다."
+            "text": "이츠타카와 척이 졌다"
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "조사자들이 이츠타카와 유대감을 쌓았다."
+            "text": "이츠타카의 신뢰가 회복되었다"
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "조사자들이 시대의 유물을 손에 넣었다."
+            "text": "조사자들이 시대의 유물을 손에 넣었다"
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "조사자들이 뱀의 문명을 구원했다."
+            "text": "조사자들이 뱀의 문명을 구원했다"
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "조사자들이 이스인의 문명을 구원했다."
+            "text": "조사자들이 이스인의 문명을 구원했다"
           },
           {
             "id": "jungle_watches",
@@ -2825,59 +2825,59 @@
           },
           {
             "id": "mapped_way_forward",
-            "text": "조사자들이 앞으로 갈 길을 면밀히 검토했다."
+            "text": "조사자들이 앞으로 갈 길을 면밀히 검토했다"
           },
           {
             "id": "mended_tear_in_time",
-            "text": "조사자들이 시간 연속체에 난 균열을 봉합했다."
+            "text": "조사자들이 시간 연속체에 난 균열을 봉합했다"
           },
           {
             "id": "nexus_is_near",
-            "text": "느카이의 연결점이 가까이 있다."
+            "text": "느카이의 연결점이 가까이 있다"
           },
           {
             "id": "paths_known",
-            "text": "#X#가지 길을 알아냈다."
+            "text": "#X#가지 길을 알아냈다"
           },
           {
             "id": "process_backfired",
-            "text": "의식 전이 과정이 역효과를 낳았다."
+            "text": "의식 전이 과정이 역효과를 낳았다"
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "의식 전이 과정이 어마어마한 역효과를 낳았다."
+            "text": "의식 전이 과정이 어마어마한 역효과를 낳았다"
           },
           {
             "id": "process_was_perfected",
-            "text": "의식 전이 과정이 완벽했다."
+            "text": "의식 전이 과정이 완벽했다"
           },
           {
             "id": "process_was_successful",
-            "text": "의식 전이 과정이 성공했다."
+            "text": "의식 전이 과정이 성공했다"
           },
           {
             "id": "relic_is_missing",
-            "text": "유물을 잃어버렸다."
+            "text": "유물을 잃어버렸다"
           },
           {
             "id": "rescued_alejandro",
-            "text": "조사자들이 알레한드로를 구출했다."
+            "text": "조사자들이 알레한드로를 구출했다"
           },
           {
             "id": "resisted_captivity",
-            "text": "조사자들이 나포에 저항했다."
+            "text": "조사자들이 나포에 저항했다"
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "조사자들이 시대의 유물을 영원히 봉인했다."
+            "text": "조사자들이 시대의 유물을 영원히 봉인했다"
           },
           {
             "id": "turned_back_time",
-            "text": "조사자들이 시간을 되돌렸다."
+            "text": "조사자들이 시간을 되돌렸다"
           },
           {
             "id": "wait_for_additional_supplies",
-            "text": "조사자들이 하릴없이 추가 탐험 물자가 도착하기만을 기다렸다."
+            "text": "조사자들이 하릴없이 추가 탐험 물자가 도착하기만을 기다렸다"
           }
         ]
       },
@@ -2902,11 +2902,11 @@
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "이츠타카가 당신을 두고 나가버렸다."
+            "text": "이츠타카가 당신을 두고 나가버렸다"
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "이츠타카의 이야기를 들었다."
+            "text": "이츠타카의 이야기를 들었다"
           },
           {
             "id": "tasks_completed",
@@ -3416,119 +3416,119 @@
         "entries": [
           {
             "id": "alice_perished_and_wonderland_has_been_lost_forever",
-            "text": "앨리스는 비명횡사했고 이상한 나라는 영원히 소실되었다."
+            "text": "앨리스는 비명횡사했고 이상한 나라는 영원히 소실되었다"
           },
           {
             "id": "controlled_the_snark",
-            "text": "조사자들은 스나크를 조종했다."
+            "text": "조사자들은 스나크를 조종했다"
           },
           {
             "id": "gurathnaka_and_its_shadows_consumed_the_earth",
-            "text": "구라트나카와 그림자가 지구를 먹어 치웠다."
+            "text": "구라트나카와 그림자가 지구를 먹어 치웠다"
           },
           {
             "id": "gurathnaka_and_its_shadows_were_banished_from_arkham",
-            "text": "구라트나카와 그의 그림자는 아컴에서 추방되었다."
+            "text": "구라트나카와 그의 그림자는 아컴에서 추방되었다"
           },
           {
             "id": "hare_and_hatter_enjoyed_your_company",
-            "text": "3월 토끼와 모자장수가 당신과 함께한 순간을 즐겼다."
+            "text": "3월 토끼와 모자장수가 당신과 함께한 순간을 즐겼다"
           },
           {
             "id": "hare_and_hatter_were_cast_into_the_shadows",
-            "text": "3월 토끼 와 모자장수는 그림자로 내던져졌다."
+            "text": "3월 토끼 와 모자장수는 그림자로 내던져졌다"
           },
           {
             "id": "hare_couldnt_cope_with_hatters_death",
-            "text": "3월 토끼는 모자장수의 죽음을 견딜 수 없었다."
+            "text": "3월 토끼는 모자장수의 죽음을 견딜 수 없었다"
           },
           {
             "id": "hare_hatter_and_dormouse_were_consumed_by_shadows",
-            "text": "3월 토끼, 모자장수, 그리고 겨울잠 쥐가 어둠에 흡수되었다."
+            "text": "3월 토끼, 모자장수, 그리고 겨울잠 쥐가 어둠에 흡수되었다"
           },
           {
             "id": "hatter_couldnt_cope_with_hares_death",
-            "text": "모자장수는 3월 토끼의 죽음을 견딜 수 없었다."
+            "text": "모자장수는 3월 토끼의 죽음을 견딜 수 없었다"
           },
           {
             "id": "intimidated_the_snark",
-            "text": "조사자들은 스나크 에게 겁을 주었다."
+            "text": "조사자들은 스나크 에게 겁을 주었다"
           },
           {
             "id": "intrigued_the_snark",
-            "text": "스나크의 흥미를 끌었다."
+            "text": "스나크의 흥미를 끌었다"
           },
           {
             "id": "jabberwock_still_haunts_the_tulgey_wood",
-            "text": "재버워크가 아직 털진 숲에 출몰한다."
+            "text": "재버워크가 아직 털진 숲에 출몰한다"
           },
           {
             "id": "one_of_the_tweedles_learned_about_the_cost_of_war",
-            "text": "트위들 쌍둥이의 한쪽은 전쟁의 대가에 대해 배웠다."
+            "text": "트위들 쌍둥이의 한쪽은 전쟁의 대가에 대해 배웠다"
           },
           {
             "id": "puzzled_the_snark",
-            "text": "조사자들은 스나크를 혼란하게 했다."
+            "text": "조사자들은 스나크를 혼란하게 했다"
           },
           {
             "id": "queen_destroyed_the_shadows_in_a_fit_of_rage",
-            "text": "하트 여왕 이 그림자를 분노에 차 박살냈다."
+            "text": "하트 여왕이 그림자를 분노에 차 박살냈다"
           },
           {
             "id": "queens_castle_was_consumed_by_shadows",
-            "text": "여왕의 성이 어둠에 흡수되었다."
+            "text": "여왕의 성이 어둠에 흡수되었다"
           },
           {
             "id": "separated_alices_dreams_from_the_real_world",
-            "text": "조사자들은 현실 세계를 앨리스의 꿈에서 분리해냈다."
+            "text": "조사자들은 현실 세계를 앨리스의 꿈에서 분리해냈다"
           },
           {
             "id": "shadows_grow_stronger_with_each_passing_moment",
-            "text": "그림자가 당신이 지나온 곳마다 강해졌다."
+            "text": "그림자가 당신이 지나온 곳마다 강해졌다"
           },
           {
             "id": "shadows_maintain_their_grip_on_alices_dreams",
-            "text": "그림자가 앨리스의 꿈에 대한 손아귀를 유지하고 있다."
+            "text": "그림자가 앨리스의 꿈에 대한 손아귀를 유지하고 있다"
           },
           {
             "id": "shadows_weakened_by_wonderlands_instability",
-            "text": "그림자가 당신의 행동에 의해 매우 약해졌다."
+            "text": "그림자가 당신의 행동에 의해 매우 약해졌다"
           },
           {
             "id": "snark_and_its_hunters_were_never_met_with_again",
-            "text": "스나크와 스나크 사냥꾼들은 이제 다시는 조우하지 못한다."
+            "text": "스나크와 스나크 사냥꾼들은 이제 다시는 조우하지 못한다"
           },
           {
             "id": "took_the_jabberwocks_head",
-            "text": "조사자들은 재버워크의 머리를 취했다."
+            "text": "조사자들은 재버워크의 머리를 취했다"
           },
           {
             "id": "tricked_the_snark",
-            "text": "조사자들은 스나크를 속여 넘겼다."
+            "text": "조사자들은 스나크를 속여 넘겼다"
           },
           {
             "id": "tweedles_learned_that_there_are_worse_things_than_fighting_each_other",
-            "text": "트위들 쌍둥이는 서로 싸우는 것보다 더 나쁜 것도 있다는 것을\t배웠다."
+            "text": "트위들 쌍둥이는 서로 싸우는 것보다 더 나쁜 것도 있다는 것을 배웠다."
           },
           {
             "id": "tweedles_perished_in_their_bloody_battle",
-            "text": "트위들 쌍둥이가 피 튀기는 전투에서 비명횡사했다."
+            "text": "트위들 쌍둥이가 피 튀기는 전투에서 비명횡사했다"
           },
           {
             "id": "tweedles_war_war_brought_to_an_end",
-            "text": "트위들 쌍둥이의 전쟁은 종말을 불러왔다."
+            "text": "트위들 쌍둥이의 전쟁은 종말을 불러왔다"
           },
           {
             "id": "walrus_and_carpenter_ate_their_last_meal",
-            "text": "바다코끼리와 목수가 마지막 식사를 했다."
+            "text": "바다코끼리와 목수가 마지막 식사를 했다"
           },
           {
             "id": "walrus_and_carpenter_have_lost_their_appetites",
-            "text": "바다코끼리와 목수가 식탐을 잃었다."
+            "text": "바다코끼리와 목수가 식탐을 잃었다"
           },
           {
             "id": "walrus_and_carpenter_were_completely_obliterated",
-            "text": "바다코끼리와 목수가 완전히 소멸되었다."
+            "text": "바다코끼리와 목수가 완전히 소멸되었다"
           },
           {
             "id": "went_down_the_rabbit_hole",
@@ -3536,31 +3536,31 @@
           },
           {
             "id": "went_through_the_looking_glass",
-            "text": "조사자들이 거울을 통과했다."
+            "text": "조사자들이 거울을 통과했다"
           },
           {
             "id": "white_king_celebrates_a_grand_victory",
-            "text": "하얀 왕이 장대한 승리를 기념하였다."
+            "text": "하얀 왕이 장대한 승리를 기념하였다"
           },
           {
             "id": "white_king_was_slain_by_the_red_pieces",
-            "text": "하얀 왕은 붉은 기물들에게 살해당했다."
+            "text": "하얀 왕은 붉은 기물들에게 살해당했다"
           },
           {
             "id": "white_knight_has_fallen_in_battle_to_the_red_queen",
-            "text": "하얀 기사가 붉은 여왕과 의 싸움에서 쓰러졌다."
+            "text": "하얀 기사가 붉은 여왕과 의 싸움에서 쓰러졌다"
           },
           {
             "id": "white_knight_revels_in_your_victory_over_the_red_queen",
-            "text": "하얀 기사가 붉은 여왕에게서 당신이 승리했다고 공표했다."
+            "text": "하얀 기사가 붉은 여왕에게서 당신이 승리했다고 공표했다"
           },
           {
             "id": "white_rabbit_consumed_by_shadows",
-            "text": "흰 토끼가 그림자에게 흡수되었다."
+            "text": "흰 토끼가 그림자에게 흡수되었다"
           },
           {
             "id": "white_rabbit_survived_the_monsters_attack",
-            "text": "흰 토끼가 괴물의 공격에서 살아남았다."
+            "text": "흰 토끼가 괴물의 공격에서 살아남았다"
           }
         ]
       },

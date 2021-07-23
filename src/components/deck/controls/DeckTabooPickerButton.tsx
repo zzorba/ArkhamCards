@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import { find, map } from 'lodash';
 import { useSelector } from 'react-redux';
 import { c, t } from 'ttag';
@@ -7,8 +7,9 @@ import Database from '@data/sqlite/Database';
 import useDbData from '@components/core/useDbData';
 import { AppState } from '@reducers';
 import { usePickerDialog } from '../dialogs';
-import { utcFormat } from '@lib/datetime';
+import { utcFormat, localizedDate } from '@lib/datetime';
 import DeckPickerStyleButton from './DeckPickerStyleButton';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   tabooSetId?: number;
@@ -31,16 +32,17 @@ async function fetchTaboos(db: Database) {
 
 export default function DeckTabooPickerButton({ tabooSetId, setTabooSet, disabled, loading, show, open, first, last }: Props) {
   const settingsTabooSetId = useSelector((state: AppState) => state.settings.tabooId);
+  const { lang } = useContext(LanguageContext);
   const tabooSets = useDbData(fetchTaboos);
   const items = useMemo(() => [
     { value: -1, title: c('Taboo List').t`None` },
     ...map(tabooSets, set => {
       return {
         value: set.id,
-        title: set.date_start ? utcFormat(Date.parse(set.date_start) / 1000, 'LLL d, yyyy') : 'Unknown',
+        title: set.date_start ? localizedDate(new Date(Date.parse(set.date_start)), lang, true) : 'Unknown',
       };
     }),
-  ], [tabooSets]);
+  ], [tabooSets, lang]);
 
   const onTabooChange = useCallback((tabooId: number | null) => {
     if (!tabooSets || tabooId === null) {

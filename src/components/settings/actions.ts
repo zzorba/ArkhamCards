@@ -76,6 +76,15 @@ export function setJustifyContent(value: boolean): SetMiscSettingAction {
   };
 }
 
+
+export function setSortQuotes(value: boolean): SetMiscSettingAction {
+  return {
+    type: SET_MISC_SETTING,
+    setting: 'sort_quotes',
+    value,
+  };
+}
+
 export function ensureUuid(): EnsureUuidAction {
   return {
     type: ENSURE_UUID,

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
 import { WithChildren } from '../CardTextComponent/types';
@@ -15,7 +16,7 @@ export default function GameTextNode({ typography, fontScale, gameFont }: StyleC
         fontFamily: gameFont,
         fontStyle: 'normal',
         fontSize: 24 * fontScale * sizeScale,
-        lineHeight: 28 * fontScale * sizeScale,
+        lineHeight: (Platform.OS === 'ios' ? 28 : 32) * fontScale * sizeScale,
       }, typography.dark]}>
         { output(node.children, state) }
       </MarkdownText>
