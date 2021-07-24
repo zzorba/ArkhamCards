@@ -5282,7 +5282,7 @@ msgstr "儀式地"
 
 msgctxt "trait"
 msgid "River"
-msgstr "River"
+msgstr "河流"
 
 msgctxt "trait"
 msgid "Riverside"
