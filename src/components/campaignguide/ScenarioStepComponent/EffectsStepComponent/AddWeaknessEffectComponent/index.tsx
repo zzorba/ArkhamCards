@@ -35,7 +35,7 @@ export default function AddWeaknessEffectComponent({ id, effect, input, numberIn
   const cards = usePlayerCards();
 
   const firstPrompt = useMemo(() => {
-    if (effect.count === '$input_value') {
+    if (effect.count === '$input_value' || effect.choose_only) {
       // When drawing multiple weaknesses at a time, don't prompt for the app.
       return null;
     }
@@ -46,7 +46,7 @@ export default function AddWeaknessEffectComponent({ id, effect, input, numberIn
         text={t`Do you want to use the app to randomize weaknesses?`}
       />
     );
-  }, [effect.count, firstDecisionId]);
+  }, [effect.count, firstDecisionId, effect.choose_only]);
 
   const renderCardChoice = useCallback((cards: Card[], investigators: Card[]) => {
     return (
@@ -91,7 +91,7 @@ export default function AddWeaknessEffectComponent({ id, effect, input, numberIn
       return null;
     }
     if (effect.count !== '$input_value') {
-      const useAppDecision = scenarioState.decision(firstDecisionId);
+      const useAppDecision = effect.choose_only ? false : scenarioState.decision(firstDecisionId);
       if (useAppDecision === undefined) {
         return null;
       }

@@ -59,6 +59,7 @@ function SaveDeckRow({
   const { colors, typography, width } = useContext(StyleContext);
   const { userId, arkhamDbUser } = useContext(ArkhamCardsAuthContext);
   const deckDispatch: DeckDispatch = useDispatch();
+  const dispatch = useDispatch();
   const choiceId = useMemo(() => {
     return computeChoiceId(id, investigator);
   }, [id, investigator]);
@@ -120,7 +121,7 @@ function SaveDeckRow({
   useEffect(() => {
     // We only want to save once.
     if (choices === undefined && deck && !deck.id.local && deck.id.arkhamdb_user === arkhamDbUser) {
-      fetchPrivateDeck(userId, actions, deck.id);
+      dispatch(fetchPrivateDeck(userId, actions, deck.id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

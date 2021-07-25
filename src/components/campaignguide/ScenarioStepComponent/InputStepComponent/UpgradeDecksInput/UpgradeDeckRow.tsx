@@ -34,6 +34,8 @@ import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
 import { fetchPrivateDeck } from '@components/deck/actions';
 import EncounterIcon from '@icons/EncounterIcon';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
+import { TINY_PHONE } from '@styles/sizes';
+import { useDispatch } from 'react-redux';
 
 interface Props {
   componentId: string;
@@ -101,6 +103,23 @@ function CounterRow({
   hideTotal?: boolean;
 }) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
+  const description = useMemo(() => {
+    if (!editable) {
+      return null;
+    }
+    return (
+      <View style={[styles.startRow, space.paddingRightS]}>
+        <Text style={typography.text}>
+          { count }
+        </Text>
+        { !hideTotal && (
+          <Text style={[typography.small, { color: colors.lightText }]}>
+            { t` (new total: ${total})` }
+          </Text>
+        ) }
+      </View>
+    );
+  }, [editable, total, colors, typography, hideTotal, count]);
   return (
     <View style={[
       styles.betweenRow,
@@ -112,25 +131,17 @@ function CounterRow({
       bottomBorder ? { borderBottomWidth: StyleSheet.hairlineWidth } : undefined,
       borderStyle,
     ]}>
-      <View style={styles.startRow}>
-        { icon }
-        <Text style={[typography.small, typography.italic]}>
-          { title }
-        </Text>
+      <View style={styles.column}>
+        <View style={styles.startRow}>
+          { icon }
+          <Text style={[typography.small, typography.italic]}>
+            { title }
+          </Text>
+        </View>
+        { !!TINY_PHONE && <View style={space.paddingTopXs}>{description}</View> }
       </View>
       <View style={styles.endRow}>
-        { editable && (
-          <View style={[styles.startRow, space.paddingRightS]}>
-            <Text style={typography.text}>
-              { count }
-            </Text>
-            { !hideTotal && (
-              <Text style={[typography.small, { color: colors.lightText }]}>
-                { t` (new total: ${total})` }
-              </Text>
-            ) }
-          </View>
-        ) }
+        { !TINY_PHONE && description }
         { editable ? (
           <PlusMinusButtons
             count={total}
@@ -175,6 +186,7 @@ function UpgradeDeckRow({
 }: Props) {
   const investigatorCounter = originalInvestigatorCounter || campaignLog.campaignData.redirect_experience || undefined;
   const { colors, typography, width } = useContext(StyleContext);
+  const dispatch = useDispatch();
   const { userId, arkhamDbUser } = useContext(ArkhamCardsAuthContext);
   const { campaignGuide } = useContext(CampaignGuideContext);
   const earnedXp = useMemo(() => {
@@ -245,7 +257,7 @@ function UpgradeDeckRow({
   useEffect(() => {
     // We only want to save once.
     if (choices === undefined && !skipDeckSave && deck && !deck.id.local && deck.id.arkhamdb_user === arkhamDbUser) {
-      fetchPrivateDeck(userId, actions, deck.id);
+      dispatch(fetchPrivateDeck(userId, actions, deck.id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -380,7 +392,7 @@ function UpgradeDeckRow({
           <View style={space.paddingS}>
             <AppIcon name="upgrade" size={32} color={COLORS.D20} />
           </View>
-          <Text style={[typography.large, { color: COLORS.D30 }]}>
+          <Text style={[typography.large, { color: COLORS.D30, flexShrink: 1 }]} adjustsFontSizeToFit>
             { t`Earned XP:` }
           </Text>
         </View>

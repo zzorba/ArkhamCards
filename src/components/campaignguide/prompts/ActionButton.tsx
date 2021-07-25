@@ -86,11 +86,11 @@ export default function ActionButton({ color, loading, onPress, title, leftIcon,
       <View style={styles.button}>
         { leftIconContent}
         { !hideText && (
-          <Text style={[
+          <Text numberOfLines={2} style={[
             leftIcon ? space.marginLeftS : undefined,
             space.paddingTopXs,
             typography.cardName,
-            { color: textColor },
+            { color: textColor, flexShrink: 1 },
           ]}>
             { title }
           </Text>
