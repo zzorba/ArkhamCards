@@ -8420,6 +8420,7 @@
     {
       "id": "maybe_slay_constance",
       "hidden": true,
+      "bullet_type": "small",
       "type": "branch",
       "condition": {
         "type": "campaign_log_cards",
@@ -8443,6 +8444,7 @@
     {
       "id": "maybe_slay_jordan",
       "hidden": true,
+      "bullet_type": "small",
       "type": "branch",
       "condition": {
         "type": "campaign_log_cards",
@@ -8466,6 +8468,7 @@
     {
       "id": "maybe_slay_haruko",
       "hidden": true,
+      "bullet_type": "small",
       "type": "branch",
       "condition": {
         "type": "campaign_log_cards",
@@ -8489,6 +8492,7 @@
     {
       "id": "maybe_slay_sebastien",
       "hidden": true,
+      "bullet_type": "small",
       "type": "branch",
       "condition": {
         "type": "campaign_log_cards",
@@ -8512,6 +8516,7 @@
     {
       "id": "maybe_slay_ashleigh",
       "hidden": true,
+      "bullet_type": "small",
       "type": "branch",
       "condition": {
         "type": "campaign_log_cards",
@@ -17514,6 +17519,7 @@
     {
       "id": "maybe_slay_constance",
       "hidden": true,
+      "bullet_type": "small",
       "type": "branch",
       "condition": {
         "type": "campaign_log_cards",
@@ -17537,6 +17543,7 @@
     {
       "id": "maybe_slay_jordan",
       "hidden": true,
+      "bullet_type": "small",
       "type": "branch",
       "condition": {
         "type": "campaign_log_cards",
@@ -17560,6 +17567,7 @@
     {
       "id": "maybe_slay_haruko",
       "hidden": true,
+      "bullet_type": "small",
       "type": "branch",
       "condition": {
         "type": "campaign_log_cards",
@@ -17583,6 +17591,7 @@
     {
       "id": "maybe_slay_sebastien",
       "hidden": true,
+      "bullet_type": "small",
       "type": "branch",
       "condition": {
         "type": "campaign_log_cards",
@@ -17606,6 +17615,7 @@
     {
       "id": "maybe_slay_ashleigh",
       "hidden": true,
+      "bullet_type": "small",
       "type": "branch",
       "condition": {
         "type": "campaign_log_cards",

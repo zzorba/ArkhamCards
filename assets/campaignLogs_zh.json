@@ -904,11 +904,11 @@
           },
           {
             "id": "alive",
-            "text": "Gavriella is alive."
+            "text": "加弗瑞拉還活著。"
           },
           {
             "id": "dead",
-            "text": "Gavriella Mizrah is dead."
+            "text": "加弗瑞拉·米兹拉克已死亡。"
           },
           {
             "id": "on_gavriellas_trail",
@@ -941,11 +941,11 @@
           },
           {
             "id": "alive",
-            "text": "Jerome is alive."
+            "text": "傑羅姆還活著。"
           },
           {
             "id": "dead",
-            "text": "Jerome Davids is dead."
+            "text": "傑羅姆·戴維斯已死亡。"
           },
           {
             "id": "on_jeromes_trail",
@@ -978,11 +978,11 @@
           },
           {
             "id": "alive",
-            "text": "Valentino is alive."
+            "text": "瓦倫蒂諾還活著。"
           },
           {
             "id": "dead",
-            "text": "Valentino Rivas is dead."
+            "text": "瓦倫蒂諾·里瓦斯已死亡。"
           },
           {
             "id": "on_valentinos_trail",
@@ -1015,11 +1015,11 @@
           },
           {
             "id": "alive",
-            "text": "Penny is alive."
+            "text": "佩妮還活著。"
           },
           {
             "id": "dead",
-            "text": "Penny White is dead."
+            "text": "佩妮·懷特已死亡。"
           },
           {
             "id": "on_pennys_trail",
@@ -1041,31 +1041,31 @@
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
-            "text": "Anette Mason is possessed by evil."
+            "text": "安妮特·梅森被魔鬼附身。"
           },
           {
             "id": "anette_taught_you_the_spells_of_old",
-            "text": "Anette taught you the spells of old."
+            "text": "安妮特將古老的法術傳授給你。"
           },
           {
             "id": "arrested_anette",
-            "text": "the investigators arrested Anette."
+            "text": "調查員逮捕了安妮特。"
           },
           {
             "id": "arrested_sanford",
-            "text": "the investigators arrested Sanford."
+            "text": "調查員逮捕了桑福德。"
           },
           {
             "id": "asked_anette_for_assistance",
-            "text": "the investigators asked Anette for assistance."
+            "text": "調查員請求安妮特的幫助。"
           },
           {
             "id": "asked_sanford_for_assistance",
-            "text": "the investigators asked Sanford for assistance."
+            "text": "調查員請求桑福德的幫助。"
           },
           {
             "id": "assumed_control_of_the_silver_twilight_lodge",
-            "text": "the investigators assumed control of the Silver Twilight Lodge."
+            "text": "調查員奪取了銀暮秘社的控制權。"
           },
           {
             "id": "azathoth_devoured_the_universe",
@@ -1081,11 +1081,11 @@
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
-            "text": "Carl Sanford possesses the secrets of the universe."
+            "text": "卡爾·桑福德知曉了宇宙之秘。"
           },
           {
             "id": "continued_alone",
-            "text": "the investigators continued alone."
+            "text": "調查員獨自繼續。"
           },
           {
             "id": "coven_of_keziah_holds_the_world_in_its_grasp",
@@ -1097,11 +1097,11 @@
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
-            "text": "the investigators discovered how to open the puzzle box.."
+            "text": "調查員發現了打開機關盒的方法。"
           },
           {
             "id": "doom_draws_ever_closer",
-            "text": "doom draws ever closer."
+            "text": "末日漸近。"
           },
           {
             "id": "enemies_of_the_lodge",
@@ -1117,15 +1117,15 @@
           },
           {
             "id": "guardian_of_the_trap_defeated",
-            "text": "the guardian of the trap emerged and was defeated."
+            "text": "陷阱的守衛者出現並被打敗。"
           },
           {
             "id": "guardian_of_the_trap_emerged",
-            "text": "the guardian of the trap emerged."
+            "text": "陷阱的守衛者現身。"
           },
           {
             "id": "heretics_released",
-            "text": "#X# heretics were unleashed unto Arkham."
+            "text": "有#X#名異端者被釋放到阿卡姆"
           },
           {
             "id": "hid_knowledge_of_coven",
@@ -1133,7 +1133,7 @@
           },
           {
             "id": "inducted_into_the_inner_circle",
-            "text": "the investigators were inducted into the Inner Circle."
+            "text": "調查員受到加入核心圈的感召。"
           },
           {
             "id": "investigators_escaped_the_spectral_realm",
@@ -1149,7 +1149,7 @@
           },
           {
             "id": "kept_mementos_hidden",
-            "text": "the investigators kept their mementos hidden."
+            "text": "調查員隱瞞了自己發現的遺留記憶。"
           },
           {
             "id": "learned_nothing_of_the_lodges_schemes",
@@ -1165,7 +1165,7 @@
           },
           {
             "id": "path_winds_before_you",
-            "text": "the path winds before you: #X#"
+            "text": "你面前的道路蜿蜒曲折：#X#"
           },
           {
             "id": "pieces_of_evidence",
@@ -1181,11 +1181,11 @@
           },
           {
             "id": "sided_with_the_coven",
-            "text": "the investigators sided with the coven."
+            "text": "調查員支持女巫集會。"
           },
           {
             "id": "sided_with_the_lodge",
-            "text": "the investigators sided with the Lodge."
+            "text": "調查員支持秘社。"
           },
           {
             "id": "signed_the_black_book",
@@ -1193,15 +1193,15 @@
           },
           {
             "id": "survived_the_watchers_embrace",
-            "text": "the investigators survived the watcher’s embrace."
+            "text": "調查員從看守人之擁下存活。"
           },
           {
             "id": "told_lodge_about_coven",
-            "text": "調查員將女巫集會的事情告訴社。"
+            "text": "調查員將女巫集會的事情告訴秘社。"
           },
           {
             "id": "true_work_of_silver_twilight_lodge_has_begun",
-            "text": "the true work of the Silver Twilight Lodge has begun."
+            "text": "銀暮秘社的真正計劃開始實行。"
           },
           {
             "id": "witches_spell_broken",
@@ -1311,7 +1311,7 @@
           },
           {
             "id": "corn_husk_doll",
-            "text": "Corn Husk Doll"
+            "text": "玉米皮娃娃"
           },
           {
             "id": "gilmans_journal",
@@ -1339,7 +1339,7 @@
           },
           {
             "id": "wisp_of_spectral_mist",
-            "text": "Wisp of Spectral Mist"
+            "text": "一縷鬼靈迷霧"
           },
           {
             "id": "worn_crucific",
@@ -1958,11 +1958,11 @@
           },
           {
             "id": "alive",
-            "text": "Gavriella is alive."
+            "text": "加弗瑞拉還活著。"
           },
           {
             "id": "dead",
-            "text": "Gavriella Mizrah is dead."
+            "text": "加弗瑞拉·米兹拉克已死亡。"
           },
           {
             "id": "on_gavriellas_trail",
@@ -1995,11 +1995,11 @@
           },
           {
             "id": "alive",
-            "text": "Jerome is alive."
+            "text": "傑羅姆還活著。"
           },
           {
             "id": "dead",
-            "text": "Jerome Davids is dead."
+            "text": "傑羅姆·戴維斯已死亡。"
           },
           {
             "id": "on_jeromes_trail",
@@ -2032,11 +2032,11 @@
           },
           {
             "id": "alive",
-            "text": "Valentino is alive."
+            "text": "瓦倫蒂諾還活著。"
           },
           {
             "id": "dead",
-            "text": "Valentino Rivas is dead."
+            "text": "瓦倫蒂諾·里瓦斯已死亡。"
           },
           {
             "id": "on_valentinos_trail",
@@ -2069,11 +2069,11 @@
           },
           {
             "id": "alive",
-            "text": "Penny is alive."
+            "text": "佩妮還活著。"
           },
           {
             "id": "dead",
-            "text": "Penny White is dead."
+            "text": "佩妮·懷特已死亡。"
           },
           {
             "id": "on_pennys_trail",
@@ -2095,31 +2095,31 @@
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
-            "text": "Anette Mason is possessed by evil."
+            "text": "安妮特·梅森被魔鬼附身。"
           },
           {
             "id": "anette_taught_you_the_spells_of_old",
-            "text": "Anette taught you the spells of old."
+            "text": "安妮特將古老的法術傳授給你。"
           },
           {
             "id": "arrested_anette",
-            "text": "the investigators arrested Anette."
+            "text": "調查員逮捕了安妮特。"
           },
           {
             "id": "arrested_sanford",
-            "text": "the investigators arrested Sanford."
+            "text": "調查員逮捕了桑福德。"
           },
           {
             "id": "asked_anette_for_assistance",
-            "text": "the investigators asked Anette for assistance."
+            "text": "調查員請求安妮特的幫助。"
           },
           {
             "id": "asked_sanford_for_assistance",
-            "text": "the investigators asked Sanford for assistance."
+            "text": "調查員請求桑福德的幫助。"
           },
           {
             "id": "assumed_control_of_the_silver_twilight_lodge",
-            "text": "the investigators assumed control of the Silver Twilight Lodge."
+            "text": "調查員奪取了銀暮秘社的控制權。"
           },
           {
             "id": "azathoth_devoured_the_universe",
@@ -2135,11 +2135,11 @@
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
-            "text": "Carl Sanford possesses the secrets of the universe."
+            "text": "卡爾·桑福德知曉了宇宙之秘。"
           },
           {
             "id": "continued_alone",
-            "text": "the investigators continued alone."
+            "text": "調查員獨自繼續。"
           },
           {
             "id": "deceiving_the_lodge",
@@ -2147,11 +2147,11 @@
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
-            "text": "the investigators discovered how to open the puzzle box.."
+            "text": "調查員發現了打開機關盒的方法。"
           },
           {
             "id": "doom_draws_ever_closer",
-            "text": "doom draws ever closer."
+            "text": "末日漸近。"
           },
           {
             "id": "enemies_of_the_lodge",
@@ -2159,15 +2159,15 @@
           },
           {
             "id": "guardian_of_the_trap_defeated",
-            "text": "the guardian of the trap emerged and was defeated."
+            "text": "陷阱的守衛者出現並被打敗。"
           },
           {
             "id": "guardian_of_the_trap_emerged",
-            "text": "the guardian of the trap emerged."
+            "text": "陷阱的守衛者現身。"
           },
           {
             "id": "heretics_released",
-            "text": "#X# heretics were unleashed unto Arkham."
+            "text": "有#X#名異端者被釋放到阿卡姆"
           },
           {
             "id": "hid_knowledge_of_coven",
@@ -2175,7 +2175,7 @@
           },
           {
             "id": "inducted_into_the_inner_circle",
-            "text": "the investigators were inducted into the Inner Circle."
+            "text": "調查員受到加入核心圈的感召。"
           },
           {
             "id": "investigators_escaped_the_spectral_realm",
@@ -2191,7 +2191,7 @@
           },
           {
             "id": "kept_mementos_hidden",
-            "text": "the investigators kept their mementos hidden."
+            "text": "調查員隱瞞了自己發現的遺留記憶。"
           },
           {
             "id": "learned_nothing_of_the_lodges_schemes",
@@ -2207,7 +2207,7 @@
           },
           {
             "id": "path_winds_before_you",
-            "text": "the path winds before you: #X#"
+            "text": "你面前的道路蜿蜒曲折：#X#"
           },
           {
             "id": "pieces_of_evidence",
@@ -2223,11 +2223,11 @@
           },
           {
             "id": "sided_with_the_coven",
-            "text": "the investigators sided with the coven."
+            "text": "調查員支持女巫集會。"
           },
           {
             "id": "sided_with_the_lodge",
-            "text": "the investigators sided with the Lodge."
+            "text": "調查員支持秘社。"
           },
           {
             "id": "signed_the_black_book",
@@ -2235,15 +2235,15 @@
           },
           {
             "id": "survived_the_watchers_embrace",
-            "text": "the investigators survived the watcher’s embrace."
+            "text": "調查員從看守人之擁下存活。"
           },
           {
             "id": "told_lodge_about_coven",
-            "text": "調查員將女巫集會的事情告訴社。"
+            "text": "調查員將女巫集會的事情告訴秘社。"
           },
           {
             "id": "true_work_of_silver_twilight_lodge_has_begun",
-            "text": "the true work of the Silver Twilight Lodge has begun."
+            "text": "銀暮秘社的真正計劃開始實行。"
           },
           {
             "id": "witches_spell_broken",
@@ -2313,7 +2313,7 @@
         "entries": [
           {
             "id": "corn_husk_doll",
-            "text": "Corn Husk Doll"
+            "text": "玉米皮娃娃"
           },
           {
             "id": "gilmans_journal",
@@ -2337,7 +2337,7 @@
           },
           {
             "id": "wisp_of_spectral_mist",
-            "text": "Wisp of Spectral Mist"
+            "text": "一縷鬼靈迷霧"
           },
           {
             "id": "worn_crucific",

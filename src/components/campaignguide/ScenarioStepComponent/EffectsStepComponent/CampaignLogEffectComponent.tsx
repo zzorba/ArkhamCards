@@ -100,6 +100,7 @@ function CampaignLogEffectsContent({ effect, input }: {
   }
   if (effect.id) {
     const cardSection = effect.section === '$input_value' && input?.length ? input[0] : undefined;
+    const cardCode = effect.type === 'campaign_log_cards' && effect.id
     const logEntry = campaignGuide.logEntry(
       cardSection || effect.section,
       effect.id === '$input_value' && input?.length ? input[0] : effect.id

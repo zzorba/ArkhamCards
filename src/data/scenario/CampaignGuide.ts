@@ -588,6 +588,15 @@ export default class CampaignGuide {
       this.log.sections,
       s => s.section === sectionId
     );
+
+    if (id.match(CARD_REGEX)) {
+      return {
+        type: 'card',
+        section: section.title,
+        code: id,
+      };
+    }
+
     if (textSection) {
       if (id === '$num_entries') {
         return {
@@ -616,13 +625,6 @@ export default class CampaignGuide {
       }
     }
 
-    if (id.match(CARD_REGEX)) {
-      return {
-        type: 'card',
-        section: section.title,
-        code: id,
-      };
-    }
     // Try input value?
     if (sectionId !== '$input_value') {
       try {
