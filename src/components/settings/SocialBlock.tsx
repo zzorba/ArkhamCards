@@ -41,16 +41,8 @@ export default function SocialBlock() {
           Общайтесь с другими поклонниками карточного «Ужаса Аркхэма» в русскоязычных сообществах:
         </Text>
         <DeckButton
-          icon="headset"
-          color="gold"
-          onPress={tipPressed}
-          title="Донат на аудио"
-          detail="Поддержать авторов аудиосопровождения"
-          topMargin={s}
-          bottomMargin={s}
-        />
-        <DeckButton
           icon="discord"
+          topMargin={s}
           bottomMargin={s}
           onPress={discordPressed}
           title={t`Discord`}
@@ -65,6 +57,14 @@ export default function SocialBlock() {
           icon="telegram"
           onPress={telegramPressed}
           title={t`Telegram`}
+          bottomMargin={s}
+        />
+        <DeckButton
+          icon="headset"
+          color="gold"
+          onPress={tipPressed}
+          title="Донат на аудио"
+          detail="Поддержать авторов аудиосопровождения"
         />
       </RoundedFactionBlock>
     </View>

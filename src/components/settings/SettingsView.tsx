@@ -231,7 +231,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
                   onValueChange={justifyContentChanged}
                 />
               ) }
-              <DissonantVoicesLoginButton showAlert={showAlert} last />
+              { lang !== 'ru' && <DissonantVoicesLoginButton showAlert={showAlert} last /> }
             </RoundedFactionBlock>
           </View>
           <SocialBlock />
