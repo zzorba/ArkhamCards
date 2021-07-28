@@ -1840,10 +1840,10 @@ msgid "Standard"
 msgstr "보통"
 
 msgid "Hard"
-msgstr "전문가"
+msgstr "어려움"
 
 msgid "Expert"
-msgstr "어려움"
+msgstr "전문가"
 
 msgid "Night of the Zealot"
 msgstr "광신도의 밤"
@@ -4710,7 +4710,7 @@ msgstr "화신"
 
 msgctxt "trait"
 msgid "Basement"
-msgstr ""
+msgstr "지하층"
 
 msgctxt "trait"
 msgid "Bayou"
@@ -5350,7 +5350,7 @@ msgstr "연구"
 
 msgctxt "trait"
 msgid "Return"
-msgstr ""
+msgstr "돌아온"
 
 msgctxt "trait"
 msgid "Ritual"
