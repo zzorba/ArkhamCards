@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { InteractionManager, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
-import { filter, findLast, keys, last } from 'lodash';
+import { filter, findLast, find, keys, last } from 'lodash';
 import { t } from 'ttag';
 import { Navigation } from 'react-native-navigation';
 
@@ -86,7 +86,8 @@ export default function CampaignDetailTab({
   const { showTraumaDialog, traumaDialog } = useTraumaDialog(updateTrauma, true);
   const chaosBagDisabled = useMemo(() => !keys(processedCampaign.campaignLog.chaosBag).length, [processedCampaign.campaignLog.chaosBag]);
   const allInvestigators = useMemo(() => filter(campaignInvestigators, investigator => !processedCampaign.campaignLog.isEliminated(investigator)), [campaignInvestigators, processedCampaign.campaignLog]);
-  const currentScenario = findLast(processedCampaign.scenarios, s => s.type === 'started');
+  const currentScenario = findLast(processedCampaign.scenarios, s => (s.type === 'started' || s.type === 'completed') && s.scenarioGuide.scenarioType() === 'scenario') ||
+    find(processedCampaign.scenarios, s => s.type === 'playable' && s.scenarioGuide.scenarioType() === 'scenario');
 
   const [chaosBagDialog, showChaosBag] = useChaosBagDialog({
     componentId,
