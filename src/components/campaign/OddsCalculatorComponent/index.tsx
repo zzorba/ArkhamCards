@@ -1,7 +1,7 @@
 import React, { useContext, useMemo, useState } from 'react';
-import { filter, find, flatMap, forEach, keys, map } from 'lodash';
+import { filter, find, flatMap, forEach, groupBy, sortBy, keys, map, range } from 'lodash';
 import { ScrollView, StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
 
 import InvestigatorOddsComponent from './InvestigatorOddsComponent';
@@ -10,12 +10,9 @@ import VariableTokenInput from './VariableTokenInput';
 import CardTextComponent from '@components/card/CardTextComponent';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import { campaignColor, Scenario, scenarioFromCard } from '@components/campaign/constants';
-import Difficulty from '@components/campaign/Difficulty';
-import GameHeader from '@components/campaign/GameHeader';
-import BackgroundIcon from '@components/campaign/BackgroundIcon';
-import { CampaignDifficulty, CUSTOM } from '@actions/types';
-import { ChaosBag, CHAOS_TOKEN_COLORS, SPECIAL_TOKENS, SpecialTokenValue, ChaosTokenType } from '@app_constants';
+import { difficultyString, Scenario, scenarioFromCard } from '@components/campaign/constants';
+import { CampaignDifficulty } from '@actions/types';
+import { ChaosBag, SPECIAL_TOKENS, SpecialTokenValue, ChaosTokenType, CHAOS_TOKENS, ChaosTokenValue, isSpecialToken, getChaosTokenValue } from '@app_constants';
 import Card from '@data/types/Card';
 import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -26,10 +23,14 @@ import { SCENARIO_CARDS_QUERY } from '@data/sqlite/query';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useSelector } from 'react-redux';
 import { getAllStandalonePacks } from '@reducers';
-import { Item, usePickerDialog } from '@components/deck/dialogs';
+import { Item, useDialog } from '@components/deck/dialogs';
 import EncounterIcon from '@icons/EncounterIcon';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
-import ArkhamButton from '@components/core/ArkhamButton';
+import DeckButton from '@components/deck/controls/DeckButton';
+import AppIcon from '@icons/AppIcon';
+import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
+import NewDialog from '@components/core/NewDialog';
+import ChaosToken from '../ChaosToken';
 
 interface Props {
   campaign: SingleCampaignT;
@@ -83,7 +84,7 @@ function parseSpecialTokenValuesText(scenarioText: string | undefined): SpecialT
         default: {
           const line = linesByToken[token];
           if (line) {
-            const valueRegex = new RegExp(`\\[(${token})\\]\\s*:?\\s([-+][0-9X])(\\. )?(.*)`);
+            const valueRegex = new RegExp(`\\[(${token})\\][^:]*?:?\\s([-+][0-9X])(\\. )?(.*)`);
             if (valueRegex.test(line)) {
               const match = line.match(valueRegex);
               if (match) {
@@ -119,10 +120,94 @@ function parseSpecialTokenValuesText(scenarioText: string | undefined): SpecialT
   return scenarioTokens;
 }
 
-interface CurrentScenario {
-  card: Card;
-  text: string;
+function NumberInput({ title, value, color, inc, dec }: {
+  title: string;
+  value: number;
+  color: 'red' | 'green';
+  inc: () => void;
+  dec: () => void;
+}) {
+  const { fontScale, colors, typography } = useContext(StyleContext);
+  const size = 40 * fontScale;
+  return (
+    <View style={styles.numberInput}>
+      <View style={space.paddingSideS}>
+        <PlusMinusButtons
+          dialogStyle
+          count={value}
+          size={36}
+          onIncrement={inc}
+          onDecrement={dec}
+          countRender={
+            <View style={[space.marginSideXs, styles.center, { borderRadius: size / 2, width: size, height: size, backgroundColor: color === 'red' ? colors.warn : colors.faction.rogue.lightBackground }]}>
+              <Text style={[typography.counter, typography.center, typography.bold, { color: color === 'red' ? colors.L30 : colors.D30 }]}>
+                { value }
+              </Text>
+            </View>
+          }
+          color="dark"
+        />
+      </View>
+      <Text style={[space.marginTopS, typography.small, typography.italic]}>
+        { title }
+      </Text>
+    </View>
+  );
 }
+
+function ChaosBagOddsPile({
+  chaosBag,
+  specialTokenValues,
+}: {
+  chaosBag: ChaosBag;
+  specialTokenValues: SpecialTokenValue[];
+}) {
+  const { width } = useContext(StyleContext);
+  const tokensByValue = useMemo(() => {
+    return sortBy(map(groupBy(flatMap(CHAOS_TOKENS, token => {
+      const count = chaosBag[token] || 0;
+      if (!count) {
+        return [];
+      }
+      const value: undefined | ChaosTokenValue = getChaosTokenValue(token, specialTokenValues);
+      if (value === undefined) {
+        return [];
+      }
+      return map(range(0, count), () => {
+        return {
+          value,
+          token,
+        };
+      });
+    }), x => x.value), (tokens, value) => {
+      return {
+        value,
+        tokens: map(tokens, t => t.token),
+      };
+    }), x => -x.value);
+  }, [chaosBag, specialTokenValues]);
+  return (
+    <ScrollView
+      showsHorizontalScrollIndicator={false}
+      horizontal
+      overScrollMode="never"
+      contentContainerStyle={[styles.tokenPileRow, space.paddingLeftXs, { minWidth: width }]}
+    >
+      { map(tokensByValue, x => (
+        <View key={x.value} style={[styles.tokenPileColumn, space.paddingRightXs]}>
+          {map(x.tokens, (t, idx) => (
+            <ChaosToken
+              key={idx}
+              iconKey={t}
+              size="extraTiny"
+            />
+          ))}
+        </View>
+      ))}
+    </ScrollView>
+  );
+}
+
 export default function OddsCalculatorComponent({
   campaign,
   chaosBag: originalChaosBag,
@@ -132,8 +217,17 @@ export default function OddsCalculatorComponent({
   scenarioCard,
   scenarioCardText,
   scenarioCode,
-  difficulty,
+  difficulty: defaultDifficulty,
 }: Props) {
+  const difficultyText = useMemo(() => {
+    return {
+      easy: t`Easy difficulty`,
+      standard: t`Standard difficulty`,
+      hard: t`Hard difficulty`,
+      expert: t`Expert difficulty`,
+    };
+  }, []);
+  const [difficulty, setDifficulty] = useState<CampaignDifficulty>(defaultDifficulty || CampaignDifficulty.STANDARD);
   const [scenarioCards, loading] = useCardsFromQuery({ query: SCENARIO_CARDS_QUERY });
   const [currentScenario, setCurrentScenario] = useState<Scenario | undefined>(undefined);
   const chaosBagResults = useChaosBagResults(campaign.id);
@@ -158,6 +252,7 @@ export default function OddsCalculatorComponent({
     return [newChaosBag, sealed];
   }, [originalChaosBag, chaosBagResults]);
   const { backgroundStyle, borderStyle, colors, typography, width } = useContext(StyleContext);
+  const [modifiedSkill, incModifiedSkill, decModifiedSkill] = useCounter(3, { min: 0 });
   const [testDifficulty, incTestDifficulty, decTestDifficulty] = useCounter(3, { min: 0 });
   const standalonePacks = useSelector(getAllStandalonePacks);
 
@@ -179,6 +274,7 @@ export default function OddsCalculatorComponent({
     cultist: 0,
     tablet: 0,
     elder_thing: 0,
+    elder_sign: 1,
   });
 
   const items: Item<Scenario | undefined>[] = useMemo(() => {
@@ -207,12 +303,8 @@ export default function OddsCalculatorComponent({
       }),
     ];
   }, [colors, cycleScenarios, standaloneScenarios, scenarioCode, scenarioCard, scenarioName]);
-  const { dialog, showDialog } = usePickerDialog<Scenario | undefined>({
-    title: t`Scenario`,
-    items,
-    onValueChange: setCurrentScenario,
-    selectedValue: currentScenario,
-  });
+  const name = currentScenario?.name || scenarioName;
+  const code = currentScenario?.code || scenarioCode;
 
   const encounterCode = useMemo(() => {
     const encounterCode = currentScenario && (
@@ -234,17 +326,79 @@ export default function OddsCalculatorComponent({
       undefined;
     return difficulty === CampaignDifficulty.HARD || difficulty === CampaignDifficulty.EXPERT ? scenarioCard?.back_text : scenarioCard?.text;
   }, [campaign, currentScenario, encounterCode, scenarioCardText, scenarioCards]);
+
+  const dialogContent = useMemo(() => {
+    return (
+      <View>
+        <View style={styles.row}>
+          { !!code && <EncounterIcon encounter_code={code} size={32} color={colors.D30} /> }
+          <View style={[styles.header, space.paddingLeftS]}>
+            <Text style={typography.large}>
+              { name || '' }
+            </Text>
+            { !!difficulty && <Text style={typography.smallButtonLabel}>{difficultyText[difficulty]}</Text> }
+          </View>
+        </View>
+        <View style={[styles.line, borderStyle]} />
+        { !!scenarioText && (
+          <View>
+            <CardTextComponent text={scenarioText} />
+            <View style={[styles.line, borderStyle]} />
+          </View>
+        ) }
+        <DeckBubbleHeader title={t`— Difficulty —`} />
+        { map([CampaignDifficulty.EASY, CampaignDifficulty.STANDARD, CampaignDifficulty.HARD, CampaignDifficulty.EXPERT], d => (
+          <NewDialog.PickerItem
+            key={d}
+            text={difficultyString(d)}
+            value={d}
+            onValueChange={setDifficulty}
+            // tslint:disable-next-line
+            selected={difficulty === d}
+            last={d === CampaignDifficulty.EXPERT}
+          />
+        )) }
+        <DeckBubbleHeader title={t`— Available Scenarios —`} />
+        { map(items, (item, idx) => item.type === 'header' ? (
+          <DeckBubbleHeader title={item.title} key={idx} />
+        ) : (
+          <NewDialog.PickerItem
+            key={idx}
+            iconName={item.icon}
+            iconNode={item.iconNode}
+            text={item.title}
+            value={item.value}
+            onValueChange={setCurrentScenario}
+            // tslint:disable-next-line
+            selected={currentScenario === item.value}
+            last={idx === items.length - 1 || items[idx + 1].type === 'header'}
+          />
+        )) }
+      </View>
+    );
+  }, [items, setCurrentScenario, currentScenario, name, difficulty, scenarioText, borderStyle, difficultyText, typography, code, colors]);
+  const { dialog, showDialog } = useDialog({
+    title: t`Scenario settings`,
+    content: dialogContent,
+    alignment: 'bottom',
+    allowDismiss: true,
+  });
+
+
   const specialTokenValues = useMemo(() => parseSpecialTokenValuesText(scenarioText), [scenarioText]);
-  const allSpecialTokenValues = useMemo(() => {
-    return map(specialTokenValues, tokenValue => {
-      if (tokenValue.value === 'X') {
-        return {
-          token: tokenValue.token,
-          value: -(xValue[tokenValue.token] || 0),
-        };
-      }
-      return tokenValue;
-    });
+  const allSpecialTokenValues: SpecialTokenValue[] = useMemo(() => {
+    return [
+      { token: 'elder_sign', value: xValue.elder_sign || 0 },
+      ...map(specialTokenValues, tokenValue => {
+        if (tokenValue.value === 'X') {
+          return {
+            token: tokenValue.token,
+            value: -(xValue[tokenValue.token] || 0),
+          };
+        }
+        return tokenValue;
+      }),
+    ];
   }, [specialTokenValues, xValue]);
 
   const investigatorRows = useMemo(() => {
@@ -287,7 +441,6 @@ export default function OddsCalculatorComponent({
             <VariableTokenInput
               key={token.token}
               symbol={token.token}
-              color={CHAOS_TOKEN_COLORS[token.token]}
               value={xValue[token.token] || 0}
               text={token.xText}
               increment={incXValue}
@@ -304,40 +457,58 @@ export default function OddsCalculatorComponent({
       <LoadingSpinner />
     );
   }
-  const name = currentScenario?.name || scenarioName;
-  const code = currentScenario?.code || scenarioCode;
   return (
     <View style={[styles.container, backgroundStyle]}>
       <KeepAwake />
       <ScrollView style={[styles.container, backgroundStyle]}>
-        <View style={[styles.sectionRow, borderStyle]}>
-          { campaign.cycleCode !== CUSTOM && !!code && (
-            <BackgroundIcon
-              code={code}
-              color={campaignColor(campaign.cycleCode, colors)}
-            />
-          ) }
-          <View style={styles.button}>
-            { !!difficulty && <Difficulty difficulty={difficulty} /> }
-            { !!name && <View style={space.marginTopXs}><GameHeader text={name} /></View> }
-            { !!scenarioText && (
-              <CardTextComponent text={scenarioText} />
-            ) }
-          </View>
-          <ArkhamButton
-            icon="campaign"
-            title={t`Change Scenario`}
+        <View style={space.paddingS}>
+          <DeckButton
+            color="light_gray"
+            title={name || ''}
+            detail={difficulty ? difficultyText[difficulty] : undefined}
+            encounterIcon={code}
+            bigEncounterIcon
+            rightNode={
+              <View style={styles.row}>
+                <Text style={[typography.smallButtonLabel, { color: colors.D10 }, typography.right, space.marginRightXs]}>
+                  { t`Reference\ncard` }
+                </Text>
+                <AppIcon name="special_cards" size={26} color={colors.D10} />
+              </View>
+            }
             onPress={showDialog}
           />
         </View>
-        { specialTokenInputs }
-        <View style={[styles.sectionRow, borderStyle]}>
-          <Text style={typography.small}>{ t`Chaos Bag` }</Text>
-          <ChaosBagLine
-            chaosBag={chaosBag}
-            width={width - m * 2}
+        <ChaosBagOddsPile
+          chaosBag={chaosBag}
+          specialTokenValues={allSpecialTokenValues}
+        />
+        <View style={[styles.difficultyRow, space.marginTopS]}>
+          <NumberInput
+            title={t`Modified skill`}
+            inc={incModifiedSkill}
+            dec={decModifiedSkill}
+            value={modifiedSkill}
+            color="green"
+          />
+          <Text style={[typography.subHeaderText, typography.dark]}>{c('versus abbreviation').t`VS`}</Text>
+          <NumberInput
+            title={t`Test difficulty`}
+            inc={incTestDifficulty}
+            dec={decTestDifficulty}
+            value={testDifficulty}
+            color="red"
           />
         </View>
+        <View style={[styles.line, borderStyle, space.marginSideS]} />
+        <VariableTokenInput
+          symbol="elder_sign"
+          value={xValue.elder_sign || 0}
+          text={t`Your investigator's modifier`}
+          increment={incXValue}
+          decrement={decXValue}
+        />
+        { specialTokenInputs }
         { keys(sealedChaosBag).length > 0 && (
           <View style={[styles.sectionRow, borderStyle]}>
             <Text style={typography.small}>{ t`Sealed tokens` }</Text>
@@ -348,30 +519,7 @@ export default function OddsCalculatorComponent({
             />
           </View>
         ) }
-        { investigatorRows }
-        <View style={styles.finePrint}>
-          <Text style={typography.small}>
-            { t`Note: chaos tokens that cause additional tokens to be revealed does not show correct odds for the "Draw Two Pick One" and similar multi-draw situations.` }
-          </Text>
-        </View>
       </ScrollView>
-      <SafeAreaView>
-        <View style={[styles.footer, borderStyle]}>
-          <View style={[styles.countRow, styles.footerRow, { backgroundColor: colors.L20 }]}>
-            <Text style={typography.text}>{ t`Difficulty` }</Text>
-            <Text style={[{ color: colors.darkText, fontSize: 30, marginLeft: 10, marginRight: 10 }]}>
-              { testDifficulty }
-            </Text>
-            <PlusMinusButtons
-              count={testDifficulty}
-              size={36}
-              onIncrement={incTestDifficulty}
-              onDecrement={decTestDifficulty}
-              color="dark"
-            />
-          </View>
-        </View>
-      </SafeAreaView>
       { dialog }
     </View>
   );
@@ -386,21 +534,42 @@ const styles = StyleSheet.create({
     padding: s,
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
-  footer: {
-    borderTopWidth: 1,
+  line: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    marginTop: s,
+    marginBottom: s,
   },
-  footerRow: {
-    padding: s,
+  header: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
   },
-  countRow: {
+  row: {
+    flexDirection: 'row',
+  },
+  numberInput: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  difficultyRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  finePrint: {
-    padding: s,
+  center: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  button: {
-    padding: s,
+  tokenPileRow: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+  },
+  tokenPileColumn: {
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
 });
