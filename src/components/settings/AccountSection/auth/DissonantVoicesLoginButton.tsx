@@ -47,7 +47,11 @@ export default function DissonantVoicesLoginButton({ last, showAlert }: Props) {
         loading={loading}
         last={last}
       />
-      { !!error && <View style={space.paddingS}><Text style={[typography.text, typography.error]}>{ error }</Text></View>}
+      { !!error && (
+        <View style={space.paddingS}>
+          <Text style={[typography.text, typography.error]}>{ error }</Text>
+        </View>
+      ) }
     </View>
   );
 }

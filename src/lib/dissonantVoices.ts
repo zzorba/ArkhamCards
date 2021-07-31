@@ -91,7 +91,7 @@ export async function authorizeDissonantVoices(): Promise<DissonantVoicesAuthRes
   if (!is_patron) {
     return {
       success: false,
-      error: t`Sorry, you don't seem to be a Mythos Buster patron.`,
+      error: t`Sorry, you don't seem to be a Mythos Buster patron.\nIt can take up to 24hrs before Patreon updates your membership status. If you are still experiencing problems after 24hrs, please contact Mythos Busters via Patreon or on the Discord channel for help with this issue.`,
     };
   }
   return {
