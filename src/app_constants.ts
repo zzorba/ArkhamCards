@@ -1,3 +1,5 @@
+import { find } from 'lodash';
+
 export const ENABLE_ARKHAM_CARDS_ACCOUNT = true;
 export type TypeCodeType =
   'asset' |
@@ -180,6 +182,40 @@ export interface SpecialTokenValue {
   xText?: string;
   revealAnother?: boolean;
 }
+
+export function getChaosTokenValue(token: ChaosTokenType, specialTokenValues: SpecialTokenValue[]): ChaosTokenValue | undefined {
+  switch (token) {
+    case 'bless':
+    case 'curse':
+      return undefined;
+    case 'skull':
+    case 'cultist':
+    case 'tablet':
+    case 'elder_thing':
+    case 'auto_fail':
+    case 'elder_sign': {
+      const specialValue = find(specialTokenValues, t => t.token === token);
+      if (!specialValue) {
+        return undefined;
+      }
+      if (specialValue.revealAnother || specialValue.value === 'reveal_another') {
+        return undefined;
+      }
+      return specialValue.value;
+    }
+    case '+1': return 1;
+    case '0': return 0;
+    case '-1': return -1;
+    case '-2': return -2;
+    case '-3': return -3;
+    case '-4': return -4;
+    case '-5': return -5;
+    case '-6': return -6;
+    case '-7': return -7;
+    case '-8': return -8;
+  }
+}
+
 
 export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   '+1': 3,
