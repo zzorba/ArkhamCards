@@ -51,6 +51,7 @@ const REPRINT_CARDS: {
   '07005': ['tdg'],
   '02003': ['hoth'],
   '05001': ['tftbw'],
+  '08004': ['iotv'],
 };
 
 const FEMININE_INVESTIGATORS = new Set([
