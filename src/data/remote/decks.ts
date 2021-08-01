@@ -75,13 +75,12 @@ export function uploadCampaignDeckHelper(
         uploading: true,
       });
     }
-    const promises: Promise<void>[] = [];
     while (deck) {
       const deckId = getDeckId(deck);
       if (!deck.previousDeckId) {
-        promises.push(actions.createBaseDeck(deck, campaignId));
+        await actions.createBaseDeck(deck, campaignId);
       } else {
-        promises.push(actions.createNextDeck(deck, campaignId, deck.previousDeckId));
+        await actions.createNextDeck(deck, campaignId, deck.previousDeckId);
       }
       dispatch({
         type: UPLOAD_DECK,
@@ -94,13 +93,11 @@ export function uploadCampaignDeckHelper(
       deck = deckSelector(state, deck.nextDeckId);
     }
     if (investigator) {
-      Promise.all(promises).then(() => {
-        dispatch({
-          type: SYNC_DECK,
-          campaignId,
-          investigator,
-          uploading: false,
-        });
+      dispatch({
+        type: SYNC_DECK,
+        campaignId,
+        investigator,
+        uploading: false,
       });
     }
   };
@@ -137,21 +134,25 @@ export async function syncCampaignDecksFromArkhamDB(
       const deckId = getDeckId(deck);
       const uploadedDeck = uploadedDecks[deckId.uuid];
       if (uploadedDeck) {
-        const hash = await hashDeck(baseDeck);
+        const hash = await hashDeck(deck);
         if (uploadedDeck.hash !== hash) {
           // Content changed, so we need to update the deck.
+          // console.log(`Updating deck ${deck.id} (${uploadedDeck.hash} vs ${hash})`);
           await Promise.all(map(uploadedDeck.campaignId, campaignId => actions.updateDeck(deck, campaignId)));
         }
         if (deck.nextDeckId) {
+          // console.log(`Check next deck: ${deck.nextDeckId}`);
           // It has a next deck, let's check if its properly aligned.
           const uploadedNextDeck = uploadedDecks[deck.nextDeckId.uuid];
-          if (uploadedNextDeck && (!uploadedNextDeck.deckId.local || deck.nextDeckId.id !== uploadedNextDeck.deckId.id)) {
+          if (uploadedNextDeck && (uploadedNextDeck.deckId.local || deck.nextDeckId.id !== uploadedNextDeck.deckId.id)) {
+            // console.log(`Next deck seems to be wrong, deleting it so it can be recreated later.`);
             // It already exists, but has the wrong arkhamDbID -- so we delete it, and it will be recreated later (in the loop);
             await Promise.all(map(uploadedNextDeck.campaignId, campaignId => actions.deleteDeck(uploadedNextDeck.deckId, campaignId, false)));
             delete uploadedDecks[deck.nextDeckId.uuid];
           }
         }
       } else if (deck.previousDeckId) {
+        // console.log(`Previous deck is present, so creating a new one in the chain.`);
         const previousDeckId = deck.previousDeckId;
         // This is a deck we are interested in uploading, but we don't seem to have a record on our server.
         // So we need to create a 'new' one in the chain.
@@ -159,6 +160,7 @@ export async function syncCampaignDecksFromArkhamDB(
       }
       const nextDeck: ArkhamDbDeck | undefined = deck.nextDeckId && arkhamDbDecksById[deck.nextDeckId.uuid];
       if (!nextDeck) {
+        // console.log(`Done with deck sync: ${deck.investigator_code}.`);
         // Job's done
         break;
       }

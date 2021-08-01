@@ -40,7 +40,6 @@ export default function DeckProgressComponent({
   if (!deck.previousDeckId && !deck.nextDeckId && !title && !editable) {
     return null;
   }
-
   // Actually compute the diffs.
   return (
     <View style={styles.container}>
