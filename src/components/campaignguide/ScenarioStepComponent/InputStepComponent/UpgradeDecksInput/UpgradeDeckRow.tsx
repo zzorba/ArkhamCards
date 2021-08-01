@@ -604,7 +604,7 @@ function UpgradeDeckRow({
             label={<View style={space.paddingSideS}><DeckSlotHeader title={t`Exiled cards` } /></View>}
             exileCounts={exileCounts}
             updateExileCount={onExileCountChange}
-            disabled={saving}
+            disabled={saving || choices !== undefined}
           >
             { exileSection }
           </ExileCardSelectorComponent>
