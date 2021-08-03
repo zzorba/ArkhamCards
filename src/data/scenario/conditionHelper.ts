@@ -38,6 +38,7 @@ import {
   DefaultOption,
   CampaignLogCountCondition,
   CampaignLogInvestigatorCountCondition,
+  MathCondition,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import Card from '@data/types/Card';
@@ -571,6 +572,8 @@ export function multiConditionResult(
               return 0;
           }
         }
+        case 'math':
+          return mathConditionResult(subCondition, campaignLog).option ? 1 : 0;
       }
     });
   return binaryConditionResult(
@@ -641,6 +644,41 @@ export function campaignLogInvestigatorCountConditionResult(condition: CampaignL
   }
 }
 
+function mathConditionResult(condition: MathCondition, campaignLog: GuidedCampaignLog): BinaryResult | NumberResult {
+  switch (condition.operation) {
+    case 'equals':
+      return mathEqualsConditionResult(condition, campaignLog);
+    case 'sum': {
+      const opA = getOperand(condition.opA, campaignLog);
+      const opB = getOperand(condition.opB, campaignLog);
+      return numberConditionResult(
+        opA + opB,
+        condition.options,
+        condition.defaultOption
+      );
+    }
+    case 'compare': {
+      const opA = getOperand(condition.opA, campaignLog);
+      const opB = getOperand(condition.opB, campaignLog);
+      const value = opA - opB;
+      const choice = find(condition.options, option => {
+        if (value < 0) {
+          return option.numCondition === -1;
+        }
+        if (value === 0) {
+          return option.numCondition === 0;
+        }
+        return option.numCondition === 1;
+      });
+      return {
+        type: 'number',
+        number: value,
+        option: choice,
+      };
+    }
+  }
+}
+
 export function conditionResult(
   condition: Condition,
   campaignLog: GuidedCampaignLog
@@ -660,44 +698,10 @@ export function conditionResult(
       return campaignLogConditionResult(condition, campaignLog);
     case 'campaign_log_count':
       return campaignLogCountConditionResult(condition, campaignLog);
-    case 'math': {
-      switch (condition.operation) {
-        case 'equals':
-          return mathEqualsConditionResult(condition, campaignLog);
-        case 'sum': {
-          const opA = getOperand(condition.opA, campaignLog);
-          const opB = getOperand(condition.opB, campaignLog);
-          return numberConditionResult(
-            opA + opB,
-            condition.options,
-            condition.defaultOption
-          );
-        }
-        case 'compare': {
-          const opA = getOperand(condition.opA, campaignLog);
-          const opB = getOperand(condition.opB, campaignLog);
-          const value = opA - opB;
-          const choice = find(condition.options, option => {
-            if (value < 0) {
-              return option.numCondition === -1;
-            }
-            if (value === 0) {
-              return option.numCondition === 0;
-            }
-            return option.numCondition === 1;
-          });
-          return {
-            type: 'number',
-            number: value,
-            option: choice,
-          };
-        }
-      }
-      /* eslint-disable no-fallthrough */
-    }
-    case 'campaign_data': {
+    case 'math':
+      return mathConditionResult(condition, campaignLog);
+    case 'campaign_data':
       return campaignDataConditionResult(condition, campaignLog);
-    }
     case 'has_card':
       return hasCardConditionResult(condition, campaignLog);
     case 'trauma':

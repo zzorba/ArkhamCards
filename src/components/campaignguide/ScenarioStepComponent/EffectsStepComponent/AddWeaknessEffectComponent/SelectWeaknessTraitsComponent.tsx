@@ -10,6 +10,7 @@ import { useToggles } from '@components/core/hooks';
 import ActionButton from '@components/campaignguide/prompts/ActionButton';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   choices?: string[];
@@ -19,6 +20,7 @@ interface Props {
 
 export default function SelectWeaknessTraitsComponent({ choices, save, weaknessCards }: Props) {
   const { typography } = useContext(StyleContext);
+  const { listSeperator } = useContext(LanguageContext);
   const [selectedTraits, setSelectedTrait] = useToggles({});
   const allTraits = useMemo(() => {
     return sortBy(
@@ -57,8 +59,8 @@ export default function SelectWeaknessTraitsComponent({ choices, save, weaknessC
     if (!selection.length) {
       return c('Weakness Card').t`All`;
     }
-    return selection.join(', ');
-  }, [selection]);
+    return selection.join(listSeperator);
+  }, [selection, listSeperator]);
   const { dialog, showDialog } = useMultiPickerDialog({
     title: t`Select Traits`,
     description: t`Random weaknesses will be drawn that match these traits.`,

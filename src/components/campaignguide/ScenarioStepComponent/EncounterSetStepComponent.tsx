@@ -20,6 +20,7 @@ import CampaignGuide from '@data/scenario/CampaignGuide';
 import StyleContext from '@styles/StyleContext';
 import { CampaignId } from '@actions/types';
 import ArkhamButton from '@components/core/ArkhamButton';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 const CORE_SET_ICONS = new Set([
   'torch', 'arkham', 'cultists', 'tentacles', 'rats', 'ghouls', 'striking_fear',
@@ -37,6 +38,7 @@ interface Props {
 export default function EncounterSetStepComponent({ componentId, campaignId, step, campaignGuide }: Props) {
   const alphabetizeEncounterSets = useSelector<AppState>(state => state.settings.alphabetizeEncounterSets || false);
   const { colors } = useContext(StyleContext);
+  const { listSeperator } = useContext(LanguageContext);
 
   const _viewEncounterErrata = useCallback(() => {
     Navigation.push<EncounterCardErrataProps>(componentId, {
@@ -60,7 +62,7 @@ export default function EncounterSetStepComponent({ componentId, campaignId, ste
     }
   ), [step.encounter_sets, campaignGuide]);
   const encounterSets = useMemo(() => alphabetizeEncounterSets ? sortBy(rawEncounterSets, set => set.name || '???') : rawEncounterSets, [alphabetizeEncounterSets, rawEncounterSets]);
-  const encounterSetString = useMemo(() => stringList(map(encounterSets, set => set.name ? `<i>${set.name}</i>` : 'Missing Set Name')), [encounterSets]);
+  const encounterSetString = useMemo(() => stringList(map(encounterSets, set => set.name ? `<i>${set.name}</i>` : 'Missing Set Name'), listSeperator), [encounterSets, listSeperator]);
   const leadText = step.aside ?
     ngettext(
       msgid`Set the ${encounterSetString} encounter set aside, out of play.`,
