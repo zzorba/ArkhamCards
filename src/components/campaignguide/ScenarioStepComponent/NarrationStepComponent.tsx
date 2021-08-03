@@ -14,7 +14,7 @@ import { usePressCallback } from '@components/core/hooks';
 
 export function useNarration(narration?: Narration): Narration | undefined {
   const [hasDV, narrationLang] = useAudioAccess();
-  if (!hasDV || !narration || (narrationLang && !find(narration.lang, lang => lang === narrationLang))) {
+  if (!hasDV || !narration || !find(narration.lang, lang => lang === (narrationLang || 'dv'))) {
     return undefined;
   }
   return narration;

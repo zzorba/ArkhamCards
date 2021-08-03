@@ -6,7 +6,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type Schema = AllCampaigns | Log | Errata | Rules;
+export type Schema = AllCampaigns | Log | Errata | Rules | ChaosTokens;
 export type Step =
   | BranchStep
   | EffectsStep
@@ -157,6 +157,7 @@ export type Choice1 =
   | InvestigatorCounterChoice
   | CounterChoice
   | InvestigatorChoice;
+export type ChaosTokens = ChaosTokenValue[];
 
 export interface FullCampaign {
   campaign: Campaign;
@@ -561,7 +562,7 @@ export interface CampaignLogCardsCondition {
 export interface Narration {
   id: string;
   name: string;
-  lang?: string[];
+  lang: string[];
 }
 export interface EffectsStep {
   id: string;
@@ -1061,4 +1062,25 @@ export interface Rule {
     }[];
   }[];
   rules?: Rule[];
+}
+export interface ChaosTokenValue {
+  code: string;
+  scenario: string;
+  standard: SingleChaosTokenValue[];
+  hard: SingleChaosTokenValue[];
+}
+export interface SingleChaosTokenValue {
+  token: "skull" | "cultist" | "tablet" | "elder_thing";
+  modifier?: number;
+  reveal_another?: boolean;
+  counter?: {
+    prompt: string;
+    max?: number;
+    scale?: number;
+  };
+  condition?: {
+    default_value: number;
+    prompt: string;
+    modified_value: number;
+  };
 }
