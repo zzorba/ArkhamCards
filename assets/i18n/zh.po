@@ -5514,7 +5514,7 @@ msgstr "老兵"
 
 msgctxt "trait"
 msgid "Void"
-msgstr "Void"
+msgstr "虛空"
 
 msgctxt "trait"
 msgid "Warden"
