@@ -84,6 +84,8 @@ export interface ThemeColors {
   };
   navButton: string;
   warn: string;
+  green: string;
+  red: string;
   upgrade: string;
   warnText: string;
   table: {
@@ -252,6 +254,8 @@ export const LIGHT_THEME: ThemeColors = {
     standalone: '#AC9788',
   },
   navButton: '#007AFF',
+  green: '#9AEC86',
+  red: '#FFDBD3',
   warn: '#FB4135',
   warnText: '#C50707',
   table: {
@@ -399,6 +403,8 @@ export const DARK_THEME: ThemeColors = {
     standalone: '#A18978',
   },
   navButton: '#4aa1ff',
+  green: '#314629',
+  red: '#552D2D',
   warn: '#C50707',
   warnText: '#FB4135',
   table: {
