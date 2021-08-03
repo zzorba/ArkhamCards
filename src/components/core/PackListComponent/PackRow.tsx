@@ -108,7 +108,7 @@ export default function PackRow({ componentId, pack, cycle, setChecked, setCycle
             />
           </View>
           <Text
-            style={[typography.large, { color: colors.darkText, fontSize, lineHeight }]}
+            style={[typography.large, { color: colors.darkText, fontSize, lineHeight, flex: 1 }]}
             numberOfLines={2}
             ellipsizeMode="tail"
           >
