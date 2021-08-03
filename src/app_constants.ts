@@ -1,4 +1,5 @@
 import { find } from 'lodash';
+import { t } from 'ttag';
 
 export const ENABLE_ARKHAM_CARDS_ACCOUNT = true;
 export type TypeCodeType =
@@ -181,6 +182,29 @@ export interface SpecialTokenValue {
   value: ChaosTokenValue;
   xText?: string;
   revealAnother?: boolean;
+}
+
+export function chaosTokenName(token: ChaosTokenType) {
+  switch (token) {
+    case 'bless': return t`Bless`;
+    case 'curse': return t`Curse`;
+    case 'skull': return t`Skull`;
+    case 'cultist': return t`Cultist`;
+    case 'tablet': return t`Tablet`;
+    case 'elder_thing': return t`Elder Thing`;
+    case 'auto_fail': return t`Auto-Fail`;
+    case 'elder_sign': return t`Elder Sign`;
+    case '+1': return '+1';
+    case '0': return '0';
+    case '-1': return '-1';
+    case '-2': return '-2';
+    case '-3': return '-3';
+    case '-4': return '-4';
+    case '-5': return '-5';
+    case '-6': return '-6';
+    case '-7': return '-7';
+    case '-8': return '-8';
+  }
 }
 
 export function getChaosTokenValue(token: ChaosTokenType, specialTokenValues: SpecialTokenValue[]): ChaosTokenValue | undefined {
