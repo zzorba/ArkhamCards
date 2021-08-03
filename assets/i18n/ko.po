@@ -3739,9 +3739,6 @@ msgstr "혼돈 주머니 (${ tokenCount }개)"
 msgid "Save upgrade"
 msgstr "향상 저장"
 
-msgid "Sorry, you don't seem to be a Mythos Buster patron."
-msgstr "죄송하지만, Mythos Buster 후원자가 아닌 것으로 보입니다."
-
 msgid "Earned experience:"
 msgstr "획득한 경험치:"
 
@@ -4442,6 +4439,13 @@ msgstr "팬메이드 캠페인 (제작자: ${ author })"
 
 msgid "Sort ignores punctuation"
 msgstr "정렬하기 (구두점 무시)"
+
+msgid ""
+"Sorry, you don't seem to be a Mythos Buster patron.\n"
+"It can take up to 24hrs before Patreon updates your membership status. If "
+"you are still experiencing problems after 24hrs, please contact Mythos "
+"Busters via Patreon or on the Discord channel for help with this issue."
+msgstr ""
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."

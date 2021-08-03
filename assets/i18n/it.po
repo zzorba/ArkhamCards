@@ -3914,9 +3914,6 @@ msgstr "Sacchetto del Caos (${ tokenCount })"
 msgid "Save upgrade"
 msgstr "Salva aggiornamento"
 
-msgid "Sorry, you don't seem to be a Mythos Buster patron."
-msgstr "Spiacente, non sembra che tu sia un Patron di Bythos Buster."
-
 msgid "Earned experience:"
 msgstr "Punti esperienza acquisiti:"
 
@@ -4652,6 +4649,13 @@ msgid "Fan-made campaign by ${ author }"
 msgstr ""
 
 msgid "Sort ignores punctuation"
+msgstr ""
+
+msgid ""
+"Sorry, you don't seem to be a Mythos Buster patron.\n"
+"It can take up to 24hrs before Patreon updates your membership status. If "
+"you are still experiencing problems after 24hrs, please contact Mythos "
+"Busters via Patreon or on the Discord channel for help with this issue."
 msgstr ""
 
 msgctxt "masculine"
