@@ -1032,8 +1032,8 @@
         "entries": [
           {
             "id": "lead_investigator_joins_pipers",
-            "masculine_text": "#name# joins the pipers of Azathoth.",
-            "feminine_text": "#name# joins the pipers of Azathoth."
+            "masculine_text": "#name#加入阿撒托斯的吹笛人隊伍。",
+            "feminine_text": "#name#加入阿撒托斯的吹笛人隊伍。"
           },
           {
             "id": "accepted_fate",
@@ -1069,11 +1069,11 @@
           },
           {
             "id": "azathoth_devoured_the_universe",
-            "text": "Azathoth devoured the universe."
+            "text": "阿撒托斯吞食宇宙。"
           },
           {
             "id": "azathoth_slumbers",
-            "text": "Azathoth slumbers… for now."
+            "text": "阿撒托斯睡著……暫時是的。"
           },
           {
             "id": "being_hunted",
@@ -1189,7 +1189,7 @@
           },
           {
             "id": "signed_the_black_book",
-            "text": "the investigators signed the Black Book of Azathoth."
+            "text": "調查員在阿撒托斯的黑書上簽名。"
           },
           {
             "id": "survived_the_watchers_embrace",
@@ -2086,8 +2086,8 @@
         "entries": [
           {
             "id": "lead_investigator_joins_pipers",
-            "masculine_text": "#name# joins the pipers of Azathoth.",
-            "feminine_text": "#name# joins the pipers of Azathoth."
+            "masculine_text": "#name#加入阿撒托斯的吹笛人隊伍。",
+            "feminine_text": "#name#加入阿撒托斯的吹笛人隊伍。"
           },
           {
             "id": "accepted_fate",
@@ -2123,11 +2123,11 @@
           },
           {
             "id": "azathoth_devoured_the_universe",
-            "text": "Azathoth devoured the universe."
+            "text": "阿撒托斯吞食宇宙。"
           },
           {
             "id": "azathoth_slumbers",
-            "text": "Azathoth slumbers… for now."
+            "text": "阿撒托斯睡著……暫時是的。"
           },
           {
             "id": "being_hunted",
@@ -2231,7 +2231,7 @@
           },
           {
             "id": "signed_the_black_book",
-            "text": "the investigators signed the Black Book of Azathoth."
+            "text": "調查員在阿撒托斯的黑書上簽名。"
           },
           {
             "id": "survived_the_watchers_embrace",

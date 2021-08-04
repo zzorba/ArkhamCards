@@ -157,6 +157,8 @@ export type Choice1 =
   | InvestigatorCounterChoice
   | CounterChoice
   | InvestigatorChoice;
+export type SingleChaosTokenValue = SimpleChaosTokenValue | CounterChaosTokenValue | ConditionChaosTokenValue;
+export type SpecialChaosToken = "skull" | "cultist" | "tablet" | "elder_thing";
 export type ChaosTokens = ChaosTokenValue[];
 
 export interface FullCampaign {
@@ -1069,18 +1071,33 @@ export interface ChaosTokenValue {
   standard: SingleChaosTokenValue[];
   hard: SingleChaosTokenValue[];
 }
-export interface SingleChaosTokenValue {
-  token: "skull" | "cultist" | "tablet" | "elder_thing";
-  modifier?: number;
+export interface SimpleChaosTokenValue {
+  type?: null;
+  token: SpecialChaosToken;
+  value: ChaosTokenModifier;
+}
+export interface ChaosTokenModifier {
+  modifier: number | ("auto_fail" | "auto_succeed");
   reveal_another?: boolean;
-  counter?: {
+  cancel_modifiers?: boolean;
+}
+export interface CounterChaosTokenValue {
+  type: "counter";
+  token: SpecialChaosToken;
+  counter: {
     prompt: string;
+    min?: number;
     max?: number;
     scale?: number;
+    reveal_another?: boolean;
   };
-  condition?: {
-    default_value: number;
+}
+export interface ConditionChaosTokenValue {
+  type: "condition";
+  token: SpecialChaosToken;
+  condition: {
     prompt: string;
-    modified_value: number;
+    default_value: ChaosTokenModifier;
+    modified_value: ChaosTokenModifier;
   };
 }
