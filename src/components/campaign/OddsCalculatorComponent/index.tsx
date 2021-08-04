@@ -35,11 +35,14 @@ import { SingleChaosTokenValue, ChaosTokenModifier, SimpleChaosTokenValue } from
 import ToggleTokenInput from './ToggleTokenInput';
 import { TINY_PHONE } from '@styles/sizes';
 import TokenTextLine from './TokenTextLine';
+import InvestigatorRadioChoice from '@components/campaignguide/prompts/ChooseInvestigatorPrompt/InvestigatorRadioChoice';
+import { elderSign } from './constants';
 
 
 interface Props {
   campaign: SingleCampaignT;
   chaosBag: ChaosBag;
+  allInvestigators: Card[];
   cycleScenarios?: Scenario[];
   scenarioName: string | undefined;
   scenarioCard: Card | undefined;
@@ -63,7 +66,8 @@ function parseSpecialTokenValuesText(
   hardExpert: boolean,
   scenarioText: string | undefined,
   scenarioCard: Card | undefined,
-  scenarioCode: string | undefined
+  scenarioCode: string | undefined,
+  investigator: Card | undefined,
 ): SingleChaosTokenValue[] {
   const tokenText: { [key: string]: string | undefined } = {};
   const scenarioTokens: SingleChaosTokenValue[] = [];
@@ -152,10 +156,49 @@ function parseSpecialTokenValuesText(
   if (parsedTokens) {
     return map(
       hardExpert ? parsedTokens.hard : parsedTokens.standard,
-      t => {
+      token => {
+        if (token.token === 'skull' && investigator?.code === '02004') {
+          const jimText = t`0: (original effect below)\n${tokenText.skull || '???'}`;
+          if (token.type === 'condition') {
+            return {
+              token: 'skull',
+              type: 'condition',
+              condition: {
+                default_value: {
+                  ...token.condition.default_value,
+                  modifier: typeof token.condition.default_value.modifier === 'number' ? 0 : token.condition.default_value.modifier,
+                },
+                prompt: token.condition.prompt,
+                modified_value: {
+                  ...token.condition.modified_value,
+                  modifier: typeof token.condition.modified_value.modifier === 'number' ? 0 : token.condition.modified_value.modifier,
+                },
+              },
+              text: jimText,
+            };
+          }
+          if (token.type === 'counter') {
+            return {
+              token: 'skull',
+              value: {
+                modifier: 0,
+              },
+              text: jimText,
+            };
+          }
+          return {
+            token: 'skull',
+            value: {
+              modifier: 0,
+              reveal_another: token.value.reveal_another,
+              cancel_modifiers: token.value.cancel_modifiers,
+            },
+            text: jimText,
+          };
+        }
         return {
-          ...t,
-          text: tokenText[t.token] || '???',
+          ...token,
+          text: tokenText[token.token] || '???',
         };
       }
     );
@@ -574,6 +617,7 @@ function SpecialTokenOdds({ chaosBag, specialTokenValues, modifiedSkill, testDif
 
 export default function OddsCalculatorComponent({
   campaign,
+  allInvestigators,
   chaosBag: originalChaosBag,
   cycleScenarios,
   scenarioName,
@@ -591,6 +635,7 @@ export default function OddsCalculatorComponent({
       expert: t`Expert difficulty`,
     };
   }, []);
+  const [selectedInvestigator, onSelectInvestigator] = useState(0);
   const [difficulty, setDifficulty] = useState<CampaignDifficulty>(defaultDifficulty || CampaignDifficulty.STANDARD);
   const [scenarioCards, loading] = useCardsFromQuery({ query: SCENARIO_CARDS_QUERY });
   const [currentScenario, setCurrentScenario] = useState<Scenario | undefined>(undefined);
@@ -749,19 +794,23 @@ export default function OddsCalculatorComponent({
     allowDismiss: true,
   });
 
-
-  const specialTokenValues = useMemo(() =>
-    parseSpecialTokenValuesText(
-      lang,
-      difficulty === 'hard' || difficulty === 'expert',
-      scenarioText,
-      scenarioCard,
-      currentScenario?.code || scenarioCode
-    ),
-  [lang, scenarioText, difficulty, currentScenario, scenarioCard, scenarioCode]);
+  const selectedInvestigatorCard = selectedInvestigator >= 0 && selectedInvestigator < allInvestigators.length ? allInvestigators[selectedInvestigator] : undefined;
+  const specialTokenValues = useMemo(() => {
+    const elderSignEffect = selectedInvestigatorCard ? elderSign(selectedInvestigatorCard) : undefined;
+    return [
+      ...parseSpecialTokenValuesText(
+        lang,
+        difficulty === 'hard' || difficulty === 'expert',
+        scenarioText,
+        scenarioCard,
+        currentScenario?.code || scenarioCode,
+        selectedInvestigatorCard
+      ),
+      elderSignEffect || { token: 'elder_sign', type: 'counter', counter: { prompt: t`Your investigator modfifier` } },
+    ]
+  }, [lang, scenarioText, difficulty, currentScenario, scenarioCard, scenarioCode, selectedInvestigatorCard]);
   const allSpecialTokenValues: SimpleChaosTokenValue[] = useMemo(() => {
     return [
-      { token: 'elder_sign', value: { modifier: xValue.elder_sign || 0 } },
       ...map(specialTokenValues, tokenValue => {
         if (tokenValue.type === 'counter') {
           return {
@@ -884,14 +933,6 @@ export default function OddsCalculatorComponent({
           testDifficulty={testDifficulty}
         />
         <View style={[styles.line, borderStyle, space.marginSideS]} />
-        <VariableTokenInput
-          symbol="elder_sign"
-          value={xValue.elder_sign || 0}
-          min={0}
-          prompt={t`Your investigator's modifier`}
-          increment={incXValue}
-          decrement={decXValue}
-        />
         { specialTokenInputs }
         { keys(sealedChaosBag).length > 0 && (
           <View style={[styles.sectionRow, borderStyle]}>
@@ -903,6 +944,22 @@ export default function OddsCalculatorComponent({
             />
           </View>
         ) }
+        <View style={[space.paddingTopS, space.paddingSideS]}>
+          { map(allInvestigators, (investigator, index) => (
+            <InvestigatorRadioChoice
+              key={investigator.code}
+              type="investigator"
+              investigator={investigator}
+              description={investigator.subname}
+              index={index}
+              onSelect={onSelectInvestigator}
+              editable
+              transparent
+              selected={selectedInvestigator === index}
+              width={width - s}
+            />
+          )) }
+        </View>
       </ScrollView>
       { dialog }
     </View>
