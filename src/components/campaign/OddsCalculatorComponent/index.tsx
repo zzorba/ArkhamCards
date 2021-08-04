@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState } from 'react';
-import { filter, head, find, flatMap, forEach, groupBy, sortBy, keys, map, range, sumBy, values, reverse, tail, partition, maxBy, minBy, max } from 'lodash';
+import { filter, head, find, flatMap, forEach, groupBy, sortBy, keys, map, range, sumBy, values, reverse, tail, partition, maxBy } from 'lodash';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { c, t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
@@ -10,11 +10,11 @@ import ChaosBagLine from '@components/core/ChaosBagLine';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { difficultyString, Scenario, scenarioFromCard } from '@components/campaign/constants';
 import { CampaignDifficulty } from '@actions/types';
-import { ChaosBag, SPECIAL_TOKENS, SpecialTokenValue, ChaosTokenType, CHAOS_TOKENS, ChaosTokenValue, getChaosTokenValue, chaosTokenName } from '@app_constants';
+import { ChaosBag, SPECIAL_TOKENS, ChaosTokenType, CHAOS_TOKENS, getChaosTokenValue, chaosTokenName } from '@app_constants';
 import Card from '@data/types/Card';
-import space, { m, s, xs } from '@styles/space';
+import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useCounter, useCounters, useFlag } from '@components/core/hooks';
+import { useCounter, useCounters, useFlag, useToggles } from '@components/core/hooks';
 import { useChaosBagResults } from '@data/hooks';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { SCENARIO_CARDS_QUERY } from '@data/sqlite/query';
@@ -29,6 +29,12 @@ import AppIcon from '@icons/AppIcon';
 import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
 import NewDialog from '@components/core/NewDialog';
 import ChaosToken, { getChaosTokenSize } from '../ChaosToken';
+import { loadChaosTokens } from '@data/scenario';
+import LanguageContext from '@lib/i18n/LanguageContext';
+import { SingleChaosTokenValue, ChaosTokenModifier, SimpleChaosTokenValue } from '@data/scenario/types';
+import ToggleTokenInput from './ToggleTokenInput';
+import { TINY_PHONE } from '@styles/sizes';
+
 
 interface Props {
   campaign: SingleCampaignT;
@@ -51,8 +57,18 @@ export const SCENARIO_CODE_FIXER: {
   the_doom_of_eztli: 'eztli',
 };
 
-function parseSpecialTokenValuesText(scenarioText: string | undefined): SpecialTokenValue[] {
-  const scenarioTokens: SpecialTokenValue[] = [];
+function parseSpecialTokenValuesText(
+  lang: string,
+  hardExpert: boolean,
+  scenarioText: string | undefined,
+  scenarioCard: Card | undefined,
+  scenarioCode: string | undefined
+): SingleChaosTokenValue[] {
+  const parsedTokens = loadChaosTokens(lang, scenarioCard?.code, scenarioCode);
+  if (parsedTokens) {
+    return hardExpert ? parsedTokens.hard : parsedTokens.standard;
+  }
+  const scenarioTokens: SingleChaosTokenValue[] = [];
   if (scenarioText) {
     const linesByToken: { [token: string]: string } = {};
     forEach(
@@ -68,15 +84,24 @@ function parseSpecialTokenValuesText(scenarioText: string | undefined): SpecialT
       switch (token) {
         case 'elder_sign':
           scenarioTokens.push({
-            token,
-            value: 0,
+            token: 'elder_sign',
+            type: 'counter',
+            counter: {
+              prompt: t`Your investigator's modifier`,
+            },
           });
           break;
         case 'auto_fail':
           scenarioTokens.push({
-            token,
-            value: 'auto_fail',
+            token: 'auto_fail',
+            value: {
+              modifier: 'auto_fail',
+            },
           });
+          break;
+        case 'bless':
+        case 'curse':
+          // nop
           break;
         default: {
           const line = linesByToken[token];
@@ -88,14 +113,17 @@ function parseSpecialTokenValuesText(scenarioText: string | undefined): SpecialT
                 if (match[2] === '-X') {
                   scenarioTokens.push({
                     token,
-                    value: 'X',
-                    xText: match[4],
+                    type: 'counter',
+                    counter: {
+                      prompt: match[4],
+                    },
                   });
                 } else {
                   scenarioTokens.push({
                     token,
-                    value: parseFloat(match[2]) || 0,
-                    // revealAnother: match[4].toLowerCase().indexOf('reveal another') !== -1,
+                    value: {
+                      modifier: parseFloat(match[2]) || 0,
+                    },
                   });
                 }
               }
@@ -104,8 +132,10 @@ function parseSpecialTokenValuesText(scenarioText: string | undefined): SpecialT
               if (revealAnotherRegex.test(line)) {
                 scenarioTokens.push({
                   token,
-                  value: 'reveal_another',
-                  // revealAnother: true,
+                  value: {
+                    reveal_another: true,
+                    modifier: 0,
+                  },
                 });
               }
             }
@@ -152,22 +182,19 @@ function NumberInput({ title, value, color, inc, dec }: {
   );
 }
 
-function isPassing(value: ChaosTokenValue, modifiedSkill: number, testDifficulty: number): boolean {
-  switch(value) {
-    case 'auto_succeed': return true;
-    case 'auto_fail': return false;
-    case 'reveal_another':
-    case 'X':
-      // Should not happen
-      return false;
-    default:
-      return Math.max(0, value + modifiedSkill) >= testDifficulty;
+function isPassing(value: ChaosTokenModifier, modifiedSkill: number, testDifficulty: number): boolean {
+  if (value.modifier === 'auto_succeed') {
+    return true;
   }
+  if (value.modifier === 'auto_fail') {
+    return false;
+  }
+  return Math.max(0, value.modifier + modifiedSkill) >= testDifficulty;
 }
 
 function calculatePassingOdds(
   chaosBag: ChaosBag,
-  specialTokenValues: SpecialTokenValue[],
+  specialTokenValues: SimpleChaosTokenValue[],
   modifiedSkill: number,
   testDifficulty: number
 ) {
@@ -176,7 +203,7 @@ function calculatePassingOdds(
     if (!count) {
       return [];
     }
-    const value: undefined | ChaosTokenValue = getChaosTokenValue(token, specialTokenValues);
+    const value: undefined | ChaosTokenModifier = getChaosTokenValue(token, specialTokenValues);
     if (value === undefined) {
       return [];
     }
@@ -197,20 +224,20 @@ function calculatePassingOdds(
 
 interface ChaosBagProps {
   chaosBag: ChaosBag;
-  specialTokenValues: SpecialTokenValue[];
+  specialTokenValues: SimpleChaosTokenValue[];
   modifiedSkill: number;
   testDifficulty: number;
 }
 
-function ChaosTokenColumn({ value, tokens, height }: { value: ChaosTokenValue; tokens: ChaosTokenType[]; height: number }) {
+function ChaosTokenColumn({ value, tokens, height }: { value: ChaosTokenModifier; tokens: ChaosTokenType[]; height: number }) {
   return (
     <View style={[
       styles.tokenPileColumn,
       {
         width: getChaosTokenSize('extraTiny'),
         height,
-        marginRight: value === 'auto_fail' ? s : 1.5,
-        marginLeft: value === 'auto_succeed' ? s : 1.5,
+        marginRight: value.modifier === 'auto_fail' ? s : 1.5,
+        marginLeft: value.modifier === 'auto_succeed' ? s : 1.5,
       },
     ]}>
       { map(tokens, (t, idx) => <ChaosToken key={idx} iconKey={t} size="extraTiny" />) }
@@ -219,15 +246,15 @@ function ChaosTokenColumn({ value, tokens, height }: { value: ChaosTokenValue; t
 }
 
 interface ChaosTokenCollection {
-  value: ChaosTokenValue;
+  value: ChaosTokenModifier;
   tokens: ChaosTokenType[];
   modifiedValue: number;
 }
 function ChaosTokenPile({ pile, height, mode, showBlurse, totalTokens }: { pile: ChaosTokenCollection[]; height: number; mode: 'fail' | 'pass'; totalTokens: number; showBlurse: boolean }) {
   const { colors, typography } = useContext(StyleContext);
   const [auto_fail, center, auto_succeed] = useMemo(() => {
-    const [leading, remaining] = partition(pile, x => x.value === 'auto_fail');
-    const [trailing, center] = partition(remaining, x => x.value === 'auto_succeed');
+    const [leading, remaining] = partition(pile, x => x.value.modifier === 'auto_fail');
+    const [trailing, center] = partition(remaining, x => x.value.modifier === 'auto_succeed');
     if (!center.length) {
       return [leading, [], trailing];
     }
@@ -262,8 +289,8 @@ function ChaosTokenPile({ pile, height, mode, showBlurse, totalTokens }: { pile:
   const noBorderIndex = mode === 'fail' ? 0 : center.length - 1;
   return (
     <View style={styles.tokenPileRow}>
-      { map(auto_fail, x => (
-        <View key={x.value}>
+      { map(auto_fail, (x, idx) => (
+        <View key={idx}>
           <ChaosTokenColumn value={x.value} tokens={x.tokens} height={height} />
           { showBlurse && <Text style={[typography.small, space.marginTopS, space.marginBottomXs]}> </Text> }
         </View>
@@ -275,7 +302,7 @@ function ChaosTokenPile({ pile, height, mode, showBlurse, totalTokens }: { pile:
           { borderColor },
         ]} key={idx}>
           <View style={styles.tokenPileRow}>
-            { map(pair, x => <ChaosTokenColumn key={x.value} value={x.value} tokens={x.tokens} height={height} />) }
+            { map(pair, (x, idx2) => <ChaosTokenColumn key={idx2} value={x.value} tokens={x.tokens} height={height} />) }
           </View>
           { showBlurse && (
             <Text style={[typography.small, typography.center, { color: textColor }, space.marginTopS, space.marginBottomXs]}>
@@ -284,8 +311,8 @@ function ChaosTokenPile({ pile, height, mode, showBlurse, totalTokens }: { pile:
           ) }
         </View>
       )) }
-      { map(auto_succeed, x => (
-        <View key={x.value}>
+      { map(auto_succeed, (x, idx) => (
+        <View key={idx}>
           <ChaosTokenColumn value={x.value} tokens={x.tokens} height={height} />
           { showBlurse && <Text style={[typography.small, space.marginTopS, space.marginBottomXs]}> </Text> }
         </View>
@@ -300,19 +327,17 @@ function ChaosBagOddsSection({
   modifiedSkill,
   testDifficulty,
 }: ChaosBagProps) {
-  const bless = chaosBag.bless || 0;
-  const curse = chaosBag.curse || 0;
-  const bagTotal = useMemo(() => sumBy(values(chaosBag), x => x), [chaosBag]);
+  const bagTotal = useMemo(() => sumBy(values(chaosBag), x => x || 0), [chaosBag]);
   const [showBlurse, toggleShowBlurse] = useFlag(true);
   const { typography, colors, width } = useContext(StyleContext);
   const tokensByValue: ChaosTokenCollection[] = useMemo(() => {
-    const result: { value: ChaosTokenValue; tokens: ChaosTokenType[] }[] = map(groupBy(flatMap(CHAOS_TOKENS, token => {
+    const result: { value: ChaosTokenModifier; tokens: ChaosTokenType[] }[] = map(groupBy(flatMap(CHAOS_TOKENS, token => {
       const count = chaosBag[token] || 0;
       if (!count) {
         return [];
       }
-      const value: undefined | ChaosTokenValue = getChaosTokenValue(token, specialTokenValues);
-      if (value === undefined) {
+      const value: undefined | ChaosTokenModifier = getChaosTokenValue(token, specialTokenValues);
+      if (value === undefined || value.reveal_another) {
         return [];
       }
       return map(range(0, count), () => {
@@ -321,36 +346,31 @@ function ChaosBagOddsSection({
           token,
         };
       });
-    }), x => x.value), (tokens) => {
+    }), x => x.value.modifier), (tokens) => {
       return {
-        value: head(tokens)?.value || 0,
+        value: head(tokens)?.value || { modifier: 0 },
         tokens: map(tokens, t => t.token),
       };
     });
     return map(reverse(sortBy(result, x => {
-      switch (x.value) {
+      switch (x.value.modifier) {
         case 'auto_succeed':
           return -100;
         case 'auto_fail':
           return 100;
-        case 'reveal_another':
-        case 'X':
-          return 0;
         default:
-          return -x.value;
+          return -x.value.modifier;
       }
     })), x => {
-      switch (x.value) {
+      switch (x.value.modifier) {
         case 'auto_succeed':
         case 'auto_fail':
-        case 'reveal_another':
-        case 'X':
           return {
             ...x,
             modifiedValue: 0,
           };
         default: {
-          const modified = modifiedSkill - testDifficulty + x.value;
+          const modified = modifiedSkill - testDifficulty + x.value.modifier;
           return {
             ...x,
             modifiedValue: modified,
@@ -427,21 +447,26 @@ function ChaosBagOddsSection({
   );
 }
 
+const SPECIAL_ODDS: { [key: string]: number } = {
+  auto_fail: -100,
+  auto_suceed: 100,
+};
+
 function SpecialTokenOdds({ chaosBag, specialTokenValues, modifiedSkill, testDifficulty }: ChaosBagProps) {
-  const { colors, typography } = useContext(StyleContext);
+  const { colors, typography, width } = useContext(StyleContext);
   const bless = chaosBag.bless || 0;
   const curse = chaosBag.curse || 0;
   const finalTokens = useMemo(() => {
     const drawAnotherTokens = flatMap(specialTokenValues, t => {
-      if (!t.revealAnother && t.value !== 'reveal_another') {
+      if (!t.value.reveal_another) {
         return [];
       }
       if ((chaosBag[t.token] || 0) <= 0) {
         return [];
       }
       return {
-        textModifier: typeof t.value === 'number' ? `${t.value}` : '0',
-        modifier: typeof t.value === 'number' ? t.value : 0,
+        textModifier: t.value.modifier > 0 ? `+${t.value.modifier}` : `${t.value.modifier}`,
+        modifier: t.value.modifier === 'auto_fail' || t.value.modifier === 'auto_succeed' ? SPECIAL_ODDS[t.value.modifier] : t.value.modifier,
         token: t.token,
         count: chaosBag[t.token] || 0,
         color: colors.D30,
@@ -490,24 +515,42 @@ function SpecialTokenOdds({ chaosBag, specialTokenValues, modifiedSkill, testDif
   }
   return (
     <View style={space.paddingTopS}>
-      { map(finalTokens, ({ token, modifier, count, boost, color }) => (
-        <View style={[styles.specialTokenRow, space.paddingVerticalXs]} key={token}>
-          <View style={[styles.specialTokenValue, space.paddingSideS]}>
-            <Text style={[typography.large, { color }]}>{Math.round(count / total * 100)}%</Text>
-            <Text style={[typography.smallLabel, { color }]}>{count}/{total}</Text>
-          </View>
-          <ChaosToken iconKey={token} size="extraTiny" />
-          <View style={[styles.specialTokenRow, space.paddingSideS]}>
-            <Text style={[typography.subHeaderText, typography.dark, space.marginRightXs]}>{chaosTokenName(token)}</Text>
-            <Text style={[typography.smallLabel, typography.italic, typography.dark]}>{t`${modifier}, draws another`}</Text>
-          </View>
-          { !!boost && (
-            <View style={[styles.modifierBoost, space.paddingRightS]}>
-              <Text style={[typography.small, { color }]}>{boost.min}{boost.min !== boost.max ? ` ~ ${boost.max}` : ''}</Text>
+      { map(finalTokens, ({ token, modifier, count, boost, color }) => {
+        return (
+          <View style={[styles.specialTokenRow, space.paddingVerticalXs]} key={token}>
+            <View style={[styles.specialTokenValue, space.paddingSideS, { minWidth: 64 }]}>
+              <Text style={[typography.large, { color }]}>{Math.round(count / total * 100)}%</Text>
+              <Text style={[typography.smallLabel, { color }]}>{count}/{total}</Text>
             </View>
-          ) }
-        </View>
-      )) }
+            { map(range(0, count), idx => (
+              <View key={idx} style={idx > 0 ? { marginLeft: count > 5 && TINY_PHONE ? -24 : -20 } : undefined}>
+                <ChaosToken iconKey={token} size="extraTiny" />
+              </View>
+            )) }
+            { false && count > 4 && (
+              <View style={{
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: getChaosTokenSize('extraTiny'),
+                height: getChaosTokenSize('extraTiny'),
+                borderRadius: getChaosTokenSize('extraTiny') / 2 ,
+                backgroundColor: colors.L20,
+              }}>
+                <Text style={[typography.smallLabel, { color: colors.D20 }]}>+{count - 3}</Text>
+              </View>
+            )}
+            <View style={[styles.specialTokenTextColumn, space.paddingSideS]}>
+              <View style={{ minWidth: Math.min(width * 0.25, 120) }}>
+                <Text style={[typography.smallLabel, typography.italic, typography.dark]}>{t`${modifier}, draws another`}</Text>
+                <Text style={[typography.small, { color }]}>
+                  { boost ? `${boost.min}${boost.min !== boost.max ? ` ~ ${boost.max}` : ''}` : ' ' }
+                </Text>
+              </View>
+            </View>
+          </View>
+        );
+      }) }
     </View>
   )
 }
@@ -522,6 +565,7 @@ export default function OddsCalculatorComponent({
   scenarioCode,
   difficulty: defaultDifficulty,
 }: Props) {
+  const { lang } = useContext(LanguageContext);
   const difficultyText = useMemo(() => {
     return {
       easy: t`Easy difficulty`,
@@ -577,6 +621,8 @@ export default function OddsCalculatorComponent({
     elder_thing: 0,
     elder_sign: 1,
   });
+
+  const [tokenFlags, toggleTokenFlag] = useToggles({});
 
   const items: Item<Scenario | undefined>[] = useMemo(() => {
     return [
@@ -687,46 +733,72 @@ export default function OddsCalculatorComponent({
   });
 
 
-  const specialTokenValues = useMemo(() => parseSpecialTokenValuesText(scenarioText), [scenarioText]);
-  const allSpecialTokenValues: SpecialTokenValue[] = useMemo(() => {
+  const specialTokenValues = useMemo(() =>
+    parseSpecialTokenValuesText(
+      lang,
+      difficulty === 'hard' || difficulty === 'expert',
+      scenarioText,
+      scenarioCard,
+      currentScenario?.code || scenarioCode
+    ),
+  [lang, scenarioText, difficulty, currentScenario, scenarioCard, scenarioCode]);
+  const allSpecialTokenValues: SimpleChaosTokenValue[] = useMemo(() => {
     return [
-      { token: 'elder_sign', value: xValue.elder_sign || 0 },
+      { token: 'elder_sign', value: { modifier: xValue.elder_sign || 0 } },
       ...map(specialTokenValues, tokenValue => {
-        if (tokenValue.value === 'X') {
+        if (tokenValue.type === 'counter') {
           return {
             token: tokenValue.token,
-            value: -(xValue[tokenValue.token] || 0),
+            value: {
+              modifier: -(xValue[tokenValue.token] || (tokenValue.counter.min || 0)) * (tokenValue.counter.scale || 1),
+            },
+          };
+        }
+        if (tokenValue.type === 'condition') {
+          return {
+            token: tokenValue.token,
+            value: tokenFlags[tokenValue.token] ? tokenValue.condition.modified_value : tokenValue.condition.default_value,
           };
         }
         return tokenValue;
       }),
     ];
-  }, [specialTokenValues, xValue]);
+  }, [specialTokenValues, xValue, tokenFlags]);
 
   const specialTokenInputs = useMemo(() => {
-    if (!find(specialTokenValues, value => value.value === 'X')) {
-      return null;
-    }
     return (
       <>
         { flatMap(specialTokenValues, token => {
-          if (token.value !== 'X' || !token.xText) {
-            return null;
+          if (token.type === 'counter') {
+            return (
+              <VariableTokenInput
+                key={token.token}
+                symbol={token.token}
+                value={xValue[token.token] || token.counter.min || 0}
+                text={token.counter.prompt}
+                min={token.counter.min || 0}
+                max={token.counter.max}
+                increment={incXValue}
+                decrement={decXValue}
+              />
+            );
           }
-          return (
-            <VariableTokenInput
-              key={token.token}
-              symbol={token.token}
-              value={xValue[token.token] || 0}
-              text={token.xText}
-              increment={incXValue}
-              decrement={decXValue}
-            />
-          );
+          if (token.type === 'condition') {
+            return (
+              <ToggleTokenInput
+                key={token.token}
+                symbol={token.token}
+                text={token.condition.prompt}
+                value={!!tokenFlags[token.token]}
+                toggle={toggleTokenFlag}
+              />
+            );
+          }
+          return null;
         }) }
       </>
     );
-  }, [specialTokenValues, xValue, incXValue, decXValue]);
+  }, [specialTokenValues, xValue, tokenFlags, toggleTokenFlag, incXValue, decXValue]);
 
   if (loading) {
     return (
@@ -791,6 +863,7 @@ export default function OddsCalculatorComponent({
         <VariableTokenInput
           symbol="elder_sign"
           value={xValue.elder_sign || 0}
+          min={0}
           text={t`Your investigator's modifier`}
           increment={incXValue}
           decrement={decXValue}
@@ -870,6 +943,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
+  },
+  specialTokenTextColumn: {
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    flex: 1,
   },
   specialTokenValue: {
     flexDirection: 'column',

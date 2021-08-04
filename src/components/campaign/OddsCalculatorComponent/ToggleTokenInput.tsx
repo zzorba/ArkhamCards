@@ -1,40 +1,30 @@
 import React, { useCallback, useContext } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import CardTextComponent from '@components/card/CardTextComponent';
-import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import space, { s } from '@styles/space';
+import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { ChaosTokenType } from '@app_constants';
 import ChaosToken from '../ChaosToken';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
 
 export interface Props {
   symbol: ChaosTokenType;
-  value: number;
+  value: boolean;
   text: string;
-  min: number;
-  max?: number;
-  increment: (symbol: string) => void;
-  decrement: (symbol: string) => void;
+  toggle: (symbol: string) => void;
 }
 
-export default function VariableTokenInput({
+export default function ToggleTokenInput({
   text,
   value,
   symbol,
-  min,
-  max,
-  increment,
-  decrement,
+  toggle,
 }: Props) {
-  const { colors, typography } = useContext(StyleContext);
-  const inc = useCallback(() => {
-    increment(symbol);
-  }, [increment, symbol]);
-
-  const dec = useCallback(() => {
-    decrement(symbol);
-  }, [decrement, symbol]);
+  const { colors } = useContext(StyleContext);
+  const onToggle = useCallback(() => {
+    toggle(symbol);
+  }, [toggle, symbol]);
 
   return (
     <View style={[styles.input, { backgroundColor: colors.L20 }, space.marginSideS, space.marginTopS]}>
@@ -48,16 +38,9 @@ export default function VariableTokenInput({
         <CardTextComponent text={text} />
       </View>
       <View style={[styles.row, { borderColor: colors.L10, borderLeftWidth: StyleSheet.hairlineWidth }, space.paddingLeftS]}>
-        <PlusMinusButtons
-          count={value}
-          size={36}
-          dialogStyle
-          countRender={<Text style={[typography.text, styles.counterText, typography.center]}>{ value }</Text>}
-          onIncrement={inc}
-          onDecrement={dec}
-          min={min}
-          max={max}
-          color="dark"
+        <ArkhamSwitch
+          value={value}
+          onValueChange={onToggle}
         />
       </View>
     </View>
@@ -80,10 +63,5 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     borderRadius: 4,
-  },
-  counterText: {
-    fontSize: 22,
-    paddingRight: s,
-    minWidth: 32,
   },
 });
