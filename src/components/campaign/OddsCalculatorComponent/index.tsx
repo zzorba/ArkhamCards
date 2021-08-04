@@ -34,6 +34,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import { SingleChaosTokenValue, ChaosTokenModifier, SimpleChaosTokenValue } from '@data/scenario/types';
 import ToggleTokenInput from './ToggleTokenInput';
 import { TINY_PHONE } from '@styles/sizes';
+import TokenTextLine from './TokenTextLine';
 
 
 interface Props {
@@ -64,10 +65,7 @@ function parseSpecialTokenValuesText(
   scenarioCard: Card | undefined,
   scenarioCode: string | undefined
 ): SingleChaosTokenValue[] {
-  const parsedTokens = loadChaosTokens(lang, scenarioCard?.code, scenarioCode);
-  if (parsedTokens) {
-    return hardExpert ? parsedTokens.hard : parsedTokens.standard;
-  }
+  const tokenText: { [key: string]: string | undefined } = {};
   const scenarioTokens: SingleChaosTokenValue[] = [];
   if (scenarioText) {
     const linesByToken: { [token: string]: string } = {};
@@ -75,7 +73,8 @@ function parseSpecialTokenValuesText(
       scenarioText.replace(/<br\/>/g, '\n').split('\n'),
       line => {
         const token = find(SPECIAL_TOKENS, token =>
-          line.startsWith(`[${token}]`));
+          line.indexOf(`[${token}]`) !== -1
+        );
         if (token) {
           linesByToken[token] = line;
         }
@@ -106,6 +105,8 @@ function parseSpecialTokenValuesText(
         default: {
           const line = linesByToken[token];
           if (line) {
+            const effectText = tail(line.split(':')).join(':');
+            tokenText[token] = effectText;
             const valueRegex = new RegExp(`\\[(${token})\\][^:]*?:?\\s([-+][0-9X])(\\. )?(.*)`);
             if (valueRegex.test(line)) {
               const match = line.match(valueRegex);
@@ -113,6 +114,7 @@ function parseSpecialTokenValuesText(
                 if (match[2] === '-X') {
                   scenarioTokens.push({
                     token,
+                    text: effectText,
                     type: 'counter',
                     counter: {
                       prompt: match[4],
@@ -121,6 +123,7 @@ function parseSpecialTokenValuesText(
                 } else {
                   scenarioTokens.push({
                     token,
+                    text: effectText,
                     value: {
                       modifier: parseFloat(match[2]) || 0,
                     },
@@ -132,6 +135,7 @@ function parseSpecialTokenValuesText(
               if (revealAnotherRegex.test(line)) {
                 scenarioTokens.push({
                   token,
+                  text: effectText,
                   value: {
                     reveal_another: true,
                     modifier: 0,
@@ -144,6 +148,19 @@ function parseSpecialTokenValuesText(
       }
     });
   }
+  const parsedTokens = loadChaosTokens(lang, scenarioCard?.code, scenarioCode);
+  if (parsedTokens) {
+    return map(
+      hardExpert ? parsedTokens.hard : parsedTokens.standard,
+      t => {
+        return {
+          ...t,
+          text: tokenText[t.token] || '???',
+        };
+      }
+    );
+  }
+
   return scenarioTokens;
 }
 
@@ -775,7 +792,8 @@ export default function OddsCalculatorComponent({
                 key={token.token}
                 symbol={token.token}
                 value={xValue[token.token] || token.counter.min || 0}
-                text={token.counter.prompt}
+                text={token.text}
+                prompt={token.counter.prompt}
                 min={token.counter.min || 0}
                 max={token.counter.max}
                 increment={incXValue}
@@ -788,13 +806,19 @@ export default function OddsCalculatorComponent({
               <ToggleTokenInput
                 key={token.token}
                 symbol={token.token}
-                text={token.condition.prompt}
+                text={token.text}
+                prompt={token.condition.prompt}
                 value={!!tokenFlags[token.token]}
                 toggle={toggleTokenFlag}
               />
             );
           }
-          return null;
+          if (!token.text) {
+            return null;
+          }
+          return (
+            <TokenTextLine key={token.token} symbol={token.token} text={token.text} />
+          );
         }) }
       </>
     );
@@ -864,7 +888,7 @@ export default function OddsCalculatorComponent({
           symbol="elder_sign"
           value={xValue.elder_sign || 0}
           min={0}
-          text={t`Your investigator's modifier`}
+          prompt={t`Your investigator's modifier`}
           increment={incXValue}
           decrement={decXValue}
         />

@@ -1,6 +1,5 @@
 import { t } from 'ttag';
 
-import { InvestigatorElderSign } from './types';
 import { ChaosTokenType } from '@app_constants';
 import Card from '@data/types/Card';
 
@@ -24,7 +23,7 @@ export function modifiers(card: Card): {
 
 export function elderSign(
   card: Card
-): InvestigatorElderSign {
+) {
   switch (card.code) {
     // Roland Banks
     case '01001':
