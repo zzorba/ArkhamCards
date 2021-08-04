@@ -1,7 +1,7 @@
 import { find, flatMap, sortBy } from 'lodash';
 
 import { NumberChoices, StandaloneId } from '@actions/types';
-import { FullCampaign, Effect, Errata, Scenario, ChoiceIcon, ChaosToken } from './types';
+import { FullCampaign, Effect, Errata, Scenario, ChoiceIcon, ChaosToken, ChaosTokens, ScenarioChaosTokens } from './types';
 import CampaignGuide, { CampaignLog, CampaignLogSection } from './CampaignGuide';
 import ScenarioGuide from './ScenarioGuide';
 import ScenarioStep from './ScenarioStep';
@@ -77,6 +77,38 @@ export interface PersonalizedChoices {
 }
 
 export type Choices = PersonalizedChoices | UniversalChoices;
+
+function loadAllChaosTokens(lang: string): ChaosTokens {
+  switch (lang) {
+    case 'es':
+      return require('../../../assets/chaosOdds_es.json')
+    case 'ru':
+      return require('../../../assets/chaosOdds_ru.json');
+    case 'fr':
+      return require('../../../assets/chaosOdds_fr.json');
+    case 'de':
+      return require('../../../assets/chaosOdds_de.json');
+    case 'it':
+      return require('../../../assets/chaosOdds_it.json');
+    case 'pt':
+      return require('../../../assets/chaosOdds_pt.json');
+    case 'zh':
+      return require('../../../assets/chaosOdds_zh.json');
+    case 'ko':
+      return require('../../../assets/chaosOdds_ko.json');
+    default:
+    case 'en':
+      return require('../../../assets/chaosOdds.json');
+  }
+}
+
+export function loadChaosTokens(lang: string, code?: string, scenario?: string): ScenarioChaosTokens | undefined {
+  if (!code && !scenario) {
+    return undefined;
+  }
+  const allTokens = loadAllChaosTokens(lang);
+  return find(allTokens, t => !!(scenario && t.scenario === scenario)) || find(allTokens, t => !!(code && t.code === code));
+}
 
 
 function load(lang: string): {
