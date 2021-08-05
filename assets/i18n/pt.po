@@ -3794,33 +3794,6 @@ msgstr ""
 msgid "Select Campaign"
 msgstr "Escolher Campanha"
 
-msgid "Success"
-msgstr "Sucesso"
-
-msgid "Draw Two, Pick One"
-msgstr "Compre Dois, Escolha Um"
-
-msgid "Fail By 2 or Less"
-msgstr "Falhou Por 2 ou Menos"
-
-msgid "Fail By 1 or Less"
-msgstr "Falhou Por 1 ou Menos"
-
-msgid "Succeed By 1 or More"
-msgstr "Sucesso Por 1 ou Mais"
-
-msgid "Succeed By 2 or More"
-msgstr "Sucesso Por 2 ou Mais"
-
-msgid "Succeed By 3 or More"
-msgstr "Sucesso Por 3 ou Mais"
-
-msgid "Re-Draw After Fail"
-msgstr "Comprar Novamente Depois de Falhar"
-
-msgid "Succeed Twice In A Row"
-msgstr "Sucesso duas vezes seguidas"
-
 msgid "Number of clues on your location"
 msgstr "Número de pistas na sua localidade"
 
@@ -3844,18 +3817,6 @@ msgstr "Gaste dois recursos para automaticamente ser bem sucedido"
 
 msgid "Resource cost of the top card on your deck"
 msgstr "Custo de recurso da carta do top do seu baralho"
-
-msgid "Change Scenario"
-msgstr "Mudar Cenário"
-
-msgid ""
-"Note: chaos tokens that cause additional tokens to be revealed does not "
-"show correct odds for the \"Draw Two Pick One\" and similar multi-draw "
-"situations."
-msgstr ""
-"Nota: marcadores de caos que causam marcadores adicionais a serem revelados "
-"não mostra corretamente oportunidades para “Compre dois e pegue um” e "
-"situações similares de compras múltiplicas."
 
 msgid "Difficulty"
 msgstr "Dificuldade"
@@ -4589,6 +4550,81 @@ msgid ""
 "It can take up to 24hrs before Patreon updates your membership status. If "
 "you are still experiencing problems after 24hrs, please contact Mythos "
 "Busters via Patreon or on the Discord channel for help with this issue."
+msgstr ""
+
+msgid "Skull"
+msgstr ""
+
+msgid "Cultist"
+msgstr ""
+
+msgid "Tablet"
+msgstr ""
+
+msgid "Elder Thing"
+msgstr ""
+
+msgid "Auto-Fail"
+msgstr ""
+
+msgid "Elder Sign"
+msgstr ""
+
+msgid "Number of [[Item]] assets you control"
+msgstr ""
+
+msgid "Your investigator's modifier"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"0: (original effect below)\n"
+"${ originalTokenText }"
+msgstr ""
+
+msgid "${ failingTokens }/${ total } tokens"
+msgstr ""
+
+#, javascript-format
+msgid "${ passingTokens }/${ total } tokens"
+msgstr ""
+
+msgid "${ modifier }, draws another"
+msgstr ""
+
+msgid "Easy difficulty"
+msgstr ""
+
+msgid "Standard difficulty"
+msgstr ""
+
+msgid "Hard difficulty"
+msgstr ""
+
+msgid "Expert difficulty"
+msgstr ""
+
+msgid "— Difficulty —"
+msgstr ""
+
+msgid "— Available Scenarios —"
+msgstr ""
+
+msgid "Scenario settings"
+msgstr ""
+
+msgid "Your investigator modfifier"
+msgstr ""
+
+msgid ""
+"Reference\n"
+"card"
+msgstr ""
+
+msgid "Test difficulty"
+msgstr ""
+
+msgid "Modified skill"
 msgstr ""
 
 msgctxt "masculine"
@@ -5928,3 +5964,7 @@ msgstr "Todas"
 msgctxt "trauma"
 msgid "None"
 msgstr "Nenhum"
+
+msgctxt "versus abbreviation"
+msgid "VS"
+msgstr ""

@@ -1736,24 +1736,6 @@ msgstr "Verfügbare XP"
 msgid "Odds Calculator"
 msgstr "Wahrscheinlichkeitsrechner"
 
-msgid "Fail By 2 or Less"
-msgstr "Misslingt mit 2 oder weniger"
-
-msgid "Fail By 1 or Less"
-msgstr "Misslingt mit 1 oder weniger"
-
-msgid "Succeed By 1 or More"
-msgstr "Erfolgreich mit 1 oder mehr"
-
-msgid "Succeed By 2 or More"
-msgstr "Erfolgreich mit 2 oder mehr"
-
-msgid "Succeed By 3 or More"
-msgstr "Erfolgreich mit 3 oder mehr"
-
-msgid "Change Scenario"
-msgstr "Szenario wechseln"
-
 msgid "Weakness Set"
 msgstr "Schwächeset"
 
@@ -1789,15 +1771,6 @@ msgstr "Zahle 2 Ressourcen um den Check automatisch zu schaffen"
 
 msgid "Resource cost of the top card on your deck"
 msgstr "Ressourcenkosten von der obersten Karte deines Decks"
-
-msgid ""
-"Note: chaos tokens that cause additional tokens to be revealed does not "
-"show correct odds for the \"Draw Two Pick One\" and similar multi-draw "
-"situations."
-msgstr ""
-"Hinweis: Chaosmarker, die dazu führen, dass zusätzliche Marker gezogen "
-"werden, zeigen nicht die richtigen Wahrscheinlichkeiten für \"Ziehe zwei "
-"nimm eins\" und ähnliche Situationen mit mehreren Ziehungen."
 
 msgid "Deleting"
 msgstr "Lösche"
@@ -1882,18 +1855,6 @@ msgstr "Arkan x2"
 
 msgid "Ally. Arcane"
 msgstr "Verbündeter. Arkan"
-
-msgid "Success"
-msgstr "Erfolgreich"
-
-msgid "Draw Two, Pick One"
-msgstr "Ziehe zwei, wähle einen"
-
-msgid "Re-Draw After Fail"
-msgstr "Nach Misserfolg noch einmal ziehen"
-
-msgid "Succeed Twice In A Row"
-msgstr "Zweimal hintereinander Erfolg haben"
 
 #, javascript-format
 msgid "${ things[0] } and ${ things[1] }"
@@ -4652,6 +4613,81 @@ msgid ""
 "Busters via Patreon or on the Discord channel for help with this issue."
 msgstr ""
 
+msgid "Skull"
+msgstr ""
+
+msgid "Cultist"
+msgstr ""
+
+msgid "Tablet"
+msgstr ""
+
+msgid "Elder Thing"
+msgstr ""
+
+msgid "Auto-Fail"
+msgstr ""
+
+msgid "Elder Sign"
+msgstr ""
+
+msgid "Number of [[Item]] assets you control"
+msgstr ""
+
+msgid "Your investigator's modifier"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"0: (original effect below)\n"
+"${ originalTokenText }"
+msgstr ""
+
+msgid "${ failingTokens }/${ total } tokens"
+msgstr ""
+
+#, javascript-format
+msgid "${ passingTokens }/${ total } tokens"
+msgstr ""
+
+msgid "${ modifier }, draws another"
+msgstr ""
+
+msgid "Easy difficulty"
+msgstr ""
+
+msgid "Standard difficulty"
+msgstr ""
+
+msgid "Hard difficulty"
+msgstr ""
+
+msgid "Expert difficulty"
+msgstr ""
+
+msgid "— Difficulty —"
+msgstr ""
+
+msgid "— Available Scenarios —"
+msgstr ""
+
+msgid "Scenario settings"
+msgstr ""
+
+msgid "Your investigator modfifier"
+msgstr ""
+
+msgid ""
+"Reference\n"
+"card"
+msgstr ""
+
+msgid "Test difficulty"
+msgstr ""
+
+msgid "Modified skill"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } wird <b>wahnsinnig</b>."
@@ -5997,3 +6033,7 @@ msgstr "Alle"
 msgctxt "trauma"
 msgid "None"
 msgstr "Keine"
+
+msgctxt "versus abbreviation"
+msgid "VS"
+msgstr ""

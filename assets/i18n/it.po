@@ -1741,24 +1741,6 @@ msgstr "PE disponibili"
 msgid "Odds Calculator"
 msgstr "Calcolatore Probabilità"
 
-msgid "Fail By 2 or Less"
-msgstr "Fallimento di 2 o meno"
-
-msgid "Fail By 1 or Less"
-msgstr "Fallimento di 1 o meno"
-
-msgid "Succeed By 1 or More"
-msgstr "Successo di 1 o più"
-
-msgid "Succeed By 2 or More"
-msgstr "Successo di 2 o più"
-
-msgid "Succeed By 3 or More"
-msgstr "Successo di 3 o più"
-
-msgid "Change Scenario"
-msgstr "Cambia Scenario"
-
 msgid "Weakness Set"
 msgstr "Set Debolezze"
 
@@ -1794,15 +1776,6 @@ msgstr "Spendi due risorse per avere Successo automaticamente"
 
 msgid "Resource cost of the top card on your deck"
 msgstr "Costo in risorse della carta in cima al tuo mazzo"
-
-msgid ""
-"Note: chaos tokens that cause additional tokens to be revealed does not "
-"show correct odds for the \"Draw Two Pick One\" and similar multi-draw "
-"situations."
-msgstr ""
-"Nota: i segnalini caos che causano la rivelazione di segnalini aggiuntivi "
-"non mostrano le probabilità corrette per il \"Pesca due scegli uno\" o "
-"altre situazioni di pesca multipla."
 
 msgid "Deleting"
 msgstr "Cancellazione"
@@ -1883,18 +1856,6 @@ msgstr "Arcano x2"
 
 msgid "Ally. Arcane"
 msgstr "Alleato. Arcano"
-
-msgid "Success"
-msgstr "Successo"
-
-msgid "Draw Two, Pick One"
-msgstr "Pesca due, scegli una"
-
-msgid "Re-Draw After Fail"
-msgstr "Pesca di nuovo dopo un fallimento"
-
-msgid "Succeed Twice In A Row"
-msgstr "Successo due volte di fila"
 
 #, javascript-format
 msgid "${ things[0] } and ${ things[1] }"
@@ -4658,6 +4619,81 @@ msgid ""
 "Busters via Patreon or on the Discord channel for help with this issue."
 msgstr ""
 
+msgid "Skull"
+msgstr ""
+
+msgid "Cultist"
+msgstr ""
+
+msgid "Tablet"
+msgstr ""
+
+msgid "Elder Thing"
+msgstr ""
+
+msgid "Auto-Fail"
+msgstr ""
+
+msgid "Elder Sign"
+msgstr ""
+
+msgid "Number of [[Item]] assets you control"
+msgstr ""
+
+msgid "Your investigator's modifier"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"0: (original effect below)\n"
+"${ originalTokenText }"
+msgstr ""
+
+msgid "${ failingTokens }/${ total } tokens"
+msgstr ""
+
+#, javascript-format
+msgid "${ passingTokens }/${ total } tokens"
+msgstr ""
+
+msgid "${ modifier }, draws another"
+msgstr ""
+
+msgid "Easy difficulty"
+msgstr ""
+
+msgid "Standard difficulty"
+msgstr ""
+
+msgid "Hard difficulty"
+msgstr ""
+
+msgid "Expert difficulty"
+msgstr ""
+
+msgid "— Difficulty —"
+msgstr ""
+
+msgid "— Available Scenarios —"
+msgstr ""
+
+msgid "Scenario settings"
+msgstr ""
+
+msgid "Your investigator modfifier"
+msgstr ""
+
+msgid ""
+"Reference\n"
+"card"
+msgstr ""
+
+msgid "Test difficulty"
+msgstr ""
+
+msgid "Modified skill"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } è <b>impazzito</b>."
@@ -6003,3 +6039,7 @@ msgstr "Tutte"
 msgctxt "trauma"
 msgid "None"
 msgstr "Nessuno"
+
+msgctxt "versus abbreviation"
+msgid "VS"
+msgstr ""

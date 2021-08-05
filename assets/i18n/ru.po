@@ -2543,33 +2543,6 @@ msgstr "Другие кампании"
 msgid "Select Campaign"
 msgstr "Выбрать кампанию"
 
-msgid "Success"
-msgstr "Успех"
-
-msgid "Draw Two, Pick One"
-msgstr "Вытянуть два, выбрать один"
-
-msgid "Fail By 2 or Less"
-msgstr "Провал на 2 или меньше"
-
-msgid "Fail By 1 or Less"
-msgstr "Провал на 1 или меньше"
-
-msgid "Succeed By 1 or More"
-msgstr "Успех хотя бы на 1"
-
-msgid "Succeed By 2 or More"
-msgstr "Успех хотя бы на 2"
-
-msgid "Succeed By 3 or More"
-msgstr "Успех на 3 и больше"
-
-msgid "Re-Draw After Fail"
-msgstr "Перетянуть после провала"
-
-msgid "Succeed Twice In A Row"
-msgstr "Два успеха подряд"
-
 msgid "Number of clues on your location"
 msgstr "Число улик на вашей локации"
 
@@ -2593,18 +2566,6 @@ msgstr "Потратить два ресурса, чтобы автоматич�
 
 msgid "Resource cost of the top card on your deck"
 msgstr "Цена в ресурсах верхней карты вашей колоды"
-
-msgid "Change Scenario"
-msgstr "Сменить сценарий"
-
-msgid ""
-"Note: chaos tokens that cause additional tokens to be revealed does not "
-"show correct odds for the \"Draw Two Pick One\" and similar multi-draw "
-"situations."
-msgstr ""
-"Обратите внимание: жетоны хаоса, предписывающие вытянуть ещё один жетон, "
-"дают некорректные вероятности в ситуациях, подобных «Вытянуть два, выбрать "
-"один»."
 
 msgid "Difficulty"
 msgstr "Сложность"
@@ -4659,6 +4620,81 @@ msgid ""
 "Busters via Patreon or on the Discord channel for help with this issue."
 msgstr ""
 
+msgid "Skull"
+msgstr ""
+
+msgid "Cultist"
+msgstr ""
+
+msgid "Tablet"
+msgstr ""
+
+msgid "Elder Thing"
+msgstr ""
+
+msgid "Auto-Fail"
+msgstr ""
+
+msgid "Elder Sign"
+msgstr ""
+
+msgid "Number of [[Item]] assets you control"
+msgstr ""
+
+msgid "Your investigator's modifier"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"0: (original effect below)\n"
+"${ originalTokenText }"
+msgstr ""
+
+msgid "${ failingTokens }/${ total } tokens"
+msgstr ""
+
+#, javascript-format
+msgid "${ passingTokens }/${ total } tokens"
+msgstr ""
+
+msgid "${ modifier }, draws another"
+msgstr ""
+
+msgid "Easy difficulty"
+msgstr ""
+
+msgid "Standard difficulty"
+msgstr ""
+
+msgid "Hard difficulty"
+msgstr ""
+
+msgid "Expert difficulty"
+msgstr ""
+
+msgid "— Difficulty —"
+msgstr ""
+
+msgid "— Available Scenarios —"
+msgstr ""
+
+msgid "Scenario settings"
+msgstr ""
+
+msgid "Your investigator modfifier"
+msgstr ""
+
+msgid ""
+"Reference\n"
+"card"
+msgstr ""
+
+msgid "Test difficulty"
+msgstr ""
+
+msgid "Modified skill"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } <b>сошёл с ума</b>."
@@ -6027,3 +6063,7 @@ msgstr "Все"
 msgctxt "trauma"
 msgid "None"
 msgstr "Нет"
+
+msgctxt "versus abbreviation"
+msgid "VS"
+msgstr ""

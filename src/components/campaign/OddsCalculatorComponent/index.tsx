@@ -158,7 +158,8 @@ function parseSpecialTokenValuesText(
       hardExpert ? parsedTokens.hard : parsedTokens.standard,
       token => {
         if (token.token === 'skull' && investigator?.code === '02004') {
-          const jimText = t`0: (original effect below)\n${tokenText.skull || '???'}`;
+          const originalTokenText = tokenText.skull || '???';
+          const jimText = t`0: (original effect below)\n${originalTokenText}`;
           if (token.type === 'condition') {
             return {
               token: 'skull',

@@ -2152,33 +2152,6 @@ msgstr ""
 msgid "Select Campaign"
 msgstr ""
 
-msgid "Success"
-msgstr ""
-
-msgid "Draw Two, Pick One"
-msgstr ""
-
-msgid "Fail By 2 or Less"
-msgstr ""
-
-msgid "Fail By 1 or Less"
-msgstr ""
-
-msgid "Succeed By 1 or More"
-msgstr ""
-
-msgid "Succeed By 2 or More"
-msgstr ""
-
-msgid "Succeed By 3 or More"
-msgstr ""
-
-msgid "Re-Draw After Fail"
-msgstr ""
-
-msgid "Succeed Twice In A Row"
-msgstr ""
-
 msgid "Number of clues on your location"
 msgstr ""
 
@@ -2201,15 +2174,6 @@ msgid "Spend two resources to automatically succeed"
 msgstr ""
 
 msgid "Resource cost of the top card on your deck"
-msgstr ""
-
-msgid "Change Scenario"
-msgstr ""
-
-msgid ""
-"Note: chaos tokens that cause additional tokens to be revealed does not "
-"show correct odds for the \"Draw Two Pick One\" and similar multi-draw "
-"situations."
 msgstr ""
 
 msgid "Difficulty"
@@ -4284,6 +4248,81 @@ msgid ""
 "Busters via Patreon or on the Discord channel for help with this issue."
 msgstr ""
 
+msgid "Skull"
+msgstr ""
+
+msgid "Cultist"
+msgstr ""
+
+msgid "Tablet"
+msgstr ""
+
+msgid "Elder Thing"
+msgstr ""
+
+msgid "Auto-Fail"
+msgstr ""
+
+msgid "Elder Sign"
+msgstr ""
+
+msgid "Number of [[Item]] assets you control"
+msgstr ""
+
+msgid "Your investigator's modifier"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"0: (original effect below)\n"
+"${ originalTokenText }"
+msgstr ""
+
+msgid "${ failingTokens }/${ total } tokens"
+msgstr ""
+
+#, javascript-format
+msgid "${ passingTokens }/${ total } tokens"
+msgstr ""
+
+msgid "${ modifier }, draws another"
+msgstr ""
+
+msgid "Easy difficulty"
+msgstr ""
+
+msgid "Standard difficulty"
+msgstr ""
+
+msgid "Hard difficulty"
+msgstr ""
+
+msgid "Expert difficulty"
+msgstr ""
+
+msgid "— Difficulty —"
+msgstr ""
+
+msgid "— Available Scenarios —"
+msgstr ""
+
+msgid "Scenario settings"
+msgstr ""
+
+msgid "Your investigator modfifier"
+msgstr ""
+
+msgid ""
+"Reference\n"
+"card"
+msgstr ""
+
+msgid "Test difficulty"
+msgstr ""
+
+msgid "Modified skill"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr ""
@@ -5608,4 +5647,8 @@ msgstr ""
 
 msgctxt "trauma"
 msgid "None"
+msgstr ""
+
+msgctxt "versus abbreviation"
+msgid "VS"
 msgstr ""

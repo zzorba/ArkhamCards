@@ -1696,24 +1696,6 @@ msgstr "可用經驗"
 msgid "Odds Calculator"
 msgstr "概率計算器"
 
-msgid "Fail By 2 or Less"
-msgstr "失敗2點以內"
-
-msgid "Fail By 1 or Less"
-msgstr "失敗1點以內"
-
-msgid "Succeed By 1 or More"
-msgstr "至少成功1點"
-
-msgid "Succeed By 2 or More"
-msgstr "至少成功2點"
-
-msgid "Succeed By 3 or More"
-msgstr "至少成功3點"
-
-msgid "Change Scenario"
-msgstr "變更冒險"
-
 msgid "Weakness Set"
 msgstr "弱點牌"
 
@@ -1749,12 +1731,6 @@ msgstr "花費2資源自動成功"
 
 msgid "Resource cost of the top card on your deck"
 msgstr "你的牌堆頂部的牌的費用"
-
-msgid ""
-"Note: chaos tokens that cause additional tokens to be revealed does not "
-"show correct odds for the \"Draw Two Pick One\" and similar multi-draw "
-"situations."
-msgstr "注意: 需要抽取多個混亂標記的效果(例如抽取兩個標記選擇一個，或類似的混亂標記或卡牌效果)，其概率沒有被計算。"
 
 msgid "Deleting"
 msgstr "刪除中"
@@ -1835,18 +1811,6 @@ msgstr "法術 x2"
 
 msgid "Ally. Arcane"
 msgstr "盟友. 法術"
-
-msgid "Success"
-msgstr "成功"
-
-msgid "Draw Two, Pick One"
-msgstr "抽兩個，選擇一個"
-
-msgid "Re-Draw After Fail"
-msgstr "在失敗後重抽"
-
-msgid "Succeed Twice In A Row"
-msgstr "連續兩次成功"
 
 #, javascript-format
 msgid "${ things[0] } and ${ things[1] }"
@@ -4392,6 +4356,81 @@ msgid ""
 "Busters via Patreon or on the Discord channel for help with this issue."
 msgstr ""
 
+msgid "Skull"
+msgstr ""
+
+msgid "Cultist"
+msgstr ""
+
+msgid "Tablet"
+msgstr ""
+
+msgid "Elder Thing"
+msgstr ""
+
+msgid "Auto-Fail"
+msgstr ""
+
+msgid "Elder Sign"
+msgstr ""
+
+msgid "Number of [[Item]] assets you control"
+msgstr ""
+
+msgid "Your investigator's modifier"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"0: (original effect below)\n"
+"${ originalTokenText }"
+msgstr ""
+
+msgid "${ failingTokens }/${ total } tokens"
+msgstr ""
+
+#, javascript-format
+msgid "${ passingTokens }/${ total } tokens"
+msgstr ""
+
+msgid "${ modifier }, draws another"
+msgstr ""
+
+msgid "Easy difficulty"
+msgstr ""
+
+msgid "Standard difficulty"
+msgstr ""
+
+msgid "Hard difficulty"
+msgstr ""
+
+msgid "Expert difficulty"
+msgstr ""
+
+msgid "— Difficulty —"
+msgstr ""
+
+msgid "— Available Scenarios —"
+msgstr ""
+
+msgid "Scenario settings"
+msgstr ""
+
+msgid "Your investigator modfifier"
+msgstr ""
+
+msgid ""
+"Reference\n"
+"card"
+msgstr ""
+
+msgid "Test difficulty"
+msgstr ""
+
+msgid "Modified skill"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name }已<b>發瘋</b>。"
@@ -5696,3 +5735,7 @@ msgstr "全部"
 msgctxt "trauma"
 msgid "None"
 msgstr "無"
+
+msgctxt "versus abbreviation"
+msgid "VS"
+msgstr ""

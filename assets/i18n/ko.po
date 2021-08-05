@@ -2220,33 +2220,6 @@ msgstr "기타 캠페인"
 msgid "Select Campaign"
 msgstr "캠페인 선택"
 
-msgid "Success"
-msgstr "성공"
-
-msgid "Draw Two, Pick One"
-msgstr "2개를 뽑아 1개 적용"
-
-msgid "Fail By 2 or Less"
-msgstr "난이도에 모자란 차이 2 이하 실패"
-
-msgid "Fail By 1 or Less"
-msgstr "난이도에 모자란 차이 2 이하 실패"
-
-msgid "Succeed By 1 or More"
-msgstr "난이도를 넘어선 차이 1 이상 성공"
-
-msgid "Succeed By 2 or More"
-msgstr "난이도를 넘어선 차이 2 이상 성공"
-
-msgid "Succeed By 3 or More"
-msgstr "난이도를 넘어선 차이 3 이상 성공"
-
-msgid "Re-Draw After Fail"
-msgstr "실패후 다시 뽑기"
-
-msgid "Succeed Twice In A Row"
-msgstr "두번 연속 성공"
-
 msgid "Number of clues on your location"
 msgstr "당신이 위치한 장소의 단서 개수"
 
@@ -2270,17 +2243,6 @@ msgstr "자원을 2개 소비하여 자동으로 성공"
 
 msgid "Resource cost of the top card on your deck"
 msgstr "당신의 덱 맨 위 카드의 자원 비용"
-
-msgid "Change Scenario"
-msgstr "시나리오 변경"
-
-msgid ""
-"Note: chaos tokens that cause additional tokens to be revealed does not "
-"show correct odds for the \"Draw Two Pick One\" and similar multi-draw "
-"situations."
-msgstr ""
-"참고: 다른 토큰을 공개하게 하는 혼돈 토큰은 \"2개를 뽑아 1개 적용\"과 이와 유사한 여러개를 뽑는 상황에서 정확한 결과를 "
-"보여주지 않습니다."
 
 msgid "Difficulty"
 msgstr "난이도"
@@ -4447,6 +4409,81 @@ msgid ""
 "Busters via Patreon or on the Discord channel for help with this issue."
 msgstr ""
 
+msgid "Skull"
+msgstr ""
+
+msgid "Cultist"
+msgstr ""
+
+msgid "Tablet"
+msgstr ""
+
+msgid "Elder Thing"
+msgstr ""
+
+msgid "Auto-Fail"
+msgstr ""
+
+msgid "Elder Sign"
+msgstr ""
+
+msgid "Number of [[Item]] assets you control"
+msgstr ""
+
+msgid "Your investigator's modifier"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"0: (original effect below)\n"
+"${ originalTokenText }"
+msgstr ""
+
+msgid "${ failingTokens }/${ total } tokens"
+msgstr ""
+
+#, javascript-format
+msgid "${ passingTokens }/${ total } tokens"
+msgstr ""
+
+msgid "${ modifier }, draws another"
+msgstr ""
+
+msgid "Easy difficulty"
+msgstr ""
+
+msgid "Standard difficulty"
+msgstr ""
+
+msgid "Hard difficulty"
+msgstr ""
+
+msgid "Expert difficulty"
+msgstr ""
+
+msgid "— Difficulty —"
+msgstr ""
+
+msgid "— Available Scenarios —"
+msgstr ""
+
+msgid "Scenario settings"
+msgstr ""
+
+msgid "Your investigator modfifier"
+msgstr ""
+
+msgid ""
+"Reference\n"
+"card"
+msgstr ""
+
+msgid "Test difficulty"
+msgstr ""
+
+msgid "Modified skill"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } 조사자는 <b>미칩니다</b>."
@@ -5759,3 +5796,7 @@ msgstr "모두"
 msgctxt "trauma"
 msgid "None"
 msgstr "없음"
+
+msgctxt "versus abbreviation"
+msgid "VS"
+msgstr ""
