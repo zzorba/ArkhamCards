@@ -112403,7 +112403,6 @@
     "check_long_glacier",
     "check_kerio",
     "setup_locations",
-    "take_brownie",
     "encounter_deck",
     "$play_scenario"
   ],
@@ -112629,15 +112628,6 @@
       "id": "flip_kerio",
       "bullet_type": "small",
       "text": "Flip Gatklettur to its revealed side and return it to the gathered locations."
-    },
-    {
-      "id": "take_brownie",
-      "text": "Choose an investigator to take control of the Brownie 2 story asset.",
-      "bullets": [
-        {
-          "text": "These cards have an encounter card on their reverse side. For the best experience, do not look at these cards on their reverse sides."
-        }
-      ]
     },
     {
       "id": "setup_locations",
@@ -113164,7 +113154,7 @@
         {
           "type": "remove_chaos_token",
           "tokens": [
-            "0"
+            "-5"
           ]
         },
         {
