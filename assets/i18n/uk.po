@@ -4321,7 +4321,6 @@ msgid "${ tokens }/${ total } token"
 msgid_plural "${ tokens }/${ total } tokens"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
