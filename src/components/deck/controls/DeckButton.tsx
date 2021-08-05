@@ -68,6 +68,8 @@ interface Props {
   topMargin?: number;
   disabled?: boolean;
   noShadow?: boolean;
+  bigEncounterIcon?: boolean;
+  rightNode?: React.ReactNode;
 }
 
 const ICON_SIZE: { [icon: string]: number | undefined } = {
@@ -114,6 +116,7 @@ export default function DeckButton({
   title,
   detail,
   encounterIcon,
+  bigEncounterIcon,
   icon,
   color = 'default',
   onPress,
@@ -125,6 +128,7 @@ export default function DeckButton({
   loading,
   bottomMargin,
   noShadow,
+  rightNode,
 }: Props) {
   const { colors, fontScale, typography, shadow } = useContext(StyleContext);
   const backgroundColors = {
@@ -181,7 +185,7 @@ export default function DeckButton({
       return <ActivityIndicator animating color={theIconColor} size="small" />;
     }
     if (encounterIcon) {
-      return <EncounterIcon encounter_code={encounterIcon} size={26} color={theIconColor} />;
+      return <EncounterIcon encounter_code={encounterIcon} size={bigEncounterIcon ? 32 : 26} color={theIconColor} />;
     }
     if (!icon) {
       return null;
@@ -197,7 +201,7 @@ export default function DeckButton({
       return <EncounterIcon encounter_code={icon} size={size} color={theIconColor} />;
     }
     return <AppIcon name={icon} size={size} color={theIconColor} />;
-  }, [loading, icon, thin, encounterIcon, theIconColor]);
+  }, [loading, icon, thin, encounterIcon, bigEncounterIcon, theIconColor]);
   const topTextHeight = 22 * Math.max(1.0, fontScale);
   const textHeight = (detail ? 10 : 0) * Math.max(1.0, fontScale) + topTextHeight;
   const height = textHeight + s * 2 + xs * 2;
@@ -231,7 +235,7 @@ export default function DeckButton({
           <View style={[
             styles.icon,
             space.marginLeftXs,
-            space.marginRightS,
+            bigEncounterIcon ? {} : space.marginRightS,
             thin ? { marginLeft: xs, width: 28, height: 32 * fontScale } : { width: 32, height: 32 * fontScale },
             loading || !icon ? undefined : ICON_STYLE[icon],
           ]}>
@@ -259,6 +263,7 @@ export default function DeckButton({
             </Text>
           ) }
         </View>
+        { !!rightNode && rightNode }
       </View>
     </Ripple>
   );

@@ -75,7 +75,7 @@ export default function(
       fontFamily: italicFont,
       fontStyle: ITALIC_FONT_STYLE,
       fontSize: Math.ceil(14 * fontScale),
-      lineHeight: Math.ceil((lang === 'zh' ? 17 : 14) * fontScale),
+      lineHeight: Math.ceil((lang === 'zh' ? 17 : 16) * fontScale),
       letterSpacing: 0.3,
       color: colors.lightText,
     },

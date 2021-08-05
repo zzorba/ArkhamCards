@@ -210,7 +210,7 @@ const SPECIAL_COLORS: { [token: string]: string | undefined } = {
   curse: '#3A2342',
 };
 
-function getSize(iconSize?: 'small' | 'tiny' | 'extraTiny') {
+export function getChaosTokenSize(iconSize?: 'small' | 'tiny' | 'extraTiny') {
   if (!iconSize) {
     return CIRCLE_LARGE;
   }
@@ -223,7 +223,7 @@ function getSize(iconSize?: 'small' | 'tiny' | 'extraTiny') {
 
 export default function ChaosToken({ iconKey, size: iconSize, sealed, status, shadow: useShadow }: Props) {
   const { colors, typography, shadow } = useContext(StyleContext);
-  const size = getSize(iconSize);
+  const size = getChaosTokenSize(iconSize);
   if (!iconKey) {
     return <View style={[{ width: size, height: size }, styles.tapCircle]} />;
   }
