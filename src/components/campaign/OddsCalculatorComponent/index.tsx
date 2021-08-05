@@ -1,7 +1,7 @@
 import React, { useContext, useMemo, useState } from 'react';
 import { filter, head, find, flatMap, forEach, groupBy, sortBy, keys, map, range, sumBy, values, reverse, tail, partition, maxBy } from 'lodash';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { c, t } from 'ttag';
+import { c, msgid, ngettext, t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
 
 import VariableTokenInput from './VariableTokenInput';
@@ -10,7 +10,7 @@ import ChaosBagLine from '@components/core/ChaosBagLine';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { difficultyString, Scenario, scenarioFromCard } from '@components/campaign/constants';
 import { CampaignDifficulty } from '@actions/types';
-import { ChaosBag, SPECIAL_TOKENS, ChaosTokenType, CHAOS_TOKENS, getChaosTokenValue, chaosTokenName } from '@app_constants';
+import { ChaosBag, SPECIAL_TOKENS, ChaosTokenType, CHAOS_TOKENS, getChaosTokenValue } from '@app_constants';
 import Card from '@data/types/Card';
 import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -215,10 +215,10 @@ function NumberInput({ title, value, color, inc, dec }: {
   inc: () => void;
   dec: () => void;
 }) {
-  const { fontScale, colors, typography } = useContext(StyleContext);
+  const { fontScale, colors, typography, width } = useContext(StyleContext);
   const size = 40 * fontScale;
   return (
-    <View style={styles.numberInput}>
+    <View style={[styles.numberInput, { maxWidth: Math.min(150, width * 0.4) }]}>
       <View style={space.paddingSideS}>
         <PlusMinusButtons
           dialogStyle
@@ -236,7 +236,7 @@ function NumberInput({ title, value, color, inc, dec }: {
           color="dark"
         />
       </View>
-      <Text style={[space.marginTopS, typography.small, typography.italic]}>
+      <Text style={[space.marginTopS, typography.small, typography.center, typography.italic]} numberOfLines={2} ellipsizeMode="clip">
         { title }
       </Text>
     </View>
@@ -382,6 +382,13 @@ function ChaosTokenPile({ pile, height, mode, showBlurse, totalTokens }: { pile:
   );
 }
 
+function tokenRatioString(tokens: number, total: number): string {
+  return ngettext(msgid`${tokens}/${total} token`,
+    `${tokens}/${total} tokens`,
+    total
+  );
+}
+
 function ChaosBagOddsSection({
   chaosBag,
   specialTokenValues,
@@ -477,7 +484,7 @@ function ChaosBagOddsSection({
                 <View style={[space.paddingTopS, space.paddingRightXs]}>
                   <Text style={[typography.large, { color: colors.warn }, typography.right]}>{failPercent}%</Text>
                   <Text style={[typography.smallLabel, { color: colors.warn }, typography.right]} ellipsizeMode="clip" numberOfLines={1}>
-                    {t`${failingTokens}/${total} tokens`}
+                    {tokenRatioString(failingTokens, total)}
                   </Text>
                 </View>
               </View>
@@ -488,7 +495,7 @@ function ChaosBagOddsSection({
                 <View style={[space.paddingTopS, space.paddingLeftXs]}>
                   <Text style={[typography.large, { color: colors.campaign.setup }]}>{passPercent}%</Text>
                   <Text style={[typography.smallLabel, { color: colors.campaign.setup }]} ellipsizeMode="clip" numberOfLines={1}>
-                    {t`${passingTokens}/${total} tokens`}
+                    {tokenRatioString(passingTokens, total)}
                   </Text>
                 </View>
               </View>
@@ -817,7 +824,7 @@ export default function OddsCalculatorComponent({
           return {
             token: tokenValue.token,
             value: {
-              modifier: -(xValue[tokenValue.token] || (tokenValue.counter.min || 0)) * (tokenValue.counter.scale || 1),
+              modifier: ((xValue[tokenValue.token] || (tokenValue.counter.min || 0)) + (tokenValue.counter.adjustment || 0)) * (tokenValue.counter.scale || 1) * (tokenValue.token === 'elder_sign' ? 1 : -1),
             },
           };
         }
@@ -916,7 +923,7 @@ export default function OddsCalculatorComponent({
             color="red"
           />
           <View>
-            <Text style={[typography.subHeaderText, typography.dark]}>{c('versus abbreviation').t`VS`}</Text>
+            <Text style={[typography.subHeaderText, typography.dark, space.marginTopS]}>{c('versus abbreviation').t`VS`}</Text>
             <Text style={[space.marginTopS, typography.small, typography.italic]}> </Text>
           </View>
           <NumberInput
@@ -997,7 +1004,7 @@ const styles = StyleSheet.create({
   difficultyRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   center: {
     flexDirection: 'column',
@@ -1036,12 +1043,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  modifierBoost: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    flex: 1,
   },
   failPile: {
     flexDirection: 'column',

@@ -33,10 +33,13 @@ export type ControlType = {
   value: boolean;
   toggleValue: (value: boolean) => void;
 } | {
-  type: 'count_with_toggle',
+  type: 'count_with_toggle';
   count: number;
   value: boolean;
   toggleValue: (value: boolean) => void;
+} | {
+  type: 'shuffle';
+  onShufflePress: () => void;
 }
 
 interface Props {

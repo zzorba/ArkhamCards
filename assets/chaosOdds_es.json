@@ -377,8 +377,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 more than the current agenda number",
-          "min": 2
+          "prompt": "Current agenda number",
+          "min": 1,
+          "adjustment": 1
         }
       },
       {
@@ -1282,8 +1283,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 higher than the number of vengeance points in the victory display",
-          "min": 1
+          "prompt": "Number of vengeance points in the victory display",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {
@@ -2058,8 +2060,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 higher than the number of Unfinished Business in the victory display",
-          "min": 1
+          "prompt": "The number of Unfinished Business in the victory display",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {
@@ -2290,8 +2293,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 higher than the total number of doom and breaches on your location",
-          "min": 1
+          "prompt": "Total number of doom and breaches on your location",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {
@@ -2487,8 +2491,9 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "1 higher than the number of infested locations",
-          "min": 1
+          "prompt": "Number of infested locations",
+          "min": 0,
+          "adjustment": 1
         }
       }
     ]
@@ -2530,8 +2535,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 more than the number of Signs of the Gods the investigators have uncovered",
-          "min": 1
+          "prompt": "Number of Signs of the Gods the investigators have uncovered",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {
@@ -2726,8 +2732,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 more than the amount of damage on the scenario reference card",
-          "min": 1
+          "prompt": "Amount of damage on the scenario reference card",
+          "min": 1,
+          "adjustment": 1
         }
       },
       {
@@ -2973,8 +2980,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 more than the current agenda number",
-          "min": 2
+          "prompt": "The current agenda number",
+          "min": 1,
+          "adjustment": 1
         }
       },
       {
@@ -3099,8 +3107,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 more than the number of keys the investigators control",
-          "min": 1
+          "prompt": "Number of keys the investigators control",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {
@@ -3669,8 +3678,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 more than the strength of the abyss",
-          "min": 1
+          "prompt": "The strength of the abyss",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {
@@ -3740,8 +3750,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 more than the strength of the abyss",
-          "min": 1
+          "prompt": "The strength of the abyss",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {
@@ -4014,8 +4025,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 more than the number of [[Tome]] assets Daisy Walker controls",
-          "min": 1
+          "prompt": "Number of [[Tome]] assets Daisy Walker controls",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {
@@ -4150,8 +4162,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 more than the number of memories Agnes Baker has collected",
-          "min": 1
+          "prompt": "Number of memories Agnes Baker has collected",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {
@@ -4219,8 +4232,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 plus the number of [[Cultist]] enemies in the victory display",
-          "min": 1
+          "prompt": "Number of [[Cultist]] enemies in the victory display",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {

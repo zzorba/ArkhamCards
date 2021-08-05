@@ -4271,13 +4271,7 @@ msgid ""
 "${ originalTokenText }"
 msgstr ""
 
-msgid "${ failingTokens }/${ total } tokens"
-msgstr ""
-
 #, javascript-format
-msgid "${ passingTokens }/${ total } tokens"
-msgstr ""
-
 msgid "${ modifier }, draws another"
 msgstr ""
 
@@ -4315,6 +4309,11 @@ msgstr ""
 
 msgid "Modified skill"
 msgstr ""
+
+msgid "${ tokens }/${ total } token"
+msgid_plural "${ tokens }/${ total } tokens"
+msgstr[0] ""
+msgstr[1] ""
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
