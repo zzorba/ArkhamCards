@@ -576,7 +576,7 @@ msgid "Night of the Zealot"
 msgstr "La Noche de la Fanática"
 
 msgid "Return to the Night of the Zealot"
-msgstr "Regreso a La Noche de la Fanática"
+msgstr "Regreso a La noche de la fanática"
 
 msgid "The Dunwich Legacy"
 msgstr "El legado de Dunwich"
@@ -636,10 +636,10 @@ msgid "Epilogue"
 msgstr "Epílogo"
 
 msgid "Return to Extracurricular Activity"
-msgstr "Regreso a la actividad extracurricular"
+msgstr "Regreso a Actividad extracurricular"
 
 msgid "Return to The House Always Wins"
-msgstr "Regreso a la casa siempre gana"
+msgstr "Regreso a La casa siempre gana"
 
 msgid "Return to The Miskatonic Museum"
 msgstr "Regreso al museo Miskatonic"
@@ -648,7 +648,7 @@ msgid "Return to Essex County Express"
 msgstr "Regrese al Essex County Express"
 
 msgid "Return to Blood on the Altar"
-msgstr "Regreso a sangre en el altar"
+msgstr "Regreso a Sangre en el altar"
 
 msgid "Return to Undimensioned and Unseen"
 msgstr "Regreso a Invisibles y sin dimensión"
@@ -657,79 +657,79 @@ msgid "Return to Where Doom Awaits"
 msgstr "Regreso a Donde aguarda la perdición"
 
 msgid "Return to Lost in Time and Space"
-msgstr "Regreso a perdidos en el tiempo y el espacio"
+msgstr "Regreso a Perdidos en el tiempo y el espacio"
 
 msgid "Prologue"
 msgstr "Prólogo"
 
 msgid "Curtain Call"
-msgstr "Se Cierra el Telón"
+msgstr "Se cierra el telón"
 
 msgid "The Last King"
-msgstr "El Último Rey"
+msgstr "El último rey"
 
 msgid "Lunacy’s Reward"
-msgstr "Recompensa de la Demencia"
+msgstr "Recompensa de la demencia"
 
 msgid "Echoes of the Past"
-msgstr "Ecos del Pasado"
+msgstr "Ecos del pasado"
 
 msgid "The Unspeakable Oath"
-msgstr "El Juramento Inconfesable"
+msgstr "El juramento inconfesable"
 
 msgid "Lost Soul"
 msgstr "Alma perdida"
 
 msgid "A Phantom of Truth"
-msgstr "El Fantasma de la Verdad"
+msgstr "El fantasma de la verdad"
 
 msgid "The Pallid Mask"
-msgstr "La Máscara Pálida"
+msgstr "La máscara pálida"
 
 msgid "Black Stars Rise"
-msgstr "Surgen Estrellas Negras"
+msgstr "Surgen estrellas negras"
 
 msgid "Dim Carcosa"
 msgstr "Penumbrosa Carcosa"
 
 msgid "The Untamed Wilds"
-msgstr "Naturaleza Salvaje"
+msgstr "Naturaleza salvaje"
 
 msgid "Restless Nights"
 msgstr "Noches inquietas"
 
 msgid "The Doom of Eztli"
-msgstr "La Perdición de Eztli"
+msgstr "La perdición de Eztli"
 
 msgid "Expedition’s End"
 msgstr "Fin de la Expedición"
 
 msgid "Threads of Fate"
-msgstr "Los Hilos del Destino"
+msgstr "Los hilos del destino"
 
 msgid "The Boundary Beyond"
-msgstr "El Límite del Otro Lado"
+msgstr "El límite del otro Lado"
 
 msgid "The Jungle Beckons"
-msgstr "La Atracción de la Jungla"
+msgstr "La atracción de la jungla"
 
 msgid "Heart of the Elders"
-msgstr "El Corazón de los Ancianos"
+msgstr "El corazón de los antiguos"
 
 msgid "The City of Archives"
 msgstr "La Ciudad de los Archivos"
 
 msgid "Those Held Captive"
-msgstr "Los que son Prisioneros"
+msgstr "Los que son prisioneros"
 
 msgid "The Depths of Yoth"
-msgstr "Las Profundidades de Yoth"
+msgstr "Las profundidades de Yoth"
 
 msgid "The Darkness"
-msgstr "La Oscuridad"
+msgstr "La oscuridad"
 
 msgid "Shattered Aeons"
-msgstr "Eones Destrozados"
+msgstr "Eones destrozados"
 
 msgid "Prologue: Disappearance at the Twilight Estate"
 msgstr "Prólogo: Desaparición en Twilight Estate"
@@ -2561,7 +2561,7 @@ msgid "Return to Threads of Fate"
 msgstr "Regreso a Los hilos del destino"
 
 msgid "Return to Heart of the Elders"
-msgstr "Regreso a El corazón de los ancianos"
+msgstr "Regreso a El corazón de los antiguos"
 
 msgid "Return to Shattered Aeons"
 msgstr "Regreso a Eones destrozados"
