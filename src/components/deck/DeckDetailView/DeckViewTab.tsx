@@ -19,7 +19,7 @@ import { showCard, showCardSwipe } from '@components/nav/helper';
 import DeckProgressComponent from '../DeckProgressComponent';
 import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import { BODY_OF_A_YITHIAN, TypeCodeType } from '@app_constants';
+import { BODY_OF_A_YITHIAN, RANDOM_BASIC_WEAKNESS, TypeCodeType } from '@app_constants';
 import DeckValidation from '@lib/DeckValidation';
 import Card, { CardsMap } from '@data/types/Card';
 import TabooSet from '@data/types/TabooSet';
@@ -486,6 +486,9 @@ export default function DeckViewTab(props: Props) {
   }, [deck.previousDeckId, deck.nextDeckId]);
 
   const controlForCard = useCallback((item: SectionCardId, card: Card, count: number | undefined): ControlType | undefined => {
+    if (card.code === RANDOM_BASIC_WEAKNESS) {
+
+    }
     if (mode === 'view') {
       return count !== undefined ? {
         type: 'count',

@@ -1084,6 +1084,7 @@ export interface CounterChaosTokenValue {
     max?: number;
     scale?: number;
     reveal_another?: boolean;
+    adjustment?: number;
   };
 }
 export interface ConditionChaosTokenValue {
