@@ -7,7 +7,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Ghoul]] enemies at your location.",
+          "prompt": "Число врагов-[[упырей]] в вашей локации",
           "min": 0
         }
       },
@@ -54,7 +54,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of doom on a [[Cultist]] enemy in play.",
+          "prompt": "Наибольшее число безысходности на враге-[[культисте]] в игре",
           "min": 0
         }
       },
@@ -76,7 +76,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom in play."
+          "prompt": "Общее число безысходности в игре"
         }
       },
       {
@@ -101,7 +101,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Monster]] enemies in play.",
+          "prompt": "Число врагов-[[монстров]] в игре",
           "min": 0
         }
       },
@@ -168,7 +168,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "10 or more cards in your discard pile",
+          "prompt": "В вашем сбросе 10 карт или больше",
           "modified_value": {
             "modifier": -3
           }
@@ -178,7 +178,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 2 cards discarded from your deck.",
+          "prompt": "Сумма напечатанных цен 2 карт, сброшенных из вашей колоды",
           "min": 0
         }
       }
@@ -197,7 +197,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "10 or more cards in your discard pile",
+          "prompt": "В вашем сбросе 10 карт или больше",
           "modified_value": {
             "modifier": -5
           }
@@ -207,7 +207,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 3 cards discarded from your deck.",
+          "prompt": "Сумма напечатанных цен 3 карт, сброшенных из вашей колоды",
           "min": 0
         }
       }
@@ -224,7 +224,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Spend 2 resources to treat this token as a 0",
+          "prompt": "Потратить 2 ресурса, чтобы считать этот жетон за 0.",
           "modified_value": {
             "modifier": 0
           }
@@ -251,7 +251,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Spend 3 resources to treat this token as a 0",
+          "prompt": "Потратить 3 ресурса, чтобы считать этот жетон за 0.",
           "modified_value": {
             "modifier": 0
           }
@@ -282,7 +282,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Hunting Horror is at your location",
+          "prompt": "«Охотящийся ужас» в вашей локации",
           "modified_value": {
             "modifier": -3
           }
@@ -315,7 +315,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Hunting Horror is at your location",
+          "prompt": "«Охотящийся ужас» в вашей локации",
           "modified_value": {
             "modifier": -4
           }
@@ -349,7 +349,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current agenda number",
+          "prompt": "Номер текущего замысла",
           "min": 1
         }
       },
@@ -377,7 +377,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current agenda number",
+          "prompt": "Номер текущего замысла",
           "min": 1,
           "adjustment": 1
         }
@@ -411,7 +411,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play with no encounter card underneath",
+          "prompt": "Число локаций в игре без карт контактов под ними",
           "min": 0,
           "max": 4
         }
@@ -440,7 +440,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play with no encounter card underneath",
+          "prompt": "Число локаций в игре без карт контактов под ними",
           "min": 0
         }
       },
@@ -472,7 +472,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Brood of Yog-Sothoth in play",
+          "prompt": "Число «Отпрысков Йог-Сотота» в игре",
           "min": 0
         }
       },
@@ -490,7 +490,7 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "Remove all clue tokens from a Brood of Yog-Sothoth in play",
+          "prompt": "Удалите все улики с «Отпрысков Йог-Сотота» в игре",
           "modified_value": {
             "modifier": 0
           }
@@ -508,7 +508,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play with no encounter card underneath",
+          "prompt": "Число локаций в игре без карт контактов под ними",
           "min": 0,
           "scale": 2
         }
@@ -527,7 +527,7 @@
           "default_value": {
             "modifier": "auto_fail"
           },
-          "prompt": "Remove all clue tokens from a Brood of Yog-Sothoth in play",
+          "prompt": "Удалите все улики с «Отпрысков Йог-Сотота» в игре",
           "modified_value": {
             "modifier": 0
           }
@@ -552,7 +552,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At an [[Altered]] location",
+          "prompt": "Вы в [[преображённой]] локации",
           "modified_value": {
             "modifier": -3
           }
@@ -572,7 +572,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Agenda 2 is in play",
+          "prompt": "В игре замысел 2",
           "modified_value": {
             "modifier": -4
           }
@@ -582,7 +582,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 2 cards discarded from your deck.",
+          "prompt": "Сумма напечатанных цен 2 карт, сброшенных из вашей колоды",
           "min": 0
         }
       }
@@ -595,7 +595,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At an [[Altered]] location",
+          "prompt": "Вы в [[преображённой]] локации",
           "modified_value": {
             "modifier": -5
           }
@@ -615,7 +615,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Agenda 2 is in play",
+          "prompt": "В игре замысел 2",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -625,7 +625,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 3 cards discarded from your deck.",
+          "prompt": "Сумма напечатанных цен 3 карт, сброшенных из вашей колоды",
           "min": 0
         }
       }
@@ -639,7 +639,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Extradimensional]] locations in play",
+          "prompt": "Число [[сверхпространственных]] локаций в игре",
           "min": 0,
           "max": 5
         }
@@ -661,7 +661,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "Неясность вашей локации",
           "min": 0
         }
       }
@@ -671,7 +671,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Extradimensional]] locations in play",
+          "prompt": "Число [[сверхпространственных]] локаций в игре",
           "min": 0
         }
       },
@@ -692,7 +692,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "Неясность вашей локации",
           "min": 0,
           "scale": 2
         }
@@ -710,7 +710,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Have 3 or more horror on you",
+          "prompt": "На вас 3 ужаса или больше",
           "modified_value": {
             "modifier": -3
           }
@@ -740,7 +740,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Amount of horror on you (min 1)",
+          "prompt": "Число ужаса на вас (порог 1)",
           "min": 1
         }
       },
@@ -791,7 +791,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "Неясность вашей локации",
           "min": 0
         }
       }
@@ -820,7 +820,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "Неясность вашей локации",
           "min": 0
         }
       }
@@ -834,7 +834,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of doom on an enemy in play",
+          "prompt": "Наибольшее число безысходности на враге в игре",
           "min": 0
         }
       },
@@ -862,7 +862,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom on enemies in play",
+          "prompt": "Общее число безысходности в игре",
           "min": 0
         }
       },
@@ -900,7 +900,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of horror on you",
+          "prompt": "Число ужаса на вас",
           "min": 0
         }
       },
@@ -908,7 +908,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Base shroud value of your location",
+          "prompt": "Базовая неясность вашей локации",
           "min": 0
         }
       },
@@ -919,7 +919,7 @@
           "default_value": {
             "modifier": "auto_fail"
           },
-          "prompt": "Randomally choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
+          "prompt": "Случайным образом выберите врага-[[монстра]] из отложенных и положите его под текущую сцену",
           "modified_value": {
             "modifier": 0
           }
@@ -938,7 +938,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of horror on you",
+          "prompt": "Число ужаса на вас",
           "min": 0
         }
       },
@@ -946,7 +946,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Base shroud value of your location",
+          "prompt": "Базовая неясность вашей локации",
           "min": 0
         }
       },
@@ -957,7 +957,7 @@
           "default_value": {
             "modifier": "auto_fail"
           },
-          "prompt": "Randomally choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
+          "prompt": "Случайным образом выберите врага-[[монстра]] из отложенных и положите его под текущую сцену",
           "modified_value": {
             "modifier": 0
           }
@@ -973,7 +973,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of doom in play",
+          "prompt": "Число безысходности в игре",
           "min": 0,
           "max": 5
         }
@@ -1003,7 +1003,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of doom in play",
+          "prompt": "Число безысходности в игре",
           "min": 0
         }
       },
@@ -1036,7 +1036,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations away from the starting location you are",
+          "prompt": "Число перемещений до стартовой локации",
           "min": 0,
           "max": 5
         }
@@ -1065,7 +1065,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations away from the starting location you are",
+          "prompt": "Число перемещений до стартовой локации",
           "min": 0
         }
       },
@@ -1097,7 +1097,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest amount of doom on an agenda in play",
+          "prompt": "Наибольшее число безысходности на замысле в игре",
           "min": 0
         }
       },
@@ -1109,7 +1109,7 @@
             "reveal_another": true,
             "modifier": 0
           },
-          "prompt": "Attack or evasion attempt against an enemy with doom on it",
+          "prompt": "Это уход или атака врага с безысходностью на нём",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1134,7 +1134,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total amount of doom on agendas in play",
+          "prompt": "Общее число безысходности на замыслах в игре",
           "min": 0
         }
       },
@@ -1146,7 +1146,7 @@
             "reveal_another": true,
             "modifier": 0
           },
-          "prompt": "An enemy with 1 or more doom on it at your location",
+          "prompt": "В вашей локации есть враг хотя бы с 1 безысходностью на нём",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1178,7 +1178,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "No remaining sanity left",
+          "prompt": "Не осталось рассудка",
           "modified_value": {
             "modifier": -4
           }
@@ -1209,7 +1209,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Amount of horror on you",
+          "prompt": "Число ужаса на вас",
           "min": 0
         }
       },
@@ -1242,7 +1242,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of vengeance points in the victory display",
+          "prompt": "Число очков возмездия на победном счету",
           "min": 0
         }
       },
@@ -1250,7 +1250,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play",
+          "prompt": "Число локаций в игре",
           "min": 1,
           "max": 5
         }
@@ -1259,7 +1259,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in the exploration deck",
+          "prompt": "Число карт в колоде разведки",
           "min": 0,
           "max": 5
         }
@@ -1271,7 +1271,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "You are poisoned",
+          "prompt": "Вы отравлены",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1283,7 +1283,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of vengeance points in the victory display",
+          "prompt": "Число очков возмездия на победном счету",
           "min": 0,
           "adjustment": 1
         }
@@ -1292,7 +1292,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play",
+          "prompt": "Число локаций в игре",
           "min": 1
         }
       },
@@ -1300,7 +1300,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in the exploration deck",
+          "prompt": "Число карт в колоде разведки",
           "min": 3
         }
       },
@@ -1311,7 +1311,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "You are poisoned",
+          "prompt": "Вы отравлены",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1330,7 +1330,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Doom on your location",
+          "prompt": "Число безысходности на вашей локации",
           "modified_value": {
             "modifier": -3
           }
@@ -1340,7 +1340,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with doom on them",
+          "prompt": "Число локаций с безысходностью на них",
           "min": 0
         }
       },
@@ -1348,7 +1348,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with doom on them",
+          "prompt": "Число локаций с безысходностью на них",
           "min": 0
         }
       },
@@ -1368,7 +1368,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Doom on your location",
+          "prompt": "Число безысходности на вашей локации",
           "modified_value": {
             "modifier": -4
           }
@@ -1378,7 +1378,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Total amount of doom on locations in play",
+          "prompt": "Общее число безысходности в игре",
           "min": 0
         }
       },
@@ -1386,7 +1386,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Total amount of doom on locations in play",
+          "prompt": "Общее число безысходности в игре",
           "min": 0
         }
       },
@@ -1407,7 +1407,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of doom on a [[Cultist]] enemy",
+          "prompt": "Наибольшее число безысходности на враге-[[культисте]]",
           "min": 0
         }
       },
@@ -1436,7 +1436,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom in play",
+          "prompt": "Общее число безысходности в игре",
           "min": 0
         }
       },
@@ -1471,7 +1471,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At an [[Ancient]] location",
+          "prompt": "Вы в [[древней]] локации",
           "modified_value": {
             "modifier": -3
           }
@@ -1506,7 +1506,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At an [[Ancient]] location",
+          "prompt": "Вы в [[древней]] локации",
           "modified_value": {
             "modifier": -4
           }
@@ -1545,7 +1545,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At a [[Cave]] location",
+          "prompt": "Вы в локации-[[пещере]]",
           "modified_value": {
             "modifier": -3
           }
@@ -1578,7 +1578,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At a [[Cave]] location",
+          "prompt": "Вы в локации-[[пещере]]",
           "modified_value": {
             "modifier": -4
           }
@@ -1615,7 +1615,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Have 5 or more cards in your hand",
+          "prompt": "У вас на руке 5 карт или больше",
           "modified_value": {
             "modifier": -5
           }
@@ -1648,7 +1648,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Have 5 or more cards in your hand",
+          "prompt": "У вас на руке 5 карт или больше",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1682,7 +1682,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current depth level",
+          "prompt": "Текущая глубина",
           "min": 1
         }
       },
@@ -1707,7 +1707,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "3 or more vengeance points in the victory display",
+          "prompt": "На победном счёте 3 возмездия или больше",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1719,7 +1719,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current depth level",
+          "prompt": "Текущая глубина",
           "min": 1
         }
       },
@@ -1744,7 +1744,7 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "3 or more vengeance points in the victory display",
+          "prompt": "На победном счёте 3 возмездия или больше",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1763,7 +1763,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Relic of Ages is at your location",
+          "prompt": "«Реликвия веков» в вашей локации",
           "modified_value": {
             "modifier": -4
           }
@@ -1796,7 +1796,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Relic of Ages is at your location",
+          "prompt": "«Реликвия веков» в вашей локации",
           "modified_value": {
             "modifier": -5
           }
@@ -1830,7 +1830,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with doom on them",
+          "prompt": "Число локаций с безысходностью на них",
           "min": 0
         }
       },
@@ -1846,7 +1846,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total amount of doom on locations",
+          "prompt": "Общее число безысходности на локациях",
           "min": 0
         }
       },
@@ -1933,7 +1933,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Your location is haunted",
+          "prompt": "Вы в нечистой локации",
           "modified_value": {
             "modifier": -3
           }
@@ -1960,7 +1960,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Your location is haunted",
+          "prompt": "Вы в нечистой локации",
           "modified_value": {
             "modifier": -4
           }
@@ -1991,7 +1991,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "You are at an [[Extradimensional]] location",
+          "prompt": "Вы в [[сверхпространственной]] локации",
           "modified_value": {
             "modifier": -3
           }
@@ -2025,7 +2025,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "You are at an [[Extradimensional]] location",
+          "prompt": "Вы в [[сверхпространственной]] локации",
           "modified_value": {
             "modifier": -4
           }

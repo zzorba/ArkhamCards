@@ -109,7 +109,7 @@ function parseSpecialTokenValuesText(
         default: {
           const line = linesByToken[token];
           if (line) {
-            const effectText = tail(line.split(':')).join(':');
+            const effectText = line.indexOf(':') !== -1 ? tail(line.split(':')).join(':') : tail(line.split(']')).join(']');
             tokenText[token] = effectText;
             const valueRegex = new RegExp(`\\[(${token})\\][^:]*?:?\\s([-+][0-9X])(\\. )?(.*)`);
             if (valueRegex.test(line)) {

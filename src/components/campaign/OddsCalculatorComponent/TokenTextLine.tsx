@@ -26,7 +26,7 @@ export default function TokenTextLine({
         />
       </View>
       <View style={styles.text}>
-        <CardTextComponent text={text} />
+        <CardTextComponent text={text} noBullet />
       </View>
     </View>
   );
