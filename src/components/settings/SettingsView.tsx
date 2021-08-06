@@ -49,9 +49,13 @@ export default function SettingsView({ componentId }: NavigationProps) {
   const reduxMigrationCurrent = useSelector((state: AppState) => state.settings.version === CURRENT_REDUX_VERSION);
 
   const packsInCollection = useSelector(getPacksInCollection);
+  const ignoreCollection = useSelector((state: AppState) => !!state.settings.ignore_collection);
   const spoilerSettings = useSelector(getPackSpoilers);
   const packs = useSelector(getAllPacks);
-  const summarizePacks = useCallback((selection: { [pack: string]: boolean | undefined }) => {
+  const summarizePacks = useCallback((selection: { [pack: string]: boolean | undefined }, ignoreCollection?: boolean) => {
+    if (ignoreCollection) {
+      return t`All Cycles and Packs`;
+    }
     const allPacks = filter(packs, p => !!selection[p.code]);
     const [cyclePacks, standalonePacks] = partition(allPacks, p => p.cycle_position < 50);
     const cycleCount = uniq(map(cyclePacks, p => p.cycle_position)).length;
@@ -60,7 +64,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
     const packPart = ngettext(msgid`${standalonePackCount} Pack`, `${standalonePackCount} Packs`, standalonePackCount);
     return `${cyclePart} + ${packPart}`;
   }, [packs]);
-  const collectionSummary = useMemo(() => summarizePacks(packsInCollection), [summarizePacks, packsInCollection]);
+  const collectionSummary = useMemo(() => summarizePacks(packsInCollection, ignoreCollection), [summarizePacks, packsInCollection, ignoreCollection]);
   const spoilerSummary = useMemo(() => summarizePacks(spoilerSettings), [summarizePacks, spoilerSettings]);
   const showCardsingleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const alphabetizeEncounterSets = useSelector((state: AppState) => state.settings.alphabetizeEncounterSets || false);

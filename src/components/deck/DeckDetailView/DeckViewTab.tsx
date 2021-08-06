@@ -38,12 +38,13 @@ import { useDeckXpStrings } from '../hooks';
 import DeckMetadataControls from '../controls/DeckMetadataControls';
 import { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
 import { ControlType } from '@components/cardlist/CardSearchResult/ControlComponent';
-import { getPacksInCollection } from '@reducers';
+import { getPacksInCollection, AppState } from '@reducers';
 import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 interface SectionCardId extends CardId {
   special: boolean;
+  bonded?: boolean;
   hasUpgrades: boolean;
   index: number;
 }
@@ -68,7 +69,8 @@ function hasUpgrades(
   cards: CardsMap,
   cardsByName: { [name: string]: Card[] },
   validation: DeckValidation,
-  inCollection: { [pack_code: string]: boolean }
+  inCollection: { [pack_code: string]: boolean },
+  ignoreCollection: boolean,
 ): boolean {
   const card = cards[code];
   return !!(
@@ -79,7 +81,7 @@ function hasUpgrades(
       upgradeCard.code !== code &&
       (upgradeCard.xp || 0) > (card.xp || 0) &&
       validation.canIncludeCard(upgradeCard, false) &&
-      (upgradeCard.pack_code === 'core' || inCollection[upgradeCard.pack_code])
+      (upgradeCard.pack_code === 'core' || ignoreCollection || inCollection[upgradeCard.pack_code])
     )));
 }
 
@@ -109,6 +111,7 @@ function deckToSections(
   validation: DeckValidation,
   special: boolean,
   inCollection: { [pack_code: string]: boolean },
+  ignoreCollection: boolean,
   limitedSlots: boolean,
   limitedSlotsOnly?: boolean,
 ): [DeckSection, number] {
@@ -150,7 +153,8 @@ function deckToSections(
               cards,
               cardsByName,
               validation,
-              inCollection
+              inCollection,
+              ignoreCollection
             ),
           };
         }),
@@ -196,7 +200,8 @@ function deckToSections(
               cards,
               cardsByName,
               validation,
-              inCollection
+              inCollection,
+              ignoreCollection
             ),
           };
         }),
@@ -232,6 +237,7 @@ function bondedSections(
           quantity: c.quantity || 0,
           index: index++,
           special: true,
+          bonded: true,
           hasUpgrades: false,
           limited: false,
           invalid: false,
@@ -261,6 +267,7 @@ interface Props {
   visible: boolean;
   editable: boolean;
   buttons?: ReactNode;
+  showDrawWeakness: () => void;
   showEditSpecial?: () => void;
   showXpAdjustmentDialog: () => void;
   showCardUpgradeDialog: (card: Card) => void;
@@ -275,9 +282,6 @@ interface Props {
   showEditCards: () => void;
   showDeckHistory: () => void;
   width: number;
-  inCollection: {
-    [pack_code: string]: boolean;
-  };
   deckEdits?: EditDeckState;
   deckEditsRef: MutableRefObject<EditDeckState | undefined>;
   mode: 'view' | 'edit' | 'upgrade';
@@ -299,11 +303,11 @@ export default function DeckViewTab(props: Props) {
     showEditSpecial,
     cardsByName,
     bondedCardsByName,
-    inCollection,
     editable,
     showCardUpgradeDialog,
     problem,
     showXpAdjustmentDialog,
+    showDrawWeakness,
     visible,
     tabooSet,
     showTaboo,
@@ -316,7 +320,8 @@ export default function DeckViewTab(props: Props) {
   } = props;
   const { arkhamDb } = useContext(ArkhamCardsAuthContext);
   const { backgroundStyle, colors, shadow, typography } = useContext(StyleContext);
-  const packInCollection = useSelector(getPacksInCollection);
+  const inCollection = useSelector(getPacksInCollection);
+  const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
   const [limitedSlots, toggleLimitedSlots] = useFlag(false);
   const investigator = useMemo(() => cards[deck.investigator_code], [cards, deck.investigator_code]);
   const [data, setData] = useState<DeckSection[]>([]);
@@ -360,6 +365,7 @@ export default function DeckViewTab(props: Props) {
       validation,
       false,
       inCollection,
+      ignore_collection,
       false
     );
     const [specialSection, specialIndex] = deckToSections(
@@ -372,6 +378,7 @@ export default function DeckViewTab(props: Props) {
       validation,
       true,
       inCollection,
+      ignore_collection,
       false
     );
     const newData: DeckSection[] = [deckSection, specialSection];
@@ -394,7 +401,8 @@ export default function DeckViewTab(props: Props) {
             cards,
             cardsByName,
             validation,
-            inCollection
+            inCollection,
+            ignore_collection
           ),
         };
       });
@@ -418,7 +426,7 @@ export default function DeckViewTab(props: Props) {
       newData.push(bonded);
     }
     setData(newData);
-  }, [investigatorBack, limitSlotCount ,limitedSlots, parsedDeck.normalCards, parsedDeck.specialCards, parsedDeck.slots, deckEdits?.meta, cards,
+  }, [investigatorBack, limitSlotCount, ignore_collection, limitedSlots, parsedDeck.normalCards, parsedDeck.specialCards, parsedDeck.slots, deckEdits?.meta, cards,
     showEditCards, showEditSpecial, setData, toggleLimitedSlots, cardsByName, uniqueBondedCards, bondedCardsCount, inCollection, editable, visible]);
   const faction = parsedDeck.investigator.factionCode();
   const showSwipeCard = useCallback((id: string, card: Card) => {
@@ -486,24 +494,27 @@ export default function DeckViewTab(props: Props) {
   }, [deck.previousDeckId, deck.nextDeckId]);
 
   const controlForCard = useCallback((item: SectionCardId, card: Card, count: number | undefined): ControlType | undefined => {
-    if (card.code === RANDOM_BASIC_WEAKNESS) {
-
+    if (card.code === RANDOM_BASIC_WEAKNESS && editable) {
+      return {
+        type: 'shuffle',
+        onShufflePress: showDrawWeakness,
+      };
     }
-    if (mode === 'view') {
+    if (mode === 'view' || item.bonded) {
       return count !== undefined ? {
         type: 'count',
         count,
       } : undefined;
     }
 
-    const upgradeEnabled = showDeckUpgrades && item.hasUpgrades;
+    const upgradeEnabled = editable && showDeckUpgrades && item.hasUpgrades;
     return {
       type: 'upgrade',
       deckId: parsedDeck.id,
-      limit: card.collectionDeckLimit(packInCollection),
+      limit: card.collectionDeckLimit(inCollection, ignore_collection),
       onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
     };
-  }, [mode, parsedDeck.id, showCardUpgradeDialog, showDeckUpgrades, packInCollection]);
+  }, [mode, parsedDeck.id, showCardUpgradeDialog, showDrawWeakness, ignore_collection, editable, showDeckUpgrades, inCollection]);
 
   const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection) => {
     const card = cards[item.id];

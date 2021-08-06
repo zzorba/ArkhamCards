@@ -92,8 +92,6 @@ export default function ChoiceListItemComponent({
           selectedIndex={choice}
           editable={editable}
           onSelect={onSelect}
-          color={color}
-          noBullet
         />
       </>
     );

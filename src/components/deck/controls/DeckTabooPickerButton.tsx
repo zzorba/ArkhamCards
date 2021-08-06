@@ -7,7 +7,7 @@ import Database from '@data/sqlite/Database';
 import useDbData from '@components/core/useDbData';
 import { AppState } from '@reducers';
 import { usePickerDialog } from '../dialogs';
-import { utcFormat, localizedDate } from '@lib/datetime';
+import { localizedDate } from '@lib/datetime';
 import DeckPickerStyleButton from './DeckPickerStyleButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
 

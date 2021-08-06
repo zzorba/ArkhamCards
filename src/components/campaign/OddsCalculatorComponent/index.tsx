@@ -574,7 +574,7 @@ function SpecialTokenOdds({ chaosBag, specialTokenValues, modifiedSkill, testDif
       };
     });
   }, [chaosBag, specialTokenValues, bless, curse, colors, testDifficulty, modifiedSkill]);
-  const total = useMemo(() => sumBy(values(chaosBag), x => x), [chaosBag]);
+  const total = useMemo(() => sumBy(values(chaosBag), x => x || 0), [chaosBag]);
   if (total === 0) {
     return null;
   }

@@ -12,8 +12,6 @@ interface Props {
   selected: boolean;
   editable: boolean;
   onSelect: (index: number) => void;
-  noBullet?: boolean;
-  color?: string;
 }
 
 export default function ChoiceComponent({
@@ -22,8 +20,6 @@ export default function ChoiceComponent({
   selected,
   editable,
   onSelect,
-  noBullet,
-  color,
 }: Props) {
   const onPress = useCallback(() => {
     onSelect(index);

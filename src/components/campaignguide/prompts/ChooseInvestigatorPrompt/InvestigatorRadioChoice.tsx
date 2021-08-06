@@ -59,7 +59,7 @@ export default function InvestigatorRadioChoice({ transparent, description, sele
         <RadioButton color="dark" icon="radio" selected={selected} />
       </View>
     );
-  }, [selected, props, width, description, colors, typography]);
+  }, [selected, props, width, description, colors, typography, transparent]);
   return (
     <View style={space.paddingBottomXs}>
       { editable ? <TouchableOpacity onPress={onPress}>{content}</TouchableOpacity> : content }

@@ -9,18 +9,6 @@ interface Props {
   selectedIndex?: number;
   editable: boolean;
   onSelect: (index: number) => void;
-  noBullet?: boolean;
-  color?: string | string[];
-}
-
-function getColor(
-  idx: number,
-  color?: string | string[]
-): string | undefined {
-  if (Array.isArray(color)) {
-    return color.length >= idx ? color[idx] : undefined;
-  }
-  return color;
 }
 
 export default function ChooseOneListComponent({
@@ -28,8 +16,6 @@ export default function ChooseOneListComponent({
   selectedIndex,
   editable,
   onSelect,
-  noBullet,
-  color,
 }: Props) {
   return (
     <>
@@ -45,8 +31,6 @@ export default function ChooseOneListComponent({
             choice={choice}
             selected={selectedIndex === idx}
             editable={editable}
-            color={getColor(idx, color)}
-            noBullet={noBullet}
           />
         );
       }) }

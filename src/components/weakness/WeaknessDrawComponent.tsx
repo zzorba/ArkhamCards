@@ -23,7 +23,7 @@ import CardDetailComponent from '@components/card/CardDetailView/CardDetailCompo
 import { CARD_RATIO, HEADER_HEIGHT, TABBAR_HEIGHT } from '@styles/sizes';
 import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useCounter, useEffectUpdate, useWeaknessCards } from '@components/core/hooks';
+import { useWeaknessCards } from '@components/core/hooks';
 
 const PLAYER_BACK = require('../../../assets/player-back.png');
 
@@ -299,7 +299,7 @@ export default function WeaknessDrawComponent({ componentId, weaknessSet, update
         { t`All weaknesses have been drawn.` }
       </Text>
     );
-  }, [cardWidth, cardHeight, flipped, nextCard, typography, selectedTraits, flipCard, onFlipEnd]);
+  }, [cardWidth, cardHeight, flipped, nextCard, typography, selectedTraits, hasWeakness, flipCard, onFlipEnd]);
 
   return (
     <SafeAreaView style={styles.container}>

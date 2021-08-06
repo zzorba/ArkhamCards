@@ -1,12 +1,13 @@
-import { MutableRefObject, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { MutableRefObject, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import useDebouncedEffect from 'use-debounced-effect-hook';
+import { Navigation } from 'react-native-navigation';
 import { Platform } from 'react-native';
 import { forEach, keys, range } from 'lodash';
 import deepEqual from 'deep-equal';
 import { ngettext, msgid, t } from 'ttag';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Deck, DeckId, EditDeckState, ParsedDeck, Slots } from '@actions/types';
+import { CampaignId, Deck, DeckId, EditDeckState, ParsedDeck, Slots } from '@actions/types';
 import { useDeck } from '@data/hooks';
 import { useComponentVisible, useDeckWithFetch, usePlayerCards } from '@components/core/hooks';
 import { finishDeckEdit, startDeckEdit } from '@components/deck/actions';
@@ -16,6 +17,12 @@ import { AppState, makeDeckEditsSelector } from '@reducers';
 import { DeckActions } from '@data/remote/decks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
+import StyleContext from '@styles/StyleContext';
+import { DrawWeaknessProps } from '@components/weakness/WeaknessDrawDialog';
+import { ShowAlert } from './dialogs';
+import COLORS from '@styles/colors';
+import { CampaignDrawWeaknessProps } from '@components/campaign/CampaignDrawWeaknessDialog';
 
 export function useDeckXpStrings(parsedDeck?: ParsedDeck, totalXp?: boolean): [string | undefined, string | undefined] {
   return useMemo(() => {
@@ -97,6 +104,7 @@ export function useDeckEdits(
 
 export interface ParsedDeckResults {
   deck?: Deck;
+  deckT?: LatestDeckT;
   cards?: CardsMap;
   previousDeck?: Deck;
   deckEdits?: EditDeckState;
@@ -148,6 +156,7 @@ function useParsedDeckHelper(
   }, [cards, deck, deckEdits, visible], Platform.OS === 'ios' ? 200 : 500);
   return {
     deck: deck?.deck,
+    deckT: deck,
     cards,
     previousDeck: deck?.previousDeck,
     tabooSetId,
@@ -269,4 +278,122 @@ export function useDeckEditState({
     hasPendingEdits,
     mode: hasPendingEdits && mode === 'view' ? 'edit' : mode,
   };
+}
+
+export function useShowDrawWeakness({ componentId, id, campaignId, deck, showAlert, deckEditsRef, assignedWeaknesses, cards }: {
+  componentId: string;
+  id: DeckId;
+  cards: CardsMap | undefined;
+  showAlert: ShowAlert;
+  deck: LatestDeckT | undefined;
+  campaignId?: CampaignId;
+  deckEditsRef: MutableRefObject<EditDeckState | undefined>;
+  assignedWeaknesses?: string[];
+}): () => void {
+  const { colors } = useContext(StyleContext);
+  const [unsavedAssignedWeaknesses, setUnsavedAssignedWeaknesses] = useState<string[]>(assignedWeaknesses || []);
+  const dispatch = useDispatch();
+  const saveWeakness = useCallback((code: string, replaceRandomBasicWeakness: boolean) => {
+    if (!deckEditsRef.current) {
+      return;
+    }
+    if (replaceRandomBasicWeakness && deckEditsRef.current.slots[RANDOM_BASIC_WEAKNESS] > 0) {
+      dispatch({ type: 'UPDATE_DECK_EDIT_COUNTS', countType: 'slots', operation: 'dec', id, code: RANDOM_BASIC_WEAKNESS });
+    }
+    dispatch({ type: 'UPDATE_DECK_EDIT_COUNTS', countType: 'slots', operation: 'inc', id, code });
+    setUnsavedAssignedWeaknesses([...unsavedAssignedWeaknesses, code]);
+  }, [unsavedAssignedWeaknesses, id, deckEditsRef, dispatch, setUnsavedAssignedWeaknesses]);
+
+  const editCollection = useCallback(() => {
+    Navigation.push(componentId, {
+      component: {
+        name: 'My.Collection',
+      },
+    });
+  }, [componentId]);
+
+  const showWeaknessDialog = useCallback(() => {
+    if (!deckEditsRef.current) {
+      return;
+    }
+    const investigator = deck && cards && cards[deck.deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
+    Navigation.push<DrawWeaknessProps>(componentId, {
+      component: {
+        name: 'Weakness.Draw',
+        passProps: {
+          slots: deckEditsRef.current.slots,
+          saveWeakness,
+        },
+        options: {
+          statusBar: {
+            style: 'light',
+            backgroundColor,
+          },
+          topBar: {
+            title: {
+              text: t`Draw Weaknesses`,
+              color: COLORS.white,
+            },
+            backButton: {
+              title: t`Back`,
+              color: 'white',
+            },
+            background: {
+              color: backgroundColor,
+            },
+          },
+        },
+      },
+    });
+  }, [componentId, cards, deck, colors, deckEditsRef, saveWeakness]);
+  const drawWeakness = useCallback(() => {
+    showAlert(
+      t`Draw Basic Weakness`,
+      t`This deck does not seem to be part of a campaign yet.\n\nIf you add this deck to a campaign, the app can keep track of the available weaknesses between multiple decks.\n\nOtherwise, you can draw random weaknesses from your entire collection.`,
+      [
+        { text: t`Draw From Collection`, icon: 'draw', style: 'default', onPress: showWeaknessDialog },
+        { text: t`Edit Collection`, icon: 'edit', onPress: editCollection },
+        { text: t`Cancel`, style: 'cancel' },
+      ]);
+  }, [showWeaknessDialog, editCollection, showAlert]);
+
+  const showCampaignWeaknessDialog = useCallback(() => {
+    if (!campaignId || !deckEditsRef.current) {
+      return;
+    }
+    const investigator = deck && cards && cards[deck.deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
+    Navigation.push<CampaignDrawWeaknessProps>(componentId, {
+      component: {
+        name: 'Dialog.CampaignDrawWeakness',
+        passProps: {
+          campaignId,
+          deckSlots: deckEditsRef.current.slots,
+          saveWeakness,
+          unsavedAssignedCards: unsavedAssignedWeaknesses,
+        },
+        options: {
+          statusBar: {
+            style: 'light',
+          },
+          topBar: {
+            title: {
+              text: t`Draw Weaknesses`,
+              color: COLORS.white,
+            },
+            backButton: {
+              title: t`Back`,
+              color: 'white',
+            },
+            background: {
+              color: backgroundColor,
+            },
+          },
+        },
+      },
+    });
+  }, [componentId, campaignId, deck, cards, colors, deckEditsRef, unsavedAssignedWeaknesses, saveWeakness]);
+
+  return campaignId ? showCampaignWeaknessDialog : drawWeakness;
 }

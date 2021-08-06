@@ -59,6 +59,15 @@ export function setAlphabetizeEncounterSets(value: boolean): SetMiscSettingActio
   };
 }
 
+
+export function setIgnoreCollection(value: boolean): SetMiscSettingAction {
+  return {
+    type: SET_MISC_SETTING,
+    setting: 'ignore_collection',
+    value,
+  };
+}
+
 export function setColorblind(value: boolean): SetMiscSettingAction {
   return {
     type: SET_MISC_SETTING,

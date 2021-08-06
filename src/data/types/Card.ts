@@ -674,7 +674,10 @@ export default class Card {
     return [];
   }
 
-  collectionDeckLimit(packInCollection: { [pack_code: string]: boolean | undefined }): number {
+  collectionDeckLimit(packInCollection: { [pack_code: string]: boolean | undefined }, ignore_collection: boolean): number {
+    if (ignore_collection) {
+      return this.deck_limit || 0;
+    }
     if (this.pack_code !== 'core' || packInCollection.core) {
       return this.deck_limit || 0;
     }

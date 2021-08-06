@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import CardTextComponent from '@components/card/CardTextComponent';
@@ -6,7 +6,6 @@ import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { ChaosTokenType } from '@app_constants';
 import ChaosToken from '../ChaosToken';
-import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import TokenTextLine from './TokenTextLine';
 import AppIcon from '@icons/AppIcon';
 

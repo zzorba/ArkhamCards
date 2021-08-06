@@ -7,6 +7,7 @@ import CardToggle from './CardToggle';
 import CardQuantityComponent from './CardQuantityComponent';
 import { EditSlotsActions } from '@components/core/hooks';
 import { DeckId } from '@actions/types';
+import ShuffleButton from './ShuffleButton';
 
 export type ControlType = {
   type: 'deck';
@@ -50,6 +51,8 @@ export function ControlComponent({ card, control }: Props) {
   switch (control.type) {
     case 'deck':
       return <DeckQuantityComponent deckId={control.deckId} limit={control.limit} code={card.code} />;
+    case 'shuffle':
+      return <ShuffleButton onPress={control.onShufflePress} />;
     case 'count':
       return <CardCount count={control.count} deltaCountMode={control.deltaCountMode} showZeroCount={control.showZeroCount} />;
     case 'upgrade':

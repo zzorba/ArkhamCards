@@ -474,7 +474,7 @@ function UpgradeDeckRow({
             <ActionButton
               color={choices !== undefined ? 'green' : 'dark'}
               leftIcon="check"
-              title={choices !== undefined ? t`Not deck owner` : t`Saved`}
+              title={choices !== undefined ? t`Saved` : t`Not deck owner`}
               onPress={save}
               disabled
             />
