@@ -356,6 +356,13 @@ export default class Card {
   @Column('text', { select: false })
   public s_search_flavor_back?: string;
 
+  @Column('text', { select: false })
+  public s_search_real_name!: string;
+  @Column('text', { select: false })
+  public s_search_real_name_back!: string;
+  @Column('text', { select: false })
+  public s_search_real_game?: string;
+
   @Index('deck_limit')
   @Column('integer', { nullable: true })
   public deck_limit?: number;
@@ -512,6 +519,9 @@ export default class Card {
     'c.s_search_game_back',
     'c.s_search_flavor',
     'c.s_search_flavor_back',
+    'c.s_search_real_name',
+    'c.s_search_real_name_back',
+    'c.s_search_real_game',
   ];
 
   public cardName(): string {
@@ -1115,6 +1125,19 @@ export default class Card {
     const s_search_game_back = ((json.back_text && json.back_text.toLocaleLowerCase(lang)) || '').replace(SEARCH_REGEX, '');
     const s_search_flavor = ((json.flavor && json.flavor.toLocaleLowerCase(lang)) || '').replace(SEARCH_REGEX, '');
     const s_search_flavor_back = ((json.back_flavor && json.back_flavor.toLocaleLowerCase(lang)) || '').replace(SEARCH_REGEX, '');
+
+    const s_search_real_name = filter([
+      json.real_name.toLocaleLowerCase('en'),
+      json.real_subname && json.real_subname.toLocaleLowerCase('en'),
+    ], x => !!x).join(' ').replace(SEARCH_REGEX, '');
+    const s_search_real_name_back = filter([
+      json.real_name.toLocaleLowerCase('en'),
+      json.real_subname && json.real_subname.toLocaleLowerCase('en'),
+    ], x => !!x).join(' ').replace(SEARCH_REGEX, '');
+    const s_search_real_game = filter([
+      json.real_text && json.real_text.toLocaleLowerCase('en'),
+      json.real_traits && json.real_traits.toLocaleLowerCase('en'),
+    ]).join(' ').replace(SEARCH_REGEX, '');
     let result = {
       ...json,
       ...eskills,
@@ -1126,6 +1149,9 @@ export default class Card {
       s_search_game_back,
       s_search_flavor,
       s_search_flavor_back,
+      s_search_real_name,
+      s_search_real_name_back,
+      s_search_real_game,
       name,
       firstName,
       renderName,

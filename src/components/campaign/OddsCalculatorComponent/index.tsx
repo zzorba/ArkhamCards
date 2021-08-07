@@ -330,7 +330,7 @@ function ChaosTokenPile({ pile, height, mode, showBlurse, totalTokens }: { pile:
           return [];
         }
         const rangeTokens = (a?.tokens.length || 0) + (b?.tokens.length || 0);
-        const delta = `${mode === 'fail' ? '+' : '-'}${Math.round(rangeTokens / totalTokens * 100)}%`
+        const delta = `${Math.round(rangeTokens / totalTokens * 100)}%`
         return {
           pair: mode === 'fail' ? [
             ...(b ? [b] : []),
@@ -463,8 +463,8 @@ function ChaosBagOddsSection({
     return null;
   }
   const largestPile = maxBy(tokensByValue, t => t.tokens.length)?.tokens.length || 0;
-  const passPercent = Math.round(passingTokens / total * 100);
-  const failPercent = Math.round(failingTokens / total * 100);
+  const passPercent = Math.round(passingTokens / bagTotal * 100);
+  const failPercent = Math.round(failingTokens / bagTotal * 100);
   const height = largestPile * tokenSize;
 
   return (
@@ -484,7 +484,7 @@ function ChaosBagOddsSection({
                 <View style={[space.paddingTopS, space.paddingRightXs]}>
                   <Text style={[typography.large, { color: colors.warn }, typography.right]}>{failPercent}%</Text>
                   <Text style={[typography.smallLabel, { color: colors.warn }, typography.right]} ellipsizeMode="clip" numberOfLines={1}>
-                    {tokenRatioString(failingTokens, total)}
+                    {tokenRatioString(failingTokens, bagTotal)}
                   </Text>
                 </View>
               </View>
@@ -495,7 +495,7 @@ function ChaosBagOddsSection({
                 <View style={[space.paddingTopS, space.paddingLeftXs]}>
                   <Text style={[typography.large, { color: colors.campaign.setup }]}>{passPercent}%</Text>
                   <Text style={[typography.smallLabel, { color: colors.campaign.setup }]} ellipsizeMode="clip" numberOfLines={1}>
-                    {tokenRatioString(passingTokens, total)}
+                    {tokenRatioString(passingTokens, bagTotal)}
                   </Text>
                 </View>
               </View>
