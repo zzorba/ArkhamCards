@@ -4028,16 +4028,16 @@ msgid "Dark Matter"
 msgstr "암흑 물질"
 
 msgid "Impending Doom"
-msgstr ""
+msgstr "임박한 파멸"
 
 msgid "Memories"
-msgstr ""
+msgstr "기억"
 
 msgid "Fan-Made Campaigns"
-msgstr "팬메이드 캠페인"
+msgstr "팬 제작 캠페인"
 
 msgid "Fan-Made Content"
-msgstr "팬메이드 컨텐츠"
+msgstr "팬 제작 컨텐츠"
 
 msgid "Fetching account details..."
 msgstr "계정 세부사항을 가져 오는 중..."
@@ -4081,7 +4081,7 @@ msgid "Exile story cards"
 msgstr "이야기 카드 추방"
 
 msgid "Fan-made scenario by ${ custom.creator }"
-msgstr "팬메이드 시나리오 (제작자: ${ custom.creator })"
+msgstr "팬 제작 시나리오 (제작자: ${ custom.creator })"
 
 msgid ""
 "If you are a custom content creator who has a \"finished\" campaign you'd "
@@ -4397,7 +4397,7 @@ msgstr ""
 
 #, javascript-format
 msgid "Fan-made campaign by ${ author }"
-msgstr "팬메이드 캠페인 (제작자: ${ author })"
+msgstr "팬 제작 캠페인 (제작자: ${ author })"
 
 msgid "Sort ignores punctuation"
 msgstr "정렬하기 (구두점 무시)"
@@ -4408,79 +4408,87 @@ msgid ""
 "you are still experiencing problems after 24hrs, please contact Mythos "
 "Busters via Patreon or on the Discord channel for help with this issue."
 msgstr ""
+"죄송합니다, Mythos Buster 후원자가 아닌 것 같습니다.\n"
+"Patreon에서 멤버십 상태를 업데이트하는데 최대 24시간이 걸릴 수 있습니다. "
+"24시간 이후에도 여전히 문제가 발생하면 Patreon 또는 디스코드 채널을 통해 "
+"Mythos Busters에 이 문제에 대한 도움을 요청하세요."
 
 msgid "Skull"
-msgstr ""
+msgstr "해골"
 
 msgid "Cultist"
-msgstr ""
+msgstr "추종자"
 
 msgid "Tablet"
-msgstr ""
+msgstr "석판"
 
 msgid "Elder Thing"
-msgstr ""
+msgstr "옛것"
 
 msgid "Auto-Fail"
-msgstr ""
+msgstr "자동 실패"
 
 msgid "Elder Sign"
-msgstr ""
+msgstr "고대 표식"
 
 msgid "Number of [[Item]] assets you control"
-msgstr ""
+msgstr "당신이 조종 중인 [[물품]]의 개수"
 
 msgid "Your investigator's modifier"
-msgstr ""
+msgstr "조사자의 보정된 능력값"
 
 #, javascript-format
 msgid ""
 "0: (original effect below)\n"
 "${ originalTokenText }"
 msgstr ""
+"0: (아래에 대한 원래의 효과)\n"
+"${ originalTokenText }"
 
 #, javascript-format
 msgid "${ modifier }, draws another"
-msgstr ""
+msgstr "${ modifier } 및 다른 것 뽑기"
 
 msgid "Easy difficulty"
-msgstr ""
+msgstr "쉬움 난이도"
 
 msgid "Standard difficulty"
-msgstr ""
+msgstr "보통 난이도"
 
 msgid "Hard difficulty"
-msgstr ""
+msgstr "어려움 난이도"
 
 msgid "Expert difficulty"
-msgstr ""
+msgstr "전문가 난이도"
 
 msgid "— Difficulty —"
-msgstr ""
+msgstr "— 난이도 —"
 
 msgid "— Available Scenarios —"
-msgstr ""
+msgstr "— 사용가능한 시나리오 —"
 
 msgid "Scenario settings"
-msgstr ""
+msgstr "시나리오 설정"
 
 msgid "Your investigator modfifier"
-msgstr ""
+msgstr "조사자의 보정된 능력값"
 
 msgid ""
 "Reference\n"
 "card"
 msgstr ""
+"시나리오\n"
+"참조 카드"
 
 msgid "Test difficulty"
-msgstr ""
+msgstr "테스트 난이도"
 
 msgid "Modified skill"
-msgstr ""
+msgstr "보정된 능력값"
 
 msgid "${ tokens }/${ total } token"
 msgid_plural "${ tokens }/${ total } tokens"
-msgstr[0] ""
+msgstr[0] "${ tokens }/${ total } 토큰"
 msgstr[1] ""
 
 msgctxt "masculine"
