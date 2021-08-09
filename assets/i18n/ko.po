@@ -321,6 +321,12 @@ msgstr "두번째 기본판"
 msgid "Edit Collection"
 msgstr "보유게임 수정"
 
+msgid "Show all cards"
+msgstr "모든 카드 보기"
+
+msgid "All cards are shown throughout the app"
+msgstr "모든 카드가 앱 전체에 표시됩니다."
+
 msgid "Restore campaign data?"
 msgstr "캠페인 데이터를 복구하시겠습니까?"
 
