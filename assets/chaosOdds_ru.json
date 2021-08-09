@@ -224,7 +224,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Потратить 2 ресурса, чтобы считать этот жетон за 0.",
+          "prompt": "Потратить 2 ресурса, чтобы считать этот жетон за 0",
           "modified_value": {
             "modifier": 0
           }
@@ -251,7 +251,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Потратить 3 ресурса, чтобы считать этот жетон за 0.",
+          "prompt": "Потратить 3 ресурса, чтобы считать этот жетон за 0",
           "modified_value": {
             "modifier": 0
           }
@@ -2060,7 +2060,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of Unfinished Business in the victory display",
+          "prompt": "Число «Неоконченных дел» на победном счёте",
           "min": 0,
           "adjustment": 1
         }
@@ -2089,7 +2089,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of Unfinished Business in the victory display",
+          "prompt": "Число «Неоконченных дел» на победном счёте",
           "min": 0,
           "reveal_another": true
         }
@@ -2122,7 +2122,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of doom on a [[Cultist]] enemy in play",
+          "prompt": "Наибольшее число безысходности на враге-[[культисте]] в игре",
           "min": 0
         }
       },
@@ -2151,7 +2151,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom among [[Cultist]] enemies in play",
+          "prompt": "Общее число безысходности на врагах-[[культистах]] в игре",
           "min": 0
         }
       },
@@ -2175,7 +2175,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "No [[Cultist]] enemies in play have doom on them",
+          "prompt": "В игре нет врагов-[[культистов]] с безысходностью",
           "modified_value": {
             "modifier": -3,
             "reveal_another": true
@@ -2195,7 +2195,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "During a <b>circle</b> action",
+          "prompt": "Проверка при действии <b>круга</b>",
           "modified_value": {
             "modifier": -2,
             "reveal_another": true
@@ -2229,7 +2229,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "During a <b>circle</b> action",
+          "prompt": "Проверка при действии <b>круга</b>",
           "modified_value": {
             "modifier": -3,
             "reveal_another": true
@@ -2264,7 +2264,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom and breaches on your location",
+          "prompt": "Общее число безысходности и брешей в вашей локации",
           "min": 0
         }
       },
@@ -2293,7 +2293,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom and breaches on your location",
+          "prompt": "Общее число безысходности и брешей в вашей локации",
           "min": 0,
           "adjustment": 1
         }
@@ -2327,7 +2327,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the doom on Azathoth (rounded up)",
+          "prompt": "Половина безысходности на «Азатоте» (округляя вверх)",
           "min": 2
         }
       },
@@ -2356,7 +2356,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Amount of doom on Azathoth",
+          "prompt": "Число безысходности на «Азатоте»",
           "min": 2
         }
       },
@@ -3434,7 +3434,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At a [[Bayou]] location",
+          "prompt": "Вы в локации-[[байу]]",
           "modified_value": {
             "modifier": -4
           }
@@ -3447,7 +3447,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Rougarou is at your location",
+          "prompt": "«Ругару» в вашей локации",
           "modified_value": {
             "modifier": -2,
             "reveal_another": true
@@ -3476,7 +3476,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "At a [[Bayou]] location",
+          "prompt": "Вы в локации-[[байу]]",
           "modified_value": {
             "modifier": -6
           }
@@ -3489,7 +3489,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Rougarou is at your location",
+          "prompt": "«Ругару» в вашей локации",
           "modified_value": {
             "modifier": -3,
             "reveal_another": true
@@ -3519,7 +3519,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the number of Innocent Revelers underneat the agenda deck",
+          "prompt": "На 2 выше числа «Невинных гостей» под колодой замыслов",
           "min": 2,
           "max": 5
         }
@@ -3549,7 +3549,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the number of Innocent Revelers underneat the agenda deck",
+          "prompt": "На 2 выше числа «Невинных гостей» под колодой замыслов",
           "min": 2,
           "max": 5
         }
@@ -3641,7 +3641,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The strength of the abyss",
+          "prompt": "Сила Бездны",
           "min": 0
         }
       },
@@ -3666,7 +3666,7 @@
           "default_value": {
             "modifier": -5
           },
-          "prompt": "Add 1 strength to the abyss",
+          "prompt": "Увеличьте силу Бездны на 1",
           "modified_value": {
             "modifier": "auto_succeed"
           }
@@ -3678,7 +3678,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The strength of the abyss",
+          "prompt": "Сила Бездны",
           "min": 0,
           "adjustment": 1
         }
@@ -3704,7 +3704,7 @@
           "default_value": {
             "modifier": -6
           },
-          "prompt": "Add 1 strength to the abyss",
+          "prompt": "Увеличьте силу Бездны на 1",
           "modified_value": {
             "modifier": "auto_succeed"
           }
@@ -3720,7 +3720,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The strength of the abyss",
+          "prompt": "Сила Бездны",
           "min": 0
         }
       },
@@ -3750,7 +3750,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The strength of the abyss",
+          "prompt": "Сила Бездны",
           "min": 0,
           "adjustment": 1
         }
@@ -3785,7 +3785,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Guest]] enemies in play",
+          "prompt": "Число врагов-[[гостей]] в игре",
           "min": 0
         }
       },
@@ -3796,7 +3796,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "There is an [[Innocent]] enemy in the victory display",
+          "prompt": "На победной счёте есть [[невинный]] враг",
           "modified_value": {
             "modifier": -1,
             "reveal_another": true
@@ -3810,7 +3810,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Place one of your clues on your location",
+          "prompt": "Положите 1 свою улику в вашу локацию",
           "modified_value": {
             "modifier": -1
           }
@@ -3828,7 +3828,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Innocent]] enemies in play",
+          "prompt": "Число [[невинных]] врагов в игре",
           "min": 0
         }
       },
@@ -3839,7 +3839,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "There is an [[Innocent]] enemy in the victory display",
+          "prompt": "На победной счёте есть [[невинный]] враг",
           "modified_value": {
             "modifier": -2,
             "reveal_another": true
@@ -3853,7 +3853,7 @@
           "default_value": {
             "modifier": -5
           },
-          "prompt": "Place one of your clues on your location",
+          "prompt": "Положите 1 свою улику в вашу локацию",
           "modified_value": {
             "modifier": -2
           }
@@ -3935,7 +3935,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of clues you have",
+          "prompt": "Число улик у вас",
           "min": 0
         }
       },
@@ -3963,7 +3963,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of clues you have",
+          "prompt": "Число улик у вас",
           "scale": 2,
           "min": 0
         }
@@ -3996,7 +3996,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Tome]] assets Daisy Walker controls",
+          "prompt": "Число активов-[[книг]] под контролем Дейзи Уокер",
           "min": 0
         }
       },
@@ -4025,7 +4025,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Tome]] assets Daisy Walker controls",
+          "prompt": "Число активов-[[книг]] под контролем Дейзи Уокер",
           "min": 0,
           "adjustment": 1
         }
@@ -4059,7 +4059,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of clues you have",
+          "prompt": "Число улик у вас",
           "min": 0
         }
       },
@@ -4070,7 +4070,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "You have 10 or more resources",
+          "prompt": "У вас 10 или более ресурсов",
           "modified_value": {
             "modifier": -4
           }
@@ -4094,7 +4094,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of clues you have",
+          "prompt": "Число улик у вас",
           "scale": 2,
           "min": 0
         }
@@ -4106,7 +4106,7 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "You have 10 or more resources",
+          "prompt": "У вас 10 или более ресурсов",
           "modified_value": {
             "modifier": -8
           }
@@ -4134,7 +4134,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of memories Agnes Baker has collected",
+          "prompt": "Число воспоминаний, собранных Агнес Бейкер",
           "min": 0
         }
       },
@@ -4162,7 +4162,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of memories Agnes Baker has collected",
+          "prompt": "Число воспоминаний, собранных Агнес Бейкер",
           "min": 0,
           "adjustment": 1
         }
@@ -4195,7 +4195,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Cultist]] enemies in the victory display",
+          "prompt": "Число врагов-[[культистов]] на победном счёте",
           "min": 0,
           "max": 5
         }
@@ -4207,7 +4207,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "A [[Cultist]] enemy is engaged with you",
+          "prompt": "Враг-[[культист]] сражается с вами",
           "modified_value": {
             "modifier": -2,
             "reveal_another": true
@@ -4232,7 +4232,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Cultist]] enemies in the victory display",
+          "prompt": "Число врагов-[[культистов]] на победном счёте",
           "min": 0,
           "adjustment": 1
         }
@@ -4244,7 +4244,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "A [[Cultist]] enemy is engaged with you",
+          "prompt": "Враг-[[культист]] сражается с вами",
           "modified_value": {
             "modifier": -3,
             "reveal_another": true

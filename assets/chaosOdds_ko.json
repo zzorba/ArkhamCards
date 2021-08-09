@@ -7,7 +7,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Ghoul]] enemies at your location.",
+          "prompt": "당신이 위치한 장소에 있는 [[구울]] 적의 수.",
           "min": 0
         }
       },
@@ -54,7 +54,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of doom on a [[Cultist]] enemy in play.",
+          "prompt": "플레이 상태인 [[추종자]] 적 중에서, 파멸을 가장 많이 가진 [[추종자]] 적의 파멸 개수.",
           "min": 0
         }
       },
@@ -76,7 +76,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom in play."
+          "prompt": "플레이 상태인 모든 파멸의 개수."
         }
       },
       {
@@ -101,7 +101,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Monster]] enemies in play.",
+          "prompt": "플레이 상태인 [[괴물]] 적의 개수.",
           "min": 0
         }
       },
@@ -168,7 +168,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "10 or more cards in your discard pile",
+          "prompt": "당신의 버린 카드 더미에 10장 이상",
           "modified_value": {
             "modifier": -3
           }
@@ -178,7 +178,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 2 cards discarded from your deck.",
+          "prompt": "당신의 덱 맨 윗장부터 버린 카드 2장의 인쇄된 비용의 총합",
           "min": 0
         }
       }
@@ -197,7 +197,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "10 or more cards in your discard pile",
+          "prompt": "당신의 버린 카드 더미에 10장 이상",
           "modified_value": {
             "modifier": -5
           }
@@ -207,7 +207,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 3 cards discarded from your deck.",
+          "prompt": "당신의 덱 맨 윗장부터 버린 카드 3장의 인쇄된 비용의 총합",
           "min": 0
         }
       }
@@ -224,7 +224,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Spend 2 resources to treat this token as a 0",
+          "prompt": "당신이 자원을 2개 소비하면 이 토큰을 0으로 취급",
           "modified_value": {
             "modifier": 0
           }
@@ -251,7 +251,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Spend 3 resources to treat this token as a 0",
+          "prompt": "당신이 자원을 3개 소비하면 이 토큰을 0으로 취급",
           "modified_value": {
             "modifier": 0
           }
@@ -282,7 +282,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Hunting Horror is at your location",
+          "prompt": "‘공포의 추격자’가 당신과 같은 장소에 있음",
           "modified_value": {
             "modifier": -3
           }
@@ -315,7 +315,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Hunting Horror is at your location",
+          "prompt": "‘공포의 추격자’가 당신과 같은 장소에 있음",
           "modified_value": {
             "modifier": -4
           }
@@ -349,7 +349,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current agenda number",
+          "prompt": "현재의 주요사건 번호",
           "min": 1
         }
       },
@@ -377,7 +377,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current agenda number",
+          "prompt": "현재의 주요사건 번호",
           "min": 1,
           "adjustment": 1
         }
@@ -411,7 +411,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play with no encounter card underneath",
+          "prompt": "플레이 상태인 장소 중에서, 그 밑에 조우 카드가 없는 장소의 수",
           "min": 0,
           "max": 4
         }
@@ -440,7 +440,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play with no encounter card underneath",
+          "prompt": "플레이 상태인 장소 중에서, 그 밑에 조우 카드가 없는 장소의 수",
           "min": 0
         }
       },
@@ -472,7 +472,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Brood of Yog-Sothoth in play",
+          "prompt": "플레이 상태인 ‘요그 소토스의 새끼’의 수",
           "min": 0
         }
       },
@@ -490,7 +490,7 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "Remove all clue tokens from a Brood of Yog-Sothoth in play",
+          "prompt": "플레이 상태인 ‘요그 소토스의 새끼’ 하나에 놓은 단서를 모두 제거",
           "modified_value": {
             "modifier": 0
           }
@@ -508,7 +508,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play with no encounter card underneath",
+          "prompt": "플레이 상태인 장소 중에서, 그 밑에 조우 카드가 없는 장소의 수",
           "min": 0,
           "scale": 2
         }
@@ -527,7 +527,7 @@
           "default_value": {
             "modifier": "auto_fail"
           },
-          "prompt": "Remove all clue tokens from a Brood of Yog-Sothoth in play",
+          "prompt": "플레이 상태인 ‘요그 소토스의 새끼’ 하나에 놓은 단서를 모두 제거",
           "modified_value": {
             "modifier": 0
           }
@@ -552,7 +552,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At an [[Altered]] location",
+          "prompt": "당신이 [[달라진]] 장소에 있음",
           "modified_value": {
             "modifier": -3
           }
@@ -572,7 +572,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Agenda 2 is in play",
+          "prompt": "현재 주요사건이 2",
           "modified_value": {
             "modifier": -4
           }
@@ -582,7 +582,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 2 cards discarded from your deck.",
+          "prompt": "당신의 덱 맨 윗장부터 버린 카드 2장의 인쇄된 비용의 총합",
           "min": 0
         }
       }
@@ -595,7 +595,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At an [[Altered]] location",
+          "prompt": "당신이 [[달라진]] 장소에 있음",
           "modified_value": {
             "modifier": -5
           }
@@ -615,7 +615,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Agenda 2 is in play",
+          "prompt": "현재 주요사건이 2",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -625,7 +625,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 3 cards discarded from your deck.",
+          "prompt": "당신의 덱 맨 윗장부터 버린 카드 3장의 인쇄된 비용의 총합",
           "min": 0
         }
       }
@@ -639,7 +639,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Extradimensional]] locations in play",
+          "prompt": "플레이 상태인 [[초차원]] 장소의 수",
           "min": 0,
           "max": 5
         }
@@ -661,7 +661,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "당신이 위치한 장소의 장막값",
           "min": 0
         }
       }
@@ -671,7 +671,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Extradimensional]] locations in play",
+          "prompt": "플레이 상태인 [[초차원]] 장소의 수",
           "min": 0
         }
       },
@@ -692,7 +692,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "당신이 위치한 장소의 장막값",
           "min": 0,
           "scale": 2
         }
@@ -710,7 +710,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Have 3 or more horror on you",
+          "prompt": "당신이 가진 공포가 3 이상",
           "modified_value": {
             "modifier": -3
           }
@@ -740,7 +740,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Amount of horror on you (min 1)",
+          "prompt": "당신이 가진 공포 개수 (최소 1)",
           "min": 1
         }
       },
@@ -791,7 +791,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "당신이 위치한 장소의 장막값",
           "min": 0
         }
       }
@@ -820,7 +820,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "당신이 위치한 장소의 장막값",
           "min": 0
         }
       }
@@ -834,7 +834,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of doom on an enemy in play",
+          "prompt": "플레이 상태인 적 중에서, 파멸이 가장 많이 놓은 적의 파멸 개수",
           "min": 0
         }
       },
@@ -862,7 +862,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom on enemies in play",
+          "prompt": "플레이 상태인 모든 적에 놓인 파멸 개수의 총합",
           "min": 0
         }
       },
@@ -900,7 +900,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of horror on you",
+          "prompt": "당신이 가진 공포 개수",
           "min": 0
         }
       },
@@ -908,7 +908,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Base shroud value of your location",
+          "prompt": "당신이 위치한 장소의 기본 장막값",
           "min": 0
         }
       },
@@ -919,7 +919,7 @@
           "default_value": {
             "modifier": "auto_fail"
           },
-          "prompt": "Randomally choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
+          "prompt": "치워 두었던 [[괴물]] 적 중에서 무작위로 1장을 선택하여 앞면을 보지 않고 주요목적 덱 밑에 놓음",
           "modified_value": {
             "modifier": 0
           }
@@ -938,7 +938,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of horror on you",
+          "prompt": "당신이 가진 공포 개수",
           "min": 0
         }
       },
@@ -946,7 +946,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Base shroud value of your location",
+          "prompt": "당신이 위치한 장소의 기본 장막값",
           "min": 0
         }
       },
@@ -957,7 +957,7 @@
           "default_value": {
             "modifier": "auto_fail"
           },
-          "prompt": "Randomally choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
+          "prompt": "치워 두었던 [[괴물]] 적 중에서 무작위로 1장을 선택하여 앞면을 보지 않고 주요목적 덱 밑에 놓음",
           "modified_value": {
             "modifier": 0
           }
@@ -973,7 +973,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of doom in play",
+          "prompt": "플레이 상태인 파멸 개수",
           "min": 0,
           "max": 5
         }
@@ -1003,7 +1003,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of doom in play",
+          "prompt": "플레이 상태인 파멸 개수",
           "min": 0
         }
       },
@@ -1036,7 +1036,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations away from the starting location you are",
+          "prompt": "당신이 위치한 장소와 시작 장소 사이의 거리",
           "min": 0,
           "max": 5
         }
@@ -1065,7 +1065,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations away from the starting location you are",
+          "prompt": "당신이 위치한 장소와 시작 장소 사이의 거리",
           "min": 0
         }
       },
@@ -1097,7 +1097,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest amount of doom on an agenda in play",
+          "prompt": "플레이 상태인 주요사건들 중에서, 파멸이 가장 많이 놓인 주요사건의 파멸 개수",
           "min": 0
         }
       },
@@ -1109,7 +1109,7 @@
             "reveal_another": true,
             "modifier": 0
           },
-          "prompt": "Attack or evasion attempt against an enemy with doom on it",
+          "prompt": "파멸이 1개 이상 놓인 적을 상대로 한 공격 또는 회피 시도일 경우",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1134,7 +1134,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total amount of doom on agendas in play",
+          "prompt": "플레이 상태인 모든 주요사건에 놓인 파멸 개수의 총합",
           "min": 0
         }
       },
@@ -1146,7 +1146,7 @@
             "reveal_another": true,
             "modifier": 0
           },
-          "prompt": "An enemy with 1 or more doom on it at your location",
+          "prompt": "당신이 있는 장소에 파멸이 하나 이상 있는 적이 있음",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1178,7 +1178,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "No remaining sanity left",
+          "prompt": "당신의 남은 정신력이 없음",
           "modified_value": {
             "modifier": -4
           }
@@ -1209,7 +1209,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Amount of horror on you",
+          "prompt": "당신이 가진 공포 개수",
           "min": 0
         }
       },
@@ -1242,7 +1242,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of vengeance points in the victory display",
+          "prompt": "승점 더미의 복수 점수",
           "min": 0
         }
       },
@@ -1250,7 +1250,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play",
+          "prompt": "플레이 상태인 장소 개수",
           "min": 1,
           "max": 5
         }
@@ -1259,7 +1259,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in the exploration deck",
+          "prompt": "탐사 덱에 있는 카드 장수",
           "min": 0,
           "max": 5
         }
@@ -1271,7 +1271,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "You are poisoned",
+          "prompt": "당신이 중독되어 있음",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1283,7 +1283,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of vengeance points in the victory display",
+          "prompt": "승점 더미의 복수 점수",
           "min": 0,
           "adjustment": 1
         }
@@ -1292,7 +1292,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play",
+          "prompt": "플레이 상태인 장소 개수",
           "min": 1
         }
       },
@@ -1300,7 +1300,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in the exploration deck",
+          "prompt": "탐사 덱에 있는 카드 장수",
           "min": 3
         }
       },
@@ -1311,7 +1311,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "You are poisoned",
+          "prompt": "당신이 중독되어 있음",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1330,7 +1330,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Doom on your location",
+          "prompt": "당신이 위치한 장소에 파멸이 있음",
           "modified_value": {
             "modifier": -3
           }
@@ -1340,7 +1340,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with doom on them",
+          "prompt": "파멸이 올려진 장소의 개수",
           "min": 0
         }
       },
@@ -1348,7 +1348,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with doom on them",
+          "prompt": "파멸이 올려진 장소의 개수",
           "min": 0
         }
       },
@@ -1368,7 +1368,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Doom on your location",
+          "prompt": "당신이 위치한 장소에 파멸이 있음",
           "modified_value": {
             "modifier": -4
           }
@@ -1378,7 +1378,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Total amount of doom on locations in play",
+          "prompt": "플레이 상태인 모든 장소에 놓인 파멸 개수 총합",
           "min": 0
         }
       },
@@ -1386,7 +1386,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Total amount of doom on locations in play",
+          "prompt": "플레이 상태인 모든 장소에 놓인 파멸 개수 총합",
           "min": 0
         }
       },
@@ -1407,7 +1407,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of doom on a [[Cultist]] enemy",
+          "prompt": "파멸이 가장 많이 올려진 [[추종자]] 적 하나에 놓인 파멸 개수",
           "min": 0
         }
       },
@@ -1436,7 +1436,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom in play",
+          "prompt": "플레이 상태인 파멸 개수",
           "min": 0
         }
       },
@@ -1471,7 +1471,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At an [[Ancient]] location",
+          "prompt": "당신이 [[고대]] 장소에 있음",
           "modified_value": {
             "modifier": -3
           }
@@ -1506,7 +1506,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At an [[Ancient]] location",
+          "prompt": "당신이 [[고대]] 장소에 있음",
           "modified_value": {
             "modifier": -4
           }
@@ -1545,7 +1545,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At a [[Cave]] location",
+          "prompt": "당신이 [[동굴]] 장소에 있음",
           "modified_value": {
             "modifier": -3
           }
@@ -1578,7 +1578,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At a [[Cave]] location",
+          "prompt": "당신이 [[동굴]] 장소에 있음",
           "modified_value": {
             "modifier": -4
           }
@@ -1615,7 +1615,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Have 5 or more cards in your hand",
+          "prompt": "당신의 손에 카드가 5장 이상 있음",
           "modified_value": {
             "modifier": -5
           }
@@ -1648,7 +1648,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Have 5 or more cards in your hand",
+          "prompt": "당신의 손에 카드가 5장 이상 있음",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1682,7 +1682,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current depth level",
+          "prompt": "현재 깊이",
           "min": 1
         }
       },
@@ -1707,7 +1707,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "3 or more vengeance points in the victory display",
+          "prompt": "승점 더미에 복수 점수가 3점 이상임",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1719,7 +1719,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current depth level",
+          "prompt": "현재 깊이",
           "min": 1
         }
       },
@@ -1744,7 +1744,7 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "3 or more vengeance points in the victory display",
+          "prompt": "승점 더미에 복수 점수가 3점 이상임",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1763,7 +1763,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Relic of Ages is at your location",
+          "prompt": "당신이 위치한 장소에 ‘시대의 유물’이 있음",
           "modified_value": {
             "modifier": -4
           }
@@ -1796,7 +1796,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Relic of Ages is at your location",
+          "prompt": "당신이 위치한 장소에 ‘시대의 유물’이 있음",
           "modified_value": {
             "modifier": -5
           }
@@ -1830,7 +1830,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with doom on them",
+          "prompt": "파멸이 올려진 장소의 개수",
           "min": 0
         }
       },
@@ -1846,7 +1846,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total amount of doom on locations",
+          "prompt": "파멸이 올려진 장소의 개수",
           "min": 0
         }
       },
@@ -3434,7 +3434,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At a [[Bayou]] location",
+          "prompt": "당신이 [[늪지대]] 장소에 있음",
           "modified_value": {
             "modifier": -4
           }
@@ -3447,7 +3447,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Rougarou is at your location",
+          "prompt": "‘루가루’가 당신과 같은 장소에 있음",
           "modified_value": {
             "modifier": -2,
             "reveal_another": true
@@ -3476,7 +3476,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "At a [[Bayou]] location",
+          "prompt": "당신이 [[늪지대]] 장소에 있음",
           "modified_value": {
             "modifier": -6
           }
@@ -3489,7 +3489,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Rougarou is at your location",
+          "prompt": "‘루가루’가 당신과 같은 장소에 있음",
           "modified_value": {
             "modifier": -3,
             "reveal_another": true
@@ -3519,7 +3519,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the number of Innocent Revelers underneat the agenda deck",
+          "prompt": "주요사건 덱 밑에 있는 ‘무고한 축제 참가자’의 수에 2를 더한 값",
           "min": 2,
           "max": 5
         }
@@ -3549,7 +3549,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the number of Innocent Revelers underneat the agenda deck",
+          "prompt": "주요사건 덱 밑에 있는 ‘무고한 축제 참가자’의 수에 2를 더한 값",
           "min": 2,
           "max": 5
         }
@@ -3641,7 +3641,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The strength of the abyss",
+          "prompt": "심연의 힘",
           "min": 0
         }
       },
@@ -3666,7 +3666,7 @@
           "default_value": {
             "modifier": -5
           },
-          "prompt": "Add 1 strength to the abyss",
+          "prompt": "심연의 힘에 1을 더한 값",
           "modified_value": {
             "modifier": "auto_succeed"
           }
@@ -3678,7 +3678,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The strength of the abyss",
+          "prompt": "심연의 힘",
           "min": 0,
           "adjustment": 1
         }
@@ -3704,7 +3704,7 @@
           "default_value": {
             "modifier": -6
           },
-          "prompt": "Add 1 strength to the abyss",
+          "prompt": "심연의 힘에 1을 더한 값",
           "modified_value": {
             "modifier": "auto_succeed"
           }
@@ -3720,7 +3720,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The strength of the abyss",
+          "prompt": "심연의 힘",
           "min": 0
         }
       },
@@ -3750,7 +3750,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The strength of the abyss",
+          "prompt": "심연의 힘",
           "min": 0,
           "adjustment": 1
         }
@@ -3785,7 +3785,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Guest]] enemies in play",
+          "prompt": "플레이 상태인 [[손님]] 적의 수",
           "min": 0
         }
       },
@@ -3796,7 +3796,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "There is an [[Innocent]] enemy in the victory display",
+          "prompt": "승점 더미에 [[무고한]] 적이 있음",
           "modified_value": {
             "modifier": -1,
             "reveal_another": true
@@ -3810,7 +3810,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Place one of your clues on your location",
+          "prompt": "당신이 가진 단서 1개를 당신이 위치한 장소에 올려놓음",
           "modified_value": {
             "modifier": -1
           }
@@ -3828,7 +3828,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Innocent]] enemies in play",
+          "prompt": "플레이 상태인 [[무고한]] 적의 수",
           "min": 0
         }
       },
@@ -3839,7 +3839,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "There is an [[Innocent]] enemy in the victory display",
+          "prompt": "승점 더미에 [[무고한]] 적이 있음",
           "modified_value": {
             "modifier": -2,
             "reveal_another": true
@@ -3853,7 +3853,7 @@
           "default_value": {
             "modifier": -5
           },
-          "prompt": "Place one of your clues on your location",
+          "prompt": "당신이 가진 단서 1개를 당신이 위치한 장소에 올려놓음",
           "modified_value": {
             "modifier": -2
           }
@@ -3996,7 +3996,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Tome]] assets Daisy Walker controls",
+          "prompt": "‘데이지 워커’가 조종하는 [[서적]] 자산의 수",
           "min": 0
         }
       },
@@ -4025,7 +4025,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Tome]] assets Daisy Walker controls",
+          "prompt": "‘데이지 워커’가 조종하는 [[서적]] 자산의 수",
           "min": 0,
           "adjustment": 1
         }
@@ -4070,7 +4070,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "You have 10 or more resources",
+          "prompt": "당신이 자원을 10개 이상 가지고 있음",
           "modified_value": {
             "modifier": -4
           }
@@ -4106,7 +4106,7 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "You have 10 or more resources",
+          "prompt": "당신이 자원을 10개 이상 가지고 있음",
           "modified_value": {
             "modifier": -8
           }
@@ -4134,7 +4134,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of memories Agnes Baker has collected",
+          "prompt": "‘애그니스 베이커’가 회수한 기억의 개수",
           "min": 0
         }
       },
@@ -4162,7 +4162,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of memories Agnes Baker has collected",
+          "prompt": "‘애그니스 베이커’가 회수한 기억의 개수",
           "min": 0,
           "adjustment": 1
         }
@@ -4195,7 +4195,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Cultist]] enemies in the victory display",
+          "prompt": "승점 더미에 있는 [[추종자]] 적의 수",
           "min": 0,
           "max": 5
         }
@@ -4207,7 +4207,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "A [[Cultist]] enemy is engaged with you",
+          "prompt": "당신이 [[추종자]] 적과 교전 중임",
           "modified_value": {
             "modifier": -2,
             "reveal_another": true
@@ -4232,7 +4232,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Cultist]] enemies in the victory display",
+          "prompt": "승점 더미에 있는 [[추종자]] 적의 수",
           "min": 0,
           "adjustment": 1
         }
@@ -4244,7 +4244,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "A [[Cultist]] enemy is engaged with you",
+          "prompt": "당신이 [[추종자]] 적과 교전 중임",
           "modified_value": {
             "modifier": -3,
             "reveal_another": true

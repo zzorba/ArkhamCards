@@ -3855,54 +3855,54 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "has_been_corrupted_by_the_earth",
-            "masculine_text": "#name# has been corrupted by the Earth.",
-            "feminine_text": "#name# has been corrupted by the Earth."
+            "id": "infected_by_cybervirus",
+            "masculine_text": "#name# 조사자는 사이버 바이러스에 감염되었다",
+            "feminine_text": "#name# 조사자는 사이버 바이러스에 감염되었다"
           },
           {
-            "id": "infected_by_cybervirus",
-            "masculine_text": "#name# has been infected by the cybervirus.",
-            "feminine_text": "#name# has been infected by the cybervirus."
+            "id": "has_been_corrupted_by_the_earth",
+            "masculine_text": "#name# 조사자는 지구에 의해 오염되었다",
+            "feminine_text": "#name# 조사자는 지구에 의해 오염되었다"
           },
           {
             "id": "allied_with_the_migo",
-            "text": "you are allied with the Mi-Go."
+            "text": "당신은 미고와 동맹을 맺었다"
           },
           {
             "id": "caught_in_the_supernovas_blast",
-            "text": "#name# was caught in the supernova's blast."
+            "text": "#name# 조사자는 초신성 폭발에 휩쓸렸다"
           },
           {
             "id": "couldnt_save_the_crew_of_the_nostalgia_2",
-            "text": "you couldn't save the crew of the Nostalgia II."
+            "text": "당신은 향수 2호의 승조원을 단 한 명도 구하지 못했다"
           },
           {
             "id": "elbrus_station_has_been_fully_stabilized",
-            "text": "Elbrus Station has been fully stabilized."
+            "text": "엘브루스 연구 기지가 완전히 안정화되었다"
           },
           {
             "id": "elbrus_station_has_been_lost_in_the_quantum_realm",
-            "text": "Elbrus Station has been lost in the quantum realm."
+            "text": "엘브루스 연구 기지가 양자 영역 속으로 사라져 버렸다"
           },
           {
             "id": "entered_the_virtual_dreamlands_by_your_own_means",
-            "text": "you entered the Virtual Dreamlands by your own means."
+            "text": "당신은 자력으로 가상현실 속 몽환의 땅에 들어왔다"
           },
           {
             "id": "escaped_hasturs_grasp_and_prevented_him_from_escaping_his_prison",
-            "text": "the investigators have finally escaped Hastur's grasp and prevented him from escaping his prison."
+            "text": "조사자들이 마침내 하스터의 손아귀에서 벗어났고 하스터가 감옥에서 탈출하지 못하도록 막았다"
           },
           {
             "id": "fully_restored_the_sanity_of_k2ps187",
-            "text": "you fully restored the sanity of K2-PS187."
+            "text": "당신은 K2-PS187의 정신을 완전히 회복시켰다"
           },
           {
             "id": "hastur_and_tassilda_are_imprisoned",
-            "text": "Hastur and Tassilda are imprisoned in Carcosa once more, and the universe vanquished the inevitable… For now."
+            "text": "하스터와 타실다는 다시 한 번 카르코사에 갇혔고, 우주는 피할 수 없는 운명을 뛰어넘었습니다. 적어도 지금은..."
           },
           {
             "id": "have_witnessed_the_primordial_chaos",
-            "text": "you have witnessed the primordial chaos."
+            "text": "당신은 태고의 혼돈을 목도했다"
           },
           {
             "id": "have_witnessed_the_unconscious_pandemonium",
@@ -3910,7 +3910,7 @@
           },
           {
             "id": "hope_was_shielded_from_the_blast",
-            "text": "Hope was shielded from the blast."
+            "text": "‘희망’이 폭발에서 살아남았다"
           },
           {
             "id": "know_of_abjuration_of_the_throne",
@@ -3918,63 +3918,63 @@
           },
           {
             "id": "lived_remainder_of_their_days_on_paradise",
-            "text": "#name# lived the remainder of their days, on Paradise."
+            "text": "#name# 조사자는 낙원에서 여생을 보냈다"
           },
           {
             "id": "lived_remainder_of_their_days_with_hope",
-            "text": "#name# lived the remainder of their days, with Hope."
+            "text": "#name# 조사자는 희망과 함께 여생을 보냈다"
           },
           {
             "id": "migo_safely_returned_to_their_home_world",
-            "text": "the Mi-Go safely returned to their home world."
+            "text": "미고가 고향 세계로 안전하게 돌아갔다"
           },
           {
             "id": "nostalgia_2_has_been_saved",
-            "text": "the Nostalgia II has been saved."
+            "text": "향수 2호를 구했다"
           },
           {
             "id": "not_in_good_standing_with_the_migo",
-            "text": "you are not in good standing with the Mi-Go."
+            "text": "당신은 미고와 반목하고 있다"
           },
           {
             "id": "partially_restored_the_sanity_of_k2ps187",
-            "text": "you partially restored the sanity of K2-PS187."
+            "text": "당신은 K2-PS187의 정신을 일부나마 회복시켰다"
           },
           {
             "id": "realm_of_carcosa_overtook_our_universe",
-            "text": "the realm of Carcosa overtook our universe, and Tassilda rules over the black stars."
+            "text": "카르코사 왕국이 현실 세계의 우주와 병합되었고, 타실다가 검은 별들을 모두 다스린다"
           },
           {
             "id": "returned_to_the_palaces_of_dim_carcosa",
-            "text": "you have returned to the palaces of Dim Carcosa."
+            "text": "당신은 어스레한 카르코사의 왕궁으로 돌아갔다"
           },
           {
             "id": "sun_went_supernova",
-            "text": "the sun went supernova and wiped out most of the solar system."
+            "text": "태양이 초신성을 일으켜 태양계 대부분을 말살했다"
           },
           {
             "id": "transported_to_the_virtual_dreamlands_by_maja",
-            "text": "you were transported to the Virtual Dreamlands by Maja."
+            "text": "당신은 마자에 의해 가상현실 속 몽환의 땅으로 전송되었다"
           },
           {
             "id": "trapped_in_a_virtual_nightmare",
-            "text": "you are trapped in a virtual nightmare."
+            "text": "당신은 가상현실 속 악몽에 갇혀 버렸다"
           },
           {
             "id": "trapped_within_carcosa",
-            "text": "the investigators are trapped within Carcosa."
+            "text": "조사자들은 카르코사에 갇혀 버렸다"
           },
           {
             "id": "ucc_escaped_to_another_galaxy",
-            "text": "the UCC escaped to another galaxy."
+            "text": "식민지 연방이 다른 은하계로 도망쳤다"
           },
           {
             "id": "uncovered_the_cultists_inhuman_methods",
-            "text": "you have uncovered the cultist's inhuman methods."
+            "text": "사교도들이 사용하는 추악한 방법을 알아냈다"
           },
           {
             "id": "watched_the_performance_of_heir_to_carcosa",
-            "text": "you have watched the performance of Heir to Carcosa."
+            "text": "조사자들이 카르코사의 후계자라는 공연을 관람했다"
           },
           {
             "id": "witnesed_the_manifested_madness",
@@ -3982,7 +3982,7 @@
           },
           {
             "id": "you_have_rescued_the_remaining_crew_of_the_nostalgia_2",
-            "text": "you have rescued the remaining crew of the Nostalgia II."
+            "text": "당신은 향수 2호의 남은 승조원을 구출했다"
           }
         ]
       },
