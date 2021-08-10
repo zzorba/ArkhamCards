@@ -4494,8 +4494,8 @@ msgstr "보정된 능력값"
 
 msgid "${ tokens }/${ total } token"
 msgid_plural "${ tokens }/${ total } tokens"
-msgstr[0] "${ tokens }/${ total } 토큰"
-msgstr[1] ""
+msgstr[0] "${ tokens }/${ total } 확률"
+msgstr[1] "${ tokens }/${ total } 확률"
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
