@@ -15,6 +15,7 @@ import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import { where } from '@data/sqlite/query';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { SEARCH_REGEX } from '@data/types/Card';
 
 interface Props {
   componentId: string;
@@ -73,6 +74,7 @@ interface SearchResults {
 
 export default function RulesView({ componentId }: Props) {
   const { db } = useContext(DatabaseContext);
+  const { lang } = useContext(LanguageContext);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<SearchResults>({
     term: '',
@@ -92,12 +94,12 @@ export default function RulesView({ componentId }: Props) {
     db.getRulesPaged(
       0,
       100,
-      where(`r.parentRule is null AND (r.title LIKE '%' || :searchTerm || '%' OR r.text LIKE '%' || :searchTerm || '%' OR (sub_rules_title is not null AND sub_rules_title LIKE '%' || :searchTerm || '%') OR (sub_rules_text is not null AND sub_rules_text LIKE '%' || :searchTerm || '%'))`, { searchTerm })
+      where(`r.parentRule is null AND (r.s_title LIKE '%' || :titleSearchTerm || '%' OR r.text LIKE '%' || :searchTerm || '%' OR (sub_rules.s_title is not null AND sub_rules.s_title LIKE '%' || :titleSearchTerm || '%') OR (sub_rules.text is not null AND sub_rules.text LIKE '%' || :searchTerm || '%'))`, { searchTerm, titleSearchTerm: searchTerm.toLocaleLowerCase(lang).replace(SEARCH_REGEX, '') })
     ).then((rules: Rule[]) => setSearchResults({
       term: searchTerm,
       rules,
     }), console.log);
-  }, [db, searchResults.term]);
+  }, [db, lang, searchResults.term]);
   const [rules, appendRules] = useReducer<Reducer<PagedRules, AppendPagedRules>>(
     (state: PagedRules, action: AppendPagedRules): PagedRules => {
       return {
