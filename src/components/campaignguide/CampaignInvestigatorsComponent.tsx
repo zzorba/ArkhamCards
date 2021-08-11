@@ -209,21 +209,25 @@ export default function CampaignInvestigatorsComponent(props: Props) {
           </Text>
         </View>
       ) }
-      { map(killedInvestigators, investigator => (
-        <InvestigatorCampaignRow
-          key={investigator.code}
-          playerCards={playerCards}
-          spentXp={spentXp[investigator.code] || 0}
-          totalXp={processedCampaign.campaignLog.totalXp(investigator.code)}
-          unspentXp={processedCampaign.campaignLog.specialXp(investigator.code, 'unspect_xp')}
-          showXpDialog={showXpDialogPressed}
-          campaign={campaign}
-          deck={latestDecks[investigator.code]}
-          componentId={componentId}
-          investigator={investigator}
-          traumaAndCardData={processedCampaign.campaignLog.traumaAndCardData(investigator.code)}
-        />
-      )) }
+      { map(killedInvestigators, investigator => {
+        const traumaAndCardData = processedCampaign.campaignLog.traumaAndCardData(investigator.code);
+        return (
+          <InvestigatorCampaignRow
+            key={investigator.code}
+            playerCards={playerCards}
+            spentXp={spentXp[investigator.code] || 0}
+            totalXp={processedCampaign.campaignLog.totalXp(investigator.code)}
+            unspentXp={processedCampaign.campaignLog.specialXp(investigator.code, 'unspect_xp')}
+            showXpDialog={showXpDialogPressed}
+            showTraumaDialog={((traumaAndCardData?.physical && traumaAndCardData?.physical === investigator.health) || (traumaAndCardData?.mental && traumaAndCardData?.mental === investigator.sanity)) ? showTraumaDialog : undefined}
+            campaign={campaign}
+            deck={latestDecks[investigator.code]}
+            componentId={componentId}
+            investigator={investigator}
+            traumaAndCardData={traumaAndCardData}
+          />
+        );
+      }) }
       <DeckButton
         color="light_gray"
         icon="plus-thin"

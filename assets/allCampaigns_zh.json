@@ -115824,7 +115824,7 @@
     },
     {
       "id": "create_scanning_deck",
-      "text": "Create the scanning deck. This is done by taking all the encounter cards with icons at the bottom of their back side and shuffling them together."
+      "text": "Create the scanning deck. This is done by taking all the other encounter cards with icons at the bottom of their back side and shuffling them together."
     },
     {
       "id": "create_evidence_deck",
@@ -117069,7 +117069,7 @@
     },
     {
       "id": "create_scanning_deck",
-      "text": "Create the scanning deck. This is done by taking all the encounter cards with icons at the bottom of their back side and shuffling them together."
+      "text": "Create the scanning deck. This is done by taking all the other encounter cards with icons at the bottom of their back side and shuffling them together."
     },
     {
       "id": "setup_landing_craft",
@@ -117087,7 +117087,7 @@
       "id": "face_down_encounter_rule",
       "type": "rule_reminder",
       "title": "Face-Down Encounter Cards",
-      "text": "In this scenario, you may be instructed to place encounter cards face-down into your threat area. These cards are considered out-of-play, but may be referenced by other scenario cards.\nWhen you would draw cards from the encounter deck, if both the encounter deck and discard piles are empty, draw a card from the face-down encounter cards in your threat area instead. If there are none in your threat area, you are defeated. (and possibly attempting to break the scenario.)"
+      "text": "In this scenario, you may be instructed to place encounter cards face-down into your threat area. These cards are considered out-of-play, but may be referenced by other scenario cards.\nWhen you would draw cards from the encounter deck, if both the encounter deck and discard piles are empty, draw a card from the face-down encounter cards in your threat area instead. If there are none in your threat area, you are defeated."
     },
     {
       "id": "quantum_realm_rule",
@@ -117601,7 +117601,7 @@
       "id": "heir_to_carcosa_story",
       "title": "Heir to Carcosa",
       "type": "story",
-      "text": "<center><smallcaps>Read at your own risk</smallcaps></center>\n<center>The program begins with the royal family of Yhtill cowering before the King in Yellow, Avatar of Hastur. For the next three hours, you witness a horrifying creative work, full of betrayal, intrigue, and horror. The story unfolds thus:</center>\n<center>After claiming Yhtill and absorbing it into Carcosa, the King in Yellow took the insane princess Camillia as a consort. Before her death, the princess bore the Ancient One three children, who became fosterlings of Hastur. They were two boys, named Thothut and Tasylock, and a girl named Tassilda. While normal-seeming at first, the children developed many of the physical characteristics and powers of their father. This transformation was viewed by their mother as yet another of Carcosa’s many corruptions. It was the final blow to Camillia’s mind, causing her heart to stop from despair and grief.</center>\n<center>For some time the royal trio lived with their sire in Carcosa, evil beings serving loyally at the foot of their father. But soon, like their mother, uncle, and grandmother before them, the princes and princess of Carcosa began to whisper, squabble, and plot. They had dreams of power and succession. Eventually Thothut and Tasylock unwisely moved against their father. Hastur was aware of the plot all along, and easily avoided their traps. In a way too horrible to describe, he destroyed both of his sons.</center>\n<center>His daughter Tassilda, who knew of her siblings’ plot but refused to take part in it, was spared. But she had done nothing to warn her father, choosing to wait and see if their plot was successful before committing to a course of action. For her silent betrayal, Tassilda was punished. Her father, He Who Should Not Be Named, sealed her into her home, which the Ancient One tore free of Carcosa and hurled out into space. Her father claimed that in an inevitable time, she will be released, and granted all that she desires.</center>"
+      "text": "<center><smallcaps>Read at your own risk</smallcaps></center>\n<center>The program begins with the royal family of Yhtill cowering before the King in Yellow, Avatar of Hastur. For the next three hours, you witness a horrifying creative work, full of betrayal, intrigue, and horror. The story unfolds thus:</center>\n<center>After claiming Yhtill and absorbing it into Carcosa, the King in Yellow took the insane princess Camilla as a consort. Before her death, the princess bore the Ancient One three children, who became fosterlings of Hastur. They were two boys, named Thothut and Tasylock, and a girl named Tassilda. While normal-seeming at first, the children developed many of the physical characteristics and powers of their father. This transformation was viewed by their mother as yet another of Carcosa’s many corruptions. It was the final blow to Camilla’s mind, causing her heart to stop from despair and grief.</center>\n<center>For some time the royal trio lived with their sire in Carcosa, evil beings serving loyally at the foot of their father. But soon, like their mother, uncle, and grandmother before them, the princes and princess of Carcosa began to whisper, squabble, and plot. They had dreams of power and succession. Eventually Thothut and Tasylock unwisely moved against their father. Hastur was aware of the plot all along, and easily avoided their traps. In a way too horrible to describe, he destroyed both of his sons.</center>\n<center>His daughter Tassilda, who knew of her siblings’ plot but refused to take part in it, was spared. But she had done nothing to warn her father, choosing to wait and see if their plot was successful before committing to a course of action. For her silent betrayal, Tassilda was punished. Her father, He Who Should Not Be Named, sealed her into her home, which the Ancient One tore free of Carcosa and hurled out into space. Her father claimed that in an inevitable time, she will be released, and granted all that she desires.</center>"
     },
     {
       "id": "watched_the_performance_of_heir_to_carcosa",
@@ -117934,7 +117934,7 @@
     },
     {
       "id": "create_scanning_deck",
-      "text": "Create the scanning deck. This is done by taking all the encounter cards with icons at the bottom of their back side and shuffling them together. (Including the cards above that have not been set aside.)"
+      "text": "Create the scanning deck. This is done by taking all the other encounter cards with icons at the bottom of their back side and shuffling them together. (Including the cards above that have not been set aside.)"
     },
     {
       "id": "setup_locations",
@@ -118652,7 +118652,7 @@
     },
     {
       "id": "create_scanning_deck",
-      "text": "Create the scanning deck. This is done by taking all the encounter cards with icons at the bottom of their back side and shuffling them together."
+      "text": "Create the scanning deck. This is done by taking all the other encounter cards with icons at the bottom of their back side and shuffling them together."
     },
     {
       "id": "setup_locations",
