@@ -4487,21 +4487,23 @@ msgstr[0] "${ tokens }/${ total } 확률"
 msgstr[1] "${ tokens }/${ total } 확률"
 
 msgid "Disable to choose individual packs to show"
-msgstr ""
+msgstr "개별 신화팩 보기를 비활성화하기"
 
 msgid ""
 "Use these controls to limit which cards are visible while searching, "
 "building decks, or upgrading cards to those in your own collection."
 msgstr ""
+"보유 게임에서 덱을 생성 및 검색하거나 카드를 향상하는 동안, "
+"이를 조정하여 표시되는 카드를 제한할 수 있습니다."
 
 msgid "All Cycles and Packs"
-msgstr ""
+msgstr "모든 사이클 및 신화팩"
 
 msgid "Record that..."
-msgstr ""
+msgstr "기록 중..."
 
 msgid "Player card entries only"
-msgstr ""
+msgstr "플레이어 카드 항목만"
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
