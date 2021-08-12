@@ -3750,9 +3750,6 @@ msgstr "劇本可上傳至你的Arkham Cards帳戶。"
 msgid "Uploaded campaigns will be synced between devices."
 msgstr "已上傳的劇本會在不同裝置之間同步。"
 
-msgid "Review records"
-msgstr "檢視記錄"
-
 msgid "Note campaign achievements"
 msgstr "記錄劇本成就"
 
@@ -4414,11 +4411,6 @@ msgstr ""
 msgid "Your investigator modfifier"
 msgstr ""
 
-msgid ""
-"Reference\n"
-"card"
-msgstr ""
-
 msgid "Test difficulty"
 msgstr ""
 
@@ -4429,6 +4421,29 @@ msgid "${ tokens }/${ total } token"
 msgid_plural "${ tokens }/${ total } tokens"
 msgstr[0] ""
 msgstr[1] ""
+
+msgid "Show all cards"
+msgstr ""
+
+msgid "Disable to choose individual packs to show"
+msgstr ""
+
+msgid "All cards are shown throughout the app"
+msgstr ""
+
+msgid ""
+"Use these controls to limit which cards are visible while searching, "
+"building decks, or upgrading cards to those in your own collection."
+msgstr ""
+
+msgid "All Cycles and Packs"
+msgstr ""
+
+msgid "Record that..."
+msgstr ""
+
+msgid "For player card effects"
+msgstr ""
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
