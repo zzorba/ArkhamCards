@@ -47,7 +47,7 @@ export default function CampaignLogSectionComponent({ sectionId, campaignGuide, 
           key="edit"
           icon="edit"
           title={t`Record in campaign log`}
-          detail={t`For player card effects`}
+          detail={t`Player card entries only`}
           onPress={editCampaignLogPressed}
         />
       ) }

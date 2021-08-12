@@ -4705,7 +4705,7 @@ msgstr ""
 msgid "Record that..."
 msgstr ""
 
-msgid "For player card effects"
+msgid "Player card entries only"
 msgstr ""
 
 msgctxt "masculine"
