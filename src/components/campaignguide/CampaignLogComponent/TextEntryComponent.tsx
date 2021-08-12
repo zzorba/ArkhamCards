@@ -11,9 +11,10 @@ interface Props {
   crossedOut?: boolean;
   entry: CampaignLogEntry;
   decoration?: 'circle';
+  button?: React.ReactNode;
 }
 
-export default function TextEntryComponent({ text, crossedOut, entry, decoration }: Props) {
+export default function TextEntryComponent({ text, crossedOut, entry, decoration, button }: Props) {
   const { typography } = useContext(StyleContext);
   const actualText = entry.type === 'count' ?
     text.replace('#X#', `${entry.count}`) :
@@ -26,9 +27,11 @@ export default function TextEntryComponent({ text, crossedOut, entry, decoration
         crossedOut ? typography.strike : undefined,
         decoration === 'circle' ? typography.underline : undefined,
         decoration === 'circle' ? typography.bold : undefined,
+        { flex: 1 },
       ]}>
         { upperFirst(actualText) }
       </Text>
+      { !!button && button}
     </View>
   );
 }
@@ -36,5 +39,8 @@ export default function TextEntryComponent({ text, crossedOut, entry, decoration
 const styles = StyleSheet.create({
   wrapper: {
     position: 'relative',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
 });

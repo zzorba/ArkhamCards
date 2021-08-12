@@ -1106,6 +1106,7 @@ export interface GuideStartScenarioInput extends BasicInput {
 export interface GuideInterScenarioInput extends BasicInput {
   type: 'inter_scenario';
   investigatorData: InvestigatorTraumaData;
+  campaignLogEntries?: string[];
   step: undefined;
 }
 

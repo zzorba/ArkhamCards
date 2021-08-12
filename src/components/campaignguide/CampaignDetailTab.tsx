@@ -47,8 +47,8 @@ export default function CampaignDetailTab({
       campaignId,
       campaignGuide,
       processedCampaign.campaignLog,
-      false,
-      scenarioId
+      { standalone: false, hideChaosBag: true },
+      scenarioId,
     );
   }, [componentId, campaignId, campaignGuide, processedCampaign.campaignLog, scenarioId]);
 
@@ -110,7 +110,7 @@ export default function CampaignDetailTab({
           <DeckButton
             icon="log"
             title={t`Campaign Log`}
-            detail={t`Review records`}
+            detail={t`Review and add records`}
             color="light_gray"
             onPress={showCampaignLog}
             bottomMargin={s}

@@ -178,7 +178,7 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
       campaignId,
       processedScenario.scenarioGuide.campaignGuide,
       log.campaignLog,
-      standalone,
+      { standalone },
       scenarioId
     );
   }, [componentId, processedScenario, campaignId, scenarioId, standalone]);

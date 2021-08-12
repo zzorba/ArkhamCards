@@ -294,12 +294,14 @@ export function setInterScenarioData(
   actions: GuideActions,
   campaignId: CampaignId,
   value: InvestigatorTraumaData,
-  scenario?: string
+  scenario: string | undefined,
+  campaignLogEntries?: string[],
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
   return setGuideInputAction(userId, actions, campaignId, {
     type: 'inter_scenario',
     scenario,
     investigatorData: value,
+    campaignLogEntries,
     step: undefined,
   });
 }

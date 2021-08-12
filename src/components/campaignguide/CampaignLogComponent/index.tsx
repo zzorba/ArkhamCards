@@ -27,6 +27,7 @@ interface Props {
   standalone?: boolean;
   hideChaosBag?: boolean;
   width: number;
+  interScenarioId?: string;
 }
 
 interface CardSectionProps {
@@ -63,7 +64,17 @@ function CardSection({ code, section, campaignGuide }: CardSectionProps) {
   )
 }
 
-export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, scenarioId, standalone, hideChaosBag, width }: Props) {
+export default function CampaignLogComponent({
+  componentId,
+  campaignId,
+  campaignGuide,
+  campaignLog,
+  scenarioId,
+  standalone,
+  hideChaosBag,
+  width,
+  interScenarioId,
+}: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'investigator_count' | 'count' | 'supplies') => {
     switch (type) {
@@ -124,6 +135,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
                   sectionId={id}
                   campaignGuide={campaignGuide}
                   section={section}
+                  interScenarioId={interScenarioId}
                 />
               </View>
             ) }
@@ -131,7 +143,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
         );
       }
     }
-  }, [campaignLog, campaignGuide, width]);
+  }, [campaignLog, campaignGuide, width, interScenarioId]);
 
   const oddsCalculatorPressed = useCallback(() => {
     showGuideChaosBagOddsCalculator(componentId, campaignId, campaignLog.chaosBag, campaignLog.investigatorCodesSafe(), scenarioId, standalone);

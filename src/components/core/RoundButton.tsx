@@ -10,13 +10,14 @@ interface Props {
   onPress: () => void;
   children: React.ReactNode;
   disabled?: boolean;
+  noShadow?: boolean;
 }
 
-export default function RoundButton({ onPress, children, disabled, size = 32, margin = 0 }: Props) {
+export default function RoundButton({ onPress, children, disabled, size = 32, margin = 0, noShadow }: Props) {
   const { colors, shadow } = useContext(StyleContext);
   return (
     <Ripple style={[
-      shadow.medium,
+      noShadow ? undefined : shadow.medium,
       styles.button,
       {
         backgroundColor: colors.L20,

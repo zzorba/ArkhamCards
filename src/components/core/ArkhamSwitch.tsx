@@ -7,7 +7,7 @@ import AppIcon from '@icons/AppIcon';
 import COLORS from '@styles/colors';
 import { ThemeColors } from '@styles/theme';
 
-interface Props extends Omit<TouchableOpacityProps, 'onValueChange'> {
+interface OwnProps {
   useGestureHandler?: boolean;
   value: boolean;
   onValueChange?: (checked: boolean) => void;
@@ -16,6 +16,8 @@ interface Props extends Omit<TouchableOpacityProps, 'onValueChange'> {
   color?: 'light' | 'dark';
   circleColor?: 'light'
 }
+
+type Props = OwnProps & Omit<TouchableOpacityProps, 'onValueChange'>;
 function getCircleColor(value: boolean, color: 'light' | 'dark' | undefined, circleColor: 'light' | undefined, colors: ThemeColors) {
   switch (color) {
     case 'light':

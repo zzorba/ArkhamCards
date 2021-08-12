@@ -80,8 +80,12 @@ export default class ScenarioStateHelper {
     return this.campaignState.campaignLink(sendOrReceive, id, this.scenarioId);
   }
 
-  interScenarioInfo(): InvestigatorTraumaData | undefined {
-    return this.campaignState.interScenarioInfo(this.scenarioId);
+  interScenarioInvestigatorData(): InvestigatorTraumaData | undefined {
+    return this.campaignState.interScenarioInvestigatorData(this.scenarioId);
+  }
+
+  interScenarioCampaignLogEntries(): string[] | undefined {
+    return this.campaignState.interScenarioCampaignLogEntries(this.scenarioId);
   }
 
   setCampaignLink(id: string, decision: string) {
