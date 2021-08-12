@@ -887,7 +887,7 @@ export default function OddsCalculatorComponent({
           />
         </View>
         <View style={[styles.blurseRow, space.paddingSideS]}>
-          <RoundButton onPress={toggleShowBlurse} noShadow>
+          <RoundButton onPress={toggleShowBlurse} noShadow accessibilityLabel={showBlurse ? t`Hide Bless/Curse Odds` : t`Show Bless/Curse Odds`}>
             <AppIcon name={showBlurse ? 'show' : 'hide'} color={colors.M} size={28} />
           </RoundButton>
           <View style={space.paddingLeftXs}>

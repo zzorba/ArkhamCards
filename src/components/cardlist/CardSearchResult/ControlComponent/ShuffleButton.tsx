@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { t } from 'ttag';
 
 import StyleContext from '@styles/StyleContext';
 import RoundButton from '@components/core/RoundButton';
@@ -14,7 +15,7 @@ export default function ShuffleButton({ onPress }: Props) {
   const { colors } = useContext(StyleContext);
   return (
     <View style={[styles.countWrapper, space.paddingLeftXs]}>
-      <RoundButton onPress={onPress}>
+      <RoundButton onPress={onPress} accessibilityLabel={t`Draw random basic weakness`}>
         <View style={styles.icon}>
           <MaterialCommunityIcons
             name="shuffle-variant"

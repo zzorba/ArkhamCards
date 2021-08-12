@@ -4492,9 +4492,7 @@ msgstr "개별 신화팩 보기를 비활성화하기"
 msgid ""
 "Use these controls to limit which cards are visible while searching, "
 "building decks, or upgrading cards to those in your own collection."
-msgstr ""
-"보유 게임에서 덱을 생성 및 검색하거나 카드를 향상하는 동안, "
-"이를 조정하여 표시되는 카드를 제한할 수 있습니다."
+msgstr "보유 게임에서 덱을 생성 및 검색하거나 카드를 향상하는 동안, 이를 조정하여 표시되는 카드를 제한할 수 있습니다."
 
 msgid "All Cycles and Packs"
 msgstr "모든 사이클 및 신화팩"
@@ -4504,6 +4502,27 @@ msgstr "기록 중..."
 
 msgid "Player card entries only"
 msgstr "플레이어 카드 항목만"
+
+msgid "Accept friend request"
+msgstr ""
+
+msgid "Send friend request"
+msgstr ""
+
+msgid "Reject friend request"
+msgstr ""
+
+msgid "Revoke friend request"
+msgstr ""
+
+msgid "Show upgrades"
+msgstr ""
+
+msgid "Hide Bless/Curse Odds"
+msgstr ""
+
+msgid "Show Bless/Curse Odds"
+msgstr ""
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."

@@ -11,12 +11,13 @@ interface Props {
   children: React.ReactNode;
   disabled?: boolean;
   noShadow?: boolean;
+  accessibilityLabel: string;
 }
 
-export default function RoundButton({ onPress, children, disabled, size = 32, margin = 0, noShadow }: Props) {
+export default function RoundButton({ onPress, accessibilityLabel, children, disabled, size = 32, margin = 0, noShadow }: Props) {
   const { colors, shadow } = useContext(StyleContext);
   return (
-    <Ripple style={[
+    <Ripple accessibilityLabel={accessibilityLabel} style={[
       noShadow ? undefined : shadow.medium,
       styles.button,
       {
