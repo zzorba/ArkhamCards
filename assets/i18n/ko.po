@@ -4504,25 +4504,25 @@ msgid "Player card entries only"
 msgstr "플레이어 카드 항목만"
 
 msgid "Accept friend request"
-msgstr ""
+msgstr "친구 요청 수락"
 
 msgid "Send friend request"
-msgstr ""
+msgstr "친구 요청 보내기"
 
 msgid "Reject friend request"
-msgstr ""
+msgstr "친구 요청 거절"
 
 msgid "Revoke friend request"
-msgstr ""
+msgstr "친구 요청 취소"
 
 msgid "Show upgrades"
-msgstr ""
+msgstr "향상 보기"
 
 msgid "Hide Bless/Curse Odds"
-msgstr ""
+msgstr "축복/저주 확률 숨기기"
 
 msgid "Show Bless/Curse Odds"
-msgstr ""
+msgstr "축복/저주 확률 보이기"
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
