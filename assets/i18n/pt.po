@@ -4662,6 +4662,9 @@ msgstr ""
 msgid "Show Bless/Curse Odds"
 msgstr ""
 
+msgid "Faction, Level, Type, Cost"
+msgstr ""
+
 msgctxt "masculine"
 msgid "Alive"
 msgstr "Vivo"

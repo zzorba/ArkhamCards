@@ -4729,6 +4729,9 @@ msgstr ""
 msgid "Show Bless/Curse Odds"
 msgstr ""
 
+msgid "Faction, Level, Type, Cost"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } è <b>impazzito</b>."

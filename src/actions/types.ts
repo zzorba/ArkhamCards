@@ -7,6 +7,7 @@ export const SORT_BY_TYPE = 'type';
 export const SORT_BY_FACTION = 'faction';
 export const SORT_BY_FACTION_PACK = 'faction_pack';
 export const SORT_BY_FACTION_XP = 'faction_xp';
+export const SORT_BY_FACTION_XP_TYPE_COST = 'faction_xp_type_cost';
 export const SORT_BY_COST = 'cost';
 export const SORT_BY_PACK = 'pack';
 export const SORT_BY_TITLE = 'title';
@@ -17,6 +18,7 @@ export type SortType =
   typeof SORT_BY_FACTION |
   typeof SORT_BY_FACTION_PACK |
   typeof SORT_BY_FACTION_XP |
+  typeof SORT_BY_FACTION_XP_TYPE_COST |
   typeof SORT_BY_COST |
   typeof SORT_BY_PACK |
   typeof SORT_BY_TITLE |
