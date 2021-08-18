@@ -79,23 +79,16 @@ export type ScenarioDataEffect =
   | ScenarioDataStatusEffect;
 export type InvestigatorStatus = "alive" | "resigned" | "physical" | "mental" | "eliminated";
 export type ScenarioStatus = "not_started" | "skipped" | "started" | "resolution" | "completed" | "unlocked";
-export type ChaosToken =
-  | "+1"
-  | "0"
-  | "-1"
-  | "-2"
-  | "-3"
-  | "-4"
-  | "-5"
-  | "-6"
-  | "-7"
-  | "-8"
+export type ChaosToken = ("+1" | "0" | "-1" | "-2" | "-3" | "-4" | "-5" | "-6" | "-7" | "-8") | SpecialChaosToken;
+export type SpecialChaosToken =
   | "skull"
   | "cultist"
   | "tablet"
   | "elder_thing"
   | "elder_sign"
-  | "auto_fail";
+  | "auto_fail"
+  | "bless"
+  | "curse";
 export type DefaultOption = Option;
 export type ChoiceIcon = "mental" | "physical" | "resign" | "dismiss" | "accept";
 export type MathCondition = MathCompareCondition | MathSumCondition | MathEqualsCondition;
@@ -157,7 +150,8 @@ export type Choice1 =
   | InvestigatorCounterChoice
   | CounterChoice
   | InvestigatorChoice;
-export type ChaosTokens = ChaosTokenValue[];
+export type SingleChaosTokenValue = SimpleChaosTokenValue | CounterChaosTokenValue | ConditionChaosTokenValue;
+export type ChaosTokens = ScenarioChaosTokens[];
 
 export interface FullCampaign {
   campaign: Campaign;
@@ -366,6 +360,8 @@ export interface AddRemoveChaosTokenEffect {
 export interface FreeformCampaignLogEffect {
   type: "freeform_campaign_log";
   section: "campaign_notes";
+  scenario_id?: string;
+  index?: number;
 }
 export interface UpgradeDecksEffect {
   type: "upgrade_decks";
@@ -1063,24 +1059,43 @@ export interface Rule {
   }[];
   rules?: Rule[];
 }
-export interface ChaosTokenValue {
+export interface ScenarioChaosTokens {
   code: string;
   scenario: string;
   standard: SingleChaosTokenValue[];
   hard: SingleChaosTokenValue[];
 }
-export interface SingleChaosTokenValue {
-  token: "skull" | "cultist" | "tablet" | "elder_thing";
-  modifier?: number;
+export interface SimpleChaosTokenValue {
+  type?: null;
+  token: SpecialChaosToken;
+  text?: string;
+  value: ChaosTokenModifier;
+}
+export interface ChaosTokenModifier {
+  modifier: number | ("auto_fail" | "auto_succeed");
   reveal_another?: boolean;
-  counter?: {
+  cancel_modifiers?: boolean;
+}
+export interface CounterChaosTokenValue {
+  type: "counter";
+  token: SpecialChaosToken;
+  text?: string;
+  counter: {
     prompt: string;
+    min?: number;
     max?: number;
     scale?: number;
+    reveal_another?: boolean;
+    adjustment?: number;
   };
-  condition?: {
-    default_value: number;
+}
+export interface ConditionChaosTokenValue {
+  type: "condition";
+  token: SpecialChaosToken;
+  text?: string;
+  condition: {
     prompt: string;
-    modified_value: number;
+    default_value: ChaosTokenModifier;
+    modified_value: ChaosTokenModifier;
   };
 }

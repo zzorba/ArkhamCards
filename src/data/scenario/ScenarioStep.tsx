@@ -222,9 +222,9 @@ export default class ScenarioStep {
     switch (this.step.type) {
       case 'internal':
         if (this.step.id === INTER_SCENARIO_CHANGES_STEP_ID) {
-          const investigatorData = scenarioState.interScenarioInfo();
+          const investigatorData = scenarioState.interScenarioInvestigatorData();
+          const effectsWithInput: EffectsWithInput[] = [];
           if (investigatorData) {
-            const effectsWithInput: EffectsWithInput[] = [];
             forEach(investigatorData, (trauma, investigator) => {
               if (trauma) {
                 const currentTrauma = this.campaignLog.traumaAndCardData(investigator);
@@ -242,6 +242,24 @@ export default class ScenarioStep {
                 });
               }
             });
+          }
+          const campaignLogEntries = scenarioState.interScenarioCampaignLogEntries();
+          if (campaignLogEntries?.length) {
+            forEach(campaignLogEntries, (text, idx) => {
+              effectsWithInput.push({
+                input: [text],
+                effects: [
+                  {
+                    type: 'freeform_campaign_log',
+                    section: 'campaign_notes',
+                    scenario_id: scenarioState.scenarioId,
+                    index: idx,
+                  },
+                ],
+              });
+            });
+          }
+          if (effectsWithInput.length) {
             return this.maybeCreateEffectsStep(
               this.step.id,
               this.remainingStepIds,

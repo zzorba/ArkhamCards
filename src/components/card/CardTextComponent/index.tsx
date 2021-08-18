@@ -238,21 +238,22 @@ interface Props {
   text: string;
   onLinkPress?: (url: string, context: StyleContextType) => void;
   sizeScale?: number;
+  noBullet?: boolean;
 }
 
-export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: Props) {
+export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, noBullet }: Props) {
   const { usePingFang } = useContext(LanguageContext);
   const context = useContext(StyleContext);
-  const cleanText = text
+  const cleanTextA = text
     .replace(/\\u2022/g, '•')
     .replace(/<span class="icon-([^"]+?)"><\/span>/g, '[$1]')
     .replace(/&rarr;/g, '→')
     .replace(/\/n/g, '\n')
-    .replace(/^---*$/gm, '<hr>')
-    .replace(/(^\s?-|^—\s+)([^0-9].+)$/gm,
+    .replace(/^---*$/gm, '<hr>');
+  const cleanText = noBullet ? cleanTextA :
+    cleanTextA.replace(/(^\s?-|^—\s+)([^0-9].+)$/gm,
       onLinkPress ? '<span class="icon-bullet"></span> $2' : '[bullet] $2'
-    )
-    .replace(/(<p>- )|(<p>–)/gm, onLinkPress ? '<p><span class="icon-bullet"></span> ' : '<p>[bullet] ');
+    ).replace(/(<p>- )|(<p>–)/gm, onLinkPress ? '<p><span class="icon-bullet"></span> ' : '<p>[bullet] ');
 
   const wrappedOnLinkPress = useCallback((url: string) => {
     onLinkPress && onLinkPress(url, context);

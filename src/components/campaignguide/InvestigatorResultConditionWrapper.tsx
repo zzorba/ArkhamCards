@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { View } from 'react-native';
 import { findIndex, flatMap, forEach } from 'lodash';
 
@@ -6,14 +6,16 @@ import { InvestigatorCardResult, BoolOptionWithId } from '@data/scenario/conditi
 import Card from '@data/types/Card';
 import { BoolOption } from '@data/scenario/types';
 import useCardList from '@components/card/useCardList';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props<T> {
   result: InvestigatorCardResult;
   extraArg: T;
-  renderOption: (investigators: Card[], option: BoolOption, extraArg: T) => Element | null;
+  renderOption: (investigators: Card[], option: BoolOption, listSeperator: string, extraArg: T) => Element | null;
 }
 
 function InvestigatorResultConditionOption<T>({ result, option, renderOption, extraArg }: Props<T> & { option: BoolOptionWithId }) {
+  const { listSeperator } = useContext(LanguageContext);
   const investigators: string[] = useMemo(() => {
     const investigators: string[] = [];
     forEach(result.investigatorChoices, (choices, code) => {
@@ -29,7 +31,7 @@ function InvestigatorResultConditionOption<T>({ result, option, renderOption, ex
   }
   return (
     <View>
-      { renderOption(cards, option, extraArg) }
+      { renderOption(cards, option, listSeperator, extraArg) }
     </View>
   );
 }

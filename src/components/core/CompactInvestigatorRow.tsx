@@ -115,7 +115,7 @@ export function AnimatedCompactInvestigatorRow({
         <View style={[
           styles.block,
           {
-            borderColor: colors.faction[investigator.factionCode()].background,
+            borderColor: investigator ? colors.faction[investigator.factionCode()].background : colors.M,
             backgroundColor: colors.background,
           },
           space.paddingTopS,

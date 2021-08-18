@@ -15,7 +15,7 @@ import Card from '@data/types/Card';
 import { NavigationProps } from '@components/nav/types';
 import space, { m } from '@styles/space';
 import DeckNavFooter, { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
-import { getPacksInCollection } from '@reducers';
+import { getPacksInCollection, AppState } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { PARALLEL_SKIDS_CODE, PARALLEL_AGNES_CODE, SHREWD_ANALYSIS_CODE, UNIDENTIFIED_UNTRANSLATED } from '@app_constants';
 import ArkhamButton from '@components/core/ArkhamButton';
@@ -72,6 +72,7 @@ export default function CardUpgradeDialog({
   const dispatch = useDispatch();
   const { backgroundStyle, borderStyle, typography, width } = useContext(StyleContext);
   const inCollection = useSelector(getPacksInCollection);
+  const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
   const [showNonCollection, setShowNonCollection] = useState(false);
   const [shrewdAnalysisResult, setShrewdAnalysisResult] = useState<string[]>([]);
   const backPressed = useCallback(() => {
@@ -152,10 +153,11 @@ export default function CardUpgradeDialog({
   const cardInCollection = useCallback((card: Card): boolean => {
     return (
       card.pack_code === 'core' ||
+      ignore_collection ||
       inCollection[card.pack_code] ||
       showNonCollection
     );
-  }, [inCollection, showNonCollection]);
+  }, [inCollection, showNonCollection, ignore_collection]);
 
   const ignoreData = useMemo(() => ignoreRule(investigator.code), [investigator.code]);
 

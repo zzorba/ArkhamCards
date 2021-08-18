@@ -61,6 +61,7 @@ function DbCardDetailSwipeView(props: Props) {
   const tabooSetSelector: (state: AppState, tabooSetOverride?: number) => number | undefined = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelector(state, tabooSetOverride));
   const packInCollection = useSelector(getPacksInCollection);
+  const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
   const showSpoilers = useSelector(getPackSpoilers);
   const [spoilers, toggleShowSpoilers] = useToggles({});
   const [index, setIndex] = useState(initialIndex);
@@ -165,11 +166,11 @@ function DbCardDetailSwipeView(props: Props) {
     if (deckId === undefined || !currentCard) {
       return null;
     }
-    const deck_limit: number = currentCard.collectionDeckLimit(packInCollection);
+    const deck_limit: number = currentCard.collectionDeckLimit(packInCollection, ignore_collection);
     return (
       <FloatingDeckQuantityComponent code={currentCard.code} deckId={deckId} limit={deck_limit} />
     );
-  }, [deckId, currentCard, packInCollection]);
+  }, [deckId, currentCard, packInCollection, ignore_collection]);
   const renderCard = useCallback((
     { item: card, index: itemIndex }: { item?: Card | undefined; index: number; dataIndex: number }
   ): React.ReactNode => {

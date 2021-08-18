@@ -321,6 +321,12 @@ msgstr "두번째 기본판"
 msgid "Edit Collection"
 msgstr "보유게임 수정"
 
+msgid "Show all cards"
+msgstr "모든 카드 보기"
+
+msgid "All cards are shown throughout the app"
+msgstr "모든 카드가 앱 전체에 표시됩니다."
+
 msgid "Restore campaign data?"
 msgstr "캠페인 데이터를 복구하시겠습니까?"
 
@@ -2220,33 +2226,6 @@ msgstr "기타 캠페인"
 msgid "Select Campaign"
 msgstr "캠페인 선택"
 
-msgid "Success"
-msgstr "성공"
-
-msgid "Draw Two, Pick One"
-msgstr "2개를 뽑아 1개 적용"
-
-msgid "Fail By 2 or Less"
-msgstr "난이도에 모자란 차이 2 이하 실패"
-
-msgid "Fail By 1 or Less"
-msgstr "난이도에 모자란 차이 2 이하 실패"
-
-msgid "Succeed By 1 or More"
-msgstr "난이도를 넘어선 차이 1 이상 성공"
-
-msgid "Succeed By 2 or More"
-msgstr "난이도를 넘어선 차이 2 이상 성공"
-
-msgid "Succeed By 3 or More"
-msgstr "난이도를 넘어선 차이 3 이상 성공"
-
-msgid "Re-Draw After Fail"
-msgstr "실패후 다시 뽑기"
-
-msgid "Succeed Twice In A Row"
-msgstr "두번 연속 성공"
-
 msgid "Number of clues on your location"
 msgstr "당신이 위치한 장소의 단서 개수"
 
@@ -2270,17 +2249,6 @@ msgstr "자원을 2개 소비하여 자동으로 성공"
 
 msgid "Resource cost of the top card on your deck"
 msgstr "당신의 덱 맨 위 카드의 자원 비용"
-
-msgid "Change Scenario"
-msgstr "시나리오 변경"
-
-msgid ""
-"Note: chaos tokens that cause additional tokens to be revealed does not "
-"show correct odds for the \"Draw Two Pick One\" and similar multi-draw "
-"situations."
-msgstr ""
-"참고: 다른 토큰을 공개하게 하는 혼돈 토큰은 \"2개를 뽑아 1개 적용\"과 이와 유사한 여러개를 뽑는 상황에서 정확한 결과를 "
-"보여주지 않습니다."
 
 msgid "Difficulty"
 msgstr "난이도"
@@ -3739,9 +3707,6 @@ msgstr "혼돈 주머니 (${ tokenCount }개)"
 msgid "Save upgrade"
 msgstr "향상 저장"
 
-msgid "Sorry, you don't seem to be a Mythos Buster patron."
-msgstr "죄송하지만, Mythos Buster 후원자가 아닌 것으로 보입니다."
-
 msgid "Earned experience:"
 msgstr "획득한 경험치:"
 
@@ -3831,9 +3796,6 @@ msgstr "아컴 카드 계정에 캠페인을 업로드할 수 있습니다."
 
 msgid "Uploaded campaigns will be synced between devices."
 msgstr "업로드된 캠페인은 장치 간에 동기화될 것입니다."
-
-msgid "Review records"
-msgstr "기록 열람"
 
 msgid "Note campaign achievements"
 msgstr "캠페인 업적 기록"
@@ -4069,16 +4031,16 @@ msgid "Dark Matter"
 msgstr "암흑 물질"
 
 msgid "Impending Doom"
-msgstr ""
+msgstr "임박한 파멸"
 
 msgid "Memories"
-msgstr ""
+msgstr "기억"
 
 msgid "Fan-Made Campaigns"
-msgstr "팬메이드 캠페인"
+msgstr "팬 제작 캠페인"
 
 msgid "Fan-Made Content"
-msgstr "팬메이드 컨텐츠"
+msgstr "팬 제작 컨텐츠"
 
 msgid "Fetching account details..."
 msgstr "계정 세부사항을 가져 오는 중..."
@@ -4122,7 +4084,7 @@ msgid "Exile story cards"
 msgstr "이야기 카드 추방"
 
 msgid "Fan-made scenario by ${ custom.creator }"
-msgstr "팬메이드 시나리오 (제작자: ${ custom.creator })"
+msgstr "팬 제작 시나리오 (제작자: ${ custom.creator })"
 
 msgid ""
 "If you are a custom content creator who has a \"finished\" campaign you'd "
@@ -4438,10 +4400,132 @@ msgstr ""
 
 #, javascript-format
 msgid "Fan-made campaign by ${ author }"
-msgstr "팬메이드 캠페인 (제작자: ${ author })"
+msgstr "팬 제작 캠페인 (제작자: ${ author })"
 
 msgid "Sort ignores punctuation"
 msgstr "정렬하기 (구두점 무시)"
+
+msgid ""
+"Sorry, you don't seem to be a Mythos Buster patron.\n"
+"It can take up to 24hrs before Patreon updates your membership status. If "
+"you are still experiencing problems after 24hrs, please contact Mythos "
+"Busters via Patreon or on the Discord channel for help with this issue."
+msgstr ""
+"죄송합니다, Mythos Buster 후원자가 아닌 것 같습니다.\n"
+"Patreon에서 멤버십 상태를 업데이트하는데 최대 24시간이 걸릴 수 있습니다. 24시간 이후에도 여전히 문제가 발생하면 "
+"Patreon 또는 디스코드 채널을 통해 Mythos Busters에 이 문제에 대한 도움을 요청하세요."
+
+msgid "Skull"
+msgstr "해골"
+
+msgid "Cultist"
+msgstr "추종자"
+
+msgid "Tablet"
+msgstr "석판"
+
+msgid "Elder Thing"
+msgstr "옛것"
+
+msgid "Auto-Fail"
+msgstr "자동 실패"
+
+msgid "Elder Sign"
+msgstr "고대 표식"
+
+msgid "Number of [[Item]] assets you control"
+msgstr "당신이 조종 중인 [[물품]]의 개수"
+
+msgid "Your investigator's modifier"
+msgstr "조사자의 보정된 능력값"
+
+#, javascript-format
+msgid ""
+"0: (original effect below)\n"
+"${ originalTokenText }"
+msgstr ""
+"0: (아래에 대한 원래의 효과)\n"
+"${ originalTokenText }"
+
+#, javascript-format
+msgid "${ modifier }, draws another"
+msgstr "${ modifier } 및 다른 것 뽑기"
+
+msgid "Easy difficulty"
+msgstr "쉬움 난이도"
+
+msgid "Standard difficulty"
+msgstr "보통 난이도"
+
+msgid "Hard difficulty"
+msgstr "어려움 난이도"
+
+msgid "Expert difficulty"
+msgstr "전문가 난이도"
+
+msgid "— Difficulty —"
+msgstr "— 난이도 —"
+
+msgid "— Available Scenarios —"
+msgstr "— 사용가능한 시나리오 —"
+
+msgid "Scenario settings"
+msgstr "시나리오 설정"
+
+msgid "Your investigator modfifier"
+msgstr "조사자의 보정된 능력값"
+
+msgid "Test difficulty"
+msgstr "테스트 난이도"
+
+msgid "Modified skill"
+msgstr "보정된 능력값"
+
+msgid "${ tokens }/${ total } token"
+msgid_plural "${ tokens }/${ total } tokens"
+msgstr[0] "${ tokens }/${ total } 확률"
+msgstr[1] "${ tokens }/${ total } 확률"
+
+msgid "Disable to choose individual packs to show"
+msgstr "개별 신화팩 보기를 비활성화하기"
+
+msgid ""
+"Use these controls to limit which cards are visible while searching, "
+"building decks, or upgrading cards to those in your own collection."
+msgstr "보유 게임에서 덱을 생성 및 검색하거나 카드를 향상하는 동안, 이를 조정하여 표시되는 카드를 제한할 수 있습니다."
+
+msgid "All Cycles and Packs"
+msgstr "모든 사이클 및 신화팩"
+
+msgid "Record that..."
+msgstr "기록 중..."
+
+msgid "Player card entries only"
+msgstr "플레이어 카드 항목만"
+
+msgid "Accept friend request"
+msgstr "친구 요청 수락"
+
+msgid "Send friend request"
+msgstr "친구 요청 보내기"
+
+msgid "Reject friend request"
+msgstr "친구 요청 거절"
+
+msgid "Revoke friend request"
+msgstr "친구 요청 취소"
+
+msgid "Show upgrades"
+msgstr "향상 보기"
+
+msgid "Hide Bless/Curse Odds"
+msgstr "축복/저주 확률 숨기기"
+
+msgid "Show Bless/Curse Odds"
+msgstr "축복/저주 확률 보이기"
+
+msgid "Faction, Level, Type, Cost"
+msgstr ""
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -5755,3 +5839,7 @@ msgstr "모두"
 msgctxt "trauma"
 msgid "None"
 msgstr "없음"
+
+msgctxt "versus abbreviation"
+msgid "VS"
+msgstr ""

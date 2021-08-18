@@ -10,7 +10,7 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"x-generator: Poedit 2.4.3\n"
+"x-generator: Poedit 3.0\n"
 
 msgid "Guardian / Rogue"
 msgstr "Guardián / Rebelde"
@@ -574,7 +574,7 @@ msgid "Night of the Zealot"
 msgstr "La Noche de la Fanática"
 
 msgid "Return to the Night of the Zealot"
-msgstr "Regreso a La Noche de la Fanática"
+msgstr "Regreso a La noche de la fanática"
 
 msgid "The Dunwich Legacy"
 msgstr "El legado de Dunwich"
@@ -589,7 +589,7 @@ msgid "The Forgotten Age"
 msgstr "La era olvidada"
 
 msgid "The Circle Undone"
-msgstr "El Círculo Roto"
+msgstr "El círculo roto"
 
 msgid "The Gathering"
 msgstr "El encuentro"
@@ -598,7 +598,7 @@ msgid "The Midnight Masks"
 msgstr "Las máscaras de medianoche"
 
 msgid "The Devourer Below"
-msgstr "El Devorador de las Profundidades"
+msgstr "El devorador de las profundidades"
 
 msgid "Extracurricular Activity"
 msgstr "Actividad extracurricular"
@@ -634,10 +634,10 @@ msgid "Epilogue"
 msgstr "Epílogo"
 
 msgid "Return to Extracurricular Activity"
-msgstr "Regreso a la actividad extracurricular"
+msgstr "Regreso a Actividad extracurricular"
 
 msgid "Return to The House Always Wins"
-msgstr "Regreso a la casa siempre gana"
+msgstr "Regreso a La casa siempre gana"
 
 msgid "Return to The Miskatonic Museum"
 msgstr "Regreso al museo Miskatonic"
@@ -646,7 +646,7 @@ msgid "Return to Essex County Express"
 msgstr "Regrese al Essex County Express"
 
 msgid "Return to Blood on the Altar"
-msgstr "Regreso a sangre en el altar"
+msgstr "Regreso a Sangre en el altar"
 
 msgid "Return to Undimensioned and Unseen"
 msgstr "Regreso a Invisibles y sin dimensión"
@@ -655,79 +655,79 @@ msgid "Return to Where Doom Awaits"
 msgstr "Regreso a Donde aguarda la perdición"
 
 msgid "Return to Lost in Time and Space"
-msgstr "Regreso a perdidos en el tiempo y el espacio"
+msgstr "Regreso a Perdidos en el tiempo y el espacio"
 
 msgid "Prologue"
 msgstr "Prólogo"
 
 msgid "Curtain Call"
-msgstr "Se Cierra el Telón"
+msgstr "Se cierra el telón"
 
 msgid "The Last King"
-msgstr "El Último Rey"
+msgstr "El último rey"
 
 msgid "Lunacy’s Reward"
-msgstr "Recompensa de la Demencia"
+msgstr "Recompensa de la demencia"
 
 msgid "Echoes of the Past"
-msgstr "Ecos del Pasado"
+msgstr "Ecos del pasado"
 
 msgid "The Unspeakable Oath"
-msgstr "El Juramento Inconfesable"
+msgstr "El juramento inconfesable"
 
 msgid "Lost Soul"
-msgstr "Alma Perdida"
+msgstr "Alma perdida"
 
 msgid "A Phantom of Truth"
-msgstr "El Fantasma de la Verdad"
+msgstr "El fantasma de la verdad"
 
 msgid "The Pallid Mask"
-msgstr "La Máscara Pálida"
+msgstr "La máscara pálida"
 
 msgid "Black Stars Rise"
-msgstr "Surgen Estrellas Negras"
+msgstr "Surgen estrellas negras"
 
 msgid "Dim Carcosa"
 msgstr "Penumbrosa Carcosa"
 
 msgid "The Untamed Wilds"
-msgstr "Naturaleza Salvaje"
+msgstr "Naturaleza salvaje"
 
 msgid "Restless Nights"
 msgstr "Noches inquietas"
 
 msgid "The Doom of Eztli"
-msgstr "La Perdición de Eztli"
+msgstr "La perdición de Eztli"
 
 msgid "Expedition’s End"
 msgstr "Fin de la Expedición"
 
 msgid "Threads of Fate"
-msgstr "Los Hilos del Destino"
+msgstr "Los hilos del destino"
 
 msgid "The Boundary Beyond"
-msgstr "El Límite del Otro Lado"
+msgstr "El límite del otro Lado"
 
 msgid "The Jungle Beckons"
-msgstr "La Atracción de la Jungla"
+msgstr "La atracción de la jungla"
 
 msgid "Heart of the Elders"
-msgstr "El Corazón de los Ancianos"
+msgstr "El corazón de los antiguos"
 
 msgid "The City of Archives"
 msgstr "La Ciudad de los Archivos"
 
 msgid "Those Held Captive"
-msgstr "Los que son Prisioneros"
+msgstr "Los que son prisioneros"
 
 msgid "The Depths of Yoth"
-msgstr "Las Profundidades de Yoth"
+msgstr "Las profundidades de Yoth"
 
 msgid "The Darkness"
-msgstr "La Oscuridad"
+msgstr "La oscuridad"
 
 msgid "Shattered Aeons"
-msgstr "Eones Destrozados"
+msgstr "Eones destrozados"
 
 msgid "Prologue: Disappearance at the Twilight Estate"
 msgstr "Prólogo: Desaparición en Twilight Estate"
@@ -884,13 +884,13 @@ msgstr "(requerido)"
 
 #, javascript-format
 msgid "My ${ campaign } Campaign"
-msgstr "Mi Campaña de ${campaign}"
+msgstr "Mi campaña de ${campaign}"
 
 msgid "Include all basic weaknesses from these expansions"
 msgstr "Incluir todas las debilidades básicas de estas expansiones"
 
 msgid "Add Log Section"
-msgstr "Agregar Sección de Registro"
+msgstr "Agregar sección de registro"
 
 msgid "Difficulty"
 msgstr "Dificultad"
@@ -915,10 +915,10 @@ msgid "Looks like you have made some changes that have not been saved."
 msgstr "Parece que realizaste algunos cambios que no se han guardado."
 
 msgid "Save Changes"
-msgstr "Guardar Cambios"
+msgstr "Guardar cambios"
 
 msgid "Discard Changes"
-msgstr "Descartar Cambios"
+msgstr "Descartar cambios"
 
 msgid "Add note"
 msgstr "Agregar nota"
@@ -944,13 +944,13 @@ msgid "Scenarios"
 msgstr "Escenarios"
 
 msgid "Scenario Result"
-msgstr "Resultado del Escenario"
+msgstr "Resultado del escenario"
 
 msgid "Record Scenario Results"
-msgstr "Guardar Resultados del Escenario"
+msgstr "Guardar resultados del escenario"
 
 msgid "Basic Weakness Set"
-msgstr "Set de Debilidades Básicas"
+msgstr "Set de deblidades básicas"
 
 #, javascript-format
 msgid "${ counts.assigned } / ${ counts.total } have been drawn."
@@ -960,7 +960,7 @@ msgid "Delete"
 msgstr "Eliminar"
 
 msgid "Show Interludes"
-msgstr "Mostrar Interludios"
+msgstr "Mostrar interludios"
 
 msgid "Interlude"
 msgstr "Interludio"
@@ -1096,7 +1096,7 @@ msgid "Edit Deck"
 msgstr "Editar Mazo"
 
 msgid "Deck has been deleted"
-msgstr "El Mazo ha sido eliminado"
+msgstr "El mazo ha sido eliminado"
 
 msgid "Error"
 msgstr "Error"
@@ -1108,7 +1108,7 @@ msgid "Required"
 msgstr "Requerido"
 
 msgid "Copy Deck"
-msgstr "Copiar Mazo"
+msgstr "Copiar mazo"
 
 msgid ""
 "Make a copy of a deck so that you can use it in a different campaign or "
@@ -1732,24 +1732,6 @@ msgstr "XP disponible"
 msgid "Odds Calculator"
 msgstr "Calculadora de probabilidades"
 
-msgid "Fail By 2 or Less"
-msgstr "Fallar por 2 o menos"
-
-msgid "Fail By 1 or Less"
-msgstr "Fallar por 1 o menos"
-
-msgid "Succeed By 1 or More"
-msgstr "Tener éxito por 1 o más"
-
-msgid "Succeed By 2 or More"
-msgstr "Tener éxito por 2 o más"
-
-msgid "Succeed By 3 or More"
-msgstr "Tener éxito por 3 o más"
-
-msgid "Change Scenario"
-msgstr "Cambiar escenario"
-
 msgid "Weakness Set"
 msgstr "Conjunto de debilidades"
 
@@ -1785,15 +1767,6 @@ msgstr "Gastar dos recursos para tener éxito automáticamente"
 
 msgid "Resource cost of the top card on your deck"
 msgstr "Coste de recursos de la carta superior de tu mazo"
-
-msgid ""
-"Note: chaos tokens that cause additional tokens to be revealed does not "
-"show correct odds for the \"Draw Two Pick One\" and similar multi-draw "
-"situations."
-msgstr ""
-"Nota: Las probabilidades mostradas por \"Roba dos y selecciona una\" o "
-"situaciones similares de robos múltiples no son correctas para las fichas "
-"de caos que hacen revelar fichas adicionales."
 
 msgid "Deleting"
 msgstr "Eliminando"
@@ -1876,18 +1849,6 @@ msgstr "Arcano x2"
 
 msgid "Ally. Arcane"
 msgstr "Aliado. Arcano"
-
-msgid "Success"
-msgstr "Éxito"
-
-msgid "Draw Two, Pick One"
-msgstr "Roba dos, elige una"
-
-msgid "Re-Draw After Fail"
-msgstr "Volver a robar después de fallar"
-
-msgid "Succeed Twice In A Row"
-msgstr "Tener éxito dos veces seguidas"
 
 #, javascript-format
 msgid "${ things[0] } and ${ things[1] }"
@@ -2201,7 +2162,7 @@ msgid "Edit name"
 msgstr "Editar nombre"
 
 msgid "Guided Campaign"
-msgstr "Campaña Guiada"
+msgstr "Campaña guiada"
 
 #. This is a deck upgrade action.
 msgid ""
@@ -2243,10 +2204,10 @@ msgid "Upload"
 msgstr "Subir"
 
 msgid "The Dream-Eaters"
-msgstr "Los Devoradores de Sueños"
+msgstr "Los devoradores de sueños"
 
 msgid "The Innsmouth Conspiracy"
-msgstr "La Conspiración de Innsmouth"
+msgstr "La conspiración de Innsmouth"
 
 msgid "Return to..."
 msgstr "Regreso a..."
@@ -2615,7 +2576,7 @@ msgid "Return to Threads of Fate"
 msgstr "Regreso a Los hilos del destino"
 
 msgid "Return to Heart of the Elders"
-msgstr "Regreso a El corazón de los ancianos"
+msgstr "Regreso a El corazón de los antiguos"
 
 msgid "Return to Shattered Aeons"
 msgstr "Regreso a Eones destrozados"
@@ -3896,9 +3857,6 @@ msgstr "Bolsa de caos (${ tokenCount })"
 msgid "Save upgrade"
 msgstr "Guardar mejora"
 
-msgid "Sorry, you don't seem to be a Mythos Buster patron."
-msgstr "Disculpa, no eres mecenas de Mythos Busters."
-
 msgid "Earned experience:"
 msgstr "Experiencia ganada:"
 
@@ -3995,9 +3953,6 @@ msgstr "Las campañas pueden subirse a tu cuenta de Arkham Cards."
 
 msgid "Uploaded campaigns will be synced between devices."
 msgstr "Las campañas que hayas subido estarán sincronizadas entre dispositivos."
-
-msgid "Review records"
-msgstr "Revisa tu registro de campaña"
 
 msgid "Note campaign achievements"
 msgstr "Anota los logros de campaña"
@@ -4574,62 +4529,189 @@ msgid "Show archived campaigns"
 msgstr "Mostrar campañas archivadas"
 
 msgid "Return to The Circle Undone"
-msgstr ""
+msgstr "Regreso a El círculo roto"
 
 msgid "Prologue: Return to Disappearance at the Twilight Estate"
-msgstr ""
+msgstr "Prólogo: Regreso a Desaparición en Twilight Estate"
 
 msgid "Return to The Witching Hour"
-msgstr ""
+msgstr "Regreso a La hora bruja"
 
 msgid "Return to At Death's Doorstep"
-msgstr ""
+msgstr "Regreso a "
 
 msgid "Return to The Secret Name"
-msgstr ""
+msgstr "Regreso a El nombre secreto"
 
 msgid "Return to The Wages of Sin"
-msgstr ""
+msgstr "Regreso a La paga del pecado"
 
 msgid "Return to For the Greater Good"
-msgstr ""
+msgstr "Regreso a Por el bien común"
 
 msgid "Return to Union and Disillusion"
-msgstr ""
+msgstr "Regreso a Unión y desilusión"
 
 msgid "Return to In the Clutches of Chaos"
-msgstr ""
+msgstr "Regreso a En las garras del caos"
 
 msgid "Return to Before the Black Throne"
-msgstr ""
+msgstr "Regreso a Ante el trono negro"
 
 msgid "Loading account"
-msgstr ""
+msgstr "Cargando cuenta"
 
 #, javascript-format
 msgid "Choose an investigator to add ${ card.name } to their deck:"
-msgstr ""
+msgstr "Elige a un investigador para añadir ${ card.name } a su mazo:"
 
 msgid "Show card"
-msgstr ""
+msgstr "Mostrar carta"
 
 msgid "Edit my spoiler settings"
-msgstr ""
+msgstr "Editar opciones de spoilers"
 
 msgid "Crown of Egil"
-msgstr ""
+msgstr "Corona de Egil"
 
 msgid "The Crown of Egil"
-msgstr ""
+msgstr "La corona de Egil"
 
 msgid "Traces of Egil"
-msgstr ""
+msgstr "Huellas de Egil"
 
 #, javascript-format
 msgid "Fan-made campaign by ${ author }"
-msgstr ""
+msgstr "Campaña fan-made de ${ author }"
 
 msgid "Sort ignores punctuation"
+msgstr "Ignorar puntuación al ordenar"
+
+msgid ""
+"Sorry, you don't seem to be a Mythos Buster patron.\n"
+"It can take up to 24hrs before Patreon updates your membership status. If "
+"you are still experiencing problems after 24hrs, please contact Mythos "
+"Busters via Patreon or on the Discord channel for help with this issue."
+msgstr ""
+"Disculpa, no pareces ser mecenas de Mythos Busters.\n"
+"Pueden pasar hasta 24h para que Patreon actualice tu estado como miembro. "
+"Si todavía tienes problemas transcurridas 24h, por favor contacta con "
+"Mythos Busters a través de Patreon o Discord."
+
+msgid "Skull"
+msgstr ""
+
+msgid "Cultist"
+msgstr ""
+
+msgid "Tablet"
+msgstr ""
+
+msgid "Elder Thing"
+msgstr ""
+
+msgid "Auto-Fail"
+msgstr ""
+
+msgid "Elder Sign"
+msgstr ""
+
+msgid "Number of [[Item]] assets you control"
+msgstr ""
+
+msgid "Your investigator's modifier"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"0: (original effect below)\n"
+"${ originalTokenText }"
+msgstr ""
+
+#, javascript-format
+msgid "${ modifier }, draws another"
+msgstr ""
+
+msgid "Easy difficulty"
+msgstr ""
+
+msgid "Standard difficulty"
+msgstr ""
+
+msgid "Hard difficulty"
+msgstr ""
+
+msgid "Expert difficulty"
+msgstr ""
+
+msgid "— Difficulty —"
+msgstr ""
+
+msgid "— Available Scenarios —"
+msgstr ""
+
+msgid "Scenario settings"
+msgstr ""
+
+msgid "Your investigator modfifier"
+msgstr ""
+
+msgid "Test difficulty"
+msgstr ""
+
+msgid "Modified skill"
+msgstr ""
+
+msgid "${ tokens }/${ total } token"
+msgid_plural "${ tokens }/${ total } tokens"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Show all cards"
+msgstr ""
+
+msgid "Disable to choose individual packs to show"
+msgstr ""
+
+msgid "All cards are shown throughout the app"
+msgstr ""
+
+msgid ""
+"Use these controls to limit which cards are visible while searching, "
+"building decks, or upgrading cards to those in your own collection."
+msgstr ""
+
+msgid "All Cycles and Packs"
+msgstr ""
+
+msgid "Record that..."
+msgstr ""
+
+msgid "Player card entries only"
+msgstr ""
+
+msgid "Accept friend request"
+msgstr ""
+
+msgid "Send friend request"
+msgstr ""
+
+msgid "Reject friend request"
+msgstr ""
+
+msgid "Revoke friend request"
+msgstr ""
+
+msgid "Show upgrades"
+msgstr ""
+
+msgid "Hide Bless/Curse Odds"
+msgstr ""
+
+msgid "Show Bless/Curse Odds"
+msgstr ""
+
+msgid "Faction, Level, Type, Cost"
 msgstr ""
 
 msgctxt "masculine"
@@ -4799,7 +4881,7 @@ msgstr "Viva"
 
 msgctxt "feminine"
 msgid "Resigned"
-msgstr "Desistida"
+msgstr "Desistido"
 
 msgctxt "feminine"
 msgid "Defeated: physical trauma"
@@ -5977,3 +6059,7 @@ msgstr "Todos"
 msgctxt "trauma"
 msgid "None"
 msgstr "Ninguno"
+
+msgctxt "versus abbreviation"
+msgid "VS"
+msgstr ""

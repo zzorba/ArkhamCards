@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import PackListComponent from '@components/core/PackListComponent';
 import { BASIC_WEAKNESS_QUERY } from '@data/sqlite/query';
-import { AppState } from '@reducers';
+import { getPacksInCollection, AppState } from '@reducers';
 import { useToggles, useWeaknessCards } from '@components/core/hooks';
 
 interface OwnProps {
@@ -13,8 +13,6 @@ interface OwnProps {
   compact?: boolean;
 }
 
-const EMPTY_IN_COLLECTION = {};
-
 export default function WeaknessSetPackChooserComponent({
   componentId,
   onSelectedPacksChanged,
@@ -22,7 +20,15 @@ export default function WeaknessSetPackChooserComponent({
 }: OwnProps) {
   const [override, , onPackCheck] = useToggles({ core: true });
   const packs = useSelector((state: AppState) => state.packs.all);
-  const in_collection = useSelector((state: AppState) => state.packs.in_collection || EMPTY_IN_COLLECTION);
+  const all_packs = useMemo(() => {
+    const result: { [key: string]: boolean } = {};
+    forEach(packs, p => {
+      result[p.code] = true;
+    });
+    return result;
+  }, [packs]);
+  const in_collection = useSelector(getPacksInCollection);
+  const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
   const weaknessCards = useWeaknessCards();
   const weaknessPacks = useMemo(() => {
     const weaknessPackSet = new Set(
@@ -34,7 +40,7 @@ export default function WeaknessSetPackChooserComponent({
   }, [packs, weaknessCards]);
 
   useEffect(() => {
-    const includePack = { ...in_collection, ...override };
+    const includePack = { ...(ignore_collection ? all_packs : in_collection), ...override };
     const packs: string[] = [];
     forEach(weaknessPacks, pack => {
       if (includePack[pack.code]) {
@@ -42,17 +48,17 @@ export default function WeaknessSetPackChooserComponent({
       }
     });
     onSelectedPacksChanged(packs);
-  }, [override, in_collection, onSelectedPacksChanged, weaknessPacks]);
+  }, [override, all_packs, in_collection, ignore_collection, onSelectedPacksChanged, weaknessPacks]);
 
   const checkState = useMemo(() => {
     const checks: { [key: string]: boolean } = {
-      ...in_collection,
+      ...(ignore_collection ? all_packs : in_collection),
     };
     forEach(override, (value, key) => {
       checks[key] = !!value;
     });
     return checks;
-  }, [in_collection, override]);
+  }, [in_collection, ignore_collection, all_packs, override]);
 
   return (
     <PackListComponent

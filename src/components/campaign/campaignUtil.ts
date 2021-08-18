@@ -36,7 +36,7 @@ export function campaignToText(
     token => CHAOS_TOKEN_ORDER[token]);
   const tokenParts = flatMap(tokens,
     token => map(range(0, campaign.chaosBag?.[token] || 0), () => token));
-  lines.push(tokenParts.join(', '));
+  lines.push(tokenParts.join(listSeperator));
 
   lines.push('');
 

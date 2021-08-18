@@ -70,9 +70,13 @@ interface CampaignLogBasicEntry extends BasicEntry {
   type: 'basic';
 }
 
-interface CampaignLogFreeformEntry extends BasicEntry {
+export interface CampaignLogFreeformEntry extends BasicEntry {
   type: 'freeform';
   text: string;
+  interScenario?: {
+    scenarioId: string;
+    index: number;
+  }
 }
 
 export type CampaignLogEntry = CampaignLogCountEntry |
@@ -1145,8 +1149,12 @@ export default class GuidedCampaignLog {
     }
     section.entries.push({
       type: 'freeform',
-      id: input[0],
+      id: (effect.scenario_id && effect.index !== undefined) ? `${effect.scenario_id}$${effect.index}` : input[0],
       text: input[0],
+      interScenario: effect.scenario_id && effect.index !== undefined ? {
+        scenarioId: effect.scenario_id,
+        index: effect.index,
+      } : undefined,
     });
   }
 

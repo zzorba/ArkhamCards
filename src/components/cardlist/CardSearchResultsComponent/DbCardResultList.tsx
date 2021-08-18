@@ -267,6 +267,7 @@ function useSectionFeed({
   const packSpoiler = useSelector(getPackSpoilers);
   const [expandButtonPressed, setExpandButtonPressed] = useState(false);
   const packInCollection = useSelector(getPacksInCollection);
+  const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
   const [showNonCollection, , setShowNonCollection, clearShowNonCollection] = useToggles({});
   const storyQuery = storyOnly ? query : undefined;
   const [{ cards: deckCards, textQuery: deckCardsTextQuery }, setDeckCards] = useState<LoadedState>({
@@ -418,7 +419,7 @@ function useSectionFeed({
           });
           currentSectionId = card.headerId;
         }
-        if (!showAllNonCollection && card.pack_code !== 'core' && !cardInCollection(card, packInCollection)) {
+        if (!showAllNonCollection && !ignore_collection && card.pack_code !== 'core' && !cardInCollection(card, packInCollection)) {
           currentNonCollection.push(card);
         } else {
           result.push(card);
@@ -430,7 +431,7 @@ function useSectionFeed({
       appendFooterButtons(currentSectionId, showSpoilers ? 1 : 0);
     }
     return [result, items, spoilerCards.length];
-  }, [partialCards, deckCards, showNonCollection, packInCollection, packSpoiler, showSpoilers, editCollectionSettings, setShowNonCollection, showAllNonCollection, hasDeckChanges, refreshDeck]);
+  }, [partialCards, deckCards, showNonCollection, ignore_collection, packInCollection, packSpoiler, showSpoilers, editCollectionSettings, setShowNonCollection, showAllNonCollection, hasDeckChanges, refreshDeck]);
 
   const { cards, fetchMore } = useCardFetcher(visibleCards);
   const [refreshing, setRefreshing] = useState(true);
@@ -637,6 +638,7 @@ export default function({
   const tabooSetId = useSelector((state: AppState) => tabooSetSelctor(state, tabooSetOverride));
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const packInCollection = useSelector(getPacksInCollection);
+  const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
   const {
     feed,
     fullFeed,
@@ -784,7 +786,7 @@ export default function({
         if (renderCard) {
           return renderCard(card);
         }
-        const deck_limit: number = card.collectionDeckLimit(packInCollection);
+        const deck_limit: number = card.collectionDeckLimit(packInCollection, ignore_collection);
         const control = deck_limit < deckLimits.length ? deckLimits[deck_limit] : undefined;
         return (
           <CardSearchResult
@@ -813,7 +815,7 @@ export default function({
       default:
         return null;
     }
-  }, [cardOnPressId, deckId, packInCollection, investigator, renderCard, deckLimits]);
+  }, [cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, deckLimits]);
   const listHeader = useMemo(() => {
     const searchBarPadding = !noSearch && Platform.OS === 'android';
     if (!searchBarPadding && !header) {

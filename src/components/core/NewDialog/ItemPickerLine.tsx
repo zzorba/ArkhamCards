@@ -38,7 +38,7 @@ export default function ItemPickerLine<T>({ iconName, iconNode, text, selected, 
                 { icon }
               </View>
             ) }
-            <Text style={[typography.menuText, { textAlignVertical: 'center' }]}>
+            <Text style={[typography.menuText, { textAlignVertical: 'center', flex: 1 }]}>
               { text }
             </Text>
           </View>

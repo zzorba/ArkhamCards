@@ -113,6 +113,7 @@ export default function DeckNavFooter({
                 onPress={onPress}
                 size={FOOTER_HEIGHT - 16}
                 margin={8}
+                accessibilityLabel={t`Done`}
               >
                 <AppIcon
                   size={24}

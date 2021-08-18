@@ -2,7 +2,7 @@ import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'type
 import { forEach, filter, keys, map, min, omit, find } from 'lodash';
 import { t } from 'ttag';
 
-import { SortType, SORT_BY_COST, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData } from '@actions/types';
+import { SortType, SORT_BY_COST, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_FACTION_XP_TYPE_COST, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData } from '@actions/types';
 import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, FactionCodeType, TypeCodeType, SkillCodeType, BODY_OF_A_YITHIAN } from '@app_constants';
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
@@ -88,6 +88,7 @@ const HEADER_SELECT = {
   [SORT_BY_FACTION]: 'c.sort_by_faction as headerId, c.sort_by_faction_header as headerTitle',
   [SORT_BY_FACTION_PACK]: 'c.sort_by_faction_pack as headerId, c.sort_by_faction_pack_header as headerTitle',
   [SORT_BY_FACTION_XP]: 'c.sort_by_faction_xp as headerId, c.sort_by_faction_xp_header as headerTitle',
+  [SORT_BY_FACTION_XP_TYPE_COST]: 'c.sort_by_faction_xp as headerId, c.sort_by_faction_xp_header as headerTitle',
   [SORT_BY_COST]: 'c.cost as headerId, c.sort_by_cost_header as headerTitle',
   [SORT_BY_PACK]: 'c.sort_by_pack as headerId, c.pack_name as headerTitle',
   [SORT_BY_ENCOUNTER_SET]: 'c.encounter_code as headerId, c.sort_by_encounter_set_header as headerTitle',
@@ -356,6 +357,13 @@ export default class Card {
   @Column('text', { select: false })
   public s_search_flavor_back?: string;
 
+  @Column('text', { select: false })
+  public s_search_real_name!: string;
+  @Column('text', { select: false })
+  public s_search_real_name_back!: string;
+  @Column('text', { select: false })
+  public s_search_real_game?: string;
+
   @Index('deck_limit')
   @Column('integer', { nullable: true })
   public deck_limit?: number;
@@ -512,6 +520,9 @@ export default class Card {
     'c.s_search_game_back',
     'c.s_search_flavor',
     'c.s_search_flavor_back',
+    'c.s_search_real_name',
+    'c.s_search_real_name_back',
+    'c.s_search_real_game',
   ];
 
   public cardName(): string {
@@ -674,7 +685,10 @@ export default class Card {
     return [];
   }
 
-  collectionDeckLimit(packInCollection: { [pack_code: string]: boolean | undefined }): number {
+  collectionDeckLimit(packInCollection: { [pack_code: string]: boolean | undefined }, ignore_collection: boolean): number {
+    if (ignore_collection) {
+      return this.deck_limit || 0;
+    }
     if (this.pack_code !== 'core' || packInCollection.core) {
       return this.deck_limit || 0;
     }
@@ -1112,6 +1126,19 @@ export default class Card {
     const s_search_game_back = ((json.back_text && json.back_text.toLocaleLowerCase(lang)) || '').replace(SEARCH_REGEX, '');
     const s_search_flavor = ((json.flavor && json.flavor.toLocaleLowerCase(lang)) || '').replace(SEARCH_REGEX, '');
     const s_search_flavor_back = ((json.back_flavor && json.back_flavor.toLocaleLowerCase(lang)) || '').replace(SEARCH_REGEX, '');
+
+    const s_search_real_name = filter([
+      json.real_name.toLocaleLowerCase('en'),
+      json.real_subname && json.real_subname.toLocaleLowerCase('en'),
+    ], x => !!x).join(' ').replace(SEARCH_REGEX, '');
+    const s_search_real_name_back = filter([
+      json.real_name.toLocaleLowerCase('en'),
+      json.real_subname && json.real_subname.toLocaleLowerCase('en'),
+    ], x => !!x).join(' ').replace(SEARCH_REGEX, '');
+    const s_search_real_game = filter([
+      json.real_text && json.real_text.toLocaleLowerCase('en'),
+      json.real_traits && json.real_traits.toLocaleLowerCase('en'),
+    ]).join(' ').replace(SEARCH_REGEX, '');
     let result = {
       ...json,
       ...eskills,
@@ -1123,6 +1150,9 @@ export default class Card {
       s_search_game_back,
       s_search_flavor,
       s_search_flavor_back,
+      s_search_real_name,
+      s_search_real_name_back,
+      s_search_real_game,
       name,
       firstName,
       renderName,
@@ -1264,6 +1294,12 @@ export default class Card {
           { s: 'c.sort_by_faction_xp', direction: 'ASC' },
           { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
           { s: 'c.code', direction: 'ASC' },
+        ];
+      case SORT_BY_FACTION_XP_TYPE_COST:
+        return [
+          { s: 'c.sort_by_faction_xp', direction: 'ASC' },
+          { s: 'c.cost', direction: 'ASC' },
+          { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
         ];
       case SORT_BY_COST:
         return [

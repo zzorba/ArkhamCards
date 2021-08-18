@@ -229,9 +229,9 @@ function CardSearchResult(props: Props) {
         <View style={[styles.row, space.paddingTopXs, { backgroundColor: 'transparent' }]}>
           <Text style={[
             typography.cardName,
-            { color },
+            { color, flex: 1 },
             invalid ? { textDecorationLine: 'line-through' } : {},
-          ]} numberOfLines={1} ellipsizeMode="clip">
+          ]} numberOfLines={1} ellipsizeMode="tail">
             { card.renderName }
           </Text>
           { tabooBlock }
@@ -247,7 +247,7 @@ function CardSearchResult(props: Props) {
             { skillIcons }
             { !!card.renderSubname && (
               <View style={[styles.row, styles.subname, space.marginRightS, space.paddingTopXs]}>
-                <Text style={typography.cardTraits} numberOfLines={1} ellipsizeMode="clip">
+                <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={1} ellipsizeMode="clip">
                   { card.renderSubname }
                 </Text>
               </View>

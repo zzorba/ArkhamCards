@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { find, map } from 'lodash';
 import { msgid, ngettext } from 'ttag';
 
@@ -15,6 +15,7 @@ import {
 } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import { checkSuppliesAnyConditionResult, checkSuppliesAllConditionResult } from '@data/scenario/conditionHelper';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   step: BranchStep;
@@ -23,6 +24,7 @@ interface Props {
 }
 
 export default function CheckSuppliesConditionComponent({ step, condition, campaignLog }: Props) {
+  const { listSeperator } = useContext(LanguageContext);
   const renderCondition = useCallback((cards: Card[], positive: boolean) => {
     const option = find(condition.options, option => option.boolCondition === positive);
     if (!option) {
@@ -30,7 +32,7 @@ export default function CheckSuppliesConditionComponent({ step, condition, campa
     }
     const sectionName = option.prompt || 'Missing';
     const supplyName = condition.name;
-    const list = stringList(map(cards, card => card.name));
+    const list = stringList(map(cards, card => card.name), listSeperator);
     return (
       <SetupStepWrapper bulletType="small">
         <CampaignGuideTextComponent
@@ -47,7 +49,7 @@ export default function CheckSuppliesConditionComponent({ step, condition, campa
         />
       </SetupStepWrapper>
     );
-  }, [condition]);
+  }, [condition, listSeperator]);
 
   const renderAllOption = useCallback((cards: Card[], option: Option): Element | null => {
     return renderCondition(

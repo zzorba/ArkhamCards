@@ -1,5 +1,5 @@
-import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { filter, forEach, keys, map } from 'lodash';
+import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { filter, flatMap, forEach, keys, map } from 'lodash';
 import {
   ActivityIndicator,
   LayoutChangeEvent,
@@ -23,7 +23,7 @@ import CardDetailComponent from '@components/card/CardDetailView/CardDetailCompo
 import { CARD_RATIO, HEADER_HEIGHT, TABBAR_HEIGHT } from '@styles/sizes';
 import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useCounter, useEffectUpdate, useWeaknessCards } from '@components/core/hooks';
+import { useWeaknessCards } from '@components/core/hooks';
 
 const PLAYER_BACK = require('../../../assets/player-back.png');
 
@@ -71,41 +71,24 @@ export default function WeaknessDrawComponent({ componentId, weaknessSet, update
   const [standalone, setStandalone] = useState(false);
   const [multiplayer, setMultiplayer] = useState(playerCount !== 1);
   const [flipped, setFlipped] = useState(false);
-  const [drawCount, incDrawCount] = useCounter(0, {});
+  const flippedRef = useRef(flipped);
+  flippedRef.current = flipped;
   const [drawNewCard, setDrawNewCard] = useState(false);
   const weaknessCards = useWeaknessCards();
-  const nextCard = useMemo(() => {
-    if (!weaknessCards) {
-      return undefined;
-    }
-    const card = drawWeakness(
-      weaknessSet,
-      weaknessCards,
-      {
-        traits: selectedTraits,
-        multiplayer,
-        standalone,
-      },
-      false
-    );
-    return card;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [weaknessCards, selectedTraits, multiplayer, standalone, drawCount]);
+  const [nextCard, setNextCard] = useState<Card | undefined>();
   useEffect(() => {
-    if (nextCard && nextCard.imagesrc) {
-      FastImage.preload([
-        {
-          uri: `https://arkhamdb.com/${nextCard.imagesrc}`,
-        },
-      ]);
-    }
-  }, [nextCard]);
+    FastImage.preload(
+      flatMap(weaknessCards, c => {
+        if (!c.imagesrc) {
+          return [];
+        }
+        return {
+          uri: `https://arkhamdb.com/${c.imagesrc}`,
+        };
+      })
+    );
+  }, [weaknessCards]);
 
-  useEffectUpdate(() => {
-    if (!flipped) {
-      incDrawCount();
-    }
-  }, [weaknessSet]);
   const [cardWidth, cardHeight] = useMemo(() => {
     const wBasedWidth = width - PADDING * 2;
     const wBasedHeight = Math.round(wBasedWidth * CARD_RATIO);
@@ -130,32 +113,52 @@ export default function WeaknessDrawComponent({ componentId, weaknessSet, update
     setFlipped(false);
   }, [setFlipped]);
 
+  const getNextCard = useCallback(() => {
+    if (!weaknessCards) {
+      return undefined;
+    }
+    const card = drawWeakness(
+      weaknessSet,
+      weaknessCards,
+      {
+        traits: selectedTraits,
+        multiplayer,
+        standalone,
+      },
+      false
+    );
+    return card;
+  }, [weaknessCards, selectedTraits, multiplayer, standalone, weaknessSet]);
+
+  const hasWeakness = useMemo(() => getNextCard() !== undefined, [getNextCard]);
+
   const flipCard = useCallback(() => {
     if (!flipped && !drawNewCard) {
-      if (nextCard) {
+      const theNextCard = getNextCard();
+      if (theNextCard) {
         const newAssignedCards = { ...weaknessSet.assignedCards };
-        if (!newAssignedCards[nextCard.code]) {
-          newAssignedCards[nextCard.code] = 0;
+        if (!newAssignedCards[theNextCard.code]) {
+          newAssignedCards[theNextCard.code] = 0;
         }
-        newAssignedCards[nextCard.code]++;
+        newAssignedCards[theNextCard.code]++;
 
+        setNextCard(theNextCard);
         setFlipped(true);
-        updateDrawnCard(nextCard.code, newAssignedCards);
+        updateDrawnCard(theNextCard.code, newAssignedCards);
       }
     }
-  }, [flipped, drawNewCard, updateDrawnCard, weaknessSet.assignedCards, nextCard, setFlipped]);
+  }, [flipped, drawNewCard, updateDrawnCard, weaknessSet.assignedCards, getNextCard, setFlipped]);
 
 
   const selectNextCard = useCallback(() => {
     setDrawNewCard(false);
-    incDrawCount();
-  }, [setDrawNewCard, incDrawCount]);
+  }, [setDrawNewCard]);
 
   const onFlipEnd = useCallback(() => {
-    if (!flipped) {
-      setTimeout(selectNextCard, 200);
+    if (!flippedRef.current) {
+      setTimeout(selectNextCard, 0);
     }
-  }, [selectNextCard, flipped]);
+  }, [selectNextCard]);
 
   const allTraits = useMemo(() => {
     const traitsMap: { [trait: string]: number } = {};
@@ -256,7 +259,7 @@ export default function WeaknessDrawComponent({ componentId, weaknessSet, update
     selectedTraits, flipped, headerHeight, flippedHeaderHeight, standalone, multiplayer]);
 
   const cardSection = useMemo(() => {
-    if (nextCard) {
+    if (hasWeakness) {
       return (
         <View style={styles.singleCardWrapper}>
           <TouchableWithoutFeedback onPress={flipCard} delayPressIn={0}>
@@ -296,7 +299,7 @@ export default function WeaknessDrawComponent({ componentId, weaknessSet, update
         { t`All weaknesses have been drawn.` }
       </Text>
     );
-  }, [cardWidth, cardHeight, flipped, nextCard, typography, selectedTraits, flipCard, onFlipEnd]);
+  }, [cardWidth, cardHeight, flipped, nextCard, typography, selectedTraits, hasWeakness, flipCard, onFlipEnd]);
 
   return (
     <SafeAreaView style={styles.container}>

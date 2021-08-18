@@ -1,11 +1,11 @@
 import React, { useContext, useMemo } from 'react';
-import { Appearance, Dimensions, Platform, useWindowDimensions } from 'react-native';
+import { Appearance, Dimensions, useWindowDimensions } from 'react-native';
 import { useSelector } from 'react-redux';
 import { ThemeProvider } from 'react-native-elements';
 import { throttle } from 'lodash';
 
 import StyleContext, { DEFAULLT_STYLE_CONTEXT } from './StyleContext';
-import { AppState, getAppFontScale, getThemeOverride } from '@reducers';
+import { getAppFontScale, getThemeOverride } from '@reducers';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 import typography from './typography';
 import LanguageContext from '@lib/i18n/LanguageContext';

@@ -15,6 +15,7 @@ interface BasicProps {
   width: number;
   editable: boolean;
   description?: string;
+  transparent?: boolean;
 }
 interface InvestigatorProps extends BasicProps {
   type: 'investigator';
@@ -28,7 +29,7 @@ interface PlaceholderProps extends BasicProps {
 
 type Props = PlaceholderProps | InvestigatorProps;
 
-export default function InvestigatorRadioChoice({ description, selected, index, onSelect, editable, width, ...props }: Props) {
+export default function InvestigatorRadioChoice({ transparent, description, selected, index, onSelect, editable, width, ...props }: Props) {
   const onPress = useCallback(() => onSelect(index), [onSelect, index]);
   const { colors, typography } = useContext(StyleContext);
 
@@ -39,6 +40,7 @@ export default function InvestigatorRadioChoice({ description, selected, index, 
           investigator={props.investigator}
           description={description}
           width={width}
+          transparent={transparent && !selected}
         >
           <RadioButton color="light" icon="radio" selected={selected} />
         </CompactInvestigatorRow>
@@ -57,7 +59,7 @@ export default function InvestigatorRadioChoice({ description, selected, index, 
         <RadioButton color="dark" icon="radio" selected={selected} />
       </View>
     );
-  }, [selected, props, width, description, colors, typography]);
+  }, [selected, props, width, description, colors, typography, transparent]);
   return (
     <View style={space.paddingBottomXs}>
       { editable ? <TouchableOpacity onPress={onPress}>{content}</TouchableOpacity> : content }

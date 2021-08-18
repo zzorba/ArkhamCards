@@ -30,12 +30,12 @@ import { DeckHistoryProps } from '../DeckHistoryView';
 import { EditSpecialCardsProps } from '../EditSpecialDeckCardsView';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '@components/deck/DeckNavFooter';
-import { getPacksInCollection, AppState } from '@reducers';
+import { AppState } from '@reducers';
 import space, { xs, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
-import { useParsedDeckWithFetch } from '@components/deck/hooks';
+import { useParsedDeckWithFetch, useShowDrawWeakness } from '@components/deck/hooks';
 import { useAdjustXpDialog, AlertButton, useAlertDialog, useBasicDialog, useSaveDialog, useSimpleTextDialog, useUploadLocalDeckDialog } from '@components/deck/dialogs';
 import { useBackButton, useFlag, useInvestigatorCards, useNavigationButtonPressed, useTabooSet } from '@components/core/hooks';
 import { NavigationProps } from '@components/nav/types';
@@ -50,7 +50,6 @@ import DeckProblemBanner from '../DeckProblemBanner';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useCampaign } from '@data/hooks';
 import { useDeckActions } from '@data/remote/decks';
-import TabooSet from '@data/types/TabooSet';
 import { format } from 'date-fns';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
@@ -102,6 +101,7 @@ function DeckDetailView({
   const { showXpAdjustmentDialog, xpAdjustmentDialog } = useAdjustXpDialog(parsedDeckObj);
   const {
     deck,
+    deckT,
     cards,
     deckEdits,
     deckEditsRef,
@@ -154,7 +154,6 @@ function DeckDetailView({
 
   const problem = parsedDeck?.problem;
   const name = deckEdits?.nameChange !== undefined ? deckEdits.nameChange : deck?.name;
-  const inCollection = useSelector(getPacksInCollection);
 
   const [cardsByName, bondedCardsByName] = useMemo(() => {
     const cardsByName: {
@@ -387,6 +386,17 @@ function DeckDetailView({
       },
     });
   }, [componentId, deck, deckId, cards, tabooSetId, deckEditsRef, colors, setFabOpen, setMenuOpen]);
+
+  const showDrawWeakness = useShowDrawWeakness({
+    componentId,
+    deck: deckT,
+    id,
+    campaignId,
+    showAlert,
+    deckEditsRef,
+    assignedWeaknesses: addedBasicWeaknesses,
+    cards,
+  });
 
   const onEditSpecialPressed = useCallback(() => {
     if (!deck || !cards) {
@@ -1027,7 +1037,6 @@ function DeckDetailView({
               visible={visible}
               deckId={id}
               suggestArkhamDbLogin={suggestArkhamDbLogin}
-              inCollection={inCollection}
               investigatorFront={investigatorFront}
               investigatorBack={investigatorBack}
               deck={deck}
@@ -1044,6 +1053,7 @@ function DeckDetailView({
               cardsByName={cardsByName}
               bondedCardsByName={bondedCardsByName}
               buttons={buttons}
+              showDrawWeakness={showDrawWeakness}
               showEditCards={onAddCardsPressed}
               showDeckHistory={showUpgradeHistoryPressed}
               showXpAdjustmentDialog={showXpAdjustmentDialog}

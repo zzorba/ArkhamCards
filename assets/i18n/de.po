@@ -1736,24 +1736,6 @@ msgstr "Verfügbare XP"
 msgid "Odds Calculator"
 msgstr "Wahrscheinlichkeitsrechner"
 
-msgid "Fail By 2 or Less"
-msgstr "Misslingt mit 2 oder weniger"
-
-msgid "Fail By 1 or Less"
-msgstr "Misslingt mit 1 oder weniger"
-
-msgid "Succeed By 1 or More"
-msgstr "Erfolgreich mit 1 oder mehr"
-
-msgid "Succeed By 2 or More"
-msgstr "Erfolgreich mit 2 oder mehr"
-
-msgid "Succeed By 3 or More"
-msgstr "Erfolgreich mit 3 oder mehr"
-
-msgid "Change Scenario"
-msgstr "Szenario wechseln"
-
 msgid "Weakness Set"
 msgstr "Schwächeset"
 
@@ -1789,15 +1771,6 @@ msgstr "Zahle 2 Ressourcen um den Check automatisch zu schaffen"
 
 msgid "Resource cost of the top card on your deck"
 msgstr "Ressourcenkosten von der obersten Karte deines Decks"
-
-msgid ""
-"Note: chaos tokens that cause additional tokens to be revealed does not "
-"show correct odds for the \"Draw Two Pick One\" and similar multi-draw "
-"situations."
-msgstr ""
-"Hinweis: Chaosmarker, die dazu führen, dass zusätzliche Marker gezogen "
-"werden, zeigen nicht die richtigen Wahrscheinlichkeiten für \"Ziehe zwei "
-"nimm eins\" und ähnliche Situationen mit mehreren Ziehungen."
 
 msgid "Deleting"
 msgstr "Lösche"
@@ -1882,18 +1855,6 @@ msgstr "Arkan x2"
 
 msgid "Ally. Arcane"
 msgstr "Verbündeter. Arkan"
-
-msgid "Success"
-msgstr "Erfolgreich"
-
-msgid "Draw Two, Pick One"
-msgstr "Ziehe zwei, wähle einen"
-
-msgid "Re-Draw After Fail"
-msgstr "Nach Misserfolg noch einmal ziehen"
-
-msgid "Succeed Twice In A Row"
-msgstr "Zweimal hintereinander Erfolg haben"
 
 #, javascript-format
 msgid "${ things[0] } and ${ things[1] }"
@@ -3914,9 +3875,6 @@ msgstr "Chaosbeutel (${ tokenCount })"
 msgid "Save upgrade"
 msgstr "Verbesserung speichern"
 
-msgid "Sorry, you don't seem to be a Mythos Buster patron."
-msgstr "Entschulde, aber du scheinst kein Patron der Mythos Busters zu sein."
-
 msgid "Earned experience:"
 msgstr "Verdiente Erfahrung:"
 
@@ -4015,9 +3973,6 @@ msgstr "Kampagnen können zu deinem Arkham-Cards-Konto hochgeladen werden."
 
 msgid "Uploaded campaigns will be synced between devices."
 msgstr "Hochgeladene Kampagnen werden zwischen Geräten synchronisiert."
-
-msgid "Review records"
-msgstr "Einträge überprüfen"
 
 msgid "Note campaign achievements"
 msgstr "Kampagnenerfolge notieren"
@@ -4646,6 +4601,129 @@ msgid "Fan-made campaign by ${ author }"
 msgstr ""
 
 msgid "Sort ignores punctuation"
+msgstr ""
+
+msgid ""
+"Sorry, you don't seem to be a Mythos Buster patron.\n"
+"It can take up to 24hrs before Patreon updates your membership status. If "
+"you are still experiencing problems after 24hrs, please contact Mythos "
+"Busters via Patreon or on the Discord channel for help with this issue."
+msgstr ""
+
+msgid "Skull"
+msgstr ""
+
+msgid "Cultist"
+msgstr ""
+
+msgid "Tablet"
+msgstr ""
+
+msgid "Elder Thing"
+msgstr ""
+
+msgid "Auto-Fail"
+msgstr ""
+
+msgid "Elder Sign"
+msgstr ""
+
+msgid "Number of [[Item]] assets you control"
+msgstr ""
+
+msgid "Your investigator's modifier"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"0: (original effect below)\n"
+"${ originalTokenText }"
+msgstr ""
+
+#, javascript-format
+msgid "${ modifier }, draws another"
+msgstr ""
+
+msgid "Easy difficulty"
+msgstr ""
+
+msgid "Standard difficulty"
+msgstr ""
+
+msgid "Hard difficulty"
+msgstr ""
+
+msgid "Expert difficulty"
+msgstr ""
+
+msgid "— Difficulty —"
+msgstr ""
+
+msgid "— Available Scenarios —"
+msgstr ""
+
+msgid "Scenario settings"
+msgstr ""
+
+msgid "Your investigator modfifier"
+msgstr ""
+
+msgid "Test difficulty"
+msgstr ""
+
+msgid "Modified skill"
+msgstr ""
+
+msgid "${ tokens }/${ total } token"
+msgid_plural "${ tokens }/${ total } tokens"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Show all cards"
+msgstr ""
+
+msgid "Disable to choose individual packs to show"
+msgstr ""
+
+msgid "All cards are shown throughout the app"
+msgstr ""
+
+msgid ""
+"Use these controls to limit which cards are visible while searching, "
+"building decks, or upgrading cards to those in your own collection."
+msgstr ""
+
+msgid "All Cycles and Packs"
+msgstr ""
+
+msgid "Record that..."
+msgstr ""
+
+msgid "Player card entries only"
+msgstr ""
+
+msgid "Accept friend request"
+msgstr ""
+
+msgid "Send friend request"
+msgstr ""
+
+msgid "Reject friend request"
+msgstr ""
+
+msgid "Revoke friend request"
+msgstr ""
+
+msgid "Show upgrades"
+msgstr ""
+
+msgid "Hide Bless/Curse Odds"
+msgstr ""
+
+msgid "Show Bless/Curse Odds"
+msgstr ""
+
+msgid "Faction, Level, Type, Cost"
 msgstr ""
 
 msgctxt "masculine"
@@ -5993,3 +6071,7 @@ msgstr "Alle"
 msgctxt "trauma"
 msgid "None"
 msgstr "Keine"
+
+msgctxt "versus abbreviation"
+msgid "VS"
+msgstr ""

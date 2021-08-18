@@ -1,6 +1,7 @@
 import { Entity, Column, PrimaryColumn, ManyToOne, OneToMany } from 'typeorm/browser';
 import { Rule as JsonRule } from '@data/scenario/types';
 import { map } from 'lodash';
+import { SEARCH_REGEX } from './Card';
 
 class RuleTableCell {
   @Column('text', { nullable: true })
@@ -29,6 +30,9 @@ export default class Rule {
   @Column('text')
   public title!: string;
 
+  @Column('text')
+  public s_title!: string;
+
   @Column('text', { nullable: true })
   public text?: string;
 
@@ -46,6 +50,7 @@ export default class Rule {
     result.id = rule.id;
     result.order = order;
     result.title = rule.title;
+    result.s_title = rule.title.toLocaleLowerCase(lang).replace(SEARCH_REGEX, '');
     result.lang = lang;
     result.text = rule.text;
     result.table = rule.table ? map(rule.table, jsonTableRow => {
@@ -59,7 +64,7 @@ export default class Rule {
       return tableRow;
     }) : undefined;
     result.rules = rule.rules ? map(rule.rules, (jsonSubRule, idx) => {
-      const subRule = Rule.parse(lang, jsonSubRule, (order ? (order * 1000) : 0) +  idx);
+      const subRule = Rule.parse(lang, jsonSubRule, (order ? (order * 1000) : 0) + idx);
       subRule.parentRule = result;
       return subRule;
     }) : undefined;

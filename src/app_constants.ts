@@ -1,4 +1,8 @@
-export const ENABLE_ARKHAM_CARDS_ACCOUNT = true;
+import { ChaosTokenModifier, SimpleChaosTokenValue } from '@data/scenario/types';
+import { find } from 'lodash';
+import { t } from 'ttag';
+
+export const ENABLE_ARKHAM_CARDS_ACCOUNT = false;
 export type TypeCodeType =
   'asset' |
   'event' |
@@ -167,19 +171,61 @@ export const CHAOS_TOKEN_COLORS: { [skill: string]: string } = {
   cultist: '#00543a',
 };
 
-export type ChaosTokenValue =
-  number |
-  'auto_succeed' |
-  'auto_fail' |
-  'reveal_another' |
-  'X';
-
-export interface SpecialTokenValue {
-  token: ChaosTokenType;
-  value: ChaosTokenValue;
-  xText?: string;
-  revealAnother?: boolean;
+export function chaosTokenName(token: ChaosTokenType) {
+  switch (token) {
+    case 'bless': return t`Bless`;
+    case 'curse': return t`Curse`;
+    case 'skull': return t`Skull`;
+    case 'cultist': return t`Cultist`;
+    case 'tablet': return t`Tablet`;
+    case 'elder_thing': return t`Elder Thing`;
+    case 'auto_fail': return t`Auto-Fail`;
+    case 'elder_sign': return t`Elder Sign`;
+    case '+1': return '+1';
+    case '0': return '0';
+    case '-1': return '-1';
+    case '-2': return '-2';
+    case '-3': return '-3';
+    case '-4': return '-4';
+    case '-5': return '-5';
+    case '-6': return '-6';
+    case '-7': return '-7';
+    case '-8': return '-8';
+  }
 }
+
+export function getChaosTokenValue(token: ChaosTokenType, specialTokenValues: SimpleChaosTokenValue[]): ChaosTokenModifier | undefined {
+  switch (token) {
+    case 'bless':
+      return { modifier: 2, reveal_another: true };
+    case 'curse':
+      return { modifier: -2, reveal_another: true };
+    case 'auto_fail':
+      return { modifier: 'auto_fail' };
+    case 'skull':
+    case 'cultist':
+    case 'tablet':
+    case 'elder_thing':
+    case 'elder_sign': {
+      const specialValue = find(specialTokenValues, t => t.token === token);
+      if (!specialValue) {
+        return undefined;
+      }
+      return specialValue.value;
+    }
+    case '+1': return { modifier: 1 };
+    case '0': return { modifier: 0 };
+    case '-1': return { modifier: -1 };
+    case '-2': return { modifier: -2 };
+    case '-3': return { modifier: -3 };
+    case '-4': return { modifier: -4 };
+    case '-5': return { modifier: -5 };
+    case '-6': return { modifier: -6 };
+    case '-7': return { modifier: -7 };
+    case '-8': return { modifier: -8 };
+  }
+}
+
 
 export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   '+1': 3,

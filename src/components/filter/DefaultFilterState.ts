@@ -30,7 +30,7 @@ export async function calculateDefaultDbFilterState(
     .where(tabooSetQuery(tabooSetId));
   let cardsQuery = cards.createQueryBuilder('c')
     .select([
-      'max(c.xp ) as xp, max(linked_card.xp) as linked_xp',
+      'max(c.xp) as xp, max(linked_card.xp) as linked_xp',
       'max(c.cost) as cost, max(linked_card.cost) as linked_cost',
       'max(c.shroud) as shroud, max(linked_card.shroud) as linked_shroud',
       'max(c.clues) as clues, max(linked_card.clues) as linked_clues',
