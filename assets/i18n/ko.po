@@ -4525,7 +4525,7 @@ msgid "Show Bless/Curse Odds"
 msgstr "축복/저주 확률 보이기"
 
 msgid "Faction, Level, Type, Cost"
-msgstr ""
+msgstr "역할군, 레벨, 유형, 비용"
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
