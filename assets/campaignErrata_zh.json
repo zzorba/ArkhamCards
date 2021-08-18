@@ -1,4 +1,328 @@
 {
-  "cards": [],
-  "faq": []
+  "cards": [
+    {
+      "encounter_code": "blood_on_the_altar",
+      "cards": [
+        {
+          "code": [ "02205" ],
+          "text": "此卡牌的第一個能力應修正為：\"<b>強制</b> – 在你調查該地點時進行技能檢定失敗後：將火災廢墟上1個線索標記翻面為毀滅標記。\"(原文為[reaction]能力)"
+        }
+      ]
+    },
+    {
+      "encounter_code": "the_house_always_wins",
+      "cards": [
+        {
+          "code": [ "02079" ],
+          "text": "原屬性\"[[人類]]\"應改為\"[[類人]]\"。"
+        },
+        {
+          "code": [ "02078" ],
+          "text": "此敵人的屬性應修正為\"[[類人]]. [[罪犯]]. [[精英]]\"。(原文無[[類人]]屬性)"
+        }
+      ]
+    },
+    {
+      "encounter_code": "naomis_crew",
+      "cards": [
+        {
+          "code": [ "02097", "02098" ],
+          "text": "原屬性\"[[人類]]\"應改為\"[[類人]]\"。"
+        }
+      ]
+    },
+    {
+      "encounter_code": "where_doom_awaits",
+      "cards": [
+        {
+          "code": [ "02277" ],
+          "text": "此卡牌上的兩項指示順序應調換，調換後順序如下：\"移除場上所有地點上的線索。\n遮蔽山路的神秘魔法漸漸褪去。翻開上山道路。\""
+        }
+      ]
+    },
+    {
+      "encounter_code": "decay",
+      "cards": [
+        {
+          "code": [ "03102" ],
+          "text": "此卡牌的<b>顯現</b>能力應修正為：\"從你玩家區域和/或你手牌中丟棄一定數量的[[道具]]支援卡……\"(原文為\"從場上和/或你手牌中丟棄……\")"
+        }
+      ]
+    },
+    {
+      "encounter_code": "echoes_of_the_past",
+      "cards": [
+        {
+          "code": [ "03121", "03122", "03123" ],
+          "text": "第一項能力應修正為：\"神話階段中，跳過‘在當前密謀上放置1個毀滅標記’步驟。\"(原文為\"神話階段中，不要在此密謀上放置毀滅標記。\")"
+        },
+        {
+          "code": [ "03130", "03132" ],
+          "text": "此地點的能力應修正為：\"調查本地點時，不能提升你的[intellect]。\"(原文為\"調查本地點時，不能改變你的[intellect]。\")"
+        }
+      ]
+    },
+    {
+      "encounter_code": "the_unspeakable_oath",
+      "cards": [
+        {
+          "code": [ "03178", "03179", "03180", "03181" ],
+          "text": "這些地點應移除\"[[阿卡姆瘋人院]]\"屬性。"
+        }
+      ]
+    },
+    {
+      "encounter_code": "the_pallid_mask",
+      "cards": [
+        {
+          "code": [ "03252" ],
+          "text": "此地點的能力應修正為：\"……如果你成功，查看場上任意一張地下墓穴的已揭示面……\""
+        },
+        {
+          "code": [ "03258" ],
+          "text": "此敵人的能力應修正為：\"……如果你成功，查看場上任意一張地下墓穴的已揭示面……\""
+        }
+      ]
+    },
+    {
+      "encounter_code": "dim_carcosa",
+      "cards": [
+        {
+          "code": [ "03319" ],
+          "text": "此場景的第二項能力應修正為：\"除非有調查員‘知道了秘密’，否則哈斯塔不能被擊敗。\"(原文為\"除非你‘知道了秘密’……\")"
+        },
+        {
+          "code": [ "03338" ],
+          "text": "此卡牌的<b>顯現</b>能力應修正為：\"從你玩家區域和/或你手牌中丟棄……\"(原文為\"從場上和/或你手牌中丟棄……\")"
+        }
+      ]
+    },
+    {
+      "encounter_code": "the_wages_of_sin",
+      "cards": [
+        {
+          "code": [ "05163" ],
+          "text": "此卡牌的能力應修正為：\"地點不能被翻到非[[幽靈]]面。\"(原文為\"地點不能被翻面。\")"
+        }
+        {
+          "code": [ "05164" ],
+          "text": "此卡牌的能力應修正為：\"地點不能被翻到[[幽靈]]面。\"(原文為\"地點不能被翻面。\")"
+        },
+        {
+          "code": [ "05178b", "05178d", "05178f", "05178h" ],
+          "text": "此卡牌的第一項能力應修正為：\"將該卡牌保留在你的威脅區域(以本面朝上)。如果你退場，將其翻面。\"(原文無退場的描述)"
+        }
+      ]
+    },
+    {
+      "encounter_code": "before_the_black_throne",
+      "cards": [
+        {
+          "code": [ "05329" ],
+          "text": "此卡牌的遊戲文本第二句應修正為：\"將場上所有虛空格子的卡牌洗入所有者牌庫，將場上除憎惡宮殿以外的所有地點洗入‘宇宙’。\"(原文無虛空格子的描述)"
+        },
+        {
+          "code": [ "05330" ],
+          "text": "此卡牌的遊戲文本第二句應修正為：\"將場上所有虛空格子的卡牌洗入所有者牌庫，將場上除舊日支配者皇廷以外的所有地點洗入‘宇宙’。\"(原文無虛空格子的描述)"
+        }
+      ]
+    },
+    {
+      "encounter_code": "alien_interference",
+      "cards": [
+        {
+          "code": [ "84029" ],
+          "text": "此卡牌的第一項能力應修正為：\"<b>強制</b> – 在異界干預者將要受到來自攻擊的傷害時：移除異界干預者的1個毀滅標記。然後，減少1點傷害。\"(原文無\"然後\")"
+        }
+      ]
+    },
+    {
+      "encounter_code": "point_of_no_return",
+      "cards": [
+        {
+          "code": [ "06253" ],
+          "text": "此卡牌的<b>強制</b>能力應修正為：\"After an enemy with 1 or more clues on it is defeated: Take control of each of those clues.\""
+        }
+      ]
+    },
+    {
+      "encounter_code": "into_the_maelstrom",
+      "cards": [
+        {
+          "code": [ "07315" ],
+          "text": "此卡牌的<b>目標</b>能力應修正為：\"……you may choose to advance” instead of “……advance.\""
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "scenario_code": "blood_on_the_altar",
+      "questions": [
+        {
+          "question": "Is the “pile of potential sacrifices”in play or out of play? Are they under any player’s control? What about cards that have been placed underneath the agenda deck?",
+          "answer": "The “pile of potential sacrifices” (and cards underneath the agenda deck) should be considered to be in play for the purposes of game rules, but these cards are under no player’s control. (Since the cards are facedown, you should try to remember which unique allies were kidnapped and added to the pile of potential sacrifices without having to look at it.) Additionally, the cards in the pile of potential sacrifices and underneath the agenda deck cannot be affected by player card effects or investigator actions.\nThus, if a unique asset is Kidnapped!, an investigator cannot play another copy of that asset. Additionally, if a player resigns or is defeated, any cards he or she owns that are in the pile of potential sacrifices or facedown underneath the agenda deck will remain as such."
+        },
+        {
+          "question": "What happens if Duke is listed under “Sacrficed to Yog-Sothoth?” Is “Ashcan” Pete still playable without Duke?",
+          "answer": "If a required card (such as Duke) is permanently removed from your deck, it also removes the requirement of including that card. If for whatever reason Duke cannot be included in “Ashcan” Pete’s deck, that requirement is considered to be removed, and Pete may continue without Duke.\nOf course, since this is a significant handicap, you may also choose to optionally retire Pete and continue using a new investigator at 0 experience"
+        }
+      ]
+    },
+    {
+      "scenario_code": "the_unspeakable_oath",
+      "questions": [
+        {
+          "question": "Is the setup instruction regarding which version of Act 2—“The Really Bad Ones” the investigators should use correct? Am I supposed to be able to trigger the parley ability on Daniel Chesterfield (…Or At Least, What’s Left of Him)?",
+          "answer": "Yes, it is correct, and no, there is no way to trigger it (in this reality)."
+        }
+      ]
+    },
+    {
+      "scenario_code": "tfa_interlude1",
+      "questions": [
+        {
+          "question": "If a resolution or interlude contains effects that refer to “the next scenario,” will these apply to a side-story?",
+          "answer": "No; these effects refer only to the next scenario in the natural order of the campaign (for example, Scenario II: “The Doom of Eztli” after playing Scenario I: “The Untamed Wilds”). Additionally, for the purposes of these effects, Scenarios V–A and V–B are two separate scenarios."
+        }
+      ]
+    },
+    {
+      "scenario_code": "tfa_interlude3",
+      "questions": [
+        {
+          "question": "If a resolution or interlude contains effects that refer to “the next scenario,” will these apply to a side-story?",
+          "answer": "No; these effects refer only to the next scenario in the natural order of the campaign (for example, Scenario II: “The Doom of Eztli” after playing Scenario I: “The Untamed Wilds”). Additionally, for the purposes of these effects, Scenarios V–A and V–B are two separate scenarios."
+        }
+      ]
+    },
+    {
+      "scenario_code": "tfa_interlude4",
+      "questions": [
+        {
+          "question": "If a resolution or interlude contains effects that refer to “the next scenario,” will these apply to a side-story?",
+          "answer": "No; these effects refer only to the next scenario in the natural order of the campaign (for example, Scenario II: “The Doom of Eztli” after playing Scenario I: “The Untamed Wilds”). Additionally, for the purposes of these effects, Scenarios V–A and V–B are two separate scenarios."
+        }
+      ]
+    },
+    {
+      "scenario_code": "tfa_interlude5",
+      "questions": [
+        {
+          "question": "If a resolution or interlude contains effects that refer to “the next scenario,” will these apply to a side-story?",
+          "answer": "No; these effects refer only to the next scenario in the natural order of the campaign (for example, Scenario II: “The Doom of Eztli” after playing Scenario I: “The Untamed Wilds”). Additionally, for the purposes of these effects, Scenarios V–A and V–B are two separate scenarios."
+        }
+      ]
+    },
+    {
+      "scenario_code": "wilds",
+      "questions": [
+        {
+          "question": "What happens if I perform an <b>explore</b> action and I cycle through the entire exploration deck without finding either a treachery card or a location specified by the <b>explore</b> ability?",
+          "answer": "In such a case, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+        }
+      ]
+    },
+    {
+      "scenario_code": "eztli",
+      "questions": [
+        {
+          "question": "What happens if I perform an <b>explore</b> action and I cycle through the entire exploration deck without finding either a treachery card or a location specified by the <b>explore</b> ability?",
+          "answer": "In such a case, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+        },
+        {
+          "question": "If I am instructed to replay a scenario, do any effects from a previous resolution or interlude that refer to “the next scenario” apply? What about effects from the introduction that refer to “this scenario?”",
+          "answer": "Yes to both. If the previous resolution or interlude affects “the next scenario,” or if the scenario introduction affects “this scenario,” it should be construed to mean any playthrough of that scenario, including multiple playthroughs if the players are forced to replay it"
+        },
+        {
+          "question": "Does Charon’s Obol trigger its effects if a resolution instructs me to replay a scenario?",
+          "answer": "Charon’s Obol’s effects occur “When earning experience during the resolution of a scenario…” Therefore, Charon’s Obol will not trigger when you are instructed to replay a scenario, because such resolutions state that “No experience points are earned from your previous game.”"
+        }
+      ]
+    },
+    {
+      "scenario_code": "the_boundary_beyond",
+      "questions": [
+        {
+          "question": "What happens if I perform an <b>explore</b> action and I cycle through the entire exploration deck without finding either a treachery card or a location specified by the <b>explore</b> ability?",
+          "answer": "In such a case, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+        }
+      ]
+    },
+    {
+      "scenario_code": "pillars_of_judgment",
+      "questions": [
+        {
+          "question": "What happens if I perform an <b>explore</b> action and I cycle through the entire exploration deck without finding either a treachery card or a location specified by the <b>explore</b> ability?",
+          "answer": "In such a case, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+        },
+        {
+          "question": "Does Charon’s Obol trigger its effects if a resolution instructs me to replay a scenario? What about in between Scenarios V–A and V–B?",
+          "answer": "Charon’s Obol’s effects occur “When earning experience during the resolution of a scenario…” Therefore, Charon’s Obol will not trigger when you are instructed to replay a scenario, because such resolutions state that “No experience points are earned from your previous game.”\nHowever, in between Scenarios V–A and V–B, experience is earned, so Charon’s Obol will indeed trigger, even though players are not allowed to spend those experience points until after they have played Scenario V–B."
+        },
+        {
+          "question": "If I am instructed to replay a scenario, do any effects from a previous resolution or interlude that refer to “the next scenario” apply? What about effects from the introduction that refer to “this scenario?”",
+          "answer": "Yes to both. If the previous resolution or interlude affects “the next scenario,” or if the scenario introduction affects “this scenario,” it should be construed to mean any playthrough of that scenario, including multiple playthroughs if the players are forced to replay it"
+        }
+      ]
+    },
+    {
+      "scenario_code": "knyan",
+      "questions": [
+        {
+          "question": "What happens if I perform an <b>explore</b> action and I cycle through the entire exploration deck without finding either a treachery card or a location specified by the <b>explore</b> ability?",
+          "answer": "In such a case, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+        }
+      ]
+    },
+    {
+      "scenario_code": "the_depths_of_yoth",
+      "questions": [
+        {
+          "question": "What happens if I perform an <b>explore</b> action and I cycle through the entire exploration deck without finding either a treachery card or a location specified by the <b>explore</b> ability?",
+          "answer": "In such a case, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+        }
+      ]
+    },
+    {
+      "scenario_code": "shattered_aeons",
+      "questions": [
+        {
+          "question": "What happens if I perform an <b>explore</b> action and I cycle through the entire exploration deck without finding either a treachery card or a location specified by the <b>explore</b> ability?",
+          "answer": "In such a case, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+        }
+      ]
+    },
+    {
+      "scenario_code": "the_wages_of_sin",
+      "questions": [
+        {
+          "question": "When a location flips from its non-[[Spectral]] side to its [[Spectral]] side (or vice versa), what happens to tokens, attachments, or other cards at that location?",
+          "answer": "When such a location flips from one side to its other side, the location does not leave play. Therefore, all tokens that were on that location remain on its new side, all attachments remain attached, and all enemies, investigators and assets that were at that location remain as well."
+        },
+        {
+          "question": "Do Unfinished Business cards in an investigator’s threat area count as Heretics in play for the purposes of this scenario’s resolution? (i.e. how many heretics were unleashed unto Arkham?)",
+          "answer": "No. Only Heretics with the Heretic side faceup count. (However, note that Unfinished Business cards in an investigator’s threat area will not count their victory points, either, as normal.)"
+        }
+      ]
+    },
+    {
+      "scenario_code": "before_the_black_throne",
+      "questions": [
+        {
+          "question": "When a location is connected via the Cosmos deck or when the placement of a location moves during this scenario, can it be placed in a spot where there is no empty space?",
+          "answer": "Yes. Empty space serves as a method to judge the distance from one location to another, and as a place for certain enemies to spawn or move through; it is not required that there be an empty space in the spot where the location is placed or moves to."
+        }
+      ]
+    },
+    {
+      "scenario_code": "into_the_maelstrom",
+      "questions": [
+        {
+          "question": "Do we have to advance act 1a immediately if all investigators are at the Gateway to Y’ha-nthlei location and they control all four keys?",
+          "answer": "No. This act advancement should be optional, though in the original printing it is a forced advance."
+        }
+      ]
+    }
+  ]
 }
