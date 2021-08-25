@@ -75965,7 +75965,7 @@
       "input": {
         "type": "receive_campaign_link",
         "linked_prompt": "Proceed to <b>Scenario I–B: Waking Nightmare</b>.",
-        "id": "dreamers_grow_weaker",
+        "id": "waking_nightmare",
         "choices": []
       }
     },
@@ -82567,6 +82567,15 @@
       }
     },
     {
+      "id": "send_waking_nightmare_done",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "waking_nightmare",
+        "decision": "done"
+      }
+    },
+    {
       "id": "proceed_campaign_a",
       "type": "input",
       "input": {
@@ -82715,6 +82724,7 @@
         "earn_xp",
         "remove_infestation_bag",
         "$upgrade_decks",
+        "send_waking_nightmare_done",
         "maybe_proceed_campaign_a"
       ]
     }
