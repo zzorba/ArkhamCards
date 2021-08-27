@@ -21,11 +21,12 @@ export default function CardToggleRow({ card, count, onChange, onPress, limit, l
   const [one, toggleOne] = useFlag(count > 0);
   const [two, toggleTwo] = useFlag(count > 1);
   const [three, toggleThree] = useFlag(count > 2);
+  const [four, toggleFour] = useFlag(count > 3);
 
   useEffect(() => {
-    onChange(card, (one ? 1 : 0) + (two ? 1 : 0) + (three ? 1 : 0));
+    onChange(card, (one ? 1 : 0) + (two ? 1 : 0) + (three ? 1 : 0) + (four ? 1 : 0));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [one, two, three]);
+  }, [one, two, three, four]);
 
   if (limit === 0) {
     return null;
@@ -84,6 +85,19 @@ export default function CardToggleRow({ card, count, onChange, onPress, limit, l
             toggleValue: toggleThree,
           }}
           noBorder={last && limit === 3}
+        />
+      ) }
+      { (limit > 3) && (
+        <CardSearchResult
+          card={card}
+          onPress={onPress}
+          backgroundColor="transparent"
+          control={{
+            type: 'toggle',
+            value: four,
+            toggleValue: toggleFour,
+          }}
+          noBorder={last && limit === 4}
         />
       ) }
     </View>

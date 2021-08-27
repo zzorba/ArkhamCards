@@ -12,7 +12,7 @@ import {
 import { t } from 'ttag';
 
 import { DeckMeta, DeckProblem, DeckProblemType, Slots } from '@actions/types';
-import { ANCESTRAL_KNOWLEDGE_CODE, ON_YOUR_OWN_CODE, VERSATILE_CODE } from '@app_constants';
+import { ANCESTRAL_KNOWLEDGE_CODE, BODY_OF_A_YITHIAN, ON_YOUR_OWN_CODE, VERSATILE_CODE } from '@app_constants';
 import Card from '@data/types/Card';
 import DeckOption, { localizeDeckOptionError } from '@data/types/DeckOption';
 
@@ -146,7 +146,8 @@ export default class DeckValidation {
     }
 
     // no invalid card
-    if (this.getInvalidCards(cards).length > 0) {
+    const invalidCards = this.getInvalidCards(cards);
+    if (invalidCards.length > 0) {
       return 'invalid_cards';
     }
 
@@ -319,7 +320,7 @@ export default class DeckValidation {
     card: Card,
     processDeckCounts: boolean
   ): boolean {
-    return !!this.matchingDeckOption(card, processDeckCounts);
+    return !!this.matchingDeckOption(card, processDeckCounts) || (card.code === BODY_OF_A_YITHIAN);
   }
 
   private matchingDeckOption(
@@ -463,7 +464,8 @@ export default class DeckValidation {
           }
         }
 
-        if (option.not){
+        if (option.not) {
+          // Failed a not condition, that's final.
           return undefined;
         } else {
           if (processDeckCounts && option.atleast && card.faction_code) {

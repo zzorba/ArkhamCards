@@ -1089,7 +1089,7 @@
           },
           {
             "id": "coven_of_keziah_holds_the_world_in_its_grasp",
-            "text": "the coven of Keziah holds the world in its grasp."
+            "text": "Keziahs Hexenzirkel hält die Welt fest in seinem Griff."
           },
           {
             "id": "deceiving_the_lodge",
@@ -1109,11 +1109,11 @@
           },
           {
             "id": "erynn_joined_investigators",
-            "text": "Erynn joined the investigators."
+            "text": "Erynn hat sich den Ermittlern angeschlossen."
           },
           {
             "id": "erynn_wants_to_meet",
-            "text": "Erynn wants to meet you."
+            "text": "Erynn möchte dich treffen."
           },
           {
             "id": "guardian_of_the_trap_defeated",
@@ -1335,7 +1335,7 @@
           },
           {
             "id": "strange_incantation",
-            "text": "Strange Incantation"
+            "text": "Seltsamer Zauberspruch"
           },
           {
             "id": "wisp_of_spectral_mist",
