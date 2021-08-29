@@ -12,7 +12,7 @@ import {
 import { t } from 'ttag';
 
 import { DeckMeta, DeckProblem, DeckProblemType, Slots } from '@actions/types';
-import { ANCESTRAL_KNOWLEDGE_CODE, BODY_OF_A_YITHIAN, ON_YOUR_OWN_CODE, VERSATILE_CODE } from '@app_constants';
+import { ANCESTRAL_KNOWLEDGE_CODE, UNDERWORLD_SUPPORT_CODE, BODY_OF_A_YITHIAN, ON_YOUR_OWN_CODE, VERSATILE_CODE } from '@app_constants';
 import Card from '@data/types/Card';
 import DeckOption, { localizeDeckOptionError } from '@data/types/DeckOption';
 
@@ -21,6 +21,7 @@ interface SpecialCardCounts {
   ancestralKnowledge: number;
   versatile: number;
   onYourOwn: number;
+  underworldSupport: number;
 }
 
 // Code taken from:
@@ -52,6 +53,7 @@ export default class DeckValidation {
       ancestralKnowledge: this.slots[ANCESTRAL_KNOWLEDGE_CODE] || 0,
       versatile: this.slots[VERSATILE_CODE] || 0,
       onYourOwn: this.slots[ON_YOUR_OWN_CODE] || 0,
+      underworldSupport: this.slots[UNDERWORLD_SUPPORT_CODE] || 0,
     };
   }
 
@@ -65,7 +67,7 @@ export default class DeckValidation {
         size = this.investigator.deck_requirements.size;
       }
     }
-    return size + (5 * (specialCards.versatile + specialCards.ancestralKnowledge));
+    return size + (5 * (specialCards.versatile + specialCards.ancestralKnowledge)) - (5 * specialCards.underworldSupport);
   }
 
   getPhysicalDrawDeck(cards: Card[]): Card[] {
@@ -88,6 +90,7 @@ export default class DeckValidation {
   }
 
   getCopiesAndDeckLimit(cards: Card[]) {
+    const specialCards = this.specialCardCounts();
     return mapValues(
       groupBy(this.getDrawDeck(cards), card => card ? card.real_name : 'Unknown Card'),
       group => {
@@ -98,6 +101,14 @@ export default class DeckValidation {
           // Otherwise take the smallest limit found, to make OYO(3*2) work.
           (smallestDeckLimitCard && smallestDeckLimitCard.deck_limit) || 0
         );
+
+        if (!card.restrictions_investigator && specialCards.underworldSupport > 0) {
+          return {
+            nb_copies: group.length,
+            deck_limit: 1,
+          };
+        }
+
         return {
           nb_copies: group.length,
           deck_limit,
