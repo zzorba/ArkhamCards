@@ -13,7 +13,7 @@ const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+(\\s\\[per_investigator\\])?\\s(.+)\\)\\..*');
 const BONDED_REGEX = new RegExp('.*Bonded\\s*\\((.+?)\\)\\..*');
 const SEAL_REGEX = new RegExp('.*Seal \\(.+\\)\\..*');
-const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror');
+const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all|(X total)) damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror');
 export const SEARCH_REGEX = /["“”‹›‘’«»〞〝〟＂❛❜❝❞❮❯\(\)'\-\.]/g;
 
 function arkham_num(value: number | null | undefined) {
@@ -1216,7 +1216,7 @@ export default class Card {
     if (result.code.startsWith('z')) {
       result.browse_visible += 16;
     }
-    if (result.code === RANDOM_BASIC_WEAKNESS) {
+    if (result.code === RANDOM_BASIC_WEAKNESS || result.code === BODY_OF_A_YITHIAN) {
       result.browse_visible += 3;
     } else if ((!result.altArtInvestigator && !result.back_linked && !result.hidden)) {
       if (result.encounter_code) {

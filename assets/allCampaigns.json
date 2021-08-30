@@ -68641,7 +68641,7 @@
       "input": {
         "type": "receive_campaign_link",
         "linked_prompt": "Proceed to <b>Scenario I–B: Waking Nightmare</b>.",
-        "id": "dreamers_grow_weaker",
+        "id": "waking_nightmare",
         "choices": []
       }
     },
@@ -74296,6 +74296,15 @@
       }
     },
     {
+      "id": "send_waking_nightmare_done",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "waking_nightmare",
+        "decision": "done"
+      }
+    },
+    {
       "id": "proceed_campaign_a",
       "type": "input",
       "input": {
@@ -74394,7 +74403,7 @@
       },
       "title": "Resolution 5",
       "text": "You depart from the hospital with the blond-haired man in tow, and he introduces himself more fully. The man, whose name is Randolph Carter, tells you that he is a “dreamer,” like Virgil Gray and your friends: one with the ability to traverse the divide between the waking world and a parallel dimension that was created by, is sustained by, and dwells within the dreams of all living organisms on Earth—a realm he calls <smallcaps>The Dreamlands</smallcaps>. “It is a place of both dreams and nightmares,” he explains. “And I’m afraid your friends are trapped there as we speak.”\nYou ask if there is anything you can do to aid them. Randolph ponders this for a moment, then replies: “Normally, dreamers can return to the real world simply by willing themselves awake, but for some reason, your friends are unable to do so. If you truly wish to help them, you too must enter the Dreamlands and find them. But forcing your way into the Dreamlands is not easy. Such paths are usually accessible only to experienced dreamers, and only in sleep. Still, there are some places where the Dreamlands touch the waking world, and in those places, with the right tools, you may enter the Dreamlands in your physical body. I know of such a place, not far from here. However—”\nBefore Randolph is able to finish his sentence, he is interrupted by a mysterious voice…",
-      "steps": ["earn_xp", "remove_infestation_bag", "$upgrade_decks", "maybe_proceed_campaign_a"]
+      "steps": ["earn_xp", "remove_infestation_bag", "$upgrade_decks", "send_waking_nightmare_done", "maybe_proceed_campaign_a"]
     }
   ]
 }

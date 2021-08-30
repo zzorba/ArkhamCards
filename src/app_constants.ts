@@ -259,6 +259,7 @@ export const ON_YOUR_OWN_CODE = '53010';
 export const DEJA_VU_CODE = '60531';
 export const ANCESTRAL_KNOWLEDGE_CODE = '07303';
 export const ACE_OF_RODS_CODE = '05040';
+export const UNDERWORLD_SUPPORT_CODE = '08046';
 
 export const UNIDENTIFIED_UNTRANSLATED = new Set([
   '02021', // Strange Solution

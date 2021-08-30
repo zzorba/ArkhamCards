@@ -7,7 +7,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Ghoul]] enemies at your location.",
+          "prompt": "Anzahl der [[Ghul]]-Gegner an deinem Ort.",
           "min": 0
         }
       },
@@ -54,7 +54,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of doom on a [[Cultist]] enemy in play.",
+          "prompt": "Höchste Anzahl von Verderbensmakern auf einem [[Kultist]]-Gegner im Spiel.",
           "min": 0
         }
       },
@@ -76,7 +76,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom in play."
+          "prompt": "Gesamtanzahl von Verderbensmakern im Spiel."
         }
       },
       {
@@ -101,7 +101,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Monster]] enemies in play.",
+          "prompt": "Anzahl der [[Monster]]-Gegner im Spiel.",
           "min": 0
         }
       },
@@ -168,7 +168,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "10 or more cards in your discard pile",
+          "prompt": "10 oder mehr Karten in deinem Ablagestapel",
           "modified_value": {
             "modifier": -3
           }
@@ -178,7 +178,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 2 cards discarded from your deck.",
+          "prompt": "Gesamtsumme der aufgedruckten Kosten der obersten 2 abgelegten Karten deines Decks.",
           "min": 0
         }
       }
@@ -197,7 +197,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "10 or more cards in your discard pile",
+          "prompt": "10 oder mehr Karten in deinem Ablagestapel",
           "modified_value": {
             "modifier": -5
           }
@@ -207,7 +207,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 3 cards discarded from your deck.",
+          "prompt": "Gesamtsumme der aufgedruckten Kosten der obersten 3 abgelegten Karten deines Decks.",
           "min": 0
         }
       }
@@ -224,7 +224,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Spend 2 resources to treat this token as a 0",
+          "prompt": "Du darfst 2 Ressourcen ausgeben, um diesen Marker stattdessen als 0 zu behandeln",
           "modified_value": {
             "modifier": 0
           }
@@ -251,7 +251,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Spend 3 resources to treat this token as a 0",
+          "prompt": "Du darfst 3 Ressourcen ausgeben, um diesen Marker stattdessen als 0 zu behandeln",
           "modified_value": {
             "modifier": 0
           }
@@ -282,7 +282,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Hunting Horror is at your location",
+          "prompt": "Hetzender Schrecken an deinem Ort befindet",
           "modified_value": {
             "modifier": -3
           }
@@ -315,7 +315,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Hunting Horror is at your location",
+          "prompt": "Hetzender Schrecken an deinem Ort befindet",
           "modified_value": {
             "modifier": -4
           }
@@ -349,7 +349,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current agenda number",
+          "prompt": "Nummer der aktuellen Agenda",
           "min": 1
         }
       },
@@ -377,7 +377,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current agenda number",
+          "prompt": "Nummer der aktuellen Agenda",
           "min": 1,
           "adjustment": 1
         }
@@ -582,7 +582,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 2 cards discarded from your deck.",
+          "prompt": "Gesamtsumme der aufgedruckten Kosten der obersten 2 abgelegten Karten deines Decks.",
           "min": 0
         }
       }
@@ -625,7 +625,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 3 cards discarded from your deck.",
+          "prompt": "Gesamtsumme der aufgedruckten Kosten der obersten 3 abgelegten Karten deines Decks.",
           "min": 0
         }
       }
