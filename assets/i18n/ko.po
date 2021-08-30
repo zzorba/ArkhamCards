@@ -4527,6 +4527,18 @@ msgstr "축복/저주 확률 보이기"
 msgid "Faction, Level, Type, Cost"
 msgstr "역할군, 레벨, 유형, 비용"
 
+msgid "You cannot have more than 5 level 0 Survivor cards"
+msgstr ""
+
+msgid "You cannot have more than 5 level 0 Guardian cards"
+msgstr ""
+
+msgid "You cannot have more than 5 level 0 Seeker cards"
+msgstr ""
+
+msgid "You cannot have more than 5 level 0 Rogue cards"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } 조사자는 <b>미칩니다</b>."

@@ -4469,6 +4469,18 @@ msgstr ""
 msgid "Faction, Level, Type, Cost"
 msgstr ""
 
+msgid "You cannot have more than 5 level 0 Survivor cards"
+msgstr ""
+
+msgid "You cannot have more than 5 level 0 Guardian cards"
+msgstr ""
+
+msgid "You cannot have more than 5 level 0 Seeker cards"
+msgstr ""
+
+msgid "You cannot have more than 5 level 0 Rogue cards"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name }已<b>發瘋</b>。"
