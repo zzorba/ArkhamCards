@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import {
   StyleSheet, Text, View, ViewProps, ViewStyle, TextProps, TextStyle, SwitchProps,
 } from 'react-native';
 
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 
 const style = StyleSheet.create({
@@ -60,73 +60,63 @@ interface Props {
     true: string;
     false: string;
   };
-  switchProps: SwitchProps;
+  switchProps?: SwitchProps;
 }
-class SettingsSwitch extends Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  static defaultProps = {
-    containerProps: {},
-    containerStyle: {},
-    disabledOverlayStyle: {},
-    titleProps: {},
-    titleStyle: {},
-    descriptionProps: {},
-    descriptionStyle: {},
-    description: null,
-    switchWrapperProps: {},
-    switchWrapperStyle: {},
-    disabled: false,
-    switchProps: {},
-    trackColor: null,
-  };
-
-  render() {
-    const {
-      containerProps, containerStyle, titleProps, titleStyle, title, disabled, switchProps,
-      disabledOverlayStyle, switchWrapperProps, switchWrapperStyle, value,
-      trackColor, onValueChange, descriptionProps, descriptionStyle, description,
-    } = this.props;
-    const { backgroundStyle, colors, disabledStyle } = this.context;
-    return (
-      <View {...containerProps} style={[style.defaultContainerStyle, backgroundStyle, containerStyle]}>
-        <View style={style.titleWrapper}>
-          <Text
-            {...titleProps}
-            style={[style.defaultTitleStyle, { color: colors.darkText }, titleStyle]}
-          >
-            {title}
-          </Text>
-          {description ? (
-            <Text
-              {...descriptionProps}
-              style={[style.defaultDescriptionStyle, descriptionStyle]}
-            >
-              {description}
-            </Text>
-          ) : null}
-          {(disabled) ? (
-            <View
-              style={[style.defaultDisabledOverlayStyle, disabledStyle, (disabled) ? disabledOverlayStyle : null]}
-            />
-          ) : null}
-        </View>
-        <View
-          {...switchWrapperProps}
-          style={[style.defaultSwitchWrapperStyle, switchWrapperStyle]}
+export default function SettingsSwitch({
+  containerProps = {},
+  containerStyle = {},
+  disabledOverlayStyle = {},
+  titleProps = {},
+  titleStyle = {},
+  descriptionProps = {},
+  descriptionStyle = {},
+  description,
+  switchWrapperProps = {},
+  switchWrapperStyle = {},
+  disabled = false,
+  switchProps = {},
+  trackColor,
+  title,
+  value,
+  onValueChange,
+}: Props) {
+  const { backgroundStyle, colors, disabledStyle } = useContext(StyleContext);
+  return (
+    <View {...containerProps} style={[style.defaultContainerStyle, backgroundStyle, containerStyle]}>
+      <View style={style.titleWrapper}>
+        <Text
+          {...titleProps}
+          style={[style.defaultTitleStyle, { color: colors.darkText }, titleStyle]}
         >
-          <ArkhamSwitch
-            value={value}
-            trackColor={trackColor}
-            onValueChange={onValueChange}
-            disabled={disabled}
-            {...switchProps}
+          {title}
+        </Text>
+        {description ? (
+          <Text
+            {...descriptionProps}
+            style={[style.defaultDescriptionStyle, descriptionStyle]}
+          >
+            {description}
+          </Text>
+        ) : null}
+        {(disabled) ? (
+          <View
+            style={[style.defaultDisabledOverlayStyle, disabledStyle, (disabled) ? disabledOverlayStyle : null]}
           />
-        </View>
+        ) : null}
       </View>
-    );
-  }
+      <View
+        {...switchWrapperProps}
+        style={[style.defaultSwitchWrapperStyle, switchWrapperStyle]}
+      >
+        <ArkhamSwitch
+          value={value}
+          trackColor={trackColor}
+          // @ts-ignore
+          onValueChange={onValueChange}
+          disabled={disabled}
+          {...switchProps}
+        />
+      </View>
+    </View>
+  );
 }
-
-export default SettingsSwitch;

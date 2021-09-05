@@ -1,4 +1,4 @@
-import { find, flatMap } from 'lodash';
+import { flatMap } from 'lodash';
 import { t } from 'ttag';
 
 import { ChaosTokenType } from '@app_constants';

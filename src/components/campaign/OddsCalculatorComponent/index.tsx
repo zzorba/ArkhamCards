@@ -1,16 +1,15 @@
 import React, { useContext, useMemo, useState } from 'react';
 import { filter, head, find, flatMap, forEach, groupBy, sortBy, keys, map, range, sumBy, values, reverse, tail, partition, maxBy } from 'lodash';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { c, t } from 'ttag';
+import { c, msgid, ngettext, t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
 
 import VariableTokenInput from './VariableTokenInput';
-import CardTextComponent from '@components/card/CardTextComponent';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { difficultyString, Scenario, scenarioFromCard } from '@components/campaign/constants';
 import { CampaignDifficulty } from '@actions/types';
-import { ChaosBag, SPECIAL_TOKENS, ChaosTokenType, CHAOS_TOKENS, getChaosTokenValue, chaosTokenName } from '@app_constants';
+import { ChaosBag, SPECIAL_TOKENS, ChaosTokenType, CHAOS_TOKENS, getChaosTokenValue } from '@app_constants';
 import Card from '@data/types/Card';
 import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -37,6 +36,8 @@ import { TINY_PHONE } from '@styles/sizes';
 import TokenTextLine from './TokenTextLine';
 import InvestigatorRadioChoice from '@components/campaignguide/prompts/ChooseInvestigatorPrompt/InvestigatorRadioChoice';
 import { elderSign } from './constants';
+import RoundButton from '@components/core/RoundButton';
+import ArkhamIcon from '@icons/ArkhamIcon';
 
 
 interface Props {
@@ -109,7 +110,7 @@ function parseSpecialTokenValuesText(
         default: {
           const line = linesByToken[token];
           if (line) {
-            const effectText = tail(line.split(':')).join(':');
+            const effectText = line.indexOf(':') !== -1 ? tail(line.split(':')).join(':') : tail(line.split(']')).join(']');
             tokenText[token] = effectText;
             const valueRegex = new RegExp(`\\[(${token})\\][^:]*?:?\\s([-+][0-9X])(\\. )?(.*)`);
             if (valueRegex.test(line)) {
@@ -158,7 +159,8 @@ function parseSpecialTokenValuesText(
       hardExpert ? parsedTokens.hard : parsedTokens.standard,
       token => {
         if (token.token === 'skull' && investigator?.code === '02004') {
-          const jimText = t`0: (original effect below)\n${tokenText.skull || '???'}`;
+          const originalTokenText = tokenText.skull || '???';
+          const jimText = t`0: (original effect below)\n${originalTokenText}`;
           if (token.type === 'condition') {
             return {
               token: 'skull',
@@ -214,10 +216,10 @@ function NumberInput({ title, value, color, inc, dec }: {
   inc: () => void;
   dec: () => void;
 }) {
-  const { fontScale, colors, typography } = useContext(StyleContext);
+  const { fontScale, colors, typography, width } = useContext(StyleContext);
   const size = 40 * fontScale;
   return (
-    <View style={styles.numberInput}>
+    <View style={[styles.numberInput, { maxWidth: Math.min(150, width * 0.4) }]}>
       <View style={space.paddingSideS}>
         <PlusMinusButtons
           dialogStyle
@@ -235,7 +237,7 @@ function NumberInput({ title, value, color, inc, dec }: {
           color="dark"
         />
       </View>
-      <Text style={[space.marginTopS, typography.small, typography.italic]}>
+      <Text style={[space.marginTopS, typography.small, typography.center, typography.italic]} numberOfLines={2} ellipsizeMode="clip">
         { title }
       </Text>
     </View>
@@ -329,7 +331,7 @@ function ChaosTokenPile({ pile, height, mode, showBlurse, totalTokens }: { pile:
           return [];
         }
         const rangeTokens = (a?.tokens.length || 0) + (b?.tokens.length || 0);
-        const delta = `${mode === 'fail' ? '+' : '-'}${Math.round(rangeTokens / totalTokens * 100)}%`
+        const delta = `${Math.round(rangeTokens / totalTokens * 100)}%`
         return {
           pair: mode === 'fail' ? [
             ...(b ? [b] : []),
@@ -381,14 +383,21 @@ function ChaosTokenPile({ pile, height, mode, showBlurse, totalTokens }: { pile:
   );
 }
 
+function tokenRatioString(tokens: number, total: number): string {
+  return ngettext(msgid`${tokens}/${total} token`,
+    `${tokens}/${total} tokens`,
+    total
+  );
+}
+
 function ChaosBagOddsSection({
   chaosBag,
   specialTokenValues,
   modifiedSkill,
   testDifficulty,
-}: ChaosBagProps) {
+  showBlurse,
+}: ChaosBagProps & { showBlurse: boolean }) {
   const bagTotal = useMemo(() => sumBy(values(chaosBag), x => x || 0), [chaosBag]);
-  const [showBlurse, toggleShowBlurse] = useFlag(true);
   const { typography, colors, width } = useContext(StyleContext);
   const tokensByValue: ChaosTokenCollection[] = useMemo(() => {
     const result: { value: ChaosTokenModifier; tokens: ChaosTokenType[] }[] = map(groupBy(flatMap(CHAOS_TOKENS, token => {
@@ -455,8 +464,8 @@ function ChaosBagOddsSection({
     return null;
   }
   const largestPile = maxBy(tokensByValue, t => t.tokens.length)?.tokens.length || 0;
-  const passPercent = Math.round(passingTokens / total * 100);
-  const failPercent = Math.round(failingTokens / total * 100);
+  const passPercent = Math.round(passingTokens / bagTotal * 100);
+  const failPercent = Math.round(failingTokens / bagTotal * 100);
   const height = largestPile * tokenSize;
 
   return (
@@ -476,7 +485,7 @@ function ChaosBagOddsSection({
                 <View style={[space.paddingTopS, space.paddingRightXs]}>
                   <Text style={[typography.large, { color: colors.warn }, typography.right]}>{failPercent}%</Text>
                   <Text style={[typography.smallLabel, { color: colors.warn }, typography.right]} ellipsizeMode="clip" numberOfLines={1}>
-                    {t`${failingTokens}/${total} tokens`}
+                    {tokenRatioString(failingTokens, bagTotal)}
                   </Text>
                 </View>
               </View>
@@ -487,7 +496,7 @@ function ChaosBagOddsSection({
                 <View style={[space.paddingTopS, space.paddingLeftXs]}>
                   <Text style={[typography.large, { color: colors.campaign.setup }]}>{passPercent}%</Text>
                   <Text style={[typography.smallLabel, { color: colors.campaign.setup }]} ellipsizeMode="clip" numberOfLines={1}>
-                    {t`${passingTokens}/${total} tokens`}
+                    {tokenRatioString(passingTokens, bagTotal)}
                   </Text>
                 </View>
               </View>
@@ -566,7 +575,7 @@ function SpecialTokenOdds({ chaosBag, specialTokenValues, modifiedSkill, testDif
       };
     });
   }, [chaosBag, specialTokenValues, bless, curse, colors, testDifficulty, modifiedSkill]);
-  const total = useMemo(() => sumBy(values(chaosBag), x => x), [chaosBag]);
+  const total = useMemo(() => sumBy(values(chaosBag), x => x || 0), [chaosBag]);
   if (total === 0) {
     return null;
   }
@@ -627,6 +636,7 @@ export default function OddsCalculatorComponent({
   difficulty: defaultDifficulty,
 }: Props) {
   const { lang } = useContext(LanguageContext);
+  const [showBlurse, toggleShowBlurse] = useFlag(true);
   const difficultyText = useMemo(() => {
     return {
       easy: t`Easy difficulty`,
@@ -740,22 +750,6 @@ export default function OddsCalculatorComponent({
   const dialogContent = useMemo(() => {
     return (
       <View>
-        <View style={styles.row}>
-          { !!code && <EncounterIcon encounter_code={code} size={32} color={colors.D30} /> }
-          <View style={[styles.header, space.paddingLeftS]}>
-            <Text style={typography.large}>
-              { name || '' }
-            </Text>
-            { !!difficulty && <Text style={typography.smallButtonLabel}>{difficultyText[difficulty]}</Text> }
-          </View>
-        </View>
-        <View style={[styles.line, borderStyle]} />
-        { !!scenarioText && (
-          <View>
-            <CardTextComponent text={scenarioText} />
-            <View style={[styles.line, borderStyle]} />
-          </View>
-        ) }
         <DeckBubbleHeader title={t`— Difficulty —`} />
         { map([CampaignDifficulty.EASY, CampaignDifficulty.STANDARD, CampaignDifficulty.HARD, CampaignDifficulty.EXPERT], d => (
           <NewDialog.PickerItem
@@ -786,7 +780,7 @@ export default function OddsCalculatorComponent({
         )) }
       </View>
     );
-  }, [items, setCurrentScenario, currentScenario, name, difficulty, scenarioText, borderStyle, difficultyText, typography, code, colors]);
+  }, [items, setCurrentScenario, currentScenario, difficulty]);
   const { dialog, showDialog } = useDialog({
     title: t`Scenario settings`,
     content: dialogContent,
@@ -816,7 +810,7 @@ export default function OddsCalculatorComponent({
           return {
             token: tokenValue.token,
             value: {
-              modifier: -(xValue[tokenValue.token] || (tokenValue.counter.min || 0)) * (tokenValue.counter.scale || 1),
+              modifier: ((xValue[tokenValue.token] || (tokenValue.counter.min || 0)) + (tokenValue.counter.adjustment || 0)) * (tokenValue.counter.scale || 1) * (tokenValue.token === 'elder_sign' ? 1 : -1),
             },
           };
         }
@@ -889,22 +883,26 @@ export default function OddsCalculatorComponent({
             detail={difficulty ? difficultyText[difficulty] : undefined}
             encounterIcon={code}
             bigEncounterIcon
-            rightNode={
-              <View style={styles.row}>
-                <Text style={[typography.smallButtonLabel, { color: colors.D10 }, typography.right, space.marginRightXs]}>
-                  { t`Reference\ncard` }
-                </Text>
-                <AppIcon name="special_cards" size={26} color={colors.D10} />
-              </View>
-            }
             onPress={showDialog}
           />
+        </View>
+        <View style={[styles.blurseRow, space.paddingSideS]}>
+          <RoundButton onPress={toggleShowBlurse} noShadow accessibilityLabel={showBlurse ? t`Hide Bless/Curse Odds` : t`Show Bless/Curse Odds`}>
+            <AppIcon name={showBlurse ? 'show' : 'hide'} color={colors.M} size={28} />
+          </RoundButton>
+          <View style={space.paddingLeftXs}>
+            <ArkhamIcon name="bless" color={colors.token.bless} size={24} />
+          </View>
+          <View style={space.paddingLeftXs}>
+            <ArkhamIcon name="curse" color={colors.token.curse} size={24} />
+          </View>
         </View>
         <ChaosBagOddsSection
           chaosBag={chaosBag}
           specialTokenValues={allSpecialTokenValues}
           modifiedSkill={modifiedSkill}
           testDifficulty={testDifficulty}
+          showBlurse={showBlurse}
         />
         <View style={[styles.difficultyRow, space.marginTopS, space.marginBottomS]}>
           <NumberInput
@@ -915,7 +913,7 @@ export default function OddsCalculatorComponent({
             color="red"
           />
           <View>
-            <Text style={[typography.subHeaderText, typography.dark]}>{c('versus abbreviation').t`VS`}</Text>
+            <Text style={[typography.subHeaderText, typography.dark, space.marginTopS]}>{c('versus abbreviation').t`VS`}</Text>
             <Text style={[space.marginTopS, typography.small, typography.italic]}> </Text>
           </View>
           <NumberInput
@@ -980,13 +978,10 @@ const styles = StyleSheet.create({
     marginTop: s,
     marginBottom: s,
   },
-  header: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
-  row: {
+  blurseRow: {
     flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
   numberInput: {
     flexDirection: 'column',
@@ -996,7 +991,7 @@ const styles = StyleSheet.create({
   difficultyRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   center: {
     flexDirection: 'column',
@@ -1035,12 +1030,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  modifierBoost: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    flex: 1,
   },
   failPile: {
     flexDirection: 'column',

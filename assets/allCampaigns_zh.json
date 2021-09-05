@@ -36919,7 +36919,7 @@
 {
   "id": "the_inner_circle",
   "type": "interlude",
-  "scenario_name": "The Inner Circle",
+  "scenario_name": "核心圈",
   "full_name": "幕間故事III：核心圈",
   "header": "幕間故事III",
   "icon": "chilling_mists",
@@ -52574,7 +52574,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "繁文縟節簡直令人窒息。自從你來到阿卡姆後，你的案件變得越來越難處理。你以為你會對付走私者和暴徒，而不是虛構的怪物。但是，隨著這些荒謬案件懸而未決的時間拖得越長，你漸漸開始覺得這些案件沒這麼荒謬了。也許這意味著怪物不是憑空想像出來的。\n當局有無數的指導方針，能夠處理各種案件，但是出奇地缺了獻祭人類的方面。所以，當你被通知在黑暗洞窟裡發現了屍體時，你不太確定該怎麼開始。詢問當地人和死者的親人沒有什麼結果。洞穴中留下的證據也沒甚麼價值——供品和文字宣稱說這場獻祭是贈禮，還描繪了一棵怪物般的樹。所以你只能盡你所擅長的事情：嗅出線索，尋找連接所有死亡事件的共通點。\n所有受害者的交集是一名男子：國會議員戴米恩·格雷先生。他不是阿卡姆本地人，在本地沒有親戚或家人，鎮上也沒有需要他出席的會議。然而，過去幾個月他一直待在阿卡姆，目的不明。而且他與每個受害者相連的分隔度都不超過兩度，這對你來說相當蹊撬。儘管國會議員沒有受到任何威脅，但仍然有位警察——費希爾——全天候貼身護送格雷先生在鎮上的行動。\n您得盡快解開這個謎團的真相。現在你到處都看到那棵該死的樹。每天都有更多的人失蹤，甚至有人聲稱看到了像山羊一樣的怪物在小巷裡徘徊。但如果格雷先生真的是這件事的幕後黑手，你就得十分小心。要是錯誤地指控一個政客，你的職業生涯肯定就完了。該是時候盡你的職責了：挖掘證據、找出真相，把罪魁禍首帶回來審問。每個細節都必須一絲不苟。"
+      "text": "繁文縟節簡直令人窒息。自從你來到阿卡姆後，你的案件變得越來越難處理。你以為你會對付走私者和暴徒，而不是虛構的怪物。但是，隨著這些荒謬案件懸而未決的時間拖得越長，你漸漸開始覺得這些案件沒這麼荒謬了。也許這意味著怪物不是憑空想像出來的。\n當局有無數的指導方針，能夠處理各種案件，但是出奇地缺了獻祭人類的方面。所以，當你被通知在黑暗洞窟裡發現了屍體時，你不太確定該怎麼開始。詢問當地人和死者的親人沒有什麼結果。洞穴中留下的證據也沒甚麼價值——供品和文字宣稱說這場獻祭是贈禮，還描繪了一棵怪物般的樹。所以你只能盡你所擅長的事情：嗅出線索，尋找連接所有死亡事件的共通點。\n所有受害者的交集是一名男子：國會議員戴米恩·格雷先生。他不是阿卡姆本地人，在本地沒有親戚或家人，鎮上也沒有需要他出席的會議。然而，過去幾個月他一直待在阿卡姆，目的不明。而且他與每個受害者相連的分隔度都不超過兩度，這對你來說相當蹊蹺。儘管國會議員沒有受到任何威脅，但仍然有位警察——費希爾——全天候貼身護送格雷先生在鎮上的行動。\n你得盡快解開這個謎團的真相。現在你到處都看到那棵該死的樹。每天都有更多的人失蹤，甚至有人聲稱看到了像山羊一樣的怪物在小巷裡徘徊。但如果格雷先生真的是這件事的幕後黑手，你就得十分小心。要是錯誤地指控一個政客，你的職業生涯肯定就完了。該是時候盡你的職責了：挖掘證據、找出真相，把罪魁禍首帶回來審問。每個細節都必須一絲不苟。"
     },
     {
       "id": "gather_encounter_sets",
@@ -67023,7 +67023,7 @@
 {
   "id": "the_inner_circle",
   "type": "interlude",
-  "scenario_name": "The Inner Circle",
+  "scenario_name": "核心圈",
   "full_name": "幕間故事III：核心圈",
   "header": "幕間故事III",
   "icon": "chilling_mists",
@@ -75965,7 +75965,7 @@
       "input": {
         "type": "receive_campaign_link",
         "linked_prompt": "Proceed to <b>Scenario I–B: Waking Nightmare</b>.",
-        "id": "dreamers_grow_weaker",
+        "id": "waking_nightmare",
         "choices": []
       }
     },
@@ -82567,6 +82567,15 @@
       }
     },
     {
+      "id": "send_waking_nightmare_done",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "waking_nightmare",
+        "decision": "done"
+      }
+    },
+    {
       "id": "proceed_campaign_a",
       "type": "input",
       "input": {
@@ -82715,6 +82724,7 @@
         "earn_xp",
         "remove_infestation_bag",
         "$upgrade_decks",
+        "send_waking_nightmare_done",
         "maybe_proceed_campaign_a"
       ]
     }
@@ -112403,7 +112413,6 @@
     "check_long_glacier",
     "check_kerio",
     "setup_locations",
-    "take_brownie",
     "encounter_deck",
     "$play_scenario"
   ],
@@ -112629,15 +112638,6 @@
       "id": "flip_kerio",
       "bullet_type": "small",
       "text": "Flip Gatklettur to its revealed side and return it to the gathered locations."
-    },
-    {
-      "id": "take_brownie",
-      "text": "Choose an investigator to take control of the Brownie 2 story asset.",
-      "bullets": [
-        {
-          "text": "These cards have an encounter card on their reverse side. For the best experience, do not look at these cards on their reverse sides."
-        }
-      ]
     },
     {
       "id": "setup_locations",
@@ -113164,7 +113164,7 @@
         {
           "type": "remove_chaos_token",
           "tokens": [
-            "0"
+            "-5"
           ]
         },
         {
@@ -113908,7 +113908,8 @@
   "custom": {
     "creator": "Axolotl",
     "download_link": {
-      "en": "https://mysteriouschanting.wordpress.com/2020/10/17/dark-matter-campaign/"
+      "en": "https://mysteriouschanting.wordpress.com/2020/10/17/dark-matter-campaign/",
+      "ko": "https://cafe.naver.com/arkhamfiles/3018"
     }
   },
   "campaign_type": "campaign",
@@ -115833,7 +115834,7 @@
     },
     {
       "id": "create_scanning_deck",
-      "text": "Create the scanning deck. This is done by taking all the encounter cards with icons at the bottom of their back side and shuffling them together."
+      "text": "Create the scanning deck. This is done by taking all the other encounter cards with icons at the bottom of their back side and shuffling them together."
     },
     {
       "id": "create_evidence_deck",
@@ -117078,7 +117079,7 @@
     },
     {
       "id": "create_scanning_deck",
-      "text": "Create the scanning deck. This is done by taking all the encounter cards with icons at the bottom of their back side and shuffling them together."
+      "text": "Create the scanning deck. This is done by taking all the other encounter cards with icons at the bottom of their back side and shuffling them together."
     },
     {
       "id": "setup_landing_craft",
@@ -117096,7 +117097,7 @@
       "id": "face_down_encounter_rule",
       "type": "rule_reminder",
       "title": "Face-Down Encounter Cards",
-      "text": "In this scenario, you may be instructed to place encounter cards face-down into your threat area. These cards are considered out-of-play, but may be referenced by other scenario cards.\nWhen you would draw cards from the encounter deck, if both the encounter deck and discard piles are empty, draw a card from the face-down encounter cards in your threat area instead. If there are none in your threat area, you are defeated. (and possibly attempting to break the scenario.)"
+      "text": "In this scenario, you may be instructed to place encounter cards face-down into your threat area. These cards are considered out-of-play, but may be referenced by other scenario cards.\nWhen you would draw cards from the encounter deck, if both the encounter deck and discard piles are empty, draw a card from the face-down encounter cards in your threat area instead. If there are none in your threat area, you are defeated."
     },
     {
       "id": "quantum_realm_rule",
@@ -117610,7 +117611,7 @@
       "id": "heir_to_carcosa_story",
       "title": "Heir to Carcosa",
       "type": "story",
-      "text": "<center><smallcaps>Read at your own risk</smallcaps></center>\n<center>The program begins with the royal family of Yhtill cowering before the King in Yellow, Avatar of Hastur. For the next three hours, you witness a horrifying creative work, full of betrayal, intrigue, and horror. The story unfolds thus:</center>\n<center>After claiming Yhtill and absorbing it into Carcosa, the King in Yellow took the insane princess Camillia as a consort. Before her death, the princess bore the Ancient One three children, who became fosterlings of Hastur. They were two boys, named Thothut and Tasylock, and a girl named Tassilda. While normal-seeming at first, the children developed many of the physical characteristics and powers of their father. This transformation was viewed by their mother as yet another of Carcosa’s many corruptions. It was the final blow to Camillia’s mind, causing her heart to stop from despair and grief.</center>\n<center>For some time the royal trio lived with their sire in Carcosa, evil beings serving loyally at the foot of their father. But soon, like their mother, uncle, and grandmother before them, the princes and princess of Carcosa began to whisper, squabble, and plot. They had dreams of power and succession. Eventually Thothut and Tasylock unwisely moved against their father. Hastur was aware of the plot all along, and easily avoided their traps. In a way too horrible to describe, he destroyed both of his sons.</center>\n<center>His daughter Tassilda, who knew of her siblings’ plot but refused to take part in it, was spared. But she had done nothing to warn her father, choosing to wait and see if their plot was successful before committing to a course of action. For her silent betrayal, Tassilda was punished. Her father, He Who Should Not Be Named, sealed her into her home, which the Ancient One tore free of Carcosa and hurled out into space. Her father claimed that in an inevitable time, she will be released, and granted all that she desires.</center>"
+      "text": "<center><smallcaps>Read at your own risk</smallcaps></center>\n<center>The program begins with the royal family of Yhtill cowering before the King in Yellow, Avatar of Hastur. For the next three hours, you witness a horrifying creative work, full of betrayal, intrigue, and horror. The story unfolds thus:</center>\n<center>After claiming Yhtill and absorbing it into Carcosa, the King in Yellow took the insane princess Camilla as a consort. Before her death, the princess bore the Ancient One three children, who became fosterlings of Hastur. They were two boys, named Thothut and Tasylock, and a girl named Tassilda. While normal-seeming at first, the children developed many of the physical characteristics and powers of their father. This transformation was viewed by their mother as yet another of Carcosa’s many corruptions. It was the final blow to Camilla’s mind, causing her heart to stop from despair and grief.</center>\n<center>For some time the royal trio lived with their sire in Carcosa, evil beings serving loyally at the foot of their father. But soon, like their mother, uncle, and grandmother before them, the princes and princess of Carcosa began to whisper, squabble, and plot. They had dreams of power and succession. Eventually Thothut and Tasylock unwisely moved against their father. Hastur was aware of the plot all along, and easily avoided their traps. In a way too horrible to describe, he destroyed both of his sons.</center>\n<center>His daughter Tassilda, who knew of her siblings’ plot but refused to take part in it, was spared. But she had done nothing to warn her father, choosing to wait and see if their plot was successful before committing to a course of action. For her silent betrayal, Tassilda was punished. Her father, He Who Should Not Be Named, sealed her into her home, which the Ancient One tore free of Carcosa and hurled out into space. Her father claimed that in an inevitable time, she will be released, and granted all that she desires.</center>"
     },
     {
       "id": "watched_the_performance_of_heir_to_carcosa",
@@ -117943,7 +117944,7 @@
     },
     {
       "id": "create_scanning_deck",
-      "text": "Create the scanning deck. This is done by taking all the encounter cards with icons at the bottom of their back side and shuffling them together. (Including the cards above that have not been set aside.)"
+      "text": "Create the scanning deck. This is done by taking all the other encounter cards with icons at the bottom of their back side and shuffling them together. (Including the cards above that have not been set aside.)"
     },
     {
       "id": "setup_locations",
@@ -118661,7 +118662,7 @@
     },
     {
       "id": "create_scanning_deck",
-      "text": "Create the scanning deck. This is done by taking all the encounter cards with icons at the bottom of their back side and shuffling them together."
+      "text": "Create the scanning deck. This is done by taking all the other encounter cards with icons at the bottom of their back side and shuffling them together."
     },
     {
       "id": "setup_locations",

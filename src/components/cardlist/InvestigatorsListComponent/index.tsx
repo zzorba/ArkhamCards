@@ -19,7 +19,7 @@ import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '@actions
 import Card, { cardInCollection } from '@data/types/Card';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import ShowNonCollectionFooter from '@components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
-import { getPacksInCollection } from '@reducers';
+import { getPacksInCollection, AppState } from '@reducers';
 import space, { s } from '@styles/space';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
@@ -134,6 +134,7 @@ export default function InvestigatorsListComponent({
   const investigators = useInvestigatorCards();
 
   const in_collection = useSelector(getPacksInCollection);
+  const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
   const [showNonCollection,, setShowNonCollection] = useToggles({});
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -259,7 +260,7 @@ export default function InvestigatorsListComponent({
         results.push(currentBucket);
       }
       if (i) {
-        if (i.pack_code && (i.pack_code === 'core' || cardInCollection(i, in_collection))) {
+        if (i.pack_code && (i.pack_code === 'core' || ignore_collection || cardInCollection(i, in_collection))) {
           currentBucket.data.push(i);
         } else {
           nonCollectionCards.push(i);
@@ -291,7 +292,7 @@ export default function InvestigatorsListComponent({
       });
     }
     return results;
-  }, [investigators, in_collection, showNonCollection, searchTerm, filterInvestigators, onlyInvestigators, sort]);
+  }, [investigators, in_collection, ignore_collection, showNonCollection, searchTerm, filterInvestigators, onlyInvestigators, sort]);
 
   const renderSectionFooter = useCallback(({ section }: { section: SectionListData<Card> }) => {
     if (!section.nonCollectionCount) {

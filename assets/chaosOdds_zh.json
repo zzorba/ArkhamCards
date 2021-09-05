@@ -7,7 +7,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Ghoul]] enemies at your location.",
+          "prompt": "你所在地點[[食屍鬼]]敵人的數量",
           "min": 0
         }
       },
@@ -54,7 +54,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of doom on a [[Cultist]] enemy in play.",
+          "prompt": "場上帶有最多毀滅標記的[[異教徒]]，其毀滅標記個數",
           "min": 0
         }
       },
@@ -76,7 +76,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom in play."
+          "prompt": "場上毀滅標記總數"
         }
       },
       {
@@ -101,7 +101,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Monster]] enemies in play.",
+          "prompt": "場上[[怪物]]敵人數量",
           "min": 0
         }
       },
@@ -168,7 +168,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "10 or more cards in your discard pile",
+          "prompt": "棄牌堆中至少有10張卡牌",
           "modified_value": {
             "modifier": -3
           }
@@ -178,7 +178,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 2 cards discarded from your deck.",
+          "prompt": "你牌堆頂部2張卡牌的打印費用之和",
           "min": 0
         }
       }
@@ -197,7 +197,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "10 or more cards in your discard pile",
+          "prompt": "棄牌堆中至少有10張卡牌",
           "modified_value": {
             "modifier": -5
           }
@@ -207,7 +207,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 3 cards discarded from your deck.",
+          "prompt": "你牌堆頂部3張卡牌的打印費用之和",
           "min": 0
         }
       }
@@ -224,7 +224,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Spend 2 resources to treat this token as a 0",
+          "prompt": "花費2個資源，將這個標記視為0",
           "modified_value": {
             "modifier": 0
           }
@@ -251,7 +251,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Spend 3 resources to treat this token as a 0",
+          "prompt": "花費3個資源，將這個標記視為0",
           "modified_value": {
             "modifier": 0
           }
@@ -282,7 +282,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Hunting Horror is at your location",
+          "prompt": "你和追獵恐魔在同一個地點",
           "modified_value": {
             "modifier": -3
           }
@@ -315,7 +315,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Hunting Horror is at your location",
+          "prompt": "你和追獵恐魔在同一個地點",
           "modified_value": {
             "modifier": -4
           }
@@ -349,7 +349,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current agenda number",
+          "prompt": "當前密謀編號",
           "min": 1
         }
       },
@@ -377,8 +377,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 more than the current agenda number",
-          "min": 2
+          "prompt": "當前密謀編號",
+          "min": 1,
+          "adjustment": 1
         }
       },
       {
@@ -410,7 +411,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play with no encounter card underneath",
+          "prompt": "場上底下無遭遇卡的地點的數量",
           "min": 0,
           "max": 4
         }
@@ -439,7 +440,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play with no encounter card underneath",
+          "prompt": "場上底下無遭遇卡的地點的數量",
           "min": 0
         }
       },
@@ -471,7 +472,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Brood of Yog-Sothoth in play",
+          "prompt": "場上猶格·索托斯之子的數量",
           "min": 0
         }
       },
@@ -489,7 +490,7 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "Remove all clue tokens from a Brood of Yog-Sothoth in play",
+          "prompt": "將一隻猶格·索托斯之子上的線索標記全部移除",
           "modified_value": {
             "modifier": 0
           }
@@ -507,7 +508,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play with no encounter card underneath",
+          "prompt": "場上底下無遭遇卡的地點的數量",
           "min": 0,
           "scale": 2
         }
@@ -526,7 +527,7 @@
           "default_value": {
             "modifier": "auto_fail"
           },
-          "prompt": "Remove all clue tokens from a Brood of Yog-Sothoth in play",
+          "prompt": "將一隻猶格·索托斯之子上的線索標記全部移除",
           "modified_value": {
             "modifier": 0
           }
@@ -551,7 +552,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At an [[Altered]] location",
+          "prompt": "你在[[幻境]]地點",
           "modified_value": {
             "modifier": -3
           }
@@ -571,7 +572,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Agenda 2 is in play",
+          "prompt": "處於密謀2",
           "modified_value": {
             "modifier": -4
           }
@@ -581,7 +582,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 2 cards discarded from your deck.",
+          "prompt": "你牌堆頂部2張卡牌的打印費用之和",
           "min": 0
         }
       }
@@ -594,7 +595,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At an [[Altered]] location",
+          "prompt": "你在[[幻境]]地點",
           "modified_value": {
             "modifier": -5
           }
@@ -614,7 +615,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Agenda 2 is in play",
+          "prompt": "處於密謀2",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -624,7 +625,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 3 cards discarded from your deck.",
+          "prompt": "你牌堆頂部3張卡牌的打印費用之和",
           "min": 0
         }
       }
@@ -638,7 +639,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Extradimensional]] locations in play",
+          "prompt": "場上[[異次元]]地點的數量",
           "min": 0,
           "max": 5
         }
@@ -660,7 +661,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "你所在地點的隱藏值",
           "min": 0
         }
       }
@@ -670,7 +671,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Extradimensional]] locations in play",
+          "prompt": "場上[[異次元]]地點的數量",
           "min": 0
         }
       },
@@ -691,7 +692,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "你所在地點的隱藏值",
           "min": 0,
           "scale": 2
         }
@@ -709,7 +710,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Have 3 or more horror on you",
+          "prompt": "你身上有3點或以上恐懼",
           "modified_value": {
             "modifier": -3
           }
@@ -739,7 +740,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Amount of horror on you (min 1)",
+          "prompt": "你身上的恐懼數量(最小1)",
           "min": 1
         }
       },
@@ -790,7 +791,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "你所在地點的隱藏值",
           "min": 0
         }
       }
@@ -819,7 +820,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "你所在地點的隱藏值",
           "min": 0
         }
       }
@@ -833,7 +834,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of doom on an enemy in play",
+          "prompt": "單張敵人上最多毀滅標記的數量",
           "min": 0
         }
       },
@@ -861,7 +862,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom on enemies in play",
+          "prompt": "場上敵人上毀滅標記的總數量",
           "min": 0
         }
       },
@@ -899,7 +900,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of horror on you",
+          "prompt": "你身上的恐懼數量",
           "min": 0
         }
       },
@@ -907,7 +908,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Base shroud value of your location",
+          "prompt": "你所在地點的基礎隱藏值",
           "min": 0
         }
       },
@@ -918,7 +919,7 @@
           "default_value": {
             "modifier": "auto_fail"
           },
-          "prompt": "Randomally choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
+          "prompt": "從放在一邊的[[怪物]]敵人中隨機選擇1個放在場景牌堆下",
           "modified_value": {
             "modifier": 0
           }
@@ -937,7 +938,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of horror on you",
+          "prompt": "你身上的恐懼數量",
           "min": 0
         }
       },
@@ -945,7 +946,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Base shroud value of your location",
+          "prompt": "你所在地點的基礎隱藏值",
           "min": 0
         }
       },
@@ -956,7 +957,7 @@
           "default_value": {
             "modifier": "auto_fail"
           },
-          "prompt": "Randomally choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
+          "prompt": "從放在一邊的[[怪物]]敵人中隨機選擇1個放在場景牌堆下",
           "modified_value": {
             "modifier": 0
           }
@@ -972,7 +973,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of doom in play",
+          "prompt": "場上毀滅標記的數量",
           "min": 0,
           "max": 5
         }
@@ -1002,7 +1003,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of doom in play",
+          "prompt": "場上毀滅標記的數量",
           "min": 0
         }
       },
@@ -1035,7 +1036,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations away from the starting location you are",
+          "prompt": "你與起始地點間的距離",
           "min": 0,
           "max": 5
         }
@@ -1064,7 +1065,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations away from the starting location you are",
+          "prompt": "你與起始地點間的距離",
           "min": 0
         }
       },
@@ -1096,7 +1097,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest amount of doom on an agenda in play",
+          "prompt": "場上單張密謀上最多毀滅標記的數量",
           "min": 0
         }
       },
@@ -1108,7 +1109,7 @@
             "reveal_another": true,
             "modifier": 0
           },
-          "prompt": "Attack or evasion attempt against an enemy with doom on it",
+          "prompt": "攻擊或躲避帶有毀滅標記的敵人",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1133,7 +1134,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total amount of doom on agendas in play",
+          "prompt": "場上密謀上毀滅標記的總數量",
           "min": 0
         }
       },
@@ -1145,7 +1146,7 @@
             "reveal_another": true,
             "modifier": 0
           },
-          "prompt": "An enemy with 1 or more doom on it at your location",
+          "prompt": "你所在地點有敵人帶有1個或以上的毀滅標記",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1177,7 +1178,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "No remaining sanity left",
+          "prompt": "沒有神智值剩餘",
           "modified_value": {
             "modifier": -4
           }
@@ -1208,7 +1209,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Amount of horror on you",
+          "prompt": "你身上的恐懼數量",
           "min": 0
         }
       },
@@ -1241,7 +1242,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of vengeance points in the victory display",
+          "prompt": "勝利牌區內的復仇點數",
           "min": 0
         }
       },
@@ -1249,7 +1250,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play",
+          "prompt": "場上的地點數",
           "min": 1,
           "max": 5
         }
@@ -1258,7 +1259,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in the exploration deck",
+          "prompt": "探索牌堆內的卡牌數量",
           "min": 0,
           "max": 5
         }
@@ -1270,7 +1271,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "You are poisoned",
+          "prompt": "你已中毒",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1282,15 +1283,16 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 higher than the number of vengeance points in the victory display",
-          "min": 1
+          "prompt": "勝利牌區內的復仇點數",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play",
+          "prompt": "場上的地點數",
           "min": 1
         }
       },
@@ -1298,7 +1300,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in the exploration deck",
+          "prompt": "探索牌堆內的卡牌數量",
           "min": 3
         }
       },
@@ -1309,7 +1311,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "You are poisoned",
+          "prompt": "你已中毒",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1328,7 +1330,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Doom on your location",
+          "prompt": "你所在地點有毀滅標記",
           "modified_value": {
             "modifier": -3
           }
@@ -1338,7 +1340,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with doom on them",
+          "prompt": "帶有毀滅標記的地點數",
           "min": 0
         }
       },
@@ -1346,7 +1348,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with doom on them",
+          "prompt": "帶有毀滅標記的地點數",
           "min": 0
         }
       },
@@ -1366,7 +1368,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Doom on your location",
+          "prompt": "你所在地點有毀滅標記",
           "modified_value": {
             "modifier": -4
           }
@@ -1376,7 +1378,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Total amount of doom on locations in play",
+          "prompt": "場上的地點帶有的毀滅標記總數",
           "min": 0
         }
       },
@@ -1384,7 +1386,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Total amount of doom on locations in play",
+          "prompt": "場上的地點帶有的毀滅標記總數",
           "min": 0
         }
       },
@@ -1405,7 +1407,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of doom on a [[Cultist]] enemy",
+          "prompt": "帶有最多毀滅標記的[[異教徒]]敵人身上的毀滅標記數",
           "min": 0
         }
       },
@@ -1434,7 +1436,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom in play",
+          "prompt": "場上的毀滅標記總數",
           "min": 0
         }
       },
@@ -1469,7 +1471,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At an [[Ancient]] location",
+          "prompt": "你位於[[古代]]地點",
           "modified_value": {
             "modifier": -3
           }
@@ -1504,7 +1506,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At an [[Ancient]] location",
+          "prompt": "你位於[[古代]]地點",
           "modified_value": {
             "modifier": -4
           }
@@ -1543,7 +1545,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At a [[Cave]] location",
+          "prompt": "你位於[[洞穴]]地點",
           "modified_value": {
             "modifier": -3
           }
@@ -1576,7 +1578,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At a [[Cave]] location",
+          "prompt": "你位於[[洞穴]]地點",
           "modified_value": {
             "modifier": -4
           }
@@ -1613,7 +1615,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Have 5 or more cards in your hand",
+          "prompt": "你有5張或更多的手牌",
           "modified_value": {
             "modifier": -5
           }
@@ -1646,7 +1648,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Have 5 or more cards in your hand",
+          "prompt": "你有5張或更多的手牌",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1680,7 +1682,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current depth level",
+          "prompt": "當前深度等級",
           "min": 1
         }
       },
@@ -1705,7 +1707,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "3 or more vengeance points in the victory display",
+          "prompt": "勝利牌區內有3點或更多的復仇點數",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1717,7 +1719,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current depth level",
+          "prompt": "當前深度等級",
           "min": 1
         }
       },
@@ -1742,7 +1744,7 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "3 or more vengeance points in the victory display",
+          "prompt": "勝利牌區內有3點或更多的復仇點數",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1761,7 +1763,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Relic of Ages is at your location",
+          "prompt": "古代遺物位於你所在地點",
           "modified_value": {
             "modifier": -4
           }
@@ -1794,7 +1796,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Relic of Ages is at your location",
+          "prompt": "古代遺物位於你所在地點",
           "modified_value": {
             "modifier": -5
           }
@@ -1828,7 +1830,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with doom on them",
+          "prompt": "帶有毀滅標記的地點數",
           "min": 0
         }
       },
@@ -1844,7 +1846,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total amount of doom on locations",
+          "prompt": "地點帶有的毀滅標記總數",
           "min": 0
         }
       },
@@ -1931,7 +1933,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Your location is haunted",
+          "prompt": "你所在地點鬧鬼",
           "modified_value": {
             "modifier": -3
           }
@@ -1958,7 +1960,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Your location is haunted",
+          "prompt": "你所在地點鬧鬼",
           "modified_value": {
             "modifier": -4
           }
@@ -1989,7 +1991,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "You are at an [[Extradimensional]] location",
+          "prompt": "你位於[[異次元]]地點",
           "modified_value": {
             "modifier": -3
           }
@@ -2023,7 +2025,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "You are at an [[Extradimensional]] location",
+          "prompt": "你位於[[異次元]]地點",
           "modified_value": {
             "modifier": -4
           }
@@ -2058,8 +2060,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 higher than the number of Unfinished Business in the victory display",
-          "min": 1
+          "prompt": "勝利牌區內的未了之事的數量",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {
@@ -2086,7 +2089,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of Unfinished Business in the victory display",
+          "prompt": "勝利牌區內的未了之事的數量",
           "min": 0,
           "reveal_another": true
         }
@@ -2119,7 +2122,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of doom on a [[Cultist]] enemy in play",
+          "prompt": "場上帶有最多毀滅標記的[[異教徒]]敵人的毀滅標記數量",
           "min": 0
         }
       },
@@ -2148,7 +2151,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom among [[Cultist]] enemies in play",
+          "prompt": "場上[[異教徒]]敵人上的毀滅標記總數",
           "min": 0
         }
       },
@@ -2172,7 +2175,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "No [[Cultist]] enemies in play have doom on them",
+          "prompt": "場上的[[異教徒]]敵人都沒有毀滅標記",
           "modified_value": {
             "modifier": -3,
             "reveal_another": true
@@ -2192,7 +2195,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "During a <b>circle</b> action",
+          "prompt": "在<b>陣法</b>行動期間",
           "modified_value": {
             "modifier": -2,
             "reveal_another": true
@@ -2226,7 +2229,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "During a <b>circle</b> action",
+          "prompt": "在<b>陣法</b>行動期間",
           "modified_value": {
             "modifier": -3,
             "reveal_another": true
@@ -2261,7 +2264,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom and breaches on your location",
+          "prompt": "你所在地點的裂口和毀滅標記總數",
           "min": 0
         }
       },
@@ -2290,8 +2293,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 higher than the total number of doom and breaches on your location",
-          "min": 1
+          "prompt": "你所在地點的裂口和毀滅標記總數",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {
@@ -2323,7 +2327,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the doom on Azathoth (rounded up)",
+          "prompt": "阿撒托斯上的一半毀滅標記數(向上取整)",
           "min": 2
         }
       },
@@ -2352,7 +2356,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Amount of doom on Azathoth",
+          "prompt": "阿撒托斯上的毀滅標記數",
           "min": 2
         }
       },
@@ -2487,8 +2491,9 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "1 higher than the number of infested locations",
-          "min": 1
+          "prompt": "Number of infested locations",
+          "min": 0,
+          "adjustment": 1
         }
       }
     ]
@@ -2530,8 +2535,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 more than the number of Signs of the Gods the investigators have uncovered",
-          "min": 1
+          "prompt": "Number of Signs of the Gods the investigators have uncovered",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {
@@ -2726,8 +2732,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 more than the amount of damage on the scenario reference card",
-          "min": 1
+          "prompt": "Amount of damage on the scenario reference card",
+          "min": 1,
+          "adjustment": 1
         }
       },
       {
@@ -2973,8 +2980,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 more than the current agenda number",
-          "min": 2
+          "prompt": "The current agenda number",
+          "min": 1,
+          "adjustment": 1
         }
       },
       {
@@ -3099,8 +3107,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 more than the number of keys the investigators control",
-          "min": 1
+          "prompt": "Number of keys the investigators control",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {
@@ -3425,7 +3434,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At a [[Bayou]] location",
+          "prompt": "你位於[[河口]]地點",
           "modified_value": {
             "modifier": -4
           }
@@ -3467,7 +3476,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "At a [[Bayou]] location",
+          "prompt": "你位於[[河口]]地點",
           "modified_value": {
             "modifier": -6
           }
@@ -3632,7 +3641,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The strength of the abyss",
+          "prompt": "當前深淵之力的強度",
           "min": 0
         }
       },
@@ -3657,7 +3666,7 @@
           "default_value": {
             "modifier": -5
           },
-          "prompt": "Add 1 strength to the abyss",
+          "prompt": "增強1點深淵之力",
           "modified_value": {
             "modifier": "auto_succeed"
           }
@@ -3669,8 +3678,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 more than the strength of the abyss",
-          "min": 1
+          "prompt": "當前深淵之力的強度",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {
@@ -3694,7 +3704,7 @@
           "default_value": {
             "modifier": -6
           },
-          "prompt": "Add 1 strength to the abyss",
+          "prompt": "增強1點深淵之力",
           "modified_value": {
             "modifier": "auto_succeed"
           }
@@ -3710,7 +3720,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The strength of the abyss",
+          "prompt": "當前深淵之力的強度",
           "min": 0
         }
       },
@@ -3740,8 +3750,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 more than the strength of the abyss",
-          "min": 1
+          "prompt": "當前深淵之力的強度",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {
@@ -3774,7 +3785,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Guest]] enemies in play",
+          "prompt": "場上的[[賓客]]敵人數量",
           "min": 0
         }
       },
@@ -3785,7 +3796,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "There is an [[Innocent]] enemy in the victory display",
+          "prompt": "勝利牌區中有[[無辜]]敵人",
           "modified_value": {
             "modifier": -1,
             "reveal_another": true
@@ -3799,7 +3810,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Place one of your clues on your location",
+          "prompt": "將你的1個線索放在你所在地點",
           "modified_value": {
             "modifier": -1
           }
@@ -3817,7 +3828,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Innocent]] enemies in play",
+          "prompt": "場上的[[無辜]]敵人數量",
           "min": 0
         }
       },
@@ -3828,7 +3839,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "There is an [[Innocent]] enemy in the victory display",
+          "prompt": "勝利牌區中有[[無辜]]敵人",
           "modified_value": {
             "modifier": -2,
             "reveal_another": true
@@ -3842,7 +3853,7 @@
           "default_value": {
             "modifier": -5
           },
-          "prompt": "Place one of your clues on your location",
+          "prompt": "將你的1個線索放在你所在地點",
           "modified_value": {
             "modifier": -2
           }
@@ -3864,7 +3875,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 for every 5 cards Subject 8L-08 has devoured",
+          "prompt": "個體代號8L-08每吞噬5張卡牌",
           "min": 0
         }
       },
@@ -3892,7 +3903,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 for every 3 cards Subject 8L-08 has devoured",
+          "prompt": "個體代號8L-08每吞噬3張卡牌",
           "min": 0
         }
       },
@@ -3924,7 +3935,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of clues you have",
+          "prompt": "你的線索數量",
           "min": 0
         }
       },
@@ -3952,7 +3963,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of clues you have",
+          "prompt": "你的線索數量",
           "scale": 2,
           "min": 0
         }
@@ -3985,7 +3996,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Tome]] assets Daisy Walker controls",
+          "prompt": "黛西所擁有的[[書籍]]支援卡數量",
           "min": 0
         }
       },
@@ -4014,8 +4025,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 more than the number of [[Tome]] assets Daisy Walker controls",
-          "min": 1
+          "prompt": "黛西所擁有的[[書籍]]支援卡數量",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {
@@ -4047,7 +4059,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of clues you have",
+          "prompt": "你的線索數量",
           "min": 0
         }
       },
@@ -4058,7 +4070,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "You have 10 or more resources",
+          "prompt": "你有10個或更多的資源",
           "modified_value": {
             "modifier": -4
           }
@@ -4082,7 +4094,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of clues you have",
+          "prompt": "你的線索數量",
           "scale": 2,
           "min": 0
         }
@@ -4094,7 +4106,7 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "You have 10 or more resources",
+          "prompt": "你有10個或更多的資源",
           "modified_value": {
             "modifier": -8
           }
@@ -4122,7 +4134,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of memories Agnes Baker has collected",
+          "prompt": "艾格尼絲·貝克已收集到的記憶數量",
           "min": 0
         }
       },
@@ -4150,8 +4162,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 more than the number of memories Agnes Baker has collected",
-          "min": 1
+          "prompt": "艾格尼絲·貝克已收集到的記憶數量",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {
@@ -4182,7 +4195,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Cultist]] enemies in the victory display",
+          "prompt": "勝利牌區中的[[異教徒]]敵人數量",
           "min": 0,
           "max": 5
         }
@@ -4194,7 +4207,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "A [[Cultist]] enemy is engaged with you",
+          "prompt": "有[[異教徒]]敵人與你交戰",
           "modified_value": {
             "modifier": -2,
             "reveal_another": true
@@ -4219,8 +4232,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 plus the number of [[Cultist]] enemies in the victory display",
-          "min": 1
+          "prompt": "勝利牌區中的[[異教徒]]敵人數量",
+          "min": 0,
+          "adjustment": 1
         }
       },
       {
@@ -4230,7 +4244,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "A [[Cultist]] enemy is engaged with you",
+          "prompt": "有[[異教徒]]敵人與你交戰",
           "modified_value": {
             "modifier": -3,
             "reveal_another": true

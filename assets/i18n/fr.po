@@ -1750,24 +1750,6 @@ msgstr "XP disponible"
 msgid "Odds Calculator"
 msgstr "Calculateur de probabilités"
 
-msgid "Fail By 2 or Less"
-msgstr "Échec avec une différence de 2 ou moins"
-
-msgid "Fail By 1 or Less"
-msgstr "Échec avec une différence de 1 ou moins"
-
-msgid "Succeed By 1 or More"
-msgstr "Réussite avec une différence de 1 ou plus"
-
-msgid "Succeed By 2 or More"
-msgstr "Réussite avec une différence de 2 ou plus"
-
-msgid "Succeed By 3 or More"
-msgstr "Réussite avec une différence de 3 ou plus"
-
-msgid "Change Scenario"
-msgstr "Changer de scénario"
-
 msgid "Weakness Set"
 msgstr "Ensemble des faiblesses"
 
@@ -1803,16 +1785,6 @@ msgstr "Dépenser deux ressources pour réussir automatiquement"
 
 msgid "Resource cost of the top card on your deck"
 msgstr "Coût en ressource de la carte du dessus de votre deck"
-
-msgid ""
-"Note: chaos tokens that cause additional tokens to be revealed does not "
-"show correct odds for the \"Draw Two Pick One\" and similar multi-draw "
-"situations."
-msgstr ""
-"Remarque : les pions Chaos qui font révéler des pions supplémentaires ne "
-"permettent pas d'obtenir des probabilités correctes dans des cas comme\n"
-"« Révélez un pion, choisissez-en un » ou des cas où vous révélez plusieurs "
-"pions à la fois."
 
 msgid "Deleting"
 msgstr "Suppression en cours"
@@ -1895,18 +1867,6 @@ msgstr "Arcane x2"
 
 msgid "Ally. Arcane"
 msgstr "Allié. Arcane"
-
-msgid "Success"
-msgstr "Réussite"
-
-msgid "Draw Two, Pick One"
-msgstr "En révéler deux, en choisir un"
-
-msgid "Re-Draw After Fail"
-msgstr "Révéler de nouveau après un échec"
-
-msgid "Succeed Twice In A Row"
-msgstr "Deux réussites d'affilée"
 
 #, javascript-format
 msgid "${ things[0] } and ${ things[1] }"
@@ -4028,9 +3988,6 @@ msgstr "Les campagnes peuvent être envoyées sur votre compte Arkham Cards."
 msgid "Uploaded campaigns will be synced between devices."
 msgstr "Les campagnes envoyées seront synchronisées entre les appareils."
 
-msgid "Review records"
-msgstr "Pour examiner vos Notes de Campagne"
-
 msgid "Note campaign achievements"
 msgstr "Noter les résultats de la campagne"
 
@@ -4689,6 +4646,134 @@ msgid ""
 "It can take up to 24hrs before Patreon updates your membership status. If "
 "you are still experiencing problems after 24hrs, please contact Mythos "
 "Busters via Patreon or on the Discord channel for help with this issue."
+msgstr ""
+
+msgid "Skull"
+msgstr ""
+
+msgid "Cultist"
+msgstr ""
+
+msgid "Tablet"
+msgstr ""
+
+msgid "Elder Thing"
+msgstr ""
+
+msgid "Auto-Fail"
+msgstr ""
+
+msgid "Elder Sign"
+msgstr ""
+
+msgid "Number of [[Item]] assets you control"
+msgstr ""
+
+msgid "Your investigator's modifier"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"0: (original effect below)\n"
+"${ originalTokenText }"
+msgstr ""
+
+#, javascript-format
+msgid "${ modifier }, draws another"
+msgstr ""
+
+msgid "Easy difficulty"
+msgstr ""
+
+msgid "Standard difficulty"
+msgstr ""
+
+msgid "Hard difficulty"
+msgstr ""
+
+msgid "Expert difficulty"
+msgstr ""
+
+msgid "— Difficulty —"
+msgstr ""
+
+msgid "— Available Scenarios —"
+msgstr ""
+
+msgid "Scenario settings"
+msgstr ""
+
+msgid "Your investigator modfifier"
+msgstr ""
+
+msgid "Test difficulty"
+msgstr ""
+
+msgid "Modified skill"
+msgstr ""
+
+msgid "${ tokens }/${ total } token"
+msgid_plural "${ tokens }/${ total } tokens"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Show all cards"
+msgstr ""
+
+msgid "Disable to choose individual packs to show"
+msgstr ""
+
+msgid "All cards are shown throughout the app"
+msgstr ""
+
+msgid ""
+"Use these controls to limit which cards are visible while searching, "
+"building decks, or upgrading cards to those in your own collection."
+msgstr ""
+
+msgid "All Cycles and Packs"
+msgstr ""
+
+msgid "Record that..."
+msgstr ""
+
+msgid "Player card entries only"
+msgstr ""
+
+msgid "Accept friend request"
+msgstr ""
+
+msgid "Send friend request"
+msgstr ""
+
+msgid "Reject friend request"
+msgstr ""
+
+msgid "Revoke friend request"
+msgstr ""
+
+msgid "Show upgrades"
+msgstr ""
+
+msgid "Hide Bless/Curse Odds"
+msgstr ""
+
+msgid "Show Bless/Curse Odds"
+msgstr ""
+
+msgid "Faction, Level, Type, Cost"
+msgstr ""
+
+msgid "You cannot have more than 5 level 0 Survivor cards"
+msgstr ""
+
+msgid "You cannot have more than 5 level 0 Guardian cards"
+msgstr ""
+
+msgid "You cannot have more than 5 level 0 Seeker cards"
+msgstr ""
+
+msgid "You cannot have more than 5 level 0 Rogue cards"
 msgstr ""
 
 msgctxt "masculine"
@@ -6040,3 +6125,7 @@ msgstr "Toutes"
 msgctxt "trauma"
 msgid "None"
 msgstr "Aucun"
+
+msgctxt "versus abbreviation"
+msgid "VS"
+msgstr ""

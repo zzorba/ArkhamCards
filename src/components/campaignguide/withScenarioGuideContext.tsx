@@ -45,7 +45,6 @@ export function useScenarioGuideContext(
       scenarioState,
     };
   }, [processedScenario, scenarioState]);
-
   return [campaignContext, scenarioContext, setCampaignServerId];
 }
 

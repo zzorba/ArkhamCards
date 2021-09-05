@@ -89,7 +89,7 @@ function FriendControlsComponent({ user, status, refetchMyProfile, acceptRequest
     const buttons: React.ReactNode[] = [];
     if (status === FriendStatus.RECEIVED || status === FriendStatus.NONE) {
       buttons.push((
-        <RoundButton onPress={onAcceptPress} disabled={!!submitting}>
+        <RoundButton onPress={onAcceptPress} disabled={!!submitting} accessibilityLabel={status === FriendStatus.RECEIVED ? t`Accept friend request` : t`Send friend request`}>
           { submitting === 'accept' ? (
             <ActivityIndicator size="small" animating color={colors.D30} />
           ) : (
@@ -104,7 +104,7 @@ function FriendControlsComponent({ user, status, refetchMyProfile, acceptRequest
     }
     if (status && status !== FriendStatus.NONE) {
       buttons.push((
-        <RoundButton onPress={onRejectPress} disabled={!!submitting}>
+        <RoundButton onPress={onRejectPress} disabled={!!submitting} accessibilityLabel={status === FriendStatus.RECEIVED ? t`Reject friend request` : t`Revoke friend request`}>
           { submitting === 'reject' ? (
             <ActivityIndicator size="small" animating color={colors.D30} />
           ) : (
@@ -147,7 +147,7 @@ function AccessControlsComponent({ user, hasAccess, inviteUser, removeUser }: {
   return (
     <View style={styles.button}>
       { hasAccess ? (
-        <RoundButton onPress={onRemovePress} disabled={!!submitting}>
+        <RoundButton onPress={onRemovePress} disabled={!!submitting} accessibilityLabel={t`Reject friend request`}>
           { submitting === 'remove' ? (
             <ActivityIndicator size="small" animating color={colors.D30} />
           ) : (
@@ -155,7 +155,7 @@ function AccessControlsComponent({ user, hasAccess, inviteUser, removeUser }: {
           ) }
         </RoundButton>
       ) : (
-        <RoundButton onPress={onInvitePress} disabled={!!submitting}>
+        <RoundButton onPress={onInvitePress} disabled={!!submitting} accessibilityLabel={t`Send friend request`}>
           { submitting === 'invite' ? (
             <ActivityIndicator size="small" animating color={colors.D30} />
           ) : (

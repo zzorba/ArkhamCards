@@ -55,7 +55,6 @@ import useAddCampaignNoteSectionDialog from '@components/campaign/useAddCampaign
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { LatestDeckRedux } from '@data/local/types';
 import ActionButton from '@components/campaignguide/prompts/ActionButton';
-import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface CampaignChoice {
   selection: CampaignSelection;

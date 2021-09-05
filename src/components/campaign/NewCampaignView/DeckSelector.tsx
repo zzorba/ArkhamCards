@@ -1,5 +1,5 @@
 import React, { useCallback, useContext } from 'react';
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 
 import CampaignDeckList, { CampaignDeckListProps } from '../CampaignDeckList';
 import { Deck, DeckId } from '@actions/types';
@@ -9,7 +9,6 @@ import { DeckActions, useDeckActions } from '@data/remote/decks';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import AppIcon from '@icons/AppIcon';
 import COLORS from '@styles/colors';
 

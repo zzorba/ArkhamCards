@@ -18,6 +18,7 @@ import {
 interface SettingsState {
   tabooId?: number;
   singleCardView?: boolean;
+  ignore_collection?: boolean;
   alphabetizeEncounterSets?: boolean;
   colorblind?: boolean;
   lang?: string;
@@ -35,6 +36,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   singleCardView: false,
   alphabetizeEncounterSets: false,
   colorblind: false,
+  ignore_collection: false,
   lang: 'system',
   fontScale: undefined,
   justifyContent: false,
@@ -84,6 +86,11 @@ export default function(
           return {
             ...state,
             alphabetizeEncounterSets: action.value,
+          };
+        case 'ignore_collection':
+          return {
+            ...state,
+            ignore_collection: action.value,
           };
         case 'single_card':
           return {

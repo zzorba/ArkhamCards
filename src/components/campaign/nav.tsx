@@ -54,8 +54,8 @@ export function showGuideCampaignLog(
   campaignId: CampaignId,
   campaignGuide: CampaignGuide,
   campaignLog: GuidedCampaignLog,
-  standalone?: boolean,
-  scenarioId?: string,
+  { standalone, hideChaosBag }: { standalone: boolean; hideChaosBag?: boolean },
+  scenarioId: string | undefined,
 ) {
   Navigation.push<CampaignLogProps>(componentId, {
     component: {
@@ -66,6 +66,7 @@ export function showGuideCampaignLog(
         scenarioId,
         campaignGuide,
         standalone,
+        hideChaosBag,
       },
       options: {
         topBar: {

@@ -1653,24 +1653,6 @@ msgstr ""
 msgid "Odds Calculator"
 msgstr ""
 
-msgid "Fail By 2 or Less"
-msgstr ""
-
-msgid "Fail By 1 or Less"
-msgstr ""
-
-msgid "Succeed By 1 or More"
-msgstr ""
-
-msgid "Succeed By 2 or More"
-msgstr ""
-
-msgid "Succeed By 3 or More"
-msgstr ""
-
-msgid "Change Scenario"
-msgstr ""
-
 msgid "Weakness Set"
 msgstr ""
 
@@ -1705,12 +1687,6 @@ msgid "Spend two resources to automatically succeed"
 msgstr ""
 
 msgid "Resource cost of the top card on your deck"
-msgstr ""
-
-msgid ""
-"Note: chaos tokens that cause additional tokens to be revealed does not "
-"show correct odds for the \"Draw Two Pick One\" and similar multi-draw "
-"situations."
 msgstr ""
 
 msgid "Deleting"
@@ -1791,18 +1767,6 @@ msgid "Arcane x2"
 msgstr ""
 
 msgid "Ally. Arcane"
-msgstr ""
-
-msgid "Success"
-msgstr ""
-
-msgid "Draw Two, Pick One"
-msgstr ""
-
-msgid "Re-Draw After Fail"
-msgstr ""
-
-msgid "Succeed Twice In A Row"
 msgstr ""
 
 #, javascript-format
@@ -3696,9 +3660,6 @@ msgstr ""
 msgid "Uploaded campaigns will be synced between devices."
 msgstr ""
 
-msgid "Review records"
-msgstr ""
-
 msgid "Note campaign achievements"
 msgstr ""
 
@@ -4282,6 +4243,134 @@ msgid ""
 "It can take up to 24hrs before Patreon updates your membership status. If "
 "you are still experiencing problems after 24hrs, please contact Mythos "
 "Busters via Patreon or on the Discord channel for help with this issue."
+msgstr ""
+
+msgid "Skull"
+msgstr ""
+
+msgid "Cultist"
+msgstr ""
+
+msgid "Tablet"
+msgstr ""
+
+msgid "Elder Thing"
+msgstr ""
+
+msgid "Auto-Fail"
+msgstr ""
+
+msgid "Elder Sign"
+msgstr ""
+
+msgid "Number of [[Item]] assets you control"
+msgstr ""
+
+msgid "Your investigator's modifier"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"0: (original effect below)\n"
+"${ originalTokenText }"
+msgstr ""
+
+#, javascript-format
+msgid "${ modifier }, draws another"
+msgstr ""
+
+msgid "Easy difficulty"
+msgstr ""
+
+msgid "Standard difficulty"
+msgstr ""
+
+msgid "Hard difficulty"
+msgstr ""
+
+msgid "Expert difficulty"
+msgstr ""
+
+msgid "— Difficulty —"
+msgstr ""
+
+msgid "— Available Scenarios —"
+msgstr ""
+
+msgid "Scenario settings"
+msgstr ""
+
+msgid "Your investigator modfifier"
+msgstr ""
+
+msgid "Test difficulty"
+msgstr ""
+
+msgid "Modified skill"
+msgstr ""
+
+msgid "${ tokens }/${ total } token"
+msgid_plural "${ tokens }/${ total } tokens"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Show all cards"
+msgstr ""
+
+msgid "Disable to choose individual packs to show"
+msgstr ""
+
+msgid "All cards are shown throughout the app"
+msgstr ""
+
+msgid ""
+"Use these controls to limit which cards are visible while searching, "
+"building decks, or upgrading cards to those in your own collection."
+msgstr ""
+
+msgid "All Cycles and Packs"
+msgstr ""
+
+msgid "Record that..."
+msgstr ""
+
+msgid "Player card entries only"
+msgstr ""
+
+msgid "Accept friend request"
+msgstr ""
+
+msgid "Send friend request"
+msgstr ""
+
+msgid "Reject friend request"
+msgstr ""
+
+msgid "Revoke friend request"
+msgstr ""
+
+msgid "Show upgrades"
+msgstr ""
+
+msgid "Hide Bless/Curse Odds"
+msgstr ""
+
+msgid "Show Bless/Curse Odds"
+msgstr ""
+
+msgid "Faction, Level, Type, Cost"
+msgstr ""
+
+msgid "You cannot have more than 5 level 0 Survivor cards"
+msgstr ""
+
+msgid "You cannot have more than 5 level 0 Guardian cards"
+msgstr ""
+
+msgid "You cannot have more than 5 level 0 Seeker cards"
+msgstr ""
+
+msgid "You cannot have more than 5 level 0 Rogue cards"
 msgstr ""
 
 msgctxt "masculine"
@@ -5608,4 +5697,8 @@ msgstr ""
 
 msgctxt "trauma"
 msgid "None"
+msgstr ""
+
+msgctxt "versus abbreviation"
+msgid "VS"
 msgstr ""

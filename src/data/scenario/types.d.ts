@@ -360,6 +360,8 @@ export interface AddRemoveChaosTokenEffect {
 export interface FreeformCampaignLogEffect {
   type: "freeform_campaign_log";
   section: "campaign_notes";
+  scenario_id?: string;
+  index?: number;
 }
 export interface UpgradeDecksEffect {
   type: "upgrade_decks";
@@ -1084,6 +1086,7 @@ export interface CounterChaosTokenValue {
     max?: number;
     scale?: number;
     reveal_another?: boolean;
+    adjustment?: number;
   };
 }
 export interface ConditionChaosTokenValue {

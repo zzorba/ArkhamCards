@@ -133,8 +133,12 @@ function splitCards(cardIds: CardId[], cards: CardsMap): SplitCards {
   const otherTypes: CardSplitType[] = ['Event', 'Skill', 'Treachery', 'Enemy'];
   otherTypes.forEach(type_code => {
     const typeCards = filterBy(cardIds, cards, 'type_code', type_code.toLowerCase());
-    if (type_code !== 'Assets' && typeCards.length > 0) {
-      result[type_code] = typeCards;
+    const combinedCards = type_code === 'Treachery' ? [
+      ...typeCards,
+      ...filterBy(cardIds, cards, 'type_code', 'investigator'),
+    ] : typeCards;
+    if (type_code !== 'Assets' && combinedCards.length > 0) {
+      result[type_code] = combinedCards;
     }
   });
   return result;

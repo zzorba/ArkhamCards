@@ -37,7 +37,7 @@
       {
         "id": "Abilities_Triggered_Abilities",
         "title": "觸發能力",
-        "text": "觸發能力在效果文字前，會有[free]圖標、[reaction]圖標或[action]圖標。如果該能力有發動費用或條件，則會寫在這些圖標之後。玩家必須滿足觸發條件，才能主動觸發這些能力。觸發能力分為三類：\n免費觸發能力([free])\n– [free]觸發能力可以在任意一位玩家的時間段觸發。(詳見\"[附錄II：時間與流程](#Appendix_II_Timing_and_Gameplay)\"中，完整的玩家時間段。)\n反應觸發能力([reaction])\n– [reaction]觸發能力會有特定的觸發條件，當這個條件被滿足時才能觸發。<i>例如：\"[reaction]在你擊敗一名敵人之後：\"</i>\n- [reaction]能力的時間點如果以\"在……時(when)\"來描述，則意味著這個條件被達成，但是在其結算之前觸發效果。\n- [reaction]能力的時間點如果以\"在……之後(after)\"來描述，則意味著這個條件達成並且完成結算之後觸發效果。\n- 每個[reaction]能力在特定條件達成時只能觸發一次。<i>例如，某能力的觸發條件為\"在X發生後\"，則每次X發生後，都可以使用一次該能力。</i>\n行動觸發能力([action])\n- [action]觸發能力可以在調查階段中，玩家的回合花費一個行動來主動觸發。並且每個[action]能力都要花費1個行動。\n所有的觸發能力都遵守以下規則：\n- 玩家控制帶有觸發能力的卡牌時，由該玩家來決定該能力是否在其指示的時機觸發。\n- 觸發能力必須在啟動後能改變遊戲，並且費用完全支付(如果有的話，並且請算入任何費用修正值)的情況下，才能觸發。支付費用造成的資源減少，或者與其他任何能力的互動，不視為改變了遊戲。\n- 當能力被啟動後，玩家必須盡可能地結算其效果，除非效果文字帶有\"可以(may)\"字樣(詳見\"[可以](#May)\")。\n調查員可以使用以下來源的觸發能力([fast]、[reaction]和[action])：\n- 如果卡牌在該調查員的場上，且處於該調查員的控制中(包括該調查員的調查員卡)，則卡牌的觸發能力可以使用。\n- 所有在場，且與調查員處於同一地點的冒險卡，卡上的觸發能力都能被使用。包括了：所在的地點卡、該地點上放置的遭遇卡、同一地點所有調查員威脅區域中的遭遇卡。\n- 當前場景卡和密謀卡上的觸發能力都可以被使用。\n- 如果一張卡牌上有特殊說明，允許玩家在特殊情況下使用卡上的觸發能力，那也可以視為是有效來源之一。"
+        "text": "觸發能力在效果文字前，會有[free]圖標、[reaction]圖標或[action]圖標。如果該能力有發動費用或條件，則會寫在這些圖標之後。玩家必須滿足觸發條件，才能主動觸發這些能力。觸發能力分為三類：\n免費觸發能力([free])\n- [free]觸發能力可以在任意一位玩家的時間段觸發。(詳見\"[附錄II：時間與流程](#Appendix_II_Timing_and_Gameplay)\"中，完整的玩家時間段。)\n反應觸發能力([reaction])\n- [reaction]觸發能力會有特定的觸發條件，當這個條件被滿足時才能觸發。<i>例如：\"[reaction]在你擊敗一名敵人之後：\"</i>\n- [reaction]能力的時間點如果以\"在……時(when)\"來描述，則意味著這個條件被達成，但是在其結算之前觸發效果。\n- [reaction]能力的時間點如果以\"在……之後(after)\"來描述，則意味著這個條件達成並且完成結算之後觸發效果。\n- 每個[reaction]能力在特定條件達成時只能觸發一次。<i>例如，某能力的觸發條件為\"在X發生後\"，則每次X發生後，都可以使用一次該能力。</i>\n行動觸發能力([action])\n- [action]觸發能力可以在調查階段中，玩家的回合花費一個行動來主動觸發。並且每個[action]能力都要花費1個行動。\n所有的觸發能力都遵守以下規則：\n- 玩家控制帶有觸發能力的卡牌時，由該玩家來決定該能力是否在其指示的時機觸發。\n- 觸發能力必須在啟動後能改變遊戲，並且費用完全支付(如果有的話，並且請算入任何費用修正值)的情況下，才能觸發。支付費用造成的資源減少，或者與其他任何能力的互動，不視為改變了遊戲。\n- 當能力被啟動後，玩家必須盡可能地結算其效果，除非效果文字帶有\"可以(may)\"字樣(詳見\"[可以](#May)\")。\n調查員可以使用以下來源的觸發能力([fast]、[reaction]和[action])：\n- 如果卡牌在該調查員的場上，且處於該調查員的控制中(包括該調查員的調查員卡)，則卡牌的觸發能力可以使用。\n- 所有在場，且與調查員處於同一地點的冒險卡，卡上的觸發能力都能被使用。包括了：所在的地點卡、該地點上放置的遭遇卡、同一地點所有調查員威脅區域中的遭遇卡。\n- 當前場景卡和密謀卡上的觸發能力都可以被使用。\n- 如果一張卡牌上有特殊說明，允許玩家在特殊情況下使用卡上的觸發能力，那也可以視為是有效來源之一。"
       },
       {
         "id": "Abilities_Keywords",
@@ -64,7 +64,7 @@
   {
     "id": "Action",
     "title": "行動",
-    "text": "在一位調查員的回合中，最多可以執行<b>三個</b>行動。執行行動時，必須先支付所需的費用。然後再結算該行動所帶來的後果。\n- 如果一位調查員被要求失去1個或更多行動，他在該輪中失去這個數量的行動。\nSome card abilities grant investigators \"additional actions.\" If an investigator has one or more additional actions during his or her turn, the first action he or she takes that is able to qualify as that additional action automatically uses that additional action.\n<i>For example: Daisy Walker reads: \"You may take an additional action during your turn, which can only be used on Tome [action] abilities.\" The first time Daisy performs a Tome [action] ability each turn, it automatically uses up that additional action, and not one of Daisy’s three standard actions.</i>\nIf an action qualifies as more than one of an investigator’s additional actions, he or she may choose which additional action is used.\nIf an effect causes an investigator to lose one or more actions, that investigator has that many fewer standard actions to take that turn (the investigator’s three standard actions are the ones that are \"lost\" first). If an investigator only has additional actions remaining, those are then lost, in an order of the investigator’s choosing.\n<i>For example: An effect causes Daisy to lose two actions. She has two fewer standard actions to take during her turn. She cannot choose to \"lose\" her additional action unless it is the only action she has remaining.</i>\n如果要查看完整的行動列表，詳見\"[2.2.1當前調查員如果還有行動剩餘，可以執行1個行動。](#Investigation_Phase)\"。"
+    "text": "在一位調查員的回合中，最多可以執行<b>三個</b>行動。執行行動時，必須先支付所需的費用。然後再結算該行動所帶來的後果。\n- 如果一位調查員被要求失去1個或更多行動，他在該輪中失去這個數量的行動。\n部分卡片能力給予調查員\"額外的行動\"。如果調查員在他或她的回合中有一個或多個額外行動，則其採取的第一個符合該額外行動條件的行動將自動使用該額外行動。\n<i>例如：[黛西·沃克](/card/01002)寫道：\"你回合中，你可以再執行一個行動，這個行動只能用於啟動[[書籍]]的[action]能力。\"黛西每回合第一次執行[[書籍]]的[action]能力時，會自動使用該額外行動，而不是黛西的三個標準行動中的一個。</i>\n如果一個行動符合調查員的多個額外行動，他或她可以選擇使用哪個額外行動。\n如果一個效果導致調查員失去一個或多個行動，將會減少該調查員在該回合中能夠執行的標準行動次數(調查員的三個標準行動是最先\"失去\"的行動)。如果調查員只剩下額外的行動，這些行動就會按照調查員選擇的順序失去。\n<i>例如：如果一個效果導致黛西失去兩個行動。在她的回合中，她能執行的標準行動就少了兩個。她不能選擇\"失去\"她的額外行動，除非這是她剩下的唯一行動。</i>\n如果要查看完整的行動列表，詳見\"[2.2.1當前調查員如果還有行動剩餘，可以執行1個行動。](#Investigation_Phase)\"。"
   },
   {
     "id": "Activate_Action",
@@ -84,7 +84,7 @@
   {
     "id": "Additional_Costs",
     "title": "額外費用",
-    "text": "部分卡牌會帶有附加效果，為了執行這些附加效果，玩家必須支付額外費用。常見的語句包括：\"你必須(支付的額外費用)，才能(執行的附加效果)\"，當然也可能有其他類似的語句。\n額外費用可以在支付卡牌費用以外的時機支付。(例如：在一個效果執行過程中。)但如果附加效果需要執行，玩家必須先支付該附加效果對應的額外費用。如果額外費用無法支付，則附加效果也無法執行。\n如果在<b>強制</b>效果或某個強制性的指令中(例如《劇本手冊》的指令，或場景/密謀卡背面效果)，要求玩家結算一個效果，且該效果帶有額外費用，玩家可以選擇不支付額外費用，但對應效果也無法執行。\n<i>例如：\"灰堆\"皮特正在大學廣場，他啟動了杜克的第二個能力：\"[action]消耗杜克：<b>調查</b>。你的[intellect]基礎值變為4。在使用該效果調查前，你可以立刻移動到一個連接地點。\"為了使用這個附加效果，皮特必須支付一個行動，並消耗杜克。然後皮特使用能力進入奧恩圖書館並調查。但是奧恩圖書館的效果是\"調查奧恩圖書館時，必須額外花費1個行動。\"這是一個帶有額外費用的附加效果，且只有在執行調查時才需要支付額外費用。如果皮特拒絕支付額外的一個行動，則杜克的調查效果會被取消，但移動效果依然有效。</i>"
+    "text": "部分卡牌會帶有附加效果，為了執行這些附加效果，玩家必須支付額外費用。常見的語句包括：\"你必須(支付的額外費用)，才能(執行的附加效果)\"，當然也可能有其他類似的語句。\n額外費用可以在支付卡牌費用以外的時機支付。(例如：在一個效果執行過程中。)但如果附加效果需要執行，玩家必須先支付該附加效果對應的額外費用。如果額外費用無法支付，則附加效果也無法執行。\n如果在<b>強制</b>效果或某個強制性的指令中(例如《劇本手冊》的指令，或場景/密謀卡背面效果)，要求玩家結算一個效果，且該效果帶有額外費用，玩家可以選擇不支付額外費用，但對應效果也無法執行。\n<i>例如：[\"灰堆\"皮特](/card/02005)正在大學廣場，他啟動了[杜克](/card/02014)的第二個能力：\"[action]消耗杜克：<b>調查</b>。你的[intellect]基礎值變為4。在使用該效果調查前，你可以立刻移動到一個連接地點。\"為了使用這個附加效果，皮特必須支付一個行動，並消耗杜克。然後皮特使用能力進入[奧恩圖書館](/card/02050)並調查。但是奧恩圖書館的效果是\"調查奧恩圖書館時，必須額外花費1個行動。\"這是一個帶有額外費用的附加效果，且只有在執行調查時才需要支付額外費用。如果皮特拒絕支付額外的一個行動，則杜克的調查效果會被取消，但移動效果依然有效。</i>"
   },
   {
     "id": "Agenda_Deck",
@@ -93,7 +93,7 @@
   },
   {
     "id": "Alert",
-    "cycle": ["tfa", "tcu", "tde"],
+    "cycle": [ "tfa", "tcu", "tde" ],
     "title": "警戒",
     "text": "每當調查員在試圖躲避一名帶有\"警戒\"關鍵詞的敵人時，技能檢定失敗後，在結算該技能檢定帶來的所有效果後，該敵人對進行躲避的這位調查員執行一次攻擊。敵人執行警戒攻擊後不被消耗。不論該敵人是否與進行躲避的調查員交戰，此類攻擊均會發生。"
   },
@@ -104,8 +104,8 @@
   },
   {
     "id": "As_if",
-    "title": "As if…",
-    "text": "Some card effects allow an investigator to resolve an ability or perform an action as if a certain aspect of the game state were altered, using the text \"as if…\" to indicate the difference. The indicated ability or action is resolved with the altered game state in mind, but the actual game state remains unchanged.\n- The game state is considered to be altered throughout the duration of the indicated ability or action, from its initiation (including the paying of its costs, attacks of opportunity, etc) through the resolution of each aspect of its effect, and up until its completion.\n- Other card abilities or game effects resolved during this duration are also resolved with the altered game state in mind.\n- The game state is not physically altered in any way. (e.g. if you are considered to be at a location, you do not move your mini-card to that location, enemies at that location do not automatically move to your threat area, etc.)\n<i>For example: [Luke Robinson](/card/06004) wants to play [Preposterous Sketches](/card/02186), but is at a location with no clues. One of the locations next to him has a clue on it, so he uses his ability to play Preposterous Sketches as if he were at that location and engaged with each enemy at that location. The game state is considered to be altered in this way throughout the playing of Preposterous Sketches, from its initiation to its resolution. Among other things, this might mean: (a) if there is an enemy at that location, playing Preposterous Sketches would provoke an attack of opportunity, (b) if that location has an ability that would alter the cost of playing the card, it would do so, and (c) other card abilities that might trigger from Luke drawing 1 or more cards would do so as if he were at that connecting location and engaged with that enemy, and so on and so forth. Once Preposterous Sketches has finished resolving and is placed in the discard pile, Luke is no longer considered to be at that location and engaged with each enemy at that location.</i>"
+    "title": "視為、如同……",
+    "text": "部分卡牌效果允許調查員結算一個能力或執行一個動作，就好像遊戲狀態的某個方面被改變了一樣，使用文字\"視為……\"、\"如同……\"來表示差異。結算該能力或動作時，會在遊戲狀態虛擬地改變的情況下進行計算，但實際的遊戲狀態保持不變。\n- 遊戲狀態被認為在指定能力或行動的整個持續時間內發生了改變，從其開始(包括費用的支付、趁亂攻擊等)到其各種效果的結算，直到完成。\n- 在此期間結算的其他卡牌能力或遊戲效果也會在遊戲狀態改變的情況下結算。\n- 遊戲狀態不會有任何方式的實質改變。(例如：如果你被視為位於某個位置，不會將你的調查員迷你卡移動到該位置，該位置的敵人不會移動到你的威脅區域……等)\n<i>例如：[Luke Robinson](/card/06004)想打出[荒唐的素描像](/card/02186)，但他所在地點沒有線索。與他所在地點連接的其中一個地點上有線索，所以他使用自己的能力來打出荒唐的素描像，如同他位於該地點並與該地點的所有敵人交戰。在打出荒唐的素描像的整個過程中，從開始到結束，遊戲狀態都被視為以這種方式改變。其中，這可能導致：(a)如果該地點有敵人，打出荒唐的素描像會引起趁亂攻擊；(b)如果該地點有能力會改變打出卡牌的費用，則會執行；並且(c)因Luke抽取卡牌而可能觸發的其他卡牌能力會觸發，並且如同他位於該連接地點並與該敵人交戰一樣；依此類推。荒唐的素描像完成結算並放入棄牌堆後，Luke就不再被視為位於該地點，且不再與該地點的所有敵人交戰。</i>"
   },
   {
     "id": "Asset_Cards",
@@ -124,8 +124,8 @@
     "rules": [
       {
         "id": "Control_of_Attachments",
-        "title": "Control of Attachments",
-        "text": "An attachment may change control depending on the card it is attached to.\n- If an investigator attaches a player card to a player card he or she controls, he or she retains control of the attachment.\n- If an investigator attaches a player card to a player card another investigator controls, that other investigator takes control of the attachment.\n- If a player card with 1 or more player attachments changes control, the card’s new controller takes control of those player attachments.\n- If an investigator attaches a player card to an encounter card, he or she retains control of the attachment (but does not gain control of the attached encounter card)."
+        "title": "疊加卡的控制權",
+        "text": "疊加卡的控制權會根據被它疊加的卡而改變。\n- 如果調查員將玩家卡疊加到自己控制的玩家卡上，則其保留對疊加卡的控制權。\n- 如果調查員將玩家卡疊加到另一位調查員控制的玩家卡上，則另一位調查員控制該疊加卡。\n- 如果帶有1個或多個疊加卡的玩家卡的控制權改變，則取得該卡控制權的調查員控制這些疊加卡。\n- 如果調查員將玩家卡疊加到遭遇卡上，則其保留對疊加卡的控制權(但不會獲得被疊加的遭遇卡的控制權)。"
       }
     ]
   },
@@ -142,7 +142,7 @@
   {
     "id": "Automatic_Failure_Success",
     "title": "自動失敗/成功",
-    "text": "部分卡牌或標記的能力可能會造成一次技能檢定自動失敗或自動成功。如果技能檢定自動失敗或自動成功，則根據\"[技能檢定流程](#Skill_Test_Timing)\"的\"步驟6\"來結算。\n- 如果技能檢定自動失敗，則該次技能檢定調查員的技能值視為0。\n- 如果技能檢定自動成功，則該次技能檢定技能難度視為0。\nSome card effects make an investigator automatically succeed or automatically fail a skill test. If this occurs, depending on the timing of such an effect, certain steps of the skill test may be skipped in their entirety.\n- If it is known that an investigator automatically succeeds or fails at a skill test before Step 3 (\"Reveal chaos token\") occurs, that step is skipped, along with Step 4. No chaos token(s) are revealed from the chaos bag, and the investigator immediately moves to Step 5. All other steps of the skill test resolve as normal.\n- If a chaos token effect causes an investigator to automatically succeed or fail at a skill test, continue with Steps 3 and 4, as normal.\n- If an ability \"automatically evades\" 1 or more enemies, this is not the same as automatically succeeding at an evasion attempt. As per the entry on \"Evade\" in the Rules Reference (詳見\"[躲避，躲避行動](#Evade)\"), if an ability automatically evades 1 or more enemies, no skill test is made for the evasion attempt whatsoever. Consequentially, because no skill test is made, it is not considered a \"successful\" evasion. The investigator simply follows the steps for evading an enemy (exhausting it and breaking its engagement).\n<i>For example: Patrice uses the ability on Hope, which reads: \"[action] If Hope is ready, exhaust or discard him: <b>Evade.</b> Attempt to evade with a base [agility] value of 5. (If you discarded Hope, this test is automatically successful.)\" If Patrice chooses to discard Hope, the skill test automatically succeeds before chaos tokens are revealed; therefore Steps 3 and 4 of the skill test are skipped. However, the skill test still takes place. Cards may still be committed to the test, and the investigator’s total modified skill value is still determined, as it may have some bearing on other card abilities. However, if Patrice instead uses the ability on Stray Cat, which reads: \"[fast] Discard Stray Cat: Automatically evade a non-<b>Elite</b> enemy at your location,\" no skill test is made whatsoever.</i>"
+    "text": "部分卡牌或標記的能力可能會造成一次技能檢定自動失敗或自動成功。如果技能檢定自動失敗或自動成功，則根據\"[技能檢定流程](#Skill_Test_Timing)\"的\"步驟6\"來結算。\n- 如果技能檢定自動失敗，則該次技能檢定調查員的技能值視為0。\n- 如果技能檢定自動成功，則該次技能檢定技能難度視為0。\n部分卡片效果會使調查員自動通過技能檢定或自動失敗。如果發生這種情況，根據這種效果的流程，可能導致跳過技能檢定的某些步驟。\n- 如果調查員在步驟3(\"抽取混亂標記\")發生之前得知技能檢定自動成功或失敗了，則跳過步驟3以及步驟4。不會從混亂袋中抽出任何混亂標記，調查員直接進入步驟5。所有其他技能檢定的步驟正常結算。\n- 如果混亂標記的效果導致調查員在技能檢定中自動成功或失敗，則照常進行步驟3和步驟4。\n- 如果有能力\"自動躲避\"了1個或更多敵人，這與躲避檢定時的自動成功不同。根據規則詳解中\"躲避\"的條目(詳見\"[躲避，躲避行動](#Evade)\")，如果有能力自動躲避1個或更多的敵人，則無需進行任何技能檢定。因此，由於沒有進行技能檢定，因此不被視為\"成功\"的躲避。調查員只需進行躲避敵人的步驟(消耗該敵人並解除交戰狀態)。\n<i>例如：[Patrice](/card/06005)使用[Hope](/card/06031)上的能力，文字描述為：\"[action]如果Hope準備，消耗或丟棄該卡：<b>躲避</b>。以基礎[agility]值5進行躲避。(如果你丟棄Hope，此檢定自動成功。)\"如果Patrice選擇丟棄Hope，在抽出任何混亂標記之前，此技能檢定即自動成功；因此，技能測試的步驟3和步驟4會被跳過。但是，仍然視為有進行了一次技能檢定。仍然可以將卡牌投入該次檢定中，計算調查員修正後的技能值仍然會被計算(可能會對其他卡牌的能力產生影響)。但是，如果Patrice改為使用[野貓](/card/01076)上的能力，其文字描述為：\"[fast]丢棄野貓：自動躲避你所在地點的一名非[[精英]]敵人。\"，則不會進行技能檢定。</i>"
   },
   {
     "id": "Base_Value",
@@ -161,15 +161,15 @@
   },
   {
     "id": "Bless_and_Curse_Tokens",
-    "cycle": ["tic"],
+    "cycle": [ "tic" ],
     "title": "Bless and Curse Tokens",
     "text": "This expansion introduces two new kinds of chaos tokens: bless ([bless]) tokens and curse ([curse]) tokens. By default, the chaos bag does not contain any [bless] or [curse] tokens. However, certain card effects can add these tokens or remove them from the chaos bag.\n- [bless] tokens revealed during a skill test have the following effects: \"+2. Reveal another token. Instead of returning this token to the chaos bag, return it to the token pool.\" No more than 10 total [bless] tokens can be included in the chaos bag or sealed on cards in play at any given time.\n- [curse] tokens revealed during a skill test have the following effects: \"–2. Reveal another token. Instead of returning this token to the chaos bag, return it to the token pool.\" No more than 10 total [curse] tokens can be included in the chaos bag or sealed on cards in play at any given time.\n- [bless] or [curse] tokens revealed outside of a skill test have no effect on their own unless otherwise specified by a card effect.\nFAQ:\n- <i>Do [bless] and [curse] tokens have a modifier or value if they are revealed outside of a skill test?</i> No. [bless] and [curse] tokens revealed outside of a skill test have no modifier or value.\n- <i>If adding a certain number of [bless] or [curse] tokens to the chaos bag is part of an ability's effect, and there are not enough [bless] or [curse] tokens remaining to fulfill that effect, what happens?</i> You perform as much of the ability as you can, adding [bless] or [curse] tokens until there are none left to add.\n- <i>If adding a certain number of [bless] or [curse] tokens to the chaos bag is part of a card/ability's cost, and there are not enough [bless] or [curse] tokens remaining to fulfill that cost, what happens?</i> If the cost cannot be paid, the card/ability therefore cannot be played/triggered.\n- <i>During a campaign, do [bless] and [curse] tokens remain in the chaos bag from scenario to scenario?</i> No, [bless] and [curse] tokens do not carry over from scenario to scenario."
   },
   {
     "id": "Bonded",
-    "cycle": ["tcu", "tde"],
-    "title": "Bonded",
-    "text": "Cards with the bonded keyword are linked to another player card. They have no level and therefore are not available as deckbuilding options. Instead, the card to which they are bonded (which is listed in parentheses next to this keyword) brings the bonded card into the game.\nIf your deck contains a card that summons one or more bonded cards, those bonded cards are set aside at the start of each game.\nIf a weakness with the bonded keyword is added to an investigator's deck, hand, threat area, or play area, it does not remain a part of that investigator's deck for the rest of the campaign (unlike other weaknesses). It starts each game set aside with that investigator's other bonded cards.\n<i>For example: Hope, Zeal, and Augur all have the \"bonded (Miss Doyle)\" keyword. This means each of those cards is bonded to the card Miss Doyle. Hope, Zeal, and Augur each have no level and are therefore not available as options to include when building your deck. However, Miss Doyle summons each of these cards when she is played. Therefore, a player with Miss Doyle in their deck should set aside Hope, Zeal, and Augur at the start of each game. These cards are not part of that investigator's deck and do not count towards their deck size.</i>\nIf an investigator’s deck contains a card that summons one or more bonded cards, those bonded cards are set aside at the start of each game. The number of copies of each different bonded card that are set aside in this way is equal to the number of copies of that were included in the product in which that bonded card was introduced. The number of cards in your deck that summon the bonded card in question does not factor into this limit.\n<i>For example: An investigator may only have 3 copies of Soothing Melody set aside at the start of the game. Similarly, an investigator may only have 1 Essence of the Dream set aside at the start of the game, regardless of how many copies of Dream Diary they include in their deck.</i>"
+    "cycle": [ "tcu", "tde" ],
+    "title": "綁定",
+    "text": "帶有綁定關鍵詞的卡牌與另一張玩家卡有關聯。這類卡牌沒有等級，因此你在構建牌組時不可以選擇它。這類卡牌會被其綁定的卡牌(卡牌名稱列在\"綁定\"關鍵詞旁邊的括號內)召喚到遊戲中。\n如果你的牌組的卡牌能夠召喚至少1張綁定卡牌，每場遊戲開始時必須將這些綁定卡牌放在一邊。\nIf a weakness with the bonded keyword is added to an investigator's deck, hand, threat area, or play area, it does not remain a part of that investigator's deck for the rest of the campaign (unlike other weaknesses). It starts each game set aside with that investigator's other bonded cards.\n<i>For example: Hope, Zeal, and Augur all have the \"bonded (Miss Doyle)\" keyword. This means each of those cards is bonded to the card Miss Doyle. Hope, Zeal, and Augur each have no level and are therefore not available as options to include when building your deck. However, Miss Doyle summons each of these cards when she is played. Therefore, a player with Miss Doyle in their deck should set aside Hope, Zeal, and Augur at the start of each game. These cards are not part of that investigator's deck and do not count towards their deck size.</i>\n如果調查員的牌組中有卡牌能召喚一張或多張綁定卡，這些綁定卡在每局遊戲開始時會放在一旁。以這種方式放在一旁的每種綁定卡的數量等於該綁定卡的擴充包裡的綁定卡數量。牌組中能召喚綁定卡的卡牌數量不會改變此限制。\n<i>例如：在遊戲開始時，調查員放在一旁的[舒緩旋律](/card/05314)只能有3張。同樣地，調查員在遊戲開始時只能有1張[夢之精華](/card/06113)放在一旁，無論牌組中有多少張[夢境日記](/card/06112)。</i>"
   },
   {
     "id": "Campaign_Play",
@@ -179,7 +179,7 @@
       {
         "id": "Experience",
         "title": "經驗值",
-        "text": "在完成一次冒險之後，調查員可以使用獲得的經驗值來購買新的卡牌，以升級其牌組。請按照以下步驟來執行：\n1. <b>結算獲得的經驗值數量。</b>每位調查員獲得等同勝利牌區中所有卡牌上勝利點數的總和，加上或減去每個結局帶來的加成或懲罰。這個數值再加上之前的冒險中未花費的經驗值，就是這次冒險結束時可以花費的經驗值。\n2. <b>購買新卡牌。</b>調查員可以花費經驗值來購買新卡牌，以加強其牌組。卡牌費用等於其等級(等級是卡牌左上角的白點數量)。當購買新卡牌時，遵守以下規則：\n- 調查員卡背面的\"牌組構建需求\"必須遵守。調查員只能購買其有權購買的卡牌。牌組的卡牌張數需要維持一致，所以你每買入一張卡牌，就要從牌組中移除一張卡牌。弱點卡和必須加入調查員牌組的卡牌不能被移除。\n- 每張卡牌的費用等同於其等級，<i>至少為1點經驗值</i>(購買等級0的卡牌也花費1點經驗)。卡牌費用下方的白點表示其等级。\n- When purchasing a new card during campaign play, an investigator must pay a minimum of 1 experience. As a result, level 0 cards cost 1 experience to purchase. This minimum only applies when purchasing new cards. It does not permanently alter a card’s level or experience cost, and does not apply when upgrading a card to a higher level version.\n- 當購買同名卡的高等級版本時，調查員可以選擇\"升級\"該卡，只需支付兩張卡等級的差值(至少支付1點經驗)，然後將等級較低的卡牌從牌組中移除。\n- 每張卡牌的購買或升級都是獨立的。如果一位調查員想要購買多張相同的卡牌，則每張卡牌都必須支付經驗。而且每張買入的卡牌都必須移除一張卡牌。\n- 上述步驟，以及《劇本手冊》中的詳細指導，是玩家在劇本模式下修改牌組的唯一途徑。\n3. <b>記錄下未花費的經驗值。</b>每位調查員都將未花費的經驗值記錄在冒險日誌上。這次未花費的經驗值會留待這個劇本期間稍後使用。"
+        "text": "在完成一次冒險之後，調查員可以使用獲得的經驗值來購買新的卡牌，以升級其牌組。請按照以下步驟來執行：\n1. <b>結算獲得的經驗值數量。</b>每位調查員獲得等同勝利牌區中所有卡牌上勝利點數的總和，加上或減去每個結局帶來的加成或懲罰。這個數值再加上之前的冒險中未花費的經驗值，就是這次冒險結束時可以花費的經驗值。\n2. <b>購買新卡牌。</b>調查員可以花費經驗值來購買新卡牌，以加強其牌組。卡牌費用等於其等級(等級是卡牌左上角的白點數量)。當購買新卡牌時，遵守以下規則：\n- 調查員卡背面的\"牌組構建需求\"必須遵守。調查員只能購買其有權購買的卡牌。牌組的卡牌張數需要維持一致，所以你每買入一張卡牌，就要從牌組中移除一張卡牌。弱點卡和必須加入調查員牌組的卡牌不能被移除。\n- 每張卡牌的費用等同於其等級，<i>至少為1點經驗值</i>(購買等級0的卡牌也花費1點經驗)。卡牌費用下方的白點表示其等级。\n- 在劇本中購買新卡牌時，調查員必須至少支付1點經驗。因此，購買等級0卡牌需要1經驗。此最低花費限額僅適用於購買新卡時。它不會改變卡牌的等級或經驗費用，也不適用於將卡牌升級到等級更高的版本時。\n- 當購買同名卡的高等級版本時，調查員可以選擇\"升級\"該卡，只需支付兩張卡等級的差值(至少支付1點經驗)，然後將等級較低的卡牌從牌組中移除。\n- 每張卡牌的購買或升級都是獨立的。如果一位調查員想要購買多張相同的卡牌，則每張卡牌都必須支付經驗。而且每張買入的卡牌都必須移除一張卡牌。\n- 上述步驟，以及《劇本手冊》中的詳細指導，是玩家在劇本模式下修改牌組的唯一途徑。\n3. <b>記錄下未花費的經驗值。</b>每位調查員都將未花費的經驗值記錄在冒險日誌上。這次未花費的經驗值會留待這個劇本期間稍後使用。"
       },
       {
         "id": "Trauma",
@@ -203,8 +203,8 @@
       },
       {
         "id": "Transferring_Investigators_to_a_New_Campaign",
-        "title": "Transferring Investigators to a New Campaign",
-        "text": "This section expands on the ability for investigators to transfer from a completed campaign to another campaign, as originally described in the section \"The End…or Is It?\" in the Night of the Zealot campaign guide.\n<i>Note: The standard rules of the game dictate that players start each campaign with a clean state (new decks and 0 experience). The following is an optional variant that is likely to affect the game’s balance. Only intrepid investigators who wish to embrace the chaos should choose this option.</i>\nWhen transferring one or more investigators from a completed campaign to a new campaign, players should observe the following rules:\n- Not all surviving investigators in the original campaign need to be transferred. It is okay to transfer some and start fresh with others.\n- Investigator decks remain the same. This includes all story assets and weaknesses earned in the original campaign, as well as experience gained and trauma suffered. Everything recorded in the campaign log under that investigator’s \"Earned Story Assets / Weaknesses\" should be transferred to the new campaign, as well.\n- All other notes in the Campaign Log should be wiped clean and do not transfer to the new campaign.\n- The chaos bag is reset. This includes all additional chaos tokens that were added to the chaos bag throughout the original campaign.\n- Cards and Campaign Guides are written with the assumption that investigators are not being transferred from one campaign to another. For this reason, campaigns are sometimes referred to as \"the campaign.\" <i>(For example, \"for the remainder of the campaign…\")</i> In general, when interpreting such effects, treat each campaign as being separate from one another. However, some effects should be interpreted as if each campaign played is part of one continuous uninterrupted campaign. This includes rules that dictate how an earned weakness or story asset operates, or additional rules that a specific investigator must follow. <i>(For example, \"for the remainder of the campaign, the bearer of X weakness must only speak in French.\")</i>"
+        "title": "轉移調查員到新劇本",
+        "text": "本小節擴展了《狂熱之夜》劇本手冊中\"真的結束了嗎？\"之中所描述，調查員從一個已完成的劇本轉移到另一個劇本的能力。\n<i>注意：標準的遊戲規則要求玩家以全新的狀態(新牌組和0經驗)開始每個劇本。以下為可供選擇的變體規則，可能會影響遊戲平衡。只有能承受更多混亂的強悍的調查員才能選擇此選項。</i>\n將一位或多位調查員從已完成的劇本轉移到新劇本時，玩家應遵守以下規則：\n- 並非原劇本中所有倖存的調查員都需要一起轉移。可以選擇轉移其中幾位，其他人則重新開始。\n- 調查員牌組保持不變。這包括在原劇本中獲得的所有故事支援卡和弱點卡，以及獲得的經驗和受到的創傷。在冒險日誌中，該調查員的\"獲得的故事支援/弱點\"下記錄的所有內容也轉移到新劇本中。\n- 冒險日誌中的所有其他紀錄都清除，不轉移到新劇本。\n- 重置混亂袋。包括在原劇本中加入混亂袋中的所有額外混亂標記。\n- 編寫卡牌和劇本手冊時，沒有假設調查員會從一個劇本轉移到另一個劇本。因此，有時會以\"此劇本\"來代指當前劇本。<i>(例如：\"在此劇本的剩餘期間……\")</i>一般而言，在解釋此類效果時，應將每個劇本視為彼此獨立的劇本。但是，某些效果應該被視為好像每場冒險都是一個連續不間斷劇本的一部分。這包括了獲得的弱點卡或故事支援卡如何運作的規則，或特定調查員必須遵守的其他規則。<i>例如，\"在此劇本的剩餘期間，X弱點的承擔者只能說法語。\")</i>"
       }
     ]
   },
@@ -230,8 +230,8 @@
     "rules": [
       {
         "id": "Resolving_Multiple_Revealed_Chaos_Tokens",
-        "title": "Resolving Multiple Revealed Chaos Tokens",
-        "text": "If an investigator is instructed to \"resolve\" multiple revealed chaos tokens, any game or card effects which refer to \"the revealed chaos token\" in the singular should be construed to apply to each of the revealed chaos tokens. For example, when applying chaos symbol effects during Step 4 of a skill test or applying modifiers to an investigator’s skill value during Step 5 of a skill test, the effects and modifiers of all of the resolved chaos tokens should be applied, even though the rules state \"the revealed chaos token.\" Similarly, any card effects that refer to \"the revealed chaos token\" refer to all of the resolved tokens.\n<i>For example: An investigator plays Premonition, which reads: \"Put Premonition into play, reveal a random chaos token from the chaos bag, and seal it on Premonition.\" That investigator then uses Olive McBride to \"reveal 3 chaos tokens instead of 1, choose 2 of those tokens to resolve, and ignore the other.\" In this case, both of the resolved tokens would be sealed on Premonition, even though Premonition only refers to the revealed token as a singular token. Likewise, when Premonition instructs that investigator to \"Resolve the token sealed here as if it were just revealed from the chaos bag,\" the investigator should resolve both of the tokens sealed on it.</i>\nAdditionally, when resolving multiple chaos tokens, any game or card effects which trigger if a certain chaos token is revealed - such as the text \"If the named chaos token is revealed during this skill test…\" on Recall the Future - will trigger if any of the resolved chaos tokens meet the specified conditions. Such an effect will not trigger twice if two of the designated tokens are resolved.\nNote that this entry only applies when multiple chaos tokens are \"resolved.\" If multiple chaos tokens are revealed and all but 1 of them are canceled or ignored, this entry does not apply."
+        "title": "結算複數混亂標記",
+        "text": "如果調查員被指示\"結算\"多個抽出的混亂標記，則任何提及\"抽出的混亂標記\"的遊戲或卡牌效果都應解釋為作用於每一個抽出的混亂標記，即使沒有複數標記的說明。例如，在技能檢定流程的步驟4中結算混亂標記效果或在技能檢定流程的步驟5中計算調查員修正後的技能值時，所有進行結算的混亂標記的效果和修正值都應計算。同樣地，任何提及\"抽出的混亂標記\"的卡牌效果都會作用於所有進行結算的標記。\n<i>例如：一位調查員打出[危險預感](/card/04199)，其文字描述為：\"將危險預感放置入場，從混亂袋隨機抽出1個混亂標記，將它封印在危險預感上。\"該調查員接著使用[奧利芙·麥克布萊德](/card/04197)的能力：\"改為抽出3個混亂標記，而不是1個。選出其中2個標記來結算，忽略其餘標記。\"在這種情況下，兩個進行結算的標記都將封印在危險預感上，即使危險預感上的文字描述沒有對複數標記的說明。同樣地，當危險預感指示調查員\"改為結算封印在此的標記，視為該標記剛剛從混亂袋中抽出。\"時，調查員應該同時結算被封印的所有標記。</i>\n此外，在結算多個混亂標記時，如果因某個混亂標記的抽出而觸發的任何遊戲或卡牌效果——例如追憶未來(/card/04158)中的文字：\"如果這次技能檢定中抽出了聲明的混亂標記……\"，不會因為要結算兩個指定的標記而觸發兩次。\n請注意，以上規則僅適用於\"結算\"多個混亂標記時。如果抽出多個混亂標記，並且除了1個之外，其餘的標記都被取消或忽略，則不適用此規則。"
       }
     ]
   },
@@ -283,7 +283,7 @@
   {
     "id": "Deckbuilding",
     "title": "牌組構建",
-    "text": "建當玩家構建自定義牌組時，請遵守以下規則：\n- 玩家必須選擇1張調查員卡。\n- 玩家牌組中卡牌數量，必須等於調查員卡背面的\"“卡牌張數\"。弱點卡、調查員專用卡、冒險卡不算在該數量限制之内。\n- 玩家的調查員牌組中，同名卡牌最多2張。\n- 每個標準的調查員牌組中，卡牌必須從調查員卡背面的\"牌組構建選項\"中選擇。\n- 在劇本開始時，大部分調查員只有0點經驗值。這意味著他們只能包括等級0的卡牌。部分調查員和/或劇本中，可能會在劇本開始時為調查員提供一定的經驗值，他可以立刻用來購買高等級卡牌(詳見\"[劇本模式遊戲](#Campaign_Play)\")。\n- 調查員卡背面的其他\"牌組構建需求\"也必須遵守。\n- 在牌組構建結束時，需要額外加入一張隨機的基礎弱點卡。\n- 劇情支援卡不能加入玩家的牌組中，除非遊戲設置或冒險結局允許玩家如此。這些支援卡沒有等級，並有遭遇組符號(詳見第4頁\"[支援卡](#Asset_Cards)\")。\n- 在劇本模式中，玩家需要在第一次冒險前構建自己的牌組。在冒險中，玩家可以購買新的卡牌，或者的升級原有的卡牌(詳見\"[劇本模式遊戲](#Campaign_Play)\"。\nIf 1 or more cards are forcibly removed from an investigator’s deck and returned to the collection (such as when a card is exiled, or when a campaign effect forces an investigator to remove cards from their deck), that investigator must purchase cards so that a legal deck size is maintained. When purchasing cards in this manner, that investigator may purchase level 0 cards at 0 experience cost until a legal deck size is reached.\n- This rule also applies if an effect alters an investigator’s deck size, deckbuilding restrictions, or deckbuilding options such that 1 or more cards must be removed from or added to their deck as a result.",
+    "text": "當玩家構建自定義牌組時，請遵守以下規則：\n- 玩家必須選擇1張調查員卡。\n- 玩家牌組中卡牌數量，必須等於調查員卡背面的\"“卡牌張數\"。弱點卡、調查員專用卡、冒險卡不算在該數量限制之內。\n- 玩家的調查員牌組中，同名卡牌最多2張。\n- 每個標準的調查員牌組中，卡牌必須從調查員卡背面的\"牌組構建選項\"中選擇。\n- 在劇本開始時，大部分調查員只有0點經驗值。這意味著他們只能包括等級0的卡牌。部分調查員和/或劇本中，可能會在劇本開始時為調查員提供一定的經驗值，他可以立刻用來購買高等級卡牌(詳見\"[劇本模式遊戲](#Campaign_Play)\")。\n- 調查員卡背面的其他\"牌組構建需求\"也必須遵守。\n- 在牌組構建結束時，需要額外加入一張隨機的基礎弱點卡。\n- 劇情支援卡不能加入玩家的牌組中，除非遊戲設置或冒險結局允許玩家如此。這些支援卡沒有等級，並有遭遇組符號(詳見第4頁\"[支援卡](#Asset_Cards)\")。\n- 在劇本模式中，玩家需要在第一次冒險前構建自己的牌組。在冒險中，玩家可以購買新的卡牌，或者的升級原有的卡牌(詳見\"[劇本模式遊戲](#Campaign_Play)\"。\n如果調查員的牌組中有一張或多張牌被強制移除並返回到收藏中(例如卡牌被放逐、或劇本效果迫使調查員將卡牌從牌組中移除)，該調查員必須購買卡片，以維持規定的卡牌張數。以這種方式購買卡牌時，調查員可以花費0經驗來購買0級卡牌，直到滿足規定的牌組張數。\n- 如果某個效果改變了調查員的牌組張數、牌組構建限制或牌組構建選項，導致必須在其牌組中移除或增加卡牌，則此規則也適用。",
     "rules": [
       {
         "id": "Classes",
@@ -292,8 +292,8 @@
       },
       {
         "id": "Deckbuilding_Options",
-        "title": "Deckbuilding Options",
-        "text": "The following section clarifies how certain investigators’ deckbuilding options function.\n- If one of the categories of an investigator’s deckbuilding options contains the word \"other\" in it, cards only fall into this category if they fall into no other category. <i>(For example, if an investigator’s deckbuilding options reads: \"Guardian cards level 0–5, up to 10 other <b>Weapon</b> cards,\" then a Guardian card with the <b>Weapon</b> trait would not occupy one of those 10 limited slots, because it first falls into the unlimited Guardian category).</i>\n- If one of the categories of an investigator’s deckbuilding options lists card text in it, cards fall into this category if the listed text appears in the card in any capacity, even if it is circumstantial. <i>(For example, if an investigator’s deckbuilding options reads: \"cards that 'heal horror' level 0–5,\" any card with an ability that heals any amount of horror will fall into this category, even if it only heals horror under specific circumstances.)</i>"
+        "title": "牌組構建選項",
+        "text": "以下部分說明某些調查員的牌組構建選項如何運作。\n- 在調查員的牌組構建選項之中，如果其中一個類別的描述含有\"其他\"一詞，則卡片只有在不屬於其他類別時才屬於該類別。<i>(例如：如果調查員的牌組構建選項為：\"守衛者卡牌等級0–5，最多10張其他[[武器]]卡\"，那麼具有[[武器]]屬性的守衛者卡牌將不會佔用這10個有限制的位置，因為它先符合無限制的守衛者卡牌類別)。</i>\n- 在調查員的牌組構建選項之中，如果其中一個類別的描述含有卡牌文字，只要列出的文字以任何形式出現在卡牌(即使有其他條件)，該卡牌都計入此類別。<i>(例如：如果調查員的牌組構建選項為：\"能'治癒恐懼'的卡牌等級0–5\"，那麼所有能治癒任何數量恐懼的卡牌都屬於此類別，即使它只在特定情況下治愈恐懼。)</i>"
       }
     ]
   },
@@ -325,7 +325,7 @@
   {
     "id": "Discard_Piles",
     "title": "棄牌堆",
-    "text": "當卡牌被丟棄時，將其面朝上放在所屬玩家棄牌堆頂部。遭遇卡歸屬於遭遇牌堆。\n- 棄牌堆屬於場外區域。\n- 每位調查員都有自己的棄牌堆，遭遇牌堆有所屬的棄牌堆。\n- 棄牌堆屬於公開信息，所有玩家可以自由查看。\n- 棄牌堆中卡牌的順序不能更改，除非有卡牌能力允許如此。\n- 如果有多張卡牌同時被丟棄，則由卡牌所屬玩家選擇丟棄順序，一張一張地將其放入棄牌堆。遭遇卡牌則由隊長選擇丟棄順序。\n- 如果卡牌能力要求將棄牌堆洗回牌堆，而棄牌堆為空，則不混洗牌堆。\n- A single card cannot be shuffled into an empty player deck or encounter deck via card effect. If this shuffling would occur during the playing or revelation of a card that is typically discarded after it is resolved, such as an event or treachery card, it is discarded. Otherwise, the card remains in its current game area."
+    "text": "當卡牌被丟棄時，將其面朝上放在所屬玩家棄牌堆頂部。遭遇卡歸屬於遭遇牌堆。\n- 棄牌堆屬於場外區域。\n- 每位調查員都有自己的棄牌堆，遭遇牌堆有所屬的棄牌堆。\n- 棄牌堆屬於公開信息，所有玩家可以自由查看。\n- 棄牌堆中卡牌的順序不能更改，除非有卡牌能力允許如此。\n- 如果有多張卡牌同時被丟棄，則由卡牌所屬玩家選擇丟棄順序，一張一張地將其放入棄牌堆。遭遇卡牌則由隊長選擇丟棄順序。\n- 如果卡牌能力要求將棄牌堆洗回牌堆，而棄牌堆為空，則不混洗牌堆。\n- 單張卡牌不能通過卡牌效果洗入空的玩家牌堆或遭遇牌堆。如果這種洗牌發生在打出或揭示一張通常在結算後會被丟棄的卡牌(例如事件或詭計牌)的期間，則將其丟棄。否則，該卡保留在其當前遊戲區域中。"
   },
   {
     "id": "Doom",
@@ -351,12 +351,12 @@
   {
     "id": "Effects",
     "title": "效果",
-    "text": "一張卡牌的效果是指按照卡牌上打印的文字，或獲得的文字結算所產生的一定影響。流程效果是指在進行遊戲步驟時，由步驟本身產生的效果(詳見\"[流程事件詳解](#Framework_Event_Details)\")。\n- 卡牌效果内常常帶有費用、觸發條件、出牌限制、出牌特例等，這些不計入效果本身(詳見\"[能力](#Ability)\")。\n- 一旦效果啟動，玩家必須盡可能地結算效果，除非該效果寫明\"可以\"執行。\n- 當一個沒有說明對象的效果，其處理的配件數量超過場上有的配件數量時(例如，\"抽取3張卡牌\"或\"查找牌堆頂部5張卡牌\"，而牌堆數量少於3張時)，則盡可能地處理效果。\n- 持續效果(或者是持續能力)的失效，不視為卡牌對遊戲產生影響。\n- 所有效果的結算時間，都優先於帶有\"在……之後\"條件的效果。<i>(例如：如果一個效果為\"獲得3個資源，並抽取3張卡牌\"，則這個效果必須先結算完成，然後你才能結算\"在你抽取卡牌之後……\")</i>\n相關條目：\"[延時效果](#Delayed_Effects)\"，\"[持續效果](#Lasting_Effects)\"，\"[同時結算時的優先順序](#Priority_of_Simultaneous_Resolution)\"。"
+    "text": "一張卡牌的效果是指按照卡牌上打印的文字，或獲得的文字結算所產生的一定影響。流程效果是指在進行遊戲步驟時，由步驟本身產生的效果(詳見\"[流程事件詳解](#Framework_Event_Details)\")。\n- 卡牌效果內常常帶有費用、觸發條件、出牌限制、出牌特例等，這些不計入效果本身(詳見\"[能力](#Ability)\")。\n- 一旦效果啟動，玩家必須盡可能地結算效果，除非該效果寫明\"可以\"執行。\n- 當一個沒有說明對象的效果，其處理的配件數量超過場上有的配件數量時(例如，\"抽取3張卡牌\"或\"查找牌堆頂部5張卡牌\"，而牌堆數量少於3張時)，則盡可能地處理效果。\n- 持續效果(或者是持續能力)的失效，不視為卡牌對遊戲產生影響。\n- 所有效果的結算時間，都優先於帶有\"在……之後\"條件的效果。<i>(例如：如果一個效果為\"獲得3個資源，並抽取3張卡牌\"，則這個效果必須先結算完成，然後你才能結算\"在你抽取卡牌之後……\")</i>\n相關條目：\"[延時效果](#Delayed_Effects)\"，\"[持續效果](#Lasting_Effects)\"，\"[同時結算時的優先順序](#Priority_of_Simultaneous_Resolution)\"。"
   },
   {
     "id": "Elimination",
     "title": "退場",
-    "text": "在冒險中被擊敗或撤退的調查員，會立刻退場。遊戲中，只有確定帶有\"調查員人數\"圖標的數值時，退場調查員才與遊戲有關(詳見\"[調查員人數](#Per_Investigator)\")。當有玩家退場時：\n0. 退場玩家結算弱點卡時，其遊戲已結束。調查員退場時，觸發其場上所有弱點卡的\"在遊戲結束時\"能力，然後將這些弱點卡移出遊戲。\n1. 將他控制的卡牌，無論是否在場(例如：手牌、牌堆、棄牌堆)都移出遊戲。\n- 歸屬於該玩家，但不是該玩家控制的卡牌無需移出遊戲，但如果該卡牌需要被丟棄時，則直接將其移出遊戲。\n2. 2.該玩家擁有的所有線索，都放在該玩家退場時所在的地點上；該玩家擁有的所有資源，都放回供應堆。\n3. 與該玩家交戰的所有敵人，放在該玩家退場時所在的地點上，解除交戰狀態，但它們的當前遊戲狀態保持不變。\n4. 該玩家威脅區域的所有其他卡牌，都丟入對應棄牌堆。\n5. 如果隊長退場，則剩餘玩家選擇一名新隊長(前提是此時仍有剩餘玩家)。\n6. 如果所有玩家都退場，則冒險立刻結束請參考《劇本手冊》中的\"未達成任何結局\"。"
+    "text": "在冒險中被擊敗或撤退的調查員，會立刻退場。遊戲中，只有確定帶有\"調查員人數\"圖標的數值時，退場調查員才與遊戲有關(詳見\"[調查員人數](#Per_Investigator)\")。當有玩家退場時：\n0. 退場玩家結算弱點卡時，其遊戲已結束。調查員退場時，觸發其場上所有弱點卡的\"在遊戲結束時\"能力，然後將這些弱點卡移出遊戲。\n1. 將他控制的卡牌，無論是否在場(例如：手牌、牌堆、棄牌堆)都移出遊戲。\n- 歸屬於該玩家，但不是該玩家控制的卡牌無需移出遊戲，但如果該卡牌需要被丟棄時，則直接將其移出遊戲。\n2. 該玩家擁有的所有線索，都放在該玩家退場時所在的地點上；該玩家擁有的所有資源，都放回供應堆。\n3. 與該玩家交戰的所有敵人，放在該玩家退場時所在的地點上，解除交戰狀態，但它們的當前遊戲狀態保持不變。\n4. 該玩家威脅區域的所有其他卡牌，都丟入對應棄牌堆。\n5. 如果隊長退場，則剩餘玩家選擇一名新隊長(前提是此時仍有剩餘玩家)。\n6. 如果所有玩家都退場，則冒險立刻結束請參考《劇本手冊》中的\"未達成任何結局\"。"
   },
   {
     "id": "Empty_Location",
@@ -421,7 +421,7 @@
   {
     "id": "Exile",
     "title": "放逐",
-    "text": "部分卡牌在使用時需要被放逐。當玩家放逐卡牌時，將該卡移出遊戲，並重新加入你的收藏中。在劇本模式下，被放逐的卡牌，必須用經驗值重新購買後，才能再次加入你的牌組。如果放逐卡牌導致你的牌組卡牌張數少於要求，則在冒險結束時，你必須花費經驗購買至少1張卡牌，來維持牌組中的卡牌數量(通過這種方式購買卡牌時，你可以花費0經驗值購買等級0的卡牌，直到你的牌組恢復張數限制)。"
+    "text": "部分卡牌在使用時需要被放逐。當玩家放逐卡牌時，將該卡移出遊戲，並重新加入你的收藏中。在劇本模式下，被放逐的卡牌，必須用經驗值重新購買後，才能再次加入你的牌組。如果放逐卡牌導致你的牌組卡牌張數少於要求，則在冒險結束時，你必須花費經驗購買至少1張卡牌，來維持牌組中的卡牌數量(通過這種方式購買卡牌時，你可以花費0經驗值購買等級0的卡牌，直到滿足卡排張數要求)。"
   },
   {
     "id": "Experience_Placeholder",
@@ -432,12 +432,12 @@
     "id": "Explore",
     "cycle": [ "tfa" ],
     "title": "探索",
-    "text": "這個劇本中的某些能力帶有<b>探索</b>行動標識。此類能力通常會通過\"啟動\"行動發動，用於找出新的地點並將這一地點放置入場。\n<b>探索</b>能力會指示你抽取\"探索牌堆\"頂上的1張卡牌。探索牌堆是一個獨立的牌堆，在某些冒險的設置階段構成該牌堆，包含多張單面地點卡和詭計卡。\n- 每個<b>探索</b>能力會聲明你正在尋找並要抽出的一類地點。<b>抽出一個該類地點後，將其放置入場，然後你移動到該地點。</b>這視為一次\"成功\"的探索。\n- 如果抽出了其他任何地點，將其放在探索牌堆旁邊，然後抽取探索牌堆的下一張卡牌。重複此流程，直到抽出指定類型的地點，或抽出詭計卡。在此行動結束後，將探索牌堆旁的所有地點混洗並放回探索牌堆。\n- 如果抽出了詭計卡，如常結算。如果該卡牌被棄掉，如常將它放到遭遇棄牌堆。探索牌堆沒有棄牌堆。這視為一次\"失敗\"的探索。\n- 單面地點從探索牌堆放置入場時，在該地點上放置線索，數量等於其線索值。\n<i>範例：密謀1a—\"荒野探險\"有著以下能力：\"[action]：<b>探索</b>。抽取探索牌堆頂上的1張卡牌。如果該卡牌是一個連接地點，放置入場並移動到該地點。\"厄休拉·唐斯位於探險營地，希望找到並前往一個新的地點。她用自己的第一個行動來探索，抽取探索牌堆頂上的1張卡牌，抽出的卡牌是曲折小道。因為曲折小道不與探險營地連接，將其放在探索牌堆旁邊，然後厄休拉從探索牌堆抽取下一張卡牌。這次她抽出了補給短缺詭計卡，如常結算並將該卡牌放到遭遇棄牌堆。她的探索失敗了，必須將先前抽出的曲折小道洗回探索牌堆。厄休拉決定用第二個行動來再次探索。這次她抽出了荊棘之路，這個地點與探險營地是連接的，探索成功。將荊棘之路放置入場，在該卡牌上方放置線索，數量等於其線索值，然後厄休拉立即從探險營地移動到荊棘之路。</i>"
+    "text": "這個劇本中的某些能力帶有<b>探索</b>行動標識。此類能力通常會通過\"啟動\"行動發動，用於找出新的地點並將這一地點放置入場。\n<b>探索</b>能力會指示你抽取\"探索牌堆\"頂上的1張卡牌。探索牌堆是一個獨立的牌堆，在某些冒險的設置階段構成該牌堆，包含多張單面地點卡和詭計卡。\n- 每個<b>探索</b>能力會聲明你正在尋找並要抽出的一類地點。<b>抽出一個該類地點後，將其放置入場，然後你移動到該地點。</b>這視為一次\"成功\"的探索。\n- 如果抽出了其他任何地點，將其放在探索牌堆旁邊，然後抽取探索牌堆的下一張卡牌。重複此流程，直到抽出指定類型的地點，或抽出詭計卡。在此行動結束後，將探索牌堆旁的所有地點混洗並放回探索牌堆。\n- 如果抽出了詭計卡，如常結算。如果該卡牌被棄掉，如常將它放到遭遇棄牌堆。探索牌堆沒有棄牌堆。這視為一次\"失敗\"的探索。\n- 單面地點從探索牌堆放置入場時，在該地點上放置線索，數量等於其線索值。\n<i>範例：密謀1a—\"[荒野探險](/card/04044)\"有著以下能力：\"[action]：<b>探索</b>。抽取探索牌堆頂上的1張卡牌。如果該卡牌是一個連接地點，放置入場並移動到該地點。\"厄休拉·唐斯位於探險營地，希望找到並前往一個新的地點。她用自己的第一個行動來探索，抽取探索牌堆頂上的1張卡牌，抽出的卡牌是曲折小道。因為曲折小道不與探險營地連接，將其放在探索牌堆旁邊，然後厄休拉從探索牌堆抽取下一張卡牌。這次她抽出了補給短缺詭計卡，如常結算並將該卡牌放到遭遇棄牌堆。她的探索失敗了，必須將先前抽出的曲折小道洗回探索牌堆。厄休拉決定用第二個行動來再次探索。這次她抽出了荊棘之路，這個地點與探險營地是連接的，探索成功。將荊棘之路放置入場，在該卡牌上方放置線索，數量等於其線索值，然後厄休拉立即從探險營地移動到荊棘之路。</i>"
   },
   {
     "id": "Fast",
     "title": "快速",
-    "text": "快速是一個關鍵詞能力。快速卡牌打出時無需花費行動，並不需要\"打出\"行動來打出。\n- 快速事件卡可以在卡牌指定的時間從手牌中打出。如果該卡牌指定\"在……時(when)\"或\"在……之後(after)\"，則玩家可以在該時間點觸發時打出該卡。如果該卡牌指定某一個階段、步驟或時間段，則玩家可以在該段時間内任意玩家的時間段打出。如果該卡牌同時指定\"在……時\"或\"在……之後\"，以及某一個階段、步驟或時間段，則玩家可以在該段時間内，當指定時間點被觸發時打出該卡。\n- 快速支援卡可以在該玩家的回合内任意玩家的時間段打出。\n- 由於快速卡牌無需行動來打出，所以不會觸發趁亂攻擊(詳見\"[趁亂攻擊](#Attack_of_Opportunity)\")。"
+    "text": "快速是一個關鍵詞能力。快速卡牌打出時無需花費行動，並不需要\"打出\"行動來打出。\n- 快速事件卡可以在卡牌指定的時間從手牌中打出。如果該卡牌指定\"在……時(when)\"或\"在……之後(after)\"，則玩家可以在該時間點觸發時打出該卡。如果該卡牌指定某一個階段、步驟或時間段，則玩家可以在該段時間內任意玩家的時間段打出。如果該卡牌同時指定\"在……時\"或\"在……之後\"，以及某一個階段、步驟或時間段，則玩家可以在該段時間內，當指定時間點被觸發時打出該卡。\n- 快速支援卡可以在該玩家的回合內任意玩家的時間段打出。\n- 由於快速卡牌無需行動來打出，所以不會觸發趁亂攻擊(詳見\"[趁亂攻擊](#Attack_of_Opportunity)\")。"
   },
   {
     "id": "Fight_Action",
@@ -451,7 +451,7 @@
   },
   {
     "id": "Flood_Tokens",
-    "cycle": ["tic"],
+    "cycle": [ "tic" ],
     "title": "Flood Tokens",
     "text": "Throughout this campaign, scenario card effects can flood locations. Each location has one of three different flood levels: it is either unflooded, partially flooded, or fully flooded. A location's flood level can be tracked using the double‑sided flood tokens included in this deluxe box. <b>A location's flood level has no inherent game effect.</b> However, some card effects may change or become stronger while you are at a flooded location, particularly if that location is fully flooded.\n- A location with no flood token is unflooded.\n- If a location becomes partially flooded, place a flood token on it with the partially flooded side faceup to designate this.\n- If a location becomes fully flooded, place a flood token on it with the fully flooded side faceup (or if it is already partially flooded, flip its flood token over) to designate this.\n- If a location's flood level is \"increased,\" it changes from unflooded to partially flooded, or from partially flooded to fully flooded. A fully flooded location cannot have its flood level increased.\n- If a location's flood level is \"decreased,\" it changes from fully flooded to partially flooded, or from partially flooded to unflooded. If a location becomes unflooded, remove its flood token.\n- For the purposes of card effects, both partially flooded locations and fully flooded locations are considered to be \"flooded.\""
   },
@@ -463,7 +463,7 @@
   {
     "id": "Gains",
     "title": "獲得",
-    "text": "\"獲得\"一詞會在各個方面使用。\n- 如果玩家獲得至少一個資源，該玩家從供應堆拿取對應數量的資源，放到自己的資源池。\n- 如果調查員獲得一個行動，該調查員可以在指定的時間内執行一個行動。\n- 如果卡牌獲得一個特性(比如圖標、屬性、關鍵詞、能力文字)，卡牌會以擁有該特性的方式來執行效果。\n- \"獲得\"的特性不視為\"打印\"卡牌上的文字。如果能力提及卡牌打印的特性，請不要算入獲得的特性。"
+    "text": "\"獲得\"一詞會在各個方面使用。\n- 如果玩家獲得至少一個資源，該玩家從供應堆拿取對應數量的資源，放到自己的資源池。\n- 如果調查員獲得一個行動，該調查員可以在指定的時間內執行一個行動。\n- 如果卡牌獲得一個特性(比如圖標、屬性、關鍵詞、能力文字)，卡牌會以擁有該特性的方式來執行效果。\n- \"獲得\"的特性不視為\"打印\"卡牌上的文字。如果能力提及卡牌打印的特性，請不要算入獲得的特性。"
   },
   {
     "id": "Game",
@@ -495,7 +495,7 @@
     "id": "Hidden",
     "cycle": [ "tcu", "tde" ],
     "title": "隱私",
-    "text": "帶有隱私關鍵詞的遭遇卡或弱點卡的<b>顯現</b>能力會將這張卡秘密地加入你的手牌中。結算此能力效果時不翻開這張卡，也不向其他調查員展示卡牌上的文字。\n- 當你的手牌中有隱私卡時，視作它在你的威脅區域內。卡牌上的持續能力生效，並且卡牌上的能力只能被你觸發。\n- While a hidden enemy is in your hand, it is not considered to be engaged with you or in your threat area, and it does not attack unless otherwise specified. However, its constant abilities are active, and abilities on it can be triggered, but only by you.\n- 隱私卡計入你的手牌上限，但除非按照隱私卡上的文字描述執行，否則你無法以任何形式從你手牌中棄除它。隱私卡被棄掉時，放回遭遇棄牌堆。它們不會像弱點卡一樣留在你的牌堆中。\n為了獲得最佳的遊戲體驗，建議玩家\"扮演角色\"進行遊戲，不要將手牌中的隱私卡任何內容公開。"
+    "text": "帶有隱私關鍵詞的遭遇卡或弱點卡的<b>顯現</b>能力會將這張卡秘密地加入你的手牌中。結算此能力效果時不翻開這張卡，也不向其他調查員展示卡牌上的文字。\n- 當你的手牌中有隱私卡時，視作它在你的威脅區域內。卡牌上的持續能力生效，並且卡牌上的能力只能被你觸發。\n- 只要你手牌中有帶有隱私關鍵詞的敵人，除非有特別說明，該敵人不與你交戰、不在你的威脅區域中，也不攻擊。然而，該敵人的持續能力會啟動，該敵人的能力也能夠被你觸發(僅能被你觸發)。\n- 隱私卡計入你的手牌上限，但除非按照隱私卡上的文字描述執行，否則你無法以任何形式從你手牌中棄除它。隱私卡被棄掉時，放回遭遇棄牌堆。它們不會像弱點卡一樣留在你的牌堆中。\n為了獲得最佳的遊戲體驗，建議玩家\"扮演角色\"進行遊戲，不要將手牌中的隱私卡任何內容公開。\n在調查員退場時，手牌中每張帶有隱私關鍵詞的遭遇卡都應該放入遭遇棄牌堆，就像他們威脅區域的遭遇卡一樣。"
   },
   {
     "id": "Hunter",
@@ -550,7 +550,7 @@
   },
   {
     "id": "Keys",
-    "cycle": ["tic"],
+    "cycle": [ "tic" ],
     "title": "Keys",
     "text": "This expansion introduces key tokens that represent important objects or pieces of information that can be claimed and used during scenarios.\nKey tokens have two sides. When facedown, all seven keys have the same universal key symbol, so they can be randomized without the investigators knowing which is which. When faceup, each key is color coded with a unique color (<i>red</i>, <i>blue</i>, <i>green</i>, <i>yellow</i>, <i>purple</i>, <i>black</i>, <i>white</i>).\nIf a scenario uses one or more keys, the setup of that scenario indicates how many are set aside and whether they should be faceup or randomized facedown. Keys can enter play via several different card effects, and they are usually placed on an enemy, location, or story asset. Keys can be acquired in any of three ways:\n- If a location with a key on it has no clues, an investigator may take control of each of the location's keys as a [free] ability.\n- If an investigator causes an enemy with a key on it to leave play, that investigator must take control of each of the keys that were on that enemy. (If it leaves play through some other means, place its keys on its location.)\n- Some card effects may allow an investigator to take control of keys in other ways.\nWhen an investigator takes control of a key, they flip it faceup (if it is facedown) and place it on their investigator card. If an investigator who controls one or more keys is eliminated, place each of their keys on their location. As an [action] ability, an investigator may give any number of their keys to another investigator at the same location.\n<b>Keys have no inherent game effect.</b> However, some card effects may change depending on which keys an investigator controls. Additionally, keys may sometimes be required in order to progress during a scenario."
   },
@@ -567,7 +567,7 @@
   {
     "id": "Lasting_Effects",
     "title": "持續效果",
-    "text": "部分卡牌效果會在特定的時間内影響遊戲<i>(例如：\"直到該階段結束\"或\"在這次技能檢定中\")</i>。這種效果被稱為持續效果。\n- 持續效果在卡牌能力將其創建後，依然會生效。該效果會持續到指定的時間點才結束，不論創建該效果的卡牌是否在場。\n- 如果持續效果對場上的卡牌(或指定區域的卡牌)造成了影響，那麼效果只對該效果產生時，該區域存在的卡牌造成影響。效果產生後進入該區域的卡牌不受持續效果影響。\n- 當指定的時間點到達時，持續效果就會結束。例如在\"直到該階段結束\"的效果中，當這個階段結束時，該持續效果就會失效，或導致一個延時效果被啟動。\n- 在特定時間段内有效的持續效果，只有在那個時間段開始時才會啟動。"
+    "text": "部分卡牌效果會在特定的時間內影響遊戲<i>(例如：\"直到該階段結束\"或\"在這次技能檢定中\")</i>。這種效果被稱為持續效果。\n- 持續效果在卡牌能力將其創建後，依然會生效。該效果會持續到指定的時間點才結束，不論創建該效果的卡牌是否在場。\n- 如果持續效果對場上的卡牌(或指定區域的卡牌)造成了影響，那麼效果只對該效果產生時，該區域存在的卡牌造成影響。效果產生後進入該區域的卡牌不受持續效果影響。\n- 當指定的時間點到達時，持續效果就會結束。例如在\"直到該階段結束\"的效果中，當這個階段結束時，該持續效果就會失效，或導致一個延時效果被啟動。\n- 在特定時間段內有效的持續效果，只有在那個時間段開始時才會啟動。"
   },
   {
     "id": "Lead_Investigator",
@@ -586,8 +586,8 @@
     "rules": [
       {
         "id": "Limits_Pertaining_to_Play_Areas",
-        "title": "Limits Pertaining to Play Areas",
-        "text": "Some limits may pertain to a particular play area, such as \"Limit 1 per deck,\" \"Limit 1 in the victory display,\" or \"Limit 1 in play.\" This limit restricts the number of copies of that card (by title) that can exist in the specified play area. Another copy of that card cannot enter the specified play area if this limit has already been reached. Remember that limits are player specific unless otherwise noted. For example, a card with \"Limit 1 per deck\" can exist in two different investigator decks.\n<i>Note: \"Limit X per investigator\" is a limit that pertains to an investigator’s play area.</i>"
+        "title": "關於遊戲區域的限制",
+        "text": "某些限制可能與特定的遊戲區域有關，例如\"牌組限制1張\"、\"勝利牌區中限制1張\"或\"場上限制1張\"。這些描述限制了指定遊戲區域中可以存在的該卡牌數量(依照卡牌名稱)。如果已達到此限制，則同名卡牌無法進入指定的遊戲區域。請記住，除非有特殊說明，否則限制只針對一名玩家。例如：一張帶有\"牌組限制1張\"的卡牌可以存在於兩個不同的調查員牌組中。\n<i>注意：\"每位調查員限制X\"是與該調查員的遊戲區域有關的限制。</i>"
       }
     ]
   },
@@ -600,7 +600,7 @@
     "id": "Lola_and_Roles",
     "cycle": [ "ptc" ],
     "title": "蘿拉和\"角色\"",
-    "text": "作為一位知名女演員，蘿拉·海耶斯能夠扮演多種不同的角色。在每個冒險開始時，調查員抽取起始手牌後，蘿拉·海耶斯必須選擇一個角色(中立，守衛者，探求者，流浪者，潛修者或求生者)。蘿拉只能打出，或者在技能檢定中投入中立卡牌或其角色的職階對應的卡牌，或者觸發上述卡牌的[action]，[fast]或[reaction]能力。本限制僅對玩家卡生效，對遭遇卡或弱點卡無影響。請注意在與蘿拉的腳色不對應的卡牌上的持續能力和<b>強制</b>能力依然生效。"
+    "text": "作為一位知名女演員，[蘿拉·海耶斯](/card/03006)能夠扮演多種不同的角色。在每個冒險開始時，調查員抽取起始手牌後，蘿拉·海耶斯必須選擇一個角色(中立，守衛者，探求者，流浪者，潛修者或求生者)。蘿拉只能打出，或者在技能檢定中投入中立卡牌或其角色的職階對應的卡牌，或者觸發上述卡牌的[action]，[fast]或[reaction]能力。本限制僅對玩家卡生效，對遭遇卡或弱點卡無影響。請注意在與蘿拉的腳色不對應的卡牌上的持續能力和<b>強制</b>能力依然生效。"
   },
   {
     "id": "Massive",
@@ -615,7 +615,7 @@
   {
     "id": "Modifiers",
     "title": "修正値",
-    "text": "部分能力會對數值、配件數量、特性產生修正。遊戲中，數值需要反復檢查，以確保其數值為修正後的數值。\n當新的一個修正值生效時(或移除時)，請將影響數值重新計算，確保其數值為修正後的數值。\n- 在計算一個數值時，所有修正值都同時對該數值產生影響。然而，在計算時，加減先結算，然後再結算乘除。\n- 所有修正後的數值，若帶有小數，則向上取整。\n- 任何卡牌上的數值(例如：狀態、圖標、屬性、關鍵詞等)不會出現負數。任何導致數量變為負數的修正值依然有效，只是在運算後，如果數量為負數則視為零。<i>(例如：丹妮進行了一次敏捷檢定，並抽出一個-8混亂標記。當運算時，她的敏捷為4，這會使她修正後的敏捷值為-4。然而，敏捷值是一種無法變為負數的數值。所以她的敏捷值視為0。如果丹妮打出一張\"運氣好！\"來獲得+2的修正，這個修正值不是對0產生修正，而是對-4產生修正。丹妮的敏捷值為：基礎值4，混亂標記-8，\"運氣好！\"+2，共為-2，依然視為0。)</i>"
+    "text": "部分能力會對數值、配件數量、特性產生修正。遊戲中，數值需要反復檢查，以確保其數值為修正後的數值。\n當新的一個修正值生效時(或移除時)，請將影響數值重新計算，確保其數值為修正後的數值。\n- 在計算一個數值時，所有修正值都同時對該數值產生影響。然而，在計算時，加減先結算，然後再結算乘除。\n- 所有修正後的數值，若帶有小數，則向上取整。\n- 任何卡牌上的數值(例如：狀態、圖標、屬性、關鍵詞等)不會出現負數。任何導致數量變為負數的修正值依然有效，只是在運算後，如果數量為負數則視為零。<i>(例如：丹妮進行了一次敏捷檢定，並抽出一個-8混亂標記。當運算時，她的敏捷為4，這會使她修正後的敏捷值為-4。然而，敏捷值是一種無法變為負數的數值。所以她的敏捷值視為0。如果丹妮打出一張\"[運氣好！](/card/01080)\"來獲得+2的修正，這個修正值不是對0產生修正，而是對-4產生修正。丹妮的敏捷值為：基礎值4，混亂標記-8，\"運氣好！\"+2，共為-2，依然視為0。)</i>"
   },
   {
     "id": "Move",
@@ -634,8 +634,8 @@
   },
   {
     "id": "Multiclass_Cards",
-    "title": "Multi-class Cards",
-    "text": "A multi-class card is a card which bears multiple class icons instead of one, and is a card of each of those classes. For example, a card with both a Rogue ([rogue]) and a Guardian ([guardian]) icon is both a Rogue card and a Guardian card for all purposes. Generally, a multi-class card can be included in an investigator’s deck if that investigator has access to <i>either</i> of that card’s classes.\nIf an investigator has limited access to one of the classes on a multiclass card and unlimited access to one of the other classes on that card, it will still occupy one of the investigator’s limited slots unless their deckbuilding options contains the word \"other\" in it <i>(詳見[Deckbuilding Options](#Deckbuilding_Options))</i>.\nThe following section clarifies how multi-class cards operate depending on how an investigator’s deckbuilding options are presented.\n- <b>Investigators with unlimited access to more than one class <i>(i.e. All Core Set investigators, Minh Thi Phan, Sefina Rousseau, William Yorick, Leo Anderson, Joe Diamond, Preston Fairmont, Diana Stanley)</i>:</b> A multi-class card can be included in that investigator’s deck if it falls into <i>either</i> of the listed classes.\n- <b>Investigators from The Dunwich Legacy expansion</b> <i>(i.e. Zoey Samaras, Rex Murphy, Jenny Barnes, Jim Culver, \"Ashcan\" Pete)</i>: A multi-class card will not occupy one of these investigator’s five \"out of class\" slots if one of its classes is the class they have unlimited access to. A card cannot take up more than one \"out of class\" slot, regardless of how many class icons the card bears.\n- <b>Investigators with unlimited access to one class and limited access to one or more \"other\" classes</b> <i>(i.e. Marie Lambeau, Finn Edwards, Carolyn Fern)</i>: A multi-class card will not occupy one of the investigator’s limited slots, because it falls into the unlimited category <i>(詳見[Deckbuilding Options](#Deckbuilding_Options))</i>。\n- <b>Investigators with unlimited access to one class and limited access to a second class, without using the word \"other\"</b> <i>(i.e. Norman Withers)</i>: A multi-class card will occupy one of the investigator’s limited slots, even if it also falls into the unlimited category.\n- <b>Lola Hayes:</b> A multi-class card will count as a card of each of its classes toward her Deckbuilding Requirement."
+    "title": "多重職階卡牌",
+    "text": "多重職階卡牌帶有多個職階圖標，而非單個。多重職階卡牌屬於其每個職階圖標所示的職階。例如，一張同時具有流浪者([rogue])和守衛者([guardian])圖標的牌在任何狀況下都同時視為流浪者卡牌和守衛者卡牌。一般來說，如果調查員可以使用多重職階卡牌的<i>任一</i>類別，則該卡就能加入調查員的牌組中。\n如果調查員對多重職階卡牌上的其中一個職階的卡牌使用有限制，對該卡上的其他職階的使用不受限制，則該卡仍然計入調查員的卡牌使用限制之中，除非他們的構建選項中包含\"其他\"一詞<i>(詳見[牌組構建選項](#Deckbuilding_Options))</i>。\n根據調查員的牌組構建選項，以下部分說明多重職階卡牌的運作方式。\n- <b>可以無限制使用多個職階的調查員<i>(所有基礎遊戲調查員、潘明、賽菲娜·盧梭、威廉·約里克、里奧·安德森、喬·戴蒙德、普雷斯頓·費爾蒙特、Diana Stanley)</i>：</b>如果一張多重職階卡牌的其中一個職階為調查員所列出能使用的職階之一，即可加入該調查員的牌組之中。\n- <b>《敦威治遺產》擴充之中的調查員</b> <i>(即佐伊·薩馬拉斯、雷克斯·墨菲、珍妮·巴恩斯、吉姆·卡爾弗、\"灰堆\"皮特)</i>：如果一張多重職階卡牌的其中一個職階是調查員可以無限制使用的職階，則該卡不會佔用這些調查員的5個\"職階以外\"的卡牌位置。無論多重職階卡牌上有多少個職階圖標，都只會佔用1個\"職階以外\"的卡牌位置。\n- <b>調查員可以無限制地使用一個職階，且有限地使用一個或多個\"其他\"職階</b><i>(即瑪麗·朗博、芬恩·愛德華茲、卡洛琳·弗恩、《Edge of the Earth》擴充之中的調查員)</i>：多重職階卡牌不會計入該調查員的限制位置，因為它屬於無限制的類別<i>(詳見[牌組構建選項](#Deckbuilding_Options))</i>。\n- <b>Investigators with unlimited access to one class and limited access to a second class, without using the word \"other\"</b> <i>(i.e. Norman Withers)</i>: A multi-class card will occupy one of the investigator’s limited slots, even if it also falls into the unlimited category.\n- <b>蘿拉·海耶斯</b>：多重職階卡牌的每個職階都能算作該職階的一張卡牌計入她的牌組構建需求。"
   },
   {
     "id": "Must",
@@ -644,9 +644,9 @@
   },
   {
     "id": "Myriad",
-    "cycle": ["tde"],
+    "cycle": [ "tde" ],
     "title": "Myriad",
-    "text": "An investigator may include up to three copies of a player card with the myriad keyword in their deck (by title), instead of the normal limit of two copies. Additionally, when you purchase a myriad card for your deck, you may purchase up to two additional copies of that card (at the same level) at no experience cost.\nWhen counting the total amount of experience in your deck, each copy of a Myriad card after the first copy does not count towards your experience total."
+    "text": "An investigator may include up to three copies of a player card with the myriad keyword in their deck (by title), instead of the normal limit of two copies. Additionally, when you purchase a myriad card for your deck, you may purchase up to two additional copies of that card (at the same level) at no experience cost.\n在計算牌組的總經驗值時，每種無數卡牌只算作一張，超過一張的其他無數卡都不計入經驗值。"
   },
   {
     "id": "Mythos_Phase_Placeholder",
@@ -661,12 +661,12 @@
   {
     "id": "Nested_Sequences",
     "title": "嵌套隊列",
-    "text": "當一個效果觸發條件被滿足時，如果有多個效果都能夠被結算，則應當按照以下順序依次結算：(1)首先執行所有\"在……時(when)\"類型的效果，因為這種效果會中斷觸發條件的執行，(2)結算觸發條件本身的效果，(3)最後結算\"在……後(after)\"類型的效果，這種效果只有在觸發條件完成後才能結算。\n可以看到在這個隊列中，如果玩家使用了[reaction]或<b>強制</b>能力，而導致一個新的觸發條件被滿足，則當前隊列必須立刻中斷，結算新條件對應的隊列，這種隊列被稱為<b>嵌套隊列</b>。這種隊列的結算順序與普通隊列一致：(1)執行所有針對新觸發條件的\"在……時\"類型效果，(2)結算新觸發條件本身的效果，(3)結算針對新觸發條件的\"在……後\"類型的效果。只有當嵌套隊列被完成後，才能返回上一層，結算之前被中斷的隊列。\n一個隊列中可以出現多個嵌套隊列，嵌套隊列也可以被再次嵌套。嵌套隊列的數量沒有限制。但只有完成當前的嵌套隊列，才能返回上一層的隊列繼續結算。這個原則被稱為\"後進先出原則\"。\n<i>例如：羅蘭和艾格尼絲遇到了可怕的敵人。羅蘭的場上有看門狗，一隻受到2點傷害的黑山羊眷族與他交戰。而一隻食屍鬼小兵與艾格尼絲交戰。羅蘭想要打出.45自動手槍，但這會觸發黑山羊眷族的趁亂攻擊，導致羅蘭受到1點傷害。羅蘭將這點傷害分配給了看門狗。此時觸發看門狗[reaction]能力：\"在一名敵人攻擊並對看門狗造成傷害時：對攻擊敵人造成1點傷害。\"在結算羅蘭打出.45自動手槍之前，看門狗先對黑山羊眷族造成1點傷害，導致黑山羊眷族將要被擊敗。這觸發了黑山羊眷族的<b>強制</b>能力：\"在黑山羊眷族被擊敗時：所在地點的每位調查員受到1點恐懼。\"在結算傷害看門狗對黑山羊眷族造成的傷害之前，該地點的所有調查員各受到1點恐懼(包括艾格尼絲)。這觸發了艾格尼絲的[reaction]能力：\"在艾格尼絲·貝克受到至少1點恐懼後：對你所在地點一名敵人造成1帶你傷害。\"在黑山羊眷族被擊敗之前，艾格尼絲對食屍鬼小兵造成1點傷害。現在，所有[reaction]和<b>強制</b>能力都結算完畢了，開始結算剩餘的效果。首先，黑山羊眷族被擊敗並結算可能觸發的\"在……後\"效果，然後看門狗受到傷害並結算可能觸發的\"在……後\"效果。最後結算最早的效果，羅蘭將打出的.45自動手槍放在場上。</i>"
+    "text": "當一個效果觸發條件被滿足時，如果有多個效果都能夠被結算，則應當按照以下順序依次結算：(1)首先執行所有\"在……時(when)\"類型的效果，因為這種效果會中斷觸發條件的執行，(2)結算觸發條件本身的效果，(3)最後結算\"在……後(after)\"類型的效果，這種效果只有在觸發條件完成後才能結算。\n可以看到在這個隊列中，如果玩家使用了[reaction]或<b>強制</b>能力，而導致一個新的觸發條件被滿足，則當前隊列必須立刻中斷，結算新條件對應的隊列，這種隊列被稱為<b>嵌套隊列</b>。這種隊列的結算順序與普通隊列一致：(1)執行所有針對新觸發條件的\"在……時\"類型效果，(2)結算新觸發條件本身的效果，(3)結算針對新觸發條件的\"在……後\"類型的效果。只有當嵌套隊列被完成後，才能返回上一層，結算之前被中斷的隊列。\n一個隊列中可以出現多個嵌套隊列，嵌套隊列也可以被再次嵌套。嵌套隊列的數量沒有限制。但只有完成當前的嵌套隊列，才能返回上一層的隊列繼續結算。這個原則被稱為\"後進先出原則\"。\n<i>例如：羅蘭和艾格尼絲遇到了可怕的敵人。羅蘭的場上有[看門狗](/card/01021)，一隻受到2點傷害的[黑山羊眷族](/card/01180)與他交戰。而一隻食屍鬼小兵與[艾格尼絲](/card/01004)交戰。羅蘭想要打出.45自動手槍，但這會觸發黑山羊眷族的趁亂攻擊，導致羅蘭受到1點傷害。羅蘭將這點傷害分配給了看門狗。此時觸發看門狗[reaction]能力：\"在一名敵人攻擊並對看門狗造成傷害時：對攻擊敵人造成1點傷害。\"在結算羅蘭打出.45自動手槍之前，看門狗先對黑山羊眷族造成1點傷害，導致黑山羊眷族將要被擊敗。這觸發了黑山羊眷族的<b>強制</b>能力：\"在黑山羊眷族被擊敗時：所在地點的每位調查員受到1點恐懼。\"在結算傷害看門狗對黑山羊眷族造成的傷害之前，該地點的所有調查員各受到1點恐懼(包括艾格尼絲)。這觸發了艾格尼絲的[reaction]能力：\"在艾格尼絲·貝克受到至少1點恐懼後：對你所在地點一名敵人造成1帶你傷害。\"在黑山羊眷族被擊敗之前，艾格尼絲對食屍鬼小兵造成1點傷害。現在，所有[reaction]和<b>強制</b>能力都結算完畢了，開始結算剩餘的效果。首先，黑山羊眷族被擊敗並結算可能觸發的\"在……後\"效果，然後看門狗受到傷害並結算可能觸發的\"在……後\"效果。最後結算最早的效果，羅蘭將打出的.45自動手槍放在場上。</i>"
   },
   {
     "id": "Nested_Skill_Tests",
-    "title": "Nested Skill Tests",
-    "text": "A skill test cannot initiate during another skill test. If during the resolution of a skill test another skill test would initiate, instead the second skill test does not initiate until the first skill test has finished resolving. If the first skill test was part of an action, the second skill test does not initiate until that action has finished resolving.\n<i>For example: Ursula performing an investigate action. As part of this investigate action, she must perform an [intellect] test. During the resolution of that skill test, she plays Expose Weakness, a fast event which initiates another [intellect] test. Instead of resolving the second [intellect] test during the first one, the initiation of the second [intellect] test is delayed until after the first skill test (and therefore the investigate action) has finished resolving.</i>"
+    "title": "嵌套技能檢定",
+    "text": "技能檢定不能在另一個技能檢定期間啟動。如果在技能檢定的結算過程中將啟動另一個技能檢定，則改為不啟動第二個技能檢定，直到第一個技能檢定完成結算。如果第一個技能檢定是一個行動的一部分，則第二個技能檢定在該行動完成結算之前不會啟動。\n<i>例如：厄休拉正在執行調查行動。作為調查行動的一部分，她必須進行一次[intellect]檢定。在結算該技能檢定的過程中，她打出了[暴露弱點](/card/02175)，這是一個會啟動另一個[intellect]檢定的快速事件。第二個[intellect]檢定不會在第一個技能檢定中結算，而是改為延遲到第一個技能檢定(以及調查行動)結算完成後才會開始。</i>"
   },
   {
     "id": "Ownership_and_Control",
@@ -706,7 +706,7 @@
       {
         "id": "Play_Restrictions_Permissions_and_Instructions",
         "title": "出牌限制、特例、指令",
-        "text": "大部分卡牌和能力有特定的指令，來說明該卡可以在什麼條件下使用或禁用，或者如何使用。如果要使用這樣的卡牌，必須遵守其出牌限制。\n特例允許玩家在遊戲規則外的特殊時間點打出該牌，或使用卡牌能力。\n指令描述了在什麼事件點和/或什麼時間段内，可以打出該事件卡。"
+        "text": "大部分卡牌和能力有特定的指令，來說明該卡可以在什麼條件下使用或禁用，或者如何使用。如果要使用這樣的卡牌，必須遵守其出牌限制。\n特例允許玩家在遊戲規則外的特殊時間點打出該牌，或使用卡牌能力。\n指令描述了在什麼事件點和/或什麼時間段內，可以打出該事件卡。"
       }
     ]
   },
@@ -729,7 +729,7 @@
     "id": "Prologue_Investigators",
     "title": "序章調查員",
     "cycle": [ "tcu" ],
-    "text": "圖示的四張調查員卡(加弗瑞拉·米茲拉克、杰羅姆·戴維斯、佩妮·懷特、瓦倫蒂諾·里瓦斯)均標記有<i>暮色莊園失蹤事件</i>的遭遇組圖標，只能用於《萬象無終》的序章。這些調查員不能用於其他冒險。將這些調查員與<i>暮色莊園失蹤事件</i>的剩餘冒險卡放在一起，而不要加入到你收藏的玩家卡中。"
+    "text": "圖示的四張調查員卡([加弗瑞拉·米茲拉克](/card/05046)、[杰羅姆·戴維斯](/card/05047)、[佩妮·懷特](/card/05049)、[瓦倫蒂諾·里瓦斯]](/card/05048))均標記有<i>暮色莊園失蹤事件</i>的遭遇組圖標，只能用於《萬象無終》的序章。這些調查員不能用於其他冒險。將這些調查員與<i>暮色莊園失蹤事件</i>的剩餘冒險卡放在一起，而不要加入到你收藏的玩家卡中。"
   },
   {
     "id": "Put_into_Play",
@@ -744,7 +744,7 @@
   {
     "id": "Reaction_Opportunities",
     "title": "反應([reaction])機會",
-    "text": "當反應觸發能力的條件被滿足時，調查員會立刻獲得一次結算該[reaction]能力的機會，被稱為反應機會。此時，所有獲得反應機會的玩家都必須決定是否結算，只有所有[reaction]能力都結算完畢後，遊戲才能繼續進行。\n如果一位玩家選擇結算[reaction]能力，那麼其他玩家依然可以對這個條件進行結算。也就是說，同一條件下，可以有多個[reaction]能力被結算。\n<i>例如：羅蘭擊敗了一名敵人，想要觸發他的[reaction]能力：\"在你擊敗一名敵人後：發現所在地點的1個線索。\"因此，他獲得了1個線索。此外，他還可以在同一個時機(擊敗敵人)打出\"證據！(基礎#22)\"。兩個效果的觸發條件都是\"在你擊敗一名敵人後\"，羅蘭在同一個時機上可以觸發的效果數量沒有限制，因此兩個效果都能結算。</i>"
+    "text": "當反應觸發能力的條件被滿足時，調查員會立刻獲得一次結算該[reaction]能力的機會，被稱為反應機會。此時，所有獲得反應機會的玩家都必須決定是否結算，只有所有[reaction]能力都結算完畢後，遊戲才能繼續進行。\n如果一位玩家選擇結算[reaction]能力，那麼其他玩家依然可以對這個條件進行結算。也就是說，同一條件下，可以有多個[reaction]能力被結算。\n<i>例如：[羅蘭](/card/01001)擊敗了一名敵人，想要觸發他的[reaction]能力：\"在你擊敗一名敵人後：發現所在地點的1個線索。\"因此，他獲得了1個線索。此外，他還可以在同一個時機(擊敗敵人)打出\"[證據！](/card/01022)\"。兩個效果的觸發條件都是\"在你擊敗一名敵人後\"，羅蘭在同一個時機上可以觸發的效果數量沒有限制，因此兩個效果都能結算。</i>"
   },
   {
     "id": "Ready",
@@ -768,8 +768,8 @@
   },
   {
     "id": "Replacing_an_Opening_Hand",
-    "title": "Replacing an Opening Hand",
-    "text": "If an ability replaces an investigator’s opening hand with a different set of cards, that set of cards is considered to be their new opening hand for the purposes of effects which would alter the number of cards in their opening hand.\nIf an ability replaces an investigator’s opening hand with a number of cards \"kept\" from a larger set of cards, an effect which alters the number of cards in that investigator’s opening hand alters both the cards originally drawn to replace that opening hand, and the number of cards \"kept\" from that larger set.\n<i>For example, the ability on Sefina Rousseau reads: \"When you would draw your opening hand: Draw 13 cards,instead. Choose up to 5 events to place beneath this card and keep 8 cards as your opening hand. Discard the rest.\" If a card effect or game effect alters the number of cards in Sefina’s opening hand, it would alter both the number of cards drawn from her ability and the number of cards she keeps as her opening hand.</i>"
+    "title": "替換起始手牌",
+    "text": "如果有能力用另一組不同的牌替換調查員的起始手牌，則該組牌被視為該調查員的新起始手牌，並依此計算任何會變化起始手牌數量的效果。\n如果有能力替換調查員的起始手牌，其方式為從一組較大的卡牌集合中\"保留\"數張卡牌，則改變該調查員起始手牌數量的效果會同時改變最初抽取的卡牌集合數量，以及之後從集合中\"保留\"的卡片數量。\n<i>例如，[賽菲娜·盧梭](/card/03003)的能力寫道：\"在你將要抽取起始手牌時：改為抽取13張卡牌。選擇最多5張事件卡放在本卡牌下，並保留8張卡牌作為你的起始手牌。丟棄其餘卡牌。\"如果卡牌效果或遊戲效果改變了賽菲娜起始手牌的數量，那麼她從能力中抽取的卡牌數量和她作為起始手牌保留的卡牌數量都會改變。</i>"
   },
   {
     "id": "Resign",
@@ -784,7 +784,7 @@
   {
     "id": "Resources",
     "title": "資源",
-    "text": "資源代表著調查員口袋中，用來獲得新卡牌的各式物品——食物、金錢、工具、知識、法術配件等。\n- 打出或使用其能力需要消耗資源的卡牌時，調查員必須將所示數量的資源標記，從自己的資源池中放回供應堆(詳見\"[費用](#Costs)\")。\n- 資源可以通過\"資源\"行動來獲得（詳見\"[資源行動](#Resource_Action)\")。\n- 調查員在補給階段會獲得1個資源(詳見\"[4.4 每位調查員抽取1張卡牌，並獲得1個資源](#Upkeep_Phase)\")。\nIf an ability refers to the number of \"resources you have,\" \"your resources,\" or any variation on the above, it is only referring to the number of resources in that investigator’s resource pool. Resources on other cards that investigator controls do not count toward this total unless explicitly stated.\n相關條目：\"[標記，用完](#Tokens)\"。"
+    "text": "資源代表著調查員口袋中，用來獲得新卡牌的各式物品——食物、金錢、工具、知識、法術配件等。\n- 打出或使用其能力需要消耗資源的卡牌時，調查員必須將所示數量的資源標記，從自己的資源池中放回供應堆(詳見\"[費用](#Costs)\")。\n- 資源可以通過\"資源\"行動來獲得（詳見\"[資源行動](#Resource_Action)\")。\n- 調查員在補給階段會獲得1個資源(詳見\"[4.4 每位調查員抽取1張卡牌，並獲得1個資源](#Upkeep_Phase)\")。\n如果有能力涉及\"你持有的資源\"、\"你的資源\"的數量，或者上述的任何形式的變體，其數量僅指該調查員資源池中的資源數量。除非特別說明，否則調查員控制的卡牌上的資源不計入此總數。\n相關條目：\"[標記，用完](#Tokens)\"。"
   },
   {
     "id": "Retaliate",
@@ -804,13 +804,13 @@
   {
     "id": "Seal",
     "title": "封印",
-    "cycle": ["tfa"],
+    "cycle": [ "tfa" ],
     "text": "帶有封印關鍵詞的卡牌入場時有額外費用，控制該卡牌的玩家必須搜索混亂袋，找出指定的混亂標記並放到該卡牌上，以此來封印這個標記。如果該卡牌顯示選擇一個標記進行封印，則由控制該卡牌的玩家來選擇。如果指定的標記不在混亂袋中，則該卡牌不能入場。\n被封印的混亂標記視作不在混亂袋中，因此在技能檢定或結算能力時無法從混亂袋中抽出該標記。\n在\"釋放\"一個混亂標記時，將該標記放回混亂袋，且該標記不再視作被封印。<b>如果卡牌上封印了一個或更多的混亂標記，該卡牌因任何原因而離場時，立即釋放該卡牌上所有的混亂標記。</b>\n部分卡牌(不論是否帶有封印關鍵詞)的能力效果也能夠封印一個或多個混亂標記。在這種狀況下，按以下流程執行：搜索混亂袋找出指定的標記，將該標記移出混亂袋並放到該卡牌上。如果指定的標記不在混亂袋中，則該效果不生效。"
   },
   {
     "id": "Search",
     "title": "查找",
-    "text": "當玩家被要求查找一張卡牌時，該玩家可以查看範圍内的所有的卡牌，但不要將這些卡牌給其他玩家看。\n- 如果效果查找某個牌堆，則在查找牌堆之後，將該牌堆混洗。\n- 玩家如果要執行查找效果，就必須在查找範圍內找到至少1張有效的對象卡牌。\n- 在查找時，被查找的卡牌不視為離開原有的區域。"
+    "text": "當玩家被要求查找一張卡牌時，該玩家可以查看範圍內的所有的卡牌，但不要將這些卡牌給其他玩家看。\n- 如果效果查找某個牌堆，則在查找牌堆之後，將該牌堆混洗。\n- 玩家如果要執行查找效果，就必須在查找範圍內找到至少1張有效的對象卡牌。\n- 在查找時，被查找的卡牌不視為離開原有的區域。"
   },
   {
     "id": "Self_Referential_Text",
@@ -820,12 +820,12 @@
   {
     "id": "Set_Aside",
     "title": "放在一邊",
-    "text": "部分冒險會指示玩家將特定卡牌放在一邊。這些卡牌不會與遊戲產生互動，除非有冒險指令或卡牌效果提及。\nIf an effect instructs an investigator to take control of a card that is currently set-aside, that effect puts that card into play in that investigator’s play area."
+    "text": "部分冒險會指示玩家將特定卡牌放在一邊。這些卡牌不會與遊戲產生互動，除非有冒險指令或卡牌效果提及。\n如果有效果指示調查員控制被放在一邊的卡牌，則該效果會將該卡牌放置在該調查員的遊戲區域中。"
   },
   {
     "id": "Signature_Cards",
     "title": "調查員特殊卡",
-    "text": "每位調查員都有象徵著自己身份的特殊卡牌，這些卡牌只能被這名調查員加入牌組中，不能加入其它調查員的牌組。這些卡牌一般帶有\"……牌組專用\"的字樣，或者被列在調查員卡背面的\"牌組構建需求\"中。\n調查員特殊卡必須額外遵守以下規則：\n- 玩家必須將\"牌組構建需求\"中指定數量的特殊卡加入其牌組，如果沒有數量說明，則默認為1張。\n<i>例如：在羅蘭·班克斯的\"牌組構建需求\"中，要求玩家加入：羅蘭的.38特製手槍、掩蓋罪證、1張隨機基礎弱點。所以玩家必須加入正好1張羅蘭的.38特製手槍和1張掩蓋罪證，這些卡牌張數各不能超過1張。</i>\n- 調查員的特殊卡不能被交易，也不能被贈與另一名調查員。\n<i>例如：羅蘭的場上有羅蘭的.38特製手槍。他現在打出了\"團隊合作\"，該卡能讓他與同一地點的其他調查員交易支援卡。但是\"羅蘭的.38特製手槍\"屬於調查員特殊卡，因此無法被交易或贈與。</i>\n- Signature cards need not abide by typical deckbuilding restrictions, and do not count toward any deckbuilding limitations if other cards share the same title."
+    "text": "每位調查員都有象徵著自己身份的特殊卡牌，這些卡牌只能被這名調查員加入牌組中，不能加入其它調查員的牌組。這些卡牌一般帶有\"……牌組專用\"的字樣，或者被列在調查員卡背面的\"牌組構建需求\"中。\n調查員特殊卡必須額外遵守以下規則：\n- 玩家必須將\"牌組構建需求\"中指定數量的特殊卡加入其牌組，如果沒有數量說明，則默認為1張。\n<i>例如：在[羅蘭·班克斯](/card/01001)的\"牌組構建需求\"中，要求玩家加入：[羅蘭的.38特製手槍](/card/01006)、[掩蓋罪證](/card/01007)、1張隨機基礎弱點。所以玩家必須加入正好1張羅蘭的.38特製手槍和1張掩蓋罪證，這些卡牌張數各不能超過1張。</i>\n- 調查員的特殊卡不能被交易，也不能被贈與另一名調查員。\n<i>例如：羅蘭的場上有羅蘭的.38特製手槍。他現在打出了\"[團隊合作](/card/02018)\"，該卡能讓他與同一地點的其他調查員交易支援卡。但是\"羅蘭的.38特製手槍\"屬於調查員特殊卡，因此無法被交易或贈與。</i>\n- 調查員特殊卡不算在牌組構建限制內，也不會因為有其他同名卡牌而計入任何牌組建構的限制。"
   },
   {
     "id": "Skill_Cards",
@@ -834,8 +834,8 @@
   },
   {
     "id": "Skill_Test_Results_and_Advanced_Timing",
-    "title": "Skill Test Results and Advanced Timing",
-    "text": "During Step 7 of Skill Test Timing (\"Apply skill test results\"), all of the effects of the successful skill test are determined and resolved, one at a time. This includes the effects of the test itself (such as the clue discovered while investigating, or the damage dealt during an attack), as well as any \"If this test is successful…\" effects from card abilities or skill cards committed to the test.\n[reaction] or <b>Forced</b> abilities with a triggering condition dependent upon the skill test being successful or unsuccessful (such as \"After you successfully investigate,\" or \"After you fail a skill test by 2 or more\") do not trigger at this time. These abilities are triggered during Step 6, \"Determine success/failure of skill test.\""
+    "title": "技能檢定結果和進階流程",
+    "text": "在技能檢定流程的步驟7(\"執行技能檢定結果\")期間，技能檢定成功的所有效果會確定和結算(一次一個)，包括檢定本身的效果(例如調查發現的線索、攻擊造成的傷害)，以及投入檢定的卡牌能力或技能卡的所有\"如果檢定成功……\"的效果。\n取決於技能檢定成功或失敗而觸發的[reaction]或<b>強制</b>能力(例如\"在你成功調查後\"或\"在你失敗且低於難度至少2點後\")不會在此時觸發。這些能力會在步驟6\"決定檢定成功/失敗\"期間觸發。"
   },
   {
     "id": "Skill_Tests",
@@ -845,7 +845,7 @@
   {
     "id": "Slots",
     "title": "槽位",
-    "text": "每位調查員有一定數量的槽位，可以用來放置打出的支援卡。每張支援卡會標明其佔用的槽位。槽位限制了每位調查員可以打出的同屬性支援卡的數量。\n每位調查員擁有的槽位數量如下：\n- <b>1個飾品槽</b>\n- <b>1個服裝槽</b>\n- <b>1個盟友槽</b>\n- <b>2個手部槽</b>\n- <b>2個法術槽</b>\n如果打出的支援卡沒有槽位符號，則不會佔用任何槽位。無槽位的支援卡可以打出任意多張。\n如果調查員打出或控制一張支援卡時將要超出所攜帶的同類支援卡上限時，該調查員必須選擇並棄除其他由他控制的支援卡，來為新的支援卡騰出槽位。"
+    "text": "每位調查員有一定數量的槽位，可以用來放置打出的支援卡。每張支援卡會標明其佔用的槽位。槽位限制了每位調查員可以打出的同屬性支援卡的數量。\n每位調查員擁有的槽位數量如下：\n- <b>1個飾品槽</b>\n- <b>1個服裝槽</b>\n- <b>1個盟友槽</b>\n- <b>2個手部槽</b>\n- <b>2個法術槽</b>\n- <b>1個塔羅牌槽</b>詳見\"[塔羅牌槽位](#Tarot Slot)\"\n如果打出的支援卡沒有槽位符號，則不會佔用任何槽位。無槽位的支援卡可以打出任意多張。\n如果調查員打出或控制一張支援卡時將要超出所攜帶的同類支援卡上限時，該調查員必須選擇並棄除其他由他控制的支援卡，來為新的支援卡騰出槽位。"
   },
   {
     "id": "Spawn",
@@ -878,7 +878,7 @@
     "id": "Swarming X",
     "cycle": [ "tde" ],
     "title": "蜂擁X",
-    "text": "\"蜂擁X\"關鍵詞表示一群敵人集體行動，帶有\"蜂擁X\"關鍵詞的敵人入場後，將你的牌堆頂上的X張卡牌放到該敵人下面，作為蜂擁卡牌，但不要查看卡牌内容。蜂擁卡牌上面的敵人稱為\"頭領敵人\"。某些冒險卡的效果可能會指示玩家將蜂擁卡牌添加到一個敵人處，這一流程與蜂擁關鍵詞敵人入場的流程一樣。\n- 如果未指定由哪一位調查員來添加蜂擁卡牌，那麼由調查員隊長來進行添加。\n- 頭領下面的每張蜂擁卡牌視為一個該敵人。每張蜂擁卡牌視為擁有與頭領卡牌相同的數值和文字。<i>(例如，如果一個調查員與頭領敵人交戰，且該頭領敵人下面有2張蜂擁卡牌，那麼該調查員一共與3個敵人交戰。)</i>\n- 敵軍階段期間敵人攻擊時，每張蜂擁卡牌單獨進行攻擊。在本步驟期間，頭領敵人及其全部蜂擁卡牌一旦攻擊完畢，消耗所有這些卡牌。\n- 每張蜂擁卡牌可被單獨攻擊或分配傷害，但下面仍有蜂擁卡牌的頭領敵人不能被擊敗。一張蜂擁卡牌被擊敗時，超出的所有傷害都可以對同一個頭領下面的另一張蜂擁卡牌造成；或者，如果該頭領下沒有任何的蜂擁卡牌，則對該頭領造成。<i>(例如，Tony Morgan使用.41短口手槍來攻擊一個帶有2張蜂擁卡牌的Stealthy Zoog。這次攻擊造成2點傷害。第一點傷害擊敗2張蜂擁卡牌中的1張，所以超出的傷害點數可以對另一張蜂擁卡牌造成，將其也擊敗。)</i>\n- 每當蜂擁卡牌離場，將該卡放到其所有者的牌堆底下。你如果不確定該蜂擁卡牌的所有者，可以查看該卡的内容以確定其所有者。\n- 頭領敵人及其全部蜂擁卡牌作為一個整體進行移動，交戰和被消耗。<i>(例如，如果一個頭領敵人或其任意蜂擁卡牌被躲避，這些全部卡牌都被消耗並且解除交戰。)</i>"
+    "text": "\"蜂擁X\"關鍵詞表示一群敵人集體行動，帶有\"蜂擁X\"關鍵詞的敵人入場後，將你的牌堆頂上的X張卡牌放到該敵人下面，作為蜂擁卡牌，但不要查看卡牌內容。蜂擁卡牌上面的敵人稱為\"頭領敵人\"。某些冒險卡的效果可能會指示玩家將蜂擁卡牌添加到一個敵人處，這一流程與蜂擁關鍵詞敵人入場的流程一樣。\n- 如果未指定由哪一位調查員來添加蜂擁卡牌，那麼由調查員隊長來進行添加。\n- 頭領下面的每張蜂擁卡牌視為一個該敵人。每張蜂擁卡牌視為擁有與頭領卡牌相同的數值和文字。<i>(例如，如果一個調查員與頭領敵人交戰，且該頭領敵人下面有2張蜂擁卡牌，那麼該調查員一共與3個敵人交戰。)</i>\n- 敵軍階段期間敵人攻擊時，每張蜂擁卡牌單獨進行攻擊。在本步驟期間，頭領敵人及其全部蜂擁卡牌一旦攻擊完畢，消耗所有這些卡牌。\n- 每張蜂擁卡牌可被單獨攻擊或分配傷害，但下面仍有蜂擁卡牌的頭領敵人不能被擊敗。一張蜂擁卡牌被擊敗時，超出的所有傷害都可以對同一個頭領下面的另一張蜂擁卡牌造成；或者，如果該頭領下沒有任何的蜂擁卡牌，則對該頭領造成。<i>(例如，[Tony Morgan](/card/06003)使用[.41短口手槍](/card/01047)來攻擊一個帶有2張蜂擁卡牌的[Stealthy Zoog](/card/06017)。這次攻擊造成2點傷害。第一點傷害擊敗2張蜂擁卡牌中的1張，所以超出的傷害點數可以對另一張蜂擁卡牌造成，將其也擊敗。)</i>\n- 每當蜂擁卡牌離場，將該卡放到其所有者的牌堆底下。你如果不確定該蜂擁卡牌的所有者，可以查看該卡的內容以確定其所有者。\n- 頭領敵人及其全部蜂擁卡牌作為一個整體進行移動，交戰和被消耗。<i>(例如，如果一個頭領敵人或其任意蜂擁卡牌被躲避，這些全部卡牌都被消耗並且解除交戰。)</i>"
   },
   {
     "id": "Taking_Damage_Horror",
@@ -942,8 +942,8 @@
   },
   {
     "id": "unless_all_clues_have_been_discovered",
-    "title": "\"…Unless all of (location's) clues have been discovered.\"",
-    "text": "Some locations have abilities that prevent you from entering or using a particular enemy unless all of the clues have been discovered from a particular location; for example, the Engine Car. When interpreting such an ability, if the location is unrevealed (and therefore has no clues on it), this does not satisfy the ability; it must have been revealed at some point."
+    "title": "\"……除非（地點）沒有線索。(所有線索都已經被發現)\"",
+    "text": "部分地點的能力是阻止你進入或使用特定的能力，除非已從特定地點發現所有線索；例如，[車頭](/card/02175)。在解釋這種能力時，如果目標的特定地點未揭示(因此沒有線索)，不會滿足該能力的條件；地點一定會在某個時間點被揭示。"
   },
   {
     "id": "Upkeep_Phase_Placeholdler",
@@ -969,7 +969,7 @@
   {
     "id": "Weakness",
     "title": "弱點",
-    "text": "弱點是一種卡牌子類型。這種卡牌代表著角色的缺點、詛咒、精神痛苦、肉體損傷、任務、所怕之物，或者是該調查員隱藏的黑暗秘密，或者是冒險過程中該調查員做出的不良舉動。弱點卡根據其卡牌類型不同，有著不一樣的結算方式。\n -當調查員抽出遭遇卡類型的弱點卡時<i>(例如：敵人弱點卡、詭計弱點卡)</i>，將其視為你剛從遭遇牌堆抽出一張卡牌來結算。\n- Weaknesses with an encounter cardtype (such as enemies or treacheries) are considered to be player cards while they are in their bearer’s deck, and are considered to be encounter cards while they are being resolved, and once they have entered play. Before a weakness with an encounter cardtype is resolved, it is still considered to be a player card.\n- 當調查員抽出玩家卡類型的弱點卡時<i>(例如：支援弱點卡、事件弱點卡、技能弱點卡)</i>，立刻結算該卡的顯現效果，然後將該卡加入手牌。此後將該卡作為另一個類型的卡牌來使用。\n- 如果有任何弱點卡以抽牌以外的形式進入手牌，則視為該調查員抽到該牌並立刻結算(包括卡牌的顯現能力)。\n- 弱點卡的承受者，是指遊戲開始時，該弱點卡所在牌堆或玩家區域的所屬調查員。\n- 在一次冒險中，當弱點卡加入玩家牌堆、手牌、或者威脅區域後，該弱點卡在這個劇本内會保留在該玩家牌堆中。(直到其被卡牌效果或者冒險結局移除。)\n- 當玩家主動丟棄卡牌時，不能選擇手中的弱點卡，除非有卡牌效果允許如此。\n- 如果弱點卡同時帶有遭遇卡的類型，則該卡視為遭遇卡的一部分，不由任何玩家控制。帮有玩家卡類型的弱點卡，由其承受者控制。\n- 部分卡牌和文字會提及\"基礎弱點卡\"。基礎弱點卡帶有\"基礎弱點\"的文字，並帶有如下符號。"
+    "text": "弱點是一種卡牌子類型。這種卡牌代表著角色的缺點、詛咒、精神痛苦、肉體損傷、任務、所怕之物，或者是該調查員隱藏的黑暗秘密，或者是冒險過程中該調查員做出的不良舉動。弱點卡根據其卡牌類型不同，有著不一樣的結算方式。\n -當調查員抽出遭遇卡類型的弱點卡時<i>(例如：敵人弱點卡、詭計弱點卡)</i>，將其視為你剛從遭遇牌堆抽出一張卡牌來結算。\n- 具有遭遇卡類型的弱點卡(例如敵人或詭計)在其承受者的牌組中時被視為玩家卡，進入場上在結算時被則視為遭遇卡。在結算遭遇卡類型的弱點之前，該卡仍被視為玩家卡。\n- 當調查員抽出玩家卡類型的弱點卡時<i>(例如：支援弱點卡、事件弱點卡、技能弱點卡)</i>，立刻結算該卡的顯現效果，然後將該卡加入手牌。此後將該卡作為另一個類型的卡牌來使用。\n- 如果有任何弱點卡以抽牌以外的形式進入手牌，則視為該調查員抽到該牌並立刻結算(包括卡牌的顯現能力)。\n- 弱點卡的承受者，是指遊戲開始時，該弱點卡所在牌堆或玩家區域的所屬調查員。\n- 在一次冒險中，當弱點卡加入玩家牌堆、手牌、或者威脅區域後，該弱點卡在這個劇本內會保留在該玩家牌堆中。(直到其被卡牌效果或者冒險結局移除。)\n- 當玩家主動丟棄卡牌時，不能選擇手中的弱點卡，除非有卡牌效果允許如此。\n- 如果弱點卡同時帶有遭遇卡的類型，則該卡視為遭遇卡的一部分，不由任何玩家控制。帮有玩家卡類型的弱點卡，由其承受者控制。\n- 部分卡牌和文字會提及\"基礎弱點卡\"。基礎弱點卡帶有\"基礎弱點\"的文字，並帶有如下符號。"
   },
   {
     "id": "When",
@@ -978,26 +978,23 @@
   },
   {
     "id": "Wild_Skill_Icons",
-    "title": "Wild Skill Icons",
-    "text": "A Wild ([wild]) skill icon on a player card may be used to match any other skill icon for the purposes of both card abilities and counting how many matching icons are committed to a skill test. When using Wild icons for the purpose of resolving a card ability, a player must state which icon the Wild is matching at the time the card is used.\nWild icons committed to a skill test are considered \"matching\" icons for the purposes of card abilities."
-  }
-  ,
+    "title": "全能([wild])技能圖標",
+    "text": "計算卡牌能力和投入技能檢定(計算一致的圖標數量)時，玩家卡上的全能([wild])技能圖標可視為與任何技能圖標一致。在結算卡牌能力時，使用全能圖標的玩家必須說明全能圖標要與哪個圖標視為一致。\n計算卡牌能力時，投入技能檢定的全能圖標被視為一致的圖標。"
+  },
   {
     "id": "Winning_and_Losing",
     "title": "勝利與失敗",
     "text": "每次冒險會有多個可能的結局。\n場景牌堆代表了玩家冒險的進程。場景牌堆(以及其他遭遇卡牌)的某些指令含有結局，形式為\"<b>(→結局#)</b>\"。玩家的目標就是推進場景牌堆，直到出現一個(可能有利)的結局。當場景牌堆中的結局被達成時，冒險結束(玩家可能\"勝利\"！)。屆時，查看《劇本手冊》中，\"請勿閱讀\"部分，即可了解如何結算相應的結局了。\n一些邪惡勢力在冒險中對調查員百般阻撓，密謀牌堆表示他們的目標和相關進展。密謀牌堆(以及其他遭遇卡)上的部分指令也包含結局，形式為\"<b>(→結局#)</b>\"。如果密謀牌堆觸發(通常為黑暗)結局，本次冒險便以失敗告終。屆時，查看《劇本手冊》\"請勿閱讀\"部分，了解如何結算相應結局。\n如果出現沒有達成任何結局，冒險就結束的情況<i>(例如：所有調查員都退場或撤退)</i>，則查看《劇本手冊》\"請勿閱讀\"部分，了解如何結算相應結局。\n- 在劇本模式下，玩家無論達成何種結局，都繼續進行下一個冒險。即使玩家冒險失敗，也依然繼續劇情(雖然失敗會帶來負面效果)。\n- 當玩家進行獨立的冒險時，無論勝利或失敗，都沒有影響。只要達成一張場景卡的結局，就視為勝利。其他所有結局都視為失敗(詳見\"[冒險模式](#Standalone_Mode)\")。\n相關條目：\"[場景牌堆和密課謀牌堆](#Act_Deck_and_Agenda_Deck)\"。"
-  }
-  ,
+  },
   {
     "id": "The_letter_X",
     "title": "字母\"X\"",
     "text": "字母X所代表的的數值，由卡牌能力或者玩家選擇來決定。如果X未被定義是何種數值，則默認為0。\n- 如果費用涉及X，則X的數值由卡牌能力或玩家選擇來決定，然後再結算任何可能修正費用的效果。"
-  }
-  ,
+  },
   {
     "id": "You_Your",
     "title": "你/你的",
-    "text": "當效果中出現\"你/你的\"一詞時，請額外遵守以下規則：\n- 在<b>顯現</b>能力中，如果出現\"你/你的\"一詞是指抽取該卡牌，且正在結算當前能力的調查員。\n- 在結算觸發能力([free]、[reaction]和[action])中，\"你/你的\"是指觸發了當前能力的調查員。\n -如果一個能力中，有部分語句說明了該能力的效果對象是誰。那麼在後面的語句中如果使用了\"你/你的\"一詞，則代指效果對象。<i>例如：固執的偵探(基礎#103)效果為：\"只要固執的偵探與你在同一個地點……\"，該語句中的\"你\"，就代指與固執的偵探在同一地點的調查員。年幼的深潛者(基礎#181)效果為：\"在年幼的深潛者被你吸引後……\"，該語句中的\"你\"，就代指吸引了年幼的深潛者的調查員。</i>\n- 除了上述三種情況以外的其他情況，\"你/你們\"都指控制該卡牌的調查員，或者是處於其威脅區域內的調查員，或者是當前正在與該卡牌互動的調查員。\n一張卡牌中可能會使用多次\"你/你的\"，而且每個詞所指代的對象都可以不同。\"你/你的\"可以在一張卡牌的不同能力中，指代不同的調查員。\n<i>例如：拉萊耶之夢(基礎#182)效果為：</i>\n<i>\"<b>顯現</b> - 將拉萊耶之夢放置入你的威脅區域。\n你獲得-1[willpower]和-1神智值。\n[action]：檢定[willpower](3)。如果成功，丟棄拉萊耶之夢。\"</i>\n在第一、第二個能力中都使用了\"你\"一詞。在<b>顯現</b>能力中，\"你\"是指抽出拉萊耶之夢的調查員。在第二個能力中，\"你\"是指威脅區域中有拉萊耶之夢的調查員。第三個能力中雖然沒使用\"你\"一詞，但默指了花費行動進行這項檢定的調查員。"
+    "text": "當效果中出現\"你/你的\"一詞時，請額外遵守以下規則：\n- 在<b>顯現</b>能力中，如果出現\"你/你的\"一詞是指抽取該卡牌，且正在結算當前能力的調查員。\n- 在結算觸發能力([free]、[reaction]和[action])中，\"你/你的\"是指觸發了當前能力的調查員。\n -如果一個能力中，有部分語句說明了該能力的效果對象是誰。那麼在後面的語句中如果使用了\"你/你的\"一詞，則代指效果對象。<i>例如：固執的偵探(/card/01103)效果為：\"只要固執的偵探與你在同一個地點……\"，該語句中的\"你\"，就代指與固執的偵探在同一地點的調查員。年幼的深潛者(/card/01181)效果為：\"在年幼的深潛者被你吸引後……\"，該語句中的\"你\"，就代指吸引了年幼的深潛者的調查員。</i>\n- 除了上述三種情況以外的其他情況，\"你/你們\"都指控制該卡牌的調查員，或者是處於其威脅區域內的調查員，或者是當前正在與該卡牌互動的調查員。\n一張卡牌中可能會使用多次\"你/你的\"，而且每個詞所指代的對象都可以不同。\"你/你的\"可以在一張卡牌的不同能力中，指代不同的調查員。\n<i>例如：[拉萊耶之夢](/card/01182)效果為：</i>\n<i>\"<b>顯現</b> - 將拉萊耶之夢放置入你的威脅區域。\n你獲得-1[willpower]和-1神智值。\n[action]：檢定[willpower](3)。如果成功，丟棄拉萊耶之夢。\"</i>\n在第一、第二個能力中都使用了\"你\"一詞。在<b>顯現</b>能力中，\"你\"是指抽出拉萊耶之夢的調查員。在第二個能力中，\"你\"是指威脅區域中有拉萊耶之夢的調查員。第三個能力中雖然沒使用\"你\"一詞，但默指了花費行動進行這項檢定的調查員。"
   },
   {
     "id": "Appendix_I_Initiation_Sequence",
@@ -1280,7 +1277,7 @@
           {
             "id": "Enemy_Phase",
             "title": "III. 敵軍階段",
-            "text": "<b>3.1 敵軍階段開始。</b>\n該步驟標誌著敵軍階段開始。\n<b>3.2 獵手敵人移動</b>。\n每名準備且非交戰狀態的獵手敵人，結算其獵手關鍵詞(詳見第12頁\"[獵手](#Hunter)\")。\n<b>3.3 下一位調查員結算交戰敵人的攻擊。<\b>\n按玩家順序結算交戰敵人的攻擊。在一位玩家完全結算後，才能輪到下一位玩家結算。\n每名準備且交戰狀態的敵人，都會攻擊與其交戰的調查員。當一名敵人攻擊時，對調查員同時造成傷害和恐懼。在攻擊完成後(以及所有攻擊觸發的效果結算完成後)，消耗該名敵人。如果調查員同時與多名敵人交戰，由該調查員選擇結算順序。\n在一位調查員結算完所有交戰敵人的攻擊後，回到先前的玩家時間段。如果所有調查員都完成了敵人攻擊的結算，則進入之後的玩家時間段。\n<b>3.4 敵軍階段結束。</b>\n該步驟標誌著敵軍階段結束。"
+            "text": "<b>3.1 敵軍階段開始。</b>\n該步驟標誌著敵軍階段開始。\n<b>3.2 獵手敵人移動</b>。\n每名準備且非交戰狀態的獵手敵人，結算其獵手關鍵詞(詳見第12頁\"[獵手](#Hunter)\")。\n<b>3.3 下一位調查員結算交戰敵人的攻擊。</b>\n按玩家順序結算交戰敵人的攻擊。在一位玩家完全結算後，才能輪到下一位玩家結算。\n每名準備且交戰狀態的敵人，都會攻擊與其交戰的調查員。當一名敵人攻擊時，對調查員同時造成傷害和恐懼。在攻擊完成後(以及所有攻擊觸發的效果結算完成後)，消耗該名敵人。如果調查員同時與多名敵人交戰，由該調查員選擇結算順序。\n在一位調查員結算完所有交戰敵人的攻擊後，回到先前的玩家時間段。如果所有調查員都完成了敵人攻擊的結算，則進入之後的玩家時間段。\n<b>3.4 敵軍階段結束。</b>\n該步驟標誌著敵軍階段結束。"
           },
           {
             "id": "Upkeep_Phase",
@@ -1389,7 +1386,7 @@
           {
             "id": "Skill_Test_3",
             "title": "步驟3 抽取混亂標記。",
-            "text": "執行技能檢定的調查員，從混亂袋中抽出一個混亂標記。\n詳見\"[Resolving Multiple Revealed Chaos Tokens](#Resolving_Multiple_Revealed_Chaos_Tokens)\" above."
+            "text": "執行技能檢定的調查員，從混亂袋中抽出一個混亂標記。\n詳見\"[結算複數混亂標記](#Resolving_Multiple_Revealed_Chaos_Tokens)\"。"
           },
           {
             "id": "Skilll_Test_4",
@@ -1404,7 +1401,7 @@
           {
             "id": "Skill_Test_6",
             "title": "步驟6 決定檢定成功/失敗。",
-            "text": "將調查員的技能值與檢定難度進行比較。\n如果技能值大於等於檢定難度(標示於卡牌上或者游戲内出現的檢定)，則表示檢定成功。\n- 如果因為卡牌能力導致檢定自動成功，則難度視為0。\n如果技能值小於檢定難度，則表示檢定失敗。\n- 如果因為卡牌能力，或抽出[auto_fail]符號導致自動失敗，則技能值視為0。\nSee also \"[Automatic Failure/Success - expanded](#Automatic_Failure_Success)\" above."
+            "text": "將調查員的技能值與檢定難度進行比較。\n如果技能值大於等於檢定難度(標示於卡牌上或者游戲內出現的檢定)，則表示檢定成功。\n- 如果因為卡牌能力導致檢定自動成功，則難度視為0。\n如果技能值小於檢定難度，則表示檢定失敗。\n- 如果因為卡牌能力，或抽出[auto_fail]符號導致自動失敗，則技能值視為0。\n詳見\"[自動失敗/成功](#Automatic_Failure_Success)\"。"
           },
           {
             "id": "Skill_Test_7",

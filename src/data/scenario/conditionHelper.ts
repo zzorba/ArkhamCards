@@ -185,7 +185,9 @@ export function checkSuppliesAnyConditionResult(
   return binaryConditionResult(
     !!find(investigators, investigator => {
       const supplies = investigatorSupplies[investigator.code] || {};
-      return !!find(supplies.entries, entry => entry.id === condition.id && !supplies.crossedOut[condition.id]);
+      return !!find(supplies.entries, entry => (
+        entry.id === condition.id && !supplies.crossedOut[condition.id] && entry.type === 'count' && entry.count > 0
+      ));
     }),
     condition.options
   );
@@ -202,7 +204,7 @@ export function checkSuppliesAllConditionResult(
   });
   forEach(investigatorSupplies, (supplies, investigatorCode) => {
     const hasSupply = !!find(supplies.entries,
-      entry => entry.id === condition.id && !supplies.crossedOut[condition.id]
+      entry => entry.id === condition.id && !supplies.crossedOut[condition.id] && entry.type === 'count' && entry.count > 0
     );
     const index = findIndex(
       condition.options,

@@ -23,6 +23,10 @@ export function localizeDeckOptionError(error?: string): undefined | string {
     'You cannot have more than 15 level 0-1 Seeker and/or Mystic cards': t`You cannot have more than 15 level 0-1 Seeker and/or Mystic cards`,
     'You cannot have more than 5 Guardian and/or Mystic cards': t`You cannot have more than 5 Guardian and/or Mystic cards`,
     'You cannot have more than 5 level 0 Mystic cards': t`You cannot have more than 5 level 0 Mystic cards`,
+    'You cannot have more than 5 level 0 Survivor cards': t`You cannot have more than 5 level 0 Survivor cards`,
+    'You cannot have more than 5 level 0 Guardian cards': t`You cannot have more than 5 level 0 Guardian cards`,
+    'You cannot have more than 5 level 0 Seeker cards': t`You cannot have more than 5 level 0 Seeker cards`,
+    'You cannot have more than 5 level 0 Rogue cards': t`You cannot have more than 5 level 0 Rogue cards`,
   };
   return LOCALIZED_OPTIONS[error] || error;
 }
@@ -159,10 +163,9 @@ export class DeckOptionQueryBuilder {
 
   private textClause(): Brackets[] {
     if (this.option.text && this.option.text.length && (
-      this.option.text[0] === '[Hh]eals? (\\d+ damage (and|or) )?(\\d+ )?horror' ||
-      this.option.text[0] === '[Hh]eals? (that much )?(\\d+ damage (and|or) )?(\\d+ )?horror' ||
       this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror' ||
-      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror'
+      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror' ||
+      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total)) damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror'
     )) {
       return [where('c.heals_horror = true')];
     }

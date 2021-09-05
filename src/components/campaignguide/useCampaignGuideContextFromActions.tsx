@@ -166,13 +166,14 @@ export default function useCampaignGuideContextFromActions(
     ));
   }, [dispatch, campaignId, remoteGuideActions, userId]);
 
-  const setInterScenarioData = useCallback((investigatorData: InvestigatorTraumaData, scenarioId?: string) => {
+  const setInterScenarioData = useCallback((investigatorData: InvestigatorTraumaData, scenarioId: undefined | string, campaignLogEntries?: string[]) => {
     dispatch(guideActions.setInterScenarioData(
       userId,
       remoteGuideActions,
       campaignId,
       investigatorData,
-      scenarioId
+      scenarioId,
+      campaignLogEntries,
     ));
   }, [dispatch, campaignId, remoteGuideActions, userId]);
 
