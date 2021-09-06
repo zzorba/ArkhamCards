@@ -249,6 +249,12 @@ export default class Card {
   @Column('text', { nullable: true })
   public faction2_name?: string;
 
+  @Column('text', { nullable: true })
+  public faction3_code?: FactionCodeType;
+
+  @Column('text', { nullable: true })
+  public faction3_name?: string;
+
   @Column('integer', { nullable: true })
   public position?: number;
 
