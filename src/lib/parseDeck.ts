@@ -189,7 +189,7 @@ function factionCount(
       const card = cards[c.id];
       return !!card && (
         card.faction2_code !== null &&
-        (card.faction_code === faction || card.faction2_code === faction)
+        (card.faction_code === faction || card.faction2_code === faction || card.faction3_code === faction)
       );
     }).map(c => c.quantity)),
     sum(nonPermanentCards.filter(c => {
