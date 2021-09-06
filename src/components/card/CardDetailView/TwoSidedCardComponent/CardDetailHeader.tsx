@@ -32,6 +32,7 @@ function DualFactionIcons({ card }: { card: Card }) {
     <View style={[space.paddingBottomS, styles.row]}>
       <ArkhamIcon name={card.faction_code} size={36} color="white" />
       { !!card.faction2_code && <ArkhamIcon name={card.faction2_code} size={36} color="white" /> }
+      { !!card.faction3_code && <ArkhamIcon name={card.faction3_code} size={36} color="white" /> }
     </View>
   );
 }
@@ -106,6 +107,17 @@ function FactionIcon({ card, linked }: { card: Card, linked: boolean }) {
               />
             ) }
           </View>
+          { !!card.faction3_code && (
+            <View>
+              { (CORE_FACTION_CODES.indexOf(card.faction3_code) !== -1) && (
+                <ArkhamIcon
+                  name={card.faction3_code}
+                  size={ICON_SIZE + 4}
+                  color="#FFF"
+                />
+              ) }
+            </View>
+          ) }
         </>
       );
     }
