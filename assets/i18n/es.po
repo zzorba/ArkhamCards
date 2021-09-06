@@ -4599,132 +4599,136 @@ msgstr ""
 "Mythos Busters a través de Patreon o Discord."
 
 msgid "Skull"
-msgstr ""
+msgstr "Cráneo"
 
 msgid "Cultist"
-msgstr ""
+msgstr "Sectario"
 
 msgid "Tablet"
-msgstr ""
+msgstr "Tablilla"
 
 msgid "Elder Thing"
-msgstr ""
+msgstr "Antiguo"
 
 msgid "Auto-Fail"
-msgstr ""
+msgstr "Fracaso automático"
 
 msgid "Elder Sign"
-msgstr ""
+msgstr "Símbolo arcano"
 
 msgid "Number of [[Item]] assets you control"
-msgstr ""
+msgstr "Número de Apoyos [[Objeto]] que controles"
 
 msgid "Your investigator's modifier"
-msgstr ""
+msgstr "El modificador de tu investigador"
 
 #, javascript-format
 msgid ""
 "0: (original effect below)\n"
 "${ originalTokenText }"
 msgstr ""
+"0: (efecto original abajo)\n"
+"${ originalTokenText }"
 
 #, javascript-format
 msgid "${ modifier }, draws another"
-msgstr ""
+msgstr "${ modifier }, roba otra"
 
 msgid "Easy difficulty"
-msgstr ""
+msgstr "Dificultad fácil"
 
 msgid "Standard difficulty"
-msgstr ""
+msgstr "Dificultad normal"
 
 msgid "Hard difficulty"
-msgstr ""
+msgstr "Dificultad difícil"
 
 msgid "Expert difficulty"
-msgstr ""
+msgstr "Dificultad experto"
 
 msgid "— Difficulty —"
-msgstr ""
+msgstr "— Dificultad —"
 
 msgid "— Available Scenarios —"
-msgstr ""
+msgstr "— Escenarios disponibles —"
 
 msgid "Scenario settings"
-msgstr ""
+msgstr "Ajustes escenario"
 
 msgid "Your investigator modfifier"
-msgstr ""
+msgstr "El modificador de tu investigador"
 
 msgid "Test difficulty"
-msgstr ""
+msgstr "Dificultad prueba"
 
 msgid "Modified skill"
-msgstr ""
+msgstr "Habilidad modificada"
 
 msgid "${ tokens }/${ total } token"
 msgid_plural "${ tokens }/${ total } tokens"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ tokens }/${ total } ficha"
+msgstr[1] "${ tokens }/${ total } fichas"
 
 msgid "Show all cards"
-msgstr ""
+msgstr "Mostrar todas las cartas"
 
 msgid "Disable to choose individual packs to show"
-msgstr ""
+msgstr "Deselecciona para mostrar packs individualmente"
 
 msgid "All cards are shown throughout the app"
-msgstr ""
+msgstr "Se mostrarán todas las cartas en la app"
 
 msgid ""
 "Use these controls to limit which cards are visible while searching, "
 "building decks, or upgrading cards to those in your own collection."
 msgstr ""
+"Usa estas opciones para limitar qué cartas son visibles al buscar cartas, "
+"crear o mejorar mazos... para adaptarlo a tu colección."
 
 msgid "All Cycles and Packs"
-msgstr ""
+msgstr "Todos los ciclos y packs"
 
 msgid "Record that..."
-msgstr ""
+msgstr "Anota que..."
 
 msgid "Player card entries only"
-msgstr ""
+msgstr "Solo registros de cartas de Jugador"
 
 msgid "Accept friend request"
-msgstr ""
+msgstr "Aceptar solicitud de amistad"
 
 msgid "Send friend request"
-msgstr ""
+msgstr "Enviar solicitud de amistad"
 
 msgid "Reject friend request"
-msgstr ""
+msgstr "Rechazar solicitud de amistad"
 
 msgid "Revoke friend request"
-msgstr ""
+msgstr "Revocar solicitud de amistad"
 
 msgid "Show upgrades"
-msgstr ""
+msgstr "Mostrar mejoras"
 
 msgid "Hide Bless/Curse Odds"
-msgstr ""
+msgstr "Ocultar probabilidades Bendición/Maldición"
 
 msgid "Show Bless/Curse Odds"
-msgstr ""
+msgstr "Mostrar probabilidades Bendición/Maldición"
 
 msgid "Faction, Level, Type, Cost"
-msgstr ""
+msgstr "Clase, Nivel, Tipo, Coste"
 
 msgid "You cannot have more than 5 level 0 Survivor cards"
-msgstr ""
+msgstr "No puedes incluir más de 5 cartas de nivel 0 de clase Superviviente"
 
 msgid "You cannot have more than 5 level 0 Guardian cards"
-msgstr ""
+msgstr "No puedes incluir más de 5 cartas de nivel 0 de clase Guardián"
 
 msgid "You cannot have more than 5 level 0 Seeker cards"
-msgstr ""
+msgstr "No puedes incluir más de 5 cartas de nivel 0 de clase Buscador"
 
 msgid "You cannot have more than 5 level 0 Rogue cards"
-msgstr ""
+msgstr "No puedes incluir más de 5 cartas de nivel 0 de clase Rebelde"
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -6074,4 +6078,4 @@ msgstr "Ninguno"
 
 msgctxt "versus abbreviation"
 msgid "VS"
-msgstr ""
+msgstr "vs."
