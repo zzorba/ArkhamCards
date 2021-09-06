@@ -955,7 +955,7 @@ msgid "Scenario Result"
 msgstr "Résultat du scénario"
 
 msgid "Record Scenario Results"
-msgstr "Enregister les résultats du scénario"
+msgstr "Noter les résultats du scénario"
 
 msgid "Basic Weakness Set"
 msgstr "Collection de faiblesses de base"
@@ -1137,7 +1137,7 @@ msgid "Investigating for clues"
 msgstr "Enquête pour trouver des indices"
 
 msgid "Cursing at the tentacle token"
-msgstr "Maudit le pion Chaos tentacule"
+msgstr "Peste contre le pion Échec Automatique"
 
 msgid "Drawing a mythos card with surge"
 msgstr "Pioche une carte Rencontre avec Renfort"
@@ -1231,7 +1231,7 @@ msgid "Doesn't comply with the Investigator requirements."
 msgstr "Ne respecte pas les exigences du deck de l’investigateur."
 
 msgid "Up by 5, hope I don't draw the tentacle"
-msgstr "5 de plus, en espérant ne pas révéler un pion tentacule"
+msgstr "Avantage de 5, j'espère ne pas révéler un pion Échec Automatique"
 
 msgid "Cards"
 msgstr "Cartes"
@@ -1903,8 +1903,8 @@ msgid ""
 "Mark the scenarios you've played through to make the results start showing "
 "up in search results."
 msgstr ""
-"Marquer les scénarios déjà joués pour les rendre visibles dans les "
-"résultats de recherche."
+"Marquez les scénarios que vous avez déjà joués pour les rendre visibles "
+"dans les résultats de recherche."
 
 msgid "Loading"
 msgstr "Chargement en cours"
@@ -2232,7 +2232,7 @@ msgid "Investigator Starter Decks"
 msgstr "Decks de départ Investigateur"
 
 msgid "Show story assets from other campaigns"
-msgstr "Montrer les soutiens d'histoire d'autres campagnes"
+msgstr "Afficher les soutiens d'histoire d'autres campagnes"
 
 msgid "Story assets"
 msgstr "Soutien d'histoire"
@@ -2961,8 +2961,8 @@ msgstr "FAQ de l'interlude"
 #, javascript-format
 msgid "Show ${ nonCollection.length } non-collection card"
 msgid_plural "Show ${ nonCollection.length } non-collection cards"
-msgstr[0] "Montrer ${ nonCollection.length } carte hors collection"
-msgstr[1] "Montrer ${ nonCollection.length } cartes hors collection"
+msgstr[0] "Afficher ${ nonCollection.length } carte hors collection"
+msgstr[1] "Afficher ${ nonCollection.length } cartes hors collection"
 
 #, javascript-format
 msgid "Show ${ section.nonCollectionCount } non-collection investigator"
@@ -3071,7 +3071,7 @@ msgid "Encounter Card Toggle"
 msgstr "Afficher les cartes Rencontre"
 
 msgid "Show all available cards"
-msgstr "Montrer toutes les cartes disponibles"
+msgstr "Afficher toutes les cartes disponibles"
 
 #, javascript-format
 msgid "Fight: ${ fight }"
@@ -3296,8 +3296,8 @@ msgstr "Coût : ${json.cost}"
 #, javascript-format
 msgid "Show ${ nonCollectionCount } non-collection card"
 msgid_plural "Show ${ nonCollectionCount } non-collection cards"
-msgstr[0] "Montrer ${ nonCollectionCount } carte hors collection"
-msgstr[1] "Montrer ${ nonCollectionCount } cartes hors collection"
+msgstr[0] "Afficher ${ nonCollectionCount } carte hors collection"
+msgstr[1] "Afficher ${ nonCollectionCount } cartes hors collection"
 
 msgid "Hide versatile cards"
 msgstr "Cacher les cartes polyvalentes"
@@ -4227,13 +4227,13 @@ msgid "${ tokens[0] } and ${ tokens[1] }"
 msgstr "${ tokens[0] } et ${ tokens[1] }"
 
 msgid "Dark Matter"
-msgstr ""
+msgstr "Matière Noire"
 
 msgid "Impending Doom"
-msgstr ""
+msgstr "Mort Imminente"
 
 msgid "Memories"
-msgstr ""
+msgstr "Souvenirs"
 
 msgid "Fan-Made Campaigns"
 msgstr "Campagnes Fan-Made"
@@ -4298,27 +4298,27 @@ msgid ""
 msgstr ""
 "Si vous êtes un créateur de contenu personnalisé qui a une campagne finie "
 "que vous aimeriez voir dans l'application, contactez-moi à "
-"arkhamcards@gmail.com. Les campagnes personnalisées eeprésentent une bonne "
+"arkhamcards@gmail.com. Les campagnes personnalisées représentent une bonne "
 "quantité de travail, mais j'aimerais soutenir la communauté de toutes les "
 "façons possibles."
 
 msgid "Alice in Wonderland"
-msgstr ""
+msgstr "Alice aux Pays des Merveilles"
 
 msgid "Fragments of Alilce"
-msgstr ""
+msgstr "Fragments d'Alice"
 
 msgid "Wonderland Boons"
-msgstr ""
+msgstr "La Bénédiction du Pays des Merveilles"
 
 msgid "Wonderland Banes"
-msgstr ""
+msgstr "Le Fléau du Pays des Merveilles"
 
 msgid "Strength of Wonderland"
-msgstr ""
+msgstr "La Force du Pays des Merveilles"
 
 msgid "Edge of the Earth"
-msgstr "Aux confins de la Terre"
+msgstr "Aux Confins de la Terre"
 
 msgid "Promotional"
 msgstr "Promotionnel"
@@ -4500,13 +4500,13 @@ msgid "Record in campaign log"
 msgstr "Noter dans le Carnet de Campagne"
 
 msgid "Review and add records"
-msgstr "Pour le consulter et y ajouter des informations"
+msgstr "Consultez-le et y ajoutez-y des informations"
 
 msgid "Chaos bag"
 msgstr "Reserve du chaos"
 
 msgid "Review and simulate draw"
-msgstr "Pour examiner la réserve du Chaos et simuler une pioche"
+msgstr "Examinez son contenu et simulez des tirages"
 
 msgid "Draw random"
 msgstr "Pioche aléatoire"
@@ -4551,7 +4551,7 @@ msgid "VK"
 msgstr "VK"
 
 msgid "Telegram"
-msgstr "Telegram"
+msgstr "Télégramme"
 
 #, javascript-format
 msgid "In your Campaign Log, under \"${ section }\", record #name#. "
@@ -4580,7 +4580,7 @@ msgid "Archive campaign"
 msgstr "Archiver la campagne"
 
 msgid "Show archived campaigns"
-msgstr "Montrer les campagnes archivées"
+msgstr "Afficher les campagnes archivées"
 
 msgid "Return to The Circle Undone"
 msgstr "Renouveau - Le Cercle Brisé"
@@ -4620,26 +4620,26 @@ msgid "Choose an investigator to add ${ card.name } to their deck:"
 msgstr "Choisissez un investigateur pour ajouter ${ card.name } dans son deck :"
 
 msgid "Show card"
-msgstr ""
+msgstr "Afficher la carte"
 
 msgid "Edit my spoiler settings"
-msgstr ""
+msgstr "Modifier les paramètres des spoilers"
 
 msgid "Crown of Egil"
-msgstr ""
+msgstr "La Couronne d'Egil"
 
 msgid "The Crown of Egil"
-msgstr ""
+msgstr "La Couronne d'Egil"
 
 msgid "Traces of Egil"
-msgstr ""
+msgstr "Traces d'Egil"
 
 #, javascript-format
 msgid "Fan-made campaign by ${ author }"
-msgstr ""
+msgstr "Campagne Fan-Made faite par ${ author }"
 
 msgid "Sort ignores punctuation"
-msgstr ""
+msgstr "Le tri ignore la ponctuation"
 
 msgid ""
 "Sorry, you don't seem to be a Mythos Buster patron.\n"
@@ -4647,122 +4647,132 @@ msgid ""
 "you are still experiencing problems after 24hrs, please contact Mythos "
 "Busters via Patreon or on the Discord channel for help with this issue."
 msgstr ""
+"Désolé, vous ne semblez pas être un donateur pour Mythos Buster.\n"
+"Cela peut prendre jusqu'à 24 heures pour que Patreon mette à jour votre "
+"statut de membre. Si vous rencontrez des problèmes après 24 heures, merci "
+"de contacter Mythos Busters via Patreon ou sur leur serveur Discord afin "
+"obtenir de l'aide pour résoudre ce problème."
 
 msgid "Skull"
-msgstr ""
+msgstr "Crâne"
 
 msgid "Cultist"
-msgstr ""
+msgstr "Cultiste"
 
 msgid "Tablet"
-msgstr ""
+msgstr "Tablette"
 
 msgid "Elder Thing"
-msgstr ""
+msgstr "Chose Très Ancienne"
 
 msgid "Auto-Fail"
-msgstr ""
+msgstr "Échec Automatique"
 
 msgid "Elder Sign"
-msgstr ""
+msgstr "Signe des Anciens"
 
 msgid "Number of [[Item]] assets you control"
-msgstr ""
+msgstr "Nombre de soutiens [[Objet]] que vous contrôlez"
 
 msgid "Your investigator's modifier"
-msgstr ""
+msgstr "Le modificateur de votre investigateur"
 
 #, javascript-format
 msgid ""
 "0: (original effect below)\n"
 "${ originalTokenText }"
 msgstr ""
+"0 : (original effect below)\n"
+"${ originalTokenText }"
 
 #, javascript-format
 msgid "${ modifier }, draws another"
-msgstr ""
+msgstr "${ modifier }, révélez un autre pion"
 
 msgid "Easy difficulty"
-msgstr ""
+msgstr "Difficulté Facile"
 
 msgid "Standard difficulty"
-msgstr ""
+msgstr "Difficulté Standard"
 
 msgid "Hard difficulty"
-msgstr ""
+msgstr "Difficulté Difficile"
 
 msgid "Expert difficulty"
-msgstr ""
+msgstr "Difficulté Expert"
 
 msgid "— Difficulty —"
-msgstr ""
+msgstr "— Difficulté —"
 
 msgid "— Available Scenarios —"
-msgstr ""
+msgstr "— Scénarios Disponibles —"
 
 msgid "Scenario settings"
-msgstr ""
+msgstr "Réglages du scénario"
 
 msgid "Your investigator modfifier"
-msgstr ""
+msgstr "Le modificateur de votre investigateur"
 
 msgid "Test difficulty"
-msgstr ""
+msgstr "Difficulté du test"
 
 msgid "Modified skill"
-msgstr ""
+msgstr "Compétence modifiée"
 
 msgid "${ tokens }/${ total } token"
 msgid_plural "${ tokens }/${ total } tokens"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ tokens }/${ total } pion"
+msgstr[1] "${ tokens }/${ total } pions"
 
 msgid "Show all cards"
-msgstr ""
+msgstr "Afficher toutes les cartes"
 
 msgid "Disable to choose individual packs to show"
-msgstr ""
+msgstr "Désactiver pour choisir les paquets à afficher"
 
 msgid "All cards are shown throughout the app"
-msgstr ""
+msgstr "Toutes les cartes seront affichées dans l'application"
 
 msgid ""
 "Use these controls to limit which cards are visible while searching, "
 "building decks, or upgrading cards to those in your own collection."
 msgstr ""
+"Utilisez ces contrôles afin de limiter les cartes visibles pendant que vous "
+"recherchez, construisez des decks ou ajoutez des cartes à celles de votre "
+"collection."
 
 msgid "All Cycles and Packs"
-msgstr ""
+msgstr "Tous les Cycles et tous les Paquets"
 
 msgid "Record that..."
-msgstr ""
+msgstr "Notez que..."
 
 msgid "Player card entries only"
-msgstr ""
+msgstr "Cartes Joueur uniquement"
 
 msgid "Accept friend request"
-msgstr ""
+msgstr "Accepter demande d'ami"
 
 msgid "Send friend request"
-msgstr ""
+msgstr "Envoyer une demande d'ami"
 
 msgid "Reject friend request"
-msgstr ""
+msgstr "Refuser la demande d'ami"
 
 msgid "Revoke friend request"
-msgstr ""
+msgstr "Retirer la demande d'ami"
 
 msgid "Show upgrades"
-msgstr ""
+msgstr "Afficher les améliorations"
 
 msgid "Hide Bless/Curse Odds"
-msgstr ""
+msgstr "Cacher les probabilités de Béni/Maudit"
 
 msgid "Show Bless/Curse Odds"
-msgstr ""
+msgstr "Afficher les probabilités de Béni/Maudit"
 
 msgid "Faction, Level, Type, Cost"
-msgstr ""
+msgstr "Classe, Niveau, Type, Coût"
 
 msgid "You cannot have more than 5 level 0 Survivor cards"
 msgstr ""
@@ -6128,4 +6138,4 @@ msgstr "Aucun"
 
 msgctxt "versus abbreviation"
 msgid "VS"
-msgstr ""
+msgstr "CONTRE"
