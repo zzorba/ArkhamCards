@@ -76,7 +76,6 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
       branchPress(chaosBagIndex);
     }
   }, [chaosBagIndex, branchPress]);
-
   const [chaosBagDialog, showChaosBagDialog, setChaosBagDialogVisible] = useChaosBagDialog({
     componentId,
     allInvestigators,
