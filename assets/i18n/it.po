@@ -10,7 +10,7 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"x-generator: Poedit 2.4.3\n"
+"x-generator: Poedit 3.0\n"
 
 msgid "Guardian / Rogue"
 msgstr "Guardiano / Canaglia"
@@ -1288,7 +1288,7 @@ msgid "Bound Cards"
 msgstr "Carte Vincolate"
 
 msgid "Taboo"
-msgstr "Tabù"
+msgstr "Lista dei Tabù"
 
 msgid "Taboo List Changes"
 msgstr "Modifiche della Lista dei Tabù"
@@ -1328,7 +1328,7 @@ msgid ""
 "\n"
 "Sign in to access your decks or share decks you have created with others."
 msgstr ""
-"ArkhamDB è un sito molto popolare per la costruzione di mazzi dove puoi "
+"ArkhamDB è un sito molto popolare per la costruzione dei mazzi dove puoi "
 "gestire i tuoi mazzi e condividerli con altre persone.\n"
 "\n"
 "Connettiti per accedere ai tuoi mazzi o condividere quelli che hai creato "
@@ -1501,7 +1501,7 @@ msgid ""
 "You can opt-in to always seeing taboos and buiding decks with them in "
 "Settings."
 msgstr ""
-"Puoi scegliere di vedere sempre i tabù e di utilizzarli nella costruzione "
+"Puoi scegliere di vedere sempre i Tabù e di utilizzarli nella costruzione "
 "dei mazzi dalle Impostazioni."
 
 #, javascript-format
@@ -1543,7 +1543,7 @@ msgid "Preferences"
 msgstr "Preferenze"
 
 msgid "Swipe between card results"
-msgstr "Naviga tra i risultati"
+msgstr "Scorri tra i risultati di ricerca"
 
 msgid "Select Faction"
 msgstr "Classe Selezionata"
@@ -1893,7 +1893,7 @@ msgid ""
 "up in search results."
 msgstr ""
 "Seleziona gli scenari che hai già giocato affinché comincino a comparire "
-"nei risultati della ricerca."
+"nei risultati di ricerca."
 
 msgid "Loading"
 msgstr "Caricamento"
@@ -3169,8 +3169,8 @@ msgid ""
 "This can be used to make the app font size larger, though it may impact "
 "layout on some screens."
 msgstr ""
-"Utilizzare per impostare una dimensione differente dei caratteri dell’App, "
-"tuttavia su alcuni schermi può avere effetti sulla disposizione del testo."
+"Puoi impostare una dimensione maggiore dei caratteri dell’App, tuttavia su "
+"alcuni schermi può avere effetti sulla disposizione del testo."
 
 msgid ""
 "Keep level ${ level } after upgrade\n"
@@ -3544,20 +3544,20 @@ msgid ""
 "If you have just completed a scenario, use the 'Upgrade' button which will "
 "track changes."
 msgstr ""
-"Se hai appena completato uno scenario, usa il bottone “Aggiorna” per "
+"Se hai appena completato uno scenario, usa il tasto “Aggiorna” per "
 "tracciare i cambiamenti."
 
 msgid "XP earned"
-msgstr "PE guadagnati"
+msgstr "PE ottenuti"
 
 msgid "Adjustment:"
-msgstr "Correzioni:"
+msgstr "Correzione:"
 
 msgid "Adjust XP"
 msgstr "Correggi PE"
 
 msgid "Select Taboo List"
-msgstr "Seleziona Lista Tabù"
+msgstr "Seleziona una Lista dei Tabù"
 
 #, javascript-format
 msgid "${ size } Card"
@@ -3572,7 +3572,7 @@ msgid "Upgrade experience"
 msgstr "Aggiorna punti esperienza"
 
 msgid "Upgrading deck"
-msgstr "Aggiornamento dl mazzo"
+msgstr "Aggiornamento del mazzo"
 
 msgid "Editing deck"
 msgstr "Modifiche del mazzo"
@@ -4413,7 +4413,7 @@ msgid ""
 "Now that your upgrade has been saved, when visiting the deck be sure to use "
 "the 'Edit' button when making card changes."
 msgstr ""
-"Ora che l’aggiornamento è stato salvato, se visiti il mazzo assicurati di "
+"Ora che l’aggiornamento è stato salvato, se esamini il mazzo assicurati di "
 "utilizzare il tasto “Modifica” quando apporti modifiche alle carte."
 
 msgid "Choose a deck for this investigator"
@@ -4551,47 +4551,47 @@ msgid "Edge of the Earth"
 msgstr "Ai Confini della Terra"
 
 msgid "Return to The Circle Undone"
-msgstr ""
+msgstr "Ritorno a… Il Circolo Spezzato"
 
 msgid "Prologue: Return to Disappearance at the Twilight Estate"
-msgstr ""
+msgstr "Prologo: Ritorno a… Sparizione alla Villa del Crepuscolo"
 
 msgid "Return to The Witching Hour"
-msgstr ""
+msgstr "Ritorno a… L’Ora delle Streghe"
 
 msgid "Return to At Death's Doorstep"
-msgstr ""
+msgstr "Ritorno a… Sulla Soglia della Morte"
 
 msgid "Return to The Secret Name"
-msgstr ""
+msgstr "Ritorno a… Il Nome Segreto"
 
 msgid "Return to The Wages of Sin"
-msgstr ""
+msgstr "Ritorno a… Il Prezzo del Peccato"
 
 msgid "Return to For the Greater Good"
-msgstr ""
+msgstr "Ritorno a… Per il Bene Superiore"
 
 msgid "Return to Union and Disillusion"
-msgstr ""
+msgstr "Ritorno a… Unione e Disillusione"
 
 msgid "Return to In the Clutches of Chaos"
-msgstr ""
+msgstr "Ritorno a… Nelle Grinfie del Caos"
 
 msgid "Return to Before the Black Throne"
-msgstr ""
+msgstr "Ritorno a… Al Cospetto del Trono Nero"
 
 msgid "Loading account"
-msgstr ""
+msgstr "Caricamento Account"
 
 #, javascript-format
 msgid "Choose an investigator to add ${ card.name } to their deck:"
-msgstr ""
+msgstr "Scegliere un investigatore per aggiungere ${ card.name } al suo mazzo:"
 
 msgid "Show card"
-msgstr ""
+msgstr "Mostra la carta"
 
 msgid "Edit my spoiler settings"
-msgstr ""
+msgstr "Modifica le mie impostazioni sugli spoiler"
 
 msgid "Crown of Egil"
 msgstr ""
@@ -4604,10 +4604,10 @@ msgstr ""
 
 #, javascript-format
 msgid "Fan-made campaign by ${ author }"
-msgstr ""
+msgstr "Campagna Fan-made di ${ author }"
 
 msgid "Sort ignores punctuation"
-msgstr ""
+msgstr "Ordina ignorando la punteggiatura"
 
 msgid ""
 "Sorry, you don't seem to be a Mythos Buster patron.\n"
@@ -4615,134 +4615,143 @@ msgid ""
 "you are still experiencing problems after 24hrs, please contact Mythos "
 "Busters via Patreon or on the Discord channel for help with this issue."
 msgstr ""
+"Spiacente ma non sembra che tu sia un Patron di Mythos Busters.\n"
+"Ci possono volere fino a 24 ore prima che Patreon aggiorni il tuo stato. Se "
+"riscontrassi problemi dopo 24 ore, contatta Mythos Busters mediante Patreon "
+"o sul canale Discord per ottenere aiuto."
 
 msgid "Skull"
-msgstr ""
+msgstr "Teschio"
 
 msgid "Cultist"
-msgstr ""
+msgstr "Cultista"
 
 msgid "Tablet"
-msgstr ""
+msgstr "Tavoletta"
 
 msgid "Elder Thing"
-msgstr ""
+msgstr "Creatura degli Antichi"
 
 msgid "Auto-Fail"
-msgstr ""
+msgstr "Fallimento Automatico"
 
 msgid "Elder Sign"
-msgstr ""
+msgstr "Segno degli Antichi"
 
 msgid "Number of [[Item]] assets you control"
-msgstr ""
+msgstr "Numero di supporti [[Item]] che controlli"
 
 msgid "Your investigator's modifier"
-msgstr ""
+msgstr "Modificatore del tuo investigatore"
 
 #, javascript-format
 msgid ""
 "0: (original effect below)\n"
 "${ originalTokenText }"
 msgstr ""
+"0: (effetto originale sotto)\n"
+"${ originalTokenText }"
 
 #, javascript-format
 msgid "${ modifier }, draws another"
-msgstr ""
+msgstr "${ modifier }, pesca ancora"
 
 msgid "Easy difficulty"
-msgstr ""
+msgstr "Difficoltà: Facile"
 
 msgid "Standard difficulty"
-msgstr ""
+msgstr "Difficoltà: Standard"
 
 msgid "Hard difficulty"
-msgstr ""
+msgstr "Difficoltà: Difficile"
 
 msgid "Expert difficulty"
-msgstr ""
+msgstr "Difficoltà: Esperto"
 
 msgid "— Difficulty —"
-msgstr ""
+msgstr "— Difficoltà —"
 
 msgid "— Available Scenarios —"
-msgstr ""
+msgstr "— Scenari Disponibili —"
 
 msgid "Scenario settings"
-msgstr ""
+msgstr "Impostazioni dello scenario"
 
 msgid "Your investigator modfifier"
-msgstr ""
+msgstr "Modificatore del tuo investigatore"
 
 msgid "Test difficulty"
-msgstr ""
+msgstr "Difficoltà della prova"
 
 msgid "Modified skill"
-msgstr ""
+msgstr "Modificatore abilità"
 
 msgid "${ tokens }/${ total } token"
 msgid_plural "${ tokens }/${ total } tokens"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ tokens }/${ total } segnalini"
+msgstr[1] "${ tokens }/${ total } segnalini"
 
 msgid "Show all cards"
-msgstr ""
+msgstr "Mostra tutte le carte"
 
 msgid "Disable to choose individual packs to show"
-msgstr ""
+msgstr "Disattiva per scegliere i singoli pack da mostrare"
 
 msgid "All cards are shown throughout the app"
-msgstr ""
+msgstr "Tutte le carte sono mostrate in tutta l’App"
 
 msgid ""
 "Use these controls to limit which cards are visible while searching, "
 "building decks, or upgrading cards to those in your own collection."
 msgstr ""
+"Usa questi controlli per limitare le carte visibili durante la ricerca, la "
+"costruzione dei mazzi o l’aggiornamento delle carte, a quelle nella tua "
+"collezione."
 
 msgid "All Cycles and Packs"
-msgstr ""
-
-msgid "Record that..."
-msgstr ""
-
-msgid "Player card entries only"
-msgstr ""
-
-msgid "Accept friend request"
-msgstr ""
-
-msgid "Send friend request"
-msgstr ""
-
-msgid "Reject friend request"
-msgstr ""
-
-msgid "Revoke friend request"
-msgstr ""
-
-msgid "Show upgrades"
-msgstr ""
-
-msgid "Hide Bless/Curse Odds"
-msgstr ""
-
-msgid "Show Bless/Curse Odds"
-msgstr ""
-
-msgid "Faction, Level, Type, Cost"
-msgstr ""
+msgstr "Tutti i Cicli e i Pack"
 
 msgid "You cannot have more than 5 level 0 Survivor cards"
-msgstr ""
+msgstr "Non puoi avere più di 5 carte Sopravvissuto di livello 0"
 
 msgid "You cannot have more than 5 level 0 Guardian cards"
-msgstr ""
+msgstr "Non puoi avere più di 5 carte Guardiano di livello 0"
 
 msgid "You cannot have more than 5 level 0 Seeker cards"
-msgstr ""
+msgstr "Non puoi avere più di 5 carte Studioso di livello 0"
 
 msgid "You cannot have more than 5 level 0 Rogue cards"
-msgstr ""
+msgstr "Non puoi avere più di 5 carte Canaglia di livello 0"
+
+msgid "Accept friend request"
+msgstr "Accetta la richiesta di amicizia"
+
+msgid "Send friend request"
+msgstr "Invia una richiesta di amicizia"
+
+msgid "Reject friend request"
+msgstr "Rifiuta la richiesta di amicizia"
+
+msgid "Revoke friend request"
+msgstr "Annulla la richiesta di amicizia"
+
+msgid "Faction, Level, Type, Cost"
+msgstr "Fazione, Livello, Tipo, Costo"
+
+msgid "Show upgrades"
+msgstr "Mostra gli aggiornamenti"
+
+msgid "Record that..."
+msgstr "Annota che…"
+
+msgid "Player card entries only"
+msgstr "Solo voci relative alle carte giocatore"
+
+msgid "Hide Bless/Curse Odds"
+msgstr "Nascondi le probabilità Benedizione/Maledizione"
+
+msgid "Show Bless/Curse Odds"
+msgstr "Mostra le probabilità Benedizione/Maledizione"
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -4807,7 +4816,7 @@ msgstr "Vivo"
 
 msgctxt "masculine"
 msgid "Resigned"
-msgstr "Ha abbandonato"
+msgstr "Abbandonato"
 
 msgctxt "masculine"
 msgid "Defeated: physical trauma"
@@ -4911,7 +4920,7 @@ msgstr "Viva"
 
 msgctxt "feminine"
 msgid "Resigned"
-msgstr "Ha abbandonato"
+msgstr "Abbandonato"
 
 msgctxt "feminine"
 msgid "Defeated: physical trauma"
@@ -6080,7 +6089,7 @@ msgstr[1] "Scenari"
 
 msgctxt "campaign_log_entry"
 msgid "Other."
-msgstr ""
+msgstr "Altro."
 
 msgctxt "Weakness Card"
 msgid "All"
@@ -6092,4 +6101,4 @@ msgstr "Nessuno"
 
 msgctxt "versus abbreviation"
 msgid "VS"
-msgstr ""
+msgstr "VS"
