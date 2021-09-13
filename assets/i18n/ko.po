@@ -4536,11 +4536,11 @@ msgstr "탐구자 0레벨 카드를 5장보다 많이 포함할 수 없습니다
 msgid "You cannot have more than 5 level 0 Rogue cards"
 msgstr "무법자 0레벨 카드를 5장보다 많이 포함할 수 없습니다."
 
-msgid "You cannot have more than 5 level 0 Mystic cards"
-msgstr "신비주의자 0레벨 카드를 5장보다 많이 포함할 수 없습니다."
-
 msgid "You cannot have more than 5 level 0 Survivor cards"
 msgstr "생존자 0레벨 카드를 5장보다 많이 포함할 수 없습니다."
+
+msgid "Sign into Arkhan Cards on the Settings tab to enable"
+msgstr ""
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."

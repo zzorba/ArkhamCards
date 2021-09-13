@@ -4481,6 +4481,9 @@ msgstr ""
 msgid "You cannot have more than 5 level 0 Rogue cards"
 msgstr ""
 
+msgid "Sign into Arkhan Cards on the Settings tab to enable"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name }已<b>發瘋</b>。"

@@ -4730,6 +4730,9 @@ msgstr "No puedes incluir más de 5 cartas de nivel 0 de clase Buscador"
 msgid "You cannot have more than 5 level 0 Rogue cards"
 msgstr "No puedes incluir más de 5 cartas de nivel 0 de clase Rebelde"
 
+msgid "Sign into Arkhan Cards on the Settings tab to enable"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } se ha vuelto <b>loco</b>."

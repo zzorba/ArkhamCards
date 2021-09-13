@@ -4677,6 +4677,9 @@ msgstr ""
 msgid "You cannot have more than 5 level 0 Rogue cards"
 msgstr ""
 
+msgid "Sign into Arkhan Cards on the Settings tab to enable"
+msgstr ""
+
 msgctxt "masculine"
 msgid "Alive"
 msgstr "Vivo"
