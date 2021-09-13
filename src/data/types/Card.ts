@@ -779,6 +779,10 @@ export default class Card {
         if (json.faction2_code && json.faction2_name) {
           const faction1 = Card.factionCodeToName(json.faction_code, json.faction_name);
           const faction2 = Card.factionCodeToName(json.faction2_code, json.faction2_name);
+          if (json.faction3_code && json.faction3_name) {
+            const faction3 = Card.factionCodeToName(json.faction3_code, json.faction3_name);
+            return `${faction1} / ${faction2} / ${faction3}`;
+          }
           return `${faction1} / ${faction2}`;
         }
         return Card.factionCodeToName(json.faction_code, json.faction_name);
