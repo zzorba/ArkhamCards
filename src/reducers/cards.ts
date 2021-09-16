@@ -9,11 +9,14 @@ import {
   CardSetSchemaVersionAction,
   CardCache,
   TabooCache,
+  CardFetchUpdateProgressAction,
+  CARD_FETCH_UPDATE_PROGRESS,
 } from '@actions/types';
 
 interface CardsState {
   loading: boolean;
   error: string | null;
+  progress?: number;
   cache?: CardCache;
   tabooCache?: TabooCache;
   lang?: string | null;
@@ -24,6 +27,7 @@ interface CardsState {
 
 const DEFAULT_CARDS_STATE: CardsState = {
   loading: false,
+  progress: undefined,
   error: null,
   cache: undefined,
   lang: null,
@@ -33,9 +37,15 @@ const DEFAULT_CARDS_STATE: CardsState = {
 
 export default function(
   state: CardsState = DEFAULT_CARDS_STATE,
-  action: CardFetchStartAction | CardFetchSuccessAction | CardFetchErrorAction | CardSetSchemaVersionAction
+  action: CardFetchStartAction | CardFetchUpdateProgressAction | CardFetchSuccessAction | CardFetchErrorAction | CardSetSchemaVersionAction
 ): CardsState {
   switch (action.type) {
+    case CARD_FETCH_UPDATE_PROGRESS: {
+      return {
+        ...state,
+        progress: action.progress,
+      };
+    }
     case CARD_SET_SCHEMA_VERSION: {
       return {
         ...state,
@@ -47,6 +57,7 @@ export default function(
         ...state,
         loading: true,
         error: null,
+        progress: undefined,
       };
     }
     case CARD_FETCH_SUCCESS: {
@@ -54,6 +65,7 @@ export default function(
         ...state,
         loading: false,
         error: null,
+        progress: undefined,
         cache: action.cache,
         tabooCache: action.tabooCache,
         lang: undefined,
@@ -64,6 +76,7 @@ export default function(
       return {
         ...state,
         loading: false,
+        progress: undefined,
         error: action.error,
         cache: undefined,
         tabooCache: undefined,

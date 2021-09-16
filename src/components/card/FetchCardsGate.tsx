@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import ProgressBar from 'react-native-progress/Bar';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
@@ -43,6 +44,7 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props): JS
   const dispatch = useDispatch();
   const fetchNeeded = useSelector((state: AppState) => state.packs.all.length === 0);
   const currentCardLang = useSelector((state: AppState) => state.cards.card_lang || 'en');
+  const fetchProgress = useSelector((state: AppState) => state.cards.progress);
   const { lang: choiceLang } = useContext(LanguageContext);
   const useSystemLang = currentCardLang === 'system';
   const loading = useSelector((state: AppState) => state.packs.loading || state.cards.loading);
@@ -117,7 +119,7 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props): JS
       return;
     }
   }, [fetchNeeded]);
-  const { colors, backgroundStyle, typography } = useContext(StyleContext);
+  const { colors, backgroundStyle, typography, width } = useContext(StyleContext);
   if (error) {
     return (
       <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
@@ -139,12 +141,9 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props): JS
         <Text style={typography.text}>
           { t`Loading latest cards...` }
         </Text>
-        <ActivityIndicator
-          style={styles.spinner}
-          size="small"
-          animating
-          color={colors.lightText}
-        />
+        <View style={space.paddingTopM}>
+          <ProgressBar progress={fetchProgress || 0} color={colors.lightText} width={width * 0.6} />
+        </View>
       </View>
     );
   }
