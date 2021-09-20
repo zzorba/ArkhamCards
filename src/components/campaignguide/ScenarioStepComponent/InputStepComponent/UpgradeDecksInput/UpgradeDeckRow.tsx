@@ -641,7 +641,7 @@ function UpgradeDeckRow({
         ) }
       </>
     );
-  }, [deck, componentId, saving, onExileCountChange, updateSpecialExileCount, specialExileSlots, exileCounts, choices, specialExile]);
+  }, [deck, componentId, saving, onExileCountChange, updateSpecialExileCount, editable, savedExileCounts, specialExileSlots, exileCounts, choices, specialExile]);
   const campaignSection = useMemo(() => {
     return (
       <>
