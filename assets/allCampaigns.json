@@ -50173,6 +50173,7 @@
     "intro",
     "gather_encounter_sets",
     "setup_locations",
+    "location_layout",
     "check_players",
     "setup_crate_of_goods",
     "set_aside_cards",
@@ -50188,6 +50189,7 @@
     "intro",
     "gather_encounter_sets",
     "setup_locations",
+    "location_layout",
     "check_players",
     "setup_crate_of_goods",
     "set_aside_cards",
@@ -50370,12 +50372,77 @@
       "text": "Put Cargo Room and Open Water into play. Each investigator begins play at the Cargo Room. Set each other location aside, out of play."
     },
     {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Set-aside Location Layout (spoilers)",
+      "horizontal": "half",
+      "vertical": "half",
+      "locations": [
+        ["blank", "blank", "blank", "blank", "deck_lounge", "blank", "bridge", "blank", "sun_deck", "blank"],
+        ["blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank"],
+        ["blank", "blank", "blank", "gallery", "blank", "dining_room", "blank", "passenger_cabins", "blank", "library"],
+        ["open_water", "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank"],
+        ["blank", "blank", "cargo_room", "blank", "engine_room", "blank", "boiler_room", "blank", "blank", "blank"]
+      ],
+      "location_names": [
+        {
+          "code": "deck_lounge",
+          "name": "Deck Lounge and Theatre"
+        },
+        {
+          "code": "bridge",
+          "name": "Bridge"
+        },
+        {
+          "code": "sun_deck",
+          "name": "Sun Deck"
+        },
+        {
+          "code": "gallery",
+          "name": "Gallery"
+        },
+        {
+          "code": "dining_room",
+          "name": "Dining Room"
+        },
+        {
+          "code": "passenger_cabins",
+          "name": "Passenger Cabins"
+        },
+        {
+          "code": "library",
+          "name": "Library"
+        },
+        {
+          "code": "open_water",
+          "name": "Open Water"
+        },
+        {
+          "code": "cargo_room",
+          "name": "Cargo Room"
+        },
+        {
+          "code": "engine_room",
+          "name": "Engine Room"
+        },
+        {
+          "code": "boiler_room",
+          "name": "Boiler Room"
+        }
+      ]
+    },
+    {
       "id": "check_players",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "scenario_data",
         "scenario_data": "player_count",
         "options": [
+          {
+            "numCondition": 1,
+            "steps": []
+          },
           {
             "numCondition": 2,
             "steps": ["remove_1_taking_on_water"]
@@ -52372,6 +52439,7 @@
     },
     {
       "id": "check_player_count",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "scenario_data",
