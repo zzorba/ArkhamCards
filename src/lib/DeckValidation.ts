@@ -7,7 +7,6 @@ import {
   filter,
   minBy,
   indexOf,
-  sumBy,
 } from 'lodash';
 import { t } from 'ttag';
 
@@ -142,7 +141,7 @@ export default class DeckValidation {
       if (card.deck_requirements.card) {
         if (find(card.deck_requirements.card, req =>
           !find(cards, theCard => theCard.code === req.code) &&
-          !(req.alternates?.length && req.alternates.length === sumBy(req.alternates, code => find(cards, theCard => theCard.code === code) ? 1 : 0))
+          !(req.alternates?.length && find(req.alternates, code => find(cards, theCard => theCard.code === code)))
         )) {
           return 'investigator';
         }
