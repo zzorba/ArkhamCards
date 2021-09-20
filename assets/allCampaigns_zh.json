@@ -35569,22 +35569,6 @@
       ]
     },
     {
-      "id": "silver_twilight_wins_campaign",
-      "text": "銀暮秘社遊戲勝利！(堅定忠於秘社的調查員遊戲勝利。)",
-      "effects": [
-        {
-          "type": "campaign_data",
-          "setting": "skip_scenario",
-          "scenario": "tcu_epilogue"
-        },
-        {
-          "type": "campaign_data",
-          "setting": "result",
-          "value": "win"
-        }
-      ]
-    },
-    {
       "id": "carl_sanford_possesses_the_secrets_of_the_universe",
       "effects": [
         {
@@ -36595,9 +36579,55 @@
       ]
     },
     {
-      "id": "covin_wins_campaign",
+      "id": "silver_twilight_wins_campaign",
+      "text": "銀暮秘社遊戲勝利！(堅定忠於秘社的調查員遊戲勝利。)",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "return_to_in_the_clutches_of_chaos"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "twist_of_fate"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "return_to_before_the_black_throne"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "tcu_epilogue"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "win"
+        }
+      ]
+    },
+    {
+      "id": "coven_wins_campaign",
       "text": "The coven wins the campaign. (Investigators who are truly loyal to the coven win the campaign.)",
       "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "return_to_in_the_clutches_of_chaos"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "twist_of_fate"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "return_to_before_the_black_throne"
+        },
         {
           "type": "campaign_data",
           "setting": "skip_scenario",
@@ -36902,7 +36932,7 @@
       "text": "You step forward and meet Keziah's gaze. This is what you have prepared for. All your research, all the mysteries you have uncovered, it has all led you here. To power. To immortality. Keziah nods knowingly. A sinister smirk frolics on her lips. \"Come, sisters. Now is the time to reap thet reward for your loyalty.\"\nOutmatched, Carl Sanford and the Lodge members flee into the woods, leaving you and the coven alone. One by one, you and your new allies each sign the Black Book of Azathoth. Keziah grants you each a shred of her knowledge, of her power, and then she tells you what your loyalty has bought. She speaks of the Great Old Ones, of immortality, of the Messenger and their daemonic wisdom. From henceforth, you are forever changed…",
       "steps": [
         "coven_of_keziah_holds_the_world_in_its_grasp",
-        "covin_wins_campaign"
+        "coven_wins_campaign"
       ]
     },
     {
@@ -71071,6 +71101,21 @@
       "id": "silver_twilight_wins_campaign",
       "text": "銀暮秘社遊戲勝利！(堅定忠於秘社的調查員遊戲勝利。)",
       "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "in_the_clutches_of_chaos"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "twist_of_fate"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "before_the_black_throne"
+        },
         {
           "type": "campaign_data",
           "setting": "skip_scenario",

@@ -104,6 +104,13 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
                 </Text>
               </View>
             </TouchableOpacity>
+            { !!(last && scenario.latestCampaignLog.campaignData.result && scenario.latestCampaignLog.campaignData.result !== 'lose') && (
+              <AddSideScenarioButton
+                componentId={componentId}
+                processedCampaign={processedCampaign}
+                showAlert={showAlert}
+              />
+            ) }
           </View>
         );
       case 'skipped':

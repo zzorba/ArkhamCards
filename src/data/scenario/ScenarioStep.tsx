@@ -55,7 +55,7 @@ export default class ScenarioStep {
   scenarioFinished(scenarioState: ScenarioStateHelper) {
     const nextCampaignLog = this.nextCampaignLog(scenarioState);
     if (nextCampaignLog &&
-      nextCampaignLog.campaignData.result &&
+      nextCampaignLog.campaignData.result === 'lose' &&
       this.scenarioGuide.scenarioType() !== 'epilogue'
     ) {
       // Actually campaign is finished.
