@@ -4542,6 +4542,9 @@ msgstr "생존자 0레벨 카드를 5장보다 많이 포함할 수 없습니다
 msgid "Sign into Arkhan Cards on the Settings tab to enable"
 msgstr ""
 
+msgid "Asset: Hand x2. Arcane"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } 조사자는 <b>미칩니다</b>."

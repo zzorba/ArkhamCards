@@ -4756,6 +4756,9 @@ msgstr "Mostra le probabilità Benedizione/Maledizione"
 msgid "Sign into Arkhan Cards on the Settings tab to enable"
 msgstr ""
 
+msgid "Asset: Hand x2. Arcane"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } è <b>impazzito</b>."

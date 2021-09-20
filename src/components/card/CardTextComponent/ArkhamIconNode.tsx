@@ -5,7 +5,6 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 
 import { WithIconName, State } from './types';
 import { StyleContextType } from '@styles/StyleContext';
-import BoldHtmlTagNode from './BoldHtmlTagNode';
 
 const BAD_ICON_NAMES: { [key: string]: string | undefined} = {
   Action: 'action',
