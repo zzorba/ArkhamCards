@@ -77,6 +77,8 @@ const FEMININE_INVESTIGATORS = new Set([
   '07001', // Sister Mary
   '07002', // Amanda Sharpe
   '07003', // Trish
+  '08001', // Daniella
+  '08020', // Lily Chen
   '05046', // Gavriella Mizrah
   '05049', // Penny White
   '98001', // Alt-Jenny
