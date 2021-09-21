@@ -84935,6 +84935,9 @@
                 "masculine_text": "#name# possesses a diving suit.",
                 "feminine_text": "#name# possesses a diving suit."
               }
+            ],
+            "steps": [
+              "earned_diving_suit"
             ]
           },
           {
@@ -84943,6 +84946,11 @@
           }
         ]
       }
+    },
+    {
+      "id": "earned_diving_suit",
+      "bullet_type": "small",
+      "text": "Each investigator that resigned at the Moon Room records in the Campaign Log that they <i>possess a diving suit</i>."
     },
     {
       "id": "ask_black_key_on_act",
