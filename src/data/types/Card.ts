@@ -71,19 +71,20 @@ const FEMININE_INVESTIGATORS = new Set([
   '05006', // Marie
   '06002', // Mandy Thompson
   '06005', // Patrice
-  '60301', // Wini
-  '60401', // Jacqueline
-  '60501', // Stella
   '07001', // Sister Mary
   '07002', // Amanda Sharpe
   '07003', // Trish
   '08001', // Daniella
   '08020', // Lily Chen
+  '60301', // Wini
+  '60401', // Jacqueline
+  '60501', // Stella
   '05046', // Gavriella Mizrah
   '05049', // Penny White
   '98001', // Alt-Jenny
   '98019', // Gloria
   '98010', // Alt-Carolyn
+  '99001', // Old Marie
 ]);
 
 const HEADER_SELECT = {
