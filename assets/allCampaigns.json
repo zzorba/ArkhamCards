@@ -34636,7 +34636,7 @@
           {
             "type": "campaign_log",
             "section": "campaign_notes",
-            "id": "erynn_joined_the_investigators",
+            "id": "erynn_joined_investigators",
             "options": [
               {
                 "boolCondition": true

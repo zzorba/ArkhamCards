@@ -2,7 +2,7 @@ import { ChaosTokenModifier, SimpleChaosTokenValue } from '@data/scenario/types'
 import { find } from 'lodash';
 import { t } from 'ttag';
 
-export const ENABLE_ARKHAM_CARDS_ACCOUNT = true;
+export const ENABLE_ARKHAM_CARDS_ACCOUNT = false;
 export type TypeCodeType =
   'asset' |
   'event' |
