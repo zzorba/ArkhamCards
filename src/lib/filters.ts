@@ -625,7 +625,7 @@ export default class FilterBuilder {
     return this.complexVectorClause(
       'faction',
       factions,
-      valueName => `(c.faction_code = :${valueName} OR c.faction2_code = :${valueName})`
+      valueName => `(c.faction_code = :${valueName} OR c.faction2_code = :${valueName} OR c.faction3_code = :${valueName})`
     );
   }
 

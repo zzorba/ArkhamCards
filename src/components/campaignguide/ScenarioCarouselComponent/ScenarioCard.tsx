@@ -38,6 +38,7 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
   const light = colors.D10;
   const color = colors.D30;
   const background = colors.L10;
+  const campaignResult = scenario.latestCampaignLog.campaignData.result;
   const action = useMemo(() => {
     switch (scenario.type) {
       case 'started':
@@ -104,6 +105,13 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
                 </Text>
               </View>
             </TouchableOpacity>
+            { !!(last && campaignResult && campaignResult !== 'lose') && (
+              <AddSideScenarioButton
+                componentId={componentId}
+                processedCampaign={processedCampaign}
+                showAlert={showAlert}
+              />
+            ) }
           </View>
         );
       case 'skipped':
@@ -124,7 +132,7 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
           </View>
         );
     }
-  }, [onPress, scenario.type, typography, light, componentId, processedCampaign, isActive, showAlert]);
+  }, [onPress, scenario.type, typography, light, componentId, processedCampaign, isActive, showAlert, last, campaignResult]);
   return (
     <View style={[
       space.paddingTopM,

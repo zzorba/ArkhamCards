@@ -81,9 +81,10 @@ export function fetchCards(
 
     try {
       const state = getState();
-      const cardCache = await syncCards(db, anonClient, packs, cardLang, cardsCache(state, cardLang));
+      const cardCache = await syncCards(dispatch, db, anonClient, packs, cardLang, cardsCache(state, cardLang));
       try {
         const tabooCache = await syncTaboos(
+          dispatch,
           db,
           cardLang,
           taboosCache(getState(), cardLang)

@@ -411,7 +411,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play with no encounter card underneath",
+          "prompt": "Anzahl der Ort im Spiel ohne Begegnungskarten darunter.",
           "min": 0,
           "max": 4
         }
@@ -440,7 +440,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play with no encounter card underneath",
+          "prompt": "Anzahl der Ort im Spiel ohne Begegnungskarten darunter.",
           "min": 0
         }
       },
@@ -472,7 +472,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Brood of Yog-Sothoth in play",
+          "prompt": "Anzahl von Brut von Yog-Sothoth im Spiel.",
           "min": 0
         }
       },
@@ -490,7 +490,7 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "Remove all clue tokens from a Brood of Yog-Sothoth in play",
+          "prompt": "Entferne alle Hinweismarker von einer Brut von Yog-Sothoth im Spiel.",
           "modified_value": {
             "modifier": 0
           }
@@ -508,7 +508,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play with no encounter card underneath",
+          "prompt": "Anzahl der Ort im Spiel ohne Begegnungskarten darunter.",
           "min": 0,
           "scale": 2
         }
@@ -527,7 +527,7 @@
           "default_value": {
             "modifier": "auto_fail"
           },
-          "prompt": "Remove all clue tokens from a Brood of Yog-Sothoth in play",
+          "prompt": "Entferne alle Hinweismarker von einer Brut von Yog-Sothoth im Spiel.",
           "modified_value": {
             "modifier": 0
           }
@@ -552,7 +552,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At an [[Altered]] location",
+          "prompt": "An einem [[Verändert]]-Ort",
           "modified_value": {
             "modifier": -3
           }
@@ -572,7 +572,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Agenda 2 is in play",
+          "prompt": "Agenda 2 ist im Spiel",
           "modified_value": {
             "modifier": -4
           }
@@ -595,7 +595,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At an [[Altered]] location",
+          "prompt": "An einem [[Verändert]]-Ort",
           "modified_value": {
             "modifier": -5
           }
@@ -615,7 +615,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Agenda 2 is in play",
+          "prompt": "Agenda 2 ist im Spiel",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -639,7 +639,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Extradimensional]] locations in play",
+          "prompt": "Anzahl der [[Außerdimensional]]-Orte im Spiel",
           "min": 0,
           "max": 5
         }
@@ -661,7 +661,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "Schleierwert an deinem Ort",
           "min": 0
         }
       }
@@ -671,7 +671,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Extradimensional]] locations in play",
+          "prompt": "Anzahl der [[Außerdimensional]]-Orte im Spiel",
           "min": 0
         }
       },
@@ -692,7 +692,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "Schleierwert an deinem Ort",
           "min": 0,
           "scale": 2
         }
@@ -710,7 +710,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Have 3 or more horror on you",
+          "prompt": "Hast du 3 oder mehr Horror auf dir",
           "modified_value": {
             "modifier": -3
           }
@@ -740,7 +740,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Amount of horror on you (min 1)",
+          "prompt": "Anzahl Horror auf dir (Minimum 1)",
           "min": 1
         }
       },
@@ -791,7 +791,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "Schleierwert an deinem Ort",
           "min": 0
         }
       }
@@ -820,7 +820,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "Schleierwert an deinem Ort",
           "min": 0
         }
       }
@@ -834,7 +834,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of doom on an enemy in play",
+          "prompt": "Höchste Anzahl von Verderben auf einem Gegner im Spiel.",
           "min": 0
         }
       },
@@ -862,7 +862,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom on enemies in play",
+          "prompt": "Gesamtanzahl von Verderben auf Gegnern im Spiel",
           "min": 0
         }
       },
@@ -900,7 +900,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of horror on you",
+          "prompt": "Anzahl deines Horrors",
           "min": 0
         }
       },
@@ -908,7 +908,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Base shroud value of your location",
+          "prompt": "Grund-Schleierwert deines Ortes",
           "min": 0
         }
       },
@@ -919,7 +919,7 @@
           "default_value": {
             "modifier": "auto_fail"
           },
-          "prompt": "Randomally choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
+          "prompt": "Bestimme zufällig 1 der beiseitegelegten [[Monster]]-Gegner und platziere ihn unter das Szenendeck",
           "modified_value": {
             "modifier": 0
           }
@@ -938,7 +938,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of horror on you",
+          "prompt": "Anzahl deines Horrors",
           "min": 0
         }
       },
@@ -946,7 +946,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Base shroud value of your location",
+          "prompt": "Grund-Schleierwert deines Ortes",
           "min": 0
         }
       },
@@ -957,7 +957,7 @@
           "default_value": {
             "modifier": "auto_fail"
           },
-          "prompt": "Randomally choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
+          "prompt": "Bestimme zufällig 1 der beiseitegelegten [[Monster]]-Gegner und platziere ihn unter das Szenendeck",
           "modified_value": {
             "modifier": 0
           }
@@ -973,7 +973,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of doom in play",
+          "prompt": "Anzahl Verderben im Spiel",
           "min": 0,
           "max": 5
         }
@@ -1003,7 +1003,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of doom in play",
+          "prompt": "Anzahl Verderben im Spiel",
           "min": 0
         }
       },
@@ -1036,7 +1036,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations away from the starting location you are",
+          "prompt": "Anzahl der Orte, die du vom Startort entfernt bist",
           "min": 0,
           "max": 5
         }
@@ -1065,7 +1065,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations away from the starting location you are",
+          "prompt": "Anzahl der Orte, die du vom Startort entfernt bist",
           "min": 0
         }
       },
@@ -1097,7 +1097,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest amount of doom on an agenda in play",
+          "prompt": "Höchste Anzahl von Verderben auf einer Agenda im Spiel",
           "min": 0
         }
       },
@@ -1109,7 +1109,7 @@
             "reveal_another": true,
             "modifier": 0
           },
-          "prompt": "Attack or evasion attempt against an enemy with doom on it",
+          "prompt": "Angriffs oder eines Entkommen-Versuchs gegen einen Gegner mit Verderben",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1134,7 +1134,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total amount of doom on agendas in play",
+          "prompt": "Gesamtanzahl von Verderben auf Agenden im Spiel",
           "min": 0
         }
       },
@@ -1146,7 +1146,7 @@
             "reveal_another": true,
             "modifier": 0
           },
-          "prompt": "An enemy with 1 or more doom on it at your location",
+          "prompt": "Ein Gegner mi1 1 oder mehr Verderben darauf an deinem Ort",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1178,7 +1178,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "No remaining sanity left",
+          "prompt": "Keine verbliebene geistige Gesundheit",
           "modified_value": {
             "modifier": -4
           }
@@ -1209,7 +1209,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Amount of horror on you",
+          "prompt": "Anzahl deines Horrors",
           "min": 0
         }
       },
@@ -1242,7 +1242,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of vengeance points in the victory display",
+          "prompt": "Anzahl der Vergeltungspunkte im Siegpunktestapel",
           "min": 0
         }
       },
@@ -1250,7 +1250,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play",
+          "prompt": "Anzahl der Orte im Spiel",
           "min": 1,
           "max": 5
         }
@@ -1259,7 +1259,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in the exploration deck",
+          "prompt": "Anzahl der Karten im Erkundungsdeck",
           "min": 0,
           "max": 5
         }
@@ -1271,7 +1271,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "You are poisoned",
+          "prompt": "Du bist vergiftet",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1283,7 +1283,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of vengeance points in the victory display",
+          "prompt": "Anzahl der Vergeltungspunkte im Siegpunktestapel",
           "min": 0,
           "adjustment": 1
         }
@@ -1292,7 +1292,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play",
+          "prompt": "Anzahl der Orte im Spiel",
           "min": 1
         }
       },
@@ -1300,7 +1300,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in the exploration deck",
+          "prompt": "Anzahl der Karten im Erkundungsdeck",
           "min": 3
         }
       },
@@ -1311,7 +1311,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "You are poisoned",
+          "prompt": "Du bist vergiftet",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1330,7 +1330,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Doom on your location",
+          "prompt": "Verderben auf deinem Ort",
           "modified_value": {
             "modifier": -3
           }
@@ -1340,7 +1340,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with doom on them",
+          "prompt": "Anzahl der Orte mit Verderben darauf",
           "min": 0
         }
       },
@@ -1348,7 +1348,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with doom on them",
+          "prompt": "Anzahl der Orte mit Verderben darauf",
           "min": 0
         }
       },
@@ -1368,7 +1368,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Doom on your location",
+          "prompt": "Verderben auf deinem Ort",
           "modified_value": {
             "modifier": -4
           }
@@ -1378,7 +1378,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Total amount of doom on locations in play",
+          "prompt": "Gesamtanzahl von Verderben auf Orten im Spiel",
           "min": 0
         }
       },
@@ -1386,7 +1386,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Total amount of doom on locations in play",
+          "prompt": "Gesamtanzahl von Verderben auf Orten im Spiel",
           "min": 0
         }
       },
@@ -1407,7 +1407,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of doom on a [[Cultist]] enemy",
+          "prompt": "Höchste Anzahl an Verderben auf einem [[Kultist]]-Gegner.",
           "min": 0
         }
       },
@@ -1436,7 +1436,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom in play",
+          "prompt": "Gesamtanzahl von Verderben im Spiel",
           "min": 0
         }
       },
@@ -1471,7 +1471,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At an [[Ancient]] location",
+          "prompt": "An einem [[Uralt]]-Ort",
           "modified_value": {
             "modifier": -3
           }
@@ -1506,7 +1506,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At an [[Ancient]] location",
+          "prompt": "An einem [[Uralt]]-Ort",
           "modified_value": {
             "modifier": -4
           }
@@ -1545,7 +1545,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At a [[Cave]] location",
+          "prompt": "An einem [Höhle]]-Ort",
           "modified_value": {
             "modifier": -3
           }
@@ -1578,7 +1578,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At a [[Cave]] location",
+          "prompt": "An einem [Höhle]]-Ort",
           "modified_value": {
             "modifier": -4
           }
@@ -1615,7 +1615,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Have 5 or more cards in your hand",
+          "prompt": "Hast du mehr als 5 Karten auf deiner Hand",
           "modified_value": {
             "modifier": -5
           }
@@ -1648,7 +1648,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Have 5 or more cards in your hand",
+          "prompt": "Hast du mehr als 5 Karten auf deiner Hand",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1682,7 +1682,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current depth level",
+          "prompt": "Aktuelle Tiefenstufe",
           "min": 1
         }
       },
@@ -1707,7 +1707,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "3 or more vengeance points in the victory display",
+          "prompt": "3 oder mehr Vergeltungspunkte im Siegpunktestapel",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1719,7 +1719,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current depth level",
+          "prompt": "Aktuelle Tiefenstufe",
           "min": 1
         }
       },
@@ -1744,7 +1744,7 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "3 or more vengeance points in the victory display",
+          "prompt": "3 oder mehr Vergeltungspunkte im Siegpunktestapel",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -1763,7 +1763,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Relic of Ages is at your location",
+          "prompt": "Relikt der Zeitalter an deinem Ort",
           "modified_value": {
             "modifier": -4
           }
@@ -1796,7 +1796,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Relic of Ages is at your location",
+          "prompt": "Relikt der Zeitalter an deinem Ort",
           "modified_value": {
             "modifier": -5
           }
@@ -1830,7 +1830,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with doom on them",
+          "prompt": "Anzahl der Orte mit Verderben darauf",
           "min": 0
         }
       },
@@ -1846,7 +1846,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total amount of doom on locations",
+          "prompt": "Gesamtanzahl von Verberden auf Orten",
           "min": 0
         }
       },
@@ -1933,7 +1933,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Your location is haunted",
+          "prompt": "Dein Ort ist heimgesucht",
           "modified_value": {
             "modifier": -3
           }
@@ -1960,7 +1960,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Your location is haunted",
+          "prompt": "Dein Ort ist heimgesucht",
           "modified_value": {
             "modifier": -4
           }

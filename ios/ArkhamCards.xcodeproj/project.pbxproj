@@ -13,6 +13,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		6506962425D05D5300B134B0 /* tokens.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6506962325D05D5300B134B0 /* tokens.ttf */; };
+		650DBD8426EFA507006170CC /* edge.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 650DBD8326EFA507006170CC /* edge.ttf */; };
 		651B383B251ACF8900D9D054 /* AboutDead.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 651B383A251ACF8900D9D054 /* AboutDead.ttf */; };
 		652421212054950E00FF6DB9 /* carcosa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652420F42054950D00FF6DB9 /* carcosa.ttf */; };
 		652421232054951A00FF6DB9 /* coreset.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421222054951A00FF6DB9 /* coreset.ttf */; };
@@ -75,6 +76,7 @@
 		6505E52124DA64AC001DF983 /* libswiftCore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCore.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/swift/libswiftCore.tbd; sourceTree = DEVELOPER_DIR; };
 		6505E52324DDD6F0001DF983 /* ArkhamCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ArkhamCards.entitlements; path = ArkhamCards/ArkhamCards.entitlements; sourceTree = "<group>"; };
 		6506962325D05D5300B134B0 /* tokens.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = tokens.ttf; path = ../assets/tokens.ttf; sourceTree = "<group>"; };
+		650DBD8326EFA507006170CC /* edge.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = edge.ttf; path = ../assets/edge.ttf; sourceTree = "<group>"; };
 		651B383A251ACF8900D9D054 /* AboutDead.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AboutDead.ttf; path = ../assets/AboutDead.ttf; sourceTree = "<group>"; };
 		652420F42054950D00FF6DB9 /* carcosa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = carcosa.ttf; path = ../assets/carcosa.ttf; sourceTree = "<group>"; };
 		652421222054951A00FF6DB9 /* coreset.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = coreset.ttf; path = ../assets/coreset.ttf; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				650DBD8326EFA507006170CC /* edge.ttf */,
 				657276D22659850A00157DE3 /* Caveat.ttf */,
 				657276CF265984A200157DE3 /* alice.ttf */,
 				657276682644DE1B00157DE3 /* dark_matter.ttf */,
@@ -369,6 +372,7 @@
 				652EB740226BAF9C00F6D790 /* fr.po.json in Resources */,
 				65D3FA06210FF315000F8B9D /* Teutonic.ttf in Resources */,
 				65447A8924154F3200961717 /* campaignLogs.json in Resources */,
+				650DBD8426EFA507006170CC /* edge.ttf in Resources */,
 				657276D0265984A200157DE3 /* alice.ttf in Resources */,
 				659EB1C225118E2F007E69E0 /* Alegreya-ExtraBold.ttf in Resources */,
 				65F8DB9F247EE0B500286F16 /* pl.po.json in Resources */,
@@ -542,7 +546,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCardsDebug.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9a;
+				CURRENT_PROJECT_VERSION = 6;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
@@ -560,7 +564,7 @@
 				INFOPLIST_FILE = ArkhamCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.14.9;
+				MARKETING_VERSION = 2.14.11;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -586,7 +590,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9a;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -603,7 +607,7 @@
 				INFOPLIST_FILE = ArkhamCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.14.9;
+				MARKETING_VERSION = 2.14.11;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

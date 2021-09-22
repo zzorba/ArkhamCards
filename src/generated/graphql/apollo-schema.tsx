@@ -3844,7 +3844,31 @@ export type Chaos_Bag_Result_Variance_Order_By = {
 export type Faq = {
   __typename?: 'faq';
   code: Scalars['String'];
+  /** An array relationship */
+  faq_texts: Array<Faq_Text>;
+  /** An aggregate relationship */
+  faq_texts_aggregate: Faq_Text_Aggregate;
   text: Scalars['String'];
+};
+
+
+/** columns and relationships of "faq" */
+export type FaqFaq_TextsArgs = {
+  distinct_on?: Maybe<Array<Faq_Text_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Faq_Text_Order_By>>;
+  where?: Maybe<Faq_Text_Bool_Exp>;
+};
+
+
+/** columns and relationships of "faq" */
+export type FaqFaq_Texts_AggregateArgs = {
+  distinct_on?: Maybe<Array<Faq_Text_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Faq_Text_Order_By>>;
+  where?: Maybe<Faq_Text_Bool_Exp>;
 };
 
 /** aggregated selection of "faq" */
@@ -3875,6 +3899,7 @@ export type Faq_Bool_Exp = {
   _not?: Maybe<Faq_Bool_Exp>;
   _or?: Maybe<Array<Faq_Bool_Exp>>;
   code?: Maybe<String_Comparison_Exp>;
+  faq_texts?: Maybe<Faq_Text_Bool_Exp>;
   text?: Maybe<String_Comparison_Exp>;
 };
 
@@ -3887,6 +3912,7 @@ export enum Faq_Constraint {
 /** input type for inserting data into table "faq" */
 export type Faq_Insert_Input = {
   code?: Maybe<Scalars['String']>;
+  faq_texts?: Maybe<Faq_Text_Arr_Rel_Insert_Input>;
   text?: Maybe<Scalars['String']>;
 };
 
@@ -3923,6 +3949,7 @@ export type Faq_On_Conflict = {
 /** Ordering options when selecting data from "faq". */
 export type Faq_Order_By = {
   code?: Maybe<Order_By>;
+  faq_texts_aggregate?: Maybe<Faq_Text_Aggregate_Order_By>;
   text?: Maybe<Order_By>;
 };
 
@@ -3975,6 +4002,20 @@ export type Faq_Text_Aggregate_FieldsCountArgs = {
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "faq_text" */
+export type Faq_Text_Aggregate_Order_By = {
+  count?: Maybe<Order_By>;
+  max?: Maybe<Faq_Text_Max_Order_By>;
+  min?: Maybe<Faq_Text_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "faq_text" */
+export type Faq_Text_Arr_Rel_Insert_Input = {
+  data: Array<Faq_Text_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: Maybe<Faq_Text_On_Conflict>;
+};
+
 /** Boolean expression to filter rows from the table "faq_text". All fields are combined with a logical 'AND'. */
 export type Faq_Text_Bool_Exp = {
   _and?: Maybe<Array<Faq_Text_Bool_Exp>>;
@@ -4006,12 +4047,26 @@ export type Faq_Text_Max_Fields = {
   text?: Maybe<Scalars['String']>;
 };
 
+/** order by max() on columns of table "faq_text" */
+export type Faq_Text_Max_Order_By = {
+  code?: Maybe<Order_By>;
+  locale?: Maybe<Order_By>;
+  text?: Maybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Faq_Text_Min_Fields = {
   __typename?: 'faq_text_min_fields';
   code?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "faq_text" */
+export type Faq_Text_Min_Order_By = {
+  code?: Maybe<Order_By>;
+  locale?: Maybe<Order_By>;
+  text?: Maybe<Order_By>;
 };
 
 /** response of any mutation on the table "faq_text" */
@@ -9601,6 +9656,24 @@ export type GetCustomCardsQuery = (
   )> }
 );
 
+export type GetCardFaqQueryVariables = Exact<{
+  code: Scalars['String'];
+  locale: Scalars['String'];
+}>;
+
+
+export type GetCardFaqQuery = (
+  { __typename?: 'query_root' }
+  & { faq_by_pk?: Maybe<(
+    { __typename?: 'faq' }
+    & Pick<Faq, 'code' | 'text'>
+    & { faq_texts: Array<(
+      { __typename?: 'faq_text' }
+      & Pick<Faq_Text, 'code' | 'locale' | 'text'>
+    )> }
+  )> }
+);
+
 export type UploadNewCampaignMutationVariables = Exact<{
   campaignId: Scalars['Int'];
   cycleCode: Scalars['String'];
@@ -11095,6 +11168,48 @@ export function useGetCustomCardsLazyQuery(baseOptions?: Apollo.LazyQueryHookOpt
 export type GetCustomCardsQueryHookResult = ReturnType<typeof useGetCustomCardsQuery>;
 export type GetCustomCardsLazyQueryHookResult = ReturnType<typeof useGetCustomCardsLazyQuery>;
 export type GetCustomCardsQueryResult = Apollo.QueryResult<GetCustomCardsQuery, GetCustomCardsQueryVariables>;
+export const GetCardFaqDocument = gql`
+    query getCardFaq($code: String!, $locale: String!) {
+  faq_by_pk(code: $code) {
+    code
+    text
+    faq_texts(where: {locale: {_eq: $locale}}) {
+      code
+      locale
+      text
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetCardFaqQuery__
+ *
+ * To run a query within a React component, call `useGetCardFaqQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCardFaqQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCardFaqQuery({
+ *   variables: {
+ *      code: // value for 'code'
+ *      locale: // value for 'locale'
+ *   },
+ * });
+ */
+export function useGetCardFaqQuery(baseOptions: Apollo.QueryHookOptions<GetCardFaqQuery, GetCardFaqQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCardFaqQuery, GetCardFaqQueryVariables>(GetCardFaqDocument, options);
+      }
+export function useGetCardFaqLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCardFaqQuery, GetCardFaqQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCardFaqQuery, GetCardFaqQueryVariables>(GetCardFaqDocument, options);
+        }
+export type GetCardFaqQueryHookResult = ReturnType<typeof useGetCardFaqQuery>;
+export type GetCardFaqLazyQueryHookResult = ReturnType<typeof useGetCardFaqLazyQuery>;
+export type GetCardFaqQueryResult = Apollo.QueryResult<GetCardFaqQuery, GetCardFaqQueryVariables>;
 export const UploadNewCampaignDocument = gql`
     mutation uploadNewCampaign($campaignId: Int!, $cycleCode: String!, $standaloneId: jsonb, $showInterludes: Boolean, $name: String!, $difficulty: String, $campaignNotes: jsonb, $scenarioResults: jsonb, $chaosBag: jsonb, $weaknessSet: jsonb, $guideVersion: Int, $inputs: [guide_input_insert_input!]!, $achievements: [guide_achievement_insert_input!]!, $investigator_data: [investigator_data_insert_input!]!, $investigators: [campaign_investigator_insert_input!]!) {
   insert_guide_input(objects: $inputs) {

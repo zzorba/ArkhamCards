@@ -7,12 +7,11 @@ import {
   filter,
   minBy,
   indexOf,
-  sumBy,
 } from 'lodash';
 import { t } from 'ttag';
 
 import { DeckMeta, DeckProblem, DeckProblemType, Slots } from '@actions/types';
-import { ANCESTRAL_KNOWLEDGE_CODE, UNDERWORLD_SUPPORT_CODE, BODY_OF_A_YITHIAN, ON_YOUR_OWN_CODE, VERSATILE_CODE } from '@app_constants';
+import { ANCESTRAL_KNOWLEDGE_CODE, UNDERWORLD_SUPPORT_CODE, BODY_OF_A_YITHIAN, ON_YOUR_OWN_CODE, VERSATILE_CODE, FORCED_LEARNING_CODE } from '@app_constants';
 import Card from '@data/types/Card';
 import DeckOption, { localizeDeckOptionError } from '@data/types/DeckOption';
 
@@ -22,6 +21,7 @@ interface SpecialCardCounts {
   versatile: number;
   onYourOwn: number;
   underworldSupport: number;
+  forcedLearning: number;
 }
 
 // Code taken from:
@@ -54,6 +54,7 @@ export default class DeckValidation {
       versatile: this.slots[VERSATILE_CODE] || 0,
       onYourOwn: this.slots[ON_YOUR_OWN_CODE] || 0,
       underworldSupport: this.slots[UNDERWORLD_SUPPORT_CODE] || 0,
+      forcedLearning: this.slots[FORCED_LEARNING_CODE] || 0,
     };
   }
 
@@ -67,7 +68,9 @@ export default class DeckValidation {
         size = this.investigator.deck_requirements.size;
       }
     }
-    return size + (5 * (specialCards.versatile + specialCards.ancestralKnowledge)) - (5 * specialCards.underworldSupport);
+    return size
+      + (5 * (specialCards.versatile + specialCards.ancestralKnowledge + (specialCards.forcedLearning * 3)))
+      - (5 * specialCards.underworldSupport);
   }
 
   getPhysicalDrawDeck(cards: Card[]): Card[] {
@@ -138,7 +141,7 @@ export default class DeckValidation {
       if (card.deck_requirements.card) {
         if (find(card.deck_requirements.card, req =>
           !find(cards, theCard => theCard.code === req.code) &&
-          !(req.alternates?.length && req.alternates.length === sumBy(req.alternates, code => find(cards, theCard => theCard.code === code) ? 1 : 0))
+          !(req.alternates?.length && find(req.alternates, code => find(cards, theCard => theCard.code === code)))
         )) {
           return 'investigator';
         }
@@ -369,7 +372,7 @@ export default class DeckValidation {
           var faction_valid = false;
           for (var j = 0; j < option.faction.length; j++) {
             var faction = option.faction[j];
-            if (card.faction_code == faction || card.faction2_code == faction){
+            if (card.faction_code == faction || card.faction2_code == faction || card.faction3_code == faction){
               faction_valid = true;
             }
           }
@@ -387,7 +390,8 @@ export default class DeckValidation {
             selected_faction = this.meta.faction_selected;
           }
           if (card.faction_code != selected_faction &&
-            card.faction2_code != selected_faction){
+            card.faction2_code != selected_faction &&
+            card.faction3_code != selected_faction){
             continue;
           }
         }
@@ -491,6 +495,12 @@ export default class DeckValidation {
                   this.deck_options_counts[i].atleast[card.faction2_code] = 0;
                 }
                 this.deck_options_counts[i].atleast[card.faction2_code] += 1;
+              }
+              if (card.faction3_code){
+                if (!this.deck_options_counts[i].atleast[card.faction3_code]){
+                  this.deck_options_counts[i].atleast[card.faction3_code] = 0;
+                }
+                this.deck_options_counts[i].atleast[card.faction3_code] += 1;
               }
             } else if (option.atleast.types) {
               if (!this.deck_options_counts[i].atleast[card.type_code]) {

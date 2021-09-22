@@ -181,6 +181,15 @@ function CardSearchResult(props: Props) {
             />
           </View>
         ) }
+        { !!card.faction3_code && (
+          <View style={styles.skillIcon}>
+            <ArkhamIcon
+              name={card.faction3_code}
+              size={SKILL_ICON_SIZE}
+              color={colors.faction[card.faction3_code].text}
+            />
+          </View>
+        ) }
       </View>
     );
   }, [fontScale, colors, card, colorblind]);

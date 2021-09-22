@@ -10,8 +10,40 @@
 #import <React/RCTLinkingManager.h>
 #import <AppAuth/AppAuth.h>
 #import <ReactNativeNavigation/ReactNativeNavigation.h>
+#import <RNKeyEvent.h>
 
 @implementation AppDelegate
+
+/*!
+ * react-native-keyevent support
+ */
+RNKeyEvent *keyEvent = nil;
+
+- (NSMutableArray<UIKeyCommand *> *)keyCommands {
+  NSMutableArray *keys = [NSMutableArray new];
+  
+  if (keyEvent == nil) {
+    keyEvent = [[RNKeyEvent alloc] init];
+  }
+  
+  if ([keyEvent isListening]) {
+    NSArray *namesArray = [[keyEvent getKeys] componentsSeparatedByString:@","];
+    
+    NSCharacterSet *validChars = [NSCharacterSet characterSetWithCharactersInString:@"1234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
+    
+    for (NSString* names in namesArray) {
+      [keys addObject: [UIKeyCommand keyCommandWithInput:names modifierFlags:0 action:@selector(keyInput:)]];
+      [keys addObject: [UIKeyCommand keyCommandWithInput:names modifierFlags:UIKeyModifierShift action:@selector(keyInput:)]];
+    }
+  }
+  
+  return keys;
+}
+
+- (void)keyInput:(UIKeyCommand *)sender {
+  NSString *selected = sender.input;
+  [keyEvent sendKeyEvent:selected];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

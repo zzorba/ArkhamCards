@@ -15,3 +15,20 @@ query getCustomCards(
     }
   }
 }
+
+query getCardFaq(
+  $code: String!,
+  $locale: String!
+) {
+  faq_by_pk(code: $code) {
+    code
+    text
+    faq_texts(
+      where: { locale: { _eq: $locale }}
+    ) {
+      code
+      locale
+      text
+    }
+  }
+}
