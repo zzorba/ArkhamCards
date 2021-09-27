@@ -391,8 +391,9 @@ PODS:
     - React-Core
   - react-native-sqlite-storage (5.0.0):
     - React
-  - react-native-track-player (1.2.7):
+  - react-native-track-player (2.1.0):
     - React-Core
+    - SwiftAudioEx (= 0.14.0)
   - react-native-webview (11.13.0):
     - React-Core
   - React-perflogger (0.65.1)
@@ -553,6 +554,7 @@ PODS:
     - SDWebImage/Core (~> 5.10)
   - SRSRadialGradient (1.0.9):
     - React
+  - SwiftAudioEx (0.14.0)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -688,6 +690,7 @@ SPEC REPOS:
     - PromisesObjC
     - SDWebImage
     - SDWebImageWebPCoder
+    - SwiftAudioEx
     - YogaKit
 
 EXTERNAL SOURCES:
@@ -887,7 +890,7 @@ SPEC CHECKSUMS:
   react-native-netinfo: 8917788f12f8c422d16a56f840a1b06faa56e2b6
   react-native-pager-view: f21658a2e12eced35ef998250375e4e4dc9b8487
   react-native-sqlite-storage: ce71689c5a73b79390a1ab213555ae80979a5dc7
-  react-native-track-player: 878d6c66e4ae3a69f6a534c57c6c34a42e9b033f
+  react-native-track-player: e98b10450888bb832098b1c0664a2402557ad7b9
   react-native-webview: b176c6404ad40d10cfc818be41c053f85a72d751
   React-perflogger: fd28ee1f2b5b150b00043f0301d96bd417fdc339
   React-RCTActionSheet: 7f3fa0855c346aa5d7c60f9ced16e067db6d29fa
@@ -925,6 +928,7 @@ SPEC CHECKSUMS:
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815
   SRSRadialGradient: 49ba49a7a8f257c3fe785c250867b07185d1d01e
+  SwiftAudioEx: 96effa485589c54e8b217993aab656c613b2e9cb
   Yoga: aa0cb45287ebe1004c02a13f279c55a95f1572f4
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
