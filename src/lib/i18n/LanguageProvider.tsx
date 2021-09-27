@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Platform } from 'react-native';
-import { EventEmitter } from 'events';
+import { DeviceEventEmitter, Platform } from 'react-native';
 import * as RNLocalize from 'react-native-localize';
 import LanguageContext from './LanguageContext';
 import { getSystemLanguage } from '@lib/i18n';
@@ -11,7 +10,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-let eventListener: EventEmitter | null = null;
+let eventListenerInitialized: boolean = false;
 let currentSystemLang: string | undefined = undefined;
 
 const LOCALIZED_CARD_TRAITS = new Set(['fr', 'ru', 'de', 'zh']);
@@ -26,23 +25,22 @@ function getListSeperator(lang: string): string {
 export default function LanguageProvider({ children }: Props) {
   const [systemLang, setSystemLang] = useState<string>(currentSystemLang || getSystemLanguage());
   useEffect(() => {
-    if (eventListener === null) {
+    if (!eventListenerInitialized) {
       // We only want to listen to this once, hence the singleton pattern.
-      eventListener = new EventEmitter();
-      eventListener.setMaxListeners(100);
       const callback = () => {
         currentSystemLang = getSystemLanguage();
-        eventListener?.emit('langChange', currentSystemLang);
+        DeviceEventEmitter.emit('langChange', currentSystemLang);
       };
       RNLocalize.addEventListener('change', callback);
+      eventListenerInitialized = true;
     }
     if (!currentSystemLang) {
       currentSystemLang = getSystemLanguage();
     }
     const callback = (systemLang: string) => setSystemLang(systemLang);
-    eventListener.addListener('langChange', callback);
+    const sub = DeviceEventEmitter.addListener('langChange', callback);
     return () => {
-      eventListener?.removeListener('langChange', callback);
+      sub.remove();
     };
   }, []);
   const langChoice = useSelector(getLangChoice);

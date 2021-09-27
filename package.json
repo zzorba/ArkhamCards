@@ -33,7 +33,7 @@
     "@react-hook/debounce": "4.0.0",
     "@react-hook/throttle": "2.2.0",
     "@react-native-async-storage/async-storage": "1.15.8",
-    "@react-native-google-signin/google-signin": "6.0.0",
+    "@react-native-google-signin/google-signin": "6.0.1",
     "@react-native-community/hooks": "2.6.0",
     "@react-native-community/netinfo": "6.0.2",
     "@react-native-firebase/app": "12.8.0",
