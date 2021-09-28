@@ -49,7 +49,7 @@ PODS:
     - FirebaseCoreDiagnostics (~> 8.0)
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/Logger (~> 7.4)
-  - FirebaseCoreDiagnostics (8.7.0):
+  - FirebaseCoreDiagnostics (8.8.0):
     - GoogleDataTransport (~> 9.0)
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/Logger (~> 7.4)
@@ -391,10 +391,10 @@ PODS:
     - React-Core
   - react-native-sqlite-storage (5.0.0):
     - React
-  - react-native-track-player (2.1.0):
+  - react-native-track-player (2.1.1):
     - React-Core
-    - SwiftAudioEx (= 0.14.0)
-  - react-native-webview (11.13.0):
+    - SwiftAudioEx (= 0.14.2)
+  - react-native-webview (11.13.1):
     - React-Core
   - React-perflogger (0.65.1)
   - React-RCTActionSheet (0.65.1):
@@ -479,7 +479,7 @@ PODS:
     - React-Core
   - RNDeviceInfo (8.3.3):
     - React-Core
-  - RNFastImage (8.5.8):
+  - RNFastImage (8.5.11):
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
@@ -502,7 +502,7 @@ PODS:
     - React
   - RNGestureHandler (1.9.0):
     - React-Core
-  - RNGoogleSignin (6.0.0):
+  - RNGoogleSignin (6.0.1):
     - GoogleSignIn (~> 5.0.0)
     - React-Core
   - RNKeychain (7.0.0):
@@ -554,7 +554,7 @@ PODS:
     - SDWebImage/Core (~> 5.10)
   - SRSRadialGradient (1.0.9):
     - React
-  - SwiftAudioEx (0.14.0)
+  - SwiftAudioEx (0.14.2)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -842,7 +842,7 @@ SPEC CHECKSUMS:
   Firebase: bc9325d5ee2041524bac78a5213d0e530c651309
   FirebaseAuth: 2e7d029977648c67a5d51a263d4cbab76d34cf12
   FirebaseCore: f4804c1d3f4bbbefc88904d15653038f2c99ddf7
-  FirebaseCoreDiagnostics: b63732f581a1c6a453ec7241f9ab60b3a5bd3450
+  FirebaseCoreDiagnostics: fe77f42da6329d6d83d21fd9d621a6b704413bfc
   FirebaseDatabase: afc82291f9ed94ff949cec1b9505e8c3b944bc0f
   FirebaseFunctions: 9b78e79a3de4ee00ca1af7fd8c5fd7ed76fbf702
   Flipper: d3da1aa199aad94455ae725e9f3aa43f3ec17021
@@ -890,8 +890,8 @@ SPEC CHECKSUMS:
   react-native-netinfo: 8917788f12f8c422d16a56f840a1b06faa56e2b6
   react-native-pager-view: f21658a2e12eced35ef998250375e4e4dc9b8487
   react-native-sqlite-storage: ce71689c5a73b79390a1ab213555ae80979a5dc7
-  react-native-track-player: e98b10450888bb832098b1c0664a2402557ad7b9
-  react-native-webview: b176c6404ad40d10cfc818be41c053f85a72d751
+  react-native-track-player: dc9e2571c181aebffccc83c5ddcf4b550b012f04
+  react-native-webview: cea67b82dd5fbdf0f5c821b4ca0ca0b01e954c0b
   React-perflogger: fd28ee1f2b5b150b00043f0301d96bd417fdc339
   React-RCTActionSheet: 7f3fa0855c346aa5d7c60f9ced16e067db6d29fa
   React-RCTAnimation: 2119a18ee26159004b001bc56404ca5dbaae6077
@@ -910,14 +910,14 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 0f655864a81214d1c5a9bf0faf79d86dc25c383e
   RNColorMatrixImageFilters: fdeaf2451ff8f7aa76679a9951b969e6c8adeede
   RNDeviceInfo: 0d6865ab0a57d9192bdd4e4f5894340b846c3e53
-  RNFastImage: adef7f9c9a7aeca0141807ee5a8be8a3eb240dd8
+  RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
   RNFBApp: b97d6654509a5852d49f0abf93be76b300fd2e2c
   RNFBAuth: 07fd836f31fe09d465c22476a052766251af1c49
   RNFBDatabase: 194a730d8182d81cccb7c8126b6e8a71f3bf5d74
   RNFBFunctions: 517f2a9fb3f5b9263e2c3d0f3e754cfd2aa5047f
   RNFS: 3ab21fa6c56d65566d1fb26c2228e2b6132e5e32
   RNGestureHandler: 9b7e605a741412e20e13c512738a31bd1611759b
-  RNGoogleSignin: 111fd4792913208f338fe3178005f7a22e490ff9
+  RNGoogleSignin: e64616a4080cf7d83f4b292fad82d174587444e2
   RNKeychain: f75b8c8b2f17d3b2aa1f25b4a0ac5b83d947ff8f
   RNLocalize: 8bc7ebf44e0f18898cc62f0061561d07fabf6ff9
   RNReanimated: ad24db8af24e3fe1b5c462785bc3db8d5baae2ee
@@ -928,7 +928,7 @@ SPEC CHECKSUMS:
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815
   SRSRadialGradient: 49ba49a7a8f257c3fe785c250867b07185d1d01e
-  SwiftAudioEx: 96effa485589c54e8b217993aab656c613b2e9cb
+  SwiftAudioEx: df9d62dcae6c2eca358bc36eb972ebac440cd943
   Yoga: aa0cb45287ebe1004c02a13f279c55a95f1572f4
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
