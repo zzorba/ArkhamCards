@@ -1,5 +1,5 @@
 import { chunk, filter, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, uniq, values } from 'lodash';
-import { Alert, Platform } from 'react-native';
+import { Alert } from 'react-native';
 import { t } from 'ttag';
 
 import { CardCache, TabooCache, Pack } from '@actions/types';
@@ -12,7 +12,7 @@ import FaqEntry from '@data/types/FaqEntry';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { GetCustomCardsDocument, GetCustomCardsQuery, GetCustomCardsQueryVariables } from '@generated/graphql/apollo-schema';
 
-const VERBOSE = true;
+const VERBOSE = false;
 
 export const syncTaboos = async function(
   updateProgress: (progress: number, msg?: string) => void,
@@ -43,7 +43,7 @@ export const syncTaboos = async function(
     }
     const lastModified = response.headers.get('Last-Modified') || undefined;
     const json = await response.json();
-    const allTabooCards = uniq(
+    const allTabooCards: string[] = uniq(
       flatMap(json, tabooJson => {
         const cards = JSON.parse(tabooJson.cards);
         return map(cards, card => card.code);
@@ -61,23 +61,18 @@ export const syncTaboos = async function(
       .set({ taboo_set_id: 0 })
       .execute();
     VERBOSE && console.log('Found base taboo cards');
-    let queryRunner = await db.startTransaction();
-    const baseTabooCards: Card[] = flatMap(await Promise.all(map(allTabooCards, code => {
-      return queryRunner.manager.createQueryBuilder(Card, 'c')
-        .where('c.code = :code AND c.taboo_set_id = 0')
-        .leftJoin('c.linked_card', 'linked_card')
-        .setParameters({ code })
-        .addSelect(Card.ELIDED_FIELDS)
-        .getOne();
-    })), x => x ? [x] : []);
-    await queryRunner.commitTransaction();
-    await queryRunner.release();
+    const cardsQ = await db.cards();
+    const baseTabooCards: Card[] = await cardsQ.createQueryBuilder('c')
+      .where('c.code in (:...codes) AND c.taboo_set_id = 0')
+      .leftJoin('c.linked_card', 'linked_card')
+      .setParameters({ codes: allTabooCards })
+      .addSelect(Card.ELIDED_FIELDS)
+      .getMany();
     updateProgress(0.95);
 
     const tabooSetsRep = await db.tabooSets();
     await tabooSetsRep.createQueryBuilder().delete().execute();
 
-    queryRunner = await db.startTransaction();
     const tabooSets: TabooSet[] = [];
     for (let i = 0; i < json.length; i++) {
       const tabooJson = json[i];
@@ -109,15 +104,13 @@ export const syncTaboos = async function(
         const cardsToInsert = flatMap(values(tabooCardsToSave), card => card ? [card] : []);
         // await cards.save(cardsToInsert);
         await insertChunk(cardsToInsert, async cards => {
-          await queryRunner.manager.insert(Card, cards);
+          await db.insertCards(cards);
         }, 4);
       } catch (e) {
         console.log(e);
         Alert.alert(`${e}`);
       }
     }
-    await queryRunner.commitTransaction();
-    await queryRunner.release();
     updateProgress(0.98);
 
     await tabooSetsRep.insert(tabooSets);
@@ -137,7 +130,7 @@ export const syncTaboos = async function(
 };
 
 async function insertChunk<T>(things: T[], insert: (things: T[]) => Promise<any>, maxInsert?: number) {
-  const chunkThings = chunk(things, Platform.OS === 'ios' ? 50 : maxInsert || 8);
+  const chunkThings = chunk(things, maxInsert || 100);
   await Promise.all(map(chunkThings, async toInsert => await insert(toInsert)));
 }
 
@@ -184,7 +177,7 @@ export const syncRules = async function(
 export const NON_LOCALIZED_CARDS = new Set(['en', 'pt']);
 
 export const syncCards = async function(
-  updateProgress: (progress: number, msg?: strinig) => void,
+  updateProgress: (progress: number, msg?: string) => void,
   db: Database,
   anonClient: ApolloClient<NormalizedCacheObject>,
   packs: Pack[],
@@ -250,14 +243,12 @@ export const syncCards = async function(
         try {
           const customCardsResponse = await customCardsPromise;
           const customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
-          const queryRunner = await db.startTransaction();
+          const cardsQ = await db.cards();
           await insertChunk(customCards, async(c: Card[]) => {
-            await queryRunner.manager.delete(Card, map(c, c => c.id));
-            await queryRunner.manager.insert(Card, c);
+            await cardsQ.delete(map(c, c => c.id));
+            await cardsQ.insert(c);
           });
           updateProgress(0.7);
-          await queryRunner.commitTransaction();
-          await queryRunner.release();
         } catch (e) {
           console.log(e);
         }
@@ -429,12 +420,11 @@ export const syncCards = async function(
         console.log(e);
       }
       const [linkedCards, normalCards] = partition(dedupedCards, card => !!card.linked_card);
-      const queryRunner = await db.startTransaction();
       VERBOSE && console.log('Parsed all cards');
       const totalCards = (linkedCards.length + normalCards.length + customCards.length + sumBy(linkedCards, c => c.linked_card ? 1 : 0)) || 3000;
       let processedCards = 0;
       async function insertCards(c: Card[]) {
-        await queryRunner.manager.insert(Card, c);
+        await db.insertCards(c);
         processedCards += c.length;
         updateProgress(0.35 + (processedCards / (1.0 * totalCards) * 0.50));
       }
@@ -446,8 +436,6 @@ export const syncCards = async function(
       if (customCards.length) {
         await insertChunk(customCards, insertCards);
       }
-      await queryRunner.commitTransaction();
-      await queryRunner.release();
       VERBOSE && console.log('Inserted normal cards');
       updateProgress(0.90);
       const cardCount = await cards.createQueryBuilder('card')
