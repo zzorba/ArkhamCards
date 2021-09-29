@@ -12,7 +12,7 @@ import FaqEntry from '@data/types/FaqEntry';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { GetCustomCardsDocument, GetCustomCardsQuery, GetCustomCardsQueryVariables } from '@generated/graphql/apollo-schema';
 
-const VERBOSE = false;
+const VERBOSE = true;
 
 export const syncTaboos = async function(
   updateProgress: (progress: number, msg?: string) => void,

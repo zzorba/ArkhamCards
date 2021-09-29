@@ -389,8 +389,8 @@ PODS:
     - React-Core
   - react-native-pager-view (5.4.4):
     - React-Core
-  - react-native-sqlite-storage (5.0.0):
-    - React
+  - react-native-quick-sqlite (1.0.4):
+    - React-Core
   - react-native-track-player (2.1.1):
     - React-Core
     - SwiftAudioEx (= 0.14.2)
@@ -585,7 +585,7 @@ DEPENDENCIES:
   - react-native-keyevent (from `../node_modules/react-native-keyevent`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-pager-view (from `../node_modules/react-native-pager-view`)
-  - react-native-sqlite-storage (from `../node_modules/react-native-sqlite-storage`)
+  - react-native-quick-sqlite (from `../node_modules/react-native-quick-sqlite`)
   - react-native-track-player (from `../node_modules/react-native-track-player`)
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -720,8 +720,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/netinfo"
   react-native-pager-view:
     :path: "../node_modules/react-native-pager-view"
-  react-native-sqlite-storage:
-    :path: "../node_modules/react-native-sqlite-storage"
+  react-native-quick-sqlite:
+    :path: "../node_modules/react-native-quick-sqlite"
   react-native-track-player:
     :path: "../node_modules/react-native-track-player"
   react-native-webview:
@@ -857,7 +857,7 @@ SPEC CHECKSUMS:
   react-native-keyevent: f8728b8c73dbfbcb4d2c56d9e78be082c673c456
   react-native-netinfo: 8917788f12f8c422d16a56f840a1b06faa56e2b6
   react-native-pager-view: f21658a2e12eced35ef998250375e4e4dc9b8487
-  react-native-sqlite-storage: ce71689c5a73b79390a1ab213555ae80979a5dc7
+  react-native-quick-sqlite: 13b57b0dad9119491116fc4203ef1e64c2877e0e
   react-native-track-player: dc9e2571c181aebffccc83c5ddcf4b550b012f04
   react-native-webview: cea67b82dd5fbdf0f5c821b4ca0ca0b01e954c0b
   React-perflogger: fd28ee1f2b5b150b00043f0301d96bd417fdc339

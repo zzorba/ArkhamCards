@@ -33,7 +33,7 @@ import { NON_LOCALIZED_CARDS, syncCards, syncTaboos } from '@lib/publicApi';
 import Database from '@data/sqlite/Database';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 
-const VERBOSE = false;
+const VERBOSE = true;
 function shouldFetchCards(state: AppState) {
   return !state.cards.loading;
 }
@@ -177,7 +177,7 @@ export function fetchPacks(
       });
       return newPacks;
     } catch(err){
-      console.log(err);
+      console.log(`Packs: ${err}`);
       dispatch({
         type: PACKS_FETCH_ERROR,
         error: err.message || err,
