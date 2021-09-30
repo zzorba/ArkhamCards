@@ -18,7 +18,7 @@ import { clearDecks } from '@actions';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import Card from '@data/types/Card';
 import { getBackupData, getAllPacks, getLangChoice, AppState } from '@reducers';
-import { fetchCards } from '@components/card/actions';
+import { requestFetchCards } from '@components/card/actions';
 import SettingsItem from './SettingsItem';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import StyleContext from '@styles/StyleContext';
@@ -26,7 +26,6 @@ import { saveAuthResponse } from '@lib/dissonantVoices';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useApolloClient } from '@apollo/client';
-import ApolloClientContext from '@data/apollo/ApolloClientContext';
 
 
 function goOffline() {
@@ -87,10 +86,9 @@ export default function DiagnosticsView() {
     await (await db.tabooSets()).createQueryBuilder().delete().execute();
   }, [db]);
   const apollo = useApolloClient();
-  const { anonClient } = useContext(ApolloClientContext);
   const doSyncCards = useCallback(() => {
-    dispatch(fetchCards(db, anonClient, lang, langChoice));
-  }, [dispatch, lang, langChoice, db, anonClient]);
+    dispatch(requestFetchCards(lang, langChoice));
+  }, [dispatch, lang, langChoice]);
 
   const clearCache = useCallback(async() => {
     dispatch(clearDecks());

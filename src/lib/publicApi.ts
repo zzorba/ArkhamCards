@@ -1,9 +1,9 @@
 import { chunk, filter, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, uniq, values } from 'lodash';
 import { Alert, Platform } from 'react-native';
-import { Dispatch } from 'redux';
 import { t } from 'ttag';
+import Animated from 'react-native-reanimated';
 
-import { CardCache, TabooCache, Pack, CARD_FETCH_UPDATE_PROGRESS } from '@actions/types';
+import { CardCache, TabooCache, Pack } from '@actions/types';
 import { Rule as JsonRule } from '@data/scenario/types';
 import Card from '@data/types/Card';
 import Rule from '@data/types/Rule';
@@ -15,15 +15,8 @@ import { GetCustomCardsDocument, GetCustomCardsQuery, GetCustomCardsQueryVariabl
 
 const VERBOSE = false;
 
-function markProgress(dispatch: Dispatch, progress: number) {
-  dispatch({
-    type: CARD_FETCH_UPDATE_PROGRESS,
-    progress,
-  });
-}
-
 export const syncTaboos = async function(
-  dispatch: Dispatch,
+  fetchProgress: Animated.SharedValue<number>,
   db: Database,
   lang?: string,
   cache?: TabooCache
@@ -46,7 +39,7 @@ export const syncTaboos = async function(
       headers,
     });
     if (response.status === 304 && cache) {
-      markProgress(dispatch, 1.0);
+      fetchProgress.value = 1.0;
       return cache;
     }
     const lastModified = response.headers.get('Last-Modified') || undefined;
@@ -57,7 +50,7 @@ export const syncTaboos = async function(
         return map(cards, card => card.code);
       })
     );
-    markProgress(dispatch, 0.92);
+    fetchProgress.value = 0.92;
     VERBOSE && console.log('Starting to update Taboos');
     const cardsRep = await db.cards();
     await cardsRep.createQueryBuilder().where('taboo_set_id > 0').delete().execute();
@@ -80,7 +73,7 @@ export const syncTaboos = async function(
     })), x => x ? [x] : []);
     await queryRunner.commitTransaction();
     await queryRunner.release();
-    markProgress(dispatch, 0.95);
+    fetchProgress.value = 0.95;
 
     const tabooSetsRep = await db.tabooSets();
     await tabooSetsRep.createQueryBuilder().delete().execute();
@@ -126,13 +119,13 @@ export const syncTaboos = async function(
     }
     await queryRunner.commitTransaction();
     await queryRunner.release();
-    markProgress(dispatch, 0.98);
+    fetchProgress.value = 0.98;
 
     await tabooSetsRep.insert(tabooSets);
     const tabooCount = await cardsRep.createQueryBuilder()
       .where('taboo_set_id > 0')
       .getCount();
-    markProgress(dispatch, 1.0);
+    fetchProgress.value = 1.0;
     return {
       tabooCount,
       lastModified,
@@ -191,7 +184,7 @@ export const syncRules = async function(
 export const NON_LOCALIZED_CARDS = new Set(['en', 'pt']);
 
 export const syncCards = async function(
-  dispatch: Dispatch,
+  fetchProgress: Animated.SharedValue<number>,
   db: Database,
   anonClient: ApolloClient<NormalizedCacheObject>,
   packs: Pack[],
@@ -200,7 +193,7 @@ export const syncCards = async function(
 ): Promise<CardCache | null> {
   VERBOSE && console.log('syncCards called');
   try {
-    markProgress(dispatch, 0);
+    fetchProgress.value = 0;
     VERBOSE && console.log('Starting sync of cards from ArkhamDB');
     const langPrefix = lang && !NON_LOCALIZED_CARDS.has(lang) ? `${lang}.` : '';
     const uri = `https://${langPrefix}arkhamdb.com/api/public/cards/?encounter=1`;
@@ -223,7 +216,7 @@ export const syncCards = async function(
     cycleNames[70] = { name: t`Side stories`, code: 'side_stories' };
     cycleNames[80] = { name: t`Promotional`, code: 'promotional' };
     cycleNames[90] = { name: t`Parallel`, code: 'parallel' };
-    markProgress(dispatch, 0.01);
+    fetchProgress.value = 0.01;
 
     const headers = new Headers();
     if (cache &&
@@ -238,7 +231,7 @@ export const syncCards = async function(
         headers.append('If-Modified-Since', cache.lastModified);
       }
     }
-    markProgress(dispatch, 0.03);
+    fetchProgress.value = 0.03;
 
     try {
       const customCardsPromise = anonClient.query<GetCustomCardsQuery, GetCustomCardsQueryVariables>({
@@ -253,7 +246,7 @@ export const syncCards = async function(
         headers,
       });
       if (response.status === 304 && cache) {
-        markProgress(dispatch, 0.50);
+        fetchProgress.value = 0.50;
         try {
           const customCardsResponse = await customCardsPromise;
           const customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
@@ -262,21 +255,22 @@ export const syncCards = async function(
             await queryRunner.manager.delete(Card, map(c, c => c.id));
             await queryRunner.manager.insert(Card, c);
           });
-          markProgress(dispatch, 0.7);
+          fetchProgress.value = 0.7;
           await queryRunner.commitTransaction();
           await queryRunner.release();
         } catch (e) {
           console.log(e);
         }
-        markProgress(dispatch, 0.9);
+        fetchProgress.value = 0.9;
         return cache;
       }
       VERBOSE && console.log('Got results from ArkhamDB');
 
       const lastModified = response.headers.get('Last-Modified') || undefined;
-      markProgress(dispatch, 0.10);
+      fetchProgress.value = 0.10;
 
       const json = await response.json();
+      fetchProgress.value = 0.20;
       VERBOSE && console.log('Parsed ArkhamDB json');
 
       const encounterSets = await db.encounterSets();
@@ -291,11 +285,10 @@ export const syncCards = async function(
       await rules.createQueryBuilder().delete().execute();
       await db.clearCache();
       VERBOSE && console.log('Cleared old database');
-      markProgress(dispatch, 0.20);
+      fetchProgress.value = 0.22;
 
       await syncRules(db, lang);
-
-      markProgress(dispatch, 0.25);
+      fetchProgress.value = 0.25;
 
       // console.log(`${await cards.count() } cards after delete`);
       const genericInvestigator = Card.fromJson({
@@ -366,7 +359,7 @@ export const syncCards = async function(
           console.log(cardJson);
         }
       });
-      markProgress(dispatch, 0.35);
+      fetchProgress.value = 0.35;
       const linkedSet = new Set(flatMap(cardsToInsert, (c: Card) => c.linked_card ? [c.code, c.linked_card] : []));
       const dedupedCards = filter(cardsToInsert, (c: Card) => !!c.linked_card || !linkedSet.has(c.code));
       const flatCards = flatMap(dedupedCards, (c: Card) => {
@@ -443,7 +436,7 @@ export const syncCards = async function(
       async function insertCards(c: Card[]) {
         await queryRunner.manager.insert(Card, c);
         processedCards += c.length;
-        markProgress(dispatch, 0.35 + (processedCards / (1.0 * totalCards) * 0.50))
+        fetchProgress.value = 0.35 + (processedCards / (1.0 * totalCards) * 0.50);
       }
       await insertChunk(flatMap(linkedCards, c => c.linked_card ? [c.linked_card] : []), insertCards);
       // console.log('Inserted back-link cards');
@@ -456,7 +449,7 @@ export const syncCards = async function(
       await queryRunner.commitTransaction();
       await queryRunner.release();
       VERBOSE && console.log('Inserted normal cards');
-      markProgress(dispatch, 0.90);
+      fetchProgress.value = 0.90;
       const cardCount = await cards.createQueryBuilder('card')
         .where('card.taboo_set_id is null OR card.taboo_set_id = 0')
         .getCount();
