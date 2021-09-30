@@ -10,6 +10,7 @@ import { QuerySort } from './types';
 import { tabooSetQuery, where } from './query';
 import syncPlayerCards, { InvestigatorCardState, PlayerCardState } from './syncPlayerCards';
 import { SortType } from '@actions/types';
+import { Platform } from 'react-native';
 
 type DatabaseListener = () => void;
 
@@ -32,7 +33,7 @@ export default class Database {
     this.connectionP = createConnection({
       type: 'react-native',
       database: 'arkham4',
-      location: 'nosync',
+      location: Platform.OS === 'ios' ? 'nosync' : '../databases',
       logging: [
         'error',
         // 'query',
