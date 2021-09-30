@@ -128,12 +128,6 @@ interface PlayerProps {
   style?: ViewStyle;
 }
 
-interface PlayerState {
-  track: Track | null;
-  state: State | null;
-}
-
-
 function ProgressView() {
   const { colors } = useContext(StyleContext);
   const { position, duration } = useProgress(1000);

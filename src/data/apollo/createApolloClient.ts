@@ -28,6 +28,15 @@ const typePolicies: TypedTypePolicies = {
   campaign: {
     keyFields: ['id'],
     fields: {
+      standaloneId(rawVal: string) {
+        return rawVal ?? null;
+      },
+      cycleCode(rawVal: string) {
+        return rawVal ?? null;
+      },
+      archived(rawVal: boolean) {
+        return rawVal ?? null;
+      },
       latest_decks: {
         merge(existing, incoming) {
           return incoming;
@@ -120,6 +129,14 @@ const typePolicies: TypedTypePolicies = {
   },
   investigator_data: {
     keyFields: ['id'],
+    fields: {
+      spentXp(rawValue) {
+        return rawValue ?? null;
+      },
+      specialXp(rawValue) {
+        return rawValue ?? null;
+      },
+    },
   },
   users: {
     fields: {

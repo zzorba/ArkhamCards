@@ -202,6 +202,7 @@ fragment FullCampaign on campaign {
   weaknessSet
   guided
   guide_version
+  archived
   owner_id
   investigators(order_by: { created_at: asc }) {
     id
