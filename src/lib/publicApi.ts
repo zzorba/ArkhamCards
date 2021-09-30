@@ -130,7 +130,7 @@ export const syncTaboos = async function(
 };
 
 async function insertChunk<T>(things: T[], insert: (things: T[]) => Promise<any>, maxInsert?: number) {
-  const chunkThings = chunk(things, maxInsert || 100);
+  const chunkThings = chunk(things, maxInsert || 250);
   await Promise.all(map(chunkThings, async toInsert => await insert(toInsert)));
 }
 
