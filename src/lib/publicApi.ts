@@ -12,7 +12,19 @@ import FaqEntry from '@data/types/FaqEntry';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { GetCustomCardsDocument, GetCustomCardsQuery, GetCustomCardsQueryVariables } from '@generated/graphql/apollo-schema';
 
-const VERBOSE = false;
+// Returns current timestamp
+function getCurrentDateString() {
+  return (new Date()).toISOString() + ' ::';
+};
+
+originalLog = console.log;
+// Overwriting
+console.log = function () {
+    var args = [].slice.call(arguments);
+    originalLog.apply(console.log,[getCurrentDateString()].concat(args));
+};
+
+const VERBOSE = true;
 
 export const syncTaboos = async function(
   updateProgress: (progress: number, msg?: string) => void,
@@ -74,6 +86,7 @@ export const syncTaboos = async function(
     await tabooSetsRep.createQueryBuilder().delete().execute();
 
     const tabooSets: TabooSet[] = [];
+    const cardsToInsert: Card[][] = [];
     for (let i = 0; i < json.length; i++) {
       const tabooJson = json[i];
       const cards = JSON.parse(tabooJson.cards);
@@ -101,16 +114,17 @@ export const syncTaboos = async function(
             console.log(`Could not find old card: ${code}`);
           }
         }
-        const cardsToInsert = flatMap(values(tabooCardsToSave), card => card ? [card] : []);
-        // await cards.save(cardsToInsert);
-        await insertChunk(cardsToInsert, async cards => {
-          await db.insertCards(cards);
-        }, 4);
+        cardsToInsert.push(flatMap(values(tabooCardsToSave), card => card ? [card] : []));
       } catch (e) {
         console.log(e);
         Alert.alert(`${e}`);
       }
     }
+    // await cards.save(cardsToInsert);
+    await insertChunk(flatMap(cardsToInsert, x => x), async cards => {
+      await db.insertCards(cards);
+    });
+
     updateProgress(0.98);
 
     await tabooSetsRep.insert(tabooSets);
@@ -129,9 +143,19 @@ export const syncTaboos = async function(
   }
 };
 
-async function insertChunk<T>(things: T[], insert: (things: T[]) => Promise<any>, maxInsert?: number) {
-  const chunkThings = chunk(things, maxInsert || 250);
-  await Promise.all(map(chunkThings, async toInsert => await insert(toInsert)));
+async function insertChunk<T>(things: T[], insert: (things: T[]) => Promise<any>) {
+  const chunkThings = chunk(things, 250);
+  /*
+  return await Promise.all(map(chunkThings, async toInsert => {
+    return insert(toInsert).then(() => {
+      console.log(`Inserted chunk(${toInsert.length})`);
+    });
+  }));*/
+  for (let i = 0; i < chunkThings.length; i++) {
+    const toInsert = chunkThings[i];
+    await insert(toInsert);
+    console.log(`Inserted chunk(${toInsert.length})`);
+  }
 }
 
 function rulesJson(lang?: string) {
@@ -279,6 +303,7 @@ export const syncCards = async function(
       updateProgress(0.22);
 
       await syncRules(db, lang);
+      VERBOSE && console.log('Synced rules');
       updateProgress(0.25);
 
       // console.log(`${await cards.count() } cards after delete`);
@@ -420,6 +445,7 @@ export const syncCards = async function(
         console.log(e);
       }
       const [linkedCards, normalCards] = partition(dedupedCards, card => !!card.linked_card);
+      const [deckCards, encounterCards] = partition(normalCards, card => card.type_code === 'investigator' || !!card.deck_limit);
       VERBOSE && console.log('Parsed all cards');
       const totalCards = (linkedCards.length + normalCards.length + customCards.length + sumBy(linkedCards, c => c.linked_card ? 1 : 0)) || 3000;
       let processedCards = 0;
@@ -429,12 +455,16 @@ export const syncCards = async function(
         updateProgress(0.35 + (processedCards / (1.0 * totalCards) * 0.50));
       }
       await insertChunk(flatMap(linkedCards, c => c.linked_card ? [c.linked_card] : []), insertCards);
-      // console.log('Inserted back-link cards');
+      console.log('Inserted back-link cards');
       await insertChunk(linkedCards, insertCards);
-      VERBOSE && console.log('Inserted front link cards');
-      await insertChunk(normalCards, insertCards);
+      VERBOSE && console.log(`Inserted front-link cards (${linkedCards.length})`);
+      await insertChunk(deckCards, insertCards);
+      VERBOSE && console.log(`Inserted deck cards (${deckCards.length})`);
+      await insertChunk(encounterCards, insertCards);
+      VERBOSE && console.log(`Inserted encounter cards (${encounterCards.length})`);
       if (customCards.length) {
         await insertChunk(customCards, insertCards);
+        VERBOSE && console.log(`Inserted custom cards (${customCards.length})`);
       }
       VERBOSE && console.log('Inserted normal cards');
       updateProgress(0.90);
