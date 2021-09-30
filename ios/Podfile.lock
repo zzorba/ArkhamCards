@@ -376,6 +376,8 @@ PODS:
     - React
   - react-native-keep-awake (4.0.0):
     - React
+  - react-native-keyevent (0.2.8):
+    - React
   - react-native-netinfo (6.0.0):
     - React-Core
   - react-native-pager-view (5.2.1):
@@ -598,6 +600,7 @@ DEPENDENCIES:
   - react-native-document-picker (from `../node_modules/react-native-document-picker`)
   - "react-native-in-app-browser (from `../node_modules/@matt-block/react-native-in-app-browser/ios`)"
   - react-native-keep-awake (from `../node_modules/react-native-keep-awake`)
+  - react-native-keyevent (from `../node_modules/react-native-keyevent`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-pager-view (from `../node_modules/react-native-pager-view`)
   - react-native-sqlite-storage (from `../node_modules/react-native-sqlite-storage`)
@@ -724,6 +727,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@matt-block/react-native-in-app-browser/ios"
   react-native-keep-awake:
     :path: "../node_modules/react-native-keep-awake"
+  react-native-keyevent:
+    :path: "../node_modules/react-native-keyevent"
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
   react-native-pager-view:
@@ -860,6 +865,7 @@ SPEC CHECKSUMS:
   react-native-document-picker: f1b5398801b332c77bc62ae0eae2116f49bdff26
   react-native-in-app-browser: 533839b6e87ec02a7a88bd9f4f7e6e5b586e25fa
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
+  react-native-keyevent: f8728b8c73dbfbcb4d2c56d9e78be082c673c456
   react-native-netinfo: e849fc21ca2f4128a5726c801a82fc6f4a6db50d
   react-native-pager-view: 2864530d861ab2970beb2cd0b4cf2292cd30cd84
   react-native-sqlite-storage: 418ef4afc5e6df6ce3574c4617e5f0b65cffde55

@@ -1,11 +1,12 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, Pressable, TouchableWithoutFeedback, View, LayoutChangeEvent } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { cloneDeep, find, filter, map, shuffle, sumBy, reverse, uniq } from 'lodash';
+import { cloneDeep, find, filter, map, shuffle, sumBy, reverse, uniq, forEach } from 'lodash';
 import { jt, t } from 'ttag';
+import KeyEvent from 'react-native-keyevent';
 import KeepAwake from 'react-native-keep-awake';
 
-import { ChaosBag } from '@app_constants';
+import { ChaosBag, ChaosTokenType } from '@app_constants';
 import { CampaignDifficulty, CampaignId } from '@actions/types';
 import ChaosToken, { SMALL_TOKEN_SIZE } from './ChaosToken';
 import { adjustBlessCurseChaosBagResults, updateChaosBagClearTokens, updateChaosBagDrawToken, updateChaosBagReleaseAllSealed, updateChaosBagResetBlessCurse, updateChaosBagSealTokens } from './actions';
@@ -99,6 +100,7 @@ export default function DrawChaosBagComponent(props: Props) {
   const [isChaosBagEmpty, setIsChaosBagEmpty] = useState(false);
   const actions = useChaosBagActions();
   const [sealDialog, showSealDialog] = useSealTokenDialog(campaignId, chaosBag, chaosBagResults, actions);
+
   const clearTokens = useCallback((removeBlessCurse?: boolean) => {
     const blessToRemove = removeBlessCurse ? sumBy(chaosBagResults.drawnTokens, token => token === 'bless' ? 1 : 0) : 0;
     const curseToRemove = removeBlessCurse ? sumBy(chaosBagResults.drawnTokens, token => token === 'curse' ? 1 : 0) : 0;
@@ -119,15 +121,15 @@ export default function DrawChaosBagComponent(props: Props) {
     clearTokens(true);
   }, [clearTokens]);
 
-  const getRandomChaosToken = useCallback((chaosBag: ChaosBag) => {
+  const getRandomChaosTokens = useCallback((chaosBag: ChaosBag, drawTokens: number): ChaosTokenType[] => {
     const weightedList = flattenChaosBag(chaosBag);
 
     setIsChaosBagEmpty(weightedList.length <= 1);
 
-    return shuffle(weightedList)[0];
+    return shuffle(weightedList).slice(0, drawTokens);
   }, [setIsChaosBagEmpty]);
 
-  const drawToken = useCallback(() =>{
+  const drawToken = useCallback((count: number = 1) => {
     const currentChaosBag = cloneDeep(chaosBag);
     currentChaosBag.bless = chaosBagResults.blessTokens || 0;
     currentChaosBag.curse = chaosBagResults.curseTokens || 0;
@@ -143,14 +145,16 @@ export default function DrawChaosBagComponent(props: Props) {
       }
     });
 
-    const newIconKey = getRandomChaosToken(currentChaosBag);
-    if (newIconKey) {
-      drawnTokens.push(newIconKey);
+    const newIconKeys = getRandomChaosTokens(currentChaosBag, count);
+    if (newIconKeys.length) {
+      forEach(newIconKeys, newIconKey => {
+        drawnTokens.push(newIconKey);
+      });
       dispatch(updateChaosBagDrawToken(actions, campaignId, drawnTokens, chaosBagResults));
     } else {
       clearTokens();
     }
-  }, [campaignId, chaosBag, chaosBagResults, actions, dispatch, clearTokens, getRandomChaosToken]);
+  }, [campaignId, chaosBag, chaosBagResults, actions, dispatch, clearTokens, getRandomChaosTokens]);
 
   const handleDrawTokenPressed = useCallback(() => {
     if (chaosBagResults.drawnTokens.length >= 1) {
@@ -167,6 +171,33 @@ export default function DrawChaosBagComponent(props: Props) {
   const releaseAllTokens = useCallback(() => {
     dispatch(updateChaosBagReleaseAllSealed(actions, campaignId, chaosBagResults));
   }, [campaignId, actions, dispatch, chaosBagResults]);
+
+  useEffect(() => {
+    KeyEvent.onKeyUpListener((keyEvent: { keyCode: string; pressedKey: string; action: string }) => {
+      switch(keyEvent.pressedKey) {
+        case '1': drawToken(1); break;
+        case '2': drawToken(2); break;
+        case '3': drawToken(3); break;
+        case '4': drawToken(4); break;
+        case '5': drawToken(5); break;
+        case '6': drawToken(6); break;
+        case '7': drawToken(7); break;
+        case '8': drawToken(8); break;
+        case '9': drawToken(9); break;
+        case ' ':
+          handleDrawTokenPressed();
+          break;
+        case '\r':
+        case '\n':
+        case '0':
+          clearTokens(true);
+          break;
+      }
+    });
+    return () => {
+      KeyEvent.removeKeyUpListener();
+    };
+  }, [drawToken, handleDrawTokenPressed, clearTokens]);
 
   const handleResetBlessCursePressed = useCallback(() => {
     dispatch(updateChaosBagResetBlessCurse(actions, campaignId, chaosBagResults));

@@ -17,6 +17,7 @@ import { s } from '@styles/space';
 import { DeckActions } from '@data/remote/decks';
 import { CampaignAccessProps } from './CampaignAccessView';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import { ENABLE_ARKHAM_CARDS_ACCOUNT } from '@app_constants';
 
 interface Props {
   componentId: string;
@@ -84,7 +85,20 @@ export default function UploadCampaignButton({ componentId, campaign, campaignId
     }
   }, [componentId, campaignId, isOwner]);
   if (!userId) {
-    return null;
+    if (!ENABLE_ARKHAM_CARDS_ACCOUNT) {
+      return null;
+    }
+    return (
+      <DeckButton
+        icon="backup"
+        title={standalone ? t`Upload standalone` : t`Upload campaign`}
+        detail={t`Sign into Arkhan Cards on the Settings tab to enable`}
+        disabled
+        thin
+        color="light_gray"
+        bottomMargin={s}
+      />
+    );
   }
   if (campaignId.serverId) {
     return (

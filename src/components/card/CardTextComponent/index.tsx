@@ -38,7 +38,7 @@ const ParagraphTagRule: MarkdownRule<WithChildren, State> = {
   render: ParagraphHtmlTagNode,
 };
 
-function ArkhamIconRule(style: StyleContextType, sizeScale: number, avoidLinks: boolean): MarkdownRule<WithIconName, State> {
+function ArkhamIconRule(usePingFang: boolean, style: StyleContextType, sizeScale: number, avoidLinks: boolean): MarkdownRule<WithIconName, State> {
   return {
     match: SimpleMarkdown.inlineRegex(
       avoidLinks ? new RegExp('^\\[([^\\]]+)\\](?=$|[^(])') : new RegExp('^\\[([^\\]]+)\\]')
@@ -47,29 +47,29 @@ function ArkhamIconRule(style: StyleContextType, sizeScale: number, avoidLinks: 
     parse: (capture) => {
       return { name: capture[1] };
     },
-    render: ArkhamIconNode(style, sizeScale),
+    render: ArkhamIconNode(usePingFang, style, sizeScale),
   };
 }
 
-function ArkhamIconSkillTextRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithIconName, State> {
+function ArkhamIconSkillTextRule(usePingFang: boolean, style: StyleContextType, sizeScale: number): MarkdownRule<WithIconName, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\](?=\\([0-9X]+\\))')),
     order: BASE_ORDER + 1,
     parse: (capture) => {
       return { name: capture[1] };
     },
-    render: ArkhamIconNode(style, sizeScale),
+    render: ArkhamIconNode(usePingFang, style, sizeScale),
   };
 }
 
-function ArkahmIconSpanRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithIconName, State> {
+function ArkahmIconSpanRule(usePingFang: boolean, style: StyleContextType, sizeScale: number): MarkdownRule<WithIconName, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<span class="icon-([^"]+)"( title="[^"]*")?><\\/span>')),
     order: BASE_ORDER + 1,
     parse: (capture) => {
       return { name: capture[1] };
     },
-    render: ArkhamIconNode(style, sizeScale),
+    render: ArkhamIconNode(usePingFang, style, sizeScale),
   };
 }
 
@@ -261,7 +261,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
   const rules = useMemo(() => {
     return {
       emMarkdown: EmphasisMarkdownTagRule(usePingFang, context),
-      arkhamIconSpan: ArkahmIconSpanRule(context, sizeScale),
+      arkhamIconSpan: ArkahmIconSpanRule(usePingFang, context, sizeScale),
       hrTag: HrTagRule,
       blockquoteTag: BlockquoteHtmlTagRule,
       delTag: DelHtmlTagRule(context),
@@ -276,8 +276,8 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
       smallcapsTag: SmallCapsHtmlTagRule(context),
       center: CenterHtmlTagRule,
       right: RightHtmlTagRule,
-      arkhamIcon: ArkhamIconRule(context, sizeScale, !!onLinkPress),
-      arkhamIconSkillTestRule: ArkhamIconSkillTextRule(context, sizeScale),
+      arkhamIcon: ArkhamIconRule(usePingFang, context, sizeScale, !!onLinkPress),
+      arkhamIconSkillTestRule: ArkhamIconSkillTextRule(usePingFang, context, sizeScale),
     };
   }, [usePingFang, context, sizeScale, onLinkPress]);
   const textStyle: TextStyle = useMemo(() => {

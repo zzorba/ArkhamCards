@@ -1070,9 +1070,11 @@ export type chaos_bag_result_variance_fieldsFieldPolicy = {
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	totalDrawn?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type faqKeySpecifier = ('code' | 'text' | faqKeySpecifier)[];
+export type faqKeySpecifier = ('code' | 'faq_texts' | 'faq_texts_aggregate' | 'text' | faqKeySpecifier)[];
 export type faqFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
+	faq_texts?: FieldPolicy<any> | FieldReadFunction<any>,
+	faq_texts_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	text?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type faq_aggregateKeySpecifier = ('aggregate' | 'nodes' | faq_aggregateKeySpecifier)[];

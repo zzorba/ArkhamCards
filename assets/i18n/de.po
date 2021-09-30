@@ -4726,6 +4726,24 @@ msgstr ""
 msgid "Faction, Level, Type, Cost"
 msgstr ""
 
+msgid "You cannot have more than 5 level 0 Survivor cards"
+msgstr ""
+
+msgid "You cannot have more than 5 level 0 Guardian cards"
+msgstr ""
+
+msgid "You cannot have more than 5 level 0 Seeker cards"
+msgstr ""
+
+msgid "You cannot have more than 5 level 0 Rogue cards"
+msgstr ""
+
+msgid "Sign into Arkhan Cards on the Settings tab to enable"
+msgstr ""
+
+msgid "Asset: Hand x2. Arcane"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } wird <b>wahnsinnig</b>."

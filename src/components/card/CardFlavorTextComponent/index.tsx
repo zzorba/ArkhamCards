@@ -39,14 +39,14 @@ function BreakTagRule(): MarkdownRule<WithText, State> {
 }
 
 
-function ArkhamIconRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithIconName, State> {
+function ArkhamIconRule(usePingFang: boolean, style: StyleContextType, sizeScale: number): MarkdownRule<WithIconName, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]…]+)\\]')),
     order: 1,
     parse: (capture) => {
       return { name: capture[1] };
     },
-    render: ArkhamIconNode(style, sizeScale),
+    render: ArkhamIconNode(usePingFang, style, sizeScale),
   };
 }
 
@@ -218,7 +218,7 @@ export default function CardFlavorTextComponent(
       }}
       rules={{
         blockquoteTag: BlockquoteHtmlTagRule,
-        iconTag: ArkhamIconRule(context, sizeScale),
+        iconTag: ArkhamIconRule(usePingFang, context, sizeScale),
         bTag: BoldHtmlTagRule(usePingFang),
         uTag: UnderlineHtmlTagRule(),
         brTag: BreakTagRule(),
