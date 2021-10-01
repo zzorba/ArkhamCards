@@ -509,35 +509,6 @@ PODS:
     - React-Core
   - RNLocalize (2.1.4):
     - React-Core
-  - RNReanimated (2.2.1):
-    - DoubleConversion
-    - FBLazyVector
-    - FBReactNativeSpec
-    - glog
-    - RCT-Folly
-    - RCTRequired
-    - RCTTypeSafety
-    - React
-    - React-callinvoker
-    - React-Core
-    - React-Core/DevSupport
-    - React-Core/RCTWebSocket
-    - React-CoreModules
-    - React-cxxreact
-    - React-jsi
-    - React-jsiexecutor
-    - React-jsinspector
-    - React-RCTActionSheet
-    - React-RCTAnimation
-    - React-RCTBlob
-    - React-RCTImage
-    - React-RCTLinking
-    - React-RCTNetwork
-    - React-RCTSettings
-    - React-RCTText
-    - React-RCTVibration
-    - ReactCommon/turbomodule/core
-    - Yoga
   - RNSha256 (1.4.7):
     - React
   - RNShare (7.1.1):
@@ -645,7 +616,6 @@ DEPENDENCIES:
   - "RNGoogleSignin (from `../node_modules/@react-native-google-signin/google-signin`)"
   - RNKeychain (from `../node_modules/react-native-keychain`)
   - RNLocalize (from `../node_modules/react-native-localize`)
-  - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNSha256 (from `../node_modules/react-native-sha256`)
   - RNShare (from `../node_modules/react-native-share`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -812,8 +782,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-keychain"
   RNLocalize:
     :path: "../node_modules/react-native-localize"
-  RNReanimated:
-    :path: "../node_modules/react-native-reanimated"
   RNSha256:
     :path: "../node_modules/react-native-sha256"
   RNShare:
@@ -920,7 +888,6 @@ SPEC CHECKSUMS:
   RNGoogleSignin: e64616a4080cf7d83f4b292fad82d174587444e2
   RNKeychain: f75b8c8b2f17d3b2aa1f25b4a0ac5b83d947ff8f
   RNLocalize: 8bc7ebf44e0f18898cc62f0061561d07fabf6ff9
-  RNReanimated: d29057cf85e771be4f0180ba1d00a7185e423a7d
   RNSha256: 68357f69fa5f755a495e13ec42c8f0fc75316db0
   RNShare: a22398d8d02336133e28bf8b6e0b47b31abade41
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f

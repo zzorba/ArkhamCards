@@ -1,6 +1,5 @@
 import { ThunkAction } from 'redux-thunk';
 import { Dispatch } from 'redux';
-import Animated from 'react-native-reanimated';
 
 import { changeLocale } from '@app/i18n';
 import {
@@ -70,7 +69,7 @@ export function fetchCards(
   anonClient: ApolloClient<NormalizedCacheObject>,
   cardLang: string,
   choiceLang: string,
-  fetchProgress: Animated.SharedValue<number>
+  updateProgress: (progress: number, msg?: string) => void
 ): ThunkAction<void, AppState, unknown, CardSetSchemaVersionAction | CardFetchStartAction | CardFetchErrorAction | CardFetchSuccessAction> {
   return async(dispatch, getState) => {
     VERBOSE && console.log('Fetch Cards called');
@@ -96,10 +95,10 @@ export function fetchCards(
 
     try {
       const state = getState();
-      const cardCache = await syncCards(fetchProgress, db, anonClient, packs, cardLang, cardsCache(state, cardLang));
+      const cardCache = await syncCards(updateProgress, db, anonClient, packs, cardLang, cardsCache(state, cardLang));
       try {
         const tabooCache = await syncTaboos(
-          fetchProgress,
+          updateProgress,
           db,
           cardLang,
           taboosCache(getState(), cardLang)
