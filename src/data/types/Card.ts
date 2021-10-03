@@ -823,6 +823,7 @@ export default class Card {
       t`Asset: Ally. Arcane`,
       t`Asset: Body. Arcane`,
       t`Asset: Hand. Arcane`,
+      t`Asset: Hand x2. Arcane`,
       t`Asset: Body. Hand x2`,
       t`Asset: Other`,
       t`Event`,

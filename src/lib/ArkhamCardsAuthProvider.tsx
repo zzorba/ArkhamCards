@@ -1,5 +1,5 @@
 import React, { useMemo, useEffect, useState } from 'react';
-import { EventEmitter } from 'events';
+import { DeviceEventEmitter } from 'react-native';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 
@@ -12,7 +12,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-let eventListener: EventEmitter | null = null;
+let eventListenerInitialized: boolean = false;
 export let currentUser: FirebaseAuthTypes.User | undefined = undefined;
 
 let currentUserLoading: boolean = true;
@@ -49,11 +49,9 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
           loading: false,
         });
       };
-      if (eventListener === null) {
+      if (!eventListenerInitialized) {
         // We only want to listen to this once, hence the singleton pattern.
-        eventListener = new EventEmitter();
-        eventListener.setMaxListeners(100);
-        eventListener.addListener('onAuthStateChanged', authUserChanged);
+        const sub = DeviceEventEmitter.addListener('onAuthStateChanged', authUserChanged);
         const callback = async(user: FirebaseAuthTypes.User | null) => {
           currentUserLoading = false;
           currentUser = user || undefined;
@@ -61,7 +59,7 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
             const idTokenReuslt = await user.getIdTokenResult();
             const hasuraClaims = idTokenReuslt.claims['https://hasura.io/jwt/claims'];
             if (hasuraClaims) {
-              eventListener?.emit('onAuthStateChanged', currentUser);
+              DeviceEventEmitter.emit('onAuthStateChanged', currentUser);
             } else {
               // Check if refresh is required.
               const metadataRef = database().ref(`metadata/${user.uid}/refreshTime`);
@@ -73,22 +71,25 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
                 const idTokenReuslt = await user.getIdTokenResult(true);
                 if (idTokenReuslt.claims['https://hasura.io/jwt/claims']) {
                   // Force refresh to pick up the latest custom claims changes.
-                  eventListener?.emit('onAuthStateChanged', currentUser);
+                  DeviceEventEmitter.emit('onAuthStateChanged', currentUser);
                 } else {
                   setTimeout(() => callback(user), 500);
                 }
               });
             }
           } else {
-            eventListener?.emit('onAuthStateChanged', currentUser);
+            DeviceEventEmitter.emit('onAuthStateChanged', currentUser);
           }
         };
         auth().onAuthStateChanged(callback);
-      } else {
-        eventListener.addListener('onAuthStateChanged', authUserChanged);
+        eventListenerInitialized = true;
+        return () => {
+          sub.remove();
+        };
       }
+      const listener = DeviceEventEmitter.addListener('onAuthStateChanged', authUserChanged);
       return () => {
-        eventListener?.removeListener('onAuthStateChanged', authUserChanged);
+        listener.remove();
       };
     }
   }, []);

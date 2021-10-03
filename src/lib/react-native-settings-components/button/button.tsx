@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import {
   StyleSheet, Text, TextProps, TextStyle, TouchableOpacity, View, ViewProps, ViewStyle,
 } from 'react-native';
 
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 const style = StyleSheet.create({
   defaultContainerStyle: {
@@ -57,82 +57,61 @@ interface Props {
   onPress?: () => void;
 }
 
-class SettingsButton extends Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  static defaultProps = {
-    containerProps: {},
-    containerStyle: {},
-    disabledOverlayStyle: {},
-    titleProps: {},
-    titleStyle: {},
-    descriptionProps: {},
-    descriptionStyle: {},
-    description: null,
-    rightIconWrapperStyle: {},
-    rightIcon: null,
-    disabled: false,
-  };
-
-  render() {
-    const {
-      containerProps = {},
-      containerStyle = {},
-      titleProps = {},
-      titleStyle = {},
-      title,
-      disabled = false,
-      disabledOverlayStyle = {},
-      rightIconWrapperStyle = {},
-      rightIcon = null,
-      onPress,
-      descriptionProps = {},
-      descriptionStyle = {},
-      description = null,
-    } = this.props;
-    const { backgroundStyle, disabledStyle } = this.context;
-
-    return (
-      <TouchableOpacity
-        activeOpacity={0.8}
-        {...containerProps}
-        style={[style.defaultContainerStyle, backgroundStyle, containerStyle]}
-        onPress={onPress}
-      >
-        <View style={style.wrapper}>
-          <View style={style.titleWrapper}>
+function SettingsButton({
+  containerProps = {},
+  containerStyle = {},
+  disabledOverlayStyle = {},
+  title,
+  titleProps = {},
+  titleStyle = {},
+  descriptionProps = {},
+  descriptionStyle = {},
+  description,
+  rightIconWrapperStyle = {},
+  rightIcon = null,
+  disabled = false,
+  onPress,
+}: Props) {
+  const { backgroundStyle, disabledStyle } = useContext(StyleContext);
+  return (
+    <TouchableOpacity
+      activeOpacity={0.8}
+      {...containerProps}
+      style={[style.defaultContainerStyle, backgroundStyle, containerStyle]}
+      onPress={onPress}
+    >
+      <View style={style.wrapper}>
+        <View style={style.titleWrapper}>
+          <Text
+            {...titleProps}
+            style={[style.defaultTitleStyle, titleStyle]}
+          >
+            {title}
+          </Text>
+          {description ? (
             <Text
-              {...titleProps}
-              style={[style.defaultTitleStyle, titleStyle]}
+              {...descriptionProps}
+              style={[style.defaultDescriptionStyle, descriptionStyle]}
             >
-              {title}
+              {description}
             </Text>
-            {description ? (
-              <Text
-                {...descriptionProps}
-                style={[style.defaultDescriptionStyle, descriptionStyle]}
-              >
-                {description}
-              </Text>
-            ) : null}
-          </View>
-          {rightIcon ? (
-            <View
-              style={[style.defaultRightIconWrapperStyle, rightIconWrapperStyle]}
-            >
-              { rightIcon }
-            </View>
-          ) : null}
-          {(disabled) ? (
-            <View
-              style={[style.defaultDisabledOverlayStyle, disabledStyle, (disabledOverlayStyle) ? disabledOverlayStyle : null]}
-            />
           ) : null}
         </View>
-      </TouchableOpacity>
-    );
-  }
+        {rightIcon ? (
+          <View
+            style={[style.defaultRightIconWrapperStyle, rightIconWrapperStyle]}
+          >
+            { rightIcon }
+          </View>
+        ) : null}
+        {(disabled) ? (
+          <View
+            style={[style.defaultDisabledOverlayStyle, disabledStyle, (disabledOverlayStyle) ? disabledOverlayStyle : null]}
+          />
+        ) : null}
+      </View>
+    </TouchableOpacity>
+  );
 }
 
 export default SettingsButton;

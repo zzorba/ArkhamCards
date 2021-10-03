@@ -3,14 +3,12 @@ import { find, map } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { fetchCards, setLanguageChoice } from '@components/card/actions';
-import DatabaseContext from '@data/sqlite/DatabaseContext';
+import { requestFetchCards, setLanguageChoice } from '@components/card/actions';
 import { AppState } from '@reducers';
 import { getSystemLanguage, localizedName, ALL_LANGUAGES } from '@lib/i18n';
 import { ShowAlert, usePickerDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import ApolloClientContext from '@data/apollo/ApolloClientContext';
 
 function languages() {
   const systemLang = getSystemLanguage();
@@ -107,13 +105,11 @@ function dialogStrings(lang: string): DialogStrings {
 }
 
 export default function LanguagePicker({ first, last, showAlert }: { first?: boolean; last?: boolean; showAlert: ShowAlert }) {
-  const { db } = useContext(DatabaseContext);
   const { lang } = useContext(LanguageContext);
   const dispatch = useDispatch();
   const [tempLang, setTempLang] = useState<string | undefined>();
   const cardsLoading = useSelector((state: AppState) => state.cards.loading);
   const useSystemLang = useSelector((state: AppState) => state.settings.lang === 'system');
-  const { anonClient } = useContext(ApolloClientContext);
 
   useEffect(() => {
     if (!cardsLoading && tempLang !== undefined) {
@@ -147,7 +143,7 @@ export default function LanguagePicker({ first, last, showAlert }: { first?: boo
               text: confirmButton,
               onPress: () => {
                 setTempLang(newLang);
-                dispatch(fetchCards(db, anonClient, newCardLang, newLang));
+                dispatch(requestFetchCards(newCardLang, newLang));
               },
             },
           ]
@@ -156,7 +152,7 @@ export default function LanguagePicker({ first, last, showAlert }: { first?: boo
     } else {
       dispatch(setLanguageChoice(newLang));
     }
-  }, [lang, db, anonClient, dispatch, setTempLang, showAlert]);
+  }, [lang, dispatch, setTempLang, showAlert]);
 
   const selectedValue = useMemo(() => {
     if (tempLang !== undefined) {

@@ -243,17 +243,17 @@ function CardSearchResult(props: Props) {
           ]} numberOfLines={1} ellipsizeMode="tail">
             { card.renderName }
           </Text>
-          { tabooBlock }
-          { !!card.advanced && (
-            <View style={styles.tabooBlock}>
-              <AppIcon name="parallel" size={18 * fontScale} color={colors.darkText} />
-            </View>
-          ) }
         </View>
         { true && (
           <View style={[styles.row, { backgroundColor: 'transparent' }]}>
             { dualFactionIcons }
             { skillIcons }
+            { tabooBlock }
+            { !!card.advanced && (
+              <View style={styles.tabooBlock}>
+                <AppIcon name="parallel" size={18 * fontScale} color={colors.darkText} />
+              </View>
+            ) }
             { !!card.renderSubname && (
               <View style={[styles.row, styles.subname, space.marginRightS, space.paddingTopXs]}>
                 <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={1} ellipsizeMode="clip">
@@ -398,7 +398,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   tabooBlock: {
-    marginLeft: s,
+    marginRight: s,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',

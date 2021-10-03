@@ -17,10 +17,9 @@ import FontSizePicker from './FontSizePicker';
 import SocialBlock from './SocialBlock';
 import LanguagePicker from './LanguagePicker';
 import SettingsTabooPicker from './SettingsTabooPicker';
-import { fetchCards } from '@components/card/actions';
+import { requestFetchCards } from '@components/card/actions';
 import { setSingleCardView, setAlphabetizeEncounterSets, setColorblind, setJustifyContent, setSortQuotes } from './actions';
 import { prefetch } from '@lib/auth';
-import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { AppState, getLangChoice, getPacksInCollection, getPackSpoilers, getAllPacks } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { NavigationProps } from '@components/nav/types';
@@ -35,7 +34,6 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import DissonantVoicesLoginButton from './AccountSection/auth/DissonantVoicesLoginButton';
 import { useAlertDialog } from '@components/deck/dialogs';
 import { CURRENT_REDUX_VERSION } from '@reducers/settings';
-import ApolloClientContext from '@data/apollo/ApolloClientContext';
 
 function contactPressed() {
   Linking.openURL('mailto:arkhamcards@gmail.com');
@@ -43,7 +41,6 @@ function contactPressed() {
 
 const SHOW_JUSTIFY = false;
 export default function SettingsView({ componentId }: NavigationProps) {
-  const { db } = useContext(DatabaseContext);
   const { backgroundStyle, colors } = useContext(StyleContext);
   const dispatch = useDispatch();
   const reduxMigrationCurrent = useSelector((state: AppState) => state.settings.version === CURRENT_REDUX_VERSION);
@@ -118,10 +115,9 @@ export default function SettingsView({ componentId }: NavigationProps) {
     navButtonPressed('Settings.Backup', t`Backup`);
   }, [navButtonPressed]);
 
-  const { anonClient } = useContext(ApolloClientContext);
   const doSyncCards = useCallback(() => {
-    dispatch(fetchCards(db, anonClient, lang, langChoice));
-  }, [dispatch, db, anonClient, lang, langChoice]);
+    dispatch(requestFetchCards(lang, langChoice));
+  }, [dispatch, lang, langChoice]);
 
   const syncCardsText = useMemo(() => {
     if (cardsLoading) {

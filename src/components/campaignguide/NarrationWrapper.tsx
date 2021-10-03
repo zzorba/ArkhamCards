@@ -1,4 +1,4 @@
-import { isEqual } from 'lodash';
+import { isEqual, findIndex, filter, map, forEach } from 'lodash';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import {
   ActivityIndicator,
@@ -8,21 +8,26 @@ import {
   TouchableHighlight,
   View,
   ViewStyle,
+  EmitterSubscription,
 } from 'react-native';
 import { Divider, Icon } from 'react-native-elements';
-import TrackPlayer, { EmitterSubscription, usePlaybackState, useTrackPlayerEvents, useTrackPlayerProgress } from 'react-native-track-player';
+import { Event, Track, State, usePlaybackState, useTrackPlayerEvents, useProgress } from 'react-native-track-player';
 
 import EncounterIcon from '@icons/EncounterIcon';
 import { getAccessToken } from '@lib/dissonantVoices';
 import { StyleContext } from '@styles/StyleContext';
 import space, { m } from '@styles/space';
-import { narrationPlayer, useAudioAccess, useCurrentTrackId, useTrackDetails, useTrackPlayerQueue } from '@lib/audio/narrationPlayer';
+import { narrationPlayer, useAudioAccess, useCurrentTrack, useTrackDetails, useTrackPlayerQueue } from '@lib/audio/narrationPlayer';
 import { usePressCallback } from '@components/core/hooks';
 
-export async function playNarrationTrack(trackId: string) {
+export async function playNarrationTrack(narrationId: string) {
   const trackPlayer = await narrationPlayer();
-  await trackPlayer.skip(trackId);
-  await trackPlayer.play();
+  const tracks = await trackPlayer.getQueue();
+  const trackIndex = findIndex(tracks, t => t.narrationId === narrationId);
+  if (trackIndex !== -1) {
+    await trackPlayer.skip(trackIndex);
+    await trackPlayer.play();
+  }
 }
 
 export async function setNarrationQueue(queue: NarrationTrack[]) {
@@ -34,11 +39,11 @@ export async function setNarrationQueue(queue: NarrationTrack[]) {
     return;
   }
 
-  const oldTrackIds = oldTracks.map((track) => track.id);
-  const newTracks = queue.map((track) => {
+  const oldTrackIds: string[] = map(oldTracks, (track) => track.narrationId);
+  const newTracks: Track[] = map(queue, (track): Track => {
     if (track.lang) {
       return {
-        id: track.id,
+        narrationId: track.id,
         title: track.name,
         artist: 'Arkham Cards',
         album: track.scenarioName,
@@ -47,7 +52,7 @@ export async function setNarrationQueue(queue: NarrationTrack[]) {
       };
     }
     return {
-      id: track.id,
+      narrationId: track.id,
       title: track.name,
       artist: 'Dissonant Voices',
       album: track.scenarioName,
@@ -58,54 +63,50 @@ export async function setNarrationQueue(queue: NarrationTrack[]) {
       },
     };
   });
-  const newTrackIds = newTracks.map((track) => track.id);
+  const newTrackIds: string[] = map(newTracks, (track) => track.narrationId);
 
   // if current track is in the new queue
-  const currentTrackId = await trackPlayer.getCurrentTrack();
-  const currentTrackOld = oldTracks.find(track => track.id === currentTrackId);
-  const currentTrackNewIndex = newTrackIds.indexOf(currentTrackId);
+  const currentTrackIndex = await trackPlayer.getCurrentTrack();
+  const currentTrackOld = currentTrackIndex > -1 ? oldTracks[currentTrackIndex] : undefined;
+  const currentTrackNewIndex = currentTrackOld ? newTrackIds.indexOf(currentTrackOld.narrationId) : -1;
   if (
     currentTrackNewIndex !== -1 &&
     isEqual(currentTrackOld, newTracks[currentTrackNewIndex])
   ) {
-    const diffTrackIds = oldTrackIds.filter(trackId => !newTrackIds.includes(trackId));
-    const commonTracks = oldTracks.filter(track => !diffTrackIds.includes(track.id));
-    const commonTrackIds = commonTracks.map(track => track.id);
-    const currentTrackCommonIndex = commonTrackIds.indexOf(currentTrackId);
+    const diffTrackIds = filter(oldTrackIds, trackId => !newTrackIds.includes(trackId));
+    const commonTracks = filter(oldTracks, track => !diffTrackIds.includes(track.narrationId));
+    const commonTrackIds: Set<string> = new Set(map(commonTracks, track => track.narrationId));
 
-    // find the number of tracks that are the same before our current track
-    const tracksBefore = [...newTracks.slice(0, currentTrackNewIndex + 1).reverse(), null].findIndex((track, index) => {
-      return !isEqual(track, commonTracks[currentTrackCommonIndex - index]);
+    const removeIndexes: number[] = [];
+    forEach(oldTracks, (oldTrack, idx) => {
+      if (!commonTrackIds.has(oldTrack.narrationId)) {
+        removeIndexes.push(idx);
+      }
     });
-
-    // find the number of tracks that are the same after our current track
-    const tracksAfter = [...newTracks.slice(currentTrackNewIndex), null].findIndex((track, index) => {
-      return !isEqual(track, commonTracks[currentTrackCommonIndex + index]);
-    });
-
-    // Remove tracks that don't match our new queue
-    const removeTrackIds = [
-      ...diffTrackIds,
-      ...commonTrackIds.filter(
-        (_, index) =>
-          index <= currentTrackCommonIndex - tracksBefore ||
-          index >= currentTrackCommonIndex + tracksAfter
-      ),
-    ];
-    if (removeTrackIds.length > 0) {
-      await trackPlayer.remove(removeTrackIds);
+    if (removeIndexes.length) {
+      await trackPlayer.remove(removeIndexes);
     }
 
-    // add all the new tracks before the current track
-    const addTracksBefore = newTracks.slice(0, currentTrackNewIndex - tracksBefore + 1);
-    if (addTracksBefore.length > 0) {
-      await trackPlayer.add(addTracksBefore, newTrackIds[currentTrackNewIndex - tracksBefore]);
-    }
-
-    // add all the new tracks after the current track
-    const addTracksAfter = newTracks.slice(currentTrackNewIndex + tracksAfter);
-    if (addTracksAfter.length > 0) {
-      await trackPlayer.add(addTracksAfter);
+    let i = 0;
+    while (i < newTracks.length) {
+      const tracksToInsert: Track[] = [];
+      let j = i;
+      while (j < newTracks.length && !commonTrackIds.has(newTracks[j].narrationId)) {
+        tracksToInsert.push(newTracks[j]);
+        j++;
+      }
+      if (tracksToInsert.length) {
+        if (j >= newTracks.length) {
+          // We fell off without finding an old 'common' track, so just append at the end..
+          await trackPlayer.add(tracksToInsert);
+        } else {
+          // This means we found a common track to stop at, which would put it currently at position 'i' in the queue.
+          await trackPlayer.add(tracksToInsert, j)
+        }
+        i = j;
+      } else {
+        i++;
+      }
     }
   } else {
     // otherwise reset and add all the new tracks
@@ -127,15 +128,9 @@ interface PlayerProps {
   style?: ViewStyle;
 }
 
-interface PlayerState {
-  track: TrackPlayer.Track | null;
-  state: TrackPlayer.State | null;
-}
-
-
 function ProgressView() {
   const { colors } = useContext(StyleContext);
-  const { position, duration } = useTrackPlayerProgress(1000);
+  const { position, duration } = useProgress(1000);
   return (
     <View
       style={{
@@ -184,10 +179,10 @@ async function nextTrack() {
 
 function PlayerView({ style }: PlayerProps) {
   const { colors } = useContext(StyleContext);
-  const trackId = useCurrentTrackId();
-  const track = useTrackDetails(trackId);
+  const trackIndex = useCurrentTrack();
+  const track = useTrackDetails(trackIndex);
   const queue = useTrackPlayerQueue();
-  const state = usePlaybackState();
+  const state: State = usePlaybackState();
   const onReplayPress = usePressCallback(replay, 250);
 
   const onPlay = useCallback(async() => {
@@ -195,7 +190,8 @@ function PlayerView({ style }: PlayerProps) {
       return;
     }
     const trackPlayer = await narrationPlayer();
-    if (state === TrackPlayer.STATE_PLAYING) {
+    // tslint:disable-next-line: strict-comparisons
+    if (state === State.Playing) {
       await trackPlayer.pause();
     } else {
       await trackPlayer.play();
@@ -204,13 +200,13 @@ function PlayerView({ style }: PlayerProps) {
   const onPlayPress = usePressCallback(onPlay, 250);
   const onPreviousPress = usePressCallback(previousTrack, 250);
   const onNextPress = usePressCallback(nextTrack, 250);
-  useTrackPlayerEvents(['playback-error'], (event: any) => {
-    if (event.code === 'playback-source') {
-      if (event.message === 'Response code: 403') {
+  useTrackPlayerEvents([Event.PlaybackError], ({ message, code }) => {
+    if (code === 'playback-source') {
+      if (message === 'Response code: 403') {
         // login error
-      } else if (event.message === 'Response code: 404') {
+      } else if (message === 'Response code: 404') {
         // file doesn't exist
-      } else if (event.message === 'Response code: 500') {
+      } else if (message === 'Response code: 500') {
         // server error
       }
     }
@@ -239,13 +235,14 @@ function PlayerView({ style }: PlayerProps) {
             <ActivityIndicator
               size={40}
               color={colors.D30}
-              animating={state === TrackPlayer.STATE_BUFFERING}
+              // tslint:disable-next-line: strict-comparisons
+              animating={state === State.Buffering}
             />
           </View>
         </View>
         <PreviousButton onPress={onPreviousPress} />
         <ReplayButton onPress={onReplayPress} />
-        { state === TrackPlayer.STATE_PLAYING ? (
+        { state === State.Playing ? (
           <PauseButton onPress={onPlayPress} />
         ) : (
           <PlayButton onPress={onPlayPress} />
@@ -258,7 +255,7 @@ function PlayerView({ style }: PlayerProps) {
 }
 
 interface ArtworkProps {
-  track: TrackPlayer.Track | null;
+  track: Track | null;
 }
 
 function ArtworkView({ track }: ArtworkProps) {
@@ -276,11 +273,13 @@ function ArtworkView({ track }: ArtworkProps) {
             bottom: 0,
           }}
         >
-          <EncounterIcon
-            encounter_code={track?.artwork ?? ''}
-            size={48}
-            color={colors.D30}
-          />
+          { !!(typeof track?.artwork === 'string') && (
+            <EncounterIcon
+              encounter_code={track?.artwork ?? ''}
+              size={48}
+              color={colors.D30}
+            />
+          ) }
         </View>
       )}
     </View>
@@ -289,7 +288,7 @@ function ArtworkView({ track }: ArtworkProps) {
 
 interface TitleProps {
   style?: ViewStyle;
-  track: TrackPlayer.Track | null;
+  track: Track | null;
 }
 
 function TitleView({ style, track }: TitleProps) {
@@ -342,14 +341,14 @@ function ReplayButton({ onPress }: ButtonProps) {
 }
 
 interface TrackProps {
-  track: TrackPlayer.Track;
+  track: Track;
   isCurrentTrack: boolean;
 }
 
 function TrackView({ track, isCurrentTrack }: TrackProps) {
   const playNarration = useCallback(() => {
-    playNarrationTrack(track.id);
-  }, [track.id]);
+    playNarrationTrack(track.narrationId);
+  }, [track.narrationId]);
   return (
     <TouchableHighlight onPress={playNarration}>
       <>
@@ -375,26 +374,27 @@ function TrackView({ track, isCurrentTrack }: TrackProps) {
 
 interface PlaylistProps {
   style?: ViewStyle;
-  queue: TrackPlayer.Track[];
+  queue: Track[];
 }
 
 function PlaylistView({ style, queue }: PlaylistProps) {
-  const [currentTrackId, setCurrenTrackId] = useState<string | null>(null);
+  const [currentTrackIndex, setCurrenTrackIndex] = useState<number | null>(null);
+  const currentTrack = useTrackDetails(currentTrackIndex);
   useEffect(() => {
     let canceled = false;
     let listener: EmitterSubscription | undefined = undefined;
     narrationPlayer().then(trackPlayer => {
       listener = trackPlayer.addEventListener(
-        'playback-track-changed',
+        Event.PlaybackTrackChanged,
         (data) => {
           if (!canceled) {
-            setCurrenTrackId(data.nextTrack);
+            setCurrenTrackIndex(data.nextTrack);
           }
         }
       );
       trackPlayer.getCurrentTrack().then(currentTrackId => {
         if (!canceled) {
-          setCurrenTrackId(currentTrackId);
+          setCurrenTrackIndex(currentTrackId);
         }
       });
     });
@@ -409,9 +409,9 @@ function PlaylistView({ style, queue }: PlaylistProps) {
     <View style={style}>
       { queue.map((track) => (
         <TrackView
-          key={track.id}
+          key={track.narrationId}
           track={track}
-          isCurrentTrack={currentTrackId === track.id}
+          isCurrentTrack={currentTrack ? currentTrack.narrationId === track.narrationId : false}
         />
       ))}
       <Divider />

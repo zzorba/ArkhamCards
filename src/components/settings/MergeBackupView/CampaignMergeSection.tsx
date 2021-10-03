@@ -18,9 +18,6 @@ interface Props {
   onValueChange: (campaign: Campaign, value: boolean) => void;
 }
 
-interface State {
-  open: boolean;
-}
 export default function CampaignMergeSection({ title, campaigns, values, inverted, onValueChange }: Props) {
   const { colors, borderStyle, typography } = useContext(StyleContext);
   const [open, toggleOpen] = useFlag(false);

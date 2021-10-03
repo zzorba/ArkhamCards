@@ -18,11 +18,17 @@ export default function useCardsFromQuery({ query, sort, tabooSetOverride }: Pro
   const { db } = useContext(DatabaseContext);
   const [cards, setCards] = useState<Card[] | undefined>(query ? [] : undefined);
   useEffect(() => {
+    let canceled = false;
     if (query) {
       // setCards(undefined);
       db.getCards(query, tabooSetId, sort).then(cards => {
-        setCards(filter(cards, card => !!card));
+        if (!canceled) {
+          setCards(filter(cards, card => !!card));
+        }
       });
+      return () => {
+        canceled = true;
+      };
     }
   }, [db, query, tabooSetId, sort]);
   const resultCards = useMemo(() => cards || [], [cards]);

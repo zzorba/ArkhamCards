@@ -2178,7 +2178,7 @@ export type users_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type TypedTypePolicies = TypePolicies & {
+export type StrictTypedTypePolicies = {
 	base_decks?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | base_decksKeySpecifier | (() => undefined | base_decksKeySpecifier),
 		fields?: base_decksFieldPolicy,
@@ -3216,3 +3216,4 @@ export type TypedTypePolicies = TypePolicies & {
 		fields?: users_mutation_responseFieldPolicy,
 	}
 };
+export type TypedTypePolicies = StrictTypedTypePolicies & TypePolicies;
