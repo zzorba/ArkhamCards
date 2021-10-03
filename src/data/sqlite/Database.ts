@@ -33,7 +33,8 @@ export default class Database {
     this.connectionP = createConnection({
       type: 'react-native',
       database: 'arkham4',
-      location: Platform.OS === 'ios' ? 'nosync' : '../databases',
+      location: '.',
+      // location: Platform.OS === 'ios' ? '../LocalDatabase' : '../databases',
       logging: [
         'error',
         // 'query',
