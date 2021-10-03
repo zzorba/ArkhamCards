@@ -1,4 +1,4 @@
-import { ApolloLink } from 'apollo-link';
+import { ApolloLink } from '@apollo/client';
 import { stringify } from 'flatted';
 import { Action, Dispatch } from 'redux';
 import uuid from 'react-native-uuid';

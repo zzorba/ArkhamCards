@@ -636,10 +636,11 @@ export interface CardFetchSuccessAction {
   choiceLang: string;
 }
 
-export const CARD_FETCH_UPDATE_PROGRESS = 'CARD_FETCH_UPDATE_PROGRESS';
-export interface CardFetchUpdateProgressAction {
-  type: typeof CARD_FETCH_UPDATE_PROGRESS;
-  progress: number;
+export const CARD_REQUEST_FETCH = 'CARD_REQUEST_FETCH';
+export interface CardRequestFetchAction {
+  type: typeof CARD_REQUEST_FETCH;
+  cardLang: string;
+  choiceLang: string;
 }
 
 export const CARD_FETCH_ERROR = 'CARD_FETCH_ERROR';

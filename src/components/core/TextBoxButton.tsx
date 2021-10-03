@@ -23,10 +23,6 @@ interface Props extends TextInputProps {
   ellipsizeMode?: string;
 }
 
-interface State {
-  height: number;
-}
-
 export default function TextBoxButton({ value, multiline, crossedOut, placeholder, textStyle = {}, ...otherProps }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const [height, setHeight] = useState(24);
