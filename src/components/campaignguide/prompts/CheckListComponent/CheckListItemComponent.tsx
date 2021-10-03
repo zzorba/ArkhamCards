@@ -6,6 +6,9 @@ import StyleContext from '@styles/StyleContext';
 import Card from '@data/types/Card';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
+import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
+import { find } from 'lodash';
+import { BODY_OF_A_YITHIAN } from '@app_constants';
 
 interface Props {
   code: string;
@@ -38,9 +41,10 @@ function InvesigatorCheckListItemComponent({
   editable: boolean;
 }) {
   const { width } = useContext(StyleContext);
+  const { campaignLog } = useContext(ScenarioStepContext);
   const onPress = useCallback(() => toggle(!selected), [selected, toggle]);
   const onSecondaryPress = useCallback(() => onSecondaryChoice?.(code), [onSecondaryChoice, code]);
-
+  const yithian = useMemo(() => !!find(campaignLog.traumaAndCardData(code)?.storyAssets, x => x === BODY_OF_A_YITHIAN), [code, campaignLog]);
   const secondaryButton = useMemo(() => {
     if (!selected || !investigatorButton || !onSecondaryChoice) {
       return null;
@@ -71,11 +75,12 @@ function InvesigatorCheckListItemComponent({
         width={width - s * (editable ? 4 : 2)}
         leftContent={onSecondaryChoice ? switchContent : undefined}
         investigator={investigator}
+        yithian={yithian}
       >
         { onSecondaryChoice ? secondaryButton : switchContent }
       </CompactInvestigatorRow>
     );
-  }, [secondaryButton, width, onSecondaryChoice, editable, toggle, selected, investigator]);
+  }, [secondaryButton, width, onSecondaryChoice, editable, toggle, yithian, selected, investigator]);
   return (
     <View style={space.paddingBottomXs}>
       { editable ? (

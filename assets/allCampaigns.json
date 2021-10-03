@@ -2812,7 +2812,7 @@
             "steps": ["spawn_one_remove_two_brood"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": ["spawn_zero_remove_three_brood"]
         }
       }
@@ -3280,7 +3280,7 @@
             "steps": ["add_5_doom"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": ["add_0_doom"]
         }
       }
@@ -4256,7 +4256,7 @@
             "steps": ["place_three_doom"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": []
         }
       }
@@ -5163,7 +5163,7 @@
             "steps": ["dream_9"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": ["dream_10", "dream_10_choice"]
         }
       }
@@ -6987,7 +6987,7 @@
             "steps": ["act_2_v1"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": ["compare_conviction_and_doubt"]
         }
       }
@@ -7238,7 +7238,7 @@
             "steps": ["add_1_doom"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": ["add_no_doom"]
         }
       }
@@ -13926,7 +13926,7 @@
             ]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": [
             "spawn_zero_remove_three_brood"
           ]
@@ -14426,7 +14426,7 @@
             ]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": [
             "add_0_doom"
           ]
@@ -15512,7 +15512,7 @@
             ]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": []
         }
       }
@@ -18269,7 +18269,7 @@
             ]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": [
             "dream_10",
             "dream_10_choice"
@@ -20486,7 +20486,7 @@
             ]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": [
             "compare_conviction_and_doubt"
           ]
@@ -20755,7 +20755,7 @@
             ]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": [
             "add_no_doom"
           ]
@@ -27833,6 +27833,7 @@
     "check_valentino_clues",
     "check_penny_clues",
     "remove_pieces_of_evidence",
+    "list_pieces_of_evidence",
     "check_campaign_reading_reminder",
     "encounter_deck",
     "act_b_note",
@@ -28001,6 +28002,26 @@
     {
       "id": "remove_pieces_of_evidence",
       "text": "As evenly as possible, remove a total number of clues from the above locations equal to the number of <i>pieces of evidence that were left behind</i> in your Campaign Log."
+    },
+    {
+      "id": "list_pieces_of_evidence",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_count",
+        "section": "campaign_notes",
+        "id": "pieces_of_evidence",
+        "options": [],
+        "default_option": {
+          "effects": [
+            {
+              "type": "check_campaign_log_count",
+              "bullet_type": "small",
+              "text": "#X# pieces of evidence were left behind."
+            }
+          ]
+        }
+      }
     },
     {
       "id": "encounter_deck",
@@ -30940,7 +30961,7 @@
             ]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": [
             "no_mystic",
             "read_gibberish"
@@ -33202,7 +33223,7 @@
             ]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": [
             "add_4_doom"
           ]
@@ -33726,7 +33747,7 @@
             ]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "effects": [
             {
               "type": "campaign_log",
@@ -35721,7 +35742,7 @@
             ]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": [
             "no_silver_twilight",
             "progress_2"
@@ -36355,7 +36376,7 @@
             ]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": [
             "six_or_more_mementos"
           ]
@@ -37472,6 +37493,12 @@
                   "out_of_gas",
                   "no_mulligan"
                 ]
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "hote_no_mulligan",
+                "text": "dummy"
               }
             ]
           }
@@ -37583,6 +37610,14 @@
                   "low_on_rations",
                   "fewer_resources"
                 ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "hidden",
+                "id": "hote_fewer_resources",
+                "cards": "$input_value",
+                "masculine_text": "#name# starts with 3 fewer resources.",
+                "feminine_text": "#name# starts with 3 fewer resources."
               }
             ]
           }
@@ -37716,6 +37751,14 @@
                   "patterns_in_the_stone",
                   "start_with_clue"
                 ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "hidden",
+                "id": "hote_start_with_clue",
+                "cards": "$input_value",
+                "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+                "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
               }
             ]
           },
@@ -38195,6 +38238,14 @@
                   "low_on_rations",
                   "fewer_resources"
                 ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "hidden",
+                "id": "eztli_fewer_resources",
+                "cards": "$input_value",
+                "masculine_text": "#name# starts with 3 fewer resources.",
+                "feminine_text": "#name# starts with 3 fewer resources."
               }
             ]
           }
@@ -38719,6 +38770,154 @@
       }
     },
     {
+      "id": "check_no_provisions",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "hote_fewer_resources",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "jungle_beckons_reminder",
+              "list_no_provisions"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "jungle_beckons_reminder",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "jungle_beckons_reminder",
+      "text": "Based on the events of <b>Interlude III: The Jungle Beckons:</b>"
+    },
+    {
+      "id": "list_no_provisions",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "hote_fewer_resources",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "check_campaign_log_cards",
+                "card_type": "player",
+                "masculine_text": "#name# starts with 3 fewer resources.",
+                "feminine_text": "#name# starts with 3 fewer resources.",
+                "bullet_type": "small"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_start_with_clue",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "hote_start_with_clue",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "maybe_jungle_beckons_reminder",
+              "list_start_with_clue"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_no_mulligan",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "hote_no_mulligan",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "maybe_jungle_beckons_reminder",
+              "no_mulligan_reminder"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "no_mulligan_reminder",
+      "bullet_type": "small",
+      "text": "Investigators cannot take a mulligan."
+    },
+    {
+      "id": "maybe_jungle_beckons_reminder",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "jungle_beckons_reminder",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": [
+              "jungle_beckons_reminder"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "jungle_beckons_reminder",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "list_start_with_clue",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "hote_start_with_clue",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "check_campaign_log_cards",
+                "card_type": "player",
+                "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+                "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+                "bullet_type": "small"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "check_paths_known",
       "text": "If 6 paths are known to you, skip this scenario and proceed immediately to <b>Resolution 1</b>.",
       "type": "branch",
@@ -38753,6 +38952,9 @@
               "create_exploration_deck",
               "check_mapped_way_forward",
               "set_aside_poisoned",
+              "check_no_provisions",
+              "check_start_with_clue",
+              "check_no_mulligan",
               "encounter_deck",
               "additional_return_rules",
               "$play_scenario"
@@ -38897,7 +39099,7 @@
             ]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": []
         }
       }
@@ -39079,6 +39281,7 @@
     "gather_encounter_sets",
     "setup_locations",
     "gather_jungle_watches",
+    "list_jungle_watches",
     "set_aside_cards",
     "create_exploration_deck",
     "set_aside_poisoned",
@@ -39107,6 +39310,29 @@
     {
       "id": "gather_jungle_watches",
       "text": "Search the collection for each card listed in parentheses next to “the jungle watches” in your Campaign Log. Add those cards to the victory display."
+    },
+    {
+      "id": "list_jungle_watches",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "campaign_notes",
+        "id": "jungle_watches",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "check_campaign_log_cards",
+                "card_type": "encounter",
+                "text": "#name# (#X#)",
+                "bullet_type": "small"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "set_aside_cards",
@@ -39196,7 +39422,7 @@
       "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance in the victory display:",
         "delta": true,
         "effects": [
           {
@@ -40779,7 +41005,7 @@
       "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance in the victory display:",
         "delta": true,
         "effects": [
           {
@@ -41247,7 +41473,7 @@
             ]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": []
         }
       }
@@ -41489,6 +41715,8 @@
     "setup_depth",
     "set_aside_relic",
     "set_aside_poison",
+    "check_no_provisions",
+    "check_no_mulligan",
     "encounter_deck",
     "depth_level_rule",
     "pursuit_rule",
@@ -42121,7 +42349,7 @@
             ]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": [
             "fury_21"
           ]
@@ -42355,7 +42583,7 @@
             ]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": []
         }
       }
@@ -42540,7 +42768,7 @@
       "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance in the victory display:",
         "delta": true,
         "effects": [
           {
@@ -42681,6 +42909,111 @@
         "min": 1,
         "max": 1,
         "choices": []
+      }
+    },
+    {
+      "id": "check_no_provisions",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "doy_fewer_resources",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "thc_reminder",
+              "list_no_provisions"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "thc_reminder",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "thc_reminder",
+      "text": "Based on the events of <b>Interlude IV: Those Held Captive</b>:"
+    },
+    {
+      "id": "list_no_provisions",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "doy_fewer_resources",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "check_campaign_log_cards",
+                "card_type": "player",
+                "masculine_text": "#name# starts with 3 fewer resources.",
+                "feminine_text": "#name# starts with 3 fewer resources.",
+                "bullet_type": "small"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_no_mulligan",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "doy_no_mulligan",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "maybe_thc_reminder",
+              "no_mulligan_reminder"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "no_mulligan_reminder",
+      "bullet_type": "small",
+      "text": "Investigators cannot take a mulligan."
+    },
+    {
+      "id": "maybe_thc_reminder",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "thc_reminder",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": [
+              "thc_reminder"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "thc_reminder",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -42861,6 +43194,7 @@
     "set_aside_cards",
     "set_aside_poisoned",
     "encounter_deck",
+    "check_no_provisions",
     "additional_return_rules",
     "$play_scenario"
   ],
@@ -43160,7 +43494,7 @@
       "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance in the victory display:",
         "delta": true,
         "effects": [
           {
@@ -43177,7 +43511,7 @@
       "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance in the victory display:",
         "confirm_text": "Record an additional ten tally marks, as you have angered Yig with your foolish actions.",
         "delta": true,
         "effects": [
@@ -43262,6 +43596,53 @@
           }
         ]
       }
+    },
+    {
+      "id": "check_no_provisions",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "eztli_fewer_resources",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "restless_nights_reminder",
+              "list_no_provisions"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "list_no_provisions",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "eztli_fewer_resources",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "check_campaign_log_cards",
+                "card_type": "player",
+                "masculine_text": "#name# starts with 3 fewer resources.",
+                "feminine_text": "#name# starts with 3 fewer resources.",
+                "bullet_type": "small"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "restless_nights_reminder",
+      "text": "Based on the events of <b>Interlude I: Restless Nights:</b>"
     },
     {
       "id": "gather_encounter_sets",
@@ -43693,7 +44074,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance in the victory display:",
         "delta": true,
         "effects": [
           {
@@ -45597,7 +45978,7 @@
       "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance in the victory display:",
         "delta": true,
         "effects": [
           {
@@ -46727,6 +47108,7 @@
         "investigator": "all",
         "id": "map",
         "name": "Map",
+        "show_result": true,
         "options": [
           {
             "boolCondition": true,
@@ -47229,6 +47611,12 @@
                   "the_way_is_shut",
                   "no_mulligan"
                 ]
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "doy_no_mulligan",
+                "text": "dummy"
               }
             ]
           }
@@ -47269,7 +47657,7 @@
     {
       "id": "no_mulligan",
       "bullet_type": "small",
-      "text": "When drawing opening hands during the next scenario, investigators cannot take a mulligan.."
+      "text": "When drawing opening hands during the next scenario, investigators cannot take a mulligan."
     },
     {
       "id": "eat_provisions",
@@ -47294,6 +47682,14 @@
                   "low_on_rations",
                   "fewer_resources"
                 ]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "hidden",
+                "id": "doy_fewer_resources",
+                "cards": "$input_value",
+                "masculine_text": "#name# starts with 3 fewer resources.",
+                "feminine_text": "#name# starts with 3 fewer resources."
               }
             ]
           }
@@ -56188,6 +56584,7 @@
     "check_valentino_clues",
     "check_penny_clues",
     "remove_pieces_of_evidence",
+    "list_pieces_of_evidence",
     "encounter_deck",
     "replacing_locations",
     "$play_scenario"
@@ -56351,6 +56748,26 @@
     {
       "id": "remove_pieces_of_evidence",
       "text": "As evenly as possible, remove a total number of clues from the above locations equal to the number of <i>pieces of evidence that were left behind</i> in your Campaign Log."
+    },
+    {
+      "id": "list_pieces_of_evidence",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_count",
+        "section": "campaign_notes",
+        "id": "pieces_of_evidence",
+        "options": [],
+        "default_option": {
+          "effects": [
+            {
+              "type": "check_campaign_log_count",
+              "bullet_type": "small",
+              "text": "#X# pieces of evidence were left behind."
+            }
+          ]
+        }
+      }
     },
     {
       "id": "encounter_deck",
@@ -61728,7 +62145,7 @@
             "steps": ["is_silver_twilight", "progress_1"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": ["no_silver_twilight", "progress_2"]
         }
       }
@@ -62198,7 +62615,7 @@
             "steps": ["has_mystic", "read_mystic_text"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": ["no_mystic", "read_gibberish"]
         }
       }
@@ -63516,7 +63933,7 @@
             "steps": ["three_to_five_mementos"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": ["six_or_more_mementos"]
         }
       }
@@ -64094,7 +64511,7 @@
             "steps": ["add_3_doom"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": ["add_4_doom"]
         }
       }
@@ -64612,7 +65029,7 @@
             ]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "effects": [
             {
               "type": "campaign_log",
@@ -69372,7 +69789,7 @@
             "steps": ["intro_3"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": ["intro_4"]
         }
       }
@@ -73742,7 +74159,7 @@
             "steps": ["one_distortion"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": ["two_distortion"]
         }
       }
@@ -74634,7 +75051,7 @@
             "steps": ["place_three_doom"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": ["place_four_doom"]
         }
       }
@@ -75898,6 +76315,7 @@
     "set_aside_cards",
     "set_aside_poisoned",
     "encounter_deck",
+    "check_no_provisions",
     "$play_scenario"
   ],
   "steps": [
@@ -76184,7 +76602,7 @@
       "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance in the victory display:",
         "delta": true,
         "effects": [
           {
@@ -76201,7 +76619,7 @@
       "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance in the victory display:",
         "confirm_text": "Record an additional ten tally marks, as you have angered Yig with your foolish actions.",
         "delta": true,
         "effects": [
@@ -76297,6 +76715,50 @@
           }
         ]
       }
+    },
+    {
+      "id": "check_no_provisions",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "eztli_fewer_resources",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["restless_nights_reminder", "list_no_provisions"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "list_no_provisions",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "eztli_fewer_resources",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "check_campaign_log_cards",
+                "card_type": "player",
+                "masculine_text": "#name# starts with 3 fewer resources.",
+                "feminine_text": "#name# starts with 3 fewer resources.",
+                "bullet_type": "small"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "restless_nights_reminder",
+      "text": "Based on the events of <b>Interlude I: Restless Nights:</b>"
     }
   ],
   "resolutions": [
@@ -76543,6 +77005,9 @@
               "create_exploration_deck",
               "check_mapped_way_forward",
               "set_aside_poisoned",
+              "check_no_provisions",
+              "check_start_with_clue",
+              "check_no_mulligan",
               "encounter_deck",
               "$play_scenario"
             ]
@@ -76763,6 +77228,143 @@
           }
         ]
       }
+    },
+    {
+      "id": "check_no_provisions",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "hote_fewer_resources",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["jungle_beckons_reminder", "list_no_provisions"],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "jungle_beckons_reminder",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "jungle_beckons_reminder",
+      "text": "Based on the events of <b>Interlude III: The Jungle Beckons:</b>"
+    },
+    {
+      "id": "list_no_provisions",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "hote_fewer_resources",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "check_campaign_log_cards",
+                "card_type": "player",
+                "masculine_text": "#name# starts with 3 fewer resources.",
+                "feminine_text": "#name# starts with 3 fewer resources.",
+                "bullet_type": "small"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_start_with_clue",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "hote_start_with_clue",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["maybe_jungle_beckons_reminder", "list_start_with_clue"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_no_mulligan",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "hote_no_mulligan",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["maybe_jungle_beckons_reminder", "no_mulligan_reminder"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "no_mulligan_reminder",
+      "bullet_type": "small",
+      "text": "Investigators cannot take a mulligan."
+    },
+    {
+      "id": "maybe_jungle_beckons_reminder",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "jungle_beckons_reminder",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["jungle_beckons_reminder"],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "jungle_beckons_reminder",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "list_start_with_clue",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "hote_start_with_clue",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "check_campaign_log_cards",
+                "card_type": "player",
+                "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+                "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+                "bullet_type": "small"
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -76808,6 +77410,7 @@
     "gather_encounter_sets",
     "setup_locations",
     "gather_jungle_watches",
+    "list_jungle_watches",
     "set_aside_cards",
     "create_exploration_deck",
     "set_aside_poisoned",
@@ -76846,6 +77449,29 @@
     {
       "id": "gather_jungle_watches",
       "text": "Search the collection for each card listed in parentheses next to “the jungle watches” in your Campaign Log. Add those cards to the victory display."
+    },
+    {
+      "id": "list_jungle_watches",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "campaign_notes",
+        "id": "jungle_watches",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "check_campaign_log_cards",
+                "card_type": "encounter",
+                "text": "#name# (#X#)",
+                "bullet_type": "small"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "set_aside_cards",
@@ -76935,7 +77561,7 @@
       "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance in the victory display:",
         "delta": true,
         "effects": [
           {
@@ -77140,10 +77766,18 @@
             "boolCondition": false,
             "prompt": "Out of Gas",
             "border": true,
-            "effects": [{
-              "type": "story_step",
-              "steps": ["out_of_gas", "no_mulligan"]
-            }]
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["out_of_gas", "no_mulligan"]
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "hote_no_mulligan",
+                "text": "dummy"
+              }
+            ]
           }
         ]
       }
@@ -77235,10 +77869,20 @@
             "boolCondition": false,
             "prompt": "Low on Rations",
             "border": true,
-            "effects": [{
-              "type": "story_step",
-              "steps": ["low_on_rations", "fewer_resources"]
-            }]
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["low_on_rations", "fewer_resources"]
+              },
+              {
+                "type": "campaign_log_cards",
+                "section": "hidden",
+                "id": "hote_fewer_resources",
+                "cards": "$input_value",
+                "masculine_text": "#name# starts with 3 fewer resources.",
+                "feminine_text": "#name# starts with 3 fewer resources."
+              }
+            ]
           }
         ]
       }
@@ -77355,6 +77999,14 @@
               {
                 "type": "story_step",
                 "steps": ["patterns_in_the_stone", "start_with_clue"]
+              },
+              {
+                 "type": "campaign_log_cards",
+                 "section": "hidden",
+                 "id": "hote_start_with_clue",
+                 "cards": "$input_value",
+                 "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+                 "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
               }
             ]
           },
@@ -77794,7 +78446,16 @@
             "effects": [{
               "type": "story_step",
               "steps": ["low_on_rations", "fewer_resources"]
-             }]
+             },
+             {
+                "type": "campaign_log_cards",
+                "section": "hidden",
+                "id": "eztli_fewer_resources",
+                "cards": "$input_value",
+                "masculine_text": "#name# starts with 3 fewer resources.",
+                "feminine_text": "#name# starts with 3 fewer resources."
+              }
+            ]
           }
         ]
       }
@@ -79084,7 +79745,7 @@
       "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance in the victory display:",
         "delta": true,
         "effects": [
           {
@@ -79499,7 +80160,7 @@
             "steps": ["process_backfired_spectacularly"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": []
         }
       }
@@ -80067,6 +80728,7 @@
         "investigator": "all",
         "id": "map",
         "name": "Map",
+        "show_result": true,
         "options": [
           {
             "boolCondition": true,
@@ -80176,6 +80838,8 @@
     "setup_depth",
     "set_aside_relic",
     "set_aside_poison",
+    "check_no_provisions",
+    "check_no_mulligan",
     "encounter_deck",
     "depth_level_rule",
     "pursuit_rule",
@@ -80716,7 +81380,7 @@
             "steps": ["fury_18_to_20"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": ["fury_21"]
         }
       }
@@ -80937,7 +81601,7 @@
             "steps": ["depth_4_fall"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": []
         }
       }
@@ -81114,7 +81778,7 @@
       "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance in the victory display:",
         "delta": true,
         "effects": [
           {
@@ -81253,6 +81917,103 @@
         "min": 1,
         "max": 1,
         "choices": []
+      }
+    },
+    {
+      "id": "check_no_provisions",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "doy_fewer_resources",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["thc_reminder", "list_no_provisions"],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "thc_reminder",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "thc_reminder",
+      "text": "Based on the events of <b>Interlude IV: Those Held Captive</b>:"
+    },
+    {
+      "id": "list_no_provisions",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "doy_fewer_resources",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "check_campaign_log_cards",
+                "card_type": "player",
+                "masculine_text": "#name# starts with 3 fewer resources.",
+                "feminine_text": "#name# starts with 3 fewer resources.",
+                "bullet_type": "small"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_no_mulligan",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "doy_no_mulligan",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["maybe_thc_reminder", "no_mulligan_reminder"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "no_mulligan_reminder",
+      "bullet_type": "small",
+      "text": "Investigators cannot take a mulligan."
+    },
+    {
+      "id": "maybe_thc_reminder",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "thc_reminder",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["thc_reminder"],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "thc_reminder",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
       }
     }
   ],
@@ -81694,6 +82455,12 @@
               {
                 "type": "story_step",
                 "steps": ["the_way_is_shut", "no_mulligan"]
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "doy_no_mulligan",
+                "text": "dummy"
               }
             ]
           }
@@ -81730,7 +82497,7 @@
     {
       "id": "no_mulligan",
       "bullet_type": "small",
-      "text": "When drawing opening hands during the next scenario, investigators cannot take a mulligan.."
+      "text": "When drawing opening hands during the next scenario, investigators cannot take a mulligan."
     },
     {
       "id": "eat_provisions",
@@ -81752,7 +82519,15 @@
               {
                 "type": "story_step",
                 "steps": ["low_on_rations", "fewer_resources"]
-              }
+              },
+              {
+                 "type": "campaign_log_cards",
+                 "section": "hidden",
+                 "id": "doy_fewer_resources",
+                 "cards": "$input_value",
+                 "masculine_text": "#name# starts with 3 fewer resources.",
+                 "feminine_text": "#name# starts with 3 fewer resources."
+               }
             ]
           }
         ]
@@ -83699,7 +84474,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance in the victory display:",
         "delta": true,
         "effects": [
           {
@@ -84930,7 +85705,7 @@
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
-                "id": "possesses_a_diving_suite",
+                "id": "possesses_a_diving_suit",
                 "cards": "$input_value",
                 "masculine_text": "#name# possesses a diving suit.",
                 "feminine_text": "#name# possesses a diving suit."
@@ -87420,6 +88195,8 @@
     "setup_locations",
     "location_layout",
     "check_diving_suit",
+    "list_diving_suit",
+    "remove_diving_suit",
     "setup_act_deck",
     "set_aside_cards",
     "add_flood_tokens",
@@ -87879,11 +88656,37 @@
       "bullets": [
         {
           "text": "Each investigator who <i>possesses a diving suit</i> begins play with a Diving Suit story asset in their play area."
-        },
-        {
-          "text": "Remove each unused Diving Suit from the game."
         }
       ]
+    },
+    {
+      "id": "list_diving_suit",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "campaign_notes",
+        "id": "possesses_a_diving_suit",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "check_campaign_log_cards",
+                "card_type": "player",
+                "masculine_text": "#name# begins play with a Diving Suit story asset in his play area.",
+                "feminine_text": "#name# begins play with a Diving Suit story asset in her play area.",
+                "bullet_type": "small"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "remove_diving_suit",
+      "bullet_type": "small",
+      "text": "Remove each unused Diving Suit from the game."
     },
     {
       "id": "setup_act_deck",
@@ -89131,7 +89934,7 @@
             "steps": ["add_5_curse"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": ["add_5_curse"]
         }
       }
@@ -92443,7 +93246,7 @@
             "steps": ["flashback_15", "horrific_truth"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": ["epilogue_2"]
         }
       }
@@ -93579,7 +94382,7 @@
             "steps": ["award_6_bonus_xp"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "border": true,
           "effects": [
             {
@@ -94627,7 +95430,7 @@
             "steps": ["shadows_loom", "shadows_maintain_their_grip_on_alices_dreams", "loom_token"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": ["shadows_churn", "shadows_grow_stronger_with_each_passing_moment", "churn_token"]
         }
       }
@@ -95337,7 +96140,7 @@
             }]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "border": true,
           "effects": [{
             "type": "story_step",
@@ -95620,7 +96423,7 @@
             "steps": ["satiated"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": ["gorged"]
         }
       }
@@ -101973,7 +102776,7 @@
             ]
           }
         ],
-        "defaultOption": {}
+        "default_option": {}
       }
     },
     {
@@ -102260,7 +103063,7 @@
             "steps": ["go_resolution_1", "resolution_1"]
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "steps": ["go_resolution_2", "resolution_2"]
         }
       }
@@ -104110,7 +104913,7 @@
             "numCondition": 5
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "effects": [
             {
               "type": "add_card",
@@ -104266,7 +105069,7 @@
             "numCondition": 5
           }
         ],
-        "defaultOption": {
+        "default_option": {
           "effects": [
             {
               "type": "add_card",

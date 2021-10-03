@@ -53,7 +53,9 @@ export type Effect =
   | FreeformCampaignLogEffect
   | UpgradeDecksEffect
   | SaveDecksEffect
-  | GainSuppliesEffect;
+  | GainSuppliesEffect
+  | CheckCampaignLogCardsEffect
+  | CheckCampaignLogCountEffect;
 export type SpecialXp = "resupply_points" | "supply_points" | "unspect_xp";
 export type InvestigatorSelector =
   | "lead_investigator"
@@ -382,6 +384,19 @@ export interface Supply {
   cost: number;
   multiple?: boolean;
 }
+export interface CheckCampaignLogCardsEffect {
+  type: "check_campaign_log_cards";
+  card_type: "player" | "encounter";
+  text?: string;
+  masculine_text?: string;
+  feminine_text?: string;
+  bullet_type?: BulletType;
+}
+export interface CheckCampaignLogCountEffect {
+  type: "check_campaign_log_count";
+  text: string;
+  bullet_type?: BulletType;
+}
 export interface CampaignLogSectionExistsCondition {
   type: "campaign_log_section_exists";
   section: string;
@@ -405,7 +420,7 @@ export interface CampaignLogCountCondition {
   id: string;
   options: NumOption[];
   max?: number;
-  defaultOption?: DefaultOption;
+  default_option?: DefaultOption;
 }
 export interface Option {
   icon?: ChoiceIcon;
@@ -475,7 +490,7 @@ export interface MathSumCondition {
   opB: Operand;
   operation: "sum";
   options: NumOption[];
-  defaultOption: DefaultOption;
+  default_option: DefaultOption;
 }
 export interface MathEqualsCondition {
   type: "math";
@@ -489,7 +504,7 @@ export interface CampaignLogInvestigatorCountCondition {
   section: string;
   investigator: "any" | "all";
   options: NumOption[];
-  defaultOption?: DefaultOption;
+  default_option?: DefaultOption;
 }
 export interface InvestigatorCardCondition {
   type: "has_card";
@@ -507,7 +522,7 @@ export interface CampaignDataInvestigatorCondition {
   campaign_data: "investigator";
   investigator_data: "trait" | "faction" | "code";
   options: StringOption[];
-  defaultOption?: Option;
+  default_option?: Option;
 }
 export interface CampaignDataLinkedCondition {
   type: "campaign_data";
@@ -539,6 +554,7 @@ export interface CheckSuppliesAllCondition {
   name: string;
   prompt?: string;
   options: BoolOption[];
+  show_result?: boolean;
 }
 export interface CheckSuppliesAnyCondition {
   type: "check_supplies";

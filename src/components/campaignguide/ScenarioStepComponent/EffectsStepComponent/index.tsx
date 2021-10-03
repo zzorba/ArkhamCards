@@ -15,6 +15,8 @@ import TraumaEffectComponent from './TraumaEffectComponent';
 import { EffectsStep, Effect } from '@data/scenario/types';
 import { getSpecialEffectChoiceList } from '@data/scenario/effectHelper';
 import space from '@styles/space';
+import CheckCampaignLogCardsComponent from './CheckCampaignLogCardsComponent';
+import CheckCampaignLogCountComponent from './CheckCampaignLogCountComponent';
 
 interface Props {
   componentId: string;
@@ -41,6 +43,18 @@ export default function EffectsStepComponent({ componentId, width, step, campaig
             input={input}
             numberInput={numberInput}
           />
+        );
+      case 'check_campaign_log_cards':
+        return (
+          <View style={border ? space.paddingSideL : undefined}>
+            <CheckCampaignLogCardsComponent effect={effect} input={input} numberInput={numberInput} />
+          </View>
+        );
+      case 'check_campaign_log_count':
+        return (
+          <View style={border ? space.paddingSideL : undefined}>
+            <CheckCampaignLogCountComponent effect={effect} numberInput={numberInput} />
+          </View>
         );
       case 'campaign_log_cards':
         if (step.stepText) {

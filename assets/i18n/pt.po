@@ -2735,21 +2735,6 @@ msgstr "Lê “${ badThing.prompt }”"
 msgid "Doesn't get any"
 msgstr "Não ganha nada"
 
-#, javascript-format
-msgid "(${ supply.cost } supply point each)"
-msgid_plural "(${ supply.cost } supply points each)"
-msgstr[0] "(${ supply.cost } ponto de suprimento cada)"
-msgstr[1] "(${ supply.cost } pontos de suprimentos cada)"
-
-msgid "(${ supply.cost } supply point)"
-msgid_plural "(${ supply.cost } supply points)"
-msgstr[0] "(${ supply.cost } ponto de suprimento)"
-msgstr[1] "(${ supply.cost } pontos de suprimentos)"
-
-#, javascript-format
-msgid "${ spent } of ${ total }"
-msgstr "${ spent } do ${ total }"
-
 msgid "Too many"
 msgstr "Muitos"
 
@@ -4368,9 +4353,6 @@ msgid ""
 "the 'Edit' button when making card changes."
 msgstr ""
 
-msgid "Choose a deck for this investigator"
-msgstr ""
-
 msgid "What exactly does the app handle?"
 msgstr ""
 
@@ -4681,6 +4663,13 @@ msgid "Sign into Arkhan Cards on the Settings tab to enable"
 msgstr ""
 
 msgid "Asset: Hand x2. Arcane"
+msgstr ""
+
+#, javascript-format
+msgid "${ spent } of ${ supplyIcon } ${ total }"
+msgstr ""
+
+msgid "Choose deck"
 msgstr ""
 
 msgctxt "masculine"
@@ -5896,6 +5885,70 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Zoog"
+msgstr ""
+
+msgctxt "trait"
+msgid "AI"
+msgstr ""
+
+msgctxt "trait"
+msgid "Blessed?"
+msgstr ""
+
+msgctxt "trait"
+msgid "Broken"
+msgstr ""
+
+msgctxt "trait"
+msgid "Card"
+msgstr ""
+
+msgctxt "trait"
+msgid "Entrepreneur"
+msgstr ""
+
+msgctxt "trait"
+msgid "Falcon Point"
+msgstr ""
+
+msgctxt "trait"
+msgid "Lair"
+msgstr ""
+
+msgctxt "trait"
+msgid "Nostalgia II"
+msgstr ""
+
+msgctxt "trait"
+msgid "Retired"
+msgstr ""
+
+msgctxt "trait"
+msgid "Royalty"
+msgstr ""
+
+msgctxt "trait"
+msgid "Saga"
+msgstr ""
+
+msgctxt "trait"
+msgid "Shadow"
+msgstr ""
+
+msgctxt "trait"
+msgid "Synergy"
+msgstr ""
+
+msgctxt "trait"
+msgid "Unbroken"
+msgstr ""
+
+msgctxt "trait"
+msgid "Wonderland"
+msgstr ""
+
+msgctxt "trait"
+msgid "Y-ha'nthlei"
 msgstr ""
 
 #, javascript-format

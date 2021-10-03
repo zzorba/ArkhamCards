@@ -96,6 +96,7 @@ export default function CampaignLogComponent({
                 title={title}
                 section={section}
                 campaignGuide={campaignGuide}
+                campaignLog={campaignLog}
                 width={width - s * 2}
               />
             ) }
@@ -111,6 +112,7 @@ export default function CampaignLogComponent({
                 sectionId={id}
                 section={section}
                 campaignGuide={campaignGuide}
+                campaignLog={campaignLog}
                 width={width - s * 2}
               />
             ) }

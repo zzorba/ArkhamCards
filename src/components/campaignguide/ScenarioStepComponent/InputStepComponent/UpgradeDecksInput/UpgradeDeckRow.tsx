@@ -547,7 +547,7 @@ function UpgradeDeckRow({
             </Text>
             <View style={[space.paddingTopS, styles.startRow]}>
               { !deck ?
-                <ActionButton leftIcon="deck" color="dark" title={t`Choose a deck for this investigator`} onPress={selectDeck} /> :
+                <ActionButton leftIcon="deck" color="dark" title={t`Choose deck`} onPress={selectDeck} /> :
                 deckButton
               }
             </View>

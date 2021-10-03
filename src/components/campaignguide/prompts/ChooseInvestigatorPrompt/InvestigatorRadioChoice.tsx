@@ -20,6 +20,7 @@ interface BasicProps {
 interface InvestigatorProps extends BasicProps {
   type: 'investigator';
   investigator: Card;
+  yithian?: boolean;
 }
 
 interface PlaceholderProps extends BasicProps {
@@ -41,6 +42,7 @@ export default function InvestigatorRadioChoice({ transparent, description, sele
           description={description}
           width={width}
           transparent={transparent && !selected}
+          yithian={props.yithian}
         >
           <RadioButton color="light" icon="radio" selected={selected} />
         </CompactInvestigatorRow>

@@ -184,7 +184,7 @@ export const syncRules = async function(
 export const NON_LOCALIZED_CARDS = new Set(['en', 'pt']);
 
 export const syncCards = async function(
-  updateProgress: (progress: number, msg?: strinig) => void,
+  updateProgress: (progress: number, msg?: string) => void,
   db: Database,
   anonClient: ApolloClient<NormalizedCacheObject>,
   packs: Pack[],

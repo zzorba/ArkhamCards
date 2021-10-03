@@ -1936,21 +1936,6 @@ msgstr "Les investigateurs doivent décider (choisissez-en un) :"
 msgid "${ supplyName } to use (${ desiredCount })"
 msgstr "${ supplyName } pour utiliser (${ desiredCount })"
 
-#, javascript-format
-msgid "(${ supply.cost } supply point each)"
-msgid_plural "(${ supply.cost } supply points each)"
-msgstr[0] "(${ supply.cost } point d'équipement par unité"
-msgstr[1] "(${ supply.cost } points d'équipement par unité"
-
-msgid "(${ supply.cost } supply point)"
-msgid_plural "(${ supply.cost } supply points)"
-msgstr[0] "(${ supply.cost } point d'équipement)"
-msgstr[1] "(${ supply.cost } points d'équipement)"
-
-#, javascript-format
-msgid "${ spent } of ${ total }"
-msgstr "${ spent } sur ${ total }"
-
 msgid "Too many"
 msgstr "Trop"
 
@@ -4446,9 +4431,6 @@ msgstr ""
 "consultez le deck, assurez-vous d'utiliser le bouton 'Éditer' quand vous "
 "faites des changements."
 
-msgid "Choose a deck for this investigator"
-msgstr "Choose a deck for this investigator"
-
 msgid "What exactly does the app handle?"
 msgstr "Que gère exactement l'application ?"
 
@@ -4790,6 +4772,13 @@ msgid "Sign into Arkhan Cards on the Settings tab to enable"
 msgstr ""
 
 msgid "Asset: Hand x2. Arcane"
+msgstr ""
+
+#, javascript-format
+msgid "${ spent } of ${ supplyIcon } ${ total }"
+msgstr ""
+
+msgid "Choose deck"
 msgstr ""
 
 msgctxt "masculine"
@@ -6018,6 +6007,70 @@ msgstr "Yoth"
 msgctxt "trait"
 msgid "Zoog"
 msgstr "Zoog"
+
+msgctxt "trait"
+msgid "AI"
+msgstr ""
+
+msgctxt "trait"
+msgid "Blessed?"
+msgstr ""
+
+msgctxt "trait"
+msgid "Broken"
+msgstr ""
+
+msgctxt "trait"
+msgid "Card"
+msgstr ""
+
+msgctxt "trait"
+msgid "Entrepreneur"
+msgstr ""
+
+msgctxt "trait"
+msgid "Falcon Point"
+msgstr ""
+
+msgctxt "trait"
+msgid "Lair"
+msgstr ""
+
+msgctxt "trait"
+msgid "Nostalgia II"
+msgstr ""
+
+msgctxt "trait"
+msgid "Retired"
+msgstr ""
+
+msgctxt "trait"
+msgid "Royalty"
+msgstr ""
+
+msgctxt "trait"
+msgid "Saga"
+msgstr ""
+
+msgctxt "trait"
+msgid "Shadow"
+msgstr ""
+
+msgctxt "trait"
+msgid "Synergy"
+msgstr ""
+
+msgctxt "trait"
+msgid "Unbroken"
+msgstr ""
+
+msgctxt "trait"
+msgid "Wonderland"
+msgstr ""
+
+msgctxt "trait"
+msgid "Y-ha'nthlei"
+msgstr ""
 
 #, javascript-format
 msgctxt "filter"

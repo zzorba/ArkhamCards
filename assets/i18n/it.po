@@ -1925,21 +1925,6 @@ msgstr "Gli investigatori devono decidere (scegliere una):"
 msgid "${ supplyName } to use (${ desiredCount })"
 msgstr "${ supplyName } rimanenti (${ desiredCount })"
 
-#, javascript-format
-msgid "(${ supply.cost } supply point each)"
-msgid_plural "(${ supply.cost } supply points each)"
-msgstr[0] "(${ supply.cost } risorsa ciascuna)"
-msgstr[1] "(${ supply.cost } risorse ciascuna)"
-
-msgid "(${ supply.cost } supply point)"
-msgid_plural "(${ supply.cost } supply points)"
-msgstr[0] "(${ supply.cost } risorsa)"
-msgstr[1] "(${ supply.cost } risorse)"
-
-#, javascript-format
-msgid "${ spent } of ${ total }"
-msgstr "${ spent } di ${ total }"
-
 msgid "Too many"
 msgstr "Troppi"
 
@@ -4416,9 +4401,6 @@ msgstr ""
 "Ora che l’aggiornamento è stato salvato, se esamini il mazzo assicurati di "
 "utilizzare il tasto “Modifica” quando apporti modifiche alle carte."
 
-msgid "Choose a deck for this investigator"
-msgstr "Scegli un mazzo per questo investigatore"
-
 msgid "What exactly does the app handle?"
 msgstr "Cosa gestisce esattamente l’App?"
 
@@ -4757,6 +4739,13 @@ msgid "Sign into Arkhan Cards on the Settings tab to enable"
 msgstr ""
 
 msgid "Asset: Hand x2. Arcane"
+msgstr ""
+
+#, javascript-format
+msgid "${ spent } of ${ supplyIcon } ${ total }"
+msgstr ""
+
+msgid "Choose deck"
 msgstr ""
 
 msgctxt "masculine"
@@ -5980,6 +5969,70 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Zoog"
+msgstr ""
+
+msgctxt "trait"
+msgid "AI"
+msgstr ""
+
+msgctxt "trait"
+msgid "Blessed?"
+msgstr ""
+
+msgctxt "trait"
+msgid "Broken"
+msgstr ""
+
+msgctxt "trait"
+msgid "Card"
+msgstr ""
+
+msgctxt "trait"
+msgid "Entrepreneur"
+msgstr ""
+
+msgctxt "trait"
+msgid "Falcon Point"
+msgstr ""
+
+msgctxt "trait"
+msgid "Lair"
+msgstr ""
+
+msgctxt "trait"
+msgid "Nostalgia II"
+msgstr ""
+
+msgctxt "trait"
+msgid "Retired"
+msgstr ""
+
+msgctxt "trait"
+msgid "Royalty"
+msgstr ""
+
+msgctxt "trait"
+msgid "Saga"
+msgstr ""
+
+msgctxt "trait"
+msgid "Shadow"
+msgstr ""
+
+msgctxt "trait"
+msgid "Synergy"
+msgstr ""
+
+msgctxt "trait"
+msgid "Unbroken"
+msgstr ""
+
+msgctxt "trait"
+msgid "Wonderland"
+msgstr ""
+
+msgctxt "trait"
+msgid "Y-ha'nthlei"
 msgstr ""
 
 #, javascript-format

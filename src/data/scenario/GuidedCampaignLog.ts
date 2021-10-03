@@ -503,6 +503,30 @@ export default class GuidedCampaignLog {
     });
   }
 
+  allCardCounts(sectionId: string, id?: string): number[] | undefined {
+    const section = this.sections[sectionId];
+    if (!section) {
+      return undefined;
+    }
+    if (!id) {
+      return flatMap(section.entries, entry => {
+        if (entry.type === 'card') {
+          return map(entry.cards || [], card => card.count);
+        }
+        return [];
+      });
+    }
+    if (section.crossedOut[id]) {
+      return undefined;
+    }
+    return flatMap(section.entries, entry => {
+      if (entry.id === id && entry.type === 'card') {
+        return map(entry.cards || [], card => card.count);
+      }
+      return [];
+    });
+  }
+
   check(sectionId: string, id: string): boolean {
     const section = this.sections[sectionId];
     if (!section) {

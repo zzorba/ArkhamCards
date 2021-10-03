@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { View } from 'react-native';
-import { filter, findIndex, map, keys } from 'lodash';
+import { filter, findIndex, map, keys, find } from 'lodash';
 import { t } from 'ttag';
 
 import Card from '@data/types/Card';
@@ -11,6 +11,7 @@ import InputWrapper from '../InputWrapper';
 import InvestigatorRadioChoice from './InvestigatorRadioChoice';
 import { s } from '@styles/space';
 import { BulletType } from '@data/scenario/types';
+import { BODY_OF_A_YITHIAN } from '@app_constants';
 
 interface Props {
   id: string;
@@ -38,7 +39,7 @@ export default function ChooseInvestigatorPrompt({
   renderResults,
 }: Props): JSX.Element {
   const { scenarioState } = useContext(ScenarioGuideContext);
-  const { scenarioInvestigators } = useContext(ScenarioStepContext);
+  const { scenarioInvestigators, campaignLog } = useContext(ScenarioStepContext);
   const { width } = useContext(StyleContext);
   const [selectedInvestigator, setSelectedInvestigator] = useState(required && scenarioInvestigators.length > 0 ? scenarioInvestigators[0].code : undefined);
   const theInvestigators = useMemo(() => {
@@ -99,19 +100,23 @@ export default function ChooseInvestigatorPrompt({
       disabledText={required && selectedInvestigator === undefined ? t`Continue` : undefined}
     >
       <View style={{ flexDirection: 'column' }}>
-        { map(theInvestigators, (investigator, index) => (
-          <InvestigatorRadioChoice
-            key={investigator.code}
-            type="investigator"
-            investigator={investigator}
-            description={investigatorToValue?.(investigator)}
-            index={index}
-            onSelect={onChoiceChange}
-            editable={choice === undefined}
-            selected={selectedIndex === index}
-            width={width - s * (choice === undefined ? 4 : 2)}
-          />
-        )) }
+        { map(theInvestigators, (investigator, index) => {
+          const yithian = !!find(campaignLog.traumaAndCardData(investigator.code)?.storyAssets, x => x === BODY_OF_A_YITHIAN);
+          return (
+            <InvestigatorRadioChoice
+              key={investigator.code}
+              type="investigator"
+              yithian={yithian}
+              investigator={investigator}
+              description={investigatorToValue?.(investigator)}
+              index={index}
+              onSelect={onChoiceChange}
+              editable={choice === undefined}
+              selected={selectedIndex === index}
+              width={width - s * (choice === undefined ? 4 : 2)}
+            />
+          );
+        }) }
         { !required && (
           <InvestigatorRadioChoice
             key="default"
