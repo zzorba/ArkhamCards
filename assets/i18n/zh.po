@@ -731,13 +731,13 @@ msgid "Shattered Aeons"
 msgstr "破碎永世"
 
 msgid "Prologue: Disappearance at the Twilight Estate"
-msgstr "Prologue: Disappearance at the Twilight Estate"
+msgstr "序章: 暮色莊園失蹤事件"
 
 msgid "The Witching Hour"
-msgstr "The Witching Hour"
+msgstr "巫異時刻"
 
 msgid "The Price of Progress"
-msgstr "The Price of Progress"
+msgstr "進步的代價"
 
 msgid "The Secret Name"
 msgstr "隱秘之名"
@@ -749,7 +749,7 @@ msgid "For the Greater Good"
 msgstr "崇高利益"
 
 msgid "The Inner Circle"
-msgstr "The Inner Circle"
+msgstr "核心圈"
 
 msgid "Union and Disillusion"
 msgstr "聚合幻滅"
@@ -758,7 +758,7 @@ msgid "In the Clutches of Chaos"
 msgstr "混沌魔掌"
 
 msgid "Twist of Fate"
-msgstr "Twist of Fate"
+msgstr "扭轉命運"
 
 msgid "Before the Black Throne"
 msgstr "黑色王座"
@@ -3789,7 +3789,7 @@ msgid_plural "${ unspentXp } XP unspent"
 msgstr[0] "剩餘${ unspentXp }點經驗"
 
 msgid "Tap to draw"
-msgstr "抽一個混亂標記"
+msgstr "點擊抽取"
 
 msgid "Draw another"
 msgstr "再抽一個"
@@ -3846,7 +3846,7 @@ msgid "Keys"
 msgstr "鑰匙"
 
 msgid "Locks"
-msgstr "Locks"
+msgstr "鎖頭"
 
 msgid "Resources"
 msgstr "資源"
@@ -4344,25 +4344,25 @@ msgid ""
 msgstr ""
 
 msgid "Skull"
-msgstr ""
+msgstr "骷顱"
 
 msgid "Cultist"
-msgstr ""
+msgstr "異教徒"
 
 msgid "Tablet"
-msgstr ""
+msgstr "碎石版"
 
 msgid "Elder Thing"
-msgstr ""
+msgstr "古神"
 
 msgid "Auto-Fail"
-msgstr ""
+msgstr "自動失敗"
 
 msgid "Elder Sign"
-msgstr ""
+msgstr "遠古印記"
 
 msgid "Number of [[Item]] assets you control"
-msgstr ""
+msgstr "你控制的[[道具]]支援的數量"
 
 msgid "Your investigator's modifier"
 msgstr ""
@@ -4378,34 +4378,34 @@ msgid "${ modifier }, draws another"
 msgstr ""
 
 msgid "Easy difficulty"
-msgstr ""
+msgstr "簡單"
 
 msgid "Standard difficulty"
-msgstr ""
+msgstr "普通"
 
 msgid "Hard difficulty"
-msgstr ""
+msgstr "困難"
 
 msgid "Expert difficulty"
-msgstr ""
+msgstr "專家"
 
 msgid "— Difficulty —"
-msgstr ""
+msgstr "— 難度 —"
 
 msgid "— Available Scenarios —"
-msgstr ""
+msgstr "— 可進行的冒險 —"
 
 msgid "Scenario settings"
-msgstr ""
+msgstr "冒險設置"
 
 msgid "Your investigator modfifier"
 msgstr ""
 
 msgid "Test difficulty"
-msgstr ""
+msgstr "檢定難度"
 
 msgid "Modified skill"
-msgstr ""
+msgstr "修正後技能值"
 
 msgid "${ tokens }/${ total } token"
 msgid_plural "${ tokens }/${ total } tokens"
@@ -4426,7 +4426,7 @@ msgid ""
 msgstr ""
 
 msgid "All Cycles and Packs"
-msgstr ""
+msgstr "所有的循環和擴展包"
 
 msgid "Record that..."
 msgstr ""
@@ -4435,16 +4435,16 @@ msgid "Player card entries only"
 msgstr ""
 
 msgid "Accept friend request"
-msgstr ""
+msgstr "接受交友邀請"
 
 msgid "Send friend request"
-msgstr ""
+msgstr "送出交友邀請"
 
 msgid "Reject friend request"
-msgstr ""
+msgstr "拒絕交友邀請"
 
 msgid "Revoke friend request"
-msgstr ""
+msgstr "收回交友邀請"
 
 msgid "Show upgrades"
 msgstr ""
@@ -4456,25 +4456,25 @@ msgid "Show Bless/Curse Odds"
 msgstr ""
 
 msgid "Faction, Level, Type, Cost"
-msgstr ""
+msgstr "職階，等級，種類，費用"
 
 msgid "You cannot have more than 5 level 0 Survivor cards"
-msgstr ""
+msgstr "你不能加入超過5張等級0的求生者卡牌"
 
 msgid "You cannot have more than 5 level 0 Guardian cards"
-msgstr ""
+msgstr "你不能加入超過5張等級0的守衛者卡牌"
 
 msgid "You cannot have more than 5 level 0 Seeker cards"
-msgstr ""
+msgstr "你不能加入超過5張等級0的探求者卡牌"
 
 msgid "You cannot have more than 5 level 0 Rogue cards"
-msgstr ""
+msgstr "你不能加入超過5張等級0的流浪者卡牌"
 
 msgid "Sign into Arkhan Cards on the Settings tab to enable"
 msgstr ""
 
 msgid "Asset: Hand x2. Arcane"
-msgstr ""
+msgstr "支援: 手部 x2. 法術"
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -4815,7 +4815,7 @@ msgstr "公務員"
 
 msgctxt "trait"
 msgid "Clairvoyant"
-msgstr "Clairvoyant"
+msgstr "預知"
 
 msgctxt "trait"
 msgid "Clothing"
@@ -4931,7 +4931,7 @@ msgstr "敦威治"
 
 msgctxt "trait"
 msgid "Eldritch"
-msgstr "Eldritch"
+msgstr "驚悚"
 
 msgctxt "trait"
 msgid "Elite"
@@ -5503,7 +5503,7 @@ msgstr "Steps"
 
 msgctxt "trait"
 msgid "Summon"
-msgstr "Summon"
+msgstr "召喚"
 
 msgctxt "trait"
 msgid "Supply"
@@ -5775,4 +5775,4 @@ msgstr "無"
 
 msgctxt "versus abbreviation"
 msgid "VS"
-msgstr ""
+msgstr "VS"
