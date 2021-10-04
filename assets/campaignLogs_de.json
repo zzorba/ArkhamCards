@@ -1551,23 +1551,23 @@
         "entries": [
           {
             "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "masculine_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>.",
+            "feminine_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>."
           },
           {
             "id": "doy_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger."
           },
           {
             "id": "eztli_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger."
           },
           {
             "id": "hote_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger."
           },
           {
             "id": "agenda_5",
@@ -2922,23 +2922,23 @@
         "entries": [
           {
             "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "masculine_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>.",
+            "feminine_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>."
           },
           {
             "id": "doy_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger."
           },
           {
             "id": "eztli_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger."
           },
           {
             "id": "hote_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger."
           },
           {
             "id": "agenda_5",
