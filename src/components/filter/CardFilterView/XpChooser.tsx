@@ -31,10 +31,7 @@ export default function XpChooser({
   const levelRanges = useMemo(() => {
     const result = [[0, 0]];
     if (maxLevel > 0) {
-      result.push([1, Math.min(2, maxLevel)]);
-    }
-    if (maxLevel > 2) {
-      result.push([3, maxLevel]);
+      result.push([1, maxLevel]);
     }
     return result;
   }, [maxLevel]);
