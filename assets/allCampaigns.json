@@ -55263,12 +55263,12 @@
         "branches": [
           {
             "id": "record_ally_taken_by_the_abyss",
-            "text": "Unique ally was taken by the abyss.",
+            "text": "Unique ally was taken by the abyss",
             "steps": ["record_ally_taken_by_the_abyss"]
           },
           {
             "id": "record_investigator_taken_by_the_abyss",
-            "text": "Investigator was taken by the abyss.",
+            "text": "Investigator was taken by the abyss",
             "steps": ["record_investigator_taken_by_the_abyss"]
           }
         ]
@@ -55682,12 +55682,12 @@
         "branches": [
           {
             "id": "record_ally_taken_by_the_abyss",
-            "text": "Unique ally was taken by the abyss.",
+            "text": "Unique ally was taken by the abyss",
             "steps": ["record_ally_taken_by_the_abyss"]
           },
           {
             "id": "record_investigator_taken_by_the_abyss",
-            "text": "Investigator was taken by the abyss.",
+            "text": "Investigator was taken by the abyss",
             "steps": ["record_investigator_taken_by_the_abyss"]
           }
         ]

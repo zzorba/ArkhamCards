@@ -22,7 +22,6 @@ interface Props {
 
 function CampaignLogSuppliesInvestigatorSection({ sectionId, campaignGuide, campaignLog, section, code, title, width }: Props & { code: string }) {
   const [investigator] = useSingleCard(code, 'player');
-  console.log(campaignLog.traumaAndCardData(code));
   const yithian = useMemo(() => !!find(campaignLog.traumaAndCardData(code)?.storyAssets || [], x => x === BODY_OF_A_YITHIAN), [campaignLog, code]);
   if (!investigator) {
     return null;

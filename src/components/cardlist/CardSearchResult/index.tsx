@@ -95,7 +95,7 @@ function FactionIcon({ card }: { card: Card }) {
   return (
     <View style={styles.investigatorFactionIcon}>
       <ArkhamIcon
-        name={(card.faction2_code || faction === 'neutral') ? 'elder_sign' : faction}
+        name={card.faction2_code ? 'elder_sign' : faction}
         size={size === ICON_SIZE ? ICON_SIZE : SMALL_ICON_SIZE}
         color={colors.faction[faction].text}
       />

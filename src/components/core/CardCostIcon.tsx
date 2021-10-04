@@ -30,7 +30,7 @@ export function factionIcon(card: Card): string {
     if (card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness') {
       return 'weakness';
     }
-    return 'elder_sign';
+    return 'neutral';
   }
   if (card.faction_code) {
     return card.faction_code;

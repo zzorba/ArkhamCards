@@ -116,17 +116,16 @@ export default function SuppliesPrompt({ id, bulletType, text, input }: Props) {
                   { <Text style={[typography.button, typography.white]}>{jt`${spent} of ${supplyIcon} ${total}`}</Text> }
                 </CompactInvestigatorRow>
               }
-              footer={<View style={{ borderBottomLeftRadius: 8, borderBottomRightRadius: 8, height: 12, backgroundColor: colors.L20 }} /> }
               noSpace
               noShadow
             >
-              { map(filter(input.supplies, (supply) => {
-                const count = counts[supply.id] || 0;
-                return (suppliesInput === undefined || count > 0);
-              }), (supply, idx2) => {
-                const count = counts[supply.id] || 0;
-                return (
-                  <View style={[{ backgroundColor: colors.L20 }, idx2 === 0 ? space.paddingTopS : undefined]}>
+              <View style={[space.paddingBottomS, { backgroundColor: colors.L20, borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }]}>
+                { map(filter(input.supplies, (supply) => {
+                  const count = counts[supply.id] || 0;
+                  return (suppliesInput === undefined || count > 0);
+                }), supply => {
+                  const count = counts[supply.id] || 0;
+                  return (
                     <SupplyComponent
                       key={supply.id}
                       sectionId={input.section}
@@ -138,9 +137,9 @@ export default function SuppliesPrompt({ id, bulletType, text, input }: Props) {
                       remainingPoints={Math.max(total - spent, 0)}
                       editable={suppliesInput === undefined}
                     />
-                  </View>
-                );
-              }) }
+                  );
+                }) }
+              </View>
             </RoundedFactionBlock>
           </View>
         );

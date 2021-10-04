@@ -1,7 +1,7 @@
 import { find, flatMap, sortBy } from 'lodash';
 
 import { NumberChoices, StandaloneId } from '@actions/types';
-import { FullCampaign, Effect, Errata, Scenario, ChoiceIcon, ChaosToken, ChaosTokens, ScenarioChaosTokens } from './types';
+import { FullCampaign, Effect, Errata, Scenario, ChoiceIcon, ChaosToken, ChaosTokens, ScenarioChaosTokens, CampaignResult } from './types';
 import CampaignGuide, { CampaignLog, CampaignLogSection } from './CampaignGuide';
 import ScenarioGuide from './ScenarioGuide';
 import ScenarioStep from './ScenarioStep';
@@ -20,6 +20,10 @@ interface BasicScenario {
   latestCampaignLog: GuidedCampaignLog;
 }
 
+interface CampaignResultScenario extends BasicScenario {
+  result: CampaignResult;
+}
+
 interface PlayedScenario extends BasicScenario {
   type: 'started' | 'completed';
   canUndo: boolean;
@@ -34,7 +38,7 @@ interface UnplayedScenario extends BasicScenario {
   steps: ScenarioStep[];
 }
 
-export type ProcessedScenario = PlayedScenario | UnplayedScenario;
+export type ProcessedScenario = PlayedScenario | UnplayedScenario | CampaignResultScenario;
 
 export interface ProcessedCampaign {
   scenarios: ProcessedScenario[];

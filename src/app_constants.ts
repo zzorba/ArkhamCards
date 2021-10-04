@@ -2,7 +2,7 @@ import { ChaosTokenModifier, SimpleChaosTokenValue } from '@data/scenario/types'
 import { find } from 'lodash';
 import { t } from 'ttag';
 
-export const ENABLE_ARKHAM_CARDS_ACCOUNT = true;
+export const ENABLE_ARKHAM_CARDS_ACCOUNT = false;
 export type TypeCodeType =
   'asset' |
   'event' |
@@ -100,6 +100,7 @@ export const SKILLS: SkillCodeType[] = [
 ];
 
 export type SpecialChaosTokenType =
+  'frost' |
   'bless' | 'curse' |
   'skull' | 'cultist' | 'tablet' | 'elder_thing' |
   'auto_fail' | 'elder_sign';
@@ -111,6 +112,9 @@ export type ChaosTokenType =
 
 export function isSpecialToken(token: ChaosTokenType) {
   switch (token) {
+    case 'frost':
+    case 'bless':
+    case 'curse':
     case 'skull':
     case 'cultist':
     case 'tablet':
@@ -162,6 +166,7 @@ export const SPECIAL_TOKENS: SpecialChaosTokenType[] = [
   'elder_sign',
   'bless',
   'curse',
+  'frost',
 ];
 
 export const CHAOS_TOKEN_COLORS: { [skill: string]: string } = {
@@ -173,6 +178,7 @@ export const CHAOS_TOKEN_COLORS: { [skill: string]: string } = {
 
 export function chaosTokenName(token: ChaosTokenType) {
   switch (token) {
+    case 'frost': return t`Frost`;
     case 'bless': return t`Bless`;
     case 'curse': return t`Curse`;
     case 'skull': return t`Skull`;
@@ -196,6 +202,9 @@ export function chaosTokenName(token: ChaosTokenType) {
 
 export function getChaosTokenValue(token: ChaosTokenType, specialTokenValues: SimpleChaosTokenValue[]): ChaosTokenModifier | undefined {
   switch (token) {
+    case 'frost':
+      // TODO(frost)
+      return { modifier: 2, reveal_another: true };
     case 'bless':
       return { modifier: 2, reveal_another: true };
     case 'curse':

@@ -74,6 +74,7 @@ export type CampaignDataEffect =
   | CampaignDataNextScenarioEffect
   | CampaignDataSwapChaosBagEffect
   | CampaignDataRedirectExperienceEffect;
+export type CampaignResult = "win" | "lose" | "survived";
 export type Difficulty = "easy" | "standard" | "hard" | "expert";
 export type ScenarioDataEffect =
   | ScenarioDataInvestigatorEffect
@@ -90,7 +91,8 @@ export type SpecialChaosToken =
   | "elder_sign"
   | "auto_fail"
   | "bless"
-  | "curse";
+  | "curse"
+  | "frost";
 export type DefaultOption = Option;
 export type ChoiceIcon = "mental" | "physical" | "resign" | "dismiss" | "accept";
 export type MathCondition = MathCompareCondition | MathSumCondition | MathEqualsCondition;
@@ -316,7 +318,7 @@ export interface CampaignLogInvestigatorCountEffect {
 export interface CampaignDataResultEffect {
   type: "campaign_data";
   setting: "result";
-  value: "win" | "lose" | "survived";
+  value: CampaignResult;
 }
 export interface CampaignDataDifficultyEffect {
   type: "campaign_data";

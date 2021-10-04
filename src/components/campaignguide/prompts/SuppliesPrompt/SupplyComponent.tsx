@@ -103,7 +103,7 @@ export default function SupplyComponent({
         rounded
         countRender={(
           <View style={space.paddingSideXs}>
-            <Text style={[typography.counter, typography.center, { minWidth: 28 }]}>
+            <Text style={[typography.counter, typography.center, { minWidth: 26 }]}>
               { existingCount > 0 ? `(${existingCount}) + ` : ''}{ count }
             </Text>
           </View>
@@ -116,7 +116,7 @@ export default function SupplyComponent({
     );
   }, [onIncrement, onDecrement, onToggleChange, existingCount, supply.multiple, remainingPoints, supply.cost, count, editable, colors, typography]);
   return (
-    <View style={[space.paddingSideS, space.paddingBottomS, { backgroundColor: colors.L20 }]}>
+    <View style={[space.paddingSideS, space.paddingTopS, { backgroundColor: colors.L20 }]}>
       <SupplyInputItem
         supply={supply.id}
         name={supply.name}
