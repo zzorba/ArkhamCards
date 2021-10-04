@@ -4536,6 +4536,9 @@ msgstr ""
 msgid "Choose deck"
 msgstr ""
 
+msgid "Frost"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } 조사자는 <b>미칩니다</b>."
@@ -5837,6 +5840,10 @@ msgstr "회피"
 msgctxt "action"
 msgid "Resource"
 msgstr "자원(획득)"
+
+msgctxt "slots"
+msgid "None"
+msgstr ""
 
 msgctxt "Draw Cards"
 msgid "All"

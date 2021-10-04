@@ -24,8 +24,9 @@ interface Props {
   fixedTranslations?: {
     [key: string]: string;
   };
+  includeNone?: boolean;
 }
-export default function DbChooserButton({ componentId, title, field, onChange, fixedTranslations, selection, indent, query, tabooSetId, processValue, capitalize }: Props) {
+export default function DbChooserButton({ componentId, title, field, includeNone, onChange, fixedTranslations, selection, indent, query, tabooSetId, processValue, capitalize }: Props) {
   const { db } = useContext(DatabaseContext);
   const { lang, listSeperator } = useContext(LanguageContext);
   const [pressed, setPressed] = useState(false);
@@ -55,13 +56,18 @@ export default function DbChooserButton({ componentId, title, field, onChange, f
       console.log('};')
       */
       const actualValues = fixedTranslations ? map(values, item => fixedTranslations[item] || item) : values;
+      const noneString = includeNone && fixedTranslations ? fixedTranslations.none : undefined;
+
       const actualSelection = fixedTranslations ? map(selection || [], item => fixedTranslations[item] || item) : selection;
       Navigation.push<SearchSelectProps>(componentId, {
         component: {
           name: 'SearchFilters.Chooser',
           passProps: {
             placeholder: t`Search ${title}`,
-            values: fixedTranslations ? actualValues.sort((a, b) => a.localeCompare(b, lang)) : actualValues,
+            values: [
+              ...(noneString ? [noneString] : []),
+              ...(fixedTranslations ? actualValues.sort((a, b) => a.localeCompare(b, lang)) : actualValues),
+            ],
             onChange: onSelectionChange,
             selection: actualSelection,
             capitalize,
@@ -89,7 +95,7 @@ export default function DbChooserButton({ componentId, title, field, onChange, f
       });
       setPressed(false);
     });
-  }, [capitalize, db, field, componentId, title, fixedTranslations, lang, setPressed, onSelectionChange, selection, processValue, query, tabooSetId]);
+  }, [capitalize, includeNone, db, field, componentId, title, fixedTranslations, lang, setPressed, onSelectionChange, selection, processValue, query, tabooSetId]);
 
   const selectedDescription = useMemo(() => {
     if (!selection || !selection.length) {

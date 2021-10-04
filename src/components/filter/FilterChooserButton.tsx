@@ -18,6 +18,7 @@ interface Props {
   fixedTranslations?: {
     [key: string]: string;
   };
+  includeNone?: boolean;
 }
 
 export default function FilterChooserButton({
@@ -33,6 +34,7 @@ export default function FilterChooserButton({
   query,
   capitalize,
   fixedTranslations,
+  includeNone,
 }: Props) {
   const onChange = useCallback((values: string[]) => {
     onFilterChange(setting, values);
@@ -51,6 +53,7 @@ export default function FilterChooserButton({
       tabooSetId={tabooSetId}
       capitalize={capitalize}
       fixedTranslations={fixedTranslations}
+      includeNone={includeNone}
     />
   );
 }

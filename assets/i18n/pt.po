@@ -4672,6 +4672,9 @@ msgstr ""
 msgid "Choose deck"
 msgstr ""
 
+msgid "Frost"
+msgstr ""
+
 msgctxt "masculine"
 msgid "Alive"
 msgstr "Vivo"
@@ -5987,6 +5990,10 @@ msgstr "Evadir"
 msgctxt "action"
 msgid "Resource"
 msgstr "Recurso"
+
+msgctxt "slots"
+msgid "None"
+msgstr ""
 
 msgctxt "Draw Cards"
 msgid "All"

@@ -4361,6 +4361,9 @@ msgstr ""
 msgid "Choose deck"
 msgstr ""
 
+msgid "Frost"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr ""
@@ -5663,6 +5666,10 @@ msgstr ""
 
 msgctxt "action"
 msgid "Resource"
+msgstr ""
+
+msgctxt "slots"
+msgid "None"
 msgstr ""
 
 msgctxt "Draw Cards"
