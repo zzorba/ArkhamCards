@@ -4525,8 +4525,6 @@ msgstr "생존자 0레벨 카드를 5장보다 많이 포함할 수 없습니다
 
 msgid "Sign into Arkhan Cards on the Settings tab to enable"
 msgstr "설정 탭에서 ArkhamCards에 로그인하여 활성화"
-msgid "Sign into Arkham Cards on the Settings tab to enable"
-msgstr "설정 탭에서 ArkhamCards에 로그인하여 활성화"
 
 msgid "Asset: Hand x2. Arcane"
 msgstr "자산: 손 x2. 마법"
