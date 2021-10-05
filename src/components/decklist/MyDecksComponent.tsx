@@ -61,7 +61,6 @@ function MyDecksComponent({
   }, onRefresh] = useMyDecks(deckActions);
 
   useEffect(() => {
-    console.log(`MyDecks: user: ${userId}, arkhamDb: ${arkhamDb}`);
     const now = new Date();
     const cacheArkhamDb = !((!myDecks || myDecks.length === 0 || !myDecksUpdated || (myDecksUpdated.getTime() / 1000 + 600) < (now.getTime() / 1000)) && signedIn);
     onRefresh(cacheArkhamDb);
