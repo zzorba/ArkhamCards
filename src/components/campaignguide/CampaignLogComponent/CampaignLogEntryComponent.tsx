@@ -17,6 +17,8 @@ interface Props {
   section: EntrySection;
   interScenarioId?: string;
   title?: string;
+  first: boolean;
+  last: boolean;
 }
 
 function FreeFormCampaignLogEntryComponent({ entry, interScenarioId }: { entry: CampaignLogFreeformEntry, interScenarioId?: string }) {
@@ -62,7 +64,7 @@ function FreeFormCampaignLogEntryComponent({ entry, interScenarioId }: { entry: 
   );
 }
 
-export default function CampaignLogEntryComponent({ entry, interScenarioId, campaignGuide, section, sectionId, title }: Props) {
+export default function CampaignLogEntryComponent({ entry, interScenarioId, campaignGuide, section, sectionId, title, first, last }: Props) {
   if (entry.type === 'freeform') {
     return <FreeFormCampaignLogEntryComponent entry={entry} interScenarioId={interScenarioId} />;
   }
@@ -95,6 +97,8 @@ export default function CampaignLogEntryComponent({ entry, interScenarioId, camp
           text={logEntry.supply.name}
           crossedOut={crossedOut}
           entry={entry}
+          first={first}
+          last={last}
         />
       );
     }

@@ -9,10 +9,12 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import { find } from 'lodash';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
+import TraumaSummary from '@components/campaign/TraumaSummary';
 
 interface Props {
   code: string;
   investigator?: Card;
+  trauma?: boolean;
   investigatorButton?: React.ReactNode;
   name: string;
   description?: string;
@@ -27,6 +29,7 @@ function InvesigatorCheckListItemComponent({
   code,
   investigator,
   investigatorButton,
+  trauma,
   selected,
   toggle,
   onSecondaryChoice,
@@ -35,6 +38,7 @@ function InvesigatorCheckListItemComponent({
   code: string;
   investigator: Card;
   investigatorButton?: React.ReactNode;
+  trauma?: boolean;
   selected: boolean;
   toggle: (value: boolean) => void;
   onSecondaryChoice?: (code: string) => void;
@@ -45,19 +49,20 @@ function InvesigatorCheckListItemComponent({
   const onPress = useCallback(() => toggle(!selected), [selected, toggle]);
   const onSecondaryPress = useCallback(() => onSecondaryChoice?.(code), [onSecondaryChoice, code]);
   const yithian = useMemo(() => !!find(campaignLog.traumaAndCardData(code)?.storyAssets, x => x === BODY_OF_A_YITHIAN), [code, campaignLog]);
+  const traumaAndCardData = useMemo(() => campaignLog.traumaAndCardData(investigator.code), [investigator.code, campaignLog]);
   const secondaryButton = useMemo(() => {
     if (!selected || !investigatorButton || !onSecondaryChoice) {
       return null;
     }
-    return editable ? (
+    return (editable ? (
       <TouchableOpacity
-        style={[space.paddingXs, space.paddingLeftM]}
+        style={[space.paddingXs, trauma ? space.paddingLeftS : space.paddingLeftM]}
         onPress={onSecondaryPress}
       >
         { investigatorButton }
       </TouchableOpacity>
-    ) : investigatorButton;
-  }, [onSecondaryChoice, onSecondaryPress, editable, selected, investigatorButton]);
+    ) : investigatorButton);
+  }, [onSecondaryChoice, onSecondaryPress, editable, selected, investigatorButton, trauma]);
   const content = useMemo(() => {
     const switchContent = (editable || selected) && (
       <View style={styles.switch}>
@@ -77,10 +82,13 @@ function InvesigatorCheckListItemComponent({
         investigator={investigator}
         yithian={yithian}
       >
-        { onSecondaryChoice ? secondaryButton : switchContent }
+        <View style={styles.rowRight}>
+          { trauma && <TraumaSummary trauma={traumaAndCardData} investigator={investigator} whiteText /> }
+          { onSecondaryChoice ? secondaryButton : switchContent }
+        </View>
       </CompactInvestigatorRow>
     );
-  }, [secondaryButton, width, onSecondaryChoice, editable, toggle, yithian, selected, investigator]);
+  }, [secondaryButton, width, onSecondaryChoice, editable, toggle, yithian, selected, investigator, trauma, traumaAndCardData]);
   return (
     <View style={space.paddingBottomXs}>
       { editable ? (
@@ -96,6 +104,7 @@ export default function CheckListItemComponent({
   code,
   investigator,
   investigatorButton,
+  trauma,
   name,
   description,
   color,
@@ -117,6 +126,7 @@ export default function CheckListItemComponent({
         code={code}
         investigator={investigator}
         investigatorButton={investigatorButton}
+        trauma={trauma}
         selected={selected}
         toggle={toggle}
         onSecondaryChoice={onSecondaryChoice}
@@ -176,5 +186,10 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  rowRight: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
 });

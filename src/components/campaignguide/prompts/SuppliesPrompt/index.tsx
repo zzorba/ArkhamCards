@@ -86,7 +86,7 @@ export default function SuppliesPrompt({ id, bulletType, text, input }: Props) {
   const baseTotal = input.points[playerCount - 1];
   const suppliesInput = useMemo(() => scenarioState.supplies(id), [scenarioState, id]);
   const supplyCounts = suppliesInput !== undefined ? suppliesInput : counts;
-  const supplyIcon = <AppIcon name="resource" size={16} color={colors.L30} />;
+  const supplyIcon = <AppIcon key="resource" name="resource" size={16} color={colors.L30} />;
   return (
     <InputWrapper
       bulletType={bulletType || 'default'}
@@ -123,11 +123,11 @@ export default function SuppliesPrompt({ id, bulletType, text, input }: Props) {
                 { map(filter(input.supplies, (supply) => {
                   const count = counts[supply.id] || 0;
                   return (suppliesInput === undefined || count > 0);
-                }), supply => {
+                }), (supply, idx2) => {
                   const count = counts[supply.id] || 0;
                   return (
                     <SupplyComponent
-                      key={supply.id}
+                      key={`${supply.id}-${idx2}`}
                       sectionId={input.section}
                       investigator={investigator}
                       supply={supply}

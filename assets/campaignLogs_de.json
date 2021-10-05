@@ -1414,7 +1414,7 @@
           },
           {
             "id": "fell_into_depths",
-            "text": "Die Ermittler sind in die Tiefe gestürzt."
+            "text": "the investigators fell into the depths."
           },
           {
             "id": "forged_bond_with_ichtaca",
@@ -1462,7 +1462,7 @@
           },
           {
             "id": "ichtaca_set_against",
-            "text": "Ichtaca hat sich gegen dich gestellt."
+            "text": "Ichtaca is set against you."
           },
           {
             "id": "ichtacas_faith_restored",
@@ -1494,7 +1494,7 @@
           },
           {
             "id": "nexus_is_near",
-            "text": "Der Nexus ist nah."
+            "text": "the nexus is near."
           },
           {
             "id": "paths_known",
@@ -1522,7 +1522,7 @@
           },
           {
             "id": "relic_is_missing",
-            "text": "Das Relikt ist verschwunden."
+            "text": "the relic is missing."
           },
           {
             "id": "rescued_alejandro",
@@ -1587,7 +1587,7 @@
           },
           {
             "id": "final_depth",
-            "text": "Tiefenstufe"
+            "text": "#X# depth"
           },
           {
             "id": "hote_no_mulligan",
@@ -1716,7 +1716,7 @@
       },
       {
         "id": "pocketknife",
-        "name": "Taschenmesser",
+        "name": "Pocketknife",
         "description": "Zu klein, um als verlässliche Waffe zu dienen, aber dafür gut zu verbergen.",
         "cost": 2
       },
@@ -2789,7 +2789,7 @@
           },
           {
             "id": "fell_into_depths",
-            "text": "Die Ermittler sind in die Tiefe gestürzt."
+            "text": "the investigators fell into the depths."
           },
           {
             "id": "forged_bond_with_ichtaca",
@@ -2837,7 +2837,7 @@
           },
           {
             "id": "ichtaca_set_against",
-            "text": "Ichtaca hat sich gegen dich gestellt."
+            "text": "Ichtaca is set against you."
           },
           {
             "id": "ichtacas_faith_restored",
@@ -2869,7 +2869,7 @@
           },
           {
             "id": "nexus_is_near",
-            "text": "Der Nexus ist nah."
+            "text": "the nexus is near."
           },
           {
             "id": "paths_known",
@@ -2893,7 +2893,7 @@
           },
           {
             "id": "relic_is_missing",
-            "text": "Das Relikt ist verschwunden."
+            "text": "the relic is missing."
           },
           {
             "id": "rescued_alejandro",
@@ -2958,7 +2958,7 @@
           },
           {
             "id": "final_depth",
-            "text": "Tiefenstufe"
+            "text": "#X# depth"
           },
           {
             "id": "hote_no_mulligan",
@@ -3058,7 +3058,7 @@
       },
       {
         "id": "pocketknife",
-        "name": "Taschenmesser",
+        "name": "Pocketknife",
         "description": "Zu klein, um als verlässliche Waffe zu dienen, aber dafür gut zu verbergen.",
         "cost": 2
       },
