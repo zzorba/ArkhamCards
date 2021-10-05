@@ -30,7 +30,7 @@ export default function TextEntryComponent({ text, icon, crossedOut, entry, deco
       first ? { borderTopLeftRadius: 4, borderTopRightRadius: 4, marginTop: xs } : undefined,
       last ? { borderBottomLeftRadius: 4, borderBottomRightRadius: 4, marginBottom: s } : undefined,
     ] : undefined}>
-      <View style={[styles.wrapper, space.paddingTopS, space.paddingBottomS, !last ? { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined]}>
+      <View style={[styles.wrapper, space.paddingTopS, space.paddingBottomS, !last && icon ? { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined]}>
         { !!icon && <View style={space.paddingRightS}><AppIcon name={icon} size={36} color={colors.M} /></View> }
         <Text style={[
           icon ? typography.menuText : typography.large,
