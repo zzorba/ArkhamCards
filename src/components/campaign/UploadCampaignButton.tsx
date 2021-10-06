@@ -101,7 +101,7 @@ export default function UploadCampaignButton({ componentId, campaign, campaignId
       <DeckButton
         icon="backup"
         title={standalone ? t`Upload standalone` : t`Upload campaign`}
-        detail={t`Sign into Arkhan Cards on the Settings tab to enable`}
+        detail={t`Sign into Arkham Cards on the Settings tab to enable`}
         disabled
         thin
         color="light_gray"
