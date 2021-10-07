@@ -65820,7 +65820,7 @@
 {
   "id": "tdea",
   "position": 5,
-  "version": 1,
+  "version": 2,
   "name": "The Dream-Quest",
   "campaign_type": "campaign",
   "campaign_log": [
@@ -69160,13 +69160,45 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["proceed_campaign_b"]
+            "steps": [
+              "check_campaign_version_proceed"
+            ]
           }
         ]
       }
     },
     {
-      "id": "proceed_campaign_b",
+      "id": "check_campaign_version_proceed",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["proceed_campaign_b_v2"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["proceed_campaign_b_v1"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "proceed_campaign_b_v1",
+      "type": "input",
+      "input": {
+        "type": "receive_campaign_link",
+        "linked_prompt": "Proceed to <b>Scenario I–B: Waking Nightmare</b>.",
+        "id": "dreamers_grow_weaker",
+        "choices": []
+      }
+    },
+    {
+      "id": "proceed_campaign_b_v2",
       "type": "input",
       "input": {
         "type": "receive_campaign_link",
@@ -71455,7 +71487,7 @@
 {
   "id": "tdeb",
   "position": 6,
-  "version": 1,
+  "version": 2,
   "name": "The Web of Dreams",
   "campaign_type": "campaign",
   "campaign_log": [
