@@ -20,10 +20,10 @@ msgid "${ action.name } (Campaign B)"
 msgstr "${ action.name } (캠페인 B)"
 
 msgid "No assets that take up the ally slot are allowed by On Your Own."
-msgstr "조력자 슬롯을 차지하는 자산은 허용되지 않습니다 (On Your Own)."
+msgstr "'홀로서기' 카드로 인해 조력자 슬롯을 차지하는 자산은 허용되지 않습니다."
 
 msgid "Too many off-class cards for Versatile"
-msgstr "이외의 다른 역할군 카드가 너무 많이 포함되어 있습니다 (다재다능)."
+msgstr "'다재다능' 카드 효과를 적용하더라도 이외의 다른 역할군 카드가 너무 많이 포함되어 있습니다."
 
 msgid "Hand"
 msgstr "손"
@@ -74,7 +74,7 @@ msgstr "${ listOfThings }, ${ lastThing }"
 
 #, javascript-format
 msgid "${ this.name } <i>(${ this.subname })</i>"
-msgstr "${ this.name }(${ this.subname })"
+msgstr ""
 
 msgid "None"
 msgstr "없음"
@@ -235,7 +235,7 @@ msgid ""
 msgid_plural ""
 "Each investigator pays ${ entry.xpCost } experience points to play this "
 "scenario."
-msgstr[0] "이 이야기를 즐기려면 각 조사자는 경험치 ${ entry.xpCost }을/를 소비해야 합니다."
+msgstr[0] "이 이야기를 즐기려면 각 조사자는 경험치 ${ entry.xpCost }점씩을 소비해야 합니다."
 
 #. This is a deck upgrade action.
 msgid ""
@@ -249,7 +249,7 @@ msgid ""
 msgstr ""
 "덱 향상을 되돌리고자 합니다.\n"
 "\n"
-"앱은 아컴디비의 최신 덱 향상을 삭제하지 않으며, 이전의 덱 변경 사항은 여전히 적용되어 있습니다.\n"
+"앱은 아컴디비의 최신 덱 향상을 삭제하지 않으며, 이전의 덱 변경점은 여전히 적용되어 있습니다.\n"
 "\n"
 "이 과정을 통해서 향상을 수행하기 이전의 덱을 확인할 수 있습니다."
 
@@ -319,7 +319,7 @@ msgid "Second Core Set"
 msgstr "두번째 기본판"
 
 msgid "Edit Collection"
-msgstr "보유게임 수정"
+msgstr "보유 게임 수정"
 
 msgid "Show all cards"
 msgstr "모든 카드 보기"
@@ -419,7 +419,7 @@ msgid "Check ArkhamDB for updates"
 msgstr "아컴디비에서 새로운 카드 확인하기"
 
 msgid "Card Collection"
-msgstr "보유게임"
+msgstr "보유 게임"
 
 msgid "Spoiler Settings"
 msgstr "스포일러 설정"
@@ -428,7 +428,7 @@ msgid "Preferences"
 msgstr "설정"
 
 msgid "Swipe between card results"
-msgstr "카드 사이 스와이프"
+msgstr "쓸어넘겨 카드 간 이동하기"
 
 msgid ""
 "Mark the scenarios you've played through to make the results start showing "
@@ -561,7 +561,7 @@ msgid "Packs: All"
 msgstr "팩: 전부"
 
 msgid "Packs: ${ allPacksString }"
-msgstr "팩:  ${ allPacksString }"
+msgstr "팩: ${ allPacksString }"
 
 msgid "HPI"
 msgstr "조사자당 체력"
@@ -596,7 +596,7 @@ msgid "Types"
 msgstr "종류"
 
 msgid "SubTypes"
-msgstr "세부종류"
+msgstr "세부 종류"
 
 msgid "Cost"
 msgstr "비용"
@@ -638,7 +638,7 @@ msgid "Encounter Sets"
 msgstr "조우 세트"
 
 msgid "Illustrators"
-msgstr "일러스트레이터"
+msgstr "삽화가"
 
 msgid "Filters"
 msgstr "필터"
@@ -733,7 +733,7 @@ msgid "Upgrade ${ humanVersionNumber }: ${ deck.availableExperience } XP"
 msgstr "${ humanVersionNumber } 향상: ${ deck.availableExperience } 경험치"
 
 msgid "Saving..."
-msgstr "저장하는중..."
+msgstr "저장 중..."
 
 msgid "Experience points"
 msgstr "경험치"
@@ -756,10 +756,10 @@ msgid "All"
 msgstr "전부"
 
 msgid "Redraw"
-msgstr "다시뽑기"
+msgstr "다시 뽑기"
 
 msgid "Reshuffle"
-msgstr "다시섞기"
+msgstr "다시 섞기"
 
 msgid "Reset"
 msgstr "초기화"
@@ -781,10 +781,10 @@ msgstr ""
 "이 덱은 캠페인을 진행중이지 않은 것으로 보입니다.\n"
 "\n"
 "덱을 캠페인에 추가하면, 캠페인 진행 과정의 여러개의 덱들에서 남은 고유 약점을 추적할 수 있습니다.\n"
-"그러는 대신, 당신의 보유게임 전부에서 기본 약점을 뽑을 수 있습니다."
+"그러는 대신, 당신의 보유 게임 전부에서 기본 약점을 뽑을 수 있습니다."
 
 msgid "Draw From Collection"
-msgstr "보유게임에서 뽑기"
+msgstr "보유 게임에서 뽑기"
 
 msgid "Draw Weaknesses"
 msgstr "약점 뽑기"
@@ -850,16 +850,16 @@ msgid "You seem to be offline. Refresh Network?"
 msgstr "오프라인 상태로 보입니다. 인터넷 연결을 확인해주세요."
 
 msgid "Use Starter Deck"
-msgstr "초심자용 덱"
+msgstr "초심자용 견본 덱 사용"
 
 msgid "Create deck"
 msgstr "덱 생성하기"
 
 msgid "No Changes"
-msgstr "카드 변동없음"
+msgstr "카드 변동 없음"
 
 msgid "Card changes"
-msgstr "카드 변경내역"
+msgstr "카드 변경 내역"
 
 msgid "Campaign"
 msgstr "캠페인"
@@ -915,10 +915,10 @@ msgid "Upgrade Deck"
 msgstr "덱 향상"
 
 msgid "Save Local Changes"
-msgstr "디바이스내 변화 저장"
+msgstr "장치 내 변경사항 저장"
 
 msgid "Please save any local edits to this deck before sharing to ArkhamDB"
-msgstr "아컴디비에 공유하기 전에 디바이스의 변경사항을 저장해주십시오"
+msgstr "아컴디비에 공유하기 전에 장치 내 변경사항을 저장해주십시오"
 
 msgid "Unsupported Operation"
 msgstr "지원하지 않는 기능"
@@ -963,7 +963,7 @@ msgid "Delete deck"
 msgstr "덱 삭제"
 
 msgid "Are you sure you want to delete this deck?"
-msgstr "정말로 덱을 삭제하기를 원하십니까?"
+msgstr "정말로 덱 삭제를 원하십니까?"
 
 msgid "Deck has been deleted"
 msgstr "덱이 삭제되었습니다."
@@ -982,7 +982,7 @@ msgid "Error"
 msgstr "오류"
 
 msgid "Deleting"
-msgstr "삭제하는중"
+msgstr "삭제 중"
 
 #, javascript-format
 msgid "${ xp } (${ adjustment }) XP"
@@ -1094,7 +1094,7 @@ msgid "Too many cards."
 msgstr "카드 장수가 너무 많습니다."
 
 msgid "Too many copies of a card with the same name."
-msgstr "같은 이름을 가진 카드의 사본의 장수가 너무 많습니다."
+msgstr "같은 이름을 가진 카드의 사본 장수가 너무 많습니다."
 
 msgid "Contains forbidden cards (cards not permitted by Faction)"
 msgstr "금지된 카드를 포함하고 있습니다 (역할군에 의한 기준)"
@@ -1198,7 +1198,7 @@ msgid "No matching investigators for \"${ searchTerm }\"."
 msgstr "\"${ searchTerm }\" 검색 조건과 일치하는 조사자가 없습니다."
 
 msgid "N/A"
-msgstr "N/A"
+msgstr ""
 
 msgid "All Investigators"
 msgstr "모든 조사자"
@@ -1250,7 +1250,7 @@ msgid "Game Text"
 msgstr "게임 텍스트"
 
 msgid "Flavor Text"
-msgstr "읽을거리"
+msgstr "읽을 거리"
 
 msgid "Card Backs"
 msgstr "카드 뒷면"
@@ -1272,7 +1272,7 @@ msgid "Player Cards"
 msgstr "플레이어 카드"
 
 msgid "FAQ"
-msgstr "FAQ"
+msgstr ""
 
 msgid "Allowed Cards"
 msgstr "허용된 카드"
@@ -1293,7 +1293,7 @@ msgid ""
 "to craft a healthy balance between investigator power and scenario "
 "difficulty, and to enforce shifts in deckbuilding environments over time."
 msgstr ""
-"금기 목록은 아컴 호러: 카드 게임의 덱 구성에 제한이나 문구 수정을 가하는 선택 규칙입니다. 이 목록은 조사자의 능력과 시나리오 "
+"금기 목록은 '아컴 호러: 카드 게임'의 덱 구성에 제한이나 문구 수정을 가하는 선택 규칙입니다. 이 목록은 조사자의 능력과 시나리오 "
 "난이도 사이에서 적당한 균형을 잡기 위해 고안되었으며, 시간이 지남에 따라 덱 구성 환경이 변화할 수 있도록 설계됐습니다."
 
 msgid ""
@@ -1438,7 +1438,7 @@ msgid "Choose additional card"
 msgstr "추가 카드 선택"
 
 msgid "The investigators must decide (choose one):"
-msgstr "조사자들은 결정해야만 합니다 (하나를 선택합니다):"
+msgstr "조사자들은 결정해야만 합니다(하나를 선택합니다):"
 
 #, javascript-format
 msgid "${ supplyName } to use (${ desiredCount })"
@@ -2635,7 +2635,7 @@ msgstr ""
 msgid ""
 "This will let you backup your local decks and campaigns for safe-keeping. "
 "This can also be used to move them to another device."
-msgstr "이 기능은 당신의 로컬 덱과 캠페인을 안전하게 백업하게 해줍니다. 또한 다른 기기로 이동하는데 사용할 수도 있습니다."
+msgstr "이 기능은 당신의 장치 내에 있는 덱과 캠페인을 안전하게 백업하게 해줍니다. 또한 다른 기기로 이동하는데 사용할 수도 있습니다."
 
 msgid "Save backup"
 msgstr "백업 저장"
@@ -2683,7 +2683,7 @@ msgid "No changes:"
 msgstr "변화없음:"
 
 msgid "Local version appears to be newer:"
-msgstr "로컬 버전이 최신:"
+msgstr "장치 내의 버전이 최신:"
 
 msgid "Import selected data"
 msgstr "선택한 데이터 불러오기"
@@ -2750,7 +2750,7 @@ msgid ""
 "\n"
 "You can override your language preference for this app in Settings."
 msgstr ""
-"당신의 휴대폰의 선호 언어(${ lang })와 일치하는 언어의 카드를 아컴디비에서 다운로드 하시겠습니까?\n"
+"장치에서 발견된 선호 언어(${ lang })와 일치하는 언어의 카드를 아컴디비에서 다운로드 하시겠습니까?\n"
 "\n"
 "이 기능은 앱 설정의 선호하는 언어보다 우선됩니다."
 
@@ -3013,10 +3013,10 @@ msgid "Large"
 msgstr "큼"
 
 msgid "X-Large"
-msgstr "더큼"
+msgstr "더 큼"
 
 msgid "XX-Large"
-msgstr "가장큼"
+msgstr "훨씬 더 큼"
 
 msgid "Font Size"
 msgstr "글자 크기"
@@ -3056,7 +3056,7 @@ msgstr[0] ""
 "${ upgradeCards }"
 
 msgid "You can edit your collection under Settings to adjust the eligible choices."
-msgstr "설정의 보유게임을 수정하여 접근 가능한 선택지를 조정할 수 있습니다."
+msgstr "설정의 보유 게임을 수정하여 접근 가능한 선택지를 조정할 수 있습니다."
 
 msgid ""
 "<b>Additional Options</b>: When you upgrade a [[Fortune]] or [[Gambit]] "
@@ -3452,8 +3452,8 @@ msgid ""
 msgstr ""
 "저장된 덱을 되돌리려고 하는 것으로 보입니다.\n"
 "\n"
-"이런 변경을 되돌릴 수 없습니다. 그러므로, 변경을 다시 수행하면 중복해서 변경 사항이 적용될 수도 있습니다. 변화를 다시 적용하기 "
-"전에, 덱을 확인하고 수동으로 변경 사항을 되돌리십시오."
+"이런 변경을 되돌릴 수 없습니다. 그러므로, 변경을 다시 수행하면 중복해서 변경점이 적용될 수도 있습니다. 변화를 다시 적용하기 "
+"전에, 덱을 확인하고 수동으로 변경점을 되돌리십시오."
 
 #. This is a deck upgrade action.
 msgid "Undo anyway"
@@ -3546,10 +3546,10 @@ msgid "Choose a handle"
 msgstr "별명 선택"
 
 msgid "ArkhamDB Account"
-msgstr "ArkhamDB 계정"
+msgstr "아컴디비 계정"
 
 msgid "Arkham Cards Account"
-msgstr "Arkham Cards 계정"
+msgstr "ArkhamCards 계정"
 
 msgid "Looks like there is already an account registered with this email address."
 msgstr "해당 이메일 주소로 가입된 계정이 이미 있는 것으로 보입니다."
@@ -3630,7 +3630,7 @@ msgid "Sign in to app"
 msgstr "앱에 로그인하기"
 
 msgid "Problem reading from ArkhamDB"
-msgstr "ArkhamDB를 읽어오는데 문제 발생"
+msgstr "아컴디비를 읽어오는데 문제 발생"
 
 msgid ""
 "If you are having trouble with your account you should try to reconnect.\n"
@@ -3640,7 +3640,7 @@ msgid ""
 msgstr ""
 "당신의 계정에 문제가 있다면, 재연결을 시도해야합니다.\n"
 "\n"
-"문제가 지속되는 경우 로그아웃이 가능합니다. 단, 캠페인에 포함된 ArkhamDB 덱은 연결이 끊길 것입니다."
+"문제가 지속되는 경우 로그아웃이 가능합니다. 단, 캠페인에 포함된 아컴디비 덱은 연결이 끊길 것입니다."
 
 msgid "Authorization issues"
 msgstr "인증 문제"
@@ -3661,7 +3661,7 @@ msgid "Log in"
 msgstr "로그인"
 
 msgid "ArkhamDB"
-msgstr "ArkhamDB"
+msgstr "아컴디비"
 
 msgid "Narration enabled"
 msgstr "나레이션 활성화"
@@ -3670,7 +3670,7 @@ msgid "Audio narration"
 msgstr "오디오 나레이션"
 
 msgid "Dissonant Voices"
-msgstr "Dissonant Voices"
+msgstr ""
 
 msgid "Notes"
 msgstr "메모"
@@ -3698,7 +3698,7 @@ msgid "Earned experience:"
 msgstr "획득한 경험치:"
 
 msgid "Sign out of Arkham Cards?"
-msgstr "Arkham Cards에 로그아웃 하시겠습니까?"
+msgstr "ArkhamCards에서 로그아웃 하시겠습니까?"
 
 msgid ""
 "Are you sure you want to sign out of Arkham Cards?\n"
@@ -3708,9 +3708,9 @@ msgid ""
 "\n"
 "Note: if you have made recent changes while offline, they may be lost."
 msgstr ""
-"Arkham Cards를 로그아웃 하시겠습니까?\n"
+"ArkhamCards에서 로그아웃 하시겠습니까?\n"
 "\n"
-"업로드 되거나 당신에게 공유된 모든 캠페인은 이 디바이스에서 삭제됩니다. 추후 로그인을 수행하면 다시 동기화할 수 있습니다.\n"
+"업로드 되거나 당신에게 공유된 모든 캠페인은 이 장치에서 삭제됩니다. 추후 로그인을 수행하면 다시 동기화할 수 있습니다.\n"
 "\n"
 "참고: 최근에 오프라인으로 수행한 변경사항은 없어질 수도 있습니다."
 
@@ -4155,7 +4155,7 @@ msgid "Changes have been recorded."
 msgstr "변경점이 기록되었습니다."
 
 msgid "No adjustments need saving."
-msgstr "저장이 필요한 변경 사항이 없습니다."
+msgstr "저장이 필요한 변경점이 없습니다."
 
 msgid ""
 "When you have finished making adjustments, press the 'Save' button to "
@@ -4531,13 +4531,13 @@ msgstr "자산: 손 x2. 마법"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
-msgstr ""
+msgstr "${ supplyIcon }: ${ total }점 중 ${ spent }점 사용"
 
 msgid "Choose deck"
-msgstr ""
+msgstr "덱을 선택하세요"
 
 msgid "Frost"
-msgstr ""
+msgstr "서리"
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -5843,7 +5843,7 @@ msgstr "자원(획득)"
 
 msgctxt "slots"
 msgid "None"
-msgstr ""
+msgstr "없음"
 
 msgctxt "Draw Cards"
 msgid "All"
