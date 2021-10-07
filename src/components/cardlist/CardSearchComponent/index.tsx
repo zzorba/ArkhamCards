@@ -33,6 +33,7 @@ interface Props {
   setHideVersatile?: (value: boolean) => void;
   storyOnly?: boolean;
   includeDuplicates?: boolean;
+  browse?: boolean;
 }
 
 interface CardSearchNavigationOptions {
@@ -120,6 +121,7 @@ export default function CardSearchComponent(props: Props) {
     setHideVersatile,
     storyOnly,
     includeDuplicates,
+    browse,
   } = props;
   const { typography } = useContext(StyleContext);
   const visible = useComponentVisible(componentId);
@@ -232,6 +234,7 @@ export default function CardSearchComponent(props: Props) {
       storyOnly={storyOnly}
       initialSort={sort}
       includeDuplicates={includeDuplicates}
+      browse={browse}
     />
   );
 }

@@ -81,6 +81,9 @@ export default function BackupView({ componentId, safeMode }: BackupProps & Navi
       const res = await DocumentPicker.pickSingle({
         type: [DocumentPicker.types.allFiles],
       });
+      if (res.fileCopyUri === null) {
+        return;
+      }
       if (!res.name.endsWith('.acb') && !res.name.endsWith('.json') && !res.name.endsWith('.null')) {
         Alert.alert(
           t`Unexpected file type`,

@@ -44,6 +44,7 @@ interface Props {
 
   initialSort?: SortType;
   includeDuplicates?: boolean;
+  browse?: boolean;
 }
 
 function searchOptionsHeight(fontScale: number) {
@@ -238,6 +239,7 @@ export default function({
   storyOnly,
   initialSort,
   includeDuplicates,
+  browse,
 }: Props) {
   const { fontScale, colors } = useContext(StyleContext);
   const { lang, useCardTraits } = useContext(LanguageContext);
@@ -371,6 +373,7 @@ export default function({
       { (handleScroll, showHeader) => (
         <>
           <DbCardResultList
+            browse={browse}
             componentId={componentId}
             deckId={deckId}
             query={query}

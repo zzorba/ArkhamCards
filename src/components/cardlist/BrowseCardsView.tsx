@@ -15,6 +15,7 @@ function CardSearchView({ componentId, sort }: Props) {
       componentId={componentId}
       mythosToggle
       sort={sort || SORT_BY_TYPE}
+      browse
     />
   );
 }
