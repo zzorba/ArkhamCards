@@ -127,6 +127,19 @@ export default class Database {
     }
   }
 
+  async sqliteVersion(): Promise<string> {
+    try {
+      const connection = await this.connectionP;
+      const queryRunner = connection.createQueryRunner();
+      const manager = connection.createEntityManager(queryRunner);
+      const result = await manager.query('select sqlite_version() as version');
+      return result[0].version;
+    } catch (e) {
+      console.log(e);
+      return '3.0.0';
+    }
+  }
+
   async startTransaction(): Promise<QueryRunner> {
     const connection = await this.connectionP;
     const queryRunner = connection.createQueryRunner();

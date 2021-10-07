@@ -22,13 +22,9 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', handler);
-
+    const sub = BackHandler.addEventListener('hardwareBackPress', handler);
     return () => {
-      BackHandler.removeEventListener(
-        'hardwareBackPress',
-        handler
-      );
+      sub.remove();
     };
   }, [handler]);
 }

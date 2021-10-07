@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { forEach } from 'lodash';
 import {
   Alert,
@@ -40,6 +40,7 @@ export default function DiagnosticsView() {
   const [dialog, showTextEditDialog] = useTextEditDialog();
   const { db } = useContext(DatabaseContext);
   const [schemaCleared, setSchemaCleared] = useState(false);
+  const [sqliteVersion, setSqliteVesion] = useState(t`Loading`);
   const { colors } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const dispatch = useDispatch();
@@ -47,6 +48,18 @@ export default function DiagnosticsView() {
   const state = useSelector((state: AppState) => state);
   const packs = useSelector(getAllPacks);
   const langChoice = useSelector(getLangChoice);
+
+  useEffect(() => {
+    let canceled = false;
+    db.sqliteVersion().then((versioned) => {
+      if (!canceled) {
+        setSqliteVesion(versioned)
+      }
+    });
+    return () => {
+      canceled = true;
+    };
+  }, [db, setSqliteVesion]);
 
   const exportCampaignData = useCallback(() => {
     Alert.alert(
@@ -211,6 +224,7 @@ export default function DiagnosticsView() {
           onPress={exportCampaignData}
           text={t`Export diagnostic data`}
         />
+        <SettingsItem text={t`Sqlite version: ${sqliteVersion}`} />
         <CardSectionHeader section={{ title: t`Caches` }} />
         <SettingsItem
           onPress={clearCache}
@@ -223,13 +237,11 @@ export default function DiagnosticsView() {
             text={cardsLoading ? t`Loading` : t`Clear card cache`}
           />
         ) }
-        { !cardsLoading && (
-          <SettingsItem
-            disabled={schemaCleared}
-            onPress={clearCardSchema}
-            text={schemaCleared ? t`Please close and restart the app` : t`Reset card database`}
-          />
-        )}
+        <SettingsItem
+          disabled={schemaCleared}
+          onPress={clearCardSchema}
+          text={schemaCleared ? t`Please close and restart the app` : t`Reset card database`}
+        />
         { debugSection }
       </ScrollView>
       { dialog }

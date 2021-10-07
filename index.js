@@ -8,6 +8,7 @@ import { ApolloProvider } from '@apollo/client';
 import { Navigation } from 'react-native-navigation';
 import Crashes from 'appcenter-crashes';
 import database from '@react-native-firebase/database';
+import SQLite from 'react-native-sqlite-storage';
 import 'reflect-metadata';
 
 import DatabaseProvider from './src/data/sqlite/DatabaseProvider';
@@ -67,6 +68,7 @@ Crashes.setListener({
 /* eslint-disable @typescript-eslint/no-unused-vars */
 let app = null;
 Navigation.events().registerAppLaunchedListener(() => {
+  // SQLite.enablePromise(true);
   registerScreens(MyProvider, { redux: store, persistor: persistor, apollo: apolloClient, anonApollo: anonClient });
   app = new App(store);
 });
