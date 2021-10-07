@@ -2562,19 +2562,19 @@ msgstr "Новая кампания"
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
@@ -4740,6 +4740,35 @@ msgid "Choose deck"
 msgstr ""
 
 msgid "Frost"
+msgstr ""
+
+msgid "Database reset"
+msgstr ""
+
+msgid "Please close and restart the app"
+msgstr ""
+
+msgid "Reset card database"
+msgstr ""
+
+msgid "Mythos Busters"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"This app is made possible by the continued support of our fans on Patreon "
+"and the ${ mythosBustersLink } podcast."
+msgstr ""
+
+msgid ""
+"This app is made possible by the continued support of our fans on ${ "
+"patreonLink } and the ${ mythosBustersLink } podcast."
+msgstr ""
+
+msgid ""
+"The card database has been reset.\n"
+"\n"
+"Please close the app and restart it to trigger a full sync of card data."
 msgstr ""
 
 msgctxt "masculine"

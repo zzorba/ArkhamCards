@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { forEach } from 'lodash';
 import {
   Alert,
@@ -13,7 +13,7 @@ import Crashes from 'appcenter-crashes';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { DISSONANT_VOICES_LOGIN, Pack } from '@actions/types';
+import { CARD_SET_SCHEMA_VERSION, DISSONANT_VOICES_LOGIN, Pack } from '@actions/types';
 import { clearDecks } from '@actions';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import Card from '@data/types/Card';
@@ -39,6 +39,7 @@ function goOnline() {
 export default function DiagnosticsView() {
   const [dialog, showTextEditDialog] = useTextEditDialog();
   const { db } = useContext(DatabaseContext);
+  const [schemaCleared, setSchemaCleared] = useState(false);
   const { colors } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const dispatch = useDispatch();
@@ -160,6 +161,15 @@ export default function DiagnosticsView() {
     );
   }, [showTextEditDialog, dispatch]);
 
+  const clearCardSchema = useCallback(() => {
+    dispatch({
+      type: CARD_SET_SCHEMA_VERSION,
+      schemaVersion: 1,
+    });
+    setSchemaCleared(true);
+    Alert.alert(t`Database reset`, t`The card database has been reset.\n\nPlease close the app and restart it to trigger a full sync of card data.`);
+  }, [dispatch]);
+
   const debugSection = useMemo(() => {
     if (!__DEV__) {
       return null;
@@ -206,11 +216,20 @@ export default function DiagnosticsView() {
           onPress={clearCache}
           text={t`Clear cache`}
         />
-        <SettingsItem
-          disabled={cardsLoading}
-          onPress={clearCardCache}
-          text={cardsLoading ? t`Loading` : t`Clear card cache`}
-        />
+        { !schemaCleared && (
+          <SettingsItem
+            disabled={cardsLoading}
+            onPress={clearCardCache}
+            text={cardsLoading ? t`Loading` : t`Clear card cache`}
+          />
+        ) }
+        { !cardsLoading && (
+          <SettingsItem
+            disabled={schemaCleared}
+            onPress={clearCardSchema}
+            text={schemaCleared ? t`Please close and restart the app` : t`Reset card database`}
+          />
+        )}
         { debugSection }
       </ScrollView>
       { dialog }
