@@ -88,6 +88,10 @@ const styles = StyleSheet.create({
     paddingRight: s,
     marginRight: TINY_PHONE ? xs : xs,
   },
+  skillIcon: {
+    marginLeft: 2,
+    position: 'relative',
+  },
   icon: {
     marginLeft: 4,
     marginBottom: 4,
@@ -97,5 +101,11 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     marginBottom: s,
+  },
+  healthIcon: {
+    width: 24,
+  },
+  sanityIcon: {
+    width: 28,
   },
 });

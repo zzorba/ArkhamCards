@@ -1,0 +1,23 @@
+diff --git a/node_modules/@types/react-native/index.d.ts b/node_modules/@types/react-native/index.d.ts
+index f5ddac5..4e068d1 100755
+--- a/node_modules/@types/react-native/index.d.ts
++++ b/node_modules/@types/react-native/index.d.ts
+@@ -2484,6 +2484,9 @@ export interface ViewProps
+      */
+     hitSlop?: Insets | undefined;
+ 
++
++    opacity?: number;
++
+     /**
+      * Invoked on mount and layout changes with
+      *
+@@ -8730,7 +8733,7 @@ export namespace Appearance {
+     /**
+      * Add an event handler that is fired when appearance preferences change.
+      */
+-    export function addChangeListener(listener: AppearanceListener): void;
++    export function addChangeListener(listener: AppearanceListener): EventSubscription;
+ 
+     /**
+      * Remove an event handler.

@@ -35,6 +35,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import DissonantVoicesLoginButton from './AccountSection/auth/DissonantVoicesLoginButton';
 import { useAlertDialog } from '@components/deck/dialogs';
 import { CURRENT_REDUX_VERSION } from '@reducers/settings';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 function contactPressed() {
   Linking.openURL('mailto:arkhamcards@gmail.com');

@@ -21,11 +21,7 @@ interface BasicScenario {
 }
 
 interface CampaignResultScenario extends BasicScenario {
-  type: 'result';
   result: CampaignResult;
-  canUndo: false;
-  closeOnUndo: false;
-  steps: ScenarioStep[];
 }
 
 interface PlayedScenario extends BasicScenario {

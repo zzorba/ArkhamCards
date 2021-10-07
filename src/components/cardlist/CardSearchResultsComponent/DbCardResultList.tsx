@@ -72,7 +72,6 @@ interface Props {
   showHeader?: () => void;
   storyOnly?: boolean;
   showNonCollection?: boolean;
-  browse?: boolean;
 }
 
 function getRandomLoadingMessage() {
@@ -583,7 +582,7 @@ function useSectionFeed({
   }, [partialItems, cards, showSpoilers, spoilerCardsCount, editSpoilerSettings]);
 
   const feedLoading = useMemo(() => {
-    return (visibleCards.length > 0) && !!find(take(visibleCards, 1), c => !cards[c.id]);
+    return !!find(take(visibleCards, 1), c => !cards[c.id]);
   }, [visibleCards, cards]);
   return {
     feed: items,
@@ -628,7 +627,6 @@ export default function({
   showHeader,
   storyOnly,
   showNonCollection,
-  browse,
 }: Props) {
   const { db } = useContext(DatabaseContext);
   const deck = useDeck(deckId);
