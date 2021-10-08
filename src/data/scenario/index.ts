@@ -20,10 +20,6 @@ interface BasicScenario {
   latestCampaignLog: GuidedCampaignLog;
 }
 
-interface CampaignResultScenario extends BasicScenario {
-  result: CampaignResult;
-}
-
 interface PlayedScenario extends BasicScenario {
   type: 'started' | 'completed';
   canUndo: boolean;
@@ -38,7 +34,7 @@ interface UnplayedScenario extends BasicScenario {
   steps: ScenarioStep[];
 }
 
-export type ProcessedScenario = PlayedScenario | UnplayedScenario | CampaignResultScenario;
+export type ProcessedScenario = PlayedScenario | UnplayedScenario;
 
 export interface ProcessedCampaign {
   scenarios: ProcessedScenario[];
