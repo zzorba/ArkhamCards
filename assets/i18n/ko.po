@@ -4534,19 +4534,19 @@ msgid "${ spent } of ${ supplyIcon } ${ total }"
 msgstr "${ supplyIcon }: ${ total }점 중 ${ spent }점 사용"
 
 msgid "Choose deck"
-msgstr "덱을 선택하세요"
+msgstr "덱을 선택하십시오"
 
 msgid "Frost"
 msgstr "서리"
 
 msgid "Database reset"
-msgstr ""
+msgstr "데이터베이스 초기화"
 
 msgid "Please close and restart the app"
-msgstr ""
+msgstr "앱을 종료하고 다시 시작하여 주십시오"
 
 msgid "Reset card database"
-msgstr ""
+msgstr "카드 데이터베이스 초기화"
 
 msgid "Mythos Busters"
 msgstr ""
@@ -4556,17 +4556,24 @@ msgid ""
 "This app is made possible by the continued support of our fans on Patreon "
 "and the ${ mythosBustersLink } podcast."
 msgstr ""
+"이 앱은 Patreon 및 ${ mythosBustersLink } 팟캐스트의 팬 분들에게 "
+"받은 지속적인 후원 덕분에 만들어질 수 있었습니다."
 
 msgid ""
 "This app is made possible by the continued support of our fans on ${ "
 "patreonLink } and the ${ mythosBustersLink } podcast."
 msgstr ""
+"이 앱은 ${ patreonLink } 및 ${ mythosBustersLink } 팟캐스트의 팬 분들에게 "
+"받은 지속적인 후원 덕분에 만들어질 수 있었습니다."
 
 msgid ""
 "The card database has been reset.\n"
 "\n"
 "Please close the app and restart it to trigger a full sync of card data."
 msgstr ""
+"카드 데이터베이스를 초기화합니다.\n"
+"\n"
+"카드 데이터의 완전한 동기화 작업을 위해 앱을 종료하고 재시작하여 주십시오."
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
