@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2021-08-11 20:33+0300\n"
+"PO-Revision-Date: 2021-10-09 21:54+0300\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -4585,108 +4585,117 @@ msgstr[1] "${ tokens }/${ total } жетона"
 msgstr[2] "${ tokens }/${ total } жетонов"
 
 msgid "Show all cards"
-msgstr ""
+msgstr "Показать всё"
 
 msgid "Disable to choose individual packs to show"
-msgstr ""
+msgstr "Отключите, чтобы видеть отдельные дополнения"
 
 msgid "All cards are shown throughout the app"
-msgstr ""
+msgstr "В приложении отображаются все карты"
 
 msgid ""
-"Use these controls to limit which cards are visible while searching, "
-"building decks, or upgrading cards to those in your own collection."
+"Use these controls to limit which cards are visible while searching, building decks, or "
+"upgrading cards to those in your own collection."
 msgstr ""
+"Укажите состав вашей коллекции, чтобы видеть в приложении только те карты, что у вас "
+"есть."
 
 msgid "All Cycles and Packs"
-msgstr ""
+msgstr "Все кампании и дополнения"
 
 msgid "Record that..."
-msgstr ""
+msgstr "Записать что…"
 
 msgid "Player card entries only"
-msgstr ""
+msgstr "Только записи о картах игроков"
 
 msgid "Accept friend request"
-msgstr ""
+msgstr "Принять запрос в друзья"
 
 msgid "Send friend request"
-msgstr ""
+msgstr "Отправить запрос в друзья"
 
 msgid "Reject friend request"
-msgstr ""
+msgstr "Отклонить запрос в друзья"
 
 msgid "Revoke friend request"
-msgstr ""
+msgstr "Отозвать запрос в друзья"
 
 msgid "Show upgrades"
-msgstr ""
+msgstr "Показать улучшения"
 
 msgid "Hide Bless/Curse Odds"
-msgstr ""
+msgstr "Скрыть благословения/проклятия"
 
 msgid "Show Bless/Curse Odds"
-msgstr ""
+msgstr "Показать благословения/проклятия"
 
 msgid "Faction, Level, Type, Cost"
-msgstr ""
+msgstr "Класс, Уровень, Тип, Цена"
 
 msgid "You cannot have more than 5 level 0 Survivor cards"
-msgstr ""
+msgstr "Нельзя включить больше 5 карт Выживших уровня 0"
 
 msgid "You cannot have more than 5 level 0 Guardian cards"
-msgstr ""
+msgstr "Нельзя включить больше 5 карт Хранителей уровня 0"
 
 msgid "You cannot have more than 5 level 0 Seeker cards"
-msgstr ""
+msgstr "Нельзя включить больше 5 карт Искателей уровня 0"
 
 msgid "You cannot have more than 5 level 0 Rogue cards"
-msgstr ""
+msgstr "Нельзя включить больше 5 карт Ловкачей уровня 0"
 
 msgid "Sign into Arkham Cards on the Settings tab to enable"
-msgstr ""
+msgstr "Войдите в аккаунт Arkham Cards в настройках."
 
 msgid "Asset: Hand x2. Arcane"
-msgstr ""
+msgstr "Актив: Рука×2. Магический"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
-msgstr ""
+msgstr "${ spent } из ${ supplyIcon } ${ total }"
 
 msgid "Choose deck"
-msgstr ""
+msgstr "Выбрать колоду"
 
 msgid "Frost"
 msgstr ""
 
 msgid "Database reset"
-msgstr ""
+msgstr "Очистить БД"
 
 msgid "Please close and restart the app"
-msgstr ""
+msgstr "Перезапустите приложение"
 
 msgid "Reset card database"
-msgstr ""
+msgstr "Сбросить базу карт"
 
 msgid "Mythos Busters"
-msgstr ""
+msgstr "Mythos Busters"
 
 #, javascript-format
 msgid ""
-"This app is made possible by the continued support of our fans on Patreon "
-"and the ${ mythosBustersLink } podcast."
+"This app is made possible by the continued support of our fans on Patreon and the "
+"${ mythosBustersLink } podcast."
 msgstr ""
+"Это приложение создано благодаря подкасту ${ mythosBustersLink } и поддержке через "
+"Patreon."
 
 msgid ""
-"This app is made possible by the continued support of our fans on ${ "
-"patreonLink } and the ${ mythosBustersLink } podcast."
+"This app is made possible by the continued support of our fans on ${ patreonLink } and "
+"the ${ mythosBustersLink } podcast."
 msgstr ""
+"Это приложение создано благодаря подкасту ${ mythosBustersLink } и поддержке через "
+"Patreon (${ patreonLink })."
 
 msgid ""
 "The card database has been reset.\n"
 "\n"
 "Please close the app and restart it to trigger a full sync of card data."
 msgstr ""
+"База карт очищена.\n"
+"\n"
+"Перезапустите приложение, чтобы загрузить актуальную базу карт."
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
