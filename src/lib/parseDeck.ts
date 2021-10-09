@@ -36,6 +36,7 @@ import {
 import Card, { CardKey, CardsMap } from '@data/types/Card';
 import {
   ARCANE_RESEARCH_CODE,
+  DOWN_THE_RABBIT_HOLE_CODE,
   ADAPTABLE_CODE,
   DEJA_VU_CODE,
   PLAYER_FACTION_CODES,
@@ -133,8 +134,12 @@ function splitCards(cardIds: CardId[], cards: CardsMap): SplitCards {
   const otherTypes: CardSplitType[] = ['Event', 'Skill', 'Treachery', 'Enemy'];
   otherTypes.forEach(type_code => {
     const typeCards = filterBy(cardIds, cards, 'type_code', type_code.toLowerCase());
-    if (type_code !== 'Assets' && typeCards.length > 0) {
-      result[type_code] = typeCards;
+    const combinedCards = type_code === 'Treachery' ? [
+      ...typeCards,
+      ...filterBy(cardIds, cards, 'type_code', 'investigator'),
+    ] : typeCards;
+    if (type_code !== 'Assets' && combinedCards.length > 0) {
+      result[type_code] = combinedCards;
     }
   });
   return result;
@@ -184,7 +189,7 @@ function factionCount(
       const card = cards[c.id];
       return !!card && (
         card.faction2_code !== null &&
-        (card.faction_code === faction || card.faction2_code === faction)
+        (card.faction_code === faction || card.faction2_code === faction || card.faction3_code === faction)
       );
     }).map(c => c.quantity)),
     sum(nonPermanentCards.filter(c => {
@@ -331,6 +336,8 @@ function getDeckChanges(
   let dejaVuUses = dejaVuMaxDiscount * 3;
   let adaptableUses = (slots[ADAPTABLE_CODE] || 0) * 2;
   let arcaneResearchUses = (slots[ARCANE_RESEARCH_CODE] || 0);
+  const downTheRabbitHoleXp = (slots[DOWN_THE_RABBIT_HOLE_CODE] || 0) > 0 ? 1 : 0;
+  let downTheRabitHoleUses = downTheRabbitHoleXp * 2;
 
   const addedCards: Card[] = [];
   const removedCards: Card[] = [];
@@ -423,14 +430,19 @@ function getDeckChanges(
           // If a card has taboo, you don't pay 1 for the swap of 0 -> 0.
           // Also doesn't eat a slot in case of versatile, since you are paying
           // full cost for it.
-          return tabooCost;
+          if (extraDeckSize > 0 && downTheRabbitHoleXp) {
+            extraDeckSize--;
+            // Swap ins don't get the Down the Rabbit Hole XP bonus.
+            return tabooCost;
+          }
+          return tabooCost + downTheRabbitHoleXp;
         }
         if (extraDeckSize > 0) {
           // If your deck grew in size you can swap in extra cards for free.
           extraDeckSize--;
           return 0;
         }
-        return 1;
+        return 1 + downTheRabbitHoleXp;
       }
 
       // Check if this is a deja-vu eligible exile card.
@@ -443,7 +455,7 @@ function getDeckChanges(
           dejaVuCardUses[addedCard.code]--;
           dejaVuUses -= discount;
           incSlot(added, addedCard);
-          return computeXp(addedCard) - discount;
+          return computeXp(addedCard) - discount + downTheRabbitHoleXp;
         }
       }
 
@@ -474,6 +486,10 @@ function getDeckChanges(
               xpCost--;
               arcaneResearchUses--;
             }
+            if (xpCost > 0 && downTheRabitHoleUses > 0) {
+              xpCost--;
+              downTheRabitHoleUses--;
+            }
             return xpCost;
           }
           if (addedCard.permanent && !removedCard.permanent) {
@@ -481,12 +497,17 @@ function getDeckChanges(
             extraDeckSize++;
           }
           // Upgrade of the same name, so you only pay the delta.
-          return (computeXp(addedCard) - computeXp(removedCard));
+          let xpCost = (computeXp(addedCard) - computeXp(removedCard));
+          if (xpCost > 0 && downTheRabitHoleUses > 0) {
+            xpCost--;
+            downTheRabitHoleUses--;
+          }
+          return xpCost;
         }
       }
 
       incSlot(added, addedCard);
-      return computeXp(addedCard);
+      return computeXp(addedCard) + downTheRabbitHoleXp;
     }
   ));
   forEach(removedCards, removedCard => decSlot(removed, removedCard));

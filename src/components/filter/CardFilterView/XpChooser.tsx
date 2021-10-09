@@ -29,7 +29,11 @@ export default function XpChooser({
 }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const levelRanges = useMemo(() => {
-    return [[0, 0], [1, maxLevel]];
+    const result = [[0, 0]];
+    if (maxLevel > 0) {
+      result.push([1, maxLevel]);
+    }
+    return result;
   }, [maxLevel]);
   const selectedIndexes = useMemo(() => flatMap(levelRanges, (xyz, idx) => {
     if (enabled &&
@@ -46,8 +50,8 @@ export default function XpChooser({
       t`Level ${startXp}` :
       t`Level ${startXp} - ${endXp}`;
     return {
-      element: (selected: boolean) => (
-        <Text style={[typography.small, { color: selected ? colors.D20 : colors.L20 }]}>
+      element: () => (
+        <Text style={[typography.small, { color: colors.D30 }]}>
           { xp }
         </Text>
       ),

@@ -1,5 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { t } from 'ttag';
 
 import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
@@ -21,7 +22,7 @@ export default function CardUpgradeButton({ onUpgradePress, card, deckId, limit 
   return (
     <View style={styles.countWrapper}>
       { !!onUpgradePress && (
-        <RoundButton onPress={onPress}>
+        <RoundButton onPress={onPress} accessibilityLabel={t`Show upgrades`}>
           <View style={styles.icon}>
             <AppIcon
               size={28}

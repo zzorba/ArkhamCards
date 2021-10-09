@@ -22,13 +22,9 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', handler);
-
+    const sub = BackHandler.addEventListener('hardwareBackPress', handler);
     return () => {
-      BackHandler.removeEventListener(
-        'hardwareBackPress',
-        handler
-      );
+      sub.remove();
     };
   }, [handler]);
 }
@@ -329,11 +325,11 @@ export const useKeyboardHeight = (): [number] => {
   }
 
   useEffect(() => {
-    Keyboard.addListener('keyboardDidShow', onKeyboardDidShow);
-    Keyboard.addListener('keyboardDidHide', onKeyboardDidHide);
+    const sub1 = Keyboard.addListener('keyboardDidShow', onKeyboardDidShow);
+    const sub2 = Keyboard.addListener('keyboardDidHide', onKeyboardDidHide);
     return () => {
-      Keyboard.removeListener('keyboardDidShow', onKeyboardDidShow);
-      Keyboard.removeListener('keyboardDidHide', onKeyboardDidHide);
+      sub1.remove();
+      sub2.remove();
     };
   }, []);
 

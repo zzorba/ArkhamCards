@@ -2,7 +2,7 @@ import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'type
 import { forEach, filter, keys, map, min, omit, find } from 'lodash';
 import { t } from 'ttag';
 
-import { SortType, SORT_BY_COST, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData } from '@actions/types';
+import { SortType, SORT_BY_COST, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_FACTION_XP_TYPE_COST, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData } from '@actions/types';
 import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, FactionCodeType, TypeCodeType, SkillCodeType, BODY_OF_A_YITHIAN } from '@app_constants';
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
@@ -13,9 +13,10 @@ const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+(\\s\\[per_investigator\\])?\\s(.+)\\)\\..*');
 const BONDED_REGEX = new RegExp('.*Bonded\\s*\\((.+?)\\)\\..*');
 const SEAL_REGEX = new RegExp('.*Seal \\(.+\\)\\..*');
-const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror');
-export const SEARCH_REGEX = /["“”‹›‘’«»〞〝〟＂❛❜❝❞❮❯\(\)'\-\.]/g;
+const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all|(X total)) damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror');
+export const SEARCH_REGEX = /["“”‹›‘’«»〞〝〟„＂❛❜❝❞❮❯\(\)'\-\.,]/g;
 
+export const CARD_NUM_COLUMNS = 125;
 function arkham_num(value: number | null | undefined) {
   if (value === null || value === undefined) {
     return '-';
@@ -71,23 +72,27 @@ const FEMININE_INVESTIGATORS = new Set([
   '05006', // Marie
   '06002', // Mandy Thompson
   '06005', // Patrice
-  '60301', // Wini
-  '60401', // Jacqueline
-  '60501', // Stella
   '07001', // Sister Mary
   '07002', // Amanda Sharpe
   '07003', // Trish
+  '08001', // Daniella
+  '08020', // Lily Chen
+  '60301', // Wini
+  '60401', // Jacqueline
+  '60501', // Stella
   '05046', // Gavriella Mizrah
   '05049', // Penny White
   '98001', // Alt-Jenny
   '98019', // Gloria
   '98010', // Alt-Carolyn
+  '99001', // Old Marie
 ]);
 
 const HEADER_SELECT = {
   [SORT_BY_FACTION]: 'c.sort_by_faction as headerId, c.sort_by_faction_header as headerTitle',
   [SORT_BY_FACTION_PACK]: 'c.sort_by_faction_pack as headerId, c.sort_by_faction_pack_header as headerTitle',
   [SORT_BY_FACTION_XP]: 'c.sort_by_faction_xp as headerId, c.sort_by_faction_xp_header as headerTitle',
+  [SORT_BY_FACTION_XP_TYPE_COST]: 'c.sort_by_faction_xp as headerId, c.sort_by_faction_xp_header as headerTitle',
   [SORT_BY_COST]: 'c.cost as headerId, c.sort_by_cost_header as headerTitle',
   [SORT_BY_PACK]: 'c.sort_by_pack as headerId, c.pack_name as headerTitle',
   [SORT_BY_ENCOUNTER_SET]: 'c.encounter_code as headerId, c.sort_by_encounter_set_header as headerTitle',
@@ -247,6 +252,12 @@ export default class Card {
 
   @Column('text', { nullable: true })
   public faction2_name?: string;
+
+  @Column('text', { nullable: true })
+  public faction3_code?: FactionCodeType;
+
+  @Column('text', { nullable: true })
+  public faction3_name?: string;
 
   @Column('integer', { nullable: true })
   public position?: number;
@@ -772,6 +783,10 @@ export default class Card {
         if (json.faction2_code && json.faction2_name) {
           const faction1 = Card.factionCodeToName(json.faction_code, json.faction_name);
           const faction2 = Card.factionCodeToName(json.faction2_code, json.faction2_name);
+          if (json.faction3_code && json.faction3_name) {
+            const faction3 = Card.factionCodeToName(json.faction3_code, json.faction3_name);
+            return `${faction1} / ${faction2} / ${faction3}`;
+          }
           return `${faction1} / ${faction2}`;
         }
         return Card.factionCodeToName(json.faction_code, json.faction_name);
@@ -809,6 +824,7 @@ export default class Card {
       t`Asset: Ally. Arcane`,
       t`Asset: Body. Arcane`,
       t`Asset: Hand. Arcane`,
+      t`Asset: Hand x2. Arcane`,
       t`Asset: Body. Hand x2`,
       t`Asset: Other`,
       t`Event`,
@@ -871,6 +887,8 @@ export default class Card {
                 return t`Asset: Body. Hand x2`;
               case 'Hand. Arcane':
                 return t`Asset: Hand. Arcane`;
+              case 'Hand x2. Arcane':
+                return t`Asset: Hand x2. Arcane`;
               case 'Ally. Arcane':
                 return t`Asset: Ally. Arcane`;
               default:
@@ -1215,7 +1233,7 @@ export default class Card {
     if (result.code.startsWith('z')) {
       result.browse_visible += 16;
     }
-    if (result.code === RANDOM_BASIC_WEAKNESS) {
+    if (result.code === RANDOM_BASIC_WEAKNESS || result.code === BODY_OF_A_YITHIAN) {
       result.browse_visible += 3;
     } else if ((!result.altArtInvestigator && !result.back_linked && !result.hidden)) {
       if (result.encounter_code) {
@@ -1293,6 +1311,12 @@ export default class Card {
           { s: 'c.sort_by_faction_xp', direction: 'ASC' },
           { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
           { s: 'c.code', direction: 'ASC' },
+        ];
+      case SORT_BY_FACTION_XP_TYPE_COST:
+        return [
+          { s: 'c.sort_by_faction_xp', direction: 'ASC' },
+          { s: 'c.cost', direction: 'ASC' },
+          { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
         ];
       case SORT_BY_COST:
         return [

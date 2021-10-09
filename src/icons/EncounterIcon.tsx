@@ -8,6 +8,7 @@ import CoreSetIcon from './CoreSetIcon';
 import DarkMatterIcon from './DarkMatterIcon';
 import DreamEatersIcon from './DreamEatersIcon';
 import DunwichIcon from './DunwichIcon';
+import EdgeIcon from './EdgeIcon';
 import ForgottenIcon from './ForgottenIcon';
 import StandaloneIcon from './StandaloneIcon';
 import InnsmouthIcon from './InnsmouthIcon';
@@ -63,6 +64,10 @@ export default class EncounterIcon extends React.PureComponent<Props> {
 
   standaloneIcon(name: string, size: number, color: string) {
     return (<StandaloneIcon name={name} size={size} color={color} />);
+  }
+
+  edgeIcon(name: string, size: number, color: string) {
+    return (<EdgeIcon name={name} size={size} color={color} />);
   }
 
   render() {
@@ -604,6 +609,11 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'consternation_on_the_constellation':
       case 'zcc':
         return this.standaloneIcon('consternation_on_the_constellation', size, color);
+      case 'eoe':
+      case 'edge_of_the_earth':
+      case 'eoep':
+      case 'eoec':
+        return this.edgeIcon('eoe', size, color);
       default:
         return this.coreIcon('core', size, color);
     }

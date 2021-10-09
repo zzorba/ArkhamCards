@@ -287,7 +287,7 @@ function CampaignDetailView(props: Props) {
             <DeckButton
               icon="log"
               title={t`Campaign Log`}
-              detail={t`Review records`}
+              detail={t`Review and add records`}
               color="light_gray"
               onPress={showCampaignLog}
               bottomMargin={s}

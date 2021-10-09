@@ -25,6 +25,8 @@ import {
   CardCache,
   TabooCache,
   CardSetSchemaVersionAction,
+  CardRequestFetchAction,
+  CARD_REQUEST_FETCH,
 } from '@actions/types';
 import { getCardLang, AppState } from '@reducers/index';
 import { NON_LOCALIZED_CARDS, syncCards, syncTaboos } from '@lib/publicApi';
@@ -51,11 +53,23 @@ export function setLanguageChoice(choiceLang: string): SetLanguageChoiceAction {
   };
 }
 
+export function requestFetchCards(
+  cardLang: string,
+  choiceLang: string,
+): CardRequestFetchAction {
+  return {
+    type: CARD_REQUEST_FETCH,
+    cardLang,
+    choiceLang,
+  };
+}
+
 export function fetchCards(
   db: Database,
   anonClient: ApolloClient<NormalizedCacheObject>,
   cardLang: string,
-  choiceLang: string
+  choiceLang: string,
+  updateProgress: (progress: number, msg?: string) => void
 ): ThunkAction<void, AppState, unknown, CardSetSchemaVersionAction | CardFetchStartAction | CardFetchErrorAction | CardFetchSuccessAction> {
   return async(dispatch, getState) => {
     VERBOSE && console.log('Fetch Cards called');
@@ -81,9 +95,10 @@ export function fetchCards(
 
     try {
       const state = getState();
-      const cardCache = await syncCards(db, anonClient, packs, cardLang, cardsCache(state, cardLang));
+      const cardCache = await syncCards(updateProgress, db, anonClient, packs, cardLang, cardsCache(state, cardLang));
       try {
         const tabooCache = await syncTaboos(
+          updateProgress,
           db,
           cardLang,
           taboosCache(getState(), cardLang)

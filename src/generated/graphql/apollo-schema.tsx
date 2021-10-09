@@ -3844,7 +3844,31 @@ export type Chaos_Bag_Result_Variance_Order_By = {
 export type Faq = {
   __typename?: 'faq';
   code: Scalars['String'];
+  /** An array relationship */
+  faq_texts: Array<Faq_Text>;
+  /** An aggregate relationship */
+  faq_texts_aggregate: Faq_Text_Aggregate;
   text: Scalars['String'];
+};
+
+
+/** columns and relationships of "faq" */
+export type FaqFaq_TextsArgs = {
+  distinct_on?: Maybe<Array<Faq_Text_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Faq_Text_Order_By>>;
+  where?: Maybe<Faq_Text_Bool_Exp>;
+};
+
+
+/** columns and relationships of "faq" */
+export type FaqFaq_Texts_AggregateArgs = {
+  distinct_on?: Maybe<Array<Faq_Text_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Faq_Text_Order_By>>;
+  where?: Maybe<Faq_Text_Bool_Exp>;
 };
 
 /** aggregated selection of "faq" */
@@ -3875,6 +3899,7 @@ export type Faq_Bool_Exp = {
   _not?: Maybe<Faq_Bool_Exp>;
   _or?: Maybe<Array<Faq_Bool_Exp>>;
   code?: Maybe<String_Comparison_Exp>;
+  faq_texts?: Maybe<Faq_Text_Bool_Exp>;
   text?: Maybe<String_Comparison_Exp>;
 };
 
@@ -3887,6 +3912,7 @@ export enum Faq_Constraint {
 /** input type for inserting data into table "faq" */
 export type Faq_Insert_Input = {
   code?: Maybe<Scalars['String']>;
+  faq_texts?: Maybe<Faq_Text_Arr_Rel_Insert_Input>;
   text?: Maybe<Scalars['String']>;
 };
 
@@ -3923,6 +3949,7 @@ export type Faq_On_Conflict = {
 /** Ordering options when selecting data from "faq". */
 export type Faq_Order_By = {
   code?: Maybe<Order_By>;
+  faq_texts_aggregate?: Maybe<Faq_Text_Aggregate_Order_By>;
   text?: Maybe<Order_By>;
 };
 
@@ -3975,6 +4002,20 @@ export type Faq_Text_Aggregate_FieldsCountArgs = {
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "faq_text" */
+export type Faq_Text_Aggregate_Order_By = {
+  count?: Maybe<Order_By>;
+  max?: Maybe<Faq_Text_Max_Order_By>;
+  min?: Maybe<Faq_Text_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "faq_text" */
+export type Faq_Text_Arr_Rel_Insert_Input = {
+  data: Array<Faq_Text_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: Maybe<Faq_Text_On_Conflict>;
+};
+
 /** Boolean expression to filter rows from the table "faq_text". All fields are combined with a logical 'AND'. */
 export type Faq_Text_Bool_Exp = {
   _and?: Maybe<Array<Faq_Text_Bool_Exp>>;
@@ -4006,12 +4047,26 @@ export type Faq_Text_Max_Fields = {
   text?: Maybe<Scalars['String']>;
 };
 
+/** order by max() on columns of table "faq_text" */
+export type Faq_Text_Max_Order_By = {
+  code?: Maybe<Order_By>;
+  locale?: Maybe<Order_By>;
+  text?: Maybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Faq_Text_Min_Fields = {
   __typename?: 'faq_text_min_fields';
   code?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "faq_text" */
+export type Faq_Text_Min_Order_By = {
+  code?: Maybe<Order_By>;
+  locale?: Maybe<Order_By>;
+  text?: Maybe<Order_By>;
 };
 
 /** response of any mutation on the table "faq_text" */
@@ -5545,7 +5600,6 @@ export type Investigator_Data_Variance_Order_By = {
   physical?: Maybe<Order_By>;
   spentXp?: Maybe<Order_By>;
 };
-
 
 /** Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'. */
 export type Jsonb_Comparison_Exp = {
@@ -8588,7 +8642,6 @@ export type Subscription_RootUsers_By_PkArgs = {
   id: Scalars['String'];
 };
 
-
 /** Boolean expression to compare columns of type "timestamp". All fields are combined with logical 'AND'. */
 export type Timestamp_Comparison_Exp = {
   _eq?: Maybe<Scalars['timestamp']>;
@@ -8601,7 +8654,6 @@ export type Timestamp_Comparison_Exp = {
   _neq?: Maybe<Scalars['timestamp']>;
   _nin?: Maybe<Array<Scalars['timestamp']>>;
 };
-
 
 /** Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'. */
 export type Timestamptz_Comparison_Exp = {
@@ -9586,20 +9638,15 @@ export type GetCustomCardsQueryVariables = Exact<{
 }>;
 
 
-export type GetCustomCardsQuery = (
-  { __typename?: 'query_root' }
-  & { card: Array<(
-    { __typename?: 'card' }
-    & { packs: Array<(
-      { __typename?: 'card_pack' }
-      & Pick<Card_Pack, 'name'>
-    )>, translations: Array<(
-      { __typename?: 'card_text' }
-      & CoreCardTextFragment
-    )> }
-    & CoreCardFragment
-  )> }
-);
+export type GetCustomCardsQuery = { __typename?: 'query_root', card: Array<{ __typename?: 'card', code: string, cost?: number | null | undefined, deck_limit?: number | null | undefined, encounter_code?: string | null | undefined, encounter_position?: number | null | undefined, exile?: boolean | null | undefined, faction_code: string, health?: number | null | undefined, is_unique?: boolean | null | undefined, pack_code: string, pack_position: number, permanent?: boolean | null | undefined, position: number, quantity: number, real_flavor?: string | null | undefined, real_name: string, real_pack_name: string, real_slot?: string | null | undefined, real_subname?: string | null | undefined, real_text: string, real_traits?: string | null | undefined, sanity?: number | null | undefined, skill_agility?: number | null | undefined, skill_combat?: number | null | undefined, skill_intellect?: number | null | undefined, skill_willpower?: number | null | undefined, skill_wild?: number | null | undefined, subtype_code?: string | null | undefined, type_code: string, packs: Array<{ __typename?: 'card_pack', name: string }>, translations: Array<{ __typename?: 'card_text', flavor?: string | null | undefined, encounter_name?: string | null | undefined, name: string, slot?: string | null | undefined, subname?: string | null | undefined, text: string, traits?: string | null | undefined }> }> };
+
+export type GetCardFaqQueryVariables = Exact<{
+  code: Scalars['String'];
+  locale: Scalars['String'];
+}>;
+
+
+export type GetCardFaqQuery = { __typename?: 'query_root', faq_by_pk?: { __typename?: 'faq', code: string, text: string, faq_texts: Array<{ __typename?: 'faq_text', code: string, locale: string, text: string }> } | null | undefined };
 
 export type UploadNewCampaignMutationVariables = Exact<{
   campaignId: Scalars['Int'];
@@ -9620,39 +9667,7 @@ export type UploadNewCampaignMutationVariables = Exact<{
 }>;
 
 
-export type UploadNewCampaignMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_guide_input?: Maybe<(
-    { __typename?: 'guide_input_mutation_response' }
-    & Pick<Guide_Input_Mutation_Response, 'affected_rows'>
-    & { returning: Array<(
-      { __typename?: 'guide_input' }
-      & Pick<Guide_Input, 'id' | 'campaign_id' | 'scenario' | 'step' | 'payload' | 'created_at'>
-    )> }
-  )>, insert_guide_achievement?: Maybe<(
-    { __typename?: 'guide_achievement_mutation_response' }
-    & Pick<Guide_Achievement_Mutation_Response, 'affected_rows'>
-  )>, insert_investigator_data?: Maybe<(
-    { __typename?: 'investigator_data_mutation_response' }
-    & Pick<Investigator_Data_Mutation_Response, 'affected_rows'>
-  )>, insert_campaign_investigator?: Maybe<(
-    { __typename?: 'campaign_investigator_mutation_response' }
-    & Pick<Campaign_Investigator_Mutation_Response, 'affected_rows'>
-  )>, update_campaign_by_pk?: Maybe<(
-    { __typename?: 'campaign' }
-    & { link_a_campaign: (
-      { __typename?: 'campaign' }
-      & MiniCampaignFragment
-    ), link_b_campaign: (
-      { __typename?: 'campaign' }
-      & MiniCampaignFragment
-    ), campaign_guide?: Maybe<(
-      { __typename?: 'campaign_guide' }
-      & FullCampaignGuideStateFragment
-    )> }
-    & FullCampaignFragment
-  )> }
-);
+export type UploadNewCampaignMutation = { __typename?: 'mutation_root', insert_guide_input?: { __typename?: 'guide_input_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, scenario?: string | null | undefined, step?: string | null | undefined, payload?: any | null | undefined, created_at: any }> } | null | undefined, insert_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', affected_rows: number } | null | undefined, insert_investigator_data?: { __typename?: 'investigator_data_mutation_response', affected_rows: number } | null | undefined, insert_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', affected_rows: number } | null | undefined, update_campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, campaignNotes?: any | null | undefined, chaosBag?: any | null | undefined, showInterludes?: boolean | null | undefined, scenarioResults?: any | null | undefined, weaknessSet?: any | null | undefined, guided?: boolean | null | undefined, guide_version?: number | null | undefined, archived?: boolean | null | undefined, owner_id: string, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> }, campaign_guide?: { __typename?: 'campaign_guide', id?: number | null | undefined, uuid?: string | null | undefined, updated_at?: any | null | undefined, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null | undefined, scenario?: string | null | undefined, type: string, payload?: any | null | undefined }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> } | null | undefined, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, availableXp?: number | null | undefined, spentXp?: number | null | undefined, specialXp?: any | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null | undefined };
 
 export type InsertNewDeckMutationVariables = Exact<{
   arkhamdb_id?: Maybe<Scalars['Int']>;
@@ -9666,13 +9681,7 @@ export type InsertNewDeckMutationVariables = Exact<{
 }>;
 
 
-export type InsertNewDeckMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_campaign_deck_one?: Maybe<(
-    { __typename?: 'campaign_deck' }
-    & LatestDeckFragment
-  )> }
-);
+export type InsertNewDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined };
 
 export type InsertNextLocalDeckMutationVariables = Exact<{
   previous_local_uuid?: Maybe<Scalars['String']>;
@@ -9685,17 +9694,7 @@ export type InsertNextLocalDeckMutationVariables = Exact<{
 }>;
 
 
-export type InsertNextLocalDeckMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_campaign_deck_one?: Maybe<(
-    { __typename?: 'campaign_deck' }
-    & { previous_deck?: Maybe<(
-      { __typename?: 'campaign_deck' }
-      & IdDeckFragment
-    )> }
-    & LatestDeckFragment
-  )> }
-);
+export type InsertNextLocalDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string } | null | undefined, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined } | null | undefined };
 
 export type InsertNextArkhamDbDeckMutationVariables = Exact<{
   previous_arkhamdb_id: Scalars['Int'];
@@ -9709,17 +9708,7 @@ export type InsertNextArkhamDbDeckMutationVariables = Exact<{
 }>;
 
 
-export type InsertNextArkhamDbDeckMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_campaign_deck_one?: Maybe<(
-    { __typename?: 'campaign_deck' }
-    & { previous_deck?: Maybe<(
-      { __typename?: 'campaign_deck' }
-      & IdDeckFragment
-    )> }
-    & LatestDeckFragment
-  )> }
-);
+export type InsertNextArkhamDbDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string } | null | undefined, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined } | null | undefined };
 
 export type UpdateArkhamDbDeckMutationVariables = Exact<{
   arkhamdb_id: Scalars['Int'];
@@ -9730,18 +9719,7 @@ export type UpdateArkhamDbDeckMutationVariables = Exact<{
 }>;
 
 
-export type UpdateArkhamDbDeckMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_campaign_deck?: Maybe<(
-    { __typename?: 'campaign_deck_mutation_response' }
-    & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
-    & { returning: Array<(
-      { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'content' | 'content_hash' | 'arkhamdb_user'>
-      & IdDeckFragment
-    )> }
-  )> }
-);
+export type UpdateArkhamDbDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', content?: any | null | undefined, content_hash?: string | null | undefined, arkhamdb_user?: number | null | undefined, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number }> } | null | undefined };
 
 export type UpdateLocalDeckMutationVariables = Exact<{
   local_uuid: Scalars['String'];
@@ -9751,18 +9729,7 @@ export type UpdateLocalDeckMutationVariables = Exact<{
 }>;
 
 
-export type UpdateLocalDeckMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_campaign_deck?: Maybe<(
-    { __typename?: 'campaign_deck_mutation_response' }
-    & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
-    & { returning: Array<(
-      { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'content' | 'content_hash'>
-      & IdDeckFragment
-    )> }
-  )> }
-);
+export type UpdateLocalDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', content?: any | null | undefined, content_hash?: string | null | undefined, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number }> } | null | undefined };
 
 export type DeleteAllLocalDecksMutationVariables = Exact<{
   local_uuid: Scalars['String'];
@@ -9770,17 +9737,7 @@ export type DeleteAllLocalDecksMutationVariables = Exact<{
 }>;
 
 
-export type DeleteAllLocalDecksMutation = (
-  { __typename?: 'mutation_root' }
-  & { delete_campaign_deck?: Maybe<(
-    { __typename?: 'campaign_deck_mutation_response' }
-    & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
-    & { returning: Array<(
-      { __typename?: 'campaign_deck' }
-      & IdDeckFragment
-    )> }
-  )> }
-);
+export type DeleteAllLocalDecksMutation = { __typename?: 'mutation_root', delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number }> } | null | undefined };
 
 export type DeleteAllArkhamDbDecksMutationVariables = Exact<{
   arkhamdb_id: Scalars['Int'];
@@ -9788,17 +9745,7 @@ export type DeleteAllArkhamDbDecksMutationVariables = Exact<{
 }>;
 
 
-export type DeleteAllArkhamDbDecksMutation = (
-  { __typename?: 'mutation_root' }
-  & { delete_campaign_deck?: Maybe<(
-    { __typename?: 'campaign_deck_mutation_response' }
-    & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
-    & { returning: Array<(
-      { __typename?: 'campaign_deck' }
-      & IdDeckFragment
-    )> }
-  )> }
-);
+export type DeleteAllArkhamDbDecksMutation = { __typename?: 'mutation_root', delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number }> } | null | undefined };
 
 export type DeleteLocalDeckMutationVariables = Exact<{
   local_uuid: Scalars['String'];
@@ -9806,27 +9753,7 @@ export type DeleteLocalDeckMutationVariables = Exact<{
 }>;
 
 
-export type DeleteLocalDeckMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_campaign_deck?: Maybe<(
-    { __typename?: 'campaign_deck_mutation_response' }
-    & { returning: Array<(
-      { __typename?: 'campaign_deck' }
-      & LatestDeckFragment
-    )> }
-  )>, delete_campaign_deck?: Maybe<(
-    { __typename?: 'campaign_deck_mutation_response' }
-    & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
-    & { returning: Array<(
-      { __typename?: 'campaign_deck' }
-      & { previous_deck?: Maybe<(
-        { __typename?: 'campaign_deck' }
-        & LatestDeckFragment
-      )> }
-      & IdDeckFragment
-    )> }
-  )> }
-);
+export type DeleteLocalDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }> } | null | undefined, delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }> } | null | undefined };
 
 export type DeleteArkhamDbDeckMutationVariables = Exact<{
   arkhamdb_id: Scalars['Int'];
@@ -9834,50 +9761,14 @@ export type DeleteArkhamDbDeckMutationVariables = Exact<{
 }>;
 
 
-export type DeleteArkhamDbDeckMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_campaign_deck?: Maybe<(
-    { __typename?: 'campaign_deck_mutation_response' }
-    & { returning: Array<(
-      { __typename?: 'campaign_deck' }
-      & LatestDeckFragment
-    )> }
-  )>, delete_campaign_deck?: Maybe<(
-    { __typename?: 'campaign_deck_mutation_response' }
-    & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
-    & { returning: Array<(
-      { __typename?: 'campaign_deck' }
-      & { previous_deck?: Maybe<(
-        { __typename?: 'campaign_deck' }
-        & LatestDeckFragment
-      )> }
-      & IdDeckFragment
-    )> }
-  )> }
-);
+export type DeleteArkhamDbDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }> } | null | undefined, delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }> } | null | undefined };
 
 export type GetMyDecksQueryVariables = Exact<{
   userId: Scalars['String'];
 }>;
 
 
-export type GetMyDecksQuery = (
-  { __typename?: 'query_root' }
-  & { users_by_pk?: Maybe<(
-    { __typename?: 'users' }
-    & Pick<Users, 'id'>
-    & { decks: Array<(
-      { __typename?: 'latest_decks' }
-      & { deck?: Maybe<(
-        { __typename?: 'campaign_deck' }
-        & LatestDeckFragment
-      )> }
-    )>, all_decks: Array<(
-      { __typename?: 'campaign_deck' }
-      & AllDeckFragment
-    )> }
-  )> }
-);
+export type GetMyDecksQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, all_decks: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, campaign: { __typename?: 'campaign', id: number, uuid: string }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }> } | null | undefined };
 
 export type GetLatestLocalDeckQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -9885,13 +9776,7 @@ export type GetLatestLocalDeckQueryVariables = Exact<{
 }>;
 
 
-export type GetLatestLocalDeckQuery = (
-  { __typename?: 'query_root' }
-  & { campaign_deck: Array<(
-    { __typename?: 'campaign_deck' }
-    & LatestDeckFragment
-  )> }
-);
+export type GetLatestLocalDeckQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }> };
 
 export type GetLatestArkhamDbDeckQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -9899,26 +9784,14 @@ export type GetLatestArkhamDbDeckQueryVariables = Exact<{
 }>;
 
 
-export type GetLatestArkhamDbDeckQuery = (
-  { __typename?: 'query_root' }
-  & { campaign_deck: Array<(
-    { __typename?: 'campaign_deck' }
-    & LatestDeckFragment
-  )> }
-);
+export type GetLatestArkhamDbDeckQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }> };
 
 export type GetLatestDeckQueryVariables = Exact<{
   deckId: Scalars['Int'];
 }>;
 
 
-export type GetLatestDeckQuery = (
-  { __typename?: 'query_root' }
-  & { campaign_deck_by_pk?: Maybe<(
-    { __typename?: 'campaign_deck' }
-    & LatestDeckFragment
-  )> }
-);
+export type GetLatestDeckQuery = { __typename?: 'query_root', campaign_deck_by_pk?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined };
 
 export type GetDeckHistoryQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -9926,372 +9799,118 @@ export type GetDeckHistoryQueryVariables = Exact<{
 }>;
 
 
-export type GetDeckHistoryQuery = (
-  { __typename?: 'query_root' }
-  & { campaign_deck: Array<(
-    { __typename?: 'campaign_deck' }
-    & HistoryDeckFragment
-  )> }
-);
+export type GetDeckHistoryQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }> };
 
-export type CoreCardFragment = (
-  { __typename?: 'card' }
-  & Pick<Card, 'code' | 'cost' | 'deck_limit' | 'encounter_code' | 'encounter_position' | 'exile' | 'faction_code' | 'health' | 'is_unique' | 'pack_code' | 'pack_position' | 'permanent' | 'position' | 'quantity' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_willpower' | 'skill_wild' | 'subtype_code' | 'type_code'>
-);
+export type CoreCardFragment = { __typename?: 'card', code: string, cost?: number | null | undefined, deck_limit?: number | null | undefined, encounter_code?: string | null | undefined, encounter_position?: number | null | undefined, exile?: boolean | null | undefined, faction_code: string, health?: number | null | undefined, is_unique?: boolean | null | undefined, pack_code: string, pack_position: number, permanent?: boolean | null | undefined, position: number, quantity: number, real_flavor?: string | null | undefined, real_name: string, real_pack_name: string, real_slot?: string | null | undefined, real_subname?: string | null | undefined, real_text: string, real_traits?: string | null | undefined, sanity?: number | null | undefined, skill_agility?: number | null | undefined, skill_combat?: number | null | undefined, skill_intellect?: number | null | undefined, skill_willpower?: number | null | undefined, skill_wild?: number | null | undefined, subtype_code?: string | null | undefined, type_code: string };
 
-export type CoreCardTextFragment = (
-  { __typename?: 'card_text' }
-  & Pick<Card_Text, 'flavor' | 'encounter_name' | 'name' | 'slot' | 'subname' | 'text' | 'traits'>
-);
+export type CoreCardTextFragment = { __typename?: 'card_text', flavor?: string | null | undefined, encounter_name?: string | null | undefined, name: string, slot?: string | null | undefined, subname?: string | null | undefined, text: string, traits?: string | null | undefined };
 
-export type UserInfoFragment = (
-  { __typename?: 'users' }
-  & Pick<Users, 'id' | 'handle'>
-);
+export type UserInfoFragment = { __typename?: 'users', id: string, handle?: string | null | undefined };
 
-export type GuideInputFragment = (
-  { __typename?: 'guide_input' }
-  & Pick<Guide_Input, 'id' | 'campaign_id' | 'step' | 'scenario' | 'type' | 'payload'>
-);
+export type GuideInputFragment = { __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null | undefined, scenario?: string | null | undefined, type: string, payload?: any | null | undefined };
 
-export type GuideAchievementFragment = (
-  { __typename?: 'guide_achievement' }
-  & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'type' | 'value' | 'bool_value'>
-);
+export type GuideAchievementFragment = { __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined };
 
-export type IdDeckFragment = (
-  { __typename?: 'campaign_deck' }
-  & Pick<Campaign_Deck, 'id' | 'owner_id' | 'arkhamdb_id' | 'local_uuid' | 'campaign_id'>
-);
+export type IdDeckFragment = { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number };
 
-export type FullChaosBagResultFragment = (
-  { __typename?: 'chaos_bag_result' }
-  & Pick<Chaos_Bag_Result, 'id' | 'bless' | 'curse' | 'drawn' | 'sealed' | 'totalDrawn'>
-);
+export type FullChaosBagResultFragment = { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null | undefined };
 
-export type MiniDeckFragment = (
-  { __typename?: 'campaign_deck' }
-  & Pick<Campaign_Deck, 'investigator'>
-  & IdDeckFragment
-);
+export type MiniDeckFragment = { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number };
 
-export type BasicDeckFragment = (
-  { __typename?: 'campaign_deck' }
-  & Pick<Campaign_Deck, 'arkhamdb_user' | 'content' | 'content_hash'>
-  & MiniDeckFragment
-);
+export type BasicDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number };
 
-export type AllDeckFragment = (
-  { __typename?: 'campaign_deck' }
-  & { campaign: (
-    { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'uuid'>
-  ), next_deck?: Maybe<(
-    { __typename?: 'campaign_deck' }
-    & IdDeckFragment
-  )>, previous_deck?: Maybe<(
-    { __typename?: 'campaign_deck' }
-    & IdDeckFragment
-  )> }
-  & BasicDeckFragment
-);
+export type AllDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, campaign: { __typename?: 'campaign', id: number, uuid: string }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined };
 
-export type HistoryDeckFragment = (
-  { __typename?: 'campaign_deck' }
-  & { owner: (
-    { __typename?: 'users' }
-    & UserInfoFragment
-  ), next_deck?: Maybe<(
-    { __typename?: 'campaign_deck' }
-    & IdDeckFragment
-  )>, previous_deck?: Maybe<(
-    { __typename?: 'campaign_deck' }
-    & IdDeckFragment
-  )> }
-  & BasicDeckFragment
-);
+export type HistoryDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined };
 
-export type LatestDeckFragment = (
-  { __typename?: 'campaign_deck' }
-  & { owner: (
-    { __typename?: 'users' }
-    & UserInfoFragment
-  ), campaign: (
-    { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'uuid' | 'name'>
-  ), investigator_data?: Maybe<(
-    { __typename?: 'investigator_data' }
-    & Pick<Investigator_Data, 'id' | 'killed' | 'insane' | 'physical' | 'mental'>
-  )>, previous_deck?: Maybe<(
-    { __typename?: 'campaign_deck' }
-    & BasicDeckFragment
-  )> }
-  & BasicDeckFragment
-);
+export type LatestDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined };
 
-export type MiniInvestigatorDataFragment = (
-  { __typename?: 'investigator_data' }
-  & Pick<Investigator_Data, 'id' | 'campaign_id' | 'investigator' | 'mental' | 'physical' | 'insane' | 'killed' | 'storyAssets'>
-);
+export type MiniInvestigatorDataFragment = { __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined };
 
-export type FullInvestigatorDataFragment = (
-  { __typename?: 'investigator_data' }
-  & Pick<Investigator_Data, 'addedCards' | 'ignoreStoryAssets' | 'removedCards' | 'availableXp' | 'spentXp' | 'specialXp'>
-  & MiniInvestigatorDataFragment
-);
+export type FullInvestigatorDataFragment = { __typename?: 'investigator_data', addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, availableXp?: number | null | undefined, spentXp?: number | null | undefined, specialXp?: any | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined };
 
-export type MiniCampaignFragment = (
-  { __typename?: 'campaign' }
-  & Pick<Campaign, 'id' | 'uuid' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'scenarioResults' | 'guided' | 'archived' | 'owner_id' | 'updated_at'>
-  & { latest_decks: Array<(
-    { __typename?: 'latest_decks' }
-    & { deck?: Maybe<(
-      { __typename?: 'campaign_deck' }
-      & MiniDeckFragment
-    )> }
-  )>, investigators: Array<(
-    { __typename?: 'campaign_investigator' }
-    & Pick<Campaign_Investigator, 'id' | 'investigator'>
-  )>, investigator_data: Array<(
-    { __typename?: 'investigator_data' }
-    & MiniInvestigatorDataFragment
-  )> }
-);
+export type MiniCampaignFragment = { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> };
 
-export type FullCampaignFragment = (
-  { __typename?: 'campaign' }
-  & Pick<Campaign, 'id' | 'updated_at' | 'uuid' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'campaignNotes' | 'chaosBag' | 'showInterludes' | 'scenarioResults' | 'weaknessSet' | 'guided' | 'guide_version' | 'owner_id'>
-  & { investigators: Array<(
-    { __typename?: 'campaign_investigator' }
-    & Pick<Campaign_Investigator, 'id' | 'investigator'>
-  )>, investigator_data: Array<(
-    { __typename?: 'investigator_data' }
-    & FullInvestigatorDataFragment
-  )>, latest_decks: Array<(
-    { __typename?: 'latest_decks' }
-    & { deck?: Maybe<(
-      { __typename?: 'campaign_deck' }
-      & LatestDeckFragment
-    )> }
-  )>, link_a_campaign: (
-    { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'uuid'>
-  ), link_b_campaign: (
-    { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'uuid'>
-  ), linked_campaign: (
-    { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'uuid'>
-  ) }
-);
+export type FullCampaignFragment = { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, campaignNotes?: any | null | undefined, chaosBag?: any | null | undefined, showInterludes?: boolean | null | undefined, scenarioResults?: any | null | undefined, weaknessSet?: any | null | undefined, guided?: boolean | null | undefined, guide_version?: number | null | undefined, archived?: boolean | null | undefined, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, availableXp?: number | null | undefined, spentXp?: number | null | undefined, specialXp?: any | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } };
 
-export type FullCampaignGuideStateFragment = (
-  { __typename?: 'campaign_guide' }
-  & Pick<Campaign_Guide, 'id' | 'uuid' | 'updated_at'>
-  & { guide_inputs: Array<(
-    { __typename?: 'guide_input' }
-    & GuideInputFragment
-  )>, guide_achievements: Array<(
-    { __typename?: 'guide_achievement' }
-    & GuideAchievementFragment
-  )> }
-);
+export type FullCampaignGuideStateFragment = { __typename?: 'campaign_guide', id?: number | null | undefined, uuid?: string | null | undefined, updated_at?: any | null | undefined, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null | undefined, scenario?: string | null | undefined, type: string, payload?: any | null | undefined }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> };
 
 export type GetMyCampaignsQueryVariables = Exact<{
   userId: Scalars['String'];
 }>;
 
 
-export type GetMyCampaignsQuery = (
-  { __typename?: 'query_root' }
-  & { users_by_pk?: Maybe<(
-    { __typename?: 'users' }
-    & Pick<Users, 'id'>
-    & { campaigns: Array<(
-      { __typename?: 'user_campaigns' }
-      & { campaign?: Maybe<(
-        { __typename?: 'campaign' }
-        & { link_a_campaign: (
-          { __typename?: 'campaign' }
-          & MiniCampaignFragment
-        ), link_b_campaign: (
-          { __typename?: 'campaign' }
-          & MiniCampaignFragment
-        ) }
-        & MiniCampaignFragment
-      )> }
-    )> }
-  )> }
-);
+export type GetMyCampaignsQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, campaigns: Array<{ __typename?: 'user_campaigns', campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> }, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> } | null | undefined }> } | null | undefined };
 
 export type GetCampaignQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type GetCampaignQuery = (
-  { __typename?: 'query_root' }
-  & { campaign_by_pk?: Maybe<(
-    { __typename?: 'campaign' }
-    & FullCampaignFragment
-  )> }
-);
+export type GetCampaignQuery = { __typename?: 'query_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, campaignNotes?: any | null | undefined, chaosBag?: any | null | undefined, showInterludes?: boolean | null | undefined, scenarioResults?: any | null | undefined, weaknessSet?: any | null | undefined, guided?: boolean | null | undefined, guide_version?: number | null | undefined, archived?: boolean | null | undefined, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, availableXp?: number | null | undefined, spentXp?: number | null | undefined, specialXp?: any | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null | undefined };
 
 export type GetCampaignGuideQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type GetCampaignGuideQuery = (
-  { __typename?: 'query_root' }
-  & { campaign_guide: Array<(
-    { __typename?: 'campaign_guide' }
-    & FullCampaignGuideStateFragment
-  )> }
-);
+export type GetCampaignGuideQuery = { __typename?: 'query_root', campaign_guide: Array<{ __typename?: 'campaign_guide', id?: number | null | undefined, uuid?: string | null | undefined, updated_at?: any | null | undefined, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null | undefined, scenario?: string | null | undefined, type: string, payload?: any | null | undefined }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> }> };
 
 export type GetCampaignAccessQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type GetCampaignAccessQuery = (
-  { __typename?: 'query_root' }
-  & { campaign_by_pk?: Maybe<(
-    { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'uuid'>
-    & { owner: (
-      { __typename?: 'users' }
-      & UserInfoFragment
-    ), access: Array<(
-      { __typename?: 'campaign_access' }
-      & { user: (
-        { __typename?: 'users' }
-        & UserInfoFragment
-      ) }
-    )> }
-  )> }
-);
+export type GetCampaignAccessQuery = { __typename?: 'query_root', campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, access: Array<{ __typename?: 'campaign_access', user: { __typename?: 'users', id: string, handle?: string | null | undefined } }> } | null | undefined };
 
 export type GetCaosBagResultsQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type GetCaosBagResultsQuery = (
-  { __typename?: 'query_root' }
-  & { chaos_bag_result_by_pk?: Maybe<(
-    { __typename?: 'chaos_bag_result' }
-    & FullChaosBagResultFragment
-  )> }
-);
+export type GetCaosBagResultsQuery = { __typename?: 'query_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null | undefined } | null | undefined };
 
 export type GetChaosBagResultsQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type GetChaosBagResultsQuery = (
-  { __typename?: 'query_root' }
-  & { chaos_bag_result_by_pk?: Maybe<(
-    { __typename?: 'chaos_bag_result' }
-    & Pick<Chaos_Bag_Result, 'id' | 'bless' | 'curse' | 'drawn' | 'sealed' | 'totalDrawn'>
-  )> }
-);
+export type GetChaosBagResultsQuery = { __typename?: 'query_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null | undefined } | null | undefined };
 
 export type CampaignSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type CampaignSubscription = (
-  { __typename?: 'subscription_root' }
-  & { campaign_by_pk?: Maybe<(
-    { __typename?: 'campaign' }
-    & FullCampaignFragment
-  )> }
-);
+export type CampaignSubscription = { __typename?: 'subscription_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, campaignNotes?: any | null | undefined, chaosBag?: any | null | undefined, showInterludes?: boolean | null | undefined, scenarioResults?: any | null | undefined, weaknessSet?: any | null | undefined, guided?: boolean | null | undefined, guide_version?: number | null | undefined, archived?: boolean | null | undefined, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, availableXp?: number | null | undefined, spentXp?: number | null | undefined, specialXp?: any | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null | undefined };
 
 export type CampaignAccessSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type CampaignAccessSubscription = (
-  { __typename?: 'subscription_root' }
-  & { campaign_by_pk?: Maybe<(
-    { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'uuid'>
-    & { owner: (
-      { __typename?: 'users' }
-      & UserInfoFragment
-    ), access: Array<(
-      { __typename?: 'campaign_access' }
-      & { user: (
-        { __typename?: 'users' }
-        & UserInfoFragment
-      ) }
-    )> }
-  )> }
-);
+export type CampaignAccessSubscription = { __typename?: 'subscription_root', campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, access: Array<{ __typename?: 'campaign_access', user: { __typename?: 'users', id: string, handle?: string | null | undefined } }> } | null | undefined };
 
 export type CampaignGuideSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type CampaignGuideSubscription = (
-  { __typename?: 'subscription_root' }
-  & { campaign_guide: Array<(
-    { __typename?: 'campaign_guide' }
-    & FullCampaignGuideStateFragment
-  )> }
-);
+export type CampaignGuideSubscription = { __typename?: 'subscription_root', campaign_guide: Array<{ __typename?: 'campaign_guide', id?: number | null | undefined, uuid?: string | null | undefined, updated_at?: any | null | undefined, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null | undefined, scenario?: string | null | undefined, type: string, payload?: any | null | undefined }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> }> };
 
 export type ChaosBagResultsSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type ChaosBagResultsSubscription = (
-  { __typename?: 'subscription_root' }
-  & { chaos_bag_result_by_pk?: Maybe<(
-    { __typename?: 'chaos_bag_result' }
-    & FullChaosBagResultFragment
-  )> }
-);
+export type ChaosBagResultsSubscription = { __typename?: 'subscription_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null | undefined } | null | undefined };
 
 export type GetProfileQueryVariables = Exact<{
   userId: Scalars['String'];
 }>;
 
 
-export type GetProfileQuery = (
-  { __typename?: 'query_root' }
-  & { users_by_pk?: Maybe<(
-    { __typename?: 'users' }
-    & Pick<Users, 'id' | 'handle'>
-    & { friends: Array<(
-      { __typename?: 'user_friends' }
-      & { user?: Maybe<(
-        { __typename?: 'users' }
-        & UserInfoFragment
-      )> }
-    )>, sent_requests: Array<(
-      { __typename?: 'user_sent_friend_requests' }
-      & { user?: Maybe<(
-        { __typename?: 'users' }
-        & UserInfoFragment
-      )> }
-    )>, received_requests: Array<(
-      { __typename?: 'user_received_friend_requests' }
-      & { user?: Maybe<(
-        { __typename?: 'users' }
-        & UserInfoFragment
-      )> }
-    )> }
-  )> }
-);
+export type GetProfileQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, handle?: string | null | undefined, friends: Array<{ __typename?: 'user_friends', user?: { __typename?: 'users', id: string, handle?: string | null | undefined } | null | undefined }>, sent_requests: Array<{ __typename?: 'user_sent_friend_requests', user?: { __typename?: 'users', id: string, handle?: string | null | undefined } | null | undefined }>, received_requests: Array<{ __typename?: 'user_received_friend_requests', user?: { __typename?: 'users', id: string, handle?: string | null | undefined } | null | undefined }> } | null | undefined };
 
 export type DeleteInvestigatorDecksMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10300,16 +9919,7 @@ export type DeleteInvestigatorDecksMutationVariables = Exact<{
 }>;
 
 
-export type DeleteInvestigatorDecksMutation = (
-  { __typename?: 'mutation_root' }
-  & { delete_campaign_deck?: Maybe<(
-    { __typename?: 'campaign_deck_mutation_response' }
-    & { returning: Array<(
-      { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'id' | 'campaign_id' | 'arkhamdb_id' | 'local_uuid' | 'investigator'>
-    )> }
-  )> }
-);
+export type DeleteInvestigatorDecksMutation = { __typename?: 'mutation_root', delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', id: number, campaign_id: number, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, investigator: string }> } | null | undefined };
 
 export type ChaosBagClearTokensMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10318,13 +9928,7 @@ export type ChaosBagClearTokensMutationVariables = Exact<{
 }>;
 
 
-export type ChaosBagClearTokensMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_chaos_bag_result_by_pk?: Maybe<(
-    { __typename?: 'chaos_bag_result' }
-    & Pick<Chaos_Bag_Result, 'id' | 'drawn' | 'bless' | 'curse'>
-  )> }
-);
+export type ChaosBagClearTokensMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, drawn: any, bless: number, curse: number } | null | undefined };
 
 export type ChaosBagDrawTokenMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10332,13 +9936,7 @@ export type ChaosBagDrawTokenMutationVariables = Exact<{
 }>;
 
 
-export type ChaosBagDrawTokenMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_chaos_bag_result_by_pk?: Maybe<(
-    { __typename?: 'chaos_bag_result' }
-    & Pick<Chaos_Bag_Result, 'id' | 'drawn' | 'totalDrawn'>
-  )> }
-);
+export type ChaosBagDrawTokenMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, drawn: any, totalDrawn?: number | null | undefined } | null | undefined };
 
 export type ChaosBagResetBlessCurseMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10347,13 +9945,7 @@ export type ChaosBagResetBlessCurseMutationVariables = Exact<{
 }>;
 
 
-export type ChaosBagResetBlessCurseMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_chaos_bag_result_by_pk?: Maybe<(
-    { __typename?: 'chaos_bag_result' }
-    & Pick<Chaos_Bag_Result, 'id' | 'bless' | 'curse' | 'drawn' | 'sealed'>
-  )> }
-);
+export type ChaosBagResetBlessCurseMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any } | null | undefined };
 
 export type ChaosBagSealTokensMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10361,90 +9953,42 @@ export type ChaosBagSealTokensMutationVariables = Exact<{
 }>;
 
 
-export type ChaosBagSealTokensMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_chaos_bag_result_by_pk?: Maybe<(
-    { __typename?: 'chaos_bag_result' }
-    & Pick<Chaos_Bag_Result, 'id' | 'sealed'>
-  )> }
-);
+export type ChaosBagSealTokensMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, sealed: any } | null | undefined };
 
 export type ChaosBagReleaseAllSealedMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type ChaosBagReleaseAllSealedMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_chaos_bag_result_by_pk?: Maybe<(
-    { __typename?: 'chaos_bag_result' }
-    & Pick<Chaos_Bag_Result, 'id' | 'sealed'>
-  )> }
-);
+export type ChaosBagReleaseAllSealedMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, sealed: any } | null | undefined };
 
 export type ChaosBagIncBlessMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type ChaosBagIncBlessMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_chaos_bag_result?: Maybe<(
-    { __typename?: 'chaos_bag_result_mutation_response' }
-    & { returning: Array<(
-      { __typename?: 'chaos_bag_result' }
-      & Pick<Chaos_Bag_Result, 'id' | 'bless'>
-    )> }
-  )> }
-);
+export type ChaosBagIncBlessMutation = { __typename?: 'mutation_root', update_chaos_bag_result?: { __typename?: 'chaos_bag_result_mutation_response', returning: Array<{ __typename?: 'chaos_bag_result', id: number, bless: number }> } | null | undefined };
 
 export type ChaosBagDecBlessMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type ChaosBagDecBlessMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_chaos_bag_result?: Maybe<(
-    { __typename?: 'chaos_bag_result_mutation_response' }
-    & { returning: Array<(
-      { __typename?: 'chaos_bag_result' }
-      & Pick<Chaos_Bag_Result, 'id' | 'bless'>
-    )> }
-  )> }
-);
+export type ChaosBagDecBlessMutation = { __typename?: 'mutation_root', update_chaos_bag_result?: { __typename?: 'chaos_bag_result_mutation_response', returning: Array<{ __typename?: 'chaos_bag_result', id: number, bless: number }> } | null | undefined };
 
 export type ChaosBagIncCurseMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type ChaosBagIncCurseMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_chaos_bag_result?: Maybe<(
-    { __typename?: 'chaos_bag_result_mutation_response' }
-    & { returning: Array<(
-      { __typename?: 'chaos_bag_result' }
-      & Pick<Chaos_Bag_Result, 'id' | 'curse'>
-    )> }
-  )> }
-);
+export type ChaosBagIncCurseMutation = { __typename?: 'mutation_root', update_chaos_bag_result?: { __typename?: 'chaos_bag_result_mutation_response', returning: Array<{ __typename?: 'chaos_bag_result', id: number, curse: number }> } | null | undefined };
 
 export type ChaosBagDecCurseMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type ChaosBagDecCurseMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_chaos_bag_result?: Maybe<(
-    { __typename?: 'chaos_bag_result_mutation_response' }
-    & { returning: Array<(
-      { __typename?: 'chaos_bag_result' }
-      & Pick<Chaos_Bag_Result, 'id' | 'curse'>
-    )> }
-  )> }
-);
+export type ChaosBagDecCurseMutation = { __typename?: 'mutation_root', update_chaos_bag_result?: { __typename?: 'chaos_bag_result_mutation_response', returning: Array<{ __typename?: 'chaos_bag_result', id: number, curse: number }> } | null | undefined };
 
 export type SetBinaryAchievementMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10453,13 +9997,7 @@ export type SetBinaryAchievementMutationVariables = Exact<{
 }>;
 
 
-export type SetBinaryAchievementMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_guide_achievement_one?: Maybe<(
-    { __typename?: 'guide_achievement' }
-    & GuideAchievementFragment
-  )> }
-);
+export type SetBinaryAchievementMutation = { __typename?: 'mutation_root', insert_guide_achievement_one?: { __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined } | null | undefined };
 
 export type IncCountAchievementMaxMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10468,19 +10006,7 @@ export type IncCountAchievementMaxMutationVariables = Exact<{
 }>;
 
 
-export type IncCountAchievementMaxMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_guide_achievement_one?: Maybe<(
-    { __typename?: 'guide_achievement' }
-    & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'type' | 'value'>
-  )>, update_guide_achievement?: Maybe<(
-    { __typename?: 'guide_achievement_mutation_response' }
-    & { returning: Array<(
-      { __typename?: 'guide_achievement' }
-      & GuideAchievementFragment
-    )> }
-  )> }
-);
+export type IncCountAchievementMaxMutation = { __typename?: 'mutation_root', insert_guide_achievement_one?: { __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined } | null | undefined, update_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', returning: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> } | null | undefined };
 
 export type IncCountAchievementMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10488,19 +10014,7 @@ export type IncCountAchievementMutationVariables = Exact<{
 }>;
 
 
-export type IncCountAchievementMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_guide_achievement_one?: Maybe<(
-    { __typename?: 'guide_achievement' }
-    & GuideAchievementFragment
-  )>, update_guide_achievement?: Maybe<(
-    { __typename?: 'guide_achievement_mutation_response' }
-    & { returning: Array<(
-      { __typename?: 'guide_achievement' }
-      & GuideAchievementFragment
-    )> }
-  )> }
-);
+export type IncCountAchievementMutation = { __typename?: 'mutation_root', insert_guide_achievement_one?: { __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined } | null | undefined, update_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', returning: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> } | null | undefined };
 
 export type DecCountAchievementMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10508,19 +10022,7 @@ export type DecCountAchievementMutationVariables = Exact<{
 }>;
 
 
-export type DecCountAchievementMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_guide_achievement_one?: Maybe<(
-    { __typename?: 'guide_achievement' }
-    & GuideAchievementFragment
-  )>, update_guide_achievement?: Maybe<(
-    { __typename?: 'guide_achievement_mutation_response' }
-    & { returning: Array<(
-      { __typename?: 'guide_achievement' }
-      & GuideAchievementFragment
-    )> }
-  )> }
-);
+export type DecCountAchievementMutation = { __typename?: 'mutation_root', insert_guide_achievement_one?: { __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined } | null | undefined, update_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', returning: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> } | null | undefined };
 
 export type AddGuideInputMutationVariables = Exact<{
   id: Scalars['String'];
@@ -10532,13 +10034,7 @@ export type AddGuideInputMutationVariables = Exact<{
 }>;
 
 
-export type AddGuideInputMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_guide_input_one?: Maybe<(
-    { __typename?: 'guide_input' }
-    & GuideInputFragment
-  )> }
-);
+export type AddGuideInputMutation = { __typename?: 'mutation_root', insert_guide_input_one?: { __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null | undefined, scenario?: string | null | undefined, type: string, payload?: any | null | undefined } | null | undefined };
 
 export type RemoveGuideInputsMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10546,17 +10042,7 @@ export type RemoveGuideInputsMutationVariables = Exact<{
 }>;
 
 
-export type RemoveGuideInputsMutation = (
-  { __typename?: 'mutation_root' }
-  & { delete_guide_input?: Maybe<(
-    { __typename?: 'guide_input_mutation_response' }
-    & Pick<Guide_Input_Mutation_Response, 'affected_rows'>
-    & { returning: Array<(
-      { __typename?: 'guide_input' }
-      & Pick<Guide_Input, 'id' | 'campaign_id'>
-    )> }
-  )> }
-);
+export type RemoveGuideInputsMutation = { __typename?: 'mutation_root', delete_guide_input?: { __typename?: 'guide_input_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'guide_input', id: string, campaign_id: number }> } | null | undefined };
 
 export type UpdateInvestigatorTraumaMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10568,13 +10054,7 @@ export type UpdateInvestigatorTraumaMutationVariables = Exact<{
 }>;
 
 
-export type UpdateInvestigatorTraumaMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_investigator_data_one?: Maybe<(
-    { __typename?: 'investigator_data' }
-    & MiniInvestigatorDataFragment
-  )> }
-);
+export type UpdateInvestigatorTraumaMutation = { __typename?: 'mutation_root', insert_investigator_data_one?: { __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined } | null | undefined };
 
 export type UpdateInvestigatorDataMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10591,13 +10071,7 @@ export type UpdateInvestigatorDataMutationVariables = Exact<{
 }>;
 
 
-export type UpdateInvestigatorDataMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_investigator_data_one?: Maybe<(
-    { __typename?: 'investigator_data' }
-    & FullInvestigatorDataFragment
-  )> }
-);
+export type UpdateInvestigatorDataMutation = { __typename?: 'mutation_root', insert_investigator_data_one?: { __typename?: 'investigator_data', addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, availableXp?: number | null | undefined, spentXp?: number | null | undefined, specialXp?: any | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined } | null | undefined };
 
 export type UpdateSpentXpMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10606,13 +10080,7 @@ export type UpdateSpentXpMutationVariables = Exact<{
 }>;
 
 
-export type UpdateSpentXpMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_investigator_data_one?: Maybe<(
-    { __typename?: 'investigator_data' }
-    & Pick<Investigator_Data, 'id' | 'campaign_id' | 'investigator' | 'spentXp'>
-  )> }
-);
+export type UpdateSpentXpMutation = { __typename?: 'mutation_root', insert_investigator_data_one?: { __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, spentXp?: number | null | undefined } | null | undefined };
 
 export type UpdateAvailableXpMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10621,13 +10089,7 @@ export type UpdateAvailableXpMutationVariables = Exact<{
 }>;
 
 
-export type UpdateAvailableXpMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_investigator_data_one?: Maybe<(
-    { __typename?: 'investigator_data' }
-    & Pick<Investigator_Data, 'id' | 'campaign_id' | 'investigator' | 'availableXp'>
-  )> }
-);
+export type UpdateAvailableXpMutation = { __typename?: 'mutation_root', insert_investigator_data_one?: { __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, availableXp?: number | null | undefined } | null | undefined };
 
 export type UpdateCampaignArchivedMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10635,13 +10097,7 @@ export type UpdateCampaignArchivedMutationVariables = Exact<{
 }>;
 
 
-export type UpdateCampaignArchivedMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_campaign_by_pk?: Maybe<(
-    { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'uuid' | 'archived'>
-  )> }
-);
+export type UpdateCampaignArchivedMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, archived?: boolean | null | undefined } | null | undefined };
 
 export type UpdateWeaknessSetMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10649,13 +10105,7 @@ export type UpdateWeaknessSetMutationVariables = Exact<{
 }>;
 
 
-export type UpdateWeaknessSetMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_campaign_by_pk?: Maybe<(
-    { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'uuid' | 'weaknessSet'>
-  )> }
-);
+export type UpdateWeaknessSetMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, weaknessSet?: any | null | undefined } | null | undefined };
 
 export type UpdateCampaignDifficultyMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10663,13 +10113,7 @@ export type UpdateCampaignDifficultyMutationVariables = Exact<{
 }>;
 
 
-export type UpdateCampaignDifficultyMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_campaign_by_pk?: Maybe<(
-    { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'uuid' | 'difficulty'>
-  )> }
-);
+export type UpdateCampaignDifficultyMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, difficulty?: string | null | undefined } | null | undefined };
 
 export type UpdateCampaignScenarioResultsMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10677,13 +10121,7 @@ export type UpdateCampaignScenarioResultsMutationVariables = Exact<{
 }>;
 
 
-export type UpdateCampaignScenarioResultsMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_campaign_by_pk?: Maybe<(
-    { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'uuid' | 'scenarioResults'>
-  )> }
-);
+export type UpdateCampaignScenarioResultsMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, scenarioResults?: any | null | undefined } | null | undefined };
 
 export type UpdateCampaignGuideVersionMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10691,13 +10129,7 @@ export type UpdateCampaignGuideVersionMutationVariables = Exact<{
 }>;
 
 
-export type UpdateCampaignGuideVersionMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_campaign_by_pk?: Maybe<(
-    { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'uuid' | 'guide_version'>
-  )> }
-);
+export type UpdateCampaignGuideVersionMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, guide_version?: number | null | undefined } | null | undefined };
 
 export type UpdateCampaignNotesMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10705,13 +10137,7 @@ export type UpdateCampaignNotesMutationVariables = Exact<{
 }>;
 
 
-export type UpdateCampaignNotesMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_campaign_by_pk?: Maybe<(
-    { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'uuid' | 'campaignNotes'>
-  )> }
-);
+export type UpdateCampaignNotesMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, campaignNotes?: any | null | undefined } | null | undefined };
 
 export type UpdateCampaignShowInterludesMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10719,13 +10145,7 @@ export type UpdateCampaignShowInterludesMutationVariables = Exact<{
 }>;
 
 
-export type UpdateCampaignShowInterludesMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_campaign_by_pk?: Maybe<(
-    { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'uuid' | 'showInterludes'>
-  )> }
-);
+export type UpdateCampaignShowInterludesMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, showInterludes?: boolean | null | undefined } | null | undefined };
 
 export type UpdateChaosBagMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10733,13 +10153,7 @@ export type UpdateChaosBagMutationVariables = Exact<{
 }>;
 
 
-export type UpdateChaosBagMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_campaign_by_pk?: Maybe<(
-    { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'uuid' | 'chaosBag'>
-  )> }
-);
+export type UpdateChaosBagMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, chaosBag?: any | null | undefined } | null | undefined };
 
 export type UpdateCampaignNameMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10747,13 +10161,7 @@ export type UpdateCampaignNameMutationVariables = Exact<{
 }>;
 
 
-export type UpdateCampaignNameMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_campaign_by_pk?: Maybe<(
-    { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'uuid' | 'name'>
-  )> }
-);
+export type UpdateCampaignNameMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined } | null | undefined };
 
 export type AddCampaignInvestigatorMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10761,13 +10169,7 @@ export type AddCampaignInvestigatorMutationVariables = Exact<{
 }>;
 
 
-export type AddCampaignInvestigatorMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_campaign_investigator_one?: Maybe<(
-    { __typename?: 'campaign_investigator' }
-    & Pick<Campaign_Investigator, 'id' | 'investigator' | 'campaign_id'>
-  )> }
-);
+export type AddCampaignInvestigatorMutation = { __typename?: 'mutation_root', insert_campaign_investigator_one?: { __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string, campaign_id: number } | null | undefined };
 
 export type RemoveCampaignInvestigatorMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10775,16 +10177,7 @@ export type RemoveCampaignInvestigatorMutationVariables = Exact<{
 }>;
 
 
-export type RemoveCampaignInvestigatorMutation = (
-  { __typename?: 'mutation_root' }
-  & { delete_campaign_investigator?: Maybe<(
-    { __typename?: 'campaign_investigator_mutation_response' }
-    & { returning: Array<(
-      { __typename?: 'campaign_investigator' }
-      & Pick<Campaign_Investigator, 'id' | 'campaign_id' | 'investigator'>
-    )> }
-  )> }
-);
+export type RemoveCampaignInvestigatorMutation = { __typename?: 'mutation_root', delete_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', returning: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, campaign_id: number, investigator: string }> } | null | undefined };
 
 export const CoreCardFragmentDoc = gql`
     fragment CoreCard on card {
@@ -10992,6 +10385,7 @@ export const FullCampaignFragmentDoc = gql`
   weaknessSet
   guided
   guide_version
+  archived
   owner_id
   investigators(order_by: {created_at: asc}) {
     id
@@ -11095,6 +10489,48 @@ export function useGetCustomCardsLazyQuery(baseOptions?: Apollo.LazyQueryHookOpt
 export type GetCustomCardsQueryHookResult = ReturnType<typeof useGetCustomCardsQuery>;
 export type GetCustomCardsLazyQueryHookResult = ReturnType<typeof useGetCustomCardsLazyQuery>;
 export type GetCustomCardsQueryResult = Apollo.QueryResult<GetCustomCardsQuery, GetCustomCardsQueryVariables>;
+export const GetCardFaqDocument = gql`
+    query getCardFaq($code: String!, $locale: String!) {
+  faq_by_pk(code: $code) {
+    code
+    text
+    faq_texts(where: {locale: {_eq: $locale}}) {
+      code
+      locale
+      text
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetCardFaqQuery__
+ *
+ * To run a query within a React component, call `useGetCardFaqQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCardFaqQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCardFaqQuery({
+ *   variables: {
+ *      code: // value for 'code'
+ *      locale: // value for 'locale'
+ *   },
+ * });
+ */
+export function useGetCardFaqQuery(baseOptions: Apollo.QueryHookOptions<GetCardFaqQuery, GetCardFaqQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCardFaqQuery, GetCardFaqQueryVariables>(GetCardFaqDocument, options);
+      }
+export function useGetCardFaqLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCardFaqQuery, GetCardFaqQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCardFaqQuery, GetCardFaqQueryVariables>(GetCardFaqDocument, options);
+        }
+export type GetCardFaqQueryHookResult = ReturnType<typeof useGetCardFaqQuery>;
+export type GetCardFaqLazyQueryHookResult = ReturnType<typeof useGetCardFaqLazyQuery>;
+export type GetCardFaqQueryResult = Apollo.QueryResult<GetCardFaqQuery, GetCardFaqQueryVariables>;
 export const UploadNewCampaignDocument = gql`
     mutation uploadNewCampaign($campaignId: Int!, $cycleCode: String!, $standaloneId: jsonb, $showInterludes: Boolean, $name: String!, $difficulty: String, $campaignNotes: jsonb, $scenarioResults: jsonb, $chaosBag: jsonb, $weaknessSet: jsonb, $guideVersion: Int, $inputs: [guide_input_insert_input!]!, $achievements: [guide_achievement_insert_input!]!, $investigator_data: [investigator_data_insert_input!]!, $investigators: [campaign_investigator_insert_input!]!) {
   insert_guide_input(objects: $inputs) {

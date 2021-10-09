@@ -5,7 +5,6 @@ import { c, msgid, ngettext, t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
 
 import VariableTokenInput from './VariableTokenInput';
-import CardTextComponent from '@components/card/CardTextComponent';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { difficultyString, Scenario, scenarioFromCard } from '@components/campaign/constants';
@@ -37,6 +36,8 @@ import { TINY_PHONE } from '@styles/sizes';
 import TokenTextLine from './TokenTextLine';
 import InvestigatorRadioChoice from '@components/campaignguide/prompts/ChooseInvestigatorPrompt/InvestigatorRadioChoice';
 import { elderSign } from './constants';
+import RoundButton from '@components/core/RoundButton';
+import ArkhamIcon from '@icons/ArkhamIcon';
 
 
 interface Props {
@@ -394,9 +395,9 @@ function ChaosBagOddsSection({
   specialTokenValues,
   modifiedSkill,
   testDifficulty,
-}: ChaosBagProps) {
+  showBlurse,
+}: ChaosBagProps & { showBlurse: boolean }) {
   const bagTotal = useMemo(() => sumBy(values(chaosBag), x => x || 0), [chaosBag]);
-  const [showBlurse, toggleShowBlurse] = useFlag(true);
   const { typography, colors, width } = useContext(StyleContext);
   const tokensByValue: ChaosTokenCollection[] = useMemo(() => {
     const result: { value: ChaosTokenModifier; tokens: ChaosTokenType[] }[] = map(groupBy(flatMap(CHAOS_TOKENS, token => {
@@ -635,6 +636,7 @@ export default function OddsCalculatorComponent({
   difficulty: defaultDifficulty,
 }: Props) {
   const { lang } = useContext(LanguageContext);
+  const [showBlurse, toggleShowBlurse] = useFlag(true);
   const difficultyText = useMemo(() => {
     return {
       easy: t`Easy difficulty`,
@@ -748,22 +750,6 @@ export default function OddsCalculatorComponent({
   const dialogContent = useMemo(() => {
     return (
       <View>
-        <View style={styles.row}>
-          { !!code && <EncounterIcon encounter_code={code} size={32} color={colors.D30} /> }
-          <View style={[styles.header, space.paddingLeftS]}>
-            <Text style={typography.large}>
-              { name || '' }
-            </Text>
-            { !!difficulty && <Text style={typography.smallButtonLabel}>{difficultyText[difficulty]}</Text> }
-          </View>
-        </View>
-        <View style={[styles.line, borderStyle]} />
-        { !!scenarioText && (
-          <View>
-            <CardTextComponent text={scenarioText} />
-            <View style={[styles.line, borderStyle]} />
-          </View>
-        ) }
         <DeckBubbleHeader title={t`— Difficulty —`} />
         { map([CampaignDifficulty.EASY, CampaignDifficulty.STANDARD, CampaignDifficulty.HARD, CampaignDifficulty.EXPERT], d => (
           <NewDialog.PickerItem
@@ -794,7 +780,7 @@ export default function OddsCalculatorComponent({
         )) }
       </View>
     );
-  }, [items, setCurrentScenario, currentScenario, name, difficulty, scenarioText, borderStyle, difficultyText, typography, code, colors]);
+  }, [items, setCurrentScenario, currentScenario, difficulty]);
   const { dialog, showDialog } = useDialog({
     title: t`Scenario settings`,
     content: dialogContent,
@@ -897,22 +883,26 @@ export default function OddsCalculatorComponent({
             detail={difficulty ? difficultyText[difficulty] : undefined}
             encounterIcon={code}
             bigEncounterIcon
-            rightNode={
-              <View style={styles.row}>
-                <Text style={[typography.smallButtonLabel, { color: colors.D10 }, typography.right, space.marginRightXs]}>
-                  { t`Reference\ncard` }
-                </Text>
-                <AppIcon name="special_cards" size={26} color={colors.D10} />
-              </View>
-            }
             onPress={showDialog}
           />
+        </View>
+        <View style={[styles.blurseRow, space.paddingSideS]}>
+          <RoundButton onPress={toggleShowBlurse} noShadow accessibilityLabel={showBlurse ? t`Hide Bless/Curse Odds` : t`Show Bless/Curse Odds`}>
+            <AppIcon name={showBlurse ? 'show' : 'hide'} color={colors.M} size={28} />
+          </RoundButton>
+          <View style={space.paddingLeftXs}>
+            <ArkhamIcon name="bless" color={colors.token.bless} size={24} />
+          </View>
+          <View style={space.paddingLeftXs}>
+            <ArkhamIcon name="curse" color={colors.token.curse} size={24} />
+          </View>
         </View>
         <ChaosBagOddsSection
           chaosBag={chaosBag}
           specialTokenValues={allSpecialTokenValues}
           modifiedSkill={modifiedSkill}
           testDifficulty={testDifficulty}
+          showBlurse={showBlurse}
         />
         <View style={[styles.difficultyRow, space.marginTopS, space.marginBottomS]}>
           <NumberInput
@@ -988,13 +978,10 @@ const styles = StyleSheet.create({
     marginTop: s,
     marginBottom: s,
   },
-  header: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
-  row: {
+  blurseRow: {
     flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
   numberInput: {
     flexDirection: 'column',

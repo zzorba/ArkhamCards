@@ -1089,7 +1089,7 @@
           },
           {
             "id": "coven_of_keziah_holds_the_world_in_its_grasp",
-            "text": "the coven of Keziah holds the world in its grasp."
+            "text": "el aquelarre de Keziah tiene el mundo en su poder."
           },
           {
             "id": "deceiving_the_lodge",
@@ -1109,11 +1109,11 @@
           },
           {
             "id": "erynn_joined_investigators",
-            "text": "Erynn joined the investigators."
+            "text": "Erynn se unió a los investigadores."
           },
           {
             "id": "erynn_wants_to_meet",
-            "text": "Erynn wants to meet you."
+            "text": "Erynn quiere ver a los investigadores."
           },
           {
             "id": "guardian_of_the_trap_defeated",
@@ -1307,7 +1307,7 @@
         "entries": [
           {
             "id": "bloody_tree_carvings",
-            "text": "Bloody Tree Carvings"
+            "text": "Marcas sangrientas en los árboles"
           },
           {
             "id": "corn_husk_doll",
@@ -1335,7 +1335,7 @@
           },
           {
             "id": "strange_incantation",
-            "text": "Strange Incantation"
+            "text": "Ensalmo extraño"
           },
           {
             "id": "wisp_of_spectral_mist",
@@ -1550,6 +1550,26 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+          },
+          {
+            "id": "doy_fewer_resources",
+            "masculine_text": "#name# starts with 3 fewer resources.",
+            "feminine_text": "#name# starts with 3 fewer resources."
+          },
+          {
+            "id": "eztli_fewer_resources",
+            "masculine_text": "#name# starts with 3 fewer resources.",
+            "feminine_text": "#name# starts with 3 fewer resources."
+          },
+          {
+            "id": "hote_fewer_resources",
+            "masculine_text": "#name# starts with 3 fewer resources.",
+            "feminine_text": "#name# starts with 3 fewer resources."
+          },
+          {
             "id": "agenda_5",
             "text": "oculto"
           },
@@ -1562,12 +1582,24 @@
             "text": "dummy"
           },
           {
+            "id": "doy_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "final_depth",
             "text": "Profundidad #X#"
           },
           {
+            "id": "hote_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "ichtaca_left_without_you",
             "text": "Ichtaca se fue sin los investigadores."
+          },
+          {
+            "id": "jungle_beckons_reminder",
+            "text": "dummy"
           },
           {
             "id": "listened_to_ichtaca",
@@ -1584,6 +1616,10 @@
           {
             "id": "tasks_completed",
             "text": "Se completaron #X# tareas."
+          },
+          {
+            "id": "thc_reminder",
+            "text": "dummy"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -2878,6 +2914,26 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+          },
+          {
+            "id": "doy_fewer_resources",
+            "masculine_text": "#name# starts with 3 fewer resources.",
+            "feminine_text": "#name# starts with 3 fewer resources."
+          },
+          {
+            "id": "eztli_fewer_resources",
+            "masculine_text": "#name# starts with 3 fewer resources.",
+            "feminine_text": "#name# starts with 3 fewer resources."
+          },
+          {
+            "id": "hote_fewer_resources",
+            "masculine_text": "#name# starts with 3 fewer resources.",
+            "feminine_text": "#name# starts with 3 fewer resources."
+          },
+          {
             "id": "agenda_5",
             "text": "oculto"
           },
@@ -2890,12 +2946,24 @@
             "text": "dummy"
           },
           {
+            "id": "doy_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "final_depth",
             "text": "Profundidad #X#"
           },
           {
+            "id": "hote_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "ichtaca_left_without_you",
             "text": "Ichtaca se fue sin los investigadores."
+          },
+          {
+            "id": "jungle_beckons_reminder",
+            "text": "dummy"
           },
           {
             "id": "listened_to_ichtaca",
@@ -2904,6 +2972,10 @@
           {
             "id": "tasks_completed",
             "text": "Se completaron #X# tareas."
+          },
+          {
+            "id": "thc_reminder",
+            "text": "dummy"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -3009,7 +3081,7 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "possesses_a_diving_suite",
+            "id": "possesses_a_diving_suit",
             "masculine_text": "#name# possesses a diving suit.",
             "feminine_text": "#name# possesses a diving suit."
           },

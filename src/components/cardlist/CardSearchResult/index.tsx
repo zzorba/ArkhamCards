@@ -95,7 +95,7 @@ function FactionIcon({ card }: { card: Card }) {
   return (
     <View style={styles.investigatorFactionIcon}>
       <ArkhamIcon
-        name={(card.faction2_code || faction === 'neutral') ? 'elder_sign' : faction}
+        name={card.faction2_code ? 'elder_sign' : faction}
         size={size === ICON_SIZE ? ICON_SIZE : SMALL_ICON_SIZE}
         color={colors.faction[faction].text}
       />
@@ -181,6 +181,15 @@ function CardSearchResult(props: Props) {
             />
           </View>
         ) }
+        { !!card.faction3_code && (
+          <View style={styles.skillIcon}>
+            <ArkhamIcon
+              name={card.faction3_code}
+              size={SKILL_ICON_SIZE}
+              color={colors.faction[card.faction3_code].text}
+            />
+          </View>
+        ) }
       </View>
     );
   }, [fontScale, colors, card, colorblind]);
@@ -234,17 +243,17 @@ function CardSearchResult(props: Props) {
           ]} numberOfLines={1} ellipsizeMode="tail">
             { card.renderName }
           </Text>
-          { tabooBlock }
-          { !!card.advanced && (
-            <View style={styles.tabooBlock}>
-              <AppIcon name="parallel" size={18 * fontScale} color={colors.darkText} />
-            </View>
-          ) }
         </View>
         { true && (
           <View style={[styles.row, { backgroundColor: 'transparent' }]}>
             { dualFactionIcons }
             { skillIcons }
+            { tabooBlock }
+            { !!card.advanced && (
+              <View style={styles.tabooBlock}>
+                <AppIcon name="parallel" size={18 * fontScale} color={colors.darkText} />
+              </View>
+            ) }
             { !!card.renderSubname && (
               <View style={[styles.row, styles.subname, space.marginRightS, space.paddingTopXs]}>
                 <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={1} ellipsizeMode="clip">
@@ -389,7 +398,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   tabooBlock: {
-    marginLeft: s,
+    marginRight: s,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',

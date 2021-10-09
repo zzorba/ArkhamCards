@@ -100,6 +100,7 @@ export const SKILLS: SkillCodeType[] = [
 ];
 
 export type SpecialChaosTokenType =
+  'frost' |
   'bless' | 'curse' |
   'skull' | 'cultist' | 'tablet' | 'elder_thing' |
   'auto_fail' | 'elder_sign';
@@ -111,6 +112,9 @@ export type ChaosTokenType =
 
 export function isSpecialToken(token: ChaosTokenType) {
   switch (token) {
+    case 'frost':
+    case 'bless':
+    case 'curse':
     case 'skull':
     case 'cultist':
     case 'tablet':
@@ -162,6 +166,7 @@ export const SPECIAL_TOKENS: SpecialChaosTokenType[] = [
   'elder_sign',
   'bless',
   'curse',
+  'frost',
 ];
 
 export const CHAOS_TOKEN_COLORS: { [skill: string]: string } = {
@@ -173,6 +178,7 @@ export const CHAOS_TOKEN_COLORS: { [skill: string]: string } = {
 
 export function chaosTokenName(token: ChaosTokenType) {
   switch (token) {
+    case 'frost': return t`Frost`;
     case 'bless': return t`Bless`;
     case 'curse': return t`Curse`;
     case 'skull': return t`Skull`;
@@ -196,6 +202,9 @@ export function chaosTokenName(token: ChaosTokenType) {
 
 export function getChaosTokenValue(token: ChaosTokenType, specialTokenValues: SimpleChaosTokenValue[]): ChaosTokenModifier | undefined {
   switch (token) {
+    case 'frost':
+      // TODO(frost)
+      return { modifier: 2, reveal_another: true };
     case 'bless':
       return { modifier: 2, reveal_another: true };
     case 'curse':
@@ -259,6 +268,9 @@ export const ON_YOUR_OWN_CODE = '53010';
 export const DEJA_VU_CODE = '60531';
 export const ANCESTRAL_KNOWLEDGE_CODE = '07303';
 export const ACE_OF_RODS_CODE = '05040';
+export const FORCED_LEARNING_CODE = '08031'; // Deck size +15
+export const UNDERWORLD_SUPPORT_CODE = '08046';
+export const DOWN_THE_RABBIT_HOLE_CODE = '08059';
 
 export const UNIDENTIFIED_UNTRANSLATED = new Set([
   '02021', // Strange Solution

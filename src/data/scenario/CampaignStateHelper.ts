@@ -31,7 +31,7 @@ export interface CampaignGuideActions {
   setChoice: (id: string, choice: number, scenarioId?: string) => void;
   setText: (id: string, text: string, scenarioId?: string) => void;
   setCampaignLink: (id: string, value: string, scenarioId?: string) => void;
-  setInterScenarioData: (investigatorData: InvestigatorTraumaData, scenarioId?: string) => void;
+  setInterScenarioData: (investigatorData: InvestigatorTraumaData, scenarioId: undefined | string, campaignLogEntries?: string[]) => void;
   startScenario: (scenarioId: string) => void;
   startSideScenario: (
     scenario: GuideStartSideScenarioInput | GuideStartCustomSideScenarioInput
@@ -164,12 +164,16 @@ export default class CampaignStateHelper {
     this.actions.setCount(id, value, scenarioId);
   }
 
-  setInterScenarioInvestigatorData(investigator: string, trauma: Trauma, scenarioId?: string) {
+  setInterScenarioInvestigatorData(investigator: string, trauma: Trauma, scenarioId: undefined | string) {
     const investigatorData = {
-      ...(this.interScenarioInfo(scenarioId) || {}),
+      ...(this.interScenarioInvestigatorData(scenarioId) || {}),
       [investigator]: trauma,
     };
-    this.actions.setInterScenarioData(investigatorData, scenarioId);
+    this.actions.setInterScenarioData(investigatorData, scenarioId, this.interScenarioCampaignLogEntries(scenarioId));
+  }
+
+  setInterScenarioCampaignLogEntries(campaignLogEntries: string[], scenarioId: undefined | string) {
+    this.actions.setInterScenarioData(this.interScenarioInvestigatorData(scenarioId) || {}, scenarioId, campaignLogEntries);
   }
 
   binaryAchievement(achievementId: string): boolean {
@@ -273,10 +277,18 @@ export default class CampaignStateHelper {
     return undefined;
   }
 
-  interScenarioInfo(scenarioId?: string): InvestigatorTraumaData | undefined {
+  interScenarioInvestigatorData(scenarioId: string | undefined): InvestigatorTraumaData | undefined {
     const entry = this.entry('inter_scenario', undefined, scenarioId);
     if (entry && entry.type === 'inter_scenario') {
       return entry.investigatorData;
+    }
+    return undefined;
+  }
+
+  interScenarioCampaignLogEntries(scenarioId: string | undefined): string[] | undefined {
+    const entry = this.entry('inter_scenario', undefined, scenarioId);
+    if (entry && entry.type === 'inter_scenario') {
+      return entry.campaignLogEntries;
     }
     return undefined;
   }

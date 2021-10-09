@@ -126,12 +126,13 @@ export default function InvestigatorCheckListComponent({
         return {
           investigator: investigator,
           investigatorButton: investigator.code === leadInvestigator ? selectedRadioButton : defaultRadioButton,
+          trauma: includeLeadInvestigator,
           code: investigator.code,
           name: investigator.name,
           color: colors.faction[investigator.factionCode()].background,
         };
       });
-  }, [investigators, colors, selectedRadioButton, defaultRadioButton, leadInvestigator]);
+  }, [investigators, includeLeadInvestigator, colors, selectedRadioButton, defaultRadioButton, leadInvestigator]);
   const leadInvestigatorPrompt = useMemo(() => {
     if (!includeLeadInvestigator) {
       return null;

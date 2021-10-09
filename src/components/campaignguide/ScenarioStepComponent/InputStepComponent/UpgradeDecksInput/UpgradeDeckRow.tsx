@@ -36,6 +36,7 @@ import EncounterIcon from '@icons/EncounterIcon';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { TINY_PHONE } from '@styles/sizes';
 import { useDispatch } from 'react-redux';
+import { useDeck } from '@data/hooks';
 
 interface Props {
   componentId: string;
@@ -200,6 +201,20 @@ function UpgradeDeckRow({
     return computeChoiceId(id, investigator);
   }, [id, investigator]);
   const [choices, deckChoice] = useMemo(() => scenarioState.numberAndDeckChoices(choiceId), [scenarioState, choiceId]);
+  const savedDeck = useDeck(deckChoice, choices !== undefined);
+  const savedExileCounts = useMemo(() => {
+    if (!savedDeck || !savedDeck.deck.exile_string) {
+      return {};
+    }
+    const slots: Slots = {};
+    forEach(savedDeck.deck.exile_string.split(','), code => {
+      if (!slots[code]) {
+        slots[code] = 0;
+      }
+      slots[code]++;
+    });
+    return slots;
+  }, [savedDeck]);
   const initialSpecialExile = useMemo(() => {
     if (!choices) {
       return {};
@@ -467,10 +482,10 @@ function UpgradeDeckRow({
 
   const { campaign } = useContext(CampaignGuideContext);
   const footer = useMemo(() => {
-    if (deck && deck.owner && userId && deck.owner.id !== userId) {
+    if (deck && deck.owner && userId && deck.owner.id !== userId && editable) {
       return (
         <View style={[space.paddingS, { flexDirection: 'column', backgroundColor: colors.L10, borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }]}>
-          <View style={styles.startRow}>
+          <View style={choices !== undefined ? styles.startRow : styles.startColumn}>
             <ActionButton
               color={choices !== undefined ? 'green' : 'dark'}
               leftIcon="check"
@@ -478,7 +493,7 @@ function UpgradeDeckRow({
               onPress={save}
               disabled
             />
-            <View style={[styles.column, { flex: 1 }, space.paddingLeftS]}>
+            <View style={[styles.column, { flex: 1 }, space.paddingLeftS, choices === undefined ? space.marginTopS : undefined]}>
               <Text style={[typography.small, typography.italic, typography.light]}>
                 { deck.owner?.handle ?
                   t`This deck is owned by ${deck.owner.handle}. They must open the app on their own device to save the upgrade` :
@@ -532,7 +547,7 @@ function UpgradeDeckRow({
             </Text>
             <View style={[space.paddingTopS, styles.startRow]}>
               { !deck ?
-                <ActionButton leftIcon="deck" color="dark" title={t`Choose a deck for this investigator`} onPress={selectDeck} /> :
+                <ActionButton leftIcon="deck" color="dark" title={t`Choose deck`} onPress={selectDeck} /> :
                 deckButton
               }
             </View>
@@ -597,14 +612,14 @@ function UpgradeDeckRow({
   const exileSection = useMemo(() => {
     return (
       <>
-        { !!deck && (
+        { !!deck && (choices === undefined || keys(savedExileCounts).length > 0) && (
           <ExileCardSelectorComponent
             componentId={componentId}
             deck={deck}
             label={<View style={space.paddingSideS}><DeckSlotHeader title={t`Exiled cards` } /></View>}
-            exileCounts={exileCounts}
+            exileCounts={choices === undefined ? exileCounts : savedExileCounts}
             updateExileCount={onExileCountChange}
-            disabled={saving || choices !== undefined}
+            disabled={!editable || saving || choices !== undefined}
           >
             { exileSection }
           </ExileCardSelectorComponent>
@@ -626,7 +641,7 @@ function UpgradeDeckRow({
         ) }
       </>
     );
-  }, [deck, componentId, saving, onExileCountChange, updateSpecialExileCount, specialExileSlots, exileCounts, choices, specialExile]);
+  }, [deck, componentId, saving, onExileCountChange, updateSpecialExileCount, editable, savedExileCounts, specialExileSlots, exileCounts, choices, specialExile]);
   const campaignSection = useMemo(() => {
     return (
       <>
@@ -666,6 +681,11 @@ const styles = StyleSheet.create({
   startRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  startColumn: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
     justifyContent: 'flex-start',
   },
   betweenRow: {

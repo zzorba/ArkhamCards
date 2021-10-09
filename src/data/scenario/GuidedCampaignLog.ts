@@ -70,9 +70,13 @@ interface CampaignLogBasicEntry extends BasicEntry {
   type: 'basic';
 }
 
-interface CampaignLogFreeformEntry extends BasicEntry {
+export interface CampaignLogFreeformEntry extends BasicEntry {
   type: 'freeform';
   text: string;
+  interScenario?: {
+    scenarioId: string;
+    index: number;
+  }
 }
 
 export type CampaignLogEntry = CampaignLogCountEntry |
@@ -494,6 +498,30 @@ export default class GuidedCampaignLog {
     return flatMap(section.entries, entry => {
       if (entry.id === id && entry.type === 'card') {
         return map(entry.cards || [], card => card.card);
+      }
+      return [];
+    });
+  }
+
+  allCardCounts(sectionId: string, id?: string): number[] | undefined {
+    const section = this.sections[sectionId];
+    if (!section) {
+      return undefined;
+    }
+    if (!id) {
+      return flatMap(section.entries, entry => {
+        if (entry.type === 'card') {
+          return map(entry.cards || [], card => card.count);
+        }
+        return [];
+      });
+    }
+    if (section.crossedOut[id]) {
+      return undefined;
+    }
+    return flatMap(section.entries, entry => {
+      if (entry.id === id && entry.type === 'card') {
+        return map(entry.cards || [], card => card.count);
       }
       return [];
     });
@@ -1145,8 +1173,12 @@ export default class GuidedCampaignLog {
     }
     section.entries.push({
       type: 'freeform',
-      id: input[0],
+      id: (effect.scenario_id && effect.index !== undefined) ? `${effect.scenario_id}$${effect.index}` : input[0],
       text: input[0],
+      interScenario: effect.scenario_id && effect.index !== undefined ? {
+        scenarioId: effect.scenario_id,
+        index: effect.index,
+      } : undefined,
     });
   }
 

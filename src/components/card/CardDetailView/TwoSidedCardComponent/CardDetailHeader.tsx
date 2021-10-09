@@ -5,7 +5,7 @@ import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import { CORE_FACTION_CODES } from '@app_constants';
 import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
-import CardCostIcon from '@components/core/CardCostIcon';
+import CardCostIcon, { costIconSize } from '@components/core/CardCostIcon';
 import space, { xs } from '@styles/space';
 import EncounterIcon from '@icons/EncounterIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
@@ -21,17 +21,62 @@ interface Props {
 
 const ICON_SIZE = 28;
 
+const PADDING: { [key: string]: number } = {
+  guardian: 2,
+  mystic: 2,
+  seeker: 2,
+  neutral: 0,
+  rogue: 2,
+  dual: 0,
+  survivor: 4,
+};
+
 function DualFactionIcons({ card }: { card: Card }) {
+  const { colors, fontScale } = useContext(StyleContext);
   const faction_code = card.factionCode();
   const colorblind = useSelector((state: AppState) => !!state.settings.colorblind);
   if (!card.faction_code ||
     (!card.faction2_code && (!colorblind || faction_code === 'mythos' || card.type_code === 'investigator' || card.type_code === 'skill'))) {
     return null;
   }
+  if (card.faction2_code) {
+    const iconSize = costIconSize(fontScale);
+    const scaleFactor = ((fontScale - 1) / 2 + 1);
+    const ICON_SIZE = 31 * scaleFactor;
+    return (
+      <View style={styles.row}>
+        <View style={styles.costIcon}>
+          <View style={[styles.circle, { borderRadius: iconSize / 2, width: iconSize, height: iconSize, backgroundColor: colors.faction[card.faction_code].background }]}>
+            <View style={{ height: iconSize - PADDING[card.faction_code] }}>
+              <ArkhamIcon name={card.faction_code} size={card.faction_code === 'mystic' ? ICON_SIZE - 2 : ICON_SIZE} color="white" />
+            </View>
+          </View>
+        </View>
+        <View style={styles.costIcon}>
+          <View style={[styles.circle, { borderRadius: iconSize / 2, width: iconSize, height: iconSize, backgroundColor: colors.faction[card.faction2_code].background }]}>
+            <View style={{ height: iconSize - PADDING[card.faction2_code] }}>
+              <ArkhamIcon name={card.faction2_code} size={card.faction2_code === 'mystic' ? ICON_SIZE - 2 : ICON_SIZE} color="white" />
+            </View>
+          </View>
+        </View>
+        { !!card.faction3_code && (
+          <View style={styles.costIcon}>
+            <View style={[styles.circle, { borderRadius: iconSize / 2, width: iconSize, height: iconSize, backgroundColor: colors.faction[card.faction3_code].background }]}>
+              <View style={{ height: iconSize - PADDING[card.faction3_code] }}>
+                <ArkhamIcon name={card.faction3_code} size={card.faction3_code === 'mystic' ? ICON_SIZE - 2 : ICON_SIZE} color="white" />
+              </View>
+            </View>
+          </View>
+        ) }
+      </View>
+    );
+
+  }
   return (
     <View style={[space.paddingBottomS, styles.row]}>
       <ArkhamIcon name={card.faction_code} size={36} color="white" />
       { !!card.faction2_code && <ArkhamIcon name={card.faction2_code} size={36} color="white" /> }
+      { !!card.faction3_code && <ArkhamIcon name={card.faction3_code} size={36} color="white" /> }
     </View>
   );
 }
@@ -106,13 +151,24 @@ function FactionIcon({ card, linked }: { card: Card, linked: boolean }) {
               />
             ) }
           </View>
+          { !!card.faction3_code && (
+            <View>
+              { (CORE_FACTION_CODES.indexOf(card.faction3_code) !== -1) && (
+                <ArkhamIcon
+                  name={card.faction3_code}
+                  size={ICON_SIZE + 4}
+                  color="#FFF"
+                />
+              ) }
+            </View>
+          ) }
         </>
       );
     }
     return (
       <View style={styles.factionIcon}>
         { (!!card.faction_code && (CORE_FACTION_CODES.indexOf(card.faction_code) !== -1 || card.faction_code === 'neutral')) &&
-          <ArkhamIcon name={card.faction_code === 'neutral' ? 'elder_sign' : card.faction_code} size={ICON_SIZE + 4} color={color} /> }
+          <ArkhamIcon name={card.faction_code} size={ICON_SIZE + 4} color={color} /> }
       </View>
     );
   }
@@ -162,7 +218,8 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-end',
+    flex: 1,
   },
   costIcon: {
     marginLeft: xs,
@@ -174,5 +231,10 @@ const styles = StyleSheet.create({
   },
   factionIcon: {
     marginBottom: 4,
+  },
+  circle: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

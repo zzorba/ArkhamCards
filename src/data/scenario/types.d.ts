@@ -53,7 +53,9 @@ export type Effect =
   | FreeformCampaignLogEffect
   | UpgradeDecksEffect
   | SaveDecksEffect
-  | GainSuppliesEffect;
+  | GainSuppliesEffect
+  | CheckCampaignLogCardsEffect
+  | CheckCampaignLogCountEffect;
 export type SpecialXp = "resupply_points" | "supply_points" | "unspect_xp";
 export type InvestigatorSelector =
   | "lead_investigator"
@@ -72,6 +74,7 @@ export type CampaignDataEffect =
   | CampaignDataNextScenarioEffect
   | CampaignDataSwapChaosBagEffect
   | CampaignDataRedirectExperienceEffect;
+export type CampaignResult = "win" | "lose" | "survived";
 export type Difficulty = "easy" | "standard" | "hard" | "expert";
 export type ScenarioDataEffect =
   | ScenarioDataInvestigatorEffect
@@ -88,7 +91,8 @@ export type SpecialChaosToken =
   | "elder_sign"
   | "auto_fail"
   | "bless"
-  | "curse";
+  | "curse"
+  | "frost";
 export type DefaultOption = Option;
 export type ChoiceIcon = "mental" | "physical" | "resign" | "dismiss" | "accept";
 export type MathCondition = MathCompareCondition | MathSumCondition | MathEqualsCondition;
@@ -314,7 +318,7 @@ export interface CampaignLogInvestigatorCountEffect {
 export interface CampaignDataResultEffect {
   type: "campaign_data";
   setting: "result";
-  value: "win" | "lose" | "survived";
+  value: CampaignResult;
 }
 export interface CampaignDataDifficultyEffect {
   type: "campaign_data";
@@ -360,6 +364,8 @@ export interface AddRemoveChaosTokenEffect {
 export interface FreeformCampaignLogEffect {
   type: "freeform_campaign_log";
   section: "campaign_notes";
+  scenario_id?: string;
+  index?: number;
 }
 export interface UpgradeDecksEffect {
   type: "upgrade_decks";
@@ -379,6 +385,19 @@ export interface Supply {
   description: string;
   cost: number;
   multiple?: boolean;
+}
+export interface CheckCampaignLogCardsEffect {
+  type: "check_campaign_log_cards";
+  card_type: "player" | "encounter";
+  text?: string;
+  masculine_text?: string;
+  feminine_text?: string;
+  bullet_type?: BulletType;
+}
+export interface CheckCampaignLogCountEffect {
+  type: "check_campaign_log_count";
+  text: string;
+  bullet_type?: BulletType;
 }
 export interface CampaignLogSectionExistsCondition {
   type: "campaign_log_section_exists";
@@ -403,7 +422,7 @@ export interface CampaignLogCountCondition {
   id: string;
   options: NumOption[];
   max?: number;
-  defaultOption?: DefaultOption;
+  default_option?: DefaultOption;
 }
 export interface Option {
   icon?: ChoiceIcon;
@@ -473,7 +492,7 @@ export interface MathSumCondition {
   opB: Operand;
   operation: "sum";
   options: NumOption[];
-  defaultOption: DefaultOption;
+  default_option: DefaultOption;
 }
 export interface MathEqualsCondition {
   type: "math";
@@ -487,7 +506,7 @@ export interface CampaignLogInvestigatorCountCondition {
   section: string;
   investigator: "any" | "all";
   options: NumOption[];
-  defaultOption?: DefaultOption;
+  default_option?: DefaultOption;
 }
 export interface InvestigatorCardCondition {
   type: "has_card";
@@ -505,7 +524,7 @@ export interface CampaignDataInvestigatorCondition {
   campaign_data: "investigator";
   investigator_data: "trait" | "faction" | "code";
   options: StringOption[];
-  defaultOption?: Option;
+  default_option?: Option;
 }
 export interface CampaignDataLinkedCondition {
   type: "campaign_data";
@@ -537,6 +556,7 @@ export interface CheckSuppliesAllCondition {
   name: string;
   prompt?: string;
   options: BoolOption[];
+  show_result?: boolean;
 }
 export interface CheckSuppliesAnyCondition {
   type: "check_supplies";

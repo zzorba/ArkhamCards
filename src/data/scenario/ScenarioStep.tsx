@@ -28,7 +28,7 @@ import {
 } from '@data/scenario/types';
 import { getSpecialEffectChoiceList } from './effectHelper';
 import { investigatorChoiceInputChoices, chooseOneInputChoices } from '@data/scenario/inputHelper';
-import { conditionResult } from '@data/scenario/conditionHelper';
+import { BinaryResult, conditionResult, NumberResult, StringResult } from '@data/scenario/conditionHelper';
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
@@ -55,7 +55,7 @@ export default class ScenarioStep {
   scenarioFinished(scenarioState: ScenarioStateHelper) {
     const nextCampaignLog = this.nextCampaignLog(scenarioState);
     if (nextCampaignLog &&
-      nextCampaignLog.campaignData.result &&
+      nextCampaignLog.campaignData.result === 'lose' &&
       this.scenarioGuide.scenarioType() !== 'epilogue'
     ) {
       // Actually campaign is finished.
@@ -222,9 +222,9 @@ export default class ScenarioStep {
     switch (this.step.type) {
       case 'internal':
         if (this.step.id === INTER_SCENARIO_CHANGES_STEP_ID) {
-          const investigatorData = scenarioState.interScenarioInfo();
+          const investigatorData = scenarioState.interScenarioInvestigatorData();
+          const effectsWithInput: EffectsWithInput[] = [];
           if (investigatorData) {
-            const effectsWithInput: EffectsWithInput[] = [];
             forEach(investigatorData, (trauma, investigator) => {
               if (trauma) {
                 const currentTrauma = this.campaignLog.traumaAndCardData(investigator);
@@ -242,6 +242,24 @@ export default class ScenarioStep {
                 });
               }
             });
+          }
+          const campaignLogEntries = scenarioState.interScenarioCampaignLogEntries();
+          if (campaignLogEntries?.length) {
+            forEach(campaignLogEntries, (text, idx) => {
+              effectsWithInput.push({
+                input: [text],
+                effects: [
+                  {
+                    type: 'freeform_campaign_log',
+                    section: 'campaign_notes',
+                    scenario_id: scenarioState.scenarioId,
+                    index: idx,
+                  },
+                ],
+              });
+            });
+          }
+          if (effectsWithInput.length) {
             return this.maybeCreateEffectsStep(
               this.step.id,
               this.remainingStepIds,
@@ -321,6 +339,16 @@ export default class ScenarioStep {
     }
   }
 
+  private getNumberInput(result: StringResult | BinaryResult | NumberResult): undefined | number[] {
+    if (result.type === 'number') {
+      return [result.number];
+    }
+    if (result.type === 'binary') {
+      return result.numberInput;
+    }
+    return undefined;
+  }
+
   private expandBranchStep(
     step: BranchStep,
     scenarioState: ScenarioStateHelper
@@ -329,7 +357,9 @@ export default class ScenarioStep {
     switch (result.type) {
       case 'string':
       case 'number':
-      case 'binary':
+      case 'binary': {
+        const numberInput = this.getNumberInput(result);
+
         return this.maybeCreateEffectsStep(
           this.step.id,
           [
@@ -340,13 +370,13 @@ export default class ScenarioStep {
             ...(result.option?.pre_border_effects ? [
               {
                 effects: result.option.pre_border_effects,
-                numberInput: result.type === 'number' ? [result.number] : undefined,
+                numberInput,
                 input: result.type === 'binary' ? result.input : undefined,
               },
             ] : []),
             {
               border: (result.option && result.option.border),
-              numberInput: result.type === 'number' ? [result.number] : undefined,
+              numberInput,
               input: result.type === 'binary' ? result.input : undefined,
               effects: (result.option && result.option.effects) || [],
             },
@@ -354,6 +384,8 @@ export default class ScenarioStep {
           scenarioState,
           {}
         );
+
+      }
       case 'investigator': {
         const {
           effectsWithInput,

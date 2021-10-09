@@ -49,7 +49,7 @@ export async function authorize(config: AppAuthConfig): Promise<AuthorizeRespons
       }
       currentAppState = nextAppState;
     };
-    AppState.addEventListener('change', handleAppStateChange);
+    const appStateSub = AppState.addEventListener('change', handleAppStateChange);
 
     const handleUrl = (event: { url: string }) => {
       abandoned = false;
@@ -99,11 +99,11 @@ export async function authorize(config: AppAuthConfig): Promise<AuthorizeRespons
         });
       }
     };
-    Linking.addEventListener('url', handleUrl);
+    const linkSub = Linking.addEventListener('url', handleUrl);
 
     cleanup = () => {
-      Linking.removeEventListener('url', handleUrl);
-      AppState.removeEventListener('change', handleAppStateChange);
+      linkSub.remove();
+      appStateSub.remove();
     };
 
     const authUrl = `${serviceConfiguration.authorizationEndpoint}?redirect_uri=${encodeURIComponent(config.redirectUrl)}&client_id=${encodeURIComponent(config.clientId)}&response_type=code&state=${encodeURIComponent(originalState)}`;

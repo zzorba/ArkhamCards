@@ -14,7 +14,7 @@ export default function FactionIcon({ faction, size, defaultColor, colorChoice =
   const { colors } = useContext(StyleContext);
   return (
     <ArkhamIcon
-      name={(faction === 'neutral' || faction === 'dual') ? 'elder_sign' : faction}
+      name={faction === 'dual' ? 'elder_sign' : faction}
       size={size}
       color={defaultColor || colors.faction[faction][colorChoice]}
     />

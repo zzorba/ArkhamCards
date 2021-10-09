@@ -69,11 +69,11 @@ export default function useChaosBagDialog({
   const oddsCalculatorPressed = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);
     if (guided) {
-      showGuideChaosBagOddsCalculator(componentId, campaignId, chaosBag, map(allInvestigators, c => c.code), scenarioId, false);
+      showGuideChaosBagOddsCalculator(componentId, campaignId, chaosBag, map(allInvestigators, c => c.code), scenarioId, !!standalone);
     } else {
       showChaosBagOddsCalculator(componentId, campaignId, allInvestigators);
     }
-  }, [componentId, campaignId, allInvestigators, chaosBag, guided, scenarioId]);
+  }, [componentId, campaignId, allInvestigators, chaosBag, guided, scenarioId, standalone]);
   const drawChaosBagPressed = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);
     if (guided) {

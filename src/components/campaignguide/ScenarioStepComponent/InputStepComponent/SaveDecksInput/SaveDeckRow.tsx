@@ -145,10 +145,10 @@ function SaveDeckRow({
   }, [campaignState, investigator]);
 
   const footer = useMemo(() => {
-    if (deck && deck.owner && userId && deck.owner.id !== userId) {
+    if (deck && deck.owner && userId && deck.owner.id !== userId && editable) {
       return (
         <View style={[space.paddingS, { flexDirection: 'column', backgroundColor: colors.L10, borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }]}>
-          <View style={styles.startRow}>
+          <View style={choices !== undefined ? styles.startRow : styles.startColumn}>
             <ActionButton
               color={choices !== undefined ? 'green' : 'dark'}
               leftIcon="check"
@@ -156,7 +156,7 @@ function SaveDeckRow({
               onPress={save}
               disabled
             />
-            <View style={[styles.column, { flex: 1 }, space.paddingLeftS]}>
+            <View style={[styles.column, { flex: 1 }, space.paddingLeftS, choices === undefined ? space.marginTopS : undefined]}>
               <Text style={[typography.small, typography.italic, typography.light]}>
                 { deck.owner?.handle ?
                   t`This deck is owned by ${deck.owner.handle}. They must open the app on their own device to save the upgrade` :
@@ -202,7 +202,7 @@ function SaveDeckRow({
                   { t`This investigator does not have a deck associated with it.\nIf you choose a deck, the app can help track spent experience, story asset changes, and deckbuilding requirements.` }
                 </Text>
                 <View style={[space.paddingTopS, styles.startRow]}>
-                  <ActionButton leftIcon="deck" color="dark" title={t`Choose a deck for this investigator`} onPress={selectDeck} />
+                  <ActionButton leftIcon="deck" color="dark" title={t`Choose deck`} onPress={selectDeck} />
                 </View>
               </>
             ) : deckButton}
@@ -245,6 +245,11 @@ const styles = StyleSheet.create({
   startRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  startColumn: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
     justifyContent: 'flex-start',
   },
 });

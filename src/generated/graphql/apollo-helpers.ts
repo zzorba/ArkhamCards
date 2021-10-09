@@ -1070,9 +1070,11 @@ export type chaos_bag_result_variance_fieldsFieldPolicy = {
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	totalDrawn?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type faqKeySpecifier = ('code' | 'text' | faqKeySpecifier)[];
+export type faqKeySpecifier = ('code' | 'faq_texts' | 'faq_texts_aggregate' | 'text' | faqKeySpecifier)[];
 export type faqFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
+	faq_texts?: FieldPolicy<any> | FieldReadFunction<any>,
+	faq_texts_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	text?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type faq_aggregateKeySpecifier = ('aggregate' | 'nodes' | faq_aggregateKeySpecifier)[];
@@ -2176,7 +2178,7 @@ export type users_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type TypedTypePolicies = TypePolicies & {
+export type StrictTypedTypePolicies = {
 	base_decks?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | base_decksKeySpecifier | (() => undefined | base_decksKeySpecifier),
 		fields?: base_decksFieldPolicy,
@@ -3214,3 +3216,4 @@ export type TypedTypePolicies = TypePolicies & {
 		fields?: users_mutation_responseFieldPolicy,
 	}
 };
+export type TypedTypePolicies = StrictTypedTypePolicies & TypePolicies;

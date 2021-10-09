@@ -1,6 +1,11 @@
 module.exports = {
   root: true,
   extends: '@react-native-community',
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   'env': {
     'browser': true,
     'commonjs': true,

@@ -19,7 +19,7 @@ export interface SectionCount {
 }
 
 export default class Database {
-  static SCHEMA_VERSION: number = 36;
+  static SCHEMA_VERSION: number = 37;
   connectionP: Promise<Connection>;
 
   playerState?: PlayerCardState;
@@ -124,6 +124,19 @@ export default class Database {
     const connection = await this.connectionP;
     if (connection.queryResultCache) {
       await connection.queryResultCache.clear();
+    }
+  }
+
+  async sqliteVersion(): Promise<string> {
+    try {
+      const connection = await this.connectionP;
+      const queryRunner = connection.createQueryRunner();
+      const manager = connection.createEntityManager(queryRunner);
+      const result = await manager.query('select sqlite_version() as version');
+      return result[0].version;
+    } catch (e) {
+      console.log(e);
+      return '3.0.0';
     }
   }
 

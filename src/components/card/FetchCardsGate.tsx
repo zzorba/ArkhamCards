@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import {
   Alert,
   StyleSheet,
@@ -20,6 +20,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import { useEffectUpdate } from '@components/core/hooks';
 import useReduxMigrator from '@components/settings/useReduxMigrator';
 import ApolloClientContext from '@data/apollo/ApolloClientContext';
+import LoadingSpinner from '@components/core/LoadingSpinner';
 
 const REFETCH_DAYS = 7;
 const REPROMPT_DAYS = 3;
@@ -33,18 +34,34 @@ interface Props {
   children: JSX.Element;
 }
 
+function ProgressBar({ progress }: { progress: number }) {
+  const { colors, width } = useContext(StyleContext);
+  return (
+    <View style={[space.marginTopM, { width: width * 0.6 + 2, borderColor: colors.lightText }, styles.progressBarWrapper, styles.progressBar]}>
+      <View style={[styles.progressBar, {
+        width: width * 0.6 * (progress || 0),
+        height: 13,
+        backgroundColor: colors.lightText,
+        position: 'absolute',
+        top: 1,
+        left: 1,
+      }]} />
+    </View>
+  );
+}
 /**
  * Simple component to block children rendering until cards/packs are loaded.
  */
 export default function FetchCardsGate({ promptForUpdate, children }: Props): JSX.Element {
   const { db } = useContext(DatabaseContext);
   const [needsMigration, migrating, doMigrate] = useReduxMigrator();
-
   const dispatch = useDispatch();
   const fetchNeeded = useSelector((state: AppState) => state.packs.all.length === 0);
   const currentCardLang = useSelector((state: AppState) => state.cards.card_lang || 'en');
+  const fetchRequest = useSelector((state: AppState) => state.cards.fetch);
   const { lang: choiceLang } = useContext(LanguageContext);
   const useSystemLang = currentCardLang === 'system';
+  const [fetchProgress, setFetchProgress] = useState(0);
   const loading = useSelector((state: AppState) => state.packs.loading || state.cards.loading);
   const error = useSelector((state: AppState) => state.packs.error || state.cards.error || undefined);
   const dateFetched = useSelector((state: AppState) => state.packs.dateFetched || undefined);
@@ -54,9 +71,16 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props): JS
     return await cards.count();
   }, [db]);
   const { anonClient } = useContext(ApolloClientContext);
+
   const doFetch = useCallback(() => {
-    dispatch(fetchCards(db, anonClient, choiceLang, useSystemLang ? 'system' : choiceLang));
-  }, [dispatch, db, anonClient, choiceLang, useSystemLang]);
+    dispatch(fetchCards(db, anonClient, choiceLang, useSystemLang ? 'system' : choiceLang, setFetchProgress));
+  }, [dispatch, setFetchProgress, db, anonClient, choiceLang, useSystemLang]);
+
+  useEffect(() => {
+    if (fetchRequest && promptForUpdate) {
+      dispatch(fetchCards(db, anonClient, fetchRequest.card_lang, fetchRequest.choice_lang, setFetchProgress));
+    }
+  }, [dispatch, setFetchProgress, promptForUpdate, fetchRequest, db, anonClient]);
 
   const ignoreUpdate = useCallback(() => {
     dispatch(dismissUpdatePrompt());
@@ -75,12 +99,11 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props): JS
   }, [dateFetched, dateUpdatePrompt]);
 
   useEffect(() => {
-    if (fetchNeeded) {
-      if (promptForUpdate) {
-        doFetch();
-      }
-    }
     if (promptForUpdate) {
+      if (fetchNeeded) {
+        doFetch();
+        return;
+      }
       cardCount().then(cardCount => {
         if (cardCount === 0) {
           doFetch();
@@ -110,7 +133,7 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props): JS
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [promptForUpdate]);
   useEffectUpdate(() => {
     if (fetchNeeded && promptForUpdate) {
       doFetch();
@@ -139,12 +162,7 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props): JS
         <Text style={typography.text}>
           { t`Loading latest cards...` }
         </Text>
-        <ActivityIndicator
-          style={styles.spinner}
-          size="small"
-          animating
-          color={colors.lightText}
-        />
+        { promptForUpdate ? <ProgressBar progress={fetchProgress} /> : <LoadingSpinner inline /> }
       </View>
     );
   }
@@ -196,5 +214,17 @@ const styles = StyleSheet.create({
   error: {
     color: 'red',
     marginBottom: s,
+  },
+  progressBar: {
+    borderTopLeftRadius: 2,
+    borderTopRightRadius: 2,
+    borderBottomLeftRadius: 2,
+    borderBottomRightRadius: 2,
+  },
+  progressBarWrapper: {
+    position: 'relative',
+    height: 16,
+    padding: 1,
+    borderWidth: StyleSheet.hairlineWidth,
   },
 });

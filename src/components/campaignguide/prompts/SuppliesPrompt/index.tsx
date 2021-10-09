@@ -1,8 +1,9 @@
 import React, { useCallback, useContext, useMemo, useReducer } from 'react';
 import { Text, View } from 'react-native';
-import { forEach, keys, map, sumBy } from 'lodash';
-import { t } from 'ttag';
+import { forEach, keys, map, filter, sumBy } from 'lodash';
+import { jt } from 'ttag';
 
+import AppIcon from '@icons/AppIcon';
 import SupplyComponent from './SupplyComponent';
 import ScenarioGuideContext from '../../ScenarioGuideContext';
 import ScenarioStepContext from '../../ScenarioStepContext';
@@ -85,6 +86,7 @@ export default function SuppliesPrompt({ id, bulletType, text, input }: Props) {
   const baseTotal = input.points[playerCount - 1];
   const suppliesInput = useMemo(() => scenarioState.supplies(id), [scenarioState, id]);
   const supplyCounts = suppliesInput !== undefined ? suppliesInput : counts;
+  const supplyIcon = <AppIcon key="resource" name="resource" size={16} color={colors.L30} />;
   return (
     <InputWrapper
       bulletType={bulletType || 'default'}
@@ -111,28 +113,33 @@ export default function SuppliesPrompt({ id, bulletType, text, input }: Props) {
                   width={width - s * (suppliesInput === undefined ? 4 : 2)}
                   open
                 >
-                  { <Text style={[typography.button, typography.white]}>{t`${spent} of ${total}`}</Text> }
+                  { <Text style={[typography.button, typography.white]}>{jt`${spent} of ${supplyIcon} ${total}`}</Text> }
                 </CompactInvestigatorRow>
               }
-              footer={<View style={{ borderBottomLeftRadius: 8, borderBottomRightRadius: 8, height: 16, backgroundColor: colors.faction[investigator.factionCode()]?.lightBackground }} /> }
               noSpace
               noShadow
             >
-              { map(input.supplies, (supply, idx2) => {
-                const count = counts[supply.id] || 0;
-                return (suppliesInput === undefined || count > 0) && (
-                  <SupplyComponent
-                    key={idx2}
-                    investigator={investigator}
-                    supply={supply}
-                    count={count}
-                    inc={incrementSupply}
-                    dec={decrementSupply}
-                    remainingPoints={Math.max(total - spent, 0)}
-                    editable={suppliesInput === undefined}
-                  />
-                );
-              }) }
+              <View style={[space.paddingBottomS, { backgroundColor: colors.L20, borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }]}>
+                { map(filter(input.supplies, (supply) => {
+                  const count = counts[supply.id] || 0;
+                  return (suppliesInput === undefined || count > 0);
+                }), (supply, idx2) => {
+                  const count = counts[supply.id] || 0;
+                  return (
+                    <SupplyComponent
+                      key={`${supply.id}-${idx2}`}
+                      sectionId={input.section}
+                      investigator={investigator}
+                      supply={supply}
+                      count={count}
+                      inc={incrementSupply}
+                      dec={decrementSupply}
+                      remainingPoints={Math.max(total - spent, 0)}
+                      editable={suppliesInput === undefined}
+                    />
+                  );
+                }) }
+              </View>
             </RoundedFactionBlock>
           </View>
         );

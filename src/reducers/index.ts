@@ -59,7 +59,7 @@ const cardsPersistConfig = {
   key: 'cards',
   timeout: 0,
   storage: AsyncStorage,
-  blacklist: ['loading', 'error'],
+  blacklist: ['loading', 'error', 'progress', 'fetch'],
 };
 
 const legacyGuidesPersistConfig = {

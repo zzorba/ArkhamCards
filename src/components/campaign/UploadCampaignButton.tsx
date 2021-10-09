@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useContext, useRef, useState } from 'react';
 import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '@reducers';
 import { Action } from 'redux';
@@ -17,6 +17,8 @@ import { s } from '@styles/space';
 import { DeckActions } from '@data/remote/decks';
 import { CampaignAccessProps } from './CampaignAccessView';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import { ENABLE_ARKHAM_CARDS_ACCOUNT } from '@app_constants';
+import { useBackButton } from '@components/core/hooks';
 
 interface Props {
   componentId: string;
@@ -41,6 +43,14 @@ export default function UploadCampaignButton({ componentId, campaign, campaignId
   const [uploading, setUploading] = useState(false);
   const dispatch: Dispatch = useDispatch();
   const createCampaignActions = useCreateCampaignActions();
+  const uploadingRef = useRef(uploading);
+  uploadingRef.current = uploading;
+  const handleBackPress = useCallback(() => {
+    // Disable hardware back when uploading.
+    return uploadingRef.current;
+  }, []);
+  useBackButton(handleBackPress);
+
   const confirmUploadCampaign = useCallback(async() => {
     if (!uploading && userId && !campaignId.serverId) {
       setUploading(true);
@@ -84,7 +94,20 @@ export default function UploadCampaignButton({ componentId, campaign, campaignId
     }
   }, [componentId, campaignId, isOwner]);
   if (!userId) {
-    return null;
+    if (!ENABLE_ARKHAM_CARDS_ACCOUNT) {
+      return null;
+    }
+    return (
+      <DeckButton
+        icon="backup"
+        title={standalone ? t`Upload standalone` : t`Upload campaign`}
+        detail={t`Sign into Arkham Cards on the Settings tab to enable`}
+        disabled
+        thin
+        color="light_gray"
+        bottomMargin={s}
+      />
+    );
   }
   if (campaignId.serverId) {
     return (

@@ -1550,6 +1550,26 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>.",
+            "feminine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>."
+          },
+          {
+            "id": "doy_fewer_resources",
+            "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+          },
+          {
+            "id": "eztli_fewer_resources",
+            "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+          },
+          {
+            "id": "hote_fewer_resources",
+            "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+          },
+          {
             "id": "agenda_5",
             "text": "hidden"
           },
@@ -1562,12 +1582,24 @@
             "text": "dummy"
           },
           {
+            "id": "doy_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "final_depth",
             "text": "깊이 #X#"
           },
           {
+            "id": "hote_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "ichtaca_left_without_you",
             "text": "이츠타카가 당신을 두고 나가버렸다"
+          },
+          {
+            "id": "jungle_beckons_reminder",
+            "text": "dummy"
           },
           {
             "id": "listened_to_ichtaca",
@@ -1584,6 +1616,10 @@
           {
             "id": "tasks_completed",
             "text": "#X# 개의 임무 완수"
+          },
+          {
+            "id": "thc_reminder",
+            "text": "dummy"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -2885,6 +2921,26 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>.",
+            "feminine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>."
+          },
+          {
+            "id": "doy_fewer_resources",
+            "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+          },
+          {
+            "id": "eztli_fewer_resources",
+            "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+          },
+          {
+            "id": "hote_fewer_resources",
+            "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+          },
+          {
             "id": "agenda_5",
             "text": "hidden"
           },
@@ -2897,12 +2953,24 @@
             "text": "dummy"
           },
           {
+            "id": "doy_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "final_depth",
             "text": "깊이 #X#"
           },
           {
+            "id": "hote_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "ichtaca_left_without_you",
             "text": "이츠타카가 당신을 두고 나가버렸다"
+          },
+          {
+            "id": "jungle_beckons_reminder",
+            "text": "dummy"
           },
           {
             "id": "listened_to_ichtaca",
@@ -2911,6 +2979,10 @@
           {
             "id": "tasks_completed",
             "text": "#X# 개의 임무 완수"
+          },
+          {
+            "id": "thc_reminder",
+            "text": "dummy"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -3023,7 +3095,7 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "possesses_a_diving_suite",
+            "id": "possesses_a_diving_suit",
             "masculine_text": "#name# possesses a diving suit.",
             "feminine_text": "#name# possesses a diving suit."
           },

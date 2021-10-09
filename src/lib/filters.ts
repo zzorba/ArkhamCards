@@ -1,4 +1,4 @@
-import { findIndex, forEach, map } from 'lodash';
+import { findIndex, forEach, map, partition } from 'lodash';
 
 import { QueryParams } from '@data/sqlite/types';
 import { BASIC_QUERY, combineQueries, combineQueriesOpt, where } from '@data/sqlite/query';
@@ -279,11 +279,17 @@ export default class FilterBuilder {
   }
 
   slotFilter(slots: string[]): Brackets[] {
-    return this.complexVectorClause(
+    const [none, otherSlots] = partition(slots, s => s === 'none');
+    const clause: Brackets[] = this.complexVectorClause(
       'slot',
-      map(slots, slot => `%#${slot}#%`),
+      map(otherSlots, slot => `%#${slot}#%`),
       (valueName: string) => `c.real_slots_normalized LIKE :${valueName}`
     );
+    if (!none.length) {
+      return clause;
+    }
+    const noneClause: Brackets = where(`c.real_slots_normalized is null AND c.type_code = 'asset' and NOT c.permanent`);
+    return [combineQueries(noneClause, clause, 'or')];
   }
 
   traitFilter(traits: string[], localizedTraits: boolean): Brackets[] {
@@ -625,7 +631,7 @@ export default class FilterBuilder {
     return this.complexVectorClause(
       'faction',
       factions,
-      valueName => `(c.faction_code = :${valueName} OR c.faction2_code = :${valueName})`
+      valueName => `(c.faction_code = :${valueName} OR c.faction2_code = :${valueName} OR c.faction3_code = :${valueName})`
     );
   }
 

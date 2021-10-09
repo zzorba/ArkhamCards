@@ -163,8 +163,8 @@ export class SingleCampaignRedux extends MiniCampaignRedux implements SingleCamp
   investigatorSpentXp(code: string) {
     return (
       this.campaign.guided ?
-      this.campaign.adjustedInvestigatorData?.[code]?.spentXp :
-      this.campaign.investigatorData?.[code]?.spentXp
+        this.campaign.adjustedInvestigatorData?.[code]?.spentXp :
+        this.campaign.investigatorData?.[code]?.spentXp
     ) || 0;
   }
 

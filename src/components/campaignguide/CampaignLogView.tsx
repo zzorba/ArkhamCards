@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { ScrollView } from 'react-native';
+import { find, findLast } from 'lodash';
 
 import { NavigationProps } from '@components/nav/types';
 import CampaignGuide from '@data/scenario/CampaignGuide';
@@ -8,6 +9,8 @@ import CampaignLogComponent from './CampaignLogComponent';
 import StyleContext from '@styles/StyleContext';
 import { CampaignId } from '@actions/types';
 import { useScenarioGuideContext } from './withScenarioGuideContext';
+import LoadingSpinner from '@components/core/LoadingSpinner';
+import CampaignGuideContext from './CampaignGuideContext';
 
 export interface CampaignLogProps {
   campaignId: CampaignId;
@@ -30,20 +33,42 @@ export default function CampaignLogView({
   hideChaosBag = false,
 }: Props) {
   const { backgroundStyle, width } = useContext(StyleContext);
-  const [, scenarioContext] = useScenarioGuideContext(campaignId, scenarioId, false, standalone);
-  const liveCampaignLog = scenarioContext?.processedScenario?.latestCampaignLog || campaignLog;
+  const [campaignContext, scenarioContext] = useScenarioGuideContext(campaignId, scenarioId, false, standalone);
+  const processedCampaign = useMemo(() => {
+    if (!campaignContext || scenarioId) {
+      return undefined;
+    }
+    const { campaignState, campaignGuide } = campaignContext;
+    return campaignGuide.processAllScenarios(campaignState);
+  }, [campaignContext, scenarioId]);
+
+  const interScenarioId = useMemo(() => {
+    if (processedCampaign && !find(processedCampaign.scenarios, scenario => scenario.type === 'started') &&
+      !!find(processedCampaign.scenarios, scenario => scenario.type === 'completed')) {
+      return findLast(processedCampaign.scenarios, s => s.type === 'completed')?.id.encodedScenarioId;
+    }
+    return undefined;
+  }, [processedCampaign]);
+  const liveCampaignLog = scenarioContext?.processedScenario?.latestCampaignLog || processedCampaign?.campaignLog || campaignLog;
+
+  if (!campaignContext) {
+    return <LoadingSpinner />;
+  }
   return (
-    <ScrollView contentContainerStyle={backgroundStyle}>
-      <CampaignLogComponent
-        componentId={componentId}
-        campaignId={campaignId}
-        campaignGuide={campaignGuide}
-        campaignLog={liveCampaignLog}
-        scenarioId={scenarioId}
-        standalone={standalone}
-        hideChaosBag={hideChaosBag}
-        width={width}
-      />
-    </ScrollView>
+    <CampaignGuideContext.Provider value={campaignContext}>
+      <ScrollView contentContainerStyle={backgroundStyle}>
+        <CampaignLogComponent
+          componentId={componentId}
+          campaignId={campaignId}
+          campaignGuide={campaignGuide}
+          campaignLog={liveCampaignLog}
+          scenarioId={scenarioId}
+          standalone={standalone}
+          hideChaosBag={hideChaosBag}
+          width={width}
+          interScenarioId={interScenarioId}
+        />
+      </ScrollView>
+    </CampaignGuideContext.Provider>
   );
 }

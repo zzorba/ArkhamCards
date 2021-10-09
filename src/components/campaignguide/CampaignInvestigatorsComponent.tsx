@@ -91,7 +91,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
     }
   }, [latestDecks, processedCampaign.campaignLog, campaignState, showAlert]);
 
-  const canEditTrauma = useMemo(() => {
+  const betweenScenarios = useMemo(() => {
     return !find(processedCampaign.scenarios, scenario => scenario.type === 'started') &&
       !!find(processedCampaign.scenarios, scenario => scenario.type === 'completed');
   }, [processedCampaign]);
@@ -153,7 +153,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
           traumaAndCardData={processedCampaign.campaignLog.traumaAndCardData(investigator.code)}
           chooseDeckForInvestigator={showChooseDeckForInvestigator}
           removeInvestigator={removeInvestigatorPressed}
-          showTraumaDialog={canEditTrauma ? showTraumaDialog : disabledShowTraumaPressed}
+          showTraumaDialog={betweenScenarios ? showTraumaDialog : disabledShowTraumaPressed}
         >
           <>
             {
@@ -219,7 +219,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
             totalXp={processedCampaign.campaignLog.totalXp(investigator.code)}
             unspentXp={processedCampaign.campaignLog.specialXp(investigator.code, 'unspect_xp')}
             showXpDialog={showXpDialogPressed}
-            showTraumaDialog={((traumaAndCardData?.physical && traumaAndCardData?.physical === investigator.health) || (traumaAndCardData?.mental && traumaAndCardData?.mental === investigator.sanity)) ? showTraumaDialog : undefined}
+            showTraumaDialog={betweenScenarios && ((traumaAndCardData?.physical && traumaAndCardData?.physical === investigator.health) || (traumaAndCardData?.mental && traumaAndCardData?.mental === investigator.sanity)) ? showTraumaDialog : undefined}
             campaign={campaign}
             deck={latestDecks[investigator.code]}
             componentId={componentId}
