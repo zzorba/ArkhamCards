@@ -293,7 +293,7 @@
       },
       {
         "id": "Deckbuilding_Options",
-        "title": "Deckbuilding Options",
+        "title": "Opciones de creación de mazos",
         "text": "La siguiente sección aclara cómo funcionan las opciones de creación de mazos de algunos investigadores.\n- Si una de las categorías de las opciones de creación de mazos de un investigador contiene cualquier forma de la palabra “otro”, las cartas sólo pertenecerán a esa categoría si no pertenecen a ninguna otra categoría. <i>(Por ejemplo, si las opciones de creación de mazos de un investigador dicen “Cartas Guardián de nivel 0–5, hasta 10 otras cartas <b>Arma</b>”, entonces no podría incluirse en uno de esos 10 espacios una carta Guardián que tuviera el rasgo Arma, ya que pertenece a la primera categoría ilimitada de Guardián).</i>\n- Si una de las categorías de las opciones de creación de mazos de un investigador incluye texto de reglas concreto, las cartas pertenecerán a esa categoría si incluyen el texto indicado de cualquier forma, aunque sea circunstancial. <i>(Por ejemplo, si las opciones de creación de mazos de un investigador dicen “cartas que ‘curen horror’ de nivel 0–5”, cualquier carta que tenga una capacidad que cure cualquier cantidad de horror pertenecerá a esta categoría, incluso si sólo cura horror en circunstancias concretas.)</i>"
       }
     ]
@@ -847,7 +847,7 @@
   },
   {
     "id": "Skill_Tests",
-    "title": "Skill Tests",
+    "title": "Pruebas de habilidad",
     "text": "Hay distintas situaciones en la partida que requieren que un investigador realice una prueba de habilidad usando una de sus cuatro habilidades: voluntad ([willpower]), intelecto ([intellect]), combate ([combat]) o agilidad ([agility]). Una prueba de habilidad enfrenta el valor de una habilidad concreta del investigador contra un valor de dificultad determinado por la capacidad o paso de juego que inició la prueba. El investigador debe intentar igualar o superar dicho valor de dificultad para tener éxito en la prueba.\nLas pruebas de habilidad suelen nombrarse como pruebas de la habilidad especificada <i>(por ejemplo, “prueba de agilidad”, “prueba de combate”, “prueba de voluntad” o “prueba de intelecto”)</i>.\nConsulta \"[Orden de resolución de las pruebas de habilidad](#Skill_Test_Timing)\"."
   },
   {
@@ -954,8 +954,8 @@
   },
   {
     "id": "Unique",
-    "title": "Única ([unique])",
-    "text": "Una carta que tenga el símbolo [unique] antes de su nombre es una carta única. En ningún momento puede haber en juego más de una copia de cada carta única, por nombre.\n- Un jugador no puede traer al juego una carta única si ya hay en juego una copia de esa carta (por nombre).\n- Si fuese a entrar en juego una carta de Encuentro que comparta nombre con una carta de Jugador única, descarta la carta de Jugador a la vez que entra en juego la carta de Encuentro."
+    "title": "Única (✷)",
+    "text": "Una carta que tenga el símbolo ✷ antes de su nombre es una carta única. En ningún momento puede haber en juego más de una copia de cada carta única, por nombre.\n- Un jugador no puede traer al juego una carta única si ya hay en juego una copia de esa carta (por nombre).\n- Si fuese a entrar en juego una carta de Encuentro que comparta nombre con una carta de Jugador única, descarta la carta de Jugador a la vez que entra en juego la carta de Encuentro."
   },
   {
     "id": "Upkeep_Phase_Placeholdler",
