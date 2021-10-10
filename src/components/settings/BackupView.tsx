@@ -96,7 +96,7 @@ export default function BackupView({ componentId, safeMode }: BackupProps & Navi
         return;
       }
       // We got the file
-      const json = JSON.parse(await safeReadFile(res.fileCopyUri));
+      const json = JSON.parse(await safeReadFile(res.uri));
       const campaigns: Campaign[] = [];
       forEach(values(json.campaigns), campaign => {
         campaigns.push(campaignFromJson(campaign));
