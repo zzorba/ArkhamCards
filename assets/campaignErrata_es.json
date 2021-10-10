@@ -54,6 +54,15 @@
       ]
     },
     {
+      "encounter_code": "union_and_disillusion",
+      "cards": [
+        {
+          "code": ["05251", "05252", "05253", "05254", "05255", "05256"],
+          "text": "El nombre de esta carta debería ser “Isla ignota”."
+        }
+      ]
+    },
+    {
       "encounter_code": "echoes_of_the_past",
       "cards": [
         {
@@ -102,6 +111,28 @@
       ]
     },
     {
+      "encounter_code": "return_to_curtain_call",
+      "cards": [
+        {
+          "code": ["52016"],
+          "text": "Esta carta debería decir: “Coloca 1 ficha de Horror en los Palcos.”"
+        },
+        {
+          "code": ["52020"],
+          "text": "Esta carta debería decir: “Aparición – Palcos.”"
+        }
+      ]
+    },    
+    {
+      "encounter_code": "return_to_the_last_king",
+      "cards": [
+        {
+          "code": ["52027"],
+          "text": "La capacidad Revelación de esta carta debería decir: “Resuelve al azar una de las cartas Realidad repulsiva que hay bajo la carta de referencia de escenario. No puede ser cancelado.”."
+        }
+      ]
+    },
+    {
       "encounter_code": "the_wages_of_sin",
       "cards": [
         {
@@ -124,11 +155,64 @@
       ]
     },
     {
+      "encounter_code": "before_the_black_throne",
+      "cards": [
+        {
+          "code": ["05329"],
+          "text": "La segunda línea de texto de reglas de esta carta debería decir: “Añade cada espacio vacío al mazo de su propietario y baraja éste, y añade todos los Lugares en juego menos el Palacio espantoso al Cosmos y barájalo.”"
+        },
+        {
+          "code": ["05330"],
+          "text": "La segunda línea de texto de reglas de esta carta debería decir: “Añade cada espacio vacío al mazo de su propietario y baraja éste, y añade todos los Lugares en juego menos la Corte de los Primigenios al Cosmos y barájalo.”."
+        }
+      ]
+    },
+    {
+      "encounter_code": "maddening_delusions",
+      "cards": [
+        {
+          "code": ["52071"],
+          "text": "El efecto Obligado de esta carta debería decir: “Cuando acabe tu turno, si no has realizado al menos 1 acción de jugar durante tu turno:”."
+        },
+        {
+          "code": ["52072"],
+          "text": "El efecto Obligado de esta carta debería decir: “Cuando acabe tu turno, si no has realizado al menos 1 acción de recursos durante tu turno:”."
+        }
+      ]
+    },
+    {
+      "encounter_code": "alien_interference",
+      "cards": [
+        {
+          "code": ["84029"],
+          "text": "La primera capacidad de esta carta debería decir: “Obligado – Cuando el Entrometido sobrenatural fuese a recibir daño de un ataque: Retira 1 ficha de Perdición del Entrometido sobrenatural. A continuación, reduce el daño infligido en 1.”."
+        }
+      ]
+    },
+    {
       "encounter_code": "where_doom_awaits",
       "cards": [
         {
           "code": ["02277"],
           "text": "Hay que invertir el orden de las dos instrucciones de esta carta, del siguiente modo:\n“Retira todas las pistas de cada Lugar que esté en juego. La presencia arcana que ocultaba el camino que sube por la colina ha desaparecido. Revela el Sendero ascendente.”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "point_of_no_return",
+      "cards": [
+        {
+          "code": ["06253"],
+          "text": "La capacidad Obligado de esta carta debería decir: “Después de que un Enemigo que tenga 1 o más pistas sea derrotado: Toma el control de cada una de esas pistas.”."
+        }
+      ]
+    },
+    {
+      "encounter_code": "into_the_maelstrom",
+      "cards": [
+        {
+          "code": ["07315"],
+          "text": "La capacidad Objetivo de esta carta debería decir: “...puedes elegir hacer avanzar” en lugar de “...haz avanzar”."
         }
       ]
     }
@@ -281,6 +365,24 @@
         {
           "question": "¿Las cartas Asuntos inacabados que estén en la zona de amenaza de un investigador cuentan como Herejes en juego a efectos de la resolución de este escenario (es decir, para saber cuántas herejes fueron liberadas en Arkham)?",
           "answer": "No. Sólo cuentan las Herejes con el lado de Hereje boca arriba. Sin embargo, ten en cuenta que las cartas Asuntos inacabados de la zona de amenaza de un investigador tampoco contribuirán con sus puntos de victoria, de forma normal."
+        }
+      ]
+    },
+    {
+      "scenario_code": "before_the_black_throne",
+      "questions": [
+        {
+          "question": "Cuando se conecta un Lugar mediante el mazo del Cosmos o cuando la colocación de un Lugar se mueve durante este escenario, ¿se puede colocar en un lugar en el que no haya espacio vacío?",
+          "answer": "Sí. El espacio vacío sirve como método para calcular la distancia de un Lugar a otro, y como lugar para que algunos Enemigos aparezcan o se muevan; no es necesario que haya espacio vacío en el punto donde el Lugar se coloca o al que se mueve."
+        }
+      ]
+    },
+    {
+      "scenario_code": "into_the_maelstrom",
+      "questions": [
+        {
+          "question": "¿Debe avanzarse el acto 1a inmediatamente si todos los investigadores están en el Portal a Y’ha-nthlei y controlan las 4 llaves?",
+          "answer": "No. Avanzar este acto debería ser opcional, a pesar de que en la impresión original avanzar sea obligatorio."
         }
       ]
     }

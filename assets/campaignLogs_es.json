@@ -1551,23 +1551,23 @@
         "entries": [
           {
             "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "masculine_text": "#name# empieza con 1 pista <i>(de la reserva de fichas)</i>.",
+            "feminine_text": "#name# empieza con 1 pista <i>(de la reserva de fichas)</i>."
           },
           {
             "id": "doy_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# empieza con 3 recursos menos.",
+            "feminine_text": "#name# empieza con 3 recursos menos."
           },
           {
             "id": "eztli_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# empieza con 3 recursos menos.",
+            "feminine_text": "#name# empieza con 3 recursos menos."
           },
           {
             "id": "hote_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# empieza con 3 recursos menos.",
+            "feminine_text": "#name# empieza con 3 recursos menos."
           },
           {
             "id": "agenda_5",
@@ -2915,23 +2915,23 @@
         "entries": [
           {
             "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "masculine_text": "#name# empieza con 1 pista <i>(de la reserva de fichas)</i>.",
+            "feminine_text": "#name# empieza con 1 pista <i>(de la reserva de fichas)</i>."
           },
           {
             "id": "doy_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# empieza con 3 recursos menos.",
+            "feminine_text": "#name# empieza con 3 recursos menos."
           },
           {
             "id": "eztli_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# empieza con 3 recursos menos.",
+            "feminine_text": "#name# empieza con 3 recursos menos."
           },
           {
             "id": "hote_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# empieza con 3 recursos menos.",
+            "feminine_text": "#name# empieza con 3 recursos menos."
           },
           {
             "id": "agenda_5",
