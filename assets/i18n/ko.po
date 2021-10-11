@@ -349,7 +349,7 @@ msgid "Return to..."
 msgstr "돌아온..."
 
 msgid "Investigator Starter Decks"
-msgstr "초심자용 덱"
+msgstr "조사자 확장"
 
 msgid "Side stories"
 msgstr "독립 시나리오"
@@ -2590,7 +2590,7 @@ msgstr[0] "${ count } 재보급"
 
 msgid "${ count } supply point"
 msgid_plural "${ count } supply points"
-msgstr[0] "${ count } 보급 점수"
+msgstr[0] "${ count } 물자 점수"
 
 #, javascript-format
 msgid "${ xp } general / ${ resupplyPointsString } XP"
@@ -4531,7 +4531,7 @@ msgstr "자산: 손 x2. 마법"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
-msgstr "${ supplyIcon }: ${ total }점 중 ${ spent }점 사용"
+msgstr "${ supplyIcon }${ total }점 중 ${ supplyIcon }${ spent }점 사용"
 
 msgid "Choose deck"
 msgstr "덱을 선택하십시오"
