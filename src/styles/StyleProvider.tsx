@@ -26,10 +26,10 @@ function useColorScheme(delay = 2000) {
     })
   , [setColorScheme, delay]);
   React.useEffect(() => {
-    const sub = Appearance.addChangeListener(onColorSchemeChange);
+    Appearance.addChangeListener(onColorSchemeChange);
     return () => {
       onColorSchemeChange.cancel();
-      sub.remove();
+      Appearance.removeChangeListener(onColorSchemeChange);
     };
   }, [onColorSchemeChange]);
   return colorScheme;

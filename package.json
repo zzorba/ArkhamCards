@@ -152,7 +152,7 @@
     "@types/jest": "26.0.22",
     "@types/lodash": "4.14.175",
     "@types/react": "17.0.2",
-    "@types/react-native": "0.65.5",
+    "@types/react-native": "0.64.13",
     "@types/react-native-flip-card": "3.5.1",
     "@types/react-native-keep-awake": "2.0.3",
     "@types/react-native-share": "3.3.3",
