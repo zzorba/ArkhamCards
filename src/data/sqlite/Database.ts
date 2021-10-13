@@ -13,6 +13,11 @@ import { SortType } from '@actions/types';
 
 type DatabaseListener = () => void;
 
+export interface SqliteVersion {
+  major: number;
+  minor: number;
+  patch: number;
+}
 export interface SectionCount {
   id: string | number | null;
   count: number;
@@ -127,17 +132,31 @@ export default class Database {
     }
   }
 
-  async sqliteVersion(): Promise<string> {
+  async sqliteVersion(): Promise<SqliteVersion> {
     try {
       const connection = await this.connectionP;
       const queryRunner = connection.createQueryRunner();
       const manager = connection.createEntityManager(queryRunner);
       const result = await manager.query('select sqlite_version() as version');
-      return result[0].version;
+      const version = result[0].version;
+      if (typeof(version) === 'string') {
+        const splitV = version.split('.');
+        if (splitV.length === 3) {
+          return {
+            major: parseInt(splitV[0], 10),
+            minor: parseInt(splitV[1], 10),
+            patch: parseInt(splitV[2], 10),
+          };
+        }
+      }
     } catch (e) {
       console.log(e);
-      return '3.0.0';
     }
+    return {
+      major: 3,
+      minor: 0,
+      patch: 0,
+    };
   }
 
   async startTransaction(): Promise<QueryRunner> {

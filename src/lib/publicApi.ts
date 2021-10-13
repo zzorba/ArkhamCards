@@ -6,7 +6,7 @@ import { CardCache, TabooCache, Pack } from '@actions/types';
 import { Rule as JsonRule } from '@data/scenario/types';
 import Card, { CARD_NUM_COLUMNS } from '@data/types/Card';
 import Rule from '@data/types/Rule';
-import Database from '@data/sqlite/Database';
+import Database, { SqliteVersion } from '@data/sqlite/Database';
 import TabooSet from '@data/types/TabooSet';
 import FaqEntry from '@data/types/FaqEntry';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
@@ -17,6 +17,7 @@ const VERBOSE = false;
 export const syncTaboos = async function(
   updateProgress: (progress: number, msg?: string) => void,
   db: Database,
+  sqliteVersion: SqliteVersion,
   lang?: string,
   cache?: TabooCache
 ): Promise<TabooCache | null> {
@@ -104,7 +105,7 @@ export const syncTaboos = async function(
           }
           const cardsToInsert = flatMap(values(tabooCardsToSave), card => card ? [card] : []);
           // await cards.save(cardsToInsert);
-          await insertChunk(cardsToInsert, async cards => {
+          await insertChunk(sqliteVersion, cardsToInsert, async cards => {
             await queryRunner.manager.insert(Card, cards);
           }, 4);
         } catch (e) {
@@ -134,12 +135,26 @@ export const syncTaboos = async function(
   }
 };
 
-const SQLITE_NUM_VARIABLES = 999;
-const ANDROID_NUM_CARDS_PER_INSERT = Math.max(Math.floor(SQLITE_NUM_VARIABLES / CARD_NUM_COLUMNS) - 1, 1);
-const IOS_LIMIT = Platform.OS === 'ios' && parseInt(`${Platform.Version}`, 10) >= 14 ? Math.floor(32766 / CARD_NUM_COLUMNS) : 50;
-const MAX_CARDS_PER_INSERT = Platform.OS === 'ios' ? IOS_LIMIT : ANDROID_NUM_CARDS_PER_INSERT;
-async function insertChunk<T>(things: T[], insert: (things: T[]) => Promise<any>, maxInsert?: number) {
-  const chunkThings = chunk(things, Math.min(MAX_CARDS_PER_INSERT, maxInsert || 500));
+const OLD_SQLITE_NUM_VARIABLES = 999;
+const NEW_SQLITE_NUM_VARIABLES = 32766;
+
+function computeMaxInset(sqliteVersion: SqliteVersion): number {
+  if (sqliteVersion.major === 3 && sqliteVersion.minor >= 32) {
+    return Math.floor(NEW_SQLITE_NUM_VARIABLES / CARD_NUM_COLUMNS) - 1;
+  }
+  if (Platform.OS === 'ios') {
+    return 50;
+  }
+  return Math.floor(OLD_SQLITE_NUM_VARIABLES / CARD_NUM_COLUMNS);
+}
+
+async function insertChunk<T>(
+  sqliteVersion: SqliteVersion,
+  things: T[],
+  insert: (things: T[]
+) => Promise<any>, maxInsert?: number) {
+  const cardsPerInsert = computeMaxInset(sqliteVersion);
+  const chunkThings = chunk(things, Math.min(cardsPerInsert, maxInsert || 500));
   await Promise.all(map(chunkThings, toInsert => insert(toInsert)));
 }
 
@@ -166,6 +181,7 @@ function rulesJson(lang?: string) {
 
 export const syncRules = async function(
   db: Database,
+  sqliteVersion: SqliteVersion,
   lang?: string
 ): Promise<void> {
   const rules: JsonRule[] = rulesJson(lang);
@@ -175,7 +191,7 @@ export const syncRules = async function(
   });
 
   const [simpleRules, complexRules] = partition(allRules, r => !r.rules);
-  await insertChunk(simpleRules, async rules => await db.insertRules(rules));
+  await insertChunk(sqliteVersion, simpleRules, async rules => await db.insertRules(rules));
   forEach(complexRules, r => {
     db.insertRules([
       r,
@@ -188,6 +204,7 @@ export const NON_LOCALIZED_CARDS = new Set(['en', 'pt']);
 export const syncCards = async function(
   updateProgress: (progress: number, msg?: string) => void,
   db: Database,
+  sqliteVersion: SqliteVersion,
   anonClient: ApolloClient<NormalizedCacheObject>,
   packs: Pack[],
   lang?: string,
@@ -253,7 +270,7 @@ export const syncCards = async function(
         const customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
         const queryRunner = await db.startTransaction();
         try {
-          await insertChunk(customCards, async(c: Card[]) => {
+          await insertChunk(sqliteVersion, customCards, async(c: Card[]) => {
             await queryRunner.manager.delete(Card, map(c, c => c.id));
             await queryRunner.manager.insert(Card, c);
           });
@@ -291,7 +308,7 @@ export const syncCards = async function(
     VERBOSE && console.log('Cleared old database');
     updateProgress(0.22);
 
-    await syncRules(db, lang);
+    await syncRules(db, sqliteVersion, lang);
     updateProgress(0.25);
 
     // console.log(`${await cards.count() } cards after delete`);
@@ -443,13 +460,13 @@ export const syncCards = async function(
         processedCards += c.length;
         updateProgress(0.35 + (processedCards / (1.0 * totalCards) * 0.50));
       }
-      await insertChunk(flatMap(linkedCards, c => c.linked_card ? [c.linked_card] : []), insertCards);
+      await insertChunk(sqliteVersion, flatMap(linkedCards, c => c.linked_card ? [c.linked_card] : []), insertCards);
       // console.log('Inserted back-link cards');
-      await insertChunk(linkedCards, insertCards);
+      await insertChunk(sqliteVersion, linkedCards, insertCards);
       VERBOSE && console.log('Inserted front link cards');
-      await insertChunk(normalCards, insertCards);
+      await insertChunk(sqliteVersion, normalCards, insertCards);
       if (customCards.length) {
-        await insertChunk(customCards, insertCards);
+        await insertChunk(sqliteVersion, customCards, insertCards);
       }
     } finally {
       await queryRunner.commitTransaction();
