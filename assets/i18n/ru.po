@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2021-10-09 21:54+0300\n"
+"PO-Revision-Date: 2021-10-15 14:44+0300\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -4896,11 +4896,11 @@ msgstr "<i>${ card.name }</i> записана в графе «${ entry.section 
 
 msgctxt "feminine"
 msgid "Physical trauma"
-msgstr "физическая травма"
+msgstr "Физическая травма"
 
 msgctxt "feminine"
 msgid "Mental trauma"
-msgstr "ментальная травма"
+msgstr "Ментальная травма"
 
 msgctxt "feminine"
 msgid "Defeated"
