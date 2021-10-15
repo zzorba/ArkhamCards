@@ -12,7 +12,7 @@ msgstr ""
 "Language-Team: \n"
 "x-generator: Poedit 3.0\n"
 "MIME-Version: 1.0\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 2.4.3\n"
 
 msgid "Guardian / Rogue"
 msgstr "Guardián / Rebelde"
@@ -4264,8 +4264,8 @@ msgstr ""
 "eliminada según lo especificado."
 
 #, javascript-format
-msgid " (new total: ${ total })"
-msgstr " (nuevo total: ${ total })"
+msgid "(new total: ${ total })"
+msgstr "(nuevo total: ${ total })"
 
 msgid "Earned XP:"
 msgstr "XP obtenida:"
@@ -4687,6 +4687,10 @@ msgstr ""
 "\n"
 "Por favor cierra la aplicación y reiníciala para provocar la sincronización completa de "
 "los datos."
+
+#, javascript-format
+msgid "Sqlite version: ${ sqliteVersion }"
+msgstr ""
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
