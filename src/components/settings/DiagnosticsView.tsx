@@ -53,7 +53,7 @@ export default function DiagnosticsView() {
     let canceled = false;
     db.sqliteVersion().then((versioned) => {
       if (!canceled) {
-        setSqliteVesion(versioned)
+        setSqliteVesion(`${versioned.major}.${versioned.minor}.${versioned.patch}`);
       }
     });
     return () => {

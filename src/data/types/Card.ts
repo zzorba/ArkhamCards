@@ -14,7 +14,7 @@ const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+(\\s\\[per_investigator\\])?\\
 const BONDED_REGEX = new RegExp('.*Bonded\\s*\\((.+?)\\)\\..*');
 const SEAL_REGEX = new RegExp('.*Seal \\(.+\\)\\..*');
 const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all|(X total)) damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror');
-export const SEARCH_REGEX = /["“”‹›‘’«»〞〝〟„＂❛❜❝❞❮❯\(\)'\-\.,]/g;
+export const SEARCH_REGEX = /["“”‹›«»〞〝〟„＂❝❞‘’❛❜‛',‚❮❯\(\)\-\.…]/g;
 
 export const CARD_NUM_COLUMNS = 125;
 function arkham_num(value: number | null | undefined) {

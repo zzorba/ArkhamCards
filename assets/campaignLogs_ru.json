@@ -1551,23 +1551,23 @@
         "entries": [
           {
             "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "masculine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>.",
+            "feminine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>."
           },
           {
             "id": "doy_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
           },
           {
             "id": "eztli_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
           },
           {
             "id": "hote_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
           },
           {
             "id": "agenda_5",
@@ -2915,23 +2915,23 @@
         "entries": [
           {
             "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "masculine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>.",
+            "feminine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>."
           },
           {
             "id": "doy_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
           },
           {
             "id": "eztli_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
           },
           {
             "id": "hote_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
           },
           {
             "id": "agenda_5",

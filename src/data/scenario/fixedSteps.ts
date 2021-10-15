@@ -467,7 +467,8 @@ export function getFixedStep(
   id: string,
   scenarioGuide: ScenarioGuide,
   campaignState: CampaignStateHelper,
-  campaignLog: GuidedCampaignLog
+  campaignLog: GuidedCampaignLog,
+  standalone: boolean
 ): Step | undefined {
   switch (id) {
     case CHOOSE_RESOLUTION_STEP_ID:
@@ -479,7 +480,7 @@ export function getFixedStep(
         campaignState,
         campaignLog
       );
-      if (!nextScenarioName) {
+      if (!nextScenarioName || standalone) {
         return {
           id: PROCEED_STEP_ID,
           hidden: true,

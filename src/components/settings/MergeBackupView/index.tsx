@@ -15,7 +15,7 @@ import CampaignMergeSection from './CampaignMergeSection';
 import DeckMergeSection from './DeckMergeSection';
 import { Campaign, Deck, BackupState, LegacyBackupState, getDeckId, LocalDeck } from '@actions/types';
 import { AppState, getAllDecks } from '@reducers';
-import { mergeCampaigns, mergeDecks } from './backupHelper';
+import { DeckMergeResult, mergeCampaigns, mergeDecks } from './backupHelper';
 import { restoreComplexBackup } from '@components/campaign/actions';
 import COLORS from '@styles/colors';
 import { NavigationProps } from '@components/nav/types';
@@ -29,6 +29,22 @@ export interface MergeBackupProps {
 }
 
 type Props = MergeBackupProps & NavigationProps;
+
+function dependentDecks(decks: Deck[], deckMerge: DeckMergeResult) {
+  return flatMap(decks, deck => {
+    const dependentDecks: Deck[] = [deck];
+
+    let d = deck;
+    while (d && d.nextDeckId) {
+      const uuid = d.nextDeckId.uuid;
+      d = deckMerge.upgradeDecks[uuid];
+      if (d) {
+        dependentDecks.push(d);
+      }
+    }
+    return dependentDecks;
+  });
+}
 
 function MergeBackupView({ backupData, componentId }: Props) {
   const { backgroundStyle, colors } = useContext(StyleContext);
@@ -65,19 +81,6 @@ function MergeBackupView({ backupData, componentId }: Props) {
   const [importCampaigns,, setImportCampaigns] = useToggles({});
   const [importDecks,, setImportDecks] = useToggles({});
 
-  const dependentDecks = useCallback((decks: Deck[]) => {
-    return flatMap(decks, deck => {
-      const dependentDecks: Deck[] = [deck];
-      while (deck && deck.nextDeckId) {
-        deck = deckMerge.upgradeDecks[deck.nextDeckId.uuid];
-        if (deck) {
-          dependentDecks.push(deck);
-        }
-      }
-      return dependentDecks;
-    });
-  }, [deckMerge]);
-
   const selectedDecks: Deck[] = useMemo(() => {
     const decks = [
       ...filter(deckMerge.newDecks, d => !importDecks[getDeckId(d).uuid]),
@@ -85,8 +88,8 @@ function MergeBackupView({ backupData, componentId }: Props) {
       ...filter(deckMerge.staleDecks, d => !!importDecks[getDeckId(d).uuid]),
       ...filter(deckMerge.sameDecks, d => !!importDecks[getDeckId(d).uuid]),
     ];
-    return dependentDecks(decks);
-  }, [deckMerge, importDecks, dependentDecks]);
+    return dependentDecks(decks, deckMerge);
+  }, [deckMerge, importDecks]);
 
   const selectedCampaigns: Campaign[] = useMemo(() => {
     return [

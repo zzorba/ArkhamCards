@@ -95,11 +95,14 @@ export function fetchCards(
 
     try {
       const state = getState();
-      const cardCache = await syncCards(updateProgress, db, anonClient, packs, cardLang, cardsCache(state, cardLang));
+      const sqliteVersion = await db.sqliteVersion();
+
+      const cardCache = await syncCards(updateProgress, db, sqliteVersion, anonClient, packs, cardLang, cardsCache(state, cardLang));
       try {
         const tabooCache = await syncTaboos(
           updateProgress,
           db,
+          sqliteVersion,
           cardLang,
           taboosCache(getState(), cardLang)
         );

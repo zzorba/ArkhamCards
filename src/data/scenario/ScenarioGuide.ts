@@ -31,17 +31,20 @@ export default class ScenarioGuide {
   campaignGuide: CampaignGuide;
   private scenario: Scenario;
   private scenarioStartCampaignLog: GuidedCampaignLog;
+  private standalone: boolean;
 
   constructor(
     id: string,
     scenario: Scenario,
     campaignGuide: CampaignGuide,
-    campaignLog: GuidedCampaignLog
+    campaignLog: GuidedCampaignLog,
+    standalone: boolean
   ) {
     this.id = id;
     this.scenario = scenario;
     this.campaignGuide = campaignGuide;
     this.scenarioStartCampaignLog = campaignLog;
+    this.standalone = standalone;
   }
 
   scenarioId(): string {
@@ -116,7 +119,7 @@ export default class ScenarioGuide {
   private stepHelper(
     id: string,
     campaignState: CampaignStateHelper,
-    campaignLog: GuidedCampaignLog
+    campaignLog: GuidedCampaignLog,
   ) {
     const existingStep = find(
       this.scenario.steps,
@@ -130,7 +133,8 @@ export default class ScenarioGuide {
       id,
       this,
       campaignState,
-      campaignLog
+      campaignLog,
+      this.standalone
     );
     if (fixedStep) {
       return fixedStep;
