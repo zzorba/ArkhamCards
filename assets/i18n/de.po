@@ -4168,7 +4168,7 @@ msgstr ""
 
 msgid ""
 "Campaigns can now be 'uploaded' so they can be synced between devices or shared with "
-"friendns."
+"friends."
 msgstr ""
 "Kampagnen können jetzt 'hochgeladen' und so zwischen Geräten synchronisiert oder mit "
 "Freunden geteilt werden. "

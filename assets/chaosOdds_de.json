@@ -2397,7 +2397,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of revealed Enchanted Woods locations",
+          "prompt": "Anzahl der enthüllten Verwunschener Wald-Orte.",
           "min": 0
         }
       },
@@ -2421,7 +2421,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of revealed [[Woods]] locations",
+          "prompt": "Anzahl enthüllter [[Wälder]]-Orte.",
           "min": 0
         }
       },
@@ -2444,7 +2444,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Engaged with a [[Staff]] enemy",
+          "prompt": "Mit einem [[Personal]]-Gegner in einen Kampf verwickelt",
           "modified_value": {
             "modifier": -3
           }
@@ -2461,7 +2461,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Number of infested locations",
+          "prompt": "Anzahl befallener Orte",
           "min": 0
         }
       }
@@ -2474,7 +2474,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Engaged with a [[Staff]] enemy",
+          "prompt": "Mit einem [[Personal]]-Gegner in einen Kampf verwickelt",
           "modified_value": {
             "modifier": -4
           }
@@ -2491,7 +2491,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Number of infested locations",
+          "prompt": "Anzahl befallener Orte",
           "min": 0,
           "adjustment": 1
         }
@@ -2506,7 +2506,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Signs of the Gods the investigators have uncovered",
+          "prompt": "Anzahl Zeichen der Götter, welche die Ermittler aufgedeckt haben",
           "min": 0
         }
       },
@@ -2535,7 +2535,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Signs of the Gods the investigators have uncovered",
+          "prompt": "Anzahl Zeichen der Götter, welche die Ermittler aufgedeckt haben",
           "min": 0,
           "adjustment": 1
         }
@@ -2572,7 +2572,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At a [[Graveyard]] location",
+          "prompt": "An einem [[Friedhof]]-Ort",
           "modified_value": {
             "modifier": -3
           }
@@ -2606,7 +2606,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At a [[Graveyard]] location",
+          "prompt": "An einem [[Friedhof]]-Ort",
           "modified_value": {
             "modifier": -4
           }
@@ -2641,7 +2641,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half your alarm level (rounded up)",
+          "prompt": "Hälfte deiner Alarmstufe (aufgerundet)",
           "min": 0
         }
       },
@@ -2890,7 +2890,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "-1 (-2 instead if your location is partially flooded; -3 instead if your location is fully flooded)",
+          "prompt": "-1 (-2 stattdessen, falls dein Ort teilweise überflutet ist; -3 stattdessen, falls dein Ort völlig überflutet ist)",
           "min": 1,
           "max": 3
         }
@@ -2919,7 +2919,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "-2 (-3 instead if your location is partially flooded; -4 instead if your location is fully flooded)",
+          "prompt": "-2 (-3 stattdessen, falls dein Ort teilweise überflutet ist; -4 stattdessen, falls dein Ort völlig überflutet ist)",
           "min": 2,
           "max": 4
         }
@@ -3013,7 +3013,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations to the east of your location (on the same row)",
+          "prompt": "Anzahl der Orte östlich deines Ortes (in der gleichen Reihe)",
           "min": 0
         }
       },
@@ -3033,7 +3033,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Number of barriers between your location and all connecting locations",
+          "prompt": "Anzahl an Barrieren zwischen deinem Ort und allen verbundenen Orten",
           "min": 0
         }
       }
@@ -3043,7 +3043,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations to the east of your location (on the same row)",
+          "prompt": "Anzahl der Orte östlich deines Ortes (in der gleichen Reihe)",
           "min": 0,
           "scale": 2
         }
@@ -3064,7 +3064,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Number of barriers between your location and all connecting locations",
+          "prompt": "Anzahl an Barrieren zwischen deinem Ort und allen verbundenen Orten",
           "min": 0,
           "scale": 2
         }
@@ -3143,7 +3143,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "6 or fewer locations remaining in the Road deck",
+          "prompt": "6 oder weniger Orte im Straßendeck übrig",
           "modified_value": {
             "modifier": -3
           }
@@ -3176,7 +3176,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "6 or fewer locations remaining in the Road deck",
+          "prompt": "6 oder weniger Orte im Straßendeck übrig",
           "modified_value": {
             "modifier": -4
           }
@@ -3294,7 +3294,7 @@
             "modifier": 0,
             "reveal_another": true
           },
-          "prompt": "Curse revealed (before or after)",
+          "prompt": "Fluchmarker enthüllt (davor oder danach)",
           "modified_value": {
             "modifier": "auto_fail",
             "reveal_another": true
@@ -3332,7 +3332,7 @@
             "modifier": -2,
             "reveal_another": true
           },
-          "prompt": "Curse revealed (before or after)",
+          "prompt": "Fluchmarker enthüllt (davor oder danach)",
           "modified_value": {
             "modifier": "auto_fail",
             "reveal_another": true
@@ -3364,7 +3364,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "4 or more unflooded [[Y'ha-nthlei]] locations in play",
+          "prompt": "4 oder mehr [[Y'ha-nthlei]]-Orte im Spiel",
           "modified_value": {
             "modifier": -3
           }
@@ -3397,7 +3397,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "4 or more unflooded [[Y'ha-nthlei]] locations in play",
+          "prompt": "4 oder mehr [[Y'ha-nthlei]]-Orte im Spiel",
           "modified_value": {
             "modifier": -4
           }
@@ -3447,7 +3447,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Rougarou is at your location",
+          "prompt": "Rougarou an deinem Ort",
           "modified_value": {
             "modifier": -2,
             "reveal_another": true
@@ -3489,7 +3489,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Rougarou is at your location",
+          "prompt": "Rougarou an deinem Ort",
           "modified_value": {
             "modifier": -3,
             "reveal_another": true
@@ -3519,7 +3519,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the number of Innocent Revelers underneat the agenda deck",
+          "prompt": "2 plus die Anzahl der Unschuldigen Feiernden unter dem Agendadeck",
           "min": 2,
           "max": 5
         }
@@ -3549,7 +3549,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the number of Innocent Revelers underneat the agenda deck",
+          "prompt": "2 plus die Anzahl der Unschuldigen Feiernden unter dem Agendadeck",
           "min": 2,
           "max": 5
         }
@@ -3641,7 +3641,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The strength of the abyss",
+          "prompt": "Stärke des Abgrunds",
           "min": 0
         }
       },
@@ -3666,7 +3666,7 @@
           "default_value": {
             "modifier": -5
           },
-          "prompt": "Add 1 strength to the abyss",
+          "prompt": "Füge 1 zu der Stärke des Abgrunds hinzu",
           "modified_value": {
             "modifier": "auto_succeed"
           }
@@ -3678,7 +3678,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The strength of the abyss",
+          "prompt": "Stärke des Abgrunds",
           "min": 0,
           "adjustment": 1
         }
@@ -3704,7 +3704,7 @@
           "default_value": {
             "modifier": -6
           },
-          "prompt": "Add 1 strength to the abyss",
+          "prompt": "Füge 1 zu der Stärke des Abgrunds hinzu",
           "modified_value": {
             "modifier": "auto_succeed"
           }
@@ -3720,7 +3720,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The strength of the abyss",
+          "prompt": "Stärke des Abgrunds",
           "min": 0
         }
       },
@@ -3750,7 +3750,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The strength of the abyss",
+          "prompt": "Stärke des Abgrunds",
           "min": 0,
           "adjustment": 1
         }
@@ -3785,7 +3785,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Guest]] enemies in play",
+          "prompt": "Anzahl der [[Gast]]-Gegner im Spiel",
           "min": 0
         }
       },
@@ -3796,7 +3796,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "There is an [[Innocent]] enemy in the victory display",
+          "prompt": "Es gibt einen [[Unschuldiger]]-Gegner im Siegpunktestapel",
           "modified_value": {
             "modifier": -1,
             "reveal_another": true
@@ -3828,7 +3828,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der [[Unschuldig]]-Gegner im Spiel",
+          "prompt": "Anzahl der [[Unschuldiger]]-Gegner im Spiel",
           "min": 0
         }
       },
@@ -3839,7 +3839,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "There is an [[Innocent]] enemy in the victory display",
+          "prompt": "Es gibt einen [[Unschuldiger]]-Gegner im Siegpunktestapel",
           "modified_value": {
             "modifier": -2,
             "reveal_another": true
@@ -3875,7 +3875,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 for every 5 cards Subject 8L-08 has devoured",
+          "prompt": "1 für je 5 Karten, die Subjekt 8L-08 verschlungen hat",
           "min": 0
         }
       },
@@ -3903,7 +3903,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 for every 3 cards Subject 8L-08 has devoured",
+          "prompt": "1 für je 3 Karten, die Subjekt 8L-08 verschlungen hat",
           "min": 0
         }
       },

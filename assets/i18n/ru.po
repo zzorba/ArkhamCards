@@ -4162,7 +4162,7 @@ msgstr ""
 
 msgid ""
 "Campaigns can now be 'uploaded' so they can be synced between devices or shared with "
-"friendns."
+"friends."
 msgstr ""
 "Вы можете отправить данные своих кампаний на сервер, чтобы синхронизировать их между "
 "устройствами и делиться ими с друзьями."

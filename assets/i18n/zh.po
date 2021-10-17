@@ -3992,7 +3992,7 @@ msgstr "您已經登入，可以存取已儲存的劇本。"
 
 msgid ""
 "Campaigns can now be 'uploaded' so they can be synced between devices or shared with "
-"friendns."
+"friends."
 msgstr "劇本現在可以'上傳'，在不同裝置之間同步，或者與朋友共享。"
 
 msgid "Welcome"

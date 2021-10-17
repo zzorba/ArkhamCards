@@ -4141,7 +4141,7 @@ msgstr "Ahora que estás conectado, tienes acceso a tus campañas guardadas."
 
 msgid ""
 "Campaigns can now be 'uploaded' so they can be synced between devices or shared with "
-"friendns."
+"friends."
 msgstr ""
 "Las campañas pueden subirse a la nube para sincronizarse entre dispositivos o "
 "compartirse entre amigos."

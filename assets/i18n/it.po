@@ -4143,7 +4143,7 @@ msgstr ""
 
 msgid ""
 "Campaigns can now be 'uploaded' so they can be synced between devices or shared with "
-"friendns."
+"friends."
 msgstr ""
 "Ora puoi caricare le campagne in modo da poterle sincronizzare su più dispositivi o "
 "condividerle con gli amici."
@@ -6013,7 +6013,7 @@ msgstr "Risorsa"
 
 msgctxt "slots"
 msgid "None"
-msgstr ""
+msgstr "Nessuno"
 
 msgctxt "Draw Cards"
 msgid "All"

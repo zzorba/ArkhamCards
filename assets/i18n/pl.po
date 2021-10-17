@@ -3900,7 +3900,7 @@ msgstr ""
 
 msgid ""
 "Campaigns can now be 'uploaded' so they can be synced between devices or "
-"shared with friendns."
+"shared with friends."
 msgstr ""
 
 msgid "Welcome"

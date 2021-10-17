@@ -4081,7 +4081,7 @@ msgstr "이제 로그인을 했으므로 저장된 캠페인에 접근할 수 �
 
 msgid ""
 "Campaigns can now be 'uploaded' so they can be synced between devices or shared with "
-"friendns."
+"friends."
 msgstr ""
 "이제 캠페인을 '업로드' 할 수 있고, 이를 통해 장치 또는 공유된 친구 간에 캠페인을 동기화"
 "할 수 있습니다. "
