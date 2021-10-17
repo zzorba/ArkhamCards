@@ -6213,6 +6213,14 @@ export type Mutation_Root = {
   delete_local_decks?: Maybe<Local_Decks_Mutation_Response>;
   /** delete data from the table: "user_campaigns" */
   delete_user_campaigns?: Maybe<User_Campaigns_Mutation_Response>;
+  /** delete data from the table: "user_flag" */
+  delete_user_flag?: Maybe<User_Flag_Mutation_Response>;
+  /** delete single row from the table: "user_flag" */
+  delete_user_flag_by_pk?: Maybe<User_Flag>;
+  /** delete data from the table: "user_flag_type" */
+  delete_user_flag_type?: Maybe<User_Flag_Type_Mutation_Response>;
+  /** delete single row from the table: "user_flag_type" */
+  delete_user_flag_type_by_pk?: Maybe<User_Flag_Type>;
   /** delete data from the table: "user_friends" */
   delete_user_friends?: Maybe<User_Friends_Mutation_Response>;
   /** delete data from the table: "user_received_friend_requests" */
@@ -6303,6 +6311,14 @@ export type Mutation_Root = {
   insert_user_campaigns?: Maybe<User_Campaigns_Mutation_Response>;
   /** insert a single row into the table: "user_campaigns" */
   insert_user_campaigns_one?: Maybe<User_Campaigns>;
+  /** insert data into the table: "user_flag" */
+  insert_user_flag?: Maybe<User_Flag_Mutation_Response>;
+  /** insert a single row into the table: "user_flag" */
+  insert_user_flag_one?: Maybe<User_Flag>;
+  /** insert data into the table: "user_flag_type" */
+  insert_user_flag_type?: Maybe<User_Flag_Type_Mutation_Response>;
+  /** insert a single row into the table: "user_flag_type" */
+  insert_user_flag_type_one?: Maybe<User_Flag_Type>;
   /** insert data into the table: "user_friends" */
   insert_user_friends?: Maybe<User_Friends_Mutation_Response>;
   /** insert a single row into the table: "user_friends" */
@@ -6389,6 +6405,14 @@ export type Mutation_Root = {
   update_local_decks?: Maybe<Local_Decks_Mutation_Response>;
   /** update data of the table: "user_campaigns" */
   update_user_campaigns?: Maybe<User_Campaigns_Mutation_Response>;
+  /** update data of the table: "user_flag" */
+  update_user_flag?: Maybe<User_Flag_Mutation_Response>;
+  /** update single row of the table: "user_flag" */
+  update_user_flag_by_pk?: Maybe<User_Flag>;
+  /** update data of the table: "user_flag_type" */
+  update_user_flag_type?: Maybe<User_Flag_Type_Mutation_Response>;
+  /** update single row of the table: "user_flag_type" */
+  update_user_flag_type_by_pk?: Maybe<User_Flag_Type>;
   /** update data of the table: "user_friends" */
   update_user_friends?: Maybe<User_Friends_Mutation_Response>;
   /** update data of the table: "user_received_friend_requests" */
@@ -6617,6 +6641,31 @@ export type Mutation_RootDelete_Local_DecksArgs = {
 /** mutation root */
 export type Mutation_RootDelete_User_CampaignsArgs = {
   where: User_Campaigns_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_User_FlagArgs = {
+  where: User_Flag_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_User_Flag_By_PkArgs = {
+  flag: User_Flag_Type_Enum;
+  user_id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_User_Flag_TypeArgs = {
+  where: User_Flag_Type_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_User_Flag_Type_By_PkArgs = {
+  value: Scalars['String'];
 };
 
 
@@ -6917,6 +6966,34 @@ export type Mutation_RootInsert_User_CampaignsArgs = {
 /** mutation root */
 export type Mutation_RootInsert_User_Campaigns_OneArgs = {
   object: User_Campaigns_Insert_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_User_FlagArgs = {
+  objects: Array<User_Flag_Insert_Input>;
+  on_conflict?: Maybe<User_Flag_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_User_Flag_OneArgs = {
+  object: User_Flag_Insert_Input;
+  on_conflict?: Maybe<User_Flag_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_User_Flag_TypeArgs = {
+  objects: Array<User_Flag_Type_Insert_Input>;
+  on_conflict?: Maybe<User_Flag_Type_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_User_Flag_Type_OneArgs = {
+  object: User_Flag_Type_Insert_Input;
+  on_conflict?: Maybe<User_Flag_Type_On_Conflict>;
 };
 
 
@@ -7289,6 +7366,34 @@ export type Mutation_RootUpdate_User_CampaignsArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_User_FlagArgs = {
+  _set?: Maybe<User_Flag_Set_Input>;
+  where: User_Flag_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_User_Flag_By_PkArgs = {
+  _set?: Maybe<User_Flag_Set_Input>;
+  pk_columns: User_Flag_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_User_Flag_TypeArgs = {
+  _set?: Maybe<User_Flag_Type_Set_Input>;
+  where: User_Flag_Type_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_User_Flag_Type_By_PkArgs = {
+  _set?: Maybe<User_Flag_Type_Set_Input>;
+  pk_columns: User_Flag_Type_Pk_Columns_Input;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_User_FriendsArgs = {
   _set?: Maybe<User_Friends_Set_Input>;
   where: User_Friends_Bool_Exp;
@@ -7450,6 +7555,18 @@ export type Query_Root = {
   user_campaigns: Array<User_Campaigns>;
   /** fetch aggregated fields from the table: "user_campaigns" */
   user_campaigns_aggregate: User_Campaigns_Aggregate;
+  /** fetch data from the table: "user_flag" */
+  user_flag: Array<User_Flag>;
+  /** fetch aggregated fields from the table: "user_flag" */
+  user_flag_aggregate: User_Flag_Aggregate;
+  /** fetch data from the table: "user_flag" using primary key columns */
+  user_flag_by_pk?: Maybe<User_Flag>;
+  /** fetch data from the table: "user_flag_type" */
+  user_flag_type: Array<User_Flag_Type>;
+  /** fetch aggregated fields from the table: "user_flag_type" */
+  user_flag_type_aggregate: User_Flag_Type_Aggregate;
+  /** fetch data from the table: "user_flag_type" using primary key columns */
+  user_flag_type_by_pk?: Maybe<User_Flag_Type>;
   /** fetch data from the table: "user_friends" */
   user_friends: Array<User_Friends>;
   /** fetch aggregated fields from the table: "user_friends" */
@@ -7914,6 +8031,53 @@ export type Query_RootUser_Campaigns_AggregateArgs = {
 };
 
 
+export type Query_RootUser_FlagArgs = {
+  distinct_on?: Maybe<Array<User_Flag_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<User_Flag_Order_By>>;
+  where?: Maybe<User_Flag_Bool_Exp>;
+};
+
+
+export type Query_RootUser_Flag_AggregateArgs = {
+  distinct_on?: Maybe<Array<User_Flag_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<User_Flag_Order_By>>;
+  where?: Maybe<User_Flag_Bool_Exp>;
+};
+
+
+export type Query_RootUser_Flag_By_PkArgs = {
+  flag: User_Flag_Type_Enum;
+  user_id: Scalars['String'];
+};
+
+
+export type Query_RootUser_Flag_TypeArgs = {
+  distinct_on?: Maybe<Array<User_Flag_Type_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<User_Flag_Type_Order_By>>;
+  where?: Maybe<User_Flag_Type_Bool_Exp>;
+};
+
+
+export type Query_RootUser_Flag_Type_AggregateArgs = {
+  distinct_on?: Maybe<Array<User_Flag_Type_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<User_Flag_Type_Order_By>>;
+  where?: Maybe<User_Flag_Type_Bool_Exp>;
+};
+
+
+export type Query_RootUser_Flag_Type_By_PkArgs = {
+  value: Scalars['String'];
+};
+
+
 export type Query_RootUser_FriendsArgs = {
   distinct_on?: Maybe<Array<User_Friends_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -8102,6 +8266,18 @@ export type Subscription_Root = {
   user_campaigns: Array<User_Campaigns>;
   /** fetch aggregated fields from the table: "user_campaigns" */
   user_campaigns_aggregate: User_Campaigns_Aggregate;
+  /** fetch data from the table: "user_flag" */
+  user_flag: Array<User_Flag>;
+  /** fetch aggregated fields from the table: "user_flag" */
+  user_flag_aggregate: User_Flag_Aggregate;
+  /** fetch data from the table: "user_flag" using primary key columns */
+  user_flag_by_pk?: Maybe<User_Flag>;
+  /** fetch data from the table: "user_flag_type" */
+  user_flag_type: Array<User_Flag_Type>;
+  /** fetch aggregated fields from the table: "user_flag_type" */
+  user_flag_type_aggregate: User_Flag_Type_Aggregate;
+  /** fetch data from the table: "user_flag_type" using primary key columns */
+  user_flag_type_by_pk?: Maybe<User_Flag_Type>;
   /** fetch data from the table: "user_friends" */
   user_friends: Array<User_Friends>;
   /** fetch aggregated fields from the table: "user_friends" */
@@ -8566,6 +8742,53 @@ export type Subscription_RootUser_Campaigns_AggregateArgs = {
 };
 
 
+export type Subscription_RootUser_FlagArgs = {
+  distinct_on?: Maybe<Array<User_Flag_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<User_Flag_Order_By>>;
+  where?: Maybe<User_Flag_Bool_Exp>;
+};
+
+
+export type Subscription_RootUser_Flag_AggregateArgs = {
+  distinct_on?: Maybe<Array<User_Flag_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<User_Flag_Order_By>>;
+  where?: Maybe<User_Flag_Bool_Exp>;
+};
+
+
+export type Subscription_RootUser_Flag_By_PkArgs = {
+  flag: User_Flag_Type_Enum;
+  user_id: Scalars['String'];
+};
+
+
+export type Subscription_RootUser_Flag_TypeArgs = {
+  distinct_on?: Maybe<Array<User_Flag_Type_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<User_Flag_Type_Order_By>>;
+  where?: Maybe<User_Flag_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootUser_Flag_Type_AggregateArgs = {
+  distinct_on?: Maybe<Array<User_Flag_Type_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<User_Flag_Type_Order_By>>;
+  where?: Maybe<User_Flag_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootUser_Flag_Type_By_PkArgs = {
+  value: Scalars['String'];
+};
+
+
 export type Subscription_RootUser_FriendsArgs = {
   distinct_on?: Maybe<Array<User_Friends_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -8920,6 +9143,259 @@ export type User_Campaigns_Variance_Order_By = {
   campaign_id?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
 };
+
+/** columns and relationships of "user_flag" */
+export type User_Flag = {
+  __typename?: 'user_flag';
+  flag: User_Flag_Type_Enum;
+  user_id: Scalars['String'];
+};
+
+/** aggregated selection of "user_flag" */
+export type User_Flag_Aggregate = {
+  __typename?: 'user_flag_aggregate';
+  aggregate?: Maybe<User_Flag_Aggregate_Fields>;
+  nodes: Array<User_Flag>;
+};
+
+/** aggregate fields of "user_flag" */
+export type User_Flag_Aggregate_Fields = {
+  __typename?: 'user_flag_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<User_Flag_Max_Fields>;
+  min?: Maybe<User_Flag_Min_Fields>;
+};
+
+
+/** aggregate fields of "user_flag" */
+export type User_Flag_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<User_Flag_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "user_flag" */
+export type User_Flag_Aggregate_Order_By = {
+  count?: Maybe<Order_By>;
+  max?: Maybe<User_Flag_Max_Order_By>;
+  min?: Maybe<User_Flag_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "user_flag" */
+export type User_Flag_Arr_Rel_Insert_Input = {
+  data: Array<User_Flag_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: Maybe<User_Flag_On_Conflict>;
+};
+
+/** Boolean expression to filter rows from the table "user_flag". All fields are combined with a logical 'AND'. */
+export type User_Flag_Bool_Exp = {
+  _and?: Maybe<Array<User_Flag_Bool_Exp>>;
+  _not?: Maybe<User_Flag_Bool_Exp>;
+  _or?: Maybe<Array<User_Flag_Bool_Exp>>;
+  flag?: Maybe<User_Flag_Type_Enum_Comparison_Exp>;
+  user_id?: Maybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "user_flag" */
+export enum User_Flag_Constraint {
+  /** unique or primary key constraint */
+  UserFlagPkey = 'user_flag_pkey'
+}
+
+/** input type for inserting data into table "user_flag" */
+export type User_Flag_Insert_Input = {
+  flag?: Maybe<User_Flag_Type_Enum>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type User_Flag_Max_Fields = {
+  __typename?: 'user_flag_max_fields';
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "user_flag" */
+export type User_Flag_Max_Order_By = {
+  user_id?: Maybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type User_Flag_Min_Fields = {
+  __typename?: 'user_flag_min_fields';
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "user_flag" */
+export type User_Flag_Min_Order_By = {
+  user_id?: Maybe<Order_By>;
+};
+
+/** response of any mutation on the table "user_flag" */
+export type User_Flag_Mutation_Response = {
+  __typename?: 'user_flag_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<User_Flag>;
+};
+
+/** on conflict condition type for table "user_flag" */
+export type User_Flag_On_Conflict = {
+  constraint: User_Flag_Constraint;
+  update_columns: Array<User_Flag_Update_Column>;
+  where?: Maybe<User_Flag_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "user_flag". */
+export type User_Flag_Order_By = {
+  flag?: Maybe<Order_By>;
+  user_id?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: user_flag */
+export type User_Flag_Pk_Columns_Input = {
+  flag: User_Flag_Type_Enum;
+  user_id: Scalars['String'];
+};
+
+/** select columns of table "user_flag" */
+export enum User_Flag_Select_Column {
+  /** column name */
+  Flag = 'flag',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "user_flag" */
+export type User_Flag_Set_Input = {
+  flag?: Maybe<User_Flag_Type_Enum>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** columns and relationships of "user_flag_type" */
+export type User_Flag_Type = {
+  __typename?: 'user_flag_type';
+  value: Scalars['String'];
+};
+
+/** aggregated selection of "user_flag_type" */
+export type User_Flag_Type_Aggregate = {
+  __typename?: 'user_flag_type_aggregate';
+  aggregate?: Maybe<User_Flag_Type_Aggregate_Fields>;
+  nodes: Array<User_Flag_Type>;
+};
+
+/** aggregate fields of "user_flag_type" */
+export type User_Flag_Type_Aggregate_Fields = {
+  __typename?: 'user_flag_type_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<User_Flag_Type_Max_Fields>;
+  min?: Maybe<User_Flag_Type_Min_Fields>;
+};
+
+
+/** aggregate fields of "user_flag_type" */
+export type User_Flag_Type_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<User_Flag_Type_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "user_flag_type". All fields are combined with a logical 'AND'. */
+export type User_Flag_Type_Bool_Exp = {
+  _and?: Maybe<Array<User_Flag_Type_Bool_Exp>>;
+  _not?: Maybe<User_Flag_Type_Bool_Exp>;
+  _or?: Maybe<Array<User_Flag_Type_Bool_Exp>>;
+  value?: Maybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "user_flag_type" */
+export enum User_Flag_Type_Constraint {
+  /** unique or primary key constraint */
+  UserFlagTypePkey = 'user_flag_type_pkey'
+}
+
+export enum User_Flag_Type_Enum {
+  Admin = 'admin',
+  EsDv = 'es_dv',
+  EsDvAdmin = 'es_dv_admin'
+}
+
+/** Boolean expression to compare columns of type "user_flag_type_enum". All fields are combined with logical 'AND'. */
+export type User_Flag_Type_Enum_Comparison_Exp = {
+  _eq?: Maybe<User_Flag_Type_Enum>;
+  _in?: Maybe<Array<User_Flag_Type_Enum>>;
+  _is_null?: Maybe<Scalars['Boolean']>;
+  _neq?: Maybe<User_Flag_Type_Enum>;
+  _nin?: Maybe<Array<User_Flag_Type_Enum>>;
+};
+
+/** input type for inserting data into table "user_flag_type" */
+export type User_Flag_Type_Insert_Input = {
+  value?: Maybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type User_Flag_Type_Max_Fields = {
+  __typename?: 'user_flag_type_max_fields';
+  value?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type User_Flag_Type_Min_Fields = {
+  __typename?: 'user_flag_type_min_fields';
+  value?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "user_flag_type" */
+export type User_Flag_Type_Mutation_Response = {
+  __typename?: 'user_flag_type_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<User_Flag_Type>;
+};
+
+/** on conflict condition type for table "user_flag_type" */
+export type User_Flag_Type_On_Conflict = {
+  constraint: User_Flag_Type_Constraint;
+  update_columns: Array<User_Flag_Type_Update_Column>;
+  where?: Maybe<User_Flag_Type_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "user_flag_type". */
+export type User_Flag_Type_Order_By = {
+  value?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: user_flag_type */
+export type User_Flag_Type_Pk_Columns_Input = {
+  value: Scalars['String'];
+};
+
+/** select columns of table "user_flag_type" */
+export enum User_Flag_Type_Select_Column {
+  /** column name */
+  Value = 'value'
+}
+
+/** input type for updating data in table "user_flag_type" */
+export type User_Flag_Type_Set_Input = {
+  value?: Maybe<Scalars['String']>;
+};
+
+/** update columns of table "user_flag_type" */
+export enum User_Flag_Type_Update_Column {
+  /** column name */
+  Value = 'value'
+}
+
+/** update columns of table "user_flag" */
+export enum User_Flag_Update_Column {
+  /** column name */
+  Flag = 'flag',
+  /** column name */
+  UserId = 'user_id'
+}
 
 /** columns and relationships of "user_friends" */
 export type User_Friends = {
@@ -9319,6 +9795,10 @@ export type Users = {
   /** An aggregate relationship */
   decks_aggregate: Latest_Decks_Aggregate;
   /** An array relationship */
+  flags: Array<User_Flag>;
+  /** An aggregate relationship */
+  flags_aggregate: User_Flag_Aggregate;
+  /** An array relationship */
   friends: Array<User_Friends>;
   /** An aggregate relationship */
   friends_aggregate: User_Friends_Aggregate;
@@ -9397,6 +9877,26 @@ export type UsersDecks_AggregateArgs = {
   offset?: Maybe<Scalars['Int']>;
   order_by?: Maybe<Array<Latest_Decks_Order_By>>;
   where?: Maybe<Latest_Decks_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users" */
+export type UsersFlagsArgs = {
+  distinct_on?: Maybe<Array<User_Flag_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<User_Flag_Order_By>>;
+  where?: Maybe<User_Flag_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users" */
+export type UsersFlags_AggregateArgs = {
+  distinct_on?: Maybe<Array<User_Flag_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<User_Flag_Order_By>>;
+  where?: Maybe<User_Flag_Bool_Exp>;
 };
 
 
@@ -9510,6 +10010,7 @@ export type Users_Bool_Exp = {
   campaigns?: Maybe<User_Campaigns_Bool_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
   decks?: Maybe<Latest_Decks_Bool_Exp>;
+  flags?: Maybe<User_Flag_Bool_Exp>;
   friends?: Maybe<User_Friends_Bool_Exp>;
   handle?: Maybe<String_Comparison_Exp>;
   id?: Maybe<String_Comparison_Exp>;
@@ -9531,6 +10032,7 @@ export type Users_Insert_Input = {
   campaigns?: Maybe<User_Campaigns_Arr_Rel_Insert_Input>;
   created_at?: Maybe<Scalars['timestamptz']>;
   decks?: Maybe<Latest_Decks_Arr_Rel_Insert_Input>;
+  flags?: Maybe<User_Flag_Arr_Rel_Insert_Input>;
   friends?: Maybe<User_Friends_Arr_Rel_Insert_Input>;
   handle?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
@@ -9587,6 +10089,7 @@ export type Users_Order_By = {
   campaigns_aggregate?: Maybe<User_Campaigns_Aggregate_Order_By>;
   created_at?: Maybe<Order_By>;
   decks_aggregate?: Maybe<Latest_Decks_Aggregate_Order_By>;
+  flags_aggregate?: Maybe<User_Flag_Aggregate_Order_By>;
   friends_aggregate?: Maybe<User_Friends_Aggregate_Order_By>;
   handle?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
@@ -9910,7 +10413,7 @@ export type GetProfileQueryVariables = Exact<{
 }>;
 
 
-export type GetProfileQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, handle?: string | null | undefined, friends: Array<{ __typename?: 'user_friends', user?: { __typename?: 'users', id: string, handle?: string | null | undefined } | null | undefined }>, sent_requests: Array<{ __typename?: 'user_sent_friend_requests', user?: { __typename?: 'users', id: string, handle?: string | null | undefined } | null | undefined }>, received_requests: Array<{ __typename?: 'user_received_friend_requests', user?: { __typename?: 'users', id: string, handle?: string | null | undefined } | null | undefined }> } | null | undefined };
+export type GetProfileQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, handle?: string | null | undefined, friends: Array<{ __typename?: 'user_friends', user?: { __typename?: 'users', id: string, handle?: string | null | undefined } | null | undefined }>, sent_requests: Array<{ __typename?: 'user_sent_friend_requests', user?: { __typename?: 'users', id: string, handle?: string | null | undefined } | null | undefined }>, received_requests: Array<{ __typename?: 'user_received_friend_requests', user?: { __typename?: 'users', id: string, handle?: string | null | undefined } | null | undefined }>, flags: Array<{ __typename?: 'user_flag', flag: User_Flag_Type_Enum }> } | null | undefined };
 
 export type DeleteInvestigatorDecksMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -11591,6 +12094,9 @@ export const GetProfileDocument = gql`
       user {
         ...UserInfo
       }
+    }
+    flags {
+      flag
     }
   }
 }

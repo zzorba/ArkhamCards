@@ -1328,7 +1328,6 @@ export default class ScenarioStep {
         campaignLog
       );
       if (!step) {
-        console.log(`Missing step: ${stepId}`);
         return undefined;
       }
       return new ScenarioStep(

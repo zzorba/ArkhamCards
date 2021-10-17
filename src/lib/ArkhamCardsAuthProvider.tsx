@@ -7,6 +7,7 @@ import { ENABLE_ARKHAM_CARDS_ACCOUNT } from '@app_constants';
 import ArkhamCardsAuthContext from './ArkhamCardsAuthContext';
 import { useSelector } from 'react-redux';
 import { AppState } from '@reducers';
+import { useMyProfile } from '@data/remote/hooks';
 
 interface Props {
   children: React.ReactNode;

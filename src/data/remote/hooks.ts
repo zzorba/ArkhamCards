@@ -24,6 +24,8 @@ import {
   useGetDeckHistoryQuery,
   HistoryDeckFragment,
   AllDeckFragment,
+  User_Flag,
+  User_Flag_Type_Enum,
 } from '@generated/graphql/apollo-schema';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { FriendStatus } from './api';
@@ -276,6 +278,7 @@ export interface UserProfile {
   friends: SimpleUser[];
   sentRequests: SimpleUser[];
   receivedRequests: SimpleUser[];
+  flags: User_Flag_Type_Enum[];
 }
 
 export function useProfile(profileUserId: string | undefined, useCached?: boolean): [UserProfile | undefined, boolean, () => void] {
@@ -324,6 +327,7 @@ export function useProfile(profileUserId: string | undefined, useCached?: boolea
           status: FriendStatus.RECEIVED,
         };
       }),
+      flags: map(theData.users_by_pk.flags, f => f.flag),
     };
   }, [data, previousData]);
   const doRefetch = useCallback(() => {
@@ -334,7 +338,7 @@ export function useProfile(profileUserId: string | undefined, useCached?: boolea
   return [profile, userLoading || dataLoading, doRefetch];
 }
 
-export function useMyProfile(useCached?: boolean): [UserProfile | undefined, boolean, () => void] {
+export function useMyProfile(useCached: boolean): [UserProfile | undefined, boolean, () => void] {
   const { userId } = useContext(ArkhamCardsAuthContext);
   return useProfile(userId, useCached);
 }

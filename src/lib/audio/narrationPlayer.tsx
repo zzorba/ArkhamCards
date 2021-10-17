@@ -1,20 +1,14 @@
-import { useSelector } from 'react-redux';
 import { useContext, useEffect, useState } from 'react';
 import { isEqual } from 'lodash';
 import { EmitterSubscription } from 'react-native';
 import TrackPlayer, { Capability, IOSCategory, Event, Track, State, useTrackPlayerEvents, IOSCategoryMode } from 'react-native-track-player';
 
 import { useInterval } from '@components/core/hooks';
-import { hasDissonantVoices } from '@reducers';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
 export function useAudioAccess(): [boolean, string | undefined] {
-  const { lang } = useContext(LanguageContext);
-  const hasDV = useSelector(hasDissonantVoices);
-  return [
-    (lang === 'ru') || hasDV,
-    hasDV ? undefined : lang,
-  ];
+  const { audioLang } = useContext(LanguageContext);
+  return [!!audioLang, audioLang];
 }
 
 interface TrackPlayerFunctions {

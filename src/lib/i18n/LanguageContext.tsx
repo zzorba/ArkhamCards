@@ -5,6 +5,7 @@ interface LanguageContextType {
   useCardTraits: boolean;
   listSeperator: string;
   usePingFang: boolean;
+  audioLang?: string;
 }
 
 export const LanguageContext = React.createContext<LanguageContextType>({ lang: 'en', useCardTraits: true, listSeperator: ', ', usePingFang: false });
