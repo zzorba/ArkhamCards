@@ -1933,7 +1933,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Your location is haunted",
+          "prompt": "당신이 위치한 장소가 신들린 장소임",
           "modified_value": {
             "modifier": -3
           }
@@ -1960,7 +1960,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Your location is haunted",
+          "prompt": "당신이 위치한 장소가 신들린 장소임",
           "modified_value": {
             "modifier": -4
           }
@@ -1991,7 +1991,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "You are at an [[Extradimensional]] location",
+          "prompt": "당신이 [[초차원]] 장소에 있음",
           "modified_value": {
             "modifier": -3
           }
@@ -2025,7 +2025,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "You are at an [[Extradimensional]] location",
+          "prompt": "당신이 [[초차원]] 장소에 있음",
           "modified_value": {
             "modifier": -4
           }
@@ -2060,7 +2060,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of Unfinished Business in the victory display",
+          "prompt": "승점 더미에 있는 '원혼의 미련' 사본의 개수",
           "min": 0,
           "adjustment": 1
         }
@@ -2089,7 +2089,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of Unfinished Business in the victory display",
+          "prompt": "승점 더미에 있는 '원혼의 미련' 사본의 개수",
           "min": 0,
           "reveal_another": true
         }
@@ -2122,7 +2122,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of doom on a [[Cultist]] enemy in play",
+          "prompt": "플레이 상태인 [[추종자]] 중에서, 파멸이 가장 많인 놓인 추종자 적의 파멸 개수",
           "min": 0
         }
       },
@@ -2151,7 +2151,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom among [[Cultist]] enemies in play",
+          "prompt": "플레이 상태인 모든 [[추종자]] 적에게 놓인 파멸 개수의 총합",
           "min": 0
         }
       },
@@ -2175,7 +2175,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "No [[Cultist]] enemies in play have doom on them",
+          "prompt": "플레이 상태인 [[추종자]] 적들 가운데 파멸이 하나도 놓여 있지 않음",
           "modified_value": {
             "modifier": -3,
             "reveal_another": true
@@ -2195,7 +2195,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "During a <b>circle</b> action",
+          "prompt": "이번 능력 테스트가 <b>의식</b> 행동을 수행하는 동안 이뤄짐",
           "modified_value": {
             "modifier": -2,
             "reveal_another": true
@@ -2229,7 +2229,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "During a <b>circle</b> action",
+          "prompt": "이번 능력 테스트가 <b>의식</b> 행동을 수행하는 동안 이뤄짐",
           "modified_value": {
             "modifier": -3,
             "reveal_another": true
@@ -2264,7 +2264,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom and breaches on your location",
+          "prompt": "당신이 위치한 장소에 있는 파멸과 균열 개수의 총합",
           "min": 0
         }
       },
@@ -2293,7 +2293,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom and breaches on your location",
+          "prompt": "당신이 위치한 장소에 있는 파멸과 균열 개수의 총합",
           "min": 0,
           "adjustment": 1
         }
@@ -2327,7 +2327,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the doom on Azathoth (rounded up)",
+          "prompt": "'아자토스'에게 놓인 파멸 개수의 절반(소수점 올림)",
           "min": 2
         }
       },
@@ -2356,7 +2356,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Amount of doom on Azathoth",
+          "prompt": "'아자토스'에게 놓인 파멸 개수",
           "min": 2
         }
       },
@@ -3935,7 +3935,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of clues you have",
+          "prompt": "당신이 가진 단서의 개수",
           "min": 0
         }
       },
@@ -3963,7 +3963,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of clues you have",
+          "prompt": "당신이 가진 단서의 개수",
           "scale": 2,
           "min": 0
         }
@@ -4059,7 +4059,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of clues you have",
+          "prompt": "당신이 가진 단서의 개수",
           "min": 0
         }
       },
@@ -4094,7 +4094,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of clues you have",
+          "prompt": "당신이 가진 단서의 개수",
           "scale": 2,
           "min": 0
         }
