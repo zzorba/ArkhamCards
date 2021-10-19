@@ -148,14 +148,14 @@ export function useTrackDetails(index: number | null) {
 }
 
 export function useStopAudioOnUnmount() {
-  const [hasDV] = useAudioAccess();
+  const [hasAudio] = useAudioAccess();
   useEffect(() => {
-    if (hasDV) {
+    if (hasAudio) {
       return function() {
         narrationPlayer().then(trackPlayer => {
           trackPlayer.stop().then(() => trackPlayer.removeUpcomingTracks());
         });
       };
     }
-  }, [hasDV]);
+  }, [hasAudio]);
 }

@@ -26,8 +26,8 @@ function MyProvider({ store: { redux, persistor, apollo, anonApollo }, children 
   return (
     <AppearanceProvider>
       <Provider store={redux}>
-        <ArkhamCardsAuthProvider>
-          <PersistGate loading={null} persistor={persistor}>
+        <PersistGate loading={null} persistor={persistor}>
+          <ArkhamCardsAuthProvider>
             <ApolloProvider client={apollo}>
               <ApolloClientContext.Provider value={{ client: apollo, anonClient: anonApollo }}>
                 <LanguageProvider>
@@ -39,8 +39,8 @@ function MyProvider({ store: { redux, persistor, apollo, anonApollo }, children 
                 </LanguageProvider>
               </ApolloClientContext.Provider>
             </ApolloProvider>
-          </PersistGate>
-        </ArkhamCardsAuthProvider>
+          </ArkhamCardsAuthProvider>
+        </PersistGate>
       </Provider>
     </AppearanceProvider>
   );

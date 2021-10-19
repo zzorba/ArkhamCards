@@ -1,8 +1,8 @@
 import React, { useCallback, useContext, useRef, useState } from 'react';
 import { ThunkDispatch } from 'redux-thunk';
-import { AppState } from '@reducers';
+import { AppState, getEnableArkhamCardsAccount } from '@reducers';
 import { Action } from 'redux';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -17,7 +17,6 @@ import { s } from '@styles/space';
 import { DeckActions } from '@data/remote/decks';
 import { CampaignAccessProps } from './CampaignAccessView';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
-import { ENABLE_ARKHAM_CARDS_ACCOUNT } from '@app_constants';
 import { useBackButton } from '@components/core/hooks';
 
 interface Props {
@@ -41,6 +40,7 @@ export default function UploadCampaignButton({ componentId, campaign, campaignId
   const { userId } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected }] = useNetworkStatus();
   const [uploading, setUploading] = useState(false);
+  const enableArkhamCardsAccount = useSelector(getEnableArkhamCardsAccount);
   const dispatch: Dispatch = useDispatch();
   const createCampaignActions = useCreateCampaignActions();
   const uploadingRef = useRef(uploading);
@@ -94,7 +94,7 @@ export default function UploadCampaignButton({ componentId, campaign, campaignId
     }
   }, [componentId, campaignId, isOwner]);
   if (!userId) {
-    if (!ENABLE_ARKHAM_CARDS_ACCOUNT) {
+    if (!enableArkhamCardsAccount) {
       return null;
     }
     return (

@@ -240,15 +240,15 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
       },
     });
   }, [componentId, campaignId, processedScenario.id]);
-  const [hasDS, narrationLang] = useAudioAccess()
+  const [hasAudio, narrationLang] = useAudioAccess()
 
   useEffect(() => {
-    if (!hasDS) {
+    if (!hasAudio) {
       return;
     }
     const queue = getNarrationQueue(processedScenario, scenarioState, narrationLang);
     setNarrationQueue(queue);
-  }, [processedScenario, scenarioState, hasDS, narrationLang]);
+  }, [processedScenario, scenarioState, hasAudio, narrationLang]);
 
   const hasInterludeFaq = processedScenario.scenarioGuide.scenarioType() !== 'scenario' &&
     processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;

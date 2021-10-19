@@ -24,7 +24,6 @@ import {
   useGetDeckHistoryQuery,
   HistoryDeckFragment,
   AllDeckFragment,
-  User_Flag,
   User_Flag_Type_Enum,
 } from '@generated/graphql/apollo-schema';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';

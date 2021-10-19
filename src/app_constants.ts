@@ -1,8 +1,15 @@
-import { ChaosTokenModifier, SimpleChaosTokenValue } from '@data/scenario/types';
+import { Platform } from 'react-native';
 import { find } from 'lodash';
 import { t } from 'ttag';
 
-export const ENABLE_ARKHAM_CARDS_ACCOUNT = false;
+import { ChaosTokenModifier, SimpleChaosTokenValue } from '@data/scenario/types';
+
+
+export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS = true;
+export const ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID = true;
+export const ENABLE_ARKHAM_CARDS_ACCOUNT = (Platform.OS === 'ios' && ENABLE_ARKHAM_CARDS_ACCOUNT_IOS) ||
+  (Platform.OS === 'android' && ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID);
+
 export type TypeCodeType =
   'asset' |
   'event' |

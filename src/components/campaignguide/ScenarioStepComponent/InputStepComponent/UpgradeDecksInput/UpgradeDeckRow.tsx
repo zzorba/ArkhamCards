@@ -34,7 +34,6 @@ import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
 import { fetchPrivateDeck } from '@components/deck/actions';
 import EncounterIcon from '@icons/EncounterIcon';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
-import { TINY_PHONE } from '@styles/sizes';
 import { useDispatch } from 'react-redux';
 import { useDeck } from '@data/hooks';
 

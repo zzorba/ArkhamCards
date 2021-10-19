@@ -111,10 +111,11 @@ export default class DeckValidation {
             deck_limit: 1,
           };
         }
+        const isPreciousMemories = card.code === '08114' || card.code === '08115';
 
         return {
           nb_copies: group.length,
-          deck_limit,
+          deck_limit: isPreciousMemories ? 2 : deck_limit,
         };
       });
   }

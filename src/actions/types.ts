@@ -4,6 +4,7 @@ import Card from '@data/types/Card';
 import { LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
 
 export const SORT_BY_TYPE = 'type';
+export const SORT_BY_CYCLE = 'cycle';
 export const SORT_BY_FACTION = 'faction';
 export const SORT_BY_FACTION_PACK = 'faction_pack';
 export const SORT_BY_FACTION_XP = 'faction_xp';
@@ -572,7 +573,7 @@ export interface SetTabooSetAction {
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
 export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
-  setting: 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection';
+  setting: 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1';
   value: boolean;
 }
 
