@@ -2030,16 +2030,16 @@ msgid "Shattered Aeons"
 msgstr "산산조각난 영겁"
 
 msgid "Prologue: Disappearance at the Twilight Estate"
-msgstr ""
+msgstr "서막: 황혼회 저택에서의 실종"
 
 msgid "The Witching Hour"
-msgstr ""
+msgstr "마녀의 시간"
 
 msgid "At Death's Doorstep"
-msgstr ""
+msgstr "죽음의 문턱에서"
 
 msgid "The Price of Progress"
-msgstr ""
+msgstr "진보에는 희생이 따른다"
 
 msgid "The Secret Name"
 msgstr "비밀 이름"
@@ -2051,7 +2051,7 @@ msgid "For the Greater Good"
 msgstr "대의를 위하여"
 
 msgid "The Inner Circle"
-msgstr ""
+msgstr "원로회"
 
 msgid "Union and Disillusion"
 msgstr "합일과 환멸"
@@ -2060,7 +2060,7 @@ msgid "In the Clutches of Chaos"
 msgstr "혼돈의 손아귀에서"
 
 msgid "Twist of Fate"
-msgstr ""
+msgstr "운명의 장난"
 
 msgid "Before the Black Throne"
 msgstr "검은 옥좌 앞에"
@@ -2075,7 +2075,7 @@ msgid "Return to the Devourer Below"
 msgstr "돌아온 지하 세계의 포식자"
 
 msgid "Beyond the Gates of Sleep"
-msgstr ""
+msgstr "잠의 관문을 지나서"
 
 msgid "The Black Cat"
 msgstr ""
@@ -2096,7 +2096,7 @@ msgid "Where Gods Dwell"
 msgstr "신들이 기거하는 곳"
 
 msgid "Waking Nightmare"
-msgstr ""
+msgstr "깨어난 악몽"
 
 msgid "A Thousand Shapes of Horror"
 msgstr "천 가지 무시무시한 형체"
@@ -2141,19 +2141,19 @@ msgid "Supplies"
 msgstr "탐험 물자"
 
 msgid "Mementos Discovered"
-msgstr ""
+msgstr "발견한 증표"
 
 msgid "Missing Persons - Gavriella Mizrah"
-msgstr ""
+msgstr "실종자 - 가브리엘라 미즈라"
 
 msgid "Missing Persons - Jerome Davids"
-msgstr ""
+msgstr "실종자 - 제롬 데이비즈"
 
 msgid "Missing Persons - Penny White"
-msgstr ""
+msgstr "실종자 - 페니 화이트"
 
 msgid "Missing Persons - Valentino Rivas"
-msgstr ""
+msgstr "실종자 - 발렌티노 리바스"
 
 msgid "Evidence of Kadath"
 msgstr ""
@@ -2985,25 +2985,25 @@ msgid "Curse"
 msgstr "저주"
 
 msgid "In Too Deep"
-msgstr ""
+msgstr "너무나도 깊은 수렁"
 
 msgid "Devil Reef"
-msgstr ""
+msgstr "악마의 암초"
 
 msgid "Horror in High Gear"
-msgstr ""
+msgstr "공포의 추격전"
 
 msgid "A Light in the Fog"
-msgstr ""
+msgstr "안개 속의 빛 줄기"
 
 msgid "The Lair of Dagon"
-msgstr ""
+msgstr "데이곤의 처소"
 
 msgid "Hidden Truths"
 msgstr ""
 
 msgid "Into the Maelstrom"
-msgstr ""
+msgstr "몰아치는 소용돌이 속으로"
 
 msgid "Possible Suspects"
 msgstr ""
@@ -4372,13 +4372,13 @@ msgid "Return to The Circle Undone"
 msgstr "돌아온 끝맺지 못한 의식"
 
 msgid "Prologue: Return to Disappearance at the Twilight Estate"
-msgstr ""
+msgstr "서막: 돌아온 황혼회 저택에서의 실종"
 
 msgid "Return to The Witching Hour"
-msgstr ""
+msgstr "돌아온 마녀의 시간"
 
 msgid "Return to At Death's Doorstep"
-msgstr ""
+msgstr "돌아온 죽음의 문턱에서"
 
 msgid "Return to The Secret Name"
 msgstr "돌아온 비밀 이름"
@@ -4617,7 +4617,7 @@ msgstr ""
 
 #, javascript-format
 msgid "Sqlite version: ${ sqliteVersion }"
-msgstr ""
+msgstr "Sqlite 버젼: ${ sqliteVersion }"
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -4958,7 +4958,7 @@ msgstr "선택받은 자"
 
 msgctxt "trait"
 msgid "Circle"
-msgstr ""
+msgstr "의식진"
 
 msgctxt "trait"
 msgid "City"
@@ -5002,7 +5002,7 @@ msgstr "음모"
 
 msgctxt "trait"
 msgid "Construct"
-msgstr ""
+msgstr "구조물"
 
 msgctxt "trait"
 msgid "Covenant"
@@ -5126,7 +5126,7 @@ msgstr "에스틀리"
 
 msgctxt "trait"
 msgid "Familiar"
-msgstr ""
+msgstr "사역령"
 
 msgctxt "trait"
 msgid "Fated"
@@ -5314,7 +5314,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Lodge"
-msgstr "교단"
+msgstr "집회소"
 
 msgctxt "trait"
 msgid "Lunatic"
@@ -5534,7 +5534,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "River"
-msgstr ""
+msgstr "강"
 
 msgctxt "trait"
 msgid "Riverside"
@@ -5550,11 +5550,11 @@ msgstr "유적"
 
 msgctxt "trait"
 msgid "Salem"
-msgstr ""
+msgstr "세일럼"
 
 msgctxt "trait"
 msgid "Sanctum"
-msgstr ""
+msgstr "성소"
 
 msgctxt "trait"
 msgid "Scheme"
@@ -5630,7 +5630,7 @@ msgstr "주술사"
 
 msgctxt "trait"
 msgid "Spectral"
-msgstr ""
+msgstr "혼령계"
 
 msgctxt "trait"
 msgid "Spell"
@@ -5766,7 +5766,7 @@ msgstr "참전용사"
 
 msgctxt "trait"
 msgid "Void"
-msgstr ""
+msgstr "공허"
 
 msgctxt "trait"
 msgid "Warden"
@@ -5794,7 +5794,7 @@ msgstr "마녀"
 
 msgctxt "trait"
 msgid "Witch House"
-msgstr ""
+msgstr "마녀집"
 
 msgctxt "trait"
 msgid "Woods"
@@ -5814,7 +5814,7 @@ msgstr "요스"
 
 msgctxt "trait"
 msgid "Zoog"
-msgstr ""
+msgstr "주그"
 
 msgctxt "trait"
 msgid "AI"
