@@ -139,6 +139,9 @@ const OLD_SQLITE_NUM_VARIABLES = 999;
 const NEW_SQLITE_NUM_VARIABLES = 32766;
 
 function computeMaxInset(sqliteVersion: SqliteVersion): number {
+  if (Platform.OS === 'android') {
+    return Math.floor(NEW_SQLITE_NUM_VARIABLES / CARD_NUM_COLUMNS) - 1;
+  }
   if (sqliteVersion.major === 3 && sqliteVersion.minor >= 32) {
     return Math.floor(NEW_SQLITE_NUM_VARIABLES / CARD_NUM_COLUMNS) - 1;
   }

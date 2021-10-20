@@ -174,8 +174,7 @@ export default class Database {
       .createQueryBuilder()
       .insert()
       .into(Card)
-      .values(cards)
-      .orIgnore();
+      .values(cards);
     return await query.execute();
   }
 
@@ -186,8 +185,7 @@ export default class Database {
       .createQueryBuilder()
       .insert()
       .into(Rule)
-      .values(rules)
-      .orIgnore();
+      .values(rules);
     return await query.execute();
   }
 
