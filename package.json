@@ -22,8 +22,29 @@
     "build": "tsc --skipLibCheck --resolveJsonModule --noEmit",
     "test": "jest",
     "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
-    "postinstall": "patch-package",
+    "postinstall": "patch-package && copy-files-from-to",
     "codegen": "graphql-codegen --config codegen.yml"
+  },
+  "copyFiles": [
+    {
+      "from": "android/lib/arm64-v8a/libsqlc-native-driver.so",
+      "to": "node_modules/react-native-sqlite-storage/platforms/android-native/libs/arm64-v8a/libsqlc-native-driver.so"
+    },
+    {
+      "from": "android/lib/armeabi-v7a/libsqlc-native-driver.so",
+      "to": "node_modules/react-native-sqlite-storage/platforms/android-native/libs/armeabi-v7a/libsqlc-native-driver.so"
+    },
+    {
+      "from": "android/lib/x86/libsqlc-native-driver.so",
+      "to": "node_modules/react-native-sqlite-storage/platforms/android-native/libs/x86/libsqlc-native-driver.so"
+    },
+    {
+      "from": "android/lib/x86_64/libsqlc-native-driver.so",
+      "to": "node_modules/react-native-sqlite-storage/platforms/android-native/libs/x86_64/libsqlc-native-driver.so"
+    }
+  ],
+  "copyFilesSettings": {
+    "whenFileExists": "overwrite"
   },
   "dependencies": {
     "@apollo/client": "3.4.16",
@@ -170,6 +191,7 @@
     "babel-jest": "^26.6.3",
     "babel-plugin-module-resolver": "4.0.0",
     "babel-preset-react-native": "4.0.0",
+    "copy-files-from-to": "3.2.1",
     "eslint": "7.14.0",
     "eslint-config-google": "0.14.0",
     "eslint-import-resolver-babel-module": "5.2.0",
