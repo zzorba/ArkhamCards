@@ -21,7 +21,7 @@ export const BASIC_WEAKNESS_QUERY = where(
   `c.type_code != "scenario" AND c.subtype_code = "basicweakness" AND c.code != "${RANDOM_BASIC_WEAKNESS}"`
 );
 export const STORY_CARDS_QUERY = where(
-  `((c.deck_limit >= 0) AND (c.mythos_card = true OR (c.subtype_code is not null AND c.has_restrictions = false))) OR c.code = "${RANDOM_BASIC_WEAKNESS}" OR c.code = "${ACE_OF_RODS_CODE}"`
+  `c.deck_limit >= 1 AND ((c.mythos_card = 1 OR (c.subtype_code is not null AND c.has_restrictions = 0)) OR c.code = "${RANDOM_BASIC_WEAKNESS}" OR c.code = "${ACE_OF_RODS_CODE}")`
 );
 export const MYTHOS_CARDS_QUERY = where('c.browse_visible in (2,3)');
 export const BROWSE_CARDS_QUERY = where('c.browse_visible in (1,3)');
