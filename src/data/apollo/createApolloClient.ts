@@ -34,6 +34,9 @@ const typePolicies: TypedTypePolicies = {
       cycleCode(rawVal: string) {
         return rawVal ?? null;
       },
+      difficulty(rawVal: string) {
+        return rawVal ?? null;
+      },
       archived(rawVal: boolean) {
         return rawVal ?? null;
       },
