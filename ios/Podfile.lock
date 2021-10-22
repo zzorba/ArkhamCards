@@ -453,12 +453,12 @@ PODS:
     - React-cxxreact (= 0.64.2)
     - React-jsi (= 0.64.2)
     - React-perflogger (= 0.64.2)
-  - ReactNativeNavigation (7.21.0):
+  - ReactNativeNavigation (7.13.0):
     - React-Core
     - React-RCTImage
     - React-RCTText
-    - ReactNativeNavigation/Core (= 7.21.0)
-  - ReactNativeNavigation/Core (7.21.0):
+    - ReactNativeNavigation/Core (= 7.13.0)
+  - ReactNativeNavigation/Core (7.13.0):
     - React-Core
     - React-RCTImage
     - React-RCTText
@@ -854,7 +854,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: 24600e3b1aaa77126989bc58b6747509a1ba14f3
   React-runtimeexecutor: a9904c6d0218fb9f8b19d6dd88607225927668f9
   ReactCommon: 149906e01aa51142707a10665185db879898e966
-  ReactNativeNavigation: d6f27d4ba71887a161534a13e8ef3873b26c68b5
+  ReactNativeNavigation: 4c4ca87edc0da4ee818158a62cb6188088454e5c
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNAppleAuthentication: 63c2127ace11985b94f852fc480eb84145653712
   RNCAsyncStorage: d599364c12b1ddb042cc2d7ab6f8258962b83097

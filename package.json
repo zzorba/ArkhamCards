@@ -27,6 +27,10 @@
   },
   "copyFiles": [
     {
+      "from": "android/lib/sqlite-connector.jar",
+      "to": "node_modules/react-native-sqlite-storage/platforms/android-native/libs/sqlite-connector.jar"
+    },
+    {
       "from": "android/lib/arm64-v8a/libsqlc-native-driver.so",
       "to": "node_modules/react-native-sqlite-storage/platforms/android-native/libs/arm64-v8a/libsqlc-native-driver.so"
     },
@@ -105,7 +109,7 @@
     "react-native-localize": "2.1.5",
     "react-native-markdown-view": "https://github.com/zzorba/react-native-markdown-view#1.1.20",
     "react-native-modal": "12.1.0",
-    "react-native-navigation": "7.21.0",
+    "react-native-navigation": "7.13.0",
     "react-native-navigation-hooks": "6.3.0",
     "react-native-pager-view": "5.4.7",
     "react-native-pinch-zoom-view": "0.2.0",
@@ -212,7 +216,7 @@
     "reactotron-redux": "3.1.3",
     "tslint": "6.1.3",
     "ttag-cli": "1.9.3",
-    "typescript": "4.4.4"
+    "typescript": "3.9.7"
   },
   "jest": {
     "preset": "react-native",
