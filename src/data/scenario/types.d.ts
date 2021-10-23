@@ -128,7 +128,8 @@ export type Input =
   | SendCampaignLinkInput
   | RandomLocationInput
   | PrologueRandomizer
-  | SaveDecksInput;
+  | SaveDecksInput
+  | TarotReading;
 export type CardQuery = CardSearchQuery | CardCodeList;
 export type UseSuppliesInput = UseSuppliesChoiceInput | UseSuppliesAllInput;
 export type InvestigatorChoiceCondition =
@@ -807,6 +808,11 @@ export interface PrologueRandomizer {
 }
 export interface SaveDecksInput {
   type: "save_decks";
+}
+export interface TarotReading {
+  type: "tarot_reading";
+  randomized: boolean;
+  reading: "chaos" | "balance" | "choice" | "destiny";
 }
 export interface EncounterSetsStep {
   id: string;
