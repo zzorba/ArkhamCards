@@ -3,7 +3,7 @@ import { forEach, map, uniq } from 'lodash';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Input } from 'react-native-elements';
 import { AppleButton, appleAuth, appleAuthAndroid } from '@invertase/react-native-apple-authentication';
-import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
+import { GoogleSignin, GoogleSigninButton } from '@react-native-community/google-signin';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import uuid from 'react-native-uuid';
 import { useDispatch } from 'react-redux';

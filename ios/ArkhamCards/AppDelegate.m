@@ -55,8 +55,7 @@ RNKeyEvent *keyEvent = nil;
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   self.window.backgroundColor = [UIColor whiteColor];
-  RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
-  [ReactNativeNavigation bootstrapWithBridge:bridge];
+  [ReactNativeNavigation bootstrapWithDelegate:self launchOptions:launchOptions];
 
   return YES;
 }

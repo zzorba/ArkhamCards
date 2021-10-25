@@ -220,7 +220,9 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
     case 'prologue_randomizer':
       return (
         <PrologueRandomizerPrompt id={step.id} input={step.input} />
-      )
+      );
+    case 'tarot_reading':
+      return null;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = step.input;
