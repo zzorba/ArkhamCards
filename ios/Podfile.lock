@@ -387,14 +387,14 @@ PODS:
     - React
   - react-native-netinfo (6.0.2):
     - React-Core
-  - react-native-pager-view (5.4.4):
+  - react-native-pager-view (5.4.7):
     - React-Core
-  - react-native-sqlite-storage (5.0.0):
-    - React
+  - react-native-sqlite-storage (6.0.1):
+    - React-Core
   - react-native-track-player (2.1.1):
     - React-Core
     - SwiftAudioEx (= 0.14.2)
-  - react-native-webview (11.13.0):
+  - react-native-webview (11.13.1):
     - React-Core
   - React-perflogger (0.65.1)
   - React-RCTActionSheet (0.65.1):
@@ -473,13 +473,13 @@ PODS:
     - React-Core
   - RNAppleAuthentication (2.1.5):
     - React-Core
-  - RNCAsyncStorage (1.15.8):
+  - RNCAsyncStorage (1.15.9):
     - React-Core
   - RNColorMatrixImageFilters (5.2.10):
     - React-Core
   - RNDeviceInfo (8.3.3):
     - React-Core
-  - RNFastImage (8.5.8):
+  - RNFastImage (8.5.11):
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
@@ -505,9 +505,9 @@ PODS:
   - RNGoogleSignin (6.0.1):
     - GoogleSignIn (~> 5.0.0)
     - React-Core
-  - RNKeychain (7.0.0):
+  - RNKeychain (8.0.0):
     - React-Core
-  - RNLocalize (2.1.4):
+  - RNLocalize (2.1.5):
     - React-Core
   - RNReanimated (2.2.2):
     - DoubleConversion
@@ -540,7 +540,7 @@ PODS:
     - Yoga
   - RNSha256 (1.4.7):
     - React
-  - RNShare (7.1.1):
+  - RNShare (7.1.2):
     - React-Core
   - RNSVG (12.1.1):
     - React
@@ -888,10 +888,10 @@ SPEC CHECKSUMS:
   react-native-keep-awake: eba3137546b10003361b37c761f6c429b59814ae
   react-native-keyevent: f8728b8c73dbfbcb4d2c56d9e78be082c673c456
   react-native-netinfo: 8917788f12f8c422d16a56f840a1b06faa56e2b6
-  react-native-pager-view: f21658a2e12eced35ef998250375e4e4dc9b8487
-  react-native-sqlite-storage: ce71689c5a73b79390a1ab213555ae80979a5dc7
+  react-native-pager-view: a1486db1a8c9956437fc3a87cf2b56f44095a193
+  react-native-sqlite-storage: 6df009b8b67fe34c57c5fd06ee8fff7669fece6d
   react-native-track-player: dc9e2571c181aebffccc83c5ddcf4b550b012f04
-  react-native-webview: b176c6404ad40d10cfc818be41c053f85a72d751
+  react-native-webview: cea67b82dd5fbdf0f5c821b4ca0ca0b01e954c0b
   React-perflogger: fd28ee1f2b5b150b00043f0301d96bd417fdc339
   React-RCTActionSheet: 7f3fa0855c346aa5d7c60f9ced16e067db6d29fa
   React-RCTAnimation: 2119a18ee26159004b001bc56404ca5dbaae6077
@@ -907,10 +907,10 @@ SPEC CHECKSUMS:
   ReactNativeNavigation: d6f27d4ba71887a161534a13e8ef3873b26c68b5
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNAppleAuthentication: 63c2127ace11985b94f852fc480eb84145653712
-  RNCAsyncStorage: 0f655864a81214d1c5a9bf0faf79d86dc25c383e
+  RNCAsyncStorage: d599364c12b1ddb042cc2d7ab6f8258962b83097
   RNColorMatrixImageFilters: fdeaf2451ff8f7aa76679a9951b969e6c8adeede
   RNDeviceInfo: 0d6865ab0a57d9192bdd4e4f5894340b846c3e53
-  RNFastImage: adef7f9c9a7aeca0141807ee5a8be8a3eb240dd8
+  RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
   RNFBApp: b97d6654509a5852d49f0abf93be76b300fd2e2c
   RNFBAuth: 07fd836f31fe09d465c22476a052766251af1c49
   RNFBDatabase: 194a730d8182d81cccb7c8126b6e8a71f3bf5d74
@@ -918,11 +918,11 @@ SPEC CHECKSUMS:
   RNFS: 3ab21fa6c56d65566d1fb26c2228e2b6132e5e32
   RNGestureHandler: 9b7e605a741412e20e13c512738a31bd1611759b
   RNGoogleSignin: e64616a4080cf7d83f4b292fad82d174587444e2
-  RNKeychain: f75b8c8b2f17d3b2aa1f25b4a0ac5b83d947ff8f
-  RNLocalize: 8bc7ebf44e0f18898cc62f0061561d07fabf6ff9
+  RNKeychain: 4f63aada75ebafd26f4bc2c670199461eab85d94
+  RNLocalize: 13a971fd888f2933504a745983f781dc52feeab6
   RNReanimated: ad24db8af24e3fe1b5c462785bc3db8d5baae2ee
   RNSha256: 68357f69fa5f755a495e13ec42c8f0fc75316db0
-  RNShare: a22398d8d02336133e28bf8b6e0b47b31abade41
+  RNShare: 0fec82bd2e67d09f895937ccb4f5a097e714dec2
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   RNVectorIcons: 31cebfcf94e8cf8686eb5303ae0357da64d7a5a4
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
