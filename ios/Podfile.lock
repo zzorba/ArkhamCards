@@ -49,7 +49,7 @@ PODS:
     - FirebaseCoreDiagnostics (~> 8.0)
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/Logger (~> 7.4)
-  - FirebaseCoreDiagnostics (8.7.0):
+  - FirebaseCoreDiagnostics (8.8.0):
     - GoogleDataTransport (~> 9.0)
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/Logger (~> 7.4)
@@ -110,7 +110,7 @@ PODS:
     - FlipperKit/FlipperKitNetworkPlugin
   - fmt (6.2.1)
   - glog (0.3.5)
-  - GoogleDataTransport (9.1.0):
+  - GoogleDataTransport (9.1.2):
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
@@ -118,20 +118,20 @@ PODS:
     - AppAuth (~> 1.2)
     - GTMAppAuth (~> 1.0)
     - GTMSessionFetcher/Core (~> 1.1)
-  - GoogleUtilities/AppDelegateSwizzler (7.5.2):
+  - GoogleUtilities/AppDelegateSwizzler (7.6.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (7.5.2):
+  - GoogleUtilities/Environment (7.6.0):
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleUtilities/Logger (7.5.2):
+  - GoogleUtilities/Logger (7.6.0):
     - GoogleUtilities/Environment
-  - GoogleUtilities/Network (7.5.2):
+  - GoogleUtilities/Network (7.6.0):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (7.5.2)"
-  - GoogleUtilities/Reachability (7.5.2):
+  - "GoogleUtilities/NSData+zlib (7.6.0)"
+  - GoogleUtilities/Reachability (7.6.0):
     - GoogleUtilities/Logger
   - GTMAppAuth (1.2.2):
     - AppAuth/Core (~> 1.4)
@@ -140,15 +140,15 @@ PODS:
   - hermes-engine (0.8.1)
   - leveldb-library (1.22.1)
   - libevent (2.1.12)
-  - libwebp (1.2.0):
-    - libwebp/demux (= 1.2.0)
-    - libwebp/mux (= 1.2.0)
-    - libwebp/webp (= 1.2.0)
-  - libwebp/demux (1.2.0):
+  - libwebp (1.2.1):
+    - libwebp/demux (= 1.2.1)
+    - libwebp/mux (= 1.2.1)
+    - libwebp/webp (= 1.2.1)
+  - libwebp/demux (1.2.1):
     - libwebp/webp
-  - libwebp/mux (1.2.0):
+  - libwebp/mux (1.2.1):
     - libwebp/demux
-  - libwebp/webp (1.2.0)
+  - libwebp/webp (1.2.1)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -391,9 +391,9 @@ PODS:
     - React-Core
   - react-native-sqlite-storage (5.0.0):
     - React
-  - react-native-track-player (2.1.0):
+  - react-native-track-player (2.1.1):
     - React-Core
-    - SwiftAudioEx (= 0.14.0)
+    - SwiftAudioEx (= 0.14.2)
   - react-native-webview (11.13.0):
     - React-Core
   - React-perflogger (0.65.1)
@@ -502,7 +502,7 @@ PODS:
     - React
   - RNGestureHandler (1.9.0):
     - React-Core
-  - RNGoogleSignin (6.0.0):
+  - RNGoogleSignin (6.0.1):
     - GoogleSignIn (~> 5.0.0)
     - React-Core
   - RNKeychain (7.0.0):
@@ -554,7 +554,7 @@ PODS:
     - SDWebImage/Core (~> 5.10)
   - SRSRadialGradient (1.0.9):
     - React
-  - SwiftAudioEx (0.14.0)
+  - SwiftAudioEx (0.14.2)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -842,7 +842,7 @@ SPEC CHECKSUMS:
   Firebase: bc9325d5ee2041524bac78a5213d0e530c651309
   FirebaseAuth: 2e7d029977648c67a5d51a263d4cbab76d34cf12
   FirebaseCore: f4804c1d3f4bbbefc88904d15653038f2c99ddf7
-  FirebaseCoreDiagnostics: b63732f581a1c6a453ec7241f9ab60b3a5bd3450
+  FirebaseCoreDiagnostics: fe77f42da6329d6d83d21fd9d621a6b704413bfc
   FirebaseDatabase: afc82291f9ed94ff949cec1b9505e8c3b944bc0f
   FirebaseFunctions: 9b78e79a3de4ee00ca1af7fd8c5fd7ed76fbf702
   Flipper: d3da1aa199aad94455ae725e9f3aa43f3ec17021
@@ -856,15 +856,15 @@ SPEC CHECKSUMS:
   FlipperKit: 8a20b5c5fcf9436cac58551dc049867247f64b00
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 5337263514dd6f09803962437687240c5dc39aa4
-  GoogleDataTransport: 85fd18ff3019bb85d3f2c551d04c481dedf71fc9
+  GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
-  GoogleUtilities: 8de2a97a17e15b6b98e38e8770e2d129a57c0040
+  GoogleUtilities: 684ee790a24f73ebb2d1d966e9711c203f2a4237
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
   hermes-engine: 7dcd1dbd908e6353bd7e4a4add72dba7bf76bf84
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  libwebp: e90b9c01d99205d03b6bb8f2c8c415e5a4ef66f0
+  libwebp: 98a37e597e40bfdb4c911fc98f2c53d0b12d05fc
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   OpenSSL-Universal: 1aa4f6a6ee7256b83db99ec1ccdaa80d10f9af9b
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
@@ -890,7 +890,7 @@ SPEC CHECKSUMS:
   react-native-netinfo: 8917788f12f8c422d16a56f840a1b06faa56e2b6
   react-native-pager-view: f21658a2e12eced35ef998250375e4e4dc9b8487
   react-native-sqlite-storage: ce71689c5a73b79390a1ab213555ae80979a5dc7
-  react-native-track-player: e98b10450888bb832098b1c0664a2402557ad7b9
+  react-native-track-player: dc9e2571c181aebffccc83c5ddcf4b550b012f04
   react-native-webview: b176c6404ad40d10cfc818be41c053f85a72d751
   React-perflogger: fd28ee1f2b5b150b00043f0301d96bd417fdc339
   React-RCTActionSheet: 7f3fa0855c346aa5d7c60f9ced16e067db6d29fa
@@ -917,7 +917,7 @@ SPEC CHECKSUMS:
   RNFBFunctions: 517f2a9fb3f5b9263e2c3d0f3e754cfd2aa5047f
   RNFS: 3ab21fa6c56d65566d1fb26c2228e2b6132e5e32
   RNGestureHandler: 9b7e605a741412e20e13c512738a31bd1611759b
-  RNGoogleSignin: 111fd4792913208f338fe3178005f7a22e490ff9
+  RNGoogleSignin: e64616a4080cf7d83f4b292fad82d174587444e2
   RNKeychain: f75b8c8b2f17d3b2aa1f25b4a0ac5b83d947ff8f
   RNLocalize: 8bc7ebf44e0f18898cc62f0061561d07fabf6ff9
   RNReanimated: ad24db8af24e3fe1b5c462785bc3db8d5baae2ee
@@ -928,7 +928,7 @@ SPEC CHECKSUMS:
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815
   SRSRadialGradient: 49ba49a7a8f257c3fe785c250867b07185d1d01e
-  SwiftAudioEx: 96effa485589c54e8b217993aab656c613b2e9cb
+  SwiftAudioEx: df9d62dcae6c2eca358bc36eb972ebac440cd943
   Yoga: aa0cb45287ebe1004c02a13f279c55a95f1572f4
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
