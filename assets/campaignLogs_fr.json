@@ -1550,6 +1550,26 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+          },
+          {
+            "id": "doy_fewer_resources",
+            "masculine_text": "#name# starts with 3 fewer resources.",
+            "feminine_text": "#name# starts with 3 fewer resources."
+          },
+          {
+            "id": "eztli_fewer_resources",
+            "masculine_text": "#name# starts with 3 fewer resources.",
+            "feminine_text": "#name# starts with 3 fewer resources."
+          },
+          {
+            "id": "hote_fewer_resources",
+            "masculine_text": "#name# starts with 3 fewer resources.",
+            "feminine_text": "#name# starts with 3 fewer resources."
+          },
+          {
             "id": "agenda_5",
             "text": "caché"
           },
@@ -1562,12 +1582,24 @@
             "text": "leurre"
           },
           {
+            "id": "doy_no_mulligan",
+            "text": "leurre"
+          },
+          {
             "id": "final_depth",
             "text": "#X# de profondeur"
           },
           {
+            "id": "hote_no_mulligan",
+            "text": "leurre"
+          },
+          {
             "id": "ichtaca_left_without_you",
             "text": "Ichtaca est partie sans vous."
+          },
+          {
+            "id": "jungle_beckons_reminder",
+            "text": "leurre"
           },
           {
             "id": "listened_to_ichtaca",
@@ -1584,6 +1616,10 @@
           {
             "id": "tasks_completed",
             "text": "#X# ont été accomplies."
+          },
+          {
+            "id": "thc_reminder",
+            "text": "leurre"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -2878,6 +2914,26 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+          },
+          {
+            "id": "doy_fewer_resources",
+            "masculine_text": "#name# starts with 3 fewer resources.",
+            "feminine_text": "#name# starts with 3 fewer resources."
+          },
+          {
+            "id": "eztli_fewer_resources",
+            "masculine_text": "#name# starts with 3 fewer resources.",
+            "feminine_text": "#name# starts with 3 fewer resources."
+          },
+          {
+            "id": "hote_fewer_resources",
+            "masculine_text": "#name# starts with 3 fewer resources.",
+            "feminine_text": "#name# starts with 3 fewer resources."
+          },
+          {
             "id": "agenda_5",
             "text": "caché"
           },
@@ -2890,12 +2946,24 @@
             "text": "leurre"
           },
           {
+            "id": "doy_no_mulligan",
+            "text": "leurre"
+          },
+          {
             "id": "final_depth",
             "text": "#X# de profondeur"
           },
           {
+            "id": "hote_no_mulligan",
+            "text": "leurre"
+          },
+          {
             "id": "ichtaca_left_without_you",
             "text": "Ichtaca est partie sans vous."
+          },
+          {
+            "id": "jungle_beckons_reminder",
+            "text": "leurre"
           },
           {
             "id": "listened_to_ichtaca",
@@ -2904,6 +2972,10 @@
           {
             "id": "tasks_completed",
             "text": "#X# ont été accomplies."
+          },
+          {
+            "id": "thc_reminder",
+            "text": "leurre"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -3009,7 +3081,7 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "possesses_a_diving_suite",
+            "id": "possesses_a_diving_suit",
             "masculine_text": "#name# possède un scaphandre.",
             "feminine_text": "#name# possède un scaphandre."
           },

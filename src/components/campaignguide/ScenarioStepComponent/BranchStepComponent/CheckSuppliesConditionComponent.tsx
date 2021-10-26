@@ -70,6 +70,22 @@ export default function CheckSuppliesConditionComponent({ step, condition, campa
     }
     case 'all': {
       const result = checkSuppliesAllConditionResult(condition, campaignLog);
+      if (condition.show_result) {
+        return (
+          <>
+            <BinaryResult
+              bulletType={step.bullet_type}
+              prompt={step.text}
+              result={!!find(result.investigatorChoices, (values) => !!find(values, x => x === 'true'))}
+            />
+            <InvestigatorResultConditionWrapper
+              result={result}
+              renderOption={renderAllOption}
+              extraArg={undefined}
+            />
+          </>
+        );
+      }
       return (
         <>
           <SetupStepWrapper>

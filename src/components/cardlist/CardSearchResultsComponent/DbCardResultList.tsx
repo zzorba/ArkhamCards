@@ -582,7 +582,7 @@ function useSectionFeed({
   }, [partialItems, cards, showSpoilers, spoilerCardsCount, editSpoilerSettings]);
 
   const feedLoading = useMemo(() => {
-    return !!find(take(visibleCards, 1), c => !cards[c.id]);
+    return (visibleCards.length > 0) && !!find(take(visibleCards, 1), c => !cards[c.id]);
   }, [visibleCards, cards]);
   return {
     feed: items,

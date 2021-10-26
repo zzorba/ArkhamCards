@@ -94,6 +94,15 @@ export function setSortQuotes(value: boolean): SetMiscSettingAction {
   };
 }
 
+
+export function setBeta1(value: boolean): SetMiscSettingAction {
+  return {
+    type: SET_MISC_SETTING,
+    setting: 'beta1',
+    value,
+  };
+}
+
 export function ensureUuid(): EnsureUuidAction {
   return {
     type: ENSURE_UUID,

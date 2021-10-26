@@ -93,6 +93,40 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
     });
   }, [componentId, deck, cards, colors, id]);
 
+
+  const editWeaknessPressed = useCallback(() => {
+    const investigator = deck && cards && cards[deck.deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
+    Navigation.push<EditDeckProps>(componentId, {
+      component: {
+        name: 'Deck.EditAddCards',
+        passProps: {
+          id,
+          weaknessOnly: true,
+        },
+        options: {
+          statusBar: {
+            style: 'light',
+            backgroundColor,
+          },
+          topBar: {
+            title: {
+              text: t`Edit Story Cards`,
+              color: 'white',
+            },
+            backButton: {
+              title: t`Back`,
+              color: 'white',
+            },
+            background: {
+              color: backgroundColor,
+            },
+          },
+        },
+      },
+    });
+  }, [componentId, deck, cards, colors, id]);
+
   const isSpecial = useCallback((card: Card) => {
     return !!(card.code === ACE_OF_RODS_CODE || (deckEditsRef.current && deckEditsRef.current.ignoreDeckLimitSlots[card.code] > 0));
   }, [deckEditsRef]);
@@ -130,13 +164,18 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
           />
         )) }
         <ArkhamButton
+          icon="edit"
+          title={t`Edit Weakness Cards`}
+          onPress={editWeaknessPressed}
+        />
+        <ArkhamButton
           icon="card"
           title={t`Draw Basic Weakness`}
           onPress={showDrawWeakness}
         />
       </>
     );
-  }, [weaknesses, deckEdits, showDrawWeakness, cardPressed]);
+  }, [weaknesses, deckEdits, showDrawWeakness, editWeaknessPressed, cardPressed]);
 
 
   const storyCards = useMemo(() => {

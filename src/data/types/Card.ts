@@ -2,7 +2,7 @@ import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'type
 import { forEach, filter, keys, map, min, omit, find } from 'lodash';
 import { t } from 'ttag';
 
-import { SortType, SORT_BY_COST, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_FACTION_XP_TYPE_COST, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData } from '@actions/types';
+import { SortType, SORT_BY_COST, SORT_BY_CYCLE, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_FACTION_XP_TYPE_COST, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData } from '@actions/types';
 import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, FactionCodeType, TypeCodeType, SkillCodeType, BODY_OF_A_YITHIAN } from '@app_constants';
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
@@ -14,8 +14,9 @@ const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+(\\s\\[per_investigator\\])?\\
 const BONDED_REGEX = new RegExp('.*Bonded\\s*\\((.+?)\\)\\..*');
 const SEAL_REGEX = new RegExp('.*Seal \\(.+\\)\\..*');
 const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all|(X total)) damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror');
-export const SEARCH_REGEX = /["“”‹›‘’«»〞〝〟„＂❛❜❝❞❮❯\(\)'\-\.,]/g;
+export const SEARCH_REGEX = /["“”‹›«»〞〝〟„＂❝❞‘’❛❜‛',‚❮❯\(\)\-\.…]/g;
 
+export const CARD_NUM_COLUMNS = 125;
 function arkham_num(value: number | null | undefined) {
   if (value === null || value === undefined) {
     return '-';
@@ -97,6 +98,7 @@ const HEADER_SELECT = {
   [SORT_BY_ENCOUNTER_SET]: 'c.encounter_code as headerId, c.sort_by_encounter_set_header as headerTitle',
   [SORT_BY_TITLE]: '"0" as headerId',
   [SORT_BY_TYPE]: 'c.sort_by_type as headerId, c.sort_by_type_header as headerTitle',
+  [SORT_BY_CYCLE]: 'c.sort_by_cycle as headerId, c.cycle_name as headerTitle',
 };
 
 export class PartialCard {
@@ -496,6 +498,10 @@ export default class Card {
   public sort_by_encounter_set_header?: string;
   @Column('integer', { nullable: true, select: false })
   public sort_by_pack?: number;
+  // @Column('integer', { nullable: true, select: false })
+  // public sort_by_cycle?: number;
+
+
   @Column('integer', { nullable: true, select: false })
   public browse_visible!: number;
 
@@ -1104,6 +1110,9 @@ export default class Card {
       `${sort_by_faction_header} - ${basic_type_header}`;
 
     const sort_by_pack = pack ? (pack.cycle_position * 100 + pack.position) : -1;
+
+    const sort_by_cycle = (pack ? pack.cycle_position : 100) * 1000 + sort_by_faction * 100 + sort_by_type;
+
     const sort_by_cost_header = (json.cost === null || json.cost === undefined) ? t`Cost: None` : t`Cost: ${json.cost}`;
     const sort_by_encounter_set_header = json.encounter_name ||
       (linked_card && linked_card.encounter_name) ||
@@ -1207,6 +1216,7 @@ export default class Card {
       sort_by_encounter_set_header,
       sort_by_faction_pack_header,
       sort_by_faction_xp_header,
+      sort_by_cycle,
     };
     if (result.type_code === 'story' && result.linked_card && result.linked_card.type_code === 'location') {
       // console.log(`Reversing ${result.name} to ${result.linked_card.name}`);

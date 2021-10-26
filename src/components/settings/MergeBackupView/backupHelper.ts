@@ -73,8 +73,8 @@ export function mergeDecks(cloudDecks: LocalDeck[], state: AppState): DeckMergeR
   const scenarioCount: { [key: string]: number } = {};
   forEach(cloudDecks, deck => {
     if (deck.previousDeckId) {
-      // Part of an upgrade chain, and not the latest.
-      upgradeDecks[deck.previousDeckId.uuid] = deck;
+      // Part of an upgrade chain, and not the first.
+      upgradeDecks[deck.uuid] = deck;
       return;
     }
     let hasUpdate = false;
@@ -84,7 +84,7 @@ export function mergeDecks(cloudDecks: LocalDeck[], state: AppState): DeckMergeR
     let count = 0;
     do {
       count++;
-      switch (deckStatus[currentDeck.uuid]) {
+      switch (deckStatus [currentDeck.uuid]) {
         case CloudMergeStatus.NEW:
           hasNew = true;
           break;

@@ -15,6 +15,7 @@ interface OwnProps {
   large?: boolean;
   color?: 'light' | 'dark';
   circleColor?: 'light'
+  disabledColor?: string
 }
 
 type Props = OwnProps & Omit<TouchableOpacityProps, 'onValueChange'>;
@@ -38,7 +39,7 @@ function getCheckColor(color: 'light' | 'dark' | undefined, colors: ThemeColors)
       return colors.M;
   }
 }
-export default function ArkhamSwitch({ useGestureHandler, value, onValueChange, accessibilityLabel, disabled, large, color, circleColor, ...props }: Props) {
+export default function ArkhamSwitch({ useGestureHandler, disabledColor, value, onValueChange, accessibilityLabel, disabled, large, color, circleColor, ...props }: Props) {
   const { colors } = useContext(StyleContext);
 
   const onPress = useCallback(() => {
@@ -53,20 +54,20 @@ export default function ArkhamSwitch({ useGestureHandler, value, onValueChange, 
         <AppIcon
           size={large ? 34 : 28}
           name={large ? 'circle-thin' : 'check-circle'}
-          color={disabled ? colors.L20 : theCircleColor}
+          color={disabled ? (disabledColor || colors.L20) : theCircleColor}
         />
         { !!value && (
           <View style={large ? styles.largeCheck : styles.check}>
             <AppIcon
               size={large ? 26 : 20}
               name="check"
-              color={disabled ? colors.L20 : checkColor}
+              color={disabled ? (disabledColor || colors.L20) : checkColor}
             />
           </View>
         )}
       </View>
     );
-  }, [disabled, large, value, colors, theCircleColor, checkColor]);
+  }, [disabled, large, value, disabledColor, colors, theCircleColor, checkColor]);
   if (!onValueChange) {
     return content;
   }

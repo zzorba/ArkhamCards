@@ -45,7 +45,7 @@ export default function ChartIconComponent({ x, y, text }: Props) {
       fontFamily="arkhamicons"
       fill={color}
     >
-      { String.fromCharCode(iconGlyphs.current[text === 'neutral' ? 'elder_sign' : text]) }
+      { String.fromCharCode(iconGlyphs.current[text]) }
     </SVGText>
   );
 }

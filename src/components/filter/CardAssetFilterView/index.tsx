@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ScrollView } from 'react-native';
 import { filter, map } from 'lodash';
-import { t } from 'ttag';
+import { t, c } from 'ttag';
 
 import SliderChooser from '../SliderChooser';
 import COLORS from '@styles/colors';
@@ -18,6 +18,7 @@ function splitSlot(value: string): string[] {
 
 export function slotsTranslations() {
   return {
+    none: c('slots').t`None`,
     hand: t`Hand`,
     arcane: t`Arcane`,
     accessory: t`Accessory`,
@@ -94,6 +95,7 @@ const CardAssetFilterView = (props: FilterFunctionProps & NavigationProps) => {
           query={baseQuery}
           tabooSetId={tabooSetId}
           fixedTranslations={slotsTranslations()}
+          includeNone
         />
       ) }
       { hasUses && (

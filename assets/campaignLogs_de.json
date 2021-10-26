@@ -1550,6 +1550,26 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>.",
+            "feminine_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>."
+          },
+          {
+            "id": "doy_fewer_resources",
+            "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger."
+          },
+          {
+            "id": "eztli_fewer_resources",
+            "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger."
+          },
+          {
+            "id": "hote_fewer_resources",
+            "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger."
+          },
+          {
             "id": "agenda_5",
             "text": "versteckt"
           },
@@ -1562,12 +1582,24 @@
             "text": "dummy"
           },
           {
+            "id": "doy_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "final_depth",
             "text": "Tiefenstufe"
           },
           {
+            "id": "hote_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "ichtaca_left_without_you",
             "text": "Ichtaca ist ohne dich gegangen."
+          },
+          {
+            "id": "jungle_beckons_reminder",
+            "text": "dummy"
           },
           {
             "id": "listened_to_ichtaca",
@@ -1584,6 +1616,10 @@
           {
             "id": "tasks_completed",
             "text": "#X# Aufgaben wurden abgeschlossen"
+          },
+          {
+            "id": "thc_reminder",
+            "text": "dummy"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -2885,6 +2921,26 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>.",
+            "feminine_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>."
+          },
+          {
+            "id": "doy_fewer_resources",
+            "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger."
+          },
+          {
+            "id": "eztli_fewer_resources",
+            "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger."
+          },
+          {
+            "id": "hote_fewer_resources",
+            "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger."
+          },
+          {
             "id": "agenda_5",
             "text": "versteckt"
           },
@@ -2897,12 +2953,24 @@
             "text": "dummy"
           },
           {
+            "id": "doy_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "final_depth",
             "text": "Tiefenstufe"
           },
           {
+            "id": "hote_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "ichtaca_left_without_you",
             "text": "Ichtaca ist ohne dich gegangen."
+          },
+          {
+            "id": "jungle_beckons_reminder",
+            "text": "dummy"
           },
           {
             "id": "listened_to_ichtaca",
@@ -2911,6 +2979,10 @@
           {
             "id": "tasks_completed",
             "text": "#X# Aufgaben wurden abgeschlossen"
+          },
+          {
+            "id": "thc_reminder",
+            "text": "dummy"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -3023,7 +3095,7 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "possesses_a_diving_suite",
+            "id": "possesses_a_diving_suit",
             "masculine_text": "#name# besitzt einen Taucheranzug.",
             "feminine_text": "#name# besitzt einen Taucheranzug."
           },

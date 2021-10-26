@@ -3,35 +3,48 @@ import { StyleSheet, Text, View } from 'react-native';
 import { upperFirst } from 'lodash';
 
 import { CampaignLogEntry } from '@data/scenario/GuidedCampaignLog';
-import space from '@styles/space';
+import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import AppIcon from '@icons/AppIcon';
 
 interface Props {
   text: string;
+  icon?: string;
   crossedOut?: boolean;
   entry: CampaignLogEntry;
   decoration?: 'circle';
   button?: React.ReactNode;
+  first?: boolean;
+  last?: boolean;
 }
 
-export default function TextEntryComponent({ text, crossedOut, entry, decoration, button }: Props) {
-  const { typography } = useContext(StyleContext);
+export default function TextEntryComponent({ text, icon, crossedOut, entry, decoration, button, first, last }: Props) {
+  const { colors, typography } = useContext(StyleContext);
   const actualText = entry.type === 'count' ?
     text.replace('#X#', `${entry.count}`) :
     text;
   return (
-    <View style={styles.wrapper}>
-      <Text style={[
-        typography.large,
-        space.marginBottomS,
-        crossedOut ? typography.strike : undefined,
-        decoration === 'circle' ? typography.underline : undefined,
-        decoration === 'circle' ? typography.bold : undefined,
-        { flex: 1 },
-      ]}>
-        { upperFirst(actualText) }
-      </Text>
-      { !!button && button}
+    <View style={icon ? [
+      { backgroundColor: colors.L20 },
+      space.paddingSideS,
+      first ? { borderTopLeftRadius: 4, borderTopRightRadius: 4, marginTop: xs } : undefined,
+      last ? { borderBottomLeftRadius: 4, borderBottomRightRadius: 4, marginBottom: s } : undefined,
+    ] : undefined}>
+      <View style={[styles.wrapper, space.paddingTopS, space.paddingBottomS, !last && icon ? { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined]}>
+        { !!icon && <View style={space.paddingRightS}><AppIcon name={icon} size={36} color={colors.M} /></View> }
+        <Text style={[
+          icon ? typography.menuText : typography.large,
+          icon ? undefined : space.marginBottomS,
+          icon ? { color: colors.D20 } : undefined,
+          crossedOut ? typography.strike : undefined,
+          decoration === 'circle' ? typography.underline : undefined,
+          decoration === 'circle' ? typography.bold : undefined,
+          { flex: 1 },
+        ]}>
+          { upperFirst(actualText) }
+        </Text>
+        { !!button && button}
+      </View>
     </View>
   );
 }

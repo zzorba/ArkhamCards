@@ -289,13 +289,12 @@ export default class GuidedCampaignLog {
                 numberInput && numberInput.length ? numberInput[0] : undefined
               );
               break;
-            case 'campaign_log_count': {
+            case 'campaign_log_count':
               this.handleCampaignLogCountEffect(
                 effect,
                 numberInput && numberInput.length ? numberInput[0] : undefined
               );
               break;
-            }
             case 'campaign_log_cards':
               this.handleCampaignLogCardsEffect(effect, input, numberInput);
               break;
@@ -498,6 +497,30 @@ export default class GuidedCampaignLog {
     return flatMap(section.entries, entry => {
       if (entry.id === id && entry.type === 'card') {
         return map(entry.cards || [], card => card.card);
+      }
+      return [];
+    });
+  }
+
+  allCardCounts(sectionId: string, id?: string): number[] | undefined {
+    const section = this.sections[sectionId];
+    if (!section) {
+      return undefined;
+    }
+    if (!id) {
+      return flatMap(section.entries, entry => {
+        if (entry.type === 'card') {
+          return map(entry.cards || [], card => card.count);
+        }
+        return [];
+      });
+    }
+    if (section.crossedOut[id]) {
+      return undefined;
+    }
+    return flatMap(section.entries, entry => {
+      if (entry.id === id && entry.type === 'card') {
+        return map(entry.cards || [], card => card.count);
       }
       return [];
     });
@@ -1272,12 +1295,16 @@ export default class GuidedCampaignLog {
       const count = section.count;
       switch (effect.operation) {
         case 'add':
-        case 'add_input':
           section.count = count + value;
           break;
+        case 'add_input':
+          section.count = count + (numberInput || 0);
+          break;
         case 'set':
-        case 'set_input':
           section.count = value;
+          break;
+        case 'set_input':
+          section.count = numberInput || 0;
           break;
       }
       this.countSections[effect.section] = section;

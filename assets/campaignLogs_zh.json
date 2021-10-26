@@ -1550,6 +1550,26 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+          },
+          {
+            "id": "doy_fewer_resources",
+            "masculine_text": "#name# starts with 3 fewer resources.",
+            "feminine_text": "#name# starts with 3 fewer resources."
+          },
+          {
+            "id": "eztli_fewer_resources",
+            "masculine_text": "#name# starts with 3 fewer resources.",
+            "feminine_text": "#name# starts with 3 fewer resources."
+          },
+          {
+            "id": "hote_fewer_resources",
+            "masculine_text": "#name# starts with 3 fewer resources.",
+            "feminine_text": "#name# starts with 3 fewer resources."
+          },
+          {
             "id": "agenda_5",
             "text": "hidden"
           },
@@ -1562,12 +1582,24 @@
             "text": "dummy"
           },
           {
+            "id": "doy_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "final_depth",
             "text": "深度等級#X#"
           },
           {
+            "id": "hote_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "ichtaca_left_without_you",
             "text": "伊塔卡獨自離開。"
+          },
+          {
+            "id": "jungle_beckons_reminder",
+            "text": "dummy"
           },
           {
             "id": "listened_to_ichtaca",
@@ -1584,6 +1616,10 @@
           {
             "id": "tasks_completed",
             "text": "已完成#X#個任務"
+          },
+          {
+            "id": "thc_reminder",
+            "text": "dummy"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -2878,6 +2914,26 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+          },
+          {
+            "id": "doy_fewer_resources",
+            "masculine_text": "#name# starts with 3 fewer resources.",
+            "feminine_text": "#name# starts with 3 fewer resources."
+          },
+          {
+            "id": "eztli_fewer_resources",
+            "masculine_text": "#name# starts with 3 fewer resources.",
+            "feminine_text": "#name# starts with 3 fewer resources."
+          },
+          {
+            "id": "hote_fewer_resources",
+            "masculine_text": "#name# starts with 3 fewer resources.",
+            "feminine_text": "#name# starts with 3 fewer resources."
+          },
+          {
             "id": "agenda_5",
             "text": "hidden"
           },
@@ -2890,12 +2946,24 @@
             "text": "dummy"
           },
           {
+            "id": "doy_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "final_depth",
             "text": "深度等級#X#"
           },
           {
+            "id": "hote_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "ichtaca_left_without_you",
             "text": "伊塔卡獨自離開。"
+          },
+          {
+            "id": "jungle_beckons_reminder",
+            "text": "dummy"
           },
           {
             "id": "listened_to_ichtaca",
@@ -2904,6 +2972,10 @@
           {
             "id": "tasks_completed",
             "text": "已完成#X#個任務"
+          },
+          {
+            "id": "thc_reminder",
+            "text": "dummy"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -3009,7 +3081,7 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "possesses_a_diving_suite",
+            "id": "possesses_a_diving_suit",
             "masculine_text": "#name# possesses a diving suit.",
             "feminine_text": "#name# possesses a diving suit."
           },

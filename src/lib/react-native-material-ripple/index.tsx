@@ -78,15 +78,6 @@ export default class RippleComponent extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
 
-    this.onLayout = this.onLayout.bind(this);
-    this.onPress = this.onPress.bind(this);
-    this.onPressIn = this.onPressIn.bind(this);
-    this.onPressOut = this.onPressOut.bind(this);
-    this.onLongPress = this.onLongPress.bind(this);
-    this.onAnimationEnd = this.onAnimationEnd.bind(this);
-
-    this.renderRipple = this.renderRipple.bind(this);
-
     this.unique = 0;
     this.mounted = false;
 
@@ -105,7 +96,7 @@ export default class RippleComponent extends PureComponent<Props, State> {
     this.mounted = false;
   }
 
-  onLayout(event: LayoutChangeEvent) {
+  _onLayout = (event: LayoutChangeEvent) => {
     const { width, height } = event.nativeEvent.layout;
     const { onLayout } = this.props;
 
@@ -114,9 +105,9 @@ export default class RippleComponent extends PureComponent<Props, State> {
     }
 
     this.setState({ width, height });
-  }
+  };
 
-  onPress(event: GestureResponderEvent) {
+  _onPress = (event: GestureResponderEvent) => {
     const { ripples } = this.state;
     const {
       onPress,
@@ -129,9 +120,9 @@ export default class RippleComponent extends PureComponent<Props, State> {
         requestAnimationFrame(() => onPress(event));
       }
     }
-  }
+  };
 
-  onLongPress(event: GestureResponderEvent) {
+  _onLongPress = (event: GestureResponderEvent) => {
     const { onLongPress } = this.props;
 
     if (typeof onLongPress === 'function') {
@@ -139,30 +130,30 @@ export default class RippleComponent extends PureComponent<Props, State> {
     }
 
     this.startRipple(event);
-  }
+  };
 
-  onPressIn(event: GestureResponderEvent) {
+  _onPressIn = (event: GestureResponderEvent) => {
     const { onPressIn } = this.props;
 
     if (typeof onPressIn === 'function') {
       onPressIn(event);
     }
     this.startRipple(event);
-  }
+  };
 
-  onPressOut(event: GestureResponderEvent) {
+  _onPressOut = (event: GestureResponderEvent) => {
     const { onPressOut } = this.props;
 
     if (typeof onPressOut === 'function') {
       onPressOut(event);
     }
-  }
+  };
 
-  onAnimationEnd() {
+  _onAnimationEnd = () => {
     if (this.mounted) {
       this.setState(({ ripples }) => ({ ripples: ripples.slice(1) }));
     }
-  }
+  };
 
   startRipple(event: GestureResponderEvent) {
     const { width, height } = this.state;
@@ -202,12 +193,12 @@ export default class RippleComponent extends PureComponent<Props, State> {
         useNativeDriver: true,
       });
 
-    animation.start(this.onAnimationEnd);
+    animation.start(this._onAnimationEnd);
 
     this.setState(({ ripples }) => ({ ripples: ripples.concat(ripple) }));
   }
 
-  renderRipple({ unique, progress, locationX, locationY, R }: Ripple) {
+  _renderRipple = ({ unique, progress, locationX, locationY, R }: Ripple) => {
     const {
       rippleColor = DEFAULT_PROPS.rippleColor,
       rippleOpacity = DEFAULT_PROPS.rippleOpacity,
@@ -237,7 +228,7 @@ export default class RippleComponent extends PureComponent<Props, State> {
     return (
       <Animated.View style={[styles.ripple, rippleStyle]} key={unique} />
     );
-  }
+  };
 
   render() {
     const { ripples } = this.state;
@@ -290,12 +281,12 @@ export default class RippleComponent extends PureComponent<Props, State> {
       accessible,
       accessibilityHint,
       accessibilityLabel,
-      onLayout: this.onLayout,
-      onPress: this.onPress,
-      onPressIn: this.onPressIn,
-      onPressOut: this.onPressOut,
+      onLayout: this._onLayout,
+      onPress: this._onPress,
+      onPressIn: this._onPressIn,
+      onPressOut: this._onPressOut,
       onLongPress: onLongPress ?
-        this.onLongPress :
+        this._onLongPress :
         undefined,
 
       ...(Platform.OS !== 'web' ? { nativeID } : null),
@@ -311,7 +302,7 @@ export default class RippleComponent extends PureComponent<Props, State> {
         <Animated.View {...props} style={style} pointerEvents="box-only">
           {children}
           <View style={[styles.container, containerStyle]}>
-            { ripples.map(this.renderRipple) }
+            { ripples.map(this._renderRipple) }
           </View>
         </Animated.View>
       </TouchableWithoutFeedback>

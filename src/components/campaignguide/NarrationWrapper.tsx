@@ -30,6 +30,14 @@ export async function playNarrationTrack(narrationId: string) {
   }
 }
 
+function artist(lang: string) {
+  switch (lang) {
+    case 'ru': return 'Несмолкающие голоса';
+    case 'es': 'Voces disonantes';
+    default: return 'Dissonant Voices';
+  }
+}
+
 export async function setNarrationQueue(queue: NarrationTrack[]) {
   const trackPlayer = await narrationPlayer();
   const accessToken = await getAccessToken();
@@ -41,11 +49,11 @@ export async function setNarrationQueue(queue: NarrationTrack[]) {
 
   const oldTrackIds: string[] = map(oldTracks, (track) => track.narrationId);
   const newTracks: Track[] = map(queue, (track): Track => {
-    if (track.lang) {
+    if (track.lang && track.lang !== 'dv') {
       return {
         narrationId: track.id,
         title: track.name,
-        artist: 'Arkham Cards',
+        artist: artist(track.lang),
         album: track.scenarioName,
         artwork: track.campaignCode,
         url: `https://static.arkhamcards.com/audio/${track.lang}/${track.id}.mp3`,
@@ -128,12 +136,6 @@ interface PlayerProps {
   style?: ViewStyle;
 }
 
-interface PlayerState {
-  track: Track | null;
-  state: State | null;
-}
-
-
 function ProgressView() {
   const { colors } = useContext(StyleContext);
   const { position, duration } = useProgress(1000);
@@ -160,7 +162,7 @@ function ProgressView() {
 async function replay() {
   try {
     const trackPlayer = await narrationPlayer();
-    await trackPlayer.seekTo((await trackPlayer.getPosition()) - 30);
+    await trackPlayer.seekTo((await trackPlayer.getPosition()) - 10);
   } catch (e) {
     console.log(e);
   }
@@ -430,11 +432,11 @@ interface NarratorContainerProps {
 }
 
 export default function NarrationWrapper({ children }: NarratorContainerProps) {
-  const [hasDV] = useAudioAccess();
+  const [hasAudio] = useAudioAccess();
   return (
     <SafeAreaView style={styles.container}>
       { children }
-      { !!hasDV && <PlayerView /> }
+      { !!hasAudio && <PlayerView /> }
     </SafeAreaView>
   );
 }

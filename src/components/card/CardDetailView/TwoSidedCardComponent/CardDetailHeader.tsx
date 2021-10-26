@@ -168,7 +168,7 @@ function FactionIcon({ card, linked }: { card: Card, linked: boolean }) {
     return (
       <View style={styles.factionIcon}>
         { (!!card.faction_code && (CORE_FACTION_CODES.indexOf(card.faction_code) !== -1 || card.faction_code === 'neutral')) &&
-          <ArkhamIcon name={card.faction_code === 'neutral' ? 'elder_sign' : card.faction_code} size={ICON_SIZE + 4} color={color} /> }
+          <ArkhamIcon name={card.faction_code} size={ICON_SIZE + 4} color={color} /> }
       </View>
     );
   }

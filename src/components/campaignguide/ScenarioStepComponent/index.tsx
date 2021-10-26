@@ -48,7 +48,7 @@ function ScenarioStepComponentContent({
   const { campaignGuide, campaignId } = useContext(CampaignGuideContext);
   if (!step.type) {
     return (
-      <NarrationStepComponent narration={step.narration}>
+      <NarrationStepComponent narration={step.narration} hideTitle={!!step.title}>
         <GenericStepComponent step={step} />
       </NarrationStepComponent>
     );
@@ -60,7 +60,7 @@ function ScenarioStepComponentContent({
       );
     case 'branch':
       return (
-        <NarrationStepComponent narration={step.narration}>
+        <NarrationStepComponent narration={step.narration} hideTitle={!!step.title}>
           <BranchStepComponent
             step={step}
             campaignLog={campaignLog}
@@ -69,7 +69,7 @@ function ScenarioStepComponentContent({
       );
     case 'story':
       return (
-        <NarrationStepComponent narration={step.narration}>
+        <NarrationStepComponent narration={step.narration} hideTitle={!!step.title}>
           <View style={border && !step.title ? styles.extraTopPadding : {}}>
             <StoryStepComponent
               step={step}
@@ -104,7 +104,7 @@ function ScenarioStepComponentContent({
       );
     case 'input':
       return (
-        <NarrationStepComponent narration={step.narration}>
+        <NarrationStepComponent narration={step.narration} hideTitle={!!step.title}>
           <InputStepComponent
             componentId={componentId}
             step={step}

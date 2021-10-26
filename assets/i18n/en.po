@@ -851,19 +851,19 @@ msgstr ""
 msgid "Adjust Weakness Set"
 msgstr ""
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr ""
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr ""
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr ""
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr ""
 
@@ -1824,21 +1824,6 @@ msgstr ""
 
 #, javascript-format
 msgid "${ supplyName } to use (${ desiredCount })"
-msgstr ""
-
-#, javascript-format
-msgid "(${ supply.cost } supply point each)"
-msgid_plural "(${ supply.cost } supply points each)"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "(${ supply.cost } supply point)"
-msgid_plural "(${ supply.cost } supply points)"
-msgstr[0] ""
-msgstr[1] ""
-
-#, javascript-format
-msgid "${ spent } of ${ total }"
 msgstr ""
 
 msgid "Too many"
@@ -3908,7 +3893,7 @@ msgstr ""
 
 msgid ""
 "Campaigns can now be 'uploaded' so they can be synced between devices or "
-"shared with friendns."
+"shared with friends."
 msgstr ""
 
 msgid "Welcome"
@@ -4023,7 +4008,7 @@ msgid ""
 msgstr ""
 
 #, javascript-format
-msgid " (new total: ${ total })"
+msgid "(new total: ${ total })"
 msgstr ""
 
 msgid "Earned XP:"
@@ -4055,9 +4040,6 @@ msgstr ""
 msgid ""
 "Now that your upgrade has been saved, when visiting the deck be sure to use "
 "the 'Edit' button when making card changes."
-msgstr ""
-
-msgid "Choose a deck for this investigator"
 msgstr ""
 
 msgid "What exactly does the app handle?"
@@ -4366,10 +4348,53 @@ msgstr ""
 msgid "You cannot have more than 5 level 0 Rogue cards"
 msgstr ""
 
-msgid "Sign into Arkhan Cards on the Settings tab to enable"
+msgid "Sign into Arkham Cards on the Settings tab to enable"
 msgstr ""
 
 msgid "Asset: Hand x2. Arcane"
+msgstr ""
+
+#, javascript-format
+msgid "${ spent } of ${ supplyIcon } ${ total }"
+msgstr ""
+
+msgid "Choose deck"
+msgstr ""
+
+msgid "Frost"
+msgstr ""
+
+msgid "Database reset"
+msgstr ""
+
+msgid "Please close and restart the app"
+msgstr ""
+
+msgid "Reset card database"
+msgstr ""
+
+msgid "Mythos Busters"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"This app is made possible by the continued support of our fans on Patreon "
+"and the ${ mythosBustersLink } podcast."
+msgstr ""
+
+msgid ""
+"This app is made possible by the continued support of our fans on ${ "
+"patreonLink } and the ${ mythosBustersLink } podcast."
+msgstr ""
+
+msgid ""
+"The card database has been reset.\n"
+"\n"
+"Please close the app and restart it to trigger a full sync of card data."
+msgstr ""
+
+#, javascript-format
+msgid "Sqlite version: ${ sqliteVersion }"
 msgstr ""
 
 msgctxt "masculine"
@@ -5575,6 +5600,70 @@ msgctxt "trait"
 msgid "Zoog"
 msgstr ""
 
+msgctxt "trait"
+msgid "AI"
+msgstr ""
+
+msgctxt "trait"
+msgid "Blessed?"
+msgstr ""
+
+msgctxt "trait"
+msgid "Broken"
+msgstr ""
+
+msgctxt "trait"
+msgid "Card"
+msgstr ""
+
+msgctxt "trait"
+msgid "Entrepreneur"
+msgstr ""
+
+msgctxt "trait"
+msgid "Falcon Point"
+msgstr ""
+
+msgctxt "trait"
+msgid "Lair"
+msgstr ""
+
+msgctxt "trait"
+msgid "Nostalgia II"
+msgstr ""
+
+msgctxt "trait"
+msgid "Retired"
+msgstr ""
+
+msgctxt "trait"
+msgid "Royalty"
+msgstr ""
+
+msgctxt "trait"
+msgid "Saga"
+msgstr ""
+
+msgctxt "trait"
+msgid "Shadow"
+msgstr ""
+
+msgctxt "trait"
+msgid "Synergy"
+msgstr ""
+
+msgctxt "trait"
+msgid "Unbroken"
+msgstr ""
+
+msgctxt "trait"
+msgid "Wonderland"
+msgstr ""
+
+msgctxt "trait"
+msgid "Y-ha'nthlei"
+msgstr ""
+
 #, javascript-format
 msgctxt "filter"
 msgid "${ cycleNames[cycle_position] } Cycle"
@@ -5610,6 +5699,10 @@ msgstr ""
 
 msgctxt "action"
 msgid "Resource"
+msgstr ""
+
+msgctxt "slots"
+msgid "None"
 msgstr ""
 
 msgctxt "Draw Cards"

@@ -34,7 +34,6 @@ import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
 import { fetchPrivateDeck } from '@components/deck/actions';
 import EncounterIcon from '@icons/EncounterIcon';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
-import { TINY_PHONE } from '@styles/sizes';
 import { useDispatch } from 'react-redux';
 import { useDeck } from '@data/hooks';
 
@@ -105,22 +104,17 @@ function CounterRow({
 }) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
   const description = useMemo(() => {
-    if (!editable) {
+    if (!editable || hideTotal) {
       return null;
     }
     return (
       <View style={[styles.startRow, space.paddingRightS]}>
-        <Text style={typography.text}>
-          { count }
+        <Text style={[typography.small, { color: colors.lightText }]}>
+          { t`(new total: ${total})` }
         </Text>
-        { !hideTotal && (
-          <Text style={[typography.small, { color: colors.lightText }]}>
-            { t` (new total: ${total})` }
-          </Text>
-        ) }
       </View>
     );
-  }, [editable, total, colors, typography, hideTotal, count]);
+  }, [editable, total, colors, typography, hideTotal]);
   return (
     <View style={[
       styles.betweenRow,
@@ -139,16 +133,15 @@ function CounterRow({
             { title }
           </Text>
         </View>
-        { !!TINY_PHONE && <View style={space.paddingTopXs}>{description}</View> }
+        <View style={space.paddingTopXs}>{description}</View>
       </View>
       <View style={styles.endRow}>
-        { !TINY_PHONE && description }
         { editable ? (
           <PlusMinusButtons
             count={total}
             countRender={(
               <Text style={[typography.counter, typography.center, { minWidth: 28 }]}>
-                { count }
+                {!hideTotal && count > 0 && editable ? '+' : ''}{ count }
               </Text>
             )}
             onIncrement={inc}
@@ -547,7 +540,7 @@ function UpgradeDeckRow({
             </Text>
             <View style={[space.paddingTopS, styles.startRow]}>
               { !deck ?
-                <ActionButton leftIcon="deck" color="dark" title={t`Choose a deck for this investigator`} onPress={selectDeck} /> :
+                <ActionButton leftIcon="deck" color="dark" title={t`Choose deck`} onPress={selectDeck} /> :
                 deckButton
               }
             </View>

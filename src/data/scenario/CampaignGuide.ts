@@ -354,7 +354,8 @@ export default class CampaignGuide {
       id.encodedScenarioId,
       scenario,
       this,
-      campaignLog
+      campaignLog,
+      !!standalone
     );
     if (!campaignState.startedScenario(id.encodedScenarioId)) {
       if (

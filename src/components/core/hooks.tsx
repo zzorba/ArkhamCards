@@ -22,13 +22,9 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', handler);
-
+    const sub = BackHandler.addEventListener('hardwareBackPress', handler);
     return () => {
-      BackHandler.removeEventListener(
-        'hardwareBackPress',
-        handler
-      );
+      sub.remove();
     };
   }, [handler]);
 }
@@ -592,19 +588,22 @@ export function usePressCallback(callback: undefined | (() => void), bufferTime:
 }
 
 export function useInterval(callback: () => void, delay: number) {
-  const savedCallback = useRef<() => void>();
+  const savedCallback = useRef<() => void>(callback);
+  savedCallback.current = callback;
 
-  useEffect(() => {
-    savedCallback.current = callback;
-  }, [callback]);
+  const wrappedCallback = useCallback(() => {
+    if (savedCallback.current) {
+      savedCallback.current();
+    }
+  }, []);
 
   useEffect(() => {
     if (!delay) {
       return;
     }
-    const id = setInterval(savedCallback.current, delay);
+    const id = setInterval(wrappedCallback, delay);
     return () => clearInterval(id);
-  }, [delay]);
+  }, [delay, wrappedCallback]);
 }
 
 /*

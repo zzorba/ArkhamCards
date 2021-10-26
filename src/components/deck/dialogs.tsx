@@ -240,6 +240,7 @@ export function useAlertDialog(forceVerticalButtons?: boolean): [React.ReactNode
 interface SimpleTextDialogOptions {
   title: string;
   value: string;
+  prompt?: string;
   placeholder?: string;
   onValueChange?: (value: string) => void;
   onValidate?: (value: string) => Promise<string | undefined>;
@@ -247,6 +248,7 @@ interface SimpleTextDialogOptions {
 export function useSimpleTextDialog({
   title,
   value,
+  prompt,
   onValueChange,
   onValidate,
   placeholder,
@@ -259,6 +261,7 @@ export function useSimpleTextDialog({
   const [error, setError] = useState<string | undefined>(undefined);
   const [submitting, setSubmitting] = useState(false);
   const textInputRef = useRef<TextInput>(null);
+  const { typography } = useContext(StyleContext);
   useEffect(() => {
     setLiveValue(value);
   }, [value, setLiveValue]);
@@ -296,18 +299,22 @@ export function useSimpleTextDialog({
   }, [doSubmit, liveValue]);
   const content = useMemo(() => {
     return (
-      <View style={space.marginS}>
-        <NewDialog.TextInput
-          textInputRef={textInputRef}
-          value={liveValue}
-          error={error}
-          placeholder={placeholder}
-          onChangeText={setLiveValue}
-          onSubmit={doSubmit}
-        />
-      </View>
+      <>
+
+        { !!prompt && <View style={space.marginS}><Text style={typography.text}>{prompt}</Text></View>}
+        <View style={space.marginS}>
+          <NewDialog.TextInput
+            textInputRef={textInputRef}
+            value={liveValue}
+            error={error}
+            placeholder={placeholder}
+            onChangeText={setLiveValue}
+            onSubmit={doSubmit}
+          />
+        </View>
+      </>
     );
-  }, [setLiveValue, doSubmit, placeholder, liveValue, error]);
+  }, [setLiveValue, doSubmit, placeholder, prompt, typography, liveValue, error]);
   const { setVisible, visible, dialog } = useDialog({
     title,
     allowDismiss: true,

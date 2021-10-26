@@ -1,8 +1,9 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { forEach } from 'lodash';
 import {
   Alert,
   Keyboard,
+  Platform,
   SafeAreaView,
   ScrollView,
   Share,
@@ -13,12 +14,12 @@ import Crashes from 'appcenter-crashes';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { DISSONANT_VOICES_LOGIN, Pack } from '@actions/types';
+import { CARD_SET_SCHEMA_VERSION, DISSONANT_VOICES_LOGIN, Pack } from '@actions/types';
 import { clearDecks } from '@actions';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import Card from '@data/types/Card';
 import { getBackupData, getAllPacks, getLangChoice, AppState } from '@reducers';
-import { fetchCards } from '@components/card/actions';
+import { requestFetchCards } from '@components/card/actions';
 import SettingsItem from './SettingsItem';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import StyleContext from '@styles/StyleContext';
@@ -26,7 +27,9 @@ import { saveAuthResponse } from '@lib/dissonantVoices';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useApolloClient } from '@apollo/client';
-import ApolloClientContext from '@data/apollo/ApolloClientContext';
+import { useSimpleTextDialog } from '@components/deck/dialogs';
+import { setBeta1 } from './actions';
+import { ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID } from '@app_constants';
 
 
 function goOffline() {
@@ -37,9 +40,18 @@ function goOnline() {
   database().goOnline();
 }
 
+function dummyOnPress() {
+  // intentionally blank
+}
+
+const THE_CODE = '0451';
+
 export default function DiagnosticsView() {
   const [dialog, showTextEditDialog] = useTextEditDialog();
   const { db } = useContext(DatabaseContext);
+  const [schemaCleared, setSchemaCleared] = useState(false);
+  const [sqliteVersion, setSqliteVesion] = useState(t`Loading`);
+  const hasBetaAccess = useSelector((state: AppState) => !!state.settings.beta1);
   const { colors } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const dispatch = useDispatch();
@@ -47,6 +59,34 @@ export default function DiagnosticsView() {
   const state = useSelector((state: AppState) => state);
   const packs = useSelector(getAllPacks);
   const langChoice = useSelector(getLangChoice);
+
+  useEffect(() => {
+    let canceled = false;
+    db.sqliteVersion().then((versioned) => {
+      if (!canceled) {
+        setSqliteVesion(`${versioned.major}.${versioned.minor}.${versioned.patch}`);
+      }
+    });
+    return () => {
+      canceled = true;
+    };
+  }, [db, setSqliteVesion]);
+
+  const submitBetaCode = useCallback(async(code: string) => {
+    if (code === THE_CODE) {
+      dispatch(setBeta1(true));
+      return undefined;
+    }
+    return 'That code is not correct. Contact arkhamcards@gmail.com to join the beta testing program.';
+  }, [dispatch]);
+
+  const { dialog: betaDialog, showDialog: showBetaDialog } = useSimpleTextDialog({
+    title: `Beta test program`,
+    value: '',
+    prompt: 'If you are interested in helping to test unreleased features, please contact arkhamcards@gmail.com.\n\nThese features are still in active development, and opting in might result in your campaign data being lost.\n\nBe sure to make a backup in advance and report any bugs you find.',
+    onValidate: submitBetaCode,
+    placeholder: 'Enter access code here',
+  });
 
   const exportCampaignData = useCallback(() => {
     Alert.alert(
@@ -87,10 +127,9 @@ export default function DiagnosticsView() {
     await (await db.tabooSets()).createQueryBuilder().delete().execute();
   }, [db]);
   const apollo = useApolloClient();
-  const { anonClient } = useContext(ApolloClientContext);
   const doSyncCards = useCallback(() => {
-    dispatch(fetchCards(db, anonClient, lang, langChoice));
-  }, [dispatch, lang, langChoice, db, anonClient]);
+    dispatch(requestFetchCards(lang, langChoice));
+  }, [dispatch, lang, langChoice]);
 
   const clearCache = useCallback(async() => {
     dispatch(clearDecks());
@@ -162,13 +201,21 @@ export default function DiagnosticsView() {
     );
   }, [showTextEditDialog, dispatch]);
 
+  const clearCardSchema = useCallback(() => {
+    dispatch({
+      type: CARD_SET_SCHEMA_VERSION,
+      schemaVersion: 1,
+    });
+    setSchemaCleared(true);
+    Alert.alert(t`Database reset`, t`The card database has been reset.\n\nPlease close the app and restart it to trigger a full sync of card data.`);
+  }, [dispatch]);
+
   const debugSection = useMemo(() => {
     if (!__DEV__) {
       return null;
     }
     return (
       <>
-        <CardSectionHeader section={{ title: t`Debug` }} />
         <SettingsItem
           onPress={crash}
           text={'Crash'}
@@ -203,19 +250,39 @@ export default function DiagnosticsView() {
           onPress={exportCampaignData}
           text={t`Export diagnostic data`}
         />
+        { Platform.OS === 'android' && ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID && (
+          <>
+            <CardSectionHeader section={{ title: t`Beta testing` }} />
+            <SettingsItem
+              onPress={showBetaDialog}
+              text={hasBetaAccess ? 'Enabled' : 'Enter access code'}
+              disabled={hasBetaAccess}
+            />
+          </>
+        ) }
         <CardSectionHeader section={{ title: t`Caches` }} />
         <SettingsItem
           onPress={clearCache}
           text={t`Clear cache`}
         />
+        { !schemaCleared && (
+          <SettingsItem
+            disabled={cardsLoading}
+            onPress={clearCardCache}
+            text={cardsLoading ? t`Loading` : t`Clear card cache`}
+          />
+        ) }
         <SettingsItem
-          disabled={cardsLoading}
-          onPress={clearCardCache}
-          text={cardsLoading ? t`Loading` : t`Clear card cache`}
+          disabled={schemaCleared}
+          onPress={clearCardSchema}
+          text={schemaCleared ? t`Please close and restart the app` : t`Reset card database`}
         />
+        <CardSectionHeader section={{ title: t`Debug` }} />
+        <SettingsItem text={t`Sqlite version: ${sqliteVersion}`} onPress={dummyOnPress} />
         { debugSection }
       </ScrollView>
       { dialog }
+      { betaDialog }
     </SafeAreaView>
   );
 }

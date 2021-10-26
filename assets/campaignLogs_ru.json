@@ -1550,6 +1550,26 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>.",
+            "feminine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>."
+          },
+          {
+            "id": "doy_fewer_resources",
+            "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
+          },
+          {
+            "id": "eztli_fewer_resources",
+            "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
+          },
+          {
+            "id": "hote_fewer_resources",
+            "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
+          },
+          {
             "id": "agenda_5",
             "text": "hidden"
           },
@@ -1562,12 +1582,24 @@
             "text": "dummy"
           },
           {
+            "id": "doy_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "final_depth",
             "text": "Глубина: #X#"
           },
           {
+            "id": "hote_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "ichtaca_left_without_you",
             "text": "Ичтака ушла без вас."
+          },
+          {
+            "id": "jungle_beckons_reminder",
+            "text": "dummy"
           },
           {
             "id": "listened_to_ichtaca",
@@ -1584,6 +1616,10 @@
           {
             "id": "tasks_completed",
             "text": "Выполнено #X# пунктов"
+          },
+          {
+            "id": "thc_reminder",
+            "text": "dummy"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -2878,6 +2914,26 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>.",
+            "feminine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>."
+          },
+          {
+            "id": "doy_fewer_resources",
+            "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
+          },
+          {
+            "id": "eztli_fewer_resources",
+            "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
+          },
+          {
+            "id": "hote_fewer_resources",
+            "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
+          },
+          {
             "id": "agenda_5",
             "text": "hidden"
           },
@@ -2890,12 +2946,24 @@
             "text": "dummy"
           },
           {
+            "id": "doy_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "final_depth",
             "text": "Глубина: #X#"
           },
           {
+            "id": "hote_no_mulligan",
+            "text": "dummy"
+          },
+          {
             "id": "ichtaca_left_without_you",
             "text": "Ичтака ушла без вас."
+          },
+          {
+            "id": "jungle_beckons_reminder",
+            "text": "dummy"
           },
           {
             "id": "listened_to_ichtaca",
@@ -2904,6 +2972,10 @@
           {
             "id": "tasks_completed",
             "text": "Выполнено #X# пунктов"
+          },
+          {
+            "id": "thc_reminder",
+            "text": "dummy"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -3009,7 +3081,7 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "possesses_a_diving_suite",
+            "id": "possesses_a_diving_suit",
             "masculine_text": "#name# possesses a diving suit.",
             "feminine_text": "#name# possesses a diving suit."
           },

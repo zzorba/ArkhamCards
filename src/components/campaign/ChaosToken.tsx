@@ -135,7 +135,7 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
               <ChaosTokenPart name="token_elder_sign_highlight" color="#E6E1D3" size={size} />
             </>
           );
-
+        case 'frost': // TODO(frost)
         case 'bless':
           return (
             <>

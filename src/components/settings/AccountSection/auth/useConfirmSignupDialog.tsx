@@ -94,7 +94,7 @@ export default function useConfirmSignupDialog(): [React.ReactNode, () => void] 
           <Text style={[typography.text, space.paddingBottomM]}>
             { t`Now that you are signed in, you should have access to your saved campaigns.` }
             { '\n\n' }
-            { t`Campaigns can now be 'uploaded' so they can be synced between devices or shared with friendns.` }
+            { t`Campaigns can now be 'uploaded' so they can be synced between devices or shared with friends.` }
           </Text>
           <DeckButton
             key="save"

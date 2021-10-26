@@ -3,10 +3,9 @@ import { DeviceEventEmitter } from 'react-native';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 
-import { ENABLE_ARKHAM_CARDS_ACCOUNT } from '@app_constants';
 import ArkhamCardsAuthContext from './ArkhamCardsAuthContext';
 import { useSelector } from 'react-redux';
-import { AppState } from '@reducers';
+import { AppState, getEnableArkhamCardsAccount } from '@reducers';
 
 interface Props {
   children: React.ReactNode;
@@ -35,13 +34,14 @@ interface State {
 export default function ArkhamCardsAuthProvider({ children }: Props) {
   const arkhamDb = useSelector((state: AppState) => state.signedIn.status);
   const arkhamDbUser = useSelector((state: AppState) => state.signedIn.status ? state.decks.arkhamDbUser : undefined);
+  const enableArkhamCardsAccount = useSelector(getEnableArkhamCardsAccount);
   const [state, setState] = useState<State>({
     user: currentUser,
     userId: currentUser?.uid,
     loading: currentUserLoading,
   });
   useEffect(() => {
-    if (ENABLE_ARKHAM_CARDS_ACCOUNT) {
+    if (enableArkhamCardsAccount) {
       const authUserChanged = (user: FirebaseAuthTypes.User | undefined) => {
         setState({
           user,
@@ -92,7 +92,7 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
         listener.remove();
       };
     }
-  }, []);
+  }, [enableArkhamCardsAccount]);
   const context = useMemo(() => {
     return {
       ...state,
