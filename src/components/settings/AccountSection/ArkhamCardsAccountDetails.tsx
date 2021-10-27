@@ -16,7 +16,7 @@ import { useMyProfile } from '@data/remote/hooks';
 export default function ArkhamCardsAccountDetails({ componentId }: NavigationProps) {
   const { typography } = useContext(StyleContext);
   const { userId, loading } = useContext(ArkhamCardsAuthContext);
-  const [profile, loadingProfile] = useMyProfile();
+  const [profile, loadingProfile] = useMyProfile(false);
 
   const updateHandle = useUpdateHandle();
   const { dialog, showDialog } = useSimpleTextDialog({
