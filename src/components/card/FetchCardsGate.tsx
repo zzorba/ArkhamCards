@@ -22,8 +22,8 @@ import useReduxMigrator from '@components/settings/useReduxMigrator';
 import ApolloClientContext from '@data/apollo/ApolloClientContext';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 
-const REFETCH_DAYS = 7;
-const REPROMPT_DAYS = 3;
+const REFETCH_DAYS = 30;
+const REPROMPT_DAYS = 30;
 const REFETCH_SECONDS = REFETCH_DAYS * 24 * 60 * 60;
 const REPROMPT_SECONDS = REPROMPT_DAYS * 24 * 60 * 60;
 

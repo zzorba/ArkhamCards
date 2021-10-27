@@ -6,7 +6,7 @@ import { ChaosTokenModifier, SimpleChaosTokenValue } from '@data/scenario/types'
 
 
 export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS = false;
-export const ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID = false;
+export const ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID = true;
 export const ENABLE_ARKHAM_CARDS_ACCOUNT = (Platform.OS === 'ios' && ENABLE_ARKHAM_CARDS_ACCOUNT_IOS) ||
   (Platform.OS === 'android' && ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID);
 
