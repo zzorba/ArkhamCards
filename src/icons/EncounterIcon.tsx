@@ -614,7 +614,6 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'eoep':
       case 'eoec':
         return this.edgeIcon('eoe', size, color);
-      case 'rcore':
       default:
         return this.coreIcon('core', size, color);
     }
