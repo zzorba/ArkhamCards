@@ -17,6 +17,11 @@ interface Props {
   input: RandomLocationInput;
 }
 
+interface State {
+  choices: number[];
+}
+
+
 export default function RandomLocationInputComponent({ input }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { borderStyle, colors } = useContext(StyleContext);

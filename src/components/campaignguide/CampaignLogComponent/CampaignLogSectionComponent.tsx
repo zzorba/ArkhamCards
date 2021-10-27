@@ -39,8 +39,6 @@ export default function CampaignLogSectionComponent({ sectionId, campaignGuide, 
             section={section}
             interScenarioId={interScenarioId}
             title={title}
-            first={idx === 0}
-            last={idx === section.entries.length - 1}
           />
         </View>
       )) }

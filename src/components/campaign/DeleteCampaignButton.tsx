@@ -11,9 +11,6 @@ import { deleteCampaign, updateCampaignArchived } from './actions';
 import { s } from '@styles/space';
 import DeckButton from '@components/deck/controls/DeckButton';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
-import { ThunkDispatch } from 'redux-thunk';
-import { AppState } from '@reducers';
-import { Action } from 'redux';
 
 interface Props {
   componentId: string;
@@ -24,11 +21,9 @@ interface Props {
   standalone?: boolean;
 }
 
-type Dispatch = ThunkDispatch<AppState, unknown, Action<string>>;
-
 export default function DeleteCampaignButton({ componentId, actions, campaignId, campaign, showAlert, standalone }: Props) {
   const { userId } = useContext(ArkhamCardsAuthContext);
-  const dispatch: Dispatch = useDispatch();
+  const dispatch = useDispatch();
   const deleteServerCampaign = useDeleteCampaignRequest();
   const leaveCampaign = useLeaveCampaignRequest();
   const actuallyDeleteCampaign = useCallback(() => {
@@ -71,9 +66,9 @@ export default function DeleteCampaignButton({ componentId, actions, campaignId,
     );
   }, [standalone, actuallyLeaveCampaign, showAlert]);
   const [archiveLoading, setArchiveLoading] = useState(false);
-  const archiveCampaign = useCallback(async() => {
+  const archiveCampaign = useCallback(() => {
     setArchiveLoading(true);
-    await dispatch(updateCampaignArchived(userId, actions, campaignId, !campaign?.archived));
+    dispatch(updateCampaignArchived(userId, actions, campaignId, !campaign?.archived));
     setArchiveLoading(false);
   }, [dispatch, setArchiveLoading, campaignId, actions, userId, campaign?.archived]);
   const archiveButton = useMemo(() => {

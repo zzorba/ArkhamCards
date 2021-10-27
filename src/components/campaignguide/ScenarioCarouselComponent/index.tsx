@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useRef, useState } from 'react';
 import Carousel from 'react-native-snap-carousel';
 import { Platform } from 'react-native';
-import { dropRightWhile, findIndex, findLastIndex } from 'lodash';
+import { findIndex, findLastIndex } from 'lodash';
 
 import { ProcessedCampaign, ProcessedScenario } from '@data/scenario';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
@@ -87,7 +87,6 @@ export default function ScenarioCarouselComponent({
   }, [visible]);
   const [selectedIndex, setIndex] = useState(activeIndex);
   const numScenarios = processedCampaign.scenarios.length;
-  const lastCompletedIndex = dropRightWhile(processedCampaign.scenarios, s => s.type === 'skipped').length - 1;
   const renderScenario = useCallback(({ item, index }: ScenarioItem) => {
     return (
       <ScenarioCard
@@ -99,10 +98,9 @@ export default function ScenarioCarouselComponent({
         componentId={componentId}
         isActive={index === activeIndex}
         last={index === numScenarios - 1}
-        finalScenario={index === lastCompletedIndex}
       />
     );
-  }, [onShowScenario, showAlert, processedCampaign, componentId, lastCompletedIndex, numScenarios, activeIndex]);
+  }, [onShowScenario, showAlert, processedCampaign, componentId, numScenarios, activeIndex]);
   return (
     <Carousel
       ref={carousel}

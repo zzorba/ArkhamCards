@@ -18,11 +18,10 @@ interface Props {
   processedCampaign: ProcessedCampaign;
   showAlert: ShowAlert;
   isActive: boolean;
-  finalScenario?: boolean;
   last?: boolean;
 }
 
-export default function ScenarioCard({ componentId, processedCampaign, showAlert, scenario, showScenario, finalScenario, last, isActive }: Props) {
+export default function ScenarioCard({ componentId, processedCampaign, showAlert, scenario, showScenario, last, isActive }: Props) {
   const { colors, shadow, typography } = useContext(StyleContext);
   const [scenarioNumber, scenarioName] = useMemo(() => {
     const scenarioName = scenario.scenarioGuide.scenarioHeader();
@@ -106,7 +105,7 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
                 </Text>
               </View>
             </TouchableOpacity>
-            { !!(finalScenario && campaignResult && campaignResult !== 'lose') && (
+            { !!(last && campaignResult && campaignResult !== 'lose') && (
               <AddSideScenarioButton
                 componentId={componentId}
                 processedCampaign={processedCampaign}
@@ -133,7 +132,7 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
           </View>
         );
     }
-  }, [onPress, scenario.type, typography, light, componentId, processedCampaign, isActive, showAlert, finalScenario, campaignResult]);
+  }, [onPress, scenario.type, typography, light, componentId, processedCampaign, isActive, showAlert, last, campaignResult]);
   return (
     <View style={[
       space.paddingTopM,

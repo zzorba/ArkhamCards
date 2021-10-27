@@ -6,15 +6,10 @@ import StyleContext from '@styles/StyleContext';
 import Card from '@data/types/Card';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
-import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
-import { find } from 'lodash';
-import { BODY_OF_A_YITHIAN } from '@app_constants';
-import TraumaSummary from '@components/campaign/TraumaSummary';
 
 interface Props {
   code: string;
   investigator?: Card;
-  trauma?: boolean;
   investigatorButton?: React.ReactNode;
   name: string;
   description?: string;
@@ -29,7 +24,6 @@ function InvesigatorCheckListItemComponent({
   code,
   investigator,
   investigatorButton,
-  trauma,
   selected,
   toggle,
   onSecondaryChoice,
@@ -38,31 +32,28 @@ function InvesigatorCheckListItemComponent({
   code: string;
   investigator: Card;
   investigatorButton?: React.ReactNode;
-  trauma?: boolean;
   selected: boolean;
   toggle: (value: boolean) => void;
   onSecondaryChoice?: (code: string) => void;
   editable: boolean;
 }) {
   const { width } = useContext(StyleContext);
-  const { campaignLog } = useContext(ScenarioStepContext);
   const onPress = useCallback(() => toggle(!selected), [selected, toggle]);
   const onSecondaryPress = useCallback(() => onSecondaryChoice?.(code), [onSecondaryChoice, code]);
-  const yithian = useMemo(() => !!find(campaignLog.traumaAndCardData(code)?.storyAssets, x => x === BODY_OF_A_YITHIAN), [code, campaignLog]);
-  const traumaAndCardData = useMemo(() => campaignLog.traumaAndCardData(investigator.code), [investigator.code, campaignLog]);
+
   const secondaryButton = useMemo(() => {
     if (!selected || !investigatorButton || !onSecondaryChoice) {
       return null;
     }
-    return (editable ? (
+    return editable ? (
       <TouchableOpacity
-        style={[space.paddingXs, trauma ? space.paddingLeftS : space.paddingLeftM]}
+        style={[space.paddingXs, space.paddingLeftM]}
         onPress={onSecondaryPress}
       >
         { investigatorButton }
       </TouchableOpacity>
-    ) : investigatorButton);
-  }, [onSecondaryChoice, onSecondaryPress, editable, selected, investigatorButton, trauma]);
+    ) : investigatorButton;
+  }, [onSecondaryChoice, onSecondaryPress, editable, selected, investigatorButton]);
   const content = useMemo(() => {
     const switchContent = (editable || selected) && (
       <View style={styles.switch}>
@@ -80,15 +71,11 @@ function InvesigatorCheckListItemComponent({
         width={width - s * (editable ? 4 : 2)}
         leftContent={onSecondaryChoice ? switchContent : undefined}
         investigator={investigator}
-        yithian={yithian}
       >
-        <View style={styles.rowRight}>
-          { trauma && <TraumaSummary trauma={traumaAndCardData} investigator={investigator} whiteText /> }
-          { onSecondaryChoice ? secondaryButton : switchContent }
-        </View>
+        { onSecondaryChoice ? secondaryButton : switchContent }
       </CompactInvestigatorRow>
     );
-  }, [secondaryButton, width, onSecondaryChoice, editable, toggle, yithian, selected, investigator, trauma, traumaAndCardData]);
+  }, [secondaryButton, width, onSecondaryChoice, editable, toggle, selected, investigator]);
   return (
     <View style={space.paddingBottomXs}>
       { editable ? (
@@ -104,7 +91,6 @@ export default function CheckListItemComponent({
   code,
   investigator,
   investigatorButton,
-  trauma,
   name,
   description,
   color,
@@ -126,7 +112,6 @@ export default function CheckListItemComponent({
         code={code}
         investigator={investigator}
         investigatorButton={investigatorButton}
-        trauma={trauma}
         selected={selected}
         toggle={toggle}
         onSecondaryChoice={onSecondaryChoice}
@@ -186,10 +171,5 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  rowRight: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
   },
 });

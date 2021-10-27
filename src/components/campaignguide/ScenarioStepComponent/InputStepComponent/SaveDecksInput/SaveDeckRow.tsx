@@ -202,7 +202,7 @@ function SaveDeckRow({
                   { t`This investigator does not have a deck associated with it.\nIf you choose a deck, the app can help track spent experience, story asset changes, and deckbuilding requirements.` }
                 </Text>
                 <View style={[space.paddingTopS, styles.startRow]}>
-                  <ActionButton leftIcon="deck" color="dark" title={t`Choose deck`} onPress={selectDeck} />
+                  <ActionButton leftIcon="deck" color="dark" title={t`Choose a deck for this investigator`} onPress={selectDeck} />
                 </View>
               </>
             ) : deckButton}

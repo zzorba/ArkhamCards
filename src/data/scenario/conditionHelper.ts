@@ -48,16 +48,15 @@ export interface BinaryResult {
   decision: boolean;
   option?: Option;
   input?: string[];
-  numberInput?: number[];
 }
 
-export interface NumberResult {
+interface NumberResult {
   type: 'number';
   number: number;
   option?: Option;
 }
 
-export interface StringResult {
+interface StringResult {
   type: 'string';
   string: string;
   option?: Option;
@@ -87,8 +86,7 @@ export type ConditionResult =
 function binaryConditionResult(
   result: boolean,
   options: BoolOption[],
-  input?: string[],
-  numberInput?: number[]
+  input?: string[]
 ): BinaryResult {
   const ifTrue = find(options, option => option.boolCondition === true);
   const ifFalse = find(options, option => option.boolCondition === false);
@@ -97,7 +95,6 @@ function binaryConditionResult(
     decision: result,
     option: result ? ifTrue : ifFalse,
     input,
-    numberInput,
   };
 }
 
@@ -245,8 +242,7 @@ export function campaignLogConditionResult(
       return binaryConditionResult(
         campaignLog.check(condition.section, condition.id),
         condition.options,
-        campaignLog.allCards(condition.section, condition.id),
-        campaignLog.allCardCounts(condition.section, condition.id)
+        campaignLog.allCards(condition.section, condition.id)
       );
   }
 }
@@ -493,7 +489,7 @@ export function campaignDataInvestigatorConditionResult(
   return {
     type: 'binary',
     decision: false,
-    option: condition.default_option,
+    option: condition.defaultOption,
   };
 }
 
@@ -592,7 +588,7 @@ export function campaignLogCountConditionResult(condition: CampaignLogCountCondi
   return numberConditionResult(
     campaignLog.count(condition.section, condition.id),
     condition.options,
-    condition.default_option
+    condition.defaultOption
   );
 }
 
@@ -615,7 +611,7 @@ export function campaignLogInvestigatorCountConditionResult(condition: CampaignL
       return {
         type: 'binary',
         decision: !!option,
-        option: option || condition.default_option,
+        option: option || condition.defaultOption,
       };
     }
     case 'all': {
@@ -627,7 +623,7 @@ export function campaignLogInvestigatorCountConditionResult(condition: CampaignL
         const matches = filter(condition.options, option => option.numCondition === count);
         if (matches.length) {
           investigatorChoices[investigator] = map(matches, match => `${match.numCondition}`);
-        } else if (condition.default_option) {
+        } else if (condition.defaultOption) {
           investigatorChoices[investigator] = ['default'];
         }
       }
@@ -640,8 +636,8 @@ export function campaignLogInvestigatorCountConditionResult(condition: CampaignL
               id: `${option.numCondition}`,
             };
           }),
-          ...(condition.default_option ? [{
-            ...condition.default_option,
+          ...(condition.defaultOption ? [{
+            ...condition.defaultOption,
             id: 'default',
           }] : []),
         ]
@@ -660,7 +656,7 @@ function mathConditionResult(condition: MathCondition, campaignLog: GuidedCampai
       return numberConditionResult(
         opA + opB,
         condition.options,
-        condition.default_option
+        condition.defaultOption
       );
     }
     case 'compare': {

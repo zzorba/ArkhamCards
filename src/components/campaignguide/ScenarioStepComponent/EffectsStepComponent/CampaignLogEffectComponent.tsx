@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import {
-  ActivityIndicator,
   Text,
 } from 'react-native';
 import { t } from 'ttag';
@@ -22,10 +21,10 @@ interface Props {
 }
 
 function CardTextReplace({ code, text, feminineText }: { code: string; text: string; feminineText?: string }) {
-  const { colors, typography } = useContext(StyleContext);
+  const { typography } = useContext(StyleContext);
   const [card, loading] = useSingleCard(code, 'encounter');
   if (loading) {
-    return <ActivityIndicator animating size="small" color={colors.lightText} />;
+    return null;
   }
   if (!card) {
     return (

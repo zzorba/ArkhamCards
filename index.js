@@ -8,7 +8,6 @@ import { ApolloProvider } from '@apollo/client';
 import { Navigation } from 'react-native-navigation';
 import Crashes from 'appcenter-crashes';
 import database from '@react-native-firebase/database';
-import SQLite from 'react-native-sqlite-storage';
 import 'reflect-metadata';
 
 import DatabaseProvider from './src/data/sqlite/DatabaseProvider';
@@ -26,8 +25,8 @@ function MyProvider({ store: { redux, persistor, apollo, anonApollo }, children 
   return (
     <AppearanceProvider>
       <Provider store={redux}>
-        <PersistGate loading={null} persistor={persistor}>
-          <ArkhamCardsAuthProvider>
+        <ArkhamCardsAuthProvider>
+          <PersistGate loading={null} persistor={persistor}>
             <ApolloProvider client={apollo}>
               <ApolloClientContext.Provider value={{ client: apollo, anonClient: anonApollo }}>
                 <LanguageProvider>
@@ -39,8 +38,8 @@ function MyProvider({ store: { redux, persistor, apollo, anonApollo }, children 
                 </LanguageProvider>
               </ApolloClientContext.Provider>
             </ApolloProvider>
-          </ArkhamCardsAuthProvider>
-        </PersistGate>
+          </PersistGate>
+        </ArkhamCardsAuthProvider>
       </Provider>
     </AppearanceProvider>
   );
@@ -68,7 +67,6 @@ Crashes.setListener({
 /* eslint-disable @typescript-eslint/no-unused-vars */
 let app = null;
 Navigation.events().registerAppLaunchedListener(() => {
-  // SQLite.enablePromise(true);
   registerScreens(MyProvider, { redux: store, persistor: persistor, apollo: apolloClient, anonApollo: anonClient });
   app = new App(store);
 });

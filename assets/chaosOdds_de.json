@@ -411,7 +411,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der Ort im Spiel ohne Begegnungskarten darunter",
+          "prompt": "Anzahl der Ort im Spiel ohne Begegnungskarten darunter.",
           "min": 0,
           "max": 4
         }
@@ -440,7 +440,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der Ort im Spiel ohne Begegnungskarten darunter",
+          "prompt": "Anzahl der Ort im Spiel ohne Begegnungskarten darunter.",
           "min": 0
         }
       },
@@ -472,7 +472,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl von Brut von Yog-Sothoth im Spiel",
+          "prompt": "Anzahl von Brut von Yog-Sothoth im Spiel.",
           "min": 0
         }
       },
@@ -490,7 +490,7 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "Entferne alle Hinweismarker von einer Brut von Yog-Sothoth im Spiel",
+          "prompt": "Entferne alle Hinweismarker von einer Brut von Yog-Sothoth im Spiel.",
           "modified_value": {
             "modifier": 0
           }
@@ -508,7 +508,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der Ort im Spiel ohne Begegnungskarten darunter",
+          "prompt": "Anzahl der Ort im Spiel ohne Begegnungskarten darunter.",
           "min": 0,
           "scale": 2
         }
@@ -527,7 +527,7 @@
           "default_value": {
             "modifier": "auto_fail"
           },
-          "prompt": "Entferne alle Hinweismarker von einer Brut von Yog-Sothoth im Spiel",
+          "prompt": "Entferne alle Hinweismarker von einer Brut von Yog-Sothoth im Spiel.",
           "modified_value": {
             "modifier": 0
           }
@@ -834,7 +834,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Höchste Anzahl von Verderben auf einem Gegner im Spiel",
+          "prompt": "Höchste Anzahl von Verderben auf einem Gegner im Spiel.",
           "min": 0
         }
       },
@@ -1407,7 +1407,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Höchste Anzahl an Verderben auf einem [[Kultist]]-Gegner",
+          "prompt": "Höchste Anzahl an Verderben auf einem [[Kultist]]-Gegner.",
           "min": 0
         }
       },
@@ -1991,7 +1991,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Bist du an einem [[Außerdimensional]]-Ort",
+          "prompt": "You are at an [[Extradimensional]] location",
           "modified_value": {
             "modifier": -3
           }
@@ -2025,7 +2025,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Bist du an einem [[Außerdimensional]]-Ort",
+          "prompt": "You are at an [[Extradimensional]] location",
           "modified_value": {
             "modifier": -4
           }
@@ -2060,7 +2060,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der Kopien von Unerledigte Angelegenheiten im Siegpunktestapel",
+          "prompt": "The number of Unfinished Business in the victory display",
           "min": 0,
           "adjustment": 1
         }
@@ -2089,7 +2089,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der Kopien von Unerledigte Angelegenheiten im Siegpunktestapel",
+          "prompt": "The number of Unfinished Business in the victory display",
           "min": 0,
           "reveal_another": true
         }
@@ -2122,7 +2122,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Höchste Anzahl von Verderben auf einem [[Kultist]]-Gegner im Spiel",
+          "prompt": "Highest number of doom on a [[Cultist]] enemy in play",
           "min": 0
         }
       },
@@ -2151,7 +2151,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Gesamtanzahl von Verderben auf [[Kultist]]-Gegnern im Spiel",
+          "prompt": "Total number of doom among [[Cultist]] enemies in play",
           "min": 0
         }
       },
@@ -2175,7 +2175,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Keine [[Kultist]]-Gegner haben Verderben auf sich",
+          "prompt": "No [[Cultist]] enemies in play have doom on them",
           "modified_value": {
             "modifier": -3,
             "reveal_another": true
@@ -2195,7 +2195,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Während einer <b>Kreis</b> Aktion",
+          "prompt": "During a <b>circle</b> action",
           "modified_value": {
             "modifier": -2,
             "reveal_another": true
@@ -2229,7 +2229,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Während einer <b>Kreis</b> Aktion",
+          "prompt": "During a <b>circle</b> action",
           "modified_value": {
             "modifier": -3,
             "reveal_another": true
@@ -2264,7 +2264,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Gesamtanzahl von Verderben und Rissen auf deinem Ort",
+          "prompt": "Total number of doom and breaches on your location",
           "min": 0
         }
       },
@@ -2293,7 +2293,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Gesamtanzahl von Verderben und Rissen auf deinem Ort",
+          "prompt": "Total number of doom and breaches on your location",
           "min": 0,
           "adjustment": 1
         }
@@ -2327,7 +2327,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Hälfte des Verderbens auf Azathoth (aufgerundet)",
+          "prompt": "Half the doom on Azathoth (rounded up)",
           "min": 2
         }
       },
@@ -2356,7 +2356,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Menge an Verderben auf Azathoth",
+          "prompt": "Amount of doom on Azathoth",
           "min": 2
         }
       },
@@ -2389,7 +2389,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Halbe Anzahl der Karten auf deiner Hand (aufgerundet)",
+          "prompt": "Half the number of cards in your hand (rounded up)",
           "min": 0
         }
       },
@@ -2397,7 +2397,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der enthüllten Verwunschener Wald-Orte.",
+          "prompt": "Number of revealed Enchanted Woods locations",
           "min": 0
         }
       },
@@ -2413,7 +2413,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der Karten auf deiner Hand",
+          "prompt": "The number of cards in your hand",
           "min": 0
         }
       },
@@ -2421,7 +2421,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl enthüllter [[Wälder]]-Orte.",
+          "prompt": "Number of revealed [[Woods]] locations",
           "min": 0
         }
       },
@@ -2444,7 +2444,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Mit einem [[Personal]]-Gegner in einen Kampf verwickelt",
+          "prompt": "Engaged with a [[Staff]] enemy",
           "modified_value": {
             "modifier": -3
           }
@@ -2461,7 +2461,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl befallener Orte",
+          "prompt": "Number of infested locations",
           "min": 0
         }
       }
@@ -2474,7 +2474,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Mit einem [[Personal]]-Gegner in einen Kampf verwickelt",
+          "prompt": "Engaged with a [[Staff]] enemy",
           "modified_value": {
             "modifier": -4
           }
@@ -2491,7 +2491,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl befallener Orte",
+          "prompt": "Number of infested locations",
           "min": 0,
           "adjustment": 1
         }
@@ -2506,7 +2506,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl Zeichen der Götter, welche die Ermittler aufgedeckt haben",
+          "prompt": "Number of Signs of the Gods the investigators have uncovered",
           "min": 0
         }
       },
@@ -2535,7 +2535,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl Zeichen der Götter, welche die Ermittler aufgedeckt haben",
+          "prompt": "Number of Signs of the Gods the investigators have uncovered",
           "min": 0,
           "adjustment": 1
         }
@@ -2572,7 +2572,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "An einem [[Friedhof]]-Ort",
+          "prompt": "At a [[Graveyard]] location",
           "modified_value": {
             "modifier": -3
           }
@@ -2606,7 +2606,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "An einem [[Friedhof]]-Ort",
+          "prompt": "At a [[Graveyard]] location",
           "modified_value": {
             "modifier": -4
           }
@@ -2641,7 +2641,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Hälfte deiner Alarmstufe (aufgerundet)",
+          "prompt": "Half your alarm level (rounded up)",
           "min": 0
         }
       },
@@ -2670,7 +2670,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Deine Alarmstufe",
+          "prompt": "Your alarm level",
           "min": 0
         }
       },
@@ -2703,7 +2703,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl von Schaden auf der Szenarioübersichtskarte",
+          "prompt": "Amount of damage on the scenario reference card",
           "min": 0
         }
       },
@@ -2732,7 +2732,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl von Schaden auf der Szenarioübersichtskarte",
+          "prompt": "Amount of damage on the scenario reference card",
           "min": 1,
           "adjustment": 1
         }
@@ -2766,7 +2766,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Nummer der aktuellen Szene",
+          "prompt": "Number of the current act",
           "min": 1
         }
       },
@@ -2795,7 +2795,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Nummer der aktuellen Szene plus der Nummer der aktuellen Agenda",
+          "prompt": "Number of the current act plus the number of the current agenda",
           "min": 2
         }
       },
@@ -2828,7 +2828,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Höchste Anzahl von Verderben auf einem Ort im Spiel",
+          "prompt": "Highest amount of doom on a location in play",
           "min": 0
         }
       },
@@ -2857,7 +2857,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Gesamtanzahl von Verderben auf Orten im Spiel",
+          "prompt": "The amount of doom on locations in play",
           "min": 0
         }
       },
@@ -2890,7 +2890,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "-1 (-2 stattdessen, falls dein Ort teilweise überflutet ist; -3 stattdessen, falls dein Ort völlig überflutet ist)",
+          "prompt": "-1 (-2 instead if your location is partially flooded; -3 instead if your location is fully flooded)",
           "min": 1,
           "max": 3
         }
@@ -2919,7 +2919,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "-2 (-3 stattdessen, falls dein Ort teilweise überflutet ist; -4 stattdessen, falls dein Ort völlig überflutet ist)",
+          "prompt": "-2 (-3 instead if your location is partially flooded; -4 instead if your location is fully flooded)",
           "min": 2,
           "max": 4
         }
@@ -2952,7 +2952,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Nummer der aktuellen Agenda",
+          "prompt": "The current agenda number",
           "min": 1
         }
       },
@@ -2980,7 +2980,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Nummer der aktuellen Agenda",
+          "prompt": "The current agenda number",
           "min": 1,
           "adjustment": 1
         }
@@ -3013,7 +3013,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der Orte östlich deines Ortes (in der gleichen Reihe)",
+          "prompt": "Number of locations to the east of your location (on the same row)",
           "min": 0
         }
       },
@@ -3033,7 +3033,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl an Barrieren zwischen deinem Ort und allen verbundenen Orten",
+          "prompt": "Number of barriers between your location and all connecting locations",
           "min": 0
         }
       }
@@ -3043,7 +3043,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der Orte östlich deines Ortes (in der gleichen Reihe)",
+          "prompt": "Number of locations to the east of your location (on the same row)",
           "min": 0,
           "scale": 2
         }
@@ -3064,7 +3064,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl an Barrieren zwischen deinem Ort und allen verbundenen Orten",
+          "prompt": "Number of barriers between your location and all connecting locations",
           "min": 0,
           "scale": 2
         }
@@ -3079,7 +3079,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der von den Ermittlern kontrollierten Schlüsseln",
+          "prompt": "Number of keys the investigators control",
           "min": 0
         }
       },
@@ -3107,7 +3107,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der von den Ermittlern kontrollierten Schlüsseln",
+          "prompt": "Number of keys the investigators control",
           "min": 0,
           "adjustment": 1
         }
@@ -3143,7 +3143,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "6 oder weniger Orte im Straßendeck übrig",
+          "prompt": "6 or fewer locations remaining in the Road deck",
           "modified_value": {
             "modifier": -3
           }
@@ -3176,7 +3176,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "6 oder weniger Orte im Straßendeck übrig",
+          "prompt": "6 or fewer locations remaining in the Road deck",
           "modified_value": {
             "modifier": -4
           }
@@ -3213,7 +3213,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Ort ist überflutet",
+          "prompt": "Location is flooded",
           "modified_value": {
             "modifier": -1,
             "reveal_another": true
@@ -3247,7 +3247,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Ort ist überflutet",
+          "prompt": "Location is flooded",
           "modified_value": {
             "modifier": -2,
             "reveal_another": true
@@ -3282,7 +3282,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der Schlüssel auf der Szenarioübersichtskarte",
+          "prompt": "Number of keys on the scenario reference card",
           "min": 0
         }
       },
@@ -3294,7 +3294,7 @@
             "modifier": 0,
             "reveal_another": true
           },
-          "prompt": "Fluchmarker enthüllt (davor oder danach)",
+          "prompt": "Curse revealed (before or after)",
           "modified_value": {
             "modifier": "auto_fail",
             "reveal_another": true
@@ -3319,7 +3319,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der Schlüssel auf der Szenarioübersichtskarte",
+          "prompt": "Number of keys on the scenario reference card",
           "scale": 2,
           "min": 0
         }
@@ -3332,7 +3332,7 @@
             "modifier": -2,
             "reveal_another": true
           },
-          "prompt": "Fluchmarker enthüllt (davor oder danach)",
+          "prompt": "Curse revealed (before or after)",
           "modified_value": {
             "modifier": "auto_fail",
             "reveal_another": true
@@ -3364,7 +3364,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "4 oder mehr [[Y'ha-nthlei]]-Orte im Spiel",
+          "prompt": "4 or more unflooded [[Y'ha-nthlei]] locations in play",
           "modified_value": {
             "modifier": -3
           }
@@ -3397,7 +3397,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "4 oder mehr [[Y'ha-nthlei]]-Orte im Spiel",
+          "prompt": "4 or more unflooded [[Y'ha-nthlei]] locations in play",
           "modified_value": {
             "modifier": -4
           }
@@ -3434,7 +3434,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "An einem [[Bayou]]-Ort",
+          "prompt": "At a [[Bayou]] location",
           "modified_value": {
             "modifier": -4
           }
@@ -3447,7 +3447,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Rougarou an deinem Ort",
+          "prompt": "Rougarou is at your location",
           "modified_value": {
             "modifier": -2,
             "reveal_another": true
@@ -3476,7 +3476,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "An einem [[Bayou]]-Ort",
+          "prompt": "At a [[Bayou]] location",
           "modified_value": {
             "modifier": -6
           }
@@ -3489,7 +3489,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Rougarou an deinem Ort",
+          "prompt": "Rougarou is at your location",
           "modified_value": {
             "modifier": -3,
             "reveal_another": true
@@ -3519,7 +3519,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus die Anzahl der Unschuldigen Feiernden unter dem Agendadeck",
+          "prompt": "2 plus the number of Innocent Revelers underneat the agenda deck",
           "min": 2,
           "max": 5
         }
@@ -3549,7 +3549,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus die Anzahl der Unschuldigen Feiernden unter dem Agendadeck",
+          "prompt": "2 plus the number of Innocent Revelers underneat the agenda deck",
           "min": 2,
           "max": 5
         }
@@ -3641,7 +3641,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Stärke des Abgrunds",
+          "prompt": "The strength of the abyss",
           "min": 0
         }
       },
@@ -3666,7 +3666,7 @@
           "default_value": {
             "modifier": -5
           },
-          "prompt": "Füge 1 zu der Stärke des Abgrunds hinzu",
+          "prompt": "Add 1 strength to the abyss",
           "modified_value": {
             "modifier": "auto_succeed"
           }
@@ -3678,7 +3678,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Stärke des Abgrunds",
+          "prompt": "The strength of the abyss",
           "min": 0,
           "adjustment": 1
         }
@@ -3704,7 +3704,7 @@
           "default_value": {
             "modifier": -6
           },
-          "prompt": "Füge 1 zu der Stärke des Abgrunds hinzu",
+          "prompt": "Add 1 strength to the abyss",
           "modified_value": {
             "modifier": "auto_succeed"
           }
@@ -3720,7 +3720,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Stärke des Abgrunds",
+          "prompt": "The strength of the abyss",
           "min": 0
         }
       },
@@ -3750,7 +3750,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Stärke des Abgrunds",
+          "prompt": "The strength of the abyss",
           "min": 0,
           "adjustment": 1
         }
@@ -3785,7 +3785,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der [[Gast]]-Gegner im Spiel",
+          "prompt": "The number of [[Guest]] enemies in play",
           "min": 0
         }
       },
@@ -3796,7 +3796,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Es gibt einen [[Unschuldiger]]-Gegner im Siegpunktestapel",
+          "prompt": "There is an [[Innocent]] enemy in the victory display",
           "modified_value": {
             "modifier": -1,
             "reveal_another": true
@@ -3810,7 +3810,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Platziere einen deiner Hinweise auf deinem Ort",
+          "prompt": "Place one of your clues on your location",
           "modified_value": {
             "modifier": -1
           }
@@ -3828,7 +3828,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der [[Unschuldiger]]-Gegner im Spiel",
+          "prompt": "The number of [[Innocent]] enemies in play",
           "min": 0
         }
       },
@@ -3839,7 +3839,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Es gibt einen [[Unschuldiger]]-Gegner im Siegpunktestapel",
+          "prompt": "There is an [[Innocent]] enemy in the victory display",
           "modified_value": {
             "modifier": -2,
             "reveal_another": true
@@ -3853,7 +3853,7 @@
           "default_value": {
             "modifier": -5
           },
-          "prompt": "Platziere einen deiner Hinweise auf deinem Ort",
+          "prompt": "Place one of your clues on your location",
           "modified_value": {
             "modifier": -2
           }
@@ -3875,7 +3875,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 für je 5 Karten, die Subjekt 8L-08 verschlungen hat",
+          "prompt": "1 for every 5 cards Subject 8L-08 has devoured",
           "min": 0
         }
       },
@@ -3903,7 +3903,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 für je 3 Karten, die Subjekt 8L-08 verschlungen hat",
+          "prompt": "1 for every 3 cards Subject 8L-08 has devoured",
           "min": 0
         }
       },
@@ -3935,7 +3935,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl deiner Hinweise",
+          "prompt": "Number of clues you have",
           "min": 0
         }
       },
@@ -3963,7 +3963,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl deiner Hinweise",
+          "prompt": "Number of clues you have",
           "scale": 2,
           "min": 0
         }
@@ -3996,7 +3996,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der [[Buch]]-Vorteilskarten, die Daisy Walker kontrolliert",
+          "prompt": "Number of [[Tome]] assets Daisy Walker controls",
           "min": 0
         }
       },
@@ -4025,7 +4025,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der [[Buch]]-Vorteilskarten, die Daisy Walker kontrolliert",
+          "prompt": "Number of [[Tome]] assets Daisy Walker controls",
           "min": 0,
           "adjustment": 1
         }
@@ -4059,7 +4059,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl deiner Hinweise",
+          "prompt": "Number of clues you have",
           "min": 0
         }
       },
@@ -4070,7 +4070,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Du hast 10 oder mehr Ressourcen",
+          "prompt": "You have 10 or more resources",
           "modified_value": {
             "modifier": -4
           }
@@ -4094,7 +4094,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl deiner Hinweise",
+          "prompt": "Number of clues you have",
           "scale": 2,
           "min": 0
         }
@@ -4106,7 +4106,7 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "Du hast 10 oder mehr Ressourcen",
+          "prompt": "You have 10 or more resources",
           "modified_value": {
             "modifier": -8
           }
@@ -4134,7 +4134,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl an Erinnerungen, die Agnes Baker gesammelt hat",
+          "prompt": "Number of memories Agnes Baker has collected",
           "min": 0
         }
       },
@@ -4162,7 +4162,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl an Erinnerungen, die Agnes Baker gesammelt hat",
+          "prompt": "Number of memories Agnes Baker has collected",
           "min": 0,
           "adjustment": 1
         }
@@ -4195,7 +4195,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der [[Kultist]]-Gegner im Siegpunktestapel",
+          "prompt": "Number of [[Cultist]] enemies in the victory display",
           "min": 0,
           "max": 5
         }
@@ -4207,7 +4207,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Ein [[Kultist]]-Gegner ist mit dir in einen Kampf verwickelt",
+          "prompt": "A [[Cultist]] enemy is engaged with you",
           "modified_value": {
             "modifier": -2,
             "reveal_another": true
@@ -4232,7 +4232,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der [[Kultist]]-Gegner im Siegpunktestapel",
+          "prompt": "Number of [[Cultist]] enemies in the victory display",
           "min": 0,
           "adjustment": 1
         }
@@ -4244,7 +4244,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Ein [[Kultist]]-Gegner ist mit dir in einen Kampf verwickelt",
+          "prompt": "A [[Cultist]] enemy is engaged with you",
           "modified_value": {
             "modifier": -3,
             "reveal_another": true

@@ -308,7 +308,7 @@ export function updateCampaignArchived(
   id: CampaignId,
   archived: boolean,
   now?: Date
-): ThunkAction<Promise<void>, AppState, unknown, UpdateCampaignAction> {
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
   return async(dispatch) => {
     if (id.serverId !== undefined) {
       await actions.setArchived(id, archived);

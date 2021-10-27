@@ -28,7 +28,7 @@ import {
 } from '@data/scenario/types';
 import { getSpecialEffectChoiceList } from './effectHelper';
 import { investigatorChoiceInputChoices, chooseOneInputChoices } from '@data/scenario/inputHelper';
-import { BinaryResult, conditionResult, NumberResult, StringResult } from '@data/scenario/conditionHelper';
+import { conditionResult } from '@data/scenario/conditionHelper';
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
@@ -339,16 +339,6 @@ export default class ScenarioStep {
     }
   }
 
-  private getNumberInput(result: StringResult | BinaryResult | NumberResult): undefined | number[] {
-    if (result.type === 'number') {
-      return [result.number];
-    }
-    if (result.type === 'binary') {
-      return result.numberInput;
-    }
-    return undefined;
-  }
-
   private expandBranchStep(
     step: BranchStep,
     scenarioState: ScenarioStateHelper
@@ -357,9 +347,7 @@ export default class ScenarioStep {
     switch (result.type) {
       case 'string':
       case 'number':
-      case 'binary': {
-        const numberInput = this.getNumberInput(result);
-
+      case 'binary':
         return this.maybeCreateEffectsStep(
           this.step.id,
           [
@@ -370,13 +358,13 @@ export default class ScenarioStep {
             ...(result.option?.pre_border_effects ? [
               {
                 effects: result.option.pre_border_effects,
-                numberInput,
+                numberInput: result.type === 'number' ? [result.number] : undefined,
                 input: result.type === 'binary' ? result.input : undefined,
               },
             ] : []),
             {
               border: (result.option && result.option.border),
-              numberInput,
+              numberInput: result.type === 'number' ? [result.number] : undefined,
               input: result.type === 'binary' ? result.input : undefined,
               effects: (result.option && result.option.effects) || [],
             },
@@ -384,8 +372,6 @@ export default class ScenarioStep {
           scenarioState,
           {}
         );
-
-      }
       case 'investigator': {
         const {
           effectsWithInput,
@@ -1328,6 +1314,7 @@ export default class ScenarioStep {
         campaignLog
       );
       if (!step) {
+        console.log(`Missing step: ${stepId}`);
         return undefined;
       }
       return new ScenarioStep(

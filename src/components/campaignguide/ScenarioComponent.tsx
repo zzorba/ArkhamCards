@@ -59,8 +59,11 @@ export function getDownloadLink(lang: string, customData?: CustomData) {
 }
 
 function hasNarrationAccess(narration: Narration, narrationLang: string | undefined): boolean {
-  // Not every entry has a 'DissonantVoices' one present, due to some missing entries, sometimes in the original.
-  return !!narrationLang && !!find(narration.lang, lang => lang === narrationLang);
+  return !!(
+    // Not every entry has a 'DissonantVoices' one present, due to some missing entries.
+    (!narrationLang && find(narration.lang, lang => lang === 'dv')) ||
+    find(narration.lang, lang => lang === narrationLang)
+  );
 }
 
 function getNarrationQueue(processedScenario: ProcessedScenario, scenarioState: ScenarioStateHelper, narrationLang: string | undefined) {
@@ -240,15 +243,15 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
       },
     });
   }, [componentId, campaignId, processedScenario.id]);
-  const [hasAudio, narrationLang] = useAudioAccess()
+  const [hasDS, narrationLang] = useAudioAccess()
 
   useEffect(() => {
-    if (!hasAudio) {
+    if (!hasDS) {
       return;
     }
     const queue = getNarrationQueue(processedScenario, scenarioState, narrationLang);
     setNarrationQueue(queue);
-  }, [processedScenario, scenarioState, hasAudio, narrationLang]);
+  }, [processedScenario, scenarioState, hasDS, narrationLang]);
 
   const hasInterludeFaq = processedScenario.scenarioGuide.scenarioType() !== 'scenario' &&
     processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;
