@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { SkillCodeType } from '@app_constants';
 import StyleContext from '@styles/StyleContext';
-import CardIcocn from '@icons/CardIcocn';
+import CardIcocn from '@icons/CardIcon';
 
 interface Props {
   skill: SkillCodeType;
