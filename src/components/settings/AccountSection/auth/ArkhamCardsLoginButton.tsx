@@ -9,7 +9,7 @@ import uuid from 'react-native-uuid';
 import { useDispatch } from 'react-redux';
 import { ThunkAction } from 'redux-thunk';
 import { Action } from 'redux';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, useDialog } from '@components/deck/dialogs';
@@ -160,10 +160,12 @@ function errorMessage(code: string): {
         remedy: 'reset-password',
       };
     case 'auth/operation-not-allowed':
-    default:
+    default: {
+      const message = t`Unknown error`;
       return {
-        message: t`Unknown error`,
+        message: `${message}: ${code}`,
       };
+    }
   }
 }
 
