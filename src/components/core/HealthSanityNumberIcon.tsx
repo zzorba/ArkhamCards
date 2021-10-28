@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import {
   StyleSheet,
   View,
 } from 'react-native';
 import { t } from 'ttag';
 
-import ArkhamIcon from '@icons/ArkhamIcon';
+import CardIcon from '@icons/CardIcon';
 import StyleContext from '@styles/StyleContext';
 
 export function iconSize(fontScale: number) {
@@ -42,28 +42,30 @@ export default function HealthSanityIcon({ type, count }: Props) {
   const scaleFactor = ((fontScale - 1) / 2 + 1);
   const ICON_SIZE = 26 * scaleFactor;
   const NUMBER_SIZE = (count === -2 ? 20 : 24) * scaleFactor;
-  const style = {
-    width: iconSize(fontScale) * 1.4,
-    height: iconSize(fontScale),
-  };
+  const style = useMemo(() => {
+    return {
+      width: iconSize(fontScale) * 1.4,
+      height: iconSize(fontScale),
+    };
+  }, [fontScale]);
   return (
     <View style={[styles.wrapper, style]} accessibilityLabel={label(type, count)}>
       <View style={[styles.icon, type === 'health' ? styles.healthIcon : styles.sanityIcon, style]}>
-        <ArkhamIcon
+        <CardIcon
           name={type}
           size={ICON_SIZE * (type === 'health' ? 1.05 : 1)}
           color={colors[type]}
         />
       </View>
       <View style={[styles.icon, type === 'health' ? styles.healthText : styles.sanityText, style]}>
-        <ArkhamIcon
+        <CardIcon
           name={`${getNumber(count)}-fill`}
           size={NUMBER_SIZE}
           color="white"
         />
       </View>
       <View style={[styles.icon, type === 'health' ? styles.healthText : styles.sanityText, style]}>
-        <ArkhamIcon
+        <CardIcon
           name={`${getNumber(count)}-outline`}
           size={NUMBER_SIZE}
           color={colors[type]}
