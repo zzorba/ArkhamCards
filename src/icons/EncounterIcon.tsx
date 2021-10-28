@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ArkhamIcon from './ArkhamIcon';
+import CardIcon from './CardIcon';
 import AppIcon from './AppIcon';
 import CarcosaIcon from './CarcosaIcon';
 import CircleIcon from './CircleIcon';
@@ -33,7 +34,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
   coreIcon(name: string, size: number, color: string) {
     return (<CoreSetIcon name={name} size={size} color={color} />);
   }
-
+  cardIcon(name: string, size: number, color: string) {
+    return (<AppIcon name={name} size={size} color={color} />);
+  }
   innsmouthIcon(name: string, size: number, color: string) {
     return (<InnsmouthIcon name={name} size={size} color={color} />);
   }
@@ -259,7 +262,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'by_the_book':
         return this.standaloneIcon('by_the_book', size, color);
       case 'parallel':
-        return this.appIcon('parallel', size, color);
+        return this.cardIcon('parallel', size, color);
       case 'cotr':
       case 'curse_of_the_rougarou':
       case 'rougarou':
@@ -614,6 +617,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'eoep':
       case 'eoec':
         return this.edgeIcon('eoe', size, color);
+      case 'rcore':
       default:
         return this.coreIcon('core', size, color);
     }

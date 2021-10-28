@@ -33,6 +33,7 @@
 		657276692644DE1B00157DE3 /* dark_matter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 657276682644DE1B00157DE3 /* dark_matter.ttf */; };
 		657276D0265984A200157DE3 /* alice.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 657276CF265984A200157DE3 /* alice.ttf */; };
 		657276D32659850A00157DE3 /* Caveat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 657276D22659850A00157DE3 /* Caveat.ttf */; };
+		657ADACE272AC716008D0FFD /* cardicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 657ADACD272AC715008D0FFD /* cardicons.ttf */; };
 		6585116F250D6C0500DCB842 /* Alegreya-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */; };
 		65851170250D6C0500DCB842 /* Alegreya-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */; };
 		65851172250D6DB200DCB842 /* Alegreya-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */; };
@@ -99,6 +100,7 @@
 		657276682644DE1B00157DE3 /* dark_matter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dark_matter.ttf; path = ../assets/dark_matter.ttf; sourceTree = "<group>"; };
 		657276CF265984A200157DE3 /* alice.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = alice.ttf; path = ../assets/alice.ttf; sourceTree = "<group>"; };
 		657276D22659850A00157DE3 /* Caveat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Caveat.ttf; path = ../assets/Caveat.ttf; sourceTree = "<group>"; };
+		657ADACD272AC715008D0FFD /* cardicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = cardicons.ttf; path = ../assets/cardicons.ttf; sourceTree = "<group>"; };
 		6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Regular.ttf"; path = "../assets/Alegreya-Regular.ttf"; sourceTree = "<group>"; };
 		6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Italic.ttf"; path = "../assets/Alegreya-Italic.ttf"; sourceTree = "<group>"; };
 		65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Medium.ttf"; path = "../assets/Alegreya-Medium.ttf"; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				657ADACD272AC715008D0FFD /* cardicons.ttf */,
 				650DBD8326EFA507006170CC /* edge.ttf */,
 				657276D22659850A00157DE3 /* Caveat.ttf */,
 				657276CF265984A200157DE3 /* alice.ttf */,
@@ -380,6 +383,7 @@
 				652EB73A226BAF7800F6D790 /* de.po.json in Resources */,
 				652EB73E226BAF9300F6D790 /* es.po.json in Resources */,
 				65851172250D6DB200DCB842 /* Alegreya-Medium.ttf in Resources */,
+				657ADACE272AC716008D0FFD /* cardicons.ttf in Resources */,
 				02D002FD495C486485296EE5 /* AppCenter-Config.plist in Resources */,
 				6585116F250D6C0500DCB842 /* Alegreya-Regular.ttf in Resources */,
 			);
@@ -548,7 +552,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCardsDebug.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 35;
+				CURRENT_PROJECT_VERSION = 45;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
@@ -592,7 +596,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 35;
+				CURRENT_PROJECT_VERSION = 45;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
