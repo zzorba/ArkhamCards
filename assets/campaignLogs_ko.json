@@ -858,24 +858,24 @@
         "section": "$input_value",
         "entries": [
           {
-            "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
           }
         ]
       },
@@ -883,24 +883,24 @@
         "section": "05046",
         "entries": [
           {
-            "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
           },
           {
             "id": "alive",
@@ -912,7 +912,7 @@
           },
           {
             "id": "on_gavriellas_trail",
-            "text": "the investigators are on Gavriella’s trail."
+            "text": "조사자들이 가브리엘라의 흔적을 쫓고 있다"
           }
         ]
       },
@@ -920,24 +920,24 @@
         "section": "05047",
         "entries": [
           {
-            "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
           },
           {
             "id": "alive",
@@ -949,7 +949,7 @@
           },
           {
             "id": "on_jeromes_trail",
-            "text": "the investigators are on Jerome’s trail."
+            "text": "조사자들이 제롬의 흔적을 쫓고 있다"
           }
         ]
       },
@@ -957,24 +957,24 @@
         "section": "05048",
         "entries": [
           {
-            "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
           },
           {
             "id": "alive",
@@ -986,7 +986,7 @@
           },
           {
             "id": "on_valentinos_trail",
-            "text": "the investigators are on Valentino's trail."
+            "text": "조사자들이 발렌티노의 흔적을 쫓고 있다"
           }
         ]
       },
@@ -994,24 +994,24 @@
         "section": "05049",
         "entries": [
           {
-            "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
           },
           {
             "id": "alive",
@@ -1023,7 +1023,7 @@
           },
           {
             "id": "on_pennys_trail",
-            "text": "the investigators are on Penny's trail."
+            "text": "조사자들이 페니의 흔적을 쫓고 있다"
           }
         ]
       },
@@ -1037,7 +1037,7 @@
           },
           {
             "id": "accepted_fate",
-            "text": "you have accepted your fate."
+            "text": "당신은 스스로의 운명을 받아들였다"
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
@@ -1077,7 +1077,7 @@
           },
           {
             "id": "being_hunted",
-            "text": "you are being hunted."
+            "text": "당신은 사냥당하고 있다"
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
@@ -1093,7 +1093,7 @@
           },
           {
             "id": "deceiving_the_lodge",
-            "text": "the investigators are deceiving the Lodge."
+            "text": "조사자들이 황혼회를 속이고 있다"
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
@@ -1105,7 +1105,7 @@
           },
           {
             "id": "enemies_of_the_lodge",
-            "text": "the investigators are enemies of the Lodge."
+            "text": "조사자들이 황혼회를 적으로 두었다"
           },
           {
             "id": "erynn_joined_investigators",
@@ -1137,15 +1137,15 @@
           },
           {
             "id": "investigators_escaped_the_spectral_realm",
-            "text": "the investigators escaped the spectral realm."
+            "text": "조사자들이 혼령계에서 탈출했다"
           },
           {
             "id": "josef_disappeared_into_the_mist",
-            "text": "Josef disappeared into the mist."
+            "text": "요제프가 안개 속으로 사라졌다"
           },
           {
             "id": "josef_is_alive",
-            "text": "Josef is alive and well."
+            "text": "요제프가 멀쩡히 잘 살아 있다"
           },
           {
             "id": "kept_mementos_hidden",
@@ -1153,15 +1153,15 @@
           },
           {
             "id": "learned_nothing_of_the_lodges_schemes",
-            "text": "the investigators learned nothing of the Lodge’s schemes."
+            "text": "조사자들이 황혼회의 계획에 대해 아무것도 알아내지 못했다"
           },
           {
             "id": "members_of_the_lodge",
-            "text": "the investigators are members of the Lodge."
+            "text": "조사자들이 은빛 황혼회 교단원이 되었다"
           },
           {
             "id": "never_seen_again",
-            "text": "the investigators are never seen or heard from again."
+            "text": "조사자들이 행방불명되었다"
           },
           {
             "id": "path_winds_before_you",
@@ -1169,15 +1169,15 @@
           },
           {
             "id": "pieces_of_evidence",
-            "text": "#X# pieces of evidence were left behind."
+            "text": "증거가 #X#건 남아 있다"
           },
           {
             "id": "rejected_fate",
-            "text": "you have rejected your fate."
+            "text": "당신은 스스로의 운명을 거부했다"
           },
           {
             "id": "rescued_josef",
-            "text": "the investigators rescued Josef."
+            "text": "조사자들이 요제프를 구출했다"
           },
           {
             "id": "sided_with_the_coven",
@@ -1205,11 +1205,11 @@
           },
           {
             "id": "witches_spell_broken",
-            "text": "the witches' spell was broken."
+            "text": "마녀의 마법이 깨졌다"
           },
           {
             "id": "witches_spell_cast",
-            "text": "the witches' spell was cast."
+            "text": "마녀의 마법이 시전되었다"
           }
         ]
       },
@@ -1323,15 +1323,15 @@
           },
           {
             "id": "mesmerizing_flute",
-            "text": "Mesmerizing Flute"
+            "text": "최면을 거는 피리"
           },
           {
             "id": "ritual_components",
-            "text": "Ritual Components"
+            "text": "의례용 도구"
           },
           {
             "id": "scrap_of_torn_shadow",
-            "text": "Scrap of Torn Shadow"
+            "text": "찢어진 그림자"
           },
           {
             "id": "strange_incantation",
@@ -1518,7 +1518,7 @@
           },
           {
             "id": "recruited_help_of_another_expedition",
-            "text": "the investigators recruited the help of another expedition."
+            "text": "조사자들이 다른 탐사대로부터 도움을 받았다"
           },
           {
             "id": "relic_is_missing",
@@ -1630,23 +1630,23 @@
     ],
     "supplies": [
       {
-        "id": "sticky_goop",
-        "name": "Sticky Goop",
-        "description": "A mysterious scepter you found in a subterranean swamp.",
+        "id": "mysterious_scepter",
+        "name": "불가사의한 왕홀",
+        "description": "‘옥좌의 방’에서 발견한 불가사의한 왕홀.",
         "cost": 0,
         "multiple": false
       },
       {
-        "id": "mysterious_scepter",
-        "name": "Mysterious Scepter",
-        "description": "A mysterious scepter you found in the throne room.",
+        "id": "sticky_goop",
+        "name": "끈적끈적한 물질",
+        "description": "‘지하 늪지’에서 발견한끈적끈적한 물질.",
         "cost": 0,
         "multiple": false
       },
       {
         "id": "key_of_eztli",
-        "name": "Key of Eztli",
-        "description": "The Key of Eztli.",
+        "name": "에스틀리의 열쇠",
+        "description": "에스틀리의 열쇠.",
         "cost": 0,
         "multiple": false
       },
@@ -1792,19 +1792,19 @@
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "the Excelsior claims another victim."
+            "text": "엑셀시어 호텔이 또 다른 희생자를 취했다"
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "the Excelsior is quiet, for now."
+            "text": "엑셀시어 호텔이 잠잠해졌습니다, 적어도 지금은…"
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "the investigators fled the scene of the crime."
+            "text": "조사자들이 범죄 현장에서 달아났다"
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "the murders continue, unsolved."
+            "text": "해결하지 못한 살인사건은 계속 이어집니다"
           },
           {
             "id": "ritual_at_sea_was_completed",
@@ -1955,24 +1955,24 @@
         "section": "$input_value",
         "entries": [
           {
-            "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
           }
         ]
       },
@@ -1980,24 +1980,24 @@
         "section": "05046",
         "entries": [
           {
-            "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
           },
           {
             "id": "alive",
@@ -2009,7 +2009,7 @@
           },
           {
             "id": "on_gavriellas_trail",
-            "text": "the investigators are on Gavriella’s trail."
+            "text": "조사자들이 가브리엘라의 흔적을 쫓고 있다"
           }
         ]
       },
@@ -2017,24 +2017,24 @@
         "section": "05047",
         "entries": [
           {
-            "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
           },
           {
             "id": "alive",
@@ -2046,7 +2046,7 @@
           },
           {
             "id": "on_jeromes_trail",
-            "text": "the investigators are on Jerome’s trail."
+            "text": "조사자들이 제롬의 흔적을 쫓고 있다"
           }
         ]
       },
@@ -2054,24 +2054,24 @@
         "section": "05048",
         "entries": [
           {
-            "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
           },
           {
             "id": "alive",
@@ -2083,7 +2083,7 @@
           },
           {
             "id": "on_valentinos_trail",
-            "text": "the investigators are on Valentino's trail."
+            "text": "조사자들이 발렌티노의 흔적을 쫓고 있다"
           }
         ]
       },
@@ -2091,24 +2091,24 @@
         "section": "05049",
         "entries": [
           {
-            "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
           },
           {
             "id": "alive",
@@ -2120,7 +2120,7 @@
           },
           {
             "id": "on_pennys_trail",
-            "text": "the investigators are on Penny's trail."
+            "text": "조사자들이 페니의 흔적을 쫓고 있다"
           }
         ]
       },
@@ -2134,7 +2134,7 @@
           },
           {
             "id": "accepted_fate",
-            "text": "you have accepted your fate."
+            "text": "당신은 스스로의 운명을 받아들였다"
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
@@ -2174,7 +2174,7 @@
           },
           {
             "id": "being_hunted",
-            "text": "you are being hunted."
+            "text": "당신은 사냥당하고 있다"
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
@@ -2186,7 +2186,7 @@
           },
           {
             "id": "deceiving_the_lodge",
-            "text": "the investigators are deceiving the Lodge."
+            "text": "조사자들이 황혼회를 속이고 있다"
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
@@ -2198,7 +2198,7 @@
           },
           {
             "id": "enemies_of_the_lodge",
-            "text": "the investigators are enemies of the Lodge."
+            "text": "조사자들이 황혼회를 적으로 두었다"
           },
           {
             "id": "guardian_of_the_trap_defeated",
@@ -2222,15 +2222,15 @@
           },
           {
             "id": "investigators_escaped_the_spectral_realm",
-            "text": "the investigators escaped the spectral realm."
+            "text": "조사자들이 혼령계에서 탈출했다"
           },
           {
             "id": "josef_disappeared_into_the_mist",
-            "text": "Josef disappeared into the mist."
+            "text": "요제프가 안개 속으로 사라졌다"
           },
           {
             "id": "josef_is_alive",
-            "text": "Josef is alive and well."
+            "text": "요제프가 멀쩡히 잘 살아 있다"
           },
           {
             "id": "kept_mementos_hidden",
@@ -2238,15 +2238,15 @@
           },
           {
             "id": "learned_nothing_of_the_lodges_schemes",
-            "text": "the investigators learned nothing of the Lodge’s schemes."
+            "text": "조사자들이 황혼회의 계획에 대해 아무것도 알아내지 못했다"
           },
           {
             "id": "members_of_the_lodge",
-            "text": "the investigators are members of the Lodge."
+            "text": "조사자들이 은빛 황혼회 교단원이 되었다"
           },
           {
             "id": "never_seen_again",
-            "text": "the investigators are never seen or heard from again."
+            "text": "조사자들이 행방불명되었다"
           },
           {
             "id": "path_winds_before_you",
@@ -2254,15 +2254,15 @@
           },
           {
             "id": "pieces_of_evidence",
-            "text": "#X# pieces of evidence were left behind."
+            "text": "증거가 #X#건 남아 있다"
           },
           {
             "id": "rejected_fate",
-            "text": "you have rejected your fate."
+            "text": "당신은 스스로의 운명을 거부했다"
           },
           {
             "id": "rescued_josef",
-            "text": "the investigators rescued Josef."
+            "text": "조사자들이 요제프를 구출했다"
           },
           {
             "id": "sided_with_the_coven",
@@ -2290,11 +2290,11 @@
           },
           {
             "id": "witches_spell_broken",
-            "text": "the witches' spell was broken."
+            "text": "마녀의 마법이 깨졌다"
           },
           {
             "id": "witches_spell_cast",
-            "text": "the witches' spell was cast."
+            "text": "마녀의 마법이 시전되었다"
           }
         ]
       },
@@ -2368,15 +2368,15 @@
           },
           {
             "id": "mesmerizing_flute",
-            "text": "Mesmerizing Flute"
+            "text": "최면을 거는 피리"
           },
           {
             "id": "ritual_components",
-            "text": "Ritual Components"
+            "text": "의례용 도구"
           },
           {
             "id": "scrap_of_torn_shadow",
-            "text": "Scrap of Torn Shadow"
+            "text": "찢어진 그림자"
           },
           {
             "id": "wisp_of_spectral_mist",
