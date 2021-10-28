@@ -24,6 +24,7 @@ const ALL_ICONS = new Set([
   'mystic',
   'rogue',
   'survivor',
+  'neutral',
   'willpower',
   'intellect',
   'combat',
