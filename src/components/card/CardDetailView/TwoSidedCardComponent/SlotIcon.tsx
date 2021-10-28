@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import ArkhamIcon from '@icons/ArkhamIcon';
+import CardIcon from '@icons/CardIcon';
 import StyleContext from '@styles/StyleContext';
 import space, { xs } from '@styles/space';
 
@@ -12,21 +12,21 @@ interface Props {
 function Icon({ slot, inverted, color }: { slot: string; inverted?: boolean; color: string }) {
   switch (slot) {
     case 'hand x2':
-      return <ArkhamIcon name={`hand_x2${inverted ? '_inverted' : ''}`} size={20} color={color} />;
+      return <CardIcon name={`hand_x2${inverted ? '_inverted' : ''}`} size={20} color={color} />;
     case 'arcane x2':
-      return <ArkhamIcon name={`arcane_x2${inverted ? '_inverted' : ''}`} size={28} color={color} />;
+      return <CardIcon name={`arcane_x2${inverted ? '_inverted' : ''}`} size={28} color={color} />;
     case 'accessory':
-      return <View style={space.marginLeftXs}><ArkhamIcon name={`accessory${inverted ? '_inverted' : ''}`} size={28} color={color} /></View>;
+      return <View style={space.marginLeftXs}><CardIcon name={`accessory${inverted ? '_inverted' : ''}`} size={28} color={color} /></View>;
     case 'ally':
-      return <View style={space.marginLeftXs}><ArkhamIcon name={`ally${inverted ? '_inverted' : ''}`} size={24} color={color} /></View>;
+      return <View style={space.marginLeftXs}><CardIcon name={`ally${inverted ? '_inverted' : ''}`} size={24} color={color} /></View>;
     case 'arcane':
-      return <View style={{ marginLeft: 1 }}><ArkhamIcon name={`arcane${inverted ? '_inverted' : ''}`} size={26} color={color} /></View>;
+      return <View style={{ marginLeft: 1 }}><CardIcon name={`arcane${inverted ? '_inverted' : ''}`} size={26} color={color} /></View>;
     case 'body':
-      return <ArkhamIcon name={`body${inverted ? '_inverted' : ''}`} size={26} color={color} />;
+      return <CardIcon name={`body${inverted ? '_inverted' : ''}`} size={26} color={color} />;
     case 'hand':
-      return <ArkhamIcon name={`${slot}${inverted ? '_inverted' : ''}`} size={22} color={color} />;
+      return <CardIcon name={`${slot}${inverted ? '_inverted' : ''}`} size={22} color={color} />;
     case 'tarot':
-      return <ArkhamIcon name={`tarot${inverted ? '_inverted' : ''}`} size={26} color={color} />;
+      return <CardIcon name={`tarot${inverted ? '_inverted' : ''}`} size={26} color={color} />;
     default:
       return <Text>{slot}</Text>;
   }
