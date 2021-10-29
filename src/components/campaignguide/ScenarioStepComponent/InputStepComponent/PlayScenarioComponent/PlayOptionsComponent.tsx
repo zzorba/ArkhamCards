@@ -85,6 +85,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
     scenarioId: processedScenario.id.scenarioId,
     customEditPressed: chaosBagIndex !== undefined ? editChaosBagPressed : undefined,
     standalone: !!campaign.standaloneId,
+    cycleCode: campaign.cycleCode,
   });
   setChaosBagDialogVisibleRef.current = setChaosBagDialogVisible;
 

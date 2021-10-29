@@ -290,6 +290,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
         passProps: {
           chaosBag: customChaosBag,
           updateChaosBag: setCustomChaosBag,
+          cycleCode: selection.type === 'campaign' ? selection.code : 'custom',
         },
         options: {
           topBar: {

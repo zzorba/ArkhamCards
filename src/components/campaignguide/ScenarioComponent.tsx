@@ -268,7 +268,7 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
     >
       <KeepAwake />
       <NarrationWrapper>
-        <ScrollView contentContainerStyle={backgroundStyle}>
+        <ScrollView contentContainerStyle={backgroundStyle} keyboardShouldPersistTaps="always">
           { !!customData && <ArkhamButton icon="world" title={t`Download print and play cards`} onPress={downloadPressed} /> }
           { !!hasInterludeFaq && (
             <ArkhamButton icon="faq" title={t`Interlude FAQ`} onPress={showScenarioFaq} />

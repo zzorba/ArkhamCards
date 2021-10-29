@@ -9,7 +9,7 @@ import uuid from 'react-native-uuid';
 import { useDispatch } from 'react-redux';
 import { ThunkAction } from 'redux-thunk';
 import { Action } from 'redux';
-import { c, t } from 'ttag';
+import { t } from 'ttag';
 
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, useDialog } from '@components/deck/dialogs';
@@ -127,6 +127,7 @@ function errorMessage(code: string): {
   remedy?: LoginRemedy;
 } {
   switch (code) {
+    case 'auth/account-exists-with-different-credential':
     case 'auth/email-already-in-use':
       return {
         message: t`Looks like there is already an account registered with this email address.`,
@@ -160,6 +161,9 @@ function errorMessage(code: string): {
         remedy: 'reset-password',
       };
     case 'auth/operation-not-allowed':
+    case 'auth/invalid-credential':
+    case 'auth/invalid-verification-code':
+    case 'auth/invalid-verification-id':
     default: {
       const message = t`Unknown error`;
       return {

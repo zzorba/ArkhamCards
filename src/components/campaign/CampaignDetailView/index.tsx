@@ -257,6 +257,7 @@ function CampaignDetailView(props: Props) {
     chaosBag: campaign?.chaosBag || EMPTY_CHAOS_BAG,
     setChaosBag: updateCampaignActions.setChaosBag,
     scenarioId: undefined,
+    cycleCode: campaign?.cycleCode || 'custom',
   });
   if (!campaign) {
     if (campaignId.serverId) {

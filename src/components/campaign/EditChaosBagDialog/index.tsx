@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useReducer } from 'react';
-import { find, map, sortBy, throttle } from 'lodash';
+import { find, filter, map, sortBy, throttle } from 'lodash';
 import {
   Platform,
   ScrollView,
@@ -25,8 +25,10 @@ import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useBackButton, useComponentVisible, useNavigationButtonPressed } from '@components/core/hooks';
 import { useAlertDialog } from '@components/deck/dialogs';
+import { CampaignCycleCode, EOE } from '@actions/types';
 
 export interface EditChaosBagProps {
+  cycleCode: CampaignCycleCode;
   chaosBag: ChaosBag;
   updateChaosBag: (chaosBag: ChaosBag) => void;
   trackDeltas?: boolean;
@@ -34,7 +36,7 @@ export interface EditChaosBagProps {
 
 type Props = EditChaosBagProps & NavigationProps;
 
-function EditChaosBagDialog({ chaosBag: originalChaosBag, updateChaosBag, trackDeltas, componentId }: Props) {
+function EditChaosBagDialog({ chaosBag: originalChaosBag, updateChaosBag, trackDeltas, componentId, cycleCode }: Props) {
   const { backgroundStyle, borderStyle, typography } = useContext(StyleContext);
   const [chaosBag, mutateChaosBag] = useReducer((state: ChaosBag, action: { id: ChaosTokenType, mutate: (count: number) => number }) => {
     return {
@@ -98,14 +100,19 @@ function EditChaosBagDialog({ chaosBag: originalChaosBag, updateChaosBag, trackD
   const mutateCount = useCallback((id: ChaosTokenType, mutate: (count: number) => number) => {
     mutateChaosBag({ id, mutate });
   }, [mutateChaosBag]);
-
+  const chaosTokens: ChaosTokenType[] = useMemo(() => {
+    if (cycleCode === EOE) {
+      return CHAOS_TOKENS;
+    }
+    return filter(CHAOS_TOKENS, x => x !== 'frost');
+  }, [cycleCode]);
   return (
     <>
       <ScrollView contentContainerStyle={backgroundStyle}>
         <View style={[styles.row, borderStyle, space.paddingS]}>
           <Text style={[typography.large, typography.bold]}>{t`In Bag`}</Text>
         </View>
-        { map(sortBy(CHAOS_TOKENS, x => CHAOS_TOKEN_ORDER[x]),
+        { map(sortBy(chaosTokens, x => CHAOS_TOKEN_ORDER[x]),
           id => {
             const originalCount = trackDeltas ? originalChaosBag[id] : chaosBag[id];
             return (

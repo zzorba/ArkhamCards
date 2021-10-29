@@ -62,6 +62,7 @@ export interface ThemeColors {
     auto_fail: string;
     bless: string;
     curse: string;
+    frost: string;
     [token: string]: string | undefined;
   };
   health: string;
@@ -272,6 +273,7 @@ export const LIGHT_THEME: ThemeColors = {
     elder_sign: '#4477A1',
     bless: '#9D702A',
     curse: '#3A2342',
+    frost: '#2C3549',
   },
 };
 
@@ -421,5 +423,6 @@ export const DARK_THEME: ThemeColors = {
     elder_sign: '#5496cc',
     bless: '#ebaa42',
     curse: '#b069c9',
+    frost: '#2C3549',
   },
 };

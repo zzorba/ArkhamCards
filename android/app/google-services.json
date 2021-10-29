@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "375702423113-7f4heqtl4ackdj1p49n3tpb7ru1gsvk5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.arkhamcards",
+            "certificate_hash": "034d5215b39c9f3ab5dd227de0c155d248efb45f"
+          }
+        },
+        {
           "client_id": "375702423113-q0d7ub9h0nsflo5ivih9cfkvv5v6ejtr.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -36,7 +44,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "375702423113-g70bmcovqfqduf2tleg7otk7fkpo1sku.apps.googleusercontent.com",
+              "client_id": "375702423113-9r247bhkgk8clpvcr4s8f7t0sd84plue.apps.googleusercontent.com",
               "client_type": 3
             },
             {

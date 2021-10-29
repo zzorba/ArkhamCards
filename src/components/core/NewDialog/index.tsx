@@ -100,6 +100,7 @@ function NewDialog({
         <View style={[styles.body, backgroundStyle]}>
           <ScrollView
             overScrollMode="never"
+            keyboardShouldPersistTaps="always"
             bounces={false}
             showsVerticalScrollIndicator
             style={{ maxHeight: height * 0.5 }}

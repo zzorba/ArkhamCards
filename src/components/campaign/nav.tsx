@@ -1,4 +1,4 @@
-import { Campaign, CampaignId } from '@actions/types';
+import { Campaign, CampaignCycleCode, CampaignId } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import { CampaignLogProps } from '@components/campaignguide/CampaignLogView';
 import { GuideDrawChaosBagProps } from '@components/campaignguide/GuideDrawChaosBagView';
@@ -36,11 +36,15 @@ export function showEditChaosBag(componentId: string, campaign: Campaign, update
         chaosBag: campaign.chaosBag || {},
         updateChaosBag,
         trackDeltas: true,
+        cycleCode: campaign.cycleCode,
       },
       options: {
         topBar: {
           title: {
             text: t`Chaos Bag`,
+          },
+          backButton: {
+            title: t`Cancel`,
           },
         },
       },
@@ -117,7 +121,8 @@ export function showGuideDrawChaosBag(
 export function showDrawChaosBag(
   componentId: string,
   campaignId: CampaignId,
-  allInvestigators: Card[]
+  allInvestigators: Card[],
+  cycleCode: CampaignCycleCode
 ) {
   Navigation.push<CampaignDrawChaosBagProps>(componentId, {
     component: {
@@ -125,6 +130,7 @@ export function showDrawChaosBag(
       passProps: {
         campaignId,
         allInvestigators,
+        cycleCode,
       },
       options: {
         topBar: {

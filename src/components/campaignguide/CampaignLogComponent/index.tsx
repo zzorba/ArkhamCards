@@ -34,10 +34,10 @@ interface CardSectionProps {
   code: string;
   section?: EntrySection;
   campaignGuide: CampaignGuide;
+  width: number;
 }
 
-function CardSection({ code, section, campaignGuide }: CardSectionProps) {
-  const { width } = useContext(StyleContext);
+function CardSection({ code, section, campaignGuide, width }: CardSectionProps) {
   const [card] = useSingleCard(code, 'encounter');
   const eliminated = !!section?.sectionCrossedOut;
   const header = useMemo(() => {
@@ -124,7 +124,7 @@ export default function CampaignLogComponent({
         if (CARD_REGEX.test(id)) {
           return (
             <View style={[space.paddingTopS, space.paddingSideS]}>
-              <CardSection code={id} campaignGuide={campaignGuide} section={section} />
+              <CardSection code={id} campaignGuide={campaignGuide} section={section} width={width - s * 2} />
             </View>
           );
         }

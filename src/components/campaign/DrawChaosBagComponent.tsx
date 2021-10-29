@@ -295,7 +295,7 @@ export default function DrawChaosBagComponent(props: Props) {
       <View style={[styles.advancedButton, styles.advancedButtonLeft]}>
         <TouchableWithoutFeedback onPress={editViewPressed}>
           <View style={[space.paddingSideS, styles.advancedButton, styles.advancedButtonLeft]}>
-            <Text style={[typography.cardTraits, typography.right, space.paddingRightS]}>
+            <Text style={[typography.cardTraits, typography.right, space.paddingRightS, { flex: 1 }]} numberOfLines={2}>
               { editable ? t`Edit chaos bag` : t`View chaos bag` }
             </Text>
             <ChaosToken iconKey="bag" size="tiny" shadow />
@@ -313,7 +313,7 @@ export default function DrawChaosBagComponent(props: Props) {
           <TouchableWithoutFeedback onPress={handleClearTokensPressed}>
             <View style={[space.paddingSideS, styles.advancedButton, styles.advancedButtonRight]}>
               <ChaosToken iconKey="return" size="tiny" />
-              <Text style={[typography.cardTraits, space.paddingLeftS]} numberOfLines={2}>
+              <Text style={[typography.cardTraits, space.paddingLeftS, { flex: 1 }]} numberOfLines={2}>
                 { t`Return tokens` }
               </Text>
             </View>
@@ -322,7 +322,7 @@ export default function DrawChaosBagComponent(props: Props) {
           <TouchableWithoutFeedback onPress={viewChaosBagOdds}>
             <View style={[space.paddingSideS, styles.advancedButton, styles.advancedButtonRight]}>
               <ChaosToken iconKey="odds" size="tiny" />
-              <Text style={[typography.cardTraits, space.paddingLeftS]} numberOfLines={2}>
+              <Text style={[typography.cardTraits, space.paddingLeftS, { flex: 1 }]} numberOfLines={2}>
                 { t`Odds calculator` }
               </Text>
             </View>

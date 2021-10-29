@@ -1113,6 +1113,8 @@ export interface CounterChaosTokenValue {
     scale?: number;
     reveal_another?: boolean;
     adjustment?: number;
+    initial_value?: number;
+    negate?: boolean;
   };
 }
 export interface ConditionChaosTokenValue {

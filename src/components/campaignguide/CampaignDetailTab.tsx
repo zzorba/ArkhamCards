@@ -36,7 +36,7 @@ export default function CampaignDetailTab({
   showLinkedScenario, showAlert, showCountDialog,
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
-  const { campaignId, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
+  const { campaignId, campaign, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
   const showAddInvestigator = useCallback(() => {
     campaignState.showChooseDeck();
   }, [campaignState]);
@@ -97,6 +97,7 @@ export default function CampaignDetailTab({
     guided: true,
     scenarioId: currentScenario?.id?.encodedScenarioId,
     setChaosBag: updateCampaignActions.setChaosBag,
+    cycleCode: campaign.cycleCode,
   });
   return (
     <SafeAreaView style={[styles.wrapper, backgroundStyle]}>

@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState } from 'react';
-import { filter, head, find, flatMap, forEach, groupBy, sortBy, keys, map, range, sumBy, values, reverse, tail, partition, maxBy } from 'lodash';
+import { filter, head, find, flatMap, forEach, groupBy, sortBy, keys, map, range, sumBy, values, reverse, tail, partition, maxBy, StringChain } from 'lodash';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { c, msgid, ngettext, t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
@@ -206,7 +206,64 @@ function parseSpecialTokenValuesText(
     );
   }
 
+  if (!scenarioTokens.length) {
+    return [
+      {
+        token: 'skull',
+        type: 'counter',
+        counter: {
+          prompt: t`Negative modifier`,
+          initial_value: 1,
+          min: -10,
+          negate: true,
+        },
+      },
+      {
+        token: 'cultist',
+        type: 'counter',
+        counter: {
+          prompt: t`Negative modifier`,
+          initial_value: 1,
+          min: -10,
+          negate: true,
+        },
+      },
+      {
+        token: 'tablet',
+        type: 'counter',
+        counter: {
+          prompt: t`Negative modifier`,
+          initial_value: 2,
+          min: -10,
+          negate: true,
+        },
+      },
+      {
+        token: 'elder_thing',
+        type: 'counter',
+        counter: {
+          prompt: t`Negative modifier`,
+          initial_value: 3,
+          negate: true,
+        },
+      },
+    ];
+  }
+
   return scenarioTokens;
+}
+
+interface SpecialTokenRender {
+  token: ChaosTokenType;
+  textModifier: string
+  modifier: number;
+  count: number;
+  countRender?: number;
+  color: string;
+  boost?: {
+    min: string;
+    max: string;
+  }
 }
 
 function NumberInput({ title, value, color, inc, dec }: {
@@ -237,7 +294,7 @@ function NumberInput({ title, value, color, inc, dec }: {
           color="dark"
         />
       </View>
-      <Text style={[space.marginTopS, typography.small, typography.center, typography.italic]} numberOfLines={2} ellipsizeMode="clip">
+      <Text style={[space.marginTopS, space.paddingSideS, typography.small, typography.center, typography.italic, { flex: 1 }]} numberOfLines={2} ellipsizeMode="clip">
         { title }
       </Text>
     </View>
@@ -525,7 +582,10 @@ function SpecialTokenOdds({ chaosBag, specialTokenValues, modifiedSkill, testDif
   const { colors, typography, width } = useContext(StyleContext);
   const bless = chaosBag.bless || 0;
   const curse = chaosBag.curse || 0;
-  const finalTokens = useMemo(() => {
+  const frost = chaosBag.frost || 0;
+  const total = useMemo(() => sumBy(values(chaosBag), x => x || 0), [chaosBag]);
+
+  const finalTokens: SpecialTokenRender[] = useMemo(() => {
     const drawAnotherTokens = flatMap(specialTokenValues, t => {
       if (!t.value.reveal_another) {
         return [];
@@ -559,12 +619,73 @@ function SpecialTokenOdds({ chaosBag, specialTokenValues, modifiedSkill, testDif
         color: colors.token.curse,
       });
     }
+    if (frost > 0) {
+      drawAnotherTokens.push({
+        token: 'frost',
+        textModifier: '-1',
+        modifier: -1,
+        count: frost,
+        color: colors.token.frost,
+      });
+    }
+    if (frost > 1) {
+      drawAnotherTokens.push({
+        token: 'frost',
+        textModifier: t`Auto-Fail`,
+        modifier: -100,
+        count: frost,
+        color: colors.token.frost,
+      });
+    }
     const basePass = calculatePassingOdds(chaosBag, specialTokenValues, modifiedSkill, testDifficulty)
     return map(drawAnotherTokens, t => {
       if (t.modifier === 0) {
         return { ...t, boost: undefined };
       }
       const minBoost = calculatePassingOdds(chaosBag, specialTokenValues, modifiedSkill + t.modifier, testDifficulty) - basePass;
+
+      const totalNonDrawAnotherTokens = total - (sumBy(drawAnotherTokens, x => x.count));
+      if (t.token === 'frost') {
+        if (t.modifier === -100) {
+          // This is the draw 2 auto-fail
+          if (totalNonDrawAnotherTokens <= 0 || total <= 0) {
+            // Only draw another tokens, guaranteed to fail
+            return {
+              ...t,
+              boost: {
+                min: `-100%`,
+                max: `-100%`,
+              },
+            };
+          }
+          // Auto-fail is possible if you draw two of them.
+          const oddsOfDrawingOneFrost = t.count / (1.0 * total);
+          const oddsOfFailingViaFrost = calculatePassingOdds({
+            ...chaosBag,
+            frost: 0,
+            auto_fail: 1 + (t.count - 1),
+          }, specialTokenValues, modifiedSkill, testDifficulty);
+
+          const oddsAdjustment = (oddsOfDrawingOneFrost * oddsOfFailingViaFrost) - basePass;
+          return {
+            ...t,
+            countRender: 2,
+            boost: {
+              min: oddsAdjustment > 0 ? `+${oddsAdjustment}%` : `${oddsAdjustment}%`,
+              max: oddsAdjustment > 0 ? `+${oddsAdjustment}%` : `${oddsAdjustment}%`,
+            },
+          };
+        }
+        return {
+          ...t,
+          countRender: 1,
+          boost: {
+            min: minBoost > 0 ? `+${minBoost}%` : `${minBoost}%`,
+            max: minBoost > 0 ? `+${minBoost}%` : `${minBoost}%`,
+          },
+        };
+      }
+
       const maxBoost = t.count > 1 ? calculatePassingOdds(chaosBag, specialTokenValues, modifiedSkill + t.modifier * t.count, testDifficulty) - basePass : minBoost;
       return {
         ...t,
@@ -574,8 +695,7 @@ function SpecialTokenOdds({ chaosBag, specialTokenValues, modifiedSkill, testDif
         },
       };
     });
-  }, [chaosBag, specialTokenValues, bless, curse, colors, testDifficulty, modifiedSkill]);
-  const total = useMemo(() => sumBy(values(chaosBag), x => x || 0), [chaosBag]);
+  }, [chaosBag, specialTokenValues, total, bless, curse, frost, colors, testDifficulty, modifiedSkill]);
   if (total === 0) {
     return null;
   }
@@ -584,14 +704,14 @@ function SpecialTokenOdds({ chaosBag, specialTokenValues, modifiedSkill, testDif
   }
   return (
     <View style={space.paddingTopS}>
-      { map(finalTokens, ({ token, modifier, count, boost, color }) => {
+      { map(finalTokens, ({ token, modifier, textModifier, count, countRender, boost, color }) => {
         return (
           <View style={[styles.specialTokenRow, space.paddingVerticalXs]} key={token}>
             <View style={[styles.specialTokenValue, space.paddingSideS, { minWidth: 64 }]}>
               <Text style={[typography.large, { color }]}>{Math.round(count / total * 100)}%</Text>
               <Text style={[typography.smallLabel, { color }]}>{count}/{total}</Text>
             </View>
-            { map(range(0, count), idx => (
+            { map(range(0, countRender || count), idx => (
               <View key={idx} style={idx > 0 ? { marginLeft: count > 5 && TINY_PHONE ? -24 : -20 } : undefined}>
                 <ChaosToken iconKey={token} size="extraTiny" />
               </View>
@@ -611,7 +731,9 @@ function SpecialTokenOdds({ chaosBag, specialTokenValues, modifiedSkill, testDif
             )}
             <View style={[styles.specialTokenTextColumn, space.paddingSideS]}>
               <View style={{ minWidth: Math.min(width * 0.25, 120) }}>
-                <Text style={[typography.smallLabel, typography.italic, typography.dark]}>{t`${modifier}, draws another`}</Text>
+                <Text style={[typography.smallLabel, typography.italic, typography.dark]}>
+                  {modifier === -100 ? textModifier : t`${textModifier}, draws another`}
+                </Text>
                 <Text style={[typography.small, { color }]}>
                   { boost ? `${boost.min}${boost.min !== boost.max ? ` ~ ${boost.max}` : ''}` : ' ' }
                 </Text>
@@ -621,7 +743,7 @@ function SpecialTokenOdds({ chaosBag, specialTokenValues, modifiedSkill, testDif
         );
       }) }
     </View>
-  )
+  );
 }
 
 export default function OddsCalculatorComponent({
@@ -685,14 +807,6 @@ export default function OddsCalculatorComponent({
       return [];
     });
   }, [standalonePacks, scenarioCards]);
-
-  const [xValue, incXValue, decXValue] = useCounters({
-    skull: 0,
-    cultist: 0,
-    tablet: 0,
-    elder_thing: 0,
-    elder_sign: 1,
-  });
 
   const [tokenFlags, toggleTokenFlag] = useToggles({});
 
@@ -789,20 +903,36 @@ export default function OddsCalculatorComponent({
   });
 
   const selectedInvestigatorCard = selectedInvestigator >= 0 && selectedInvestigator < allInvestigators.length ? allInvestigators[selectedInvestigator] : undefined;
-  const specialTokenValues = useMemo(() => {
+  const [specialTokenValues, initialXValue] = useMemo(() => {
     const elderSignEffect = selectedInvestigatorCard ? elderSign(selectedInvestigatorCard) : undefined;
+
+    const stv = parseSpecialTokenValuesText(
+      lang,
+      difficulty === 'hard' || difficulty === 'expert',
+      scenarioText,
+      scenarioCard,
+      currentScenario?.code || scenarioCode,
+      selectedInvestigatorCard
+    );
+    const skull = find(stv, x => x.token === 'skull');
+    const cultist = find(stv, x => x.token === 'cultist');
+    const tablet = find(stv, x => x.token === 'tablet');
+    const elder_thing = find(stv, x => x.token === 'elder_thing');
+    const initialValues = {
+      skull: (skull?.type === 'counter' && (skull.counter.initial_value || skull.counter.min)) || 0,
+      cultist: (cultist?.type === 'counter' && (cultist.counter.initial_value || cultist.counter.min)) || 0,
+      tablet: (tablet?.type === 'counter' && (tablet.counter.initial_value || tablet.counter.min)) || 0,
+      elder_thing: (elder_thing?.type === 'counter' && (elder_thing.counter.initial_value || elder_thing.counter.min)) || 0,
+      elder_sign: 1,
+    }
+    const elderSignToken: SingleChaosTokenValue = elderSignEffect || { token: 'elder_sign', type: 'counter', counter: { prompt: t`Your investigator modfifier` } };
     return [
-      ...parseSpecialTokenValuesText(
-        lang,
-        difficulty === 'hard' || difficulty === 'expert',
-        scenarioText,
-        scenarioCard,
-        currentScenario?.code || scenarioCode,
-        selectedInvestigatorCard
-      ),
-      elderSignEffect || { token: 'elder_sign', type: 'counter', counter: { prompt: t`Your investigator modfifier` } },
-    ]
+      [...stv, elderSignToken],
+      initialValues,
+    ];
   }, [lang, scenarioText, difficulty, currentScenario, scenarioCard, scenarioCode, selectedInvestigatorCard]);
+  const [xValue, incXValue, decXValue] = useCounters(initialXValue);
+
   const allSpecialTokenValues: SimpleChaosTokenValue[] = useMemo(() => {
     return [
       ...map(specialTokenValues, tokenValue => {
@@ -834,13 +964,14 @@ export default function OddsCalculatorComponent({
               <VariableTokenInput
                 key={token.token}
                 symbol={token.token}
-                value={xValue[token.token] || token.counter.min || 0}
+                value={xValue[token.token] || 0}
                 text={token.text}
                 prompt={token.counter.prompt}
                 min={token.counter.min || 0}
                 max={token.counter.max}
                 increment={incXValue}
                 decrement={decXValue}
+                negate={token.counter.negate}
               />
             );
           }

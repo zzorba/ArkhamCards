@@ -300,7 +300,6 @@ export function useSimpleTextDialog({
   const content = useMemo(() => {
     return (
       <>
-
         { !!prompt && <View style={space.marginS}><Text style={typography.text}>{prompt}</Text></View>}
         <View style={space.marginS}>
           <NewDialog.TextInput
