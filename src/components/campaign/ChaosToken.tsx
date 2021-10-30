@@ -31,8 +31,8 @@ const GRADIENTS: { [token: string]: {
   stops: number[];
 } | undefined } = {
   frost: {
-    colors: ['#313B4F', '#2C3549'],
-    stops: [0.75, 1.0],
+    colors: ['#3D3A63', '#495483'],
+    stops: [0.6, 1.0],
   },
   auto_fail: {
     colors: ['#8D181E', '#6A0B10'],
@@ -144,10 +144,9 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
         case 'frost':
           return (
             <>
-              <ChaosTokenPart name="token_symbol_fill" color="#2F3649" size={size} />
-              <View style={{ padding: size * 0.10 }}>
-                <ArkhamIcon name="frost" color="#FFFBF2" size={size * 0.80} />
-              </View>
+              <ChaosTokenPart name="token_number_fill" color="#3D3A63" size={size} />
+              <ChaosTokenPart name="token_frost_overlay" color="#E6E1D3" size={size} />
+              <ChaosTokenPart name="token_frost_highlight" color="#FFFBF2" size={size} />
             </>
           );
         case 'bless':

@@ -273,7 +273,7 @@ export const LIGHT_THEME: ThemeColors = {
     elder_sign: '#4477A1',
     bless: '#9D702A',
     curse: '#3A2342',
-    frost: '#2C3549',
+    frost: '#3D3A63',
   },
 };
 
@@ -423,6 +423,6 @@ export const DARK_THEME: ThemeColors = {
     elder_sign: '#5496cc',
     bless: '#ebaa42',
     curse: '#b069c9',
-    frost: '#2C3549',
+    frost: '#3D3A63',
   },
 };

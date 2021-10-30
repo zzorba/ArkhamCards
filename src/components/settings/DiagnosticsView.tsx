@@ -29,7 +29,7 @@ import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useApolloClient } from '@apollo/client';
 import { useSimpleTextDialog } from '@components/deck/dialogs';
 import { setBeta1 } from './actions';
-import { ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS } from '@app_constants';
+import { ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS } from '@app_constants';
 
 
 function goOffline() {
@@ -251,7 +251,7 @@ export default function DiagnosticsView() {
           text={t`Export diagnostic data`}
         />
         { ((Platform.OS === 'android' && ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID) ||
-          (Platform.OS === 'ios' && ENABLE_ARKHAM_CARDS_ACCOUNT_IOS)) && (
+          (Platform.OS === 'ios' && ENABLE_ARKHAM_CARDS_ACCOUNT_IOS && !ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA)) && (
           <>
             <CardSectionHeader section={{ title: t`Beta testing` }} />
             <SettingsItem
