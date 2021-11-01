@@ -476,18 +476,18 @@ PODS:
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
-  - RNFBApp (12.9.2):
+  - RNFBApp (12.9.3):
     - Firebase/CoreOnly (= 8.8.0)
     - React-Core
-  - RNFBAuth (12.9.2):
+  - RNFBAuth (12.9.3):
     - Firebase/Auth (= 8.8.0)
     - React-Core
     - RNFBApp
-  - RNFBDatabase (12.9.2):
+  - RNFBDatabase (12.9.3):
     - Firebase/Database (= 8.8.0)
     - React-Core
     - RNFBApp
-  - RNFBFunctions (12.9.2):
+  - RNFBFunctions (12.9.3):
     - Firebase/Functions (= 8.8.0)
     - React-Core
     - RNFBApp
@@ -861,10 +861,10 @@ SPEC CHECKSUMS:
   RNColorMatrixImageFilters: fdeaf2451ff8f7aa76679a9951b969e6c8adeede
   RNDeviceInfo: 1a8db52003ad76c066ed739259079efe5d2e7853
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
-  RNFBApp: c679e71262a98a1ec0f4600e6db51ec7fcdaeb5b
-  RNFBAuth: e09605dd868fc1de0c99f1c1efff6510c97fcb1d
-  RNFBDatabase: 27c3f714c5d649ad512c33943a1b984bd7ee4c8c
-  RNFBFunctions: ce15f53aff0f4b681308a95ee5aa567a94543594
+  RNFBApp: 729c0666395b1953198dc4a1ec6deb8fbe1c302e
+  RNFBAuth: 7718be1152f5d1d0bb970a8d33094d010f1ac21c
+  RNFBDatabase: 1e8e42f296c43f812ac91fe078ceedbf02c77a23
+  RNFBFunctions: 3f35e57d169476d096c47d47970230d461e95572
   RNFS: 3ab21fa6c56d65566d1fb26c2228e2b6132e5e32
   RNGestureHandler: 9b7e605a741412e20e13c512738a31bd1611759b
   RNGoogleSignin: 2a6f56a378c89e7b23f2aa7ca21ab598f832b91b
