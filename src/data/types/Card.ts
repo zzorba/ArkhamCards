@@ -16,7 +16,7 @@ const SEAL_REGEX = new RegExp('.*Seal \\(.+\\)\\..*');
 const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all|(X total)) damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror');
 export const SEARCH_REGEX = /["“”‹›«»〞〝〟„＂❝❞‘’❛❜‛',‚❮❯\(\)\-\.…]/g;
 
-export const CARD_NUM_COLUMNS = 125;
+export const CARD_NUM_COLUMNS = 126;
 function arkham_num(value: number | null | undefined) {
   if (value === null || value === undefined) {
     return '-';
@@ -178,6 +178,7 @@ export class PartialCard {
 @Index('sort_pack', ['browse_visible', 'taboo_set_id', 'sort_by_pack', 'position'])
 @Index('sort_pack_encounter', ['browse_visible', 'taboo_set_id', 'sort_by_pack', 'encounter_code', 'encounter_position'])
 @Index('sort_name_xp', ['browse_visible', 'taboo_set_id', 'renderName', 'xp'])
+@Index('sort_cycle_xp', ['browse_visible', 'taboo_set_id', 'sort_by_cycle'])
 @Index('encounter_query_index', ['browse_visible', 'taboo_set_id', 'encounter_code'])
 export default class Card {
   @PrimaryColumn('text')
@@ -498,8 +499,8 @@ export default class Card {
   public sort_by_encounter_set_header?: string;
   @Column('integer', { nullable: true, select: false })
   public sort_by_pack?: number;
-  // @Column('integer', { nullable: true, select: false })
-  // public sort_by_cycle?: number;
+  @Column('integer', { nullable: true, select: false })
+  public sort_by_cycle?: number;
 
 
   @Column('integer', { nullable: true, select: false })

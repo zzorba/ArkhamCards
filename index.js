@@ -48,6 +48,7 @@ function MyProvider({ store: { redux, persistor, apollo, anonApollo }, children 
 
 if (ENABLE_ARKHAM_CARDS_ACCOUNT) {
   database().setPersistenceEnabled(true);
+
 }
 
 const { store, persistor } = configureStore({});
