@@ -121,7 +121,7 @@ async function onGoogleButtonPress() {
 }
 
 type LoginRemedy = 'try-login' | 'try-create' | 'reset-password';
-function errorMessage(code: string): {
+function errorMessage(code: string, messages: []): {
   message?: string;
   field?: 'email' | 'password';
   remedy?: LoginRemedy;
@@ -167,7 +167,7 @@ function errorMessage(code: string): {
     default: {
       const message = t`Unknown error`;
       return {
-        message: `${message}: ${code}`,
+        message: `${message}: ${code}\n${messages.join('\n')}`,
       };
     }
   }
@@ -184,6 +184,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
   const [password, setPassword] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [emailErrorCodes, setEmailErrorCodes] = useState<string[]>([]);
+  const [emailErrorMessages, setEmailErrorMessages] = useState<string[]>([]);
   const passwordInputRef = useRef<Input>(null);
 
   useEffect(() => {
@@ -214,10 +215,17 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
             setEmailErrorCodes([error.code]);
           }
         }
+        if (error.message) {
+          if (Array.isArray(error.message)) {
+            setEmailErrorMessages(error.message);
+          } else {
+            setEmailErrorMessages([error.message]);
+          }
+        }
         setSubmitting(false);
       }
     );
-  }, [emailAddress, password, setSubmitting, setEmailErrorCodes, loginSucceeded, mode]);
+  }, [emailAddress, password, setSubmitting, setEmailErrorCodes, setEmailErrorMessages, loginSucceeded, mode]);
   const focusPasswordField = useCallback(() => {
     passwordInputRef.current && passwordInputRef.current.focus();
   }, [passwordInputRef]);
@@ -231,7 +239,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
         message,
         field,
         remedy,
-      } = errorMessage(code);
+      } = errorMessage(code, emailErrorMessages);
       if (message) {
         if (field === 'email') {
           emailErrors.push(message);
@@ -246,7 +254,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
       }
     });
     return [emailErrors, passwordErrors, genericErrors, uniq(remedies)];
-  }, [emailErrorCodes]);
+  }, [emailErrorCodes, emailErrorMessages]);
   const [sentPasswordReset, setSentPasswordReset] = useState(false);
   const sendPasswordReset = useCallback(() => {
     setSentPasswordReset(true);
