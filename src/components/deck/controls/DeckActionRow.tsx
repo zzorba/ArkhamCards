@@ -20,6 +20,7 @@ function iconSize(icon: string) {
   switch (icon) {
     case 'world':
     case 'sort-by-alpha':
+    case 'mythos-busters':
       return 30;
     case 'elder_sign':
     case 'copy':
