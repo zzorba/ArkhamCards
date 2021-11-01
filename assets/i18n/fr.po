@@ -12,7 +12,7 @@ msgstr ""
 "Language-Team: \n"
 "x-generator: Poedit 2.4.2\n"
 "MIME-Version: 1.0\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 2.4.2\n"
 
 msgid "Guardian / Rogue"
 msgstr "Gardien / Truand"
@@ -1851,7 +1851,7 @@ msgid "Arcane x2"
 msgstr "Arcane x2"
 
 msgid "Ally. Arcane"
-msgstr "Allié. Arcane"
+msgstr "Allié. Arcane."
 
 #, javascript-format
 msgid "${ things[0] } and ${ things[1] }"
@@ -4294,8 +4294,8 @@ msgid ""
 "This deck will be upgraded with XP and any new story cards will be added or removed as "
 "specified."
 msgstr ""
-"Ce deck sera mis à jour avec en prenant en compte les points d'expérience puis toutes "
-"les nouvelles cartes d'histoire seront ajoutées ou retirées comme indiqué."
+"Ce deck sera mis à jour en prenant en compte les points d'expérience puis toutes les "
+"nouvelles cartes d'histoire seront ajoutées ou retirées comme indiqué."
 
 #, javascript-format
 msgid "(new total: ${ total })"
@@ -4522,7 +4522,7 @@ msgstr "Traces d'Egil"
 
 #, javascript-format
 msgid "Fan-made campaign by ${ author }"
-msgstr "Campagne Fan-Made faite par ${ author }"
+msgstr "Campagne Fan-Made créée par ${ author }"
 
 msgid "Sort ignores punctuation"
 msgstr "Le tri ignore la ponctuation"
@@ -4660,65 +4660,73 @@ msgid "Faction, Level, Type, Cost"
 msgstr "Classe, Niveau, Type, Coût"
 
 msgid "You cannot have more than 5 level 0 Survivor cards"
-msgstr ""
+msgstr "Vous ne pouvez pas avoir plus de 5 cartes Survivant de niveau 0."
 
 msgid "You cannot have more than 5 level 0 Guardian cards"
-msgstr ""
+msgstr "Vous ne pouvez pas avoir plus de 5 cartes Gardien de niveau 0."
 
 msgid "You cannot have more than 5 level 0 Seeker cards"
-msgstr ""
+msgstr "Vous ne pouvez pas avoir plus de 5 cartes Chercheur de niveau 0."
 
 msgid "You cannot have more than 5 level 0 Rogue cards"
-msgstr ""
+msgstr "Vous ne pouvez pas avoir plus de 5 cartes Truand de niveau 0."
 
 msgid "Sign into Arkham Cards on the Settings tab to enable"
-msgstr ""
+msgstr "Connectez-vous à Arkham Cards dans les Paramètres pour activer"
 
 msgid "Asset: Hand x2. Arcane"
-msgstr ""
+msgstr "Soutien : Main x2. Arcane."
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
-msgstr ""
+msgstr "${ spent } sur ${ supplyIcon } ${ total }"
 
 msgid "Choose deck"
-msgstr ""
+msgstr "Choisir un deck"
 
 msgid "Frost"
-msgstr ""
+msgstr "Geler"
 
 msgid "Database reset"
-msgstr ""
+msgstr "Réinitialisation de la base de données"
 
 msgid "Please close and restart the app"
-msgstr ""
+msgstr "Veuillez fermer et redémarrer l'application"
 
 msgid "Reset card database"
-msgstr ""
+msgstr "Réinitialiser la base de données de cartes"
 
 msgid "Mythos Busters"
-msgstr ""
+msgstr "Mythos Busters"
 
 #, javascript-format
 msgid ""
 "This app is made possible by the continued support of our fans on Patreon and the "
 "${ mythosBustersLink } podcast."
 msgstr ""
+"Cette application existe grâce au soutien continu de nos fans sur Patreon et au podcast "
+"${ mythosBustersLink }."
 
 msgid ""
 "This app is made possible by the continued support of our fans on ${ patreonLink } and "
 "the ${ mythosBustersLink } podcast."
 msgstr ""
+"Cette application existe grâce au soutien continu de nos fans sur ${ patreonLink } et au "
+"podcast ${ mythosBustersLink }."
 
 msgid ""
 "The card database has been reset.\n"
 "\n"
 "Please close the app and restart it to trigger a full sync of card data."
 msgstr ""
+"La base de données de cartes a été réinitialisée.\n"
+"\n"
+"Veuillez fermer et redémarrer l'application pour activer la synchronisation complète des "
+"données de cartes."
 
 #, javascript-format
 msgid "Sqlite version: ${ sqliteVersion }"
-msgstr ""
+msgstr "Version Sqlite : ${ sqliteVersion }"
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -5933,67 +5941,67 @@ msgstr "Zoog"
 
 msgctxt "trait"
 msgid "AI"
-msgstr ""
+msgstr "I.A."
 
 msgctxt "trait"
 msgid "Blessed?"
-msgstr ""
+msgstr "Béni ?"
 
 msgctxt "trait"
 msgid "Broken"
-msgstr ""
+msgstr "Interrompu"
 
 msgctxt "trait"
 msgid "Card"
-msgstr ""
+msgstr "Carte"
 
 msgctxt "trait"
 msgid "Entrepreneur"
-msgstr ""
+msgstr "Entrepreneur"
 
 msgctxt "trait"
 msgid "Falcon Point"
-msgstr ""
+msgstr "Pointe du Faucon"
 
 msgctxt "trait"
 msgid "Lair"
-msgstr ""
+msgstr "Antre"
 
 msgctxt "trait"
 msgid "Nostalgia II"
-msgstr ""
+msgstr "Nostalgie II"
 
 msgctxt "trait"
 msgid "Retired"
-msgstr ""
+msgstr "Retraité"
 
 msgctxt "trait"
 msgid "Royalty"
-msgstr ""
+msgstr "Royauté"
 
 msgctxt "trait"
 msgid "Saga"
-msgstr ""
+msgstr "Aventure Épique"
 
 msgctxt "trait"
 msgid "Shadow"
-msgstr ""
+msgstr "Ombre"
 
 msgctxt "trait"
 msgid "Synergy"
-msgstr ""
+msgstr "Synergie"
 
 msgctxt "trait"
 msgid "Unbroken"
-msgstr ""
+msgstr "Ininterrompu"
 
 msgctxt "trait"
 msgid "Wonderland"
-msgstr ""
+msgstr "Pays des Merveilles"
 
 msgctxt "trait"
 msgid "Y-ha'nthlei"
-msgstr ""
+msgstr "Y-ha'nthlei"
 
 #, javascript-format
 msgctxt "filter"
@@ -6034,7 +6042,7 @@ msgstr "Ressource"
 
 msgctxt "slots"
 msgid "None"
-msgstr ""
+msgstr "Aucun"
 
 msgctxt "Draw Cards"
 msgid "All"
