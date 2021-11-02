@@ -12,7 +12,7 @@ msgstr ""
 "Last-Translator: \n"
 "Language: zh\n"
 "MIME-Version: 1.0\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.0\n"
 
 msgid "Guardian / Rogue"
 msgstr "守衛者 / 流浪者"
@@ -4465,7 +4465,7 @@ msgid "${ spent } of ${ supplyIcon } ${ total }"
 msgstr ""
 
 msgid "Choose deck"
-msgstr ""
+msgstr "選擇牌組"
 
 msgid "Frost"
 msgstr ""
