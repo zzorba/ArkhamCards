@@ -3284,19 +3284,19 @@ msgstr "Enviar campanha"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Fraquezas"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Este baralho contém várias fraquezas básicas"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Este baralho contém uma fraqueza básica"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Você gostaria de removê-las do conjunto básico de fraquezas da campanha?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Você gostaria de removê-la do conjunto básico de fraquezas da campanha?"
 
@@ -4561,10 +4561,6 @@ msgid ""
 "${ originalTokenText }"
 msgstr ""
 
-#, javascript-format
-msgid "${ modifier }, draws another"
-msgstr ""
-
 msgid "Easy difficulty"
 msgstr ""
 
@@ -4595,6 +4591,7 @@ msgstr ""
 msgid "Modified skill"
 msgstr ""
 
+#, javascript-format
 msgid "${ tokens }/${ total } token"
 msgid_plural "${ tokens }/${ total } tokens"
 msgstr[0] ""
@@ -4706,6 +4703,22 @@ msgstr ""
 
 #, javascript-format
 msgid "Sqlite version: ${ sqliteVersion }"
+msgstr ""
+
+msgid "Beta testing"
+msgstr ""
+
+msgid "Edit Weakness Cards"
+msgstr ""
+
+msgid "Narrate"
+msgstr ""
+
+msgid "Negative modifier"
+msgstr ""
+
+#, javascript-format
+msgid "${ textModifier }, draws another"
 msgstr ""
 
 msgctxt "masculine"
@@ -6101,6 +6114,22 @@ msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] "Cenário"
 msgstr[1] "Cenários"
+
+msgctxt "narration"
+msgid "Pause"
+msgstr ""
+
+msgctxt "narration"
+msgid "Play"
+msgstr ""
+
+msgctxt "narration"
+msgid "Jump back"
+msgstr ""
+
+msgctxt "narration"
+msgid "Playing audio"
+msgstr ""
 
 msgctxt "campaign_log_entry"
 msgid "Other."

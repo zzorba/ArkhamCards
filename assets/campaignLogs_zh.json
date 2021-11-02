@@ -1550,24 +1550,24 @@
         "section": "hidden",
         "entries": [
           {
-            "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
-          },
-          {
             "id": "doy_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name#冒險開始時少3資源。",
+            "feminine_text": "#name#冒險開始時少3資源。"
           },
           {
             "id": "eztli_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name#冒險開始時少3資源。",
+            "feminine_text": "#name#冒險開始時少3資源。"
           },
           {
             "id": "hote_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name#冒險開始時少3資源。",
+            "feminine_text": "#name#冒險開始時少3資源。"
+          },
+          {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name#冒險開始時帶有1個線索<i>(從供應堆拿取)</i>。",
+            "feminine_text": "#name#冒險開始時帶有1個線索<i>(從供應堆拿取)</i>。"
           },
           {
             "id": "agenda_5",
@@ -1765,15 +1765,15 @@
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua retreated to nurse its wounds."
+            "text": "奈達斯奎撤退療傷。"
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+            "text": "狂歡節期間許多平民被獻祭給奈達斯奎。"
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "the sun banished Cnidathqua into the depths."
+            "text": "太陽將奈達斯奎逐回深海。"
           },
           {
             "id": "constellation_was_lost_to_the_depths",
@@ -1809,15 +1809,15 @@
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "the Rougarou continues to haunt the bayou."
+            "text": "狼人繼續在河口出沒。"
           },
           {
             "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "the Rougarou is destroyed, and the curse is lifted."
+            "text": "狼人被摧毀且詛咒被移除。"
           },
           {
             "id": "rougarou_escaped_and_embrace_curse",
-            "text": "the Rougarou escaped, and you embraced the curse."
+            "text": "狼人逃離且你身負詛咒。"
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -2914,24 +2914,24 @@
         "section": "hidden",
         "entries": [
           {
-            "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
-          },
-          {
             "id": "doy_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name#冒險開始時少3資源。",
+            "feminine_text": "#name#冒險開始時少3資源。"
           },
           {
             "id": "eztli_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name#冒險開始時少3資源。",
+            "feminine_text": "#name#冒險開始時少3資源。"
           },
           {
             "id": "hote_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name#冒險開始時少3資源。",
+            "feminine_text": "#name#冒險開始時少3資源。"
+          },
+          {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name#冒險開始時帶有1個線索<i>(從供應堆拿取)</i>。",
+            "feminine_text": "#name#冒險開始時帶有1個線索<i>(從供應堆拿取)</i>。"
           },
           {
             "id": "agenda_5",
