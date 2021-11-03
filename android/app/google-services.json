@@ -31,6 +31,14 @@
           }
         },
         {
+          "client_id": "375702423113-tr9kroddli3cb6n3b7kdrgsv6kq49lnv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.arkhamcards",
+            "certificate_hash": "534e178f28536376e3a19f46e0785492d64480ea"
+          }
+        },
+        {
           "client_id": "375702423113-g70bmcovqfqduf2tleg7otk7fkpo1sku.apps.googleusercontent.com",
           "client_type": 3
         }
