@@ -377,9 +377,9 @@ PODS:
     - React-Core
   - react-native-appearance (0.3.4):
     - React
-  - react-native-config (1.4.4):
-    - react-native-config/App (= 1.4.4)
-  - react-native-config/App (1.4.4):
+  - react-native-config (1.4.5):
+    - react-native-config/App (= 1.4.5)
+  - react-native-config/App (1.4.5):
     - React-Core
   - react-native-document-picker (6.0.4):
     - React-Core
@@ -389,15 +389,15 @@ PODS:
     - React
   - react-native-keyevent (0.2.8):
     - React
-  - react-native-netinfo (6.0.2):
+  - react-native-netinfo (6.0.4):
     - React-Core
-  - react-native-pager-view (5.4.7):
+  - react-native-pager-view (5.4.8):
     - React-Core
   - react-native-sqlite-storage (6.0.1):
     - React-Core
-  - react-native-track-player (2.1.1):
+  - react-native-track-player (2.1.2):
     - React-Core
-    - SwiftAudioEx (= 0.14.2)
+    - SwiftAudioEx (= 0.14.5)
   - react-native-webview (11.13.1):
     - React-Core
   - React-perflogger (0.66.1)
@@ -482,7 +482,7 @@ PODS:
     - React-Core
   - RNColorMatrixImageFilters (5.2.10):
     - React-Core
-  - RNDeviceInfo (8.4.1):
+  - RNDeviceInfo (8.4.4):
     - React-Core
   - RNFastImage (8.5.11):
     - React-Core
@@ -520,7 +520,7 @@ PODS:
     - React-Core
   - RNSVG (12.1.1):
     - React
-  - RNVectorIcons (8.1.0):
+  - RNVectorIcons (9.0.0):
     - React-Core
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
@@ -530,7 +530,7 @@ PODS:
     - SDWebImage/Core (~> 5.10)
   - SRSRadialGradient (1.0.9):
     - React
-  - SwiftAudioEx (0.14.2)
+  - SwiftAudioEx (0.14.5)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -863,15 +863,15 @@ SPEC CHECKSUMS:
   React-logger: bfddd3418dc1d45b77b822958f3e31422e2c179b
   react-native-app-auth: ed620d57f4b2bfc96c28ca264133c324a575a645
   react-native-appearance: fc2014516054585d531e07aa0b40ab0de1d2be85
-  react-native-config: 72d948053a442779b3178fddd571e37f118ef606
+  react-native-config: 6502b1879f97ed5ac570a029961fc35ea606cd14
   react-native-document-picker: 92adb1d337a6a7beed0110d29c9186565dab74d2
   react-native-in-app-browser: 0f72d3aef7006810bcc2215b476f1117b47616b8
   react-native-keep-awake: eba3137546b10003361b37c761f6c429b59814ae
   react-native-keyevent: f8728b8c73dbfbcb4d2c56d9e78be082c673c456
-  react-native-netinfo: 8917788f12f8c422d16a56f840a1b06faa56e2b6
-  react-native-pager-view: a1486db1a8c9956437fc3a87cf2b56f44095a193
+  react-native-netinfo: 78bb0c4bf96177a14ea1bba951de9ad27419965b
+  react-native-pager-view: de4561910a6f61c01e6fd91165bd033a47418865
   react-native-sqlite-storage: 6df009b8b67fe34c57c5fd06ee8fff7669fece6d
-  react-native-track-player: dc9e2571c181aebffccc83c5ddcf4b550b012f04
+  react-native-track-player: d8b0b1bc35f224b6bb4256d3415306fc1e50e7c9
   react-native-webview: cea67b82dd5fbdf0f5c821b4ca0ca0b01e954c0b
   React-perflogger: fcac6090a80e3d967791b4c7f1b1a017f9d4a398
   React-RCTActionSheet: caf5913d9f9e605f5467206cf9d1caa6d47d7ad6
@@ -890,7 +890,7 @@ SPEC CHECKSUMS:
   RNAppleAuthentication: 63c2127ace11985b94f852fc480eb84145653712
   RNCAsyncStorage: d599364c12b1ddb042cc2d7ab6f8258962b83097
   RNColorMatrixImageFilters: fdeaf2451ff8f7aa76679a9951b969e6c8adeede
-  RNDeviceInfo: 1a8db52003ad76c066ed739259079efe5d2e7853
+  RNDeviceInfo: 915cb0470bf2aae4d90d36c9895a72b650f01c5d
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
   RNFBApp: 7e150ce2ff2d8a0f9c85e33001a6943b3deacc65
   RNFBAuth: d7803ad84eea4c2275ee3c90248a6075ceced05f
@@ -904,11 +904,11 @@ SPEC CHECKSUMS:
   RNSha256: 68357f69fa5f755a495e13ec42c8f0fc75316db0
   RNShare: 0fec82bd2e67d09f895937ccb4f5a097e714dec2
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
-  RNVectorIcons: 31cebfcf94e8cf8686eb5303ae0357da64d7a5a4
+  RNVectorIcons: 4143ba35feebab8fdbe6bc43d1e776b393d47ac8
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815
   SRSRadialGradient: 49ba49a7a8f257c3fe785c250867b07185d1d01e
-  SwiftAudioEx: df9d62dcae6c2eca358bc36eb972ebac440cd943
+  SwiftAudioEx: bfaff9894c885aded7edfb0793e25165d55053d4
   Yoga: 2b4a01651f42a32f82e6cef3830a3ba48088237f
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
