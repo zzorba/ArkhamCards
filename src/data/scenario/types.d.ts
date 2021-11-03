@@ -129,7 +129,9 @@ export type Input =
   | RandomLocationInput
   | PrologueRandomizer
   | SaveDecksInput
-  | TarotReading;
+  | TarotReadingInput
+  | PartnerTraumaInput
+  | InvestigatorPartnerChoiceInput;
 export type CardQuery = CardSearchQuery | CardCodeList;
 export type UseSuppliesInput = UseSuppliesChoiceInput | UseSuppliesAllInput;
 export type InvestigatorChoiceCondition =
@@ -811,10 +813,22 @@ export interface PrologueRandomizer {
 export interface SaveDecksInput {
   type: "save_decks";
 }
-export interface TarotReading {
+export interface TarotReadingInput {
   type: "tarot_reading";
   randomized: boolean;
   reading: "chaos" | "balance" | "choice" | "destiny";
+}
+export interface PartnerTraumaInput {
+  type: "partner_trauma";
+  section: string;
+  id: string;
+}
+export interface InvestigatorPartnerChoiceInput {
+  type: "investigator_choice_partner";
+  section: string;
+  id: string;
+  prompt: string;
+  cards: string[];
 }
 export interface EncounterSetsStep {
   id: string;
