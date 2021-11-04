@@ -234,6 +234,41 @@
     "supplies": []
   },
   {
+    "campaignId": "eoe",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "experiment_defeated",
+            "text": "실험체를 쓰러뜨렸다"
+          },
+          {
+            "id": "failed_to_save_students",
+            "text": "조사자들이 학생들을 구하지 못했다"
+          },
+          {
+            "id": "students_rescued",
+            "text": "학생들을 구해냈다"
+          },
+          {
+            "id": "unconscious_for_several_hours",
+            "text": "조사자들이 몇 시간 동안 의식을 잃었다"
+          },
+          {
+            "id": "warren_rice_kidnapped",
+            "text": "‘워렌 라이스 박사’는 납치되었다"
+          },
+          {
+            "id": "warren_rice_rescued",
+            "text": "조사자들이 워렌 라이스 교수를 구출했다"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "ptc",
     "sections": [
       {

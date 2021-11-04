@@ -234,6 +234,41 @@
     "supplies": []
   },
   {
+    "campaignId": "eoe",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "experiment_defeated",
+            "text": "Эксперимент побеждён."
+          },
+          {
+            "id": "failed_to_save_students",
+            "text": "сыщики не спасли студентов."
+          },
+          {
+            "id": "students_rescued",
+            "text": "студенты спасены."
+          },
+          {
+            "id": "unconscious_for_several_hours",
+            "text": "сыщики провели несколько часов без сознания."
+          },
+          {
+            "id": "warren_rice_kidnapped",
+            "text": "Профессор Уоррен Райс был похищен."
+          },
+          {
+            "id": "warren_rice_rescued",
+            "text": "сыщики спасли профессора Уоррена Райса."
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "ptc",
     "sections": [
       {

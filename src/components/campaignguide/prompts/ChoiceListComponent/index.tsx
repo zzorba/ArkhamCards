@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import { every, findIndex, forEach, flatMap, map } from 'lodash';
+import { every, findIndex, forEach, flatMap, map, filter, uniqBy } from 'lodash';
 import { t } from 'ttag';
 
 import ChoiceListItemComponent from './ChoiceListItemComponent';
@@ -33,12 +33,13 @@ export interface ChoiceListComponentProps {
   detailed?: boolean;
   options: Choices;
   loading?: boolean;
+  unique?: boolean;
 }
 interface Props extends ChoiceListComponentProps {
   items: ListItem[];
 }
 
-export default function ChoiceListComponent({ id, promptType, investigator, bulletType, text, confirmText, optional, detailed, options, loading, items, hideInvestigatorSection }: Props) {
+export default function ChoiceListComponent({ id, promptType, investigator, bulletType, unique, text, confirmText, optional, detailed, options, loading, items, hideInvestigatorSection }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { borderStyle, colors, width } = useContext(StyleContext);
   const [selectedChoice, setSelectedChoice] = useState(() => {
@@ -46,9 +47,13 @@ export default function ChoiceListComponent({ id, promptType, investigator, bull
       [code: string]: number | undefined;
     } = {};
     if (!optional) {
-      forEach(items, item => {
+      forEach(items, (item, idx) => {
         if (options.type === 'universal') {
-          selectedChoice[item.code] = 0;
+          if (unique && idx < options.choices.length) {
+            selectedChoice[item.code] = idx;
+          } else {
+            selectedChoice[item.code] = 0;
+          }
         } else {
           const personalized = options.perCode[item.code];
           if (personalized && personalized.length) {
@@ -146,15 +151,24 @@ export default function ChoiceListComponent({ id, promptType, investigator, bull
     }
     return results;
   }, [inputChoices, hideInvestigatorSection, items, detailed, options, optional, width, getChoice, onChoiceChange]);
-
+  const disabledText = useMemo(() => {
+    if (detailed && !every(items, item => selectedChoice[item.code] !== undefined)) {
+      return t`Continue`;
+    }
+    if (unique) {
+      const nonNone = filter(items, item => selectedChoice[item.code] !== undefined);
+      if (nonNone.length !== uniqBy(nonNone, item => selectedChoice[item.code]).length) {
+        return t`Fix duplicates`;
+      }
+    }
+    return undefined;
+  }, [detailed, items, unique, selectedChoice])
   return (
     <InputWrapper
       editable={!hasDecision}
       investigator={investigator}
       onSubmit={save}
-      disabledText={detailed && !every(
-        items,
-        item => selectedChoice[item.code] !== undefined) ? t`Continue` : undefined}
+      disabledText={disabledText}
       title={(inputChoices !== undefined ? confirmText : undefined) || text}
       titleStyle={promptType || 'setup'}
       bulletType={bulletType}

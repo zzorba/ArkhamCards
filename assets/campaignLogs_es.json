@@ -234,6 +234,41 @@
     "supplies": []
   },
   {
+    "campaignId": "eoe",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "experiment_defeated",
+            "text": "el experimento ha sido derrotado."
+          },
+          {
+            "id": "failed_to_save_students",
+            "text": "los investigadores no lograron salvar a los estudiantes."
+          },
+          {
+            "id": "students_rescued",
+            "text": "los estudiantes han sido rescatados."
+          },
+          {
+            "id": "unconscious_for_several_hours",
+            "text": "los investigadores estuvieron inconscientes varias horas."
+          },
+          {
+            "id": "warren_rice_kidnapped",
+            "text": "el Profesor Warren Rice ha sido secuestrado."
+          },
+          {
+            "id": "warren_rice_rescued",
+            "text": "los investigadores rescataron al Profesor Warren Rice."
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "ptc",
     "sections": [
       {

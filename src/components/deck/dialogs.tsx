@@ -23,6 +23,7 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { DeckActions, useDeckActions } from '@data/remote/decks';
 import { useUploadLocalDeckRequest } from '@data/remote/campaigns';
 import Card from '@data/types/Card';
+import { Stringifiable } from 'query-string';
 
 interface DialogOptions {
   title: string;
@@ -353,9 +354,11 @@ interface PickerItemHeader {
 interface PickerItem<T> {
   type?: undefined;
   title: string;
+  description?: string;
   value: T;
   icon?: string;
   iconNode?: React.ReactNode;
+  rightNode?: React.ReactNode;
 }
 export type Item<T> = PickerItemHeader | PickerItem<T>;
 interface PickerDialogOptions<T> {
@@ -401,7 +404,9 @@ export function usePickerDialog<T>({
             iconName={item.icon}
             iconNode={item.iconNode}
             text={item.title}
+            description={item.description}
             value={item.value}
+            rightNode={item.rightNode}
             onValueChange={onValuePress}
             // tslint:disable-next-line
             selected={selectedValue === item.value}

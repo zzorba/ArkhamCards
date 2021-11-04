@@ -70,12 +70,19 @@ export default function InvestigatorImage({
 
 
   const imageStyle = useMemo(() => {
+    if (card?.type_code === 'asset') {
+      switch (impliedSize) {
+        case 'tiny': return styles.tinyAsset;
+        case 'small': return styles.smallAsset;
+        case 'large': return styles.largeAsset;
+      }
+    }
     switch (impliedSize) {
       case 'tiny': return yithian ? styles.yithianTiny : styles.tiny;
       case 'small': return yithian ? styles.yithianSmall : styles.small;
       case 'large': return yithian ? styles.yithianLarge : styles.large;
     }
-  }, [impliedSize, yithian]);
+  }, [impliedSize, yithian, card]);
 
   const investigatorImage = useMemo(() => {
     if (card) {
@@ -223,6 +230,27 @@ const styles = StyleSheet.create({
     left: -20,
     width: (166 + 44) * 1.25,
     height: (136 + 34) * 1.25,
+  },
+  tinyAsset: {
+    position: 'absolute',
+    top: -10,
+    left: -12,
+    width: (136 + 34) * 0.4,
+    height: (166 + 44) * 0.4,
+  },
+  smallAsset: {
+    position: 'absolute',
+    top: -36,
+    left: -20,
+    width: (136 + 34),
+    height: (166 + 44),
+  },
+  largeAsset: {
+    position: 'absolute',
+    top: -44,
+    left: -20,
+    width: (136 + 34) * 1.25,
+    height: (166 + 44) * 1.25,
   },
   placeholder: {
     position: 'absolute',

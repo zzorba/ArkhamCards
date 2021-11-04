@@ -234,6 +234,41 @@
     "supplies": []
   },
   {
+    "campaignId": "eoe",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "experiment_defeated",
+            "text": "擊敗實驗體。"
+          },
+          {
+            "id": "failed_to_save_students",
+            "text": "未能成功拯救學生。"
+          },
+          {
+            "id": "students_rescued",
+            "text": "成功拯救學生。"
+          },
+          {
+            "id": "unconscious_for_several_hours",
+            "text": "調查員們昏迷了數小時。"
+          },
+          {
+            "id": "warren_rice_kidnapped",
+            "text": "沃倫·萊斯教授被綁架。"
+          },
+          {
+            "id": "warren_rice_rescued",
+            "text": "調查員解救了沃倫·萊斯教授。"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "ptc",
     "sections": [
       {

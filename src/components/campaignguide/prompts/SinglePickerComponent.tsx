@@ -8,10 +8,12 @@ import { map } from 'lodash';
 import PickerStyleButton from '@components/core/PickerStyleButton';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import { DisplayChoice } from '@data/scenario';
-import space from '@styles/space';
+import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { ChoiceIcon } from '@data/scenario/types';
 import RadioButton from './RadioButton';
+import InvestigatorImage from '@components/core/InvestigatorImage';
+import TraumaSummary from '@components/campaign/TraumaSummary';
 
 interface Props {
   title: string;
@@ -28,7 +30,18 @@ interface Props {
   firstItem?: boolean;
 }
 
-function getIcon(icon?: ChoiceIcon): React.ReactNode {
+function getIcon(icon?: ChoiceIcon, card?: Card): React.ReactNode {
+  if (card) {
+    return (
+      <View style={[space.paddingRightXs, { marginLeft: -s }]}>
+        <InvestigatorImage
+          card={card}
+          size="tiny"
+          border
+        />
+      </View>
+    );
+  }
   if (!icon) {
     return null;
   }
@@ -59,7 +72,9 @@ export default function SinglePickerComponent({
       ...map(choices, (c, idx) => {
         return {
           title: c.text || '',
-          iconNode: getIcon(c.icon),
+          description: c.card?.subname,
+          iconNode: getIcon(c.icon, c.card),
+          rightNode: c.card && c.trauma ? <View style={space.paddingRightS}><TraumaSummary investigator={c.card} trauma={c.trauma} hideNone /></View> : undefined,
           value: idx,
         };
       }),
@@ -80,17 +95,26 @@ export default function SinglePickerComponent({
     (!investigator?.grammarGenderMasculine() && (choices[selectedIndex].selected_feminine_text || choices[selectedIndex].feminine_text)) ||
     choices[selectedIndex].selected_text || choices[selectedIndex].text
   );
+
+  const selectedDescription = (selectedIndex === undefined || selectedIndex === -1) ? undefined : choices[selectedIndex].card?.subname;
   const selectedIcon = (selectedIndex === undefined || selectedIndex === -1) ? undefined : choices[selectedIndex].icon;
   const selection = useMemo(() => {
     return (
       <View style={[{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }]}>
-        <Text numberOfLines={2} ellipsizeMode="head" style={[typography.button, investigator ? typography.white : undefined]} >
-          { selectedLabel }
-        </Text>
+        <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end' }}>
+          <Text numberOfLines={2} ellipsizeMode="head" style={[typography.button, investigator ? typography.white : undefined]} >
+            { selectedLabel }
+          </Text>
+          { !!selectedDescription && (
+            <Text numberOfLines={2} ellipsizeMode="head" style={[typography.cardTraits, investigator ? typography.white : undefined]} >
+              { selectedDescription }
+            </Text>
+          ) }
+        </View>
         { !!selectedIcon && <View style={space.paddingLeftS}>{ getIcon(selectedIcon) }</View> }
       </View>
     );
-  }, [typography, investigator, selectedLabel, selectedIcon]);
+  }, [typography, investigator, selectedLabel, selectedIcon, selectedDescription]);
   const button = useMemo(() => {
     if (investigator) {
       return (

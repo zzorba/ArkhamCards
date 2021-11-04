@@ -234,6 +234,41 @@
     "supplies": []
   },
   {
+    "campaignId": "eoe",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "experiment_defeated",
+            "text": "the Experiment was defeated."
+          },
+          {
+            "id": "failed_to_save_students",
+            "text": "the investigators failed to save the students."
+          },
+          {
+            "id": "students_rescued",
+            "text": "the students were rescued."
+          },
+          {
+            "id": "unconscious_for_several_hours",
+            "text": "the investigators were unconscious for several hours."
+          },
+          {
+            "id": "warren_rice_kidnapped",
+            "text": "Professor Warren Rice was kidnapped."
+          },
+          {
+            "id": "warren_rice_rescued",
+            "text": "the investigators rescued Professor Warren Rice."
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "ptc",
     "sections": [
       {

@@ -36,6 +36,7 @@ import EncounterIcon from '@icons/EncounterIcon';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { useDispatch } from 'react-redux';
 import { useDeck } from '@data/hooks';
+import InputCounterRow from '../InputCounterRow';
 
 interface Props {
   componentId: string;
@@ -73,94 +74,6 @@ function deckMessage(saved: boolean, hasDeck: boolean, hasChanges: boolean) {
     return t`When you have finished making adjustments, press the 'Save' button to record your changes.`;
   }
   return t`This deck will be upgraded with XP and any new story cards will be added or removed as specified.`;
-}
-
-function CounterRow({
-  icon,
-  title,
-  count,
-  total,
-  inc,
-  dec,
-  max,
-  min,
-  editable,
-  disabled,
-  bottomBorder,
-  hideTotal,
-}: {
-  editable: boolean;
-  icon?: React.ReactNode;
-  title: string;
-  count: number;
-  total: number;
-  inc: () => void;
-  dec: () => void;
-  max?: number;
-  min?: number;
-  disabled?: boolean;
-  bottomBorder?: boolean;
-  hideTotal?: boolean;
-}) {
-  const { borderStyle, colors, typography } = useContext(StyleContext);
-  const description = useMemo(() => {
-    if (!editable || hideTotal) {
-      return null;
-    }
-    return (
-      <View style={[styles.startRow, space.paddingRightS]}>
-        <Text style={[typography.small, { color: colors.lightText }]}>
-          { t`(new total: ${total})` }
-        </Text>
-      </View>
-    );
-  }, [editable, total, colors, typography, hideTotal]);
-  return (
-    <View style={[
-      styles.betweenRow,
-      space.paddingTopS,
-      space.paddingBottomS,
-      space.paddingLeftXs,
-      space.paddingRightXs,
-      space.marginSideS,
-      bottomBorder ? { borderBottomWidth: StyleSheet.hairlineWidth } : undefined,
-      borderStyle,
-    ]}>
-      <View style={styles.column}>
-        <View style={styles.startRow}>
-          { icon }
-          <Text style={[typography.small, typography.italic]}>
-            { title }
-          </Text>
-        </View>
-        <View style={space.paddingTopXs}>{description}</View>
-      </View>
-      <View style={styles.endRow}>
-        { editable ? (
-          <PlusMinusButtons
-            count={total}
-            countRender={(
-              <Text style={[typography.counter, typography.center, { minWidth: 28 }]}>
-                {!hideTotal && count > 0 && editable ? '+' : ''}{ count }
-              </Text>
-            )}
-            onIncrement={inc}
-            onDecrement={dec}
-            showZeroCount
-            min={min}
-            max={max}
-            disabled={disabled}
-            rounded
-            dialogStyle
-          />
-        ) : (
-          <Text style={[typography.counter, { color: colors.lightText }]}>
-            { total }
-          </Text>
-        ) }
-      </View>
-    </View>
-  );
 }
 
 function UpgradeDeckRow({
@@ -440,7 +353,7 @@ function UpgradeDeckRow({
     const locked = (choices !== undefined) || !editable;
     return (
       <>
-        <CounterRow
+        <InputCounterRow
           editable={!locked}
           bottomBorder
           disabled={saving}
@@ -452,7 +365,7 @@ function UpgradeDeckRow({
           dec={decPhysical}
           max={health}
         />
-        <CounterRow
+        <InputCounterRow
           editable={!locked}
           disabled={saving}
           icon={<View style={space.paddingRightXs}><HealthSanityIcon type="sanity" size={20} /></View>}
@@ -571,7 +484,7 @@ function UpgradeDeckRow({
     const newTotal = count + existingCount;
     const locked = (choices !== undefined) || !editable;
     return (
-      <CounterRow
+      <InputCounterRow
         editable={!locked}
         icon={<View style={space.paddingRightXs}><EncounterIcon encounter_code={campaign.cycleCode} size={22} color={colors.D10} /></View>}
         title={campaignLog.campaignData.redirect_experience ? t`${section.title} (from XP)` : section.title}
@@ -685,11 +598,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-  },
-  endRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
   },
   xpBlock: {
     borderRadius: 4,

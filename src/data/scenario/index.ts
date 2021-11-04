@@ -1,12 +1,13 @@
 import { find, flatMap, sortBy } from 'lodash';
 
-import { NumberChoices, StandaloneId } from '@actions/types';
+import { NumberChoices, StandaloneId, Trauma } from '@actions/types';
 import { FullCampaign, Effect, Errata, Scenario, ChoiceIcon, ChaosToken, ChaosTokens, ScenarioChaosTokens } from './types';
 import CampaignGuide, { CampaignLog, CampaignLogSection } from './CampaignGuide';
 import ScenarioGuide from './ScenarioGuide';
 import ScenarioStep from './ScenarioStep';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import Card from '@data/types/Card';
 
 export interface ScenarioId {
   scenarioId: string;
@@ -59,6 +60,8 @@ export interface DisplayChoice {
   steps?: string[] | null;
   effects?: Effect[] | null;
   pre_border_effects?: Effect[] | null;
+  trauma?: Trauma;
+  card?: Card;
 }
 
 export interface DisplayChoiceWithId extends DisplayChoice {

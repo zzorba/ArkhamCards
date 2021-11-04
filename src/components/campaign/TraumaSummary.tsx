@@ -15,9 +15,10 @@ interface Props {
   trauma: TraumaAndCardData;
   investigator: Card;
   whiteText?: boolean;
+  hideNone?: boolean;
 }
 
-export default function TraumaSummary({ trauma, investigator, whiteText }: Props) {
+export default function TraumaSummary({ trauma, investigator, whiteText, hideNone }: Props) {
   const { typography } = useContext(StyleContext);
   const physical = (trauma.physical || 0);
   const mental = (trauma.mental || 0);
@@ -29,7 +30,7 @@ export default function TraumaSummary({ trauma, investigator, whiteText }: Props
     return <Text style={[typography.subHeaderText, textColorStyle]}>{t`Insane`}</Text>;
   }
   if (physical + mental === 0) {
-    if (whiteText) {
+    if (whiteText || hideNone) {
       return null;
     }
     return <Text style={typography.subHeaderText}>{c('trauma').t`None`}</Text>;

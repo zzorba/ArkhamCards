@@ -440,6 +440,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   ALICE_IN_WONDERLAND,
   DARK_MATTER,
   CROWN_OF_EGIL,
+  // EOE,
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);

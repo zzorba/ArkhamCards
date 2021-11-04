@@ -9,14 +9,16 @@ import ArkhamSwitch from '../ArkhamSwitch';
 interface Props<T> {
   iconName?: string;
   iconNode?: ReactNode;
+  rightNode?: ReactNode;
   text: string;
+  description?: string;
   value: T;
   onValueChange: (value: T) => void;
   selected: boolean;
   last: boolean;
   indicator?: 'check' | 'radio'
 }
-export default function ItemPickerLine<T>({ iconName, iconNode, text, selected, last, value, indicator = 'radio', onValueChange }: Props<T>) {
+export default function ItemPickerLine<T>({ iconName, iconNode, text, description, rightNode, selected, last, value, indicator = 'radio', onValueChange }: Props<T>) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
   const onPress = useCallback(() => onValueChange(value), [onValueChange, value]);
   const icon = useMemo(() => {
@@ -38,10 +40,22 @@ export default function ItemPickerLine<T>({ iconName, iconNode, text, selected, 
                 { icon }
               </View>
             ) }
-            <Text style={[typography.menuText, { textAlignVertical: 'center', flex: 1 }]}>
-              { text }
-            </Text>
+            { description ? (
+              <View style={styles.column}>
+                <Text style={[typography.menuText, { textAlignVertical: 'center', flex: 1 }]}>
+                  { text }
+                </Text>
+                <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={1} ellipsizeMode="clip">
+                  { description }
+                </Text>
+              </View>
+            ) : (
+              <Text style={[typography.menuText, { textAlignVertical: 'center', flex: 1 }]}>
+                { text }
+              </Text>
+            ) }
           </View>
+          { !!rightNode && rightNode }
           { indicator === 'radio' ? (
             <View style={[styles.circle, { borderColor: colors.L10 }]}>
               { !!selected && <View style={[styles.circleFill, { backgroundColor: colors.M }]} />}
@@ -72,6 +86,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  column: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+  },
   leadRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -79,8 +98,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   icon: {
-    width: 32,
-    height: 32,
+    minWidth: 32,
+    minHeight: 32,
   },
   circle: {
     width: 24,

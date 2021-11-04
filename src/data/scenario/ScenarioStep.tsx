@@ -772,6 +772,59 @@ export default class ScenarioStep {
           {}
         );
       }
+      case 'investigator_choice_partner': {
+        const choice = scenarioState.stringChoices(this.step.id);
+        if (choice === undefined) {
+          return undefined;
+        }
+        return this.maybeCreateEffectsStep(
+          step.id,
+          this.remainingStepIds,
+          [{
+            input: flatMap(values(choice), x => x),
+            effects: [
+              {
+                type: 'campaign_log_cards',
+                section: input.section,
+                id: input.id,
+                cards: '$input_value',
+              },
+            ],
+          }],
+          scenarioState,
+          {}
+        );
+      }
+      case 'partner_trauma': {
+        const choice = scenarioState.numberChoices(this.step.id);
+        if (choice === undefined) {
+          return undefined;
+        }
+        const effectsWithInput: EffectsWithInput[] = [];
+        forEach(choice, ([physical, mental], code) => {
+          if (physical || mental) {
+            effectsWithInput.push({
+              input: [code],
+              effects: [
+                {
+                  type: 'trauma',
+                  investigator: '$input_value',
+                  physical,
+                  mental,
+                  hidden: true,
+                },
+              ],
+            })
+          }
+        });
+        return this.maybeCreateEffectsStep(
+          step.id,
+          this.remainingStepIds,
+          effectsWithInput,
+          scenarioState,
+          {}
+        );
+      }
       case 'investigator_choice_supplies': {
         const choice = scenarioState.stringChoices(this.step.id);
         if (choice === undefined) {

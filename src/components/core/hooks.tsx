@@ -188,7 +188,7 @@ interface SyncCountAction {
   type: 'sync';
   values: Counters;
 }
-interface Counters {
+export interface Counters {
   [code: string]: number | undefined;
 }
 export function useCounters(initialValue: Counters): [Counters, (code: string, max?: number) => void, (code: string, min?: number) => void, (code: string, value: number) => void, (values: Counters) => void] {
