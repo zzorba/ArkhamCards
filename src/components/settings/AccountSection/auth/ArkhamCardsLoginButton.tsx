@@ -121,7 +121,7 @@ async function onGoogleButtonPress() {
 }
 
 type LoginRemedy = 'try-login' | 'try-create' | 'reset-password';
-function errorMessage(code: string, messages: []): {
+function errorMessage(code: string, messages: string[]): {
   message?: string;
   field?: 'email' | 'password';
   remedy?: LoginRemedy;

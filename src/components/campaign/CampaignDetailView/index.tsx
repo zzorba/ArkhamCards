@@ -1,6 +1,6 @@
-import React, { useCallback, useContext, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect, useReducer } from 'react';
 import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { map } from 'lodash';
+import { filter, map, uniqBy } from 'lodash';
 import { useDispatch } from 'react-redux';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -13,7 +13,7 @@ import { updateCampaignXp, cleanBrokenCampaigns, addInvestigator, removeInvestig
 import { NavigationProps } from '@components/nav/types';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useInvestigatorCards, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
+import { useComponentVisible, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
 import { useCampaign, useCampaignInvestigators } from '@data/hooks';
 import useTraumaDialog from '../useTraumaDialog';
 import { showAddScenarioResult, showDrawWeakness } from '@components/campaign/nav';
@@ -21,7 +21,7 @@ import { campaignNames } from '../constants';
 import space, { s } from '@styles/space';
 import CampaignSummaryHeader from '../CampaignSummaryHeader';
 import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
-import { maybeShowWeaknessPrompt } from '../campaignHelper';
+import { maybeShowWeaknessPrompt, useMaybeShowWeaknessPrompt } from '../campaignHelper';
 import Card from '@data/types/Card';
 import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
@@ -147,10 +147,12 @@ function CampaignDetailView(props: Props) {
     }
   }, [cards, campaign, updateWeaknessAssignedCards, showAlert]);
   const deckActions = useDeckActions();
+  const checkNewDeckForWeakness = useMaybeShowWeaknessPrompt(componentId, checkForWeaknessPrompt);
   const onAddDeck = useCallback(async(deck: Deck) => {
     await asyncDispatch(addInvestigator(userId, deckActions, updateCampaignActions, campaignId, deck.investigator_code, getDeckId(deck)));
-    checkForWeaknessPrompt(deck);
-  }, [userId, campaignId, deckActions, updateCampaignActions, asyncDispatch, checkForWeaknessPrompt]);
+    checkNewDeckForWeakness(deck);
+  }, [userId, campaignId, deckActions, updateCampaignActions, checkNewDeckForWeakness, asyncDispatch]);
+
 
   const onAddInvestigator = useCallback((card: Card) => {
     dispatch(addInvestigator(userId, deckActions, updateCampaignActions, campaignId, card.code));

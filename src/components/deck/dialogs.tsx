@@ -23,7 +23,6 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { DeckActions, useDeckActions } from '@data/remote/decks';
 import { useUploadLocalDeckRequest } from '@data/remote/campaigns';
 import Card from '@data/types/Card';
-import { Stringifiable } from 'query-string';
 
 interface DialogOptions {
   title: string;
@@ -227,7 +226,6 @@ export function useAlertDialog(forceVerticalButtons?: boolean): [React.ReactNode
       </NewDialog>
     );
   }, [state, buttons, onDismiss, typography, forceVerticalButtons]);
-
   const showAlert = useCallback((title: string, description: string, buttons: AlertButton[] = [{ text: t`Okay` }]) => {
     setState({
       title,

@@ -35,7 +35,6 @@ function getStandardComponent(componentName: string | number) {
     case 'Campaign.Access': return require('@components/campaign/CampaignAccessView').default;
     case 'Campaign.Log': return require('@components/campaign/CampaignLogView').default;
     case 'Campaign.Scenarios': return require('@components/campaign/CampaignScenariosView').default;
-    case 'Campaign.New': return require('@components/campaign/NewCampaignView').default;
     case 'Campaign.AddResult': return require('@components/campaign/AddScenarioResultView').default;
     case 'Guide.SideScenario': return require('@components/campaignguide/AddSideScenarioView').default;
     case 'Guide.CardErrata': return require('@components/campaignguide/EncounterCardErrataView').default;
@@ -83,6 +82,7 @@ function getRootComponent(name: string | number): any {
     case 'Deck.Upgrade': return require('@components/deck/DeckUpgradeDialog').default;
     case 'Deck.New': return require('@components/deck/NewDeckView').default;
     case 'Campaign': return require('@components/campaign/CampaignDetailView').default;
+    case 'Campaign.New': return require('@components/campaign/NewCampaignView').default;
     case 'Guide.Campaign': return require('@components/campaignguide/CampaignGuideView').default;
     case 'Guide.Scenario': return require('@components/campaignguide/ScenarioView').default;
     case 'Guide.LinkedCampaign': return require('@components/campaignguide/LinkedCampaignGuideView').default;
