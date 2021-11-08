@@ -612,11 +612,39 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'consternation_on_the_constellation':
       case 'zcc':
         return this.standaloneIcon('consternation_on_the_constellation', size, color);
-      case 'eoe':
-      case 'edge_of_the_earth':
       case 'eoep':
-      case 'eoec':
         return this.edgeIcon('eoe', size, color);
+      case 'eoe':
+      case 'eoec':
+      case 'edge_of_the_earth':
+        return this.edgeIcon('eoe_campaign', size, color);
+      case 'to_the_forbidden_peaks':
+      case 'the_great_seal':
+      case 'city_of_the_elder_things':
+      case 'silence_and_mystery':
+      case 'nameless_horrors':
+      case 'memorials_of_the_lost':
+      case 'ice_and_death':
+      case 'fatal_mirage':
+      case 'elder_things':
+      case 'creatures_in_the_ice':
+      case 'the_heart_of_madness':
+      case 'the_crash':
+      case 'tekelili':
+      case 'stirring_in_the_deep':
+      case 'shoggoths':
+      case 'penguins':
+      case 'miasma':
+      case 'lost_in_the_night':
+      case 'left_behind':
+      case 'hazards_of_antarctica':
+      case 'expedition_team':
+      case 'deadly_weather':
+      case 'agents_of_the_unknown':
+        return this.edgeIcon(encounter_code, size, color);
+      case 'sleeping_nightmares':
+      case 'seeping_nightmares':
+        return this.edgeIcon('seeping_nightmares', size, color);
       case 'rcore':
       default:
         return this.coreIcon('core', size, color);
