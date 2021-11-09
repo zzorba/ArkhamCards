@@ -277,7 +277,7 @@ msgstr "후퇴"
 
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
-msgstr "<b>${ nextScenarioName }</b>으로 진행합니다."
+msgstr "다음으로 진행합니다: '<b>${ nextScenarioName }</b>'"
 
 msgid "Available weaknesses"
 msgstr "접근가능 약점"
@@ -2246,19 +2246,19 @@ msgstr "새로운 캠페인"
 msgid "Adjust Weakness Set"
 msgstr "약점 세트 조정"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "이 덱은 여러개의 기본 약점이 포함되어 있습니다"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "이 덱은 하나의 기본 약점이 포함되어 있습니다"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "이러한 약점들을 이 캠페인의 기본 약점 세트에서 제거하기를 원하십니까?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "이 약점을 이 캠페인의 기본 약점 세트에서 제거하기를 원하십니까?"
 
@@ -4576,20 +4576,20 @@ msgid "Sqlite version: ${ sqliteVersion }"
 msgstr "Sqlite 버젼: ${ sqliteVersion }"
 
 msgid "Beta testing"
-msgstr ""
+msgstr "베타 테스트"
 
 msgid "Edit Weakness Cards"
-msgstr ""
+msgstr "약점 카드 수정"
 
 msgid "Narrate"
-msgstr ""
+msgstr "내래이션 듣기"
 
 msgid "Negative modifier"
-msgstr ""
+msgstr "음수 값 보정치"
 
 #, javascript-format
 msgid "${ textModifier }, draws another"
-msgstr ""
+msgstr "${ textModifier }, 다른 것 뽑기"
 
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -5418,7 +5418,7 @@ msgstr "파리"
 
 msgctxt "trait"
 msgid "Part 1"
-msgstr ""
+msgstr "1부"
 
 msgctxt "trait"
 msgid "Passageway"
@@ -5798,7 +5798,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Blessed?"
-msgstr ""
+msgstr "축복받은?"
 
 msgctxt "trait"
 msgid "Broken"
@@ -5806,7 +5806,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Card"
-msgstr ""
+msgstr "카드"
 
 msgctxt "trait"
 msgid "Entrepreneur"
@@ -5822,7 +5822,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Nostalgia II"
-msgstr ""
+msgstr "향수 2호"
 
 msgctxt "trait"
 msgid "Retired"
@@ -5830,7 +5830,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Royalty"
-msgstr ""
+msgstr "귀족"
 
 msgctxt "trait"
 msgid "Saga"
@@ -5850,7 +5850,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Wonderland"
-msgstr ""
+msgstr "이상한 나라"
 
 msgctxt "trait"
 msgid "Y-ha'nthlei"
@@ -5962,19 +5962,19 @@ msgstr[0] "시나리오"
 
 msgctxt "narration"
 msgid "Pause"
-msgstr ""
+msgstr "일시정지"
 
 msgctxt "narration"
 msgid "Play"
-msgstr ""
+msgstr "재생"
 
 msgctxt "narration"
 msgid "Jump back"
-msgstr ""
+msgstr "뒤로 가기"
 
 msgctxt "narration"
 msgid "Playing audio"
-msgstr ""
+msgstr "오디오 재생"
 
 msgctxt "campaign_log_entry"
 msgid "Other."
