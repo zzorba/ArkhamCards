@@ -2662,26 +2662,6 @@ msgstr ""
 "<b>Nota:</b> Il trauma derivante dalla sconfitta di un investigatore è "
 "gestito durante la risoluzione dello scenario."
 
-msgid ""
-"A side-story is a scenario that may be played between any two scenarios of "
-"an <i>Arkham Horror: The Card Game</i> campaign. Playing a side-story costs "
-"each investigator in the campaign a certain amount of experience. "
-"Weaknesses, trauma, experience, and rewards granted by playing a side-story "
-"stay with the investigators for the remainder of the campaign. Each "
-"sidestory may only be played once per campaign.\n"
-"The experience required to play these scenarios will be deducted "
-"automatically at the end of the scenario."
-msgstr ""
-"Una storia secondaria è uno scenario che può essere giocato tra due scenari "
-"qualsiasi di una campagna di <i>Arkham Horror: Il Gioco di Carte</i>. "
-"Giocare a una storia secondaria costa a ogni investigatore della campagna "
-"una certa quantità di punti esperienza. Debolezze, traumi, punti esperienza "
-"e ricompense guadagnati giocando a una storia secondaria rimangono con gli "
-"investigatori per il resto della campagna. Ogni storia secondaria può "
-"essere giocata solo una volta per campagna.\n"
-"I punti esperienza richiesti per giocare a questi scenari verranno detratti "
-"automaticamente alla fine dello scenario."
-
 msgid "Contact us"
 msgstr "Contattaci"
 
@@ -2717,6 +2697,7 @@ msgstr ""
 "Carta #${ code } mancante. Prova ad aggiornare le carte da ArkhamDB nelle "
 "impostazioni."
 
+#, javascript-format
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] "${ specialXp } punto esperienza di rifornimento disponibile"
@@ -4797,6 +4778,131 @@ msgstr ""
 msgid "${ textModifier }, draws another"
 msgstr ""
 
+msgid "Fix duplicates"
+msgstr ""
+
+msgid "Do you want to use the app to choose a random partner?"
+msgstr ""
+
+msgid "Select more"
+msgstr ""
+
+msgid "Record damage/horror:"
+msgstr ""
+
+msgid "Expedition Team"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In the ${ sectionName } section of the Campaign Log, cross out ${ "
+"partnerName },"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In the ${ sectionName } section of the Campaign Log, write \"MIA\" next to "
+"${ partnerName }."
+msgstr ""
+
+msgid ""
+"In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next "
+"to ${ partnerName }."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In the${ sectionName } section of the Campaign Log, draw a check mark next "
+"to ${ partnerName }."
+msgstr ""
+
+msgid "If the lead investigator was driven <b>insane</b>."
+msgstr ""
+
+msgid "If all investigators were driven <b>insane</b>."
+msgstr ""
+
+msgid "If the lead investigator is still alive."
+msgstr ""
+
+msgid "If all investigatore are still alive."
+msgstr ""
+
+msgid "The Entity"
+msgstr ""
+
+msgid "Resolute"
+msgstr ""
+
+msgid "MIA"
+msgstr ""
+
+msgid ""
+"A side-story is a scenario that may be played between any two scenarios of "
+"an <i>Arkham Horror: The Card Game</i> campaign.\n"
+"- Playing a side-story costs each investigator in the campaign a certain "
+"amount of experience, which should be paid when you start the scenario.\n"
+"- Weaknesses, trauma, experience, and rewards granted by playing a "
+"side-story stay with the investigators for the remainder of the campaign.\n"
+"- Each sidestory may only be played once per campaign.\n"
+"\n"
+"<b>Note:</b> When using this app, the experience required to play these "
+"scenarios will be deducted automatically at the <b>end of the scenario</b>, "
+"but you should be sure you have sufficient experience set aside to pay for "
+"it."
+msgstr ""
+
+msgid "Ice and Death: Part 1"
+msgstr ""
+
+msgid "Ice and Death: Part 2"
+msgstr ""
+
+msgid "Ice and Death: Part 3"
+msgstr ""
+
+msgid "Restful Night"
+msgstr ""
+
+msgid "To the Forbidden Peaks"
+msgstr ""
+
+msgid "Endless Night"
+msgstr ""
+
+msgid "City of the Elder Things"
+msgstr ""
+
+msgid "Final Night"
+msgstr ""
+
+msgid "The Heart of Madness: Part 1"
+msgstr ""
+
+msgid "The Heart of Madness: Part 2"
+msgstr ""
+
+msgid "Fatal Mirage"
+msgstr ""
+
+msgid "Fatal Mirage - Memories Discovered"
+msgstr ""
+
+msgid "Fatal Mirage - Memories Banished"
+msgstr ""
+
+msgid "Ice and Death - Locations Revealed"
+msgstr ""
+
+msgid "Ice and Death - Supplies Recovered"
+msgstr ""
+
+msgid "The Heart of Madness - Seals Placed"
+msgstr ""
+
+msgid "The Heart of Madness - Seals Recovered"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } è <b>impazzito</b>."
@@ -4978,7 +5084,6 @@ msgctxt "feminine"
 msgid "Defeated: no trauma"
 msgstr "Sconfitta: nessun trauma"
 
-#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } reads <b>${ sectionName }</b>"

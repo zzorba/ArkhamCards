@@ -2246,19 +2246,19 @@ msgstr "새로운 캠페인"
 msgid "Adjust Weakness Set"
 msgstr "약점 세트 조정"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "이 덱은 여러개의 기본 약점이 포함되어 있습니다"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "이 덱은 하나의 기본 약점이 포함되어 있습니다"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "이러한 약점들을 이 캠페인의 기본 약점 세트에서 제거하기를 원하십니까?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "이 약점을 이 캠페인의 기본 약점 세트에서 제거하기를 원하십니까?"
 
@@ -2557,21 +2557,6 @@ msgstr "시나리오 또는 막간"
 msgid "Alphabetize guide encounter sets"
 msgstr "알파벳 순서로 조우 세트 안내"
 
-msgid ""
-"A side-story is a scenario that may be played between any two scenarios of "
-"an <i>Arkham Horror: The Card Game</i> campaign. Playing a side-story costs "
-"each investigator in the campaign a certain amount of experience. "
-"Weaknesses, trauma, experience, and rewards granted by playing a side-story "
-"stay with the investigators for the remainder of the campaign. Each "
-"sidestory may only be played once per campaign.\n"
-"The experience required to play these scenarios will be deducted "
-"automatically at the end of the scenario."
-msgstr ""
-"외전 이야기는 <아컴호러 카드게임> 캠페인의 시나리오와 시나리오 사이에 본 확장판의 시나리오 하나를 진행하는 것을 일컫습니다. 외전 "
-"이야기를 즐기려면 캠페인을 진행 중인 각 조사자가 경험치를 일정량 소비해야 합니다. 외전 이야기에서 얻은 약점, 트라우마, 경험치, "
-"보상은 캠페인을 마칠 때까지 조사자에게 남습니다. 각 외전 이야기는 캠페인마다 1번씩만 즐길 수 있습니다.\n"
-"이러한 시나리오를 즐기기 위해 요구되는 경험치는 시나리오 종료 시 자동으로 공제됩니다."
-
 msgid "Draw Weakness"
 msgstr "약점 뽑기"
 
@@ -2608,6 +2593,7 @@ msgid ""
 "settings."
 msgstr "#${ code } 카드를 발견할 수 없습니다. 설정에서 아컴디비 카드 업데이트를 수행해주십시오."
 
+#, javascript-format
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] "${ specialXp } 재보급 경험치 사용가능"
@@ -4591,6 +4577,131 @@ msgstr "음수 값 보정치"
 msgid "${ textModifier }, draws another"
 msgstr "${ textModifier }, 다른 것 뽑기"
 
+msgid "Fix duplicates"
+msgstr ""
+
+msgid "Do you want to use the app to choose a random partner?"
+msgstr ""
+
+msgid "Select more"
+msgstr ""
+
+msgid "Record damage/horror:"
+msgstr ""
+
+msgid "Expedition Team"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In the ${ sectionName } section of the Campaign Log, cross out ${ "
+"partnerName },"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In the ${ sectionName } section of the Campaign Log, write \"MIA\" next to "
+"${ partnerName }."
+msgstr ""
+
+msgid ""
+"In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next "
+"to ${ partnerName }."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In the${ sectionName } section of the Campaign Log, draw a check mark next "
+"to ${ partnerName }."
+msgstr ""
+
+msgid "If the lead investigator was driven <b>insane</b>."
+msgstr ""
+
+msgid "If all investigators were driven <b>insane</b>."
+msgstr ""
+
+msgid "If the lead investigator is still alive."
+msgstr ""
+
+msgid "If all investigatore are still alive."
+msgstr ""
+
+msgid "The Entity"
+msgstr ""
+
+msgid "Resolute"
+msgstr ""
+
+msgid "MIA"
+msgstr ""
+
+msgid ""
+"A side-story is a scenario that may be played between any two scenarios of "
+"an <i>Arkham Horror: The Card Game</i> campaign.\n"
+"- Playing a side-story costs each investigator in the campaign a certain "
+"amount of experience, which should be paid when you start the scenario.\n"
+"- Weaknesses, trauma, experience, and rewards granted by playing a "
+"side-story stay with the investigators for the remainder of the campaign.\n"
+"- Each sidestory may only be played once per campaign.\n"
+"\n"
+"<b>Note:</b> When using this app, the experience required to play these "
+"scenarios will be deducted automatically at the <b>end of the scenario</b>, "
+"but you should be sure you have sufficient experience set aside to pay for "
+"it."
+msgstr ""
+
+msgid "Ice and Death: Part 1"
+msgstr ""
+
+msgid "Ice and Death: Part 2"
+msgstr ""
+
+msgid "Ice and Death: Part 3"
+msgstr ""
+
+msgid "Restful Night"
+msgstr ""
+
+msgid "To the Forbidden Peaks"
+msgstr ""
+
+msgid "Endless Night"
+msgstr ""
+
+msgid "City of the Elder Things"
+msgstr ""
+
+msgid "Final Night"
+msgstr ""
+
+msgid "The Heart of Madness: Part 1"
+msgstr ""
+
+msgid "The Heart of Madness: Part 2"
+msgstr ""
+
+msgid "Fatal Mirage"
+msgstr ""
+
+msgid "Fatal Mirage - Memories Discovered"
+msgstr ""
+
+msgid "Fatal Mirage - Memories Banished"
+msgstr ""
+
+msgid "Ice and Death - Locations Revealed"
+msgstr ""
+
+msgid "Ice and Death - Supplies Recovered"
+msgstr ""
+
+msgid "The Heart of Madness - Seals Placed"
+msgstr ""
+
+msgid "The Heart of Madness - Seals Recovered"
+msgstr ""
+
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } 조사자는 <b>미칩니다</b>."
@@ -4754,7 +4865,6 @@ msgctxt "feminine"
 msgid "Defeated: no trauma"
 msgstr "쓰러짐: 트라우마 없음"
 
-#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } 조사자는 <b>${ sectionName }</b> 항목을 읽습니다."
