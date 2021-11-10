@@ -17,6 +17,7 @@ import { getSpecialEffectChoiceList } from '@data/scenario/effectHelper';
 import space from '@styles/space';
 import CheckCampaignLogCardsComponent from './CheckCampaignLogCardsComponent';
 import CheckCampaignLogCountComponent from './CheckCampaignLogCountComponent';
+import PartnerStatusEffectComponent from './PartnerStatusEffectComponent';
 
 interface Props {
   componentId: string;
@@ -155,6 +156,11 @@ export default function EffectsStepComponent({ componentId, width, step, campaig
           </View>
         );
       }
+      case 'partner_status':
+        if (effect.hidden) {
+          return null;
+        }
+        return <PartnerStatusEffectComponent effect={effect} input={input} />;
       case 'campaign_data':
       case 'earn_xp':
       case 'replace_card':

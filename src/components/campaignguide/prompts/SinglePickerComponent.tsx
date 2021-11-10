@@ -13,7 +13,7 @@ import StyleContext from '@styles/StyleContext';
 import { ChoiceIcon } from '@data/scenario/types';
 import RadioButton from './RadioButton';
 import InvestigatorImage from '@components/core/InvestigatorImage';
-import TraumaSummary from '@components/campaign/TraumaSummary';
+import TraumaSummary, { TraumaIconPile } from '@components/campaign/TraumaSummary';
 
 interface Props {
   title: string;
@@ -72,9 +72,9 @@ export default function SinglePickerComponent({
       ...map(choices, (c, idx) => {
         return {
           title: c.text || '',
-          description: c.card?.subname,
+          description: c.description || c.card?.subname,
           iconNode: getIcon(c.icon, c.card),
-          rightNode: c.card && c.trauma ? <View style={space.paddingRightS}><TraumaSummary investigator={c.card} trauma={c.trauma} hideNone /></View> : undefined,
+          rightNode: c.trauma ? <View style={space.paddingRightS}><TraumaIconPile physical={c.trauma.physical || 0} mental={c.trauma.mental || 0} whiteText /></View> : undefined,
           value: idx,
         };
       }),
@@ -96,11 +96,13 @@ export default function SinglePickerComponent({
     choices[selectedIndex].selected_text || choices[selectedIndex].text
   );
 
-  const selectedDescription = (selectedIndex === undefined || selectedIndex === -1) ? undefined : choices[selectedIndex].card?.subname;
+  const selectedDescription = (selectedIndex === undefined || selectedIndex === -1) ? undefined : (choices[selectedIndex].description || choices[selectedIndex].card?.subname);
   const selectedIcon = (selectedIndex === undefined || selectedIndex === -1) ? undefined : choices[selectedIndex].icon;
+  const selectedTrauma = (selectedIndex === undefined || selectedIndex === -1) ? undefined : choices[selectedIndex].trauma;
   const selection = useMemo(() => {
     return (
       <View style={[{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }]}>
+        { !!(selectedTrauma?.physical || selectedTrauma?.mental) && <View style={space.paddingRightXs}><TraumaIconPile physical={selectedTrauma.physical || 0} mental={selectedTrauma.mental || 0} whiteText /></View> }
         <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end' }}>
           <Text numberOfLines={2} ellipsizeMode="head" style={[typography.button, investigator ? typography.white : undefined]} >
             { selectedLabel }
@@ -114,7 +116,7 @@ export default function SinglePickerComponent({
         { !!selectedIcon && <View style={space.paddingLeftS}>{ getIcon(selectedIcon) }</View> }
       </View>
     );
-  }, [typography, investigator, selectedLabel, selectedIcon, selectedDescription]);
+  }, [typography, investigator, selectedLabel, selectedIcon, selectedDescription, selectedTrauma]);
   const button = useMemo(() => {
     if (investigator) {
       return (

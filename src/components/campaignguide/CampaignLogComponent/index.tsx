@@ -17,6 +17,8 @@ import { CampaignId } from '@actions/types';
 import { showGuideChaosBagOddsCalculator, showGuideDrawChaosBag } from '@components/campaign/nav';
 import useSingleCard from '@components/card/useSingleCard';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import CampaignLogPartnersComponent from './CampaignLogPartnersComponent';
+import { Partner } from '@data/scenario/types';
 
 interface Props {
   componentId: string;
@@ -76,8 +78,15 @@ export default function CampaignLogComponent({
   interScenarioId,
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
-  const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'investigator_count' | 'count' | 'supplies') => {
+  const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'investigator_count' | 'count' | 'supplies' | 'header' | 'partner', partners?: Partner[]) => {
     switch (type) {
+      case 'header': {
+        return (
+          <View style={space.paddingSideS}>
+            <DeckBubbleHeader inverted title={title} />
+          </View>
+        );
+      }
       case 'count': {
         const count = campaignLog.count(id, '$count');
         return (
@@ -112,6 +121,20 @@ export default function CampaignLogComponent({
                 sectionId={id}
                 section={section}
                 campaignGuide={campaignGuide}
+                campaignLog={campaignLog}
+                width={width - s * 2}
+              />
+            ) }
+          </View>
+        );
+      }
+      case 'partner': {
+        return (
+          <View style={[space.paddingSideS, space.paddingBottomM]}>
+            <DeckBubbleHeader inverted title={title} />
+            { !!partners && (
+              <CampaignLogPartnersComponent
+                partners={partners}
                 campaignLog={campaignLog}
                 width={width - s * 2}
               />
@@ -205,7 +228,7 @@ export default function CampaignLogComponent({
         }
         return (
           <View key={log.id}>
-            { renderLogEntrySectionContent(log.id, log.title, log.type) }
+            { renderLogEntrySectionContent(log.id, log.title, log.type, log.partners) }
           </View>
         );
       }) }

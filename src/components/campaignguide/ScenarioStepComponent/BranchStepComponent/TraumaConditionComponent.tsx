@@ -23,6 +23,14 @@ export default function TraumaConditionComponent({ step, condition, campaignLog 
         lead_investigator: t`If the lead investigator was <b>killed</b>.`,
         all: t`If all investigators were <b>killed</b>.`,
       },
+      insane: {
+        lead_investigator: t`If the lead investigator was driven <b>insane</b>.`,
+        all: t`If all investigators were driven <b>insane</b>.`,
+      },
+      alive: {
+        lead_investigator: t`If the lead investigator is still alive.`,
+        all: t`If all investigatore are still alive.`,
+      },
     };
     return messages[condition.trauma][condition.investigator];
   }, [condition]);

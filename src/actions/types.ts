@@ -414,7 +414,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TDEA,
   TDEB,
   TIC,
-  // EOE,
+  EOE,
 ];
 export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
   ALICE_IN_WONDERLAND,

@@ -25,6 +25,7 @@ import {
   Effect,
   EffectsWithInput,
   EffectsStep,
+  CampaignLogCardsEffect,
 } from '@data/scenario/types';
 import { getSpecialEffectChoiceList } from './effectHelper';
 import { investigatorChoiceInputChoices, chooseOneInputChoices } from '@data/scenario/inputHelper';
@@ -32,7 +33,7 @@ import { BinaryResult, conditionResult, NumberResult, StringResult } from '@data
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
+import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, LEAD_INVESTIGATOR_STEP_ID, SELECTED_PARTNERS_CAMPAIGN_LOG_ID } from '@data/scenario/fixedSteps';
 
 export default class ScenarioStep {
   step: Step;
@@ -279,6 +280,12 @@ export default class ScenarioStep {
           this.step,
           scenarioState
         );
+      case 'border':
+        return this.proceedToNextStep(
+          [...this.step.steps, ...this.remainingStepIds],
+          scenarioState,
+          this.campaignLog
+        );
       case 'input':
         return this.expandInputStep(
           this.step,
@@ -329,7 +336,7 @@ export default class ScenarioStep {
       default:
         return this.maybeCreateEffectsStep(
           this.step.id,
-          this.remainingStepIds,
+          [...(this.step.steps || []), ...this.remainingStepIds],
           [{
             effects: this.step.effects || [],
           }],
@@ -353,17 +360,26 @@ export default class ScenarioStep {
     step: BranchStep,
     scenarioState: ScenarioStateHelper
   ): ScenarioStep | undefined {
+    const parts = step.id.split('#');
+    const baseStepId = parts[0];
+    const currentIteration: number | undefined = parts.length > 1 ? parseInt(parts[1], 10) : undefined;
+    const nextIteration = (currentIteration || 0) + 1;
+
     const result = conditionResult(step.condition, this.campaignLog);
     switch (result.type) {
       case 'string':
       case 'number':
       case 'binary': {
         const numberInput = this.getNumberInput(result);
-
         return this.maybeCreateEffectsStep(
           this.step.id,
           [
-            ...((result.option && result.option.steps) || []),
+            ...map(
+              ((result.option && result.option.steps) || []),
+              id => step.loop ? `${id}#${currentIteration}` : id
+            ),
+            // Should we repeat ourselves until it fails the test at least once.
+            ...(step.loop && result.option ? [`${baseStepId}#${nextIteration}`] : []),
             ...this.remainingStepIds,
           ],
           [
@@ -399,7 +415,11 @@ export default class ScenarioStep {
         );
         return this.maybeCreateEffectsStep(
           step.id,
-          [...stepIds, ...this.remainingStepIds],
+          [
+            ...map(stepIds, id => step.loop ? `${id}#${currentIteration}` : id),
+            ...(step.loop && (stepIds.length || effectsWithInput.length) ? [`${baseStepId}#${nextIteration}`] : []),
+            ...this.remainingStepIds,
+          ],
           effectsWithInput,
           scenarioState,
           {},
@@ -772,6 +792,24 @@ export default class ScenarioStep {
           {}
         );
       }
+      case 'partner_choice': {
+        const choice = scenarioState.stringChoices(this.step.id);
+        if (choice === undefined) {
+          return undefined;
+        }
+        return this.maybeCreateEffectsStep(
+          step.id,
+          this.remainingStepIds,
+          [
+            {
+              input: keys(choice),
+              effects: input.effects,
+            },
+          ],
+          scenarioState,
+          {}
+        );
+      }
       case 'investigator_choice_partner': {
         const choice = scenarioState.stringChoices(this.step.id);
         if (choice === undefined) {
@@ -780,17 +818,38 @@ export default class ScenarioStep {
         return this.maybeCreateEffectsStep(
           step.id,
           this.remainingStepIds,
-          [{
-            input: flatMap(values(choice), x => x),
-            effects: [
-              {
+          [
+            {
+              input: flatMap(values(choice), x => x),
+              effects: [
+                {
+                  type: 'campaign_log_cards',
+                  section: input.condition.section,
+                  id: SELECTED_PARTNERS_CAMPAIGN_LOG_ID,
+                  cards: '$input_value',
+                },
+              ],
+            },
+            ...map(this.campaignLog.investigatorCodes(true), (investigator) => {
+              const partners: string[] | undefined = choice[investigator];
+              const effect: CampaignLogCardsEffect = partners ? {
                 type: 'campaign_log_cards',
-                section: input.section,
-                id: input.id,
+                section: input.condition.section,
+                id: `$investigator_partner_${investigator}`,
                 cards: '$input_value',
-              },
-            ],
-          }],
+              } : {
+                type: 'campaign_log_cards',
+                section: input.condition.section,
+                id: `$investigator_partner_${investigator}`,
+                cards: '$fixed_codes',
+                codes: [],
+              };
+              return {
+                input: partners,
+                effects: [effect],
+              };
+            }),
+          ],
           scenarioState,
           {}
         );

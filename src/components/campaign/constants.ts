@@ -301,13 +301,29 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Into the Maelstrom`, code: 'into_the_maelstrom', pack_code: 'itm' },
       { name: t`Epilogue`, code: 'epligoue', pack_code: 'itm', interlude: true },
     ];
+    case EOE: return [
+      { name: t`Prologue`, code: 'prologue', pack_code: 'eoec', interlude: true },
+      { name: t`Ice and Death: Part 1`, code: 'ice_and_death_part_1', pack_code: 'eoec' },
+      { name: t`Ice and Death: Part 2`, code: 'ice_and_death_part_2', pack_code: 'eoec' },
+      { name: t`Ice and Death: Part 3`, code: 'ice_and_death_part_3', pack_code: 'eoec' },
+      { name: t`Restful Night`, code: 'restful_night', pack_code: 'eoec', interlude: true },
+      { name: t`To the Forbidden Peaks`, code: 'to_the_forbidden_peaks', pack_code: 'eoec' },
+      { name: t`Endless Night`, code: 'endless_night', pack_code: 'eoec', interlude: true },
+      { name: t`City of the Elder Things`, code: 'city_of_the_elder_things', pack_code: 'eoec' },
+      { name: t`Final Night`, code: 'final_night', pack_code: 'eoec', interlude: true },
+      { name: t`The Heart of Madness: Part 1`, code: 'the_heart_of_madness_part_1', pack_code: 'eoec' },
+      { name: t`The Heart of Madness: Part 2`, code: 'the_heart_of_madness_part_2', pack_code: 'eoec' },
+      { name: t`Epilogue`, code: 'epilogue', pack_code: 'eoec', interlude: true },
+      { name: t`Fatal Mirage`, code: 'fatal_mirage', pack_code: 'eoec' },
+      { name: t`Fatal Mirage`, code: 'fatal_mirage_2', pack_code: 'eoec' },
+      { name: t`Fatal Mirage`, code: 'fatal_mirage_3', pack_code: 'eoec' },
+    ];
     case CROWN_OF_EGIL:
     case ALICE_IN_WONDERLAND:
     case DARK_MATTER: return [];
     case TDE: return [];
     case CUSTOM: return [];
     case STANDALONE: return [];
-    case EOE: return [];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -491,7 +507,18 @@ export function getCampaignLog(
       };
     case STANDALONE:
     case EOE:
-      return {};
+      return {
+        sections: [
+          t`Campaign Notes`,
+          t`Fatal Mirage - Memories Discovered`,
+          t`Fatal Mirage - Memories Banished`,
+          t`Ice and Death - Locations Revealed`,
+          t`Ice and Death - Supplies Recovered`,
+          t`The Heart of Madness - Seals Placed`,
+          t`The Heart of Madness - Seals Recovered`,
+          t`Expedition Team`,
+        ],
+      };
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -556,6 +583,13 @@ const TIC_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
+};
+
+const EOE_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 3, '0': 2, '-1': 3, '-2': 2, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, frost: 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 2, '-1': 2, '-2': 2, '-3': 1, '-4': 2, '-5': 1, frost: 2, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 1, '-2': 2, '-3': 1, '-4': 2, '-5': 1, '-7': 1, frost: 3, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
 };
 
 const DARK_MATTER_BAG: ChaosBagByDifficulty = {

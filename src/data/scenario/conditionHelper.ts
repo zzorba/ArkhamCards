@@ -4,6 +4,7 @@ import {
   find,
   findIndex,
   forEach,
+  keys,
   map,
   sumBy,
 } from 'lodash';
@@ -12,6 +13,7 @@ import { StringChoices } from '@actions/types';
 import {
   BinaryCardCondition,
   CardCondition,
+  PartnerStatusCondition,
   CampaignLogCondition,
   CampaignLogCardsCondition,
   CampaignDataCondition,
@@ -39,6 +41,7 @@ import {
   CampaignLogCountCondition,
   CampaignLogInvestigatorCountCondition,
   MathCondition,
+  CampaignLogCardsSwitchCondition,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import Card from '@data/types/Card';
@@ -153,7 +156,7 @@ function investigatorCardResult(
   };
 }
 
-function getOperand(
+export function getOperand(
   op: Operand,
   campaignLog: GuidedCampaignLog
 ): number {
@@ -164,6 +167,10 @@ function getOperand(
       return campaignLog.chaosBag[op.token] || 0;
     case 'constant':
       return op.value;
+    case 'partner_status': {
+      const partnerResult = partnerStatusConditionResult(op, campaignLog);
+      return keys(partnerResult.investigatorChoices).length;
+    }
   }
 }
 
@@ -250,6 +257,19 @@ export function campaignLogConditionResult(
       );
   }
 }
+export function campaignLogCardsSwitchResult(
+  condition: CampaignLogCardsSwitchCondition,
+  campaignLog: GuidedCampaignLog
+): StringResult {
+  const cards = campaignLog.allCards(condition.section, condition.id);
+  const cardsSet = new Set(cards || []);
+  const choice = find(condition.options, option => cardsSet.has(option.condition));
+  return {
+    type: 'string',
+    string: (cards && cards.length && cards[0]) || '',
+    option: choice,
+  };
+}
 
 export function killedTraumaConditionResult(
   condition: KilledTraumaCondition,
@@ -286,6 +306,35 @@ export function mathEqualsConditionResult(
   return binaryConditionResult(
     opA === opB,
     condition.options
+  );
+}
+
+export function partnerStatusConditionResult(
+  condition: PartnerStatusCondition,
+  campaignLog: GuidedCampaignLog
+): InvestigatorResult {
+  const allPartners = filter(
+    campaignLog.campaignGuide.campaignLogPartners(condition.section),
+    p => condition.partner === 'any' || condition.fixed_partner === p.code);
+
+  const choices: StringChoices = {};
+  forEach(allPartners, partner => {
+    const decision = condition.operation === 'any' ?
+      !!find(condition.status, s => campaignLog.hasPartnerStatus(condition.section, partner, s)) :
+      !!every(condition.status, s => campaignLog.hasPartnerStatus(condition.section, partner, s));
+    const index = findIndex(condition.options, option => option.boolCondition === decision);
+    if (index !== -1) {
+      choices[partner.code] = [decision ? 'true' : 'false'];
+    }
+  });
+  return investigatorResult(
+    choices,
+    map(condition.options, option => {
+      return {
+        ...option,
+        id: option.boolCondition ? 'true' : 'false',
+      };
+    })
   );
 }
 
@@ -464,7 +513,8 @@ export function campaignDataChaosBagConditionResult(
   const tokenCount: number = chaosBag[condition.token] || 0;
   return numberConditionResult(
     tokenCount,
-    condition.options
+    condition.options,
+    condition.default_option
   );
 }
 
@@ -550,6 +600,9 @@ export function multiConditionResult(
     subCondition => {
       switch (subCondition.type) {
         case 'has_card':
+          if (subCondition.investigator === 'each') {
+            return investigatorCardConditionResult(subCondition, campaignLog).options ? 1 : 0;
+          }
           return binaryCardConditionResult(subCondition, campaignLog).option ? 1 : 0;
         case 'campaign_log':
         case 'campaign_log_section_exists':
@@ -580,6 +633,10 @@ export function multiConditionResult(
         }
         case 'math':
           return mathConditionResult(subCondition, campaignLog).option ? 1 : 0;
+        case 'trauma':
+          return basicTraumaConditionResult(subCondition, campaignLog).options.length ? 1 : 0;
+        case 'partner_status':
+          return partnerStatusConditionResult(subCondition, campaignLog).options.length ? 1 : 0;
       }
     });
   return binaryConditionResult(
@@ -702,6 +759,8 @@ export function conditionResult(
     case 'campaign_log_section_exists':
     case 'campaign_log':
       return campaignLogConditionResult(condition, campaignLog);
+    case 'campaign_log_cards_switch':
+      return campaignLogCardsSwitchResult(condition, campaignLog);
     case 'campaign_log_count':
       return campaignLogCountConditionResult(condition, campaignLog);
     case 'math':
@@ -744,6 +803,8 @@ export function conditionResult(
         }
       }
     }
+    case 'partner_status':
+      return partnerStatusConditionResult(condition, campaignLog);
   }
 }
 

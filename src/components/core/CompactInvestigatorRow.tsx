@@ -23,8 +23,10 @@ interface Props {
   children?: React.ReactNode;
   description?: string;
   color?: 'dark' | 'light';
+  name?: string;
+  hideImage?: boolean;
 }
-export default function CompactInvestigatorRow({ color, eliminated, description, investigator, transparent, yithian, open, upgradeBadge, leftContent, children, width }: Props) {
+export default function CompactInvestigatorRow({ hideImage, color, eliminated, name, description, investigator, transparent, yithian, open, upgradeBadge, leftContent, children, width }: Props) {
   const { colors, typography } = useContext(StyleContext);
   return (
     <RoundedFactionHeader
@@ -37,23 +39,29 @@ export default function CompactInvestigatorRow({ color, eliminated, description,
     >
       <View style={[styles.row, space.paddingLeftXs]}>
         { !!leftContent && <View style={space.paddingRightS}>{leftContent}</View>}
-        <InvestigatorImage
-          card={investigator}
-          size="tiny"
-          border
-          yithian={yithian}
-          killedOrInsane={eliminated}
-          badge={upgradeBadge ? 'upgrade' : undefined}
-        />
+        { !hideImage && (
+          <InvestigatorImage
+            card={investigator}
+            size="tiny"
+            border
+            yithian={yithian}
+            killedOrInsane={eliminated}
+            badge={upgradeBadge ? 'upgrade' : undefined}
+          />
+        ) }
         <View style={[space.paddingLeftXs, styles.textColumn]}>
           <Text
             style={[typography.cardName, !transparent ? typography.white : { color: colors.D20 }, eliminated ? typography.strike : undefined]}
             numberOfLines={1}
             ellipsizeMode="tail"
           >
-            { investigator?.name }
+            { name || investigator?.name }
           </Text>
-          <Text style={[typography.cardTraits, !transparent ? typography.white : { color: colors.D20 }, eliminated ? typography.strike : undefined]}>
+          <Text
+            style={[typography.cardTraits, !transparent ? typography.white : { color: colors.D20 }, eliminated ? typography.strike : undefined]}
+            numberOfLines={1}
+            ellipsizeMode="tail"
+          >
             { description !== undefined ? description : investigator?.subname }
           </Text>
         </View>

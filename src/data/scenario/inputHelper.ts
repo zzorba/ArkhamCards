@@ -1,4 +1,4 @@
-import { filter, find, forEach } from 'lodash';
+import { filter, find, flatMap, forEach, head, keys, values } from 'lodash';
 
 import { NumberChoices, StringChoices } from '@actions/types';
 import {
@@ -22,6 +22,7 @@ import {
   InvestigatorResult,
   campaignLogCountConditionResult,
   campaignDataScenarioConditionResult,
+  partnerStatusConditionResult,
 } from '@data/scenario/conditionHelper';
 import { PersonalizedChoices, UniversalChoices, DisplayChoiceWithId } from '@data/scenario';
 
@@ -51,10 +52,11 @@ export function investigatorChoiceInputChoices(
       choices: input.choices,
     };
   }
-  const codes = filter(
-    campaignLog.investigatorCodes(false),
-    code => input.investigator !== 'resigned' || campaignLog.resigned(code)
-  );
+  const codes = input.condition ? keys(basicTraumaConditionResult(input.condition, campaignLog).investigatorChoices) :
+    filter(
+      campaignLog.investigatorCodes(false),
+      code => input.investigator !== 'resigned' || campaignLog.resigned(code)
+    );
   const result: NumberChoices = {};
   forEach(
     input.choices,
@@ -141,9 +143,17 @@ export function calculateBinaryConditionResult(
     }
     case 'multi':
       return multiConditionResult(condition, campaignLog);
+    case 'partner_status': {
+      const investigatorResult = partnerStatusConditionResult(condition, campaignLog);
+      const choices = new Set(flatMap(values(investigatorResult.investigatorChoices), x => x));
+      return {
+        type: 'binary',
+        decision: keys(investigatorResult.investigatorChoices).length > 0,
+        option: head(filter(investigatorResult.options, option => choices.has(option.id))),
+      };
+    }
   }
 }
-
 
 function calculateInvestigatorConditionResult(
   condition: InvestigatorChoiceCondition,

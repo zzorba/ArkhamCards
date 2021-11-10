@@ -8,7 +8,7 @@ import GuidedCampaignLog from './GuidedCampaignLog';
 import CampaignStateHelper from './CampaignStateHelper';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import ScenarioGuide from './ScenarioGuide';
-import { FullCampaign, Scenario, Supply, Errata, CardErrata, Question, Achievement } from './types';
+import { FullCampaign, Scenario, Supply, Errata, CardErrata, Question, Achievement, Partner } from './types';
 
 type CampaignLogEntry = {
   id: string;
@@ -109,6 +109,10 @@ export default class CampaignGuide {
     );
   }
 
+  card(code: string): { code: string; name: string; gender: 'male' | 'female'} | undefined {
+    return find(this.campaign.campaign.cards, c => c.code === code);
+  }
+
   achievements(): Achievement[] {
     return this.campaign.campaign.achievements || [];
   }
@@ -166,6 +170,14 @@ export default class CampaignGuide {
 
   campaignLogSections() {
     return this.campaign.campaign.campaign_log;
+  }
+
+  campaignLogPartners(sectionId: string): Partner[] {
+    const section = find(this.campaignLogSections(), s => s.id === sectionId && s.type === 'partner');
+    if (section?.type !== 'partner') {
+      return [];
+    }
+    return section.partners || [];
   }
 
   prologueScenarioId(): string {

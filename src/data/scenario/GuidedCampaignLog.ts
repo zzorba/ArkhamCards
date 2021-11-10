@@ -2,6 +2,7 @@ import {
   cloneDeep,
   flatMap,
   find,
+  findLast,
   filter,
   forEach,
   keys,
@@ -42,11 +43,15 @@ import {
   TraumaEffect,
   GainSuppliesEffect,
   CampaignLogInvestigatorCountEffect,
+  PartnerStatusEffect,
+  Partner,
+  PartnerStatus,
 } from './types';
 import CampaignGuide, { CAMPAIGN_SETUP_ID } from './CampaignGuide';
 import Card, { CardsMap } from '@data/types/Card';
 import { LatestDecks } from '@data/scenario';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
+import { SELECTED_PARTNERS_CAMPAIGN_LOG_ID } from './fixedSteps';
 
 interface BasicEntry {
   id: string;
@@ -113,6 +118,9 @@ interface ScenarioData {
   investigatorStatus: {
     [code: string]: InvestigatorStatus;
   };
+  partners?: {
+    [code: string]: string;
+  };
 }
 
 interface CampaignData {
@@ -175,6 +183,7 @@ export default class GuidedCampaignLog {
       case 'upgrade_decks':
       case 'save_decks':
       case 'gain_supplies':
+      case 'partner_status':
         return true;
       default:
         return false;
@@ -336,6 +345,9 @@ export default class GuidedCampaignLog {
             case 'save_decks':
               this.handleSaveDecksEffect();
               break;
+            case 'partner_status':
+              this.handlePartnerStatusEffect(effect, input);
+              break;
             default:
               break;
           }
@@ -381,6 +393,45 @@ export default class GuidedCampaignLog {
 
   traumaAndCardData(investigator: string): TraumaAndCardData {
     return this.campaignData.investigatorData[investigator] || {};
+  }
+
+  hasPartnerStatus(sectionId: string, partner: Partner, status: PartnerStatus): boolean {
+    const trauma = this.traumaAndCardData(partner.code);
+    switch (status) {
+      case 'eliminated':
+      case 'alive': {
+        const resolute = !!find(trauma.storyAssets || [], s => s === 'resolute');
+        const health = (resolute && partner.resolute_health) || partner.health;
+        const sanity = (resolute && partner.resolute_sanity) || partner.sanity;
+
+        const eliminated = trauma.killed || (trauma.physical || 0) >= health || (trauma.mental || 0) >= sanity;
+        return status === 'eliminated' ? eliminated : !eliminated;
+      }
+      case 'has_damage':
+        return (trauma.physical || 0) > 0;
+      case 'has_horror':
+        return (trauma.mental || 0) > 0;
+      case 'mia':
+      case 'safe':
+      case 'resolute':
+      case 'victim':
+      case 'cannot_take':
+        return !!find(trauma.storyAssets || [], s => s === status);
+      case 'investigator_selected': {
+        const entry = findLast(this.sections[sectionId]?.entries, entry => entry.id === SELECTED_PARTNERS_CAMPAIGN_LOG_ID && entry.type === 'card');
+        const cards = map(entry?.type === 'card' ? entry.cards : [], card => card.card);
+        return !!find(cards, code => code === partner.code);
+      }
+      case 'investigator_defeated': {
+        const investigators = filter(
+          this.investigatorCodes(true),
+          investigator =>this.isDefeated(investigator));
+        return !!find(investigators, investigator => {
+          const entry = findLast(this.sections[sectionId]?.entries || [], entry => entry.id === `$investigator_partner_${investigator}` && entry.type === 'card');
+          return !!find(entry?.type === 'card' ? entry.cards : [], c => c.card === partner.code);
+        });
+      }
+    }
   }
 
   isEliminated(investigator: Card) {
@@ -972,6 +1023,42 @@ export default class GuidedCampaignLog {
         }
       }
     );
+  }
+
+  private handlePartnerStatusEffect(effect: PartnerStatusEffect, input?: string[]) {
+    const partners = ((effect.partner === '$fixed_partner' && effect.fixed_partner) ? [effect.fixed_partner] : input) || [];
+    forEach(partners, code => {
+      const data: TraumaAndCardData = this.campaignData.investigatorData[code] || {};
+      switch (effect.status) {
+        case 'cannot_take':
+        case 'mia':
+        case 'safe':
+        case 'resolute':
+        case 'the_entity':
+        case 'victim':
+          // Standard ones, implemented as story assets on the trauma data.
+          if (effect.operation === 'add') {
+            data.storyAssets = uniq([...(data.storyAssets || []), effect.status]);
+          } else {
+            data.storyAssets = filter(data.storyAssets || [], x => x !== effect.status);
+          }
+          break;
+        case 'eliminated':
+          data.killed = true;
+          break;
+        case 'heal_damage':
+          data.physical = Math.max(0, (data.physical) || 0 - 1);
+          break;
+        case 'heal_horror':
+          data.mental = Math.max(0, (data.mental) || 0 - 1);
+          break;
+        default:
+          /* eslint-disable @typescript-eslint/no-unused-vars */
+          const _exhaustiveCheck: never = effect.status;
+          break;
+      }
+      this.campaignData.investigatorData[code] = data;
+    });
   }
 
   private handleTraumaEffect(
