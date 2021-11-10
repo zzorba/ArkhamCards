@@ -173,6 +173,7 @@ export const SPECIAL_TOKENS: SpecialChaosTokenType[] = [
   'elder_thing',
   'auto_fail',
   'elder_sign',
+  'frost',
   'bless',
   'curse',
 ];

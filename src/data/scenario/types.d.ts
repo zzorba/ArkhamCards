@@ -97,6 +97,7 @@ export type SpecialChaosToken =
   | "bless"
   | "curse"
   | "frost";
+export type BorderColor = "setup" | "resolution" | "interlude";
 export type ChoiceIcon = "mental" | "physical" | "resign" | "dismiss" | "accept";
 export type DefaultOption = Option;
 export type MathCondition = MathCompareCondition | MathSumCondition | MathEqualsCondition;
@@ -260,6 +261,7 @@ export interface BoolOption {
   prompt?: string;
   effects?: Effect[];
   border?: boolean;
+  border_color?: BorderColor;
   pre_border_effects?: Effect[];
   steps?: string[];
 }
@@ -480,6 +482,7 @@ export interface NumOption {
   numCondition: number;
   effects?: Effect[];
   border?: boolean;
+  border_color?: BorderColor;
   steps?: string[];
 }
 export interface Option {
@@ -489,6 +492,7 @@ export interface Option {
   condition?: string;
   prompt?: string;
   border?: boolean;
+  border_color?: BorderColor;
   pre_border_effects?: Effect[];
   effects?: Effect[];
   steps?: string[];
@@ -522,6 +526,7 @@ export interface StringOption {
   condition: string;
   prompt?: string;
   border?: boolean;
+  border_color?: BorderColor;
   pre_border_effects?: Effect[];
   effects?: Effect[];
   steps?: string[];
@@ -679,6 +684,7 @@ export interface EffectsStep {
 }
 export interface EffectsWithInput {
   border?: boolean;
+  border_color?: BorderColor;
   effects: Effect[];
   input?: string[];
   numberInput?: number[];
@@ -731,6 +737,7 @@ export interface Choice {
   description?: string;
   steps?: string[];
   border?: boolean;
+  border_color?: BorderColor;
   pre_border_effects?: Effect[];
   effects?: Effect[];
 }
@@ -780,6 +787,7 @@ export interface InvestigatorConditionalChoice {
   description?: string;
   condition?: InvestigatorChoiceCondition;
   border?: boolean;
+  border_color?: BorderColor;
   pre_border_effects?: Effect[];
   steps?: string[];
   effects?: Effect[];
@@ -806,6 +814,7 @@ export interface BinaryConditionalChoice {
   condition?: BinaryChoiceCondition;
   repeatable?: boolean;
   border?: boolean;
+  border_color?: BorderColor;
   pre_border_effects?: Effect[];
   steps?: string[];
   effects?: Effect[];
@@ -969,9 +978,10 @@ export interface RuleReminderStep {
 }
 export interface StoryStep {
   id: string;
-  border_only?: boolean;
   type: "story";
   border?: boolean;
+  border_color?: BorderColor;
+  border_only?: boolean;
   title?: string;
   text: string;
   bullets?: {
@@ -1070,7 +1080,7 @@ export interface BorderStep {
   border_only?: boolean;
   type: "border";
   border: boolean;
-  border_color?: "setup" | "resolution" | "interlude";
+  border_color?: BorderColor;
   title?: string;
   text?: null;
   bullets?: null;

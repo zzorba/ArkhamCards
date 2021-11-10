@@ -684,8 +684,9 @@ export function getChaosBag(
     case TDEB:
       return TDEB_BAG[difficulty];
     case TIC:
-    case EOE:
       return TIC_BAG[difficulty];
+    case EOE:
+      return EOE_BAG[difficulty];
     case DARK_MATTER:
       return DARK_MATTER_BAG[difficulty];
     case ALICE_IN_WONDERLAND:

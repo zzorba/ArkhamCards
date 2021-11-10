@@ -391,7 +391,8 @@ export default class ScenarioStep {
               },
             ] : []),
             {
-              border: (result.option && result.option.border),
+              border: (result.option?.border),
+              border_color: (result.option?.border_color),
               numberInput,
               input: result.type === 'binary' ? result.input : undefined,
               effects: (result.option && result.option.effects) || [],
@@ -461,7 +462,8 @@ export default class ScenarioStep {
         const result: EffectsWithInput = {
           input: map(group, item => item.code),
           effects: (selectedChoice && selectedChoice.effects) || [],
-          border: (selectedChoice && selectedChoice.border),
+          border: (selectedChoice?.border),
+          border_color: (selectedChoice?.border_color),
         };
         return [
           ...(selectedChoice?.pre_border_effects ? [

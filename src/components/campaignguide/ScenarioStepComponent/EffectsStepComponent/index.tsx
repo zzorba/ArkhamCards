@@ -187,6 +187,7 @@ export default function EffectsStepComponent({ componentId, width, step, campaig
             key={`${step.id}_${outerIdx}`}
             width={width}
             border={!!effectsWithInput.border}
+            color={effectsWithInput.border_color}
           >
             { flatMap(effectsWithInput.effects, (effect, innerIdx) => {
               if (foundSpecialEffect) {
