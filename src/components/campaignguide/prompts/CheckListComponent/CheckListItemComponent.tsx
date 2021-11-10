@@ -83,7 +83,7 @@ function InvesigatorCheckListItemComponent({
         yithian={yithian}
       >
         <View style={styles.rowRight}>
-          { trauma && <TraumaSummary trauma={traumaAndCardData} investigator={investigator} whiteText /> }
+          { trauma && <View style={space.paddingRightXs}><TraumaSummary trauma={traumaAndCardData} investigator={investigator} whiteText /></View> }
           { onSecondaryChoice ? secondaryButton : switchContent }
         </View>
       </CompactInvestigatorRow>
