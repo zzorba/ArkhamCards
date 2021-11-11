@@ -63,7 +63,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
     if (!input.chaos_bag_branches) {
       return undefined;
     }
-    const chaosBagBranches = new Set(input.chaos_bag_branches);
+    const chaosBagBranches = new Set(input.fata);
     const index = findIndex(branches, b => b.visible && chaosBagBranches.has(b.choice.id));
     if (index === -1) {
       return undefined;

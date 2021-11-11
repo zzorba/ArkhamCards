@@ -313,6 +313,10 @@
             "text": "the investigators did not believe Dyer's report."
           },
           {
+            "id": "discovered_an_ancient_vessel",
+            "text": "The team discovered an ancient vessel."
+          },
+          {
             "id": "dr_kensler_has_a_plan",
             "text": "Dr. Kensler has a plan."
           },
@@ -361,6 +365,14 @@
             "text": "the nameless madness is contained safely within its host… for now."
           },
           {
+            "id": "photographed_the_astronomical_charts",
+            "text": "The team photographed the astronomical charts."
+          },
+          {
+            "id": "read_the_map",
+            "text": "the team read the map."
+          },
+          {
             "id": "scouted_the_city_outskirts",
             "text": "the investigators scouted the city outskirts."
           },
@@ -375,6 +387,10 @@
           {
             "id": "snow_graves",
             "text": "Camp - Snow Graves (5)"
+          },
+          {
+            "id": "studied_the_mural_carvings",
+            "text": "the team studied the mural carvings."
           },
           {
             "id": "surviving_investigators",
@@ -446,6 +462,18 @@
           {
             "id": "camp_shelter",
             "text": "#X#"
+          },
+          {
+            "id": "city_of_the_elder_things_v1",
+            "text": "leurre"
+          },
+          {
+            "id": "city_of_the_elder_things_v2",
+            "text": "leurre"
+          },
+          {
+            "id": "city_of_the_elder_things_v3",
+            "text": "leurre"
           },
           {
             "id": "continue_ice_and_death_part_2",

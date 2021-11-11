@@ -2,7 +2,7 @@ import { Platform } from 'react-native';
 import { find } from 'lodash';
 import { t } from 'ttag';
 
-import { ChaosTokenModifier, SimpleChaosTokenValue } from '@data/scenario/types';
+import { ChaosToken, ChaosTokenModifier, SimpleChaosTokenValue } from '@data/scenario/types';
 
 export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA = false;
 export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS = true;
@@ -143,7 +143,7 @@ export const CHAOS_TOKENS: ChaosTokenType[] = [
 ];
 
 export type ChaosBag = {
-  [chaosToken in ChaosTokenType]?: number;
+  [chaosToken in ChaosTokenType]: number;
 };
 
 export const CHAOS_TOKEN_ORDER: ChaosBag = {
@@ -164,6 +164,8 @@ export const CHAOS_TOKEN_ORDER: ChaosBag = {
   'elder_thing': 14,
   'auto_fail': 15,
   'elder_sign': 16,
+  'bless': 10,
+  'curse': 10,
 };
 
 export const SPECIAL_TOKENS: SpecialChaosTokenType[] = [

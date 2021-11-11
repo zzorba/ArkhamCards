@@ -21,7 +21,7 @@ import {
   TraumaAndCardData,
   WeaknessSet,
 } from '@actions/types';
-import { ChaosBag } from '@app_constants';
+import { ChaosBag, CHAOS_BAG_TOKEN_COUNTS } from '@app_constants';
 import { traumaDelta } from '@lib/trauma';
 import {
   AddRemoveChaosTokenEffect,
@@ -1107,7 +1107,7 @@ export default class GuidedCampaignLog {
     forEach(effect.tokens, token => {
       const currentCount = this.chaosBag[token] || 0;
       if (effect.type === 'add_chaos_token') {
-        this.chaosBag[token] = currentCount + 1;
+        this.chaosBag[token] = Math.min(currentCount + 1, CHAOS_BAG_TOKEN_COUNTS[token]);
       } else {
         this.chaosBag[token] = Math.max(0, currentCount - 1);
       }
