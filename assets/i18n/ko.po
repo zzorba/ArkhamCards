@@ -2246,19 +2246,19 @@ msgstr "새로운 캠페인"
 msgid "Adjust Weakness Set"
 msgstr "약점 세트 조정"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "이 덱은 여러개의 기본 약점이 포함되어 있습니다"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "이 덱은 하나의 기본 약점이 포함되어 있습니다"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "이러한 약점들을 이 캠페인의 기본 약점 세트에서 제거하기를 원하십니까?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "이 약점을 이 캠페인의 기본 약점 세트에서 제거하기를 원하십니까?"
 
@@ -4578,54 +4578,62 @@ msgid "${ textModifier }, draws another"
 msgstr "${ textModifier }, 다른 것 뽑기"
 
 msgid "Fix duplicates"
-msgstr ""
+msgstr "복사본 수정"
 
 msgid "Do you want to use the app to choose a random partner?"
-msgstr ""
+msgstr "앱을 사용하여 무작위로 동행 조력자를 선택하시겠습니까?"
 
 msgid "Select more"
-msgstr ""
+msgstr "더 선택하기"
 
 msgid "Record damage/horror:"
-msgstr ""
+msgstr "피해/공포 기록하기"
 
 msgid "Expedition Team"
-msgstr ""
+msgstr "탐사대"
 
 #, javascript-format
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out ${ "
 "partnerName },"
 msgstr ""
+"캠페인 기록지 중 ${ sectionName } 항목 아래의 ${ partnerName } "
+"동행 조력자 이름에 X표시를 합니다."
 
 #, javascript-format
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, write \"MIA\" next to "
 "${ partnerName }."
 msgstr ""
+"캠페인 기록지 중 ${ sectionName } 항목에 있는 “MIA” 옆에 ${ partnerName } "
+"동행 조력자 이름을 기입합니다."
 
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next "
 "to ${ partnerName }."
 msgstr ""
+"캠페인 기록지 중 ${ sectionName } 항목에 있는 “MIA” 옆에 ${ partnerName } "
+"동행 조력자 이름에 X표시를 합니다."
 
 #, javascript-format
 msgid ""
 "In the${ sectionName } section of the Campaign Log, draw a check mark next "
 "to ${ partnerName }."
 msgstr ""
+"캠페인 기록지 중 ${ sectionName } 항목 아래의 ${ partnerName } "
+"동행 조력자 이름 옆에 체크 표시를 합니다."
 
 msgid "If the lead investigator was driven <b>insane</b>."
-msgstr ""
+msgstr "대표 조사자가 <b>미쳤으므로</b>,"
 
 msgid "If all investigators were driven <b>insane</b>."
-msgstr ""
+msgstr "모든 조사자들이 <b>미쳤으므로</b>,"
 
 msgid "If the lead investigator is still alive."
-msgstr ""
+msgstr "대표 조사자가 아직 살아 있으므로,"
 
 msgid "If all investigatore are still alive."
-msgstr ""
+msgstr "모든 조사자들이 아직 살아 있으므로,"
 
 msgid "The Entity"
 msgstr ""
@@ -4650,36 +4658,43 @@ msgid ""
 "but you should be sure you have sufficient experience set aside to pay for "
 "it."
 msgstr ""
+"외전 이야기는 <아컴호러 카드게임> 캠페인의 시나리오와 시나리오 사이에 본 확장판의 시나리오 하나를 진행하는 것을 일컫습니다.\n"
+"- 외전 이야기를 즐기려면 캠페인을 진행 중인 각 조사자가 경험치를 일정량 소비해야 합니다.\n"
+"- 외전 이야기에서 얻은 약점, 트라우마, 경험치, 보상은 캠페인을 마칠 때까지 조사자에게 남습니다.\n"
+"- 각 외전 이야기는 캠페인마다 1번씩만 즐길 수 있습니다.\n"
+"\n"
+"<b>중요:</b> 이 앱을 이용하는 경우, 이러한 시나리오를 즐기기 위해 요구되는 경험치는 <b>시나리오 종료 시</b> "
+"자동으로 공제되지만, 시나리오를 시작하기 전에 지불할 충분한 경험치가 있는지 확인하여야 합니다."
 
 msgid "Ice and Death: Part 1"
-msgstr ""
+msgstr "얼음과 죽음, 1부"
 
 msgid "Ice and Death: Part 2"
-msgstr ""
+msgstr "얼음과 죽음, 2부"
 
 msgid "Ice and Death: Part 3"
-msgstr ""
+msgstr "얼음과 죽음, 3부"
 
 msgid "Restful Night"
-msgstr ""
+msgstr "평온한 밤"
 
 msgid "To the Forbidden Peaks"
-msgstr ""
+msgstr "금단의 봉우리를 향해"
 
 msgid "Endless Night"
-msgstr ""
+msgstr "끝없는 밤"
 
 msgid "City of the Elder Things"
-msgstr ""
+msgstr "옛것의 도시"
 
 msgid "Final Night"
-msgstr ""
+msgstr "마지막 밤"
 
 msgid "The Heart of Madness: Part 1"
-msgstr ""
+msgstr "광기의 심장부, 1부"
 
 msgid "The Heart of Madness: Part 2"
-msgstr ""
+msgstr "광기의 심장부, 2부"
 
 msgid "Fatal Mirage"
 msgstr ""
