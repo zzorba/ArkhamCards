@@ -4624,16 +4624,16 @@ msgstr ""
 "동행 조력자 이름 옆에 체크 표시를 합니다."
 
 msgid "If the lead investigator was driven <b>insane</b>."
-msgstr "대표 조사자가 <b>미쳤으므로</b>,"
+msgstr "대표 조사자가 <b>미쳤으면</b>."
 
 msgid "If all investigators were driven <b>insane</b>."
-msgstr "모든 조사자들이 <b>미쳤으므로</b>,"
+msgstr "모든 조사자들이 <b>미쳤으면</b>."
 
 msgid "If the lead investigator is still alive."
-msgstr "대표 조사자가 아직 살아 있으므로,"
+msgstr "대표 조사자가 아직 살아 있으면."
 
 msgid "If all investigatore are still alive."
-msgstr "모든 조사자들이 아직 살아 있으므로,"
+msgstr "모든 조사자들이 아직 살아 있으면."
 
 msgid "The Entity"
 msgstr ""
@@ -4697,7 +4697,7 @@ msgid "The Heart of Madness: Part 2"
 msgstr "광기의 심장부, 2부"
 
 msgid "Fatal Mirage"
-msgstr ""
+msgstr "치명적인 신기루"
 
 msgid "Fatal Mirage - Memories Discovered"
 msgstr ""
