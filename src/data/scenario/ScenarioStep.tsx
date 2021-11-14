@@ -1167,12 +1167,25 @@ export default class ScenarioStep {
             }
             forEach(omit(choices, ['insane', 'killed', 'count', 'physical', 'mental', 'xp', 'deckId']), (count, exile_code) => {
               if (count.length) {
-                for (let i = 0; i < count[0]; i++) {
-                  effects.push({
-                    type: 'remove_card',
-                    investigator: '$input_value',
-                    card: exile_code,
+                const quantity = count[0];
+                if (exile_code.indexOf('story#') !== -1) {
+                  const code = exile_code.split('#')[1];
+                  forEach(range(0, Math.abs(quantity)), () => {
+                    effects.push({
+                      type: quantity < 0 ? 'remove_card' : 'add_card',
+                      investigator: '$input_value',
+                      card: code,
+                      hidden: true,
+                    });
                   });
+                } else {
+                  for (let i = 0; i < quantity; i++) {
+                    effects.push({
+                      type: 'remove_card',
+                      investigator: '$input_value',
+                      card: exile_code,
+                    });
+                  }
                 }
               }
             });

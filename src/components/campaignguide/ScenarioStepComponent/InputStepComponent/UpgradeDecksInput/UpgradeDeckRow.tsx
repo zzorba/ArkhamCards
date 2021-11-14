@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { flatMap, find, forEach, keys, map, omit, sortBy } from 'lodash';
+import { flatMap, find, forEach, keys, map, omit, sortBy, pick } from 'lodash';
 import { t } from 'ttag';
 
 import { Deck, Slots, NumberChoices, getDeckId } from '@actions/types';
@@ -13,7 +13,7 @@ import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import StyleContext from '@styles/StyleContext';
-import { useCounter, useEffectUpdate, useFlag, useSlots } from '@components/core/hooks';
+import { EditSlotsActions, useCounter, useEffectUpdate, useFlag, useSlots } from '@components/core/hooks';
 import useCardList from '@components/card/useCardList';
 import space, { s, xs } from '@styles/space';
 import useDeckUpgrade from '@components/deck/useDeckUpgrade';
@@ -37,6 +37,8 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { useDispatch } from 'react-redux';
 import { useDeck } from '@data/hooks';
 import InputCounterRow from '../InputCounterRow';
+import { ControlType } from '@components/cardlist/CardSearchResult/ControlComponent';
+import CampaignGuide from '@data/scenario/CampaignGuide';
 
 interface Props {
   componentId: string;
@@ -44,6 +46,7 @@ interface Props {
   campaignState: CampaignStateHelper;
   scenarioState: ScenarioStateHelper;
   investigator: Card;
+  storyCards?: string[];
   deck?: LatestDeckT;
   campaignLog: GuidedCampaignLog;
   setUnsavedEdits: (investigator: string, edits: boolean) => void;
@@ -76,11 +79,55 @@ function deckMessage(saved: boolean, hasDeck: boolean, hasChanges: boolean) {
   return t`This deck will be upgraded with XP and any new story cards will be added or removed as specified.`;
 }
 
+function StoryCardRow({ card, countChanged, count, editable, description }: {
+  editable: boolean;
+  card: Card;
+  count: number;
+  countChanged?: EditSlotsActions;
+  description?: string;
+}) {
+  const control: ControlType = useMemo(() => {
+    if (!countChanged || !editable) {
+      return {
+        type: 'count',
+        count,
+        showZeroCount: true,
+      };
+    }
+    return {
+      type: 'quantity',
+      countChanged,
+      count,
+      limit: card.deck_limit || 1,
+      showZeroCount: true,
+    }
+  }, [card, countChanged, count, editable]);
+  return (
+    <CardSearchResult control={control} card={card} description={description} />
+  );
+}
+
+function StoryCardChoices({ slots, slotActions, storyCards, editable, campaignGuide }: { campaignGuide: CampaignGuide; slots: Slots; slotActions?: EditSlotsActions; storyCards: string[]; editable: boolean }) {
+  const [cards] = useCardList(storyCards, 'player');
+  return (
+    <>
+      { flatMap(cards, card => {
+        const count = slots[card.code] || 0;
+        if (!editable && count === 0) {
+          return null;
+        }
+        return <StoryCardRow key={card.code} card={card} countChanged={slotActions} count={count} editable={editable} description={campaignGuide.card(card.code)?.description} />;
+      }) }
+    </>
+  );
+}
+
 function UpgradeDeckRow({
   componentId,
   investigatorCounter: originalInvestigatorCounter,
   skipDeckSave,
   specialXp,
+  storyCards,
   id,
   campaignState,
   scenarioState,
@@ -121,18 +168,38 @@ function UpgradeDeckRow({
     });
     return slots;
   }, [savedDeck]);
-  const initialSpecialExile = useMemo(() => {
+  const storyAssets = useMemo(() => campaignLog.storyAssets(investigator.code), [campaignLog, investigator]);
+  const [initialSpecialExile, initialStoryCardSlots] = useMemo(() => {
     if (!choices) {
-      return {};
+      if (!storyCards) {
+        return [{}, {}]
+      }
+      return [{}, pick(storyAssets, storyCards)];
     }
-    const slots: Slots = {};
+
+    const exile: Slots = {};
+    const story: Slots = pick(storyAssets, storyCards || []);
     forEach(omit(choices, ['insane', 'killed', 'count', 'physical', 'mental', 'xp']), (count, exile_code) => {
       if (count.length) {
-        slots[exile_code] = count[0];
+        const quantity = count[0];
+        if (exile_code.indexOf('story#') !== -1) {
+          const code = exile_code.split('#')[1];
+          story[code] = (story[code] || 0) + quantity;
+        } else {
+          exile[exile_code] = quantity;
+        }
       }
     });
-    return slots;
-  }, [choices]);
+    return [exile, story];
+  }, [choices, storyAssets, storyCards]);
+  const [storyCardSlots, updateStoryCardSlots] = useSlots(initialStoryCardSlots);
+  const storyCardSlotActions: EditSlotsActions = useMemo(() => {
+    return {
+      setSlot: (code: string, value: number) => updateStoryCardSlots({ type: 'set-slot', code, value }),
+      incSlot: (code: string, max?: number) => updateStoryCardSlots({ type: 'inc-slot', code, max }),
+      decSlot: (code: string) => updateStoryCardSlots({ type: 'dec-slot', code }),
+    };
+  }, [updateStoryCardSlots]);
   const existingCount = useMemo(() => {
     if (!investigatorCounter) {
       return 0;
@@ -168,8 +235,15 @@ function UpgradeDeckRow({
         choices[code] = [count];
       }
     });
+    forEach(storyCards || [], code => {
+      if ((initialStoryCardSlots[code] || 0) !== (storyCardSlots[code] || 0)) {
+        choices[`story#${code}`] = [(storyCardSlots[code] || 0) - (initialStoryCardSlots[code] || 0)];
+      }
+    });
     scenarioState.setNumberChoices(choiceId, choices, !skipDeckSave && deck ? getDeckId(deck) : undefined);
-  }, [scenarioState, skipDeckSave, investigatorCounter, specialExile, countAdjust, earnedXp, choiceId, physicalAdjust, mentalAdjust]);
+  }, [scenarioState, skipDeckSave, storyCards,
+    initialStoryCardSlots, storyCardSlots,
+    investigatorCounter, specialExile, countAdjust, earnedXp, choiceId, physicalAdjust, mentalAdjust]);
 
   const onUpgrade = useCallback((deck: Deck, xp: number) => {
     saveCampaignLog(xp, deck);
@@ -187,8 +261,9 @@ function UpgradeDeckRow({
       mentalAdjust !== 0 ||
       xpAdjust !== earnedXp ||
       countAdjust !== 0 ||
-      !!find(specialExile, count => count > 0);
-  }, [earnedXp, specialExile, xpAdjust, physicalAdjust, mentalAdjust, countAdjust]);
+      !!find(specialExile, count => count > 0) ||
+      !!find(storyCards, code => (storyCardSlots[code] || 0) !== (initialStoryCardSlots[code] || 0));
+  }, [earnedXp, specialExile, xpAdjust, physicalAdjust, mentalAdjust, countAdjust, initialStoryCardSlots, storyCardSlots, storyCards]);
 
   useEffectUpdate(() => {
     setUnsavedEdits(investigator.code, unsavedEdits);
@@ -223,7 +298,7 @@ function UpgradeDeckRow({
     }
     return (choices.mental && choices.mental[0]) || 0;
   }, [choices, mentalAdjust, editable]);
-  const storyAssets = useMemo(() => campaignLog.storyAssets(investigator.code), [campaignLog, investigator]);
+
   const storyAssetDeltas = useMemo(() => campaignLog.storyAssetChanges(investigator.code), [campaignLog, investigator]);
   const storyCountsForDeck = useMemo(() => {
     if (!deck) {
@@ -294,16 +369,17 @@ function UpgradeDeckRow({
   const [storyAssetCards] = useCardList(storyAssetCodes, 'player');
   const [allStoryAssetCards] = useCardList(allStoryAssetCodes, 'player');
   const storyAssetSection = useMemo(() => {
-    if (!storyAssetCards.length) {
+    if (!storyAssetCards.length && !storyCards) {
       return null;
     }
     return (
       <>
         <View style={space.paddingSideS}><DeckSlotHeader title={t`Campaign cards`} first /></View>
         { renderDeltas(storyAssetCards, storyAssetDeltas) }
+        { !!storyCards && <StoryCardChoices campaignGuide={campaignGuide} storyCards={storyCards} slots={storyCardSlots} slotActions={storyCardSlotActions} editable={choices === undefined} />}
       </>
     );
-  }, [storyAssetDeltas, storyAssetCards, renderDeltas]);
+  }, [storyAssetDeltas, storyAssetCards, renderDeltas, campaignGuide, storyCards, storyCardSlots, storyCardSlotActions, choices]);
 
   const xpSection = useMemo(() => {
     const xpString = xp >= 0 ? `+${xp}` : `${xp}`;

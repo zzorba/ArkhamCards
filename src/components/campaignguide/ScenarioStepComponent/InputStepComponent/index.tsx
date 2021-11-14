@@ -147,6 +147,7 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
           componentId={componentId}
           skipDeckSave={step.input.skip_decks}
           specialXp={step.input.special_xp}
+          storyCards={step.input.story_cards}
           investigatorCounter={step.input.counter}
         />
       );

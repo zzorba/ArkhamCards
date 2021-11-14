@@ -362,7 +362,7 @@ interface DecSlotAction {
   code: string;
 }
 
-type SlotsAction = SlotAction | IncSlotAction | DecSlotAction | ClearAction | SyncAction;
+export type SlotsAction = SlotAction | IncSlotAction | DecSlotAction | ClearAction | SyncAction;
 
 export function useSlots(initialState: Slots, updateSlots?: (slots: Slots) => void, keepZero?: boolean) {
   return useReducer((state: Slots, action: SlotsAction) => {
@@ -413,7 +413,7 @@ export function useSlots(initialState: Slots, updateSlots?: (slots: Slots) => vo
 
 export interface EditSlotsActions {
   setSlot: (code: string, count: number) => void;
-  incSlot: (code: string) => void;
+  incSlot: (code: string, max?: number) => void;
   decSlot: (code: string) => void;
 }
 
@@ -431,13 +431,13 @@ export function useSlotActions(slots?: Slots, editSlotsActions?: EditSlotsAction
     }
     updateDeckCardCounts({ type: 'set-slot', code, value });
   }, [propsSetSlot, updateDeckCardCounts]);
-  const incSlot = useCallback((code: string) => {
+  const incSlot = useCallback((code: string, max?: number) => {
     if (propsIncSlot) {
       InteractionManager.runAfterInteractions(() => {
-        propsIncSlot(code);
+        propsIncSlot(code, max);
       });
     }
-    updateDeckCardCounts({ type: 'inc-slot', code });
+    updateDeckCardCounts({ type: 'inc-slot', code, max });
   }, [propsIncSlot, updateDeckCardCounts]);
   const decSlot = useCallback((code: string) => {
     if (propsDecSlot) {

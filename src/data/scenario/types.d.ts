@@ -193,7 +193,8 @@ export interface Campaign {
   cards?: {
     code: string;
     name: string;
-    gender: "male" | "female";
+    gender?: "male" | "female";
+    description?: string;
   }[];
   campaign_log: {
     id: string;
@@ -287,6 +288,7 @@ export interface AddCardEffect {
   ignore_deck_limit?: boolean;
   non_story?: boolean;
   show_prompt?: boolean;
+  hidden?: boolean;
 }
 export interface AddWeaknessEffect {
   type: "add_weakness";
@@ -303,6 +305,7 @@ export interface RemoveCardEffect {
   fixed_investigator?: string;
   card: string;
   non_story?: boolean;
+  hidden?: boolean;
 }
 export interface ReplaceCardEffect {
   type: "replace_card";
@@ -705,6 +708,7 @@ export interface UpgradeDecksInput {
   skip_decks?: boolean;
   special_xp?: SpecialXp;
   counter?: string;
+  story_cards?: [string];
 }
 export interface CardChoiceInput {
   type: "card_choice";

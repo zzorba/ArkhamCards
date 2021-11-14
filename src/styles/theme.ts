@@ -242,7 +242,7 @@ export const LIGHT_THEME: ThemeColors = {
   sanity: '#165385',
   campaign: {
     setup: '#128C60',
-    interlude: '#4d5673',
+    interlude: '#174691',
     resolution: '#E75122',
     resolutionBackground: '#E7512233',
 
@@ -393,7 +393,7 @@ export const DARK_THEME: ThemeColors = {
   sanity: '#2C7FC0',
   campaign: {
     setup: '#07AF73',
-    interlude: '#4d5673',
+    interlude: '#1735ad',
     resolution: '#F04932',
     resolutionBackground: '#F0493233',
 

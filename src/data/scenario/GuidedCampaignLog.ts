@@ -1107,7 +1107,7 @@ export default class GuidedCampaignLog {
     forEach(effect.tokens, token => {
       const currentCount = this.chaosBag[token] || 0;
       if (effect.type === 'add_chaos_token') {
-        this.chaosBag[token] = Math.min(currentCount + 1, CHAOS_BAG_TOKEN_COUNTS[token]);
+        this.chaosBag[token] = Math.min(currentCount + 1, CHAOS_BAG_TOKEN_COUNTS[token] || 0);
       } else {
         this.chaosBag[token] = Math.max(0, currentCount - 1);
       }

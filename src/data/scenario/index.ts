@@ -1,7 +1,7 @@
 import { find, flatMap, sortBy } from 'lodash';
 
 import { NumberChoices, StandaloneId, Trauma } from '@actions/types';
-import { FullCampaign, Effect, Errata, Scenario, ChoiceIcon, ChaosToken, ChaosTokens, ScenarioChaosTokens } from './types';
+import { FullCampaign, Effect, Errata, Scenario, ChoiceIcon, ChaosToken, ChaosTokens, ScenarioChaosTokens, BorderColor } from './types';
 import CampaignGuide, { CampaignLog, CampaignLogSection } from './CampaignGuide';
 import ScenarioGuide from './ScenarioGuide';
 import ScenarioStep from './ScenarioStep';
@@ -48,6 +48,7 @@ export interface LatestDecks {
 
 export interface DisplayChoice {
   border?: boolean;
+  border_color?: BorderColor;
   large?: boolean;
   text?: string;
   tokens?: ChaosToken[];

@@ -34,7 +34,7 @@ function renderInvestigators(investigators: Card[], card: Card) {
 export default function AddCardEffectComponent({ id, effect, input }: Props) {
   const { typography } = useContext(StyleContext);
   const [card, loading] = useSingleCard(effect.card, 'player');
-  if (loading) {
+  if (loading || effect.hidden) {
     return null;
   }
   if (!card) {

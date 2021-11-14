@@ -55,8 +55,8 @@ function NormalCardQuantityComponent({ code, count: propsCount, countChanged: { 
 
   const inc = useCallback(() => {
     incCount();
-    incSlot(code);
-  }, [incCount, incSlot, code]);
+    incSlot(code, limit);
+  }, [incCount, incSlot, code, limit]);
   const dec = useCallback(() => {
     decCount();
     decSlot(code);

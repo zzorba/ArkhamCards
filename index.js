@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { AppearanceProvider } from 'react-native-appearance';
 import { Provider } from 'react-redux';

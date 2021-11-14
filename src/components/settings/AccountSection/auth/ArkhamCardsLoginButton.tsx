@@ -199,32 +199,38 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
       return;
     }
     setSubmitting(true);
-    const promise = mode === 'create' ?
-      auth().createUserWithEmailAndPassword(emailAddress, password) :
-      auth().signInWithEmailAndPassword(emailAddress, password);
-    promise.then(
-      (user) => {
-        setSubmitting(false);
-        loginSucceeded(user);
-      },
-      (error) => {
-        if (error.code) {
-          if (Array.isArray(error.code)) {
-            setEmailErrorCodes(error.code);
-          } else {
-            setEmailErrorCodes([error.code]);
+    try {
+      const promise = mode === 'create' ?
+        auth().createUserWithEmailAndPassword(emailAddress, password) :
+        auth().signInWithEmailAndPassword(emailAddress, password);
+      promise.then(
+        (user) => {
+          setSubmitting(false);
+          loginSucceeded(user);
+        },
+        (error) => {
+          if (error.code) {
+            if (Array.isArray(error.code)) {
+              setEmailErrorCodes(error.code);
+            } else {
+              setEmailErrorCodes([error.code]);
+            }
           }
-        }
-        if (error.message) {
-          if (Array.isArray(error.message)) {
-            setEmailErrorMessages(error.message);
-          } else {
-            setEmailErrorMessages([error.message]);
+          if (error.message) {
+            if (Array.isArray(error.message)) {
+              setEmailErrorMessages(error.message);
+            } else {
+              setEmailErrorMessages([error.message]);
+            }
           }
+          setSubmitting(false);
         }
-        setSubmitting(false);
-      }
-    );
+      );
+    } catch (e) {
+      setEmailErrorCodes(['some weird error'])
+      setEmailErrorMessages([e.message || e]);
+      setSubmitting(false);
+    }
   }, [emailAddress, password, setSubmitting, setEmailErrorCodes, setEmailErrorMessages, loginSucceeded, mode]);
   const focusPasswordField = useCallback(() => {
     passwordInputRef.current && passwordInputRef.current.focus();

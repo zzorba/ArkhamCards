@@ -18,8 +18,6 @@ interface Props {
 
 export default function PartnerStatusConditionComponent({ step, condition, campaignLog }: Props) {
   const result = partnerStatusConditionResult(condition, campaignLog);
-  console.log(step.id);
-  console.log(result.investigatorChoices);
   return (
     <BinaryResult
       bulletType={step.bullet_type}
