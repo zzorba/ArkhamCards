@@ -1077,7 +1077,7 @@ msgstr ""
 "ArkhamDB"
 
 msgid "Unsupported Operation"
-msgstr "Operación No Soportada"
+msgstr "Operación no soportada"
 
 msgid "Upload to ArkhamDB"
 msgstr "Subir a ArkhamDB"
@@ -3324,13 +3324,13 @@ msgid "Reads \"${ badThing.prompt }\""
 msgstr "Lee \"${ badThing.prompt }\""
 
 msgid "Sign in to Dissonant Voices?"
-msgstr "¿Conectarse a Voces disonantes?"
+msgstr "¿Conectarse a Dissonant Voices?"
 
 msgid ""
 "Dissonant Voices is an ongoing project by Mythos Busters to narrate the english scenario "
 "text for each Arkham Horror campaign."
 msgstr ""
-"Voces disonantes es un proyecto en marcha de ¡Tengo un plan! para narrar, en español, "
+"Dissonant Voices es un proyecto en marcha de ¡Tengo un plan! para narrar, en español, "
 "los textos de las campañas de Arkham Horror."
 
 msgid "Are you sure you want to delete this standalone?"
@@ -3736,7 +3736,7 @@ msgid "Audio narration"
 msgstr "Narración campañas"
 
 msgid "Dissonant Voices"
-msgstr "Voces disonantes"
+msgstr "Dissonant Voices"
 
 msgid "Notes"
 msgstr "Notas"
