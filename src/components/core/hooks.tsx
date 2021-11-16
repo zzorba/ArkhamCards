@@ -598,8 +598,10 @@ export function useInterval(callback: () => void, delay: number) {
     if (!delay) {
       return;
     }
-    const id = setInterval(savedCallback.current, delay);
-    return () => clearInterval(id);
+    if (savedCallback.current) {
+      const id = setInterval(savedCallback.current, delay);
+      return () => clearInterval(id);
+    }
   }, [delay]);
 }
 

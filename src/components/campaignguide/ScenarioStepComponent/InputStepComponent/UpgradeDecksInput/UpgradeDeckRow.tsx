@@ -240,6 +240,7 @@ function UpgradeDeckRow({
         choices[`story#${code}`] = [(storyCardSlots[code] || 0) - (initialStoryCardSlots[code] || 0)];
       }
     });
+    console.log(choices);
     scenarioState.setNumberChoices(choiceId, choices, !skipDeckSave && deck ? getDeckId(deck) : undefined);
   }, [scenarioState, skipDeckSave, storyCards,
     initialStoryCardSlots, storyCardSlots,
@@ -323,8 +324,14 @@ function UpgradeDeckRow({
         }
       }
     });
+    forEach(storyCards || [], (code) => {
+      const delta = (storyCardSlots[code] || 0) - (initialStoryCardSlots[code] || 0);
+      if (delta !== 0) {
+        newSlots[code] = Math.max((deck.deck.slots?.[code] || 0) + delta, 0);
+      }
+    })
     return newSlots;
-  }, [deck, storyAssets, storyAssetDeltas]);
+  }, [deck, storyAssets, storyAssetDeltas, storyCards, initialStoryCardSlots, storyCardSlots]);
   const saveDeck = useCallback(() => {
     saveDeckUpgrade(xp, storyCountsForDeck, campaignLog.ignoreStoryAssets(investigator.code), exileCounts);
   }, [saveDeckUpgrade, xp, storyCountsForDeck, campaignLog, exileCounts, investigator.code]);
@@ -369,17 +376,17 @@ function UpgradeDeckRow({
   const [storyAssetCards] = useCardList(storyAssetCodes, 'player');
   const [allStoryAssetCards] = useCardList(allStoryAssetCodes, 'player');
   const storyAssetSection = useMemo(() => {
-    if (!storyAssetCards.length && !storyCards) {
+    if (!storyAssetCards.length && !(storyCards && (editable || find(storyCardSlots, count => count !== 0)))) {
       return null;
     }
     return (
       <>
         <View style={space.paddingSideS}><DeckSlotHeader title={t`Campaign cards`} first /></View>
         { renderDeltas(storyAssetCards, storyAssetDeltas) }
-        { !!storyCards && <StoryCardChoices campaignGuide={campaignGuide} storyCards={storyCards} slots={storyCardSlots} slotActions={storyCardSlotActions} editable={choices === undefined} />}
+        { !!storyCards && <StoryCardChoices campaignGuide={campaignGuide} storyCards={storyCards} slots={storyCardSlots} slotActions={storyCardSlotActions} editable={editable && choices === undefined} />}
       </>
     );
-  }, [storyAssetDeltas, storyAssetCards, renderDeltas, campaignGuide, storyCards, storyCardSlots, storyCardSlotActions, choices]);
+  }, [storyAssetDeltas, storyAssetCards, renderDeltas, campaignGuide, storyCards, storyCardSlots, storyCardSlotActions, choices, editable]);
 
   const xpSection = useMemo(() => {
     const xpString = xp >= 0 ? `+${xp}` : `${xp}`;

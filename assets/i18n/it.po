@@ -4903,14 +4903,20 @@ msgstr ""
 msgid "The Heart of Madness - Seals Recovered"
 msgstr ""
 
+msgid "You may heal 1 physical or mental trauma <i>(your choice)</i>"
+msgstr ""
+
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } è <b>impazzito</b>."
 
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } è <b>ucciso</b>."
 
+#, javascript-format
 msgctxt "masculine"
 msgid ""
 "${ investigator.name } suffers 1 physical or mental trauma <i>(their "
@@ -5003,17 +5009,14 @@ msgstr ""
 "Se <i>${ card.name }</i> è presente nel Diario della Campagna alla voce “${ "
 "entry.section }”."
 
-#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } è <b>impazzita</b>."
 
-#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } è <b>uccisa</b>."
 
-#, javascript-format
 msgctxt "feminine"
 msgid ""
 "${ investigator.name } suffers 1 physical or mental trauma <i>(their "

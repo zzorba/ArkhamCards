@@ -16,7 +16,7 @@ interface Props {
 export default function CheckCampaignLogCardsComponent({ effect, input, numberInput }: Props) {
   const codes = useMemo(() => input || [], [input]);
   const { campaignGuide } = useContext(CampaignGuideContext);
-  const fixedCards: { code: string; gender: 'male' | 'female'; name: string }[] = useMemo(() => {
+  const fixedCards: { code: string; gender?: 'male' | 'female'; name: string }[] = useMemo(() => {
     return flatMap(codes, code => {
       const card = campaignGuide.card(code);
       return card ? card : [];

@@ -4904,14 +4904,20 @@ msgstr ""
 msgid "${ textModifier }, draws another"
 msgstr ""
 
+msgid "You may heal 1 physical or mental trauma <i>(your choice)</i>"
+msgstr ""
+
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } <b>сошёл с ума</b>."
 
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "Сыщик ${ investigator.name } <b>убит</b>."
 
+#, javascript-format
 msgctxt "masculine"
 msgid ""
 "${ investigator.name } suffers 1 physical or mental trauma <i>(their "
@@ -5009,17 +5015,14 @@ msgid ""
 "Campaign Log."
 msgstr "<i>${ card.name }</i> записан в графе «${ entry.section }» журнала кампании."
 
-#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } <b>сошла с ума</b>."
 
-#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "Сыщик ${ investigator.name } <b>убита</b>."
 
-#, javascript-format
 msgctxt "feminine"
 msgid ""
 "${ investigator.name } suffers 1 physical or mental trauma <i>(their "

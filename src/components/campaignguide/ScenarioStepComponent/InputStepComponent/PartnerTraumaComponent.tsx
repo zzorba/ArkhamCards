@@ -61,7 +61,7 @@ function PartnerTraumaRow({ partner, card, physical, mental, editable, incP, dec
   }, [partner.code, decM]);
   return (
     <RoundedFactionBlock
-      header={<CompactInvestigatorRow investigator={card} name={partner.name} description={partner.description} width={width - s * (editable ? 4 : 2)} open />}
+      header={<CompactInvestigatorRow investigator={card} hideImage={!card} name={partner.name} description={partner.description} width={width - s * (editable ? 4 : 2)} open />}
       faction="neutral"
       noSpace
       noShadow
