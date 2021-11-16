@@ -443,7 +443,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   // EOE,
 ]);
 
-export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
+export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([EOE]);
 
 export interface CustomCampaignLog {
   sections?: string[];
