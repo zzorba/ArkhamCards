@@ -183,7 +183,7 @@ export default class ScenarioStep {
                   input: physical,
                   effects: [{
                     type: 'trauma',
-                    physical: 1,
+                    physical: specialEffect.mental_or_physical || 1,
                     investigator: '$input_value',
                   }],
                 });
@@ -193,7 +193,7 @@ export default class ScenarioStep {
                   input: mental,
                   effects: [{
                     type: 'trauma',
-                    mental: 1,
+                    mental: specialEffect.mental_or_physical || 1,
                     investigator: '$input_value',
                   }],
                 });

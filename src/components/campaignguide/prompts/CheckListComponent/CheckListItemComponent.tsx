@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+import ArkhamIcon from '@icons/ArkhamIcon';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import Card from '@data/types/Card';
@@ -113,7 +114,7 @@ export default function CheckListItemComponent({
   onSecondaryChoice,
   editable,
 }: Props) {
-  const { typography } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   const toggle = useCallback((value: boolean) => {
     onChoiceToggle(code, value);
   }, [onChoiceToggle, code]);
@@ -142,13 +143,17 @@ export default function CheckListItemComponent({
       color ? { backgroundColor: color } : {},
     ]}>
       <View style={[styles.column, space.paddingLeftS]}>
-        <Text style={[
-          typography.mediumGameFont,
-          styles.nameText,
-          color ? { color: 'white' } : {},
-        ]}>
-          { name }
-        </Text>
+        { name.startsWith('[') && name.endsWith(']') ? (
+          <ArkhamIcon name={name.substr(1, name.length - 2)} color={colors.D30} size={36} />
+        ) : (
+          <Text style={[
+            typography.mediumGameFont,
+            styles.nameText,
+            color ? { color: 'white' } : {},
+          ]}>
+            { name }
+          </Text>
+        ) }
         { !!description && (
           <Text style={[typography.cardTraits, color ? { color: 'white' } : {}]}>
             { description }

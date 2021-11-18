@@ -949,23 +949,23 @@
         "entries": [
           {
             "id": "seal_a",
-            "text": "The [seal_a] seal"
+            "text": "[seal_a]"
           },
           {
             "id": "seal_b",
-            "text": "The [seal_b] seal"
+            "text": "[seal_b]"
           },
           {
             "id": "seal_c",
-            "text": "The [seal_c] seal"
+            "text": "[seal_c]"
           },
           {
             "id": "seal_d",
-            "text": "The [seal_d] seal"
+            "text": "[seal_d]"
           },
           {
             "id": "seal_e",
-            "text": "The [seal_e] seal"
+            "text": "[seal_e]"
           }
         ]
       },
@@ -974,23 +974,23 @@
         "entries": [
           {
             "id": "seal_a",
-            "text": "The [seal_a] seal"
+            "text": "[seal_a]"
           },
           {
             "id": "seal_b",
-            "text": "The [seal_b] seal"
+            "text": "[seal_b]"
           },
           {
             "id": "seal_c",
-            "text": "The [seal_c] seal"
+            "text": "[seal_c]"
           },
           {
             "id": "seal_d",
-            "text": "The [seal_d] seal"
+            "text": "[seal_d]"
           },
           {
             "id": "seal_e",
-            "text": "The [seal_e] seal"
+            "text": "[seal_e]"
           }
         ]
       },
@@ -2195,7 +2195,7 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "los investigadores cooperaron con los yithianos."
           },
           {
             "id": "earned_alejandros_trust",
@@ -2235,7 +2235,7 @@
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "han eliminado los recuerdos de los investigadores."
           },
           {
             "id": "harbinger_alive",
@@ -2299,19 +2299,19 @@
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "el proceso salió mal."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "el proceso salió espectacularmente mal."
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "el proceso fue perfeccionado."
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "el proceso tuvo éxito."
           },
           {
             "id": "recruited_help_of_another_expedition",
@@ -2327,7 +2327,7 @@
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "los investigadores se resistieron a su cautiverio."
           },
           {
             "id": "sealed_relic_of_ages_forever",
@@ -2412,7 +2412,7 @@
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "Se completaron #X# tareas."
           },
           {
             "id": "thc_reminder",
@@ -3563,7 +3563,7 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "los investigadores cooperaron con los yithianos."
           },
           {
             "id": "earned_alejandros_trust",
@@ -3603,7 +3603,7 @@
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "han eliminado los recuerdos de los investigadores."
           },
           {
             "id": "harbinger_alive",
@@ -3667,19 +3667,19 @@
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "el proceso salió mal."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "el proceso salió espectacularmente mal."
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "el proceso fue perfeccionado."
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "el proceso tuvo éxito."
           },
           {
             "id": "relic_is_missing",
@@ -3691,7 +3691,7 @@
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "los investigadores se resistieron a su cautiverio."
           },
           {
             "id": "sealed_relic_of_ages_forever",
@@ -3768,7 +3768,7 @@
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "Se completaron #X# tareas."
           },
           {
             "id": "thc_reminder",

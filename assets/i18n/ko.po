@@ -4613,12 +4613,6 @@ msgstr ""
 "캠페인 기록지 중 ${ sectionName } 항목에 있는 “MIA” 옆에 ${ partnerName } 동행 조력자 이름에 X표시를 "
 "합니다."
 
-#, javascript-format
-msgid ""
-"In the${ sectionName } section of the Campaign Log, draw a check mark next "
-"to ${ partnerName }."
-msgstr "캠페인 기록지 중 ${ sectionName } 항목 아래의 ${ partnerName } 동행 조력자 이름 옆에 체크 표시를 합니다."
-
 msgid "If the lead investigator was driven <b>insane</b>."
 msgstr "대표 조사자가 <b>미쳤으면</b>."
 
@@ -4714,6 +4708,18 @@ msgid "The Heart of Madness - Seals Recovered"
 msgstr ""
 
 msgid "You may heal 1 physical or mental trauma <i>(your choice)</i>"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In the ${ sectionName } section of the Campaign Log, draw a check mark next "
+"to ${ partnerName }."
+msgstr ""
+
+msgid "Choose heal type"
+msgstr ""
+
+msgid "Chosen heal type"
 msgstr ""
 
 #, javascript-format

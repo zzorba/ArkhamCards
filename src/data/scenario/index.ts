@@ -62,6 +62,7 @@ export interface DisplayChoice {
   effects?: Effect[] | null;
   pre_border_effects?: Effect[] | null;
   trauma?: Trauma;
+  resolute?: boolean;
   card?: Card;
 }
 

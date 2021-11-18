@@ -14,6 +14,7 @@ import { ChoiceIcon } from '@data/scenario/types';
 import RadioButton from './RadioButton';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import TraumaSummary, { TraumaIconPile } from '@components/campaign/TraumaSummary';
+import AppIcon from '@icons/AppIcon';
 
 interface Props {
   title: string;
@@ -65,7 +66,7 @@ export default function SinglePickerComponent({
   ...props
 }: Props) {
   const defaultLabel = props.defaultLabel || t`None`;
-  const { typography } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   const items: Item<number>[] = useMemo(() => {
     return [
       ...(optional ? [{ value: -1, title: defaultLabel }] : []),
@@ -74,12 +75,19 @@ export default function SinglePickerComponent({
           title: c.text || '',
           description: c.description || c.card?.subname,
           iconNode: getIcon(c.icon, c.card),
-          rightNode: c.trauma ? <View style={space.paddingRightS}><TraumaIconPile physical={c.trauma.physical || 0} mental={c.trauma.mental || 0} whiteText /></View> : undefined,
+          rightNode: c.trauma ? (
+            <>
+              { !!c.resolute && <AppIcon accessibilityLabel={t`Resolute`} name="check_on_check" size={40} color={colors.D10} /> }
+              <View style={space.paddingRightS}>
+                <TraumaIconPile physical={c.trauma.physical || 0} mental={c.trauma.mental || 0} />
+              </View>
+            </>
+          ) : undefined,
           value: idx,
         };
       }),
     ];
-  }, [optional, defaultLabel, choices]);
+  }, [optional, defaultLabel, choices, colors]);
   const onValueChange = useCallback((idx: number) => {
     onChoiceChange(idx);
   }, [onChoiceChange]);
@@ -99,9 +107,11 @@ export default function SinglePickerComponent({
   const selectedDescription = (selectedIndex === undefined || selectedIndex === -1) ? undefined : (choices[selectedIndex].description || choices[selectedIndex].card?.subname);
   const selectedIcon = (selectedIndex === undefined || selectedIndex === -1) ? undefined : choices[selectedIndex].icon;
   const selectedTrauma = (selectedIndex === undefined || selectedIndex === -1) ? undefined : choices[selectedIndex].trauma;
+  const selectedResolute = (selectedIndex === undefined || selectedIndex === -1) ? undefined : choices[selectedIndex].resolute;
   const selection = useMemo(() => {
     return (
       <View style={[{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }]}>
+        { !!selectedResolute && <AppIcon accessibilityLabel={t`Resolute`} name="check_on_check" size={40} color="#FFFFFF" /> }
         { !!(selectedTrauma?.physical || selectedTrauma?.mental) && <View style={space.paddingRightXs}><TraumaIconPile physical={selectedTrauma.physical || 0} mental={selectedTrauma.mental || 0} whiteText /></View> }
         <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end' }}>
           <Text numberOfLines={2} ellipsizeMode="head" style={[typography.button, investigator ? typography.white : undefined]} >
@@ -116,7 +126,7 @@ export default function SinglePickerComponent({
         { !!selectedIcon && <View style={space.paddingLeftS}>{ getIcon(selectedIcon) }</View> }
       </View>
     );
-  }, [typography, investigator, selectedLabel, selectedIcon, selectedDescription, selectedTrauma]);
+  }, [typography, investigator, selectedLabel, selectedIcon, selectedDescription, selectedTrauma, selectedResolute]);
   const button = useMemo(() => {
     if (investigator) {
       return (

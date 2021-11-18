@@ -28,11 +28,16 @@ export default function CampaignLogPartnersComponent({ partners, campaignLog, wi
   }
   return (
     <>
-      { map(partners, ({ code, health, sanity, name, description }) => {
+      { map(partners, (partner) => {
+        const { code, name, description } = partner;
         const card = find(cards, c => c.code === code);
+
         const trauma = campaignLog.traumaAndCardData(code);
-        const eliminated = ((trauma.physical || 0) === health) || ((trauma.mental || 0) === sanity) || trauma.killed;
         const conditions = new Set(trauma.storyAssets || []);
+        const resolute = conditions.has('resolute');
+        const health = (resolute && partner.resolute_health) || partner.health;
+        const sanity = (resolute && partner.resolute_sanity) || partner.sanity;
+        const eliminated = ((trauma.physical || 0) === health) || ((trauma.mental || 0) === sanity) || trauma.killed;
         const the_entity = conditions.has('the_entity');
         return (
           <View key={code} style={space.paddingBottomS}>
@@ -41,11 +46,18 @@ export default function CampaignLogPartnersComponent({ partners, campaignLog, wi
               hideImage={!card && !loading}
               width={width}
               eliminated={eliminated}
-              name={the_entity ? t`The Entity` : name}
-              description={the_entity ? undefined : description}
+              name={name}
+              description={description}
             >
-              { conditions.has('resolute') && <AppIcon accessibilityLabel={t`Resolute`} name="check_on_check" size={40} color="#FFFFFF" /> }
-              { conditions.has('mia') && (
+              { the_entity && (
+                <View style={space.marginLeftXs}>
+                  <Text style={[typography.text, { color: '#FFFFFF' }]}>
+                    {t`The Entity`}
+                  </Text>
+                </View>
+              ) }
+              { conditions.has('resolute') && !the_entity && <AppIcon accessibilityLabel={t`Resolute`} name="check_on_check" size={40} color="#FFFFFF" /> }
+              { conditions.has('mia') && !the_entity && (
                 <View style={space.marginLeftXs}>
                   <Text style={[typography.text, conditions.has('safe') ? { textDecorationLine: 'line-through', color: colors.M } : { color: '#FFFFFF' }]}>
                     {t`MIA`}

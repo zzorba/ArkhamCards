@@ -170,7 +170,7 @@ export default function CampaignLogEffectComponent({
     return null;
   }
   return (
-    <SetupStepWrapper bulletType={bulletType}>
+    <SetupStepWrapper bulletType={bulletType || effect.bullet_type}>
       <CampaignLogEffectsContent effect={effect} input={input} />
     </SetupStepWrapper>
   );

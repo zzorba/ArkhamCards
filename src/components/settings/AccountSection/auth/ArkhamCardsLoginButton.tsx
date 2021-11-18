@@ -282,12 +282,12 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
         placeholder={t`Email address`}
         inputStyle={typography.text as any}
         placeholderTextColor={colors.lightText}
-        autoCompleteType="email"
+        autoComplete="email"
+        textContentType="emailAddress"
         autoCapitalize="none"
         autoCorrect={false}
         value={emailAddress}
         keyboardType="email-address"
-        textContentType="username"
         onChangeText={setEmailAddress}
         errorMessage={emailErrors.join('\n')}
         onSubmitEditing={focusPasswordField}
@@ -302,6 +302,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
         placeholder={t`Password`}
         secureTextEntry
         value={password}
+        autoComplete="password"
         textContentType={mode === 'create' && Platform.OS === 'ios' && parseInt(`${Platform.Version}`, 10) >= 12 ? 'newPassword' : 'password'}
         onChangeText={setPassword}
         errorMessage={passwordErrors.join('\n')}

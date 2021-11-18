@@ -949,23 +949,23 @@
         "entries": [
           {
             "id": "seal_a",
-            "text": "The [seal_a] seal"
+            "text": "[seal_a]"
           },
           {
             "id": "seal_b",
-            "text": "The [seal_b] seal"
+            "text": "[seal_b]"
           },
           {
             "id": "seal_c",
-            "text": "The [seal_c] seal"
+            "text": "[seal_c]"
           },
           {
             "id": "seal_d",
-            "text": "The [seal_d] seal"
+            "text": "[seal_d]"
           },
           {
             "id": "seal_e",
-            "text": "The [seal_e] seal"
+            "text": "[seal_e]"
           }
         ]
       },
@@ -974,23 +974,23 @@
         "entries": [
           {
             "id": "seal_a",
-            "text": "The [seal_a] seal"
+            "text": "[seal_a]"
           },
           {
             "id": "seal_b",
-            "text": "The [seal_b] seal"
+            "text": "[seal_b]"
           },
           {
             "id": "seal_c",
-            "text": "The [seal_c] seal"
+            "text": "[seal_c]"
           },
           {
             "id": "seal_d",
-            "text": "The [seal_d] seal"
+            "text": "[seal_d]"
           },
           {
             "id": "seal_e",
-            "text": "The [seal_e] seal"
+            "text": "[seal_e]"
           }
         ]
       },

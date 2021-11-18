@@ -1,18 +1,22 @@
 import React, { useContext, useMemo } from 'react';
 import { flatMap, filter, keys, find } from 'lodash';
 
-import { InvestigatorPartnerChoiceInput } from '@data/scenario/types';
+import { InvestigatorPartnerChoiceInput, BulletType } from '@data/scenario/types';
 import useCardList from '@components/card/useCardList';
 import { UniversalChoices } from '@data/scenario';
 import InvestigatorChoicePrompt from '@components/campaignguide/prompts/InvestigatorChoicePrompt';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import { partnerStatusConditionResult } from '@data/scenario/conditionHelper';
+import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
+import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 
 interface Props {
   id: string;
   input: InvestigatorPartnerChoiceInput;
+  text?: string;
+  bulletType?: BulletType;
 }
-export default function InvestigatorChoicePartnerComponent({ id, input }: Props) {
+export default function InvestigatorChoicePartnerComponent({ id, input, text, bulletType }: Props) {
   const { campaignLog } = useContext(ScenarioStepContext);
   const [partners, codes] = useMemo(() => {
     const conditionPartners = partnerStatusConditionResult(input.condition, campaignLog);
@@ -32,20 +36,28 @@ export default function InvestigatorChoicePartnerComponent({ id, input }: Props)
           text: partner.name,
           description: partner.description,
           trauma: trauma,
+          resolute: !!find(trauma.storyAssets || [], code => code === 'resolute'),
           card: find(cards, c => c.code === partner.code),
         };
       }),
     };
   }, [partners, cards, campaignLog]);
   return (
-    <InvestigatorChoicePrompt
-      id={id}
-      promptType="header"
-      text={input.prompt}
-      unique
-      optional
-      options={options}
-      loading={loading}
-    />
+    <>
+      { !!text && (
+        <SetupStepWrapper bulletType={bulletType}>
+          <CampaignGuideTextComponent text={text} />
+        </SetupStepWrapper>
+      ) }
+      <InvestigatorChoicePrompt
+        id={id}
+        promptType="header"
+        text={input.prompt}
+        unique
+        optional
+        options={options}
+        loading={loading}
+      />
+    </>
   );
 }

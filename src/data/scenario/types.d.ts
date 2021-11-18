@@ -33,7 +33,7 @@ export type Condition =
   | CampaignDataCondition
   | CampaignLogSectionExistsCondition
   | ScenarioDataCondition
-  | KilledTraumaCondition
+  | TraumaCondition
   | CheckSuppliesCondition
   | CampaignLogCardsCondition
   | CampaignLogCardsSwitchCondition
@@ -126,6 +126,7 @@ export type ScenarioDataCondition =
   | ScenarioDataResolutionCondition
   | ScenarioDataInvestigatorStatusCondition
   | ScenarioDataPlayerCountCondition;
+export type TraumaCondition = KilledTraumaCondition | BasicTraumaCondition;
 export type CheckSuppliesCondition = CheckSuppliesAllCondition | CheckSuppliesAnyCondition;
 export type Input =
   | UpgradeDecksInput
@@ -349,6 +350,7 @@ export interface CampaignLogEffect {
   id: string;
   text?: string;
   cross_out?: boolean;
+  bullet_type?: BulletType;
   decorate?: "circle";
   remove?: boolean;
   hidden?: boolean;
@@ -365,6 +367,7 @@ export interface CampaignLogCardsEffect {
   cross_out?: boolean;
   remove?: boolean;
   hidden?: boolean;
+  bullet_type?: BulletType;
 }
 export interface CampaignLogCountEffect {
   type: "campaign_log_count";
@@ -435,6 +438,7 @@ export interface FreeformCampaignLogEffect {
   section: "campaign_notes";
   scenario_id?: string;
   index?: number;
+  bullet_type?: BulletType;
   hidden?: boolean;
 }
 export interface UpgradeDecksEffect {
@@ -593,7 +597,7 @@ export interface MathEqualsCondition {
 export interface BasicTraumaCondition {
   type: "trauma";
   investigator: "each";
-  trauma: "physical" | "mental";
+  trauma: "physical" | "mental" | "alive";
   options: BoolOption[];
 }
 export interface CampaignLogInvestigatorCountCondition {
@@ -634,7 +638,7 @@ export interface ScenarioDataPlayerCountCondition {
 export interface KilledTraumaCondition {
   type: "trauma";
   investigator: "lead_investigator" | "all";
-  trauma: "killed" | "insane" | "alive";
+  trauma: "killed" | "insane";
   options: BoolOption[];
 }
 export interface CheckSuppliesAllCondition {

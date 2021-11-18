@@ -631,7 +631,6 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'the_heart_of_madness':
       case 'the_crash':
       case 'stirring_in_the_deep':
-      case 'shoggoths':
       case 'penguins':
       case 'miasma':
       case 'lost_in_the_night':
@@ -639,6 +638,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'hazards_of_antarctica':
       case 'expedition_team':
       case 'deadly_weather':
+      case 'shoggoths':
       case 'agents_of_the_unknown':
         return this.edgeIcon(encounter_code, size, color);
       case 'tekeli_li':

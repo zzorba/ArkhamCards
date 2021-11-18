@@ -36,10 +36,10 @@ export default function PartnerStatusEffectComponent({ effect, input }: Props) {
         remove: (partnerName: string) => t`In the ${sectionName} section of the Campaign Log, cross out \"MIA\" next to ${partnerName}.`,
       },
       resolute: {
-        add: (partnerName: string) => t`In the${sectionName} section of the Campaign Log, draw a check mark next to ${partnerName}.`,
+        add: (partnerName: string) => t`In the ${sectionName} section of the Campaign Log, draw a check mark next to ${partnerName}.`,
       },
     };
-  }, []);
+  }, [sectionName]);
   const message = messages[effect.status];
   if (!message) {
     return null;

@@ -240,7 +240,6 @@ function UpgradeDeckRow({
         choices[`story#${code}`] = [(storyCardSlots[code] || 0) - (initialStoryCardSlots[code] || 0)];
       }
     });
-    console.log(choices);
     scenarioState.setNumberChoices(choiceId, choices, !skipDeckSave && deck ? getDeckId(deck) : undefined);
   }, [scenarioState, skipDeckSave, storyCards,
     initialStoryCardSlots, storyCardSlots,

@@ -141,7 +141,7 @@ function investigatorResult(
   return {
     type: 'investigator',
     investigatorChoices,
-    options,
+    options: filter(options, option => !!find(investigatorChoices, (choices) => !!find(choices, choice => choice === option.id))),
   };
 }
 
@@ -271,6 +271,14 @@ export function campaignLogCardsSwitchResult(
   };
 }
 
+function checkTraumaCondition(code: string, trauma: 'killed' | 'insane' | 'alive', campaignLog: GuidedCampaignLog) {
+  switch(trauma) {
+    case 'killed': return campaignLog.isKilled(code);
+    case 'insane': return campaignLog.isInsane(code);
+    case 'alive': return !campaignLog.isKilled(code) && !campaignLog.isInsane(code);
+  }
+}
+
 export function killedTraumaConditionResult(
   condition: KilledTraumaCondition,
   campaignLog: GuidedCampaignLog
@@ -279,7 +287,7 @@ export function killedTraumaConditionResult(
     case 'lead_investigator': {
       const investigator = campaignLog.leadInvestigatorChoice();
       return binaryConditionResult(
-        campaignLog.isKilled(investigator),
+        checkTraumaCondition(investigator, condition.trauma, campaignLog),
         condition.options
       );
     }
@@ -289,7 +297,7 @@ export function killedTraumaConditionResult(
       return binaryConditionResult(
         investigators.length === 0 || every(
           investigators,
-          code => campaignLog.isKilled(code)
+          code => checkTraumaCondition(code, condition.trauma, campaignLog)
         ),
         condition.options
       );
@@ -338,6 +346,14 @@ export function partnerStatusConditionResult(
   );
 }
 
+function basicTrauma(code: string, trauma: 'mental' | 'physical' | 'alive', campaignLog: GuidedCampaignLog) {
+  switch (trauma) {
+    case 'mental': return campaignLog.hasMentalTrauma(code);
+    case 'physical': return campaignLog.hasPhysicalTrauma(code);
+    case 'alive': return !campaignLog.isInsane(code) && !campaignLog.isKilled(code);
+  }
+}
+
 export function basicTraumaConditionResult(
   condition: BasicTraumaCondition,
   campaignLog: GuidedCampaignLog
@@ -347,9 +363,7 @@ export function basicTraumaConditionResult(
       const choices: StringChoices = {};
       const investigators = campaignLog.investigatorCodes(false);
       forEach(investigators, investigator => {
-        const decision = condition.trauma === 'mental' ?
-          campaignLog.hasMentalTrauma(investigator) :
-          campaignLog.hasPhysicalTrauma(investigator);
+        const decision = basicTrauma(investigator, condition.trauma, campaignLog);
         const index = findIndex(condition.options, option => option.boolCondition === decision);
         if (index !== -1) {
           choices[investigator] = [decision ? 'true' : 'false'];
@@ -770,6 +784,9 @@ export function conditionResult(
     case 'has_card':
       return hasCardConditionResult(condition, campaignLog);
     case 'trauma':
+      if (condition.investigator === 'each') {
+        return basicTraumaConditionResult(condition, campaignLog);
+      }
       return killedTraumaConditionResult(condition, campaignLog);
     case 'scenario_data': {
       switch (condition.scenario_data) {

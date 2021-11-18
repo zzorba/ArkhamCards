@@ -450,6 +450,17 @@ export default class GuidedCampaignLog {
     return !!(investigatorData && investigatorData.killed);
   }
 
+  isInsane(
+    investigator: string
+  ): boolean {
+    const investigatorData = this.campaignData.investigatorData[investigator];
+    const card = this.investigatorCards[investigator];
+    if (card) {
+      return card.insane(investigatorData);
+    }
+    return !!(investigatorData && investigatorData.insane);
+  }
+
   hasPhysicalTrauma(investigator: string): boolean {
     const investigatorData = this.campaignData.investigatorData[investigator];
     return !!(investigatorData && (investigatorData.physical || 0) > 0);

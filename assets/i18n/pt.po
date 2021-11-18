@@ -4734,12 +4734,6 @@ msgid ""
 "to ${ partnerName }."
 msgstr ""
 
-#, javascript-format
-msgid ""
-"In the${ sectionName } section of the Campaign Log, draw a check mark next "
-"to ${ partnerName }."
-msgstr ""
-
 msgid "If the lead investigator was driven <b>insane</b>."
 msgstr ""
 
@@ -4828,6 +4822,18 @@ msgid "The Heart of Madness - Seals Recovered"
 msgstr ""
 
 msgid "You may heal 1 physical or mental trauma <i>(your choice)</i>"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In the ${ sectionName } section of the Campaign Log, draw a check mark next "
+"to ${ partnerName }."
+msgstr ""
+
+msgid "Choose heal type"
+msgstr ""
+
+msgid "Chosen heal type"
 msgstr ""
 
 msgctxt "masculine"
