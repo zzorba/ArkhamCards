@@ -1,7 +1,6 @@
 import React from 'react';
 
 import ArkhamIcon from './ArkhamIcon';
-import CardIcon from './CardIcon';
 import AppIcon from './AppIcon';
 import CarcosaIcon from './CarcosaIcon';
 import CircleIcon from './CircleIcon';

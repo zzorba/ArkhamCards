@@ -1,20 +1,16 @@
-import React, { useContext, useMemo, useCallback, useReducer, useState } from 'react';
-import { flatMap, filter, range, map, keys, head, shuffle, find, forEach } from 'lodash';
+import React, { useContext, useMemo, useCallback, useReducer } from 'react';
+import { filter, range, map, keys, head, shuffle, find, forEach } from 'lodash';
 import { t } from 'ttag';
 
 import { Partner, PartnerChoiceInput } from '@data/scenario/types';
 import useCardList from '@components/card/useCardList';
-import { UniversalChoices } from '@data/scenario';
-import InvestigatorChoicePrompt from '@components/campaignguide/prompts/InvestigatorChoicePrompt';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
-import { ActivityIndicator } from 'react-native';
 import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 import { getOperand, partnerStatusConditionResult } from '@data/scenario/conditionHelper';
 import BinaryPrompt from '@components/campaignguide/prompts/BinaryPrompt';
 import PickerStyleButton from '@components/core/PickerStyleButton';
 import CheckListComponent, { ListItem } from '@components/campaignguide/prompts/CheckListComponent';
-import StyleContext from '@styles/StyleContext';
 import { StringChoices } from '@actions/types';
 
 interface Props {
@@ -47,7 +43,7 @@ export default function PartnerChoiceComponent({ id, input }: Props) {
     const quantity = getOperand(input.quantity, campaignLog);
     return [selectedPartners, Math.min(quantity, selectedPartners.length), selection];
   }, [input, campaignLog]);
-  const [cards, loading] = useCardList(codes, 'encounter');
+  const [cards] = useCardList(codes, 'encounter');
 
   const items: ListItem[] = useMemo(() => map(partners, p => {
     return {

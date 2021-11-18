@@ -13,7 +13,7 @@ import StyleContext from '@styles/StyleContext';
 import { ChoiceIcon } from '@data/scenario/types';
 import RadioButton from './RadioButton';
 import InvestigatorImage from '@components/core/InvestigatorImage';
-import TraumaSummary, { TraumaIconPile } from '@components/campaign/TraumaSummary';
+import { TraumaIconPile } from '@components/campaign/TraumaSummary';
 import AppIcon from '@icons/AppIcon';
 
 interface Props {

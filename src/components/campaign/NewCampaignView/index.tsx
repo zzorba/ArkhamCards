@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState, useReducer } from 'react';
-import { filter, forEach, map, throttle, uniq, uniqBy } from 'lodash';
+import { filter, forEach, map, throttle, uniq } from 'lodash';
 import {
   Platform,
   ScrollView,
@@ -41,7 +41,7 @@ import { EditChaosBagProps } from '../EditChaosBagDialog';
 import COLORS from '@styles/colors';
 import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useComponentVisible, useFlag, useNavigationButtonPressed, usePlayerCards, useSlots } from '@components/core/hooks';
+import { useFlag, useNavigationButtonPressed, usePlayerCards, useSlots } from '@components/core/hooks';
 import { CampaignSelection } from '../SelectCampaignDialog';
 import { useAlertDialog, usePickerDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';

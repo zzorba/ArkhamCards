@@ -1,6 +1,6 @@
-import React, { useCallback, useContext, useEffect, useReducer } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { filter, map, uniqBy } from 'lodash';
+import { map } from 'lodash';
 import { useDispatch } from 'react-redux';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -13,7 +13,7 @@ import { updateCampaignXp, cleanBrokenCampaigns, addInvestigator, removeInvestig
 import { NavigationProps } from '@components/nav/types';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useComponentVisible, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
+import { useInvestigatorCards, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
 import { useCampaign, useCampaignInvestigators } from '@data/hooks';
 import useTraumaDialog from '../useTraumaDialog';
 import { showAddScenarioResult, showDrawWeakness } from '@components/campaign/nav';

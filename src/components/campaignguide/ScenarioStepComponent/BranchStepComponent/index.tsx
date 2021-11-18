@@ -86,11 +86,7 @@ export default function BranchStepComponent({ step, campaignLog }: Props) {
       );
     case 'campaign_log_cards_switch':
       return (
-        <CampaignLogCardsSwitchConditionComponent
-          step={step}
-          campaignLog={campaignLog}
-          condition={condition}
-        />
+        <CampaignLogCardsSwitchConditionComponent step={step} />
       );
     case 'campaign_data': {
       return (
