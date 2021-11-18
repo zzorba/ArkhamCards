@@ -26,11 +26,8 @@ export function factionIcon(card: Card): string {
   if (card.faction2_code) {
     return 'elder_sign';
   }
-  if (card.faction_code === 'neutral') {
-    if (card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness') {
-      return 'weakness';
-    }
-    return 'neutral';
+  if (card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness') {
+    return 'weakness';
   }
   if (card.faction_code) {
     return card.faction_code;
