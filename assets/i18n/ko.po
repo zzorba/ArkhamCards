@@ -4708,19 +4708,21 @@ msgid "The Heart of Madness - Seals Recovered"
 msgstr ""
 
 msgid "You may heal 1 physical or mental trauma <i>(your choice)</i>"
-msgstr ""
+msgstr "각 조사자는 육체적 또는 정신적 트라우마 중에 선택하여 하나 회복합니다."
 
 #, javascript-format
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, draw a check mark next "
 "to ${ partnerName }."
 msgstr ""
+"캠페인 기록지 중 ${ sectionName } 항목 아래의 ${ partnerName } 동행 조력자 이름 옆에 "
+"체크 표시를 하나 합니다."
 
 msgid "Choose heal type"
-msgstr ""
+msgstr "회복 유형을 선택하십시오"
 
 msgid "Chosen heal type"
-msgstr ""
+msgstr "선택한 회복 유형"
 
 #, javascript-format
 msgctxt "masculine"
