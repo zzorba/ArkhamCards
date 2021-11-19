@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useContext, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useContext, useEffect, useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
@@ -20,10 +20,11 @@ import CampaignDetailTab from '../CampaignDetailTab';
 import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
 import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 import space from '@styles/space';
-import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
 import { useDeckActions } from '@data/remote/decks';
 import StyleContext from '@styles/StyleContext';
 import LoadingSpinner from '@components/core/LoadingSpinner';
+import { useApolloClient } from '@apollo/client';
 
 export interface LinkedCampaignGuideProps {
   campaignId: CampaignId;
@@ -48,6 +49,7 @@ export default function LinkedCampaignGuideView(props: Props) {
   const updateCampaignActions = useUpdateCampaignActions();
   useStopAudioOnUnmount();
   const campaign = useCampaign(campaignId, true);
+  useCampaignDeleted(componentId, campaign);
   const campaignName = campaign?.name || '';
   const campaignDataA = useSingleCampaignGuideData(campaignIdA, investigators, true);
   const campaignDataB = useSingleCampaignGuideData(campaignIdB, investigators, true);

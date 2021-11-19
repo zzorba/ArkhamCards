@@ -1,6 +1,7 @@
-import { useCallback, useContext, useMemo } from 'react';
+import { useCallback, useContext, useMemo, useEffect } from 'react';
 import { filter, forEach, map, omit, uniq, keys, concat } from 'lodash';
 import { useApolloClient } from '@apollo/client';
+import { Navigation } from 'react-native-navigation';
 
 import {
   Campaign,
@@ -50,6 +51,7 @@ import { useFunction, ErrorResponse } from './api';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { ChaosBag } from '@app_constants';
 import { handleUploadNewCampaign, optimisticUpdates } from './apollo';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 interface CampaignLink {
   campaignIdA: string;
@@ -63,6 +65,17 @@ interface CreateCampaignRequestData {
 
 interface CampaignResponse extends ErrorResponse {
   campaignId: number;
+}
+
+export function useCampaignDeleted(componentId: string, campaign?: SingleCampaignT) {
+  const apollo = useApolloClient();
+  const { userId } = useContext(ArkhamCardsAuthContext);
+  useEffect(() => {
+    if (campaign?.deleted && userId && campaign.id.serverId) {
+      deleteCampaignFromCache(apollo.cache, userId, campaign.uuid, campaign.id.serverId);
+      Navigation.popToRoot(componentId);
+    }
+  }, [campaign, componentId, apollo.cache, userId]);
 }
 function useCreateCampaignRequest(): (campaignId: string, guided: boolean) => Promise<UploadedCampaignId> {
   const apiCall = useFunction<CreateCampaignRequestData, CampaignResponse>('campaign-create');

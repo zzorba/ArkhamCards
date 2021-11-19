@@ -8,6 +8,7 @@ export default interface SingleCampaignT extends MiniCampaignT {
   investigatorSpentXp: (code: string) => number;
   getInvestigatorData: (investigator: string) => TraumaAndCardData;
 
+  deleted: boolean;
   showInterludes: boolean;
   chaosBag: ChaosBag;
   investigatorData: InvestigatorData;

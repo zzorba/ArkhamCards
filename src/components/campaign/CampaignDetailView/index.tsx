@@ -34,7 +34,7 @@ import UploadCampaignButton from '../UploadCampaignButton';
 import useChaosBagDialog from './useChaosBagDialog';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useDeckActions } from '@data/remote/decks';
-import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '@reducers';
@@ -72,6 +72,8 @@ function CampaignDetailView(props: Props) {
     showTraumaDialog,
     traumaDialog,
   } = useTraumaDialog(updateInvestigatorTrauma);
+
+  useCampaignDeleted(componentId, campaign);
 
   const updateWeaknessSet = useCallback((weaknessSet: WeaknessSet) => {
     dispatch(updateCampaignWeaknessSet(updateCampaignActions.setWeaknessSet, campaignId, weaknessSet));
@@ -152,7 +154,6 @@ function CampaignDetailView(props: Props) {
     await asyncDispatch(addInvestigator(userId, deckActions, updateCampaignActions, campaignId, deck.investigator_code, getDeckId(deck)));
     checkNewDeckForWeakness(deck);
   }, [userId, campaignId, deckActions, updateCampaignActions, checkNewDeckForWeakness, asyncDispatch]);
-
 
   const onAddInvestigator = useCallback((card: Card) => {
     dispatch(addInvestigator(userId, deckActions, updateCampaignActions, campaignId, card.code));
@@ -264,7 +265,7 @@ function CampaignDetailView(props: Props) {
   if (!campaign) {
     if (campaignId.serverId) {
       return (
-        <LoadingSpinner />
+        <LoadingSpinner message={uploadingCampaign ? t`Uploading campaign` : undefined} />
       );
     }
     return (

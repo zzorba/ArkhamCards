@@ -183,10 +183,12 @@ export class SingleCampaignRemote extends MiniCampaignRemote implements SingleCa
   scenarioResults: ScenarioResult[];
   linkedCampaignId: CampaignId | undefined;
   guideVersion: number;
+  deleted: boolean;
 
   constructor(campaign: FullCampaignFragment) {
     super(campaign);
 
+    this.deleted = !!campaign.deleted;
     this.fullCampaign = campaign;
     this.investigatorData = fragmentToFullInvestigatorData(campaign);
     // TODO: do something with their IDs here.
@@ -336,10 +338,10 @@ export class LatestDeckRemote extends MiniDeckRemote implements LatestDeckT {
 
   constructor(deck: LatestDeckFragment) {
     super(deck);
-    this.owner = {
+    this.owner = deck?.owner ? {
       handle: deck.owner.handle || undefined,
       id: deck.owner.id,
-    };
+    } : undefined;
     this.deck = deck.content || {};
     this.previousDeck = deck.previous_deck?.content;
     this.campaign = deck.campaign?.name ? {

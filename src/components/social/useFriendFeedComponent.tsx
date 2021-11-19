@@ -231,22 +231,23 @@ function UserRow({ user, showUser, status, controls, refetchMyProfile }: {
 
 interface Props {
   componentId: string;
-  userId: string;
+  userId?: string;
   handleScroll?: (...args: any[]) => void;
   searchResults?: SearchResults;
   error?: string;
+  noHeader?: boolean;
 
   toFeed: (
     isSelf: boolean,
-    profile?: UserProfile
+    profile?: UserProfile,
   ) => FriendFeedItem[]
 }
 
-export default function FriendFeedComponent({ componentId, userId, handleScroll, error, searchResults, toFeed }: Props) {
+export default function useFriendFeedComponent({ componentId, userId, handleScroll, noHeader, error, searchResults, toFeed }: Props): [React.ReactElement, () => void] {
   const { borderStyle, colors, typography } = useContext(StyleContext);
   const { userId: currentUserId } = useContext(ArkhamCardsAuthContext);
   const [myProfile, loadingMyProfile, refetchMyProfile] = useMyProfile(true);
-  const isSelf = currentUserId === userId;
+  const isSelf: boolean = (currentUserId && userId) ? currentUserId === userId : false;
   const [profile, loading, refetchProfile] = useProfile(userId, isSelf);
   const myFriendStatus = useMemo(() => {
     const status: { [uid: string]: FriendStatus } = {};
@@ -313,6 +314,13 @@ export default function FriendFeedComponent({ componentId, userId, handleScroll,
         return null;
     }
   }, [currentUserId, myFriendStatus, borderStyle, typography, refetchMyProfile, showUser]);
+  const [refreshing, setRefreshing] = useState(false);
+  const doRefresh = useCallback(async() => {
+    setRefreshing(true);
+    await refetchMyProfile();
+    await refetchProfile();
+    setRefreshing(false);
+  }, [refetchMyProfile, refetchProfile]);
 
   const data: FriendFeedItem[] = useMemo(() => toFeed(isSelf, profile), [toFeed, isSelf, profile]);
   const searchResultsError = searchResults?.error;
@@ -334,17 +342,15 @@ export default function FriendFeedComponent({ componentId, userId, handleScroll,
       </>
     );
   }, [colors, error, typography, searchResultsError]);
-  const doRefresh = useCallback(() => {
-    refetchMyProfile();
-    refetchProfile();
-  }, [refetchMyProfile, refetchProfile]);
+
   useEffect(() => {
     doRefresh();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const isRefreshing = loading || loadingMyProfile || !!searchResults?.loading;
-  return (
+  const isRefreshing = loading || loadingMyProfile || !!searchResults?.loading || refreshing;
+  return [(
     <FlatList
+      key="friends"
       contentInset={!handleScroll || Platform.OS === 'android' ? undefined : { top: SEARCH_BAR_HEIGHT }}
       contentOffset={!handleScroll || Platform.OS === 'android' ? undefined : { x: 0, y: -SEARCH_BAR_HEIGHT }}
       ListHeaderComponent={handleScroll && header}
@@ -353,7 +359,7 @@ export default function FriendFeedComponent({ componentId, userId, handleScroll,
           refreshing={isRefreshing}
           onRefresh={doRefresh}
           tintColor={colors.lightText}
-          progressViewOffset={SEARCH_BAR_HEIGHT}
+          progressViewOffset={noHeader ? 0 : SEARCH_BAR_HEIGHT}
         />
       )}
       onScroll={handleScroll}
@@ -361,7 +367,7 @@ export default function FriendFeedComponent({ componentId, userId, handleScroll,
       renderItem={renderItem}
       keyExtractor={itemKey}
     />
-  );
+  ), doRefresh];
 }
 
 const styles = StyleSheet.create({

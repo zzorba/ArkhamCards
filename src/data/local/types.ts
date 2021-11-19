@@ -136,6 +136,7 @@ export class SingleCampaignRedux extends MiniCampaignRedux implements SingleCamp
   scenarioResults: ScenarioResult[];
   linkedCampaignId: CampaignId | undefined;
   guideVersion: number;
+  deleted: boolean = false;
 
   constructor(
     campaign: Campaign,

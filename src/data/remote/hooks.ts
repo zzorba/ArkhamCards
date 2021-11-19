@@ -128,6 +128,10 @@ export function useCampaignRemote(campaignId: CampaignId | undefined, live?: boo
       return subscribeToMore({
         document: CampaignDocument,
         variables: { campaign_id: campaignId.serverId },
+        updateQuery: (prev, { subscriptionData }) => {
+          console.log(subscriptionData.data);
+          return subscriptionData.data;
+        },
       });
     }
   }, [userId, campaignId, live, subscribeToMore]);
@@ -280,7 +284,7 @@ export interface UserProfile {
   flags: User_Flag_Type_Enum[];
 }
 
-export function useProfile(profileUserId: string | undefined, useCached?: boolean): [UserProfile | undefined, boolean, () => void] {
+export function useProfile(profileUserId: string | undefined, useCached?: boolean): [UserProfile | undefined, boolean, () => Promise<void>] {
   const { userId, loading: userLoading } = useContext(ArkhamCardsAuthContext);
   const { data, previousData, loading: dataLoading, refetch } = useGetProfileQuery({
     variables: { userId: profileUserId || '' },
@@ -329,15 +333,15 @@ export function useProfile(profileUserId: string | undefined, useCached?: boolea
       flags: map(theData.users_by_pk.flags, f => f.flag),
     };
   }, [data, previousData]);
-  const doRefetch = useCallback(() => {
-    refetch?.({
+  const doRefetch = useCallback(async() => {
+    await refetch?.({
       userId: profileUserId,
     });
   }, [refetch, profileUserId]);
   return [profile, userLoading || dataLoading, doRefetch];
 }
 
-export function useMyProfile(useCached: boolean): [UserProfile | undefined, boolean, () => void] {
+export function useMyProfile(useCached: boolean): [UserProfile | undefined, boolean, () => Promise<void>] {
   const { userId } = useContext(ArkhamCardsAuthContext);
   return useProfile(userId, useCached);
 }

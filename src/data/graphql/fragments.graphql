@@ -192,6 +192,7 @@ fragment FullCampaign on campaign {
   updated_at
   uuid
   name
+  deleted
   cycleCode
   standaloneId
   difficulty

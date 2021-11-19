@@ -106,6 +106,7 @@ function updateDecks(
   updateAllDeck: (allDeck: AllDeckFragment) => UpdateDeck<AllDeckFragment>,
   updateLatestDeck: (latestDeck: LatestDeckFragment) => UpdateDeck<LatestDeckFragment>
 ) {
+  console.log('Updating decks somehow');
   updateFullCampaign(cache, campaign_id, (fragment): FullCampaignFragment => {
     return {
       ...fragment,
