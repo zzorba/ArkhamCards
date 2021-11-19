@@ -52,7 +52,7 @@ function CampaignDetailView(props: Props) {
   const { componentId } = props;
   const [textEditDialog, showTextEditDialog] = useTextEditDialog();
   const [countDialog, showCountDialog] = useCountDialog();
-  const [campaignId, setCampaignServerId] = useCampaignId(props.campaignId);
+  const [campaignId, setCampaignServerId, uploadingCampaign] = useCampaignId(props.campaignId);
   const { backgroundStyle, typography } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
   const investigators = useInvestigatorCards();

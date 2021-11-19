@@ -8,6 +8,7 @@ import { SearchResults, useSearchUsers, useUpdateFriendRequest } from '@data/rem
 import { NavigationProps } from '@components/nav/types';
 import FriendFeedComponent, { FriendFeedItem, UserControls } from './FriendFeedComponent';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { useEffect } from 'react-addons-shallow-compare/node_modules/@types/react';
 
 export interface FriendsViewProps {
   userId: string;

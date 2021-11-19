@@ -60,7 +60,7 @@ mutation insertNextLocalDeck(
       }
     }
   ) {
-    ...LatestDeck
+    ...BasicDeck
     previous_deck {
       ...IdDeck
     }
@@ -102,7 +102,7 @@ mutation insertNextArkhamDbDeck(
       }
     }
   ) {
-    ...LatestDeck
+    ...BasicDeck
     previous_deck {
       ...IdDeck
     }

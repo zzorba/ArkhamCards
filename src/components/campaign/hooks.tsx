@@ -5,13 +5,17 @@ import { CampaignId } from '@actions/types';
 import { useCountDialog } from '@components/deck/dialogs';
 import Card from '@data/types/Card';
 
-export function useCampaignId(campaignId: CampaignId): [CampaignId, (serverId: number) => void] {
+export function useCampaignId(campaignId: CampaignId): [CampaignId, (serverId: number) => void, boolean] {
+  const [uploading, setUploading] = useState(false);
   const [liveCampaignId, setLiveCampaignId] = useState(campaignId);
   const setServerId = useCallback(
-    (serverId: number) => setLiveCampaignId({ campaignId: campaignId.campaignId, serverId }),
+    (serverId: number) => {
+      setUploading(true);
+      setLiveCampaignId({ campaignId: campaignId.campaignId, serverId });
+    },
     [setLiveCampaignId, campaignId.campaignId]
   );
-  return [liveCampaignId, setServerId];
+  return [liveCampaignId, setServerId, uploading];
 }
 
 export function useXpDialog(updateSpentXp: (investigator: string, spentXp: number) => void): [

@@ -316,7 +316,7 @@ export function useDeleteCampaignRequest() {
   const apiCall = useFunction<DeleteCampaignRequest, ErrorResponse>('campaign-delete');
   return useCallback(async({ campaignId, serverId }: UploadedCampaignId): Promise<void> => {
     if (userId) {
-      deleteCampaignFromCache(client.cache, userId, campaignId);
+      deleteCampaignFromCache(client.cache, userId, campaignId, serverId);
     }
     const data = await apiCall({ campaignId, serverId });
     if (data.error) {
@@ -631,6 +631,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
               arkhamdb_id: -1,
               local_uuid: '',
               investigator,
+              owner_id: userId,
             },
           ],
         },

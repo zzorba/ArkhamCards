@@ -133,7 +133,6 @@ export default function DiagnosticsView() {
 
   const clearCache = useCallback(async() => {
     dispatch(clearDecks());
-    await apollo.cache.reset();
     await apollo.resetStore();
   }, [apollo, dispatch]);
 

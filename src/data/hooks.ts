@@ -1,6 +1,6 @@
 import { useCallback, useContext, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filter, flatMap, concat, sortBy, reverse } from 'lodash';
+import { filter, flatMap, concat, map, sortBy, reverse } from 'lodash';
 
 import { AppState, getCampaigns, MyDecksState } from '@reducers';
 import { Campaign, CampaignId, DeckId } from '@actions/types';
@@ -24,7 +24,12 @@ export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => vo
   const campaigns = useSelector(getCampaigns);
   const [serverCampaigns, loading, refresh] = useRemoteCampaigns();
   const allCampaigns = useMemo(() => {
-    const toSort = userId ? concat(campaigns, serverCampaigns) : campaigns;
+    const serverIds = new Set(map(serverCampaigns, c => c.uuid));
+
+    const toSort = userId ? concat(
+      filter(campaigns, c => !serverIds.has(c.uuid)),
+      serverCampaigns
+    ) : campaigns;
     return sortBy(toSort, c => -c.updatedAt.getTime());
   }, [campaigns, serverCampaigns, userId]);
   return [allCampaigns, !!userId && loading, refresh];

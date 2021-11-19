@@ -442,12 +442,13 @@ export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, (
     if (!rawDecks) {
       return [];
     }
-    return flatMap(rawDecks, ({ deck }) => {
+    const result = flatMap(rawDecks, ({ deck }) => {
       if (!deck) {
         return [];
       }
       return new MiniDeckRemote(deck);
     });
+    return result;
   }, [rawDecks]);
   const [loading] = useDebounce(!!(userId && !data) || userLoading || dataLoading, 200);
   return [deckIds, loading, refresh];
@@ -464,7 +465,7 @@ export function useLatestDeckRemote(deckId: DeckId, campaign_id: CampaignId | un
       local_uuid: deckId.local ? deckId.uuid : null,
       arkhamdb_id: deckId.local ? null : deckId.id,
     }),
-  });
+  }, true);
 
   const result = useMemo(() => {
     if (!campaign_id?.serverId || !deckId.serverId) {

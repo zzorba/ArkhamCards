@@ -56,7 +56,7 @@ export function useChaosBagActions(): ChaosBagActions {
       fragment: FullChaosBagResultFragmentDoc,
       fragmentName: 'FullChaosBagResult',
       id,
-    });
+    }, true);
     if (type === 'bless') {
       if (direction === 'inc') {
         await incBless({
@@ -158,7 +158,7 @@ export function useChaosBagActions(): ChaosBagActions {
       fragment: FullChaosBagResultFragmentDoc,
       fragmentName: 'FullChaosBagResult',
       id,
-    });
+    }, true);
     await drawTokenReq({
       optimisticResponse: {
         __typename: 'mutation_root',

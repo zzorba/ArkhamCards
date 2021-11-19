@@ -1,5 +1,6 @@
 import React from 'react';
 import hoistNonReactStatic from 'hoist-non-react-statics';
+import { t } from 'ttag';
 
 import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import { useSingleCampaignGuideData } from '@components/campaignguide/contextHelper';
@@ -19,14 +20,14 @@ export interface InjectedCampaignGuideContextProps {
   setCampaignServerId: (serverId: number) => void;
 }
 
-export function useCampaignGuideContext(oCampaignId: CampaignId, live: boolean): [CampaignGuideContextType | undefined, (serverId: number) => void] {
-  const [campaignId, setCampaignServerId] = useCampaignId(oCampaignId);
+export function useCampaignGuideContext(oCampaignId: CampaignId, live: boolean): [CampaignGuideContextType | undefined, (serverId: number) => void, boolean] {
+  const [campaignId, setCampaignServerId, uploadingCampaign] = useCampaignId(oCampaignId);
   const investigators = useInvestigatorCards();
   const campaignData = useSingleCampaignGuideData(campaignId, investigators, live);
   const updateCampaignActions = useUpdateCampaignActions();
   const deckActions = useDeckActions();
   const context = useCampaignGuideContextFromActions(campaignId, deckActions, updateCampaignActions, campaignData);
-  return [context, setCampaignServerId];
+  return [context, setCampaignServerId, uploadingCampaign && !context];
 }
 
 export default function withCampaignGuideContext<Props>(
@@ -34,10 +35,11 @@ export default function withCampaignGuideContext<Props>(
   { rootView }: { rootView: boolean }
 ): React.ComponentType<Props & CampaignGuideInputProps> {
   function CampaignDataComponent(props: Props & CampaignGuideInputProps) {
-    const [context, setCampaignServerId] = useCampaignGuideContext(props.campaignId, rootView);
+    const [context, setCampaignServerId, uploading] = useCampaignGuideContext(props.campaignId, rootView);
     if (!context) {
       return (
-        <LoadingSpinner />
+
+        <LoadingSpinner message={uploading ? t`Uploading campaign` : undefined} />
       );
     }
     return (

@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text, ActivityIndicator } from 'react-native';
 import { find , map } from 'lodash';
 import { t } from 'ttag';
 import { useSelector } from 'react-redux';
@@ -82,7 +82,7 @@ export default function InvestigatorCampaignRow({
 }: Props) {
   const uploadingSelector = useMemo(makeUploadingDeckSelector, []);
   const uploading = useSelector((state: AppState) => uploadingSelector(state, campaign.id, investigator.code));
-  const { colors, width } = useContext(StyleContext);
+  const { colors, width, typography } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);
@@ -193,7 +193,17 @@ export default function InvestigatorCampaignRow({
         open={open}
         upgradeBadge={upgradeBadge}
         width={width - s * 2}
-        headerContent={!open && <View style={styles.trauma}><TraumaSummary trauma={traumaAndCardData} investigator={investigator} whiteText /></View>}
+        headerContent={!open && (
+          <View style={styles.trauma}>
+            <TraumaSummary trauma={traumaAndCardData} investigator={investigator} whiteText />
+            { uploading && (
+              <View style={[styles.trauma, space.marginLeftXs]}>
+                <Text style={[typography.text, typography.white, space.marginRightXs]}>{t`Uploading`}</Text>
+                <ActivityIndicator size="small" color="#FFFFFF" animating />
+              </View>
+            ) }
+          </View>
+        ) }
       >
         <View style={[space.paddingSideS]}>
           <View style={space.paddingBottomS}>

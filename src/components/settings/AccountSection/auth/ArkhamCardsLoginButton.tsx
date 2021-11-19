@@ -21,6 +21,7 @@ import { ARKHAM_CARDS_LOGIN, ARKHAM_CARDS_LOGOUT } from '@actions/types';
 import { AppState } from '@reducers';
 import { removeLocalCampaign } from '@components/campaign/actions';
 import useConfirmSignupDialog from './useConfirmSignupDialog';
+import { useApolloClient } from '@apollo/client';
 
 function arkhamCardsLogin(user: string): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {
@@ -388,10 +389,12 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   const [emailLogin, toggleEmailLogin, setEmailLogin] = useFlag(false);
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const [mode, setMode] = useState<'login' | 'create' | undefined>();
+  const apollo = useApolloClient();
   const doLogout = useCallback(async() => {
     await auth().signOut();
+    apollo.clearStore();
     dispatch(logout());
-  }, [dispatch]);
+  }, [dispatch, apollo]);
   const [signupDialog, showSignupDialog] = useConfirmSignupDialog();
   const logoutPressed = useCallback(() => {
     showAlert(

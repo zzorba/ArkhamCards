@@ -12,11 +12,16 @@ import { FriendsViewProps } from '@components/social/FriendsView';
 import { useUpdateHandle } from '@data/remote/api';
 import StyleContext from '@styles/StyleContext';
 import { useMyProfile } from '@data/remote/hooks';
+import { useComponentDidAppear } from '@components/core/hooks';
 
 export default function ArkhamCardsAccountDetails({ componentId }: NavigationProps) {
   const { typography } = useContext(StyleContext);
   const { userId, loading } = useContext(ArkhamCardsAuthContext);
-  const [profile, loadingProfile] = useMyProfile(false);
+  const [profile, loadingProfile, refresh] = useMyProfile(false);
+
+  useComponentDidAppear(() => {
+    refresh();
+  }, componentId, [refresh]);
 
   const updateHandle = useUpdateHandle();
   const { dialog, showDialog } = useSimpleTextDialog({

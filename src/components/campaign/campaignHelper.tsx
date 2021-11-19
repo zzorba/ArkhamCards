@@ -61,7 +61,6 @@ export function maybeShowWeaknessPrompt(
 ) {
   const { count, message, weaknesses } = weaknessString(deck, cards);
   if (weaknesses.length) {
-    console.log('Showing weakness alert');
     showAlert(
       t`Adjust Weakness Set`,
       /* eslint-disable prefer-template */

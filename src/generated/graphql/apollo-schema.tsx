@@ -10197,7 +10197,7 @@ export type InsertNextLocalDeckMutationVariables = Exact<{
 }>;
 
 
-export type InsertNextLocalDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string } | null | undefined, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined } | null | undefined };
+export type InsertNextLocalDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined };
 
 export type InsertNextArkhamDbDeckMutationVariables = Exact<{
   previous_arkhamdb_id: Scalars['Int'];
@@ -10211,7 +10211,7 @@ export type InsertNextArkhamDbDeckMutationVariables = Exact<{
 }>;
 
 
-export type InsertNextArkhamDbDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string } | null | undefined, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined } | null | undefined };
+export type InsertNextArkhamDbDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined };
 
 export type UpdateArkhamDbDeckMutationVariables = Exact<{
   arkhamdb_id: Scalars['Int'];
@@ -10422,7 +10422,7 @@ export type DeleteInvestigatorDecksMutationVariables = Exact<{
 }>;
 
 
-export type DeleteInvestigatorDecksMutation = { __typename?: 'mutation_root', delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', id: number, campaign_id: number, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, investigator: string }> } | null | undefined };
+export type DeleteInvestigatorDecksMutation = { __typename?: 'mutation_root', delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', id: number, campaign_id: number, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, investigator: string, owner_id: string }> } | null | undefined };
 
 export type ChaosBagClearTokensMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -11162,13 +11162,13 @@ export const InsertNextLocalDeckDocument = gql`
   insert_campaign_deck_one(
     object: {local_uuid: $local_uuid, arkhamdb_id: null, campaign_id: $campaign_id, investigator: $investigator, content: $content, content_hash: $content_hash, owner_id: $userId, previous_decks: {data: {local_uuid: $previous_local_uuid, arkhamdb_id: null, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId}, on_conflict: {constraint: deck_local_uuid_campaign_id_key, update_columns: [next_deck_id]}}}
   ) {
-    ...LatestDeck
+    ...BasicDeck
     previous_deck {
       ...IdDeck
     }
   }
 }
-    ${LatestDeckFragmentDoc}
+    ${BasicDeckFragmentDoc}
 ${IdDeckFragmentDoc}`;
 export type InsertNextLocalDeckMutationFn = Apollo.MutationFunction<InsertNextLocalDeckMutation, InsertNextLocalDeckMutationVariables>;
 
@@ -11207,13 +11207,13 @@ export const InsertNextArkhamDbDeckDocument = gql`
   insert_campaign_deck_one(
     object: {arkhamdb_id: $arkhamdb_id, arkhamdb_user: $arkhamdb_user, local_uuid: null, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId, content: $content, content_hash: $content_hash, previous_decks: {data: {arkhamdb_id: $previous_arkhamdb_id, local_uuid: null, campaign_id: $campaign_id, investigator: $investigator, owner_id: $userId}, on_conflict: {constraint: deck_arkhamdb_id_campaign_id_key, update_columns: [next_deck_id]}}}
   ) {
-    ...LatestDeck
+    ...BasicDeck
     previous_deck {
       ...IdDeck
     }
   }
 }
-    ${LatestDeckFragmentDoc}
+    ${BasicDeckFragmentDoc}
 ${IdDeckFragmentDoc}`;
 export type InsertNextArkhamDbDeckMutationFn = Apollo.MutationFunction<InsertNextArkhamDbDeckMutation, InsertNextArkhamDbDeckMutationVariables>;
 
@@ -12140,6 +12140,7 @@ export const DeleteInvestigatorDecksDocument = gql`
       arkhamdb_id
       local_uuid
       investigator
+      owner_id
     }
   }
 }

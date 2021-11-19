@@ -1,8 +1,8 @@
 import AppIcon from '@icons/AppIcon';
-import { m } from '@styles/space';
+import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import React, { useContext, useEffect, useState } from 'react';
-import { Animated, ActivityIndicator, Easing, StyleSheet, View } from 'react-native';
+import { Animated, ActivityIndicator, Easing, StyleSheet, Text, View } from 'react-native';
 
 interface Props {
   size: number;
@@ -77,8 +77,8 @@ export function NewLoading({ size }: Props) {
   );
 }
 
-export default function LoadingSpinner({ large, inline }: { large?: boolean, inline?: boolean }) {
-  const { backgroundStyle, colors } = useContext(StyleContext);
+export default function LoadingSpinner({ large, inline, message }: { large?: boolean; inline?: boolean; message?: string }) {
+  const { backgroundStyle, colors, typography } = useContext(StyleContext);
   if (inline) {
     return (
       <View style={styles.inline}>
@@ -88,6 +88,7 @@ export default function LoadingSpinner({ large, inline }: { large?: boolean, inl
   }
   return (
     <View style={[styles.loading, backgroundStyle]}>
+      { !!message && <Text style={[typography.text, typography.light, space.marginBottomS]}>{message}</Text> }
       <ActivityIndicator size={large ? 'large' : 'small'} color={colors.lightText} animating />
     </View>
   );

@@ -16,6 +16,7 @@ mutation deleteInvestigatorDecks(
       arkhamdb_id
       local_uuid
       investigator
+      owner_id
     }
   }
 }
