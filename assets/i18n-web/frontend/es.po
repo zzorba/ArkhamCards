@@ -966,3 +966,7 @@ msgstr "Descargar en la App Store"
 
 msgid "Get it on Google Play"
 msgstr "Descargar en Google Play"
+
+#, javascript-format
+msgid "${ date } at ${ time }"
+msgstr ""
