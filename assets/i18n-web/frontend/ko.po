@@ -138,7 +138,7 @@ msgstr "후원자가 되어주세요!"
 msgid ""
 "Hosting costs for this site and the Arkham Cards app comes from the "
 "generous support of fans on Patreon."
-msgstr "이 사이트와 ArkhamCards 앱의 호스팅 비용은 Patreon 팬들의 아낌없는 후원에서 덕분입니다."
+msgstr "이 사이트와 ArkhamCards 앱의 호스팅 비용은 Patreon 팬들의 아낌없는 후원 덕분입니다."
 
 #, javascript-format
 msgid "Language (${ language })"
