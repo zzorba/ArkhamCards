@@ -128,10 +128,6 @@ export function useCampaignRemote(campaignId: CampaignId | undefined, live?: boo
       return subscribeToMore({
         document: CampaignDocument,
         variables: { campaign_id: campaignId.serverId },
-        updateQuery: (prev, { subscriptionData }) => {
-          console.log(subscriptionData.data);
-          return subscriptionData.data;
-        },
       });
     }
   }, [userId, campaignId, live, subscribeToMore]);

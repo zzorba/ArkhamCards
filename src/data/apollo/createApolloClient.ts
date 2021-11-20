@@ -189,9 +189,6 @@ const typePolicies: TypedTypePolicies = {
     fields: {
       decks: {
         merge(existing, incoming) {
-          if (incoming) {
-            console.log(`users.decks: ${JSON.stringify(incoming)}`);
-          }
           if (existing?.length !== incoming?.length) {
             return incoming;
           }
@@ -203,9 +200,6 @@ const typePolicies: TypedTypePolicies = {
       },
       all_decks: {
         merge(existing, incoming) {
-          if (incoming) {
-            console.log(`users.all_decks: ${JSON.stringify(incoming)}`);
-          }
           if (existing?.length !== incoming?.length) {
             return incoming;
           }
@@ -217,9 +211,6 @@ const typePolicies: TypedTypePolicies = {
       },
       campaigns: {
         merge(existing, incoming) {
-          if (incoming) {
-            console.log(`users.campaigns: ${JSON.stringify(incoming)}`);
-          }
           if (existing?.length !== incoming?.length) {
             return incoming;
           }

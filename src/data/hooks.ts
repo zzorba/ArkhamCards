@@ -25,8 +25,6 @@ export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => vo
   const [serverCampaigns, loading, refresh] = useRemoteCampaigns();
   const allCampaigns = useMemo(() => {
     const serverIds = new Set(map(serverCampaigns, c => c.uuid));
-    console.log(serverIds);
-    console.log(map(campaigns, c => c.uuid));
     const toSort = userId ? concat(
       filter(campaigns, c => !serverIds.has(c.uuid)),
       serverCampaigns
