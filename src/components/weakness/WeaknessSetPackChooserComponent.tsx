@@ -1,11 +1,45 @@
 import React, { useEffect, useMemo } from 'react';
-import { filter, forEach, map, uniqBy } from 'lodash';
+import { filter, forEach, map, uniqBy, sortBy } from 'lodash';
 import { useSelector } from 'react-redux';
 
 import PackListComponent from '@components/core/PackListComponent';
 import { BASIC_WEAKNESS_QUERY } from '@data/sqlite/query';
 import { getPacksInCollection, AppState } from '@reducers';
 import { useToggles, useWeaknessCards } from '@components/core/hooks';
+
+export function ControlledWeaknessSetPackChooserComponent({
+  componentId,
+  onPackCheck,
+  compact,
+  selected,
+}: {
+  componentId: string;
+  selected: { [pack: string]: boolean | undefined };
+  compact?: boolean;
+  onPackCheck: (pack: string, checked: boolean) => void;
+}) {
+  const packs = useSelector((state: AppState) => state.packs.all);
+  const weaknessCards = useWeaknessCards();
+  const weaknessPacks = useMemo(() => {
+    const weaknessPackSet = new Set(
+      uniqBy(
+        map(weaknessCards || [], card => card.pack_code),
+        code => code
+      ));
+    return sortBy(filter(packs, pack => weaknessPackSet.has(pack.code)), pack => pack.cycle_position);
+  }, [packs, weaknessCards]);
+  return (
+    <PackListComponent
+      componentId={componentId}
+      packs={weaknessPacks}
+      checkState={selected}
+      setChecked={onPackCheck}
+      baseQuery={BASIC_WEAKNESS_QUERY}
+      compact={compact}
+      noFlatList
+    />
+  );
+}
 
 interface OwnProps {
   componentId: string;
@@ -36,19 +70,8 @@ export default function WeaknessSetPackChooserComponent({
         map(weaknessCards || [], card => card.pack_code),
         code => code
       ));
-    return filter(packs, pack => weaknessPackSet.has(pack.code));
+    return sortBy(filter(packs, pack => weaknessPackSet.has(pack.code)), pack => pack.cycle_position);
   }, [packs, weaknessCards]);
-
-  useEffect(() => {
-    const includePack = { ...(ignore_collection ? all_packs : in_collection), ...override };
-    const packs: string[] = [];
-    forEach(weaknessPacks, pack => {
-      if (includePack[pack.code]) {
-        packs.push(pack.code);
-      }
-    });
-    onSelectedPacksChanged(packs);
-  }, [override, all_packs, in_collection, ignore_collection, onSelectedPacksChanged, weaknessPacks]);
 
   const checkState = useMemo(() => {
     const checks: { [key: string]: boolean } = {
@@ -60,15 +83,22 @@ export default function WeaknessSetPackChooserComponent({
     return checks;
   }, [in_collection, ignore_collection, all_packs, override]);
 
+  useEffect(() => {
+    const packs: string[] = [];
+    forEach(weaknessPacks, pack => {
+      if (checkState[pack.code]) {
+        packs.push(pack.code);
+      }
+    });
+    onSelectedPacksChanged(packs);
+  }, [checkState, onSelectedPacksChanged, weaknessPacks]);
+
   return (
-    <PackListComponent
+    <ControlledWeaknessSetPackChooserComponent
       componentId={componentId}
-      packs={weaknessPacks}
-      checkState={checkState}
-      setChecked={onPackCheck}
-      baseQuery={BASIC_WEAKNESS_QUERY}
+      selected={checkState}
+      onPackCheck={onPackCheck}
       compact={compact}
-      noFlatList
     />
   );
 }

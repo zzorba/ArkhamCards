@@ -261,17 +261,17 @@ interface RemoveAction {
 type SectionToggleAction = SetToggleAction | ToggleAction | ClearAction | RemoveAction;
 
 
-export function useToggles(initialState: Toggles, sync?: (toggles: Toggles) => void): [
+export function useToggles(initialState: (Toggles) | (() => Toggles), sync?: (toggles: Toggles) => void): [
   Toggles,
   (code: string) => void,
   (code: string | number, value: boolean) => void,
   (state?: Toggles) => void,
   (code: string) => void,
 ] {
-  const [toggles, updateToggles] = useReducer((state: Toggles, action: SectionToggleAction) => {
+  const [toggles, updateToggles] = useReducer<Reducer<Toggles, SectionToggleAction>, null>((state: Toggles, action: SectionToggleAction) => {
     switch (action.type) {
       case 'clear':
-        return action.state || initialState;
+        return action.state || (typeof initialState === 'function' ? initialState() : initialState);
       case 'remove': {
         const newState = { ...state };
         delete newState[action.key];
@@ -288,7 +288,7 @@ export function useToggles(initialState: Toggles, sync?: (toggles: Toggles) => v
           [action.key]: !state[action.key],
         };
     }
-  }, initialState);
+  }, null, () => typeof initialState === 'function' ? initialState() : initialState);
   useEffect(() => {
     sync?.(toggles);
   }, [sync, toggles]);

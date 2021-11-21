@@ -68,7 +68,7 @@ export default async function syncPlayerCards(
           if (card.type_code === 'investigator') {
             investigators[card.code] = card;
           }
-          if (card.isBasicWeakness()) {
+          if (card.isBasicWeakness() && !card.duplicate_of_code) {
             weaknessCards.push(card);
           }
         });

@@ -2,6 +2,7 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import {
   Text,
   View,
+  StyleSheet,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
@@ -14,7 +15,7 @@ import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
 export default function SpoilersView({ componentId }: NavigationProps) {
-  const { typography } = useContext(StyleContext);
+  const { backgroundStyle, typography } = useContext(StyleContext);
   const packs = useSelector(getAllPacks);
   const show_spoilers = useSelector(getPackSpoilers);
 
@@ -42,13 +43,22 @@ export default function SpoilersView({ componentId }: NavigationProps) {
     );
   }
   return (
-    <PackListComponent
-      componentId={componentId}
-      packs={packs}
-      header={header}
-      checkState={show_spoilers}
-      setChecked={setChecked}
-      setCycleChecked={setCycleChecked}
-    />
+    <View style={[styles.container, backgroundStyle]}>
+      <PackListComponent
+        componentId={componentId}
+        packs={packs}
+        header={header}
+        checkState={show_spoilers}
+        setChecked={setChecked}
+        setCycleChecked={setCycleChecked}
+      />
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+

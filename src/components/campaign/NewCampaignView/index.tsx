@@ -45,7 +45,7 @@ import { useFlag, useNavigationButtonPressed, usePlayerCards, useSlots } from '@
 import { CampaignSelection } from '../SelectCampaignDialog';
 import { useAlertDialog, usePickerDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
-import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import RoundedFactionBlock, { AnimatedRoundedFactionBlock } from '@components/core/RoundedFactionBlock';
 import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckButton from '@components/deck/controls/DeckButton';
@@ -336,21 +336,39 @@ function NewCampaignView({ componentId }: NavigationProps) {
       hasGuide,
     });
   }, [setCampaignChoice]);
+  const [open, toggleOpen] = useFlag(false);
+  const renderWeaknessHeader = useCallback((icon: React.ReactFragment) => {
+    return (
+      <View style={[
+        styles.block,
+        { backgroundColor: colors.D10 },
+        !open ? {
+          borderBottomLeftRadius: 8,
+          borderBottomRightRadius: 8,
+        } : undefined,
+      ]}>
+        <View style={styles.row}>
+          <View style={styles.textColumn}>
+            <Text style={[typography.mediumGameFont, { color: colors.L20 }, typography.center]}>
+              { t`Weakness Set` }
+            </Text>
+            <Text style={[typography.small, typography.italic, { color: colors.L20 }, typography.center]}>
+              { open ? t`Include all basic weaknesses from these expansions` : t`Choose expansions for basic weakness` }
+            </Text>
+          </View>
+          { icon }
+        </View>
+      </View>
+    );
+  }, [colors, typography, open]);
   const weaknessSetSection = useMemo(() => {
     return (
       <View style={space.paddingS}>
-        <RoundedFactionBlock
+        <AnimatedRoundedFactionBlock
           faction="neutral"
-          header={(
-            <View style={[styles.block, { backgroundColor: colors.D10 }]}>
-              <Text style={[typography.mediumGameFont, { color: colors.L20 }, typography.center]}>
-                { t`Weakness Set` }
-              </Text>
-              <Text style={[typography.small, typography.italic, { color: colors.L20 }, typography.center]}>
-                { t`Include all basic weaknesses from these expansions` }
-              </Text>
-            </View>
-          )}
+          renderHeader={renderWeaknessHeader}
+          open={open}
+          toggleOpen={toggleOpen}
           noSpace
         >
           <View style={[space.paddingXs, space.paddingRightS]}>
@@ -360,10 +378,10 @@ function NewCampaignView({ componentId }: NavigationProps) {
               onSelectedPacksChanged={setWeaknessPacks}
             />
           </View>
-        </RoundedFactionBlock>
+        </AnimatedRoundedFactionBlock>
       </View>
     );
-  }, [componentId, typography, colors, setWeaknessPacks]);
+  }, [componentId, setWeaknessPacks, renderWeaknessHeader, open, toggleOpen]);
 
   const campaignLogSection = useMemo(() => {
     if (isGuided || selection.type === 'standalone') {
@@ -601,6 +619,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   flex: {
+    flex: 1,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textColumn: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
     flex: 1,
   },
 });

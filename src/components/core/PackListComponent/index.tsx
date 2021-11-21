@@ -26,7 +26,7 @@ interface Props {
   componentId: string;
   coreSetName?: string;
   packs: Pack[];
-  checkState?: { [pack_code: string]: boolean};
+  checkState?: { [pack_code: string]: boolean | undefined };
   setChecked: (pack_code: string, checked: boolean) => void;
   setCycleChecked?: (cycle_code: string, checked: boolean) => void;
   header?: React.ReactElement;
@@ -134,24 +134,20 @@ export default function PackListComponent({
     });
 
   return (
-    <View style={[styles.container, backgroundStyle]}>
-      <SectionList
-        ListHeaderComponent={header}
-        ListFooterComponent={renderFooter}
-        sections={groups}
-        initialNumToRender={30}
-        renderSectionHeader={renderSectionHeader}
-        renderItem={renderItem}
-        keyExtractor={keyExtractor}
-        stickySectionHeadersEnabled={false}
-        extraData={checkState}
-      />
-    </View>
+    <SectionList
+      ListHeaderComponent={header}
+      ListFooterComponent={renderFooter}
+      sections={groups}
+      initialNumToRender={30}
+      renderSectionHeader={renderSectionHeader}
+      renderItem={renderItem}
+      keyExtractor={keyExtractor}
+      stickySectionHeadersEnabled={false}
+      extraData={checkState}
+    />
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+  container: {},
 });

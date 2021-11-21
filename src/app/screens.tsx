@@ -45,6 +45,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Guide.Achievements': return require('@components/campaignguide/CampaignAchievementsView').default;
     case 'Guide.Log': return require('@components/campaignguide/CampaignLogView').default;
     case 'Guide.LocationSetup': return require('@components/campaignguide/LocationSetupView').default;
+    case 'Guide.WeaknessSet': return require('@components/campaignguide/WeaknessSetView').default;
     case 'Guide.CardSelector': return require('@components/campaignguide/CardSelectorView').default;
     case 'Friends': return require('@components/social/FriendsView').default;
     case 'Campaign.UpgradeDecks': return require('@components/campaign/UpgradeDecksView').default;
