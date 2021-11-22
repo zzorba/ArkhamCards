@@ -1,6 +1,6 @@
 import { c } from 'ttag';
 
-export default function getLocalizedTraits() {
+export default function getLocalizedTraits(): { [trait: string]: string | undefined } {
   return {
     '???': c('trait').t`???`,
     'AI': c('trait').t`AI`,

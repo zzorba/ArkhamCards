@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useEffect } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { Linking, StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';

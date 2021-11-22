@@ -22,7 +22,7 @@ interface Props {
   processValue?: (value: string) => string[];
   capitalize?: boolean;
   fixedTranslations?: {
-    [key: string]: string;
+    [key: string]: string | undefined;
   };
   includeNone?: boolean;
 }
@@ -35,7 +35,9 @@ export default function DbChooserButton({ componentId, title, field, includeNone
     if (fixedTranslations) {
       const reversed: { [key: string]: string | undefined} = {};
       forEach(fixedTranslations, (value, key) => {
-        reversed[value] = key;
+        if (value) {
+          reversed[value] = key;
+        }
       });
       onChange(map(selection, item => reversed[item] || item));
     } else {

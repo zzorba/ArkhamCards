@@ -16,6 +16,7 @@ interface Props {
   limit: number;
   showZeroCount?: boolean;
   forceBig?: boolean;
+  reversed?: boolean;
 }
 
 function TinyCardQuantityComponent({ code, count: propsCount, countChanged: { setSlot }, limit }: Omit<Props, 'showZeroCount' | 'forceBig'>) {

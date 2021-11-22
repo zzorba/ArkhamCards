@@ -16,7 +16,7 @@ interface Props {
   tabooSetId?: number;
   capitalize?: boolean;
   fixedTranslations?: {
-    [key: string]: string;
+    [key: string]: string | undefined;
   };
   includeNone?: boolean;
 }

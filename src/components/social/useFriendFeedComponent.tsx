@@ -243,7 +243,7 @@ interface Props {
   ) => FriendFeedItem[]
 }
 
-export default function useFriendFeedComponent({ componentId, userId, handleScroll, noHeader, error, searchResults, toFeed }: Props): [React.ReactElement, () => void] {
+export default function useFriendFeedComponent({ componentId, userId, handleScroll, noHeader, error, searchResults, toFeed }: Props): [React.ReactNode, () => void] {
   const { borderStyle, colors, typography } = useContext(StyleContext);
   const { userId: currentUserId } = useContext(ArkhamCardsAuthContext);
   const [myProfile, loadingMyProfile, refetchMyProfile] = useMyProfile(true);
@@ -281,7 +281,7 @@ export default function useFriendFeedComponent({ componentId, userId, handleScro
       },
     });
   }, [componentId]);
-  const renderItem = useCallback(({ item, index }: ListRenderItemInfo<FriendFeedItem>): React.ReactElement | null => {
+  const renderItem = useCallback(({ item, index }: ListRenderItemInfo<FriendFeedItem>) => {
     switch (item.type) {
       case 'user':
         return (

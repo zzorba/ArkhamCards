@@ -21,7 +21,7 @@ interface Props {
   dismissable?: boolean;
   onDismiss?: () => void;
   buttons?: React.ReactNode[];
-  children: React.ReactNode | React.ReactNode[];
+  children: React.ReactNode;
   alignment?: 'center' | 'bottom',
   avoidKeyboard?: boolean;
   forceVerticalButtons?: boolean;
@@ -44,7 +44,7 @@ function NewDialog(props: Props) {
   const verticalButtons = forceVerticalButtons || buttons.length > 2 || TINY_PHONE || lang === 'de';
   const dismissButton = useMemo(() => {
     if (!dismissable) {
-      return null;
+      return undefined;
     }
     return (
       <View style={investigator ? space.paddingRightS : styles.closeButton}>

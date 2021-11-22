@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useContext, useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
@@ -24,7 +24,6 @@ import { useCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campa
 import { useDeckActions } from '@data/remote/decks';
 import StyleContext from '@styles/StyleContext';
 import LoadingSpinner from '@components/core/LoadingSpinner';
-import { useApolloClient } from '@apollo/client';
 
 export interface LinkedCampaignGuideProps {
   campaignId: CampaignId;

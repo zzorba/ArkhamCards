@@ -23,6 +23,7 @@ import { showGuideCampaignLog } from '@components/campaign/nav';
 import { WeaknessSetProps } from './WeaknessSetView';
 
 const SHOW_WEAKNESS = false;
+
 interface Props {
   componentId: string;
   processedCampaign: ProcessedCampaign;

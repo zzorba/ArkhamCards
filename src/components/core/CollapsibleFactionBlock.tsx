@@ -7,7 +7,6 @@ import { FactionCodeType } from '@app_constants';
 import { useEffectUpdate } from './hooks';
 import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
-import space, { s } from '@styles/space';
 
 interface Props {
   open?: boolean;

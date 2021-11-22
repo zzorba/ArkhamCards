@@ -39,7 +39,7 @@ interface Props {
   clearSearchFilters: () => void;
 
   investigator?: Card;
-  header?: React.ReactElement;
+  header?: JSX.Element;
   storyOnly?: boolean;
 
   initialSort?: SortType;

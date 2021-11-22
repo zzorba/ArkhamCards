@@ -175,7 +175,7 @@ export default function CardSearchComponent(props: Props) {
   }, [componentId, dispatch]);
 
   const header = useMemo(() => {
-    const result: React.ReactElement[] = [];
+    const result: React.ReactNode[] = [];
     if (deckId !== undefined) {
       result.push(
         <XpChooser

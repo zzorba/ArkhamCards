@@ -428,7 +428,7 @@ function PlaylistView({ style, queue }: PlaylistProps) {
 }
 
 interface NarratorContainerProps {
-  children: JSX.Element,
+  children: React.ReactNode,
 }
 
 export default function NarrationWrapper({ children }: NarratorContainerProps) {

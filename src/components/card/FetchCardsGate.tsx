@@ -52,7 +52,7 @@ function ProgressBar({ progress }: { progress: number }) {
 /**
  * Simple component to block children rendering until cards/packs are loaded.
  */
-export default function FetchCardsGate({ promptForUpdate, children }: Props): JSX.Element {
+export default function FetchCardsGate({ promptForUpdate, children }: Props) {
   const { db } = useContext(DatabaseContext);
   const [needsMigration, migrating, doMigrate] = useReduxMigrator();
   const dispatch = useDispatch();

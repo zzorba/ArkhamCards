@@ -75,6 +75,8 @@ interface CampaignLogBasicEntry extends BasicEntry {
   type: 'basic';
 }
 
+const EMPTY_TRAUMA: TraumaAndCardData = {};
+
 export interface CampaignLogFreeformEntry extends BasicEntry {
   type: 'freeform';
   text: string;
@@ -392,7 +394,7 @@ export default class GuidedCampaignLog {
   }
 
   traumaAndCardData(investigator: string): TraumaAndCardData {
-    return this.campaignData.investigatorData[investigator] || {};
+    return this.campaignData.investigatorData[investigator] || EMPTY_TRAUMA;
   }
 
   hasPartnerStatus(sectionId: string, partner: Partner, status: PartnerStatus): boolean {

@@ -29,8 +29,8 @@ interface Props {
   checkState?: { [pack_code: string]: boolean | undefined };
   setChecked: (pack_code: string, checked: boolean) => void;
   setCycleChecked?: (cycle_code: string, checked: boolean) => void;
-  header?: React.ReactElement;
-  renderFooter?: () => React.ReactElement;
+  header?: JSX.Element;
+  renderFooter?: () => JSX.Element;
   baseQuery?: Brackets;
   compact?: boolean;
   noFlatList?: boolean;
@@ -80,7 +80,7 @@ export default function PackListComponent({
   compact,
   noFlatList,
 }: Props) {
-  const { backgroundStyle, typography } = useContext(StyleContext);
+  const { typography } = useContext(StyleContext);
   const renderPack = useCallback((pack: Pack) => {
     const cyclePacks: Pack[] = pack.position === 1 ? filter(packs, p => {
       return (pack.cycle_position === p.cycle_position &&

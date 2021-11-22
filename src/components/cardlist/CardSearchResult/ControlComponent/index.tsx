@@ -19,6 +19,7 @@ export type ControlType = {
   countChanged: EditSlotsActions;
   limit: number;
   showZeroCount: boolean;
+  reversed?: boolean;
 } | {
   type: 'count';
   count: number;
@@ -81,6 +82,7 @@ export function ControlComponent({ card, control }: Props) {
           countChanged={control.countChanged}
           limit={control.limit}
           showZeroCount={control.showZeroCount}
+          reversed={control.reversed}
         />
       );
   }

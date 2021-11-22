@@ -17,7 +17,7 @@ interface Props {
   leftContent?: React.ReactNode;
   transparent?: boolean;
   width: number;
-  children?: JSX.Element;
+  children?: React.ReactNode;
   description?: string;
   color?: 'dark' | 'light';
   name?: string;

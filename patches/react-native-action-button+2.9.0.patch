@@ -3,7 +3,7 @@ index ec1b9e3..b1ff172 100644
 --- a/node_modules/react-native-action-button/ActionButton.js
 +++ b/node_modules/react-native-action-button/ActionButton.js
 @@ -35,13 +35,13 @@ const ActionButton = props => {
- 
+
    useEffect(() => {
      if (props.active) {
 -      Animated.spring(anim.current, { toValue: 1 }).start();
@@ -12,7 +12,7 @@ index ec1b9e3..b1ff172 100644
        setResetToken(props.resetToken);
      } else {
        props.onReset && props.onReset();
- 
+
 -      Animated.spring(anim.current, { toValue: 0 }).start();
 +      Animated.spring(anim.current, { toValue: 0, useNativeDriver: false }).start();
        timeout.current = setTimeout(() => {
@@ -20,7 +20,7 @@ index ec1b9e3..b1ff172 100644
          setResetToken(props.resetToken);
 @@ -254,7 +254,7 @@ const ActionButton = props => {
      if (active) return reset(animate);
- 
+
      if (animate) {
 -      Animated.spring(anim.current, { toValue: 1 }).start();
 +      Animated.spring(anim.current, { toValue: 1, useNativeDriver: false }).start();
@@ -29,7 +29,7 @@ index ec1b9e3..b1ff172 100644
      }
 @@ -266,7 +266,7 @@ const ActionButton = props => {
      if (props.onReset) props.onReset();
- 
+
      if (animate) {
 -      Animated.spring(anim.current, { toValue: 0 }).start();
 +      Animated.spring(anim.current, { toValue: 0, useNativeDriver: false }).start();
@@ -45,6 +45,6 @@ index 2ba74e9..2a7e358 100644
    autoInactive?: boolean,
    onPress?: () => void,
 +  onReset?: () => void,
-   renderIcon?: (active: boolean) => React.ReactElement<any>,
+   renderIcon?: (active: boolean) => JSX.Element<any>,
    backdrop?: boolean | object,
    degrees?: number,

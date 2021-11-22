@@ -4,7 +4,7 @@ import { forEach, keys, map, uniq } from 'lodash';
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-import { AppState, makeBaseDeckSelector, makeDeckSelector } from '@reducers';
+import { AppState, makeDeckSelector } from '@reducers';
 import {
   ArkhamDbDeck,
   Deck,

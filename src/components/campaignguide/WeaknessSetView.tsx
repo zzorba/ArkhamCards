@@ -1,25 +1,27 @@
-import React, { useContext, useCallback, useEffect } from 'react';
-import { forEach, isEqual } from 'lodash';
+import React, { useContext, useCallback, useEffect, useMemo } from 'react';
+import { forEach, find, isEqual, map, flatMap } from 'lodash';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
 import { t } from 'ttag';
 
-import { CampaignId } from '@actions/types';
-import { useCampaignGuideContext } from './withCampaignGuideContext';
+import { Slots, TraumaAndCardData } from '@actions/types';
+import withCampaignGuideContext, { CampaignGuideInputProps } from './withCampaignGuideContext';
 import StyleContext from '@styles/StyleContext';
 import { ControlledWeaknessSetPackChooserComponent } from '@components/weakness/WeaknessSetPackChooserComponent';
 import { NavigationProps } from '@components/nav/types';
 import LoadingSpinner from '@components/core/LoadingSpinner';
-import space, { s, m } from '@styles/space';
+import space, { s } from '@styles/space';
 import { AnimatedRoundedFactionBlock } from '@components/core/RoundedFactionBlock';
-import { useFlag, useToggles } from '@components/core/hooks';
+import { useFlag, useToggles, useWeaknessCards } from '@components/core/hooks';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { useDispatch } from 'react-redux';
 import { updateCampaignWeaknessSet } from '@components/campaign/actions';
 import { SetCampaignWeaknessSetAction, useSetCampaignWeaknessSet } from '@data/remote/campaigns';
+import CampaignGuideContext from './CampaignGuideContext';
+import Card from '@data/types/Card';
+import { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
+import CardSearchResult from '@components/cardlist/CardSearchResult';
 
-export interface WeaknessSetProps {
-  campaignId: CampaignId;
-}
+export type WeaknessSetProps = CampaignGuideInputProps;
 
 function WeaknessSetPackSection({ campaign, componentId, setCampaignWeaknessSet }: { campaign: SingleCampaignT; componentId: string; setCampaignWeaknessSet: SetCampaignWeaknessSetAction }) {
   const { typography, colors } = useContext(StyleContext);
@@ -94,31 +96,113 @@ function WeaknessSetPackSection({ campaign, componentId, setCampaignWeaknessSet 
   );
 }
 
-export default function WeaknessSetView({ componentId, campaignId }: WeaknessSetProps & NavigationProps) {
-  const { backgroundStyle } = useContext(StyleContext);
-  const [campaignContext] = useCampaignGuideContext(campaignId, false);
-  const setCampaignWeaknessSet = useSetCampaignWeaknessSet();
+interface WeaknessItem {
+  card: Card;
+  count: number;
+}
 
-  if (!campaignContext) {
-    return <LoadingSpinner />;
-  }
+function InvestigatorWeakness({ componentId, investigator, width, investigatorData, weaknesses }: { componentId: string; investigator: Card; width: number; investigatorData: TraumaAndCardData; weaknesses: Card[] | undefined }) {
+  const [open, toggleOpen] = useFlag(false);
+  const { campaign } = useContext(CampaignGuideContext);
+  const deck = useMemo(() => find(campaign.latestDecks(), deck => deck.investigator === investigator.code), [investigator.code, campaign]);
+  const weaknessList: WeaknessItem[] | undefined = useMemo(() => {
+    if (!weaknesses) {
+      return undefined;
+    }
+    if (deck) {
+      return flatMap(weaknesses, card => {
+        const count = (deck?.deck.slots?.[card?.code] || 0) +
+          (deck?.deck.ignoreDeckLimitSlots?.[card?.code] || 0);
+        if (count > 0) {
+          return {
+            card,
+            count,
+          };
+        }
+        return [];
+      });
+    }
+    const counts: Slots = {};
+    forEach([
+      ...(investigatorData.addedCards || []),
+      ...(investigatorData.ignoreStoryAssets || []),
+      ...(investigatorData.storyAssets || []),
+    ], code => {
+      counts[code] = (counts[code] || 0) + 1;
+    });
+    return flatMap(weaknesses, card => {
+      const count = counts[card.code];
+      if (count > 0) {
+        return {
+          card,
+          count,
+        };
+      }
+      return [];
+    });
+  }, [weaknesses, deck, investigatorData]);
+  return (
+    <AnimatedCompactInvestigatorRow
+      investigator={investigator}
+      width={width}
+      toggleOpen={toggleOpen}
+      open={open}
+    >
+      { weaknessList ? map(weaknessList, ({ card, count }, idx) => {
+        return (
+          <CardSearchResult
+            key={card.code}
+            card={card}
+            backgroundColor="transparent"
+            control={{
+              type: 'count',
+              count,
+            }}
+            noBorder={idx === (weaknessList.length - 1)}
+          />
+        );
+      }) : <LoadingSpinner inline /> }
+    </AnimatedCompactInvestigatorRow>
+  );
+}
+
+function WeaknessSetView({ componentId }: WeaknessSetProps & NavigationProps) {
+  const { backgroundStyle, width } = useContext(StyleContext);
+  const { campaignInvestigators, campaign, campaignState, campaignGuide } = useContext(CampaignGuideContext);
+  const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
+  const setCampaignWeaknessSet = useSetCampaignWeaknessSet();
+  const weaknessCards = useWeaknessCards();
   return (
     <ScrollView contentContainerStyle={backgroundStyle}>
       <View style={space.paddingS}>
-        <WeaknessSetPackSection
-          componentId={componentId}
-          campaign={campaignContext.campaign}
-          setCampaignWeaknessSet={setCampaignWeaknessSet}
-        />
+        <View style={space.paddingBottomS}>
+          <WeaknessSetPackSection
+            componentId={componentId}
+            campaign={campaign}
+            setCampaignWeaknessSet={setCampaignWeaknessSet}
+          />
+        </View>
+        { map(campaignInvestigators, investigator => (
+          <View style={space.paddingBottomS} key={investigator.code}>
+            <InvestigatorWeakness
+              width={width - s * 2}
+              componentId={componentId}
+              investigator={investigator}
+              investigatorData={processedCampaign.campaignLog.traumaAndCardData(investigator.code)}
+              weaknesses={weaknessCards}
+            />
+          </View>
+        ))}
       </View>
     </ScrollView>
   );
 }
+
+export default withCampaignGuideContext(WeaknessSetView, { rootView: false });
+
 const styles = StyleSheet.create({
   block: {
     padding: s,
-    paddingLeft: m,
-    paddingRight: m,
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
   },

@@ -65,8 +65,8 @@ interface Props {
   expandSearchControls?: ReactNode;
   investigator?: Card;
   cardPressed?: (card: Card) => void;
-  renderCard?: (card: Card) => React.ReactElement;
-  header?: React.ReactElement;
+  renderCard?: (card: Card) => JSX.Element;
+  header?: JSX.Element;
   noSearch?: boolean;
   handleScroll?: (...args: any[]) => void;
   showHeader?: () => void;
@@ -841,7 +841,7 @@ export default function({
                   { t`Searching cards...` }
                 </Text>
               ) : (
-                <Text style={typography.text}>
+                <Text style={[typography.text, typography.center]}>
                   { searchTerm ?
                     t`No matching cards for "${searchTerm}"` :
                     t`No matching cards` }

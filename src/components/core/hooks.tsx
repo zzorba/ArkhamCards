@@ -1,5 +1,5 @@
 import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
-import { BackHandler, InteractionManager, Keyboard } from 'react-native';
+import { BackHandler, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import { forEach, debounce, find } from 'lodash';
 
@@ -417,36 +417,18 @@ export interface EditSlotsActions {
   decSlot: (code: string) => void;
 }
 
-export function useSlotActions(slots?: Slots, editSlotsActions?: EditSlotsActions, updateSlots?: (slots: Slots) => void): [Slots, EditSlotsActions | undefined] {
+export function useSlotActions(slots?: Slots, updateSlots?: (slots: Slots) => void): [Slots, EditSlotsActions] {
   const [deckCardCounts, updateDeckCardCounts] = useSlots(slots || {}, updateSlots);
-  const propsSetSlot = editSlotsActions?.setSlot;
-  const propsDecSlot = editSlotsActions?.decSlot;
-  const propsIncSlot = editSlotsActions?.incSlot;
 
   const setSlot = useCallback((code: string, value: number) => {
-    if (propsSetSlot) {
-      InteractionManager.runAfterInteractions(() => {
-        propsSetSlot(code, value);
-      });
-    }
     updateDeckCardCounts({ type: 'set-slot', code, value });
-  }, [propsSetSlot, updateDeckCardCounts]);
+  }, [updateDeckCardCounts]);
   const incSlot = useCallback((code: string, max?: number) => {
-    if (propsIncSlot) {
-      InteractionManager.runAfterInteractions(() => {
-        propsIncSlot(code, max);
-      });
-    }
     updateDeckCardCounts({ type: 'inc-slot', code, max });
-  }, [propsIncSlot, updateDeckCardCounts]);
+  }, [updateDeckCardCounts]);
   const decSlot = useCallback((code: string) => {
-    if (propsDecSlot) {
-      InteractionManager.runAfterInteractions(() => {
-        propsDecSlot(code);
-      });
-    }
     updateDeckCardCounts({ type: 'dec-slot', code });
-  }, [propsDecSlot, updateDeckCardCounts]);
+  }, [updateDeckCardCounts]);
   const actions = useMemo(() => {
     return {
       setSlot,
@@ -454,7 +436,7 @@ export function useSlotActions(slots?: Slots, editSlotsActions?: EditSlotsAction
       decSlot,
     };
   }, [setSlot, incSlot, decSlot]);
-  return [deckCardCounts, editSlotsActions ? actions : undefined];
+  return [deckCardCounts, actions];
 }
 
 interface AppendCardsAction {
