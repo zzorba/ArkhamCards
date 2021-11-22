@@ -62,7 +62,7 @@ msgid "The Blob That Ate Everything"
 msgstr "모든 것을 집어삼키는 멍울"
 
 msgid "War of the Outer Gods"
-msgstr ""
+msgstr "이계 신의 전쟁"
 
 msgid "Event name"
 msgstr "게임 이름"
@@ -103,7 +103,7 @@ msgstr "예정된 게임"
 msgid ""
 "Site under construction while we prepare for War of the Outer Gods. Check "
 "back soon!"
-msgstr "'War of the Outer Gods' 시나리오를 준비하는 동안 공사 중인 사이트입니다. 곧 확인하겠습니다."
+msgstr "'이계 신의 전쟁' 시나리오를 준비하는 동안 공사 중인 사이트입니다. 곧 확인하겠습니다."
 
 msgid "(video walkthrough of the interface)"
 msgstr "(인터페이스에 대한 자세한 설명 영상)"
@@ -127,7 +127,7 @@ msgid "• The Blob That Ate Everything ${ blobVideoLink }"
 msgstr "• 모든 것을 집어삼키는 멍울 ${ blobVideoLink }"
 
 msgid "• War of the Outer Gods ${ warVideoLink }."
-msgstr "• War of the Outer Gods ${ warVideoLink }"
+msgstr "• 이계 신의 전쟁 ${ warVideoLink }"
 
 msgid "You are more than welcome to use this site to host your own events."
 msgstr "이 사이트를 사용하여 게임을 주최하시게 된 것을 환영합니다."

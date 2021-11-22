@@ -2951,7 +2951,7 @@ msgid "Curse"
 msgstr "저주"
 
 msgid "In Too Deep"
-msgstr "너무나도 깊은 수렁"
+msgstr "너무나 깊은 수렁"
 
 msgid "Devil Reef"
 msgstr "악마의 암초"
@@ -2960,7 +2960,7 @@ msgid "Horror in High Gear"
 msgstr "공포의 추격전"
 
 msgid "A Light in the Fog"
-msgstr "안개 속의 빛 줄기"
+msgstr "안개 속 한 줄기 빛"
 
 msgid "The Lair of Dagon"
 msgstr "데이곤의 처소"
@@ -2969,7 +2969,7 @@ msgid "Hidden Truths"
 msgstr ""
 
 msgid "Into the Maelstrom"
-msgstr "몰아치는 소용돌이 속으로"
+msgstr "혼돈의 소용돌이로"
 
 msgid "Possible Suspects"
 msgstr ""
