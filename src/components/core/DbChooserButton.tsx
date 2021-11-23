@@ -29,7 +29,7 @@ interface Props {
 }
 export default function DbChooserButton({ componentId, title, all, field, includeNone, onChange, fixedTranslations, selection, indent, query, tabooSetId, processValue, capitalize }: Props) {
   const { db } = useContext(DatabaseContext);
-  const { lang, listSeperator } = useContext(LanguageContext);
+  const { lang, listSeperator, colon } = useContext(LanguageContext);
   const [pressed, setPressed] = useState(false);
 
   const onSelectionChange = useCallback((selection: string[]) => {
@@ -108,7 +108,7 @@ export default function DbChooserButton({ componentId, title, all, field, includ
   }, [selection, fixedTranslations, all, listSeperator]);
   return (
     <NavButton
-      text={`${title}: ${selectedDescription}`}
+      text={`${title}${colon}${selectedDescription}`}
       onPress={onPress}
       indent={indent}
       disabled={pressed}

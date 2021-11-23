@@ -32,7 +32,7 @@ export default function FixedSetChooserButton({
   allValues,
 }: Props) {
   const { colors } = useContext(StyleContext);
-  const { listSeperator } = useContext(LanguageContext);
+  const { listSeperator, colon } = useContext(LanguageContext);
   const reversedValues = useMemo(() => {
     const reversed: { [key: string]: string } = {};
     forEach(allValues, (value, key) => {
@@ -80,11 +80,11 @@ export default function FixedSetChooserButton({
   }, [allValues, colors, componentId, title, setPressed, onChange, selection]);
   const selectedDescription = useMemo(
     () => selection && selection.length ? map(selection, item => allValues[item]).join(listSeperator) : all,
-    [allValues, selection, listSeperator]
+    [allValues, selection, listSeperator, all]
   );
   return (
     <NavButton
-      text={`${title}: ${selectedDescription}`}
+      text={`${title}${colon}${selectedDescription}`}
       onPress={onPress}
       indent={indent}
       disabled={pressed}

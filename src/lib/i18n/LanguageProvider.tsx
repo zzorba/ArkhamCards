@@ -26,6 +26,13 @@ function getListSeperator(lang: string): string {
   }
 }
 
+function getColon(lang: string): string {
+  switch (lang) {
+    case 'fr': return ' : ';
+    default: return ': ';
+  }
+}
+
 export default function LanguageProvider({ children }: Props) {
   const [systemLang, setSystemLang] = useState<string>(currentSystemLang || getSystemLanguage());
   useEffect(() => {
@@ -78,6 +85,7 @@ export default function LanguageProvider({ children }: Props) {
       lang,
       useCardTraits: !LOCALIZED_CARD_TRAITS.has(lang),
       listSeperator: getListSeperator(lang),
+      colon: getColon(lang),
       usePingFang: (lang === 'zh' && Platform.OS === 'ios' && majorVersionIOS >= 13),
       audioLang,
     };

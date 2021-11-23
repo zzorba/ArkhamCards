@@ -17,7 +17,7 @@ interface Props {
 }
 
 export default function ChooserButton({ componentId, title, values, onChange, selection, indent, all }: Props) {
-  const { listSeperator } = useContext(LanguageContext);
+  const { listSeperator, colon } = useContext(LanguageContext);
   const onPress = useCallback(() => {
     Navigation.push<SearchSelectProps>(componentId, {
       component: {
@@ -52,7 +52,7 @@ export default function ChooserButton({ componentId, title, values, onChange, se
   }, [componentId, title, values, onChange, selection]);
   return (
     <NavButton
-      text={`${title}: ${selection && selection.length ? selection.join(listSeperator) : all}`}
+      text={`${title}${colon}${selection && selection.length ? selection.join(listSeperator) : all}`}
       onPress={onPress}
       indent={indent}
     />

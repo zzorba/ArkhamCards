@@ -19,6 +19,7 @@ import useSingleCard from '@components/card/useSingleCard';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import CampaignLogPartnersComponent from './CampaignLogPartnersComponent';
 import { Partner } from '@data/scenario/types';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   componentId: string;
@@ -78,6 +79,7 @@ export default function CampaignLogComponent({
   interScenarioId,
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
+  const { colon } = useContext(LanguageContext);
   const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'investigator_count' | 'count' | 'supplies' | 'header' | 'partner', partners?: Partner[]) => {
     switch (type) {
       case 'header': {
@@ -91,7 +93,7 @@ export default function CampaignLogComponent({
         const count = campaignLog.count(id, '$count');
         return (
           <View style={space.paddingSideS}>
-            <DeckBubbleHeader inverted title={`${title}: ${count}`} />
+            <DeckBubbleHeader inverted title={`${title}${colon}${count}`} />
           </View>
         );
       }

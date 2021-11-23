@@ -8,7 +8,7 @@ msgstr ""
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
-"x-generator: Poedit 3.0\n"
+"x-generator: Poedit 2.4.3\n"
 "Last-Translator: \n"
 "Language: zh\n"
 
@@ -1988,24 +1988,6 @@ msgstr "檢查冒險日誌。由於<i>${ entry }</i>"
 
 msgid "Check Campaign Log, is the <i>${ logEntry.section }</i> not crossed off?"
 msgstr "檢查冒險日誌。是否<i>${ logEntry.section }</i>沒有被劃掉？"
-
-#, javascript-format
-msgid ""
-"Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName "
-"}</b>."
-msgid_plural ""
-"Since ${ list } all have a ${ supplyName }, they must read <b>${ "
-"sectionName }</b>."
-msgstr[0] "由於${ list }之中有${ supplyName }，玩家必須閱讀<b>${ sectionName }</b>。"
-
-#, javascript-format
-msgid ""
-"Since ${ list } does not have a ${ supplyName }, they must read <b>${ "
-"sectionName }</b>."
-msgid_plural ""
-"Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
-"sectionName }</b>."
-msgstr[0] "由於${ list }之中沒有${ supplyName }，玩家必須閱讀<b>${ sectionName }</b>。"
 
 #, javascript-format
 msgid "${ investigators } must read <b>${ prompt }</b>."
@@ -4745,6 +4727,26 @@ msgid ""
 "Campaign Log."
 msgstr "如果<i>${ card.name }</i>在冒險日誌中的‘${ entry.section }’底下。"
 
+#, javascript-format
+msgctxt "masculine"
+msgid ""
+"Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName "
+"}</b>."
+msgid_plural ""
+"Since ${ list } all have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgstr[0] "由於${ list }之中有${ supplyName }，玩家必須閱讀<b>${ sectionName }</b>。"
+
+#, javascript-format
+msgctxt "masculine"
+msgid ""
+"Since ${ list } does not have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgid_plural ""
+"Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgstr[0] "由於${ list }之中沒有${ supplyName }，玩家必須閱讀<b>${ sectionName }</b>。"
+
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name }已<b>發瘋</b>。"
@@ -4840,6 +4842,25 @@ msgstr "精神創傷"
 msgctxt "feminine"
 msgid "Defeated"
 msgstr "被擊敗"
+
+#, javascript-format
+msgctxt "feminine"
+msgid ""
+"Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName "
+"}</b>."
+msgid_plural ""
+"Since ${ list } all have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgstr[0] "由於${ list }之中有${ supplyName }，玩家必須閱讀<b>${ sectionName }</b>。"
+
+msgctxt "feminine"
+msgid ""
+"Since ${ list } does not have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgid_plural ""
+"Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgstr[0] "由於${ list }之中沒有${ supplyName }，玩家必須閱讀<b>${ sectionName }</b>。"
 
 msgctxt "Traits"
 msgid "All"
@@ -6072,6 +6093,26 @@ msgstr "其他"
 msgctxt "Weakness Card"
 msgid "All"
 msgstr "全部"
+
+#, javascript-format
+msgctxt "mixed"
+msgid ""
+"Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName "
+"}</b>."
+msgid_plural ""
+"Since ${ list } all have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgstr[0] "由於${ list }之中有${ supplyName }，玩家必須閱讀<b>${ sectionName }</b>。"
+
+#, javascript-format
+msgctxt "mixed"
+msgid ""
+"Since ${ list } does not have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgid_plural ""
+"Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgstr[0] "由於${ list }之中沒有${ supplyName }，玩家必須閱讀<b>${ sectionName }</b>。"
 
 msgctxt "trauma"
 msgid "None"
