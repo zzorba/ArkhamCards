@@ -74,7 +74,7 @@ msgstr "${ listOfThings }, ${ lastThing }"
 
 #, javascript-format
 msgid "${ this.name } <i>(${ this.subname })</i>"
-msgstr ""
+msgstr "${ this.name } <i>(${ this.subname })</i>"
 
 msgid "None"
 msgstr "없음"
@@ -1195,7 +1195,7 @@ msgid "No matching investigators for \"${ searchTerm }\"."
 msgstr "\"${ searchTerm }\" 검색 조건과 일치하는 조사자가 없습니다."
 
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 msgid "All Investigators"
 msgstr "모든 조사자"
@@ -1269,7 +1269,7 @@ msgid "Player Cards"
 msgstr "플레이어 카드"
 
 msgid "FAQ"
-msgstr ""
+msgstr "FAQ"
 
 msgid "Allowed Cards"
 msgstr "허용된 카드"
@@ -3653,7 +3653,7 @@ msgid "Audio narration"
 msgstr "오디오 나레이션"
 
 msgid "Dissonant Voices"
-msgstr ""
+msgstr "Dissonant Voices"
 
 msgid "Notes"
 msgstr "메모"
@@ -4045,7 +4045,7 @@ msgstr "프린트 앤 플레이 카드를 다운로드"
 
 #, javascript-format
 msgid "${ section.title } (from XP)"
-msgstr ""
+msgstr "${ section.title } (from XP)"
 
 msgid "Exiled story cards"
 msgstr "추방된 이야기 카드"
@@ -4528,7 +4528,7 @@ msgid "Reset card database"
 msgstr "카드 데이터베이스 초기화"
 
 msgid "Mythos Busters"
-msgstr ""
+msgstr "Mythos Busters"
 
 #, javascript-format
 msgid ""
@@ -4722,16 +4722,16 @@ msgid "Chosen heal type"
 msgstr "선택한 회복 유형"
 
 msgid "Assigned weaknesses"
-msgstr ""
+msgstr "할당된 약점"
 
 msgid "Review and draw weaknesses"
-msgstr ""
+msgstr "약점 보기 및 뽑기"
 
 msgid "Choose expansions for basic weakness"
-msgstr ""
+msgstr "기본 약점이 뽑힐 확장 선택"
 
 msgid "Uploading campaign"
-msgstr ""
+msgstr "캠페인을 업로드하는 중"
 
 #, javascript-format
 msgctxt "masculine"
@@ -4927,7 +4927,7 @@ msgstr "쓰러짐"
 
 msgctxt "Traits"
 msgid "All"
-msgstr ""
+msgstr "전부"
 
 msgctxt "trait"
 msgid "???"
@@ -6008,15 +6008,15 @@ msgstr "${ cycleNames[cycle_position] } 사이클"
 
 msgctxt "Types"
 msgid "All"
-msgstr ""
+msgstr "전부"
 
 msgctxt "SubTypes"
 msgid "All"
-msgstr ""
+msgstr "전부"
 
 msgctxt "Actions"
 msgid "All"
-msgstr ""
+msgstr "전부"
 
 msgctxt "action"
 msgid "Fight"
@@ -6052,11 +6052,11 @@ msgstr "자원(획득)"
 
 msgctxt "Encounter Sets"
 msgid "All"
-msgstr ""
+msgstr "전부"
 
 msgctxt "Illustrators"
 msgid "All"
-msgstr ""
+msgstr "전부"
 
 msgctxt "slots"
 msgid "None"
@@ -6064,11 +6064,11 @@ msgstr "없음"
 
 msgctxt "Slots"
 msgid "All"
-msgstr ""
+msgstr "전부"
 
 msgctxt "Uses"
 msgid "All"
-msgstr ""
+msgstr "전부"
 
 msgctxt "Draw Cards"
 msgid "All"
@@ -6155,7 +6155,7 @@ msgstr "기타."
 
 msgctxt "Weakness Card"
 msgid "All"
-msgstr "모두"
+msgstr "전부"
 
 msgctxt "trauma"
 msgid "None"
