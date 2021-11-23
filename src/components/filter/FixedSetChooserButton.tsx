@@ -11,6 +11,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 interface Props {
   componentId: string;
   title: string;
+  all: string;
   selection?: string[];
   setting: string;
   onFilterChange: (setting: string, selection: string[]) => void;
@@ -23,6 +24,7 @@ interface Props {
 export default function FixedSetChooserButton({
   componentId,
   title,
+  all,
   selection,
   setting,
   onFilterChange,
@@ -77,7 +79,7 @@ export default function FixedSetChooserButton({
     setPressed(false);
   }, [allValues, colors, componentId, title, setPressed, onChange, selection]);
   const selectedDescription = useMemo(
-    () => selection && selection.length ? map(selection, item => allValues[item]).join(listSeperator) : t`All`,
+    () => selection && selection.length ? map(selection, item => allValues[item]).join(listSeperator) : all,
     [allValues, selection, listSeperator]
   );
   return (

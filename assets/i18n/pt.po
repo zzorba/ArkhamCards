@@ -1121,9 +1121,6 @@ msgstr "Selecionar ${ title }"
 msgid "Clear"
 msgstr "Limpar"
 
-msgid "All"
-msgstr "Todos"
-
 msgid "Pack Filters"
 msgstr "Filtros de Pacote"
 
@@ -6140,6 +6137,10 @@ msgid "All"
 msgstr ""
 
 msgctxt "SubTypes"
+msgid "All"
+msgstr ""
+
+msgctxt "Actions"
 msgid "All"
 msgstr ""
 

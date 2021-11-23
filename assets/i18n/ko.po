@@ -752,9 +752,6 @@ msgstr "당신의 덱을 향상하면, 캠페인 과정에서의 덱 변화 및 
 msgid "Draw: "
 msgstr "뽑기: "
 
-msgid "All"
-msgstr "전부"
-
 msgid "Redraw"
 msgstr "다시 뽑기"
 
@@ -6014,6 +6011,10 @@ msgid "All"
 msgstr ""
 
 msgctxt "SubTypes"
+msgid "All"
+msgstr ""
+
+msgctxt "Actions"
 msgid "All"
 msgstr ""
 

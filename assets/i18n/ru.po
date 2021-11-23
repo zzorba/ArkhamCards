@@ -821,9 +821,6 @@ msgstr ""
 msgid "Draw: "
 msgstr "Взять: "
 
-msgid "All"
-msgstr "Все"
-
 msgid "Redraw"
 msgstr "Перетянуть"
 
@@ -6237,6 +6234,10 @@ msgid "All"
 msgstr ""
 
 msgctxt "SubTypes"
+msgid "All"
+msgstr ""
+
+msgctxt "Actions"
 msgid "All"
 msgstr ""
 

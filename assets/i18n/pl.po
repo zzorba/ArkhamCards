@@ -475,9 +475,6 @@ msgstr ""
 msgid "Select ${ title }"
 msgstr ""
 
-msgid "All"
-msgstr ""
-
 msgid "Note: This entry is crossed out"
 msgstr ""
 
@@ -5833,6 +5830,10 @@ msgid "All"
 msgstr ""
 
 msgctxt "SubTypes"
+msgid "All"
+msgstr ""
+
+msgctxt "Actions"
 msgid "All"
 msgstr ""
 

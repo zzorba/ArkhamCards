@@ -482,9 +482,6 @@ msgstr "Cerca ${ title }"
 msgid "Select ${ title }"
 msgstr "Seleziona ${ title }"
 
-msgid "All"
-msgstr "Tutti"
-
 msgid "Note: This entry is crossed out"
 msgstr "Nota: Questa voce è sbarrata"
 
@@ -6224,6 +6221,10 @@ msgid "All"
 msgstr ""
 
 msgctxt "SubTypes"
+msgid "All"
+msgstr ""
+
+msgctxt "Actions"
 msgid "All"
 msgstr ""
 

@@ -473,9 +473,6 @@ msgstr "搜尋${ title }"
 msgid "Select ${ title }"
 msgstr "選擇${ title }"
 
-msgid "All"
-msgstr "全部"
-
 msgid "Note: This entry is crossed out"
 msgstr "注意: 這個項目被劃掉了"
 
@@ -5930,6 +5927,10 @@ msgid "All"
 msgstr ""
 
 msgctxt "SubTypes"
+msgid "All"
+msgstr ""
+
+msgctxt "Actions"
 msgid "All"
 msgstr ""
 

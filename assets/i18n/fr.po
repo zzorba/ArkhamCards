@@ -476,9 +476,6 @@ msgstr "Rechercher ${title}"
 msgid "Select ${ title }"
 msgstr "Sélectionner ${title}"
 
-msgid "All"
-msgstr "Tout"
-
 msgid "Note: This entry is crossed out"
 msgstr "Note : cette entrée est barrée"
 
@@ -6273,6 +6270,10 @@ msgid "All"
 msgstr ""
 
 msgctxt "SubTypes"
+msgid "All"
+msgstr ""
+
+msgctxt "Actions"
 msgid "All"
 msgstr ""
 

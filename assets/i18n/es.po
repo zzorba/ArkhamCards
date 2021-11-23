@@ -474,9 +474,6 @@ msgstr "Buscar ${title}"
 msgid "Select ${ title }"
 msgstr "Seleccionar ${title}"
 
-msgid "All"
-msgstr "Todos"
-
 msgid "Note: This entry is crossed out"
 msgstr "Nota: Este registro está tachado"
 
@@ -6216,6 +6213,10 @@ msgid "All"
 msgstr ""
 
 msgctxt "SubTypes"
+msgid "All"
+msgstr ""
+
+msgctxt "Actions"
 msgid "All"
 msgstr ""
 

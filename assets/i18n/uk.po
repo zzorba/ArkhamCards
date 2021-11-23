@@ -731,9 +731,6 @@ msgstr ""
 msgid "Draw: "
 msgstr ""
 
-msgid "All"
-msgstr ""
-
 msgid "Redraw"
 msgstr ""
 
@@ -5833,6 +5830,10 @@ msgid "All"
 msgstr ""
 
 msgctxt "SubTypes"
+msgid "All"
+msgstr ""
+
+msgctxt "Actions"
 msgid "All"
 msgstr ""
 

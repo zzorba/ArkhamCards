@@ -474,9 +474,6 @@ msgstr "Suche ${title}"
 msgid "Select ${ title }"
 msgstr "Wähle ${title}"
 
-msgid "All"
-msgstr "Alle"
-
 msgid "Note: This entry is crossed out"
 msgstr "Hinweis: Dieser Eintrag wurde gestrichen"
 
@@ -6209,6 +6206,10 @@ msgid "All"
 msgstr ""
 
 msgctxt "SubTypes"
+msgid "All"
+msgstr ""
+
+msgctxt "Actions"
 msgid "All"
 msgstr ""
 

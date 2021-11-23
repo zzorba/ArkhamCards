@@ -457,6 +457,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
       <View>
         <FixedSetChooserButton
           title={t`Actions`}
+          all={c('Actions').t`All`}
           componentId={componentId}
           selection={actions}
           setting="actions"
