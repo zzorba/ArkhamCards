@@ -4715,14 +4715,26 @@ msgid ""
 "In the ${ sectionName } section of the Campaign Log, draw a check mark next "
 "to ${ partnerName }."
 msgstr ""
-"캠페인 기록지 중 ${ sectionName } 항목 아래의 ${ partnerName } 동행 조력자 이름 옆에 "
-"체크 표시를 하나 합니다."
+"캠페인 기록지 중 ${ sectionName } 항목 아래의 ${ partnerName } 동행 조력자 이름 옆에 체크 표시를 하나 "
+"합니다."
 
 msgid "Choose heal type"
 msgstr "회복 유형을 선택하십시오"
 
 msgid "Chosen heal type"
 msgstr "선택한 회복 유형"
+
+msgid "Assigned weaknesses"
+msgstr ""
+
+msgid "Review and draw weaknesses"
+msgstr ""
+
+msgid "Choose expansions for basic weakness"
+msgstr ""
+
+msgid "Uploading campaign"
+msgstr ""
 
 #, javascript-format
 msgctxt "masculine"
@@ -4915,6 +4927,10 @@ msgstr "정신적 트라우마"
 msgctxt "feminine"
 msgid "Defeated"
 msgstr "쓰러짐"
+
+msgctxt "Traits"
+msgid "All"
+msgstr ""
 
 msgctxt "trait"
 msgid "???"
@@ -5993,6 +6009,14 @@ msgctxt "filter"
 msgid "${ cycleNames[cycle_position] } Cycle"
 msgstr "${ cycleNames[cycle_position] } 사이클"
 
+msgctxt "Types"
+msgid "All"
+msgstr ""
+
+msgctxt "SubTypes"
+msgid "All"
+msgstr ""
+
 msgctxt "action"
 msgid "Fight"
 msgstr "전투"
@@ -6025,9 +6049,25 @@ msgctxt "action"
 msgid "Resource"
 msgstr "자원(획득)"
 
+msgctxt "Encounter Sets"
+msgid "All"
+msgstr ""
+
+msgctxt "Illustrators"
+msgid "All"
+msgstr ""
+
 msgctxt "slots"
 msgid "None"
 msgstr "없음"
+
+msgctxt "Slots"
+msgid "All"
+msgstr ""
+
+msgctxt "Uses"
+msgid "All"
+msgstr ""
 
 msgctxt "Draw Cards"
 msgid "All"

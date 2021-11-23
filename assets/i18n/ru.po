@@ -4913,6 +4913,18 @@ msgstr ""
 msgid "Chosen heal type"
 msgstr ""
 
+msgid "Assigned weaknesses"
+msgstr ""
+
+msgid "Review and draw weaknesses"
+msgstr ""
+
+msgid "Choose expansions for basic weakness"
+msgstr ""
+
+msgid "Uploading campaign"
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -5138,6 +5150,10 @@ msgstr "Ментальная травма"
 msgctxt "feminine"
 msgid "Defeated"
 msgstr "Побеждён"
+
+msgctxt "Traits"
+msgid "All"
+msgstr ""
 
 msgctxt "trait"
 msgid "???"
@@ -6216,6 +6232,14 @@ msgctxt "filter"
 msgid "${ cycleNames[cycle_position] } Cycle"
 msgstr "Цикл ${ cycleNames[cycle_position] }"
 
+msgctxt "Types"
+msgid "All"
+msgstr ""
+
+msgctxt "SubTypes"
+msgid "All"
+msgstr ""
+
 msgctxt "action"
 msgid "Fight"
 msgstr "Бой"
@@ -6248,8 +6272,24 @@ msgctxt "action"
 msgid "Resource"
 msgstr "Взять ресурс"
 
+msgctxt "Encounter Sets"
+msgid "All"
+msgstr ""
+
+msgctxt "Illustrators"
+msgid "All"
+msgstr ""
+
 msgctxt "slots"
 msgid "None"
+msgstr ""
+
+msgctxt "Slots"
+msgid "All"
+msgstr ""
+
+msgctxt "Uses"
+msgid "All"
 msgstr ""
 
 msgctxt "Draw Cards"

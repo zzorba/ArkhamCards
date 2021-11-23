@@ -394,6 +394,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
         <FilterChooserButton
           componentId={componentId}
           title={t`Types`}
+          all={c('Types').t`All`}
           field="type_code"
           selection={types}
           setting="types"
@@ -418,6 +419,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
           <FilterChooserButton
             componentId={componentId}
             title={t`SubTypes`}
+            all={c('SubTypes').t`All`}
             field="subtype_code"
             selection={subTypes}
             setting="subTypes"
@@ -472,6 +474,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
         />
         <FilterChooserButton
           title={t`Traits`}
+          all={c('Traits').t`All`}
           componentId={componentId}
           field={useCardTraits ? 'traits' : 'real_traits'}
           fixedTranslations={localizedTraits}
@@ -564,6 +567,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
       <FilterChooserButton
         componentId={componentId}
         title={t`Encounter Sets`}
+        all={c('Encounter Sets').t`All`}
         field="encounter_name"
         selection={encounters}
         setting="encounters"
@@ -580,6 +584,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
       <FilterChooserButton
         componentId={componentId}
         title={t`Illustrators`}
+        all={c('Illustrators').t`All`}
         field="illustrator"
         selection={illustrators}
         setting="illustrators"

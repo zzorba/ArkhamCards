@@ -4836,6 +4836,18 @@ msgstr ""
 msgid "Chosen heal type"
 msgstr ""
 
+msgid "Assigned weaknesses"
+msgstr ""
+
+msgid "Review and draw weaknesses"
+msgstr ""
+
+msgid "Choose expansions for basic weakness"
+msgstr ""
+
+msgid "Uploading campaign"
+msgstr ""
+
 msgctxt "masculine"
 msgid "Alive"
 msgstr "Vivo"
@@ -5040,6 +5052,10 @@ msgstr ""
 
 msgctxt "feminine"
 msgid "Defeated"
+msgstr ""
+
+msgctxt "Traits"
+msgid "All"
 msgstr ""
 
 msgctxt "trait"
@@ -6119,6 +6135,14 @@ msgctxt "filter"
 msgid "${ cycleNames[cycle_position] } Cycle"
 msgstr "${ cycleNames[cycle_position] } Ciclo"
 
+msgctxt "Types"
+msgid "All"
+msgstr ""
+
+msgctxt "SubTypes"
+msgid "All"
+msgstr ""
+
 msgctxt "action"
 msgid "Fight"
 msgstr "Lutar"
@@ -6151,8 +6175,24 @@ msgctxt "action"
 msgid "Resource"
 msgstr "Recurso"
 
+msgctxt "Encounter Sets"
+msgid "All"
+msgstr ""
+
+msgctxt "Illustrators"
+msgid "All"
+msgstr ""
+
 msgctxt "slots"
 msgid "None"
+msgstr ""
+
+msgctxt "Slots"
+msgid "All"
+msgstr ""
+
+msgctxt "Uses"
+msgid "All"
 msgstr ""
 
 msgctxt "Draw Cards"
