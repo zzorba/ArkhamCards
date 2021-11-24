@@ -7,8 +7,9 @@ interface LanguageContextType {
   colon: string;
   usePingFang: boolean;
   audioLang?: string;
+  arkhamDbDomain: string;
 }
 
-export const LanguageContext = React.createContext<LanguageContextType>({ lang: 'en', useCardTraits: true, listSeperator: ', ', colon: ': ', usePingFang: false });
+export const LanguageContext = React.createContext<LanguageContextType>({ lang: 'en', useCardTraits: true, listSeperator: ', ', colon: ': ', usePingFang: false, arkhamDbDomain: 'https://arkhamdb.com' });
 
 export default LanguageContext;

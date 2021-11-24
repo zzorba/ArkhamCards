@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import { find, map } from 'lodash';
 
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
@@ -35,7 +35,11 @@ function CampaignLogSuppliesInvestigatorSection({ sectionId, campaignGuide, camp
       noSpace
       noShadow
     >
-      <View style={[space.paddingSideS, sectionId === 'supplies' ? space.paddingTopS : space.paddingTopM]}>
+      <View style={[
+        space.paddingSideS,
+        sectionId === 'supplies' ? space.paddingTopS : space.paddingTopM,
+        Platform.OS === 'android' ? space.paddingBottomS : undefined,
+      ]}>
         { !!investigatorSection && (
           <CampaignLogSectionComponent
             sectionId={sectionId}

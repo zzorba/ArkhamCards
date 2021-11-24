@@ -46,6 +46,7 @@ export function getAccessToken() {
         const expiration = new Date(
           data.accessTokenExpirationDate
         ).getTime() / 1000;
+        console.log({ refreshToken: data.refreshToken, expiration, nowSeconds });
         if (data.refreshToken && expiration < nowSeconds) {
           return refresh(config, data.refreshToken)
             .then(

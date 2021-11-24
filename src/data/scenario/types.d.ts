@@ -6,7 +6,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type Schema = AllCampaigns | Log | Errata | Rules | ChaosTokens;
+export type Schema = AllCampaigns | Log | Errata | Rules | ChaosTokens | TabooSets;
 export type Step =
   | BranchStep
   | EffectsStep
@@ -179,6 +179,7 @@ export type Choice1 =
   | InvestigatorChoice;
 export type SingleChaosTokenValue = SimpleChaosTokenValue | CounterChaosTokenValue | ConditionChaosTokenValue;
 export type ChaosTokens = ScenarioChaosTokens[];
+export type TabooSets = TabooSet[];
 
 export interface FullCampaign {
   campaign: Campaign;
@@ -1267,4 +1268,20 @@ export interface ConditionChaosTokenValue {
     default_value: ChaosTokenModifier;
     modified_value: ChaosTokenModifier;
   };
+}
+export interface TabooSet {
+  id: number;
+  code: string;
+  name: string;
+  active: number;
+  date_start: string;
+  cards: Taboo[];
+}
+export interface Taboo {
+  code: string;
+  xp?: number;
+  description?: string;
+  text?: string;
+  exceptional?: number;
+  deck_limit?: number;
 }

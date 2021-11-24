@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef } from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View, Platform } from 'react-native';
 import { filter, find, flatMap, map, partition } from 'lodash';
 import { useAppState } from '@react-native-community/hooks';
 import { t } from 'ttag';
@@ -187,7 +187,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
                 return null;
               }
               return (
-                <View key={`${investigator.code}-${supplies.id}`}>
+                <View key={`${investigator.code}-${supplies.id}`} style={Platform.OS === 'android' ? space.paddingBottomS : undefined}>
                   <DeckSlotHeader title={supplies.title} first />
                   <View style={space.paddingTopXs}>
                     <CampaignLogSectionComponent

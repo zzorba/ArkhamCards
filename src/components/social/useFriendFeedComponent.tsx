@@ -304,8 +304,8 @@ export default function useFriendFeedComponent({ componentId, userId, handleScro
         );
       case 'placeholder':
         return (
-          <View style={[styles.userRow, borderStyle, space.paddingM]}>
-            <Text style={typography.large}>
+          <View style={[styles.placeholderRow, borderStyle, space.paddingM]}>
+            <Text style={[typography.large, typography.center]}>
               { item.text }
             </Text>
           </View>
@@ -374,6 +374,12 @@ const styles = StyleSheet.create({
   userRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  placeholderRow: {
+    flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
     borderBottomWidth: StyleSheet.hairlineWidth,
   },

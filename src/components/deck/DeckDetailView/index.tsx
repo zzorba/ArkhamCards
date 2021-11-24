@@ -89,7 +89,7 @@ function DeckDetailView({
   login,
   initialMode,
 }: Props) {
-  const { lang } = useContext(LanguageContext);
+  const { lang, arkhamDbDomain } = useContext(LanguageContext);
   const { backgroundStyle, colors, darkMode, typography, shadow, width } = useContext(StyleContext);
   const deckActions = useDeckActions();
   const campaign = useCampaign(campaignId);
@@ -673,9 +673,9 @@ function DeckDetailView({
 
   const viewDeck = useCallback(() => {
     if (deck && !deck.local) {
-      Linking.openURL(`https://arkhamdb.com/deck/view/${deck.id}`);
+      Linking.openURL(`${arkhamDbDomain}/deck/view/${deck.id}`);
     }
-  }, [deck]);
+  }, [deck, arkhamDbDomain]);
 
   const deleteDeckPressed = useCallback(() => {
     if (!deck) {
