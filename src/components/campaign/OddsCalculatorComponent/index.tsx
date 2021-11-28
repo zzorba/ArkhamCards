@@ -11,7 +11,7 @@ import { difficultyString, Scenario, scenarioFromCard } from '@components/campai
 import { CampaignDifficulty } from '@actions/types';
 import { ChaosBag, SPECIAL_TOKENS, ChaosTokenType, CHAOS_TOKENS, getChaosTokenValue } from '@app_constants';
 import Card from '@data/types/Card';
-import space, { m, s } from '@styles/space';
+import space, { isTablet, m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCounter, useCounters, useFlag, useToggles } from '@components/core/hooks';
 import { useChaosBagResults } from '@data/hooks';
@@ -87,13 +87,15 @@ function parseSpecialTokenValuesText(
     SPECIAL_TOKENS.forEach(token => {
       switch (token) {
         case 'elder_sign':
-          scenarioTokens.push({
-            token: 'elder_sign',
-            type: 'counter',
-            counter: {
-              prompt: t`Your investigator's modifier`,
-            },
-          });
+          scenarioTokens.push(
+            (investigator ? elderSign(investigator) : undefined) || {
+              token: 'elder_sign',
+              type: 'counter',
+              counter: {
+                prompt: t`Your investigator's modifier`,
+              },
+            }
+          );
           break;
         case 'auto_fail':
           scenarioTokens.push({
@@ -348,18 +350,20 @@ interface ChaosBagProps {
   testDifficulty: number;
 }
 
+const CHAOS_TOKEN_SIZE = isTablet ? 'small' : 'extraTiny';
+
 function ChaosTokenColumn({ value, tokens, height }: { value: ChaosTokenModifier; tokens: ChaosTokenType[]; height: number }) {
   return (
     <View style={[
       styles.tokenPileColumn,
       {
-        width: getChaosTokenSize('extraTiny'),
+        width: getChaosTokenSize(CHAOS_TOKEN_SIZE),
         height,
         marginRight: value.modifier === 'auto_fail' ? s : 1.5,
         marginLeft: value.modifier === 'auto_succeed' ? s : 1.5,
       },
     ]}>
-      { map(tokens, (t, idx) => <ChaosToken key={idx} iconKey={t} size="extraTiny" />) }
+      { map(tokens, (t, idx) => <ChaosToken key={idx} iconKey={t} size={CHAOS_TOKEN_SIZE} />) }
     </View>
   );
 }
@@ -515,7 +519,7 @@ function ChaosBagOddsSection({
       failingTokens: sumBy(failing, f => f.tokens.length),
     }
   }, [testDifficulty, modifiedSkill, tokensByValue]);
-  const tokenSize = getChaosTokenSize('extraTiny')
+  const tokenSize = getChaosTokenSize(CHAOS_TOKEN_SIZE)
   const total = passingTokens + failingTokens;
   if (total === 0) {
     return null;
@@ -666,7 +670,7 @@ function SpecialTokenOdds({ chaosBag, specialTokenValues, modifiedSkill, testDif
             auto_fail: 1 + (t.count - 1),
           }, specialTokenValues, modifiedSkill, testDifficulty);
 
-          const oddsAdjustment = (oddsOfDrawingOneFrost * oddsOfFailingViaFrost) - basePass;
+          const oddsAdjustment = Math.round((oddsOfDrawingOneFrost * oddsOfFailingViaFrost) - basePass);
           return {
             ...t,
             countRender: 2,
@@ -713,7 +717,7 @@ function SpecialTokenOdds({ chaosBag, specialTokenValues, modifiedSkill, testDif
             </View>
             { map(range(0, countRender || count), idx => (
               <View key={idx} style={idx > 0 ? { marginLeft: count > 5 && TINY_PHONE ? -24 : -20 } : undefined}>
-                <ChaosToken iconKey={token} size="extraTiny" />
+                <ChaosToken iconKey={token} size={CHAOS_TOKEN_SIZE} />
               </View>
             )) }
             { false && count > 4 && (
@@ -721,9 +725,9 @@ function SpecialTokenOdds({ chaosBag, specialTokenValues, modifiedSkill, testDif
                 flexDirection: 'row',
                 justifyContent: 'center',
                 alignItems: 'center',
-                width: getChaosTokenSize('extraTiny'),
-                height: getChaosTokenSize('extraTiny'),
-                borderRadius: getChaosTokenSize('extraTiny') / 2 ,
+                width: getChaosTokenSize(CHAOS_TOKEN_SIZE),
+                height: getChaosTokenSize(CHAOS_TOKEN_SIZE),
+                borderRadius: getChaosTokenSize(CHAOS_TOKEN_SIZE) / 2 ,
                 backgroundColor: colors.L20,
               }}>
                 <Text style={[typography.smallLabel, { color: colors.D20 }]}>+{count - 3}</Text>
@@ -904,9 +908,7 @@ export default function OddsCalculatorComponent({
 
   const selectedInvestigatorCard = selectedInvestigator >= 0 && selectedInvestigator < allInvestigators.length ? allInvestigators[selectedInvestigator] : undefined;
   const [specialTokenValues, initialXValue] = useMemo(() => {
-    const elderSignEffect = selectedInvestigatorCard ? elderSign(selectedInvestigatorCard) : undefined;
-
-    const stv = parseSpecialTokenValuesText(
+    const stv: SingleChaosTokenValue[] = parseSpecialTokenValuesText(
       lang,
       difficulty === 'hard' || difficulty === 'expert',
       scenarioText,
@@ -925,9 +927,8 @@ export default function OddsCalculatorComponent({
       elder_thing: (elder_thing?.type === 'counter' && (elder_thing.counter.initial_value || elder_thing.counter.min)) || 0,
       elder_sign: 1,
     }
-    const elderSignToken: SingleChaosTokenValue = elderSignEffect || { token: 'elder_sign', type: 'counter', counter: { prompt: t`Your investigator modfifier` } };
     return [
-      [...stv, elderSignToken],
+      stv,
       initialValues,
     ];
   }, [lang, scenarioText, difficulty, currentScenario, scenarioCard, scenarioCode, selectedInvestigatorCard]);
