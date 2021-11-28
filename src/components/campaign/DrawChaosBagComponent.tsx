@@ -550,7 +550,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-evenly',
+    justifyContent: 'flex-start',
   },
   returnBlessCurseWrapper: {
     minHeight: 64,
