@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState } from 'react';
-import { filter, head, find, flatMap, forEach, groupBy, sortBy, keys, map, range, sumBy, values, reverse, tail, partition, maxBy } from 'lodash';
+import { filter, head, find, flatMap, forEach, groupBy, sortBy, keys, map, range, sumBy, values, reverse, tail, partition, maxBy, uniqBy } from 'lodash';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { c, msgid, ngettext, t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
@@ -157,7 +157,7 @@ function parseSpecialTokenValuesText(
   }
   const parsedTokens = loadChaosTokens(lang, scenarioCard?.code, scenarioCode);
   if (parsedTokens) {
-    return map(
+    const resultTokens: SingleChaosTokenValue[] = map(
       hardExpert ? parsedTokens.hard : parsedTokens.standard,
       token => {
         if (token.token === 'skull' && investigator?.code === '02004') {
@@ -206,6 +206,16 @@ function parseSpecialTokenValuesText(
         };
       }
     );
+    return [
+      ...resultTokens,
+      (investigator ? elderSign(investigator) : undefined) || {
+        token: 'elder_sign',
+        type: 'counter',
+        counter: {
+          prompt: t`Your investigator's modifier`,
+        },
+      },
+    ];
   }
 
   if (!scenarioTokens.length) {
@@ -247,6 +257,13 @@ function parseSpecialTokenValuesText(
           prompt: t`Negative modifier`,
           initial_value: 3,
           negate: true,
+        },
+      },
+      (investigator ? elderSign(investigator) : undefined) || {
+        token: 'elder_sign',
+        type: 'counter',
+        counter: {
+          prompt: t`Your investigator's modifier`,
         },
       },
     ];
@@ -823,7 +840,8 @@ export default function OddsCalculatorComponent({
           iconNode: <EncounterIcon encounter_code={scenarioCode} size={24} color={colors.M} />,
         },
       ] : []),
-      ...map(filter(cycleScenarios, scenario => !scenario.interlude && scenario.code !== scenarioCode), scenario => {
+      ...map(filter(
+        cycleScenarios, scenario => !scenario.interlude && scenario.code !== scenarioCode), scenario => {
         return {
           title: scenario.name,
           value: scenario,

@@ -624,10 +624,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'nameless_horrors':
       case 'memorials_of_the_lost':
       case 'ice_and_death':
-      case 'fatal_mirage':
       case 'elder_things':
       case 'creatures_in_the_ice':
-      case 'the_heart_of_madness':
       case 'the_crash':
       case 'stirring_in_the_deep':
       case 'penguins':
@@ -640,6 +638,14 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'shoggoths':
       case 'agents_of_the_unknown':
         return this.edgeIcon(encounter_code, size, color);
+      case 'fatal_mirage':
+      case 'fatal_mirage_2':
+      case 'fatal_mirage_3':
+        return this.edgeIcon('fatal_mirage', size, color);
+      case 'the_heart_of_madness_part_1':
+      case 'the_heart_of_madness_part_2':
+      case 'the_heart_of_madness':
+        return this.edgeIcon('the_heart_of_madness', size, color);
       case 'tekeli_li':
       case 'tekelili':
         return this.edgeIcon('tekeli_li', size, color);
