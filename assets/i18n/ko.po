@@ -4712,31 +4712,37 @@ msgid "Uploading campaign"
 msgstr "캠페인을 업로드하는 중"
 
 msgid "Save deck upgrade"
-msgstr ""
+msgstr "덱 향상 저장"
 
 msgid "Apply deck changes from previous scenario"
-msgstr ""
+msgstr "이전 시나리오의 덱 변경점 적용"
 
 #, javascript-format
 msgid "${ input.prompt } (choose ${ quantity })"
 msgid_plural "${ input.prompt } (choose ${ quantity })"
-msgstr[0] ""
+msgstr[0] "${ input.prompt } (${ quantity }개 선택)"
 
 msgid ""
 "This deck is ownered by another player. You can record the upgrade now and "
 "they will be given an opportunity to save the changes to their deck when "
 "they next open the app."
 msgstr ""
+"이 덱은 다른 플레이어가 소유하고 있습니다. 지금 업그레이드를 기록할 수 있으며 "
+"다음에 앱을 열 때 덱에 변경 사항을 저장할 수 있는 기회가 주어집니다."
 
 msgid ""
 "Changes have been recorded. You can apply these changes to your deck on the "
 "main screen of the campaign under your investigator."
 msgstr ""
+"변경 사항이 기록되었습니다. 캠페인 메인 화면 아래의 조사자 항목에 있는 당신의 덱에 "
+"이 변경 사항을 적용할 수 있습니다."
 
 msgid ""
 "Changes have been recorded. The owner of this deck can apply these changes "
 "to their deck on the main screen of the campaign under their investigator."
 msgstr ""
+"변경 사항이 기록되었습니다. 캠페인 메인 화면 아래의 조사자 항목에 있는 소유자의 덱에 "
+"이 변경 사항을 적용할 수 있습니다."
 
 #, javascript-format
 msgctxt "masculine"
