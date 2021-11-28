@@ -124,7 +124,7 @@
           },
           {
             "id": "francis_morgan_survived",
-            "text": "Le Dr Francis Morgan a sur­vécu à L'Héritage de Dunwich."
+            "text": "Le Dr Francis Morgan a survécu à L'Héritage de Dunwich."
           },
           {
             "id": "henry_armitage_kidnapped",
@@ -580,6 +580,10 @@
             "text": "leurre"
           },
           {
+            "id": "endless_night_dyer_yes",
+            "text": "leurre"
+          },
+          {
             "id": "endless_night_eliyah_ashevak",
             "text": "leurre"
           },
@@ -613,6 +617,10 @@
           },
           {
             "id": "final_night_danforth",
+            "text": "leurre"
+          },
+          {
+            "id": "final_night_dyer_yes",
             "text": "leurre"
           },
           {
@@ -685,6 +693,10 @@
           },
           {
             "id": "restful_night_danforth",
+            "text": "leurre"
+          },
+          {
+            "id": "restful_night_dyer_yes",
             "text": "leurre"
           },
           {
@@ -1052,7 +1064,7 @@
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "vous êtes réveillé dans les catacombes."
+            "text": "vous vous êtes réveillé dans les catacombes."
           },
           {
             "id": "carcosa_merged",
@@ -1060,11 +1072,11 @@
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "vous avez choisi de ne pas aller voir la police"
+            "text": "vous avez choisi de ne pas aller voir la police."
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "vous avez détruit le conjurateur"
+            "text": "vous avez détruit le conjurateur."
           },
           {
             "id": "did_not_escape_gaze",
@@ -1076,7 +1088,7 @@
           },
           {
             "id": "escaped_the_asylum",
-            "text": "investigateurs se sont échappés de l'Asile."
+            "text": "les investigateurs se sont échappés de l'Asile."
           },
           {
             "id": "fled_dinner_party",
@@ -1084,7 +1096,7 @@
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "adorateurs du signe ont trouvé la marche à suivre."
+            "text": "les adorateurs du signe ont trouvé la marche à suivre."
           },
           {
             "id": "found_nigel_engram",
@@ -1104,7 +1116,7 @@
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "vous avez ignoré l'avertissementde Daniel."
+            "text": "vous avez ignoré l'avertissement de Daniel."
           },
           {
             "id": "intruded_on_secret_meeting",
@@ -1116,11 +1128,11 @@
           },
           {
             "id": "know_site_of_gate",
-            "text": "vous connaissez l'emplacement de la porte"
+            "text": "vous connaissez l'emplacement de la porte."
           },
           {
             "id": "left_onyx_clasp",
-            "text": "vous avez laissé la broche en onyx"
+            "text": "vous avez laissé la broche en onyx."
           },
           {
             "id": "opened_path_above",
@@ -1132,7 +1144,7 @@
           },
           {
             "id": "police_are_suspicious",
-            "text": "la police vous suspecte"
+            "text": "la police vous suspecte."
           },
           {
             "id": "prevented_hasturs_escape",
@@ -1144,11 +1156,11 @@
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "l'Étranger vous a à l'oeil."
+            "text": "l'Étranger vous a à l'œil."
           },
           {
             "id": "took_onyx_clasp",
-            "text": "vous avez pris la broche en onyx"
+            "text": "vous avez pris la broche en onyx."
           },
           {
             "id": "tried_to_warn_police",
@@ -1173,7 +1185,7 @@
           },
           {
             "id": "possessed",
-            "text": "au moins un investigateur était possédé"
+            "text": "au moins un investigateur était possédé."
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -1282,7 +1294,7 @@
           },
           {
             "id": "francis_morgan_survived",
-            "text": "Le Dr Francis Morgan a sur­vécu à L'Héritage de Dunwich."
+            "text": "Le Dr Francis Morgan a survécu à L'Héritage de Dunwich."
           },
           {
             "id": "henry_armitage_kidnapped",
@@ -1478,7 +1490,7 @@
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "vous êtes réveillé dans les catacombes."
+            "text": "vous vous êtes réveillé dans les catacombes."
           },
           {
             "id": "carcosa_merged",
@@ -1486,11 +1498,11 @@
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "vous avez choisi de ne pas aller voir la police"
+            "text": "vous avez choisi de ne pas aller voir la police."
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "vous avez détruit le conjurateur"
+            "text": "vous avez détruit le conjurateur."
           },
           {
             "id": "did_not_escape_gaze",
@@ -1502,7 +1514,7 @@
           },
           {
             "id": "escaped_the_asylum",
-            "text": "investigateurs se sont échappés de l'Asile."
+            "text": "les investigateurs se sont échappés de l'Asile."
           },
           {
             "id": "fled_dinner_party",
@@ -1510,7 +1522,7 @@
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "adorateurs du signe ont trouvé la marche à suivre."
+            "text": "les adorateurs du signe ont trouvé la marche à suivre."
           },
           {
             "id": "found_nigel_engram",
@@ -1530,7 +1542,7 @@
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "vous avez ignoré l'avertissementde Daniel."
+            "text": "vous avez ignoré l'avertissement de Daniel."
           },
           {
             "id": "intruded_on_secret_meeting",
@@ -1542,11 +1554,11 @@
           },
           {
             "id": "know_site_of_gate",
-            "text": "vous connaissez l'emplacement de la porte"
+            "text": "vous connaissez l'emplacement de la porte."
           },
           {
             "id": "left_onyx_clasp",
-            "text": "vous avez laissé la broche en onyx"
+            "text": "vous avez laissé la broche en onyx."
           },
           {
             "id": "opened_path_above",
@@ -1558,7 +1570,7 @@
           },
           {
             "id": "police_are_suspicious",
-            "text": "la police vous suspecte"
+            "text": "la police vous suspecte."
           },
           {
             "id": "prevented_hasturs_escape",
@@ -1570,11 +1582,11 @@
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "l'Étranger vous a à l'oeil."
+            "text": "l'Étranger vous a à l'œil."
           },
           {
             "id": "took_onyx_clasp",
-            "text": "vous avez pris la broche en onyx"
+            "text": "vous avez pris la broche en onyx."
           },
           {
             "id": "tried_to_warn_police",
@@ -1599,7 +1611,7 @@
           },
           {
             "id": "possessed",
-            "text": "au moins un investigateur était possédé"
+            "text": "au moins un investigateur était possédé."
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -2348,23 +2360,23 @@
         "entries": [
           {
             "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "masculine_text": "#name# débute avec 1 indice <i>(pris dans la réserve de pions)</i>.",
+            "feminine_text": "#name# débute avec 1 indice <i>(pris dans la réserve de pions)</i>."
           },
           {
             "id": "doy_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# débute avec 3 ressources de moins.",
+            "feminine_text": "#name# débute avec 3 ressources de moins."
           },
           {
             "id": "eztli_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# débute avec 3 ressources de moins.",
+            "feminine_text": "#name# débute avec 3 ressources de moins."
           },
           {
             "id": "hote_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# débute avec 3 ressources de moins.",
+            "feminine_text": "#name# débute avec 3 ressources de moins."
           },
           {
             "id": "agenda_5",
@@ -3712,23 +3724,23 @@
         "entries": [
           {
             "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "masculine_text": "#name# débute avec 1 indice <i>(pris dans la réserve de pions)</i>.",
+            "feminine_text": "#name# débute avec 1 indice <i>(pris dans la réserve de pions)</i>."
           },
           {
             "id": "doy_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# débute avec 3 ressources de moins.",
+            "feminine_text": "#name# débute avec 3 ressources de moins."
           },
           {
             "id": "eztli_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# débute avec 3 ressources de moins.",
+            "feminine_text": "#name# débute avec 3 ressources de moins."
           },
           {
             "id": "hote_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# débute avec 3 ressources de moins.",
+            "feminine_text": "#name# débute avec 3 ressources de moins."
           },
           {
             "id": "agenda_5",

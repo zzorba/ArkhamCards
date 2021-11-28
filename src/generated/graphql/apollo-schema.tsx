@@ -5062,6 +5062,7 @@ export type Investigator_Data = {
   /** An object relationship */
   campaign_data: Campaign;
   campaign_id: Scalars['Int'];
+  cardCounts?: Maybe<Scalars['jsonb']>;
   created_at: Scalars['timestamptz'];
   /** A computed field, executes function "investigator_data_id" */
   id?: Maybe<Scalars['String']>;
@@ -5081,6 +5082,12 @@ export type Investigator_Data = {
 
 /** columns and relationships of "investigator_data" */
 export type Investigator_DataAddedCardsArgs = {
+  path?: Maybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "investigator_data" */
+export type Investigator_DataCardCountsArgs = {
   path?: Maybe<Scalars['String']>;
 };
 
@@ -5156,6 +5163,7 @@ export type Investigator_Data_Aggregate_Order_By = {
 /** append existing jsonb value of filtered columns with new jsonb value */
 export type Investigator_Data_Append_Input = {
   addedCards?: Maybe<Scalars['jsonb']>;
+  cardCounts?: Maybe<Scalars['jsonb']>;
   ignoreStoryAssets?: Maybe<Scalars['jsonb']>;
   removedCards?: Maybe<Scalars['jsonb']>;
   specialXp?: Maybe<Scalars['jsonb']>;
@@ -5197,6 +5205,7 @@ export type Investigator_Data_Bool_Exp = {
   availableXp?: Maybe<Int_Comparison_Exp>;
   campaign_data?: Maybe<Campaign_Bool_Exp>;
   campaign_id?: Maybe<Int_Comparison_Exp>;
+  cardCounts?: Maybe<Jsonb_Comparison_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
   ignoreStoryAssets?: Maybe<Jsonb_Comparison_Exp>;
   insane?: Maybe<Boolean_Comparison_Exp>;
@@ -5220,6 +5229,7 @@ export enum Investigator_Data_Constraint {
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Investigator_Data_Delete_At_Path_Input = {
   addedCards?: Maybe<Array<Scalars['String']>>;
+  cardCounts?: Maybe<Array<Scalars['String']>>;
   ignoreStoryAssets?: Maybe<Array<Scalars['String']>>;
   removedCards?: Maybe<Array<Scalars['String']>>;
   specialXp?: Maybe<Array<Scalars['String']>>;
@@ -5229,6 +5239,7 @@ export type Investigator_Data_Delete_At_Path_Input = {
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export type Investigator_Data_Delete_Elem_Input = {
   addedCards?: Maybe<Scalars['Int']>;
+  cardCounts?: Maybe<Scalars['Int']>;
   ignoreStoryAssets?: Maybe<Scalars['Int']>;
   removedCards?: Maybe<Scalars['Int']>;
   specialXp?: Maybe<Scalars['Int']>;
@@ -5238,6 +5249,7 @@ export type Investigator_Data_Delete_Elem_Input = {
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
 export type Investigator_Data_Delete_Key_Input = {
   addedCards?: Maybe<Scalars['String']>;
+  cardCounts?: Maybe<Scalars['String']>;
   ignoreStoryAssets?: Maybe<Scalars['String']>;
   removedCards?: Maybe<Scalars['String']>;
   specialXp?: Maybe<Scalars['String']>;
@@ -5259,6 +5271,7 @@ export type Investigator_Data_Insert_Input = {
   availableXp?: Maybe<Scalars['Int']>;
   campaign_data?: Maybe<Campaign_Obj_Rel_Insert_Input>;
   campaign_id?: Maybe<Scalars['Int']>;
+  cardCounts?: Maybe<Scalars['jsonb']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   ignoreStoryAssets?: Maybe<Scalars['jsonb']>;
   insane?: Maybe<Scalars['Boolean']>;
@@ -5352,6 +5365,7 @@ export type Investigator_Data_Order_By = {
   availableXp?: Maybe<Order_By>;
   campaign_data?: Maybe<Campaign_Order_By>;
   campaign_id?: Maybe<Order_By>;
+  cardCounts?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
   ignoreStoryAssets?: Maybe<Order_By>;
   insane?: Maybe<Order_By>;
@@ -5375,6 +5389,7 @@ export type Investigator_Data_Pk_Columns_Input = {
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export type Investigator_Data_Prepend_Input = {
   addedCards?: Maybe<Scalars['jsonb']>;
+  cardCounts?: Maybe<Scalars['jsonb']>;
   ignoreStoryAssets?: Maybe<Scalars['jsonb']>;
   removedCards?: Maybe<Scalars['jsonb']>;
   specialXp?: Maybe<Scalars['jsonb']>;
@@ -5389,6 +5404,8 @@ export enum Investigator_Data_Select_Column {
   AvailableXp = 'availableXp',
   /** column name */
   CampaignId = 'campaign_id',
+  /** column name */
+  CardCounts = 'cardCounts',
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
@@ -5420,6 +5437,7 @@ export type Investigator_Data_Set_Input = {
   addedCards?: Maybe<Scalars['jsonb']>;
   availableXp?: Maybe<Scalars['Int']>;
   campaign_id?: Maybe<Scalars['Int']>;
+  cardCounts?: Maybe<Scalars['jsonb']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   ignoreStoryAssets?: Maybe<Scalars['jsonb']>;
   insane?: Maybe<Scalars['Boolean']>;
@@ -5518,6 +5536,8 @@ export enum Investigator_Data_Update_Column {
   AvailableXp = 'availableXp',
   /** column name */
   CampaignId = 'campaign_id',
+  /** column name */
+  CardCounts = 'cardCounts',
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
@@ -10170,7 +10190,7 @@ export type UploadNewCampaignMutationVariables = Exact<{
 }>;
 
 
-export type UploadNewCampaignMutation = { __typename?: 'mutation_root', insert_guide_input?: { __typename?: 'guide_input_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, scenario?: string | null | undefined, step?: string | null | undefined, payload?: any | null | undefined, created_at: any }> } | null | undefined, insert_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', affected_rows: number } | null | undefined, insert_investigator_data?: { __typename?: 'investigator_data_mutation_response', affected_rows: number } | null | undefined, insert_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', affected_rows: number } | null | undefined, update_campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null | undefined, deleted?: boolean | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, campaignNotes?: any | null | undefined, chaosBag?: any | null | undefined, showInterludes?: boolean | null | undefined, scenarioResults?: any | null | undefined, weaknessSet?: any | null | undefined, guided?: boolean | null | undefined, guide_version?: number | null | undefined, archived?: boolean | null | undefined, owner_id: string, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> }, campaign_guide?: { __typename?: 'campaign_guide', id?: number | null | undefined, uuid?: string | null | undefined, updated_at?: any | null | undefined, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null | undefined, scenario?: string | null | undefined, type: string, payload?: any | null | undefined }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> } | null | undefined, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, availableXp?: number | null | undefined, spentXp?: number | null | undefined, specialXp?: any | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null | undefined };
+export type UploadNewCampaignMutation = { __typename?: 'mutation_root', insert_guide_input?: { __typename?: 'guide_input_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, scenario?: string | null | undefined, step?: string | null | undefined, payload?: any | null | undefined, created_at: any }> } | null | undefined, insert_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', affected_rows: number } | null | undefined, insert_investigator_data?: { __typename?: 'investigator_data_mutation_response', affected_rows: number } | null | undefined, insert_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', affected_rows: number } | null | undefined, update_campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null | undefined, deleted?: boolean | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, campaignNotes?: any | null | undefined, chaosBag?: any | null | undefined, showInterludes?: boolean | null | undefined, scenarioResults?: any | null | undefined, weaknessSet?: any | null | undefined, guided?: boolean | null | undefined, guide_version?: number | null | undefined, archived?: boolean | null | undefined, owner_id: string, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> }, campaign_guide?: { __typename?: 'campaign_guide', id?: number | null | undefined, uuid?: string | null | undefined, updated_at?: any | null | undefined, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null | undefined, scenario?: string | null | undefined, type: string, payload?: any | null | undefined }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> } | null | undefined, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null | undefined, addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, cardCounts?: any | null | undefined, specialXp?: any | null | undefined, availableXp?: number | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null | undefined };
 
 export type InsertNewDeckMutationVariables = Exact<{
   arkhamdb_id?: Maybe<Scalars['Int']>;
@@ -10330,11 +10350,13 @@ export type LatestDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?:
 
 export type MiniInvestigatorDataFragment = { __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined };
 
-export type FullInvestigatorDataFragment = { __typename?: 'investigator_data', addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, availableXp?: number | null | undefined, spentXp?: number | null | undefined, specialXp?: any | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined };
+export type FullGuideInvestigatorDataFragment = { __typename?: 'investigator_data', addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, cardCounts?: any | null | undefined, specialXp?: any | null | undefined, availableXp?: number | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined };
+
+export type FullInvestigatorDataFragment = { __typename?: 'investigator_data', spentXp?: number | null | undefined, addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, cardCounts?: any | null | undefined, specialXp?: any | null | undefined, availableXp?: number | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined };
 
 export type MiniCampaignFragment = { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> };
 
-export type FullCampaignFragment = { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null | undefined, deleted?: boolean | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, campaignNotes?: any | null | undefined, chaosBag?: any | null | undefined, showInterludes?: boolean | null | undefined, scenarioResults?: any | null | undefined, weaknessSet?: any | null | undefined, guided?: boolean | null | undefined, guide_version?: number | null | undefined, archived?: boolean | null | undefined, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, availableXp?: number | null | undefined, spentXp?: number | null | undefined, specialXp?: any | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } };
+export type FullCampaignFragment = { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null | undefined, deleted?: boolean | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, campaignNotes?: any | null | undefined, chaosBag?: any | null | undefined, showInterludes?: boolean | null | undefined, scenarioResults?: any | null | undefined, weaknessSet?: any | null | undefined, guided?: boolean | null | undefined, guide_version?: number | null | undefined, archived?: boolean | null | undefined, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null | undefined, addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, cardCounts?: any | null | undefined, specialXp?: any | null | undefined, availableXp?: number | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } };
 
 export type FullCampaignGuideStateFragment = { __typename?: 'campaign_guide', id?: number | null | undefined, uuid?: string | null | undefined, updated_at?: any | null | undefined, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null | undefined, scenario?: string | null | undefined, type: string, payload?: any | null | undefined }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> };
 
@@ -10350,7 +10372,7 @@ export type GetCampaignQueryVariables = Exact<{
 }>;
 
 
-export type GetCampaignQuery = { __typename?: 'query_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null | undefined, deleted?: boolean | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, campaignNotes?: any | null | undefined, chaosBag?: any | null | undefined, showInterludes?: boolean | null | undefined, scenarioResults?: any | null | undefined, weaknessSet?: any | null | undefined, guided?: boolean | null | undefined, guide_version?: number | null | undefined, archived?: boolean | null | undefined, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, availableXp?: number | null | undefined, spentXp?: number | null | undefined, specialXp?: any | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null | undefined };
+export type GetCampaignQuery = { __typename?: 'query_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null | undefined, deleted?: boolean | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, campaignNotes?: any | null | undefined, chaosBag?: any | null | undefined, showInterludes?: boolean | null | undefined, scenarioResults?: any | null | undefined, weaknessSet?: any | null | undefined, guided?: boolean | null | undefined, guide_version?: number | null | undefined, archived?: boolean | null | undefined, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null | undefined, addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, cardCounts?: any | null | undefined, specialXp?: any | null | undefined, availableXp?: number | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null | undefined };
 
 export type GetCampaignGuideQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10385,7 +10407,7 @@ export type CampaignSubscriptionVariables = Exact<{
 }>;
 
 
-export type CampaignSubscription = { __typename?: 'subscription_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null | undefined, deleted?: boolean | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, campaignNotes?: any | null | undefined, chaosBag?: any | null | undefined, showInterludes?: boolean | null | undefined, scenarioResults?: any | null | undefined, weaknessSet?: any | null | undefined, guided?: boolean | null | undefined, guide_version?: number | null | undefined, archived?: boolean | null | undefined, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, availableXp?: number | null | undefined, spentXp?: number | null | undefined, specialXp?: any | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null | undefined };
+export type CampaignSubscription = { __typename?: 'subscription_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null | undefined, deleted?: boolean | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, campaignNotes?: any | null | undefined, chaosBag?: any | null | undefined, showInterludes?: boolean | null | undefined, scenarioResults?: any | null | undefined, weaknessSet?: any | null | undefined, guided?: boolean | null | undefined, guide_version?: number | null | undefined, archived?: boolean | null | undefined, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null | undefined, addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, cardCounts?: any | null | undefined, specialXp?: any | null | undefined, availableXp?: number | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null | undefined };
 
 export type CampaignAccessSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10568,13 +10590,15 @@ export type UpdateInvestigatorDataMutationVariables = Exact<{
   insane?: Maybe<Scalars['Boolean']>;
   addedCards?: Maybe<Scalars['jsonb']>;
   availableXp?: Maybe<Scalars['Int']>;
+  specialXp?: Maybe<Scalars['jsonb']>;
   storyAssets?: Maybe<Scalars['jsonb']>;
   ignoreStoryAssets?: Maybe<Scalars['jsonb']>;
   removedCards?: Maybe<Scalars['jsonb']>;
+  cardCounts?: Maybe<Scalars['jsonb']>;
 }>;
 
 
-export type UpdateInvestigatorDataMutation = { __typename?: 'mutation_root', insert_investigator_data_one?: { __typename?: 'investigator_data', addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, availableXp?: number | null | undefined, spentXp?: number | null | undefined, specialXp?: any | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined } | null | undefined };
+export type UpdateInvestigatorDataMutation = { __typename?: 'mutation_root', insert_investigator_data_one?: { __typename?: 'investigator_data', addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, cardCounts?: any | null | undefined, specialXp?: any | null | undefined, availableXp?: number | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined } | null | undefined };
 
 export type UpdateSpentXpMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10837,17 +10861,23 @@ export const MiniCampaignFragmentDoc = gql`
 }
     ${MiniDeckFragmentDoc}
 ${MiniInvestigatorDataFragmentDoc}`;
-export const FullInvestigatorDataFragmentDoc = gql`
-    fragment FullInvestigatorData on investigator_data {
+export const FullGuideInvestigatorDataFragmentDoc = gql`
+    fragment FullGuideInvestigatorData on investigator_data {
   ...MiniInvestigatorData
   addedCards
   ignoreStoryAssets
   removedCards
-  availableXp
-  spentXp
+  cardCounts
   specialXp
+  availableXp
 }
     ${MiniInvestigatorDataFragmentDoc}`;
+export const FullInvestigatorDataFragmentDoc = gql`
+    fragment FullInvestigatorData on investigator_data {
+  ...FullGuideInvestigatorData
+  spentXp
+}
+    ${FullGuideInvestigatorDataFragmentDoc}`;
 export const LatestDeckFragmentDoc = gql`
     fragment LatestDeck on campaign_deck {
   ...BasicDeck
@@ -12827,15 +12857,15 @@ export type UpdateInvestigatorTraumaMutationHookResult = ReturnType<typeof useUp
 export type UpdateInvestigatorTraumaMutationResult = Apollo.MutationResult<UpdateInvestigatorTraumaMutation>;
 export type UpdateInvestigatorTraumaMutationOptions = Apollo.BaseMutationOptions<UpdateInvestigatorTraumaMutation, UpdateInvestigatorTraumaMutationVariables>;
 export const UpdateInvestigatorDataDocument = gql`
-    mutation updateInvestigatorData($campaign_id: Int!, $investigator: String!, $physical: Int, $mental: Int, $killed: Boolean, $insane: Boolean, $addedCards: jsonb, $availableXp: Int, $storyAssets: jsonb, $ignoreStoryAssets: jsonb, $removedCards: jsonb) {
+    mutation updateInvestigatorData($campaign_id: Int!, $investigator: String!, $physical: Int, $mental: Int, $killed: Boolean, $insane: Boolean, $addedCards: jsonb, $availableXp: Int, $specialXp: jsonb, $storyAssets: jsonb, $ignoreStoryAssets: jsonb, $removedCards: jsonb, $cardCounts: jsonb) {
   insert_investigator_data_one(
-    object: {campaign_id: $campaign_id, investigator: $investigator, physical: $physical, mental: $mental, killed: $killed, insane: $insane, addedCards: $addedCards, storyAssets: $storyAssets, ignoreStoryAssets: $ignoreStoryAssets, removedCards: $removedCards, availableXp: $availableXp}
-    on_conflict: {constraint: investigator_data_pkey, update_columns: [physical, mental, killed, insane, addedCards, removedCards, storyAssets, ignoreStoryAssets, availableXp]}
+    object: {campaign_id: $campaign_id, investigator: $investigator, physical: $physical, mental: $mental, killed: $killed, insane: $insane, cardCounts: $cardCounts, addedCards: $addedCards, storyAssets: $storyAssets, ignoreStoryAssets: $ignoreStoryAssets, removedCards: $removedCards, specialXp: $specialXp, availableXp: $availableXp}
+    on_conflict: {constraint: investigator_data_pkey, update_columns: [physical, mental, killed, insane, addedCards, removedCards, storyAssets, ignoreStoryAssets, cardCounts, availableXp, specialXp]}
   ) {
-    ...FullInvestigatorData
+    ...FullGuideInvestigatorData
   }
 }
-    ${FullInvestigatorDataFragmentDoc}`;
+    ${FullGuideInvestigatorDataFragmentDoc}`;
 export type UpdateInvestigatorDataMutationFn = Apollo.MutationFunction<UpdateInvestigatorDataMutation, UpdateInvestigatorDataMutationVariables>;
 
 /**
@@ -12859,9 +12889,11 @@ export type UpdateInvestigatorDataMutationFn = Apollo.MutationFunction<UpdateInv
  *      insane: // value for 'insane'
  *      addedCards: // value for 'addedCards'
  *      availableXp: // value for 'availableXp'
+ *      specialXp: // value for 'specialXp'
  *      storyAssets: // value for 'storyAssets'
  *      ignoreStoryAssets: // value for 'ignoreStoryAssets'
  *      removedCards: // value for 'removedCards'
+ *      cardCounts: // value for 'cardCounts'
  *   },
  * });
  */

@@ -13,7 +13,7 @@ interface Props {
   eliminated?: boolean;
   yithian?: boolean;
   open?: boolean;
-  upgradeBadge?: boolean;
+  badge?: 'upgrade' | 'deck';
   leftContent?: React.ReactNode;
   transparent?: boolean;
   width: number;
@@ -23,7 +23,7 @@ interface Props {
   name?: string;
   hideImage?: boolean;
 }
-export default function CompactInvestigatorRow({ hideImage, color, eliminated, name, description, investigator, transparent, yithian, open, upgradeBadge, leftContent, children, width }: Props) {
+export default function CompactInvestigatorRow({ hideImage, color, eliminated, name, description, investigator, transparent, yithian, open, badge, leftContent, children, width }: Props) {
   const { colors, typography } = useContext(StyleContext);
   return (
     <RoundedFactionHeader
@@ -43,7 +43,7 @@ export default function CompactInvestigatorRow({ hideImage, color, eliminated, n
             border
             yithian={yithian}
             killedOrInsane={eliminated}
-            badge={upgradeBadge ? 'upgrade' : undefined}
+            badge={badge}
           />
         ) }
         <View style={[space.paddingLeftXs, styles.textColumn]}>

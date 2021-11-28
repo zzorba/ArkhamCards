@@ -4530,6 +4530,35 @@ msgstr ""
 msgid "Uploading campaign"
 msgstr ""
 
+msgid "Save deck upgrade"
+msgstr ""
+
+msgid "Apply deck changes from previous scenario"
+msgstr ""
+
+#, javascript-format
+msgid "${ input.prompt } (choose ${ quantity })"
+msgid_plural "${ input.prompt } (choose ${ quantity })"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+msgid ""
+"This deck is ownered by another player. You can record the upgrade now and "
+"they will be given an opportunity to save the changes to their deck when "
+"they next open the app."
+msgstr ""
+
+msgid ""
+"Changes have been recorded. You can apply these changes to your deck on the "
+"main screen of the campaign under your investigator."
+msgstr ""
+
+msgid ""
+"Changes have been recorded. The owner of this deck can apply these changes "
+"to their deck on the main screen of the campaign under their investigator."
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -5840,7 +5869,7 @@ msgid "Wonderland"
 msgstr ""
 
 msgctxt "trait"
-msgid "Y-ha'nthlei"
+msgid "Resolute"
 msgstr ""
 
 #, javascript-format

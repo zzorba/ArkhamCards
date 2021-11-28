@@ -56,8 +56,8 @@ export default function DbChooserButton({ componentId, title, all, field, includ
         const escaped = value.replace(`'`, `\\'`);
         console.log(`  '${escaped}': c('trait').t\`${value}\`,`)
       });
-      console.log('};')
-      */
+      console.log('};')*/
+
       const actualValues = fixedTranslations ? map(values, item => fixedTranslations[item] || item) : values;
       const noneString = includeNone && fixedTranslations ? fixedTranslations.none : undefined;
 

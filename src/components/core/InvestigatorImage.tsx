@@ -15,6 +15,8 @@ import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
 import COLORS from '@styles/colors';
+import EncounterIcon from '@icons/EncounterIcon';
+import space from '@styles/space';
 
 interface Props {
   card?: Card;
@@ -24,7 +26,7 @@ interface Props {
   killedOrInsane?: boolean;
   yithian?: boolean;
   imageLink?: boolean;
-  badge?: 'upgrade';
+  badge?: 'upgrade' | 'deck';
 }
 
 const IMAGE_SIZE = {
@@ -152,7 +154,13 @@ export default function InvestigatorImage({
               },
             ]}>
               <View style={styles.icon}>
-                <FactionIcon faction={card.factionCode()} defaultColor="#FFFFFF" size={ICON_SIZE[impliedSize]} />
+                { card.encounter_code ? (
+                  <View style={space.paddingTopXs}>
+                    <EncounterIcon encounter_code={card.encounter_code} color="#FFFFFF" size={ICON_SIZE[impliedSize]} />
+                  </View>
+                ) : (
+                  <FactionIcon faction={card.factionCode()} defaultColor="#FFFFFF" size={ICON_SIZE[impliedSize]} />
+                ) }
               </View>
             </View>
           </View>
@@ -164,7 +172,7 @@ export default function InvestigatorImage({
         </View>
         { !!badge && (
           <View style={{ position: 'absolute', bottom: - size / 8 + 2, right: -size / 8, width: size / 2, height: size / 2, borderRadius: size / 4, backgroundColor: colors.upgrade, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-            <AppIcon size={size / 2.3} color={COLORS.D20} name="upgrade" />
+            <AppIcon size={size / 2.3} color={COLORS.D20} name={badge} />
           </View>
         ) }
       </View>

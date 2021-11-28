@@ -149,16 +149,22 @@ fragment MiniInvestigatorData on investigator_data {
   storyAssets
 }
 
-fragment FullInvestigatorData on investigator_data {
+
+fragment FullGuideInvestigatorData on investigator_data {
   ...MiniInvestigatorData
 
   addedCards
   ignoreStoryAssets
   removedCards
+  cardCounts
 
-  availableXp
-  spentXp
   specialXp
+  availableXp
+}
+
+fragment FullInvestigatorData on investigator_data {
+  ...FullGuideInvestigatorData
+  spentXp
 }
 
 fragment MiniCampaign on campaign {

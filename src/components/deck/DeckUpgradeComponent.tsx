@@ -18,7 +18,7 @@ import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCounter, useSlots } from '@components/core/hooks';
 import DeckButton from './controls/DeckButton';
-import { SaveDeckUpgrade } from './useDeckUpgrade';
+import { SaveDeckUpgrade } from './useDeckUpgradeAction';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 interface DeckUpgradeProps extends NavigationProps{
@@ -30,7 +30,7 @@ interface DeckUpgradeProps extends NavigationProps{
   campaignSection?: React.ReactNode;
   storyCounts: Slots;
   ignoreStoryCounts: Slots;
-  saveDeckUpgrade: SaveDeckUpgrade;
+  saveDeckUpgrade: SaveDeckUpgrade<undefined>;
   saving: boolean;
   error?: string | undefined;
   saveButtonText?: string;
@@ -60,8 +60,8 @@ function DeckUpgradeComponent({
   const [exileCounts, updateExileCounts] = useSlots({});
 
   const doSave = useCallback(() => {
-    saveDeckUpgrade(xp, storyCounts, ignoreStoryCounts, exileCounts);
-  }, [saveDeckUpgrade, xp, storyCounts, ignoreStoryCounts, exileCounts]);
+    saveDeckUpgrade(deck, xp, storyCounts, ignoreStoryCounts, exileCounts, undefined);
+  }, [saveDeckUpgrade, deck, xp, storyCounts, ignoreStoryCounts, exileCounts]);
 
   useImperativeHandle(ref, () => ({
     save: async() => {

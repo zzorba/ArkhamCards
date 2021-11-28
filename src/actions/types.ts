@@ -253,6 +253,7 @@ export interface TraumaAndCardData extends Trauma {
   ignoreStoryAssets?: string[];
   addedCards?: string[];
   removedCards?: string[];
+  cardCounts?: Slots;
 }
 
 export interface InvestigatorData {
@@ -1079,11 +1080,21 @@ export interface GuideDecisionInput extends BasicInput {
   decision: boolean;
 }
 
+export interface DelayedDeckEdits {
+  userId: string;
+  xp: number;
+  storyCounts: Slots;
+  ignoreStoryCounts: Slots;
+  exileCounts: Slots;
+  resolved?: boolean;
+}
+
 export interface GuideNumberChoicesInput extends BasicInput {
   type: 'choice_list';
   step: string;
   choices: NumberChoices;
   deckId?: DeckId;
+  deckEdits?: DelayedDeckEdits;
 }
 
 export interface GuideStringChoicesInput extends BasicInput {

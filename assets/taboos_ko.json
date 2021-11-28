@@ -32,32 +32,32 @@
       },
       {
         "code": "01033",
-        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher...”"
+        "text": "이 카드의 [reaction] 격발 기능은 다음으로 읽으십시오: “당신이 조사를 성공한 후, '밀란 크리스토퍼 박사'를 소진합니다…”"
       },
       {
         "code": "02002",
-        "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
+        "text": "이 카드의 [reaction] 격발 기능은 다음을 얻습니다: “(라운드당 1번 한정.)”"
       },
       {
         "code": "02111",
-        "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
+        "text": "이 카드는 다음을 얻습니다: “승점 더미에 '너무 깊이 파헤치다' 사본 2장 그룹 한정.”"
       },
       {
         "code": "02229",
-        "text": "This card gains: “Max 1 committed per skill test.”"
+        "text": "이 카드는 다음을 얻습니다: “능력 테스트당 최대 1장 소모할 수 있습니다.”"
       },
       {
         "code": "02266",
-        "text": "This card gains: “Max once per round.”"
+        "text": "이 카드는 다음을 얻습니다: “라운드당 최대 1장.”"
       },
       {
         "code": "03029",
-        "text": "This card’s ability now reads: “Put an [[Item]] asset that takes up fewer than 2 hand slots into play from your hand.”"
+        "text": "이 카드의 기능은 다음으로 읽으십시오: “당신의 손에 있는 양손 슬롯이 아닌 [[물품]] 자산 1장을 플레이 영역에 둡니다.”"
       },
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "This card gains the Exceptional keyword."
+        "text": "이 카드는 “특별” 키워드를 얻습니다"
       }
     ]
   },
@@ -106,32 +106,32 @@
       },
       {
         "code": "01033",
-        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher...”"
+        "text": "이 카드의 [reaction] 격발 기능은 다음으로 읽으십시오: “당신이 조사를 성공한 후, '밀란 크리스토퍼 박사'를 소진합니다…”"
       },
       {
         "code": "02002",
-        "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
+        "text": "이 카드의 [reaction] 격발 기능은 다음을 얻습니다: “(라운드당 1번 한정.)”"
       },
       {
         "code": "02111",
-        "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
+        "text": "이 카드는 다음을 얻습니다: “승점 더미에 '너무 깊이 파헤치다' 사본 2장 그룹 한정.”"
       },
       {
         "code": "02229",
-        "text": "This card gains: “Max 1 committed per skill test.”"
+        "text": "이 카드는 다음을 얻습니다: “능력 테스트당 최대 1장 소모할 수 있습니다.”"
       },
       {
         "code": "02266",
-        "text": "This card gains: “Max once per round.”"
+        "text": "이 카드는 다음을 얻습니다: “라운드당 최대 1장.”"
       },
       {
         "code": "03029",
-        "text": "This card’s ability now reads: “Put an [[Item]] asset that takes up fewer than 2 hand slots into play from your hand.”"
+        "text": "이 카드의 기능은 다음으로 읽으십시오: “당신의 손에 있는 양손 슬롯이 아닌 [[물품]] 자산 1장을 플레이 영역에 둡니다.”"
       },
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "This card gains the Exceptional keyword."
+        "text": "이 카드는 “특별” 키워드를 얻습니다"
       }
     ]
   },
@@ -200,57 +200,57 @@
       },
       {
         "code": "01033",
-        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher...”"
+        "text": "이 카드의 [reaction] 격발 기능은 다음으로 읽으십시오: “당신이 조사를 성공한 후, '밀란 크리스토퍼 박사'를 소진합니다…”"
       },
       {
         "code": "02002",
-        "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
+        "text": "이 카드의 [reaction] 격발 기능은 다음을 얻습니다: “(라운드당 1번 한정.)”"
       },
       {
         "code": "02111",
-        "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
+        "text": "이 카드는 다음을 얻습니다: “승점 더미에 '너무 깊이 파헤치다' 사본 2장 그룹 한정.”"
       },
       {
         "code": "02229",
-        "text": "At the end of its ability, this card gains: “(max once per round).”"
+        "text": "이 기능 끝에 이 카드는 다음을 얻습니다: “(라운드당 최대 1번.)”"
       },
       {
         "code": "02266",
-        "text": "This card gains: “Max once per round.”"
+        "text": "이 카드는 다음을 얻습니다: “라운드당 최대 1장.”"
       },
       {
         "code": "03029",
-        "text": "This card’s ability now reads: “Put a level 0-3 [[Item]] asset into play from your hand.”"
+        "text": "이 카드의 기능은 다음으로 읽으십시오: “당신의 손에 있는 레벨 0-3 [[물품]] 자산 1장을 플레이 영역에 둡니다.”"
       },
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "This card gains the Exceptional keyword."
+        "text": "이 카드는 “특별” 키워드를 얻습니다"
       },
       {
         "code": "04309",
-        "text": "At the end of its ability, this card gains: “Remove All In from the game.”"
+        "text": "이 기능 끝에 이 카드는 다음을 얻습니다: “'올 인'을 게임에서 제거합니다.”"
       },
       {
         "code": "05116",
-        "text": "This card’s [action] ability is now a [fast] ability."
+        "text": "이 카드의 [action] 격발 기능은 이제 [fast] 기능을 얻습니다."
       },
       {
         "code": "05188",
-        "text": "This card’s [action] ability is now a [fast] ability."
+        "text": "이 카드의 [action] 격발 기능은 이제 [fast] 기능을 얻습니다."
       },
       {
         "code": "05189",
-        "text": "This card’s [action] ability is now a [fast] ability."
+        "text": "이 카드의 [action] 격발 기능은 이제 [fast] 기능을 얻습니다."
       },
       {
         "code": "06195",
-        "text": "This card’s [action] ability now reads: “[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.”"
+        "text": "이 카드의 [action] 격발 기능은 다음으로 읽으십시오: “[action] 탄약을 1발 소비합니다: <b>전투.</b> 당신은 이번 공격에서 +2 [combat]을 얻습니다. 이번 공격에서 음수 보정값이 아닌 혼돈 토큰을 뽑았다면, 이 공격은 +2 피해를 줍니다.”"
       },
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Forbidden."
+        "text": "금지."
       }
     ]
   },
@@ -267,7 +267,7 @@
       },
       {
         "code": "01050",
-        "text": "This card now reads: “Disengage from each enemy engaged with you and move to a connecting location with no enemies.”"
+        "text": "이 카드는 다음으로 읽으십시오: “당신과 교전 중인 모든 적과 교전이 풀리고, 당신은 적이 없는 이어진 장소 한 곳으로 이동합니다.”"
       },
       {
         "code": "02108",
@@ -291,7 +291,7 @@
       },
       {
         "code": "02226",
-        "text": "This card’s [action] ability gains: “This attack may target a non-[[Elite]] enemy up to one location away from its standard range, ignoring the aloof and retaliate keywords.”"
+        "text": "이 카드의 [action] 격발 기능은 다음을 얻습니다: “이 공격은 일반 사거리보다 최대 1칸까지 더 떨어진 장소의 '[[정예]]가 아닌 적'을 대상으로 삼아도 되며, 그렇게 할 경우 '냉담한'과 '보복' 키워드를 무시합니다.”"
       },
       {
         "code": "04305",
@@ -307,7 +307,7 @@
       },
       {
         "code": "05230",
-        "text": "This card loses the text: “Attached asset cannot be used to attack enemies engaged with you.”"
+        "text": "이 카드는 다음의 문구를 잃습니다: “부착된 자산은 당신과 교전 중인 적을 공격하는 데에 사용할 수 없습니다.”"
       },
       {
         "code": "05231",
@@ -315,15 +315,15 @@
       },
       {
         "code": "05324",
-        "text": "This card’s ability gains: “Remove Eucatastrophe from the game.”"
+        "text": "이 카드의 기능은 다음을 얻습니다: “'전화위복'을 게임에서 제거합니다.”"
       },
       {
         "code": "06022",
-        "text": "This card’s constant ability now reads: “If this card has no charges, remove it from the game.”"
+        "text": "이 카드의 영구 기능은 다음으로 읽으십시오: “'여왕의 펜던트'에 더 이상 충전이 없으면, 이 카드를 게임에서 제거합니다.”"
       },
       {
         "code": "06199",
-        "text": "This card’s ability gains: “Remove each committed copy of Three Aces from the game.”"
+        "text": "이 카드의 기능은 다음을 얻습니다: “소모된 '트리플 에이스' 사본을 모두 게임에서 제거합니다.”"
       },
       {
         "code": "60233",
@@ -331,65 +331,65 @@
       },
       {
         "code": "07269",
-        "text": "This card’s ability gains: “Remove A Watchful Peace from the game.”"
+        "text": "이 카드의 기능은 다음을 얻습니다: “'불안한 평화'를 게임에서 제거합니다.”"
       },
       {
         "code": "07301",
-        "text": "This card’s ability gains: “Remove Hallow from the game.”"
+        "text": "이 카드의 기능은 다음을 얻습니다: “'신성화'를 게임에서 제거합니다.”"
       },
       {
         "code": "01033",
-        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher...”"
+        "text": "이 카드의 [reaction] 격발 기능은 다음으로 읽으십시오: “당신이 조사를 성공한 후, '밀란 크리스토퍼 박사'를 소진합니다…”"
       },
       {
         "code": "02002",
-        "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
+        "text": "이 카드의 [reaction] 격발 기능은 다음을 얻습니다: “(라운드당 1번 한정.)”"
       },
       {
         "code": "02111",
-        "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
+        "text": "이 카드는 다음을 얻습니다: “승점 더미에 '너무 깊이 파헤치다' 사본 2장 그룹 한정.”"
       },
       {
         "code": "02229",
-        "text": "At the end of its ability, this card gains: “(max once per round).”"
+        "text": "이 기능 끝에 이 카드는 다음을 얻습니다: “(라운드당 최대 1번.)”"
       },
       {
         "code": "02266",
-        "text": "This card gains: “Max once per round.”"
+        "text": "이 카드는 다음을 얻습니다: “라운드당 최대 1장.”"
       },
       {
         "code": "03029",
-        "text": "This card’s ability now reads: “Put a level 0-3 [[Item]] asset into play from your hand.”"
+        "text": "이 카드의 기능은 다음으로 읽으십시오: “당신의 손에 있는 레벨 0-3 [[물품]] 자산 1장을 플레이 영역에 둡니다.”"
       },
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "This card gains the Exceptional keyword."
+        "text": "이 카드는 “특별” 키워드를 얻습니다"
       },
       {
         "code": "04309",
-        "text": "At the end of its ability, this card gains: “Remove All In from the game.”"
+        "text": "이 기능 끝에 이 카드는 다음을 얻습니다: “'올 인'을 게임에서 제거합니다.”"
       },
       {
         "code": "05116",
-        "text": "This card’s [action] ability is now a [fast] ability."
+        "text": "이 카드의 [action] 격발 기능은 이제 [fast] 기능을 얻습니다."
       },
       {
         "code": "05188",
-        "text": "This card’s [action] ability is now a [fast] ability."
+        "text": "이 카드의 [action] 격발 기능은 이제 [fast] 기능을 얻습니다."
       },
       {
         "code": "05189",
-        "text": "This card’s [action] ability is now a [fast] ability."
+        "text": "이 카드의 [action] 격발 기능은 이제 [fast] 기능을 얻습니다."
       },
       {
         "code": "06195",
-        "text": "This card’s [action] ability now reads: “[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.”"
+        "text": "이 카드의 [action] 격발 기능은 다음으로 읽으십시오: “[action] 탄약을 1발 소비합니다: <b>전투.</b> 당신은 이번 공격에서 +2 [combat]을 얻습니다. 이번 공격에서 음수 보정값이 아닌 혼돈 토큰을 뽑았다면, 이 공격은 +2 피해를 줍니다.”"
       },
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Forbidden."
+        "text": "금지."
       }
     ]
   }

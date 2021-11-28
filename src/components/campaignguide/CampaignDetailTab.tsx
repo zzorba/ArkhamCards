@@ -4,13 +4,15 @@ import { filter, findLast, find, keys, last } from 'lodash';
 import { t } from 'ttag';
 import { Navigation } from 'react-native-navigation';
 
-import { ProcessedCampaign } from '@data/scenario';
+import { ProcessedCampaign, StepId } from '@data/scenario';
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
 import space, { s } from '@styles/space';
-import { CampaignCycleCode, Trauma } from '@actions/types';
+import useDeckUpgradeAction from '@components/deck/useDeckUpgradeAction';
+import { Deck, CampaignCycleCode, Trauma, getDeckId } from '@actions/types';
 import { ShowScenario } from './LinkedCampaignGuideView/useCampaignLinkHelper';
 import DeckButton from '@components/deck/controls/DeckButton';
+import { useDeckActions } from '@data/remote/decks';
 import useChaosBagDialog from '@components/campaign/CampaignDetailView/useChaosBagDialog';
 import CampaignGuideContext from './CampaignGuideContext';
 import ScenarioCarouselComponent from './ScenarioCarouselComponent';
@@ -34,12 +36,33 @@ interface Props {
   displayLinkScenarioCount?: number;
   footerButtons: React.ReactNode;
 }
+
+
 export default function CampaignDetailTab({
   componentId, processedCampaign, displayLinkScenarioCount, footerButtons, updateCampaignActions,
   showLinkedScenario, showAlert, showCountDialog,
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const { campaignId, campaign, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
+
+  const deckActions = useDeckActions();
+  const deckUpgradeCompleted = useCallback((deck: Deck, xp: number, id: StepId) => {
+    const [choices, , delayedDeckEdit] = campaignState.numberChoices(id.id, id.scenario);
+    if (choices && delayedDeckEdit) {
+      campaignState.setNumberChoices(
+        id.id,
+        choices,
+        getDeckId(deck),
+        {
+          ...delayedDeckEdit,
+          resolved: true,
+        },
+        id.scenario
+      )
+    }
+  }, [campaignState]);
+  const [saving, error, saveDeckUpgrade] = useDeckUpgradeAction<StepId>(deckActions, deckUpgradeCompleted);
+
   const showAddInvestigator = useCallback(() => {
     campaignState.showChooseDeck();
   }, [campaignState]);
@@ -186,6 +209,8 @@ export default function CampaignDetailTab({
             showTraumaDialog={showTraumaDialog}
             showCountDialog={showCountDialog}
             actions={updateCampaignActions}
+            saveDeckUpgrade={saveDeckUpgrade}
+            savingDeckUpgrade={saving}
           />
         </View>
         { footerButtons }

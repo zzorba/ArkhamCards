@@ -31,6 +31,7 @@ export default function ChooseOneListComponent({
             choice={choice}
             selected={selectedIndex === idx}
             editable={editable}
+            last={!editable || choices.length <= 2 || idx === choices.length - 1}
           />
         );
       }) }

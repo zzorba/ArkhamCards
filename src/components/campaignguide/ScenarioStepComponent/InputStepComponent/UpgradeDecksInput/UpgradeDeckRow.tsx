@@ -16,7 +16,7 @@ import StyleContext from '@styles/StyleContext';
 import { EditSlotsActions, useCounter, useEffectUpdate, useFlag, useSlots } from '@components/core/hooks';
 import useCardList from '@components/card/useCardList';
 import space, { s, xs } from '@styles/space';
-import useDeckUpgrade from '@components/deck/useDeckUpgrade';
+import useDeckUpgradeAction from '@components/deck/useDeckUpgradeAction';
 import { DeckActions } from '@data/remote/decks';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
@@ -66,7 +66,7 @@ function isExile(card: Card) {
   return !!card.exile;
 }
 
-function deckMessage(saved: boolean, hasDeck: boolean, hasChanges: boolean) {
+function deckMessage(saved: boolean, hasDeck: boolean, hasChanges: boolean, isOwner: boolean) {
   if (saved) {
     return t`Changes have been recorded.`;
   }
@@ -75,6 +75,9 @@ function deckMessage(saved: boolean, hasDeck: boolean, hasChanges: boolean) {
       return t`No adjustments need saving.`;
     }
     return t`When you have finished making adjustments, press the 'Save' button to record your changes.`;
+  }
+  if (!isOwner) {
+    return t`This deck is ownered by another player. You can record the upgrade now and they will be given an opportunity to save the changes to their deck when they next open the app.`;
   }
   return t`This deck will be upgraded with XP and any new story cards will be added or removed as specified.`;
 }
@@ -153,7 +156,7 @@ function UpgradeDeckRow({
   const choiceId = useMemo(() => {
     return computeChoiceId(id, investigator);
   }, [id, investigator]);
-  const [choices, deckChoice] = useMemo(() => scenarioState.numberAndDeckChoices(choiceId), [scenarioState, choiceId]);
+  const [choices, deckChoice, deckEditsChoice] = useMemo(() => scenarioState.numberAndDeckChoices(choiceId), [scenarioState, choiceId]);
   const savedDeck = useDeck(deckChoice, choices !== undefined);
   const savedExileCounts = useMemo(() => {
     if (!savedDeck || !savedDeck.deck.exile_string) {
@@ -218,7 +221,7 @@ function UpgradeDeckRow({
     updateExileCounts({ type: 'set-slot', code: card.code, value: count });
   }, [updateExileCounts]);
 
-  const saveCampaignLog = useCallback((xp: number, deck?: Deck) => {
+  const getChoices = useCallback((xp: number): NumberChoices => {
     const choices: NumberChoices = {
       xp: [xp - earnedXp],
       physical: [physicalAdjust],
@@ -240,15 +243,18 @@ function UpgradeDeckRow({
         choices[`story#${code}`] = [(storyCardSlots[code] || 0) - (initialStoryCardSlots[code] || 0)];
       }
     });
+    return choices;
+  }, [storyCards, earnedXp, physicalAdjust, mentalAdjust, countAdjust, specialExile, investigatorCounter, initialStoryCardSlots, storyCardSlots]);
+
+  const saveCampaignLog = useCallback((xp: number, deck?: Deck) => {
+    const choices = getChoices(xp);
     scenarioState.setNumberChoices(choiceId, choices, !skipDeckSave && deck ? getDeckId(deck) : undefined);
-  }, [scenarioState, skipDeckSave, storyCards,
-    initialStoryCardSlots, storyCardSlots,
-    investigatorCounter, specialExile, countAdjust, earnedXp, choiceId, physicalAdjust, mentalAdjust]);
+  }, [scenarioState, skipDeckSave, getChoices, choiceId]);
 
   const onUpgrade = useCallback((deck: Deck, xp: number) => {
     saveCampaignLog(xp, deck);
   }, [saveCampaignLog]);
-  const [saving, error, saveDeckUpgrade] = useDeckUpgrade(deck, actions, onUpgrade);
+  const [saving, error, saveDeckUpgrade] = useDeckUpgradeAction(actions, onUpgrade);
   useEffect(() => {
     // We only want to save once.
     if (choices === undefined && !skipDeckSave && deck && !deck.id.local && deck.id.arkhamdb_user === arkhamDbUser) {
@@ -331,16 +337,32 @@ function UpgradeDeckRow({
     })
     return newSlots;
   }, [deck, storyAssets, storyAssetDeltas, storyCards, initialStoryCardSlots, storyCardSlots]);
+
+  const saveDelayedDeck = useCallback((ownerId: string) => {
+    const choices = getChoices(xp);
+    scenarioState.setNumberChoices(choiceId, choices, undefined, {
+      xp,
+      userId: ownerId,
+      exileCounts,
+      ignoreStoryCounts: campaignLog.ignoreStoryAssets(investigator.code),
+      storyCounts: storyCountsForDeck,
+    });
+  }, [getChoices, xp, storyCountsForDeck, campaignLog, exileCounts, investigator.code, choiceId, scenarioState]);
+
   const saveDeck = useCallback(() => {
-    saveDeckUpgrade(xp, storyCountsForDeck, campaignLog.ignoreStoryAssets(investigator.code), exileCounts);
-  }, [saveDeckUpgrade, xp, storyCountsForDeck, campaignLog, exileCounts, investigator.code]);
+    saveDeckUpgrade(deck, xp, storyCountsForDeck, campaignLog.ignoreStoryAssets(investigator.code), exileCounts, undefined);
+  }, [saveDeckUpgrade, deck, xp, storyCountsForDeck, campaignLog, exileCounts, investigator.code]);
   const save = useCallback(() => {
     if (deck && !skipDeckSave) {
-      saveDeck();
+      if (!deck?.owner || !userId || deck.owner.id === userId) {
+        saveDeck();
+      } else {
+        saveDelayedDeck(deck.owner.id);
+      }
     } else {
       saveCampaignLog(xpAdjust);
     }
-  }, [deck, skipDeckSave, saveCampaignLog, xpAdjust, saveDeck]);
+  }, [deck, skipDeckSave, xpAdjust, userId, saveCampaignLog, saveDeck, saveDelayedDeck]);
 
 
   const onCardPress = useCallback((card: Card) => {
@@ -469,31 +491,29 @@ function UpgradeDeckRow({
   }, [campaignState, investigator]);
 
   const { campaign } = useContext(CampaignGuideContext);
-  const footer = useMemo(() => {
-    if (deck && deck.owner && userId && deck.owner.id !== userId && editable) {
-      return (
-        <View style={[space.paddingS, { flexDirection: 'column', backgroundColor: colors.L10, borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }]}>
-          <View style={choices !== undefined ? styles.startRow : styles.startColumn}>
-            <ActionButton
-              color={choices !== undefined ? 'green' : 'dark'}
-              leftIcon="check"
-              title={choices !== undefined ? t`Saved` : t`Not deck owner`}
-              onPress={save}
-              disabled
-            />
-            <View style={[styles.column, { flex: 1 }, space.paddingLeftS, choices === undefined ? space.marginTopS : undefined]}>
-              <Text style={[typography.small, typography.italic, typography.light]}>
-                { deck.owner?.handle ?
-                  t`This deck is owned by ${deck.owner.handle}. They must open the app on their own device to save the upgrade` :
-                  t`This deck is owned by another user. They must open the app on their own device to save the upgrade` }
-              </Text>
-            </View>
-          </View>
-        </View>
-      );
+
+  const [secondSection, secondMessage] = useMemo(() => {
+    const show = !skipDeckSave && (deck ? choices !== undefined : choices === undefined);
+    if (!deck) {
+      return [
+        show,
+        t`This investigator does not have a deck associated with it.\nIf you choose a deck, the app can help track spent experience, story asset changes, and deckbuilding requirements.`,
+      ];
     }
+    if (deckEditsChoice && !deckEditsChoice.resolved) {
+      if (deck.owner && userId && deck.owner.id === userId) {
+        return [show, t`Changes have been recorded. You can apply these changes to your deck on the main screen of the campaign under your investigator.`];
+      }
+      return [show, t`Changes have been recorded. The owner of this deck can apply these changes to their deck on the main screen of the campaign under their investigator.`];
+    }
+
+    if (!deck.owner || !userId || deck.owner.id === userId) {
+      return [show, t`Now that your upgrade has been saved, when visiting the deck be sure to use the 'Edit' button when making card changes.`];
+    }
+    return [false, undefined];
+  }, [deck, skipDeckSave, choices, userId, deckEditsChoice]);
+  const footer = useMemo(() => {
     const currentMessage = saving ? t`Saving` : t`Save`;
-    const secondSection = !skipDeckSave && (deck ? choices !== undefined : choices === undefined);
     const deckButton = deck && choices !== undefined && deckChoice && (
       <ShowDeckButton
         deckId={deckChoice}
@@ -521,17 +541,14 @@ function UpgradeDeckRow({
               </Text>
             ) }
             <Text style={[typography.small, typography.italic, typography.light]}>
-              { deckMessage(choices !== undefined || !editable, !!deck && !skipDeckSave, unsavedEdits) }
+              { deckMessage(choices !== undefined || !editable, !!deck && !skipDeckSave, unsavedEdits, !userId || !deck || !deck.owner || userId === deck.owner.id) }
             </Text>
           </View>
         </View>
         { secondSection && (
           <View style={[styles.column, space.paddingTopXs]}>
             <Text style={[typography.small, typography.italic, typography.light]}>
-              { !deck ?
-                t`This investigator does not have a deck associated with it.\nIf you choose a deck, the app can help track spent experience, story asset changes, and deckbuilding requirements.` :
-                t`Now that your upgrade has been saved, when visiting the deck be sure to use the 'Edit' button when making card changes.`
-              }
+              { secondMessage }
             </Text>
             <View style={[space.paddingTopS, styles.startRow]}>
               { !deck ?
@@ -543,7 +560,7 @@ function UpgradeDeckRow({
         ) }
       </View>
     );
-  }, [choices, deckChoice, investigator, skipDeckSave, userId, error, selectDeck, editable, deck, typography, save, colors, saving, unsavedEdits]);
+  }, [choices, deckChoice, investigator, skipDeckSave, userId, error, selectDeck, editable, deck, typography, save, colors, saving, unsavedEdits, secondSection, secondMessage]);
 
   const count: number = useMemo(() => {
     if (choices === undefined) {
@@ -669,11 +686,6 @@ const styles = StyleSheet.create({
   startRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-  },
-  startColumn: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
     justifyContent: 'flex-start',
   },
   betweenRow: {

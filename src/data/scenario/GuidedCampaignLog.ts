@@ -46,6 +46,7 @@ import {
   PartnerStatusEffect,
   Partner,
   PartnerStatus,
+  SetCardCountEffect,
 } from './types';
 import CampaignGuide, { CAMPAIGN_SETUP_ID } from './CampaignGuide';
 import Card, { CardsMap } from '@data/types/Card';
@@ -179,6 +180,7 @@ export default class GuidedCampaignLog {
       case 'remove_chaos_token':
       case 'trauma':
       case 'add_card':
+      case 'set_card_count':
       case 'remove_card':
       case 'replace_card':
       case 'earn_xp':
@@ -315,6 +317,9 @@ export default class GuidedCampaignLog {
               break;
             case 'trauma':
               this.handleTraumaEffect(effect, input, numberInput);
+              break;
+            case 'set_card_count':
+              this.handleSetCardCountEffect(effect, input);
               break;
             case 'add_card':
               this.handleAddCardEffect(effect, input);
@@ -757,11 +762,8 @@ export default class GuidedCampaignLog {
 
   private storyAssetSlots(data: TraumaAndCardData): Slots {
     const slots: Slots = this.baseSlots();
-    forEach(data.storyAssets || {}, asset => {
-      if (!slots[asset]) {
-        slots[asset] = 0;
-      }
-      slots[asset] = slots[asset] + 1;
+    forEach(data.storyAssets || [], asset => {
+      slots[asset] = data.cardCounts?.[asset] || 1;
     });
     return slots;
   }
@@ -947,6 +949,33 @@ export default class GuidedCampaignLog {
         }
       }
     );
+  }
+
+
+  private handleSetCardCountEffect(
+    effect: SetCardCountEffect,
+    input?: string[]
+  ) {
+    this.campaignData.everyStoryAsset = uniq([
+      ...this.campaignData.everyStoryAsset,
+      effect.card,
+    ]);
+    const investigators = this.getInvestigators(
+      effect.investigator,
+      input
+    );
+    forEach(investigators, investigator => {
+      const data = this.campaignData.investigatorData[investigator] || {};
+      const counts = data.cardCounts || {};
+      counts[effect.card] = Math.max(0, (counts[effect.card] || 0) + effect.quantity);
+      data.cardCounts = counts;
+      if ((counts[effect.card] || 0) > 0) {
+        data.storyAssets = uniq([...(data.storyAssets || []), effect.card]);
+      } else {
+        data.storyAssets = filter(data.storyAssets, code => code !== effect.card);
+      }
+      this.campaignData.investigatorData[investigator] = data;
+    });
   }
 
   private handleAddCardEffect(

@@ -101,7 +101,7 @@ interface WeaknessItem {
   count: number;
 }
 
-function InvestigatorWeakness({ componentId, investigator, width, investigatorData, weaknesses }: { componentId: string; investigator: Card; width: number; investigatorData: TraumaAndCardData; weaknesses: Card[] | undefined }) {
+function InvestigatorWeakness({ investigator, width, investigatorData, weaknesses }: { componentId: string; investigator: Card; width: number; investigatorData: TraumaAndCardData; weaknesses: Card[] | undefined }) {
   const [open, toggleOpen] = useFlag(false);
   const { campaign } = useContext(CampaignGuideContext);
   const deck = useMemo(() => find(campaign.latestDecks(), deck => deck.investigator === investigator.code), [investigator.code, campaign]);

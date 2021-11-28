@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { find, map, every } from 'lodash';
-import { c, msgid, ngettext } from 'ttag';
+import { c, msgid } from 'ttag';
 
 import { stringList } from '@lib/stringHelper';
 import SetupStepWrapper from '../../SetupStepWrapper';

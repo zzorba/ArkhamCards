@@ -13,13 +13,19 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
-export type SaveDeckUpgrade = (xp: number, storyCounts: Slots, ignoreStoryCounts: Slots, exileCounts: Slots) => void;
-
-export default function useDeckUpgrade(
+export type SaveDeckUpgrade<T> = (
   deck: LatestDeckT | undefined,
+  xp: number,
+  storyCounts: Slots,
+  ignoreStoryCounts: Slots,
+  exileCounts: Slots,
+  d: T
+) => void;
+
+export default function useDeckUpgradeAction<T = undefined>(
   actions: DeckActions,
-  upgradeCompleted: (deck: Deck, xp: number) => void,
-): [boolean, string | undefined, SaveDeckUpgrade] {
+  upgradeCompleted: (deck: Deck, xp: number, id: T) => void,
+): [boolean, string | undefined, SaveDeckUpgrade<T>] {
   const { userId } = useContext(ArkhamCardsAuthContext);
   const deckDispatch: DeckDispatch = useDispatch();
   const doSaveDeckChanges = useCallback((deck: Deck, changes: SaveDeckChanges): Promise<Deck> => {
@@ -32,9 +38,9 @@ export default function useDeckUpgrade(
 
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | undefined>();
-  const deckUpgradeComplete = useCallback((deck: Deck, xp: number) => {
+  const deckUpgradeComplete = useCallback((deck: Deck, xp: number, id: T) => {
     setSaving(false);
-    upgradeCompleted(deck, xp);
+    upgradeCompleted(deck, xp, id);
   }, [setSaving, upgradeCompleted]);
 
   const handleStoryCardChanges = useCallback((
@@ -42,6 +48,7 @@ export default function useDeckUpgrade(
     xp: number,
     storyCounts: Slots,
     ignoreStoryCounts: Slots,
+    id: T,
   ) => {
     const hasStoryChange = !!find(keys(storyCounts), (code) => {
       return (upgradedDeck.slots?.[code] || 0) !== storyCounts[code];
@@ -77,7 +84,7 @@ export default function useDeckUpgrade(
       }).then(
         (deck: Deck) => {
           setSaving(false);
-          deckUpgradeComplete(deck, xp);
+          deckUpgradeComplete(deck, xp, id);
         },
         (e: Error) => {
           console.log(e);
@@ -87,14 +94,16 @@ export default function useDeckUpgrade(
       );
     } else {
       setSaving(false);
-      deckUpgradeComplete(upgradedDeck, xp);
+      deckUpgradeComplete(upgradedDeck, xp, id);
     }
   }, [doSaveDeckChanges, deckUpgradeComplete]);
   const saveUpgrade = useCallback((
+    deck: LatestDeckT | undefined,
     xp: number,
     storyCounts: Slots,
     ignoreStoryCounts: Slots,
     exileCounts: Slots,
+    id: T,
     isRetry?: boolean
   ) => {
     if (!deck) {
@@ -103,21 +112,23 @@ export default function useDeckUpgrade(
     if (!saving || isRetry) {
       setSaving(true);
       setTimeout(() => doSaveDeckUpgrade(deck.deck, xp, exileCounts).then(
-        (deck: Deck) => handleStoryCardChanges(deck, xp, storyCounts, ignoreStoryCounts),
+        (deck: Deck) => handleStoryCardChanges(deck, xp, storyCounts, ignoreStoryCounts, id),
         (e: Error) => {
           setError(e.message);
           setSaving(false);
         }
       ), 0);
     }
-  }, [deck, doSaveDeckUpgrade, saving, handleStoryCardChanges, setError, setSaving]);
+  }, [doSaveDeckUpgrade, saving, handleStoryCardChanges, setError, setSaving]);
   const throttledSaveUpgrade = useMemo(() => {
     return debounce((
+      deck: LatestDeckT | undefined,
       xp: number,
       storyCounts: Slots,
       ignoreStoryCounts: Slots,
-      exileCounts: Slots
-    ) => saveUpgrade(xp, storyCounts, ignoreStoryCounts, exileCounts), 1000, { leading: true, trailing: false });
+      exileCounts: Slots,
+      id: T
+    ) => saveUpgrade(deck, xp, storyCounts, ignoreStoryCounts, exileCounts, id), 1000, { leading: true, trailing: false });
   }, [saveUpgrade]);
 
   return [saving, error, throttledSaveUpgrade];

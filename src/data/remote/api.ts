@@ -47,7 +47,7 @@ interface UpdateFriendRequest {
   action: 'request' | 'revoke';
 }
 
-export enum FriendStatus {
+export const enum FriendStatus {
   NONE = 'none',
   RECEIVED = 'received',
   SENT = 'sent',

@@ -23,6 +23,7 @@ import {
   Campaign,
   UploadedCampaignId,
   UPDATE_CAMPAIGN,
+  DelayedDeckEdits,
 } from '@actions/types';
 
 import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
@@ -345,6 +346,7 @@ export function setScenarioNumberChoices(
   step: string,
   choices: NumberChoices,
   deckId?: DeckId,
+  deckEdits?: DelayedDeckEdits,
   scenario?: string
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
   return setGuideInputAction(userId, actions, campaignId, {
@@ -353,6 +355,7 @@ export function setScenarioNumberChoices(
     step,
     choices,
     deckId,
+    deckEdits,
   });
 }
 

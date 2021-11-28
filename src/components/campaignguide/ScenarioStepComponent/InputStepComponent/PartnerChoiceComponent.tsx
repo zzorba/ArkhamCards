@@ -1,6 +1,6 @@
 import React, { useContext, useMemo, useCallback, useReducer } from 'react';
 import { filter, range, map, keys, head, shuffle, find, forEach } from 'lodash';
-import { t } from 'ttag';
+import { t, ngettext, msgid } from 'ttag';
 
 import { Partner, PartnerChoiceInput } from '@data/scenario/types';
 import useCardList from '@components/card/useCardList';
@@ -40,8 +40,8 @@ export default function PartnerChoiceComponent({ id, input }: Props) {
     const selection = keys(conditionPartners.investigatorChoices);
     const selectionSet = new Set(selection);
     const selectedPartners = filter(campaignLog.campaignGuide.campaignLogPartners(input.condition.section), p => selectionSet.has(p.code));
-    const quantity = getOperand(input.quantity, campaignLog);
-    return [selectedPartners, Math.min(quantity, selectedPartners.length), selection];
+    const quantity = input.quantity ? Math.min(getOperand(input.quantity, campaignLog), selectedPartners.length) : undefined;
+    return [selectedPartners, quantity, selection];
   }, [input, campaignLog]);
   const [cards] = useCardList(codes, 'encounter');
 
@@ -103,7 +103,11 @@ export default function PartnerChoiceComponent({ id, input }: Props) {
     if (!useAppRandomizer) {
       return (
         <CheckListComponent
-          checkText={`${input.prompt} (choose ${quantity})`}
+          checkText={quantity ? ngettext(
+            msgid`${input.prompt} (choose ${quantity})`,
+            `${input.prompt} (choose ${quantity})`,
+            quantity
+          ) : input.prompt}
           min={quantity}
           max={quantity}
           id={id}

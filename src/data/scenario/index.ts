@@ -35,6 +35,11 @@ interface UnplayedScenario extends BasicScenario {
   steps: ScenarioStep[];
 }
 
+export interface StepId {
+  id: string;
+  scenario?: string;
+}
+
 export type ProcessedScenario = PlayedScenario | UnplayedScenario;
 
 export interface ProcessedCampaign {

@@ -169,7 +169,7 @@ export default function InvestigatorRow({
     bigImage,
     noFactionIcon,
     superTitle,
-    backgroundStyle, borderStyle, colors, typography, fontScale,
+    backgroundStyle, borderStyle, colors, typography, fontScale, colon,
   ]);
 
   if (!onPress) {

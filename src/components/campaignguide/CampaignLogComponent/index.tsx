@@ -170,7 +170,7 @@ export default function CampaignLogComponent({
         );
       }
     }
-  }, [campaignLog, campaignGuide, width, interScenarioId]);
+  }, [campaignLog, campaignGuide, width, interScenarioId, colon]);
 
   const oddsCalculatorPressed = useCallback(() => {
     showGuideChaosBagOddsCalculator(componentId, campaignId, campaignLog.chaosBag, campaignLog.investigatorCodesSafe(), scenarioId, standalone);

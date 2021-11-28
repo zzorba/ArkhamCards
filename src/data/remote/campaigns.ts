@@ -255,6 +255,7 @@ export function useUploadNewCampaign(): UploadNewCampaignFn {
         mental: data.mental,
         physical: data.physical,
         specialXp: data.specialXp,
+        cardCounts: data.cardCounts,
         availableXp: data.availableXp,
         spentXp: adjustedInvestigatorData.spentXp,
       });
@@ -700,6 +701,8 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
       removedCards: data.removedCards || [],
       ignoreStoryAssets: data.ignoreStoryAssets || [],
       availableXp: data.availableXp || 0,
+      cardCounts: data.cardCounts || {},
+      specialXp: data.specialXp || {},
     };
     await updateInvestigatorData({
       optimisticResponse: {

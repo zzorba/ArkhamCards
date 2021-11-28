@@ -18,7 +18,7 @@ import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 
-export enum PlayingScenarioBranch {
+export const enum PlayingScenarioBranch {
   CAMPAIGN_LOG = -1,
   RESOLUTION = -2,
   DRAW_WEAKNESS = -3,

@@ -15,6 +15,7 @@ import {
   InvestigatorTraumaData,
   DeckId,
   CampaignId,
+  DelayedDeckEdits,
 } from '@actions/types';
 import Card from '@data/types/Card';
 import useChooseDeck from './useChooseDeck';
@@ -143,7 +144,7 @@ export default function useCampaignGuideContextFromActions(
     ));
   }, [dispatch, campaignId, remoteGuideActions, userId]);
 
-  const setNumberChoices = useCallback((stepId: string, choices: NumberChoices, deckId?: DeckId, scenarioId?: string) => {
+  const setNumberChoices = useCallback((stepId: string, choices: NumberChoices, deckId?: DeckId, deckEdits?: DelayedDeckEdits, scenarioId?: string) => {
     dispatch(guideActions.setScenarioNumberChoices(
       userId,
       remoteGuideActions,
@@ -151,6 +152,7 @@ export default function useCampaignGuideContextFromActions(
       stepId,
       choices,
       deckId,
+      deckEdits,
       scenarioId
     ));
   }, [dispatch, campaignId, remoteGuideActions, userId]);
@@ -282,6 +284,8 @@ export default function useCampaignGuideContextFromActions(
           !deepEqual(oldData.addedCards || [], newData.addedCards || []) ||
           !deepEqual(oldData.removedCards || [], newData.removedCards || []) ||
           !deepEqual(oldData.storyAssets || [], newData.storyAssets || []) ||
+          !deepEqual(oldData.specialXp || {}, newData.specialXp || {}) ||
+          !deepEqual(oldData.cardCounts || {}, newData.cardCounts || {}) ||
           !deepEqual(oldData.ignoreStoryAssets || [], newData.ignoreStoryAssets || []);
         if (hasChanges) {
           dispatch(updateCampaignInvestigatorData(userId, updateCampaignActions, campaignId, investigator, {
@@ -294,6 +298,8 @@ export default function useCampaignGuideContextFromActions(
             removedCards: newData.removedCards || [],
             storyAssets: newData.storyAssets || [],
             ignoreStoryAssets: newData.ignoreStoryAssets || [],
+            cardCounts: newData.cardCounts || {},
+            specialXp: newData.specialXp || {},
           }));
         }
       }

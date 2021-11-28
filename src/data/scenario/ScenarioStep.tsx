@@ -1170,13 +1170,11 @@ export default class ScenarioStep {
                 const quantity = count[0];
                 if (exile_code.indexOf('story#') !== -1) {
                   const code = exile_code.split('#')[1];
-                  forEach(range(0, Math.abs(quantity)), () => {
-                    effects.push({
-                      type: quantity < 0 ? 'remove_card' : 'add_card',
-                      investigator: '$input_value',
-                      card: code,
-                      hidden: true,
-                    });
+                  effects.push({
+                    type: 'set_card_count',
+                    investigator: '$input_value',
+                    card: code,
+                    quantity,
                   });
                 } else {
                   for (let i = 0; i < quantity; i++) {

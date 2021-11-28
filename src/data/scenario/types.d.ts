@@ -42,6 +42,7 @@ export type Effect =
   | StoryStepEffect
   | EarnXpEffect
   | AddCardEffect
+  | SetCardCountEffect
   | AddWeaknessEffect
   | RemoveCardEffect
   | ReplaceCardEffect
@@ -198,12 +199,7 @@ export interface Campaign {
     gender?: "male" | "female";
     description?: string;
   }[];
-  campaign_log: {
-    id: string;
-    title: string;
-    type?: "investigator_count" | "count" | "supplies" | "header" | "partner" | "hidden";
-    partners?: Partner[];
-  }[];
+  campaign_log: CampaignLogSectionDefinition[];
   scenarios: string[];
   hidden_scenarios?: string[];
   setup: string[];
@@ -212,6 +208,12 @@ export interface Campaign {
   campaign_type: "standalone" | "campaign";
   custom?: CustomData;
   achievements?: Achievement[];
+}
+export interface CampaignLogSectionDefinition {
+  id: string;
+  title: string;
+  type?: "investigator_count" | "count" | "supplies" | "header" | "partner" | "hidden";
+  partners?: Partner[];
 }
 export interface Partner {
   code: string;
@@ -291,6 +293,12 @@ export interface AddCardEffect {
   non_story?: boolean;
   show_prompt?: boolean;
   hidden?: boolean;
+}
+export interface SetCardCountEffect {
+  type: "set_card_count";
+  investigator: "$input_value";
+  card: string;
+  quantity: number;
 }
 export interface AddWeaknessEffect {
   type: "add_weakness";
@@ -928,7 +936,7 @@ export interface PartnerChoiceInput {
   type: "partner_choice";
   condition: PartnerStatusCondition;
   random: boolean;
-  quantity: ConstantOperand | CampaignLogCountOperand;
+  quantity?: ConstantOperand | CampaignLogCountOperand;
   prompt: string;
   effects: Effect[];
 }
