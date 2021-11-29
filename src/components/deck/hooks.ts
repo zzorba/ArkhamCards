@@ -94,11 +94,7 @@ export function useDeckEdits(
   const reduxDeckEdits = useSimpleDeckEdits(id);
   const deckEditsRef = useRef<EditDeckState>();
   const deckEdits = otherDeckEdits || reduxDeckEdits;
-  useEffect(() => {
-    if (deckEdits) {
-      deckEditsRef.current = deckEdits;
-    }
-  }, [deckEdits]);
+  deckEditsRef.current = deckEdits;
   return [deckEdits, deckEditsRef];
 }
 
@@ -112,6 +108,7 @@ export interface ParsedDeckResults {
   tabooSetId: number;
   visible: boolean;
   parsedDeck?: ParsedDeck;
+  parsedDeckRef: MutableRefObject<ParsedDeck | undefined>;
   mode: 'upgrade' | 'edit' | 'view';
 }
 
@@ -133,6 +130,8 @@ function useParsedDeckHelper(
   const visible = useComponentVisible(componentId);
   const initialized = useRef(false);
   const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>(undefined);
+  const parsedDeckRef = useRef<ParsedDeck | undefined>();
+  parsedDeckRef.current = parsedDeck;
   useEffect(() => {
     if (deck && cards && fetchIfMissing && !parsedDeck && !initialized.current) {
       initialized.current = true;
@@ -164,6 +163,7 @@ function useParsedDeckHelper(
     deckEditsRef,
     visible,
     parsedDeck,
+    parsedDeckRef,
     mode: (deckEdits?.mode) || (initialMode || 'view'),
   };
 }

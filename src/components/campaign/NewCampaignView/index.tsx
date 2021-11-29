@@ -467,7 +467,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       });
     }
   }, [selectedDecks, investigatorIds, deckAdded, investigatorAdded]);
-  const { dialog, showDialog } = useSimpleTextDialog({
+  const [dialog, showDialog] = useSimpleTextDialog({
     title: t`Name`,
     placeholder: placeholderName,
     value: name,

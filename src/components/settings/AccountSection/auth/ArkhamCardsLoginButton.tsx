@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState, useRef } from 'react';
 import { forEach, map, uniq } from 'lodash';
-import { Platform, StyleSheet, Text, View } from 'react-native';
-import { Input } from 'react-native-elements';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { Platform, StyleSheet, Text, TextInput, View } from 'react-native';
 import { AppleButton, appleAuth, appleAuthAndroid } from '@invertase/react-native-apple-authentication';
 import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
@@ -186,7 +186,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
   const [submitting, setSubmitting] = useState(false);
   const [emailErrorCodes, setEmailErrorCodes] = useState<string[]>([]);
   const [emailErrorMessages, setEmailErrorMessages] = useState<string[]>([]);
-  const passwordInputRef = useRef<Input>(null);
+  const passwordInputRef = useRef<TextInput>(null);
 
   useEffect(() => {
     if (emailErrorCodes.length) {
@@ -278,38 +278,59 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
   }, [setMode]);
   return (
     <View style={styles.center}>
-      <Input
-        leftIcon={{ type: 'material', name: 'email', color: colors.darkText }}
-        placeholder={t`Email address`}
-        inputStyle={typography.text as any}
-        placeholderTextColor={colors.lightText}
-        autoComplete="email"
-        textContentType="emailAddress"
-        autoCapitalize="none"
-        autoCorrect={false}
-        value={emailAddress}
-        keyboardType="email-address"
-        onChangeText={setEmailAddress}
-        errorMessage={emailErrors.join('\n')}
-        onSubmitEditing={focusPasswordField}
-        returnKeyType="next"
-        blurOnSubmit={false}
-        autoFocus
-      />
-      <Input
-        ref={passwordInputRef}
-        leftIcon={{ type: 'material', name: 'lock', color: colors.darkText }}
-        inputStyle={typography.text as any}
-        placeholder={t`Password`}
-        secureTextEntry
-        value={password}
-        autoComplete="password"
-        textContentType={mode === 'create' && Platform.OS === 'ios' && parseInt(`${Platform.Version}`, 10) >= 12 ? 'newPassword' : 'password'}
-        onChangeText={setPassword}
-        errorMessage={passwordErrors.join('\n')}
-        returnKeyType="send"
-        onSubmitEditing={submitEmail}
-      />
+      <View style={[styles.inputWrapper, { backgroundColor: colors.L20 }]}>
+        <View style={styles.inputIcon}>
+          <MaterialIcons name="email" color={colors.darkText} size={24} />
+        </View>
+        <TextInput
+          placeholder={t`Email address`}
+          style={[typography.text, { flex: 1 }]}
+          placeholderTextColor={colors.lightText}
+          autoComplete="email"
+          textContentType="emailAddress"
+          autoCapitalize="none"
+          autoCorrect={false}
+          value={emailAddress}
+          keyboardType="email-address"
+          onChangeText={setEmailAddress}
+          onSubmitEditing={focusPasswordField}
+          returnKeyType="next"
+          blurOnSubmit={false}
+          autoFocus
+        />
+      </View>
+      { !!emailErrors.length && (
+        <View>
+          <Text style={[typography.text, typography.error]}>
+            { emailErrors.join('\n') }
+          </Text>
+        </View>
+      )}
+      <View style={[styles.inputWrapper, { backgroundColor: colors.L20 }]}>
+        <View style={styles.inputIcon}>
+          <MaterialIcons name="lock" color={colors.darkText} size={24} />
+        </View>
+        <TextInput
+          ref={passwordInputRef}
+          style={[typography.text, { flex: 1 }]}
+          placeholder={t`Password`}
+          placeholderTextColor={colors.lightText}
+          secureTextEntry
+          value={password}
+          autoComplete="password"
+          textContentType={mode === 'create' && Platform.OS === 'ios' && parseInt(`${Platform.Version}`, 10) >= 12 ? 'newPassword' : 'password'}
+          onChangeText={setPassword}
+          returnKeyType="send"
+          onSubmitEditing={submitEmail}
+        />
+        { !!passwordErrors.length && (
+          <View>
+            <Text style={[typography.text, typography.error]}>
+              {passwordErrors.join('\n')}
+            </Text>
+          </View>
+        )}
+      </View>
       { genericErrors.length > 0 && (
         <View style={[space.paddingSideXs, space.paddingTopXs, space.paddingBottomS]}>
           <Text style={[typography.text, typography.error]}>
@@ -539,5 +560,19 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+  },
+  inputWrapper: {
+    padding: 4,
+    paddingTop: s,
+    paddingBottom: s,
+    borderRadius: 4,
+    marginBottom: s,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  inputIcon: {
+    marginRight: s,
+    marginLeft: s,
   },
 });

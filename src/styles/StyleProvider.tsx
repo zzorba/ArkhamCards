@@ -1,7 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import { Appearance, Dimensions, useWindowDimensions } from 'react-native';
 import { useSelector } from 'react-redux';
-import { ThemeProvider } from 'react-native-elements';
 import { throttle } from 'lodash';
 
 import StyleContext, { DEFAULLT_STYLE_CONTEXT } from './StyleContext';
@@ -122,9 +121,7 @@ export default function StyleProvider({ children } : Props) {
   }, [darkMode, fontScale, appFontScale, styleTypography, italicFont, colors, gameFont, width, height, justifyContent]);
   return (
     <StyleContext.Provider value={context}>
-      <ThemeProvider theme={darkMode ? DARK_ELEMENTS_THEME : LIGHT_ELEMENTS_THEME}>
-        { children }
-      </ThemeProvider>
+      { children }
     </StyleContext.Provider>
   );
 }

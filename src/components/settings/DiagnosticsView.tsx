@@ -80,7 +80,7 @@ export default function DiagnosticsView() {
     return 'That code is not correct. Contact arkhamcards@gmail.com to join the beta testing program.';
   }, [dispatch]);
 
-  const { dialog: betaDialog, showDialog: showBetaDialog } = useSimpleTextDialog({
+  const [betaDialog, showBetaDialog] = useSimpleTextDialog({
     title: `Beta test program`,
     value: '',
     prompt: 'If you are interested in helping to test unreleased features, please contact arkhamcards@gmail.com.\n\nThese features are still in active development, and opting in might result in your campaign data being lost.\n\nBe sure to make a backup in advance and report any bugs you find.',

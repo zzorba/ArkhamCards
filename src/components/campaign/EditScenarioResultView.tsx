@@ -70,7 +70,7 @@ export default function EditScenarioResultView({ campaignId, index, componentId 
     }
   }, [scenarioResult, setScenarioResult]);
 
-  const { dialog: nameDialog, showDialog: showNameDialog } = useSimpleTextDialog({
+  const [nameDialog, showNameDialog] = useSimpleTextDialog({
     title: t`Scenario`,
     value: existingScenarioResult?.scenario || '',
     onValueChange: nameChanged,
@@ -85,7 +85,7 @@ export default function EditScenarioResultView({ campaignId, index, componentId 
     }
   }, [scenarioResult, setScenarioResult]);
 
-  const { dialog: resolutionDialog, showDialog: showResolutionDialog } = useSimpleTextDialog({
+  const [resolutionDialog, showResolutionDialog] = useSimpleTextDialog({
     title: t`Resolution`,
     value: existingScenarioResult?.resolution || '',
     onValueChange: resolutionChanged,

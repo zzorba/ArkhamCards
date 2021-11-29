@@ -4,9 +4,9 @@ import {
   FlatList,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
-import { Button } from 'react-native-elements';
 import { c, t } from 'ttag';
 
 import { Slots } from '@actions/types';
@@ -29,6 +29,17 @@ interface DrawnState {
   shuffledDeck: string[];
   drawnCards: string[];
   selectedCards: string[];
+}
+
+function Button({ title, disabled, onPress }: { title: string; disabled?: boolean; onPress: () => void }) {
+  const { colors, typography } = useContext(StyleContext);
+  return (
+    <TouchableOpacity disabled={disabled} onPress={onPress}>
+      <View style={{ borderRadius: 4, padding: s, backgroundColor: colors.L20 }}>
+        <Text style={[typography.button, typography.center, typography.light]}>{title}</Text>
+      </View>
+    </TouchableOpacity>
+  )
 }
 
 export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {

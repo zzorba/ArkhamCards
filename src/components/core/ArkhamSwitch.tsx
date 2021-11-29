@@ -71,10 +71,22 @@ export default function ArkhamSwitch({ useGestureHandler, disabledColor, value, 
   if (!onValueChange) {
     return content;
   }
-
-  const TouchableComponent = useGestureHandler ? GestureHandlerTouchableOpacity : TouchableOpacity;
+  if (useGestureHandler) {
+    return (
+      <GestureHandlerTouchableOpacity
+        onPress={onPress}
+        accessibilityRole="switch"
+        accessibilityLabel={accessibilityLabel}
+        accessibilityState={{ checked: value }}
+        disabled={disabled}
+        {...props}
+      >
+        { content }
+      </GestureHandlerTouchableOpacity>
+    );
+  }
   return (
-    <TouchableComponent
+    <TouchableOpacity
       onPress={onPress}
       accessibilityRole="switch"
       accessibilityLabel={accessibilityLabel}
@@ -83,7 +95,7 @@ export default function ArkhamSwitch({ useGestureHandler, disabledColor, value, 
       {...props}
     >
       { content }
-    </TouchableComponent>
+    </TouchableOpacity>
   );
 }
 

@@ -24,7 +24,7 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
   }, componentId, [refresh]);
 
   const updateHandle = useUpdateHandle();
-  const { dialog, showDialog } = useSimpleTextDialog({
+  const [dialog, showDialog] = useSimpleTextDialog({
     title: t`Account Name`,
     value: profile?.handle || '',
     onValidate: updateHandle,

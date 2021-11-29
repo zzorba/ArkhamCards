@@ -91,7 +91,7 @@ export default function SelectWeaknessTraitsComponent({ choices, save, weaknessC
     }
     return map(selection, x => (localizedTraits && localizedTraits[x]) || x).join(listSeperator);
   }, [selection, listSeperator, localizedTraits]);
-  const { dialog, showDialog } = useMultiPickerDialog({
+  const [dialog, showDialog] = useMultiPickerDialog({
     title: t`Select Traits`,
     description: t`Random weaknesses will be drawn that match these traits.`,
     selectedValues,

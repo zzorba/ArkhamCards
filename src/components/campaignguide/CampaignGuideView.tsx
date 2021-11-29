@@ -46,7 +46,7 @@ function CampaignGuideView(props: Props) {
       },
     });
   }, [campaignId, dispatch, updateCampaignActions, componentId]);
-  const { dialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
+  const [dialog, showEditNameDialog] = useSimpleTextDialog({
     title: t`Name`,
     value: campaignData.campaign.name,
     onValueChange: setCampaignName,

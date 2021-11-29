@@ -9,8 +9,9 @@ import {
   View,
   ViewStyle,
   EmitterSubscription,
+  TouchableOpacity,
 } from 'react-native';
-import { Divider, Icon } from 'react-native-elements';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Event, Track, State, usePlaybackState, useTrackPlayerEvents, useProgress } from 'react-native-track-player';
 
 import EncounterIcon from '@icons/EncounterIcon';
@@ -19,6 +20,12 @@ import { StyleContext } from '@styles/StyleContext';
 import space, { m } from '@styles/space';
 import { narrationPlayer, useAudioAccess, useCurrentTrack, useTrackDetails, useTrackPlayerQueue } from '@lib/audio/narrationPlayer';
 import { usePressCallback } from '@components/core/hooks';
+
+
+function Divider() {
+  const { colors } = useContext(StyleContext);
+  return <View style={{ height: StyleSheet.hairlineWidth, backgroundColor: colors.M }} />
+}
 
 export async function playNarrationTrack(narrationId: string) {
   const trackPlayer = await narrationPlayer();
@@ -195,6 +202,7 @@ function PlayerView({ style }: PlayerProps) {
 
   const onPlay = useCallback(async() => {
     if (!track) {
+      console.log(`No track`);
       return;
     }
     const trackPlayer = await narrationPlayer();
@@ -320,11 +328,15 @@ interface PlaybackButtonProps {
   onPress?: () => void;
 }
 
-function PlaybackButton({ name, type = 'material', size = 30, onPress }: PlaybackButtonProps) {
+function PlaybackButton({ name, size = 30, onPress }: PlaybackButtonProps) {
   const { colors } = useContext(StyleContext);
   return (
     <View style={{ padding: 2 }}>
-      <Icon name={name} type={type} size={size} onPress={onPress} color={colors.D30} />
+      <TouchableOpacity onPress={onPress}>
+        <View>
+          <MaterialIcons name={name} size={size} color={colors.D30} />
+        </View>
+      </TouchableOpacity>
     </View>
   );
 }

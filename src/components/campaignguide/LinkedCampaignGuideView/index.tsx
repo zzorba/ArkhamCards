@@ -63,7 +63,7 @@ export default function LinkedCampaignGuideView(props: Props) {
     });
   }, [campaignId, dispatch, updateCampaignActions, componentId]);
 
-  const { dialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
+  const [dialog, showEditNameDialog] = useSimpleTextDialog({
     title: t`Name`,
     value: campaignName,
     onValueChange: setCampaignName,
