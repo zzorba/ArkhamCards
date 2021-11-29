@@ -12,6 +12,7 @@ import { c, t } from 'ttag';
 import { Slots } from '@actions/types';
 import CardSearchResult from '../cardlist/CardSearchResult';
 import { s, xs } from '@styles/space';
+import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import StyleContext from '@styles/StyleContext';
 import { useEffectUpdate, usePlayerCards } from '@components/core/hooks';
 
@@ -170,7 +171,7 @@ export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {
     }
   }, [drawState, setDrawState]);
 
-  const header = useMemo(() => {
+  const footer = useMemo(() => {
     const {
       shuffledDeck,
       drawnCards,
@@ -179,7 +180,7 @@ export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {
     const deckEmpty = shuffledDeck.length === 0;
     const noSelection = selectedCards.length === 0;
     return (
-      <View style={styles.controlsContainer}>
+      <View style={[styles.controlsContainer, { backgroundColor: colors.L10 }]}>
         <View style={[styles.drawButtonRow, { backgroundColor: colors.L10 }]}>
           <Text style={[typography.button, { color: colors.darkText }]}>{ t`Draw: ` }</Text>
           <View style={styles.buttonContainer}>
@@ -266,11 +267,11 @@ export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {
   }), [drawnCards, selectedSet]);
   return (
     <View style={[styles.container, backgroundStyle]}>
-      { header }
       <FlatList
         data={data}
         renderItem={renderCardItem}
       />
+      { footer }
     </View>
   );
 }
@@ -282,6 +283,7 @@ const styles = StyleSheet.create({
   },
   controlsContainer: {
     flexDirection: 'column',
+    paddingBottom: NOTCH_BOTTOM_PADDING,
   },
   drawButtonRow: {
     width: '100%',

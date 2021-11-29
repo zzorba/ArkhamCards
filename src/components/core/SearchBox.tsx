@@ -99,7 +99,7 @@ function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedO
           autoCapitalize="none"
           multiline={false}
           style={{
-            marginTop: 6,
+            marginTop: Platform.OS === 'ios' ? 6 : 0,
             fontFamily: 'Alegreya-Regular',
             fontSize: Platform.OS === 'android' ? 16 : 20,
             lineHeight: 24,
