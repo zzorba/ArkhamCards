@@ -4413,9 +4413,6 @@ msgstr "— 사용가능한 시나리오 —"
 msgid "Scenario settings"
 msgstr "시나리오 설정"
 
-msgid "Your investigator modfifier"
-msgstr "조사자의 보정된 능력값"
-
 msgid "Test difficulty"
 msgstr "테스트 난이도"
 
@@ -4727,22 +4724,43 @@ msgid ""
 "they will be given an opportunity to save the changes to their deck when "
 "they next open the app."
 msgstr ""
-"이 덱은 다른 플레이어가 소유하고 있습니다. 지금 업그레이드를 기록할 수 있으며 "
-"다음에 앱을 열 때 덱에 변경 사항을 저장할 수 있는 기회가 주어집니다."
+"이 덱은 다른 플레이어가 소유하고 있습니다. 지금 업그레이드를 기록할 수 있으며 다음에 앱을 열 때 덱에 변경 사항을 저장할 수 있는 "
+"기회가 주어집니다."
 
 msgid ""
 "Changes have been recorded. You can apply these changes to your deck on the "
 "main screen of the campaign under your investigator."
-msgstr ""
-"변경 사항이 기록되었습니다. 캠페인 메인 화면 아래의 조사자 항목에 있는 당신의 덱에 "
-"이 변경 사항을 적용할 수 있습니다."
+msgstr "변경 사항이 기록되었습니다. 캠페인 메인 화면 아래의 조사자 항목에 있는 당신의 덱에 이 변경 사항을 적용할 수 있습니다."
 
 msgid ""
 "Changes have been recorded. The owner of this deck can apply these changes "
 "to their deck on the main screen of the campaign under their investigator."
+msgstr "변경 사항이 기록되었습니다. 캠페인 메인 화면 아래의 조사자 항목에 있는 소유자의 덱에 이 변경 사항을 적용할 수 있습니다."
+
+msgid "Tarot card"
 msgstr ""
-"변경 사항이 기록되었습니다. 캠페인 메인 화면 아래의 조사자 항목에 있는 소유자의 덱에 "
-"이 변경 사항을 적용할 수 있습니다."
+
+#, javascript-format
+msgid "Tarot card: ${ card }"
+msgstr ""
+
+msgid "Select tarot card"
+msgstr ""
+
+msgid "Which tarot card is impacting the chaos bag?"
+msgstr ""
+
+msgid "Replace highest non-negative token with a skull."
+msgstr ""
+
+msgid "Replace a skull with a 0 token."
+msgstr ""
+
+msgid "Judgement · XX"
+msgstr ""
+
+msgid "Judgement · XX (Inverted)"
+msgstr ""
 
 #, javascript-format
 msgctxt "masculine"
@@ -6238,6 +6256,18 @@ msgid_plural ""
 msgstr[0] ""
 "${ list } 조사자가 ${ supplyName } 탐험 물자를 가지고 있지 않으므로, 해당 조사자는 <b>${ "
 "sectionName }</b> 항목을 읽어야만 합니다."
+
+msgctxt "Tarot Card"
+msgid "None"
+msgstr ""
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX"
+msgstr ""
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX (Inverted)"
+msgstr ""
 
 msgctxt "trauma"
 msgid "None"

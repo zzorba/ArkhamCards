@@ -4238,9 +4238,6 @@ msgstr ""
 msgid "Scenario settings"
 msgstr ""
 
-msgid "Your investigator modfifier"
-msgstr ""
-
 msgid "Test difficulty"
 msgstr ""
 
@@ -4549,6 +4546,31 @@ msgstr ""
 msgid ""
 "Changes have been recorded. The owner of this deck can apply these changes "
 "to their deck on the main screen of the campaign under their investigator."
+msgstr ""
+
+msgid "Tarot card"
+msgstr ""
+
+#, javascript-format
+msgid "Tarot card: ${ card }"
+msgstr ""
+
+msgid "Select tarot card"
+msgstr ""
+
+msgid "Which tarot card is impacting the chaos bag?"
+msgstr ""
+
+msgid "Replace highest non-negative token with a skull."
+msgstr ""
+
+msgid "Replace a skull with a 0 token."
+msgstr ""
+
+msgid "Judgement · XX"
+msgstr ""
+
+msgid "Judgement · XX (Inverted)"
 msgstr ""
 
 #, javascript-format
@@ -6052,6 +6074,18 @@ msgid_plural ""
 "sectionName }</b>."
 msgstr[0] ""
 msgstr[1] ""
+
+msgctxt "Tarot Card"
+msgid "None"
+msgstr ""
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX"
+msgstr ""
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX (Inverted)"
+msgstr ""
 
 msgctxt "trauma"
 msgid "None"

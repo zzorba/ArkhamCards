@@ -2,6 +2,7 @@ import { ChaosBag, ChaosTokenType, FactionCodeType, SkillCodeType, SlotCodeType 
 import { CardFilterData, FilterState } from '@lib/filters';
 import Card from '@data/types/Card';
 import { LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
+import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
 
 export const SORT_BY_TYPE = 'type';
 export const SORT_BY_CYCLE = 'cycle';
@@ -316,6 +317,7 @@ export interface ChaosBagResults {
   blessTokens?: number;
   curseTokens?: number;
   totalDrawnTokens: number;
+  tarot?: Chaos_Bag_Tarot_Mode_Enum;
 }
 
 export interface ScenarioResult {

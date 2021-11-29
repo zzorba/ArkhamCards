@@ -4588,9 +4588,6 @@ msgstr "— Доступные сценарии —"
 msgid "Scenario settings"
 msgstr "Настройки сценария"
 
-msgid "Your investigator modfifier"
-msgstr "Модификатор сыщика"
-
 msgid "Test difficulty"
 msgstr "Сложность проверки"
 
@@ -4899,7 +4896,6 @@ msgid "${ input.prompt } (choose ${ quantity })"
 msgid_plural "${ input.prompt } (choose ${ quantity })"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid ""
 "This deck is ownered by another player. You can record the upgrade now and "
@@ -4915,6 +4911,31 @@ msgstr ""
 msgid ""
 "Changes have been recorded. The owner of this deck can apply these changes "
 "to their deck on the main screen of the campaign under their investigator."
+msgstr ""
+
+msgid "Tarot card"
+msgstr ""
+
+#, javascript-format
+msgid "Tarot card: ${ card }"
+msgstr ""
+
+msgid "Select tarot card"
+msgstr ""
+
+msgid "Which tarot card is impacting the chaos bag?"
+msgstr ""
+
+msgid "Replace highest non-negative token with a skull."
+msgstr ""
+
+msgid "Replace a skull with a 0 token."
+msgstr ""
+
+msgid "Judgement · XX"
+msgstr ""
+
+msgid "Judgement · XX (Inverted)"
 msgstr ""
 
 #, javascript-format
@@ -6503,6 +6524,18 @@ msgstr[1] ""
 msgstr[2] ""
 "Поскольку ${ supplyName } отсутствует у ${ list }, эти сыщики читают <b>${ "
 "sectionName }</b>."
+
+msgctxt "Tarot Card"
+msgid "None"
+msgstr ""
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX"
+msgstr ""
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX (Inverted)"
+msgstr ""
 
 msgctxt "trauma"
 msgid "None"

@@ -3433,6 +3433,9 @@ export type Chaos_Bag_Result = {
   drawn: Scalars['jsonb'];
   id: Scalars['Int'];
   sealed: Scalars['jsonb'];
+  tarot?: Maybe<Chaos_Bag_Tarot_Mode_Enum>;
+  /** An object relationship */
+  tarot_mode: Chaos_Bag_Tarot_Mode;
   totalDrawn?: Maybe<Scalars['Int']>;
   updated_at: Scalars['timestamptz'];
 };
@@ -3536,6 +3539,8 @@ export type Chaos_Bag_Result_Bool_Exp = {
   drawn?: Maybe<Jsonb_Comparison_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
   sealed?: Maybe<Jsonb_Comparison_Exp>;
+  tarot?: Maybe<Chaos_Bag_Tarot_Mode_Enum_Comparison_Exp>;
+  tarot_mode?: Maybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
   totalDrawn?: Maybe<Int_Comparison_Exp>;
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
 };
@@ -3583,6 +3588,8 @@ export type Chaos_Bag_Result_Insert_Input = {
   drawn?: Maybe<Scalars['jsonb']>;
   id?: Maybe<Scalars['Int']>;
   sealed?: Maybe<Scalars['jsonb']>;
+  tarot?: Maybe<Chaos_Bag_Tarot_Mode_Enum>;
+  tarot_mode?: Maybe<Chaos_Bag_Tarot_Mode_Obj_Rel_Insert_Input>;
   totalDrawn?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -3654,6 +3661,8 @@ export type Chaos_Bag_Result_Order_By = {
   drawn?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   sealed?: Maybe<Order_By>;
+  tarot?: Maybe<Order_By>;
+  tarot_mode?: Maybe<Chaos_Bag_Tarot_Mode_Order_By>;
   totalDrawn?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
 };
@@ -3684,6 +3693,8 @@ export enum Chaos_Bag_Result_Select_Column {
   /** column name */
   Sealed = 'sealed',
   /** column name */
+  Tarot = 'tarot',
+  /** column name */
   TotalDrawn = 'totalDrawn',
   /** column name */
   UpdatedAt = 'updated_at'
@@ -3697,6 +3708,7 @@ export type Chaos_Bag_Result_Set_Input = {
   drawn?: Maybe<Scalars['jsonb']>;
   id?: Maybe<Scalars['Int']>;
   sealed?: Maybe<Scalars['jsonb']>;
+  tarot?: Maybe<Chaos_Bag_Tarot_Mode_Enum>;
   totalDrawn?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -3784,6 +3796,8 @@ export enum Chaos_Bag_Result_Update_Column {
   /** column name */
   Sealed = 'sealed',
   /** column name */
+  Tarot = 'tarot',
+  /** column name */
   TotalDrawn = 'totalDrawn',
   /** column name */
   UpdatedAt = 'updated_at'
@@ -3839,6 +3853,129 @@ export type Chaos_Bag_Result_Variance_Order_By = {
   id?: Maybe<Order_By>;
   totalDrawn?: Maybe<Order_By>;
 };
+
+/** columns and relationships of "chaos_bag_tarot_mode" */
+export type Chaos_Bag_Tarot_Mode = {
+  __typename?: 'chaos_bag_tarot_mode';
+  value: Scalars['String'];
+};
+
+/** aggregated selection of "chaos_bag_tarot_mode" */
+export type Chaos_Bag_Tarot_Mode_Aggregate = {
+  __typename?: 'chaos_bag_tarot_mode_aggregate';
+  aggregate?: Maybe<Chaos_Bag_Tarot_Mode_Aggregate_Fields>;
+  nodes: Array<Chaos_Bag_Tarot_Mode>;
+};
+
+/** aggregate fields of "chaos_bag_tarot_mode" */
+export type Chaos_Bag_Tarot_Mode_Aggregate_Fields = {
+  __typename?: 'chaos_bag_tarot_mode_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Chaos_Bag_Tarot_Mode_Max_Fields>;
+  min?: Maybe<Chaos_Bag_Tarot_Mode_Min_Fields>;
+};
+
+
+/** aggregate fields of "chaos_bag_tarot_mode" */
+export type Chaos_Bag_Tarot_Mode_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Chaos_Bag_Tarot_Mode_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "chaos_bag_tarot_mode". All fields are combined with a logical 'AND'. */
+export type Chaos_Bag_Tarot_Mode_Bool_Exp = {
+  _and?: Maybe<Array<Chaos_Bag_Tarot_Mode_Bool_Exp>>;
+  _not?: Maybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
+  _or?: Maybe<Array<Chaos_Bag_Tarot_Mode_Bool_Exp>>;
+  value?: Maybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "chaos_bag_tarot_mode" */
+export enum Chaos_Bag_Tarot_Mode_Constraint {
+  /** unique or primary key constraint */
+  ChaosBagTarotModePkey = 'chaos_bag_tarot_mode_pkey'
+}
+
+export enum Chaos_Bag_Tarot_Mode_Enum {
+  Judgement = 'judgement',
+  JudgementInverted = 'judgement_inverted'
+}
+
+/** Boolean expression to compare columns of type "chaos_bag_tarot_mode_enum". All fields are combined with logical 'AND'. */
+export type Chaos_Bag_Tarot_Mode_Enum_Comparison_Exp = {
+  _eq?: Maybe<Chaos_Bag_Tarot_Mode_Enum>;
+  _in?: Maybe<Array<Chaos_Bag_Tarot_Mode_Enum>>;
+  _is_null?: Maybe<Scalars['Boolean']>;
+  _neq?: Maybe<Chaos_Bag_Tarot_Mode_Enum>;
+  _nin?: Maybe<Array<Chaos_Bag_Tarot_Mode_Enum>>;
+};
+
+/** input type for inserting data into table "chaos_bag_tarot_mode" */
+export type Chaos_Bag_Tarot_Mode_Insert_Input = {
+  value?: Maybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Chaos_Bag_Tarot_Mode_Max_Fields = {
+  __typename?: 'chaos_bag_tarot_mode_max_fields';
+  value?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Chaos_Bag_Tarot_Mode_Min_Fields = {
+  __typename?: 'chaos_bag_tarot_mode_min_fields';
+  value?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "chaos_bag_tarot_mode" */
+export type Chaos_Bag_Tarot_Mode_Mutation_Response = {
+  __typename?: 'chaos_bag_tarot_mode_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Chaos_Bag_Tarot_Mode>;
+};
+
+/** input type for inserting object relation for remote table "chaos_bag_tarot_mode" */
+export type Chaos_Bag_Tarot_Mode_Obj_Rel_Insert_Input = {
+  data: Chaos_Bag_Tarot_Mode_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: Maybe<Chaos_Bag_Tarot_Mode_On_Conflict>;
+};
+
+/** on conflict condition type for table "chaos_bag_tarot_mode" */
+export type Chaos_Bag_Tarot_Mode_On_Conflict = {
+  constraint: Chaos_Bag_Tarot_Mode_Constraint;
+  update_columns: Array<Chaos_Bag_Tarot_Mode_Update_Column>;
+  where?: Maybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "chaos_bag_tarot_mode". */
+export type Chaos_Bag_Tarot_Mode_Order_By = {
+  value?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: chaos_bag_tarot_mode */
+export type Chaos_Bag_Tarot_Mode_Pk_Columns_Input = {
+  value: Scalars['String'];
+};
+
+/** select columns of table "chaos_bag_tarot_mode" */
+export enum Chaos_Bag_Tarot_Mode_Select_Column {
+  /** column name */
+  Value = 'value'
+}
+
+/** input type for updating data in table "chaos_bag_tarot_mode" */
+export type Chaos_Bag_Tarot_Mode_Set_Input = {
+  value?: Maybe<Scalars['String']>;
+};
+
+/** update columns of table "chaos_bag_tarot_mode" */
+export enum Chaos_Bag_Tarot_Mode_Update_Column {
+  /** column name */
+  Value = 'value'
+}
 
 /** columns and relationships of "faq" */
 export type Faq = {
@@ -6199,6 +6336,10 @@ export type Mutation_Root = {
   delete_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
   /** delete single row from the table: "chaos_bag_result" */
   delete_chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
+  /** delete data from the table: "chaos_bag_tarot_mode" */
+  delete_chaos_bag_tarot_mode?: Maybe<Chaos_Bag_Tarot_Mode_Mutation_Response>;
+  /** delete single row from the table: "chaos_bag_tarot_mode" */
+  delete_chaos_bag_tarot_mode_by_pk?: Maybe<Chaos_Bag_Tarot_Mode>;
   /** delete data from the table: "faq" */
   delete_faq?: Maybe<Faq_Mutation_Response>;
   /** delete single row from the table: "faq" */
@@ -6291,6 +6432,10 @@ export type Mutation_Root = {
   insert_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
   /** insert a single row into the table: "chaos_bag_result" */
   insert_chaos_bag_result_one?: Maybe<Chaos_Bag_Result>;
+  /** insert data into the table: "chaos_bag_tarot_mode" */
+  insert_chaos_bag_tarot_mode?: Maybe<Chaos_Bag_Tarot_Mode_Mutation_Response>;
+  /** insert a single row into the table: "chaos_bag_tarot_mode" */
+  insert_chaos_bag_tarot_mode_one?: Maybe<Chaos_Bag_Tarot_Mode>;
   /** insert data into the table: "faq" */
   insert_faq?: Maybe<Faq_Mutation_Response>;
   /** insert a single row into the table: "faq" */
@@ -6391,6 +6536,10 @@ export type Mutation_Root = {
   update_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
   /** update single row of the table: "chaos_bag_result" */
   update_chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
+  /** update data of the table: "chaos_bag_tarot_mode" */
+  update_chaos_bag_tarot_mode?: Maybe<Chaos_Bag_Tarot_Mode_Mutation_Response>;
+  /** update single row of the table: "chaos_bag_tarot_mode" */
+  update_chaos_bag_tarot_mode_by_pk?: Maybe<Chaos_Bag_Tarot_Mode>;
   /** update data of the table: "faq" */
   update_faq?: Maybe<Faq_Mutation_Response>;
   /** update single row of the table: "faq" */
@@ -6554,6 +6703,18 @@ export type Mutation_RootDelete_Chaos_Bag_ResultArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Chaos_Bag_Result_By_PkArgs = {
   id: Scalars['Int'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Chaos_Bag_Tarot_ModeArgs = {
+  where: Chaos_Bag_Tarot_Mode_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Chaos_Bag_Tarot_Mode_By_PkArgs = {
+  value: Scalars['String'];
 };
 
 
@@ -6852,6 +7013,20 @@ export type Mutation_RootInsert_Chaos_Bag_ResultArgs = {
 export type Mutation_RootInsert_Chaos_Bag_Result_OneArgs = {
   object: Chaos_Bag_Result_Insert_Input;
   on_conflict?: Maybe<Chaos_Bag_Result_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Chaos_Bag_Tarot_ModeArgs = {
+  objects: Array<Chaos_Bag_Tarot_Mode_Insert_Input>;
+  on_conflict?: Maybe<Chaos_Bag_Tarot_Mode_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Chaos_Bag_Tarot_Mode_OneArgs = {
+  object: Chaos_Bag_Tarot_Mode_Insert_Input;
+  on_conflict?: Maybe<Chaos_Bag_Tarot_Mode_On_Conflict>;
 };
 
 
@@ -7238,6 +7413,20 @@ export type Mutation_RootUpdate_Chaos_Bag_Result_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Chaos_Bag_Tarot_ModeArgs = {
+  _set?: Maybe<Chaos_Bag_Tarot_Mode_Set_Input>;
+  where: Chaos_Bag_Tarot_Mode_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Chaos_Bag_Tarot_Mode_By_PkArgs = {
+  _set?: Maybe<Chaos_Bag_Tarot_Mode_Set_Input>;
+  pk_columns: Chaos_Bag_Tarot_Mode_Pk_Columns_Input;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_FaqArgs = {
   _set?: Maybe<Faq_Set_Input>;
   where: Faq_Bool_Exp;
@@ -7521,6 +7710,12 @@ export type Query_Root = {
   chaos_bag_result_aggregate: Chaos_Bag_Result_Aggregate;
   /** fetch data from the table: "chaos_bag_result" using primary key columns */
   chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
+  /** fetch data from the table: "chaos_bag_tarot_mode" */
+  chaos_bag_tarot_mode: Array<Chaos_Bag_Tarot_Mode>;
+  /** fetch aggregated fields from the table: "chaos_bag_tarot_mode" */
+  chaos_bag_tarot_mode_aggregate: Chaos_Bag_Tarot_Mode_Aggregate;
+  /** fetch data from the table: "chaos_bag_tarot_mode" using primary key columns */
+  chaos_bag_tarot_mode_by_pk?: Maybe<Chaos_Bag_Tarot_Mode>;
   /** fetch data from the table: "faq" */
   faq: Array<Faq>;
   /** fetch aggregated fields from the table: "faq" */
@@ -7828,6 +8023,29 @@ export type Query_RootChaos_Bag_Result_AggregateArgs = {
 
 export type Query_RootChaos_Bag_Result_By_PkArgs = {
   id: Scalars['Int'];
+};
+
+
+export type Query_RootChaos_Bag_Tarot_ModeArgs = {
+  distinct_on?: Maybe<Array<Chaos_Bag_Tarot_Mode_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Chaos_Bag_Tarot_Mode_Order_By>>;
+  where?: Maybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
+};
+
+
+export type Query_RootChaos_Bag_Tarot_Mode_AggregateArgs = {
+  distinct_on?: Maybe<Array<Chaos_Bag_Tarot_Mode_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Chaos_Bag_Tarot_Mode_Order_By>>;
+  where?: Maybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
+};
+
+
+export type Query_RootChaos_Bag_Tarot_Mode_By_PkArgs = {
+  value: Scalars['String'];
 };
 
 
@@ -8232,6 +8450,12 @@ export type Subscription_Root = {
   chaos_bag_result_aggregate: Chaos_Bag_Result_Aggregate;
   /** fetch data from the table: "chaos_bag_result" using primary key columns */
   chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
+  /** fetch data from the table: "chaos_bag_tarot_mode" */
+  chaos_bag_tarot_mode: Array<Chaos_Bag_Tarot_Mode>;
+  /** fetch aggregated fields from the table: "chaos_bag_tarot_mode" */
+  chaos_bag_tarot_mode_aggregate: Chaos_Bag_Tarot_Mode_Aggregate;
+  /** fetch data from the table: "chaos_bag_tarot_mode" using primary key columns */
+  chaos_bag_tarot_mode_by_pk?: Maybe<Chaos_Bag_Tarot_Mode>;
   /** fetch data from the table: "faq" */
   faq: Array<Faq>;
   /** fetch aggregated fields from the table: "faq" */
@@ -8539,6 +8763,29 @@ export type Subscription_RootChaos_Bag_Result_AggregateArgs = {
 
 export type Subscription_RootChaos_Bag_Result_By_PkArgs = {
   id: Scalars['Int'];
+};
+
+
+export type Subscription_RootChaos_Bag_Tarot_ModeArgs = {
+  distinct_on?: Maybe<Array<Chaos_Bag_Tarot_Mode_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Chaos_Bag_Tarot_Mode_Order_By>>;
+  where?: Maybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
+};
+
+
+export type Subscription_RootChaos_Bag_Tarot_Mode_AggregateArgs = {
+  distinct_on?: Maybe<Array<Chaos_Bag_Tarot_Mode_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Chaos_Bag_Tarot_Mode_Order_By>>;
+  where?: Maybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
+};
+
+
+export type Subscription_RootChaos_Bag_Tarot_Mode_By_PkArgs = {
+  value: Scalars['String'];
 };
 
 
@@ -10336,7 +10583,7 @@ export type GuideAchievementFragment = { __typename?: 'guide_achievement', id: s
 
 export type IdDeckFragment = { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number };
 
-export type FullChaosBagResultFragment = { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null | undefined };
+export type FullChaosBagResultFragment = { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null | undefined, tarot?: Chaos_Bag_Tarot_Mode_Enum | null | undefined };
 
 export type MiniDeckFragment = { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number };
 
@@ -10388,19 +10635,12 @@ export type GetCampaignAccessQueryVariables = Exact<{
 
 export type GetCampaignAccessQuery = { __typename?: 'query_root', campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, access: Array<{ __typename?: 'campaign_access', user: { __typename?: 'users', id: string, handle?: string | null | undefined } }> } | null | undefined };
 
-export type GetCaosBagResultsQueryVariables = Exact<{
-  campaign_id: Scalars['Int'];
-}>;
-
-
-export type GetCaosBagResultsQuery = { __typename?: 'query_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null | undefined } | null | undefined };
-
 export type GetChaosBagResultsQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type GetChaosBagResultsQuery = { __typename?: 'query_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null | undefined } | null | undefined };
+export type GetChaosBagResultsQuery = { __typename?: 'query_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null | undefined, tarot?: Chaos_Bag_Tarot_Mode_Enum | null | undefined } | null | undefined };
 
 export type CampaignSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10428,7 +10668,7 @@ export type ChaosBagResultsSubscriptionVariables = Exact<{
 }>;
 
 
-export type ChaosBagResultsSubscription = { __typename?: 'subscription_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null | undefined } | null | undefined };
+export type ChaosBagResultsSubscription = { __typename?: 'subscription_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null | undefined, tarot?: Chaos_Bag_Tarot_Mode_Enum | null | undefined } | null | undefined };
 
 export type GetProfileQueryVariables = Exact<{
   userId: Scalars['String'];
@@ -10514,6 +10754,14 @@ export type ChaosBagDecCurseMutationVariables = Exact<{
 
 
 export type ChaosBagDecCurseMutation = { __typename?: 'mutation_root', update_chaos_bag_result?: { __typename?: 'chaos_bag_result_mutation_response', returning: Array<{ __typename?: 'chaos_bag_result', id: number, curse: number }> } | null | undefined };
+
+export type ChaosBagSetTarotMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  tarot?: Maybe<Chaos_Bag_Tarot_Mode_Enum>;
+}>;
+
+
+export type ChaosBagSetTarotMutation = { __typename?: 'mutation_root', update_chaos_bag_result?: { __typename?: 'chaos_bag_result_mutation_response', returning: Array<{ __typename?: 'chaos_bag_result', id: number, tarot?: Chaos_Bag_Tarot_Mode_Enum | null | undefined }> } | null | undefined };
 
 export type SetBinaryAchievementMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10758,6 +11006,7 @@ export const FullChaosBagResultFragmentDoc = gql`
   drawn
   sealed
   totalDrawn
+  tarot
 }
     `;
 export const IdDeckFragmentDoc = gql`
@@ -11902,53 +12151,13 @@ export function useGetCampaignAccessLazyQuery(baseOptions?: Apollo.LazyQueryHook
 export type GetCampaignAccessQueryHookResult = ReturnType<typeof useGetCampaignAccessQuery>;
 export type GetCampaignAccessLazyQueryHookResult = ReturnType<typeof useGetCampaignAccessLazyQuery>;
 export type GetCampaignAccessQueryResult = Apollo.QueryResult<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>;
-export const GetCaosBagResultsDocument = gql`
-    query getCaosBagResults($campaign_id: Int!) {
+export const GetChaosBagResultsDocument = gql`
+    query getChaosBagResults($campaign_id: Int!) {
   chaos_bag_result_by_pk(id: $campaign_id) {
     ...FullChaosBagResult
   }
 }
     ${FullChaosBagResultFragmentDoc}`;
-
-/**
- * __useGetCaosBagResultsQuery__
- *
- * To run a query within a React component, call `useGetCaosBagResultsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetCaosBagResultsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetCaosBagResultsQuery({
- *   variables: {
- *      campaign_id: // value for 'campaign_id'
- *   },
- * });
- */
-export function useGetCaosBagResultsQuery(baseOptions: Apollo.QueryHookOptions<GetCaosBagResultsQuery, GetCaosBagResultsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetCaosBagResultsQuery, GetCaosBagResultsQueryVariables>(GetCaosBagResultsDocument, options);
-      }
-export function useGetCaosBagResultsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCaosBagResultsQuery, GetCaosBagResultsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetCaosBagResultsQuery, GetCaosBagResultsQueryVariables>(GetCaosBagResultsDocument, options);
-        }
-export type GetCaosBagResultsQueryHookResult = ReturnType<typeof useGetCaosBagResultsQuery>;
-export type GetCaosBagResultsLazyQueryHookResult = ReturnType<typeof useGetCaosBagResultsLazyQuery>;
-export type GetCaosBagResultsQueryResult = Apollo.QueryResult<GetCaosBagResultsQuery, GetCaosBagResultsQueryVariables>;
-export const GetChaosBagResultsDocument = gql`
-    query getChaosBagResults($campaign_id: Int!) {
-  chaos_bag_result_by_pk(id: $campaign_id) {
-    id
-    bless
-    curse
-    drawn
-    sealed
-    totalDrawn
-  }
-}
-    `;
 
 /**
  * __useGetChaosBagResultsQuery__
@@ -12558,6 +12767,43 @@ export function useChaosBagDecCurseMutation(baseOptions?: Apollo.MutationHookOpt
 export type ChaosBagDecCurseMutationHookResult = ReturnType<typeof useChaosBagDecCurseMutation>;
 export type ChaosBagDecCurseMutationResult = Apollo.MutationResult<ChaosBagDecCurseMutation>;
 export type ChaosBagDecCurseMutationOptions = Apollo.BaseMutationOptions<ChaosBagDecCurseMutation, ChaosBagDecCurseMutationVariables>;
+export const ChaosBagSetTarotDocument = gql`
+    mutation chaosBagSetTarot($campaign_id: Int!, $tarot: chaos_bag_tarot_mode_enum) {
+  update_chaos_bag_result(where: {id: {_eq: $campaign_id}}, _set: {tarot: $tarot}) {
+    returning {
+      id
+      tarot
+    }
+  }
+}
+    `;
+export type ChaosBagSetTarotMutationFn = Apollo.MutationFunction<ChaosBagSetTarotMutation, ChaosBagSetTarotMutationVariables>;
+
+/**
+ * __useChaosBagSetTarotMutation__
+ *
+ * To run a mutation, you first call `useChaosBagSetTarotMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagSetTarotMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chaosBagSetTarotMutation, { data, loading, error }] = useChaosBagSetTarotMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      tarot: // value for 'tarot'
+ *   },
+ * });
+ */
+export function useChaosBagSetTarotMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagSetTarotMutation, ChaosBagSetTarotMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChaosBagSetTarotMutation, ChaosBagSetTarotMutationVariables>(ChaosBagSetTarotDocument, options);
+      }
+export type ChaosBagSetTarotMutationHookResult = ReturnType<typeof useChaosBagSetTarotMutation>;
+export type ChaosBagSetTarotMutationResult = Apollo.MutationResult<ChaosBagSetTarotMutation>;
+export type ChaosBagSetTarotMutationOptions = Apollo.BaseMutationOptions<ChaosBagSetTarotMutation, ChaosBagSetTarotMutationVariables>;
 export const SetBinaryAchievementDocument = gql`
     mutation setBinaryAchievement($campaign_id: Int!, $id: String!, $value: Boolean!) {
   insert_guide_achievement_one(

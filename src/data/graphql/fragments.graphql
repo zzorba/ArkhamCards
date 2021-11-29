@@ -75,6 +75,7 @@ fragment FullChaosBagResult on chaos_bag_result {
   drawn
   sealed
   totalDrawn
+  tarot
 }
 
 fragment MiniDeck on campaign_deck {

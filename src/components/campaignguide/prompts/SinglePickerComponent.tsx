@@ -91,7 +91,7 @@ export default function SinglePickerComponent({
   const onValueChange = useCallback((idx: number) => {
     onChoiceChange(idx);
   }, [onChoiceChange]);
-  const { dialog, showDialog } = usePickerDialog({
+  const [dialog, showDialog] = usePickerDialog({
     title,
     investigator,
     description,

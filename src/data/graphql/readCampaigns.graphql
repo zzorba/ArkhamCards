@@ -48,20 +48,9 @@ query getCampaignAccess($campaign_id: Int!) {
   }
 }
 
-query getCaosBagResults($campaign_id: Int!) {
-  chaos_bag_result_by_pk(id: $campaign_id) {
-    ...FullChaosBagResult
-  }
-}
-
 query getChaosBagResults($campaign_id: Int!) {
   chaos_bag_result_by_pk(id: $campaign_id) {
-    id
-    bless
-    curse
-    drawn
-    sealed
-    totalDrawn
+    ...FullChaosBagResult
   }
 }
 

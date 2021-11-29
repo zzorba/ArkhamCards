@@ -3,9 +3,8 @@ import { TouchableOpacity, StyleSheet, View } from 'react-native';
 
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { DisplayChoice } from '@data/scenario';
-import space, { m, s, xs } from '@styles/space';
+import space, { m, s, xs, isTablet } from '@styles/space';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
-import { isTablet } from 'react-native-device-info';
 import StyleContext from '@styles/StyleContext';
 
 interface Props {

@@ -8,7 +8,7 @@ import VariableTokenInput from './VariableTokenInput';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { difficultyString, Scenario, scenarioFromCard } from '@components/campaign/constants';
-import { CampaignDifficulty } from '@actions/types';
+import { CampaignDifficulty, ChaosBagResults } from '@actions/types';
 import { ChaosBag, SPECIAL_TOKENS, ChaosTokenType, CHAOS_TOKENS, getChaosTokenValue } from '@app_constants';
 import Card from '@data/types/Card';
 import space, { isTablet, m, s } from '@styles/space';
@@ -38,6 +38,8 @@ import InvestigatorRadioChoice from '@components/campaignguide/prompts/ChooseInv
 import { elderSign } from './constants';
 import RoundButton from '@components/core/RoundButton';
 import ArkhamIcon from '@icons/ArkhamIcon';
+import { flattenChaosBag } from '../campaignUtil';
+import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 
 
 interface Props {
@@ -332,25 +334,20 @@ function isPassing(value: ChaosTokenModifier, modifiedSkill: number, testDifficu
 
 function calculatePassingOdds(
   chaosBag: ChaosBag,
+  chaosBagResults: ChaosBagResultsT,
   specialTokenValues: SimpleChaosTokenValue[],
   modifiedSkill: number,
   testDifficulty: number
 ) {
-  const flatTokens = flatMap(CHAOS_TOKENS, token => {
-    const count = chaosBag[token] || 0;
-    if (!count) {
-      return [];
-    }
+  const flatTokens = flatMap(flattenChaosBag(chaosBag, chaosBagResults.tarot), token => {
     const value: undefined | ChaosTokenModifier = getChaosTokenValue(token, specialTokenValues);
     if (value === undefined) {
       return [];
     }
-    return map(range(0, count), () => {
-      return {
-        value,
-        token,
-      };
-    });
+    return {
+      value,
+      token,
+    };
   });
   const [passing, failing] = partition(flatTokens, t => isPassing(t.value, modifiedSkill, testDifficulty));
   const total = passing.length + failing.length;
@@ -470,30 +467,26 @@ function tokenRatioString(tokens: number, total: number): string {
 
 function ChaosBagOddsSection({
   chaosBag,
+  chaosBagResults,
   specialTokenValues,
   modifiedSkill,
   testDifficulty,
   showBlurse,
-}: ChaosBagProps & { showBlurse: boolean }) {
+}: ChaosBagProps & { showBlurse: boolean; chaosBagResults: ChaosBagResultsT }) {
   const bagTotal = useMemo(() => sumBy(values(chaosBag), x => x || 0), [chaosBag]);
   const { typography, colors, width } = useContext(StyleContext);
   const tokensByValue: ChaosTokenCollection[] = useMemo(() => {
-    const result: { value: ChaosTokenModifier; tokens: ChaosTokenType[] }[] = map(groupBy(flatMap(CHAOS_TOKENS, token => {
-      const count = chaosBag[token] || 0;
-      if (!count) {
-        return [];
-      }
-      const value: undefined | ChaosTokenModifier = getChaosTokenValue(token, specialTokenValues);
-      if (value === undefined || value.reveal_another) {
-        return [];
-      }
-      return map(range(0, count), () => {
+    const result: { value: ChaosTokenModifier; tokens: ChaosTokenType[] }[] = map(groupBy(
+      flatMap(flattenChaosBag(chaosBag, chaosBagResults.tarot), token => {
+        const value: undefined | ChaosTokenModifier = getChaosTokenValue(token, specialTokenValues);
+        if (value === undefined || value.reveal_another) {
+          return [];
+        }
         return {
           value,
           token,
         };
-      });
-    }), x => x.value.modifier), (tokens) => {
+      }), x => x.value.modifier), (tokens) => {
       return {
         value: head(tokens)?.value || { modifier: 0 },
         tokens: map(tokens, t => t.token),
@@ -525,7 +518,7 @@ function ChaosBagOddsSection({
         }
       }
     });
-  }, [chaosBag, specialTokenValues, testDifficulty, modifiedSkill]);
+  }, [chaosBag, chaosBagResults.tarot, specialTokenValues, testDifficulty, modifiedSkill]);
 
   const { passing, failing, passingTokens, failingTokens } = useMemo(() => {
     const [passing, failing] = partition(tokensByValue, t => isPassing(t.value, modifiedSkill, testDifficulty));
@@ -599,7 +592,7 @@ const SPECIAL_ODDS: { [key: string]: number } = {
   auto_suceed: 100,
 };
 
-function SpecialTokenOdds({ chaosBag, specialTokenValues, modifiedSkill, testDifficulty }: ChaosBagProps) {
+function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modifiedSkill, testDifficulty }: ChaosBagProps & { chaosBagResults: ChaosBagResultsT }) {
   const { colors, typography, width } = useContext(StyleContext);
   const bless = chaosBag.bless || 0;
   const curse = chaosBag.curse || 0;
@@ -658,12 +651,12 @@ function SpecialTokenOdds({ chaosBag, specialTokenValues, modifiedSkill, testDif
         color: colors.token.frost,
       });
     }
-    const basePass = calculatePassingOdds(chaosBag, specialTokenValues, modifiedSkill, testDifficulty)
+    const basePass = calculatePassingOdds(chaosBag, chaosBagResults, specialTokenValues, modifiedSkill, testDifficulty)
     return map(drawAnotherTokens, t => {
       if (t.modifier === 0) {
         return { ...t, boost: undefined };
       }
-      const minBoost = calculatePassingOdds(chaosBag, specialTokenValues, modifiedSkill + t.modifier, testDifficulty) - basePass;
+      const minBoost = calculatePassingOdds(chaosBag, chaosBagResults, specialTokenValues, modifiedSkill + t.modifier, testDifficulty) - basePass;
 
       const totalNonDrawAnotherTokens = total - (sumBy(drawAnotherTokens, x => x.count));
       if (t.token === 'frost') {
@@ -685,7 +678,7 @@ function SpecialTokenOdds({ chaosBag, specialTokenValues, modifiedSkill, testDif
             ...chaosBag,
             frost: 0,
             auto_fail: 1 + (t.count - 1),
-          }, specialTokenValues, modifiedSkill, testDifficulty);
+          }, chaosBagResults, specialTokenValues, modifiedSkill, testDifficulty);
 
           const oddsAdjustment = Math.round((oddsOfDrawingOneFrost * oddsOfFailingViaFrost) - basePass);
           return {
@@ -707,7 +700,7 @@ function SpecialTokenOdds({ chaosBag, specialTokenValues, modifiedSkill, testDif
         };
       }
 
-      const maxBoost = t.count > 1 ? calculatePassingOdds(chaosBag, specialTokenValues, modifiedSkill + t.modifier * t.count, testDifficulty) - basePass : minBoost;
+      const maxBoost = t.count > 1 ? calculatePassingOdds(chaosBag, chaosBagResults, specialTokenValues, modifiedSkill + t.modifier * t.count, testDifficulty) - basePass : minBoost;
       return {
         ...t,
         boost: {
@@ -716,7 +709,7 @@ function SpecialTokenOdds({ chaosBag, specialTokenValues, modifiedSkill, testDif
         },
       };
     });
-  }, [chaosBag, specialTokenValues, total, bless, curse, frost, colors, testDifficulty, modifiedSkill]);
+  }, [chaosBag, specialTokenValues, chaosBagResults, total, bless, curse, frost, colors, testDifficulty, modifiedSkill]);
   if (total === 0) {
     return null;
   }
@@ -1049,6 +1042,7 @@ export default function OddsCalculatorComponent({
         </View>
         <ChaosBagOddsSection
           chaosBag={chaosBag}
+          chaosBagResults={chaosBagResults}
           specialTokenValues={allSpecialTokenValues}
           modifiedSkill={modifiedSkill}
           testDifficulty={testDifficulty}
@@ -1076,6 +1070,7 @@ export default function OddsCalculatorComponent({
         </View>
         <SpecialTokenOdds
           chaosBag={chaosBag}
+          chaosBagResults={chaosBagResults}
           specialTokenValues={allSpecialTokenValues}
           modifiedSkill={modifiedSkill}
           testDifficulty={testDifficulty}

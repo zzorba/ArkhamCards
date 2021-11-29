@@ -45,7 +45,7 @@ export default function ThemePicker() {
   }, [dispatch]);
 
 
-  const { showDialog, dialog } = usePickerDialog<number>({
+  const [dialog, showDialog] = usePickerDialog<number>({
     title: t`Font Size`,
     description: t`This can be used to make the app font size larger, though it may impact layout on some screens.`,
     items,

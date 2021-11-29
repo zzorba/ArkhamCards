@@ -161,7 +161,7 @@ export default function LanguagePicker({ first, last, showAlert }: { first?: boo
     return useSystemLang ? 'system' : lang;
   }, [tempLang, useSystemLang, lang]);
 
-  const { showDialog, dialog } = usePickerDialog<string>({
+  const [dialog, showDialog] = usePickerDialog<string>({
     title: t`Language`,
     description: t`Note: not all cards have translations available.`,
     items,

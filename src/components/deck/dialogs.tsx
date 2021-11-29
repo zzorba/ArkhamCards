@@ -374,10 +374,7 @@ export function usePickerDialog<T>({
   items,
   selectedValue,
   onValueChange,
-}: PickerDialogOptions<T>): {
-  dialog: React.ReactNode;
-  showDialog: () => void;
-} {
+}: PickerDialogOptions<T>): [React.ReactNode, () => void] {
   const { borderStyle, typography } = useContext(StyleContext);
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const onValuePress = useCallback((value: T) => {
@@ -425,10 +422,10 @@ export function usePickerDialog<T>({
     setVisibleRef.current = setVisible;
   }, [setVisible]);
   const showDialog = useCallback(() => setVisible(true), [setVisible]);
-  return {
+  return [
     dialog,
     showDialog,
-  };
+  ];
 }
 
 interface MultiPickerDialogOptions<T> {

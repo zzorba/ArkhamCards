@@ -52,7 +52,7 @@ export default function DeckTabooPickerButton({ tabooSetId, setTabooSet, disable
     setTabooSet(tabooId === -1 ? undefined : tabooId);
   }, [tabooSets, setTabooSet]);
   const selectedValue = !tabooSetId ? -1 : tabooSetId;
-  const { showDialog, dialog } = usePickerDialog({
+  const [dialog, showDialog] = usePickerDialog({
     title: t`Select Taboo List`,
     items,
     selectedValue,

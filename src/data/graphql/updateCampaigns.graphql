@@ -177,6 +177,24 @@ mutation chaosBagDecCurse($campaign_id: Int!) {
   }
 }
 
+
+
+mutation chaosBagSetTarot($campaign_id: Int!, $tarot: chaos_bag_tarot_mode_enum) {
+  update_chaos_bag_result(
+    where: {
+      id: { _eq: $campaign_id }
+    }
+    _set: {
+      tarot: $tarot
+    }
+  ) {
+    returning {
+    	id
+      tarot
+	  }
+  }
+}
+
 mutation setBinaryAchievement(
   $campaign_id: Int!,
   $id: String!,

@@ -317,7 +317,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       },
     });
   }, [componentId, customChaosBag, setCustomChaosBag, selection]);
-  const { dialog: difficultyDialog, showDialog: showDifficultyDialog } = usePickerDialog({
+  const [difficultyDialog, showDifficultyDialog] = usePickerDialog({
     title: t`Difficulty`,
     items: map(DIFFICULTIES, difficulty => {
       return {
