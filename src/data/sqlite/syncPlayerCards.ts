@@ -16,17 +16,19 @@ export interface PlayerCardState {
   tabooSets: TabooSet[];
 }
 
+const VERBOSE = false;
 export default async function syncPlayerCards(
   db: Database,
   updateInvestigatorContext: (state: InvestigatorCardState) => void,
   updateContext: (state: PlayerCardState) => void
 ) {
   try {
+    const start = new Date();
     const tabooSetsP = db.tabooSets().then(ts => ts.createQueryBuilder().getMany());
-    const qbP = db.cardsQuery();
-    const investigatorsP = qbP.then(qb => qb.where(INVESTIGATOR_CARDS_QUERY).getMany());
-    const cardsP = qbP.then(qb => qb.where(SYNC_CARDS_QUERY).getMany());
+    const investigatorsP = db.cardsQuery().then(qb => qb.where(INVESTIGATOR_CARDS_QUERY).getMany());
+    const cardsP = db.cardsQuery().then(qb => qb.where(SYNC_CARDS_QUERY).getMany());
     const investigators = await investigatorsP;
+    VERBOSE && console.log(`Fetched investigators in: ${(new Date()).getTime() - start.getTime()}`);
     const investigatorsByTaboo = mapValues(
       groupBy(investigators, card => card.taboo_set_id || 0),
       allCards => {
@@ -54,6 +56,7 @@ export default async function syncPlayerCards(
     updateInvestigatorContext(investigatorCards);
 
     const cards = await cardsP;
+    VERBOSE && console.log(`Fetched player cards in: ${(new Date()).getTime() - start.getTime()}`);
     const playerCards: {
       [key: string]: PlayerCards;
     } = {};
@@ -68,7 +71,7 @@ export default async function syncPlayerCards(
           if (card.type_code === 'investigator') {
             investigators[card.code] = card;
           }
-          if (card.isBasicWeakness()) {
+          if (card.isBasicWeakness() && !card.duplicate_of_code) {
             weaknessCards.push(card);
           }
         });

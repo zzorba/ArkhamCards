@@ -4,13 +4,15 @@ import { filter, findLast, find, keys, last } from 'lodash';
 import { t } from 'ttag';
 import { Navigation } from 'react-native-navigation';
 
-import { ProcessedCampaign } from '@data/scenario';
+import { ProcessedCampaign, StepId } from '@data/scenario';
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
 import space, { s } from '@styles/space';
-import { CampaignCycleCode, Trauma } from '@actions/types';
+import useDeckUpgradeAction from '@components/deck/useDeckUpgradeAction';
+import { Deck, CampaignCycleCode, Trauma, getDeckId } from '@actions/types';
 import { ShowScenario } from './LinkedCampaignGuideView/useCampaignLinkHelper';
 import DeckButton from '@components/deck/controls/DeckButton';
+import { useDeckActions } from '@data/remote/decks';
 import useChaosBagDialog from '@components/campaign/CampaignDetailView/useChaosBagDialog';
 import CampaignGuideContext from './CampaignGuideContext';
 import ScenarioCarouselComponent from './ScenarioCarouselComponent';
@@ -20,6 +22,9 @@ import CampaignSummaryHeader from '@components/campaign/CampaignSummaryHeader';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import { UpdateCampaignActions } from '@data/remote/campaigns';
 import { showGuideCampaignLog } from '@components/campaign/nav';
+import { WeaknessSetProps } from './WeaknessSetView';
+
+const SHOW_WEAKNESS = false;
 
 interface Props {
   componentId: string;
@@ -31,12 +36,33 @@ interface Props {
   displayLinkScenarioCount?: number;
   footerButtons: React.ReactNode;
 }
+
+
 export default function CampaignDetailTab({
   componentId, processedCampaign, displayLinkScenarioCount, footerButtons, updateCampaignActions,
   showLinkedScenario, showAlert, showCountDialog,
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const { campaignId, campaign, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
+
+  const deckActions = useDeckActions();
+  const deckUpgradeCompleted = useCallback((deck: Deck, xp: number, id: StepId) => {
+    const [choices, , delayedDeckEdit] = campaignState.numberChoices(id.id, id.scenario);
+    if (choices && delayedDeckEdit) {
+      campaignState.setNumberChoices(
+        id.id,
+        choices,
+        getDeckId(deck),
+        {
+          ...delayedDeckEdit,
+          resolved: true,
+        },
+        id.scenario
+      )
+    }
+  }, [campaignState]);
+  const [saving, error, saveDeckUpgrade] = useDeckUpgradeAction<StepId>(deckActions, deckUpgradeCompleted);
+
   const showAddInvestigator = useCallback(() => {
     campaignState.showChooseDeck();
   }, [campaignState]);
@@ -89,6 +115,27 @@ export default function CampaignDetailTab({
   const currentScenario = findLast(processedCampaign.scenarios, s => (s.type === 'started' || s.type === 'completed') && s.scenarioGuide.scenarioType() === 'scenario') ||
     find(processedCampaign.scenarios, s => s.type === 'playable' && s.scenarioGuide.scenarioType() === 'scenario');
 
+  const showWeaknessSet = useCallback(() => {
+    Navigation.push<WeaknessSetProps>(componentId, {
+      component: {
+        name: 'Guide.WeaknessSet',
+        passProps: {
+          campaignId,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: t`Weakness Set`,
+            },
+            backButton: {
+              title: t`Cancel`,
+            },
+          },
+        },
+      },
+    })
+  }, [componentId, campaignId]);
+
   const [chaosBagDialog, showChaosBag] = useChaosBagDialog({
     componentId,
     allInvestigators,
@@ -135,6 +182,16 @@ export default function CampaignDetailTab({
             onPress={showChaosBag}
             bottomMargin={s}
           />
+          { SHOW_WEAKNESS && (
+            <DeckButton
+              icon="weakness"
+              title={t`Weakness Set`}
+              detail={t`Review and draw weaknesses`}
+              color="light_gray"
+              onPress={showWeaknessSet}
+              bottomMargin={s}
+            />
+          ) }
         </View>
         <ScenarioCarouselComponent
           componentId={componentId}
@@ -152,6 +209,8 @@ export default function CampaignDetailTab({
             showTraumaDialog={showTraumaDialog}
             showCountDialog={showCountDialog}
             actions={updateCampaignActions}
+            saveDeckUpgrade={saveDeckUpgrade}
+            savingDeckUpgrade={saving}
           />
         </View>
         { footerButtons }

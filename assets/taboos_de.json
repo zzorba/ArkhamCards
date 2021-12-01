@@ -1,0 +1,396 @@
+[
+  {
+    "id": 1,
+    "code": "001",
+    "name": "Tabuliste",
+    "active": 1,
+    "date_start": "2019-04-20",
+    "cards": [
+      {
+        "code": "01020",
+        "xp": 2
+      },
+      {
+        "code": "01050",
+        "xp": 2
+      },
+      {
+        "code": "02152",
+        "xp": 1
+      },
+      {
+        "code": "02187",
+        "xp": 5
+      },
+      {
+        "code": "02189",
+        "xp": 5
+      },
+      {
+        "code": "02193",
+        "xp": 2
+      },
+      {
+        "code": "01033",
+        "text": "Die [reaction]-Fähigkeit dieser Karte lautet jetzt: „Nachdem du erfolgreich ermittelt hast, erschöpfe Dr. Milan Christopher: Erhalte 1 Ressource.“"
+      },
+      {
+        "code": "02002",
+        "text": "Die [reaction]-Fähigkeit dieser Karte erhält folgenden zusätzlichen Text: „(Nur ein Mal pro Runde.)“"
+      },
+      {
+        "code": "02111",
+        "text": "Diese Karte erhält folgenden zusätzlichen Text: „Nur 2 Kopien von Zu tief graben im Siegpunktestapel für die gesamte Gruppe.“"
+      },
+      {
+        "code": "02229",
+        "text": "Diese Karte erhält folgenden zusätzlichen Text: „Max. 1 pro Fertigkeitsprobe beitragen.“"
+      },
+      {
+        "code": "02266",
+        "text": "Diese Karte erhält folgenden zusätzlichen Text: „(Max. 1 pro Runde.)“"
+      },
+      {
+        "code": "03029",
+        "text": "Die Fähigkeit dieser Karte lautet jetzt: „Bringe eine [[Gegenstand]]-Vorteilskarte, die weniger als 2 Handslots benötigt, von deiner Hand ins Spiel.“"
+      },
+      {
+        "code": "03315",
+        "exceptional": 1,
+        "text": "Diese Karte erhält das Merkmal Außergewöhnlich."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "code": "002",
+    "name": "Tabuliste",
+    "active": 1,
+    "date_start": "2019-09-27",
+    "cards": [
+      {
+        "code": "01020",
+        "xp": 2
+      },
+      {
+        "code": "01050",
+        "xp": 2
+      },
+      {
+        "code": "02026",
+        "xp": 3
+      },
+      {
+        "code": "02152",
+        "xp": 1
+      },
+      {
+        "code": "02187",
+        "xp": 5
+      },
+      {
+        "code": "02189",
+        "xp": 5
+      },
+      {
+        "code": "02193",
+        "xp": 2
+      },
+      {
+        "code": "02226",
+        "xp": -1
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "01033",
+        "text": "Die [reaction]-Fähigkeit dieser Karte lautet jetzt: „Nachdem du erfolgreich ermittelt hast, erschöpfe Dr. Milan Christopher: Erhalte 1 Ressource.“"
+      },
+      {
+        "code": "02002",
+        "text": "Die [reaction]-Fähigkeit dieser Karte erhält folgenden zusätzlichen Text: „(Nur ein Mal pro Runde.)“"
+      },
+      {
+        "code": "02111",
+        "text": "Diese Karte erhält folgenden zusätzlichen Text: „Nur 2 Kopien von Zu tief graben im Siegpunktestapel für die gesamte Gruppe.“"
+      },
+      {
+        "code": "02229",
+        "text": "Diese Karte erhält folgenden zusätzlichen Text: „Max. 1 pro Fertigkeitsprobe beitragen.“"
+      },
+      {
+        "code": "02266",
+        "text": "Diese Karte erhält folgenden zusätzlichen Text: „(Max. 1 pro Runde.)“"
+      },
+      {
+        "code": "03029",
+        "text": "Die Fähigkeit dieser Karte lautet jetzt: „Bringe eine [[Gegenstand]]-Vorteilskarte, die weniger als 2 Handslots benötigt, von deiner Hand ins Spiel.“"
+      },
+      {
+        "code": "03315",
+        "exceptional": 1,
+        "text": "Diese Karte erhält das Merkmal Außergewöhnlich."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "code": "003",
+    "name": "Tabuliste",
+    "active": 1,
+    "date_start": "2020-10-15",
+    "cards": [
+      {
+        "code": "01020",
+        "xp": 1
+      },
+      {
+        "code": "01050",
+        "xp": 2
+      },
+      {
+        "code": "02108",
+        "xp": 2
+      },
+      {
+        "code": "02152",
+        "xp": 1
+      },
+      {
+        "code": "02187",
+        "xp": 3
+      },
+      {
+        "code": "02189",
+        "xp": 3
+      },
+      {
+        "code": "02193",
+        "xp": 1
+      },
+      {
+        "code": "02226",
+        "xp": -1
+      },
+      {
+        "code": "04305",
+        "xp": 1
+      },
+      {
+        "code": "05153",
+        "xp": 4
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "05231",
+        "xp": 2
+      },
+      {
+        "code": "06021",
+        "xp": 3
+      },
+      {
+        "code": "60233",
+        "xp": 3
+      },
+      {
+        "code": "01033",
+        "text": "Die [reaction]-Fähigkeit dieser Karte lautet jetzt: „Nachdem du erfolgreich ermittelt hast, erschöpfe Dr. Milan Christopher: Erhalte 1 Ressource.“"
+      },
+      {
+        "code": "02002",
+        "text": "Die [reaction]-Fähigkeit dieser Karte erhält folgenden zusätzlichen Text: „(Nur ein Mal pro Runde.)“"
+      },
+      {
+        "code": "02111",
+        "text": "Diese Karte erhält folgenden zusätzlichen Text: „Nur 2 Kopien von Zu tief graben im Siegpunktestapel für die gesamte Gruppe.“"
+      },
+      {
+        "code": "02229",
+        "text": "Diese Karte erhält folgenden zusätzlichen Text: „(Max. 1 Mal pro Runde.)“"
+      },
+      {
+        "code": "02266",
+        "text": "Diese Karte erhält folgenden zusätzlichen Text: „(Max. 1 pro Runde.)“"
+      },
+      {
+        "code": "03029",
+        "text": "Die Fähigkeit dieser Karte lautet jetzt: „Bringe eine [[Gegenstand]]-Vorteilskarte der Stufe 0–3 von deiner Hand ins Spiel.“"
+      },
+      {
+        "code": "03315",
+        "exceptional": 1,
+        "text": "Diese Karte erhält das Merkmal Außergewöhnlich."
+      },
+      {
+        "code": "04309",
+        "text": "Diese Karte erhält folgenden zusätzlichen Text: „Entferne Alles oder Nichts aus dem Spiel.“"
+      },
+      {
+        "code": "05116",
+        "text": "Die [Action]-Fähigkeit dieser Karten ist jetzt eine [fast]-Fähigkeit."
+      },
+      {
+        "code": "05188",
+        "text": "Die [Action]-Fähigkeit dieser Karten ist jetzt eine [fast]-Fähigkeit."
+      },
+      {
+        "code": "05189",
+        "text": "Die [Action]-Fähigkeit dieser Karten ist jetzt eine [fast]-Fähigkeit."
+      },
+      {
+        "code": "06195",
+        "text": "Die [action]-Fähigkeit dieser Karte lautet nun: „[action] Gib 1 Munition aus: <b>Kampf.</b> Du bekommst für diesen Angriff +2 [combat]. Falls während dieses Angriffs ein Chaosmarker mit einem nicht-negativen Modifikator enthüllt wird, fügt dieser Angriff +2 Schaden zu.“"
+      },
+      {
+        "code": "02026",
+        "deck_limit": 0,
+        "text": "Verboten."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "code": "004",
+    "name": "Tabuliste",
+    "active": 1,
+    "date_start": "2021-06-28",
+    "cards": [
+      {
+        "code": "01020",
+        "xp": 1
+      },
+      {
+        "code": "01050",
+        "text": "Der letzte Absatz dieser Karte lautet jetzt: „Löse dich von jedem Gegner, der mit dir in einen Kampf verwickelt ist, und bewege dich zu einem verbundenen Ort ohne Gegner.“"
+      },
+      {
+        "code": "02108",
+        "xp": 2
+      },
+      {
+        "code": "02152",
+        "xp": 1
+      },
+      {
+        "code": "02187",
+        "xp": 3
+      },
+      {
+        "code": "02189",
+        "xp": 3
+      },
+      {
+        "code": "02193",
+        "xp": 1
+      },
+      {
+        "code": "02226",
+        "text": "Die [action]-Fähigkeit dieser Karte erhält folgenden zusätzlichen Text: „Dieser Angriff darf Nicht-[[Elite]]-Gegner bis zu 1 Ort weiter entfernt zum Ziel haben als die normale Reichweite erlaubt und ignoriert die Merkmale Zurückhaltend und Zurückschlagen.“"
+      },
+      {
+        "code": "04305",
+        "xp": 1
+      },
+      {
+        "code": "05153",
+        "xp": 4
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "05230",
+        "text": "Diese Karte verliert den Text: „Die Vorteilskarte mit dieser Verstärkung kann nicht verwendet werden, um Gegner anzugreifen, die mit dir in einen Kampf verwickelt sind.“"
+      },
+      {
+        "code": "05231",
+        "xp": 2
+      },
+      {
+        "code": "05324",
+        "text": "Diese Karte erhält folgenden zusätzlichen Text: „Entferne Wendung zum Guten aus dem Spiel.“"
+      },
+      {
+        "code": "06022",
+        "text": "Die anhaltende Fähigkeit dieser Karte lautet jetzt: „Falls diese Karte keine Ladungen hat, entferne sie aus dem Spiel.“"
+      },
+      {
+        "code": "06199",
+        "text": "Diese Karte erhält folgenden zusätzlichen Text: „Entferne jede beigetragene Kopie von Drei Asse aus dem Spiel.“"
+      },
+      {
+        "code": "60233",
+        "xp": 3
+      },
+      {
+        "code": "07269",
+        "text": "Diese Karte erhält folgenden zusätzlichen Text: „Entferne Ein vorsichtiger Frieden aus dem Spiel.“"
+      },
+      {
+        "code": "07301",
+        "text": "Diese Karte erhält folgenden zusätzlichen Text: „Entferne Weihen aus dem Spiel.“"
+      },
+      {
+        "code": "01033",
+        "text": "Die [reaction]-Fähigkeit dieser Karte lautet jetzt: „Nachdem du erfolgreich ermittelt hast, erschöpfe Dr. Milan Christopher: Erhalte 1 Ressource.“"
+      },
+      {
+        "code": "02002",
+        "text": "Die [reaction]-Fähigkeit dieser Karte erhält folgenden zusätzlichen Text: „(Nur ein Mal pro Runde.)“"
+      },
+      {
+        "code": "02111",
+        "text": "Diese Karte erhält folgenden zusätzlichen Text: „Nur 2 Kopien von Zu tief graben im Siegpunktestapel für die gesamte Gruppe.“"
+      },
+      {
+        "code": "02229",
+        "text": "Diese Karte erhält folgenden zusätzlichen Text: „(Max. 1 Mal pro Runde.)“"
+      },
+      {
+        "code": "02266",
+        "text": "Diese Karte erhält folgenden zusätzlichen Text: „(Max. 1 pro Runde.)“"
+      },
+      {
+        "code": "03029",
+        "text": "Die Fähigkeit dieser Karte lautet jetzt: „Bringe eine [[Gegenstand]]-Vorteilskarte der Stufe 0–3 von deiner Hand ins Spiel.“"
+      },
+      {
+        "code": "03315",
+        "exceptional": 1,
+        "text": "Diese Karte erhält das Merkmal Außergewöhnlich."
+      },
+      {
+        "code": "04309",
+        "text": "Diese Karte erhält folgenden zusätzlichen Text: „Entferne Alles oder Nichts aus dem Spiel.“"
+      },
+      {
+        "code": "05116",
+        "text": "Die [Action]-Fähigkeit dieser Karten ist jetzt eine [fast]-Fähigkeit."
+      },
+      {
+        "code": "05188",
+        "text": "Die [Action]-Fähigkeit dieser Karten ist jetzt eine [fast]-Fähigkeit."
+      },
+      {
+        "code": "05189",
+        "text": "Die [Action]-Fähigkeit dieser Karten ist jetzt eine [fast]-Fähigkeit."
+      },
+      {
+        "code": "06195",
+        "text": "Die [action]-Fähigkeit dieser Karte lautet nun: „[action] Gib 1 Munition aus: <b>Kampf.</b> Du bekommst für diesen Angriff +2 [combat]. Falls während dieses Angriffs ein Chaosmarker mit einem nicht-negativen Modifikator enthüllt wird, fügt dieser Angriff +2 Schaden zu.“"
+      },
+      {
+        "code": "02026",
+        "deck_limit": 0,
+        "text": "Verboten."
+      }
+    ]
+  }
+]

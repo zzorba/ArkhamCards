@@ -24,6 +24,7 @@ import AppIcon from '@icons/AppIcon';
 
 interface Props {
   card: Card;
+  description?: string;
   id?: string;
   onPress?: (card: Card) => void;
   onPressId?: (code: string, card: Card) => void;
@@ -138,6 +139,7 @@ function CardSearchResult(props: Props) {
     card,
     id,
     control,
+    description,
     onPress,
     onPressId,
     backgroundColor,
@@ -254,10 +256,10 @@ function CardSearchResult(props: Props) {
                 <AppIcon name="parallel" size={18 * fontScale} color={colors.darkText} />
               </View>
             ) }
-            { !!card.renderSubname && (
+            { (!!card.renderSubname || !!description) && (
               <View style={[styles.row, styles.subname, space.marginRightS, space.paddingTopXs]}>
                 <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={1} ellipsizeMode="clip">
-                  { card.renderSubname }
+                  { description || card.renderSubname }
                 </Text>
               </View>
             ) }
@@ -265,7 +267,7 @@ function CardSearchResult(props: Props) {
         ) }
       </View>
     );
-  }, [colors, fontScale, typography, card, invalid, tabooBlock, skillIcons, dualFactionIcons]);
+  }, [colors, fontScale, typography, card, invalid, tabooBlock, skillIcons, dualFactionIcons, description]);
 
   if (!card) {
     return (

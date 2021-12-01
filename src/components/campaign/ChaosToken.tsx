@@ -8,7 +8,6 @@ import StyleContext from '@styles/StyleContext';
 import TokenIcon from '@icons/TokenIcon';
 import AppIcon from '@icons/AppIcon';
 import { TINY_PHONE } from '@styles/sizes';
-import ArkhamIcon from '@icons/ArkhamIcon';
 
 interface OwnProps {
   iconKey?: ChaosTokenType | 'tap' | 'another' | 'return' | 'odds' | 'bag' | 'more';

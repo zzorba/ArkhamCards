@@ -140,6 +140,7 @@ export default function CheckListComponent({ extraSave, id, choiceId, defaultSta
               onChoiceToggle={onChoiceToggle}
               onSecondaryChoice={onSecondaryChoice}
               editable={!hasDecision}
+              last={choiceList !== undefined || idx === items.length - 1}
             />
           );
         }) }

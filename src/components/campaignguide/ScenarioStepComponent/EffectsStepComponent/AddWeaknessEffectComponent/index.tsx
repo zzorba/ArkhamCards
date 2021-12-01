@@ -16,6 +16,7 @@ import FilterBuilder from '@lib/filters';
 import { usePlayerCards, useWeaknessCards } from '@components/core/hooks';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   id: string;
@@ -27,6 +28,7 @@ interface Props {
 const FILTER_BUILDER = new FilterBuilder('weakness');
 
 export default function AddWeaknessEffectComponent({ id, effect, input, numberInput }: Props) {
+  const { useCardTraits } = useContext(LanguageContext);
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { campaignLog } = useContext(ScenarioStepContext);
   const firstDecisionId = `${id}_use_app`;
@@ -109,6 +111,7 @@ export default function AddWeaknessEffectComponent({ id, effect, input, numberIn
           <SelectWeaknessTraitsComponent
             weaknessCards={weaknessCards}
             choices={chosenTraits}
+            useCardTraits={useCardTraits}
             save={saveTraits}
           />
         ) }
@@ -116,7 +119,7 @@ export default function AddWeaknessEffectComponent({ id, effect, input, numberIn
           <DrawRandomWeaknessComponent
             id={id}
             traits={chosenTraits || effect.weakness_traits}
-            realTraits={!chosenTraits}
+            realTraits={!chosenTraits || !useCardTraits}
             investigators={investigators}
             campaignLog={campaignLog}
             scenarioState={scenarioState}
@@ -128,7 +131,9 @@ export default function AddWeaknessEffectComponent({ id, effect, input, numberIn
         ) }
       </>
     );
-  }, [saveTraits, id, numberInput, firstDecisionId, renderCardChoice, traitsDecisionId, effect, weaknessCards, cards, campaignLog, possibleWeaknessCards, possibleWeaknessCardsLoading]);
+  }, [saveTraits,
+    id, numberInput, useCardTraits,
+    firstDecisionId, renderCardChoice, traitsDecisionId, effect, weaknessCards, cards, campaignLog, possibleWeaknessCards, possibleWeaknessCardsLoading]);
 
   return (
     <>

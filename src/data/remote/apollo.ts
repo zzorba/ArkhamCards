@@ -83,29 +83,6 @@ import {
   MiniCampaignFragmentDoc,
 } from '@generated/graphql/apollo-schema';
 
-function fullToMiniCampaignFragment(fragment: FullCampaignFragment): MiniCampaignFragment {
-  return {
-    __typename: 'campaign',
-    ...pick(fragment, [
-      'id',
-      'uuid',
-      'owner_id',
-      'name',
-      'investigator_data',
-      'latest_decks',
-      'investigators',
-      'difficulty',
-      'updated_at',
-      'guided',
-      'scenarioResults',
-    ]),
-  };
-}
-
-function latestDeckToMiniDeck(deck: LatestDeckFragment): MiniDeckFragment {
-  return pick(deck, ['__typename', 'investigator', 'id', 'owner_id', 'arkhamdb_id', 'local_uuid', 'campaign_id']);
-}
-
 interface RemoveDeck {
   type: 'remove';
 }
@@ -115,52 +92,55 @@ interface KeepDeck {
 interface SwapDeck<T> {
   type: 'swap';
   deck: T;
+  insert?: T;
 }
 
 type UpdateDeck<T> = RemoveDeck | KeepDeck | SwapDeck<T>;
+
+type LatestDecks = { __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined };
 
 function updateDecks(
   cache: ApolloCache<unknown>,
   campaign_id: number,
   owner_id: string,
-  updateMiniDeck: (miniDeck: MiniDeckFragment) => UpdateDeck<MiniDeckFragment>,
   updateAllDeck: (allDeck: AllDeckFragment) => UpdateDeck<AllDeckFragment>,
   updateLatestDeck: (latestDeck: LatestDeckFragment) => UpdateDeck<LatestDeckFragment>
 ) {
-  /*
-  updateMiniCampaign(cache, campaign_id, (fragment) => {
+  updateFullCampaign(cache, campaign_id, (fragment): FullCampaignFragment => {
     return {
       ...fragment,
-      latest_decks: flatMap(fragment.latest_decks, d => {
-        const deck = d.deck && updateMiniDeck(d.deck);
-        if (deck) {
-          return {
-            __typename: 'latest_decks',
-            deck,
-          };
-        }
-        return [];
-      }),
-    };
-  });
-  */
-
-  updateFullCampaign(cache, campaign_id, (fragment) => {
-    return {
-      ...fragment,
-      latest_decks: flatMap(fragment.latest_decks, (d) => {
+      latest_decks: flatMap(fragment.latest_decks || [], (d) => {
         if (d.deck) {
           const result = updateLatestDeck(d.deck);
           switch (result.type) {
-            case 'keep': return [d];
-            case 'remove': return [];
-            case 'swap': return [{
+            case 'keep': return [{
               __typename: 'latest_decks',
-              deck: {
-                ...result.deck,
-                investigator_data: result.deck.investigator_data || d.deck.investigator_data,
-              },
+              deck: d.deck,
             }];
+            case 'remove': return [];
+            case 'swap': {
+              const r: LatestDecks[] = [
+                {
+                  __typename: 'latest_decks',
+                  deck: {
+                    ...result.deck,
+                    investigator_data: result.deck.investigator_data || d.deck.investigator_data || null,
+                  },
+                },
+              ];
+              if (result.insert) {
+                r.push(
+                  {
+                    __typename: 'latest_decks',
+                    deck: {
+                      ...result.insert,
+                      investigator_data: result.insert.investigator_data || d.deck.investigator_data || null,
+                    },
+                  },
+                );
+              }
+              return r;
+            }
           }
         }
         return [];
@@ -172,7 +152,7 @@ function updateDecks(
     variables: {
       userId: owner_id,
     },
-  });
+  }, true);
   if (myDecks?.users_by_pk) {
     cache.writeQuery<GetMyDecksQuery>({
       query: GetMyDecksDocument,
@@ -219,10 +199,17 @@ function updateDecks(
                       },
                     });
                   }
-                  return [{
+                  const r: LatestDecks[] = [{
                     __typename: 'latest_decks',
                     deck: latestDeck,
                   }];
+                  if (result.insert) {
+                    r.push({
+                      __typename: 'latest_decks',
+                      deck: result.insert,
+                    });
+                  }
+                  return r;
                 }
               }
             }
@@ -233,7 +220,10 @@ function updateDecks(
             switch (result.type) {
               case 'keep': return [d];
               case 'remove': return [];
-              case 'swap': return [result.deck];
+              case 'swap': return [
+                result.deck,
+                ...(result.insert ? [result.insert] : []),
+              ];
             }
           }),
         },
@@ -268,9 +258,6 @@ function removeAllMatchingDecks(
   };
 
   updateDecks(cache, campaign_id, owner_id,
-    (deck: MiniDeckFragment) => {
-      return { type: keepDeck(deck) ? 'keep' : 'remove' };
-    },
     (deck: AllDeckFragment) => {
       return { type: keepDeck(deck) ? 'keep' : 'remove' };
     },
@@ -291,16 +278,6 @@ export const uploadLocalDeck = (
     return !!(deck.local_uuid && deck.local_uuid === local_uuid);
   };
   updateDecks(cache, campaign_id, owner_id,
-    (deck: MiniDeckFragment) => {
-      return swapDeck(deck) ? {
-        type: 'swap',
-        deck: {
-          ...deck,
-          local_uuid: null,
-          arkhamdb_id,
-        },
-      } : { type: 'keep' };
-    },
     (deck: AllDeckFragment) => {
       return swapDeck(deck) ? {
         type: 'swap',
@@ -351,27 +328,41 @@ export const handleInsertNextLocalDeck: MutationUpdaterFn<InsertNextLocalDeckMut
   };
 
   updateDecks(cache, oldDeck.campaign_id, oldDeck.owner_id,
-    (deck: MiniDeckFragment) => {
-      return swapDeck(deck) ? {
-        type: 'swap',
-        deck: newDeck,
-      } : { type: 'keep' };
-    },
     (deck: AllDeckFragment) => {
       return swapDeck(deck) ? {
         type: 'swap',
         deck: {
+          ...omit(deck, ['next_deck']),
+          next_deck: {
+            __typename: 'campaign_deck',
+            campaign_id: newDeck.campaign_id,
+            id: newDeck.id,
+            owner_id: newDeck.owner_id,
+            arkhamdb_id: newDeck.arkhamdb_id,
+            local_uuid: newDeck.local_uuid,
+          },
+        },
+        insert: {
+          __typename: 'campaign_deck',
           ...newDeck,
-          previous_deck: pick(deck, ['id', 'owner_id', 'arkhamdb_id', 'local_uuid', 'campaign_id']),
+          campaign: deck.campaign,
+          previous_deck: {
+            __typename: 'campaign_deck',
+            ...omit(deck, ['previous_deck', 'next_deck']),
+            investigator: newDeck.investigator,
+          },
+          next_deck: null,
         },
       } : { type: 'keep' };
     },
     (deck: LatestDeckFragment) => {
       if (swapDeck(deck)) {
         const theDeck = {
+          ...pick(deck, ['investigator_data', 'investigator', 'campaign', 'owner']),
           ...newDeck,
           investigator_data: deck.investigator_data,
           previous_deck: deck,
+          next_deck: null,
         };
         // console.log(`${new Date().toTimeString()}: Caching uploaded deck ${theDeck.id},${theDeck.arkhamdb_id},${theDeck.local_uuid}`);
         cache.writeQuery<GetLatestDeckQuery>({
@@ -407,27 +398,41 @@ export const handleInsertNextArkhamDbDeck: MutationUpdaterFn<InsertNextArkhamDbD
   };
 
   updateDecks(cache, oldDeck.campaign_id, oldDeck.owner_id,
-    (deck: MiniDeckFragment) => {
-      return swapDeck(deck) ? {
-        type: 'swap',
-        deck: newDeck,
-      } : { type: 'keep' };
-    },
     (deck: AllDeckFragment) => {
       return swapDeck(deck) ? {
         type: 'swap',
         deck: {
+          ...omit(deck, ['next_deck']),
+          next_deck: {
+            __typename: 'campaign_deck',
+            campaign_id: newDeck.campaign_id,
+            id: newDeck.id,
+            owner_id: newDeck.owner_id,
+            arkhamdb_id: newDeck.arkhamdb_id,
+            local_uuid: newDeck.local_uuid,
+          },
+        },
+        insert: {
+          __typename: 'campaign_deck',
           ...newDeck,
-          previous_deck: pick(deck, ['id', 'owner_id', 'arkhamdb_id', 'local_uuid', 'campaign_id']),
+          campaign: deck.campaign,
+          previous_deck: {
+            __typename: 'campaign_deck',
+            ...omit(deck, ['previous_deck', 'next_deck']),
+            investigator: newDeck.investigator,
+          },
+          next_deck: null,
         },
       } : { type: 'keep' };
     },
     (deck: LatestDeckFragment) => {
       if (swapDeck(deck)) {
         const theDeck = {
+          ...pick(deck, ['investigator_data', 'investigator', 'campaign', 'owner']),
           ...newDeck,
           investigator_data: deck.investigator_data,
           previous_deck: deck,
+          next_deck: null,
         };
         // console.log(`${new Date().toTimeString()}: Caching uploaded deck ${theDeck.id},${theDeck.arkhamdb_id},${theDeck.local_uuid}`);
         cache.writeQuery<GetLatestDeckQuery>({
@@ -437,7 +442,10 @@ export const handleInsertNextArkhamDbDeck: MutationUpdaterFn<InsertNextArkhamDbD
           },
           data: {
             __typename: 'query_root',
-            campaign_deck_by_pk: theDeck,
+            campaign_deck_by_pk: {
+              ...pick(deck, ['owner']),
+              ...theDeck,
+            },
           },
         });
         return {
@@ -463,7 +471,7 @@ export const handleInsertNewDeck: MutationUpdaterFn<InsertNewDeckMutation> = (ca
         ...filter(campaign.latest_decks, d => d.deck?.investigator !== deck.investigator),
         {
           __typename: 'latest_decks',
-          deck: latestDeckToMiniDeck(deck),
+          deck,
         },
       ],
     };
@@ -491,12 +499,13 @@ export const handleInsertNewDeck: MutationUpdaterFn<InsertNewDeckMutation> = (ca
       campaign_deck_by_pk: deck,
     },
   });
+
   const myDecks = cache.readQuery<GetMyDecksQuery>({
     query: GetMyDecksDocument,
     variables: {
       userId: deck.owner_id,
     },
-  });
+  }, true);
   if (myDecks?.users_by_pk) {
     const matches = (id: number, arkhamdb_id: number | undefined | null, local_uuid: string | undefined | null): boolean => {
       if (id < 0 || deck.id < 0) {
@@ -505,6 +514,7 @@ export const handleInsertNewDeck: MutationUpdaterFn<InsertNewDeckMutation> = (ca
       }
       return (id === deck.id);
     };
+
     cache.writeQuery<GetMyDecksQuery>({
       query: GetMyDecksDocument,
       variables: {
@@ -525,6 +535,7 @@ export const handleInsertNewDeck: MutationUpdaterFn<InsertNewDeckMutation> = (ca
             ...filter(myDecks.users_by_pk.all_decks, d => !matches(d.id, d.arkhamdb_id, d.local_uuid)),
             {
               __typename: 'campaign_deck',
+              next_deck: null,
               ...deck,
             },
           ],
@@ -581,25 +592,6 @@ function removeDeck(
     cache,
     campaign_id,
     owner_id,
-    (deck: MiniDeckFragment) => {
-      if (matchesDeck(deck)) {
-        return previousDeck ? {
-          type: 'swap',
-          deck: {
-            __typename: 'campaign_deck',
-            id: previousDeck.id,
-            campaign_id,
-            owner_id,
-            investigator: previousDeck.investigator,
-            arkhamdb_id: previousDeck.arkhamdb_id,
-            local_uuid: previousDeck.local_uuid,
-          },
-        } : {
-          type: 'remove',
-        };
-      }
-      return { type: 'keep' };
-    },
     (deck: AllDeckFragment) => {
       if (matchesDeck(deck)) {
         return previousDeck ? {
@@ -678,13 +670,13 @@ export const handleDeleteLocalDeck: MutationUpdaterFn<DeleteLocalDeckMutation> =
   removeDeck(cache, campaign_id, owner_id, matchesDeck, previous_deck || undefined);
 };
 
-export const deleteCampaignFromCache = (cache: ApolloCache<unknown>, userId: string, uuid: string) => {
+export const deleteCampaignFromCache = (cache: ApolloCache<unknown>, userId: string, uuid: string, campaign_id: number) => {
   const cacheData = cache.readQuery<GetMyCampaignsQuery>({
     query: GetMyCampaignsDocument,
     variables: {
       userId,
     },
-  });
+  }, true);
   if (!cacheData || !cacheData.users_by_pk) {
     return;
   }
@@ -703,6 +695,17 @@ export const deleteCampaignFromCache = (cache: ApolloCache<unknown>, userId: str
       },
     },
   });
+  updateDecks(
+    cache,
+    campaign_id,
+    userId,
+    (deck: AllDeckFragment) => {
+      return { type: deck.campaign_id === campaign_id ? 'remove' : 'keep' };
+    },
+    (deck: LatestDeckFragment) => {
+      return { type: deck.campaign_id === campaign_id ? 'remove' : 'keep' };
+    }
+  );
 }
 
 export const handleUploadNewCampaign: MutationUpdaterFn<UploadNewCampaignMutation> = (cache, { data }) => {
@@ -728,7 +731,7 @@ export const handleUploadNewCampaign: MutationUpdaterFn<UploadNewCampaignMutatio
       variables: {
         userId: ownerId,
       },
-    });
+    }, true);
     if (!cacheData || !cacheData.users_by_pk) {
       return;
     }
@@ -745,11 +748,7 @@ export const handleUploadNewCampaign: MutationUpdaterFn<UploadNewCampaignMutatio
             ...filter(cacheData.users_by_pk.campaigns, c => c.campaign?.id !== campaignId),
             {
               __typename: 'user_campaigns',
-              campaign: {
-                ...fullToMiniCampaignFragment(data.update_campaign_by_pk),
-                link_a_campaign: data.update_campaign_by_pk.link_a_campaign,
-                link_b_campaign: data.update_campaign_by_pk.link_b_campaign,
-              },
+              campaign: data.update_campaign_by_pk,
             },
           ],
         },
@@ -764,7 +763,7 @@ function updateCampaignGuide(cache: ApolloCache<unknown>, campaignId: number, up
     variables: {
       campaign_id: campaignId,
     },
-  });
+  }, true);
   if (cacheData === null || !cacheData.campaign_guide.length) {
     return;
   }
@@ -827,7 +826,7 @@ function updateMiniCampaign(cache: ApolloCache<unknown>, campaignId: number, upd
     fragment: MiniCampaignFragmentDoc,
     fragmentName: 'MiniCampaign',
     id,
-  });
+  }, true);
   if (existingCacheData) {
     const data = update(existingCacheData);
     cache.writeFragment<MiniCampaignFragment>({
@@ -845,7 +844,7 @@ function updateFullCampaign(cache: ApolloCache<unknown>, campaignId: number, upd
     fragment: FullCampaignFragmentDoc,
     fragmentName: 'FullCampaign',
     id,
-  });
+  }, true);
   if (existingCacheData) {
     const data = update(existingCacheData);
     cache.writeFragment<FullCampaignFragment>({
@@ -867,7 +866,7 @@ function updateFullCampaignGuide(
     fragment: FullCampaignGuideStateFragmentDoc,
     fragmentName: 'FullCampaignGuideState',
     id,
-  });
+  }, true);
   if (existingCacheData) {
     cache.writeFragment<FullCampaignGuideStateFragment>({
       fragment: FullCampaignGuideStateFragmentDoc,
@@ -881,7 +880,7 @@ const handleDeleteInvestigatorDecks: MutationUpdaterFn<DeleteInvestigatorDecksMu
   if (!data?.delete_campaign_deck?.returning.length) {
     return;
   }
-  const { investigator, campaign_id } = data.delete_campaign_deck.returning[0];
+  const { investigator, campaign_id, owner_id } = data.delete_campaign_deck.returning[0];
   updateMiniCampaign(cache, campaign_id, (campaign) => {
     return {
       ...campaign,
@@ -894,6 +893,16 @@ const handleDeleteInvestigatorDecks: MutationUpdaterFn<DeleteInvestigatorDecksMu
       latest_decks: filter(campaign.latest_decks, d => d.deck?.investigator !== investigator),
     };
   });
+  updateDecks(
+    cache,
+    campaign_id,
+    owner_id,
+    (deck: AllDeckFragment) => {
+      return { type: deck.campaign_id === campaign_id && deck.investigator === investigator ? 'remove' : 'keep' };
+    },
+    (deck: LatestDeckFragment) => {
+      return { type: deck.campaign_id === campaign_id && deck.investigator === investigator ? 'remove' : 'keep' };
+    });
 };
 
 const handleAddCampaignInvestigator: MutationUpdaterFn<AddCampaignInvestigatorMutation> = (cache, { data }) => {

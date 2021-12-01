@@ -1,5 +1,5 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { filter, forEach, map, throttle } from 'lodash';
+import React, { useCallback, useContext, useEffect, useMemo, useState, useReducer } from 'react';
+import { filter, forEach, map, throttle, uniq } from 'lodash';
 import {
   Platform,
   ScrollView,
@@ -30,7 +30,7 @@ import { ChaosBag } from '@app_constants';
 import CampaignSelector from './CampaignSelector';
 import CampaignNoteSectionRow from './CampaignNoteSectionRow';
 import { getCampaignLog, getChaosBag, difficultyString } from '../constants';
-import { maybeShowWeaknessPrompt } from '../campaignHelper';
+import { maybeShowWeaknessPrompt, useMaybeShowWeaknessPrompt } from '../campaignHelper';
 import SettingsSwitch from '@components/core/SettingsSwitch';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPackChooserComponent';
@@ -45,7 +45,7 @@ import { useFlag, useNavigationButtonPressed, usePlayerCards, useSlots } from '@
 import { CampaignSelection } from '../SelectCampaignDialog';
 import { useAlertDialog, usePickerDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
-import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import RoundedFactionBlock, { AnimatedRoundedFactionBlock } from '@components/core/RoundedFactionBlock';
 import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckButton from '@components/deck/controls/DeckButton';
@@ -96,7 +96,15 @@ function NewCampaignView({ componentId }: NavigationProps) {
   const [guided, toggleGuided] = useFlag(true);
   const [difficulty, setDifficulty] = useState<CampaignDifficulty>(CampaignDifficulty.STANDARD);
   const [selectedDecks, setSelectedDecks] = useState<LatestDeckT[]>([]);
-  const [investigatorIds, setInvestigatorIds] = useState<string[]>([]);
+  const [investigatorIds, updateInvestigatorIds] = useReducer(
+    (state: string[], { type, investigator }: { type: 'add' | 'remove'; investigator: string }) => {
+      switch (type) {
+        case 'add': return uniq([...state, investigator]);
+        case 'remove': return filter(state, x => x !== investigator);
+      }
+    },
+    []
+  );
   const [investigatorToDeck, setInvestigatorToDeck] = useState<{ [code: string]: DeckId }>({});
   const [weaknessPacks, setWeaknessPacks] = useState<string[]>([]);
   const [weaknessAssignedCards, updateWeaknessAssignedCards] = useSlots({});
@@ -182,23 +190,25 @@ function NewCampaignView({ componentId }: NavigationProps) {
     }
   }, [cards, weaknessAssignedCards, updateWeaknessAssigned, showAlert]);
 
+  const checkNewDeckForWeakness = useMaybeShowWeaknessPrompt(componentId, checkDeckForWeaknessPrompt);
   const investigatorAdded = useCallback((card: Card) => {
-    setInvestigatorIds([...investigatorIds, card.code]);
-  }, [investigatorIds, setInvestigatorIds]);
+    updateInvestigatorIds({ type: 'add', investigator: card.code });
+  }, [updateInvestigatorIds]);
 
   const investigatorRemoved = useCallback((card: Card) => {
-    setInvestigatorIds(filter(investigatorIds, id => id !== card.code));
-  }, [investigatorIds, setInvestigatorIds]);
+    updateInvestigatorIds({ type: 'remove', investigator: card.code });
+  }, [updateInvestigatorIds]);
 
   const deckAdded = useCallback(async(deck: Deck) => {
     setSelectedDecks([...selectedDecks, new LatestDeckRedux(deck, undefined, undefined)]);
-    setInvestigatorIds([...investigatorIds, deck.investigator_code]);
+    updateInvestigatorIds({ type: 'add', investigator: deck.investigator_code });
     setInvestigatorToDeck({
       ...investigatorToDeck,
       [deck.investigator_code]: getDeckId(deck),
     });
-    checkDeckForWeaknessPrompt(deck);
-  }, [setSelectedDecks, setInvestigatorIds, setInvestigatorToDeck, checkDeckForWeaknessPrompt, selectedDecks, investigatorIds, investigatorToDeck]);
+    checkNewDeckForWeakness(deck);
+  }, [setSelectedDecks, updateInvestigatorIds, setInvestigatorToDeck, checkNewDeckForWeakness, selectedDecks, investigatorToDeck]);
+
 
   const deckRemoved = useCallback((id: DeckId, deck?: Deck) => {
     const updatedInvestigatorToDeck: { [code: string]: DeckId } = {};
@@ -208,9 +218,11 @@ function NewCampaignView({ componentId }: NavigationProps) {
       }
     });
     setSelectedDecks(filter(selectedDecks, deck => deck.id.uuid !== id.uuid));
-    setInvestigatorIds(!deck ? investigatorIds : filter([...investigatorIds], code => deck.investigator_code !== code));
+    if (deck) {
+      updateInvestigatorIds({ type: 'remove', investigator: deck.investigator_code });
+    }
     setInvestigatorToDeck(updatedInvestigatorToDeck);
-  }, [investigatorToDeck, selectedDecks, investigatorIds, setSelectedDecks, setInvestigatorIds, setInvestigatorToDeck]);
+  }, [investigatorToDeck, selectedDecks, setSelectedDecks, updateInvestigatorIds, setInvestigatorToDeck]);
 
   const placeholderName = useMemo(() => {
     if (selection.type === 'campaign' && selection.code === CUSTOM) {
@@ -304,8 +316,8 @@ function NewCampaignView({ componentId }: NavigationProps) {
         },
       },
     });
-  }, [componentId, customChaosBag, setCustomChaosBag]);
-  const { dialog: difficultyDialog, showDialog: showDifficultyDialog } = usePickerDialog({
+  }, [componentId, customChaosBag, setCustomChaosBag, selection]);
+  const [difficultyDialog, showDifficultyDialog] = usePickerDialog({
     title: t`Difficulty`,
     items: map(DIFFICULTIES, difficulty => {
       return {
@@ -324,21 +336,39 @@ function NewCampaignView({ componentId }: NavigationProps) {
       hasGuide,
     });
   }, [setCampaignChoice]);
+  const [open, toggleOpen] = useFlag(false);
+  const renderWeaknessHeader = useCallback((icon: React.ReactFragment) => {
+    return (
+      <View style={[
+        styles.block,
+        { backgroundColor: colors.D10 },
+        !open ? {
+          borderBottomLeftRadius: 8,
+          borderBottomRightRadius: 8,
+        } : undefined,
+      ]}>
+        <View style={styles.row}>
+          <View style={styles.textColumn}>
+            <Text style={[typography.mediumGameFont, { color: colors.L20 }, typography.center]}>
+              { t`Weakness Set` }
+            </Text>
+            <Text style={[typography.small, typography.italic, { color: colors.L20 }, typography.center]}>
+              { open ? t`Include all basic weaknesses from these expansions` : t`Choose expansions for basic weakness` }
+            </Text>
+          </View>
+          { icon }
+        </View>
+      </View>
+    );
+  }, [colors, typography, open]);
   const weaknessSetSection = useMemo(() => {
     return (
       <View style={space.paddingS}>
-        <RoundedFactionBlock
+        <AnimatedRoundedFactionBlock
           faction="neutral"
-          header={(
-            <View style={[styles.block, { backgroundColor: colors.D10 }]}>
-              <Text style={[typography.mediumGameFont, { color: colors.L20 }, typography.center]}>
-                { t`Weakness Set` }
-              </Text>
-              <Text style={[typography.small, typography.italic, { color: colors.L20 }, typography.center]}>
-                { t`Include all basic weaknesses from these expansions` }
-              </Text>
-            </View>
-          )}
+          renderHeader={renderWeaknessHeader}
+          open={open}
+          toggleOpen={toggleOpen}
           noSpace
         >
           <View style={[space.paddingXs, space.paddingRightS]}>
@@ -348,10 +378,10 @@ function NewCampaignView({ componentId }: NavigationProps) {
               onSelectedPacksChanged={setWeaknessPacks}
             />
           </View>
-        </RoundedFactionBlock>
+        </AnimatedRoundedFactionBlock>
       </View>
     );
-  }, [componentId, typography, colors, setWeaknessPacks]);
+  }, [componentId, setWeaknessPacks, renderWeaknessHeader, open, toggleOpen]);
 
   const campaignLogSection = useMemo(() => {
     if (isGuided || selection.type === 'standalone') {
@@ -437,14 +467,14 @@ function NewCampaignView({ componentId }: NavigationProps) {
       });
     }
   }, [selectedDecks, investigatorIds, deckAdded, investigatorAdded]);
-  const { dialog, showDialog } = useSimpleTextDialog({
+  const [dialog, showDialog] = useSimpleTextDialog({
     title: t`Name`,
     placeholder: placeholderName,
     value: name,
     onValueChange: onNameChange,
   });
   return (
-    <View style={backgroundStyle}>
+    <View style={styles.flex}>
       <ScrollView contentContainerStyle={backgroundStyle}>
         <View style={space.paddingS}>
           <CampaignSelector
@@ -584,6 +614,20 @@ const styles = StyleSheet.create({
   },
   centerRow: {
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  flex: {
+    flex: 1,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textColumn: {
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,

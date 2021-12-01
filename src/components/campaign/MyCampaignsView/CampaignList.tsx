@@ -25,7 +25,7 @@ interface Props {
   onScroll: (...args: any[]) => void;
   componentId: string;
   campaigns: MiniCampaignT[];
-  footer: React.ReactElement;
+  footer: JSX.Element;
   standalonesById: { [campaignId: string]: { [scenarioId: string]: string } };
   onRefresh?: () => void;
   refreshing?: boolean;

@@ -6,7 +6,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type Schema = AllCampaigns | Log | Errata | Rules | ChaosTokens;
+export type Schema = AllCampaigns | Log | Errata | Rules | ChaosTokens | TabooSets;
 export type Step =
   | BranchStep
   | EffectsStep
@@ -21,7 +21,8 @@ export type Step =
   | TableStep
   | CampaignLogCountStep
   | XpCountStep
-  | InternalStep;
+  | InternalStep
+  | BorderStep;
 export type Condition =
   | MultiCondition
   | CampaignLogCondition
@@ -32,17 +33,21 @@ export type Condition =
   | CampaignDataCondition
   | CampaignLogSectionExistsCondition
   | ScenarioDataCondition
-  | KilledTraumaCondition
+  | TraumaCondition
   | CheckSuppliesCondition
-  | CampaignLogCardsCondition;
+  | CampaignLogCardsCondition
+  | CampaignLogCardsSwitchCondition
+  | PartnerStatusCondition;
 export type Effect =
   | StoryStepEffect
   | EarnXpEffect
   | AddCardEffect
+  | SetCardCountEffect
   | AddWeaknessEffect
   | RemoveCardEffect
   | ReplaceCardEffect
   | TraumaEffect
+  | PartnerStatusEffect
   | CampaignLogEffect
   | CampaignLogCardsEffect
   | CampaignLogCountEffect
@@ -93,10 +98,23 @@ export type SpecialChaosToken =
   | "bless"
   | "curse"
   | "frost";
-export type DefaultOption = Option;
+export type BorderColor = "setup" | "resolution" | "interlude";
 export type ChoiceIcon = "mental" | "physical" | "resign" | "dismiss" | "accept";
+export type DefaultOption = Option;
 export type MathCondition = MathCompareCondition | MathSumCondition | MathEqualsCondition;
-export type Operand = CampaignLogCountOperand | ChaosBagOperand | ConstantOperand;
+export type Operand = CampaignLogCountOperand | ChaosBagOperand | ConstantOperand | PartnerStatusCondition;
+export type PartnerStatus =
+  | "eliminated"
+  | "alive"
+  | "has_damage"
+  | "has_horror"
+  | "mia"
+  | "safe"
+  | "resolute"
+  | "investigator_defeated"
+  | "investigator_selected"
+  | "victim"
+  | "cannot_take";
 export type CardCondition = InvestigatorCardCondition | BinaryCardCondition;
 export type CampaignDataCondition =
   | CampaignDataDifficultyCondition
@@ -109,6 +127,7 @@ export type ScenarioDataCondition =
   | ScenarioDataResolutionCondition
   | ScenarioDataInvestigatorStatusCondition
   | ScenarioDataPlayerCountCondition;
+export type TraumaCondition = KilledTraumaCondition | BasicTraumaCondition;
 export type CheckSuppliesCondition = CheckSuppliesAllCondition | CheckSuppliesAnyCondition;
 export type Input =
   | UpgradeDecksInput
@@ -129,7 +148,10 @@ export type Input =
   | RandomLocationInput
   | PrologueRandomizer
   | SaveDecksInput
-  | TarotReading;
+  | TarotReadingInput
+  | PartnerTraumaInput
+  | InvestigatorPartnerChoiceInput
+  | PartnerChoiceInput;
 export type CardQuery = CardSearchQuery | CardCodeList;
 export type UseSuppliesInput = UseSuppliesChoiceInput | UseSuppliesAllInput;
 export type InvestigatorChoiceCondition =
@@ -145,7 +167,8 @@ export type BinaryChoiceCondition =
   | CampaignLogCondition
   | CampaignLogCountCondition
   | CampaignLogSectionExistsCondition
-  | MultiCondition;
+  | MultiCondition
+  | PartnerStatusCondition;
 export type LocationConnector = "purple_moon" | "blue_triangle" | "red_square" | "orange_heart" | "green_diamond";
 export type AllCampaigns = FullCampaign[];
 export type Choice1 =
@@ -157,6 +180,7 @@ export type Choice1 =
   | InvestigatorChoice;
 export type SingleChaosTokenValue = SimpleChaosTokenValue | CounterChaosTokenValue | ConditionChaosTokenValue;
 export type ChaosTokens = ScenarioChaosTokens[];
+export type TabooSets = TabooSet[];
 
 export interface FullCampaign {
   campaign: Campaign;
@@ -169,11 +193,13 @@ export interface Campaign {
   campaign_length: number;
   version: number;
   position: number;
-  campaign_log: {
-    id: string;
-    title: string;
-    type?: "investigator_count" | "count" | "supplies" | "hidden";
+  cards?: {
+    code: string;
+    name: string;
+    gender?: "male" | "female";
+    description?: string;
   }[];
+  campaign_log: CampaignLogSectionDefinition[];
   scenarios: string[];
   hidden_scenarios?: string[];
   setup: string[];
@@ -183,10 +209,27 @@ export interface Campaign {
   custom?: CustomData;
   achievements?: Achievement[];
 }
+export interface CampaignLogSectionDefinition {
+  id: string;
+  title: string;
+  type?: "investigator_count" | "count" | "supplies" | "header" | "partner" | "hidden";
+  partners?: Partner[];
+}
+export interface Partner {
+  code: string;
+  name: string;
+  description?: string;
+  health: number;
+  sanity: number;
+  resolute_health?: number;
+  resolute_sanity?: number;
+}
 export interface BranchStep {
   id: string;
   type: "branch";
+  border_only?: boolean;
   hidden?: boolean;
+  loop?: boolean;
   text?: string;
   title?: string;
   condition: Condition;
@@ -203,8 +246,11 @@ export interface MultiCondition {
     | CampaignDataVersionCondition
     | CampaignDataScenarioCondition
     | ScenarioDataResolutionCondition
+    | InvestigatorCardCondition
     | BinaryCardCondition
     | MathCondition
+    | PartnerStatusCondition
+    | BasicTraumaCondition
   )[];
   count: number;
   options: BoolOption[];
@@ -220,6 +266,7 @@ export interface BoolOption {
   prompt?: string;
   effects?: Effect[];
   border?: boolean;
+  border_color?: BorderColor;
   pre_border_effects?: Effect[];
   steps?: string[];
 }
@@ -245,6 +292,13 @@ export interface AddCardEffect {
   ignore_deck_limit?: boolean;
   non_story?: boolean;
   show_prompt?: boolean;
+  hidden?: boolean;
+}
+export interface SetCardCountEffect {
+  type: "set_card_count";
+  investigator: "$input_value";
+  card: string;
+  quantity: number;
 }
 export interface AddWeaknessEffect {
   type: "add_weakness";
@@ -261,6 +315,7 @@ export interface RemoveCardEffect {
   fixed_investigator?: string;
   card: string;
   non_story?: boolean;
+  hidden?: boolean;
 }
 export interface ReplaceCardEffect {
   type: "replace_card";
@@ -279,14 +334,35 @@ export interface TraumaEffect {
   hidden?: boolean;
   bullet_type?: BulletType;
 }
+export interface PartnerStatusEffect {
+  type: "partner_status";
+  section: string;
+  partner: "$input_value" | "$fixed_partner";
+  fixed_partner?: string;
+  operation: "add" | "remove";
+  status:
+    | "eliminated"
+    | "resolute"
+    | "mia"
+    | "safe"
+    | "victim"
+    | "cannot_take"
+    | "the_entity"
+    | "heal_damage"
+    | "heal_horror";
+  hidden?: boolean;
+  bullet_type?: BulletType;
+}
 export interface CampaignLogEffect {
   type: "campaign_log";
   section: string;
   id: string;
   text?: string;
   cross_out?: boolean;
+  bullet_type?: BulletType;
   decorate?: "circle";
   remove?: boolean;
+  hidden?: boolean;
 }
 export interface CampaignLogCardsEffect {
   type: "campaign_log_cards";
@@ -299,6 +375,8 @@ export interface CampaignLogCardsEffect {
   codes?: string[];
   cross_out?: boolean;
   remove?: boolean;
+  hidden?: boolean;
+  bullet_type?: BulletType;
 }
 export interface CampaignLogCountEffect {
   type: "campaign_log_count";
@@ -369,6 +447,8 @@ export interface FreeformCampaignLogEffect {
   section: "campaign_notes";
   scenario_id?: string;
   index?: number;
+  bullet_type?: BulletType;
+  hidden?: boolean;
 }
 export interface UpgradeDecksEffect {
   type: "upgrade_decks";
@@ -412,11 +492,25 @@ export interface CampaignDataChaosBagCondition {
   campaign_data: "chaos_bag";
   token: ChaosToken;
   options: NumOption[];
+  default_option?: Option;
 }
 export interface NumOption {
   numCondition: number;
   effects?: Effect[];
   border?: boolean;
+  border_color?: BorderColor;
+  steps?: string[];
+}
+export interface Option {
+  icon?: ChoiceIcon;
+  boolCondition?: boolean;
+  numCondition?: number;
+  condition?: string;
+  prompt?: string;
+  border?: boolean;
+  border_color?: BorderColor;
+  pre_border_effects?: Effect[];
+  effects?: Effect[];
   steps?: string[];
 }
 export interface CampaignLogCountCondition {
@@ -426,17 +520,6 @@ export interface CampaignLogCountCondition {
   options: NumOption[];
   max?: number;
   default_option?: DefaultOption;
-}
-export interface Option {
-  icon?: ChoiceIcon;
-  boolCondition?: boolean;
-  numCondition?: number;
-  condition?: string;
-  prompt?: string;
-  border?: boolean;
-  pre_border_effects?: Effect[];
-  effects?: Effect[];
-  steps?: string[];
 }
 export interface CampaignDataVersionCondition {
   type: "campaign_data";
@@ -459,9 +542,16 @@ export interface StringOption {
   condition: string;
   prompt?: string;
   border?: boolean;
+  border_color?: BorderColor;
   pre_border_effects?: Effect[];
   effects?: Effect[];
   steps?: string[];
+}
+export interface InvestigatorCardCondition {
+  type: "has_card";
+  investigator: "each";
+  card: string;
+  options: BoolOption[];
 }
 export interface BinaryCardCondition {
   type: "has_card";
@@ -489,6 +579,15 @@ export interface ConstantOperand {
   type: "constant";
   value: number;
 }
+export interface PartnerStatusCondition {
+  type: "partner_status";
+  section: string;
+  partner: "any" | "$fixed_partner";
+  fixed_partner?: string;
+  status: PartnerStatus[];
+  operation: "any" | "all";
+  options: BoolOption[];
+}
 export interface MathSumCondition {
   type: "math";
   opA: Operand;
@@ -504,18 +603,18 @@ export interface MathEqualsCondition {
   operation: "equals";
   options: BoolOption[];
 }
+export interface BasicTraumaCondition {
+  type: "trauma";
+  investigator: "each";
+  trauma: "physical" | "mental" | "alive";
+  options: BoolOption[];
+}
 export interface CampaignLogInvestigatorCountCondition {
   type: "campaign_log_investigator_count";
   section: string;
   investigator: "any" | "all";
   options: NumOption[];
   default_option?: DefaultOption;
-}
-export interface InvestigatorCardCondition {
-  type: "has_card";
-  investigator: "each";
-  card: string;
-  options: BoolOption[];
 }
 export interface CampaignDataDifficultyCondition {
   type: "campaign_data";
@@ -548,7 +647,7 @@ export interface ScenarioDataPlayerCountCondition {
 export interface KilledTraumaCondition {
   type: "trauma";
   investigator: "lead_investigator" | "all";
-  trauma: "killed";
+  trauma: "killed" | "insane";
   options: BoolOption[];
 }
 export interface CheckSuppliesAllCondition {
@@ -576,12 +675,19 @@ export interface CampaignLogCardsCondition {
   id: string;
   options: BoolOption[];
 }
+export interface CampaignLogCardsSwitchCondition {
+  type: "campaign_log_cards_switch";
+  section: string;
+  id: string;
+  options: StringOption[];
+}
 export interface Narration {
   id: string;
   name: string;
   lang: string[];
 }
 export interface EffectsStep {
+  border_only?: boolean;
   id: string;
   type: "effects";
   text?: null;
@@ -594,6 +700,7 @@ export interface EffectsStep {
 }
 export interface EffectsWithInput {
   border?: boolean;
+  border_color?: BorderColor;
   effects: Effect[];
   input?: string[];
   numberInput?: number[];
@@ -606,6 +713,7 @@ export interface InputStep {
   input: Input;
   bullet_type?: BulletType;
   prompt_type?: "header" | "setup";
+  border_only?: boolean;
   narration?: Narration;
 }
 export interface UpgradeDecksInput {
@@ -613,6 +721,7 @@ export interface UpgradeDecksInput {
   skip_decks?: boolean;
   special_xp?: SpecialXp;
   counter?: string;
+  story_cards?: [string];
 }
 export interface CardChoiceInput {
   type: "card_choice";
@@ -645,6 +754,7 @@ export interface Choice {
   description?: string;
   steps?: string[];
   border?: boolean;
+  border_color?: BorderColor;
   pre_border_effects?: Effect[];
   effects?: Effect[];
 }
@@ -680,6 +790,7 @@ export interface InvestigatorChoiceInput {
   source: "campaign" | "scenario";
   optional?: boolean;
   investigator: "all" | "choice" | "any" | "resigned";
+  condition?: BasicTraumaCondition;
   special_mode?: "detailed" | "sequential";
   confirm_text?: string;
   choices: InvestigatorConditionalChoice[];
@@ -693,15 +804,10 @@ export interface InvestigatorConditionalChoice {
   description?: string;
   condition?: InvestigatorChoiceCondition;
   border?: boolean;
+  border_color?: BorderColor;
   pre_border_effects?: Effect[];
   steps?: string[];
   effects?: Effect[];
-}
-export interface BasicTraumaCondition {
-  type: "trauma";
-  investigator: "each";
-  trauma: "physical" | "mental";
-  options: BoolOption[];
 }
 export interface InvestigatorCondition {
   type: "investigator";
@@ -725,6 +831,7 @@ export interface BinaryConditionalChoice {
   condition?: BinaryChoiceCondition;
   repeatable?: boolean;
   border?: boolean;
+  border_color?: BorderColor;
   pre_border_effects?: Effect[];
   steps?: string[];
   effects?: Effect[];
@@ -811,14 +918,32 @@ export interface PrologueRandomizer {
 export interface SaveDecksInput {
   type: "save_decks";
 }
-export interface TarotReading {
+export interface TarotReadingInput {
   type: "tarot_reading";
   randomized: boolean;
   reading: "chaos" | "balance" | "choice" | "destiny";
 }
+export interface PartnerTraumaInput {
+  type: "partner_trauma";
+  section: string;
+}
+export interface InvestigatorPartnerChoiceInput {
+  type: "investigator_choice_partner";
+  condition: PartnerStatusCondition;
+  prompt: string;
+}
+export interface PartnerChoiceInput {
+  type: "partner_choice";
+  condition: PartnerStatusCondition;
+  random: boolean;
+  quantity?: ConstantOperand | CampaignLogCountOperand;
+  prompt: string;
+  effects: Effect[];
+}
 export interface EncounterSetsStep {
   id: string;
   type: "encounter_sets";
+  border_only?: boolean;
   title?: string;
   text?: string;
   subtext?: string;
@@ -826,8 +951,10 @@ export interface EncounterSetsStep {
   encounter_sets: string[];
   bullet_type?: BulletType;
   narration?: Narration;
+  remove?: boolean;
 }
 export interface GenericStep {
+  border_only?: boolean;
   id: string;
   type?: null;
   title?: string;
@@ -842,6 +969,7 @@ export interface GenericStep {
   narration?: Narration;
 }
 export interface ResolutionStep {
+  border_only?: boolean;
   id: string;
   type: "resolution";
   resolution: string;
@@ -855,6 +983,7 @@ export interface ResolutionStep {
 export interface RuleReminderStep {
   id: string;
   type: "rule_reminder";
+  border_only?: boolean;
   text?: string;
   title?: string;
   bullets?: {
@@ -868,6 +997,8 @@ export interface StoryStep {
   id: string;
   type: "story";
   border?: boolean;
+  border_color?: BorderColor;
+  border_only?: boolean;
   title?: string;
   text: string;
   bullets?: {
@@ -877,6 +1008,7 @@ export interface StoryStep {
   narration?: Narration;
 }
 export interface LocationSetupStep {
+  border_only?: boolean;
   id: string;
   type: "location_setup";
   svg?: string;
@@ -901,6 +1033,7 @@ export interface LocationConnectorsStep {
   id: string;
   type: "location_connectors";
   title?: string;
+  border_only?: boolean;
   text: string;
   subtext: string;
   location_connectors: LocationConnector[];
@@ -910,6 +1043,7 @@ export interface LocationConnectorsStep {
 export interface TableStep {
   id: string;
   type: "table";
+  border_only?: boolean;
   title?: string;
   text?: string;
   header: TableRow;
@@ -925,6 +1059,7 @@ export interface TableCell {
   size: number;
 }
 export interface CampaignLogCountStep {
+  border_only?: boolean;
   id: string;
   type: "campaign_log_count";
   text_count: string;
@@ -938,6 +1073,7 @@ export interface CampaignLogCountStep {
   narration?: Narration;
 }
 export interface XpCountStep {
+  border_only?: boolean;
   id: string;
   type: "xp_count";
   bullet_type?: null;
@@ -947,6 +1083,7 @@ export interface XpCountStep {
   narration?: Narration;
 }
 export interface InternalStep {
+  border_only?: boolean;
   id: string;
   type: "internal";
   text?: null;
@@ -954,6 +1091,19 @@ export interface InternalStep {
   bullet_type?: null;
   title?: null;
   narration?: Narration;
+}
+export interface BorderStep {
+  id: string;
+  border_only?: boolean;
+  type: "border";
+  border: boolean;
+  border_color?: BorderColor;
+  title?: string;
+  text?: null;
+  bullets?: null;
+  bullet_type?: null;
+  narration?: Narration;
+  steps: string[];
 }
 export interface CustomData {
   creator: string;
@@ -1126,4 +1276,20 @@ export interface ConditionChaosTokenValue {
     default_value: ChaosTokenModifier;
     modified_value: ChaosTokenModifier;
   };
+}
+export interface TabooSet {
+  id: number;
+  code: string;
+  name: string;
+  active: number;
+  date_start: string;
+  cards: Taboo[];
+}
+export interface Taboo {
+  code: string;
+  xp?: number;
+  description?: string;
+  text?: string;
+  exceptional?: number;
+  deck_limit?: number;
 }

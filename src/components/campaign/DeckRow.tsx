@@ -15,7 +15,7 @@ type RenderDeckDetails = (
   cards: CardsMap,
   investigator: Card,
   previousDeck?: Deck
-) => React.ReactNode | null;
+) => JSX.Element | null;
 
 export interface DeckRowProps {
   deck: LatestDeckT;

@@ -1,9 +1,10 @@
-import React, { ReactNode, useCallback, useMemo } from 'react';
+import React, { ReactNode, useCallback, useMemo, useContext } from 'react';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import { t } from 'ttag';
 
 import AccordionItem from './AccordionItem';
 import space from '@styles/space';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   label: string;
@@ -32,6 +33,7 @@ export default function SliderChooser({
   onToggleChange,
   children,
 }: Props) {
+  const { colon } = useContext(LanguageContext);
   const onChange = useCallback((values: number[]) => {
     onFilterChange(setting, values);
   }, [onFilterChange, setting]);
@@ -41,8 +43,8 @@ export default function SliderChooser({
       return t`${label}: All`;
     }
     const rangeText = values[0] === values[1] ? values[0] : `${values[0]} - ${values[1]}`;
-    return `${label}: ${rangeText}`;
-  }, [label, values, enabled]);
+    return `${label}${colon}${rangeText}`;
+  }, [label, values, colon, enabled]);
 
   return (
     <AccordionItem

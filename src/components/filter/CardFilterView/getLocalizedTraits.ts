@@ -1,6 +1,6 @@
 import { c } from 'ttag';
 
-export default function getLocalizedTraits() {
+export default function getLocalizedTraits(): { [trait: string]: string | undefined } {
   return {
     '???': c('trait').t`???`,
     'AI': c('trait').t`AI`,
@@ -188,6 +188,7 @@ export default function getLocalizedTraits() {
     'Relic': c('trait').t`Relic`,
     'Reporter': c('trait').t`Reporter`,
     'Research': c('trait').t`Research`,
+    'Resolute': c('trait').t`Resolute`,
     'Retired': c('trait').t`Retired`,
     'Return': c('trait').t`Return`,
     'Ritual': c('trait').t`Ritual`,
@@ -266,7 +267,6 @@ export default function getLocalizedTraits() {
     'Wonderland': c('trait').t`Wonderland`,
     'Woods': c('trait').t`Woods`,
     'Y\'ha-nthlei': c('trait').t`Y'ha-nthlei`,
-    'Y-ha\'nthlei': c('trait').t`Y-ha'nthlei`,
     'Yithian': c('trait').t`Yithian`,
     'Yoth': c('trait').t`Yoth`,
     'Zoog': c('trait').t`Zoog`,

@@ -2,6 +2,7 @@ import { ChaosBag, ChaosTokenType, FactionCodeType, SkillCodeType, SlotCodeType 
 import { CardFilterData, FilterState } from '@lib/filters';
 import Card from '@data/types/Card';
 import { LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
+import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
 
 export const SORT_BY_TYPE = 'type';
 export const SORT_BY_CYCLE = 'cycle';
@@ -253,6 +254,7 @@ export interface TraumaAndCardData extends Trauma {
   ignoreStoryAssets?: string[];
   addedCards?: string[];
   removedCards?: string[];
+  cardCounts?: Slots;
 }
 
 export interface InvestigatorData {
@@ -315,6 +317,7 @@ export interface ChaosBagResults {
   blessTokens?: number;
   curseTokens?: number;
   totalDrawnTokens: number;
+  tarot?: Chaos_Bag_Tarot_Mode_Enum;
 }
 
 export interface ScenarioResult {
@@ -414,7 +417,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TDEA,
   TDEB,
   TIC,
-  // EOE,
+  EOE,
 ];
 export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
   ALICE_IN_WONDERLAND,
@@ -440,9 +443,10 @@ export const GUIDED_CAMPAIGNS = new Set([
   ALICE_IN_WONDERLAND,
   DARK_MATTER,
   CROWN_OF_EGIL,
+  EOE,
 ]);
 
-export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
+export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([EOE]);
 
 export interface CustomCampaignLog {
   sections?: string[];
@@ -1078,11 +1082,21 @@ export interface GuideDecisionInput extends BasicInput {
   decision: boolean;
 }
 
+export interface DelayedDeckEdits {
+  userId: string;
+  xp: number;
+  storyCounts: Slots;
+  ignoreStoryCounts: Slots;
+  exileCounts: Slots;
+  resolved?: boolean;
+}
+
 export interface GuideNumberChoicesInput extends BasicInput {
   type: 'choice_list';
   step: string;
   choices: NumberChoices;
   deckId?: DeckId;
+  deckEdits?: DelayedDeckEdits;
 }
 
 export interface GuideStringChoicesInput extends BasicInput {

@@ -2,6 +2,7 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { flatMap, map, max, min } from 'lodash';
 import {
   Text,
+  View,
 } from 'react-native';
 import { t } from 'ttag';
 
@@ -27,7 +28,7 @@ export default function XpChooser({
   exceptional,
   nonExceptional,
 }: Props) {
-  const { colors, typography } = useContext(StyleContext);
+  const { colors, typography, width } = useContext(StyleContext);
   const levelRanges = useMemo(() => {
     const result = [[0, 0]];
     if (maxLevel > 0) {
@@ -77,10 +78,12 @@ export default function XpChooser({
   }
 
   return (
-    <ArkhamButtonGroup
-      onPress={updateIndex}
-      selectedIndexes={selectedIndexes}
-      buttons={buttons}
-    />
+    <View style={{ width }}>
+      <ArkhamButtonGroup
+        onPress={updateIndex}
+        selectedIndexes={selectedIndexes}
+        buttons={buttons}
+      />
+    </View>
   );
 }

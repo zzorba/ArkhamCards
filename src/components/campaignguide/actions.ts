@@ -23,6 +23,7 @@ import {
   Campaign,
   UploadedCampaignId,
   UPDATE_CAMPAIGN,
+  DelayedDeckEdits,
 } from '@actions/types';
 
 import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
@@ -42,9 +43,9 @@ function uploadCampaignHelper(
     if (guided) {
       const state = getState();
       const guide = makeCampaignGuideStateSelector()(state, campaign.uuid);
-      actions.uploadNewCampaign(campaignId.serverId, campaign, guide);
+      await actions.uploadNewCampaign(campaignId.serverId, campaign, guide);
     } else {
-      actions.uploadNewCampaign(campaignId.serverId, campaign, undefined);
+      await actions.uploadNewCampaign(campaignId.serverId, campaign, undefined);
     }
     dispatch({
       type: UPDATE_CAMPAIGN,
@@ -52,7 +53,7 @@ function uploadCampaignHelper(
       campaign: { serverId: campaignId.serverId },
       now: new Date(),
     });
-    Promise.all(map(campaign.deckIds || [], deckId => {
+    await Promise.all(map(campaign.deckIds || [], deckId => {
       return dispatch(uploadCampaignDeckHelper(campaignId, deckId, deckActions));
     }));
   };
@@ -345,6 +346,7 @@ export function setScenarioNumberChoices(
   step: string,
   choices: NumberChoices,
   deckId?: DeckId,
+  deckEdits?: DelayedDeckEdits,
   scenario?: string
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
   return setGuideInputAction(userId, actions, campaignId, {
@@ -353,6 +355,7 @@ export function setScenarioNumberChoices(
     step,
     choices,
     deckId,
+    deckEdits,
   });
 }
 

@@ -26,7 +26,7 @@ interface Props {
 /**
  * Simple component to block to handle apollo singleton stuff.
  */
-function ApolloGate({ children }: Props): JSX.Element {
+function ApolloGate({ children }: Props) {
   const { user } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected }] = useNetworkStatus();
   const trackedQueries = useSelector(getTrackedQueries);

@@ -36,15 +36,3 @@ index ec1b9e3..b1ff172 100644
      } else {
        anim.current.setValue(0);
      }
-diff --git a/node_modules/react-native-action-button/index.d.ts b/node_modules/react-native-action-button/index.d.ts
-index 2ba74e9..2a7e358 100644
---- a/node_modules/react-native-action-button/index.d.ts
-+++ b/node_modules/react-native-action-button/index.d.ts
-@@ -28,6 +28,7 @@ export interface ActionButtonProperties extends ViewProperties {
-   size?: number,
-   autoInactive?: boolean,
-   onPress?: () => void,
-+  onReset?: () => void,
-   renderIcon?: (active: boolean) => React.ReactElement<any>,
-   backdrop?: boolean | object,
-   degrees?: number,

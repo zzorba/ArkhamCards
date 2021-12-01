@@ -8,6 +8,7 @@ import { ChaosBag, ChaosTokenType } from '@app_constants';
 import LatestDeckT, { DeckCampaignInfo } from '@data/interfaces/LatestDeckT';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
+import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
 
 const EMPTY_TRAUMA: Trauma = {};
 
@@ -136,6 +137,7 @@ export class SingleCampaignRedux extends MiniCampaignRedux implements SingleCamp
   scenarioResults: ScenarioResult[];
   linkedCampaignId: CampaignId | undefined;
   guideVersion: number;
+  deleted: boolean = false;
 
   constructor(
     campaign: Campaign,
@@ -259,6 +261,7 @@ export class ChaosBagResultsRedux implements ChaosBagResultsT {
   blessTokens: number;
   curseTokens: number;
   totalDrawnTokens: number;
+  tarot?: Chaos_Bag_Tarot_Mode_Enum;
 
   constructor(chaosBagResults: ChaosBagResults) {
     this.drawnTokens = chaosBagResults.drawnTokens;
@@ -266,5 +269,6 @@ export class ChaosBagResultsRedux implements ChaosBagResultsT {
     this.blessTokens = chaosBagResults.blessTokens || 0;
     this.curseTokens = chaosBagResults.curseTokens || 0;
     this.totalDrawnTokens = chaosBagResults.totalDrawnTokens;
+    this.tarot = chaosBagResults.tarot;
   }
 }

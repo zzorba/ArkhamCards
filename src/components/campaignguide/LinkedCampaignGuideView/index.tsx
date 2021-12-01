@@ -20,7 +20,7 @@ import CampaignDetailTab from '../CampaignDetailTab';
 import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
 import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 import space from '@styles/space';
-import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
 import { useDeckActions } from '@data/remote/decks';
 import StyleContext from '@styles/StyleContext';
 import LoadingSpinner from '@components/core/LoadingSpinner';
@@ -48,6 +48,7 @@ export default function LinkedCampaignGuideView(props: Props) {
   const updateCampaignActions = useUpdateCampaignActions();
   useStopAudioOnUnmount();
   const campaign = useCampaign(campaignId, true);
+  useCampaignDeleted(componentId, campaign);
   const campaignName = campaign?.name || '';
   const campaignDataA = useSingleCampaignGuideData(campaignIdA, investigators, true);
   const campaignDataB = useSingleCampaignGuideData(campaignIdB, investigators, true);
@@ -62,7 +63,7 @@ export default function LinkedCampaignGuideView(props: Props) {
     });
   }, [campaignId, dispatch, updateCampaignActions, componentId]);
 
-  const { dialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
+  const [dialog, showEditNameDialog] = useSimpleTextDialog({
     title: t`Name`,
     value: campaignName,
     onValueChange: setCampaignName,

@@ -62,7 +62,6 @@ export default function ChoiceListItemComponent({
       return choice;
     });
   }, [choices, masculine]);
-
   if (detailed) {
     return (
       <>

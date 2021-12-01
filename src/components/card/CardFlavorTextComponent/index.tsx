@@ -26,6 +26,7 @@ import { xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import { TextStyle } from 'react-native';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import FlavorMiniCapsNode from './FlavorMiniCapsNode';
 
 function BreakTagRule(): MarkdownRule<WithText, State> {
   return {
@@ -37,7 +38,6 @@ function BreakTagRule(): MarkdownRule<WithText, State> {
     render: FlavorUnderlineNode(),
   };
 }
-
 
 function ArkhamIconRule(usePingFang: boolean, style: StyleContextType, sizeScale: number): MarkdownRule<WithIconName, State> {
   return {
@@ -143,6 +143,19 @@ const BlockquoteHtmlTagRule: MarkdownRule<WithChildren, State> = {
   render: FlavorBlockquoteHtmlTagNode,
 };
 
+
+function MiniCapsHtmlTagRule(): MarkdownRule<WithChildren, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<minicaps>([\\s\\S]+?)<\\/minicaps>')),
+    order: 2,
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
+    },
+    render: FlavorMiniCapsNode(),
+  };
+}
 function SmallCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<smallcaps>([\\s\\S]+?)<\\/smallcaps>')),
@@ -228,6 +241,7 @@ export default function CardFlavorTextComponent(
         rightTag: RightHtmlTagRule,
         iTag: ItalicHtmlTagRule(),
         smallCapsTag: SmallCapsHtmlTagRule(context),
+        miniCapsTag: MiniCapsHtmlTagRule(),
         innsmouthTag: InnsmouthTagRule(context, sizeScale),
         gameTag: GameTagRule(context, sizeScale),
       }}

@@ -186,6 +186,7 @@ function AlertButtonComponent({ button, onClose }: { button: AlertButton; onClos
     />
   );
 }
+
 export type ShowAlert = (title: string, description: string, buttons?: AlertButton[]) => void;
 export function useAlertDialog(forceVerticalButtons?: boolean): [React.ReactNode, ShowAlert] {
   const { typography } = useContext(StyleContext);
@@ -226,7 +227,6 @@ export function useAlertDialog(forceVerticalButtons?: boolean): [React.ReactNode
       </NewDialog>
     );
   }, [state, buttons, onDismiss, typography, forceVerticalButtons]);
-
   const showAlert = useCallback((title: string, description: string, buttons: AlertButton[] = [{ text: t`Okay` }]) => {
     setState({
       title,
@@ -252,10 +252,7 @@ export function useSimpleTextDialog({
   onValueChange,
   onValidate,
   placeholder,
-}: SimpleTextDialogOptions): {
-  dialog: React.ReactNode;
-  showDialog: () => void;
-} {
+}: SimpleTextDialogOptions): [React.ReactNode, () => void] {
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const [liveValue, setLiveValue] = useState(value);
   const [error, setError] = useState<string | undefined>(undefined);
@@ -338,10 +335,10 @@ export function useSimpleTextDialog({
     setVisibleRef.current = setVisible;
   }, [setVisible]);
   const showDialog = useCallback(() => setVisible(true), [setVisible]);
-  return {
+  return [
     dialog,
     showDialog,
-  };
+  ];
 }
 
 interface PickerItemHeader {
@@ -353,9 +350,11 @@ interface PickerItemHeader {
 interface PickerItem<T> {
   type?: undefined;
   title: string;
+  description?: string;
   value: T;
   icon?: string;
   iconNode?: React.ReactNode;
+  rightNode?: React.ReactNode;
 }
 export type Item<T> = PickerItemHeader | PickerItem<T>;
 interface PickerDialogOptions<T> {
@@ -373,10 +372,7 @@ export function usePickerDialog<T>({
   items,
   selectedValue,
   onValueChange,
-}: PickerDialogOptions<T>): {
-  dialog: React.ReactNode;
-  showDialog: () => void;
-} {
+}: PickerDialogOptions<T>): [React.ReactNode, () => void] {
   const { borderStyle, typography } = useContext(StyleContext);
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const onValuePress = useCallback((value: T) => {
@@ -401,7 +397,9 @@ export function usePickerDialog<T>({
             iconName={item.icon}
             iconNode={item.iconNode}
             text={item.title}
+            description={item.description}
             value={item.value}
+            rightNode={item.rightNode}
             onValueChange={onValuePress}
             // tslint:disable-next-line
             selected={selectedValue === item.value}
@@ -422,10 +420,10 @@ export function usePickerDialog<T>({
     setVisibleRef.current = setVisible;
   }, [setVisible]);
   const showDialog = useCallback(() => setVisible(true), [setVisible]);
-  return {
+  return [
     dialog,
     showDialog,
-  };
+  ];
 }
 
 interface MultiPickerDialogOptions<T> {
@@ -443,10 +441,7 @@ export function useMultiPickerDialog<T>({
   items,
   selectedValues,
   onValueChange,
-}: MultiPickerDialogOptions<T>): {
-  dialog: React.ReactNode;
-  showDialog: () => void;
-} {
+}: MultiPickerDialogOptions<T>): [React.ReactNode, () => void] {
   const { borderStyle, typography } = useContext(StyleContext);
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const onValuePress = useCallback((value: T) => {
@@ -490,23 +485,19 @@ export function useMultiPickerDialog<T>({
     setVisibleRef.current = setVisible;
   }, [setVisible]);
   const showDialog = useCallback(() => setVisible(true), [setVisible]);
-  return {
+  return [
     dialog,
     showDialog,
-  };
+  ];
 }
 
-
-interface BasicDialogResult {
-  savingDialog: React.ReactNode;
-  saving: boolean;
-  setSaving: (saving: boolean) => void;
-  saveError: string | undefined;
-  setSaveError: (saveError: string | undefined) => void;
-}
-
-
-export function useBasicDialog(title: string): BasicDialogResult {
+export function useBasicDialog(title: string): [
+  React.ReactNode,
+  boolean,
+  (value: boolean) => void,
+  string | undefined,
+  (error: string | undefined) => void,
+] {
   const { typography } = useContext(StyleContext);
   const [saveError, setSaveError] = useState<string | undefined>();
   const dismissSaveError = useCallback(() => {
@@ -530,13 +521,13 @@ export function useBasicDialog(title: string): BasicDialogResult {
     dismiss: saveError ? { onPress: dismissSaveError, title: t`Okay` } : undefined,
     content,
   });
-  return {
-    savingDialog: dialog,
-    saving: visible,
-    setSaving: setVisible,
+  return [
+    dialog,
+    visible,
+    setVisible,
     saveError,
     setSaveError,
-  };
+  ];
 }
 
 
@@ -545,13 +536,10 @@ export function useUploadLocalDeckDialog(
   actions: DeckActions,
   deck?: Deck,
   parsedDeck?: ParsedDeck,
-): {
-  uploadLocalDeckDialog: React.ReactNode;
-  uploadLocalDeck: () => void;
-} {
+): [React.ReactNode, () => void] {
   const { userId } = useContext(ArkhamCardsAuthContext);
   const replaceLocalDeckRequest = useUploadLocalDeckRequest();
-  const { saving, setSaving, savingDialog } = useBasicDialog(t`Uploading deck`);
+  const [savingDialog, saving, setSaving] = useBasicDialog(t`Uploading deck`);
   const deckDispatch: DeckDispatch = useDispatch();
   const doUploadLocalDeck = useMemo(() => throttle((isRetry?: boolean) => {
     if (!parsedDeck || !deck || !deck.local) {
@@ -566,16 +554,13 @@ export function useUploadLocalDeckDialog(
       });
     }
   }, 200), [deckDispatch, replaceLocalDeckRequest, setSaving, saving, userId, deck, parsedDeck, actions]);
-  return {
-    uploadLocalDeckDialog: savingDialog,
-    uploadLocalDeck: doUploadLocalDeck,
-  };
+  return [savingDialog, doUploadLocalDeck];
 }
 
 export function useAdjustXpDialog({
   deck,
   deckEdits,
-}: ParsedDeckResults) {
+}: ParsedDeckResults): [React.ReactNode, () => void] {
   const { borderStyle, typography } = useContext(StyleContext);
   const dispatch = useDispatch();
   const [xpAdjustment, incXp, decXp, setXpAdjustment] = useCounter(deckEdits?.xpAdjustment || 0, {});
@@ -637,14 +622,15 @@ export function useAdjustXpDialog({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
   const showXpAdjustmentDialog = useMemo(() => throttle(() => setVisible(true), 500), [setVisible]);
-  return {
+  return [
+    dialog,
     showXpAdjustmentDialog,
-    xpAdjustmentDialog: dialog,
-  };
+  ];
 }
 
 export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditState & {
   saving: boolean;
+  saveError: string | undefined;
   saveEdits: () => void;
   saveEditsAndDismiss: () => void;
   savingDialog: React.ReactNode;
@@ -652,19 +638,20 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
   const { slotDeltas, hasPendingEdits, addedBasicWeaknesses, mode } = useDeckEditState(parsedDeckResults);
   const {
     deck,
-    parsedDeck,
+    parsedDeckRef,
     deckEditsRef,
     tabooSetId,
   } = parsedDeckResults;
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
   const { userId } = useContext(ArkhamCardsAuthContext);
-  const {
+  const [
+    savingDialog,
     saving,
     setSaving,
+    saveError,
     setSaveError,
-    savingDialog,
-  } = useBasicDialog(t`Saving`);
+  ] = useBasicDialog(t`Saving`);
   const handleSaveError = useCallback((err: Error) => {
     setSaving(false);
     setSaveError(err.message || 'Unknown Error');
@@ -675,13 +662,13 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
     if (saving && !isRetry) {
       return;
     }
-    if (!deck || !parsedDeck || !deckEditsRef.current) {
+    if (!deck || !parsedDeckRef.current || !deckEditsRef.current) {
       return;
     }
     setSaving(true);
     try {
       if (hasPendingEdits) {
-        const problem = parsedDeck.problem;
+        const problem = parsedDeckRef.current.problem;
         const problemField = problem ? problem.reason : '';
         const deckChanges: SaveDeckChanges = {
           name: deckEditsRef.current.nameChange,
@@ -689,7 +676,7 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
           slots: deckEditsRef.current.slots,
           ignoreDeckLimitSlots: deckEditsRef.current.ignoreDeckLimitSlots,
           problem: problemField,
-          spentXp: parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
+          spentXp: parsedDeckRef.current.changes?.spentXp || 0,
           xpAdjustment: deckEditsRef.current.xpAdjustment,
           tabooSetId,
           meta: deckEditsRef.current.meta,
@@ -717,7 +704,7 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
     } catch(e) {
       handleSaveError(e);
     }
-  }, [deck, saving, hasPendingEdits, parsedDeck, deckEditsRef, tabooSetId, userId, deckActions,
+  }, [deck, saving, hasPendingEdits, parsedDeckRef, deckEditsRef, tabooSetId, userId, deckActions,
     dispatch, deckDispatch, handleSaveError, setSaving]);
 
   const saveEdits = useMemo(() => throttle((isRetry?: boolean) => actuallySaveEdits(false, isRetry), 500), [actuallySaveEdits]);
@@ -725,6 +712,7 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
   return {
     saving,
     saveEdits,
+    saveError,
     saveEditsAndDismiss,
     savingDialog,
     slotDeltas,

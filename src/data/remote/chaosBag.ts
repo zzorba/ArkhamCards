@@ -1,7 +1,7 @@
 import { SealedToken, UploadedCampaignId } from '@actions/types'
 import { useApolloClient } from '@apollo/client';
 import { ChaosTokenType } from '@app_constants';
-import { FullChaosBagResultFragment, FullChaosBagResultFragmentDoc, useChaosBagClearTokensMutation, useChaosBagDecBlessMutation, useChaosBagDecCurseMutation, useChaosBagDrawTokenMutation, useChaosBagIncBlessMutation, useChaosBagIncCurseMutation, useChaosBagReleaseAllSealedMutation, useChaosBagResetBlessCurseMutation, useChaosBagSealTokensMutation } from '@generated/graphql/apollo-schema'
+import { Chaos_Bag_Tarot_Mode_Enum, FullChaosBagResultFragment, FullChaosBagResultFragmentDoc, useChaosBagClearTokensMutation, useChaosBagDecBlessMutation, useChaosBagDecCurseMutation, useChaosBagDrawTokenMutation, useChaosBagIncBlessMutation, useChaosBagIncCurseMutation, useChaosBagReleaseAllSealedMutation, useChaosBagResetBlessCurseMutation, useChaosBagSealTokensMutation, useChaosBagSetTarotMutation } from '@generated/graphql/apollo-schema'
 import { useCallback } from 'react';
 
 export interface ChaosBagActions {
@@ -11,6 +11,7 @@ export interface ChaosBagActions {
   sealTokens: (campaignId: UploadedCampaignId, sealed: SealedToken[]) => Promise<void>;
   releaseAllSealed: (campaignId: UploadedCampaignId) => Promise<void>;
   adjustBlessCurse: (campaignId: UploadedCampaignId, type: 'bless' | 'curse', direction: 'inc' | 'dec') => Promise<void>;
+  setTarot: (campaignId: UploadedCampaignId, tarot: Chaos_Bag_Tarot_Mode_Enum | undefined) => Promise<void>;
 }
 
 export function useChaosBagActions(): ChaosBagActions {
@@ -21,6 +22,7 @@ export function useChaosBagActions(): ChaosBagActions {
   const [decBless] = useChaosBagDecBlessMutation();
   const [incCurse] = useChaosBagIncCurseMutation();
   const [decCurse] = useChaosBagDecCurseMutation();
+  const [setTarotReq] = useChaosBagSetTarotMutation();
 
   const [drawTokenReq] = useChaosBagDrawTokenMutation();
   const [sealTokensReq] = useChaosBagSealTokensMutation();
@@ -56,7 +58,7 @@ export function useChaosBagActions(): ChaosBagActions {
       fragment: FullChaosBagResultFragmentDoc,
       fragmentName: 'FullChaosBagResult',
       id,
-    });
+    }, true);
     if (type === 'bless') {
       if (direction === 'inc') {
         await incBless({
@@ -152,13 +154,38 @@ export function useChaosBagActions(): ChaosBagActions {
     }
   }, [incBless, decBless, incCurse, decCurse, cache]);
 
+  const setTarot = useCallback(async(campaignId: UploadedCampaignId, tarot: Chaos_Bag_Tarot_Mode_Enum | undefined) => {
+    await setTarotReq({
+      optimisticResponse: {
+        __typename: 'mutation_root',
+        update_chaos_bag_result: {
+          __typename: 'chaos_bag_result_mutation_response',
+          returning: [
+            {
+              __typename: 'chaos_bag_result',
+              id: campaignId.serverId,
+              tarot: tarot || null,
+            },
+          ],
+        },
+      },
+      variables: {
+        campaign_id: campaignId.serverId,
+        tarot,
+      },
+      context: {
+        serializationKey: campaignId.serverId,
+      },
+    })
+  }, [setTarotReq]);
+
   const drawToken = useCallback(async(campaignId: UploadedCampaignId, drawn: ChaosTokenType[]) => {
     const id = cache.identify({ __typename: 'chaos_bag_result', id: campaignId.serverId });
     const existingCacheData = cache.readFragment<FullChaosBagResultFragment>({
       fragment: FullChaosBagResultFragmentDoc,
       fragmentName: 'FullChaosBagResult',
       id,
-    });
+    }, true);
     await drawTokenReq({
       optimisticResponse: {
         __typename: 'mutation_root',
@@ -248,5 +275,6 @@ export function useChaosBagActions(): ChaosBagActions {
     sealTokens,
     resetBlessCurse,
     releaseAllSealed,
+    setTarot,
   };
 }

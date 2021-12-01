@@ -15,7 +15,7 @@ import CampaignDetailTab from './CampaignDetailTab';
 import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
 import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 import space, { s } from '@styles/space';
-import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
 import { useDeckActions } from '@data/remote/decks';
 import StyleContext from '@styles/StyleContext';
 import DeckButton from '@components/deck/controls/DeckButton';
@@ -46,7 +46,7 @@ function CampaignGuideView(props: Props) {
       },
     });
   }, [campaignId, dispatch, updateCampaignActions, componentId]);
-  const { dialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
+  const [dialog, showEditNameDialog] = useSimpleTextDialog({
     title: t`Name`,
     value: campaignData.campaign.name,
     onValueChange: setCampaignName,
@@ -60,6 +60,8 @@ function CampaignGuideView(props: Props) {
   }, componentId, [showEditNameDialog]);
 
   const { campaignGuide, campaignState, campaign } = campaignData;
+  useCampaignDeleted(componentId, campaign);
+
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const [alertDialog, showAlert] = useAlertDialog();
   const customData = campaignGuide.campaignCustomData();

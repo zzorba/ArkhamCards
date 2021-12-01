@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { flatMap, forEach } from 'lodash';
-import { ListRenderItemInfo, RefreshControl } from 'react-native';
+import { FlatList, ListRenderItemInfo, RefreshControl } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -17,7 +17,6 @@ import space from '@styles/space';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import { useDeckHistory } from '@data/hooks';
 import LoadingSpinner from '@components/core/LoadingSpinner';
-import { FlatList } from 'react-native-gesture-handler';
 
 export interface DeckHistoryProps {
   id: DeckId;

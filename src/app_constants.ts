@@ -157,13 +157,15 @@ export const CHAOS_TOKEN_ORDER: ChaosBag = {
   '-6': 7,
   '-7': 8,
   '-8': 9,
-  'frost': 10,
+  'frost': 8,
   'skull': 11,
   'cultist': 12,
   'tablet': 13,
   'elder_thing': 14,
   'auto_fail': 15,
   'elder_sign': 16,
+  'bless': 10,
+  'curse': 10,
 };
 
 export const SPECIAL_TOKENS: SpecialChaosTokenType[] = [
@@ -173,6 +175,7 @@ export const SPECIAL_TOKENS: SpecialChaosTokenType[] = [
   'elder_thing',
   'auto_fail',
   'elder_sign',
+  'frost',
   'bless',
   'curse',
 ];

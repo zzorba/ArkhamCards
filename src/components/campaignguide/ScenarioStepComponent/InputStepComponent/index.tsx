@@ -28,6 +28,9 @@ import { chooseOneInputChoices } from '@data/scenario/inputHelper';
 import StyleContext from '@styles/StyleContext';
 import { s } from '@styles/space';
 import PrologueRandomizerPrompt from '@components/campaignguide/prompts/PrologueRandomizerPrompt';
+import PartnerTraumaComponent from './PartnerTraumaComponent';
+import InvestigatorChoicePartnerComponent from './InvestigatorChoicePartnerComponent';
+import PartnerChoiceComponent from './PartnerChoiceComponent';
 
 interface Props {
   step: InputStep;
@@ -144,6 +147,7 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
           componentId={componentId}
           skipDeckSave={step.input.skip_decks}
           specialXp={step.input.special_xp}
+          storyCards={step.input.story_cards}
           investigatorCounter={step.input.counter}
         />
       );
@@ -223,10 +227,11 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
       )
     case 'tarot_reading':
       return null;
-    default: {
-      /* eslint-disable @typescript-eslint/no-unused-vars */
-      const _exhaustiveCheck: never = step.input;
-      return null;
-    }
+    case 'partner_trauma':
+      return <PartnerTraumaComponent id={step.id} input={step.input} text={step.text} />;
+    case 'investigator_choice_partner':
+      return <InvestigatorChoicePartnerComponent id={step.id} input={step.input} text={step.text} bulletType={step.bullet_type} />;
+    case 'partner_choice':
+      return <PartnerChoiceComponent id={step.id} input={step.input} />;
   }
 }

@@ -75,6 +75,7 @@ fragment FullChaosBagResult on chaos_bag_result {
   drawn
   sealed
   totalDrawn
+  tarot
 }
 
 fragment MiniDeck on campaign_deck {
@@ -149,16 +150,22 @@ fragment MiniInvestigatorData on investigator_data {
   storyAssets
 }
 
-fragment FullInvestigatorData on investigator_data {
+
+fragment FullGuideInvestigatorData on investigator_data {
   ...MiniInvestigatorData
 
   addedCards
   ignoreStoryAssets
   removedCards
+  cardCounts
 
-  availableXp
-  spentXp
   specialXp
+  availableXp
+}
+
+fragment FullInvestigatorData on investigator_data {
+  ...FullGuideInvestigatorData
+  spentXp
 }
 
 fragment MiniCampaign on campaign {
@@ -192,6 +199,7 @@ fragment FullCampaign on campaign {
   updated_at
   uuid
   name
+  deleted
   cycleCode
   standaloneId
   difficulty

@@ -1,5 +1,5 @@
 import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
-import { BackHandler, InteractionManager, Keyboard } from 'react-native';
+import { BackHandler, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import { forEach, debounce, find } from 'lodash';
 
@@ -188,7 +188,7 @@ interface SyncCountAction {
   type: 'sync';
   values: Counters;
 }
-interface Counters {
+export interface Counters {
   [code: string]: number | undefined;
 }
 export function useCounters(initialValue: Counters): [Counters, (code: string, max?: number) => void, (code: string, min?: number) => void, (code: string, value: number) => void, (values: Counters) => void] {
@@ -261,17 +261,17 @@ interface RemoveAction {
 type SectionToggleAction = SetToggleAction | ToggleAction | ClearAction | RemoveAction;
 
 
-export function useToggles(initialState: Toggles, sync?: (toggles: Toggles) => void): [
+export function useToggles(initialState: (Toggles) | (() => Toggles), sync?: (toggles: Toggles) => void): [
   Toggles,
   (code: string) => void,
   (code: string | number, value: boolean) => void,
   (state?: Toggles) => void,
   (code: string) => void,
 ] {
-  const [toggles, updateToggles] = useReducer((state: Toggles, action: SectionToggleAction) => {
+  const [toggles, updateToggles] = useReducer<Reducer<Toggles, SectionToggleAction>, null>((state: Toggles, action: SectionToggleAction) => {
     switch (action.type) {
       case 'clear':
-        return action.state || initialState;
+        return action.state || (typeof initialState === 'function' ? initialState() : initialState);
       case 'remove': {
         const newState = { ...state };
         delete newState[action.key];
@@ -288,7 +288,7 @@ export function useToggles(initialState: Toggles, sync?: (toggles: Toggles) => v
           [action.key]: !state[action.key],
         };
     }
-  }, initialState);
+  }, null, () => typeof initialState === 'function' ? initialState() : initialState);
   useEffect(() => {
     sync?.(toggles);
   }, [sync, toggles]);
@@ -362,7 +362,7 @@ interface DecSlotAction {
   code: string;
 }
 
-type SlotsAction = SlotAction | IncSlotAction | DecSlotAction | ClearAction | SyncAction;
+export type SlotsAction = SlotAction | IncSlotAction | DecSlotAction | ClearAction | SyncAction;
 
 export function useSlots(initialState: Slots, updateSlots?: (slots: Slots) => void, keepZero?: boolean) {
   return useReducer((state: Slots, action: SlotsAction) => {
@@ -413,40 +413,22 @@ export function useSlots(initialState: Slots, updateSlots?: (slots: Slots) => vo
 
 export interface EditSlotsActions {
   setSlot: (code: string, count: number) => void;
-  incSlot: (code: string) => void;
+  incSlot: (code: string, max?: number) => void;
   decSlot: (code: string) => void;
 }
 
-export function useSlotActions(slots?: Slots, editSlotsActions?: EditSlotsActions, updateSlots?: (slots: Slots) => void): [Slots, EditSlotsActions | undefined] {
+export function useSlotActions(slots?: Slots, updateSlots?: (slots: Slots) => void): [Slots, EditSlotsActions] {
   const [deckCardCounts, updateDeckCardCounts] = useSlots(slots || {}, updateSlots);
-  const propsSetSlot = editSlotsActions?.setSlot;
-  const propsDecSlot = editSlotsActions?.decSlot;
-  const propsIncSlot = editSlotsActions?.incSlot;
 
   const setSlot = useCallback((code: string, value: number) => {
-    if (propsSetSlot) {
-      InteractionManager.runAfterInteractions(() => {
-        propsSetSlot(code, value);
-      });
-    }
     updateDeckCardCounts({ type: 'set-slot', code, value });
-  }, [propsSetSlot, updateDeckCardCounts]);
-  const incSlot = useCallback((code: string) => {
-    if (propsIncSlot) {
-      InteractionManager.runAfterInteractions(() => {
-        propsIncSlot(code);
-      });
-    }
-    updateDeckCardCounts({ type: 'inc-slot', code });
-  }, [propsIncSlot, updateDeckCardCounts]);
+  }, [updateDeckCardCounts]);
+  const incSlot = useCallback((code: string, max?: number) => {
+    updateDeckCardCounts({ type: 'inc-slot', code, max });
+  }, [updateDeckCardCounts]);
   const decSlot = useCallback((code: string) => {
-    if (propsDecSlot) {
-      InteractionManager.runAfterInteractions(() => {
-        propsDecSlot(code);
-      });
-    }
     updateDeckCardCounts({ type: 'dec-slot', code });
-  }, [propsDecSlot, updateDeckCardCounts]);
+  }, [updateDeckCardCounts]);
   const actions = useMemo(() => {
     return {
       setSlot,
@@ -454,7 +436,7 @@ export function useSlotActions(slots?: Slots, editSlotsActions?: EditSlotsAction
       decSlot,
     };
   }, [setSlot, incSlot, decSlot]);
-  return [deckCardCounts, editSlotsActions ? actions : undefined];
+  return [deckCardCounts, actions];
 }
 
 interface AppendCardsAction {
@@ -549,13 +531,13 @@ export function useDeckWithFetch(id: DeckId | undefined, actions: DeckActions): 
   const dispatch = useDispatch();
   const { userId } = useContext(ArkhamCardsAuthContext);
   useEffect(() => {
-    if (!deck && id !== undefined && !id.local) {
+    if (!deck && id !== undefined && !id.local && !id.serverId) {
       dispatch(fetchPrivateDeck(userId, actions, id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
-    if (!deck?.previousDeck && deck?.deck.previousDeckId && !deck.deck.local && !deck.deck.previousDeckId.local) {
+    if (!deck?.previousDeck && deck?.deck.previousDeckId && !deck.deck.local && !deck.deck.previousDeckId.local && !deck.deck.previousDeckId.serverId) {
       dispatch(fetchPrivateDeck(userId, actions, deck.deck.previousDeckId));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -598,8 +580,10 @@ export function useInterval(callback: () => void, delay: number) {
     if (!delay) {
       return;
     }
-    const id = setInterval(savedCallback.current, delay);
-    return () => clearInterval(id);
+    if (savedCallback.current) {
+      const id = setInterval(savedCallback.current, delay);
+      return () => clearInterval(id);
+    }
   }, [delay]);
 }
 

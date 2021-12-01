@@ -127,7 +127,7 @@ export default function ScenarioSection({ campaign, initialScenarioCode, scenari
     });
     return scenarios;
   }, [allScenarios, showInterludes, colors]);
-  const { dialog, showDialog } = usePickerDialog({
+  const [dialog, showDialog] = usePickerDialog({
     title: showInterludes ? t`Scenario or Interlude` : t`Scenario`,
     items: possibleScenarios,
     selectedValue: selectedScenario,

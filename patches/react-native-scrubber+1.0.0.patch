@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-scrubber/index.js b/node_modules/react-native-scrubber/index.js
+index 26618ed..42fad0e 100644
+--- a/node_modules/react-native-scrubber/index.js
++++ b/node_modules/react-native-scrubber/index.js
+@@ -333,7 +333,7 @@ export default class extends Component {
+               
+             ]} 
+             {...this.panResponder.panHandlers}
+-            hitSlop={{top: 50, bottom: 50, left: 50, right: 50}}
++            hitSlop={{top: 10, bottom: 50, left: 50, right: 50}}
+           />
+         </View>
+ 

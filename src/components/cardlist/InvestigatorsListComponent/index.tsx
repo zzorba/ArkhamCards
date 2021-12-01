@@ -158,7 +158,7 @@ export default function InvestigatorsListComponent({
     Keyboard.dismiss();
     setShowNonCollection(id, true);
   }, [setShowNonCollection]);
-  const deckbuildingDetails = useCallback((investigator: Card) => {
+  const deckbuildingDetails = useCallback((investigator: Card): React.ReactNode => {
     if (!cards || hideDeckbuildingRules || !investigator.deck_requirements) {
       return null;
     }

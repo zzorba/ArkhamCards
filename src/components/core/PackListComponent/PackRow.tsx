@@ -87,16 +87,14 @@ export default function PackRow({ componentId, pack, cycle, setChecked, setCycle
   const iconSize = 24;
   const fontSize = 16 * fontScale;
   const lineHeight = 20 * fontScale;
-  const rowHeight = 50;
+  const rowHeight = compact ? lineHeight * fontScale + 20 : 50;
   return (
     <View style={[styles.row,
       { backgroundColor, height: rowHeight },
-      compact ? {
-        height: lineHeight * fontScale + 20,
-      } : {
+      !compact ? {
         borderBottomWidth: StyleSheet.hairlineWidth,
         borderColor: colors.divider,
-      },
+      } : undefined,
     ]}>
       <TouchableOpacity style={styles.touchable} onPress={onPress}>
         <View style={styles.touchableContent}>

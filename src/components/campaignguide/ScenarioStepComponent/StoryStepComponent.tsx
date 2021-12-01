@@ -35,7 +35,7 @@ export default function StoryStepComponent({ step, width }: Props) {
   }, [step]);
   if (step.border) {
     return (
-      <BorderWrapper border width={width}>
+      <BorderWrapper border color={step.border_color} width={width}>
         { text }
       </BorderWrapper>
     );

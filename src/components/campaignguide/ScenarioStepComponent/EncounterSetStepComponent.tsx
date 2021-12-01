@@ -101,7 +101,7 @@ export default function EncounterSetStepComponent({ componentId, campaignId, ste
           <CampaignGuideTextComponent text={step.subtext} />
         ) }
       </SetupStepWrapper>
-      { !!errata.length && (
+      { !!errata.length && !step.remove && (
         <ArkhamButton icon="faq" title={t`Encounter Card Errata`} onPress={_viewEncounterErrata} />
       ) }
     </>

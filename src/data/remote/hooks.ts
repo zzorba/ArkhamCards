@@ -280,7 +280,7 @@ export interface UserProfile {
   flags: User_Flag_Type_Enum[];
 }
 
-export function useProfile(profileUserId: string | undefined, useCached?: boolean): [UserProfile | undefined, boolean, () => void] {
+export function useProfile(profileUserId: string | undefined, useCached?: boolean): [UserProfile | undefined, boolean, () => Promise<void>] {
   const { userId, loading: userLoading } = useContext(ArkhamCardsAuthContext);
   const { data, previousData, loading: dataLoading, refetch } = useGetProfileQuery({
     variables: { userId: profileUserId || '' },
@@ -329,15 +329,15 @@ export function useProfile(profileUserId: string | undefined, useCached?: boolea
       flags: map(theData.users_by_pk.flags, f => f.flag),
     };
   }, [data, previousData]);
-  const doRefetch = useCallback(() => {
-    refetch?.({
+  const doRefetch = useCallback(async() => {
+    await refetch?.({
       userId: profileUserId,
     });
   }, [refetch, profileUserId]);
   return [profile, userLoading || dataLoading, doRefetch];
 }
 
-export function useMyProfile(useCached: boolean): [UserProfile | undefined, boolean, () => void] {
+export function useMyProfile(useCached: boolean): [UserProfile | undefined, boolean, () => Promise<void>] {
   const { userId } = useContext(ArkhamCardsAuthContext);
   return useProfile(userId, useCached);
 }
@@ -442,12 +442,13 @@ export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, (
     if (!rawDecks) {
       return [];
     }
-    return flatMap(rawDecks, ({ deck }) => {
+    const result = flatMap(rawDecks, ({ deck }) => {
       if (!deck) {
         return [];
       }
       return new MiniDeckRemote(deck);
     });
+    return result;
   }, [rawDecks]);
   const [loading] = useDebounce(!!(userId && !data) || userLoading || dataLoading, 200);
   return [deckIds, loading, refresh];
@@ -464,7 +465,7 @@ export function useLatestDeckRemote(deckId: DeckId, campaign_id: CampaignId | un
       local_uuid: deckId.local ? deckId.uuid : null,
       arkhamdb_id: deckId.local ? null : deckId.id,
     }),
-  });
+  }, true);
 
   const result = useMemo(() => {
     if (!campaign_id?.serverId || !deckId.serverId) {

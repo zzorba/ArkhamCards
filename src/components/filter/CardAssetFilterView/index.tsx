@@ -87,6 +87,7 @@ const CardAssetFilterView = (props: FilterFunctionProps & NavigationProps) => {
         <FilterChooserButton
           componentId={componentId}
           title={t`Slots`}
+          all={c('Slots').t`All`}
           processValue={splitSlot}
           field="real_slot"
           selection={slots}
@@ -102,6 +103,7 @@ const CardAssetFilterView = (props: FilterFunctionProps & NavigationProps) => {
         <FilterChooserButton
           componentId={componentId}
           title={t`Uses`}
+          all={c('Uses').t`All`}
           field="uses"
           selection={uses}
           setting="uses"

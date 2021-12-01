@@ -20,6 +20,7 @@ const SCALE_FACTOR = isBig ? 1.2 : 1.0;
 interface Props {
   componentId?: string;
   card: Card;
+  size?: 'tiny';
 }
 
 function imageStyle(card: Card) {

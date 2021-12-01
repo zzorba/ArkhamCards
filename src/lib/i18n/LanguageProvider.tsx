@@ -26,6 +26,23 @@ function getListSeperator(lang: string): string {
   }
 }
 
+function getColon(lang: string): string {
+  switch (lang) {
+    case 'fr': return ' : ';
+    default: return ': ';
+  }
+}
+
+function getArkhamDbDomain(lang: string): string {
+  switch (lang) {
+    case 'pt':
+    case 'en':
+      return 'https://arkhamdb.com';
+    default:
+      return `https://${lang}.arkhamdb.com`;
+  }
+}
+
 export default function LanguageProvider({ children }: Props) {
   const [systemLang, setSystemLang] = useState<string>(currentSystemLang || getSystemLanguage());
   useEffect(() => {
@@ -78,6 +95,8 @@ export default function LanguageProvider({ children }: Props) {
       lang,
       useCardTraits: !LOCALIZED_CARD_TRAITS.has(lang),
       listSeperator: getListSeperator(lang),
+      colon: getColon(lang),
+      arkhamDbDomain: getArkhamDbDomain(lang),
       usePingFang: (lang === 'zh' && Platform.OS === 'ios' && majorVersionIOS >= 13),
       audioLang,
     };

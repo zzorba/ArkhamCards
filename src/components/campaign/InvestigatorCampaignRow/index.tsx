@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text, ActivityIndicator } from 'react-native';
 import { find , map } from 'lodash';
 import { t } from 'ttag';
 import { useSelector } from 'react-redux';
@@ -25,6 +25,7 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import { AppState, makeUploadingDeckSelector } from '@reducers';
 import { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
+import CampaignGuide from '@data/scenario/CampaignGuide';
 
 interface Props {
   componentId: string;
@@ -33,8 +34,10 @@ interface Props {
   spentXp: number;
   totalXp: number;
   unspentXp: number;
+  campaignGuide?: CampaignGuide;
   traumaAndCardData: TraumaAndCardData;
   playerCards: CardsMap;
+  badge?: 'deck' | 'upgrade';
   chooseDeckForInvestigator?: (investigator: Card) => void;
   deck?: LatestDeckT;
   showXpDialog: (investigator: Card) => void;
@@ -47,8 +50,11 @@ interface Props {
   children?: React.ReactNode;
 }
 
-function StoryAssetRow({ code, onCardPress, last }: { code: string; last: boolean; onCardPress: (card: Card) => void }) {
+function StoryAssetRow({ code, onCardPress, last, campaignGuide, count }: { code: string; campaignGuide?: CampaignGuide; last: boolean; count?: number; onCardPress: (card: Card) => void }) {
   const [card, loading] = useSingleCard(code, 'player');
+  const description = useMemo(() => {
+    return campaignGuide?.card(code)?.description;
+  }, [campaignGuide, code]);
   if (loading || !card) {
     return <LoadingCardSearchResult />;
   }
@@ -57,7 +63,12 @@ function StoryAssetRow({ code, onCardPress, last }: { code: string; last: boolea
       key={card.code}
       onPress={onCardPress}
       card={card}
+      description={description}
       noBorder={last}
+      control={count ? {
+        type: 'count',
+        count,
+      } : undefined}
     />
   );
 }
@@ -65,6 +76,7 @@ function StoryAssetRow({ code, onCardPress, last }: { code: string; last: boolea
 export default function InvestigatorCampaignRow({
   componentId,
   campaign,
+  campaignGuide,
   investigator,
   spentXp,
   totalXp,
@@ -74,6 +86,7 @@ export default function InvestigatorCampaignRow({
   deck,
   children,
   miniButtons,
+  badge,
   showXpDialog,
   chooseDeckForInvestigator,
   removeInvestigator,
@@ -82,7 +95,7 @@ export default function InvestigatorCampaignRow({
 }: Props) {
   const uploadingSelector = useMemo(makeUploadingDeckSelector, []);
   const uploading = useSelector((state: AppState) => uploadingSelector(state, campaign.id, investigator.code));
-  const { colors, width } = useContext(StyleContext);
+  const { colors, width, typography } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);
@@ -124,11 +137,18 @@ export default function InvestigatorCampaignRow({
       <View style={space.paddingBottomS}>
         <DeckSlotHeader title={t`Campaign cards`} first />
         { map(storyAssets, (asset, idx) => (
-          <StoryAssetRow key={asset} code={asset} onCardPress={onCardPress} last={idx === storyAssets.length - 1} />
+          <StoryAssetRow
+            key={asset}
+            campaignGuide={campaignGuide}
+            code={asset}
+            onCardPress={onCardPress}
+            last={idx === storyAssets.length - 1}
+            count={traumaAndCardData.cardCounts?.[asset]}
+          />
         )) }
       </View>
     );
-  }, [traumaAndCardData, onCardPress]);
+  }, [traumaAndCardData, onCardPress, campaignGuide]);
 
   const removePressed = useCallback(() => {
     if (removeInvestigator) {
@@ -191,9 +211,19 @@ export default function InvestigatorCampaignRow({
         eliminated={eliminated}
         yithian={yithian}
         open={open}
-        upgradeBadge={upgradeBadge}
+        badge={badge || (upgradeBadge ? 'upgrade' : undefined)}
         width={width - s * 2}
-        headerContent={!open && <View style={styles.trauma}><TraumaSummary trauma={traumaAndCardData} investigator={investigator} whiteText /></View>}
+        headerContent={!open && (
+          <View style={styles.trauma}>
+            <TraumaSummary trauma={traumaAndCardData} investigator={investigator} whiteText />
+            { uploading && (
+              <View style={[styles.trauma, space.marginLeftXs]}>
+                <Text style={[typography.text, typography.white, space.marginRightXs]}>{t`Uploading`}</Text>
+                <ActivityIndicator size="small" color="#FFFFFF" animating />
+              </View>
+            ) }
+          </View>
+        ) }
       >
         <View style={[space.paddingSideS]}>
           <View style={space.paddingBottomS}>

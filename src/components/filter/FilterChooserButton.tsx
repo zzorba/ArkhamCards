@@ -6,6 +6,7 @@ import { Brackets } from 'typeorm';
 interface Props {
   componentId: string;
   title: string;
+  all: string;
   selection?: string[];
   field: string;
   setting: string;
@@ -16,7 +17,7 @@ interface Props {
   tabooSetId?: number;
   capitalize?: boolean;
   fixedTranslations?: {
-    [key: string]: string;
+    [key: string]: string | undefined;
   };
   includeNone?: boolean;
 }
@@ -24,6 +25,7 @@ interface Props {
 export default function FilterChooserButton({
   componentId,
   title,
+  all,
   field,
   selection,
   setting,
@@ -44,6 +46,7 @@ export default function FilterChooserButton({
     <DbChooserButton
       componentId={componentId}
       title={title}
+      all={all}
       field={field}
       selection={selection}
       onChange={onChange}

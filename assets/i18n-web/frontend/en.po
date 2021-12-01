@@ -865,3 +865,7 @@ msgstr ""
 
 msgid "Get it on Google Play"
 msgstr ""
+
+#, javascript-format
+msgid "${ date } at ${ time }"
+msgstr ""

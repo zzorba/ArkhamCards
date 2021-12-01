@@ -962,3 +962,7 @@ msgid ""
 "Are you ready to help this group using the action ability on the \"Streets "
 "of Montéal\" location (group limit once per game)?"
 msgstr ""
+
+#, javascript-format
+msgid "${ date } at ${ time }"
+msgstr ""

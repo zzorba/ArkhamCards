@@ -16,6 +16,7 @@ mutation deleteInvestigatorDecks(
       arkhamdb_id
       local_uuid
       investigator
+      owner_id
     }
   }
 }
@@ -172,6 +173,24 @@ mutation chaosBagDecCurse($campaign_id: Int!) {
     returning {
     	id
       curse
+	  }
+  }
+}
+
+
+
+mutation chaosBagSetTarot($campaign_id: Int!, $tarot: chaos_bag_tarot_mode_enum) {
+  update_chaos_bag_result(
+    where: {
+      id: { _eq: $campaign_id }
+    }
+    _set: {
+      tarot: $tarot
+    }
+  ) {
+    returning {
+    	id
+      tarot
 	  }
   }
 }
@@ -376,9 +395,11 @@ mutation updateInvestigatorData(
   $insane: Boolean,
   $addedCards: jsonb,
   $availableXp: Int,
+  $specialXp: jsonb,
   $storyAssets: jsonb,
   $ignoreStoryAssets: jsonb,
-  $removedCards: jsonb
+  $removedCards: jsonb,
+  $cardCounts: jsonb
 ) {
   insert_investigator_data_one(
     object: {
@@ -388,22 +409,24 @@ mutation updateInvestigatorData(
       mental: $mental
       killed: $killed
       insane: $insane
+      cardCounts: $cardCounts
       addedCards: $addedCards
       storyAssets: $storyAssets
       ignoreStoryAssets: $ignoreStoryAssets
       removedCards: $removedCards
+      specialXp: $specialXp
       availableXp: $availableXp
     }
     on_conflict: {
       constraint: investigator_data_pkey
       update_columns: [
         physical, mental, killed, insane,
-        addedCards, removedCards, storyAssets, ignoreStoryAssets,
-	      availableXp
+        addedCards, removedCards, storyAssets, ignoreStoryAssets, cardCounts,
+	      availableXp, specialXp
       ]
     }
   ) {
-    ...FullInvestigatorData
+    ...FullGuideInvestigatorData
   }
 }
 

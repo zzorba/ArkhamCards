@@ -61,6 +61,7 @@ import { DeckActions, uploadCampaignDeckHelper } from '@data/remote/decks';
 import { SetCampaignChaosBagAction, SetCampaignNotesAction, SetCampaignShowInterludes, SetCampaignWeaknessSetAction, UpdateCampaignActions } from '@data/remote/campaigns';
 import { ChaosBagActions } from '@data/remote/chaosBag';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
+import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
 
 function getBaseDeckIds(
   state: AppState,
@@ -516,6 +517,25 @@ export function updateChaosBagDrawToken(
         ...chaosBagResults,
         drawnTokens: drawn,
         totalDrawnTokens: chaosBagResults.totalDrawnTokens + 1,
+      }));
+    }
+  };
+}
+
+
+export function updateChaosBagTarotMode(
+  actions: ChaosBagActions,
+  id: CampaignId,
+  tarot: Chaos_Bag_Tarot_Mode_Enum | undefined,
+  chaosBagResults: ChaosBagResultsT
+): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
+  return (dispatch) => {
+    if (id.serverId) {
+      actions.setTarot(id, tarot);
+    } else {
+      dispatch(updateChaosBagResults(id, {
+        ...chaosBagResults,
+        tarot,
       }));
     }
   };

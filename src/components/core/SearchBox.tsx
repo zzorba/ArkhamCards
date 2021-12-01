@@ -1,13 +1,13 @@
 import React, { forwardRef, useCallback, useContext, useImperativeHandle, useMemo, useRef } from 'react';
 import {
   NativeSyntheticEvent,
+  TextInput,
   Platform,
   StyleSheet,
   TextInputSubmitEditingEventData,
   TouchableOpacity,
   View,
 } from 'react-native';
-import { Input } from 'react-native-elements';
 import { t } from 'ttag';
 
 import AppIcon from '@icons/AppIcon';
@@ -33,7 +33,7 @@ export interface SearchBoxHandles {
 
 function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedOpen }: Props, ref: any) {
   const { colors } = useContext(StyleContext);
-  const textInputRef = useRef<Input>(null);
+  const textInputRef = useRef<TextInput>(null);
   const clear = useCallback(() => {
     onChangeText('', true);
   }, [onChangeText]);
@@ -81,43 +81,47 @@ function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedO
   }, [toggleAdvanced, advancedOpen, clearButton]);
 
   return (
-    <Input
-      ref={textInputRef}
-      clearButtonMode="never"
-      autoCorrect={false}
-      autoCapitalize="none"
-      multiline={false}
-      containerStyle={[styles.container, { borderColor: colors.L10, backgroundColor: colors.L20 }, !toggleAdvanced ? styles.underline : undefined]}
-      inputContainerStyle={[
+    <View style={[styles.container, { borderColor: colors.L10, backgroundColor: colors.L20 }, !toggleAdvanced ? styles.underline : undefined]}>
+      <View style={[
         styles.searchInput,
         {
           backgroundColor: colors.L20,
           borderColor: colors.L10,
         },
-      ]}
-      inputStyle={{
-        marginTop: 6,
-        fontFamily: 'Alegreya-Regular',
-        fontSize: Platform.OS === 'android' ? 16 : 20,
-        lineHeight: 24,
-        color: colors.darkText,
-        textAlignVertical: 'center',
-      }}
-      underlineColorAndroid="rgba(0,0,0,0)"
-      allowFontScaling={false}
-      onChangeText={onSearchUpdated}
-      placeholder={placeholder}
-      placeholderTextColor={colors.D20}
-      leftIcon={<View style={styles.searchIcon}><AppIcon name="search" color={colors.M} size={18} /></View>}
-      rightIcon={toggleButton}
-      returnKeyType="search"
-      onSubmitEditing={onSubmit}
-      blurOnSubmit
-      rightIconContainerStyle={{
-        marginRight: -13,
-      }}
-      value={value}
-    />
+      ]}>
+        <View style={styles.searchIcon}>
+          <AppIcon name="search" color={colors.M} size={18} />
+        </View>
+        <TextInput
+          ref={textInputRef}
+          clearButtonMode="never"
+          autoCorrect={false}
+          autoCapitalize="none"
+          multiline={false}
+          style={{
+            marginTop: Platform.OS === 'ios' ? 6 : 0,
+            fontFamily: 'Alegreya-Regular',
+            fontSize: Platform.OS === 'android' ? 16 : 20,
+            lineHeight: 24,
+            flex: 1,
+            color: colors.darkText,
+            textAlignVertical: 'center',
+          }}
+          underlineColorAndroid="rgba(0,0,0,0)"
+          allowFontScaling={false}
+          onChangeText={onSearchUpdated}
+          placeholder={placeholder}
+          placeholderTextColor={colors.D20}
+          returnKeyType="search"
+          onSubmitEditing={onSubmit}
+          blurOnSubmit
+          value={value}
+        />
+        <View style={{ marginRight: 1 }}>
+          { toggleButton }
+        </View>
+      </View>
+    </View>
   );
 }
 
@@ -129,7 +133,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   searchIcon: {
-    marginRight: 4,
+    marginRight: 8,
+    marginLeft: 10,
   },
   container: {
     paddingLeft: 8,
@@ -142,7 +147,7 @@ const styles = StyleSheet.create({
   searchInput: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     borderRadius: SEARCH_BAR_INPUT_HEIGHT / 2,
     height: SEARCH_BAR_INPUT_HEIGHT,
     borderWidth: 1,
@@ -150,7 +155,6 @@ const styles = StyleSheet.create({
     marginTop: 0,
     marginLeft: 0,
     marginRight: 0,
-    padding: 10,
     position: 'relative',
   },
   rightButtons: {

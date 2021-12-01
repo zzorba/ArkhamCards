@@ -64,7 +64,7 @@ function mainQuery(
         const encounterSets = flatMap(
           processedScenario.steps,
           step => {
-            if (step.step.type === 'encounter_sets') {
+            if (step.step.type === 'encounter_sets' && !step.step.remove) {
               return step.step.encounter_sets;
             }
             return [];

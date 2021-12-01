@@ -1,12 +1,13 @@
 import { find, flatMap, sortBy } from 'lodash';
 
-import { NumberChoices, StandaloneId } from '@actions/types';
-import { FullCampaign, Effect, Errata, Scenario, ChoiceIcon, ChaosToken, ChaosTokens, ScenarioChaosTokens } from './types';
+import { NumberChoices, StandaloneId, Trauma } from '@actions/types';
+import { FullCampaign, Effect, Errata, Scenario, ChoiceIcon, ChaosToken, ChaosTokens, ScenarioChaosTokens, BorderColor, TabooSets } from './types';
 import CampaignGuide, { CampaignLog, CampaignLogSection } from './CampaignGuide';
 import ScenarioGuide from './ScenarioGuide';
 import ScenarioStep from './ScenarioStep';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import Card from '@data/types/Card';
 
 export interface ScenarioId {
   scenarioId: string;
@@ -34,6 +35,11 @@ interface UnplayedScenario extends BasicScenario {
   steps: ScenarioStep[];
 }
 
+export interface StepId {
+  id: string;
+  scenario?: string;
+}
+
 export type ProcessedScenario = PlayedScenario | UnplayedScenario;
 
 export interface ProcessedCampaign {
@@ -47,6 +53,7 @@ export interface LatestDecks {
 
 export interface DisplayChoice {
   border?: boolean;
+  border_color?: BorderColor;
   large?: boolean;
   text?: string;
   tokens?: ChaosToken[];
@@ -59,6 +66,9 @@ export interface DisplayChoice {
   steps?: string[] | null;
   effects?: Effect[] | null;
   pre_border_effects?: Effect[] | null;
+  trauma?: Trauma;
+  resolute?: boolean;
+  card?: Card;
 }
 
 export interface DisplayChoiceWithId extends DisplayChoice {
@@ -108,6 +118,20 @@ export function loadChaosTokens(lang: string, code?: string, scenario?: string):
   }
   const allTokens = loadAllChaosTokens(lang);
   return find(allTokens, t => !!(scenario && t.scenario === scenario)) || find(allTokens, t => !!(code && t.code === code));
+}
+
+export function loadTaboos(lang: string): TabooSets | undefined {
+  switch (lang) {
+    case 'es': return require('../../../assets/taboos_es.json');
+    case 'de': return require('../../../assets/taboos_de.json');
+    case 'ru': return require('../../../assets/taboos_ru.json');
+    case 'fr': return require('../../../assets/taboos_fr.json');
+    case 'it': return require('../../../assets/taboos_it.json');
+    case 'zh': return require('../../../assets/taboos_zh.json');
+    case 'ko': return require('../../../assets/taboos_ko.json');
+    case 'pt': return require('../../../assets/taboos_pt.json');
+    default: return undefined;
+  }
 }
 
 

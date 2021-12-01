@@ -18,7 +18,7 @@ import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 
-export enum PlayingScenarioBranch {
+export const enum PlayingScenarioBranch {
   CAMPAIGN_LOG = -1,
   RESOLUTION = -2,
   DRAW_WEAKNESS = -3,
@@ -154,6 +154,8 @@ function drawStandaloneWeaknessStep(): InputStep {
     },
   };
 }
+
+export const SELECTED_PARTNERS_CAMPAIGN_LOG_ID = '$selected_partners';
 
 const SAVE_STANDALONE_DECKS_ID = '$save_standalone_decks';
 const saveStandaloneDecksStep: InputStep = {

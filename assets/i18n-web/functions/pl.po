@@ -197,23 +197,13 @@ msgid ""
 "for ${ gooName }'s arrival!"
 msgstr ""
 
-msgid "Minimum search size is 3 characters."
-msgstr ""
-
 msgid "Something weird happened with continuation token"
 msgstr ""
 
 msgid "You must set a handle before you can invite friends."
 msgstr ""
 
-msgid "Something went wrong."
-msgstr ""
-
-#. The only request that is allowed for a participant is to 'leave' a campaign.
 msgid "You are not allowed to edit this campaign."
-msgstr ""
-
-msgid "Owner cannot have their campaign access edited."
 msgstr ""
 
 #, javascript-format
@@ -221,3 +211,6 @@ msgid "You do not appear to be friends with '${ handlesString }'."
 msgid_plural "You do not appear to be friends with the following users: ${ handlesString }"
 msgstr[0] ""
 msgstr[1] ""
+
+msgid "Minimum search size is 2 characters."
+msgstr ""

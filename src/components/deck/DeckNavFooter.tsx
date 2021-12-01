@@ -50,7 +50,7 @@ export default function DeckNavFooter({
 }: Props) {
   const { colors, shadow, typography } = useContext(StyleContext);
   const parsedDeckObj = useParsedDeck(deckId, componentId);
-  const { showXpAdjustmentDialog, xpAdjustmentDialog } = useAdjustXpDialog(parsedDeckObj);
+  const [xpAdjustmentDialog, showXpAdjustmentDialog] = useAdjustXpDialog(parsedDeckObj);
   const { deck, parsedDeck, deckEdits } = parsedDeckObj;
   const { mode } = useDeckEditState(parsedDeckObj);
   const xpString = useMemo(() => {

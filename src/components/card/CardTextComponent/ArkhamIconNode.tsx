@@ -47,6 +47,11 @@ const ALL_ICONS = new Set([
   'curse',
   'bless',
   'frost',
+  'seal_a',
+  'seal_b',
+  'seal_c',
+  'seal_d',
+  'seal_e',
 ]);
 export default function ArkhamIconNode(usePingFang: boolean, { colors, fontScale }: StyleContextType, sizeScale: number) {
   return (

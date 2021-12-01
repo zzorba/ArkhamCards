@@ -15,25 +15,12 @@ interface Props {
   trauma: TraumaAndCardData;
   investigator: Card;
   whiteText?: boolean;
+  hideNone?: boolean;
 }
 
-export default function TraumaSummary({ trauma, investigator, whiteText }: Props) {
-  const { typography } = useContext(StyleContext);
-  const physical = (trauma.physical || 0);
-  const mental = (trauma.mental || 0);
+export function TraumaIconPile({ physical, mental, whiteText }: { physical: number; mental: number; whiteText?: boolean }) {
   const textColorStyle = whiteText ? { color: '#FFF' } : undefined;
-  if (investigator.killed(trauma)) {
-    return <Text style={[typography.subHeaderText, textColorStyle]}>{t`Killed`}</Text>;
-  }
-  if (investigator.insane(trauma)) {
-    return <Text style={[typography.subHeaderText, textColorStyle]}>{t`Insane`}</Text>;
-  }
-  if (physical + mental === 0) {
-    if (whiteText) {
-      return null;
-    }
-    return <Text style={typography.subHeaderText}>{c('trauma').t`None`}</Text>;
-  }
+  const { typography } = useContext(StyleContext);
   if (physical + mental > (TINY_PHONE ? 2 : 3)) {
     // compact mode;
     return (
@@ -51,6 +38,26 @@ export default function TraumaSummary({ trauma, investigator, whiteText }: Props
       { (mental > 0) && map(range(0, mental), idx => <HealthSanityIcon key={idx} type="sanity" size={24} />) }
     </View>
   );
+}
+
+export default function TraumaSummary({ trauma, investigator, whiteText, hideNone }: Props) {
+  const { typography } = useContext(StyleContext);
+  const physical = (trauma.physical || 0);
+  const mental = (trauma.mental || 0);
+  const textColorStyle = whiteText ? { color: '#FFF' } : undefined;
+  if (investigator.killed(trauma)) {
+    return <Text style={[typography.subHeaderText, textColorStyle]}>{t`Killed`}</Text>;
+  }
+  if (investigator.insane(trauma)) {
+    return <Text style={[typography.subHeaderText, textColorStyle]}>{t`Insane`}</Text>;
+  }
+  if (physical + mental === 0) {
+    if (whiteText || hideNone) {
+      return null;
+    }
+    return <Text style={typography.subHeaderText}>{c('trauma').t`None`}</Text>;
+  }
+  return <TraumaIconPile physical={physical} mental={mental} whiteText={whiteText} />
 }
 
 const styles = StyleSheet.create({

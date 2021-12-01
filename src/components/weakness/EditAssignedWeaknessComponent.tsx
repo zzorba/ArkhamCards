@@ -1,6 +1,6 @@
-import React, { useCallback, useContext } from 'react';
-import { flatMap } from 'lodash';
-import { ScrollView } from 'react-native';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { filter } from 'lodash';
+import { FlatList, ListRenderItemInfo } from 'react-native';
 
 import { showCard } from '@components/nav/helper';
 import { t } from 'ttag';
@@ -16,46 +16,54 @@ interface Props {
   updateAssignedCards: (assignedCards: Slots) => void;
 }
 
+function cardKey(card: Card) {
+  return card.code;
+}
+
 function EditAssignedWeaknessComponent({ componentId, weaknessSet, updateAssignedCards }: Props) {
   const { colors } = useContext(StyleContext);
   const weaknessCards = useWeaknessCards();
-  const [, editAssignedCards] = useSlotActions(weaknessSet.assignedCards, undefined, updateAssignedCards);
+  const [assignedCards, editAssignedCards] = useSlotActions(weaknessSet.assignedCards, updateAssignedCards);
   const cardPressed = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);
   }, [componentId, colors]);
 
-  const packCodes = new Set(weaknessSet.packCodes);
+  const data: Card[] = useMemo(() => {
+    const packCodes = new Set(weaknessSet.packCodes);
+    return filter(weaknessCards || [], card => packCodes.has(card.pack_code));
+  }, [weaknessCards, weaknessSet.packCodes]);
+  const renderItem = useCallback(({ item }: ListRenderItemInfo<Card>) => {
+    const count = assignedCards[item.code] || 0;
+    const limit = (item.quantity || 0);
+    return (
+      <CardSearchResult
+        key={item.code}
+        card={item}
+        onPress={cardPressed}
+        control={{
+          type: 'quantity',
+          count,
+          limit,
+          countChanged: editAssignedCards,
+          showZeroCount: true,
+          reversed: true,
+        }}
+      />
+    );
+  }, [editAssignedCards, cardPressed, assignedCards]);
   return (
-    <ScrollView>
-      { flatMap(weaknessCards, card => {
-        if (!packCodes.has(card.pack_code) || !editAssignedCards) {
-          return null;
-        }
-        const count = (card.quantity || 0) - (weaknessSet.assignedCards[card.code] || 0);
-        const limit = (card.quantity || 0);
-        return (
-          <CardSearchResult
-            key={card.code}
-            card={card}
-            onPress={cardPressed}
-            control={{
-              type: 'quantity',
-              count,
-              limit,
-              countChanged: editAssignedCards,
-              showZeroCount: true,
-            }}
-          />
-        );
-      }) }
-    </ScrollView>
+    <FlatList
+      data={data}
+      keyExtractor={cardKey}
+      renderItem={renderItem}
+    />
   );
 }
 EditAssignedWeaknessComponent.options = () => {
   return {
     topBar: {
       title: {
-        text: t`Available weaknesses`,
+        text: t`Assigned weaknesses`,
       },
     },
   };

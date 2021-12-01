@@ -39,7 +39,8 @@ interface Props {
   clearSearchFilters: () => void;
 
   investigator?: Card;
-  header?: React.ReactElement;
+  headerItems?: React.ReactNode[];
+  headerHeight?: number;
   storyOnly?: boolean;
 
   initialSort?: SortType;
@@ -234,7 +235,8 @@ export default function({
   toggleMythosMode,
   clearSearchFilters,
   investigator,
-  header,
+  headerItems,
+  headerHeight,
   storyOnly,
   initialSort,
   includeDuplicates,
@@ -396,7 +398,8 @@ export default function({
                 toggleSearchBack={toggleSearchBack}
               />
             )}
-            header={header}
+            headerItems={headerItems}
+            headerHeight={headerHeight}
             showNonCollection={showNonCollection}
             storyOnly={storyOnly}
             mythosToggle={mythosToggle}

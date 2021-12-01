@@ -15,6 +15,8 @@ import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
 import COLORS from '@styles/colors';
+import EncounterIcon from '@icons/EncounterIcon';
+import space from '@styles/space';
 
 interface Props {
   card?: Card;
@@ -24,7 +26,7 @@ interface Props {
   killedOrInsane?: boolean;
   yithian?: boolean;
   imageLink?: boolean;
-  badge?: 'upgrade';
+  badge?: 'upgrade' | 'deck';
 }
 
 const IMAGE_SIZE = {
@@ -70,12 +72,19 @@ export default function InvestigatorImage({
 
 
   const imageStyle = useMemo(() => {
+    if (card?.type_code === 'asset') {
+      switch (impliedSize) {
+        case 'tiny': return styles.tinyAsset;
+        case 'small': return styles.smallAsset;
+        case 'large': return styles.largeAsset;
+      }
+    }
     switch (impliedSize) {
       case 'tiny': return yithian ? styles.yithianTiny : styles.tiny;
       case 'small': return yithian ? styles.yithianSmall : styles.small;
       case 'large': return yithian ? styles.yithianLarge : styles.large;
     }
-  }, [impliedSize, yithian]);
+  }, [impliedSize, yithian, card]);
 
   const investigatorImage = useMemo(() => {
     if (card) {
@@ -145,7 +154,13 @@ export default function InvestigatorImage({
               },
             ]}>
               <View style={styles.icon}>
-                <FactionIcon faction={card.factionCode()} defaultColor="#FFFFFF" size={ICON_SIZE[impliedSize]} />
+                { card.encounter_code ? (
+                  <View style={space.paddingTopXs}>
+                    <EncounterIcon encounter_code={card.encounter_code} color="#FFFFFF" size={ICON_SIZE[impliedSize]} />
+                  </View>
+                ) : (
+                  <FactionIcon faction={card.factionCode()} defaultColor="#FFFFFF" size={ICON_SIZE[impliedSize]} />
+                ) }
               </View>
             </View>
           </View>
@@ -157,7 +172,7 @@ export default function InvestigatorImage({
         </View>
         { !!badge && (
           <View style={{ position: 'absolute', bottom: - size / 8 + 2, right: -size / 8, width: size / 2, height: size / 2, borderRadius: size / 4, backgroundColor: colors.upgrade, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-            <AppIcon size={size / 2.3} color={COLORS.D20} name="upgrade" />
+            <AppIcon size={size / 2.3} color={COLORS.D20} name={badge} />
           </View>
         ) }
       </View>
@@ -223,6 +238,27 @@ const styles = StyleSheet.create({
     left: -20,
     width: (166 + 44) * 1.25,
     height: (136 + 34) * 1.25,
+  },
+  tinyAsset: {
+    position: 'absolute',
+    top: -10,
+    left: -12,
+    width: (136 + 34) * 0.4,
+    height: (166 + 44) * 0.4,
+  },
+  smallAsset: {
+    position: 'absolute',
+    top: -36,
+    left: -20,
+    width: (136 + 34),
+    height: (166 + 44),
+  },
+  largeAsset: {
+    position: 'absolute',
+    top: -44,
+    left: -20,
+    width: (136 + 34) * 1.25,
+    height: (166 + 44) * 1.25,
   },
   placeholder: {
     position: 'absolute',

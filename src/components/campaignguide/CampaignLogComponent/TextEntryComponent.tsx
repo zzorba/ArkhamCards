@@ -6,6 +6,7 @@ import { CampaignLogEntry } from '@data/scenario/GuidedCampaignLog';
 import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
+import ArkhamIcon from '@icons/ArkhamIcon';
 
 interface Props {
   text: string;
@@ -32,17 +33,21 @@ export default function TextEntryComponent({ text, icon, crossedOut, entry, deco
     ] : undefined}>
       <View style={[styles.wrapper, space.paddingTopS, space.paddingBottomS, !last && icon ? { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined]}>
         { !!icon && <View style={space.paddingRightS}><AppIcon name={icon} size={36} color={colors.M} /></View> }
-        <Text style={[
-          icon ? typography.menuText : typography.large,
-          icon ? undefined : space.marginBottomS,
-          icon ? { color: colors.D20 } : undefined,
-          crossedOut ? typography.strike : undefined,
-          decoration === 'circle' ? typography.underline : undefined,
-          decoration === 'circle' ? typography.bold : undefined,
-          { flex: 1 },
-        ]}>
-          { upperFirst(actualText) }
-        </Text>
+        { actualText.startsWith('[') && actualText.endsWith(']') ? (
+          <ArkhamIcon name={actualText.substr(1, actualText.length - 2)} color={colors.D30} size={36} />
+        ) : (
+          <Text style={[
+            icon ? typography.menuText : typography.large,
+            icon ? undefined : space.marginBottomS,
+            icon ? { color: colors.D20 } : undefined,
+            crossedOut ? typography.strike : undefined,
+            decoration === 'circle' ? typography.underline : undefined,
+            decoration === 'circle' ? typography.bold : undefined,
+            { flex: 1 },
+          ]}>
+            { upperFirst(actualText) }
+          </Text>
+        ) }
         { !!button && button}
       </View>
     </View>

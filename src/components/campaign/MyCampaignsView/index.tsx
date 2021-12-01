@@ -130,7 +130,7 @@ function MyCampaignsView({ componentId }: NavigationProps) {
       if (search) {
         return (
           <View style={[styles.footer, space.paddingTopS]}>
-            <Text style={[typography.text]}>
+            <Text style={[typography.text, typography.center]}>
               { t`No matching campaigns for "${search}".` }
             </Text>
           </View>
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     marginLeft: m,
     marginRight: m,
     flexDirection: 'column',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'center',
   },
   gutter: {

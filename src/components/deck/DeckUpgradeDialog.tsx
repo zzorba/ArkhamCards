@@ -23,7 +23,7 @@ import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignDeck } from '@data/hooks';
 import { useInvestigatorCards, useNavigationButtonPressed, useSlots } from '@components/core/hooks';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
-import useDeckUpgrade from './useDeckUpgrade';
+import useDeckUpgradeAction from './useDeckUpgradeAction';
 import { useDeckActions } from '@data/remote/decks';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
 
@@ -120,7 +120,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
       </>
     );
   }, [deck, componentId, campaign, showTraumaDialog, storyEncounterCodes, scenarioName, investigator, traumaUpdate, onStoryCountsChange]);
-  const [saving, error, saveDeckUpgrade] = useDeckUpgrade(deck, actions, deckUpgradeComplete);
+  const [saving, error, saveDeckUpgrade] = useDeckUpgradeAction(actions, deckUpgradeComplete);
   if (!deck || !investigator) {
     return null;
   }

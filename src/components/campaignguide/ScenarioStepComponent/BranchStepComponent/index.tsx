@@ -13,6 +13,8 @@ import CampaignLogConditionComponent from './CampaignLogConditionComponent';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import { BranchStep } from '@data/scenario/types';
 import CampaignLogInvestigatorCountConditionComponent from './CampaignLogInvestigatorCountConditionComponent';
+import CampaignLogCardsSwitchConditionComponent from './CampaignLogCardsSwitchConditionComponent';
+import PartnerStatusConditionComponent from './PartnerStatusConditionComponent';
 
 interface Props {
   step: BranchStep;
@@ -82,6 +84,10 @@ export default function BranchStepComponent({ step, campaignLog }: Props) {
           condition={condition}
         />
       );
+    case 'campaign_log_cards_switch':
+      return (
+        <CampaignLogCardsSwitchConditionComponent step={step} />
+      );
     case 'campaign_data': {
       return (
         <CampaignDataConditionComponent
@@ -118,5 +124,13 @@ export default function BranchStepComponent({ step, campaignLog }: Props) {
         />
       );
     }
+    case 'partner_status':
+      return (
+        <PartnerStatusConditionComponent
+          step={step}
+          campaignLog={campaignLog}
+          condition={condition}
+        />
+      );
   }
 }

@@ -1,5 +1,5 @@
 diff --git a/node_modules/react-native-navigation/lib/ios/TopBarPresenter.m b/node_modules/react-native-navigation/lib/ios/TopBarPresenter.m
-index 20af99d..a9ee016 100644
+index a5b5ca1..eb37644 100644
 --- a/node_modules/react-native-navigation/lib/ios/TopBarPresenter.m
 +++ b/node_modules/react-native-navigation/lib/ios/TopBarPresenter.m
 @@ -89,7 +89,6 @@

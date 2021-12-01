@@ -19,6 +19,7 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 import { useComponentVisible, useEffectUpdate } from '@components/core/hooks';
+import { s } from '@styles/space';
 
 interface Props {
   componentId: string;
@@ -121,7 +122,7 @@ export default function CardSearchComponent(props: Props) {
     storyOnly,
     includeDuplicates,
   } = props;
-  const { typography } = useContext(StyleContext);
+  const { fontScale, typography, width } = useContext(StyleContext);
   const visible = useComponentVisible(componentId);
   const filterSelector = useCallback((state: AppState) => getFilterState(state, componentId), [componentId]);
   const filters = useSelector(filterSelector);
@@ -174,8 +175,9 @@ export default function CardSearchComponent(props: Props) {
     dispatch(toggleFilter(componentId, key, value));
   }, [componentId, dispatch]);
 
-  const header = useMemo(() => {
-    const result: React.ReactElement[] = [];
+  const [headerItems, headerHeight] = useMemo(() => {
+    let headerHeight: number = 0;
+    const result: React.ReactNode[] = [];
     if (deckId !== undefined) {
       result.push(
         <XpChooser
@@ -189,30 +191,26 @@ export default function CardSearchComponent(props: Props) {
           nonExceptional={filters?.nonExceptional || false}
         />
       );
+      headerHeight += (s * 2 + 10 * 2 + fontScale * 28);
     }
     if (setHideVersatile) {
       result.push(
-        <View style={[styles.row, space.paddingRightS, space.paddingTopS, space.paddingBottomS]}>
-          <Text style={[typography.small, styles.searchOption, space.paddingRightS]}>
-            { t`Hide versatile cards` }
-          </Text>
+        <View style={[styles.row, space.paddingRightS, space.paddingTopS, space.paddingBottomS, { width }]}>
+          <View style={space.paddingRightS}>
+            <Text style={[typography.small, styles.searchOption]}>
+              { t`Hide versatile cards` }
+            </Text>
+          </View>
           <ArkhamSwitch
             value={!!hideVersatile}
             onValueChange={setHideVersatile}
           />
         </View>
       );
+      headerHeight += s * 2 + 28 * fontScale;
     }
-
-    if (!result.length) {
-      return undefined;
-    }
-    return (
-      <>
-        { result }
-      </>
-    );
-  }, [filters, deckId, hideVersatile, setHideVersatile, typography, onFilterChange, onToggleChange]);
+    return [result, headerHeight];
+  }, [filters, fontScale, width, deckId, hideVersatile, setHideVersatile, typography, onFilterChange, onToggleChange]);
 
   return (
     <CardSearchResultsComponent
@@ -227,7 +225,8 @@ export default function CardSearchComponent(props: Props) {
       toggleMythosMode={onToggleMythosMode}
       clearSearchFilters={onClearSearchFilters}
       investigator={investigator}
-      header={header}
+      headerItems={headerItems}
+      headerHeight={headerHeight}
       visible={visible}
       storyOnly={storyOnly}
       initialSort={sort}
@@ -241,7 +240,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    flex: 1,
   },
   searchOption: {
     marginRight: 2,

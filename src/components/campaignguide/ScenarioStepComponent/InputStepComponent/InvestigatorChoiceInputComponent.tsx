@@ -9,6 +9,7 @@ import InvestigatorChoicePrompt from '@components/campaignguide/prompts/Investig
 import { InputStep, InvestigatorChoiceInput } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import { investigatorChoiceInputChoices } from '@data/scenario/inputHelper';
+import { basicTraumaConditionResult } from '@data/scenario/conditionHelper';
 
 interface Props {
   step: InputStep;
@@ -17,6 +18,14 @@ interface Props {
 }
 
 export default function InvestigatorChoiceInputComponent({ step, input, campaignLog }: Props) {
+  const investigators = useMemo(() => {
+    const allInvestigators = campaignLog.investigators(false)
+    if (!input.condition) {
+      return allInvestigators;
+    }
+    const codes = new Set(keys(basicTraumaConditionResult(input.condition, campaignLog).investigatorChoices));
+    return filter(allInvestigators, i => codes.has(i.code));
+  }, [input, campaignLog]);
   const iteration: number = useMemo(() => {
     if (step.id.indexOf('#') === -1) {
       return 0;
@@ -37,9 +46,9 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
         options={investigatorChoiceInputChoices(input, campaignLog)}
         hideInvestigatorSection
         detailed
-        investigator={campaignLog.investigators(false)[investigatorOffset]}
+        investigator={investigators[investigatorOffset]}
         investigators={slice(
-          campaignLog.investigators(false),
+          investigators,
           investigatorOffset,
           investigatorOffset + 1
         )}
@@ -90,7 +99,7 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
       text={step.text}
       promptType={step.prompt_type}
       bulletType={step.bullet_type}
-      investigators={input.investigator === 'resigned' ? filter(campaignLog.investigators(false), card => campaignLog.resigned(card.code)) : undefined}
+      investigators={input.investigator === 'resigned' ? filter(investigators, card => campaignLog.resigned(card.code)) : undefined}
       options={options}
       detailed={input.special_mode === 'detailed'}
       optional={input.investigator === 'choice'}

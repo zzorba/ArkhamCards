@@ -117,10 +117,13 @@ const styles = StyleSheet.create({
     paddingBottom: s,
     marginBottom: 60,
     flexDirection: 'column',
-    alignItems: 'flex-start',
+    alignItems: 'center',
   },
   footerText: {
     padding: s,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   emptyStateText: {
     marginLeft: s,

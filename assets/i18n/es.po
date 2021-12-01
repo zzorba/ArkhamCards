@@ -12,7 +12,7 @@ msgstr ""
 "Language-Team: \n"
 "x-generator: Poedit 3.0\n"
 "MIME-Version: 1.0\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.0\n"
 
 msgid "Guardian / Rogue"
 msgstr "Guardián / Rebelde"
@@ -475,9 +475,6 @@ msgstr "Buscar ${title}"
 
 msgid "Select ${ title }"
 msgstr "Seleccionar ${title}"
-
-msgid "All"
-msgstr "Todos"
 
 msgid "Note: This entry is crossed out"
 msgstr "Nota: Este registro está tachado"
@@ -1239,7 +1236,7 @@ msgid ""
 "balance between investigator power and scenario difficulty, and to enforce shifts in "
 "deckbuilding environments over time."
 msgstr ""
-"La lista de tabúes es una lista de Arkham Horror: El Juego De Cartas con restricciones "
+"La lista de tabúes es una lista de Arkham Horror: El juego de cartas con restricciones "
 "opcionales de construcción de mazos o cambios de texto. Esta lista está diseñada para "
 "crear un equilibrio saludable entre el poder del investigador y la dificultad del "
 "escenario, y para hacer cumplir los cambios en los entornos de construcción de mazos con "
@@ -2034,22 +2031,6 @@ msgid "Check Campaign Log, is the <i>${ logEntry.section }</i> not crossed off?"
 msgstr "Revisa el registro de campaña, ¿está <i>${ logEntry.section }</i> sin tachar?"
 
 #, javascript-format
-msgid "Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgid_plural ""
-"Since ${ list } all have a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgstr[0] "Dado que ${ list } tiene ${ supplyName }, debe leer <b>${ sectionName }</b>."
-msgstr[1] "Dado que ${ list } tienen ${ supplyName }, deben leer <b>${ sectionName }</b>."
-
-#, javascript-format
-msgid ""
-"Since ${ list } does not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgid_plural ""
-"Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgstr[0] "Dado que ${ list } no tiene ${ supplyName }, debe leer <b>${ sectionName }</b>."
-msgstr[1] ""
-"Dado que ${ list } no tienen ${ supplyName }, deben leer <b>${ sectionName }</b>."
-
-#, javascript-format
 msgid "${ investigators } must read <b>${ prompt }</b>."
 msgid_plural "${ investigators } must read <b>${ prompt }</b>."
 msgstr[0] "${ investigators } debe leer <b>${ prompt }</b>."
@@ -2598,24 +2579,6 @@ msgstr ""
 "<b>Nota:</b> Los traumas por derrotas de los investigadores se añaden durante la "
 "resolución del escenario."
 
-msgid ""
-"A side-story is a scenario that may be played between any two scenarios of an <i>Arkham "
-"Horror: The Card Game</i> campaign. Playing a side-story costs each investigator in the "
-"campaign a certain amount of experience. Weaknesses, trauma, experience, and rewards "
-"granted by playing a side-story stay with the investigators for the remainder of the "
-"campaign. Each sidestory may only be played once per campaign.\n"
-"The experience required to play these scenarios will be deducted automatically at the "
-"end of the scenario."
-msgstr ""
-"Una historia secundaria es un escenario que puede jugarse entre dos escenarios "
-"cualesquiera de una campaña de <i>Arkham Horror: El juego de cartas</i>. Jugar una "
-"historia secundaria le cuesta una cantidad de experiencia a cada investigador de la "
-"campaña. Los investigadores conservan durante el resto de la campaña las Debilidades, "
-"traumas, experiencia y recompensas obtenidas por jugar una historia secundaria. Cada "
-"historia secundaria solo puede jugarse una vez por campaña.\n"
-"La experiencia requerida para jugar estos escenarios será restada automáticamente al "
-"final del escenario."
-
 msgid "Contact us"
 msgstr "Contacta con nosotros"
 
@@ -2649,6 +2612,7 @@ msgstr ""
 "Carta #${ code } no encontrada. Por favor, prueba a \"Buscar nuevas cartas en ArkhamDB\" "
 "desde Ajustes."
 
+#, javascript-format
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] "${ specialXp } de experiencia de reabastecimiento disponible"
@@ -3347,8 +3311,8 @@ msgid ""
 "Dissonant Voices is an ongoing project by Mythos Busters to narrate the english scenario "
 "text for each Arkham Horror campaign."
 msgstr ""
-"Voces disonantes es un proyecto en marcha de ¡Tengo un plan! para narrar, en español, "
-"los textos de las campañas de Arkham Horror."
+"Voces disonantes es un proyecto en marcha de Mythos Busters para narrar, <b>en inglés</"
+"b>, los textos de las campañas de Arkham Horror."
 
 msgid "Are you sure you want to delete this standalone?"
 msgstr "¿Estás seguro de querer eliminar este escenario independiente?"
@@ -4501,7 +4465,10 @@ msgstr ""
 "Disculpa, no pareces ser mecenas de Mythos Busters.\n"
 "Pueden pasar hasta 24h para que Patreon actualice tu estado como miembro. Si todavía "
 "tienes problemas transcurridas 24h, por favor contacta con Mythos Busters a través de "
-"Patreon o Discord."
+"Patreon o Discord.\n"
+"Si estás intentando conectarte a Voces disonantes, el proyecto <b>en español</b>, "
+"simplemente conéctate a tu cuenta de Arkham Cards en Ajustes. Si tienes problemas, por "
+"favor contacta con ¡Tengo un plan! a través de Discord."
 
 msgid "Skull"
 msgstr "Cráneo"
@@ -4535,10 +4502,6 @@ msgstr ""
 "0: (efecto original abajo)\n"
 "${ originalTokenText }"
 
-#, javascript-format
-msgid "${ modifier }, draws another"
-msgstr "${ modifier }, roba otra"
-
 msgid "Easy difficulty"
 msgstr "Dificultad fácil"
 
@@ -4560,15 +4523,13 @@ msgstr "— Escenarios disponibles —"
 msgid "Scenario settings"
 msgstr "Ajustes escenario"
 
-msgid "Your investigator modfifier"
-msgstr "El modificador de tu investigador"
-
 msgid "Test difficulty"
 msgstr "Dificultad prueba"
 
 msgid "Modified skill"
 msgstr "Habilidad modificada"
 
+#, javascript-format
 msgid "${ tokens }/${ total } token"
 msgid_plural "${ tokens }/${ total } tokens"
 msgstr[0] "${ tokens }/${ total } ficha"
@@ -4649,7 +4610,7 @@ msgid "Choose deck"
 msgstr "Elige mazo"
 
 msgid "Frost"
-msgstr ""
+msgstr "Helada"
 
 msgid "Database reset"
 msgstr "Reiniciar base de datos"
@@ -4668,15 +4629,15 @@ msgid ""
 "This app is made possible by the continued support of our fans on Patreon and the "
 "${ mythosBustersLink } podcast."
 msgstr ""
-"Esta aplicación es posible por el continuo soporte de nuestros fans en Patreon y del "
-"podcast de ${ mythosBustersLink }."
+"Esta aplicación solo es posible gracias al soporte continuo de nuestros fans en Patreon "
+"y del podcast ${ mythosBustersLink }."
 
 msgid ""
 "This app is made possible by the continued support of our fans on ${ patreonLink } and "
 "the ${ mythosBustersLink } podcast."
 msgstr ""
-"Esta aplicación es posible por el continuo soporte de nuestros fans en ${ patreonLink } "
-"y del podcast de ${ mythosBustersLink }."
+"Esta aplicación solo es posible gracias al soporte continuo de nuestros fans en "
+"${ patreonLink } y del podcast de ${ mythosBustersLink }."
 
 msgid ""
 "The card database has been reset.\n"
@@ -4690,16 +4651,249 @@ msgstr ""
 
 #, javascript-format
 msgid "Sqlite version: ${ sqliteVersion }"
+msgstr "Versión SQLite: ${ sqliteVersion }"
+
+msgid "Beta testing"
+msgstr "Pruebas beta"
+
+msgid "Edit Weakness Cards"
+msgstr "Editar carta Debilidad"
+
+msgid "Narrate"
+msgstr "Narrar"
+
+msgid "Negative modifier"
+msgstr "Modificador negativo"
+
+#, javascript-format
+msgid "${ textModifier }, draws another"
+msgstr "${ textModifier }, roba otra"
+
+msgid "Assigned weaknesses"
+msgstr "Debilidades asignadas"
+
+msgid "Review and draw weaknesses"
+msgstr "Revisar y robar Debilidades"
+
+msgid "Save deck upgrade"
+msgstr "Guardar mejora mazo"
+
+msgid "Apply deck changes from previous scenario"
+msgstr "Aplicar cambios del mazo desde el escenario anterior"
+
+msgid "Choose expansions for basic weakness"
+msgstr "Elegir expansiones para Debilidades básicas"
+
+msgid "Uploading campaign"
+msgstr "Subiendo campaña"
+
+msgid "Resolute"
+msgstr "Resuelto"
+
+msgid "Fix duplicates"
+msgstr "Arreglar duplicados"
+
+msgid "Do you want to use the app to choose a random partner?"
 msgstr ""
 
+#, javascript-format
+msgid "${ input.prompt } (choose ${ quantity })"
+msgid_plural "${ input.prompt } (choose ${ quantity })"
+msgstr[0] "${ input.prompt } (choose ${ quantity })"
+msgstr[1] "${ input.prompt } (choose ${ quantity })"
+
+msgid "Select more"
+msgstr "Seleccionar más"
+
+msgid "Record damage/horror:"
+msgstr "Guardar daño/horror:"
+
+msgid ""
+"This deck is ownered by another player. You can record the upgrade now and they will be "
+"given an opportunity to save the changes to their deck when they next open the app."
+msgstr ""
+"Este mazo es propiedad de otro jugador. Puedes grabar la mejora ahora y el propietario "
+"tendrá la oportunidad de guardar los cambios en su mazo cuando vuelva a abrir la "
+"aplicación."
+
+msgid ""
+"Changes have been recorded. You can apply these changes to your deck on the main screen "
+"of the campaign under your investigator."
+msgstr ""
+"Los cambios han sido guardados. Puedes aplicar estos cambios a tu mazo en la pantalla "
+"principal de la campaña, bajo tu investigador."
+
+msgid ""
+"Changes have been recorded. The owner of this deck can apply these changes to their deck "
+"on the main screen of the campaign under their investigator."
+msgstr ""
+"Los cambios han sido guardados. El propietario de este mazo puede aplicar estos cambios "
+"a su mazo en la pantalla principal de la campaña, bajo su investigador."
+
+msgid "Expedition Team"
+msgstr ""
+
+#, javascript-format
+msgid "In the ${ sectionName } section of the Campaign Log, cross out ${ partnerName },"
+msgstr "En la sección ${ sectionName } del registro de campaña, tacha a ${ partnerName },"
+
+#, javascript-format
+msgid ""
+"In the ${ sectionName } section of the Campaign Log, write \"MIA\" next to "
+"${ partnerName }."
+msgstr ""
+
+msgid ""
+"In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next to "
+"${ partnerName }."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In the ${ sectionName } section of the Campaign Log, draw a check mark next to "
+"${ partnerName }."
+msgstr ""
+
+msgid "You may heal 1 physical or mental trauma <i>(your choice)</i>"
+msgstr "Puedes curarte 1 trauma físico o mental <i>(a tu elección)</i>"
+
+msgid "Choose heal type"
+msgstr "Elige tipo de curación"
+
+msgid "Chosen heal type"
+msgstr "Tipo de curación elegido"
+
+msgid "If the lead investigator was driven <b>insane</b>."
+msgstr "Si el investigador jefe se ha vuelto <b>loco</b>."
+
+msgid "If all investigators were driven <b>insane</b>."
+msgstr "Si todos los investigadores se han vuelto <b>locos</b>."
+
+msgid "If the lead investigator is still alive."
+msgstr "Si el investigador jefe está vivo."
+
+msgid "If all investigatore are still alive."
+msgstr "Si todos los investigadores están vivos."
+
+msgid "The Entity"
+msgstr ""
+
+msgid "MIA"
+msgstr ""
+
+msgid ""
+"A side-story is a scenario that may be played between any two scenarios of an <i>Arkham "
+"Horror: The Card Game</i> campaign.\n"
+"- Playing a side-story costs each investigator in the campaign a certain amount of "
+"experience, which should be paid when you start the scenario.\n"
+"- Weaknesses, trauma, experience, and rewards granted by playing a side-story stay with "
+"the investigators for the remainder of the campaign.\n"
+"- Each sidestory may only be played once per campaign.\n"
+"\n"
+"<b>Note:</b> When using this app, the experience required to play these scenarios will "
+"be deducted automatically at the <b>end of the scenario</b>, but you should be sure you "
+"have sufficient experience set aside to pay for it."
+msgstr ""
+"Una historia secundaria es un escenario que puede jugarse entre dos escenarios "
+"cualesquiera de una campaña de <i>Arkham Horror: El juego de cartas</i>.\n"
+"- Jugar una historia secundaria le cuesta una cantidad de experiencia a cada "
+"investigador de la campaña, que debería pagarse al iniciar el escenario.\n"
+"- Los investigadores conservan durante el resto de la campaña las Debilidades, traumas, "
+"experiencia y recompensas obtenidas por jugar una historia secundaria.\n"
+"- Cada historia secundaria solo puede jugarse una vez por campaña.\n"
+"\n"
+"<b>Nota:</b> Al utilizar la aplicación, la experiencia requerida para jugar estos "
+"escenarios será restada automáticamente <b>al final del escenario</b>, por lo que "
+"deberías comprobar que dispones de suficiente experiencia tanto antes como después de "
+"jugarlo, para pagar su coste."
+
+msgid "Ice and Death: Part 1"
+msgstr ""
+
+msgid "Ice and Death: Part 2"
+msgstr ""
+
+msgid "Ice and Death: Part 3"
+msgstr ""
+
+msgid "Restful Night"
+msgstr ""
+
+msgid "To the Forbidden Peaks"
+msgstr ""
+
+msgid "Endless Night"
+msgstr ""
+
+msgid "City of the Elder Things"
+msgstr ""
+
+msgid "Final Night"
+msgstr ""
+
+msgid "The Heart of Madness: Part 1"
+msgstr ""
+
+msgid "The Heart of Madness: Part 2"
+msgstr ""
+
+msgid "Fatal Mirage"
+msgstr ""
+
+msgid "Fatal Mirage - Memories Discovered"
+msgstr ""
+
+msgid "Fatal Mirage - Memories Banished"
+msgstr ""
+
+msgid "Ice and Death - Locations Revealed"
+msgstr ""
+
+msgid "Ice and Death - Supplies Recovered"
+msgstr ""
+
+msgid "The Heart of Madness - Seals Placed"
+msgstr ""
+
+msgid "The Heart of Madness - Seals Recovered"
+msgstr ""
+
+msgid "Tarot card"
+msgstr "Carta de tarot"
+
+#, javascript-format
+msgid "Tarot card: ${ card }"
+msgstr "Carta de tarot: ${ card }"
+
+msgid "Select tarot card"
+msgstr "Selecciona carta de tarot"
+
+msgid "Which tarot card is impacting the chaos bag?"
+msgstr "¿Qué carta de tarot está afectando a la bolsa de Caos?"
+
+msgid "Replace highest non-negative token with a skull."
+msgstr "Sustituye el valor más alto no negativo por un Cráneo."
+
+msgid "Replace a skull with a 0 token."
+msgstr "Sustituye un Cráneo por un 0."
+
+msgid "Judgement · XX"
+msgstr "El Juicio · XX"
+
+msgid "Judgement · XX (Inverted)"
+msgstr "El Juicio · XX (Invertida)"
+
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } se ha vuelto <b>loco</b>."
 
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } ha <b>muerto</b>."
 
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
 msgstr "${ investigator.name } sufre 1 trauma físico o mental <i>(a su elección)</i>."
@@ -4785,16 +4979,33 @@ msgstr ""
 "Si el <i>${ card.name }</i> aparece bajo ‘${ entry.section }’ en tu registro de campaña."
 
 #, javascript-format
+msgctxt "masculine"
+msgid "Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgid_plural ""
+"Since ${ list } all have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgstr[0] "Puesto que ${ list } tiene ${ supplyName }, debe leer <b>${ sectionName }</b>."
+msgstr[1] ""
+"Puesto que ${ list } tienen ${ supplyName }, deben leer <b>${ sectionName }</b>."
+
+#, javascript-format
+msgctxt "masculine"
+msgid ""
+"Since ${ list } does not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgid_plural ""
+"Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgstr[0] ""
+"Puesto que ${ list } no tiene ${ supplyName }, debe leer <b>${ sectionName }</b>."
+msgstr[1] ""
+"Puesto que ${ list } no tienen ${ supplyName }, deben leer <b>${ sectionName }</b>."
+
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } se ha vuelto <b>loca</b>."
 
-#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } ha <b>muerto</b>."
 
-#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
 msgstr "${ investigator.name } sufre 1 trauma físico o mental <i>(a su elección)</i>."
@@ -4861,7 +5072,6 @@ msgctxt "feminine"
 msgid "Defeated: no trauma"
 msgstr "Derrotada: sin traumas"
 
-#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } lee <b>${ sectionName }</b>"
@@ -4890,6 +5100,29 @@ msgstr "Trauma mental"
 msgctxt "feminine"
 msgid "Defeated"
 msgstr "Derrotada"
+
+#, javascript-format
+msgctxt "feminine"
+msgid "Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgid_plural ""
+"Since ${ list } all have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgstr[0] "Puesto que ${ list } tiene ${ supplyName }, debe leer <b>${ sectionName }</b>."
+msgstr[1] ""
+"Puesto que ${ list } tienen ${ supplyName }, deben leer <b>${ sectionName }</b>."
+
+msgctxt "feminine"
+msgid ""
+"Since ${ list } does not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgid_plural ""
+"Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgstr[0] ""
+"Puesto que ${ list } no tiene ${ supplyName }, debe leer <b>${ sectionName }</b>."
+msgstr[1] ""
+"Puesto que ${ list } no tienen ${ supplyName }, deben leer <b>${ sectionName }</b>."
+
+msgctxt "Traits"
+msgid "All"
+msgstr ""
 
 msgctxt "trait"
 msgid "???"
@@ -5960,13 +6193,25 @@ msgid "Wonderland"
 msgstr ""
 
 msgctxt "trait"
-msgid "Y-ha'nthlei"
+msgid "Resolute"
 msgstr ""
 
 #, javascript-format
 msgctxt "filter"
 msgid "${ cycleNames[cycle_position] } Cycle"
 msgstr "Ciclo ${cycleNames[cycle_position]}"
+
+msgctxt "Types"
+msgid "All"
+msgstr "Todos"
+
+msgctxt "SubTypes"
+msgid "All"
+msgstr "Todos"
+
+msgctxt "Actions"
+msgid "All"
+msgstr "Todas"
 
 msgctxt "action"
 msgid "Fight"
@@ -6000,9 +6245,25 @@ msgctxt "action"
 msgid "Resource"
 msgstr "Recurso"
 
+msgctxt "Encounter Sets"
+msgid "All"
+msgstr "Todos"
+
+msgctxt "Illustrators"
+msgid "All"
+msgstr "Todos"
+
 msgctxt "slots"
 msgid "None"
 msgstr "Ninguno"
+
+msgctxt "Slots"
+msgid "All"
+msgstr "Todos"
+
+msgctxt "Uses"
+msgid "All"
+msgstr "Todos"
 
 msgctxt "Draw Cards"
 msgid "All"
@@ -6078,6 +6339,22 @@ msgid_plural "Scenarios"
 msgstr[0] "Escenario"
 msgstr[1] "Escenarios"
 
+msgctxt "narration"
+msgid "Pause"
+msgstr "Pausar"
+
+msgctxt "narration"
+msgid "Play"
+msgstr "Reproducir"
+
+msgctxt "narration"
+msgid "Jump back"
+msgstr "Saltar atrás"
+
+msgctxt "narration"
+msgid "Playing audio"
+msgstr "Reproduciendo audio"
+
 msgctxt "campaign_log_entry"
 msgid "Other."
 msgstr "Otro"
@@ -6085,6 +6362,39 @@ msgstr "Otro"
 msgctxt "Weakness Card"
 msgid "All"
 msgstr "Todos"
+
+#, javascript-format
+msgctxt "mixed"
+msgid "Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgid_plural ""
+"Since ${ list } all have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgstr[0] ""
+"Puesto que ${ list } tiene ${ supplyName }, todos deben leer <b>${ sectionName }</b>."
+msgstr[1] ""
+"Puesto que ${ list } tienen ${ supplyName }, deben leer <b>${ sectionName }</b>."
+
+#, javascript-format
+msgctxt "mixed"
+msgid ""
+"Since ${ list } does not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgid_plural ""
+"Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgstr[0] ""
+"Puesto que ${ list } no tiene ${ supplyName }, todos deben leer <b>${ sectionName }</b>."
+msgstr[1] ""
+"Puesto que ${ list } no tienen ${ supplyName }, deben leer <b>${ sectionName }</b>."
+
+msgctxt "Tarot Card"
+msgid "None"
+msgstr "Ninguna"
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX"
+msgstr "El Juicio · XX"
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX (Inverted)"
+msgstr "El Juicio · XX (Invertida)"
 
 msgctxt "trauma"
 msgid "None"

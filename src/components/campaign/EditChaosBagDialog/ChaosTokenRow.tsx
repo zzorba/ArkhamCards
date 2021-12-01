@@ -36,7 +36,7 @@ function renderTokens(id: ChaosTokenType, count: number, status?: 'added' | 'rem
   );
 }
 
-export default function ChaosTokenRow({ id, mutateCount, originalCount, count, limit }: Props) {
+export default function ChaosTokenRow({ id, mutateCount, count, limit }: Props) {
   const { borderStyle } = useContext(StyleContext);
   const increment = useCallback(() => {
     mutateCount(id, count => Math.min(count + 1, limit));

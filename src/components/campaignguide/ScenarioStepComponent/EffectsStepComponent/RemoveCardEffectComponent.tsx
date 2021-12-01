@@ -41,7 +41,7 @@ function RemoveCardEffectNonInputComponent({ id, effect, input, campaignLog, inv
 }) {
   const { typography } = useContext(StyleContext);
   const [card, loading] = useSingleCard(effect.card, 'player');
-  if (loading) {
+  if (loading || effect.hidden) {
     return null;
   }
   if (!card) {

@@ -16,6 +16,7 @@ interface Props {
   limit: number;
   showZeroCount?: boolean;
   forceBig?: boolean;
+  reversed?: boolean;
 }
 
 function TinyCardQuantityComponent({ code, count: propsCount, countChanged: { setSlot }, limit }: Omit<Props, 'showZeroCount' | 'forceBig'>) {
@@ -55,8 +56,8 @@ function NormalCardQuantityComponent({ code, count: propsCount, countChanged: { 
 
   const inc = useCallback(() => {
     incCount();
-    incSlot(code);
-  }, [incCount, incSlot, code]);
+    incSlot(code, limit);
+  }, [incCount, incSlot, code, limit]);
   const dec = useCallback(() => {
     decCount();
     decSlot(code);

@@ -1,0 +1,396 @@
+[
+  {
+    "id": 1,
+    "code": "001",
+    "name": "Liste des Tabous",
+    "active": 1,
+    "date_start": "2019-04-20",
+    "cards": [
+      {
+        "code": "01020",
+        "xp": 2
+      },
+      {
+        "code": "01050",
+        "xp": 2
+      },
+      {
+        "code": "02152",
+        "xp": 1
+      },
+      {
+        "code": "02187",
+        "xp": 5
+      },
+      {
+        "code": "02189",
+        "xp": 5
+      },
+      {
+        "code": "02193",
+        "xp": 2
+      },
+      {
+        "code": "01033",
+        "text": "La capacité [reaction] de cette carte indique désormais : « Après que vous avez enquêté avec succès, inclinez le Dr. Milan Christopher… »"
+      },
+      {
+        "code": "02002",
+        "text": "La capacité [reaction] de cette carte gagne : « Limite d’une fois par round. »"
+      },
+      {
+        "code": "02111",
+        "text": "Cette carte gagne : « Limite collective de 2 exemplaires de Creuser Trop Profondément dans la pile de victoire. »"
+      },
+      {
+        "code": "02229",
+        "text": "Cette carte gagne : « 1 max. attribuée par test de compétence. »"
+      },
+      {
+        "code": "02266",
+        "text": "Cette carte gagne : « max. une fois par round. »"
+      },
+      {
+        "code": "03029",
+        "text": "La capacité de cette carte indique désormais : « Mettez en jeu un soutien [[Objet]] de votre main qui occcupe moins de 2 emplacements de main. »"
+      },
+      {
+        "code": "03315",
+        "exceptional": 1,
+        "text": "Cette carte gagne le mot-clé Exceptionnel."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "code": "002",
+    "name": "Liste des Tabous",
+    "active": 1,
+    "date_start": "2019-09-27",
+    "cards": [
+      {
+        "code": "01020",
+        "xp": 2
+      },
+      {
+        "code": "01050",
+        "xp": 2
+      },
+      {
+        "code": "02026",
+        "xp": 3
+      },
+      {
+        "code": "02152",
+        "xp": 1
+      },
+      {
+        "code": "02187",
+        "xp": 5
+      },
+      {
+        "code": "02189",
+        "xp": 5
+      },
+      {
+        "code": "02193",
+        "xp": 2
+      },
+      {
+        "code": "02226",
+        "xp": -1
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "01033",
+        "text": "La capacité [reaction] de cette carte indique désormais : « Après que vous avez enquêté avec succès, inclinez le Dr. Milan Christopher… »"
+      },
+      {
+        "code": "02002",
+        "text": "La capacité [reaction] de cette carte gagne : « Limite d’une fois par round. »"
+      },
+      {
+        "code": "02111",
+        "text": "Cette carte gagne : « Limite collective de 2 exemplaires de Creuser Trop Profondément dans la pile de victoire. »"
+      },
+      {
+        "code": "02229",
+        "text": "Cette carte gagne : « 1 max. attribuée par test de compétence. »"
+      },
+      {
+        "code": "02266",
+        "text": "Cette carte gagne : « max. une fois par round. »"
+      },
+      {
+        "code": "03029",
+        "text": "La capacité de cette carte indique désormais : « Mettez en jeu un soutien [[Objet]] de votre main qui occcupe moins de 2 emplacements de main. »"
+      },
+      {
+        "code": "03315",
+        "exceptional": 1,
+        "text": "Cette carte gagne le mot-clé Exceptionnel."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "code": "003",
+    "name": "Liste des Tabous",
+    "active": 1,
+    "date_start": "2020-10-15",
+    "cards": [
+      {
+        "code": "01020",
+        "xp": 1
+      },
+      {
+        "code": "01050",
+        "xp": 2
+      },
+      {
+        "code": "02108",
+        "xp": 2
+      },
+      {
+        "code": "02152",
+        "xp": 1
+      },
+      {
+        "code": "02187",
+        "xp": 3
+      },
+      {
+        "code": "02189",
+        "xp": 3
+      },
+      {
+        "code": "02193",
+        "xp": 1
+      },
+      {
+        "code": "02226",
+        "xp": -1
+      },
+      {
+        "code": "04305",
+        "xp": 1
+      },
+      {
+        "code": "05153",
+        "xp": 4
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "05231",
+        "xp": 2
+      },
+      {
+        "code": "06021",
+        "xp": 3
+      },
+      {
+        "code": "60233",
+        "xp": 3
+      },
+      {
+        "code": "01033",
+        "text": "La capacité [reaction] de cette carte indique désormais : « Après que vous avez enquêté avec succès, inclinez le Dr. Milan Christopher… »"
+      },
+      {
+        "code": "02002",
+        "text": "La capacité [reaction] de cette carte gagne : « Limite d’une fois par round. »"
+      },
+      {
+        "code": "02111",
+        "text": "Cette carte gagne : « Limite collective de 2 exemplaires de Creuser Trop Profondément dans la pile de victoire. »"
+      },
+      {
+        "code": "02229",
+        "text": "Cette carte gagne : « max. une fois par round. » à la fin de sa capacité."
+      },
+      {
+        "code": "02266",
+        "text": "Cette carte gagne : « max. une fois par round. »"
+      },
+      {
+        "code": "03029",
+        "text": "La capacité de cette carte indique désormais : « Mettez en jeu un soutien [[Objet]] de niveau 0 à 3 de votre main. »"
+      },
+      {
+        "code": "03315",
+        "exceptional": 1,
+        "text": "Cette carte gagne le mot-clé Exceptionnel."
+      },
+      {
+        "code": "04309",
+        "text": "Cette carte gagne : « Retirez Le Tout pour le Tout de la partie. » à la fin de sa capacité."
+      },
+      {
+        "code": "05116",
+        "text": "La capacité [action] de cette carte est désormais une capacité [fast]."
+      },
+      {
+        "code": "05188",
+        "text": "La capacité [action] de cette carte est désormais une capacité [fast]."
+      },
+      {
+        "code": "05189",
+        "text": "La capacité [action] de cette carte est désormais une capacité [fast]."
+      },
+      {
+        "code": "06195",
+        "text": "La capacité [action] de cette carte dit désormais : « [action] Dépensez 1 munition : <b>Combattre</b>. Vous gagnez +2 [combat] pour cette attaque. Si un pion Chaos avec un modificateur non-négatif est révélé lors de cette attaque, cette attaque inflige +2 dégâts. »"
+      },
+      {
+        "code": "02026",
+        "deck_limit": 0,
+        "text": "Interdite."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "code": "004",
+    "name": "Liste des Tabous",
+    "active": 1,
+    "date_start": "2021-06-28",
+    "cards": [
+      {
+        "code": "01020",
+        "xp": 1
+      },
+      {
+        "code": "01050",
+        "text": "La capacité de cette carte indique désormais : « Désengagez-vous de chaque ennemi engagé avec vous et déplacez-vous vers un lieu connexe sans ennemi. »"
+      },
+      {
+        "code": "02108",
+        "xp": 2
+      },
+      {
+        "code": "02152",
+        "xp": 1
+      },
+      {
+        "code": "02187",
+        "xp": 3
+      },
+      {
+        "code": "02189",
+        "xp": 3
+      },
+      {
+        "code": "02193",
+        "xp": 1
+      },
+      {
+        "code": "02226",
+        "text": "La capacité [action] de cette carte gagne : « Cette attaque peut cibler un ennemi non-[[Élite]] dans un lieu connexe. Ignorez les mots-clés Distant et Riposte pour cette attaque. »"
+      },
+      {
+        "code": "04305",
+        "xp": 1
+      },
+      {
+        "code": "05153",
+        "xp": 4
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "05230",
+        "text": "Cette carte perd le texte : « Le soutien attaché ne peut pas être utilisé pour attaquer des ennemis engagés avec vous. »"
+      },
+      {
+        "code": "05231",
+        "xp": 2
+      },
+      {
+        "code": "05324",
+        "text": "La capacité de cette carte gagne : « Retirez Eucatastrophe de la partie. »"
+      },
+      {
+        "code": "06022",
+        "text": "La capacité permanente de cette carte indique désormais : « Si cette carte n'a pas de charges, retirez-la de la partie. »"
+      },
+      {
+        "code": "06199",
+        "text": "La capacité de cette carte gagne : « Retirez de la partie chaque exemplaire de Brelan d'As attribué à ce test. »"
+      },
+      {
+        "code": "60233",
+        "xp": 3
+      },
+      {
+        "code": "07269",
+        "text": "La capacité de cette carte gagne : « Retirez Une Brève Accalmie de la partie. »"
+      },
+      {
+        "code": "07301",
+        "text": "La capacité de cette carte gagne : « Retirez Sanctifier de la partie. »"
+      },
+      {
+        "code": "01033",
+        "text": "La capacité [reaction] de cette carte indique désormais : « Après que vous avez enquêté avec succès, inclinez le Dr. Milan Christopher… »"
+      },
+      {
+        "code": "02002",
+        "text": "La capacité [reaction] de cette carte gagne : « Limite d’une fois par round. »"
+      },
+      {
+        "code": "02111",
+        "text": "Cette carte gagne : « Limite collective de 2 exemplaires de Creuser Trop Profondément dans la pile de victoire. »"
+      },
+      {
+        "code": "02229",
+        "text": "Cette carte gagne : « max. une fois par round. » à la fin de sa capacité."
+      },
+      {
+        "code": "02266",
+        "text": "Cette carte gagne : « max. une fois par round. »"
+      },
+      {
+        "code": "03029",
+        "text": "La capacité de cette carte indique désormais : « Mettez en jeu un soutien [[Objet]] de niveau 0 à 3 de votre main. »"
+      },
+      {
+        "code": "03315",
+        "exceptional": 1,
+        "text": "Cette carte gagne le mot-clé Exceptionnel."
+      },
+      {
+        "code": "04309",
+        "text": "Cette carte gagne : « Retirez Le Tout pour le Tout de la partie. » à la fin de sa capacité."
+      },
+      {
+        "code": "05116",
+        "text": "La capacité [action] de cette carte est désormais une capacité [fast]."
+      },
+      {
+        "code": "05188",
+        "text": "La capacité [action] de cette carte est désormais une capacité [fast]."
+      },
+      {
+        "code": "05189",
+        "text": "La capacité [action] de cette carte est désormais une capacité [fast]."
+      },
+      {
+        "code": "06195",
+        "text": "La capacité [action] de cette carte dit désormais : « [action] Dépensez 1 munition : <b>Combattre</b>. Vous gagnez +2 [combat] pour cette attaque. Si un pion Chaos avec un modificateur non-négatif est révélé lors de cette attaque, cette attaque inflige +2 dégâts. »"
+      },
+      {
+        "code": "02026",
+        "deck_limit": 0,
+        "text": "Interdite."
+      }
+    ]
+  }
+]

@@ -1,14 +1,17 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { View } from 'react-native';
-import { map } from 'lodash';
+import { map, forEach } from 'lodash';
 import { c, t, msgid } from 'ttag';
 
+import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
 import InvestigatorChoicePrompt from '../../prompts/InvestigatorChoicePrompt';
 import Card from '@data/types/Card';
 import { TraumaEffect } from '@data/scenario/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
+import { PersonalizedChoices, UniversalChoices } from '@data/scenario';
+import { NumberChoices } from '@actions/types';
 import space from '@styles/space';
 
 interface Props {
@@ -16,6 +19,97 @@ interface Props {
   effect: TraumaEffect;
   border?: boolean;
   input?: string[];
+}
+
+function InvestigatorTraumaChoiceComponent({ investigators, heal, id, effect, border }: Props & { investigators: Card[]; heal: boolean }) {
+  const { campaignLog } = useContext(ScenarioStepContext)
+  const options: PersonalizedChoices | UniversalChoices = useMemo(() => {
+    if (!heal) {
+      return {
+        type: 'universal',
+        choices: [
+          {
+            id: 'physical',
+            icon: 'physical',
+            selected_text: t`Physical trauma`,
+            selected_feminine_text: c('feminine').t`Physical trauma`,
+            masculine_text: t`Physical trauma`,
+            feminine_text: c('feminine').t`Physical trauma`,
+          },
+          {
+            id: 'mental',
+            icon: 'mental',
+            selected_text: t`Mental trauma`,
+            selected_feminine_text: c('feminine').t`Mental trauma`,
+            masculine_text: t`Mental trauma`,
+            feminine_text: c('feminine').t`Mental trauma`,
+          },
+        ],
+      };
+    }
+    const perCode: NumberChoices = {};
+    forEach(investigators, investigator => {
+      const trauma = campaignLog.traumaAndCardData(investigator.code);
+      perCode[investigator.code] = [];
+      if (trauma.physical) {
+        perCode[investigator.code].push(0);
+      }
+      if (trauma.mental) {
+        perCode[investigator.code].push(1);
+      }
+      perCode[investigator.code].push(2);
+    });
+    return {
+      type: 'personalized',
+      choices: [
+        {
+          id: 'physical',
+          icon: 'physical',
+          selected_text: t`Physical trauma`,
+          selected_feminine_text: c('feminine').t`Physical trauma`,
+          masculine_text: t`Physical trauma`,
+          feminine_text: c('feminine').t`Physical trauma`,
+        },
+        {
+          id: 'mental',
+          icon: 'mental',
+          selected_text: t`Mental trauma`,
+          selected_feminine_text: c('feminine').t`Mental trauma`,
+          masculine_text: t`Mental trauma`,
+          feminine_text: c('feminine').t`Mental trauma`,
+        },
+        {
+          id: 'none',
+          icon: 'dismiss',
+          selected_text: t`None`,
+        },
+      ],
+      perCode,
+    };
+  },[heal, investigators, campaignLog]);
+  return (
+    <>
+      { !effect.hidden && (
+        <View style={border ? space.paddingSideL : undefined}>
+          <SetupStepWrapper bulletType={effect.bullet_type}>
+            <CampaignGuideTextComponent text={heal ?
+              t`You may heal 1 physical or mental trauma <i>(your choice)</i>` :
+              t`You suffer 1 physical or mental trauma <i>(your choice)</i>.`
+            } />
+          </SetupStepWrapper>
+        </View>
+      ) }
+      <InvestigatorChoicePrompt
+        id={`${id}_trauma`}
+        text={heal ? t`Choose heal type` : t`Choose trauma type`}
+        confirmText={heal ? t`Chosen heal type` : t`Chosen trauma type`}
+        promptType="header"
+        investigators={investigators}
+        options={options}
+      />
+      { !!border && <View style={space.marginBottomL} /> }
+    </>
+  );
 }
 
 export default function TraumaEffectComponent({ id, effect, border, input }: Props) {
@@ -110,48 +204,15 @@ export default function TraumaEffectComponent({ id, effect, border, input }: Pro
     investigators: Card[]
   ) => {
     if (effect.mental_or_physical) {
-      if (effect.mental_or_physical !== 1) {
-        throw new Error('Always should be 1 mental_or_physical');
-      }
+      const heal = effect.mental_or_physical === -1;
       return (
-        <>
-          { !effect.hidden && (
-            <View style={border ? space.paddingSideL : undefined}>
-              <SetupStepWrapper bulletType={effect.bullet_type}>
-                <CampaignGuideTextComponent text={t`You suffer 1 physical or mental trauma <i>(your choice)</i>.`} />
-              </SetupStepWrapper>
-            </View>
-          ) }
-          <InvestigatorChoicePrompt
-            id={`${id}_trauma`}
-            text={t`Choose trauma type`}
-            confirmText={t`Chosen trauma type`}
-            promptType="header"
-            investigators={investigators}
-            options={{
-              type: 'universal',
-              choices: [
-                {
-                  id: 'physical',
-                  icon: 'physical',
-                  selected_text: t`Physical trauma`,
-                  selected_feminine_text: c('feminine').t`Physical trauma`,
-                  masculine_text: t`Physical trauma`,
-                  feminine_text: c('feminine').t`Physical trauma`,
-                },
-                {
-                  id: 'mental',
-                  icon: 'mental',
-                  selected_text: t`Mental trauma`,
-                  selected_feminine_text: c('feminine').t`Mental trauma`,
-                  masculine_text: t`Mental trauma`,
-                  feminine_text: c('feminine').t`Mental trauma`,
-                },
-              ],
-            }}
-          />
-          { !!border && <View style={space.marginBottomL} /> }
-        </>
+        <InvestigatorTraumaChoiceComponent
+          effect={effect}
+          id={id}
+          investigators={investigators}
+          heal={heal}
+          border={border}
+        />
       );
     }
     return map(investigators, (investigator, idx) => (

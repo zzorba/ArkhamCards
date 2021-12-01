@@ -122,7 +122,7 @@
           "text": "Esta carta debería decir: “Aparición – Palcos.”"
         }
       ]
-    },    
+    },
     {
       "encounter_code": "return_to_the_last_king",
       "cards": [
@@ -212,7 +212,7 @@
       "cards": [
         {
           "code": ["07315"],
-          "text": "La capacidad Objetivo de esta carta debería decir: “...puedes elegir hacer avanzar” en lugar de “...haz avanzar”."
+          "text": "La capacidad Objetivo de esta carta debería decir: “…puedes elegir hacer avanzar” en lugar de “…haz avanzar”."
         }
       ]
     }

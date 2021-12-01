@@ -4,14 +4,15 @@ import {
   FlatList,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
-import { Button } from 'react-native-elements';
 import { c, t } from 'ttag';
 
 import { Slots } from '@actions/types';
 import CardSearchResult from '../cardlist/CardSearchResult';
 import { s, xs } from '@styles/space';
+import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import StyleContext from '@styles/StyleContext';
 import { useEffectUpdate, usePlayerCards } from '@components/core/hooks';
 
@@ -29,6 +30,17 @@ interface DrawnState {
   shuffledDeck: string[];
   drawnCards: string[];
   selectedCards: string[];
+}
+
+function Button({ title, disabled, onPress }: { title: string; disabled?: boolean; onPress: () => void }) {
+  const { colors, typography } = useContext(StyleContext);
+  return (
+    <TouchableOpacity disabled={disabled} onPress={onPress}>
+      <View style={{ borderRadius: 4, padding: s, backgroundColor: colors.L20 }}>
+        <Text style={[typography.button, typography.center, typography.light]}>{title}</Text>
+      </View>
+    </TouchableOpacity>
+  )
 }
 
 export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {
@@ -159,7 +171,7 @@ export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {
     }
   }, [drawState, setDrawState]);
 
-  const header = useMemo(() => {
+  const footer = useMemo(() => {
     const {
       shuffledDeck,
       drawnCards,
@@ -168,7 +180,7 @@ export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {
     const deckEmpty = shuffledDeck.length === 0;
     const noSelection = selectedCards.length === 0;
     return (
-      <View style={styles.controlsContainer}>
+      <View style={[styles.controlsContainer, { backgroundColor: colors.L10 }]}>
         <View style={[styles.drawButtonRow, { backgroundColor: colors.L10 }]}>
           <Text style={[typography.button, { color: colors.darkText }]}>{ t`Draw: ` }</Text>
           <View style={styles.buttonContainer}>
@@ -255,11 +267,11 @@ export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {
   }), [drawnCards, selectedSet]);
   return (
     <View style={[styles.container, backgroundStyle]}>
-      { header }
       <FlatList
         data={data}
         renderItem={renderCardItem}
       />
+      { footer }
     </View>
   );
 }
@@ -271,6 +283,7 @@ const styles = StyleSheet.create({
   },
   controlsContainer: {
     flexDirection: 'column',
+    paddingBottom: NOTCH_BOTTOM_PADDING + s,
   },
   drawButtonRow: {
     width: '100%',

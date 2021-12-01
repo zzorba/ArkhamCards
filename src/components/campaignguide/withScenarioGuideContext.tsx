@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import hoistNonReactStatic from 'hoist-non-react-statics';
+import { t } from 'ttag';
 
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
 import { CampaignGuideInputProps, InjectedCampaignGuideContextProps, useCampaignGuideContext } from './withCampaignGuideContext';
@@ -18,8 +19,8 @@ export function useScenarioGuideContext(
   scenarioId: undefined | string,
   rootView: boolean,
   standalone?: boolean
-): [CampaignGuideContextType | undefined, ScenarioGuideContextType | undefined, (serverId: number) => void] {
-  const [campaignContext, setCampaignServerId] = useCampaignGuideContext(campaignId, rootView);
+): [CampaignGuideContextType | undefined, ScenarioGuideContextType | undefined, (serverId: number) => void, boolean] {
+  const [campaignContext, setCampaignServerId, loading] = useCampaignGuideContext(campaignId, rootView);
   const processedScenario = useMemo(
     () => {
       if (!campaignContext || !scenarioId) {
@@ -45,17 +46,17 @@ export function useScenarioGuideContext(
       scenarioState,
     };
   }, [processedScenario, scenarioState]);
-  return [campaignContext, scenarioContext, setCampaignServerId];
+  return [campaignContext, scenarioContext, setCampaignServerId, loading];
 }
 
 export default function withScenarioGuideContext<Props>(
   WrappedComponent: React.ComponentType<Props & InjectedCampaignGuideContextProps>
 ): React.ComponentType<Props & ScenarioGuideInputProps> {
   function ScenarioDataComponent(props: Props & ScenarioGuideInputProps) {
-    const [campaignContext, scenarioContext, setCampaignServerId] = useScenarioGuideContext(props.campaignId, props.scenarioId, props.standalone || false, props.standalone);
+    const [campaignContext, scenarioContext, setCampaignServerId, uploading] = useScenarioGuideContext(props.campaignId, props.scenarioId, props.standalone || false, props.standalone);
     if (!campaignContext || !scenarioContext) {
       return (
-        <LoadingSpinner />
+        <LoadingSpinner message={uploading ? t`Uploading campaign` : undefined } />
       );
     }
     return (

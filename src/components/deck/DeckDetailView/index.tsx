@@ -89,7 +89,7 @@ function DeckDetailView({
   login,
   initialMode,
 }: Props) {
-  const { lang } = useContext(LanguageContext);
+  const { lang, arkhamDbDomain } = useContext(LanguageContext);
   const { backgroundStyle, colors, darkMode, typography, shadow, width } = useContext(StyleContext);
   const deckActions = useDeckActions();
   const campaign = useCampaign(campaignId);
@@ -98,7 +98,7 @@ function DeckDetailView({
   const { userId, arkhamDbUser, arkhamDb } = useContext(ArkhamCardsAuthContext);
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const parsedDeckObj = useParsedDeckWithFetch(id, componentId, deckActions, initialMode);
-  const { showXpAdjustmentDialog, xpAdjustmentDialog } = useAdjustXpDialog(parsedDeckObj);
+  const [xpAdjustmentDialog, showXpAdjustmentDialog] = useAdjustXpDialog(parsedDeckObj);
   const {
     deck,
     deckT,
@@ -114,11 +114,11 @@ function DeckDetailView({
   const { savingDialog, saveEdits, saveEditsAndDismiss, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj);
 
   const [copying, toggleCopying] = useFlag(false);
-  const {
-    saving: deleting,
-    setSaving: setDeleting,
-    savingDialog: deletingDialog,
-  } = useBasicDialog(t`Deleting`);
+  const [
+    deletingDialog,
+    deleting,
+    setDeleting,
+  ] = useBasicDialog(t`Deleting`);
   const [menuOpen, toggleMenuOpen, setMenuOpen] = useFlag(false);
   const [fabOpen, toggleFabOpen, setFabOpen] = useFlag(false);
   const [tabooOpen, setTabooOpen] = useState(false);
@@ -301,7 +301,7 @@ function DeckDetailView({
       });
     }
   }, [modal, hasInvestigator, darkMode, componentId, mode, colors, factionColor, name, subtitle, title]);
-  const { uploadLocalDeck, uploadLocalDeckDialog } = useUploadLocalDeckDialog(deckActions, deck, parsedDeck);
+  const [uploadLocalDeckDialog, uploadLocalDeck] = useUploadLocalDeckDialog(deckActions, deck, parsedDeck);
 
   useEffect(() => {
     if (!deck) {
@@ -562,7 +562,7 @@ function DeckDetailView({
     setFabOpen(false);
     setMenuOpen(false);
   }, [componentId, parsedDeck, colors, id, setFabOpen, setMenuOpen]);
-  const { dialog: editNameDialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
+  const [editNameDialog, showEditNameDialog] = useSimpleTextDialog({
     title: t`Deck name`,
     onValueChange: updateDeckName,
     value: name || '',
@@ -673,9 +673,9 @@ function DeckDetailView({
 
   const viewDeck = useCallback(() => {
     if (deck && !deck.local) {
-      Linking.openURL(`https://arkhamdb.com/deck/view/${deck.id}`);
+      Linking.openURL(`${arkhamDbDomain}/deck/view/${deck.id}`);
     }
-  }, [deck]);
+  }, [deck, arkhamDbDomain]);
 
   const deleteDeckPressed = useCallback(() => {
     if (!deck) {

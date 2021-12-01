@@ -1,0 +1,396 @@
+[
+  {
+    "id": 1,
+    "code": "001",
+    "name": "Lista de tabúes",
+    "active": 1,
+    "date_start": "2019-04-20",
+    "cards": [
+      {
+        "code": "01020",
+        "xp": 2
+      },
+      {
+        "code": "01050",
+        "xp": 2
+      },
+      {
+        "code": "02152",
+        "xp": 1
+      },
+      {
+        "code": "02187",
+        "xp": 5
+      },
+      {
+        "code": "02189",
+        "xp": 5
+      },
+      {
+        "code": "02193",
+        "xp": 2
+      },
+      {
+        "code": "01033",
+        "text": "La capacidad [reaction] de esta carta ahora dice: “Después de que investigues con éxito, agota al Dr. Milan Christopher…”."
+      },
+      {
+        "code": "02002",
+        "text": "La capacidad [reaction] de esta carta ahora obtiene: “Límite de una vez por ronda.”."
+      },
+      {
+        "code": "02111",
+        "text": "Esta carta obtiene: “Límite de grupo de 2 copias de Ahondar demasiado en la zona de victoria.”."
+      },
+      {
+        "code": "02229",
+        "text": "Esta carta obtiene: “Máximo de 1 asignada por prueba de habilidad”."
+      },
+      {
+        "code": "02266",
+        "text": "Esta carta obtiene: “Máximo de una vez por ronda.”"
+      },
+      {
+        "code": "03029",
+        "text": "La capacidad de esta carta ahora dice: “Pon en juego un Apoyo [[Objeto]] que ocupe menos de 2 espacios de mano desde tu mano.”"
+      },
+      {
+        "code": "03315",
+        "exceptional": 1,
+        "text": "Esta carta obtiene la palabra clave Excepcional."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "code": "002",
+    "name": "Lista de tabúes",
+    "active": 1,
+    "date_start": "2019-09-27",
+    "cards": [
+      {
+        "code": "01020",
+        "xp": 2
+      },
+      {
+        "code": "01050",
+        "xp": 2
+      },
+      {
+        "code": "02026",
+        "xp": 3
+      },
+      {
+        "code": "02152",
+        "xp": 1
+      },
+      {
+        "code": "02187",
+        "xp": 5
+      },
+      {
+        "code": "02189",
+        "xp": 5
+      },
+      {
+        "code": "02193",
+        "xp": 2
+      },
+      {
+        "code": "02226",
+        "xp": -1
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "01033",
+        "text": "La capacidad [reaction] de esta carta ahora dice: “Después de que investigues con éxito, agota al Dr. Milan Christopher…”."
+      },
+      {
+        "code": "02002",
+        "text": "La capacidad [reaction] de esta carta ahora obtiene: “Límite de una vez por ronda.”."
+      },
+      {
+        "code": "02111",
+        "text": "Esta carta obtiene: “Límite de grupo de 2 copias de Ahondar demasiado en la zona de victoria.”."
+      },
+      {
+        "code": "02229",
+        "text": "Esta carta obtiene: “Máximo de 1 asignada por prueba de habilidad”."
+      },
+      {
+        "code": "02266",
+        "text": "Esta carta obtiene: “Máximo de una vez por ronda.”"
+      },
+      {
+        "code": "03029",
+        "text": "La capacidad de esta carta ahora dice: “Pon en juego un Apoyo [[Objeto]] que ocupe menos de 2 espacios de mano desde tu mano.”"
+      },
+      {
+        "code": "03315",
+        "exceptional": 1,
+        "text": "Esta carta obtiene la palabra clave Excepcional."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "code": "003",
+    "name": "Lista de tabúes",
+    "active": 1,
+    "date_start": "2020-10-15",
+    "cards": [
+      {
+        "code": "01020",
+        "xp": 1
+      },
+      {
+        "code": "01050",
+        "xp": 2
+      },
+      {
+        "code": "02108",
+        "xp": 2
+      },
+      {
+        "code": "02152",
+        "xp": 1
+      },
+      {
+        "code": "02187",
+        "xp": 3
+      },
+      {
+        "code": "02189",
+        "xp": 3
+      },
+      {
+        "code": "02193",
+        "xp": 1
+      },
+      {
+        "code": "02226",
+        "xp": -1
+      },
+      {
+        "code": "04305",
+        "xp": 1
+      },
+      {
+        "code": "05153",
+        "xp": 4
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "05231",
+        "xp": 2
+      },
+      {
+        "code": "06021",
+        "xp": 3
+      },
+      {
+        "code": "60233",
+        "xp": 3
+      },
+      {
+        "code": "01033",
+        "text": "La capacidad [reaction] de esta carta ahora dice: “Después de que investigues con éxito, agota al Dr. Milan Christopher…”."
+      },
+      {
+        "code": "02002",
+        "text": "La capacidad [reaction] de esta carta ahora obtiene: “Límite de una vez por ronda.”."
+      },
+      {
+        "code": "02111",
+        "text": "Esta carta obtiene: “Límite de grupo de 2 copias de Ahondar demasiado en la zona de victoria.”."
+      },
+      {
+        "code": "02229",
+        "text": "Al final de su capacidad, esta carta obtiene: “Máximo de una vez por ronda.”"
+      },
+      {
+        "code": "02266",
+        "text": "Esta carta obtiene: “Máximo de una vez por ronda.”"
+      },
+      {
+        "code": "03029",
+        "text": "La capacidad de esta carta ahora dice: “Pon en juego un Apoyo [[Objeto]] de nivel 0–3 desde tu mano.”."
+      },
+      {
+        "code": "03315",
+        "exceptional": 1,
+        "text": "Esta carta obtiene la palabra clave Excepcional."
+      },
+      {
+        "code": "04309",
+        "text": "Al final de su capacidad, esta carta obtiene: “Retira No va más de la partida.”"
+      },
+      {
+        "code": "05116",
+        "text": "La capacidad [action] de esta carta ahora es una capacidad [fast]."
+      },
+      {
+        "code": "05188",
+        "text": "La capacidad [action] de esta carta ahora es una capacidad [fast]."
+      },
+      {
+        "code": "05189",
+        "text": "La capacidad [action] de esta carta ahora es una capacidad [fast]."
+      },
+      {
+        "code": "06195",
+        "text": "La capacidad [action] de esta carta ahora dice: “[action] Gasta 1 munición: <b>Combatir</b>. Recibes +2 [combat] para este ataque. Si es revelada una ficha de Caos que tenga un modificador que no sea negativo durante este ataque, este ataque inflige +2 de daño.”."
+      },
+      {
+        "code": "02026",
+        "deck_limit": 0,
+        "text": "Prohibida."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "code": "004",
+    "name": "Lista de tabúes",
+    "active": 1,
+    "date_start": "2021-06-28",
+    "cards": [
+      {
+        "code": "01020",
+        "xp": 1
+      },
+      {
+        "code": "01050",
+        "text": "Esta carta ahora dice: “Deja de estar enfrentado a cada Enemigo enfrentado a ti y muévete a un Lugar conectado que no tenga Enemigos.”"
+      },
+      {
+        "code": "02108",
+        "xp": 2
+      },
+      {
+        "code": "02152",
+        "xp": 1
+      },
+      {
+        "code": "02187",
+        "xp": 3
+      },
+      {
+        "code": "02189",
+        "xp": 3
+      },
+      {
+        "code": "02193",
+        "xp": 1
+      },
+      {
+        "code": "02226",
+        "text": "La capacidad [action] de esta carta obtiene: “Este ataque puede tomar como objetivo a un Enemigo que no sea [[Élite]] y que esté a hasta 1 Lugar de distancia de su alcance estándar, ignorando las palabras clave Indiferente y Represalia.”."
+      },
+      {
+        "code": "04305",
+        "xp": 1
+      },
+      {
+        "code": "05153",
+        "xp": 4
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "05230",
+        "text": "Esta carta pierde el texto: “El Apoyo vinculado no se puede usar para atacar a Enemigos enfrentados a ti.”"
+      },
+      {
+        "code": "05231",
+        "xp": 2
+      },
+      {
+        "code": "05324",
+        "text": "La capacidad de esta carta obtiene: “Retira Eucatástrofe de la partida”."
+      },
+      {
+        "code": "06022",
+        "text": "La capacidad continua de esta carta ahora dice: “Si esta carta no tiene cargas, retírala de la partida”."
+      },
+      {
+        "code": "06199",
+        "text": "La capacidad de esta carta obtiene: “Retira de la partida todas las copias asignadas de Tres ases.”."
+      },
+      {
+        "code": "60233",
+        "xp": 3
+      },
+      {
+        "code": "07269",
+        "text": "La capacidad de esta carta obtiene: “Retira Paz vigilante de la partida.”"
+      },
+      {
+        "code": "07301",
+        "text": "La capacidad de esta carta obtiene: “Retira Consagrar de la partida.”."
+      },
+      {
+        "code": "01033",
+        "text": "La capacidad [reaction] de esta carta ahora dice: “Después de que investigues con éxito, agota al Dr. Milan Christopher…”."
+      },
+      {
+        "code": "02002",
+        "text": "La capacidad [reaction] de esta carta ahora obtiene: “Límite de una vez por ronda.”."
+      },
+      {
+        "code": "02111",
+        "text": "Esta carta obtiene: “Límite de grupo de 2 copias de Ahondar demasiado en la zona de victoria.”."
+      },
+      {
+        "code": "02229",
+        "text": "Al final de su capacidad, esta carta obtiene: “Máximo de una vez por ronda.”"
+      },
+      {
+        "code": "02266",
+        "text": "Esta carta obtiene: “Máximo de una vez por ronda.”"
+      },
+      {
+        "code": "03029",
+        "text": "La capacidad de esta carta ahora dice: “Pon en juego un Apoyo [[Objeto]] de nivel 0–3 desde tu mano.”."
+      },
+      {
+        "code": "03315",
+        "exceptional": 1,
+        "text": "Esta carta obtiene la palabra clave Excepcional."
+      },
+      {
+        "code": "04309",
+        "text": "Al final de su capacidad, esta carta obtiene: “Retira No va más de la partida.”"
+      },
+      {
+        "code": "05116",
+        "text": "La capacidad [action] de esta carta ahora es una capacidad [fast]."
+      },
+      {
+        "code": "05188",
+        "text": "La capacidad [action] de esta carta ahora es una capacidad [fast]."
+      },
+      {
+        "code": "05189",
+        "text": "La capacidad [action] de esta carta ahora es una capacidad [fast]."
+      },
+      {
+        "code": "06195",
+        "text": "La capacidad [action] de esta carta ahora dice: “[action] Gasta 1 munición: <b>Combatir</b>. Recibes +2 [combat] para este ataque. Si es revelada una ficha de Caos que tenga un modificador que no sea negativo durante este ataque, este ataque inflige +2 de daño.”."
+      },
+      {
+        "code": "02026",
+        "deck_limit": 0,
+        "text": "Prohibida."
+      }
+    ]
+  }
+]

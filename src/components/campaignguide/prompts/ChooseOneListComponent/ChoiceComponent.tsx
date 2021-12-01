@@ -1,10 +1,11 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
 
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { DisplayChoice } from '@data/scenario';
-import space, { m, s, xs } from '@styles/space';
+import space, { m, s, xs, isTablet } from '@styles/space';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   choice: DisplayChoice;
@@ -12,6 +13,7 @@ interface Props {
   selected: boolean;
   editable: boolean;
   onSelect: (index: number) => void;
+  last?: boolean;
 }
 
 export default function ChoiceComponent({
@@ -20,7 +22,9 @@ export default function ChoiceComponent({
   selected,
   editable,
   onSelect,
+  last,
 }: Props) {
+  const { borderStyle } = useContext(StyleContext);
   const onPress = useCallback(() => {
     onSelect(index);
   }, [onSelect, index]);
@@ -32,10 +36,15 @@ export default function ChoiceComponent({
       </>
     );
   }, [choice]);
-
+  const showBorder = !last && isTablet;
   const content = useMemo(() => {
     return (
-      <View style={[styles.row, !editable ? space.paddingLeftS : undefined]}>
+      <View style={[
+        styles.row,
+        !editable ? space.paddingLeftS : undefined,
+        showBorder ? borderStyle : undefined,
+        showBorder ? { borderBottomWidth: StyleSheet.hairlineWidth } : undefined,
+      ]}>
         <View style={styles.padding}>
           <View style={[styles.bullet, styles.radioButton]}>
             <ArkhamSwitch large value={selected} color="dark" />
@@ -46,7 +55,7 @@ export default function ChoiceComponent({
         </View>
       </View>
     );
-  }, [selected, editable, textContent]);
+  }, [selected, editable, textContent, showBorder, borderStyle]);
 
   if (editable) {
     return (

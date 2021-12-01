@@ -114,7 +114,7 @@ export function NarrationInlineControls({ narration }: IconProps) {
         </View>
       </View>
       <View
-        style={space.marginTopS}
+        style={space.paddingTopS}
       >
         { isCurrentTrack ? (
           <Scrubber
