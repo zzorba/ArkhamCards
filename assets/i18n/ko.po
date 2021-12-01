@@ -87,10 +87,10 @@ msgstr "미친"
 
 #, javascript-format
 msgid "${ traumaData.physical } Physical"
-msgstr "${ traumaData.physical } 육체적"
+msgstr "육체적 트라우마 ${ traumaData.physical }"
 
 msgid "${ traumaData.mental } Mental"
-msgstr "${ traumaData.mental } 정신적"
+msgstr "정신적 트라우마 ${ traumaData.mental }"
 
 #, javascript-format
 msgid "Cost: ${ actualCost }"
@@ -1279,10 +1279,10 @@ msgstr "카드 뒤집기"
 
 #, javascript-format
 msgid "Additional XP: ${ taboo.extra_xp }."
-msgstr "추가 경험치: ${ taboo.extra_xp }."
+msgstr "경험치 비용: ${ taboo.extra_xp } 경험치."
 
 msgid "XP Discount: ${ taboo.extra_xp }."
-msgstr "경험치 할인: ${ taboo.extra_xp }."
+msgstr "경험치 비용: ${ taboo.extra_xp } 경험치."
 
 msgid ""
 "The List of Taboos is a list of Arkham Horror: The Card Game cards with "
@@ -1376,14 +1376,14 @@ msgid "Vengeance: ${ card.vengeance }."
 msgstr "복수: ${ card.vengeance }."
 
 msgid "Taboo List Changes"
-msgstr "금기 목록이 변경되었습니다"
+msgstr "금기 적용 사항"
 
 #, javascript-format
 msgid "Additional XP: ${ card.extra_xp }."
-msgstr "추가 경험치: : ${ card.extra_xp }."
+msgstr "경험치 비용: ${ card.extra_xp } 경험치."
 
 msgid "XP Discount: ${ card.extra_xp }."
-msgstr "경험치 할인: ${ card.extra_xp }."
+msgstr "경험치 비용: ${ card.extra_xp } 경험치."
 
 msgid "Show front"
 msgstr "앞면 보기"
@@ -2353,10 +2353,10 @@ msgid "Advanced Cards"
 msgstr "강화된 카드"
 
 msgid "Physical"
-msgstr "육체적"
+msgstr "육체적 트라우마"
 
 msgid "Mental"
-msgstr "정신적"
+msgstr "정신적 트라우마"
 
 msgid "Record trauma"
 msgstr "트라우마 기록"
@@ -4023,7 +4023,7 @@ msgstr "프린트 앤 플레이 카드를 다운로드"
 
 #, javascript-format
 msgid "${ section.title } (from XP)"
-msgstr "${ section.title } (from XP)"
+msgstr "${ section.title } (경험치 지불)"
 
 msgid "Exiled story cards"
 msgstr "추방된 이야기 카드"
