@@ -14,8 +14,6 @@ import {
 } from 'lodash';
 import {
   Keyboard,
-  FlatList,
-  ListRenderItemInfo,
   StyleSheet,
   View,
   Platform,
@@ -23,6 +21,7 @@ import {
   ActivityIndicator,
   RefreshControl,
 } from 'react-native';
+import { DataProvider, ContextProvider, LayoutProvider, RecyclerListView } from 'recyclerlistview';
 import { Brackets } from 'typeorm/browser';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
@@ -49,7 +48,7 @@ import { useCards, useEffectUpdate, useToggles } from '@components/core/hooks';
 import LoadingCardSearchResult from '../LoadingCardSearchResult';
 import { ControlType } from '../CardSearchResult/ControlComponent';
 import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
-import LoadingSpinner from '@components/core/LoadingSpinner';
+import { useDebounce } from 'use-debounce/lib';
 
 interface Props {
   componentId: string;
@@ -66,7 +65,8 @@ interface Props {
   investigator?: Card;
   cardPressed?: (card: Card) => void;
   renderCard?: (card: Card) => JSX.Element;
-  header?: JSX.Element;
+  headerItems?: React.ReactNode[];
+  headerHeight?: number;
   noSearch?: boolean;
   handleScroll?: (...args: any[]) => void;
   showHeader?: () => void;
@@ -88,20 +88,42 @@ function getRandomLoadingMessage() {
   return messages[random(0, messages.length - 1)];
 }
 
+interface PaddingItem {
+  type: 'padding',
+  id: string;
+  size: number;
+}
+
+interface ListHeader {
+  type: 'list_header';
+  id: string;
+}
+
 interface SectionHeaderItem {
   type: 'header';
   id: string;
   header: CardSectionHeaderData
+}
+interface TextItem {
+  type: 'text';
+  id: string;
+  text: string;
+  border?: boolean;
 }
 interface CardItem {
   type: 'card';
   id: string;
   card: Card;
 }
-interface LoadingItem {
+interface LoadingCardItem {
   type: 'loading';
   id: string;
 }
+interface LoadingMessageItem {
+  type: 'loading_message';
+  id: string;
+}
+
 interface ButtonItem {
   type: 'button';
   id: string;
@@ -110,7 +132,7 @@ interface ButtonItem {
   icon: ArkhamButtonIconType;
 }
 
-type Item = SectionHeaderItem | CardItem | ButtonItem | LoadingItem;
+type Item = SectionHeaderItem | CardItem | ButtonItem | TextItem | LoadingCardItem | LoadingMessageItem | PaddingItem | ListHeader;
 
 interface PartialCardItem {
   type: 'pc';
@@ -131,21 +153,21 @@ interface CardFetcher {
 function useCardFetcher(visibleCards: PartialCard[]): CardFetcher {
   const { db } = useContext(DatabaseContext);
   const [cards, updateCards] = useCards('id');
-  const [beingFetched, setBeingFetched] = useState(new Set<string>());
-  const [fetchSize, setFetchSize] = useState(Platform.OS === 'ios' ? 100 : 30);
+  const beingFetched = useRef(new Set<string>());
+  const fetchSize = useRef(Platform.OS === 'ios' ? 100 : 30);
   const fetchMore = useCallback(
     () => {
       const ids = take(map(
-        filter(visibleCards, card => !cards[card.id] && !beingFetched.has(card.id)),
+        filter(visibleCards, card => !beingFetched.current.has(card.id)),
         c => c.id
-      ), fetchSize);
+      ), fetchSize.current);
       if (ids.length) {
-        setBeingFetched(new Set([
-          ...Array.from(beingFetched),
+        beingFetched.current = new Set([
+          ...Array.from(beingFetched.current),
           ...ids,
-        ]));
-        if (fetchSize < 100) {
-          setFetchSize(100);
+        ]);
+        if (fetchSize.current < 100) {
+          fetchSize.current = 100;
         }
         // const start = new Date();
         db.getCardsByIds(ids).then(newCards => {
@@ -154,7 +176,7 @@ function useCardFetcher(visibleCards: PartialCard[]): CardFetcher {
         }, console.log);
       }
     },
-    [visibleCards, cards, beingFetched, fetchSize, db, updateCards]
+    [visibleCards, beingFetched, fetchSize, db, updateCards]
   );
 
   useEffect(() => {
@@ -228,16 +250,19 @@ interface SectionFeedProps {
   sort?: SortType;
   tabooSetId?: number;
   filterQuery?: Brackets;
+  searchTerm?: string;
   textQuery?: Brackets;
   showAllNonCollection?: boolean;
   deckCardCounts?: Slots;
   originalDeckSlots?: Slots;
   storyOnly?: boolean;
+  noSearch?: boolean;
+  hasHeader?: boolean;
 }
 
 
 interface SectionFeed {
-  feed: Item[];
+  feed: DataProvider;
   fullFeed: PartialCard[];
   refreshing: boolean;
   refreshingSearch: boolean;
@@ -252,10 +277,13 @@ interface LoadedState {
 }
 function useSectionFeed({
   componentId,
+  hasHeader,
   query,
   sort,
   tabooSetId,
   filterQuery,
+  noSearch,
+  searchTerm,
   textQuery,
   showAllNonCollection,
   storyOnly,
@@ -525,7 +553,13 @@ function useSectionFeed({
       },
     });
   }, [componentId]);
+  // tslint:disable-next-line: strict-comparisons
+  const refreshingSearch = (!!deckQuery && deckCardsTextQuery !== textQuery) || (textQueryCardsTextQuery !== textQuery);
+  const feedLoading = useMemo(() => {
+    return (visibleCards.length > 0) && !!find(take(visibleCards, 1), c => !cards[c.id]);
+  }, [visibleCards, cards]);
 
+  const refreshingResult = refreshing || (feedLoading && !expandButtonPressed);
   const items = useMemo(() => {
     const result: Item[] = [];
     let missingCards = false;
@@ -581,30 +615,99 @@ function useSectionFeed({
     return result;
   }, [partialItems, cards, showSpoilers, spoilerCardsCount, editSpoilerSettings]);
 
-  const feedLoading = useMemo(() => {
-    return (visibleCards.length > 0) && !!find(take(visibleCards, 1), c => !cards[c.id]);
-  }, [visibleCards, cards]);
+  const [startOfFeedLoading, feed] = useMemo(() => {
+    const topLoading = !searchTerm && !!find(take(items, 15), x => x.type === 'loading');
+    const result = topLoading ? [] : items;
+    if (!result.length && !topLoading && !refreshingResult) {
+      if (refreshingSearch) {
+        result.push({
+          type: 'text',
+          id: 'searching',
+          text: t`Searching cards...`,
+        });
+      } else {
+        if (searchTerm) {
+          result.push({
+            type: 'text',
+            id: 'no_results_search',
+            text: t`No matching cards for "${searchTerm}"`,
+            border: true,
+          });
+        } else {
+          result.push({
+            type: 'text',
+            id: 'no_results_search',
+            text: t`No matching cards`,
+            border: true,
+          });
+        }
+      }
+    }
+    return [topLoading, new DataProvider((a: Item, b: Item) => {
+      return a.type === b.type && a.id === b.id;
+    }).cloneWithRows([
+      ...(!noSearch ? [{ type: 'padding', id: 'padding', size: SEARCH_BAR_HEIGHT }] : []),
+      ...(hasHeader ? [{ type: 'list_header', id: 'list_header' }] : []),
+      ...(refreshingResult || topLoading ? [{ type: 'loading_message', id: 'loading_message' }] : []),
+      ...result,
+    ])];
+  }, [items, noSearch, hasHeader, refreshingResult, refreshingSearch, searchTerm]);
   return {
-    feed: items,
+    feed,
     fullFeed: visibleCards,
-    refreshing: refreshing || (feedLoading && !expandButtonPressed),
-    // tslint:disable-next-line: strict-comparisons
-    refreshingSearch: (!!deckQuery && deckCardsTextQuery !== textQuery) || (textQueryCardsTextQuery !== textQuery),
+    refreshing: startOfFeedLoading || refreshingResult,
+    refreshingSearch,
     fetchMore,
     showSpoilerCards: showSpoilers,
     refreshDeck: hasDeckChanges ? refreshDeck : undefined,
   };
 }
 
-function itemHeight(item: Item, fontScale: number): number {
+function itemHeight(item: Item, fontScale: number, headerHeight: number): number {
   switch (item.type) {
     case 'button':
       return ArkhamButton.Height(fontScale);
     case 'card':
     case 'loading':
       return rowHeight(fontScale);
+    case 'loading_message':
+      return s * 3 + fontScale * 24 + (Platform.OS === 'android' ? SEARCH_BAR_HEIGHT * 2 : 0);
     case 'header':
       return cardSectionHeaderHeight(item.header, fontScale);
+    case 'text':
+      return s * 2 + fontScale * 24 * 2;
+    case 'padding':
+      return item.size;
+    case 'list_header':
+      return headerHeight;
+  }
+}
+
+
+class ContextHelper extends ContextProvider {
+  _uniqueKey: string;
+  _contextStore: { [key: string]: string | number };
+
+  constructor(uniqueKey: string) {
+    super();
+    this._contextStore = {};
+    this._uniqueKey = uniqueKey;
+  }
+
+  getUniqueKey() {
+    return this._uniqueKey;
+  }
+
+  save(key: string, value: string | number) {
+    this._contextStore[key] = value;
+  }
+
+  get(key: string) {
+    return this._contextStore[key];
+  }
+
+  remove(key: string) {
+    delete this._contextStore[key];
   }
 }
 export default function({
@@ -622,16 +725,18 @@ export default function({
   renderCard,
   cardPressed,
   noSearch,
-  header,
+  headerItems,
+  headerHeight,
   handleScroll,
   showHeader,
   storyOnly,
   showNonCollection,
 }: Props) {
   const { db } = useContext(DatabaseContext);
+  const contextHelper = useMemo(() => new ContextHelper(componentId), [componentId]);
   const deck = useDeck(deckId);
   const deckEdits = useSimpleDeckEdits(deckId);
-  const { colors, borderStyle, fontScale, typography } = useContext(StyleContext);
+  const { colors, borderStyle, fontScale, typography, width } = useContext(StyleContext);
   const [loadingMessage, setLoadingMessage] = useState(getRandomLoadingMessage());
   const tabooSetOverride = deckId !== undefined ? ((deckEdits?.tabooSetChange || deck?.deck.taboo_id) || 0) : undefined;
   const tabooSetSelctor = useMemo(makeTabooSetSelector, []);
@@ -651,9 +756,12 @@ export default function({
     componentId,
     query,
     sort,
+    noSearch,
+    hasHeader: (headerItems?.length || 0) > 0,
     tabooSetId,
     filterQuery,
     textQuery,
+    searchTerm,
     showAllNonCollection: showNonCollection,
     deckCardCounts: deckEdits?.slots,
     originalDeckSlots: currentDeckOnly ? undefined : deck?.deck.slots,
@@ -678,7 +786,7 @@ export default function({
   }, [query, tabooSetId]);
 
   const feedValues = useRef<{
-    feed: Item[];
+    feed: DataProvider;
     fullFeed: PartialCard[];
   }>();
   useEffect(() => {
@@ -712,7 +820,7 @@ export default function({
       }
       return partialCard.code;
     });
-    const cards = flatMap(feed, item => item.type === 'card' ? item.card : []);
+    const cards = flatMap(feed.getAllData(), item => item.type === 'card' ? item.card : []);
     showCardSwipe(
       componentId,
       codes,
@@ -725,30 +833,15 @@ export default function({
       investigator
     );
   }, [feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, cardPressed]);
-  const keyExtractor = useCallback((item: Item, index: number) => {
-    switch (item.type) {
-      case 'button': return `button_${item.id}`;
-      case 'card': return `card_${item.id}`;
-      case 'header': return `header_${item.id}`;
-      case 'loading': return `loading_${item.id}`;
-      default: return `${index}`;
-    }
-  }, []);
-  const itemOffsets = useMemo(() => {
-    let offset = 0;
-    return map(feed, (item, index) => {
-      const result = {
-        length: itemHeight(item, fontScale),
-        offset,
-        index,
-      };
-      offset += result.length;
-      return result;
-    });
-  }, [feed, fontScale]);
-  const getItemLayout = useCallback((item: Item[] | null | undefined, index: number) => {
-    return itemOffsets[index];
-  }, [itemOffsets]);
+  const layoutProvider = useMemo(() => {
+    return new LayoutProvider(
+      index => itemHeight(feed.getDataForIndex(index), fontScale, headerHeight || 0),
+      (height, dim) => {
+        dim.height = height as number;
+        dim.width = width;
+      }
+    );
+  }, [width, feed, fontScale, headerHeight]);
   const deckLimits: ControlType[] = useMemo(() => deckId ? [
     {
       type: 'deck',
@@ -771,7 +864,7 @@ export default function({
       limit: 3,
     },
   ] : [], [deckId]);
-  const renderItem = useCallback(({ item }: ListRenderItemInfo<Item>) => {
+  const renderItem = useCallback((type: string | number, item: Item) => {
     switch (item.type) {
       case 'button':
         return (
@@ -810,98 +903,77 @@ export default function({
         );
       case 'loading':
         return (
-          <LoadingCardSearchResult key={item.id} />
+          <LoadingCardSearchResult />
+        );
+      case 'loading_message':
+        return (
+          <View style={{ width, paddingTop: Platform.OS === 'android' ? SEARCH_BAR_HEIGHT * 2 : 0 }}>
+            <View style={styles.loadingText}>
+              <Text style={[typography.text, typography.center]}>
+                { `${loadingMessage}...` }
+              </Text>
+            </View>
+          </View>
+        );
+      case 'text':
+        return (
+          <View style={item.border ? [styles.emptyText, borderStyle] : undefined}>
+            <Text style={[typography.text, typography.center]}>
+              { item.text}
+            </Text>
+          </View>
+        )
+      case 'padding':
+        return <View style={{ height: item.size }} />;
+      case 'list_header':
+        return (
+          <View style={[styles.column, { width: width }]}>
+            { headerItems }
+          </View>
         );
       default:
         return null;
     }
-  }, [cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, deckLimits]);
-  const listHeader = useMemo(() => {
-    const searchBarPadding = !noSearch && Platform.OS === 'android';
-    if (!searchBarPadding && !header) {
+  }, [headerItems, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, loadingMessage, renderCard, typography, deckLimits, borderStyle]);
+  const listFooter = useCallback(() => {
+    if (refreshing) {
       return null;
     }
-
-    return (
-      <>
-        { searchBarPadding && <View style={styles.searchBarPadding} /> }
-        { header }
-      </>
-    );
-  }, [header, noSearch]);
-  const listFooter = useMemo(() => {
     return (
       <View style={styles.footer}>
-        { (!refreshing && fullFeed.length === 0) ? (
-          <View>
-            { refreshingSearch && <LoadingSpinner inline /> }
-            <View style={[styles.emptyText, borderStyle]}>
-              { refreshingSearch ? (
-                <Text style={typography.text}>
-                  { t`Searching cards...` }
-                </Text>
-              ) : (
-                <Text style={[typography.text, typography.center]}>
-                  { searchTerm ?
-                    t`No matching cards for "${searchTerm}"` :
-                    t`No matching cards` }
-                </Text>
-              ) }
-            </View>
-            { expandSearchControls }
-          </View>
-        ) : expandSearchControls }
+        { expandSearchControls }
       </View>
     );
-  }, [searchTerm, expandSearchControls, borderStyle, fullFeed.length, typography, refreshing, refreshingSearch]);
+  }, [expandSearchControls, refreshing]);
   const handleScrollBeginDrag = useCallback(() => {
     Keyboard.dismiss();
   }, []);
-  if (refreshing) {
-    return (
-      <View style={styles.loading}>
-        { !noSearch && <View style={styles.searchBarPadding} />}
-        <View style={styles.loadingText}>
-          <Text style={typography.text}>
-            { `${loadingMessage}...` }
-          </Text>
-        </View>
-        <ActivityIndicator
-          style={[{ height: 80 }]}
-          color={colors.lightText}
-          size="small"
-          animating
-        />
-      </View>
-    );
-  }
+  const [debouncedRefreshing] = useDebounce(refreshing, 50, { leading: true });
+
   return (
-    <FlatList
-      contentInset={noSearch || Platform.OS === 'android' ? undefined : { top: SEARCH_BAR_HEIGHT }}
-      contentOffset={noSearch || Platform.OS === 'android' ? undefined : { x: 0, y: -SEARCH_BAR_HEIGHT }}
+    <RecyclerListView
+      scrollViewProps={{
+        onScrollBeginDrag: handleScrollBeginDrag,
+        keyboardShouldPersistTaps: 'always',
+        keyboardDismissMode: 'on-drag',
+      }}
       refreshControl={
         <RefreshControl
-          refreshing={!!refreshing}
+          refreshing={!!debouncedRefreshing}
           onRefresh={refreshDeck}
           tintColor={colors.lightText}
           progressViewOffset={noSearch ? 0 : SEARCH_BAR_HEIGHT}
         />
       }
-      data={feed}
+      dataProvider={feed}
+      renderAheadOffset={width * 4}
+      layoutProvider={layoutProvider}
       onScroll={handleScroll}
-      onScrollBeginDrag={handleScrollBeginDrag}
-      keyExtractor={keyExtractor}
-      renderItem={renderItem}
-      getItemLayout={getItemLayout}
-      initialNumToRender={40}
+      rowRenderer={renderItem}
       onEndReached={fetchMore}
-      onEndReachedThreshold={3}
-      ListHeaderComponent={listHeader}
-      ListFooterComponent={listFooter}
-      keyboardShouldPersistTaps="always"
-      keyboardDismissMode="on-drag"
-      scrollEventThrottle={1}
-      removeClippedSubviews
+      scrollThrottle={1}
+      onEndReachedThreshold={width * 2}
+      renderFooter={listFooter}
     />
   );
 }
@@ -909,14 +981,6 @@ export default function({
 const styles = StyleSheet.create({
   footer: {
     height: 300,
-  },
-  loading: {
-    flex: 1,
-    margin: m,
-    paddingTop: SEARCH_BAR_HEIGHT,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
   },
   loadingText: {
     paddingLeft: m,
@@ -930,7 +994,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderBottomWidth: 1,
   },
-  searchBarPadding: {
-    height: SEARCH_BAR_HEIGHT,
+  column: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
 });

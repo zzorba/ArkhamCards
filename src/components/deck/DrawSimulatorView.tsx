@@ -283,7 +283,7 @@ const styles = StyleSheet.create({
   },
   controlsContainer: {
     flexDirection: 'column',
-    paddingBottom: NOTCH_BOTTOM_PADDING,
+    paddingBottom: NOTCH_BOTTOM_PADDING + s,
   },
   drawButtonRow: {
     width: '100%',

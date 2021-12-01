@@ -126,6 +126,7 @@
     "react-native-webview": "11.13.1",
     "react-native-zoom-view": "1.0.2",
     "react-redux": "7.2.6",
+    "recyclerlistview": "^3.0.5",
     "redux": "4.1.2",
     "redux-logger": "3.0.6",
     "redux-perf-middleware": "1.2.2",

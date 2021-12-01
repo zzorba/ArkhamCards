@@ -1,5 +1,5 @@
 import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'typeorm/browser';
-import { forEach, filter, keys, map, min, omit, find } from 'lodash';
+import { forEach, filter, keys, map, min, omit, find, sortBy, indexOf } from 'lodash';
 import { t } from 'ttag';
 
 import { SortType, SORT_BY_COST, SORT_BY_CYCLE, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_FACTION_XP_TYPE_COST, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData } from '@actions/types';
@@ -180,6 +180,7 @@ export class PartialCard {
 @Index('sort_name_xp', ['browse_visible', 'taboo_set_id', 'renderName', 'xp'])
 @Index('sort_cycle_xp', ['browse_visible', 'taboo_set_id', 'sort_by_cycle'])
 @Index('encounter_query_index', ['browse_visible', 'taboo_set_id', 'encounter_code'])
+@Index('type_code', ['type_code'])
 export default class Card {
   @PrimaryColumn('text')
   public id!: string;
@@ -731,19 +732,31 @@ export default class Card {
     return undefined;
   }
 
+  static basicFactions() {
+    return [t`Guardian`, t`Seeker`, t`Rogue`, t`Mystic`, t`Survivor`];
+  }
+
   static factionHeaderOrder() {
+    const factions = Card.basicFactions();
+    const triples: string[] = [];
+    const doubles: string[] = [];
+    forEach(factions, (f1, idx1) => {
+      forEach(factions, (f2, idx2) => {
+        if (idx1 < idx2) {
+          forEach(factions, (f3, idx3) => {
+            if (idx1 < idx2 && idx2 < idx3) {
+              triples.push(`${f1} / ${f2} / ${f3}`)
+            }
+          });
+          doubles.push(`${f1} / ${f2}`)
+        }
+      });
+    })
     return [
-      t`Guardian`,
-      t`Seeker`,
-      t`Mystic`,
-      t`Rogue`,
-      t`Survivor`,
+      ...factions,
       t`Neutral`,
-      t`Guardian / Rogue`,
-      t`Rogue / Survivor`,
-      t`Survivor / Seeker`,
-      t`Seeker / Mystic`,
-      t`Mystic / Guardian`,
+      ...doubles,
+      ...triples,
       t`Basic Weakness`,
       t`Signature Weakness`,
       t`Weakness`,
@@ -787,13 +800,16 @@ export default class Card {
           return t`Unknown`;
         }
         if (json.faction2_code && json.faction2_name) {
+          const factions = Card.basicFactions();
           const faction1 = Card.factionCodeToName(json.faction_code, json.faction_name);
           const faction2 = Card.factionCodeToName(json.faction2_code, json.faction2_name);
           if (json.faction3_code && json.faction3_name) {
             const faction3 = Card.factionCodeToName(json.faction3_code, json.faction3_name);
-            return `${faction1} / ${faction2} / ${faction3}`;
+            const [f1, f2, f3] = sortBy([faction1, faction2, faction3], x => indexOf(factions, x))
+            return `${f1} / ${f2} / ${f3}`;
           }
-          return `${faction1} / ${faction2}`;
+          const [f1, f2] = sortBy([faction1, faction2], x => indexOf(factions, x));
+          return `${f1} / ${f2}`;
         }
         return Card.factionCodeToName(json.faction_code, json.faction_name);
       }
