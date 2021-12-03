@@ -128,21 +128,6 @@ msgstr "Выживший"
 msgid "Neutral"
 msgstr "Нейтральный"
 
-msgid "Guardian / Rogue"
-msgstr "Хранитель / Ловкач"
-
-msgid "Rogue / Survivor"
-msgstr "Ловкач / Выживший"
-
-msgid "Survivor / Seeker"
-msgstr "Выживший / Искатель"
-
-msgid "Seeker / Mystic"
-msgstr "Искатель / Мистик"
-
-msgid "Mystic / Guardian"
-msgstr "Мистик / Хранитель"
-
 msgid "Weakness"
 msgstr "Слабость"
 
@@ -4936,6 +4921,263 @@ msgid "Judgement · XX"
 msgstr ""
 
 msgid "Judgement · XX (Inverted)"
+msgstr ""
+
+msgid "The Fool · 0"
+msgstr ""
+
+msgid ""
+"Each investigator not defeated during this game earns +2 experience during "
+"its resolution."
+msgstr ""
+
+msgid ""
+"Each investigator defeated during this game earns -2 experience during its "
+"resolution."
+msgstr ""
+
+msgid "The Magician · I"
+msgstr ""
+
+msgid "Each investigator begins the game with 3 addititonal resources"
+msgstr ""
+
+msgid ""
+"Each investigator begins the game with 3 fewer resources, and cannot gain "
+"resources during their first turn."
+msgstr ""
+
+msgid "The High Priestess · II"
+msgstr ""
+
+msgid ""
+"During the first [intellect] test each investigator performs each round, "
+"they get +1 [intellect]."
+msgstr ""
+
+msgid ""
+"During the first [intellect] test each investigator performs each round, "
+"they get -1 [intellect]."
+msgstr ""
+
+msgid "The Empress · III"
+msgstr ""
+
+msgid ""
+"During the first [agility] test each investigator performs each round, they "
+"get +1 [agility]."
+msgstr ""
+
+msgid ""
+"During the first [agility] test each investigator performs each round, they "
+"get -1 [agility]."
+msgstr ""
+
+msgid "The Emperor · IV"
+msgstr ""
+
+msgid ""
+"During the first [combat] test each investigator performs each round, they "
+"get +1 [combat]."
+msgstr ""
+
+msgid ""
+"During the first [combat] test each investigator performs each round, they "
+"get -1 [combat]."
+msgstr ""
+
+msgid "The Hierophant · V"
+msgstr ""
+
+msgid ""
+"During the first [willpower] test each investigator performs each round, "
+"they get +1 [willpower]."
+msgstr ""
+
+msgid ""
+"During the first [willpower] test each investigator performs each round, "
+"they get -1 [willpower]."
+msgstr ""
+
+msgid "The Lovers · VI"
+msgstr ""
+
+msgid ""
+"When the game begins, each investigator searches their deck for an Ally "
+"asset, adds it to their hand, and shuffles their deck."
+msgstr ""
+
+msgid ""
+"When the game begins, each investigator searches their deck for an Ally "
+"asset, removes it from the game, and shuffles their deck."
+msgstr ""
+
+msgid "The Chariot · VII"
+msgstr ""
+
+msgid ""
+"Each investigator begins the game with 2 additional cards in their opening "
+"hand."
+msgstr ""
+
+msgid ""
+"Each investigator begins the game with 2 fewer cards in their opening hand, "
+"and cannot draw cards during their first turn."
+msgstr ""
+
+msgid "Strength · VIII"
+msgstr ""
+
+msgid ""
+"When the game begins, each investigator may play an asset from their hand "
+"at -2 cost."
+msgstr ""
+
+msgid "During the first round of the game, each investigator cannot play assets."
+msgstr ""
+
+msgid "The Hermit · IX"
+msgstr ""
+
+msgid "Increase each investigator's maximum hand size by 3."
+msgstr ""
+
+msgid "Decrease each investigator's maximum hand size by 3."
+msgstr ""
+
+msgid "Wheel of Fortune · X"
+msgstr ""
+
+msgid ""
+"Once each act, when an investigator reveals an [auto_fail] token, thte "
+"investigator may cancel it and treat it as a 0 token instead."
+msgstr ""
+
+msgid ""
+"Once each agenda, the first time any investigator reveals an [elder_sign] "
+"token, cancel it and treat it as a -5 token instead."
+msgstr ""
+
+msgid "Justice · XI"
+msgstr ""
+
+msgid "Cancel the first doom that would be placed on the final agenda of the game."
+msgstr ""
+
+msgid "The final agenda of the game enters play with 1 doom on it."
+msgstr ""
+
+msgid "The Hanged Man · XII"
+msgstr ""
+
+msgid "During setup, each investigator may take up to 2 additional mulligans."
+msgstr ""
+
+msgid ""
+"Each investigator cannot mulligan or replace weaknesses in their opening "
+"hand (resolve their revelation abilities when the game begins)."
+msgstr ""
+
+msgid "Death · XIII"
+msgstr ""
+
+msgid "Each investigator gets +1 health."
+msgstr ""
+
+msgid "Each investigator gets -1 health."
+msgstr ""
+
+msgid "Temperance · XIV"
+msgstr ""
+
+msgid "Each investigator gets +1 sanity."
+msgstr ""
+
+msgid "Each investigator gets -1 sanity."
+msgstr ""
+
+msgid "The Devil · XV"
+msgstr ""
+
+msgid ""
+"Each investigator has 1 additional slot of a type chosen by that "
+"investigattor when the game begins."
+msgstr ""
+
+msgid ""
+"Each investigator has 3 fewer slots, each of a different type, chosen by "
+"that investigator when the game begins."
+msgstr ""
+
+msgid "The Tower · XVI"
+msgstr ""
+
+msgid ""
+"Each investigator chooses 1 basic weakness in their deck and removes it "
+"from the game (return them after the game ends)."
+msgstr ""
+
+msgid ""
+"Add 1 random basic weakness to each investigator's deck. Remove them after "
+"the game ends."
+msgstr ""
+
+msgid "The Star · XVII"
+msgstr ""
+
+msgid ""
+"After an investigator reveals an [elder_sign] token during a skill test, "
+"they may heal 1 damage or 1 horror."
+msgstr ""
+
+msgid ""
+"After an investigator reveals an [auto_fail] token during a skill test, "
+"they must either take 1 damage or 1 horror."
+msgstr ""
+
+msgid "The Moon · XVIII"
+msgstr ""
+
+msgid ""
+"The first time each investigator's deck would run out of cards, they may "
+"shuffle the bottom 10 cards of their discard pile back into their deck."
+msgstr ""
+
+msgid ""
+"When the game begins, each investigator discards the top 5 cards of their "
+"deck. Shuffle each discarded weakness into its owner's deck."
+msgstr ""
+
+msgid "The Sun · XIX"
+msgstr ""
+
+msgid "During each investigator's first turn, they may take 2 additional actions."
+msgstr ""
+
+msgid "During each investigator's first turn, they have 2 fewer actions to take."
+msgstr ""
+
+msgid ""
+"When the game begins, replace a [skull] token in the chaos bag with a 0 "
+"token. Swap them back after the game ends."
+msgstr ""
+
+msgid ""
+"When the game begins, replace the highest non-negative token in the chaos "
+"bag with a [skull] token. Swap them back after the game ends."
+msgstr ""
+
+msgid "The World · XXI"
+msgstr ""
+
+msgid ""
+"Each investigator not defeated during this game may remove 1 trauma of "
+"their choice during its resolution."
+msgstr ""
+
+msgid ""
+"Each investigator defeated during this game suffers 1 trauma of their "
+"choice during its resolution."
 msgstr ""
 
 #, javascript-format
