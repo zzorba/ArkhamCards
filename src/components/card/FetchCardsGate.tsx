@@ -21,6 +21,7 @@ import { useEffectUpdate } from '@components/core/hooks';
 import useReduxMigrator from '@components/settings/useReduxMigrator';
 import ApolloClientContext from '@data/apollo/ApolloClientContext';
 import LoadingSpinner from '@components/core/LoadingSpinner';
+import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
 
 const REFETCH_DAYS = 30;
 const REPROMPT_DAYS = 30;
@@ -162,7 +163,7 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
         <Text style={typography.text}>
           { t`Loading latest cards...` }
         </Text>
-        { promptForUpdate ? <ProgressBar progress={fetchProgress} /> : <LoadingSpinner inline /> }
+        { promptForUpdate ? <ProgressBar progress={fetchProgress} /> : <ArkhamLoadingSpinner autoPlay loop /> }
       </View>
     );
   }

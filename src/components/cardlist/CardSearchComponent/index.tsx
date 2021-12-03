@@ -195,7 +195,7 @@ export default function CardSearchComponent(props: Props) {
     }
     if (setHideVersatile) {
       result.push(
-        <View style={[styles.row, space.paddingRightS, space.paddingTopS, space.paddingBottomS, { width }]}>
+        <View key="versatile" style={[styles.row, space.paddingRightS, space.paddingTopS, space.paddingBottomS, { width }]}>
           <View style={space.paddingRightS}>
             <Text style={[typography.small, styles.searchOption]}>
               { t`Hide versatile cards` }

@@ -16,7 +16,7 @@ import DbCardResultList from '@components/cardlist/CardSearchResultsComponent/Db
 import { showSortDialog } from '@components/cardlist/CardSortDialog';
 import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
-import space from '@styles/space';
+import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useDeckEdits, useDeckSlotCount } from '@components/deck/hooks';
 import { useNavigationButtonPressed } from '@components/core/hooks';
@@ -64,7 +64,7 @@ function DeckChecklistView({
   componentId,
   id,
 }: Props) {
-  const { colors, typography } = useContext(StyleContext);
+  const { colors, typography, fontScale, width } = useContext(StyleContext);
   const [deckEdits, deckEditsRef] = useDeckEdits(id);
   const dispatch = useDispatch();
   const [sort, setSort] = useState<SortType>(SORT_BY_TYPE);
@@ -110,17 +110,20 @@ function DeckChecklistView({
     dispatch(resetDeckChecklist(id));
   }, [dispatch, id]);
 
-  const header = useMemo(() => {
-    return (
-      <View style={[space.paddingM, space.marginRightXs, styles.headerRow]}>
-        <TouchableOpacity onPress={clearChecklist} disabled={!checklist.length}>
-          <Text style={[typography.text, checklist.length ? typography.light : { color: colors.L10 }]}>
-            { t`Clear` }
-          </Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }, [checklist, typography, colors, clearChecklist]);
+  const [headerItems, headerHeight] = useMemo(() => {
+    return [
+      [(
+        <View style={[space.paddingM, styles.headerRow, { width }]} key="header">
+          <TouchableOpacity onPress={clearChecklist} disabled={!checklist.length}>
+            <Text style={[typography.text, checklist.length ? typography.light : { color: colors.L10 }]}>
+              { t`Clear` }
+            </Text>
+          </TouchableOpacity>
+        </View>
+      )],
+      m * 2 + 22 * fontScale,
+    ];
+  }, [checklist, typography, colors, fontScale, clearChecklist, width]);
 
   if (!deckEdits) {
     return null;
@@ -131,7 +134,8 @@ function DeckChecklistView({
       componentId={componentId}
       deckId={id}
       sort={sort}
-      header={header}
+      headerItems={headerItems}
+      headerHeight={headerHeight}
       renderCard={renderCard}
       noSearch
       currentDeckOnly

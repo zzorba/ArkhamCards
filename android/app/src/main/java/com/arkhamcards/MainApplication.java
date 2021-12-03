@@ -5,7 +5,8 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
-
+import com.facebook.react.bridge.JSIModulePackage;
+import com.swmansion.reanimated.ReanimatedJSIModulePackage;
 import android.content.Context;
 
 import java.util.List;
@@ -26,6 +27,11 @@ public class MainApplication extends NavigationApplication {
       @Override
       protected String getJSMainModuleName() {
         return "index";
+      }
+
+      @Override
+      protected JSIModulePackage getJSIModulePackage() {
+        return new ReanimatedJSIModulePackage();
       }
 
       @Override

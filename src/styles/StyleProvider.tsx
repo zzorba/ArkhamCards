@@ -3,7 +3,7 @@ import { Appearance, Dimensions, useWindowDimensions } from 'react-native';
 import { useSelector } from 'react-redux';
 import { throttle } from 'lodash';
 
-import StyleContext, { DEFAULLT_STYLE_CONTEXT } from './StyleContext';
+import StyleContext, { DEFAULT_STYLE_CONTEXT } from './StyleContext';
 import { getAppFontScale, getThemeOverride } from '@reducers';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 import typography from './typography';
@@ -98,7 +98,7 @@ export default function StyleProvider({ children } : Props) {
 
   const context = useMemo(() => {
     return {
-      ...DEFAULLT_STYLE_CONTEXT,
+      ...DEFAULT_STYLE_CONTEXT,
       darkMode,
       fontScale: fontScale * appFontScale,
       width,
