@@ -13,6 +13,7 @@ export default function CardToggle({ value, toggleValue }: Props) {
       <ArkhamSwitch
         value={!!value}
         onValueChange={toggleValue}
+        useGestureHandler
       />
     </View>
   );

@@ -7,6 +7,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
@@ -34,6 +35,7 @@ interface Props {
   noBorder?: boolean;
   faded?: boolean;
   noSidePadding?: boolean;
+  useGestureHandler?: boolean;
 }
 
 function SkillIcons({ skill, count }: { skill: SkillCodeType; count: number }) {
@@ -147,6 +149,7 @@ function CardSearchResult(props: Props) {
     noBorder,
     faded,
     noSidePadding,
+    useGestureHandler,
   } = props;
   const { borderStyle, colors, fontScale, typography } = useContext(StyleContext);
   const handleCardPressFunction = useCallback(() => {
@@ -211,6 +214,7 @@ function CardSearchResult(props: Props) {
       </View>
     );
   }, [card]);
+  const Touchable = useGestureHandler ? GestureHandlerTouchableOpacity : TouchableOpacity;
 
   const tabooBlock = useMemo(() => {
     if (!card.taboo_set_id || card.taboo_set_id === 0 || card.taboo_placeholder) {
@@ -307,7 +311,6 @@ function CardSearchResult(props: Props) {
       </View>
     );
   }
-
   return (
     <View style={[
       styles.rowContainer,
@@ -319,10 +322,11 @@ function CardSearchResult(props: Props) {
       },
       (!control && !noSidePadding) ? styles.rowPadding : undefined,
     ]}>
-      <TouchableOpacity
+      <Touchable
+        containerStyle={{ flex: 1 }}
+        style={[styles.row, styles.fullHeight]}
         onPress={handleCardPress}
         disabled={!onPress && !onPressId}
-        style={[styles.row, styles.fullHeight]}
         testID={`SearchCard-${card.code}`}
         delayPressIn={5}
         delayPressOut={5}
@@ -335,7 +339,7 @@ function CardSearchResult(props: Props) {
           <CardIcon card={card} />
           { cardName }
         </View>
-      </TouchableOpacity>
+      </Touchable>
       { !!control && <ControlComponent control={control} card={card} /> }
     </View>
   );

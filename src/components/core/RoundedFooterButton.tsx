@@ -12,10 +12,13 @@ interface Props {
   color?: 'light' | 'dark';
 }
 
+function computeHeight(fontScale: number) {
+  return (18 * fontScale) + 22;
+}
 
-export default function RoundedFooterButton({ onPress, icon, title, color = 'dark' }: Props) {
+function RoundedFooterButton({ onPress, icon, title, color = 'dark' }: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
-  const height = (18 * fontScale) + 22;
+  const height = computeHeight(fontScale);
   const backgroundColor = color === 'dark' ? colors.L10 : colors.L20;
   const rippleColor = color === 'dark' ? colors.L20 : colors.L30;
   const textColor = color === 'dark' ? colors.D20 : colors.M;
@@ -42,6 +45,10 @@ export default function RoundedFooterButton({ onPress, icon, title, color = 'dar
     </Ripple>
   );
 }
+
+RoundedFooterButton.computeHeight = computeHeight;
+
+export default RoundedFooterButton;
 
 const styles = StyleSheet.create({
   buttonStyle: {

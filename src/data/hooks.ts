@@ -31,7 +31,7 @@ export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => vo
     ) : campaigns;
     return sortBy(toSort, c => -c.updatedAt.getTime());
   }, [campaigns, serverCampaigns, userId]);
-  return [allCampaigns, !!userId && loading, refresh];
+  return [allCampaigns, loading, refresh];
 }
 
 export function useCampaignGuideState(campaignId?: CampaignId, live?: boolean): CampaignGuideStateT | undefined {

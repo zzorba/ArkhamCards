@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 
 import { showDeckModal } from '@components/nav/helper';
-import DeckListRow from '../decklist/DeckListRow';
+import LegacyDeckListRow from '../decklist/LegacyDeckListRow';
 import { Deck } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
@@ -17,7 +17,7 @@ type RenderDeckDetails = (
   previousDeck?: Deck
 ) => JSX.Element | null;
 
-export interface DeckRowProps {
+export interface LegacyDeckRowProps {
   deck: LatestDeckT;
   campaign: MiniCampaignT;
   lang: string;
@@ -28,12 +28,12 @@ export interface DeckRowProps {
   actions: DeckActions;
 }
 
-interface Props extends DeckRowProps {
+interface Props extends LegacyDeckRowProps {
   compact?: boolean;
   viewDeckButton?: boolean;
 }
 
-export default function DeckRow({
+export default function LegacyDeckRow({
   deck: { deck, previousDeck, id },
   campaign,
   lang,
@@ -86,7 +86,7 @@ export default function DeckRow({
     return null;
   }
   return (
-    <DeckListRow
+    <LegacyDeckListRow
       deck={deck}
       previousDeck={previousDeck}
       lang={lang}

@@ -12,7 +12,7 @@ index d635e95..8100350 100644
            });
            let rIdx = this._currentIndex;
 diff --git a/node_modules/react-native-largelist/LargeList.js b/node_modules/react-native-largelist/LargeList.js
-index 578ed7b..48ae9d6 100644
+index 578ed7b..9db7d6d 100644
 --- a/node_modules/react-native-largelist/LargeList.js
 +++ b/node_modules/react-native-largelist/LargeList.js
 @@ -87,6 +87,8 @@ export class LargeList extends React.PureComponent<LargeListPropType> {
@@ -35,15 +35,7 @@ index 578ed7b..48ae9d6 100644
              if (outputs[currentGroupIndex].length === 0) {
                outputs[currentGroupIndex].push(sumHeight);
                outputs[currentGroupIndex].push(sumHeight);
-@@ -222,6 +224,7 @@ export class LargeList extends React.PureComponent<LargeListPropType> {
-               sumHeight > wrapperHeight
-                 ? sumHeight
-                 : wrapperHeight + StyleSheet.hairlineWidth,
-+            overflow: 'visible',
-           }
-         : null;
-     //#endregion
-@@ -451,8 +454,7 @@ export class LargeList extends React.PureComponent<LargeListPropType> {
+@@ -451,8 +453,7 @@ export class LargeList extends React.PureComponent<LargeListPropType> {
        );
      this.props.onScroll && this.props.onScroll(e);
      const now = new Date().getTime();
@@ -53,6 +45,35 @@ index 578ed7b..48ae9d6 100644
        return;
      }
      this._lastTick = now;
+@@ -462,20 +463,22 @@ export class LargeList extends React.PureComponent<LargeListPropType> {
+       );
+   };
+ 
+-  scrollTo(offset: Offset, animated: boolean = true): Promise<void> {
++  _scrollTo = async(offset: Offset, animated: boolean = true): Promise<void> => {
+     if (!this._scrollView.current)
+       return Promise.reject("LargeList has not been initialized yet!");
+-    this._shouldUpdateContent = false;
+     this._groupRefs.forEach((group) =>
+       idx(() => group.current.contentConversion(offset.y))
+     );
+     this._sectionRefs.forEach((sectionRef) =>
+       idx(() => sectionRef.current.updateOffset(offset.y))
+     );
+-    return this._scrollView.current.scrollTo(offset, animated).then(() => {
+-      this._shouldUpdateContent = true;
+-      return Promise.resolve();
+-    });
++    this._shouldUpdateContent = false;
++    await this._scrollView.current.scrollTo(offset, animated);
++    this._shouldUpdateContent = true;
++  };
++
++  scrollTo(offset: Offset, animated: boolean = true): Promise<void> {
++    return this._scrollTo(offset, animated);
+   }
+ 
+   scrollToIndexPath(
 diff --git a/node_modules/react-native-largelist/WaterfallList.js b/node_modules/react-native-largelist/WaterfallList.js
 index 3e073ae..8211a4f 100644
 --- a/node_modules/react-native-largelist/WaterfallList.js

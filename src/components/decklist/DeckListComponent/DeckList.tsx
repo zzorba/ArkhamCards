@@ -5,6 +5,7 @@ import {
   Platform,
   RefreshControl,
   StyleSheet,
+  View,
 } from 'react-native';
 
 import { Campaign } from '@actions/types';
@@ -18,7 +19,7 @@ import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useLatestDeck } from '@data/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
-import { useDebounce } from '@react-hook/debounce';
+import { useDebounce } from 'use-debounce/lib';
 
 interface Props {
   deckIds: MiniDeckT[];
@@ -107,10 +108,7 @@ export default function DeckList({
       />
     );
   }, [deckClicked, deckToCampaign]);
-  const [debouncedRefreshing, setDebouncedRefreshing] = useDebounce(!!refreshing, 500, true);
-  useEffect(() => {
-    setDebouncedRefreshing(!!refreshing);
-  }, [refreshing, setDebouncedRefreshing]);
+  const [debouncedRefreshing] = useDebounce(!!refreshing, 100, { leading: true });
   return (
     <FlatList
       refreshControl={

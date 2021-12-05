@@ -23,7 +23,7 @@ import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import { useMyDecks } from '@data/hooks';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
-import ConnectionProblemBanner from '@components/core/ConnectionProblemBanner';
+import useConnectionProblemBanner from '@components/core/useConnectionProblemBanner';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDeckActions } from '@data/remote/decks';
 
@@ -104,16 +104,16 @@ function MyDecksComponent({
       </View>
     );
   }, [customFooter, signInFooter]);
-
+  const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error, reLogin } })
   const header = useMemo(() => {
     const searchPadding = !!searchOptions && Platform.OS === 'android';
     return (
       <>
         { searchPadding && <View style={styles.searchBarPlaceholder} /> }
-        <ConnectionProblemBanner width={width} arkhamdbState={{ error, reLogin }} />
+        { connectionProblemBanner }
       </>
     );
-  }, [searchOptions, width, error, reLogin]);
+  }, [searchOptions, connectionProblemBanner]);
 
   const deckIds = useMemo(() => {
     return filter(onlyDecks || myDecks, deckId => !filterDeck || filterDeck(deckId));

@@ -64,7 +64,7 @@ interface DetailProps {
   eliminated: boolean;
 }
 
-function DeckListRowDetails({
+function LegacyDeckListRowDetails({
   investigator,
   campaign,
   deck,
@@ -137,7 +137,7 @@ function DeckListRowDetails({
   );
 }
 
-export default function DeckListRow({
+export default function LegacyDeckListRow({
   lang,
   deck,
   previousDeck,
@@ -191,7 +191,7 @@ export default function DeckListRow({
           <View style={styles.investigatorBlock}>
             <View style={styles.investigatorBlockRow}>
               <View style={[styles.column, styles.titleColumn]}>
-                <DeckListRowDetails
+                <LegacyDeckListRowDetails
                   deck={deck}
                   previousDeck={previousDeck}
                   investigator={investigator}

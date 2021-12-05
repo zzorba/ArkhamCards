@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useMemo, useCallback } from 'react';
 import LottieView from 'lottie-react-native';
 import { random, set } from 'lodash';
 import { t } from 'ttag';
@@ -86,6 +86,7 @@ export default function ArkhamLoadingSpinner({
       progress={progress}
       source={colorizedSource}
       resizeMode="contain"
+      cacheStrategy="strong"
       style={{
         width: large ? SEARCH_BAR_HEIGHT * 2 : SEARCH_BAR_HEIGHT,
         height: large ? SEARCH_BAR_HEIGHT * 2 : SEARCH_BAR_HEIGHT,
@@ -109,10 +110,15 @@ function getRandomLoadingMessage() {
   return messages[random(0, messages.length - 1)];
 }
 
+interface ArkhamLottieHeaderStateType extends RefreshHeaderStateType {
+  loading?: boolean;
+  message?: string;
+}
+
 export function useArkhamLottieHeader(noSearch?: boolean, noMessage?: boolean) {
   const { typography } = useContext(StyleContext);
   return useMemo(() => {
-    return class ArkhamLottieHeader extends RefreshHeader {
+    return class ArkhamLottieHeader extends RefreshHeader<ArkhamLottieHeaderStateType> {
       ref: React.RefObject<LottieView>;
 
       constructor(props: RefreshHeaderPropType) {
@@ -124,43 +130,37 @@ export function useArkhamLottieHeader(noSearch?: boolean, noMessage?: boolean) {
           message: getRandomLoadingMessage(),
         };
       }
-
+      static style = 'stickyContent';
       static height: number = SEARCH_BAR_HEIGHT;
 
-      componentDidUpdate(prevProps: RefreshHeaderPropType, prevState: RefreshHeaderStateType) {
+      componentDidUpdate(prevProps: RefreshHeaderPropType, prevState: ArkhamLottieHeaderStateType) {
         if (this.state.status !== prevState.status) {
           if (this.state.status === 'refreshing') {
-            this.setState({
-              message: getRandomLoadingMessage(),
+            // eslint-disable-next-line react/no-did-update-set-state
+            this.setState((state) => {
+              return {
+                ...state,
+                message: getRandomLoadingMessage(),
+              };
             });
-            console.log({ play: !!this.ref.current });
-            this.ref.current?.play();
+            this.ref.current?.resume();
           }
         }
       }
       componentDidMount() {
         if (this.state.status === 'refreshing') {
-          console.log({ play: !!this.ref.current });
           this.ref.current?.play();
         }
       }
       render() {
-        let progress: Animated.AnimatedInterpolation | undefined = this.props.offset.interpolate({
-          inputRange: [-SEARCH_BAR_HEIGHT * 5, -SEARCH_BAR_HEIGHT * 4, -SEARCH_BAR_HEIGHT * 3, -SEARCH_BAR_HEIGHT * 2, -SEARCH_BAR_HEIGHT, 0],
-          outputRange: [1, 0, 1, 0, 1, 0],
-        });
-        if (this.state.status === 'refreshing') {
-          progress = undefined;
-        }
         return (
           <View style={[styles.wrapper, { paddingTop: noSearch ? 0 : SEARCH_BAR_HEIGHT }]}>
             <ArkhamLoadingSpinner
               lottieRef={this.ref}
-              progress={progress}
-              autoPlay={this.state.status === 'refreshing'}
-              loop={this.state.status === 'refreshing'}
+              autoPlay
+              loop
             />
-            { !noMessage && this.state.status === 'refreshing' && (
+            { !noMessage && (this.state.status === 'refreshing') && (
               <View style={{ height: SEARCH_BAR_HEIGHT }}>
                 <Text style={[typography.text, typography.center]}>
                   { `${this.state.message}...` }

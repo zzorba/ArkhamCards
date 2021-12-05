@@ -24,7 +24,6 @@ function getStandardComponent(componentName: string | number) {
     case 'Deck.Checklist': return require('@components/deck/DeckChecklistView').default;
     case 'Deck.DrawSimulator': return require('@components/deck/DrawSimulatorView').default;
     case 'Deck.Description': return require('@components/deck/DeckDescriptionView').default;
-    case 'Deck.EditAddCards': return require('@components/deck/DeckEditView').default;
     case 'Deck.EditSpecial': return require('@components/deck/EditSpecialDeckCardsView').default;
     case 'Deck.NewOptions': return require('@components/deck/NewDeckOptionsDialog').default;
     case 'Card': return require('@components/card/CardDetailView').default;
@@ -90,6 +89,7 @@ function getRootComponent(name: string | number): any {
     case 'Guide.Standalone': return require('@components/campaignguide/StandaloneGuideView').default;
     case 'Dialog.Campaign': return require('@components/campaign/SelectCampaignDialog').default;
     case 'Dialog.DeckSelector': return require('@components/campaign/MyDecksSelectorDialog').default;
+    case 'Deck.EditAddCards': return require('@components/deck/DeckEditView').default;
     default: return undefined;
   }
 }

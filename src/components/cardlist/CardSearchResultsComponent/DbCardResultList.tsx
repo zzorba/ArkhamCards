@@ -49,7 +49,7 @@ import LoadingCardSearchResult from '../LoadingCardSearchResult';
 import { ControlType } from '../CardSearchResult/ControlComponent';
 import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
 import { useDebounce } from 'use-debounce/lib';
-import { NormalFooter } from 'react-native-spring-scrollview';
+import ArkhamLargeList from '@components/core/ArkhamLargeList';
 
 interface Props {
   componentId: string;
@@ -119,6 +119,7 @@ interface CardItem {
 interface LoadingCardItem {
   type: 'loading';
   id: string;
+  message: boolean;
 }
 
 interface ButtonItem {
@@ -256,7 +257,6 @@ interface SectionFeedProps {
   noSearch?: boolean;
   hasHeader?: boolean;
   investigator?: Card;
-  listRef?: Ref<LargeList>;
 }
 
 interface Section {
@@ -276,7 +276,8 @@ interface SectionFeed {
 
 interface LoadedState {
   cards: PartialCard[];
-  textQuery: Brackets | undefined;
+  textQuery?: Brackets;
+  loading: boolean;
 }
 function useSectionFeed({
   componentId,
@@ -293,7 +294,6 @@ function useSectionFeed({
   storyOnly,
   originalDeckSlots,
   deckCardCounts,
-  listRef,
 }: SectionFeedProps): SectionFeed {
   const { db } = useContext(DatabaseContext);
   const sortIgnoreQuotes = useSelector((state: AppState) => !state.settings.sortRespectQuotes);
@@ -303,23 +303,25 @@ function useSectionFeed({
   const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
   const [showNonCollection, , setShowNonCollection, clearShowNonCollection] = useToggles({});
   const storyQuery = storyOnly ? query : undefined;
-  const [{ cards: deckCards, textQuery: deckCardsTextQuery }, setDeckCards] = useState<LoadedState>({
-    cards: [],
-    textQuery: undefined,
-  });
-  const [mainQueryCards, setMainQueryCards] = useState<PartialCard[]>([]);
-  const [{ cards: textQueryCards, textQuery: textQueryCardsTextQuery }, setTextQueryCards] = useState<LoadedState>({
-    cards: [],
-    textQuery: undefined,
-  });
+
   const [deckQuery, hasDeckChanges, refreshDeck] = useDeckQuery(deckCardCounts, originalDeckSlots);
+  const [{ cards: deckCards, textQuery: deckCardsTextQuery, loading: deckCardsLoading }, setDeckCards] = useState<LoadedState>({
+    cards: [],
+    loading: !!deckQuery,
+  });
+  const [{ cards: mainQueryCards, loading: mainQueryCardsLoading }, setMainQueryCards] = useState<LoadedState>({ cards: [], loading: true });
+  const [{ cards: textQueryCards, textQuery: textQueryCardsTextQuery, loading: textQueryCardsLoading }, setTextQueryCards] = useState<LoadedState>({
+    cards: [],
+    loading: true,
+  });
   useEffectUpdate(() => {
-    setDeckCards({ cards: [], textQuery: undefined });
+    setMainQueryCards({ cards: [], loading: true });
+    setDeckCards({ cards: [], loading: true });
   }, [sort]);
   useEffect(() => {
     let ignore = false;
     if (!deckQuery) {
-      setDeckCards({ cards: [], textQuery: undefined });
+      setDeckCards({ cards: [], loading: false });
     } else {
       const searchTextQuery = textQuery;
       db.getPartialCards(
@@ -337,7 +339,7 @@ function useSectionFeed({
         sort
       ).then(cards => {
         if (!ignore) {
-          setDeckCards({ cards, textQuery: searchTextQuery });
+          setDeckCards({ cards, textQuery: searchTextQuery, loading: false });
         }
       });
     }
@@ -364,10 +366,10 @@ function useSectionFeed({
     });
   }, [componentId]);
   const [visibleCards, partialItems, spoilerCardsCount] = useMemo(() => {
-    const items: PartialItem[] = deckCards.length ? [] : [];
+    const items: PartialItem[] = [];
     const result: PartialCard[] = [];
     let currentSectionId: string | undefined = undefined;
-    if (deckCards.length) {
+    if (deckCards.length && !deckCardsLoading) {
       if (investigator) {
         items.push({
           type: 'header',
@@ -404,9 +406,6 @@ function useSectionFeed({
     currentSectionId = undefined;
     let currentNonCollection: PartialCard[] = [];
     const [nonSpoilerCards, spoilerCards] = partition(partialCards, card => {
-      if (!showAllNonCollection && card.pack_code !== 'core' && !cardInCollection(card, packInCollection)) {
-        return true;
-      }
       return !card.spoiler || packSpoiler[card.pack_code];
     });
     const appendFooterButtons = (sectionId: string, prefix: string | number) => {
@@ -469,7 +468,7 @@ function useSectionFeed({
       appendFooterButtons(currentSectionId, showSpoilers ? 1 : 0);
     }
     return [result, items, spoilerCards.length];
-  }, [partialCards, investigator, deckCards, showNonCollection, ignore_collection, packInCollection, packSpoiler, showSpoilers, editCollectionSettings, setShowNonCollection, showAllNonCollection, hasDeckChanges, refreshDeck]);
+  }, [partialCards, deckCardsLoading, investigator, deckCards, showNonCollection, ignore_collection, packInCollection, packSpoiler, showSpoilers, editCollectionSettings, setShowNonCollection, showAllNonCollection, hasDeckChanges, refreshDeck]);
 
   const { cards, fetchMore } = useCardFetcher(visibleCards);
   const [refreshing, setRefreshing] = useState(true);
@@ -490,13 +489,6 @@ function useSectionFeed({
     }
   }, [deckQuery, refreshDeck]);
 
-  useEffectUpdate(() => {
-    // Dump the cards when our search changes dramatically.
-    setRefreshing(true);
-    setMainQueryCards([]);
-  }, [sort]);
-
-
   useEffect(() => {
     let ignore = false;
     // This is for the really big changes.
@@ -505,7 +497,7 @@ function useSectionFeed({
     setShowSpoilers(false);
     setExpandButtonPressed(false);
     if (!query) {
-      setMainQueryCards([]);
+      setMainQueryCards({ cards: [], loading: false });
       setRefreshing(false);
       return;
     }
@@ -520,7 +512,7 @@ function useSectionFeed({
     ).then((cards: PartialCard[]) => {
       // console.log(`Fetched partial cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
       if (!ignore) {
-        setMainQueryCards(cards);
+        setMainQueryCards({ cards, loading: false });
         setRefreshing(false);
       }
     }, console.log);
@@ -534,7 +526,7 @@ function useSectionFeed({
     if (textQuery) {
       let ignore = false;
       if (!query) {
-        setTextQueryCards({ cards: [], textQuery: undefined });
+        setTextQueryCards({ cards: [], loading: false });
         return;
       }
       // Look for textual card changes.
@@ -554,7 +546,7 @@ function useSectionFeed({
       ).then((cards: PartialCard[]) => {
         if (!ignore) {
           // console.log(`Fetched text cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
-          setTextQueryCards({ cards, textQuery: searchTextQuery });
+          setTextQueryCards({ cards, textQuery: searchTextQuery, loading: false });
         }
       });
       return () => {
@@ -583,19 +575,41 @@ function useSectionFeed({
     });
   }, [componentId]);
   // tslint:disable-next-line: strict-comparisons
-  const refreshingSearch = (!!deckQuery && deckCardsTextQuery !== textQuery) || (textQueryCardsTextQuery !== textQuery);
+  const refreshingSearch = (!!deckQuery && (deckCardsTextQuery !== textQuery || deckCardsLoading)) || (textQueryCardsTextQuery !== textQuery);
   const feedLoading = useMemo(() => {
     return (visibleCards.length > 0) && !!find(take(visibleCards, 1), c => !cards[c.id]);
   }, [visibleCards, cards]);
 
   const refreshingResult = refreshing || (feedLoading && !expandButtonPressed);
-  const [sections, hasCards] = useMemo(() => {
+  const [sections, hasCards, cardsLoading] = useMemo(() => {
     const result: Section[] = [];
     let currentSection: Section = { items: [] };
     let missingCards = false;
     let loadingSection = false;
     let noCards = true;
+    let cardsLoading = false;
+    let loadingCount = 0;
     forEach(partialItems, item => {
+      if (item.type !== 'pc') {
+        if (item.type === 'header') {
+          loadingSection = false;
+        }
+        return;
+      }
+      const { id } = item.card;
+      const card = cards[id];
+      if (!card) {
+        if (!loadingSection) {
+          loadingSection = true;
+          loadingCount ++;
+        }
+        return;
+      }
+      loadingSection = false;
+    });
+
+    for (let i = 0; i < partialItems.length; i++) {
+      const item = partialItems[i];
       if (item.type !== 'pc') {
         if (item.type === 'header' && !item.header.superTitle) {
           if (currentSection.header || currentSection.items.length) {
@@ -609,27 +623,31 @@ function useSectionFeed({
           currentSection.items.push(item);
         }
         loadingSection = false;
-        return;
+        continue;
       }
       const { headerId, id } = item.card;
       const card = cards[id];
       if (!card) {
         if (!loadingSection) {
-          currentSection.items.push({ type: 'loading', id: id });
+          currentSection.items.push({ type: 'loading', id: id, message: loadingCount > 1 });
+          cardsLoading = true;
+          if (loadingCount > 1) {
+            break;
+          }
           loadingSection = true;
           missingCards = true;
         }
-        return;
+        continue;
       }
-      loadingSection = false;
       noCards = false;
+      loadingSection = false;
       currentSection.items.push({
         type: 'card',
         id: item.prefix ? `${item.prefix}_${headerId}.${id}` : `${headerId}.${id}`,
         card,
       });
-    });
-    if (!missingCards && spoilerCardsCount > 0) {
+    }
+    if (!missingCards && spoilerCardsCount > 0 && loadingCount <= 1) {
       if (showSpoilers) {
         currentSection.items.push({
           type: 'button',
@@ -657,33 +675,51 @@ function useSectionFeed({
     if (currentSection.header || currentSection.items.length) {
       result.push(currentSection);
     }
-    return [result, !noCards];
+    return [result, !noCards, cardsLoading];
   }, [partialItems, cards, showSpoilers, spoilerCardsCount, editSpoilerSettings]);
+
+  const [loadingMessage, setLoadingMessage] = useState(getRandomLoadingMessage());
+  const isRefreshing = !hasCards || refreshingResult || deckRefreshing;
+  useEffectUpdate(() => {
+    if (!isRefreshing) {
+      setLoadingMessage(getRandomLoadingMessage());
+    }
+  }, [isRefreshing])
 
   const feed = useMemo(() => {
     let loadingItem: Item | undefined = undefined;
-    if (!sections.length && !refreshingResult) {
-      if (refreshingSearch) {
-        loadingItem = {
-          type: 'text',
-          id: 'searching',
-          text: t`Searching cards...`,
-        };
-      } else {
-        if (searchTerm) {
+    if (!sections.length || cardsLoading) {
+      if (refreshingResult || cardsLoading) {
+        if (!hasCards) {
           loadingItem = {
             type: 'text',
-            id: 'no_results_search',
-            text: t`No matching cards for "${searchTerm}"`,
-            border: true,
+            id: 'loading',
+            text: loadingMessage,
+          };
+        }
+      } else {
+        if (refreshingSearch) {
+          loadingItem = {
+            type: 'text',
+            id: 'searching',
+            text: t`Searching cards...`,
           };
         } else {
-          loadingItem = {
-            type: 'text',
-            id: 'no_results_search',
-            text: t`No matching cards`,
-            border: true,
-          };
+          if (searchTerm) {
+            loadingItem = {
+              type: 'text',
+              id: 'no_results_search',
+              text: t`No matching cards for "${searchTerm}"`,
+              border: true,
+            };
+          } else {
+            loadingItem = {
+              type: 'text',
+              id: 'no_results_search',
+              text: t`No matching cards`,
+              border: true,
+            };
+          }
         }
       }
     }
@@ -699,11 +735,11 @@ function useSectionFeed({
       ...(hasCards ? sections : []),
     ];
     return sectionItems;
-  }, [sections, noSearch, hasHeader, refreshingResult, refreshingSearch, searchTerm, hasCards]);
+  }, [sections, loadingMessage, noSearch, hasHeader, refreshingResult, refreshingSearch, searchTerm, hasCards]);
   return {
     feed,
     fullFeed: visibleCards,
-    refreshing: !hasCards || refreshingResult || deckRefreshing,
+    refreshing: isRefreshing,
     refreshingSearch,
     fetchMore,
     showSpoilerCards: showSpoilers,
@@ -755,7 +791,6 @@ export default function({
   const deck = useDeck(deckId);
   const deckEdits = useSimpleDeckEdits(deckId);
   const { colors, borderStyle, fontScale, typography, height, width } = useContext(StyleContext);
-  const [loadingMessage, setLoadingMessage] = useState(getRandomLoadingMessage());
   const tabooSetOverride = deckId !== undefined ? ((deckEdits?.tabooSetChange || deck?.deck.taboo_id) || 0) : undefined;
   const tabooSetSelctor = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelctor(state, tabooSetOverride));
@@ -786,7 +821,6 @@ export default function({
     deckCardCounts: deckEdits?.slots,
     originalDeckSlots: currentDeckOnly ? undefined : deck?.deck.slots,
     storyOnly,
-    listRef,
   });
   const dispatch = useDispatch();
   useEffect(() => {
@@ -794,12 +828,6 @@ export default function({
     showHeader && showHeader();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, filterQuery, tabooSetId, sort]);
-  useEffect(() => {
-    if (!refreshing) {
-      // Everytime refreshing goes to false, queue up a new fun loading message.
-      setLoadingMessage(getRandomLoadingMessage());
-    }
-  }, [refreshing]);
 
   useEffect(() => {
     dispatch(addDbFilterSet(componentId, db, query, initialSort || SORT_BY_TYPE, tabooSetId));
@@ -886,28 +914,6 @@ export default function({
       </View>
     );
   }, [expandSearchControls, refreshing]);
-  const [debouncedRefreshing] = useDebounce(refreshing || refreshingSearch, 50, { leading: true });
-  const extraPaddingTop = useRef(new Animated.Value(0));
-  useEffect(() => {
-    if (debouncedRefreshing) {
-      listRef.current?.beginRefresh();
-      Animated.timing(extraPaddingTop.current, {
-        toValue: SEARCH_BAR_HEIGHT,
-        duration: 0,
-        useNativeDriver: false,
-      }).start();
-    } else {
-      setTimeout(() => {
-        listRef.current?.endRefresh();
-        Animated.timing(extraPaddingTop.current, {
-          toValue: 0,
-          duration: 100,
-          useNativeDriver: false,
-        }).start();
-      }, 200);
-    }
-  }, [listRef, debouncedRefreshing]);
-
   const renderSection = useCallback((section: number) => {
     const item = feed[section].header;
     if (!item) {
@@ -952,6 +958,7 @@ export default function({
               deckId,
               limit: deck_limit,
             }) : undefined}
+            useGestureHandler
           />
         );
       }
@@ -986,87 +993,7 @@ export default function({
       default:
         return <View />;
     }
-  }, [feed, headerItems, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, loadingMessage, renderCard, typography, deckLimits, borderStyle]);
-  const renderItem = useCallback((item: Item) => {
-    switch (item.type) {
-      case 'button':
-        return (
-          <ArkhamButton
-            key={item.id}
-            title={item.title}
-            onPress={item.onPress}
-            icon={item.icon}
-          />
-        );
-      case 'card': {
-        const card = item.card;
-        if (renderCard) {
-          return renderCard(card);
-        }
-        const deck_limit: number = card.collectionDeckLimit(packInCollection, ignore_collection);
-        const control = deck_limit < deckLimits.length ? deckLimits[deck_limit] : undefined;
-        return (
-          <CardSearchResult
-            key={item.id}
-            card={card}
-            onPressId={cardOnPressId}
-            id={item.id}
-            control={deckId !== undefined ? (control || {
-              type: 'deck',
-              deckId,
-              limit: deck_limit,
-            }) : undefined}
-          />
-        );
-      }
-      case 'header':
-        return (
-          <CardSectionHeader
-            key={item.id}
-            section={item.header}
-            investigator={investigator}
-          />
-        );
-      case 'loading':
-        return (
-          <LoadingCardSearchResult key={item.id} />
-        );
-      case 'loading_message':
-        return (
-          <View
-            key={item.id}
-            style={{ width, paddingTop: Platform.OS === 'android' ? SEARCH_BAR_HEIGHT * 2 : 0 }}
-          >
-            <View style={styles.loadingText}>
-              <Text style={[typography.text, typography.center]}>
-                { `${loadingMessage}...` }
-              </Text>
-            </View>
-          </View>
-        );
-      case 'text':
-        return (
-          <View
-            key={item.id}
-            style={item.border ? [styles.emptyText, borderStyle] : undefined}
-          >
-            <Text style={[typography.text, typography.center]}>
-              { item.text}
-            </Text>
-          </View>
-        )
-      case 'padding':
-        return <View style={{ height: item.size }} key={item.id} />;
-      case 'list_header':
-        return (
-          <View key={item.id} style={[styles.column, { width: width }]}>
-            { headerItems }
-          </View>
-        );
-      default:
-        return <View />;
-    }
-  }, [headerItems, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, loadingMessage, renderCard, typography, deckLimits, borderStyle]);
+  }, [feed, headerItems, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
   const heightForSection = useCallback((section: number) => {
     const header = feed[section].header;
     if (!header) {
@@ -1078,49 +1005,23 @@ export default function({
     const item = feed[section].items[row];
     return itemHeight(item, fontScale, headerHeight || 0);
   }, [feed, fontScale, headerHeight]);
-
-  const heightForItem = useCallback((item: Item) => {
-    return itemHeight(item, fontScale, headerHeight || 0);
-  }, [fontScale, headerHeight]);
-  const onRefresh = useCallback(() => {
-    if (debouncedRefreshing) {
-      return;
-    }
-    console.log('onRefresh called');
-    if (refreshDeck) {
-      refreshDeck?.();
-    } else {
-      // Just let it spin for half a second
-      setTimeout(() => {
-        console.log('Finished spinning down from onRefresh');
-        listRef.current?.endRefresh();
-      }, 500)
-    }
-  }, [debouncedRefreshing, refreshDeck]);
-  const ArkhamLottieHeader = useArkhamLottieHeader(noSearch, !!deckId);
-  const listHeader = useCallback(() => {
-    return <Animated.View style={{ height: deckId ? 0 : extraPaddingTop.current }} />;
-  }, [deckId, extraPaddingTop]);
   return (
-    <LargeList
-      ref={listRef}
+    <ArkhamLargeList
       data={feed}
-      contentStyle={{ overflow: 'visible' }}
       heightForSection={heightForSection}
       heightForIndexPath={heightForIndexPath}
       renderSection={renderSection}
       renderIndexPath={renderIndexPath}
-      renderHeader={listHeader}
       renderFooter={listFooter}
-      refreshHeader={ArkhamLottieHeader}
-      dragToHideKeyboard
-      onRefresh={onRefresh}
       onScroll={handleScroll}
       onLoading={fetchMore}
-      headerStickyEnabled={false}
       updateTimeInterval={Platform.OS === 'ios' ? 100 : 50}
       groupCount={Platform.OS === 'ios' ? 20 : 16}
       groupMinHeight={height / 2}
+      onRefresh={refreshDeck}
+      refreshing={refreshing || refreshingSearch}
+      noSearch={noSearch}
+      hideLoadingMessage
     />
   );
 }
@@ -1128,12 +1029,6 @@ export default function({
 const styles = StyleSheet.create({
   footer: {
     height: 300,
-  },
-  loadingText: {
-    paddingLeft: m,
-    paddingRight: m,
-    paddingTop: m,
-    paddingBottom: s,
   },
   emptyText: {
     padding: m,

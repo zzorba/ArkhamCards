@@ -3,6 +3,7 @@ import { FlatList, ListRenderItemInfo, Keyboard, Platform, View, StyleSheet, Ref
 import { map } from 'lodash';
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
+import { IndexPath } from 'react-native-largelist';
 
 import { STANDALONE } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
@@ -16,10 +17,14 @@ import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StandaloneItem from './StandaloneItem';
 import StyleContext from '@styles/StyleContext';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
-import ConnectionProblemBanner from '@components/core/ConnectionProblemBanner';
+import useConnectionProblemBanner from '@components/core/useConnectionProblemBanner';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import useNetworkStatus from '@components/core/useNetworkStatus';
 import { NetInfoStateType } from '@react-native-community/netinfo';
+import ArkhamLargeList, { BasicSection } from '@components/core/ArkhamLargeList';
+import { refresh } from 'react-native-app-auth';
+import ArkhamButton from '@components/core/ArkhamButton';
+import { useInvestigatorCards } from '@components/core/hooks';
 
 interface Props {
   onScroll: (...args: any[]) => void;
@@ -29,15 +34,25 @@ interface Props {
   standalonesById: { [campaignId: string]: { [scenarioId: string]: string } };
   onRefresh?: () => void;
   refreshing?: boolean;
+  buttons: React.ReactNode[];
 }
 
 interface CampaignItemType {
+  type: 'campaign';
   campaign: MiniCampaignT;
 }
 
-export default function CampaignList({ onScroll, componentId, campaigns, footer, standalonesById, onRefresh, refreshing }: Props) {
-  const { colors, width } = useContext(StyleContext);
+interface ButtonItemType {
+  type: 'button';
+  button: React.ReactNode;
+}
+
+type ItemType = CampaignItemType | ButtonItemType;
+
+export default function CampaignList({ onScroll, componentId, campaigns, footer, standalonesById, onRefresh, refreshing, buttons }: Props) {
+  const { fontScale, height, width } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
+  const investigators = useInvestigatorCards();
   const onPress = useCallback((id: string, campaign: MiniCampaignT) => {
     Keyboard.dismiss();
     const options: Options = {
@@ -111,73 +126,103 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
     }
   }, [componentId]);
 
-  const renderItem = useCallback(({ item: { campaign } }: ListRenderItemInfo<CampaignItemType>) => {
-    if (campaign.cycleCode === STANDALONE) {
-      const standaloneId = campaign.standaloneId;
-      return standaloneId ? (
-        <StandaloneItem
+  const [{ networkType, isConnected }] = useNetworkStatus();
+  const offline = !isConnected || networkType === NetInfoStateType.none;
+  const [connectionProblemBanner, connectionProblemBannerHeight] = useConnectionProblemBanner({ width });
+
+  const [data, empty] = useMemo(() => {
+    const items: ItemType[] = [
+      ...map(campaigns, (campaign): CampaignItemType => {
+        return {
+          type: 'campaign',
+          campaign,
+        };
+      }),
+      ...map(buttons, (button): ButtonItemType => {
+        return {
+          type: 'button',
+          button,
+        };
+      }),
+    ];
+    const feed: BasicSection<ItemType>[] = [{ items }];
+    return [feed, campaigns.length === 0];
+  }, [campaigns, buttons]);
+  const renderFooter = useCallback(() => {
+    if (refreshing) {
+      return <View />;
+    }
+    return <View style={{ paddingTop: empty ? SEARCH_BAR_HEIGHT : 0 }}>{footer}</View>;
+  }, [footer, refreshing, empty]);
+
+  const heightForSection = useCallback((section: number): number => {
+    return SEARCH_BAR_HEIGHT + (!!userId ? connectionProblemBannerHeight : 0);
+  }, [userId, connectionProblemBannerHeight]);
+
+  const renderSection = useCallback((section: number): React.ReactElement<any> => {
+    return (
+      <View style={{ paddingTop: SEARCH_BAR_HEIGHT }}>
+        { !!userId && connectionProblemBanner ? connectionProblemBanner : null }
+      </View>
+    );
+  }, [userId, connectionProblemBanner]);
+
+  const heightForIndexPath = useCallback(({ section, row }: IndexPath) => {
+    const item = data[section].items[row];
+    if (item.type === 'campaign') {
+      const campaign = item.campaign;
+      if (campaign.cycleCode === STANDALONE) {
+        if (campaign.standaloneId) {
+          return StandaloneItem.computeHeight(fontScale);
+        }
+        return 0;
+      }
+      return CampaignItem.computeHeight(fontScale);
+    }
+    return ArkhamButton.Height(fontScale);
+  }, [data, fontScale]);
+
+  const renderIndexPath = useCallback(({ section, row }: IndexPath) => {
+    const item = data[section].items[row];
+    if (item.type === 'campaign') {
+      const campaign = item.campaign;
+      if (campaign.cycleCode === STANDALONE) {
+        const standaloneId = campaign.standaloneId;
+        return standaloneId ? (
+          <StandaloneItem
+            key={campaign.uuid}
+            campaign={campaign}
+            onPress={onPress}
+            scenarioName={standalonesById[standaloneId.campaignId][standaloneId.scenarioId]}
+          />
+        ) : <View />;
+      }
+      return (
+        <CampaignItem
           key={campaign.uuid}
           campaign={campaign}
           onPress={onPress}
-          scenarioName={standalonesById[standaloneId.campaignId][standaloneId.scenarioId]}
         />
-      ) : null;
+      );
     }
-    return (
-      <CampaignItem
-        key={campaign.uuid}
-        campaign={campaign}
-        onPress={onPress}
-      />
-    );
-  }, [onPress, standalonesById]);
-  const [{ networkType, isConnected }] = useNetworkStatus();
-  const offline = !isConnected || networkType === NetInfoStateType.none;
-  const header = useMemo(() => {
-    return (
-      <>
-        { Platform.OS === 'android' && <View style={styles.searchBarPadding} /> }
-        { !!userId && <ConnectionProblemBanner width={width} /> }
-      </>
-    )
-  }, [width, userId]);
-  const [isRefreshing, setRefreshing] = useState(false);
-  const doRefresh = useCallback(() => {
-    setRefreshing(true);
-    onRefresh && onRefresh();
-    setTimeout(() => setRefreshing(false), 1000);
-  }, [setRefreshing, onRefresh]);
-  const data = useMemo(() => {
-    return map(campaigns, campaign => {
-      return {
-        key: campaign.uuid,
-        campaign,
-      };
-    });
-  }, [campaigns]);
+    return <>{item.button}</>;
+  }, [data, onPress, standalonesById]);
   return (
-    <FlatList
-      contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
-      contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
-      refreshControl={onRefresh ? (
-        <RefreshControl
-          refreshing={!offline && (isRefreshing || !!refreshing)}
-          onRefresh={doRefresh}
-          tintColor={colors.lightText}
-          progressViewOffset={SEARCH_BAR_HEIGHT}
-        />
-      ) : undefined}
+    <ArkhamLargeList
+      onRefresh={onRefresh}
       onScroll={onScroll}
       data={data}
-      renderItem={renderItem}
-      ListHeaderComponent={header}
-      ListFooterComponent={footer}
+      hideLoadingMessage
+      refreshing={!!refreshing || !investigators}
+      heightForIndexPath={heightForIndexPath}
+      heightForSection={heightForSection}
+      renderIndexPath={renderIndexPath}
+      renderSection={renderSection}
+      renderHeader={empty ? renderFooter : undefined}
+      renderFooter={!empty ? renderFooter : undefined}
+      updateTimeInterval={100}
+      groupCount={8}
+      groupMinHeight={height / 2}
     />
   );
 }
-
-const styles = StyleSheet.create({
-  searchBarPadding: {
-    height: SEARCH_BAR_HEIGHT,
-  },
-});

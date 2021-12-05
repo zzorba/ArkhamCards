@@ -1,4 +1,4 @@
-import { useContext, useMemo, useEffect, useCallback, useRef } from 'react';
+import { useContext, useMemo, useEffect, useState, useCallback, useRef } from 'react';
 import { flatMap, forEach, map, omit } from 'lodash';
 
 import { useDebounce } from 'use-debounce';
@@ -82,8 +82,7 @@ export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
       return new MiniCampaignRemote(campaign);
     });
   }, [rawCampaigns, userId]);
-  const [loading] = useDebounce(userLoading || dataLoading, 200);
-  return [campaigns, loading, refresh];
+  return [campaigns, (userId ? (userLoading || dataLoading) : false), refresh];
 }
 
 export function useCampaignGuideStateRemote(campaignId: CampaignId | undefined, live?: boolean): CampaignGuideStateT | undefined {
@@ -439,7 +438,7 @@ export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, (
   }, [refetch, userId]);
   const rawDecks = data?.users_by_pk?.decks;
   const deckIds = useMemo(() => {
-    if (!rawDecks) {
+    if (!userId || !rawDecks) {
       return [];
     }
     const result = flatMap(rawDecks, ({ deck }) => {
@@ -449,7 +448,7 @@ export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, (
       return new MiniDeckRemote(deck);
     });
     return result;
-  }, [rawDecks]);
+  }, [userId, rawDecks]);
   const [loading] = useDebounce(!!(userId && !data) || userLoading || dataLoading, 200);
   return [deckIds, loading, refresh];
 }

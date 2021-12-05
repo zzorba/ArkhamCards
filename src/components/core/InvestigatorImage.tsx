@@ -41,7 +41,14 @@ const ICON_SIZE = {
   large: 65,
 };
 
-export default function InvestigatorImage({
+function getImpliedSize(size: 'large' | 'small' | 'tiny', fontScale: number) {
+  if (size === 'small' || size === 'tiny') {
+    return size;
+  }
+  return toggleButtonMode(fontScale) ? 'small' : 'large';
+}
+
+function InvestigatorImage({
   card,
   componentId,
   border,
@@ -64,10 +71,7 @@ export default function InvestigatorImage({
   }, [card, componentId, imageLink, colors]);
 
   const impliedSize = useMemo(() => {
-    if (size === 'small' || size === 'tiny') {
-      return size;
-    }
-    return toggleButtonMode(fontScale) ? 'small' : 'large';
+    return getImpliedSize(size, fontScale);
   }, [size, fontScale]);
 
 
@@ -188,6 +192,12 @@ export default function InvestigatorImage({
   }
   return image;
 }
+
+InvestigatorImage.computeHeight = (size: 'large' | 'small' | 'tiny' = 'large', fontScale: number) => {
+  return IMAGE_SIZE[getImpliedSize(size, fontScale)];
+}
+
+export default InvestigatorImage;
 
 const styles = StyleSheet.create({
   yithianTiny: {
