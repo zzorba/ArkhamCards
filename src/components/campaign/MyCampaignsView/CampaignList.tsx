@@ -1,9 +1,8 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { FlatList, ListRenderItemInfo, Keyboard, Platform, View, StyleSheet, RefreshControl } from 'react-native';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { Keyboard, View } from 'react-native';
 import { map } from 'lodash';
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
-import { IndexPath } from 'react-native-largelist';
 
 import { STANDALONE } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
@@ -22,7 +21,6 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import useNetworkStatus from '@components/core/useNetworkStatus';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import ArkhamLargeList, { BasicSection } from '@components/core/ArkhamLargeList';
-import { refresh } from 'react-native-app-auth';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { useInvestigatorCards } from '@components/core/hooks';
 
@@ -48,6 +46,8 @@ interface ButtonItemType {
 }
 
 type ItemType = CampaignItemType | ButtonItemType;
+
+type ItemHeader = string;
 
 export default function CampaignList({ onScroll, componentId, campaigns, footer, standalonesById, onRefresh, refreshing, buttons }: Props) {
   const { fontScale, height, width } = useContext(StyleContext);
@@ -145,7 +145,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
         };
       }),
     ];
-    const feed: BasicSection<ItemType>[] = [{ items }];
+    const feed: BasicSection<ItemType, ItemHeader>[] = [{ items, header: '1' }];
     return [feed, campaigns.length === 0];
   }, [campaigns, buttons]);
   const renderFooter = useCallback(() => {
@@ -155,11 +155,11 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
     return <View style={{ paddingTop: empty ? SEARCH_BAR_HEIGHT : 0 }}>{footer}</View>;
   }, [footer, refreshing, empty]);
 
-  const heightForSection = useCallback((section: number): number => {
+  const heightForSection = useCallback((): number => {
     return SEARCH_BAR_HEIGHT + (!!userId ? connectionProblemBannerHeight : 0);
   }, [userId, connectionProblemBannerHeight]);
 
-  const renderSection = useCallback((section: number): React.ReactElement<any> => {
+  const renderSection = useCallback((): React.ReactElement<any> => {
     return (
       <View style={{ paddingTop: SEARCH_BAR_HEIGHT }}>
         { !!userId && connectionProblemBanner ? connectionProblemBanner : null }
@@ -167,8 +167,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
     );
   }, [userId, connectionProblemBanner]);
 
-  const heightForIndexPath = useCallback(({ section, row }: IndexPath) => {
-    const item = data[section].items[row];
+  const heightForItem = useCallback((item: ItemType) => {
     if (item.type === 'campaign') {
       const campaign = item.campaign;
       if (campaign.cycleCode === STANDALONE) {
@@ -180,10 +179,9 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
       return CampaignItem.computeHeight(fontScale);
     }
     return ArkhamButton.Height(fontScale);
-  }, [data, fontScale]);
+  }, [fontScale]);
 
-  const renderIndexPath = useCallback(({ section, row }: IndexPath) => {
-    const item = data[section].items[row];
+  const renderItem = useCallback((item: ItemType) => {
     if (item.type === 'campaign') {
       const campaign = item.campaign;
       if (campaign.cycleCode === STANDALONE) {
@@ -206,23 +204,22 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
       );
     }
     return <>{item.button}</>;
-  }, [data, onPress, standalonesById]);
+  }, [onPress, standalonesById]);
   return (
     <ArkhamLargeList
       onRefresh={onRefresh}
       onScroll={onScroll}
       data={data}
-      hideLoadingMessage
       refreshing={!!refreshing || !investigators}
-      heightForIndexPath={heightForIndexPath}
+      heightForItem={heightForItem}
       heightForSection={heightForSection}
-      renderIndexPath={renderIndexPath}
+      renderItem={renderItem}
       renderSection={renderSection}
       renderHeader={empty ? renderFooter : undefined}
       renderFooter={!empty ? renderFooter : undefined}
       updateTimeInterval={100}
       groupCount={8}
-      groupMinHeight={height / 2}
+      groupMinHeight={height}
     />
   );
 }

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { Platform, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
 
 import { usePressCallback } from '@components/core/hooks';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
@@ -25,10 +26,10 @@ function GenericCampaignItem({ campaign, lastUpdated, children, onPress }: Props
   const { lang } = useContext(LanguageContext);
   const { colors } = useContext(StyleContext);
   const debouncedOnPress = usePressCallback(onPress);
-
+  const Touchable = Platform.OS === 'ios' ? GestureHandlerTouchableOpacity : TouchableOpacity;
   return (
     <View style={[space.paddingSideS, space.paddingBottomS]}>
-      <TouchableOpacity onPress={debouncedOnPress}>
+      <Touchable onPress={debouncedOnPress}>
         <RoundedFactionBlock
           header={children}
           faction="neutral"
@@ -38,7 +39,7 @@ function GenericCampaignItem({ campaign, lastUpdated, children, onPress }: Props
         >
           { null }
         </RoundedFactionBlock>
-      </TouchableOpacity>
+      </Touchable>
     </View>
   );
 }

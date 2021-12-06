@@ -1,9 +1,9 @@
-import React, { useContext, useMemo, useCallback } from 'react';
+import React, { useContext, useMemo } from 'react';
 import LottieView from 'lottie-react-native';
-import { random, set } from 'lodash';
-import { t } from 'ttag';
-import { Animated, StyleSheet, Text, View } from 'react-native';
+import { set } from 'lodash';
+import { Animated, StyleSheet, View } from 'react-native';
 import tinycolor from 'tinycolor2';
+
 import { RefreshHeader, RefreshHeaderPropType, RefreshHeaderStateType } from 'react-native-spring-scrollview';
 import StyleContext from '@styles/StyleContext';
 import { SEARCH_BAR_HEIGHT } from './SearchBox';
@@ -96,53 +96,22 @@ export default function ArkhamLoadingSpinner({
   );
 }
 
-function getRandomLoadingMessage() {
-  const messages = [
-    t`Investigating for clues`,
-    t`Cursing at the tentacle token`,
-    t`Drawing a mythos card with surge`,
-    t`Placing doom on the agenda`,
-    t`Reticulating spines`,
-    t`Trying to make sense of the Time Warp FAQ`,
-    t`Taking three damage and three horror`,
-    t`Up by 5, hope I don't draw the tentacle`,
-  ];
-  return messages[random(0, messages.length - 1)];
-}
-
-interface ArkhamLottieHeaderStateType extends RefreshHeaderStateType {
-  loading?: boolean;
-  message?: string;
-}
-
-export function useArkhamLottieHeader(noSearch?: boolean, noMessage?: boolean) {
-  const { typography } = useContext(StyleContext);
+export function useArkhamLottieHeader(noSearch?: boolean) {
   return useMemo(() => {
-    return class ArkhamLottieHeader extends RefreshHeader<ArkhamLottieHeaderStateType> {
+    return class ArkhamLottieHeader extends RefreshHeader<RefreshHeaderStateType> {
       ref: React.RefObject<LottieView>;
 
       constructor(props: RefreshHeaderPropType) {
         super(props);
 
         this.ref = React.createRef<LottieView>();
-        this.state = {
-          ...this.state,
-          message: getRandomLoadingMessage(),
-        };
       }
       static style = 'stickyContent';
       static height: number = SEARCH_BAR_HEIGHT;
 
-      componentDidUpdate(prevProps: RefreshHeaderPropType, prevState: ArkhamLottieHeaderStateType) {
+      componentDidUpdate(prevProps: RefreshHeaderPropType, prevState: RefreshHeaderStateType) {
         if (this.state.status !== prevState.status) {
           if (this.state.status === 'refreshing') {
-            // eslint-disable-next-line react/no-did-update-set-state
-            this.setState((state) => {
-              return {
-                ...state,
-                message: getRandomLoadingMessage(),
-              };
-            });
             this.ref.current?.resume();
           }
         }
@@ -160,18 +129,11 @@ export function useArkhamLottieHeader(noSearch?: boolean, noMessage?: boolean) {
               autoPlay
               loop
             />
-            { !noMessage && (this.state.status === 'refreshing') && (
-              <View style={{ height: SEARCH_BAR_HEIGHT }}>
-                <Text style={[typography.text, typography.center]}>
-                  { `${this.state.message}...` }
-                </Text>
-              </View>
-            ) }
           </View>
         );
       }
     }
-  }, [typography, noSearch, noMessage]);
+  }, [noSearch]);
 }
 
 const styles = StyleSheet.create({

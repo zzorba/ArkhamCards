@@ -32,7 +32,7 @@ export default function useConnectionProblemBanner({ width, arkhamdbState }: Pro
       </View>
     ), height];
   }
-  if (arkhamdbState || true) {
+  if (arkhamdbState) {
     const { error, reLogin } = arkhamdbState;
     const height = 4 * 18 * fontScale + s * 2;
     if (error === 'badAccessToken') {

@@ -340,7 +340,7 @@ function CardSearchResult(props: Props) {
           { cardName }
         </View>
       </Touchable>
-      { !!control && <ControlComponent control={control} card={card} /> }
+      { !!control && <ControlComponent control={control} card={card} useGestureHandler={useGestureHandler} /> }
     </View>
   );
 }

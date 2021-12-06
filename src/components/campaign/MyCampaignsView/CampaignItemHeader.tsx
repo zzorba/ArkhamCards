@@ -61,7 +61,7 @@ function CampaignItemHeader({ campaign, hideScenario, investigators, standaloneN
       <View style={styles.row}>
         <View style={space.paddingRightS}>{ icon }</View>
         <View style={styles.flex}>
-          <GameHeader text={campaignName} style={typography.white} />
+          <GameHeader text={campaignName} style={typography.white} truncate />
         </View>
       </View>
     );
@@ -75,7 +75,7 @@ function CampaignItemHeader({ campaign, hideScenario, investigators, standaloneN
         `: ${latestScenario.resolution}` : '';
       return (
         <View style={[space.marginTopXs, { flex: 1 }]}>
-          <Text style={[typography.mediumGameFont, typography.white]}>
+          <Text style={[typography.mediumGameFont, typography.white]} numberOfLines={1} ellipsizeMode="tail">
             { `${latestScenario.scenario}${resolution}` }
           </Text>
         </View>

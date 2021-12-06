@@ -15,10 +15,11 @@ interface DeckCardQuantityProps {
   limit: number;
   showZeroCount?: boolean;
   forceBig?: boolean;
+  useGestureHandler?: boolean;
 }
 
 function DeckQuantityComponent(props: DeckCardQuantityProps) {
-  const { deckId, code, limit, showZeroCount, forceBig } = props;
+  const { deckId, code, limit, showZeroCount, forceBig, useGestureHandler } = props;
   const count = useDeckSlotCount(deckId, code);
   const dispatch = useDispatch();
   const countChanged: EditSlotsActions = useMemo(() => {
@@ -42,6 +43,7 @@ function DeckQuantityComponent(props: DeckCardQuantityProps) {
       count={count || 0}
       showZeroCount={showZeroCount}
       forceBig={forceBig}
+      useGestureHandler={useGestureHandler}
     />
   );
 }

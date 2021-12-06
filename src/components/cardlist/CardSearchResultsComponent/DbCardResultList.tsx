@@ -13,21 +13,18 @@ import {
   keys,
 } from 'lodash';
 import {
-  Animated,
   Keyboard,
   StyleSheet,
   View,
   Platform,
   Text,
 } from 'react-native';
-import { IndexPath, LargeList, WaterfallList } from 'react-native-largelist';
 import { Brackets } from 'typeorm/browser';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 import useDebouncedEffect from 'use-debounced-effect-hook';
 
-import { useArkhamLottieHeader } from '@components/core/ArkhamLoadingSpinner';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { addDbFilterSet } from '@components/filter/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
@@ -48,8 +45,7 @@ import { useCards, useEffectUpdate, useToggles } from '@components/core/hooks';
 import LoadingCardSearchResult from '../LoadingCardSearchResult';
 import { ControlType } from '../CardSearchResult/ControlComponent';
 import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
-import { useDebounce } from 'use-debounce/lib';
-import ArkhamLargeList from '@components/core/ArkhamLargeList';
+import ArkhamLargeList, { BasicSection } from '@components/core/ArkhamLargeList';
 
 interface Props {
   componentId: string;
@@ -110,6 +106,7 @@ interface TextItem {
   id: string;
   text: string;
   border?: boolean;
+  paddingTop?: number;
 }
 interface CardItem {
   type: 'card';
@@ -259,13 +256,8 @@ interface SectionFeedProps {
   investigator?: Card;
 }
 
-interface Section {
-  header?: SectionHeaderItem;
-  items: Item[];
-}
-
 interface SectionFeed {
-  feed: Section[];
+  feed: BasicSection<Item, SectionHeaderItem>[];
   fullFeed: PartialCard[];
   refreshing: boolean;
   refreshingSearch: boolean;
@@ -582,8 +574,8 @@ function useSectionFeed({
 
   const refreshingResult = refreshing || (feedLoading && !expandButtonPressed);
   const [sections, hasCards, cardsLoading] = useMemo(() => {
-    const result: Section[] = [];
-    let currentSection: Section = { items: [] };
+    const result: BasicSection<Item, SectionHeaderItem>[] = [];
+    let currentSection: BasicSection<Item, SectionHeaderItem> = { items: [] };
     let missingCards = false;
     let loadingSection = false;
     let noCards = true;
@@ -695,6 +687,7 @@ function useSectionFeed({
             type: 'text',
             id: 'loading',
             text: loadingMessage,
+            paddingTop: m + (Platform.OS === 'android' ? SEARCH_BAR_HEIGHT : 0),
           };
         }
       } else {
@@ -730,16 +723,16 @@ function useSectionFeed({
       ...(headerItem ? [headerItem] : []),
       ...(loadingItem ? [loadingItem] : []),
     ];
-    const sectionItems: Section[] = [
+    const sectionItems: BasicSection<Item, SectionHeaderItem>[] = [
       ...(leadingItems.length ? [{ items: leadingItems }] : []),
       ...(hasCards ? sections : []),
     ];
     return sectionItems;
-  }, [sections, loadingMessage, noSearch, hasHeader, refreshingResult, refreshingSearch, searchTerm, hasCards]);
+  }, [sections, loadingMessage, cardsLoading, noSearch, hasHeader, refreshingResult, refreshingSearch, searchTerm, hasCards]);
   return {
     feed,
     fullFeed: visibleCards,
-    refreshing: isRefreshing,
+    refreshing: isRefreshing || mainQueryCardsLoading,
     refreshingSearch,
     fetchMore,
     showSpoilerCards: showSpoilers,
@@ -757,7 +750,7 @@ function itemHeight(item: Item, fontScale: number, headerHeight: number): number
     case 'header':
       return cardSectionHeaderHeight(item.header, fontScale);
     case 'text':
-      return s * 2 + fontScale * 24 * 2;
+      return s * 2 + fontScale * 24 * 2 + (item.paddingTop || 0);
     case 'padding':
       return item.size;
     case 'list_header':
@@ -797,7 +790,6 @@ export default function({
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const packInCollection = useSelector(getPacksInCollection);
   const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
-  const listRef = useRef<LargeList>(null);
   const {
     feed,
     fullFeed,
@@ -835,7 +827,7 @@ export default function({
   }, [query, tabooSetId]);
 
   const feedValues = useRef<{
-    feed: Section[];
+    feed: BasicSection<Item, SectionHeaderItem>[];
     fullFeed: PartialCard[];
   }>();
   useEffect(() => {
@@ -914,21 +906,16 @@ export default function({
       </View>
     );
   }, [expandSearchControls, refreshing]);
-  const renderSection = useCallback((section: number) => {
-    const item = feed[section].header;
-    if (!item) {
-      return <View />;
-    }
+  const renderSection = useCallback((header: SectionHeaderItem) => {
     return (
       <CardSectionHeader
-        section={item.header}
+        section={header.header}
         investigator={investigator}
       />
     )
-  }, [feed, investigator]);
+  }, [investigator]);
 
-  const renderIndexPath = useCallback(({ section, row }: IndexPath) => {
-    const item = feed[section].items[row];
+  const renderItem = useCallback((item: Item) => {
     switch (item.type) {
       case 'button':
         return (
@@ -958,7 +945,7 @@ export default function({
               deckId,
               limit: deck_limit,
             }) : undefined}
-            useGestureHandler
+            useGestureHandler={Platform.OS === 'ios'}
           />
         );
       }
@@ -976,7 +963,7 @@ export default function({
         );
       case 'text':
         return (
-          <View key={item.id} style={item.border ? [styles.emptyText, borderStyle] : undefined}>
+          <View key={item.id} style={[item.border ? [styles.emptyText, borderStyle] : undefined, { paddingTop: item.paddingTop || 0 }]}>
             <Text style={[typography.text, typography.center]}>
               { item.text}
             </Text>
@@ -993,25 +980,21 @@ export default function({
       default:
         return <View />;
     }
-  }, [feed, headerItems, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
-  const heightForSection = useCallback((section: number) => {
-    const header = feed[section].header;
-    if (!header) {
-      return 0;
-    }
+  }, [headerItems, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
+
+  const heightForSection = useCallback((header: SectionHeaderItem) => {
     return itemHeight(header, fontScale, headerHeight || 0);
-  }, [feed, fontScale, headerHeight]);
-  const heightForIndexPath = useCallback(({ section, row }: IndexPath) => {
-    const item = feed[section].items[row];
+  }, [fontScale, headerHeight]);
+  const heightForItem = useCallback((item: Item): number => {
     return itemHeight(item, fontScale, headerHeight || 0);
-  }, [feed, fontScale, headerHeight]);
+  }, [fontScale, headerHeight]);
   return (
     <ArkhamLargeList
       data={feed}
       heightForSection={heightForSection}
-      heightForIndexPath={heightForIndexPath}
+      heightForItem={heightForItem}
       renderSection={renderSection}
-      renderIndexPath={renderIndexPath}
+      renderItem={renderItem}
       renderFooter={listFooter}
       onScroll={handleScroll}
       onLoading={fetchMore}
@@ -1021,7 +1004,7 @@ export default function({
       onRefresh={refreshDeck}
       refreshing={refreshing || refreshingSearch}
       noSearch={noSearch}
-      hideLoadingMessage
+      stickyHeaders
     />
   );
 }
