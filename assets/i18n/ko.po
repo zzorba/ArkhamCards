@@ -1269,10 +1269,10 @@ msgstr "카드 뒤집기"
 
 #, javascript-format
 msgid "Additional XP: ${ taboo.extra_xp }."
-msgstr "경험치 비용: ${ taboo.extra_xp } 경험치."
+msgstr "경험치 비용: +${ taboo.extra_xp }점."
 
 msgid "XP Discount: ${ taboo.extra_xp }."
-msgstr "경험치 비용: ${ taboo.extra_xp } 경험치."
+msgstr "경험치 비용: ${ taboo.extra_xp }점."
 
 msgid ""
 "The List of Taboos is a list of Arkham Horror: The Card Game cards with "
@@ -1370,10 +1370,10 @@ msgstr "금기 적용 사항"
 
 #, javascript-format
 msgid "Additional XP: ${ card.extra_xp }."
-msgstr "경험치 비용: ${ card.extra_xp } 경험치."
+msgstr "경험치 비용: +${ card.extra_xp }점."
 
 msgid "XP Discount: ${ card.extra_xp }."
-msgstr "경험치 비용: ${ card.extra_xp } 경험치."
+msgstr "경험치 비용: ${ card.extra_xp }점."
 
 msgid "Show front"
 msgstr "앞면 보기"
@@ -4746,17 +4746,11 @@ msgstr "타로 카드 선택"
 msgid "Which tarot card is impacting the chaos bag?"
 msgstr "혼돈 주머니에 영향을 주는 타로 카드는 무엇입니까?"
 
-msgid "Replace highest non-negative token with a skull."
-msgstr "혼돈 주머니에 있는 음수 보정치가 아닌 가장 높은 숫자의 토큰 1개를 [skull] 토큰 1개로 대체합니다."
-
 msgid "Replace a skull with a 0 token."
-msgstr "혼돈 주머니에 있는 [skull] 토큰 1개를 0 토큰 1개로 대체합니다."
+msgstr "해골 토큰 1개를 0 토큰 1개로 대체"
 
-msgid "Judgement · XX"
-msgstr "심판 · XX"
-
-msgid "Judgement · XX (Inverted)"
-msgstr "심판 · XX (역위치)"
+msgid "Replace highest non-negative token with a skull."
+msgstr "음수 외 가장 큰 수의 토큰 1개를 해골 토큰으로 대체."
 
 msgid "The Fool · 0"
 msgstr "광대 · 0"
@@ -5039,6 +5033,9 @@ msgstr "모든 조사자는 자신의 첫 번째 차례 동안, 행동을 추가
 
 msgid "During each investigator's first turn, they have 2 fewer actions to take."
 msgstr "모든 조사자는 자신의 첫 번째 차례 동안, 행동을 2번씩 적게 합니다."
+
+msgid "Judgement · XX"
+msgstr "심판 · XX"
 
 msgid ""
 "When the game begins, replace a [skull] token in the chaos bag with a 0 "
