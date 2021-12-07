@@ -155,12 +155,12 @@ export default function DrawChaosBagComponent(props: Props) {
       },
       {
         title: c('Tarot Card').t`Judgement · XX`,
-        description: t`Replace highest non-negative token with a skull.`,
+        description: t`Replace a skull with a 0 token.`,
         value: Chaos_Bag_Tarot_Mode_Enum.Judgement,
       },
       {
         title: c('Tarot Card').t`Judgement · XX (Inverted)`,
-        description: t`Replace a skull with a 0 token.`,
+        description: t`Replace highest non-negative token with a skull.`,
         value: Chaos_Bag_Tarot_Mode_Enum.JudgementInverted,
       },
     ],
