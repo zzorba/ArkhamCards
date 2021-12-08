@@ -20,7 +20,6 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import { useEffectUpdate } from '@components/core/hooks';
 import useReduxMigrator from '@components/settings/useReduxMigrator';
 import ApolloClientContext from '@data/apollo/ApolloClientContext';
-import LoadingSpinner from '@components/core/LoadingSpinner';
 import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
 
 const REFETCH_DAYS = 30;

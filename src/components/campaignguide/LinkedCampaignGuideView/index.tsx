@@ -24,6 +24,7 @@ import { useCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campa
 import { useDeckActions } from '@data/remote/decks';
 import StyleContext from '@styles/StyleContext';
 import LoadingSpinner from '@components/core/LoadingSpinner';
+import CampaignErrorView from '@components/campaignguide/CampaignErrorView';
 
 export interface LinkedCampaignGuideProps {
   campaignId: CampaignId;
@@ -50,8 +51,8 @@ export default function LinkedCampaignGuideView(props: Props) {
   const campaign = useCampaign(campaignId, true);
   useCampaignDeleted(componentId, campaign);
   const campaignName = campaign?.name || '';
-  const campaignDataA = useSingleCampaignGuideData(campaignIdA, investigators, true);
-  const campaignDataB = useSingleCampaignGuideData(campaignIdB, investigators, true);
+  const [campaignDataA] = useSingleCampaignGuideData(campaignIdA, investigators, true);
+  const [campaignDataB] = useSingleCampaignGuideData(campaignIdB, investigators, true);
   const setCampaignName = useCallback((name: string) => {
     dispatch(updateCampaignName(updateCampaignActions, campaignId, name));
     Navigation.mergeOptions(componentId, {
@@ -79,11 +80,17 @@ export default function LinkedCampaignGuideView(props: Props) {
   const contextB = useCampaignGuideContextFromActions(campaignIdB, deckActions, updateCampaignActions, campaignDataB);
   // console.log(`contextA: ${!!contextA}, contextA.campaignGuide: ${!!contextA?.campaignGuide}, contextA.campaignState: ${!!contextA?.campaignState}`);
   // console.log(`contextB: ${!!contextB}, contextB.campaignGuide: ${!!contextB?.campaignGuide}, contextB.campaignState: ${!!contextB?.campaignState}`);
-  const processedCampaignA = useMemo(() => {
-    return contextA?.campaignGuide && contextA?.campaignState && contextA.campaignGuide.processAllScenarios(contextA.campaignState);
+  const [processedCampaignA, processedCampaignAError] = useMemo(() => {
+    if (!contextA?.campaignGuide || !contextA?.campaignState) {
+      return [undefined, undefined];
+    }
+    return contextA.campaignGuide.processAllScenarios(contextA.campaignState);
   }, [contextA]);
-  const processedCampaignB = useMemo(() => {
-    return contextB?.campaignGuide && contextB?.campaignState && contextB.campaignGuide.processAllScenarios(contextB.campaignState);
+  const [processedCampaignB, processedCampaignBError] = useMemo(() => {
+    if (!contextB?.campaignGuide || !contextB?.campaignState) {
+      return [undefined, undefined];
+    }
+    return contextB.campaignGuide.processAllScenarios(contextB.campaignState);
   }, [contextB]);
   // console.log(`processedCampaignA: ${!!processedCampaignA}, processedCampaignB: ${!!processedCampaignB}`);
 
@@ -129,13 +136,13 @@ export default function LinkedCampaignGuideView(props: Props) {
     if (!campaignDataA) {
       return null;
     }
-    if (!processedCampaignA || !contextA) {
+    if (!processedCampaignA || !contextA || processedCampaignAError) {
       return {
         key: 'campaignA',
         title: campaignDataA.campaignGuide.campaignName(),
         node: (
           <SafeAreaView key="campaignA" style={styles.wrapper}>
-            <LoadingSpinner />
+            { processedCampaignAError ? <CampaignErrorView message={processedCampaignAError} /> : <LoadingSpinner large /> }
           </SafeAreaView>
         ),
       };
@@ -160,20 +167,20 @@ export default function LinkedCampaignGuideView(props: Props) {
         </SafeAreaView>
       ),
     };
-  }, [campaignDataA, processedCampaignA, contextA,
+  }, [campaignDataA, processedCampaignA, processedCampaignAError, contextA,
     componentId, displayLinkScenarioCount, footerButtons, updateCampaignActions,
     showCampaignScenarioB, showCountDialog, showAlert]);
   const campaignBTab = useMemo(() => {
     if (!campaignDataB) {
       return null;
     }
-    if (!processedCampaignB || !contextB) {
+    if (!processedCampaignB || !contextB || processedCampaignBError) {
       return {
         key: 'campaignB',
         title: campaignDataB.campaignGuide.campaignName(),
         node: (
           <SafeAreaView key="campaignB" style={styles.wrapper}>
-            <LoadingSpinner />
+            { processedCampaignBError ? <CampaignErrorView message={processedCampaignBError} /> : <LoadingSpinner large /> }
           </SafeAreaView>
         ),
       };
@@ -198,7 +205,7 @@ export default function LinkedCampaignGuideView(props: Props) {
         </SafeAreaView>
       ),
     };
-  }, [campaignDataB, processedCampaignB, contextB, componentId, displayLinkScenarioCount, footerButtons,
+  }, [campaignDataB, processedCampaignB, processedCampaignBError, contextB, componentId, displayLinkScenarioCount, footerButtons,
     updateCampaignActions, showCampaignScenarioA, showCountDialog, showAlert]);
   const tabs = useMemo(() => {
     if (!campaignATab || !campaignBTab) {

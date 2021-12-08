@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { flatMap, filter, forEach, keys, map, range, sortBy } from 'lodash';
+import { filter, forEach, map, range, sortBy } from 'lodash';
 import { t } from 'ttag';
 
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '@app_constants';

@@ -54,6 +54,7 @@ interface AnimatedProps {
   toggleOpen?: () => void;
   disabled?: boolean;
   open?: boolean;
+  textColor?: string;
 }
 
 
@@ -68,6 +69,7 @@ export function AnimatedRoundedFactionBlock({
   noSpace,
   noShadow,
   footer,
+  textColor,
 }: AnimatedProps) {
   return (
     <CollapsibleFactionBlock
@@ -78,6 +80,7 @@ export function AnimatedRoundedFactionBlock({
       toggleOpen={toggleOpen}
       disabled={disabled}
       noShadow={noShadow}
+      textColor={textColor}
     >
       <View style={(noSpace || footer) ? undefined : space.paddingBottomS}>
         <View style={noSpace ? undefined : space.marginSideS}>

@@ -36,7 +36,7 @@ export function cardSectionHeaderHeight(section: CardSectionHeaderData, fontScal
   return fontScale * 24 + s * 2;
 }
 
-export default function CardSectionHeader({ investigator, section }: Props) {
+function CardSectionHeader({ investigator, section }: Props) {
   const { colors, borderStyle, backgroundStyle, fontScale, typography } = useContext(StyleContext);
 
   const renderSuperTitle = useCallback((superTitle: string, noIcon?: boolean) => {
@@ -144,6 +144,9 @@ export default function CardSectionHeader({ investigator, section }: Props) {
   }
   return null;
 }
+CardSectionHeader.computeHeight = cardSectionHeaderHeight;
+
+export default CardSectionHeader;
 
 const styles = StyleSheet.create({
   superHeaderText: {

@@ -1,11 +1,10 @@
-import React, { useCallback, useContext, useEffect, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { filter, map } from 'lodash';
 import {
   FlatList,
   Platform,
   RefreshControl,
   StyleSheet,
-  View,
 } from 'react-native';
 
 import { Campaign } from '@actions/types';

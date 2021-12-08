@@ -3,7 +3,6 @@ import {
   StyleSheet,
   View,
   Text,
-  ActivityIndicator,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { parse } from 'flatted';

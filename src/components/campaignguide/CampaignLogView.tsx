@@ -11,6 +11,7 @@ import { CampaignId } from '@actions/types';
 import { useScenarioGuideContext } from './withScenarioGuideContext';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import CampaignGuideContext from './CampaignGuideContext';
+import CampaignErrorView from './CampaignErrorView';
 
 export interface CampaignLogProps {
   campaignId: CampaignId;
@@ -34,9 +35,9 @@ export default function CampaignLogView({
 }: Props) {
   const { backgroundStyle, width } = useContext(StyleContext);
   const [campaignContext, scenarioContext] = useScenarioGuideContext(campaignId, scenarioId, false, standalone);
-  const processedCampaign = useMemo(() => {
+  const [processedCampaign, processedCampaignError] = useMemo(() => {
     if (!campaignContext || scenarioId) {
-      return undefined;
+      return [undefined, undefined];
     }
     const { campaignState, campaignGuide } = campaignContext;
     return campaignGuide.processAllScenarios(campaignState);
@@ -52,7 +53,10 @@ export default function CampaignLogView({
   const liveCampaignLog = scenarioContext?.processedScenario?.latestCampaignLog || processedCampaign?.campaignLog || campaignLog;
 
   if (!campaignContext) {
-    return <LoadingSpinner />;
+    if (processedCampaignError) {
+      return <CampaignErrorView message={processedCampaignError} />;
+    }
+    return <LoadingSpinner large />;
   }
   return (
     <CampaignGuideContext.Provider value={campaignContext}>

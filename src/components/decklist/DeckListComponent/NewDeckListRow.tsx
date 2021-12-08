@@ -20,7 +20,7 @@ import { BODY_OF_A_YITHIAN } from '@app_constants';
 import { getProblemMessage } from '@components/core/DeckProblemRow';
 import { toRelativeDateString } from '@lib/datetime';
 import { parseBasicDeck } from '@lib/parseDeck';
-import space, { m, s } from '@styles/space';
+import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { usePlayerCards, usePressCallback } from '@components/core/hooks';
 import { TINY_PHONE } from '@styles/sizes';

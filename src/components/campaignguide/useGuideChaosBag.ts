@@ -32,7 +32,10 @@ export default function useGuideChaosBag({ campaignId, scenarioId, standalone }:
       return undefined;
     }
     const { campaignGuide, campaignState } = campaignContext;
-    const processedCampaign = campaignGuide.processAllScenarios(campaignState);
+    const [processedCampaign] = campaignGuide.processAllScenarios(campaignState);
+    if (!processedCampaign) {
+      return undefined;
+    }
     return processedCampaign.campaignLog.chaosBag;
   }, [campaignContext, scenarioContext, scenarioId]);
   const [scenarioCard, loading] = useSingleCard(processedScenario?.scenarioGuide.scenarioCard(), 'encounter');

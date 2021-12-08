@@ -23,6 +23,7 @@ import { NetInfoStateType } from '@react-native-community/netinfo';
 import ArkhamLargeList, { BasicSection } from '@components/core/ArkhamLargeList';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { useInvestigatorCards } from '@components/core/hooks';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   onScroll: (...args: any[]) => void;
@@ -51,6 +52,7 @@ type ItemHeader = string;
 
 export default function CampaignList({ onScroll, componentId, campaigns, footer, standalonesById, onRefresh, refreshing, buttons }: Props) {
   const { fontScale, height, width } = useContext(StyleContext);
+  const { lang } = useContext(LanguageContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
   const investigators = useInvestigatorCards();
   const onPress = useCallback((id: string, campaign: MiniCampaignT) => {
@@ -178,8 +180,8 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
       }
       return CampaignItem.computeHeight(fontScale);
     }
-    return ArkhamButton.Height(fontScale);
-  }, [fontScale]);
+    return ArkhamButton.computeHeight(fontScale, lang);
+  }, [fontScale, lang]);
 
   const renderItem = useCallback((item: ItemType) => {
     if (item.type === 'campaign') {

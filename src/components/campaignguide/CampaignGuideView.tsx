@@ -21,6 +21,8 @@ import StyleContext from '@styles/StyleContext';
 import DeckButton from '@components/deck/controls/DeckButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { getDownloadLink } from './ScenarioComponent';
+import CampaignErrorView from './CampaignErrorView';
+import LoadingSpinner from '@components/core/LoadingSpinner';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -62,7 +64,7 @@ function CampaignGuideView(props: Props) {
   const { campaignGuide, campaignState, campaign } = campaignData;
   useCampaignDeleted(componentId, campaign);
 
-  const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
+  const [processedCampaign, processedCampaignError] = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const [alertDialog, showAlert] = useAlertDialog();
   const customData = campaignGuide.campaignCustomData();
   const downloadPressed = useCallback(() => {
@@ -109,6 +111,12 @@ function CampaignGuideView(props: Props) {
       </View>
     );
   }, [componentId, campaign, campaignId, deckActions, typography, customData, updateCampaignActions, downloadPressed, setCampaignServerId, showAlert]);
+  if (!processedCampaign) {
+    if (processedCampaignError) {
+      return <CampaignErrorView message={processedCampaignError} />;
+    }
+    return <LoadingSpinner large />;
+  }
   return (
     <View style={styles.wrapper}>
       <CampaignDetailTab

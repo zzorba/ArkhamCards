@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import LottieView from 'lottie-react-native';
 import { StyleSheet, View } from 'react-native';
 import {
   PanGestureHandler,
@@ -15,7 +14,6 @@ import Animated, {
   useAnimatedStyle,
   useDerivedValue,
   useSharedValue,
-  withSpring,
   withTiming,
 } from 'react-native-reanimated';
 
@@ -54,6 +52,7 @@ const RefreshableWrapper = ({
       isRefreshing.value = true;
       isLoaderActive.value = true;
     }
+    // eslint-disable react-hooks/exhaustive-deps
   }, [isLoading]);
 
   const onListScroll = useAnimatedScrollHandler((event) => {
@@ -61,8 +60,8 @@ const RefreshableWrapper = ({
   });
 
   const onPanGestureEvent = useAnimatedGestureHandler({
-    onStart: (_) => {},
-    onActive: (event, _) => {
+    onStart: () => {},
+    onActive: (event) => {
       isLoaderActive.value = loaderOffsetY.value > 0;
 
       if (
@@ -73,7 +72,7 @@ const RefreshableWrapper = ({
         loaderOffsetY.value = event.translationY;
       }
     },
-    onEnd: (_) => {
+    onEnd: () => {
       if (!isRefreshing.value) {
         if (loaderOffsetY.value >= refreshHeight && !isRefreshing.value) {
           isRefreshing.value = true;
@@ -84,7 +83,7 @@ const RefreshableWrapper = ({
         }
       }
     },
-    onCancel: (_) => {
+    onCancel: () => {
       isLoaderActive.value = false;
       loaderOffsetY.value = withTiming(0);
     },
@@ -165,15 +164,6 @@ const RefreshableWrapper = ({
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
-  },
-  contenContainer: {
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    paddingBottom: 100,
-  },
-  lottie: {
-    height: 50,
-    width: 50,
   },
   loaderContainer: {
     position: 'absolute',

@@ -369,6 +369,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
           renderHeader={renderWeaknessHeader}
           open={open}
           toggleOpen={toggleOpen}
+          textColor={colors.L20}
           noSpace
         >
           <View style={[space.paddingXs, space.paddingRightS]}>
@@ -381,7 +382,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
         </AnimatedRoundedFactionBlock>
       </View>
     );
-  }, [componentId, setWeaknessPacks, renderWeaknessHeader, open, toggleOpen]);
+  }, [componentId, setWeaknessPacks, renderWeaknessHeader, open, toggleOpen, colors]);
 
   const campaignLogSection = useMemo(() => {
     if (isGuided || selection.type === 'standalone') {

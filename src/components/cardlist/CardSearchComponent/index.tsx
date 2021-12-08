@@ -17,9 +17,8 @@ import TuneButton from './TuneButton';
 import SortButton from './SortButton';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import StyleContext from '@styles/StyleContext';
-import space from '@styles/space';
+import space, { s } from '@styles/space';
 import { useComponentVisible, useEffectUpdate } from '@components/core/hooks';
-import { s } from '@styles/space';
 
 interface Props {
   componentId: string;

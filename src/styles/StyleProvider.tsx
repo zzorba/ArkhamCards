@@ -37,30 +37,6 @@ interface Props {
   children: React.ReactNode;
 }
 
-const LIGHT_ELEMENTS_THEME = {
-  Button: {
-    raised: true,
-    disabledTitleStyle: {
-      color: '#444444',
-    },
-    disabledStyle: {
-      backgroundColor: '#dddddd',
-    },
-  },
-};
-
-const DARK_ELEMENTS_THEME = {
-  Button: {
-    raised: true,
-    disabledTitleStyle: {
-      color: '#bbbbbb',
-    },
-    disabledStyle: {
-      backgroundColor: '#111111',
-    },
-  },
-};
-
 export default function StyleProvider({ children } : Props) {
   const { lang, usePingFang } = useContext(LanguageContext);
   const themeOverride = useSelector(getThemeOverride);

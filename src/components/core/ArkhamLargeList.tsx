@@ -2,16 +2,9 @@ import React, { useCallback, useContext, useEffect, useRef, useMemo, useState } 
 import { Animated, View, Keyboard, Platform, SectionList, SectionListRenderItemInfo, SectionListData, RefreshControl } from 'react-native';
 import { IndexPath, LargeList } from 'react-native-largelist';
 import { ScrollEvent } from 'react-native-spring-scrollview';
-import ReactNativeReanimated from 'react-native-reanimated';
-import { useDebounce } from 'use-debounce/lib';
-
-import RefreshableWrapper from '@lib/react-native-fresh-refresh/RefreshableWrapper';
-import { s } from '@styles/space';
-
-const AnimatedSectionList = ReactNativeReanimated.createAnimatedComponent(SectionList);
 
 import { SEARCH_BAR_HEIGHT } from './SearchBox';
-import ArkhamLoadingSpinner, { useArkhamLottieHeader } from './ArkhamLoadingSpinner';
+import { useArkhamLottieHeader } from './ArkhamLoadingSpinner';
 import StyleContext from '@styles/StyleContext';
 import { map } from 'lodash';
 
@@ -143,7 +136,6 @@ function ArkhamLargeListAndroid<Item, Header>({
   renderItem,
   renderSection,
   onScroll,
-  stickyHeaders,
 }: Props<Item, Header>) {
   const { colors } = useContext(StyleContext);
   const [fakeRefresh, setFakeRefresh] = useState(false);
@@ -203,7 +195,7 @@ function ArkhamLargeListAndroid<Item, Header>({
       setFakeRefresh(false);
     }, 500);
   }, [onRefresh]);
-/*
+  /*
   return (
     <RefreshableWrapper
       Loader={() => <View style={{ paddingTop: noSearch ? 0 : SEARCH_BAR_HEIGHT }}><ArkhamLoadingSpinner autoPlay loop /></View>}

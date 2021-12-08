@@ -23,7 +23,6 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { DeckActions, useDeckActions } from '@data/remote/decks';
 import { useUploadLocalDeckRequest } from '@data/remote/campaigns';
 import Card from '@data/types/Card';
-import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 
 interface DialogOptions {
   title: string;

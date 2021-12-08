@@ -111,16 +111,16 @@ function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
     }
   }, [customScenarioVisible]);
 
-  const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
+  const [processedCampaign] = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const playableScenarios = useMemo(() => {
     return filter(campaignGuide.sideScenarios(), scenario => {
       const alreadyPlayed = !!find(
-        processedCampaign.scenarios,
+        processedCampaign?.scenarios || [],
         playedScenario => playedScenario.id.scenarioId === scenario.id
       );
       return !alreadyPlayed && scenario.side_scenario_type !== 'standalone';
     });
-  }, [campaignGuide, processedCampaign.scenarios]);
+  }, [campaignGuide, processedCampaign?.scenarios]);
   const [playableSideScenarios, playableChallengeScenarios] = useMemo(() => partition(playableScenarios, scenario => scenario.side_scenario_type !== 'challenge'), [playableScenarios]);
   const sideTab = useMemo(() => {
     return (

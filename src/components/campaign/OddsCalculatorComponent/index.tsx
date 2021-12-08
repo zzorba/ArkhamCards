@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState } from 'react';
-import { filter, head, find, flatMap, forEach, groupBy, sortBy, keys, map, range, sumBy, values, reverse, tail, partition, maxBy, uniqBy } from 'lodash';
+import { filter, head, find, flatMap, forEach, groupBy, sortBy, keys, map, range, sumBy, values, reverse, tail, partition, maxBy } from 'lodash';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { c, msgid, ngettext, t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
@@ -8,8 +8,8 @@ import VariableTokenInput from './VariableTokenInput';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { difficultyString, Scenario, scenarioFromCard } from '@components/campaign/constants';
-import { CampaignDifficulty, ChaosBagResults } from '@actions/types';
-import { ChaosBag, SPECIAL_TOKENS, ChaosTokenType, CHAOS_TOKENS, getChaosTokenValue } from '@app_constants';
+import { CampaignDifficulty } from '@actions/types';
+import { ChaosBag, SPECIAL_TOKENS, ChaosTokenType, getChaosTokenValue } from '@app_constants';
 import Card from '@data/types/Card';
 import space, { isTablet, m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';

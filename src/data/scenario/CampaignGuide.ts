@@ -62,6 +62,15 @@ type LogEntry = LogEntrySectionCount | LogEntryCard | LogEntryText | LogEntrySup
 export const CARD_REGEX = /\d\d\d\d\d[a-z]?/;
 export const CAMPAIGN_SETUP_ID = '$campaign_setup';
 
+export class CampaignUpdateRequiredError implements Error {
+  name = 'CampaignUpdateRequiredError';
+  message: string;
+
+  constructor() {
+    this.message = t`An app update is required to access this campaign.`;
+  }
+}
+
 /**
  * Wrapper utility to provide structured access to campaigns.
  */
@@ -161,11 +170,15 @@ export default class CampaignGuide {
     id: string,
     campaignState: CampaignStateHelper,
     standalone?: boolean
-  ): ProcessedScenario | undefined {
-    return find(
-      this.processAllScenarios(campaignState, standalone).scenarios,
+  ): [ProcessedScenario | undefined, string | undefined] {
+    const [processedScenarios, processError] = this.processAllScenarios(campaignState, standalone);
+    if (!processedScenarios) {
+      return [undefined, processError];
+    }
+    return [find(
+      processedScenarios.scenarios,
       scenario => scenario.scenarioGuide.id === id
-    );
+    ), undefined];
   }
 
   campaignLogSections() {
@@ -191,56 +204,60 @@ export default class CampaignGuide {
   processAllScenarios(
     campaignState: CampaignStateHelper,
     standalone?: boolean
-  ): ProcessedCampaign {
-    const scenarios: ProcessedScenario[] = [];
-    let campaignLog: GuidedCampaignLog = new GuidedCampaignLog(
-      [],
-      this,
-      campaignState
-    );
-    forEach(this.allScenarioIds(), scenarioId => {
-      if (!find(scenarios, scenario => scenario.scenarioGuide.id === scenarioId)) {
-        const scenario = this.findScenario(scenarioId);
-        const nextScenarios = this.actuallyProcessScenario(
-          scenario.id,
-          scenario.scenario,
-          campaignState,
-          campaignLog,
-          standalone
-        );
-        forEach(nextScenarios, scenario => {
-          scenarios.push(scenario);
-          campaignLog = scenario.latestCampaignLog;
-        });
-      }
-    });
-    let foundPlayable = false;
-    forEach(scenarios, scenario => {
-      if (scenario.type === 'playable') {
-        if (foundPlayable) {
-          scenario.type = 'locked';
-        } else {
+  ): [ProcessedCampaign | undefined, string | undefined] {
+    try {
+      const scenarios: ProcessedScenario[] = [];
+      let campaignLog: GuidedCampaignLog = new GuidedCampaignLog(
+        [],
+        this,
+        campaignState
+      );
+      forEach(this.allScenarioIds(), scenarioId => {
+        if (!find(scenarios, scenario => scenario.scenarioGuide.id === scenarioId)) {
+          const scenario = this.findScenario(scenarioId);
+          const nextScenarios = this.actuallyProcessScenario(
+            scenario.id,
+            scenario.scenario,
+            campaignState,
+            campaignLog,
+            standalone
+          );
+          forEach(nextScenarios, scenario => {
+            scenarios.push(scenario);
+            campaignLog = scenario.latestCampaignLog;
+          });
+        }
+      });
+      let foundPlayable = false;
+      forEach(scenarios, scenario => {
+        if (scenario.type === 'playable') {
+          if (foundPlayable) {
+            scenario.type = 'locked';
+          } else {
+            foundPlayable = true;
+          }
+        }
+        if (scenario.type === 'started') {
           foundPlayable = true;
         }
-      }
-      if (scenario.type === 'started') {
-        foundPlayable = true;
-      }
-    });
-    let foundUndoable = false;
-    forEach(reverse(slice(scenarios)), scenario => {
-      if (scenario.canUndo) {
-        if (foundUndoable) {
-          scenario.canUndo = false;
-        } else {
-          foundUndoable = true;
+      });
+      let foundUndoable = false;
+      forEach(reverse(slice(scenarios)), scenario => {
+        if (scenario.canUndo) {
+          if (foundUndoable) {
+            scenario.canUndo = false;
+          } else {
+            foundUndoable = true;
+          }
         }
-      }
-    });
-    return {
-      scenarios,
-      campaignLog,
-    };
+      });
+      return [{
+        scenarios,
+        campaignLog,
+      }, undefined];
+    } catch (e) {
+      return [undefined, e.message];
+    }
   }
 
   nextScenario(
@@ -264,7 +281,7 @@ export default class CampaignGuide {
           scenario => scenario.id === entry.scenario
         );
       if (!scenario) {
-        throw new Error(`Could not find side scenario: ${entry.scenario}`);
+        throw new CampaignUpdateRequiredError();
       }
       return {
         id: this.parseScenarioId(entry.scenario),
@@ -325,7 +342,7 @@ export default class CampaignGuide {
         scenario: sideScenario,
       };
     }
-    throw new Error(`Could not find scenario: ${encodedScenarioId}`);
+    throw new CampaignUpdateRequiredError();
   }
 
   parseScenarioId(encodedScenarioId: string): ScenarioId {

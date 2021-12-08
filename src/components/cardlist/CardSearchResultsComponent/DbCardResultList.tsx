@@ -46,6 +46,7 @@ import LoadingCardSearchResult from '../LoadingCardSearchResult';
 import { ControlType } from '../CardSearchResult/ControlComponent';
 import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
 import ArkhamLargeList, { BasicSection } from '@components/core/ArkhamLargeList';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   componentId: string;
@@ -740,10 +741,10 @@ function useSectionFeed({
   };
 }
 
-function itemHeight(item: Item, fontScale: number, headerHeight: number): number {
+function itemHeight(item: Item, fontScale: number, headerHeight: number, lang: string): number {
   switch (item.type) {
     case 'button':
-      return ArkhamButton.Height(fontScale);
+      return ArkhamButton.computeHeight(fontScale, lang);
     case 'card':
     case 'loading':
       return rowHeight(fontScale);
@@ -981,13 +982,14 @@ export default function({
         return <View />;
     }
   }, [headerItems, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
+  const { lang } = useContext(LanguageContext);
 
   const heightForSection = useCallback((header: SectionHeaderItem) => {
-    return itemHeight(header, fontScale, headerHeight || 0);
-  }, [fontScale, headerHeight]);
+    return itemHeight(header, fontScale, headerHeight || 0, lang);
+  }, [fontScale, headerHeight, lang]);
   const heightForItem = useCallback((item: Item): number => {
-    return itemHeight(item, fontScale, headerHeight || 0);
-  }, [fontScale, headerHeight]);
+    return itemHeight(item, fontScale, headerHeight || 0, lang);
+  }, [fontScale, headerHeight, lang]);
   return (
     <ArkhamLargeList
       data={feed}

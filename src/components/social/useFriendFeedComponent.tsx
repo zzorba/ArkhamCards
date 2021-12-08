@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { ActivityIndicator, FlatList, ListRenderItemInfo, Platform, RefreshControl, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Platform, StyleSheet, Text, View } from 'react-native';
 import { forEach, map } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -10,13 +10,15 @@ import StyleContext from '@styles/StyleContext';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
-import space from '@styles/space';
+import space, { m } from '@styles/space';
 import RoundButton from '@components/core/RoundButton';
 import AppIcon from '@icons/AppIcon';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
 import { FriendStatus, SearchResults } from '@data/remote/api';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import LanguageContext from '@lib/i18n/LanguageContext';
+import ArkhamLargeList from '@components/core/ArkhamLargeList';
 
 interface FriendControls {
   type: 'friend';
@@ -57,11 +59,13 @@ interface PlaceholderItem {
   text: string;
 }
 
-export type FriendFeedItem = UserItem | HeaderItem | ButtonItem | PlaceholderItem;
-
-function itemKey(item: FriendFeedItem): string {
-  return item.id;
+interface PaddingItem {
+  id: string;
+  type: 'padding';
+  padding: number;
 }
+
+export type FriendFeedItem = UserItem | HeaderItem | ButtonItem | PlaceholderItem | PaddingItem;
 
 function FriendControlsComponent({ user, status, refetchMyProfile, acceptRequest, rejectRequest }: {
   user: SimpleUser;
@@ -167,6 +171,10 @@ function AccessControlsComponent({ user, hasAccess, inviteUser, removeUser }: {
   );
 }
 
+const userRowHeight = (fontScale: number, lang: string) => {
+  return m * 2 + StyleSheet.hairlineWidth + (lang === 'zh' ? 22 : 20) * fontScale;
+};
+
 function UserRow({ user, showUser, status, controls, refetchMyProfile }: {
   user: SimpleUser;
   refetchMyProfile: () => void;
@@ -174,7 +182,8 @@ function UserRow({ user, showUser, status, controls, refetchMyProfile }: {
   controls: UserControls | undefined;
   status?: FriendStatus;
 }) {
-  const { borderStyle, colors, typography } = useContext(StyleContext);
+  const { borderStyle, colors, fontScale, typography } = useContext(StyleContext);
+  const { lang } = useContext(LanguageContext);
   const fadeAnim = useCallback((props: any) => {
     return <Fade {...props} style={{ backgroundColor: colors.M }} duration={1000} />;
   }, [colors]);
@@ -210,7 +219,7 @@ function UserRow({ user, showUser, status, controls, refetchMyProfile }: {
     }
   }, [user, status, controls, refetchMyProfile]);
   return (
-    <View style={[styles.userRow, borderStyle, space.paddingM]}>
+    <View style={[styles.userRow, borderStyle, space.paddingM, { height: userRowHeight(fontScale, lang) }]}>
       { user.handle ? (
         <TouchableOpacity style={styles.pressable} onPress={onPress} disabled={!showUser}>
           <Text style={typography.large}>
@@ -228,6 +237,7 @@ function UserRow({ user, showUser, status, controls, refetchMyProfile }: {
     </View>
   );
 }
+UserRow.computeHeight = userRowHeight;
 
 interface Props {
   componentId: string;
@@ -235,7 +245,6 @@ interface Props {
   handleScroll?: (...args: any[]) => void;
   searchResults?: SearchResults;
   error?: string;
-  noHeader?: boolean;
 
   toFeed: (
     isSelf: boolean,
@@ -243,9 +252,10 @@ interface Props {
   ) => FriendFeedItem[]
 }
 
-export default function useFriendFeedComponent({ componentId, userId, handleScroll, noHeader, error, searchResults, toFeed }: Props): [React.ReactNode, () => void] {
-  const { borderStyle, colors, typography } = useContext(StyleContext);
+export default function useFriendFeedComponent({ componentId, userId, handleScroll, error, searchResults, toFeed }: Props): [React.ReactNode, () => void] {
+  const { borderStyle, colors, height, fontScale, typography } = useContext(StyleContext);
   const { userId: currentUserId } = useContext(ArkhamCardsAuthContext);
+  const { lang } = useContext(LanguageContext);
   const [myProfile, loadingMyProfile, refetchMyProfile] = useMyProfile(true);
   const isSelf: boolean = (currentUserId && userId) ? currentUserId === userId : false;
   const [profile, loading, refetchProfile] = useProfile(userId, isSelf);
@@ -281,12 +291,29 @@ export default function useFriendFeedComponent({ componentId, userId, handleScro
       },
     });
   }, [componentId]);
-  const renderItem = useCallback(({ item, index }: ListRenderItemInfo<FriendFeedItem>) => {
+  const heightItem = useCallback((item: FriendFeedItem) => {
     switch (item.type) {
+      case 'user':
+        return UserRow.computeHeight(fontScale, lang);
+      case 'header':
+        return CardSectionHeader.computeHeight({ title: item.header }, fontScale);
+      case 'button':
+        return ArkhamButton.computeHeight(fontScale, lang);
+      case 'placeholder':
+        return UserRow.computeHeight(fontScale, lang);
+      case 'padding':
+        return item.padding;
+    }
+  }, [fontScale, lang])
+  const renderItem = useCallback((item: FriendFeedItem) => {
+    switch (item.type) {
+      case 'padding': {
+        return <View style={{ height: item.padding }} />
+      }
       case 'user':
         return (
           <UserRow
-            key={index}
+            key={item.id}
             user={item.user}
             refetchMyProfile={refetchMyProfile}
             controls={item.controls}
@@ -296,11 +323,11 @@ export default function useFriendFeedComponent({ componentId, userId, handleScro
         );
       case 'header':
         return (
-          <CardSectionHeader key={index} section={{ title: item.header }} />
+          <CardSectionHeader key={item.id} section={{ title: item.header }} />
         );
       case 'button':
         return (
-          <ArkhamButton key={index} onPress={item.onPress} title={item.title} icon={item.icon} />
+          <ArkhamButton key={item.id} onPress={item.onPress} title={item.title} icon={item.icon} />
         );
       case 'placeholder':
         return (
@@ -310,8 +337,6 @@ export default function useFriendFeedComponent({ componentId, userId, handleScro
             </Text>
           </View>
         );
-      default:
-        return null;
     }
   }, [currentUserId, myFriendStatus, borderStyle, typography, refetchMyProfile, showUser]);
   const [refreshing, setRefreshing] = useState(false);
@@ -322,7 +347,13 @@ export default function useFriendFeedComponent({ componentId, userId, handleScro
     setRefreshing(false);
   }, [refetchMyProfile, refetchProfile]);
 
-  const data: FriendFeedItem[] = useMemo(() => toFeed(isSelf, profile), [toFeed, isSelf, profile]);
+  const data: FriendFeedItem[] = useMemo(() => {
+    const paddingItem: PaddingItem | undefined = !!handleScroll ? { type: 'padding', id: 'padding', padding: SEARCH_BAR_HEIGHT } : undefined;
+    return [
+      ...(paddingItem ? [paddingItem] : []),
+      ...toFeed(isSelf, profile),
+    ];
+  }, [toFeed, isSelf, profile, !!handleScroll]);
   const searchResultsError = searchResults?.error;
   const header = useMemo(() => {
     const spacer = Platform.OS === 'android' && <View style={styles.searchBarPadding} />;
@@ -344,28 +375,29 @@ export default function useFriendFeedComponent({ componentId, userId, handleScro
   }, [colors, error, typography, searchResultsError]);
 
   useEffect(() => {
-    doRefresh();
+    setTimeout(() => doRefresh(), 100);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const renderHeader = useCallback(() => {
+    return header;
+  }, [header]);
   const isRefreshing = loading || loadingMyProfile || !!searchResults?.loading || refreshing;
   return [(
-    <FlatList
-      key="friends"
-      contentInset={!handleScroll || Platform.OS === 'android' ? undefined : { top: SEARCH_BAR_HEIGHT }}
-      contentOffset={!handleScroll || Platform.OS === 'android' ? undefined : { x: 0, y: -SEARCH_BAR_HEIGHT }}
-      ListHeaderComponent={handleScroll && header}
-      refreshControl={(
-        <RefreshControl
-          refreshing={isRefreshing}
-          onRefresh={doRefresh}
-          tintColor={colors.lightText}
-          progressViewOffset={noHeader ? 0 : SEARCH_BAR_HEIGHT}
-        />
-      )}
+    <ArkhamLargeList
+      key="friend_feed"
+      noSearch={!handleScroll}
+      renderHeader={handleScroll ? renderHeader : undefined}
+      refreshing={isRefreshing}
+      onRefresh={doRefresh}
       onScroll={handleScroll}
-      data={data}
+      data={[{ items: data }]}
       renderItem={renderItem}
-      keyExtractor={itemKey}
+      heightForItem={heightItem}
+      renderSection={renderItem}
+      heightForSection={heightItem}
+      updateTimeInterval={100}
+      groupCount={4}
+      groupMinHeight={height}
     />
   ), doRefresh];
 }

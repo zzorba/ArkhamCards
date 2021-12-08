@@ -20,6 +20,7 @@ import CampaignGuideContext from './CampaignGuideContext';
 import Card from '@data/types/Card';
 import { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
+import CampaignErrorView from './CampaignErrorView';
 
 export type WeaknessSetProps = CampaignGuideInputProps;
 
@@ -169,9 +170,15 @@ function InvestigatorWeakness({ investigator, width, investigatorData, weaknesse
 function WeaknessSetView({ componentId }: WeaknessSetProps & NavigationProps) {
   const { backgroundStyle, width } = useContext(StyleContext);
   const { campaignInvestigators, campaign, campaignState, campaignGuide } = useContext(CampaignGuideContext);
-  const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
+  const [processedCampaign, processedCampaignError] = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const setCampaignWeaknessSet = useSetCampaignWeaknessSet();
   const weaknessCards = useWeaknessCards();
+  if (!processedCampaign) {
+    if (processedCampaignError) {
+      return <CampaignErrorView message={processedCampaignError} />;
+    }
+    return <LoadingSpinner large />;
+  }
   return (
     <ScrollView contentContainerStyle={backgroundStyle}>
       <View style={space.paddingS}>

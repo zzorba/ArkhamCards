@@ -1,4 +1,4 @@
-import { capitalize, find, head, findIndex, flatMap, forEach, keys, map, range, sortBy, values, first } from 'lodash';
+import { capitalize, head, findIndex, flatMap, forEach, keys, map, range, sortBy } from 'lodash';
 
 import { CUSTOM, Campaign, DecksMap } from '@actions/types';
 import { campaignNames } from './constants';
