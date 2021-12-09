@@ -245,12 +245,12 @@
             "feminine_text": "#name# was killed in the plane crash."
           },
           {
-            "id": "broad_snowdrifts",
-            "text": "Camp - Broad Snowdrifts (4)"
-          },
-          {
             "id": "camp_barrier_camp",
             "text": "Camp - Barrier Camp (7)"
+          },
+          {
+            "id": "camp_broad_snowdrifts",
+            "text": "Camp - Broad Snowdrifts (4)"
           },
           {
             "id": "camp_crash_site",
@@ -287,6 +287,10 @@
           {
             "id": "camp_rocky_crags",
             "text": "Camp - Rocky Crags (3)"
+          },
+          {
+            "id": "camp_snow_graves",
+            "text": "Camp - Snow Graves (5)"
           },
           {
             "id": "camp_treacherous_path",
@@ -383,10 +387,6 @@
           {
             "id": "scouted_the_mountain_pass",
             "text": "the investigators scouted the mountain pass."
-          },
-          {
-            "id": "snow_graves",
-            "text": "Camp - Snow Graves (5)"
           },
           {
             "id": "studied_the_mural_carvings",
