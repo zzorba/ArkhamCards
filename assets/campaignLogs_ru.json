@@ -4566,7 +4566,7 @@
           },
           {
             "id": "found_chest",
-            "text": "An investigator found the chest in the lake."
+            "text": "an investigator found the chest in the lake."
           },
           {
             "id": "found_the_ritual_site",
@@ -4598,7 +4598,7 @@
           },
           {
             "id": "noticed_ring",
-            "text": "An investigator noticed the ring."
+            "text": "an investigator noticed the ring."
           },
           {
             "id": "on_their_own",
@@ -4606,7 +4606,7 @@
           },
           {
             "id": "opened_chest",
-            "text": "An investigator forced open the frozen chest."
+            "text": "an investigator forced open the frozen chest."
           },
           {
             "id": "photographed_glacier",
@@ -4630,7 +4630,7 @@
           },
           {
             "id": "retrieved_pole",
-            "text": "An investigator retrieved the eerie pole."
+            "text": "an investigator retrieved the eerie pole."
           },
           {
             "id": "runes_remain_a_mystery",

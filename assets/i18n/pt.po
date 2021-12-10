@@ -5109,6 +5109,9 @@ msgid ""
 "choice during its resolution."
 msgstr ""
 
+msgid "An app update is required to access this campaign."
+msgstr ""
+
 msgctxt "masculine"
 msgid "Alive"
 msgstr "Vivo"
