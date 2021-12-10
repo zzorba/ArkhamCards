@@ -25,6 +25,7 @@ import { useDeckActions } from '@data/remote/decks';
 import StyleContext from '@styles/StyleContext';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import CampaignErrorView from '@components/campaignguide/CampaignErrorView';
+import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 
 export interface LinkedCampaignGuideProps {
   campaignId: CampaignId;
@@ -32,10 +33,10 @@ export interface LinkedCampaignGuideProps {
   campaignIdB: CampaignId;
 }
 
-type Props = LinkedCampaignGuideProps & NavigationProps;
+type Props = LinkedCampaignGuideProps & NavigationProps & LoginStateProps;
 
-export default function LinkedCampaignGuideView(props: Props) {
-  const { componentId } = props;
+function LinkedCampaignGuideView(props: Props) {
+  const { componentId, login } = props;
   const [countDialog, showCountDialog] = useCountDialog();
   const [{ campaignId, campaignIdA, campaignIdB }, setCampaignLinkedServerId] = useState({
     campaignId: props.campaignId,
@@ -162,6 +163,7 @@ export default function LinkedCampaignGuideView(props: Props) {
               displayLinkScenarioCount={displayLinkScenarioCount}
               footerButtons={footerButtons}
               updateCampaignActions={updateCampaignActions}
+              login={login}
             />
           </CampaignGuideContext.Provider>
         </SafeAreaView>
@@ -200,13 +202,14 @@ export default function LinkedCampaignGuideView(props: Props) {
               displayLinkScenarioCount={displayLinkScenarioCount}
               footerButtons={footerButtons}
               updateCampaignActions={updateCampaignActions}
+              login={login}
             />
           </CampaignGuideContext.Provider>
         </SafeAreaView>
       ),
     };
   }, [campaignDataB, processedCampaignB, processedCampaignBError, contextB, componentId, displayLinkScenarioCount, footerButtons,
-    updateCampaignActions, showCampaignScenarioA, showCountDialog, showAlert]);
+    updateCampaignActions, showCampaignScenarioA, showCountDialog, showAlert, login]);
   const tabs = useMemo(() => {
     if (!campaignATab || !campaignBTab) {
       return [];
@@ -224,6 +227,8 @@ export default function LinkedCampaignGuideView(props: Props) {
     </View>
   );
 }
+
+export default withLoginState<Props>(LinkedCampaignGuideView);
 
 const styles = StyleSheet.create({
   wrapper: {

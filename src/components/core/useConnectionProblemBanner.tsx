@@ -7,6 +7,8 @@ import useNetworkStatus from '@components/core/useNetworkStatus';
 import StyleContext from '@styles/StyleContext';
 import space, { s } from '@styles/space';
 import COLORS from '@styles/colors';
+import AppIcon from '@icons/AppIcon';
+import colors from '@styles/colors';
 
 interface Props {
   width: number;
@@ -26,7 +28,8 @@ export default function useConnectionProblemBanner({ width, arkhamdbState }: Pro
     const height = 2 * 18 * fontScale + s * 2;
     return [(
       <View style={[space.paddingS, styles.warning, { width, height }]} key="banner">
-        <Text style={[typography.small, typography.black]} numberOfLines={2}>
+        <AppIcon size={32} color={colors.D30} name="warning" />
+        <Text style={[space.paddingLeftS, typography.small, typography.black, { flex: 1 }]} numberOfLines={2}>
           { t`Unable to update: you appear to be offline.` }
         </Text>
       </View>
@@ -38,7 +41,8 @@ export default function useConnectionProblemBanner({ width, arkhamdbState }: Pro
     if (error === 'badAccessToken') {
       return [(
         <TouchableOpacity onPress={reLogin} style={[space.paddingS, styles.error, { width, height }]} key="banner">
-          <Text style={[typography.small, typography.white, space.paddingS]} numberOfLines={4}>
+          <AppIcon size={32} color="#FFFFFF" name="warning" />
+          <Text style={[typography.small, typography.white, space.paddingS, { flex: 1 }]} numberOfLines={4}>
             { t`We're having trouble updating your decks at this time. If the problem persists tap here to reauthorize.` }
           </Text>
         </TouchableOpacity>
@@ -46,7 +50,8 @@ export default function useConnectionProblemBanner({ width, arkhamdbState }: Pro
     }
     return [(
       <TouchableOpacity onPress={reLogin} style={[space.paddingS, styles.error, { width, height }]} key="banner">
-        <Text style={[typography.small, typography.white, space.paddingS]} numberOfLines={4}>
+        <AppIcon size={32} color="#FFFFFF" name="warning" />
+        <Text style={[typography.small, typography.white, space.paddingS, { flex: 1 }]} numberOfLines={4}>
           { t`An unexpected error occurred (${error}). If restarting the app doesn't fix the problem, tap here to reauthorize.` }
         </Text>
       </TouchableOpacity>
@@ -58,8 +63,14 @@ export default function useConnectionProblemBanner({ width, arkhamdbState }: Pro
 const styles = StyleSheet.create({
   error: {
     backgroundColor: COLORS.red,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
   warning: {
     backgroundColor: COLORS.yellow,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
 });

@@ -119,6 +119,11 @@ export function useChaosBagResults(id: CampaignId): ChaosBagResultsT {
   }, [id, remoteData, reduxData]);
 }
 
+export function useArkhamDbError(): string | undefined {
+  const { error, refreshing } = useMyDecksRedux();
+  return refreshing ? error : undefined;
+}
+
 export function useMyDecks(deckActions: DeckActions): [MyDecksState, (cacheArkhamDb: boolean) => Promise<void>] {
   const dispatch: ThunkDispatch<AppState, unknown, Action> = useDispatch();
   const { userId, arkhamDb } = useContext(ArkhamCardsAuthContext);

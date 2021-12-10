@@ -23,14 +23,15 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import { getDownloadLink } from './ScenarioComponent';
 import CampaignErrorView from './CampaignErrorView';
 import LoadingSpinner from '@components/core/LoadingSpinner';
+import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
-type Props = CampaignGuideProps & NavigationProps & InjectedCampaignGuideContextProps;
+type Props = CampaignGuideProps & NavigationProps & InjectedCampaignGuideContextProps & LoginStateProps;
 
 function CampaignGuideView(props: Props) {
   const [countDialog, showCountDialog] = useCountDialog();
-  const { componentId, setCampaignServerId } = props;
+  const { componentId, setCampaignServerId, login } = props;
   const campaignData = useContext(CampaignGuideContext);
   const { typography } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
@@ -126,6 +127,7 @@ function CampaignGuideView(props: Props) {
         showCountDialog={showCountDialog}
         footerButtons={footerButtons}
         updateCampaignActions={updateCampaignActions}
+        login={login}
       />
       { alertDialog }
       { dialog }
@@ -134,7 +136,10 @@ function CampaignGuideView(props: Props) {
   );
 }
 
-export default withCampaignGuideContext(CampaignGuideView, { rootView: true });
+export default withCampaignGuideContext(
+  withLoginState<Props>(CampaignGuideView, { noWrapper: true }),
+  { rootView: true }
+);
 
 const styles = StyleSheet.create({
   wrapper: {

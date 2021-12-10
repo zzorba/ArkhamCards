@@ -23,6 +23,9 @@ import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import { UpdateCampaignActions } from '@data/remote/campaigns';
 import { showGuideCampaignLog } from '@components/campaign/nav';
 import { WeaknessSetProps } from './WeaknessSetView';
+import useConnectionProblemBanner from '@components/core/useConnectionProblemBanner';
+import { useArkhamDbError } from '@data/hooks';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 const SHOW_WEAKNESS = false;
 
@@ -35,14 +38,18 @@ interface Props {
   showLinkedScenario?: ShowScenario;
   displayLinkScenarioCount?: number;
   footerButtons: React.ReactNode;
+  login: () => void;
 }
 
 
 export default function CampaignDetailTab({
   componentId, processedCampaign, displayLinkScenarioCount, footerButtons, updateCampaignActions,
-  showLinkedScenario, showAlert, showCountDialog,
+  showLinkedScenario, showAlert, showCountDialog, login,
 }: Props) {
-  const { backgroundStyle } = useContext(StyleContext);
+  const { backgroundStyle, width } = useContext(StyleContext);
+  const { userId, arkhamDb } = useContext(ArkhamCardsAuthContext);
+  const reLogin = useCallback(() => login(), [login]);
+  const arkhamDbError = useArkhamDbError();
   const { campaignId, campaign, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
 
   const deckActions = useDeckActions();
@@ -61,6 +68,8 @@ export default function CampaignDetailTab({
       )
     }
   }, [campaignState]);
+  const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error: arkhamDbError, reLogin } })
+
   const [saving, saveDeckError, saveDeckUpgrade] = useDeckUpgradeAction<StepId>(deckActions, deckUpgradeCompleted);
 
   const showAddInvestigator = useCallback(() => {
@@ -149,6 +158,7 @@ export default function CampaignDetailTab({
   return (
     <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
       <ScrollView contentContainerStyle={backgroundStyle} showsVerticalScrollIndicator={false}>
+        { !!userId && !!arkhamDb && !!campaignId.serverId && connectionProblemBanner }
         <View style={[space.paddingSideS, space.paddingBottomS]}>
           <CampaignSummaryHeader
             difficulty={processedCampaign.campaignLog.campaignData.difficulty}

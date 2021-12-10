@@ -158,16 +158,16 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
   }, [footer, refreshing, empty]);
 
   const heightForSection = useCallback((): number => {
-    return SEARCH_BAR_HEIGHT + (!!userId ? connectionProblemBannerHeight : 0);
-  }, [userId, connectionProblemBannerHeight]);
+    return SEARCH_BAR_HEIGHT + (!!userId && !refreshing ? connectionProblemBannerHeight : 0);
+  }, [userId, refreshing, connectionProblemBannerHeight]);
 
   const renderSection = useCallback((): React.ReactElement<any> => {
     return (
       <View style={{ paddingTop: SEARCH_BAR_HEIGHT }}>
-        { !!userId && connectionProblemBanner ? connectionProblemBanner : null }
+        { !!userId && !refreshing && connectionProblemBanner ? connectionProblemBanner : null }
       </View>
     );
-  }, [userId, connectionProblemBanner]);
+  }, [userId, refreshing, connectionProblemBanner]);
 
   const heightForItem = useCallback((item: ItemType) => {
     if (item.type === 'campaign') {
