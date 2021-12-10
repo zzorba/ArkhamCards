@@ -26,6 +26,9 @@ import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import useDeckUpgradeAction from './useDeckUpgradeAction';
 import { useDeckActions } from '@data/remote/decks';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import { ThunkDispatch } from 'redux-thunk';
+import { AppState } from '@reducers';
+import { Action } from 'redux';
 
 export interface UpgradeDeckProps {
   id: DeckId;
@@ -34,6 +37,8 @@ export interface UpgradeDeckProps {
 }
 
 const EMPTY_TRAUMA = {};
+
+type AsyncDispatch = ThunkDispatch<AppState, unknown, Action>;
 function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: UpgradeDeckProps & NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const actions = useDeckActions();
@@ -48,7 +53,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
 
   const [storyCounts, updateStoryCounts] = useSlots({});
   const investigators = useInvestigatorCards(deck?.deck.taboo_id);
-  const dispatch = useDispatch();
+  const dispatch: AsyncDispatch = useDispatch();
 
   const [traumaUpdate, setTraumaUpdate] = useState<Trauma | undefined>();
   const setInvestigatorTrauma = useCallback((investigator: string, trauma: Trauma) => {
@@ -78,11 +83,9 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
     return investigators[deck.deck.investigator_code];
   }, [deck, investigators]);
 
-  const deckUpgradeComplete = useCallback((deck: Deck) => {
-    if (campaignId) {
-      if (traumaUpdate) {
-        dispatch(updateCampaignInvestigatorTrauma(updateCampaignActions, campaignId, deck.investigator_code, traumaUpdate));
-      }
+  const deckUpgradeComplete = useCallback(async (deck: Deck) => {
+    if (campaignId && traumaUpdate) {
+      return dispatch(updateCampaignInvestigatorTrauma(updateCampaignActions, campaignId, deck.investigator_code, traumaUpdate));
     }
     if (showNewDeck) {
       showDeckModal(getDeckId(deck), deck, campaign?.id, colors, investigator, 'upgrade');

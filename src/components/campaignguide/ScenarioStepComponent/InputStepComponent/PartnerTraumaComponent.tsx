@@ -124,7 +124,7 @@ export default function PartnerTraumaComponent({ id, input, text }: Props) {
   const [physical, incPhysical, decPhysical] = useCounters(initialPhysical);
   const [mental, incMental, decMental] = useCounters(initialMental);
   const [cards] = useCardList(codes, 'encounter');
-  const save = useCallback(() => {
+  const save = useCallback(async() => {
     const choices: NumberChoices = {};
     forEach(codes, c => {
       choices[c] = [
@@ -132,7 +132,7 @@ export default function PartnerTraumaComponent({ id, input, text }: Props) {
         (mental[c] || 0) - (initialMental[c] || 0),
       ];
     });
-    scenarioState.setNumberChoices(id, choices)
+    await scenarioState.setNumberChoices(id, choices)
   }, [scenarioState, id, physical, mental, initialPhysical, initialMental, codes]);
   return (
     <>

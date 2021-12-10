@@ -121,11 +121,11 @@ export function undo(
   scenarioId: string,
   campaignState: CampaignGuideStateT
 ): ThunkAction<void, AppState, unknown, GuideUndoInputAction> {
-  return (dispatch) => {
+  return async(dispatch) => {
     if (userId && campaignId.serverId) {
       const undoInputs = campaignState.undoInputs(scenarioId);
       if (undoInputs.length) {
-        actions.removeInputs(campaignId, undoInputs);
+        await actions.removeInputs(campaignId, undoInputs);
       }
     } else {
       dispatch({
@@ -154,9 +154,9 @@ export function setBinaryAchievement(
   achievementId: string,
   value: boolean,
 ): ThunkAction<void, AppState, unknown, GuideUpdateAchievementAction> {
-  return (dispatch) => {
+  return async(dispatch) => {
     if (userId && campaignId.serverId) {
-      actions.setBinaryAchievement(campaignId, achievementId, value);
+      await actions.setBinaryAchievement(campaignId, achievementId, value);
     } else {
       dispatch(
         updateAchievement(userId, {
@@ -178,9 +178,9 @@ export function incCountAchievement(
   achievementId: string,
   max?: number
 ): ThunkAction<void, AppState, unknown, GuideUpdateAchievementAction> {
-  return (dispatch) => {
+  return async(dispatch) => {
     if (userId && campaignId.serverId) {
-      actions.incAchievement(campaignId, achievementId, max);
+      await actions.incAchievement(campaignId, achievementId, max);
     } else {
       dispatch(updateAchievement(userId, {
         type: GUIDE_UPDATE_ACHIEVEMENT,
@@ -201,9 +201,9 @@ export function decCountAchievement(
   achievementId: string,
   max?: number
 ): ThunkAction<void, AppState, unknown, GuideUpdateAchievementAction> {
-  return (dispatch) => {
+  return async(dispatch) => {
     if (userId && campaignId.serverId) {
-      actions.decAchievement(campaignId, achievementId);
+      await actions.decAchievement(campaignId, achievementId);
     } else {
       dispatch(updateAchievement(userId, {
         type: GUIDE_UPDATE_ACHIEVEMENT,
@@ -240,7 +240,7 @@ function setGuideInputAction(
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
   return async(dispatch) => {
     if (userId && campaignId.serverId) {
-      actions.setInput(campaignId, input);
+      await actions.setInput(campaignId, input);
     } else {
       dispatch({
         type: GUIDE_SET_INPUT,

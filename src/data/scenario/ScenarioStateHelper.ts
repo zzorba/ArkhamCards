@@ -34,7 +34,7 @@ export default class ScenarioStateHelper {
   }
 
   setNumberChoices(id: string, value: NumberChoices, deckId?: DeckId, deckEdits?: DelayedDeckEdits) {
-    this.campaignState.setNumberChoices(id, value, deckId, deckEdits, this.scenarioId);
+    return this.campaignState.setNumberChoices(id, value, deckId, deckEdits, this.scenarioId);
   }
 
   numberChoices(id: string): NumberChoices | undefined {

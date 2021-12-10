@@ -46,10 +46,10 @@ export default function CampaignDetailTab({
   const { campaignId, campaign, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
 
   const deckActions = useDeckActions();
-  const deckUpgradeCompleted = useCallback((deck: Deck, xp: number, id: StepId) => {
+  const deckUpgradeCompleted = useCallback(async (deck: Deck, xp: number, id: StepId) => {
     const [choices, , delayedDeckEdit] = campaignState.numberChoices(id.id, id.scenario);
     if (choices && delayedDeckEdit) {
-      campaignState.setNumberChoices(
+     await campaignState.setNumberChoices(
         id.id,
         choices,
         getDeckId(deck),
@@ -61,7 +61,7 @@ export default function CampaignDetailTab({
       )
     }
   }, [campaignState]);
-  const [saving, error, saveDeckUpgrade] = useDeckUpgradeAction<StepId>(deckActions, deckUpgradeCompleted);
+  const [saving, saveDeckError, saveDeckUpgrade] = useDeckUpgradeAction<StepId>(deckActions, deckUpgradeCompleted);
 
   const showAddInvestigator = useCallback(() => {
     campaignState.showChooseDeck();

@@ -668,7 +668,7 @@ function useSectionFeed({
     if (currentSection.header || currentSection.items.length) {
       result.push(currentSection);
     }
-    return [result, !noCards, cardsLoading];
+    return [result, !(noCards && cardsLoading), cardsLoading];
   }, [partialItems, cards, showSpoilers, spoilerCardsCount, editSpoilerSettings]);
 
   const [loadingMessage, setLoadingMessage] = useState(getRandomLoadingMessage());

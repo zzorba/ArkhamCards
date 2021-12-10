@@ -155,6 +155,7 @@ export default function CardUpgradeDialog({
       card.pack_code === 'core' ||
       ignore_collection ||
       inCollection[card.pack_code] ||
+      !!find(card.reprint_pack_codes || [], pack_code => inCollection[pack_code]) ||
       showNonCollection
     );
   }, [inCollection, showNonCollection, ignore_collection]);
