@@ -92,10 +92,10 @@ export default function useDeckUpgradeAction<T = undefined>(
           setSaving(false);
         }
       );
-    } else {
-      setSaving(false);
-      deckUpgradeComplete(upgradedDeck, xp, id);
     }
+
+    setSaving(false);
+    deckUpgradeComplete(upgradedDeck, xp, id);
   }, [doSaveDeckChanges, deckUpgradeComplete]);
   const saveUpgrade = useCallback(async(
     deck: LatestDeckT | undefined,

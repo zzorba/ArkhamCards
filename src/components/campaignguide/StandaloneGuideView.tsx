@@ -20,9 +20,10 @@ import { useUpdateCampaignActions } from '@data/remote/campaigns';
 
 export interface StandaloneGuideProps extends ScenarioGuideInputProps {
   campaignId: CampaignId;
+  upload?: boolean;
 }
 
-function StandaloneGuideView({ campaignId, componentId, setCampaignServerId }: StandaloneGuideProps & NavigationProps & InjectedCampaignGuideContextProps) {
+function StandaloneGuideView({ campaignId, componentId, setCampaignServerId, upload }: StandaloneGuideProps & NavigationProps & InjectedCampaignGuideContextProps) {
   const { typography } = useContext(StyleContext);
   const { campaign } = useContext(CampaignGuideContext);
   const { processedScenario } = useContext(ScenarioGuideContext);
@@ -46,6 +47,7 @@ function StandaloneGuideView({ campaignId, componentId, setCampaignServerId }: S
           setCampaignServerId={setCampaignServerId}
           showAlert={showAlert}
           standalone
+          upload={upload}
         />
         <DeleteCampaignButton
           componentId={componentId}
@@ -57,7 +59,7 @@ function StandaloneGuideView({ campaignId, componentId, setCampaignServerId }: S
         />
       </View>
     );
-  }, [componentId, campaignId, setCampaignServerId, showAlert, updateCampaignActions, deckActions, campaign, typography]);
+  }, [componentId, upload, campaignId, setCampaignServerId, showAlert, updateCampaignActions, deckActions, campaign, typography]);
 
   return (
     <>

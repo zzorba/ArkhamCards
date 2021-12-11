@@ -246,12 +246,12 @@ function UpgradeDeckRow({
     return choices;
   }, [storyCards, earnedXp, physicalAdjust, mentalAdjust, countAdjust, specialExile, investigatorCounter, initialStoryCardSlots, storyCardSlots]);
 
-  const saveCampaignLog = useCallback(async (xp: number, deck?: Deck) => {
+  const saveCampaignLog = useCallback(async(xp: number, deck?: Deck) => {
     const choices = getChoices(xp);
     scenarioState.setNumberChoices(choiceId, choices, !skipDeckSave && deck ? getDeckId(deck) : undefined);
   }, [scenarioState, skipDeckSave, getChoices, choiceId]);
 
-  const onUpgrade = useCallback(async (deck: Deck, xp: number) => {
+  const onUpgrade = useCallback(async(deck: Deck, xp: number) => {
     saveCampaignLog(xp, deck);
   }, [saveCampaignLog]);
   const [saving, error, saveDeckUpgrade] = useDeckUpgradeAction(actions, onUpgrade);

@@ -47,12 +47,13 @@ const DEFAULT_CAMPAIGNS_STATE: CampaignsState = {
 
 function newBlankGuidedCampaign(
   name: string,
+  uuid: string,
   cycleCode: CampaignCycleCode,
   weaknessSet: WeaknessSet,
   now: Date
 ): Campaign {
   return {
-    uuid: uuid.v4(),
+    uuid,
     name,
     cycleCode,
     weaknessSet,
@@ -120,7 +121,7 @@ export default function(
       } else {
         all[id] = {
           ...campaign,
-          uuid: uuid.v4(),
+          uuid: uuid.v4() as string,
         };
       }
     });
@@ -156,18 +157,21 @@ export default function(
   if (action.type === NEW_LINKED_CAMPAIGN) {
     const newCampaignA = newBlankGuidedCampaign(
       t`${action.name} (Campaign A)`,
+      action.uuidA,
       action.cycleCodeA,
       action.weaknessSet,
       action.now,
     );
     const newCampaignB = newBlankGuidedCampaign(
       t`${action.name} (Campaign B)`,
+      action.uuidB,
       action.cycleCodeB,
       action.weaknessSet,
       action.now
     );
     const newCampaign = newBlankGuidedCampaign(
       action.name,
+      action.uuid,
       action.cycleCode,
       action.weaknessSet,
       action.now
@@ -196,7 +200,7 @@ export default function(
   }
   if (action.type === NEW_STANDALONE) {
     const newCampaign: Campaign = {
-      uuid: uuid.v4(),
+      uuid: action.uuid,
       name: action.name,
       showInterludes: true,
       chaosBag: {},
@@ -250,7 +254,7 @@ export default function(
     };
 
     const newCampaign: Campaign = {
-      uuid: uuid.v4(),
+      uuid: action.uuid,
       name: action.name,
       showInterludes: true,
       cycleCode: action.cycleCode,

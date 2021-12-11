@@ -37,7 +37,7 @@ interface Props {
   showCountDialog: ShowCountDialog;
   showLinkedScenario?: ShowScenario;
   displayLinkScenarioCount?: number;
-  footerButtons: React.ReactNode;
+  footerButtons?: React.ReactNode;
   login: () => void;
 }
 
@@ -53,10 +53,10 @@ export default function CampaignDetailTab({
   const { campaignId, campaign, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
 
   const deckActions = useDeckActions();
-  const deckUpgradeCompleted = useCallback(async (deck: Deck, xp: number, id: StepId) => {
+  const deckUpgradeCompleted = useCallback(async(deck: Deck, xp: number, id: StepId) => {
     const [choices, , delayedDeckEdit] = campaignState.numberChoices(id.id, id.scenario);
     if (choices && delayedDeckEdit) {
-     await campaignState.setNumberChoices(
+      await campaignState.setNumberChoices(
         id.id,
         choices,
         getDeckId(deck),

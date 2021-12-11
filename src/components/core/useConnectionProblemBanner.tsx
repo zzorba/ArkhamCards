@@ -8,7 +8,6 @@ import StyleContext from '@styles/StyleContext';
 import space, { s } from '@styles/space';
 import COLORS from '@styles/colors';
 import AppIcon from '@icons/AppIcon';
-import colors from '@styles/colors';
 
 interface Props {
   width: number;
@@ -19,7 +18,7 @@ interface Props {
 }
 
 export default function useConnectionProblemBanner({ width, arkhamdbState }: Props): [React.ReactNode | null, number] {
-  const { fontScale, typography } = useContext(StyleContext);
+  const { fontScale, colors, typography } = useContext(StyleContext);
   const [{ networkType, isConnected }] = useNetworkStatus();
   if (!arkhamdbState?.error && networkType !== NetInfoStateType.none) {
     return [null, 0];

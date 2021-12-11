@@ -347,13 +347,14 @@ export default function useFriendFeedComponent({ componentId, userId, handleScro
     setRefreshing(false);
   }, [refetchMyProfile, refetchProfile]);
 
+  const hasSearch = !!handleScroll;
   const data: FriendFeedItem[] = useMemo(() => {
-    const paddingItem: PaddingItem | undefined = !!handleScroll ? { type: 'padding', id: 'padding', padding: SEARCH_BAR_HEIGHT } : undefined;
+    const paddingItem: PaddingItem | undefined = hasSearch ? { type: 'padding', id: 'padding', padding: SEARCH_BAR_HEIGHT } : undefined;
     return [
       ...(paddingItem ? [paddingItem] : []),
       ...toFeed(isSelf, profile),
     ];
-  }, [toFeed, isSelf, profile, !!handleScroll]);
+  }, [toFeed, isSelf, profile, hasSearch]);
   const searchResultsError = searchResults?.error;
   const header = useMemo(() => {
     const spacer = Platform.OS === 'android' && <View style={styles.searchBarPadding} />;

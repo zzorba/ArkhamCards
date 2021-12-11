@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useContext, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useContext } from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
@@ -26,19 +26,21 @@ import StyleContext from '@styles/StyleContext';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import CampaignErrorView from '@components/campaignguide/CampaignErrorView';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
+import { useLinkedCampaignId } from '@components/campaign/hooks';
 
 export interface LinkedCampaignGuideProps {
   campaignId: CampaignId;
   campaignIdA: CampaignId;
   campaignIdB: CampaignId;
+  upload?: boolean;
 }
 
 type Props = LinkedCampaignGuideProps & NavigationProps & LoginStateProps;
 
 function LinkedCampaignGuideView(props: Props) {
-  const { componentId, login } = props;
+  const { componentId, login, upload } = props;
   const [countDialog, showCountDialog] = useCountDialog();
-  const [{ campaignId, campaignIdA, campaignIdB }, setCampaignLinkedServerId] = useState({
+  const [{ campaignId, campaignIdA, campaignIdB }, setCampaignLinkedServerId, uploadingCampaign] = useLinkedCampaignId({
     campaignId: props.campaignId,
     campaignIdA: props.campaignIdA,
     campaignIdB: props.campaignIdB,
@@ -121,6 +123,7 @@ function LinkedCampaignGuideView(props: Props) {
           setCampaignServerId={undefined}
           deckActions={deckActions}
           showAlert={showAlert}
+          upload={upload}
         />
         <DeleteCampaignButton
           componentId={componentId}
@@ -131,7 +134,7 @@ function LinkedCampaignGuideView(props: Props) {
         />
       </View>
     );
-  }, [showAlert, setCampaignLinkedServerId, updateCampaignActions, typography, campaign, deckActions, componentId, campaignId]);
+  }, [showAlert, setCampaignLinkedServerId, updateCampaignActions, typography, campaign, deckActions, componentId, campaignId, upload]);
 
   const campaignATab = useMemo(() => {
     if (!campaignDataA) {
@@ -171,7 +174,7 @@ function LinkedCampaignGuideView(props: Props) {
     };
   }, [campaignDataA, processedCampaignA, processedCampaignAError, contextA,
     componentId, displayLinkScenarioCount, footerButtons, updateCampaignActions,
-    showCampaignScenarioB, showCountDialog, showAlert]);
+    login, showCampaignScenarioB, showCountDialog, showAlert]);
   const campaignBTab = useMemo(() => {
     if (!campaignDataB) {
       return null;
@@ -200,7 +203,6 @@ function LinkedCampaignGuideView(props: Props) {
               showAlert={showAlert}
               showCountDialog={showCountDialog}
               displayLinkScenarioCount={displayLinkScenarioCount}
-              footerButtons={footerButtons}
               updateCampaignActions={updateCampaignActions}
               login={login}
             />
@@ -208,7 +210,7 @@ function LinkedCampaignGuideView(props: Props) {
         </SafeAreaView>
       ),
     };
-  }, [campaignDataB, processedCampaignB, processedCampaignBError, contextB, componentId, displayLinkScenarioCount, footerButtons,
+  }, [campaignDataB, processedCampaignB, processedCampaignBError, contextB, componentId, displayLinkScenarioCount,
     updateCampaignActions, showCampaignScenarioA, showCountDialog, showAlert, login]);
   const tabs = useMemo(() => {
     if (!campaignATab || !campaignBTab) {
@@ -218,6 +220,12 @@ function LinkedCampaignGuideView(props: Props) {
   }, [campaignATab, campaignBTab]);
   const [tabView, setSelectedTab] = useTabView({ tabs });
   setSelectedTabRef.current = setSelectedTab;
+
+  if (!campaign && campaignId.serverId) {
+    return (
+      <LoadingSpinner large message={uploadingCampaign ? t`Uploading campaign` : undefined} />
+    );
+  }
   return (
     <View style={styles.wrapper}>
       { tabView }

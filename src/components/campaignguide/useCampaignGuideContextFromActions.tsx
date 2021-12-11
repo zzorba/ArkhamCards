@@ -149,7 +149,7 @@ export default function useCampaignGuideContextFromActions(
     ));
   }, [dispatch, campaignId, remoteGuideActions, userId]);
 
-  const setNumberChoices = useCallback(async (stepId: string, choices: NumberChoices, deckId?: DeckId, deckEdits?: DelayedDeckEdits, scenarioId?: string): Promise<void> => {
+  const setNumberChoices = useCallback(async(stepId: string, choices: NumberChoices, deckId?: DeckId, deckEdits?: DelayedDeckEdits, scenarioId?: string): Promise<void> => {
     return dispatch(guideActions.setScenarioNumberChoices(
       userId,
       remoteGuideActions,

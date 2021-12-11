@@ -27,11 +27,11 @@ import withLoginState, { LoginStateProps } from '@components/core/withLoginState
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
-type Props = CampaignGuideProps & NavigationProps & InjectedCampaignGuideContextProps & LoginStateProps;
+type Props = CampaignGuideProps & NavigationProps & InjectedCampaignGuideContextProps & LoginStateProps & { upload?: boolean };
 
 function CampaignGuideView(props: Props) {
   const [countDialog, showCountDialog] = useCountDialog();
-  const { componentId, setCampaignServerId, login } = props;
+  const { componentId, setCampaignServerId, login, upload } = props;
   const campaignData = useContext(CampaignGuideContext);
   const { typography } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
@@ -101,6 +101,7 @@ function CampaignGuideView(props: Props) {
           setCampaignServerId={setCampaignServerId}
           showAlert={showAlert}
           deckActions={deckActions}
+          upload={upload}
         />
         <DeleteCampaignButton
           componentId={componentId}
@@ -111,7 +112,7 @@ function CampaignGuideView(props: Props) {
         />
       </View>
     );
-  }, [componentId, campaign, campaignId, deckActions, typography, customData, updateCampaignActions, downloadPressed, setCampaignServerId, showAlert]);
+  }, [componentId, campaign, campaignId, deckActions, typography, customData, updateCampaignActions, upload, downloadPressed, setCampaignServerId, showAlert]);
   if (!processedCampaign) {
     if (processedCampaignError) {
       return <CampaignErrorView message={processedCampaignError} />;

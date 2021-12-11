@@ -83,7 +83,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
     return investigators[deck.deck.investigator_code];
   }, [deck, investigators]);
 
-  const deckUpgradeComplete = useCallback(async (deck: Deck) => {
+  const deckUpgradeComplete = useCallback(async(deck: Deck) => {
     if (campaignId && traumaUpdate) {
       return dispatch(updateCampaignInvestigatorTrauma(updateCampaignActions, campaignId, deck.investigator_code, traumaUpdate));
     }

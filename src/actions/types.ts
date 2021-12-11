@@ -821,6 +821,7 @@ export interface SetPackSpoilerAction {
 export const NEW_CAMPAIGN = 'NEW_CAMPAIGN';
 export interface NewCampaignAction {
   type: typeof NEW_CAMPAIGN;
+  uuid: string;
   now: Date;
   name: string;
   difficulty?: CampaignDifficulty;
@@ -841,6 +842,7 @@ export interface StandaloneId {
 export const NEW_STANDALONE = 'NEW_STANDALONE';
 export interface NewStandaloneCampaignAction {
   type: typeof NEW_STANDALONE;
+  uuid: string;
   now: Date;
   name: string;
   standaloneId: StandaloneId;
@@ -851,6 +853,9 @@ export interface NewStandaloneCampaignAction {
 export const NEW_LINKED_CAMPAIGN = 'NEW_LINKED_CAMPAIGN';
 export interface NewLinkedCampaignAction {
   type: typeof NEW_LINKED_CAMPAIGN;
+  uuid: string;
+  uuidA: string;
+  uuidB: string;
   now: Date;
   name: string;
   weaknessSet: WeaknessSet;
