@@ -100,16 +100,16 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
   function providerWrapper<Props>(
     ScreenComponenet: React.ComponentType<Props>,
   ) {
-    return () => (props: Props) => (
+    return () => gestureHandlerRootHOC((props: Props) => (
       <Provider store={store}>
         <ScreenComponenet {...props} />
       </Provider>
-    );
+    ));
   }
 
-  Navigation.registerComponent('Browse.Cards', providerWrapper(gestureHandlerRootHOC(BrowseCardsView)), () => BrowseCardsView);
-  Navigation.registerComponent('My.Campaigns', providerWrapper(gestureHandlerRootHOC(MyCampaignsView)), () => MyCampaignsView);
-  Navigation.registerComponent('My.Decks', providerWrapper(gestureHandlerRootHOC(MyDecksView)), () => MyDecksView);
+  Navigation.registerComponent('Browse.Cards', providerWrapper(BrowseCardsView), () => BrowseCardsView);
+  Navigation.registerComponent('My.Campaigns', providerWrapper(MyCampaignsView), () => MyCampaignsView);
+  Navigation.registerComponent('My.Decks', providerWrapper(MyDecksView), () => MyDecksView);
   Navigation.registerComponent('Settings', providerWrapper(SettingsView), () => SettingsView);
   Navigation.registerComponent('SortButton', providerWrapper(SortButton), () => SortButton);
   Navigation.registerComponent('TuneButton', providerWrapper(TuneButton), () => TuneButton);
@@ -118,7 +118,7 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
   Navigation.setLazyComponentRegistrator((componentName: string | number) => {
     const RootComponent = getRootComponent(componentName);
     if (RootComponent) {
-      Navigation.registerComponent(componentName, providerWrapper(gestureHandlerRootHOC(RootComponent)), () => RootComponent);
+      Navigation.registerComponent(componentName, providerWrapper(RootComponent), () => RootComponent);
       return;
     }
     const StandardComponent = getStandardComponent(componentName);

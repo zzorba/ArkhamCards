@@ -9,7 +9,8 @@ import { ApolloProvider } from '@apollo/client';
 import { Navigation } from 'react-native-navigation';
 import Crashes from 'appcenter-crashes';
 import database from '@react-native-firebase/database';
-import SQLite from 'react-native-sqlite-storage';
+import 'react-native-sqlite-storage';
+import 'react-native-gesture-handler';
 import 'reflect-metadata';
 
 import DatabaseProvider from './src/data/sqlite/DatabaseProvider';
