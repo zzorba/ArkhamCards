@@ -4737,7 +4737,7 @@ msgid "Which tarot card is impacting the chaos bag?"
 msgstr "혼돈 주머니에 영향을 주는 타로 카드는 무엇입니까?"
 
 msgid "Replace a skull with a 0 token."
-msgstr "해골 토큰 1개를 0 토큰 1개로 대체"
+msgstr "해골 토큰 1개를 0 토큰 1개로 대체."
 
 msgid "Replace highest non-negative token with a skull."
 msgstr "음수 외 가장 큰 수의 토큰 1개를 해골 토큰으로 대체."
@@ -5013,10 +5013,10 @@ msgid ""
 msgstr "이번 게임 동안 쓰러진 모든 조사자는 결말을 해결하는 동안 자신이 원하는 트라우마 1을 겪습니다."
 
 msgid "An app update is required to access this campaign."
-msgstr ""
+msgstr "해당 캠페인에 접근하기 위해서는 앱 업데이트가 필요합니다."
 
 msgid "Judgement · XX (Inverted)"
-msgstr ""
+msgstr "심판 · XX (역위치)"
 
 #, javascript-format
 msgctxt "masculine"
