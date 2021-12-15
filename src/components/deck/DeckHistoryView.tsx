@@ -59,6 +59,7 @@ export default function DeckHistoryView({
         (currentDeck && deckEdits?.meta) || (deck.deck.meta || {}),
         (currentDeck && deckEdits?.slots) || deck.deck.slots || {},
         (currentDeck && deckEdits?.ignoreDeckLimitSlots) || deck.deck.ignoreDeckLimitSlots,
+        (currentDeck && deckEdits?.side) || deck.deck.sideSlots || {},
         cards,
         deck.previousDeck,
         currentXpAdjustment !== undefined ? currentXpAdjustment : (deck.deck.xp_adjustment || 0),

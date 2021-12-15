@@ -440,6 +440,46 @@ function DeckDetailView({
     });
   }, [componentId, setFabOpen, setMenuOpen, id, deck, cards, campaign, colors, addedBasicWeaknesses, deckEditsRef, setMode]);
 
+  const onEditSidePressed = useCallback(() => {
+    if (!deck || !cards) {
+      return;
+    }
+    if (!deckEditsRef.current?.mode || deckEditsRef.current.mode === 'view') {
+      setMode('edit');
+    }
+    setFabOpen(false);
+    setMenuOpen(false);
+    const investigator = cards[deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
+    Navigation.push<EditDeckProps>(componentId, {
+      component: {
+        name: 'Deck.EditAddCards',
+        passProps: {
+          id,
+          side: true,
+        },
+        options: {
+          statusBar: {
+            style: 'light',
+            backgroundColor,
+          },
+          topBar: {
+            title: {
+              text: t`Edit Side Deck`,
+              color: 'white',
+            },
+            backButton: {
+              title: t`Back`,
+              color: 'white',
+            },
+            background: {
+              color: backgroundColor,
+            },
+          },
+        },
+      },
+    });
+  }, [componentId, deck, id, colors, setFabOpen, setMenuOpen, cards, deckEditsRef, setMode]);
 
   const onAddCardsPressed = useCallback(() => {
     if (!deck || !cards) {
@@ -1055,10 +1095,11 @@ function DeckDetailView({
               buttons={buttons}
               showDrawWeakness={showDrawWeakness}
               showEditCards={onAddCardsPressed}
+              showEditSpecial={deck.nextDeckId ? undefined : onEditSpecialPressed}
+              showEditSide={deck.nextDeckId ? undefined : onEditSidePressed}
               showDeckHistory={showUpgradeHistoryPressed}
               showXpAdjustmentDialog={showXpAdjustmentDialog}
               showCardUpgradeDialog={showCardUpgradeDialog}
-              showEditSpecial={deck.nextDeckId ? undefined : onEditSpecialPressed}
               signedIn={signedIn}
               login={login}
               width={width}

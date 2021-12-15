@@ -2,7 +2,7 @@ import { ActionSheetIOS, Platform, Linking } from 'react-native';
 import { Navigation, OptionsTopBar, Options, OptionsModalPresentationStyle } from 'react-native-navigation';
 import AndroidDialogPicker from 'react-native-android-dialog-picker';
 import { InAppBrowser } from '@matt-block/react-native-in-app-browser';
-import { startsWith } from 'lodash';
+import { startsWith, map, range } from 'lodash';
 import { t } from 'ttag';
 
 import { DeckChartsProps } from '@components/deck/DeckChartsView';
@@ -138,14 +138,16 @@ export function showCard(
   code: string,
   card: Card,
   colors: ThemeColors,
-  showSpoilers?: boolean,
-  tabooSetId?: number
+  showSpoilers: undefined | boolean,
+  tabooSetId?: number,
+  backCode?: string,
 ) {
   Navigation.push<CardDetailProps>(componentId, {
     component: {
       name: 'Card',
       passProps: {
         id: code,
+        back_id: backCode,
         pack_code: card.pack_code,
         showSpoilers: !!showSpoilers,
         tabooSetId,
@@ -208,6 +210,7 @@ export function showDrawSimulator(
 export function showCardSwipe(
   componentId: string,
   codes: string[],
+  controls: undefined | 'side' | ('side' | 'deck' | 'bonded' | 'special')[],
   index: number,
   colors: ThemeColors,
   initialCards?: Card[],
@@ -238,6 +241,7 @@ export function showCardSwipe(
         deckId,
         whiteNav: !!investigator,
         faction: investigator?.factionCode(),
+        controls: controls === 'side' ? map(range(0, codes.length), () => 'side') : controls,
       },
       options,
     },
@@ -324,7 +328,7 @@ export async function openUrl(
       tabooSetId
     );
     if (card) {
-      showCard(componentId, code, card, context.colors);
+      showCard(componentId, code, card, context.colors, false);
       return;
     }
   }

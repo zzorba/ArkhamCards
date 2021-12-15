@@ -20,6 +20,7 @@ import space from '@styles/space';
 
 interface Props {
   card?: Card;
+  backCard?: Card;
   componentId?: string;
   border?: boolean;
   size?: 'large' | 'small' | 'tiny';
@@ -27,6 +28,7 @@ interface Props {
   yithian?: boolean;
   imageLink?: boolean;
   badge?: 'upgrade' | 'deck';
+  tabooSetId?: number;
 }
 
 const IMAGE_SIZE = {
@@ -50,6 +52,7 @@ function getImpliedSize(size: 'large' | 'small' | 'tiny', fontScale: number) {
 
 function InvestigatorImage({
   card,
+  backCard,
   componentId,
   border,
   size = 'large',
@@ -57,6 +60,7 @@ function InvestigatorImage({
   yithian,
   imageLink,
   badge,
+  tabooSetId,
 }: Props) {
   const { colors, fontScale, shadow } = useContext(StyleContext);
 
@@ -65,10 +69,10 @@ function InvestigatorImage({
       if (imageLink) {
         showCardImage(componentId, card, colors);
       } else {
-        showCard(componentId, card.code, card, colors, true);
+        showCard(componentId, card.code, card, colors, true, tabooSetId, backCard?.code);
       }
     }
-  }, [card, componentId, imageLink, colors]);
+  }, [card, backCard, tabooSetId, componentId, imageLink, colors]);
 
   const impliedSize = useMemo(() => {
     return getImpliedSize(size, fontScale);

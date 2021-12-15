@@ -15,7 +15,7 @@ import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import { where } from '@data/sqlite/query';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { SEARCH_REGEX } from '@data/types/Card';
+import { searchNormalize } from '@data/types/Card';
 
 interface Props {
   componentId: string;
@@ -94,7 +94,7 @@ export default function RulesView({ componentId }: Props) {
     db.getRulesPaged(
       0,
       100,
-      where(`r.parentRule is null AND (r.s_title LIKE '%' || :titleSearchTerm || '%' OR r.text LIKE '%' || :searchTerm || '%' OR (sub_rules.s_title is not null AND sub_rules.s_title LIKE '%' || :titleSearchTerm || '%') OR (sub_rules.text is not null AND sub_rules.text LIKE '%' || :searchTerm || '%'))`, { searchTerm, titleSearchTerm: searchTerm.toLocaleLowerCase(lang).replace(SEARCH_REGEX, '') })
+      where(`r.parentRule is null AND (r.s_title LIKE '%' || :titleSearchTerm || '%' OR r.text LIKE '%' || :searchTerm || '%' OR (sub_rules.s_title is not null AND sub_rules.s_title LIKE '%' || :titleSearchTerm || '%') OR (sub_rules.text is not null AND sub_rules.text LIKE '%' || :searchTerm || '%'))`, { searchTerm, titleSearchTerm: searchNormalize(searchTerm, lang) })
     ).then((rules: Rule[]) => setSearchResults({
       term: searchTerm,
       rules,

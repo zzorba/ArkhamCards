@@ -404,7 +404,7 @@ interface Props {
 }
 
 export default function ArkhamCardsLoginButton({ showAlert }: Props) {
-  const { darkMode, typography } = useContext(StyleContext);
+  const { darkMode, typography, width } = useContext(StyleContext);
   const dispatch = useDispatch();
   const { userId, loading } = useContext(ArkhamCardsAuthContext);
   const [emailLogin, toggleEmailLogin, setEmailLogin] = useFlag(false);
@@ -486,14 +486,13 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   const signInContent = useMemo(() => {
     return (
       <View style={styles.center}>
-        <View style={{ flexDirection: 'row', paddingBottom: s + xs }}>
+        <View style={[space.paddingTopS, { flexDirection: 'row', paddingBottom: s + xs }]}>
           <DeckButton
             thin
             color="red"
             icon="email"
             title={mode === 'create' ? t`Sign up with email` : t`Sign in with email`}
             onPress={toggleEmailLogin}
-            shrink
           />
         </View>
         { ((Platform.OS === 'ios' && appleAuth.isSupported) || (Platform.OS === 'android' && appleAuthAndroid.isSupported)) && (
@@ -501,7 +500,8 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
             buttonStyle={darkMode ? AppleButton.Style.WHITE : AppleButton.Style.BLACK}
             buttonType={appleAuth.isSignUpButtonSupported && mode === 'create' ? AppleButton.Type.SIGN_UP : AppleButton.Type.SIGN_IN}
             style={[{
-              minWidth: 200,
+              flex: 1,
+              minWidth: width - s * 4,
               minHeight: 45,
             }, space.marginBottomS]}
             onPress={signInToApple}
@@ -509,12 +509,18 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
         ) }
         <GoogleSigninButton
           onPress={signInToGoogle}
-          size={GoogleSigninButton.Size.Standard}
+          size={GoogleSigninButton.Size.Wide}
+          style={{ minWidth: width - s * 3 }}
           color={darkMode ? GoogleSigninButton.Color.Light : GoogleSigninButton.Color.Dark}
         />
+        <View style={[space.paddingTopS, space.paddingBottomS]}>
+          <Text style={typography.text}>
+            { t`Note that this is an ArkhamCards account, which is separate from your ArkhamDB account.` }
+          </Text>
+        </View>
       </View>
     );
-  }, [darkMode, mode, signInToApple, signInToGoogle, toggleEmailLogin]);
+  }, [darkMode, mode, width, typography, signInToApple, signInToGoogle, toggleEmailLogin]);
 
   const dialogContent = useMemo(() => {
     if (!mode) {

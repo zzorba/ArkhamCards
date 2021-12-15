@@ -291,6 +291,7 @@ function NewDeckOptionsDialog({
     showCardSwipe(
       componentId,
       map(visibleCards, card => card.code),
+      undefined,
       index,
       colors,
       visibleCards,

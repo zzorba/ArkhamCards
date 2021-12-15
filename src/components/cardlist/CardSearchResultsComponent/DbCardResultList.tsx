@@ -69,6 +69,7 @@ interface Props {
   handleScroll?: (...args: any[]) => void;
   showHeader?: () => void;
   storyOnly?: boolean;
+  sideDeck?: boolean;
   showNonCollection?: boolean;
 }
 
@@ -252,6 +253,7 @@ interface SectionFeedProps {
   deckCardCounts?: Slots;
   originalDeckSlots?: Slots;
   storyOnly?: boolean;
+  sideDeck?: boolean;
   noSearch?: boolean;
   hasHeader?: boolean;
   investigator?: Card;
@@ -285,6 +287,7 @@ function useSectionFeed({
   textQuery,
   showAllNonCollection,
   storyOnly,
+  sideDeck,
   originalDeckSlots,
   deckCardCounts,
 }: SectionFeedProps): SectionFeed {
@@ -339,7 +342,7 @@ function useSectionFeed({
     return () => {
       ignore = true;
     };
-  }, [db, storyQuery, textQuery, filterQuery, deckQuery, sortIgnoreQuotes, tabooSetId, sort]);
+  }, [db, storyQuery, textQuery, filterQuery, deckQuery, sortIgnoreQuotes, tabooSetId, sort, sideDeck]);
   const partialCards = textQuery ? textQueryCards : mainQueryCards;
   const [showSpoilers, setShowSpoilers] = useState(false);
 
@@ -368,7 +371,7 @@ function useSectionFeed({
           type: 'header',
           id: 'deck_superheader',
           header: {
-            superTitle: t`In Deck`,
+            superTitle: sideDeck ? t`Side Deck` : t`In Deck`,
             superTitleIcon: 'refresh',
             onPress: hasDeckChanges ? refreshDeck : undefined,
           },
@@ -461,7 +464,8 @@ function useSectionFeed({
       appendFooterButtons(currentSectionId, showSpoilers ? 1 : 0);
     }
     return [result, items, spoilerCards.length];
-  }, [partialCards, deckCardsLoading, investigator, deckCards, showNonCollection, ignore_collection, packInCollection, packSpoiler, showSpoilers, editCollectionSettings, setShowNonCollection, showAllNonCollection, hasDeckChanges, refreshDeck]);
+  }, [partialCards, deckCardsLoading, deckCards, showNonCollection, ignore_collection, packInCollection, packSpoiler, showSpoilers, hasDeckChanges,
+    sideDeck, investigator, showAllNonCollection, editCollectionSettings, setShowNonCollection, refreshDeck]);
 
   const { cards, fetchMore } = useCardFetcher(visibleCards);
   const [refreshing, setRefreshing] = useState(true);
@@ -779,6 +783,7 @@ export default function({
   handleScroll,
   showHeader,
   storyOnly,
+  sideDeck,
   showNonCollection,
 }: Props) {
   const { db } = useContext(DatabaseContext);
@@ -811,9 +816,10 @@ export default function({
     textQuery,
     searchTerm,
     showAllNonCollection: showNonCollection,
-    deckCardCounts: deckEdits?.slots,
-    originalDeckSlots: currentDeckOnly ? undefined : deck?.deck.slots,
+    deckCardCounts: sideDeck ? deckEdits?.side : deckEdits?.slots,
+    originalDeckSlots: (currentDeckOnly && (sideDeck ? deck?.deck.sideSlots : deck?.deck.slots)) || undefined,
     storyOnly,
+    sideDeck,
   });
   const dispatch = useDispatch();
   useEffect(() => {
@@ -866,6 +872,7 @@ export default function({
     showCardSwipe(
       componentId,
       codes,
+      sideDeck ? 'side' : undefined,
       index,
       colors,
       cards,
@@ -874,29 +881,39 @@ export default function({
       deckId,
       investigator
     );
-  }, [feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, cardPressed]);
+  }, [feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, sideDeck, cardPressed]);
   const deckLimits: ControlType[] = useMemo(() => deckId ? [
     {
       type: 'deck',
       deckId,
       limit: 0,
+      side: !!sideDeck,
     },
     {
       type: 'deck',
       deckId,
       limit: 1,
+      side: !!sideDeck,
     },
     {
       type: 'deck',
       deckId,
       limit: 2,
+      side: !!sideDeck,
     },
     {
       type: 'deck',
       deckId,
       limit: 3,
+      side: !!sideDeck,
     },
-  ] : [], [deckId]);
+    {
+      type: 'deck',
+      deckId,
+      limit: 4,
+      side: !!sideDeck,
+    },
+  ] : [], [deckId, sideDeck]);
   const listFooter = useCallback(() => {
     if (refreshing) {
       return <View />;

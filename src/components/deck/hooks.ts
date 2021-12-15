@@ -2,7 +2,7 @@ import { MutableRefObject, useCallback, useContext, useEffect, useMemo, useRef, 
 import useDebouncedEffect from 'use-debounced-effect-hook';
 import { Navigation } from 'react-native-navigation';
 import { Platform } from 'react-native';
-import { forEach, keys, range } from 'lodash';
+import { find, forEach, keys, range, uniq } from 'lodash';
 import deepEqual from 'deep-equal';
 import { ngettext, msgid, t } from 'ttag';
 import { useDispatch, useSelector } from 'react-redux';
@@ -52,10 +52,13 @@ export function useSimpleDeckEdits(id: DeckId | undefined): EditDeckState | unde
   return useSelector((state: AppState) => deckEditsSelector(state, id));
 }
 
-export function useDeckSlotCount({ uuid }: DeckId, code: string): number {
+export function useDeckSlotCount({ uuid }: DeckId, code: string, side?: boolean): number {
   return useSelector((state: AppState) => {
     if (!state.deckEdits.editting || !state.deckEdits.editting[uuid] || !state.deckEdits.edits || !state.deckEdits.edits[uuid]) {
       return 0;
+    }
+    if (side) {
+      return state.deckEdits.edits[uuid]?.side[code] || 0;
     }
     return state.deckEdits.edits[uuid]?.slots[code] || 0;
   });
@@ -85,6 +88,7 @@ export function useDeckEdits(
         slots: initialDeck.deck.slots || {},
         ignoreDeckLimitSlots: initialDeck.deck.ignoreDeckLimitSlots || {},
         meta: initialDeck.deck.meta || {},
+        side: initialDeck.deck.sideSlots || {},
         mode: 'view',
         editable: false,
       };
@@ -135,7 +139,18 @@ function useParsedDeckHelper(
   useEffect(() => {
     if (deck && cards && fetchIfMissing && !parsedDeck && !initialized.current) {
       initialized.current = true;
-      setParsedDeck(parseDeck(deck.deck, deck.deck.meta || {}, deck.deck.slots || {}, deck.deck.ignoreDeckLimitSlots, cards, deck.previousDeck, deck.deck.xp_adjustment || 0));
+      setParsedDeck(
+        parseDeck(
+          deck.deck,
+          deck.deck.meta || {},
+          deck.deck.slots || {},
+          deck.deck.ignoreDeckLimitSlots,
+          deck.deck.sideSlots || {},
+          cards,
+          deck.previousDeck,
+          deck.deck.xp_adjustment || 0
+        )
+      );
     }
   }, [deck, cards, fetchIfMissing, parsedDeck]);
   useDebouncedEffect(() => {
@@ -146,6 +161,7 @@ function useParsedDeckHelper(
           deckEdits.meta,
           deckEdits.slots,
           deckEdits.ignoreDeckLimitSlots,
+          deckEdits.side,
           cards,
           deck.previousDeck,
           deckEdits.xpAdjustment
@@ -209,8 +225,9 @@ export function useDeckEditState({
   const [slotDeltas, setSlotDeltas] = useState<{
     removals: Slots;
     additions: Slots;
-    ignoreDeckLimitChanged: boolean
-  }>({ removals: {}, additions: {}, ignoreDeckLimitChanged: false });
+    ignoreDeckLimitChanged: boolean;
+    sideChanged: boolean;
+  }>({ removals: {}, additions: {}, ignoreDeckLimitChanged: false, sideChanged: false });
 
   useEffect(() => {
     if (!visible || !deck || !deckEdits) {
@@ -220,10 +237,14 @@ export function useDeckEditState({
       removals: Slots;
       additions: Slots;
       ignoreDeckLimitChanged: boolean;
+      sideChanged: boolean;
     } = {
       removals: {},
       additions: {},
       ignoreDeckLimitChanged: false,
+      sideChanged: !!find(uniq([...keys(deck.sideSlots || {}), ...keys(deckEdits.side)]), code => {
+        return (deck.sideSlots?.[code] || 0) !== (deckEdits.side[code] || 0);
+      }),
     };
     forEach(deck.slots, (deckCount, code) => {
       const currentDeckCount = deckEdits.slots[code] || 0;
@@ -252,6 +273,7 @@ export function useDeckEditState({
       keys(slotDeltas.removals).length > 0 ||
       keys(slotDeltas.additions).length > 0 ||
       slotDeltas.ignoreDeckLimitChanged ||
+      slotDeltas.sideChanged ||
       metaChanged
     );
     setSlotDeltas(slotDeltas);

@@ -1,5 +1,6 @@
 import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'typeorm/browser';
 import { forEach, filter, keys, map, min, omit, find, sortBy, indexOf } from 'lodash';
+import { removeDiacriticalMarks } from 'remove-diacritical-marks'
 import { t } from 'ttag';
 
 import { SortType, SORT_BY_COST, SORT_BY_CYCLE, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_FACTION_XP_TYPE_COST, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData } from '@actions/types';
@@ -14,7 +15,11 @@ const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+(\\s\\[per_investigator\\])?\\
 const BONDED_REGEX = new RegExp('.*Bonded\\s*\\((.+?)\\)\\..*');
 const SEAL_REGEX = new RegExp('.*Seal \\(.+\\)\\..*');
 const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all|(X total)) damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror');
-export const SEARCH_REGEX = /["“”‹›«»〞〝〟„＂❝❞‘’❛❜‛',‚❮❯\(\)\-\.…]/g;
+const SEARCH_REGEX = /["“”‹›«»〞〝〟„＂❝❞‘’❛❜‛',‚❮❯\(\)\-\.…]/g;
+
+export function searchNormalize(text: string, lang: string) {
+  return removeDiacriticalMarks(text.toLocaleLowerCase(lang).replace(SEARCH_REGEX, ''));
+}
 
 export const CARD_NUM_COLUMNS = 126;
 function arkham_num(value: number | null | undefined) {
@@ -1152,35 +1157,16 @@ export default class Card {
       json.code === '98007' || // Norman
       json.code === '99001'; // PROMO Marie
 
-    const s_search_name = filter([
-      renderName && renderName.toLocaleLowerCase(lang),
-      renderSubname && renderSubname.toLocaleLowerCase(lang),
-    ], x => !!x).join(' ').replace(SEARCH_REGEX, '');
-    const s_search_name_back = filter([
-      name && name.toLocaleLowerCase(lang),
-      json.subname && json.subname.toLocaleLowerCase(lang),
-      json.back_name && json.back_name.toLocaleLowerCase(lang),
-    ], x => !!x).join(' ').replace(SEARCH_REGEX, '');
-    const s_search_game = filter([
-      json.text && json.text.toLocaleLowerCase(lang),
-      json.traits && json.traits.toLocaleLowerCase(lang),
-    ]).join(' ').replace(SEARCH_REGEX, '');
-    const s_search_game_back = ((json.back_text && json.back_text.toLocaleLowerCase(lang)) || '').replace(SEARCH_REGEX, '');
-    const s_search_flavor = ((json.flavor && json.flavor.toLocaleLowerCase(lang)) || '').replace(SEARCH_REGEX, '');
-    const s_search_flavor_back = ((json.back_flavor && json.back_flavor.toLocaleLowerCase(lang)) || '').replace(SEARCH_REGEX, '');
+    const s_search_name = searchNormalize(filter([renderName, renderSubname], x => !!x).join(' '), lang);
+    const s_search_name_back = searchNormalize(filter([name, json.subname, json.back_name], x => !!x).join(' '), lang);
+    const s_search_game = searchNormalize(filter([json.text, json.traits], x => !!x).join(' '), lang);
+    const s_search_game_back = ((json.back_text && searchNormalize(json.back_text, lang)) || '');
+    const s_search_flavor = ((json.flavor && searchNormalize(json.flavor, lang)) || '');
+    const s_search_flavor_back = ((json.back_flavor && searchNormalize(json.back_flavor, lang)) || '');
 
-    const s_search_real_name = filter([
-      json.real_name.toLocaleLowerCase('en'),
-      json.real_subname && json.real_subname.toLocaleLowerCase('en'),
-    ], x => !!x).join(' ').replace(SEARCH_REGEX, '');
-    const s_search_real_name_back = filter([
-      json.real_name.toLocaleLowerCase('en'),
-      json.real_subname && json.real_subname.toLocaleLowerCase('en'),
-    ], x => !!x).join(' ').replace(SEARCH_REGEX, '');
-    const s_search_real_game = filter([
-      json.real_text && json.real_text.toLocaleLowerCase('en'),
-      json.real_traits && json.real_traits.toLocaleLowerCase('en'),
-    ]).join(' ').replace(SEARCH_REGEX, '');
+    const s_search_real_name = searchNormalize(filter([json.real_name, json.real_subname], x => !!x).join(' '), 'en');
+    const s_search_real_name_back = searchNormalize(filter([json.real_name, json.real_subname], x => !!x).join(' '), 'en');
+    const s_search_real_game = searchNormalize(filter([json.real_text, json.real_traits], x => !!x).join(' '), 'en');
     let result = {
       ...json,
       ...eskills,

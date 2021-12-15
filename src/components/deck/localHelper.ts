@@ -41,7 +41,8 @@ export function updateLocalDeck(
   xp_adjustment?: number,
   tabooSetId?: number,
   meta?: DeckMeta,
-  description_md?: string
+  description_md?: string,
+  sideSlots?: Slots
 ): Deck {
   const versionParts = (deck.version || '0.1').split('.');
   // @ts-ignore
@@ -60,6 +61,7 @@ export function updateLocalDeck(
     taboo_id: tabooSetId,
     meta,
     description_md,
+    sideSlots,
   };
 }
 

@@ -31,7 +31,7 @@ interface Props {
   deckId?: DeckId;
   hideVersatile?: boolean;
   setHideVersatile?: (value: boolean) => void;
-  storyOnly?: boolean;
+  mode?: 'story' | 'side';
   includeDuplicates?: boolean;
 }
 
@@ -118,7 +118,7 @@ export default function CardSearchComponent(props: Props) {
     investigator,
     hideVersatile,
     setHideVersatile,
-    storyOnly,
+    mode,
     includeDuplicates,
   } = props;
   const { fontScale, typography, width } = useContext(StyleContext);
@@ -227,7 +227,7 @@ export default function CardSearchComponent(props: Props) {
       headerItems={headerItems}
       headerHeight={headerHeight}
       visible={visible}
-      storyOnly={storyOnly}
+      mode={mode}
       initialSort={sort}
       includeDuplicates={includeDuplicates}
     />

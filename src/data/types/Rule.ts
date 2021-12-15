@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryColumn, ManyToOne, OneToMany } from 'typeorm/browser';
 import { Rule as JsonRule } from '@data/scenario/types';
 import { map } from 'lodash';
-import { SEARCH_REGEX } from './Card';
+import { searchNormalize } from './Card';
 
 class RuleTableCell {
   @Column('text', { nullable: true })
@@ -50,7 +50,7 @@ export default class Rule {
     result.id = rule.id;
     result.order = order;
     result.title = rule.title;
-    result.s_title = rule.title.toLocaleLowerCase(lang).replace(SEARCH_REGEX, '');
+    result.s_title = searchNormalize(rule.title, lang);
     result.lang = lang;
     result.text = rule.text;
     result.table = rule.table ? map(rule.table, jsonTableRow => {

@@ -138,6 +138,7 @@
     "redux-thunk": "2.4.1",
     "reflect-metadata": "0.1.13",
     "regex-escape": "3.4.10",
+    "remove-diacritical-marks": "^1.0.1",
     "reselect": "4.1.5",
     "rn-fetch-blob": "0.12.0",
     "rn-placeholder": "3.0.3",

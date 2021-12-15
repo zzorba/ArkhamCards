@@ -675,6 +675,7 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
           description: deckEditsRef.current.descriptionChange,
           slots: deckEditsRef.current.slots,
           ignoreDeckLimitSlots: deckEditsRef.current.ignoreDeckLimitSlots,
+          side: deckEditsRef.current.side,
           problem: problemField,
           spentXp: parsedDeckRef.current.changes?.spentXp || 0,
           xpAdjustment: deckEditsRef.current.xpAdjustment,

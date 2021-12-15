@@ -282,6 +282,7 @@ export interface SaveDeckChanges {
   description?: string;
   slots?: Slots;
   ignoreDeckLimitSlots?: Slots;
+  side?: Slots,
   problem?: string;
   spentXp?: number;
   xpAdjustment?: number;
@@ -308,7 +309,8 @@ export const saveDeckChanges = (
           (changes.xpAdjustment !== undefined && changes.xpAdjustment !== null) ? changes.xpAdjustment : (deck.xp_adjustment || 0),
           changes.tabooSetId !== undefined ? changes.tabooSetId : deck.taboo_id,
           (changes.meta !== undefined && changes.meta !== null) ? changes.meta : deck.meta,
-          (changes.description !== undefined && changes.description !== null) ? changes.description : deck.description_md
+          (changes.description !== undefined && changes.description !== null) ? changes.description : deck.description_md,
+          changes.side || deck.sideSlots || {},
         );
         dispatch(updateDeck(userId, actions, getDeckId(newDeck), newDeck, true));
         setTimeout(() => {
@@ -325,7 +327,8 @@ export const saveDeckChanges = (
           (changes.xpAdjustment !== undefined && changes.xpAdjustment !== null) ? changes.xpAdjustment : (deck.xp_adjustment || 0),
           changes.tabooSetId !== undefined ? changes.tabooSetId : deck.taboo_id,
           (changes.meta !== undefined && changes.meta !== null) ? changes.meta : deck.meta,
-          (changes.description !== undefined && changes.description !== null) ? changes.description : deck.description_md
+          (changes.description !== undefined && changes.description !== null) ? changes.description : deck.description_md,
+          changes.side || deck.sideSlots || {},
         );
         handleAuthErrors<Deck>(
           savePromise,
@@ -513,35 +516,35 @@ export function setIgnoreDeckSlot(id: DeckId, code: string, value: number): Upda
   };
 }
 
-export function incDeckSlot(id: DeckId, code: string, limit?: number): UpdateDeckEditCountsAction {
+export function incDeckSlot(id: DeckId, code: string, limit: number | undefined, side?: boolean): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,
     id,
     code: code,
     operation: 'inc',
     limit,
-    countType: 'slots',
+    countType: side ? 'side' : 'slots',
   };
 }
 
-export function decDeckSlot(id: DeckId, code: string): UpdateDeckEditCountsAction {
+export function decDeckSlot(id: DeckId, code: string, side?: boolean): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,
     id,
     code: code,
     operation: 'dec',
-    countType: 'slots',
+    countType: side ? 'side' : 'slots',
   };
 }
 
-export function setDeckSlot(id: DeckId, code: string, value: number): UpdateDeckEditCountsAction {
+export function setDeckSlot(id: DeckId, code: string, value: number, side: boolean | undefined): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,
     id,
     code: code,
     operation: 'set',
     value,
-    countType: 'slots',
+    countType: side ? 'side' : 'slots',
   };
 }
 
@@ -593,7 +596,7 @@ export function updateDeckMeta(
       } else {
         updatedMeta[update.key] = update.value as any;
         if (investigator_code === '06002' && update.key === 'deck_size_selected') {
-          dispatch(setDeckSlot(id, '06008', (parseInt(update.value, 10) - 20) / 10));
+          dispatch(setDeckSlot(id, '06008', (parseInt(update.value, 10) - 20) / 10, false));
         }
       }
     });

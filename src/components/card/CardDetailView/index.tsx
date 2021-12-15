@@ -51,6 +51,7 @@ export function rightButtonsForCard(card?: Card, color?: string) {
 
 export interface CardDetailProps {
   id: string;
+  back_id?: string;
   pack_code: string;
   showSpoilers?: boolean;
   tabooSetId?: number;
@@ -87,7 +88,7 @@ function showFaq(componentId: string, id: string) {
   });
 }
 
-function CardDetailView({ componentId, id, pack_code, showSpoilers: propsShowSpoilers, tabooSetId: tabooSetIdOverride }: Props) {
+function CardDetailView({ componentId, id, back_id, pack_code, showSpoilers: propsShowSpoilers, tabooSetId: tabooSetIdOverride }: Props) {
   const { backgroundStyle, typography, width } = useContext(StyleContext);
   const showSpoilersSelector = useCallback((state: AppState) => propsShowSpoilers || getShowSpoilers(state, pack_code), [propsShowSpoilers, pack_code]);
   const showSpoilersSetting = useSelector(showSpoilersSelector);
@@ -98,7 +99,7 @@ function CardDetailView({ componentId, id, pack_code, showSpoilers: propsShowSpo
       component: {
         name: 'Browse.InvestigatorCards',
         passProps: {
-          investigatorCode: id,
+          investigatorCode: back_id || id,
         },
         options: {
           topBar: {
@@ -112,7 +113,7 @@ function CardDetailView({ componentId, id, pack_code, showSpoilers: propsShowSpo
         },
       },
     });
-  }, [componentId, id]);
+  }, [componentId, back_id, id]);
 
   useComponentDidAppear(() => {
     Navigation.mergeOptions(componentId, options());
@@ -129,6 +130,7 @@ function CardDetailView({ componentId, id, pack_code, showSpoilers: propsShowSpo
     }
   }, componentId, [componentId, id, showInvestigatorCards]);
   const [card, loading] = useSingleCard(id, 'encounter', tabooSetIdOverride);
+  const [backCard] = useSingleCard(back_id, 'encounter', tabooSetIdOverride);
   useEffect(() => {
     if (card) {
       Navigation.mergeOptions(componentId, {
@@ -156,6 +158,7 @@ function CardDetailView({ componentId, id, pack_code, showSpoilers: propsShowSpo
         width={width}
         componentId={componentId}
         card={card}
+        backCard={backCard}
         showSpoilers={showSpoilersSetting || showSpoilers}
         toggleShowSpoilers={toggleShowSpoilers}
         showInvestigatorCards={showInvestigatorCards}
