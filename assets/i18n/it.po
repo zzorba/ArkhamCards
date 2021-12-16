@@ -877,7 +877,7 @@ msgstr "(richiesto)"
 
 #, javascript-format
 msgid "My ${ campaign } Campaign"
-msgstr "La mia ${ campaign } Campagna"
+msgstr "La mia campagna ${ campaign }"
 
 msgid "Include all basic weaknesses from these expansions"
 msgstr "Includi tutte le debolezze base da queste espansioni"
@@ -2333,7 +2333,7 @@ msgid "Choose Side-Scenario"
 msgstr "Selezione Storia Secondaria"
 
 msgid "Add side scenario"
-msgstr "Aggiungi storia secondaria"
+msgstr "Aggiungi una storia secondaria"
 
 msgid "Remove deck"
 msgstr "Rimuovi mazzo"
@@ -2818,18 +2818,12 @@ msgstr ""
 msgid "Not now"
 msgstr "Non adesso"
 
-msgid "Updated today"
-msgstr "Ultimo aggiornamento oggi"
-
-msgid "Updated yesterday"
-msgstr "Ultimo aggiornamento ieri"
-
 #, javascript-format
 msgid "Updated ${ dayOfWeek }"
-msgstr "Ultimo aggiornamento ${ dayOfWeek }"
+msgstr "Aggiornato ${ dayOfWeek }"
 
 msgid "Updated ${ dateString }"
-msgstr "Ultimo aggiornamento ${ dateString }"
+msgstr "Aggiornato ${ dateString }"
 
 msgid "Language"
 msgstr "Lingua"
@@ -4665,122 +4659,201 @@ msgid "Show Bless/Curse Odds"
 msgstr "Mostra le probabilità Benedizione/Maledizione"
 
 msgid "Sign into Arkham Cards on the Settings tab to enable"
-msgstr ""
+msgstr "Accedi ad Arkham Cards nelle Impostazioni per abilitare"
 
 msgid "Asset: Hand x2. Arcane"
-msgstr ""
+msgstr "Supporto: Mano x2. Arcano"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
-msgstr ""
+msgstr "${ spent } di ${ supplyIcon } ${ total }"
 
 msgid "Choose deck"
-msgstr ""
+msgstr "Scegli il mazzo"
 
 msgid "Frost"
-msgstr ""
+msgstr "Gelo"
 
 msgid "Database reset"
-msgstr ""
+msgstr "Ripristino del database"
 
 msgid "Please close and restart the app"
-msgstr ""
+msgstr "Per favore chiudi e riavvia l’App"
 
 msgid "Reset card database"
-msgstr ""
+msgstr "Ripristina il database delle carte"
 
 msgid "Mythos Busters"
-msgstr ""
+msgstr "Mythos Busters"
 
 #, javascript-format
 msgid ""
 "This app is made possible by the continued support of our fans on Patreon "
 "and the ${ mythosBustersLink } podcast."
 msgstr ""
+"Questa App è resa possibile dal supporto continuo dei nostri sostenitori su "
+"Patreon e il podcast ${ mythosBustersLink }."
 
 msgid ""
 "This app is made possible by the continued support of our fans on ${ "
 "patreonLink } and the ${ mythosBustersLink } podcast."
 msgstr ""
+"Questa App è resa possibile dal supporto continuo dei nostri sostenitori su "
+"${ patreonLink } e il podcast ${ mythosBustersLink }."
 
 msgid ""
 "The card database has been reset.\n"
 "\n"
 "Please close the app and restart it to trigger a full sync of card data."
 msgstr ""
+"Il database delle carte è stato ripristinato. Per favore chiudi l’App e "
+"riavviala per avviare una sincronizzazione completa dei dati delle carte."
 
 #, javascript-format
 msgid "Sqlite version: ${ sqliteVersion }"
-msgstr ""
+msgstr "Versione Sqlite: ${ sqliteVersion }"
+
+msgid "Updated today"
+msgstr "Aggiornato oggi"
+
+msgid "Updated yesterday"
+msgstr "Aggiornato ieri"
+
+msgid "An app update is required to access this campaign."
+msgstr "Per accedere a questa campagna è necessario aggiornare l’App."
+
+msgid "Assigned weaknesses"
+msgstr "Debolezze assegnate"
 
 msgid "Beta testing"
-msgstr ""
+msgstr "Beta testing"
 
 msgid "Edit Weakness Cards"
-msgstr ""
+msgstr "Modifica Carte Debolezza"
 
-msgid "Narrate"
-msgstr ""
+msgid "Review and draw weaknesses"
+msgstr "Controlla e pesca le debolezze"
 
-msgid "Negative modifier"
-msgstr ""
+msgid "Save deck upgrade"
+msgstr "Salva gli aggiornamenti del mazzo"
 
-#, javascript-format
-msgid "${ textModifier }, draws another"
-msgstr ""
+msgid "Apply deck changes from previous scenario"
+msgstr "Applica le modifiche del mazzo dallo scenario precedente"
+
+msgid "Choose expansions for basic weakness"
+msgstr "Seleziona le espansioni per le debolezze base"
+
+msgid "Uploading campaign"
+msgstr "Caricamento campagna"
+
+msgid "Resolute"
+msgstr "Risoluto"
 
 msgid "Fix duplicates"
-msgstr ""
+msgstr "Rimuovi i duplicati"
+
+msgid "Narrate"
+msgstr "Narrazione"
 
 msgid "Do you want to use the app to choose a random partner?"
-msgstr ""
+msgstr "Vuoi usare l’App per scegliere un compagno casuale?"
+
+#, javascript-format
+msgid "${ input.prompt } (choose ${ quantity })"
+msgid_plural "${ input.prompt } (choose ${ quantity })"
+msgstr[0] "${ input.prompt } (scegli ${ quantity })"
+msgstr[1] "${ input.prompt } (scegli ${ quantity })"
 
 msgid "Select more"
-msgstr ""
+msgstr "Seleziona più di uno"
 
 msgid "Record damage/horror:"
+msgstr "Annotare danni/orrori:"
+
+msgid ""
+"This deck is ownered by another player. You can record the upgrade now and "
+"they will be given an opportunity to save the changes to their deck when "
+"they next open the app."
 msgstr ""
+"Questo mazzo è posseduto da un altro giocatore. Puoi registrare gli "
+"aggiornamenti ora e gli sarà data la possibilità di salvare le modifiche "
+"nel proprio mazzo la prossima volta che aprirà l’App."
+
+msgid ""
+"Changes have been recorded. You can apply these changes to your deck on the "
+"main screen of the campaign under your investigator."
+msgstr ""
+"Le modifiche sono state registrate. Puoi applicare queste modifiche al tuo "
+"mazzo nella schermata principale della campagna sotto il tuo investigatore."
+
+msgid ""
+"Changes have been recorded. The owner of this deck can apply these changes "
+"to their deck on the main screen of the campaign under their investigator."
+msgstr ""
+"Le modifiche sono state registrate. Il proprietario di questo mazzo può "
+"applicare queste modifiche al proprio mazzo nella schermata principale "
+"della campagna sotto il proprio investigatore."
 
 msgid "Expedition Team"
-msgstr ""
+msgstr "Squadra della Spedizione"
 
 #, javascript-format
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out ${ "
 "partnerName },"
 msgstr ""
+"Alla voce ${ sectionName } del Diario della Campagna, barrate ${ "
+"partnerName },"
 
 #, javascript-format
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, write \"MIA\" next to "
 "${ partnerName }."
 msgstr ""
+"Alla voce ${ sectionName } del Diario della Campagna, scrivete “Disperso” "
+"accanto a ${ partnerName }."
 
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next "
 "to ${ partnerName }."
 msgstr ""
+"Alla voce ${ sectionName } del Diario della Campagna, barrate “Disperso” "
+"accanto a ${ partnerName }."
+
+#, javascript-format
+msgid ""
+"In the ${ sectionName } section of the Campaign Log, draw a check mark next "
+"to ${ partnerName }."
+msgstr ""
+"Alla voce ${ sectionName } del Diario della Campagna, segnate una spunta "
+"accanto a ${ partnerName }."
+
+msgid "You may heal 1 physical or mental trauma <i>(your choice)</i>"
+msgstr "Puoi curare 1 trauma fisico o mentale <i>(a tua scelta)</i>"
+
+msgid "Choose heal type"
+msgstr "Scegli un tipo di cura"
+
+msgid "Chosen heal type"
+msgstr "Tipo di cura scelto"
 
 msgid "If the lead investigator was driven <b>insane</b>."
-msgstr ""
+msgstr "Se l’investigatore capo è <b>impazzito</b>."
 
 msgid "If all investigators were driven <b>insane</b>."
-msgstr ""
+msgstr "Se tutti gli investigatori sono <b>impazziti</b>."
 
 msgid "If the lead investigator is still alive."
-msgstr ""
+msgstr "Se l’investigatore capo è ancora vivo."
 
 msgid "If all investigatore are still alive."
-msgstr ""
+msgstr "Se tutti gli investigatori sono ancora vivi."
 
 msgid "The Entity"
-msgstr ""
-
-msgid "Resolute"
-msgstr ""
+msgstr "L’Entità"
 
 msgid "MIA"
-msgstr ""
+msgstr "Disperso"
 
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of "
@@ -4796,419 +4869,464 @@ msgid ""
 "but you should be sure you have sufficient experience set aside to pay for "
 "it."
 msgstr ""
-
-msgid "Ice and Death: Part 1"
-msgstr ""
-
-msgid "Ice and Death: Part 2"
-msgstr ""
-
-msgid "Ice and Death: Part 3"
-msgstr ""
-
-msgid "Restful Night"
-msgstr ""
-
-msgid "To the Forbidden Peaks"
-msgstr ""
-
-msgid "Endless Night"
-msgstr ""
-
-msgid "City of the Elder Things"
-msgstr ""
-
-msgid "Final Night"
-msgstr ""
-
-msgid "The Heart of Madness: Part 1"
-msgstr ""
-
-msgid "The Heart of Madness: Part 2"
-msgstr ""
-
-msgid "Fatal Mirage"
-msgstr ""
-
-msgid "Fatal Mirage - Memories Discovered"
-msgstr ""
-
-msgid "Fatal Mirage - Memories Banished"
-msgstr ""
-
-msgid "Ice and Death - Locations Revealed"
-msgstr ""
-
-msgid "Ice and Death - Supplies Recovered"
-msgstr ""
-
-msgid "The Heart of Madness - Seals Placed"
-msgstr ""
-
-msgid "The Heart of Madness - Seals Recovered"
-msgstr ""
-
-msgid "You may heal 1 physical or mental trauma <i>(your choice)</i>"
-msgstr ""
-
-#, javascript-format
-msgid ""
-"In the ${ sectionName } section of the Campaign Log, draw a check mark next "
-"to ${ partnerName }."
-msgstr ""
-
-msgid "Choose heal type"
-msgstr ""
-
-msgid "Chosen heal type"
-msgstr ""
-
-msgid "Assigned weaknesses"
-msgstr ""
-
-msgid "Review and draw weaknesses"
-msgstr ""
-
-msgid "Choose expansions for basic weakness"
-msgstr ""
-
-msgid "Uploading campaign"
-msgstr ""
-
-msgid "Save deck upgrade"
-msgstr ""
-
-msgid "Apply deck changes from previous scenario"
-msgstr ""
-
-#, javascript-format
-msgid "${ input.prompt } (choose ${ quantity })"
-msgid_plural "${ input.prompt } (choose ${ quantity })"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid ""
-"This deck is ownered by another player. You can record the upgrade now and "
-"they will be given an opportunity to save the changes to their deck when "
-"they next open the app."
-msgstr ""
-
-msgid ""
-"Changes have been recorded. You can apply these changes to your deck on the "
-"main screen of the campaign under your investigator."
-msgstr ""
-
-msgid ""
-"Changes have been recorded. The owner of this deck can apply these changes "
-"to their deck on the main screen of the campaign under their investigator."
-msgstr ""
+"Una storia secondaria è uno scenario che può essere giocato tra due scenari "
+"qualsiasi di una campagna di <i>Arkham Horror: Il Gioco di Carte</i>.\n"
+"- Giocare una storia secondaria costa a ogni investigatore della campagna "
+"una certa quantità di esperienza, che dovrebbe essere pagata all’inizio "
+"dello scenario.\n"
+"- Debolezze, traumi, esperienza e ricompense ottenute giocando una storia "
+"secondaria restano con gli investigatori per il resto della campagna.\n"
+"- Ogni storia secondaria può essere giocata solo una volta per campagna.\n"
+"\n"
+"<b>Nota:</b> quando usi questa App, l’esperienza richiesta per giocare a "
+"questi scenari verrà automaticamente sottratta alla <b>fine dello "
+"scenario</b>, ma devi assicurarti di avere accumulato abbastanza esperienza "
+"per pagarla."
 
 msgid "Tarot card"
-msgstr ""
+msgstr "Tarocco"
+
+msgid "Judgement · XX"
+msgstr "Il Giudizio · XX"
+
+msgid "Judgement · XX (Inverted)"
+msgstr "Il Giudizio · XX (Rovesciato)"
 
 #, javascript-format
 msgid "Tarot card: ${ card }"
-msgstr ""
+msgstr "Tarocco: ${ card }"
 
 msgid "Select tarot card"
-msgstr ""
+msgstr "Seleziona un tarocco"
 
 msgid "Which tarot card is impacting the chaos bag?"
-msgstr ""
-
-msgid "Replace highest non-negative token with a skull."
-msgstr ""
+msgstr "Quale tarocco influenza il sacchetto del caos?"
 
 msgid "Replace a skull with a 0 token."
-msgstr ""
+msgstr "Sostituisci un segnalino teschio con uno “0”."
 
-msgid "Judgement · XX"
-msgstr ""
+msgid "Replace highest non-negative token with a skull."
+msgstr "Sostituisci il segnalino non negativo più alto con un teschio."
 
-msgid "Judgement · XX (Inverted)"
-msgstr ""
+msgid "Ice and Death: Part 1"
+msgstr "Ghiaccio e Morte: Parte 1"
+
+msgid "Ice and Death: Part 2"
+msgstr "Ghiaccio e Morte: Parte 2"
+
+msgid "Ice and Death: Part 3"
+msgstr "Ghiaccio e Morte: Parte 3"
+
+msgid "Restful Night"
+msgstr "Notte Tranquilla"
+
+msgid "To the Forbidden Peaks"
+msgstr "Alle Vette Proibite"
+
+msgid "Endless Night"
+msgstr "Notte Infinita"
+
+msgid "City of the Elder Things"
+msgstr "La Città degli Antichi"
+
+msgid "Final Night"
+msgstr "Ultima Notte"
+
+msgid "The Heart of Madness: Part 1"
+msgstr "Il Cuore della Follia: Parte 1"
+
+msgid "The Heart of Madness: Part 2"
+msgstr "Il Cuore della Follia: Parte 2"
+
+msgid "Fatal Mirage"
+msgstr "Miraggio Fatale"
+
+msgid "Fatal Mirage - Memories Discovered"
+msgstr "Miraggio Fatale - Ricordi Svelati"
+
+msgid "Fatal Mirage - Memories Banished"
+msgstr "Miraggio Fatale - Ricordi Esiliati"
+
+msgid "Ice and Death - Locations Revealed"
+msgstr "Ghiaccio e Morte - Luoghi Rivelati"
+
+msgid "Ice and Death - Supplies Recovered"
+msgstr "Ghiaccio e Morte - Scorte Recuperate"
+
+msgid "The Heart of Madness - Seals Placed"
+msgstr "Il Cuore della Follia - Sigilli Collocati"
+
+msgid "The Heart of Madness - Seals Recovered"
+msgstr "Il Cuore della Follia - Sigilli Recuperati"
 
 msgid "The Fool · 0"
-msgstr ""
+msgstr "Il Matto · 0"
 
 msgid ""
 "Each investigator not defeated during this game earns +2 experience during "
 "its resolution."
 msgstr ""
+"Ogni investigatore non sconfitto durante questa partita guadagna +2 punti "
+"esperienza durante la risoluzione."
 
 msgid ""
 "Each investigator defeated during this game earns -2 experience during its "
 "resolution."
 msgstr ""
+"Ogni investigatore sconfitto durante questa partita guadagna -2 punti "
+"esperienza durante la risoluzione."
 
 msgid "The Magician · I"
-msgstr ""
+msgstr "Il Baratto · I"
 
 msgid "Each investigator begins the game with 3 addititonal resources"
-msgstr ""
+msgstr "Ogni investigatore inizia la partita con 3 risorse aggiuntive"
 
 msgid ""
 "Each investigator begins the game with 3 fewer resources, and cannot gain "
 "resources during their first turn."
 msgstr ""
+"Ogni investigatore inizia la partita con 3 risorse in meno e non può "
+"ottenere risorse durante il suo primo turno."
 
 msgid "The High Priestess · II"
-msgstr ""
+msgstr "La Papessa · II"
 
 msgid ""
 "During the first [intellect] test each investigator performs each round, "
 "they get +1 [intellect]."
 msgstr ""
+"Ogni investigatore riceve +1 [intellect] durante la prima prova di "
+"[intellect] che effettua ogni round."
 
 msgid ""
 "During the first [intellect] test each investigator performs each round, "
 "they get -1 [intellect]."
 msgstr ""
+"Ogni investigatore riceve -1 [intellect] durante la prima prova di "
+"[intellect] che effettua ogni round."
 
 msgid "The Empress · III"
-msgstr ""
+msgstr "L’Imperatrice · III"
 
 msgid ""
 "During the first [agility] test each investigator performs each round, they "
 "get +1 [agility]."
 msgstr ""
+"Ogni investigatore riceve +1 [agility] durante la prima prova di [agility] "
+"che effettua ogni round."
 
 msgid ""
 "During the first [agility] test each investigator performs each round, they "
 "get -1 [agility]."
 msgstr ""
+"Ogni investigatore riceve -1 [agility] durante la prima prova di [agility] "
+"che effettua ogni round."
 
 msgid "The Emperor · IV"
-msgstr ""
+msgstr "L’Imperatore · IV"
 
 msgid ""
 "During the first [combat] test each investigator performs each round, they "
 "get +1 [combat]."
 msgstr ""
+"Ogni investigatore riceve +1 [combat] durante la prima prova di [combat] "
+"che effettua ogni round."
 
 msgid ""
 "During the first [combat] test each investigator performs each round, they "
 "get -1 [combat]."
 msgstr ""
+"Ogni investigatore riceve -1 [combat] durante la prima prova di [combat] "
+"che effettua ogni round."
 
 msgid "The Hierophant · V"
-msgstr ""
+msgstr "Il Papa · V"
 
 msgid ""
 "During the first [willpower] test each investigator performs each round, "
 "they get +1 [willpower]."
 msgstr ""
+"Ogni investigatore riceve +1 [willpower] durante la prima prova di "
+"[willpower] che effettua ogni round."
 
 msgid ""
 "During the first [willpower] test each investigator performs each round, "
 "they get -1 [willpower]."
 msgstr ""
+"Ogni investigatore riceve -1 [willpower] durante la prima prova di "
+"[willpower] che effettua ogni round."
 
 msgid "The Lovers · VI"
-msgstr ""
+msgstr "Gli Amanti · VI"
 
 msgid ""
 "When the game begins, each investigator searches their deck for an Ally "
 "asset, adds it to their hand, and shuffles their deck."
 msgstr ""
+"Quando la partita inizia, ogni investigatore cerca nel suo mazzo 1 supporto "
+"Alleato e lo aggiunge alla sua mano."
 
 msgid ""
 "When the game begins, each investigator searches their deck for an Ally "
 "asset, removes it from the game, and shuffles their deck."
 msgstr ""
+"Quando la partita inizia, ogni investigatore cerca nel suo mazzo 1 supporto "
+"Alleato e lo rimuove dal gioco."
 
 msgid "The Chariot · VII"
-msgstr ""
+msgstr "Il Carro · VII"
 
 msgid ""
 "Each investigator begins the game with 2 additional cards in their opening "
 "hand."
 msgstr ""
+"Ogni investigatore inizia la partita con 2 carte aggiuntive nella sua mano "
+"di partenza."
 
 msgid ""
 "Each investigator begins the game with 2 fewer cards in their opening hand, "
 "and cannot draw cards during their first turn."
 msgstr ""
+"Ogni investigatore inizia la partita con 2 carte in meno nella sua mano di "
+"partenza e non può pescare carte durante il suo primo turno."
 
 msgid "Strength · VIII"
-msgstr ""
+msgstr "La Forza · VIII"
 
 msgid ""
 "When the game begins, each investigator may play an asset from their hand "
 "at -2 cost."
 msgstr ""
+"Quando la partita inizia, ogni investigatore può giocare 1 supporto dalla "
+"sua mano a costo -2."
 
 msgid "During the first round of the game, each investigator cannot play assets."
 msgstr ""
+"Durante il primo round della partita, gli investigatori non possono giocare "
+"supporti."
 
 msgid "The Hermit · IX"
-msgstr ""
+msgstr "L’Eremita · IX"
 
 msgid "Increase each investigator's maximum hand size by 3."
-msgstr ""
+msgstr "Aumentate di 3 il limite di mano di ogni investigatore."
 
 msgid "Decrease each investigator's maximum hand size by 3."
-msgstr ""
+msgstr "Riducete di 3 il limite di mano di ogni investigatore."
 
 msgid "Wheel of Fortune · X"
-msgstr ""
+msgstr "La Ruota della Fortuna · X"
 
 msgid ""
 "Once each act, when an investigator reveals an [auto_fail] token, thte "
 "investigator may cancel it and treat it as a 0 token instead."
 msgstr ""
+"Una volta per ogni capitolo, quando un investigatore rivela un segnalino "
+"[auto_fail], potete annullarlo e considerarlo invece un segnalino “0”."
 
 msgid ""
 "Once each agenda, the first time any investigator reveals an [elder_sign] "
 "token, cancel it and treat it as a -5 token instead."
 msgstr ""
+"Una volta per ogni trama, la prima volta che un investigatore rivela un "
+"segnalino [elder_sign], annullatelo e consideratelo invece un segnalino -5."
 
 msgid "Justice · XI"
-msgstr ""
+msgstr "La Giustizia · XI"
 
 msgid "Cancel the first doom that would be placed on the final agenda of the game."
 msgstr ""
+"Annullate il primo destino che sta per essere collocato sulla trama finale "
+"della partita."
 
 msgid "The final agenda of the game enters play with 1 doom on it."
-msgstr ""
+msgstr "La trama finale della partita entra in gioco con 1 destino su di essa."
 
 msgid "The Hanged Man · XII"
-msgstr ""
+msgstr "L’impiccato · XII"
 
 msgid "During setup, each investigator may take up to 2 additional mulligans."
 msgstr ""
+"Durante la preparazione, ogni investigatore può effettuare fino a 2 "
+"mulligan aggiuntivi."
 
 msgid ""
 "Each investigator cannot mulligan or replace weaknesses in their opening "
 "hand (resolve their revelation abilities when the game begins)."
 msgstr ""
+"Gli investigatori non possono effettuare un mulligan né sostituire le "
+"debolezze nella loro mano di partenza (risolvete le loro capacità "
+"Rivelazione quando la partita inizia)."
 
 msgid "Death · XIII"
-msgstr ""
+msgstr "La Morte · XIII"
 
 msgid "Each investigator gets +1 health."
-msgstr ""
+msgstr "Ogni investigatore riceve +1 Salute."
 
 msgid "Each investigator gets -1 health."
-msgstr ""
+msgstr "Ogni investigatore riceve -1 Salute."
 
 msgid "Temperance · XIV"
-msgstr ""
+msgstr "La Temperanza · XIV"
 
 msgid "Each investigator gets +1 sanity."
-msgstr ""
+msgstr "Ogni investigatore riceve +1 Sanità Mentale."
 
 msgid "Each investigator gets -1 sanity."
-msgstr ""
+msgstr "Ogni investigatore riceve -1 Sanità Mentale."
 
 msgid "The Devil · XV"
-msgstr ""
+msgstr "Il Diavolo · XV"
 
 msgid ""
 "Each investigator has 1 additional slot of a type chosen by that "
 "investigattor when the game begins."
 msgstr ""
+"Ogni investigatore possiede 1 slot aggiuntivo di un tipo scelto "
+"dall’investigatore quando la partita inizia."
 
 msgid ""
 "Each investigator has 3 fewer slots, each of a different type, chosen by "
 "that investigator when the game begins."
 msgstr ""
+"Ogni investigatore possiede 3 slot in meno, ognuno di 1 tipo diverso, "
+"scelti dall’investigatore quando la partita inizia."
 
 msgid "The Tower · XVI"
-msgstr ""
+msgstr "La Torre · XVI"
 
 msgid ""
 "Each investigator chooses 1 basic weakness in their deck and removes it "
 "from the game (return them after the game ends)."
 msgstr ""
+"Ogni investigatore sceglie 1 debolezza base nel suo mazzo e la rimuove dal "
+"gioco (rimettetela nel mazzo dopo che la partita è terminata)."
 
 msgid ""
 "Add 1 random basic weakness to each investigator's deck. Remove them after "
 "the game ends."
 msgstr ""
+"Ogni investigatore aggiunge 1 debolezza base casuale al suo mazzo. "
+"Rimuovetela dal mazzo dopo che la partita è terminata."
 
 msgid "The Star · XVII"
-msgstr ""
+msgstr "La Stella · XVII"
 
 msgid ""
 "After an investigator reveals an [elder_sign] token during a skill test, "
 "they may heal 1 damage or 1 horror."
 msgstr ""
+"Dopo che un investigatore ha rivelato un segnalino [elder_sign] durante una "
+"prova di abilità, può curarsi 1 danno oppure 1 orrore."
 
 msgid ""
 "After an investigator reveals an [auto_fail] token during a skill test, "
 "they must either take 1 damage or 1 horror."
 msgstr ""
+"Dopo che un investigatore ha rivelato un segnalino [auto_fail] durante una "
+"prova di abilità, sceglie se subire 1 danno oppure 1 orrore."
 
 msgid "The Moon · XVIII"
-msgstr ""
+msgstr "La Luna · XVIII"
 
 msgid ""
 "The first time each investigator's deck would run out of cards, they may "
 "shuffle the bottom 10 cards of their discard pile back into their deck."
 msgstr ""
+"La prima volta che ogni mazzo dell’investigatore sta per esaurire le carte, "
+"quell’investigatore può rimescolare nel suo mazzo 10 carte dal fondo della "
+"sua pila degli scarti."
 
 msgid ""
 "When the game begins, each investigator discards the top 5 cards of their "
 "deck. Shuffle each discarded weakness into its owner's deck."
 msgstr ""
+"Quando la partita inizia, ogni investigatore scarta 5 carte dalla cima del "
+"suo mazzo. Rimescolate ogni debolezza scartata nel mazzo del suo "
+"proprietario."
 
 msgid "The Sun · XIX"
-msgstr ""
+msgstr "Il Sole · XIX"
 
 msgid "During each investigator's first turn, they may take 2 additional actions."
 msgstr ""
+"Ogni investigatore può effettuare 2 azioni aggiuntive durante il suo primo "
+"turno."
 
 msgid "During each investigator's first turn, they have 2 fewer actions to take."
 msgstr ""
+"Ogni investigatore possiede 2 azioni in meno da effettuare durante il suo "
+"primo turno."
 
 msgid ""
 "When the game begins, replace a [skull] token in the chaos bag with a 0 "
 "token. Swap them back after the game ends."
 msgstr ""
+"Quando la partita inizia, sostituite 1 segnalino [skull] nel sacchetto del "
+"caos con 1 segnalino “0”. Scambiateli nuovamente dopo che la partita è "
+"terminata."
 
 msgid ""
 "When the game begins, replace the highest non-negative token in the chaos "
 "bag with a [skull] token. Swap them back after the game ends."
 msgstr ""
+"Quando la partita inizia, sostituite il segnalino non negativo dal valore "
+"più alto nel sacchetto del caos con 1 segnalino [skull]. Scambiateli "
+"nuovamente dopo che la partita è terminata."
 
 msgid "The World · XXI"
-msgstr ""
+msgstr "Il Mondo · XXI"
 
 msgid ""
 "Each investigator not defeated during this game may remove 1 trauma of "
 "their choice during its resolution."
 msgstr ""
+"Ogni investigatore non sconfitto durante questa partita può rimuovere 1 "
+"trauma a sua scelta durante la risoluzione."
 
 msgid ""
 "Each investigator defeated during this game suffers 1 trauma of their "
 "choice during its resolution."
 msgstr ""
+"Ogni investigatore sconfitto durante questa partita subisce 1 trauma a sua "
+"scelta durante la risoluzione."
 
-msgid "An app update is required to access this campaign."
+msgid "Negative modifier"
+msgstr "Modificatore negativo"
+
+#, javascript-format
+msgid "${ textModifier }, draws another"
+msgstr "${ textModifier }, pesca ancora"
+
+msgid "Creating campaign..."
+msgstr "Creazione della campagna…"
+
+msgid "Creating standalone..."
+msgstr "Creazione scenario autoconclusivo…"
+
+msgid "Campaign will be synced between devices and can be shared with friends"
 msgstr ""
+"Le campagne saranno sincronizzate tra i dispositivi e potranno essere "
+"condivise con gli amici"
+
+msgid "Campaign will be local to this device, you can choose to upload it later"
+msgstr ""
+"La campagna sarà limitata a questo dispositivo, potrai scegliere di "
+"caricarla in seguito"
 
 msgid ""
 "Note that this is an ArkhamCards account, which is separate from your "
 "ArkhamDB account."
 msgstr ""
+"Nota che questo è un Account ArkhamCards, che è distinto dal tuo Account "
+"ArkhamDB."
 
 msgid "Side Deck"
 msgstr ""
 
 msgid "Edit Side Deck"
-msgstr ""
-
-msgid "Creating campaign..."
-msgstr ""
-
-msgid "Creating standalone..."
-msgstr ""
-
-msgid "Campaign will be synced between devices and can be shared with friends"
-msgstr ""
-
-msgid "Campaign will be local to this device, you can choose to upload it later"
 msgstr ""
 
 #, javascript-format
@@ -5486,7 +5604,7 @@ msgstr[1] ""
 
 msgctxt "Traits"
 msgid "All"
-msgstr ""
+msgstr "Tutti"
 
 msgctxt "trait"
 msgid "???"
@@ -5546,7 +5664,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Assistant"
-msgstr ""
+msgstr "Assistente"
 
 msgctxt "trait"
 msgid "Attack"
@@ -5666,7 +5784,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Composure"
-msgstr ""
+msgstr "Padronanza"
 
 msgctxt "trait"
 msgid "Condition"
@@ -5774,7 +5892,7 @@ msgstr "Elite"
 
 msgctxt "trait"
 msgid "Endtimes"
-msgstr ""
+msgstr "Ultimi Giorni"
 
 msgctxt "trait"
 msgid "Evidence"
@@ -5850,7 +5968,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Gambit"
-msgstr ""
+msgstr "Azzardo"
 
 msgctxt "trait"
 msgid "Geist"
@@ -6058,7 +6176,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Mystery"
-msgstr ""
+msgstr "Mistero"
 
 msgctxt "trait"
 msgid "New Orleans"
@@ -6078,7 +6196,7 @@ msgstr "Ostacolo"
 
 msgctxt "trait"
 msgid "Occult"
-msgstr ""
+msgstr "Occulto"
 
 msgctxt "trait"
 msgid "Ocean"
@@ -6186,7 +6304,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Ranged"
-msgstr ""
+msgstr "Distanza"
 
 msgctxt "trait"
 msgid "Relic"
@@ -6266,7 +6384,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Service"
-msgstr ""
+msgstr "Servizio"
 
 msgctxt "trait"
 msgid "Servitor"
@@ -6394,7 +6512,7 @@ msgstr "Secondo Piano"
 
 msgctxt "trait"
 msgid "Tindalos"
-msgstr ""
+msgstr "Tindalos"
 
 msgctxt "trait"
 msgid "Tome"
@@ -6418,7 +6536,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Trick"
-msgstr ""
+msgstr "Trucchetto"
 
 msgctxt "trait"
 msgid "Unhallowed"
@@ -6506,7 +6624,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Broken"
-msgstr ""
+msgstr "Interrotto"
 
 msgctxt "trait"
 msgid "Card"
@@ -6514,7 +6632,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Entrepreneur"
-msgstr ""
+msgstr "Imprenditore"
 
 msgctxt "trait"
 msgid "Falcon Point"
@@ -6546,11 +6664,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Synergy"
-msgstr ""
+msgstr "Sinergia"
 
 msgctxt "trait"
 msgid "Unbroken"
-msgstr ""
+msgstr "Integro"
 
 msgctxt "trait"
 msgid "Wonderland"
@@ -6567,15 +6685,15 @@ msgstr "${ cycleNames[cycle_position] } Ciclo"
 
 msgctxt "Types"
 msgid "All"
-msgstr ""
+msgstr "Tutti"
 
 msgctxt "SubTypes"
 msgid "All"
-msgstr ""
+msgstr "Tutti"
 
 msgctxt "Actions"
 msgid "All"
-msgstr ""
+msgstr "Tutte"
 
 msgctxt "action"
 msgid "Fight"
@@ -6611,11 +6729,11 @@ msgstr "Risorsa"
 
 msgctxt "Encounter Sets"
 msgid "All"
-msgstr ""
+msgstr "Tutti"
 
 msgctxt "Illustrators"
 msgid "All"
-msgstr ""
+msgstr "Tutti"
 
 msgctxt "slots"
 msgid "None"
@@ -6623,11 +6741,11 @@ msgstr "Nessuno"
 
 msgctxt "Slots"
 msgid "All"
-msgstr ""
+msgstr "Tutti"
 
 msgctxt "Uses"
 msgid "All"
-msgstr ""
+msgstr "Tutti"
 
 msgctxt "Draw Cards"
 msgid "All"
@@ -6705,19 +6823,19 @@ msgstr[1] "Scenari"
 
 msgctxt "narration"
 msgid "Pause"
-msgstr ""
+msgstr "Pausa"
 
 msgctxt "narration"
 msgid "Play"
-msgstr ""
+msgstr "Riproduci"
 
 msgctxt "narration"
 msgid "Jump back"
-msgstr ""
+msgstr "Indietro"
 
 msgctxt "narration"
 msgid "Playing audio"
-msgstr ""
+msgstr "Riproduzione audio"
 
 msgctxt "campaign_log_entry"
 msgid "Other."
@@ -6759,15 +6877,15 @@ msgstr[1] ""
 
 msgctxt "Tarot Card"
 msgid "None"
-msgstr ""
+msgstr "Nessuno"
 
 msgctxt "Tarot Card"
 msgid "Judgement · XX"
-msgstr ""
+msgstr "Il Giudizio · XX"
 
 msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
-msgstr ""
+msgstr "Il Giudizio · XX (Rovesciato)"
 
 msgctxt "trauma"
 msgid "None"
