@@ -12,7 +12,7 @@ import { CampaignGuideProps } from '@components/campaignguide/CampaignGuideView'
 import { StandaloneGuideProps } from '@components/campaignguide/StandaloneGuideView';
 import { LinkedCampaignGuideProps } from '@components/campaignguide/LinkedCampaignGuideView';
 import COLORS from '@styles/colors';
-import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import { searchBoxHeight } from '@components/core/SearchBox';
 import StandaloneItem from './StandaloneItem';
 import StyleContext from '@styles/StyleContext';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
@@ -150,24 +150,25 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
     const feed: BasicSection<ItemType, ItemHeader>[] = [{ items, header: '1' }];
     return [feed, campaigns.length === 0];
   }, [campaigns, buttons]);
+  const searchHeight = searchBoxHeight(fontScale);
   const renderFooter = useCallback(() => {
     if (refreshing) {
       return <View />;
     }
-    return <View style={{ paddingTop: empty ? SEARCH_BAR_HEIGHT : 0 }}>{footer}</View>;
-  }, [footer, refreshing, empty]);
+    return <View style={{ paddingTop: empty ? searchHeight : 0 }}>{footer}</View>;
+  }, [footer, refreshing, empty, searchHeight]);
 
   const heightForSection = useCallback((): number => {
-    return SEARCH_BAR_HEIGHT + (!!userId && !refreshing ? connectionProblemBannerHeight : 0);
-  }, [userId, refreshing, connectionProblemBannerHeight]);
+    return searchHeight + (!!userId && !refreshing ? connectionProblemBannerHeight : 0);
+  }, [userId, searchHeight, refreshing, connectionProblemBannerHeight]);
 
   const renderSection = useCallback((): React.ReactElement<any> => {
     return (
-      <View style={{ paddingTop: SEARCH_BAR_HEIGHT }}>
+      <View style={{ paddingTop: searchHeight }}>
         { !!userId && !refreshing && connectionProblemBanner ? connectionProblemBanner : null }
       </View>
     );
-  }, [userId, refreshing, connectionProblemBanner]);
+  }, [userId, searchHeight, refreshing, connectionProblemBanner]);
 
   const heightForItem = useCallback((item: ItemType) => {
     if (item.type === 'campaign') {

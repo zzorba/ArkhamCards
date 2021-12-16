@@ -10,7 +10,7 @@ import {
 import { Campaign } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import Card from '@data/types/Card';
-import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 import { useInvestigatorCards } from '@components/core/hooks';
 import NewDeckListRow from './NewDeckListRow';
@@ -76,7 +76,7 @@ export default function DeckList({
   deckIds, header, searchTerm, refreshing, deckToCampaign,
   footer, onRefresh, onScroll, deckClicked,
 }: Props) {
-  const { colors, backgroundStyle } = useContext(StyleContext);
+  const { colors, backgroundStyle, fontScale } = useContext(StyleContext);
   const investigators = useInvestigatorCards();
   const items = useMemo(() => {
     return map(
@@ -108,6 +108,7 @@ export default function DeckList({
     );
   }, [deckClicked, deckToCampaign]);
   const [debouncedRefreshing] = useDebounce(!!refreshing, 100, { leading: true });
+  const height = searchBoxHeight(fontScale);
   return (
     <FlatList
       refreshControl={
@@ -115,12 +116,12 @@ export default function DeckList({
           refreshing={debouncedRefreshing}
           onRefresh={onRefresh}
           tintColor={colors.lightText}
-          progressViewOffset={SEARCH_BAR_HEIGHT}
+          progressViewOffset={height}
         />
       }
       initialNumToRender={8}
-      contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
-      contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
+      contentInset={Platform.OS === 'ios' ? { top: height } : undefined}
+      contentOffset={Platform.OS === 'ios' ? { x: 0, y: -height } : undefined}
       onScroll={onScroll}
       keyboardShouldPersistTaps="always"
       keyboardDismissMode="on-drag"

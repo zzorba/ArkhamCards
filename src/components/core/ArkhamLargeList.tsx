@@ -3,7 +3,7 @@ import { Animated, View, Keyboard, Platform, SectionList, SectionListRenderItemI
 import { IndexPath, LargeList } from 'react-native-largelist';
 import { ScrollEvent } from 'react-native-spring-scrollview';
 
-import { SEARCH_BAR_HEIGHT } from './SearchBox';
+import { searchBoxHeight } from './SearchBox';
 import { useArkhamLottieHeader } from './ArkhamLoadingSpinner';
 import StyleContext from '@styles/StyleContext';
 import { map } from 'lodash';
@@ -137,16 +137,17 @@ function ArkhamLargeListAndroid<Item, Header>({
   renderSection,
   onScroll,
 }: Props<Item, Header>) {
-  const { colors } = useContext(StyleContext);
+  const { colors, fontScale } = useContext(StyleContext);
   const [fakeRefresh, setFakeRefresh] = useState(false);
   const [debouncedRefreshing] = [refreshing || fakeRefresh];
   const extraPaddingTop = useRef(new Animated.Value(0));
   const listRef = useRef<LargeList>(null);
+  const height = searchBoxHeight(fontScale);
   useEffect(() => {
     if (debouncedRefreshing) {
       listRef.current?.beginRefresh();
       Animated.timing(extraPaddingTop.current, {
-        toValue: SEARCH_BAR_HEIGHT,
+        toValue: height,
         duration: 0,
         useNativeDriver: false,
       }).start();
@@ -160,7 +161,7 @@ function ArkhamLargeListAndroid<Item, Header>({
         }).start();
       }, 200);
     }
-  }, [listRef, debouncedRefreshing]);
+  }, [listRef, debouncedRefreshing, height]);
   const isRefreshing = useRef(debouncedRefreshing);
   isRefreshing.current = debouncedRefreshing;
 
@@ -229,7 +230,7 @@ function ArkhamLargeListAndroid<Item, Header>({
           refreshing={debouncedRefreshing}
           onRefresh={handleRefresh}
           tintColor={colors.lightText}
-          progressViewOffset={noSearch ? 0 : SEARCH_BAR_HEIGHT}
+          progressViewOffset={noSearch ? 0 : height}
         />
       }
       onScroll={onScroll}

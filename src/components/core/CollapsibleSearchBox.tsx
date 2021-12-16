@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Animated, NativeSyntheticEvent, NativeScrollEvent, StyleSheet, View, Platform } from 'react-native';
 
-import SearchBox, { SearchBoxHandles, SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import SearchBox, { SearchBoxHandles, searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 import { m, s, xs } from '@styles/space';
 import { useThrottle } from '@react-hook/throttle';
@@ -26,7 +26,7 @@ interface Props {
 const SCROLL_DISTANCE_BUFFER = 50;
 
 export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTerm, onSearchChange, children }: Props) {
-  const { backgroundStyle, borderStyle, colors, shadow, width } = useContext(StyleContext);
+  const { backgroundStyle, borderStyle, colors, fontScale, shadow, width } = useContext(StyleContext);
   const searchBoxRef = useRef<SearchBoxHandles>(null);
   const focus = useCallback(() => {
     searchBoxRef.current?.focus();
@@ -116,9 +116,10 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
     if (!advancedOptions) {
       return null;
     }
+    const height = searchBoxHeight(fontScale);
     const controlHeight = advancedToggleAnim.current.interpolate({
       inputRange: [0, 1],
-      outputRange: [-(SEARCH_BAR_HEIGHT + advancedOptions.height), SEARCH_BAR_HEIGHT],
+      outputRange: [-(height + advancedOptions.height), height],
     });
     return (
       <Animated.View needsOffscreenAlphaCompositing style={[
@@ -145,11 +146,11 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
         </View>
       </Animated.View>
     );
-  }, [advancedOptions, width, advancedToggleAnim, colors, shadow.medium]);
+  }, [advancedOptions, fontScale, width, advancedToggleAnim, colors, shadow.medium]);
 
   const translateY = advancedOpen ? 0 : scrollAnim.current.interpolate({
     inputRange: [0, 1],
-    outputRange: [-SEARCH_BAR_HEIGHT, 0],
+    outputRange: [-searchBoxHeight(fontScale), 0],
   });
   const shadowOpacity = Animated.multiply(
     advancedToggleAnim.current.interpolate({
@@ -192,7 +193,7 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
           {
             top: 0,
             width,
-            height: SEARCH_BAR_HEIGHT + advancedOptions.height,
+            height: searchBoxHeight(fontScale) + advancedOptions.height,
             backgroundColor: 'transparent',
           },
         ]} />
@@ -203,7 +204,7 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
         {
           width,
           transform: [{ translateY }],
-          height: SEARCH_BAR_HEIGHT,
+          height: searchBoxHeight(fontScale),
           zIndex: 2,
         },
       ]}>

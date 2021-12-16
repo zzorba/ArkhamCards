@@ -35,9 +35,9 @@ import { combineQueries, where } from '@data/sqlite/query';
 import { getPacksInCollection, makeTabooSetSelector, AppState, getPackSpoilers } from '@reducers';
 import Card, { cardInCollection, CardsMap, PartialCard } from '@data/types/Card';
 import { showCard, showCardSwipe } from '@components/nav/helper';
-import { s, m } from '@styles/space';
+import space, { m } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
-import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 import { useSimpleDeckEdits } from '@components/deck/hooks';
 import { useDeck } from '@data/hooks';
@@ -292,6 +292,7 @@ function useSectionFeed({
   deckCardCounts,
 }: SectionFeedProps): SectionFeed {
   const { db } = useContext(DatabaseContext);
+  const { fontScale } = useContext(StyleContext);
   const sortIgnoreQuotes = useSelector((state: AppState) => !state.settings.sortRespectQuotes);
   const packSpoiler = useSelector(getPackSpoilers);
   const [expandButtonPressed, setExpandButtonPressed] = useState(false);
@@ -692,7 +693,7 @@ function useSectionFeed({
             type: 'text',
             id: 'loading',
             text: loadingMessage,
-            paddingTop: m + (Platform.OS === 'android' ? SEARCH_BAR_HEIGHT : 0),
+            paddingTop: m + (Platform.OS === 'android' ? searchBoxHeight(fontScale) : 0),
           };
         }
       } else {
@@ -721,7 +722,7 @@ function useSectionFeed({
         }
       }
     }
-    const paddingItem: Item | undefined = !noSearch ? { type: 'padding', id: 'padding', size: SEARCH_BAR_HEIGHT } : undefined;
+    const paddingItem: Item | undefined = !noSearch ? { type: 'padding', id: 'padding', size: searchBoxHeight(fontScale) } : undefined;
     const headerItem: Item | undefined = hasHeader ? { type: 'list_header', id: 'list_header' } : undefined;
     const leadingItems: Item[] = [
       ...(paddingItem ? [paddingItem] : []),
@@ -733,7 +734,7 @@ function useSectionFeed({
       ...(hasCards ? sections : []),
     ];
     return sectionItems;
-  }, [sections, loadingMessage, cardsLoading, noSearch, hasHeader, refreshingResult, refreshingSearch, searchTerm, hasCards]);
+  }, [sections, fontScale, loadingMessage, cardsLoading, noSearch, hasHeader, refreshingResult, refreshingSearch, searchTerm, hasCards]);
   return {
     feed,
     fullFeed: visibleCards,
@@ -755,7 +756,7 @@ function itemHeight(item: Item, fontScale: number, headerHeight: number, lang: s
     case 'header':
       return cardSectionHeaderHeight(item.header, fontScale);
     case 'text':
-      return s * 2 + fontScale * 24 * 2 + (item.paddingTop || 0);
+      return m * 2 + fontScale * 24 * 2 + (item.paddingTop || 0);
     case 'padding':
       return item.size;
     case 'list_header':
@@ -981,7 +982,11 @@ export default function({
         );
       case 'text':
         return (
-          <View key={item.id} style={[item.border ? [styles.emptyText, borderStyle] : undefined, { paddingTop: item.paddingTop || 0 }]}>
+          <View key={item.id} style={[
+            item.border ? styles.emptyText : space.paddingM,
+            item.border ? borderStyle : undefined,
+            item.paddingTop ? { paddingTop: item.paddingTop } : undefined,
+          ]}>
             <Text style={[typography.text, typography.center]}>
               { item.text}
             </Text>
@@ -1030,7 +1035,6 @@ export default function({
 
 const styles = StyleSheet.create({
   footer: {
-    height: 300,
   },
   emptyText: {
     padding: m,

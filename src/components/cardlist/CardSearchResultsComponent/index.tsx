@@ -73,11 +73,11 @@ function SearchOptions({
   toggleSearchFlavor: () => void;
   toggleSearchBack: () => void;
 }) {
-  const { colors, fontScale, typography } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   return (
     <>
       <View style={[styles.column, { alignItems: 'center', flex: 1 }]}>
-        <Text style={[typography.large, { color: colors.M, fontSize: 20 * fontScale, fontFamily: 'Alegreya-Bold' }]}>
+        <Text style={[typography.large, { color: colors.M, fontFamily: 'Alegreya-Bold' }]}>
           { t`Search in:` }
         </Text>
       </View>

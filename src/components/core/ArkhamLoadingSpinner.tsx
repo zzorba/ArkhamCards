@@ -6,7 +6,7 @@ import tinycolor from 'tinycolor2';
 
 import { RefreshHeader, RefreshHeaderPropType, RefreshHeaderStateType } from 'react-native-spring-scrollview';
 import StyleContext from '@styles/StyleContext';
-import { SEARCH_BAR_HEIGHT } from './SearchBox';
+import { searchBoxHeight } from './SearchBox';
 
 const loadingAnimation = require('../../../assets/loading.json');
 
@@ -47,7 +47,7 @@ export default function ArkhamLoadingSpinner({
   lottieRef,
   large,
 }: Props) {
-  const { colors } = useContext(StyleContext);
+  const { colors, fontScale } = useContext(StyleContext);
   const colorizedSource = useMemo(() => colorizeLottie(
     loadingAnimation,
     {
@@ -77,6 +77,7 @@ export default function ArkhamLoadingSpinner({
       'layers.4.shapes.0.it.2.c.k': colors.D30,
     }
   ), [colors.D30]);
+  const searchHeight = searchBoxHeight(fontScale);
   return (
     <LottieView
       key="playing"
@@ -88,8 +89,8 @@ export default function ArkhamLoadingSpinner({
       resizeMode="contain"
       cacheStrategy="strong"
       style={{
-        width: large ? SEARCH_BAR_HEIGHT * 2 : SEARCH_BAR_HEIGHT,
-        height: large ? SEARCH_BAR_HEIGHT * 2 : SEARCH_BAR_HEIGHT,
+        width: large ? searchHeight * 2 : searchHeight,
+        height: large ? searchHeight * 2 : searchHeight,
         alignSelf: 'center',
       }}
     />
@@ -97,7 +98,9 @@ export default function ArkhamLoadingSpinner({
 }
 
 export function useArkhamLottieHeader(noSearch?: boolean) {
+  const { fontScale } = useContext(StyleContext);
   return useMemo(() => {
+    const searchHeight = searchBoxHeight(fontScale);
     return class ArkhamLottieHeader extends RefreshHeader<RefreshHeaderStateType> {
       ref: React.RefObject<LottieView>;
 
@@ -107,7 +110,7 @@ export function useArkhamLottieHeader(noSearch?: boolean) {
         this.ref = React.createRef<LottieView>();
       }
       static style = 'stickyContent';
-      static height: number = SEARCH_BAR_HEIGHT;
+      static height: number = searchHeight;
 
       componentDidUpdate(prevProps: RefreshHeaderPropType, prevState: RefreshHeaderStateType) {
         if (this.state.status !== prevState.status) {
@@ -123,7 +126,7 @@ export function useArkhamLottieHeader(noSearch?: boolean) {
       }
       render() {
         return (
-          <View style={[styles.wrapper, { paddingTop: noSearch ? 0 : SEARCH_BAR_HEIGHT }]}>
+          <View style={[styles.wrapper, { paddingTop: noSearch ? 0 : searchHeight }]}>
             <ArkhamLoadingSpinner
               lottieRef={this.ref}
               autoPlay
@@ -133,7 +136,7 @@ export function useArkhamLottieHeader(noSearch?: boolean) {
         );
       }
     }
-  }, [noSearch]);
+  }, [noSearch, fontScale]);
 }
 
 const styles = StyleSheet.create({

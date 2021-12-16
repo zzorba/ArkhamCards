@@ -9,7 +9,7 @@ import { Fade, Placeholder, PlaceholderLine } from 'rn-placeholder';
 import StyleContext from '@styles/StyleContext';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import ArkhamButton from '@components/core/ArkhamButton';
-import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import { searchBoxHeight } from '@components/core/SearchBox';
 import space, { m } from '@styles/space';
 import RoundButton from '@components/core/RoundButton';
 import AppIcon from '@icons/AppIcon';
@@ -349,15 +349,15 @@ export default function useFriendFeedComponent({ componentId, userId, handleScro
 
   const hasSearch = !!handleScroll;
   const data: FriendFeedItem[] = useMemo(() => {
-    const paddingItem: PaddingItem | undefined = hasSearch ? { type: 'padding', id: 'padding', padding: SEARCH_BAR_HEIGHT } : undefined;
+    const paddingItem: PaddingItem | undefined = hasSearch ? { type: 'padding', id: 'padding', padding: searchBoxHeight(fontScale) } : undefined;
     return [
       ...(paddingItem ? [paddingItem] : []),
       ...toFeed(isSelf, profile),
     ];
-  }, [toFeed, isSelf, profile, hasSearch]);
+  }, [toFeed, fontScale, isSelf, profile, hasSearch]);
   const searchResultsError = searchResults?.error;
   const header = useMemo(() => {
-    const spacer = Platform.OS === 'android' && <View style={styles.searchBarPadding} />;
+    const spacer = Platform.OS === 'android' && <View style={{ height: searchBoxHeight(fontScale) }} />;
     return (
       <>
         { spacer }
@@ -373,7 +373,7 @@ export default function useFriendFeedComponent({ componentId, userId, handleScro
         ) }
       </>
     );
-  }, [colors, error, typography, searchResultsError]);
+  }, [colors, fontScale, error, typography, searchResultsError]);
 
   useEffect(() => {
     setTimeout(() => doRefresh(), 100);
@@ -415,9 +415,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-  searchBarPadding: {
-    height: SEARCH_BAR_HEIGHT,
   },
   textPlaceholder: {
     height: 24,
