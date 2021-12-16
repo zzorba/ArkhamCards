@@ -5021,25 +5021,25 @@ msgstr "심판 · XX (역위치)"
 msgid ""
 "Note that this is an ArkhamCards account, which is separate from your "
 "ArkhamDB account."
-msgstr ""
+msgstr "아컴카드 계정은 아컴디비 계정과는 별개의 계정입니다."
 
 msgid "Side Deck"
-msgstr ""
+msgstr "보조 덱"
 
 msgid "Edit Side Deck"
-msgstr ""
+msgstr "보조 덱 수정"
 
 msgid "Creating campaign..."
-msgstr ""
+msgstr "캠페인 생성 중..."
 
 msgid "Creating standalone..."
-msgstr ""
+msgstr "독립 시나리오 생성 중..."
 
 msgid "Campaign will be synced between devices and can be shared with friends"
-msgstr ""
+msgstr "캠페인은 장치 간에 동기화할 수 있고 친구와도 공유할 수 있습니다."
 
 msgid "Campaign will be local to this device, you can choose to upload it later"
-msgstr ""
+msgstr "캠페인은 이 장치에만 둘 수도 있고, 나중에 업로드하기를 선택할 수도 있습니다."
 
 #, javascript-format
 msgctxt "masculine"
