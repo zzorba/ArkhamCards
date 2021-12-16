@@ -32,32 +32,32 @@
       },
       {
         "code": "01033",
-        "text": "La capacité [reaction] de cette carte indique désormais : « Après que vous avez enquêté avec succès, inclinez le Dr. Milan Christopher… »"
+        "text": "Mutée.\nLa capacité [reaction] de cette carte indique désormais : « Après que vous avez enquêté avec succès, inclinez le Dr. Milan Christopher… »"
       },
       {
         "code": "02002",
-        "text": "La capacité [reaction] de cette carte gagne : « Limite d’une fois par round. »"
+        "text": "Mutée.\nLa capacité [reaction] de cette carte gagne : « Limite d’une fois par round. »"
       },
       {
         "code": "02111",
-        "text": "Cette carte gagne : « Limite collective de 2 exemplaires de Creuser Trop Profondément dans la pile de victoire. »"
+        "text": "Mutée.\nCette carte gagne : « Limite collective de 2 exemplaires de Creuser Trop Profondément dans la pile de victoire. »"
       },
       {
         "code": "02229",
-        "text": "Cette carte gagne : « 1 max. attribuée par test de compétence. »"
+        "text": "Mutée.\nCette carte gagne : « 1 max. attribuée par test de compétence. »"
       },
       {
         "code": "02266",
-        "text": "Cette carte gagne : « max. une fois par round. »"
+        "text": "Mutée.\nCette carte gagne : « max. une fois par round. »"
       },
       {
         "code": "03029",
-        "text": "La capacité de cette carte indique désormais : « Mettez en jeu un soutien [[Objet]] de votre main qui occcupe moins de 2 emplacements de main. »"
+        "text": "Mutée.\nLa capacité de cette carte indique désormais :\n« Mettez en jeu un soutien [[Objet]] de votre main qui occupe moins de 2 emplacements de main. »"
       },
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "Cette carte gagne le mot-clé Exceptionnel."
+        "text": "Mutée.\nCette carte gagne le mot-clé Exceptionnel."
       }
     ]
   },
@@ -106,32 +106,32 @@
       },
       {
         "code": "01033",
-        "text": "La capacité [reaction] de cette carte indique désormais : « Après que vous avez enquêté avec succès, inclinez le Dr. Milan Christopher… »"
+        "text": "Mutée.\nLa capacité [reaction] de cette carte indique désormais : « Après que vous avez enquêté avec succès, inclinez le Dr. Milan Christopher… »"
       },
       {
         "code": "02002",
-        "text": "La capacité [reaction] de cette carte gagne : « Limite d’une fois par round. »"
+        "text": "Mutée.\nLa capacité [reaction] de cette carte gagne : « Limite d’une fois par round. »"
       },
       {
         "code": "02111",
-        "text": "Cette carte gagne : « Limite collective de 2 exemplaires de Creuser Trop Profondément dans la pile de victoire. »"
+        "text": "Mutée.\nCette carte gagne : « Limite collective de 2 exemplaires de Creuser Trop Profondément dans la pile de victoire. »"
       },
       {
         "code": "02229",
-        "text": "Cette carte gagne : « 1 max. attribuée par test de compétence. »"
+        "text": "Mutée.\nCette carte gagne : « 1 max. attribuée par test de compétence. »"
       },
       {
         "code": "02266",
-        "text": "Cette carte gagne : « max. une fois par round. »"
+        "text": "Mutée.\nCette carte gagne : « max. une fois par round. »"
       },
       {
         "code": "03029",
-        "text": "La capacité de cette carte indique désormais : « Mettez en jeu un soutien [[Objet]] de votre main qui occcupe moins de 2 emplacements de main. »"
+        "text": "Mutée.\nLa capacité de cette carte indique désormais :\n« Mettez en jeu un soutien [[Objet]] de votre main qui occupe moins de 2 emplacements de main. »"
       },
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "Cette carte gagne le mot-clé Exceptionnel."
+        "text": "Mutée.\nCette carte gagne le mot-clé Exceptionnel."
       }
     ]
   },
@@ -200,52 +200,52 @@
       },
       {
         "code": "01033",
-        "text": "La capacité [reaction] de cette carte indique désormais : « Après que vous avez enquêté avec succès, inclinez le Dr. Milan Christopher… »"
+        "text": "Mutée.\nLa capacité [reaction] de cette carte indique désormais : « Après que vous avez enquêté avec succès, inclinez le Dr. Milan Christopher… »"
       },
       {
         "code": "02002",
-        "text": "La capacité [reaction] de cette carte gagne : « Limite d’une fois par round. »"
+        "text": "Mutée.\nLa capacité [reaction] de cette carte gagne : « Limite d’une fois par round. »"
       },
       {
         "code": "02111",
-        "text": "Cette carte gagne : « Limite collective de 2 exemplaires de Creuser Trop Profondément dans la pile de victoire. »"
+        "text": "Mutée.\nCette carte gagne : « Limite collective de 2 exemplaires de Creuser Trop Profondément dans la pile de victoire. »"
       },
       {
         "code": "02229",
-        "text": "Cette carte gagne : « max. une fois par round. » à la fin de sa capacité."
+        "text": "Mutée.\nCette carte gagne : « max. une fois par round. » à la fin de sa capacité."
       },
       {
         "code": "02266",
-        "text": "Cette carte gagne : « max. une fois par round. »"
+        "text": "Mutée.\nCette carte gagne : « max. une fois par round. »"
       },
       {
         "code": "03029",
-        "text": "La capacité de cette carte indique désormais : « Mettez en jeu un soutien [[Objet]] de niveau 0 à 3 de votre main. »"
+        "text": "Mutée.\nLa capacité de cette carte indique désormais :\n« Mettez en jeu un soutien [[Objet]] de niveau 0 à 3 de votre main. »"
       },
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "Cette carte gagne le mot-clé Exceptionnel."
+        "text": "Mutée.\nCette carte gagne le mot-clé Exceptionnel."
       },
       {
         "code": "04309",
-        "text": "Cette carte gagne : « Retirez Le Tout pour le Tout de la partie. » à la fin de sa capacité."
+        "text": "Mutée.\nCette carte gagne : « Retirez Le Tout pour le Tout de la partie. » à la fin de sa capacité."
       },
       {
         "code": "05116",
-        "text": "La capacité [action] de cette carte est désormais une capacité [fast]."
+        "text": "Mutée.\nLa capacité [action] de cette carte est désormais une capacité [fast]."
       },
       {
         "code": "05188",
-        "text": "La capacité [action] de cette carte est désormais une capacité [fast]."
+        "text": "Mutée.\nLa capacité [action] de cette carte est désormais une capacité [fast]."
       },
       {
         "code": "05189",
-        "text": "La capacité [action] de cette carte est désormais une capacité [fast]."
+        "text": "Mutée.\nLa capacité [action] de cette carte est désormais une capacité [fast]."
       },
       {
         "code": "06195",
-        "text": "La capacité [action] de cette carte dit désormais : « [action] Dépensez 1 munition : <b>Combattre</b>. Vous gagnez +2 [combat] pour cette attaque. Si un pion Chaos avec un modificateur non-négatif est révélé lors de cette attaque, cette attaque inflige +2 dégâts. »"
+        "text": "Mutée.\nLa capacité [action] de cette carte dit désormais : « [action] Dépensez 1 munition : <b>Combattre</b>. Vous gagnez +2 [combat] pour cette attaque. Si un pion Chaos avec un modificateur non-négatif est révélé lors de cette attaque, cette attaque inflige +2 dégâts. »"
       },
       {
         "code": "02026",
@@ -267,7 +267,7 @@
       },
       {
         "code": "01050",
-        "text": "La capacité de cette carte indique désormais : « Désengagez-vous de chaque ennemi engagé avec vous et déplacez-vous vers un lieu connexe sans ennemi. »"
+        "text": "Mutée.\nLa capacité de cette carte indique désormais : « Désengagez-vous de chaque ennemi engagé avec vous et déplacez-vous vers un lieu connexe sans ennemi. »"
       },
       {
         "code": "02108",
@@ -291,7 +291,7 @@
       },
       {
         "code": "02226",
-        "text": "La capacité [action] de cette carte gagne : « Cette attaque peut cibler un ennemi non-[[Élite]] dans un lieu connexe. Ignorez les mots-clés Distant et Riposte pour cette attaque. »"
+        "text": "Mutée.\nLa capacité [action] de cette carte gagne : « Cette attaque peut cibler un ennemi non-[[Élite]] dans un lieu connexe. Ignorez les mots-clés Distant et Riposte pour cette attaque. »"
       },
       {
         "code": "04305",
@@ -307,7 +307,7 @@
       },
       {
         "code": "05230",
-        "text": "Cette carte perd le texte : « Le soutien attaché ne peut pas être utilisé pour attaquer des ennemis engagés avec vous. »"
+        "text": "Mutée.\nCette carte perd le texte : « Le soutien attaché ne peut pas être utilisé pour attaquer des ennemis engagés avec vous. »"
       },
       {
         "code": "05231",
@@ -315,15 +315,15 @@
       },
       {
         "code": "05324",
-        "text": "La capacité de cette carte gagne : « Retirez Eucatastrophe de la partie. »"
+        "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez Eucatastrophe de la partie. »"
       },
       {
         "code": "06022",
-        "text": "La capacité permanente de cette carte indique désormais : « Si cette carte n'a pas de charges, retirez-la de la partie. »"
+        "text": "Mutée.\nLa capacité permanente de cette carte indique désormais : « Si cette carte n'a pas de charges, retirez-la de la partie. »"
       },
       {
         "code": "06199",
-        "text": "La capacité de cette carte gagne : « Retirez de la partie chaque exemplaire de Brelan d'As attribué à ce test. »"
+        "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez de la partie chaque exemplaire de Brelan d'As attribué à ce test. »"
       },
       {
         "code": "60233",
@@ -331,60 +331,60 @@
       },
       {
         "code": "07269",
-        "text": "La capacité de cette carte gagne : « Retirez Une Brève Accalmie de la partie. »"
+        "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez Une Brève Accalmie de la partie. »"
       },
       {
         "code": "07301",
-        "text": "La capacité de cette carte gagne : « Retirez Sanctifier de la partie. »"
+        "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez Sanctifier de la partie. »"
       },
       {
         "code": "01033",
-        "text": "La capacité [reaction] de cette carte indique désormais : « Après que vous avez enquêté avec succès, inclinez le Dr. Milan Christopher… »"
+        "text": "Mutée.\nLa capacité [reaction] de cette carte indique désormais : « Après que vous avez enquêté avec succès, inclinez le Dr. Milan Christopher… »"
       },
       {
         "code": "02002",
-        "text": "La capacité [reaction] de cette carte gagne : « Limite d’une fois par round. »"
+        "text": "Mutée.\nLa capacité [reaction] de cette carte gagne : « Limite d’une fois par round. »"
       },
       {
         "code": "02111",
-        "text": "Cette carte gagne : « Limite collective de 2 exemplaires de Creuser Trop Profondément dans la pile de victoire. »"
+        "text": "Mutée.\nCette carte gagne : « Limite collective de 2 exemplaires de Creuser Trop Profondément dans la pile de victoire. »"
       },
       {
         "code": "02229",
-        "text": "Cette carte gagne : « max. une fois par round. » à la fin de sa capacité."
+        "text": "Mutée.\nCette carte gagne : « max. une fois par round. » à la fin de sa capacité."
       },
       {
         "code": "02266",
-        "text": "Cette carte gagne : « max. une fois par round. »"
+        "text": "Mutée.\nCette carte gagne : « max. une fois par round. »"
       },
       {
         "code": "03029",
-        "text": "La capacité de cette carte indique désormais : « Mettez en jeu un soutien [[Objet]] de niveau 0 à 3 de votre main. »"
+        "text": "Mutée.\nLa capacité de cette carte indique désormais :\n« Mettez en jeu un soutien [[Objet]] de niveau 0 à 3 de votre main. »"
       },
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "Cette carte gagne le mot-clé Exceptionnel."
+        "text": "Mutée.\nCette carte gagne le mot-clé Exceptionnel."
       },
       {
         "code": "04309",
-        "text": "Cette carte gagne : « Retirez Le Tout pour le Tout de la partie. » à la fin de sa capacité."
+        "text": "Mutée.\nCette carte gagne : « Retirez Le Tout pour le Tout de la partie. » à la fin de sa capacité."
       },
       {
         "code": "05116",
-        "text": "La capacité [action] de cette carte est désormais une capacité [fast]."
+        "text": "Mutée.\nLa capacité [action] de cette carte est désormais une capacité [fast]."
       },
       {
         "code": "05188",
-        "text": "La capacité [action] de cette carte est désormais une capacité [fast]."
+        "text": "Mutée.\nLa capacité [action] de cette carte est désormais une capacité [fast]."
       },
       {
         "code": "05189",
-        "text": "La capacité [action] de cette carte est désormais une capacité [fast]."
+        "text": "Mutée.\nLa capacité [action] de cette carte est désormais une capacité [fast]."
       },
       {
         "code": "06195",
-        "text": "La capacité [action] de cette carte dit désormais : « [action] Dépensez 1 munition : <b>Combattre</b>. Vous gagnez +2 [combat] pour cette attaque. Si un pion Chaos avec un modificateur non-négatif est révélé lors de cette attaque, cette attaque inflige +2 dégâts. »"
+        "text": "Mutée.\nLa capacité [action] de cette carte dit désormais : « [action] Dépensez 1 munition : <b>Combattre</b>. Vous gagnez +2 [combat] pour cette attaque. Si un pion Chaos avec un modificateur non-négatif est révélé lors de cette attaque, cette attaque inflige +2 dégâts. »"
       },
       {
         "code": "02026",
