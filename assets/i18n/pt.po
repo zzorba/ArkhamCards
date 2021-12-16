@@ -5112,6 +5112,29 @@ msgstr ""
 msgid "An app update is required to access this campaign."
 msgstr ""
 
+msgid ""
+"Note that this is an ArkhamCards account, which is separate from your "
+"ArkhamDB account."
+msgstr ""
+
+msgid "Side Deck"
+msgstr ""
+
+msgid "Edit Side Deck"
+msgstr ""
+
+msgid "Creating campaign..."
+msgstr ""
+
+msgid "Creating standalone..."
+msgstr ""
+
+msgid "Campaign will be synced between devices and can be shared with friends"
+msgstr ""
+
+msgid "Campaign will be local to this device, you can choose to upload it later"
+msgstr ""
+
 msgctxt "masculine"
 msgid "Alive"
 msgstr "Vivo"
