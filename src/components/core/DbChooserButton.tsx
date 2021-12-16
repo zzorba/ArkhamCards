@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { Navigation } from 'react-native-navigation';
 import { Brackets } from 'typeorm/browser';
-import { forEach, map } from 'lodash';
+import { forEach, map, uniq } from 'lodash';
 import { t } from 'ttag';
 
 import NavButton from './NavButton';
@@ -49,28 +49,30 @@ export default function DbChooserButton({ componentId, title, all, field, includ
   const onPress = useCallback(() => {
     setPressed(true);
     db.getDistinctFields(field, query, tabooSetId, processValue).then(values => {
-      /*
+
       // This code will export all traits in the english database.
+      /*
       console.log('const localized_traits = {')
       forEach(values, value => {
         const escaped = value.replace(`'`, `\\'`);
         console.log(`  '${escaped}': c('trait').t\`${value}\`,`)
       });
-      console.log('};')*/
+      console.log('};')
+      */
 
       const actualValues = fixedTranslations ? map(values, item => fixedTranslations[item] || item) : values;
       const noneString = includeNone && fixedTranslations ? fixedTranslations.none : undefined;
 
-      const actualSelection = fixedTranslations ? map(selection || [], item => fixedTranslations[item] || item) : selection;
+      const actualSelection = uniq(fixedTranslations ? map(selection || [], item => fixedTranslations[item] || item) : selection);
       Navigation.push<SearchSelectProps>(componentId, {
         component: {
           name: 'SearchFilters.Chooser',
           passProps: {
             placeholder: t`Search ${title}`,
-            values: [
+            values: uniq([
               ...(noneString ? [noneString] : []),
               ...(fixedTranslations ? actualValues.sort((a, b) => a.localeCompare(b, lang)) : actualValues),
-            ],
+            ]),
             onChange: onSelectionChange,
             selection: actualSelection,
             capitalize,

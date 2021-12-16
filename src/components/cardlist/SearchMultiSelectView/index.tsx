@@ -86,8 +86,7 @@ export default function SearchMultiSelectView({ componentId, placeholder, onChan
       return values;
     }
     const lowerCaseSearch = search.toLowerCase();
-    return filter(values, value =>
-      search === '' || (!!value && value.toLowerCase().includes(lowerCaseSearch)));
+    return filter(values, value => search === '' || (!!value && value.toLowerCase().includes(lowerCaseSearch)));
   }, [values, search]);
 
   const header = useMemo(() => {
