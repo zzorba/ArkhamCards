@@ -24,8 +24,6 @@
 		652EB740226BAF9C00F6D790 /* fr.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB73F226BAF9C00F6D790 /* fr.po.json */; };
 		652EB742226BAFA800F6D790 /* it.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB741226BAFA800F6D790 /* it.po.json */; };
 		654277272365FE7200D394B1 /* libPods-ArkhamCards.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 654277262365FE7200D394B1 /* libPods-ArkhamCards.a */; };
-		65447A8724154F2600961717 /* allCampaigns.json in Resources */ = {isa = PBXBuildFile; fileRef = 65447A8624154F2600961717 /* allCampaigns.json */; };
-		65447A8924154F3200961717 /* campaignLogs.json in Resources */ = {isa = PBXBuildFile; fileRef = 65447A8824154F3200961717 /* campaignLogs.json */; };
 		655226B5205D68D70065A1F7 /* standalone.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65522688205D68D70065A1F7 /* standalone.ttf */; };
 		655226F4205EEAF10065A1F7 /* app.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655226C7205EEAF00065A1F7 /* app.ttf */; };
 		6560EBDD25A012700076B227 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6560EBDC25A012700076B227 /* GoogleService-Info.plist */; };
@@ -51,8 +49,6 @@
 		65CF51E0220386F400A1D2FA /* circle.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65CF51DF220386F400A1D2FA /* circle.ttf */; };
 		65D3FA06210FF315000F8B9D /* Teutonic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65D3FA05210FF315000F8B9D /* Teutonic.ttf */; };
 		65EB59152047B67600CC5820 /* arkhamicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65EB59142047B67600CC5820 /* arkhamicons.ttf */; };
-		65F2F37F24D47C5D00B716AB /* allCampaigns_es.json in Resources */ = {isa = PBXBuildFile; fileRef = 65F2F37E24D47C5D00B716AB /* allCampaigns_es.json */; };
-		65F2F38224D47DE800B716AB /* campaignLogs_es.json in Resources */ = {isa = PBXBuildFile; fileRef = 65F2F38124D47DE700B716AB /* campaignLogs_es.json */; };
 		65F8DB9E247EE0B500286F16 /* ko.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 65F8DB9B247EE0B500286F16 /* ko.po.json */; };
 		65F8DB9F247EE0B500286F16 /* pl.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 65F8DB9C247EE0B500286F16 /* pl.po.json */; };
 		65F8DBA0247EE0B500286F16 /* uk.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 65F8DB9D247EE0B500286F16 /* uk.po.json */; };
@@ -90,8 +86,6 @@
 		6530148B259FD4EA009A53AB /* ArkhamCardsDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ArkhamCardsDebug.entitlements; path = ArkhamCards/ArkhamCardsDebug.entitlements; sourceTree = "<group>"; };
 		654277262365FE7200D394B1 /* libPods-ArkhamCards.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-ArkhamCards.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6543ABA721C19C570098803A /* ArkhamCards-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ArkhamCards-Bridging-Header.h"; sourceTree = "<group>"; };
-		65447A8624154F2600961717 /* allCampaigns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = allCampaigns.json; path = ../assets/allCampaigns.json; sourceTree = "<group>"; };
-		65447A8824154F3200961717 /* campaignLogs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = campaignLogs.json; path = ../assets/campaignLogs.json; sourceTree = "<group>"; };
 		65522688205D68D70065A1F7 /* standalone.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = standalone.ttf; path = ../assets/standalone.ttf; sourceTree = "<group>"; };
 		655226C7205EEAF00065A1F7 /* app.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = app.ttf; path = ../assets/app.ttf; sourceTree = "<group>"; };
 		6556782820BA144600C18EC4 /* forgotten.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = forgotten.ttf; path = ../assets/forgotten.ttf; sourceTree = "<group>"; };
@@ -121,8 +115,6 @@
 		65CF51DF220386F400A1D2FA /* circle.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = circle.ttf; path = ../assets/circle.ttf; sourceTree = "<group>"; };
 		65D3FA05210FF315000F8B9D /* Teutonic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Teutonic.ttf; path = ../assets/Teutonic.ttf; sourceTree = "<group>"; };
 		65EB59142047B67600CC5820 /* arkhamicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = arkhamicons.ttf; path = ../assets/arkhamicons.ttf; sourceTree = "<group>"; };
-		65F2F37E24D47C5D00B716AB /* allCampaigns_es.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = allCampaigns_es.json; path = ../assets/allCampaigns_es.json; sourceTree = "<group>"; };
-		65F2F38124D47DE700B716AB /* campaignLogs_es.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = campaignLogs_es.json; path = ../assets/campaignLogs_es.json; sourceTree = "<group>"; };
 		65F8DB9B247EE0B500286F16 /* ko.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ko.po.json; path = ../assets/i18n/ko.po.json; sourceTree = "<group>"; };
 		65F8DB9C247EE0B500286F16 /* pl.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pl.po.json; path = ../assets/i18n/pl.po.json; sourceTree = "<group>"; };
 		65F8DB9D247EE0B500286F16 /* uk.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = uk.po.json; path = ../assets/i18n/uk.po.json; sourceTree = "<group>"; };
@@ -174,14 +166,10 @@
 				6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */,
 				658AF45324FAAD4D00874CA7 /* Conkordia.ttf */,
 				6505E52324DDD6F0001DF983 /* ArkhamCards.entitlements */,
-				65F2F38124D47DE700B716AB /* campaignLogs_es.json */,
-				65F2F37E24D47C5D00B716AB /* allCampaigns_es.json */,
 				65F8DB9B247EE0B500286F16 /* ko.po.json */,
 				65F8DB9C247EE0B500286F16 /* pl.po.json */,
 				65F8DB9D247EE0B500286F16 /* uk.po.json */,
 				65C3FAC6242037840014ED97 /* AnkeCalligraphicFG.ttf */,
-				65447A8824154F3200961717 /* campaignLogs.json */,
-				65447A8624154F2600961717 /* allCampaigns.json */,
 				652EB741226BAFA800F6D790 /* it.po.json */,
 				652EB73F226BAF9C00F6D790 /* fr.po.json */,
 				652EB73D226BAF9200F6D790 /* es.po.json */,
@@ -363,23 +351,19 @@
 				65CF51E0220386F400A1D2FA /* circle.ttf in Resources */,
 				65C3FAC7242037850014ED97 /* AnkeCalligraphicFG.ttf in Resources */,
 				657276D32659850A00157DE3 /* Caveat.ttf in Resources */,
-				65447A8724154F2600961717 /* allCampaigns.json in Resources */,
 				657276692644DE1B00157DE3 /* dark_matter.ttf in Resources */,
 				65F8DBA0247EE0B500286F16 /* uk.po.json in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				65F2F37F24D47C5D00B716AB /* allCampaigns_es.json in Resources */,
 				65851170250D6C0500DCB842 /* Alegreya-Italic.ttf in Resources */,
 				659EB1C325118E2F007E69E0 /* Alegreya-ExtraBoldItalic.ttf in Resources */,
 				652421212054950E00FF6DB9 /* carcosa.ttf in Resources */,
 				652421232054951A00FF6DB9 /* coreset.ttf in Resources */,
 				652EB740226BAF9C00F6D790 /* fr.po.json in Resources */,
 				65D3FA06210FF315000F8B9D /* Teutonic.ttf in Resources */,
-				65447A8924154F3200961717 /* campaignLogs.json in Resources */,
 				650DBD8426EFA507006170CC /* edge.ttf in Resources */,
 				657276D0265984A200157DE3 /* alice.ttf in Resources */,
 				659EB1C225118E2F007E69E0 /* Alegreya-ExtraBold.ttf in Resources */,
 				65F8DB9F247EE0B500286F16 /* pl.po.json in Resources */,
-				65F2F38224D47DE800B716AB /* campaignLogs_es.json in Resources */,
 				652EB73A226BAF7800F6D790 /* de.po.json in Resources */,
 				652EB73E226BAF9300F6D790 /* es.po.json in Resources */,
 				65851172250D6DB200DCB842 /* Alegreya-Medium.ttf in Resources */,

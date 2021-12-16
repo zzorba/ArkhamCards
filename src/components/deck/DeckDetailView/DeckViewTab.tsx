@@ -42,6 +42,8 @@ import { ControlType } from '@components/cardlist/CardSearchResult/ControlCompon
 import { getPacksInCollection, AppState } from '@reducers';
 import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import LoadingSpinner from '@components/core/LoadingSpinner';
+import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
 
 interface SectionCardId extends CardId {
   mode: 'special' | 'side' | 'bonded' | undefined;
@@ -699,7 +701,7 @@ export default function DeckViewTab(props: Props) {
       ) }
       { header }
       <View style={space.marginSideS}>
-        { map(data, deckSection => {
+        { (!data || !data.length) ? <ArkhamLoadingSpinner autoPlay loop /> : map(data, deckSection => {
           return (
             <View key={deckSection.title} style={space.marginBottomS}>
               <DeckSectionBlock

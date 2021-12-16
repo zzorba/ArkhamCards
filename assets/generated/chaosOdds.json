@@ -1,0 +1,4578 @@
+[
+  {
+    "code": "01104",
+    "scenario": "torch",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [[Ghoul]] enemies at your location.",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "01120",
+    "scenario": "arkham",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Highest number of doom on a [[Cultist]] enemy in play.",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Total number of doom in play."
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "01142",
+    "scenario": "tentacles",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [[Monster]] enemies in play.",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -7
+        }
+      }
+    ]
+  },
+  {
+    "code": "02041",
+    "scenario": "extracurricular_activity",
+    "standard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "10 or more cards in your discard pile",
+          "modified_value": {
+            "modifier": -3
+          }
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "Total printed cost of the top 2 cards discarded from your deck.",
+          "min": 0
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "10 or more cards in your discard pile",
+          "modified_value": {
+            "modifier": -5
+          }
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "Total printed cost of the top 3 cards discarded from your deck.",
+          "min": 0
+        }
+      }
+    ]
+  },
+  {
+    "code": "02062",
+    "scenario": "the_house_always_wins",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "Spend 2 resources to treat this token as a 0",
+          "modified_value": {
+            "modifier": 0
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "prompt": "Spend 3 resources to treat this token as a 0",
+          "modified_value": {
+            "modifier": 0
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ]
+  },
+  {
+    "code": "02118",
+    "scenario": "the_miskatonic_museum",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "Hunting Horror is at your location",
+          "modified_value": {
+            "modifier": -3
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "Hunting Horror is at your location",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "02159",
+    "scenario": "essex_county_express",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Current agenda number",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Current agenda number",
+          "min": 1,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "02195",
+    "scenario": "blood_on_the_altar",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of locations in play with no encounter card underneath",
+          "min": 0,
+          "max": 4
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of locations in play with no encounter card underneath",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "02236",
+    "scenario": "undimensionsed_and_unseen",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of Brood of Yog-Sothoth in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "prompt": "Remove all clue tokens from a Brood of Yog-Sothoth in play",
+          "modified_value": {
+            "modifier": 0
+          }
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of locations in play with no encounter card underneath",
+          "min": 0,
+          "scale": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": "auto_fail"
+          },
+          "prompt": "Remove all clue tokens from a Brood of Yog-Sothoth in play",
+          "modified_value": {
+            "modifier": 0
+          }
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "02274",
+    "scenario": "where_doom_awaits",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "At an [[Altered]] location",
+          "modified_value": {
+            "modifier": -3
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "Agenda 2 is in play",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "Total printed cost of the top 2 cards discarded from your deck.",
+          "min": 0
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "At an [[Altered]] location",
+          "modified_value": {
+            "modifier": -5
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "prompt": "Agenda 2 is in play",
+          "modified_value": {
+            "modifier": "auto_fail"
+          }
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "Total printed cost of the top 3 cards discarded from your deck.",
+          "min": 0
+        }
+      }
+    ]
+  },
+  {
+    "code": "02331",
+    "scenario": "lost_in_time_and_space",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [[Extradimensional]] locations in play",
+          "min": 0,
+          "max": 5
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "Shroud value of your location",
+          "min": 0
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [[Extradimensional]] locations in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "Shroud value of your location",
+          "min": 0,
+          "scale": 2
+        }
+      }
+    ]
+  },
+  {
+    "code": "03043",
+    "scenario": "curtain_call",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "Have 3 or more horror on you",
+          "modified_value": {
+            "modifier": -3
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Amount of horror on you (min 1)",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "03061",
+    "scenario": "the_last_king",
+    "standard": [
+      {
+        "token": "skull",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "Shroud value of your location",
+          "min": 0
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "Shroud value of your location",
+          "min": 0
+        }
+      }
+    ]
+  },
+  {
+    "code": "03120",
+    "scenario": "echoes_of_the_past",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Highest number of doom on an enemy in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Total number of doom on enemies in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "03159",
+    "scenario": "the_unspeakable_oath",
+    "standard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of horror on you",
+          "min": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "counter",
+        "counter": {
+          "prompt": "Base shroud value of your location",
+          "min": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": "auto_fail"
+          },
+          "prompt": "Randomally choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
+          "modified_value": {
+            "modifier": 0
+          }
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of horror on you",
+          "min": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "counter",
+        "counter": {
+          "prompt": "Base shroud value of your location",
+          "min": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": "auto_fail"
+          },
+          "prompt": "Randomally choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
+          "modified_value": {
+            "modifier": 0
+          }
+        }
+      }
+    ]
+  },
+  {
+    "code": "03200",
+    "scenario": "a_phantom_of_truth",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The amount of doom in play",
+          "min": 0,
+          "max": 5
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3,
+          "cancel_modifiers": true
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The amount of doom in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4,
+          "cancel_modifiers": true
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "03240",
+    "scenario": "the_pallid_mask",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of locations away from the starting location you are",
+          "min": 0,
+          "max": 5
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of locations away from the starting location you are",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "03274",
+    "scenario": "black_stars_rise",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Highest amount of doom on an agenda in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "reveal_another": true,
+            "modifier": 0
+          },
+          "prompt": "Attack or evasion attempt against an enemy with doom on it",
+          "modified_value": {
+            "modifier": "auto_fail"
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Total amount of doom on agendas in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "reveal_another": true,
+            "modifier": 0
+          },
+          "prompt": "An enemy with 1 or more doom on it at your location",
+          "modified_value": {
+            "modifier": "auto_fail"
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "03316",
+    "scenario": "dim_carcosa",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "No remaining sanity left",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Amount of horror on you",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "04043",
+    "scenario": "wilds",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of vengeance points in the victory display",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of locations in play",
+          "min": 1,
+          "max": 5
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of cards in the exploration deck",
+          "min": 0,
+          "max": 5
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "You are poisoned",
+          "modified_value": {
+            "modifier": "auto_fail"
+          }
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of vengeance points in the victory display",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of locations in play",
+          "min": 1
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of cards in the exploration deck",
+          "min": 3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "prompt": "You are poisoned",
+          "modified_value": {
+            "modifier": "auto_fail"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "code": "04054",
+    "scenario": "eztli",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "Doom on your location",
+          "modified_value": {
+            "modifier": -3
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of locations with doom on them",
+          "min": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of locations with doom on them",
+          "min": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "Doom on your location",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "Total amount of doom on locations in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "counter",
+        "counter": {
+          "prompt": "Total amount of doom on locations in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      }
+    ]
+  },
+  {
+    "code": "04113",
+    "scenario": "threads_of_fate",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Highest number of doom on a [[Cultist]] enemy",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Total number of doom in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "04161",
+    "scenario": "boundary_beyond",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "At an [[Ancient]] location",
+          "modified_value": {
+            "modifier": -3
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "At an [[Ancient]] location",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "04205",
+    "scenario": "heart_of_the_elders",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "At a [[Cave]] location",
+          "modified_value": {
+            "modifier": -3
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "At a [[Cave]] location",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "04237",
+    "scenario": "city_of_archives",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "Have 5 or more cards in your hand",
+          "modified_value": {
+            "modifier": -5
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "Have 5 or more cards in your hand",
+          "modified_value": {
+            "modifier": "auto_fail"
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "04277",
+    "scenario": "the_depths_of_yoth",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Current depth level",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "3 or more vengeance points in the victory display",
+          "modified_value": {
+            "modifier": "auto_fail"
+          }
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Current depth level",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "prompt": "3 or more vengeance points in the victory display",
+          "modified_value": {
+            "modifier": "auto_fail"
+          }
+        }
+      }
+    ]
+  },
+
+  {
+    "code": "04314",
+    "scenario": "shattered_aeons",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "Relic of Ages is at your location",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "prompt": "Relic of Ages is at your location",
+          "modified_value": {
+            "modifier": -5
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "04344",
+    "scenario": "turn_back_time",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of locations with doom on them",
+          "min": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Total amount of doom on locations",
+          "min": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -6
+        }
+      }
+    ]
+  },
+
+  {
+    "code": "05043",
+    "scenario": "disappearance_at_the_twilight_estate",
+    "standard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "05050",
+    "scenario": "the_witching_hour",
+    "standard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "05065",
+    "scenario": "at_deaths_doorstep",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "Your location is haunted",
+          "modified_value": {
+            "modifier": -3
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "Your location is haunted",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "05120",
+    "scenario": "the_secret_name",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "You are at an [[Extradimensional]] location",
+          "modified_value": {
+            "modifier": -3
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "You are at an [[Extradimensional]] location",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "reveal_another": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "05161",
+    "scenario": "the_wages_of_sin",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of Unfinished Business in the victory display",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of Unfinished Business in the victory display",
+          "min": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ]
+  },
+  {
+    "code": "05197",
+    "scenario": "for_the_greater_good",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Highest number of doom on a [[Cultist]] enemy in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Total number of doom among [[Cultist]] enemies in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "prompt": "No [[Cultist]] enemies in play have doom on them",
+          "modified_value": {
+            "modifier": -3,
+            "reveal_another": true
+          }
+        }
+      }
+    ]
+  },
+  {
+    "code": "05238",
+    "scenario": "union_and_disillusion",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "During a <b>circle</b> action",
+          "modified_value": {
+            "modifier": -2,
+            "reveal_another": true
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "prompt": "During a <b>circle</b> action",
+          "modified_value": {
+            "modifier": -3,
+            "reveal_another": true
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "05284",
+    "scenario": "in_the_clutches_of_chaos",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Total number of doom and breaches on your location",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Total number of doom and breaches on your location",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "05325",
+    "scenario": "before_the_black_throne",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the doom on Azathoth (rounded up)",
+          "min": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Amount of doom on Azathoth",
+          "min": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -6
+        }
+      }
+    ]
+  },
+  {
+    "code": "06039",
+    "scenario": "beyond_the_gates_of_sleep",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the number of cards in your hand (rounded up)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of revealed Enchanted Woods locations",
+          "min": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of cards in your hand",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of revealed [[Woods]] locations",
+          "min": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ]
+  },
+  {
+    "code": "06063",
+    "scenario": "waking_nightmares",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "Engaged with a [[Staff]] enemy",
+          "modified_value": {
+            "modifier": -3
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of infested locations",
+          "min": 0
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "Engaged with a [[Staff]] enemy",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of infested locations",
+          "min": 0,
+          "adjustment": 1
+        }
+      }
+    ]
+  },
+  {
+    "code": "06119",
+    "scenario": "the_search_for_kadath",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of Signs of the Gods the investigators have uncovered",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": 2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of Signs of the Gods the investigators have uncovered",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": 1
+        }
+      }
+    ]
+  },
+  {
+    "code": "06168",
+    "scenario": "a_thousand_shapes_of_horror",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "At a [[Graveyard]] location",
+          "modified_value": {
+            "modifier": -3
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": 2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "At a [[Graveyard]] location",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": 1
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "06206",
+    "scenario": "dark_side_of_the_moon",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half your alarm level (rounded up)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": 1
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Your alarm level",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": 0
+        }
+      }
+    ]
+  },
+  {
+    "code": "06247",
+    "scenario": "point_of_no_return",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Amount of damage on the scenario reference card",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": 1
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Amount of damage on the scenario reference card",
+          "min": 1,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "06286",
+    "scenario": "where_the_gods_dwell",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of the current act",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": 0
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of the current act plus the number of the current agenda",
+          "min": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -6
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -1
+        }
+      }
+    ]
+  },
+  {
+    "code": "06333",
+    "scenario": "weaver_of_the_cosmos",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Highest amount of doom on a location in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The amount of doom on locations in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "07041",
+    "scenario": "the_pit_of_despair",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "-1 (-2 instead if your location is partially flooded; -3 instead if your location is fully flooded)",
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "-2 (-3 instead if your location is partially flooded; -4 instead if your location is fully flooded)",
+          "min": 2,
+          "max": 4
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "07056",
+    "scenario": "the_vanishing_of_elina_harper",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The current agenda number",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The current agenda number",
+          "min": 1,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "07123",
+    "scenario": "in_too_deep",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of locations to the east of your location (on the same row)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of barriers between your location and all connecting locations",
+          "min": 0
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of locations to the east of your location (on the same row)",
+          "min": 0,
+          "scale": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of barriers between your location and all connecting locations",
+          "min": 0,
+          "scale": 2
+        }
+      }
+    ]
+  },
+  {
+    "code": "07163",
+    "scenario": "devil_reef",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of keys the investigators control",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of keys the investigators control",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "07198",
+    "scenario": "horror_in_high_gear",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "6 or fewer locations remaining in the Road deck",
+          "modified_value": {
+            "modifier": -3
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "6 or fewer locations remaining in the Road deck",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "07231",
+    "scenario": "a_light_in_the_fog",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "Location is flooded",
+          "modified_value": {
+            "modifier": -1,
+            "reveal_another": true
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "Location is flooded",
+          "modified_value": {
+            "modifier": -2,
+            "reveal_another": true
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "07274",
+    "scenario": "the_lair_of_dagon",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of keys on the scenario reference card",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": 0,
+            "reveal_another": true
+          },
+          "prompt": "Curse revealed (before or after)",
+          "modified_value": {
+            "modifier": "auto_fail",
+            "reveal_another": true
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of keys on the scenario reference card",
+          "scale": 2,
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2,
+            "reveal_another": true
+          },
+          "prompt": "Curse revealed (before or after)",
+          "modified_value": {
+            "modifier": "auto_fail",
+            "reveal_another": true
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "07311",
+    "scenario": "into_the_maelstrom",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "4 or more unflooded [[Y'ha-nthlei]] locations in play",
+          "modified_value": {
+            "modifier": -3
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "4 or more unflooded [[Y'ha-nthlei]] locations in play",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -6
+        }
+      }
+    ]
+  },
+  {
+    "code": "81001",
+    "scenario": "curse_of_the_rougarou",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "At a [[Bayou]] location",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "Rougarou is at your location",
+          "modified_value": {
+            "modifier": -2,
+            "reveal_another": true
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "prompt": "At a [[Bayou]] location",
+          "modified_value": {
+            "modifier": -6
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "prompt": "Rougarou is at your location",
+          "modified_value": {
+            "modifier": -3,
+            "reveal_another": true
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "82001",
+    "scenario": "carnvele_of_horrors",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "2 plus the number of Innocent Revelers underneat the agenda deck",
+          "min": 2,
+          "max": 5
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "2 plus the number of Innocent Revelers underneat the agenda deck",
+          "min": 2,
+          "max": 5
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -6
+        }
+      }
+    ]
+  },
+  {
+    "code": "70001",
+    "scenario": "in_the_labyrinths_of_lunacy",
+    "standard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -1,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -1,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "83001",
+    "scenario": "the_eternal_slumber",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The strength of the abyss",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": 0,
+          "cancel_modifiers": true
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -5
+          },
+          "prompt": "Add 1 strength to the abyss",
+          "modified_value": {
+            "modifier": "auto_succeed"
+          }
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The strength of the abyss",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2,
+          "cancel_modifiers": true
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -6
+          },
+          "prompt": "Add 1 strength to the abyss",
+          "modified_value": {
+            "modifier": "auto_succeed"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "code": "83016",
+    "scenario": "the_nights_usurper",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The strength of the abyss",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -1,
+          "cancel_modifiers": true
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The strength of the abyss",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3,
+          "cancel_modifiers": true
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "84001",
+    "scenario": "murder_at_the_excelsior_hotel",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of [[Guest]] enemies in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "There is an [[Innocent]] enemy in the victory display",
+          "modified_value": {
+            "modifier": -1,
+            "reveal_another": true
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "prompt": "Place one of your clues on your location",
+          "modified_value": {
+            "modifier": -1
+          }
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of [[Innocent]] enemies in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "There is an [[Innocent]] enemy in the victory display",
+          "modified_value": {
+            "modifier": -2,
+            "reveal_another": true
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -5
+          },
+          "prompt": "Place one of your clues on your location",
+          "modified_value": {
+            "modifier": -2
+          }
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "85001",
+    "scenario": "the_blob_that_ate_everything",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "1 for every 5 cards Subject 8L-08 has devoured",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "1 for every 3 cards Subject 8L-08 has devoured",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -7
+        }
+      }
+    ]
+  },
+  {
+    "code": "86001",
+    "scenario": "war_of_the_outer_gods",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of clues you have",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of clues you have",
+          "scale": 2,
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "90004",
+    "scenario": "read_or_die",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [[Tome]] assets Daisy Walker controls",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [[Tome]] assets Daisy Walker controls",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "90011",
+    "scenario": "all_or_nothing",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of clues you have",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "You have 10 or more resources",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of clues you have",
+          "scale": 2,
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "prompt": "You have 10 or more resources",
+          "modified_value": {
+            "modifier": -8
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "90020",
+    "scenario": "bad_blood",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of memories Agnes Baker has collected",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -6
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of memories Agnes Baker has collected",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -8
+        }
+      }
+    ]
+  },
+  {
+    "code": "90032",
+    "scenario": "by_the_book",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [[Cultist]] enemies in the victory display",
+          "min": 0,
+          "max": 5
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "A [[Cultist]] enemy is engaged with you",
+          "modified_value": {
+            "modifier": -2,
+            "reveal_another": true
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [[Cultist]] enemies in the victory display",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "prompt": "A [[Cultist]] enemy is engaged with you",
+          "modified_value": {
+            "modifier": -3,
+            "reveal_another": true
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "08501",
+    "scenario": "ice_and_death",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the shelter value of your location (rounded up)"
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The shelter value of your location"
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "08549",
+    "scenario": "fatal_mirage",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of story cards in the victory display"
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The current agenda number plus the number of story cards in the victory display"
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+
+  {
+    "code": "08596",
+    "scenario": "to_the_forbidden_peaks",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The level of your location"
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "2 plus the level of your location",
+          "min": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "08621",
+    "scenario": "city_of_the_elder_things",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of keys you control"
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "prompt": "[frost] token was revealed",
+          "modified_value": {
+            "modifier": "auto_fail"
+          }
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "2 plus the number of keys you control",
+          "min": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "prompt": "[frost] token was revealed",
+          "modified_value": {
+            "modifier": "auto_fail"
+          }
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "08648",
+    "scenario": "the_heart_of_madness",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "There is an [[Ancient One]] enemy at your locations",
+          "modified_value": {
+            "modifier": -3
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "There is an [[Ancient One]] enemy at your locations",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  }
+]
