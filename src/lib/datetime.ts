@@ -103,9 +103,9 @@ export function toRelativeDateString(date: Date | string, locale: string) {
 
 export function localizedDate(date: Date, locale: string, noDayOfWeek: boolean = false) {
   if (noDayOfWeek) {
-    return format(date, locale === 'fr' ? 'd MMMM yyyy' : 'MMMM d, yyyy', LOCALE_MAP[locale]);
+    return format(date, (locale === 'fr' || locale === 'it') ? 'd MMMM yyyy' : 'MMMM d, yyyy', LOCALE_MAP[locale]);
   }
-  return format(date, !noDayOfWeek && locale === 'fr' ? 'iiii d MMMM yyyy' : 'MMMM d, yyyy', LOCALE_MAP[locale]);
+  return format(date, !noDayOfWeek && (locale === 'fr' || locale === 'it') ? 'iiii d MMMM yyyy' : 'MMMM d, yyyy', LOCALE_MAP[locale]);
 }
 
 /**
