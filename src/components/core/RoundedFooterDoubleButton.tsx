@@ -42,7 +42,7 @@ export default function RoundedFooterDoubleButton({ onPressA, iconA, titleA, onP
       >
         <View pointerEvents="box-none" style={styles.row}>
           <ArkhamButtonIcon icon={iconA} color="dark" />
-          <Text style={[typography.button, { marginLeft: height / 4, color: colors.D20 }]}>
+          <Text style={[typography.button, { marginLeft: height / 4, color: colors.D20, textAlignVertical: 'center' }]}>
             { titleA }
           </Text>
         </View>
@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   divider: {
     width: 1,

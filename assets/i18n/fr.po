@@ -5370,6 +5370,29 @@ msgid "Campaign will be local to this device, you can choose to upload it later"
 msgstr ""
 
 #, javascript-format
+msgid "(${ count } card)"
+msgid_plural "(${ count } cards)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Collection overlap"
+msgstr ""
+
+msgid "Deck overlap"
+msgstr ""
+
+msgid "Show collection overlap"
+msgstr ""
+
+msgid "Hide collection overlap"
+msgstr ""
+
+msgid ""
+"The total number of these cards among decks from this campaign exceeds your "
+"card collection."
+msgstr ""
+
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } est devenu <b>dément</b>."

@@ -26,6 +26,7 @@ import { WeaknessSetProps } from './WeaknessSetView';
 import useConnectionProblemBanner from '@components/core/useConnectionProblemBanner';
 import { useArkhamDbError } from '@data/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import DeckOverlapComponent from '@components/deck/DeckDetailView/DeckOverlapComponent';
 
 const SHOW_WEAKNESS = false;
 
@@ -222,6 +223,9 @@ export default function CampaignDetailTab({
             saveDeckUpgrade={saveDeckUpgrade}
             savingDeckUpgrade={saving}
           />
+        </View>
+        <View style={[space.paddingSideS, space.paddingBottomS]}>
+          <DeckOverlapComponent componentId={componentId} />
         </View>
         { footerButtons }
       </ScrollView>

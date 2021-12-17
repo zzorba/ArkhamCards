@@ -164,6 +164,8 @@ export default function InvestigatorCampaignRow({
         campaign?.id,
         colors,
         investigator,
+        undefined,
+        true
       );
     }
   }, [campaign, investigator, deck, colors]);

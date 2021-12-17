@@ -38,7 +38,7 @@ function RoundedFooterButton({ onPress, icon, title, color = 'dark' }: Props) {
     >
       <View pointerEvents="box-none" style={styles.row}>
         { icon === 'spinner' ? <ActivityIndicator size="small" color={textColor} animating /> : <ArkhamButtonIcon icon={icon} color={color === 'dark' ? 'dark' : 'faded'} /> }
-        <Text style={[typography.button, { marginLeft: height / 4, color: textColor }]}>
+        <Text style={[typography.button, { marginLeft: height / 4, color: textColor, textAlignVertical: 'center' }]}>
           { title }
         </Text>
       </View>
@@ -63,5 +63,7 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
 });

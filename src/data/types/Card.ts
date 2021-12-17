@@ -707,6 +707,19 @@ export default class Card {
     return [];
   }
 
+  collectionQuantity(packInCollection: { [pack_code: string]: boolean | undefined }, ignore_collection: boolean): number {
+    if (this.pack_code === 'core') {
+      if (packInCollection.core || ignore_collection) {
+        return (this.quantity || 0) * 2;
+      }
+      const reprintPacks = this.reprint_pack_codes || REPRINT_CARDS[this.code];
+      if (reprintPacks && find(reprintPacks, pack => !!packInCollection[pack])) {
+        return (this.quantity || 0) * 2;
+      }
+    }
+    return this.quantity || 0;
+  }
+
   collectionDeckLimit(packInCollection: { [pack_code: string]: boolean | undefined }, ignore_collection: boolean): number {
     if (ignore_collection) {
       return this.deck_limit || 0;

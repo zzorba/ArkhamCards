@@ -104,7 +104,8 @@ export function showDeckModal(
   campaignId: CampaignId | undefined,
   colors: ThemeColors,
   investigator?: Card,
-  initialMode?: 'upgrade' | 'edit'
+  initialMode?: 'upgrade' | 'edit',
+  fromCampaign?: boolean
 ) {
   const passProps: DeckDetailProps = {
     id,
@@ -113,6 +114,7 @@ export function showDeckModal(
     title: investigator ? investigator.name : t`Deck`,
     subtitle: deck.name,
     initialMode,
+    fromCampaign,
   };
 
   const options = getDeckOptions(colors, {

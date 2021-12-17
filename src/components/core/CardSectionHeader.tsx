@@ -10,6 +10,7 @@ import Ripple from '@lib/react-native-material-ripple';
 import Card from '@data/types/Card';
 import { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import AppIcon from '@icons/AppIcon';
 
 export interface CardSectionHeaderData {
   superTitle?: string;
@@ -53,11 +54,19 @@ function CardSectionHeader({ investigator, section }: Props) {
             { width: SMALL_EDIT_ICON_SIZE, height: SMALL_EDIT_ICON_SIZE },
             section.superTitleIcon ? { marginRight: xs } : {},
           ]}>
-            <MaterialIcons
-              name={section.superTitleIcon || 'keyboard-arrow-right'}
-              color="#FFF"
-              size={SMALL_EDIT_ICON_SIZE}
-            />
+            { section.superTitleIcon === 'deck' ? (
+              <AppIcon
+                name={section.superTitleIcon}
+                color="#FFF"
+                size={SMALL_EDIT_ICON_SIZE}
+              />
+            ) : (
+              <MaterialIcons
+                name={section.superTitleIcon || 'keyboard-arrow-right'}
+                color="#FFF"
+                size={SMALL_EDIT_ICON_SIZE}
+              />
+            ) }
           </View>
         ) }
       </>

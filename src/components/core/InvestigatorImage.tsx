@@ -29,6 +29,7 @@ interface Props {
   imageLink?: boolean;
   badge?: 'upgrade' | 'deck';
   tabooSetId?: number;
+  noShadow?: boolean;
 }
 
 const IMAGE_SIZE = {
@@ -61,6 +62,7 @@ function InvestigatorImage({
   imageLink,
   badge,
   tabooSetId,
+  noShadow,
 }: Props) {
   const { colors, fontScale, shadow } = useContext(StyleContext);
 
@@ -139,7 +141,7 @@ function InvestigatorImage({
       );
     }
     return (
-      <View style={[{ width: size, height: size, position: 'relative' }, border && impliedSize === 'tiny' ? shadow.large : undefined]}>
+      <View style={[{ width: size, height: size, position: 'relative' }, border && impliedSize === 'tiny' && !noShadow ? shadow.large : undefined]}>
         <View style={[
           styles.container,
           border ? styles.border : undefined,
@@ -185,7 +187,7 @@ function InvestigatorImage({
         ) }
       </View>
     );
-  }, [card, killedOrInsane, badge, border, colors, impliedSize, styledImage, loadingAnimation, shadow]);
+  }, [card, killedOrInsane, badge, border, colors, impliedSize, styledImage, loadingAnimation, shadow, noShadow]);
 
   if (componentId && card) {
     return (

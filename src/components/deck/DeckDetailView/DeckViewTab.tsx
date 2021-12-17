@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { c, msgid, t } from 'ttag';
 
 import {
+  CampaignId,
   CardId,
   Deck,
   DeckId,
@@ -42,8 +43,8 @@ import { ControlType } from '@components/cardlist/CardSearchResult/ControlCompon
 import { getPacksInCollection, AppState } from '@reducers';
 import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import LoadingSpinner from '@components/core/LoadingSpinner';
 import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
+import { DeckOverlapComponentForCampaign } from './DeckOverlapComponent';
 
 interface SectionCardId extends CardId {
   mode: 'special' | 'side' | 'bonded' | undefined;
@@ -266,6 +267,8 @@ interface Props {
   bondedCardsByName: {
     [name: string]: Card[];
   };
+  fromCampaign?: boolean;
+  campaignId?: CampaignId;
   visible: boolean;
   editable: boolean;
   buttons?: ReactNode;
@@ -305,6 +308,7 @@ export default function DeckViewTab(props: Props) {
   const {
     componentId,
     suggestArkhamDbLogin,
+    fromCampaign,
     tabooSetId,
     cards,
     deckId,
@@ -328,6 +332,7 @@ export default function DeckViewTab(props: Props) {
     showTaboo,
     tabooOpen,
     buttons,
+    campaignId,
     showDeckHistory,
     deckEdits,
     deckEditsRef,
@@ -423,19 +428,21 @@ export default function DeckViewTab(props: Props) {
         };
       });
       const count = sumBy(limitedCards, card => slots[card.id] || 0);
-      newData.push({
-        title: t`Limited Slots`,
-        toggleCollapsed: toggleLimitedSlots,
-        collapsed: !limitedSlots,
-        sections: limitedSlots ? [
-          {
-            id: 'splash',
-            title: t`${count} of ${limitSlotCount}`,
-            cards: limitedCards,
-            last: true,
-          },
-        ] : [],
-      });
+      if (count > 0) {
+        newData.push({
+          title: t`Limited Slots`,
+          toggleCollapsed: toggleLimitedSlots,
+          collapsed: !limitedSlots,
+          sections: limitedSlots ? [
+            {
+              id: 'splash',
+              title: t`${count} of ${limitSlotCount}`,
+              cards: limitedCards,
+              last: true,
+            },
+          ] : [],
+        });
+      }
     }
     let bondedIndex = specialIndex;
     if (ENABLE_SIDE_DECK) {
@@ -710,6 +717,7 @@ export default function DeckViewTab(props: Props) {
                 onTitlePress={deckSection.onTitlePress}
                 collapsed={deckSection.collapsed}
                 toggleCollapsed={deckSection.toggleCollapsed}
+                collapsedText={deckSection.collapsed ? t`Show splash cards` : t`Hide splash cards`}
                 footerButton={deckSection.sections.length === 0 && deckSection.onTitlePress ? (
                   <RoundedFooterButton onPress={deckSection.onTitlePress} title={t`Add cards`} icon="deck" />
                 ) : undefined}
@@ -724,6 +732,14 @@ export default function DeckViewTab(props: Props) {
             </View>
           );
         }) }
+        { !!campaignId && !parsedDeck.deck.nextDeckId && (
+          <DeckOverlapComponentForCampaign
+            campaignId={campaignId}
+            componentId={componentId}
+            parsedDeck={parsedDeck}
+            live={!fromCampaign}
+          />
+        ) }
         <DeckProgressComponent
           componentId={componentId}
           cards={cards}

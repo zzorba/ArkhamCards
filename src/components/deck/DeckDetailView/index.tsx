@@ -60,6 +60,7 @@ export interface DeckDetailProps {
   subtitle?: string;
   campaignId: CampaignId | undefined;
   modal?: boolean;
+  fromCampaign?: boolean;
 }
 
 type Props = NavigationProps &
@@ -88,6 +89,7 @@ function DeckDetailView({
   signedIn,
   login,
   initialMode,
+  fromCampaign,
 }: Props) {
   const { lang, arkhamDbDomain } = useContext(LanguageContext);
   const { backgroundStyle, colors, darkMode, typography, shadow, width } = useContext(StyleContext);
@@ -1074,6 +1076,8 @@ function DeckDetailView({
           <View style={[styles.container, backgroundStyle] }>
             <DeckViewTab
               componentId={componentId}
+              campaignId={campaignId}
+              fromCampaign={fromCampaign}
               visible={visible}
               deckId={id}
               suggestArkhamDbLogin={suggestArkhamDbLogin}
