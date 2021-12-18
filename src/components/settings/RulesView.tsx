@@ -34,7 +34,12 @@ function RuleComponent({ componentId, rule, level }: { componentId: string; rule
         options: {
           topBar: {
             title: {
-              text: rule.title,
+              component: {
+                name: 'RulesTitle',
+                passProps: {
+                  title: rule.title,
+                },
+              },
             },
             backButton: {
               title: t`Back`,

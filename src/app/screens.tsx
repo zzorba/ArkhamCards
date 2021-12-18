@@ -9,6 +9,7 @@ import MyCampaignsView from '@components/campaign/MyCampaignsView';
 import MyDecksView from '@components/decklist/MyDecksView';
 import BrowseCardsView from '@components/cardlist/BrowseCardsView';
 import SettingsView from '@components/settings/SettingsView';
+import RuleTitleComponent from '@components/settings/RuleTitleComponent';
 
 interface ProviderProps<S> {
   store: S;
@@ -114,6 +115,7 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
   Navigation.registerComponent('SortButton', providerWrapper(SortButton), () => SortButton);
   Navigation.registerComponent('TuneButton', providerWrapper(TuneButton), () => TuneButton);
   Navigation.registerComponent('MythosButton', providerWrapper(MythosButton), () => MythosButton);
+  Navigation.registerComponent('RulesTitle', providerWrapper(RuleTitleComponent), () => MythosButton);
 
   Navigation.setLazyComponentRegistrator((componentName: string | number) => {
     const RootComponent = getRootComponent(componentName);
