@@ -9,7 +9,7 @@ interface Props {
 
 export default function RuleTitleComponent({ title }: Props) {
   return (
-    <Text numberOfLines={1} style={{ flex: 1, textAlignVertical: 'bottom', textAlign: 'center' }}>
+    <Text numberOfLines={1} style={{ flex: 1, textAlignVertical: 'bottom/', textAlign: 'center' }}>
       <CardTextComponent text={title} sizeScale={1.3} />
     </Text>
   );
