@@ -24,11 +24,11 @@ export default function MenuButton({ icon, title, description, onPress, disabled
             <AppIcon name={icon} size={icon === 'edit' ? 22 : 28} color={colors.M} />
           </View>
         ) }
-        <View style={styles.column}>
+        <View style={[styles.column, { flex: 1 }]}>
           <Text style={typography.menuText} numberOfLines={numberOfLines || 1} ellipsizeMode="clip">
             { title }
           </Text>
-          <Text style={[typography.smallLabel, typography.italic, { color: colors.M }]}>
+          <Text style={[typography.smallLabel, typography.italic, { color: colors.M }]} numberOfLines={2} ellipsizeMode="clip">
             { description }
           </Text>
         </View>

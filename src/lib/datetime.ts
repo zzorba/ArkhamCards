@@ -42,22 +42,6 @@ export function utcFormat(timestamp: number, formatString: string) {
 }
 
 /**
- * Formats a timestamp into a string with year, month, day, and time to seconds, e.g. "2017-05-22T19:17:19".
- */
-export function toDateString(timestamp: number) {
-  // NOTE(daniel): we're cutting off the tail which is milliseconds
-  const date = new Date(timestamp * 1000);
-  return date.toISOString().substring(0, 19);
-}
-
-/**
- * Formats a timestamp into a string with US date, e.g. "5/22/2017".
- */
-export function toDateStringNoTime(timestamp: number) {
-  return new Date(timestamp * 1000).toLocaleDateString('en-US');
-}
-
-/**
  * Returns the number of days remaining until specified end date.
  */
 export function toDaysRemaining(endDate: number) {
@@ -145,8 +129,6 @@ export default {
   toDaysRemaining,
   toUtcYearMonth,
   utcFormat,
-  toDateStringNoTime,
-  toDateString,
   toDateStringMonthName,
   toRelativeDateString,
   nowAsSeconds,

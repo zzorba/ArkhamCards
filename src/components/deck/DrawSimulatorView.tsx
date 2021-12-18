@@ -36,7 +36,7 @@ function Button({ title, disabled, onPress }: { title: string; disabled?: boolea
   const { colors, typography } = useContext(StyleContext);
   return (
     <TouchableOpacity disabled={disabled} onPress={onPress}>
-      <View style={{ borderRadius: 4, padding: s, backgroundColor: colors.L20 }}>
+      <View style={{ borderRadius: 4, padding: xs, backgroundColor: colors.L20 }}>
         <Text style={[typography.button, typography.center, typography.light]}>{title}</Text>
       </View>
     </TouchableOpacity>

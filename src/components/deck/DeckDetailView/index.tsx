@@ -73,7 +73,7 @@ function formatTabooStart(date_start: string | undefined, locale: string) {
     return '';
   }
   const date = new Date(Date.parse(date_start));
-  if (locale === 'fr') {
+  if (locale === 'fr' || locale === 'it') {
     return format(date, 'dd/MM/yyyy');
   }
   return format(date, 'yyyy/MM/dd');
