@@ -5044,25 +5044,26 @@ msgstr "캠페인은 이 장치에만 둘 수도 있고, 나중에 업로드하�
 #, javascript-format
 msgid "(${ count } card)"
 msgid_plural "(${ count } cards)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(${ count }장)"
 
 msgid "Collection overlap"
-msgstr ""
+msgstr "초과된 공통 보유 카드"
 
 msgid "Deck overlap"
-msgstr ""
+msgstr "초과된 공통 보유 카드"
 
 msgid "Show collection overlap"
-msgstr ""
+msgstr "초과된 공통 보유 카드 보기"
 
 msgid "Hide collection overlap"
-msgstr ""
+msgstr "초과된 공통 보유 카드 숨기기"
 
 msgid ""
 "The total number of these cards among decks from this campaign exceeds your "
 "card collection."
 msgstr ""
+"같은 캠페인에 속한 덱에서 공통으로 포함된 카드들의 총합이 당신의 보유 게임 내의 "
+"총 수량을 초과합니다."
 
 #, javascript-format
 msgctxt "masculine"
