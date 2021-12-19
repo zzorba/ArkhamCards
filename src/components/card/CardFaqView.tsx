@@ -103,7 +103,7 @@ export default function CardFaqView({ id, componentId }: Props) {
     }
     return arkhamDbEntry;
   }, [lang, faqEntries, data, dataLoading]);
-  const lastUpdated = useMemo(() => faqEntry && faqEntry.fetched && localizedDate(faqEntry.fetched, lang, true), [faqEntry]);
+  const lastUpdated = useMemo(() => faqEntry && faqEntry.fetched && localizedDate(faqEntry.fetched, lang, true), [faqEntry, lang]);
 
   return (
     <ScrollView

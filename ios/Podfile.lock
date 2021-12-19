@@ -394,7 +394,7 @@ PODS:
     - React
   - react-native-keyevent (0.2.8):
     - React
-  - react-native-netinfo (7.1.5):
+  - react-native-netinfo (7.1.6):
     - React-Core
   - react-native-pager-view (5.4.9):
     - React-Core
@@ -521,7 +521,7 @@ PODS:
     - React-Core
   - RNLocalize (2.1.6):
     - React-Core
-  - RNReanimated (2.3.0):
+  - RNReanimated (2.3.1):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -921,7 +921,7 @@ SPEC CHECKSUMS:
   react-native-in-app-browser: 533839b6e87ec02a7a88bd9f4f7e6e5b586e25fa
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
   react-native-keyevent: f8728b8c73dbfbcb4d2c56d9e78be082c673c456
-  react-native-netinfo: a3ece35948490a9507da0c56694da525b83357df
+  react-native-netinfo: 6f98a7fb549351a8f7f9a6d1ca80afc23e320045
   react-native-pager-view: 3ee7d4c7697fb3ef788346e834a60cca97ed8540
   react-native-sqlite-storage: f6d515e1c446d1e6d026aa5352908a25d4de3261
   react-native-track-player: 23dd515aacf1d36a0e522ef7fdbc55f13f26d4fb
@@ -954,7 +954,7 @@ SPEC CHECKSUMS:
   RNGoogleSignin: a51c9c7419262c75748ddcee3f735bb42da5def1
   RNKeychain: 4f63aada75ebafd26f4bc2c670199461eab85d94
   RNLocalize: f10d91c76a5692d4cf6f218c70f6e4d7dcb42d1c
-  RNReanimated: 569c269480a76e39196aa17a5df08ef1561db5ff
+  RNReanimated: da3860204e5660c0dd66739936732197d359d753
   RNSha256: bf2c90a9e0cec6dcbcc4100e4e19715ae7feaa34
   RNShare: d76b8c9c6e6ffb38fc18f40b4338c9d867592ed3
   RNSpringScrollView: e354167d96f2c3d2f20b186990b2c3946987cb3c
