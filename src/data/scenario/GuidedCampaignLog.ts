@@ -1089,10 +1089,10 @@ export default class GuidedCampaignLog {
           data.killed = true;
           break;
         case 'heal_damage':
-          data.physical = Math.max(0, (data.physical) || 0 - 1);
+          data.physical = Math.max(0, (data.physical || 0) - 1);
           break;
         case 'heal_horror':
-          data.mental = Math.max(0, (data.mental) || 0 - 1);
+          data.mental = Math.max(0, (data.mental || 0) - 1);
           break;
         default:
           /* eslint-disable @typescript-eslint/no-unused-vars */
