@@ -8,6 +8,7 @@ import { SearchResults, useSearchUsers, useUpdateFriendRequest } from '@data/rem
 import { NavigationProps } from '@components/nav/types';
 import useFriendFeedComponent, { FriendFeedItem, UserControls } from './useFriendFeedComponent';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { searchNormalize } from '@data/types/Card';
 
 export interface FriendsViewProps {
   userId: string;
@@ -55,9 +56,9 @@ function FeedComponent({ userId, componentId, searchTerm, searchResults, handleS
     isSelf: boolean,
     profile?: UserProfile
   ) => {
-    const normalizedSearch = searchTerm && searchTerm.toLocaleLowerCase(lang);
+    const normalizedSearch = searchTerm && searchNormalize(searchTerm, lang);
     const matchesSearch = (f: SimpleUser) => {
-      return !normalizedSearch || !f.handle || f.handle.toLocaleLowerCase(lang).indexOf(normalizedSearch) !== -1;
+      return !normalizedSearch || !f.handle || searchNormalize(f.handle, lang).indexOf(normalizedSearch) !== -1;
     };
     const feed: FriendFeedItem[] = [];
     if (searchTerm && searchTerm !== searchResults.term) {

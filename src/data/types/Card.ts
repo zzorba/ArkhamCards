@@ -18,7 +18,7 @@ const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all|(X tota
 const SEARCH_REGEX = /["“”‹›«»〞〝〟„＂❝❞‘’❛❜‛',‚❮❯\(\)\-\.…]/g;
 
 export function searchNormalize(text: string, lang: string) {
-  return removeDiacriticalMarks(text.toLocaleLowerCase(lang).replace(SEARCH_REGEX, ''));
+  return removeDiacriticalMarks(text ? text.toLocaleLowerCase(lang).replace(SEARCH_REGEX, '') : '');
 }
 
 export const CARD_NUM_COLUMNS = 126;
