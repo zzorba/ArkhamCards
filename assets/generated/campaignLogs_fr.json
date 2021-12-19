@@ -464,6 +464,14 @@
             "text": "#X#"
           },
           {
+            "id": "city_elder_things_danforth",
+            "text": "leurre"
+          },
+          {
+            "id": "city_elder_things_takada",
+            "text": "leurre"
+          },
+          {
             "id": "city_of_the_elder_things_v1",
             "text": "leurre"
           },
@@ -656,11 +664,27 @@
             "text": "leurre"
           },
           {
+            "id": "forbidden_peaks_danforth",
+            "text": "leurre"
+          },
+          {
+            "id": "forbidden_peaks_takada",
+            "text": "leurre"
+          },
+          {
             "id": "gaze_into_madness",
             "text": "leurre"
           },
           {
             "id": "green_soapstone_recovered",
+            "text": "leurre"
+          },
+          {
+            "id": "heart_of_madness_danforth",
+            "text": "leurre"
+          },
+          {
+            "id": "heart_of_madness_takada",
             "text": "leurre"
           },
           {

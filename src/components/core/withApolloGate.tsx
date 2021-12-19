@@ -18,6 +18,7 @@ import { useApolloClient } from '@apollo/client';
 import { genericOptimisticUpdates } from '@data/remote/apollo';
 import { trackedQueriesRemove } from '@data/apollo/trackerLink';
 import ArkhamLoadingSpinner from './ArkhamLoadingSpinner';
+import space from '@styles/space';
 
 interface Props {
   children: JSX.Element;
@@ -90,10 +91,10 @@ function ApolloGate({ children }: Props) {
   if (loading || !trackedLoaded) {
     return (
       <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
-        <Text style={typography.text}>
+        <ArkhamLoadingSpinner autoPlay loop />
+        <Text style={[typography.text, space.marginTopS]}>
           { loading ? t`Loading latest cards...` : t`Loading...` }
         </Text>
-        <ArkhamLoadingSpinner autoPlay loop />
       </View>
     );
   }

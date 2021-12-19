@@ -36,6 +36,7 @@ function RuleComponent({ componentId, rule, level }: { componentId: string; rule
             title: {
               component: {
                 name: 'RulesTitle',
+                alignment: 'center',
                 passProps: {
                   title: rule.title,
                 },
@@ -163,7 +164,7 @@ export default function RulesView({ componentId }: Props) {
           contentInset={Platform.OS === 'ios' ? { top: height } : undefined}
           contentOffset={Platform.OS === 'ios' ? { x: 0, y: -height } : undefined}
           renderItem={renderItem}
-          onEndReachedThreshold={0.5}
+          onEndReachedThreshold={height}
           onEndReached={fetchMore}
           updateCellsBatchingPeriod={50}
           initialNumToRender={30}
