@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { ActivityIndicator, Platform, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
 import { forEach, map } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -16,7 +17,6 @@ import AppIcon from '@icons/AppIcon';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
 import { FriendStatus, SearchResults } from '@data/remote/api';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import ArkhamLargeList from '@components/core/ArkhamLargeList';
 
@@ -93,7 +93,12 @@ function FriendControlsComponent({ user, status, refetchMyProfile, acceptRequest
     const buttons: React.ReactNode[] = [];
     if (status === FriendStatus.RECEIVED || status === FriendStatus.NONE) {
       buttons.push((
-        <RoundButton onPress={onAcceptPress} disabled={!!submitting} accessibilityLabel={status === FriendStatus.RECEIVED ? t`Accept friend request` : t`Send friend request`}>
+        <RoundButton
+          onPress={onAcceptPress}
+          disabled={!!submitting}
+          accessibilityLabel={status === FriendStatus.RECEIVED ? t`Accept friend request` : t`Send friend request`}
+          useGestureHandler={Platform.OS === 'ios'}
+        >
           { submitting === 'accept' ? (
             <ActivityIndicator size="small" animating color={colors.D30} />
           ) : (
@@ -108,7 +113,12 @@ function FriendControlsComponent({ user, status, refetchMyProfile, acceptRequest
     }
     if (status && status !== FriendStatus.NONE) {
       buttons.push((
-        <RoundButton onPress={onRejectPress} disabled={!!submitting} accessibilityLabel={status === FriendStatus.RECEIVED ? t`Reject friend request` : t`Revoke friend request`}>
+        <RoundButton
+          onPress={onRejectPress}
+          disabled={!!submitting}
+          accessibilityLabel={status === FriendStatus.RECEIVED ? t`Reject friend request` : t`Revoke friend request`}
+          useGestureHandler={Platform.OS === 'ios'}
+        >
           { submitting === 'reject' ? (
             <ActivityIndicator size="small" animating color={colors.D30} />
           ) : (
@@ -151,7 +161,12 @@ function AccessControlsComponent({ user, hasAccess, inviteUser, removeUser }: {
   return (
     <View style={styles.button}>
       { hasAccess ? (
-        <RoundButton onPress={onRemovePress} disabled={!!submitting} accessibilityLabel={t`Reject friend request`}>
+        <RoundButton
+          onPress={onRemovePress}
+          disabled={!!submitting}
+          accessibilityLabel={t`Reject friend request`}
+          useGestureHandler={Platform.OS === 'ios'}
+        >
           { submitting === 'remove' ? (
             <ActivityIndicator size="small" animating color={colors.D30} />
           ) : (
@@ -159,7 +174,12 @@ function AccessControlsComponent({ user, hasAccess, inviteUser, removeUser }: {
           ) }
         </RoundButton>
       ) : (
-        <RoundButton onPress={onInvitePress} disabled={!!submitting} accessibilityLabel={t`Send friend request`}>
+        <RoundButton
+          onPress={onInvitePress}
+          disabled={!!submitting}
+          accessibilityLabel={t`Send friend request`}
+          useGestureHandler={Platform.OS === 'ios'}
+        >
           { submitting === 'invite' ? (
             <ActivityIndicator size="small" animating color={colors.D30} />
           ) : (
@@ -218,14 +238,15 @@ function UserRow({ user, showUser, status, controls, refetchMyProfile }: {
         return null;
     }
   }, [user, status, controls, refetchMyProfile]);
+  const Touchable = Platform.OS === 'ios' ? GestureHandlerTouchableOpacity : TouchableOpacity;
   return (
     <View style={[styles.userRow, borderStyle, space.paddingM, { height: userRowHeight(fontScale, lang) }]}>
       { user.handle ? (
-        <TouchableOpacity style={styles.pressable} onPress={onPress} disabled={!showUser}>
+        <Touchable style={styles.pressable} onPress={onPress} disabled={!showUser}>
           <Text style={typography.large}>
             { user.handle }
           </Text>
-        </TouchableOpacity>
+        </Touchable>
       ) : (
         <Placeholder Animation={fadeAnim}>
           <PlaceholderLine noMargin style={styles.textPlaceholder} color={colors.M} />

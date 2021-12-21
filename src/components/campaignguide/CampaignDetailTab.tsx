@@ -228,6 +228,7 @@ export default function CampaignDetailTab({
           <DeckOverlapComponent componentId={componentId} />
         </View>
         { footerButtons }
+        <View style={{ height: 120 }} />
       </ScrollView>
       { chaosBagDialog }
       { traumaDialog }

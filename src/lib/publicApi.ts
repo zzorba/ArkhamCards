@@ -325,6 +325,7 @@ export const syncCards = async function(
 
     await syncRules(db, sqliteVersion, lang);
     updateProgress(0.25);
+    VERBOSE && console.log('Imported rules');
 
     // console.log(`${await cards.count() } cards after delete`);
     const genericInvestigator = Card.fromJson({
@@ -371,6 +372,7 @@ export const syncCards = async function(
       try {
         const card = Card.fromJson(cardJson, packsByCode, cycleNames, lang || 'en');
         if (card) {
+          VERBOSE && console.log(card.code);
           /*
           // Code to spit out investigator deck_options localization strings.
           if (card.type_code === 'investigator' && card.deck_options) {

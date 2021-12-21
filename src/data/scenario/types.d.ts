@@ -1076,10 +1076,10 @@ export interface XpCountStep {
   border_only?: boolean;
   id: string;
   type: "xp_count";
-  bullet_type?: null;
+  bullet_type?: BulletType;
   title?: string;
   special_xp: SpecialXp;
-  text?: null;
+  text?: string;
   narration?: Narration;
 }
 export interface InternalStep {

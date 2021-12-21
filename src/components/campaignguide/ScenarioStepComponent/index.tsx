@@ -206,7 +206,7 @@ export default function ScenarioStepComponent({
 
   return (
     <ScenarioStepContext.Provider value={context}>
-      { !!step.step.title && step.step.type !== 'border' && (
+      { !!step.step.title && step.step.type !== 'border' && step.step.type !== 'xp_count' && (
         <View style={styles.titleWrapper}>
           <Text style={[
             typography.bigGameFont,

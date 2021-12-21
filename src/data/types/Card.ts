@@ -1,4 +1,5 @@
 import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'typeorm/browser';
+import { Platform } from 'react-native';
 import { forEach, filter, keys, map, min, omit, find, sortBy, indexOf } from 'lodash';
 import { removeDiacriticalMarks } from 'remove-diacritical-marks'
 import { t } from 'ttag';
@@ -18,7 +19,19 @@ const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all|(X tota
 const SEARCH_REGEX = /["“”‹›«»〞〝〟„＂❝❞‘’❛❜‛',‚❮❯\(\)\-\.…]/g;
 
 export function searchNormalize(text: string, lang: string) {
-  return removeDiacriticalMarks(text ? text.toLocaleLowerCase(lang).replace(SEARCH_REGEX, '') : '');
+  if (!text) {
+    return '';
+  }
+  const r = text.toLocaleLowerCase(lang).replace(SEARCH_REGEX, '');
+  try {
+    if (Platform.OS === 'ios') {
+      return removeDiacriticalMarks(r);
+    }
+    return r;
+  } catch (e) {
+    console.log(e);
+    return r;
+  }
 }
 
 export const CARD_NUM_COLUMNS = 126;
