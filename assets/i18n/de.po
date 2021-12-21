@@ -2651,12 +2651,6 @@ msgstr ""
 "Fehlende Karte #${ code }. Bitte versuche, die Karten von ArkhamDB in den "
 "Einstellungen zu updaten."
 
-#, javascript-format
-msgid "${ specialXp } resupply experience available"
-msgid_plural "${ specialXp } resupply experience available"
-msgstr[0] "${ specialXp } Erfahrungspunkt für Ausrüstungspunkte verfügbar"
-msgstr[1] "${ specialXp } Erfahrungspunkte für Ausrüstungspunkte verfügbar"
-
 msgid "Unexpected file type"
 msgstr "Unbekannter Dateityp"
 

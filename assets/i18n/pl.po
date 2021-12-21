@@ -2459,12 +2459,6 @@ msgid ""
 "settings."
 msgstr ""
 
-#, javascript-format
-msgid "${ specialXp } resupply experience available"
-msgid_plural "${ specialXp } resupply experience available"
-msgstr[0] ""
-msgstr[1] ""
-
 msgid "Unexpected file type"
 msgstr ""
 

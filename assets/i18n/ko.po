@@ -2554,11 +2554,6 @@ msgid ""
 "settings."
 msgstr "#${ code } 카드를 발견할 수 없습니다. 설정에서 아컴디비 카드 업데이트를 수행해주십시오."
 
-#, javascript-format
-msgid "${ specialXp } resupply experience available"
-msgid_plural "${ specialXp } resupply experience available"
-msgstr[0] "${ specialXp } 재보급 경험치 사용가능"
-
 msgid "Unexpected file type"
 msgstr "예상치 못한 파일 종류"
 
@@ -5061,9 +5056,7 @@ msgstr "초과된 공통 보유 카드 숨기기"
 msgid ""
 "The total number of these cards among decks from this campaign exceeds your "
 "card collection."
-msgstr ""
-"같은 캠페인에 속한 덱에서 공통으로 포함된 카드들의 총합이 당신의 보유 게임 내의 "
-"총 수량을 초과합니다."
+msgstr "같은 캠페인에 속한 덱에서 공통으로 포함된 카드들의 총합이 당신의 보유 게임 내의 총 수량을 초과합니다."
 
 #, javascript-format
 msgctxt "masculine"

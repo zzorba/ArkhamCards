@@ -2644,12 +2644,6 @@ msgstr ""
 "Carta #${ code } no encontrada. Por favor, prueba a \"Buscar nuevas cartas "
 "en ArkhamDB\" desde Ajustes."
 
-#, javascript-format
-msgid "${ specialXp } resupply experience available"
-msgid_plural "${ specialXp } resupply experience available"
-msgstr[0] "${ specialXp } de experiencia de reabastecimiento disponible"
-msgstr[1] "${ specialXp } de experiencia de reabastecimiento disponibles"
-
 msgid "Unexpected file type"
 msgstr "Tipo de archivo inesperado"
 

@@ -2651,12 +2651,6 @@ msgstr ""
 "Carta #${ code } mancante. Prova ad aggiornare le carte da ArkhamDB nelle "
 "impostazioni."
 
-#, javascript-format
-msgid "${ specialXp } resupply experience available"
-msgid_plural "${ specialXp } resupply experience available"
-msgstr[0] "${ specialXp } punto esperienza di rifornimento disponibile"
-msgstr[1] "${ specialXp } punti esperienza di rifornimento disponibili"
-
 msgid "Unexpected file type"
 msgstr "Tipo di file imprevisto"
 

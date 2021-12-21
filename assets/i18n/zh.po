@@ -2524,11 +2524,6 @@ msgid ""
 "settings."
 msgstr "找不到卡牌#${ code }。請在設定中重新下載ArkhamDB的資料。"
 
-#, javascript-format
-msgid "${ specialXp } resupply experience available"
-msgid_plural "${ specialXp } resupply experience available"
-msgstr[0] "${ specialXp }點可用的重新補給經驗"
-
 msgid "Unexpected file type"
 msgstr "不預期的檔案類型"
 

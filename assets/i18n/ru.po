@@ -1642,13 +1642,6 @@ msgstr[0] "Всего ${ xp } / ${ resupplyPointsString } опыта"
 msgstr[1] "Всего ${ xp } / ${ resupplyPointsString } опыта"
 msgstr[2] "Всего ${ xp } / ${ resupplyPointsString } опыта"
 
-#, javascript-format
-msgid "${ specialXp } resupply experience available"
-msgid_plural "${ specialXp } resupply experience available"
-msgstr[0] "Доступно ${ specialXp } очко пополнения припасов"
-msgstr[1] "Доступно ${ specialXp } очка пополнения припасов"
-msgstr[2] "Доступно ${ specialXp } очков пополнения припасов"
-
 msgid "Random location"
 msgstr "Случайная локация"
 

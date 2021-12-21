@@ -2765,12 +2765,6 @@ msgid_plural "${ xp } general / ${ resupplyPointsString } XP"
 msgstr[0] "${ xp } geral / ${ resupplyPointsString } XP"
 msgstr[1] "${ xp } geral / ${ resupplyPointsString } XP"
 
-#, javascript-format
-msgid "${ specialXp } resupply experience available"
-msgid_plural "${ specialXp } resupply experience available"
-msgstr[0] "${ specialXp } reabastecer experiência disponível"
-msgstr[1] "${ specialXp } reabastecer experiência disponível"
-
 msgid "Random location"
 msgstr "Localização aleatória"
 
