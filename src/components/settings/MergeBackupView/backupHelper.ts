@@ -3,7 +3,7 @@ import { find, forEach } from 'lodash';
 import { Deck, DecksMap, Campaign, LocalDeck } from '@actions/types';
 import { AppState } from '@reducers';
 
-enum CloudMergeStatus {
+const enum CloudMergeStatus {
   NEW = 'new',
   UPDATE = 'update',
   STALE = 'stale',

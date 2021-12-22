@@ -2,6 +2,7 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import {
   Text,
   View,
+  StyleSheet,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
@@ -32,7 +33,7 @@ function CollectionEditView({ componentId }: NavigationProps) {
     dispatch(setCycleInCollection(cycle_code, value));
   }, [dispatch]);
 
-  const { typography } = useContext(StyleContext);
+  const { backgroundStyle, typography } = useContext(StyleContext);
   const disableButton = useMemo(() => {
     return (
       <View style={space.paddingSideS}>
@@ -64,15 +65,17 @@ function CollectionEditView({ componentId }: NavigationProps) {
     );
   }
   return (
-    <PackListComponent
-      coreSetName={t`Second Core Set`}
-      componentId={componentId}
-      packs={packs}
-      header={disableButton}
-      checkState={in_collection}
-      setChecked={setChecked}
-      setCycleChecked={setCycleChecked}
-    />
+    <View style={[styles.container, backgroundStyle]}>
+      <PackListComponent
+        coreSetName={t`Second Core Set`}
+        componentId={componentId}
+        packs={packs}
+        header={disableButton}
+        checkState={in_collection}
+        setChecked={setChecked}
+        setCycleChecked={setCycleChecked}
+      />
+    </View>
   );
 }
 
@@ -87,3 +90,9 @@ CollectionEditView.options = () => {
 };
 
 export default CollectionEditView;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

@@ -9,8 +9,9 @@ import {
   View,
   ViewStyle,
   EmitterSubscription,
+  TouchableOpacity,
 } from 'react-native';
-import { Divider, Icon } from 'react-native-elements';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Event, Track, State, usePlaybackState, useTrackPlayerEvents, useProgress } from 'react-native-track-player';
 
 import EncounterIcon from '@icons/EncounterIcon';
@@ -20,6 +21,12 @@ import space, { m } from '@styles/space';
 import { narrationPlayer, useAudioAccess, useCurrentTrack, useTrackDetails, useTrackPlayerQueue } from '@lib/audio/narrationPlayer';
 import { usePressCallback } from '@components/core/hooks';
 
+
+function Divider() {
+  const { colors } = useContext(StyleContext);
+  return <View style={{ height: StyleSheet.hairlineWidth, backgroundColor: colors.M }} />
+}
+
 export async function playNarrationTrack(narrationId: string) {
   const trackPlayer = await narrationPlayer();
   const tracks = await trackPlayer.getQueue();
@@ -27,6 +34,14 @@ export async function playNarrationTrack(narrationId: string) {
   if (trackIndex !== -1) {
     await trackPlayer.skip(trackIndex);
     await trackPlayer.play();
+  }
+}
+
+function artist(lang: string) {
+  switch (lang) {
+    case 'ru': return 'Несмолкающие голоса';
+    case 'es': 'Voces disonantes';
+    default: return 'Dissonant Voices';
   }
 }
 
@@ -41,11 +56,11 @@ export async function setNarrationQueue(queue: NarrationTrack[]) {
 
   const oldTrackIds: string[] = map(oldTracks, (track) => track.narrationId);
   const newTracks: Track[] = map(queue, (track): Track => {
-    if (track.lang) {
+    if (track.lang && track.lang !== 'dv') {
       return {
         narrationId: track.id,
         title: track.name,
-        artist: 'Arkham Cards',
+        artist: artist(track.lang),
         album: track.scenarioName,
         artwork: track.campaignCode,
         url: `https://static.arkhamcards.com/audio/${track.lang}/${track.id}.mp3`,
@@ -154,7 +169,7 @@ function ProgressView() {
 async function replay() {
   try {
     const trackPlayer = await narrationPlayer();
-    await trackPlayer.seekTo((await trackPlayer.getPosition()) - 30);
+    await trackPlayer.seekTo((await trackPlayer.getPosition()) - 10);
   } catch (e) {
     console.log(e);
   }
@@ -187,6 +202,7 @@ function PlayerView({ style }: PlayerProps) {
 
   const onPlay = useCallback(async() => {
     if (!track) {
+      console.log(`No track`);
       return;
     }
     const trackPlayer = await narrationPlayer();
@@ -312,11 +328,15 @@ interface PlaybackButtonProps {
   onPress?: () => void;
 }
 
-function PlaybackButton({ name, type = 'material', size = 30, onPress }: PlaybackButtonProps) {
+function PlaybackButton({ name, size = 30, onPress }: PlaybackButtonProps) {
   const { colors } = useContext(StyleContext);
   return (
     <View style={{ padding: 2 }}>
-      <Icon name={name} type={type} size={size} onPress={onPress} color={colors.D30} />
+      <TouchableOpacity onPress={onPress}>
+        <View>
+          <MaterialIcons name={name} size={size} color={colors.D30} />
+        </View>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -420,15 +440,15 @@ function PlaylistView({ style, queue }: PlaylistProps) {
 }
 
 interface NarratorContainerProps {
-  children: JSX.Element,
+  children: React.ReactNode,
 }
 
 export default function NarrationWrapper({ children }: NarratorContainerProps) {
-  const [hasDV] = useAudioAccess();
+  const [hasAudio] = useAudioAccess();
   return (
     <SafeAreaView style={styles.container}>
       { children }
-      { !!hasDV && <PlayerView /> }
+      { !!hasAudio && <PlayerView /> }
     </SafeAreaView>
   );
 }

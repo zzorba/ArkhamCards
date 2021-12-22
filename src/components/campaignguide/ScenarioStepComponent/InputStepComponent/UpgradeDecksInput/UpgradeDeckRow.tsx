@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { flatMap, find, forEach, keys, map, omit, sortBy } from 'lodash';
+import { flatMap, find, forEach, keys, map, omit, sortBy, pick } from 'lodash';
 import { t } from 'ttag';
 
 import { Deck, Slots, NumberChoices, getDeckId } from '@actions/types';
@@ -13,10 +13,10 @@ import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import StyleContext from '@styles/StyleContext';
-import { useCounter, useEffectUpdate, useFlag, useSlots } from '@components/core/hooks';
+import { EditSlotsActions, useCounter, useEffectUpdate, useFlag, useSlots } from '@components/core/hooks';
 import useCardList from '@components/card/useCardList';
 import space, { s, xs } from '@styles/space';
-import useDeckUpgrade from '@components/deck/useDeckUpgrade';
+import useDeckUpgradeAction from '@components/deck/useDeckUpgradeAction';
 import { DeckActions } from '@data/remote/decks';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
@@ -34,9 +34,11 @@ import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
 import { fetchPrivateDeck } from '@components/deck/actions';
 import EncounterIcon from '@icons/EncounterIcon';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
-import { TINY_PHONE } from '@styles/sizes';
 import { useDispatch } from 'react-redux';
 import { useDeck } from '@data/hooks';
+import InputCounterRow from '../InputCounterRow';
+import { ControlType } from '@components/cardlist/CardSearchResult/ControlComponent';
+import CampaignGuide from '@data/scenario/CampaignGuide';
 
 interface Props {
   componentId: string;
@@ -44,6 +46,7 @@ interface Props {
   campaignState: CampaignStateHelper;
   scenarioState: ScenarioStateHelper;
   investigator: Card;
+  storyCards?: string[];
   deck?: LatestDeckT;
   campaignLog: GuidedCampaignLog;
   setUnsavedEdits: (investigator: string, edits: boolean) => void;
@@ -63,7 +66,7 @@ function isExile(card: Card) {
   return !!card.exile;
 }
 
-function deckMessage(saved: boolean, hasDeck: boolean, hasChanges: boolean) {
+function deckMessage(saved: boolean, hasDeck: boolean, hasChanges: boolean, isOwner: boolean) {
   if (saved) {
     return t`Changes have been recorded.`;
   }
@@ -73,94 +76,52 @@ function deckMessage(saved: boolean, hasDeck: boolean, hasChanges: boolean) {
     }
     return t`When you have finished making adjustments, press the 'Save' button to record your changes.`;
   }
+  if (!isOwner) {
+    return t`This deck is ownered by another player. You can record the upgrade now and they will be given an opportunity to save the changes to their deck when they next open the app.`;
+  }
   return t`This deck will be upgraded with XP and any new story cards will be added or removed as specified.`;
 }
 
-function CounterRow({
-  icon,
-  title,
-  count,
-  total,
-  inc,
-  dec,
-  max,
-  min,
-  editable,
-  disabled,
-  bottomBorder,
-  hideTotal,
-}: {
+function StoryCardRow({ card, countChanged, count, editable, description }: {
   editable: boolean;
-  icon?: React.ReactNode;
-  title: string;
+  card: Card;
   count: number;
-  total: number;
-  inc: () => void;
-  dec: () => void;
-  max?: number;
-  min?: number;
-  disabled?: boolean;
-  bottomBorder?: boolean;
-  hideTotal?: boolean;
+  countChanged?: EditSlotsActions;
+  description?: string;
 }) {
-  const { borderStyle, colors, typography } = useContext(StyleContext);
-  const description = useMemo(() => {
-    if (!editable || hideTotal) {
-      return null;
+  const control: ControlType = useMemo(() => {
+    if (!countChanged || !editable) {
+      return {
+        type: 'count',
+        count,
+        showZeroCount: true,
+      };
     }
-    return (
-      <View style={[styles.startRow, space.paddingRightS]}>
-        <Text style={[typography.small, { color: colors.lightText }]}>
-          { t`(new total: ${total})` }
-        </Text>
-      </View>
-    );
-  }, [editable, total, colors, typography, hideTotal]);
+    return {
+      type: 'quantity',
+      countChanged,
+      count,
+      limit: card.deck_limit || 1,
+      showZeroCount: true,
+    }
+  }, [card, countChanged, count, editable]);
   return (
-    <View style={[
-      styles.betweenRow,
-      space.paddingTopS,
-      space.paddingBottomS,
-      space.paddingLeftXs,
-      space.paddingRightXs,
-      space.marginSideS,
-      bottomBorder ? { borderBottomWidth: StyleSheet.hairlineWidth } : undefined,
-      borderStyle,
-    ]}>
-      <View style={styles.column}>
-        <View style={styles.startRow}>
-          { icon }
-          <Text style={[typography.small, typography.italic]}>
-            { title }
-          </Text>
-        </View>
-        <View style={space.paddingTopXs}>{description}</View>
-      </View>
-      <View style={styles.endRow}>
-        { editable ? (
-          <PlusMinusButtons
-            count={total}
-            countRender={(
-              <Text style={[typography.counter, typography.center, { minWidth: 28 }]}>
-                {!hideTotal && count > 0 && editable ? '+' : ''}{ count }
-              </Text>
-            )}
-            onIncrement={inc}
-            onDecrement={dec}
-            showZeroCount
-            min={min}
-            max={max}
-            disabled={disabled}
-            rounded
-            dialogStyle
-          />
-        ) : (
-          <Text style={[typography.counter, { color: colors.lightText }]}>
-            { total }
-          </Text>
-        ) }
-      </View>
-    </View>
+    <CardSearchResult control={control} card={card} description={description} />
+  );
+}
+
+function StoryCardChoices({ slots, slotActions, storyCards, editable, campaignGuide }: { campaignGuide: CampaignGuide; slots: Slots; slotActions?: EditSlotsActions; storyCards: string[]; editable: boolean }) {
+  const [cards] = useCardList(storyCards, 'player');
+  return (
+    <>
+      { flatMap(cards, card => {
+        const count = slots[card.code] || 0;
+        if (!editable && count === 0) {
+          return null;
+        }
+        return <StoryCardRow key={card.code} card={card} countChanged={slotActions} count={count} editable={editable} description={campaignGuide.card(card.code)?.description} />;
+      }) }
+    </>
   );
 }
 
@@ -169,6 +130,7 @@ function UpgradeDeckRow({
   investigatorCounter: originalInvestigatorCounter,
   skipDeckSave,
   specialXp,
+  storyCards,
   id,
   campaignState,
   scenarioState,
@@ -194,7 +156,7 @@ function UpgradeDeckRow({
   const choiceId = useMemo(() => {
     return computeChoiceId(id, investigator);
   }, [id, investigator]);
-  const [choices, deckChoice] = useMemo(() => scenarioState.numberAndDeckChoices(choiceId), [scenarioState, choiceId]);
+  const [choices, deckChoice, deckEditsChoice] = useMemo(() => scenarioState.numberAndDeckChoices(choiceId), [scenarioState, choiceId]);
   const savedDeck = useDeck(deckChoice, choices !== undefined);
   const savedExileCounts = useMemo(() => {
     if (!savedDeck || !savedDeck.deck.exile_string) {
@@ -209,18 +171,38 @@ function UpgradeDeckRow({
     });
     return slots;
   }, [savedDeck]);
-  const initialSpecialExile = useMemo(() => {
+  const storyAssets = useMemo(() => campaignLog.storyAssets(investigator.code), [campaignLog, investigator]);
+  const [initialSpecialExile, initialStoryCardSlots] = useMemo(() => {
     if (!choices) {
-      return {};
+      if (!storyCards) {
+        return [{}, {}]
+      }
+      return [{}, pick(storyAssets, storyCards)];
     }
-    const slots: Slots = {};
+
+    const exile: Slots = {};
+    const story: Slots = pick(storyAssets, storyCards || []);
     forEach(omit(choices, ['insane', 'killed', 'count', 'physical', 'mental', 'xp']), (count, exile_code) => {
       if (count.length) {
-        slots[exile_code] = count[0];
+        const quantity = count[0];
+        if (exile_code.indexOf('story#') !== -1) {
+          const code = exile_code.split('#')[1];
+          story[code] = (story[code] || 0) + quantity;
+        } else {
+          exile[exile_code] = quantity;
+        }
       }
     });
-    return slots;
-  }, [choices]);
+    return [exile, story];
+  }, [choices, storyAssets, storyCards]);
+  const [storyCardSlots, updateStoryCardSlots] = useSlots(initialStoryCardSlots);
+  const storyCardSlotActions: EditSlotsActions = useMemo(() => {
+    return {
+      setSlot: (code: string, value: number) => updateStoryCardSlots({ type: 'set-slot', code, value }),
+      incSlot: (code: string, max?: number) => updateStoryCardSlots({ type: 'inc-slot', code, max }),
+      decSlot: (code: string) => updateStoryCardSlots({ type: 'dec-slot', code }),
+    };
+  }, [updateStoryCardSlots]);
   const existingCount = useMemo(() => {
     if (!investigatorCounter) {
       return 0;
@@ -239,7 +221,7 @@ function UpgradeDeckRow({
     updateExileCounts({ type: 'set-slot', code: card.code, value: count });
   }, [updateExileCounts]);
 
-  const saveCampaignLog = useCallback((xp: number, deck?: Deck) => {
+  const getChoices = useCallback((xp: number): NumberChoices => {
     const choices: NumberChoices = {
       xp: [xp - earnedXp],
       physical: [physicalAdjust],
@@ -256,13 +238,23 @@ function UpgradeDeckRow({
         choices[code] = [count];
       }
     });
-    scenarioState.setNumberChoices(choiceId, choices, !skipDeckSave && deck ? getDeckId(deck) : undefined);
-  }, [scenarioState, skipDeckSave, investigatorCounter, specialExile, countAdjust, earnedXp, choiceId, physicalAdjust, mentalAdjust]);
+    forEach(storyCards || [], code => {
+      if ((initialStoryCardSlots[code] || 0) !== (storyCardSlots[code] || 0)) {
+        choices[`story#${code}`] = [(storyCardSlots[code] || 0) - (initialStoryCardSlots[code] || 0)];
+      }
+    });
+    return choices;
+  }, [storyCards, earnedXp, physicalAdjust, mentalAdjust, countAdjust, specialExile, investigatorCounter, initialStoryCardSlots, storyCardSlots]);
 
-  const onUpgrade = useCallback((deck: Deck, xp: number) => {
+  const saveCampaignLog = useCallback(async(xp: number, deck?: Deck) => {
+    const choices = getChoices(xp);
+    scenarioState.setNumberChoices(choiceId, choices, !skipDeckSave && deck ? getDeckId(deck) : undefined);
+  }, [scenarioState, skipDeckSave, getChoices, choiceId]);
+
+  const onUpgrade = useCallback(async(deck: Deck, xp: number) => {
     saveCampaignLog(xp, deck);
   }, [saveCampaignLog]);
-  const [saving, error, saveDeckUpgrade] = useDeckUpgrade(deck, actions, onUpgrade);
+  const [saving, error, saveDeckUpgrade] = useDeckUpgradeAction(actions, onUpgrade);
   useEffect(() => {
     // We only want to save once.
     if (choices === undefined && !skipDeckSave && deck && !deck.id.local && deck.id.arkhamdb_user === arkhamDbUser) {
@@ -275,8 +267,9 @@ function UpgradeDeckRow({
       mentalAdjust !== 0 ||
       xpAdjust !== earnedXp ||
       countAdjust !== 0 ||
-      !!find(specialExile, count => count > 0);
-  }, [earnedXp, specialExile, xpAdjust, physicalAdjust, mentalAdjust, countAdjust]);
+      !!find(specialExile, count => count > 0) ||
+      !!find(storyCards, code => (storyCardSlots[code] || 0) !== (initialStoryCardSlots[code] || 0));
+  }, [earnedXp, specialExile, xpAdjust, physicalAdjust, mentalAdjust, countAdjust, initialStoryCardSlots, storyCardSlots, storyCards]);
 
   useEffectUpdate(() => {
     setUnsavedEdits(investigator.code, unsavedEdits);
@@ -311,7 +304,7 @@ function UpgradeDeckRow({
     }
     return (choices.mental && choices.mental[0]) || 0;
   }, [choices, mentalAdjust, editable]);
-  const storyAssets = useMemo(() => campaignLog.storyAssets(investigator.code), [campaignLog, investigator]);
+
   const storyAssetDeltas = useMemo(() => campaignLog.storyAssetChanges(investigator.code), [campaignLog, investigator]);
   const storyCountsForDeck = useMemo(() => {
     if (!deck) {
@@ -336,18 +329,40 @@ function UpgradeDeckRow({
         }
       }
     });
+    forEach(storyCards || [], (code) => {
+      const delta = (storyCardSlots[code] || 0) - (initialStoryCardSlots[code] || 0);
+      if (delta !== 0) {
+        newSlots[code] = Math.max((deck.deck.slots?.[code] || 0) + delta, 0);
+      }
+    })
     return newSlots;
-  }, [deck, storyAssets, storyAssetDeltas]);
+  }, [deck, storyAssets, storyAssetDeltas, storyCards, initialStoryCardSlots, storyCardSlots]);
+
+  const saveDelayedDeck = useCallback(async(ownerId: string) => {
+    const choices = getChoices(xp);
+    await scenarioState.setNumberChoices(choiceId, choices, undefined, {
+      xp,
+      userId: ownerId,
+      exileCounts,
+      ignoreStoryCounts: campaignLog.ignoreStoryAssets(investigator.code),
+      storyCounts: storyCountsForDeck,
+    });
+  }, [getChoices, xp, storyCountsForDeck, campaignLog, exileCounts, investigator.code, choiceId, scenarioState]);
+
   const saveDeck = useCallback(() => {
-    saveDeckUpgrade(xp, storyCountsForDeck, campaignLog.ignoreStoryAssets(investigator.code), exileCounts);
-  }, [saveDeckUpgrade, xp, storyCountsForDeck, campaignLog, exileCounts, investigator.code]);
+    saveDeckUpgrade(deck, xp, storyCountsForDeck, campaignLog.ignoreStoryAssets(investigator.code), exileCounts, undefined);
+  }, [saveDeckUpgrade, deck, xp, storyCountsForDeck, campaignLog, exileCounts, investigator.code]);
   const save = useCallback(() => {
     if (deck && !skipDeckSave) {
-      saveDeck();
+      if (!deck?.owner || !userId || deck.owner.id === userId) {
+        saveDeck();
+      } else {
+        saveDelayedDeck(deck.owner.id);
+      }
     } else {
       saveCampaignLog(xpAdjust);
     }
-  }, [deck, skipDeckSave, saveCampaignLog, xpAdjust, saveDeck]);
+  }, [deck, skipDeckSave, xpAdjust, userId, saveCampaignLog, saveDeck, saveDelayedDeck]);
 
 
   const onCardPress = useCallback((card: Card) => {
@@ -382,16 +397,17 @@ function UpgradeDeckRow({
   const [storyAssetCards] = useCardList(storyAssetCodes, 'player');
   const [allStoryAssetCards] = useCardList(allStoryAssetCodes, 'player');
   const storyAssetSection = useMemo(() => {
-    if (!storyAssetCards.length) {
+    if (!storyAssetCards.length && !(storyCards && (editable || find(storyCardSlots, count => count !== 0)))) {
       return null;
     }
     return (
       <>
         <View style={space.paddingSideS}><DeckSlotHeader title={t`Campaign cards`} first /></View>
         { renderDeltas(storyAssetCards, storyAssetDeltas) }
+        { !!storyCards && <StoryCardChoices campaignGuide={campaignGuide} storyCards={storyCards} slots={storyCardSlots} slotActions={storyCardSlotActions} editable={editable && choices === undefined} />}
       </>
     );
-  }, [storyAssetDeltas, storyAssetCards, renderDeltas]);
+  }, [storyAssetDeltas, storyAssetCards, renderDeltas, campaignGuide, storyCards, storyCardSlots, storyCardSlotActions, choices, editable]);
 
   const xpSection = useMemo(() => {
     const xpString = xp >= 0 ? `+${xp}` : `${xp}`;
@@ -441,7 +457,7 @@ function UpgradeDeckRow({
     const locked = (choices !== undefined) || !editable;
     return (
       <>
-        <CounterRow
+        <InputCounterRow
           editable={!locked}
           bottomBorder
           disabled={saving}
@@ -453,7 +469,7 @@ function UpgradeDeckRow({
           dec={decPhysical}
           max={health}
         />
-        <CounterRow
+        <InputCounterRow
           editable={!locked}
           disabled={saving}
           icon={<View style={space.paddingRightXs}><HealthSanityIcon type="sanity" size={20} /></View>}
@@ -475,31 +491,29 @@ function UpgradeDeckRow({
   }, [campaignState, investigator]);
 
   const { campaign } = useContext(CampaignGuideContext);
-  const footer = useMemo(() => {
-    if (deck && deck.owner && userId && deck.owner.id !== userId && editable) {
-      return (
-        <View style={[space.paddingS, { flexDirection: 'column', backgroundColor: colors.L10, borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }]}>
-          <View style={choices !== undefined ? styles.startRow : styles.startColumn}>
-            <ActionButton
-              color={choices !== undefined ? 'green' : 'dark'}
-              leftIcon="check"
-              title={choices !== undefined ? t`Saved` : t`Not deck owner`}
-              onPress={save}
-              disabled
-            />
-            <View style={[styles.column, { flex: 1 }, space.paddingLeftS, choices === undefined ? space.marginTopS : undefined]}>
-              <Text style={[typography.small, typography.italic, typography.light]}>
-                { deck.owner?.handle ?
-                  t`This deck is owned by ${deck.owner.handle}. They must open the app on their own device to save the upgrade` :
-                  t`This deck is owned by another user. They must open the app on their own device to save the upgrade` }
-              </Text>
-            </View>
-          </View>
-        </View>
-      );
+
+  const [secondSection, secondMessage] = useMemo(() => {
+    const show = !skipDeckSave && (deck ? choices !== undefined : choices === undefined);
+    if (!deck) {
+      return [
+        show,
+        t`This investigator does not have a deck associated with it.\nIf you choose a deck, the app can help track spent experience, story asset changes, and deckbuilding requirements.`,
+      ];
     }
+    if (deckEditsChoice && !deckEditsChoice.resolved) {
+      if (deck.owner && userId && deck.owner.id === userId) {
+        return [show, t`Changes have been recorded. You can apply these changes to your deck on the main screen of the campaign under your investigator.`];
+      }
+      return [show, t`Changes have been recorded. The owner of this deck can apply these changes to their deck on the main screen of the campaign under their investigator.`];
+    }
+
+    if (!deck.owner || !userId || deck.owner.id === userId) {
+      return [show, t`Now that your upgrade has been saved, when visiting the deck be sure to use the 'Edit' button when making card changes.`];
+    }
+    return [false, undefined];
+  }, [deck, skipDeckSave, choices, userId, deckEditsChoice]);
+  const footer = useMemo(() => {
     const currentMessage = saving ? t`Saving` : t`Save`;
-    const secondSection = !skipDeckSave && (deck ? choices !== undefined : choices === undefined);
     const deckButton = deck && choices !== undefined && deckChoice && (
       <ShowDeckButton
         deckId={deckChoice}
@@ -527,17 +541,14 @@ function UpgradeDeckRow({
               </Text>
             ) }
             <Text style={[typography.small, typography.italic, typography.light]}>
-              { deckMessage(choices !== undefined || !editable, !!deck && !skipDeckSave, unsavedEdits) }
+              { deckMessage(choices !== undefined || !editable, !!deck && !skipDeckSave, unsavedEdits, !userId || !deck || !deck.owner || userId === deck.owner.id) }
             </Text>
           </View>
         </View>
         { secondSection && (
           <View style={[styles.column, space.paddingTopXs]}>
             <Text style={[typography.small, typography.italic, typography.light]}>
-              { !deck ?
-                t`This investigator does not have a deck associated with it.\nIf you choose a deck, the app can help track spent experience, story asset changes, and deckbuilding requirements.` :
-                t`Now that your upgrade has been saved, when visiting the deck be sure to use the 'Edit' button when making card changes.`
-              }
+              { secondMessage }
             </Text>
             <View style={[space.paddingTopS, styles.startRow]}>
               { !deck ?
@@ -549,7 +560,7 @@ function UpgradeDeckRow({
         ) }
       </View>
     );
-  }, [choices, deckChoice, investigator, skipDeckSave, userId, error, selectDeck, editable, deck, typography, save, colors, saving, unsavedEdits]);
+  }, [choices, deckChoice, investigator, skipDeckSave, userId, error, selectDeck, editable, deck, typography, save, colors, saving, unsavedEdits, secondSection, secondMessage]);
 
   const count: number = useMemo(() => {
     if (choices === undefined) {
@@ -572,7 +583,7 @@ function UpgradeDeckRow({
     const newTotal = count + existingCount;
     const locked = (choices !== undefined) || !editable;
     return (
-      <CounterRow
+      <InputCounterRow
         editable={!locked}
         icon={<View style={space.paddingRightXs}><EncounterIcon encounter_code={campaign.cycleCode} size={22} color={colors.D10} /></View>}
         title={campaignLog.campaignData.redirect_experience ? t`${section.title} (from XP)` : section.title}
@@ -677,20 +688,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
-  startColumn: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
   betweenRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-  },
-  endRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
   },
   xpBlock: {
     borderRadius: 4,

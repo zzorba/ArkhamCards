@@ -32,7 +32,7 @@ export default function DeckSizeSelectPicker({
   };
   const cardCount = selection;
   const valueLabel = t`${cardCount} Cards`;
-  const { showDialog, dialog } = usePickerDialog({
+  const [dialog, showDialog] = usePickerDialog({
     title: t`Select Deck Size`,
     description: editWarning ? t`Note: Deck size should only be selected at deck creation time, not between scenarios.` : undefined,
     items: map(sizes, (size, index) => {

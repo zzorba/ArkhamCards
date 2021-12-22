@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
+import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 import FactionIcon from '@icons/FactionIcon';
 import Card from '@data/types/Card';
@@ -19,6 +20,7 @@ const SCALE_FACTOR = isBig ? 1.2 : 1.0;
 interface Props {
   componentId?: string;
   card: Card;
+  size?: 'tiny';
 }
 
 function imageStyle(card: Card) {
@@ -43,6 +45,22 @@ function ImagePlaceholder({ card }: { card: Card }) {
       ]}>
         <Text style={styles.placeholderIcon}>
           <EncounterIcon encounter_code={card.encounter_code} size={55} color="#FFF" />
+        </Text>
+      </View>
+    );
+  }
+  if (card.subtype_code) {
+    return (
+      <View style={[
+        styles.placeholder,
+        { backgroundColor: colors.faction.neutral.background },
+      ]}>
+        <Text style={styles.placeholderIcon}>
+          <ArkhamIcon
+            name="weakness"
+            color="white"
+            size={55}
+          />
         </Text>
       </View>
     );

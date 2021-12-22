@@ -59,11 +59,8 @@ export function getDownloadLink(lang: string, customData?: CustomData) {
 }
 
 function hasNarrationAccess(narration: Narration, narrationLang: string | undefined): boolean {
-  return !!(
-    // Not every entry has a 'DissonantVoices' one present, due to some missing entries.
-    (!narrationLang && find(narration.lang, lang => lang === 'dv')) ||
-    find(narration.lang, lang => lang === narrationLang)
-  );
+  // Not every entry has a 'DissonantVoices' one present, due to some missing entries, sometimes in the original.
+  return !!narrationLang && !!find(narration.lang, lang => lang === narrationLang);
 }
 
 function getNarrationQueue(processedScenario: ProcessedScenario, scenarioState: ScenarioStateHelper, narrationLang: string | undefined) {
@@ -243,15 +240,15 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
       },
     });
   }, [componentId, campaignId, processedScenario.id]);
-  const [hasDS, narrationLang] = useAudioAccess()
+  const [hasAudio, narrationLang] = useAudioAccess()
 
   useEffect(() => {
-    if (!hasDS) {
+    if (!hasAudio) {
       return;
     }
     const queue = getNarrationQueue(processedScenario, scenarioState, narrationLang);
     setNarrationQueue(queue);
-  }, [processedScenario, scenarioState, hasDS, narrationLang]);
+  }, [processedScenario, scenarioState, hasAudio, narrationLang]);
 
   const hasInterludeFaq = processedScenario.scenarioGuide.scenarioType() !== 'scenario' &&
     processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;
@@ -271,7 +268,7 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
     >
       <KeepAwake />
       <NarrationWrapper>
-        <ScrollView contentContainerStyle={backgroundStyle}>
+        <ScrollView contentContainerStyle={backgroundStyle} keyboardShouldPersistTaps="always">
           { !!customData && <ArkhamButton icon="world" title={t`Download print and play cards`} onPress={downloadPressed} /> }
           { !!hasInterludeFaq && (
             <ArkhamButton icon="faq" title={t`Interlude FAQ`} onPress={showScenarioFaq} />

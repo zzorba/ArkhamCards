@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { flatMap, forEach } from 'lodash';
-import { ListRenderItemInfo, RefreshControl } from 'react-native';
+import { FlatList, ListRenderItemInfo, RefreshControl } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -17,7 +17,6 @@ import space from '@styles/space';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import { useDeckHistory } from '@data/hooks';
 import LoadingSpinner from '@components/core/LoadingSpinner';
-import { FlatList } from 'react-native-gesture-handler';
 
 export interface DeckHistoryProps {
   id: DeckId;
@@ -60,6 +59,7 @@ export default function DeckHistoryView({
         (currentDeck && deckEdits?.meta) || (deck.deck.meta || {}),
         (currentDeck && deckEdits?.slots) || deck.deck.slots || {},
         (currentDeck && deckEdits?.ignoreDeckLimitSlots) || deck.deck.ignoreDeckLimitSlots,
+        (currentDeck && deckEdits?.side) || deck.deck.sideSlots || {},
         cards,
         deck.previousDeck,
         currentXpAdjustment !== undefined ? currentXpAdjustment : (deck.deck.xp_adjustment || 0),

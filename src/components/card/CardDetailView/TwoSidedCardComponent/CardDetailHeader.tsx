@@ -44,7 +44,7 @@ function DualFactionIcons({ card }: { card: Card }) {
     const scaleFactor = ((fontScale - 1) / 2 + 1);
     const ICON_SIZE = 31 * scaleFactor;
     return (
-      <View style={styles.row}>
+      <View style={styles.rowIcon}>
         <View style={styles.costIcon}>
           <View style={[styles.circle, { borderRadius: iconSize / 2, width: iconSize, height: iconSize, backgroundColor: colors.faction[card.faction_code].background }]}>
             <View style={{ height: iconSize - PADDING[card.faction_code] }}>
@@ -73,7 +73,7 @@ function DualFactionIcons({ card }: { card: Card }) {
 
   }
   return (
-    <View style={[space.paddingBottomS, styles.row]}>
+    <View style={[space.paddingBottomS, styles.rowIcon]}>
       <ArkhamIcon name={card.faction_code} size={36} color="white" />
       { !!card.faction2_code && <ArkhamIcon name={card.faction2_code} size={36} color="white" /> }
       { !!card.faction3_code && <ArkhamIcon name={card.faction3_code} size={36} color="white" /> }
@@ -220,6 +220,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-end',
     flex: 1,
+  },
+  rowIcon: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
   costIcon: {
     marginLeft: xs,

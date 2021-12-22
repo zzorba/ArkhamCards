@@ -16,6 +16,7 @@ export interface Props {
   max?: number;
   increment: (symbol: string) => void;
   decrement: (symbol: string) => void;
+  negate?: boolean;
 }
 
 export default function VariableTokenInput({
@@ -27,6 +28,7 @@ export default function VariableTokenInput({
   max,
   increment,
   decrement,
+  negate,
 }: Props) {
   const { typography } = useContext(StyleContext);
   const inc = useCallback(() => {
@@ -44,12 +46,12 @@ export default function VariableTokenInput({
       prompt={prompt}
     >
       <PlusMinusButtons
-        count={value}
+        count={value * (negate ? -1 : 1)}
         size={36}
         dialogStyle
-        countRender={<Text style={[typography.text, styles.counterText, typography.center]}>{ value }</Text>}
-        onIncrement={inc}
-        onDecrement={dec}
+        countRender={<Text style={[typography.text, styles.counterText, typography.center]}>{ value * (negate ? -1 : 1) }</Text>}
+        onIncrement={negate ? dec : inc}
+        onDecrement={negate ? inc : dec}
         min={min}
         max={max}
         color="dark"

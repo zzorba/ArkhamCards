@@ -1,0 +1,203 @@
+diff --git a/node_modules/react-native-spring-scrollview/RefreshHeader.js b/node_modules/react-native-spring-scrollview/RefreshHeader.js
+index a243bf3..b053d55 100644
+--- a/node_modules/react-native-spring-scrollview/RefreshHeader.js
++++ b/node_modules/react-native-spring-scrollview/RefreshHeader.js
+@@ -20,7 +20,7 @@ export class RefreshHeader extends React.Component<
+
+   constructor(props: HeaderPropType) {
+     super(props);
+-    this.state = { status: "waiting" };
++    this.state = { status: props.initialStatus || "waiting" };
+   }
+
+   changeToState(newStatus: HeaderStatus) {
+@@ -54,6 +54,7 @@ interface HeaderPropType {
+   offset?: Animated.Value;
+   maxHeight?: number;
+   bottomOffset?: number;
++  initialStatus?: HeaderStatus;
+ }
+
+ interface HeaderStateType {
+diff --git a/node_modules/react-native-spring-scrollview/SpringScrollView.js b/node_modules/react-native-spring-scrollview/SpringScrollView.js
+index 7d47fe7..c272b34 100644
+--- a/node_modules/react-native-spring-scrollview/SpringScrollView.js
++++ b/node_modules/react-native-spring-scrollview/SpringScrollView.js
+@@ -125,6 +125,7 @@ export class SpringScrollView extends React.PureComponent<SpringScrollViewPropTy
+             ref={(ref) => (this._refreshHeader = ref)}
+             offset={this._nativeOffset.y}
+             maxHeight={Refresh.height}
++            initialStatus={this._refreshStatus}
+           />
+         </Animated.View>
+       )
+@@ -193,7 +194,7 @@ export class SpringScrollView extends React.PureComponent<SpringScrollViewPropTy
+     );
+   }
+
+-  componentDidUpdate() {
++  componentDidUpdate(prevProps) {
+     if (this._scrollEventAttachment) this._scrollEventAttachment.detach();
+     this._scrollEventAttachment = this._scrollView.attachScrollNativeEvent(
+       this._nativeOffset
+@@ -228,8 +229,15 @@ export class SpringScrollView extends React.PureComponent<SpringScrollViewPropTy
+     });
+   }
+
++  customScrollTo(offset: Offset, animated: boolean = true) {
++    if (this.props.scrollTo) {
++      return this.props.scrollTo(offset, animated);
++    }
++    return this.scrollTo(offset, animated);
++  }
++
+   scroll(offset: Offset, animated: boolean = true) {
+-    return this.scrollTo(
++    return this.customScrollTo(
+       {
+         x: offset.x + this._contentOffset.x,
+         y: offset.y + this._contentOffset.y,
+@@ -239,23 +247,27 @@ export class SpringScrollView extends React.PureComponent<SpringScrollViewPropTy
+   }
+
+   scrollToBegin(animated: boolean) {
+-    return this.scrollTo({ x: this._contentOffset.x, y: 0 }, animated);
++    return this.customScrollTo({ x: this._contentOffset.x, y: 0 }, animated);
+   }
+
+   scrollToEnd(animated: boolean = true) {
+     let toOffsetY = this._contentHeight - this._height;
+     if (toOffsetY < 0) toOffsetY = 0;
+-    return this.scrollTo({ x: this._contentOffset.x, y: toOffsetY }, animated);
++    return this.customScrollTo({ x: this._contentOffset.x, y: toOffsetY }, animated);
+   }
+
+   beginRefresh() {
+-    if (!this.props.loadingFooter || this.props.loadingFooter.height <= 0)
++    if (!this.props.refreshHeader || this.props.refreshHeader.height <= 0) {
+       return Promise.reject(
+-        "SpringScrollView: call beginRefresh without loadingFooter or loadingFooter height"
++        "SpringScrollView: call beginRefresh without refreshHeader or refreshHeader height"
+       );
+-    return this.scrollTo({
++    }
++    this._refreshRequested = true;
++    return this.customScrollTo({
+       x: this._contentOffset.x,
+-      y: -this.props.loadingFooter.height - 1,
++      y: -this.props.refreshHeader.height - 1,
++    }).then(() => {
++      this._refreshRequested = false;
+     });
+   }
+
+@@ -338,6 +350,7 @@ export class SpringScrollView extends React.PureComponent<SpringScrollViewPropTy
+     if (this._refreshStatus !== refreshStatus) {
+       this._toRefreshStatus(refreshStatus);
+       this.props.onRefresh &&
++        !this._refreshRequested &&
+         refreshStatus === "refreshing" &&
+         this.props.onRefresh();
+     }
+@@ -544,7 +557,7 @@ export class SpringScrollView extends React.PureComponent<SpringScrollViewPropTy
+         if (maxX < 0) maxX = 0;
+       }
+       if (maxX !== this._contentOffset.x || maxY !== this._contentOffset.y) {
+-        Platform.OS === "android" && this.scrollTo({ x: maxX, y: maxY }, false);
++        Platform.OS === "android" && this.customScrollTo({ x: maxX, y: maxY }, false);
+       }
+       this.forceUpdate();
+       clearInterval(this._sizeChangeInterval);
+diff --git a/node_modules/react-native-spring-scrollview/SpringScrollViewNative.js b/node_modules/react-native-spring-scrollview/SpringScrollViewNative.js
+index b81cd8c..213cd59 100644
+--- a/node_modules/react-native-spring-scrollview/SpringScrollViewNative.js
++++ b/node_modules/react-native-spring-scrollview/SpringScrollViewNative.js
+@@ -64,6 +64,7 @@ export class SpringScrollViewNativeAdapter extends React.Component {
+         onCustomScrollEndDrag={(e) =>
+           this.props.onScrollEndDrag && this.props.onScrollEndDrag(e)
+         }
++        onMoveShouldSetResponderCapture={() => { return true; }}
+       />
+     );
+   }
+diff --git a/node_modules/react-native-spring-scrollview/Types.js b/node_modules/react-native-spring-scrollview/Types.js
+index 9f8737a..54e7f6e 100644
+--- a/node_modules/react-native-spring-scrollview/Types.js
++++ b/node_modules/react-native-spring-scrollview/Types.js
+@@ -74,4 +74,5 @@ export interface SpringScrollViewPropType extends ViewProps {
+   onNativeContentOffsetExtract?: NativeContentOffset;
+   onSizeChange?: ({width: number, height: number}) => any;
+   onContentSizeChange?: ({width: number, height: number}) => any;
++  scrollTo?: (offset: Offset, animated?: boolean) => Promise<void>;
+ }
+diff --git a/node_modules/react-native-spring-scrollview/android/src/main/java/com/bolan9999/SpringScrollView.java b/node_modules/react-native-spring-scrollview/android/src/main/java/com/bolan9999/SpringScrollView.java
+index 41879dd..d7c0d75 100644
+--- a/node_modules/react-native-spring-scrollview/android/src/main/java/com/bolan9999/SpringScrollView.java
++++ b/node_modules/react-native-spring-scrollview/android/src/main/java/com/bolan9999/SpringScrollView.java
+@@ -2,7 +2,7 @@ package com.bolan9999;
+
+ import android.content.Context;
+ import android.os.Build;
+-//import android.support.annotation.NonNull;
++//import androidx.annotation.NonNull;
+ import android.view.MotionEvent;
+ import android.view.VelocityTracker;
+ import android.view.ViewGroup;
+@@ -419,10 +419,14 @@ public class SpringScrollView extends ReactViewGroup implements View.OnLayoutCha
+
+     public void endRefresh() {
+         if (!refreshStatus.equals("refreshing")) return;
+-        refreshStatus = "rebound";
+-        if (verticalAnimation.animating) verticalAnimation.cancel();
+-        contentInsets.top = 0;
+-        verticalAnimation.startRebound(contentOffset.y, 0, 500);
++        if (contentOffset.y < 0) {
++            refreshStatus = "rebound";
++            if (verticalAnimation.animating) verticalAnimation.cancel();
++            contentInsets.top = 0;
++            verticalAnimation.startRebound(contentOffset.y, 0, 500);
++        } else {
++            refreshStatus = "waiting";
++        }
+     }
+
+     public void endLoading(boolean rebound) {
+diff --git a/node_modules/react-native-spring-scrollview/index.d.ts b/node_modules/react-native-spring-scrollview/index.d.ts
+index 97f5d8d..334408c 100644
+--- a/node_modules/react-native-spring-scrollview/index.d.ts
++++ b/node_modules/react-native-spring-scrollview/index.d.ts
+@@ -53,12 +53,12 @@ declare module 'react-native-spring-scrollview' {
+   export interface RefreshHeaderStateType {
+     status: HeaderStatus;
+   }
+-  export class RefreshHeader extends React.Component<
++  export class RefreshHeader<StateType extends RefreshHeaderStateType> extends React.Component<
+     RefreshHeaderPropType,
+-    RefreshHeaderStateType
++    StateType
+   > {}
+
+-  export class NormalHeader extends RefreshHeader {}
++  export class NormalHeader extends RefreshHeader<RefreshHeaderStateType> {}
+
+   export type FooterStatus =
+     | 'waiting'
+diff --git a/node_modules/react-native-spring-scrollview/ios/SpringScrollView/STSpringScrollView.m b/node_modules/react-native-spring-scrollview/ios/SpringScrollView/STSpringScrollView.m
+index a35ac6a..86746c8 100644
+--- a/node_modules/react-native-spring-scrollview/ios/SpringScrollView/STSpringScrollView.m
++++ b/node_modules/react-native-spring-scrollview/ios/SpringScrollView/STSpringScrollView.m
+@@ -144,8 +144,12 @@
+
+ - (void)endRefresh {
+   if ([self hitRefreshStatus:@[@"refreshing"]]) {
+-    self.refreshStatus = @"rebound";
+-    [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x, 0) animated:YES];
++    if (self.scrollView.contentOffset.y < 0) {
++        self.refreshStatus = @"rebound";
++        [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x, 0) animated:YES];
++    } else {
++        self.refreshStatus = @"waiting";
++    }
+   }
+ }
+

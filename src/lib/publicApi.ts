@@ -1,9 +1,9 @@
-import { chunk, filter, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, uniq, values } from 'lodash';
+import { chunk, filter, find, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, uniq, values } from 'lodash';
 import { Alert, Platform } from 'react-native';
 import { t } from 'ttag';
 
 import { CardCache, TabooCache, Pack } from '@actions/types';
-import { Rule as JsonRule } from '@data/scenario/types';
+import { Rule as JsonRule, TabooSets, TabooSet as JsonTabooSet } from '@data/scenario/types';
 import Card, { CARD_NUM_COLUMNS } from '@data/types/Card';
 import Rule from '@data/types/Rule';
 import Database, { SqliteVersion } from '@data/sqlite/Database';
@@ -11,8 +11,22 @@ import TabooSet from '@data/types/TabooSet';
 import FaqEntry from '@data/types/FaqEntry';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { GetCustomCardsDocument, GetCustomCardsQuery, GetCustomCardsQueryVariables } from '@generated/graphql/apollo-schema';
+import { loadTaboos } from '@data/scenario';
 
 const VERBOSE = false;
+
+function getTaboos(tabooJson: any, localTaboos: TabooSets | undefined): JsonTabooSet {
+  if (localTaboos) {
+    const localTabooSet = find(localTaboos, ts => ts.id === tabooJson.id);
+    if (localTabooSet) {
+      return localTabooSet;
+    }
+  }
+  return {
+    ...tabooJson,
+    cards: JSON.parse(tabooJson.cards),
+  };
+}
 
 export const syncTaboos = async function(
   updateProgress: (progress: number, msg?: string) => void,
@@ -38,6 +52,7 @@ export const syncTaboos = async function(
       method: 'GET',
       headers,
     });
+    const localTaboos = loadTaboos(lang || 'en');
     if (response.status === 304 && cache) {
       updateProgress(1.0);
       return cache;
@@ -77,8 +92,8 @@ export const syncTaboos = async function(
     const tabooSets: TabooSet[] = [];
     try {
       for (let i = 0; i < json.length; i++) {
-        const tabooJson = json[i];
-        const cards = JSON.parse(tabooJson.cards);
+        const tabooJson = getTaboos(json[i], localTaboos);
+        const cards = tabooJson.cards;
         try {
           tabooSets.push(TabooSet.fromJson(tabooJson, cards.length));
           const tabooCardsToSave: {
@@ -161,20 +176,20 @@ async function insertChunk<T>(
 function rulesJson(lang?: string) {
   switch (lang) {
     case 'fr':
-      return require('../../assets/rules_fr.json');
+      return require('../../assets/generated/rules_fr.json');
     case 'es':
-      return require('../../assets/rules_es.json');
+      return require('../../assets/generated/rules_es.json');
     case 'ru':
-      return require('../../assets/rules_ru.json');
+      return require('../../assets/generated/rules_ru.json');
     case 'de':
-      return require('../../assets/rules_de.json');
+      return require('../../assets/generated/rules_de.json');
     case 'ko':
-      return require('../../assets/rules_ko.json');
+      return require('../../assets/generated/rules_ko.json');
     case 'zh':
-      return require('../../assets/rules_zh.json');
+      return require('../../assets/generated/rules_zh.json');
     case 'en':
     default:
-      return require('../../assets/rules.json');
+      return require('../../assets/generated/rules.json');
   }
 }
 
@@ -310,6 +325,7 @@ export const syncCards = async function(
 
     await syncRules(db, sqliteVersion, lang);
     updateProgress(0.25);
+    VERBOSE && console.log('Imported rules');
 
     // console.log(`${await cards.count() } cards after delete`);
     const genericInvestigator = Card.fromJson({
@@ -356,6 +372,7 @@ export const syncCards = async function(
       try {
         const card = Card.fromJson(cardJson, packsByCode, cycleNames, lang || 'en');
         if (card) {
+          VERBOSE && console.log(card.code);
           /*
           // Code to spit out investigator deck_options localization strings.
           if (card.type_code === 'investigator' && card.deck_options) {

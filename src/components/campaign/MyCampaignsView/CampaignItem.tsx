@@ -11,6 +11,10 @@ interface Props {
   onPress: (id: string, campaign: MiniCampaignT) => void;
 }
 
+function computeHeight(fontScale: number) {
+  return GenericCampaignItem.computeHeight(fontScale) + CampaignItemHeader.computeHeight(false, fontScale);
+}
+
 function CampaignItem({ campaign, onPress }: Props) {
   const handleOnPress = useCallback(() => {
     onPress(campaign.uuid, campaign);
@@ -30,4 +34,6 @@ function CampaignItem({ campaign, onPress }: Props) {
   );
 }
 
-export default React.memo(CampaignItem);
+CampaignItem.computeHeight = computeHeight;
+
+export default CampaignItem;

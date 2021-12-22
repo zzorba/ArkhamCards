@@ -12,6 +12,7 @@ import {
   PlaceholderLine,
   Fade,
 } from 'rn-placeholder';
+import { map } from 'lodash';
 
 import { Campaign } from '@actions/types';
 import Card from '@data/types/Card';
@@ -19,7 +20,7 @@ import { BODY_OF_A_YITHIAN } from '@app_constants';
 import { getProblemMessage } from '@components/core/DeckProblemRow';
 import { toRelativeDateString } from '@lib/datetime';
 import { parseBasicDeck } from '@lib/parseDeck';
-import space, { m, s } from '@styles/space';
+import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { usePlayerCards, usePressCallback } from '@components/core/hooks';
 import { TINY_PHONE } from '@styles/sizes';
@@ -53,12 +54,12 @@ interface DetailProps {
   eliminated: boolean;
 }
 
-function DetailLine({ text, icon, last }: { text: string; icon: React.ReactNode; last?: boolean }) {
+function DetailLine({ text, icon, last }: { text: string[]; icon: React.ReactNode; last?: boolean }) {
   const { borderStyle, typography } = useContext(StyleContext);
   return (
     <View style={[
       styles.detailLine,
-      space.paddingSideXs,
+      space.paddingRightXs,
       space.paddingBottomS,
       space.marginBottomS,
       borderStyle,
@@ -67,9 +68,14 @@ function DetailLine({ text, icon, last }: { text: string; icon: React.ReactNode;
       <View style={space.marginRightS}>
         { icon }
       </View>
-      <Text style={[typography.smallLabel, typography.italic, typography.dark, styles.flex]}>
-        { text }
-      </Text>
+      <View style={[styles.column, { flex: 1 }]}>
+        { map(text, (line, idx) => (
+          <Text key={idx} style={[typography.smallLabel, typography.italic, typography.dark, styles.flex]} numberOfLines={1} ellipsizeMode="tail">
+            { line }
+          </Text>
+        )) }
+      </View>
+
     </View>
   );
 }
@@ -125,7 +131,7 @@ function DeckListRowDetails({
     <View style={styles.column}>
       <DetailLine
         icon={<ArkhamButtonIcon icon="campaign" color="dark" />}
-        text={campaignLines.join('\n')}
+        text={campaignLines}
         last={!xpString && !deck.deck.problem}
       />
       { eliminated && (
@@ -136,14 +142,14 @@ function DeckListRowDetails({
       { !!xpString && (
         <DetailLine
           icon={<ArkhamButtonIcon icon="xp" color="dark" />}
-          text={xpString}
+          text={[xpString]}
           last={!deck.deck.problem}
         />
       ) }
       { !!deck.deck.problem && (
         <DetailLine
           icon={<WarningIcon size={20} />}
-          text={getProblemMessage({ reason: deck.deck.problem })}
+          text={[getProblemMessage({ reason: deck.deck.problem })]}
           last
         />
       ) }
@@ -309,8 +315,8 @@ const styles = StyleSheet.create({
   },
   image: {
     marginTop: s,
-    marginBottom: m,
-    marginRight: m,
+    marginBottom: s,
+    marginRight: s,
   },
   deckRow: {
     flexDirection: 'row',

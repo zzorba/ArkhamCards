@@ -1,9 +1,10 @@
-import { capitalize, flatMap, forEach, keys, map, range, sortBy, values } from 'lodash';
+import { capitalize, head, findIndex, flatMap, forEach, keys, map, range, sortBy } from 'lodash';
 
 import { CUSTOM, Campaign, DecksMap } from '@actions/types';
 import { campaignNames } from './constants';
-import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '@app_constants';
+import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType, isSpecialToken } from '@app_constants';
 import { CardsMap } from '@data/types/Card';
+import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
 
 export function campaignToText(
   campaign: Campaign,
@@ -90,19 +91,40 @@ export function campaignToText(
   return lines.join('\n');
 }
 
-export function flattenChaosBag(chaosBag: ChaosBag): ChaosTokenType[] {
-  const list = keys(chaosBag);
-  const weight = values(chaosBag);
+export function flattenChaosBag(chaosBag: ChaosBag, tarot: Chaos_Bag_Tarot_Mode_Enum | undefined): ChaosTokenType[] {
   const weightedList: ChaosTokenType[] = [];
-  for (let i = 0; i < weight.length; i++) {
-    const multiples = weight[i];
+  forEach(chaosBag, (multiples, token) => {
     if (multiples) {
-      for (let j = 0; j < multiples; j++) {
-        weightedList.push(list[i] as ChaosTokenType);
+      forEach(range(0, multiples), () => {
+        weightedList.push(token as ChaosTokenType);
+      });
+    }
+  });
+  if (!tarot || !weightedList.length) {
+    return weightedList;
+  }
+  switch (tarot) {
+    case Chaos_Bag_Tarot_Mode_Enum.Judgement: {
+      const firstSkull = findIndex(weightedList, x => x === 'skull');
+      if (firstSkull === -1) {
+        return weightedList;
       }
+      weightedList[firstSkull] = '0';
+      return sortBy(weightedList, x => CHAOS_TOKEN_ORDER[x]);
+    }
+    case Chaos_Bag_Tarot_Mode_Enum.JudgementInverted: {
+      const highestToken = head(sortBy(weightedList, x => CHAOS_TOKEN_ORDER[x]));
+      if (!highestToken || isSpecialToken(highestToken)) {
+        return weightedList;
+      }
+      const firstToken = findIndex(weightedList, x => x === highestToken);
+      if (firstToken === -1) {
+        return weightedList;
+      }
+      weightedList[firstToken] = 'skull';
+      return sortBy(weightedList, x => CHAOS_TOKEN_ORDER[x]);
     }
   }
-  return weightedList;
 }
 
 export default {

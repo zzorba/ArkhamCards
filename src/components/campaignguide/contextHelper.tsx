@@ -41,11 +41,13 @@ const makeCampaignGuideSelector = (): (state: AppState, campaign?: SingleCampaig
     }
   );
 
+export type SingleCampaignGuideStatus = 'loading' | 'update';
+
 export function useSingleCampaignGuideData(
   campaignId: CampaignId,
   investigators: undefined | CardsMap,
   live: boolean
-): SingleCampaignGuideData | undefined {
+): [SingleCampaignGuideData | undefined, SingleCampaignGuideStatus | undefined] {
   const campaign = useCampaign(campaignId, live);
   const [campaignInvestigators] = useCampaignInvestigators(campaign, investigators);
   const campaignGuideSelector = useMemo(makeCampaignGuideSelector, []);
@@ -54,19 +56,18 @@ export function useSingleCampaignGuideData(
   const campaignState = useCampaignGuideState(campaignId, live);
   const linkedCampaignState = useCampaignGuideState(campaign?.linkedCampaignId, false);
   return useMemo(() => {
-    // console.log(`useSingleCampaignGuideData campaignId: ${JSON.stringify(campaignId)} campaign: ${!!campaign}, campaignGuide: ${!!campaignGuide}, campaignState: ${!!campaignState}`);
-    if (!campaign) {
-      return undefined;
+    if (!campaign || !campaign.cycleCode || !campaignState) {
+      return [undefined, 'loading'];
     }
-    if (!campaignGuide || !campaignState) {
-      return undefined;
+    if (!campaignGuide) {
+      return [undefined, 'update'];
     }
-    return {
+    return [{
       campaign,
       campaignGuide,
       campaignState,
       linkedCampaignState,
       campaignInvestigators,
-    };
+    }, undefined];
   }, [campaign, campaignGuide, campaignState, linkedCampaignState, campaignInvestigators]);
 }

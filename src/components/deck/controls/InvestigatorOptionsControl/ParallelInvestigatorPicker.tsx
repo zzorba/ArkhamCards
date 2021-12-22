@@ -44,7 +44,7 @@ export default function ParallelInvestigatorPicker({
     }
   }, [onChange, alternateInvestigator.code, investigator.code]);
 
-  const { showDialog, dialog } = usePickerDialog({
+  const [dialog, showDialog] = usePickerDialog({
     title: t`Select Parallel Investigator`,
     description: editWarning ? t`Parallel investigator options should only be selected at deck creation time, not between scenarios.` : undefined,
     items,

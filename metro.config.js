@@ -15,13 +15,13 @@ module.exports = (async () => {
       getTransformOptions: async() => ({
         transform: {
           experimentalImportSupport: false,
-          inlineRequires: true,
+          inlineRequires: false,
         },
       }),
     },
     resolver: {
       assetExts: assetExts.filter(ext => ext !== 'svg'),
-      sourceExts: ['js', 'json', 'ts', 'tsx', 'jsx', 'svg'],
+      sourceExts: ['js', 'json', 'ts', 'tsx', 'jsx', 'svg', 'cjs'],
     },
   };
 })();

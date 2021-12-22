@@ -5,9 +5,10 @@ import {
   View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { filter } from 'lodash';
+import { filter, map } from 'lodash';
 import { t } from 'ttag';
 
+import BorderWrapper from '@components/campaignguide/BorderWrapper';
 import LocationSetupButton from './LocationSetupButton';
 import TableStepComponent from './TableStepComponent';
 import EffectsStepComponent from './EffectsStepComponent';
@@ -24,7 +25,7 @@ import InputStepComponent from './InputStepComponent';
 import RuleReminderStepComponent from './RuleReminderStepComponent';
 import StoryStepComponent from './StoryStepComponent';
 import ScenarioStep from '@data/scenario/ScenarioStep';
-import space, { m, s } from '@styles/space';
+import space, { m, s, l } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import NarrationStepComponent from './NarrationStepComponent';
 import ScenarioGuideContext from '../ScenarioGuideContext';
@@ -45,10 +46,15 @@ function ScenarioStepComponentContent({
   width,
   switchCampaignScenario,
 }: Props) {
+  const { typography, colors } = useContext(StyleContext);
   const { campaignGuide, campaignId } = useContext(CampaignGuideContext);
+  const { processedScenario, scenarioState } = useContext(ScenarioGuideContext);
+  if (step.border_only && !border) {
+    return null;
+  }
   if (!step.type) {
     return (
-      <NarrationStepComponent narration={step.narration}>
+      <NarrationStepComponent narration={step.narration} hideTitle={!!step.title}>
         <GenericStepComponent step={step} />
       </NarrationStepComponent>
     );
@@ -60,7 +66,7 @@ function ScenarioStepComponentContent({
       );
     case 'branch':
       return (
-        <NarrationStepComponent narration={step.narration}>
+        <NarrationStepComponent narration={step.narration} hideTitle={!!step.title}>
           <BranchStepComponent
             step={step}
             campaignLog={campaignLog}
@@ -69,7 +75,7 @@ function ScenarioStepComponentContent({
       );
     case 'story':
       return (
-        <NarrationStepComponent narration={step.narration}>
+        <NarrationStepComponent narration={step.narration} hideTitle={!!step.title}>
           <View style={border && !step.title ? styles.extraTopPadding : {}}>
             <StoryStepComponent
               step={step}
@@ -104,7 +110,7 @@ function ScenarioStepComponentContent({
       );
     case 'input':
       return (
-        <NarrationStepComponent narration={step.narration}>
+        <NarrationStepComponent narration={step.narration} hideTitle={!!step.title}>
           <InputStepComponent
             componentId={componentId}
             step={step}
@@ -129,6 +135,42 @@ function ScenarioStepComponentContent({
           step={step}
           componentId={componentId}
         />
+      );
+    case 'border':
+      return (
+        <BorderWrapper border width={width} color={step.border_color}>
+          { !!step.title && (
+            <View style={styles.titleWrapper}>
+              <Text style={[
+                typography.bigGameFont,
+                { color: colors.campaign[step.border_color || 'setup'] },
+                space.paddingTopL,
+                typography.center,
+              ]}>
+                { step.title }
+              </Text>
+            </View>
+          ) }
+          <View style={[space.paddingSideL, space.paddingTopS]}>
+            { map(
+              processedScenario.scenarioGuide.expandSteps(
+                step.steps,
+                scenarioState,
+                campaignLog
+              ),
+              step => (
+                <ScenarioStepComponent
+                  key={step.step.id}
+                  componentId={componentId}
+                  width={width - l * 2}
+                  step={step}
+                  border
+                  switchCampaignScenario={switchCampaignScenario}
+                />
+              )
+            ) }
+          </View>
+        </BorderWrapper>
       );
     default:
       return null;
@@ -164,7 +206,7 @@ export default function ScenarioStepComponent({
 
   return (
     <ScenarioStepContext.Provider value={context}>
-      { !!step.step.title && (
+      { !!step.step.title && step.step.type !== 'border' && step.step.type !== 'xp_count' && (
         <View style={styles.titleWrapper}>
           <Text style={[
             typography.bigGameFont,

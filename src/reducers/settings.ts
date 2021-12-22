@@ -26,6 +26,7 @@ interface SettingsState {
   fontScale?: number;
   justifyContent?: boolean;
   sortRespectQuotes?: boolean;
+  beta1?: boolean;
 
   version?: number;
 }
@@ -111,6 +112,11 @@ export default function(
           return {
             ...state,
             sortRespectQuotes: action.value,
+          };
+        case 'beta1':
+          return {
+            ...state,
+            beta1: action.value,
           };
       }
       return state;

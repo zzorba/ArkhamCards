@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState, useRef } from 'react';
 import { find, forEach } from 'lodash';
 import { t } from 'ttag';
 
@@ -6,12 +6,15 @@ import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import { SimpleUser, UserProfile } from '@data/remote/hooks';
 import { SearchResults, useSearchUsers, useUpdateFriendRequest } from '@data/remote/api';
 import { NavigationProps } from '@components/nav/types';
-import FriendFeedComponent, { FriendFeedItem, UserControls } from './FriendFeedComponent';
+import useFriendFeedComponent, { FriendFeedItem, UserControls } from './useFriendFeedComponent';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { searchNormalize } from '@data/types/Card';
 
 export interface FriendsViewProps {
   userId: string;
 }
+
+type Refresh = () => void;
 
 function FeedComponent({ userId, componentId, searchTerm, searchResults, handleScroll, onSearchChange, performSearch, showHeader, focus }: {
   componentId: string;
@@ -24,12 +27,14 @@ function FeedComponent({ userId, componentId, searchTerm, searchResults, handleS
   showHeader: () => void;
   focus: () => void;
 }) {
+  const refreshFeed = useRef<Refresh | undefined>(undefined);
   const searchFriendsPressed = useCallback(() => {
     showHeader();
     focus();
   }, [showHeader, focus]);
   const clearSearchPressed = useCallback(() => {
     onSearchChange('', true);
+    refreshFeed.current?.();
   }, [onSearchChange]);
   const { lang } = useContext(LanguageContext);
   const [error, setError] = useState<string>();
@@ -51,9 +56,9 @@ function FeedComponent({ userId, componentId, searchTerm, searchResults, handleS
     isSelf: boolean,
     profile?: UserProfile
   ) => {
-    const normalizedSearch = searchTerm && searchTerm.toLocaleLowerCase(lang);
+    const normalizedSearch = searchTerm && searchNormalize(searchTerm, lang);
     const matchesSearch = (f: SimpleUser) => {
-      return !normalizedSearch || !f.handle || f.handle.toLocaleLowerCase(lang).indexOf(normalizedSearch) !== -1;
+      return !normalizedSearch || !f.handle || searchNormalize(f.handle, lang).indexOf(normalizedSearch) !== -1;
     };
     const feed: FriendFeedItem[] = [];
     if (searchTerm && searchTerm !== searchResults.term) {
@@ -121,15 +126,20 @@ function FeedComponent({ userId, componentId, searchTerm, searchResults, handleS
     }
     return feed;
   }, [clearSearchPressed, performSearch, lang, controls, searchResults, searchFriendsPressed, searchTerm]);
+  const [feed, refresh] = useFriendFeedComponent({
+    componentId,
+    error,
+    userId,
+    toFeed,
+    handleScroll,
+    searchResults,
+  });
+  refreshFeed.current = refresh;
+
   return (
-    <FriendFeedComponent
-      componentId={componentId}
-      error={error}
-      userId={userId}
-      toFeed={toFeed}
-      handleScroll={handleScroll}
-      searchResults={searchResults}
-    />
+    <>
+      { feed }
+    </>
   );
 }
 

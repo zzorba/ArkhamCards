@@ -301,13 +301,29 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Into the Maelstrom`, code: 'into_the_maelstrom', pack_code: 'itm' },
       { name: t`Epilogue`, code: 'epligoue', pack_code: 'itm', interlude: true },
     ];
+    case EOE: return [
+      { name: t`Prologue`, code: 'prologue', pack_code: 'eoec', interlude: true },
+      { name: t`Ice and Death: Part 1`, code: 'ice_and_death_part_1', pack_code: 'eoec' },
+      { name: t`Ice and Death: Part 2`, code: 'ice_and_death_part_2', pack_code: 'eoec' },
+      { name: t`Ice and Death: Part 3`, code: 'ice_and_death_part_3', pack_code: 'eoec' },
+      { name: t`Restful Night`, code: 'restful_night', pack_code: 'eoec', interlude: true },
+      { name: t`To the Forbidden Peaks`, code: 'to_the_forbidden_peaks', pack_code: 'eoec' },
+      { name: t`Endless Night`, code: 'endless_night', pack_code: 'eoec', interlude: true },
+      { name: t`City of the Elder Things`, code: 'city_of_the_elder_things', pack_code: 'eoec' },
+      { name: t`Final Night`, code: 'final_night', pack_code: 'eoec', interlude: true },
+      { name: t`The Heart of Madness: Part 1`, code: 'the_heart_of_madness_part_1', pack_code: 'eoec' },
+      { name: t`The Heart of Madness: Part 2`, code: 'the_heart_of_madness_part_2', pack_code: 'eoec' },
+      { name: t`Epilogue`, code: 'epilogue', pack_code: 'eoec', interlude: true },
+      { name: t`Fatal Mirage`, code: 'fatal_mirage', pack_code: 'eoec' },
+      { name: t`Fatal Mirage`, code: 'fatal_mirage_2', pack_code: 'eoec' },
+      { name: t`Fatal Mirage`, code: 'fatal_mirage_3', pack_code: 'eoec' },
+    ];
     case CROWN_OF_EGIL:
     case ALICE_IN_WONDERLAND:
     case DARK_MATTER: return [];
     case TDE: return [];
     case CUSTOM: return [];
     case STANDALONE: return [];
-    case EOE: return [];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -491,7 +507,18 @@ export function getCampaignLog(
       };
     case STANDALONE:
     case EOE:
-      return {};
+      return {
+        sections: [
+          t`Campaign Notes`,
+          t`Fatal Mirage - Memories Discovered`,
+          t`Fatal Mirage - Memories Banished`,
+          t`Ice and Death - Locations Revealed`,
+          t`Ice and Death - Supplies Recovered`,
+          t`The Heart of Madness - Seals Placed`,
+          t`The Heart of Madness - Seals Recovered`,
+          t`Expedition Team`,
+        ],
+      };
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -558,6 +585,13 @@ const TIC_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
 };
 
+const EOE_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 3, '0': 2, '-1': 3, '-2': 2, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, frost: 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 2, '-1': 2, '-2': 2, '-3': 1, '-4': 2, '-5': 1, frost: 2, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 1, '-2': 2, '-3': 1, '-4': 2, '-5': 1, '-7': 1, frost: 3, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
+};
+
 const DARK_MATTER_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 2, '-2': 2, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
@@ -621,6 +655,143 @@ export function scenarioRewards(encounterCode: string) {
   return result;
 }
 
+export function getTarotCards() {
+  return [
+    {
+      id: 'the_fool',
+      title: t`The Fool · 0`,
+      text: t`Each investigator not defeated during this game earns +2 experience during its resolution.`,
+      inverted_text: t`Each investigator defeated during this game earns -2 experience during its resolution.`,
+    },
+    {
+      id: 'the_magician',
+      title: t`The Magician · I`,
+      text: t`Each investigator begins the game with 3 addititonal resources`,
+      inverted_text: t`Each investigator begins the game with 3 fewer resources, and cannot gain resources during their first turn.`,
+    },
+    {
+      id: 'the_high_priestess',
+      title: t`The High Priestess · II`,
+      text: t`During the first [intellect] test each investigator performs each round, they get +1 [intellect].`,
+      inverted_text: t`During the first [intellect] test each investigator performs each round, they get -1 [intellect].`,
+    },
+    {
+      id: 'the_empress',
+      title: t`The Empress · III`,
+      text: t`During the first [agility] test each investigator performs each round, they get +1 [agility].`,
+      inverted_text: t`During the first [agility] test each investigator performs each round, they get -1 [agility].`,
+    },
+    {
+      id: 'the_emperor',
+      title: t`The Emperor · IV`,
+      text: t`During the first [combat] test each investigator performs each round, they get +1 [combat].`,
+      inverted_text: t`During the first [combat] test each investigator performs each round, they get -1 [combat].`,
+    },
+    {
+      id: 'the_hierophant',
+      title: t`The Hierophant · V`,
+      text: t`During the first [willpower] test each investigator performs each round, they get +1 [willpower].`,
+      inverted_text: t`During the first [willpower] test each investigator performs each round, they get -1 [willpower].`,
+    },
+    {
+      id: 'the_lovers',
+      title: t`The Lovers · VI`,
+      text: t`When the game begins, each investigator searches their deck for an Ally asset, adds it to their hand, and shuffles their deck.`,
+      inverted_text: t`When the game begins, each investigator searches their deck for an Ally asset, removes it from the game, and shuffles their deck.`,
+    },
+    {
+      id: 'the_chariot',
+      title: t`The Chariot · VII`,
+      text: t`Each investigator begins the game with 2 additional cards in their opening hand.`,
+      inverted_text: t`Each investigator begins the game with 2 fewer cards in their opening hand, and cannot draw cards during their first turn.`,
+    },
+    {
+      id: 'strength',
+      title: t`Strength · VIII`,
+      text: t`When the game begins, each investigator may play an asset from their hand at -2 cost.`,
+      inverted_text: t`During the first round of the game, each investigator cannot play assets.`,
+    },
+    {
+      id: 'the_hermit',
+      title: t`The Hermit · IX`,
+      text: t`Increase each investigator's maximum hand size by 3.`,
+      inverted_text: t`Decrease each investigator's maximum hand size by 3.`,
+    },
+    {
+      id: 'wheel_of_fortune',
+      title: t`Wheel of Fortune · X`,
+      text: t`Once each act, when an investigator reveals an [auto_fail] token, thte investigator may cancel it and treat it as a 0 token instead.`,
+      inverted_text: t`Once each agenda, the first time any investigator reveals an [elder_sign] token, cancel it and treat it as a -5 token instead.`,
+    },
+    {
+      id: 'justice',
+      title: t`Justice · XI`,
+      text: t`Cancel the first doom that would be placed on the final agenda of the game.`,
+      inverted_text: t`The final agenda of the game enters play with 1 doom on it.`,
+    },
+    {
+      id: 'the_hanged_man',
+      title: t`The Hanged Man · XII`,
+      text: t`During setup, each investigator may take up to 2 additional mulligans.`,
+      inverted_text: t`Each investigator cannot mulligan or replace weaknesses in their opening hand (resolve their revelation abilities when the game begins).`,
+    },
+    {
+      id: 'death',
+      title: t`Death · XIII`,
+      text: t`Each investigator gets +1 health.`,
+      inverted_text: t`Each investigator gets -1 health.`,
+    },
+    {
+      id: 'temperance',
+      title: t`Temperance · XIV`,
+      text: t`Each investigator gets +1 sanity.`,
+      inverted_text: t`Each investigator gets -1 sanity.`,
+    },
+    {
+      id: 'the_devil',
+      title: t`The Devil · XV`,
+      text: t`Each investigator has 1 additional slot of a type chosen by that investigattor when the game begins.`,
+      inverted_text: t`Each investigator has 3 fewer slots, each of a different type, chosen by that investigator when the game begins.`,
+    },
+    {
+      id: 'the_tower',
+      title: t`The Tower · XVI`,
+      text: t`Each investigator chooses 1 basic weakness in their deck and removes it from the game (return them after the game ends).`,
+      inverted_text: t`Add 1 random basic weakness to each investigator's deck. Remove them after the game ends.`,
+    },
+    {
+      id: 'the_star',
+      title: t`The Star · XVII`,
+      text: t`After an investigator reveals an [elder_sign] token during a skill test, they may heal 1 damage or 1 horror.`,
+      inverted_text: t`After an investigator reveals an [auto_fail] token during a skill test, they must either take 1 damage or 1 horror.`,
+    },
+    {
+      id: 'the_moon',
+      title: t`The Moon · XVIII`,
+      text: t`The first time each investigator's deck would run out of cards, they may shuffle the bottom 10 cards of their discard pile back into their deck.`,
+      inverted_text: t`When the game begins, each investigator discards the top 5 cards of their deck. Shuffle each discarded weakness into its owner's deck.`,
+    },
+    {
+      id: 'the_sun',
+      title: t`The Sun · XIX`,
+      text: t`During each investigator's first turn, they may take 2 additional actions.`,
+      inverted_text: t`During each investigator's first turn, they have 2 fewer actions to take.`,
+    },
+    {
+      id: 'judgement',
+      title: t`Judgement · XX`,
+      text: t`When the game begins, replace a [skull] token in the chaos bag with a 0 token. Swap them back after the game ends.`,
+      inverted_text: t`When the game begins, replace the highest non-negative token in the chaos bag with a [skull] token. Swap them back after the game ends.`,
+    },
+    {
+      id: 'the_world',
+      title: t`The World · XXI`,
+      text: t`Each investigator not defeated during this game may remove 1 trauma of their choice during its resolution.`,
+      inverted_text: t`Each investigator defeated during this game suffers 1 trauma of their choice during its resolution.`,
+    },
+  ];
+}
+
 export function getChaosBag(
   cycleCode: CampaignCycleCode,
   difficulty: CampaignDifficulty,
@@ -650,8 +821,9 @@ export function getChaosBag(
     case TDEB:
       return TDEB_BAG[difficulty];
     case TIC:
-    case EOE:
       return TIC_BAG[difficulty];
+    case EOE:
+      return EOE_BAG[difficulty];
     case DARK_MATTER:
       return DARK_MATTER_BAG[difficulty];
     case ALICE_IN_WONDERLAND:

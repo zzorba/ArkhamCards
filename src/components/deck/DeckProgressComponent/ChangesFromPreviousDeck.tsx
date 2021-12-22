@@ -81,6 +81,7 @@ export default function ChangesFromPreviousDeck({
       showCardSwipe(
         componentId,
         map(allCards, card => card.code),
+        undefined,
         findIndex(allCards, c => c.code === card.code),
         colors,
         allCards,

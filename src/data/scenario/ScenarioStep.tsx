@@ -25,6 +25,7 @@ import {
   Effect,
   EffectsWithInput,
   EffectsStep,
+  CampaignLogCardsEffect,
 } from '@data/scenario/types';
 import { getSpecialEffectChoiceList } from './effectHelper';
 import { investigatorChoiceInputChoices, chooseOneInputChoices } from '@data/scenario/inputHelper';
@@ -32,7 +33,7 @@ import { BinaryResult, conditionResult, NumberResult, StringResult } from '@data
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
+import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, LEAD_INVESTIGATOR_STEP_ID, SELECTED_PARTNERS_CAMPAIGN_LOG_ID } from '@data/scenario/fixedSteps';
 
 export default class ScenarioStep {
   step: Step;
@@ -182,7 +183,7 @@ export default class ScenarioStep {
                   input: physical,
                   effects: [{
                     type: 'trauma',
-                    physical: 1,
+                    physical: specialEffect.mental_or_physical || 1,
                     investigator: '$input_value',
                   }],
                 });
@@ -192,7 +193,7 @@ export default class ScenarioStep {
                   input: mental,
                   effects: [{
                     type: 'trauma',
-                    mental: 1,
+                    mental: specialEffect.mental_or_physical || 1,
                     investigator: '$input_value',
                   }],
                 });
@@ -279,6 +280,12 @@ export default class ScenarioStep {
           this.step,
           scenarioState
         );
+      case 'border':
+        return this.proceedToNextStep(
+          [...this.step.steps, ...this.remainingStepIds],
+          scenarioState,
+          this.campaignLog
+        );
       case 'input':
         return this.expandInputStep(
           this.step,
@@ -329,7 +336,7 @@ export default class ScenarioStep {
       default:
         return this.maybeCreateEffectsStep(
           this.step.id,
-          this.remainingStepIds,
+          [...(this.step.steps || []), ...this.remainingStepIds],
           [{
             effects: this.step.effects || [],
           }],
@@ -353,17 +360,26 @@ export default class ScenarioStep {
     step: BranchStep,
     scenarioState: ScenarioStateHelper
   ): ScenarioStep | undefined {
+    const parts = step.id.split('#');
+    const baseStepId = parts[0];
+    const currentIteration: number | undefined = parts.length > 1 ? parseInt(parts[1], 10) : undefined;
+    const nextIteration = (currentIteration || 0) + 1;
+
     const result = conditionResult(step.condition, this.campaignLog);
     switch (result.type) {
       case 'string':
       case 'number':
       case 'binary': {
         const numberInput = this.getNumberInput(result);
-
         return this.maybeCreateEffectsStep(
           this.step.id,
           [
-            ...((result.option && result.option.steps) || []),
+            ...map(
+              ((result.option && result.option.steps) || []),
+              id => step.loop ? `${id}#${currentIteration}` : id
+            ),
+            // Should we repeat ourselves until it fails the test at least once.
+            ...(step.loop && result.option ? [`${baseStepId}#${nextIteration}`] : []),
             ...this.remainingStepIds,
           ],
           [
@@ -375,7 +391,8 @@ export default class ScenarioStep {
               },
             ] : []),
             {
-              border: (result.option && result.option.border),
+              border: (result.option?.border),
+              border_color: (result.option?.border_color),
               numberInput,
               input: result.type === 'binary' ? result.input : undefined,
               effects: (result.option && result.option.effects) || [],
@@ -399,7 +416,11 @@ export default class ScenarioStep {
         );
         return this.maybeCreateEffectsStep(
           step.id,
-          [...stepIds, ...this.remainingStepIds],
+          [
+            ...map(stepIds, id => step.loop ? `${id}#${currentIteration}` : id),
+            ...(step.loop && (stepIds.length || effectsWithInput.length) ? [`${baseStepId}#${nextIteration}`] : []),
+            ...this.remainingStepIds,
+          ],
           effectsWithInput,
           scenarioState,
           {},
@@ -441,7 +462,8 @@ export default class ScenarioStep {
         const result: EffectsWithInput = {
           input: map(group, item => item.code),
           effects: (selectedChoice && selectedChoice.effects) || [],
-          border: (selectedChoice && selectedChoice.border),
+          border: (selectedChoice?.border),
+          border_color: (selectedChoice?.border_color),
         };
         return [
           ...(selectedChoice?.pre_border_effects ? [
@@ -772,6 +794,98 @@ export default class ScenarioStep {
           {}
         );
       }
+      case 'partner_choice': {
+        const choice = scenarioState.stringChoices(this.step.id);
+        if (choice === undefined) {
+          return undefined;
+        }
+        return this.maybeCreateEffectsStep(
+          step.id,
+          this.remainingStepIds,
+          [
+            {
+              input: keys(choice),
+              effects: input.effects,
+            },
+          ],
+          scenarioState,
+          {}
+        );
+      }
+      case 'investigator_choice_partner': {
+        const choice = scenarioState.stringChoices(this.step.id);
+        if (choice === undefined) {
+          return undefined;
+        }
+        return this.maybeCreateEffectsStep(
+          step.id,
+          this.remainingStepIds,
+          [
+            {
+              input: flatMap(values(choice), x => x),
+              effects: [
+                {
+                  type: 'campaign_log_cards',
+                  section: input.condition.section,
+                  id: SELECTED_PARTNERS_CAMPAIGN_LOG_ID,
+                  cards: '$input_value',
+                },
+              ],
+            },
+            ...map(this.campaignLog.investigatorCodes(true), (investigator) => {
+              const partners: string[] | undefined = choice[investigator];
+              const effect: CampaignLogCardsEffect = partners ? {
+                type: 'campaign_log_cards',
+                section: input.condition.section,
+                id: `$investigator_partner_${investigator}`,
+                cards: '$input_value',
+              } : {
+                type: 'campaign_log_cards',
+                section: input.condition.section,
+                id: `$investigator_partner_${investigator}`,
+                cards: '$fixed_codes',
+                codes: [],
+              };
+              return {
+                input: partners,
+                effects: [effect],
+              };
+            }),
+          ],
+          scenarioState,
+          {}
+        );
+      }
+      case 'partner_trauma': {
+        const choice = scenarioState.numberChoices(this.step.id);
+        if (choice === undefined) {
+          return undefined;
+        }
+        const effectsWithInput: EffectsWithInput[] = [];
+        forEach(choice, ([physical, mental], code) => {
+          if (physical || mental) {
+            effectsWithInput.push({
+              input: [code],
+              effects: [
+                {
+                  type: 'trauma',
+                  investigator: '$input_value',
+                  physical,
+                  mental,
+                  hidden: true,
+                },
+              ],
+            })
+          }
+        });
+        return this.maybeCreateEffectsStep(
+          step.id,
+          this.remainingStepIds,
+          effectsWithInput,
+          scenarioState,
+          {}
+        );
+      }
       case 'investigator_choice_supplies': {
         const choice = scenarioState.stringChoices(this.step.id);
         if (choice === undefined) {
@@ -1053,12 +1167,23 @@ export default class ScenarioStep {
             }
             forEach(omit(choices, ['insane', 'killed', 'count', 'physical', 'mental', 'xp', 'deckId']), (count, exile_code) => {
               if (count.length) {
-                for (let i = 0; i < count[0]; i++) {
+                const quantity = count[0];
+                if (exile_code.indexOf('story#') !== -1) {
+                  const code = exile_code.split('#')[1];
                   effects.push({
-                    type: 'remove_card',
+                    type: 'set_card_count',
                     investigator: '$input_value',
-                    card: exile_code,
+                    card: code,
+                    quantity,
                   });
+                } else {
+                  for (let i = 0; i < quantity; i++) {
+                    effects.push({
+                      type: 'remove_card',
+                      investigator: '$input_value',
+                      card: exile_code,
+                    });
+                  }
                 }
               }
             });
@@ -1328,7 +1453,6 @@ export default class ScenarioStep {
         campaignLog
       );
       if (!step) {
-        console.log(`Missing step: ${stepId}`);
         return undefined;
       }
       return new ScenarioStep(

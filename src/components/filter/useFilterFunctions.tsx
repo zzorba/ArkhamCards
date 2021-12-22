@@ -75,6 +75,7 @@ export default function useFilterFunctions({
   useEffect(() => {
     const filterParts: Brackets | undefined =
       currentFilters && new FilterBuilder('filters').filterToQuery(currentFilters, useCardTraits);
+    let canceled = false;
     db.getCardCount(
       combineQueriesOpt(
         [
@@ -84,7 +85,14 @@ export default function useFilterFunctions({
         'and'
       ),
       tabooSetId
-    ).then(count => setCount(count));
+    ).then(count => {
+      if (!canceled) {
+        setCount(count);
+      }
+    });
+    return () => {
+      canceled = true;
+    }
   }, [currentFilters, baseQuery, tabooSetId, db, useCardTraits]);
   useEffect(() => {
     Navigation.mergeOptions(componentId, {

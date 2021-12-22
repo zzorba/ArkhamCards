@@ -113,6 +113,7 @@
 		<string>alice.ttf</string>
 		<string>Caveat.ttf</string>
 		<string>edge.ttf</string>
+		<string>cardicons.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

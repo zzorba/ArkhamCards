@@ -8,7 +8,7 @@ import {
 import { ChaosTokenType } from '@app_constants';
 import ChaosToken from '@components/campaign/ChaosToken';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import { s, xs } from '@styles/space';
+import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
 interface Props {
@@ -19,22 +19,24 @@ interface Props {
   limit: number;
 }
 
-function renderTokens(id: ChaosTokenType, count: number, status?: 'added' | 'removed') {
+function renderTokens(id: ChaosTokenType, count: number, status?: 'added' | 'removed', alreadyRendered?: number) {
+  const renderCount = (count + (alreadyRendered || 0) > 4) ? Math.min(3, count + (alreadyRendered || 0)) : count;
   return (
     <View style={styles.row}>
-      { map(range(0, count), (idx) => (
-        <ChaosToken
-          size="tiny"
-          key={`${status}-${idx}`}
-          iconKey={id}
-          status={status}
-        />
+      { map(range(0, renderCount), (idx) => (
+        <View style={space.paddingRightXs} key={`${status}-${idx}`}>
+          <ChaosToken
+            size="tiny"
+            iconKey={id}
+            status={status}
+          />
+        </View>
       )) }
     </View>
   );
 }
 
-export default function ChaosTokenRow({ id, mutateCount, originalCount, count, limit }: Props) {
+export default function ChaosTokenRow({ id, mutateCount, count, limit }: Props) {
   const { borderStyle } = useContext(StyleContext);
   const increment = useCallback(() => {
     mutateCount(id, count => Math.min(count + 1, limit));
@@ -45,24 +47,28 @@ export default function ChaosTokenRow({ id, mutateCount, originalCount, count, l
   }, [id, mutateCount]);
 
   const tokens = useMemo(()=> {
-    if (count > originalCount) {
-      return (
-        <View style={styles.row}>
-          { (originalCount > 0) && renderTokens(id, originalCount) }
-          { renderTokens(id, (count - originalCount), 'added') }
-        </View>
-      );
-    }
-    if (count < originalCount) {
-      return (
-        <View style={styles.row}>
-          { count > 0 && renderTokens(id, count) }
-          { renderTokens(id, (originalCount - count), 'removed') }
-        </View>
-      );
-    }
-    return renderTokens(id, count);
-  }, [id, count, originalCount]);
+    return (
+      <View style={styles.row}>
+        { count > 4 ? (
+          <>
+            <View style={space.paddingRightXs}>
+              <ChaosToken
+                size="tiny"
+                key={id}
+                iconKey={id}
+              />
+            </View>
+            <ChaosToken
+              size="tiny"
+              key="more"
+              iconKey="more"
+              total={count}
+            />
+          </>
+        ) : renderTokens(id, count) }
+      </View>
+    )
+  }, [id, count]);
 
   return (
     <View style={[styles.mainRow, borderStyle]}>

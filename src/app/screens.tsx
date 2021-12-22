@@ -9,6 +9,7 @@ import MyCampaignsView from '@components/campaign/MyCampaignsView';
 import MyDecksView from '@components/decklist/MyDecksView';
 import BrowseCardsView from '@components/cardlist/BrowseCardsView';
 import SettingsView from '@components/settings/SettingsView';
+import RuleTitleComponent from '@components/settings/RuleTitleComponent';
 
 interface ProviderProps<S> {
   store: S;
@@ -24,7 +25,6 @@ function getStandardComponent(componentName: string | number) {
     case 'Deck.Checklist': return require('@components/deck/DeckChecklistView').default;
     case 'Deck.DrawSimulator': return require('@components/deck/DrawSimulatorView').default;
     case 'Deck.Description': return require('@components/deck/DeckDescriptionView').default;
-    case 'Deck.EditAddCards': return require('@components/deck/DeckEditView').default;
     case 'Deck.EditSpecial': return require('@components/deck/EditSpecialDeckCardsView').default;
     case 'Deck.NewOptions': return require('@components/deck/NewDeckOptionsDialog').default;
     case 'Card': return require('@components/card/CardDetailView').default;
@@ -35,7 +35,6 @@ function getStandardComponent(componentName: string | number) {
     case 'Campaign.Access': return require('@components/campaign/CampaignAccessView').default;
     case 'Campaign.Log': return require('@components/campaign/CampaignLogView').default;
     case 'Campaign.Scenarios': return require('@components/campaign/CampaignScenariosView').default;
-    case 'Campaign.New': return require('@components/campaign/NewCampaignView').default;
     case 'Campaign.AddResult': return require('@components/campaign/AddScenarioResultView').default;
     case 'Guide.SideScenario': return require('@components/campaignguide/AddSideScenarioView').default;
     case 'Guide.CardErrata': return require('@components/campaignguide/EncounterCardErrataView').default;
@@ -43,10 +42,10 @@ function getStandardComponent(componentName: string | number) {
     case 'Guide.ChallengeScenario': return require('@components/campaignguide/ChallengeScenarioView').default;
     case 'Guide.DrawChaosBag': return require('@components/campaignguide/GuideDrawChaosBagView').default;
     case 'Guide.OddsCalculator': return require('@components/campaignguide/GuideOddsCalculatorView').default;
-    case 'Guide.Scenario': return require('@components/campaignguide/ScenarioView').default;
     case 'Guide.Achievements': return require('@components/campaignguide/CampaignAchievementsView').default;
     case 'Guide.Log': return require('@components/campaignguide/CampaignLogView').default;
     case 'Guide.LocationSetup': return require('@components/campaignguide/LocationSetupView').default;
+    case 'Guide.WeaknessSet': return require('@components/campaignguide/WeaknessSetView').default;
     case 'Guide.CardSelector': return require('@components/campaignguide/CardSelectorView').default;
     case 'Friends': return require('@components/social/FriendsView').default;
     case 'Campaign.UpgradeDecks': return require('@components/campaign/UpgradeDecksView').default;
@@ -84,11 +83,14 @@ function getRootComponent(name: string | number): any {
     case 'Deck.Upgrade': return require('@components/deck/DeckUpgradeDialog').default;
     case 'Deck.New': return require('@components/deck/NewDeckView').default;
     case 'Campaign': return require('@components/campaign/CampaignDetailView').default;
+    case 'Campaign.New': return require('@components/campaign/NewCampaignView').default;
     case 'Guide.Campaign': return require('@components/campaignguide/CampaignGuideView').default;
+    case 'Guide.Scenario': return require('@components/campaignguide/ScenarioView').default;
     case 'Guide.LinkedCampaign': return require('@components/campaignguide/LinkedCampaignGuideView').default;
     case 'Guide.Standalone': return require('@components/campaignguide/StandaloneGuideView').default;
     case 'Dialog.Campaign': return require('@components/campaign/SelectCampaignDialog').default;
     case 'Dialog.DeckSelector': return require('@components/campaign/MyDecksSelectorDialog').default;
+    case 'Deck.EditAddCards': return require('@components/deck/DeckEditView').default;
     default: return undefined;
   }
 }
@@ -99,25 +101,26 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
   function providerWrapper<Props>(
     ScreenComponenet: React.ComponentType<Props>,
   ) {
-    return () => (props: Props) => (
+    return () => gestureHandlerRootHOC((props: Props) => (
       <Provider store={store}>
         <ScreenComponenet {...props} />
       </Provider>
-    );
+    ));
   }
 
-  Navigation.registerComponent('Browse.Cards', providerWrapper(gestureHandlerRootHOC(BrowseCardsView)), () => BrowseCardsView);
-  Navigation.registerComponent('My.Campaigns', providerWrapper(gestureHandlerRootHOC(MyCampaignsView)), () => MyCampaignsView);
-  Navigation.registerComponent('My.Decks', providerWrapper(gestureHandlerRootHOC(MyDecksView)), () => MyDecksView);
+  Navigation.registerComponent('Browse.Cards', providerWrapper(BrowseCardsView), () => BrowseCardsView);
+  Navigation.registerComponent('My.Campaigns', providerWrapper(MyCampaignsView), () => MyCampaignsView);
+  Navigation.registerComponent('My.Decks', providerWrapper(MyDecksView), () => MyDecksView);
   Navigation.registerComponent('Settings', providerWrapper(SettingsView), () => SettingsView);
   Navigation.registerComponent('SortButton', providerWrapper(SortButton), () => SortButton);
   Navigation.registerComponent('TuneButton', providerWrapper(TuneButton), () => TuneButton);
   Navigation.registerComponent('MythosButton', providerWrapper(MythosButton), () => MythosButton);
+  Navigation.registerComponent('RulesTitle', providerWrapper(RuleTitleComponent), () => MythosButton);
 
   Navigation.setLazyComponentRegistrator((componentName: string | number) => {
     const RootComponent = getRootComponent(componentName);
     if (RootComponent) {
-      Navigation.registerComponent(componentName, providerWrapper(gestureHandlerRootHOC(RootComponent)), () => RootComponent);
+      Navigation.registerComponent(componentName, providerWrapper(RootComponent), () => RootComponent);
       return;
     }
     const StandardComponent = getStandardComponent(componentName);

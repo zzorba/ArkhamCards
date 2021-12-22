@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-01-02 13:44-0500\n"
 "PO-Revision-Date: 2021-01-02 13:44-0500\n"
-"Last-Translator: \n"
+"Last-Translator: 푸른이\n"
 "Language-Team: \n"
 "mime-version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -14,41 +14,41 @@ msgstr ""
 "Language: ko\n"
 
 msgid "There is not a current clue goal, please talk to the organizer."
-msgstr ""
+msgstr "현재 단서 목표가 없습니다. 주최측에 문의하십시오."
 
 #, javascript-format
 msgid "Clue goal reached. Please take back ${ returnedClues } clue."
 msgid_plural "Clue goal reached. Please take back ${ returnedClues } clues."
-msgstr[0] ""
+msgstr[0] "단서 목표에 도달했습니다. 단서 ${ returnedClues }개를 회수하세요."
 msgstr[1] ""
 
 msgid "Clue removed."
 msgid_plural "Clues removed."
-msgstr[0] ""
+msgstr[0] "단서 제거."
 msgstr[1] ""
 
 msgid "Clue added."
 msgid_plural "Clues added."
-msgstr[0] ""
+msgstr[0] "단서 추가."
 msgstr[1] ""
 
 msgid "Damage added."
-msgstr ""
+msgstr "피해 추가."
 
 msgid "Damage removed."
-msgstr ""
+msgstr "피해 제거."
 
 msgid "One countermeasure used."
-msgstr ""
+msgstr "하나의 대응 수단이 사용되었습니다."
 
 msgid "Countermeasure removed."
 msgid_plural "Countermeasures removed."
-msgstr[0] ""
+msgstr[0] "대응 수단 제거."
 msgstr[1] ""
 
 msgid "Countermeasure added."
 msgid_plural "Countermeasures added."
-msgstr[0] ""
+msgstr[0] "대응 수단 추가."
 msgstr[1] ""
 
 msgid "Ding dong the Blob is dead!"
@@ -70,7 +70,7 @@ msgid ""
 msgid_plural ""
 "The time for tracking shared doom has passed. Please place ${ doom } doom "
 "back on the ${ color } agenda."
-msgstr[0] ""
+msgstr[0] "공유 파멸을 추적하는 시간은 지났습니다. 파멸 ${ doom }개를 ${ color } 주요사건으로 되돌려 놓아주십시오."
 msgstr[1] ""
 
 #, javascript-format
@@ -81,113 +81,117 @@ msgid_plural ""
 "The ${ color } agenda's doom threshhold reached. Please place ${ "
 "returnedDoom } doom back on the ${ color } agenda after it advances."
 msgstr[0] ""
+"${ color } 주요사건에서 파멸이 한계값에 도달하였습니다. 주요사건을 진행한 후에 파멸 ${ returnedDoom }개를 ${ "
+"color } 주요사건에 되돌려 놓습니다."
 msgstr[1] ""
 
 msgid "Doom removed from ${ color } agenda."
-msgstr ""
+msgstr "${ color } 주요사건에서 파멸을 제거하십시오."
 
 #, javascript-format
 msgid "Doom added to ${ color } agenda."
-msgstr ""
+msgstr "${ color } 주요사건에서 파멸을 추가하십시오."
 
 #, javascript-format
 msgid ""
 "The ${ color } agenda ${ agendaNumber }a has advanced. Please advance to ${ "
 "color } agenda ${ agendaNumber }b during the next Mythos Phase."
 msgstr ""
+"${ color } 주요사건 ${ agendaNumber }a 면을 진행했습니다. 다음 신화 단계 동안 ${ color } 주요사건 "
+"${ agendaNumber }b 면으로 진행하십시오."
 
 msgid ""
 "Looks like someone else already helped this group, or they cancelled their "
 "request."
-msgstr ""
+msgstr "다른 사람이 이미 이 그룹을 도왔거나 요청을 취소한 것 같습니다."
 
 msgid "Aid given in Montreal!"
-msgstr ""
+msgstr "몬트리올에서의 지원!"
 
 msgid "Aid given in Providence!"
-msgstr ""
+msgstr "프로비덴스에서의 지원!"
 
 msgid "Aid given in New York!"
-msgstr ""
+msgstr "뉴욕에서의 지원!"
 
 msgid "Doom added to all agendas"
-msgstr ""
+msgstr "모든 주요사건에 파멸을 추가하십시오."
 
 msgid "There is still time, the great old one is not yet here."
-msgstr ""
+msgstr "아직 시간이 있습니다. 위대한 옛 존재는 아직 여기에 없습니다."
 
 #, javascript-format
 msgid "Damage added to ${ gooName }."
-msgstr ""
+msgstr "${ gooName }에 피해를 추가하십시오."
 
 msgid "Damage removed from ${ gooName }."
-msgstr ""
+msgstr "${ gooName }에 피해를 제거하십시오."
 
 #, javascript-format
 msgid "${ gooName } has been defeated! The investigators win the game!"
-msgstr ""
+msgstr "${ gooName }은 쓰러집니다! 조사자들은 승리했습니다!"
 
 msgid ""
 "Congratulations on reaching Act 3! Now do what you can to help the other "
 "groups."
-msgstr ""
+msgstr "주요사건 3에 도달한 것을 축하합니다! 이제 다른 그룹을 도울 수 있는 일을 하십시오."
 
 msgid "Act progress recorded."
-msgstr ""
+msgstr "주요사건의 진행이 기록되었습니다."
 
 msgid "Clue given away."
-msgstr ""
+msgstr "단서가 주어졌습니다."
 
 msgid "Help requested to close Hub Dimension!"
-msgstr ""
+msgstr "‘Hub Dimension’을 닫기 위한 도움 요청을 받았습니다!"
 
 msgid "Request for help closing Hub Dimension cancalled."
-msgstr ""
+msgstr "‘Hub Dimension’을 닫기 위한 도움 요청이 취소되었습니다."
 
 msgid "Help requested in New York!"
-msgstr ""
+msgstr "뉴욕에서 도움 요청을 받았습니다!"
 
 msgid "Request for help in New York cancelled."
-msgstr ""
+msgstr "뉴욕에서 도움 요청이 취소되었습니다."
 
 msgid "Help requested in Providence!"
-msgstr ""
+msgstr "프로비덴스에서 도움 요청을 받았습니다!"
 
 msgid "Request for help in Providence cancelled."
-msgstr ""
+msgstr "프로비덴스에서 도움 요청이 취소되었습니다."
 
 msgid "Help requested in Montreal!"
-msgstr ""
+msgstr "몬트리올에서 도움 요청을 받았습니다!"
 
 msgid "Request for help in Montreal cancelled."
-msgstr ""
+msgstr "먼트리올에서 도움 요청이 취소되었습니다."
 
 msgid "Request not authorized. User must be signed in."
-msgstr ""
+msgstr "요청이 승인되지 않았습니다. 사용자가 로그인되어 있어야 합니다."
 
 msgid "Unable to create new campaign. Please try again later."
-msgstr ""
+msgstr "새로운 캠페인을 만들 수 없습니다. 나중에 다시 시도하십시오."
 
 msgid "green"
-msgstr ""
+msgstr "초록색"
 
 msgid "blue"
-msgstr ""
+msgstr "파란색"
 
 msgid "red"
-msgstr ""
+msgstr "빨간색"
 
 msgid "You are not authorized to edit this event."
-msgstr ""
+msgstr "해당 게임을 수정할 권한이 없습니다."
 
 msgid "Password required for private events."
-msgstr ""
+msgstr "비공개 게임에 사용할 비밀번호가 필요합니다."
 
 msgid "You can only send announcements after the game has started."
-msgstr ""
+msgstr "게임이 시작된 후에만 공지사항을 보낼 수 있습니다."
 
 msgid "You are not authorized to archive this event."
-msgstr ""
+msgstr "해당 게임을 보관할 권한이 없습니다."
 
 #, javascript-format
 msgid ""
@@ -195,28 +199,23 @@ msgid ""
 "color } agenda ${ agendaNumber }b during the next Mythos Phase and prepare "
 "for ${ gooName }'s arrival!"
 msgstr ""
-
-msgid "Minimum search size is 3 characters."
-msgstr ""
+"${ color } 주요사건 ${ agendaNumber }a 면을 진행했습니다. 다음 신화 단계 동안 ${ color } 주요사건 "
+"${ agendaNumber }b 면으로 진행하고 ${ gooName }의 도착을 준비하십시오!"
 
 msgid "Something weird happened with continuation token"
-msgstr ""
+msgstr "지속 토큰에 이상한 일이 발생했습니다."
 
 msgid "You must set a handle before you can invite friends."
-msgstr ""
+msgstr "친구를 초대하려면 별명을 설정해야 합니다."
 
-msgid "Something went wrong."
-msgstr ""
-
-#. The only request that is allowed for a participant is to 'leave' a campaign.
 msgid "You are not allowed to edit this campaign."
-msgstr ""
-
-msgid "Owner cannot have their campaign access edited."
-msgstr ""
+msgstr "당신은 해당 캠페인을 수정하는 것이 허용되어 있지 않습니다."
 
 #, javascript-format
 msgid "You do not appear to be friends with '${ handlesString }'."
 msgid_plural "You do not appear to be friends with the following users: ${ handlesString }"
-msgstr[0] ""
+msgstr[0] "'${ handlesString }'의 별명을 가진 친구는 존재하지 않습니다."
 msgstr[1] ""
+
+msgid "Minimum search size is 2 characters."
+msgstr "검색어는 2 글자 이상이어야 합니다."

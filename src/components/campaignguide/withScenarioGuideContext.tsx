@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import hoistNonReactStatic from 'hoist-non-react-statics';
+import { t } from 'ttag';
 
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
 import { CampaignGuideInputProps, InjectedCampaignGuideContextProps, useCampaignGuideContext } from './withCampaignGuideContext';
@@ -7,6 +8,7 @@ import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import CampaignGuideContext, { CampaignGuideContextType } from './CampaignGuideContext';
 import { CampaignId } from '@actions/types';
 import LoadingSpinner from '@components/core/LoadingSpinner';
+import CampaignErrorView from './CampaignErrorView';
 
 export interface ScenarioGuideInputProps extends CampaignGuideInputProps {
   scenarioId: string;
@@ -18,12 +20,12 @@ export function useScenarioGuideContext(
   scenarioId: undefined | string,
   rootView: boolean,
   standalone?: boolean
-): [CampaignGuideContextType | undefined, ScenarioGuideContextType | undefined, (serverId: number) => void] {
-  const [campaignContext, setCampaignServerId] = useCampaignGuideContext(campaignId, rootView);
-  const processedScenario = useMemo(
+): [CampaignGuideContextType | undefined, ScenarioGuideContextType | undefined, string | undefined, (serverId: number) => void, boolean] {
+  const [campaignContext, campaignStatus, setCampaignServerId, loading] = useCampaignGuideContext(campaignId, rootView);
+  const [processedScenario, processedScenarioError] = useMemo(
     () => {
       if (!campaignContext || !scenarioId) {
-        return undefined;
+        return [undefined, undefined];
       }
       const { campaignGuide, campaignState } = campaignContext;
       return campaignGuide.getScenario(scenarioId, campaignState, standalone);
@@ -45,17 +47,29 @@ export function useScenarioGuideContext(
       scenarioState,
     };
   }, [processedScenario, scenarioState]);
-  return [campaignContext, scenarioContext, setCampaignServerId];
+  const error = useMemo(() => {
+    if (campaignStatus) {
+      switch (campaignStatus) {
+        case 'loading': return undefined;
+        case 'update': return t`An app update is required to access this campaign.`;
+      }
+    }
+    return processedScenarioError;
+  }, [campaignStatus, processedScenarioError]);
+  return [campaignContext, scenarioContext, error, setCampaignServerId, loading];
 }
 
 export default function withScenarioGuideContext<Props>(
   WrappedComponent: React.ComponentType<Props & InjectedCampaignGuideContextProps>
 ): React.ComponentType<Props & ScenarioGuideInputProps> {
   function ScenarioDataComponent(props: Props & ScenarioGuideInputProps) {
-    const [campaignContext, scenarioContext, setCampaignServerId] = useScenarioGuideContext(props.campaignId, props.scenarioId, props.standalone || false, props.standalone);
+    const [campaignContext, scenarioContext, error, setCampaignServerId, uploading] = useScenarioGuideContext(props.campaignId, props.scenarioId, props.standalone || false, props.standalone);
     if (!campaignContext || !scenarioContext) {
+      if (error) {
+        return <CampaignErrorView message={error} />
+      }
       return (
-        <LoadingSpinner />
+        <LoadingSpinner large message={uploading ? t`Uploading campaign` : undefined } />
       );
     }
     return (

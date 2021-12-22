@@ -58,11 +58,13 @@ export default function InvestigatorCounterInputComponent({ step, input, campaig
     const specialXpType = input.show_special_xp;
     const description: { [key: string]: string } = {};
     forEach(scenarioInvestigators, investigator => {
-      const specialXp = campaignLog.specialXp(investigator.code, specialXpType);
+      const xp = campaignLog.earnedXp(investigator.code);
+      const count = campaignLog.specialXp(investigator.code, specialXpType);
+      const resupplyPointsString = ngettext(msgid`${count} resupply`, `${count} resupply`, count);
       description[investigator.code] = ngettext(
-        msgid`${specialXp} resupply experience available`,
-        `${specialXp} resupply experience available`,
-        specialXp
+        msgid`${xp} general / ${resupplyPointsString} XP`,
+        `${xp} general / ${resupplyPointsString} XP`,
+        xp
       );
     });
     return description;

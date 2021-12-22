@@ -1,8 +1,16 @@
-import { ChaosTokenModifier, SimpleChaosTokenValue } from '@data/scenario/types';
+import { Platform } from 'react-native';
 import { find } from 'lodash';
 import { t } from 'ttag';
 
-export const ENABLE_ARKHAM_CARDS_ACCOUNT = false;
+import { ChaosTokenModifier, SimpleChaosTokenValue } from '@data/scenario/types';
+
+export const ENABLE_SIDE_DECK = false;
+export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA = true;
+export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS = true;
+export const ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID = true;
+export const ENABLE_ARKHAM_CARDS_ACCOUNT = (Platform.OS === 'ios' && (ENABLE_ARKHAM_CARDS_ACCOUNT_IOS || ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA)) ||
+  (Platform.OS === 'android' && ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID);
+
 export type TypeCodeType =
   'asset' |
   'event' |
@@ -130,6 +138,7 @@ export function isSpecialToken(token: ChaosTokenType) {
 export const CHAOS_TOKENS: ChaosTokenType[] = [
   '+1', '0', '-1', '-2', '-3',
   '-4', '-5', '-6', '-7', '-8',
+  'frost',
   'skull', 'cultist', 'tablet', 'elder_thing',
   'auto_fail', 'elder_sign',
 ];
@@ -149,12 +158,15 @@ export const CHAOS_TOKEN_ORDER: ChaosBag = {
   '-6': 7,
   '-7': 8,
   '-8': 9,
-  'skull': 10,
-  'cultist': 11,
-  'tablet': 12,
-  'elder_thing': 13,
-  'auto_fail': 14,
-  'elder_sign': 15,
+  'frost': 8,
+  'skull': 11,
+  'cultist': 12,
+  'tablet': 13,
+  'elder_thing': 14,
+  'auto_fail': 15,
+  'elder_sign': 16,
+  'bless': 10,
+  'curse': 10,
 };
 
 export const SPECIAL_TOKENS: SpecialChaosTokenType[] = [
@@ -164,12 +176,13 @@ export const SPECIAL_TOKENS: SpecialChaosTokenType[] = [
   'elder_thing',
   'auto_fail',
   'elder_sign',
+  'frost',
   'bless',
   'curse',
-  'frost',
 ];
 
 export const CHAOS_TOKEN_COLORS: { [skill: string]: string } = {
+  frost: '#2F3649',
   tablet: '#003961',
   elder_thing: '#4e1a45',
   skull: '#661e09',
@@ -203,8 +216,7 @@ export function chaosTokenName(token: ChaosTokenType) {
 export function getChaosTokenValue(token: ChaosTokenType, specialTokenValues: SimpleChaosTokenValue[]): ChaosTokenModifier | undefined {
   switch (token) {
     case 'frost':
-      // TODO(frost)
-      return { modifier: 2, reveal_another: true };
+      return { modifier: -1, reveal_another: true };
     case 'bless':
       return { modifier: 2, reveal_another: true };
     case 'curse':
@@ -247,6 +259,7 @@ export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   '-6': 1,
   '-7': 1,
   '-8': 1,
+  frost: 8,
   skull: 4,
   cultist: 4,
   tablet: 4,

@@ -13,6 +13,7 @@ import {
   GestureResponderEvent,
   ViewProps,
 } from 'react-native';
+import { TouchableWithoutFeedback as GestureHandlerTouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const radius = 10;
 const styles = StyleSheet.create({
@@ -33,6 +34,10 @@ const styles = StyleSheet.create({
 });
 
 interface OwnProps {
+  onPress?: () => void;
+  onPressIn?: () => void;
+  onPressOut?: () => void;
+  onLongPress?: () => void;
   rippleColor?: string;
   rippleOpacity?: number;
   rippleDuration?: number;
@@ -42,6 +47,7 @@ interface OwnProps {
   rippleSequential?: boolean;
   rippleFades?: boolean;
   disabled?: boolean;
+  useGestureHandler?: boolean;
 }
 
 type Props = OwnProps & TouchableWithoutFeedbackProps & ViewProps;
@@ -69,6 +75,7 @@ const DEFAULT_PROPS = {
   rippleSequential: false,
   rippleFades: true,
   disabled: false,
+  useGestureHandler: false,
 };
 
 export default class RippleComponent extends PureComponent<Props, State> {
@@ -107,7 +114,7 @@ export default class RippleComponent extends PureComponent<Props, State> {
     this.setState({ width, height });
   };
 
-  _onPress = (event: GestureResponderEvent) => {
+  _onPress = (event?: GestureResponderEvent) => {
     const { ripples } = this.state;
     const {
       onPress,
@@ -117,35 +124,35 @@ export default class RippleComponent extends PureComponent<Props, State> {
     if (!rippleSequential || !ripples.length) {
       this.startRipple(event);
       if (typeof onPress === 'function') {
-        requestAnimationFrame(() => onPress(event));
+        requestAnimationFrame(() => onPress());
       }
     }
   };
 
-  _onLongPress = (event: GestureResponderEvent) => {
+  _onLongPress = (event?: GestureResponderEvent) => {
     const { onLongPress } = this.props;
 
     if (typeof onLongPress === 'function') {
-      requestAnimationFrame(() => onLongPress(event));
+      requestAnimationFrame(() => onLongPress());
     }
 
     this.startRipple(event);
   };
 
-  _onPressIn = (event: GestureResponderEvent) => {
+  _onPressIn = (event?: GestureResponderEvent) => {
     const { onPressIn } = this.props;
 
     if (typeof onPressIn === 'function') {
-      onPressIn(event);
+      onPressIn();
     }
     this.startRipple(event);
   };
 
-  _onPressOut = (event: GestureResponderEvent) => {
+  _onPressOut = () => {
     const { onPressOut } = this.props;
 
     if (typeof onPressOut === 'function') {
-      onPressOut(event);
+      onPressOut();
     }
   };
 
@@ -155,7 +162,7 @@ export default class RippleComponent extends PureComponent<Props, State> {
     }
   };
 
-  startRipple(event: GestureResponderEvent) {
+  startRipple(event?: GestureResponderEvent) {
     const { width, height } = this.state;
     const {
       rippleDuration = DEFAULT_PROPS.rippleDuration,
@@ -166,7 +173,7 @@ export default class RippleComponent extends PureComponent<Props, State> {
     const w2 = 0.5 * width;
     const h2 = 0.5 * height;
 
-    const { locationX, locationY } = rippleCentered ?
+    const { locationX, locationY } = rippleCentered || !event ?
       { locationX: w2, locationY: h2 } :
       event.nativeEvent;
 
@@ -267,6 +274,7 @@ export default class RippleComponent extends PureComponent<Props, State> {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       rippleFades = DEFAULT_PROPS.rippleFades,
       style,
+      useGestureHandler,
       ...props
     } = this.props;
 
@@ -296,16 +304,16 @@ export default class RippleComponent extends PureComponent<Props, State> {
       StyleSheet.flatten(style),
       ['borderRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomLeftRadius', 'borderBottomRightRadius']
     );
-
+    const Touchable = useGestureHandler ? GestureHandlerTouchableWithoutFeedback : TouchableWithoutFeedback;
     return (
-      <TouchableWithoutFeedback {...touchableProps}>
+      <Touchable {...touchableProps}>
         <Animated.View {...props} style={style} pointerEvents="box-only">
           {children}
           <View style={[styles.container, containerStyle]}>
             { ripples.map(this._renderRipple) }
           </View>
         </Animated.View>
-      </TouchableWithoutFeedback>
+      </Touchable>
     );
   }
 }

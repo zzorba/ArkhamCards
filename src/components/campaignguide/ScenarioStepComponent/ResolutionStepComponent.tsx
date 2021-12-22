@@ -10,7 +10,7 @@ import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { ResolutionStep } from '@data/scenario/types';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { NarrationButton, useNarration } from './NarrationStepComponent';
+import { NarrationInlineControls, useNarration } from './NarrationStepComponent';
 
 interface Props {
   step: ResolutionStep;
@@ -36,11 +36,11 @@ export default function ResolutionStepComponent({ step }: Props) {
       { (!!resolution.text || resolution.steps.length > 0) && (
         <View style={space.marginTopM}>
           <View style={{ ...space.marginSideM, display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-            { narration && <NarrationButton narration={narration} />}
             <Text style={{ ...typography.mediumGameFont, flex: 1 }}>
               { resolution.title }
             </Text>
           </View>
+          { narration && <NarrationInlineControls narration={narration} />}
           { !!resolution.text && (
             <View style={space.marginSideM}>
               <CampaignGuideTextComponent

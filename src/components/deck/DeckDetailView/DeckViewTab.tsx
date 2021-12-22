@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { c, msgid, t } from 'ttag';
 
 import {
+  CampaignId,
   CardId,
   Deck,
   DeckId,
@@ -12,6 +13,7 @@ import {
   DeckProblem,
   EditDeckState,
   ParsedDeck,
+  Slots,
   SplitCards,
 } from '@actions/types';
 import COLORS from '@styles/colors';
@@ -19,7 +21,7 @@ import { showCard, showCardSwipe } from '@components/nav/helper';
 import DeckProgressComponent from '../DeckProgressComponent';
 import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import { BODY_OF_A_YITHIAN, RANDOM_BASIC_WEAKNESS, TypeCodeType } from '@app_constants';
+import { BODY_OF_A_YITHIAN, ENABLE_SIDE_DECK, RANDOM_BASIC_WEAKNESS, TypeCodeType } from '@app_constants';
 import DeckValidation from '@lib/DeckValidation';
 import Card, { CardsMap } from '@data/types/Card';
 import TabooSet from '@data/types/TabooSet';
@@ -41,10 +43,11 @@ import { ControlType } from '@components/cardlist/CardSearchResult/ControlCompon
 import { getPacksInCollection, AppState } from '@reducers';
 import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
+import { DeckOverlapComponentForCampaign } from './DeckOverlapComponent';
 
 interface SectionCardId extends CardId {
-  special: boolean;
-  bonded?: boolean;
+  mode: 'special' | 'side' | 'bonded' | undefined;
   hasUpgrades: boolean;
   index: number;
 }
@@ -109,7 +112,7 @@ function deckToSections(
   cards: CardsMap,
   cardsByName: { [name: string]: Card[] },
   validation: DeckValidation,
-  special: boolean,
+  mode: 'special' | 'side' | undefined,
   inCollection: { [pack_code: string]: boolean },
   ignoreCollection: boolean,
   limitedSlots: boolean,
@@ -134,20 +137,20 @@ function deckToSections(
     if (assetCount > 0) {
       const assets = sectionHeaderTitle('asset', assetCount);
       result.push({
-        id: `assets${special ? '-special' : ''}`,
+        id: `assets${mode ? `-${mode}` : ''}`,
         subTitle: `— ${assets} · ${assetCount} —`,
         cards: [],
       });
     }
     forEach(assets, (subAssets, idx) => {
       result.push({
-        id: `asset${special ? '-special' : ''}-${idx}`,
+        id: `asset${mode ? `-${mode}` : ''}-${idx}`,
         title: subAssets.type,
         cards: map(subAssets.data, c => {
           return {
             ...c,
             index: index++,
-            special,
+            mode,
             hasUpgrades: hasUpgrades(
               c.id,
               cards,
@@ -188,13 +191,13 @@ function deckToSections(
       const count = sumBy(cardIds, c => c.quantity);
       const localizedName = sectionHeaderTitle(cardType, count);
       result.push({
-        id: `${cardType}-${special ? '-special' : ''}`,
+        id: `${cardType}-${mode ? `-${mode}` : ''}`,
         subTitle: `— ${localizedName} · ${count} —`,
         cards: map(cardIds, c => {
           return {
             ...c,
             index: index++,
-            special,
+            mode,
             hasUpgrades: hasUpgrades(
               c.id,
               cards,
@@ -236,7 +239,7 @@ function bondedSections(
           id: c.code,
           quantity: c.quantity || 0,
           index: index++,
-          special: true,
+          mode: 'bonded',
           bonded: true,
           hasUpgrades: false,
           limited: false,
@@ -264,11 +267,14 @@ interface Props {
   bondedCardsByName: {
     [name: string]: Card[];
   };
+  fromCampaign?: boolean;
+  campaignId?: CampaignId;
   visible: boolean;
   editable: boolean;
   buttons?: ReactNode;
   showDrawWeakness: () => void;
   showEditSpecial?: () => void;
+  showEditSide?: () => void;
   showXpAdjustmentDialog: () => void;
   showCardUpgradeDialog: (card: Card) => void;
   tabooSet?: TabooSet;
@@ -287,10 +293,22 @@ interface Props {
   mode: 'view' | 'edit' | 'upgrade';
 }
 
+function getCount(item: SectionCardId, ignoreDeckLimitSlots: Slots | undefined) {
+  if (item.mode === 'special') {
+    if ((ignoreDeckLimitSlots?.[item.id] || 0) > 0) {
+      return ignoreDeckLimitSlots?.[item.id] || 0;
+    }
+  } else if (item.mode === 'side' || item.mode === 'bonded') {
+    return item.quantity;
+  }
+  return item.quantity - (ignoreDeckLimitSlots?.[item.id] || 0);
+}
+
 export default function DeckViewTab(props: Props) {
   const {
     componentId,
     suggestArkhamDbLogin,
+    fromCampaign,
     tabooSetId,
     cards,
     deckId,
@@ -301,6 +319,7 @@ export default function DeckViewTab(props: Props) {
     singleCardView,
     showEditCards,
     showEditSpecial,
+    showEditSide,
     cardsByName,
     bondedCardsByName,
     editable,
@@ -313,6 +332,7 @@ export default function DeckViewTab(props: Props) {
     showTaboo,
     tabooOpen,
     buttons,
+    campaignId,
     showDeckHistory,
     deckEdits,
     deckEditsRef,
@@ -353,6 +373,7 @@ export default function DeckViewTab(props: Props) {
     }
     const normalCards = parsedDeck.normalCards;
     const specialCards = parsedDeck.specialCards;
+    const sideCards = parsedDeck.sideCards;
     const slots = parsedDeck.slots;
     const validation = new DeckValidation(investigatorBack, slots, deckEdits?.meta);
     const [deckSection, deckIndex] = deckToSections(
@@ -363,7 +384,7 @@ export default function DeckViewTab(props: Props) {
       cards,
       cardsByName,
       validation,
-      false,
+      undefined,
       inCollection,
       ignore_collection,
       false
@@ -376,7 +397,7 @@ export default function DeckViewTab(props: Props) {
       cards,
       cardsByName,
       validation,
-      true,
+      'special',
       inCollection,
       ignore_collection,
       false
@@ -395,7 +416,7 @@ export default function DeckViewTab(props: Props) {
         return {
           ...card,
           index: index++,
-          special: false,
+          mode: undefined,
           hasUpgrades: hasUpgrades(
             card.id,
             cards,
@@ -407,27 +428,47 @@ export default function DeckViewTab(props: Props) {
         };
       });
       const count = sumBy(limitedCards, card => slots[card.id] || 0);
-      newData.push({
-        title: t`Limited Slots`,
-        toggleCollapsed: toggleLimitedSlots,
-        collapsed: !limitedSlots,
-        sections: limitedSlots ? [
-          {
-            id: 'splash',
-            title: t`${count} of ${limitSlotCount}`,
-            cards: limitedCards,
-            last: true,
-          },
-        ] : [],
-      });
+      if (count > 0) {
+        newData.push({
+          title: t`Limited Slots`,
+          toggleCollapsed: toggleLimitedSlots,
+          collapsed: !limitedSlots,
+          sections: limitedSlots ? [
+            {
+              id: 'splash',
+              title: t`${count} of ${limitSlotCount}`,
+              cards: limitedCards,
+              last: true,
+            },
+          ] : [],
+        });
+      }
     }
-    const bonded = bondedSections(uniqueBondedCards, bondedCardsCount, specialIndex);
+    let bondedIndex = specialIndex;
+    if (ENABLE_SIDE_DECK) {
+      const [sideSection, sideIndex] = deckToSections(
+        t`Side Deck`,
+        editable ? showEditSide : undefined,
+        specialIndex,
+        sideCards,
+        cards,
+        cardsByName,
+        validation,
+        'side',
+        inCollection,
+        ignore_collection,
+        false
+      );
+      newData.push(sideSection);
+      bondedIndex = sideIndex;
+    }
+    const bonded = bondedSections(uniqueBondedCards, bondedCardsCount, bondedIndex);
     if (bonded) {
       newData.push(bonded);
     }
     setData(newData);
-  }, [investigatorBack, limitSlotCount, ignore_collection, limitedSlots, parsedDeck.normalCards, parsedDeck.specialCards, parsedDeck.slots, deckEdits?.meta, cards,
-    showEditCards, showEditSpecial, setData, toggleLimitedSlots, cardsByName, uniqueBondedCards, bondedCardsCount, inCollection, editable, visible]);
+  }, [investigatorBack, limitSlotCount, ignore_collection, limitedSlots, parsedDeck.normalCards, parsedDeck.specialCards, parsedDeck.slots, parsedDeck.sideCards, deckEdits?.meta, cards,
+    showEditCards, showEditSpecial, showEditSide, setData, toggleLimitedSlots, cardsByName, uniqueBondedCards, bondedCardsCount, inCollection, editable, visible]);
   const faction = parsedDeck.investigator.factionCode();
   const showSwipeCard = useCallback((id: string, card: Card) => {
     if (singleCardView) {
@@ -443,12 +484,14 @@ export default function DeckViewTab(props: Props) {
     }
     const index = parseInt(id, 10);
     const visibleCards: Card[] = [];
+    const controls: ('deck' | 'side' | 'special' | 'bonded')[] = [];
     forEach(data, deckSection => {
       forEach(deckSection.sections, section => {
         forEach(section.cards, item => {
           const card = cards[item.id];
           if (card) {
             visibleCards.push(card);
+            controls.push(item.mode || 'deck');
           }
         });
       });
@@ -456,6 +499,7 @@ export default function DeckViewTab(props: Props) {
     showCardSwipe(
       componentId,
       map(visibleCards, card => card.code),
+      controls,
       index,
       colors,
       visibleCards,
@@ -500,7 +544,7 @@ export default function DeckViewTab(props: Props) {
         onShufflePress: showDrawWeakness,
       };
     }
-    if (mode === 'view' || item.bonded) {
+    if (mode === 'view' || item.mode === 'bonded') {
       return count !== undefined ? {
         type: 'count',
         count,
@@ -511,6 +555,7 @@ export default function DeckViewTab(props: Props) {
     return {
       type: 'upgrade',
       deckId: parsedDeck.id,
+      side: item.mode === 'side',
       limit: card.collectionDeckLimit(inCollection, ignore_collection),
       onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
     };
@@ -521,9 +566,7 @@ export default function DeckViewTab(props: Props) {
     if (!card) {
       return null;
     }
-    const count = (item.special && (deckEditsRef.current?.ignoreDeckLimitSlots[item.id] || 0) > 0) ?
-      deckEditsRef.current?.ignoreDeckLimitSlots[item.id] :
-      (item.quantity - (deckEditsRef.current?.ignoreDeckLimitSlots[item.id] || 0));
+    const count = getCount(item, deckEditsRef.current?.ignoreDeckLimitSlots);
     return (
       <CardSearchResult
         key={item.index}
@@ -612,12 +655,13 @@ export default function DeckViewTab(props: Props) {
     return (
       <InvestigatorSummaryBlock
         investigator={investigatorCard}
+        investigatorBack={investigatorBack}
         yithian={yithian}
         componentId={componentId}
         tabooSetId={tabooSetId}
       />
     );
-  }, [componentId, parsedDeck.slots, cards, investigatorFront, tabooSetId]);
+  }, [componentId, parsedDeck.slots, cards, investigatorFront, investigatorBack, tabooSetId]);
 
   const header = useMemo(() => {
     return (
@@ -641,37 +685,6 @@ export default function DeckViewTab(props: Props) {
       </View>
     );
   }, [investigatorBlock, investigatorOptions, buttons, parsedDeck, bondedCardsCount, problem, deckEdits]);
-
-  const renderedData = useMemo(() => {
-    return (
-      <>
-        { map(data, deckSection => {
-          return (
-            <View style={space.marginBottomS} key={deckSection.title}>
-              <DeckSectionBlock
-                faction={faction}
-                title={deckSection.title}
-                onTitlePress={deckSection.onTitlePress}
-                collapsed={deckSection.collapsed}
-                toggleCollapsed={deckSection.toggleCollapsed}
-                footerButton={deckSection.sections.length === 0 && deckSection.onTitlePress ? (
-                  <RoundedFooterButton onPress={deckSection.onTitlePress} title={t`Add cards`} icon="deck" />
-                ) : undefined}
-              >
-                { flatMap(deckSection.sections, section => (
-                  <View key={section.id}>
-                    { renderSectionHeader(section) }
-                    { map(section.cards, (item, index) => renderCard(item, index, section)) }
-                  </View>
-                )) }
-              </DeckSectionBlock>
-            </View>
-          );
-        }) }
-      </>
-    );
-  }, [data, renderSectionHeader, renderCard, faction]);
-
   if (!deckEdits) {
     return null;
   }
@@ -695,7 +708,38 @@ export default function DeckViewTab(props: Props) {
       ) }
       { header }
       <View style={space.marginSideS}>
-        { renderedData }
+        { (!data || !data.length) ? <ArkhamLoadingSpinner autoPlay loop /> : map(data, deckSection => {
+          return (
+            <View key={deckSection.title} style={space.marginBottomS}>
+              <DeckSectionBlock
+                faction={faction}
+                title={deckSection.title}
+                onTitlePress={deckSection.onTitlePress}
+                collapsed={deckSection.collapsed}
+                toggleCollapsed={deckSection.toggleCollapsed}
+                collapsedText={deckSection.collapsed ? t`Show splash cards` : t`Hide splash cards`}
+                footerButton={deckSection.sections.length === 0 && deckSection.onTitlePress ? (
+                  <RoundedFooterButton onPress={deckSection.onTitlePress} title={t`Add cards`} icon="deck" />
+                ) : undefined}
+              >
+                { flatMap(deckSection.sections, section => (
+                  <View key={section.id}>
+                    { renderSectionHeader(section) }
+                    { map(section.cards, (item, index) => renderCard(item, index, section)) }
+                  </View>
+                )) }
+              </DeckSectionBlock>
+            </View>
+          );
+        }) }
+        { !!campaignId && !parsedDeck.deck.nextDeckId && (
+          <DeckOverlapComponentForCampaign
+            campaignId={campaignId}
+            componentId={componentId}
+            parsedDeck={parsedDeck}
+            live={!fromCampaign}
+          />
+        ) }
         <DeckProgressComponent
           componentId={componentId}
           cards={cards}

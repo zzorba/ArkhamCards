@@ -7,6 +7,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
 import { flatten } from 'lodash';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -32,6 +33,7 @@ interface Props {
   dialogStyle?: boolean;
   rounded?: boolean;
   showZeroCount?: boolean;
+  useGestureHandler?: boolean;
 }
 
 export default function PlusMinusButtons({
@@ -52,8 +54,10 @@ export default function PlusMinusButtons({
   dialogStyle,
   rounded,
   showZeroCount,
+  useGestureHandler,
 }: Props
 ) {
+  const Touchable = useGestureHandler ? GestureHandlerTouchableOpacity : TouchableOpacity;
   const { colors, typography } = useContext(StyleContext);
   const incrementEnabled = !!(!(count === null || (max && (count === max)) || disabled || disablePlus || max === 0) && onIncrement);
   const decrementEnabled = !!((count > (min || 0) || allowNegative) && !disabled && !!onDecrement);
@@ -95,7 +99,7 @@ export default function PlusMinusButtons({
     const width = rounded ? 40 : size * 0.8;
     if (incrementEnabled) {
       return (
-        <TouchableOpacity onPress={onIncrement}>
+        <Touchable onPress={onIncrement}>
           <View
             style={[
               dialogStyle ? { width, height: width } : undefined,
@@ -116,7 +120,7 @@ export default function PlusMinusButtons({
               />
             ) }
           </View>
-        </TouchableOpacity>
+        </Touchable>
       );
     }
 
@@ -126,7 +130,7 @@ export default function PlusMinusButtons({
       );
     }
     return (
-      <TouchableOpacity disabled>
+      <Touchable disabled>
         <View style={[
           dialogStyle ? { width, height: width } : undefined,
           rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20 } : undefined,
@@ -147,15 +151,15 @@ export default function PlusMinusButtons({
             />
           ) }
         </View>
-      </TouchableOpacity>
+      </Touchable>
     );
-  }, [onIncrement, noFill, color, dialogStyle, rounded, size, disabledColor, enabledColor, roundedColor, incrementEnabled, colors]);
+  }, [Touchable, onIncrement, noFill, color, dialogStyle, rounded, size, disabledColor, enabledColor, roundedColor, incrementEnabled, colors]);
 
   const minusButton = useMemo(() => {
     const width = rounded ? 40 : size * 0.8;
     if (decrementEnabled) {
       return (
-        <TouchableOpacity onPress={onDecrement}>
+        <Touchable onPress={onDecrement}>
           <View style={[
             dialogStyle ? { width, height: width } : undefined,
             rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20, backgroundColor: roundedColor } : undefined,
@@ -174,7 +178,7 @@ export default function PlusMinusButtons({
               />
             ) }
           </View>
-        </TouchableOpacity>
+        </Touchable>
       );
     }
     if (color === 'light' || hideDisabledMinus) {
@@ -183,7 +187,7 @@ export default function PlusMinusButtons({
       );
     }
     return (
-      <TouchableOpacity disabled>
+      <Touchable disabled>
         <View style={[
           dialogStyle ? { width, height: width } : undefined,
           rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20 } : undefined,
@@ -204,9 +208,9 @@ export default function PlusMinusButtons({
             />
           )}
         </View>
-      </TouchableOpacity>
+      </Touchable>
     );
-  }, [onDecrement, noFill, color, hideDisabledMinus, dialogStyle, rounded, size, decrementEnabled, enabledColor, disabledColor, roundedColor, colors]);
+  }, [Touchable, onDecrement, noFill, color, hideDisabledMinus, dialogStyle, rounded, size, decrementEnabled, enabledColor, disabledColor, roundedColor, colors]);
 
   const accessibilityActions = useMemo(() => {
     return flatten([

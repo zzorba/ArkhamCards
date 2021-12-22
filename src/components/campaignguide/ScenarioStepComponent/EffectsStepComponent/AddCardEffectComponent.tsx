@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Text } from 'react-native';
 import { map } from 'lodash';
 import { t } from 'ttag';
@@ -11,6 +11,7 @@ import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideT
 import useSingleCard from '@components/card/useSingleCard';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
+import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 
 interface Props {
   id: string;
@@ -18,7 +19,7 @@ interface Props {
   input?: string[];
 }
 
-function renderInvestigators(investigators: Card[], card: Card) {
+function renderInvestigators(investigators: Card[], card: { name: string; advanced?: boolean }) {
   return map(investigators, (investigator, idx) => (
     <SetupStepWrapper bulletType="small" key={idx}>
       <CampaignGuideTextComponent
@@ -33,8 +34,10 @@ function renderInvestigators(investigators: Card[], card: Card) {
 
 export default function AddCardEffectComponent({ id, effect, input }: Props) {
   const { typography } = useContext(StyleContext);
-  const [card, loading] = useSingleCard(effect.card, 'player');
-  if (loading) {
+  const [dbCard, loading] = useSingleCard(effect.card, 'player');
+  const { campaignGuide } = useContext(CampaignGuideContext);
+  const card = useMemo(() => dbCard || campaignGuide.card(effect.card), [campaignGuide, dbCard, effect.card]);
+  if (loading || effect.hidden) {
     return null;
   }
   if (!card) {

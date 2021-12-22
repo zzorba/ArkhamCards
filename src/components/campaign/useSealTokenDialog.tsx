@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { flatMap, filter, forEach, keys, map, range, sortBy } from 'lodash';
+import { filter, forEach, map, range, sortBy } from 'lodash';
 import { t } from 'ttag';
 
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '@app_constants';
@@ -13,6 +13,7 @@ import { updateChaosBagSealTokens } from './actions';
 import space from '@styles/space';
 import { ChaosBagActions } from '@data/remote/chaosBag';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
+import { flattenChaosBag } from './campaignUtil';
 
 export interface SealTokenDialogProps {
   campaignId: CampaignId;
@@ -30,15 +31,14 @@ function getSealedToggles(chaosBagResults: ChaosBagResults): Toggles {
 export default function useSealTokenDialog(campaignId: CampaignId, chaosBag: ChaosBag, chaosBagResults: ChaosBagResultsT, actions: ChaosBagActions): [React.ReactNode, () => void] {
   const [sealed, toggleSealToken,,syncToggles] = useToggles(getSealedToggles(chaosBagResults));
   const allTokens: SealedToken[] = useMemo(() => {
-    const unsortedTokens: ChaosTokenType[] = keys(chaosBag) as ChaosTokenType[];
     const tokens: ChaosTokenType[] = sortBy<ChaosTokenType>(
-      unsortedTokens,
+      flattenChaosBag(chaosBag, chaosBagResults.tarot),
       token => CHAOS_TOKEN_ORDER[token]
     );
     const blessTokens: ChaosTokenType[] = map(range(0, chaosBagResults.blessTokens || 0), () => 'bless');
     const curseTokens: ChaosTokenType[] = map(range(0, chaosBagResults.curseTokens || 0), () => 'curse');
     const tokenParts: ChaosTokenType[] = [
-      ...flatMap(tokens, token => map(range(0, chaosBag[token]), () => token)),
+      ...tokens,
       ...blessTokens,
       ...curseTokens,
     ];
@@ -60,7 +60,7 @@ export default function useSealTokenDialog(campaignId: CampaignId, chaosBag: Cha
         icon: token,
       };
     });
-  }, [chaosBag, chaosBagResults.blessTokens, chaosBagResults.curseTokens]);
+  }, [chaosBag, chaosBagResults.blessTokens, chaosBagResults.curseTokens, chaosBagResults.tarot]);
 
   useEffectUpdate(() => {
     syncToggles(getSealedToggles(chaosBagResults));
@@ -117,6 +117,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
   },
 });

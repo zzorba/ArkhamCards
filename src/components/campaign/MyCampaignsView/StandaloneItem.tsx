@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react';
-
 import { CUSTOM } from '@actions/types';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 
@@ -11,6 +10,10 @@ interface Props {
   campaign: MiniCampaignT;
   scenarioName: string;
   onPress: (id: string, campaign: MiniCampaignT) => void;
+}
+
+function computeHeight(fontScale: number) {
+  return GenericCampaignItem.computeHeight(fontScale) + CampaignItemHeader.computeHeight(true, fontScale);
 }
 
 function StandaloneItem({ campaign, onPress, scenarioName }: Props) {
@@ -34,5 +37,5 @@ function StandaloneItem({ campaign, onPress, scenarioName }: Props) {
   );
 }
 
-
-export default React.memo(StandaloneItem);
+StandaloneItem.computeHeight = computeHeight;
+export default StandaloneItem;

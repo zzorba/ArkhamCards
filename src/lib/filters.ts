@@ -218,7 +218,7 @@ export const defaultFilterState: FilterState = {
 
 
 export const VENGEANCE_FILTER: Brackets = where('c.vengeance >= 0 or linked_card.vengeance >= 0');
-export const UNIQUE_FILTER: Brackets = where('c.is_unique = true');
+export const UNIQUE_FILTER: Brackets = where('c.is_unique = 1');
 
 export default class FilterBuilder {
   prefix: string;
@@ -441,7 +441,7 @@ export default class FilterBuilder {
       ...(enemyHorrorEnabled ? this.rangeFilter('enemy_horror', enemyHorror, true) : []),
       ...(enemyHealthEnabled ? [
         ...this.rangeFilter('health', enemyHealth, true),
-        where(`(c.type_code = 'enemy' AND c.health_per_investigator = ${enemyHealthPerInvestigator}) OR (linked_card.type_code = 'enemy' AND linked_card.health_per_investigator = ${enemyHealthPerInvestigator})`),
+        where(`(c.type_code = 'enemy' AND c.health_per_investigator = ${enemyHealthPerInvestigator ? 1 : 0}) OR (linked_card.type_code = 'enemy' AND linked_card.health_per_investigator = ${enemyHealthPerInvestigator ? 1 : 0})`),
       ] : []),
     ];
     if (enemyElite && !enemyNonElite) {
@@ -591,10 +591,10 @@ export default class FilterBuilder {
       result.push(where(`c.real_text LIKE '%exile%' or linked_card.real_text LIKE '%exile%'`));
     }
     if (unique) {
-      result.push(where('(c.is_unique = true OR linked_card.is_unique = true) AND c.type_code != "enemy"'));
+      result.push(where('(c.is_unique = 1 OR linked_card.is_unique = 1) AND c.type_code != "enemy"'));
     }
     if (seal) {
-      result.push(where(`c.seal = true or linked_card.seal = true`));
+      result.push(where(`c.seal = 1 or linked_card.seal = 1`));
     }
     if (myriad) {
       result.push(where(`c.real_text LIKE '%Myriad.%' or linked_card.real_text LIKE '%Myriad.%'`));

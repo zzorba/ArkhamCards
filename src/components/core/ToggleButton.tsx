@@ -10,15 +10,16 @@ interface Props {
   accessibilityLabel: string;
   size?: number;
   icon: 'dots' | 'expand';
+  inputSize?: number;
 }
 
-export default function ToggleButton({ onPress, value, accessibilityLabel, size = 24, icon }: Props) {
+export default function ToggleButton({ onPress, value, accessibilityLabel, size = 24, icon, inputSize }: Props) {
   const { colors } = useContext(StyleContext);
-  const SIZE = size * 1.5;
+  const SIZE = inputSize || (size * 1.5);
   return (
     <TouchableOpacity onPress={onPress} accessibilityLabel={accessibilityLabel}>
       { value ? (
-        <View style={[styles.closeIcon, { width: SIZE, height: SIZE, backgroundColor: colors.D10 }] }>
+        <View style={[styles.closeIcon, { width: SIZE, height: SIZE, borderRadius: SIZE / 2, backgroundColor: colors.D10 }] }>
           <AppIcon
             name="dismiss"
             size={size - 2}
@@ -26,7 +27,7 @@ export default function ToggleButton({ onPress, value, accessibilityLabel, size 
           />
         </View>
       ) : (
-        <View style={[styles.icon, { width: SIZE, height: SIZE, backgroundColor: colors.L10 }] }>
+        <View style={[styles.icon, { width: SIZE, height: SIZE, borderRadius: SIZE / 2, backgroundColor: colors.L10 }] }>
           { icon === 'dots' ? (
             <AppIcon
               name="dots"
@@ -47,16 +48,12 @@ export default function ToggleButton({ onPress, value, accessibilityLabel, size 
 }
 const styles = StyleSheet.create({
   closeIcon: {
-    width: 36,
-    height: 36,
     borderRadius: 18,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
   icon: {
-    width: 36,
-    height: 36,
     borderRadius: 18,
     flexDirection: 'row',
     justifyContent: 'center',

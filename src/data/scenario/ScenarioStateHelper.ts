@@ -4,6 +4,7 @@ import {
   SupplyCounts,
   InvestigatorTraumaData,
   DeckId,
+  DelayedDeckEdits,
 } from '@actions/types';
 import CampaignStateHelper from './CampaignStateHelper';
 
@@ -32,15 +33,15 @@ export default class ScenarioStateHelper {
     return this.campaignState.text(id, this.scenarioId);
   }
 
-  setNumberChoices(id: string, value: NumberChoices, deckId?: DeckId) {
-    this.campaignState.setNumberChoices(id, value, deckId, this.scenarioId);
+  setNumberChoices(id: string, value: NumberChoices, deckId?: DeckId, deckEdits?: DelayedDeckEdits) {
+    return this.campaignState.setNumberChoices(id, value, deckId, deckEdits, this.scenarioId);
   }
 
   numberChoices(id: string): NumberChoices | undefined {
     return this.campaignState.numberChoices(id, this.scenarioId)[0];
   }
 
-  numberAndDeckChoices(id: string): [NumberChoices | undefined, DeckId | undefined] {
+  numberAndDeckChoices(id: string): [NumberChoices | undefined, DeckId | undefined, DelayedDeckEdits | undefined] {
     return this.campaignState.numberChoices(id, this.scenarioId);
   }
 

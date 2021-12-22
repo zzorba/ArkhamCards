@@ -243,7 +243,7 @@ function NewDeckOptionsDialog({
     setOptionSelected(updatedOptionSelected);
   }, [optionSelected, setOptionSelected]);
 
-  const { dialog: nameDialog, showDialog: showNameDialog } = useSimpleTextDialog({
+  const [nameDialog, showNameDialog] = useSimpleTextDialog({
     title: t`Name`,
     onValueChange: setDeckNameChange,
     value: deckNameChange || '',
@@ -291,6 +291,7 @@ function NewDeckOptionsDialog({
     showCardSwipe(
       componentId,
       map(visibleCards, card => card.code),
+      undefined,
       index,
       colors,
       visibleCards,

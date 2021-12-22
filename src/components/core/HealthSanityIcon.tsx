@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import ArkhamIcon from '@icons/ArkhamIcon';
+import CardIcon from '@icons/CardIcon';
 import StyleContext from '@styles/StyleContext';
 
 interface Props {
@@ -15,14 +15,14 @@ export default function HealthSanityIcon({ type, size = 24 }: Props) {
     return (
       <View style={{ width: size, height: size }}>
         <View style={styles.icon}>
-          <ArkhamIcon
+          <CardIcon
             name="health_inverted"
             size={size}
             color="#FFFFFF"
           />
         </View>
         <View style={styles.icon}>
-          <ArkhamIcon
+          <CardIcon
             name="health"
             size={size}
             color={colors.health}
@@ -34,14 +34,14 @@ export default function HealthSanityIcon({ type, size = 24 }: Props) {
   return (
     <View style={{ width: size * 1.25, height: size }}>
       <View style={styles.icon}>
-        <ArkhamIcon
+        <CardIcon
           name="sanity_inverted"
           size={size}
           color="#FFFFFF"
         />
       </View>
       <View style={styles.icon}>
-        <ArkhamIcon
+        <CardIcon
           name="sanity"
           size={size}
           color={colors.sanity}

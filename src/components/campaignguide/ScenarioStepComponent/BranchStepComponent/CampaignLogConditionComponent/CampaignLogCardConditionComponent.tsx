@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Text } from 'react-native';
+import { ActivityIndicator, Text } from 'react-native';
 import { find } from 'lodash';
 import { c, t } from 'ttag';
 
@@ -19,10 +19,10 @@ interface Props {
 }
 
 export default function CampaignLogCardConditionComponent({ step, entry, condition, campaignLog }: Props) {
-  const { typography } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   const [card, loading] = useSingleCard(entry.code, 'encounter');
   if (loading) {
-    return null;
+    return <ActivityIndicator animating size="small" color={colors.lightText} />;
   }
   if (!card) {
     const code = entry.code;

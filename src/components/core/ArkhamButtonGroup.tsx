@@ -5,6 +5,7 @@ import { filter, map } from 'lodash';
 
 import Ripple from '@lib/react-native-material-ripple';
 import { useEffectUpdate } from './hooks';
+import { s } from '@styles/space';
 
 interface RenderButton {
   element: (selected: boolean) => React.ReactNode;
@@ -88,7 +89,7 @@ export default function ArkhamButtonGroup({
 
 const styles = StyleSheet.create({
   wrapper: {
-    margin: 8,
+    margin: s,
   },
   buttonWrapper: {
     flexDirection: 'row',

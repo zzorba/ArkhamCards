@@ -21,29 +21,30 @@ interface Props {
   dismissable?: boolean;
   onDismiss?: () => void;
   buttons?: React.ReactNode[];
-  children: React.ReactNode | React.ReactNode[];
+  children: React.ReactNode;
   alignment?: 'center' | 'bottom',
   avoidKeyboard?: boolean;
   forceVerticalButtons?: boolean;
 }
-function NewDialog({
-  title,
-  investigator,
-  visible,
-  dismissable,
-  onDismiss,
-  buttons = [],
-  children,
-  alignment = 'center',
-  avoidKeyboard,
-  forceVerticalButtons,
-}: Props) {
+function NewDialog(props: Props) {
+  const {
+    title,
+    investigator,
+    visible,
+    dismissable,
+    onDismiss,
+    buttons = [],
+    children,
+    alignment = 'center',
+    avoidKeyboard,
+    forceVerticalButtons,
+  } = props;
   const { lang } = useContext(LanguageContext);
   const { backgroundStyle, darkMode, colors, shadow, typography, width, height } = useContext(StyleContext);
   const verticalButtons = forceVerticalButtons || buttons.length > 2 || TINY_PHONE || lang === 'de';
   const dismissButton = useMemo(() => {
     if (!dismissable) {
-      return null;
+      return undefined;
     }
     return (
       <View style={investigator ? space.paddingRightS : styles.closeButton}>
@@ -100,6 +101,7 @@ function NewDialog({
         <View style={[styles.body, backgroundStyle]}>
           <ScrollView
             overScrollMode="never"
+            keyboardShouldPersistTaps="always"
             bounces={false}
             showsVerticalScrollIndicator
             style={{ maxHeight: height * 0.5 }}

@@ -1,12 +1,13 @@
 import { find, flatMap, sortBy } from 'lodash';
 
-import { NumberChoices, StandaloneId } from '@actions/types';
-import { FullCampaign, Effect, Errata, Scenario, ChoiceIcon, ChaosToken, ChaosTokens, ScenarioChaosTokens } from './types';
+import { NumberChoices, StandaloneId, Trauma } from '@actions/types';
+import { FullCampaign, Effect, Errata, Scenario, ChoiceIcon, ChaosToken, ChaosTokens, ScenarioChaosTokens, BorderColor, TabooSets } from './types';
 import CampaignGuide, { CampaignLog, CampaignLogSection } from './CampaignGuide';
 import ScenarioGuide from './ScenarioGuide';
 import ScenarioStep from './ScenarioStep';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import Card from '@data/types/Card';
 
 export interface ScenarioId {
   scenarioId: string;
@@ -34,6 +35,11 @@ interface UnplayedScenario extends BasicScenario {
   steps: ScenarioStep[];
 }
 
+export interface StepId {
+  id: string;
+  scenario?: string;
+}
+
 export type ProcessedScenario = PlayedScenario | UnplayedScenario;
 
 export interface ProcessedCampaign {
@@ -47,6 +53,7 @@ export interface LatestDecks {
 
 export interface DisplayChoice {
   border?: boolean;
+  border_color?: BorderColor;
   large?: boolean;
   text?: string;
   tokens?: ChaosToken[];
@@ -59,6 +66,9 @@ export interface DisplayChoice {
   steps?: string[] | null;
   effects?: Effect[] | null;
   pre_border_effects?: Effect[] | null;
+  trauma?: Trauma;
+  resolute?: boolean;
+  card?: Card;
 }
 
 export interface DisplayChoiceWithId extends DisplayChoice {
@@ -81,24 +91,24 @@ export type Choices = PersonalizedChoices | UniversalChoices;
 function loadAllChaosTokens(lang: string): ChaosTokens {
   switch (lang) {
     case 'es':
-      return require('../../../assets/chaosOdds_es.json')
+      return require('../../../assets/generated/chaosOdds_es.json')
     case 'ru':
-      return require('../../../assets/chaosOdds_ru.json');
+      return require('../../../assets/generated/chaosOdds_ru.json');
     case 'fr':
-      return require('../../../assets/chaosOdds_fr.json');
+      return require('../../../assets/generated/chaosOdds_fr.json');
     case 'de':
-      return require('../../../assets/chaosOdds_de.json');
+      return require('../../../assets/generated/chaosOdds_de.json');
     case 'it':
-      return require('../../../assets/chaosOdds_it.json');
+      return require('../../../assets/generated/chaosOdds_it.json');
     case 'pt':
-      return require('../../../assets/chaosOdds_pt.json');
+      return require('../../../assets/generated/chaosOdds_pt.json');
     case 'zh':
-      return require('../../../assets/chaosOdds_zh.json');
+      return require('../../../assets/generated/chaosOdds_zh.json');
     case 'ko':
-      return require('../../../assets/chaosOdds_ko.json');
+      return require('../../../assets/generated/chaosOdds_ko.json');
     default:
     case 'en':
-      return require('../../../assets/chaosOdds.json');
+      return require('../../../assets/generated/chaosOdds.json');
   }
 }
 
@@ -108,6 +118,20 @@ export function loadChaosTokens(lang: string, code?: string, scenario?: string):
   }
   const allTokens = loadAllChaosTokens(lang);
   return find(allTokens, t => !!(scenario && t.scenario === scenario)) || find(allTokens, t => !!(code && t.code === code));
+}
+
+export function loadTaboos(lang: string): TabooSets | undefined {
+  switch (lang) {
+    case 'es': return require('../../../assets/generated/taboos_es.json');
+    case 'de': return require('../../../assets/generated/taboos_de.json');
+    case 'ru': return require('../../../assets/generated/taboos_ru.json');
+    case 'fr': return require('../../../assets/generated/taboos_fr.json');
+    case 'it': return require('../../../assets/generated/taboos_it.json');
+    case 'zh': return require('../../../assets/generated/taboos_zh.json');
+    case 'ko': return require('../../../assets/generated/taboos_ko.json');
+    case 'pt': return require('../../../assets/generated/taboos_pt.json');
+    default: return undefined;
+  }
 }
 
 
@@ -122,67 +146,67 @@ function load(lang: string): {
   switch (lang) {
     case 'es':
       return {
-        allLogEntries: require('../../../assets/campaignLogs_es.json'),
-        allCampaigns: require('../../../assets/allCampaigns_es.json'),
-        encounterSets: require('../../../assets/encounterSets_es.json'),
-        errata: require('../../../assets/campaignErrata_es.json'),
+        allLogEntries: require('../../../assets/generated/campaignLogs_es.json'),
+        allCampaigns: require('../../../assets/generated/allCampaigns_es.json'),
+        encounterSets: require('../../../assets/generated/encounterSets_es.json'),
+        errata: require('../../../assets/generated/campaignErrata_es.json'),
       };
     case 'ru':
       return {
-        allLogEntries: require('../../../assets/campaignLogs_ru.json'),
-        allCampaigns: require('../../../assets/allCampaigns_ru.json'),
-        encounterSets: require('../../../assets/encounterSets_ru.json'),
-        errata: require('../../../assets/campaignErrata_ru.json'),
+        allLogEntries: require('../../../assets/generated/campaignLogs_ru.json'),
+        allCampaigns: require('../../../assets/generated/allCampaigns_ru.json'),
+        encounterSets: require('../../../assets/generated/encounterSets_ru.json'),
+        errata: require('../../../assets/generated/campaignErrata_ru.json'),
       };
     case 'fr':
       return {
-        allLogEntries: require('../../../assets/campaignLogs_fr.json'),
-        allCampaigns: require('../../../assets/allCampaigns_fr.json'),
-        encounterSets: require('../../../assets/encounterSets_fr.json'),
-        errata: require('../../../assets/campaignErrata_fr.json'),
+        allLogEntries: require('../../../assets/generated/campaignLogs_fr.json'),
+        allCampaigns: require('../../../assets/generated/allCampaigns_fr.json'),
+        encounterSets: require('../../../assets/generated/encounterSets_fr.json'),
+        errata: require('../../../assets/generated/campaignErrata_fr.json'),
       };
     case 'de':
       return {
-        allLogEntries: require('../../../assets/campaignLogs_de.json'),
-        allCampaigns: require('../../../assets/allCampaigns_de.json'),
-        encounterSets: require('../../../assets/encounterSets_de.json'),
-        errata: require('../../../assets/campaignErrata_de.json'),
+        allLogEntries: require('../../../assets/generated/campaignLogs_de.json'),
+        allCampaigns: require('../../../assets/generated/allCampaigns_de.json'),
+        encounterSets: require('../../../assets/generated/encounterSets_de.json'),
+        errata: require('../../../assets/generated/campaignErrata_de.json'),
       };
     case 'it':
       return {
-        allLogEntries: require('../../../assets/campaignLogs_it.json'),
-        allCampaigns: require('../../../assets/allCampaigns_it.json'),
-        encounterSets: require('../../../assets/encounterSets_it.json'),
-        errata: require('../../../assets/campaignErrata_it.json'),
+        allLogEntries: require('../../../assets/generated/campaignLogs_it.json'),
+        allCampaigns: require('../../../assets/generated/allCampaigns_it.json'),
+        encounterSets: require('../../../assets/generated/encounterSets_it.json'),
+        errata: require('../../../assets/generated/campaignErrata_it.json'),
       };
     case 'pt':
       return {
-        allLogEntries: require('../../../assets/campaignLogs_pt.json'),
-        allCampaigns: require('../../../assets/allCampaigns_pt.json'),
-        encounterSets: require('../../../assets/encounterSets_pt.json'),
-        errata: require('../../../assets/campaignErrata_pt.json'),
+        allLogEntries: require('../../../assets/generated/campaignLogs_pt.json'),
+        allCampaigns: require('../../../assets/generated/allCampaigns_pt.json'),
+        encounterSets: require('../../../assets/generated/encounterSets_pt.json'),
+        errata: require('../../../assets/generated/campaignErrata_pt.json'),
       };
     case 'zh':
       return {
-        allLogEntries: require('../../../assets/campaignLogs_zh.json'),
-        allCampaigns: require('../../../assets/allCampaigns_zh.json'),
-        encounterSets: require('../../../assets/encounterSets_zh.json'),
-        errata: require('../../../assets/campaignErrata_zh.json'),
+        allLogEntries: require('../../../assets/generated/campaignLogs_zh.json'),
+        allCampaigns: require('../../../assets/generated/allCampaigns_zh.json'),
+        encounterSets: require('../../../assets/generated/encounterSets_zh.json'),
+        errata: require('../../../assets/generated/campaignErrata_zh.json'),
       };
     case 'ko':
       return {
-        allLogEntries: require('../../../assets/campaignLogs_ko.json'),
-        allCampaigns: require('../../../assets/allCampaigns_ko.json'),
-        encounterSets: require('../../../assets/encounterSets_ko.json'),
-        errata: require('../../../assets/campaignErrata_ko.json'),
+        allLogEntries: require('../../../assets/generated/campaignLogs_ko.json'),
+        allCampaigns: require('../../../assets/generated/allCampaigns_ko.json'),
+        encounterSets: require('../../../assets/generated/encounterSets_ko.json'),
+        errata: require('../../../assets/generated/campaignErrata_ko.json'),
       };
     default:
     case 'en':
       return {
-        allLogEntries: require('../../../assets/campaignLogs.json'),
-        allCampaigns: require('../../../assets/allCampaigns.json'),
-        encounterSets: require('../../../assets/encounterSets.json'),
-        errata: require('../../../assets/campaignErrata.json'),
+        allLogEntries: require('../../../assets/generated/campaignLogs.json'),
+        allCampaigns: require('../../../assets/generated/allCampaigns.json'),
+        encounterSets: require('../../../assets/generated/encounterSets.json'),
+        errata: require('../../../assets/generated/campaignErrata.json'),
       };
   }
 }
@@ -283,7 +307,7 @@ export function getStandaloneScenarios(
     allLogEntries,
     allCampaigns,
   } = load(lang);
-  const standalones = require('../../../assets/standaloneScenarios.json');
+  const standalones = require('../../../assets/generated/standaloneScenarios.json');
   return sortBy(flatMap(standalones, (id: StandaloneId) => {
     const data = findStandaloneScenario(id, allCampaigns, allLogEntries);
     if (!data) {

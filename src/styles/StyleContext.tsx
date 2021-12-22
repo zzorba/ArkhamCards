@@ -25,7 +25,7 @@ export interface StyleContextType {
   justifyContent: boolean;
 }
 
-export const DEFAULLT_STYLE_CONTEXT: StyleContextType = {
+export const DEFAULT_STYLE_CONTEXT: StyleContextType = {
   darkMode: false,
   justifyContent: true,
   width: 100,
@@ -92,6 +92,6 @@ export const DEFAULLT_STYLE_CONTEXT: StyleContextType = {
   },
 };
 
-export const StyleContext = React.createContext<StyleContextType>(DEFAULLT_STYLE_CONTEXT);
+export const StyleContext = React.createContext<StyleContextType>(DEFAULT_STYLE_CONTEXT);
 
 export default StyleContext;

@@ -11,6 +11,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 interface Props {
   componentId: string;
   title: string;
+  all: string;
   selection?: string[];
   setting: string;
   onFilterChange: (setting: string, selection: string[]) => void;
@@ -23,6 +24,7 @@ interface Props {
 export default function FixedSetChooserButton({
   componentId,
   title,
+  all,
   selection,
   setting,
   onFilterChange,
@@ -30,7 +32,7 @@ export default function FixedSetChooserButton({
   allValues,
 }: Props) {
   const { colors } = useContext(StyleContext);
-  const { listSeperator } = useContext(LanguageContext);
+  const { listSeperator, colon } = useContext(LanguageContext);
   const reversedValues = useMemo(() => {
     const reversed: { [key: string]: string } = {};
     forEach(allValues, (value, key) => {
@@ -77,12 +79,12 @@ export default function FixedSetChooserButton({
     setPressed(false);
   }, [allValues, colors, componentId, title, setPressed, onChange, selection]);
   const selectedDescription = useMemo(
-    () => selection && selection.length ? map(selection, item => allValues[item]).join(listSeperator) : t`All`,
-    [allValues, selection, listSeperator]
+    () => selection && selection.length ? map(selection, item => allValues[item]).join(listSeperator) : all,
+    [allValues, selection, listSeperator, all]
   );
   return (
     <NavButton
-      text={`${title}: ${selectedDescription}`}
+      text={`${title}${colon}${selectedDescription}`}
       onPress={onPress}
       indent={indent}
       disabled={pressed}

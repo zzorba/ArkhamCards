@@ -2,8 +2,10 @@ import { ChaosBag, ChaosTokenType, FactionCodeType, SkillCodeType, SlotCodeType 
 import { CardFilterData, FilterState } from '@lib/filters';
 import Card from '@data/types/Card';
 import { LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
+import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
 
 export const SORT_BY_TYPE = 'type';
+export const SORT_BY_CYCLE = 'cycle';
 export const SORT_BY_FACTION = 'faction';
 export const SORT_BY_FACTION_PACK = 'faction_pack';
 export const SORT_BY_FACTION_XP = 'faction_xp';
@@ -217,6 +219,7 @@ export interface ParsedDeck {
   slotCounts: SlotCounts;
   normalCards: SplitCards;
   specialCards: SplitCards;
+  sideCards: SplitCards;
   ignoreDeckLimitSlots: Slots;
   changes?: DeckChanges;
   problem?: DeckProblem;
@@ -252,6 +255,7 @@ export interface TraumaAndCardData extends Trauma {
   ignoreStoryAssets?: string[];
   addedCards?: string[];
   removedCards?: string[];
+  cardCounts?: Slots;
 }
 
 export interface InvestigatorData {
@@ -314,6 +318,7 @@ export interface ChaosBagResults {
   blessTokens?: number;
   curseTokens?: number;
   totalDrawnTokens: number;
+  tarot?: Chaos_Bag_Tarot_Mode_Enum;
 }
 
 export interface ScenarioResult {
@@ -413,6 +418,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TDEA,
   TDEB,
   TIC,
+  EOE,
 ];
 export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
   ALICE_IN_WONDERLAND,
@@ -438,6 +444,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   ALICE_IN_WONDERLAND,
   DARK_MATTER,
   CROWN_OF_EGIL,
+  EOE,
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
@@ -572,7 +579,7 @@ export interface SetTabooSetAction {
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
 export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
-  setting: 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection';
+  setting: 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1';
   value: boolean;
 }
 
@@ -730,6 +737,7 @@ export interface EditDeckState {
   xpAdjustment: number;
   slots: Slots;
   ignoreDeckLimitSlots: Slots;
+  side: Slots;
   meta: DeckMeta;
   mode: 'edit' | 'upgrade' | 'view';
   editable: boolean;
@@ -758,7 +766,7 @@ interface UpdateDeckEditCountsSetAction {
   code: string;
   operation: 'set';
   value: number;
-  countType: 'slots' | 'ignoreDeckLimitSlots' | 'xpAdjustment';
+  countType: 'slots' | 'ignoreDeckLimitSlots' | 'side' | 'xpAdjustment';
 }
 interface UpdateDeckEditCountsAdjustAction {
   type: typeof UPDATE_DECK_EDIT_COUNTS;
@@ -766,7 +774,7 @@ interface UpdateDeckEditCountsAdjustAction {
   code: string;
   operation: 'inc' | 'dec';
   limit?: number;
-  countType: 'slots' | 'ignoreDeckLimitSlots' | 'xpAdjustment';
+  countType: 'slots' | 'ignoreDeckLimitSlots' | 'side' | 'xpAdjustment';
 }
 export type UpdateDeckEditCountsAction = UpdateDeckEditCountsSetAction | UpdateDeckEditCountsAdjustAction;
 
@@ -815,6 +823,7 @@ export interface SetPackSpoilerAction {
 export const NEW_CAMPAIGN = 'NEW_CAMPAIGN';
 export interface NewCampaignAction {
   type: typeof NEW_CAMPAIGN;
+  uuid: string;
   now: Date;
   name: string;
   difficulty?: CampaignDifficulty;
@@ -835,6 +844,7 @@ export interface StandaloneId {
 export const NEW_STANDALONE = 'NEW_STANDALONE';
 export interface NewStandaloneCampaignAction {
   type: typeof NEW_STANDALONE;
+  uuid: string;
   now: Date;
   name: string;
   standaloneId: StandaloneId;
@@ -845,6 +855,9 @@ export interface NewStandaloneCampaignAction {
 export const NEW_LINKED_CAMPAIGN = 'NEW_LINKED_CAMPAIGN';
 export interface NewLinkedCampaignAction {
   type: typeof NEW_LINKED_CAMPAIGN;
+  uuid: string;
+  uuidA: string;
+  uuidB: string;
   now: Date;
   name: string;
   weaknessSet: WeaknessSet;
@@ -1076,11 +1089,21 @@ export interface GuideDecisionInput extends BasicInput {
   decision: boolean;
 }
 
+export interface DelayedDeckEdits {
+  userId: string;
+  xp: number;
+  storyCounts: Slots;
+  ignoreStoryCounts: Slots;
+  exileCounts: Slots;
+  resolved?: boolean;
+}
+
 export interface GuideNumberChoicesInput extends BasicInput {
   type: 'choice_list';
   step: string;
   choices: NumberChoices;
   deckId?: DeckId;
+  deckEdits?: DelayedDeckEdits;
 }
 
 export interface GuideStringChoicesInput extends BasicInput {

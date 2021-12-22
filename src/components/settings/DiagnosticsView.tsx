@@ -3,6 +3,7 @@ import { forEach } from 'lodash';
 import {
   Alert,
   Keyboard,
+  Platform,
   SafeAreaView,
   ScrollView,
   Share,
@@ -26,6 +27,9 @@ import { saveAuthResponse } from '@lib/dissonantVoices';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useApolloClient } from '@apollo/client';
+import { useSimpleTextDialog } from '@components/deck/dialogs';
+import { setBeta1 } from './actions';
+import { ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS } from '@app_constants';
 
 
 function goOffline() {
@@ -36,11 +40,18 @@ function goOnline() {
   database().goOnline();
 }
 
+function dummyOnPress() {
+  // intentionally blank
+}
+
+const THE_CODE = '0451';
+
 export default function DiagnosticsView() {
   const [dialog, showTextEditDialog] = useTextEditDialog();
   const { db } = useContext(DatabaseContext);
   const [schemaCleared, setSchemaCleared] = useState(false);
   const [sqliteVersion, setSqliteVesion] = useState(t`Loading`);
+  const hasBetaAccess = useSelector((state: AppState) => !!state.settings.beta1);
   const { colors } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const dispatch = useDispatch();
@@ -60,6 +71,22 @@ export default function DiagnosticsView() {
       canceled = true;
     };
   }, [db, setSqliteVesion]);
+
+  const submitBetaCode = useCallback(async(code: string) => {
+    if (code === THE_CODE) {
+      dispatch(setBeta1(true));
+      return undefined;
+    }
+    return 'That code is not correct. Contact arkhamcards@gmail.com to join the beta testing program.';
+  }, [dispatch]);
+
+  const [betaDialog, showBetaDialog] = useSimpleTextDialog({
+    title: `Beta test program`,
+    value: '',
+    prompt: 'If you are interested in helping to test unreleased features, please contact arkhamcards@gmail.com.\n\nThese features are still in active development, and opting in might result in your campaign data being lost.\n\nBe sure to make a backup in advance and report any bugs you find.',
+    onValidate: submitBetaCode,
+    placeholder: 'Enter access code here',
+  });
 
   const exportCampaignData = useCallback(() => {
     Alert.alert(
@@ -106,7 +133,6 @@ export default function DiagnosticsView() {
 
   const clearCache = useCallback(async() => {
     dispatch(clearDecks());
-    await apollo.cache.reset();
     await apollo.resetStore();
   }, [apollo, dispatch]);
 
@@ -189,7 +215,6 @@ export default function DiagnosticsView() {
     }
     return (
       <>
-        <CardSectionHeader section={{ title: t`Debug` }} />
         <SettingsItem
           onPress={crash}
           text={'Crash'}
@@ -224,7 +249,17 @@ export default function DiagnosticsView() {
           onPress={exportCampaignData}
           text={t`Export diagnostic data`}
         />
-        <SettingsItem text={t`Sqlite version: ${sqliteVersion}`} />
+        { ((Platform.OS === 'android' && ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID) ||
+          (Platform.OS === 'ios' && ENABLE_ARKHAM_CARDS_ACCOUNT_IOS && !ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA)) && (
+          <>
+            <CardSectionHeader section={{ title: t`Beta testing` }} />
+            <SettingsItem
+              onPress={!hasBetaAccess ? showBetaDialog : undefined}
+              text={hasBetaAccess ? 'Enabled' : 'Enter access code'}
+              disabled={hasBetaAccess}
+            />
+          </>
+        ) }
         <CardSectionHeader section={{ title: t`Caches` }} />
         <SettingsItem
           onPress={clearCache}
@@ -242,9 +277,12 @@ export default function DiagnosticsView() {
           onPress={clearCardSchema}
           text={schemaCleared ? t`Please close and restart the app` : t`Reset card database`}
         />
+        <CardSectionHeader section={{ title: t`Debug` }} />
+        <SettingsItem text={t`Sqlite version: ${sqliteVersion}`} onPress={dummyOnPress} />
         { debugSection }
       </ScrollView>
       { dialog }
+      { betaDialog }
     </SafeAreaView>
   );
 }

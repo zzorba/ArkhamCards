@@ -24,21 +24,63 @@ export const GRAPHQL_SERVER = 'gapi.arkhamcards.com/v1';
 const typePolicies: TypedTypePolicies = {
   campaign_deck: {
     keyFields: ['campaign_id', 'arkhamdb_id', 'local_uuid'],
+    fields: {
+      campaign: {
+        keyArgs: ['id', 'uuid'],
+      },
+    },
   },
   campaign: {
     keyFields: ['id'],
     fields: {
-      standaloneId(rawVal: string) {
-        return rawVal ?? null;
+      name: {
+        read(existing) {
+          return existing || '';
+        },
+        merge(existing, incoming) {
+          return incoming || existing || '';
+        },
       },
-      cycleCode(rawVal: string) {
-        return rawVal ?? null;
+      cycleCode: {
+        read(existing) {
+          return existing || '';
+        },
+        merge(existing, incoming) {
+          return incoming || existing || '';
+        },
       },
-      archived(rawVal: boolean) {
-        return rawVal ?? null;
+      standaloneId: {
+        read(existing) {
+          return existing || null;
+        },
+        merge(existing, incoming) {
+          return incoming || existing || '';
+        },
+      },
+      archived: {
+        read(existing) {
+          return existing || false;
+        },
+        merge(existing, incoming) {
+          return incoming || false;
+        },
+      },
+      chaosBag: {
+        merge(existing, incoming) {
+          if (deepEqual(existing, incoming)) {
+            return existing;
+          }
+          return incoming;
+        },
       },
       latest_decks: {
         merge(existing, incoming) {
+          if (existing?.length !== incoming?.length) {
+            return incoming;
+          }
+          if (deepEqual(existing, incoming)) {
+            return existing;
+          }
           return incoming;
         },
       },
@@ -61,6 +103,11 @@ const typePolicies: TypedTypePolicies = {
           if (deepEqual(existing, incoming)) {
             return existing;
           }
+          return incoming;
+        },
+      },
+      campaign_guide: {
+        merge(existing, incoming) {
           return incoming;
         },
       },

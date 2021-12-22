@@ -32,6 +32,7 @@ import { DeckId } from '@actions/types';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];
+  controls?: ('deck' | 'side' | 'special' | 'bonded')[];
   initialCards?: Card[];
   initialIndex: number;
   whiteNav: boolean;
@@ -55,7 +56,7 @@ const options = (passProps: CardDetailSwipeProps) => {
 };
 
 function DbCardDetailSwipeView(props: Props) {
-  const { componentId, cardCodes, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex } = props;
+  const { componentId, cardCodes, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex, controls } = props;
   const { backgroundStyle, colors, width, height } = useContext(StyleContext);
   const { db } = useContext(DatabaseContext);
   const tabooSetSelector: (state: AppState, tabooSetOverride?: number) => number | undefined = useMemo(makeTabooSetSelector, []);
@@ -66,7 +67,12 @@ function DbCardDetailSwipeView(props: Props) {
   const [spoilers, toggleShowSpoilers] = useToggles({});
   const [index, setIndex] = useState(initialIndex);
   const [cards, updateCards] = useCards('code', initialCards);
-  const currentCode = useMemo(() => cardCodes[index], [cardCodes, index]);
+  const [currentCode, currentControl] = useMemo(() => {
+    return [
+      cardCodes[index],
+      controls ? controls[index] : undefined,
+    ];
+  }, [cardCodes, controls, index]);
   const currentCard = useMemo(() => cards[currentCode], [cards, currentCode]);
   useEffect(() => {
     const nearbyCards = slice(cardCodes, Math.max(index - 10, 0), Math.min(index + 10, cardCodes.length - 1));
@@ -166,11 +172,19 @@ function DbCardDetailSwipeView(props: Props) {
     if (deckId === undefined || !currentCard) {
       return null;
     }
+    if (currentControl === 'bonded') {
+      return null;
+    }
     const deck_limit: number = currentCard.collectionDeckLimit(packInCollection, ignore_collection);
     return (
-      <FloatingDeckQuantityComponent code={currentCard.code} deckId={deckId} limit={deck_limit} />
+      <FloatingDeckQuantityComponent
+        code={currentCard.code}
+        deckId={deckId}
+        limit={deck_limit}
+        side={currentControl === 'side'}
+      />
     );
-  }, [deckId, currentCard, packInCollection, ignore_collection]);
+  }, [deckId, currentCard, currentControl, packInCollection, ignore_collection]);
   const renderCard = useCallback((
     { item: card, index: itemIndex }: { item?: Card | undefined; index: number; dataIndex: number }
   ): React.ReactNode => {

@@ -6,7 +6,7 @@ import { find, filter, forEach, map } from 'lodash';
 import { UploadedCampaignId } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import { useEditCampaignAccessRequest } from '@data/remote/campaigns';
-import FriendFeedComponent, { FriendFeedItem } from '@components/social/FriendFeedComponent';
+import useFriendFeedComponent, { FriendFeedItem } from '@components/social/useFriendFeedComponent';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useCampaignAccess, UserProfile } from '@data/remote/hooks';
@@ -102,14 +102,9 @@ export default function EditCampaignAccessView({ campaignId, isOwner, componentI
     });
     return feed;
   }, [campaignAccess, userId, isOwner, editFriendsPressed, inviteUser, removeUser]);
+  const [feed] = useFriendFeedComponent({ componentId, userId, toFeed });
   if (!userId) {
     return <LoadingSpinner />;
   }
-  return (
-    <FriendFeedComponent
-      componentId={componentId}
-      userId={userId}
-      toFeed={toFeed}
-    />
-  );
+  return feed;
 }

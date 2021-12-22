@@ -60,6 +60,7 @@ export interface DeckDetailProps {
   subtitle?: string;
   campaignId: CampaignId | undefined;
   modal?: boolean;
+  fromCampaign?: boolean;
 }
 
 type Props = NavigationProps &
@@ -72,7 +73,7 @@ function formatTabooStart(date_start: string | undefined, locale: string) {
     return '';
   }
   const date = new Date(Date.parse(date_start));
-  if (locale === 'fr') {
+  if (locale === 'fr' || locale === 'it') {
     return format(date, 'dd/MM/yyyy');
   }
   return format(date, 'yyyy/MM/dd');
@@ -88,8 +89,9 @@ function DeckDetailView({
   signedIn,
   login,
   initialMode,
+  fromCampaign,
 }: Props) {
-  const { lang } = useContext(LanguageContext);
+  const { lang, arkhamDbDomain } = useContext(LanguageContext);
   const { backgroundStyle, colors, darkMode, typography, shadow, width } = useContext(StyleContext);
   const deckActions = useDeckActions();
   const campaign = useCampaign(campaignId);
@@ -98,7 +100,7 @@ function DeckDetailView({
   const { userId, arkhamDbUser, arkhamDb } = useContext(ArkhamCardsAuthContext);
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const parsedDeckObj = useParsedDeckWithFetch(id, componentId, deckActions, initialMode);
-  const { showXpAdjustmentDialog, xpAdjustmentDialog } = useAdjustXpDialog(parsedDeckObj);
+  const [xpAdjustmentDialog, showXpAdjustmentDialog] = useAdjustXpDialog(parsedDeckObj);
   const {
     deck,
     deckT,
@@ -114,11 +116,11 @@ function DeckDetailView({
   const { savingDialog, saveEdits, saveEditsAndDismiss, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj);
 
   const [copying, toggleCopying] = useFlag(false);
-  const {
-    saving: deleting,
-    setSaving: setDeleting,
-    savingDialog: deletingDialog,
-  } = useBasicDialog(t`Deleting`);
+  const [
+    deletingDialog,
+    deleting,
+    setDeleting,
+  ] = useBasicDialog(t`Deleting`);
   const [menuOpen, toggleMenuOpen, setMenuOpen] = useFlag(false);
   const [fabOpen, toggleFabOpen, setFabOpen] = useFlag(false);
   const [tabooOpen, setTabooOpen] = useState(false);
@@ -301,7 +303,7 @@ function DeckDetailView({
       });
     }
   }, [modal, hasInvestigator, darkMode, componentId, mode, colors, factionColor, name, subtitle, title]);
-  const { uploadLocalDeck, uploadLocalDeckDialog } = useUploadLocalDeckDialog(deckActions, deck, parsedDeck);
+  const [uploadLocalDeckDialog, uploadLocalDeck] = useUploadLocalDeckDialog(deckActions, deck, parsedDeck);
 
   useEffect(() => {
     if (!deck) {
@@ -440,6 +442,46 @@ function DeckDetailView({
     });
   }, [componentId, setFabOpen, setMenuOpen, id, deck, cards, campaign, colors, addedBasicWeaknesses, deckEditsRef, setMode]);
 
+  const onEditSidePressed = useCallback(() => {
+    if (!deck || !cards) {
+      return;
+    }
+    if (!deckEditsRef.current?.mode || deckEditsRef.current.mode === 'view') {
+      setMode('edit');
+    }
+    setFabOpen(false);
+    setMenuOpen(false);
+    const investigator = cards[deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
+    Navigation.push<EditDeckProps>(componentId, {
+      component: {
+        name: 'Deck.EditAddCards',
+        passProps: {
+          id,
+          side: true,
+        },
+        options: {
+          statusBar: {
+            style: 'light',
+            backgroundColor,
+          },
+          topBar: {
+            title: {
+              text: t`Edit Side Deck`,
+              color: 'white',
+            },
+            backButton: {
+              title: t`Back`,
+              color: 'white',
+            },
+            background: {
+              color: backgroundColor,
+            },
+          },
+        },
+      },
+    });
+  }, [componentId, deck, id, colors, setFabOpen, setMenuOpen, cards, deckEditsRef, setMode]);
 
   const onAddCardsPressed = useCallback(() => {
     if (!deck || !cards) {
@@ -562,7 +604,7 @@ function DeckDetailView({
     setFabOpen(false);
     setMenuOpen(false);
   }, [componentId, parsedDeck, colors, id, setFabOpen, setMenuOpen]);
-  const { dialog: editNameDialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
+  const [editNameDialog, showEditNameDialog] = useSimpleTextDialog({
     title: t`Deck name`,
     onValueChange: updateDeckName,
     value: name || '',
@@ -673,9 +715,9 @@ function DeckDetailView({
 
   const viewDeck = useCallback(() => {
     if (deck && !deck.local) {
-      Linking.openURL(`https://arkhamdb.com/deck/view/${deck.id}`);
+      Linking.openURL(`${arkhamDbDomain}/deck/view/${deck.id}`);
     }
-  }, [deck]);
+  }, [deck, arkhamDbDomain]);
 
   const deleteDeckPressed = useCallback(() => {
     if (!deck) {
@@ -1034,6 +1076,8 @@ function DeckDetailView({
           <View style={[styles.container, backgroundStyle] }>
             <DeckViewTab
               componentId={componentId}
+              campaignId={campaignId}
+              fromCampaign={fromCampaign}
               visible={visible}
               deckId={id}
               suggestArkhamDbLogin={suggestArkhamDbLogin}
@@ -1055,10 +1099,11 @@ function DeckDetailView({
               buttons={buttons}
               showDrawWeakness={showDrawWeakness}
               showEditCards={onAddCardsPressed}
+              showEditSpecial={deck.nextDeckId ? undefined : onEditSpecialPressed}
+              showEditSide={deck.nextDeckId ? undefined : onEditSidePressed}
               showDeckHistory={showUpgradeHistoryPressed}
               showXpAdjustmentDialog={showXpAdjustmentDialog}
               showCardUpgradeDialog={showCardUpgradeDialog}
-              showEditSpecial={deck.nextDeckId ? undefined : onEditSpecialPressed}
               signedIn={signedIn}
               login={login}
               width={width}

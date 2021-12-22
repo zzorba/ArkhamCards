@@ -7,6 +7,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
@@ -24,6 +25,7 @@ import AppIcon from '@icons/AppIcon';
 
 interface Props {
   card: Card;
+  description?: string;
   id?: string;
   onPress?: (card: Card) => void;
   onPressId?: (code: string, card: Card) => void;
@@ -33,6 +35,7 @@ interface Props {
   noBorder?: boolean;
   faded?: boolean;
   noSidePadding?: boolean;
+  useGestureHandler?: boolean;
 }
 
 function SkillIcons({ skill, count }: { skill: SkillCodeType; count: number }) {
@@ -138,6 +141,7 @@ function CardSearchResult(props: Props) {
     card,
     id,
     control,
+    description,
     onPress,
     onPressId,
     backgroundColor,
@@ -145,6 +149,7 @@ function CardSearchResult(props: Props) {
     noBorder,
     faded,
     noSidePadding,
+    useGestureHandler,
   } = props;
   const { borderStyle, colors, fontScale, typography } = useContext(StyleContext);
   const handleCardPressFunction = useCallback(() => {
@@ -209,6 +214,7 @@ function CardSearchResult(props: Props) {
       </View>
     );
   }, [card]);
+  const Touchable = useGestureHandler ? GestureHandlerTouchableOpacity : TouchableOpacity;
 
   const tabooBlock = useMemo(() => {
     if (!card.taboo_set_id || card.taboo_set_id === 0 || card.taboo_placeholder) {
@@ -254,10 +260,10 @@ function CardSearchResult(props: Props) {
                 <AppIcon name="parallel" size={18 * fontScale} color={colors.darkText} />
               </View>
             ) }
-            { !!card.renderSubname && (
+            { (!!card.renderSubname || !!description) && (
               <View style={[styles.row, styles.subname, space.marginRightS, space.paddingTopXs]}>
                 <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={1} ellipsizeMode="clip">
-                  { card.renderSubname }
+                  { description || card.renderSubname }
                 </Text>
               </View>
             ) }
@@ -265,7 +271,7 @@ function CardSearchResult(props: Props) {
         ) }
       </View>
     );
-  }, [colors, fontScale, typography, card, invalid, tabooBlock, skillIcons, dualFactionIcons]);
+  }, [colors, fontScale, typography, card, invalid, tabooBlock, skillIcons, dualFactionIcons, description]);
 
   if (!card) {
     return (
@@ -305,7 +311,6 @@ function CardSearchResult(props: Props) {
       </View>
     );
   }
-
   return (
     <View style={[
       styles.rowContainer,
@@ -317,10 +322,11 @@ function CardSearchResult(props: Props) {
       },
       (!control && !noSidePadding) ? styles.rowPadding : undefined,
     ]}>
-      <TouchableOpacity
+      <Touchable
+        containerStyle={{ flex: 1 }}
+        style={[styles.row, styles.fullHeight]}
         onPress={handleCardPress}
         disabled={!onPress && !onPressId}
-        style={[styles.row, styles.fullHeight]}
         testID={`SearchCard-${card.code}`}
         delayPressIn={5}
         delayPressOut={5}
@@ -333,8 +339,8 @@ function CardSearchResult(props: Props) {
           <CardIcon card={card} />
           { cardName }
         </View>
-      </TouchableOpacity>
-      { !!control && <ControlComponent control={control} card={card} /> }
+      </Touchable>
+      { !!control && <ControlComponent control={control} card={card} useGestureHandler={useGestureHandler} /> }
     </View>
   );
 }

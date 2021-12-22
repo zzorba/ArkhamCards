@@ -21,7 +21,7 @@ import { campaignNames } from '../constants';
 import space, { s } from '@styles/space';
 import CampaignSummaryHeader from '../CampaignSummaryHeader';
 import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
-import { maybeShowWeaknessPrompt } from '../campaignHelper';
+import { maybeShowWeaknessPrompt, useMaybeShowWeaknessPrompt } from '../campaignHelper';
 import Card from '@data/types/Card';
 import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
@@ -34,13 +34,14 @@ import UploadCampaignButton from '../UploadCampaignButton';
 import useChaosBagDialog from './useChaosBagDialog';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useDeckActions } from '@data/remote/decks';
-import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '@reducers';
 
 export interface CampaignDetailProps {
   campaignId: CampaignId;
+  upload?: boolean;
 }
 
 type Props = NavigationProps & CampaignDetailProps
@@ -49,10 +50,10 @@ const EMPTY_CHAOS_BAG = {};
 type AsyncDispatch = ThunkDispatch<AppState, unknown, Action>;
 
 function CampaignDetailView(props: Props) {
-  const { componentId } = props;
+  const { componentId, upload } = props;
   const [textEditDialog, showTextEditDialog] = useTextEditDialog();
   const [countDialog, showCountDialog] = useCountDialog();
-  const [campaignId, setCampaignServerId] = useCampaignId(props.campaignId);
+  const [campaignId, setCampaignServerId, uploadingCampaign] = useCampaignId(props.campaignId);
   const { backgroundStyle, typography } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
   const investigators = useInvestigatorCards();
@@ -72,6 +73,8 @@ function CampaignDetailView(props: Props) {
     showTraumaDialog,
     traumaDialog,
   } = useTraumaDialog(updateInvestigatorTrauma);
+
+  useCampaignDeleted(componentId, campaign);
 
   const updateWeaknessSet = useCallback((weaknessSet: WeaknessSet) => {
     dispatch(updateCampaignWeaknessSet(updateCampaignActions.setWeaknessSet, campaignId, weaknessSet));
@@ -113,7 +116,7 @@ function CampaignDetailView(props: Props) {
       },
     });
   }, [campaignId, dispatch, updateCampaignActions, componentId]);
-  const { dialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
+  const [dialog, showEditNameDialog] = useSimpleTextDialog({
     title: t`Name`,
     value: campaign?.name || '',
     onValueChange: setCampaignName,
@@ -147,10 +150,11 @@ function CampaignDetailView(props: Props) {
     }
   }, [cards, campaign, updateWeaknessAssignedCards, showAlert]);
   const deckActions = useDeckActions();
+  const checkNewDeckForWeakness = useMaybeShowWeaknessPrompt(componentId, checkForWeaknessPrompt);
   const onAddDeck = useCallback(async(deck: Deck) => {
     await asyncDispatch(addInvestigator(userId, deckActions, updateCampaignActions, campaignId, deck.investigator_code, getDeckId(deck)));
-    checkForWeaknessPrompt(deck);
-  }, [userId, campaignId, deckActions, updateCampaignActions, asyncDispatch, checkForWeaknessPrompt]);
+    checkNewDeckForWeakness(deck);
+  }, [userId, campaignId, deckActions, updateCampaignActions, checkNewDeckForWeakness, asyncDispatch]);
 
   const onAddInvestigator = useCallback((card: Card) => {
     dispatch(addInvestigator(userId, deckActions, updateCampaignActions, campaignId, card.code));
@@ -257,11 +261,12 @@ function CampaignDetailView(props: Props) {
     chaosBag: campaign?.chaosBag || EMPTY_CHAOS_BAG,
     setChaosBag: updateCampaignActions.setChaosBag,
     scenarioId: undefined,
+    cycleCode: campaign?.cycleCode || 'custom',
   });
   if (!campaign) {
     if (campaignId.serverId) {
       return (
-        <LoadingSpinner />
+        <LoadingSpinner large message={uploadingCampaign ? t`Uploading campaign` : undefined} />
       );
     }
     return (
@@ -366,6 +371,7 @@ function CampaignDetailView(props: Props) {
               setCampaignServerId={setCampaignServerId}
               showAlert={showAlert}
               deckActions={deckActions}
+              upload={upload}
             />
             <DeleteCampaignButton
               actions={updateCampaignActions}

@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import FlipCard from 'react-native-flip-card';
-import { t } from 'ttag';
+import { t, c } from 'ttag';
 
 import { drawWeakness, availableWeaknesses } from '@lib/weaknessHelper';
 import { Slots, WeaknessSet } from '@actions/types';
@@ -228,6 +228,7 @@ export default function WeaknessDrawComponent({ componentId, weaknessSet, update
         <ChooserButton
           componentId={componentId}
           title={t`Traits`}
+          all={c('Traits').t`All`}
           values={allTraits}
           selection={selectedTraits}
           onChange={setSelectedTraits}

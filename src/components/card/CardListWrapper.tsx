@@ -10,7 +10,7 @@ import useCardsFromQuery from './useCardsFromQuery';
 interface Props<T> {
   codes: string[];
   type: 'player' | 'encounter';
-  children: (cards: Card[], loading: boolean, extraProps?: T) => React.ReactNode | null;
+  children: (cards: Card[], loading: boolean, extraProps?: T) => JSX.Element | null;
   extraProps?: T;
 }
 

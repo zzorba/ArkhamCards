@@ -124,7 +124,7 @@ export function isSpecialCard(card?: Card): boolean {
   );
 }
 
-function splitCards(cardIds: CardId[], cards: CardsMap): SplitCards {
+export function splitCards(cardIds: CardId[], cards: CardsMap): SplitCards {
   const result: SplitCards = {};
 
   const groupedAssets = groupAssets(cardIds, cards);
@@ -560,6 +560,7 @@ export function parseBasicDeck(
     deck.meta || {},
     deck.slots || {},
     deck.ignoreDeckLimitSlots || {},
+    deck.sideSlots || {},
     cards,
     previousDeck,
     deck.xp_adjustment
@@ -571,6 +572,7 @@ export function parseDeck(
   meta: DeckMeta,
   slots: Slots,
   ignoreDeckLimitSlots: Slots,
+  sideSlots: Slots,
   cards: CardsMap,
   previousDeck?: Deck,
   xpAdjustment?: number
@@ -618,6 +620,33 @@ export function parseDeck(
     ) || (
       (ignoreDeckLimitSlots[c.id] || 0) === 0 && c.quantity >= 0
     )));
+  const sideCards: CardId[] = flatMap(
+    sortBy(
+      sortBy(
+        filter(uniq([...keys(deck.sideSlots || {}), ...keys(sideSlots)]), id => !!cards[id]),
+        id => {
+          const card = cards[id];
+          return (card && card.xp) || 0;
+        }
+      ),
+      id => {
+        const card = cards[id];
+        return (card && card.name) || '???';
+      }
+    ),
+    id => {
+      const card = cards[id];
+      if (!card || !sideSlots) {
+        return [];
+      }
+      return {
+        id,
+        quantity: sideSlots[id] || 0,
+        invalid: false,
+        limited: false,
+      };
+    }
+  );
 
   const deckCards = getCards(cards, slots, ignoreDeckLimitSlots);
   const problem = validation.getProblem(deckCards) || undefined;
@@ -664,6 +693,7 @@ export function parseDeck(
     skillIconCounts,
     normalCards: splitCards(normalCards, cards),
     specialCards: splitCards(specialCards, cards),
+    sideCards: splitCards(sideCards, cards),
     ignoreDeckLimitSlots,
     changes,
     problem,

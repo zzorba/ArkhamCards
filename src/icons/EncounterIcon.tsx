@@ -33,7 +33,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
   coreIcon(name: string, size: number, color: string) {
     return (<CoreSetIcon name={name} size={size} color={color} />);
   }
-
+  cardIcon(name: string, size: number, color: string) {
+    return (<AppIcon name={name} size={size} color={color} />);
+  }
   innsmouthIcon(name: string, size: number, color: string) {
     return (<InnsmouthIcon name={name} size={size} color={color} />);
   }
@@ -259,7 +261,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'by_the_book':
         return this.standaloneIcon('by_the_book', size, color);
       case 'parallel':
-        return this.appIcon('parallel', size, color);
+        return this.cardIcon('parallel', size, color);
       case 'cotr':
       case 'curse_of_the_rougarou':
       case 'rougarou':
@@ -609,11 +611,52 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'consternation_on_the_constellation':
       case 'zcc':
         return this.standaloneIcon('consternation_on_the_constellation', size, color);
-      case 'eoe':
-      case 'edge_of_the_earth':
       case 'eoep':
-      case 'eoec':
         return this.edgeIcon('eoe', size, color);
+      case 'eoe':
+      case 'eoec':
+      case 'edge_of_the_earth':
+        return this.edgeIcon('eoe_campaign', size, color);
+      case 'to_the_forbidden_peaks':
+      case 'the_great_seal':
+      case 'city_of_the_elder_things':
+      case 'silence_and_mystery':
+      case 'nameless_horrors':
+      case 'memorials_of_the_lost':
+      case 'ice_and_death':
+      case 'elder_things':
+      case 'creatures_in_the_ice':
+      case 'the_crash':
+      case 'stirring_in_the_deep':
+      case 'penguins':
+      case 'miasma':
+      case 'lost_in_the_night':
+      case 'left_behind':
+      case 'hazards_of_antarctica':
+      case 'expedition_team':
+      case 'deadly_weather':
+      case 'shoggoths':
+      case 'agents_of_the_unknown':
+        return this.edgeIcon(encounter_code, size, color);
+      case 'fatal_mirage':
+      case 'fatal_mirage_2':
+      case 'fatal_mirage_3':
+        return this.edgeIcon('fatal_mirage', size, color);
+      case 'the_heart_of_madness_part_1':
+      case 'the_heart_of_madness_part_2':
+      case 'the_heart_of_madness':
+        return this.edgeIcon('the_heart_of_madness', size, color);
+      case 'tekeli_li':
+      case 'tekelili':
+        return this.edgeIcon('tekeli_li', size, color);
+      case 'ice_and_death_part_1':
+      case 'ice_and_death_part_2':
+      case 'ice_and_death_part_3':
+        return this.edgeIcon('ice_and_death', size, color);
+      case 'sleeping_nightmares':
+      case 'seeping_nightmares':
+        return this.edgeIcon('sleeping_nightmares', size, color);
+      case 'rcore':
       default:
         return this.coreIcon('core', size, color);
     }

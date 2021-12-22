@@ -3,6 +3,7 @@ import { difference, forEach, find, filter, map, union } from 'lodash';
 import {
   Text,
   View,
+  StyleSheet,
 } from 'react-native';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
@@ -54,7 +55,7 @@ const PackFilterView = (props: FilterFunctionProps & NavigationProps) => {
       );
     }
   }, [onFilterChange, packCodes, packNames, allPacks]);
-  const { typography } = useContext(StyleContext);
+  const { backgroundStyle, typography } = useContext(StyleContext);
   const selected = useMemo(() => {
     const selectedPackCodes = new Set(packCodes || []);
     const result: { [pack_code: string]: boolean } = {};
@@ -74,14 +75,16 @@ const PackFilterView = (props: FilterFunctionProps & NavigationProps) => {
     );
   }
   return (
-    <PackListComponent
-      coreSetName={t`Core Set`}
-      componentId={props.componentId}
-      packs={allPacks}
-      checkState={selected}
-      setChecked={setChecked}
-      setCycleChecked={setCycleChecked}
-    />
+    <View style={[styles.container, backgroundStyle]}>
+      <PackListComponent
+        coreSetName={t`Core Set`}
+        componentId={props.componentId}
+        packs={allPacks}
+        checkState={selected}
+        setChecked={setChecked}
+        setCycleChecked={setCycleChecked}
+      />
+    </View>
   );
 };
 PackFilterView.options = () => {
@@ -98,3 +101,10 @@ PackFilterView.options = () => {
   };
 };
 export default PackFilterView;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+

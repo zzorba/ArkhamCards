@@ -14,7 +14,9 @@ import { DeckId } from '@actions/types';
 
 export interface EditDeckProps {
   id: DeckId;
+  side?: boolean;
   storyOnly?: boolean;
+  weaknessOnly?: boolean;
 }
 
 type Props = NavigationProps & EditDeckProps;
@@ -22,7 +24,9 @@ type Props = NavigationProps & EditDeckProps;
 export default function DeckEditView({
   componentId,
   id,
+  side,
   storyOnly,
+  weaknessOnly,
 }: Props) {
   const deck = useDeck(id);
   const deckEdits = useSimpleDeckEdits(id);
@@ -38,10 +42,17 @@ export default function DeckEditView({
   const versatile = !hideVersatile && hasVersatile;
   const onYourOwn = deckEdits && deckEdits.slots[ON_YOUR_OWN_CODE] > 0;
   const queryOpt = useMemo(() => {
+    if (weaknessOnly) {
+      return combineQueries(
+        STORY_CARDS_QUERY,
+        [where(`c.subtype_code is not null AND c.encounter_code is null`)],
+        'and'
+      );
+    }
     if (storyOnly) {
       return combineQueries(
         STORY_CARDS_QUERY,
-        [where(`c.subtype_code != 'basicweakness'`)],
+        [where(`c.subtype_code is null OR c.subtype_code != 'basicweakness'`)],
         'and'
       );
     }
@@ -70,16 +81,20 @@ export default function DeckEditView({
         }
       }
     }
-    const joinedQuery = combineQueries(
-      STORY_CARDS_QUERY,
-      parts,
-      'or'
-    );
+    const joinedQuery = combineQueries(STORY_CARDS_QUERY, parts, 'or');
     if (onYourOwn) {
       return combineQueries(joinedQuery, [ON_YOUR_OWN_RESTRICTION], 'and');
     }
     return joinedQuery;
-  }, [deckEdits?.meta, storyOnly, investigator, versatile, onYourOwn]);
+  }, [deckEdits?.meta, storyOnly, weaknessOnly, investigator, versatile, onYourOwn]);
+  const mode = useMemo(() => {
+    if (storyOnly) {
+      return 'story';
+    }
+    if (side) {
+      return 'side';
+    }
+  }, [storyOnly, side]);
 
   if (!investigator || !queryOpt || !deck || !deckEdits) {
     return null;
@@ -92,7 +107,7 @@ export default function DeckEditView({
       investigator={investigator}
       hideVersatile={hideVersatile}
       setHideVersatile={hasVersatile ? setHideVersatile : undefined}
-      storyOnly={storyOnly}
+      mode={mode}
     />
   );
 }

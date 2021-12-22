@@ -111,16 +111,16 @@ function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
     }
   }, [customScenarioVisible]);
 
-  const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
+  const [processedCampaign] = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const playableScenarios = useMemo(() => {
     return filter(campaignGuide.sideScenarios(), scenario => {
       const alreadyPlayed = !!find(
-        processedCampaign.scenarios,
+        processedCampaign?.scenarios || [],
         playedScenario => playedScenario.id.scenarioId === scenario.id
       );
       return !alreadyPlayed && scenario.side_scenario_type !== 'standalone';
     });
-  }, [campaignGuide, processedCampaign.scenarios]);
+  }, [campaignGuide, processedCampaign?.scenarios]);
   const [playableSideScenarios, playableChallengeScenarios] = useMemo(() => partition(playableScenarios, scenario => scenario.side_scenario_type !== 'challenge'), [playableScenarios]);
   const sideTab = useMemo(() => {
     return (
@@ -128,7 +128,7 @@ function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
         <View style={[styles.header, borderStyle]}>
           <SetupStepWrapper bulletType="none">
             <CampaignGuideTextComponent
-              text={t`A side-story is a scenario that may be played between any two scenarios of an <i>Arkham Horror: The Card Game</i> campaign. Playing a side-story costs each investigator in the campaign a certain amount of experience. Weaknesses, trauma, experience, and rewards granted by playing a side-story stay with the investigators for the remainder of the campaign. Each sidestory may only be played once per campaign.\nThe experience required to play these scenarios will be deducted automatically at the end of the scenario.`} />
+              text={t`A side-story is a scenario that may be played between any two scenarios of an <i>Arkham Horror: The Card Game</i> campaign.\n- Playing a side-story costs each investigator in the campaign a certain amount of experience, which should be paid when you start the scenario.\n- Weaknesses, trauma, experience, and rewards granted by playing a side-story stay with the investigators for the remainder of the campaign.\n- Each sidestory may only be played once per campaign.\n\n<b>Note:</b> When using this app, the experience required to play these scenarios will be deducted automatically at the <b>end of the scenario</b>, but you should be sure you have sufficient experience set aside to pay for it.`} />
           </SetupStepWrapper>
         </View>
         { map(playableSideScenarios, scenario => (

@@ -14,6 +14,7 @@ import {
   REPLACE_LOCAL_DECK,
   getDeckId,
   SYNC_DECK,
+  Slots,
 } from '@actions/types';
 
 interface DeckEditsState {
@@ -37,6 +38,14 @@ const DEFAULT_DECK_EDITS_STATE: DeckEditsState = {
   checklist: {},
   deck_uploads: {},
 };
+
+function getCurrentSlots(edits: EditDeckState, type: 'slots' | 'ignoreDeckLimitSlots' | 'side'): Slots {
+  switch (type) {
+    case 'slots': return { ...edits.slots };
+    case 'ignoreDeckLimitSlots': return { ...edits.ignoreDeckLimitSlots };
+    case 'side': return { ...edits.side };
+  }
+}
 
 export default function(
   state = DEFAULT_DECK_EDITS_STATE,
@@ -63,6 +72,7 @@ export default function(
         nameChange: undefined,
         meta: action.deck.meta || {},
         slots: action.deck.slots || {},
+        side: action.deck.sideSlots || {},
         ignoreDeckLimitSlots: action.deck.ignoreDeckLimitSlots || {},
         xpAdjustment: action.deck.xp_adjustment || 0,
         mode: action.mode || 'view',
@@ -110,6 +120,9 @@ export default function(
     if (action.updates.slots !== undefined) {
       updatedEdits.slots = action.updates.slots;
     }
+    if (action.updates.side !== undefined) {
+      updatedEdits.side = action.updates.side;
+    }
     if (action.updates.ignoreDeckLimitSlots !== undefined) {
       updatedEdits.ignoreDeckLimitSlots = action.updates.ignoreDeckLimitSlots;
     }
@@ -155,9 +168,7 @@ export default function(
         },
       };
     }
-    const currentSlots = {
-      ...(action.countType === 'slots' ? currentEdits.slots : currentEdits.ignoreDeckLimitSlots),
-    };
+    const currentSlots = getCurrentSlots(currentEdits, action.countType);
     switch (action.operation) {
       case 'set':
         currentSlots[action.code] = action.value;
@@ -174,10 +185,16 @@ export default function(
     }
 
     const updatedEdits = { ...currentEdits };
-    if (action.countType === 'slots') {
-      updatedEdits.slots = currentSlots;
-    } else {
-      updatedEdits.ignoreDeckLimitSlots = currentSlots;
+    switch (action.countType) {
+      case 'slots':
+        updatedEdits.slots = currentSlots;
+        break;
+      case 'ignoreDeckLimitSlots':
+        updatedEdits.ignoreDeckLimitSlots = currentSlots;
+        break;
+      case 'side':
+        updatedEdits.side = currentSlots;
+        break;
     }
 
     return {
@@ -237,6 +254,7 @@ export default function(
             nameChange: undefined,
             tabooSetChange: undefined,
             slots: action.deck.slots || {},
+            side: action.deck.sideSlots || {},
             ignoreDeckLimitSlots: action.deck.ignoreDeckLimitSlots || {},
             meta: action.deck.meta || {},
             xpAdjustment: action.deck.xp_adjustment || 0,

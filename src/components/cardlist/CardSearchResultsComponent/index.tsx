@@ -11,7 +11,7 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import FilterBuilder, { FilterState } from '@lib/filters';
 import { MYTHOS_CARDS_QUERY, where, combineQueries, BASIC_QUERY, BROWSE_CARDS_QUERY, combineQueriesOpt, BROWSE_CARDS_WITH_DUPLICATES_QUERY, BASIC_WITH_DUPLICATES_QUERY } from '@data/sqlite/query';
-import Card, { SEARCH_REGEX } from '@data/types/Card';
+import Card, { searchNormalize } from '@data/types/Card';
 import { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext from '@styles/StyleContext';
@@ -39,8 +39,9 @@ interface Props {
   clearSearchFilters: () => void;
 
   investigator?: Card;
-  header?: React.ReactElement;
-  storyOnly?: boolean;
+  headerItems?: React.ReactNode[];
+  headerHeight?: number;
+  mode?: 'story' | 'side';
 
   initialSort?: SortType;
   includeDuplicates?: boolean;
@@ -72,11 +73,11 @@ function SearchOptions({
   toggleSearchFlavor: () => void;
   toggleSearchBack: () => void;
 }) {
-  const { colors, fontScale, typography } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   return (
     <>
       <View style={[styles.column, { alignItems: 'center', flex: 1 }]}>
-        <Text style={[typography.large, { color: colors.M, fontSize: 20 * fontScale, fontFamily: 'Alegreya-Bold' }]}>
+        <Text style={[typography.large, { color: colors.M, fontFamily: 'Alegreya-Bold' }]}>
           { t`Search in:` }
         </Text>
       </View>
@@ -234,8 +235,9 @@ export default function({
   toggleMythosMode,
   clearSearchFilters,
   investigator,
-  header,
-  storyOnly,
+  headerItems,
+  headerHeight,
+  mode,
   initialSort,
   includeDuplicates,
 }: Props) {
@@ -279,7 +281,7 @@ export default function({
     if (searchTerm === '' || !searchTerm) {
       return combineQueriesOpt(parts, 'and');
     }
-    const safeSearchTerm = `%${searchTerm.toLocaleLowerCase(lang).replace(SEARCH_REGEX, '')}%`;
+    const safeSearchTerm = `%${searchNormalize(searchTerm, lang)}%`;
     parts.push(where('c.s_search_name like :searchTerm', { searchTerm: safeSearchTerm }));
     if (searchBack) {
       parts.push(where([
@@ -396,11 +398,12 @@ export default function({
                 toggleSearchBack={toggleSearchBack}
               />
             )}
-            header={header}
+            headerItems={headerItems}
+            headerHeight={headerHeight}
             showNonCollection={showNonCollection}
-            storyOnly={storyOnly}
+            storyOnly={mode === 'story'}
+            sideDeck={mode === 'side'}
             mythosToggle={mythosToggle}
-            //            mythosMode={mythosToggle && mythosMode}
             initialSort={initialSort}
           />
           { deckId !== undefined && (

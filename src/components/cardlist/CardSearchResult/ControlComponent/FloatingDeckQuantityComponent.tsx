@@ -11,9 +11,10 @@ interface Props {
   deckId: DeckId;
   code: string;
   limit: number;
+  side?: boolean;
 }
 
-export default function FloatingDeckQuantityComponent({ deckId, code, limit }: Props) {
+export default function FloatingDeckQuantityComponent({ deckId, code, limit, side }: Props) {
   const { colors, shadow } = useContext(StyleContext);
   return (
     <View style={[styles.fab, shadow.large, { backgroundColor: colors.D20 }]}>
@@ -21,6 +22,7 @@ export default function FloatingDeckQuantityComponent({ deckId, code, limit }: P
         deckId={deckId}
         code={code}
         limit={limit}
+        side={side}
         showZeroCount
         forceBig
       />

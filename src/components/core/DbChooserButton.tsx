@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { Navigation } from 'react-native-navigation';
 import { Brackets } from 'typeorm/browser';
-import { forEach, map } from 'lodash';
+import { forEach, map, uniq } from 'lodash';
 import { t } from 'ttag';
 
 import NavButton from './NavButton';
@@ -13,6 +13,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 interface Props {
   componentId: string;
   title: string;
+  all: string;
   field: string;
   query?: Brackets;
   tabooSetId?: number;
@@ -22,20 +23,22 @@ interface Props {
   processValue?: (value: string) => string[];
   capitalize?: boolean;
   fixedTranslations?: {
-    [key: string]: string;
+    [key: string]: string | undefined;
   };
   includeNone?: boolean;
 }
-export default function DbChooserButton({ componentId, title, field, includeNone, onChange, fixedTranslations, selection, indent, query, tabooSetId, processValue, capitalize }: Props) {
+export default function DbChooserButton({ componentId, title, all, field, includeNone, onChange, fixedTranslations, selection, indent, query, tabooSetId, processValue, capitalize }: Props) {
   const { db } = useContext(DatabaseContext);
-  const { lang, listSeperator } = useContext(LanguageContext);
+  const { lang, listSeperator, colon } = useContext(LanguageContext);
   const [pressed, setPressed] = useState(false);
 
   const onSelectionChange = useCallback((selection: string[]) => {
     if (fixedTranslations) {
       const reversed: { [key: string]: string | undefined} = {};
       forEach(fixedTranslations, (value, key) => {
-        reversed[value] = key;
+        if (value) {
+          reversed[value] = key;
+        }
       });
       onChange(map(selection, item => reversed[item] || item));
     } else {
@@ -46,8 +49,9 @@ export default function DbChooserButton({ componentId, title, field, includeNone
   const onPress = useCallback(() => {
     setPressed(true);
     db.getDistinctFields(field, query, tabooSetId, processValue).then(values => {
-      /*
+
       // This code will export all traits in the english database.
+      /*
       console.log('const localized_traits = {')
       forEach(values, value => {
         const escaped = value.replace(`'`, `\\'`);
@@ -55,19 +59,20 @@ export default function DbChooserButton({ componentId, title, field, includeNone
       });
       console.log('};')
       */
+
       const actualValues = fixedTranslations ? map(values, item => fixedTranslations[item] || item) : values;
       const noneString = includeNone && fixedTranslations ? fixedTranslations.none : undefined;
 
-      const actualSelection = fixedTranslations ? map(selection || [], item => fixedTranslations[item] || item) : selection;
+      const actualSelection = uniq(fixedTranslations ? map(selection || [], item => fixedTranslations[item] || item) : selection);
       Navigation.push<SearchSelectProps>(componentId, {
         component: {
           name: 'SearchFilters.Chooser',
           passProps: {
             placeholder: t`Search ${title}`,
-            values: [
+            values: uniq([
               ...(noneString ? [noneString] : []),
               ...(fixedTranslations ? actualValues.sort((a, b) => a.localeCompare(b, lang)) : actualValues),
-            ],
+            ]),
             onChange: onSelectionChange,
             selection: actualSelection,
             capitalize,
@@ -99,13 +104,13 @@ export default function DbChooserButton({ componentId, title, field, includeNone
 
   const selectedDescription = useMemo(() => {
     if (!selection || !selection.length) {
-      return t`All`;
+      return all;
     }
     return (fixedTranslations ? map(selection, item => fixedTranslations[item] || item) : selection).join(listSeperator);
-  }, [selection, fixedTranslations, listSeperator]);
+  }, [selection, fixedTranslations, all, listSeperator]);
   return (
     <NavButton
-      text={`${title}: ${selectedDescription}`}
+      text={`${title}${colon}${selectedDescription}`}
       onPress={onPress}
       indent={indent}
       disabled={pressed}

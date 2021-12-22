@@ -26,11 +26,11 @@ interface Props {
   componentId: string;
   coreSetName?: string;
   packs: Pack[];
-  checkState?: { [pack_code: string]: boolean};
+  checkState?: { [pack_code: string]: boolean | undefined };
   setChecked: (pack_code: string, checked: boolean) => void;
   setCycleChecked?: (cycle_code: string, checked: boolean) => void;
-  header?: React.ReactElement;
-  renderFooter?: () => React.ReactElement;
+  header?: JSX.Element;
+  renderFooter?: () => JSX.Element;
   baseQuery?: Brackets;
   compact?: boolean;
   noFlatList?: boolean;
@@ -80,7 +80,7 @@ export default function PackListComponent({
   compact,
   noFlatList,
 }: Props) {
-  const { backgroundStyle, typography } = useContext(StyleContext);
+  const { typography } = useContext(StyleContext);
   const renderPack = useCallback((pack: Pack) => {
     const cyclePacks: Pack[] = pack.position === 1 ? filter(packs, p => {
       return (pack.cycle_position === p.cycle_position &&
@@ -134,24 +134,20 @@ export default function PackListComponent({
     });
 
   return (
-    <View style={[styles.container, backgroundStyle]}>
-      <SectionList
-        ListHeaderComponent={header}
-        ListFooterComponent={renderFooter}
-        sections={groups}
-        initialNumToRender={30}
-        renderSectionHeader={renderSectionHeader}
-        renderItem={renderItem}
-        keyExtractor={keyExtractor}
-        stickySectionHeadersEnabled={false}
-        extraData={checkState}
-      />
-    </View>
+    <SectionList
+      ListHeaderComponent={header}
+      ListFooterComponent={renderFooter}
+      sections={groups}
+      initialNumToRender={30}
+      renderSectionHeader={renderSectionHeader}
+      renderItem={renderItem}
+      keyExtractor={keyExtractor}
+      stickySectionHeadersEnabled={false}
+      extraData={checkState}
+    />
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+  container: {},
 });

@@ -10,11 +10,12 @@ import AppIcon from '@icons/AppIcon';
 import { TINY_PHONE } from '@styles/sizes';
 
 interface OwnProps {
-  iconKey?: ChaosTokenType | 'tap' | 'another' | 'return' | 'odds' | 'bag';
+  iconKey?: ChaosTokenType | 'tap' | 'another' | 'return' | 'odds' | 'bag' | 'more';
   size?: 'small' | 'tiny' | 'extraTiny';
   sealed?: boolean;
   shadow?: boolean;
   status?: 'added' | 'removed';
+  total?: number;
 }
 
 type Props = OwnProps;
@@ -28,6 +29,10 @@ const GRADIENTS: { [token: string]: {
   colors: string[];
   stops: number[];
 } | undefined } = {
+  frost: {
+    colors: ['#3D3A63', '#495483'],
+    stops: [0.6, 1.0],
+  },
   auto_fail: {
     colors: ['#8D181E', '#6A0B10'],
     stops: [0.75, 1.0],
@@ -135,7 +140,14 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
               <ChaosTokenPart name="token_elder_sign_highlight" color="#E6E1D3" size={size} />
             </>
           );
-        case 'frost': // TODO(frost)
+        case 'frost':
+          return (
+            <>
+              <ChaosTokenPart name="token_number_fill" color="#3D3A63" size={size} />
+              <ChaosTokenPart name="token_frost_overlay" color="#E6E1D3" size={size} />
+              <ChaosTokenPart name="token_frost_highlight" color="#FFFBF2" size={size} />
+            </>
+          );
         case 'bless':
           return (
             <>
@@ -221,7 +233,7 @@ export function getChaosTokenSize(iconSize?: 'small' | 'tiny' | 'extraTiny') {
   }
 }
 
-export default function ChaosToken({ iconKey, size: iconSize, sealed, status, shadow: useShadow }: Props) {
+export default function ChaosToken({ iconKey, size: iconSize, sealed, status, shadow: useShadow, total }: Props) {
   const { colors, typography, shadow } = useContext(StyleContext);
   const size = getChaosTokenSize(iconSize);
   if (!iconKey) {
@@ -236,6 +248,14 @@ export default function ChaosToken({ iconKey, size: iconSize, sealed, status, sh
         </View>
       );
     }
+    case 'more':
+      return (
+        <View style={{ width: size, height: size, flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          <View style={[{ width: size - 2, height: size - 2, borderRadius: (size - 2) / 2, backgroundColor: colors.L10 }, styles.tapCircle, shadow.small]}>
+            { !!total && <Text style={[typography.small, typography.italic, typography.center, { color: colors.M }]}>{`×${total}`}</Text> }
+          </View>
+        </View>
+      );
     case 'odds':
     case 'bag':
       return (

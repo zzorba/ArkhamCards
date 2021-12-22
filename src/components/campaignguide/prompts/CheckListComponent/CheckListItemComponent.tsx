@@ -1,7 +1,8 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import space, { s } from '@styles/space';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import space, { isTablet, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import Card from '@data/types/Card';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
@@ -23,6 +24,7 @@ interface Props {
   onChoiceToggle: (code: string, value: boolean) => void;
   onSecondaryChoice?: (code: string) => void;
   editable: boolean;
+  last?: boolean;
 }
 
 function InvesigatorCheckListItemComponent({
@@ -83,7 +85,7 @@ function InvesigatorCheckListItemComponent({
         yithian={yithian}
       >
         <View style={styles.rowRight}>
-          { trauma && <TraumaSummary trauma={traumaAndCardData} investigator={investigator} whiteText /> }
+          { trauma && <View style={space.paddingRightXs}><TraumaSummary trauma={traumaAndCardData} investigator={investigator} whiteText /></View> }
           { onSecondaryChoice ? secondaryButton : switchContent }
         </View>
       </CompactInvestigatorRow>
@@ -112,11 +114,47 @@ export default function CheckListItemComponent({
   onChoiceToggle,
   onSecondaryChoice,
   editable,
+  last,
 }: Props) {
-  const { typography } = useContext(StyleContext);
+  const { borderStyle, colors, typography } = useContext(StyleContext);
   const toggle = useCallback((value: boolean) => {
     onChoiceToggle(code, value);
   }, [onChoiceToggle, code]);
+  const content = useMemo(() => {
+    return (
+      <View style={styles.row}>
+        { editable ? (
+          <ArkhamSwitch
+            value={selected}
+            large
+          />
+        ) : (
+          <ArkhamSwitch value large />
+        ) }
+        <View style={[styles.column, space.paddingLeftS]}>
+          { name.startsWith('[') && name.endsWith(']') ? (
+            <ArkhamIcon name={name.substr(1, name.length - 2)} color={colors.D30} size={36} />
+          ) : (
+            <Text style={[
+              typography.mediumGameFont,
+              styles.nameText,
+              color ? { color: 'white' } : {},
+            ]}>
+              { name }
+            </Text>
+          ) }
+          { !!description && (
+            <Text style={[typography.cardTraits, color ? { color: 'white' } : {}]}>
+              { description }
+            </Text>
+          )}
+        </View>
+      </View>
+    );
+  }, [name, typography, description, colors, color, editable, selected]);
+  const onPress = useCallback(() => {
+    toggle(!selected);
+  }, [toggle, selected]);
   if (!editable && !selected) {
     return null;
   }
@@ -134,36 +172,17 @@ export default function CheckListItemComponent({
       />
     );
   }
+  const showBorder = !last && isTablet;
   return (
     <View style={[
       styles.row,
       space.paddingTopS,
       space.paddingBottomS,
       color ? { backgroundColor: color } : {},
+      showBorder ? borderStyle : undefined,
+      showBorder ? { borderBottomWidth: StyleSheet.hairlineWidth } : undefined,
     ]}>
-      <View style={[styles.column, space.paddingLeftS]}>
-        <Text style={[
-          typography.mediumGameFont,
-          styles.nameText,
-          color ? { color: 'white' } : {},
-        ]}>
-          { name }
-        </Text>
-        { !!description && (
-          <Text style={[typography.cardTraits, color ? { color: 'white' } : {}]}>
-            { description }
-          </Text>
-        )}
-      </View>
-      { editable ? (
-        <ArkhamSwitch
-          onValueChange={toggle}
-          value={selected}
-          large
-        />
-      ) : (
-        <ArkhamSwitch value large />
-      ) }
+      { editable ? <TouchableOpacity onPress={onPress}>{content}</TouchableOpacity> : content }
     </View>
   );
 }
@@ -175,7 +194,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
   },
   column: {
     flexDirection: 'column',

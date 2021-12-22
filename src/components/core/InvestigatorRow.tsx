@@ -18,6 +18,7 @@ import InvestigatorImage from '@components/core/InvestigatorImage';
 import Card from '@data/types/Card';
 import space, { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   superTitle?: string;
@@ -47,6 +48,7 @@ export default function InvestigatorRow({
   children,
   noFactionIcon,
 }: Props) {
+  const { colon } = useContext(LanguageContext);
   const { backgroundStyle, borderStyle, colors, fontScale, typography } = useContext(StyleContext);
   const handleOnPress = useCallback(() => {
     onPress && investigator && onPress(investigator);
@@ -105,7 +107,7 @@ export default function InvestigatorRow({
                 superTitle ? typography.gameFont : typography.bigGameFont,
                 typography.dark,
               ]}>
-                { description ? `${investigator.name}: ${description}` : investigator.name }
+                { description ? `${investigator.name}${colon}${description}` : investigator.name }
               </Text>
             ) : (
               <Placeholder Animation={detailFadeAnim}>
@@ -167,7 +169,7 @@ export default function InvestigatorRow({
     bigImage,
     noFactionIcon,
     superTitle,
-    backgroundStyle, borderStyle, colors, typography, fontScale,
+    backgroundStyle, borderStyle, colors, typography, fontScale, colon,
   ]);
 
   if (!onPress) {

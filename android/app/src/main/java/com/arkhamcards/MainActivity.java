@@ -2,13 +2,16 @@ package com.arkhamcards;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
+import com.facebook.react.ReactActivityDelegate;
+import com.facebook.react.ReactRootView;
 import com.reactnativenavigation.NavigationActivity;
+
+import javax.annotation.Nonnull;
 
 public class MainActivity extends NavigationActivity {
     @Override
@@ -24,6 +27,4 @@ public class MainActivity extends NavigationActivity {
 
         return splash;
     }
-
-
 }

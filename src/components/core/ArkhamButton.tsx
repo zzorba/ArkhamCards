@@ -5,6 +5,7 @@ import Ripple from '@lib/react-native-material-ripple';
 import ArkhamButtonIcon, { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   icon: ArkhamButtonIconType;
@@ -15,9 +16,13 @@ interface Props {
   noShadow?: boolean;
 }
 
+const computeHeight = (fontScale: number, lang: string) => {
+  return (fontScale * (lang === 'zh' ? 22 : 20)) + 20 + 20;
+};
 function ArkhamButton({ icon, title, onPress, grow, variant = 'fill', noShadow }: Props) {
   const { colors, fontScale, shadow, typography } = useContext(StyleContext);
-  const height = (18 * fontScale) + 20;
+  const { lang } = useContext(LanguageContext);
+  const height = ((lang === 'zh' ? 22 : 20) * fontScale) + 20;
   const shadowClass = variant === 'fill' ? shadow.medium : shadow.small;
   return (
     <View style={[styles.wrapper, grow ? { flexDirection: 'row' } : styles.inline]}>
@@ -50,9 +55,7 @@ function ArkhamButton({ icon, title, onPress, grow, variant = 'fill', noShadow }
   );
 }
 
-ArkhamButton.Height = (fontScale: number) => {
-  return (fontScale * 18) + 20 + 20;
-};
+ArkhamButton.computeHeight = computeHeight;
 export default ArkhamButton;
 
 const styles = StyleSheet.create({

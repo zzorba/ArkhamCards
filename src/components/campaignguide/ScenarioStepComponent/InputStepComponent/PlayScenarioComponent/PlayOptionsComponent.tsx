@@ -85,6 +85,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
     scenarioId: processedScenario.id.scenarioId,
     customEditPressed: chaosBagIndex !== undefined ? editChaosBagPressed : undefined,
     standalone: !!campaign.standaloneId,
+    cycleCode: campaign.cycleCode,
   });
   setChaosBagDialogVisibleRef.current = setChaosBagDialogVisible;
 
@@ -221,7 +222,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
         <View style={space.paddingBottomS}>
           <TouchableOpacity onPress={resolutionPressed}>
             <View style={[styles.resolutionBlock, { backgroundColor: colors.campaign.resolutionBackground }]}>
-              <BorderWrapper border resolution width={width - s * 4}>
+              <BorderWrapper border color="resolution" width={width - s * 4}>
                 <View style={[styles.resolutionContent, space.paddingS, space.paddingTopL]}>
                   <Text style={[typography.bigGameFont, { color: colors.campaign.resolution }]}>{t`Scenario Ended`}</Text>
                   { !input.no_resolutions && <Text style={typography.mediumGameFont}>{t`Proceed to Resolutions`}</Text> }

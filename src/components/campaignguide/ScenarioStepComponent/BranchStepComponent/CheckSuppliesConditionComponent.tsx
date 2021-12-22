@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
-import { find, map } from 'lodash';
-import { msgid, ngettext } from 'ttag';
+import { find, map, every } from 'lodash';
+import { c, msgid } from 'ttag';
 
 import { stringList } from '@lib/stringHelper';
 import SetupStepWrapper from '../../SetupStepWrapper';
@@ -23,6 +23,56 @@ interface Props {
   campaignLog: GuidedCampaignLog;
 }
 
+function getGender(cards: Card[]): 'masculine' | 'feminine' | 'mixed' {
+  if (every(cards, c => c.grammarGenderMasculine())) {
+    return 'masculine';
+  }
+  if (every(cards, c => !c.grammarGenderMasculine())) {
+    return 'feminine';
+  }
+  return 'mixed';
+}
+
+function getText(cards: Card[], supplyName: string, sectionName: string, positive: boolean, listSeperator: string) {
+  const list = stringList(map(cards, card => card.name), listSeperator);
+  const gender = getGender(cards);
+  switch(gender) {
+    case 'masculine':
+      return positive ?
+        c('masculine').ngettext(
+          msgid`Since ${list} has a ${supplyName}, they must read <b>${sectionName}</b>.`,
+          `Since ${list} all have a ${supplyName}, they must read <b>${sectionName}</b>.`,
+          cards.length
+        ) : c('masculine').ngettext(
+          msgid`Since ${list} does not have a ${supplyName}, they must read <b>${sectionName}</b>.`,
+          `Since ${list} do not have a ${supplyName}, they must read <b>${sectionName}</b>.`,
+          cards.length
+        );
+    case 'feminine':
+      return positive ?
+        c('feminine').ngettext(
+          msgid`Since ${list} has a ${supplyName}, they must read <b>${sectionName}</b>.`,
+          `Since ${list} all have a ${supplyName}, they must read <b>${sectionName}</b>.`,
+          cards.length
+        ) : c('feminine').ngettext(
+          msgid`Since ${list} does not have a ${supplyName}, they must read <b>${sectionName}</b>.`,
+          `Since ${list} do not have a ${supplyName}, they must read <b>${sectionName}</b>.`,
+          cards.length
+        );
+    case 'mixed':
+      return positive ?
+        c('mixed').ngettext(
+          msgid`Since ${list} has a ${supplyName}, they must read <b>${sectionName}</b>.`,
+          `Since ${list} all have a ${supplyName}, they must read <b>${sectionName}</b>.`,
+          cards.length
+        ) : c('mixed').ngettext(
+          msgid`Since ${list} does not have a ${supplyName}, they must read <b>${sectionName}</b>.`,
+          `Since ${list} do not have a ${supplyName}, they must read <b>${sectionName}</b>.`,
+          cards.length
+        );
+  }
+}
+
 export default function CheckSuppliesConditionComponent({ step, condition, campaignLog }: Props) {
   const { listSeperator } = useContext(LanguageContext);
   const renderCondition = useCallback((cards: Card[], positive: boolean) => {
@@ -32,20 +82,10 @@ export default function CheckSuppliesConditionComponent({ step, condition, campa
     }
     const sectionName = option.prompt || 'Missing';
     const supplyName = condition.name;
-    const list = stringList(map(cards, card => card.name), listSeperator);
     return (
       <SetupStepWrapper bulletType="small">
         <CampaignGuideTextComponent
-          text={positive ?
-            ngettext(
-              msgid`Since ${list} has a ${supplyName}, they must read <b>${sectionName}</b>.`,
-              `Since ${list} all have a ${supplyName}, they must read <b>${sectionName}</b>.`,
-              cards.length
-            ) : ngettext(
-              msgid`Since ${list} does not have a ${supplyName}, they must read <b>${sectionName}</b>.`,
-              `Since ${list} do not have a ${supplyName}, they must read <b>${sectionName}</b>.`,
-              cards.length
-            )}
+          text={getText(cards, supplyName, sectionName, positive, listSeperator)}
         />
       </SetupStepWrapper>
     );

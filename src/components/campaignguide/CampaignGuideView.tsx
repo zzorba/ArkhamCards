@@ -15,20 +15,23 @@ import CampaignDetailTab from './CampaignDetailTab';
 import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
 import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 import space, { s } from '@styles/space';
-import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
 import { useDeckActions } from '@data/remote/decks';
 import StyleContext from '@styles/StyleContext';
 import DeckButton from '@components/deck/controls/DeckButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { getDownloadLink } from './ScenarioComponent';
+import CampaignErrorView from './CampaignErrorView';
+import LoadingSpinner from '@components/core/LoadingSpinner';
+import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
-type Props = CampaignGuideProps & NavigationProps & InjectedCampaignGuideContextProps;
+type Props = CampaignGuideProps & NavigationProps & InjectedCampaignGuideContextProps & LoginStateProps & { upload?: boolean };
 
 function CampaignGuideView(props: Props) {
   const [countDialog, showCountDialog] = useCountDialog();
-  const { componentId, setCampaignServerId } = props;
+  const { componentId, setCampaignServerId, login, upload } = props;
   const campaignData = useContext(CampaignGuideContext);
   const { typography } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
@@ -46,7 +49,7 @@ function CampaignGuideView(props: Props) {
       },
     });
   }, [campaignId, dispatch, updateCampaignActions, componentId]);
-  const { dialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
+  const [dialog, showEditNameDialog] = useSimpleTextDialog({
     title: t`Name`,
     value: campaignData.campaign.name,
     onValueChange: setCampaignName,
@@ -60,7 +63,9 @@ function CampaignGuideView(props: Props) {
   }, componentId, [showEditNameDialog]);
 
   const { campaignGuide, campaignState, campaign } = campaignData;
-  const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
+  useCampaignDeleted(componentId, campaign);
+
+  const [processedCampaign, processedCampaignError] = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const [alertDialog, showAlert] = useAlertDialog();
   const customData = campaignGuide.campaignCustomData();
   const downloadPressed = useCallback(() => {
@@ -96,6 +101,7 @@ function CampaignGuideView(props: Props) {
           setCampaignServerId={setCampaignServerId}
           showAlert={showAlert}
           deckActions={deckActions}
+          upload={upload}
         />
         <DeleteCampaignButton
           componentId={componentId}
@@ -106,7 +112,13 @@ function CampaignGuideView(props: Props) {
         />
       </View>
     );
-  }, [componentId, campaign, campaignId, deckActions, typography, customData, updateCampaignActions, downloadPressed, setCampaignServerId, showAlert]);
+  }, [componentId, campaign, campaignId, deckActions, typography, customData, updateCampaignActions, upload, downloadPressed, setCampaignServerId, showAlert]);
+  if (!processedCampaign) {
+    if (processedCampaignError) {
+      return <CampaignErrorView message={processedCampaignError} />;
+    }
+    return <LoadingSpinner large />;
+  }
   return (
     <View style={styles.wrapper}>
       <CampaignDetailTab
@@ -116,6 +128,7 @@ function CampaignGuideView(props: Props) {
         showCountDialog={showCountDialog}
         footerButtons={footerButtons}
         updateCampaignActions={updateCampaignActions}
+        login={login}
       />
       { alertDialog }
       { dialog }
@@ -124,7 +137,10 @@ function CampaignGuideView(props: Props) {
   );
 }
 
-export default withCampaignGuideContext(CampaignGuideView, { rootView: true });
+export default withCampaignGuideContext(
+  withLoginState<Props>(CampaignGuideView, { noWrapper: true }),
+  { rootView: true }
+);
 
 const styles = StyleSheet.create({
   wrapper: {

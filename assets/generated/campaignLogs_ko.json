@@ -1,0 +1,4942 @@
+[
+  {
+    "campaignId": "core",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "arkham_succumbed",
+            "text": "우몰도스의 끔찍한 복수에 아컴이 무릎을 꿇다"
+          },
+          {
+            "id": "ghoul_priest_alive",
+            "text": "‘구울 사제’가 여전히 살아 있다"
+          },
+          {
+            "id": "house_burned",
+            "text": "당신의 집이 불타버렸다"
+          },
+          {
+            "id": "house_standing",
+            "text": "당신의 집이 여전히 남아 있다"
+          },
+          {
+            "id": "lita_finds_others",
+            "text": "리타는 어쩔 수 없이 다른 사람에게 도움을 요청했다"
+          },
+          {
+            "id": "lita_sacrificed",
+            "text": "조사자가 리타 챈들러를 우몰도스에게 희생시켰다"
+          },
+          {
+            "id": "past_midnight",
+            "text": "자정이 지났다"
+          },
+          {
+            "id": "ritual_broken",
+            "text": "우몰도스를 소환하는 의식을 분쇄하다"
+          },
+          {
+            "id": "umordhoth_repelled",
+            "text": "조사자들이 우몰도스를 격퇴하다"
+          }
+        ]
+      },
+      {
+        "section": "cultists_escaped",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name#"
+          }
+        ]
+      },
+      {
+        "section": "cultists_interrogated",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name#"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "dwl",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "banished_silas_bishop",
+            "text": "조사자들이 사일러스 비숍을 소멸시켰다"
+          },
+          {
+            "id": "bone_to_pick",
+            "text": "오베니언 갱이 조사자들에게 앙심을 품었다"
+          },
+          {
+            "id": "brood_escaped",
+            "text": "요그 소토스의 새끼 #X#마리가 험지로 탈출했다"
+          },
+          {
+            "id": "calmed_townsfolk",
+            "text": "마을 주민들을 진정시켰다"
+          },
+          {
+            "id": "closed_tear",
+            "text": "조사자들이 현실에 생긴 균열을 닫았다"
+          },
+          {
+            "id": "destroyed_necronomicon",
+            "text": "조사자들이 네크로노미콘을 파괴했다"
+          },
+          {
+            "id": "earl_sawyer_survived",
+            "text": "얼 소여가 던위치의 유산에서 살아남았다"
+          },
+          {
+            "id": "entered_the_gate",
+            "text": "조사자들이 차원문으로 들어갔다"
+          },
+          {
+            "id": "experiment_defeated",
+            "text": "실험체를 쓰러뜨렸다"
+          },
+          {
+            "id": "failed_to_recover_necronomicon",
+            "text": "조사자들이 네크로노미콘을 회수하지 못했다"
+          },
+          {
+            "id": "failed_to_save_students",
+            "text": "조사자들이 학생들을 구하지 못했다"
+          },
+          {
+            "id": "francis_morgan_kidnapped",
+            "text": "‘프랜시스 모건 박사’는 납치되었다"
+          },
+          {
+            "id": "francis_morgan_rescued",
+            "text": "조사자들이 프랜시스 모건 박사를 구출했다"
+          },
+          {
+            "id": "francis_morgan_survived",
+            "text": "프랜시스 모건 박사가 던위치의 유산에서 살아남았다"
+          },
+          {
+            "id": "henry_armitage_kidnapped",
+            "text": "헨리 아미티지 박사가 납치되었다"
+          },
+          {
+            "id": "henry_armitage_rescued",
+            "text": "조사자들이 헨리 아미티지 박사를 구출했다"
+          },
+          {
+            "id": "henry_armitage_survived",
+            "text": "헨리 아미티지 박사가 던위치의 유산에서 살아남았다"
+          },
+          {
+            "id": "investigators_delayed",
+            "text": "조사자들이 던위치에 예정보다 늦게 도착했다"
+          },
+          {
+            "id": "killed_silas_bishop",
+            "text": "조사자들이 사일러스 비숍의 비극적인 삶을 끝내주었다"
+          },
+          {
+            "id": "naomi_has_back",
+            "text": "나오미가 조사자들의 뒤를 맡았다"
+          },
+          {
+            "id": "necronomicon_stolen",
+            "text": "네크로노미콘을 도난당했다"
+          },
+          {
+            "id": "no_brood_escaped",
+            "text": "요그 소토스의 새끼가 한 마리도 험지로 달아나지 못했다"
+          },
+          {
+            "id": "restored_silas_bishop",
+            "text": "조사자들이 사일러스 비숍을 본모습으로 회복시켰다"
+          },
+          {
+            "id": "ritual_completed",
+            "text": "의식이 완전히 거행되었다"
+          },
+          {
+            "id": "students_rescued",
+            "text": "학생들을 구해냈다"
+          },
+          {
+            "id": "took_necronomicon",
+            "text": "조사자들이 네크로노미콘을 보관했다"
+          },
+          {
+            "id": "unconscious_for_several_hours",
+            "text": "조사자들이 몇 시간 동안 의식을 잃었다"
+          },
+          {
+            "id": "warned_townsfolk",
+            "text": "마을 주민들에게 경고했다"
+          },
+          {
+            "id": "warren_rice_kidnapped",
+            "text": "‘워렌 라이스 박사’는 납치되었다"
+          },
+          {
+            "id": "warren_rice_rescued",
+            "text": "조사자들이 워렌 라이스 교수를 구출했다"
+          },
+          {
+            "id": "warren_rice_survived",
+            "text": "워렌 라이스 교수가 던위치의 유산에서 살아남았다"
+          },
+          {
+            "id": "yog_sothoth_became_one_with_reality",
+            "text": "요그 소토스가 세계 사이의 장막을 찢고 나와 모든 현실과 하나가 되었다"
+          },
+          {
+            "id": "yog_sothoth_escaped",
+            "text": "요그 소토스가 세계 사이의 장막을 찢고 나와 모든 현실과 하나가 되었다"
+          },
+          {
+            "id": "yog_sothoth_fled",
+            "text": "요그 소토스가 다른 차원으로 달아났다"
+          },
+          {
+            "id": "zebulon_whateley_survived",
+            "text": "지블런 웨이틀리가 던위치의 유산에서 살아남았다"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "tmm_add_chaos_token",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "sacrificed",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name#"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "eoe",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "killed_in_plane_crash",
+            "masculine_text": "#name# was killed in the plane crash.",
+            "feminine_text": "#name# was killed in the plane crash."
+          },
+          {
+            "id": "camp_barrier_camp",
+            "text": "Camp - Barrier Camp (7)"
+          },
+          {
+            "id": "camp_broad_snowdrifts",
+            "text": "Camp - Broad Snowdrifts (4)"
+          },
+          {
+            "id": "camp_crash_site",
+            "text": "Camp - Crash Site (0)"
+          },
+          {
+            "id": "camp_crystalline_cavern",
+            "text": "Camp - Crystalline Cavern (8)"
+          },
+          {
+            "id": "camp_frigid_cave",
+            "text": "Camp - Frigid Cave (6)"
+          },
+          {
+            "id": "camp_frozen_shores",
+            "text": "Camp - Frozen Shores (2)"
+          },
+          {
+            "id": "camp_icebreaker_landing",
+            "text": "Camp - Icebreaker Landing (5)"
+          },
+          {
+            "id": "camp_icy_wastes",
+            "text": "Camp - Icy Wastes (4)"
+          },
+          {
+            "id": "camp_precarious_ice_sheet",
+            "text": "Camp - Precarious Ice Sheet (2)"
+          },
+          {
+            "id": "camp_remnants_of_lakes_camp",
+            "text": "Camp - Remnants of Lake's Camp (7)"
+          },
+          {
+            "id": "camp_rocky_crags",
+            "text": "Camp - Rocky Crags (3)"
+          },
+          {
+            "id": "camp_snow_graves",
+            "text": "Camp - Snow Graves (5)"
+          },
+          {
+            "id": "camp_treacherous_path",
+            "text": "Camp - Treacherous Path (1)"
+          },
+          {
+            "id": "claypool_has_confronted_his_demons",
+            "text": "Claypool has confronted his demons."
+          },
+          {
+            "id": "convinced_dyer_to_allow_the_expedition",
+            "text": "the investigators convinced Dyer to allow the expedition."
+          },
+          {
+            "id": "cookie_has_confronted_his_demons",
+            "text": "Cookie has confronted his demons."
+          },
+          {
+            "id": "danforth_has_confronted_his_demons",
+            "text": "Danforth has confronted his demons."
+          },
+          {
+            "id": "did_not_believe_dyers_report",
+            "text": "the investigators did not believe Dyer's report."
+          },
+          {
+            "id": "discovered_an_ancient_vault",
+            "text": "The team discovered an ancient vault."
+          },
+          {
+            "id": "dr_kensler_has_a_plan",
+            "text": "Dr. Kensler has a plan."
+          },
+          {
+            "id": "dr_kensler_has_confronted_her_demons",
+            "text": "Dr. Kensler has confronted her demons."
+          },
+          {
+            "id": "dr_kensler_is_on_the_verge_of_understanding",
+            "text": "Dr. Kensler is on the verge of understanding."
+          },
+          {
+            "id": "dr_kensler_is_sharing_her_research_with_you",
+            "text": "Dr. Kensler is sharing her research with you."
+          },
+          {
+            "id": "dr_kensler_understands_the_true_nature_of_the_miasma",
+            "text": "Dr. Kensler understands the true nature of the miasma."
+          },
+          {
+            "id": "dr_sinha_has_confronted_her_demons",
+            "text": "Dr. Sinha has confronted her demons."
+          },
+          {
+            "id": "dyer_has_confronted_his_demons",
+            "text": "Dyer has confronted his demons."
+          },
+          {
+            "id": "eliyah_has_confronted_his_demons",
+            "text": "Eliyah has confronted his demons."
+          },
+          {
+            "id": "ellsworth_has_confronted_his_demons",
+            "text": "Ellsworth has confronted his demons."
+          },
+          {
+            "id": "facility_was_destroyed",
+            "text": "the facility was destroyed."
+          },
+          {
+            "id": "nameless_madness_escaped",
+            "text": "the nameless madness escaped."
+          },
+          {
+            "id": "nameless_madness_is_contained_safely_within_its_host_for_now",
+            "text": "the nameless madness is contained safely within its host… for now."
+          },
+          {
+            "id": "photographed_the_astronomical_charts",
+            "text": "The team photographed the astronomical charts."
+          },
+          {
+            "id": "read_the_map",
+            "text": "the team read the map."
+          },
+          {
+            "id": "scouted_the_city_outskirts",
+            "text": "the investigators scouted the city outskirts."
+          },
+          {
+            "id": "scouted_the_forked_passage",
+            "text": "the investigators scouted the forked passage."
+          },
+          {
+            "id": "scouted_the_mountain_pass",
+            "text": "the investigators scouted the mountain pass."
+          },
+          {
+            "id": "studied_the_mural_carvings",
+            "text": "the team studied the mural carvings."
+          },
+          {
+            "id": "surviving_investigators",
+            "text": "- #name#"
+          },
+          {
+            "id": "surviving_members_header",
+            "text": "the survivors of the expedition were:"
+          },
+          {
+            "id": "surviving_partners",
+            "text": "- #name#"
+          },
+          {
+            "id": "takada_has_confronted_her_demons",
+            "text": "Takada has confronted her demons."
+          },
+          {
+            "id": "team_barely_escaped_the_ice_shelf",
+            "text": "the team barely escaped the ice shelf."
+          },
+          {
+            "id": "team_climbed_to_the_summit",
+            "text": "the team climbed to the summit."
+          },
+          {
+            "id": "team_defeated_the_hunting_creatures",
+            "text": "the team defeated the hunting creatures."
+          },
+          {
+            "id": "team_escaped_the_facility",
+            "text": "the team escaped the facility."
+          },
+          {
+            "id": "team_fled_to_the_mountains",
+            "text": "the team fled to the mountains."
+          },
+          {
+            "id": "team_found_another_way_through_the_mountains",
+            "text": "the team found another way through the mountains."
+          },
+          {
+            "id": "team_found_the_hidden_tunnel",
+            "text": "the team found the hidden tunnel."
+          },
+          {
+            "id": "team_was_guided_to_the_hidden_tunnel",
+            "text": "the team was guided to the hidden tunnel."
+          },
+          {
+            "id": "the_seal_was_used_improperly",
+            "text": "the seal was used… improperly."
+          },
+          {
+            "id": "truth_of_the_mirage_eludes_you",
+            "text": "the truth of the mirage eludes you."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "partner_missing",
+            "text": "#name# is MIA.",
+            "masculine_text": "#name# is MIA.",
+            "feminine_text": "#name# is MIA."
+          },
+          {
+            "id": "camp_shelter",
+            "text": "#X#"
+          },
+          {
+            "id": "city_elder_things_danforth",
+            "text": "dummy"
+          },
+          {
+            "id": "city_elder_things_takada",
+            "text": "dummy"
+          },
+          {
+            "id": "city_of_the_elder_things_v1",
+            "text": "dummy"
+          },
+          {
+            "id": "city_of_the_elder_things_v2",
+            "text": "dummy"
+          },
+          {
+            "id": "city_of_the_elder_things_v3",
+            "text": "dummy"
+          },
+          {
+            "id": "continue_ice_and_death_part_2",
+            "text": "dummy"
+          },
+          {
+            "id": "continue_ice_and_death_part_3",
+            "text": "dummy"
+          },
+          {
+            "id": "continue_the_heard_of_madness_2",
+            "text": "dummy"
+          },
+          {
+            "id": "discovered_airfield",
+            "text": "dummy"
+          },
+          {
+            "id": "discovered_alaskan_wilds",
+            "text": "dummy"
+          },
+          {
+            "id": "discovered_base_camp",
+            "text": "dummy"
+          },
+          {
+            "id": "discovered_cluttered_dormitory",
+            "text": "dummy"
+          },
+          {
+            "id": "discovered_coastal_waters",
+            "text": "dummy"
+          },
+          {
+            "id": "discovered_deck_of_the_theodosia",
+            "text": "dummy"
+          },
+          {
+            "id": "discovered_deserted_station",
+            "text": "dummy"
+          },
+          {
+            "id": "discovered_dr_kenslers_office",
+            "text": "dummy"
+          },
+          {
+            "id": "discovered_dyers_classroom",
+            "text": "dummy"
+          },
+          {
+            "id": "discovered_elder_chamber",
+            "text": "dummy"
+          },
+          {
+            "id": "discovered_hedge_maze",
+            "text": "dummy"
+          },
+          {
+            "id": "discovered_infirmary",
+            "text": "dummy"
+          },
+          {
+            "id": "discovered_moai_statues",
+            "text": "dummy"
+          },
+          {
+            "id": "discovered_ottoman_front",
+            "text": "dummy"
+          },
+          {
+            "id": "discovered_riverview_theatre",
+            "text": "dummy"
+          },
+          {
+            "id": "discovered_standing_stones",
+            "text": "dummy"
+          },
+          {
+            "id": "discovered_the_black_stone",
+            "text": "dummy"
+          },
+          {
+            "id": "discovered_university_halls",
+            "text": "dummy"
+          },
+          {
+            "id": "dyer_dead_interlude",
+            "text": "dummy"
+          },
+          {
+            "id": "dynamite_recovered",
+            "text": "dummy"
+          },
+          {
+            "id": "endless_night_amy_kensler",
+            "text": "dummy"
+          },
+          {
+            "id": "endless_night_avery_claypool",
+            "text": "dummy"
+          },
+          {
+            "id": "endless_night_danforth",
+            "text": "dummy"
+          },
+          {
+            "id": "endless_night_dyer_yes",
+            "text": "dummy"
+          },
+          {
+            "id": "endless_night_eliyah_ashevak",
+            "text": "dummy"
+          },
+          {
+            "id": "endless_night_james_fredericks",
+            "text": "dummy"
+          },
+          {
+            "id": "endless_night_mala_sinha",
+            "text": "dummy"
+          },
+          {
+            "id": "endless_night_roald_ellsworth",
+            "text": "dummy"
+          },
+          {
+            "id": "endless_night_takada_hiroko",
+            "text": "dummy"
+          },
+          {
+            "id": "endless_night_william_dyer",
+            "text": "dummy"
+          },
+          {
+            "id": "final_night_amy_kensler",
+            "text": "dummy"
+          },
+          {
+            "id": "final_night_avery_claypool",
+            "text": "dummy"
+          },
+          {
+            "id": "final_night_danforth",
+            "text": "dummy"
+          },
+          {
+            "id": "final_night_dyer_yes",
+            "text": "dummy"
+          },
+          {
+            "id": "final_night_eliya_ashevak",
+            "text": "dummy"
+          },
+          {
+            "id": "final_night_eliyah_ashevak",
+            "text": "dummy"
+          },
+          {
+            "id": "final_night_james_fredericks",
+            "text": "dummy"
+          },
+          {
+            "id": "final_night_mala_sinha",
+            "text": "dummy"
+          },
+          {
+            "id": "final_night_roald_ellsworth",
+            "text": "dummy"
+          },
+          {
+            "id": "final_night_takada_hiroko",
+            "text": "dummy"
+          },
+          {
+            "id": "final_night_william_dyer",
+            "text": "dummy"
+          },
+          {
+            "id": "final_straw_victim",
+            "text": "dummy"
+          },
+          {
+            "id": "forbidden_peaks_danforth",
+            "text": "dummy"
+          },
+          {
+            "id": "forbidden_peaks_takada",
+            "text": "dummy"
+          },
+          {
+            "id": "gaze_into_madness",
+            "text": "dummy"
+          },
+          {
+            "id": "green_soapstone_recovered",
+            "text": "dummy"
+          },
+          {
+            "id": "heart_of_madness_danforth",
+            "text": "dummy"
+          },
+          {
+            "id": "heart_of_madness_takada",
+            "text": "dummy"
+          },
+          {
+            "id": "investigator_survived",
+            "text": "dummy"
+          },
+          {
+            "id": "killed_seeping_nightmare",
+            "text": "dummy"
+          },
+          {
+            "id": "miasmic_crystal_recovered",
+            "text": "dummy"
+          },
+          {
+            "id": "mineral_specimen_recovered",
+            "text": "dummy"
+          },
+          {
+            "id": "played_the_heart_of_madness_part_1",
+            "text": "dummy"
+          },
+          {
+            "id": "restful_night_amy_kensler",
+            "text": "dummy"
+          },
+          {
+            "id": "restful_night_avery_claypool",
+            "text": "dummy"
+          },
+          {
+            "id": "restful_night_danforth",
+            "text": "dummy"
+          },
+          {
+            "id": "restful_night_dyer_yes",
+            "text": "dummy"
+          },
+          {
+            "id": "restful_night_eliyah_ashevak",
+            "text": "dummy"
+          },
+          {
+            "id": "restful_night_james_fredericks",
+            "text": "dummy"
+          },
+          {
+            "id": "restful_night_mala_sinha",
+            "text": "dummy"
+          },
+          {
+            "id": "restful_night_roald_ellsworth",
+            "text": "dummy"
+          },
+          {
+            "id": "restful_night_takada_hiroko",
+            "text": "dummy"
+          },
+          {
+            "id": "restful_night_william_dyer",
+            "text": "dummy"
+          },
+          {
+            "id": "small_radio_recovered",
+            "text": "dummy"
+          },
+          {
+            "id": "spare_parts_recovered",
+            "text": "dummy"
+          },
+          {
+            "id": "the_final_straw",
+            "text": "dummy"
+          },
+          {
+            "id": "tragedy_strikes",
+            "text": "dummy"
+          },
+          {
+            "id": "wooden_sledge_recovered",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "locations_revealed",
+        "entries": [
+          {
+            "id": "barrier_camp",
+            "text": "Barrier Camp"
+          },
+          {
+            "id": "broad_snowdrifts",
+            "text": "Broad Snowdrifts"
+          },
+          {
+            "id": "crash_site",
+            "text": "Crash Site"
+          },
+          {
+            "id": "crystalline_cavern",
+            "text": "Crystalline Cavern"
+          },
+          {
+            "id": "frigid_cave",
+            "text": "Frigid Cave"
+          },
+          {
+            "id": "frozen_shores",
+            "text": "Frozen Shores"
+          },
+          {
+            "id": "icebreaker_landing",
+            "text": "Icebreaker Landing"
+          },
+          {
+            "id": "icy_wastes",
+            "text": "Icy Wastes"
+          },
+          {
+            "id": "precarious_ice_sheet",
+            "text": "Precarious Ice Sheet"
+          },
+          {
+            "id": "remnants_of_lakes_camp",
+            "text": "Remnants of Lake's Camp"
+          },
+          {
+            "id": "rocky_crags",
+            "text": "Rocky Crags"
+          },
+          {
+            "id": "snow_graves",
+            "text": "Snow Graves"
+          },
+          {
+            "id": "treacherous_path",
+            "text": "Treacherous Path"
+          }
+        ]
+      },
+      {
+        "section": "memories_banished",
+        "entries": [
+          {
+            "id": "airfield",
+            "text": "Airfield"
+          },
+          {
+            "id": "alaskan_wilds",
+            "text": "Alaskan Wilds"
+          },
+          {
+            "id": "alien_translation",
+            "text": "Memory of an Alien Translation"
+          },
+          {
+            "id": "cluttered_dormitory",
+            "text": "Cluttered Dormitory"
+          },
+          {
+            "id": "dr_kenslers_office",
+            "text": "Dr. Kensler's Office"
+          },
+          {
+            "id": "dyers_classroom",
+            "text": "Dyer's Classroom"
+          },
+          {
+            "id": "hunt_gone_awry",
+            "text": "Memory of a Hunt Gone Awry"
+          },
+          {
+            "id": "infirmary",
+            "text": "의무실"
+          },
+          {
+            "id": "lost_patient",
+            "text": "Memory of a Lost Patient"
+          },
+          {
+            "id": "missing_father",
+            "text": "Memory of a Missing Father"
+          },
+          {
+            "id": "moai_statues",
+            "text": "Mo'ai Statues"
+          },
+          {
+            "id": "ottoman_front",
+            "text": "Ottoman Front"
+          },
+          {
+            "id": "ravaged_country",
+            "text": "Memory of a Ravaged Country"
+          },
+          {
+            "id": "regretful_voyage",
+            "text": "Memory of a Regretful Voyage"
+          },
+          {
+            "id": "terrible_discovery",
+            "text": "Memory of a Terrible Discovery"
+          },
+          {
+            "id": "the_black_stone",
+            "text": "The Black Stone"
+          },
+          {
+            "id": "unrequited_love",
+            "text": "Memory of an Unrequited Love"
+          },
+          {
+            "id": "unspeakable_evil",
+            "text": "Memory of an Unspeakable Evil"
+          }
+        ]
+      },
+      {
+        "section": "memories_discovered",
+        "entries": [
+          {
+            "id": "airfield",
+            "text": "Airfield"
+          },
+          {
+            "id": "alaskan_wilds",
+            "text": "Alaskan Wilds"
+          },
+          {
+            "id": "base_camp",
+            "text": "Base Camp"
+          },
+          {
+            "id": "cluttered_dormitory",
+            "text": "Cluttered Dormitory"
+          },
+          {
+            "id": "coastal_waters",
+            "text": "Coastal Waters"
+          },
+          {
+            "id": "deck_of_the_theodosia",
+            "text": "Deck of the Theodosia"
+          },
+          {
+            "id": "deserted_station",
+            "text": "Deserted Station"
+          },
+          {
+            "id": "dr_kenslers_office",
+            "text": "Dr. Kensler's Office"
+          },
+          {
+            "id": "dyers_classroom",
+            "text": "Dyer's Classroom"
+          },
+          {
+            "id": "elder_chamber",
+            "text": "Elder Chamber"
+          },
+          {
+            "id": "hedge_maze",
+            "text": "생울타리 미로"
+          },
+          {
+            "id": "infirmary",
+            "text": "의무실"
+          },
+          {
+            "id": "moai_statues",
+            "text": "Mo'ai Statues"
+          },
+          {
+            "id": "ottoman_front",
+            "text": "Ottoman Front"
+          },
+          {
+            "id": "riverview_theatre",
+            "text": "Riverview Theatre"
+          },
+          {
+            "id": "standing_stones",
+            "text": "Standing Stones"
+          },
+          {
+            "id": "the_black_stone",
+            "text": "The Black Stone"
+          },
+          {
+            "id": "university_halls",
+            "text": "University Halls"
+          }
+        ]
+      },
+      {
+        "section": "seals_placed",
+        "entries": [
+          {
+            "id": "seal_a",
+            "text": "[seal_a]"
+          },
+          {
+            "id": "seal_b",
+            "text": "[seal_b]"
+          },
+          {
+            "id": "seal_c",
+            "text": "[seal_c]"
+          },
+          {
+            "id": "seal_d",
+            "text": "[seal_d]"
+          },
+          {
+            "id": "seal_e",
+            "text": "[seal_e]"
+          }
+        ]
+      },
+      {
+        "section": "seals_recovered",
+        "entries": [
+          {
+            "id": "seal_a",
+            "text": "[seal_a]"
+          },
+          {
+            "id": "seal_b",
+            "text": "[seal_b]"
+          },
+          {
+            "id": "seal_c",
+            "text": "[seal_c]"
+          },
+          {
+            "id": "seal_d",
+            "text": "[seal_d]"
+          },
+          {
+            "id": "seal_e",
+            "text": "[seal_e]"
+          }
+        ]
+      },
+      {
+        "section": "supplies_recovered",
+        "entries": [
+          {
+            "id": "dynamite",
+            "text": "Dynamite"
+          },
+          {
+            "id": "green_soapstone",
+            "text": "Green Soapstone"
+          },
+          {
+            "id": "miasmic_crystal",
+            "text": "Miasmic Crystal"
+          },
+          {
+            "id": "mineral_specimen",
+            "text": "Mineral Specimen"
+          },
+          {
+            "id": "small_radio",
+            "text": "Small Radio"
+          },
+          {
+            "id": "spare_parts",
+            "text": "Spare Parts"
+          },
+          {
+            "id": "wooden_sledge",
+            "text": "Wooden Sledge"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "ptc",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "read_act_2",
+            "masculine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다.",
+            "feminine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다."
+          },
+          {
+            "id": "possessed",
+            "masculine_text": "#name# 조사자는 꼭두각시로 전락했다",
+            "feminine_text": "#name# 조사자는 꼭두각시로 전락했다"
+          },
+          {
+            "id": "attacked_as_you_escaped_arkham",
+            "text": "조사자들이 정신병원을 탈출하는 동안 공격받았다."
+          },
+          {
+            "id": "awoke_inside_catacombs",
+            "text": "정신을 차려보니 카타콤 안이었다"
+          },
+          {
+            "id": "carcosa_merged",
+            "text": "카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다"
+          },
+          {
+            "id": "chose_not_to_warn_police",
+            "text": "당신이 경찰에게 알리지 않았다"
+          },
+          {
+            "id": "destroyed_the_oathspeaker",
+            "text": "맹세를 입에 담은 자를 쓰러뜨렸다"
+          },
+          {
+            "id": "did_not_escape_gaze",
+            "text": "망령의 응시에서 벗어나지 못했다"
+          },
+          {
+            "id": "entered_catacombs",
+            "text": "제 발로 카타콤에 들어갔다"
+          },
+          {
+            "id": "escaped_the_asylum",
+            "text": "조사자들이 정신병원에서 탈출했다"
+          },
+          {
+            "id": "fled_dinner_party",
+            "text": "만찬회에서 달아났다"
+          },
+          {
+            "id": "followers_of_sign_found_way",
+            "text": "황색 표식의 추종자들이 나아갈 길을 찾았다"
+          },
+          {
+            "id": "found_nigel_engram",
+            "text": "나이젤 잉그램을 찾았다"
+          },
+          {
+            "id": "found_nigels_home",
+            "text": "나이젤의 집을 찾았다"
+          },
+          {
+            "id": "hastur_has_you",
+            "text": "하스터가 당신을 사로잡았다"
+          },
+          {
+            "id": "heeded_daniels_warning",
+            "text": "대니얼의 경고를 받아들였다"
+          },
+          {
+            "id": "ignored_daniels_warning",
+            "text": "대니얼의 경고를 무시했다"
+          },
+          {
+            "id": "intruded_on_secret_meeting",
+            "text": "당신이 밀회에 침범했다"
+          },
+          {
+            "id": "king_claimed_victims",
+            "text": "왕이 희생양을 거두었다"
+          },
+          {
+            "id": "know_site_of_gate",
+            "text": "관문이 있는 곳을 알아냈다"
+          },
+          {
+            "id": "left_onyx_clasp",
+            "text": "오닉스 장식 고리를 두고 나왔다"
+          },
+          {
+            "id": "opened_path_above",
+            "text": "위의 길을 열었다"
+          },
+          {
+            "id": "opened_path_below",
+            "text": "아래의 길을 열었다"
+          },
+          {
+            "id": "police_are_suspicious",
+            "text": "경찰이 당신을 의심한다"
+          },
+          {
+            "id": "prevented_hasturs_escape",
+            "text": "조사자들은 하스터가 감옥에서 탈출하지 못하도록 막았다"
+          },
+          {
+            "id": "slayed_the_monsters",
+            "text": "당신이 만찬회의 괴물을 모조리 죽였다"
+          },
+          {
+            "id": "stranger_is_on_to_you",
+            "text": "이방인이 당신을 눈여겨 본다"
+          },
+          {
+            "id": "took_onyx_clasp",
+            "text": "오닉스 장식 고리를 챙겼다"
+          },
+          {
+            "id": "tried_to_warn_police",
+            "text": "당신이 경찰에게 경고하려 했다"
+          },
+          {
+            "id": "unable_to_find_nigel",
+            "text": "나이젤을 찾지 못했다"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "bsr_conviction_or_doubt",
+            "text": "dummy"
+          },
+          {
+            "id": "cca_add_chaos_token",
+            "text": "dummy"
+          },
+          {
+            "id": "possessed",
+            "text": "조사자가 한 명이라도 꼭두각시로 전락했다"
+          },
+          {
+            "id": "tpm_conviction_or_doubt",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "vips_interviewed",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name#"
+          }
+        ]
+      },
+      {
+        "section": "vips_slain",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name#"
+          },
+          {
+            "id": "03065b",
+            "text": "#name#"
+          },
+          {
+            "id": "03066b",
+            "text": "#name#"
+          },
+          {
+            "id": "03067b",
+            "text": "#name#"
+          },
+          {
+            "id": "03068b",
+            "text": "#name#"
+          },
+          {
+            "id": "03069b",
+            "text": "#name#"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "rtdwl",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "banished_silas_bishop",
+            "text": "조사자들이 사일러스 비숍을 소멸시켰다"
+          },
+          {
+            "id": "bone_to_pick",
+            "text": "오베니언 갱이 조사자들에게 앙심을 품었다"
+          },
+          {
+            "id": "brood_escaped",
+            "text": "요그 소토스의 새끼 #X#마리가 험지로 탈출했다"
+          },
+          {
+            "id": "calmed_townsfolk",
+            "text": "마을 주민들을 진정시켰다"
+          },
+          {
+            "id": "closed_tear",
+            "text": "조사자들이 현실에 생긴 균열을 닫았다"
+          },
+          {
+            "id": "destroyed_necronomicon",
+            "text": "조사자들이 네크로노미콘을 파괴했다"
+          },
+          {
+            "id": "earl_sawyer_survived",
+            "text": "얼 소여가 던위치의 유산에서 살아남았다"
+          },
+          {
+            "id": "entered_the_gate",
+            "text": "조사자들이 차원문으로 들어갔다"
+          },
+          {
+            "id": "experiment_defeated",
+            "text": "실험체를 쓰러뜨렸다"
+          },
+          {
+            "id": "failed_to_recover_necronomicon",
+            "text": "조사자들이 네크로노미콘을 회수하지 못했다"
+          },
+          {
+            "id": "failed_to_save_students",
+            "text": "조사자들이 학생들을 구하지 못했다"
+          },
+          {
+            "id": "francis_morgan_kidnapped",
+            "text": "‘프랜시스 모건 박사’는 납치되었다"
+          },
+          {
+            "id": "francis_morgan_rescued",
+            "text": "조사자들이 프랜시스 모건 박사를 구출했다"
+          },
+          {
+            "id": "francis_morgan_survived",
+            "text": "프랜시스 모건 박사가 던위치의 유산에서 살아남았다"
+          },
+          {
+            "id": "henry_armitage_kidnapped",
+            "text": "헨리 아미티지 박사가 납치되었다"
+          },
+          {
+            "id": "henry_armitage_rescued",
+            "text": "조사자들이 헨리 아미티지 박사를 구출했다"
+          },
+          {
+            "id": "henry_armitage_survived",
+            "text": "헨리 아미티지 박사가 던위치의 유산에서 살아남았다"
+          },
+          {
+            "id": "investigators_delayed",
+            "text": "조사자들이 던위치에 예정보다 늦게 도착했다"
+          },
+          {
+            "id": "killed_silas_bishop",
+            "text": "조사자들이 사일러스 비숍의 비극적인 삶을 끝내주었다"
+          },
+          {
+            "id": "naomi_has_back",
+            "text": "나오미가 조사자들의 뒤를 맡았다"
+          },
+          {
+            "id": "necronomicon_stolen",
+            "text": "네크로노미콘을 도난당했다"
+          },
+          {
+            "id": "no_brood_escaped",
+            "text": "요그 소토스의 새끼가 한 마리도 험지로 달아나지 못했다"
+          },
+          {
+            "id": "restored_silas_bishop",
+            "text": "조사자들이 사일러스 비숍을 본모습으로 회복시켰다"
+          },
+          {
+            "id": "ritual_completed",
+            "text": "의식이 완전히 거행되었다"
+          },
+          {
+            "id": "students_rescued",
+            "text": "학생들을 구해냈다"
+          },
+          {
+            "id": "took_necronomicon",
+            "text": "조사자들이 네크로노미콘을 보관했다"
+          },
+          {
+            "id": "unconscious_for_several_hours",
+            "text": "조사자들이 몇 시간 동안 의식을 잃었다"
+          },
+          {
+            "id": "warned_townsfolk",
+            "text": "마을 주민들에게 경고했다"
+          },
+          {
+            "id": "warren_rice_kidnapped",
+            "text": "‘워렌 라이스 박사’는 납치되었다"
+          },
+          {
+            "id": "warren_rice_rescued",
+            "text": "조사자들이 워렌 라이스 교수를 구출했다"
+          },
+          {
+            "id": "warren_rice_survived",
+            "text": "워렌 라이스 교수가 던위치의 유산에서 살아남았다"
+          },
+          {
+            "id": "yog_sothoth_became_one_with_reality",
+            "text": "요그 소토스가 세계 사이의 장막을 찢고 나와 모든 현실과 하나가 되었다"
+          },
+          {
+            "id": "yog_sothoth_escaped",
+            "text": "요그 소토스가 세계 사이의 장막을 찢고 나와 모든 현실과 하나가 되었다"
+          },
+          {
+            "id": "yog_sothoth_fled",
+            "text": "요그 소토스가 다른 차원으로 달아났다"
+          },
+          {
+            "id": "zebulon_whateley_survived",
+            "text": "지블런 웨이틀리가 던위치의 유산에서 살아남았다"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "tmm_add_chaos_token",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "sacrificed",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name#"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "rtnotz",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "arkham_succumbed",
+            "text": "우몰도스의 끔찍한 복수에 아컴이 무릎을 꿇다"
+          },
+          {
+            "id": "ghoul_priest_alive",
+            "text": "‘구울 사제’가 여전히 살아 있다"
+          },
+          {
+            "id": "house_burned",
+            "text": "당신의 집이 불타버렸다"
+          },
+          {
+            "id": "house_standing",
+            "text": "당신의 집이 여전히 남아 있다"
+          },
+          {
+            "id": "lita_finds_others",
+            "text": "리타는 어쩔 수 없이 다른 사람에게 도움을 요청했다"
+          },
+          {
+            "id": "lita_sacrificed",
+            "text": "조사자가 리타 챈들러를 우몰도스에게 희생시켰다"
+          },
+          {
+            "id": "past_midnight",
+            "text": "자정이 지났다"
+          },
+          {
+            "id": "ritual_broken",
+            "text": "우몰도스를 소환하는 의식을 분쇄하다"
+          },
+          {
+            "id": "umordhoth_repelled",
+            "text": "조사자들이 우몰도스를 격퇴하다"
+          }
+        ]
+      },
+      {
+        "section": "cultists_escaped",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name#"
+          }
+        ]
+      },
+      {
+        "section": "cultists_interrogated",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name#"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "rtptc",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "read_act_2",
+            "masculine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다.",
+            "feminine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다."
+          },
+          {
+            "id": "possessed",
+            "masculine_text": "#name# 조사자는 꼭두각시로 전락했다",
+            "feminine_text": "#name# 조사자는 꼭두각시로 전락했다"
+          },
+          {
+            "id": "attacked_as_you_escaped_arkham",
+            "text": "조사자들이 정신병원을 탈출하는 동안 공격받았다."
+          },
+          {
+            "id": "awoke_inside_catacombs",
+            "text": "정신을 차려보니 카타콤 안이었다"
+          },
+          {
+            "id": "carcosa_merged",
+            "text": "카르코사 왕국이 지구와 합쳐졌고, 하스터가 두 세계를 모두 다스린다"
+          },
+          {
+            "id": "chose_not_to_warn_police",
+            "text": "당신이 경찰에게 알리지 않았다"
+          },
+          {
+            "id": "destroyed_the_oathspeaker",
+            "text": "맹세를 입에 담은 자를 쓰러뜨렸다"
+          },
+          {
+            "id": "did_not_escape_gaze",
+            "text": "망령의 응시에서 벗어나지 못했다"
+          },
+          {
+            "id": "entered_catacombs",
+            "text": "제 발로 카타콤에 들어갔다"
+          },
+          {
+            "id": "escaped_the_asylum",
+            "text": "조사자들이 정신병원에서 탈출했다"
+          },
+          {
+            "id": "fled_dinner_party",
+            "text": "만찬회에서 달아났다"
+          },
+          {
+            "id": "followers_of_sign_found_way",
+            "text": "황색 표식의 추종자들이 나아갈 길을 찾았다"
+          },
+          {
+            "id": "found_nigel_engram",
+            "text": "나이젤 잉그램을 찾았다"
+          },
+          {
+            "id": "found_nigels_home",
+            "text": "나이젤의 집을 찾았다"
+          },
+          {
+            "id": "hastur_has_you",
+            "text": "하스터가 당신을 사로잡았다"
+          },
+          {
+            "id": "heeded_daniels_warning",
+            "text": "대니얼의 경고를 받아들였다"
+          },
+          {
+            "id": "ignored_daniels_warning",
+            "text": "대니얼의 경고를 무시했다"
+          },
+          {
+            "id": "intruded_on_secret_meeting",
+            "text": "당신이 밀회에 침범했다"
+          },
+          {
+            "id": "king_claimed_victims",
+            "text": "왕이 희생양을 거두었다"
+          },
+          {
+            "id": "know_site_of_gate",
+            "text": "관문이 있는 곳을 알아냈다"
+          },
+          {
+            "id": "left_onyx_clasp",
+            "text": "오닉스 장식 고리를 두고 나왔다"
+          },
+          {
+            "id": "opened_path_above",
+            "text": "위의 길을 열었다"
+          },
+          {
+            "id": "opened_path_below",
+            "text": "아래의 길을 열었다"
+          },
+          {
+            "id": "police_are_suspicious",
+            "text": "경찰이 당신을 의심한다"
+          },
+          {
+            "id": "prevented_hasturs_escape",
+            "text": "조사자들은 하스터가 감옥에서 탈출하지 못하도록 막았다"
+          },
+          {
+            "id": "slayed_the_monsters",
+            "text": "당신이 만찬회의 괴물을 모조리 죽였다"
+          },
+          {
+            "id": "stranger_is_on_to_you",
+            "text": "이방인이 당신을 눈여겨 본다"
+          },
+          {
+            "id": "took_onyx_clasp",
+            "text": "오닉스 장식 고리를 챙겼다"
+          },
+          {
+            "id": "tried_to_warn_police",
+            "text": "당신이 경찰에게 경고하려 했다"
+          },
+          {
+            "id": "unable_to_find_nigel",
+            "text": "나이젤을 찾지 못했다"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "bsr_conviction_or_doubt",
+            "text": "dummy"
+          },
+          {
+            "id": "cca_add_chaos_token",
+            "text": "dummy"
+          },
+          {
+            "id": "possessed",
+            "text": "조사자가 한 명이라도 꼭두각시로 전락했다"
+          },
+          {
+            "id": "tpm_conviction_or_doubt",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "vips_interviewed",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name#"
+          }
+        ]
+      },
+      {
+        "section": "vips_slain",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name#"
+          },
+          {
+            "id": "03065b",
+            "text": "#name#"
+          },
+          {
+            "id": "03066b",
+            "text": "#name#"
+          },
+          {
+            "id": "03067b",
+            "text": "#name#"
+          },
+          {
+            "id": "03068b",
+            "text": "#name#"
+          },
+          {
+            "id": "03069b",
+            "text": "#name#"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "rttcu",
+    "sections": [
+      {
+        "section": "$input_value",
+        "entries": [
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+          }
+        ]
+      },
+      {
+        "section": "05046",
+        "entries": [
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+          },
+          {
+            "id": "alive",
+            "text": "가브리엘라가 살아남았다"
+          },
+          {
+            "id": "dead",
+            "text": "가브리엘라는 죽었다"
+          },
+          {
+            "id": "on_gavriellas_trail",
+            "text": "조사자들이 가브리엘라의 흔적을 쫓고 있다"
+          }
+        ]
+      },
+      {
+        "section": "05047",
+        "entries": [
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+          },
+          {
+            "id": "alive",
+            "text": "제롬이 살아남았다"
+          },
+          {
+            "id": "dead",
+            "text": "제롬은 죽었다"
+          },
+          {
+            "id": "on_jeromes_trail",
+            "text": "조사자들이 제롬의 흔적을 쫓고 있다"
+          }
+        ]
+      },
+      {
+        "section": "05048",
+        "entries": [
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+          },
+          {
+            "id": "alive",
+            "text": "발렌티노가 살아남았다"
+          },
+          {
+            "id": "dead",
+            "text": "발렌티노는 죽었다"
+          },
+          {
+            "id": "on_valentinos_trail",
+            "text": "조사자들이 발렌티노의 흔적을 쫓고 있다"
+          }
+        ]
+      },
+      {
+        "section": "05049",
+        "entries": [
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+          },
+          {
+            "id": "alive",
+            "text": "페니가 살아남았다"
+          },
+          {
+            "id": "dead",
+            "text": "페니는 죽었다"
+          },
+          {
+            "id": "on_pennys_trail",
+            "text": "조사자들이 페니의 흔적을 쫓고 있다"
+          }
+        ]
+      },
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "lead_investigator_joins_pipers",
+            "masculine_text": "#name# 조사자는 아자토스의 피리꾼이 되었다",
+            "feminine_text": "#name# 조사자는 아자토스의 피리꾼이 되었다"
+          },
+          {
+            "id": "accepted_fate",
+            "text": "당신은 스스로의 운명을 받아들였다"
+          },
+          {
+            "id": "anette_mason_is_possessed_by_evil",
+            "text": "애닛 메이슨이 악에 지배당했다"
+          },
+          {
+            "id": "anette_taught_you_the_spells_of_old",
+            "text": "애닛이 당신에게 고대의 마법을 가르쳐 주었다"
+          },
+          {
+            "id": "arrested_anette",
+            "text": "조사자들이 애닛을 체포했다"
+          },
+          {
+            "id": "arrested_sanford",
+            "text": "조사자들이 샌포드를 체포했다"
+          },
+          {
+            "id": "asked_anette_for_assistance",
+            "text": "조사자들이 애닛에게 도움을 청했다"
+          },
+          {
+            "id": "asked_sanford_for_assistance",
+            "text": "조사자들이 샌포드에게 도움을 청했다"
+          },
+          {
+            "id": "assumed_control_of_the_silver_twilight_lodge",
+            "text": "조사자들이 은빛 황혼회의 통솔권을 맡았다"
+          },
+          {
+            "id": "azathoth_devoured_the_universe",
+            "text": "아자토스가 온 우주를 집어삼켰다"
+          },
+          {
+            "id": "azathoth_slumbers",
+            "text": "아자토스는 잠들어 있습니다. 적어도 지금은…"
+          },
+          {
+            "id": "being_hunted",
+            "text": "당신은 사냥당하고 있다"
+          },
+          {
+            "id": "carl_sanford_possesses_the_secrets_of_the_universe",
+            "text": "칼 샌포드가 우주의 비밀을 손에 넣었다"
+          },
+          {
+            "id": "continued_alone",
+            "text": "조사자들이 단독으로 조사를 계속했다"
+          },
+          {
+            "id": "coven_of_keziah_holds_the_world_in_its_grasp",
+            "text": "the coven of Keziah holds the world in its grasp."
+          },
+          {
+            "id": "deceiving_the_lodge",
+            "text": "조사자들이 황혼회를 속이고 있다"
+          },
+          {
+            "id": "discovered_how_to_open_the_puzzle_box",
+            "text": "조사자들이 비밀 상자를 여는 방법을 알아냈다"
+          },
+          {
+            "id": "doom_draws_ever_closer",
+            "text": "파멸이 사상 최악으로 가까워졌다"
+          },
+          {
+            "id": "enemies_of_the_lodge",
+            "text": "조사자들이 황혼회를 적으로 두었다"
+          },
+          {
+            "id": "erynn_joined_investigators",
+            "text": "Erynn joined the investigators."
+          },
+          {
+            "id": "erynn_wants_to_meet",
+            "text": "Erynn wants to meet you."
+          },
+          {
+            "id": "guardian_of_the_trap_defeated",
+            "text": "덫의 수호자가 출현했지만 패퇴했다"
+          },
+          {
+            "id": "guardian_of_the_trap_emerged",
+            "text": "덫의 수호자가 출현했다"
+          },
+          {
+            "id": "heretics_released",
+            "text": "이단자 #X#명이 아컴에 풀려났다"
+          },
+          {
+            "id": "hid_knowledge_of_coven",
+            "text": "조사자들이 마녀단에 대한 이야기를 털어놓지 않았다"
+          },
+          {
+            "id": "inducted_into_the_inner_circle",
+            "text": "조사자들이 원로회에 합류했다"
+          },
+          {
+            "id": "investigators_escaped_the_spectral_realm",
+            "text": "조사자들이 혼령계에서 탈출했다"
+          },
+          {
+            "id": "josef_disappeared_into_the_mist",
+            "text": "요제프가 안개 속으로 사라졌다"
+          },
+          {
+            "id": "josef_is_alive",
+            "text": "요제프가 멀쩡히 잘 살아 있다"
+          },
+          {
+            "id": "kept_mementos_hidden",
+            "text": "조사자들이 지금까지 찾아낸 증표를 숨겼다"
+          },
+          {
+            "id": "learned_nothing_of_the_lodges_schemes",
+            "text": "조사자들이 황혼회의 계획에 대해 아무것도 알아내지 못했다"
+          },
+          {
+            "id": "members_of_the_lodge",
+            "text": "조사자들이 은빛 황혼회 교단원이 되었다"
+          },
+          {
+            "id": "never_seen_again",
+            "text": "조사자들이 행방불명되었다"
+          },
+          {
+            "id": "path_winds_before_you",
+            "text": "당신의 마지막 여정이 기다린다: #X#"
+          },
+          {
+            "id": "pieces_of_evidence",
+            "text": "증거가 #X#건 남아 있다"
+          },
+          {
+            "id": "rejected_fate",
+            "text": "당신은 스스로의 운명을 거부했다"
+          },
+          {
+            "id": "rescued_josef",
+            "text": "조사자들이 요제프를 구출했다"
+          },
+          {
+            "id": "sided_with_the_coven",
+            "text": "조사자들이 마녀단의 편에 섰다"
+          },
+          {
+            "id": "sided_with_the_lodge",
+            "text": "조사자들이 황혼회의 편에 섰다"
+          },
+          {
+            "id": "signed_the_black_book",
+            "text": "조사자들이 아자토스의 검은 서책에 서명을 했다"
+          },
+          {
+            "id": "survived_the_watchers_embrace",
+            "text": "조사자들이 감시자의 품에서 살아남았다"
+          },
+          {
+            "id": "told_lodge_about_coven",
+            "text": "조사자들이 은빛 황혼회에게 마녀단에 대한 이야기를 했다"
+          },
+          {
+            "id": "true_work_of_silver_twilight_lodge_has_begun",
+            "text": "은빛 황혼회의 진정한 과업이 시작되었다"
+          },
+          {
+            "id": "witches_spell_broken",
+            "text": "마녀의 마법이 깨졌다"
+          },
+          {
+            "id": "witches_spell_cast",
+            "text": "마녀의 마법이 시전되었다"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "dummy"
+          },
+          {
+            "id": "a_record_of_those_lost",
+            "text": "dummy"
+          },
+          {
+            "id": "act_3_v2",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_chariot_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_hanged_man_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_hermit_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_hierophant_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_justice_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_lovers_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_temperance_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "campaign_reading_wheel_of_fortune_reversed",
+            "text": "dummy"
+          },
+          {
+            "id": "left_column",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05046",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05047",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05048",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05049",
+            "text": "dummy"
+          },
+          {
+            "id": "right_column",
+            "text": "dummy"
+          },
+          {
+            "id": "skip_prologue",
+            "text": "dummy"
+          },
+          {
+            "id": "uad_add_chaos_token",
+            "text": "dummy"
+          },
+          {
+            "id": "uad_no_investigators_alive",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "mementos",
+        "entries": [
+          {
+            "id": "bloody_tree_carvings",
+            "text": "Bloody Tree Carvings"
+          },
+          {
+            "id": "corn_husk_doll",
+            "text": "옥수수 겉껍질 인형"
+          },
+          {
+            "id": "gilmans_journal",
+            "text": "길먼의 일지"
+          },
+          {
+            "id": "keziahs_formulae",
+            "text": "케지아의 마법식"
+          },
+          {
+            "id": "mesmerizing_flute",
+            "text": "최면을 거는 피리"
+          },
+          {
+            "id": "ritual_components",
+            "text": "의례용 도구"
+          },
+          {
+            "id": "scrap_of_torn_shadow",
+            "text": "찢어진 그림자"
+          },
+          {
+            "id": "strange_incantation",
+            "text": "Strange Incantation"
+          },
+          {
+            "id": "wisp_of_spectral_mist",
+            "text": "혼령 안개 가닥"
+          },
+          {
+            "id": "worn_crucific",
+            "text": "낡아빠진 십자가"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "rttfa",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "alejandro_followed_to_ruins",
+            "text": "알레한드로가 조사자들을 따라 유적으로 들어갔다"
+          },
+          {
+            "id": "alejandro_is_missing",
+            "text": "알레한드로가 실종되었다"
+          },
+          {
+            "id": "alejandro_on_his_own",
+            "text": "알레한드로가 독자적으로 연구를 이어나간다"
+          },
+          {
+            "id": "alejandro_recovered_relic",
+            "text": "알레한드로가 시대의 유물을 손에 넣었다"
+          },
+          {
+            "id": "alejandro_remained_at_camp",
+            "text": "알레한드로가 야영지에 남기로 했다"
+          },
+          {
+            "id": "alejandro_remembers_everything",
+            "text": "알레한드로가 기억을 되찾았다"
+          },
+          {
+            "id": "alejandro_set_against",
+            "text": "알레한드로와 척이 졌다"
+          },
+          {
+            "id": "braziers_are_lit",
+            "text": "화로에 불을 밝혔다"
+          },
+          {
+            "id": "braziers_remain_unlit",
+            "text": "화로에 불을 밝히지 못했다"
+          },
+          {
+            "id": "cleared_path_to_temple",
+            "text": "조사자들이 에스틀리 유적으로 향하는 길을 냈다"
+          },
+          {
+            "id": "cooperated_with_yithians",
+            "text": "조사자들이 이스인에게 협조했다"
+          },
+          {
+            "id": "earned_alejandros_trust",
+            "text": "조사자들이 알레한드로의 신뢰를 얻었다"
+          },
+          {
+            "id": "earned_ichtacas_trust",
+            "text": "조사자들이 이츠타카의 신뢰를 얻었다"
+          },
+          {
+            "id": "fabric_of_time_unwoven",
+            "text": "시간의 연속체가 한 가닥 한 가닥까지 해체되었다"
+          },
+          {
+            "id": "fell_into_depths",
+            "text": "조사자들이 깊은 구렁텅이로 추락했다"
+          },
+          {
+            "id": "forged_bond_with_ichtaca",
+            "text": "조사자들이 이츠타카와 유대감을 쌓았다"
+          },
+          {
+            "id": "forging_own_path",
+            "text": "조사자들이 자신만의 방법을 찾아 나섰다"
+          },
+          {
+            "id": "found_missing_relic",
+            "text": "조사자들이 잃어버린 유물을 찾아냈다"
+          },
+          {
+            "id": "gave_relic_to_alejandro",
+            "text": "조사자들이 알레한드로에게 유물 관리를 맡겼다"
+          },
+          {
+            "id": "gave_relic_to_harlan",
+            "text": "조사자들이 할런 언스톤에게 유물 관리를 맡겼다"
+          },
+          {
+            "id": "had_memories_expunged",
+            "text": "조사자들의 기억이 지워졌다"
+          },
+          {
+            "id": "harbinger_alive",
+            "text": "발루시아의 선봉장이 살아 있다. (피해 #X#)"
+          },
+          {
+            "id": "ichtaca_has_confidence",
+            "text": "이츠타카가 조사자들을 믿는다"
+          },
+          {
+            "id": "ichtaca_in_the_dark",
+            "text": "이츠타카의 행적을 쫓지 못했다"
+          },
+          {
+            "id": "ichtaca_is_wary",
+            "text": "이츠타카가 조사자들을 경계한다"
+          },
+          {
+            "id": "ichtaca_observed_progress",
+            "text": "이츠타카가 조사자들의 행보를 눈여겨봤다"
+          },
+          {
+            "id": "ichtaca_set_against",
+            "text": "이츠타카와 척이 졌다"
+          },
+          {
+            "id": "ichtacas_faith_restored",
+            "text": "이츠타카의 신뢰가 회복되었다"
+          },
+          {
+            "id": "investigators_recovered_relic",
+            "text": "조사자들이 시대의 유물을 손에 넣었다"
+          },
+          {
+            "id": "investigators_saved_serpents",
+            "text": "조사자들이 뱀의 문명을 구원했다"
+          },
+          {
+            "id": "investigators_saved_yithians",
+            "text": "조사자들이 이스인의 문명을 구원했다"
+          },
+          {
+            "id": "jungle_watches",
+            "text": "밀림이 지켜본다 (#name# x#X#)"
+          },
+          {
+            "id": "mapped_way_forward",
+            "text": "조사자들이 앞으로 갈 길을 면밀히 검토했다"
+          },
+          {
+            "id": "mended_tear_in_time",
+            "text": "조사자들이 시간 연속체에 난 균열을 봉합했다"
+          },
+          {
+            "id": "nexus_is_near",
+            "text": "느카이의 연결점이 가까이 있다"
+          },
+          {
+            "id": "paths_known",
+            "text": "#X#가지 길을 알아냈다"
+          },
+          {
+            "id": "process_backfired",
+            "text": "의식 전이 과정이 역효과를 낳았다"
+          },
+          {
+            "id": "process_backfired_spectacularly",
+            "text": "의식 전이 과정이 어마어마한 역효과를 낳았다"
+          },
+          {
+            "id": "process_was_perfected",
+            "text": "의식 전이 과정이 완벽했다"
+          },
+          {
+            "id": "process_was_successful",
+            "text": "의식 전이 과정이 성공했다"
+          },
+          {
+            "id": "recruited_help_of_another_expedition",
+            "text": "조사자들이 다른 탐사대로부터 도움을 받았다"
+          },
+          {
+            "id": "relic_is_missing",
+            "text": "유물을 잃어버렸다"
+          },
+          {
+            "id": "rescued_alejandro",
+            "text": "조사자들이 알레한드로를 구출했다"
+          },
+          {
+            "id": "resisted_captivity",
+            "text": "조사자들이 나포에 저항했다"
+          },
+          {
+            "id": "sealed_relic_of_ages_forever",
+            "text": "조사자들이 시대의 유물을 영원히 봉인했다"
+          },
+          {
+            "id": "turned_back_time",
+            "text": "조사자들이 시간을 되돌렸다"
+          },
+          {
+            "id": "wait_for_additional_supplies",
+            "text": "조사자들이 하릴없이 추가 탐험 물자가 도착하기만을 기다렸다"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>.",
+            "feminine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>."
+          },
+          {
+            "id": "doy_fewer_resources",
+            "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+          },
+          {
+            "id": "eztli_fewer_resources",
+            "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+          },
+          {
+            "id": "hote_fewer_resources",
+            "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+          },
+          {
+            "id": "agenda_5",
+            "text": "숨김"
+          },
+          {
+            "id": "agenda_6",
+            "text": "숨김"
+          },
+          {
+            "id": "doy_cross_off_rope",
+            "text": "dummy"
+          },
+          {
+            "id": "doy_no_mulligan",
+            "text": "dummy"
+          },
+          {
+            "id": "final_depth",
+            "text": "깊이 #X#"
+          },
+          {
+            "id": "hote_no_mulligan",
+            "text": "dummy"
+          },
+          {
+            "id": "ichtaca_left_without_you",
+            "text": "이츠타카가 당신을 두고 나가버렸다"
+          },
+          {
+            "id": "jungle_beckons_reminder",
+            "text": "dummy"
+          },
+          {
+            "id": "listened_to_ichtaca",
+            "text": "이츠타카의 이야기를 들었다"
+          },
+          {
+            "id": "rtdoe_gain_mysterious_scepter",
+            "text": "dummy"
+          },
+          {
+            "id": "rthote2_gain_sticky_goop",
+            "text": "dummy"
+          },
+          {
+            "id": "tasks_completed",
+            "text": "#X# 개의 임무 완수"
+          },
+          {
+            "id": "thc_reminder",
+            "text": "dummy"
+          },
+          {
+            "id": "wilds_add_chaos_token",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": [
+      {
+        "id": "mysterious_scepter",
+        "name": "불가사의한 왕홀",
+        "description": "‘옥좌의 방’에서 발견한 불가사의한 왕홀.",
+        "cost": 0,
+        "multiple": false
+      },
+      {
+        "id": "sticky_goop",
+        "name": "끈적끈적한 물질",
+        "description": "‘지하 늪지’에서 발견한끈적끈적한 물질.",
+        "cost": 0,
+        "multiple": false
+      },
+      {
+        "id": "key_of_eztli",
+        "name": "에스틀리의 열쇠",
+        "description": "에스틀리의 열쇠.",
+        "cost": 0,
+        "multiple": false
+      },
+      {
+        "id": "provisions",
+        "name": "비상 물자",
+        "description": "1인분의 음식과 물입니다. 어딜 가더라도 식량이야말로 필수품입니다.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
+        "id": "provisions",
+        "name": "비상식량",
+        "description": "1인분의 음식과 물입니다. 어딜 가더라도 식량이야말로 필수품입니다.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
+        "id": "gasoline",
+        "name": "휘발유",
+        "description": "차를 타고 장거리 이동을 하려면 필요합니다.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
+        "id": "medicine",
+        "name": "약품",
+        "description": "질병, 감염, 맹독 등을 치료하기 위한 응급 약품입니다.",
+        "cost": 2,
+        "multiple": true
+      },
+      {
+        "id": "pendant",
+        "name": "팬던트",
+        "description": "실용성은 없습니다. 하지만 집에서 멀리 떠나 온 여행자라면 행복한 기억을 떠올리며 마음을 달랠 수 있습니다.",
+        "cost": 1
+      },
+      {
+        "id": "chalk",
+        "name": "분필",
+        "description": "거친 돌 표면 등에 기록할 수 있습니다.",
+        "cost": 2
+      },
+      {
+        "id": "compass",
+        "name": "나침반",
+        "description": "길을 완전히 잃었을 때 방향을 알려줍니다.",
+        "cost": 2
+      },
+      {
+        "id": "pickaxe",
+        "name": "곡괭이",
+        "description": "단단한 것을 깨부술 수 있습니다.",
+        "cost": 2
+      },
+      {
+        "id": "pocketknife",
+        "name": "주머니칼",
+        "description": "든든한 무기라기엔 너무나도 작은 칼이지만, 쉽게 숨길 수 있습니다.",
+        "cost": 2
+      },
+      {
+        "id": "binoculars",
+        "name": "쌍안경",
+        "description": "먼 곳을 살펴보는 데에 유용합니다.",
+        "cost": 2
+      },
+      {
+        "id": "canteen",
+        "name": "수통",
+        "description": "시냇물 또는 강물을 담을 수 있습니다.",
+        "cost": 2
+      },
+      {
+        "id": "blanket",
+        "name": "담요",
+        "description": "야간에 온기를 유지할 수 있습니다.",
+        "cost": 2
+      },
+      {
+        "id": "map",
+        "name": "지도",
+        "description": "당장은 아무 표시도 없는 지도입니다. 하지만 탐사를 이어감에 따라 주변 지형을 지도상에 표시할 수 있습니다.",
+        "cost": 3
+      },
+      {
+        "id": "torches",
+        "name": "횃불",
+        "description": "어두운 곳을 밝힐 수도 있고 초에 불을 붙일 수도 있습니다.",
+        "cost": 3
+      },
+      {
+        "id": "rope",
+        "name": "밧줄",
+        "description": "여러 바퀴를 둘러 만 튼튼한 밧줄 꾸러미입니다. 등산과 동굴 탐험에서는 필수입니다.",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "campaignId": "side",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
+            "id": "coh_cnidathqua_retreated",
+            "text": "Cnidathqua retreated to nurse its wounds."
+          },
+          {
+            "id": "coh_many_were_sacrificed_to_cnidathqua",
+            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+          },
+          {
+            "id": "coh_sun_banished_cnidathqua",
+            "text": "the sun banished Cnidathqua into the depths."
+          },
+          {
+            "id": "constellation_was_lost_to_the_depths",
+            "text": "the Constellation was lost to the depths."
+          },
+          {
+            "id": "constellation_was_saved",
+            "text": "the Constellation was saved."
+          },
+          {
+            "id": "meh_excelsior_claims_another_victim",
+            "text": "엑셀시어 호텔이 또 다른 희생자를 취했다"
+          },
+          {
+            "id": "meh_excelsior_is_quiet_for_now",
+            "text": "엑셀시어 호텔이 잠잠해졌습니다, 적어도 지금은…"
+          },
+          {
+            "id": "meh_fled_scene_of_the_crime",
+            "text": "조사자들이 범죄 현장에서 달아났다"
+          },
+          {
+            "id": "meh_murders_continue_unsolved",
+            "text": "해결하지 못한 살인사건은 계속 이어집니다"
+          },
+          {
+            "id": "ritual_at_sea_was_completed",
+            "text": "the ritual at sea was completed."
+          },
+          {
+            "id": "ritual_at_sea_was_halted",
+            "text": "the ritual at sea was halted."
+          },
+          {
+            "id": "rougarou_continues_to_haunt_the_bayou",
+            "text": "the Rougarou continues to haunt the bayou."
+          },
+          {
+            "id": "rougarou_destroyed_and_curse_is_lifted",
+            "text": "the Rougarou is destroyed, and the curse is lifted."
+          },
+          {
+            "id": "rougarou_escaped_and_embrace_curse",
+            "text": "the Rougarou escaped, and you embraced the curse."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "you are aware of Xzharah’s plans."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "the Brotherhood’s schemes continue unabated."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "the curse of slumber was lifted."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "dreamers in the abyss (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Brotherhood Agents Who Escaped: #name#"
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "the Day of Reckoning is coming."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "you joined forces with Xzharah."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "the Abyss was saved."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name#"
+          },
+          {
+            "id": "act_2_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "act_3_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "coc_bridge",
+            "text": "dummy"
+          },
+          {
+            "id": "coc_engine_room",
+            "text": "dummy"
+          },
+          {
+            "id": "coc_galley",
+            "text": "dummy"
+          },
+          {
+            "id": "coc_library",
+            "text": "dummy"
+          },
+          {
+            "id": "coc_passenger_cabins",
+            "text": "dummy"
+          },
+          {
+            "id": "coc_swap_chaos_bag",
+            "text": "dummy"
+          },
+          {
+            "id": "epic_multiplayer",
+            "text": "dummy"
+          },
+          {
+            "id": "group_a",
+            "text": "dummy"
+          },
+          {
+            "id": "group_b",
+            "text": "dummy"
+          },
+          {
+            "id": "group_c",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_did_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_did_not_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_have_clues",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_no_innocents_killed",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_are_on_your_side",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_dont_believe_you",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_the_truth",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "tcu",
+    "sections": [
+      {
+        "section": "$input_value",
+        "entries": [
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+          }
+        ]
+      },
+      {
+        "section": "05046",
+        "entries": [
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+          },
+          {
+            "id": "alive",
+            "text": "가브리엘라가 살아남았다"
+          },
+          {
+            "id": "dead",
+            "text": "가브리엘라는 죽었다"
+          },
+          {
+            "id": "on_gavriellas_trail",
+            "text": "조사자들이 가브리엘라의 흔적을 쫓고 있다"
+          }
+        ]
+      },
+      {
+        "section": "05047",
+        "entries": [
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+          },
+          {
+            "id": "alive",
+            "text": "제롬이 살아남았다"
+          },
+          {
+            "id": "dead",
+            "text": "제롬은 죽었다"
+          },
+          {
+            "id": "on_jeromes_trail",
+            "text": "조사자들이 제롬의 흔적을 쫓고 있다"
+          }
+        ]
+      },
+      {
+        "section": "05048",
+        "entries": [
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+          },
+          {
+            "id": "alive",
+            "text": "발렌티노가 살아남았다"
+          },
+          {
+            "id": "dead",
+            "text": "발렌티노는 죽었다"
+          },
+          {
+            "id": "on_valentinos_trail",
+            "text": "조사자들이 발렌티노의 흔적을 쫓고 있다"
+          }
+        ]
+      },
+      {
+        "section": "05049",
+        "entries": [
+          {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
+            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
+            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
+            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+          },
+          {
+            "id": "alive",
+            "text": "페니가 살아남았다"
+          },
+          {
+            "id": "dead",
+            "text": "페니는 죽었다"
+          },
+          {
+            "id": "on_pennys_trail",
+            "text": "조사자들이 페니의 흔적을 쫓고 있다"
+          }
+        ]
+      },
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "lead_investigator_joins_pipers",
+            "masculine_text": "#name# 조사자는 아자토스의 피리꾼이 되었다",
+            "feminine_text": "#name# 조사자는 아자토스의 피리꾼이 되었다"
+          },
+          {
+            "id": "accepted_fate",
+            "text": "당신은 스스로의 운명을 받아들였다"
+          },
+          {
+            "id": "anette_mason_is_possessed_by_evil",
+            "text": "애닛 메이슨이 악에 지배당했다"
+          },
+          {
+            "id": "anette_taught_you_the_spells_of_old",
+            "text": "애닛이 당신에게 고대의 마법을 가르쳐 주었다"
+          },
+          {
+            "id": "arrested_anette",
+            "text": "조사자들이 애닛을 체포했다"
+          },
+          {
+            "id": "arrested_sanford",
+            "text": "조사자들이 샌포드를 체포했다"
+          },
+          {
+            "id": "asked_anette_for_assistance",
+            "text": "조사자들이 애닛에게 도움을 청했다"
+          },
+          {
+            "id": "asked_sanford_for_assistance",
+            "text": "조사자들이 샌포드에게 도움을 청했다"
+          },
+          {
+            "id": "assumed_control_of_the_silver_twilight_lodge",
+            "text": "조사자들이 은빛 황혼회의 통솔권을 맡았다"
+          },
+          {
+            "id": "azathoth_devoured_the_universe",
+            "text": "아자토스가 온 우주를 집어삼켰다"
+          },
+          {
+            "id": "azathoth_slumbers",
+            "text": "아자토스는 잠들어 있습니다. 적어도 지금은…"
+          },
+          {
+            "id": "being_hunted",
+            "text": "당신은 사냥당하고 있다"
+          },
+          {
+            "id": "carl_sanford_possesses_the_secrets_of_the_universe",
+            "text": "칼 샌포드가 우주의 비밀을 손에 넣었다"
+          },
+          {
+            "id": "continued_alone",
+            "text": "조사자들이 단독으로 조사를 계속했다"
+          },
+          {
+            "id": "deceiving_the_lodge",
+            "text": "조사자들이 황혼회를 속이고 있다"
+          },
+          {
+            "id": "discovered_how_to_open_the_puzzle_box",
+            "text": "조사자들이 비밀 상자를 여는 방법을 알아냈다"
+          },
+          {
+            "id": "doom_draws_ever_closer",
+            "text": "파멸이 사상 최악으로 가까워졌다"
+          },
+          {
+            "id": "enemies_of_the_lodge",
+            "text": "조사자들이 황혼회를 적으로 두었다"
+          },
+          {
+            "id": "guardian_of_the_trap_defeated",
+            "text": "덫의 수호자가 출현했지만 패퇴했다"
+          },
+          {
+            "id": "guardian_of_the_trap_emerged",
+            "text": "덫의 수호자가 출현했다"
+          },
+          {
+            "id": "heretics_released",
+            "text": "이단자 #X#명이 아컴에 풀려났다"
+          },
+          {
+            "id": "hid_knowledge_of_coven",
+            "text": "조사자들이 마녀단에 대한 이야기를 털어놓지 않았다"
+          },
+          {
+            "id": "inducted_into_the_inner_circle",
+            "text": "조사자들이 원로회에 합류했다"
+          },
+          {
+            "id": "investigators_escaped_the_spectral_realm",
+            "text": "조사자들이 혼령계에서 탈출했다"
+          },
+          {
+            "id": "josef_disappeared_into_the_mist",
+            "text": "요제프가 안개 속으로 사라졌다"
+          },
+          {
+            "id": "josef_is_alive",
+            "text": "요제프가 멀쩡히 잘 살아 있다"
+          },
+          {
+            "id": "kept_mementos_hidden",
+            "text": "조사자들이 지금까지 찾아낸 증표를 숨겼다"
+          },
+          {
+            "id": "learned_nothing_of_the_lodges_schemes",
+            "text": "조사자들이 황혼회의 계획에 대해 아무것도 알아내지 못했다"
+          },
+          {
+            "id": "members_of_the_lodge",
+            "text": "조사자들이 은빛 황혼회 교단원이 되었다"
+          },
+          {
+            "id": "never_seen_again",
+            "text": "조사자들이 행방불명되었다"
+          },
+          {
+            "id": "path_winds_before_you",
+            "text": "당신의 마지막 여정이 기다린다: #X#"
+          },
+          {
+            "id": "pieces_of_evidence",
+            "text": "증거가 #X#건 남아 있다"
+          },
+          {
+            "id": "rejected_fate",
+            "text": "당신은 스스로의 운명을 거부했다"
+          },
+          {
+            "id": "rescued_josef",
+            "text": "조사자들이 요제프를 구출했다"
+          },
+          {
+            "id": "sided_with_the_coven",
+            "text": "조사자들이 마녀단의 편에 섰다"
+          },
+          {
+            "id": "sided_with_the_lodge",
+            "text": "조사자들이 황혼회의 편에 섰다"
+          },
+          {
+            "id": "signed_the_black_book",
+            "text": "조사자들이 아자토스의 검은 서책에 서명을 했다"
+          },
+          {
+            "id": "survived_the_watchers_embrace",
+            "text": "조사자들이 감시자의 품에서 살아남았다"
+          },
+          {
+            "id": "told_lodge_about_coven",
+            "text": "조사자들이 은빛 황혼회에게 마녀단에 대한 이야기를 했다"
+          },
+          {
+            "id": "true_work_of_silver_twilight_lodge_has_begun",
+            "text": "은빛 황혼회의 진정한 과업이 시작되었다"
+          },
+          {
+            "id": "witches_spell_broken",
+            "text": "마녀의 마법이 깨졌다"
+          },
+          {
+            "id": "witches_spell_cast",
+            "text": "마녀의 마법이 시전되었다"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "dummy"
+          },
+          {
+            "id": "a_record_of_those_lost",
+            "text": "dummy"
+          },
+          {
+            "id": "act_3_v2",
+            "text": "dummy"
+          },
+          {
+            "id": "left_column",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05046",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05047",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05048",
+            "text": "dummy"
+          },
+          {
+            "id": "prologue_05049",
+            "text": "dummy"
+          },
+          {
+            "id": "right_column",
+            "text": "dummy"
+          },
+          {
+            "id": "skip_prologue",
+            "text": "dummy"
+          },
+          {
+            "id": "uad_add_chaos_token",
+            "text": "dummy"
+          },
+          {
+            "id": "uad_no_investigators_alive",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "mementos",
+        "entries": [
+          {
+            "id": "corn_husk_doll",
+            "text": "옥수수 겉껍질 인형"
+          },
+          {
+            "id": "gilmans_journal",
+            "text": "길먼의 일지"
+          },
+          {
+            "id": "keziahs_formulae",
+            "text": "케지아의 마법식"
+          },
+          {
+            "id": "mesmerizing_flute",
+            "text": "최면을 거는 피리"
+          },
+          {
+            "id": "ritual_components",
+            "text": "의례용 도구"
+          },
+          {
+            "id": "scrap_of_torn_shadow",
+            "text": "찢어진 그림자"
+          },
+          {
+            "id": "wisp_of_spectral_mist",
+            "text": "혼령 안개 가닥"
+          },
+          {
+            "id": "worn_crucific",
+            "text": "낡아빠진 십자가"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "tdea",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "broken_the_law_of_ulthar",
+            "masculine_text": "#name# has broken the law of Ulthar.",
+            "feminine_text": "#name# has broken the law of Ulthar."
+          },
+          {
+            "id": "captured",
+            "masculine_text": "#name# was captured.",
+            "feminine_text": "#name# was captured."
+          },
+          {
+            "id": "black_cat_at_your_side",
+            "text": "the black cat is at your side."
+          },
+          {
+            "id": "black_cat_at_your_side_2",
+            "text": "the black cat is at your side."
+          },
+          {
+            "id": "black_cat_delivered_news",
+            "text": "the black cat delivered news of your plight."
+          },
+          {
+            "id": "black_cat_has_a_hunch",
+            "text": "the black cat has a hunch."
+          },
+          {
+            "id": "black_cat_is_searching_for_the_truth",
+            "text": "the black cat is searching for the truth."
+          },
+          {
+            "id": "black_cat_knows_the_truth",
+            "text": "the black cat knows the truth."
+          },
+          {
+            "id": "black_cat_shared_knowledge_of_the_dreamlands",
+            "text": "the black cat shared knowledge of the Dreamlands."
+          },
+          {
+            "id": "black_cat_spoke_of_atlach_nacha",
+            "text": "the black cat spoke of Atlach-Nacha."
+          },
+          {
+            "id": "black_cat_spoke_of_nyarlathotep",
+            "text": "the black cat spoke of Nyarlathotep."
+          },
+          {
+            "id": "black_cat_warned_the_others",
+            "text": "the black cat warned the others."
+          },
+          {
+            "id": "carried_to_the_cold_wastes",
+            "text": "the investigators were carried to the Cold Wastes."
+          },
+          {
+            "id": "cats_collected_their_tribute",
+            "text": "the cats collected their tribute from the Zoogs."
+          },
+          {
+            "id": "dreamers_awoke",
+            "text": "the dreamers awoke."
+          },
+          {
+            "id": "dreamers_banished_nyarlathotep",
+            "text": "the dreamers banished Nyarlathotep."
+          },
+          {
+            "id": "dreamers_escaped_nyarlathoteps_grasp",
+            "text": "the dreamers escaped from Nyarlathotep's grasp."
+          },
+          {
+            "id": "dreamers_grow_weaker",
+            "text": "the dreamers grow weaker."
+          },
+          {
+            "id": "dreamers_know_of_another_path",
+            "text": "the dreamers know of another path."
+          },
+          {
+            "id": "dreamers_stayed_in_dreamlands_forever",
+            "text": "the dreamers stayed in the Dreamlands forever."
+          },
+          {
+            "id": "dreamers_traveled_beneath_the_monastery",
+            "text": "the dreamers traveled beneath the monastery."
+          },
+          {
+            "id": "forced_way_into_temple",
+            "text": "the investigators forced their way into the temple."
+          },
+          {
+            "id": "nyarlathoteps_invasion_has_begun",
+            "text": "Nyarlathotep's invasion has begun."
+          },
+          {
+            "id": "parleyed_with_zoogs",
+            "text": "the investigators parleyed with the Zoogs."
+          },
+          {
+            "id": "possess_silver_key",
+            "text": "the investigators possess the Silver Key."
+          },
+          {
+            "id": "randolph_did_not_survive_the_voyage",
+            "text": "Randolph Carter did not survive the voyage."
+          },
+          {
+            "id": "randolph_eluded_capture",
+            "text": "Randolph eluded capture."
+          },
+          {
+            "id": "randolph_survived_the_voyage",
+            "text": "Randolph survived the voyage."
+          },
+          {
+            "id": "randolph_was_captured",
+            "text": "Randolph was captured."
+          },
+          {
+            "id": "saved_by_randolph_carter",
+            "text": "the investigators were saved by Randolph Carter."
+          },
+          {
+            "id": "strayed_from_the_path",
+            "text": "the dreamers strayed from the path."
+          },
+          {
+            "id": "threaten_black_cat",
+            "text": "okay, fine, have it your way then."
+          },
+          {
+            "id": "travelled_to_the_cold_wastes",
+            "text": "the investigators traveled to the Cold Wastes."
+          },
+          {
+            "id": "virgil_was_captured",
+            "text": "Virgil was captured."
+          },
+          {
+            "id": "you_asked_for_it",
+            "text": "you asked for it."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "drifter_dream",
+            "text": "#name#"
+          },
+          {
+            "id": "everyone_captured",
+            "text": "dummy"
+          },
+          {
+            "id": "forbidden_lands",
+            "text": "dummy"
+          },
+          {
+            "id": "grand_design",
+            "text": "dummy"
+          },
+          {
+            "id": "half_campaign",
+            "text": "dummy"
+          },
+          {
+            "id": "interconnected_campaign",
+            "text": "dummy"
+          },
+          {
+            "id": "minar",
+            "text": "dummy"
+          },
+          {
+            "id": "oriab",
+            "text": "dummy"
+          },
+          {
+            "id": "someone_escaped",
+            "text": "dummy"
+          },
+          {
+            "id": "timeless_realm",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "tdeb",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "black_cat_at_your_side",
+            "text": "the black cat is at your side."
+          },
+          {
+            "id": "black_cat_at_your_side_2",
+            "text": "the black cat is at your side."
+          },
+          {
+            "id": "black_cat_has_a_hunch",
+            "text": "the black cat has a hunch."
+          },
+          {
+            "id": "black_cat_is_searching_for_the_truth",
+            "text": "the black cat is searching for the truth."
+          },
+          {
+            "id": "black_cat_knows_the_truth",
+            "text": "the black cat knows the truth."
+          },
+          {
+            "id": "black_cat_requested_aid",
+            "text": "the black cat requested aid from the others."
+          },
+          {
+            "id": "black_cat_shared_knowledge_of_the_underworld",
+            "text": "the black cat shared knowledge of the Underworld."
+          },
+          {
+            "id": "black_cat_warned_the_others",
+            "text": "the black cat warned the others."
+          },
+          {
+            "id": "bridge_was_completed",
+            "text": "the bridge was completed."
+          },
+          {
+            "id": "bridge_was_destroyed",
+            "text": "the bridge was destroyed."
+          },
+          {
+            "id": "doctor_is_alive",
+            "text": "Dr. Maheswaran is alive."
+          },
+          {
+            "id": "doctor_is_missing",
+            "text": "Dr. Maheswaran is missing."
+          },
+          {
+            "id": "doctor_joined_investigation",
+            "text": "Dr. Maheswaran joined the investigation."
+          },
+          {
+            "id": "doctor_stayed_with_patients",
+            "text": "Dr. Maheswaran stayed with her patients."
+          },
+          {
+            "id": "doctors_fate_unknown",
+            "text": "Dr. Maheswaran’s fate is unknown."
+          },
+          {
+            "id": "found_a_way_out_of_the_underworld",
+            "text": "the investigators found a way out of the Underworld."
+          },
+          {
+            "id": "never_escaped",
+            "text": "the investigators never escaped."
+          },
+          {
+            "id": "on_your_own",
+            "text": "you are on your own."
+          },
+          {
+            "id": "possess_silver_key",
+            "text": "the investigators possess the Silver Key."
+          },
+          {
+            "id": "randolph_did_not_survive_descent",
+            "text": "Randolph did not survive the descent."
+          },
+          {
+            "id": "randolph_escaped_hospital_alone",
+            "text": "Randolph escaped the hospital on his own."
+          },
+          {
+            "id": "randolph_escaped_hospital_with_investigators",
+            "text": "Randolph escaped the hospital with the investigators."
+          },
+          {
+            "id": "randolph_survived_descent",
+            "text": "Randolph survived the descent."
+          },
+          {
+            "id": "returned_to_reality",
+            "text": "the investigators returned to reality."
+          },
+          {
+            "id": "still_in_the_dreamlands",
+            "text": "the investigators are still in the Dreamlands."
+          },
+          {
+            "id": "trapped_in_atlach_nachas_realm",
+            "text": "the investigators are trapped in Atlach-Nacha's realm."
+          },
+          {
+            "id": "you_asked_for_it",
+            "text": "you asked for it."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "half_campaign",
+            "text": "dummy"
+          },
+          {
+            "id": "interconnected_campaign",
+            "text": "dummy"
+          },
+          {
+            "id": "spider_queen",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "tfa",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "alejandro_followed_to_ruins",
+            "text": "알레한드로가 조사자들을 따라 유적으로 들어갔다"
+          },
+          {
+            "id": "alejandro_is_missing",
+            "text": "알레한드로가 실종되었다"
+          },
+          {
+            "id": "alejandro_on_his_own",
+            "text": "알레한드로가 독자적으로 연구를 이어나간다"
+          },
+          {
+            "id": "alejandro_recovered_relic",
+            "text": "알레한드로가 시대의 유물을 손에 넣었다"
+          },
+          {
+            "id": "alejandro_remained_at_camp",
+            "text": "알레한드로가 야영지에 남기로 했다"
+          },
+          {
+            "id": "alejandro_remembers_everything",
+            "text": "알레한드로가 기억을 되찾았다"
+          },
+          {
+            "id": "alejandro_set_against",
+            "text": "알레한드로와 척이 졌다"
+          },
+          {
+            "id": "braziers_are_lit",
+            "text": "화로에 불을 밝혔다"
+          },
+          {
+            "id": "braziers_remain_unlit",
+            "text": "화로에 불을 밝히지 못했다"
+          },
+          {
+            "id": "cleared_path_to_temple",
+            "text": "조사자들이 에스틀리 유적으로 향하는 길을 냈다"
+          },
+          {
+            "id": "cooperated_with_yithians",
+            "text": "조사자들이 이스인에게 협조했다"
+          },
+          {
+            "id": "earned_alejandros_trust",
+            "text": "조사자들이 알레한드로의 신뢰를 얻었다"
+          },
+          {
+            "id": "earned_ichtacas_trust",
+            "text": "조사자들이 이츠타카의 신뢰를 얻었다"
+          },
+          {
+            "id": "fabric_of_time_unwoven",
+            "text": "시간의 연속체가 한 가닥 한 가닥까지 해체되었다"
+          },
+          {
+            "id": "fell_into_depths",
+            "text": "조사자들이 깊은 구렁텅이로 추락했다"
+          },
+          {
+            "id": "forged_bond_with_ichtaca",
+            "text": "조사자들이 이츠타카와 유대감을 쌓았다"
+          },
+          {
+            "id": "forging_own_path",
+            "text": "조사자들이 자신만의 방법을 찾아 나섰다"
+          },
+          {
+            "id": "found_missing_relic",
+            "text": "조사자들이 잃어버린 유물을 찾아냈다"
+          },
+          {
+            "id": "gave_relic_to_alejandro",
+            "text": "조사자들이 알레한드로에게 유물 관리를 맡겼다"
+          },
+          {
+            "id": "gave_relic_to_harlan",
+            "text": "조사자들이 할런 언스톤에게 유물 관리를 맡겼다"
+          },
+          {
+            "id": "had_memories_expunged",
+            "text": "조사자들의 기억이 지워졌다"
+          },
+          {
+            "id": "harbinger_alive",
+            "text": "발루시아의 선봉장이 살아 있다. (피해 #X#)"
+          },
+          {
+            "id": "ichtaca_has_confidence",
+            "text": "이츠타카가 조사자들을 믿는다"
+          },
+          {
+            "id": "ichtaca_in_the_dark",
+            "text": "이츠타카의 행적을 쫓지 못했다"
+          },
+          {
+            "id": "ichtaca_is_wary",
+            "text": "이츠타카가 조사자들을 경계한다"
+          },
+          {
+            "id": "ichtaca_observed_progress",
+            "text": "이츠타카가 조사자들의 행보를 눈여겨봤다"
+          },
+          {
+            "id": "ichtaca_set_against",
+            "text": "이츠타카와 척이 졌다"
+          },
+          {
+            "id": "ichtacas_faith_restored",
+            "text": "이츠타카의 신뢰가 회복되었다"
+          },
+          {
+            "id": "investigators_recovered_relic",
+            "text": "조사자들이 시대의 유물을 손에 넣었다"
+          },
+          {
+            "id": "investigators_saved_serpents",
+            "text": "조사자들이 뱀의 문명을 구원했다"
+          },
+          {
+            "id": "investigators_saved_yithians",
+            "text": "조사자들이 이스인의 문명을 구원했다"
+          },
+          {
+            "id": "jungle_watches",
+            "text": "밀림이 지켜본다 (#name# x#X#)"
+          },
+          {
+            "id": "mapped_way_forward",
+            "text": "조사자들이 앞으로 갈 길을 면밀히 검토했다"
+          },
+          {
+            "id": "mended_tear_in_time",
+            "text": "조사자들이 시간 연속체에 난 균열을 봉합했다"
+          },
+          {
+            "id": "nexus_is_near",
+            "text": "느카이의 연결점이 가까이 있다"
+          },
+          {
+            "id": "paths_known",
+            "text": "#X#가지 길을 알아냈다"
+          },
+          {
+            "id": "process_backfired",
+            "text": "의식 전이 과정이 역효과를 낳았다"
+          },
+          {
+            "id": "process_backfired_spectacularly",
+            "text": "의식 전이 과정이 어마어마한 역효과를 낳았다"
+          },
+          {
+            "id": "process_was_perfected",
+            "text": "의식 전이 과정이 완벽했다"
+          },
+          {
+            "id": "process_was_successful",
+            "text": "의식 전이 과정이 성공했다"
+          },
+          {
+            "id": "relic_is_missing",
+            "text": "유물을 잃어버렸다"
+          },
+          {
+            "id": "rescued_alejandro",
+            "text": "조사자들이 알레한드로를 구출했다"
+          },
+          {
+            "id": "resisted_captivity",
+            "text": "조사자들이 나포에 저항했다"
+          },
+          {
+            "id": "sealed_relic_of_ages_forever",
+            "text": "조사자들이 시대의 유물을 영원히 봉인했다"
+          },
+          {
+            "id": "turned_back_time",
+            "text": "조사자들이 시간을 되돌렸다"
+          },
+          {
+            "id": "wait_for_additional_supplies",
+            "text": "조사자들이 하릴없이 추가 탐험 물자가 도착하기만을 기다렸다"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>.",
+            "feminine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>."
+          },
+          {
+            "id": "doy_fewer_resources",
+            "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+          },
+          {
+            "id": "eztli_fewer_resources",
+            "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+          },
+          {
+            "id": "hote_fewer_resources",
+            "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+          },
+          {
+            "id": "agenda_5",
+            "text": "숨김"
+          },
+          {
+            "id": "agenda_6",
+            "text": "숨김"
+          },
+          {
+            "id": "doy_cross_off_rope",
+            "text": "dummy"
+          },
+          {
+            "id": "doy_no_mulligan",
+            "text": "dummy"
+          },
+          {
+            "id": "final_depth",
+            "text": "깊이 #X#"
+          },
+          {
+            "id": "hote_no_mulligan",
+            "text": "dummy"
+          },
+          {
+            "id": "ichtaca_left_without_you",
+            "text": "이츠타카가 당신을 두고 나가버렸다"
+          },
+          {
+            "id": "jungle_beckons_reminder",
+            "text": "dummy"
+          },
+          {
+            "id": "listened_to_ichtaca",
+            "text": "이츠타카의 이야기를 들었다"
+          },
+          {
+            "id": "tasks_completed",
+            "text": "#X# 개의 임무 완수"
+          },
+          {
+            "id": "thc_reminder",
+            "text": "dummy"
+          },
+          {
+            "id": "wilds_add_chaos_token",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": [
+      {
+        "id": "provisions",
+        "name": "비상 물자",
+        "description": "1인분의 음식과 물입니다. 어딜 가더라도 식량이야말로 필수품입니다.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
+        "id": "provisions",
+        "name": "비상식량",
+        "description": "1인분의 음식과 물입니다. 어딜 가더라도 식량이야말로 필수품입니다.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
+        "id": "gasoline",
+        "name": "휘발유",
+        "description": "차를 타고 장거리 이동을 하려면 필요합니다.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
+        "id": "medicine",
+        "name": "약품",
+        "description": "질병, 감염, 맹독 등을 치료하기 위한 응급 약품입니다.",
+        "cost": 2,
+        "multiple": true
+      },
+      {
+        "id": "pendant",
+        "name": "팬던트",
+        "description": "실용성은 없습니다. 하지만 집에서 멀리 떠나 온 여행자라면 행복한 기억을 떠올리며 마음을 달랠 수 있습니다.",
+        "cost": 1
+      },
+      {
+        "id": "chalk",
+        "name": "분필",
+        "description": "거친 돌 표면 등에 기록할 수 있습니다.",
+        "cost": 2
+      },
+      {
+        "id": "compass",
+        "name": "나침반",
+        "description": "길을 완전히 잃었을 때 방향을 알려줍니다.",
+        "cost": 2
+      },
+      {
+        "id": "pickaxe",
+        "name": "곡괭이",
+        "description": "단단한 것을 깨부술 수 있습니다.",
+        "cost": 2
+      },
+      {
+        "id": "pocketknife",
+        "name": "주머니칼",
+        "description": "든든한 무기라기엔 너무나도 작은 칼이지만, 쉽게 숨길 수 있습니다.",
+        "cost": 2
+      },
+      {
+        "id": "binoculars",
+        "name": "쌍안경",
+        "description": "먼 곳을 살펴보는 데에 유용합니다.",
+        "cost": 2
+      },
+      {
+        "id": "canteen",
+        "name": "수통",
+        "description": "시냇물 또는 강물을 담을 수 있습니다.",
+        "cost": 2
+      },
+      {
+        "id": "blanket",
+        "name": "담요",
+        "description": "야간에 온기를 유지할 수 있습니다.",
+        "cost": 2
+      },
+      {
+        "id": "map",
+        "name": "지도",
+        "description": "당장은 아무 표시도 없는 지도입니다. 하지만 탐사를 이어감에 따라 주변 지형을 지도상에 표시할 수 있습니다.",
+        "cost": 3
+      },
+      {
+        "id": "torches",
+        "name": "횃불",
+        "description": "어두운 곳을 밝힐 수도 있고 초에 불을 붙일 수도 있습니다.",
+        "cost": 3
+      },
+      {
+        "id": "rope",
+        "name": "밧줄",
+        "description": "여러 바퀴를 둘러 만 튼튼한 밧줄 꾸러미입니다. 등산과 동굴 탐험에서는 필수입니다.",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "campaignId": "tic",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "possesses_a_diving_suit",
+            "masculine_text": "#name# possesses a diving suit.",
+            "feminine_text": "#name# possesses a diving suit."
+          },
+          {
+            "id": "agent_harpers_mission_is_complete",
+            "text": "Agent Harper's mission is complete."
+          },
+          {
+            "id": "agent_harpers_mission_is_complete_at_what_cost",
+            "text": "Agent Harper's mission is complete… but at what cost?"
+          },
+          {
+            "id": "allen_out_for_blood",
+            "text": "Zadok Allen is out for blood."
+          },
+          {
+            "id": "burnham_out_for_blood",
+            "text": "Brian Burnham is out for blood."
+          },
+          {
+            "id": "dagon_has_awakened",
+            "text": "Dagon has awakened."
+          },
+          {
+            "id": "dagon_still_slumbers",
+            "text": "Dagon still slumbers."
+          },
+          {
+            "id": "deep_ones_have_flooded_the_earth",
+            "text": "the Deep Ones have flooded the Earth."
+          },
+          {
+            "id": "escaped_yhanthlei",
+            "text": "the investigators escaped Y'ha-nthlei."
+          },
+          {
+            "id": "flood_has_begun",
+            "text": "the flood has begun."
+          },
+          {
+            "id": "friendly_out_for_blood",
+            "text": "Robert Friendly is out for blood."
+          },
+          {
+            "id": "gatekeeper_has_been_defeated",
+            "text": "the gatekeeper has been defeated."
+          },
+          {
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+          },
+          {
+            "id": "gilman_out_for_blood",
+            "text": "Othera Gilman is out for blood."
+          },
+          {
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "text": "the guardian of Y’ha-nthlei is dispatched."
+          },
+          {
+            "id": "headdress_brought_to_the_lighthouse",
+            "text": "the headdress was brought to the lighthouse."
+          },
+          {
+            "id": "idol_brought_to_the_lighthouse",
+            "text": "the idol was brought to the lighthouse."
+          },
+          {
+            "id": "innsmouth_was_consumed_by_the_rising_tide",
+            "text": "Innsmouth was consumed by the rising tide."
+          },
+          {
+            "id": "little_out_for_blood",
+            "text": "Joyce Little is out for blood."
+          },
+          {
+            "id": "made_it_safely_to_their_vehicles",
+            "text": "the investigators made it safely to their vehicles."
+          },
+          {
+            "id": "mantle_brought_to_the_lighthouse",
+            "text": "the mantle was brought to the lighthouse."
+          },
+          {
+            "id": "marsh_out_for_blood",
+            "text": "Barnabas Marsh is out for blood."
+          },
+          {
+            "id": "mission_failed",
+            "text": "the mission failed."
+          },
+          {
+            "id": "mission_succeeded",
+            "text": "the mission was successful."
+          },
+          {
+            "id": "orders_ritual_was_disrupted",
+            "text": "the Order's ritual was disrupted."
+          },
+          {
+            "id": "plot_of_the_deep_ones_was_thwarted",
+            "text": "the plot of the Deep Ones was thwarted."
+          },
+          {
+            "id": "possess_a_map_of_yhanthlei",
+            "text": "the investigators possess a map of Y'ha-nthlei."
+          },
+          {
+            "id": "possess_the_key_to_yhanthlei",
+            "text": "the investigators possess the key to Y'ha-nthlei."
+          },
+          {
+            "id": "reached_falcon_point_after_sunrise",
+            "text": "the investigators reached Falcon Point after sunrise."
+          },
+          {
+            "id": "reached_falcon_point_before_sunrise",
+            "text": "the investigators reached Falcon Point before sunrise."
+          },
+          {
+            "id": "riches_of_the_deep_are_destroyed_at_what_cost",
+            "text": "the riches of the deep are destroyed… but at what cost?"
+          },
+          {
+            "id": "riches_of_the_deep_are_lost_forever",
+            "text": "the riches of the deep are lost forever."
+          },
+          {
+            "id": "terror_of_devil_reef_is_dead",
+            "text": "the Terror of Devil Reef is dead."
+          },
+          {
+            "id": "terror_of_devil_reef_is_still_alive",
+            "text": "the Terror of Devil Reef is still alive."
+          },
+          {
+            "id": "tide_has_grown_stronger",
+            "text": "the tide has grown stronger."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "accuse_allen",
+            "text": "Zadok Allen"
+          },
+          {
+            "id": "accuse_burnham",
+            "text": "Brian Burnham"
+          },
+          {
+            "id": "accuse_friendly",
+            "text": "Robert Friendly"
+          },
+          {
+            "id": "accuse_gilman",
+            "text": "Othera Gilman"
+          },
+          {
+            "id": "accuse_house_on_water_street",
+            "text": "The House on Water Street"
+          },
+          {
+            "id": "accuse_little",
+            "text": "Joyce Little"
+          },
+          {
+            "id": "accuse_marsh",
+            "text": "Barnabas Marsh"
+          },
+          {
+            "id": "accuse_new_church_green",
+            "text": "New Church Green"
+          },
+          {
+            "id": "accuse_order_of_dagon",
+            "text": "Esoteric Order of Dagon"
+          },
+          {
+            "id": "accuse_prison",
+            "text": "Innsmouth Jail"
+          },
+          {
+            "id": "accuse_sawbone_alley",
+            "text": "Sawbone Alley"
+          },
+          {
+            "id": "accuse_slums",
+            "text": "Shoreward Slums"
+          },
+          {
+            "id": "act_2_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_1",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_10",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_11",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_12",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_13",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_14",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_2",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_3",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_4",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_5",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_6",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_7",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_8",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_9",
+            "text": "dummy"
+          },
+          {
+            "id": "the_accusation",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "memories_recovered",
+        "entries": [
+          {
+            "id": "a_deal_with_joe_sargent",
+            "text": "a deal with Joe Sargent"
+          },
+          {
+            "id": "a_followed_lead",
+            "text": "a followed lead"
+          },
+          {
+            "id": "a_jailbreak",
+            "text": "a jailbreak"
+          },
+          {
+            "id": "an_intervention",
+            "text": "an intervention"
+          },
+          {
+            "id": "battle_with_a_horrifying_devil",
+            "text": "a battle with a horrifying devil"
+          },
+          {
+            "id": "conversation_with_mr_moore",
+            "text": "a conversation with Mr. Moore"
+          },
+          {
+            "id": "decision_to_stick_together",
+            "text": "a decision to stick together"
+          },
+          {
+            "id": "discovery_of_a_mystical_relic",
+            "text": "discovery of a mystical relic"
+          },
+          {
+            "id": "discovery_of_a_strange_idol",
+            "text": "discovery of a strange idol"
+          },
+          {
+            "id": "discovery_of_an_unholy_mantle",
+            "text": "discovery of an unholy mantle"
+          },
+          {
+            "id": "encounter_with_a_secret_cult",
+            "text": "an encounter with a secret cult"
+          },
+          {
+            "id": "horrific_truth",
+            "text": "the horrific truth"
+          },
+          {
+            "id": "lifecycle_of_a_deep_one",
+            "text": "the lifecycle of a \"Deep One\""
+          },
+          {
+            "id": "meeting_with_thomas_dawson",
+            "text": "a meeting with Thomas Dawson"
+          },
+          {
+            "id": "stinging_betrayal",
+            "text": "a stinging betrayal"
+          }
+        ]
+      },
+      {
+        "section": "possible_hideouts",
+        "entries": [
+          {
+            "id": "house_on_water_street",
+            "text": "The House on Water Street"
+          },
+          {
+            "id": "innsmouth_jail",
+            "text": "Innsmouth Jail"
+          },
+          {
+            "id": "new_church_green",
+            "text": "New Church Green"
+          },
+          {
+            "id": "order_of_dagon",
+            "text": "Esoteric Order of Dagon"
+          },
+          {
+            "id": "sawbone_alley",
+            "text": "Sawbone Alley"
+          },
+          {
+            "id": "shoreward_slums",
+            "text": "Shoreward Slums"
+          }
+        ]
+      },
+      {
+        "section": "possible_suspects",
+        "entries": [
+          {
+            "id": "allen",
+            "text": "Zadok Allen"
+          },
+          {
+            "id": "burnham",
+            "text": "Brian Burnham"
+          },
+          {
+            "id": "friendly",
+            "text": "Robert Friendly"
+          },
+          {
+            "id": "gilman",
+            "text": "Othera Gilman"
+          },
+          {
+            "id": "little",
+            "text": "Joyce Little"
+          },
+          {
+            "id": "marsh",
+            "text": "Barnabas Marsh"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "zaw",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "alice_perished_and_wonderland_has_been_lost_forever",
+            "text": "앨리스는 비명횡사했고 이상한 나라는 영원히 소실되었다"
+          },
+          {
+            "id": "controlled_the_snark",
+            "text": "조사자들은 스나크를 조종했다"
+          },
+          {
+            "id": "gurathnaka_and_its_shadows_consumed_the_earth",
+            "text": "구라트나카와 그림자가 지구를 먹어 치웠다"
+          },
+          {
+            "id": "gurathnaka_and_its_shadows_were_banished_from_arkham",
+            "text": "구라트나카와 그의 그림자는 아컴에서 추방되었다"
+          },
+          {
+            "id": "hare_and_hatter_enjoyed_your_company",
+            "text": "3월 토끼와 모자장수가 당신과 함께한 순간을 즐겼다"
+          },
+          {
+            "id": "hare_and_hatter_were_cast_into_the_shadows",
+            "text": "3월 토끼 와 모자장수는 그림자로 내던져졌다"
+          },
+          {
+            "id": "hare_couldnt_cope_with_hatters_death",
+            "text": "3월 토끼는 모자장수의 죽음을 견딜 수 없었다"
+          },
+          {
+            "id": "hare_hatter_and_dormouse_were_consumed_by_shadows",
+            "text": "3월 토끼, 모자장수, 그리고 겨울잠 쥐가 어둠에 흡수되었다"
+          },
+          {
+            "id": "hatter_couldnt_cope_with_hares_death",
+            "text": "모자장수는 3월 토끼의 죽음을 견딜 수 없었다"
+          },
+          {
+            "id": "intimidated_the_snark",
+            "text": "조사자들은 스나크 에게 겁을 주었다"
+          },
+          {
+            "id": "intrigued_the_snark",
+            "text": "스나크의 흥미를 끌었다"
+          },
+          {
+            "id": "jabberwock_still_haunts_the_tulgey_wood",
+            "text": "재버워크가 아직 털진 숲에 출몰한다"
+          },
+          {
+            "id": "one_of_the_tweedles_learned_about_the_cost_of_war",
+            "text": "트위들 쌍둥이의 한쪽은 전쟁의 대가에 대해 배웠다"
+          },
+          {
+            "id": "puzzled_the_snark",
+            "text": "조사자들은 스나크를 혼란하게 했다"
+          },
+          {
+            "id": "queen_destroyed_the_shadows_in_a_fit_of_rage",
+            "text": "하트 여왕이 그림자를 분노에 차 박살냈다"
+          },
+          {
+            "id": "queens_castle_was_consumed_by_shadows",
+            "text": "여왕의 성이 어둠에 흡수되었다"
+          },
+          {
+            "id": "separated_alices_dreams_from_the_real_world",
+            "text": "조사자들은 현실 세계를 앨리스의 꿈에서 분리해냈다"
+          },
+          {
+            "id": "shadows_grow_stronger_with_each_passing_moment",
+            "text": "그림자가 당신이 지나온 곳마다 강해졌다"
+          },
+          {
+            "id": "shadows_maintain_their_grip_on_alices_dreams",
+            "text": "그림자가 앨리스의 꿈에 대한 손아귀를 유지하고 있다"
+          },
+          {
+            "id": "shadows_weakened_by_wonderlands_instability",
+            "text": "그림자가 당신의 행동에 의해 매우 약해졌다"
+          },
+          {
+            "id": "snark_and_its_hunters_were_never_met_with_again",
+            "text": "스나크와 스나크 사냥꾼들은 이제 다시는 조우하지 못한다"
+          },
+          {
+            "id": "took_the_jabberwocks_head",
+            "text": "조사자들은 재버워크의 머리를 취했다"
+          },
+          {
+            "id": "tricked_the_snark",
+            "text": "조사자들은 스나크를 속여 넘겼다"
+          },
+          {
+            "id": "tweedles_learned_that_there_are_worse_things_than_fighting_each_other",
+            "text": "트위들 쌍둥이는 서로 싸우는 것보다 더 나쁜 것도 있다는 것을 배웠다."
+          },
+          {
+            "id": "tweedles_perished_in_their_bloody_battle",
+            "text": "트위들 쌍둥이가 피 튀기는 전투에서 비명횡사했다"
+          },
+          {
+            "id": "tweedles_war_war_brought_to_an_end",
+            "text": "트위들 쌍둥이의 전쟁은 종말을 불러왔다"
+          },
+          {
+            "id": "walrus_and_carpenter_ate_their_last_meal",
+            "text": "바다코끼리와 목수가 마지막 식사를 했다"
+          },
+          {
+            "id": "walrus_and_carpenter_have_lost_their_appetites",
+            "text": "바다코끼리와 목수가 식탐을 잃었다"
+          },
+          {
+            "id": "walrus_and_carpenter_were_completely_obliterated",
+            "text": "바다코끼리와 목수가 완전히 소멸되었다"
+          },
+          {
+            "id": "went_down_the_rabbit_hole",
+            "text": "조사자들은 토끼굴로 뛰어들었다"
+          },
+          {
+            "id": "went_through_the_looking_glass",
+            "text": "조사자들이 거울을 통과했다"
+          },
+          {
+            "id": "white_king_celebrates_a_grand_victory",
+            "text": "하얀 왕이 장대한 승리를 기념하였다"
+          },
+          {
+            "id": "white_king_was_slain_by_the_red_pieces",
+            "text": "하얀 왕은 붉은 기물들에게 살해당했다"
+          },
+          {
+            "id": "white_knight_has_fallen_in_battle_to_the_red_queen",
+            "text": "하얀 기사가 붉은 여왕과 의 싸움에서 쓰러졌다"
+          },
+          {
+            "id": "white_knight_revels_in_your_victory_over_the_red_queen",
+            "text": "하얀 기사가 붉은 여왕에게서 당신이 승리했다고 공표했다"
+          },
+          {
+            "id": "white_rabbit_consumed_by_shadows",
+            "text": "흰 토끼가 그림자에게 흡수되었다"
+          },
+          {
+            "id": "white_rabbit_survived_the_monsters_attack",
+            "text": "흰 토끼가 괴물의 공격에서 살아남았다"
+          }
+        ]
+      },
+      {
+        "section": "fragments_of_alice",
+        "entries": [
+          {
+            "id": "compassion",
+            "text": "연민"
+          },
+          {
+            "id": "courage",
+            "text": "용기"
+          },
+          {
+            "id": "curiosity",
+            "text": "호기심"
+          },
+          {
+            "id": "intuition",
+            "text": "직감"
+          },
+          {
+            "id": "patience",
+            "text": "인내"
+          },
+          {
+            "id": "reason",
+            "text": "이성"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "raw_bh_blame",
+            "text": "dummy"
+          },
+          {
+            "id": "zaw_fm_req_queen",
+            "text": "dummy"
+          },
+          {
+            "id": "zaw_wsc_jabberwock",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "wonderland_banes",
+        "entries": [
+          {
+            "id": "gryphon_and_mock_turtle",
+            "text": "그리폰과 가짜 거북"
+          },
+          {
+            "id": "humpty_dumpty",
+            "text": "험프티 덤프티"
+          },
+          {
+            "id": "lion_and_unicorn",
+            "text": "사자와 유니콘"
+          },
+          {
+            "id": "the_caterpillar",
+            "text": "애벌레"
+          },
+          {
+            "id": "the_dodo",
+            "text": "도도새"
+          },
+          {
+            "id": "the_duchess",
+            "text": "공작부인"
+          },
+          {
+            "id": "the_white_queen",
+            "text": "하얀 여왕"
+          }
+        ]
+      },
+      {
+        "section": "wonderland_boons",
+        "entries": [
+          {
+            "id": "gryphon_and_mock_turtle",
+            "text": "그리폰과 가짜 거북"
+          },
+          {
+            "id": "humpty_dumpty",
+            "text": "험프티 덤프티"
+          },
+          {
+            "id": "lion_and_unicorn",
+            "text": "사자와 유니콘"
+          },
+          {
+            "id": "the_caterpillar",
+            "text": "애벌레"
+          },
+          {
+            "id": "the_dodo",
+            "text": "도도새"
+          },
+          {
+            "id": "the_duchess",
+            "text": "공작부인"
+          },
+          {
+            "id": "the_white_queen",
+            "text": "하얀 여왕"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "zce",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "became_sentinels_of_the_mist",
+            "text": "the investigators became sentinels of the mist."
+          },
+          {
+            "id": "did_not_find_the_ritual_site",
+            "text": "the investigators did not find the ritual site."
+          },
+          {
+            "id": "earned_barors_trust",
+            "text": "the investigators have earned Bárðr's trust."
+          },
+          {
+            "id": "found_chest",
+            "text": "an investigator found the chest in the lake."
+          },
+          {
+            "id": "found_the_ritual_site",
+            "text": "the investigators found the ritual site."
+          },
+          {
+            "id": "know_where_silver_is",
+            "text": "an investigator knows where the silver is."
+          },
+          {
+            "id": "mapped_the_golden_circle",
+            "text": "the investigators have mapped the Golden Circle."
+          },
+          {
+            "id": "must_banish_egil",
+            "text": "the investigators must banish Egil."
+          },
+          {
+            "id": "must_deceive_egil",
+            "text": "the investigators must deceive Egil."
+          },
+          {
+            "id": "must_defeat_egil",
+            "text": "the investigators must defeat Egil."
+          },
+          {
+            "id": "must_restore_egil",
+            "text": "the investigators must restore Egil."
+          },
+          {
+            "id": "noticed_ring",
+            "text": "an investigator noticed the ring."
+          },
+          {
+            "id": "on_their_own",
+            "text": "the investigators are on their own."
+          },
+          {
+            "id": "opened_chest",
+            "text": "an investigator forced open the frozen chest."
+          },
+          {
+            "id": "photographed_glacier",
+            "text": "the investigators photographed Long Glacier."
+          },
+          {
+            "id": "photographed_gulfoss",
+            "text": "the investigators photographed Gulfoss."
+          },
+          {
+            "id": "photographed_kerio",
+            "text": "the investigators photographed Kerið."
+          },
+          {
+            "id": "photographed_thingvellir",
+            "text": "the investigators photographed Thingvellir."
+          },
+          {
+            "id": "read_bards_tale",
+            "text": "an investigator read Bard's tale."
+          },
+          {
+            "id": "retrieved_pole",
+            "text": "an investigator retrieved the eerie pole."
+          },
+          {
+            "id": "runes_remain_a_mystery",
+            "text": "the runes remain a mystery."
+          },
+          {
+            "id": "studied_the_markings",
+            "text": "an investigator studied the markings."
+          },
+          {
+            "id": "uncovered_the_split_skill",
+            "text": "an investigator uncovered the split skull."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "one_victory_display",
+            "text": "dummy"
+          },
+          {
+            "id": "win",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "traces_of_egil",
+        "entries": [
+          {
+            "id": "athelstans_ring",
+            "text": "Athelstan's Ring"
+          },
+          {
+            "id": "dragvandil",
+            "text": "Dragvandil"
+          },
+          {
+            "id": "egils_hood",
+            "text": "Egil's Hood."
+          },
+          {
+            "id": "egils_scorn_pole",
+            "text": "Egil's Scorn Pole"
+          },
+          {
+            "id": "egils_silver",
+            "text": "Egil's Silver"
+          },
+          {
+            "id": "evil_blooms",
+            "text": "Evil Blooms"
+          },
+          {
+            "id": "gnawed_horn",
+            "text": "Gnawed Horn"
+          },
+          {
+            "id": "healing_runes",
+            "text": "Healing Runes"
+          },
+          {
+            "id": "runes_of_protection",
+            "text": "Runes of Protection"
+          },
+          {
+            "id": "silk_gown",
+            "text": "Silk Gown"
+          },
+          {
+            "id": "thorolfs_bracelet",
+            "text": "Thorolf's Bracelet"
+          },
+          {
+            "id": "warding_runes",
+            "text": "Warding Runes"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "zdm",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "infected_by_cybervirus",
+            "masculine_text": "#name# 조사자는 사이버 바이러스에 감염되었다",
+            "feminine_text": "#name# 조사자는 사이버 바이러스에 감염되었다"
+          },
+          {
+            "id": "has_been_corrupted_by_the_earth",
+            "masculine_text": "#name# 조사자는 지구에 의해 오염되었다",
+            "feminine_text": "#name# 조사자는 지구에 의해 오염되었다"
+          },
+          {
+            "id": "allied_with_the_migo",
+            "text": "당신은 미고와 동맹을 맺었다"
+          },
+          {
+            "id": "caught_in_the_supernovas_blast",
+            "text": "#name# 조사자는 초신성 폭발에 휩쓸렸다"
+          },
+          {
+            "id": "couldnt_save_the_crew_of_the_nostalgia_2",
+            "text": "당신은 향수 2호의 승조원을 단 한 명도 구하지 못했다"
+          },
+          {
+            "id": "elbrus_station_has_been_fully_stabilized",
+            "text": "엘브루스 연구 기지가 완전히 안정화되었다"
+          },
+          {
+            "id": "elbrus_station_has_been_lost_in_the_quantum_realm",
+            "text": "엘브루스 연구 기지가 양자 영역 속으로 사라져 버렸다"
+          },
+          {
+            "id": "entered_the_virtual_dreamlands_by_your_own_means",
+            "text": "당신은 자력으로 가상현실 속 몽환의 땅에 들어왔다"
+          },
+          {
+            "id": "escaped_hasturs_grasp_and_prevented_him_from_escaping_his_prison",
+            "text": "조사자들이 마침내 하스터의 손아귀에서 벗어났고 하스터가 감옥에서 탈출하지 못하도록 막았다"
+          },
+          {
+            "id": "fully_restored_the_sanity_of_k2ps187",
+            "text": "당신은 K2-PS187의 정신을 완전히 회복시켰다"
+          },
+          {
+            "id": "hastur_and_tassilda_are_imprisoned",
+            "text": "하스터와 타실다는 다시 한 번 카르코사에 갇혔고, 우주는 피할 수 없는 운명을 뛰어넘었습니다. 적어도 지금은…"
+          },
+          {
+            "id": "have_witnessed_the_primordial_chaos",
+            "text": "당신은 태고의 혼돈을 목도했다"
+          },
+          {
+            "id": "have_witnessed_the_unconscious_pandemonium",
+            "text": "당신은 무의식 속의 복마전을 목도했다"
+          },
+          {
+            "id": "hope_was_shielded_from_the_blast",
+            "text": "‘희망’이 폭발에서 살아남았다"
+          },
+          {
+            "id": "know_of_abjuration_of_the_throne",
+            "text": "왕위 계승을 부정하는 의식을 알아냈다"
+          },
+          {
+            "id": "lived_remainder_of_their_days_on_paradise",
+            "text": "#name# 조사자는 낙원에서 여생을 보냈다"
+          },
+          {
+            "id": "lived_remainder_of_their_days_with_hope",
+            "text": "#name# 조사자는 희망과 함께 여생을 보냈다"
+          },
+          {
+            "id": "migo_safely_returned_to_their_home_world",
+            "text": "미고가 고향 세계로 안전하게 돌아갔다"
+          },
+          {
+            "id": "nostalgia_2_has_been_saved",
+            "text": "향수 2호를 구했다"
+          },
+          {
+            "id": "not_in_good_standing_with_the_migo",
+            "text": "당신은 미고와 반목하고 있다"
+          },
+          {
+            "id": "partially_restored_the_sanity_of_k2ps187",
+            "text": "당신은 K2-PS187의 정신을 일부나마 회복시켰다"
+          },
+          {
+            "id": "realm_of_carcosa_overtook_our_universe",
+            "text": "카르코사 왕국이 현실 세계의 우주와 병합되었고, 타실다가 검은 별들을 모두 다스린다"
+          },
+          {
+            "id": "returned_to_the_palaces_of_dim_carcosa",
+            "text": "당신은 어스레한 카르코사의 왕궁으로 돌아갔다"
+          },
+          {
+            "id": "sun_went_supernova",
+            "text": "태양이 초신성을 일으켜 태양계 대부분을 말살했다"
+          },
+          {
+            "id": "transported_to_the_virtual_dreamlands_by_maja",
+            "text": "당신은 마자에 의해 가상현실 속 몽환의 땅으로 전송되었다"
+          },
+          {
+            "id": "trapped_in_a_virtual_nightmare",
+            "text": "당신은 가상현실 속 악몽에 갇혀 버렸다"
+          },
+          {
+            "id": "trapped_within_carcosa",
+            "text": "조사자들은 카르코사에 갇혀 버렸다"
+          },
+          {
+            "id": "ucc_escaped_to_another_galaxy",
+            "text": "식민지 연방이 다른 은하계로 도망쳤다"
+          },
+          {
+            "id": "uncovered_the_cultists_inhuman_methods",
+            "text": "사교도들이 사용하는 추악한 방법을 알아냈다"
+          },
+          {
+            "id": "watched_the_performance_of_heir_to_carcosa",
+            "text": "조사자들이 카르코사의 후계자라는 공연을 관람했다"
+          },
+          {
+            "id": "witnesed_the_manifested_madness",
+            "text": "당신은 광기의 현신을 목도했다"
+          },
+          {
+            "id": "you_have_rescued_the_remaining_crew_of_the_nostalgia_2",
+            "text": "당신은 향수 2호의 남은 승조원을 구출했다"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "delayed_win",
+            "text": "dummy"
+          },
+          {
+            "id": "en_asked_reintegrated",
+            "text": "dummy"
+          },
+          {
+            "id": "lq_erwin",
+            "text": "dummy"
+          },
+          {
+            "id": "sm_migo_scientist",
+            "text": "dummy"
+          },
+          {
+            "id": "soe_crew_assets",
+            "text": "dummy"
+          },
+          {
+            "id": "soe_crew_imitations",
+            "text": "dummy"
+          },
+          {
+            "id": "zdm_desync_weakness",
+            "text": "dummy"
+          },
+          {
+            "id": "zdm_end_2",
+            "text": "dummy"
+          },
+          {
+            "id": "zdm_foc_chaos_bag",
+            "text": "dummy"
+          },
+          {
+            "id": "zdm_side_story",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  }
+]

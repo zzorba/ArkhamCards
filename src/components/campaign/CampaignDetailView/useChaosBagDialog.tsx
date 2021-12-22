@@ -11,7 +11,7 @@ import { Navigation } from 'react-native-navigation';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
 import Card from '@data/types/Card';
 import { useDispatch } from 'react-redux';
-import { CampaignId } from '@actions/types';
+import { CampaignCycleCode, CampaignId } from '@actions/types';
 import { showChaosBagOddsCalculator, showDrawChaosBag, showGuideChaosBagOddsCalculator, showGuideDrawChaosBag } from '../nav';
 import { useDialog } from '@components/deck/dialogs';
 import StyleContext from '@styles/StyleContext';
@@ -27,6 +27,7 @@ interface Props {
   guided?: boolean;
   setChaosBag?: SetCampaignChaosBagAction;
   standalone?: boolean;
+  cycleCode: CampaignCycleCode;
 
   customEditPressed?: () => void;
 }
@@ -63,6 +64,7 @@ export default function useChaosBagDialog({
   setChaosBag,
   customEditPressed,
   standalone,
+  cycleCode,
 }: Props): [React.ReactNode, () => void, (visible: boolean) => void] {
   const { width } = useContext(StyleContext);
   const setVisibleRef = useRef<(visible: boolean) => void>();
@@ -79,9 +81,9 @@ export default function useChaosBagDialog({
     if (guided) {
       showGuideDrawChaosBag(componentId, campaignId, chaosBag, map(allInvestigators, c => c.code), scenarioId, !!standalone);
     } else {
-      showDrawChaosBag(componentId, campaignId, allInvestigators);
+      showDrawChaosBag(componentId, campaignId, allInvestigators, cycleCode);
     }
-  }, [campaignId, componentId, guided, chaosBag, allInvestigators, scenarioId, standalone]);
+  }, [campaignId, componentId, guided, chaosBag, allInvestigators, scenarioId, standalone, cycleCode]);
   const dispatch = useDispatch();
   const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
     if (setChaosBag) {
@@ -98,6 +100,7 @@ export default function useChaosBagDialog({
           chaosBag,
           updateChaosBag,
           trackDeltas: true,
+          cycleCode,
         },
         options: {
           topBar: {
@@ -111,7 +114,7 @@ export default function useChaosBagDialog({
         },
       },
     });
-  }, [componentId, chaosBag, updateChaosBag]);
+  }, [componentId, chaosBag, updateChaosBag, cycleCode]);
   const customButtons = useMemo(() => {
     const result: React.ReactNode[] = [];
     if (customEditPressed || (!guided && setChaosBag)) {

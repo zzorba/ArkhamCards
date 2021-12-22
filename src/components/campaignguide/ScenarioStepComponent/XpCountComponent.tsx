@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
+import { Text, View, StyleSheet } from 'react-native';
 import { map } from 'lodash';
 import { msgid, ngettext } from 'ttag';
 
@@ -10,7 +11,9 @@ import StyleContext from '@styles/StyleContext';
 import CampaignGuideContext from '../CampaignGuideContext';
 import { Deck } from '@actions/types';
 import { parseBasicDeck } from '@lib/parseDeck';
-import { s } from '@styles/space';
+import space, { m, s } from '@styles/space';
+import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
+import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 
 interface Props {
   step: XpCountStep;
@@ -40,7 +43,6 @@ function SpentXpComponent({ investigator, campaignLog, children }: {
   children: (xp: number) => JSX.Element | null;
 }) {
   const { latestDecks, playerCards, spentXp } = useContext(CampaignGuideContext);
-
   const deck = latestDecks[investigator.code];
   const earnedXp = campaignLog.earnedXp(investigator.code);
   if (deck) {
@@ -66,7 +68,7 @@ function onChoiceChange() {
 }
 
 export default function XpCountComponent({ step, campaignLog }: Props) {
-  const { colors, width } = useContext(StyleContext);
+  const { colors, typography, width } = useContext(StyleContext);
   const specialString = useCallback((investigator: Card) => {
     const count = campaignLog.specialXp(investigator.code, step.special_xp);
     switch (step.special_xp) {
@@ -82,35 +84,61 @@ export default function XpCountComponent({ step, campaignLog }: Props) {
   }, [step, campaignLog]);
   return (
     <>
+      { !!step.title && (
+        <View style={styles.titleWrapper}>
+          <Text style={[
+            typography.bigGameFont,
+            { color: colors.darkText },
+            space.paddingTopL,
+          ]}>
+            { step.title }
+          </Text>
+        </View>
+      ) }
+      { !!step.text && (
+        <SetupStepWrapper bulletType={step.bullet_type}>
+          <CampaignGuideTextComponent text={step.text} />
+        </SetupStepWrapper>
+      )}
       { map(campaignLog.investigators(false), (investigator, idx) => {
         const resupplyPointsString = specialString(investigator);
         return (
-          <SpentXpComponent investigator={investigator} campaignLog={campaignLog}>
-            { (xp: number) => (
-              <ChoiceListItemComponent
-                key={investigator.code}
-                investigator={investigator}
-                code={investigator.code}
-                name={investigator.name}
-                color={colors.faction[investigator.factionCode()].background}
-                choices={[{
-                  text: ngettext(
-                    msgid`${xp} general / ${resupplyPointsString} XP`,
-                    `${xp} general / ${resupplyPointsString} XP`,
-                    xp
-                  ),
-                }]}
-                onChoiceChange={onChoiceChange}
-                choice={0}
-                editable={false}
-                optional={false}
-                width={width - s * 2}
-                firstItem={idx === 0}
-              />
-            ) }
-          </SpentXpComponent>
+          <View style={space.paddingSideS}>
+            <SpentXpComponent investigator={investigator} campaignLog={campaignLog}>
+              { (xp: number) => (
+                <ChoiceListItemComponent
+                  key={investigator.code}
+                  investigator={investigator}
+                  code={investigator.code}
+                  name={investigator.name}
+                  color={colors.faction[investigator.factionCode()].background}
+                  choices={[{
+                    text: ngettext(
+                      msgid`${xp} general / ${resupplyPointsString} XP`,
+                      `${xp} general / ${resupplyPointsString} XP`,
+                      xp
+                    ),
+                  }]}
+                  onChoiceChange={onChoiceChange}
+                  choice={0}
+                  editable={false}
+                  optional={false}
+                  width={width - s * 2}
+                  firstItem={idx === 0}
+                />
+              ) }
+            </SpentXpComponent>
+          </View>
         );
       })}
     </>
   );
 }
+
+
+const styles = StyleSheet.create({
+  titleWrapper: {
+    marginLeft: m,
+    marginRight: m + s,
+  },
+});

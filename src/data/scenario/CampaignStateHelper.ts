@@ -14,8 +14,9 @@ import {
   DeckId,
   SYSTEM_BASED_GUIDE_INPUT_TYPES,
   SYSTEM_BASED_GUIDE_INPUT_IDS,
+  DelayedDeckEdits,
 } from '@actions/types';
-import { ScenarioId } from '@data/scenario';
+import { ScenarioId, StepId } from '@data/scenario';
 import Card, { CardsMap } from '@data/types/Card';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 
@@ -26,7 +27,7 @@ export interface CampaignGuideActions {
   setDecision: (id: string, value: boolean, scenarioId?: string) => void;
   setCount: (id: string, value: number, scenarioId?: string) => void;
   setSupplies: (id: string, supplyCounts: SupplyCounts, scenarioId?: string) => void;
-  setNumberChoices: (id: string, choices: NumberChoices, deckId?: DeckId, scenarioId?: string) => void;
+  setNumberChoices: (id: string, choices: NumberChoices, deckId?: DeckId, deckEdits?: DelayedDeckEdits, scenarioId?: string) => Promise<void>;
   setStringChoices: (id: string, choices: StringChoices, scenarioId?: string) => void;
   setChoice: (id: string, choice: number, scenarioId?: string) => void;
   setText: (id: string, text: string, scenarioId?: string) => void;
@@ -144,8 +145,8 @@ export default class CampaignStateHelper {
     this.actions.setText(id, value, scenarioId);
   }
 
-  setNumberChoices(id: string, value: NumberChoices, deckId?: DeckId, scenarioId?: string) {
-    this.actions.setNumberChoices(id, value, deckId, scenarioId);
+  setNumberChoices(id: string, value: NumberChoices, deckId?: DeckId, deckEdits?: DelayedDeckEdits, scenarioId?: string) {
+    return this.actions.setNumberChoices(id, value, deckId, deckEdits, scenarioId);
   }
 
   setStringChoices(id: string, value: StringChoices, scenarioId?: string) {
@@ -301,12 +302,27 @@ export default class CampaignStateHelper {
     return undefined;
   }
 
-  numberChoices(id: string, scenario?: string): [NumberChoices | undefined, DeckId | undefined] {
+  nextDelayedDeckEdit(investigator: string, userId: string): StepId | undefined {
+    const nextInput = this.state.findInput(input => !!(
+      input.type === 'choice_list' &&
+      input.deckEdits &&
+      !input.deckEdits.resolved &&
+      input.step.endsWith(`#${investigator}`) &&
+      input.deckEdits.userId === userId
+    ));
+
+    return nextInput?.step ? {
+      id: nextInput.step,
+      scenario: nextInput.scenario,
+    } : undefined;
+  }
+
+  numberChoices(id: string, scenario?: string): [NumberChoices | undefined, DeckId | undefined, DelayedDeckEdits | undefined] {
     const entry = this.entry('choice_list', id, scenario);
     if (entry && entry.type === 'choice_list') {
-      return [entry.choices, entry.deckId];
+      return [entry.choices, entry.deckId, entry.deckEdits];
     }
-    return [undefined, undefined];
+    return [undefined, undefined, undefined];
   }
 
   stringChoices(id: string, scenario?: string): StringChoices | undefined {

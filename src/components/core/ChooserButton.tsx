@@ -8,6 +8,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   componentId: string;
+  all: string;
   title: string;
   values: string[];
   onChange: (selection: string[]) => void;
@@ -15,8 +16,8 @@ interface Props {
   indent?: boolean;
 }
 
-export default function ChooserButton({ componentId, title, values, onChange, selection, indent }: Props) {
-  const { listSeperator } = useContext(LanguageContext);
+export default function ChooserButton({ componentId, title, values, onChange, selection, indent, all }: Props) {
+  const { listSeperator, colon } = useContext(LanguageContext);
   const onPress = useCallback(() => {
     Navigation.push<SearchSelectProps>(componentId, {
       component: {
@@ -51,7 +52,7 @@ export default function ChooserButton({ componentId, title, values, onChange, se
   }, [componentId, title, values, onChange, selection]);
   return (
     <NavButton
-      text={`${title}: ${selection && selection.length ? selection.join(listSeperator) : t`All`}`}
+      text={`${title}${colon}${selection && selection.length ? selection.join(listSeperator) : all}`}
       onPress={onPress}
       indent={indent}
     />

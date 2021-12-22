@@ -210,7 +210,7 @@ export default function DeckButton({
       disabled={disabled}
       style={[
         {
-          height,
+          minHeight: height,
           borderRadius: color === 'dark_gray' || color === 'light_gray' ? 8 : 4,
           backgroundColor: backgroundColors[color],
         },

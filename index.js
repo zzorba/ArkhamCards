@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { AppearanceProvider } from 'react-native-appearance';
 import { Provider } from 'react-redux';
@@ -8,7 +9,8 @@ import { ApolloProvider } from '@apollo/client';
 import { Navigation } from 'react-native-navigation';
 import Crashes from 'appcenter-crashes';
 import database from '@react-native-firebase/database';
-import SQLite from 'react-native-sqlite-storage';
+import 'react-native-sqlite-storage';
+import 'react-native-gesture-handler';
 import 'reflect-metadata';
 
 import DatabaseProvider from './src/data/sqlite/DatabaseProvider';
@@ -26,8 +28,8 @@ function MyProvider({ store: { redux, persistor, apollo, anonApollo }, children 
   return (
     <AppearanceProvider>
       <Provider store={redux}>
-        <ArkhamCardsAuthProvider>
-          <PersistGate loading={null} persistor={persistor}>
+        <PersistGate loading={null} persistor={persistor}>
+          <ArkhamCardsAuthProvider>
             <ApolloProvider client={apollo}>
               <ApolloClientContext.Provider value={{ client: apollo, anonClient: anonApollo }}>
                 <LanguageProvider>
@@ -39,8 +41,8 @@ function MyProvider({ store: { redux, persistor, apollo, anonApollo }, children 
                 </LanguageProvider>
               </ApolloClientContext.Provider>
             </ApolloProvider>
-          </PersistGate>
-        </ArkhamCardsAuthProvider>
+          </ArkhamCardsAuthProvider>
+        </PersistGate>
       </Provider>
     </AppearanceProvider>
   );
@@ -48,6 +50,7 @@ function MyProvider({ store: { redux, persistor, apollo, anonApollo }, children 
 
 if (ENABLE_ARKHAM_CARDS_ACCOUNT) {
   database().setPersistenceEnabled(true);
+
 }
 
 const { store, persistor } = configureStore({});

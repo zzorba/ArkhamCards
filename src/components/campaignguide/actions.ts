@@ -23,6 +23,7 @@ import {
   Campaign,
   UploadedCampaignId,
   UPDATE_CAMPAIGN,
+  DelayedDeckEdits,
 } from '@actions/types';
 
 import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
@@ -42,9 +43,9 @@ function uploadCampaignHelper(
     if (guided) {
       const state = getState();
       const guide = makeCampaignGuideStateSelector()(state, campaign.uuid);
-      actions.uploadNewCampaign(campaignId.serverId, campaign, guide);
+      await actions.uploadNewCampaign(campaignId.serverId, campaign, guide);
     } else {
-      actions.uploadNewCampaign(campaignId.serverId, campaign, undefined);
+      await actions.uploadNewCampaign(campaignId.serverId, campaign, undefined);
     }
     dispatch({
       type: UPDATE_CAMPAIGN,
@@ -52,7 +53,7 @@ function uploadCampaignHelper(
       campaign: { serverId: campaignId.serverId },
       now: new Date(),
     });
-    Promise.all(map(campaign.deckIds || [], deckId => {
+    await Promise.all(map(campaign.deckIds || [], deckId => {
       return dispatch(uploadCampaignDeckHelper(campaignId, deckId, deckActions));
     }));
   };
@@ -120,11 +121,11 @@ export function undo(
   scenarioId: string,
   campaignState: CampaignGuideStateT
 ): ThunkAction<void, AppState, unknown, GuideUndoInputAction> {
-  return (dispatch) => {
+  return async(dispatch) => {
     if (userId && campaignId.serverId) {
       const undoInputs = campaignState.undoInputs(scenarioId);
       if (undoInputs.length) {
-        actions.removeInputs(campaignId, undoInputs);
+        await actions.removeInputs(campaignId, undoInputs);
       }
     } else {
       dispatch({
@@ -153,9 +154,9 @@ export function setBinaryAchievement(
   achievementId: string,
   value: boolean,
 ): ThunkAction<void, AppState, unknown, GuideUpdateAchievementAction> {
-  return (dispatch) => {
+  return async(dispatch) => {
     if (userId && campaignId.serverId) {
-      actions.setBinaryAchievement(campaignId, achievementId, value);
+      await actions.setBinaryAchievement(campaignId, achievementId, value);
     } else {
       dispatch(
         updateAchievement(userId, {
@@ -177,9 +178,9 @@ export function incCountAchievement(
   achievementId: string,
   max?: number
 ): ThunkAction<void, AppState, unknown, GuideUpdateAchievementAction> {
-  return (dispatch) => {
+  return async(dispatch) => {
     if (userId && campaignId.serverId) {
-      actions.incAchievement(campaignId, achievementId, max);
+      await actions.incAchievement(campaignId, achievementId, max);
     } else {
       dispatch(updateAchievement(userId, {
         type: GUIDE_UPDATE_ACHIEVEMENT,
@@ -200,9 +201,9 @@ export function decCountAchievement(
   achievementId: string,
   max?: number
 ): ThunkAction<void, AppState, unknown, GuideUpdateAchievementAction> {
-  return (dispatch) => {
+  return async(dispatch) => {
     if (userId && campaignId.serverId) {
-      actions.decAchievement(campaignId, achievementId);
+      await actions.decAchievement(campaignId, achievementId);
     } else {
       dispatch(updateAchievement(userId, {
         type: GUIDE_UPDATE_ACHIEVEMENT,
@@ -239,7 +240,7 @@ function setGuideInputAction(
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
   return async(dispatch) => {
     if (userId && campaignId.serverId) {
-      actions.setInput(campaignId, input);
+      await actions.setInput(campaignId, input);
     } else {
       dispatch({
         type: GUIDE_SET_INPUT,
@@ -345,6 +346,7 @@ export function setScenarioNumberChoices(
   step: string,
   choices: NumberChoices,
   deckId?: DeckId,
+  deckEdits?: DelayedDeckEdits,
   scenario?: string
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
   return setGuideInputAction(userId, actions, campaignId, {
@@ -353,6 +355,7 @@ export function setScenarioNumberChoices(
     step,
     choices,
     deckId,
+    deckEdits,
   });
 }
 

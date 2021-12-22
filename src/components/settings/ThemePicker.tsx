@@ -43,7 +43,7 @@ export default function ThemePicker() {
     return t`Dark`;
   }, [override, systemSchemeName]);
 
-  const { showDialog, dialog } = usePickerDialog<'light' | 'dark' | 'system'>({
+  const [dialog, showDialog] = usePickerDialog<'light' | 'dark' | 'system'>({
     title: t`Theme`,
     items,
     selectedValue: override || 'system',

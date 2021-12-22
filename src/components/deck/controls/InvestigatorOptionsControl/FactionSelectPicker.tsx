@@ -32,7 +32,7 @@ export default function FactionSelectPicker({
     }
     onChange(factions[index]);
   };
-  const { showDialog, dialog } = usePickerDialog({
+  const [dialog, showDialog] = usePickerDialog({
     title: t`Select Faction`,
     description: editWarning ? t`Note: Secondary faction should only be selected at deck creation time, not between scenarios.` : undefined,
     items: map(factions, (faction, index) => {

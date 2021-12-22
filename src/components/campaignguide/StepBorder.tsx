@@ -7,14 +7,14 @@ interface Props {
   type: 'top' | 'bottom';
   width: number;
   margin: number;
-  resolution?: boolean;
+  color?: 'setup' | 'interlude' | 'resolution';
 }
 
 const SCALE = 0.1;
-export default function StepBorder({ type, width, margin, resolution }: Props) {
+export default function StepBorder({ type, width, margin, color = 'setup' }: Props) {
   const { colors } = useContext(StyleContext);
   const lineWidth = width * (1 - 2.3 * SCALE) - margin * 2;
-  const backgroundColor = resolution ? colors.campaign.resolution : colors.campaign.setup;
+  const backgroundColor = colors.campaign[color];
   return (
     <View style={styles.wrapper}>
       { type === 'top' ? (

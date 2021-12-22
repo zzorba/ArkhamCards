@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import {
+  ActivityIndicator,
   Text,
 } from 'react-native';
 import { t } from 'ttag';
@@ -21,20 +22,23 @@ interface Props {
 }
 
 function CardTextReplace({ code, text, feminineText }: { code: string; text: string; feminineText?: string }) {
-  const { typography } = useContext(StyleContext);
+  const { campaignGuide } = useContext(CampaignGuideContext);
+  const { colors, typography } = useContext(StyleContext);
   const [card, loading] = useSingleCard(code, 'encounter');
-  if (loading) {
-    return null;
+  const fixedCard = campaignGuide.card(code);
+  if (loading && !fixedCard) {
+    return <ActivityIndicator animating size="small" color={colors.lightText} />;
   }
-  if (!card) {
+  if (!card && !fixedCard) {
     return (
       <Text style={[typography.text, space.paddingM]}>
         { t`Missing card #${code}. Please try updating cards from ArkhamDB in settings.` }
       </Text>
     );
   }
-  const theText = (!card.grammarGenderMasculine() && feminineText) || text;
-  return <CampaignGuideTextComponent text={theText.replace('#name#', card.name)} />;
+  const female = (card && !card.grammarGenderMasculine()) || (fixedCard && fixedCard.gender === 'female');
+  const theText = (female && feminineText) || text;
+  return <CampaignGuideTextComponent text={theText.replace('#name#', card?.name || fixedCard?.name || '')} />;
 }
 
 function CardEffectContent({ code, section }: { code: string; section: string }) {
@@ -99,7 +103,8 @@ function CampaignLogEffectsContent({ effect, input }: {
     );
   }
   if (effect.id) {
-    const cardSection = effect.section === '$input_value' && input?.length ? input[0] : undefined;
+    const cardSection = (effect.section === '$input_value' && input?.length) ? input[0] : undefined;
+    const cardEntry = (effect.type === 'campaign_log_cards' && input?.length) ? input[0] : undefined;
     const logEntry = campaignGuide.logEntry(
       cardSection || effect.section,
       effect.id === '$input_value' && input?.length ? input[0] : effect.id
@@ -120,6 +125,9 @@ function CampaignLogEffectsContent({ effect, input }: {
         const [text, feminineText] = textEntry;
         if (cardSection) {
           return <CardTextReplace code={cardSection} text={text} feminineText={feminineText} />
+        }
+        if (cardEntry) {
+          return <CardTextReplace code={cardEntry} text={text} feminineText={feminineText} />;
         }
         return (
           <CampaignGuideTextComponent text={text} />
@@ -158,11 +166,11 @@ export default function CampaignLogEffectComponent({
   input,
   bulletType,
 }: Props) {
-  if (effect.section === 'hidden') {
+  if (effect.section === 'hidden' || effect.hidden) {
     return null;
   }
   return (
-    <SetupStepWrapper bulletType={bulletType}>
+    <SetupStepWrapper bulletType={bulletType || effect.bullet_type}>
       <CampaignLogEffectsContent effect={effect} input={input} />
     </SetupStepWrapper>
   );

@@ -2,6 +2,8 @@ import { useDispatch } from 'react-redux';
 import { useCallback, useContext, useMemo } from 'react';
 import { flatMap, forEach, concat, keys, uniq } from 'lodash';
 import deepEqual from 'deep-equal';
+import { ThunkDispatch } from 'redux-thunk';
+import { Action } from 'redux';
 
 import { SingleCampaignGuideData } from './contextHelper';
 import campaignActions, { updateCampaignChaosBag, updateCampaignDifficulty, updateCampaignGuideVersion, updateCampaignInvestigatorData, updateCampaignScenarioResults } from '@components/campaign/actions';
@@ -15,6 +17,7 @@ import {
   InvestigatorTraumaData,
   DeckId,
   CampaignId,
+  DelayedDeckEdits,
 } from '@actions/types';
 import Card from '@data/types/Card';
 import useChooseDeck from './useChooseDeck';
@@ -26,8 +29,11 @@ import { UpdateCampaignActions, useGuideActions } from '@data/remote/campaigns';
 import { DeckActions } from '@data/remote/decks';
 import { ProcessedCampaign } from '@data/scenario';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import { AppState } from '@reducers';
 
 const EMPTY_SPENT_XP = {};
+type AsyncDispatch = ThunkDispatch<AppState, unknown, Action>;
+
 export default function useCampaignGuideContextFromActions(
   campaignId: CampaignId,
   createDeckActions: DeckActions,
@@ -36,7 +42,7 @@ export default function useCampaignGuideContextFromActions(
 ): CampaignGuideContextType | undefined {
   const { userId } = useContext(ArkhamCardsAuthContext);
   const campaignInvestigators = campaignData?.campaignInvestigators;
-  const dispatch = useDispatch();
+  const dispatch: AsyncDispatch = useDispatch();
   const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
   const campaignChooseDeck = useChooseDeck(createDeckActions, updateCampaignActions);
@@ -143,14 +149,15 @@ export default function useCampaignGuideContextFromActions(
     ));
   }, [dispatch, campaignId, remoteGuideActions, userId]);
 
-  const setNumberChoices = useCallback((stepId: string, choices: NumberChoices, deckId?: DeckId, scenarioId?: string) => {
-    dispatch(guideActions.setScenarioNumberChoices(
+  const setNumberChoices = useCallback(async(stepId: string, choices: NumberChoices, deckId?: DeckId, deckEdits?: DelayedDeckEdits, scenarioId?: string): Promise<void> => {
+    return dispatch(guideActions.setScenarioNumberChoices(
       userId,
       remoteGuideActions,
       campaignId,
       stepId,
       choices,
       deckId,
+      deckEdits,
       scenarioId
     ));
   }, [dispatch, campaignId, remoteGuideActions, userId]);
@@ -282,6 +289,8 @@ export default function useCampaignGuideContextFromActions(
           !deepEqual(oldData.addedCards || [], newData.addedCards || []) ||
           !deepEqual(oldData.removedCards || [], newData.removedCards || []) ||
           !deepEqual(oldData.storyAssets || [], newData.storyAssets || []) ||
+          !deepEqual(oldData.specialXp || {}, newData.specialXp || {}) ||
+          !deepEqual(oldData.cardCounts || {}, newData.cardCounts || {}) ||
           !deepEqual(oldData.ignoreStoryAssets || [], newData.ignoreStoryAssets || []);
         if (hasChanges) {
           dispatch(updateCampaignInvestigatorData(userId, updateCampaignActions, campaignId, investigator, {
@@ -294,6 +303,8 @@ export default function useCampaignGuideContextFromActions(
             removedCards: newData.removedCards || [],
             storyAssets: newData.storyAssets || [],
             ignoreStoryAssets: newData.ignoreStoryAssets || [],
+            cardCounts: newData.cardCounts || {},
+            specialXp: newData.specialXp || {},
           }));
         }
       }

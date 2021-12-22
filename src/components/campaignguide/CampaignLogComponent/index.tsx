@@ -17,6 +17,9 @@ import { CampaignId } from '@actions/types';
 import { showGuideChaosBagOddsCalculator, showGuideDrawChaosBag } from '@components/campaign/nav';
 import useSingleCard from '@components/card/useSingleCard';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import CampaignLogPartnersComponent from './CampaignLogPartnersComponent';
+import { Partner } from '@data/scenario/types';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   componentId: string;
@@ -34,10 +37,10 @@ interface CardSectionProps {
   code: string;
   section?: EntrySection;
   campaignGuide: CampaignGuide;
+  width: number;
 }
 
-function CardSection({ code, section, campaignGuide }: CardSectionProps) {
-  const { width } = useContext(StyleContext);
+function CardSection({ code, section, campaignGuide, width }: CardSectionProps) {
   const [card] = useSingleCard(code, 'encounter');
   const eliminated = !!section?.sectionCrossedOut;
   const header = useMemo(() => {
@@ -76,13 +79,21 @@ export default function CampaignLogComponent({
   interScenarioId,
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
-  const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'investigator_count' | 'count' | 'supplies') => {
+  const { colon } = useContext(LanguageContext);
+  const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'investigator_count' | 'count' | 'supplies' | 'header' | 'partner', partners?: Partner[]) => {
     switch (type) {
+      case 'header': {
+        return (
+          <View style={space.paddingSideS}>
+            <DeckBubbleHeader inverted title={title} />
+          </View>
+        );
+      }
       case 'count': {
         const count = campaignLog.count(id, '$count');
         return (
           <View style={space.paddingSideS}>
-            <DeckBubbleHeader inverted title={`${title}: ${count}`} />
+            <DeckBubbleHeader inverted title={`${title}${colon}${count}`} />
           </View>
         );
       }
@@ -119,12 +130,26 @@ export default function CampaignLogComponent({
           </View>
         );
       }
+      case 'partner': {
+        return (
+          <View style={[space.paddingSideS, space.paddingBottomM]}>
+            <DeckBubbleHeader inverted title={title} />
+            { !!partners && (
+              <CampaignLogPartnersComponent
+                partners={partners}
+                campaignLog={campaignLog}
+                width={width - s * 2}
+              />
+            ) }
+          </View>
+        );
+      }
       default: {
         const section = campaignLog.sections[id];
         if (CARD_REGEX.test(id)) {
           return (
             <View style={[space.paddingTopS, space.paddingSideS]}>
-              <CardSection code={id} campaignGuide={campaignGuide} section={section} />
+              <CardSection code={id} campaignGuide={campaignGuide} section={section} width={width - s * 2} />
             </View>
           );
         }
@@ -145,7 +170,7 @@ export default function CampaignLogComponent({
         );
       }
     }
-  }, [campaignLog, campaignGuide, width, interScenarioId]);
+  }, [campaignLog, campaignGuide, width, interScenarioId, colon]);
 
   const oddsCalculatorPressed = useCallback(() => {
     showGuideChaosBagOddsCalculator(componentId, campaignId, campaignLog.chaosBag, campaignLog.investigatorCodesSafe(), scenarioId, standalone);
@@ -205,7 +230,7 @@ export default function CampaignLogComponent({
         }
         return (
           <View key={log.id}>
-            { renderLogEntrySectionContent(log.id, log.title, log.type) }
+            { renderLogEntrySectionContent(log.id, log.title, log.type, log.partners) }
           </View>
         );
       }) }

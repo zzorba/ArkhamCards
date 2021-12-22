@@ -191,6 +191,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
         selectedDeck.deck.meta || {},
         newSlots,
         selectedDeck.deck.ignoreDeckLimitSlots || {},
+        selectedDeck.deck.sideSlots || {},
         cards,
         selectedDeck. previousDeck
       );

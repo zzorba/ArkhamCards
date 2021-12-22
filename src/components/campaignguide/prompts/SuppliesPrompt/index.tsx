@@ -86,7 +86,7 @@ export default function SuppliesPrompt({ id, bulletType, text, input }: Props) {
   const baseTotal = input.points[playerCount - 1];
   const suppliesInput = useMemo(() => scenarioState.supplies(id), [scenarioState, id]);
   const supplyCounts = suppliesInput !== undefined ? suppliesInput : counts;
-  const supplyIcon = <AppIcon key="resource" name="resource" size={16} color={colors.L30} />;
+  const supplyIcon = <AppIcon key="resource" name="resource" size={15} color="#FFFFFF" />;
   return (
     <InputWrapper
       bulletType={bulletType || 'default'}

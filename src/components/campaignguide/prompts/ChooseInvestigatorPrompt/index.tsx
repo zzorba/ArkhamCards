@@ -37,7 +37,7 @@ export default function ChooseInvestigatorPrompt({
   investigators,
   investigatorToValue,
   renderResults,
-}: Props): JSX.Element {
+}: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { scenarioInvestigators, campaignLog } = useContext(ScenarioStepContext);
   const { width } = useContext(StyleContext);

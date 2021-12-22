@@ -24,7 +24,7 @@ export interface SectionCount {
 }
 
 export default class Database {
-  static SCHEMA_VERSION: number = 37;
+  static SCHEMA_VERSION: number = 39;
   connectionP: Promise<Connection>;
 
   playerState?: PlayerCardState;
@@ -159,10 +159,15 @@ export default class Database {
     };
   }
 
-  async startTransaction(): Promise<QueryRunner> {
+  async queryRunner(): Promise<QueryRunner> {
     const connection = await this.connectionP;
     const queryRunner = connection.createQueryRunner();
     await queryRunner.connect();
+    return queryRunner;
+  }
+
+  async startTransaction(): Promise<QueryRunner> {
+    const queryRunner = await this.queryRunner();
     await queryRunner.startTransaction();
     return queryRunner;
   }
@@ -174,8 +179,7 @@ export default class Database {
       .createQueryBuilder()
       .insert()
       .into(Card)
-      .values(cards)
-      .orIgnore();
+      .values(cards);
     return await query.execute();
   }
 
@@ -186,8 +190,7 @@ export default class Database {
       .createQueryBuilder()
       .insert()
       .into(Rule)
-      .values(rules)
-      .orIgnore();
+      .values(rules);
     return await query.execute();
   }
 

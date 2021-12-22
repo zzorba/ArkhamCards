@@ -3,6 +3,7 @@ import { flatMap, keys, map, omit } from 'lodash';
 
 import { getAccessToken } from './auth';
 import { Deck, DeckMeta, DeckProblemType, ArkhamDbApiDeck, ArkhamDbDeck } from '@actions/types';
+import { ENABLE_SIDE_DECK } from '@app_constants';
 
 interface Params {
   [key: string]: string | number;
@@ -196,7 +197,8 @@ export async function saveDeck(
   xpAdjustment?: number,
   tabooSetId?: number,
   meta?: DeckMeta,
-  description_md?: string
+  description_md?: string,
+  side?: { [code: string]: number }
 ): Promise<Deck> {
   const accessToken = await getAccessToken();
   if (!accessToken) {
@@ -221,6 +223,9 @@ export async function saveDeck(
   }
   if (description_md !== undefined) {
     bodyParams.description_md = description_md;
+  }
+  if (ENABLE_SIDE_DECK && side !== undefined) {
+    bodyParams.side = JSON.stringify(side);
   }
   const body = encodeParams(bodyParams);
   const json = await fetch(uri, {

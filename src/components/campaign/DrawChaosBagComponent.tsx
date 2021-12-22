@@ -1,15 +1,15 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Text, Pressable, TouchableWithoutFeedback, View, LayoutChangeEvent } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, Pressable, TouchableWithoutFeedback, TouchableOpacity, View, LayoutChangeEvent } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { cloneDeep, find, filter, map, shuffle, sumBy, reverse, uniq, forEach } from 'lodash';
-import { jt, t } from 'ttag';
+import { jt, t, c } from 'ttag';
 import KeyEvent from 'react-native-keyevent';
 import KeepAwake from 'react-native-keep-awake';
 
 import { ChaosBag, ChaosTokenType } from '@app_constants';
 import { CampaignDifficulty, CampaignId } from '@actions/types';
 import ChaosToken, { SMALL_TOKEN_SIZE } from './ChaosToken';
-import { adjustBlessCurseChaosBagResults, updateChaosBagClearTokens, updateChaosBagDrawToken, updateChaosBagReleaseAllSealed, updateChaosBagResetBlessCurse, updateChaosBagSealTokens } from './actions';
+import { adjustBlessCurseChaosBagResults, updateChaosBagClearTokens, updateChaosBagDrawToken, updateChaosBagReleaseAllSealed, updateChaosBagResetBlessCurse, updateChaosBagSealTokens, updateChaosBagTarotMode } from './actions';
 import SealTokenButton from './SealTokenButton';
 import { flattenChaosBag } from './campaignUtil';
 import space, { s, xs } from '@styles/space';
@@ -23,10 +23,11 @@ import DeckButton from '@components/deck/controls/DeckButton';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
 import { TINY_PHONE } from '@styles/sizes';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useChaosBagActions } from '@data/remote/chaosBag';
 import CardTextComponent from '@components/card/CardTextComponent';
 import { difficultyString } from './constants';
+import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
+import { usePickerDialog } from '@components/deck/dialogs';
 
 interface Props {
   campaignId: CampaignId;
@@ -36,6 +37,20 @@ interface Props {
   viewChaosBagOdds: () => void;
   editViewPressed: () => void;
   editable?: boolean;
+}
+
+const SHOW_TAROT_MODE = true;
+
+function getTarotString(tarot: Chaos_Bag_Tarot_Mode_Enum | undefined) {
+  if (!tarot) {
+    return t`Tarot card`;
+  }
+  const cards = {
+    [Chaos_Bag_Tarot_Mode_Enum.Judgement]: t`Judgement · XX`,
+    [Chaos_Bag_Tarot_Mode_Enum.JudgementInverted]: t`Judgement · XX (Inverted)`,
+  };
+  const card = cards[tarot];
+  return t`Tarot card: ${card}`;
 }
 
 function BlessCurseCounter({ type, value, min, inc, dec }: { type: 'bless' | 'curse'; min: number; value: number; inc: () => void; dec: () => void; }) {
@@ -100,7 +115,6 @@ export default function DrawChaosBagComponent(props: Props) {
   const [isChaosBagEmpty, setIsChaosBagEmpty] = useState(false);
   const actions = useChaosBagActions();
   const [sealDialog, showSealDialog] = useSealTokenDialog(campaignId, chaosBag, chaosBagResults, actions);
-
   const clearTokens = useCallback((removeBlessCurse?: boolean) => {
     const blessToRemove = removeBlessCurse ? sumBy(chaosBagResults.drawnTokens, token => token === 'bless' ? 1 : 0) : 0;
     const curseToRemove = removeBlessCurse ? sumBy(chaosBagResults.drawnTokens, token => token === 'curse' ? 1 : 0) : 0;
@@ -122,13 +136,36 @@ export default function DrawChaosBagComponent(props: Props) {
   }, [clearTokens]);
 
   const getRandomChaosTokens = useCallback((chaosBag: ChaosBag, drawTokens: number): ChaosTokenType[] => {
-    const weightedList = flattenChaosBag(chaosBag);
-
+    const weightedList = flattenChaosBag(chaosBag, chaosBagResults.tarot);
     setIsChaosBagEmpty(weightedList.length <= 1);
-
     return shuffle(weightedList).slice(0, drawTokens);
-  }, [setIsChaosBagEmpty]);
+  }, [setIsChaosBagEmpty, chaosBagResults.tarot]);
 
+  const setTarot = useCallback((tarot: Chaos_Bag_Tarot_Mode_Enum | undefined) => {
+    dispatch(updateChaosBagTarotMode(actions, campaignId, tarot, chaosBagResults));
+  }, [dispatch, actions, campaignId, chaosBagResults]);
+  const [tarotDialog, showTarotDialog] = usePickerDialog({
+    title: t`Select tarot card`,
+    description: t`Which tarot card is impacting the chaos bag?`,
+    selectedValue: chaosBagResults.tarot,
+    items: [
+      {
+        title: c('Tarot Card').t`None`,
+        value: undefined,
+      },
+      {
+        title: c('Tarot Card').t`Judgement · XX`,
+        description: t`Replace a skull with a 0 token.`,
+        value: Chaos_Bag_Tarot_Mode_Enum.Judgement,
+      },
+      {
+        title: c('Tarot Card').t`Judgement · XX (Inverted)`,
+        description: t`Replace highest non-negative token with a skull.`,
+        value: Chaos_Bag_Tarot_Mode_Enum.JudgementInverted,
+      },
+    ],
+    onValueChange: setTarot,
+  });
   const drawToken = useCallback((count: number = 1) => {
     const currentChaosBag = cloneDeep(chaosBag);
     currentChaosBag.bless = chaosBagResults.blessTokens || 0;
@@ -295,7 +332,7 @@ export default function DrawChaosBagComponent(props: Props) {
       <View style={[styles.advancedButton, styles.advancedButtonLeft]}>
         <TouchableWithoutFeedback onPress={editViewPressed}>
           <View style={[space.paddingSideS, styles.advancedButton, styles.advancedButtonLeft]}>
-            <Text style={[typography.cardTraits, typography.right, space.paddingRightS]}>
+            <Text style={[typography.cardTraits, typography.right, space.paddingRightS, { flex: 1 }]} numberOfLines={2}>
               { editable ? t`Edit chaos bag` : t`View chaos bag` }
             </Text>
             <ChaosToken iconKey="bag" size="tiny" shadow />
@@ -313,7 +350,7 @@ export default function DrawChaosBagComponent(props: Props) {
           <TouchableWithoutFeedback onPress={handleClearTokensPressed}>
             <View style={[space.paddingSideS, styles.advancedButton, styles.advancedButtonRight]}>
               <ChaosToken iconKey="return" size="tiny" />
-              <Text style={[typography.cardTraits, space.paddingLeftS]} numberOfLines={2}>
+              <Text style={[typography.cardTraits, space.paddingLeftS, { flex: 1 }]} numberOfLines={2}>
                 { t`Return tokens` }
               </Text>
             </View>
@@ -322,7 +359,7 @@ export default function DrawChaosBagComponent(props: Props) {
           <TouchableWithoutFeedback onPress={viewChaosBagOdds}>
             <View style={[space.paddingSideS, styles.advancedButton, styles.advancedButtonRight]}>
               <ChaosToken iconKey="odds" size="tiny" />
-              <Text style={[typography.cardTraits, space.paddingLeftS]} numberOfLines={2}>
+              <Text style={[typography.cardTraits, space.paddingLeftS, { flex: 1 }]} numberOfLines={2}>
                 { t`Odds calculator` }
               </Text>
             </View>
@@ -399,6 +436,16 @@ export default function DrawChaosBagComponent(props: Props) {
             <DeckButton icon="seal" title={t`Seal tokens`} onPress={showSealDialog} color="dark_gray" />
           </View>
         ) }
+        { !!SHOW_TAROT_MODE && (
+          <View style={space.paddingBottomS}>
+            <DeckButton
+              icon="card-outline"
+              title={getTarotString(chaosBagResults.tarot)}
+              color="dark_gray"
+              onPress={showTarotDialog}
+            />
+          </View>
+        ) }
         <View style={[space.paddingBottomM, space.paddingTopS]}>
           { hasBlessCurse ? (
             <DeckButton icon="dismiss" title={t`Remove all bless & curse tokens`} onPress={handleResetBlessCursePressed} color="dark_gray" />
@@ -408,7 +455,8 @@ export default function DrawChaosBagComponent(props: Props) {
         </View>
       </View>
     );
-  }, [showSealDialog, handleResetBlessCursePressed, releaseAllTokens,
+  }, [showSealDialog, handleResetBlessCursePressed, releaseAllTokens, showTarotDialog,
+    chaosBagResults.tarot,
     fontScale, sealedTokens, colors, typography, hasSealedTokens, hasBlessCurse]);
   const specialTokenSection = useMemo(() => {
     if (!scenarioCardText) {
@@ -446,7 +494,7 @@ export default function DrawChaosBagComponent(props: Props) {
         <View>
           { specialTokenSection }
         </View>
-      )
+      );
     }
     return (
       <View>
@@ -481,6 +529,7 @@ export default function DrawChaosBagComponent(props: Props) {
         </View>
       </ScrollView>
       { sealDialog }
+      { tarotDialog }
     </SafeAreaView>
   );
 }
@@ -551,7 +600,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-evenly',
+    justifyContent: 'flex-start',
   },
   returnBlessCurseWrapper: {
     minHeight: 64,

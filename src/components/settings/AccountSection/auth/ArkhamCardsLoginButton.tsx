@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState, useRef } from 'react';
 import { forEach, map, uniq } from 'lodash';
-import { Platform, StyleSheet, Text, View } from 'react-native';
-import { Input } from 'react-native-elements';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { Platform, StyleSheet, Text, TextInput, View } from 'react-native';
 import { AppleButton, appleAuth, appleAuthAndroid } from '@invertase/react-native-apple-authentication';
 import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
@@ -21,6 +21,7 @@ import { ARKHAM_CARDS_LOGIN, ARKHAM_CARDS_LOGOUT } from '@actions/types';
 import { AppState } from '@reducers';
 import { removeLocalCampaign } from '@components/campaign/actions';
 import useConfirmSignupDialog from './useConfirmSignupDialog';
+import { useApolloClient } from '@apollo/client';
 
 function arkhamCardsLogin(user: string): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {
@@ -121,12 +122,13 @@ async function onGoogleButtonPress() {
 }
 
 type LoginRemedy = 'try-login' | 'try-create' | 'reset-password';
-function errorMessage(code: string): {
+function errorMessage(code: string, messages: string[]): {
   message?: string;
   field?: 'email' | 'password';
   remedy?: LoginRemedy;
 } {
   switch (code) {
+    case 'auth/account-exists-with-different-credential':
     case 'auth/email-already-in-use':
       return {
         message: t`Looks like there is already an account registered with this email address.`,
@@ -160,10 +162,15 @@ function errorMessage(code: string): {
         remedy: 'reset-password',
       };
     case 'auth/operation-not-allowed':
-    default:
+    case 'auth/invalid-credential':
+    case 'auth/invalid-verification-code':
+    case 'auth/invalid-verification-id':
+    default: {
+      const message = t`Unknown error`;
       return {
-        message: t`Unknown error`,
+        message: `${message}: ${code}\n${messages.join('\n')}`,
       };
+    }
   }
 }
 
@@ -178,7 +185,8 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
   const [password, setPassword] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [emailErrorCodes, setEmailErrorCodes] = useState<string[]>([]);
-  const passwordInputRef = useRef<Input>(null);
+  const [emailErrorMessages, setEmailErrorMessages] = useState<string[]>([]);
+  const passwordInputRef = useRef<TextInput>(null);
 
   useEffect(() => {
     if (emailErrorCodes.length) {
@@ -192,26 +200,39 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
       return;
     }
     setSubmitting(true);
-    const promise = mode === 'create' ?
-      auth().createUserWithEmailAndPassword(emailAddress, password) :
-      auth().signInWithEmailAndPassword(emailAddress, password);
-    promise.then(
-      (user) => {
-        setSubmitting(false);
-        loginSucceeded(user);
-      },
-      (error) => {
-        if (error.code) {
-          if (Array.isArray(error.code)) {
-            setEmailErrorCodes(error.code);
-          } else {
-            setEmailErrorCodes([error.code]);
+    try {
+      const promise = mode === 'create' ?
+        auth().createUserWithEmailAndPassword(emailAddress, password) :
+        auth().signInWithEmailAndPassword(emailAddress, password);
+      promise.then(
+        (user) => {
+          setSubmitting(false);
+          loginSucceeded(user);
+        },
+        (error) => {
+          if (error.code) {
+            if (Array.isArray(error.code)) {
+              setEmailErrorCodes(error.code);
+            } else {
+              setEmailErrorCodes([error.code]);
+            }
           }
+          if (error.message) {
+            if (Array.isArray(error.message)) {
+              setEmailErrorMessages(error.message);
+            } else {
+              setEmailErrorMessages([error.message]);
+            }
+          }
+          setSubmitting(false);
         }
-        setSubmitting(false);
-      }
-    );
-  }, [emailAddress, password, setSubmitting, setEmailErrorCodes, loginSucceeded, mode]);
+      );
+    } catch (e) {
+      setEmailErrorCodes(['some weird error'])
+      setEmailErrorMessages([e.message || e]);
+      setSubmitting(false);
+    }
+  }, [emailAddress, password, setSubmitting, setEmailErrorCodes, setEmailErrorMessages, loginSucceeded, mode]);
   const focusPasswordField = useCallback(() => {
     passwordInputRef.current && passwordInputRef.current.focus();
   }, [passwordInputRef]);
@@ -225,7 +246,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
         message,
         field,
         remedy,
-      } = errorMessage(code);
+      } = errorMessage(code, emailErrorMessages);
       if (message) {
         if (field === 'email') {
           emailErrors.push(message);
@@ -240,7 +261,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
       }
     });
     return [emailErrors, passwordErrors, genericErrors, uniq(remedies)];
-  }, [emailErrorCodes]);
+  }, [emailErrorCodes, emailErrorMessages]);
   const [sentPasswordReset, setSentPasswordReset] = useState(false);
   const sendPasswordReset = useCallback(() => {
     setSentPasswordReset(true);
@@ -257,37 +278,59 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
   }, [setMode]);
   return (
     <View style={styles.center}>
-      <Input
-        leftIcon={{ type: 'material', name: 'email', color: colors.darkText }}
-        placeholder={t`Email address`}
-        inputStyle={typography.text as any}
-        placeholderTextColor={colors.lightText}
-        autoCompleteType="email"
-        autoCapitalize="none"
-        autoCorrect={false}
-        value={emailAddress}
-        keyboardType="email-address"
-        textContentType="username"
-        onChangeText={setEmailAddress}
-        errorMessage={emailErrors.join('\n')}
-        onSubmitEditing={focusPasswordField}
-        returnKeyType="next"
-        blurOnSubmit={false}
-        autoFocus
-      />
-      <Input
-        ref={passwordInputRef}
-        leftIcon={{ type: 'material', name: 'lock', color: colors.darkText }}
-        inputStyle={typography.text as any}
-        placeholder={t`Password`}
-        secureTextEntry
-        value={password}
-        textContentType={mode === 'create' && Platform.OS === 'ios' && parseInt(`${Platform.Version}`, 10) >= 12 ? 'newPassword' : 'password'}
-        onChangeText={setPassword}
-        errorMessage={passwordErrors.join('\n')}
-        returnKeyType="send"
-        onSubmitEditing={submitEmail}
-      />
+      <View style={[styles.inputWrapper, { backgroundColor: colors.L20 }]}>
+        <View style={styles.inputIcon}>
+          <MaterialIcons name="email" color={colors.darkText} size={24} />
+        </View>
+        <TextInput
+          placeholder={t`Email address`}
+          style={[typography.text, { flex: 1 }]}
+          placeholderTextColor={colors.lightText}
+          autoComplete="email"
+          textContentType="emailAddress"
+          autoCapitalize="none"
+          autoCorrect={false}
+          value={emailAddress}
+          keyboardType="email-address"
+          onChangeText={setEmailAddress}
+          onSubmitEditing={focusPasswordField}
+          returnKeyType="next"
+          blurOnSubmit={false}
+          autoFocus
+        />
+      </View>
+      { !!emailErrors.length && (
+        <View>
+          <Text style={[typography.text, typography.error]}>
+            { emailErrors.join('\n') }
+          </Text>
+        </View>
+      )}
+      <View style={[styles.inputWrapper, { backgroundColor: colors.L20 }]}>
+        <View style={styles.inputIcon}>
+          <MaterialIcons name="lock" color={colors.darkText} size={24} />
+        </View>
+        <TextInput
+          ref={passwordInputRef}
+          style={[typography.text, { flex: 1 }]}
+          placeholder={t`Password`}
+          placeholderTextColor={colors.lightText}
+          secureTextEntry
+          value={password}
+          autoComplete="password"
+          textContentType={mode === 'create' && Platform.OS === 'ios' && parseInt(`${Platform.Version}`, 10) >= 12 ? 'newPassword' : 'password'}
+          onChangeText={setPassword}
+          returnKeyType="send"
+          onSubmitEditing={submitEmail}
+        />
+        { !!passwordErrors.length && (
+          <View>
+            <Text style={[typography.text, typography.error]}>
+              {passwordErrors.join('\n')}
+            </Text>
+          </View>
+        )}
+      </View>
       { genericErrors.length > 0 && (
         <View style={[space.paddingSideXs, space.paddingTopXs, space.paddingBottomS]}>
           <Text style={[typography.text, typography.error]}>
@@ -361,16 +404,18 @@ interface Props {
 }
 
 export default function ArkhamCardsLoginButton({ showAlert }: Props) {
-  const { darkMode, typography } = useContext(StyleContext);
+  const { darkMode, typography, width } = useContext(StyleContext);
   const dispatch = useDispatch();
   const { userId, loading } = useContext(ArkhamCardsAuthContext);
   const [emailLogin, toggleEmailLogin, setEmailLogin] = useFlag(false);
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const [mode, setMode] = useState<'login' | 'create' | undefined>();
+  const apollo = useApolloClient();
   const doLogout = useCallback(async() => {
     await auth().signOut();
+    apollo.clearStore();
     dispatch(logout());
-  }, [dispatch]);
+  }, [dispatch, apollo]);
   const [signupDialog, showSignupDialog] = useConfirmSignupDialog();
   const logoutPressed = useCallback(() => {
     showAlert(
@@ -441,14 +486,13 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   const signInContent = useMemo(() => {
     return (
       <View style={styles.center}>
-        <View style={{ flexDirection: 'row', paddingBottom: s + xs }}>
+        <View style={[space.paddingTopS, { flexDirection: 'row', paddingBottom: s + xs }]}>
           <DeckButton
             thin
             color="red"
             icon="email"
             title={mode === 'create' ? t`Sign up with email` : t`Sign in with email`}
             onPress={toggleEmailLogin}
-            shrink
           />
         </View>
         { ((Platform.OS === 'ios' && appleAuth.isSupported) || (Platform.OS === 'android' && appleAuthAndroid.isSupported)) && (
@@ -456,7 +500,8 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
             buttonStyle={darkMode ? AppleButton.Style.WHITE : AppleButton.Style.BLACK}
             buttonType={appleAuth.isSignUpButtonSupported && mode === 'create' ? AppleButton.Type.SIGN_UP : AppleButton.Type.SIGN_IN}
             style={[{
-              minWidth: 200,
+              flex: 1,
+              minWidth: width - s * 4,
               minHeight: 45,
             }, space.marginBottomS]}
             onPress={signInToApple}
@@ -464,12 +509,18 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
         ) }
         <GoogleSigninButton
           onPress={signInToGoogle}
-          size={GoogleSigninButton.Size.Standard}
+          size={GoogleSigninButton.Size.Wide}
+          style={{ minWidth: width - s * 3 }}
           color={darkMode ? GoogleSigninButton.Color.Light : GoogleSigninButton.Color.Dark}
         />
+        <View style={[space.paddingTopS, space.paddingBottomS]}>
+          <Text style={typography.text}>
+            { t`Note that this is an ArkhamCards account, which is separate from your ArkhamDB account.` }
+          </Text>
+        </View>
       </View>
     );
-  }, [darkMode, mode, signInToApple, signInToGoogle, toggleEmailLogin]);
+  }, [darkMode, mode, width, typography, signInToApple, signInToGoogle, toggleEmailLogin]);
 
   const dialogContent = useMemo(() => {
     if (!mode) {
@@ -515,5 +566,19 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+  },
+  inputWrapper: {
+    padding: 4,
+    paddingTop: s,
+    paddingBottom: s,
+    borderRadius: 4,
+    marginBottom: s,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  inputIcon: {
+    marginRight: s,
+    marginLeft: s,
   },
 });

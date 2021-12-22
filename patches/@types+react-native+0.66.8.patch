@@ -1,0 +1,16 @@
+diff --git a/node_modules/@types/react-native/index.d.ts b/node_modules/@types/react-native/index.d.ts
+index b56a6a0..22399cc 100755
+--- a/node_modules/@types/react-native/index.d.ts
++++ b/node_modules/@types/react-native/index.d.ts
+@@ -2396,6 +2396,11 @@ export interface ViewProps
+      */
+     hitSlop?: Insets | undefined;
+ 
++    /**
++     * Opacity for the view and its containing elements.
++     */
++    opacity?: number | undefined;
++
+     /**
+      * Invoked on mount and layout changes with
+      *

@@ -116,21 +116,6 @@ msgstr ""
 msgid "Neutral"
 msgstr ""
 
-msgid "Guardian / Rogue"
-msgstr ""
-
-msgid "Rogue / Survivor"
-msgstr ""
-
-msgid "Survivor / Seeker"
-msgstr ""
-
-msgid "Seeker / Mystic"
-msgstr ""
-
-msgid "Mystic / Guardian"
-msgstr ""
-
 msgid "Weakness"
 msgstr ""
 
@@ -729,9 +714,6 @@ msgid ""
 msgstr ""
 
 msgid "Draw: "
-msgstr ""
-
-msgid "All"
 msgstr ""
 
 msgid "Redraw"
@@ -1572,26 +1554,6 @@ msgid "Check Campaign Log, is the <i>${ logEntry.section }</i> not crossed off?"
 msgstr ""
 
 #, javascript-format
-msgid ""
-"Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName "
-"}</b>."
-msgid_plural ""
-"Since ${ list } all have a ${ supplyName }, they must read <b>${ "
-"sectionName }</b>."
-msgstr[0] ""
-msgstr[1] ""
-
-#, javascript-format
-msgid ""
-"Since ${ list } does not have a ${ supplyName }, they must read <b>${ "
-"sectionName }</b>."
-msgid_plural ""
-"Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
-"sectionName }</b>."
-msgstr[0] ""
-msgstr[1] ""
-
-#, javascript-format
 msgid "${ investigators } must read <b>${ prompt }</b>."
 msgid_plural "${ investigators } must read <b>${ prompt }</b>."
 msgstr[0] ""
@@ -2170,19 +2132,19 @@ msgstr ""
 msgid "Adjust Weakness Set"
 msgstr ""
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr ""
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr ""
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr ""
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr ""
 
@@ -2466,17 +2428,6 @@ msgid ""
 "resolution."
 msgstr ""
 
-msgid ""
-"A side-story is a scenario that may be played between any two scenarios of "
-"an <i>Arkham Horror: The Card Game</i> campaign. Playing a side-story costs "
-"each investigator in the campaign a certain amount of experience. "
-"Weaknesses, trauma, experience, and rewards granted by playing a side-story "
-"stay with the investigators for the remainder of the campaign. Each "
-"sidestory may only be played once per campaign.\n"
-"The experience required to play these scenarios will be deducted "
-"automatically at the end of the scenario."
-msgstr ""
-
 msgid "Contact us"
 msgstr ""
 
@@ -2507,11 +2458,6 @@ msgid ""
 "Missing card #${ code }. Please try updating cards from ArkhamDB in "
 "settings."
 msgstr ""
-
-msgid "${ specialXp } resupply experience available"
-msgid_plural "${ specialXp } resupply experience available"
-msgstr[0] ""
-msgstr[1] ""
 
 msgid "Unexpected file type"
 msgstr ""
@@ -3900,7 +3846,7 @@ msgstr ""
 
 msgid ""
 "Campaigns can now be 'uploaded' so they can be synced between devices or "
-"shared with friendns."
+"shared with friends."
 msgstr ""
 
 msgid "Welcome"
@@ -4257,10 +4203,6 @@ msgid ""
 "${ originalTokenText }"
 msgstr ""
 
-#, javascript-format
-msgid "${ modifier }, draws another"
-msgstr ""
-
 msgid "Easy difficulty"
 msgstr ""
 
@@ -4282,15 +4224,13 @@ msgstr ""
 msgid "Scenario settings"
 msgstr ""
 
-msgid "Your investigator modfifier"
-msgstr ""
-
 msgid "Test difficulty"
 msgstr ""
 
 msgid "Modified skill"
 msgstr ""
 
+#, javascript-format
 msgid "${ tokens }/${ total } token"
 msgid_plural "${ tokens }/${ total } tokens"
 msgstr[0] ""
@@ -4404,14 +4344,538 @@ msgstr ""
 msgid "Sqlite version: ${ sqliteVersion }"
 msgstr ""
 
+msgid "Beta testing"
+msgstr ""
+
+msgid "Edit Weakness Cards"
+msgstr ""
+
+msgid "Narrate"
+msgstr ""
+
+msgid "Negative modifier"
+msgstr ""
+
+#, javascript-format
+msgid "${ textModifier }, draws another"
+msgstr ""
+
+msgid "Fix duplicates"
+msgstr ""
+
+msgid "Do you want to use the app to choose a random partner?"
+msgstr ""
+
+msgid "Select more"
+msgstr ""
+
+msgid "Record damage/horror:"
+msgstr ""
+
+msgid "Expedition Team"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In the ${ sectionName } section of the Campaign Log, cross out ${ "
+"partnerName },"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In the ${ sectionName } section of the Campaign Log, write \"MIA\" next to "
+"${ partnerName }."
+msgstr ""
+
+msgid ""
+"In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next "
+"to ${ partnerName }."
+msgstr ""
+
+msgid "If the lead investigator was driven <b>insane</b>."
+msgstr ""
+
+msgid "If all investigators were driven <b>insane</b>."
+msgstr ""
+
+msgid "If the lead investigator is still alive."
+msgstr ""
+
+msgid "If all investigatore are still alive."
+msgstr ""
+
+msgid "The Entity"
+msgstr ""
+
+msgid "Resolute"
+msgstr ""
+
+msgid "MIA"
+msgstr ""
+
+msgid ""
+"A side-story is a scenario that may be played between any two scenarios of "
+"an <i>Arkham Horror: The Card Game</i> campaign.\n"
+"- Playing a side-story costs each investigator in the campaign a certain "
+"amount of experience, which should be paid when you start the scenario.\n"
+"- Weaknesses, trauma, experience, and rewards granted by playing a "
+"side-story stay with the investigators for the remainder of the campaign.\n"
+"- Each sidestory may only be played once per campaign.\n"
+"\n"
+"<b>Note:</b> When using this app, the experience required to play these "
+"scenarios will be deducted automatically at the <b>end of the scenario</b>, "
+"but you should be sure you have sufficient experience set aside to pay for "
+"it."
+msgstr ""
+
+msgid "Ice and Death: Part 1"
+msgstr ""
+
+msgid "Ice and Death: Part 2"
+msgstr ""
+
+msgid "Ice and Death: Part 3"
+msgstr ""
+
+msgid "Restful Night"
+msgstr ""
+
+msgid "To the Forbidden Peaks"
+msgstr ""
+
+msgid "Endless Night"
+msgstr ""
+
+msgid "City of the Elder Things"
+msgstr ""
+
+msgid "Final Night"
+msgstr ""
+
+msgid "The Heart of Madness: Part 1"
+msgstr ""
+
+msgid "The Heart of Madness: Part 2"
+msgstr ""
+
+msgid "Fatal Mirage"
+msgstr ""
+
+msgid "Fatal Mirage - Memories Discovered"
+msgstr ""
+
+msgid "Fatal Mirage - Memories Banished"
+msgstr ""
+
+msgid "Ice and Death - Locations Revealed"
+msgstr ""
+
+msgid "Ice and Death - Supplies Recovered"
+msgstr ""
+
+msgid "The Heart of Madness - Seals Placed"
+msgstr ""
+
+msgid "The Heart of Madness - Seals Recovered"
+msgstr ""
+
+msgid "You may heal 1 physical or mental trauma <i>(your choice)</i>"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In the ${ sectionName } section of the Campaign Log, draw a check mark next "
+"to ${ partnerName }."
+msgstr ""
+
+msgid "Choose heal type"
+msgstr ""
+
+msgid "Chosen heal type"
+msgstr ""
+
+msgid "Assigned weaknesses"
+msgstr ""
+
+msgid "Review and draw weaknesses"
+msgstr ""
+
+msgid "Choose expansions for basic weakness"
+msgstr ""
+
+msgid "Uploading campaign"
+msgstr ""
+
+msgid "Save deck upgrade"
+msgstr ""
+
+msgid "Apply deck changes from previous scenario"
+msgstr ""
+
+#, javascript-format
+msgid "${ input.prompt } (choose ${ quantity })"
+msgid_plural "${ input.prompt } (choose ${ quantity })"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid ""
+"This deck is ownered by another player. You can record the upgrade now and "
+"they will be given an opportunity to save the changes to their deck when "
+"they next open the app."
+msgstr ""
+
+msgid ""
+"Changes have been recorded. You can apply these changes to your deck on the "
+"main screen of the campaign under your investigator."
+msgstr ""
+
+msgid ""
+"Changes have been recorded. The owner of this deck can apply these changes "
+"to their deck on the main screen of the campaign under their investigator."
+msgstr ""
+
+msgid "Tarot card"
+msgstr ""
+
+#, javascript-format
+msgid "Tarot card: ${ card }"
+msgstr ""
+
+msgid "Select tarot card"
+msgstr ""
+
+msgid "Which tarot card is impacting the chaos bag?"
+msgstr ""
+
+msgid "Replace highest non-negative token with a skull."
+msgstr ""
+
+msgid "Replace a skull with a 0 token."
+msgstr ""
+
+msgid "Judgement · XX"
+msgstr ""
+
+msgid "Judgement · XX (Inverted)"
+msgstr ""
+
+msgid "The Fool · 0"
+msgstr ""
+
+msgid ""
+"Each investigator not defeated during this game earns +2 experience during "
+"its resolution."
+msgstr ""
+
+msgid ""
+"Each investigator defeated during this game earns -2 experience during its "
+"resolution."
+msgstr ""
+
+msgid "The Magician · I"
+msgstr ""
+
+msgid "Each investigator begins the game with 3 addititonal resources"
+msgstr ""
+
+msgid ""
+"Each investigator begins the game with 3 fewer resources, and cannot gain "
+"resources during their first turn."
+msgstr ""
+
+msgid "The High Priestess · II"
+msgstr ""
+
+msgid ""
+"During the first [intellect] test each investigator performs each round, "
+"they get +1 [intellect]."
+msgstr ""
+
+msgid ""
+"During the first [intellect] test each investigator performs each round, "
+"they get -1 [intellect]."
+msgstr ""
+
+msgid "The Empress · III"
+msgstr ""
+
+msgid ""
+"During the first [agility] test each investigator performs each round, they "
+"get +1 [agility]."
+msgstr ""
+
+msgid ""
+"During the first [agility] test each investigator performs each round, they "
+"get -1 [agility]."
+msgstr ""
+
+msgid "The Emperor · IV"
+msgstr ""
+
+msgid ""
+"During the first [combat] test each investigator performs each round, they "
+"get +1 [combat]."
+msgstr ""
+
+msgid ""
+"During the first [combat] test each investigator performs each round, they "
+"get -1 [combat]."
+msgstr ""
+
+msgid "The Hierophant · V"
+msgstr ""
+
+msgid ""
+"During the first [willpower] test each investigator performs each round, "
+"they get +1 [willpower]."
+msgstr ""
+
+msgid ""
+"During the first [willpower] test each investigator performs each round, "
+"they get -1 [willpower]."
+msgstr ""
+
+msgid "The Lovers · VI"
+msgstr ""
+
+msgid ""
+"When the game begins, each investigator searches their deck for an Ally "
+"asset, adds it to their hand, and shuffles their deck."
+msgstr ""
+
+msgid ""
+"When the game begins, each investigator searches their deck for an Ally "
+"asset, removes it from the game, and shuffles their deck."
+msgstr ""
+
+msgid "The Chariot · VII"
+msgstr ""
+
+msgid ""
+"Each investigator begins the game with 2 additional cards in their opening "
+"hand."
+msgstr ""
+
+msgid ""
+"Each investigator begins the game with 2 fewer cards in their opening hand, "
+"and cannot draw cards during their first turn."
+msgstr ""
+
+msgid "Strength · VIII"
+msgstr ""
+
+msgid ""
+"When the game begins, each investigator may play an asset from their hand "
+"at -2 cost."
+msgstr ""
+
+msgid "During the first round of the game, each investigator cannot play assets."
+msgstr ""
+
+msgid "The Hermit · IX"
+msgstr ""
+
+msgid "Increase each investigator's maximum hand size by 3."
+msgstr ""
+
+msgid "Decrease each investigator's maximum hand size by 3."
+msgstr ""
+
+msgid "Wheel of Fortune · X"
+msgstr ""
+
+msgid ""
+"Once each act, when an investigator reveals an [auto_fail] token, thte "
+"investigator may cancel it and treat it as a 0 token instead."
+msgstr ""
+
+msgid ""
+"Once each agenda, the first time any investigator reveals an [elder_sign] "
+"token, cancel it and treat it as a -5 token instead."
+msgstr ""
+
+msgid "Justice · XI"
+msgstr ""
+
+msgid "Cancel the first doom that would be placed on the final agenda of the game."
+msgstr ""
+
+msgid "The final agenda of the game enters play with 1 doom on it."
+msgstr ""
+
+msgid "The Hanged Man · XII"
+msgstr ""
+
+msgid "During setup, each investigator may take up to 2 additional mulligans."
+msgstr ""
+
+msgid ""
+"Each investigator cannot mulligan or replace weaknesses in their opening "
+"hand (resolve their revelation abilities when the game begins)."
+msgstr ""
+
+msgid "Death · XIII"
+msgstr ""
+
+msgid "Each investigator gets +1 health."
+msgstr ""
+
+msgid "Each investigator gets -1 health."
+msgstr ""
+
+msgid "Temperance · XIV"
+msgstr ""
+
+msgid "Each investigator gets +1 sanity."
+msgstr ""
+
+msgid "Each investigator gets -1 sanity."
+msgstr ""
+
+msgid "The Devil · XV"
+msgstr ""
+
+msgid ""
+"Each investigator has 1 additional slot of a type chosen by that "
+"investigattor when the game begins."
+msgstr ""
+
+msgid ""
+"Each investigator has 3 fewer slots, each of a different type, chosen by "
+"that investigator when the game begins."
+msgstr ""
+
+msgid "The Tower · XVI"
+msgstr ""
+
+msgid ""
+"Each investigator chooses 1 basic weakness in their deck and removes it "
+"from the game (return them after the game ends)."
+msgstr ""
+
+msgid ""
+"Add 1 random basic weakness to each investigator's deck. Remove them after "
+"the game ends."
+msgstr ""
+
+msgid "The Star · XVII"
+msgstr ""
+
+msgid ""
+"After an investigator reveals an [elder_sign] token during a skill test, "
+"they may heal 1 damage or 1 horror."
+msgstr ""
+
+msgid ""
+"After an investigator reveals an [auto_fail] token during a skill test, "
+"they must either take 1 damage or 1 horror."
+msgstr ""
+
+msgid "The Moon · XVIII"
+msgstr ""
+
+msgid ""
+"The first time each investigator's deck would run out of cards, they may "
+"shuffle the bottom 10 cards of their discard pile back into their deck."
+msgstr ""
+
+msgid ""
+"When the game begins, each investigator discards the top 5 cards of their "
+"deck. Shuffle each discarded weakness into its owner's deck."
+msgstr ""
+
+msgid "The Sun · XIX"
+msgstr ""
+
+msgid "During each investigator's first turn, they may take 2 additional actions."
+msgstr ""
+
+msgid "During each investigator's first turn, they have 2 fewer actions to take."
+msgstr ""
+
+msgid ""
+"When the game begins, replace a [skull] token in the chaos bag with a 0 "
+"token. Swap them back after the game ends."
+msgstr ""
+
+msgid ""
+"When the game begins, replace the highest non-negative token in the chaos "
+"bag with a [skull] token. Swap them back after the game ends."
+msgstr ""
+
+msgid "The World · XXI"
+msgstr ""
+
+msgid ""
+"Each investigator not defeated during this game may remove 1 trauma of "
+"their choice during its resolution."
+msgstr ""
+
+msgid ""
+"Each investigator defeated during this game suffers 1 trauma of their "
+"choice during its resolution."
+msgstr ""
+
+msgid "An app update is required to access this campaign."
+msgstr ""
+
+msgid ""
+"Note that this is an ArkhamCards account, which is separate from your "
+"ArkhamDB account."
+msgstr ""
+
+msgid "Side Deck"
+msgstr ""
+
+msgid "Edit Side Deck"
+msgstr ""
+
+msgid "Creating campaign..."
+msgstr ""
+
+msgid "Creating standalone..."
+msgstr ""
+
+msgid "Campaign will be synced between devices and can be shared with friends"
+msgstr ""
+
+msgid "Campaign will be local to this device, you can choose to upload it later"
+msgstr ""
+
+#, javascript-format
+msgid "(${ count } card)"
+msgid_plural "(${ count } cards)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Collection overlap"
+msgstr ""
+
+msgid "Deck overlap"
+msgstr ""
+
+msgid "Show collection overlap"
+msgstr ""
+
+msgid "Hide collection overlap"
+msgstr ""
+
+msgid ""
+"The total number of these cards among decks from this campaign exceeds your "
+"card collection."
+msgstr ""
+
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr ""
 
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr ""
 
+#, javascript-format
 msgctxt "masculine"
 msgid ""
 "${ investigator.name } suffers 1 physical or mental trauma <i>(their "
@@ -4495,16 +4959,35 @@ msgid ""
 msgstr ""
 
 #, javascript-format
+msgctxt "masculine"
+msgid ""
+"Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName "
+"}</b>."
+msgid_plural ""
+"Since ${ list } all have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgctxt "masculine"
+msgid ""
+"Since ${ list } does not have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgid_plural ""
+"Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgstr[0] ""
+msgstr[1] ""
+
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr ""
 
-#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr ""
 
-#, javascript-format
 msgctxt "feminine"
 msgid ""
 "${ investigator.name } suffers 1 physical or mental trauma <i>(their "
@@ -4569,7 +5052,6 @@ msgctxt "feminine"
 msgid "Defeated: no trauma"
 msgstr ""
 
-#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr ""
@@ -4597,6 +5079,31 @@ msgstr ""
 
 msgctxt "feminine"
 msgid "Defeated"
+msgstr ""
+
+#, javascript-format
+msgctxt "feminine"
+msgid ""
+"Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName "
+"}</b>."
+msgid_plural ""
+"Since ${ list } all have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "feminine"
+msgid ""
+"Since ${ list } does not have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgid_plural ""
+"Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "Traits"
+msgid "All"
 msgstr ""
 
 msgctxt "trait"
@@ -5668,12 +6175,24 @@ msgid "Wonderland"
 msgstr ""
 
 msgctxt "trait"
-msgid "Y-ha'nthlei"
+msgid "Resolute"
 msgstr ""
 
 #, javascript-format
 msgctxt "filter"
 msgid "${ cycleNames[cycle_position] } Cycle"
+msgstr ""
+
+msgctxt "Types"
+msgid "All"
+msgstr ""
+
+msgctxt "SubTypes"
+msgid "All"
+msgstr ""
+
+msgctxt "Actions"
+msgid "All"
 msgstr ""
 
 msgctxt "action"
@@ -5708,8 +6227,24 @@ msgctxt "action"
 msgid "Resource"
 msgstr ""
 
+msgctxt "Encounter Sets"
+msgid "All"
+msgstr ""
+
+msgctxt "Illustrators"
+msgid "All"
+msgstr ""
+
 msgctxt "slots"
 msgid "None"
+msgstr ""
+
+msgctxt "Slots"
+msgid "All"
+msgstr ""
+
+msgctxt "Uses"
+msgid "All"
 msgstr ""
 
 msgctxt "Draw Cards"
@@ -5786,12 +6321,62 @@ msgid_plural "Scenarios"
 msgstr[0] ""
 msgstr[1] ""
 
+msgctxt "narration"
+msgid "Pause"
+msgstr ""
+
+msgctxt "narration"
+msgid "Play"
+msgstr ""
+
+msgctxt "narration"
+msgid "Jump back"
+msgstr ""
+
+msgctxt "narration"
+msgid "Playing audio"
+msgstr ""
+
 msgctxt "campaign_log_entry"
 msgid "Other."
 msgstr ""
 
 msgctxt "Weakness Card"
 msgid "All"
+msgstr ""
+
+#, javascript-format
+msgctxt "mixed"
+msgid ""
+"Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName "
+"}</b>."
+msgid_plural ""
+"Since ${ list } all have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgctxt "mixed"
+msgid ""
+"Since ${ list } does not have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgid_plural ""
+"Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "Tarot Card"
+msgid "None"
+msgstr ""
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX"
+msgstr ""
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX (Inverted)"
 msgstr ""
 
 msgctxt "trauma"

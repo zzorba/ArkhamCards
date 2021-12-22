@@ -1,5 +1,6 @@
 import { filter, forEach, map } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
+import uuid from 'react-native-uuid';
 
 import {
   NEW_CAMPAIGN,
@@ -61,6 +62,7 @@ import { DeckActions, uploadCampaignDeckHelper } from '@data/remote/decks';
 import { SetCampaignChaosBagAction, SetCampaignNotesAction, SetCampaignShowInterludes, SetCampaignWeaknessSetAction, UpdateCampaignActions } from '@data/remote/campaigns';
 import { ChaosBagActions } from '@data/remote/chaosBag';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
+import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
 
 function getBaseDeckIds(
   state: AppState,
@@ -167,16 +169,34 @@ export function newLinkedCampaign(
   cycleCodeA: CampaignCycleCode,
   cycleCodeB: CampaignCycleCode,
   weaknessSet: WeaknessSet
-): NewLinkedCampaignAction {
-  return {
-    type: NEW_LINKED_CAMPAIGN,
-    name,
-    cycleCode,
-    cycleCodeA,
-    cycleCodeB,
-    weaknessSet,
-    guided: true,
-    now: new Date(),
+): ThunkAction<Promise<{
+  campaignId: CampaignId;
+  campaignIdA: CampaignId;
+  campaignIdB: CampaignId;
+}>, AppState, unknown, NewLinkedCampaignAction> {
+  return async(dispatch) => {
+    const campaignId: string = uuid.v4() as string;
+    const campaignIdA: string = uuid.v4() as string;
+    const campaignIdB: string = uuid.v4() as string;
+    const action: NewLinkedCampaignAction = {
+      type: NEW_LINKED_CAMPAIGN,
+      name,
+      uuid: campaignId,
+      uuidA: campaignIdA,
+      uuidB: campaignIdB,
+      cycleCode,
+      cycleCodeA,
+      cycleCodeB,
+      weaknessSet,
+      guided: true,
+      now: new Date(),
+    };
+    dispatch(action);
+    return {
+      campaignId: { campaignId },
+      campaignIdA: { campaignId: campaignIdA },
+      campaignIdB: { campaignId: campaignIdB },
+    };
   };
 }
 
@@ -187,10 +207,12 @@ export function newStandalone(
   deckIds: DeckId[],
   investigatorIds: string[],
   weaknessSet: WeaknessSet
-): ThunkAction<void, AppState, unknown, NewStandaloneCampaignAction> {
-  return (dispatch, getState: () => AppState) => {
+): ThunkAction<Promise<CampaignId>, AppState, unknown, NewStandaloneCampaignAction> {
+  return async(dispatch, getState: () => AppState) => {
+    const campaignId: string = uuid.v4() as string;
     const action: NewStandaloneCampaignAction = {
       type: NEW_STANDALONE,
+      uuid: campaignId,
       name: name,
       standaloneId,
       weaknessSet,
@@ -199,6 +221,7 @@ export function newStandalone(
       now: new Date(),
     };
     dispatch(action);
+    return { campaignId };
   };
 }
 
@@ -213,11 +236,13 @@ export function newCampaign(
   campaignLog: CustomCampaignLog,
   weaknessSet: WeaknessSet,
   guided: boolean
-): ThunkAction<void, AppState, unknown, NewCampaignAction> {
-  return (dispatch, getState: () => AppState) => {
+): ThunkAction<Promise<CampaignId>, AppState, unknown, NewCampaignAction> {
+  return async(dispatch, getState: () => AppState) => {
+    const campaignId: string = uuid.v4() as string;
     const action: NewCampaignAction = {
       type: NEW_CAMPAIGN,
       name: name,
+      uuid: campaignId,
       cycleCode: pack_code,
       difficulty,
       chaosBag,
@@ -229,6 +254,7 @@ export function newCampaign(
       now: new Date(),
     };
     dispatch(action);
+    return { campaignId };
   };
 }
 
@@ -516,6 +542,25 @@ export function updateChaosBagDrawToken(
         ...chaosBagResults,
         drawnTokens: drawn,
         totalDrawnTokens: chaosBagResults.totalDrawnTokens + 1,
+      }));
+    }
+  };
+}
+
+
+export function updateChaosBagTarotMode(
+  actions: ChaosBagActions,
+  id: CampaignId,
+  tarot: Chaos_Bag_Tarot_Mode_Enum | undefined,
+  chaosBagResults: ChaosBagResultsT
+): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
+  return (dispatch) => {
+    if (id.serverId) {
+      actions.setTarot(id, tarot);
+    } else {
+      dispatch(updateChaosBagResults(id, {
+        ...chaosBagResults,
+        tarot,
       }));
     }
   };
