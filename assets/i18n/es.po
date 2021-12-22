@@ -2571,12 +2571,12 @@ msgstr "Contacta con nosotros"
 msgid "${ count } resupply"
 msgid_plural "${ count } resupply"
 msgstr[0] "${ count } reabastecimiento"
-msgstr[1] "${ count } reabastecimientos"
+msgstr[1] "${ count } reabastecimiento"
 
 msgid "${ count } supply point"
 msgid_plural "${ count } supply points"
-msgstr[0] "${ count } punto de suministro"
-msgstr[1] "${ count } puntos de suministro"
+msgstr[0] "${ count } punto de suministros"
+msgstr[1] "${ count } puntos de suministros"
 
 #, javascript-format
 msgid "${ xp } general / ${ resupplyPointsString } XP"
