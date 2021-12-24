@@ -40,6 +40,9 @@ import RoundButton from '@components/core/RoundButton';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import { flattenChaosBag } from '../campaignUtil';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
+import useTarotCardDialog from '@components/campaign/useTarotCardDialog';
+import { useChaosBagActions } from '@data/remote/chaosBag';
+import useSealTokenButton from '../useSealTokenButton';
 
 
 interface Props {
@@ -1009,7 +1012,9 @@ export default function OddsCalculatorComponent({
       </>
     );
   }, [specialTokenValues, xValue, tokenFlags, toggleTokenFlag, incXValue, decXValue]);
-
+  const actions = useChaosBagActions();
+  const [tarotButton, tarotDialog] = useTarotCardDialog({ actions, chaosBagResults, campaignId: campaign.id });
+  const [sealButton, sealDialog] = useSealTokenButton({ actions, chaosBag, chaosBagResults, campaignId: campaign.id });
   if (loading) {
     return (
       <LoadingSpinner />
@@ -1077,16 +1082,6 @@ export default function OddsCalculatorComponent({
         />
         <View style={[styles.line, borderStyle, space.marginSideS]} />
         { specialTokenInputs }
-        { keys(sealedChaosBag).length > 0 && (
-          <View style={[styles.sectionRow, borderStyle]}>
-            <Text style={typography.small}>{ t`Sealed tokens` }</Text>
-            <ChaosBagLine
-              chaosBag={sealedChaosBag}
-              width={width - m * 2}
-              sealed
-            />
-          </View>
-        ) }
         <View style={[space.paddingTopS, space.paddingSideS]}>
           { map(allInvestigators, (investigator, index) => (
             <InvestigatorRadioChoice
@@ -1103,8 +1098,14 @@ export default function OddsCalculatorComponent({
             />
           )) }
         </View>
+        <View style={space.paddingSideS}>
+          { sealButton }
+          { tarotButton }
+        </View>
       </ScrollView>
       { dialog }
+      { tarotDialog }
+      { sealDialog }
     </View>
   );
 }

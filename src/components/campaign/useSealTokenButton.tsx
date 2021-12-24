@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import { filter, forEach, map, range, sortBy } from 'lodash';
 import { t } from 'ttag';
 
@@ -9,11 +9,16 @@ import { Toggles, useEffectUpdate, useToggles } from '@components/core/hooks';
 import { CampaignId, ChaosBagResults, SealedToken } from '@actions/types';
 import { useDialog } from '@components/deck/dialogs';
 import { useDispatch } from 'react-redux';
-import { updateChaosBagSealTokens } from './actions';
-import space from '@styles/space';
+import AppIcon from '@icons/AppIcon';
+import { updateChaosBagReleaseAllSealed, updateChaosBagSealTokens } from './actions';
+import space, { s } from '@styles/space';
 import { ChaosBagActions } from '@data/remote/chaosBag';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 import { flattenChaosBag } from './campaignUtil';
+import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import StyleContext from '@styles/StyleContext';
+import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 export interface SealTokenDialogProps {
   campaignId: CampaignId;
@@ -28,7 +33,15 @@ function getSealedToggles(chaosBagResults: ChaosBagResults): Toggles {
   return toggles;
 }
 
-export default function useSealTokenDialog(campaignId: CampaignId, chaosBag: ChaosBag, chaosBagResults: ChaosBagResultsT, actions: ChaosBagActions): [React.ReactNode, () => void] {
+interface Props {
+  campaignId: CampaignId;
+  chaosBag: ChaosBag;
+  chaosBagResults: ChaosBagResultsT;
+  actions: ChaosBagActions;
+}
+
+export default function useSealTokenButton({ campaignId, chaosBag, chaosBagResults, actions }: Props): [React.ReactNode, React.ReactNode] {
+  const { colors, typography } = useContext(StyleContext);
   const [sealed, toggleSealToken,,syncToggles] = useToggles(getSealedToggles(chaosBagResults));
   const allTokens: SealedToken[] = useMemo(() => {
     const tokens: ChaosTokenType[] = sortBy<ChaosTokenType>(
@@ -110,7 +123,67 @@ export default function useSealTokenDialog(campaignId: CampaignId, chaosBag: Cha
     content,
     alignment: 'bottom',
   });
-  return [dialog, showDialog];
+
+  const releaseAllTokens = useCallback(() => {
+    dispatch(updateChaosBagReleaseAllSealed(actions, campaignId, chaosBagResults));
+  }, [campaignId, actions, dispatch, chaosBagResults]);
+  const releaseSealedToken = useCallback((id: string) => {
+    const newSealedTokens = filter(chaosBagResults.sealedTokens || [], token => token.id !== id);
+    dispatch(updateChaosBagSealTokens(actions, campaignId, chaosBagResults, newSealedTokens));
+  }, [dispatch, campaignId, actions, chaosBagResults]);
+
+  const sealedTokens = useMemo(() => {
+    const sealedTokens = chaosBagResults.sealedTokens;
+    return map(sealedTokens, token => {
+      return (
+        <View style={space.paddingXs} key={token.id}>
+          <SealTokenButton
+            sealed
+            onToggle={releaseSealedToken}
+            id={token.id}
+            iconKey={token.icon}
+          />
+        </View>
+      );
+    });
+  }, [releaseSealedToken, chaosBagResults.sealedTokens]);
+
+  const hasSealedTokens = chaosBagResults.sealedTokens.length;
+  return [
+    <View style={space.paddingBottomS} key="seal-button">
+      { hasSealedTokens ? (
+        <RoundedFactionBlock
+          faction="neutral"
+          header={
+            <View style={[styles.headerBlock, { backgroundColor: colors.L10 }]}>
+              <View style={space.paddingRightM}>
+                <AppIcon name="seal" size={32} color={colors.D10} />
+              </View>
+              <Text style={typography.cardName}>
+                { t`Sealed Tokens` }
+              </Text>
+            </View>
+          }
+          footer={
+            <RoundedFooterDoubleButton
+              iconA="expand"
+              titleA={t`Seal tokens`}
+              onPressA={showDialog}
+              iconB="dismiss"
+              titleB={t`Release all`}
+              onPressB={releaseAllTokens}
+            />}
+        >
+          <View style={[space.paddingTopS, space.paddingBottomS, styles.sealedTokenRow]}>
+            { sealedTokens }
+          </View>
+        </RoundedFactionBlock>
+      ) : (
+        <DeckButton icon="seal" title={t`Seal tokens`} onPress={showDialog} color="dark_gray" />
+      ) }
+    </View>,
+    dialog,
+  ];
 }
 const styles = StyleSheet.create({
   drawnTokenRow: {
@@ -118,5 +191,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
+  },
+  sealedTokenRow: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
+  },
+  headerBlock: {
+    padding: s,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
 });
