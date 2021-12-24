@@ -4021,10 +4021,10 @@ msgid "Campaign players"
 msgstr "Участники кампании"
 
 msgid "Add friends to campaign"
-msgstr "Добавить товарищей к кампании"
+msgstr "Добавить друзей к кампании"
 
 msgid "Add friends"
-msgstr "Добавить товарищей"
+msgstr "Добавить друзей"
 
 msgid "Access"
 msgstr "Доступ"
@@ -4060,7 +4060,7 @@ msgid "Leave"
 msgstr "Покинуть"
 
 msgid "Edit players"
-msgstr "Править игроков"
+msgstr "Добавить/удалить игроков"
 
 msgid "View players"
 msgstr "Список игроков"
@@ -6828,6 +6828,10 @@ msgstr[2] ""
 "Поскольку ${ supplyName } отсутствует у ${ list }, эти сыщики читают <b>${ "
 "sectionName }</b>."
 
+msgctxt "trauma"
+msgid "None"
+msgstr "Нет"
+
 msgctxt "Tarot Card"
 msgid "None"
 msgstr ""
@@ -6839,10 +6843,6 @@ msgstr ""
 msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
 msgstr ""
-
-msgctxt "trauma"
-msgid "None"
-msgstr "Нет"
 
 msgctxt "versus abbreviation"
 msgid "VS"

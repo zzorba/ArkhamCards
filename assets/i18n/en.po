@@ -6360,6 +6360,10 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
+msgctxt "trauma"
+msgid "None"
+msgstr ""
+
 msgctxt "Tarot Card"
 msgid "None"
 msgstr ""
@@ -6370,10 +6374,6 @@ msgstr ""
 
 msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
-msgstr ""
-
-msgctxt "trauma"
-msgid "None"
 msgstr ""
 
 msgctxt "versus abbreviation"

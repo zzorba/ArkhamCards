@@ -6892,6 +6892,10 @@ msgstr[1] ""
 "Poiché ${ list } non hanno ${ supplyName }, si deve leggere <b>${ "
 "sectionName }</b>."
 
+msgctxt "trauma"
+msgid "None"
+msgstr "Nessuno"
+
 msgctxt "Tarot Card"
 msgid "None"
 msgstr "Nessuno"
@@ -6903,10 +6907,6 @@ msgstr "Il Giudizio · XX"
 msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
 msgstr "Il Giudizio · XX (Rovesciato)"
-
-msgctxt "trauma"
-msgid "None"
-msgstr "Nessuno"
 
 msgctxt "versus abbreviation"
 msgid "VS"

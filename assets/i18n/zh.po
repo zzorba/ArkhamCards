@@ -6453,6 +6453,10 @@ msgid_plural ""
 "sectionName }</b>."
 msgstr[0] "由於${ list }之中沒有${ supplyName }，玩家必須閱讀<b>${ sectionName }</b>。"
 
+msgctxt "trauma"
+msgid "None"
+msgstr "無"
+
 msgctxt "Tarot Card"
 msgid "None"
 msgstr "無"
@@ -6464,10 +6468,6 @@ msgstr "審判·XX"
 msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
 msgstr "審判·XX(逆位)"
-
-msgctxt "trauma"
-msgid "None"
-msgstr "無"
 
 msgctxt "versus abbreviation"
 msgid "VS"

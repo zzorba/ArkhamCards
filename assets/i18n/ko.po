@@ -6553,6 +6553,10 @@ msgstr[0] ""
 "${ list } 조사자가 ${ supplyName } 탐험 물자를 가지고 있지 않으므로, 해당 조사자는 <b>${ "
 "sectionName }</b> 항목을 읽어야만 합니다."
 
+msgctxt "trauma"
+msgid "None"
+msgstr "없음"
+
 msgctxt "Tarot Card"
 msgid "None"
 msgstr "없음"
@@ -6564,10 +6568,6 @@ msgstr "심판 · XX (정위치)"
 msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
 msgstr "심판 · XX (역위치)"
-
-msgctxt "trauma"
-msgid "None"
-msgstr "없음"
 
 msgctxt "versus abbreviation"
 msgid "VS"

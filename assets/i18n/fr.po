@@ -6940,6 +6940,10 @@ msgstr[1] ""
 "Étant donné que ${ list } ne possèdent pas d'équipement ${ supplyName }, il "
 "doivent lire <b>${ sectionName }</b>."
 
+msgctxt "trauma"
+msgid "None"
+msgstr "Aucun"
+
 msgctxt "Tarot Card"
 msgid "None"
 msgstr "Aucune"
@@ -6951,10 +6955,6 @@ msgstr "XX · Le Jugement"
 msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
 msgstr "XX · Le Jugement (à l'envers)"
-
-msgctxt "trauma"
-msgid "None"
-msgstr "Aucun"
 
 msgctxt "versus abbreviation"
 msgid "VS"
