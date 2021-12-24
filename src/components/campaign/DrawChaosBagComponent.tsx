@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, Pressable, TouchableWithoutFeedback, TouchableOpacity, View, LayoutChangeEvent } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { cloneDeep, find, filter, map, shuffle, sumBy, reverse, uniq, forEach } from 'lodash';
+import { cloneDeep, find, filter, map, shuffle, sumBy, reverse, uniq, forEach, pullAt } from 'lodash';
 import { jt, t } from 'ttag';
 import KeyEvent from 'react-native-keyevent';
 import KeepAwake from 'react-native-keep-awake';
@@ -87,6 +87,18 @@ function ReturnBlessCurseButton({ onPress }: { onPress: () => void }) {
     </TouchableOpacity>
   );
 }
+
+function DrawnChaosTokenButton({ onPress, token, small, index }: { token: ChaosTokenType; onPress: (index: number) => void; small?: boolean; index: number }) {
+  const handlePress = useCallback(() => {
+    onPress(index);
+  }, [onPress, index]);
+  return (
+    <Pressable onPress={handlePress}>
+      <ChaosToken iconKey={token} size={small ? 'small' : undefined} />
+    </Pressable>
+  );
+}
+
 
 const CARD_TOKEN = new Set(['skull', 'cultist', 'tablet', 'elder_thing']);
 
@@ -211,29 +223,43 @@ export default function DrawChaosBagComponent(props: Props) {
     dispatch(adjustBlessCurseChaosBagResults(actions, campaignId, 'curse', 'dec'));
   }, [actions, campaignId, dispatch]);
 
-  const drawnTokens = useMemo(() => {
+  const returnToken = useCallback((index: number) => {
+    const drawnTokens = [...chaosBagResults.drawnTokens];
+    dispatch(updateChaosBagDrawToken(actions, campaignId, filter(drawnTokens, (token, idx) => idx !== index), chaosBagResults));
+  }, [dispatch, actions, campaignId, chaosBagResults])
+
+  const drawnTokensContent = useMemo(() => {
     const drawnTokens = chaosBagResults.drawnTokens;
     if (drawnTokens.length > 1) {
       return reverse(map(drawnTokens.slice(0, drawnTokens.length - 1), (token, index) => {
         return (
-          <View style={space.paddingSideXs} key={index}>
-            <ChaosToken iconKey={token} size="small" />
+          <View style={space.paddingSideXs} key={`${token}-${index}`}>
+            <DrawnChaosTokenButton onPress={returnToken} index={index} token={token} small />
           </View>
         );
       }));
     }
     return null;
-  }, [chaosBagResults.drawnTokens]);
+  }, [chaosBagResults.drawnTokens, returnToken]);
 
   const chaosToken = useMemo(() => {
     const drawnTokens = chaosBagResults.drawnTokens;
     const iconKey = drawnTokens[drawnTokens.length - 1] || undefined;
+    if (drawnTokens.length <= 1) {
+      return (
+        <Pressable onPress={handleDrawTokenPressed}>
+          <ChaosToken iconKey={iconKey || 'tap'} shadow />
+        </Pressable>
+      );
+    }
     return (
-      <Pressable onPress={handleDrawTokenPressed}>
-        <ChaosToken iconKey={iconKey || 'tap'} shadow />
-      </Pressable>
-    );
-  }, [chaosBagResults.drawnTokens, handleDrawTokenPressed]);
+      <DrawnChaosTokenButton
+        onPress={returnToken}
+        token={drawnTokens[drawnTokens.length - 1]}
+        index={drawnTokens.length - 1}
+      />
+    )
+  }, [chaosBagResults.drawnTokens, returnToken, handleDrawTokenPressed]);
 
   const drawButton = useMemo(() => {
     const drawnTokens = chaosBagResults.drawnTokens;
@@ -396,8 +422,14 @@ export default function DrawChaosBagComponent(props: Props) {
       <ScrollView bounces={false} style={[styles.containerBottom, { flexGrow: 1 }]} contentContainerStyle={[backgroundStyle, { flexGrow: 1 }]}>
         <View style={styles.expandingContainer}>
           <View style={[styles.containerTop, space.paddingBottomS, { borderColor: colors.L20 }]}>
-            <ScrollView horizontal contentContainerStyle={styles.drawnTokenRow} overScrollMode="never">
-              { drawnTokens }
+            <ScrollView
+              horizontal
+              contentContainerStyle={styles.drawnTokenRow}
+              bounces={false}
+              showsHorizontalScrollIndicator={false}
+              overScrollMode="never"
+            >
+              { drawnTokensContent }
             </ScrollView>
             <View style={[styles.chaosTokenView, space.paddingSideS]}>
               { chaosToken }
