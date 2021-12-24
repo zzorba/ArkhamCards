@@ -3995,7 +3995,7 @@ msgid "Leave"
 msgstr "Покинуть"
 
 msgid "Edit players"
-msgstr "Править игроков"
+msgstr "Добавить/удалить игроков"
 
 msgid "View players"
 msgstr "Список игроков"
