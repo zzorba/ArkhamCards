@@ -943,6 +943,7 @@ export default function({
             title={item.title}
             onPress={item.onPress}
             icon={item.icon}
+            useGestureHandler={Platform.OS === 'ios'}
           />
         );
       case 'card': {

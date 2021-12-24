@@ -14,12 +14,13 @@ interface Props {
   grow?: boolean;
   variant?: 'outline' | 'fill';
   noShadow?: boolean;
+  useGestureHandler?: boolean;
 }
 
 const computeHeight = (fontScale: number, lang: string) => {
   return (fontScale * (lang === 'zh' ? 22 : 20)) + 20 + 20;
 };
-function ArkhamButton({ icon, title, onPress, grow, variant = 'fill', noShadow }: Props) {
+function ArkhamButton({ icon, title, onPress, grow, variant = 'fill', noShadow, useGestureHandler }: Props) {
   const { colors, fontScale, shadow, typography } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const height = ((lang === 'zh' ? 22 : 20) * fontScale) + 20;
@@ -40,6 +41,7 @@ function ArkhamButton({ icon, title, onPress, grow, variant = 'fill', noShadow }
           },
         ]}
         rippleColor={colors.L10}
+        useGestureHandler={useGestureHandler}
         onPress={onPress}
       >
         <View pointerEvents="box-none" style={styles.row}>
