@@ -3958,10 +3958,10 @@ msgid "Campaign players"
 msgstr "Участники кампании"
 
 msgid "Add friends to campaign"
-msgstr "Добавить товарищей к кампании"
+msgstr "Добавить друзей к кампании"
 
 msgid "Add friends"
-msgstr "Добавить товарищей"
+msgstr "Добавить друзей"
 
 msgid "Access"
 msgstr "Доступ"
