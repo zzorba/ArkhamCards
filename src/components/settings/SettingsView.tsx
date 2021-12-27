@@ -46,6 +46,10 @@ function showPatreon() {
   Linking.openURL('https://www.patreon.com/arkhamcards');
 }
 
+function showDeKofi() {
+  Linking.openURL('https://ko-fi.com/simplainer');
+}
+
 const SHOW_JUSTIFY = false;
 export default function SettingsView({ componentId }: NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
@@ -239,6 +243,14 @@ export default function SettingsView({ componentId }: NavigationProps) {
                   value={justifyContent}
                   onValueChange={justifyContentChanged}
                 />
+              ) }
+              { lang === 'de' && (
+                <View style={[space.paddingTopS, space.paddingSideS]}>
+                  <Text style={typography.text}>
+                    { 'Die deutsche Vertonung wird von "SIMPLAINER" produziert und benötigt keinen Dissonant Voices login. Wenn du seine Arbeit unterstützen möchtest, spendiere ihm einen Kaffee auf ' }
+                    <Text key="de_kofi" style={[typography.text, typography.underline, { color: colors.D20 }]} onPress={showDeKofi}>www.ko-fi.com/simplainer</Text>.
+                  </Text>
+                </View>
               ) }
               { lang !== 'ru' && <DissonantVoicesLoginButton showAlert={showAlert} last /> }
             </RoundedFactionBlock>
