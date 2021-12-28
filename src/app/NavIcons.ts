@@ -29,6 +29,7 @@ const icons: {
   sort: [28, COLORS.M, AppIcon],
   'arrow-back': [24, '#000', MaterialIcons],
   menu: [28, COLORS.M, AppIcon],
+  log: [28, COLORS.M, AppIcon],
   cards: [30, COLORS.M, AppIcon],
   settings: [30, COLORS.M, AppIcon],
   add: [28, COLORS.M, MaterialIcons],

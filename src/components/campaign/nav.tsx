@@ -3,6 +3,7 @@ import { ChaosBag } from '@app_constants';
 import { CampaignLogProps } from '@components/campaignguide/CampaignLogView';
 import { GuideDrawChaosBagProps } from '@components/campaignguide/GuideDrawChaosBagView';
 import { GuideOddsCalculatorProps } from '@components/campaignguide/GuideOddsCalculatorView';
+import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import Card from '@data/types/Card';
@@ -60,6 +61,7 @@ export function showGuideCampaignLog(
   campaignLog: GuidedCampaignLog,
   { standalone, hideChaosBag }: { standalone: boolean; hideChaosBag?: boolean },
   scenarioId: string | undefined,
+  processedCampaign: ProcessedCampaign | undefined
 ) {
   Navigation.push<CampaignLogProps>(componentId, {
     component: {
@@ -71,6 +73,7 @@ export function showGuideCampaignLog(
         campaignGuide,
         standalone,
         hideChaosBag,
+        processedCampaign,
       },
       options: {
         topBar: {
@@ -93,6 +96,7 @@ export function showGuideDrawChaosBag(
   investigatorIds: string[],
   scenarioId: string | undefined,
   standalone: boolean | undefined,
+  processedCampaign: ProcessedCampaign | undefined
 ) {
   Navigation.push<GuideDrawChaosBagProps>(componentId, {
     component: {
@@ -103,6 +107,7 @@ export function showGuideDrawChaosBag(
         investigatorIds,
         scenarioId,
         standalone,
+        processedCampaign,
       },
       options: {
         topBar: {
@@ -175,7 +180,8 @@ export function showGuideChaosBagOddsCalculator(
   chaosBag: ChaosBag,
   investigatorIds: string[],
   scenarioId: string | undefined,
-  standalone: boolean | undefined
+  standalone: boolean | undefined,
+  processedCampaign: ProcessedCampaign | undefined,
 ) {
   Navigation.push<GuideOddsCalculatorProps>(componentId, {
     component: {
@@ -186,6 +192,7 @@ export function showGuideChaosBagOddsCalculator(
         chaosBag,
         scenarioId,
         standalone,
+        processedCampaign,
       },
       options: {
         topBar: {

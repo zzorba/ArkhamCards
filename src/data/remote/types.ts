@@ -1,5 +1,5 @@
 import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES, SYSTEM_BASED_GUIDE_INPUT_IDS, SealedToken } from '@actions/types';
-import { uniq, concat, flatMap, sumBy, find, findLast, maxBy, map, last, forEach, findLastIndex } from 'lodash';
+import { uniq, concat, flatMap, sumBy, find, findLast, maxBy, map, last, forEach, findLastIndex, filter } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
 import { FullCampaignFragment, LatestDeckFragment, MiniCampaignFragment, Guide_Input, FullCampaignGuideStateFragment, FullChaosBagResultFragment, Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
@@ -227,21 +227,21 @@ function unpackGuideInput(input: Pick<Guide_Input, 'id' | 'step' | 'type' | 'sce
 
 export class CampaignGuideStateRemote implements CampaignGuideStateT {
   private guide: FullCampaignGuideStateFragment;
-  private inputs: GuideInput[];
+  private allInputs: GuideInput[];
   private guideUpdatedAt: Date;
 
   constructor(guide: FullCampaignGuideStateFragment) {
     this.guide = guide;
     this.guideUpdatedAt = new Date(Date.parse(guide.updated_at));
-    this.inputs = map(this.guide.guide_inputs, unpackGuideInput);
+    this.allInputs = map(this.guide.guide_inputs, unpackGuideInput);
   }
 
   undoInputs(scenarioId: string) {
-    if (!this.inputs.length) {
+    if (!this.allInputs.length) {
       return [];
     }
     const latestInputIndex = findLastIndex(
-      this.inputs,
+      this.allInputs,
       input => (
         input.scenario === scenarioId &&
         !SYSTEM_BASED_GUIDE_INPUT_TYPES.has(input.type) &&
@@ -252,7 +252,7 @@ export class CampaignGuideStateRemote implements CampaignGuideStateT {
       return [];
     }
     const removedInputs: GuideInput[] = [];
-    forEach(this.inputs, (input: GuideInput, idx: number) => {
+    forEach(this.allInputs, (input: GuideInput, idx: number) => {
       if (SYSTEM_BASED_GUIDE_INPUT_TYPES.has(input.type) || (input.step && SYSTEM_BASED_GUIDE_INPUT_IDS.has(input.step))) {
         if (idx >= latestInputIndex && input.scenario === scenarioId) {
           removedInputs.push(input);
@@ -264,19 +264,23 @@ export class CampaignGuideStateRemote implements CampaignGuideStateT {
     return removedInputs;
   }
 
+  inputs(pred: (i: GuideInput) => boolean): GuideInput[] {
+    return filter(this.allInputs, pred);
+  }
+
   numInputs() {
     return this.guide.guide_inputs.length;
   }
 
   countInput(pred: (i: GuideInput) => boolean): number {
-    return sumBy(this.inputs, i => pred(i) ? 1 : 0);
+    return sumBy(this.allInputs, i => pred(i) ? 1 : 0);
   }
 
   findInput(pred: (i: GuideInput) => boolean): GuideInput | undefined {
-    return find(this.inputs, pred);
+    return find(this.allInputs, pred);
   }
   findLastInput(pred: (i: GuideInput) => boolean): GuideInput | undefined {
-    return findLast(this.inputs, pred);
+    return findLast(this.allInputs, pred);
   }
 
   binaryAchievement(id: string): boolean {

@@ -69,9 +69,10 @@ export default function ScenarioCarouselComponent({
       campaignId,
       campaignState,
       showLinkedScenario ? campaignGuide.campaignName() : undefined,
-      showLinkedScenario ? onShowLinkedScenario : undefined
+      showLinkedScenario ? onShowLinkedScenario : undefined,
+      processedCampaign
     );
-  }, [componentId, campaignId, campaignGuide, showLinkedScenario, onShowLinkedScenario, campaignState]);
+  }, [componentId, campaignId, campaignGuide, showLinkedScenario, onShowLinkedScenario, campaignState, processedCampaign]);
   const activeIndex = useMemo(() => getActiveIndex(processedCampaign.scenarios), [processedCampaign.scenarios]);
   useEffectUpdate(() => {
     if (visible) {

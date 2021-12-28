@@ -24,6 +24,7 @@ import { getDownloadLink } from './ScenarioComponent';
 import CampaignErrorView from './CampaignErrorView';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
+import useProcessedCampaign from './useProcessedCampaign';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -65,7 +66,7 @@ function CampaignGuideView(props: Props) {
   const { campaignGuide, campaignState, campaign } = campaignData;
   useCampaignDeleted(componentId, campaign);
 
-  const [processedCampaign, processedCampaignError] = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
+  const [processedCampaign, processedCampaignError] = useProcessedCampaign(campaignGuide, campaignState);
   const [alertDialog, showAlert] = useAlertDialog();
   const customData = campaignGuide.campaignCustomData();
   const downloadPressed = useCallback(() => {

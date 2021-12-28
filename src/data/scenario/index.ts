@@ -1,6 +1,6 @@
 import { find, flatMap, sortBy } from 'lodash';
 
-import { NumberChoices, StandaloneId, Trauma } from '@actions/types';
+import { GuideInput, NumberChoices, StandaloneId, Trauma } from '@actions/types';
 import { FullCampaign, Effect, Errata, Scenario, ChoiceIcon, ChaosToken, ChaosTokens, ScenarioChaosTokens, BorderColor, TabooSets } from './types';
 import CampaignGuide, { CampaignLog, CampaignLogSection } from './CampaignGuide';
 import ScenarioGuide from './ScenarioGuide';
@@ -21,11 +21,12 @@ interface BasicScenario {
   latestCampaignLog: GuidedCampaignLog;
 }
 
-interface PlayedScenario extends BasicScenario {
+export interface PlayedScenario extends BasicScenario {
   type: 'started' | 'completed';
   canUndo: boolean;
   closeOnUndo: boolean;
   steps: ScenarioStep[];
+  inputs: GuideInput[];
 }
 
 interface UnplayedScenario extends BasicScenario {

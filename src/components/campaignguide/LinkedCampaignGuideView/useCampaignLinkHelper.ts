@@ -37,7 +37,8 @@ export function useCampaignLinkHelper({ componentId, campaignA, campaignDataA, c
         campaignDataA.campaignId,
         campaignDataA.campaignState,
         campaignDataA.campaignGuide.campaignName(),
-        showScenarioB.current
+        showScenarioB.current,
+        campaignA
       );
     }
   }, [campaignA, componentId, setSelectedTab, campaignDataA, incCounter]);
@@ -59,7 +60,8 @@ export function useCampaignLinkHelper({ componentId, campaignA, campaignDataA, c
         campaignDataB.campaignId,
         campaignDataB.campaignState,
         campaignDataB.campaignGuide.campaignName(),
-        showScenarioA.current
+        showScenarioA.current,
+        campaignB,
       );
     }
   }, [campaignB, componentId, campaignDataB, setSelectedTab, incCounter]);

@@ -27,6 +27,7 @@ import LoadingSpinner from '@components/core/LoadingSpinner';
 import CampaignErrorView from '@components/campaignguide/CampaignErrorView';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import { useLinkedCampaignId } from '@components/campaign/hooks';
+import useProcessedCampaign from '../useProcessedCampaign';
 
 export interface LinkedCampaignGuideProps {
   campaignId: CampaignId;
@@ -83,18 +84,8 @@ function LinkedCampaignGuideView(props: Props) {
   const contextB = useCampaignGuideContextFromActions(campaignIdB, deckActions, updateCampaignActions, campaignDataB);
   // console.log(`contextA: ${!!contextA}, contextA.campaignGuide: ${!!contextA?.campaignGuide}, contextA.campaignState: ${!!contextA?.campaignState}`);
   // console.log(`contextB: ${!!contextB}, contextB.campaignGuide: ${!!contextB?.campaignGuide}, contextB.campaignState: ${!!contextB?.campaignState}`);
-  const [processedCampaignA, processedCampaignAError] = useMemo(() => {
-    if (!contextA?.campaignGuide || !contextA?.campaignState) {
-      return [undefined, undefined];
-    }
-    return contextA.campaignGuide.processAllScenarios(contextA.campaignState);
-  }, [contextA]);
-  const [processedCampaignB, processedCampaignBError] = useMemo(() => {
-    if (!contextB?.campaignGuide || !contextB?.campaignState) {
-      return [undefined, undefined];
-    }
-    return contextB.campaignGuide.processAllScenarios(contextB.campaignState);
-  }, [contextB]);
+  const [processedCampaignA, processedCampaignAError] = useProcessedCampaign(contextA?.campaignGuide, contextA?.campaignState);
+  const [processedCampaignB, processedCampaignBError] = useProcessedCampaign(contextB?.campaignGuide, contextB?.campaignState);
   // console.log(`processedCampaignA: ${!!processedCampaignA}, processedCampaignB: ${!!processedCampaignB}`);
 
   const setSelectedTabRef = useRef<((index: number) => void) | undefined>(undefined);

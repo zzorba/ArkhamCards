@@ -583,6 +583,12 @@ export interface SetMiscSettingAction {
   value: boolean;
 }
 
+export const SET_PLAYBACK_RATE = 'SET_PLAYBACK_RATE';
+export interface SetPlaybackRateAction {
+  type: typeof SET_PLAYBACK_RATE;
+  rate: number;
+}
+
 export const PACKS_FETCH_START = 'PACKS_FETCH_START';
 export interface PacksFetchStartAction {
   type: typeof PACKS_FETCH_START;

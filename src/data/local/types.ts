@@ -1,5 +1,5 @@
 import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId, WeaknessSet, InvestigatorData, CampaignGuideState, GuideInput, CampaignNotes, getDeckId, DeckId, SealedToken, ChaosBagResults } from '@actions/types';
-import { find, findLast, uniq, map, concat, last, maxBy, sumBy } from 'lodash';
+import { find, findLast, uniq, map, concat, last, maxBy, sumBy, filter } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
@@ -185,6 +185,10 @@ export class CampaignGuideStateRedux implements CampaignGuideStateT {
   ) {
     this.guide = guide;
     this.updatedAt = updatedAt;
+  }
+
+  inputs(pred: (i: GuideInput) => boolean): GuideInput[] {
+    return filter(this.guide.inputs, pred);
   }
 
   undoInputs() {

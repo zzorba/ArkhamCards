@@ -9,6 +9,7 @@ import { useCampaign } from '@data/hooks';
 import { CampaignId } from '@actions/types';
 import useGuideChaosBag from './useGuideChaosBag';
 import LoadingSpinner from '@components/core/LoadingSpinner';
+import { ProcessedCampaign } from '@data/scenario';
 
 export interface GuideOddsCalculatorProps {
   campaignId: CampaignId;
@@ -16,10 +17,11 @@ export interface GuideOddsCalculatorProps {
   standalone?: boolean;
   investigatorIds: string[];
   chaosBag: ChaosBag;
+  processedCampaign: ProcessedCampaign | undefined;
 }
 
-export default function GuideOddsCalculatorView({ campaignId, investigatorIds, chaosBag, scenarioId, standalone }: GuideOddsCalculatorProps) {
-  const [loading, scenarioCard, scenarioCardText, difficulty, liveChaosBag, scenarioName, scenarioCode] = useGuideChaosBag({ campaignId, scenarioId, standalone });
+export default function GuideOddsCalculatorView({ campaignId, investigatorIds, chaosBag, scenarioId, standalone, processedCampaign }: GuideOddsCalculatorProps) {
+  const [loading, scenarioCard, scenarioCardText, difficulty, liveChaosBag, scenarioName, scenarioCode] = useGuideChaosBag({ campaignId, scenarioId, standalone, processedCampaign });
 
   const campaign = useCampaign(campaignId);
   const cycleScenarios = useCycleScenarios(campaign?.cycleCode);

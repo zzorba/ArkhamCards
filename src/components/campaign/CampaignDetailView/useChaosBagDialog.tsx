@@ -17,6 +17,7 @@ import { useDialog } from '@components/deck/dialogs';
 import StyleContext from '@styles/StyleContext';
 import { updateCampaignChaosBag } from '../actions';
 import { SetCampaignChaosBagAction } from '@data/remote/campaigns';
+import { ProcessedCampaign } from '@data/scenario';
 
 interface Props {
   componentId: string;
@@ -28,6 +29,7 @@ interface Props {
   setChaosBag?: SetCampaignChaosBagAction;
   standalone?: boolean;
   cycleCode: CampaignCycleCode;
+  processedCampaign?: ProcessedCampaign;
 
   customEditPressed?: () => void;
 }
@@ -65,25 +67,26 @@ export default function useChaosBagDialog({
   customEditPressed,
   standalone,
   cycleCode,
+  processedCampaign,
 }: Props): [React.ReactNode, () => void, (visible: boolean) => void] {
   const { width } = useContext(StyleContext);
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const oddsCalculatorPressed = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);
     if (guided) {
-      showGuideChaosBagOddsCalculator(componentId, campaignId, chaosBag, map(allInvestigators, c => c.code), scenarioId, !!standalone);
+      showGuideChaosBagOddsCalculator(componentId, campaignId, chaosBag, map(allInvestigators, c => c.code), scenarioId, !!standalone, processedCampaign);
     } else {
       showChaosBagOddsCalculator(componentId, campaignId, allInvestigators);
     }
-  }, [componentId, campaignId, allInvestigators, chaosBag, guided, scenarioId, standalone]);
+  }, [componentId, campaignId, allInvestigators, chaosBag, guided, scenarioId, standalone, processedCampaign]);
   const drawChaosBagPressed = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);
     if (guided) {
-      showGuideDrawChaosBag(componentId, campaignId, chaosBag, map(allInvestigators, c => c.code), scenarioId, !!standalone);
+      showGuideDrawChaosBag(componentId, campaignId, chaosBag, map(allInvestigators, c => c.code), scenarioId, !!standalone, processedCampaign);
     } else {
       showDrawChaosBag(componentId, campaignId, allInvestigators, cycleCode);
     }
-  }, [campaignId, componentId, guided, chaosBag, allInvestigators, scenarioId, standalone, cycleCode]);
+  }, [campaignId, componentId, guided, chaosBag, allInvestigators, scenarioId, standalone, cycleCode, processedCampaign]);
   const dispatch = useDispatch();
   const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
     if (setChaosBag) {

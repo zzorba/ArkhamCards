@@ -231,6 +231,14 @@ export default class CampaignStateHelper {
     }
   }
 
+  scenarioEntries(id: ScenarioId): GuideInput[] {
+    return this.state.inputs(i => !!i.scenario && i.scenario === id.encodedScenarioId);
+  }
+
+  linkedEntries(): GuideInput[] {
+    return this.linkedState?.inputs(i => i.type === 'campaign_link') || [];
+  }
+
   private entry(type: string, step?: string, scenario?: string): GuideInput | undefined {
     return this.state.findLastInput(input => (
       input.type === type &&

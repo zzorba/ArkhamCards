@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
+export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
@@ -19,61 +20,61 @@ export type Scalars = {
 
 /** Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'. */
 export type Boolean_Comparison_Exp = {
-  _eq?: Maybe<Scalars['Boolean']>;
-  _gt?: Maybe<Scalars['Boolean']>;
-  _gte?: Maybe<Scalars['Boolean']>;
-  _in?: Maybe<Array<Scalars['Boolean']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _lt?: Maybe<Scalars['Boolean']>;
-  _lte?: Maybe<Scalars['Boolean']>;
-  _neq?: Maybe<Scalars['Boolean']>;
-  _nin?: Maybe<Array<Scalars['Boolean']>>;
+  _eq?: InputMaybe<Scalars['Boolean']>;
+  _gt?: InputMaybe<Scalars['Boolean']>;
+  _gte?: InputMaybe<Scalars['Boolean']>;
+  _in?: InputMaybe<Array<Scalars['Boolean']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['Boolean']>;
+  _lte?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<Scalars['Boolean']>;
+  _nin?: InputMaybe<Array<Scalars['Boolean']>>;
 };
 
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
 export type Int_Comparison_Exp = {
-  _eq?: Maybe<Scalars['Int']>;
-  _gt?: Maybe<Scalars['Int']>;
-  _gte?: Maybe<Scalars['Int']>;
-  _in?: Maybe<Array<Scalars['Int']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _lt?: Maybe<Scalars['Int']>;
-  _lte?: Maybe<Scalars['Int']>;
-  _neq?: Maybe<Scalars['Int']>;
-  _nin?: Maybe<Array<Scalars['Int']>>;
+  _eq?: InputMaybe<Scalars['Int']>;
+  _gt?: InputMaybe<Scalars['Int']>;
+  _gte?: InputMaybe<Scalars['Int']>;
+  _in?: InputMaybe<Array<Scalars['Int']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['Int']>;
+  _lte?: InputMaybe<Scalars['Int']>;
+  _neq?: InputMaybe<Scalars['Int']>;
+  _nin?: InputMaybe<Array<Scalars['Int']>>;
 };
 
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
 export type String_Comparison_Exp = {
-  _eq?: Maybe<Scalars['String']>;
-  _gt?: Maybe<Scalars['String']>;
-  _gte?: Maybe<Scalars['String']>;
+  _eq?: InputMaybe<Scalars['String']>;
+  _gt?: InputMaybe<Scalars['String']>;
+  _gte?: InputMaybe<Scalars['String']>;
   /** does the column match the given case-insensitive pattern */
-  _ilike?: Maybe<Scalars['String']>;
-  _in?: Maybe<Array<Scalars['String']>>;
+  _ilike?: InputMaybe<Scalars['String']>;
+  _in?: InputMaybe<Array<Scalars['String']>>;
   /** does the column match the given POSIX regular expression, case insensitive */
-  _iregex?: Maybe<Scalars['String']>;
-  _is_null?: Maybe<Scalars['Boolean']>;
+  _iregex?: InputMaybe<Scalars['String']>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
   /** does the column match the given pattern */
-  _like?: Maybe<Scalars['String']>;
-  _lt?: Maybe<Scalars['String']>;
-  _lte?: Maybe<Scalars['String']>;
-  _neq?: Maybe<Scalars['String']>;
+  _like?: InputMaybe<Scalars['String']>;
+  _lt?: InputMaybe<Scalars['String']>;
+  _lte?: InputMaybe<Scalars['String']>;
+  _neq?: InputMaybe<Scalars['String']>;
   /** does the column NOT match the given case-insensitive pattern */
-  _nilike?: Maybe<Scalars['String']>;
-  _nin?: Maybe<Array<Scalars['String']>>;
+  _nilike?: InputMaybe<Scalars['String']>;
+  _nin?: InputMaybe<Array<Scalars['String']>>;
   /** does the column NOT match the given POSIX regular expression, case insensitive */
-  _niregex?: Maybe<Scalars['String']>;
+  _niregex?: InputMaybe<Scalars['String']>;
   /** does the column NOT match the given pattern */
-  _nlike?: Maybe<Scalars['String']>;
+  _nlike?: InputMaybe<Scalars['String']>;
   /** does the column NOT match the given POSIX regular expression, case sensitive */
-  _nregex?: Maybe<Scalars['String']>;
+  _nregex?: InputMaybe<Scalars['String']>;
   /** does the column NOT match the given SQL regular expression */
-  _nsimilar?: Maybe<Scalars['String']>;
+  _nsimilar?: InputMaybe<Scalars['String']>;
   /** does the column match the given POSIX regular expression, case sensitive */
-  _regex?: Maybe<Scalars['String']>;
+  _regex?: InputMaybe<Scalars['String']>;
   /** does the column match the given SQL regular expression */
-  _similar?: Maybe<Scalars['String']>;
+  _similar?: InputMaybe<Scalars['String']>;
 };
 
 /** columns and relationships of "base_decks" */
@@ -113,23 +114,23 @@ export type Base_Decks_Aggregate_Fields = {
 
 /** aggregate fields of "base_decks" */
 export type Base_Decks_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Base_Decks_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Base_Decks_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "base_decks" */
 export type Base_Decks_Aggregate_Order_By = {
-  avg?: Maybe<Base_Decks_Avg_Order_By>;
-  count?: Maybe<Order_By>;
-  max?: Maybe<Base_Decks_Max_Order_By>;
-  min?: Maybe<Base_Decks_Min_Order_By>;
-  stddev?: Maybe<Base_Decks_Stddev_Order_By>;
-  stddev_pop?: Maybe<Base_Decks_Stddev_Pop_Order_By>;
-  stddev_samp?: Maybe<Base_Decks_Stddev_Samp_Order_By>;
-  sum?: Maybe<Base_Decks_Sum_Order_By>;
-  var_pop?: Maybe<Base_Decks_Var_Pop_Order_By>;
-  var_samp?: Maybe<Base_Decks_Var_Samp_Order_By>;
-  variance?: Maybe<Base_Decks_Variance_Order_By>;
+  avg?: InputMaybe<Base_Decks_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Base_Decks_Max_Order_By>;
+  min?: InputMaybe<Base_Decks_Min_Order_By>;
+  stddev?: InputMaybe<Base_Decks_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Base_Decks_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Base_Decks_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Base_Decks_Sum_Order_By>;
+  var_pop?: InputMaybe<Base_Decks_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Base_Decks_Var_Samp_Order_By>;
+  variance?: InputMaybe<Base_Decks_Variance_Order_By>;
 };
 
 /** input type for inserting array relation for remote table "base_decks" */
@@ -146,33 +147,33 @@ export type Base_Decks_Avg_Fields = {
 
 /** order by avg() on columns of table "base_decks" */
 export type Base_Decks_Avg_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "base_decks". All fields are combined with a logical 'AND'. */
 export type Base_Decks_Bool_Exp = {
-  _and?: Maybe<Array<Base_Decks_Bool_Exp>>;
-  _not?: Maybe<Base_Decks_Bool_Exp>;
-  _or?: Maybe<Array<Base_Decks_Bool_Exp>>;
-  campaign?: Maybe<Campaign_Bool_Exp>;
-  campaign_id?: Maybe<Int_Comparison_Exp>;
-  deck?: Maybe<Campaign_Deck_Bool_Exp>;
-  id?: Maybe<Int_Comparison_Exp>;
+  _and?: InputMaybe<Array<Base_Decks_Bool_Exp>>;
+  _not?: InputMaybe<Base_Decks_Bool_Exp>;
+  _or?: InputMaybe<Array<Base_Decks_Bool_Exp>>;
+  campaign?: InputMaybe<Campaign_Bool_Exp>;
+  campaign_id?: InputMaybe<Int_Comparison_Exp>;
+  deck?: InputMaybe<Campaign_Deck_Bool_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
 };
 
 /** input type for incrementing numeric columns in table "base_decks" */
 export type Base_Decks_Inc_Input = {
-  campaign_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "base_decks" */
 export type Base_Decks_Insert_Input = {
-  campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
-  campaign_id?: Maybe<Scalars['Int']>;
-  deck?: Maybe<Campaign_Deck_Obj_Rel_Insert_Input>;
-  id?: Maybe<Scalars['Int']>;
+  campaign?: InputMaybe<Campaign_Obj_Rel_Insert_Input>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  deck?: InputMaybe<Campaign_Deck_Obj_Rel_Insert_Input>;
+  id?: InputMaybe<Scalars['Int']>;
 };
 
 /** aggregate max on columns */
@@ -184,8 +185,8 @@ export type Base_Decks_Max_Fields = {
 
 /** order by max() on columns of table "base_decks" */
 export type Base_Decks_Max_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -197,8 +198,8 @@ export type Base_Decks_Min_Fields = {
 
 /** order by min() on columns of table "base_decks" */
 export type Base_Decks_Min_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "base_decks" */
@@ -212,10 +213,10 @@ export type Base_Decks_Mutation_Response = {
 
 /** Ordering options when selecting data from "base_decks". */
 export type Base_Decks_Order_By = {
-  campaign?: Maybe<Campaign_Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  deck?: Maybe<Campaign_Deck_Order_By>;
-  id?: Maybe<Order_By>;
+  campaign?: InputMaybe<Campaign_Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  deck?: InputMaybe<Campaign_Deck_Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "base_decks" */
@@ -228,8 +229,8 @@ export enum Base_Decks_Select_Column {
 
 /** input type for updating data in table "base_decks" */
 export type Base_Decks_Set_Input = {
-  campaign_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
 };
 
 /** aggregate stddev on columns */
@@ -241,8 +242,8 @@ export type Base_Decks_Stddev_Fields = {
 
 /** order by stddev() on columns of table "base_decks" */
 export type Base_Decks_Stddev_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -254,8 +255,8 @@ export type Base_Decks_Stddev_Pop_Fields = {
 
 /** order by stddev_pop() on columns of table "base_decks" */
 export type Base_Decks_Stddev_Pop_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -267,8 +268,8 @@ export type Base_Decks_Stddev_Samp_Fields = {
 
 /** order by stddev_samp() on columns of table "base_decks" */
 export type Base_Decks_Stddev_Samp_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -280,8 +281,8 @@ export type Base_Decks_Sum_Fields = {
 
 /** order by sum() on columns of table "base_decks" */
 export type Base_Decks_Sum_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_pop on columns */
@@ -293,8 +294,8 @@ export type Base_Decks_Var_Pop_Fields = {
 
 /** order by var_pop() on columns of table "base_decks" */
 export type Base_Decks_Var_Pop_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -306,8 +307,8 @@ export type Base_Decks_Var_Samp_Fields = {
 
 /** order by var_samp() on columns of table "base_decks" */
 export type Base_Decks_Var_Samp_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -319,8 +320,8 @@ export type Base_Decks_Variance_Fields = {
 
 /** order by variance() on columns of table "base_decks" */
 export type Base_Decks_Variance_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** columns and relationships of "campaign" */
@@ -386,151 +387,151 @@ export type Campaign = {
 
 /** columns and relationships of "campaign" */
 export type CampaignAccessArgs = {
-  distinct_on?: Maybe<Array<Campaign_Access_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Access_Order_By>>;
-  where?: Maybe<Campaign_Access_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Access_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Access_Order_By>>;
+  where?: InputMaybe<Campaign_Access_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign" */
 export type CampaignAccess_AggregateArgs = {
-  distinct_on?: Maybe<Array<Campaign_Access_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Access_Order_By>>;
-  where?: Maybe<Campaign_Access_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Access_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Access_Order_By>>;
+  where?: InputMaybe<Campaign_Access_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign" */
 export type CampaignBase_DecksArgs = {
-  distinct_on?: Maybe<Array<Base_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Base_Decks_Order_By>>;
-  where?: Maybe<Base_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Base_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Base_Decks_Order_By>>;
+  where?: InputMaybe<Base_Decks_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign" */
 export type CampaignBase_Decks_AggregateArgs = {
-  distinct_on?: Maybe<Array<Base_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Base_Decks_Order_By>>;
-  where?: Maybe<Base_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Base_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Base_Decks_Order_By>>;
+  where?: InputMaybe<Base_Decks_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign" */
 export type CampaignCampaignNotesArgs = {
-  path?: Maybe<Scalars['String']>;
+  path?: InputMaybe<Scalars['String']>;
 };
 
 
 /** columns and relationships of "campaign" */
 export type CampaignChaosBagArgs = {
-  path?: Maybe<Scalars['String']>;
+  path?: InputMaybe<Scalars['String']>;
 };
 
 
 /** columns and relationships of "campaign" */
 export type CampaignChaos_Bag_ResultArgs = {
-  distinct_on?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Chaos_Bag_Result_Order_By>>;
-  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Chaos_Bag_Result_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Chaos_Bag_Result_Order_By>>;
+  where?: InputMaybe<Chaos_Bag_Result_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign" */
 export type CampaignChaos_Bag_Result_AggregateArgs = {
-  distinct_on?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Chaos_Bag_Result_Order_By>>;
-  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Chaos_Bag_Result_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Chaos_Bag_Result_Order_By>>;
+  where?: InputMaybe<Chaos_Bag_Result_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign" */
 export type CampaignInvestigator_DataArgs = {
-  distinct_on?: Maybe<Array<Investigator_Data_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Investigator_Data_Order_By>>;
-  where?: Maybe<Investigator_Data_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Investigator_Data_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Investigator_Data_Order_By>>;
+  where?: InputMaybe<Investigator_Data_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign" */
 export type CampaignInvestigator_Data_AggregateArgs = {
-  distinct_on?: Maybe<Array<Investigator_Data_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Investigator_Data_Order_By>>;
-  where?: Maybe<Investigator_Data_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Investigator_Data_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Investigator_Data_Order_By>>;
+  where?: InputMaybe<Investigator_Data_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign" */
 export type CampaignInvestigatorsArgs = {
-  distinct_on?: Maybe<Array<Campaign_Investigator_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Investigator_Order_By>>;
-  where?: Maybe<Campaign_Investigator_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Investigator_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Investigator_Order_By>>;
+  where?: InputMaybe<Campaign_Investigator_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign" */
 export type CampaignInvestigators_AggregateArgs = {
-  distinct_on?: Maybe<Array<Campaign_Investigator_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Investigator_Order_By>>;
-  where?: Maybe<Campaign_Investigator_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Investigator_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Investigator_Order_By>>;
+  where?: InputMaybe<Campaign_Investigator_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign" */
 export type CampaignLatest_DecksArgs = {
-  distinct_on?: Maybe<Array<Latest_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Latest_Decks_Order_By>>;
-  where?: Maybe<Latest_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Latest_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Latest_Decks_Order_By>>;
+  where?: InputMaybe<Latest_Decks_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign" */
 export type CampaignLatest_Decks_AggregateArgs = {
-  distinct_on?: Maybe<Array<Latest_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Latest_Decks_Order_By>>;
-  where?: Maybe<Latest_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Latest_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Latest_Decks_Order_By>>;
+  where?: InputMaybe<Latest_Decks_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign" */
 export type CampaignScenarioResultsArgs = {
-  path?: Maybe<Scalars['String']>;
+  path?: InputMaybe<Scalars['String']>;
 };
 
 
 /** columns and relationships of "campaign" */
 export type CampaignStandaloneIdArgs = {
-  path?: Maybe<Scalars['String']>;
+  path?: InputMaybe<Scalars['String']>;
 };
 
 
 /** columns and relationships of "campaign" */
 export type CampaignWeaknessSetArgs = {
-  path?: Maybe<Scalars['String']>;
+  path?: InputMaybe<Scalars['String']>;
 };
 
 /** columns and relationships of "campaign_access" */
@@ -570,30 +571,30 @@ export type Campaign_Access_Aggregate_Fields = {
 
 /** aggregate fields of "campaign_access" */
 export type Campaign_Access_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Campaign_Access_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Campaign_Access_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "campaign_access" */
 export type Campaign_Access_Aggregate_Order_By = {
-  avg?: Maybe<Campaign_Access_Avg_Order_By>;
-  count?: Maybe<Order_By>;
-  max?: Maybe<Campaign_Access_Max_Order_By>;
-  min?: Maybe<Campaign_Access_Min_Order_By>;
-  stddev?: Maybe<Campaign_Access_Stddev_Order_By>;
-  stddev_pop?: Maybe<Campaign_Access_Stddev_Pop_Order_By>;
-  stddev_samp?: Maybe<Campaign_Access_Stddev_Samp_Order_By>;
-  sum?: Maybe<Campaign_Access_Sum_Order_By>;
-  var_pop?: Maybe<Campaign_Access_Var_Pop_Order_By>;
-  var_samp?: Maybe<Campaign_Access_Var_Samp_Order_By>;
-  variance?: Maybe<Campaign_Access_Variance_Order_By>;
+  avg?: InputMaybe<Campaign_Access_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Campaign_Access_Max_Order_By>;
+  min?: InputMaybe<Campaign_Access_Min_Order_By>;
+  stddev?: InputMaybe<Campaign_Access_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Campaign_Access_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Campaign_Access_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Campaign_Access_Sum_Order_By>;
+  var_pop?: InputMaybe<Campaign_Access_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Campaign_Access_Var_Samp_Order_By>;
+  variance?: InputMaybe<Campaign_Access_Variance_Order_By>;
 };
 
 /** input type for inserting array relation for remote table "campaign_access" */
 export type Campaign_Access_Arr_Rel_Insert_Input = {
   data: Array<Campaign_Access_Insert_Input>;
   /** on conflict condition */
-  on_conflict?: Maybe<Campaign_Access_On_Conflict>;
+  on_conflict?: InputMaybe<Campaign_Access_On_Conflict>;
 };
 
 /** aggregate avg on columns */
@@ -605,20 +606,20 @@ export type Campaign_Access_Avg_Fields = {
 
 /** order by avg() on columns of table "campaign_access" */
 export type Campaign_Access_Avg_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "campaign_access". All fields are combined with a logical 'AND'. */
 export type Campaign_Access_Bool_Exp = {
-  _and?: Maybe<Array<Campaign_Access_Bool_Exp>>;
-  _not?: Maybe<Campaign_Access_Bool_Exp>;
-  _or?: Maybe<Array<Campaign_Access_Bool_Exp>>;
-  campaign_id?: Maybe<Int_Comparison_Exp>;
-  hidden?: Maybe<Boolean_Comparison_Exp>;
-  id?: Maybe<Int_Comparison_Exp>;
-  user?: Maybe<Users_Bool_Exp>;
-  user_id?: Maybe<String_Comparison_Exp>;
+  _and?: InputMaybe<Array<Campaign_Access_Bool_Exp>>;
+  _not?: InputMaybe<Campaign_Access_Bool_Exp>;
+  _or?: InputMaybe<Array<Campaign_Access_Bool_Exp>>;
+  campaign_id?: InputMaybe<Int_Comparison_Exp>;
+  hidden?: InputMaybe<Boolean_Comparison_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  user?: InputMaybe<Users_Bool_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "campaign_access" */
@@ -631,17 +632,17 @@ export enum Campaign_Access_Constraint {
 
 /** input type for incrementing numeric columns in table "campaign_access" */
 export type Campaign_Access_Inc_Input = {
-  campaign_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "campaign_access" */
 export type Campaign_Access_Insert_Input = {
-  campaign_id?: Maybe<Scalars['Int']>;
-  hidden?: Maybe<Scalars['Boolean']>;
-  id?: Maybe<Scalars['Int']>;
-  user?: Maybe<Users_Obj_Rel_Insert_Input>;
-  user_id?: Maybe<Scalars['String']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  hidden?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['Int']>;
+  user?: InputMaybe<Users_Obj_Rel_Insert_Input>;
+  user_id?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -654,9 +655,9 @@ export type Campaign_Access_Max_Fields = {
 
 /** order by max() on columns of table "campaign_access" */
 export type Campaign_Access_Max_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  user_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -669,9 +670,9 @@ export type Campaign_Access_Min_Fields = {
 
 /** order by min() on columns of table "campaign_access" */
 export type Campaign_Access_Min_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  user_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "campaign_access" */
@@ -687,16 +688,16 @@ export type Campaign_Access_Mutation_Response = {
 export type Campaign_Access_On_Conflict = {
   constraint: Campaign_Access_Constraint;
   update_columns: Array<Campaign_Access_Update_Column>;
-  where?: Maybe<Campaign_Access_Bool_Exp>;
+  where?: InputMaybe<Campaign_Access_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "campaign_access". */
 export type Campaign_Access_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  hidden?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  user?: Maybe<Users_Order_By>;
-  user_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  hidden?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  user?: InputMaybe<Users_Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: campaign_access */
@@ -718,10 +719,10 @@ export enum Campaign_Access_Select_Column {
 
 /** input type for updating data in table "campaign_access" */
 export type Campaign_Access_Set_Input = {
-  campaign_id?: Maybe<Scalars['Int']>;
-  hidden?: Maybe<Scalars['Boolean']>;
-  id?: Maybe<Scalars['Int']>;
-  user_id?: Maybe<Scalars['String']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  hidden?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['Int']>;
+  user_id?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate stddev on columns */
@@ -733,8 +734,8 @@ export type Campaign_Access_Stddev_Fields = {
 
 /** order by stddev() on columns of table "campaign_access" */
 export type Campaign_Access_Stddev_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -746,8 +747,8 @@ export type Campaign_Access_Stddev_Pop_Fields = {
 
 /** order by stddev_pop() on columns of table "campaign_access" */
 export type Campaign_Access_Stddev_Pop_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -759,8 +760,8 @@ export type Campaign_Access_Stddev_Samp_Fields = {
 
 /** order by stddev_samp() on columns of table "campaign_access" */
 export type Campaign_Access_Stddev_Samp_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -772,8 +773,8 @@ export type Campaign_Access_Sum_Fields = {
 
 /** order by sum() on columns of table "campaign_access" */
 export type Campaign_Access_Sum_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "campaign_access" */
@@ -797,8 +798,8 @@ export type Campaign_Access_Var_Pop_Fields = {
 
 /** order by var_pop() on columns of table "campaign_access" */
 export type Campaign_Access_Var_Pop_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -810,8 +811,8 @@ export type Campaign_Access_Var_Samp_Fields = {
 
 /** order by var_samp() on columns of table "campaign_access" */
 export type Campaign_Access_Var_Samp_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -823,8 +824,8 @@ export type Campaign_Access_Variance_Fields = {
 
 /** order by variance() on columns of table "campaign_access" */
 export type Campaign_Access_Variance_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregated selection of "campaign" */
@@ -853,17 +854,17 @@ export type Campaign_Aggregate_Fields = {
 
 /** aggregate fields of "campaign" */
 export type Campaign_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Campaign_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Campaign_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** append existing jsonb value of filtered columns with new jsonb value */
 export type Campaign_Append_Input = {
-  campaignNotes?: Maybe<Scalars['jsonb']>;
-  chaosBag?: Maybe<Scalars['jsonb']>;
-  scenarioResults?: Maybe<Scalars['jsonb']>;
-  standaloneId?: Maybe<Scalars['jsonb']>;
-  weaknessSet?: Maybe<Scalars['jsonb']>;
+  campaignNotes?: InputMaybe<Scalars['jsonb']>;
+  chaosBag?: InputMaybe<Scalars['jsonb']>;
+  scenarioResults?: InputMaybe<Scalars['jsonb']>;
+  standaloneId?: InputMaybe<Scalars['jsonb']>;
+  weaknessSet?: InputMaybe<Scalars['jsonb']>;
 };
 
 /** aggregate avg on columns */
@@ -878,41 +879,41 @@ export type Campaign_Avg_Fields = {
 
 /** Boolean expression to filter rows from the table "campaign". All fields are combined with a logical 'AND'. */
 export type Campaign_Bool_Exp = {
-  _and?: Maybe<Array<Campaign_Bool_Exp>>;
-  _not?: Maybe<Campaign_Bool_Exp>;
-  _or?: Maybe<Array<Campaign_Bool_Exp>>;
-  access?: Maybe<Campaign_Access_Bool_Exp>;
-  archived?: Maybe<Boolean_Comparison_Exp>;
-  base_decks?: Maybe<Base_Decks_Bool_Exp>;
-  campaignNotes?: Maybe<Jsonb_Comparison_Exp>;
-  campaign_guide?: Maybe<Campaign_Guide_Bool_Exp>;
-  chaosBag?: Maybe<Jsonb_Comparison_Exp>;
-  chaos_bag_result?: Maybe<Chaos_Bag_Result_Bool_Exp>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  cycleCode?: Maybe<String_Comparison_Exp>;
-  deleted?: Maybe<Boolean_Comparison_Exp>;
-  difficulty?: Maybe<String_Comparison_Exp>;
-  guide_version?: Maybe<Int_Comparison_Exp>;
-  guided?: Maybe<Boolean_Comparison_Exp>;
-  id?: Maybe<Int_Comparison_Exp>;
-  investigator_data?: Maybe<Investigator_Data_Bool_Exp>;
-  investigators?: Maybe<Campaign_Investigator_Bool_Exp>;
-  latest_decks?: Maybe<Latest_Decks_Bool_Exp>;
-  link_a_campaign?: Maybe<Campaign_Bool_Exp>;
-  link_a_campaign_id?: Maybe<Int_Comparison_Exp>;
-  link_b_campaign?: Maybe<Campaign_Bool_Exp>;
-  link_b_campaign_id?: Maybe<Int_Comparison_Exp>;
-  link_campaign_id?: Maybe<Int_Comparison_Exp>;
-  linked_campaign?: Maybe<Campaign_Bool_Exp>;
-  name?: Maybe<String_Comparison_Exp>;
-  owner?: Maybe<Users_Bool_Exp>;
-  owner_id?: Maybe<String_Comparison_Exp>;
-  scenarioResults?: Maybe<Jsonb_Comparison_Exp>;
-  showInterludes?: Maybe<Boolean_Comparison_Exp>;
-  standaloneId?: Maybe<Jsonb_Comparison_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
-  uuid?: Maybe<String_Comparison_Exp>;
-  weaknessSet?: Maybe<Jsonb_Comparison_Exp>;
+  _and?: InputMaybe<Array<Campaign_Bool_Exp>>;
+  _not?: InputMaybe<Campaign_Bool_Exp>;
+  _or?: InputMaybe<Array<Campaign_Bool_Exp>>;
+  access?: InputMaybe<Campaign_Access_Bool_Exp>;
+  archived?: InputMaybe<Boolean_Comparison_Exp>;
+  base_decks?: InputMaybe<Base_Decks_Bool_Exp>;
+  campaignNotes?: InputMaybe<Jsonb_Comparison_Exp>;
+  campaign_guide?: InputMaybe<Campaign_Guide_Bool_Exp>;
+  chaosBag?: InputMaybe<Jsonb_Comparison_Exp>;
+  chaos_bag_result?: InputMaybe<Chaos_Bag_Result_Bool_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  cycleCode?: InputMaybe<String_Comparison_Exp>;
+  deleted?: InputMaybe<Boolean_Comparison_Exp>;
+  difficulty?: InputMaybe<String_Comparison_Exp>;
+  guide_version?: InputMaybe<Int_Comparison_Exp>;
+  guided?: InputMaybe<Boolean_Comparison_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  investigator_data?: InputMaybe<Investigator_Data_Bool_Exp>;
+  investigators?: InputMaybe<Campaign_Investigator_Bool_Exp>;
+  latest_decks?: InputMaybe<Latest_Decks_Bool_Exp>;
+  link_a_campaign?: InputMaybe<Campaign_Bool_Exp>;
+  link_a_campaign_id?: InputMaybe<Int_Comparison_Exp>;
+  link_b_campaign?: InputMaybe<Campaign_Bool_Exp>;
+  link_b_campaign_id?: InputMaybe<Int_Comparison_Exp>;
+  link_campaign_id?: InputMaybe<Int_Comparison_Exp>;
+  linked_campaign?: InputMaybe<Campaign_Bool_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  owner?: InputMaybe<Users_Bool_Exp>;
+  owner_id?: InputMaybe<String_Comparison_Exp>;
+  scenarioResults?: InputMaybe<Jsonb_Comparison_Exp>;
+  showInterludes?: InputMaybe<Boolean_Comparison_Exp>;
+  standaloneId?: InputMaybe<Jsonb_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  uuid?: InputMaybe<String_Comparison_Exp>;
+  weaknessSet?: InputMaybe<Jsonb_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "campaign" */
@@ -959,47 +960,47 @@ export type Campaign_Deck = {
 
 /** columns and relationships of "campaign_deck" */
 export type Campaign_DeckContentArgs = {
-  path?: Maybe<Scalars['String']>;
+  path?: InputMaybe<Scalars['String']>;
 };
 
 
 /** columns and relationships of "campaign_deck" */
 export type Campaign_DeckOther_DecksArgs = {
-  distinct_on?: Maybe<Array<Campaign_Deck_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Deck_Order_By>>;
-  where?: Maybe<Campaign_Deck_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Deck_Order_By>>;
+  where?: InputMaybe<Campaign_Deck_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign_deck" */
 export type Campaign_DeckOther_Decks_AggregateArgs = {
-  distinct_on?: Maybe<Array<Campaign_Deck_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Deck_Order_By>>;
-  where?: Maybe<Campaign_Deck_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Deck_Order_By>>;
+  where?: InputMaybe<Campaign_Deck_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign_deck" */
 export type Campaign_DeckPrevious_DecksArgs = {
-  distinct_on?: Maybe<Array<Campaign_Deck_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Deck_Order_By>>;
-  where?: Maybe<Campaign_Deck_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Deck_Order_By>>;
+  where?: InputMaybe<Campaign_Deck_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign_deck" */
 export type Campaign_DeckPrevious_Decks_AggregateArgs = {
-  distinct_on?: Maybe<Array<Campaign_Deck_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Deck_Order_By>>;
-  where?: Maybe<Campaign_Deck_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Deck_Order_By>>;
+  where?: InputMaybe<Campaign_Deck_Bool_Exp>;
 };
 
 /** aggregated selection of "campaign_deck" */
@@ -1028,35 +1029,35 @@ export type Campaign_Deck_Aggregate_Fields = {
 
 /** aggregate fields of "campaign_deck" */
 export type Campaign_Deck_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Campaign_Deck_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Campaign_Deck_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "campaign_deck" */
 export type Campaign_Deck_Aggregate_Order_By = {
-  avg?: Maybe<Campaign_Deck_Avg_Order_By>;
-  count?: Maybe<Order_By>;
-  max?: Maybe<Campaign_Deck_Max_Order_By>;
-  min?: Maybe<Campaign_Deck_Min_Order_By>;
-  stddev?: Maybe<Campaign_Deck_Stddev_Order_By>;
-  stddev_pop?: Maybe<Campaign_Deck_Stddev_Pop_Order_By>;
-  stddev_samp?: Maybe<Campaign_Deck_Stddev_Samp_Order_By>;
-  sum?: Maybe<Campaign_Deck_Sum_Order_By>;
-  var_pop?: Maybe<Campaign_Deck_Var_Pop_Order_By>;
-  var_samp?: Maybe<Campaign_Deck_Var_Samp_Order_By>;
-  variance?: Maybe<Campaign_Deck_Variance_Order_By>;
+  avg?: InputMaybe<Campaign_Deck_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Campaign_Deck_Max_Order_By>;
+  min?: InputMaybe<Campaign_Deck_Min_Order_By>;
+  stddev?: InputMaybe<Campaign_Deck_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Campaign_Deck_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Campaign_Deck_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Campaign_Deck_Sum_Order_By>;
+  var_pop?: InputMaybe<Campaign_Deck_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Campaign_Deck_Var_Samp_Order_By>;
+  variance?: InputMaybe<Campaign_Deck_Variance_Order_By>;
 };
 
 /** append existing jsonb value of filtered columns with new jsonb value */
 export type Campaign_Deck_Append_Input = {
-  content?: Maybe<Scalars['jsonb']>;
+  content?: InputMaybe<Scalars['jsonb']>;
 };
 
 /** input type for inserting array relation for remote table "campaign_deck" */
 export type Campaign_Deck_Arr_Rel_Insert_Input = {
   data: Array<Campaign_Deck_Insert_Input>;
   /** on conflict condition */
-  on_conflict?: Maybe<Campaign_Deck_On_Conflict>;
+  on_conflict?: InputMaybe<Campaign_Deck_On_Conflict>;
 };
 
 /** aggregate avg on columns */
@@ -1071,37 +1072,37 @@ export type Campaign_Deck_Avg_Fields = {
 
 /** order by avg() on columns of table "campaign_deck" */
 export type Campaign_Deck_Avg_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  arkhamdb_user?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
+  arkhamdb_id?: InputMaybe<Order_By>;
+  arkhamdb_user?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  next_deck_id?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "campaign_deck". All fields are combined with a logical 'AND'. */
 export type Campaign_Deck_Bool_Exp = {
-  _and?: Maybe<Array<Campaign_Deck_Bool_Exp>>;
-  _not?: Maybe<Campaign_Deck_Bool_Exp>;
-  _or?: Maybe<Array<Campaign_Deck_Bool_Exp>>;
-  arkhamdb_id?: Maybe<Int_Comparison_Exp>;
-  arkhamdb_user?: Maybe<Int_Comparison_Exp>;
-  base?: Maybe<Boolean_Comparison_Exp>;
-  campaign?: Maybe<Campaign_Bool_Exp>;
-  campaign_id?: Maybe<Int_Comparison_Exp>;
-  content?: Maybe<Jsonb_Comparison_Exp>;
-  content_hash?: Maybe<String_Comparison_Exp>;
-  id?: Maybe<Int_Comparison_Exp>;
-  investigator?: Maybe<String_Comparison_Exp>;
-  investigator_data?: Maybe<Investigator_Data_Bool_Exp>;
-  local_uuid?: Maybe<String_Comparison_Exp>;
-  next_deck?: Maybe<Campaign_Deck_Bool_Exp>;
-  next_deck_id?: Maybe<Int_Comparison_Exp>;
-  other_decks?: Maybe<Campaign_Deck_Bool_Exp>;
-  owner?: Maybe<Users_Bool_Exp>;
-  owner_id?: Maybe<String_Comparison_Exp>;
-  previous_deck?: Maybe<Campaign_Deck_Bool_Exp>;
-  previous_decks?: Maybe<Campaign_Deck_Bool_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+  _and?: InputMaybe<Array<Campaign_Deck_Bool_Exp>>;
+  _not?: InputMaybe<Campaign_Deck_Bool_Exp>;
+  _or?: InputMaybe<Array<Campaign_Deck_Bool_Exp>>;
+  arkhamdb_id?: InputMaybe<Int_Comparison_Exp>;
+  arkhamdb_user?: InputMaybe<Int_Comparison_Exp>;
+  base?: InputMaybe<Boolean_Comparison_Exp>;
+  campaign?: InputMaybe<Campaign_Bool_Exp>;
+  campaign_id?: InputMaybe<Int_Comparison_Exp>;
+  content?: InputMaybe<Jsonb_Comparison_Exp>;
+  content_hash?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  investigator?: InputMaybe<String_Comparison_Exp>;
+  investigator_data?: InputMaybe<Investigator_Data_Bool_Exp>;
+  local_uuid?: InputMaybe<String_Comparison_Exp>;
+  next_deck?: InputMaybe<Campaign_Deck_Bool_Exp>;
+  next_deck_id?: InputMaybe<Int_Comparison_Exp>;
+  other_decks?: InputMaybe<Campaign_Deck_Bool_Exp>;
+  owner?: InputMaybe<Users_Bool_Exp>;
+  owner_id?: InputMaybe<String_Comparison_Exp>;
+  previous_deck?: InputMaybe<Campaign_Deck_Bool_Exp>;
+  previous_decks?: InputMaybe<Campaign_Deck_Bool_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "campaign_deck" */
@@ -1116,49 +1117,49 @@ export enum Campaign_Deck_Constraint {
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Campaign_Deck_Delete_At_Path_Input = {
-  content?: Maybe<Array<Scalars['String']>>;
+  content?: InputMaybe<Array<Scalars['String']>>;
 };
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export type Campaign_Deck_Delete_Elem_Input = {
-  content?: Maybe<Scalars['Int']>;
+  content?: InputMaybe<Scalars['Int']>;
 };
 
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
 export type Campaign_Deck_Delete_Key_Input = {
-  content?: Maybe<Scalars['String']>;
+  content?: InputMaybe<Scalars['String']>;
 };
 
 /** input type for incrementing numeric columns in table "campaign_deck" */
 export type Campaign_Deck_Inc_Input = {
-  arkhamdb_id?: Maybe<Scalars['Int']>;
-  arkhamdb_user?: Maybe<Scalars['Int']>;
-  campaign_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
-  next_deck_id?: Maybe<Scalars['Int']>;
+  arkhamdb_id?: InputMaybe<Scalars['Int']>;
+  arkhamdb_user?: InputMaybe<Scalars['Int']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  next_deck_id?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "campaign_deck" */
 export type Campaign_Deck_Insert_Input = {
-  arkhamdb_id?: Maybe<Scalars['Int']>;
-  arkhamdb_user?: Maybe<Scalars['Int']>;
-  base?: Maybe<Scalars['Boolean']>;
-  campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
-  campaign_id?: Maybe<Scalars['Int']>;
-  content?: Maybe<Scalars['jsonb']>;
-  content_hash?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  investigator?: Maybe<Scalars['String']>;
-  investigator_data?: Maybe<Investigator_Data_Obj_Rel_Insert_Input>;
-  local_uuid?: Maybe<Scalars['String']>;
-  next_deck?: Maybe<Campaign_Deck_Obj_Rel_Insert_Input>;
-  next_deck_id?: Maybe<Scalars['Int']>;
-  other_decks?: Maybe<Campaign_Deck_Arr_Rel_Insert_Input>;
-  owner?: Maybe<Users_Obj_Rel_Insert_Input>;
-  owner_id?: Maybe<Scalars['String']>;
-  previous_deck?: Maybe<Campaign_Deck_Obj_Rel_Insert_Input>;
-  previous_decks?: Maybe<Campaign_Deck_Arr_Rel_Insert_Input>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  arkhamdb_id?: InputMaybe<Scalars['Int']>;
+  arkhamdb_user?: InputMaybe<Scalars['Int']>;
+  base?: InputMaybe<Scalars['Boolean']>;
+  campaign?: InputMaybe<Campaign_Obj_Rel_Insert_Input>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  content?: InputMaybe<Scalars['jsonb']>;
+  content_hash?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  investigator?: InputMaybe<Scalars['String']>;
+  investigator_data?: InputMaybe<Investigator_Data_Obj_Rel_Insert_Input>;
+  local_uuid?: InputMaybe<Scalars['String']>;
+  next_deck?: InputMaybe<Campaign_Deck_Obj_Rel_Insert_Input>;
+  next_deck_id?: InputMaybe<Scalars['Int']>;
+  other_decks?: InputMaybe<Campaign_Deck_Arr_Rel_Insert_Input>;
+  owner?: InputMaybe<Users_Obj_Rel_Insert_Input>;
+  owner_id?: InputMaybe<Scalars['String']>;
+  previous_deck?: InputMaybe<Campaign_Deck_Obj_Rel_Insert_Input>;
+  previous_decks?: InputMaybe<Campaign_Deck_Arr_Rel_Insert_Input>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -1178,16 +1179,16 @@ export type Campaign_Deck_Max_Fields = {
 
 /** order by max() on columns of table "campaign_deck" */
 export type Campaign_Deck_Max_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  arkhamdb_user?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  content_hash?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  investigator?: Maybe<Order_By>;
-  local_uuid?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
-  owner_id?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  arkhamdb_id?: InputMaybe<Order_By>;
+  arkhamdb_user?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  content_hash?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  investigator?: InputMaybe<Order_By>;
+  local_uuid?: InputMaybe<Order_By>;
+  next_deck_id?: InputMaybe<Order_By>;
+  owner_id?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -1207,16 +1208,16 @@ export type Campaign_Deck_Min_Fields = {
 
 /** order by min() on columns of table "campaign_deck" */
 export type Campaign_Deck_Min_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  arkhamdb_user?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  content_hash?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  investigator?: Maybe<Order_By>;
-  local_uuid?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
-  owner_id?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  arkhamdb_id?: InputMaybe<Order_By>;
+  arkhamdb_user?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  content_hash?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  investigator?: InputMaybe<Order_By>;
+  local_uuid?: InputMaybe<Order_By>;
+  next_deck_id?: InputMaybe<Order_By>;
+  owner_id?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "campaign_deck" */
@@ -1232,37 +1233,37 @@ export type Campaign_Deck_Mutation_Response = {
 export type Campaign_Deck_Obj_Rel_Insert_Input = {
   data: Campaign_Deck_Insert_Input;
   /** on conflict condition */
-  on_conflict?: Maybe<Campaign_Deck_On_Conflict>;
+  on_conflict?: InputMaybe<Campaign_Deck_On_Conflict>;
 };
 
 /** on conflict condition type for table "campaign_deck" */
 export type Campaign_Deck_On_Conflict = {
   constraint: Campaign_Deck_Constraint;
   update_columns: Array<Campaign_Deck_Update_Column>;
-  where?: Maybe<Campaign_Deck_Bool_Exp>;
+  where?: InputMaybe<Campaign_Deck_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "campaign_deck". */
 export type Campaign_Deck_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  arkhamdb_user?: Maybe<Order_By>;
-  base?: Maybe<Order_By>;
-  campaign?: Maybe<Campaign_Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  content?: Maybe<Order_By>;
-  content_hash?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  investigator?: Maybe<Order_By>;
-  investigator_data?: Maybe<Investigator_Data_Order_By>;
-  local_uuid?: Maybe<Order_By>;
-  next_deck?: Maybe<Campaign_Deck_Order_By>;
-  next_deck_id?: Maybe<Order_By>;
-  other_decks_aggregate?: Maybe<Campaign_Deck_Aggregate_Order_By>;
-  owner?: Maybe<Users_Order_By>;
-  owner_id?: Maybe<Order_By>;
-  previous_deck?: Maybe<Campaign_Deck_Order_By>;
-  previous_decks_aggregate?: Maybe<Campaign_Deck_Aggregate_Order_By>;
-  updated_at?: Maybe<Order_By>;
+  arkhamdb_id?: InputMaybe<Order_By>;
+  arkhamdb_user?: InputMaybe<Order_By>;
+  base?: InputMaybe<Order_By>;
+  campaign?: InputMaybe<Campaign_Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  content?: InputMaybe<Order_By>;
+  content_hash?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  investigator?: InputMaybe<Order_By>;
+  investigator_data?: InputMaybe<Investigator_Data_Order_By>;
+  local_uuid?: InputMaybe<Order_By>;
+  next_deck?: InputMaybe<Campaign_Deck_Order_By>;
+  next_deck_id?: InputMaybe<Order_By>;
+  other_decks_aggregate?: InputMaybe<Campaign_Deck_Aggregate_Order_By>;
+  owner?: InputMaybe<Users_Order_By>;
+  owner_id?: InputMaybe<Order_By>;
+  previous_deck?: InputMaybe<Campaign_Deck_Order_By>;
+  previous_decks_aggregate?: InputMaybe<Campaign_Deck_Aggregate_Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: campaign_deck */
@@ -1272,7 +1273,7 @@ export type Campaign_Deck_Pk_Columns_Input = {
 
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export type Campaign_Deck_Prepend_Input = {
-  content?: Maybe<Scalars['jsonb']>;
+  content?: InputMaybe<Scalars['jsonb']>;
 };
 
 /** select columns of table "campaign_deck" */
@@ -1305,18 +1306,18 @@ export enum Campaign_Deck_Select_Column {
 
 /** input type for updating data in table "campaign_deck" */
 export type Campaign_Deck_Set_Input = {
-  arkhamdb_id?: Maybe<Scalars['Int']>;
-  arkhamdb_user?: Maybe<Scalars['Int']>;
-  base?: Maybe<Scalars['Boolean']>;
-  campaign_id?: Maybe<Scalars['Int']>;
-  content?: Maybe<Scalars['jsonb']>;
-  content_hash?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  investigator?: Maybe<Scalars['String']>;
-  local_uuid?: Maybe<Scalars['String']>;
-  next_deck_id?: Maybe<Scalars['Int']>;
-  owner_id?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  arkhamdb_id?: InputMaybe<Scalars['Int']>;
+  arkhamdb_user?: InputMaybe<Scalars['Int']>;
+  base?: InputMaybe<Scalars['Boolean']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  content?: InputMaybe<Scalars['jsonb']>;
+  content_hash?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  investigator?: InputMaybe<Scalars['String']>;
+  local_uuid?: InputMaybe<Scalars['String']>;
+  next_deck_id?: InputMaybe<Scalars['Int']>;
+  owner_id?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate stddev on columns */
@@ -1331,11 +1332,11 @@ export type Campaign_Deck_Stddev_Fields = {
 
 /** order by stddev() on columns of table "campaign_deck" */
 export type Campaign_Deck_Stddev_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  arkhamdb_user?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
+  arkhamdb_id?: InputMaybe<Order_By>;
+  arkhamdb_user?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  next_deck_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -1350,11 +1351,11 @@ export type Campaign_Deck_Stddev_Pop_Fields = {
 
 /** order by stddev_pop() on columns of table "campaign_deck" */
 export type Campaign_Deck_Stddev_Pop_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  arkhamdb_user?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
+  arkhamdb_id?: InputMaybe<Order_By>;
+  arkhamdb_user?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  next_deck_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -1369,11 +1370,11 @@ export type Campaign_Deck_Stddev_Samp_Fields = {
 
 /** order by stddev_samp() on columns of table "campaign_deck" */
 export type Campaign_Deck_Stddev_Samp_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  arkhamdb_user?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
+  arkhamdb_id?: InputMaybe<Order_By>;
+  arkhamdb_user?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  next_deck_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -1388,11 +1389,11 @@ export type Campaign_Deck_Sum_Fields = {
 
 /** order by sum() on columns of table "campaign_deck" */
 export type Campaign_Deck_Sum_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  arkhamdb_user?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
+  arkhamdb_id?: InputMaybe<Order_By>;
+  arkhamdb_user?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  next_deck_id?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "campaign_deck" */
@@ -1435,11 +1436,11 @@ export type Campaign_Deck_Var_Pop_Fields = {
 
 /** order by var_pop() on columns of table "campaign_deck" */
 export type Campaign_Deck_Var_Pop_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  arkhamdb_user?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
+  arkhamdb_id?: InputMaybe<Order_By>;
+  arkhamdb_user?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  next_deck_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -1454,11 +1455,11 @@ export type Campaign_Deck_Var_Samp_Fields = {
 
 /** order by var_samp() on columns of table "campaign_deck" */
 export type Campaign_Deck_Var_Samp_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  arkhamdb_user?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
+  arkhamdb_id?: InputMaybe<Order_By>;
+  arkhamdb_user?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  next_deck_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -1473,38 +1474,38 @@ export type Campaign_Deck_Variance_Fields = {
 
 /** order by variance() on columns of table "campaign_deck" */
 export type Campaign_Deck_Variance_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  arkhamdb_user?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
+  arkhamdb_id?: InputMaybe<Order_By>;
+  arkhamdb_user?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  next_deck_id?: InputMaybe<Order_By>;
 };
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Campaign_Delete_At_Path_Input = {
-  campaignNotes?: Maybe<Array<Scalars['String']>>;
-  chaosBag?: Maybe<Array<Scalars['String']>>;
-  scenarioResults?: Maybe<Array<Scalars['String']>>;
-  standaloneId?: Maybe<Array<Scalars['String']>>;
-  weaknessSet?: Maybe<Array<Scalars['String']>>;
+  campaignNotes?: InputMaybe<Array<Scalars['String']>>;
+  chaosBag?: InputMaybe<Array<Scalars['String']>>;
+  scenarioResults?: InputMaybe<Array<Scalars['String']>>;
+  standaloneId?: InputMaybe<Array<Scalars['String']>>;
+  weaknessSet?: InputMaybe<Array<Scalars['String']>>;
 };
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export type Campaign_Delete_Elem_Input = {
-  campaignNotes?: Maybe<Scalars['Int']>;
-  chaosBag?: Maybe<Scalars['Int']>;
-  scenarioResults?: Maybe<Scalars['Int']>;
-  standaloneId?: Maybe<Scalars['Int']>;
-  weaknessSet?: Maybe<Scalars['Int']>;
+  campaignNotes?: InputMaybe<Scalars['Int']>;
+  chaosBag?: InputMaybe<Scalars['Int']>;
+  scenarioResults?: InputMaybe<Scalars['Int']>;
+  standaloneId?: InputMaybe<Scalars['Int']>;
+  weaknessSet?: InputMaybe<Scalars['Int']>;
 };
 
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
 export type Campaign_Delete_Key_Input = {
-  campaignNotes?: Maybe<Scalars['String']>;
-  chaosBag?: Maybe<Scalars['String']>;
-  scenarioResults?: Maybe<Scalars['String']>;
-  standaloneId?: Maybe<Scalars['String']>;
-  weaknessSet?: Maybe<Scalars['String']>;
+  campaignNotes?: InputMaybe<Scalars['String']>;
+  chaosBag?: InputMaybe<Scalars['String']>;
+  scenarioResults?: InputMaybe<Scalars['String']>;
+  standaloneId?: InputMaybe<Scalars['String']>;
+  weaknessSet?: InputMaybe<Scalars['String']>;
 };
 
 /** columns and relationships of "campaign_guide" */
@@ -1532,61 +1533,61 @@ export type Campaign_Guide = {
 
 /** columns and relationships of "campaign_guide" */
 export type Campaign_GuideAccessArgs = {
-  distinct_on?: Maybe<Array<Campaign_Access_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Access_Order_By>>;
-  where?: Maybe<Campaign_Access_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Access_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Access_Order_By>>;
+  where?: InputMaybe<Campaign_Access_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign_guide" */
 export type Campaign_GuideAccess_AggregateArgs = {
-  distinct_on?: Maybe<Array<Campaign_Access_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Access_Order_By>>;
-  where?: Maybe<Campaign_Access_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Access_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Access_Order_By>>;
+  where?: InputMaybe<Campaign_Access_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign_guide" */
 export type Campaign_GuideGuide_AchievementsArgs = {
-  distinct_on?: Maybe<Array<Guide_Achievement_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Guide_Achievement_Order_By>>;
-  where?: Maybe<Guide_Achievement_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Guide_Achievement_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Guide_Achievement_Order_By>>;
+  where?: InputMaybe<Guide_Achievement_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign_guide" */
 export type Campaign_GuideGuide_Achievements_AggregateArgs = {
-  distinct_on?: Maybe<Array<Guide_Achievement_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Guide_Achievement_Order_By>>;
-  where?: Maybe<Guide_Achievement_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Guide_Achievement_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Guide_Achievement_Order_By>>;
+  where?: InputMaybe<Guide_Achievement_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign_guide" */
 export type Campaign_GuideGuide_InputsArgs = {
-  distinct_on?: Maybe<Array<Guide_Input_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Guide_Input_Order_By>>;
-  where?: Maybe<Guide_Input_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Guide_Input_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Guide_Input_Order_By>>;
+  where?: InputMaybe<Guide_Input_Bool_Exp>;
 };
 
 
 /** columns and relationships of "campaign_guide" */
 export type Campaign_GuideGuide_Inputs_AggregateArgs = {
-  distinct_on?: Maybe<Array<Guide_Input_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Guide_Input_Order_By>>;
-  where?: Maybe<Guide_Input_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Guide_Input_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Guide_Input_Order_By>>;
+  where?: InputMaybe<Guide_Input_Bool_Exp>;
 };
 
 /** aggregated selection of "campaign_guide" */
@@ -1615,8 +1616,8 @@ export type Campaign_Guide_Aggregate_Fields = {
 
 /** aggregate fields of "campaign_guide" */
 export type Campaign_Guide_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Campaign_Guide_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Campaign_Guide_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** aggregate avg on columns */
@@ -1627,34 +1628,34 @@ export type Campaign_Guide_Avg_Fields = {
 
 /** Boolean expression to filter rows from the table "campaign_guide". All fields are combined with a logical 'AND'. */
 export type Campaign_Guide_Bool_Exp = {
-  _and?: Maybe<Array<Campaign_Guide_Bool_Exp>>;
-  _not?: Maybe<Campaign_Guide_Bool_Exp>;
-  _or?: Maybe<Array<Campaign_Guide_Bool_Exp>>;
-  access?: Maybe<Campaign_Access_Bool_Exp>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  guide_achievements?: Maybe<Guide_Achievement_Bool_Exp>;
-  guide_inputs?: Maybe<Guide_Input_Bool_Exp>;
-  id?: Maybe<Int_Comparison_Exp>;
-  owner?: Maybe<String_Comparison_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
-  uuid?: Maybe<String_Comparison_Exp>;
+  _and?: InputMaybe<Array<Campaign_Guide_Bool_Exp>>;
+  _not?: InputMaybe<Campaign_Guide_Bool_Exp>;
+  _or?: InputMaybe<Array<Campaign_Guide_Bool_Exp>>;
+  access?: InputMaybe<Campaign_Access_Bool_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  guide_achievements?: InputMaybe<Guide_Achievement_Bool_Exp>;
+  guide_inputs?: InputMaybe<Guide_Input_Bool_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  owner?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  uuid?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** input type for incrementing numeric columns in table "campaign_guide" */
 export type Campaign_Guide_Inc_Input = {
-  id?: Maybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "campaign_guide" */
 export type Campaign_Guide_Insert_Input = {
-  access?: Maybe<Campaign_Access_Arr_Rel_Insert_Input>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  guide_achievements?: Maybe<Guide_Achievement_Arr_Rel_Insert_Input>;
-  guide_inputs?: Maybe<Guide_Input_Arr_Rel_Insert_Input>;
-  id?: Maybe<Scalars['Int']>;
-  owner?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  uuid?: Maybe<Scalars['String']>;
+  access?: InputMaybe<Campaign_Access_Arr_Rel_Insert_Input>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  guide_achievements?: InputMaybe<Guide_Achievement_Arr_Rel_Insert_Input>;
+  guide_inputs?: InputMaybe<Guide_Input_Arr_Rel_Insert_Input>;
+  id?: InputMaybe<Scalars['Int']>;
+  owner?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  uuid?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -1693,14 +1694,14 @@ export type Campaign_Guide_Obj_Rel_Insert_Input = {
 
 /** Ordering options when selecting data from "campaign_guide". */
 export type Campaign_Guide_Order_By = {
-  access_aggregate?: Maybe<Campaign_Access_Aggregate_Order_By>;
-  created_at?: Maybe<Order_By>;
-  guide_achievements_aggregate?: Maybe<Guide_Achievement_Aggregate_Order_By>;
-  guide_inputs_aggregate?: Maybe<Guide_Input_Aggregate_Order_By>;
-  id?: Maybe<Order_By>;
-  owner?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
-  uuid?: Maybe<Order_By>;
+  access_aggregate?: InputMaybe<Campaign_Access_Aggregate_Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  guide_achievements_aggregate?: InputMaybe<Guide_Achievement_Aggregate_Order_By>;
+  guide_inputs_aggregate?: InputMaybe<Guide_Input_Aggregate_Order_By>;
+  id?: InputMaybe<Order_By>;
+  owner?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  uuid?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "campaign_guide" */
@@ -1719,11 +1720,11 @@ export enum Campaign_Guide_Select_Column {
 
 /** input type for updating data in table "campaign_guide" */
 export type Campaign_Guide_Set_Input = {
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
-  owner?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  uuid?: Maybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['Int']>;
+  owner?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  uuid?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate stddev on columns */
@@ -1770,47 +1771,47 @@ export type Campaign_Guide_Variance_Fields = {
 
 /** input type for incrementing numeric columns in table "campaign" */
 export type Campaign_Inc_Input = {
-  guide_version?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
-  link_a_campaign_id?: Maybe<Scalars['Int']>;
-  link_b_campaign_id?: Maybe<Scalars['Int']>;
-  link_campaign_id?: Maybe<Scalars['Int']>;
+  guide_version?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  link_a_campaign_id?: InputMaybe<Scalars['Int']>;
+  link_b_campaign_id?: InputMaybe<Scalars['Int']>;
+  link_campaign_id?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "campaign" */
 export type Campaign_Insert_Input = {
-  access?: Maybe<Campaign_Access_Arr_Rel_Insert_Input>;
-  archived?: Maybe<Scalars['Boolean']>;
-  base_decks?: Maybe<Base_Decks_Arr_Rel_Insert_Input>;
-  campaignNotes?: Maybe<Scalars['jsonb']>;
-  campaign_guide?: Maybe<Campaign_Guide_Obj_Rel_Insert_Input>;
-  chaosBag?: Maybe<Scalars['jsonb']>;
-  chaos_bag_result?: Maybe<Chaos_Bag_Result_Arr_Rel_Insert_Input>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  cycleCode?: Maybe<Scalars['String']>;
-  deleted?: Maybe<Scalars['Boolean']>;
-  difficulty?: Maybe<Scalars['String']>;
-  guide_version?: Maybe<Scalars['Int']>;
-  guided?: Maybe<Scalars['Boolean']>;
-  id?: Maybe<Scalars['Int']>;
-  investigator_data?: Maybe<Investigator_Data_Arr_Rel_Insert_Input>;
-  investigators?: Maybe<Campaign_Investigator_Arr_Rel_Insert_Input>;
-  latest_decks?: Maybe<Latest_Decks_Arr_Rel_Insert_Input>;
-  link_a_campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
-  link_a_campaign_id?: Maybe<Scalars['Int']>;
-  link_b_campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
-  link_b_campaign_id?: Maybe<Scalars['Int']>;
-  link_campaign_id?: Maybe<Scalars['Int']>;
-  linked_campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
-  name?: Maybe<Scalars['String']>;
-  owner?: Maybe<Users_Obj_Rel_Insert_Input>;
-  owner_id?: Maybe<Scalars['String']>;
-  scenarioResults?: Maybe<Scalars['jsonb']>;
-  showInterludes?: Maybe<Scalars['Boolean']>;
-  standaloneId?: Maybe<Scalars['jsonb']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  uuid?: Maybe<Scalars['String']>;
-  weaknessSet?: Maybe<Scalars['jsonb']>;
+  access?: InputMaybe<Campaign_Access_Arr_Rel_Insert_Input>;
+  archived?: InputMaybe<Scalars['Boolean']>;
+  base_decks?: InputMaybe<Base_Decks_Arr_Rel_Insert_Input>;
+  campaignNotes?: InputMaybe<Scalars['jsonb']>;
+  campaign_guide?: InputMaybe<Campaign_Guide_Obj_Rel_Insert_Input>;
+  chaosBag?: InputMaybe<Scalars['jsonb']>;
+  chaos_bag_result?: InputMaybe<Chaos_Bag_Result_Arr_Rel_Insert_Input>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  cycleCode?: InputMaybe<Scalars['String']>;
+  deleted?: InputMaybe<Scalars['Boolean']>;
+  difficulty?: InputMaybe<Scalars['String']>;
+  guide_version?: InputMaybe<Scalars['Int']>;
+  guided?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['Int']>;
+  investigator_data?: InputMaybe<Investigator_Data_Arr_Rel_Insert_Input>;
+  investigators?: InputMaybe<Campaign_Investigator_Arr_Rel_Insert_Input>;
+  latest_decks?: InputMaybe<Latest_Decks_Arr_Rel_Insert_Input>;
+  link_a_campaign?: InputMaybe<Campaign_Obj_Rel_Insert_Input>;
+  link_a_campaign_id?: InputMaybe<Scalars['Int']>;
+  link_b_campaign?: InputMaybe<Campaign_Obj_Rel_Insert_Input>;
+  link_b_campaign_id?: InputMaybe<Scalars['Int']>;
+  link_campaign_id?: InputMaybe<Scalars['Int']>;
+  linked_campaign?: InputMaybe<Campaign_Obj_Rel_Insert_Input>;
+  name?: InputMaybe<Scalars['String']>;
+  owner?: InputMaybe<Users_Obj_Rel_Insert_Input>;
+  owner_id?: InputMaybe<Scalars['String']>;
+  scenarioResults?: InputMaybe<Scalars['jsonb']>;
+  showInterludes?: InputMaybe<Scalars['Boolean']>;
+  standaloneId?: InputMaybe<Scalars['jsonb']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  uuid?: InputMaybe<Scalars['String']>;
+  weaknessSet?: InputMaybe<Scalars['jsonb']>;
 };
 
 /** columns and relationships of "campaign_investigator" */
@@ -1852,30 +1853,30 @@ export type Campaign_Investigator_Aggregate_Fields = {
 
 /** aggregate fields of "campaign_investigator" */
 export type Campaign_Investigator_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Campaign_Investigator_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Campaign_Investigator_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "campaign_investigator" */
 export type Campaign_Investigator_Aggregate_Order_By = {
-  avg?: Maybe<Campaign_Investigator_Avg_Order_By>;
-  count?: Maybe<Order_By>;
-  max?: Maybe<Campaign_Investigator_Max_Order_By>;
-  min?: Maybe<Campaign_Investigator_Min_Order_By>;
-  stddev?: Maybe<Campaign_Investigator_Stddev_Order_By>;
-  stddev_pop?: Maybe<Campaign_Investigator_Stddev_Pop_Order_By>;
-  stddev_samp?: Maybe<Campaign_Investigator_Stddev_Samp_Order_By>;
-  sum?: Maybe<Campaign_Investigator_Sum_Order_By>;
-  var_pop?: Maybe<Campaign_Investigator_Var_Pop_Order_By>;
-  var_samp?: Maybe<Campaign_Investigator_Var_Samp_Order_By>;
-  variance?: Maybe<Campaign_Investigator_Variance_Order_By>;
+  avg?: InputMaybe<Campaign_Investigator_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Campaign_Investigator_Max_Order_By>;
+  min?: InputMaybe<Campaign_Investigator_Min_Order_By>;
+  stddev?: InputMaybe<Campaign_Investigator_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Campaign_Investigator_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Campaign_Investigator_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Campaign_Investigator_Sum_Order_By>;
+  var_pop?: InputMaybe<Campaign_Investigator_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Campaign_Investigator_Var_Samp_Order_By>;
+  variance?: InputMaybe<Campaign_Investigator_Variance_Order_By>;
 };
 
 /** input type for inserting array relation for remote table "campaign_investigator" */
 export type Campaign_Investigator_Arr_Rel_Insert_Input = {
   data: Array<Campaign_Investigator_Insert_Input>;
   /** on conflict condition */
-  on_conflict?: Maybe<Campaign_Investigator_On_Conflict>;
+  on_conflict?: InputMaybe<Campaign_Investigator_On_Conflict>;
 };
 
 /** aggregate avg on columns */
@@ -1886,19 +1887,19 @@ export type Campaign_Investigator_Avg_Fields = {
 
 /** order by avg() on columns of table "campaign_investigator" */
 export type Campaign_Investigator_Avg_Order_By = {
-  campaign_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "campaign_investigator". All fields are combined with a logical 'AND'. */
 export type Campaign_Investigator_Bool_Exp = {
-  _and?: Maybe<Array<Campaign_Investigator_Bool_Exp>>;
-  _not?: Maybe<Campaign_Investigator_Bool_Exp>;
-  _or?: Maybe<Array<Campaign_Investigator_Bool_Exp>>;
-  campaign?: Maybe<Campaign_Bool_Exp>;
-  campaign_id?: Maybe<Int_Comparison_Exp>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  investigator?: Maybe<String_Comparison_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+  _and?: InputMaybe<Array<Campaign_Investigator_Bool_Exp>>;
+  _not?: InputMaybe<Campaign_Investigator_Bool_Exp>;
+  _or?: InputMaybe<Array<Campaign_Investigator_Bool_Exp>>;
+  campaign?: InputMaybe<Campaign_Bool_Exp>;
+  campaign_id?: InputMaybe<Int_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  investigator?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "campaign_investigator" */
@@ -1911,16 +1912,16 @@ export enum Campaign_Investigator_Constraint {
 
 /** input type for incrementing numeric columns in table "campaign_investigator" */
 export type Campaign_Investigator_Inc_Input = {
-  campaign_id?: Maybe<Scalars['Int']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "campaign_investigator" */
 export type Campaign_Investigator_Insert_Input = {
-  campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
-  campaign_id?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  investigator?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  campaign?: InputMaybe<Campaign_Obj_Rel_Insert_Input>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  investigator?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -1934,10 +1935,10 @@ export type Campaign_Investigator_Max_Fields = {
 
 /** order by max() on columns of table "campaign_investigator" */
 export type Campaign_Investigator_Max_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  investigator?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  investigator?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -1951,10 +1952,10 @@ export type Campaign_Investigator_Min_Fields = {
 
 /** order by min() on columns of table "campaign_investigator" */
 export type Campaign_Investigator_Min_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  investigator?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  investigator?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "campaign_investigator" */
@@ -1970,16 +1971,16 @@ export type Campaign_Investigator_Mutation_Response = {
 export type Campaign_Investigator_On_Conflict = {
   constraint: Campaign_Investigator_Constraint;
   update_columns: Array<Campaign_Investigator_Update_Column>;
-  where?: Maybe<Campaign_Investigator_Bool_Exp>;
+  where?: InputMaybe<Campaign_Investigator_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "campaign_investigator". */
 export type Campaign_Investigator_Order_By = {
-  campaign?: Maybe<Campaign_Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  investigator?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  campaign?: InputMaybe<Campaign_Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  investigator?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: campaign_investigator */
@@ -2002,10 +2003,10 @@ export enum Campaign_Investigator_Select_Column {
 
 /** input type for updating data in table "campaign_investigator" */
 export type Campaign_Investigator_Set_Input = {
-  campaign_id?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  investigator?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  investigator?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate stddev on columns */
@@ -2016,7 +2017,7 @@ export type Campaign_Investigator_Stddev_Fields = {
 
 /** order by stddev() on columns of table "campaign_investigator" */
 export type Campaign_Investigator_Stddev_Order_By = {
-  campaign_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -2027,7 +2028,7 @@ export type Campaign_Investigator_Stddev_Pop_Fields = {
 
 /** order by stddev_pop() on columns of table "campaign_investigator" */
 export type Campaign_Investigator_Stddev_Pop_Order_By = {
-  campaign_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -2038,7 +2039,7 @@ export type Campaign_Investigator_Stddev_Samp_Fields = {
 
 /** order by stddev_samp() on columns of table "campaign_investigator" */
 export type Campaign_Investigator_Stddev_Samp_Order_By = {
-  campaign_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -2049,7 +2050,7 @@ export type Campaign_Investigator_Sum_Fields = {
 
 /** order by sum() on columns of table "campaign_investigator" */
 export type Campaign_Investigator_Sum_Order_By = {
-  campaign_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "campaign_investigator" */
@@ -2072,7 +2073,7 @@ export type Campaign_Investigator_Var_Pop_Fields = {
 
 /** order by var_pop() on columns of table "campaign_investigator" */
 export type Campaign_Investigator_Var_Pop_Order_By = {
-  campaign_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -2083,7 +2084,7 @@ export type Campaign_Investigator_Var_Samp_Fields = {
 
 /** order by var_samp() on columns of table "campaign_investigator" */
 export type Campaign_Investigator_Var_Samp_Order_By = {
-  campaign_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -2094,7 +2095,7 @@ export type Campaign_Investigator_Variance_Fields = {
 
 /** order by variance() on columns of table "campaign_investigator" */
 export type Campaign_Investigator_Variance_Order_By = {
-  campaign_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate max on columns */
@@ -2144,50 +2145,50 @@ export type Campaign_Mutation_Response = {
 export type Campaign_Obj_Rel_Insert_Input = {
   data: Campaign_Insert_Input;
   /** on conflict condition */
-  on_conflict?: Maybe<Campaign_On_Conflict>;
+  on_conflict?: InputMaybe<Campaign_On_Conflict>;
 };
 
 /** on conflict condition type for table "campaign" */
 export type Campaign_On_Conflict = {
   constraint: Campaign_Constraint;
   update_columns: Array<Campaign_Update_Column>;
-  where?: Maybe<Campaign_Bool_Exp>;
+  where?: InputMaybe<Campaign_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "campaign". */
 export type Campaign_Order_By = {
-  access_aggregate?: Maybe<Campaign_Access_Aggregate_Order_By>;
-  archived?: Maybe<Order_By>;
-  base_decks_aggregate?: Maybe<Base_Decks_Aggregate_Order_By>;
-  campaignNotes?: Maybe<Order_By>;
-  campaign_guide?: Maybe<Campaign_Guide_Order_By>;
-  chaosBag?: Maybe<Order_By>;
-  chaos_bag_result_aggregate?: Maybe<Chaos_Bag_Result_Aggregate_Order_By>;
-  created_at?: Maybe<Order_By>;
-  cycleCode?: Maybe<Order_By>;
-  deleted?: Maybe<Order_By>;
-  difficulty?: Maybe<Order_By>;
-  guide_version?: Maybe<Order_By>;
-  guided?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  investigator_data_aggregate?: Maybe<Investigator_Data_Aggregate_Order_By>;
-  investigators_aggregate?: Maybe<Campaign_Investigator_Aggregate_Order_By>;
-  latest_decks_aggregate?: Maybe<Latest_Decks_Aggregate_Order_By>;
-  link_a_campaign?: Maybe<Campaign_Order_By>;
-  link_a_campaign_id?: Maybe<Order_By>;
-  link_b_campaign?: Maybe<Campaign_Order_By>;
-  link_b_campaign_id?: Maybe<Order_By>;
-  link_campaign_id?: Maybe<Order_By>;
-  linked_campaign?: Maybe<Campaign_Order_By>;
-  name?: Maybe<Order_By>;
-  owner?: Maybe<Users_Order_By>;
-  owner_id?: Maybe<Order_By>;
-  scenarioResults?: Maybe<Order_By>;
-  showInterludes?: Maybe<Order_By>;
-  standaloneId?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
-  uuid?: Maybe<Order_By>;
-  weaknessSet?: Maybe<Order_By>;
+  access_aggregate?: InputMaybe<Campaign_Access_Aggregate_Order_By>;
+  archived?: InputMaybe<Order_By>;
+  base_decks_aggregate?: InputMaybe<Base_Decks_Aggregate_Order_By>;
+  campaignNotes?: InputMaybe<Order_By>;
+  campaign_guide?: InputMaybe<Campaign_Guide_Order_By>;
+  chaosBag?: InputMaybe<Order_By>;
+  chaos_bag_result_aggregate?: InputMaybe<Chaos_Bag_Result_Aggregate_Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  cycleCode?: InputMaybe<Order_By>;
+  deleted?: InputMaybe<Order_By>;
+  difficulty?: InputMaybe<Order_By>;
+  guide_version?: InputMaybe<Order_By>;
+  guided?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  investigator_data_aggregate?: InputMaybe<Investigator_Data_Aggregate_Order_By>;
+  investigators_aggregate?: InputMaybe<Campaign_Investigator_Aggregate_Order_By>;
+  latest_decks_aggregate?: InputMaybe<Latest_Decks_Aggregate_Order_By>;
+  link_a_campaign?: InputMaybe<Campaign_Order_By>;
+  link_a_campaign_id?: InputMaybe<Order_By>;
+  link_b_campaign?: InputMaybe<Campaign_Order_By>;
+  link_b_campaign_id?: InputMaybe<Order_By>;
+  link_campaign_id?: InputMaybe<Order_By>;
+  linked_campaign?: InputMaybe<Campaign_Order_By>;
+  name?: InputMaybe<Order_By>;
+  owner?: InputMaybe<Users_Order_By>;
+  owner_id?: InputMaybe<Order_By>;
+  scenarioResults?: InputMaybe<Order_By>;
+  showInterludes?: InputMaybe<Order_By>;
+  standaloneId?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  uuid?: InputMaybe<Order_By>;
+  weaknessSet?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: campaign */
@@ -2197,11 +2198,11 @@ export type Campaign_Pk_Columns_Input = {
 
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export type Campaign_Prepend_Input = {
-  campaignNotes?: Maybe<Scalars['jsonb']>;
-  chaosBag?: Maybe<Scalars['jsonb']>;
-  scenarioResults?: Maybe<Scalars['jsonb']>;
-  standaloneId?: Maybe<Scalars['jsonb']>;
-  weaknessSet?: Maybe<Scalars['jsonb']>;
+  campaignNotes?: InputMaybe<Scalars['jsonb']>;
+  chaosBag?: InputMaybe<Scalars['jsonb']>;
+  scenarioResults?: InputMaybe<Scalars['jsonb']>;
+  standaloneId?: InputMaybe<Scalars['jsonb']>;
+  weaknessSet?: InputMaybe<Scalars['jsonb']>;
 };
 
 /** select columns of table "campaign" */
@@ -2252,27 +2253,27 @@ export enum Campaign_Select_Column {
 
 /** input type for updating data in table "campaign" */
 export type Campaign_Set_Input = {
-  archived?: Maybe<Scalars['Boolean']>;
-  campaignNotes?: Maybe<Scalars['jsonb']>;
-  chaosBag?: Maybe<Scalars['jsonb']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  cycleCode?: Maybe<Scalars['String']>;
-  deleted?: Maybe<Scalars['Boolean']>;
-  difficulty?: Maybe<Scalars['String']>;
-  guide_version?: Maybe<Scalars['Int']>;
-  guided?: Maybe<Scalars['Boolean']>;
-  id?: Maybe<Scalars['Int']>;
-  link_a_campaign_id?: Maybe<Scalars['Int']>;
-  link_b_campaign_id?: Maybe<Scalars['Int']>;
-  link_campaign_id?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  owner_id?: Maybe<Scalars['String']>;
-  scenarioResults?: Maybe<Scalars['jsonb']>;
-  showInterludes?: Maybe<Scalars['Boolean']>;
-  standaloneId?: Maybe<Scalars['jsonb']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  uuid?: Maybe<Scalars['String']>;
-  weaknessSet?: Maybe<Scalars['jsonb']>;
+  archived?: InputMaybe<Scalars['Boolean']>;
+  campaignNotes?: InputMaybe<Scalars['jsonb']>;
+  chaosBag?: InputMaybe<Scalars['jsonb']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  cycleCode?: InputMaybe<Scalars['String']>;
+  deleted?: InputMaybe<Scalars['Boolean']>;
+  difficulty?: InputMaybe<Scalars['String']>;
+  guide_version?: InputMaybe<Scalars['Int']>;
+  guided?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['Int']>;
+  link_a_campaign_id?: InputMaybe<Scalars['Int']>;
+  link_b_campaign_id?: InputMaybe<Scalars['Int']>;
+  link_campaign_id?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+  owner_id?: InputMaybe<Scalars['String']>;
+  scenarioResults?: InputMaybe<Scalars['jsonb']>;
+  showInterludes?: InputMaybe<Scalars['Boolean']>;
+  standaloneId?: InputMaybe<Scalars['jsonb']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  uuid?: InputMaybe<Scalars['String']>;
+  weaknessSet?: InputMaybe<Scalars['jsonb']>;
 };
 
 /** aggregate stddev on columns */
@@ -2394,15 +2395,19 @@ export type Campaign_Variance_Fields = {
 /** columns and relationships of "card" */
 export type Card = {
   __typename?: 'card';
+  clues?: Maybe<Scalars['Int']>;
   code: Scalars['String'];
   cost?: Maybe<Scalars['Int']>;
   deck_limit?: Maybe<Scalars['Int']>;
+  doom?: Maybe<Scalars['Int']>;
+  double_sided?: Maybe<Scalars['Boolean']>;
   encounter_code?: Maybe<Scalars['String']>;
   encounter_position?: Maybe<Scalars['Int']>;
   exceptional?: Maybe<Scalars['Boolean']>;
   exile?: Maybe<Scalars['Boolean']>;
   faction_code: Scalars['String'];
   health?: Maybe<Scalars['Int']>;
+  illustrator?: Maybe<Scalars['String']>;
   is_unique?: Maybe<Scalars['Boolean']>;
   myriad?: Maybe<Scalars['Boolean']>;
   pack_code: Scalars['String'];
@@ -2414,12 +2419,15 @@ export type Card = {
   permanent?: Maybe<Scalars['Boolean']>;
   position: Scalars['Int'];
   quantity: Scalars['Int'];
+  real_back_flavor?: Maybe<Scalars['String']>;
+  real_back_name?: Maybe<Scalars['String']>;
+  real_back_text?: Maybe<Scalars['String']>;
   real_flavor?: Maybe<Scalars['String']>;
   real_name: Scalars['String'];
   real_pack_name: Scalars['String'];
   real_slot?: Maybe<Scalars['String']>;
   real_subname?: Maybe<Scalars['String']>;
-  real_text: Scalars['String'];
+  real_text?: Maybe<Scalars['String']>;
   real_traits?: Maybe<Scalars['String']>;
   sanity?: Maybe<Scalars['Int']>;
   skill_agility?: Maybe<Scalars['Int']>;
@@ -2427,6 +2435,7 @@ export type Card = {
   skill_intellect?: Maybe<Scalars['Int']>;
   skill_wild?: Maybe<Scalars['Int']>;
   skill_willpower?: Maybe<Scalars['Int']>;
+  stage?: Maybe<Scalars['Int']>;
   subtype_code?: Maybe<Scalars['String']>;
   /** An array relationship */
   translations: Array<Card_Text>;
@@ -2438,41 +2447,41 @@ export type Card = {
 
 /** columns and relationships of "card" */
 export type CardPacksArgs = {
-  distinct_on?: Maybe<Array<Card_Pack_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Card_Pack_Order_By>>;
-  where?: Maybe<Card_Pack_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Card_Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Pack_Order_By>>;
+  where?: InputMaybe<Card_Pack_Bool_Exp>;
 };
 
 
 /** columns and relationships of "card" */
 export type CardPacks_AggregateArgs = {
-  distinct_on?: Maybe<Array<Card_Pack_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Card_Pack_Order_By>>;
-  where?: Maybe<Card_Pack_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Card_Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Pack_Order_By>>;
+  where?: InputMaybe<Card_Pack_Bool_Exp>;
 };
 
 
 /** columns and relationships of "card" */
 export type CardTranslationsArgs = {
-  distinct_on?: Maybe<Array<Card_Text_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Card_Text_Order_By>>;
-  where?: Maybe<Card_Text_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Text_Order_By>>;
+  where?: InputMaybe<Card_Text_Bool_Exp>;
 };
 
 
 /** columns and relationships of "card" */
 export type CardTranslations_AggregateArgs = {
-  distinct_on?: Maybe<Array<Card_Text_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Card_Text_Order_By>>;
-  where?: Maybe<Card_Text_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Text_Order_By>>;
+  where?: InputMaybe<Card_Text_Bool_Exp>;
 };
 
 /** aggregated selection of "card" */
@@ -2501,15 +2510,17 @@ export type Card_Aggregate_Fields = {
 
 /** aggregate fields of "card" */
 export type Card_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Card_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Card_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** aggregate avg on columns */
 export type Card_Avg_Fields = {
   __typename?: 'card_avg_fields';
+  clues?: Maybe<Scalars['Float']>;
   cost?: Maybe<Scalars['Float']>;
   deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
   pack_position?: Maybe<Scalars['Float']>;
@@ -2521,46 +2532,55 @@ export type Card_Avg_Fields = {
   skill_intellect?: Maybe<Scalars['Float']>;
   skill_wild?: Maybe<Scalars['Float']>;
   skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
 };
 
 /** Boolean expression to filter rows from the table "card". All fields are combined with a logical 'AND'. */
 export type Card_Bool_Exp = {
-  _and?: Maybe<Array<Card_Bool_Exp>>;
-  _not?: Maybe<Card_Bool_Exp>;
-  _or?: Maybe<Array<Card_Bool_Exp>>;
-  code?: Maybe<String_Comparison_Exp>;
-  cost?: Maybe<Int_Comparison_Exp>;
-  deck_limit?: Maybe<Int_Comparison_Exp>;
-  encounter_code?: Maybe<String_Comparison_Exp>;
-  encounter_position?: Maybe<Int_Comparison_Exp>;
-  exceptional?: Maybe<Boolean_Comparison_Exp>;
-  exile?: Maybe<Boolean_Comparison_Exp>;
-  faction_code?: Maybe<String_Comparison_Exp>;
-  health?: Maybe<Int_Comparison_Exp>;
-  is_unique?: Maybe<Boolean_Comparison_Exp>;
-  myriad?: Maybe<Boolean_Comparison_Exp>;
-  pack_code?: Maybe<String_Comparison_Exp>;
-  pack_position?: Maybe<Int_Comparison_Exp>;
-  packs?: Maybe<Card_Pack_Bool_Exp>;
-  permanent?: Maybe<Boolean_Comparison_Exp>;
-  position?: Maybe<Int_Comparison_Exp>;
-  quantity?: Maybe<Int_Comparison_Exp>;
-  real_flavor?: Maybe<String_Comparison_Exp>;
-  real_name?: Maybe<String_Comparison_Exp>;
-  real_pack_name?: Maybe<String_Comparison_Exp>;
-  real_slot?: Maybe<String_Comparison_Exp>;
-  real_subname?: Maybe<String_Comparison_Exp>;
-  real_text?: Maybe<String_Comparison_Exp>;
-  real_traits?: Maybe<String_Comparison_Exp>;
-  sanity?: Maybe<Int_Comparison_Exp>;
-  skill_agility?: Maybe<Int_Comparison_Exp>;
-  skill_combat?: Maybe<Int_Comparison_Exp>;
-  skill_intellect?: Maybe<Int_Comparison_Exp>;
-  skill_wild?: Maybe<Int_Comparison_Exp>;
-  skill_willpower?: Maybe<Int_Comparison_Exp>;
-  subtype_code?: Maybe<String_Comparison_Exp>;
-  translations?: Maybe<Card_Text_Bool_Exp>;
-  type_code?: Maybe<String_Comparison_Exp>;
+  _and?: InputMaybe<Array<Card_Bool_Exp>>;
+  _not?: InputMaybe<Card_Bool_Exp>;
+  _or?: InputMaybe<Array<Card_Bool_Exp>>;
+  clues?: InputMaybe<Int_Comparison_Exp>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  cost?: InputMaybe<Int_Comparison_Exp>;
+  deck_limit?: InputMaybe<Int_Comparison_Exp>;
+  doom?: InputMaybe<Int_Comparison_Exp>;
+  double_sided?: InputMaybe<Boolean_Comparison_Exp>;
+  encounter_code?: InputMaybe<String_Comparison_Exp>;
+  encounter_position?: InputMaybe<Int_Comparison_Exp>;
+  exceptional?: InputMaybe<Boolean_Comparison_Exp>;
+  exile?: InputMaybe<Boolean_Comparison_Exp>;
+  faction_code?: InputMaybe<String_Comparison_Exp>;
+  health?: InputMaybe<Int_Comparison_Exp>;
+  illustrator?: InputMaybe<String_Comparison_Exp>;
+  is_unique?: InputMaybe<Boolean_Comparison_Exp>;
+  myriad?: InputMaybe<Boolean_Comparison_Exp>;
+  pack_code?: InputMaybe<String_Comparison_Exp>;
+  pack_position?: InputMaybe<Int_Comparison_Exp>;
+  packs?: InputMaybe<Card_Pack_Bool_Exp>;
+  permanent?: InputMaybe<Boolean_Comparison_Exp>;
+  position?: InputMaybe<Int_Comparison_Exp>;
+  quantity?: InputMaybe<Int_Comparison_Exp>;
+  real_back_flavor?: InputMaybe<String_Comparison_Exp>;
+  real_back_name?: InputMaybe<String_Comparison_Exp>;
+  real_back_text?: InputMaybe<String_Comparison_Exp>;
+  real_flavor?: InputMaybe<String_Comparison_Exp>;
+  real_name?: InputMaybe<String_Comparison_Exp>;
+  real_pack_name?: InputMaybe<String_Comparison_Exp>;
+  real_slot?: InputMaybe<String_Comparison_Exp>;
+  real_subname?: InputMaybe<String_Comparison_Exp>;
+  real_text?: InputMaybe<String_Comparison_Exp>;
+  real_traits?: InputMaybe<String_Comparison_Exp>;
+  sanity?: InputMaybe<Int_Comparison_Exp>;
+  skill_agility?: InputMaybe<Int_Comparison_Exp>;
+  skill_combat?: InputMaybe<Int_Comparison_Exp>;
+  skill_intellect?: InputMaybe<Int_Comparison_Exp>;
+  skill_wild?: InputMaybe<Int_Comparison_Exp>;
+  skill_willpower?: InputMaybe<Int_Comparison_Exp>;
+  stage?: InputMaybe<Int_Comparison_Exp>;
+  subtype_code?: InputMaybe<String_Comparison_Exp>;
+  translations?: InputMaybe<Card_Text_Bool_Exp>;
+  type_code?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "card" */
@@ -2571,72 +2591,89 @@ export enum Card_Constraint {
 
 /** input type for incrementing numeric columns in table "card" */
 export type Card_Inc_Input = {
-  cost?: Maybe<Scalars['Int']>;
-  deck_limit?: Maybe<Scalars['Int']>;
-  encounter_position?: Maybe<Scalars['Int']>;
-  health?: Maybe<Scalars['Int']>;
-  pack_position?: Maybe<Scalars['Int']>;
-  position?: Maybe<Scalars['Int']>;
-  quantity?: Maybe<Scalars['Int']>;
-  sanity?: Maybe<Scalars['Int']>;
-  skill_agility?: Maybe<Scalars['Int']>;
-  skill_combat?: Maybe<Scalars['Int']>;
-  skill_intellect?: Maybe<Scalars['Int']>;
-  skill_wild?: Maybe<Scalars['Int']>;
-  skill_willpower?: Maybe<Scalars['Int']>;
+  clues?: InputMaybe<Scalars['Int']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  deck_limit?: InputMaybe<Scalars['Int']>;
+  doom?: InputMaybe<Scalars['Int']>;
+  encounter_position?: InputMaybe<Scalars['Int']>;
+  health?: InputMaybe<Scalars['Int']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
+  position?: InputMaybe<Scalars['Int']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  sanity?: InputMaybe<Scalars['Int']>;
+  skill_agility?: InputMaybe<Scalars['Int']>;
+  skill_combat?: InputMaybe<Scalars['Int']>;
+  skill_intellect?: InputMaybe<Scalars['Int']>;
+  skill_wild?: InputMaybe<Scalars['Int']>;
+  skill_willpower?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "card" */
 export type Card_Insert_Input = {
-  code?: Maybe<Scalars['String']>;
-  cost?: Maybe<Scalars['Int']>;
-  deck_limit?: Maybe<Scalars['Int']>;
-  encounter_code?: Maybe<Scalars['String']>;
-  encounter_position?: Maybe<Scalars['Int']>;
-  exceptional?: Maybe<Scalars['Boolean']>;
-  exile?: Maybe<Scalars['Boolean']>;
-  faction_code?: Maybe<Scalars['String']>;
-  health?: Maybe<Scalars['Int']>;
-  is_unique?: Maybe<Scalars['Boolean']>;
-  myriad?: Maybe<Scalars['Boolean']>;
-  pack_code?: Maybe<Scalars['String']>;
-  pack_position?: Maybe<Scalars['Int']>;
-  packs?: Maybe<Card_Pack_Arr_Rel_Insert_Input>;
-  permanent?: Maybe<Scalars['Boolean']>;
-  position?: Maybe<Scalars['Int']>;
-  quantity?: Maybe<Scalars['Int']>;
-  real_flavor?: Maybe<Scalars['String']>;
-  real_name?: Maybe<Scalars['String']>;
-  real_pack_name?: Maybe<Scalars['String']>;
-  real_slot?: Maybe<Scalars['String']>;
-  real_subname?: Maybe<Scalars['String']>;
-  real_text?: Maybe<Scalars['String']>;
-  real_traits?: Maybe<Scalars['String']>;
-  sanity?: Maybe<Scalars['Int']>;
-  skill_agility?: Maybe<Scalars['Int']>;
-  skill_combat?: Maybe<Scalars['Int']>;
-  skill_intellect?: Maybe<Scalars['Int']>;
-  skill_wild?: Maybe<Scalars['Int']>;
-  skill_willpower?: Maybe<Scalars['Int']>;
-  subtype_code?: Maybe<Scalars['String']>;
-  translations?: Maybe<Card_Text_Arr_Rel_Insert_Input>;
-  type_code?: Maybe<Scalars['String']>;
+  clues?: InputMaybe<Scalars['Int']>;
+  code?: InputMaybe<Scalars['String']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  deck_limit?: InputMaybe<Scalars['Int']>;
+  doom?: InputMaybe<Scalars['Int']>;
+  double_sided?: InputMaybe<Scalars['Boolean']>;
+  encounter_code?: InputMaybe<Scalars['String']>;
+  encounter_position?: InputMaybe<Scalars['Int']>;
+  exceptional?: InputMaybe<Scalars['Boolean']>;
+  exile?: InputMaybe<Scalars['Boolean']>;
+  faction_code?: InputMaybe<Scalars['String']>;
+  health?: InputMaybe<Scalars['Int']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  is_unique?: InputMaybe<Scalars['Boolean']>;
+  myriad?: InputMaybe<Scalars['Boolean']>;
+  pack_code?: InputMaybe<Scalars['String']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
+  packs?: InputMaybe<Card_Pack_Arr_Rel_Insert_Input>;
+  permanent?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  real_back_flavor?: InputMaybe<Scalars['String']>;
+  real_back_name?: InputMaybe<Scalars['String']>;
+  real_back_text?: InputMaybe<Scalars['String']>;
+  real_flavor?: InputMaybe<Scalars['String']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  real_pack_name?: InputMaybe<Scalars['String']>;
+  real_slot?: InputMaybe<Scalars['String']>;
+  real_subname?: InputMaybe<Scalars['String']>;
+  real_text?: InputMaybe<Scalars['String']>;
+  real_traits?: InputMaybe<Scalars['String']>;
+  sanity?: InputMaybe<Scalars['Int']>;
+  skill_agility?: InputMaybe<Scalars['Int']>;
+  skill_combat?: InputMaybe<Scalars['Int']>;
+  skill_intellect?: InputMaybe<Scalars['Int']>;
+  skill_wild?: InputMaybe<Scalars['Int']>;
+  skill_willpower?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Scalars['Int']>;
+  subtype_code?: InputMaybe<Scalars['String']>;
+  translations?: InputMaybe<Card_Text_Arr_Rel_Insert_Input>;
+  type_code?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
 export type Card_Max_Fields = {
   __typename?: 'card_max_fields';
+  clues?: Maybe<Scalars['Int']>;
   code?: Maybe<Scalars['String']>;
   cost?: Maybe<Scalars['Int']>;
   deck_limit?: Maybe<Scalars['Int']>;
+  doom?: Maybe<Scalars['Int']>;
   encounter_code?: Maybe<Scalars['String']>;
   encounter_position?: Maybe<Scalars['Int']>;
   faction_code?: Maybe<Scalars['String']>;
   health?: Maybe<Scalars['Int']>;
+  illustrator?: Maybe<Scalars['String']>;
   pack_code?: Maybe<Scalars['String']>;
   pack_position?: Maybe<Scalars['Int']>;
   position?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
+  real_back_flavor?: Maybe<Scalars['String']>;
+  real_back_name?: Maybe<Scalars['String']>;
+  real_back_text?: Maybe<Scalars['String']>;
   real_flavor?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
   real_pack_name?: Maybe<Scalars['String']>;
@@ -2650,6 +2687,7 @@ export type Card_Max_Fields = {
   skill_intellect?: Maybe<Scalars['Int']>;
   skill_wild?: Maybe<Scalars['Int']>;
   skill_willpower?: Maybe<Scalars['Int']>;
+  stage?: Maybe<Scalars['Int']>;
   subtype_code?: Maybe<Scalars['String']>;
   type_code?: Maybe<Scalars['String']>;
 };
@@ -2657,17 +2695,23 @@ export type Card_Max_Fields = {
 /** aggregate min on columns */
 export type Card_Min_Fields = {
   __typename?: 'card_min_fields';
+  clues?: Maybe<Scalars['Int']>;
   code?: Maybe<Scalars['String']>;
   cost?: Maybe<Scalars['Int']>;
   deck_limit?: Maybe<Scalars['Int']>;
+  doom?: Maybe<Scalars['Int']>;
   encounter_code?: Maybe<Scalars['String']>;
   encounter_position?: Maybe<Scalars['Int']>;
   faction_code?: Maybe<Scalars['String']>;
   health?: Maybe<Scalars['Int']>;
+  illustrator?: Maybe<Scalars['String']>;
   pack_code?: Maybe<Scalars['String']>;
   pack_position?: Maybe<Scalars['Int']>;
   position?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
+  real_back_flavor?: Maybe<Scalars['String']>;
+  real_back_name?: Maybe<Scalars['String']>;
+  real_back_text?: Maybe<Scalars['String']>;
   real_flavor?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
   real_pack_name?: Maybe<Scalars['String']>;
@@ -2681,6 +2725,7 @@ export type Card_Min_Fields = {
   skill_intellect?: Maybe<Scalars['Int']>;
   skill_wild?: Maybe<Scalars['Int']>;
   skill_willpower?: Maybe<Scalars['Int']>;
+  stage?: Maybe<Scalars['Int']>;
   subtype_code?: Maybe<Scalars['String']>;
   type_code?: Maybe<Scalars['String']>;
 };
@@ -2698,44 +2743,52 @@ export type Card_Mutation_Response = {
 export type Card_On_Conflict = {
   constraint: Card_Constraint;
   update_columns: Array<Card_Update_Column>;
-  where?: Maybe<Card_Bool_Exp>;
+  where?: InputMaybe<Card_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "card". */
 export type Card_Order_By = {
-  code?: Maybe<Order_By>;
-  cost?: Maybe<Order_By>;
-  deck_limit?: Maybe<Order_By>;
-  encounter_code?: Maybe<Order_By>;
-  encounter_position?: Maybe<Order_By>;
-  exceptional?: Maybe<Order_By>;
-  exile?: Maybe<Order_By>;
-  faction_code?: Maybe<Order_By>;
-  health?: Maybe<Order_By>;
-  is_unique?: Maybe<Order_By>;
-  myriad?: Maybe<Order_By>;
-  pack_code?: Maybe<Order_By>;
-  pack_position?: Maybe<Order_By>;
-  packs_aggregate?: Maybe<Card_Pack_Aggregate_Order_By>;
-  permanent?: Maybe<Order_By>;
-  position?: Maybe<Order_By>;
-  quantity?: Maybe<Order_By>;
-  real_flavor?: Maybe<Order_By>;
-  real_name?: Maybe<Order_By>;
-  real_pack_name?: Maybe<Order_By>;
-  real_slot?: Maybe<Order_By>;
-  real_subname?: Maybe<Order_By>;
-  real_text?: Maybe<Order_By>;
-  real_traits?: Maybe<Order_By>;
-  sanity?: Maybe<Order_By>;
-  skill_agility?: Maybe<Order_By>;
-  skill_combat?: Maybe<Order_By>;
-  skill_intellect?: Maybe<Order_By>;
-  skill_wild?: Maybe<Order_By>;
-  skill_willpower?: Maybe<Order_By>;
-  subtype_code?: Maybe<Order_By>;
-  translations_aggregate?: Maybe<Card_Text_Aggregate_Order_By>;
-  type_code?: Maybe<Order_By>;
+  clues?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  cost?: InputMaybe<Order_By>;
+  deck_limit?: InputMaybe<Order_By>;
+  doom?: InputMaybe<Order_By>;
+  double_sided?: InputMaybe<Order_By>;
+  encounter_code?: InputMaybe<Order_By>;
+  encounter_position?: InputMaybe<Order_By>;
+  exceptional?: InputMaybe<Order_By>;
+  exile?: InputMaybe<Order_By>;
+  faction_code?: InputMaybe<Order_By>;
+  health?: InputMaybe<Order_By>;
+  illustrator?: InputMaybe<Order_By>;
+  is_unique?: InputMaybe<Order_By>;
+  myriad?: InputMaybe<Order_By>;
+  pack_code?: InputMaybe<Order_By>;
+  pack_position?: InputMaybe<Order_By>;
+  packs_aggregate?: InputMaybe<Card_Pack_Aggregate_Order_By>;
+  permanent?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  quantity?: InputMaybe<Order_By>;
+  real_back_flavor?: InputMaybe<Order_By>;
+  real_back_name?: InputMaybe<Order_By>;
+  real_back_text?: InputMaybe<Order_By>;
+  real_flavor?: InputMaybe<Order_By>;
+  real_name?: InputMaybe<Order_By>;
+  real_pack_name?: InputMaybe<Order_By>;
+  real_slot?: InputMaybe<Order_By>;
+  real_subname?: InputMaybe<Order_By>;
+  real_text?: InputMaybe<Order_By>;
+  real_traits?: InputMaybe<Order_By>;
+  sanity?: InputMaybe<Order_By>;
+  skill_agility?: InputMaybe<Order_By>;
+  skill_combat?: InputMaybe<Order_By>;
+  skill_intellect?: InputMaybe<Order_By>;
+  skill_wild?: InputMaybe<Order_By>;
+  skill_willpower?: InputMaybe<Order_By>;
+  stage?: InputMaybe<Order_By>;
+  subtype_code?: InputMaybe<Order_By>;
+  translations_aggregate?: InputMaybe<Card_Text_Aggregate_Order_By>;
+  type_code?: InputMaybe<Order_By>;
 };
 
 /** columns and relationships of "card_pack" */
@@ -2764,32 +2817,32 @@ export type Card_Pack_Aggregate_Fields = {
 
 /** aggregate fields of "card_pack" */
 export type Card_Pack_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Card_Pack_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Card_Pack_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "card_pack" */
 export type Card_Pack_Aggregate_Order_By = {
-  count?: Maybe<Order_By>;
-  max?: Maybe<Card_Pack_Max_Order_By>;
-  min?: Maybe<Card_Pack_Min_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Card_Pack_Max_Order_By>;
+  min?: InputMaybe<Card_Pack_Min_Order_By>;
 };
 
 /** input type for inserting array relation for remote table "card_pack" */
 export type Card_Pack_Arr_Rel_Insert_Input = {
   data: Array<Card_Pack_Insert_Input>;
   /** on conflict condition */
-  on_conflict?: Maybe<Card_Pack_On_Conflict>;
+  on_conflict?: InputMaybe<Card_Pack_On_Conflict>;
 };
 
 /** Boolean expression to filter rows from the table "card_pack". All fields are combined with a logical 'AND'. */
 export type Card_Pack_Bool_Exp = {
-  _and?: Maybe<Array<Card_Pack_Bool_Exp>>;
-  _not?: Maybe<Card_Pack_Bool_Exp>;
-  _or?: Maybe<Array<Card_Pack_Bool_Exp>>;
-  code?: Maybe<String_Comparison_Exp>;
-  locale?: Maybe<String_Comparison_Exp>;
-  name?: Maybe<String_Comparison_Exp>;
+  _and?: InputMaybe<Array<Card_Pack_Bool_Exp>>;
+  _not?: InputMaybe<Card_Pack_Bool_Exp>;
+  _or?: InputMaybe<Array<Card_Pack_Bool_Exp>>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "card_pack" */
@@ -2800,9 +2853,9 @@ export enum Card_Pack_Constraint {
 
 /** input type for inserting data into table "card_pack" */
 export type Card_Pack_Insert_Input = {
-  code?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -2815,9 +2868,9 @@ export type Card_Pack_Max_Fields = {
 
 /** order by max() on columns of table "card_pack" */
 export type Card_Pack_Max_Order_By = {
-  code?: Maybe<Order_By>;
-  locale?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -2830,9 +2883,9 @@ export type Card_Pack_Min_Fields = {
 
 /** order by min() on columns of table "card_pack" */
 export type Card_Pack_Min_Order_By = {
-  code?: Maybe<Order_By>;
-  locale?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "card_pack" */
@@ -2848,14 +2901,14 @@ export type Card_Pack_Mutation_Response = {
 export type Card_Pack_On_Conflict = {
   constraint: Card_Pack_Constraint;
   update_columns: Array<Card_Pack_Update_Column>;
-  where?: Maybe<Card_Pack_Bool_Exp>;
+  where?: InputMaybe<Card_Pack_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "card_pack". */
 export type Card_Pack_Order_By = {
-  code?: Maybe<Order_By>;
-  locale?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: card_pack */
@@ -2876,9 +2929,9 @@ export enum Card_Pack_Select_Column {
 
 /** input type for updating data in table "card_pack" */
 export type Card_Pack_Set_Input = {
-  code?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
 };
 
 /** update columns of table "card_pack" */
@@ -2899,11 +2952,17 @@ export type Card_Pk_Columns_Input = {
 /** select columns of table "card" */
 export enum Card_Select_Column {
   /** column name */
+  Clues = 'clues',
+  /** column name */
   Code = 'code',
   /** column name */
   Cost = 'cost',
   /** column name */
   DeckLimit = 'deck_limit',
+  /** column name */
+  Doom = 'doom',
+  /** column name */
+  DoubleSided = 'double_sided',
   /** column name */
   EncounterCode = 'encounter_code',
   /** column name */
@@ -2916,6 +2975,8 @@ export enum Card_Select_Column {
   FactionCode = 'faction_code',
   /** column name */
   Health = 'health',
+  /** column name */
+  Illustrator = 'illustrator',
   /** column name */
   IsUnique = 'is_unique',
   /** column name */
@@ -2930,6 +2991,12 @@ export enum Card_Select_Column {
   Position = 'position',
   /** column name */
   Quantity = 'quantity',
+  /** column name */
+  RealBackFlavor = 'real_back_flavor',
+  /** column name */
+  RealBackName = 'real_back_name',
+  /** column name */
+  RealBackText = 'real_back_text',
   /** column name */
   RealFlavor = 'real_flavor',
   /** column name */
@@ -2957,6 +3024,8 @@ export enum Card_Select_Column {
   /** column name */
   SkillWillpower = 'skill_willpower',
   /** column name */
+  Stage = 'stage',
+  /** column name */
   SubtypeCode = 'subtype_code',
   /** column name */
   TypeCode = 'type_code'
@@ -2964,44 +3033,54 @@ export enum Card_Select_Column {
 
 /** input type for updating data in table "card" */
 export type Card_Set_Input = {
-  code?: Maybe<Scalars['String']>;
-  cost?: Maybe<Scalars['Int']>;
-  deck_limit?: Maybe<Scalars['Int']>;
-  encounter_code?: Maybe<Scalars['String']>;
-  encounter_position?: Maybe<Scalars['Int']>;
-  exceptional?: Maybe<Scalars['Boolean']>;
-  exile?: Maybe<Scalars['Boolean']>;
-  faction_code?: Maybe<Scalars['String']>;
-  health?: Maybe<Scalars['Int']>;
-  is_unique?: Maybe<Scalars['Boolean']>;
-  myriad?: Maybe<Scalars['Boolean']>;
-  pack_code?: Maybe<Scalars['String']>;
-  pack_position?: Maybe<Scalars['Int']>;
-  permanent?: Maybe<Scalars['Boolean']>;
-  position?: Maybe<Scalars['Int']>;
-  quantity?: Maybe<Scalars['Int']>;
-  real_flavor?: Maybe<Scalars['String']>;
-  real_name?: Maybe<Scalars['String']>;
-  real_pack_name?: Maybe<Scalars['String']>;
-  real_slot?: Maybe<Scalars['String']>;
-  real_subname?: Maybe<Scalars['String']>;
-  real_text?: Maybe<Scalars['String']>;
-  real_traits?: Maybe<Scalars['String']>;
-  sanity?: Maybe<Scalars['Int']>;
-  skill_agility?: Maybe<Scalars['Int']>;
-  skill_combat?: Maybe<Scalars['Int']>;
-  skill_intellect?: Maybe<Scalars['Int']>;
-  skill_wild?: Maybe<Scalars['Int']>;
-  skill_willpower?: Maybe<Scalars['Int']>;
-  subtype_code?: Maybe<Scalars['String']>;
-  type_code?: Maybe<Scalars['String']>;
+  clues?: InputMaybe<Scalars['Int']>;
+  code?: InputMaybe<Scalars['String']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  deck_limit?: InputMaybe<Scalars['Int']>;
+  doom?: InputMaybe<Scalars['Int']>;
+  double_sided?: InputMaybe<Scalars['Boolean']>;
+  encounter_code?: InputMaybe<Scalars['String']>;
+  encounter_position?: InputMaybe<Scalars['Int']>;
+  exceptional?: InputMaybe<Scalars['Boolean']>;
+  exile?: InputMaybe<Scalars['Boolean']>;
+  faction_code?: InputMaybe<Scalars['String']>;
+  health?: InputMaybe<Scalars['Int']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  is_unique?: InputMaybe<Scalars['Boolean']>;
+  myriad?: InputMaybe<Scalars['Boolean']>;
+  pack_code?: InputMaybe<Scalars['String']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
+  permanent?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  real_back_flavor?: InputMaybe<Scalars['String']>;
+  real_back_name?: InputMaybe<Scalars['String']>;
+  real_back_text?: InputMaybe<Scalars['String']>;
+  real_flavor?: InputMaybe<Scalars['String']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  real_pack_name?: InputMaybe<Scalars['String']>;
+  real_slot?: InputMaybe<Scalars['String']>;
+  real_subname?: InputMaybe<Scalars['String']>;
+  real_text?: InputMaybe<Scalars['String']>;
+  real_traits?: InputMaybe<Scalars['String']>;
+  sanity?: InputMaybe<Scalars['Int']>;
+  skill_agility?: InputMaybe<Scalars['Int']>;
+  skill_combat?: InputMaybe<Scalars['Int']>;
+  skill_intellect?: InputMaybe<Scalars['Int']>;
+  skill_wild?: InputMaybe<Scalars['Int']>;
+  skill_willpower?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Scalars['Int']>;
+  subtype_code?: InputMaybe<Scalars['String']>;
+  type_code?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate stddev on columns */
 export type Card_Stddev_Fields = {
   __typename?: 'card_stddev_fields';
+  clues?: Maybe<Scalars['Float']>;
   cost?: Maybe<Scalars['Float']>;
   deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
   pack_position?: Maybe<Scalars['Float']>;
@@ -3013,13 +3092,16 @@ export type Card_Stddev_Fields = {
   skill_intellect?: Maybe<Scalars['Float']>;
   skill_wild?: Maybe<Scalars['Float']>;
   skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_pop on columns */
 export type Card_Stddev_Pop_Fields = {
   __typename?: 'card_stddev_pop_fields';
+  clues?: Maybe<Scalars['Float']>;
   cost?: Maybe<Scalars['Float']>;
   deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
   pack_position?: Maybe<Scalars['Float']>;
@@ -3031,13 +3113,16 @@ export type Card_Stddev_Pop_Fields = {
   skill_intellect?: Maybe<Scalars['Float']>;
   skill_wild?: Maybe<Scalars['Float']>;
   skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_samp on columns */
 export type Card_Stddev_Samp_Fields = {
   __typename?: 'card_stddev_samp_fields';
+  clues?: Maybe<Scalars['Float']>;
   cost?: Maybe<Scalars['Float']>;
   deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
   pack_position?: Maybe<Scalars['Float']>;
@@ -3049,13 +3134,16 @@ export type Card_Stddev_Samp_Fields = {
   skill_intellect?: Maybe<Scalars['Float']>;
   skill_wild?: Maybe<Scalars['Float']>;
   skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate sum on columns */
 export type Card_Sum_Fields = {
   __typename?: 'card_sum_fields';
+  clues?: Maybe<Scalars['Int']>;
   cost?: Maybe<Scalars['Int']>;
   deck_limit?: Maybe<Scalars['Int']>;
+  doom?: Maybe<Scalars['Int']>;
   encounter_position?: Maybe<Scalars['Int']>;
   health?: Maybe<Scalars['Int']>;
   pack_position?: Maybe<Scalars['Int']>;
@@ -3067,11 +3155,15 @@ export type Card_Sum_Fields = {
   skill_intellect?: Maybe<Scalars['Int']>;
   skill_wild?: Maybe<Scalars['Int']>;
   skill_willpower?: Maybe<Scalars['Int']>;
+  stage?: Maybe<Scalars['Int']>;
 };
 
 /** columns and relationships of "card_text" */
 export type Card_Text = {
   __typename?: 'card_text';
+  back_flavor?: Maybe<Scalars['String']>;
+  back_name?: Maybe<Scalars['String']>;
+  back_text?: Maybe<Scalars['String']>;
   code: Scalars['String'];
   encounter_name?: Maybe<Scalars['String']>;
   flavor?: Maybe<Scalars['String']>;
@@ -3079,7 +3171,7 @@ export type Card_Text = {
   name: Scalars['String'];
   slot?: Maybe<Scalars['String']>;
   subname?: Maybe<Scalars['String']>;
-  text: Scalars['String'];
+  text?: Maybe<Scalars['String']>;
   traits?: Maybe<Scalars['String']>;
 };
 
@@ -3101,38 +3193,41 @@ export type Card_Text_Aggregate_Fields = {
 
 /** aggregate fields of "card_text" */
 export type Card_Text_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Card_Text_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Card_Text_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "card_text" */
 export type Card_Text_Aggregate_Order_By = {
-  count?: Maybe<Order_By>;
-  max?: Maybe<Card_Text_Max_Order_By>;
-  min?: Maybe<Card_Text_Min_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Card_Text_Max_Order_By>;
+  min?: InputMaybe<Card_Text_Min_Order_By>;
 };
 
 /** input type for inserting array relation for remote table "card_text" */
 export type Card_Text_Arr_Rel_Insert_Input = {
   data: Array<Card_Text_Insert_Input>;
   /** on conflict condition */
-  on_conflict?: Maybe<Card_Text_On_Conflict>;
+  on_conflict?: InputMaybe<Card_Text_On_Conflict>;
 };
 
 /** Boolean expression to filter rows from the table "card_text". All fields are combined with a logical 'AND'. */
 export type Card_Text_Bool_Exp = {
-  _and?: Maybe<Array<Card_Text_Bool_Exp>>;
-  _not?: Maybe<Card_Text_Bool_Exp>;
-  _or?: Maybe<Array<Card_Text_Bool_Exp>>;
-  code?: Maybe<String_Comparison_Exp>;
-  encounter_name?: Maybe<String_Comparison_Exp>;
-  flavor?: Maybe<String_Comparison_Exp>;
-  locale?: Maybe<String_Comparison_Exp>;
-  name?: Maybe<String_Comparison_Exp>;
-  slot?: Maybe<String_Comparison_Exp>;
-  subname?: Maybe<String_Comparison_Exp>;
-  text?: Maybe<String_Comparison_Exp>;
-  traits?: Maybe<String_Comparison_Exp>;
+  _and?: InputMaybe<Array<Card_Text_Bool_Exp>>;
+  _not?: InputMaybe<Card_Text_Bool_Exp>;
+  _or?: InputMaybe<Array<Card_Text_Bool_Exp>>;
+  back_flavor?: InputMaybe<String_Comparison_Exp>;
+  back_name?: InputMaybe<String_Comparison_Exp>;
+  back_text?: InputMaybe<String_Comparison_Exp>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  encounter_name?: InputMaybe<String_Comparison_Exp>;
+  flavor?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  slot?: InputMaybe<String_Comparison_Exp>;
+  subname?: InputMaybe<String_Comparison_Exp>;
+  text?: InputMaybe<String_Comparison_Exp>;
+  traits?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "card_text" */
@@ -3145,20 +3240,26 @@ export enum Card_Text_Constraint {
 
 /** input type for inserting data into table "card_text" */
 export type Card_Text_Insert_Input = {
-  code?: Maybe<Scalars['String']>;
-  encounter_name?: Maybe<Scalars['String']>;
-  flavor?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  slot?: Maybe<Scalars['String']>;
-  subname?: Maybe<Scalars['String']>;
-  text?: Maybe<Scalars['String']>;
-  traits?: Maybe<Scalars['String']>;
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_name?: InputMaybe<Scalars['String']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  encounter_name?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  slot?: InputMaybe<Scalars['String']>;
+  subname?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
 export type Card_Text_Max_Fields = {
   __typename?: 'card_text_max_fields';
+  back_flavor?: Maybe<Scalars['String']>;
+  back_name?: Maybe<Scalars['String']>;
+  back_text?: Maybe<Scalars['String']>;
   code?: Maybe<Scalars['String']>;
   encounter_name?: Maybe<Scalars['String']>;
   flavor?: Maybe<Scalars['String']>;
@@ -3172,20 +3273,26 @@ export type Card_Text_Max_Fields = {
 
 /** order by max() on columns of table "card_text" */
 export type Card_Text_Max_Order_By = {
-  code?: Maybe<Order_By>;
-  encounter_name?: Maybe<Order_By>;
-  flavor?: Maybe<Order_By>;
-  locale?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
-  slot?: Maybe<Order_By>;
-  subname?: Maybe<Order_By>;
-  text?: Maybe<Order_By>;
-  traits?: Maybe<Order_By>;
+  back_flavor?: InputMaybe<Order_By>;
+  back_name?: InputMaybe<Order_By>;
+  back_text?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  encounter_name?: InputMaybe<Order_By>;
+  flavor?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  slot?: InputMaybe<Order_By>;
+  subname?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
+  traits?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
 export type Card_Text_Min_Fields = {
   __typename?: 'card_text_min_fields';
+  back_flavor?: Maybe<Scalars['String']>;
+  back_name?: Maybe<Scalars['String']>;
+  back_text?: Maybe<Scalars['String']>;
   code?: Maybe<Scalars['String']>;
   encounter_name?: Maybe<Scalars['String']>;
   flavor?: Maybe<Scalars['String']>;
@@ -3199,15 +3306,18 @@ export type Card_Text_Min_Fields = {
 
 /** order by min() on columns of table "card_text" */
 export type Card_Text_Min_Order_By = {
-  code?: Maybe<Order_By>;
-  encounter_name?: Maybe<Order_By>;
-  flavor?: Maybe<Order_By>;
-  locale?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
-  slot?: Maybe<Order_By>;
-  subname?: Maybe<Order_By>;
-  text?: Maybe<Order_By>;
-  traits?: Maybe<Order_By>;
+  back_flavor?: InputMaybe<Order_By>;
+  back_name?: InputMaybe<Order_By>;
+  back_text?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  encounter_name?: InputMaybe<Order_By>;
+  flavor?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  slot?: InputMaybe<Order_By>;
+  subname?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
+  traits?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "card_text" */
@@ -3223,20 +3333,23 @@ export type Card_Text_Mutation_Response = {
 export type Card_Text_On_Conflict = {
   constraint: Card_Text_Constraint;
   update_columns: Array<Card_Text_Update_Column>;
-  where?: Maybe<Card_Text_Bool_Exp>;
+  where?: InputMaybe<Card_Text_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "card_text". */
 export type Card_Text_Order_By = {
-  code?: Maybe<Order_By>;
-  encounter_name?: Maybe<Order_By>;
-  flavor?: Maybe<Order_By>;
-  locale?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
-  slot?: Maybe<Order_By>;
-  subname?: Maybe<Order_By>;
-  text?: Maybe<Order_By>;
-  traits?: Maybe<Order_By>;
+  back_flavor?: InputMaybe<Order_By>;
+  back_name?: InputMaybe<Order_By>;
+  back_text?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  encounter_name?: InputMaybe<Order_By>;
+  flavor?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  slot?: InputMaybe<Order_By>;
+  subname?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
+  traits?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: card_text */
@@ -3247,6 +3360,12 @@ export type Card_Text_Pk_Columns_Input = {
 
 /** select columns of table "card_text" */
 export enum Card_Text_Select_Column {
+  /** column name */
+  BackFlavor = 'back_flavor',
+  /** column name */
+  BackName = 'back_name',
+  /** column name */
+  BackText = 'back_text',
   /** column name */
   Code = 'code',
   /** column name */
@@ -3269,19 +3388,28 @@ export enum Card_Text_Select_Column {
 
 /** input type for updating data in table "card_text" */
 export type Card_Text_Set_Input = {
-  code?: Maybe<Scalars['String']>;
-  encounter_name?: Maybe<Scalars['String']>;
-  flavor?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  slot?: Maybe<Scalars['String']>;
-  subname?: Maybe<Scalars['String']>;
-  text?: Maybe<Scalars['String']>;
-  traits?: Maybe<Scalars['String']>;
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_name?: InputMaybe<Scalars['String']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  encounter_name?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  slot?: InputMaybe<Scalars['String']>;
+  subname?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
 };
 
 /** update columns of table "card_text" */
 export enum Card_Text_Update_Column {
+  /** column name */
+  BackFlavor = 'back_flavor',
+  /** column name */
+  BackName = 'back_name',
+  /** column name */
+  BackText = 'back_text',
   /** column name */
   Code = 'code',
   /** column name */
@@ -3305,11 +3433,17 @@ export enum Card_Text_Update_Column {
 /** update columns of table "card" */
 export enum Card_Update_Column {
   /** column name */
+  Clues = 'clues',
+  /** column name */
   Code = 'code',
   /** column name */
   Cost = 'cost',
   /** column name */
   DeckLimit = 'deck_limit',
+  /** column name */
+  Doom = 'doom',
+  /** column name */
+  DoubleSided = 'double_sided',
   /** column name */
   EncounterCode = 'encounter_code',
   /** column name */
@@ -3322,6 +3456,8 @@ export enum Card_Update_Column {
   FactionCode = 'faction_code',
   /** column name */
   Health = 'health',
+  /** column name */
+  Illustrator = 'illustrator',
   /** column name */
   IsUnique = 'is_unique',
   /** column name */
@@ -3336,6 +3472,12 @@ export enum Card_Update_Column {
   Position = 'position',
   /** column name */
   Quantity = 'quantity',
+  /** column name */
+  RealBackFlavor = 'real_back_flavor',
+  /** column name */
+  RealBackName = 'real_back_name',
+  /** column name */
+  RealBackText = 'real_back_text',
   /** column name */
   RealFlavor = 'real_flavor',
   /** column name */
@@ -3363,6 +3505,8 @@ export enum Card_Update_Column {
   /** column name */
   SkillWillpower = 'skill_willpower',
   /** column name */
+  Stage = 'stage',
+  /** column name */
   SubtypeCode = 'subtype_code',
   /** column name */
   TypeCode = 'type_code'
@@ -3371,8 +3515,10 @@ export enum Card_Update_Column {
 /** aggregate var_pop on columns */
 export type Card_Var_Pop_Fields = {
   __typename?: 'card_var_pop_fields';
+  clues?: Maybe<Scalars['Float']>;
   cost?: Maybe<Scalars['Float']>;
   deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
   pack_position?: Maybe<Scalars['Float']>;
@@ -3384,13 +3530,16 @@ export type Card_Var_Pop_Fields = {
   skill_intellect?: Maybe<Scalars['Float']>;
   skill_wild?: Maybe<Scalars['Float']>;
   skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate var_samp on columns */
 export type Card_Var_Samp_Fields = {
   __typename?: 'card_var_samp_fields';
+  clues?: Maybe<Scalars['Float']>;
   cost?: Maybe<Scalars['Float']>;
   deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
   pack_position?: Maybe<Scalars['Float']>;
@@ -3402,13 +3551,16 @@ export type Card_Var_Samp_Fields = {
   skill_intellect?: Maybe<Scalars['Float']>;
   skill_wild?: Maybe<Scalars['Float']>;
   skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate variance on columns */
 export type Card_Variance_Fields = {
   __typename?: 'card_variance_fields';
+  clues?: Maybe<Scalars['Float']>;
   cost?: Maybe<Scalars['Float']>;
   deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
   pack_position?: Maybe<Scalars['Float']>;
@@ -3420,6 +3572,7 @@ export type Card_Variance_Fields = {
   skill_intellect?: Maybe<Scalars['Float']>;
   skill_wild?: Maybe<Scalars['Float']>;
   skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
 };
 
 /** columns and relationships of "chaos_bag_result" */
@@ -3443,13 +3596,13 @@ export type Chaos_Bag_Result = {
 
 /** columns and relationships of "chaos_bag_result" */
 export type Chaos_Bag_ResultDrawnArgs = {
-  path?: Maybe<Scalars['String']>;
+  path?: InputMaybe<Scalars['String']>;
 };
 
 
 /** columns and relationships of "chaos_bag_result" */
 export type Chaos_Bag_ResultSealedArgs = {
-  path?: Maybe<Scalars['String']>;
+  path?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregated selection of "chaos_bag_result" */
@@ -3478,36 +3631,36 @@ export type Chaos_Bag_Result_Aggregate_Fields = {
 
 /** aggregate fields of "chaos_bag_result" */
 export type Chaos_Bag_Result_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Chaos_Bag_Result_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "chaos_bag_result" */
 export type Chaos_Bag_Result_Aggregate_Order_By = {
-  avg?: Maybe<Chaos_Bag_Result_Avg_Order_By>;
-  count?: Maybe<Order_By>;
-  max?: Maybe<Chaos_Bag_Result_Max_Order_By>;
-  min?: Maybe<Chaos_Bag_Result_Min_Order_By>;
-  stddev?: Maybe<Chaos_Bag_Result_Stddev_Order_By>;
-  stddev_pop?: Maybe<Chaos_Bag_Result_Stddev_Pop_Order_By>;
-  stddev_samp?: Maybe<Chaos_Bag_Result_Stddev_Samp_Order_By>;
-  sum?: Maybe<Chaos_Bag_Result_Sum_Order_By>;
-  var_pop?: Maybe<Chaos_Bag_Result_Var_Pop_Order_By>;
-  var_samp?: Maybe<Chaos_Bag_Result_Var_Samp_Order_By>;
-  variance?: Maybe<Chaos_Bag_Result_Variance_Order_By>;
+  avg?: InputMaybe<Chaos_Bag_Result_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Chaos_Bag_Result_Max_Order_By>;
+  min?: InputMaybe<Chaos_Bag_Result_Min_Order_By>;
+  stddev?: InputMaybe<Chaos_Bag_Result_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Chaos_Bag_Result_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Chaos_Bag_Result_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Chaos_Bag_Result_Sum_Order_By>;
+  var_pop?: InputMaybe<Chaos_Bag_Result_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Chaos_Bag_Result_Var_Samp_Order_By>;
+  variance?: InputMaybe<Chaos_Bag_Result_Variance_Order_By>;
 };
 
 /** append existing jsonb value of filtered columns with new jsonb value */
 export type Chaos_Bag_Result_Append_Input = {
-  drawn?: Maybe<Scalars['jsonb']>;
-  sealed?: Maybe<Scalars['jsonb']>;
+  drawn?: InputMaybe<Scalars['jsonb']>;
+  sealed?: InputMaybe<Scalars['jsonb']>;
 };
 
 /** input type for inserting array relation for remote table "chaos_bag_result" */
 export type Chaos_Bag_Result_Arr_Rel_Insert_Input = {
   data: Array<Chaos_Bag_Result_Insert_Input>;
   /** on conflict condition */
-  on_conflict?: Maybe<Chaos_Bag_Result_On_Conflict>;
+  on_conflict?: InputMaybe<Chaos_Bag_Result_On_Conflict>;
 };
 
 /** aggregate avg on columns */
@@ -3521,28 +3674,28 @@ export type Chaos_Bag_Result_Avg_Fields = {
 
 /** order by avg() on columns of table "chaos_bag_result" */
 export type Chaos_Bag_Result_Avg_Order_By = {
-  bless?: Maybe<Order_By>;
-  curse?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  totalDrawn?: Maybe<Order_By>;
+  bless?: InputMaybe<Order_By>;
+  curse?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  totalDrawn?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "chaos_bag_result". All fields are combined with a logical 'AND'. */
 export type Chaos_Bag_Result_Bool_Exp = {
-  _and?: Maybe<Array<Chaos_Bag_Result_Bool_Exp>>;
-  _not?: Maybe<Chaos_Bag_Result_Bool_Exp>;
-  _or?: Maybe<Array<Chaos_Bag_Result_Bool_Exp>>;
-  bless?: Maybe<Int_Comparison_Exp>;
-  campaign?: Maybe<Campaign_Bool_Exp>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  curse?: Maybe<Int_Comparison_Exp>;
-  drawn?: Maybe<Jsonb_Comparison_Exp>;
-  id?: Maybe<Int_Comparison_Exp>;
-  sealed?: Maybe<Jsonb_Comparison_Exp>;
-  tarot?: Maybe<Chaos_Bag_Tarot_Mode_Enum_Comparison_Exp>;
-  tarot_mode?: Maybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
-  totalDrawn?: Maybe<Int_Comparison_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+  _and?: InputMaybe<Array<Chaos_Bag_Result_Bool_Exp>>;
+  _not?: InputMaybe<Chaos_Bag_Result_Bool_Exp>;
+  _or?: InputMaybe<Array<Chaos_Bag_Result_Bool_Exp>>;
+  bless?: InputMaybe<Int_Comparison_Exp>;
+  campaign?: InputMaybe<Campaign_Bool_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  curse?: InputMaybe<Int_Comparison_Exp>;
+  drawn?: InputMaybe<Jsonb_Comparison_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  sealed?: InputMaybe<Jsonb_Comparison_Exp>;
+  tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum_Comparison_Exp>;
+  tarot_mode?: InputMaybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
+  totalDrawn?: InputMaybe<Int_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "chaos_bag_result" */
@@ -3555,43 +3708,43 @@ export enum Chaos_Bag_Result_Constraint {
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Chaos_Bag_Result_Delete_At_Path_Input = {
-  drawn?: Maybe<Array<Scalars['String']>>;
-  sealed?: Maybe<Array<Scalars['String']>>;
+  drawn?: InputMaybe<Array<Scalars['String']>>;
+  sealed?: InputMaybe<Array<Scalars['String']>>;
 };
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export type Chaos_Bag_Result_Delete_Elem_Input = {
-  drawn?: Maybe<Scalars['Int']>;
-  sealed?: Maybe<Scalars['Int']>;
+  drawn?: InputMaybe<Scalars['Int']>;
+  sealed?: InputMaybe<Scalars['Int']>;
 };
 
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
 export type Chaos_Bag_Result_Delete_Key_Input = {
-  drawn?: Maybe<Scalars['String']>;
-  sealed?: Maybe<Scalars['String']>;
+  drawn?: InputMaybe<Scalars['String']>;
+  sealed?: InputMaybe<Scalars['String']>;
 };
 
 /** input type for incrementing numeric columns in table "chaos_bag_result" */
 export type Chaos_Bag_Result_Inc_Input = {
-  bless?: Maybe<Scalars['Int']>;
-  curse?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
-  totalDrawn?: Maybe<Scalars['Int']>;
+  bless?: InputMaybe<Scalars['Int']>;
+  curse?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  totalDrawn?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "chaos_bag_result" */
 export type Chaos_Bag_Result_Insert_Input = {
-  bless?: Maybe<Scalars['Int']>;
-  campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  curse?: Maybe<Scalars['Int']>;
-  drawn?: Maybe<Scalars['jsonb']>;
-  id?: Maybe<Scalars['Int']>;
-  sealed?: Maybe<Scalars['jsonb']>;
-  tarot?: Maybe<Chaos_Bag_Tarot_Mode_Enum>;
-  tarot_mode?: Maybe<Chaos_Bag_Tarot_Mode_Obj_Rel_Insert_Input>;
-  totalDrawn?: Maybe<Scalars['Int']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  bless?: InputMaybe<Scalars['Int']>;
+  campaign?: InputMaybe<Campaign_Obj_Rel_Insert_Input>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  curse?: InputMaybe<Scalars['Int']>;
+  drawn?: InputMaybe<Scalars['jsonb']>;
+  id?: InputMaybe<Scalars['Int']>;
+  sealed?: InputMaybe<Scalars['jsonb']>;
+  tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum>;
+  tarot_mode?: InputMaybe<Chaos_Bag_Tarot_Mode_Obj_Rel_Insert_Input>;
+  totalDrawn?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -3607,12 +3760,12 @@ export type Chaos_Bag_Result_Max_Fields = {
 
 /** order by max() on columns of table "chaos_bag_result" */
 export type Chaos_Bag_Result_Max_Order_By = {
-  bless?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  curse?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  totalDrawn?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  bless?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  curse?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  totalDrawn?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -3628,12 +3781,12 @@ export type Chaos_Bag_Result_Min_Fields = {
 
 /** order by min() on columns of table "chaos_bag_result" */
 export type Chaos_Bag_Result_Min_Order_By = {
-  bless?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  curse?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  totalDrawn?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  bless?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  curse?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  totalDrawn?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "chaos_bag_result" */
@@ -3649,22 +3802,22 @@ export type Chaos_Bag_Result_Mutation_Response = {
 export type Chaos_Bag_Result_On_Conflict = {
   constraint: Chaos_Bag_Result_Constraint;
   update_columns: Array<Chaos_Bag_Result_Update_Column>;
-  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
+  where?: InputMaybe<Chaos_Bag_Result_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "chaos_bag_result". */
 export type Chaos_Bag_Result_Order_By = {
-  bless?: Maybe<Order_By>;
-  campaign?: Maybe<Campaign_Order_By>;
-  created_at?: Maybe<Order_By>;
-  curse?: Maybe<Order_By>;
-  drawn?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  sealed?: Maybe<Order_By>;
-  tarot?: Maybe<Order_By>;
-  tarot_mode?: Maybe<Chaos_Bag_Tarot_Mode_Order_By>;
-  totalDrawn?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  bless?: InputMaybe<Order_By>;
+  campaign?: InputMaybe<Campaign_Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  curse?: InputMaybe<Order_By>;
+  drawn?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  sealed?: InputMaybe<Order_By>;
+  tarot?: InputMaybe<Order_By>;
+  tarot_mode?: InputMaybe<Chaos_Bag_Tarot_Mode_Order_By>;
+  totalDrawn?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: chaos_bag_result */
@@ -3674,8 +3827,8 @@ export type Chaos_Bag_Result_Pk_Columns_Input = {
 
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export type Chaos_Bag_Result_Prepend_Input = {
-  drawn?: Maybe<Scalars['jsonb']>;
-  sealed?: Maybe<Scalars['jsonb']>;
+  drawn?: InputMaybe<Scalars['jsonb']>;
+  sealed?: InputMaybe<Scalars['jsonb']>;
 };
 
 /** select columns of table "chaos_bag_result" */
@@ -3702,15 +3855,15 @@ export enum Chaos_Bag_Result_Select_Column {
 
 /** input type for updating data in table "chaos_bag_result" */
 export type Chaos_Bag_Result_Set_Input = {
-  bless?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  curse?: Maybe<Scalars['Int']>;
-  drawn?: Maybe<Scalars['jsonb']>;
-  id?: Maybe<Scalars['Int']>;
-  sealed?: Maybe<Scalars['jsonb']>;
-  tarot?: Maybe<Chaos_Bag_Tarot_Mode_Enum>;
-  totalDrawn?: Maybe<Scalars['Int']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  bless?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  curse?: InputMaybe<Scalars['Int']>;
+  drawn?: InputMaybe<Scalars['jsonb']>;
+  id?: InputMaybe<Scalars['Int']>;
+  sealed?: InputMaybe<Scalars['jsonb']>;
+  tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum>;
+  totalDrawn?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate stddev on columns */
@@ -3724,10 +3877,10 @@ export type Chaos_Bag_Result_Stddev_Fields = {
 
 /** order by stddev() on columns of table "chaos_bag_result" */
 export type Chaos_Bag_Result_Stddev_Order_By = {
-  bless?: Maybe<Order_By>;
-  curse?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  totalDrawn?: Maybe<Order_By>;
+  bless?: InputMaybe<Order_By>;
+  curse?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  totalDrawn?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -3741,10 +3894,10 @@ export type Chaos_Bag_Result_Stddev_Pop_Fields = {
 
 /** order by stddev_pop() on columns of table "chaos_bag_result" */
 export type Chaos_Bag_Result_Stddev_Pop_Order_By = {
-  bless?: Maybe<Order_By>;
-  curse?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  totalDrawn?: Maybe<Order_By>;
+  bless?: InputMaybe<Order_By>;
+  curse?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  totalDrawn?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -3758,10 +3911,10 @@ export type Chaos_Bag_Result_Stddev_Samp_Fields = {
 
 /** order by stddev_samp() on columns of table "chaos_bag_result" */
 export type Chaos_Bag_Result_Stddev_Samp_Order_By = {
-  bless?: Maybe<Order_By>;
-  curse?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  totalDrawn?: Maybe<Order_By>;
+  bless?: InputMaybe<Order_By>;
+  curse?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  totalDrawn?: InputMaybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -3775,10 +3928,10 @@ export type Chaos_Bag_Result_Sum_Fields = {
 
 /** order by sum() on columns of table "chaos_bag_result" */
 export type Chaos_Bag_Result_Sum_Order_By = {
-  bless?: Maybe<Order_By>;
-  curse?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  totalDrawn?: Maybe<Order_By>;
+  bless?: InputMaybe<Order_By>;
+  curse?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  totalDrawn?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "chaos_bag_result" */
@@ -3814,10 +3967,10 @@ export type Chaos_Bag_Result_Var_Pop_Fields = {
 
 /** order by var_pop() on columns of table "chaos_bag_result" */
 export type Chaos_Bag_Result_Var_Pop_Order_By = {
-  bless?: Maybe<Order_By>;
-  curse?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  totalDrawn?: Maybe<Order_By>;
+  bless?: InputMaybe<Order_By>;
+  curse?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  totalDrawn?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -3831,10 +3984,10 @@ export type Chaos_Bag_Result_Var_Samp_Fields = {
 
 /** order by var_samp() on columns of table "chaos_bag_result" */
 export type Chaos_Bag_Result_Var_Samp_Order_By = {
-  bless?: Maybe<Order_By>;
-  curse?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  totalDrawn?: Maybe<Order_By>;
+  bless?: InputMaybe<Order_By>;
+  curse?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  totalDrawn?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -3848,10 +4001,10 @@ export type Chaos_Bag_Result_Variance_Fields = {
 
 /** order by variance() on columns of table "chaos_bag_result" */
 export type Chaos_Bag_Result_Variance_Order_By = {
-  bless?: Maybe<Order_By>;
-  curse?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  totalDrawn?: Maybe<Order_By>;
+  bless?: InputMaybe<Order_By>;
+  curse?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  totalDrawn?: InputMaybe<Order_By>;
 };
 
 /** columns and relationships of "chaos_bag_tarot_mode" */
@@ -3878,16 +4031,16 @@ export type Chaos_Bag_Tarot_Mode_Aggregate_Fields = {
 
 /** aggregate fields of "chaos_bag_tarot_mode" */
 export type Chaos_Bag_Tarot_Mode_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Chaos_Bag_Tarot_Mode_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Chaos_Bag_Tarot_Mode_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** Boolean expression to filter rows from the table "chaos_bag_tarot_mode". All fields are combined with a logical 'AND'. */
 export type Chaos_Bag_Tarot_Mode_Bool_Exp = {
-  _and?: Maybe<Array<Chaos_Bag_Tarot_Mode_Bool_Exp>>;
-  _not?: Maybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
-  _or?: Maybe<Array<Chaos_Bag_Tarot_Mode_Bool_Exp>>;
-  value?: Maybe<String_Comparison_Exp>;
+  _and?: InputMaybe<Array<Chaos_Bag_Tarot_Mode_Bool_Exp>>;
+  _not?: InputMaybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
+  _or?: InputMaybe<Array<Chaos_Bag_Tarot_Mode_Bool_Exp>>;
+  value?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "chaos_bag_tarot_mode" */
@@ -3903,16 +4056,16 @@ export enum Chaos_Bag_Tarot_Mode_Enum {
 
 /** Boolean expression to compare columns of type "chaos_bag_tarot_mode_enum". All fields are combined with logical 'AND'. */
 export type Chaos_Bag_Tarot_Mode_Enum_Comparison_Exp = {
-  _eq?: Maybe<Chaos_Bag_Tarot_Mode_Enum>;
-  _in?: Maybe<Array<Chaos_Bag_Tarot_Mode_Enum>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _neq?: Maybe<Chaos_Bag_Tarot_Mode_Enum>;
-  _nin?: Maybe<Array<Chaos_Bag_Tarot_Mode_Enum>>;
+  _eq?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum>;
+  _in?: InputMaybe<Array<Chaos_Bag_Tarot_Mode_Enum>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum>;
+  _nin?: InputMaybe<Array<Chaos_Bag_Tarot_Mode_Enum>>;
 };
 
 /** input type for inserting data into table "chaos_bag_tarot_mode" */
 export type Chaos_Bag_Tarot_Mode_Insert_Input = {
-  value?: Maybe<Scalars['String']>;
+  value?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -3940,19 +4093,19 @@ export type Chaos_Bag_Tarot_Mode_Mutation_Response = {
 export type Chaos_Bag_Tarot_Mode_Obj_Rel_Insert_Input = {
   data: Chaos_Bag_Tarot_Mode_Insert_Input;
   /** on conflict condition */
-  on_conflict?: Maybe<Chaos_Bag_Tarot_Mode_On_Conflict>;
+  on_conflict?: InputMaybe<Chaos_Bag_Tarot_Mode_On_Conflict>;
 };
 
 /** on conflict condition type for table "chaos_bag_tarot_mode" */
 export type Chaos_Bag_Tarot_Mode_On_Conflict = {
   constraint: Chaos_Bag_Tarot_Mode_Constraint;
   update_columns: Array<Chaos_Bag_Tarot_Mode_Update_Column>;
-  where?: Maybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
+  where?: InputMaybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "chaos_bag_tarot_mode". */
 export type Chaos_Bag_Tarot_Mode_Order_By = {
-  value?: Maybe<Order_By>;
+  value?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: chaos_bag_tarot_mode */
@@ -3968,7 +4121,7 @@ export enum Chaos_Bag_Tarot_Mode_Select_Column {
 
 /** input type for updating data in table "chaos_bag_tarot_mode" */
 export type Chaos_Bag_Tarot_Mode_Set_Input = {
-  value?: Maybe<Scalars['String']>;
+  value?: InputMaybe<Scalars['String']>;
 };
 
 /** update columns of table "chaos_bag_tarot_mode" */
@@ -3991,21 +4144,21 @@ export type Faq = {
 
 /** columns and relationships of "faq" */
 export type FaqFaq_TextsArgs = {
-  distinct_on?: Maybe<Array<Faq_Text_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Faq_Text_Order_By>>;
-  where?: Maybe<Faq_Text_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Faq_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Faq_Text_Order_By>>;
+  where?: InputMaybe<Faq_Text_Bool_Exp>;
 };
 
 
 /** columns and relationships of "faq" */
 export type FaqFaq_Texts_AggregateArgs = {
-  distinct_on?: Maybe<Array<Faq_Text_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Faq_Text_Order_By>>;
-  where?: Maybe<Faq_Text_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Faq_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Faq_Text_Order_By>>;
+  where?: InputMaybe<Faq_Text_Bool_Exp>;
 };
 
 /** aggregated selection of "faq" */
@@ -4026,18 +4179,18 @@ export type Faq_Aggregate_Fields = {
 
 /** aggregate fields of "faq" */
 export type Faq_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Faq_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Faq_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** Boolean expression to filter rows from the table "faq". All fields are combined with a logical 'AND'. */
 export type Faq_Bool_Exp = {
-  _and?: Maybe<Array<Faq_Bool_Exp>>;
-  _not?: Maybe<Faq_Bool_Exp>;
-  _or?: Maybe<Array<Faq_Bool_Exp>>;
-  code?: Maybe<String_Comparison_Exp>;
-  faq_texts?: Maybe<Faq_Text_Bool_Exp>;
-  text?: Maybe<String_Comparison_Exp>;
+  _and?: InputMaybe<Array<Faq_Bool_Exp>>;
+  _not?: InputMaybe<Faq_Bool_Exp>;
+  _or?: InputMaybe<Array<Faq_Bool_Exp>>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  faq_texts?: InputMaybe<Faq_Text_Bool_Exp>;
+  text?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "faq" */
@@ -4048,9 +4201,9 @@ export enum Faq_Constraint {
 
 /** input type for inserting data into table "faq" */
 export type Faq_Insert_Input = {
-  code?: Maybe<Scalars['String']>;
-  faq_texts?: Maybe<Faq_Text_Arr_Rel_Insert_Input>;
-  text?: Maybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  faq_texts?: InputMaybe<Faq_Text_Arr_Rel_Insert_Input>;
+  text?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -4080,14 +4233,14 @@ export type Faq_Mutation_Response = {
 export type Faq_On_Conflict = {
   constraint: Faq_Constraint;
   update_columns: Array<Faq_Update_Column>;
-  where?: Maybe<Faq_Bool_Exp>;
+  where?: InputMaybe<Faq_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "faq". */
 export type Faq_Order_By = {
-  code?: Maybe<Order_By>;
-  faq_texts_aggregate?: Maybe<Faq_Text_Aggregate_Order_By>;
-  text?: Maybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  faq_texts_aggregate?: InputMaybe<Faq_Text_Aggregate_Order_By>;
+  text?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: faq */
@@ -4105,8 +4258,8 @@ export enum Faq_Select_Column {
 
 /** input type for updating data in table "faq" */
 export type Faq_Set_Input = {
-  code?: Maybe<Scalars['String']>;
-  text?: Maybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
 };
 
 /** columns and relationships of "faq_text" */
@@ -4135,32 +4288,32 @@ export type Faq_Text_Aggregate_Fields = {
 
 /** aggregate fields of "faq_text" */
 export type Faq_Text_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Faq_Text_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Faq_Text_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "faq_text" */
 export type Faq_Text_Aggregate_Order_By = {
-  count?: Maybe<Order_By>;
-  max?: Maybe<Faq_Text_Max_Order_By>;
-  min?: Maybe<Faq_Text_Min_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Faq_Text_Max_Order_By>;
+  min?: InputMaybe<Faq_Text_Min_Order_By>;
 };
 
 /** input type for inserting array relation for remote table "faq_text" */
 export type Faq_Text_Arr_Rel_Insert_Input = {
   data: Array<Faq_Text_Insert_Input>;
   /** on conflict condition */
-  on_conflict?: Maybe<Faq_Text_On_Conflict>;
+  on_conflict?: InputMaybe<Faq_Text_On_Conflict>;
 };
 
 /** Boolean expression to filter rows from the table "faq_text". All fields are combined with a logical 'AND'. */
 export type Faq_Text_Bool_Exp = {
-  _and?: Maybe<Array<Faq_Text_Bool_Exp>>;
-  _not?: Maybe<Faq_Text_Bool_Exp>;
-  _or?: Maybe<Array<Faq_Text_Bool_Exp>>;
-  code?: Maybe<String_Comparison_Exp>;
-  locale?: Maybe<String_Comparison_Exp>;
-  text?: Maybe<String_Comparison_Exp>;
+  _and?: InputMaybe<Array<Faq_Text_Bool_Exp>>;
+  _not?: InputMaybe<Faq_Text_Bool_Exp>;
+  _or?: InputMaybe<Array<Faq_Text_Bool_Exp>>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  text?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "faq_text" */
@@ -4171,9 +4324,9 @@ export enum Faq_Text_Constraint {
 
 /** input type for inserting data into table "faq_text" */
 export type Faq_Text_Insert_Input = {
-  code?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  text?: Maybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -4186,9 +4339,9 @@ export type Faq_Text_Max_Fields = {
 
 /** order by max() on columns of table "faq_text" */
 export type Faq_Text_Max_Order_By = {
-  code?: Maybe<Order_By>;
-  locale?: Maybe<Order_By>;
-  text?: Maybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -4201,9 +4354,9 @@ export type Faq_Text_Min_Fields = {
 
 /** order by min() on columns of table "faq_text" */
 export type Faq_Text_Min_Order_By = {
-  code?: Maybe<Order_By>;
-  locale?: Maybe<Order_By>;
-  text?: Maybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "faq_text" */
@@ -4219,14 +4372,14 @@ export type Faq_Text_Mutation_Response = {
 export type Faq_Text_On_Conflict = {
   constraint: Faq_Text_Constraint;
   update_columns: Array<Faq_Text_Update_Column>;
-  where?: Maybe<Faq_Text_Bool_Exp>;
+  where?: InputMaybe<Faq_Text_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "faq_text". */
 export type Faq_Text_Order_By = {
-  code?: Maybe<Order_By>;
-  locale?: Maybe<Order_By>;
-  text?: Maybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: faq_text */
@@ -4247,9 +4400,9 @@ export enum Faq_Text_Select_Column {
 
 /** input type for updating data in table "faq_text" */
 export type Faq_Text_Set_Input = {
-  code?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  text?: Maybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
 };
 
 /** update columns of table "faq_text" */
@@ -4298,18 +4451,18 @@ export type Friend_Status_Aggregate_Fields = {
 
 /** aggregate fields of "friend_status" */
 export type Friend_Status_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Friend_Status_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Friend_Status_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** Boolean expression to filter rows from the table "friend_status". All fields are combined with a logical 'AND'. */
 export type Friend_Status_Bool_Exp = {
-  _and?: Maybe<Array<Friend_Status_Bool_Exp>>;
-  _not?: Maybe<Friend_Status_Bool_Exp>;
-  _or?: Maybe<Array<Friend_Status_Bool_Exp>>;
-  status?: Maybe<Friend_Status_Type_Enum_Comparison_Exp>;
-  user_id_a?: Maybe<String_Comparison_Exp>;
-  user_id_b?: Maybe<String_Comparison_Exp>;
+  _and?: InputMaybe<Array<Friend_Status_Bool_Exp>>;
+  _not?: InputMaybe<Friend_Status_Bool_Exp>;
+  _or?: InputMaybe<Array<Friend_Status_Bool_Exp>>;
+  status?: InputMaybe<Friend_Status_Type_Enum_Comparison_Exp>;
+  user_id_a?: InputMaybe<String_Comparison_Exp>;
+  user_id_b?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "friend_status" */
@@ -4320,9 +4473,9 @@ export enum Friend_Status_Constraint {
 
 /** input type for inserting data into table "friend_status" */
 export type Friend_Status_Insert_Input = {
-  status?: Maybe<Friend_Status_Type_Enum>;
-  user_id_a?: Maybe<Scalars['String']>;
-  user_id_b?: Maybe<Scalars['String']>;
+  status?: InputMaybe<Friend_Status_Type_Enum>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -4352,14 +4505,14 @@ export type Friend_Status_Mutation_Response = {
 export type Friend_Status_On_Conflict = {
   constraint: Friend_Status_Constraint;
   update_columns: Array<Friend_Status_Update_Column>;
-  where?: Maybe<Friend_Status_Bool_Exp>;
+  where?: InputMaybe<Friend_Status_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "friend_status". */
 export type Friend_Status_Order_By = {
-  status?: Maybe<Order_By>;
-  user_id_a?: Maybe<Order_By>;
-  user_id_b?: Maybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: friend_status */
@@ -4380,9 +4533,9 @@ export enum Friend_Status_Select_Column {
 
 /** input type for updating data in table "friend_status" */
 export type Friend_Status_Set_Input = {
-  status?: Maybe<Friend_Status_Type_Enum>;
-  user_id_a?: Maybe<Scalars['String']>;
-  user_id_b?: Maybe<Scalars['String']>;
+  status?: InputMaybe<Friend_Status_Type_Enum>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
 };
 
 /** columns and relationships of "friend_status_type" */
@@ -4409,16 +4562,16 @@ export type Friend_Status_Type_Aggregate_Fields = {
 
 /** aggregate fields of "friend_status_type" */
 export type Friend_Status_Type_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Friend_Status_Type_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Friend_Status_Type_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** Boolean expression to filter rows from the table "friend_status_type". All fields are combined with a logical 'AND'. */
 export type Friend_Status_Type_Bool_Exp = {
-  _and?: Maybe<Array<Friend_Status_Type_Bool_Exp>>;
-  _not?: Maybe<Friend_Status_Type_Bool_Exp>;
-  _or?: Maybe<Array<Friend_Status_Type_Bool_Exp>>;
-  value?: Maybe<String_Comparison_Exp>;
+  _and?: InputMaybe<Array<Friend_Status_Type_Bool_Exp>>;
+  _not?: InputMaybe<Friend_Status_Type_Bool_Exp>;
+  _or?: InputMaybe<Array<Friend_Status_Type_Bool_Exp>>;
+  value?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "friend_status_type" */
@@ -4436,16 +4589,16 @@ export enum Friend_Status_Type_Enum {
 
 /** Boolean expression to compare columns of type "friend_status_type_enum". All fields are combined with logical 'AND'. */
 export type Friend_Status_Type_Enum_Comparison_Exp = {
-  _eq?: Maybe<Friend_Status_Type_Enum>;
-  _in?: Maybe<Array<Friend_Status_Type_Enum>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _neq?: Maybe<Friend_Status_Type_Enum>;
-  _nin?: Maybe<Array<Friend_Status_Type_Enum>>;
+  _eq?: InputMaybe<Friend_Status_Type_Enum>;
+  _in?: InputMaybe<Array<Friend_Status_Type_Enum>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<Friend_Status_Type_Enum>;
+  _nin?: InputMaybe<Array<Friend_Status_Type_Enum>>;
 };
 
 /** input type for inserting data into table "friend_status_type" */
 export type Friend_Status_Type_Insert_Input = {
-  value?: Maybe<Scalars['String']>;
+  value?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -4473,12 +4626,12 @@ export type Friend_Status_Type_Mutation_Response = {
 export type Friend_Status_Type_On_Conflict = {
   constraint: Friend_Status_Type_Constraint;
   update_columns: Array<Friend_Status_Type_Update_Column>;
-  where?: Maybe<Friend_Status_Type_Bool_Exp>;
+  where?: InputMaybe<Friend_Status_Type_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "friend_status_type". */
 export type Friend_Status_Type_Order_By = {
-  value?: Maybe<Order_By>;
+  value?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: friend_status_type */
@@ -4494,7 +4647,7 @@ export enum Friend_Status_Type_Select_Column {
 
 /** input type for updating data in table "friend_status_type" */
 export type Friend_Status_Type_Set_Input = {
-  value?: Maybe<Scalars['String']>;
+  value?: InputMaybe<Scalars['String']>;
 };
 
 /** update columns of table "friend_status_type" */
@@ -4553,30 +4706,30 @@ export type Guide_Achievement_Aggregate_Fields = {
 
 /** aggregate fields of "guide_achievement" */
 export type Guide_Achievement_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Guide_Achievement_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Guide_Achievement_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "guide_achievement" */
 export type Guide_Achievement_Aggregate_Order_By = {
-  avg?: Maybe<Guide_Achievement_Avg_Order_By>;
-  count?: Maybe<Order_By>;
-  max?: Maybe<Guide_Achievement_Max_Order_By>;
-  min?: Maybe<Guide_Achievement_Min_Order_By>;
-  stddev?: Maybe<Guide_Achievement_Stddev_Order_By>;
-  stddev_pop?: Maybe<Guide_Achievement_Stddev_Pop_Order_By>;
-  stddev_samp?: Maybe<Guide_Achievement_Stddev_Samp_Order_By>;
-  sum?: Maybe<Guide_Achievement_Sum_Order_By>;
-  var_pop?: Maybe<Guide_Achievement_Var_Pop_Order_By>;
-  var_samp?: Maybe<Guide_Achievement_Var_Samp_Order_By>;
-  variance?: Maybe<Guide_Achievement_Variance_Order_By>;
+  avg?: InputMaybe<Guide_Achievement_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Guide_Achievement_Max_Order_By>;
+  min?: InputMaybe<Guide_Achievement_Min_Order_By>;
+  stddev?: InputMaybe<Guide_Achievement_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Guide_Achievement_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Guide_Achievement_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Guide_Achievement_Sum_Order_By>;
+  var_pop?: InputMaybe<Guide_Achievement_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Guide_Achievement_Var_Samp_Order_By>;
+  variance?: InputMaybe<Guide_Achievement_Variance_Order_By>;
 };
 
 /** input type for inserting array relation for remote table "guide_achievement" */
 export type Guide_Achievement_Arr_Rel_Insert_Input = {
   data: Array<Guide_Achievement_Insert_Input>;
   /** on conflict condition */
-  on_conflict?: Maybe<Guide_Achievement_On_Conflict>;
+  on_conflict?: InputMaybe<Guide_Achievement_On_Conflict>;
 };
 
 /** aggregate avg on columns */
@@ -4588,23 +4741,23 @@ export type Guide_Achievement_Avg_Fields = {
 
 /** order by avg() on columns of table "guide_achievement" */
 export type Guide_Achievement_Avg_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  value?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  value?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "guide_achievement". All fields are combined with a logical 'AND'. */
 export type Guide_Achievement_Bool_Exp = {
-  _and?: Maybe<Array<Guide_Achievement_Bool_Exp>>;
-  _not?: Maybe<Guide_Achievement_Bool_Exp>;
-  _or?: Maybe<Array<Guide_Achievement_Bool_Exp>>;
-  bool_value?: Maybe<Boolean_Comparison_Exp>;
-  campaign?: Maybe<Campaign_Bool_Exp>;
-  campaign_id?: Maybe<Int_Comparison_Exp>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  id?: Maybe<String_Comparison_Exp>;
-  type?: Maybe<String_Comparison_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
-  value?: Maybe<Int_Comparison_Exp>;
+  _and?: InputMaybe<Array<Guide_Achievement_Bool_Exp>>;
+  _not?: InputMaybe<Guide_Achievement_Bool_Exp>;
+  _or?: InputMaybe<Array<Guide_Achievement_Bool_Exp>>;
+  bool_value?: InputMaybe<Boolean_Comparison_Exp>;
+  campaign?: InputMaybe<Campaign_Bool_Exp>;
+  campaign_id?: InputMaybe<Int_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  type?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  value?: InputMaybe<Int_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "guide_achievement" */
@@ -4615,20 +4768,20 @@ export enum Guide_Achievement_Constraint {
 
 /** input type for incrementing numeric columns in table "guide_achievement" */
 export type Guide_Achievement_Inc_Input = {
-  campaign_id?: Maybe<Scalars['Int']>;
-  value?: Maybe<Scalars['Int']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  value?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "guide_achievement" */
 export type Guide_Achievement_Insert_Input = {
-  bool_value?: Maybe<Scalars['Boolean']>;
-  campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
-  campaign_id?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['String']>;
-  type?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  value?: Maybe<Scalars['Int']>;
+  bool_value?: InputMaybe<Scalars['Boolean']>;
+  campaign?: InputMaybe<Campaign_Obj_Rel_Insert_Input>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  value?: InputMaybe<Scalars['Int']>;
 };
 
 /** aggregate max on columns */
@@ -4644,12 +4797,12 @@ export type Guide_Achievement_Max_Fields = {
 
 /** order by max() on columns of table "guide_achievement" */
 export type Guide_Achievement_Max_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  type?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
-  value?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  type?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  value?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -4665,12 +4818,12 @@ export type Guide_Achievement_Min_Fields = {
 
 /** order by min() on columns of table "guide_achievement" */
 export type Guide_Achievement_Min_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  type?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
-  value?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  type?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  value?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "guide_achievement" */
@@ -4686,19 +4839,19 @@ export type Guide_Achievement_Mutation_Response = {
 export type Guide_Achievement_On_Conflict = {
   constraint: Guide_Achievement_Constraint;
   update_columns: Array<Guide_Achievement_Update_Column>;
-  where?: Maybe<Guide_Achievement_Bool_Exp>;
+  where?: InputMaybe<Guide_Achievement_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "guide_achievement". */
 export type Guide_Achievement_Order_By = {
-  bool_value?: Maybe<Order_By>;
-  campaign?: Maybe<Campaign_Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  type?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
-  value?: Maybe<Order_By>;
+  bool_value?: InputMaybe<Order_By>;
+  campaign?: InputMaybe<Campaign_Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  type?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  value?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: guide_achievement */
@@ -4727,13 +4880,13 @@ export enum Guide_Achievement_Select_Column {
 
 /** input type for updating data in table "guide_achievement" */
 export type Guide_Achievement_Set_Input = {
-  bool_value?: Maybe<Scalars['Boolean']>;
-  campaign_id?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['String']>;
-  type?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  value?: Maybe<Scalars['Int']>;
+  bool_value?: InputMaybe<Scalars['Boolean']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  value?: InputMaybe<Scalars['Int']>;
 };
 
 /** aggregate stddev on columns */
@@ -4745,8 +4898,8 @@ export type Guide_Achievement_Stddev_Fields = {
 
 /** order by stddev() on columns of table "guide_achievement" */
 export type Guide_Achievement_Stddev_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  value?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  value?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -4758,8 +4911,8 @@ export type Guide_Achievement_Stddev_Pop_Fields = {
 
 /** order by stddev_pop() on columns of table "guide_achievement" */
 export type Guide_Achievement_Stddev_Pop_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  value?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  value?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -4771,8 +4924,8 @@ export type Guide_Achievement_Stddev_Samp_Fields = {
 
 /** order by stddev_samp() on columns of table "guide_achievement" */
 export type Guide_Achievement_Stddev_Samp_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  value?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  value?: InputMaybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -4784,8 +4937,8 @@ export type Guide_Achievement_Sum_Fields = {
 
 /** order by sum() on columns of table "guide_achievement" */
 export type Guide_Achievement_Sum_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  value?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  value?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "guide_achievement" */
@@ -4815,8 +4968,8 @@ export type Guide_Achievement_Var_Pop_Fields = {
 
 /** order by var_pop() on columns of table "guide_achievement" */
 export type Guide_Achievement_Var_Pop_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  value?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  value?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -4828,8 +4981,8 @@ export type Guide_Achievement_Var_Samp_Fields = {
 
 /** order by var_samp() on columns of table "guide_achievement" */
 export type Guide_Achievement_Var_Samp_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  value?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  value?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -4841,8 +4994,8 @@ export type Guide_Achievement_Variance_Fields = {
 
 /** order by variance() on columns of table "guide_achievement" */
 export type Guide_Achievement_Variance_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  value?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  value?: InputMaybe<Order_By>;
 };
 
 /** columns and relationships of "guide_input" */
@@ -4862,7 +5015,7 @@ export type Guide_Input = {
 
 /** columns and relationships of "guide_input" */
 export type Guide_InputPayloadArgs = {
-  path?: Maybe<Scalars['String']>;
+  path?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregated selection of "guide_input" */
@@ -4891,35 +5044,35 @@ export type Guide_Input_Aggregate_Fields = {
 
 /** aggregate fields of "guide_input" */
 export type Guide_Input_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Guide_Input_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Guide_Input_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "guide_input" */
 export type Guide_Input_Aggregate_Order_By = {
-  avg?: Maybe<Guide_Input_Avg_Order_By>;
-  count?: Maybe<Order_By>;
-  max?: Maybe<Guide_Input_Max_Order_By>;
-  min?: Maybe<Guide_Input_Min_Order_By>;
-  stddev?: Maybe<Guide_Input_Stddev_Order_By>;
-  stddev_pop?: Maybe<Guide_Input_Stddev_Pop_Order_By>;
-  stddev_samp?: Maybe<Guide_Input_Stddev_Samp_Order_By>;
-  sum?: Maybe<Guide_Input_Sum_Order_By>;
-  var_pop?: Maybe<Guide_Input_Var_Pop_Order_By>;
-  var_samp?: Maybe<Guide_Input_Var_Samp_Order_By>;
-  variance?: Maybe<Guide_Input_Variance_Order_By>;
+  avg?: InputMaybe<Guide_Input_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Guide_Input_Max_Order_By>;
+  min?: InputMaybe<Guide_Input_Min_Order_By>;
+  stddev?: InputMaybe<Guide_Input_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Guide_Input_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Guide_Input_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Guide_Input_Sum_Order_By>;
+  var_pop?: InputMaybe<Guide_Input_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Guide_Input_Var_Samp_Order_By>;
+  variance?: InputMaybe<Guide_Input_Variance_Order_By>;
 };
 
 /** append existing jsonb value of filtered columns with new jsonb value */
 export type Guide_Input_Append_Input = {
-  payload?: Maybe<Scalars['jsonb']>;
+  payload?: InputMaybe<Scalars['jsonb']>;
 };
 
 /** input type for inserting array relation for remote table "guide_input" */
 export type Guide_Input_Arr_Rel_Insert_Input = {
   data: Array<Guide_Input_Insert_Input>;
   /** on conflict condition */
-  on_conflict?: Maybe<Guide_Input_On_Conflict>;
+  on_conflict?: InputMaybe<Guide_Input_On_Conflict>;
 };
 
 /** aggregate avg on columns */
@@ -4930,22 +5083,22 @@ export type Guide_Input_Avg_Fields = {
 
 /** order by avg() on columns of table "guide_input" */
 export type Guide_Input_Avg_Order_By = {
-  campaign_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "guide_input". All fields are combined with a logical 'AND'. */
 export type Guide_Input_Bool_Exp = {
-  _and?: Maybe<Array<Guide_Input_Bool_Exp>>;
-  _not?: Maybe<Guide_Input_Bool_Exp>;
-  _or?: Maybe<Array<Guide_Input_Bool_Exp>>;
-  campaign?: Maybe<Campaign_Bool_Exp>;
-  campaign_id?: Maybe<Int_Comparison_Exp>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  id?: Maybe<String_Comparison_Exp>;
-  payload?: Maybe<Jsonb_Comparison_Exp>;
-  scenario?: Maybe<String_Comparison_Exp>;
-  step?: Maybe<String_Comparison_Exp>;
-  type?: Maybe<String_Comparison_Exp>;
+  _and?: InputMaybe<Array<Guide_Input_Bool_Exp>>;
+  _not?: InputMaybe<Guide_Input_Bool_Exp>;
+  _or?: InputMaybe<Array<Guide_Input_Bool_Exp>>;
+  campaign?: InputMaybe<Campaign_Bool_Exp>;
+  campaign_id?: InputMaybe<Int_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  payload?: InputMaybe<Jsonb_Comparison_Exp>;
+  scenario?: InputMaybe<String_Comparison_Exp>;
+  step?: InputMaybe<String_Comparison_Exp>;
+  type?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "guide_input" */
@@ -4956,34 +5109,34 @@ export enum Guide_Input_Constraint {
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Guide_Input_Delete_At_Path_Input = {
-  payload?: Maybe<Array<Scalars['String']>>;
+  payload?: InputMaybe<Array<Scalars['String']>>;
 };
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export type Guide_Input_Delete_Elem_Input = {
-  payload?: Maybe<Scalars['Int']>;
+  payload?: InputMaybe<Scalars['Int']>;
 };
 
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
 export type Guide_Input_Delete_Key_Input = {
-  payload?: Maybe<Scalars['String']>;
+  payload?: InputMaybe<Scalars['String']>;
 };
 
 /** input type for incrementing numeric columns in table "guide_input" */
 export type Guide_Input_Inc_Input = {
-  campaign_id?: Maybe<Scalars['Int']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "guide_input" */
 export type Guide_Input_Insert_Input = {
-  campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
-  campaign_id?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['String']>;
-  payload?: Maybe<Scalars['jsonb']>;
-  scenario?: Maybe<Scalars['String']>;
-  step?: Maybe<Scalars['String']>;
-  type?: Maybe<Scalars['String']>;
+  campaign?: InputMaybe<Campaign_Obj_Rel_Insert_Input>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['String']>;
+  payload?: InputMaybe<Scalars['jsonb']>;
+  scenario?: InputMaybe<Scalars['String']>;
+  step?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -4999,12 +5152,12 @@ export type Guide_Input_Max_Fields = {
 
 /** order by max() on columns of table "guide_input" */
 export type Guide_Input_Max_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  scenario?: Maybe<Order_By>;
-  step?: Maybe<Order_By>;
-  type?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  scenario?: InputMaybe<Order_By>;
+  step?: InputMaybe<Order_By>;
+  type?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -5020,12 +5173,12 @@ export type Guide_Input_Min_Fields = {
 
 /** order by min() on columns of table "guide_input" */
 export type Guide_Input_Min_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  scenario?: Maybe<Order_By>;
-  step?: Maybe<Order_By>;
-  type?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  scenario?: InputMaybe<Order_By>;
+  step?: InputMaybe<Order_By>;
+  type?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "guide_input" */
@@ -5041,19 +5194,19 @@ export type Guide_Input_Mutation_Response = {
 export type Guide_Input_On_Conflict = {
   constraint: Guide_Input_Constraint;
   update_columns: Array<Guide_Input_Update_Column>;
-  where?: Maybe<Guide_Input_Bool_Exp>;
+  where?: InputMaybe<Guide_Input_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "guide_input". */
 export type Guide_Input_Order_By = {
-  campaign?: Maybe<Campaign_Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  payload?: Maybe<Order_By>;
-  scenario?: Maybe<Order_By>;
-  step?: Maybe<Order_By>;
-  type?: Maybe<Order_By>;
+  campaign?: InputMaybe<Campaign_Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  payload?: InputMaybe<Order_By>;
+  scenario?: InputMaybe<Order_By>;
+  step?: InputMaybe<Order_By>;
+  type?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: guide_input */
@@ -5064,7 +5217,7 @@ export type Guide_Input_Pk_Columns_Input = {
 
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export type Guide_Input_Prepend_Input = {
-  payload?: Maybe<Scalars['jsonb']>;
+  payload?: InputMaybe<Scalars['jsonb']>;
 };
 
 /** select columns of table "guide_input" */
@@ -5087,13 +5240,13 @@ export enum Guide_Input_Select_Column {
 
 /** input type for updating data in table "guide_input" */
 export type Guide_Input_Set_Input = {
-  campaign_id?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['String']>;
-  payload?: Maybe<Scalars['jsonb']>;
-  scenario?: Maybe<Scalars['String']>;
-  step?: Maybe<Scalars['String']>;
-  type?: Maybe<Scalars['String']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['String']>;
+  payload?: InputMaybe<Scalars['jsonb']>;
+  scenario?: InputMaybe<Scalars['String']>;
+  step?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate stddev on columns */
@@ -5104,7 +5257,7 @@ export type Guide_Input_Stddev_Fields = {
 
 /** order by stddev() on columns of table "guide_input" */
 export type Guide_Input_Stddev_Order_By = {
-  campaign_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -5115,7 +5268,7 @@ export type Guide_Input_Stddev_Pop_Fields = {
 
 /** order by stddev_pop() on columns of table "guide_input" */
 export type Guide_Input_Stddev_Pop_Order_By = {
-  campaign_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -5126,7 +5279,7 @@ export type Guide_Input_Stddev_Samp_Fields = {
 
 /** order by stddev_samp() on columns of table "guide_input" */
 export type Guide_Input_Stddev_Samp_Order_By = {
-  campaign_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -5137,7 +5290,7 @@ export type Guide_Input_Sum_Fields = {
 
 /** order by sum() on columns of table "guide_input" */
 export type Guide_Input_Sum_Order_By = {
-  campaign_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "guide_input" */
@@ -5166,7 +5319,7 @@ export type Guide_Input_Var_Pop_Fields = {
 
 /** order by var_pop() on columns of table "guide_input" */
 export type Guide_Input_Var_Pop_Order_By = {
-  campaign_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -5177,7 +5330,7 @@ export type Guide_Input_Var_Samp_Fields = {
 
 /** order by var_samp() on columns of table "guide_input" */
 export type Guide_Input_Var_Samp_Order_By = {
-  campaign_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -5188,7 +5341,7 @@ export type Guide_Input_Variance_Fields = {
 
 /** order by variance() on columns of table "guide_input" */
 export type Guide_Input_Variance_Order_By = {
-  campaign_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
 };
 
 /** columns and relationships of "investigator_data" */
@@ -5219,37 +5372,37 @@ export type Investigator_Data = {
 
 /** columns and relationships of "investigator_data" */
 export type Investigator_DataAddedCardsArgs = {
-  path?: Maybe<Scalars['String']>;
+  path?: InputMaybe<Scalars['String']>;
 };
 
 
 /** columns and relationships of "investigator_data" */
 export type Investigator_DataCardCountsArgs = {
-  path?: Maybe<Scalars['String']>;
+  path?: InputMaybe<Scalars['String']>;
 };
 
 
 /** columns and relationships of "investigator_data" */
 export type Investigator_DataIgnoreStoryAssetsArgs = {
-  path?: Maybe<Scalars['String']>;
+  path?: InputMaybe<Scalars['String']>;
 };
 
 
 /** columns and relationships of "investigator_data" */
 export type Investigator_DataRemovedCardsArgs = {
-  path?: Maybe<Scalars['String']>;
+  path?: InputMaybe<Scalars['String']>;
 };
 
 
 /** columns and relationships of "investigator_data" */
 export type Investigator_DataSpecialXpArgs = {
-  path?: Maybe<Scalars['String']>;
+  path?: InputMaybe<Scalars['String']>;
 };
 
 
 /** columns and relationships of "investigator_data" */
 export type Investigator_DataStoryAssetsArgs = {
-  path?: Maybe<Scalars['String']>;
+  path?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregated selection of "investigator_data" */
@@ -5278,40 +5431,40 @@ export type Investigator_Data_Aggregate_Fields = {
 
 /** aggregate fields of "investigator_data" */
 export type Investigator_Data_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Investigator_Data_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Investigator_Data_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "investigator_data" */
 export type Investigator_Data_Aggregate_Order_By = {
-  avg?: Maybe<Investigator_Data_Avg_Order_By>;
-  count?: Maybe<Order_By>;
-  max?: Maybe<Investigator_Data_Max_Order_By>;
-  min?: Maybe<Investigator_Data_Min_Order_By>;
-  stddev?: Maybe<Investigator_Data_Stddev_Order_By>;
-  stddev_pop?: Maybe<Investigator_Data_Stddev_Pop_Order_By>;
-  stddev_samp?: Maybe<Investigator_Data_Stddev_Samp_Order_By>;
-  sum?: Maybe<Investigator_Data_Sum_Order_By>;
-  var_pop?: Maybe<Investigator_Data_Var_Pop_Order_By>;
-  var_samp?: Maybe<Investigator_Data_Var_Samp_Order_By>;
-  variance?: Maybe<Investigator_Data_Variance_Order_By>;
+  avg?: InputMaybe<Investigator_Data_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Investigator_Data_Max_Order_By>;
+  min?: InputMaybe<Investigator_Data_Min_Order_By>;
+  stddev?: InputMaybe<Investigator_Data_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Investigator_Data_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Investigator_Data_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Investigator_Data_Sum_Order_By>;
+  var_pop?: InputMaybe<Investigator_Data_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Investigator_Data_Var_Samp_Order_By>;
+  variance?: InputMaybe<Investigator_Data_Variance_Order_By>;
 };
 
 /** append existing jsonb value of filtered columns with new jsonb value */
 export type Investigator_Data_Append_Input = {
-  addedCards?: Maybe<Scalars['jsonb']>;
-  cardCounts?: Maybe<Scalars['jsonb']>;
-  ignoreStoryAssets?: Maybe<Scalars['jsonb']>;
-  removedCards?: Maybe<Scalars['jsonb']>;
-  specialXp?: Maybe<Scalars['jsonb']>;
-  storyAssets?: Maybe<Scalars['jsonb']>;
+  addedCards?: InputMaybe<Scalars['jsonb']>;
+  cardCounts?: InputMaybe<Scalars['jsonb']>;
+  ignoreStoryAssets?: InputMaybe<Scalars['jsonb']>;
+  removedCards?: InputMaybe<Scalars['jsonb']>;
+  specialXp?: InputMaybe<Scalars['jsonb']>;
+  storyAssets?: InputMaybe<Scalars['jsonb']>;
 };
 
 /** input type for inserting array relation for remote table "investigator_data" */
 export type Investigator_Data_Arr_Rel_Insert_Input = {
   data: Array<Investigator_Data_Insert_Input>;
   /** on conflict condition */
-  on_conflict?: Maybe<Investigator_Data_On_Conflict>;
+  on_conflict?: InputMaybe<Investigator_Data_On_Conflict>;
 };
 
 /** aggregate avg on columns */
@@ -5326,35 +5479,35 @@ export type Investigator_Data_Avg_Fields = {
 
 /** order by avg() on columns of table "investigator_data" */
 export type Investigator_Data_Avg_Order_By = {
-  availableXp?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  mental?: Maybe<Order_By>;
-  physical?: Maybe<Order_By>;
-  spentXp?: Maybe<Order_By>;
+  availableXp?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  mental?: InputMaybe<Order_By>;
+  physical?: InputMaybe<Order_By>;
+  spentXp?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "investigator_data". All fields are combined with a logical 'AND'. */
 export type Investigator_Data_Bool_Exp = {
-  _and?: Maybe<Array<Investigator_Data_Bool_Exp>>;
-  _not?: Maybe<Investigator_Data_Bool_Exp>;
-  _or?: Maybe<Array<Investigator_Data_Bool_Exp>>;
-  addedCards?: Maybe<Jsonb_Comparison_Exp>;
-  availableXp?: Maybe<Int_Comparison_Exp>;
-  campaign_data?: Maybe<Campaign_Bool_Exp>;
-  campaign_id?: Maybe<Int_Comparison_Exp>;
-  cardCounts?: Maybe<Jsonb_Comparison_Exp>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  ignoreStoryAssets?: Maybe<Jsonb_Comparison_Exp>;
-  insane?: Maybe<Boolean_Comparison_Exp>;
-  investigator?: Maybe<String_Comparison_Exp>;
-  killed?: Maybe<Boolean_Comparison_Exp>;
-  mental?: Maybe<Int_Comparison_Exp>;
-  physical?: Maybe<Int_Comparison_Exp>;
-  removedCards?: Maybe<Jsonb_Comparison_Exp>;
-  specialXp?: Maybe<Jsonb_Comparison_Exp>;
-  spentXp?: Maybe<Int_Comparison_Exp>;
-  storyAssets?: Maybe<Jsonb_Comparison_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+  _and?: InputMaybe<Array<Investigator_Data_Bool_Exp>>;
+  _not?: InputMaybe<Investigator_Data_Bool_Exp>;
+  _or?: InputMaybe<Array<Investigator_Data_Bool_Exp>>;
+  addedCards?: InputMaybe<Jsonb_Comparison_Exp>;
+  availableXp?: InputMaybe<Int_Comparison_Exp>;
+  campaign_data?: InputMaybe<Campaign_Bool_Exp>;
+  campaign_id?: InputMaybe<Int_Comparison_Exp>;
+  cardCounts?: InputMaybe<Jsonb_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  ignoreStoryAssets?: InputMaybe<Jsonb_Comparison_Exp>;
+  insane?: InputMaybe<Boolean_Comparison_Exp>;
+  investigator?: InputMaybe<String_Comparison_Exp>;
+  killed?: InputMaybe<Boolean_Comparison_Exp>;
+  mental?: InputMaybe<Int_Comparison_Exp>;
+  physical?: InputMaybe<Int_Comparison_Exp>;
+  removedCards?: InputMaybe<Jsonb_Comparison_Exp>;
+  specialXp?: InputMaybe<Jsonb_Comparison_Exp>;
+  spentXp?: InputMaybe<Int_Comparison_Exp>;
+  storyAssets?: InputMaybe<Jsonb_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "investigator_data" */
@@ -5365,62 +5518,62 @@ export enum Investigator_Data_Constraint {
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Investigator_Data_Delete_At_Path_Input = {
-  addedCards?: Maybe<Array<Scalars['String']>>;
-  cardCounts?: Maybe<Array<Scalars['String']>>;
-  ignoreStoryAssets?: Maybe<Array<Scalars['String']>>;
-  removedCards?: Maybe<Array<Scalars['String']>>;
-  specialXp?: Maybe<Array<Scalars['String']>>;
-  storyAssets?: Maybe<Array<Scalars['String']>>;
+  addedCards?: InputMaybe<Array<Scalars['String']>>;
+  cardCounts?: InputMaybe<Array<Scalars['String']>>;
+  ignoreStoryAssets?: InputMaybe<Array<Scalars['String']>>;
+  removedCards?: InputMaybe<Array<Scalars['String']>>;
+  specialXp?: InputMaybe<Array<Scalars['String']>>;
+  storyAssets?: InputMaybe<Array<Scalars['String']>>;
 };
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export type Investigator_Data_Delete_Elem_Input = {
-  addedCards?: Maybe<Scalars['Int']>;
-  cardCounts?: Maybe<Scalars['Int']>;
-  ignoreStoryAssets?: Maybe<Scalars['Int']>;
-  removedCards?: Maybe<Scalars['Int']>;
-  specialXp?: Maybe<Scalars['Int']>;
-  storyAssets?: Maybe<Scalars['Int']>;
+  addedCards?: InputMaybe<Scalars['Int']>;
+  cardCounts?: InputMaybe<Scalars['Int']>;
+  ignoreStoryAssets?: InputMaybe<Scalars['Int']>;
+  removedCards?: InputMaybe<Scalars['Int']>;
+  specialXp?: InputMaybe<Scalars['Int']>;
+  storyAssets?: InputMaybe<Scalars['Int']>;
 };
 
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
 export type Investigator_Data_Delete_Key_Input = {
-  addedCards?: Maybe<Scalars['String']>;
-  cardCounts?: Maybe<Scalars['String']>;
-  ignoreStoryAssets?: Maybe<Scalars['String']>;
-  removedCards?: Maybe<Scalars['String']>;
-  specialXp?: Maybe<Scalars['String']>;
-  storyAssets?: Maybe<Scalars['String']>;
+  addedCards?: InputMaybe<Scalars['String']>;
+  cardCounts?: InputMaybe<Scalars['String']>;
+  ignoreStoryAssets?: InputMaybe<Scalars['String']>;
+  removedCards?: InputMaybe<Scalars['String']>;
+  specialXp?: InputMaybe<Scalars['String']>;
+  storyAssets?: InputMaybe<Scalars['String']>;
 };
 
 /** input type for incrementing numeric columns in table "investigator_data" */
 export type Investigator_Data_Inc_Input = {
-  availableXp?: Maybe<Scalars['Int']>;
-  campaign_id?: Maybe<Scalars['Int']>;
-  mental?: Maybe<Scalars['Int']>;
-  physical?: Maybe<Scalars['Int']>;
-  spentXp?: Maybe<Scalars['Int']>;
+  availableXp?: InputMaybe<Scalars['Int']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  mental?: InputMaybe<Scalars['Int']>;
+  physical?: InputMaybe<Scalars['Int']>;
+  spentXp?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "investigator_data" */
 export type Investigator_Data_Insert_Input = {
-  addedCards?: Maybe<Scalars['jsonb']>;
-  availableXp?: Maybe<Scalars['Int']>;
-  campaign_data?: Maybe<Campaign_Obj_Rel_Insert_Input>;
-  campaign_id?: Maybe<Scalars['Int']>;
-  cardCounts?: Maybe<Scalars['jsonb']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  ignoreStoryAssets?: Maybe<Scalars['jsonb']>;
-  insane?: Maybe<Scalars['Boolean']>;
-  investigator?: Maybe<Scalars['String']>;
-  killed?: Maybe<Scalars['Boolean']>;
-  mental?: Maybe<Scalars['Int']>;
-  physical?: Maybe<Scalars['Int']>;
-  removedCards?: Maybe<Scalars['jsonb']>;
-  specialXp?: Maybe<Scalars['jsonb']>;
-  spentXp?: Maybe<Scalars['Int']>;
-  storyAssets?: Maybe<Scalars['jsonb']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  addedCards?: InputMaybe<Scalars['jsonb']>;
+  availableXp?: InputMaybe<Scalars['Int']>;
+  campaign_data?: InputMaybe<Campaign_Obj_Rel_Insert_Input>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  cardCounts?: InputMaybe<Scalars['jsonb']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  ignoreStoryAssets?: InputMaybe<Scalars['jsonb']>;
+  insane?: InputMaybe<Scalars['Boolean']>;
+  investigator?: InputMaybe<Scalars['String']>;
+  killed?: InputMaybe<Scalars['Boolean']>;
+  mental?: InputMaybe<Scalars['Int']>;
+  physical?: InputMaybe<Scalars['Int']>;
+  removedCards?: InputMaybe<Scalars['jsonb']>;
+  specialXp?: InputMaybe<Scalars['jsonb']>;
+  spentXp?: InputMaybe<Scalars['Int']>;
+  storyAssets?: InputMaybe<Scalars['jsonb']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -5438,14 +5591,14 @@ export type Investigator_Data_Max_Fields = {
 
 /** order by max() on columns of table "investigator_data" */
 export type Investigator_Data_Max_Order_By = {
-  availableXp?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  investigator?: Maybe<Order_By>;
-  mental?: Maybe<Order_By>;
-  physical?: Maybe<Order_By>;
-  spentXp?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  availableXp?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  investigator?: InputMaybe<Order_By>;
+  mental?: InputMaybe<Order_By>;
+  physical?: InputMaybe<Order_By>;
+  spentXp?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -5463,14 +5616,14 @@ export type Investigator_Data_Min_Fields = {
 
 /** order by min() on columns of table "investigator_data" */
 export type Investigator_Data_Min_Order_By = {
-  availableXp?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  investigator?: Maybe<Order_By>;
-  mental?: Maybe<Order_By>;
-  physical?: Maybe<Order_By>;
-  spentXp?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  availableXp?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  investigator?: InputMaybe<Order_By>;
+  mental?: InputMaybe<Order_By>;
+  physical?: InputMaybe<Order_By>;
+  spentXp?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "investigator_data" */
@@ -5486,35 +5639,35 @@ export type Investigator_Data_Mutation_Response = {
 export type Investigator_Data_Obj_Rel_Insert_Input = {
   data: Investigator_Data_Insert_Input;
   /** on conflict condition */
-  on_conflict?: Maybe<Investigator_Data_On_Conflict>;
+  on_conflict?: InputMaybe<Investigator_Data_On_Conflict>;
 };
 
 /** on conflict condition type for table "investigator_data" */
 export type Investigator_Data_On_Conflict = {
   constraint: Investigator_Data_Constraint;
   update_columns: Array<Investigator_Data_Update_Column>;
-  where?: Maybe<Investigator_Data_Bool_Exp>;
+  where?: InputMaybe<Investigator_Data_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "investigator_data". */
 export type Investigator_Data_Order_By = {
-  addedCards?: Maybe<Order_By>;
-  availableXp?: Maybe<Order_By>;
-  campaign_data?: Maybe<Campaign_Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  cardCounts?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  ignoreStoryAssets?: Maybe<Order_By>;
-  insane?: Maybe<Order_By>;
-  investigator?: Maybe<Order_By>;
-  killed?: Maybe<Order_By>;
-  mental?: Maybe<Order_By>;
-  physical?: Maybe<Order_By>;
-  removedCards?: Maybe<Order_By>;
-  specialXp?: Maybe<Order_By>;
-  spentXp?: Maybe<Order_By>;
-  storyAssets?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  addedCards?: InputMaybe<Order_By>;
+  availableXp?: InputMaybe<Order_By>;
+  campaign_data?: InputMaybe<Campaign_Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  cardCounts?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  ignoreStoryAssets?: InputMaybe<Order_By>;
+  insane?: InputMaybe<Order_By>;
+  investigator?: InputMaybe<Order_By>;
+  killed?: InputMaybe<Order_By>;
+  mental?: InputMaybe<Order_By>;
+  physical?: InputMaybe<Order_By>;
+  removedCards?: InputMaybe<Order_By>;
+  specialXp?: InputMaybe<Order_By>;
+  spentXp?: InputMaybe<Order_By>;
+  storyAssets?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: investigator_data */
@@ -5525,12 +5678,12 @@ export type Investigator_Data_Pk_Columns_Input = {
 
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export type Investigator_Data_Prepend_Input = {
-  addedCards?: Maybe<Scalars['jsonb']>;
-  cardCounts?: Maybe<Scalars['jsonb']>;
-  ignoreStoryAssets?: Maybe<Scalars['jsonb']>;
-  removedCards?: Maybe<Scalars['jsonb']>;
-  specialXp?: Maybe<Scalars['jsonb']>;
-  storyAssets?: Maybe<Scalars['jsonb']>;
+  addedCards?: InputMaybe<Scalars['jsonb']>;
+  cardCounts?: InputMaybe<Scalars['jsonb']>;
+  ignoreStoryAssets?: InputMaybe<Scalars['jsonb']>;
+  removedCards?: InputMaybe<Scalars['jsonb']>;
+  specialXp?: InputMaybe<Scalars['jsonb']>;
+  storyAssets?: InputMaybe<Scalars['jsonb']>;
 };
 
 /** select columns of table "investigator_data" */
@@ -5571,22 +5724,22 @@ export enum Investigator_Data_Select_Column {
 
 /** input type for updating data in table "investigator_data" */
 export type Investigator_Data_Set_Input = {
-  addedCards?: Maybe<Scalars['jsonb']>;
-  availableXp?: Maybe<Scalars['Int']>;
-  campaign_id?: Maybe<Scalars['Int']>;
-  cardCounts?: Maybe<Scalars['jsonb']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  ignoreStoryAssets?: Maybe<Scalars['jsonb']>;
-  insane?: Maybe<Scalars['Boolean']>;
-  investigator?: Maybe<Scalars['String']>;
-  killed?: Maybe<Scalars['Boolean']>;
-  mental?: Maybe<Scalars['Int']>;
-  physical?: Maybe<Scalars['Int']>;
-  removedCards?: Maybe<Scalars['jsonb']>;
-  specialXp?: Maybe<Scalars['jsonb']>;
-  spentXp?: Maybe<Scalars['Int']>;
-  storyAssets?: Maybe<Scalars['jsonb']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  addedCards?: InputMaybe<Scalars['jsonb']>;
+  availableXp?: InputMaybe<Scalars['Int']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  cardCounts?: InputMaybe<Scalars['jsonb']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  ignoreStoryAssets?: InputMaybe<Scalars['jsonb']>;
+  insane?: InputMaybe<Scalars['Boolean']>;
+  investigator?: InputMaybe<Scalars['String']>;
+  killed?: InputMaybe<Scalars['Boolean']>;
+  mental?: InputMaybe<Scalars['Int']>;
+  physical?: InputMaybe<Scalars['Int']>;
+  removedCards?: InputMaybe<Scalars['jsonb']>;
+  specialXp?: InputMaybe<Scalars['jsonb']>;
+  spentXp?: InputMaybe<Scalars['Int']>;
+  storyAssets?: InputMaybe<Scalars['jsonb']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate stddev on columns */
@@ -5601,11 +5754,11 @@ export type Investigator_Data_Stddev_Fields = {
 
 /** order by stddev() on columns of table "investigator_data" */
 export type Investigator_Data_Stddev_Order_By = {
-  availableXp?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  mental?: Maybe<Order_By>;
-  physical?: Maybe<Order_By>;
-  spentXp?: Maybe<Order_By>;
+  availableXp?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  mental?: InputMaybe<Order_By>;
+  physical?: InputMaybe<Order_By>;
+  spentXp?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -5620,11 +5773,11 @@ export type Investigator_Data_Stddev_Pop_Fields = {
 
 /** order by stddev_pop() on columns of table "investigator_data" */
 export type Investigator_Data_Stddev_Pop_Order_By = {
-  availableXp?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  mental?: Maybe<Order_By>;
-  physical?: Maybe<Order_By>;
-  spentXp?: Maybe<Order_By>;
+  availableXp?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  mental?: InputMaybe<Order_By>;
+  physical?: InputMaybe<Order_By>;
+  spentXp?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -5639,11 +5792,11 @@ export type Investigator_Data_Stddev_Samp_Fields = {
 
 /** order by stddev_samp() on columns of table "investigator_data" */
 export type Investigator_Data_Stddev_Samp_Order_By = {
-  availableXp?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  mental?: Maybe<Order_By>;
-  physical?: Maybe<Order_By>;
-  spentXp?: Maybe<Order_By>;
+  availableXp?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  mental?: InputMaybe<Order_By>;
+  physical?: InputMaybe<Order_By>;
+  spentXp?: InputMaybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -5658,11 +5811,11 @@ export type Investigator_Data_Sum_Fields = {
 
 /** order by sum() on columns of table "investigator_data" */
 export type Investigator_Data_Sum_Order_By = {
-  availableXp?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  mental?: Maybe<Order_By>;
-  physical?: Maybe<Order_By>;
-  spentXp?: Maybe<Order_By>;
+  availableXp?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  mental?: InputMaybe<Order_By>;
+  physical?: InputMaybe<Order_By>;
+  spentXp?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "investigator_data" */
@@ -5713,11 +5866,11 @@ export type Investigator_Data_Var_Pop_Fields = {
 
 /** order by var_pop() on columns of table "investigator_data" */
 export type Investigator_Data_Var_Pop_Order_By = {
-  availableXp?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  mental?: Maybe<Order_By>;
-  physical?: Maybe<Order_By>;
-  spentXp?: Maybe<Order_By>;
+  availableXp?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  mental?: InputMaybe<Order_By>;
+  physical?: InputMaybe<Order_By>;
+  spentXp?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -5732,11 +5885,11 @@ export type Investigator_Data_Var_Samp_Fields = {
 
 /** order by var_samp() on columns of table "investigator_data" */
 export type Investigator_Data_Var_Samp_Order_By = {
-  availableXp?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  mental?: Maybe<Order_By>;
-  physical?: Maybe<Order_By>;
-  spentXp?: Maybe<Order_By>;
+  availableXp?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  mental?: InputMaybe<Order_By>;
+  physical?: InputMaybe<Order_By>;
+  spentXp?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -5751,34 +5904,34 @@ export type Investigator_Data_Variance_Fields = {
 
 /** order by variance() on columns of table "investigator_data" */
 export type Investigator_Data_Variance_Order_By = {
-  availableXp?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  mental?: Maybe<Order_By>;
-  physical?: Maybe<Order_By>;
-  spentXp?: Maybe<Order_By>;
+  availableXp?: InputMaybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  mental?: InputMaybe<Order_By>;
+  physical?: InputMaybe<Order_By>;
+  spentXp?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'. */
 export type Jsonb_Comparison_Exp = {
   /** is the column contained in the given json value */
-  _contained_in?: Maybe<Scalars['jsonb']>;
+  _contained_in?: InputMaybe<Scalars['jsonb']>;
   /** does the column contain the given json value at the top level */
-  _contains?: Maybe<Scalars['jsonb']>;
-  _eq?: Maybe<Scalars['jsonb']>;
-  _gt?: Maybe<Scalars['jsonb']>;
-  _gte?: Maybe<Scalars['jsonb']>;
+  _contains?: InputMaybe<Scalars['jsonb']>;
+  _eq?: InputMaybe<Scalars['jsonb']>;
+  _gt?: InputMaybe<Scalars['jsonb']>;
+  _gte?: InputMaybe<Scalars['jsonb']>;
   /** does the string exist as a top-level key in the column */
-  _has_key?: Maybe<Scalars['String']>;
+  _has_key?: InputMaybe<Scalars['String']>;
   /** do all of these strings exist as top-level keys in the column */
-  _has_keys_all?: Maybe<Array<Scalars['String']>>;
+  _has_keys_all?: InputMaybe<Array<Scalars['String']>>;
   /** do any of these strings exist as top-level keys in the column */
-  _has_keys_any?: Maybe<Array<Scalars['String']>>;
-  _in?: Maybe<Array<Scalars['jsonb']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _lt?: Maybe<Scalars['jsonb']>;
-  _lte?: Maybe<Scalars['jsonb']>;
-  _neq?: Maybe<Scalars['jsonb']>;
-  _nin?: Maybe<Array<Scalars['jsonb']>>;
+  _has_keys_any?: InputMaybe<Array<Scalars['String']>>;
+  _in?: InputMaybe<Array<Scalars['jsonb']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['jsonb']>;
+  _lte?: InputMaybe<Scalars['jsonb']>;
+  _neq?: InputMaybe<Scalars['jsonb']>;
+  _nin?: InputMaybe<Array<Scalars['jsonb']>>;
 };
 
 /** columns and relationships of "latest_decks" */
@@ -5819,23 +5972,23 @@ export type Latest_Decks_Aggregate_Fields = {
 
 /** aggregate fields of "latest_decks" */
 export type Latest_Decks_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Latest_Decks_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Latest_Decks_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "latest_decks" */
 export type Latest_Decks_Aggregate_Order_By = {
-  avg?: Maybe<Latest_Decks_Avg_Order_By>;
-  count?: Maybe<Order_By>;
-  max?: Maybe<Latest_Decks_Max_Order_By>;
-  min?: Maybe<Latest_Decks_Min_Order_By>;
-  stddev?: Maybe<Latest_Decks_Stddev_Order_By>;
-  stddev_pop?: Maybe<Latest_Decks_Stddev_Pop_Order_By>;
-  stddev_samp?: Maybe<Latest_Decks_Stddev_Samp_Order_By>;
-  sum?: Maybe<Latest_Decks_Sum_Order_By>;
-  var_pop?: Maybe<Latest_Decks_Var_Pop_Order_By>;
-  var_samp?: Maybe<Latest_Decks_Var_Samp_Order_By>;
-  variance?: Maybe<Latest_Decks_Variance_Order_By>;
+  avg?: InputMaybe<Latest_Decks_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Latest_Decks_Max_Order_By>;
+  min?: InputMaybe<Latest_Decks_Min_Order_By>;
+  stddev?: InputMaybe<Latest_Decks_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Latest_Decks_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Latest_Decks_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Latest_Decks_Sum_Order_By>;
+  var_pop?: InputMaybe<Latest_Decks_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Latest_Decks_Var_Samp_Order_By>;
+  variance?: InputMaybe<Latest_Decks_Variance_Order_By>;
 };
 
 /** input type for inserting array relation for remote table "latest_decks" */
@@ -5852,35 +6005,35 @@ export type Latest_Decks_Avg_Fields = {
 
 /** order by avg() on columns of table "latest_decks" */
 export type Latest_Decks_Avg_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "latest_decks". All fields are combined with a logical 'AND'. */
 export type Latest_Decks_Bool_Exp = {
-  _and?: Maybe<Array<Latest_Decks_Bool_Exp>>;
-  _not?: Maybe<Latest_Decks_Bool_Exp>;
-  _or?: Maybe<Array<Latest_Decks_Bool_Exp>>;
-  campaign?: Maybe<Campaign_Bool_Exp>;
-  campaign_id?: Maybe<Int_Comparison_Exp>;
-  deck?: Maybe<Campaign_Deck_Bool_Exp>;
-  id?: Maybe<Int_Comparison_Exp>;
-  owner_id?: Maybe<String_Comparison_Exp>;
+  _and?: InputMaybe<Array<Latest_Decks_Bool_Exp>>;
+  _not?: InputMaybe<Latest_Decks_Bool_Exp>;
+  _or?: InputMaybe<Array<Latest_Decks_Bool_Exp>>;
+  campaign?: InputMaybe<Campaign_Bool_Exp>;
+  campaign_id?: InputMaybe<Int_Comparison_Exp>;
+  deck?: InputMaybe<Campaign_Deck_Bool_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  owner_id?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** input type for incrementing numeric columns in table "latest_decks" */
 export type Latest_Decks_Inc_Input = {
-  campaign_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "latest_decks" */
 export type Latest_Decks_Insert_Input = {
-  campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
-  campaign_id?: Maybe<Scalars['Int']>;
-  deck?: Maybe<Campaign_Deck_Obj_Rel_Insert_Input>;
-  id?: Maybe<Scalars['Int']>;
-  owner_id?: Maybe<Scalars['String']>;
+  campaign?: InputMaybe<Campaign_Obj_Rel_Insert_Input>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  deck?: InputMaybe<Campaign_Deck_Obj_Rel_Insert_Input>;
+  id?: InputMaybe<Scalars['Int']>;
+  owner_id?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -5893,9 +6046,9 @@ export type Latest_Decks_Max_Fields = {
 
 /** order by max() on columns of table "latest_decks" */
 export type Latest_Decks_Max_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  owner_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  owner_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -5908,9 +6061,9 @@ export type Latest_Decks_Min_Fields = {
 
 /** order by min() on columns of table "latest_decks" */
 export type Latest_Decks_Min_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  owner_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  owner_id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "latest_decks" */
@@ -5924,11 +6077,11 @@ export type Latest_Decks_Mutation_Response = {
 
 /** Ordering options when selecting data from "latest_decks". */
 export type Latest_Decks_Order_By = {
-  campaign?: Maybe<Campaign_Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  deck?: Maybe<Campaign_Deck_Order_By>;
-  id?: Maybe<Order_By>;
-  owner_id?: Maybe<Order_By>;
+  campaign?: InputMaybe<Campaign_Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  deck?: InputMaybe<Campaign_Deck_Order_By>;
+  id?: InputMaybe<Order_By>;
+  owner_id?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "latest_decks" */
@@ -5943,9 +6096,9 @@ export enum Latest_Decks_Select_Column {
 
 /** input type for updating data in table "latest_decks" */
 export type Latest_Decks_Set_Input = {
-  campaign_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
-  owner_id?: Maybe<Scalars['String']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  owner_id?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate stddev on columns */
@@ -5957,8 +6110,8 @@ export type Latest_Decks_Stddev_Fields = {
 
 /** order by stddev() on columns of table "latest_decks" */
 export type Latest_Decks_Stddev_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -5970,8 +6123,8 @@ export type Latest_Decks_Stddev_Pop_Fields = {
 
 /** order by stddev_pop() on columns of table "latest_decks" */
 export type Latest_Decks_Stddev_Pop_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -5983,8 +6136,8 @@ export type Latest_Decks_Stddev_Samp_Fields = {
 
 /** order by stddev_samp() on columns of table "latest_decks" */
 export type Latest_Decks_Stddev_Samp_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -5996,8 +6149,8 @@ export type Latest_Decks_Sum_Fields = {
 
 /** order by sum() on columns of table "latest_decks" */
 export type Latest_Decks_Sum_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_pop on columns */
@@ -6009,8 +6162,8 @@ export type Latest_Decks_Var_Pop_Fields = {
 
 /** order by var_pop() on columns of table "latest_decks" */
 export type Latest_Decks_Var_Pop_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -6022,8 +6175,8 @@ export type Latest_Decks_Var_Samp_Fields = {
 
 /** order by var_samp() on columns of table "latest_decks" */
 export type Latest_Decks_Var_Samp_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -6035,8 +6188,8 @@ export type Latest_Decks_Variance_Fields = {
 
 /** order by variance() on columns of table "latest_decks" */
 export type Latest_Decks_Variance_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** columns and relationships of "local_decks" */
@@ -6077,23 +6230,23 @@ export type Local_Decks_Aggregate_Fields = {
 
 /** aggregate fields of "local_decks" */
 export type Local_Decks_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Local_Decks_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Local_Decks_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "local_decks" */
 export type Local_Decks_Aggregate_Order_By = {
-  avg?: Maybe<Local_Decks_Avg_Order_By>;
-  count?: Maybe<Order_By>;
-  max?: Maybe<Local_Decks_Max_Order_By>;
-  min?: Maybe<Local_Decks_Min_Order_By>;
-  stddev?: Maybe<Local_Decks_Stddev_Order_By>;
-  stddev_pop?: Maybe<Local_Decks_Stddev_Pop_Order_By>;
-  stddev_samp?: Maybe<Local_Decks_Stddev_Samp_Order_By>;
-  sum?: Maybe<Local_Decks_Sum_Order_By>;
-  var_pop?: Maybe<Local_Decks_Var_Pop_Order_By>;
-  var_samp?: Maybe<Local_Decks_Var_Samp_Order_By>;
-  variance?: Maybe<Local_Decks_Variance_Order_By>;
+  avg?: InputMaybe<Local_Decks_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Local_Decks_Max_Order_By>;
+  min?: InputMaybe<Local_Decks_Min_Order_By>;
+  stddev?: InputMaybe<Local_Decks_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Local_Decks_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Local_Decks_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Local_Decks_Sum_Order_By>;
+  var_pop?: InputMaybe<Local_Decks_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Local_Decks_Var_Samp_Order_By>;
+  variance?: InputMaybe<Local_Decks_Variance_Order_By>;
 };
 
 /** input type for inserting array relation for remote table "local_decks" */
@@ -6110,35 +6263,35 @@ export type Local_Decks_Avg_Fields = {
 
 /** order by avg() on columns of table "local_decks" */
 export type Local_Decks_Avg_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "local_decks". All fields are combined with a logical 'AND'. */
 export type Local_Decks_Bool_Exp = {
-  _and?: Maybe<Array<Local_Decks_Bool_Exp>>;
-  _not?: Maybe<Local_Decks_Bool_Exp>;
-  _or?: Maybe<Array<Local_Decks_Bool_Exp>>;
-  campaign?: Maybe<Campaign_Bool_Exp>;
-  campaign_id?: Maybe<Int_Comparison_Exp>;
-  deck?: Maybe<Campaign_Deck_Bool_Exp>;
-  id?: Maybe<Int_Comparison_Exp>;
-  owner_id?: Maybe<String_Comparison_Exp>;
+  _and?: InputMaybe<Array<Local_Decks_Bool_Exp>>;
+  _not?: InputMaybe<Local_Decks_Bool_Exp>;
+  _or?: InputMaybe<Array<Local_Decks_Bool_Exp>>;
+  campaign?: InputMaybe<Campaign_Bool_Exp>;
+  campaign_id?: InputMaybe<Int_Comparison_Exp>;
+  deck?: InputMaybe<Campaign_Deck_Bool_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  owner_id?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** input type for incrementing numeric columns in table "local_decks" */
 export type Local_Decks_Inc_Input = {
-  campaign_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "local_decks" */
 export type Local_Decks_Insert_Input = {
-  campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
-  campaign_id?: Maybe<Scalars['Int']>;
-  deck?: Maybe<Campaign_Deck_Obj_Rel_Insert_Input>;
-  id?: Maybe<Scalars['Int']>;
-  owner_id?: Maybe<Scalars['String']>;
+  campaign?: InputMaybe<Campaign_Obj_Rel_Insert_Input>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  deck?: InputMaybe<Campaign_Deck_Obj_Rel_Insert_Input>;
+  id?: InputMaybe<Scalars['Int']>;
+  owner_id?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -6151,9 +6304,9 @@ export type Local_Decks_Max_Fields = {
 
 /** order by max() on columns of table "local_decks" */
 export type Local_Decks_Max_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  owner_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  owner_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -6166,9 +6319,9 @@ export type Local_Decks_Min_Fields = {
 
 /** order by min() on columns of table "local_decks" */
 export type Local_Decks_Min_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  owner_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  owner_id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "local_decks" */
@@ -6182,11 +6335,11 @@ export type Local_Decks_Mutation_Response = {
 
 /** Ordering options when selecting data from "local_decks". */
 export type Local_Decks_Order_By = {
-  campaign?: Maybe<Campaign_Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  deck?: Maybe<Campaign_Deck_Order_By>;
-  id?: Maybe<Order_By>;
-  owner_id?: Maybe<Order_By>;
+  campaign?: InputMaybe<Campaign_Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  deck?: InputMaybe<Campaign_Deck_Order_By>;
+  id?: InputMaybe<Order_By>;
+  owner_id?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "local_decks" */
@@ -6201,9 +6354,9 @@ export enum Local_Decks_Select_Column {
 
 /** input type for updating data in table "local_decks" */
 export type Local_Decks_Set_Input = {
-  campaign_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
-  owner_id?: Maybe<Scalars['String']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  owner_id?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate stddev on columns */
@@ -6215,8 +6368,8 @@ export type Local_Decks_Stddev_Fields = {
 
 /** order by stddev() on columns of table "local_decks" */
 export type Local_Decks_Stddev_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -6228,8 +6381,8 @@ export type Local_Decks_Stddev_Pop_Fields = {
 
 /** order by stddev_pop() on columns of table "local_decks" */
 export type Local_Decks_Stddev_Pop_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -6241,8 +6394,8 @@ export type Local_Decks_Stddev_Samp_Fields = {
 
 /** order by stddev_samp() on columns of table "local_decks" */
 export type Local_Decks_Stddev_Samp_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -6254,8 +6407,8 @@ export type Local_Decks_Sum_Fields = {
 
 /** order by sum() on columns of table "local_decks" */
 export type Local_Decks_Sum_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_pop on columns */
@@ -6267,8 +6420,8 @@ export type Local_Decks_Var_Pop_Fields = {
 
 /** order by var_pop() on columns of table "local_decks" */
 export type Local_Decks_Var_Pop_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -6280,8 +6433,8 @@ export type Local_Decks_Var_Samp_Fields = {
 
 /** order by var_samp() on columns of table "local_decks" */
 export type Local_Decks_Var_Samp_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -6293,8 +6446,8 @@ export type Local_Decks_Variance_Fields = {
 
 /** order by variance() on columns of table "local_decks" */
 export type Local_Decks_Variance_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** mutation root */
@@ -6895,35 +7048,35 @@ export type Mutation_RootInsert_Base_Decks_OneArgs = {
 /** mutation root */
 export type Mutation_RootInsert_CampaignArgs = {
   objects: Array<Campaign_Insert_Input>;
-  on_conflict?: Maybe<Campaign_On_Conflict>;
+  on_conflict?: InputMaybe<Campaign_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Campaign_AccessArgs = {
   objects: Array<Campaign_Access_Insert_Input>;
-  on_conflict?: Maybe<Campaign_Access_On_Conflict>;
+  on_conflict?: InputMaybe<Campaign_Access_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Campaign_Access_OneArgs = {
   object: Campaign_Access_Insert_Input;
-  on_conflict?: Maybe<Campaign_Access_On_Conflict>;
+  on_conflict?: InputMaybe<Campaign_Access_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Campaign_DeckArgs = {
   objects: Array<Campaign_Deck_Insert_Input>;
-  on_conflict?: Maybe<Campaign_Deck_On_Conflict>;
+  on_conflict?: InputMaybe<Campaign_Deck_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Campaign_Deck_OneArgs = {
   object: Campaign_Deck_Insert_Input;
-  on_conflict?: Maybe<Campaign_Deck_On_Conflict>;
+  on_conflict?: InputMaybe<Campaign_Deck_On_Conflict>;
 };
 
 
@@ -6942,189 +7095,189 @@ export type Mutation_RootInsert_Campaign_Guide_OneArgs = {
 /** mutation root */
 export type Mutation_RootInsert_Campaign_InvestigatorArgs = {
   objects: Array<Campaign_Investigator_Insert_Input>;
-  on_conflict?: Maybe<Campaign_Investigator_On_Conflict>;
+  on_conflict?: InputMaybe<Campaign_Investigator_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Campaign_Investigator_OneArgs = {
   object: Campaign_Investigator_Insert_Input;
-  on_conflict?: Maybe<Campaign_Investigator_On_Conflict>;
+  on_conflict?: InputMaybe<Campaign_Investigator_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Campaign_OneArgs = {
   object: Campaign_Insert_Input;
-  on_conflict?: Maybe<Campaign_On_Conflict>;
+  on_conflict?: InputMaybe<Campaign_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_CardArgs = {
   objects: Array<Card_Insert_Input>;
-  on_conflict?: Maybe<Card_On_Conflict>;
+  on_conflict?: InputMaybe<Card_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Card_OneArgs = {
   object: Card_Insert_Input;
-  on_conflict?: Maybe<Card_On_Conflict>;
+  on_conflict?: InputMaybe<Card_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Card_PackArgs = {
   objects: Array<Card_Pack_Insert_Input>;
-  on_conflict?: Maybe<Card_Pack_On_Conflict>;
+  on_conflict?: InputMaybe<Card_Pack_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Card_Pack_OneArgs = {
   object: Card_Pack_Insert_Input;
-  on_conflict?: Maybe<Card_Pack_On_Conflict>;
+  on_conflict?: InputMaybe<Card_Pack_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Card_TextArgs = {
   objects: Array<Card_Text_Insert_Input>;
-  on_conflict?: Maybe<Card_Text_On_Conflict>;
+  on_conflict?: InputMaybe<Card_Text_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Card_Text_OneArgs = {
   object: Card_Text_Insert_Input;
-  on_conflict?: Maybe<Card_Text_On_Conflict>;
+  on_conflict?: InputMaybe<Card_Text_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Chaos_Bag_ResultArgs = {
   objects: Array<Chaos_Bag_Result_Insert_Input>;
-  on_conflict?: Maybe<Chaos_Bag_Result_On_Conflict>;
+  on_conflict?: InputMaybe<Chaos_Bag_Result_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Chaos_Bag_Result_OneArgs = {
   object: Chaos_Bag_Result_Insert_Input;
-  on_conflict?: Maybe<Chaos_Bag_Result_On_Conflict>;
+  on_conflict?: InputMaybe<Chaos_Bag_Result_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Chaos_Bag_Tarot_ModeArgs = {
   objects: Array<Chaos_Bag_Tarot_Mode_Insert_Input>;
-  on_conflict?: Maybe<Chaos_Bag_Tarot_Mode_On_Conflict>;
+  on_conflict?: InputMaybe<Chaos_Bag_Tarot_Mode_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Chaos_Bag_Tarot_Mode_OneArgs = {
   object: Chaos_Bag_Tarot_Mode_Insert_Input;
-  on_conflict?: Maybe<Chaos_Bag_Tarot_Mode_On_Conflict>;
+  on_conflict?: InputMaybe<Chaos_Bag_Tarot_Mode_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_FaqArgs = {
   objects: Array<Faq_Insert_Input>;
-  on_conflict?: Maybe<Faq_On_Conflict>;
+  on_conflict?: InputMaybe<Faq_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Faq_OneArgs = {
   object: Faq_Insert_Input;
-  on_conflict?: Maybe<Faq_On_Conflict>;
+  on_conflict?: InputMaybe<Faq_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Faq_TextArgs = {
   objects: Array<Faq_Text_Insert_Input>;
-  on_conflict?: Maybe<Faq_Text_On_Conflict>;
+  on_conflict?: InputMaybe<Faq_Text_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Faq_Text_OneArgs = {
   object: Faq_Text_Insert_Input;
-  on_conflict?: Maybe<Faq_Text_On_Conflict>;
+  on_conflict?: InputMaybe<Faq_Text_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Friend_StatusArgs = {
   objects: Array<Friend_Status_Insert_Input>;
-  on_conflict?: Maybe<Friend_Status_On_Conflict>;
+  on_conflict?: InputMaybe<Friend_Status_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Friend_Status_OneArgs = {
   object: Friend_Status_Insert_Input;
-  on_conflict?: Maybe<Friend_Status_On_Conflict>;
+  on_conflict?: InputMaybe<Friend_Status_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Friend_Status_TypeArgs = {
   objects: Array<Friend_Status_Type_Insert_Input>;
-  on_conflict?: Maybe<Friend_Status_Type_On_Conflict>;
+  on_conflict?: InputMaybe<Friend_Status_Type_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Friend_Status_Type_OneArgs = {
   object: Friend_Status_Type_Insert_Input;
-  on_conflict?: Maybe<Friend_Status_Type_On_Conflict>;
+  on_conflict?: InputMaybe<Friend_Status_Type_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Guide_AchievementArgs = {
   objects: Array<Guide_Achievement_Insert_Input>;
-  on_conflict?: Maybe<Guide_Achievement_On_Conflict>;
+  on_conflict?: InputMaybe<Guide_Achievement_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Guide_Achievement_OneArgs = {
   object: Guide_Achievement_Insert_Input;
-  on_conflict?: Maybe<Guide_Achievement_On_Conflict>;
+  on_conflict?: InputMaybe<Guide_Achievement_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Guide_InputArgs = {
   objects: Array<Guide_Input_Insert_Input>;
-  on_conflict?: Maybe<Guide_Input_On_Conflict>;
+  on_conflict?: InputMaybe<Guide_Input_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Guide_Input_OneArgs = {
   object: Guide_Input_Insert_Input;
-  on_conflict?: Maybe<Guide_Input_On_Conflict>;
+  on_conflict?: InputMaybe<Guide_Input_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Investigator_DataArgs = {
   objects: Array<Investigator_Data_Insert_Input>;
-  on_conflict?: Maybe<Investigator_Data_On_Conflict>;
+  on_conflict?: InputMaybe<Investigator_Data_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Investigator_Data_OneArgs = {
   object: Investigator_Data_Insert_Input;
-  on_conflict?: Maybe<Investigator_Data_On_Conflict>;
+  on_conflict?: InputMaybe<Investigator_Data_On_Conflict>;
 };
 
 
@@ -7167,28 +7320,28 @@ export type Mutation_RootInsert_User_Campaigns_OneArgs = {
 /** mutation root */
 export type Mutation_RootInsert_User_FlagArgs = {
   objects: Array<User_Flag_Insert_Input>;
-  on_conflict?: Maybe<User_Flag_On_Conflict>;
+  on_conflict?: InputMaybe<User_Flag_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_User_Flag_OneArgs = {
   object: User_Flag_Insert_Input;
-  on_conflict?: Maybe<User_Flag_On_Conflict>;
+  on_conflict?: InputMaybe<User_Flag_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_User_Flag_TypeArgs = {
   objects: Array<User_Flag_Type_Insert_Input>;
-  on_conflict?: Maybe<User_Flag_Type_On_Conflict>;
+  on_conflict?: InputMaybe<User_Flag_Type_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_User_Flag_Type_OneArgs = {
   object: User_Flag_Type_Insert_Input;
-  on_conflict?: Maybe<User_Flag_Type_On_Conflict>;
+  on_conflict?: InputMaybe<User_Flag_Type_On_Conflict>;
 };
 
 
@@ -7231,408 +7384,408 @@ export type Mutation_RootInsert_User_Sent_Friend_Requests_OneArgs = {
 /** mutation root */
 export type Mutation_RootInsert_UsersArgs = {
   objects: Array<Users_Insert_Input>;
-  on_conflict?: Maybe<Users_On_Conflict>;
+  on_conflict?: InputMaybe<Users_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Users_OneArgs = {
   object: Users_Insert_Input;
-  on_conflict?: Maybe<Users_On_Conflict>;
+  on_conflict?: InputMaybe<Users_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Base_DecksArgs = {
-  _inc?: Maybe<Base_Decks_Inc_Input>;
-  _set?: Maybe<Base_Decks_Set_Input>;
+  _inc?: InputMaybe<Base_Decks_Inc_Input>;
+  _set?: InputMaybe<Base_Decks_Set_Input>;
   where: Base_Decks_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_CampaignArgs = {
-  _append?: Maybe<Campaign_Append_Input>;
-  _delete_at_path?: Maybe<Campaign_Delete_At_Path_Input>;
-  _delete_elem?: Maybe<Campaign_Delete_Elem_Input>;
-  _delete_key?: Maybe<Campaign_Delete_Key_Input>;
-  _inc?: Maybe<Campaign_Inc_Input>;
-  _prepend?: Maybe<Campaign_Prepend_Input>;
-  _set?: Maybe<Campaign_Set_Input>;
+  _append?: InputMaybe<Campaign_Append_Input>;
+  _delete_at_path?: InputMaybe<Campaign_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Campaign_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Campaign_Delete_Key_Input>;
+  _inc?: InputMaybe<Campaign_Inc_Input>;
+  _prepend?: InputMaybe<Campaign_Prepend_Input>;
+  _set?: InputMaybe<Campaign_Set_Input>;
   where: Campaign_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Campaign_AccessArgs = {
-  _inc?: Maybe<Campaign_Access_Inc_Input>;
-  _set?: Maybe<Campaign_Access_Set_Input>;
+  _inc?: InputMaybe<Campaign_Access_Inc_Input>;
+  _set?: InputMaybe<Campaign_Access_Set_Input>;
   where: Campaign_Access_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Campaign_Access_By_PkArgs = {
-  _inc?: Maybe<Campaign_Access_Inc_Input>;
-  _set?: Maybe<Campaign_Access_Set_Input>;
+  _inc?: InputMaybe<Campaign_Access_Inc_Input>;
+  _set?: InputMaybe<Campaign_Access_Set_Input>;
   pk_columns: Campaign_Access_Pk_Columns_Input;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Campaign_By_PkArgs = {
-  _append?: Maybe<Campaign_Append_Input>;
-  _delete_at_path?: Maybe<Campaign_Delete_At_Path_Input>;
-  _delete_elem?: Maybe<Campaign_Delete_Elem_Input>;
-  _delete_key?: Maybe<Campaign_Delete_Key_Input>;
-  _inc?: Maybe<Campaign_Inc_Input>;
-  _prepend?: Maybe<Campaign_Prepend_Input>;
-  _set?: Maybe<Campaign_Set_Input>;
+  _append?: InputMaybe<Campaign_Append_Input>;
+  _delete_at_path?: InputMaybe<Campaign_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Campaign_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Campaign_Delete_Key_Input>;
+  _inc?: InputMaybe<Campaign_Inc_Input>;
+  _prepend?: InputMaybe<Campaign_Prepend_Input>;
+  _set?: InputMaybe<Campaign_Set_Input>;
   pk_columns: Campaign_Pk_Columns_Input;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Campaign_DeckArgs = {
-  _append?: Maybe<Campaign_Deck_Append_Input>;
-  _delete_at_path?: Maybe<Campaign_Deck_Delete_At_Path_Input>;
-  _delete_elem?: Maybe<Campaign_Deck_Delete_Elem_Input>;
-  _delete_key?: Maybe<Campaign_Deck_Delete_Key_Input>;
-  _inc?: Maybe<Campaign_Deck_Inc_Input>;
-  _prepend?: Maybe<Campaign_Deck_Prepend_Input>;
-  _set?: Maybe<Campaign_Deck_Set_Input>;
+  _append?: InputMaybe<Campaign_Deck_Append_Input>;
+  _delete_at_path?: InputMaybe<Campaign_Deck_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Campaign_Deck_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Campaign_Deck_Delete_Key_Input>;
+  _inc?: InputMaybe<Campaign_Deck_Inc_Input>;
+  _prepend?: InputMaybe<Campaign_Deck_Prepend_Input>;
+  _set?: InputMaybe<Campaign_Deck_Set_Input>;
   where: Campaign_Deck_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Campaign_Deck_By_PkArgs = {
-  _append?: Maybe<Campaign_Deck_Append_Input>;
-  _delete_at_path?: Maybe<Campaign_Deck_Delete_At_Path_Input>;
-  _delete_elem?: Maybe<Campaign_Deck_Delete_Elem_Input>;
-  _delete_key?: Maybe<Campaign_Deck_Delete_Key_Input>;
-  _inc?: Maybe<Campaign_Deck_Inc_Input>;
-  _prepend?: Maybe<Campaign_Deck_Prepend_Input>;
-  _set?: Maybe<Campaign_Deck_Set_Input>;
+  _append?: InputMaybe<Campaign_Deck_Append_Input>;
+  _delete_at_path?: InputMaybe<Campaign_Deck_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Campaign_Deck_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Campaign_Deck_Delete_Key_Input>;
+  _inc?: InputMaybe<Campaign_Deck_Inc_Input>;
+  _prepend?: InputMaybe<Campaign_Deck_Prepend_Input>;
+  _set?: InputMaybe<Campaign_Deck_Set_Input>;
   pk_columns: Campaign_Deck_Pk_Columns_Input;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Campaign_GuideArgs = {
-  _inc?: Maybe<Campaign_Guide_Inc_Input>;
-  _set?: Maybe<Campaign_Guide_Set_Input>;
+  _inc?: InputMaybe<Campaign_Guide_Inc_Input>;
+  _set?: InputMaybe<Campaign_Guide_Set_Input>;
   where: Campaign_Guide_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Campaign_InvestigatorArgs = {
-  _inc?: Maybe<Campaign_Investigator_Inc_Input>;
-  _set?: Maybe<Campaign_Investigator_Set_Input>;
+  _inc?: InputMaybe<Campaign_Investigator_Inc_Input>;
+  _set?: InputMaybe<Campaign_Investigator_Set_Input>;
   where: Campaign_Investigator_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Campaign_Investigator_By_PkArgs = {
-  _inc?: Maybe<Campaign_Investigator_Inc_Input>;
-  _set?: Maybe<Campaign_Investigator_Set_Input>;
+  _inc?: InputMaybe<Campaign_Investigator_Inc_Input>;
+  _set?: InputMaybe<Campaign_Investigator_Set_Input>;
   pk_columns: Campaign_Investigator_Pk_Columns_Input;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_CardArgs = {
-  _inc?: Maybe<Card_Inc_Input>;
-  _set?: Maybe<Card_Set_Input>;
+  _inc?: InputMaybe<Card_Inc_Input>;
+  _set?: InputMaybe<Card_Set_Input>;
   where: Card_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Card_By_PkArgs = {
-  _inc?: Maybe<Card_Inc_Input>;
-  _set?: Maybe<Card_Set_Input>;
+  _inc?: InputMaybe<Card_Inc_Input>;
+  _set?: InputMaybe<Card_Set_Input>;
   pk_columns: Card_Pk_Columns_Input;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Card_PackArgs = {
-  _set?: Maybe<Card_Pack_Set_Input>;
+  _set?: InputMaybe<Card_Pack_Set_Input>;
   where: Card_Pack_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Card_Pack_By_PkArgs = {
-  _set?: Maybe<Card_Pack_Set_Input>;
+  _set?: InputMaybe<Card_Pack_Set_Input>;
   pk_columns: Card_Pack_Pk_Columns_Input;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Card_TextArgs = {
-  _set?: Maybe<Card_Text_Set_Input>;
+  _set?: InputMaybe<Card_Text_Set_Input>;
   where: Card_Text_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Card_Text_By_PkArgs = {
-  _set?: Maybe<Card_Text_Set_Input>;
+  _set?: InputMaybe<Card_Text_Set_Input>;
   pk_columns: Card_Text_Pk_Columns_Input;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Chaos_Bag_ResultArgs = {
-  _append?: Maybe<Chaos_Bag_Result_Append_Input>;
-  _delete_at_path?: Maybe<Chaos_Bag_Result_Delete_At_Path_Input>;
-  _delete_elem?: Maybe<Chaos_Bag_Result_Delete_Elem_Input>;
-  _delete_key?: Maybe<Chaos_Bag_Result_Delete_Key_Input>;
-  _inc?: Maybe<Chaos_Bag_Result_Inc_Input>;
-  _prepend?: Maybe<Chaos_Bag_Result_Prepend_Input>;
-  _set?: Maybe<Chaos_Bag_Result_Set_Input>;
+  _append?: InputMaybe<Chaos_Bag_Result_Append_Input>;
+  _delete_at_path?: InputMaybe<Chaos_Bag_Result_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Chaos_Bag_Result_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Chaos_Bag_Result_Delete_Key_Input>;
+  _inc?: InputMaybe<Chaos_Bag_Result_Inc_Input>;
+  _prepend?: InputMaybe<Chaos_Bag_Result_Prepend_Input>;
+  _set?: InputMaybe<Chaos_Bag_Result_Set_Input>;
   where: Chaos_Bag_Result_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Chaos_Bag_Result_By_PkArgs = {
-  _append?: Maybe<Chaos_Bag_Result_Append_Input>;
-  _delete_at_path?: Maybe<Chaos_Bag_Result_Delete_At_Path_Input>;
-  _delete_elem?: Maybe<Chaos_Bag_Result_Delete_Elem_Input>;
-  _delete_key?: Maybe<Chaos_Bag_Result_Delete_Key_Input>;
-  _inc?: Maybe<Chaos_Bag_Result_Inc_Input>;
-  _prepend?: Maybe<Chaos_Bag_Result_Prepend_Input>;
-  _set?: Maybe<Chaos_Bag_Result_Set_Input>;
+  _append?: InputMaybe<Chaos_Bag_Result_Append_Input>;
+  _delete_at_path?: InputMaybe<Chaos_Bag_Result_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Chaos_Bag_Result_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Chaos_Bag_Result_Delete_Key_Input>;
+  _inc?: InputMaybe<Chaos_Bag_Result_Inc_Input>;
+  _prepend?: InputMaybe<Chaos_Bag_Result_Prepend_Input>;
+  _set?: InputMaybe<Chaos_Bag_Result_Set_Input>;
   pk_columns: Chaos_Bag_Result_Pk_Columns_Input;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Chaos_Bag_Tarot_ModeArgs = {
-  _set?: Maybe<Chaos_Bag_Tarot_Mode_Set_Input>;
+  _set?: InputMaybe<Chaos_Bag_Tarot_Mode_Set_Input>;
   where: Chaos_Bag_Tarot_Mode_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Chaos_Bag_Tarot_Mode_By_PkArgs = {
-  _set?: Maybe<Chaos_Bag_Tarot_Mode_Set_Input>;
+  _set?: InputMaybe<Chaos_Bag_Tarot_Mode_Set_Input>;
   pk_columns: Chaos_Bag_Tarot_Mode_Pk_Columns_Input;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_FaqArgs = {
-  _set?: Maybe<Faq_Set_Input>;
+  _set?: InputMaybe<Faq_Set_Input>;
   where: Faq_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Faq_By_PkArgs = {
-  _set?: Maybe<Faq_Set_Input>;
+  _set?: InputMaybe<Faq_Set_Input>;
   pk_columns: Faq_Pk_Columns_Input;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Faq_TextArgs = {
-  _set?: Maybe<Faq_Text_Set_Input>;
+  _set?: InputMaybe<Faq_Text_Set_Input>;
   where: Faq_Text_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Faq_Text_By_PkArgs = {
-  _set?: Maybe<Faq_Text_Set_Input>;
+  _set?: InputMaybe<Faq_Text_Set_Input>;
   pk_columns: Faq_Text_Pk_Columns_Input;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Friend_StatusArgs = {
-  _set?: Maybe<Friend_Status_Set_Input>;
+  _set?: InputMaybe<Friend_Status_Set_Input>;
   where: Friend_Status_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Friend_Status_By_PkArgs = {
-  _set?: Maybe<Friend_Status_Set_Input>;
+  _set?: InputMaybe<Friend_Status_Set_Input>;
   pk_columns: Friend_Status_Pk_Columns_Input;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Friend_Status_TypeArgs = {
-  _set?: Maybe<Friend_Status_Type_Set_Input>;
+  _set?: InputMaybe<Friend_Status_Type_Set_Input>;
   where: Friend_Status_Type_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Friend_Status_Type_By_PkArgs = {
-  _set?: Maybe<Friend_Status_Type_Set_Input>;
+  _set?: InputMaybe<Friend_Status_Type_Set_Input>;
   pk_columns: Friend_Status_Type_Pk_Columns_Input;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Guide_AchievementArgs = {
-  _inc?: Maybe<Guide_Achievement_Inc_Input>;
-  _set?: Maybe<Guide_Achievement_Set_Input>;
+  _inc?: InputMaybe<Guide_Achievement_Inc_Input>;
+  _set?: InputMaybe<Guide_Achievement_Set_Input>;
   where: Guide_Achievement_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Guide_Achievement_By_PkArgs = {
-  _inc?: Maybe<Guide_Achievement_Inc_Input>;
-  _set?: Maybe<Guide_Achievement_Set_Input>;
+  _inc?: InputMaybe<Guide_Achievement_Inc_Input>;
+  _set?: InputMaybe<Guide_Achievement_Set_Input>;
   pk_columns: Guide_Achievement_Pk_Columns_Input;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Guide_InputArgs = {
-  _append?: Maybe<Guide_Input_Append_Input>;
-  _delete_at_path?: Maybe<Guide_Input_Delete_At_Path_Input>;
-  _delete_elem?: Maybe<Guide_Input_Delete_Elem_Input>;
-  _delete_key?: Maybe<Guide_Input_Delete_Key_Input>;
-  _inc?: Maybe<Guide_Input_Inc_Input>;
-  _prepend?: Maybe<Guide_Input_Prepend_Input>;
-  _set?: Maybe<Guide_Input_Set_Input>;
+  _append?: InputMaybe<Guide_Input_Append_Input>;
+  _delete_at_path?: InputMaybe<Guide_Input_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Guide_Input_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Guide_Input_Delete_Key_Input>;
+  _inc?: InputMaybe<Guide_Input_Inc_Input>;
+  _prepend?: InputMaybe<Guide_Input_Prepend_Input>;
+  _set?: InputMaybe<Guide_Input_Set_Input>;
   where: Guide_Input_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Guide_Input_By_PkArgs = {
-  _append?: Maybe<Guide_Input_Append_Input>;
-  _delete_at_path?: Maybe<Guide_Input_Delete_At_Path_Input>;
-  _delete_elem?: Maybe<Guide_Input_Delete_Elem_Input>;
-  _delete_key?: Maybe<Guide_Input_Delete_Key_Input>;
-  _inc?: Maybe<Guide_Input_Inc_Input>;
-  _prepend?: Maybe<Guide_Input_Prepend_Input>;
-  _set?: Maybe<Guide_Input_Set_Input>;
+  _append?: InputMaybe<Guide_Input_Append_Input>;
+  _delete_at_path?: InputMaybe<Guide_Input_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Guide_Input_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Guide_Input_Delete_Key_Input>;
+  _inc?: InputMaybe<Guide_Input_Inc_Input>;
+  _prepend?: InputMaybe<Guide_Input_Prepend_Input>;
+  _set?: InputMaybe<Guide_Input_Set_Input>;
   pk_columns: Guide_Input_Pk_Columns_Input;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Investigator_DataArgs = {
-  _append?: Maybe<Investigator_Data_Append_Input>;
-  _delete_at_path?: Maybe<Investigator_Data_Delete_At_Path_Input>;
-  _delete_elem?: Maybe<Investigator_Data_Delete_Elem_Input>;
-  _delete_key?: Maybe<Investigator_Data_Delete_Key_Input>;
-  _inc?: Maybe<Investigator_Data_Inc_Input>;
-  _prepend?: Maybe<Investigator_Data_Prepend_Input>;
-  _set?: Maybe<Investigator_Data_Set_Input>;
+  _append?: InputMaybe<Investigator_Data_Append_Input>;
+  _delete_at_path?: InputMaybe<Investigator_Data_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Investigator_Data_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Investigator_Data_Delete_Key_Input>;
+  _inc?: InputMaybe<Investigator_Data_Inc_Input>;
+  _prepend?: InputMaybe<Investigator_Data_Prepend_Input>;
+  _set?: InputMaybe<Investigator_Data_Set_Input>;
   where: Investigator_Data_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Investigator_Data_By_PkArgs = {
-  _append?: Maybe<Investigator_Data_Append_Input>;
-  _delete_at_path?: Maybe<Investigator_Data_Delete_At_Path_Input>;
-  _delete_elem?: Maybe<Investigator_Data_Delete_Elem_Input>;
-  _delete_key?: Maybe<Investigator_Data_Delete_Key_Input>;
-  _inc?: Maybe<Investigator_Data_Inc_Input>;
-  _prepend?: Maybe<Investigator_Data_Prepend_Input>;
-  _set?: Maybe<Investigator_Data_Set_Input>;
+  _append?: InputMaybe<Investigator_Data_Append_Input>;
+  _delete_at_path?: InputMaybe<Investigator_Data_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Investigator_Data_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Investigator_Data_Delete_Key_Input>;
+  _inc?: InputMaybe<Investigator_Data_Inc_Input>;
+  _prepend?: InputMaybe<Investigator_Data_Prepend_Input>;
+  _set?: InputMaybe<Investigator_Data_Set_Input>;
   pk_columns: Investigator_Data_Pk_Columns_Input;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Latest_DecksArgs = {
-  _inc?: Maybe<Latest_Decks_Inc_Input>;
-  _set?: Maybe<Latest_Decks_Set_Input>;
+  _inc?: InputMaybe<Latest_Decks_Inc_Input>;
+  _set?: InputMaybe<Latest_Decks_Set_Input>;
   where: Latest_Decks_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Local_DecksArgs = {
-  _inc?: Maybe<Local_Decks_Inc_Input>;
-  _set?: Maybe<Local_Decks_Set_Input>;
+  _inc?: InputMaybe<Local_Decks_Inc_Input>;
+  _set?: InputMaybe<Local_Decks_Set_Input>;
   where: Local_Decks_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_User_CampaignsArgs = {
-  _inc?: Maybe<User_Campaigns_Inc_Input>;
-  _set?: Maybe<User_Campaigns_Set_Input>;
+  _inc?: InputMaybe<User_Campaigns_Inc_Input>;
+  _set?: InputMaybe<User_Campaigns_Set_Input>;
   where: User_Campaigns_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_User_FlagArgs = {
-  _set?: Maybe<User_Flag_Set_Input>;
+  _set?: InputMaybe<User_Flag_Set_Input>;
   where: User_Flag_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_User_Flag_By_PkArgs = {
-  _set?: Maybe<User_Flag_Set_Input>;
+  _set?: InputMaybe<User_Flag_Set_Input>;
   pk_columns: User_Flag_Pk_Columns_Input;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_User_Flag_TypeArgs = {
-  _set?: Maybe<User_Flag_Type_Set_Input>;
+  _set?: InputMaybe<User_Flag_Type_Set_Input>;
   where: User_Flag_Type_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_User_Flag_Type_By_PkArgs = {
-  _set?: Maybe<User_Flag_Type_Set_Input>;
+  _set?: InputMaybe<User_Flag_Type_Set_Input>;
   pk_columns: User_Flag_Type_Pk_Columns_Input;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_User_FriendsArgs = {
-  _set?: Maybe<User_Friends_Set_Input>;
+  _set?: InputMaybe<User_Friends_Set_Input>;
   where: User_Friends_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_User_Received_Friend_RequestsArgs = {
-  _set?: Maybe<User_Received_Friend_Requests_Set_Input>;
+  _set?: InputMaybe<User_Received_Friend_Requests_Set_Input>;
   where: User_Received_Friend_Requests_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_User_Sent_Friend_RequestsArgs = {
-  _set?: Maybe<User_Sent_Friend_Requests_Set_Input>;
+  _set?: InputMaybe<User_Sent_Friend_Requests_Set_Input>;
   where: User_Sent_Friend_Requests_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_UsersArgs = {
-  _set?: Maybe<Users_Set_Input>;
+  _set?: InputMaybe<Users_Set_Input>;
   where: Users_Bool_Exp;
 };
 
 
 /** mutation root */
 export type Mutation_RootUpdate_Users_By_PkArgs = {
-  _set?: Maybe<Users_Set_Input>;
+  _set?: InputMaybe<Users_Set_Input>;
   pk_columns: Users_Pk_Columns_Input;
 };
 
@@ -7804,47 +7957,47 @@ export type Query_Root = {
 
 
 export type Query_RootBase_DecksArgs = {
-  distinct_on?: Maybe<Array<Base_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Base_Decks_Order_By>>;
-  where?: Maybe<Base_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Base_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Base_Decks_Order_By>>;
+  where?: InputMaybe<Base_Decks_Bool_Exp>;
 };
 
 
 export type Query_RootBase_Decks_AggregateArgs = {
-  distinct_on?: Maybe<Array<Base_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Base_Decks_Order_By>>;
-  where?: Maybe<Base_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Base_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Base_Decks_Order_By>>;
+  where?: InputMaybe<Base_Decks_Bool_Exp>;
 };
 
 
 export type Query_RootCampaignArgs = {
-  distinct_on?: Maybe<Array<Campaign_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Order_By>>;
-  where?: Maybe<Campaign_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Order_By>>;
+  where?: InputMaybe<Campaign_Bool_Exp>;
 };
 
 
 export type Query_RootCampaign_AccessArgs = {
-  distinct_on?: Maybe<Array<Campaign_Access_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Access_Order_By>>;
-  where?: Maybe<Campaign_Access_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Access_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Access_Order_By>>;
+  where?: InputMaybe<Campaign_Access_Bool_Exp>;
 };
 
 
 export type Query_RootCampaign_Access_AggregateArgs = {
-  distinct_on?: Maybe<Array<Campaign_Access_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Access_Order_By>>;
-  where?: Maybe<Campaign_Access_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Access_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Access_Order_By>>;
+  where?: InputMaybe<Campaign_Access_Bool_Exp>;
 };
 
 
@@ -7854,11 +8007,11 @@ export type Query_RootCampaign_Access_By_PkArgs = {
 
 
 export type Query_RootCampaign_AggregateArgs = {
-  distinct_on?: Maybe<Array<Campaign_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Order_By>>;
-  where?: Maybe<Campaign_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Order_By>>;
+  where?: InputMaybe<Campaign_Bool_Exp>;
 };
 
 
@@ -7868,20 +8021,20 @@ export type Query_RootCampaign_By_PkArgs = {
 
 
 export type Query_RootCampaign_DeckArgs = {
-  distinct_on?: Maybe<Array<Campaign_Deck_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Deck_Order_By>>;
-  where?: Maybe<Campaign_Deck_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Deck_Order_By>>;
+  where?: InputMaybe<Campaign_Deck_Bool_Exp>;
 };
 
 
 export type Query_RootCampaign_Deck_AggregateArgs = {
-  distinct_on?: Maybe<Array<Campaign_Deck_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Deck_Order_By>>;
-  where?: Maybe<Campaign_Deck_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Deck_Order_By>>;
+  where?: InputMaybe<Campaign_Deck_Bool_Exp>;
 };
 
 
@@ -7891,38 +8044,38 @@ export type Query_RootCampaign_Deck_By_PkArgs = {
 
 
 export type Query_RootCampaign_GuideArgs = {
-  distinct_on?: Maybe<Array<Campaign_Guide_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Guide_Order_By>>;
-  where?: Maybe<Campaign_Guide_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Guide_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Guide_Order_By>>;
+  where?: InputMaybe<Campaign_Guide_Bool_Exp>;
 };
 
 
 export type Query_RootCampaign_Guide_AggregateArgs = {
-  distinct_on?: Maybe<Array<Campaign_Guide_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Guide_Order_By>>;
-  where?: Maybe<Campaign_Guide_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Guide_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Guide_Order_By>>;
+  where?: InputMaybe<Campaign_Guide_Bool_Exp>;
 };
 
 
 export type Query_RootCampaign_InvestigatorArgs = {
-  distinct_on?: Maybe<Array<Campaign_Investigator_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Investigator_Order_By>>;
-  where?: Maybe<Campaign_Investigator_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Investigator_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Investigator_Order_By>>;
+  where?: InputMaybe<Campaign_Investigator_Bool_Exp>;
 };
 
 
 export type Query_RootCampaign_Investigator_AggregateArgs = {
-  distinct_on?: Maybe<Array<Campaign_Investigator_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Investigator_Order_By>>;
-  where?: Maybe<Campaign_Investigator_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Investigator_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Investigator_Order_By>>;
+  where?: InputMaybe<Campaign_Investigator_Bool_Exp>;
 };
 
 
@@ -7933,20 +8086,20 @@ export type Query_RootCampaign_Investigator_By_PkArgs = {
 
 
 export type Query_RootCardArgs = {
-  distinct_on?: Maybe<Array<Card_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Card_Order_By>>;
-  where?: Maybe<Card_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Order_By>>;
+  where?: InputMaybe<Card_Bool_Exp>;
 };
 
 
 export type Query_RootCard_AggregateArgs = {
-  distinct_on?: Maybe<Array<Card_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Card_Order_By>>;
-  where?: Maybe<Card_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Order_By>>;
+  where?: InputMaybe<Card_Bool_Exp>;
 };
 
 
@@ -7956,20 +8109,20 @@ export type Query_RootCard_By_PkArgs = {
 
 
 export type Query_RootCard_PackArgs = {
-  distinct_on?: Maybe<Array<Card_Pack_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Card_Pack_Order_By>>;
-  where?: Maybe<Card_Pack_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Card_Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Pack_Order_By>>;
+  where?: InputMaybe<Card_Pack_Bool_Exp>;
 };
 
 
 export type Query_RootCard_Pack_AggregateArgs = {
-  distinct_on?: Maybe<Array<Card_Pack_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Card_Pack_Order_By>>;
-  where?: Maybe<Card_Pack_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Card_Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Pack_Order_By>>;
+  where?: InputMaybe<Card_Pack_Bool_Exp>;
 };
 
 
@@ -7980,20 +8133,20 @@ export type Query_RootCard_Pack_By_PkArgs = {
 
 
 export type Query_RootCard_TextArgs = {
-  distinct_on?: Maybe<Array<Card_Text_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Card_Text_Order_By>>;
-  where?: Maybe<Card_Text_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Text_Order_By>>;
+  where?: InputMaybe<Card_Text_Bool_Exp>;
 };
 
 
 export type Query_RootCard_Text_AggregateArgs = {
-  distinct_on?: Maybe<Array<Card_Text_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Card_Text_Order_By>>;
-  where?: Maybe<Card_Text_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Text_Order_By>>;
+  where?: InputMaybe<Card_Text_Bool_Exp>;
 };
 
 
@@ -8004,20 +8157,20 @@ export type Query_RootCard_Text_By_PkArgs = {
 
 
 export type Query_RootChaos_Bag_ResultArgs = {
-  distinct_on?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Chaos_Bag_Result_Order_By>>;
-  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Chaos_Bag_Result_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Chaos_Bag_Result_Order_By>>;
+  where?: InputMaybe<Chaos_Bag_Result_Bool_Exp>;
 };
 
 
 export type Query_RootChaos_Bag_Result_AggregateArgs = {
-  distinct_on?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Chaos_Bag_Result_Order_By>>;
-  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Chaos_Bag_Result_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Chaos_Bag_Result_Order_By>>;
+  where?: InputMaybe<Chaos_Bag_Result_Bool_Exp>;
 };
 
 
@@ -8027,20 +8180,20 @@ export type Query_RootChaos_Bag_Result_By_PkArgs = {
 
 
 export type Query_RootChaos_Bag_Tarot_ModeArgs = {
-  distinct_on?: Maybe<Array<Chaos_Bag_Tarot_Mode_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Chaos_Bag_Tarot_Mode_Order_By>>;
-  where?: Maybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Chaos_Bag_Tarot_Mode_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Chaos_Bag_Tarot_Mode_Order_By>>;
+  where?: InputMaybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
 };
 
 
 export type Query_RootChaos_Bag_Tarot_Mode_AggregateArgs = {
-  distinct_on?: Maybe<Array<Chaos_Bag_Tarot_Mode_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Chaos_Bag_Tarot_Mode_Order_By>>;
-  where?: Maybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Chaos_Bag_Tarot_Mode_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Chaos_Bag_Tarot_Mode_Order_By>>;
+  where?: InputMaybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
 };
 
 
@@ -8050,20 +8203,20 @@ export type Query_RootChaos_Bag_Tarot_Mode_By_PkArgs = {
 
 
 export type Query_RootFaqArgs = {
-  distinct_on?: Maybe<Array<Faq_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Faq_Order_By>>;
-  where?: Maybe<Faq_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Faq_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Faq_Order_By>>;
+  where?: InputMaybe<Faq_Bool_Exp>;
 };
 
 
 export type Query_RootFaq_AggregateArgs = {
-  distinct_on?: Maybe<Array<Faq_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Faq_Order_By>>;
-  where?: Maybe<Faq_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Faq_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Faq_Order_By>>;
+  where?: InputMaybe<Faq_Bool_Exp>;
 };
 
 
@@ -8073,20 +8226,20 @@ export type Query_RootFaq_By_PkArgs = {
 
 
 export type Query_RootFaq_TextArgs = {
-  distinct_on?: Maybe<Array<Faq_Text_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Faq_Text_Order_By>>;
-  where?: Maybe<Faq_Text_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Faq_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Faq_Text_Order_By>>;
+  where?: InputMaybe<Faq_Text_Bool_Exp>;
 };
 
 
 export type Query_RootFaq_Text_AggregateArgs = {
-  distinct_on?: Maybe<Array<Faq_Text_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Faq_Text_Order_By>>;
-  where?: Maybe<Faq_Text_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Faq_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Faq_Text_Order_By>>;
+  where?: InputMaybe<Faq_Text_Bool_Exp>;
 };
 
 
@@ -8097,20 +8250,20 @@ export type Query_RootFaq_Text_By_PkArgs = {
 
 
 export type Query_RootFriend_StatusArgs = {
-  distinct_on?: Maybe<Array<Friend_Status_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Friend_Status_Order_By>>;
-  where?: Maybe<Friend_Status_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Friend_Status_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Friend_Status_Order_By>>;
+  where?: InputMaybe<Friend_Status_Bool_Exp>;
 };
 
 
 export type Query_RootFriend_Status_AggregateArgs = {
-  distinct_on?: Maybe<Array<Friend_Status_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Friend_Status_Order_By>>;
-  where?: Maybe<Friend_Status_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Friend_Status_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Friend_Status_Order_By>>;
+  where?: InputMaybe<Friend_Status_Bool_Exp>;
 };
 
 
@@ -8121,20 +8274,20 @@ export type Query_RootFriend_Status_By_PkArgs = {
 
 
 export type Query_RootFriend_Status_TypeArgs = {
-  distinct_on?: Maybe<Array<Friend_Status_Type_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Friend_Status_Type_Order_By>>;
-  where?: Maybe<Friend_Status_Type_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Friend_Status_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Friend_Status_Type_Order_By>>;
+  where?: InputMaybe<Friend_Status_Type_Bool_Exp>;
 };
 
 
 export type Query_RootFriend_Status_Type_AggregateArgs = {
-  distinct_on?: Maybe<Array<Friend_Status_Type_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Friend_Status_Type_Order_By>>;
-  where?: Maybe<Friend_Status_Type_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Friend_Status_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Friend_Status_Type_Order_By>>;
+  where?: InputMaybe<Friend_Status_Type_Bool_Exp>;
 };
 
 
@@ -8144,20 +8297,20 @@ export type Query_RootFriend_Status_Type_By_PkArgs = {
 
 
 export type Query_RootGuide_AchievementArgs = {
-  distinct_on?: Maybe<Array<Guide_Achievement_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Guide_Achievement_Order_By>>;
-  where?: Maybe<Guide_Achievement_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Guide_Achievement_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Guide_Achievement_Order_By>>;
+  where?: InputMaybe<Guide_Achievement_Bool_Exp>;
 };
 
 
 export type Query_RootGuide_Achievement_AggregateArgs = {
-  distinct_on?: Maybe<Array<Guide_Achievement_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Guide_Achievement_Order_By>>;
-  where?: Maybe<Guide_Achievement_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Guide_Achievement_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Guide_Achievement_Order_By>>;
+  where?: InputMaybe<Guide_Achievement_Bool_Exp>;
 };
 
 
@@ -8168,20 +8321,20 @@ export type Query_RootGuide_Achievement_By_PkArgs = {
 
 
 export type Query_RootGuide_InputArgs = {
-  distinct_on?: Maybe<Array<Guide_Input_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Guide_Input_Order_By>>;
-  where?: Maybe<Guide_Input_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Guide_Input_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Guide_Input_Order_By>>;
+  where?: InputMaybe<Guide_Input_Bool_Exp>;
 };
 
 
 export type Query_RootGuide_Input_AggregateArgs = {
-  distinct_on?: Maybe<Array<Guide_Input_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Guide_Input_Order_By>>;
-  where?: Maybe<Guide_Input_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Guide_Input_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Guide_Input_Order_By>>;
+  where?: InputMaybe<Guide_Input_Bool_Exp>;
 };
 
 
@@ -8192,20 +8345,20 @@ export type Query_RootGuide_Input_By_PkArgs = {
 
 
 export type Query_RootInvestigator_DataArgs = {
-  distinct_on?: Maybe<Array<Investigator_Data_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Investigator_Data_Order_By>>;
-  where?: Maybe<Investigator_Data_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Investigator_Data_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Investigator_Data_Order_By>>;
+  where?: InputMaybe<Investigator_Data_Bool_Exp>;
 };
 
 
 export type Query_RootInvestigator_Data_AggregateArgs = {
-  distinct_on?: Maybe<Array<Investigator_Data_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Investigator_Data_Order_By>>;
-  where?: Maybe<Investigator_Data_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Investigator_Data_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Investigator_Data_Order_By>>;
+  where?: InputMaybe<Investigator_Data_Bool_Exp>;
 };
 
 
@@ -8216,74 +8369,74 @@ export type Query_RootInvestigator_Data_By_PkArgs = {
 
 
 export type Query_RootLatest_DecksArgs = {
-  distinct_on?: Maybe<Array<Latest_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Latest_Decks_Order_By>>;
-  where?: Maybe<Latest_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Latest_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Latest_Decks_Order_By>>;
+  where?: InputMaybe<Latest_Decks_Bool_Exp>;
 };
 
 
 export type Query_RootLatest_Decks_AggregateArgs = {
-  distinct_on?: Maybe<Array<Latest_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Latest_Decks_Order_By>>;
-  where?: Maybe<Latest_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Latest_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Latest_Decks_Order_By>>;
+  where?: InputMaybe<Latest_Decks_Bool_Exp>;
 };
 
 
 export type Query_RootLocal_DecksArgs = {
-  distinct_on?: Maybe<Array<Local_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Local_Decks_Order_By>>;
-  where?: Maybe<Local_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Local_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Local_Decks_Order_By>>;
+  where?: InputMaybe<Local_Decks_Bool_Exp>;
 };
 
 
 export type Query_RootLocal_Decks_AggregateArgs = {
-  distinct_on?: Maybe<Array<Local_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Local_Decks_Order_By>>;
-  where?: Maybe<Local_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Local_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Local_Decks_Order_By>>;
+  where?: InputMaybe<Local_Decks_Bool_Exp>;
 };
 
 
 export type Query_RootUser_CampaignsArgs = {
-  distinct_on?: Maybe<Array<User_Campaigns_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Campaigns_Order_By>>;
-  where?: Maybe<User_Campaigns_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Campaigns_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Campaigns_Order_By>>;
+  where?: InputMaybe<User_Campaigns_Bool_Exp>;
 };
 
 
 export type Query_RootUser_Campaigns_AggregateArgs = {
-  distinct_on?: Maybe<Array<User_Campaigns_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Campaigns_Order_By>>;
-  where?: Maybe<User_Campaigns_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Campaigns_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Campaigns_Order_By>>;
+  where?: InputMaybe<User_Campaigns_Bool_Exp>;
 };
 
 
 export type Query_RootUser_FlagArgs = {
-  distinct_on?: Maybe<Array<User_Flag_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Flag_Order_By>>;
-  where?: Maybe<User_Flag_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Flag_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Flag_Order_By>>;
+  where?: InputMaybe<User_Flag_Bool_Exp>;
 };
 
 
 export type Query_RootUser_Flag_AggregateArgs = {
-  distinct_on?: Maybe<Array<User_Flag_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Flag_Order_By>>;
-  where?: Maybe<User_Flag_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Flag_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Flag_Order_By>>;
+  where?: InputMaybe<User_Flag_Bool_Exp>;
 };
 
 
@@ -8294,20 +8447,20 @@ export type Query_RootUser_Flag_By_PkArgs = {
 
 
 export type Query_RootUser_Flag_TypeArgs = {
-  distinct_on?: Maybe<Array<User_Flag_Type_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Flag_Type_Order_By>>;
-  where?: Maybe<User_Flag_Type_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Flag_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Flag_Type_Order_By>>;
+  where?: InputMaybe<User_Flag_Type_Bool_Exp>;
 };
 
 
 export type Query_RootUser_Flag_Type_AggregateArgs = {
-  distinct_on?: Maybe<Array<User_Flag_Type_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Flag_Type_Order_By>>;
-  where?: Maybe<User_Flag_Type_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Flag_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Flag_Type_Order_By>>;
+  where?: InputMaybe<User_Flag_Type_Bool_Exp>;
 };
 
 
@@ -8317,74 +8470,74 @@ export type Query_RootUser_Flag_Type_By_PkArgs = {
 
 
 export type Query_RootUser_FriendsArgs = {
-  distinct_on?: Maybe<Array<User_Friends_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Friends_Order_By>>;
-  where?: Maybe<User_Friends_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Friends_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Friends_Order_By>>;
+  where?: InputMaybe<User_Friends_Bool_Exp>;
 };
 
 
 export type Query_RootUser_Friends_AggregateArgs = {
-  distinct_on?: Maybe<Array<User_Friends_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Friends_Order_By>>;
-  where?: Maybe<User_Friends_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Friends_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Friends_Order_By>>;
+  where?: InputMaybe<User_Friends_Bool_Exp>;
 };
 
 
 export type Query_RootUser_Received_Friend_RequestsArgs = {
-  distinct_on?: Maybe<Array<User_Received_Friend_Requests_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Received_Friend_Requests_Order_By>>;
-  where?: Maybe<User_Received_Friend_Requests_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Received_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Received_Friend_Requests_Order_By>>;
+  where?: InputMaybe<User_Received_Friend_Requests_Bool_Exp>;
 };
 
 
 export type Query_RootUser_Received_Friend_Requests_AggregateArgs = {
-  distinct_on?: Maybe<Array<User_Received_Friend_Requests_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Received_Friend_Requests_Order_By>>;
-  where?: Maybe<User_Received_Friend_Requests_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Received_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Received_Friend_Requests_Order_By>>;
+  where?: InputMaybe<User_Received_Friend_Requests_Bool_Exp>;
 };
 
 
 export type Query_RootUser_Sent_Friend_RequestsArgs = {
-  distinct_on?: Maybe<Array<User_Sent_Friend_Requests_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Sent_Friend_Requests_Order_By>>;
-  where?: Maybe<User_Sent_Friend_Requests_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Sent_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Sent_Friend_Requests_Order_By>>;
+  where?: InputMaybe<User_Sent_Friend_Requests_Bool_Exp>;
 };
 
 
 export type Query_RootUser_Sent_Friend_Requests_AggregateArgs = {
-  distinct_on?: Maybe<Array<User_Sent_Friend_Requests_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Sent_Friend_Requests_Order_By>>;
-  where?: Maybe<User_Sent_Friend_Requests_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Sent_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Sent_Friend_Requests_Order_By>>;
+  where?: InputMaybe<User_Sent_Friend_Requests_Bool_Exp>;
 };
 
 
 export type Query_RootUsersArgs = {
-  distinct_on?: Maybe<Array<Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Users_Order_By>>;
-  where?: Maybe<Users_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_Order_By>>;
+  where?: InputMaybe<Users_Bool_Exp>;
 };
 
 
 export type Query_RootUsers_AggregateArgs = {
-  distinct_on?: Maybe<Array<Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Users_Order_By>>;
-  where?: Maybe<Users_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_Order_By>>;
+  where?: InputMaybe<Users_Bool_Exp>;
 };
 
 
@@ -8544,47 +8697,47 @@ export type Subscription_Root = {
 
 
 export type Subscription_RootBase_DecksArgs = {
-  distinct_on?: Maybe<Array<Base_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Base_Decks_Order_By>>;
-  where?: Maybe<Base_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Base_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Base_Decks_Order_By>>;
+  where?: InputMaybe<Base_Decks_Bool_Exp>;
 };
 
 
 export type Subscription_RootBase_Decks_AggregateArgs = {
-  distinct_on?: Maybe<Array<Base_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Base_Decks_Order_By>>;
-  where?: Maybe<Base_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Base_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Base_Decks_Order_By>>;
+  where?: InputMaybe<Base_Decks_Bool_Exp>;
 };
 
 
 export type Subscription_RootCampaignArgs = {
-  distinct_on?: Maybe<Array<Campaign_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Order_By>>;
-  where?: Maybe<Campaign_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Order_By>>;
+  where?: InputMaybe<Campaign_Bool_Exp>;
 };
 
 
 export type Subscription_RootCampaign_AccessArgs = {
-  distinct_on?: Maybe<Array<Campaign_Access_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Access_Order_By>>;
-  where?: Maybe<Campaign_Access_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Access_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Access_Order_By>>;
+  where?: InputMaybe<Campaign_Access_Bool_Exp>;
 };
 
 
 export type Subscription_RootCampaign_Access_AggregateArgs = {
-  distinct_on?: Maybe<Array<Campaign_Access_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Access_Order_By>>;
-  where?: Maybe<Campaign_Access_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Access_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Access_Order_By>>;
+  where?: InputMaybe<Campaign_Access_Bool_Exp>;
 };
 
 
@@ -8594,11 +8747,11 @@ export type Subscription_RootCampaign_Access_By_PkArgs = {
 
 
 export type Subscription_RootCampaign_AggregateArgs = {
-  distinct_on?: Maybe<Array<Campaign_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Order_By>>;
-  where?: Maybe<Campaign_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Order_By>>;
+  where?: InputMaybe<Campaign_Bool_Exp>;
 };
 
 
@@ -8608,20 +8761,20 @@ export type Subscription_RootCampaign_By_PkArgs = {
 
 
 export type Subscription_RootCampaign_DeckArgs = {
-  distinct_on?: Maybe<Array<Campaign_Deck_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Deck_Order_By>>;
-  where?: Maybe<Campaign_Deck_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Deck_Order_By>>;
+  where?: InputMaybe<Campaign_Deck_Bool_Exp>;
 };
 
 
 export type Subscription_RootCampaign_Deck_AggregateArgs = {
-  distinct_on?: Maybe<Array<Campaign_Deck_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Deck_Order_By>>;
-  where?: Maybe<Campaign_Deck_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Deck_Order_By>>;
+  where?: InputMaybe<Campaign_Deck_Bool_Exp>;
 };
 
 
@@ -8631,38 +8784,38 @@ export type Subscription_RootCampaign_Deck_By_PkArgs = {
 
 
 export type Subscription_RootCampaign_GuideArgs = {
-  distinct_on?: Maybe<Array<Campaign_Guide_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Guide_Order_By>>;
-  where?: Maybe<Campaign_Guide_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Guide_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Guide_Order_By>>;
+  where?: InputMaybe<Campaign_Guide_Bool_Exp>;
 };
 
 
 export type Subscription_RootCampaign_Guide_AggregateArgs = {
-  distinct_on?: Maybe<Array<Campaign_Guide_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Guide_Order_By>>;
-  where?: Maybe<Campaign_Guide_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Guide_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Guide_Order_By>>;
+  where?: InputMaybe<Campaign_Guide_Bool_Exp>;
 };
 
 
 export type Subscription_RootCampaign_InvestigatorArgs = {
-  distinct_on?: Maybe<Array<Campaign_Investigator_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Investigator_Order_By>>;
-  where?: Maybe<Campaign_Investigator_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Investigator_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Investigator_Order_By>>;
+  where?: InputMaybe<Campaign_Investigator_Bool_Exp>;
 };
 
 
 export type Subscription_RootCampaign_Investigator_AggregateArgs = {
-  distinct_on?: Maybe<Array<Campaign_Investigator_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Investigator_Order_By>>;
-  where?: Maybe<Campaign_Investigator_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Investigator_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Investigator_Order_By>>;
+  where?: InputMaybe<Campaign_Investigator_Bool_Exp>;
 };
 
 
@@ -8673,20 +8826,20 @@ export type Subscription_RootCampaign_Investigator_By_PkArgs = {
 
 
 export type Subscription_RootCardArgs = {
-  distinct_on?: Maybe<Array<Card_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Card_Order_By>>;
-  where?: Maybe<Card_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Order_By>>;
+  where?: InputMaybe<Card_Bool_Exp>;
 };
 
 
 export type Subscription_RootCard_AggregateArgs = {
-  distinct_on?: Maybe<Array<Card_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Card_Order_By>>;
-  where?: Maybe<Card_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Order_By>>;
+  where?: InputMaybe<Card_Bool_Exp>;
 };
 
 
@@ -8696,20 +8849,20 @@ export type Subscription_RootCard_By_PkArgs = {
 
 
 export type Subscription_RootCard_PackArgs = {
-  distinct_on?: Maybe<Array<Card_Pack_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Card_Pack_Order_By>>;
-  where?: Maybe<Card_Pack_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Card_Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Pack_Order_By>>;
+  where?: InputMaybe<Card_Pack_Bool_Exp>;
 };
 
 
 export type Subscription_RootCard_Pack_AggregateArgs = {
-  distinct_on?: Maybe<Array<Card_Pack_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Card_Pack_Order_By>>;
-  where?: Maybe<Card_Pack_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Card_Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Pack_Order_By>>;
+  where?: InputMaybe<Card_Pack_Bool_Exp>;
 };
 
 
@@ -8720,20 +8873,20 @@ export type Subscription_RootCard_Pack_By_PkArgs = {
 
 
 export type Subscription_RootCard_TextArgs = {
-  distinct_on?: Maybe<Array<Card_Text_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Card_Text_Order_By>>;
-  where?: Maybe<Card_Text_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Text_Order_By>>;
+  where?: InputMaybe<Card_Text_Bool_Exp>;
 };
 
 
 export type Subscription_RootCard_Text_AggregateArgs = {
-  distinct_on?: Maybe<Array<Card_Text_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Card_Text_Order_By>>;
-  where?: Maybe<Card_Text_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Text_Order_By>>;
+  where?: InputMaybe<Card_Text_Bool_Exp>;
 };
 
 
@@ -8744,20 +8897,20 @@ export type Subscription_RootCard_Text_By_PkArgs = {
 
 
 export type Subscription_RootChaos_Bag_ResultArgs = {
-  distinct_on?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Chaos_Bag_Result_Order_By>>;
-  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Chaos_Bag_Result_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Chaos_Bag_Result_Order_By>>;
+  where?: InputMaybe<Chaos_Bag_Result_Bool_Exp>;
 };
 
 
 export type Subscription_RootChaos_Bag_Result_AggregateArgs = {
-  distinct_on?: Maybe<Array<Chaos_Bag_Result_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Chaos_Bag_Result_Order_By>>;
-  where?: Maybe<Chaos_Bag_Result_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Chaos_Bag_Result_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Chaos_Bag_Result_Order_By>>;
+  where?: InputMaybe<Chaos_Bag_Result_Bool_Exp>;
 };
 
 
@@ -8767,20 +8920,20 @@ export type Subscription_RootChaos_Bag_Result_By_PkArgs = {
 
 
 export type Subscription_RootChaos_Bag_Tarot_ModeArgs = {
-  distinct_on?: Maybe<Array<Chaos_Bag_Tarot_Mode_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Chaos_Bag_Tarot_Mode_Order_By>>;
-  where?: Maybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Chaos_Bag_Tarot_Mode_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Chaos_Bag_Tarot_Mode_Order_By>>;
+  where?: InputMaybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
 };
 
 
 export type Subscription_RootChaos_Bag_Tarot_Mode_AggregateArgs = {
-  distinct_on?: Maybe<Array<Chaos_Bag_Tarot_Mode_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Chaos_Bag_Tarot_Mode_Order_By>>;
-  where?: Maybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Chaos_Bag_Tarot_Mode_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Chaos_Bag_Tarot_Mode_Order_By>>;
+  where?: InputMaybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
 };
 
 
@@ -8790,20 +8943,20 @@ export type Subscription_RootChaos_Bag_Tarot_Mode_By_PkArgs = {
 
 
 export type Subscription_RootFaqArgs = {
-  distinct_on?: Maybe<Array<Faq_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Faq_Order_By>>;
-  where?: Maybe<Faq_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Faq_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Faq_Order_By>>;
+  where?: InputMaybe<Faq_Bool_Exp>;
 };
 
 
 export type Subscription_RootFaq_AggregateArgs = {
-  distinct_on?: Maybe<Array<Faq_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Faq_Order_By>>;
-  where?: Maybe<Faq_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Faq_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Faq_Order_By>>;
+  where?: InputMaybe<Faq_Bool_Exp>;
 };
 
 
@@ -8813,20 +8966,20 @@ export type Subscription_RootFaq_By_PkArgs = {
 
 
 export type Subscription_RootFaq_TextArgs = {
-  distinct_on?: Maybe<Array<Faq_Text_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Faq_Text_Order_By>>;
-  where?: Maybe<Faq_Text_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Faq_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Faq_Text_Order_By>>;
+  where?: InputMaybe<Faq_Text_Bool_Exp>;
 };
 
 
 export type Subscription_RootFaq_Text_AggregateArgs = {
-  distinct_on?: Maybe<Array<Faq_Text_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Faq_Text_Order_By>>;
-  where?: Maybe<Faq_Text_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Faq_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Faq_Text_Order_By>>;
+  where?: InputMaybe<Faq_Text_Bool_Exp>;
 };
 
 
@@ -8837,20 +8990,20 @@ export type Subscription_RootFaq_Text_By_PkArgs = {
 
 
 export type Subscription_RootFriend_StatusArgs = {
-  distinct_on?: Maybe<Array<Friend_Status_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Friend_Status_Order_By>>;
-  where?: Maybe<Friend_Status_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Friend_Status_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Friend_Status_Order_By>>;
+  where?: InputMaybe<Friend_Status_Bool_Exp>;
 };
 
 
 export type Subscription_RootFriend_Status_AggregateArgs = {
-  distinct_on?: Maybe<Array<Friend_Status_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Friend_Status_Order_By>>;
-  where?: Maybe<Friend_Status_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Friend_Status_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Friend_Status_Order_By>>;
+  where?: InputMaybe<Friend_Status_Bool_Exp>;
 };
 
 
@@ -8861,20 +9014,20 @@ export type Subscription_RootFriend_Status_By_PkArgs = {
 
 
 export type Subscription_RootFriend_Status_TypeArgs = {
-  distinct_on?: Maybe<Array<Friend_Status_Type_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Friend_Status_Type_Order_By>>;
-  where?: Maybe<Friend_Status_Type_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Friend_Status_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Friend_Status_Type_Order_By>>;
+  where?: InputMaybe<Friend_Status_Type_Bool_Exp>;
 };
 
 
 export type Subscription_RootFriend_Status_Type_AggregateArgs = {
-  distinct_on?: Maybe<Array<Friend_Status_Type_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Friend_Status_Type_Order_By>>;
-  where?: Maybe<Friend_Status_Type_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Friend_Status_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Friend_Status_Type_Order_By>>;
+  where?: InputMaybe<Friend_Status_Type_Bool_Exp>;
 };
 
 
@@ -8884,20 +9037,20 @@ export type Subscription_RootFriend_Status_Type_By_PkArgs = {
 
 
 export type Subscription_RootGuide_AchievementArgs = {
-  distinct_on?: Maybe<Array<Guide_Achievement_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Guide_Achievement_Order_By>>;
-  where?: Maybe<Guide_Achievement_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Guide_Achievement_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Guide_Achievement_Order_By>>;
+  where?: InputMaybe<Guide_Achievement_Bool_Exp>;
 };
 
 
 export type Subscription_RootGuide_Achievement_AggregateArgs = {
-  distinct_on?: Maybe<Array<Guide_Achievement_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Guide_Achievement_Order_By>>;
-  where?: Maybe<Guide_Achievement_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Guide_Achievement_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Guide_Achievement_Order_By>>;
+  where?: InputMaybe<Guide_Achievement_Bool_Exp>;
 };
 
 
@@ -8908,20 +9061,20 @@ export type Subscription_RootGuide_Achievement_By_PkArgs = {
 
 
 export type Subscription_RootGuide_InputArgs = {
-  distinct_on?: Maybe<Array<Guide_Input_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Guide_Input_Order_By>>;
-  where?: Maybe<Guide_Input_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Guide_Input_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Guide_Input_Order_By>>;
+  where?: InputMaybe<Guide_Input_Bool_Exp>;
 };
 
 
 export type Subscription_RootGuide_Input_AggregateArgs = {
-  distinct_on?: Maybe<Array<Guide_Input_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Guide_Input_Order_By>>;
-  where?: Maybe<Guide_Input_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Guide_Input_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Guide_Input_Order_By>>;
+  where?: InputMaybe<Guide_Input_Bool_Exp>;
 };
 
 
@@ -8932,20 +9085,20 @@ export type Subscription_RootGuide_Input_By_PkArgs = {
 
 
 export type Subscription_RootInvestigator_DataArgs = {
-  distinct_on?: Maybe<Array<Investigator_Data_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Investigator_Data_Order_By>>;
-  where?: Maybe<Investigator_Data_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Investigator_Data_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Investigator_Data_Order_By>>;
+  where?: InputMaybe<Investigator_Data_Bool_Exp>;
 };
 
 
 export type Subscription_RootInvestigator_Data_AggregateArgs = {
-  distinct_on?: Maybe<Array<Investigator_Data_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Investigator_Data_Order_By>>;
-  where?: Maybe<Investigator_Data_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Investigator_Data_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Investigator_Data_Order_By>>;
+  where?: InputMaybe<Investigator_Data_Bool_Exp>;
 };
 
 
@@ -8956,74 +9109,74 @@ export type Subscription_RootInvestigator_Data_By_PkArgs = {
 
 
 export type Subscription_RootLatest_DecksArgs = {
-  distinct_on?: Maybe<Array<Latest_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Latest_Decks_Order_By>>;
-  where?: Maybe<Latest_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Latest_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Latest_Decks_Order_By>>;
+  where?: InputMaybe<Latest_Decks_Bool_Exp>;
 };
 
 
 export type Subscription_RootLatest_Decks_AggregateArgs = {
-  distinct_on?: Maybe<Array<Latest_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Latest_Decks_Order_By>>;
-  where?: Maybe<Latest_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Latest_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Latest_Decks_Order_By>>;
+  where?: InputMaybe<Latest_Decks_Bool_Exp>;
 };
 
 
 export type Subscription_RootLocal_DecksArgs = {
-  distinct_on?: Maybe<Array<Local_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Local_Decks_Order_By>>;
-  where?: Maybe<Local_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Local_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Local_Decks_Order_By>>;
+  where?: InputMaybe<Local_Decks_Bool_Exp>;
 };
 
 
 export type Subscription_RootLocal_Decks_AggregateArgs = {
-  distinct_on?: Maybe<Array<Local_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Local_Decks_Order_By>>;
-  where?: Maybe<Local_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Local_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Local_Decks_Order_By>>;
+  where?: InputMaybe<Local_Decks_Bool_Exp>;
 };
 
 
 export type Subscription_RootUser_CampaignsArgs = {
-  distinct_on?: Maybe<Array<User_Campaigns_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Campaigns_Order_By>>;
-  where?: Maybe<User_Campaigns_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Campaigns_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Campaigns_Order_By>>;
+  where?: InputMaybe<User_Campaigns_Bool_Exp>;
 };
 
 
 export type Subscription_RootUser_Campaigns_AggregateArgs = {
-  distinct_on?: Maybe<Array<User_Campaigns_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Campaigns_Order_By>>;
-  where?: Maybe<User_Campaigns_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Campaigns_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Campaigns_Order_By>>;
+  where?: InputMaybe<User_Campaigns_Bool_Exp>;
 };
 
 
 export type Subscription_RootUser_FlagArgs = {
-  distinct_on?: Maybe<Array<User_Flag_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Flag_Order_By>>;
-  where?: Maybe<User_Flag_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Flag_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Flag_Order_By>>;
+  where?: InputMaybe<User_Flag_Bool_Exp>;
 };
 
 
 export type Subscription_RootUser_Flag_AggregateArgs = {
-  distinct_on?: Maybe<Array<User_Flag_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Flag_Order_By>>;
-  where?: Maybe<User_Flag_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Flag_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Flag_Order_By>>;
+  where?: InputMaybe<User_Flag_Bool_Exp>;
 };
 
 
@@ -9034,20 +9187,20 @@ export type Subscription_RootUser_Flag_By_PkArgs = {
 
 
 export type Subscription_RootUser_Flag_TypeArgs = {
-  distinct_on?: Maybe<Array<User_Flag_Type_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Flag_Type_Order_By>>;
-  where?: Maybe<User_Flag_Type_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Flag_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Flag_Type_Order_By>>;
+  where?: InputMaybe<User_Flag_Type_Bool_Exp>;
 };
 
 
 export type Subscription_RootUser_Flag_Type_AggregateArgs = {
-  distinct_on?: Maybe<Array<User_Flag_Type_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Flag_Type_Order_By>>;
-  where?: Maybe<User_Flag_Type_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Flag_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Flag_Type_Order_By>>;
+  where?: InputMaybe<User_Flag_Type_Bool_Exp>;
 };
 
 
@@ -9057,74 +9210,74 @@ export type Subscription_RootUser_Flag_Type_By_PkArgs = {
 
 
 export type Subscription_RootUser_FriendsArgs = {
-  distinct_on?: Maybe<Array<User_Friends_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Friends_Order_By>>;
-  where?: Maybe<User_Friends_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Friends_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Friends_Order_By>>;
+  where?: InputMaybe<User_Friends_Bool_Exp>;
 };
 
 
 export type Subscription_RootUser_Friends_AggregateArgs = {
-  distinct_on?: Maybe<Array<User_Friends_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Friends_Order_By>>;
-  where?: Maybe<User_Friends_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Friends_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Friends_Order_By>>;
+  where?: InputMaybe<User_Friends_Bool_Exp>;
 };
 
 
 export type Subscription_RootUser_Received_Friend_RequestsArgs = {
-  distinct_on?: Maybe<Array<User_Received_Friend_Requests_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Received_Friend_Requests_Order_By>>;
-  where?: Maybe<User_Received_Friend_Requests_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Received_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Received_Friend_Requests_Order_By>>;
+  where?: InputMaybe<User_Received_Friend_Requests_Bool_Exp>;
 };
 
 
 export type Subscription_RootUser_Received_Friend_Requests_AggregateArgs = {
-  distinct_on?: Maybe<Array<User_Received_Friend_Requests_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Received_Friend_Requests_Order_By>>;
-  where?: Maybe<User_Received_Friend_Requests_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Received_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Received_Friend_Requests_Order_By>>;
+  where?: InputMaybe<User_Received_Friend_Requests_Bool_Exp>;
 };
 
 
 export type Subscription_RootUser_Sent_Friend_RequestsArgs = {
-  distinct_on?: Maybe<Array<User_Sent_Friend_Requests_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Sent_Friend_Requests_Order_By>>;
-  where?: Maybe<User_Sent_Friend_Requests_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Sent_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Sent_Friend_Requests_Order_By>>;
+  where?: InputMaybe<User_Sent_Friend_Requests_Bool_Exp>;
 };
 
 
 export type Subscription_RootUser_Sent_Friend_Requests_AggregateArgs = {
-  distinct_on?: Maybe<Array<User_Sent_Friend_Requests_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Sent_Friend_Requests_Order_By>>;
-  where?: Maybe<User_Sent_Friend_Requests_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Sent_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Sent_Friend_Requests_Order_By>>;
+  where?: InputMaybe<User_Sent_Friend_Requests_Bool_Exp>;
 };
 
 
 export type Subscription_RootUsersArgs = {
-  distinct_on?: Maybe<Array<Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Users_Order_By>>;
-  where?: Maybe<Users_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_Order_By>>;
+  where?: InputMaybe<Users_Bool_Exp>;
 };
 
 
 export type Subscription_RootUsers_AggregateArgs = {
-  distinct_on?: Maybe<Array<Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Users_Order_By>>;
-  where?: Maybe<Users_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_Order_By>>;
+  where?: InputMaybe<Users_Bool_Exp>;
 };
 
 
@@ -9134,28 +9287,28 @@ export type Subscription_RootUsers_By_PkArgs = {
 
 /** Boolean expression to compare columns of type "timestamp". All fields are combined with logical 'AND'. */
 export type Timestamp_Comparison_Exp = {
-  _eq?: Maybe<Scalars['timestamp']>;
-  _gt?: Maybe<Scalars['timestamp']>;
-  _gte?: Maybe<Scalars['timestamp']>;
-  _in?: Maybe<Array<Scalars['timestamp']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _lt?: Maybe<Scalars['timestamp']>;
-  _lte?: Maybe<Scalars['timestamp']>;
-  _neq?: Maybe<Scalars['timestamp']>;
-  _nin?: Maybe<Array<Scalars['timestamp']>>;
+  _eq?: InputMaybe<Scalars['timestamp']>;
+  _gt?: InputMaybe<Scalars['timestamp']>;
+  _gte?: InputMaybe<Scalars['timestamp']>;
+  _in?: InputMaybe<Array<Scalars['timestamp']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['timestamp']>;
+  _lte?: InputMaybe<Scalars['timestamp']>;
+  _neq?: InputMaybe<Scalars['timestamp']>;
+  _nin?: InputMaybe<Array<Scalars['timestamp']>>;
 };
 
 /** Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'. */
 export type Timestamptz_Comparison_Exp = {
-  _eq?: Maybe<Scalars['timestamptz']>;
-  _gt?: Maybe<Scalars['timestamptz']>;
-  _gte?: Maybe<Scalars['timestamptz']>;
-  _in?: Maybe<Array<Scalars['timestamptz']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _lt?: Maybe<Scalars['timestamptz']>;
-  _lte?: Maybe<Scalars['timestamptz']>;
-  _neq?: Maybe<Scalars['timestamptz']>;
-  _nin?: Maybe<Array<Scalars['timestamptz']>>;
+  _eq?: InputMaybe<Scalars['timestamptz']>;
+  _gt?: InputMaybe<Scalars['timestamptz']>;
+  _gte?: InputMaybe<Scalars['timestamptz']>;
+  _in?: InputMaybe<Array<Scalars['timestamptz']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['timestamptz']>;
+  _lte?: InputMaybe<Scalars['timestamptz']>;
+  _neq?: InputMaybe<Scalars['timestamptz']>;
+  _nin?: InputMaybe<Array<Scalars['timestamptz']>>;
 };
 
 /** columns and relationships of "user_campaigns" */
@@ -9194,23 +9347,23 @@ export type User_Campaigns_Aggregate_Fields = {
 
 /** aggregate fields of "user_campaigns" */
 export type User_Campaigns_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<User_Campaigns_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<User_Campaigns_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "user_campaigns" */
 export type User_Campaigns_Aggregate_Order_By = {
-  avg?: Maybe<User_Campaigns_Avg_Order_By>;
-  count?: Maybe<Order_By>;
-  max?: Maybe<User_Campaigns_Max_Order_By>;
-  min?: Maybe<User_Campaigns_Min_Order_By>;
-  stddev?: Maybe<User_Campaigns_Stddev_Order_By>;
-  stddev_pop?: Maybe<User_Campaigns_Stddev_Pop_Order_By>;
-  stddev_samp?: Maybe<User_Campaigns_Stddev_Samp_Order_By>;
-  sum?: Maybe<User_Campaigns_Sum_Order_By>;
-  var_pop?: Maybe<User_Campaigns_Var_Pop_Order_By>;
-  var_samp?: Maybe<User_Campaigns_Var_Samp_Order_By>;
-  variance?: Maybe<User_Campaigns_Variance_Order_By>;
+  avg?: InputMaybe<User_Campaigns_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<User_Campaigns_Max_Order_By>;
+  min?: InputMaybe<User_Campaigns_Min_Order_By>;
+  stddev?: InputMaybe<User_Campaigns_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<User_Campaigns_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<User_Campaigns_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<User_Campaigns_Sum_Order_By>;
+  var_pop?: InputMaybe<User_Campaigns_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<User_Campaigns_Var_Samp_Order_By>;
+  variance?: InputMaybe<User_Campaigns_Variance_Order_By>;
 };
 
 /** input type for inserting array relation for remote table "user_campaigns" */
@@ -9227,33 +9380,33 @@ export type User_Campaigns_Avg_Fields = {
 
 /** order by avg() on columns of table "user_campaigns" */
 export type User_Campaigns_Avg_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "user_campaigns". All fields are combined with a logical 'AND'. */
 export type User_Campaigns_Bool_Exp = {
-  _and?: Maybe<Array<User_Campaigns_Bool_Exp>>;
-  _not?: Maybe<User_Campaigns_Bool_Exp>;
-  _or?: Maybe<Array<User_Campaigns_Bool_Exp>>;
-  campaign?: Maybe<Campaign_Bool_Exp>;
-  campaign_id?: Maybe<Int_Comparison_Exp>;
-  id?: Maybe<Int_Comparison_Exp>;
-  user_id?: Maybe<String_Comparison_Exp>;
+  _and?: InputMaybe<Array<User_Campaigns_Bool_Exp>>;
+  _not?: InputMaybe<User_Campaigns_Bool_Exp>;
+  _or?: InputMaybe<Array<User_Campaigns_Bool_Exp>>;
+  campaign?: InputMaybe<Campaign_Bool_Exp>;
+  campaign_id?: InputMaybe<Int_Comparison_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** input type for incrementing numeric columns in table "user_campaigns" */
 export type User_Campaigns_Inc_Input = {
-  campaign_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "user_campaigns" */
 export type User_Campaigns_Insert_Input = {
-  campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
-  campaign_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
-  user_id?: Maybe<Scalars['String']>;
+  campaign?: InputMaybe<Campaign_Obj_Rel_Insert_Input>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  user_id?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -9266,9 +9419,9 @@ export type User_Campaigns_Max_Fields = {
 
 /** order by max() on columns of table "user_campaigns" */
 export type User_Campaigns_Max_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  user_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -9281,9 +9434,9 @@ export type User_Campaigns_Min_Fields = {
 
 /** order by min() on columns of table "user_campaigns" */
 export type User_Campaigns_Min_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  user_id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "user_campaigns" */
@@ -9297,10 +9450,10 @@ export type User_Campaigns_Mutation_Response = {
 
 /** Ordering options when selecting data from "user_campaigns". */
 export type User_Campaigns_Order_By = {
-  campaign?: Maybe<Campaign_Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  user_id?: Maybe<Order_By>;
+  campaign?: InputMaybe<Campaign_Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "user_campaigns" */
@@ -9315,9 +9468,9 @@ export enum User_Campaigns_Select_Column {
 
 /** input type for updating data in table "user_campaigns" */
 export type User_Campaigns_Set_Input = {
-  campaign_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
-  user_id?: Maybe<Scalars['String']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  user_id?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate stddev on columns */
@@ -9329,8 +9482,8 @@ export type User_Campaigns_Stddev_Fields = {
 
 /** order by stddev() on columns of table "user_campaigns" */
 export type User_Campaigns_Stddev_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -9342,8 +9495,8 @@ export type User_Campaigns_Stddev_Pop_Fields = {
 
 /** order by stddev_pop() on columns of table "user_campaigns" */
 export type User_Campaigns_Stddev_Pop_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -9355,8 +9508,8 @@ export type User_Campaigns_Stddev_Samp_Fields = {
 
 /** order by stddev_samp() on columns of table "user_campaigns" */
 export type User_Campaigns_Stddev_Samp_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -9368,8 +9521,8 @@ export type User_Campaigns_Sum_Fields = {
 
 /** order by sum() on columns of table "user_campaigns" */
 export type User_Campaigns_Sum_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_pop on columns */
@@ -9381,8 +9534,8 @@ export type User_Campaigns_Var_Pop_Fields = {
 
 /** order by var_pop() on columns of table "user_campaigns" */
 export type User_Campaigns_Var_Pop_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -9394,8 +9547,8 @@ export type User_Campaigns_Var_Samp_Fields = {
 
 /** order by var_samp() on columns of table "user_campaigns" */
 export type User_Campaigns_Var_Samp_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -9407,8 +9560,8 @@ export type User_Campaigns_Variance_Fields = {
 
 /** order by variance() on columns of table "user_campaigns" */
 export type User_Campaigns_Variance_Order_By = {
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
+  campaign_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** columns and relationships of "user_flag" */
@@ -9436,31 +9589,31 @@ export type User_Flag_Aggregate_Fields = {
 
 /** aggregate fields of "user_flag" */
 export type User_Flag_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<User_Flag_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<User_Flag_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "user_flag" */
 export type User_Flag_Aggregate_Order_By = {
-  count?: Maybe<Order_By>;
-  max?: Maybe<User_Flag_Max_Order_By>;
-  min?: Maybe<User_Flag_Min_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<User_Flag_Max_Order_By>;
+  min?: InputMaybe<User_Flag_Min_Order_By>;
 };
 
 /** input type for inserting array relation for remote table "user_flag" */
 export type User_Flag_Arr_Rel_Insert_Input = {
   data: Array<User_Flag_Insert_Input>;
   /** on conflict condition */
-  on_conflict?: Maybe<User_Flag_On_Conflict>;
+  on_conflict?: InputMaybe<User_Flag_On_Conflict>;
 };
 
 /** Boolean expression to filter rows from the table "user_flag". All fields are combined with a logical 'AND'. */
 export type User_Flag_Bool_Exp = {
-  _and?: Maybe<Array<User_Flag_Bool_Exp>>;
-  _not?: Maybe<User_Flag_Bool_Exp>;
-  _or?: Maybe<Array<User_Flag_Bool_Exp>>;
-  flag?: Maybe<User_Flag_Type_Enum_Comparison_Exp>;
-  user_id?: Maybe<String_Comparison_Exp>;
+  _and?: InputMaybe<Array<User_Flag_Bool_Exp>>;
+  _not?: InputMaybe<User_Flag_Bool_Exp>;
+  _or?: InputMaybe<Array<User_Flag_Bool_Exp>>;
+  flag?: InputMaybe<User_Flag_Type_Enum_Comparison_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "user_flag" */
@@ -9471,8 +9624,8 @@ export enum User_Flag_Constraint {
 
 /** input type for inserting data into table "user_flag" */
 export type User_Flag_Insert_Input = {
-  flag?: Maybe<User_Flag_Type_Enum>;
-  user_id?: Maybe<Scalars['String']>;
+  flag?: InputMaybe<User_Flag_Type_Enum>;
+  user_id?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -9483,7 +9636,7 @@ export type User_Flag_Max_Fields = {
 
 /** order by max() on columns of table "user_flag" */
 export type User_Flag_Max_Order_By = {
-  user_id?: Maybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -9494,7 +9647,7 @@ export type User_Flag_Min_Fields = {
 
 /** order by min() on columns of table "user_flag" */
 export type User_Flag_Min_Order_By = {
-  user_id?: Maybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "user_flag" */
@@ -9510,13 +9663,13 @@ export type User_Flag_Mutation_Response = {
 export type User_Flag_On_Conflict = {
   constraint: User_Flag_Constraint;
   update_columns: Array<User_Flag_Update_Column>;
-  where?: Maybe<User_Flag_Bool_Exp>;
+  where?: InputMaybe<User_Flag_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "user_flag". */
 export type User_Flag_Order_By = {
-  flag?: Maybe<Order_By>;
-  user_id?: Maybe<Order_By>;
+  flag?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: user_flag */
@@ -9535,8 +9688,8 @@ export enum User_Flag_Select_Column {
 
 /** input type for updating data in table "user_flag" */
 export type User_Flag_Set_Input = {
-  flag?: Maybe<User_Flag_Type_Enum>;
-  user_id?: Maybe<Scalars['String']>;
+  flag?: InputMaybe<User_Flag_Type_Enum>;
+  user_id?: InputMaybe<Scalars['String']>;
 };
 
 /** columns and relationships of "user_flag_type" */
@@ -9563,16 +9716,16 @@ export type User_Flag_Type_Aggregate_Fields = {
 
 /** aggregate fields of "user_flag_type" */
 export type User_Flag_Type_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<User_Flag_Type_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<User_Flag_Type_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** Boolean expression to filter rows from the table "user_flag_type". All fields are combined with a logical 'AND'. */
 export type User_Flag_Type_Bool_Exp = {
-  _and?: Maybe<Array<User_Flag_Type_Bool_Exp>>;
-  _not?: Maybe<User_Flag_Type_Bool_Exp>;
-  _or?: Maybe<Array<User_Flag_Type_Bool_Exp>>;
-  value?: Maybe<String_Comparison_Exp>;
+  _and?: InputMaybe<Array<User_Flag_Type_Bool_Exp>>;
+  _not?: InputMaybe<User_Flag_Type_Bool_Exp>;
+  _or?: InputMaybe<Array<User_Flag_Type_Bool_Exp>>;
+  value?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "user_flag_type" */
@@ -9589,16 +9742,16 @@ export enum User_Flag_Type_Enum {
 
 /** Boolean expression to compare columns of type "user_flag_type_enum". All fields are combined with logical 'AND'. */
 export type User_Flag_Type_Enum_Comparison_Exp = {
-  _eq?: Maybe<User_Flag_Type_Enum>;
-  _in?: Maybe<Array<User_Flag_Type_Enum>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _neq?: Maybe<User_Flag_Type_Enum>;
-  _nin?: Maybe<Array<User_Flag_Type_Enum>>;
+  _eq?: InputMaybe<User_Flag_Type_Enum>;
+  _in?: InputMaybe<Array<User_Flag_Type_Enum>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<User_Flag_Type_Enum>;
+  _nin?: InputMaybe<Array<User_Flag_Type_Enum>>;
 };
 
 /** input type for inserting data into table "user_flag_type" */
 export type User_Flag_Type_Insert_Input = {
-  value?: Maybe<Scalars['String']>;
+  value?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -9626,12 +9779,12 @@ export type User_Flag_Type_Mutation_Response = {
 export type User_Flag_Type_On_Conflict = {
   constraint: User_Flag_Type_Constraint;
   update_columns: Array<User_Flag_Type_Update_Column>;
-  where?: Maybe<User_Flag_Type_Bool_Exp>;
+  where?: InputMaybe<User_Flag_Type_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "user_flag_type". */
 export type User_Flag_Type_Order_By = {
-  value?: Maybe<Order_By>;
+  value?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: user_flag_type */
@@ -9647,7 +9800,7 @@ export enum User_Flag_Type_Select_Column {
 
 /** input type for updating data in table "user_flag_type" */
 export type User_Flag_Type_Set_Input = {
-  value?: Maybe<Scalars['String']>;
+  value?: InputMaybe<Scalars['String']>;
 };
 
 /** update columns of table "user_flag_type" */
@@ -9692,15 +9845,15 @@ export type User_Friends_Aggregate_Fields = {
 
 /** aggregate fields of "user_friends" */
 export type User_Friends_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<User_Friends_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<User_Friends_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "user_friends" */
 export type User_Friends_Aggregate_Order_By = {
-  count?: Maybe<Order_By>;
-  max?: Maybe<User_Friends_Max_Order_By>;
-  min?: Maybe<User_Friends_Min_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<User_Friends_Max_Order_By>;
+  min?: InputMaybe<User_Friends_Min_Order_By>;
 };
 
 /** input type for inserting array relation for remote table "user_friends" */
@@ -9710,21 +9863,21 @@ export type User_Friends_Arr_Rel_Insert_Input = {
 
 /** Boolean expression to filter rows from the table "user_friends". All fields are combined with a logical 'AND'. */
 export type User_Friends_Bool_Exp = {
-  _and?: Maybe<Array<User_Friends_Bool_Exp>>;
-  _not?: Maybe<User_Friends_Bool_Exp>;
-  _or?: Maybe<Array<User_Friends_Bool_Exp>>;
-  status?: Maybe<String_Comparison_Exp>;
-  user?: Maybe<Users_Bool_Exp>;
-  user_id_a?: Maybe<String_Comparison_Exp>;
-  user_id_b?: Maybe<String_Comparison_Exp>;
+  _and?: InputMaybe<Array<User_Friends_Bool_Exp>>;
+  _not?: InputMaybe<User_Friends_Bool_Exp>;
+  _or?: InputMaybe<Array<User_Friends_Bool_Exp>>;
+  status?: InputMaybe<String_Comparison_Exp>;
+  user?: InputMaybe<Users_Bool_Exp>;
+  user_id_a?: InputMaybe<String_Comparison_Exp>;
+  user_id_b?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** input type for inserting data into table "user_friends" */
 export type User_Friends_Insert_Input = {
-  status?: Maybe<Scalars['String']>;
-  user?: Maybe<Users_Obj_Rel_Insert_Input>;
-  user_id_a?: Maybe<Scalars['String']>;
-  user_id_b?: Maybe<Scalars['String']>;
+  status?: InputMaybe<Scalars['String']>;
+  user?: InputMaybe<Users_Obj_Rel_Insert_Input>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -9737,9 +9890,9 @@ export type User_Friends_Max_Fields = {
 
 /** order by max() on columns of table "user_friends" */
 export type User_Friends_Max_Order_By = {
-  status?: Maybe<Order_By>;
-  user_id_a?: Maybe<Order_By>;
-  user_id_b?: Maybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -9752,9 +9905,9 @@ export type User_Friends_Min_Fields = {
 
 /** order by min() on columns of table "user_friends" */
 export type User_Friends_Min_Order_By = {
-  status?: Maybe<Order_By>;
-  user_id_a?: Maybe<Order_By>;
-  user_id_b?: Maybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "user_friends" */
@@ -9768,10 +9921,10 @@ export type User_Friends_Mutation_Response = {
 
 /** Ordering options when selecting data from "user_friends". */
 export type User_Friends_Order_By = {
-  status?: Maybe<Order_By>;
-  user?: Maybe<Users_Order_By>;
-  user_id_a?: Maybe<Order_By>;
-  user_id_b?: Maybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+  user?: InputMaybe<Users_Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "user_friends" */
@@ -9786,9 +9939,9 @@ export enum User_Friends_Select_Column {
 
 /** input type for updating data in table "user_friends" */
 export type User_Friends_Set_Input = {
-  status?: Maybe<Scalars['String']>;
-  user_id_a?: Maybe<Scalars['String']>;
-  user_id_b?: Maybe<Scalars['String']>;
+  status?: InputMaybe<Scalars['String']>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
 };
 
 /** columns and relationships of "user_received_friend_requests" */
@@ -9819,15 +9972,15 @@ export type User_Received_Friend_Requests_Aggregate_Fields = {
 
 /** aggregate fields of "user_received_friend_requests" */
 export type User_Received_Friend_Requests_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<User_Received_Friend_Requests_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<User_Received_Friend_Requests_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "user_received_friend_requests" */
 export type User_Received_Friend_Requests_Aggregate_Order_By = {
-  count?: Maybe<Order_By>;
-  max?: Maybe<User_Received_Friend_Requests_Max_Order_By>;
-  min?: Maybe<User_Received_Friend_Requests_Min_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<User_Received_Friend_Requests_Max_Order_By>;
+  min?: InputMaybe<User_Received_Friend_Requests_Min_Order_By>;
 };
 
 /** input type for inserting array relation for remote table "user_received_friend_requests" */
@@ -9837,21 +9990,21 @@ export type User_Received_Friend_Requests_Arr_Rel_Insert_Input = {
 
 /** Boolean expression to filter rows from the table "user_received_friend_requests". All fields are combined with a logical 'AND'. */
 export type User_Received_Friend_Requests_Bool_Exp = {
-  _and?: Maybe<Array<User_Received_Friend_Requests_Bool_Exp>>;
-  _not?: Maybe<User_Received_Friend_Requests_Bool_Exp>;
-  _or?: Maybe<Array<User_Received_Friend_Requests_Bool_Exp>>;
-  status?: Maybe<String_Comparison_Exp>;
-  user?: Maybe<Users_Bool_Exp>;
-  user_id_a?: Maybe<String_Comparison_Exp>;
-  user_id_b?: Maybe<String_Comparison_Exp>;
+  _and?: InputMaybe<Array<User_Received_Friend_Requests_Bool_Exp>>;
+  _not?: InputMaybe<User_Received_Friend_Requests_Bool_Exp>;
+  _or?: InputMaybe<Array<User_Received_Friend_Requests_Bool_Exp>>;
+  status?: InputMaybe<String_Comparison_Exp>;
+  user?: InputMaybe<Users_Bool_Exp>;
+  user_id_a?: InputMaybe<String_Comparison_Exp>;
+  user_id_b?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** input type for inserting data into table "user_received_friend_requests" */
 export type User_Received_Friend_Requests_Insert_Input = {
-  status?: Maybe<Scalars['String']>;
-  user?: Maybe<Users_Obj_Rel_Insert_Input>;
-  user_id_a?: Maybe<Scalars['String']>;
-  user_id_b?: Maybe<Scalars['String']>;
+  status?: InputMaybe<Scalars['String']>;
+  user?: InputMaybe<Users_Obj_Rel_Insert_Input>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -9864,9 +10017,9 @@ export type User_Received_Friend_Requests_Max_Fields = {
 
 /** order by max() on columns of table "user_received_friend_requests" */
 export type User_Received_Friend_Requests_Max_Order_By = {
-  status?: Maybe<Order_By>;
-  user_id_a?: Maybe<Order_By>;
-  user_id_b?: Maybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -9879,9 +10032,9 @@ export type User_Received_Friend_Requests_Min_Fields = {
 
 /** order by min() on columns of table "user_received_friend_requests" */
 export type User_Received_Friend_Requests_Min_Order_By = {
-  status?: Maybe<Order_By>;
-  user_id_a?: Maybe<Order_By>;
-  user_id_b?: Maybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "user_received_friend_requests" */
@@ -9895,10 +10048,10 @@ export type User_Received_Friend_Requests_Mutation_Response = {
 
 /** Ordering options when selecting data from "user_received_friend_requests". */
 export type User_Received_Friend_Requests_Order_By = {
-  status?: Maybe<Order_By>;
-  user?: Maybe<Users_Order_By>;
-  user_id_a?: Maybe<Order_By>;
-  user_id_b?: Maybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+  user?: InputMaybe<Users_Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "user_received_friend_requests" */
@@ -9913,9 +10066,9 @@ export enum User_Received_Friend_Requests_Select_Column {
 
 /** input type for updating data in table "user_received_friend_requests" */
 export type User_Received_Friend_Requests_Set_Input = {
-  status?: Maybe<Scalars['String']>;
-  user_id_a?: Maybe<Scalars['String']>;
-  user_id_b?: Maybe<Scalars['String']>;
+  status?: InputMaybe<Scalars['String']>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
 };
 
 /** columns and relationships of "user_sent_friend_requests" */
@@ -9946,15 +10099,15 @@ export type User_Sent_Friend_Requests_Aggregate_Fields = {
 
 /** aggregate fields of "user_sent_friend_requests" */
 export type User_Sent_Friend_Requests_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<User_Sent_Friend_Requests_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<User_Sent_Friend_Requests_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "user_sent_friend_requests" */
 export type User_Sent_Friend_Requests_Aggregate_Order_By = {
-  count?: Maybe<Order_By>;
-  max?: Maybe<User_Sent_Friend_Requests_Max_Order_By>;
-  min?: Maybe<User_Sent_Friend_Requests_Min_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<User_Sent_Friend_Requests_Max_Order_By>;
+  min?: InputMaybe<User_Sent_Friend_Requests_Min_Order_By>;
 };
 
 /** input type for inserting array relation for remote table "user_sent_friend_requests" */
@@ -9964,21 +10117,21 @@ export type User_Sent_Friend_Requests_Arr_Rel_Insert_Input = {
 
 /** Boolean expression to filter rows from the table "user_sent_friend_requests". All fields are combined with a logical 'AND'. */
 export type User_Sent_Friend_Requests_Bool_Exp = {
-  _and?: Maybe<Array<User_Sent_Friend_Requests_Bool_Exp>>;
-  _not?: Maybe<User_Sent_Friend_Requests_Bool_Exp>;
-  _or?: Maybe<Array<User_Sent_Friend_Requests_Bool_Exp>>;
-  status?: Maybe<String_Comparison_Exp>;
-  user?: Maybe<Users_Bool_Exp>;
-  user_id_a?: Maybe<String_Comparison_Exp>;
-  user_id_b?: Maybe<String_Comparison_Exp>;
+  _and?: InputMaybe<Array<User_Sent_Friend_Requests_Bool_Exp>>;
+  _not?: InputMaybe<User_Sent_Friend_Requests_Bool_Exp>;
+  _or?: InputMaybe<Array<User_Sent_Friend_Requests_Bool_Exp>>;
+  status?: InputMaybe<String_Comparison_Exp>;
+  user?: InputMaybe<Users_Bool_Exp>;
+  user_id_a?: InputMaybe<String_Comparison_Exp>;
+  user_id_b?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** input type for inserting data into table "user_sent_friend_requests" */
 export type User_Sent_Friend_Requests_Insert_Input = {
-  status?: Maybe<Scalars['String']>;
-  user?: Maybe<Users_Obj_Rel_Insert_Input>;
-  user_id_a?: Maybe<Scalars['String']>;
-  user_id_b?: Maybe<Scalars['String']>;
+  status?: InputMaybe<Scalars['String']>;
+  user?: InputMaybe<Users_Obj_Rel_Insert_Input>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -9991,9 +10144,9 @@ export type User_Sent_Friend_Requests_Max_Fields = {
 
 /** order by max() on columns of table "user_sent_friend_requests" */
 export type User_Sent_Friend_Requests_Max_Order_By = {
-  status?: Maybe<Order_By>;
-  user_id_a?: Maybe<Order_By>;
-  user_id_b?: Maybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -10006,9 +10159,9 @@ export type User_Sent_Friend_Requests_Min_Fields = {
 
 /** order by min() on columns of table "user_sent_friend_requests" */
 export type User_Sent_Friend_Requests_Min_Order_By = {
-  status?: Maybe<Order_By>;
-  user_id_a?: Maybe<Order_By>;
-  user_id_b?: Maybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "user_sent_friend_requests" */
@@ -10022,10 +10175,10 @@ export type User_Sent_Friend_Requests_Mutation_Response = {
 
 /** Ordering options when selecting data from "user_sent_friend_requests". */
 export type User_Sent_Friend_Requests_Order_By = {
-  status?: Maybe<Order_By>;
-  user?: Maybe<Users_Order_By>;
-  user_id_a?: Maybe<Order_By>;
-  user_id_b?: Maybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+  user?: InputMaybe<Users_Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "user_sent_friend_requests" */
@@ -10040,9 +10193,9 @@ export enum User_Sent_Friend_Requests_Select_Column {
 
 /** input type for updating data in table "user_sent_friend_requests" */
 export type User_Sent_Friend_Requests_Set_Input = {
-  status?: Maybe<Scalars['String']>;
-  user_id_a?: Maybe<Scalars['String']>;
-  user_id_b?: Maybe<Scalars['String']>;
+  status?: InputMaybe<Scalars['String']>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
 };
 
 /** columns and relationships of "users" */
@@ -10089,161 +10242,161 @@ export type Users = {
 
 /** columns and relationships of "users" */
 export type UsersAll_DecksArgs = {
-  distinct_on?: Maybe<Array<Campaign_Deck_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Deck_Order_By>>;
-  where?: Maybe<Campaign_Deck_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Deck_Order_By>>;
+  where?: InputMaybe<Campaign_Deck_Bool_Exp>;
 };
 
 
 /** columns and relationships of "users" */
 export type UsersAll_Decks_AggregateArgs = {
-  distinct_on?: Maybe<Array<Campaign_Deck_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Campaign_Deck_Order_By>>;
-  where?: Maybe<Campaign_Deck_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Campaign_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Deck_Order_By>>;
+  where?: InputMaybe<Campaign_Deck_Bool_Exp>;
 };
 
 
 /** columns and relationships of "users" */
 export type UsersCampaignsArgs = {
-  distinct_on?: Maybe<Array<User_Campaigns_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Campaigns_Order_By>>;
-  where?: Maybe<User_Campaigns_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Campaigns_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Campaigns_Order_By>>;
+  where?: InputMaybe<User_Campaigns_Bool_Exp>;
 };
 
 
 /** columns and relationships of "users" */
 export type UsersCampaigns_AggregateArgs = {
-  distinct_on?: Maybe<Array<User_Campaigns_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Campaigns_Order_By>>;
-  where?: Maybe<User_Campaigns_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Campaigns_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Campaigns_Order_By>>;
+  where?: InputMaybe<User_Campaigns_Bool_Exp>;
 };
 
 
 /** columns and relationships of "users" */
 export type UsersDecksArgs = {
-  distinct_on?: Maybe<Array<Latest_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Latest_Decks_Order_By>>;
-  where?: Maybe<Latest_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Latest_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Latest_Decks_Order_By>>;
+  where?: InputMaybe<Latest_Decks_Bool_Exp>;
 };
 
 
 /** columns and relationships of "users" */
 export type UsersDecks_AggregateArgs = {
-  distinct_on?: Maybe<Array<Latest_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Latest_Decks_Order_By>>;
-  where?: Maybe<Latest_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Latest_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Latest_Decks_Order_By>>;
+  where?: InputMaybe<Latest_Decks_Bool_Exp>;
 };
 
 
 /** columns and relationships of "users" */
 export type UsersFlagsArgs = {
-  distinct_on?: Maybe<Array<User_Flag_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Flag_Order_By>>;
-  where?: Maybe<User_Flag_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Flag_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Flag_Order_By>>;
+  where?: InputMaybe<User_Flag_Bool_Exp>;
 };
 
 
 /** columns and relationships of "users" */
 export type UsersFlags_AggregateArgs = {
-  distinct_on?: Maybe<Array<User_Flag_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Flag_Order_By>>;
-  where?: Maybe<User_Flag_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Flag_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Flag_Order_By>>;
+  where?: InputMaybe<User_Flag_Bool_Exp>;
 };
 
 
 /** columns and relationships of "users" */
 export type UsersFriendsArgs = {
-  distinct_on?: Maybe<Array<User_Friends_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Friends_Order_By>>;
-  where?: Maybe<User_Friends_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Friends_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Friends_Order_By>>;
+  where?: InputMaybe<User_Friends_Bool_Exp>;
 };
 
 
 /** columns and relationships of "users" */
 export type UsersFriends_AggregateArgs = {
-  distinct_on?: Maybe<Array<User_Friends_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Friends_Order_By>>;
-  where?: Maybe<User_Friends_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Friends_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Friends_Order_By>>;
+  where?: InputMaybe<User_Friends_Bool_Exp>;
 };
 
 
 /** columns and relationships of "users" */
 export type UsersLocal_DecksArgs = {
-  distinct_on?: Maybe<Array<Local_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Local_Decks_Order_By>>;
-  where?: Maybe<Local_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Local_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Local_Decks_Order_By>>;
+  where?: InputMaybe<Local_Decks_Bool_Exp>;
 };
 
 
 /** columns and relationships of "users" */
 export type UsersLocal_Decks_AggregateArgs = {
-  distinct_on?: Maybe<Array<Local_Decks_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Local_Decks_Order_By>>;
-  where?: Maybe<Local_Decks_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Local_Decks_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Local_Decks_Order_By>>;
+  where?: InputMaybe<Local_Decks_Bool_Exp>;
 };
 
 
 /** columns and relationships of "users" */
 export type UsersReceived_RequestsArgs = {
-  distinct_on?: Maybe<Array<User_Received_Friend_Requests_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Received_Friend_Requests_Order_By>>;
-  where?: Maybe<User_Received_Friend_Requests_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Received_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Received_Friend_Requests_Order_By>>;
+  where?: InputMaybe<User_Received_Friend_Requests_Bool_Exp>;
 };
 
 
 /** columns and relationships of "users" */
 export type UsersReceived_Requests_AggregateArgs = {
-  distinct_on?: Maybe<Array<User_Received_Friend_Requests_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Received_Friend_Requests_Order_By>>;
-  where?: Maybe<User_Received_Friend_Requests_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Received_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Received_Friend_Requests_Order_By>>;
+  where?: InputMaybe<User_Received_Friend_Requests_Bool_Exp>;
 };
 
 
 /** columns and relationships of "users" */
 export type UsersSent_RequestsArgs = {
-  distinct_on?: Maybe<Array<User_Sent_Friend_Requests_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Sent_Friend_Requests_Order_By>>;
-  where?: Maybe<User_Sent_Friend_Requests_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Sent_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Sent_Friend_Requests_Order_By>>;
+  where?: InputMaybe<User_Sent_Friend_Requests_Bool_Exp>;
 };
 
 
 /** columns and relationships of "users" */
 export type UsersSent_Requests_AggregateArgs = {
-  distinct_on?: Maybe<Array<User_Sent_Friend_Requests_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Sent_Friend_Requests_Order_By>>;
-  where?: Maybe<User_Sent_Friend_Requests_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Sent_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Sent_Friend_Requests_Order_By>>;
+  where?: InputMaybe<User_Sent_Friend_Requests_Bool_Exp>;
 };
 
 /** aggregated selection of "users" */
@@ -10264,27 +10417,27 @@ export type Users_Aggregate_Fields = {
 
 /** aggregate fields of "users" */
 export type Users_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Users_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Users_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** Boolean expression to filter rows from the table "users". All fields are combined with a logical 'AND'. */
 export type Users_Bool_Exp = {
-  _and?: Maybe<Array<Users_Bool_Exp>>;
-  _not?: Maybe<Users_Bool_Exp>;
-  _or?: Maybe<Array<Users_Bool_Exp>>;
-  all_decks?: Maybe<Campaign_Deck_Bool_Exp>;
-  campaigns?: Maybe<User_Campaigns_Bool_Exp>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  decks?: Maybe<Latest_Decks_Bool_Exp>;
-  flags?: Maybe<User_Flag_Bool_Exp>;
-  friends?: Maybe<User_Friends_Bool_Exp>;
-  handle?: Maybe<String_Comparison_Exp>;
-  id?: Maybe<String_Comparison_Exp>;
-  local_decks?: Maybe<Local_Decks_Bool_Exp>;
-  received_requests?: Maybe<User_Received_Friend_Requests_Bool_Exp>;
-  sent_requests?: Maybe<User_Sent_Friend_Requests_Bool_Exp>;
-  updated_at?: Maybe<Timestamp_Comparison_Exp>;
+  _and?: InputMaybe<Array<Users_Bool_Exp>>;
+  _not?: InputMaybe<Users_Bool_Exp>;
+  _or?: InputMaybe<Array<Users_Bool_Exp>>;
+  all_decks?: InputMaybe<Campaign_Deck_Bool_Exp>;
+  campaigns?: InputMaybe<User_Campaigns_Bool_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  decks?: InputMaybe<Latest_Decks_Bool_Exp>;
+  flags?: InputMaybe<User_Flag_Bool_Exp>;
+  friends?: InputMaybe<User_Friends_Bool_Exp>;
+  handle?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  local_decks?: InputMaybe<Local_Decks_Bool_Exp>;
+  received_requests?: InputMaybe<User_Received_Friend_Requests_Bool_Exp>;
+  sent_requests?: InputMaybe<User_Sent_Friend_Requests_Bool_Exp>;
+  updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "users" */
@@ -10295,18 +10448,18 @@ export enum Users_Constraint {
 
 /** input type for inserting data into table "users" */
 export type Users_Insert_Input = {
-  all_decks?: Maybe<Campaign_Deck_Arr_Rel_Insert_Input>;
-  campaigns?: Maybe<User_Campaigns_Arr_Rel_Insert_Input>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  decks?: Maybe<Latest_Decks_Arr_Rel_Insert_Input>;
-  flags?: Maybe<User_Flag_Arr_Rel_Insert_Input>;
-  friends?: Maybe<User_Friends_Arr_Rel_Insert_Input>;
-  handle?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  local_decks?: Maybe<Local_Decks_Arr_Rel_Insert_Input>;
-  received_requests?: Maybe<User_Received_Friend_Requests_Arr_Rel_Insert_Input>;
-  sent_requests?: Maybe<User_Sent_Friend_Requests_Arr_Rel_Insert_Input>;
-  updated_at?: Maybe<Scalars['timestamp']>;
+  all_decks?: InputMaybe<Campaign_Deck_Arr_Rel_Insert_Input>;
+  campaigns?: InputMaybe<User_Campaigns_Arr_Rel_Insert_Input>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  decks?: InputMaybe<Latest_Decks_Arr_Rel_Insert_Input>;
+  flags?: InputMaybe<User_Flag_Arr_Rel_Insert_Input>;
+  friends?: InputMaybe<User_Friends_Arr_Rel_Insert_Input>;
+  handle?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  local_decks?: InputMaybe<Local_Decks_Arr_Rel_Insert_Input>;
+  received_requests?: InputMaybe<User_Received_Friend_Requests_Arr_Rel_Insert_Input>;
+  sent_requests?: InputMaybe<User_Sent_Friend_Requests_Arr_Rel_Insert_Input>;
+  updated_at?: InputMaybe<Scalars['timestamp']>;
 };
 
 /** aggregate max on columns */
@@ -10340,30 +10493,30 @@ export type Users_Mutation_Response = {
 export type Users_Obj_Rel_Insert_Input = {
   data: Users_Insert_Input;
   /** on conflict condition */
-  on_conflict?: Maybe<Users_On_Conflict>;
+  on_conflict?: InputMaybe<Users_On_Conflict>;
 };
 
 /** on conflict condition type for table "users" */
 export type Users_On_Conflict = {
   constraint: Users_Constraint;
   update_columns: Array<Users_Update_Column>;
-  where?: Maybe<Users_Bool_Exp>;
+  where?: InputMaybe<Users_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "users". */
 export type Users_Order_By = {
-  all_decks_aggregate?: Maybe<Campaign_Deck_Aggregate_Order_By>;
-  campaigns_aggregate?: Maybe<User_Campaigns_Aggregate_Order_By>;
-  created_at?: Maybe<Order_By>;
-  decks_aggregate?: Maybe<Latest_Decks_Aggregate_Order_By>;
-  flags_aggregate?: Maybe<User_Flag_Aggregate_Order_By>;
-  friends_aggregate?: Maybe<User_Friends_Aggregate_Order_By>;
-  handle?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  local_decks_aggregate?: Maybe<Local_Decks_Aggregate_Order_By>;
-  received_requests_aggregate?: Maybe<User_Received_Friend_Requests_Aggregate_Order_By>;
-  sent_requests_aggregate?: Maybe<User_Sent_Friend_Requests_Aggregate_Order_By>;
-  updated_at?: Maybe<Order_By>;
+  all_decks_aggregate?: InputMaybe<Campaign_Deck_Aggregate_Order_By>;
+  campaigns_aggregate?: InputMaybe<User_Campaigns_Aggregate_Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  decks_aggregate?: InputMaybe<Latest_Decks_Aggregate_Order_By>;
+  flags_aggregate?: InputMaybe<User_Flag_Aggregate_Order_By>;
+  friends_aggregate?: InputMaybe<User_Friends_Aggregate_Order_By>;
+  handle?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  local_decks_aggregate?: InputMaybe<Local_Decks_Aggregate_Order_By>;
+  received_requests_aggregate?: InputMaybe<User_Received_Friend_Requests_Aggregate_Order_By>;
+  sent_requests_aggregate?: InputMaybe<User_Sent_Friend_Requests_Aggregate_Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: users */
@@ -10385,10 +10538,10 @@ export enum Users_Select_Column {
 
 /** input type for updating data in table "users" */
 export type Users_Set_Input = {
-  created_at?: Maybe<Scalars['timestamptz']>;
-  handle?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamp']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  handle?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamp']>;
 };
 
 /** update columns of table "users" */
@@ -10408,7 +10561,7 @@ export type GetCustomCardsQueryVariables = Exact<{
 }>;
 
 
-export type GetCustomCardsQuery = { __typename?: 'query_root', card: Array<{ __typename?: 'card', code: string, cost?: number | null | undefined, deck_limit?: number | null | undefined, encounter_code?: string | null | undefined, encounter_position?: number | null | undefined, exile?: boolean | null | undefined, faction_code: string, health?: number | null | undefined, is_unique?: boolean | null | undefined, pack_code: string, pack_position: number, permanent?: boolean | null | undefined, position: number, quantity: number, real_flavor?: string | null | undefined, real_name: string, real_pack_name: string, real_slot?: string | null | undefined, real_subname?: string | null | undefined, real_text: string, real_traits?: string | null | undefined, sanity?: number | null | undefined, skill_agility?: number | null | undefined, skill_combat?: number | null | undefined, skill_intellect?: number | null | undefined, skill_willpower?: number | null | undefined, skill_wild?: number | null | undefined, subtype_code?: string | null | undefined, type_code: string, packs: Array<{ __typename?: 'card_pack', name: string }>, translations: Array<{ __typename?: 'card_text', flavor?: string | null | undefined, encounter_name?: string | null | undefined, name: string, slot?: string | null | undefined, subname?: string | null | undefined, text: string, traits?: string | null | undefined }> }> };
+export type GetCustomCardsQuery = { __typename?: 'query_root', card: Array<{ __typename?: 'card', code: string, cost?: number | null | undefined, deck_limit?: number | null | undefined, encounter_code?: string | null | undefined, encounter_position?: number | null | undefined, exile?: boolean | null | undefined, faction_code: string, health?: number | null | undefined, is_unique?: boolean | null | undefined, pack_code: string, pack_position: number, permanent?: boolean | null | undefined, position: number, quantity: number, real_flavor?: string | null | undefined, real_name: string, real_pack_name: string, real_slot?: string | null | undefined, real_subname?: string | null | undefined, real_text?: string | null | undefined, real_traits?: string | null | undefined, sanity?: number | null | undefined, skill_agility?: number | null | undefined, skill_combat?: number | null | undefined, skill_intellect?: number | null | undefined, skill_willpower?: number | null | undefined, skill_wild?: number | null | undefined, subtype_code?: string | null | undefined, type_code: string, stage?: number | null | undefined, doom?: number | null | undefined, clues?: number | null | undefined, double_sided?: boolean | null | undefined, illustrator?: string | null | undefined, real_back_flavor?: string | null | undefined, real_back_text?: string | null | undefined, real_back_name?: string | null | undefined, packs: Array<{ __typename?: 'card_pack', name: string }>, translations: Array<{ __typename?: 'card_text', flavor?: string | null | undefined, encounter_name?: string | null | undefined, name: string, slot?: string | null | undefined, subname?: string | null | undefined, text?: string | null | undefined, traits?: string | null | undefined, back_flavor?: string | null | undefined, back_text?: string | null | undefined, back_name?: string | null | undefined }> }> };
 
 export type GetCardFaqQueryVariables = Exact<{
   code: Scalars['String'];
@@ -10421,15 +10574,15 @@ export type GetCardFaqQuery = { __typename?: 'query_root', faq_by_pk?: { __typen
 export type UploadNewCampaignMutationVariables = Exact<{
   campaignId: Scalars['Int'];
   cycleCode: Scalars['String'];
-  standaloneId?: Maybe<Scalars['jsonb']>;
-  showInterludes?: Maybe<Scalars['Boolean']>;
+  standaloneId?: InputMaybe<Scalars['jsonb']>;
+  showInterludes?: InputMaybe<Scalars['Boolean']>;
   name: Scalars['String'];
-  difficulty?: Maybe<Scalars['String']>;
-  campaignNotes?: Maybe<Scalars['jsonb']>;
-  scenarioResults?: Maybe<Scalars['jsonb']>;
-  chaosBag?: Maybe<Scalars['jsonb']>;
-  weaknessSet?: Maybe<Scalars['jsonb']>;
-  guideVersion?: Maybe<Scalars['Int']>;
+  difficulty?: InputMaybe<Scalars['String']>;
+  campaignNotes?: InputMaybe<Scalars['jsonb']>;
+  scenarioResults?: InputMaybe<Scalars['jsonb']>;
+  chaosBag?: InputMaybe<Scalars['jsonb']>;
+  weaknessSet?: InputMaybe<Scalars['jsonb']>;
+  guideVersion?: InputMaybe<Scalars['Int']>;
   inputs: Array<Guide_Input_Insert_Input> | Guide_Input_Insert_Input;
   achievements: Array<Guide_Achievement_Insert_Input> | Guide_Achievement_Insert_Input;
   investigator_data: Array<Investigator_Data_Insert_Input> | Investigator_Data_Insert_Input;
@@ -10440,9 +10593,9 @@ export type UploadNewCampaignMutationVariables = Exact<{
 export type UploadNewCampaignMutation = { __typename?: 'mutation_root', insert_guide_input?: { __typename?: 'guide_input_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, scenario?: string | null | undefined, step?: string | null | undefined, payload?: any | null | undefined, created_at: any }> } | null | undefined, insert_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', affected_rows: number } | null | undefined, insert_investigator_data?: { __typename?: 'investigator_data_mutation_response', affected_rows: number } | null | undefined, insert_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', affected_rows: number } | null | undefined, update_campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null | undefined, deleted?: boolean | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, campaignNotes?: any | null | undefined, chaosBag?: any | null | undefined, showInterludes?: boolean | null | undefined, scenarioResults?: any | null | undefined, weaknessSet?: any | null | undefined, guided?: boolean | null | undefined, guide_version?: number | null | undefined, archived?: boolean | null | undefined, owner_id: string, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> }, campaign_guide?: { __typename?: 'campaign_guide', id?: number | null | undefined, uuid?: string | null | undefined, updated_at?: any | null | undefined, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null | undefined, scenario?: string | null | undefined, type: string, payload?: any | null | undefined }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> } | null | undefined, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null | undefined, addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, cardCounts?: any | null | undefined, specialXp?: any | null | undefined, availableXp?: number | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null | undefined };
 
 export type InsertNewDeckMutationVariables = Exact<{
-  arkhamdb_id?: Maybe<Scalars['Int']>;
-  local_uuid?: Maybe<Scalars['String']>;
-  arkhamdb_user?: Maybe<Scalars['Int']>;
+  arkhamdb_id?: InputMaybe<Scalars['Int']>;
+  local_uuid?: InputMaybe<Scalars['String']>;
+  arkhamdb_user?: InputMaybe<Scalars['Int']>;
   campaign_id: Scalars['Int'];
   investigator: Scalars['String'];
   content: Scalars['jsonb'];
@@ -10454,8 +10607,8 @@ export type InsertNewDeckMutationVariables = Exact<{
 export type InsertNewDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined };
 
 export type InsertNextLocalDeckMutationVariables = Exact<{
-  previous_local_uuid?: Maybe<Scalars['String']>;
-  local_uuid?: Maybe<Scalars['String']>;
+  previous_local_uuid?: InputMaybe<Scalars['String']>;
+  local_uuid?: InputMaybe<Scalars['String']>;
   campaign_id: Scalars['Int'];
   investigator: Scalars['String'];
   content: Scalars['jsonb'];
@@ -10469,7 +10622,7 @@ export type InsertNextLocalDeckMutation = { __typename?: 'mutation_root', insert
 export type InsertNextArkhamDbDeckMutationVariables = Exact<{
   previous_arkhamdb_id: Scalars['Int'];
   arkhamdb_id: Scalars['Int'];
-  arkhamdb_user?: Maybe<Scalars['Int']>;
+  arkhamdb_user?: InputMaybe<Scalars['Int']>;
   campaign_id: Scalars['Int'];
   investigator: Scalars['String'];
   content: Scalars['jsonb'];
@@ -10485,7 +10638,7 @@ export type UpdateArkhamDbDeckMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
   content: Scalars['jsonb'];
   content_hash: Scalars['String'];
-  arkhamdb_user?: Maybe<Scalars['Int']>;
+  arkhamdb_user?: InputMaybe<Scalars['Int']>;
 }>;
 
 
@@ -10571,9 +10724,9 @@ export type GetDeckHistoryQueryVariables = Exact<{
 
 export type GetDeckHistoryQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }> };
 
-export type CoreCardFragment = { __typename?: 'card', code: string, cost?: number | null | undefined, deck_limit?: number | null | undefined, encounter_code?: string | null | undefined, encounter_position?: number | null | undefined, exile?: boolean | null | undefined, faction_code: string, health?: number | null | undefined, is_unique?: boolean | null | undefined, pack_code: string, pack_position: number, permanent?: boolean | null | undefined, position: number, quantity: number, real_flavor?: string | null | undefined, real_name: string, real_pack_name: string, real_slot?: string | null | undefined, real_subname?: string | null | undefined, real_text: string, real_traits?: string | null | undefined, sanity?: number | null | undefined, skill_agility?: number | null | undefined, skill_combat?: number | null | undefined, skill_intellect?: number | null | undefined, skill_willpower?: number | null | undefined, skill_wild?: number | null | undefined, subtype_code?: string | null | undefined, type_code: string };
+export type CoreCardFragment = { __typename?: 'card', code: string, cost?: number | null | undefined, deck_limit?: number | null | undefined, encounter_code?: string | null | undefined, encounter_position?: number | null | undefined, exile?: boolean | null | undefined, faction_code: string, health?: number | null | undefined, is_unique?: boolean | null | undefined, pack_code: string, pack_position: number, permanent?: boolean | null | undefined, position: number, quantity: number, real_flavor?: string | null | undefined, real_name: string, real_pack_name: string, real_slot?: string | null | undefined, real_subname?: string | null | undefined, real_text?: string | null | undefined, real_traits?: string | null | undefined, sanity?: number | null | undefined, skill_agility?: number | null | undefined, skill_combat?: number | null | undefined, skill_intellect?: number | null | undefined, skill_willpower?: number | null | undefined, skill_wild?: number | null | undefined, subtype_code?: string | null | undefined, type_code: string, stage?: number | null | undefined, doom?: number | null | undefined, clues?: number | null | undefined, double_sided?: boolean | null | undefined, illustrator?: string | null | undefined, real_back_flavor?: string | null | undefined, real_back_text?: string | null | undefined, real_back_name?: string | null | undefined };
 
-export type CoreCardTextFragment = { __typename?: 'card_text', flavor?: string | null | undefined, encounter_name?: string | null | undefined, name: string, slot?: string | null | undefined, subname?: string | null | undefined, text: string, traits?: string | null | undefined };
+export type CoreCardTextFragment = { __typename?: 'card_text', flavor?: string | null | undefined, encounter_name?: string | null | undefined, name: string, slot?: string | null | undefined, subname?: string | null | undefined, text?: string | null | undefined, traits?: string | null | undefined, back_flavor?: string | null | undefined, back_text?: string | null | undefined, back_name?: string | null | undefined };
 
 export type UserInfoFragment = { __typename?: 'users', id: string, handle?: string | null | undefined };
 
@@ -10757,7 +10910,7 @@ export type ChaosBagDecCurseMutation = { __typename?: 'mutation_root', update_ch
 
 export type ChaosBagSetTarotMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
-  tarot?: Maybe<Chaos_Bag_Tarot_Mode_Enum>;
+  tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum>;
 }>;
 
 
@@ -10801,9 +10954,9 @@ export type AddGuideInputMutationVariables = Exact<{
   id: Scalars['String'];
   campaign_id: Scalars['Int'];
   type: Scalars['String'];
-  scenario?: Maybe<Scalars['String']>;
-  step?: Maybe<Scalars['String']>;
-  payload?: Maybe<Scalars['jsonb']>;
+  scenario?: InputMaybe<Scalars['String']>;
+  step?: InputMaybe<Scalars['String']>;
+  payload?: InputMaybe<Scalars['jsonb']>;
 }>;
 
 
@@ -10820,10 +10973,10 @@ export type RemoveGuideInputsMutation = { __typename?: 'mutation_root', delete_g
 export type UpdateInvestigatorTraumaMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
   investigator: Scalars['String'];
-  physical?: Maybe<Scalars['Int']>;
-  mental?: Maybe<Scalars['Int']>;
-  killed?: Maybe<Scalars['Boolean']>;
-  insane?: Maybe<Scalars['Boolean']>;
+  physical?: InputMaybe<Scalars['Int']>;
+  mental?: InputMaybe<Scalars['Int']>;
+  killed?: InputMaybe<Scalars['Boolean']>;
+  insane?: InputMaybe<Scalars['Boolean']>;
 }>;
 
 
@@ -10832,17 +10985,17 @@ export type UpdateInvestigatorTraumaMutation = { __typename?: 'mutation_root', i
 export type UpdateInvestigatorDataMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
   investigator: Scalars['String'];
-  physical?: Maybe<Scalars['Int']>;
-  mental?: Maybe<Scalars['Int']>;
-  killed?: Maybe<Scalars['Boolean']>;
-  insane?: Maybe<Scalars['Boolean']>;
-  addedCards?: Maybe<Scalars['jsonb']>;
-  availableXp?: Maybe<Scalars['Int']>;
-  specialXp?: Maybe<Scalars['jsonb']>;
-  storyAssets?: Maybe<Scalars['jsonb']>;
-  ignoreStoryAssets?: Maybe<Scalars['jsonb']>;
-  removedCards?: Maybe<Scalars['jsonb']>;
-  cardCounts?: Maybe<Scalars['jsonb']>;
+  physical?: InputMaybe<Scalars['Int']>;
+  mental?: InputMaybe<Scalars['Int']>;
+  killed?: InputMaybe<Scalars['Boolean']>;
+  insane?: InputMaybe<Scalars['Boolean']>;
+  addedCards?: InputMaybe<Scalars['jsonb']>;
+  availableXp?: InputMaybe<Scalars['Int']>;
+  specialXp?: InputMaybe<Scalars['jsonb']>;
+  storyAssets?: InputMaybe<Scalars['jsonb']>;
+  ignoreStoryAssets?: InputMaybe<Scalars['jsonb']>;
+  removedCards?: InputMaybe<Scalars['jsonb']>;
+  cardCounts?: InputMaybe<Scalars['jsonb']>;
 }>;
 
 
@@ -10884,7 +11037,7 @@ export type UpdateWeaknessSetMutation = { __typename?: 'mutation_root', update_c
 
 export type UpdateCampaignDifficultyMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
-  difficulty?: Maybe<Scalars['String']>;
+  difficulty?: InputMaybe<Scalars['String']>;
 }>;
 
 
@@ -10985,6 +11138,14 @@ export const CoreCardFragmentDoc = gql`
   skill_wild
   subtype_code
   type_code
+  stage
+  doom
+  clues
+  double_sided
+  illustrator
+  real_back_flavor
+  real_back_text
+  real_back_name
 }
     `;
 export const CoreCardTextFragmentDoc = gql`
@@ -10996,6 +11157,9 @@ export const CoreCardTextFragmentDoc = gql`
   subname
   text
   traits
+  back_flavor
+  back_text
+  back_name
 }
     `;
 export const FullChaosBagResultFragmentDoc = gql`

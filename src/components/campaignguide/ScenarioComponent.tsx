@@ -128,7 +128,7 @@ export function dynamicOptions(undo: boolean) {
     id: 'reset',
     color: COLORS.M,
   }] : [{
-    icon: iconsMap.menu,
+    icon: iconsMap.log,
     id: 'log',
     color: COLORS.M,
     accessibilityLabel: t`Campaign Log`,
@@ -151,7 +151,7 @@ export function dynamicOptions(undo: boolean) {
 
 export default function ScenarioComponent({ componentId, showLinkedScenario, standalone, footer }: Props) {
   const { campaignState, campaignId } = useContext(CampaignGuideContext);
-  const { processedScenario, scenarioState } = useContext(ScenarioGuideContext);
+  const { processedScenario, processedCampaign, scenarioState } = useContext(ScenarioGuideContext);
   const { backgroundStyle, width } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const scenarioId = processedScenario.id.encodedScenarioId;
@@ -176,9 +176,10 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
       processedScenario.scenarioGuide.campaignGuide,
       log.campaignLog,
       { standalone },
-      scenarioId
+      scenarioId,
+      processedCampaign
     );
-  }, [componentId, processedScenario, campaignId, scenarioId, standalone]);
+  }, [componentId, processedCampaign, processedScenario, campaignId, scenarioId, standalone]);
 
   const resetPressed = useCallback(() => {
     Alert.alert(

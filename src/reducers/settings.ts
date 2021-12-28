@@ -13,6 +13,8 @@ import {
   SetFontScaleAction,
   ReduxMigrationAction,
   REDUX_MIGRATION,
+  SET_PLAYBACK_RATE,
+  SetPlaybackRateAction,
 } from '@actions/types';
 
 interface SettingsState {
@@ -27,6 +29,7 @@ interface SettingsState {
   justifyContent?: boolean;
   sortRespectQuotes?: boolean;
   beta1?: boolean;
+  playbackRate?: number | undefined;
 
   version?: number;
 }
@@ -45,7 +48,15 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   version: CURRENT_REDUX_VERSION,
 };
 
-type SettingAction = SetLanguageChoiceAction | SetTabooSetAction | SetMiscSettingAction | CardFetchSuccessAction | SetThemeAction | SetFontScaleAction | ReduxMigrationAction;
+type SettingAction =
+  SetLanguageChoiceAction |
+  SetTabooSetAction |
+  SetMiscSettingAction |
+  CardFetchSuccessAction |
+  SetThemeAction |
+  SetFontScaleAction |
+  ReduxMigrationAction |
+  SetPlaybackRateAction;
 
 
 export default function(
@@ -81,6 +92,11 @@ export default function(
         tabooId: action.tabooId,
       };
     }
+    case SET_PLAYBACK_RATE:
+      return {
+        ...state,
+        playbackRate: action.rate,
+      };
     case SET_MISC_SETTING:
       switch (action.setting) {
         case 'alphabetize':

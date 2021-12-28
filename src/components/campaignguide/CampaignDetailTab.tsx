@@ -85,8 +85,9 @@ export default function CampaignDetailTab({
       processedCampaign.campaignLog,
       { standalone: false, hideChaosBag: true },
       scenarioId,
+      processedCampaign
     );
-  }, [componentId, campaignId, campaignGuide, processedCampaign.campaignLog, scenarioId]);
+  }, [componentId, campaignId, campaignGuide, processedCampaign, scenarioId]);
 
   const showCampaignAchievements = useCallback(() => {
     Navigation.push<CampaignAchievementsProps>(componentId, {
@@ -155,6 +156,7 @@ export default function CampaignDetailTab({
     scenarioId: currentScenario?.id?.encodedScenarioId,
     setChaosBag: updateCampaignActions.setChaosBag,
     cycleCode: campaign.cycleCode,
+    processedCampaign,
   });
   return (
     <SafeAreaView style={[styles.wrapper, backgroundStyle]}>

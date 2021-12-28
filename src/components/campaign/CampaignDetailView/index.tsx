@@ -262,6 +262,7 @@ function CampaignDetailView(props: Props) {
     setChaosBag: updateCampaignActions.setChaosBag,
     scenarioId: undefined,
     cycleCode: campaign?.cycleCode || 'custom',
+    processedCampaign: undefined,
   });
   if (!campaign) {
     if (campaignId.serverId) {
