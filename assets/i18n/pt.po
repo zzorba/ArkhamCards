@@ -5152,6 +5152,13 @@ msgid ""
 "card collection."
 msgstr ""
 
+#, javascript-format
+msgid "After completion of ${ scenarionName }"
+msgstr ""
+
+msgid "Show decks from other campaigns"
+msgstr ""
+
 msgctxt "masculine"
 msgid "Alive"
 msgstr "Vivo"
@@ -6634,6 +6641,11 @@ msgstr ""
 
 msgctxt "narration"
 msgid "Playing audio"
+msgstr ""
+
+#, javascript-format
+msgctxt "narration"
+msgid "Audio speed: ${ rate }"
 msgstr ""
 
 msgctxt "campaign_log_entry"

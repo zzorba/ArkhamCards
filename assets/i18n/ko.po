@@ -5059,6 +5059,13 @@ msgid ""
 msgstr "같은 캠페인에 속한 덱에서 공통으로 포함된 카드들의 총합이 당신의 보유 게임 내의 총 수량을 초과합니다."
 
 #, javascript-format
+msgid "After completion of ${ scenarionName }"
+msgstr ""
+
+msgid "Show decks from other campaigns"
+msgstr ""
+
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } 조사자는 <b>미칩니다</b>."
@@ -6520,6 +6527,11 @@ msgstr "뒤로 가기"
 msgctxt "narration"
 msgid "Playing audio"
 msgstr "오디오 재생"
+
+#, javascript-format
+msgctxt "narration"
+msgid "Audio speed: ${ rate }"
+msgstr ""
 
 msgctxt "campaign_log_entry"
 msgid "Other."

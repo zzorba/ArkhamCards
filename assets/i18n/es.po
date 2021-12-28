@@ -5336,6 +5336,13 @@ msgstr ""
 "excede tu colección."
 
 #, javascript-format
+msgid "After completion of ${ scenarionName }"
+msgstr ""
+
+msgid "Show decks from other campaigns"
+msgstr ""
+
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } se ha vuelto <b>loco</b>."
@@ -6842,6 +6849,11 @@ msgstr "Saltar atrás"
 msgctxt "narration"
 msgid "Playing audio"
 msgstr "Reproduciendo audio"
+
+#, javascript-format
+msgctxt "narration"
+msgid "Audio speed: ${ rate }"
+msgstr ""
 
 msgctxt "campaign_log_entry"
 msgid "Other."

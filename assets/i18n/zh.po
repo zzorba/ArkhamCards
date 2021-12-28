@@ -4979,6 +4979,13 @@ msgid ""
 msgstr ""
 
 #, javascript-format
+msgid "After completion of ${ scenarionName }"
+msgstr ""
+
+msgid "Show decks from other campaigns"
+msgstr ""
+
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name }已<b>發瘋</b>。"
@@ -6424,6 +6431,11 @@ msgstr "倒回"
 msgctxt "narration"
 msgid "Playing audio"
 msgstr "播放語音"
+
+#, javascript-format
+msgctxt "narration"
+msgid "Audio speed: ${ rate }"
+msgstr ""
 
 msgctxt "campaign_log_entry"
 msgid "Other."
