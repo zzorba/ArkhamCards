@@ -318,7 +318,7 @@
           },
           {
             "id": "discovered_an_ancient_vault",
-            "text": "The team discovered an ancient vault."
+            "text": "Das Team hat eine uralte Trutzanlage entdeckt."
           },
           {
             "id": "dr_kensler_has_a_plan",
@@ -370,11 +370,11 @@
           },
           {
             "id": "photographed_the_astronomical_charts",
-            "text": "The team photographed the astronomical charts."
+            "text": "Das Team hat die astronomischen Karten fotografiert."
           },
           {
             "id": "read_the_map",
-            "text": "the team read the map."
+            "text": "das Team hat die Karte studiert."
           },
           {
             "id": "scouted_the_city_outskirts",
@@ -390,7 +390,7 @@
           },
           {
             "id": "studied_the_mural_carvings",
-            "text": "the team studied the mural carvings."
+            "text": "das Team hat die Steinmetzarbeiten an den Wänden untersucht."
           },
           {
             "id": "surviving_investigators",
@@ -434,11 +434,11 @@
           },
           {
             "id": "team_found_the_hidden_tunnel",
-            "text": "the team found the hidden tunnel."
+            "text": "das Team hat den verborgenen Tunnel gefunden."
           },
           {
             "id": "team_was_guided_to_the_hidden_tunnel",
-            "text": "the team was guided to the hidden tunnel."
+            "text": "das Team wurde zum verborgenen Tunnel geleitet."
           },
           {
             "id": "the_seal_was_used_improperly",

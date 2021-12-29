@@ -651,7 +651,7 @@
   {
     "id": "Keywords",
     "title": "Mots-Clés",
-    "text": "Un mot-clé est une capacité de carte qui confère des règles spécifiques à une carte. Chaque mot-clé possède sa propre règle qui peut être consultée dans sa propre section du glossaire. Les mots-clés utilisés dans ce jeu sont : [Alerte](#Alert), [Cachée](#Hidden), [Chasseur](#Hunter), [Distant](#Aloof), [Massif](#Massive), [Péril](#Peril), [Rapide](#Fast), [Renfort](#Surge), [Riposte](#Retaliate), [Sceller](#Seal) et [Utilisations](#Uses).\n Il existe également des mots-clés de construction de deck : [Exceptionnel](#Exceptional), [Liée](#Bonded), [Myriade](#Myriad) et [Permanent](#Permanent). Les mots-clés de construction de deck affectent la personnalisation du deck quand vous construisez et/ou améliorez un deck. Ils n’ont aucun effet au cours de la partie.\n- Une carte qui possède/gagne le même mot-clé plusieurs fois grâce à des sources différentes fonctionne comme si elle n’avait qu’un seul exemplaire de ce mot-clé.\n- L’initiation de n’importe quel mot-clé qui utilise la locution « a le droit » dans sa description est optionnel. L’application de tous les autres mots-clés est obligatoire.\nVoir [Capacité](#Abilities_Keywords)."
+    "text": "Un mot-clé est une capacité de carte qui confère des règles spécifiques à une carte. Chaque mot-clé possède sa propre règle qui peut être consultée dans sa propre section du glossaire. Les mots-clés utilisés dans ce jeu sont : [Alerte](#Alert), [Cachée](#Hidden), [Chasseur](#Hunter), [Distant](#Aloof), [Massif](#Massive), [Patrouille](#Patrol), [Péril](#Peril), [Rapide](#Fast), [Renfort](#Surge), [Riposte](#Retaliate), [Sceller](#Seal) et [Utilisations](#Uses).\n Il existe également des mots-clés de construction de deck : [Exceptionnel](#Exceptional), [Liée](#Bonded), [Myriade](#Myriad) et [Permanent](#Permanent). Les mots-clés de construction de deck affectent la personnalisation du deck quand vous construisez et/ou améliorez un deck. Ils n’ont aucun effet au cours de la partie.\n- Une carte qui possède/gagne le même mot-clé plusieurs fois grâce à des sources différentes fonctionne comme si elle n’avait qu’un seul exemplaire de ce mot-clé.\n- L’initiation de n’importe quel mot-clé qui utilise la locution « a le droit » dans sa description est optionnel. L’application de tous les autres mots-clés est obligatoire.\nVoir [Capacité](#Abilities_Keywords)."
   },
   {
     "id": "Mulligan",
@@ -679,6 +679,12 @@
     "id": "Reaction_Opportunities",
     "title": "Opportunités de Réaction ([reaction])",
     "text": "Quand une condition de déclenchement se résout, les investigateurs se voient offrir l’opportunité de résoudre des capacités [reaction] en réponse à cette condition de déclenchement. Ce n’est qu’après que tous les investigateurs ont passé leur opportunité de réaction que la partie peut se poursuivre.\nUtiliser une capacité [reaction] en réponse à une condition de déclenchement n’empêche pas l’utilisation d’autres capacités [reaction] en réponse à cette même condition de déclenchement.\n<i>Exemple : [Roland](/card/01001) vient juste de vaincre un ennemi et souhaite déclencher sa capacité [reaction] : « Après que vous avez vaincu un ennemi : découvrez 1 indice dans votre lieu. » Il découvre 1 indice dans son lieu. Il a ensuite le droit de jouer [Preuve !](/card/01022) en réponse pour avoir vaincu cet ennemi. Comme les deux cartes ont la même condition de déclenchement (« Après que vous avez vaincu un\nennemi »), activer l’une de ces réactions n’empêche pas Roland d’activer l’autre.</i>"
+  },
+  {
+    "id": "Patrol",
+    "cycle": ["side", "eoe"],
+    "title": "Patrouille",
+    "text": "Certains ennemis possèdent le mot-clé Patrouille. Lors de la phase des ennemis (à l’étape structurelle 3.2), chaque ennemi redressé et non-engagé ayant le mot-clé Patrouille se déplace vers un lieu connexe en direction du lieu désigné (entre parenthèses à côté du mot-clé Patrouille) par le chemin le plus court possible.\n- Si plusieurs lieux peuvent correspondre au lieu désigné, l’investigateur principal a le droit de choisir en direction de quel lieu l’ennemi se déplace.\n- Si un ennemi ayant le mot-clé Patrouille est censé se déplacer dans un lieu qui est bloqué par une capacité de carte, cet ennemi ne se déplace pas"
   },
   {
     "id": "Per_Investigator",
