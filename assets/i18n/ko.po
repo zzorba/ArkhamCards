@@ -5060,10 +5060,10 @@ msgstr "같은 캠페인에 속한 덱에서 공통으로 포함된 카드들의
 
 #, javascript-format
 msgid "After completion of ${ scenarionName }"
-msgstr ""
+msgstr "${ scenarionName } 시나리오 완료 후"
 
 msgid "Show decks from other campaigns"
-msgstr ""
+msgstr "다른 캠페인에 속한 덱 보기"
 
 #, javascript-format
 msgctxt "masculine"
@@ -6531,7 +6531,7 @@ msgstr "오디오 재생"
 #, javascript-format
 msgctxt "narration"
 msgid "Audio speed: ${ rate }"
-msgstr ""
+msgstr "재생 속도: ${ rate }"
 
 msgctxt "campaign_log_entry"
 msgid "Other."
